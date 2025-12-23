@@ -21,9 +21,18 @@ export default function isLocked(l: number, x: number, y: number) {
   const rotation = getRotation();
   for (let i = 0; i < rotation; ++i) [x, y] = [y, l - x - 1];
   // corner blocks
-  if (x < 7 && y < 7) return getLockPositioningBlocks();
-  if (x < 7 && y > l - 8) return getLockPositioningBlocks();
-  if (x > l - 8 && y < 7) return getLockPositioningBlocks();
+  // Expand to also cover separators + format info, which are easy to damage in
+  // subpixel/dithered rendering and can make codes unscannable.
+  if (getLockPositioningBlocks()) {
+    // Finder + separator + format regions (~9x9)
+    if (x < 9 && y < 9) return true;
+    if (x < 9 && y > l - 10) return true;
+    if (x > l - 10 && y < 9) return true;
+
+    // Version info blocks for version >= 7 (near top-right / bottom-left finders)
+    if (x > l - 12 && y < 6) return true;
+    if (x < 6 && y > l - 12) return true;
+  }
   // timing lines
   if (x == 6 || y == 6) return getLockTimingLines();
   // do we have extra blocks

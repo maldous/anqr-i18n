@@ -16,8 +16,11 @@ export function diffuseDataPoints(imageData: number[][], qr: boolean[][]) {
           for (let dx = -1; dx <= 1; ++dx) {
             if (dx == 0 && dy == 0) continue;
             if (isLocked(imageData.length, x + dx, y + dy)) continue;
+            const ny = y + dy;
+            const nx = x + dx;
+            if (nx < 0 || ny < 0 || nx >= imageData.length || ny >= imageData.length) continue;
             const weight = 1 / 8;
-            imageData[y + dy][x + dx] += error * weight;
+            imageData[ny][nx] += error * weight;
           }
         }
       }
@@ -52,12 +55,16 @@ export function diffuseDataPoints(imageData: number[][], qr: boolean[][]) {
 export function diffuseFreePoints(imageData: number[][]) {
   const scale = getScale();
 
+
+  const h = imageData.length;
+  const w = imageData[0]?.length ?? h;
   function canChange(x: number, y: number) {
-    return !isLocked(imageData.length, x, y) && !isData(x, y);
+    if (x < 0 || y < 0 || x >= w || y >= h) return false;
+    return !isLocked(h, x, y) && !isData(x, y);
   }
 
-  for (let y = 0; y < imageData.length; y += scale) {
-    for (let x = 0; x < imageData.length; x += scale) {
+  for (let y = 0; y + scale <= h; y += scale) {
+    for (let x = 0; x + scale <= w; x += scale) {
       for (let dy = 0; dy < scale; ++dy) {
         for (let dx = 0; dx < scale; ++dx) {
           const sx = x + dx;

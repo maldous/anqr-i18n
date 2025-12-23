@@ -39,6 +39,18 @@ export class QRGenerator {
       );
     }
 
+
+    // Dithered mode uses the `qr` encoder directly (and has its own
+    // overflow handling). Skip qrcode-generator entirely to avoid
+    // `code length overflow` when a manual version is too small.
+    if (config.overlayMode === "dithered" && overlayCanvas) {
+      return this.generateDitheredSubpixelQR(
+        null,
+        { ...config, typeNumber },
+        overlayCanvas,
+      );
+    }
+
     const qr = this.qrcode(typeNumber, config.errorCorrection);
     qr.addData(config.content);
     qr.make();
@@ -80,6 +92,9 @@ export class QRGenerator {
     canvas.width = size;
     canvas.height = size;
     const ctx = canvas.getContext("2d");
+
+    // Keep edges crisp (critical for QR scanning)
+    ctx.imageSmoothingEnabled = false;
 
     // Draw background
     if (!config.transparentBg) {
@@ -752,14 +767,22 @@ export class QRGenerator {
     // instance, use the matrix size to drive rendering.
     const scaledCount = dithered.length;
     const derivedModuleCount = Math.round(scaledCount / scale);
-    const marginPx = config.margin * config.moduleSize;
-    const size = derivedModuleCount * config.moduleSize + marginPx * 2;
-    const pixelSize = config.moduleSize / scale;
+    const marginModules = Math.max(5, config.margin);
+    // For scannability: keep an integer subpixel size (avoid fractional canvas coords)
+    // and ensure a full quiet zone (>= 4 modules; we use 5 here, matching the reference).
+    const subPixelSize = Math.max(1, Math.round(config.moduleSize / scale));
+    const effectiveModuleSize = subPixelSize * scale;
+    const marginPx = marginModules * effectiveModuleSize;
+    const size = scaledCount * subPixelSize + marginPx * 2;
+    const pixelSize = subPixelSize;
 
     const canvas = document.createElement("canvas");
     canvas.width = size;
     canvas.height = size;
     const ctx = canvas.getContext("2d");
+
+    // Keep edges crisp (critical for QR scanning)
+    ctx.imageSmoothingEnabled = false;
 
     if (!config.transparentBg) {
       ctx.fillStyle = config.bgColor;
@@ -807,6 +830,9 @@ export class QRGenerator {
     canvas.width = size;
     canvas.height = size;
     const ctx = canvas.getContext("2d");
+
+    // Keep edges crisp (critical for QR scanning)
+    ctx.imageSmoothingEnabled = false;
 
     // Draw background
     if (!config.transparentBg) {

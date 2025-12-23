@@ -13,7 +13,13 @@ export type MakeQRParams = {
 
 export default function makeQR(params: MakeQRParams): boolean[][] {
   const text = params.text ?? "";
-  const ecc = params.ecc;
+  const ECC_MAP = {
+    L: "low",
+    M: "medium",
+    Q: "quartile",
+    H: "high",
+  } as const;
+  const ecc = ECC_MAP[params.ecc];
   const scale = params.scale;
 
   // NOTE: the upstream project requests `raw` output with a `scale` option.

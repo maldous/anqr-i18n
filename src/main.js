@@ -256,8 +256,8 @@ class ANQRApp {
       }
 
       this.updateEmbedCodes();
-    } catch (err) {
-      console.error("Generation error:", err);
+    } catch (e) {
+      console.error("Generation error:", e);
     }
 
     this.isGenerating = false;
@@ -386,8 +386,8 @@ class ANQRApp {
             `Loaded ${this.overlayFrames.length} frames`,
             "success",
           );
-        } catch (err) {
-          console.error("GIF parse error:", err);
+        } catch (e) {
+          console.error("GIF parse error:", e);
           this.overlayFrames = [await this.loadImageAsCanvas(dataUrl)];
         }
       } else {
@@ -730,9 +730,10 @@ class ANQRApp {
           config,
         );
       }
+
       this.toast.show("Downloaded!", "success");
-    } catch (err) {
-      console.error("Download error:", err);
+    } catch (e) {
+      console.error("Download error:", e);
       this.toast.show("Download failed", "error");
     }
   }
@@ -748,9 +749,10 @@ class ANQRApp {
       await navigator.clipboard.write([
         new ClipboardItem({ "image/png": blob }),
       ]);
+
       this.toast.show("Copied!", "success");
-    } catch (err) {
-      console.error("Clipboard copy error:", err);
+    } catch (e) {
+      console.error("Clipboard copy error:", e);
       this.toast.show("Copy failed", "error");
     }
   }

@@ -75,7 +75,8 @@ serve: build
 # ----------------------------
 clean:
 	@echo "clean: removing node_modules, dist, releases"
-	rm -rf node_modules "$(DIST_DIR)" "$(RELEASES_DIR)"
+	rm -rf node_modules "$(DIST_DIR)" "$(RELEASES_DIR)" \
+		*.swp *.swo *~ .DS_Store
 
 clean_dist:
 	@echo "clean_dist: removing dist"
@@ -216,7 +217,9 @@ zip: clean
 	@out="../$(PROJECT).zip"; \
 	rm -f "$$out"; \
 	echo "zip: $$out"; \
-	zip -qr "$$out" . -x ".git/*"
+	zip -qr "$$out" . \
+		-x ".git/*" \
+		-x "*.swp" -x "*.swo" -x "*~" -x ".DS_Store"
 
 # ----------------------------
 # Help
@@ -257,6 +260,7 @@ help:
 	@echo "  make clean           Remove node_modules, dist, releases"
 	@echo "  make clean_dist      Remove dist only"
 	@echo "  make zip             Create ../anqr.zip snapshot (excludes .git)"
+	@echo "                      (also excludes editor swap files)"
 	@echo "  make update_qrcode   Sync src/lib/qrcode.js -> public/qrcode.js"
 	@echo "  make adsense_check   Check required public files for AdSense"
 	@echo "  make info            Print versions"
