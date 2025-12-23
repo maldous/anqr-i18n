@@ -9,8 +9,8 @@
   --color-text: #0f172a;
   --color-text-secondary: #64748b;
   --color-border: #e2e8f0;
-  --shadow: 0 1px 3px rgba(0,0,0,0.1);
-  --shadow-md: 0 4px 6px rgba(0,0,0,0.1);
+  --shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
   --radius: 6px;
   --radius-lg: 12px;
 }
@@ -24,14 +24,21 @@
   --color-border: #334155;
 }
 
-* { box-sizing: border-box; margin: 0; padding: 0; }
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 
 html {
   height: 100%;
 }
 
 body {
-  font-family: 'Inter', -apple-system, sans-serif;
+  font-family:
+    "Inter",
+    -apple-system,
+    sans-serif;
   font-size: 14px;
   background: var(--color-bg);
   color: var(--color-text);
@@ -79,9 +86,14 @@ a:hover {
   color: inherit;
 }
 
-.logo:hover { text-decoration: none; }
+.logo:hover {
+  text-decoration: none;
+}
 
-.logo-icon { color: var(--color-primary); font-size: 22px; }
+.logo-icon {
+  color: var(--color-primary);
+  font-size: 22px;
+}
 .logo-text {
   background: linear-gradient(135deg, var(--color-primary), #8b5cf6);
   -webkit-background-clip: text;
@@ -360,7 +372,9 @@ a:hover {
   transition: all 0.15s;
 }
 
-.tab:hover { color: var(--color-text); }
+.tab:hover {
+  color: var(--color-text);
+}
 .tab.active {
   background: var(--color-surface);
   color: var(--color-primary);
@@ -374,7 +388,9 @@ a:hover {
   padding: 8px 0;
 }
 
-.tab-content.active { display: flex; }
+.tab-content.active {
+  display: flex;
+}
 
 .control-row {
   display: flex;
@@ -393,7 +409,9 @@ a:hover {
   cursor: pointer;
 }
 
-.btn-option input { display: none; }
+.btn-option input {
+  display: none;
+}
 
 .btn-option span {
   display: block;
@@ -477,7 +495,8 @@ a:hover {
   transition: all 0.15s;
 }
 
-.upload-area:hover, .upload-area.dragover {
+.upload-area:hover,
+.upload-area.dragover {
   border-color: var(--color-primary);
   background: rgba(99, 102, 241, 0.05);
 }
@@ -518,7 +537,9 @@ a:hover {
   align-items: center;
   justify-content: center;
   z-index: 10;
-  transition: transform 0.15s, background 0.15s;
+  transition:
+    transform 0.15s,
+    background 0.15s;
 }
 
 .remove-btn:hover {
@@ -812,18 +833,30 @@ a:hover {
   padding: 10px 16px;
   background: var(--color-surface);
   border-radius: var(--radius);
-  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
   margin-top: 8px;
   animation: slideIn 0.2s ease;
 }
 
-.toast.success { border-left: 3px solid #10b981; }
-.toast.error { border-left: 3px solid #ef4444; }
-.toast.info { border-left: 3px solid var(--color-primary); }
+.toast.success {
+  border-left: 3px solid #10b981;
+}
+.toast.error {
+  border-left: 3px solid #ef4444;
+}
+.toast.info {
+  border-left: 3px solid var(--color-primary);
+}
 
 @keyframes slideIn {
-  from { transform: translateX(100%); opacity: 0; }
-  to { transform: translateX(0); opacity: 1; }
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
 }
 
 /* Modal */
@@ -836,12 +869,14 @@ a:hover {
   justify-content: center;
 }
 
-.modal[hidden] { display: none; }
+.modal[hidden] {
+  display: none;
+}
 
 .modal-backdrop {
   position: absolute;
   inset: 0;
-  background: rgba(0,0,0,0.4);
+  background: rgba(0, 0, 0, 0.4);
 }
 
 .modal-content {
@@ -850,7 +885,7 @@ a:hover {
   max-width: 400px;
   background: var(--color-surface);
   border-radius: var(--radius);
-  box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
 }
 
 .modal-header {
@@ -895,17 +930,17 @@ a:hover {
     max-width: 100%;
     min-height: 50px;
   }
-  
+
   #page-generator .main-layout {
     flex-direction: column;
   }
-  
+
   .controls-panel {
     width: 100%;
     max-height: none;
     overflow-y: visible;
   }
-  
+
   .preview-panel {
     min-height: 300px;
   }
@@ -919,17 +954,17 @@ a:hover {
     padding: 8px 12px;
     gap: 8px;
   }
-  
+
   .logo {
     order: 1;
   }
-  
+
   .header-actions {
     order: 2;
     margin-left: auto;
     gap: 4px;
   }
-  
+
   .nav-links {
     order: 3;
     width: 100%;
@@ -937,54 +972,54 @@ a:hover {
     padding-top: 8px;
     border-top: 1px solid var(--color-border);
   }
-  
+
   .nav-link {
     padding: 4px 8px;
     font-size: 12px;
   }
-  
+
   .header-actions .btn {
     padding: 4px 8px;
     font-size: 10px;
   }
-  
+
   .ad-top {
     display: none;
   }
-  
+
   .ad-mobile-inline {
     display: flex;
   }
-  
+
   #page-generator .main-layout {
     padding: 8px;
     gap: 8px;
   }
-  
+
   .preview-panel {
     min-height: 250px;
   }
-  
+
   .page-content {
     padding: 20px 16px;
   }
-  
+
   .page-content h1 {
     font-size: 24px;
   }
-  
+
   .page-content h2 {
     font-size: 18px;
   }
-  
+
   .contact-methods {
     grid-template-columns: 1fr;
   }
-  
+
   .footer-links {
     gap: 16px;
   }
-  
+
   .footer-brand {
     flex-wrap: wrap;
   }
@@ -995,7 +1030,7 @@ a:hover {
   .logo-text {
     display: none;
   }
-  
+
   .header-actions .btn span:not(.theme-icon) {
     display: none;
   }
@@ -1121,7 +1156,9 @@ a:hover {
   justify-content: center;
   font-size: 32px;
   border: 1px solid var(--color-border);
-  transition: border-color 0.15s, box-shadow 0.15s;
+  transition:
+    border-color 0.15s,
+    box-shadow 0.15s;
 }
 
 .gallery-item:hover .gallery-qr {
@@ -1188,8 +1225,13 @@ a:hover {
 }
 
 @keyframes gifPulse {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.7; }
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
 }
 
 .placeholder-qr {
@@ -1217,8 +1259,13 @@ a:hover {
 }
 
 @keyframes qrPulse {
-  0%, 100% { transform: scale(1); }
-  50% { transform: scale(0.95); }
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(0.95);
+  }
 }
 
 .overlay-arrow {
@@ -1240,7 +1287,7 @@ a:hover {
   .gallery-grid-compact {
     grid-template-columns: repeat(4, 1fr);
   }
-  
+
   .overlay-examples {
     grid-template-columns: repeat(2, 1fr);
   }
@@ -1250,30 +1297,30 @@ a:hover {
   .gallery-page {
     padding: 12px 16px;
   }
-  
+
   .gallery-grid-compact {
     grid-template-columns: repeat(4, 1fr);
     gap: 8px;
   }
-  
+
   .gallery-qr {
     font-size: 24px;
   }
-  
+
   .overlay-examples {
     grid-template-columns: 1fr 1fr;
     gap: 8px;
   }
-  
+
   .overlay-card {
     padding: 8px;
     flex-direction: column;
   }
-  
+
   .overlay-arrow {
     transform: rotate(90deg);
   }
-  
+
   .overlay-label {
     text-align: center;
   }

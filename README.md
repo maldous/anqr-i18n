@@ -77,7 +77,6 @@ make deploy
 
 Netlify must be linked (creates `.netlify/state.json`) or set `NETLIFY_SITE_ID`.
 
-
 ## URL Parameters API
 
 Generate QR codes programmatically using URL parameters:
@@ -86,35 +85,36 @@ Generate QR codes programmatically using URL parameters:
 https://your-domain.com/?data=Hello&ec=H&fg=ff0000&render=1
 ```
 
-| Parameter | Type | Description | Default |
-|-----------|------|-------------|---------|
-| `data` | string | Content to encode | - |
-| `ec` | L\|M\|Q\|H | Error correction level | Q |
-| `v` | 0-40 | QR version (0=auto) | 0 |
-| `size` | number | Module size (px) | 8 |
-| `margin` | number | Quiet zone modules | 4 |
-| `fg` | hex | Foreground color (no #) | 000000 |
-| `bg` | hex | Background color (no #) | ffffff |
-| `style` | string | square\|rounded\|dots\|diamond | square |
-| `finder` | string | square\|rounded\|circle | square |
-| `img` | url | Overlay image URL (encoded) | - |
-| `mode` | string | halftone\|blend\|center\|background | halftone |
-| `intensity` | 0-100 | Overlay intensity % | 50 |
-| `logoSize` | 10-40 | Logo size % (center mode) | 25 |
-| `speed` | number | Animation frame delay (ms) | 100 |
-| `loop` | 0\|1 | Loop animation | 1 |
-| `w` | number | Output width (px) | 400 |
-| `h` | number | Output height (px) | 400 |
-| `render` | 0\|1 | Auto-render on load | 0 |
+| Parameter   | Type       | Description                         | Default  |
+| ----------- | ---------- | ----------------------------------- | -------- |
+| `data`      | string     | Content to encode                   | -        |
+| `ec`        | L\|M\|Q\|H | Error correction level              | Q        |
+| `v`         | 0-40       | QR version (0=auto)                 | 0        |
+| `size`      | number     | Module size (px)                    | 8        |
+| `margin`    | number     | Quiet zone modules                  | 4        |
+| `fg`        | hex        | Foreground color (no #)             | 000000   |
+| `bg`        | hex        | Background color (no #)             | ffffff   |
+| `style`     | string     | square\|rounded\|dots\|diamond      | square   |
+| `finder`    | string     | square\|rounded\|circle             | square   |
+| `img`       | url        | Overlay image URL (encoded)         | -        |
+| `mode`      | string     | halftone\|blend\|center\|background | halftone |
+| `intensity` | 0-100      | Overlay intensity %                 | 50       |
+| `logoSize`  | 10-40      | Logo size % (center mode)           | 25       |
+| `speed`     | number     | Animation frame delay (ms)          | 100      |
+| `loop`      | 0\|1       | Loop animation                      | 1        |
+| `w`         | number     | Output width (px)                   | 400      |
+| `h`         | number     | Output height (px)                  | 400      |
+| `render`    | 0\|1       | Auto-render on load                 | 0        |
 
 ## Embedding
 
 ```html
-<iframe 
-  src="https://your-domain.com/?data=https://example.com&render=1" 
-  width="400" 
-  height="400" 
-  frameborder="0">
+<iframe
+  src="https://your-domain.com/?data=https://example.com&render=1"
+  width="400"
+  height="400"
+  frameborder="0"
+>
 </iframe>
 ```
 
@@ -160,17 +160,20 @@ anqr/
 The application is designed for Google AdSense approval with:
 
 **Required Pages:**
+
 - About page with detailed information
 - Privacy Policy (GDPR-compliant)
 - Contact page with form
 
 **Ad Placements:**
+
 - Top banner (728x90 leaderboard) - visible on desktop
 - Sidebar (160x600 skyscraper) - visible on large screens
 - Mobile inline (320x100) - visible on mobile only
 - In-content ads on About, Privacy, and Contact pages
 
 **To integrate AdSense:**
+
 1. Sign up at [Google AdSense](https://www.google.com/adsense/)
 2. Get approved (requires the pages above)
 3. Replace `<div class="ad-placeholder">` elements with your AdSense code
