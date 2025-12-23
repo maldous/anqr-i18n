@@ -33,7 +33,8 @@
     "vite": "^7.3.0"
   },
   "dependencies": {
-    "gifuct-js": "^2.1.2"
+    "gifuct-js": "^2.1.2",
+    "qr": "^0.5.1"
   },
   "engines": {
     "node": ">=18"

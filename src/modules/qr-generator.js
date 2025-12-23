@@ -1,3 +1,5 @@
+import generateDitheredMatrix from "../lib/dithered-qr/generate.ts";
+
 export class QRGenerator {
   constructor() {
     this.qrcode = null;
@@ -44,6 +46,13 @@ export class QRGenerator {
     const moduleCount = qr.getModuleCount();
 
     // For subpixel modes, use special 3x3 rendering
+    // Dithered QR Codes (error diffusion) style rendering
+    // Inspired by the idea of using error diffusion to compensate for fixed QR data modules.
+    if (config.overlayMode === "dithered" && overlayCanvas) {
+      return this.generateDitheredSubpixelQR(qr, config, overlayCanvas, moduleCount);
+    }
+
+
     if (config.overlayMode === "subpixel" && overlayCanvas) {
       return this.generateSubpixelQR(
         qr,
@@ -716,6 +725,59 @@ export class QRGenerator {
     ctx.fillRect(x - 4, y - 4, logoSize + 8, logoSize + 8);
 
     ctx.drawImage(logoCanvas, x, y, logoSize, logoSize);
+  }
+
+  /**
+   * Generate a "dithered QR code" style render based on the TypeScript reference
+   * implementation from https://codeberg.org/andrew-t/dithered-qr-codes.
+   *
+   * Notes:
+   * - We render a 3x (subpixel) grid per QR module.
+   * - Locked areas (finders, timing lines, alignments) are preserved.
+   * - Free pixels are set from the image via error diffusion.
+   */
+  generateDitheredSubpixelQR(_qr, config, overlayCanvas) {
+    const scale = 3;
+
+    const dithered = generateDitheredMatrix({
+      text: config.content,
+      ecc: config.errorCorrection,
+      version: config.typeNumber || 0,
+      scale,
+      overlayCanvas,
+      overlayIntensity: config.overlayIntensity,
+    });
+
+    // Safety: if the QR library picked a different version than our current `qr`
+    // instance, use the matrix size to drive rendering.
+    const scaledCount = dithered.length;
+    const derivedModuleCount = Math.round(scaledCount / scale);
+    const marginPx = config.margin * config.moduleSize;
+    const size = derivedModuleCount * config.moduleSize + marginPx * 2;
+    const pixelSize = config.moduleSize / scale;
+
+    const canvas = document.createElement("canvas");
+    canvas.width = size;
+    canvas.height = size;
+    const ctx = canvas.getContext("2d");
+
+    if (!config.transparentBg) {
+      ctx.fillStyle = config.bgColor;
+      ctx.fillRect(0, 0, size, size);
+    }
+
+    ctx.fillStyle = config.fgColor;
+
+    for (let y = 0; y < scaledCount; y++) {
+      for (let x = 0; x < scaledCount; x++) {
+        if (!dithered[y][x]) continue;
+        const dx = marginPx + x * pixelSize;
+        const dy = marginPx + y * pixelSize;
+        ctx.fillRect(dx, dy, pixelSize, pixelSize);
+      }
+    }
+
+    return canvas;
   }
 
   /**
