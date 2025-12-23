@@ -245,13 +245,7 @@ zip: report
 	rm -f "$$out"; \
 	echo "zip: $$out"; \
 	zip -qr "$$out" \
-		reports \
-		Makefile package.json package-lock.json \
-		eslint.config.js vite.config.js tsconfig.json \
-		knip.json .dependency-cruiser.js .unimportedrc.json \
-		jsdoc.json typedoc.json api-extractor.json sonar-project.properties \
-		scripts/report/run.sh \
-		netlify.toml README.md .gitignore \
+		. \
 		-x "node_modules/*" -x ".scannerwork/*" -x ".sonar/*" -x "dist/*" -x ".git/*" -x ".netlify/*" -x "releases/*"
 
 # ----------------------------
