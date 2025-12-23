@@ -18,7 +18,13 @@ export function diffuseDataPoints(imageData: number[][], qr: boolean[][]) {
             if (isLocked(imageData.length, x + dx, y + dy)) continue;
             const ny = y + dy;
             const nx = x + dx;
-            if (nx < 0 || ny < 0 || nx >= imageData.length || ny >= imageData.length) continue;
+            if (
+              nx < 0 ||
+              ny < 0 ||
+              nx >= imageData.length ||
+              ny >= imageData.length
+            )
+              continue;
             const weight = 1 / 8;
             imageData[ny][nx] += error * weight;
           }
@@ -54,7 +60,6 @@ export function diffuseDataPoints(imageData: number[][], qr: boolean[][]) {
 
 export function diffuseFreePoints(imageData: number[][]) {
   const scale = getScale();
-
 
   const h = imageData.length;
   const w = imageData[0]?.length ?? h;

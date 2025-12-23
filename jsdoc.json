@@ -1,0 +1,15 @@
+{
+  "source": {
+    "include": ["src"],
+    "includePattern": ".+\\.(js|mjs|cjs|ts|tsx)$"
+  },
+  "opts": {
+    "destination": "reports/docs/jsdoc",
+    "recurse": true
+  },
+  "plugins": [],
+  "templates": {
+    "cleverLinks": true,
+    "monospaceLinks": true
+  }
+}

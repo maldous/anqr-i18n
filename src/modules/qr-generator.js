@@ -39,7 +39,6 @@ export class QRGenerator {
       );
     }
 
-
     // Dithered mode uses the `qr` encoder directly (and has its own
     // overflow handling). Skip qrcode-generator entirely to avoid
     // `code length overflow` when a manual version is too small.
@@ -61,9 +60,13 @@ export class QRGenerator {
     // Dithered QR Codes (error diffusion) style rendering
     // Inspired by the idea of using error diffusion to compensate for fixed QR data modules.
     if (config.overlayMode === "dithered" && overlayCanvas) {
-      return this.generateDitheredSubpixelQR(qr, config, overlayCanvas, moduleCount);
+      return this.generateDitheredSubpixelQR(
+        qr,
+        config,
+        overlayCanvas,
+        moduleCount,
+      );
     }
-
 
     if (config.overlayMode === "subpixel" && overlayCanvas) {
       return this.generateSubpixelQR(

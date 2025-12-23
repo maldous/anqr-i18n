@@ -17,7 +17,9 @@ export type GenerateDitheredParams = {
   overlayIntensity?: number;
 };
 
-export default function generateDitheredMatrix(params: GenerateDitheredParams): boolean[][] {
+export default function generateDitheredMatrix(
+  params: GenerateDitheredParams,
+): boolean[][] {
   setFormState({
     scale: params.scale,
     // Keep the default lock rules and no rotation/reflection for now.

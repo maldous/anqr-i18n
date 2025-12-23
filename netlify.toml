@@ -11,18 +11,14 @@
   to = "/index.html"
   status = 200
 
-# Security headers (keep CSP out unless you are confident it won't break scanners/ads/scripts)
+# Security + caching headers
 [[headers]]
   for = "/*"
   [headers.values]
-    X-Frame-Options = "SAMEORIGIN"
     X-Content-Type-Options = "nosniff"
+    X-Frame-Options = "DENY"
     Referrer-Policy = "strict-origin-when-cross-origin"
-
-# Cache Vite assets aggressively (hashed filenames)
-[[headers]]
-  for = "/assets/*"
-  [headers.values]
+    Permissions-Policy = "geolocation=(), microphone=(), camera=()"
     Cache-Control = "public, max-age=31536000, immutable"
 
 # Cache robots/sitemap briefly

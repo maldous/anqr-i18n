@@ -1,0 +1,13 @@
+{
+  "$schema": "https://unpkg.com/knip@latest/schema.json",
+  "entry": ["src/main.js"],
+  "project": ["src/**/*.{js,ts,tsx,mjs,cjs}"],
+  "ignore": [
+    "dist/**",
+    "reports/**",
+    "releases/**",
+    "public/qrcode.js",
+    "src/lib/**"
+  ],
+  "ignoreDependencies": []
+}

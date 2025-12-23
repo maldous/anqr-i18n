@@ -1,0 +1,11 @@
+{
+  "extensions": [".js", ".mjs", ".cjs", ".ts", ".tsx"],
+  "ignorePatterns": [
+    "dist/**",
+    "reports/**",
+    "releases/**",
+    "src/lib/**",
+    "public/qrcode.js"
+  ],
+  "entryFile": "src/main.js"
+}

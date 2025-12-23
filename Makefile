@@ -12,7 +12,7 @@ DIST_DIR     := dist
 RELEASES_DIR := releases
 
 .DEFAULT_GOAL := help
-.PHONY: help all doctor install dev build preview serve clean clean_dist lint format test check outdated update audit info release deploy zip commit push ci netlify_status netlify_open update_qrcode adsense_check
+.PHONY: help all doctor install dev build preview serve clean clean_dist lint format test check outdated update audit update_qrcode adsense_check info release deploy netlify_status netlify_open commit push ci report report_clean zip snapshot
 
 # ----------------------------
 # Helpers
@@ -100,6 +100,20 @@ check: lint test build
 # ----------------------------
 # Dependency maintenance
 # ----------------------------
+
+# ----------------------------
+# Reports (exhaustive static tooling)
+# ----------------------------
+REPORTS_DIR ?= reports
+
+report_clean:
+	@echo "report_clean: removing $(REPORTS_DIR)"
+	rm -rf "$(REPORTS_DIR)"
+
+report: doctor
+	@echo "report: running exhaustive analysis -> $(REPORTS_DIR)/"
+	REPORTS_DIR="$(REPORTS_DIR)" npm run report
+
 outdated: install
 	@echo "outdated: npm outdated"
 	@npm outdated || true
@@ -212,14 +226,35 @@ ci: doctor
 # ----------------------------
 # Shareable zip (project snapshot)
 # ----------------------------
-zip: clean
+# ----------------------------
+# Zip artifacts
+# ----------------------------
+snapshot: clean
 	$(call require_cmd,zip)
 	@out="../$(PROJECT).zip"; \
 	rm -f "$$out"; \
-	echo "zip: $$out"; \
+	echo "snapshot: $$out"; \
 	zip -qr "$$out" . \
 		-x ".git/*" \
-		-x "*.swp" -x "*.swo" -x "*~" -x ".DS_Store"
+		-x "*.swp" -x "*.swo" -x "*~" -x ".DS_Store" \
+		-x "reports/*"
+
+zip: report
+	$(call require_cmd,zip)
+	@mkdir -p "$(RELEASES_DIR)"; \
+	ts="$$(date +%Y%m%d-%H%M%S)"; \
+	out="$(RELEASES_DIR)/$(PROJECT)-reports-$$ts.zip"; \
+	rm -f "$$out"; \
+	echo "zip: $$out"; \
+	zip -qr "$$out" \
+		reports \
+		Makefile package.json package-lock.json \
+		eslint.config.js vite.config.js tsconfig.json \
+		knip.json .dependency-cruiser.js .unimportedrc.json \
+		jsdoc.json typedoc.json api-extractor.json sonar-project.properties \
+		netlify.toml README.md .gitignore \
+		src public index.html \
+		-x "node_modules/*" -x "dist/*" -x ".git/*" -x ".netlify/*" -x "releases/*"
 
 # ----------------------------
 # Help
@@ -259,8 +294,8 @@ help:
 	@echo "Project:"
 	@echo "  make clean           Remove node_modules, dist, releases"
 	@echo "  make clean_dist      Remove dist only"
-	@echo "  make zip             Create ../anqr.zip snapshot (excludes .git)"
-	@echo "                      (also excludes editor swap files)"
+	@echo "  make zip             Run make report, then zip reports + key files into releases/"
+	@echo "  make snapshot        Create ../anqr.zip snapshot (excludes .git, node_modules, dist, reports)"
 	@echo "  make update_qrcode   Sync src/lib/qrcode.js -> public/qrcode.js"
 	@echo "  make adsense_check   Check required public files for AdSense"
 	@echo "  make info            Print versions"

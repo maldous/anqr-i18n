@@ -28,7 +28,8 @@ export default function makeQR(params: MakeQRParams): boolean[][] {
     return encodeQR(text, "raw", {
       border: 0,
       ecc,
-      version: params.version && params.version > 0 ? params.version : undefined,
+      version:
+        params.version && params.version > 0 ? params.version : undefined,
       mask: typeof params.mask === "number" ? params.mask : undefined,
       scale,
     });
