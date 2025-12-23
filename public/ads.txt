@@ -1,8 +1,1 @@
-# AdSense ads.txt
-#
-# Replace the line below with the one provided in your Google AdSense account.
-#
-# Example:
-# google.com, pub-0000000000000000, DIRECT, f08c47fec0942fa0
-
-# TODO: paste your AdSense ads.txt line here
+google.com, pub-2270701384951162, DIRECT, f08c47fec0942fa0
