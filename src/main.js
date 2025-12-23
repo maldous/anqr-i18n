@@ -750,6 +750,7 @@ class ANQRApp {
       ]);
       this.toast.show("Copied!", "success");
     } catch (err) {
+      console.error("Clipboard copy error:", err);
       this.toast.show("Copy failed", "error");
     }
   }
