@@ -1,0 +1,751 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="description" content="ANQR - Professional Animated QR Code Generator with image and GIF overlays. Create stunning QR codes for free.">
+  <meta name="keywords" content="QR code generator, animated QR code, GIF QR code, custom QR code, free QR generator">
+  <title>ANQR - Animated QR Code Generator</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/src/styles/main.css">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>◱</text></svg>">
+  <link rel="canonical" href="https://anqr.app/">
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://anqr.app/">
+  <meta property="og:title" content="ANQR - Animated QR Code Generator">
+  <meta property="og:description" content="Create stunning animated QR codes with image and GIF overlays. Free, fast, and privacy-focused.">
+  <meta property="og:image" content="https://anqr.app/og-image.png">
+  <meta property="og:site_name" content="ANQR">
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:url" content="https://anqr.app/">
+  <meta name="twitter:title" content="ANQR - Animated QR Code Generator">
+  <meta name="twitter:description" content="Create stunning animated QR codes with image and GIF overlays. Free, fast, and privacy-focused.">
+  <meta name="twitter:image" content="https://anqr.app/og-image.png">
+  <!-- Additional SEO -->
+  <meta name="author" content="ANQR">
+  <meta name="robots" content="index, follow">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2270701384951162" crossorigin="anonymous"></script>
+</head>
+<body>
+  <div id="app">
+    <!-- Header -->
+    <header class="header">
+      <a href="#" class="logo" data-page="generator" title="ANQR - Animated QR Code Generator">
+        <span class="logo-icon">◱</span>
+        <span class="logo-text">ANQR</span>
+      </a>
+      <nav class="nav-links">
+        <a href="#" class="nav-link active" data-page="generator" title="Create QR codes">Generator</a>
+        <a href="#gallery" class="nav-link" data-page="gallery" title="Browse example QR codes">Gallery</a>
+        <a href="#about" class="nav-link" data-page="about" title="Learn about ANQR">About</a>
+        <a href="#contact" class="nav-link" data-page="contact" title="Get in touch">Contact</a>
+      </nav>
+      <div class="header-actions" id="generatorActions">
+        <button class="btn btn-sm" id="shareBtn" title="Share this QR code">Share</button>
+        <button class="btn btn-sm btn-primary" id="downloadBtn" title="Download QR code">Download</button>
+        <button class="theme-toggle" id="themeToggle" title="Toggle dark/light mode"><span class="theme-icon">🌙</span></button>
+      </div>
+    </header>
+
+    <!-- Top Ad Banner (728x90 Leaderboard) -->
+    <div class="ad-container ad-top">
+      <div class="ad-slot" data-ad-slot="top-banner">
+        <!-- AdSense code will go here -->
+        <div class="ad-placeholder">Advertisement</div>
+      </div>
+    </div>
+
+    <!-- Page: Generator -->
+    <main class="page active" id="page-generator">
+      <div class="main-layout">
+        <!-- Left: Controls -->
+        <aside class="controls-panel">
+          <!-- Content Input -->
+          <div class="control-section">
+            <label class="control-label">Content</label>
+            <textarea id="qrContent" class="control-input" placeholder="https://anqr.aldous.info" rows="2">https://anqr.aldous.info</textarea>
+          </div>
+
+          <!-- Image Upload -->
+          <div class="control-section">
+            <label class="control-label">Overlay Image/GIF</label>
+            <div class="upload-area" id="uploadArea" title="Click to upload an image or GIF">
+              <input type="file" id="imageInput" accept="image/*,.gif" hidden>
+              <span class="upload-text">Drop or click</span>
+            </div>
+            <div class="upload-preview" id="uploadPreview" hidden>
+              <img id="previewImage" alt="Preview">
+              <button class="remove-btn" id="removeImage" title="Remove image">✕</button>
+            </div>
+          </div>
+
+          <!-- Tabs for settings -->
+          <div class="settings-tabs">
+            <button class="tab active" data-tab="basic">Basic</button>
+            <button class="tab" data-tab="style">Look</button>
+            <button class="tab" data-tab="overlay">Image</button>
+            <button class="tab" data-tab="output">Format</button>
+          </div>
+
+          <!-- Basic Settings Tab -->
+          <div class="tab-content active" id="tab-basic">
+            <div class="control-row">
+              <label class="control-label">Protection Level</label>
+              <div class="btn-group">
+                <label class="btn-option" title="Low - Small codes"><input type="radio" name="errorCorrection" value="L"><span>Low</span></label>
+                <label class="btn-option" title="Medium - Balanced"><input type="radio" name="errorCorrection" value="M"><span>Med</span></label>
+                <label class="btn-option" title="Good - Recommended" checked><input type="radio" name="errorCorrection" value="Q" checked><span>Good</span></label>
+                <label class="btn-option" title="Best - For images"><input type="radio" name="errorCorrection" value="H"><span>Best</span></label>
+              </div>
+            </div>
+            
+            <div class="control-row">
+              <label class="control-label">Complexity <span id="typeNumberValue">Auto</span></label>
+              <input type="range" id="typeNumber" class="control-range" min="0" max="40" value="0" title="Higher = more detail">
+            </div>
+            
+            <div class="control-row">
+              <label class="control-label">Dot Size <span id="moduleSizeValue">6px</span></label>
+              <input type="range" id="moduleSize" class="control-range" min="2" max="15" value="6" title="Size of each square">
+            </div>
+            
+            <div class="control-row">
+              <label class="control-label">Border <span id="marginValue">2</span></label>
+              <input type="range" id="margin" class="control-range" min="0" max="6" value="2" title="White space around code">
+            </div>
+            
+            <div class="control-row">
+              <label class="control-label">Gap <span id="moduleGapValue">8%</span></label>
+              <input type="range" id="moduleGap" class="control-range" min="0" max="30" value="8" title="Space between dots">
+            </div>
+          </div>
+
+          <!-- Style Settings Tab -->
+          <div class="tab-content" id="tab-style">
+            <div class="control-row">
+              <label class="control-label">Colors</label>
+              <div class="color-row">
+                <div class="color-item">
+                  <input type="color" id="fgColor" class="control-color" value="#000000" title="Dot color">
+                  <span class="color-label">Dots</span>
+                </div>
+                <div class="color-item">
+                  <input type="color" id="bgColor" class="control-color" value="#ffffff" title="Background color">
+                  <span class="color-label">Back</span>
+                </div>
+                <label class="checkbox-sm" title="See-through background"><input type="checkbox" id="transparentBg"><span>Clear</span></label>
+              </div>
+            </div>
+            
+            <div class="control-row">
+              <label class="control-label">Dot Shape</label>
+              <select id="moduleStyle" class="control-select">
+                <option value="square">Square</option>
+                <option value="rounded">Rounded</option>
+                <option value="dots">Circles</option>
+                <option value="diamond">Diamond</option>
+                <option value="connected">Connected</option>
+                
+              </select>
+            </div>
+            
+            <div class="control-row">
+              <label class="control-label">Corner Shape</label>
+              <select id="finderStyle" class="control-select">
+                <option value="square">Square</option>
+                <option value="rounded">Rounded</option>
+                <option value="circle">Circle</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Overlay Settings Tab -->
+          <div class="tab-content" id="tab-overlay">
+            <div class="control-row overlay-requires-image">
+              <label class="control-label">Blend Mode</label>
+              <select id="overlayMode" class="control-select">
+                <option value="subpixel">Subpixel</option>
+                <option value="halftone">Halftone (Size)</option>
+                <option value="mosaic">Mosaic</option>
+                <option value="blend">Color Blend</option>
+                <option value="gapfill">Gap Fill</option>
+                <option value="brightness">Brightness</option>
+                <option value="duotone">Duotone</option>
+                <option value="center">Center Logo</option>
+              </select>
+            </div>
+            
+
+            
+            <div class="control-row overlay-requires-image">
+              <label class="control-label">Strength <span id="overlayIntensityValue">50%</span></label>
+              <input type="range" id="overlayIntensity" class="control-range" min="0" max="100" value="50">
+            </div>
+            
+            <div class="control-row overlay-requires-image">
+              <label class="control-label">Color Mode</label>
+              <select id="colorMode" class="control-select">
+                <option value="color">Full Color</option>
+                <option value="grayscale">Grayscale</option>
+                <option value="bw">Black & White</option>
+              </select>
+            </div>
+            
+            <div class="control-row overlay-requires-image" id="logoSizeGroup" style="display:none">
+              <label class="control-label">Logo Size <span id="logoSizeValue">25%</span></label>
+              <input type="range" id="logoSize" class="control-range" min="10" max="40" value="25">
+            </div>
+            
+            <div class="control-row overlay-requires-image">
+              <label class="checkbox-sm" title="Keep corner squares normal"><input type="checkbox" id="preserveFinders" checked><span>Keep Corners</span></label>
+            </div>
+           <!-- 
+            <div class="control-row overlay-requires-image">
+              <label class="checkbox-sm"><input type="checkbox" id="invertImage"><span>Invert Image</span></label>
+            </div>
+	   -->
+          </div>
+
+          <!-- Output Settings Tab -->
+          <div class="tab-content" id="tab-output">
+            <div class="control-row">
+              <label class="control-label">Size (pixels)</label>
+              <div class="size-inputs">
+                <input type="number" id="outputWidth" class="control-input-sm" value="400" min="100" max="2000">
+                <span>×</span>
+                <input type="number" id="outputHeight" class="control-input-sm" value="400" min="100" max="2000">
+              </div>
+            </div>
+            
+            <div class="control-row">
+              <label class="control-label">File Type</label>
+              <select id="outputFormat" class="control-select">
+                <option value="png">PNG (Best Quality)</option>
+                <option value="gif">GIF (Animation)</option>
+                <option value="svg">SVG (Vector)</option>
+                <option value="webp">WebP (Small Size)</option>
+              </select>
+            </div>
+            
+            <div class="control-row" id="animationSection" hidden>
+              <label class="control-label">Speed <span id="animationSpeedValue">100ms</span></label>
+              <input type="range" id="animationSpeed" class="control-range" min="20" max="500" value="100">
+            </div>
+            
+            <div class="control-row" id="animationSection2" hidden>
+              <div class="checkbox-row">
+                <label class="checkbox-sm"><input type="checkbox" id="loopAnimation" checked><span>Loop</span></label>
+                <label class="checkbox-sm"><input type="checkbox" id="reverseAnimation"><span>Bounce</span></label>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Reset Button -->
+          <button class="btn btn-sm btn-reset" id="resetBtn" title="Reset all settings to defaults">Reset All</button>
+
+          <!-- Mobile Ad (320x100) -->
+          <div class="ad-container ad-mobile-inline">
+            <div class="ad-slot" data-ad-slot="mobile-inline">
+              <div class="ad-placeholder">Ad</div>
+            </div>
+          </div>
+        </aside>
+
+        <!-- Center: QR Preview -->
+        <section class="preview-panel">
+          <div class="preview-container">
+            <canvas id="qrCanvas"></canvas>
+          </div>
+          <div class="preview-footer">
+            <div class="frame-indicator" id="frameIndicator" hidden>
+              <button class="btn btn-xs" id="playPauseBtn" title="Play/Pause animation"><span id="playPauseIcon">▶</span></button>
+              <span>Frame <span id="currentFrame">1</span>/<span id="totalFrames">1</span></span>
+            </div>
+            <button class="btn btn-xs" id="copyBtn" title="Copy QR code to clipboard">Copy</button>
+          </div>
+        </section>
+
+        <!-- Right Sidebar Ad (Desktop only, 160x600) -->
+        <aside class="ad-sidebar">
+          <div class="ad-slot" data-ad-slot="sidebar">
+            <div class="ad-placeholder">Ad</div>
+          </div>
+        </aside>
+      </div>
+    </main>
+
+    <!-- Page: About -->
+    <main class="page" id="page-about">
+      <div class="page-content">
+        <h1>About ANQR</h1>
+        
+        <section class="content-section">
+          <h2>What is ANQR?</h2>
+          <p>ANQR (Animated QR) is a professional, free online tool for creating stunning animated and customized QR codes. Unlike traditional QR generators, ANQR allows you to embed images, GIFs, and custom designs directly into your QR codes while maintaining full scannability.</p>
+        </section>
+
+        <section class="content-section">
+          <h2>Our Mission</h2>
+          <p>We believe QR codes don't have to be boring black-and-white squares. Our mission is to make QR code creation accessible, creative, and fun for everyone—from individual users to businesses looking to enhance their brand presence.</p>
+        </section>
+
+        <section class="content-section">
+          <h2>Key Features</h2>
+          <ul class="feature-list">
+            <li><strong>Animated QR Codes:</strong> Upload GIFs to create eye-catching animated QR codes that stand out.</li>
+            <li><strong>Image Overlays:</strong> Embed logos, photos, or any image into your QR codes using our advanced halftone technology.</li>
+            <li><strong>Multiple Styles:</strong> Choose from square, rounded, dots, diamond, and connected module styles.</li>
+            <li><strong>Full Customization:</strong> Control colors, error correction levels, sizes, and more.</li>
+            <li><strong>High Error Correction:</strong> Our QR codes use advanced error correction to ensure they remain scannable even with significant customization.</li>
+            <li><strong>Free to Use:</strong> All features are completely free. No registration required.</li>
+            <li><strong>Privacy First:</strong> All processing happens in your browser. Your images never leave your device.</li>
+            <li><strong>Export Options:</strong> Download as PNG, GIF, SVG, or WebP.</li>
+          </ul>
+        </section>
+
+        <section class="content-section">
+          <h2>How It Works</h2>
+          <p>ANQR uses sophisticated algorithms to modulate the size and appearance of QR code modules based on your overlay image. By leveraging QR code error correction capabilities, we can create visually striking designs while ensuring the code remains fully functional.</p>
+          <p>The halftone technique, similar to newspaper printing, varies the size of each module based on the brightness of the underlying image—creating the illusion of a full image within the QR code structure.</p>
+        </section>
+
+        <section class="content-section">
+          <h2>Technology</h2>
+          <p>ANQR is built as a modern single-page application that runs entirely in your browser. We use:</p>
+          <ul class="feature-list">
+            <li>Pure JavaScript with ES modules for performance</li>
+            <li>HTML5 Canvas for real-time QR code rendering</li>
+            <li>Client-side GIF parsing for animation support</li>
+            <li>Responsive design for all devices</li>
+          </ul>
+        </section>
+
+        <section class="content-section">
+          <h2>Support the Project</h2>
+          <p>ANQR is free and supported by non-intrusive advertising. By using our service, you help us maintain and improve the tool. If you find ANQR useful, please share it with others!</p>
+        </section>
+
+        <!-- Inline Ad -->
+        <div class="ad-container ad-inline">
+          <div class="ad-slot" data-ad-slot="about-inline">
+            <div class="ad-placeholder">Advertisement</div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Page: Privacy Policy -->
+    <main class="page" id="page-privacy">
+      <div class="page-content">
+        <h1>Privacy Policy</h1>
+        <p class="last-updated">Last updated: December 2024</p>
+
+        <section class="content-section">
+          <h2>Introduction</h2>
+          <p>ANQR ("we," "our," or "us") is committed to protecting your privacy. This Privacy Policy explains how we collect, use, and safeguard your information when you use our QR code generator service at anqr.app (the "Service").</p>
+        </section>
+
+        <section class="content-section">
+          <h2>Information We Collect</h2>
+          <h3>Information You Provide</h3>
+          <p>When you use ANQR, you may input content such as URLs, text, or upload images to generate QR codes. <strong>This data is processed entirely in your browser and is never transmitted to our servers.</strong></p>
+          
+          <h3>Automatically Collected Information</h3>
+          <p>We may automatically collect certain information when you visit our Service, including:</p>
+          <ul>
+            <li>Browser type and version</li>
+            <li>Device type</li>
+            <li>Operating system</li>
+            <li>Pages visited and time spent</li>
+            <li>Referring website</li>
+            <li>IP address (anonymized)</li>
+          </ul>
+        </section>
+
+        <section class="content-section">
+          <h2>How We Use Your Information</h2>
+          <p>We use the automatically collected information to:</p>
+          <ul>
+            <li>Analyze usage patterns to improve our Service</li>
+            <li>Monitor and prevent technical issues</li>
+            <li>Display relevant advertisements</li>
+          </ul>
+        </section>
+
+        <section class="content-section">
+          <h2>Third-Party Services</h2>
+          <h3>Google AdSense</h3>
+          <p>We use Google AdSense to display advertisements. Google may use cookies and similar technologies to serve ads based on your prior visits to our website and other websites. You can opt out of personalized advertising by visiting <a href="https://www.google.com/settings/ads" target="_blank" rel="noopener">Google Ads Settings</a>.</p>
+          
+          <h3>Analytics</h3>
+          <p>We may use analytics services to understand how visitors interact with our Service. These services may collect information about your use of our website.</p>
+        </section>
+
+        <section class="content-section">
+          <h2>Cookies</h2>
+          <p>We use cookies and similar tracking technologies to:</p>
+          <ul>
+            <li>Remember your preferences (such as theme settings)</li>
+            <li>Analyze traffic and usage patterns</li>
+            <li>Serve relevant advertisements</li>
+          </ul>
+          <p>You can control cookies through your browser settings. Note that disabling cookies may affect some features of our Service.</p>
+        </section>
+
+        <section class="content-section">
+          <h2>Data Security</h2>
+          <p>We implement appropriate technical and organizational measures to protect against unauthorized access, alteration, disclosure, or destruction of your information. However, no method of transmission over the Internet is 100% secure.</p>
+        </section>
+
+        <section class="content-section">
+          <h2>Data Retention</h2>
+          <p>Since QR code generation happens entirely in your browser, we do not store any of your QR code content or uploaded images. Automatically collected analytics data is retained for up to 26 months.</p>
+        </section>
+
+        <section class="content-section">
+          <h2>Your Rights</h2>
+          <p>Depending on your location, you may have rights regarding your personal information, including:</p>
+          <ul>
+            <li>Access to your personal information</li>
+            <li>Correction of inaccurate information</li>
+            <li>Deletion of your information</li>
+            <li>Opting out of certain data processing</li>
+          </ul>
+        </section>
+
+        <section class="content-section">
+          <h2>Children's Privacy</h2>
+          <p>Our Service is not directed to children under 13. We do not knowingly collect personal information from children under 13. If you believe we have collected such information, please contact us.</p>
+        </section>
+
+        <section class="content-section">
+          <h2>Changes to This Policy</h2>
+          <p>We may update this Privacy Policy from time to time. We will notify you of any changes by posting the new policy on this page and updating the "Last updated" date.</p>
+        </section>
+
+        <section class="content-section">
+          <h2>Contact Us</h2>
+          <p>If you have questions about this Privacy Policy, please <a href="#contact" data-page="contact">contact us</a>.</p>
+        </section>
+
+        <!-- Inline Ad -->
+        <div class="ad-container ad-inline">
+          <div class="ad-slot" data-ad-slot="privacy-inline">
+            <div class="ad-placeholder">Advertisement</div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Page: Contact -->
+    <main class="page" id="page-contact">
+      <div class="page-content">
+        <h1>Contact Us</h1>
+
+        <section class="content-section">
+          <p>We'd love to hear from you! Whether you have questions, feedback, suggestions, or business inquiries, please don't hesitate to reach out.</p>
+        </section>
+
+        <section class="content-section">
+          <h2>Get in Touch</h2>
+          <div class="contact-methods">
+            <div class="contact-card">
+              <span class="contact-icon">✉️</span>
+              <h3>Email</h3>
+              <p>For general inquiries and support:</p>
+              <a href="mailto:matthew.aldous@gmail.com" class="contact-link">matthew.aldous@gmail.com</a>
+            </div>
+            
+            <div class="contact-card">
+              <span class="contact-icon">💼</span>
+              <h3>Business Inquiries</h3>
+              <p>For partnerships and business matters:</p>
+              <a href="mailto:matthew.aldous@gmail.com" class="contact-link">matthew.aldous@gmail.com</a>
+            </div>
+            
+            <div class="contact-card">
+              <span class="contact-icon">🐛</span>
+              <h3>Bug Reports</h3>
+              <p>Found an issue? Let us know:</p>
+              <a href="mailto:matthew.aldous@gmail.com" class="contact-link">matthew.aldous@gmail.com</a>
+            </div>
+          </div>
+        </section>
+
+        <section class="content-section">
+          <h2>Send a Message</h2>
+          <form class="contact-form" id="contactForm">
+            <div class="form-group">
+              <label for="contactName">Name</label>
+              <input type="text" id="contactName" class="control-input" placeholder="Your name" required>
+            </div>
+            
+            <div class="form-group">
+              <label for="contactEmail">Email</label>
+              <input type="email" id="contactEmail" class="control-input" placeholder="your@email.com" required>
+            </div>
+            
+            <div class="form-group">
+              <label for="contactSubject">Subject</label>
+              <select id="contactSubject" class="control-select" required>
+                <option value="">Select a topic</option>
+                <option value="general">General Inquiry</option>
+                <option value="support">Technical Support</option>
+                <option value="feedback">Feedback / Suggestion</option>
+                <option value="bug">Bug Report</option>
+                <option value="business">Business Inquiry</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
+            
+            <div class="form-group">
+              <label for="contactMessage">Message</label>
+              <textarea id="contactMessage" class="control-input" rows="5" placeholder="Your message..." required></textarea>
+            </div>
+            
+            <button type="submit" class="btn btn-primary btn-lg">Send Message</button>
+            <p class="form-note">Note: This form opens your email client. Alternatively, email us directly.</p>
+          </form>
+        </section>
+
+        <section class="content-section">
+          <h2>Response Time</h2>
+          <p>We typically respond to inquiries within 1-2 business days. For urgent matters, please indicate so in your subject line.</p>
+        </section>
+
+        <!-- Inline Ad -->
+        <div class="ad-container ad-inline">
+          <div class="ad-slot" data-ad-slot="contact-inline">
+            <div class="ad-placeholder">Advertisement</div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Page: Terms of Service -->
+    <main class="page" id="page-terms">
+      <div class="page-content">
+        <h1>Terms of Service</h1>
+        <p class="last-updated">Last updated: December 2024</p>
+
+        <section class="content-section">
+          <h2>1. Acceptance of Terms</h2>
+          <p>By accessing and using ANQR ("the Service"), available at anqr.app, you agree to be bound by these Terms of Service. If you do not agree to these terms, please do not use the Service.</p>
+        </section>
+
+        <section class="content-section">
+          <h2>2. Description of Service</h2>
+          <p>ANQR is a free online tool that allows users to create customized and animated QR codes. The Service processes all data locally in your browser and does not store your content on our servers.</p>
+        </section>
+
+        <section class="content-section">
+          <h2>3. User Responsibilities</h2>
+          <p>When using ANQR, you agree to:</p>
+          <ul>
+            <li>Use the Service only for lawful purposes</li>
+            <li>Not create QR codes that link to malicious, illegal, or harmful content</li>
+            <li>Not use the Service to infringe on intellectual property rights</li>
+            <li>Not attempt to disrupt or compromise the Service's functionality</li>
+            <li>Not use automated systems to access the Service in a manner that exceeds reasonable use</li>
+          </ul>
+        </section>
+
+        <section class="content-section">
+          <h2>4. Intellectual Property</h2>
+          <p>The QR codes you generate using ANQR are yours to use freely for personal and commercial purposes. However, the Service itself, including its design, code, and branding, remains the property of ANQR.</p>
+          <p>You are responsible for ensuring that any images or content you upload do not infringe on third-party intellectual property rights.</p>
+        </section>
+
+        <section class="content-section">
+          <h2>5. Disclaimer of Warranties</h2>
+          <p>The Service is provided "as is" and "as available" without warranties of any kind, either express or implied. We do not guarantee that:</p>
+          <ul>
+            <li>The Service will be uninterrupted or error-free</li>
+            <li>Generated QR codes will be scannable by all devices</li>
+            <li>The Service will meet your specific requirements</li>
+          </ul>
+        </section>
+
+        <section class="content-section">
+          <h2>6. Limitation of Liability</h2>
+          <p>To the maximum extent permitted by law, ANQR shall not be liable for any indirect, incidental, special, consequential, or punitive damages resulting from your use of or inability to use the Service.</p>
+        </section>
+
+        <section class="content-section">
+          <h2>7. Advertising</h2>
+          <p>The Service is supported by advertisements provided by third-party advertising networks, including Google AdSense. By using the Service, you acknowledge that advertisements may be displayed and that third-party cookies may be used for ad personalization.</p>
+        </section>
+
+        <section class="content-section">
+          <h2>8. Modifications to Service</h2>
+          <p>We reserve the right to modify, suspend, or discontinue the Service at any time without notice. We may also update these Terms of Service from time to time. Continued use of the Service after changes constitutes acceptance of the modified terms.</p>
+        </section>
+
+        <section class="content-section">
+          <h2>9. Governing Law</h2>
+          <p>These Terms of Service shall be governed by and construed in accordance with applicable laws, without regard to conflicts of law principles.</p>
+        </section>
+
+        <section class="content-section">
+          <h2>10. Contact</h2>
+          <p>If you have any questions about these Terms of Service, please <a href="#contact" data-page="contact">contact us</a>.</p>
+        </section>
+
+        <!-- Inline Ad -->
+        <div class="ad-container ad-inline">
+          <div class="ad-slot" data-ad-slot="terms-inline">
+            <div class="ad-placeholder">Advertisement</div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Page: Gallery -->
+    <main class="page" id="page-gallery">
+      <div class="gallery-page">
+        <div class="gallery-header">
+          <h1>Gallery</h1>
+          <p>Click any example to try it yourself</p>
+        </div>
+        
+        <!-- Style Examples -->
+        <div class="gallery-section">
+          <h2>Styles</h2>
+          <div class="gallery-grid-compact">
+            <a href="?data=https://anqr.app&style=square&fg=000000&bg=ffffff&ec=Q" class="gallery-item">
+              <div class="gallery-qr" style="background:#f5f5f5;"><span>◱</span></div>
+              <span class="gallery-label">Classic</span>
+            </a>
+            <a href="?data=https://anqr.app&style=rounded&fg=3b82f6&bg=ffffff&ec=Q" class="gallery-item">
+              <div class="gallery-qr" style="background:#eff6ff;color:#3b82f6;"><span>◱</span></div>
+              <span class="gallery-label">Rounded</span>
+            </a>
+            <a href="?data=https://anqr.app&style=dots&fg=8b5cf6&bg=ffffff&ec=H" class="gallery-item">
+              <div class="gallery-qr" style="background:#f5f3ff;color:#8b5cf6;"><span>●</span></div>
+              <span class="gallery-label">Dots</span>
+            </a>
+            <a href="?data=https://anqr.app&style=diamond&fg=10b981&bg=ffffff&ec=Q" class="gallery-item">
+              <div class="gallery-qr" style="background:#ecfdf5;color:#10b981;"><span>◆</span></div>
+              <span class="gallery-label">Diamond</span>
+            </a>
+            <a href="?data=https://anqr.app&style=connected&fg=f97316&bg=ffffff&ec=Q" class="gallery-item">
+              <div class="gallery-qr" style="background:#fff7ed;color:#f97316;"><span>▓</span></div>
+              <span class="gallery-label">Connected</span>
+            </a>
+
+            <a href="?data=https://anqr.app&style=rounded&fg=e2e8f0&bg=1e293b&ec=Q" class="gallery-item">
+              <div class="gallery-qr" style="background:#1e293b;color:#e2e8f0;"><span>◱</span></div>
+              <span class="gallery-label">Dark</span>
+            </a>
+            <a href="?data=https://anqr.app&style=square&fg=dc2626&bg=fef2f2&ec=H" class="gallery-item">
+              <div class="gallery-qr" style="background:#fef2f2;color:#dc2626;"><span>■</span></div>
+              <span class="gallery-label">Red</span>
+            </a>
+          </div>
+        </div>
+        
+        <!-- Image Overlay Examples -->
+        <div class="gallery-section">
+          <h2>Image Overlays</h2>
+          <p class="gallery-hint">Upload your own image to create these effects</p>
+          <div class="overlay-examples">
+            <a href="?data=https://anqr.app&mode=halftone&intensity=60&ec=H" class="overlay-card">
+              <div class="overlay-source">
+                <div class="placeholder-img">Your Image</div>
+              </div>
+              <span class="overlay-arrow">→</span>
+              <div class="overlay-result">
+                <div class="placeholder-qr">◱</div>
+              </div>
+              <span class="overlay-label">Halftone</span>
+            </a>
+            <a href="?data=https://anqr.app&mode=blend&intensity=50&ec=H" class="overlay-card">
+              <div class="overlay-source">
+                <div class="placeholder-img">Your Image</div>
+              </div>
+              <span class="overlay-arrow">→</span>
+              <div class="overlay-result">
+                <div class="placeholder-qr" style="background:linear-gradient(45deg,#f97316,#ec4899);">◱</div>
+              </div>
+              <span class="overlay-label">Color Blend</span>
+            </a>
+            <a href="?data=https://anqr.app&mode=center&logoSize=30&ec=H" class="overlay-card">
+              <div class="overlay-source">
+                <div class="placeholder-img">Logo</div>
+              </div>
+              <span class="overlay-arrow">→</span>
+              <div class="overlay-result">
+                <div class="placeholder-qr center-logo">◱<span>◎</span></div>
+              </div>
+              <span class="overlay-label">Center Logo</span>
+            </a>
+            <a href="?data=https://anqr.app&mode=halftone&intensity=70&ec=H" class="overlay-card">
+              <div class="overlay-source">
+                <div class="placeholder-img gif">GIF</div>
+              </div>
+              <span class="overlay-arrow">→</span>
+              <div class="overlay-result">
+                <div class="placeholder-qr animated">◱</div>
+              </div>
+              <span class="overlay-label">Animated</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="footer-content">
+        <div class="footer-brand">
+          <span class="logo-icon">◱</span>
+          <span>ANQR</span>
+          <span class="footer-tagline">Animated QR Code Generator</span>
+        </div>
+        <nav class="footer-links">
+          <a href="#" data-page="generator">Generator</a>
+          <a href="#gallery" data-page="gallery">Gallery</a>
+          <a href="#about" data-page="about">About</a>
+          <a href="#privacy" data-page="privacy">Privacy Policy</a>
+          <a href="#terms" data-page="terms">Terms of Service</a>
+          <a href="#contact" data-page="contact">Contact</a>
+        </nav>
+        <p class="footer-copyright">© 2024 ANQR. All rights reserved. Free to use for personal and commercial purposes.</p>
+      </div>
+    </footer>
+
+    <!-- Toast Container -->
+    <div class="toast-container" id="toastContainer"></div>
+
+    <!-- Share Modal -->
+    <div class="modal" id="shareModal" hidden>
+      <div class="modal-backdrop"></div>
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3>Share QR Code</h3>
+          <button class="modal-close" id="closeShareModal">✕</button>
+        </div>
+        <div class="modal-body">
+          <div class="control-section">
+            <label class="control-label">Direct Link</label>
+            <input type="text" id="directLink" class="control-input code" readonly>
+            <button class="btn btn-sm" id="copyDirectLink">Copy Link</button>
+          </div>
+          <div class="control-section">
+            <label class="control-label">Embed HTML</label>
+            <textarea id="embedHtml" class="control-input code" rows="2" readonly></textarea>
+            <button class="btn btn-sm" id="copyEmbedHtml">Copy HTML</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="./qrcode.js"></script>
+  <script type="module" src="/src/main.js"></script>
+</body>
+</html>
