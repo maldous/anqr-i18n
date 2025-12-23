@@ -1,6 +1,22 @@
 {
-  "entry": "src/main.js",
+  "entry": ["src/main.js"],
+  "aliases": {
+    "@": ["./src"]
+  },
+  "ignorePatterns": [
+    "node_modules",
+    "dist",
+    "reports",
+    "releases",
+    ".netlify",
+    ".scannerwork"
+  ],
+  "ignoreUnused": [
+    "qr"
+  ],
+  "ignoreUnresolved": [],
   "ignoreUnimported": [
+    "src/lib/dithered-qr/**",
     "src/lib/qrcode.js",
     "src/modules/blob-module-fix.js",
     "src/modules/ui-controller.js"

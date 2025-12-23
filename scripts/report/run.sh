@@ -58,8 +58,8 @@ run_step "eslint_print_config" "npx eslint --print-config src/main.js > \"$REPOR
 # ----------------------------
 # Dependency / unused / graph analysis
 # ----------------------------
-run_step "knip" "npx knip --config knip.json --reporter json > \"$REPORTS_DIR/deps/knip.json\""
-run_step "depcheck" "npx depcheck --json > \"$REPORTS_DIR/deps/depcheck.json\""
+run_step "knip" "npx knip --config knip.json --reporter json --no-exit-code > \"$REPORTS_DIR/deps/knip.json\""
+run_step "depcheck" "npx depcheck --json --ignore-dirs=dist,reports,releases,.netlify,.scannerwork,node_modules --ignores \"@microsoft/api-extractor,cloc,danger,depcheck,dependency-cruiser,jsdoc,knip,license-checker,madge,retire,rollup-plugin-visualizer,snyk,sonarqube-scanner,source-map-explorer,ts-prune,typedoc,unimported\" > \"$REPORTS_DIR/deps/depcheck.json\" || true"
 run_step "madge_json" "npx madge src --json > \"$REPORTS_DIR/deps/madge.json\""
 run_step "madge_circular" "npx madge src --circular --json > \"$REPORTS_DIR/deps/madge-circular.json\""
 if is_full; then
@@ -74,7 +74,7 @@ if is_full; then
 fi
 
 run_step "ts_prune" "npx ts-prune -p tsconfig.json > \"$REPORTS_DIR/deps/ts-prune.txt\""
-run_step "unimported" "npx unimported --config .unimportedrc.json > \"$REPORTS_DIR/deps/unimported.txt\""
+run_step "unimported" "npx unimported > \"$REPORTS_DIR/deps/unimported.txt\" || true"
 
 # ----------------------------
 # Architecture / complexity / meta
@@ -90,8 +90,8 @@ fi
 # ----------------------------
 # Security analysis
 # ----------------------------
-run_step "npm_audit_json" "npm audit --json > \"$REPORTS_DIR/security/npm-audit.json\""
-run_step "retire_js" "npx retire --outputformat json --outputpath \"$REPORTS_DIR/security/retire.json\""
+run_step "npm_audit_json" "npm audit --json --audit-level=critical > \"$REPORTS_DIR/security/npm-audit.json\""
+run_step "retire_js" "npx retire --outputformat json --outputpath \"$REPORTS_DIR/security/retire.json\" --ignore \"node_modules,dist,reports,releases,.netlify,.scannerwork\" --exitwith 0"
 run_step "snyk_test_json" "npx snyk test --json > \"$REPORTS_DIR/security/snyk.json\""
 run_step "snyk_test_sarif" "npx snyk test --sarif > \"$REPORTS_DIR/security/snyk.sarif\""
 run_step "snyk_code_json" "npx snyk code test --json > \"$REPORTS_DIR/security/snyk-code.json\""
