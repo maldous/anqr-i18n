@@ -740,18 +740,22 @@ export class QRGenerator {
    * - We render a 3x (subpixel) grid per QR module.
    * - Locked areas (finders, timing lines, alignments) are preserved.
    * - Free pixels are set from the image via error diffusion.
+   * - Supports color, grayscale, and B&W modes for higher fidelity.
    */
   generateDitheredSubpixelQR(_qr, config, overlayCanvas) {
     const scale = 3;
 
-    const dithered = generateDitheredMatrix({
+    const ditheredResult = generateDitheredMatrix({
       text: config.content,
       ecc: config.errorCorrection,
       version: config.typeNumber || 0,
       scale,
       overlayCanvas,
       overlayIntensity: config.overlayIntensity,
+      colorMode: config.colorMode || 'color',
     });
+
+    const { matrix: dithered, colors } = ditheredResult;
 
     // Safety: if the QR library picked a different version than our current `qr`
     // instance, use the matrix size to drive rendering.
@@ -779,14 +783,34 @@ export class QRGenerator {
       ctx.fillRect(0, 0, size, size);
     }
 
-    ctx.fillStyle = config.fgColor;
+    // Determine if we should use color rendering
+    const useColorRendering = overlayCanvas && config.colorMode !== 'bw';
 
     for (let y = 0; y < scaledCount; y++) {
       for (let x = 0; x < scaledCount; x++) {
-        if (!dithered[y][x]) continue;
+        const isDark = dithered[y][x];
+        const color = colors[y][x];
+        
+        // Skip white/light pixels in the background (they're already the bg color)
+        // unless we're doing color rendering with non-black/white colors
+        if (!isDark && !useColorRendering) continue;
+        
         const dx = marginPx + x * pixelSize;
         const dy = marginPx + y * pixelSize;
-        ctx.fillRect(dx, dy, pixelSize, pixelSize);
+        
+        if (useColorRendering) {
+          // Use the actual color from the dithered result
+          // For dark pixels: use the color (which may be a dark shade)
+          // For light pixels: use the color (which may be a light shade)
+          ctx.fillStyle = `rgb(${color.r},${color.g},${color.b})`;
+          ctx.fillRect(dx, dy, pixelSize, pixelSize);
+        } else {
+          // B&W mode or no overlay: use simple foreground color
+          if (isDark) {
+            ctx.fillStyle = config.fgColor;
+            ctx.fillRect(dx, dy, pixelSize, pixelSize);
+          }
+        }
       }
     }
 
