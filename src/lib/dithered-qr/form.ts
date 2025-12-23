@@ -1,128 +1,99 @@
-// Adapted from https://codeberg.org/andrew-t/dithered-qr-codes
-// This project originally reads options from DOM inputs. In ANQR we keep the
-// same getter surface but back it with an in-memory config.
+const advanced = document.getElementById("advanced") as HTMLInputElement;
+advanced.addEventListener("change", update);
+function update() {
+	if (advanced.checked) document.body.classList.add("show-advanced");
+	else document.body.classList.remove("show-advanced");
+}
+update();
 
-export type DitheredFormState = {
-  // Core rendering
-  scale: number;
-  rotation: number;
-  reflection: boolean;
-
-  // Locks
-  lockPositioningBlocks: boolean;
-  lockTimingLines: boolean;
-  lockAlignmentPatterns: boolean;
-
-  // Image adjustment
-  gamma: number;
-  contrast: number;
-  brightness: number;
-  minBrightness: number;
-  maxBrightness: number;
-
-  // Algorithm toggles
-  includeImage: boolean;
-  diffuseDataPoints: boolean;
-  diffuseFreePoints: boolean;
-  fudgePixels: number;
-
-  // Misc
-  inverted: boolean;
-  hideFreePoints: boolean;
-};
-
-let state: DitheredFormState = {
-  scale: 3,
-  rotation: 0,
-  reflection: false,
-
-  lockPositioningBlocks: true,
-  lockTimingLines: true,
-  lockAlignmentPatterns: true,
-
-  gamma: 1,
-  contrast: 1,
-  brightness: 0,
-  minBrightness: 0,
-  maxBrightness: 1,
-
-  includeImage: true,
-  diffuseDataPoints: true,
-  diffuseFreePoints: true,
-  fudgePixels: 0,
-
-  inverted: false,
-  hideFreePoints: false,
-};
-
-export function setFormState(next: Partial<DitheredFormState>) {
-  state = { ...state, ...next };
+function input(id: string) {
+	return document.getElementById(id) as HTMLInputElement;
 }
 
-export function getScale() {
-  return state.scale;
+function select(id: string) {
+	return document.getElementById(id) as HTMLSelectElement;
 }
 
 export function getRotation() {
-  return state.rotation;
+	return parseInt(select('rotation').value) || 0;
 }
 
 export function getReflection() {
-  return state.reflection;
+	return input("reflection").checked;
 }
 
-export function getLockPositioningBlocks() {
-  return state.lockPositioningBlocks;
+export function getScale() {
+	return parseInt(input('scale').value) || 3;
 }
 
-export function getLockTimingLines() {
-  return state.lockTimingLines;
+export function getText() {
+	return input('text').value;
 }
 
-export function getLockAlignmentPatterns() {
-  return state.lockAlignmentPatterns;
+export function getEcc() {
+	return select('ecc').value as "low" | "medium" | "quartile" | "high";
 }
 
-export function getGamma() {
-  return state.gamma;
+export function getVersion() {
+	return parseInt(input('version').value) || undefined;
 }
 
-export function getContrast() {
-  return state.contrast;
-}
-
-export function getBrightness() {
-  return state.brightness;
-}
-
-export function getMinBrightness() {
-  return state.minBrightness;
-}
-
-export function getMaxBrightness() {
-  return state.maxBrightness;
-}
-
-export function getIncludeImage() {
-  return state.includeImage;
-}
-
-export function getDiffuseDataPoints() {
-  return state.diffuseDataPoints;
-}
-
-export function getDiffuseFreePoints() {
-  return state.diffuseFreePoints;
-}
-
-export function getFudgePixels() {
-  return state.fudgePixels;
+export function getMask() {
+	return parseInt(select('mask').value) || undefined;
 }
 
 export function getInverted() {
-  return state.inverted;
+	return !input("invert").checked;
+}
+
+export function getDiffuseDataPoints() {
+	return input("diffuse-data").checked;
+}
+
+export function getDiffuseFreePoints() {
+	return input("diffuse-free").checked;
+}
+
+export function getIncludeImage() {
+	return input("include-image").checked;
 }
 
 export function getHideFreePoints() {
-  return state.hideFreePoints;
+	return input("hide-free").checked;
 }
+
+export function getLockPositioningBlocks() {
+	return input("lock-positioning").checked;
+}
+export function getLockTimingLines() {
+	return input("lock-timing").checked;
+}
+export function getLockAlignmentPatterns() {
+	return input("lock-alignment").checked;
+}
+
+export function getGamma() {
+	return parseFloat(input("gamma").value) || 2.2;
+}
+
+export function getContrast() {
+	return parseFloat(input("contrast").value) || 1.0;
+}
+
+export function getBrightness() {
+	return parseFloat(input("brightness").value) || 0.0;
+}
+
+export function getMinBrightness() {
+	return parseFloat(input("min").value) || 0.0;
+}
+
+export function getMaxBrightness() {
+	return parseFloat(input("max").value) || 1.0;
+}
+
+export function getFudgePixels() {
+	return parseFloat(input("fudge").value) || 0.0;
+}
+
+

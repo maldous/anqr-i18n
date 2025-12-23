@@ -1,46 +1,49 @@
-// Adapted from https://codeberg.org/andrew-t/dithered-qr-codes
+import encodeQR from "qr";
+import showError from "./errors.ts";
+import { getRotation, getReflection, getScale, getText, getEcc, getVersion, getMask, getInverted } from "./form.ts";
 
-import { encodeQR } from "qr";
+export default function makeQR() {
+	const text = getText();
+	const options = {
+		border: 0,
+		ecc: getEcc(),
+		version: getVersion(),
+		mask: getMask(),
+		scale: getScale(),
+	};
 
-export type MakeQRParams = {
-  text: string;
-  ecc: "L" | "M" | "Q" | "H";
-  // 0 or undefined lets the encoder choose
-  version?: number;
-  mask?: number;
-  scale: number;
-};
+	let qr: boolean[][];
+	try {
+		try {
+			qr = encodeQR(text, 'raw', options);
+		} catch (e)	{
+			if (e.message == "Capacity overflow" && options.version! < 40)
+				qr = encodeQR(text, 'raw', { ...options, version: undefined });
+			else throw e;
+		}
+	} catch (e) {
+		showError(e);
+		throw e;
+	}
 
-export default function makeQR(params: MakeQRParams): boolean[][] {
-  const text = params.text ?? "";
-  const ECC_MAP = {
-    L: "low",
-    M: "medium",
-    Q: "quartile",
-    H: "high",
-  } as const;
-  const ecc = ECC_MAP[params.ecc];
-  const scale = params.scale;
+	const l = qr.length;
 
-  // NOTE: the upstream project requests `raw` output with a `scale` option.
-  // That yields a boolean matrix at (modules * scale) resolution.
-  try {
-    return encodeQR(text, "raw", {
-      border: 0,
-      ecc,
-      version:
-        params.version && params.version > 0 ? params.version : undefined,
-      mask: typeof params.mask === "number" ? params.mask : undefined,
-      scale,
-    });
-  } catch (_e) {
-    // If the supplied version was too small, retry letting the encoder choose.
-    return encodeQR(text, "raw", {
-      border: 0,
-      ecc,
-      version: undefined,
-      mask: typeof params.mask === "number" ? params.mask : undefined,
-      scale,
-    });
-  }
+	if (getInverted()) qr = qr.map(row => row.map(c => !c));
+
+	const rotation = getRotation();
+	for (let i = 0; i < rotation; ++i) {
+		const newQr: boolean[][] = [];
+		for (let x = 0; x < l; ++x) {
+			newQr.push([]);
+			for (let y = l - 1; y >= 0; --y)
+				newQr[x][l - y - 1] = qr[y][x];
+		}
+		qr = newQr;
+	}
+
+	if (getReflection())
+		for (let y = l - 1; y >= 0; --y)
+			qr[y] = qr[y].reverse();
+
+	return qr;
 }

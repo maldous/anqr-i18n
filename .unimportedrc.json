@@ -11,9 +11,7 @@
     ".netlify",
     ".scannerwork"
   ],
-  "ignoreUnused": [
-    "qr"
-  ],
+  "ignoreUnused": ["qr"],
   "ignoreUnresolved": [],
   "ignoreUnimported": [
     "src/lib/dithered-qr/**",
