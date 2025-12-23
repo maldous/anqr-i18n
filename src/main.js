@@ -3,11 +3,11 @@
  * Real-time auto-updating version
  */
 
-import { QRGenerator } from "./modules/qr-generator.js";
-import { GifParser } from "./modules/gif-parser.js";
-import { URLParams } from "./modules/url-params.js";
 import { Exporter } from "./modules/exporter.js";
+import { GifParser } from "./modules/gif-parser.js";
+import { QRGenerator } from "./modules/qr-generator.js";
 import { Toast } from "./modules/toast.js";
+import { URLParams } from "./modules/url-params.js";
 
 class ANQRApp {
   constructor() {

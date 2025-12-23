@@ -12,7 +12,7 @@ DIST_DIR     := dist
 RELEASES_DIR := releases
 
 .DEFAULT_GOAL := help
-.PHONY: help all doctor install dev build preview serve clean clean_dist lint format test check outdated update audit update_qrcode adsense_check info release deploy netlify_status netlify_open commit push ci report report_clean zip snapshot
+.PHONY: help all doctor install dev build preview serve clean clean_dist lint format test check outdated update audit adsense_check info release deploy netlify_status netlify_open commit push ci report report_clean zip snapshot fix
 
 # ----------------------------
 # Helpers
@@ -90,6 +90,12 @@ format: install
 	@echo "format: prettier --write"
 	npm run format
 
+fix: install
+	@echo "fix: eslint --fix + format"
+	@npm run lint -- --fix || true
+	@npm run format || true
+	@npm run format:sh || true
+
 test: install
 	@echo "test: node --test"
 	npm run test
@@ -130,14 +136,6 @@ audit: install
 # ----------------------------
 # Library helpers
 # ----------------------------
-update_qrcode: doctor
-	@echo "update_qrcode: syncing src/lib/qrcode.js <-> public/qrcode.js"
-	$(call require_file,src/lib/qrcode.js)
-	$(call require_file,public/qrcode.js)
-	@# canonical copy lives in src/lib
-	cp -f src/lib/qrcode.js public/qrcode.js
-	@echo "update_qrcode: done"
-
 adsense_check: doctor
 	@echo "adsense_check: basic Netlify/AdSense readiness checks"
 	@missing=0; \
@@ -240,15 +238,21 @@ snapshot: clean
 		-x "reports/*"
 
 zip: report
-	@mkdir -p releases
-	@ZIP="releases/anqr-reports-$$(date +%Y%m%d-%H%M%S).zip"; \
-	zip -r "$$ZIP" \
-	  reports/summary.txt reports/summary.json reports/summary.tsv \
-	  reports/sonar reports/eslint reports/deps reports/security reports/licenses \
-	  reports/metrics reports/arch \
-	  -x "reports/complexity/*" "reports/docs/*" "reports/bundle/*" "reports/logs/*" \
-	     "**/*.html" "**/*.css" "**/*.svg" "**/*.dot"; \
-	echo "created $$ZIP"
+	$(call require_cmd,zip)
+	@mkdir -p "$(RELEASES_DIR)"; \
+	ts="$$(date +%Y%m%d-%H%M%S)"; \
+	out="$(RELEASES_DIR)/$(PROJECT)-reports-$$ts.zip"; \
+	rm -f "$$out"; \
+	echo "zip: $$out"; \
+	zip -qr "$$out" \
+		reports \
+		Makefile package.json package-lock.json \
+		eslint.config.js vite.config.js tsconfig.json \
+		knip.json .dependency-cruiser.js .unimportedrc.json \
+		jsdoc.json typedoc.json api-extractor.json sonar-project.properties \
+		scripts/report/run.sh \
+		netlify.toml README.md .gitignore \
+		-x "node_modules/*" -x ".scannerwork/*" -x ".sonar/*" -x "dist/*" -x ".git/*" -x ".netlify/*" -x "releases/*"
 
 # ----------------------------
 # Help
@@ -290,7 +294,6 @@ help:
 	@echo "  make clean_dist      Remove dist only"
 	@echo "  make zip             Run make report, then zip reports + key files into releases/"
 	@echo "  make snapshot        Create ../anqr.zip snapshot (excludes .git, node_modules, dist, reports)"
-	@echo "  make update_qrcode   Sync src/lib/qrcode.js -> public/qrcode.js"
 	@echo "  make adsense_check   Check required public files for AdSense"
 	@echo "  make info            Print versions"
 	@echo "  make ci              Run install + lint + test + build"

@@ -1,11 +1,8 @@
 {
-  "extensions": [".js", ".mjs", ".cjs", ".ts", ".tsx"],
-  "ignorePatterns": [
-    "dist/**",
-    "reports/**",
-    "releases/**",
-    "src/lib/**",
-    "public/qrcode.js"
-  ],
-  "entryFile": "src/main.js"
+  "entry": "src/main.js",
+  "ignoreUnimported": [
+    "src/lib/qrcode.js",
+    "src/modules/blob-module-fix.js",
+    "src/modules/ui-controller.js"
+  ]
 }

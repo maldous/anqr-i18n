@@ -1,13 +1,33 @@
 {
-  "$schema": "https://unpkg.com/knip@latest/schema.json",
+  "$schema": "https://unpkg.com/knip@1.31.0/schema.json",
   "entry": ["src/main.js"],
-  "project": ["src/**/*.{js,ts,tsx,mjs,cjs}"],
+  "project": ["src/**/*.{js,ts,mjs,cjs}"],
   "ignore": [
-    "dist/**",
-    "reports/**",
-    "releases/**",
-    "public/qrcode.js",
-    "src/lib/**"
+    "**/node_modules/**",
+    "**/dist/**",
+    "**/reports/**",
+    "**/releases/**",
+    "**/.netlify/**",
+    "**/.scannerwork/**",
+    "**/.sonar/**",
+    "public/**"
   ],
-  "ignoreDependencies": []
+  "ignoreDependencies": [
+    "@microsoft/api-extractor",
+    "cloc",
+    "danger",
+    "depcheck",
+    "jsdoc",
+    "license-checker",
+    "madge",
+    "plato",
+    "retire",
+    "snyk",
+    "sonarqube-scanner",
+    "source-map-explorer",
+    "ts-prune",
+    "typedoc",
+    "unimported"
+  ],
+  "ignoreBinaries": ["shfmt"]
 }
