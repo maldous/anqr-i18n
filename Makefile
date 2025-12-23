@@ -1,220 +1,253 @@
-# ANQR - Animated QR Code Generator
-# Makefile for build, development, and deployment
+# ANQR - Makefile (Netlify-only)
+# Notes:
+# - Target names use underscores (no hyphens)
+# - Deploy uses Netlify CLI and deploys ./dist
 
-.PHONY: all install dev build preview clean lint format help deploy
+SHELL := /bin/bash
+.ONESHELL:
+.SHELLFLAGS := -eu -o pipefail -c
 
-# Default target
+PROJECT      := anqr
+DIST_DIR     := dist
+RELEASES_DIR := releases
+
+.DEFAULT_GOAL := help
+.PHONY: help all doctor install dev build preview serve clean clean_dist lint format format_check test outdated update audit info release deploy commit push ci netlify_status netlify_open update_qrcode adsense_check
+
+# ----------------------------
+# Helpers
+# ----------------------------
+define require_cmd
+	@command -v $(1) >/dev/null 2>&1 || { echo "Missing required command: $(1)"; exit 1; }
+endef
+
+define require_file
+	@test -f $(1) || { echo "Missing required file: $(1)"; exit 1; }
+endef
+
+define require_dir
+	@test -d $(1) || { echo "Missing required directory: $(1)"; exit 1; }
+endef
+
+node_check = node -e "const v=process.versions.node.split('.').map(Number); if(v[0] < 18){ console.error('Node >= 18 is required. Found: ' + process.versions.node); process.exit(1);} "
+
+# ----------------------------
+# Core
+# ----------------------------
 all: install build
 
-# Install dependencies
-install:
-	@echo "📦 Installing dependencies..."
+doctor:
+	$(call require_cmd,node)
+	$(call require_cmd,npm)
+	@$(node_check)
+	$(call require_file,package.json)
+	$(call require_file,netlify.toml)
+	@# fail fast if placeholders accidentally got committed
+	@if grep -R --line-number --fixed-strings "..." netlify.toml .gitignore >/dev/null 2>&1; then \
+		echo "Found placeholder '...' in config files. Remove it before continuing."; \
+		grep -R --line-number --fixed-strings "..." netlify.toml .gitignore || true; \
+		exit 1; \
+	fi
+	@echo "doctor: ok"
+
+install: doctor
+	@echo "install: npm install"
 	npm install
 
-# Start development server
-dev:
-	@echo "🚀 Starting development server..."
+dev: install
+	@echo "dev: vite"
 	npm run dev
 
-# Build for production
-build:
-	@echo "🔨 Building for production..."
+build: install
+	@echo "build: vite build"
 	npm run build
 
-# Preview production build
-preview:
-	@echo "👀 Previewing production build..."
-	npm run preview
+preview: build
+	@echo "preview: vite preview"
+	npm run preview -- --host
 
-# Serve production build
-serve:
-	@echo "🌐 Serving production build..."
-	npm run serve
+serve: build
+	@echo "serve: preview on :3000"
+	npm run serve -- --host
 
-# Clean build artifacts and dependencies
+# ----------------------------
+# Hygiene
+# ----------------------------
 clean:
-	@echo "🧹 Cleaning..."
-	rm -rf dist node_modules .cache
+	@echo "clean: removing node_modules, dist, releases"
+	rm -rf node_modules "$(DIST_DIR)" "$(RELEASES_DIR)"
 
-# Clean only build artifacts
-clean-dist:
-	@echo "🧹 Cleaning dist..."
-	rm -rf dist
+clean_dist:
+	@echo "clean_dist: removing dist"
+	rm -rf "$(DIST_DIR)"
 
-# Run linter
-lint:
-	@echo "🔍 Running linter..."
-	npm run lint || true
+lint: install
+	@echo "lint: eslint"
+	npm run lint
 
-# Format code (if prettier is added)
-format:
-	@echo "✨ Formatting code..."
-	@if command -v prettier > /dev/null; then \
-		prettier --write "src/**/*.{js,css,html}"; \
-	else \
-		echo "Prettier not installed, skipping..."; \
-	fi
+format: install
+	@echo "format: prettier --write"
+	npm run format
 
-# Watch for changes and rebuild
-watch:
-	@echo "👁️ Watching for changes..."
-	npm run dev
+format_check: install
+	@echo "format_check: prettier --check"
+	npm run format:check
 
-# Create a release zip for deployment
-release: build
-	@echo "📦 Creating release package..."
-	@mkdir -p releases
-	@cd dist && zip -r ../releases/anqr-$(shell date +%Y%m%d-%H%M%S).zip .
-	@echo "✅ Release package created in releases/"
+test: lint build
+	@echo "test: lint + build (no unit tests configured)"
 
-# Deploy to GitHub Pages (if gh-pages is set up)
-deploy-gh: build
-	@echo "🚀 Deploying to GitHub Pages..."
-	@if command -v gh > /dev/null; then \
-		gh pages deploy dist; \
-	else \
-		echo "GitHub CLI not installed. Install with: brew install gh"; \
-	fi
+# ----------------------------
+# Dependency maintenance
+# ----------------------------
+outdated: install
+	@echo "outdated: npm outdated"
+	@npm outdated || true
 
-# Deploy to Netlify (if netlify-cli is installed)
-deploy-netlify: build
-	@echo "🚀 Deploying to Netlify..."
-	@if command -v netlify > /dev/null; then \
-		netlify deploy --prod --dir=dist; \
-	else \
-		echo "Netlify CLI not installed. Install with: npm install -g netlify-cli"; \
-	fi
-
-# Deploy to Vercel (if vercel-cli is installed)
-deploy-vercel: build
-	@echo "🚀 Deploying to Vercel..."
-	@if command -v vercel > /dev/null; then \
-		vercel --prod dist; \
-	else \
-		echo "Vercel CLI not installed. Install with: npm install -g vercel"; \
-	fi
-
-# Deploy to Surge.sh
-deploy-surge: build
-	@echo "🚀 Deploying to Surge..."
-	@if command -v surge > /dev/null; then \
-		surge dist; \
-	else \
-		echo "Surge CLI not installed. Install with: npm install -g surge"; \
-	fi
-
-# Update qrcode.js library from source
-update-qrcode:
-	@echo "📥 Updating qrcode.js library..."
-	curl -L https://raw.githubusercontent.com/kazuhikoarase/qrcode-generator/master/js/dist/qrcode.js -o src/lib/qrcode.js
-
-# Run tests (placeholder for future tests)
-test:
-	@echo "🧪 Running tests..."
-	@echo "No tests configured yet."
-
-# Check for outdated dependencies
-outdated:
-	@echo "📋 Checking for outdated dependencies..."
-	npm outdated || true
-
-# Update dependencies
-update:
-	@echo "⬆️ Updating dependencies..."
+update: install
+	@echo "update: npm update"
 	npm update
 
-# Security audit
-audit:
-	@echo "🔒 Running security audit..."
-	npm audit || true
+audit: install
+	@echo "audit: npm audit"
+	@npm audit || true
 
-# Show project info
-info:
-	@echo "ℹ️ ANQR - Animated QR Code Generator"
-	@echo ""
-	@echo "Project Structure:"
-	@echo "  src/           - Source files"
-	@echo "  src/lib/       - Third-party libraries"
-	@echo "  src/modules/   - Application modules"
-	@echo "  src/styles/    - CSS styles"
-	@echo "  dist/          - Production build output"
-	@echo ""
-	@echo "Available commands:"
-	@echo "  make install   - Install dependencies"
-	@echo "  make dev       - Start development server"
-	@echo "  make build     - Build for production"
-	@echo "  make preview   - Preview production build"
-	@echo "  make clean     - Remove build artifacts"
-	@echo "  make release   - Create a deployment zip"
-	@echo "  make deploy-*  - Deploy to various platforms"
 
-# Check AdSense readiness
-adsense-check: build
-	@echo "🔍 Checking AdSense Readiness..."
-	@echo ""
-	@echo "=== FILE CHECKS ==="
-	@echo -n "✓ robots.txt: "; test -f dist/robots.txt && echo "EXISTS" || echo "MISSING ❌"
-	@echo -n "✓ sitemap.xml: "; test -f dist/sitemap.xml && echo "EXISTS" || echo "MISSING ❌"
-	@echo -n "✓ index.html: "; test -f dist/index.html && echo "EXISTS" || echo "MISSING ❌"
-	@echo ""
-	@echo "=== META TAG CHECKS ==="
-	@echo -n "✓ Description meta: "; grep -q 'meta name="description"' dist/index.html && echo "FOUND" || echo "MISSING ❌"
-	@echo -n "✓ Canonical URL: "; grep -q 'rel="canonical"' dist/index.html && echo "FOUND" || echo "MISSING ❌"
-	@echo -n "✓ Open Graph tags: "; grep -q 'property="og:' dist/index.html && echo "FOUND" || echo "MISSING ❌"
-	@echo -n "✓ Twitter cards: "; grep -q 'name="twitter:' dist/index.html && echo "FOUND" || echo "MISSING ❌"
-	@echo -n "✓ Robots meta: "; grep -q 'name="robots"' dist/index.html && echo "FOUND" || echo "MISSING ❌"
-	@echo ""
-	@echo "=== ADSENSE CHECKS ==="
-	@echo -n "✓ AdSense script: "; grep -q 'pagead2.googlesyndication.com' dist/index.html && echo "FOUND" || echo "MISSING ❌"
-	@echo -n "✓ Ad slots defined: "; grep -q 'data-ad-slot' dist/index.html && echo "FOUND" || echo "MISSING ❌"
-	@echo ""
-	@echo "=== REQUIRED PAGES ==="
-	@echo -n "✓ Privacy Policy: "; grep -q 'id="page-privacy"' dist/index.html && echo "FOUND" || echo "MISSING ❌"
-	@echo -n "✓ Terms of Service: "; grep -q 'id="page-terms"' dist/index.html && echo "FOUND" || echo "MISSING ❌"
-	@echo -n "✓ About page: "; grep -q 'id="page-about"' dist/index.html && echo "FOUND" || echo "MISSING ❌"
-	@echo -n "✓ Contact page: "; grep -q 'id="page-contact"' dist/index.html && echo "FOUND" || echo "MISSING ❌"
-	@echo ""
-	@echo "=== NETLIFY CONFIG ==="
-	@echo -n "✓ netlify.toml: "; test -f netlify.toml && echo "EXISTS" || echo "MISSING ❌"
-	@echo ""
-	@echo "=== SUMMARY ==="
-	@MISSING=0; \
-	test -f dist/robots.txt || MISSING=$$((MISSING+1)); \
-	test -f dist/sitemap.xml || MISSING=$$((MISSING+1)); \
-	grep -q 'property="og:' dist/index.html || MISSING=$$((MISSING+1)); \
-	grep -q 'id="page-privacy"' dist/index.html || MISSING=$$((MISSING+1)); \
-	grep -q 'id="page-terms"' dist/index.html || MISSING=$$((MISSING+1)); \
-	grep -q 'pagead2.googlesyndication.com' dist/index.html || MISSING=$$((MISSING+1)); \
-	if [ $$MISSING -eq 0 ]; then \
-		echo "✅ All AdSense requirements met! Ready for submission."; \
+# ----------------------------
+# Library helpers
+# ----------------------------
+update_qrcode: doctor
+	@echo "update_qrcode: syncing src/lib/qrcode.js <-> public/qrcode.js"
+	$(call require_file,src/lib/qrcode.js)
+	$(call require_file,public/qrcode.js)
+	@# canonical copy lives in src/lib
+	cp -f src/lib/qrcode.js public/qrcode.js
+	@echo "update_qrcode: done"
+
+adsense_check: doctor
+	@echo "adsense_check: basic Netlify/AdSense readiness checks"
+	@missing=0; \
+	if ! test -f public/ads.txt; then echo "missing: public/ads.txt"; missing=1; fi; \
+	if ! test -f public/robots.txt; then echo "missing: public/robots.txt"; missing=1; fi; \
+	if ! test -f public/sitemap.xml; then echo "missing: public/sitemap.xml"; missing=1; fi; \
+	if ! grep -q "pagead2.googlesyndication.com/pagead/js/adsbygoogle.js" index.html 2>/dev/null; then \
+		echo "note: index.html does not appear to include the AdSense loader script"; \
+	fi; \
+	if test "$$missing" -ne 0; then exit 1; fi; \
+	echo "adsense_check: ok"
+
+# ----------------------------
+# Info / Release
+# ----------------------------
+info: doctor
+	@echo "project: $(PROJECT)"
+	@echo "node: $$(node -v)"
+	@echo "npm:  $$(npm -v)"
+	@echo "git:  $$(command -v git >/dev/null 2>&1 && git --version || echo 'not installed')"
+	@echo "netlify: $$(command -v netlify >/dev/null 2>&1 && netlify --version || echo 'not installed')"
+	@if test -f .netlify/state.json; then \
+		echo "netlify_site_id: $$(node -pe \"require('./.netlify/state.json').siteId\"); \
 	else \
-		echo "⚠️  $$MISSING requirement(s) missing. Review above."; \
+		echo "netlify_site_id: (not linked - run 'netlify init' or set NETLIFY_SITE_ID)"; \
 	fi
 
+release: build
+	$(call require_cmd,zip)
+	mkdir -p "$(RELEASES_DIR)"
+	@ts=$$(date +%Y%m%d-%H%M%S); \
+	out="$(RELEASES_DIR)/$(PROJECT)-$${ts}.zip"; \
+	echo "release: $$out"; \
+	zip -qr "$$out" "$(DIST_DIR)" netlify.toml public || true
+
+# ----------------------------
+# Netlify deploy (single path)
+# ----------------------------
+deploy: build
+	$(call require_cmd,netlify)
+	@site=""; \
+	if test -n "$${NETLIFY_SITE_ID:-}"; then site="$${NETLIFY_SITE_ID}"; fi; \
+	if test -z "$$site" && test -f .netlify/state.json; then \
+		site="$$(node -pe \"require('./.netlify/state.json').siteId\")"; \
+	fi; \
+	if test -z "$$site"; then \
+		echo "deploy: missing site id. Link the site with 'netlify init' (creates .netlify/state.json) or set NETLIFY_SITE_ID."; \
+		exit 1; \
+	fi; \
+	echo "deploy: netlify deploy --prod --site $$site --dir=$(DIST_DIR)"; \
+	netlify deploy --prod --site "$$site" --dir="$(DIST_DIR)"
+
+netlify_status:
+	$(call require_cmd,netlify)
+	netlify status || true
+
+netlify_open:
+	$(call require_cmd,netlify)
+	netlify open:site || true
+
+# ----------------------------
+# Git helpers
+# ----------------------------
+commit:
+	$(call require_cmd,git)
+	@if ! git rev-parse --is-inside-work-tree >/dev/null 2>&1; then \
+		echo "commit: not a git repository"; \
+		exit 1; \
+	fi
+	@if test -z "$$(git status --porcelain)"; then \
+		echo "commit: nothing to commit"; \
+		exit 0; \
+	fi
+	@msg="$$(date +%s)"; \
+	echo "commit: $$msg"; \
+	git add -A; \
+	git commit -m "$$msg"; \
+	git push
+
+push:
+	$(call require_cmd,git)
+	git push
+
+ci: doctor
+	@echo "ci: install + format_check + lint + build"
+	npm install
+	npm run format:check
+	npm run lint
+	npm run build
+
+# ----------------------------
 # Help
+# ----------------------------
 help:
-	@echo "ANQR Makefile Commands:"
+	@echo "ANQR Make targets"
 	@echo ""
-	@echo "  make              - Install dependencies and build"
-	@echo "  make install      - Install npm dependencies"
-	@echo "  make dev          - Start development server"
-	@echo "  make build        - Build for production"
-	@echo "  make preview      - Preview production build"
-	@echo "  make serve        - Serve production build on port 3000"
-	@echo "  make clean        - Remove dist/ and node_modules/"
-	@echo "  make clean-dist   - Remove only dist/"
-	@echo "  make lint         - Run ESLint"
-	@echo "  make format       - Format code with Prettier"
-	@echo "  make release      - Create deployment zip in releases/"
-	@echo "  make deploy-gh    - Deploy to GitHub Pages"
-	@echo "  make deploy-netlify - Deploy to Netlify"
-	@echo "  make deploy-vercel  - Deploy to Vercel"
-	@echo "  make deploy-surge   - Deploy to Surge.sh"
-	@echo "  make update-qrcode  - Update qrcode.js from source"
-	@echo "  make test         - Run tests"
-	@echo "  make outdated     - Check for outdated deps"
-	@echo "  make update       - Update dependencies"
-	@echo "  make audit        - Run security audit"
-	@echo "  make info         - Show project info"
-	@echo "  make adsense-check  - Check AdSense readiness"
-	@echo "  make help         - Show this help"
+	@echo "Core:"
+	@echo "  make install         Install deps"
+	@echo "  make dev             Run Vite dev server"
+	@echo "  make build           Build production dist/"
+	@echo "  make preview         Preview build (host=0.0.0.0)"
+	@echo "  make serve           Preview on port 3000"
+	@echo ""
+	@echo "Quality:"
+	@echo "  make lint            ESLint"
+	@echo "  make format          Prettier write"
+	@echo "  make format_check    Prettier check"
+	@echo "  make test            Lint + build"
+	@echo ""
+	@echo "Maintenance:"
+	@echo "  make outdated        npm outdated"
+	@echo "  make update          npm update"
+	@echo "  make audit           npm audit"
+	@echo ""
+	@echo "Release/Deploy:"
+	@echo "  make release         Zip dist into releases/"
+	@echo "  make deploy          Deploy to Netlify (requires netlify-cli + linked site)"
+	@echo ""
+	@echo "Git:"
+	@echo "  make commit          git add/commit/push with message epoch seconds"
+	@echo ""
+	@echo "Other:"
+	@echo "  make doctor          Verify tools/config"
+	@echo "  make info            Print versions and Netlify site id"
+	@echo "  make clean           Remove node_modules, dist, releases"
+	@echo "  make clean_dist      Remove dist only"
+	@echo "  make update_qrcode   Sync bundled qrcode.js copies"
+	@echo "  make adsense_check   Sanity checks for AdSense files"

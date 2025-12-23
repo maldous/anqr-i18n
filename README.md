@@ -69,37 +69,14 @@ make build
 
 ## Deployment
 
-The built `dist/` folder can be deployed to any static hosting:
+This site is deployed on Netlify.
 
-### Free Hosting Options
-
-**Netlify:**
 ```bash
-make deploy-netlify
-# or: netlify deploy --prod --dir=dist
+make deploy
 ```
 
-**Vercel:**
-```bash
-make deploy-vercel
-# or: vercel --prod dist
-```
+Netlify must be linked (creates `.netlify/state.json`) or set `NETLIFY_SITE_ID`.
 
-**Surge.sh:**
-```bash
-make deploy-surge
-# or: surge dist
-```
-
-**GitHub Pages:**
-```bash
-make deploy-gh
-```
-
-Or simply drag and drop the `dist/` folder to:
-- [Netlify Drop](https://app.netlify.com/drop)
-- [Vercel](https://vercel.com)
-- [Cloudflare Pages](https://pages.cloudflare.com)
 
 ## URL Parameters API
 
