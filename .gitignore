@@ -35,3 +35,18 @@ releases/
 
 # Local Netlify folder
 .netlify
+
+# Sonar
+.scannerwork/
+.sonar/
+
+# Coverage / test artifacts
+coverage/
+.nyc_output/
+test-results/
+playwright-report/
+
+# Tool caches
+.eslintcache
+*.tsbuildinfo
+.clinic/

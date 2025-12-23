@@ -101,7 +101,7 @@ run_step "api_extractor" "npx api-extractor run --local --config api-extractor.j
 # ----------------------------
 # SonarQube (local) - optional
 # ----------------------------
-run_step "sonarqube_scanner" "if [ -n \"${SONARQUBE_TOKEN:-}\" ]; then SONAR_HOST_URL=\"${SONAR_HOST_URL:-http://localhost:9000}\" npx sonarqube-scanner -Dsonar.host.url=\"$SONAR_HOST_URL\" -Dsonar.token=\"$SONARQUBE_TOKEN\"; else echo 'SONARQUBE_TOKEN not set; skipping'; fi"
+run_step "sonarqube_scanner" "if [ -n \"${SONARQUBE_TOKEN:-}\" ]; then SONAR_HOST_URL=\"${SONAR_HOST_URL:-http://localhost:9000}\"; SONAR_TOKEN=\"$SONARQUBE_TOKEN\" npx sonarqube-scanner -Dsonar.host.url=\"$SONAR_HOST_URL\"; if [ -f .scannerwork/report-task.txt ]; then cp .scannerwork/report-task.txt \"$REPORTS_DIR/sonar/report-task.txt\"; fi; if [ -f \"$REPORTS_DIR/sonar/report-task.txt\" ]; then awk -F= '/^dashboardUrl=/{print $2}' \"$REPORTS_DIR/sonar/report-task.txt\" > \"$REPORTS_DIR/sonar/dashboard-url.txt\" || true; fi; else echo \"SONARQUBE_TOKEN not set; skipping\"; fi"
 
 # ----------------------------
 # Summary (tsv -> json + human text)

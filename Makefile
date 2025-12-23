@@ -252,9 +252,9 @@ zip: report
 		eslint.config.js vite.config.js tsconfig.json \
 		knip.json .dependency-cruiser.js .unimportedrc.json \
 		jsdoc.json typedoc.json api-extractor.json sonar-project.properties \
+		scripts/report/run.sh \
 		netlify.toml README.md .gitignore \
-		src public index.html \
-		-x "node_modules/*" -x "dist/*" -x ".git/*" -x ".netlify/*" -x "releases/*"
+		-x "node_modules/*" -x ".scannerwork/*" -x ".sonar/*" -x "dist/*" -x ".git/*" -x ".netlify/*" -x "releases/*"
 
 # ----------------------------
 # Help

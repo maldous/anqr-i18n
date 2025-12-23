@@ -2,5 +2,5 @@ projectKey=anqr
 serverUrl=http://localhost:9000
 serverVersion=25.11.0.114957
 dashboardUrl=http://localhost:9000/dashboard?id=anqr
-ceTaskId=ef5a56c1-0f2b-4d74-acce-a8813ee58b87
-ceTaskUrl=http://localhost:9000/api/ce/task?id=ef5a56c1-0f2b-4d74-acce-a8813ee58b87
+ceTaskId=b9094d87-cbe3-4387-87ff-bb65b4931316
+ceTaskUrl=http://localhost:9000/api/ce/task?id=b9094d87-cbe3-4387-87ff-bb65b4931316
