@@ -30,3 +30,4 @@ playwright-report/
 .eslintcache
 *.tsbuildinfo
 .clinic/
+.scannerwork/
