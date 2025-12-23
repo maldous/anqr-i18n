@@ -161,7 +161,7 @@ deploy: build
 	@site=""; \
 	if test -n "$${NETLIFY_SITE_ID:-}"; then site="$${NETLIFY_SITE_ID}"; fi; \
 	if test -z "$$site" && test -f .netlify/state.json; then \
-		site="$$(node -pe \"require('./.netlify/state.json').siteId\")"; \
+		site="$$(node -pe 'require("./.netlify/state.json").siteId')";
 	fi; \
 	if test -z "$$site"; then \
 		echo "deploy: missing site id. Link the site with 'netlify init' (creates .netlify/state.json) or set NETLIFY_SITE_ID."; \
