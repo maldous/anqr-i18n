@@ -12,31 +12,32 @@ TSV="$REPORTS_DIR/summary.tsv"
 mkdir -p "$REPORTS_DIR"/{logs,eslint,deps,arch,complexity,meta,security,bundle,licenses,docs,api,sonar}
 
 rm -f "$TSV"
-echo -e "step\texit_code\tseconds\tlog" > "$TSV"
+echo -e "step\texit_code\tseconds\tlog" >"$TSV"
 
-run_step () {
-  local name="$1"; shift
-  local cmd="$*"
-  local log="$REPORTS_DIR/logs/${name}.log"
-  local start end dur code
+run_step() {
+	local name="$1"
+	shift
+	local cmd="$*"
+	local log="$REPORTS_DIR/logs/${name}.log"
+	local start end dur code
 
-  echo "==> ${name}" | tee "$log"
-  echo "\$ $cmd" >> "$log"
-  start="$(date +%s)"
+	echo "==> ${name}" | tee "$log"
+	echo "\$ $cmd" >>"$log"
+	start="$(date +%s)"
 
-  # Never abort the whole run
-  set +e
-  bash -lc "$cmd" >> "$log" 2>&1
-  code="$?"
-  set -e 2>/dev/null || true
+	# Never abort the whole run
+	set +e
+	bash -lc "$cmd" >>"$log" 2>&1
+	code="$?"
+	set -e 2>/dev/null || true
 
-  end="$(date +%s)"
-  dur="$((end - start))"
+	end="$(date +%s)"
+	dur="$((end - start))"
 
-  echo -e "${name}\t${code}\t${dur}\t${log}" >> "$TSV"
-  echo "exit=${code} duration=${dur}s log=${log}" | tee -a "$log"
-  echo "" >> "$log"
-  return 0
+	echo -e "${name}\t${code}\t${dur}\t${log}" >>"$TSV"
+	echo "exit=${code} duration=${dur}s log=${log}" | tee -a "$log"
+	echo "" >>"$log"
+	return 0
 }
 
 # ----------------------------
@@ -101,7 +102,12 @@ run_step "api_extractor" "npx api-extractor run --local --config api-extractor.j
 # ----------------------------
 # SonarQube (local) - optional
 # ----------------------------
-run_step "sonarqube_scanner" "if [ -n \"${SONARQUBE_TOKEN:-}\" ]; then SONAR_HOST_URL=\"${SONAR_HOST_URL:-http://localhost:9000}\"; SONAR_TOKEN=\"$SONARQUBE_TOKEN\" npx sonarqube-scanner -Dsonar.host.url=\"$SONAR_HOST_URL\"; if [ -f .scannerwork/report-task.txt ]; then cp .scannerwork/report-task.txt \"$REPORTS_DIR/sonar/report-task.txt\"; fi; if [ -f \"$REPORTS_DIR/sonar/report-task.txt\" ]; then awk -F= '/^dashboardUrl=/{print $2}' \"$REPORTS_DIR/sonar/report-task.txt\" > \"$REPORTS_DIR/sonar/dashboard-url.txt\" || true; fi; else echo \"SONARQUBE_TOKEN not set; skipping\"; fi"
+run_step "sonarqube_scanner" "if [ -n \"${SONARQUBE_TOKEN:-}\" ]; then SONAR_HOST_URL=\"${SONAR_HOST_URL:-http://localhost:9000}\"; SONAR_TOKEN=\"$SONARQUBE_TOKEN\" npx sonarqube-scanner -Dsonar.host.url=\"$SONAR_HOST_URL\"; if [ -f .scannerwork/report-task.txt ]; then cp .scannerwork/report-task.txt \"$REPORTS_DIR/sonar/report-task.txt\"; fi; if [ -f \"$REPORTS_DIR/sonar/report-task.txt\" ]; then awk -F= '/^dashboardUrl=/{print \$2}' \"$REPORTS_DIR/sonar/report-task.txt\" > \"$REPORTS_DIR/sonar/dashboard-url.txt\" || true; fi; else echo \"SONARQUBE_TOKEN not set; skipping\"; fi"
+
+# ----------------------------
+# SonarQube exports (overall report)
+# ----------------------------
+run_step "sonarqube_export" "if [ -n \"${SONARQUBE_TOKEN:-}\" ]; then SONAR_HOST_URL=\"${SONAR_HOST_URL:-http://localhost:9000}\" SONARQUBE_TOKEN=\"$SONARQUBE_TOKEN\" REPORTS_DIR=\"$REPORTS_DIR\" ./scripts/sonar-export.sh; else echo \"SONARQUBE_TOKEN not set; skipping sonar export\"; fi"
 
 # ----------------------------
 # Summary (tsv -> json + human text)

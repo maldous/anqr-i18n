@@ -89,6 +89,12 @@ lint: install
 format: install
 	@echo "format: prettier --write"
 	npm run format
+	npm run format:sh || true
+
+format-check: install
+	@echo "format: prettier --check (scoped)"
+	npm run format:check
+	npm run format:check:sh || true
 
 test: install
 	@echo "test: node --test"

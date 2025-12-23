@@ -50,3 +50,5 @@ playwright-report/
 .eslintcache
 *.tsbuildinfo
 .clinic/
+
+!reports/**
