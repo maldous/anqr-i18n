@@ -4,8 +4,13 @@ node_modules/
 # Build output
 dist/
 
-# Reports
+# Reports & releases (generated)
 reports/
+releases/
+
+# Sonar
+.scannerwork/
+.sonar/
 
 # Cache
 .cache/
@@ -14,31 +19,6 @@ reports/
 # IDE
 .idea/
 .vscode/
-*.swp
-*.swo
-
-# OS
-.DS_Store
-Thumbs.db
-
-# Logs
-*.log
-npm-debug.log*
-
-# Release packages
-releases/
-
-# Environment
-.env
-.env.local
-.env.*.local
-
-# Local Netlify folder
-# .netlify
-
-# Sonar
-.scannerwork/
-.sonar/
 
 # Coverage / test artifacts
 coverage/
@@ -50,5 +30,3 @@ playwright-report/
 .eslintcache
 *.tsbuildinfo
 .clinic/
-
-!reports/**

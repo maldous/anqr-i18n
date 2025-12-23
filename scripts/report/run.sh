@@ -3,13 +3,18 @@
 # Goal: generate everything possible into ./reports without blocking on failures.
 set -u
 
+# reporting profile: "curated" (default) or "full"
+REPORT_PROFILE="${REPORT_PROFILE:-curated}"
+is_full() { [ "$REPORT_PROFILE" = "full" ] || [ "${REPORTS_FULL:-0}" = "1" ]; }
+
+
 ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)"
 cd "$ROOT_DIR"
 
 REPORTS_DIR="${REPORTS_DIR:-reports}"
 TSV="$REPORTS_DIR/summary.tsv"
 
-mkdir -p "$REPORTS_DIR"/{logs,eslint,deps,arch,complexity,meta,security,bundle,licenses,docs,api,sonar}
+mkdir -p "$REPORTS_DIR"/{logs,eslint,deps,arch,complexity,metrics,security,bundle,licenses,docs,api,sonar}
 
 rm -f "$TSV"
 echo -e "step\texit_code\tseconds\tlog" >"$TSV"
@@ -46,63 +51,85 @@ run_step() {
 run_step "prettier_check" "npx prettier --check ."
 run_step "tsc_noemit" "npx tsc --noEmit -p tsconfig.json --pretty false"
 run_step "eslint_json" "npx eslint \"src/**/*.{js,ts,mjs,cjs}\" -f json --output-file \"$REPORTS_DIR/eslint/eslint.json\""
-run_step "eslint_stylish" "npx eslint \"src/**/*.{js,ts,mjs,cjs}\" -f stylish > \"$REPORTS_DIR/eslint/eslint.txt\" || true"
+if is_full; then
+run_step "eslint_stylish" "npx eslint \"src/**/*.{js,ts,mjs,cjs}\" -f stylish > \"$REPORTS_DIR/eslint/eslint.txt\""
+fi
 run_step "eslint_print_config" "npx eslint --print-config src/main.js > \"$REPORTS_DIR/eslint/print-config.json\""
 
 # ----------------------------
 # Dependency / unused / graph analysis
 # ----------------------------
-run_step "knip" "npx knip --config knip.json --reporter json > \"$REPORTS_DIR/deps/knip.json\" || true"
-run_step "depcheck" "npx depcheck --json > \"$REPORTS_DIR/deps/depcheck.json\" || true"
-run_step "madge_json" "npx madge src --json > \"$REPORTS_DIR/deps/madge.json\" || true"
-run_step "madge_circular" "npx madge src --circular --json > \"$REPORTS_DIR/deps/madge-circular.json\" || true"
+run_step "knip" "npx knip --config knip.json --reporter json > \"$REPORTS_DIR/deps/knip.json\""
+run_step "depcheck" "npx depcheck --json > \"$REPORTS_DIR/deps/depcheck.json\""
+run_step "madge_json" "npx madge src --json > \"$REPORTS_DIR/deps/madge.json\""
+run_step "madge_circular" "npx madge src --circular --json > \"$REPORTS_DIR/deps/madge-circular.json\""
+if is_full; then
 run_step "madge_image" "command -v dot >/dev/null 2>&1 && npx madge src --image \"$REPORTS_DIR/deps/madge.svg\" || echo 'dot (graphviz) not installed; skipping image'"
-run_step "dependency_cruiser_json" "npx depcruise --config .dependency-cruiser.js src --output-type json > \"$REPORTS_DIR/arch/depcruise.json\" || true"
-run_step "dependency_cruiser_dot" "npx depcruise --config .dependency-cruiser.js src --output-type dot > \"$REPORTS_DIR/arch/depcruise.dot\" || true"
+fi
+run_step "dependency_cruiser_json" "rm -f \"$REPORTS_DIR/arch/depcruise.json\"; npx depcruise --config .dependency-cruiser.cjs src --output-type json > \"$REPORTS_DIR/arch/depcruise.json\"; test -s \"$REPORTS_DIR/arch/depcruise.json\""
+if is_full; then
+run_step "dependency_cruiser_dot" "npx depcruise --config .dependency-cruiser.cjs src --output-type dot > \"$REPORTS_DIR/arch/depcruise.dot\""
+fi
+if is_full; then
 run_step "dependency_cruiser_svg" "command -v dot >/dev/null 2>&1 && dot -Tsvg \"$REPORTS_DIR/arch/depcruise.dot\" -o \"$REPORTS_DIR/arch/depcruise.svg\" || echo 'dot (graphviz) not installed; skipping svg'"
+fi
 
-run_step "ts_prune" "npx ts-prune -p tsconfig.json > \"$REPORTS_DIR/deps/ts-prune.txt\" || true"
-run_step "unimported" "npx unimported --config .unimportedrc.json > \"$REPORTS_DIR/deps/unimported.txt\" || true"
+run_step "ts_prune" "npx ts-prune -p tsconfig.json > \"$REPORTS_DIR/deps/ts-prune.txt\""
+run_step "unimported" "npx unimported --config .unimportedrc.json > \"$REPORTS_DIR/deps/unimported.txt\""
 
 # ----------------------------
 # Architecture / complexity / meta
 # ----------------------------
-run_step "plato" "npx plato -r -d \"$REPORTS_DIR/complexity/plato\" src || true"
-run_step "cloc_json" "npx cloc src --json --out \"$REPORTS_DIR/meta/cloc.json\" || true"
-run_step "cloc_text" "npx cloc src > \"$REPORTS_DIR/meta/cloc.txt\" || true"
+if is_full; then
+run_step "plato" "npx plato -r -d \"$REPORTS_DIR/complexity/plato\" src"
+fi
+run_step "cloc_json" "npx cloc src --json --out \"$REPORTS_DIR/metrics/cloc.json\""
+if is_full; then
+run_step "cloc_text" "npx cloc src > \"$REPORTS_DIR/metrics/cloc.txt\""
+fi
 
 # ----------------------------
 # Security analysis
 # ----------------------------
-run_step "npm_audit_json" "npm audit --json > \"$REPORTS_DIR/security/npm-audit.json\" || true"
-run_step "retire_js" "npx retire --outputformat json --outputpath \"$REPORTS_DIR/security/retire.json\" || true"
-run_step "snyk_test_json" "npx snyk test --json > \"$REPORTS_DIR/security/snyk.json\" || true"
-run_step "snyk_test_sarif" "npx snyk test --sarif > \"$REPORTS_DIR/security/snyk.sarif\" || true"
-run_step "snyk_code_json" "npx snyk code test --json > \"$REPORTS_DIR/security/snyk-code.json\" || true"
+run_step "npm_audit_json" "npm audit --json > \"$REPORTS_DIR/security/npm-audit.json\""
+run_step "retire_js" "npx retire --outputformat json --outputpath \"$REPORTS_DIR/security/retire.json\""
+run_step "snyk_test_json" "npx snyk test --json > \"$REPORTS_DIR/security/snyk.json\""
+run_step "snyk_test_sarif" "npx snyk test --sarif > \"$REPORTS_DIR/security/snyk.sarif\""
+run_step "snyk_code_json" "npx snyk code test --json > \"$REPORTS_DIR/security/snyk-code.json\""
 run_step "osv_scanner" "command -v osv-scanner >/dev/null 2>&1 && osv-scanner --format json --output \"$REPORTS_DIR/security/osv.json\" . || echo 'osv-scanner not installed; skipping'"
 
 # ----------------------------
 # Licenses / compliance (lightweight)
 # ----------------------------
-run_step "license_checker" "npx license-checker --json > \"$REPORTS_DIR/licenses/licenses.json\" || true"
+run_step "license_checker" "npx license-checker --json > \"$REPORTS_DIR/licenses/licenses.json\""
 
 # ----------------------------
 # Bundle / build analysis
 # ----------------------------
-run_step "vite_build_analyze" "ANALYZE=1 npx vite build || true"
+if is_full; then
+run_step "vite_build_analyze" "ANALYZE=1 npx vite build"
+fi
+if is_full; then
 run_step "source_map_explorer" "ls dist/assets/*.js >/dev/null 2>&1 && npx source-map-explorer \"dist/assets/*.js\" --html \"$REPORTS_DIR/bundle/source-map-explorer.html\" || echo 'No dist/assets/*.js (build failed?); skipping'"
+fi
 
 # ----------------------------
 # Docs / API surface
 # ----------------------------
-run_step "jsdoc" "npx jsdoc -c jsdoc.json || true"
-run_step "typedoc" "npx typedoc --options typedoc.json || true"
-run_step "api_extractor" "npx api-extractor run --local --config api-extractor.json || true"
+if is_full; then
+run_step "jsdoc" "npx jsdoc -c jsdoc.json"
+fi
+if is_full; then
+run_step "typedoc" "npx typedoc --options typedoc.json"
+fi
+if is_full; then
+run_step "api_extractor" "npx api-extractor run --local --config api-extractor.json"
+fi
 
 # ----------------------------
 # SonarQube (local) - optional
 # ----------------------------
-run_step "sonarqube_scanner" "if [ -n \"${SONARQUBE_TOKEN:-}\" ]; then SONAR_HOST_URL=\"${SONAR_HOST_URL:-http://localhost:9000}\"; SONAR_TOKEN=\"$SONARQUBE_TOKEN\" npx sonarqube-scanner -Dsonar.host.url=\"$SONAR_HOST_URL\"; if [ -f .scannerwork/report-task.txt ]; then cp .scannerwork/report-task.txt \"$REPORTS_DIR/sonar/report-task.txt\"; fi; if [ -f \"$REPORTS_DIR/sonar/report-task.txt\" ]; then awk -F= '/^dashboardUrl=/{print \$2}' \"$REPORTS_DIR/sonar/report-task.txt\" > \"$REPORTS_DIR/sonar/dashboard-url.txt\" || true; fi; else echo \"SONARQUBE_TOKEN not set; skipping\"; fi"
+run_step "sonarqube_scanner" "if [ -n \"${SONARQUBE_TOKEN:-}\" ]; then SONAR_HOST_URL=\"${SONAR_HOST_URL:-http://localhost:9000}\"; SONAR_TOKEN=\"$SONARQUBE_TOKEN\" npx sonarqube-scanner -Dsonar.host.url=\"$SONAR_HOST_URL\"; if [ -f .scannerwork/report-task.txt ]; then cp .scannerwork/report-task.txt \"$REPORTS_DIR/sonar/report-task.txt\"; fi; if [ -f \"$REPORTS_DIR/sonar/report-task.txt\" ]; then sed -n 's/^dashboardUrl=//p' \"$REPORTS_DIR/sonar/report-task.txt\" > \"$REPORTS_DIR/sonar/dashboard-url.txt\" || true; fi; else echo \"SONARQUBE_TOKEN not set; skipping\"; fi"
 
 # ----------------------------
 # SonarQube exports (overall report)

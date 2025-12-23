@@ -89,12 +89,6 @@ lint: install
 format: install
 	@echo "format: prettier --write"
 	npm run format
-	npm run format:sh || true
-
-format-check: install
-	@echo "format: prettier --check (scoped)"
-	npm run format:check
-	npm run format:check:sh || true
 
 test: install
 	@echo "test: node --test"
@@ -246,21 +240,15 @@ snapshot: clean
 		-x "reports/*"
 
 zip: report
-	$(call require_cmd,zip)
-	@mkdir -p "$(RELEASES_DIR)"; \
-	ts="$$(date +%Y%m%d-%H%M%S)"; \
-	out="$(RELEASES_DIR)/$(PROJECT)-reports-$$ts.zip"; \
-	rm -f "$$out"; \
-	echo "zip: $$out"; \
-	zip -qr "$$out" \
-		reports \
-		Makefile package.json package-lock.json \
-		eslint.config.js vite.config.js tsconfig.json \
-		knip.json .dependency-cruiser.js .unimportedrc.json \
-		jsdoc.json typedoc.json api-extractor.json sonar-project.properties \
-		scripts/report/run.sh \
-		netlify.toml README.md .gitignore \
-		-x "node_modules/*" -x ".scannerwork/*" -x ".sonar/*" -x "dist/*" -x ".git/*" -x ".netlify/*" -x "releases/*"
+	@mkdir -p releases
+	@ZIP="releases/anqr-reports-$$(date +%Y%m%d-%H%M%S).zip"; \
+	zip -r "$$ZIP" \
+	  reports/summary.txt reports/summary.json reports/summary.tsv \
+	  reports/sonar reports/eslint reports/deps reports/security reports/licenses \
+	  reports/metrics reports/arch \
+	  -x "reports/complexity/*" "reports/docs/*" "reports/bundle/*" "reports/logs/*" \
+	     "**/*.html" "**/*.css" "**/*.svg" "**/*.dot"; \
+	echo "created $$ZIP"
 
 # ----------------------------
 # Help
