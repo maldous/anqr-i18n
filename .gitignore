@@ -34,7 +34,7 @@ releases/
 .env.*.local
 
 # Local Netlify folder
-.netlify
+# .netlify
 
 # Sonar
 .scannerwork/
