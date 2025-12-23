@@ -1,28 +1,15 @@
-import generateDitheredMatrix from "../lib/dithered-qr/generate.ts";
+import generateDitheredMatrix from "./generate.ts";
+import qrcode from "../../vendor/lib/qrcode-generator/qrcode.mjs";
 
 export class QRGenerator {
   constructor() {
-    this.qrcode = null;
-    this.loadLibrary();
+    this.qrcode = qrcode;
   }
 
   async loadLibrary() {
-    if (window.qrcode) {
-      this.qrcode = window.qrcode;
-      return;
-    }
-
-    return new Promise((resolve) => {
-      const check = () => {
-        if (window.qrcode) {
-          this.qrcode = window.qrcode;
-          resolve();
-        } else {
-          setTimeout(check, 50);
-        }
-      };
-      check();
-    });
+    // Library is imported synchronously via ES module
+    // This method is kept for backwards compatibility
+    return Promise.resolve();
   }
 
   async generate(config, overlayCanvas = null) {

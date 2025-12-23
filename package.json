@@ -66,8 +66,7 @@
     "vite": "^7.3.0"
   },
   "dependencies": {
-    "gifuct-js": "^2.1.2",
-    "qr": "^0.5.1"
+    "gifuct-js": "^2.1.2"
   },
   "engines": {
     "node": ">=18"
