@@ -12,7 +12,7 @@ DIST_DIR     := dist
 RELEASES_DIR := releases
 
 .DEFAULT_GOAL := help
-.PHONY: help all doctor install dev build preview serve clean clean_dist lint format format_check test outdated update audit info release deploy commit push ci netlify_status netlify_open update_qrcode adsense_check
+.PHONY: help all doctor install dev build preview serve clean clean_dist lint format test check outdated update audit info release deploy zip commit push ci netlify_status netlify_open update_qrcode adsense_check
 
 # ----------------------------
 # Helpers
@@ -89,12 +89,12 @@ format: install
 	@echo "format: prettier --write"
 	npm run format
 
-format_check: install
-	@echo "format_check: prettier --check"
-	npm run format:check
+test: install
+	@echo "test: node --test"
+	npm run test
 
-test: lint build
-	@echo "test: lint + build (no unit tests configured)"
+check: lint test build
+	@echo "check: ok"
 
 # ----------------------------
 # Dependency maintenance
@@ -144,11 +144,6 @@ info: doctor
 	@echo "npm:  $$(npm -v)"
 	@echo "git:  $$(command -v git >/dev/null 2>&1 && git --version || echo 'not installed')"
 	@echo "netlify: $$(command -v netlify >/dev/null 2>&1 && netlify --version || echo 'not installed')"
-	@if test -f .netlify/state.json; then \
-		echo "netlify_site_id: $$(node -pe \"require('./.netlify/state.json').siteId\"); \
-	else \
-		echo "netlify_site_id: (not linked - run 'netlify init' or set NETLIFY_SITE_ID)"; \
-	fi
 
 release: build
 	$(call require_cmd,zip)
@@ -207,11 +202,21 @@ push:
 	git push
 
 ci: doctor
-	@echo "ci: install + format_check + lint + build"
+	@echo "ci: install + lint + test + build"
 	npm install
-	npm run format:check
 	npm run lint
+	npm run test
 	npm run build
+
+# ----------------------------
+# Shareable zip (project snapshot)
+# ----------------------------
+zip: clean
+	$(call require_cmd,zip)
+	@out="../$(PROJECT).zip"; \
+	rm -f "$$out"; \
+	echo "zip: $$out"; \
+	zip -qr "$$out" . -x ".git/*"
 
 # ----------------------------
 # Help
@@ -229,7 +234,6 @@ help:
 	@echo "Quality:"
 	@echo "  make lint            ESLint"
 	@echo "  make format          Prettier write"
-	@echo "  make format_check    Prettier check"
 	@echo "  make test            Lint + build"
 	@echo ""
 	@echo "Maintenance:"

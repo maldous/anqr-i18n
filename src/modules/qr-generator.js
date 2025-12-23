@@ -89,9 +89,6 @@ export class QRGenerator {
       );
     }
 
-    // For mosaic mode, we need to draw ALL cells (both dark and white)
-    const isMosaicMode = config.overlayMode === "mosaic" && overlayData;
-
     // For true dither mode, we modify which modules are on/off
     let ditherPattern = null;
     if (config.overlayMode === "dither" && overlayData) {
@@ -269,7 +266,7 @@ export class QRGenerator {
               }
               break;
 
-            case "mosaic":
+            case "mosaic": {
               // Mosaic fills EVERY cell with image colors - reveals full image
               // Dark modules get actual color, white spaces get lighter version
               shouldDrawCell = true; // Draw all cells
@@ -298,6 +295,7 @@ export class QRGenerator {
                 }
               }
               break;
+            }
           }
         }
 
