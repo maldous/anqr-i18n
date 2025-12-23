@@ -6,7 +6,9 @@ module.exports = {
       path: ["node_modules"],
     },
     exclude: {
-      path: ["(^node_modules)|(^dist)|(^reports)|(^releases)|(^public/qrcode\\.js$)"],
+      path: [
+        "(^node_modules)|(^dist)|(^reports)|(^releases)|(^public/qrcode\\.js$)",
+      ],
     },
     tsPreCompilationDeps: false,
   },

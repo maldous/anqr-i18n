@@ -7,7 +7,6 @@ set -u
 REPORT_PROFILE="${REPORT_PROFILE:-curated}"
 is_full() { [ "$REPORT_PROFILE" = "full" ] || [ "${REPORTS_FULL:-0}" = "1" ]; }
 
-
 ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)"
 cd "$ROOT_DIR"
 
@@ -52,7 +51,7 @@ run_step "prettier_check" "npx prettier --check ."
 run_step "tsc_noemit" "npx tsc --noEmit -p tsconfig.json --pretty false"
 run_step "eslint_json" "npx eslint \"src/**/*.{js,ts,mjs,cjs}\" -f json --output-file \"$REPORTS_DIR/eslint/eslint.json\""
 if is_full; then
-run_step "eslint_stylish" "npx eslint \"src/**/*.{js,ts,mjs,cjs}\" -f stylish > \"$REPORTS_DIR/eslint/eslint.txt\""
+	run_step "eslint_stylish" "npx eslint \"src/**/*.{js,ts,mjs,cjs}\" -f stylish > \"$REPORTS_DIR/eslint/eslint.txt\""
 fi
 run_step "eslint_print_config" "npx eslint --print-config src/main.js > \"$REPORTS_DIR/eslint/print-config.json\""
 
@@ -64,14 +63,14 @@ run_step "depcheck" "npx depcheck --json > \"$REPORTS_DIR/deps/depcheck.json\""
 run_step "madge_json" "npx madge src --json > \"$REPORTS_DIR/deps/madge.json\""
 run_step "madge_circular" "npx madge src --circular --json > \"$REPORTS_DIR/deps/madge-circular.json\""
 if is_full; then
-run_step "madge_image" "command -v dot >/dev/null 2>&1 && npx madge src --image \"$REPORTS_DIR/deps/madge.svg\" || echo 'dot (graphviz) not installed; skipping image'"
+	run_step "madge_image" "command -v dot >/dev/null 2>&1 && npx madge src --image \"$REPORTS_DIR/deps/madge.svg\" || echo 'dot (graphviz) not installed; skipping image'"
 fi
 run_step "dependency_cruiser_json" "rm -f \"$REPORTS_DIR/arch/depcruise.json\"; npx depcruise --config .dependency-cruiser.cjs src --output-type json > \"$REPORTS_DIR/arch/depcruise.json\"; test -s \"$REPORTS_DIR/arch/depcruise.json\""
 if is_full; then
-run_step "dependency_cruiser_dot" "npx depcruise --config .dependency-cruiser.cjs src --output-type dot > \"$REPORTS_DIR/arch/depcruise.dot\""
+	run_step "dependency_cruiser_dot" "npx depcruise --config .dependency-cruiser.cjs src --output-type dot > \"$REPORTS_DIR/arch/depcruise.dot\""
 fi
 if is_full; then
-run_step "dependency_cruiser_svg" "command -v dot >/dev/null 2>&1 && dot -Tsvg \"$REPORTS_DIR/arch/depcruise.dot\" -o \"$REPORTS_DIR/arch/depcruise.svg\" || echo 'dot (graphviz) not installed; skipping svg'"
+	run_step "dependency_cruiser_svg" "command -v dot >/dev/null 2>&1 && dot -Tsvg \"$REPORTS_DIR/arch/depcruise.dot\" -o \"$REPORTS_DIR/arch/depcruise.svg\" || echo 'dot (graphviz) not installed; skipping svg'"
 fi
 
 run_step "ts_prune" "npx ts-prune -p tsconfig.json > \"$REPORTS_DIR/deps/ts-prune.txt\""
@@ -81,11 +80,11 @@ run_step "unimported" "npx unimported --config .unimportedrc.json > \"$REPORTS_D
 # Architecture / complexity / meta
 # ----------------------------
 if is_full; then
-run_step "plato" "npx plato -r -d \"$REPORTS_DIR/complexity/plato\" src"
+	run_step "plato" "npx plato -r -d \"$REPORTS_DIR/complexity/plato\" src"
 fi
 run_step "cloc_json" "npx cloc src --json --out \"$REPORTS_DIR/metrics/cloc.json\""
 if is_full; then
-run_step "cloc_text" "npx cloc src > \"$REPORTS_DIR/metrics/cloc.txt\""
+	run_step "cloc_text" "npx cloc src > \"$REPORTS_DIR/metrics/cloc.txt\""
 fi
 
 # ----------------------------
@@ -107,23 +106,23 @@ run_step "license_checker" "npx license-checker --json > \"$REPORTS_DIR/licenses
 # Bundle / build analysis
 # ----------------------------
 if is_full; then
-run_step "vite_build_analyze" "ANALYZE=1 npx vite build"
+	run_step "vite_build_analyze" "ANALYZE=1 npx vite build"
 fi
 if is_full; then
-run_step "source_map_explorer" "ls dist/assets/*.js >/dev/null 2>&1 && npx source-map-explorer \"dist/assets/*.js\" --html \"$REPORTS_DIR/bundle/source-map-explorer.html\" || echo 'No dist/assets/*.js (build failed?); skipping'"
+	run_step "source_map_explorer" "ls dist/assets/*.js >/dev/null 2>&1 && npx source-map-explorer \"dist/assets/*.js\" --html \"$REPORTS_DIR/bundle/source-map-explorer.html\" || echo 'No dist/assets/*.js (build failed?); skipping'"
 fi
 
 # ----------------------------
 # Docs / API surface
 # ----------------------------
 if is_full; then
-run_step "jsdoc" "npx jsdoc -c jsdoc.json"
+	run_step "jsdoc" "npx jsdoc -c jsdoc.json"
 fi
 if is_full; then
-run_step "typedoc" "npx typedoc --options typedoc.json"
+	run_step "typedoc" "npx typedoc --options typedoc.json"
 fi
 if is_full; then
-run_step "api_extractor" "npx api-extractor run --local --config api-extractor.json"
+	run_step "api_extractor" "npx api-extractor run --local --config api-extractor.json"
 fi
 
 # ----------------------------
