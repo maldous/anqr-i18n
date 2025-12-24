@@ -228,7 +228,7 @@ class ANQRApp {
       this.stopAnimation();
 
       if (this.overlayFrames.length > 1) {
-        // Animated overlay
+        // Animated overlay (GIF input)
         this.currentFrames = [];
         for (const frame of this.overlayFrames) {
           const qrFrame = await this.qrGenerator.generate(config, frame);
@@ -246,11 +246,11 @@ class ANQRApp {
 
         this.startAnimation(config.animationSpeed, config.loopAnimation);
       } else {
-        // Single frame
+        // Single frame (all blend modes including blue-noise return single canvas)
         const overlay =
           this.overlayFrames.length === 1 ? this.overlayFrames[0] : null;
-        const frame = await this.qrGenerator.generate(config, overlay);
-        this.currentFrames = [frame];
+        const result = await this.qrGenerator.generate(config, overlay);
+        this.currentFrames = [result];
         this.renderFrame(0);
         document.getElementById("frameIndicator").hidden = true;
       }

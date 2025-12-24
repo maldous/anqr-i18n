@@ -1,4 +1,5 @@
 import generateDitheredMatrix from "./generate.ts";
+import { generateBlueNoiseDithered } from "./blue-noise-dither.ts";
 import qrcode from "../../vendor/lib/qrcode-generator/qrcode.mjs";
 
 export class QRGenerator {
@@ -32,6 +33,14 @@ export class QRGenerator {
     if (config.overlayMode === "dithered" && overlayCanvas) {
       return this.generateDitheredSubpixelQR(
         null,
+        { ...config, typeNumber },
+        overlayCanvas,
+      );
+    }
+
+    // Blue-noise mode generates animated frames with temporal dithering
+    if (config.overlayMode === "blue-noise" && overlayCanvas) {
+      return this.generateBlueNoiseQR(
         { ...config, typeNumber },
         overlayCanvas,
       );
@@ -802,6 +811,84 @@ export class QRGenerator {
           // Use the actual color from the dithered result
           // For dark pixels: use the color (which may be a dark shade)
           // For light pixels: use the color (which may be a light shade)
+          ctx.fillStyle = `rgb(${color.r},${color.g},${color.b})`;
+          ctx.fillRect(dx, dy, pixelSize, pixelSize);
+        } else {
+          // B&W mode or no overlay: use simple foreground color
+          if (isDark) {
+            ctx.fillStyle = config.fgColor;
+            ctx.fillRect(dx, dy, pixelSize, pixelSize);
+          }
+        }
+      }
+    }
+
+    return canvas;
+  }
+
+  /**
+   * Generate QR with blue-noise dithering
+   * Returns a single canvas (consistent with other blend modes)
+   *
+   * Features:
+   * - Blue-noise dithering for high-quality image representation
+   * - Data points preserved for QR scannability (same approach as error diffusion)
+   * - Only free points are dithered using blue noise threshold
+   * - Intensity slider controls blend between QR and image
+   */
+  generateBlueNoiseQR(config, overlayCanvas) {
+    const scale = 3;
+
+    // Use the new generateBlueNoiseDithered function that follows
+    // the same pattern as generateDitheredMatrix (preserves QR data points)
+    const blueNoiseResult = generateBlueNoiseDithered({
+      text: config.content,
+      ecc: config.errorCorrection,
+      version: config.typeNumber || 0,
+      scale,
+      overlayCanvas,
+      overlayIntensity: config.overlayIntensity,
+      colorMode: config.colorMode || 'color',
+    });
+
+    const { matrix: dithered, colors } = blueNoiseResult;
+    
+    const scaledCount = dithered.length;
+    const marginModules = Math.max(5, config.margin);
+    const subPixelSize = Math.max(1, Math.round(config.moduleSize / scale));
+    const effectiveModuleSize = subPixelSize * scale;
+    const marginPx = marginModules * effectiveModuleSize;
+    const size = scaledCount * subPixelSize + marginPx * 2;
+    const pixelSize = subPixelSize;
+
+    // Render to a single canvas
+    const canvas = document.createElement("canvas");
+    canvas.width = size;
+    canvas.height = size;
+    const ctx = canvas.getContext("2d");
+
+    ctx.imageSmoothingEnabled = false;
+
+    if (!config.transparentBg) {
+      ctx.fillStyle = config.bgColor;
+      ctx.fillRect(0, 0, size, size);
+    }
+
+    const useColorRendering = overlayCanvas && config.colorMode !== 'bw';
+
+    for (let y = 0; y < scaledCount; y++) {
+      for (let x = 0; x < scaledCount; x++) {
+        const isDark = dithered[y][x];
+        const color = colors[y][x];
+
+        // Skip white/light pixels unless doing color rendering
+        if (!isDark && !useColorRendering) continue;
+
+        const dx = marginPx + x * pixelSize;
+        const dy = marginPx + y * pixelSize;
+
+        if (useColorRendering) {
+          // Use the actual color from the dithered result
           ctx.fillStyle = `rgb(${color.r},${color.g},${color.b})`;
           ctx.fillRect(dx, dy, pixelSize, pixelSize);
         } else {
