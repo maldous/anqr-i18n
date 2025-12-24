@@ -1,6 +1,7 @@
-import generateDitheredMatrix from "./generate.ts";
-import { generateBlueNoiseDithered } from "./blue-noise-dither.ts";
 import qrcode from "../../vendor/lib/qrcode-generator/qrcode.mjs";
+
+import { generateBlueNoiseDithered } from "./blue-noise-dither.ts";
+import generateDitheredMatrix from "./generate.ts";
 
 export class QRGenerator {
   constructor() {
@@ -40,10 +41,7 @@ export class QRGenerator {
 
     // Blue-noise mode generates animated frames with temporal dithering
     if (config.overlayMode === "blue-noise" && overlayCanvas) {
-      return this.generateBlueNoiseQR(
-        { ...config, typeNumber },
-        overlayCanvas,
-      );
+      return this.generateBlueNoiseQR({ ...config, typeNumber }, overlayCanvas);
     }
 
     const qr = this.qrcode(typeNumber, config.errorCorrection);
@@ -761,7 +759,7 @@ export class QRGenerator {
       scale,
       overlayCanvas,
       overlayIntensity: config.overlayIntensity,
-      colorMode: config.colorMode || 'color',
+      colorMode: config.colorMode || "color",
     });
 
     const { matrix: dithered, colors } = ditheredResult;
@@ -793,20 +791,20 @@ export class QRGenerator {
     }
 
     // Determine if we should use color rendering
-    const useColorRendering = overlayCanvas && config.colorMode !== 'bw';
+    const useColorRendering = overlayCanvas && config.colorMode !== "bw";
 
     for (let y = 0; y < scaledCount; y++) {
       for (let x = 0; x < scaledCount; x++) {
         const isDark = dithered[y][x];
         const color = colors[y][x];
-        
+
         // Skip white/light pixels in the background (they're already the bg color)
         // unless we're doing color rendering with non-black/white colors
         if (!isDark && !useColorRendering) continue;
-        
+
         const dx = marginPx + x * pixelSize;
         const dy = marginPx + y * pixelSize;
-        
+
         if (useColorRendering) {
           // Use the actual color from the dithered result
           // For dark pixels: use the color (which may be a dark shade)
@@ -848,11 +846,11 @@ export class QRGenerator {
       scale,
       overlayCanvas,
       overlayIntensity: config.overlayIntensity,
-      colorMode: config.colorMode || 'color',
+      colorMode: config.colorMode || "color",
     });
 
     const { matrix: dithered, colors } = blueNoiseResult;
-    
+
     const scaledCount = dithered.length;
     const marginModules = Math.max(5, config.margin);
     const subPixelSize = Math.max(1, Math.round(config.moduleSize / scale));
@@ -874,7 +872,7 @@ export class QRGenerator {
       ctx.fillRect(0, 0, size, size);
     }
 
-    const useColorRendering = overlayCanvas && config.colorMode !== 'bw';
+    const useColorRendering = overlayCanvas && config.colorMode !== "bw";
 
     for (let y = 0; y < scaledCount; y++) {
       for (let x = 0; x < scaledCount; x++) {

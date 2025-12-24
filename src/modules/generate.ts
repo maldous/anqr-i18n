@@ -1,6 +1,6 @@
 /**
  * QR Code generation module using vendor/lib/qrcode-generator
- * 
+ *
  * This module wraps the vendor QR code generator library and provides
  * dithered matrix generation for image overlay effects.
  */
@@ -64,7 +64,7 @@ const ALIGNMENT_POSITIONS: (number[] | null)[] = [
   [6, 30, 58, 86, 114, 142, 170],
 ];
 
-export type ColorMode = 'color' | 'grayscale' | 'bw';
+export type ColorMode = "color" | "grayscale" | "bw";
 
 export interface GenerateOptions {
   text: string;
@@ -94,7 +94,7 @@ function isLocked(
   moduleCount: number,
   x: number,
   y: number,
-  scale: number
+  scale: number,
 ): boolean {
   const l = moduleCount / scale;
   const sx = Math.floor(x / scale);
@@ -156,7 +156,7 @@ function isData(x: number, y: number, scale: number): boolean {
  */
 function loadImageDataRGB(
   canvas: HTMLCanvasElement,
-  size: number
+  size: number,
 ): { r: number; g: number; b: number }[][] {
   const tempCanvas = document.createElement("canvas");
   tempCanvas.width = size;
@@ -194,7 +194,7 @@ function rgbToGray(r: number, g: number, b: number): number {
  * Convert RGB image data to grayscale
  */
 function convertToGrayscale(
-  imageData: { r: number; g: number; b: number }[][]
+  imageData: { r: number; g: number; b: number }[][],
 ): void {
   for (let y = 0; y < imageData.length; y++) {
     for (let x = 0; x < imageData[y].length; x++) {
@@ -213,7 +213,7 @@ function diffuseFreePointsRGB(
   imageData: { r: number; g: number; b: number }[][],
   moduleCount: number,
   scale: number,
-  colorMode: ColorMode
+  colorMode: ColorMode,
 ): void {
   const size = imageData.length;
 
@@ -227,7 +227,7 @@ function diffuseFreePointsRGB(
     y: number,
     errorR: number,
     errorG: number,
-    errorB: number
+    errorB: number,
   ): void {
     const a = canChange(x + 1, y);
     const b = canChange(x - 1, y + 1);
@@ -264,23 +264,23 @@ function diffuseFreePointsRGB(
       if (!canChange(x, y)) continue;
 
       const pixel = imageData[y][x];
-      
-      if (colorMode === 'bw') {
+
+      if (colorMode === "bw") {
         // Black & white: quantize to 0 or 1 based on luminance
         const gray = rgbToGray(pixel.r, pixel.g, pixel.b);
         const newVal = gray > 0.5 ? 1 : 0;
         const error = gray - newVal;
-        
+
         imageData[y][x] = { r: newVal, g: newVal, b: newVal };
         distributeError(x, y, error, error, error);
-      } else if (colorMode === 'grayscale') {
+      } else if (colorMode === "grayscale") {
         // Grayscale: quantize gray levels (4-level quantization for smoother gradients)
         const gray = rgbToGray(pixel.r, pixel.g, pixel.b);
         // Quantize to 4 levels: 0, 0.33, 0.67, 1
         const levels = 4;
         const newVal = Math.round(gray * (levels - 1)) / (levels - 1);
         const error = gray - newVal;
-        
+
         imageData[y][x] = { r: newVal, g: newVal, b: newVal };
         distributeError(x, y, error, error, error);
       } else {
@@ -290,11 +290,11 @@ function diffuseFreePointsRGB(
         const newR = Math.round(pixel.r * (levels - 1)) / (levels - 1);
         const newG = Math.round(pixel.g * (levels - 1)) / (levels - 1);
         const newB = Math.round(pixel.b * (levels - 1)) / (levels - 1);
-        
+
         const errorR = pixel.r - newR;
         const errorG = pixel.g - newG;
         const errorB = pixel.b - newB;
-        
+
         imageData[y][x] = { r: newR, g: newG, b: newB };
         distributeError(x, y, errorR, errorG, errorB);
       }
@@ -304,21 +304,21 @@ function diffuseFreePointsRGB(
 
 /**
  * Generate a dithered QR code matrix with color support
- * 
+ *
  * @param options - Generation options
  * @returns Object containing boolean matrix and RGB color data for each pixel
  */
 export default function generateDitheredMatrix(
-  options: GenerateOptions
+  options: GenerateOptions,
 ): DitheredResult {
-  const { 
-    text, 
-    ecc, 
-    version = 0, 
-    scale, 
-    overlayCanvas, 
+  const {
+    text,
+    ecc,
+    version = 0,
+    scale,
+    overlayCanvas,
     overlayIntensity = 50,
-    colorMode = 'color'
+    colorMode = "color",
   } = options;
 
   // Map error correction level
@@ -337,7 +337,7 @@ export default function generateDitheredMatrix(
   // Create scaled QR matrix and initialize colors
   const matrix: boolean[][] = [];
   const colors: RGB[][] = [];
-  
+
   for (let y = 0; y < scaledSize; y++) {
     const matrixRow: boolean[] = [];
     const colorRow: RGB[] = [];
@@ -363,7 +363,7 @@ export default function generateDitheredMatrix(
   const intensity = overlayIntensity / 100;
 
   // Convert to grayscale first if needed (affects the source data for dithering)
-  if (colorMode === 'grayscale' || colorMode === 'bw') {
+  if (colorMode === "grayscale" || colorMode === "bw") {
     convertToGrayscale(imageData);
   }
 
@@ -383,11 +383,11 @@ export default function generateDitheredMatrix(
       const pixel = imageData[y][x];
       const brightness = rgbToGray(pixel.r, pixel.g, pixel.b);
       const useImage = Math.random() < intensity;
-      
+
       if (useImage) {
         // For the boolean matrix: dark if brightness < 0.5
         matrix[y][x] = brightness < 0.5;
-        
+
         // For the color matrix: use the dithered RGB values (convert from 0-1 to 0-255)
         colors[y][x] = {
           r: Math.round(Math.max(0, Math.min(1, pixel.r)) * 255),

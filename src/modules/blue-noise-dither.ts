@@ -1,6 +1,6 @@
 /**
  * Blue Noise Dithering Module for QR Codes
- * 
+ *
  * Uses blue noise thresholding instead of Floyd-Steinberg error diffusion.
  * Follows the same structure as generate.ts to preserve QR scannability:
  * - Data points (center of each module) MUST preserve QR values
@@ -72,7 +72,7 @@ const ALIGNMENT_POSITIONS: (number[] | null)[] = [
 const BLUE_NOISE_TILE_SIZE = 64;
 const BLUE_NOISE_64: number[] = generateBlueNoiseTile();
 
-export type ColorMode = 'color' | 'grayscale' | 'bw';
+export type ColorMode = "color" | "grayscale" | "bw";
 
 export interface BlueNoiseOptions {
   text: string;
@@ -101,20 +101,20 @@ export interface BlueNoiseResult {
 function generateBlueNoiseTile(): number[] {
   const size = BLUE_NOISE_TILE_SIZE;
   const tile: number[] = new Array(size * size);
-  
+
   const phi = 1.618033988749895; // Golden ratio
-  
+
   for (let y = 0; y < size; y++) {
     for (let x = 0; x < size; x++) {
       // Interleaved gradient noise formula
       const ign = (52.9829189 * ((0.06711056 * x + 0.00583715 * y) % 1)) % 1;
       // Add golden ratio based offset for better distribution
-      const offset = ((x * phi + y * phi * phi) % 1);
+      const offset = (x * phi + y * phi * phi) % 1;
       // Combine and normalize
       tile[y * size + x] = (ign + offset * 0.5) % 1;
     }
   }
-  
+
   return tile;
 }
 
@@ -136,7 +136,7 @@ function isLocked(
   moduleCount: number,
   x: number,
   y: number,
-  scale: number
+  scale: number,
 ): boolean {
   const l = moduleCount / scale;
   const sx = Math.floor(x / scale);
@@ -199,7 +199,7 @@ function isData(x: number, y: number, scale: number): boolean {
  */
 function loadImageDataRGB(
   canvas: HTMLCanvasElement,
-  size: number
+  size: number,
 ): { r: number; g: number; b: number }[][] {
   const tempCanvas = document.createElement("canvas");
   tempCanvas.width = size;
@@ -237,7 +237,7 @@ function rgbToGray(r: number, g: number, b: number): number {
  * Convert RGB image data to grayscale
  */
 function convertToGrayscale(
-  imageData: { r: number; g: number; b: number }[][]
+  imageData: { r: number; g: number; b: number }[][],
 ): void {
   for (let y = 0; y < imageData.length; y++) {
     for (let x = 0; x < imageData[y].length; x++) {
@@ -256,7 +256,7 @@ function blueNoiseDitherFreePoints(
   imageData: { r: number; g: number; b: number }[][],
   moduleCount: number,
   scale: number,
-  colorMode: ColorMode
+  colorMode: ColorMode,
 ): void {
   const size = imageData.length;
 
@@ -269,12 +269,12 @@ function blueNoiseDitherFreePoints(
       const pixel = imageData[y][x];
       const threshold = sampleBlueNoise(x, y);
 
-      if (colorMode === 'bw') {
+      if (colorMode === "bw") {
         // Black & white: quantize to 0 or 1 using blue noise threshold
         const gray = rgbToGray(pixel.r, pixel.g, pixel.b);
         const newVal = gray > threshold ? 1 : 0;
         imageData[y][x] = { r: newVal, g: newVal, b: newVal };
-      } else if (colorMode === 'grayscale') {
+      } else if (colorMode === "grayscale") {
         // Grayscale: quantize using blue noise for each level decision
         const gray = rgbToGray(pixel.r, pixel.g, pixel.b);
         // 4 levels: 0, 0.33, 0.67, 1
@@ -289,7 +289,7 @@ function blueNoiseDitherFreePoints(
       } else {
         // Color mode: quantize each channel using blue noise
         const levels = 4;
-        
+
         function quantizeChannel(val: number, noiseOffset: number): number {
           const t = (threshold + noiseOffset) % 1;
           const scaled = val * (levels - 1);
@@ -298,7 +298,7 @@ function blueNoiseDitherFreePoints(
           const frac = scaled - low;
           return (frac > t ? high : low) / (levels - 1);
         }
-        
+
         // Use different noise offsets for R, G, B to avoid color banding
         imageData[y][x] = {
           r: quantizeChannel(pixel.r, 0),
@@ -312,21 +312,21 @@ function blueNoiseDitherFreePoints(
 
 /**
  * Generate a blue-noise dithered QR code matrix
- * 
+ *
  * @param options - Generation options
  * @returns Object containing boolean matrix and RGB color data for each pixel
  */
 export function generateBlueNoiseDithered(
-  options: BlueNoiseOptions
+  options: BlueNoiseOptions,
 ): BlueNoiseResult {
-  const { 
-    text, 
-    ecc, 
-    version = 0, 
-    scale, 
-    overlayCanvas, 
+  const {
+    text,
+    ecc,
+    version = 0,
+    scale,
+    overlayCanvas,
     overlayIntensity = 50,
-    colorMode = 'color'
+    colorMode = "color",
   } = options;
 
   // Map error correction level
@@ -344,7 +344,7 @@ export function generateBlueNoiseDithered(
   // Create scaled QR matrix and initialize colors
   const matrix: boolean[][] = [];
   const colors: RGB[][] = [];
-  
+
   for (let y = 0; y < scaledSize; y++) {
     const matrixRow: boolean[] = [];
     const colorRow: RGB[] = [];
@@ -370,7 +370,7 @@ export function generateBlueNoiseDithered(
   const intensity = overlayIntensity / 100;
 
   // Convert to grayscale first if needed
-  if (colorMode === 'grayscale' || colorMode === 'bw') {
+  if (colorMode === "grayscale" || colorMode === "bw") {
     convertToGrayscale(imageData);
   }
 
@@ -391,11 +391,11 @@ export function generateBlueNoiseDithered(
       const brightness = rgbToGray(pixel.r, pixel.g, pixel.b);
       // Use blue noise for intensity blending decision (consistent with the dithering approach)
       const useImage = sampleBlueNoise(x + 17, y + 31) < intensity;
-      
+
       if (useImage) {
         // For the boolean matrix: dark if brightness < 0.5
         matrix[y][x] = brightness < 0.5;
-        
+
         // For the color matrix: use the dithered RGB values (convert from 0-1 to 0-255)
         colors[y][x] = {
           r: Math.round(Math.max(0, Math.min(1, pixel.r)) * 255),
