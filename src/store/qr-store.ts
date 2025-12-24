@@ -673,7 +673,7 @@ export const useQRStore = create<QRState>((set, get) => ({
     type: 'static',
     framePick: 'all',
     cropEnabled: false,
-    cropRegion: { x: 0, y: 0, size: 1 },
+    cropRegion: { x: 0.5, y: 0.5, size: 1 },
     fit: 'cover',
     rotateDeg: 0,
     flipX: false,
