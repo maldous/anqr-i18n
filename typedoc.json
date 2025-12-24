@@ -1,8 +1,0 @@
-{
-  "entryPoints": ["src/main.js"],
-  "out": "reports/docs/typedoc",
-  "tsconfig": "tsconfig.json",
-  "includeVersion": true,
-  "logLevel": "Warn",
-  "plugin": []
-}

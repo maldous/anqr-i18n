@@ -1,7 +1,0 @@
-# robots.txt for ANQR - Animated QR Code Generator
-# https://anqr.aldous.info/
-
-User-agent: *
-Allow: /
-
-Sitemap: https://anqr.aldous.info/sitemap.xml
