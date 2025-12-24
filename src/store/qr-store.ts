@@ -1,0 +1,1031 @@
+import { create } from 'zustand'
+
+// Tier levels
+export type Tier = 'basic' | 'advanced' | 'professional'
+
+// Payload types - cleaned up list (removed closed/proprietary payment systems)
+export type PayloadKind = 
+  // Core
+  | 'plain_text' | 'url' | 'tel' | 'email' | 'sms' | 'geo' 
+  // Contact/Identity
+  | 'vcard' | 'mecard' | 'bizcard'
+  // Network/Device  
+  | 'wifi' | 'app_link'
+  // Calendar/Productivity
+  | 'event' | 'event_rsvp' | 'calendar_subscription'
+  // Documents/Media
+  | 'file_url' | 'cloud_link'
+  // Social/Communication
+  | 'social_profile' | 'messaging_link'
+  // Payments (open specs only)
+  | 'epc_sepa' | 'upi' | 'paynow' | 'promptpay' | 'pix' | 'crypto'
+  // Industrial/Enterprise
+  | 'gs1_digital_link'
+  // Marketing/Dynamic
+  | 'short_link' | 'utm_link'
+  // Custom
+  | 'custom'
+
+// QR encoding
+export type ECCLevel = 'L' | 'M' | 'Q' | 'H'
+export type MaskPattern = 'auto' | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7
+export type EncodingMode = 'auto' | 'numeric' | 'alphanumeric' | 'byte' | 'kanji'
+
+// Rendering
+export type ModuleStyle = 'square' | 'rounded' | 'dots' | 'diamond' | 'connected'
+export type FinderStyle = 'square' | 'rounded' | 'circle'
+export type AlignmentStyle = 'match_finder' | 'square' | 'rounded' | 'circle'
+export type TimingStyle = 'match_module' | 'solid' | 'dashed'
+export type GapMode = 'none' | 'inset' | 'stroke' | 'negative_space'
+export type GradientType = 'none' | 'linear' | 'radial' | 'conic'
+export type FrameStyle = 'none' | 'rounded_frame' | 'sticker' | 'tag'
+
+// Overlay
+export type OverlayMode = 
+  | 'center' | 'blend' | 'halftone' | 'mosaic' | 'gapfill' | 'brightness' | 'duotone'
+  | 'subpixel' | 'dithered' | 'blue-noise' 
+  | 'pixelate' | 'outline' | 'wave' | 'subpixel-size' | 'dither' | 'extreme'
+export type ColorMode = 'color' | 'grayscale' | 'bw'
+export type FitMode = 'cover' | 'contain' | 'stretch'
+export type OverlayType = 'static' | 'gif' | 'apng' | 'webp_anim' | 'video'
+
+// Dither - comprehensive algorithms
+export type DitherKind = 
+  // Error diffusion
+  | 'error_diffusion' 
+  // Ordered/threshold
+  | 'ordered_bayer' | 'ordered_clustered' | 'ordered_void_cluster'
+  | 'blue_noise_threshold' | 'true_dither'
+  // Noise-based
+  | 'blue_noise' | 'white_noise' | 'gaussian_noise' | 'triangular_noise'
+  // Hybrid/Advanced
+  | 'blue_noise_error_diffusion' | 'screened_blue_noise' | 'perceptual' | 'edge_aware' | 'adaptive_threshold' | 'temporal_blue_noise'
+
+export type DiffusionKernel = 
+  | 'floyd_steinberg' | 'jarvis_judice_ninke' | 'stucki' | 'burkes' 
+  | 'sierra' | 'sierra_2' | 'sierra_lite' | 'atkinson'
+
+export type OrderedMatrix = 
+  | 'bayer2' | 'bayer4' | 'bayer8' 
+  | 'clustered_dot' | 'void_cluster'
+
+// Output
+export type OutputFormat = 'png' | 'webp' | 'gif' | 'svg'
+export type GifQuantizer = 'median_cut' | 'neuquant' | 'octree'
+export type GifDither = 'off' | 'floyd' | 'ordered'
+
+// Safety
+export type SafetyMode = 'off' | 'balanced' | 'strict'
+
+// WiFi auth types
+export type WifiAuth = 'WPA' | 'WPA2' | 'WPA3' | 'WEP' | 'nopass'
+
+// VCard version
+export type VCardVersion = '2.1' | '3.0' | '4.0'
+
+// Gradient stop
+export interface GradientStop {
+  pos: number
+  color: string
+}
+
+// Crop region
+export interface CropRegion {
+  x: number
+  y: number
+  size: number
+}
+
+// URL helper
+export interface UrlHelper {
+  href: string
+  forceHttps: boolean
+  utmSource?: string
+  utmMedium?: string
+  utmCampaign?: string
+  utmTerm?: string
+  utmContent?: string
+}
+
+// Tel helper
+export interface TelHelper {
+  number: string
+}
+
+// Email helper
+export interface EmailHelper {
+  to: string
+  subject?: string
+  body?: string
+}
+
+// SMS helper
+export interface SmsHelper {
+  number: string
+  body?: string
+}
+
+// Geo helper
+export interface GeoHelper {
+  lat: number
+  lon: number
+  query?: string
+}
+
+// WiFi helper
+export interface WifiHelper {
+  ssid: string
+  auth: WifiAuth
+  password?: string
+  hidden: boolean
+  eapIdentity?: string
+  eapAnonymous?: string
+  eapPhase2?: string
+  eapCaCert?: string
+}
+
+// VCard helper
+export interface VCardHelper {
+  version: VCardVersion
+  fn?: string
+  n?: string
+  org?: string
+  title?: string
+  tel?: string[]
+  email?: string[]
+  url?: string
+  adr?: string[]
+  note?: string
+  photo?: string
+  bday?: string
+  role?: string
+  impp?: string
+  uid?: string
+}
+
+// MeCard helper
+export interface MeCardHelper {
+  n?: string
+  tel?: string
+  email?: string
+  adr?: string
+  org?: string
+  url?: string
+  note?: string
+  bday?: string
+  nickname?: string
+}
+
+// Event helper
+export interface EventHelper {
+  summary?: string
+  location?: string
+  description?: string
+  start?: string
+  end?: string
+  tz?: string
+  rrule?: string
+}
+
+// Crypto payment helper
+export interface CryptoHelper {
+  type: string
+  address: string
+  amount?: number
+  label?: string
+}
+
+// OTP Auth helper
+export interface OtpAuthHelper {
+  issuer?: string
+  account?: string
+  secret?: string
+  algorithm?: string
+  digits?: number
+  period?: number
+  counter?: number
+  type?: 'totp' | 'hotp'
+}
+
+// Main QR Store State
+export interface QRState {
+  // UI tier
+  tier: Tier
+  setTier: (tier: Tier) => void
+
+  // === PAYLOAD ===
+  payload: {
+    kind: PayloadKind
+    text: string
+    // Helpers
+    url: UrlHelper
+    tel: TelHelper
+    email: EmailHelper
+    sms: SmsHelper
+    geo: GeoHelper
+    wifi: WifiHelper
+    vcard: VCardHelper
+    mecard: MeCardHelper
+    event: EventHelper
+    crypto: CryptoHelper
+    otpauth: OtpAuthHelper
+    // Validation
+    validate: boolean
+    normalizeNewlines: boolean
+    trim: boolean
+    maxLenGuard: boolean
+  }
+  setPayloadKind: (kind: PayloadKind) => void
+  setPayloadText: (text: string) => void
+  setPayloadUrl: (url: Partial<UrlHelper>) => void
+  setPayloadTel: (tel: Partial<TelHelper>) => void
+  setPayloadEmail: (email: Partial<EmailHelper>) => void
+  setPayloadSms: (sms: Partial<SmsHelper>) => void
+  setPayloadGeo: (geo: Partial<GeoHelper>) => void
+  setPayloadWifi: (wifi: Partial<WifiHelper>) => void
+  setPayloadVCard: (vcard: Partial<VCardHelper>) => void
+  setPayloadMeCard: (mecard: Partial<MeCardHelper>) => void
+  setPayloadEvent: (event: Partial<EventHelper>) => void
+  setPayloadCrypto: (crypto: Partial<CryptoHelper>) => void
+  setPayloadOtpAuth: (otpauth: Partial<OtpAuthHelper>) => void
+  setPayloadValidation: (opts: { validate?: boolean; normalizeNewlines?: boolean; trim?: boolean; maxLenGuard?: boolean }) => void
+
+  // === QR ENCODING ===
+  qr: {
+    version: number // 0 = auto, 1-40
+    ecc: ECCLevel
+    mask: MaskPattern
+    maskLock: boolean
+    encodingMode: EncodingMode
+    eci: number
+    segmentOptimize: boolean
+    quietZoneModules: number
+    quietZoneMinEnforce: boolean
+    borderModulesExtra: number
+    // Advanced
+    structuredAppend: {
+      enable: boolean
+      index: number
+      count: number
+      parity: number
+    }
+    fnc1: 'off' | 'gs1_first' | 'gs1_second'
+    gs1AiMode: boolean
+    model: 'model2' | 'model1'
+    microQr: boolean
+    rmQr: boolean
+  }
+  setQrVersion: (version: number) => void
+  setQrEcc: (ecc: ECCLevel) => void
+  setQrMask: (mask: MaskPattern) => void
+  setQrMaskLock: (lock: boolean) => void
+  setQrEncodingMode: (mode: EncodingMode) => void
+  setQrQuietZone: (modules: number) => void
+  setQrQuietZoneMinEnforce: (enforce: boolean) => void
+  setQrStructuredAppend: (opts: Partial<QRState['qr']['structuredAppend']>) => void
+
+  // === RENDERING ===
+  render: {
+    modulePx: number
+    crispEdges: boolean
+    pixelSnap: 'floor' | 'round' | 'ceil'
+    moduleGapPercent: number
+    gapMode: GapMode
+    moduleStyle: ModuleStyle
+    finderStyle: FinderStyle
+    alignmentStyle: AlignmentStyle
+    timingStyle: TimingStyle
+    cornerRadius: number
+    dotRotationDeg: number
+    eyeOuterStyle: FinderStyle
+    eyeInnerStyle: FinderStyle
+    eyeScale: number
+    frameStyle: FrameStyle
+    frameText: string
+    // Colors
+    fgColor: string
+    bgColor: string
+    bgTransparent: boolean
+    palette: string[]
+    gradient: {
+      type: GradientType
+      stops: GradientStop[]
+    }
+    perModuleColorMode: 'solid' | 'by_brightness' | 'by_position' | 'by_overlay' | 'by_cluster'
+    contrastGuard: boolean
+    minContrastRatio: number
+  }
+  setRenderModulePx: (px: number) => void
+  setRenderCrispEdges: (crisp: boolean) => void
+  setRenderModuleGap: (percent: number) => void
+  setRenderGapMode: (mode: GapMode) => void
+  setRenderModuleStyle: (style: ModuleStyle) => void
+  setRenderFinderStyle: (style: FinderStyle) => void
+  setRenderAlignmentStyle: (style: AlignmentStyle) => void
+  setRenderTimingStyle: (style: TimingStyle) => void
+  setRenderCornerRadius: (radius: number) => void
+  setRenderFrameStyle: (style: FrameStyle) => void
+  setRenderFrameText: (text: string) => void
+  setRenderFgColor: (color: string) => void
+  setRenderBgColor: (color: string) => void
+  setRenderBgTransparent: (transparent: boolean) => void
+  setRenderGradient: (gradient: Partial<QRState['render']['gradient']>) => void
+
+  // === OVERLAY ===
+  overlay: {
+    enabled: boolean
+    file: File | null
+    url: string
+    type: OverlayType
+    framePick: 'all' | 'every_n' | 'max_frames' | 'duration_limit'
+    // Crop & transform
+    cropEnabled: boolean
+    cropRegion: CropRegion
+    fit: FitMode
+    rotateDeg: number
+    flipX: boolean
+    flipY: boolean
+    // Preprocess
+    colorMode: ColorMode
+    invert: boolean
+    brightness: number
+    contrast: number
+    gamma: number
+    saturation: number
+    hueRotateDeg: number
+    blurPx: number
+    sharpen: number
+    posterizeLevels: number
+    threshold: number
+    edgeDetect: 'off' | 'sobel' | 'canny'
+    // Blend
+    mode: OverlayMode
+    intensity: number
+    preserveFinders: boolean
+    preserveTiming: boolean
+    preserveAlignment: boolean
+    protectFormatInfo: boolean
+    protectVersionInfo: boolean
+    // Subpixel
+    subpixelGridSize: '2x2' | '3x3' | '4x4'
+    subpixelCenterRule: 'strict' | 'halftone_center'
+    subpixelNeutralColor: string
+    subpixelFinderOverride: 'solid' | 'stylized'
+    // Dither
+    ditherKind: DitherKind
+    ditherStrength: number
+    ditherSerpentine: boolean
+    diffusionKernel: DiffusionKernel
+    orderedMatrix: OrderedMatrix
+    blueNoiseTileSize: number
+    blueNoiseSeed: number
+    colorDither: 'none' | 'per_channel' | 'perceptual'
+    // Halftone
+    halftoneCell: 'per_module' | 'n×n'
+    halftoneDotShape: 'circle' | 'square' | 'line'
+    duotoneColors: [string, string]
+    brightnessCurve: 'linear' | 's-curve' | 'gamma'
+    // ECC aware
+    eccAwareEnabled: boolean
+    eccAwareRiskBudget: number
+    eccAwareWeightMap: 'distance_to_finders' | 'block_heatmap' | 'empirical_scan_heatmap'
+    // GIF specific
+    gifUseFrameDelays: boolean
+    gifMaxFps: number
+    gifDisposalHandling: 'respect' | 'simplify'
+  }
+  setOverlayEnabled: (enabled: boolean) => void
+  setOverlayFile: (file: File | null) => void
+  setOverlayUrl: (url: string) => void
+  setOverlayType: (type: OverlayType) => void
+  setOverlayCrop: (crop: Partial<{ enabled: boolean; region: CropRegion }>) => void
+  setOverlayFit: (fit: FitMode) => void
+  setOverlayRotate: (deg: number) => void
+  setOverlayFlip: (flip: { x?: boolean; y?: boolean }) => void
+  setOverlayColorMode: (mode: ColorMode) => void
+  setOverlayInvert: (invert: boolean) => void
+  setOverlayBrightness: (brightness: number) => void
+  setOverlayContrast: (contrast: number) => void
+  setOverlayGamma: (gamma: number) => void
+  setOverlayMode: (mode: OverlayMode) => void
+  setOverlayIntensity: (intensity: number) => void
+  setOverlayPreserveFinders: (preserve: boolean) => void
+  setOverlayPreserveTiming: (preserve: boolean) => void
+  setOverlayPreserveAlignment: (preserve: boolean) => void
+  setOverlayDitherKind: (kind: DitherKind) => void
+  setOverlayDitherStrength: (strength: number) => void
+  setOverlayDiffusionKernel: (kernel: DiffusionKernel) => void
+
+  // === ANIMATION ===
+  animation: {
+    speedMs: number
+    loop: boolean
+    bounce: boolean
+    playing: boolean
+    startFrame: number
+    maxFrames: number
+    frameStep: number
+    perFrameDelay: number[]
+    interpolate: 'none' | 'crossfade' | 'morph'
+    temporalDither: 'off' | 'blue_noise' | 'flicker_safe'
+    seed: number
+    pattern: 'none' | 'pulse' | 'wave' | 'scanline' | 'shimmer' | 'drift'
+    moduleJitterPx: number
+    colorCycle: boolean
+  }
+  setAnimationSpeedMs: (speed: number) => void
+  setAnimationLoop: (loop: boolean) => void
+  setAnimationBounce: (bounce: boolean) => void
+  setAnimationPlaying: (playing: boolean) => void
+  setAnimationStartFrame: (frame: number) => void
+  setAnimationMaxFrames: (frames: number) => void
+  setAnimationFrameStep: (step: number) => void
+
+  // === OUTPUT ===
+  output: {
+    format: OutputFormat
+    widthPx: number
+    heightPx: number
+    quality: number
+    filename: string
+    includeQuietZone: boolean
+    dpi: number
+    bgOverride: string
+    // GIF encoder
+    gifPaletteSize: number
+    gifQuantizer: GifQuantizer
+    gifDither: GifDither
+    gifTransparentColor: string
+    gifDisposal: string
+    // SVG
+    svgTrueVector: boolean
+    svgShapePrecision: 'pixel' | 'precise'
+    svgEmbedRasterOverlay: boolean
+    svgMetadata: Record<string, string>
+    // Extra formats
+    formatExtra: 'none' | 'pdf' | 'eps' | 'apng' | 'animated_webp'
+  }
+  setOutputFormat: (format: OutputFormat) => void
+  setOutputWidth: (width: number) => void
+  setOutputHeight: (height: number) => void
+  setOutputQuality: (quality: number) => void
+  setOutputFilename: (filename: string) => void
+  setOutputGifPaletteSize: (size: number) => void
+  setOutputGifQuantizer: (quantizer: GifQuantizer) => void
+  setOutputSvgTrueVector: (trueVector: boolean) => void
+
+  // === WATERMARK ===
+  watermark: {
+    enabled: boolean
+    kind: 'text' | 'image' | 'pattern'
+    text: string
+    image: File | null
+    position: 'center' | 'corners' | 'edges' | 'behind' | 'quiet_zone'
+    opacity: number
+    blend: 'normal' | 'multiply' | 'screen' | 'overlay'
+  }
+  setWatermarkEnabled: (enabled: boolean) => void
+  setWatermarkKind: (kind: QRState['watermark']['kind']) => void
+  setWatermarkText: (text: string) => void
+  setWatermarkPosition: (position: QRState['watermark']['position']) => void
+  setWatermarkOpacity: (opacity: number) => void
+
+  // === METADATA ===
+  metadata: {
+    title: string
+    author: string
+    copyright: string
+    license: string
+    description: string
+    creationTime: boolean
+    customKv: Array<{ k: string; v: string }>
+  }
+  setMetadata: (meta: Partial<QRState['metadata']>) => void
+
+  // === SAFETY ===
+  safety: {
+    mode: SafetyMode
+    minModulePx: number
+    minQuietZoneModules: number
+    lockFinders: boolean
+    lockTiming: boolean
+    lockAlign: boolean
+    lockFormat: boolean
+    lockVersion: boolean
+    maxOverlayIntensityByEcc: Record<ECCLevel, number>
+  }
+  setSafetyMode: (mode: SafetyMode) => void
+  setSafetyMinModulePx: (px: number) => void
+  setSafetyLocks: (locks: Partial<Pick<QRState['safety'], 'lockFinders' | 'lockTiming' | 'lockAlign' | 'lockFormat' | 'lockVersion'>>) => void
+
+  // === QA / ANALYSIS ===
+  qa: {
+    contrastCheck: boolean
+    simulateBlurPx: number
+    simulateNoise: number
+    simulateRotationDeg: number
+    scoreReadability: boolean
+    showHeatmap: boolean
+  }
+  setQaContrastCheck: (check: boolean) => void
+  setQaSimulateBlur: (blur: number) => void
+  setQaShowHeatmap: (show: boolean) => void
+
+  // === AUTO-TUNING ===
+  auto: {
+    pickVersion: boolean
+    pickMask: boolean
+    pickEcc: boolean
+    reduceIntensityUntilSafe: boolean
+  }
+  setAutoPickVersion: (pick: boolean) => void
+  setAutoPickMask: (pick: boolean) => void
+  setAutoPickEcc: (pick: boolean) => void
+
+  // === SHARE ===
+  share: {
+    directLink: boolean
+    embedHtml: boolean
+    encodeMoreParams: boolean
+  }
+  setShare: (share: Partial<QRState['share']>) => void
+
+  // Generate final payload text
+  getPayloadText: () => string
+}
+
+export const useQRStore = create<QRState>((set, get) => ({
+  // Tier
+  tier: 'basic',
+  setTier: (tier) => set({ tier }),
+
+  // Payload defaults
+  payload: {
+    kind: 'plain_text',
+    text: 'https://example.com',
+    url: { href: 'https://example.com', forceHttps: false },
+    tel: { number: '' },
+    email: { to: '' },
+    sms: { number: '' },
+    geo: { lat: 0, lon: 0 },
+    wifi: { ssid: '', auth: 'WPA2', hidden: false },
+    vcard: { version: '3.0' },
+    mecard: {},
+    event: {},
+    crypto: { type: 'bitcoin', address: '' },
+    otpauth: { type: 'totp' },
+    validate: false,
+    normalizeNewlines: false,
+    trim: true,
+    maxLenGuard: true,
+  },
+  setPayloadKind: (kind) => set((s) => ({ payload: { ...s.payload, kind } })),
+  setPayloadText: (text) => set((s) => ({ payload: { ...s.payload, text } })),
+  setPayloadUrl: (url) => set((s) => ({ payload: { ...s.payload, url: { ...s.payload.url, ...url } } })),
+  setPayloadTel: (tel) => set((s) => ({ payload: { ...s.payload, tel: { ...s.payload.tel, ...tel } } })),
+  setPayloadEmail: (email) => set((s) => ({ payload: { ...s.payload, email: { ...s.payload.email, ...email } } })),
+  setPayloadSms: (sms) => set((s) => ({ payload: { ...s.payload, sms: { ...s.payload.sms, ...sms } } })),
+  setPayloadGeo: (geo) => set((s) => ({ payload: { ...s.payload, geo: { ...s.payload.geo, ...geo } } })),
+  setPayloadWifi: (wifi) => set((s) => ({ payload: { ...s.payload, wifi: { ...s.payload.wifi, ...wifi } } })),
+  setPayloadVCard: (vcard) => set((s) => ({ payload: { ...s.payload, vcard: { ...s.payload.vcard, ...vcard } } })),
+  setPayloadMeCard: (mecard) => set((s) => ({ payload: { ...s.payload, mecard: { ...s.payload.mecard, ...mecard } } })),
+  setPayloadEvent: (event) => set((s) => ({ payload: { ...s.payload, event: { ...s.payload.event, ...event } } })),
+  setPayloadCrypto: (crypto) => set((s) => ({ payload: { ...s.payload, crypto: { ...s.payload.crypto, ...crypto } } })),
+  setPayloadOtpAuth: (otpauth) => set((s) => ({ payload: { ...s.payload, otpauth: { ...s.payload.otpauth, ...otpauth } } })),
+  setPayloadValidation: (opts) => set((s) => ({ payload: { ...s.payload, ...opts } })),
+
+  // QR defaults
+  qr: {
+    version: 0,
+    ecc: 'Q',
+    mask: 'auto',
+    maskLock: false,
+    encodingMode: 'auto',
+    eci: 0,
+    segmentOptimize: false,
+    quietZoneModules: 4,
+    quietZoneMinEnforce: true,
+    borderModulesExtra: 0,
+    structuredAppend: { enable: false, index: 0, count: 0, parity: 0 },
+    fnc1: 'off',
+    gs1AiMode: false,
+    model: 'model2',
+    microQr: false,
+    rmQr: false,
+  },
+  setQrVersion: (version) => set((s) => ({ qr: { ...s.qr, version } })),
+  setQrEcc: (ecc) => set((s) => ({ qr: { ...s.qr, ecc } })),
+  setQrMask: (mask) => set((s) => ({ qr: { ...s.qr, mask } })),
+  setQrMaskLock: (maskLock) => set((s) => ({ qr: { ...s.qr, maskLock } })),
+  setQrEncodingMode: (encodingMode) => set((s) => ({ qr: { ...s.qr, encodingMode } })),
+  setQrQuietZone: (quietZoneModules) => set((s) => ({ qr: { ...s.qr, quietZoneModules } })),
+  setQrQuietZoneMinEnforce: (quietZoneMinEnforce) => set((s) => ({ qr: { ...s.qr, quietZoneMinEnforce } })),
+  setQrStructuredAppend: (opts) => set((s) => ({ qr: { ...s.qr, structuredAppend: { ...s.qr.structuredAppend, ...opts } } })),
+
+  // Render defaults
+  render: {
+    modulePx: 8,
+    crispEdges: true,
+    pixelSnap: 'floor',
+    moduleGapPercent: 0,
+    gapMode: 'none',
+    moduleStyle: 'square',
+    finderStyle: 'square',
+    alignmentStyle: 'match_finder',
+    timingStyle: 'match_module',
+    cornerRadius: 0,
+    dotRotationDeg: 0,
+    eyeOuterStyle: 'square',
+    eyeInnerStyle: 'square',
+    eyeScale: 100,
+    frameStyle: 'none',
+    frameText: '',
+    fgColor: '#000000',
+    bgColor: '#ffffff',
+    bgTransparent: false,
+    palette: [],
+    gradient: { type: 'none', stops: [] },
+    perModuleColorMode: 'solid',
+    contrastGuard: false,
+    minContrastRatio: 4.5,
+  },
+  setRenderModulePx: (modulePx) => set((s) => ({ render: { ...s.render, modulePx } })),
+  setRenderCrispEdges: (crispEdges) => set((s) => ({ render: { ...s.render, crispEdges } })),
+  setRenderModuleGap: (moduleGapPercent) => set((s) => ({ render: { ...s.render, moduleGapPercent } })),
+  setRenderGapMode: (gapMode) => set((s) => ({ render: { ...s.render, gapMode } })),
+  setRenderModuleStyle: (moduleStyle) => set((s) => ({ render: { ...s.render, moduleStyle } })),
+  setRenderFinderStyle: (finderStyle) => set((s) => ({ render: { ...s.render, finderStyle } })),
+  setRenderAlignmentStyle: (alignmentStyle) => set((s) => ({ render: { ...s.render, alignmentStyle } })),
+  setRenderTimingStyle: (timingStyle) => set((s) => ({ render: { ...s.render, timingStyle } })),
+  setRenderCornerRadius: (cornerRadius) => set((s) => ({ render: { ...s.render, cornerRadius } })),
+  setRenderFrameStyle: (frameStyle) => set((s) => ({ render: { ...s.render, frameStyle } })),
+  setRenderFrameText: (frameText) => set((s) => ({ render: { ...s.render, frameText } })),
+  setRenderFgColor: (fgColor) => set((s) => ({ render: { ...s.render, fgColor } })),
+  setRenderBgColor: (bgColor) => set((s) => ({ render: { ...s.render, bgColor } })),
+  setRenderBgTransparent: (bgTransparent) => set((s) => ({ render: { ...s.render, bgTransparent } })),
+  setRenderGradient: (gradient) => set((s) => ({ render: { ...s.render, gradient: { ...s.render.gradient, ...gradient } } })),
+
+  // Overlay defaults
+  overlay: {
+    enabled: false,
+    file: null,
+    url: '',
+    type: 'static',
+    framePick: 'all',
+    cropEnabled: false,
+    cropRegion: { x: 0, y: 0, size: 1 },
+    fit: 'cover',
+    rotateDeg: 0,
+    flipX: false,
+    flipY: false,
+    colorMode: 'color',
+    invert: false,
+    brightness: 0,
+    contrast: 0,
+    gamma: 1,
+    saturation: 0,
+    hueRotateDeg: 0,
+    blurPx: 0,
+    sharpen: 0,
+    posterizeLevels: 0,
+    threshold: 128,
+    edgeDetect: 'off',
+    mode: 'halftone',
+    intensity: 50,
+    preserveFinders: true,
+    preserveTiming: false,
+    preserveAlignment: false,
+    protectFormatInfo: false,
+    protectVersionInfo: false,
+    subpixelGridSize: '3x3',
+    subpixelCenterRule: 'strict',
+    subpixelNeutralColor: '#808080',
+    subpixelFinderOverride: 'solid',
+    ditherKind: 'error_diffusion',
+    ditherStrength: 50,
+    ditherSerpentine: false,
+    diffusionKernel: 'floyd_steinberg',
+    orderedMatrix: 'bayer4',
+    blueNoiseTileSize: 64,
+    blueNoiseSeed: 0,
+    colorDither: 'none',
+    halftoneCell: 'per_module',
+    halftoneDotShape: 'circle',
+    duotoneColors: ['#000000', '#ffffff'],
+    brightnessCurve: 'linear',
+    eccAwareEnabled: false,
+    eccAwareRiskBudget: 50,
+    eccAwareWeightMap: 'distance_to_finders',
+    gifUseFrameDelays: true,
+    gifMaxFps: 30,
+    gifDisposalHandling: 'respect',
+  },
+  setOverlayEnabled: (enabled) => set((s) => ({ overlay: { ...s.overlay, enabled } })),
+  setOverlayFile: (file) => set((s) => ({ overlay: { ...s.overlay, file, enabled: !!file } })),
+  setOverlayUrl: (url) => set((s) => ({ overlay: { ...s.overlay, url } })),
+  setOverlayType: (type) => set((s) => ({ overlay: { ...s.overlay, type } })),
+  setOverlayCrop: (crop) => set((s) => ({ 
+    overlay: { 
+      ...s.overlay, 
+      cropEnabled: crop.enabled ?? s.overlay.cropEnabled,
+      cropRegion: crop.region ?? s.overlay.cropRegion,
+    } 
+  })),
+  setOverlayFit: (fit) => set((s) => ({ overlay: { ...s.overlay, fit } })),
+  setOverlayRotate: (rotateDeg) => set((s) => ({ overlay: { ...s.overlay, rotateDeg } })),
+  setOverlayFlip: (flip) => set((s) => ({ 
+    overlay: { 
+      ...s.overlay, 
+      flipX: flip.x ?? s.overlay.flipX,
+      flipY: flip.y ?? s.overlay.flipY,
+    } 
+  })),
+  setOverlayColorMode: (colorMode) => set((s) => ({ overlay: { ...s.overlay, colorMode } })),
+  setOverlayInvert: (invert) => set((s) => ({ overlay: { ...s.overlay, invert } })),
+  setOverlayBrightness: (brightness) => set((s) => ({ overlay: { ...s.overlay, brightness } })),
+  setOverlayContrast: (contrast) => set((s) => ({ overlay: { ...s.overlay, contrast } })),
+  setOverlayGamma: (gamma) => set((s) => ({ overlay: { ...s.overlay, gamma } })),
+  setOverlayMode: (mode) => set((s) => ({ overlay: { ...s.overlay, mode } })),
+  setOverlayIntensity: (intensity) => set((s) => ({ overlay: { ...s.overlay, intensity } })),
+  setOverlayPreserveFinders: (preserveFinders) => set((s) => ({ overlay: { ...s.overlay, preserveFinders } })),
+  setOverlayPreserveTiming: (preserveTiming) => set((s) => ({ overlay: { ...s.overlay, preserveTiming } })),
+  setOverlayPreserveAlignment: (preserveAlignment) => set((s) => ({ overlay: { ...s.overlay, preserveAlignment } })),
+  setOverlayDitherKind: (ditherKind) => set((s) => ({ overlay: { ...s.overlay, ditherKind } })),
+  setOverlayDitherStrength: (ditherStrength) => set((s) => ({ overlay: { ...s.overlay, ditherStrength } })),
+  setOverlayDiffusionKernel: (diffusionKernel) => set((s) => ({ overlay: { ...s.overlay, diffusionKernel } })),
+
+  // Animation defaults
+  animation: {
+    speedMs: 100,
+    loop: true,
+    bounce: false,
+    playing: true,
+    startFrame: 0,
+    maxFrames: 100,
+    frameStep: 1,
+    perFrameDelay: [],
+    interpolate: 'none',
+    temporalDither: 'off',
+    seed: 0,
+    pattern: 'none',
+    moduleJitterPx: 0,
+    colorCycle: false,
+  },
+  setAnimationSpeedMs: (speedMs) => set((s) => ({ animation: { ...s.animation, speedMs } })),
+  setAnimationLoop: (loop) => set((s) => ({ animation: { ...s.animation, loop } })),
+  setAnimationBounce: (bounce) => set((s) => ({ animation: { ...s.animation, bounce } })),
+  setAnimationPlaying: (playing) => set((s) => ({ animation: { ...s.animation, playing } })),
+  setAnimationStartFrame: (startFrame) => set((s) => ({ animation: { ...s.animation, startFrame } })),
+  setAnimationMaxFrames: (maxFrames) => set((s) => ({ animation: { ...s.animation, maxFrames } })),
+  setAnimationFrameStep: (frameStep) => set((s) => ({ animation: { ...s.animation, frameStep } })),
+
+  // Output defaults
+  output: {
+    format: 'png',
+    widthPx: 400,
+    heightPx: 400,
+    quality: 0.9,
+    filename: 'anqr-qrcode',
+    includeQuietZone: true,
+    dpi: 72,
+    bgOverride: '',
+    gifPaletteSize: 256,
+    gifQuantizer: 'median_cut',
+    gifDither: 'floyd',
+    gifTransparentColor: '',
+    gifDisposal: 'restore_bg',
+    svgTrueVector: false,
+    svgShapePrecision: 'pixel',
+    svgEmbedRasterOverlay: true,
+    svgMetadata: {},
+    formatExtra: 'none',
+  },
+  setOutputFormat: (format) => set((s) => ({ output: { ...s.output, format } })),
+  setOutputWidth: (widthPx) => set((s) => ({ output: { ...s.output, widthPx } })),
+  setOutputHeight: (heightPx) => set((s) => ({ output: { ...s.output, heightPx } })),
+  setOutputQuality: (quality) => set((s) => ({ output: { ...s.output, quality } })),
+  setOutputFilename: (filename) => set((s) => ({ output: { ...s.output, filename } })),
+  setOutputGifPaletteSize: (gifPaletteSize) => set((s) => ({ output: { ...s.output, gifPaletteSize } })),
+  setOutputGifQuantizer: (gifQuantizer) => set((s) => ({ output: { ...s.output, gifQuantizer } })),
+  setOutputSvgTrueVector: (svgTrueVector) => set((s) => ({ output: { ...s.output, svgTrueVector } })),
+
+  // Watermark defaults
+  watermark: {
+    enabled: false,
+    kind: 'text',
+    text: '',
+    image: null,
+    position: 'center',
+    opacity: 50,
+    blend: 'normal',
+  },
+  setWatermarkEnabled: (enabled) => set((s) => ({ watermark: { ...s.watermark, enabled } })),
+  setWatermarkKind: (kind) => set((s) => ({ watermark: { ...s.watermark, kind } })),
+  setWatermarkText: (text) => set((s) => ({ watermark: { ...s.watermark, text } })),
+  setWatermarkPosition: (position) => set((s) => ({ watermark: { ...s.watermark, position } })),
+  setWatermarkOpacity: (opacity) => set((s) => ({ watermark: { ...s.watermark, opacity } })),
+
+  // Metadata defaults
+  metadata: {
+    title: '',
+    author: '',
+    copyright: '',
+    license: '',
+    description: '',
+    creationTime: false,
+    customKv: [],
+  },
+  setMetadata: (meta) => set((s) => ({ metadata: { ...s.metadata, ...meta } })),
+
+  // Safety defaults
+  safety: {
+    mode: 'off',
+    minModulePx: 2,
+    minQuietZoneModules: 4,
+    lockFinders: true,
+    lockTiming: true,
+    lockAlign: true,
+    lockFormat: true,
+    lockVersion: true,
+    maxOverlayIntensityByEcc: { L: 30, M: 50, Q: 70, H: 85 },
+  },
+  setSafetyMode: (mode) => set((s) => ({ safety: { ...s.safety, mode } })),
+  setSafetyMinModulePx: (minModulePx) => set((s) => ({ safety: { ...s.safety, minModulePx } })),
+  setSafetyLocks: (locks) => set((s) => ({ safety: { ...s.safety, ...locks } })),
+
+  // QA defaults
+  qa: {
+    contrastCheck: false,
+    simulateBlurPx: 0,
+    simulateNoise: 0,
+    simulateRotationDeg: 0,
+    scoreReadability: false,
+    showHeatmap: false,
+  },
+  setQaContrastCheck: (contrastCheck) => set((s) => ({ qa: { ...s.qa, contrastCheck } })),
+  setQaSimulateBlur: (simulateBlurPx) => set((s) => ({ qa: { ...s.qa, simulateBlurPx } })),
+  setQaShowHeatmap: (showHeatmap) => set((s) => ({ qa: { ...s.qa, showHeatmap } })),
+
+  // Auto defaults
+  auto: {
+    pickVersion: true,
+    pickMask: true,
+    pickEcc: false,
+    reduceIntensityUntilSafe: false,
+  },
+  setAutoPickVersion: (pickVersion) => set((s) => ({ auto: { ...s.auto, pickVersion } })),
+  setAutoPickMask: (pickMask) => set((s) => ({ auto: { ...s.auto, pickMask } })),
+  setAutoPickEcc: (pickEcc) => set((s) => ({ auto: { ...s.auto, pickEcc } })),
+
+  // Share defaults
+  share: {
+    directLink: true,
+    embedHtml: true,
+    encodeMoreParams: false,
+  },
+  setShare: (share) => set((s) => ({ share: { ...s.share, ...share } })),
+
+  // Generate final payload text based on kind
+  getPayloadText: () => {
+    const state = get()
+    const { payload } = state
+
+    switch (payload.kind) {
+      case 'plain_text':
+        return payload.text
+
+      case 'url': {
+        let url = payload.url.href
+        if (payload.url.forceHttps && url.startsWith('http://')) {
+          url = url.replace('http://', 'https://')
+        }
+        const params = new URLSearchParams()
+        if (payload.url.utmSource) params.set('utm_source', payload.url.utmSource)
+        if (payload.url.utmMedium) params.set('utm_medium', payload.url.utmMedium)
+        if (payload.url.utmCampaign) params.set('utm_campaign', payload.url.utmCampaign)
+        if (payload.url.utmTerm) params.set('utm_term', payload.url.utmTerm)
+        if (payload.url.utmContent) params.set('utm_content', payload.url.utmContent)
+        const paramStr = params.toString()
+        return paramStr ? `${url}${url.includes('?') ? '&' : '?'}${paramStr}` : url
+      }
+
+      case 'tel':
+        return `tel:${payload.tel.number}`
+
+      case 'email': {
+        let mailto = `mailto:${payload.email.to}`
+        const params = new URLSearchParams()
+        if (payload.email.subject) params.set('subject', payload.email.subject)
+        if (payload.email.body) params.set('body', payload.email.body)
+        const paramStr = params.toString()
+        return paramStr ? `${mailto}?${paramStr}` : mailto
+      }
+
+      case 'sms': {
+        let sms = `sms:${payload.sms.number}`
+        if (payload.sms.body) sms += `?body=${encodeURIComponent(payload.sms.body)}`
+        return sms
+      }
+
+      case 'geo': {
+        let geo = `geo:${payload.geo.lat},${payload.geo.lon}`
+        if (payload.geo.query) geo += `?q=${encodeURIComponent(payload.geo.query)}`
+        return geo
+      }
+
+      case 'wifi': {
+        const w = payload.wifi
+        let wifi = `WIFI:T:${w.auth};S:${w.ssid};`
+        if (w.password) wifi += `P:${w.password};`
+        if (w.hidden) wifi += 'H:true;'
+        wifi += ';'
+        return wifi
+      }
+
+      case 'vcard': {
+        const v = payload.vcard
+        let vcard = `BEGIN:VCARD\nVERSION:${v.version}\n`
+        if (v.fn) vcard += `FN:${v.fn}\n`
+        if (v.n) vcard += `N:${v.n}\n`
+        if (v.org) vcard += `ORG:${v.org}\n`
+        if (v.title) vcard += `TITLE:${v.title}\n`
+        v.tel?.forEach(t => vcard += `TEL:${t}\n`)
+        v.email?.forEach(e => vcard += `EMAIL:${e}\n`)
+        if (v.url) vcard += `URL:${v.url}\n`
+        v.adr?.forEach(a => vcard += `ADR:${a}\n`)
+        if (v.note) vcard += `NOTE:${v.note}\n`
+        if (v.bday) vcard += `BDAY:${v.bday}\n`
+        vcard += 'END:VCARD'
+        return vcard
+      }
+
+      case 'mecard': {
+        const m = payload.mecard
+        let mecard = 'MECARD:'
+        if (m.n) mecard += `N:${m.n};`
+        if (m.tel) mecard += `TEL:${m.tel};`
+        if (m.email) mecard += `EMAIL:${m.email};`
+        if (m.adr) mecard += `ADR:${m.adr};`
+        if (m.org) mecard += `ORG:${m.org};`
+        if (m.url) mecard += `URL:${m.url};`
+        if (m.note) mecard += `NOTE:${m.note};`
+        if (m.bday) mecard += `BDAY:${m.bday};`
+        if (m.nickname) mecard += `NICKNAME:${m.nickname};`
+        mecard += ';'
+        return mecard
+      }
+
+      case 'event': {
+        const e = payload.event
+        let event = 'BEGIN:VEVENT\n'
+        if (e.summary) event += `SUMMARY:${e.summary}\n`
+        if (e.location) event += `LOCATION:${e.location}\n`
+        if (e.description) event += `DESCRIPTION:${e.description}\n`
+        if (e.start) event += `DTSTART:${e.start}\n`
+        if (e.end) event += `DTEND:${e.end}\n`
+        if (e.rrule) event += `RRULE:${e.rrule}\n`
+        event += 'END:VEVENT'
+        return event
+      }
+
+      case 'crypto': {
+        const c = payload.crypto
+        let payment = `${c.type}:${c.address}`
+        const params = new URLSearchParams()
+        if (c.amount) params.set('amount', c.amount.toString())
+        if (c.label) params.set('label', c.label)
+        const paramStr = params.toString()
+        return paramStr ? `${payment}?${paramStr}` : payment
+      }
+
+      // Custom format just returns the raw text
+      case 'custom': {
+        return payload.text
+      }
+
+      // Legacy otpauth case (removed from UI but keeping for reference)
+      case 'app_link': {
+        const o = payload.otpauth
+        const type = o.type || 'totp'
+        const label = o.issuer && o.account ? `${o.issuer}:${o.account}` : (o.account || 'user')
+        let otpauth = `otpauth://${type}/${encodeURIComponent(label)}`
+        const params = new URLSearchParams()
+        if (o.secret) params.set('secret', o.secret)
+        if (o.issuer) params.set('issuer', o.issuer)
+        if (o.algorithm && o.algorithm !== 'SHA1') params.set('algorithm', o.algorithm)
+        if (o.digits && o.digits !== 6) params.set('digits', o.digits.toString())
+        if (type === 'totp' && o.period && o.period !== 30) params.set('period', o.period.toString())
+        if (type === 'hotp' && o.counter !== undefined) params.set('counter', o.counter.toString())
+        const paramStr = params.toString()
+        return paramStr ? `${otpauth}?${paramStr}` : otpauth
+      }
+
+      case 'app_link':
+      case 'custom':
+        return payload.text
+
+      default:
+        return payload.text
+    }
+  },
+}))
