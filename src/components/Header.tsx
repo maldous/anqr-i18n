@@ -61,13 +61,8 @@ export function Header({ onToggleSidebar, onExport, sidebarOpen = false }: Heade
 
   return (
     <header className={`border-b bg-card shadow-md sticky top-0 z-50 transition-all duration-300 ${sidebarOpen ? 'lg:ml-96' : ''}`}>
-      {/* Ad row - centered, below the controls row */}
-      <div className="hidden xl:flex justify-center py-2 border-b border-border/30">
-        <AdPlaceholder slot="header-leaderboard" width={728} height={90} format="horizontal" />
-      </div>
-      
-      <div className="px-4 py-3 flex items-center justify-between">
-        <div className="flex items-center gap-6">
+      <div className="px-4 py-3 flex items-center justify-between relative">
+        <div className="flex items-center gap-6 flex-shrink-0 z-10">
           <button 
             onClick={onToggleSidebar}
             className="flex items-center gap-2 hover:opacity-80 transition-opacity cursor-pointer"
@@ -91,10 +86,14 @@ export function Header({ onToggleSidebar, onExport, sidebarOpen = false }: Heade
           </nav>
         </div>
         
-        {/* Spacer to push controls to the right */}
-        <div className="flex-1" />
+        {/* Ad - absolutely positioned to center in the row */}
+        <div className="hidden xl:flex absolute inset-0 items-center justify-center pointer-events-none">
+          <div className="pointer-events-auto">
+            <AdPlaceholder slot="header-leaderboard" width={728} height={90} format="horizontal" />
+          </div>
+        </div>
 
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-3 flex-shrink-0 z-10">
           {/* Tier Toggle - Tabs on desktop, dropdown on mobile */}
           <div className="hidden sm:block">
             <Tabs value={tier} onValueChange={(v) => setTier(v as Tier)}>
