@@ -437,16 +437,19 @@ export function Sidebar({ isOpen, onClose }: SidebarProps) {
         return
       }
       
-      // Don't close if clicking on a Radix UI portal element (dropdowns, selects, dialogs, etc.)
-      // These are rendered outside the sidebar but are part of the sidebar's UI
+      // Don't close if clicking on a Radix UI portal element (dropdowns, selects, dialogs, tabs, etc.)
+      // These are rendered outside the sidebar but are part of the UI
       const targetElement = target as HTMLElement
       if (targetElement.closest?.('[data-radix-popper-content-wrapper]') ||
           targetElement.closest?.('[data-radix-select-viewport]') ||
           targetElement.closest?.('[data-radix-menu-content]') ||
           targetElement.closest?.('[data-radix-dialog-content]') ||
+          targetElement.closest?.('[data-radix-tabs-list]') ||
           targetElement.closest?.('[role="listbox"]') ||
           targetElement.closest?.('[role="menu"]') ||
-          targetElement.closest?.('[role="dialog"]')) {
+          targetElement.closest?.('[role="dialog"]') ||
+          targetElement.closest?.('[role="tablist"]') ||
+          targetElement.closest?.('header')) {
         return
       }
       

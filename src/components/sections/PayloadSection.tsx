@@ -180,7 +180,7 @@ export function PayloadSection() {
               type="url"
               value={payload.url.href} 
               onChange={(e) => setPayloadUrl({ href: e.target.value })}
-              placeholder="https://example.com"
+              placeholder="https://aldous.info"
             />
           </div>
           {(tier === 'advanced' || tier === 'professional') && (
@@ -237,7 +237,7 @@ export function PayloadSection() {
               type="email"
               value={payload.email.to} 
               onChange={(e) => setPayloadEmail({ to: e.target.value })}
-              placeholder="email@example.com"
+              placeholder="email@aldous.info"
             />
           </div>
           <div className="space-y-2">
@@ -409,7 +409,7 @@ export function PayloadSection() {
               type="email"
               value={payload.vcard.email?.[0] || ''} 
               onChange={(e) => setPayloadVCard({ email: [e.target.value] })}
-              placeholder="email@example.com"
+              placeholder="email@aldous.info"
             />
           </div>
           <div className="space-y-2">
@@ -418,7 +418,7 @@ export function PayloadSection() {
               type="url"
               value={payload.vcard.url || ''} 
               onChange={(e) => setPayloadVCard({ url: e.target.value })}
-              placeholder="https://example.com"
+              placeholder="https://aldous.info"
             />
           </div>
         </div>
@@ -458,7 +458,7 @@ export function PayloadSection() {
               type="email"
               value={payload.mecard.email || ''} 
               onChange={(e) => setPayloadMeCard({ email: e.target.value })}
-              placeholder="email@example.com"
+              placeholder="email@aldous.info"
             />
           </div>
           <div className="space-y-2">
@@ -600,7 +600,7 @@ export function PayloadSection() {
               type="url"
               value={payload.text} 
               onChange={(e) => setPayloadText(e.target.value)}
-              placeholder="https://example.com/rsvp/event123"
+              placeholder="https://aldous.info/rsvp/event123"
             />
           </div>
           <div className="space-y-2">
@@ -622,7 +622,7 @@ export function PayloadSection() {
               type="url"
               value={payload.text} 
               onChange={(e) => setPayloadText(e.target.value)}
-              placeholder="webcal://example.com/calendar.ics"
+              placeholder="webcal://aldous.info/calendar.ics"
             />
           </div>
           <div className="space-y-2">
@@ -644,7 +644,7 @@ export function PayloadSection() {
               type="url"
               value={payload.text} 
               onChange={(e) => setPayloadText(e.target.value)}
-              placeholder="https://example.com/document.pdf"
+              placeholder="https://aldous.info/document.pdf"
             />
           </div>
           <div className="space-y-2">
@@ -1104,7 +1104,7 @@ export function PayloadSection() {
             <Input 
               value={payload.otpauth.account || ''} 
               onChange={(e) => setPayloadOtpAuth({ account: e.target.value })}
-              placeholder="user@example.com"
+              placeholder="user@aldous.info"
             />
           </div>
           <div className="space-y-2">
@@ -1182,7 +1182,7 @@ export function PayloadSection() {
               type="url"
               value={payload.url.href} 
               onChange={(e) => setPayloadUrl({ href: e.target.value })}
-              placeholder="https://example.com/landing"
+              placeholder="https://aldous.info/landing"
             />
           </div>
           <div className="space-y-2">
@@ -1257,7 +1257,7 @@ export function PayloadSection() {
             <Label><HighlightedLabel>Fallback URL (optional)</HighlightedLabel></Label>
             <Input 
               type="url"
-              placeholder="https://example.com/app"
+              placeholder="https://aldous.info/app"
             />
           </div>
           <p className="text-xs text-muted-foreground">Opens specific content within a mobile app</p>
@@ -1347,7 +1347,7 @@ export function PayloadSection() {
             <Label><HighlightedLabel>Lookup URL (optional)</HighlightedLabel></Label>
             <Input 
               type="url"
-              placeholder="https://inventory.example.com/asset/"
+              placeholder="https://inventory.aldous.info/asset/"
             />
           </div>
         </div>
@@ -1406,7 +1406,7 @@ export function PayloadSection() {
             <Label><HighlightedLabel>Validation URL (optional)</HighlightedLabel></Label>
             <Input 
               type="url"
-              placeholder="https://tickets.example.com/validate/"
+              placeholder="https://tickets.aldous.info/validate/"
             />
           </div>
         </div>

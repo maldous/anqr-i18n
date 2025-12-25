@@ -13,11 +13,11 @@ const BASIC_OVERLAY_MODES: { value: OverlayMode; label: string }[] = [
   { value: 'center', label: 'Center Logo' },
   { value: 'blend', label: 'Blend' },
   { value: 'halftone', label: 'Halftone' },
+  { value: 'dithered', label: 'Dithered' },
 ]
 
 const ADVANCED_OVERLAY_MODES: { value: OverlayMode; label: string }[] = [
   { value: 'subpixel', label: 'Subpixel' },
-  { value: 'dithered', label: 'Dithered' },
   { value: 'blue-noise', label: 'Blue Noise' },
   { value: 'mosaic', label: 'Mosaic' },
   { value: 'gapfill', label: 'Gap Fill' },

@@ -89,7 +89,10 @@ export function Header({ onToggleSidebar, onExport, sidebarOpen = false }: Heade
         <div className="flex items-center gap-3">
           {/* Tier Toggle - Tabs on desktop, dropdown on mobile */}
           <div className="hidden sm:block">
-            <Tabs value={tier} onValueChange={(v) => setTier(v as Tier)}>
+            <Tabs value={tier}                onValueChange={(v) => {
+                  setTier(v as Tier)
+                  // Don't close mobile menu when changing tiers
+                }}>
               <TabsList className="shadow-sm">
                 <TabsTrigger value="basic" className="text-xs px-3">
                   Basic
@@ -104,7 +107,10 @@ export function Header({ onToggleSidebar, onExport, sidebarOpen = false }: Heade
             </Tabs>
           </div>
           <div className="sm:hidden">
-            <Select value={tier} onValueChange={(v) => setTier(v as Tier)}>
+            <Select value={tier}                onValueChange={(v) => {
+                  setTier(v as Tier)
+                  // Don't close mobile menu when changing tiers
+                }}>
               <SelectTrigger className="w-[100px] h-9 text-xs">
                 <SelectValue />
               </SelectTrigger>
