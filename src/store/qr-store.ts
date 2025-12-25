@@ -998,30 +998,9 @@ export const useQRStore = create<QRState>((set, get) => ({
         return paramStr ? `${payment}?${paramStr}` : payment
       }
 
-      // Custom format just returns the raw text
-      case 'custom': {
-        return payload.text
-      }
-
-      // Legacy otpauth case (removed from UI but keeping for reference)
-      case 'app_link': {
-        const o = payload.otpauth
-        const type = o.type || 'totp'
-        const label = o.issuer && o.account ? `${o.issuer}:${o.account}` : (o.account || 'user')
-        let otpauth = `otpauth://${type}/${encodeURIComponent(label)}`
-        const params = new URLSearchParams()
-        if (o.secret) params.set('secret', o.secret)
-        if (o.issuer) params.set('issuer', o.issuer)
-        if (o.algorithm && o.algorithm !== 'SHA1') params.set('algorithm', o.algorithm)
-        if (o.digits && o.digits !== 6) params.set('digits', o.digits.toString())
-        if (type === 'totp' && o.period && o.period !== 30) params.set('period', o.period.toString())
-        if (type === 'hotp' && o.counter !== undefined) params.set('counter', o.counter.toString())
-        const paramStr = params.toString()
-        return paramStr ? `${otpauth}?${paramStr}` : otpauth
-      }
-
-      case 'app_link':
+      // Custom format and app_link both return raw text
       case 'custom':
+      case 'app_link':
         return payload.text
 
       default:

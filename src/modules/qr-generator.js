@@ -1,7 +1,8 @@
 import qrcode from "../../vendor/lib/qrcode-generator/qrcode.mjs";
 
 import { generateBlueNoiseDithered } from "./blue-noise-dither.ts";
-import generateDitheredMatrix from "./generate.ts";
+import { generateQR, isLocked, isData, calculateOptimalVersion } from "./qr-core.ts";
+import { blendColors, parseColor } from "./color-utils.ts";
 
 export class QRGenerator {
   constructor() {
@@ -83,7 +84,8 @@ export class QRGenerator {
 
     const moduleSize = config.moduleSize;
     const margin = config.margin;
-    const size = moduleCount * moduleSize + margin * 2 * moduleSize;
+    const frameExtra = (config.frameStyle && config.frameStyle !== 'none' && config.frameText) ? moduleSize * 4 : 0;
+    const size = moduleCount * moduleSize + margin * 2 * moduleSize + frameExtra;
 
     const canvas = document.createElement("canvas");
     canvas.width = size;
@@ -118,9 +120,69 @@ export class QRGenerator {
       ditherPattern = this.applyTrueDither(qr, overlayData, config, true);
     }
 
+    // Get version for alignment pattern detection
+    const version = config.typeNumber || Math.ceil((moduleCount - 17) / 4);
+    
+    // Create gradient fill if configured
+    const gradientFill = this.createGradientFill(ctx, config, size);
+    const useGradient = config.gradient && config.gradient.type !== 'none';
+    
+    // Render options
+    const cornerRadius = config.cornerRadius || 0;
+    const dotRotation = config.dotRotationDeg || 0;
+    const alignmentStyle = config.alignmentStyle || 'match_finder';
+    const timingStyle = config.timingStyle || 'match_module';
+
+    // Track drawn finder patterns to avoid double-drawing
+    const drawnFinderPatterns = new Set();
+    const drawnAlignmentPatterns = new Set();
+
+    // Draw complete finder patterns first (eyes)
+    const finderPositions = [
+      { row: 0, col: 0 }, // Top-left
+      { row: 0, col: moduleCount - 7 }, // Top-right
+      { row: moduleCount - 7, col: 0 }, // Bottom-left
+    ];
+    
+    for (const pos of finderPositions) {
+      const x = (pos.col + margin) * moduleSize;
+      const y = (pos.row + margin) * moduleSize;
+      this.drawFinderPatternComplete(ctx, x, y, moduleSize, config);
+      
+      // Mark all modules in this finder pattern as drawn
+      for (let r = pos.row; r < pos.row + 7; r++) {
+        for (let c = pos.col; c < pos.col + 7; c++) {
+          drawnFinderPatterns.add(`${r},${c}`);
+        }
+      }
+    }
+
+    // Draw alignment patterns (for version 2+)
+    if (version >= 2) {
+      const alignPositions = this.getAlignmentPositions(version, moduleCount);
+      for (const pos of alignPositions) {
+        const centerX = (pos.col + margin) * moduleSize + moduleSize / 2;
+        const centerY = (pos.row + margin) * moduleSize + moduleSize / 2;
+        this.drawAlignmentPattern(ctx, centerX, centerY, moduleSize, alignmentStyle, config);
+        
+        // Mark all modules in this alignment pattern as drawn
+        for (let r = pos.row - 2; r <= pos.row + 2; r++) {
+          for (let c = pos.col - 2; c <= pos.col + 2; c++) {
+            drawnAlignmentPatterns.add(`${r},${c}`);
+          }
+        }
+      }
+    }
+
     // Draw QR modules
     for (let row = 0; row < moduleCount; row++) {
       for (let col = 0; col < moduleCount; col++) {
+        // Skip if this module is part of a finder pattern (already drawn)
+        if (drawnFinderPatterns.has(`${row},${col}`)) continue;
+        
+        // Skip if this module is part of an alignment pattern (already drawn)
+        if (drawnAlignmentPatterns.has(`${row},${col}`)) continue;
+        
         // Use dithered pattern if available, otherwise use original QR
         const isDark = ditherPattern
           ? ditherPattern[row][col]
@@ -129,8 +191,10 @@ export class QRGenerator {
         const y = (row + margin) * moduleSize;
 
         const isFinder = this.isFinderPattern(row, col, moduleCount);
+        const isTiming = this.isTimingPattern(row, col, moduleCount);
         const applyOverlay =
-          overlayData && (!config.preserveFinders || !isFinder);
+          overlayData && (!config.preserveFinders || !isFinder) && 
+          (!config.preserveTiming || !isTiming);
 
         let moduleColor = isDark ? config.fgColor : config.bgColor;
         let moduleSizeModifier = 1;
@@ -163,7 +227,7 @@ export class QRGenerator {
                 const blendColor = overlayData.colors?.[row]?.[col];
                 if (blendColor) {
                   const blendAmount = config.overlayIntensity / 100;
-                  moduleColor = this.blendColors(
+                  moduleColor = blendColors(
                     config.fgColor,
                     blendColor,
                     blendAmount,
@@ -190,7 +254,7 @@ export class QRGenerator {
                 const gapColor = overlayData.colors?.[row]?.[col];
                 if (gapColor) {
                   const fadeAmount = (config.overlayIntensity / 100) * 0.4; // Max 40% opacity
-                  moduleColor = this.blendColors(
+                  moduleColor = blendColors(
                     config.bgColor,
                     gapColor,
                     fadeAmount,
@@ -223,7 +287,7 @@ export class QRGenerator {
                     const c =
                       overlayData.colors?.[blockRow + br]?.[blockCol + bc];
                     if (c) {
-                      const parsed = this.parseColor(c);
+                      const parsed = parseColor(c);
                       avgR += parsed.r;
                       avgG += parsed.g;
                       avgB += parsed.b;
@@ -237,7 +301,7 @@ export class QRGenerator {
                   avgB = Math.round(avgB / pixCount);
                   const blockColor = `rgb(${avgR},${avgG},${avgB})`;
                   const pixBlendAmt = config.overlayIntensity / 100;
-                  moduleColor = this.blendColors(
+                  moduleColor = blendColors(
                     config.fgColor,
                     blockColor,
                     pixBlendAmt,
@@ -248,7 +312,7 @@ export class QRGenerator {
 
             case "duotone":
               if (isDark) {
-                const fgParsed = this.parseColor(config.fgColor);
+                const fgParsed = parseColor(config.fgColor);
                 if (brightness > 0.5) {
                   const lightR = Math.min(255, fgParsed.r + 80);
                   const lightG = Math.min(255, fgParsed.g + 80);
@@ -269,7 +333,7 @@ export class QRGenerator {
                 const outlineColor = overlayData.colors?.[row]?.[col];
                 if (outlineColor) {
                   const outlineBlend = config.overlayIntensity / 100;
-                  moduleColor = this.blendColors(
+                  moduleColor = blendColors(
                     config.fgColor,
                     outlineColor,
                     outlineBlend,
@@ -296,12 +360,12 @@ export class QRGenerator {
                 const intensity = config.overlayIntensity / 100;
                 if (isDark) {
                   // Dark cells get the actual image color (darkened slightly to maintain QR readability)
-                  const parsed = this.parseColor(mosaicColor);
+                  const parsed = parseColor(mosaicColor);
                   const darkFactor = 0.7;
                   moduleColor = `rgb(${Math.round(parsed.r * darkFactor)},${Math.round(parsed.g * darkFactor)},${Math.round(parsed.b * darkFactor)})`;
                 } else {
                   // White cells get a lighter/brighter version of the image color
-                  const parsed = this.parseColor(mosaicColor);
+                  const parsed = parseColor(mosaicColor);
                   const lightFactor = 0.4 + (1 - intensity) * 0.4;
                   const lightR = Math.round(
                     255 - (255 - parsed.r) * lightFactor,
@@ -323,7 +387,13 @@ export class QRGenerator {
         if (shouldDrawCell && moduleOpacity > 0) {
           ctx.save();
           ctx.globalAlpha = moduleOpacity;
-          ctx.fillStyle = moduleColor;
+          
+          // Use gradient for dark modules if configured, otherwise use module color
+          if (isDark && useGradient) {
+            ctx.fillStyle = gradientFill;
+          } else {
+            ctx.fillStyle = moduleColor;
+          }
 
           const gap = config.moduleGap
             ? (moduleSize * config.moduleGap) / 100
@@ -338,8 +408,9 @@ export class QRGenerator {
             ctx.strokeStyle = moduleColor;
             ctx.lineWidth = 1;
             ctx.strokeRect(drawX, drawY, adjustedSize, adjustedSize);
-          } else if (isFinder) {
-            this.drawFinderModule(ctx, x, y, moduleSize, config.finderStyle);
+          } else if (isTiming) {
+            // Draw timing pattern module with timing style
+            this.drawTimingModule(ctx, drawX, drawY, adjustedSize, timingStyle, config);
           } else {
             this.drawModule(
               ctx,
@@ -347,6 +418,7 @@ export class QRGenerator {
               drawY,
               adjustedSize,
               config.moduleStyle,
+              { cornerRadius, rotation: dotRotation }
             );
           }
 
@@ -359,6 +431,9 @@ export class QRGenerator {
     if (overlayCanvas && config.overlayMode === "center") {
       this.drawCenterLogo(ctx, overlayCanvas, size, config.logoSize);
     }
+
+    // Draw frame if configured
+    this.drawFrame(ctx, size, moduleSize, margin, config);
 
     return canvas;
   }
@@ -404,6 +479,45 @@ export class QRGenerator {
     if (row < 7 && col >= moduleCount - 7) return true;
     if (row >= moduleCount - 7 && col < 7) return true;
     return false;
+  }
+
+  /**
+   * Check if a module is part of a timing pattern
+   */
+  isTimingPattern(row, col, moduleCount) {
+    // Horizontal timing pattern (row 6, between finders)
+    if (row === 6 && col >= 8 && col < moduleCount - 8) return true;
+    // Vertical timing pattern (col 6, between finders)
+    if (col === 6 && row >= 8 && row < moduleCount - 8) return true;
+    return false;
+  }
+
+  /**
+   * Check if a module is part of an alignment pattern
+   */
+  isAlignmentPattern(row, col, moduleCount, version) {
+    if (version < 2) return false;
+    const positions = this.getAlignmentPositions(version, moduleCount);
+    for (const pos of positions) {
+      if (Math.abs(row - pos.row) <= 2 && Math.abs(col - pos.col) <= 2) {
+        return true;
+      }
+    }
+    return false;
+  }
+
+  /**
+   * Get the center position of an alignment pattern if this module is part of one
+   */
+  getAlignmentCenter(row, col, moduleCount, version) {
+    if (version < 2) return null;
+    const positions = this.getAlignmentPositions(version, moduleCount);
+    for (const pos of positions) {
+      if (Math.abs(row - pos.row) <= 2 && Math.abs(col - pos.col) <= 2) {
+        return pos;
+      }
+    }
+    return null;
   }
 
   /**
@@ -574,19 +688,41 @@ export class QRGenerator {
     return modifiedPattern;
   }
 
-  drawModule(ctx, x, y, size, style) {
+  /**
+   * Draw a single module with support for style, corner radius, and rotation
+   */
+  drawModule(ctx, x, y, size, style, options = {}) {
+    const { cornerRadius = 0, rotation = 0 } = options;
     const padding = size * 0.05;
     const innerSize = size - padding * 2;
+    
+    // Calculate corner radius based on percentage
+    const radiusPercent = cornerRadius / 100;
+    const maxRadius = innerSize / 2;
+    const actualRadius = maxRadius * radiusPercent;
+
+    ctx.save();
+    
+    // Apply rotation around center if specified
+    if (rotation !== 0) {
+      const centerX = x + size / 2;
+      const centerY = y + size / 2;
+      ctx.translate(centerX, centerY);
+      ctx.rotate((rotation * Math.PI) / 180);
+      ctx.translate(-centerX, -centerY);
+    }
 
     switch (style) {
       case "rounded":
+        // Use cornerRadius if specified, otherwise default rounded
+        const roundedRadius = actualRadius > 0 ? actualRadius : size * 0.3;
         this.roundRect(
           ctx,
           x + padding,
           y + padding,
           innerSize,
           innerSize,
-          size * 0.3,
+          roundedRadius,
         );
         ctx.fill();
         break;
@@ -609,20 +745,40 @@ export class QRGenerator {
 
       case "connected":
         // Draw full rectangle with no gaps for connected look
-        ctx.fillRect(x, y, size, size);
+        if (actualRadius > 0) {
+          this.roundRect(ctx, x, y, size, size, actualRadius);
+          ctx.fill();
+        } else {
+          ctx.fillRect(x, y, size, size);
+        }
         break;
 
       case "square":
       default:
-        ctx.fillRect(x + padding, y + padding, innerSize, innerSize);
+        if (actualRadius > 0) {
+          this.roundRect(ctx, x + padding, y + padding, innerSize, innerSize, actualRadius);
+          ctx.fill();
+        } else {
+          ctx.fillRect(x + padding, y + padding, innerSize, innerSize);
+        }
         break;
     }
+    
+    ctx.restore();
   }
 
-  drawFinderModule(ctx, x, y, size, style) {
+  /**
+   * Draw a single finder pattern module
+   */
+  drawFinderModule(ctx, x, y, size, style, cornerRadius = 0) {
+    const radiusPercent = cornerRadius / 100;
+    const maxRadius = size / 2;
+    const actualRadius = maxRadius * radiusPercent;
+    
     switch (style) {
       case "rounded":
-        this.roundRect(ctx, x, y, size, size, size * 0.2);
+        const roundedRadius = actualRadius > 0 ? actualRadius : size * 0.2;
+        this.roundRect(ctx, x, y, size, size, roundedRadius);
         ctx.fill();
         break;
 
@@ -634,9 +790,254 @@ export class QRGenerator {
 
       case "square":
       default:
-        ctx.fillRect(x, y, size, size);
+        if (actualRadius > 0) {
+          this.roundRect(ctx, x, y, size, size, actualRadius);
+          ctx.fill();
+        } else {
+          ctx.fillRect(x, y, size, size);
+        }
         break;
     }
+  }
+
+  /**
+   * Draw a complete finder pattern (eye) with outer and inner styles
+   */
+  drawFinderPatternComplete(ctx, centerX, centerY, moduleSize, config) {
+    const outerStyle = config.eyeOuterStyle || config.finderStyle || 'square';
+    const innerStyle = config.eyeInnerStyle || config.finderStyle || 'square';
+    const scale = (config.eyeScale || 100) / 100;
+    const cornerRadius = config.cornerRadius || 0;
+    
+    // Finder pattern is 7x7 modules
+    // Outer: 7x7, Middle (white): 5x5, Inner: 3x3
+    const outerSize = 7 * moduleSize * scale;
+    const middleSize = 5 * moduleSize * scale;
+    const innerSize = 3 * moduleSize * scale;
+    
+    const outerOffset = (7 * moduleSize - outerSize) / 2;
+    const x = centerX + outerOffset;
+    const y = centerY + outerOffset;
+    
+    // Draw outer (dark)
+    ctx.fillStyle = config.fgColor;
+    this.drawFinderModule(ctx, x, y, outerSize, outerStyle, cornerRadius);
+    
+    // Draw middle (light/background)
+    ctx.fillStyle = config.bgColor;
+    const middleOffset = (outerSize - middleSize) / 2;
+    this.drawFinderModule(ctx, x + middleOffset, y + middleOffset, middleSize, outerStyle, cornerRadius);
+    
+    // Draw inner (dark)
+    ctx.fillStyle = config.fgColor;
+    const innerOffset = (outerSize - innerSize) / 2;
+    this.drawFinderModule(ctx, x + innerOffset, y + innerOffset, innerSize, innerStyle, cornerRadius);
+  }
+
+  /**
+   * Draw an alignment pattern with specified style
+   */
+  drawAlignmentPattern(ctx, centerX, centerY, moduleSize, style, config) {
+    const cornerRadius = config.cornerRadius || 0;
+    
+    // Alignment pattern is 5x5 modules
+    // Outer: 5x5, Middle (white): 3x3, Inner: 1x1
+    const outerSize = 5 * moduleSize;
+    const middleSize = 3 * moduleSize;
+    const innerSize = 1 * moduleSize;
+    
+    const x = centerX - outerSize / 2;
+    const y = centerY - outerSize / 2;
+    
+    // Use the specified style or match finder style
+    const effectiveStyle = style === 'match_finder' ? (config.finderStyle || 'square') : style;
+    
+    // Draw outer (dark)
+    ctx.fillStyle = config.fgColor;
+    this.drawFinderModule(ctx, x, y, outerSize, effectiveStyle, cornerRadius);
+    
+    // Draw middle (light/background)
+    ctx.fillStyle = config.bgColor;
+    const middleX = centerX - middleSize / 2;
+    const middleY = centerY - middleSize / 2;
+    this.drawFinderModule(ctx, middleX, middleY, middleSize, effectiveStyle, cornerRadius);
+    
+    // Draw inner (dark)
+    ctx.fillStyle = config.fgColor;
+    const innerX = centerX - innerSize / 2;
+    const innerY = centerY - innerSize / 2;
+    this.drawFinderModule(ctx, innerX, innerY, innerSize, effectiveStyle, cornerRadius);
+  }
+
+  /**
+   * Draw timing pattern with specified style
+   */
+  drawTimingModule(ctx, x, y, size, style, config) {
+    const cornerRadius = config.cornerRadius || 0;
+    
+    // Use the specified style or match module style
+    const effectiveStyle = style === 'match_module' ? (config.moduleStyle || 'square') : style;
+    
+    switch (effectiveStyle) {
+      case 'solid':
+        ctx.fillRect(x, y, size, size);
+        break;
+      case 'dashed':
+        // Draw a smaller centered rectangle for dashed look
+        const dashSize = size * 0.7;
+        const offset = (size - dashSize) / 2;
+        ctx.fillRect(x + offset, y + offset, dashSize, dashSize);
+        break;
+      default:
+        // Use regular module drawing
+        this.drawModule(ctx, x, y, size, effectiveStyle, { cornerRadius });
+    }
+  }
+
+  /**
+   * Create a gradient fill style based on config
+   */
+  createGradientFill(ctx, config, size) {
+    if (!config.gradient || config.gradient.type === 'none') {
+      return config.fgColor;
+    }
+    
+    const { type, stops, centerX = 0.5, centerY = 0.5 } = config.gradient;
+    const angle = config.gradient.angle || 0;
+    let gradient;
+    
+    switch (type) {
+      case 'linear': {
+        // Convert angle to start/end points
+        const angleRad = (angle * Math.PI) / 180;
+        const x1 = size / 2 - Math.cos(angleRad) * size / 2;
+        const y1 = size / 2 - Math.sin(angleRad) * size / 2;
+        const x2 = size / 2 + Math.cos(angleRad) * size / 2;
+        const y2 = size / 2 + Math.sin(angleRad) * size / 2;
+        gradient = ctx.createLinearGradient(x1, y1, x2, y2);
+        break;
+      }
+      case 'radial': {
+        const cx = size * (centerX || 0.5);
+        const cy = size * (centerY || 0.5);
+        const radius = size * 0.7;
+        gradient = ctx.createRadialGradient(cx, cy, 0, cx, cy, radius);
+        break;
+      }
+      case 'conic': {
+        // Canvas doesn't have native conic gradient, simulate with radial
+        const cx = size * (centerX || 0.5);
+        const cy = size * (centerY || 0.5);
+        gradient = ctx.createRadialGradient(cx, cy, 0, cx, cy, size * 0.7);
+        break;
+      }
+      default:
+        return config.fgColor;
+    }
+    
+    // Add color stops
+    if (stops && stops.length > 0) {
+      stops.forEach(stop => {
+        gradient.addColorStop(stop.pos, stop.color);
+      });
+    } else {
+      // Default gradient from fgColor to a lighter version
+      gradient.addColorStop(0, config.fgColor);
+      gradient.addColorStop(1, config.bgColor);
+    }
+    
+    return gradient;
+  }
+
+  /**
+   * Draw a decorative frame around the QR code
+   */
+  drawFrame(ctx, size, moduleSize, margin, config) {
+    const frameStyle = config.frameStyle;
+    if (!frameStyle || frameStyle === 'none') return;
+    
+    const frameText = config.frameText || '';
+    const qrSize = size - margin * 2 * moduleSize - (frameText ? moduleSize * 4 : 0);
+    const qrStart = margin * moduleSize;
+    
+    ctx.save();
+    
+    switch (frameStyle) {
+      case 'rounded_frame': {
+        // Draw rounded rectangle frame around QR
+        ctx.strokeStyle = config.fgColor;
+        ctx.lineWidth = moduleSize * 0.5;
+        const frameMargin = moduleSize;
+        this.roundRect(
+          ctx,
+          qrStart - frameMargin,
+          qrStart - frameMargin,
+          qrSize + frameMargin * 2,
+          qrSize + frameMargin * 2 + (frameText ? moduleSize * 3 : 0),
+          moduleSize * 2
+        );
+        ctx.stroke();
+        break;
+      }
+      
+      case 'sticker': {
+        // Draw sticker-style background with shadow
+        ctx.shadowColor = 'rgba(0,0,0,0.2)';
+        ctx.shadowBlur = moduleSize * 2;
+        ctx.shadowOffsetX = moduleSize * 0.5;
+        ctx.shadowOffsetY = moduleSize * 0.5;
+        
+        ctx.fillStyle = config.bgColor;
+        const stickerPadding = moduleSize * 1.5;
+        this.roundRect(
+          ctx,
+          qrStart - stickerPadding,
+          qrStart - stickerPadding,
+          qrSize + stickerPadding * 2,
+          qrSize + stickerPadding * 2 + (frameText ? moduleSize * 4 : 0),
+          moduleSize * 3
+        );
+        ctx.fill();
+        ctx.shadowColor = 'transparent';
+        break;
+      }
+      
+      case 'tag': {
+        // Draw tag-style frame with pointed end
+        ctx.fillStyle = config.fgColor;
+        const tagPadding = moduleSize;
+        const tagWidth = qrSize + tagPadding * 2;
+        const tagHeight = qrSize + tagPadding * 2 + (frameText ? moduleSize * 4 : 0);
+        const tagX = qrStart - tagPadding;
+        const tagY = qrStart - tagPadding;
+        
+        ctx.beginPath();
+        ctx.moveTo(tagX + moduleSize, tagY);
+        ctx.lineTo(tagX + tagWidth - moduleSize, tagY);
+        ctx.quadraticCurveTo(tagX + tagWidth, tagY, tagX + tagWidth, tagY + moduleSize);
+        ctx.lineTo(tagX + tagWidth, tagY + tagHeight - moduleSize);
+        ctx.quadraticCurveTo(tagX + tagWidth, tagY + tagHeight, tagX + tagWidth - moduleSize, tagY + tagHeight);
+        ctx.lineTo(tagX + moduleSize, tagY + tagHeight);
+        ctx.quadraticCurveTo(tagX, tagY + tagHeight, tagX, tagY + tagHeight - moduleSize);
+        ctx.lineTo(tagX, tagY + moduleSize);
+        ctx.quadraticCurveTo(tagX, tagY, tagX + moduleSize, tagY);
+        ctx.closePath();
+        ctx.stroke();
+        break;
+      }
+    }
+    
+    // Draw frame text if provided
+    if (frameText) {
+      ctx.fillStyle = config.fgColor;
+      ctx.font = `bold ${moduleSize * 2}px Arial, sans-serif`;
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'top';
+      const textY = qrStart + qrSize + moduleSize * 1.5;
+      ctx.fillText(frameText, size / 2, textY);
+    }
+    
+    ctx.restore();
   }
 
   roundRect(ctx, x, y, width, height, radius) {
@@ -695,38 +1096,7 @@ export class QRGenerator {
     return brightness;
   }
 
-  blendColors(color1, color2, amount = 0.5) {
-    const c1 = this.parseColor(color1);
-    const c2 = this.parseColor(color2);
-
-    const r = Math.round(c1.r * (1 - amount) + c2.r * amount);
-    const g = Math.round(c1.g * (1 - amount) + c2.g * amount);
-    const b = Math.round(c1.b * (1 - amount) + c2.b * amount);
-
-    return `rgb(${r},${g},${b})`;
-  }
-
-  parseColor(color) {
-    if (color.startsWith("#")) {
-      const hex = color.slice(1);
-      return {
-        r: parseInt(hex.substr(0, 2), 16),
-        g: parseInt(hex.substr(2, 2), 16),
-        b: parseInt(hex.substr(4, 2), 16),
-      };
-    }
-
-    const match = color.match(/rgb\((\d+),\s*(\d+),\s*(\d+)\)/);
-    if (match) {
-      return {
-        r: parseInt(match[1]),
-        g: parseInt(match[2]),
-        b: parseInt(match[3]),
-      };
-    }
-
-    return { r: 0, g: 0, b: 0 };
-  }
+  // blendColors and parseColor are now imported from ./color-utils.ts
 
   drawCenterLogo(ctx, logoCanvas, canvasSize, logoSizePercent) {
     const logoSize = canvasSize * (logoSizePercent / 100);
@@ -752,15 +1122,25 @@ export class QRGenerator {
   generateDitheredSubpixelQR(_qr, config, overlayCanvas) {
     const scale = 3;
 
-    const ditheredResult = generateDitheredMatrix({
+    // Generate QR matrix using qr-core
+    const qrResult = generateQR({
       text: config.content,
       ecc: config.errorCorrection,
       version: config.typeNumber || 0,
       scale,
-      overlayCanvas,
-      overlayIntensity: config.overlayIntensity,
-      colorMode: config.colorMode || "color",
     });
+
+    const { matrix: baseMatrix, moduleCount: scaledSize } = qrResult;
+    
+    // Apply dithering with overlay
+    const ditheredResult = this.applyDitherToMatrix(
+      baseMatrix,
+      scaledSize,
+      scale,
+      overlayCanvas,
+      config.overlayIntensity,
+      config.colorMode || "color"
+    );
 
     const { matrix: dithered, colors } = ditheredResult;
 
@@ -1018,7 +1398,7 @@ export class QRGenerator {
                 if (intensity >= 1) {
                   ctx.fillStyle = overlayColor;
                 } else {
-                  ctx.fillStyle = this.blendColors(
+                  ctx.fillStyle = blendColors(
                     "#808080",
                     overlayColor,
                     intensity,
@@ -1036,6 +1416,166 @@ export class QRGenerator {
     }
 
     return canvas;
+  }
+
+  /**
+   * Apply dithering to a QR matrix with overlay image
+   * Uses Floyd-Steinberg error diffusion for free points
+   */
+  applyDitherToMatrix(baseMatrix, scaledSize, scale, overlayCanvas, overlayIntensity, colorMode) {
+    // Initialize output
+    const matrix = baseMatrix.map(row => [...row]);
+    const colors = baseMatrix.map(row => row.map(isDark => 
+      isDark ? { r: 0, g: 0, b: 0 } : { r: 255, g: 255, b: 255 }
+    ));
+
+    if (!overlayCanvas) {
+      return { matrix, colors };
+    }
+
+    // Load overlay image data
+    const imageData = this.loadImageDataRGB(overlayCanvas, scaledSize);
+    const intensity = overlayIntensity / 100;
+
+    // Convert to grayscale if needed
+    if (colorMode === 'grayscale' || colorMode === 'bw') {
+      for (let y = 0; y < scaledSize; y++) {
+        for (let x = 0; x < scaledSize; x++) {
+          const { r, g, b } = imageData[y][x];
+          const gray = r * 0.299 + g * 0.587 + b * 0.114;
+          imageData[y][x] = { r: gray, g: gray, b: gray };
+        }
+      }
+    }
+
+    // Apply Floyd-Steinberg error diffusion to free points
+    for (let y = 0; y < scaledSize; y++) {
+      for (let x = 0; x < scaledSize; x++) {
+        // Skip locked areas and data points
+        if (isLocked(scaledSize, x, y, scale)) continue;
+        if (isData(x, y, scale)) continue;
+
+        const pixel = imageData[y][x];
+        
+        if (colorMode === 'bw') {
+          const gray = pixel.r * 0.299 + pixel.g * 0.587 + pixel.b * 0.114;
+          const newVal = gray > 0.5 ? 1 : 0;
+          const error = gray - newVal;
+          
+          imageData[y][x] = { r: newVal, g: newVal, b: newVal };
+          this.distributeError(imageData, x, y, scaledSize, scale, error, error, error);
+        } else if (colorMode === 'grayscale') {
+          const gray = pixel.r;
+          const levels = 4;
+          const newVal = Math.round(gray * (levels - 1)) / (levels - 1);
+          const error = gray - newVal;
+          
+          imageData[y][x] = { r: newVal, g: newVal, b: newVal };
+          this.distributeError(imageData, x, y, scaledSize, scale, error, error, error);
+        } else {
+          const levels = 4;
+          const newR = Math.round(pixel.r * (levels - 1)) / (levels - 1);
+          const newG = Math.round(pixel.g * (levels - 1)) / (levels - 1);
+          const newB = Math.round(pixel.b * (levels - 1)) / (levels - 1);
+          
+          const errorR = pixel.r - newR;
+          const errorG = pixel.g - newG;
+          const errorB = pixel.b - newB;
+          
+          imageData[y][x] = { r: newR, g: newG, b: newB };
+          this.distributeError(imageData, x, y, scaledSize, scale, errorR, errorG, errorB);
+        }
+      }
+    }
+
+    // Merge dithered image with QR matrix
+    for (let y = 0; y < scaledSize; y++) {
+      for (let x = 0; x < scaledSize; x++) {
+        if (isLocked(scaledSize, x, y, scale)) continue;
+        if (isData(x, y, scale)) continue;
+
+        const pixel = imageData[y][x];
+        const brightness = pixel.r * 0.299 + pixel.g * 0.587 + pixel.b * 0.114;
+        const useImage = Math.random() < intensity;
+
+        if (useImage) {
+          matrix[y][x] = brightness < 0.5;
+          colors[y][x] = {
+            r: Math.round(Math.max(0, Math.min(1, pixel.r)) * 255),
+            g: Math.round(Math.max(0, Math.min(1, pixel.g)) * 255),
+            b: Math.round(Math.max(0, Math.min(1, pixel.b)) * 255),
+          };
+        }
+      }
+    }
+
+    return { matrix, colors };
+  }
+
+  /**
+   * Load image data from canvas as RGB values (0-1 range)
+   */
+  loadImageDataRGB(canvas, size) {
+    const tempCanvas = document.createElement('canvas');
+    tempCanvas.width = size;
+    tempCanvas.height = size;
+    const ctx = tempCanvas.getContext('2d');
+    ctx.drawImage(canvas, 0, 0, size, size);
+    const imgData = ctx.getImageData(0, 0, size, size);
+
+    const output = [];
+    for (let y = 0; y < size; y++) {
+      const row = [];
+      for (let x = 0; x < size; x++) {
+        const i = (y * size + x) * 4;
+        row.push({
+          r: imgData.data[i] / 255,
+          g: imgData.data[i + 1] / 255,
+          b: imgData.data[i + 2] / 255,
+        });
+      }
+      output.push(row);
+    }
+    return output;
+  }
+
+  /**
+   * Distribute error to neighboring pixels (Floyd-Steinberg)
+   */
+  distributeError(imageData, x, y, size, scale, errorR, errorG, errorB) {
+    const canChange = (px, py) => {
+      if (px < 0 || py < 0 || px >= size || py >= size) return false;
+      return !isLocked(size, px, py, scale) && !isData(px, py, scale);
+    };
+
+    const a = canChange(x + 1, y);
+    const b = canChange(x - 1, y + 1);
+    const c = canChange(x, y + 1);
+    const d = canChange(x + 1, y + 1);
+
+    const total = (a ? 7 : 0) + (b ? 3 : 0) + (c ? 5 : 0) + (d ? 1 : 0);
+    if (total === 0) return;
+
+    if (a) {
+      imageData[y][x + 1].r += (errorR * 7) / total;
+      imageData[y][x + 1].g += (errorG * 7) / total;
+      imageData[y][x + 1].b += (errorB * 7) / total;
+    }
+    if (b) {
+      imageData[y + 1][x - 1].r += (errorR * 3) / total;
+      imageData[y + 1][x - 1].g += (errorG * 3) / total;
+      imageData[y + 1][x - 1].b += (errorB * 3) / total;
+    }
+    if (c) {
+      imageData[y + 1][x].r += (errorR * 5) / total;
+      imageData[y + 1][x].g += (errorG * 5) / total;
+      imageData[y + 1][x].b += (errorB * 5) / total;
+    }
+    if (d) {
+      imageData[y + 1][x + 1].r += errorR / total;
+      imageData[y + 1][x + 1].g += errorG / total;
+      imageData[y + 1][x + 1].b += errorB / total;
+    }
   }
 
   getSubpixelOverlayData(overlayCanvas, subpixelCount, colorMode = "color") {

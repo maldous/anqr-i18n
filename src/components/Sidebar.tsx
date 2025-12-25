@@ -33,9 +33,9 @@ import { SearchProvider } from '@/lib/search-context'
 
 const SECTIONS = [
   { id: 'payload', label: 'Payload / Data', icon: Type, tier: 'basic' as const },
+  { id: 'overlay', label: 'Overlay / Image', icon: Image, tier: 'basic' as const },
   { id: 'qr', label: 'QR Encoding', icon: QrCode, tier: 'basic' as const },
   { id: 'render', label: 'Rendering / Style', icon: Palette, tier: 'basic' as const },
-  { id: 'overlay', label: 'Overlay / Image', icon: Image, tier: 'basic' as const },
   { id: 'animation', label: 'Animation', icon: Play, tier: 'basic' as const },
   { id: 'output', label: 'Output / Export', icon: Download, tier: 'basic' as const },
   { id: 'watermark', label: 'Watermark', icon: Droplets, tier: 'advanced' as const },
@@ -80,7 +80,7 @@ const SECTION_KEYWORDS: Record<string, { basic: string[], advanced: string[], pr
       // Documents
       'pdf', 'file', 'document', 'image', 'video', 'cloud', 'drive', 'dropbox',
       // EPC/SEPA/Payment rails
-      'epc', 'sepa', 'bank', 'transfer', 'iban', 'bic', 'upi', 'paynow', 'promptpay', 'pix', 'alipay', 'wechat',
+      'epc', 'sepa', 'bank', 'transfer', 'iban', 'bic', 'upi', 'paynow', 'promptpay', 'pix',
       // Validation options
       'validate', 'validation', 'input', 'trim', 'whitespace', 'normalize', 'newlines', 'max length', 'guard',
       // UTM

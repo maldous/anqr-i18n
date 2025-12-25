@@ -1,9 +1,10 @@
 import { useQRStore, Tier } from '@/store/qr-store'
 import { Tabs, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
-import { QrCode, Download, Share2, Moon, Sun, Menu, PanelLeft } from 'lucide-react'
+import { QrCode, Download, Share2, Moon, Sun, Menu, PanelLeft, Copy, Check } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { useState, useEffect } from 'react'
+import { copyToClipboard, getShareableUrl } from '@/modules/share-utils'
 
 const NAV_LINKS = [
   { href: '#', label: 'Generator', active: true },
@@ -15,12 +16,14 @@ const NAV_LINKS = [
 
 interface HeaderProps {
   onToggleSidebar?: () => void
+  onExport?: () => void
 }
 
-export function Header({ onToggleSidebar }: HeaderProps) {
-  const { tier, setTier } = useQRStore()
+export function Header({ onToggleSidebar, onExport }: HeaderProps) {
+  const { tier, setTier, getPayloadText, qr, render, overlay } = useQRStore()
   const [darkMode, setDarkMode] = useState(false)
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+  const [copied, setCopied] = useState(false)
 
   useEffect(() => {
     const isDark = localStorage.getItem('darkMode') === 'true' || 
@@ -34,6 +37,28 @@ export function Header({ onToggleSidebar }: HeaderProps) {
     setDarkMode(newMode)
     localStorage.setItem('darkMode', String(newMode))
     document.documentElement.classList.toggle('dark', newMode)
+  }
+
+  const handleShare = async () => {
+    const shareConfig = {
+      data: getPayloadText(),
+      ec: qr.ecc,
+      version: qr.version,
+      size: render.modulePx,
+      margin: qr.quietZoneModules,
+      fg: render.fgColor,
+      bg: render.bgColor,
+      style: render.moduleStyle,
+      finder: render.finderStyle,
+      mode: overlay.enabled ? overlay.mode : undefined,
+      intensity: overlay.enabled ? overlay.intensity : undefined,
+    }
+    const url = getShareableUrl(shareConfig)
+    const success = await copyToClipboard(url)
+    if (success) {
+      setCopied(true)
+      setTimeout(() => setCopied(false), 2000)
+    }
   }
 
   return (
@@ -105,11 +130,11 @@ export function Header({ onToggleSidebar }: HeaderProps) {
 
           {/* Actions */}
           <div className="hidden sm:flex items-center gap-2">
-            <Button variant="outline" size="sm" className="shadow-sm">
-              <Share2 className="h-4 w-4 mr-2" />
-              Share
+            <Button variant="outline" size="sm" className="shadow-sm" onClick={handleShare}>
+              {copied ? <Check className="h-4 w-4 mr-2" /> : <Share2 className="h-4 w-4 mr-2" />}
+              {copied ? 'Copied!' : 'Share'}
             </Button>
-            <Button size="sm" className="shadow-sm">
+            <Button size="sm" className="shadow-sm" onClick={onExport}>
               <Download className="h-4 w-4 mr-2" />
               Export
             </Button>
@@ -145,11 +170,11 @@ export function Header({ onToggleSidebar }: HeaderProps) {
             </a>
           ))}
           <div className="pt-2 border-t flex gap-2">
-            <Button variant="outline" size="sm" className="flex-1">
-              <Share2 className="h-4 w-4 mr-2" />
-              Share
+            <Button variant="outline" size="sm" className="flex-1" onClick={handleShare}>
+              {copied ? <Check className="h-4 w-4 mr-2" /> : <Share2 className="h-4 w-4 mr-2" />}
+              {copied ? 'Copied!' : 'Share'}
             </Button>
-            <Button size="sm" className="flex-1">
+            <Button size="sm" className="flex-1" onClick={onExport}>
               <Download className="h-4 w-4 mr-2" />
               Export
             </Button>
