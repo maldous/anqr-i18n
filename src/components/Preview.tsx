@@ -1,6 +1,7 @@
 import { Loader2, AlertTriangle } from 'lucide-react'
 import { useQRGenerator } from '@/hooks/useQRGenerator'
 import { useState, useEffect } from 'react'
+import { AdPlaceholder } from '@/components/AdPlaceholder'
 
 interface PreviewProps {
   sidebarOpen?: boolean
@@ -21,11 +22,25 @@ export function Preview({ sidebarOpen = true }: PreviewProps) {
   }, [safetyWarnings])
 
   return (
-    <main className={`min-h-[200px] md:flex-1 flex flex-col bg-muted/30 overflow-hidden transition-all duration-300 ${sidebarOpen ? 'lg:ml-96' : ''}`}>
-      {/* Preview Area */}
-      <div className="flex-1 flex items-center justify-center p-4 md:p-8">
+    <main className={`min-h-[200px] md:flex-1 flex flex-col lg:flex-row bg-muted/30 overflow-hidden transition-all duration-300 ${sidebarOpen ? 'lg:ml-96' : ''}`}>
+      {/* Desktop Left Column Ad - Skyscraper 160x600, always visible */}
+      <div className="hidden lg:flex flex-col items-end justify-center w-[160px] border-r bg-muted/10 flex-shrink-0">
+        <AdPlaceholder slot="left-skyscraper" width={160} height={600} format="vertical" />
+      </div>
+      
+      {/* Main content area with QR */}
+      <div className="flex-1 flex flex-col">
+        {/* Mobile Ad above QR - only when settings is hidden */}
+        {!sidebarOpen && (
+          <div className="lg:hidden p-4 flex justify-center flex-shrink-0">
+            <AdPlaceholder slot="mobile-above-qr" width={320} height={50} format="horizontal" />
+          </div>
+        )}
+        
+        {/* Preview Area */}
+        <div className="flex-1 flex items-center justify-center p-4 md:p-8">
         <div 
-          className={`qr-preview-container transition-all duration-300 ${sidebarOpen ? 'max-w-xs md:max-w-md lg:max-w-lg' : 'max-w-md md:max-w-xl lg:max-w-3xl'}`}
+          className="qr-preview-container transition-all duration-300 max-w-md md:max-w-xl lg:max-w-2xl"
         >
           {/* QR Code Canvas */}
           <div className="bg-white rounded-lg shadow-xl flex items-center justify-center p-4 relative">
@@ -70,8 +85,20 @@ export function Preview({ sidebarOpen = true }: PreviewProps) {
             />
           </div>
         </div>
+        </div>
+        
+        {/* Mobile Ad - below QR code, only when settings is hidden */}
+        {!sidebarOpen && (
+          <div className="lg:hidden p-4 flex justify-center flex-shrink-0">
+            <AdPlaceholder slot="mobile-below-qr" width={320} height={50} format="horizontal" />
+          </div>
+        )}
       </div>
-
+      
+      {/* Desktop Right Column Ad - Skyscraper 160x600, left-aligned with Share button */}
+      <div className="hidden lg:flex flex-col items-start justify-center w-[160px] border-l bg-muted/10 flex-shrink-0">
+        <AdPlaceholder slot="right-skyscraper" width={160} height={600} format="vertical" />
+      </div>
     </main>
   )
 }

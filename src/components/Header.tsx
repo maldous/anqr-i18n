@@ -1,10 +1,11 @@
 import { useQRStore, Tier } from '@/store/qr-store'
 import { Tabs, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
-import { QrCode, Download, Share2, Moon, Sun, Menu, PanelLeft, Check } from 'lucide-react'
+import { Download, Share2, Moon, Sun, Menu, PanelLeft, Check } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { useState, useEffect } from 'react'
 import { copyToClipboard, getShareableUrl } from '@/modules/share-utils'
+import { AdPlaceholder } from '@/components/AdPlaceholder'
 
 const NAV_LINKS = [
   { href: '#gallery', label: 'Gallery' },
@@ -60,6 +61,11 @@ export function Header({ onToggleSidebar, onExport, sidebarOpen = false }: Heade
 
   return (
     <header className={`border-b bg-card shadow-md sticky top-0 z-50 transition-all duration-300 ${sidebarOpen ? 'lg:ml-96' : ''}`}>
+      {/* Ad row - centered, below the controls row */}
+      <div className="hidden xl:flex justify-center py-2 border-b border-border/30">
+        <AdPlaceholder slot="header-leaderboard" width={728} height={90} format="horizontal" />
+      </div>
+      
       <div className="px-4 py-3 flex items-center justify-between">
         <div className="flex items-center gap-6">
           <button 
@@ -84,6 +90,9 @@ export function Header({ onToggleSidebar, onExport, sidebarOpen = false }: Heade
             ))}
           </nav>
         </div>
+        
+        {/* Spacer to push controls to the right */}
+        <div className="flex-1" />
 
         <div className="flex items-center gap-3">
           {/* Tier Toggle - Tabs on desktop, dropdown on mobile */}
@@ -160,6 +169,9 @@ export function Header({ onToggleSidebar, onExport, sidebarOpen = false }: Heade
               </a>
             ))}
           </nav>
+          
+          {/* Mobile Ad - Leaderboard 320x50 below nav, above buttons */}
+          <AdPlaceholder slot="header-mobile" width={320} height={50} format="horizontal" className="mx-auto" />
           
           {/* Share/Export buttons */}
           <div className="flex gap-2">

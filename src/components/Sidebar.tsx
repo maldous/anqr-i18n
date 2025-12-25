@@ -28,6 +28,7 @@ import {
 } from 'lucide-react'
 import { useState, useEffect, useRef } from 'react'
 import { SearchProvider, HighlightedLabel } from '@/lib/search-context'
+import { AdPlaceholder } from '@/components/AdPlaceholder'
 
 const SECTIONS = [
   { id: 'payload', label: 'Payload / Data', icon: Type, tier: 'basic' as const },
@@ -565,9 +566,9 @@ export function Sidebar({ isOpen, onClose }: SidebarProps) {
         `}
       >
         {/* Sections */}
-        <div className="flex-1 overflow-y-auto px-4 pt-3">
+        <div className="flex-1 overflow-y-auto px-4 pt-1">
           {/* Search bar styled like accordion items */}
-          <div className="flex items-center gap-2 px-3 py-3 bg-muted/50 rounded-md shadow-sm mb-1">
+          <div className="flex items-center gap-2 px-3 py-3 bg-muted/50 rounded-md shadow-sm mb-[6px]">
             <Search className="h-4 w-4 text-muted-foreground flex-shrink-0" />
             <input 
               value={searchQuery}
@@ -606,7 +607,7 @@ export function Sidebar({ isOpen, onClose }: SidebarProps) {
             {visibleSections.map(section => {
               const Icon = section.icon
               return (
-                <AccordionItem key={section.id} value={section.id} className="border-none mb-1">
+                <AccordionItem key={section.id} value={section.id} className="border-none mb-[6px]">
                   <AccordionTrigger className="hover:no-underline py-3 px-3 bg-muted/50 rounded-md shadow-sm [&>svg]:ml-auto">
                     <div className="flex items-center gap-2">
                       <Icon className="h-4 w-4 text-muted-foreground" />
@@ -637,6 +638,10 @@ export function Sidebar({ isOpen, onClose }: SidebarProps) {
           </Accordion>
         </div>
 
+        {/* Desktop Ad below settings - only visible on large screens */}
+        <div className="hidden lg:block p-4 border-t flex-shrink-0">
+          <AdPlaceholder slot="sidebar-bottom" width={"100%"} height={250} format="rectangle" />
+        </div>
       </aside>
     </>
   )
