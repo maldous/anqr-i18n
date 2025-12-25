@@ -5,9 +5,31 @@ import { Slider } from '@/components/ui/slider'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
 import { Switch } from '@/components/ui/switch'
 import { HighlightedLabel } from '@/lib/search-context'
+import { useMemo } from 'react'
+import { calculateOptimalVersion } from '@/modules/qr-core'
 
 export function QREncodingSection() {
-  const { tier, qr, setQrVersion, setQrEcc, setQrMask, setQrEncodingMode, setQrQuietZone, setQrQuietZoneMinEnforce } = useQRStore()
+  const { tier, qr, setQrVersion, setQrEcc, setQrMask, setQrEncodingMode, setQrQuietZone, setQrQuietZoneMinEnforce, getPayloadText } = useQRStore()
+  
+  // Calculate minimum required version for current content
+  const minRequiredVersion = useMemo(() => {
+    const content = getPayloadText()
+    if (!content) return 1
+    return calculateOptimalVersion(content, qr.ecc)
+  }, [getPayloadText, qr.ecc])
+  
+  // Handle version change - ensure it doesn't go below minimum (unless 0 = auto)
+  const handleVersionChange = (value: number) => {
+    if (value === 0) {
+      // Auto mode is always allowed
+      setQrVersion(0)
+    } else if (value < minRequiredVersion) {
+      // Jump to minimum required version
+      setQrVersion(minRequiredVersion)
+    } else {
+      setQrVersion(value)
+    }
+  }
 
   return (
     <div className="space-y-4">
@@ -16,18 +38,23 @@ export function QREncodingSection() {
         <div className="flex items-center justify-between">
           <Label><HighlightedLabel>Version</HighlightedLabel></Label>
           <span className="text-sm text-muted-foreground">
-            {qr.version === 0 ? 'Auto' : qr.version}
+            {qr.version === 0 ? `Auto (min: ${minRequiredVersion})` : qr.version}
           </span>
         </div>
         <Slider
           value={[qr.version]}
-          onValueChange={([v]) => setQrVersion(v)}
+          onValueChange={([v]) => handleVersionChange(v)}
           min={0}
           max={40}
           step={1}
         />
         <p className="text-xs text-muted-foreground">
-          0 = Auto-detect smallest version
+          {qr.version === 0 
+            ? `Auto-detect (requires v${minRequiredVersion}+ for current content)`
+            : qr.version < minRequiredVersion
+              ? `⚠️ Version too low! Minimum v${minRequiredVersion} required`
+              : `0 = Auto, min v${minRequiredVersion} for current content`
+          }
         </p>
       </div>
 

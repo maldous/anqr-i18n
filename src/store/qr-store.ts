@@ -550,6 +550,10 @@ export interface QRState {
   }
   setShare: (share: Partial<QRState['share']>) => void
 
+  // === UI STATE ===
+  searchQuery: string
+  setSearchQuery: (query: string) => void
+
   // Generate final payload text
   getPayloadText: () => string
 }
@@ -597,7 +601,7 @@ export const useQRStore = create<QRState>((set, get) => ({
   // QR defaults
   qr: {
     version: 0,
-    ecc: 'Q',
+    ecc: 'H',
     mask: 'auto',
     maskLock: false,
     encodingMode: 'auto',
@@ -624,7 +628,7 @@ export const useQRStore = create<QRState>((set, get) => ({
 
   // Render defaults
   render: {
-    modulePx: 8,
+    modulePx: 20,
     crispEdges: true,
     pixelSnap: 'floor',
     moduleGapPercent: 0,
@@ -690,8 +694,8 @@ export const useQRStore = create<QRState>((set, get) => ({
     posterizeLevels: 0,
     threshold: 128,
     edgeDetect: 'off',
-    mode: 'halftone',
-    intensity: 50,
+    mode: 'subpixel',
+    intensity: 100,
     preserveFinders: true,
     preserveTiming: false,
     preserveAlignment: false,
@@ -884,6 +888,10 @@ export const useQRStore = create<QRState>((set, get) => ({
     encodeMoreParams: false,
   },
   setShare: (share) => set((s) => ({ share: { ...s.share, ...share } })),
+
+  // UI state
+  searchQuery: '',
+  setSearchQuery: (searchQuery) => set({ searchQuery }),
 
   // Generate final payload text based on kind
   getPayloadText: () => {

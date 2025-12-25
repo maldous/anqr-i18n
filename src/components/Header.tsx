@@ -1,25 +1,22 @@
 import { useQRStore, Tier } from '@/store/qr-store'
 import { Tabs, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
-import { QrCode, Download, Share2, Moon, Sun, Menu, PanelLeft, Copy, Check } from 'lucide-react'
+import { QrCode, Download, Share2, Moon, Sun, Menu, PanelLeft, Check } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { useState, useEffect } from 'react'
 import { copyToClipboard, getShareableUrl } from '@/modules/share-utils'
 
 const NAV_LINKS = [
-  { href: '#', label: 'Generator', active: true },
   { href: '#gallery', label: 'Gallery' },
-  { href: '#about', label: 'About' },
-  { href: '#privacy', label: 'Privacy' },
-  { href: '#contact', label: 'Contact' },
 ]
 
 interface HeaderProps {
   onToggleSidebar?: () => void
   onExport?: () => void
+  sidebarOpen?: boolean
 }
 
-export function Header({ onToggleSidebar, onExport }: HeaderProps) {
+export function Header({ onToggleSidebar, onExport, sidebarOpen = false }: HeaderProps) {
   const { tier, setTier, getPayloadText, qr, render, overlay } = useQRStore()
   const [darkMode, setDarkMode] = useState(false)
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
@@ -62,7 +59,7 @@ export function Header({ onToggleSidebar, onExport }: HeaderProps) {
   }
 
   return (
-    <header className="border-b bg-card shadow-md sticky top-0 z-50">
+    <header className={`border-b bg-card shadow-md sticky top-0 z-50 transition-all duration-300 ${sidebarOpen ? 'lg:ml-96' : ''}`}>
       <div className="px-4 py-3 flex items-center justify-between">
         <div className="flex items-center gap-6">
           <button 
@@ -71,21 +68,16 @@ export function Header({ onToggleSidebar, onExport }: HeaderProps) {
             title="Toggle Settings Panel"
           >
             <PanelLeft className="h-6 w-6 text-muted-foreground" />
-            <QrCode className="h-8 w-8 text-primary" />
             <span className="text-xl font-bold">ANQR</span>
           </button>
           
           {/* Desktop Nav */}
-          <nav className="hidden md:flex items-center gap-1">
+          <nav className="hidden lg:flex items-center gap-1">
             {NAV_LINKS.map(link => (
               <a
                 key={link.label}
                 href={link.href}
-                className={`px-3 py-2 text-sm rounded-md transition-colors ${
-                  link.active 
-                    ? 'bg-primary/10 text-primary font-medium' 
-                    : 'text-muted-foreground hover:text-foreground hover:bg-muted'
-                }`}
+                className="px-3 py-2 text-sm rounded-md transition-colors text-muted-foreground hover:text-foreground hover:bg-muted"
               >
                 {link.label}
               </a>
@@ -154,22 +146,23 @@ export function Header({ onToggleSidebar, onExport }: HeaderProps) {
 
       {/* Mobile Menu */}
       {mobileMenuOpen && (
-        <div className="md:hidden border-t bg-card p-4 space-y-2">
-          {NAV_LINKS.map(link => (
-            <a
-              key={link.label}
-              href={link.href}
-              className={`block px-3 py-2 text-sm rounded-md ${
-                link.active 
-                  ? 'bg-primary/10 text-primary font-medium' 
-                  : 'text-muted-foreground hover:bg-muted'
-              }`}
-              onClick={() => setMobileMenuOpen(false)}
-            >
-              {link.label}
-            </a>
-          ))}
-          <div className="pt-2 border-t flex gap-2">
+        <div className="md:hidden border-t bg-card p-3 space-y-2">
+          {/* Nav links in a single horizontal row */}
+          <nav className="flex items-center justify-center gap-0.5 flex-wrap">
+            {NAV_LINKS.map(link => (
+              <a
+                key={link.label}
+                href={link.href}
+                className="px-2 py-1 text-xs rounded text-muted-foreground hover:bg-muted"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                {link.label}
+              </a>
+            ))}
+          </nav>
+          
+          {/* Share/Export buttons */}
+          <div className="flex gap-2">
             <Button variant="outline" size="sm" className="flex-1" onClick={handleShare}>
               {copied ? <Check className="h-4 w-4 mr-2" /> : <Share2 className="h-4 w-4 mr-2" />}
               {copied ? 'Copied!' : 'Share'}

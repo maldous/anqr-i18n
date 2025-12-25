@@ -10,7 +10,6 @@ import { SafetySection } from '@/components/sections/SafetySection'
 import { WatermarkSection } from '@/components/sections/WatermarkSection'
 import { MetadataSection } from '@/components/sections/MetadataSection'
 import { ShareSection } from '@/components/sections/ShareSection'
-import { Input } from '@/components/ui/input'
 import { Button } from '@/components/ui/button'
 import { 
   Type, 
@@ -23,13 +22,12 @@ import {
   Droplets,
   FileText,
   Share2,
-  Search,
   RotateCcw,
   X,
-  PanelLeftClose
+  Search
 } from 'lucide-react'
 import { useState, useEffect, useRef } from 'react'
-import { SearchProvider } from '@/lib/search-context'
+import { SearchProvider, HighlightedLabel } from '@/lib/search-context'
 
 const SECTIONS = [
   { id: 'payload', label: 'Payload / Data', icon: Type, tier: 'basic' as const },
@@ -424,18 +422,36 @@ interface SidebarProps {
 }
 
 export function Sidebar({ isOpen, onClose }: SidebarProps) {
-  const { tier } = useQRStore()
-  const [searchQuery, setSearchQuery] = useState('')
+  const { tier, searchQuery, setSearchQuery } = useQRStore()
   const [openSections, setOpenSections] = useState<string[]>(['payload'])
   const sidebarRef = useRef<HTMLDivElement>(null)
 
-  // Click outside to close on mobile
+  // Click outside to close on tablet and desktop
   useEffect(() => {
     const handleClickOutside = (e: MouseEvent) => {
-      if (sidebarRef.current && !sidebarRef.current.contains(e.target as Node)) {
-        if (window.innerWidth < 1024) {
-          onClose()
-        }
+      const target = e.target as Node
+      
+      // Don't close if clicking inside the sidebar
+      if (sidebarRef.current && sidebarRef.current.contains(target)) {
+        return
+      }
+      
+      // Don't close if clicking on a Radix UI portal element (dropdowns, selects, dialogs, etc.)
+      // These are rendered outside the sidebar but are part of the sidebar's UI
+      const targetElement = target as HTMLElement
+      if (targetElement.closest?.('[data-radix-popper-content-wrapper]') ||
+          targetElement.closest?.('[data-radix-select-viewport]') ||
+          targetElement.closest?.('[data-radix-menu-content]') ||
+          targetElement.closest?.('[data-radix-dialog-content]') ||
+          targetElement.closest?.('[role="listbox"]') ||
+          targetElement.closest?.('[role="menu"]') ||
+          targetElement.closest?.('[role="dialog"]')) {
+        return
+      }
+      
+      // Close on tablet (md-lg) and desktop (lg+) when clicking outside
+      if (window.innerWidth >= 768) {
+        onClose()
       }
     }
     document.addEventListener('mousedown', handleClickOutside)
@@ -525,10 +541,10 @@ export function Sidebar({ isOpen, onClose }: SidebarProps) {
 
   return (
     <>
-      {/* Backdrop for mobile */}
+      {/* Backdrop for tablet (between mobile and desktop) */}
       {isOpen && (
         <div 
-          className="fixed inset-0 bg-black/50 z-40 lg:hidden"
+          className="fixed inset-0 bg-black/50 z-40 hidden md:block lg:hidden"
           onClick={onClose}
         />
       )}
@@ -536,78 +552,69 @@ export function Sidebar({ isOpen, onClose }: SidebarProps) {
       <aside 
         ref={sidebarRef}
         className={`
-          fixed inset-y-0 left-0 z-50
-          w-80 lg:w-96 bg-card border-r shadow-xl
+          ${/* Mobile: relative positioning, part of flex layout */''}
+          ${/* Tablet: fixed overlay */''}
+          ${/* Desktop: fixed sidebar */''}
+          relative md:fixed md:inset-y-0 md:left-0 md:z-50
+          w-full md:w-80 lg:w-96 bg-card md:border-r shadow-xl
           transform transition-all duration-300 ease-in-out
-          ${isOpen ? 'translate-x-0 opacity-100' : '-translate-x-full opacity-0 pointer-events-none'}
+          ${isOpen 
+            ? 'h-[50vh] md:h-auto md:flex-none md:translate-x-0 opacity-100' 
+            : 'h-0 md:h-auto md:-translate-x-full opacity-0 pointer-events-none md:pointer-events-auto'}
           flex flex-col overflow-hidden
         `}
       >
-        {/* Header */}
-        <div className="p-4 border-b bg-muted/30 space-y-3">
-          <div className="flex items-center justify-between">
-            <h2 className="font-semibold text-sm">Settings</h2>
-            <div className="flex items-center gap-1">
-              <Button 
-                variant="ghost" 
-                size="icon" 
-                className="h-8 w-8"
-                onClick={handleReset}
-                title="Reset all settings"
-              >
-                <RotateCcw className="h-4 w-4" />
-              </Button>
-              <Button 
-                variant="ghost" 
-                size="icon" 
-                className="h-8 w-8"
-                onClick={onClose}
-                title="Hide panel"
-              >
-                <X className="h-4 w-4" />
-              </Button>
-            </div>
-          </div>
-          
-          {/* Search */}
-          <div className="relative">
-            <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
-            <Input 
+        {/* Sections */}
+        <div className="flex-1 overflow-y-auto px-4 pt-3">
+          {/* Search bar styled like accordion items */}
+          <div className="flex items-center gap-2 px-3 py-3 bg-muted/50 rounded-md shadow-sm mb-1">
+            <Search className="h-4 w-4 text-muted-foreground flex-shrink-0" />
+            <input 
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               placeholder="Search settings..."
-              className="pl-9 h-9 bg-background"
+              className="flex-1 bg-transparent border-none outline-none text-sm font-medium placeholder:text-muted-foreground"
             />
             {searchQuery && (
-              <Button
-                variant="ghost"
-                size="icon"
-                className="absolute right-1 top-1/2 -translate-y-1/2 h-7 w-7"
+              <button
+                className="h-4 w-4 flex-shrink-0 text-muted-foreground hover:text-foreground"
                 onClick={() => setSearchQuery('')}
               >
-                <X className="h-3 w-3" />
-              </Button>
+                <X className="h-4 w-4" />
+              </button>
             )}
+            <button 
+              className="h-4 w-4 flex-shrink-0 text-muted-foreground hover:text-foreground ml-auto"
+              onClick={handleReset}
+              title="Reset all settings"
+            >
+              <RotateCcw className="h-4 w-4" />
+            </button>
+            <button 
+              className="h-4 w-4 flex-shrink-0 text-muted-foreground hover:text-foreground"
+              onClick={onClose}
+              title="Hide panel"
+            >
+              <X className="h-4 w-4" />
+            </button>
           </div>
-        </div>
-
-        {/* Sections */}
-        <div className="flex-1 overflow-y-auto">
-          <div className="h-3" /> {/* Space before first section */}
           <Accordion 
             type="multiple" 
             value={openSections}
             onValueChange={setOpenSections}
-            className="px-4"
           >
             {visibleSections.map(section => {
               const Icon = section.icon
               return (
                 <AccordionItem key={section.id} value={section.id} className="border-none mb-1">
-                  <AccordionTrigger className="hover:no-underline py-0 px-3 -mx-3 bg-muted/50 rounded-md shadow-sm [&>svg]:ml-auto">
-                    <div className="flex items-center gap-2 py-3">
+                  <AccordionTrigger className="hover:no-underline py-3 px-3 bg-muted/50 rounded-md shadow-sm [&>svg]:ml-auto">
+                    <div className="flex items-center gap-2">
                       <Icon className="h-4 w-4 text-muted-foreground" />
-                      <span className="text-sm font-medium">{section.label}</span>
+                      <span className="text-sm font-medium">
+                        <SearchProvider searchQuery={searchQuery}>
+                          <HighlightedLabel>{section.label}</HighlightedLabel>
+                        </SearchProvider>
+                      </span>
                       {section.tier !== 'basic' && (
                         <span className={`text-[10px] px-1.5 py-0.5 rounded-full ${
                           section.tier === 'advanced' 
@@ -630,17 +637,6 @@ export function Sidebar({ isOpen, onClose }: SidebarProps) {
           </Accordion>
         </div>
 
-        {/* Footer */}
-        <div className="p-4 border-t bg-muted/30 text-center">
-          <p className="text-xs text-muted-foreground">© ANQR 2025. All rights reserved.</p>
-          <p className="text-xs text-muted-foreground mt-1">
-            <a href="#privacy" className="hover:underline">Privacy</a>
-            {' · '}
-            <a href="#terms" className="hover:underline">Terms</a>
-            {' · '}
-            <a href="#contact" className="hover:underline">Contact</a>
-          </p>
-        </div>
       </aside>
     </>
   )
