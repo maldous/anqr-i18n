@@ -30,6 +30,7 @@ export interface ShareConfig {
   mode?: string
   intensity?: number
   logoSize?: number
+  overlayUrl?: string  // URL source for overlay image
   
   // Animation
   speed?: number
@@ -78,6 +79,7 @@ export function parseUrlParams(): Partial<ShareConfig> {
     mode: params.get('mode') || undefined,
     intensity: params.get('intensity') ? parseInt(params.get('intensity')!, 10) : undefined,
     logoSize: params.get('logoSize') ? parseInt(params.get('logoSize')!, 10) : undefined,
+    overlayUrl: params.get('img') || undefined,
     speed: params.get('speed') ? parseInt(params.get('speed')!, 10) : undefined,
     loop: params.get('loop') !== '0',
     reverse: params.get('reverse') === '1',
@@ -142,6 +144,9 @@ export function buildUrlParams(config: Partial<ShareConfig>): string {
   }
   if (config.logoSize !== undefined && config.logoSize !== 25) {
     params.set('logoSize', config.logoSize.toString())
+  }
+  if (config.overlayUrl) {
+    params.set('img', config.overlayUrl)
   }
 
   // Animation

@@ -6,6 +6,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue, SelectGr
 import { Switch } from '@/components/ui/switch'
 import { HighlightedLabel } from '@/lib/search-context'
 import { useState, useEffect } from 'react'
+import { generateEPCSepa, generateUPI, generatePayNow, generatePromptPay, generatePIX } from '@/modules/payload-generators'
 
 // Payload kinds organized by category and tier
 // basic = Core only
@@ -102,9 +103,81 @@ const PAYLOAD_KINDS: { value: PayloadKind; label: string; tier: 'basic' | 'advan
     cat.items.map(item => ({ value: item.value, label: item.label, tier: cat.tier }))
   )
 
+// Payment form state types
+interface EPCSepaForm {
+  name: string
+  iban: string
+  bic: string
+  amount: string
+  reference: string
+}
+
+interface UPIForm {
+  vpa: string
+  payeeName: string
+  amount: string
+  transactionNote: string
+}
+
+interface PayNowForm {
+  type: 'mobile' | 'uen'
+  value: string
+  amount: string
+  reference: string
+}
+
+interface PromptPayForm {
+  type: 'mobile' | 'id' | 'ewallet'
+  value: string
+  amount: string
+}
+
+interface PIXForm {
+  key: string
+  name: string
+  city: string
+  amount: string
+}
+
 export function PayloadSection() {
   const { tier, payload, setPayloadKind, setPayloadText, setPayloadUrl, setPayloadTel, setPayloadEmail, setPayloadSms, setPayloadGeo, setPayloadWifi, setPayloadVCard, setPayloadMeCard, setPayloadEvent, setPayloadCrypto, setPayloadOtpAuth, setPayloadValidation } = useQRStore()
   const [showStartupHighlight, setShowStartupHighlight] = useState(false)
+
+  // Payment form states
+  const [epcSepaForm, setEpcSepaForm] = useState<EPCSepaForm>({
+    name: '',
+    iban: '',
+    bic: '',
+    amount: '',
+    reference: ''
+  })
+
+  const [upiForm, setUpiForm] = useState<UPIForm>({
+    vpa: '',
+    payeeName: '',
+    amount: '',
+    transactionNote: ''
+  })
+
+  const [payNowForm, setPayNowForm] = useState<PayNowForm>({
+    type: 'uen',
+    value: '',
+    amount: '',
+    reference: ''
+  })
+
+  const [promptPayForm, setPromptPayForm] = useState<PromptPayForm>({
+    type: 'mobile',
+    value: '',
+    amount: ''
+  })
+
+  const [pixForm, setPixForm] = useState<PIXForm>({
+    key: '',
+    name: '',
+    city: '',
+    amount: ''
+  })
 
   // Show startup highlight only once on initial mount
   useEffect(() => {
@@ -117,6 +190,72 @@ export function PayloadSection() {
       return () => clearTimeout(timer)
     }
   }, [])
+
+  // Generate EPC/SEPA payload when form changes
+  useEffect(() => {
+    if (payload.kind === 'epc_sepa' && epcSepaForm.name && epcSepaForm.iban) {
+      const generated = generateEPCSepa({
+        name: epcSepaForm.name,
+        iban: epcSepaForm.iban,
+        bic: epcSepaForm.bic || undefined,
+        amount: epcSepaForm.amount ? parseFloat(epcSepaForm.amount) : undefined,
+        reference: epcSepaForm.reference || undefined
+      })
+      setPayloadText(generated)
+    }
+  }, [payload.kind, epcSepaForm, setPayloadText])
+
+  // Generate UPI payload when form changes
+  useEffect(() => {
+    if (payload.kind === 'upi' && upiForm.vpa) {
+      const generated = generateUPI({
+        pa: upiForm.vpa,
+        pn: upiForm.payeeName || undefined,
+        am: upiForm.amount ? parseFloat(upiForm.amount) : undefined,
+        tn: upiForm.transactionNote || undefined
+      })
+      setPayloadText(generated)
+    }
+  }, [payload.kind, upiForm, setPayloadText])
+
+  // Generate PayNow payload when form changes
+  useEffect(() => {
+    if (payload.kind === 'paynow' && payNowForm.value) {
+      const generated = generatePayNow({
+        type: payNowForm.type,
+        value: payNowForm.value,
+        amount: payNowForm.amount ? parseFloat(payNowForm.amount) : undefined,
+        reference: payNowForm.reference || undefined,
+        editable: true
+      })
+      setPayloadText(generated)
+    }
+  }, [payload.kind, payNowForm, setPayloadText])
+
+  // Generate PromptPay payload when form changes
+  useEffect(() => {
+    if (payload.kind === 'promptpay' && promptPayForm.value) {
+      const generated = generatePromptPay({
+        type: promptPayForm.type,
+        value: promptPayForm.value,
+        amount: promptPayForm.amount ? parseFloat(promptPayForm.amount) : undefined
+      })
+      setPayloadText(generated)
+    }
+  }, [payload.kind, promptPayForm, setPayloadText])
+
+  // Generate PIX payload when form changes
+  useEffect(() => {
+    if (payload.kind === 'pix' && pixForm.key) {
+      const generated = generatePIX({
+        key: pixForm.key,
+        name: pixForm.name || undefined,
+        city: pixForm.city || undefined,
+        amount: pixForm.amount ? parseFloat(pixForm.amount) : undefined
+      })
+      setPayloadText(generated)
+    }
+  }, [payload.kind, pixForm, setPayloadText])
 
   const availableKinds = PAYLOAD_KINDS.filter(k => {
     if (k.tier === 'basic') return true
@@ -819,20 +958,24 @@ export function PayloadSection() {
           <div className="space-y-2">
             <Label><HighlightedLabel>Beneficiary Name</HighlightedLabel></Label>
             <Input 
-              value={payload.text} 
-              onChange={(e) => setPayloadText(e.target.value)}
+              value={epcSepaForm.name} 
+              onChange={(e) => setEpcSepaForm(prev => ({ ...prev, name: e.target.value }))}
               placeholder="Company Ltd."
             />
           </div>
           <div className="space-y-2">
             <Label><HighlightedLabel>IBAN</HighlightedLabel></Label>
             <Input 
+              value={epcSepaForm.iban}
+              onChange={(e) => setEpcSepaForm(prev => ({ ...prev, iban: e.target.value }))}
               placeholder="DE89370400440532013000"
             />
           </div>
           <div className="space-y-2">
             <Label><HighlightedLabel>BIC/SWIFT (optional)</HighlightedLabel></Label>
             <Input 
+              value={epcSepaForm.bic}
+              onChange={(e) => setEpcSepaForm(prev => ({ ...prev, bic: e.target.value }))}
               placeholder="COBADEFFXXX"
             />
           </div>
@@ -841,12 +984,16 @@ export function PayloadSection() {
             <Input 
               type="number"
               step="0.01"
+              value={epcSepaForm.amount}
+              onChange={(e) => setEpcSepaForm(prev => ({ ...prev, amount: e.target.value }))}
               placeholder="100.00"
             />
           </div>
           <div className="space-y-2">
             <Label><HighlightedLabel>Reference</HighlightedLabel></Label>
             <Input 
+              value={epcSepaForm.reference}
+              onChange={(e) => setEpcSepaForm(prev => ({ ...prev, reference: e.target.value }))}
               placeholder="Invoice 12345"
             />
           </div>
@@ -860,14 +1007,16 @@ export function PayloadSection() {
           <div className="space-y-2">
             <Label><HighlightedLabel>UPI ID (VPA)</HighlightedLabel></Label>
             <Input 
-              value={payload.text} 
-              onChange={(e) => setPayloadText(e.target.value)}
+              value={upiForm.vpa} 
+              onChange={(e) => setUpiForm(prev => ({ ...prev, vpa: e.target.value }))}
               placeholder="name@upi"
             />
           </div>
           <div className="space-y-2">
             <Label><HighlightedLabel>Payee Name</HighlightedLabel></Label>
             <Input 
+              value={upiForm.payeeName}
+              onChange={(e) => setUpiForm(prev => ({ ...prev, payeeName: e.target.value }))}
               placeholder="John Doe"
             />
           </div>
@@ -876,12 +1025,16 @@ export function PayloadSection() {
             <Input 
               type="number"
               step="0.01"
+              value={upiForm.amount}
+              onChange={(e) => setUpiForm(prev => ({ ...prev, amount: e.target.value }))}
               placeholder="500.00"
             />
           </div>
           <div className="space-y-2">
             <Label><HighlightedLabel>Transaction Note (optional)</HighlightedLabel></Label>
             <Input 
+              value={upiForm.transactionNote}
+              onChange={(e) => setUpiForm(prev => ({ ...prev, transactionNote: e.target.value }))}
               placeholder="Payment for order"
             />
           </div>
@@ -894,22 +1047,24 @@ export function PayloadSection() {
         <div className="space-y-4">
           <div className="space-y-2">
             <Label><HighlightedLabel>Proxy Type</HighlightedLabel></Label>
-            <Select defaultValue="uen">
+            <Select 
+              value={payNowForm.type} 
+              onValueChange={(v) => setPayNowForm(prev => ({ ...prev, type: v as 'mobile' | 'uen' }))}
+            >
               <SelectTrigger>
                 <SelectValue />
               </SelectTrigger>
               <SelectContent>
                 <SelectItem value="uen">UEN (Business)</SelectItem>
                 <SelectItem value="mobile">Mobile Number</SelectItem>
-                <SelectItem value="nric">NRIC/FIN</SelectItem>
               </SelectContent>
             </Select>
           </div>
           <div className="space-y-2">
-            <Label><HighlightedLabel>UEN/Mobile/NRIC</HighlightedLabel></Label>
+            <Label><HighlightedLabel>UEN/Mobile Number</HighlightedLabel></Label>
             <Input 
-              value={payload.text} 
-              onChange={(e) => setPayloadText(e.target.value)}
+              value={payNowForm.value} 
+              onChange={(e) => setPayNowForm(prev => ({ ...prev, value: e.target.value }))}
               placeholder="201234567X or +65..."
             />
           </div>
@@ -918,12 +1073,16 @@ export function PayloadSection() {
             <Input 
               type="number"
               step="0.01"
+              value={payNowForm.amount}
+              onChange={(e) => setPayNowForm(prev => ({ ...prev, amount: e.target.value }))}
               placeholder="50.00"
             />
           </div>
           <div className="space-y-2">
             <Label><HighlightedLabel>Reference (optional)</HighlightedLabel></Label>
             <Input 
+              value={payNowForm.reference}
+              onChange={(e) => setPayNowForm(prev => ({ ...prev, reference: e.target.value }))}
               placeholder="Invoice 123"
             />
           </div>
@@ -936,23 +1095,25 @@ export function PayloadSection() {
         <div className="space-y-4">
           <div className="space-y-2">
             <Label><HighlightedLabel>ID Type</HighlightedLabel></Label>
-            <Select defaultValue="mobile">
+            <Select 
+              value={promptPayForm.type} 
+              onValueChange={(v) => setPromptPayForm(prev => ({ ...prev, type: v as 'mobile' | 'id' | 'ewallet' }))}
+            >
               <SelectTrigger>
                 <SelectValue />
               </SelectTrigger>
               <SelectContent>
                 <SelectItem value="mobile">Mobile Number</SelectItem>
-                <SelectItem value="natid">National ID</SelectItem>
+                <SelectItem value="id">National ID / Tax ID</SelectItem>
                 <SelectItem value="ewallet">E-Wallet ID</SelectItem>
-                <SelectItem value="taxid">Tax ID (Business)</SelectItem>
               </SelectContent>
             </Select>
           </div>
           <div className="space-y-2">
             <Label><HighlightedLabel>PromptPay ID</HighlightedLabel></Label>
             <Input 
-              value={payload.text} 
-              onChange={(e) => setPayloadText(e.target.value)}
+              value={promptPayForm.value} 
+              onChange={(e) => setPromptPayForm(prev => ({ ...prev, value: e.target.value }))}
               placeholder="0812345678"
             />
           </div>
@@ -961,6 +1122,8 @@ export function PayloadSection() {
             <Input 
               type="number"
               step="0.01"
+              value={promptPayForm.amount}
+              onChange={(e) => setPromptPayForm(prev => ({ ...prev, amount: e.target.value }))}
               placeholder="100.00"
             />
           </div>
@@ -972,37 +1135,26 @@ export function PayloadSection() {
       {payload.kind === 'pix' && (
         <div className="space-y-4">
           <div className="space-y-2">
-            <Label><HighlightedLabel>Key Type</HighlightedLabel></Label>
-            <Select defaultValue="cpf">
-              <SelectTrigger>
-                <SelectValue />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="cpf">CPF</SelectItem>
-                <SelectItem value="cnpj">CNPJ</SelectItem>
-                <SelectItem value="email">Email</SelectItem>
-                <SelectItem value="phone">Phone</SelectItem>
-                <SelectItem value="evp">Random Key (EVP)</SelectItem>
-              </SelectContent>
-            </Select>
-          </div>
-          <div className="space-y-2">
             <Label><HighlightedLabel>PIX Key</HighlightedLabel></Label>
             <Input 
-              value={payload.text} 
-              onChange={(e) => setPayloadText(e.target.value)}
-              placeholder="123.456.789-00"
+              value={pixForm.key} 
+              onChange={(e) => setPixForm(prev => ({ ...prev, key: e.target.value }))}
+              placeholder="CPF, CNPJ, Email, Phone, or Random Key"
             />
           </div>
           <div className="space-y-2">
-            <Label><HighlightedLabel>Merchant Name</HighlightedLabel></Label>
+            <Label><HighlightedLabel>Merchant Name (optional)</HighlightedLabel></Label>
             <Input 
+              value={pixForm.name}
+              onChange={(e) => setPixForm(prev => ({ ...prev, name: e.target.value }))}
               placeholder="João Silva"
             />
           </div>
           <div className="space-y-2">
-            <Label><HighlightedLabel>City</HighlightedLabel></Label>
+            <Label><HighlightedLabel>City (optional)</HighlightedLabel></Label>
             <Input 
+              value={pixForm.city}
+              onChange={(e) => setPixForm(prev => ({ ...prev, city: e.target.value }))}
               placeholder="São Paulo"
             />
           </div>
@@ -1011,6 +1163,8 @@ export function PayloadSection() {
             <Input 
               type="number"
               step="0.01"
+              value={pixForm.amount}
+              onChange={(e) => setPixForm(prev => ({ ...prev, amount: e.target.value }))}
               placeholder="100.00"
             />
           </div>

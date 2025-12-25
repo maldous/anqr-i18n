@@ -397,6 +397,7 @@ export interface QRState {
   setOverlayEnabled: (enabled: boolean) => void
   setOverlayFile: (file: File | null) => void
   setOverlayUrl: (url: string) => void
+  clearOverlay: () => void
   setOverlayType: (type: OverlayType) => void
   setOverlayCrop: (crop: Partial<{ enabled: boolean; region: CropRegion }>) => void
   setOverlayFit: (fit: FitMode) => void
@@ -725,8 +726,9 @@ export const useQRStore = create<QRState>((set, get) => ({
     gifDisposalHandling: 'respect',
   },
   setOverlayEnabled: (enabled) => set((s) => ({ overlay: { ...s.overlay, enabled } })),
-  setOverlayFile: (file) => set((s) => ({ overlay: { ...s.overlay, file, enabled: !!file } })),
+  setOverlayFile: (file) => set((s) => ({ overlay: { ...s.overlay, file, enabled: !!file || !!s.overlay.url } })),
   setOverlayUrl: (url) => set((s) => ({ overlay: { ...s.overlay, url } })),
+  clearOverlay: () => set((s) => ({ overlay: { ...s.overlay, file: null, url: '', enabled: false } })),
   setOverlayType: (type) => set((s) => ({ overlay: { ...s.overlay, type } })),
   setOverlayCrop: (crop) => set((s) => ({ 
     overlay: { 

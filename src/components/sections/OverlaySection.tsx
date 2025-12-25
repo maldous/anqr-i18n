@@ -5,7 +5,7 @@ import { Slider } from '@/components/ui/slider'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
 import { Switch } from '@/components/ui/switch'
 import { Button } from '@/components/ui/button'
-import { Upload, X, Move } from 'lucide-react'
+import { Upload, X, Move, Link, Loader2 } from 'lucide-react'
 import { useRef, useState, useEffect, useCallback } from 'react'
 import { HighlightedLabel } from '@/lib/search-context'
 
@@ -37,7 +37,7 @@ const PRO_OVERLAY_MODES: { value: OverlayMode; label: string }[] = [
 export function OverlaySection() {
   const { 
     tier, overlay,
-    setOverlayEnabled, setOverlayFile, setOverlayMode, setOverlayIntensity,
+    setOverlayEnabled, setOverlayFile, setOverlayUrl, setOverlayMode, setOverlayIntensity,
     setOverlayColorMode, setOverlayPreserveFinders, setOverlayInvert,
     setOverlayBrightness, setOverlayContrast, setOverlayGamma,
     setOverlayFit, setOverlayRotate, setOverlayFlip,
@@ -50,23 +50,84 @@ export function OverlaySection() {
   const [imagePreview, setImagePreview] = useState<string | null>(null)
   const [isDragging, setIsDragging] = useState(false)
   const previewContainerRef = useRef<HTMLDivElement>(null)
+  const [urlInput, setUrlInput] = useState(overlay.url || '')
+  const [isLoadingUrl, setIsLoadingUrl] = useState(false)
+  const [urlError, setUrlError] = useState<string | null>(null)
+  const [showUrlInput, setShowUrlInput] = useState(false)
 
-  // Create image preview URL when file changes
+  // Create image preview URL when file or URL changes
   useEffect(() => {
     if (overlay.file) {
       const url = URL.createObjectURL(overlay.file)
       setImagePreview(url)
       return () => URL.revokeObjectURL(url)
+    } else if (overlay.url) {
+      setImagePreview(overlay.url)
     } else {
       setImagePreview(null)
     }
-  }, [overlay.file])
+  }, [overlay.file, overlay.url])
+
+  // Load image from URL
+  const loadFromUrl = useCallback(async () => {
+    if (!urlInput.trim()) {
+      setUrlError('Please enter a URL')
+      return
+    }
+    
+    setIsLoadingUrl(true)
+    setUrlError(null)
+    
+    try {
+      // Fetch the image (requires CORS or same-origin)
+      const response = await fetch(urlInput, { mode: 'cors' })
+      if (!response.ok) {
+        throw new Error(`Failed to load: ${response.status}`)
+      }
+      
+      const contentType = response.headers.get('content-type') || ''
+      if (!contentType.startsWith('image/')) {
+        throw new Error('URL does not point to an image')
+      }
+      
+      const blob = await response.blob()
+      
+      // Extract filename from URL
+      const urlParts = urlInput.split('/')
+      const filename = urlParts[urlParts.length - 1].split('?')[0] || 'image'
+      
+      // Create a File object from the blob
+      const file = new File([blob], filename, { type: blob.type })
+      
+      // Store the URL for sharing purposes
+      setOverlayUrl(urlInput)
+      setOverlayFile(file)
+      setShowUrlInput(false)
+    } catch (err) {
+      console.error('Failed to load image from URL:', err)
+      if (err instanceof TypeError && err.message.includes('Failed to fetch')) {
+        setUrlError('Cannot load: CORS blocked or invalid URL')
+      } else {
+        setUrlError(err instanceof Error ? err.message : 'Failed to load image')
+      }
+    } finally {
+      setIsLoadingUrl(false)
+    }
+  }, [urlInput, setOverlayFile, setOverlayUrl])
 
   const handleFileSelect = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0]
     if (file) {
+      setOverlayUrl('') // Clear URL when file is selected
       setOverlayFile(file)
     }
+  }
+
+  const clearOverlay = () => {
+    setOverlayFile(null)
+    setOverlayUrl('')
+    setUrlInput('')
+    setUrlError(null)
   }
 
   // Handle crop region drag
@@ -95,27 +156,36 @@ export function OverlaySection() {
     <div className="space-y-4">
       {/* File Upload */}
       <div className="space-y-2">
-        <Label><HighlightedLabel>Image / GIF</HighlightedLabel></Label>
+        <Label><HighlightedLabel>Image / GIF / WebP</HighlightedLabel></Label>
         <input 
           ref={fileInputRef}
           type="file" 
-          accept="image/*,.gif"
+          accept="image/*,.gif,.webp"
           onChange={handleFileSelect}
           className="hidden"
         />
-        {overlay.file ? (
+        {(overlay.file || overlay.url) ? (
           <div className="space-y-2">
             <div className="flex items-center gap-2 p-2 border rounded-md bg-muted/50">
-              <span className="flex-1 text-sm truncate">{overlay.file.name}</span>
+              <span className="flex-1 text-sm truncate">
+                {overlay.file?.name || (overlay.url ? 'Loaded from URL' : 'No file')}
+              </span>
               <Button 
                 variant="ghost" 
                 size="icon" 
                 className="h-6 w-6"
-                onClick={() => setOverlayFile(null)}
+                onClick={clearOverlay}
               >
                 <X className="h-4 w-4" />
               </Button>
             </div>
+            
+            {/* Show source URL if loaded from URL */}
+            {overlay.url && !overlay.file?.name && (
+              <div className="text-xs text-muted-foreground truncate px-2">
+                {overlay.url}
+              </div>
+            )}
             
             {/* Image Preview with Square Crop Selector */}
             {imagePreview && (
@@ -193,14 +263,63 @@ export function OverlaySection() {
             )}
           </div>
         ) : (
-          <Button 
-            variant="outline" 
-            className="w-full"
-            onClick={() => fileInputRef.current?.click()}
-          >
-            <Upload className="h-4 w-4 mr-2" />
-            Upload Image
-          </Button>
+          <div className="space-y-2">
+            <div className="flex gap-2">
+              <Button 
+                variant="outline" 
+                className="flex-1"
+                onClick={() => fileInputRef.current?.click()}
+              >
+                <Upload className="h-4 w-4 mr-2" />
+                Upload
+              </Button>
+              <Button 
+                variant="outline" 
+                className="flex-1"
+                onClick={() => setShowUrlInput(!showUrlInput)}
+              >
+                <Link className="h-4 w-4 mr-2" />
+                From URL
+              </Button>
+            </div>
+            
+            {/* URL Input */}
+            {showUrlInput && (
+              <div className="space-y-2 p-3 border rounded-md bg-muted/30">
+                <Label className="text-sm">Image URL</Label>
+                <div className="flex gap-2">
+                  <Input
+                    type="url"
+                    placeholder="https://example.com/image.gif"
+                    value={urlInput}
+                    onChange={(e) => {
+                      setUrlInput(e.target.value)
+                      setUrlError(null)
+                    }}
+                    onKeyDown={(e) => e.key === 'Enter' && loadFromUrl()}
+                    className="flex-1"
+                  />
+                  <Button 
+                    onClick={loadFromUrl}
+                    disabled={isLoadingUrl || !urlInput.trim()}
+                    size="sm"
+                  >
+                    {isLoadingUrl ? (
+                      <Loader2 className="h-4 w-4 animate-spin" />
+                    ) : (
+                      'Load'
+                    )}
+                  </Button>
+                </div>
+                {urlError && (
+                  <p className="text-xs text-destructive">{urlError}</p>
+                )}
+                <p className="text-xs text-muted-foreground">
+                  Note: Image must allow cross-origin requests (CORS)
+                </p>
+              </div>
+            )}
+          </div>
         )}
       </div>
 

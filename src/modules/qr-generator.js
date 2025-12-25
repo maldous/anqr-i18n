@@ -312,17 +312,27 @@ export class QRGenerator {
 
             case "duotone":
               if (isDark) {
-                const fgParsed = parseColor(config.fgColor);
+                // duotoneColors is an array [shadowColor, highlightColor] from the store
+                const duotoneArr = config.duotoneColors || [];
+                const shadowColor = duotoneArr[0] || config.fgColor;
+                const highlightColor = duotoneArr[1] || null;
+                const intensity = config.overlayIntensity / 100;
+                
                 if (brightness > 0.5) {
-                  const lightR = Math.min(255, fgParsed.r + 80);
-                  const lightG = Math.min(255, fgParsed.g + 80);
-                  const lightB = Math.min(255, fgParsed.b + 80);
-                  moduleColor = `rgb(${lightR},${lightG},${lightB})`;
+                  // Bright areas get highlight color
+                  if (highlightColor) {
+                    moduleColor = blendColors(config.fgColor, highlightColor, intensity * (brightness - 0.5) * 2);
+                  } else {
+                    // Fallback: lighten the foreground color
+                    const fgParsed = parseColor(config.fgColor);
+                    const lightR = Math.min(255, fgParsed.r + 80);
+                    const lightG = Math.min(255, fgParsed.g + 80);
+                    const lightB = Math.min(255, fgParsed.b + 80);
+                    moduleColor = `rgb(${lightR},${lightG},${lightB})`;
+                  }
                 } else {
-                  const darkR = Math.max(0, fgParsed.r - 40);
-                  const darkG = Math.max(0, fgParsed.g - 40);
-                  const darkB = Math.max(0, fgParsed.b - 40);
-                  moduleColor = `rgb(${darkR},${darkG},${darkB})`;
+                  // Dark areas get shadow color
+                  moduleColor = blendColors(config.fgColor, shadowColor, intensity * (0.5 - brightness) * 2);
                 }
               }
               break;

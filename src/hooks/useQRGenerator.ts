@@ -9,9 +9,10 @@ import { useQRStore } from '@/store/qr-store'
 import { QRGenerator } from '@/modules/qr-generator'
 import { applyWatermark } from '@/modules/watermark'
 import { downloadImage, downloadSvg, downloadGif } from '@/modules/exporter'
-import { parseGifFrames, type AnimationFrame } from '@/modules/animation'
+import { parseAnimatedImage, type AnimationFrame } from '@/modules/animation'
 import { applyFilters, type FilterOptions } from '@/modules/image-filters'
 import { validateQRCodeRobust, type ValidationResult } from '@/modules/qr-scanner'
+import { calculateTemporalOffset, applyTemporalNoiseToCanvas, isTemporalDitherActive, type TemporalDitherMode } from '@/modules/temporal-dither'
 
 // Singleton QR generator instance
 const qrGenerator = new QRGenerator()
@@ -101,8 +102,9 @@ export function useQRGenerator(): UseQRGeneratorResult {
   const [validation, setValidation] = useState<ValidationResult | null>(null)
   const [isValidating, setIsValidating] = useState(false)
   
-  // Store generated frames for GIF export
+  // Store generated frames for GIF export and playback cache
   const [animationFrames, setAnimationFrames] = useState<HTMLCanvasElement[]>([])
+  const [isAnimationCacheReady, setIsAnimationCacheReady] = useState(false)
 
   // Get all relevant state from store
   const payload = useQRStore((s) => s.payload)
@@ -113,7 +115,38 @@ export function useQRGenerator(): UseQRGeneratorResult {
   const output = useQRStore((s) => s.output)
   const animation = useQRStore((s) => s.animation)
   const safety = useQRStore((s) => s.safety)
+  const auto = useQRStore((s) => s.auto)
   const getPayloadText = useQRStore((s) => s.getPayloadText)
+  const setOverlayIntensity = useQRStore((s) => s.setOverlayIntensity)
+
+  // Auto-pick ECC based on content length and overlay usage
+  const autoPickedEcc = useMemo(() => {
+    if (!auto.pickEcc) return qr.ecc
+    
+    const content = getPayloadText()
+    const contentLength = content.length
+    
+    // If overlay is enabled with high intensity, prefer higher ECC
+    if (overlay.enabled && overlay.intensity > 50) {
+      return 'H' // Maximum error correction for heavy overlays
+    }
+    
+    if (overlay.enabled && overlay.intensity > 25) {
+      return 'Q' // High error correction for moderate overlays
+    }
+    
+    // For longer content, use lower ECC to fit more data
+    if (contentLength > 500) {
+      return 'L' // Low ECC for very long content
+    }
+    
+    if (contentLength > 200) {
+      return 'M' // Medium ECC for long content
+    }
+    
+    // Default to Q for good balance
+    return 'Q'
+  }, [auto.pickEcc, qr.ecc, overlay.enabled, overlay.intensity, getPayloadText])
 
   // Apply safety constraints and generate warnings
   const { safetyAdjustedConfig, safetyWarnings } = useMemo(() => {
@@ -121,6 +154,7 @@ export function useQRGenerator(): UseQRGeneratorResult {
     let adjustedModulePx = render.modulePx
     let adjustedQuietZone = qr.quietZoneModules
     let adjustedIntensity = overlay.intensity
+    const effectiveEcc = auto.pickEcc ? autoPickedEcc : qr.ecc
     
     // Apply safety mode constraints
     if (safety.mode !== 'off') {
@@ -138,13 +172,19 @@ export function useQRGenerator(): UseQRGeneratorResult {
       
       // Check overlay intensity against ECC capacity
       const maxIntensityByEcc: Record<string, number> = { L: 30, M: 50, Q: 70, H: 85 }
-      const maxSafeIntensity = maxIntensityByEcc[qr.ecc] || 50
+      const maxSafeIntensity = maxIntensityByEcc[effectiveEcc] || 50
       
       if (safety.mode === 'strict' && overlay.enabled && overlay.intensity > maxSafeIntensity) {
         adjustedIntensity = maxSafeIntensity
-        warnings.push(`Overlay intensity reduced to ${maxSafeIntensity}% for ECC level ${qr.ecc}`)
+        warnings.push(`Overlay intensity reduced to ${maxSafeIntensity}% for ECC level ${effectiveEcc}`)
       } else if (safety.mode === 'balanced' && overlay.enabled && overlay.intensity > maxSafeIntensity) {
-        warnings.push(`Overlay intensity (${overlay.intensity}%) may reduce scannability with ECC ${qr.ecc}`)
+        warnings.push(`Overlay intensity (${overlay.intensity}%) may reduce scannability with ECC ${effectiveEcc}`)
+      }
+      
+      // Auto-reduce intensity if enabled
+      if (auto.reduceIntensityUntilSafe && overlay.enabled && overlay.intensity > maxSafeIntensity) {
+        adjustedIntensity = maxSafeIntensity
+        warnings.push(`Auto-reduced overlay intensity to ${maxSafeIntensity}% for safe scanning`)
       }
       
       // Warn about risky style combinations
@@ -157,11 +197,17 @@ export function useQRGenerator(): UseQRGeneratorResult {
       }
     }
     
+    // Show auto-pick ECC info
+    if (auto.pickEcc && autoPickedEcc !== qr.ecc) {
+      warnings.push(`Auto-selected ECC level ${autoPickedEcc} for optimal balance`)
+    }
+    
     return {
       safetyAdjustedConfig: {
         modulePx: adjustedModulePx,
         quietZone: adjustedQuietZone,
         intensity: adjustedIntensity,
+        ecc: effectiveEcc,
       },
       safetyWarnings: warnings,
     }
@@ -170,6 +216,7 @@ export function useQRGenerator(): UseQRGeneratorResult {
     render.modulePx, render.moduleGapPercent, render.moduleStyle,
     qr.quietZoneModules, qr.ecc,
     overlay.enabled, overlay.intensity,
+    auto.pickEcc, auto.reduceIntensityUntilSafe, autoPickedEcc,
   ])
 
   // Build comprehensive config object for QRGenerator
@@ -181,7 +228,7 @@ export function useQRGenerator(): UseQRGeneratorResult {
       content,
       // === QR ENCODING OPTIONS ===
       typeNumber: qr.version,
-      errorCorrection: qr.ecc,
+      errorCorrection: safetyAdjustedConfig.ecc,
       mask: qr.mask,
       encodingMode: qr.encodingMode,
       eci: qr.eci,
@@ -274,6 +321,11 @@ export function useQRGenerator(): UseQRGeneratorResult {
       eccAwareRiskBudget: overlay.eccAwareRiskBudget,
       eccAwareWeightMap: overlay.eccAwareWeightMap,
       
+      // === ANIMATION / TEMPORAL DITHERING ===
+      temporalDither: animation.temporalDither,
+      frameIndex: 0, // Default for static images, will be overridden per-frame for animations
+      animationSeed: animation.seed,
+      
       // === SAFETY CONSTRAINTS ===
       safetyMode: safety.mode,
       safetyLockFinders: safety.lockFinders,
@@ -317,6 +369,8 @@ export function useQRGenerator(): UseQRGeneratorResult {
     overlay.subpixelGridSize, overlay.subpixelCenterRule, overlay.subpixelNeutralColor,
     overlay.halftoneCell, overlay.halftoneDotShape, overlay.duotoneColors, overlay.brightnessCurve,
     overlay.eccAwareEnabled, overlay.eccAwareRiskBudget, overlay.eccAwareWeightMap,
+    // Animation
+    animation.temporalDither, animation.seed,
     // Safety
     safety.mode, safety.lockFinders, safety.lockTiming, safety.lockAlign,
     safety.lockFormat, safety.lockVersion, safety.minModulePx, safety.minQuietZoneModules,
@@ -415,7 +469,7 @@ export function useQRGenerator(): UseQRGeneratorResult {
   ])
 
   // Load overlay image when file changes (store raw canvas)
-  // For GIFs, parse frames; for static images, load as single canvas
+  // Supports GIF and animated WebP - automatically detects and parses animation frames
   useEffect(() => {
     if (!overlay.file) {
       setRawOverlayCanvas(null)
@@ -425,31 +479,40 @@ export function useQRGenerator(): UseQRGeneratorResult {
       return
     }
 
-    const isGif = overlay.file.type === 'image/gif' || overlay.file.name.toLowerCase().endsWith('.gif')
+    // Check for animated formats (GIF or WebP)
+    const isAnimatedFormat = 
+      overlay.file.type === 'image/gif' || 
+      overlay.file.type === 'image/webp' ||
+      overlay.file.name.toLowerCase().endsWith('.gif') ||
+      overlay.file.name.toLowerCase().endsWith('.webp')
     
-    if (isGif) {
-      // Parse GIF frames
+    if (isAnimatedFormat) {
+      // Parse as potentially animated image (works for both GIF and WebP)
       const reader = new FileReader()
       reader.onload = async (e) => {
         try {
           const arrayBuffer = e.target?.result as ArrayBuffer
-          const frames = await parseGifFrames(arrayBuffer)
+          // parseAnimatedImage handles both GIF and animated WebP
+          const frames = await parseAnimatedImage(arrayBuffer)
           setGifFrames(frames)
           setCurrentFrame(0)
           if (frames.length > 0) {
             setRawOverlayCanvas(frames[0].canvas)
           }
         } catch (err) {
-          console.error('Failed to parse GIF:', err)
+          console.error('Failed to parse animated image:', err)
           // Fall back to static image loading
           loadFileAsCanvas(overlay.file!)
-            .then((canvas) => setRawOverlayCanvas(canvas))
+            .then((canvas) => {
+              setRawOverlayCanvas(canvas)
+              setGifFrames([{ canvas, delay: 100, disposalType: 0 }])
+            })
             .catch(() => setRawOverlayCanvas(null))
         }
       }
       reader.readAsArrayBuffer(overlay.file)
     } else {
-      // Static image
+      // Static image (PNG, JPG, etc.)
       setGifFrames([])
       loadFileAsCanvas(overlay.file)
         .then((canvas) => setRawOverlayCanvas(canvas))
@@ -541,9 +604,15 @@ export function useQRGenerator(): UseQRGeneratorResult {
   }, [debouncedConfig, overlay.enabled, overlayCanvas, watermark.enabled, watermark.kind, watermark.text, watermark.image, watermark.position, watermark.opacity, watermark.blend])
 
   // Regenerate when config changes
+  // Skip if we're playing from cached animation frames
   useEffect(() => {
+    // If we have cached animation frames and animation is playing, don't regenerate
+    // The cached frames will be displayed by the animation playback effect
+    if (isAnimationCacheReady && animationFrames.length > 1 && animation.playing) {
+      return
+    }
     generate()
-  }, [generate])
+  }, [generate, isAnimationCacheReady, animationFrames.length, animation.playing])
 
   // Animation loop for GIF overlays
   useEffect(() => {
@@ -613,11 +682,32 @@ export function useQRGenerator(): UseQRGeneratorResult {
   }, [gifFrames.length, animation.playing, animation.speedMs, animation.loop, animation.bounce])
 
   // Update raw overlay canvas when current frame changes (for animation)
+  // BUT only if we don't have cached animation frames yet
   useEffect(() => {
     if (gifFrames.length > 0 && gifFrames[currentFrame]) {
-      setRawOverlayCanvas(gifFrames[currentFrame].canvas)
+      // If we have cached frames, don't update rawOverlayCanvas - we'll draw from cache instead
+      if (!isAnimationCacheReady || animationFrames.length === 0) {
+        setRawOverlayCanvas(gifFrames[currentFrame].canvas)
+      }
     }
-  }, [currentFrame, gifFrames])
+  }, [currentFrame, gifFrames, isAnimationCacheReady, animationFrames.length])
+
+  // Display cached animation frames during playback (fast path - no re-encoding)
+  useEffect(() => {
+    if (isAnimationCacheReady && animationFrames.length > 1 && animationFrames[currentFrame]) {
+      const cachedFrame = animationFrames[currentFrame]
+      
+      // Draw directly to display canvas (skip setCanvas during playback to avoid re-renders)
+      if (canvasRef.current) {
+        const ctx = canvasRef.current.getContext('2d')
+        if (ctx) {
+          canvasRef.current.width = cachedFrame.width
+          canvasRef.current.height = cachedFrame.height
+          ctx.drawImage(cachedFrame, 0, 0)
+        }
+      }
+    }
+  }, [currentFrame, isAnimationCacheReady, animationFrames])
 
   // Download function with output scaling
   const download = useCallback(async () => {
@@ -695,30 +785,68 @@ export function useQRGenerator(): UseQRGeneratorResult {
     }
   }, [canvas, output, render.crispEdges, animationFrames, animation.speedMs, animation.loop])
 
-  // Generate all animation frames for GIF export when we have a GIF overlay
+  // Generate all animation frames for GIF export and playback cache
+  // This runs once when config changes, then frames are cached for fast playback
   useEffect(() => {
+    // Track if this effect is still current (for cleanup/cancellation)
+    let isCancelled = false
+    
     if (gifFrames.length <= 1 || !overlay.enabled) {
-      setAnimationFrames(canvas ? [canvas] : [])
+      setAnimationFrames([])
+      setIsAnimationCacheReady(false)
       return
     }
-    // Note: canvas is intentionally not in deps - we only want to regenerate frames when gifFrames changes
 
-    // Generate QR for each frame
+    // Mark cache as not ready while generating
+    setIsAnimationCacheReady(false)
+    setIsLoading(true)
+
+    // Generate QR for each frame (batch generation)
     const generateAllFrames = async () => {
       const frames: HTMLCanvasElement[] = []
       
-      for (const frame of gifFrames) {
+      // Load watermark image once if needed
+      let watermarkImage: HTMLImageElement | HTMLCanvasElement | null = null
+      if (watermark.enabled && watermark.kind === 'image' && watermark.image) {
         try {
-          const processedOverlay = applyPreprocessing(frame.canvas)
-          const result = await qrGenerator.generate(debouncedConfig, processedOverlay)
+          watermarkImage = await loadFileAsCanvas(watermark.image)
+        } catch (err) {
+          console.error('Error loading watermark:', err)
+        }
+      }
+      
+      // Calculate temporal dither mode
+      const temporalMode = animation.temporalDither as TemporalDitherMode
+      const useTemporalDither = isTemporalDitherActive(temporalMode)
+      
+      for (let frameIdx = 0; frameIdx < gifFrames.length; frameIdx++) {
+        const frame = gifFrames[frameIdx]
+        // Check if cancelled before each expensive operation
+        if (isCancelled) return
+        
+        try {
+          let processedOverlay = applyPreprocessing(frame.canvas)
+          
+          // Apply temporal dithering offset to the overlay image
+          // This varies the input slightly per frame for smoother perceived quality
+          if (useTemporalDither) {
+            const temporalOffset = calculateTemporalOffset(frameIdx, temporalMode, animation.seed)
+            processedOverlay = applyTemporalNoiseToCanvas(processedOverlay, temporalOffset, 0.015)
+          }
+          
+          // Pass frame index for temporal dithering (also used in qr-generator for dither pattern offset)
+          const frameConfig = { 
+            ...debouncedConfig, 
+            frameIndex: frameIdx,
+            temporalOffset: useTemporalDither ? calculateTemporalOffset(frameIdx, temporalMode, animation.seed) : 0
+          }
+          const result = await qrGenerator.generate(frameConfig, processedOverlay)
+          
+          if (isCancelled) return
           
           if (result) {
             // Apply watermark if enabled
             if (watermark.enabled) {
-              let watermarkImage: HTMLImageElement | HTMLCanvasElement | null = null
-              if (watermark.kind === 'image' && watermark.image) {
-                watermarkImage = await loadFileAsCanvas(watermark.image)
-              }
               const watermarked = applyWatermark(result, {
                 enabled: watermark.enabled,
                 kind: watermark.kind,
@@ -738,11 +866,34 @@ export function useQRGenerator(): UseQRGeneratorResult {
         }
       }
       
+      // Only update state if not cancelled
+      if (isCancelled) return
+      
       setAnimationFrames(frames)
+      setIsAnimationCacheReady(true)
+      setIsLoading(false)
+      
+      // Set the first frame as current canvas
+      if (frames.length > 0) {
+        setCanvas(frames[0])
+        if (canvasRef.current) {
+          const ctx = canvasRef.current.getContext('2d')
+          if (ctx) {
+            canvasRef.current.width = frames[0].width
+            canvasRef.current.height = frames[0].height
+            ctx.drawImage(frames[0], 0, 0)
+          }
+        }
+      }
     }
 
     generateAllFrames()
-  }, [gifFrames, overlay.enabled, debouncedConfig, applyPreprocessing, watermark])
+    
+    // Cleanup: cancel in-flight generation if deps change
+    return () => {
+      isCancelled = true
+    }
+  }, [gifFrames, overlay.enabled, debouncedConfig, applyPreprocessing, watermark, animation.temporalDither, animation.seed])
 
   return {
     canvasRef,

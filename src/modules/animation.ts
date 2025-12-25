@@ -1,9 +1,71 @@
 /**
  * Animation Module
- * Handles GIF parsing, frame management, animation patterns, and temporal effects
+ * Handles GIF and WebP animation parsing, frame management, animation patterns, and temporal effects
  */
 
+/// <reference path="../types/image-decoder.d.ts" />
+
 import { parseGIF, decompressFrames } from 'gifuct-js'
+
+// ============================================
+// FORMAT DETECTION
+// ============================================
+
+/**
+ * Detect if an ArrayBuffer contains an animated WebP
+ * Checks for RIFF/WEBP container with ANIM chunk
+ */
+export function isAnimatedWebP(buffer: ArrayBuffer): boolean {
+  const view = new DataView(buffer)
+  
+  // Check RIFF header
+  if (view.byteLength < 12) return false
+  const riff = String.fromCharCode(view.getUint8(0), view.getUint8(1), view.getUint8(2), view.getUint8(3))
+  if (riff !== 'RIFF') return false
+  
+  // Check WEBP signature
+  const webp = String.fromCharCode(view.getUint8(8), view.getUint8(9), view.getUint8(10), view.getUint8(11))
+  if (webp !== 'WEBP') return false
+  
+  // Search for ANIM chunk (indicates animation)
+  let offset = 12
+  while (offset < view.byteLength - 8) {
+    const chunkId = String.fromCharCode(
+      view.getUint8(offset),
+      view.getUint8(offset + 1),
+      view.getUint8(offset + 2),
+      view.getUint8(offset + 3)
+    )
+    
+    if (chunkId === 'ANIM') return true
+    if (chunkId === 'ANMF') return true // Animation frame chunk
+    
+    // Get chunk size (little-endian)
+    const chunkSize = view.getUint32(offset + 4, true)
+    offset += 8 + chunkSize + (chunkSize % 2) // Chunks are padded to even size
+  }
+  
+  return false
+}
+
+/**
+ * Detect image format from ArrayBuffer
+ */
+export function detectImageFormat(buffer: ArrayBuffer): 'gif' | 'webp' | 'unknown' {
+  const view = new DataView(buffer)
+  if (view.byteLength < 12) return 'unknown'
+  
+  // Check GIF signature (GIF87a or GIF89a)
+  const gif = String.fromCharCode(view.getUint8(0), view.getUint8(1), view.getUint8(2))
+  if (gif === 'GIF') return 'gif'
+  
+  // Check RIFF/WEBP signature
+  const riff = String.fromCharCode(view.getUint8(0), view.getUint8(1), view.getUint8(2), view.getUint8(3))
+  const webp = String.fromCharCode(view.getUint8(8), view.getUint8(9), view.getUint8(10), view.getUint8(11))
+  if (riff === 'RIFF' && webp === 'WEBP') return 'webp'
+  
+  return 'unknown'
+}
 
 // ============================================
 // TYPES
@@ -49,6 +111,154 @@ export interface AnimationState {
 // ============================================
 // GIF PARSING
 // ============================================
+
+/**
+ * Parse animated WebP using ImageDecoder API (modern browsers)
+ * Falls back to single frame if ImageDecoder is not available
+ */
+export async function parseWebPFrames(source: ArrayBuffer): Promise<AnimationFrame[]> {
+  // Check if ImageDecoder API is available
+  if (typeof ImageDecoder === 'undefined') {
+    // Fallback: load as single frame using canvas
+    return parseWebPAsSingleFrame(source)
+  }
+  
+  try {
+    const decoder = new ImageDecoder({
+      type: 'image/webp',
+      data: source,
+    })
+    
+    await decoder.completed
+    
+    const frameCount = decoder.tracks.selectedTrack?.frameCount || 1
+    const frames: AnimationFrame[] = []
+    
+    for (let i = 0; i < frameCount; i++) {
+      const result = await decoder.decode({ frameIndex: i })
+      const { image, duration } = result
+      
+      // Convert VideoFrame to canvas
+      const canvas = document.createElement('canvas')
+      canvas.width = image.displayWidth
+      canvas.height = image.displayHeight
+      const ctx = canvas.getContext('2d')!
+      ctx.drawImage(image, 0, 0)
+      image.close()
+      
+      frames.push({
+        canvas,
+        delay: duration ? duration / 1000 : 100, // Convert microseconds to ms, default 100ms
+        disposalType: 0,
+      })
+    }
+    
+    decoder.close()
+    return frames
+  } catch (err) {
+    console.warn('ImageDecoder failed, falling back to single frame:', err)
+    return parseWebPAsSingleFrame(source)
+  }
+}
+
+/**
+ * Parse WebP as a single frame (fallback for non-animated or unsupported)
+ */
+async function parseWebPAsSingleFrame(source: ArrayBuffer): Promise<AnimationFrame[]> {
+  return new Promise((resolve, reject) => {
+    const blob = new Blob([source], { type: 'image/webp' })
+    const url = URL.createObjectURL(blob)
+    const img = new Image()
+    
+    img.onload = () => {
+      const canvas = document.createElement('canvas')
+      canvas.width = img.naturalWidth
+      canvas.height = img.naturalHeight
+      const ctx = canvas.getContext('2d')!
+      ctx.drawImage(img, 0, 0)
+      URL.revokeObjectURL(url)
+      
+      resolve([{
+        canvas,
+        delay: 100,
+        disposalType: 0,
+      }])
+    }
+    
+    img.onerror = () => {
+      URL.revokeObjectURL(url)
+      reject(new Error('Failed to load WebP image'))
+    }
+    
+    img.src = url
+  })
+}
+
+/**
+ * Parse any animated image (GIF or WebP) and extract frames
+ * Automatically detects format and uses appropriate parser
+ */
+export async function parseAnimatedImage(source: string | ArrayBuffer): Promise<AnimationFrame[]> {
+  let arrayBuffer: ArrayBuffer
+  
+  if (typeof source === 'string') {
+    const response = await fetch(source)
+    arrayBuffer = await response.arrayBuffer()
+  } else {
+    arrayBuffer = source
+  }
+  
+  const format = detectImageFormat(arrayBuffer)
+  
+  if (format === 'gif') {
+    return parseGifFrames(arrayBuffer)
+  }
+  
+  if (format === 'webp') {
+    // Check if it's animated
+    if (isAnimatedWebP(arrayBuffer)) {
+      return parseWebPFrames(arrayBuffer)
+    }
+    // Non-animated WebP - load as single frame
+    return parseWebPAsSingleFrame(arrayBuffer)
+  }
+  
+  // Unknown format - try to load as regular image
+  return parseStaticImageAsFrame(arrayBuffer)
+}
+
+/**
+ * Parse any static image as a single animation frame
+ */
+async function parseStaticImageAsFrame(source: ArrayBuffer): Promise<AnimationFrame[]> {
+  return new Promise((resolve, reject) => {
+    const blob = new Blob([source])
+    const url = URL.createObjectURL(blob)
+    const img = new Image()
+    
+    img.onload = () => {
+      const canvas = document.createElement('canvas')
+      canvas.width = img.naturalWidth
+      canvas.height = img.naturalHeight
+      const ctx = canvas.getContext('2d')!
+      ctx.drawImage(img, 0, 0)
+      URL.revokeObjectURL(url)
+      
+      resolve([{
+        canvas,
+        delay: 100,
+        disposalType: 0,
+      }])
+    }
+    
+    img.onerror = () => {
+      URL.revokeObjectURL(url)
+      reject(new Error('Failed to load image'))
+    }
+    
+    img.src = url
+  })
+}
 
 /**
  * Parse a GIF file and extract frames as canvas elements
@@ -539,9 +749,13 @@ export function createAnimationLoop(
 // ============================================
 
 export const Animation = {
-  // GIF parsing
+  // Image parsing
+  parseAnimatedImage,
   parseGifFrames,
+  parseWebPFrames,
   getGifDelays,
+  detectImageFormat,
+  isAnimatedWebP,
   
   // State management
   createAnimationState,
