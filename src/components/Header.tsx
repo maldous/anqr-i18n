@@ -15,6 +15,9 @@ const NAV_LINKS: Array<{ href: string; label: string; page: HeaderPage }> = [
   { href: '/', label: 'Generator', page: 'editor' },
   { href: '/gallery', label: 'Gallery', page: 'gallery' },
   { href: '/about', label: 'About', page: 'about' },
+  { href: '/privacy', label: 'Privacy', page: 'privacy' },
+  { href: '/terms', label: 'Terms', page: 'terms' },
+  { href: '/contact', label: 'Contact', page: 'contact' },
 ]
 
 interface HeaderProps {
@@ -37,7 +40,6 @@ export function Header({ onToggleSidebar, onExport, sidebarOpen = false, showGal
   const resolvedPage: HeaderPage = activePage ?? (showGallery ? 'gallery' : 'editor')
   const isEditor = resolvedPage === 'editor'
   const isGallery = resolvedPage === 'gallery'
-  const isStatic = !isEditor && !isGallery
   const isStatic = !isEditor && !isGallery
 
   useEffect(() => {
