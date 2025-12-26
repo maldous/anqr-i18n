@@ -25,7 +25,7 @@ const GALLERY_DIR = path.join(PROJECT_ROOT, 'public', 'gallery')
 const DEV_SERVER_URL = 'http://localhost:5174'
 const IMAGE_SIZE = 200 // Half size for faster loading
 const VIEWPORT = { width: 800, height: 600 }
-const CAPTURE_DELAY = 30000 // Time to wait for QR to render
+const CAPTURE_DELAY = 600000 // Time to wait for QR to render
 const PARALLEL_CAPTURES = 4 // Number of parallel browser pages
 
 // ============================================
@@ -307,7 +307,7 @@ async function captureQR(page, item) {
     // For animated items, capture multiple frames from the canvas and encode as GIF
     // Wait for the animated GIF overlay to fully load
     console.log(`    Waiting for animation to load...`)
-    await new Promise(resolve => setTimeout(resolve, 30000))
+    await new Promise(resolve => setTimeout(resolve, 600000))
     
     // Wait until we see the canvas actually changing (animation is playing)
     let animationStarted = false
