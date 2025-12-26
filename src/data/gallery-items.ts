@@ -720,7 +720,7 @@ export const galleryItems: GalleryItem[] = gallerySections.flatMap(s => s.items)
 
 export function getGalleryBaseUrl(): string {
   if (typeof window !== 'undefined') return window.location.origin
-  return 'https://anqr.aldous.info'
+  return 'https://anqr.link'
 }
 export const GALLERY_IMAGE_PATH = '/gallery'
 

@@ -138,7 +138,7 @@ const pages: Record<StaticPageType, PageDefinition> = {
       {
         heading: 'Contact',
         paragraphs: [
-          'For privacy questions, please use the Contact page or email: hello@aldous.info',
+          'For privacy questions, please use the Contact page or email: email@anqr.link',
         ],
       },
     ],
@@ -204,7 +204,7 @@ const pages: Record<StaticPageType, PageDefinition> = {
       {
         heading: 'Contact',
         paragraphs: [
-          'Questions about these Terms can be sent to: hello@aldous.info',
+          'Questions about these Terms can be sent to: email@anqr.link',
         ],
       },
     ],
@@ -218,7 +218,7 @@ const pages: Record<StaticPageType, PageDefinition> = {
       {
         heading: 'Email',
         paragraphs: [
-          'For general enquiries and support: hello@aldous.info',
+          'For general enquiries and support: email@anqr.link',
         ],
       },
       {
@@ -280,8 +280,8 @@ function ContactForm() {
         <h3 className="text-base font-semibold text-foreground">Message sent</h3>
         <p className="mt-2 text-sm text-muted-foreground">
           Thanks — we received your message. If you do not hear back, email us at{' '}
-          <a className="text-primary hover:underline" href="mailto:hello@aldous.info">
-            hello@aldous.info
+          <a className="text-primary hover:underline" href="mailto:email@anqr.link">
+            email@anqr.link
           </a>
           .
         </p>
@@ -370,8 +370,8 @@ function ContactForm() {
       {status === 'error' && (
         <p className="mt-4 text-sm text-red-600">
           We could not submit the form from this browser/session. Please email{' '}
-          <a className="text-primary hover:underline" href="mailto:hello@aldous.info">
-            hello@aldous.info
+          <a className="text-primary hover:underline" href="mailto:email@anqr.link">
+            email@anqr.link
           </a>
           .
         </p>
