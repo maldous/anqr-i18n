@@ -3,25 +3,35 @@ import { Sidebar } from '@/components/Sidebar'
 import { Preview } from '@/components/Preview'
 import { Header } from '@/components/Header'
 import { Gallery } from '@/components/Gallery'
+import { StaticPage, type StaticPageType } from '@/components/StaticPage'
 import { useState, useEffect } from 'react'
 import { useQRGenerator } from '@/hooks/useQRGenerator'
 import { useQRStore, type Tier } from '@/store/qr-store'
 import { parseUrlParams } from '@/modules/share-utils'
 import type { GalleryCategory } from '@/data/gallery-items'
 
+type PageView = 'editor' | 'gallery' | StaticPageType
+
 function App() {
   const [sidebarOpen, setSidebarOpen] = useState(true)
-  const [showGallery, setShowGallery] = useState(false)
+  const [currentPage, setCurrentPage] = useState<PageView>('editor')
   const [galleryFilter, setGalleryFilter] = useState<GalleryCategory | 'all'>('all')
   const { download } = useQRGenerator()
   const { setOverlayUrl, setOverlayFile, setOverlayEnabled, setOverlayMode, setOverlayIntensity,
           setPayloadText, setPayloadKind, setPayloadUrl, setTier, setQrEcc, setQrVersion, setRenderModulePx, setQrQuietZone,
           setRenderFgColor, setRenderBgColor, setRenderModuleStyle, setRenderFinderStyle } = useQRStore()
 
-  // Handle hash changes for gallery view
+  // Handle hash changes for page routing
   useEffect(() => {
     const handleHashChange = () => {
-      setShowGallery(window.location.hash === '#gallery')
+      const hash = window.location.hash.slice(1) // Remove the # prefix
+      if (hash === 'gallery') {
+        setCurrentPage('gallery')
+      } else if (hash === 'about' || hash === 'privacy' || hash === 'terms' || hash === 'contact') {
+        setCurrentPage(hash as StaticPageType)
+      } else {
+        setCurrentPage('editor')
+      }
     }
     
     // Check initial hash
@@ -31,6 +41,11 @@ function App() {
     window.addEventListener('hashchange', handleHashChange)
     return () => window.removeEventListener('hashchange', handleHashChange)
   }, [])
+  
+  // Convenience booleans for view states
+  const showGallery = currentPage === 'gallery'
+  const showStaticPage = ['about', 'privacy', 'terms', 'contact'].includes(currentPage)
+  const showEditor = currentPage === 'editor'
 
   // Load settings from URL parameters on mount
   useEffect(() => {
@@ -163,12 +178,12 @@ function App() {
         />
         <div className="flex-1 flex overflow-hidden relative">
           {/* Sidebar - only shown in editor mode */}
-          {!showGallery && <Sidebar isOpen={sidebarOpen} onClose={() => setSidebarOpen(false)} />}
+          {showEditor && <Sidebar isOpen={sidebarOpen} onClose={() => setSidebarOpen(false)} />}
           
-          {/* Sliding container for Editor/Gallery transition */}
+          {/* Sliding container for page transitions */}
           <div className="flex-1 relative overflow-hidden">
             {/* Editor view */}
-            <div className={`absolute inset-0 flex transition-transform duration-500 ease-in-out ${showGallery ? '-translate-x-full' : 'translate-x-0'}`}>
+            <div className={`absolute inset-0 flex transition-transform duration-500 ease-in-out ${showEditor ? 'translate-x-0' : '-translate-x-full'}`}>
               <Preview sidebarOpen={sidebarOpen} />
             </div>
             
@@ -176,10 +191,15 @@ function App() {
             <div className={`absolute inset-0 flex transition-transform duration-500 ease-in-out ${showGallery ? 'translate-x-0' : 'translate-x-full'}`}>
               <Gallery filter={galleryFilter} />
             </div>
+            
+            {/* Static pages (About, Privacy, Terms, Contact) */}
+            <div className={`absolute inset-0 flex transition-transform duration-500 ease-in-out ${showStaticPage ? 'translate-x-0' : 'translate-x-full'}`}>
+              {showStaticPage && <StaticPage page={currentPage as StaticPageType} />}
+            </div>
           </div>
         </div>
         {/* Fixed Footer - always visible at bottom */}
-        <footer className={`border-t bg-muted/30 py-2 flex-shrink-0 transition-all duration-300 ${sidebarOpen && !showGallery ? 'lg:ml-96' : ''}`}>
+        <footer className={`border-t bg-muted/30 py-2 flex-shrink-0 transition-all duration-300 ${sidebarOpen && showEditor ? 'lg:ml-96' : ''}`}>
           {/* Inner wrapper with margins to center over QR area (between ad columns) */}
           <div className="px-4 lg:mx-[160px] text-center">
             <p className="text-xs text-muted-foreground">

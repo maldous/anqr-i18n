@@ -409,13 +409,6 @@ preprocessingItems.push({
   category: 'preprocessing',
   params: { data: BASE_DATA, ec: 'H', v: 6, mode: 'dithered', img: TSUNAMI_IMG, intensity: 100, hue: 90 }
 })
-preprocessingItems.push({
-  id: 'prep-hue-180',
-  title: 'Hue +180°',
-  description: 'Hue rotation 180 degrees',
-  category: 'preprocessing',
-  params: { data: BASE_DATA, ec: 'H', v: 6, mode: 'dithered', img: TSUNAMI_IMG, intensity: 100, hue: 180 }
-})
 
 // ============================================
 // QR ENCODING - Versions and ECC

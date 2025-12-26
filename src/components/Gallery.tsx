@@ -163,8 +163,8 @@ export function Gallery({ filter }: GalleryProps) {
         <AdPlaceholder slot="gallery-left" width={160} height={600} format="vertical" />
       </div>
       
-      {/* Main gallery content */}
-      <div className="flex-1 overflow-y-auto bg-background">
+      {/* Main gallery content - scrollbar hidden but scrollable */}
+      <div className="flex-1 overflow-y-auto bg-background scrollbar-hide">
         {/* Hero section */}
         <div className="max-w-7xl mx-auto px-4 py-6">
           <div className="text-center">
