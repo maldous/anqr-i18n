@@ -37,13 +37,24 @@ const WILLIE_GIF = `${DEV_SERVER_URL}/willie.gif`
 function generateGalleryItems() {
   const items = []
   
-  // ========== PLAIN QR CODES ==========
+  // ========== PLAIN QR CODES (6 items) ==========
   items.push(
     { id: 'plain-basic', params: { data: BASE_DATA, ec: 'H', v: 0, style: 'square', finder: 'square', fg: '000000', bg: 'ffffff' } },
     { id: 'plain-v6', params: { data: BASE_DATA, ec: 'H', v: 6, style: 'square', finder: 'square', fg: '000000', bg: 'ffffff' } },
     { id: 'plain-v9', params: { data: BASE_DATA, ec: 'H', v: 9, style: 'square', finder: 'square', fg: '000000', bg: 'ffffff' } },
+    { id: 'plain-v12', params: { data: BASE_DATA, ec: 'H', v: 12, style: 'square', finder: 'square', fg: '000000', bg: 'ffffff' } },
     { id: 'plain-ecc-l', params: { data: BASE_DATA, ec: 'L', v: 0, style: 'square', finder: 'square', fg: '000000', bg: 'ffffff' } },
     { id: 'plain-ecc-q', params: { data: BASE_DATA, ec: 'Q', v: 0, style: 'square', finder: 'square', fg: '000000', bg: 'ffffff' } },
+  )
+  
+  // ========== CONTENT TYPES (6 items) ==========
+  items.push(
+    { id: 'content-vcard', params: { data: 'BEGIN:VCARD\nVERSION:3.0\nFN:John Doe\nORG:ANQR\nEND:VCARD', ec: 'H', v: 0, style: 'rounded', finder: 'rounded', fg: '1a365d', bg: 'ebf8ff' } },
+    { id: 'content-wifi', params: { data: 'WIFI:T:WPA;S:MyNetwork;P:password123;;', ec: 'H', v: 0, style: 'dots', finder: 'circle', fg: '1b4332', bg: 'd8f3dc' } },
+    { id: 'content-email', params: { data: 'mailto:hello@aldous.info?subject=Hello', ec: 'H', v: 0, style: 'square', finder: 'square', fg: 'e85d04', bg: 'ffe8d6' } },
+    { id: 'content-sms', params: { data: 'sms:+1234567890?body=Hello%20from%20ANQR', ec: 'H', v: 0, style: 'diamond', finder: 'rounded', fg: '006d77', bg: 'e0f4f5' } },
+    { id: 'content-geo', params: { data: 'geo:37.7749,-122.4194?q=San+Francisco', ec: 'H', v: 0, style: 'connected', finder: 'square', fg: '7f5539', bg: 'ffe8cc' } },
+    { id: 'content-event', params: { data: 'BEGIN:VEVENT\nSUMMARY:Meeting\nDTSTART:20240101T100000\nEND:VEVENT', ec: 'H', v: 0, style: 'rounded', finder: 'circle', fg: '4a0080', bg: 'f5e6ff' } },
   )
   
   // ========== MODULE & FINDER STYLES ==========
@@ -89,8 +100,8 @@ function generateGalleryItems() {
     items.push({ id: `color-${color.name}`, params: { data: BASE_DATA, ec: 'H', v: 0, style: 'square', finder: 'square', fg: color.fg, bg: color.bg } })
   }
   
-  // Colors with dots
-  for (const color of colorSchemes.slice(0, 5)) {
+  // Colors with dots (6 items to make 18 total)
+  for (const color of colorSchemes.slice(0, 6)) {
     items.push({ id: `color-${color.name}-dots`, params: { data: BASE_DATA, ec: 'H', v: 0, style: 'dots', finder: 'circle', fg: color.fg, bg: color.bg } })
   }
   
@@ -110,6 +121,9 @@ function generateGalleryItems() {
   for (const colorMode of ['color', 'grayscale', 'bw']) {
     items.push({ id: `img-colormode-${colorMode}`, params: { data: BASE_DATA, ec: 'H', v: 6, mode: 'dithered', img: TSUNAMI_IMG, intensity: 100, colorMode } })
   }
+  
+  // Add blend mode to make 18 total
+  items.push({ id: 'img-blend', params: { data: BASE_DATA, ec: 'H', v: 6, mode: 'blend', img: TSUNAMI_IMG, intensity: 100 } })
   
   // ========== ANIMATED OVERLAYS ==========
   for (const mode of overlayModes.slice(0, 6)) {
@@ -173,6 +187,10 @@ function generateGalleryItems() {
   // Invert
   items.push({ id: 'prep-invert', params: { data: BASE_DATA, ec: 'H', v: 6, mode: 'dithered', img: TSUNAMI_IMG, intensity: 100, invert: true } })
   
+  // Hue rotate (to make 30 total)
+  items.push({ id: 'prep-hue-90', params: { data: BASE_DATA, ec: 'H', v: 6, mode: 'dithered', img: TSUNAMI_IMG, intensity: 100, hue: 90 } })
+  items.push({ id: 'prep-hue-180', params: { data: BASE_DATA, ec: 'H', v: 6, mode: 'dithered', img: TSUNAMI_IMG, intensity: 100, hue: 180 } })
+  
   // ========== QR ENCODING ==========
   // Versions
   for (const v of [0, 6, 9, 12]) {
@@ -209,10 +227,26 @@ function generateGalleryItems() {
     items.push({ id: `dither-kernel-${kernel.replace(/_/g, '-')}`, params: { data: BASE_DATA, ec: 'H', v: 6, mode: 'dithered', img: TSUNAMI_IMG, intensity: 100, ditherKind: 'error_diffusion', diffusionKernel: kernel } })
   }
   
-  // Dither strengths
-  for (const strength of [25, 50, 75, 100]) {
+  // Dither strengths (5 items to make 18 total)
+  for (const strength of [20, 40, 60, 80, 100]) {
     items.push({ id: `dither-strength-${strength}`, params: { data: BASE_DATA, ec: 'H', v: 6, mode: 'dithered', img: TSUNAMI_IMG, intensity: 100, ditherStrength: strength } })
   }
+  
+  // ========== POWER COMBOS (12 items) ==========
+  items.push(
+    { id: 'combo-dots-halftone-gold', params: { data: BASE_DATA, ec: 'H', v: 6, style: 'dots', finder: 'circle', mode: 'halftone', img: TSUNAMI_IMG, intensity: 100, fg: '7f5539', bg: 'ffe8cc' } },
+    { id: 'combo-diamond-blue-noise-navy', params: { data: BASE_DATA, ec: 'H', v: 6, style: 'diamond', finder: 'rounded', mode: 'blue-noise', img: TSUNAMI_IMG, intensity: 100, fg: '001d3d', bg: 'a2d2ff' } },
+    { id: 'combo-rounded-mosaic-sunset', params: { data: BASE_DATA, ec: 'H', v: 6, style: 'rounded', finder: 'rounded', mode: 'mosaic', img: TSUNAMI_IMG, intensity: 100, fg: 'bf0603', bg: 'fff3b0' } },
+    { id: 'combo-connected-wave-ocean', params: { data: BASE_DATA, ec: 'H', v: 6, style: 'connected', finder: 'square', mode: 'wave', img: TSUNAMI_IMG, intensity: 100, fg: '023e8a', bg: 'caf0f8' } },
+    { id: 'combo-dots-extreme-forest', params: { data: BASE_DATA, ec: 'H', v: 6, style: 'dots', finder: 'circle', mode: 'extreme', img: TSUNAMI_IMG, intensity: 100, fg: '1b4332', bg: 'd8f3dc' } },
+    { id: 'combo-rounded-dithered-royal', params: { data: BASE_DATA, ec: 'H', v: 6, style: 'rounded', finder: 'rounded', mode: 'dithered', img: TSUNAMI_IMG, intensity: 100, fg: '4a0080', bg: 'f5e6ff' } },
+    { id: 'combo-diamond-duotone-crimson', params: { data: BASE_DATA, ec: 'H', v: 6, style: 'diamond', finder: 'rounded', mode: 'duotone', img: TSUNAMI_IMG, intensity: 100, fg: '9d0208', bg: 'ffccd5' } },
+    { id: 'combo-connected-pixelate-teal', params: { data: BASE_DATA, ec: 'H', v: 6, style: 'connected', finder: 'square', mode: 'pixelate', img: TSUNAMI_IMG, intensity: 100, fg: '006d77', bg: 'e0f4f5' } },
+    { id: 'combo-dots-outline-slate', params: { data: BASE_DATA, ec: 'H', v: 6, style: 'dots', finder: 'circle', mode: 'outline', img: TSUNAMI_IMG, intensity: 100, fg: '343a40', bg: 'e9ecef' } },
+    { id: 'combo-rounded-subpixel-coral', params: { data: BASE_DATA, ec: 'H', v: 6, style: 'rounded', finder: 'rounded', mode: 'subpixel', img: TSUNAMI_IMG, intensity: 100, fg: 'e85d04', bg: 'ffe8d6' } },
+    { id: 'combo-anim-dots-halftone', params: { data: BASE_DATA, ec: 'H', v: 6, style: 'dots', finder: 'circle', mode: 'halftone', img: WILLIE_GIF, intensity: 100, fg: '1a1a2e', bg: 'eef1ff' }, isAnimated: true },
+    { id: 'combo-anim-rounded-blue-noise', params: { data: BASE_DATA, ec: 'H', v: 6, style: 'rounded', finder: 'rounded', mode: 'blue-noise', img: WILLIE_GIF, intensity: 100, fg: '702459', bg: 'fff5f7' }, isAnimated: true },
+  )
   
   // ========== BLEND MODES ==========
   const blendColors = [
@@ -225,18 +259,16 @@ function generateGalleryItems() {
   for (const color of blendColors) {
     items.push({ id: `blend-${color.name}`, params: { data: BASE_DATA, ec: 'H', v: 6, mode: 'dithered', img: TSUNAMI_IMG, intensity: 100, fg: color.fg, bg: color.bg } })
     items.push({ id: `halftone-${color.name}`, params: { data: BASE_DATA, ec: 'H', v: 6, mode: 'halftone', img: TSUNAMI_IMG, intensity: 100, fg: color.fg, bg: color.bg } })
+    items.push({ id: `mosaic-${color.name}`, params: { data: BASE_DATA, ec: 'H', v: 6, mode: 'mosaic', img: TSUNAMI_IMG, intensity: 100, fg: color.fg, bg: color.bg } })
   }
   
-  // ========== COLOR MODES ==========
+  // ========== COLOR MODES (6 items) ==========
   const modeColorCombos = [
     { overlayMode: 'dithered', colorMode: 'color' },
     { overlayMode: 'dithered', colorMode: 'grayscale' },
-    { overlayMode: 'dithered', colorMode: 'bw' },
     { overlayMode: 'blue-noise', colorMode: 'color' },
-    { overlayMode: 'blue-noise', colorMode: 'grayscale' },
     { overlayMode: 'blue-noise', colorMode: 'bw' },
     { overlayMode: 'halftone', colorMode: 'color' },
-    { overlayMode: 'halftone', colorMode: 'grayscale' },
     { overlayMode: 'halftone', colorMode: 'bw' },
   ]
   
