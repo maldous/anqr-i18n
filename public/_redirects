@@ -1,2 +1,5 @@
+# Serve static assets directly (gallery images, etc.)
+/gallery/*  /gallery/:splat  200
+
 # SPA fallback for clean URLs (/about, /privacy, /terms, /contact, /gallery)
 /*    /index.html   200

@@ -74,17 +74,17 @@ const plainItems: GalleryItem[] = [
 // CONTENT TYPES - Different payload types (6 items)
 // ============================================
 const contentTypeItems: GalleryItem[] = [
-  { id: 'content-vcard', title: 'vCard Contact', description: 'Contact card format', category: 'content-types',
+  { id: 'content-vcard', title: 'vCard Contact', description: 'Contact card with rounded navy style', category: 'content-types',
     params: { data: 'BEGIN:VCARD\nVERSION:3.0\nFN:John Doe\nORG:ANQR\nEND:VCARD', ec: 'H', v: 0, style: 'rounded', finder: 'rounded', fg: '1a365d', bg: 'ebf8ff' } },
-  { id: 'content-wifi', title: 'WiFi Network', description: 'WiFi configuration', category: 'content-types',
+  { id: 'content-wifi', title: 'WiFi Network', description: 'WiFi config with dots forest green', category: 'content-types',
     params: { data: 'WIFI:T:WPA;S:MyNetwork;P:password123;;', ec: 'H', v: 0, style: 'dots', finder: 'circle', fg: '1b4332', bg: 'd8f3dc' } },
-  { id: 'content-email', title: 'Email Address', description: 'Mailto link', category: 'content-types',
+  { id: 'content-email', title: 'Email Address', description: 'Mailto link with coral colors', category: 'content-types',
     params: { data: 'mailto:hello@example.com?subject=Hello', ec: 'H', v: 0, style: 'square', finder: 'square', fg: 'e85d04', bg: 'ffe8d6' } },
-  { id: 'content-sms', title: 'SMS Message', description: 'Pre-filled SMS', category: 'content-types',
+  { id: 'content-sms', title: 'SMS Message', description: 'Pre-filled SMS with diamond teal', category: 'content-types',
     params: { data: 'sms:+1234567890?body=Hello%20from%20ANQR', ec: 'H', v: 0, style: 'diamond', finder: 'rounded', fg: '006d77', bg: 'e0f4f5' } },
-  { id: 'content-geo', title: 'Geo Location', description: 'Map coordinates', category: 'content-types',
+  { id: 'content-geo', title: 'Geo Location', description: 'Map coords with connected gold', category: 'content-types',
     params: { data: 'geo:37.7749,-122.4194?q=San+Francisco', ec: 'H', v: 0, style: 'connected', finder: 'square', fg: '7f5539', bg: 'ffe8cc' } },
-  { id: 'content-event', title: 'Calendar Event', description: 'iCalendar event', category: 'content-types',
+  { id: 'content-event', title: 'Calendar Event', description: 'iCal event with rounded royal', category: 'content-types',
     params: { data: 'BEGIN:VEVENT\nSUMMARY:Meeting\nDTSTART:20240101T100000\nEND:VEVENT', ec: 'H', v: 0, style: 'rounded', finder: 'circle', fg: '4a0080', bg: 'f5e6ff' } },
 ]
 

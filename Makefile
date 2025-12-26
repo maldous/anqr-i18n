@@ -1,4 +1,4 @@
-.PHONY: dev build gallery deploy
+.PHONY: dev build gallery gallery\:gifs deploy
 
 export ENV := PROD
 export VITE_ADSENSE_ENABLED := true
@@ -23,6 +23,9 @@ dev:
 
 gallery:
 	node scripts/generate-gallery.mjs
+
+gallery\:gifs:
+	node scripts/generate-gallery.mjs --gifs-only
 
 deploy:
 	netlify deploy --prod --site anqr.link --dir=dist

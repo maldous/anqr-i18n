@@ -28,7 +28,6 @@ export type PayloadKind =
 
 // QR encoding
 export type ECCLevel = 'L' | 'M' | 'Q' | 'H'
-export type MaskPattern = 'auto' | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7
 export type EncodingMode = 'auto' | 'numeric' | 'alphanumeric' | 'byte' | 'kanji'
 
 // Rendering
@@ -254,35 +253,16 @@ export interface QRState {
   qr: {
     version: number // 0 = auto, 1-40
     ecc: ECCLevel
-    mask: MaskPattern
-    maskLock: boolean
     encodingMode: EncodingMode
-    eci: number
-    segmentOptimize: boolean
     quietZoneModules: number
     quietZoneMinEnforce: boolean
     borderModulesExtra: number
-    // Advanced
-    structuredAppend: {
-      enable: boolean
-      index: number
-      count: number
-      parity: number
-    }
-    fnc1: 'off' | 'gs1_first' | 'gs1_second'
-    gs1AiMode: boolean
-    model: 'model2' | 'model1'
-    microQr: boolean
-    rmQr: boolean
   }
   setQrVersion: (version: number) => void
   setQrEcc: (ecc: ECCLevel) => void
-  setQrMask: (mask: MaskPattern) => void
-  setQrMaskLock: (lock: boolean) => void
   setQrEncodingMode: (mode: EncodingMode) => void
   setQrQuietZone: (modules: number) => void
   setQrQuietZoneMinEnforce: (enforce: boolean) => void
-  setQrStructuredAppend: (opts: Partial<QRState['qr']['structuredAppend']>) => void
 
   // === RENDERING ===
   render: {
@@ -471,7 +451,7 @@ export interface QRState {
     svgEmbedRasterOverlay: boolean
     svgMetadata: Record<string, string>
     // Extra formats
-    formatExtra: 'none' | 'pdf' | 'eps' | 'apng' | 'animated_webp'
+    formatExtra: 'none' | 'eps' | 'animated_webp'
   }
   setOutputFormat: (format: OutputFormat) => void
   setOutputWidth: (width: number) => void
@@ -542,12 +522,10 @@ export interface QRState {
   // === AUTO-TUNING ===
   auto: {
     pickVersion: boolean
-    pickMask: boolean
     pickEcc: boolean
     reduceIntensityUntilSafe: boolean
   }
   setAutoPickVersion: (pick: boolean) => void
-  setAutoPickMask: (pick: boolean) => void
   setAutoPickEcc: (pick: boolean) => void
 
   // === SHARE ===
@@ -610,29 +588,16 @@ export const useQRStore = create<QRState>((set, get) => ({
   qr: {
     version: 0,
     ecc: 'H',
-    mask: 'auto',
-    maskLock: false,
     encodingMode: 'auto',
-    eci: 0,
-    segmentOptimize: false,
     quietZoneModules: 4,
     quietZoneMinEnforce: true,
     borderModulesExtra: 0,
-    structuredAppend: { enable: false, index: 0, count: 0, parity: 0 },
-    fnc1: 'off',
-    gs1AiMode: false,
-    model: 'model2',
-    microQr: false,
-    rmQr: false,
   },
   setQrVersion: (version) => set((s) => ({ qr: { ...s.qr, version } })),
   setQrEcc: (ecc) => set((s) => ({ qr: { ...s.qr, ecc } })),
-  setQrMask: (mask) => set((s) => ({ qr: { ...s.qr, mask } })),
-  setQrMaskLock: (maskLock) => set((s) => ({ qr: { ...s.qr, maskLock } })),
   setQrEncodingMode: (encodingMode) => set((s) => ({ qr: { ...s.qr, encodingMode } })),
   setQrQuietZone: (quietZoneModules) => set((s) => ({ qr: { ...s.qr, quietZoneModules } })),
   setQrQuietZoneMinEnforce: (quietZoneMinEnforce) => set((s) => ({ qr: { ...s.qr, quietZoneMinEnforce } })),
-  setQrStructuredAppend: (opts) => set((s) => ({ qr: { ...s.qr, structuredAppend: { ...s.qr.structuredAppend, ...opts } } })),
 
   // Render defaults
   render: {
@@ -889,12 +854,10 @@ export const useQRStore = create<QRState>((set, get) => ({
   // Auto defaults
   auto: {
     pickVersion: true,
-    pickMask: true,
     pickEcc: false,
     reduceIntensityUntilSafe: false,
   },
   setAutoPickVersion: (pickVersion) => set((s) => ({ auto: { ...s.auto, pickVersion } })),
-  setAutoPickMask: (pickMask) => set((s) => ({ auto: { ...s.auto, pickMask } })),
   setAutoPickEcc: (pickEcc) => set((s) => ({ auto: { ...s.auto, pickEcc } })),
 
   // Share defaults
