@@ -23,9 +23,10 @@ function DynamicIcon({ name, className }: { name: string; className?: string }) 
   return Icon ? <Icon className={className} /> : null
 }
 
-// Gallery card component
+// Gallery card component with hover-to-enlarge
 function GalleryCard({ item }: { item: GalleryItem }) {
   const [imageError, setImageError] = useState(false)
+  const [isHovered, setIsHovered] = useState(false)
   
   const imagePath = getGalleryImagePath(item)
   const shareUrl = buildGalleryUrl(item)
@@ -36,10 +37,17 @@ function GalleryCard({ item }: { item: GalleryItem }) {
       target="_blank"
       rel="noopener noreferrer"
       className="group relative block"
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
     >
-      <div className="relative overflow-hidden rounded-lg bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-700 shadow-md transition-all duration-300 ease-out hover:shadow-xl hover:scale-[1.02] hover:border-blue-400 dark:hover:border-blue-500">
+      <div className={`
+        relative overflow-hidden rounded-lg bg-white dark:bg-zinc-900 
+        border border-zinc-200 dark:border-zinc-700 shadow-md
+        transition-all duration-200 ease-out origin-center
+        ${isHovered ? 'scale-[1.8] z-50 shadow-2xl border-blue-500 dark:border-blue-400' : 'z-0'}
+      `}>
         {/* Image */}
-        <div className="aspect-square w-full bg-zinc-100 dark:bg-zinc-800 p-2">
+        <div className="aspect-square w-full bg-zinc-100 dark:bg-zinc-800 p-1">
           {imageError ? (
             <div className="w-full h-full flex items-center justify-center text-zinc-400">
               <span className="text-xs">Image unavailable</span>
@@ -57,15 +65,15 @@ function GalleryCard({ item }: { item: GalleryItem }) {
         
         {/* Animated badge */}
         {item.isAnimated && (
-          <div className="absolute top-2 right-2 px-1.5 py-0.5 rounded text-[10px] font-medium bg-purple-500 text-white">
+          <div className="absolute top-1 right-1 px-1 py-0.5 rounded text-[8px] font-bold bg-purple-500 text-white">
             GIF
           </div>
         )}
       </div>
       
-      {/* Title below card (always visible) */}
-      <div className="mt-1.5 px-0.5">
-        <h4 className="text-xs font-medium text-zinc-700 dark:text-zinc-300 truncate">{item.title}</h4>
+      {/* Title below card (hidden when hovered/enlarged) */}
+      <div className={`mt-1 px-0.5 transition-opacity duration-200 ${isHovered ? 'opacity-0' : 'opacity-100'}`}>
+        <h4 className="text-[10px] font-medium text-zinc-600 dark:text-zinc-400 truncate">{item.title}</h4>
       </div>
     </a>
   )
@@ -105,9 +113,9 @@ function GallerySection({ section, isExpanded, onToggle }: {
         </div>
       </button>
       
-      {/* Items grid */}
+      {/* Items grid - consistent 6 columns with hover space */}
       {isExpanded && (
-        <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 xl:grid-cols-8 2xl:grid-cols-10 gap-3">
+        <div className="grid grid-cols-6 gap-4 py-4">
           {section.items.map(item => (
             <GalleryCard key={item.id} item={item} />
           ))}  
