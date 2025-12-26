@@ -2,11 +2,13 @@
 /**
  * Gallery Image Generator
  * 
- * Generates static preview images for all gallery items using Puppeteer.
+ * Generates preview images for all gallery items using Puppeteer.
+ * Static items are saved as PNG, animated items as GIF.
+ * 
  * Run with: node scripts/generate-gallery.mjs
  * 
  * Prerequisites:
- * - npm install puppeteer
+ * - npm install puppeteer gifenc sharp
  * - Dev server running on port 5174
  */
 
@@ -31,6 +33,7 @@ const PARALLEL_CAPTURES = 4 // Number of parallel browser pages
 // ============================================
 
 const BASE_DATA = 'https://anqr.link'
+// Use local dev server URLs for images during capture (avoids CORS issues)
 const TSUNAMI_IMG = `${DEV_SERVER_URL}/tsunami.jpg`
 const WILLIE_GIF = `${DEV_SERVER_URL}/willie.gif`
 
@@ -289,7 +292,7 @@ function buildUrl(params) {
   return url.toString()
 }
 
-// Capture a single QR code
+// Capture a single QR code (PNG for static, GIF for animated)
 async function captureQR(page, item) {
   const url = buildUrl(item.params)
   
@@ -300,7 +303,75 @@ async function captureQR(page, item) {
   const delay = item.isAnimated ? 4000 : CAPTURE_DELAY
   await new Promise(resolve => setTimeout(resolve, delay))
   
-  // Capture canvas
+  if (item.isAnimated) {
+    // For animated items, capture multiple frames from the canvas and encode as GIF
+    // Wait extra time for the animated GIF overlay to fully load and start playing
+    await new Promise(resolve => setTimeout(resolve, 2000))
+    
+    const frames = []
+    const frameCount = 16 // Capture 16 frames
+    const frameDelay = 100 // 100ms between frames (10 fps)
+    
+    for (let i = 0; i < frameCount; i++) {
+      // Capture RGBA pixel data directly from the canvas
+      const frameData = await page.evaluate((size) => {
+        const canvas = document.querySelector('canvas')
+        if (!canvas) return null
+        
+        // Create scaled canvas for output
+        const outputCanvas = document.createElement('canvas')
+        outputCanvas.width = size
+        outputCanvas.height = size
+        const ctx = outputCanvas.getContext('2d')
+        ctx.imageSmoothingEnabled = false // Keep pixels crisp
+        ctx.drawImage(canvas, 0, 0, size, size)
+        
+        // Get RGBA pixel data directly
+        const imageData = ctx.getImageData(0, 0, size, size)
+        // Convert Uint8ClampedArray to regular array for JSON serialization
+        return Array.from(imageData.data)
+      }, IMAGE_SIZE)
+      
+      if (frameData && frameData.length > 0) {
+        frames.push(new Uint8Array(frameData))
+      }
+      
+      // Wait for animation to advance to next frame
+      await new Promise(r => setTimeout(r, frameDelay))
+    }
+    
+    if (frames.length === 0) {
+      throw new Error('Could not capture any frames')
+    }
+    
+    // Encode frames as GIF using gifenc (same pattern as exporter.ts)
+    const gifenc = (await import('gifenc')).default
+    const { GIFEncoder, quantize, applyPalette } = gifenc
+    
+    const gif = GIFEncoder()
+    let isFirstFrame = true
+    
+    for (const rgbaData of frames) {
+      // Use RGBA data directly with gifenc (like exporter.ts does)
+      const palette = quantize(rgbaData, 256)
+      const index = applyPalette(rgbaData, palette)
+      
+      // Write frame with delay (gifenc uses centiseconds, so divide by 10)
+      // Minimum delay of 2 centiseconds (20ms) for browser compatibility
+      const delayCs = Math.max(2, Math.round(frameDelay / 10))
+      gif.writeFrame(index, IMAGE_SIZE, IMAGE_SIZE, {
+        palette,
+        delay: delayCs,
+        ...(isFirstFrame && { repeat: 0 }), // Loop forever
+      })
+      isFirstFrame = false
+    }
+    
+    gif.finish()
+    return { buffer: Buffer.from(gif.bytes()), isGif: true }
+  }
+  
+  // For static items, capture as PNG
   const canvasData = await page.evaluate((size) => {
     const canvas = document.querySelector('canvas')
     if (!canvas) return null
@@ -322,7 +393,7 @@ async function captureQR(page, item) {
   }
   
   const base64Data = canvasData.replace(/^data:image\/png;base64,/, '')
-  return Buffer.from(base64Data, 'base64')
+  return { buffer: Buffer.from(base64Data, 'base64'), isGif: false }
 }
 
 // Process items in batches
@@ -346,11 +417,12 @@ async function processItemsBatch(browser, items, startIdx) {
     const page = pages[i]
     
     try {
-      const buffer = await captureQR(page, item)
-      const filepath = path.join(GALLERY_DIR, `${item.id}.png`)
-      await fs.writeFile(filepath, buffer)
-      results.push({ id: item.id, success: true })
-      console.log(`  ✓ ${item.id}`)
+      const result = await captureQR(page, item)
+      const ext = result.isGif ? 'gif' : 'png'
+      const filepath = path.join(GALLERY_DIR, `${item.id}.${ext}`)
+      await fs.writeFile(filepath, result.buffer)
+      results.push({ id: item.id, success: true, isGif: result.isGif })
+      console.log(`  ✓ ${item.id}${result.isGif ? ' (GIF)' : ''}`)
     } catch (error) {
       results.push({ id: item.id, success: false, error: error.message })
       console.error(`  ✗ ${item.id}: ${error.message}`)

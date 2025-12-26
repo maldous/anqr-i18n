@@ -54,6 +54,7 @@
     "react-dom": "^19.2.3",
     "react-easy-crop": "^5.5.6",
     "react-hook-form": "^7.69.0",
+    "sharp": "^0.34.5",
     "tailwind-merge": "^3.4.0",
     "typescript": "^5.9.3",
     "vcard-creator": "^0.7.2",
@@ -65,7 +66,7 @@
     "@tailwindcss/postcss": "^4.1.18",
     "autoprefixer": "^10.4.23",
     "postcss": "^8.5.6",
-    "puppeteer": "^23.0.0",
+    "puppeteer": "^23.11.1",
     "tailwindcss": "^4.1.18"
   }
 }

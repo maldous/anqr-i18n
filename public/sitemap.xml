@@ -19,6 +19,12 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://anqr.link/docs</loc>
+    <lastmod>2025-12-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://anqr.link/privacy</loc>
     <lastmod>2025-12-26</lastmod>
     <changefreq>monthly</changefreq>

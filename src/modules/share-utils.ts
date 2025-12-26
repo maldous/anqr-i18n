@@ -32,6 +32,25 @@ export interface ShareConfig {
   logoSize?: number
   overlayUrl?: string  // URL source for overlay image
   
+  // Overlay preprocessing
+  colorMode?: string
+  brightness?: number
+  contrast?: number
+  gamma?: number
+  saturation?: number
+  blur?: number
+  sharpen?: number
+  posterize?: number
+  threshold?: number
+  edge?: string
+  invert?: boolean
+  hue?: number
+  
+  // Dithering
+  ditherKind?: string
+  diffusionKernel?: string
+  ditherStrength?: number
+  
   // Animation
   speed?: number
   loop?: boolean
@@ -80,6 +99,24 @@ export function parseUrlParams(): Partial<ShareConfig> {
     intensity: params.get('intensity') ? parseInt(params.get('intensity')!, 10) : undefined,
     logoSize: params.get('logoSize') ? parseInt(params.get('logoSize')!, 10) : undefined,
     overlayUrl: params.get('img') || undefined,
+    // Overlay preprocessing
+    colorMode: params.get('colorMode') || undefined,
+    brightness: params.get('brightness') ? parseInt(params.get('brightness')!, 10) : undefined,
+    contrast: params.get('contrast') ? parseInt(params.get('contrast')!, 10) : undefined,
+    gamma: params.get('gamma') ? parseFloat(params.get('gamma')!) : undefined,
+    saturation: params.get('saturation') ? parseInt(params.get('saturation')!, 10) : undefined,
+    blur: params.get('blur') ? parseInt(params.get('blur')!, 10) : undefined,
+    sharpen: params.get('sharpen') ? parseInt(params.get('sharpen')!, 10) : undefined,
+    posterize: params.get('posterize') ? parseInt(params.get('posterize')!, 10) : undefined,
+    threshold: params.get('threshold') ? parseInt(params.get('threshold')!, 10) : undefined,
+    edge: params.get('edge') || undefined,
+    invert: params.get('invert') === 'true' || params.get('invert') === '1',
+    hue: params.get('hue') ? parseInt(params.get('hue')!, 10) : undefined,
+    // Dithering
+    ditherKind: params.get('ditherKind') || undefined,
+    diffusionKernel: params.get('diffusionKernel') || undefined,
+    ditherStrength: params.get('ditherStrength') ? parseInt(params.get('ditherStrength')!, 10) : undefined,
+    // Animation
     speed: params.get('speed') ? parseInt(params.get('speed')!, 10) : undefined,
     loop: params.get('loop') !== '0',
     reverse: params.get('reverse') === '1',

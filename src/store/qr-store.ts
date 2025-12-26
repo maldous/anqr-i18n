@@ -416,6 +416,13 @@ export interface QRState {
   setOverlayDitherKind: (kind: DitherKind) => void
   setOverlayDitherStrength: (strength: number) => void
   setOverlayDiffusionKernel: (kernel: DiffusionKernel) => void
+  setOverlaySaturation: (saturation: number) => void
+  setOverlayHueRotate: (hue: number) => void
+  setOverlayBlur: (blur: number) => void
+  setOverlaySharpen: (sharpen: number) => void
+  setOverlayPosterize: (levels: number) => void
+  setOverlayThreshold: (threshold: number) => void
+  setOverlayEdgeDetect: (edge: 'off' | 'sobel' | 'canny') => void
 
   // === ANIMATION ===
   animation: {
@@ -759,6 +766,13 @@ export const useQRStore = create<QRState>((set, get) => ({
   setOverlayDitherKind: (ditherKind) => set((s) => ({ overlay: { ...s.overlay, ditherKind } })),
   setOverlayDitherStrength: (ditherStrength) => set((s) => ({ overlay: { ...s.overlay, ditherStrength } })),
   setOverlayDiffusionKernel: (diffusionKernel) => set((s) => ({ overlay: { ...s.overlay, diffusionKernel } })),
+  setOverlaySaturation: (saturation) => set((s) => ({ overlay: { ...s.overlay, saturation } })),
+  setOverlayHueRotate: (hueRotateDeg) => set((s) => ({ overlay: { ...s.overlay, hueRotateDeg } })),
+  setOverlayBlur: (blurPx) => set((s) => ({ overlay: { ...s.overlay, blurPx } })),
+  setOverlaySharpen: (sharpen) => set((s) => ({ overlay: { ...s.overlay, sharpen } })),
+  setOverlayPosterize: (posterizeLevels) => set((s) => ({ overlay: { ...s.overlay, posterizeLevels } })),
+  setOverlayThreshold: (threshold) => set((s) => ({ overlay: { ...s.overlay, threshold } })),
+  setOverlayEdgeDetect: (edgeDetect) => set((s) => ({ overlay: { ...s.overlay, edgeDetect } })),
 
   // Animation defaults
   animation: {
