@@ -151,18 +151,6 @@ export function QREncodingSection() {
             </p>
           </div>
 
-          {/* Segment Optimize */}
-          <div className="flex items-center justify-between">
-            <div>
-              <Label>Segment Optimization</Label>
-              <p className="text-xs text-muted-foreground">Optimize encoding segments for smaller QR</p>
-            </div>
-            <Switch 
-              checked={qr.segmentOptimize}
-              onCheckedChange={(checked) => useQRStore.setState((s) => ({ qr: { ...s.qr, segmentOptimize: checked } }))}
-            />
-          </div>
-
           {/* Min Quiet Zone Enforce */}
           <div className="flex items-center justify-between">
             <div>
@@ -236,20 +224,6 @@ export function QREncodingSection() {
                 <SelectItem value="off">Off</SelectItem>
                 <SelectItem value="gs1_first">GS1 First Position</SelectItem>
                 <SelectItem value="gs1_second">GS1 Second Position</SelectItem>
-              </SelectContent>
-            </Select>
-          </div>
-
-          {/* Model */}
-          <div className="space-y-2">
-            <Label><HighlightedLabel>QR Model</HighlightedLabel></Label>
-            <Select value={qr.model} onValueChange={(v) => useQRStore.setState((s) => ({ qr: { ...s.qr, model: v as typeof qr.model } }))}>
-              <SelectTrigger>
-                <SelectValue />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="model2">Model 2 (Standard)</SelectItem>
-                <SelectItem value="model1">Model 1 (Legacy)</SelectItem>
               </SelectContent>
             </Select>
           </div>

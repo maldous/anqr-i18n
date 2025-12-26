@@ -131,9 +131,10 @@ export function OverlaySection() {
     setUrlError(null)
   }
 
-  // Handle crop region drag
+  // Handle crop region drag (mouse)
   const handleCropDrag = useCallback((e: React.MouseEvent<HTMLDivElement>) => {
     if (!isDragging || !previewContainerRef.current) return
+    e.preventDefault()
     
     const rect = previewContainerRef.current.getBoundingClientRect()
     const x = Math.max(0, Math.min(1, (e.clientX - rect.left) / rect.width))
@@ -146,6 +147,34 @@ export function OverlaySection() {
     
     setOverlayCrop({ region: { ...overlay.cropRegion, x: clampedX, y: clampedY } })
   }, [isDragging, overlay.cropRegion, setOverlayCrop])
+  
+  // Handle crop region drag (touch for mobile)
+  const handleTouchStart = useCallback((e: React.TouchEvent<HTMLDivElement>) => {
+    if (!overlay.cropEnabled) return
+    e.preventDefault()
+    setIsDragging(true)
+  }, [overlay.cropEnabled])
+  
+  const handleTouchMove = useCallback((e: React.TouchEvent<HTMLDivElement>) => {
+    if (!isDragging || !previewContainerRef.current || e.touches.length === 0) return
+    e.preventDefault()
+    
+    const touch = e.touches[0]
+    const rect = previewContainerRef.current.getBoundingClientRect()
+    const x = Math.max(0, Math.min(1, (touch.clientX - rect.left) / rect.width))
+    const y = Math.max(0, Math.min(1, (touch.clientY - rect.top) / rect.height))
+    
+    // Keep crop region centered on touch point, clamped to bounds
+    const halfSize = overlay.cropRegion.size / 2
+    const clampedX = Math.max(halfSize, Math.min(1 - halfSize, x))
+    const clampedY = Math.max(halfSize, Math.min(1 - halfSize, y))
+    
+    setOverlayCrop({ region: { ...overlay.cropRegion, x: clampedX, y: clampedY } })
+  }, [isDragging, overlay.cropRegion, setOverlayCrop])
+  
+  const handleTouchEnd = useCallback(() => {
+    setIsDragging(false)
+  }, [])
 
   const availableModes = [
     ...BASIC_OVERLAY_MODES,
@@ -192,11 +221,14 @@ export function OverlaySection() {
             {imagePreview && (
               <div 
                 ref={previewContainerRef}
-                className="relative w-full aspect-square bg-muted/30 rounded-lg overflow-hidden border cursor-crosshair"
+                className="relative w-full aspect-square bg-muted/30 rounded-lg overflow-hidden border cursor-crosshair touch-none"
                 onMouseDown={() => overlay.cropEnabled && setIsDragging(true)}
                 onMouseUp={() => setIsDragging(false)}
                 onMouseLeave={() => setIsDragging(false)}
                 onMouseMove={handleCropDrag}
+                onTouchStart={handleTouchStart}
+                onTouchMove={handleTouchMove}
+                onTouchEnd={handleTouchEnd}
               >
                 <img 
                   src={imagePreview} 

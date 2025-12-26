@@ -13,6 +13,7 @@ import { parseAnimatedImage, type AnimationFrame } from '@/modules/animation'
 import { applyFilters, type FilterOptions } from '@/modules/image-filters'
 import { validateQRCodeRobust, type ValidationResult } from '@/modules/qr-scanner'
 import { calculateTemporalOffset, applyTemporalNoiseToCanvas, isTemporalDitherActive, type TemporalDitherMode } from '@/modules/temporal-dither'
+import { generatePatternFrames, interpolateFrames, type AnimationPattern } from '@/modules/animation-patterns'
 
 // Singleton QR generator instance
 const qrGenerator = new QRGenerator()
@@ -114,7 +115,9 @@ export function useQRGenerator(): UseQRGeneratorResult {
   const watermark = useQRStore((s) => s.watermark)
   const output = useQRStore((s) => s.output)
   const animation = useQRStore((s) => s.animation)
+  const setAnimationPlaying = useQRStore((s) => s.setAnimationPlaying)
   const safety = useQRStore((s) => s.safety)
+  const metadata = useQRStore((s) => s.metadata)
   const auto = useQRStore((s) => s.auto)
   const getPayloadText = useQRStore((s) => s.getPayloadText)
   const setOverlayIntensity = useQRStore((s) => s.setOverlayIntensity)
@@ -273,9 +276,11 @@ export function useQRGenerator(): UseQRGeneratorResult {
       overlayIntensity: safetyAdjustedConfig.intensity,
       colorMode: overlay.colorMode,
       invertImage: overlay.invert,
-      preserveFinders: overlay.preserveFinders,
-      preserveTiming: overlay.preserveTiming,
-      preserveAlignment: overlay.preserveAlignment,
+      preserveFinders: overlay.preserveFinders || safety.lockFinders,
+      preserveTiming: overlay.preserveTiming || safety.lockTiming,
+      preserveAlignment: overlay.preserveAlignment || safety.lockAlign,
+      protectFormatInfo: overlay.protectFormatInfo || safety.lockFormat,
+      protectVersionInfo: overlay.protectVersionInfo || safety.lockVersion,
       logoSize: 25, // For center mode
       
       // Overlay preprocessing
@@ -396,10 +401,83 @@ export function useQRGenerator(): UseQRGeneratorResult {
       overlay.rotateDeg !== 0 ||
       overlay.flipX ||
       overlay.flipY ||
-      overlay.colorMode !== 'color'
+      overlay.colorMode !== 'color' ||
+      overlay.cropEnabled ||
+      !!overlay.fit ||
+      overlay.threshold !== 128
 
     if (!needsProcessing) {
       return sourceCanvas
+    }
+    
+    // First apply crop if enabled
+    let workingCanvas = sourceCanvas
+    if (overlay.cropEnabled && overlay.cropRegion) {
+      const { x, y, size } = overlay.cropRegion
+      const cropCanvas = document.createElement('canvas')
+      const cropCtx = cropCanvas.getContext('2d')!
+      
+      // Calculate crop region in pixels - use the image dimensions
+      const srcWidth = sourceCanvas.width
+      const srcHeight = sourceCanvas.height
+      const cropW = srcWidth * size
+      const cropH = srcHeight * size
+      const cropX = Math.max(0, (x - size / 2) * srcWidth)
+      const cropY = Math.max(0, (y - size / 2) * srcHeight)
+      
+      // Set output as square based on crop size
+      const outputSize = Math.min(cropW, cropH)
+      cropCanvas.width = outputSize
+      cropCanvas.height = outputSize
+      
+      cropCtx.drawImage(
+        sourceCanvas,
+        cropX, cropY, cropW, cropH,
+        0, 0, outputSize, outputSize
+      )
+      workingCanvas = cropCanvas
+    }
+    
+    // Apply fit mode if specified (cover, contain, or stretch)
+    if (overlay.fit) {
+      const fitCanvas = document.createElement('canvas')
+      const fitCtx = fitCanvas.getContext('2d')!
+      const srcW = workingCanvas.width
+      const srcH = workingCanvas.height
+      const targetSize = Math.max(srcW, srcH)
+      
+      fitCanvas.width = targetSize
+      fitCanvas.height = targetSize
+      
+      let drawX = 0, drawY = 0, drawW = srcW, drawH = srcH
+      
+      if (overlay.fit === 'cover') {
+        // Scale to cover the entire target area (may crop)
+        const scale = Math.max(targetSize / srcW, targetSize / srcH)
+        drawW = srcW * scale
+        drawH = srcH * scale
+        drawX = (targetSize - drawW) / 2
+        drawY = (targetSize - drawH) / 2
+      } else if (overlay.fit === 'contain') {
+        // Scale to fit within target area (may have letterbox)
+        const scale = Math.min(targetSize / srcW, targetSize / srcH)
+        drawW = srcW * scale
+        drawH = srcH * scale
+        drawX = (targetSize - drawW) / 2
+        drawY = (targetSize - drawH) / 2
+        // Fill background for letterboxing
+        fitCtx.fillStyle = 'transparent'
+        fitCtx.fillRect(0, 0, targetSize, targetSize)
+      } else if (overlay.fit === 'stretch') {
+        // Stretch to fill exactly
+        drawW = targetSize
+        drawH = targetSize
+        drawX = 0
+        drawY = 0
+      }
+      
+      fitCtx.drawImage(workingCanvas, drawX, drawY, drawW, drawH)
+      workingCanvas = fitCanvas
     }
 
     // Create a new canvas for the processed image
@@ -411,11 +489,11 @@ export function useQRGenerator(): UseQRGeneratorResult {
     const isRightAngle = overlay.rotateDeg === 90 || overlay.rotateDeg === 270
     
     if (isRightAngle) {
-      processedCanvas.width = sourceCanvas.height
-      processedCanvas.height = sourceCanvas.width
+      processedCanvas.width = workingCanvas.height
+      processedCanvas.height = workingCanvas.width
     } else {
-      processedCanvas.width = sourceCanvas.width
-      processedCanvas.height = sourceCanvas.height
+      processedCanvas.width = workingCanvas.width
+      processedCanvas.height = workingCanvas.height
     }
 
     // Apply geometric transforms (rotate, flip)
@@ -434,9 +512,9 @@ export function useQRGenerator(): UseQRGeneratorResult {
     }
     
     ctx.drawImage(
-      sourceCanvas,
-      -sourceCanvas.width / 2,
-      -sourceCanvas.height / 2
+      workingCanvas,
+      -workingCanvas.width / 2,
+      -workingCanvas.height / 2
     )
     ctx.restore()
 
@@ -465,7 +543,7 @@ export function useQRGenerator(): UseQRGeneratorResult {
     overlay.brightness, overlay.contrast, overlay.gamma, overlay.saturation,
     overlay.hueRotateDeg, overlay.blurPx, overlay.sharpen, overlay.posterizeLevels,
     overlay.edgeDetect, overlay.invert, overlay.rotateDeg, overlay.flipX, overlay.flipY,
-    overlay.colorMode
+    overlay.colorMode, overlay.cropEnabled, overlay.cropRegion, overlay.fit, overlay.threshold
   ])
 
   // Load overlay image when file changes (store raw canvas)
@@ -614,10 +692,26 @@ export function useQRGenerator(): UseQRGeneratorResult {
     generate()
   }, [generate, isAnimationCacheReady, animationFrames.length, animation.playing])
 
+  // Calculate effective frames based on startFrame, maxFrames, frameStep
+  const effectiveFrames = useMemo(() => {
+    if (gifFrames.length === 0) return []
+    
+    const startIdx = Math.min(animation.startFrame, gifFrames.length - 1)
+    const maxCount = animation.maxFrames > 0 ? animation.maxFrames : gifFrames.length
+    const step = Math.max(1, animation.frameStep)
+    
+    const frames: AnimationFrame[] = []
+    for (let i = startIdx; i < gifFrames.length && frames.length < maxCount; i += step) {
+      frames.push(gifFrames[i])
+    }
+    
+    return frames
+  }, [gifFrames, animation.startFrame, animation.maxFrames, animation.frameStep])
+
   // Animation loop for GIF overlays
   useEffect(() => {
     // Only animate if we have multiple frames and animation is playing
-    if (gifFrames.length <= 1 || !animation.playing) {
+    if (effectiveFrames.length <= 1 || !animation.playing) {
       setIsAnimating(false)
       if (animationRef.current) {
         cancelAnimationFrame(animationRef.current)
@@ -643,28 +737,28 @@ export function useQRGenerator(): UseQRGeneratorResult {
           // Get frame delay from current frame if available
           let next = prev + animationDirection.current
 
-          // Handle bounds
-          if (next >= gifFrames.length) {
+          // Handle bounds based on effective frames
+          if (next >= effectiveFrames.length) {
             if (animation.bounce) {
               animationDirection.current = -1
-              next = gifFrames.length - 2
+              next = effectiveFrames.length - 2
             } else if (animation.loop) {
               next = 0
             } else {
-              next = gifFrames.length - 1
+              next = effectiveFrames.length - 1
             }
           } else if (next < 0) {
             if (animation.bounce) {
               animationDirection.current = 1
               next = 1
             } else if (animation.loop) {
-              next = gifFrames.length - 1
+              next = effectiveFrames.length - 1
             } else {
               next = 0
             }
           }
 
-          return Math.max(0, Math.min(gifFrames.length - 1, next))
+          return Math.max(0, Math.min(effectiveFrames.length - 1, next))
         })
       }
 
@@ -679,18 +773,18 @@ export function useQRGenerator(): UseQRGeneratorResult {
         animationRef.current = null
       }
     }
-  }, [gifFrames.length, animation.playing, animation.speedMs, animation.loop, animation.bounce])
+  }, [effectiveFrames.length, animation.playing, animation.speedMs, animation.loop, animation.bounce])
 
   // Update raw overlay canvas when current frame changes (for animation)
   // BUT only if we don't have cached animation frames yet
   useEffect(() => {
-    if (gifFrames.length > 0 && gifFrames[currentFrame]) {
+    if (effectiveFrames.length > 0 && effectiveFrames[currentFrame]) {
       // If we have cached frames, don't update rawOverlayCanvas - we'll draw from cache instead
       if (!isAnimationCacheReady || animationFrames.length === 0) {
-        setRawOverlayCanvas(gifFrames[currentFrame].canvas)
+        setRawOverlayCanvas(effectiveFrames[currentFrame].canvas)
       }
     }
-  }, [currentFrame, gifFrames, isAnimationCacheReady, animationFrames.length])
+  }, [currentFrame, effectiveFrames, isAnimationCacheReady, animationFrames.length])
 
   // Display cached animation frames during playback (fast path - no re-encoding)
   useEffect(() => {
@@ -791,7 +885,13 @@ export function useQRGenerator(): UseQRGeneratorResult {
     // Track if this effect is still current (for cleanup/cancellation)
     let isCancelled = false
     
-    if (gifFrames.length <= 1 || !overlay.enabled) {
+    // Check if we should generate pattern-based animation from static image
+    const shouldGeneratePatternAnimation = 
+      animation.pattern !== 'none' && 
+      overlay.enabled && 
+      effectiveFrames.length === 1
+    
+    if (effectiveFrames.length <= 1 && !shouldGeneratePatternAnimation && !overlay.enabled) {
       setAnimationFrames([])
       setIsAnimationCacheReady(false)
       return
@@ -803,7 +903,7 @@ export function useQRGenerator(): UseQRGeneratorResult {
 
     // Generate QR for each frame (batch generation)
     const generateAllFrames = async () => {
-      const frames: HTMLCanvasElement[] = []
+      let frames: HTMLCanvasElement[] = []
       
       // Load watermark image once if needed
       let watermarkImage: HTMLImageElement | HTMLCanvasElement | null = null
@@ -819,13 +919,37 @@ export function useQRGenerator(): UseQRGeneratorResult {
       const temporalMode = animation.temporalDither as TemporalDitherMode
       const useTemporalDither = isTemporalDitherActive(temporalMode)
       
-      for (let frameIdx = 0; frameIdx < gifFrames.length; frameIdx++) {
-        const frame = gifFrames[frameIdx]
+      // Determine frames to process
+      let framesToProcess = effectiveFrames
+      
+      // Generate pattern animation frames if applicable
+      if (shouldGeneratePatternAnimation && effectiveFrames.length === 1) {
+        // Generate 24 frames of pattern animation from single frame
+        const patternFrameCount = 24
+        const baseCanvas = applyPreprocessing(effectiveFrames[0].canvas)
+        const patternFrames = generatePatternFrames(
+          baseCanvas,
+          animation.pattern as AnimationPattern,
+          patternFrameCount,
+          animation.seed
+        )
+        // Convert to AnimationFrame format
+        framesToProcess = patternFrames.map(canvas => ({
+          canvas,
+          delay: animation.speedMs,
+          disposalType: 0
+        }))
+      }
+      
+      for (let frameIdx = 0; frameIdx < framesToProcess.length; frameIdx++) {
+        const frame = framesToProcess[frameIdx]
         // Check if cancelled before each expensive operation
         if (isCancelled) return
         
         try {
-          let processedOverlay = applyPreprocessing(frame.canvas)
+          let processedOverlay = shouldGeneratePatternAnimation 
+            ? frame.canvas // Already processed for pattern animation
+            : applyPreprocessing(frame.canvas)
           
           // Apply temporal dithering offset to the overlay image
           // This varies the input slightly per frame for smoother perceived quality
@@ -866,6 +990,11 @@ export function useQRGenerator(): UseQRGeneratorResult {
         }
       }
       
+      // Apply interpolation if enabled
+      if (animation.interpolate !== 'none' && frames.length > 1) {
+        frames = interpolateFrames(frames, animation.interpolate, 2)
+      }
+      
       // Only update state if not cancelled
       if (isCancelled) return
       
@@ -893,7 +1022,7 @@ export function useQRGenerator(): UseQRGeneratorResult {
     return () => {
       isCancelled = true
     }
-  }, [gifFrames, overlay.enabled, debouncedConfig, applyPreprocessing, watermark, animation.temporalDither, animation.seed])
+  }, [effectiveFrames, overlay.enabled, debouncedConfig, applyPreprocessing, watermark, animation.temporalDither, animation.seed, animation.pattern, animation.interpolate, animation.speedMs])
 
   return {
     canvasRef,
@@ -905,7 +1034,7 @@ export function useQRGenerator(): UseQRGeneratorResult {
     // Animation state
     isAnimating,
     currentFrame,
-    totalFrames: gifFrames.length,
+    totalFrames: effectiveFrames.length,
     // Safety warnings
     safetyWarnings,
     // Validation

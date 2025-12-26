@@ -405,19 +405,48 @@ export class QRGenerator {
             ctx.fillStyle = moduleColor;
           }
 
-          const gap = config.moduleGap
+          let gap = config.moduleGap
             ? (moduleSize * config.moduleGap) / 100
             : 0;
+          
+          // Apply gap mode
+          const gapMode = config.gapMode || 'none';
+          let strokeWidth = 0;
+          if (gapMode === 'inset') {
+            // Inset mode: gap is applied as inset
+            gap = Math.max(gap, moduleSize * 0.1);
+          } else if (gapMode === 'stroke') {
+            // Stroke mode: draw outline instead of fill
+            strokeWidth = Math.max(1, moduleSize * 0.15);
+            gap = strokeWidth;
+          } else if (gapMode === 'negative_space') {
+            // Negative space: larger gaps for artistic effect
+            gap = Math.max(gap, moduleSize * 0.2);
+          }
+          
           const adjustedSize = (moduleSize - gap) * moduleSizeModifier;
           const offset = (moduleSize - adjustedSize) / 2;
 
-          const drawX = x + offset + waveOffsetX;
-          const drawY = y + offset + waveOffsetY;
+          let drawX = x + offset + waveOffsetX;
+          let drawY = y + offset + waveOffsetY;
+          
+          // Apply pixel snap if configured
+          const pixelSnap = config.pixelSnap || 'floor';
+          if (pixelSnap === 'floor') {
+            drawX = Math.floor(drawX);
+            drawY = Math.floor(drawY);
+          } else if (pixelSnap === 'round') {
+            drawX = Math.round(drawX);
+            drawY = Math.round(drawY);
+          } else if (pixelSnap === 'ceil') {
+            drawX = Math.ceil(drawX);
+            drawY = Math.ceil(drawY);
+          }
 
-          if (drawOutlineOnly) {
+          if (drawOutlineOnly || (gapMode === 'stroke' && isDark)) {
             ctx.strokeStyle = moduleColor;
-            ctx.lineWidth = 1;
-            ctx.strokeRect(drawX, drawY, adjustedSize, adjustedSize);
+            ctx.lineWidth = strokeWidth || 1;
+            ctx.strokeRect(drawX + ctx.lineWidth/2, drawY + ctx.lineWidth/2, adjustedSize - ctx.lineWidth, adjustedSize - ctx.lineWidth);
           } else if (isTiming) {
             // Draw timing pattern module with timing style
             this.drawTimingModule(ctx, drawX, drawY, adjustedSize, timingStyle, config);
@@ -1306,7 +1335,9 @@ export class QRGenerator {
     moduleCount,
     useHalftoneCenter = false,
   ) {
-    const subpixelSize = 3; // Each module is 3x3 subpixels
+    // Get subpixel grid size from config (2x2, 3x3, or 4x4)
+    const gridSizeStr = config.subpixelGridSize || '3x3';
+    const subpixelSize = parseInt(gridSizeStr.charAt(0)) || 3; // Each module is NxN subpixels
     const margin = config.margin;
     const pixelSize = config.moduleSize / subpixelSize; // Size of each subpixel
 
@@ -1431,8 +1462,9 @@ export class QRGenerator {
   /**
    * Apply dithering to a QR matrix with overlay image
    * Uses Floyd-Steinberg error diffusion for free points
+   * Supports serpentine scanning for better quality
    */
-  applyDitherToMatrix(baseMatrix, scaledSize, scale, overlayCanvas, overlayIntensity, colorMode) {
+  applyDitherToMatrix(baseMatrix, scaledSize, scale, overlayCanvas, overlayIntensity, colorMode, serpentine = false) {
     // Initialize output
     const matrix = baseMatrix.map(row => [...row]);
     const colors = baseMatrix.map(row => row.map(isDark => 
@@ -1459,8 +1491,14 @@ export class QRGenerator {
     }
 
     // Apply Floyd-Steinberg error diffusion to free points
+    // With optional serpentine scanning (alternating row direction)
     for (let y = 0; y < scaledSize; y++) {
-      for (let x = 0; x < scaledSize; x++) {
+      const leftToRight = !serpentine || (y % 2 === 0);
+      const xStart = leftToRight ? 0 : scaledSize - 1;
+      const xEnd = leftToRight ? scaledSize : -1;
+      const xStep = leftToRight ? 1 : -1;
+      
+      for (let x = xStart; x !== xEnd; x += xStep) {
         // Skip locked areas and data points
         if (isLocked(scaledSize, x, y, scale)) continue;
         if (isData(x, y, scale)) continue;
@@ -1481,7 +1519,7 @@ export class QRGenerator {
           const error = gray - newVal;
           
           imageData[y][x] = { r: newVal, g: newVal, b: newVal };
-          this.distributeError(imageData, x, y, scaledSize, scale, error, error, error);
+          this.distributeError(imageData, x, y, scaledSize, scale, error, error, error, leftToRight);
         } else {
           const levels = 4;
           const newR = Math.round(pixel.r * (levels - 1)) / (levels - 1);
@@ -1493,7 +1531,7 @@ export class QRGenerator {
           const errorB = pixel.b - newB;
           
           imageData[y][x] = { r: newR, g: newG, b: newB };
-          this.distributeError(imageData, x, y, scaledSize, scale, errorR, errorG, errorB);
+          this.distributeError(imageData, x, y, scaledSize, scale, errorR, errorG, errorB, leftToRight);
         }
       }
     }
@@ -1551,30 +1589,35 @@ export class QRGenerator {
 
   /**
    * Distribute error to neighboring pixels (Floyd-Steinberg)
+   * Supports serpentine scanning with leftToRight parameter
    */
-  distributeError(imageData, x, y, size, scale, errorR, errorG, errorB) {
+  distributeError(imageData, x, y, size, scale, errorR, errorG, errorB, leftToRight = true) {
     const canChange = (px, py) => {
       if (px < 0 || py < 0 || px >= size || py >= size) return false;
       return !isLocked(size, px, py, scale) && !isData(px, py, scale);
     };
 
-    const a = canChange(x + 1, y);
-    const b = canChange(x - 1, y + 1);
+    // Adjust direction based on scan direction
+    const nextX = leftToRight ? x + 1 : x - 1;
+    const prevX = leftToRight ? x - 1 : x + 1;
+    
+    const a = canChange(nextX, y);
+    const b = canChange(prevX, y + 1);
     const c = canChange(x, y + 1);
-    const d = canChange(x + 1, y + 1);
+    const d = canChange(nextX, y + 1);
 
     const total = (a ? 7 : 0) + (b ? 3 : 0) + (c ? 5 : 0) + (d ? 1 : 0);
     if (total === 0) return;
 
     if (a) {
-      imageData[y][x + 1].r += (errorR * 7) / total;
-      imageData[y][x + 1].g += (errorG * 7) / total;
-      imageData[y][x + 1].b += (errorB * 7) / total;
+      imageData[y][nextX].r += (errorR * 7) / total;
+      imageData[y][nextX].g += (errorG * 7) / total;
+      imageData[y][nextX].b += (errorB * 7) / total;
     }
     if (b) {
-      imageData[y + 1][x - 1].r += (errorR * 3) / total;
-      imageData[y + 1][x - 1].g += (errorG * 3) / total;
-      imageData[y + 1][x - 1].b += (errorB * 3) / total;
+      imageData[y + 1][prevX].r += (errorR * 3) / total;
+      imageData[y + 1][prevX].g += (errorG * 3) / total;
+      imageData[y + 1][prevX].b += (errorB * 3) / total;
     }
     if (c) {
       imageData[y + 1][x].r += (errorR * 5) / total;
@@ -1582,9 +1625,9 @@ export class QRGenerator {
       imageData[y + 1][x].b += (errorB * 5) / total;
     }
     if (d) {
-      imageData[y + 1][x + 1].r += errorR / total;
-      imageData[y + 1][x + 1].g += errorG / total;
-      imageData[y + 1][x + 1].b += errorB / total;
+      imageData[y + 1][nextX].r += errorR / total;
+      imageData[y + 1][nextX].g += errorG / total;
+      imageData[y + 1][nextX].b += errorB / total;
     }
   }
 

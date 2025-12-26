@@ -272,9 +272,6 @@ export function OutputSection() {
               <SelectContent>
                 <SelectItem value="none">None</SelectItem>
                 <SelectItem value="pdf">PDF</SelectItem>
-                <SelectItem value="eps">EPS</SelectItem>
-                <SelectItem value="apng">Animated PNG</SelectItem>
-                <SelectItem value="animated_webp">Animated WebP</SelectItem>
               </SelectContent>
             </Select>
           </div>

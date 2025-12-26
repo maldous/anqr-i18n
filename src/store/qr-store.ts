@@ -787,7 +787,7 @@ export const useQRStore = create<QRState>((set, get) => ({
 
   // Output defaults
   output: {
-    format: 'png',
+    format: 'gif',
     widthPx: 400,
     heightPx: 400,
     quality: 0.9,
@@ -900,9 +900,23 @@ export const useQRStore = create<QRState>((set, get) => ({
     const state = get()
     const { payload } = state
 
+    // Helper to apply text transformations
+    const applyTransforms = (text: string): string => {
+      let result = text
+      if (payload.trim) {
+        result = result.trim()
+      }
+      if (payload.normalizeNewlines) {
+        result = result.replace(/\r\n/g, '\n').replace(/\r/g, '\n')
+      }
+      return result
+    }
+
+    let result: string
+
     switch (payload.kind) {
       case 'plain_text':
-        return payload.text
+        return applyTransforms(payload.text)
 
       case 'url': {
         let url = payload.url.href
@@ -1008,13 +1022,147 @@ export const useQRStore = create<QRState>((set, get) => ({
         return paramStr ? `${payment}?${paramStr}` : payment
       }
 
-      // Custom format and app_link both return raw text
-      case 'custom':
-      case 'app_link':
+      case 'bizcard': {
+        // BizCard format (simplified vCard variant)
+        let bc = 'BIZCARD:'
+        const v = payload.vcard
+        if (v.fn) bc += `N:${v.fn};`
+        if (v.title) bc += `T:${v.title};`
+        if (v.org) bc += `C:${v.org};`
+        if (v.tel?.[0]) bc += `B:${v.tel[0]};`
+        if (v.email?.[0]) bc += `E:${v.email[0]};`
+        if (v.adr?.[0]) bc += `A:${v.adr[0]};`
+        bc += ';'
+        return bc
+      }
+
+      case 'calendar_subscription': {
+        // Convert URL to webcal:// protocol
+        let url = payload.text
+        if (url.startsWith('https://')) {
+          url = url.replace('https://', 'webcal://')
+        } else if (url.startsWith('http://')) {
+          url = url.replace('http://', 'webcal://')
+        } else if (!url.startsWith('webcal://')) {
+          url = 'webcal://' + url
+        }
+        return url
+      }
+
+      case 'event_rsvp': {
+        // RSVP is typically just a URL, but could add mailto: fallback
+        const url = payload.text
+        if (url.includes('@') && !url.startsWith('mailto:') && !url.startsWith('http')) {
+          return `mailto:${url}?subject=RSVP`
+        }
+        return url
+      }
+
+      case 'file_url': {
+        // File URL - just ensure proper URL format
+        let url = payload.text
+        if (!url.startsWith('http://') && !url.startsWith('https://') && !url.startsWith('file://')) {
+          url = 'https://' + url
+        }
+        return url
+      }
+
+      case 'cloud_link': {
+        // Cloud link - just ensure proper URL format
+        let url = payload.text
+        if (!url.startsWith('http://') && !url.startsWith('https://')) {
+          url = 'https://' + url
+        }
+        return url
+      }
+
+      case 'social_profile': {
+        // Social profile - ensure proper URL format
+        let url = payload.text
+        if (!url.startsWith('http://') && !url.startsWith('https://')) {
+          url = 'https://' + url
+        }
+        return url
+      }
+
+      case 'messaging_link': {
+        // Messaging links - detect platform and format appropriately
+        const text = payload.text
+        // If it's a phone number, format as sms:
+        if (/^\+?[\d\s-]+$/.test(text)) {
+          return `sms:${text.replace(/[\s-]/g, '')}`
+        }
+        // If it looks like a WhatsApp link
+        if (text.includes('wa.me') || text.includes('whatsapp')) {
+          return text.startsWith('http') ? text : 'https://' + text
+        }
+        // If it's a Telegram username
+        if (text.startsWith('@') || text.includes('t.me')) {
+          if (text.startsWith('@')) {
+            return `https://t.me/${text.slice(1)}`
+          }
+          return text.startsWith('http') ? text : 'https://' + text
+        }
+        return text
+      }
+
+      case 'gs1_digital_link': {
+        // GS1 Digital Link format
+        // Format: https://id.gs1.org/01/{GTIN}
+        const text = payload.text
+        // If already a URL, return as-is
+        if (text.startsWith('http')) return text
+        // If it's just a GTIN number, format it
+        const gtin = text.replace(/[^\d]/g, '')
+        if (gtin.length >= 8) {
+          return `https://id.gs1.org/01/${gtin.padStart(14, '0')}`
+        }
+        return text
+      }
+
+      case 'app_link': {
+        // App deep link - detect platform and format
+        const text = payload.text
+        // Android intent
+        if (text.startsWith('intent://') || text.startsWith('android-app://')) {
+          return text
+        }
+        // iOS universal link or custom scheme
+        if (text.includes('://')) {
+          return text
+        }
+        // If it's a package name, format as market link
+        if (text.includes('.') && !text.includes('/')) {
+          return `market://details?id=${text}`
+        }
+        return text
+      }
+
+      case 'utm_link': {
+        // UTM campaign link - use same logic as URL
+        let url = payload.url.href
+        if (payload.url.forceHttps && url.startsWith('http://')) {
+          url = url.replace('http://', 'https://')
+        }
+        const params = new URLSearchParams()
+        if (payload.url.utmSource) params.set('utm_source', payload.url.utmSource)
+        if (payload.url.utmMedium) params.set('utm_medium', payload.url.utmMedium)
+        if (payload.url.utmCampaign) params.set('utm_campaign', payload.url.utmCampaign)
+        if (payload.url.utmTerm) params.set('utm_term', payload.url.utmTerm)
+        if (payload.url.utmContent) params.set('utm_content', payload.url.utmContent)
+        const paramStr = params.toString()
+        return paramStr ? `${url}${url.includes('?') ? '&' : '?'}${paramStr}` : url
+      }
+
+      case 'short_link':
+        // Short link - return as-is
         return payload.text
 
+      case 'custom':
+        return applyTransforms(payload.text)
+
       default:
-        return payload.text
+        return applyTransforms(payload.text)
     }
   },
 }))
