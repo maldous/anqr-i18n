@@ -8,6 +8,7 @@ import { copyToClipboard, getShareableUrl } from '@/modules/share-utils'
 import { AdPlaceholder } from '@/components/AdPlaceholder'
 
 const NAV_LINKS = [
+  { href: '#', label: 'Editor' },
   { href: '#gallery', label: 'Gallery' },
 ]
 
@@ -15,9 +16,10 @@ interface HeaderProps {
   onToggleSidebar?: () => void
   onExport?: () => void
   sidebarOpen?: boolean
+  showGallery?: boolean
 }
 
-export function Header({ onToggleSidebar, onExport, sidebarOpen = false }: HeaderProps) {
+export function Header({ onToggleSidebar, onExport, sidebarOpen = false, showGallery = false }: HeaderProps) {
   const { tier, setTier, getPayloadText, qr, render, overlay } = useQRStore()
   const [darkMode, setDarkMode] = useState(false)
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
@@ -61,94 +63,108 @@ export function Header({ onToggleSidebar, onExport, sidebarOpen = false }: Heade
   }
 
   return (
-    <header className={`border-b bg-card shadow-md sticky top-0 z-50 transition-all duration-300 ${sidebarOpen ? 'lg:ml-96' : ''}`}>
+    <header className={`border-b bg-card shadow-md sticky top-0 z-50 transition-all duration-300 ${sidebarOpen && !showGallery ? 'lg:ml-96' : ''}`}>
       <div className="px-4 py-3 flex items-center justify-between">
         <div className="flex items-center gap-6">
           <button 
-            onClick={onToggleSidebar}
-            className="flex items-center gap-2 hover:opacity-80 transition-opacity cursor-pointer"
-            title="Toggle Settings Panel"
+            onClick={showGallery ? undefined : onToggleSidebar}
+            className={`flex items-center gap-2 transition-opacity ${showGallery ? '' : 'hover:opacity-80 cursor-pointer'}`}
+            title={showGallery ? 'ANQR - Advanced QR Generator' : 'Toggle Settings Panel'}
           >
-            <PanelLeft className="h-6 w-6 text-muted-foreground" />
+            {!showGallery && <PanelLeft className="h-6 w-6 text-muted-foreground" />}
             <span className="text-xl font-bold">ANQR</span>
           </button>
           
           {/* Desktop Nav */}
           <nav className="hidden lg:flex items-center gap-1">
-            {NAV_LINKS.map(link => (
-              <a
-                key={link.label}
-                href={link.href}
-                className="px-3 py-2 text-sm rounded-md transition-colors text-muted-foreground hover:text-foreground hover:bg-muted"
-              >
-                {link.label}
-              </a>
-            ))}
+            {NAV_LINKS.map(link => {
+              const isActive = (link.href === '#gallery' && showGallery) || 
+                              (link.href === '/' && !showGallery)
+              return (
+                <a
+                  key={link.label}
+                  href={link.href}
+                  className={`px-3 py-2 text-sm rounded-md transition-colors ${
+                    isActive 
+                      ? 'text-foreground bg-muted font-medium' 
+                      : 'text-muted-foreground hover:text-foreground hover:bg-muted'
+                  }`}
+                >
+                  {link.label}
+                </a>
+              )
+            })}
           </nav>
         </div>
         
         <div className="flex items-center gap-3">
-          {/* Tier Toggle - Tabs on desktop, dropdown on mobile */}
-          <div className="hidden sm:block">
-            <Tabs value={tier}                onValueChange={(v) => {
+          {/* Tier Toggle - Tabs on desktop, dropdown on mobile - hidden in gallery mode */}
+          {!showGallery && (
+            <>
+              <div className="hidden sm:block">
+                <Tabs value={tier} onValueChange={(v) => {
                   setTier(v as Tier)
-                  // Don't close mobile menu when changing tiers
                 }}>
-              <TabsList className="shadow-sm">
-                <TabsTrigger value="basic" className="text-xs px-3">
-                  Basic
-                </TabsTrigger>
-                <TabsTrigger value="advanced" className="text-xs px-3">
-                  Advanced
-                </TabsTrigger>
-                <TabsTrigger value="professional" className="text-xs px-3">
-                  Pro
-                </TabsTrigger>
-              </TabsList>
-            </Tabs>
-          </div>
-          <div className="sm:hidden">
-            <Select value={tier}                onValueChange={(v) => {
+                  <TabsList className="shadow-sm">
+                    <TabsTrigger value="basic" className="text-xs px-3">
+                      Basic
+                    </TabsTrigger>
+                    <TabsTrigger value="advanced" className="text-xs px-3">
+                      Advanced
+                    </TabsTrigger>
+                    <TabsTrigger value="professional" className="text-xs px-3">
+                      Pro
+                    </TabsTrigger>
+                  </TabsList>
+                </Tabs>
+              </div>
+              <div className="sm:hidden">
+                <Select value={tier} onValueChange={(v) => {
                   setTier(v as Tier)
-                  // Don't close mobile menu when changing tiers
                 }}>
-              <SelectTrigger className="w-[100px] h-9 text-xs">
-                <SelectValue />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="basic">Basic</SelectItem>
-                <SelectItem value="advanced">Advanced</SelectItem>
-                <SelectItem value="professional">Pro</SelectItem>
-              </SelectContent>
-            </Select>
-          </div>
+                  <SelectTrigger className="w-[100px] h-9 text-xs">
+                    <SelectValue />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="basic">Basic</SelectItem>
+                    <SelectItem value="advanced">Advanced</SelectItem>
+                    <SelectItem value="professional">Pro</SelectItem>
+                  </SelectContent>
+                </Select>
+              </div>
+            </>
+          )}
 
           {/* Dark Mode Toggle */}
           <Button variant="ghost" size="icon" onClick={toggleDarkMode} className="h-9 w-9">
             {darkMode ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
           </Button>
 
-          {/* Actions */}
-          <div className="hidden sm:flex items-center gap-2">
-            <Button variant="outline" size="sm" className="shadow-sm" onClick={handleShare}>
-              {copied ? <Check className="h-4 w-4 mr-2" /> : <Share2 className="h-4 w-4 mr-2" />}
-              {copied ? 'Copied!' : 'Share'}
-            </Button>
-            <Button size="sm" className="shadow-sm" onClick={onExport}>
-              <Download className="h-4 w-4 mr-2" />
-              Export
-            </Button>
-          </div>
+          {/* Actions - hidden in gallery mode */}
+          {!showGallery && (
+            <div className="hidden sm:flex items-center gap-2">
+              <Button variant="outline" size="sm" className="shadow-sm" onClick={handleShare}>
+                {copied ? <Check className="h-4 w-4 mr-2" /> : <Share2 className="h-4 w-4 mr-2" />}
+                {copied ? 'Copied!' : 'Share'}
+              </Button>
+              <Button size="sm" className="shadow-sm" onClick={onExport}>
+                <Download className="h-4 w-4 mr-2" />
+                Export
+              </Button>
+            </div>
+          )}
 
-          {/* Mobile Menu Button */}
-          <Button 
-            variant="ghost" 
-            size="icon" 
-            className="md:hidden h-9 w-9"
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          >
-            <Menu className="h-5 w-5" />
-          </Button>
+          {/* Mobile Menu Button - hidden in gallery mode */}
+          {!showGallery && (
+            <Button 
+              variant="ghost" 
+              size="icon" 
+              className="md:hidden h-9 w-9"
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            >
+              <Menu className="h-5 w-5" />
+            </Button>
+          )}
         </div>
       </div>
 
@@ -157,32 +173,42 @@ export function Header({ onToggleSidebar, onExport, sidebarOpen = false }: Heade
         <div className="md:hidden border-t bg-card p-3 space-y-2">
           {/* Nav links in a single horizontal row */}
           <nav className="flex items-center justify-center gap-0.5 flex-wrap">
-            {NAV_LINKS.map(link => (
-              <a
-                key={link.label}
-                href={link.href}
-                className="px-2 py-1 text-xs rounded text-muted-foreground hover:bg-muted"
-                onClick={() => setMobileMenuOpen(false)}
-              >
-                {link.label}
-              </a>
-            ))}
+            {NAV_LINKS.map(link => {
+              const isActive = (link.href === '#gallery' && showGallery) || 
+                              (link.href === '/' && !showGallery)
+              return (
+                <a
+                  key={link.label}
+                  href={link.href}
+                  className={`px-2 py-1 text-xs rounded ${
+                    isActive 
+                      ? 'text-foreground bg-muted font-medium' 
+                      : 'text-muted-foreground hover:bg-muted'
+                  }`}
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  {link.label}
+                </a>
+              )
+            })}
           </nav>
           
           {/* Mobile Ad - Leaderboard 320x50 below nav, above buttons */}
           <AdPlaceholder slot="header-mobile" width={320} height={50} format="horizontal" className="mx-auto" />
           
-          {/* Share/Export buttons */}
-          <div className="flex gap-2">
-            <Button variant="outline" size="sm" className="flex-1" onClick={handleShare}>
-              {copied ? <Check className="h-4 w-4 mr-2" /> : <Share2 className="h-4 w-4 mr-2" />}
-              {copied ? 'Copied!' : 'Share'}
-            </Button>
-            <Button size="sm" className="flex-1" onClick={onExport}>
-              <Download className="h-4 w-4 mr-2" />
-              Export
-            </Button>
-          </div>
+          {/* Share/Export buttons - hidden in gallery mode */}
+          {!showGallery && (
+            <div className="flex gap-2">
+              <Button variant="outline" size="sm" className="flex-1" onClick={handleShare}>
+                {copied ? <Check className="h-4 w-4 mr-2" /> : <Share2 className="h-4 w-4 mr-2" />}
+                {copied ? 'Copied!' : 'Share'}
+              </Button>
+              <Button size="sm" className="flex-1" onClick={onExport}>
+                <Download className="h-4 w-4 mr-2" />
+                Export
+              </Button>
+            </div>
+          )}
         </div>
       )}
     </header>
