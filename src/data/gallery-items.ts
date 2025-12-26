@@ -46,7 +46,7 @@ export interface GallerySection {
 }
 
 // Base URL for sample QR codes
-const BASE_DATA = 'https://example.com'
+const BASE_DATA = 'https://anqr.link'
 
 // Image URLs (will be replaced with absolute URLs during generation)
 const TSUNAMI_IMG = '/tsunami.jpg'
@@ -719,7 +719,7 @@ export const galleryItems: GalleryItem[] = gallerySections.flatMap(s => s.items)
 // ============================================
 
 export function getGalleryBaseUrl(): string {
-  if (typeof window !== 'undefined') return window.location.origin
+  // Always use the live URL for gallery links
   return 'https://anqr.link'
 }
 export const GALLERY_IMAGE_PATH = '/gallery'
@@ -745,6 +745,7 @@ export function buildGalleryUrl(item: GalleryItem): string {
 }
 
 export function getGalleryImagePath(item: GalleryItem): string {
+  // Animated items are saved as GIF, static items as PNG
   const ext = item.isAnimated ? 'gif' : 'png'
   return `${GALLERY_IMAGE_PATH}/${item.id}.${ext}`
 }

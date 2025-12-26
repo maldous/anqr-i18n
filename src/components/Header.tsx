@@ -15,6 +15,7 @@ const NAV_LINKS: Array<{ href: string; label: string; page: HeaderPage }> = [
   { href: '/', label: 'Generator', page: 'editor' },
   { href: '/gallery', label: 'Gallery', page: 'gallery' },
   { href: '/about', label: 'About', page: 'about' },
+  { href: '/docs', label: 'Docs', page: 'docs' },
   { href: '/privacy', label: 'Privacy', page: 'privacy' },
   { href: '/terms', label: 'Terms', page: 'terms' },
   { href: '/contact', label: 'Contact', page: 'contact' },
@@ -98,9 +99,7 @@ export function Header({ onToggleSidebar, onExport, sidebarOpen = false, showGal
           {/* Desktop Nav */}
           <nav className="hidden lg:flex items-center gap-1">
             {NAV_LINKS.map(link => {
-              const isActive =
-                link.page === resolvedPage ||
-                (link.page === 'about' && isStatic)
+              const isActive = link.page === resolvedPage
               return (
                 <a
                   key={link.label}
@@ -228,9 +227,7 @@ export function Header({ onToggleSidebar, onExport, sidebarOpen = false, showGal
           {/* Nav links in a single horizontal row */}
           <nav className="flex items-center justify-center gap-0.5 flex-wrap">
             {NAV_LINKS.map(link => {
-              const isActive =
-                link.page === resolvedPage ||
-                (link.page === 'about' && isStatic)
+              const isActive = link.page === resolvedPage
               return (
                 <a
                   key={link.label}

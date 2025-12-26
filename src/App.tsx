@@ -22,10 +22,11 @@ function getPageFromLocation(): PageView {
   if (path === '/privacy') return 'privacy'
   if (path === '/terms') return 'terms'
   if (path === '/contact') return 'contact'
+  if (path === '/docs') return 'docs'
 
   // Backward-compatible hash routes.
   if (hash === 'gallery') return 'gallery'
-  if (hash === 'about' || hash === 'privacy' || hash === 'terms' || hash === 'contact') return hash as StaticPageType
+  if (hash === 'about' || hash === 'privacy' || hash === 'terms' || hash === 'contact' || hash === 'docs') return hash as StaticPageType
 
   return 'editor'
 }
@@ -37,7 +38,11 @@ function App() {
   const { download } = useQRGenerator()
   const { setOverlayUrl, setOverlayFile, setOverlayEnabled, setOverlayMode, setOverlayIntensity,
           setPayloadText, setPayloadKind, setPayloadUrl, setTier, setQrEcc, setQrVersion, setRenderModulePx, setQrQuietZone,
-          setRenderFgColor, setRenderBgColor, setRenderModuleStyle, setRenderFinderStyle } = useQRStore()
+          setRenderFgColor, setRenderBgColor, setRenderModuleStyle, setRenderFinderStyle,
+          setOverlayColorMode, setOverlayBrightness, setOverlayContrast, setOverlayGamma,
+          setOverlayInvert, setOverlayDitherKind, setOverlayDiffusionKernel, setOverlayDitherStrength,
+          setOverlaySaturation, setOverlayHueRotate, setOverlayBlur, setOverlaySharpen,
+          setOverlayPosterize, setOverlayThreshold, setOverlayEdgeDetect } = useQRStore()
 
   const navigateTo = useCallback((page: PageView) => {
     const nextPath = page === 'editor' ? '/' : `/${page}`
@@ -73,7 +78,7 @@ function App() {
   
   // Convenience booleans for view states
   const showGallery = currentPage === 'gallery'
-  const showStaticPage = ['about', 'privacy', 'terms', 'contact'].includes(currentPage)
+  const showStaticPage = ['about', 'privacy', 'terms', 'contact', 'docs'].includes(currentPage)
   const showEditor = currentPage === 'editor'
 
   // Load settings from URL parameters on mount (editor share links)
@@ -157,6 +162,25 @@ function App() {
     if (params.mode) setOverlayMode(params.mode as any)
     if (params.intensity !== undefined) setOverlayIntensity(params.intensity)
     
+    // Apply preprocessing params
+    if (params.colorMode) setOverlayColorMode(params.colorMode as 'color' | 'grayscale' | 'bw')
+    if (params.brightness !== undefined) setOverlayBrightness(params.brightness)
+    if (params.contrast !== undefined) setOverlayContrast(params.contrast)
+    if (params.gamma !== undefined) setOverlayGamma(params.gamma)
+    if (params.saturation !== undefined) setOverlaySaturation(params.saturation)
+    if (params.hue !== undefined) setOverlayHueRotate(params.hue)
+    if (params.blur !== undefined) setOverlayBlur(params.blur)
+    if (params.sharpen !== undefined) setOverlaySharpen(params.sharpen)
+    if (params.posterize !== undefined) setOverlayPosterize(params.posterize)
+    if (params.threshold !== undefined) setOverlayThreshold(params.threshold)
+    if (params.edge) setOverlayEdgeDetect(params.edge as 'off' | 'sobel' | 'canny')
+    if (params.invert) setOverlayInvert(params.invert)
+    
+    // Apply dithering params
+    if (params.ditherKind) setOverlayDitherKind(params.ditherKind as any)
+    if (params.diffusionKernel) setOverlayDiffusionKernel(params.diffusionKernel as any)
+    if (params.ditherStrength !== undefined) setOverlayDitherStrength(params.ditherStrength)
+    
     // Load overlay from URL if provided
     if (params.overlayUrl) {
       loadOverlayFromUrl(params.overlayUrl)
@@ -203,6 +227,7 @@ function App() {
           sidebarOpen={showEditor ? sidebarOpen : false} 
           onExport={download}
           showGallery={showGallery}
+          activePage={currentPage}
           galleryFilter={galleryFilter}
           onGalleryFilterChange={setGalleryFilter}
           onNavigate={navigateTo}
@@ -243,6 +268,17 @@ function App() {
                 }}
               >
                 About
+              </a>
+              {' · '}
+              <a
+                href="/docs"
+                className="hover:underline"
+                onClick={(e) => {
+                  e.preventDefault()
+                  navigateTo('docs')
+                }}
+              >
+                Docs
               </a>
               {' · '}
               <a
