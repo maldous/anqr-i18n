@@ -293,8 +293,8 @@ function buildUrl(params) {
 async function captureQR(page, item) {
   const url = buildUrl(item.params)
   
-  await page.goto(url, { waitUntil: 'networkidle0', timeout: 30000 })
-  await page.waitForSelector('canvas', { timeout: 15000 })
+  await page.goto(url, { waitUntil: 'networkidle0', timeout: 300000 })
+  await page.waitForSelector('canvas', { timeout: 150000 })
   
   // Wait for rendering and any animations to load
   const delay = item.isAnimated ? 4000 : CAPTURE_DELAY

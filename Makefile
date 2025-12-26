@@ -1,4 +1,4 @@
-.PHONY: dev build gallery
+.PHONY: dev build gallery deploy
 
 dev:
 	npm run dev
@@ -7,6 +7,7 @@ build:
 	npm run build
 
 gallery:
-	@echo "Generating gallery images..."
-	@echo "Note: Dev server must be running (npm run dev)"
-	@node scripts/generate-gallery.mjs
+	node scripts/generate-gallery.mjs
+
+deploy:
+	netlify deploy --prod --site anqr.link --dir=dist
