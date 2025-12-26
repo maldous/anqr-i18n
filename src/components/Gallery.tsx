@@ -6,7 +6,7 @@
 import { useState, useMemo } from 'react'
 import { ChevronDown, ChevronUp } from 'lucide-react'
 import * as LucideIcons from 'lucide-react'
-import { AdPlaceholder } from '@/components/AdPlaceholder'
+import { AdUnit } from '@/components/AdUnit'
 import { 
   gallerySections, 
   buildGalleryUrl, 
@@ -160,7 +160,7 @@ export function Gallery({ filter }: GalleryProps) {
     <main className="min-h-[200px] flex-1 flex bg-muted/30 overflow-hidden transition-all duration-300">
       {/* Left ad column - matches Preview exactly */}
       <div className="hidden lg:flex flex-col items-end justify-center w-[160px] border-r bg-muted/10 flex-shrink-0">
-        <AdPlaceholder slot="gallery-left" width={160} height={600} format="vertical" />
+        <AdUnit slot="gallery-left" width={160} height={600} format="vertical" />
       </div>
       
       {/* Main gallery content - scrollbar hidden but scrollable */}
@@ -193,8 +193,7 @@ export function Gallery({ filter }: GalleryProps) {
         <div className="border-t border-border bg-card">
           <div className="max-w-7xl mx-auto px-4 py-4 text-center">
             <p className="text-xs text-muted-foreground">
-              All QR codes link to <a href="https://aldous.info" className="text-primary hover:underline">aldous.info</a>.
-              Click any to open in editor.
+              Gallery examples use sample data (for example, example.com). Click any QR code to open it in the editor.
             </p>
           </div>
         </div>
@@ -202,7 +201,7 @@ export function Gallery({ filter }: GalleryProps) {
       
       {/* Right ad column - matches Preview exactly */}
       <div className="hidden lg:flex flex-col items-start justify-center w-[160px] border-l bg-muted/10 flex-shrink-0">
-        <AdPlaceholder slot="gallery-right" width={160} height={600} format="vertical" />
+        <AdUnit slot="gallery-right" width={160} height={600} format="vertical" />
       </div>
     </main>
   )

@@ -45,8 +45,8 @@ export interface GallerySection {
   items: GalleryItem[]
 }
 
-// Base URL for all QR codes
-const BASE_DATA = 'https://aldous.info'
+// Base URL for sample QR codes
+const BASE_DATA = 'https://example.com'
 
 // Image URLs (will be replaced with absolute URLs during generation)
 const TSUNAMI_IMG = '/tsunami.jpg'
@@ -79,7 +79,7 @@ const contentTypeItems: GalleryItem[] = [
   { id: 'content-wifi', title: 'WiFi Network', description: 'WiFi configuration', category: 'content-types',
     params: { data: 'WIFI:T:WPA;S:MyNetwork;P:password123;;', ec: 'H', v: 0, style: 'dots', finder: 'circle', fg: '1b4332', bg: 'd8f3dc' } },
   { id: 'content-email', title: 'Email Address', description: 'Mailto link', category: 'content-types',
-    params: { data: 'mailto:hello@aldous.info?subject=Hello', ec: 'H', v: 0, style: 'square', finder: 'square', fg: 'e85d04', bg: 'ffe8d6' } },
+    params: { data: 'mailto:hello@example.com?subject=Hello', ec: 'H', v: 0, style: 'square', finder: 'square', fg: 'e85d04', bg: 'ffe8d6' } },
   { id: 'content-sms', title: 'SMS Message', description: 'Pre-filled SMS', category: 'content-types',
     params: { data: 'sms:+1234567890?body=Hello%20from%20ANQR', ec: 'H', v: 0, style: 'diamond', finder: 'rounded', fg: '006d77', bg: 'e0f4f5' } },
   { id: 'content-geo', title: 'Geo Location', description: 'Map coordinates', category: 'content-types',
@@ -718,10 +718,14 @@ export const galleryItems: GalleryItem[] = gallerySections.flatMap(s => s.items)
 // URL HELPERS
 // ============================================
 
-export const GALLERY_BASE_URL = 'https://aldous.info'
+export function getGalleryBaseUrl(): string {
+  if (typeof window !== 'undefined') return window.location.origin
+  return 'https://anqr.aldous.info'
+}
 export const GALLERY_IMAGE_PATH = '/gallery'
 
 export function buildGalleryUrl(item: GalleryItem): string {
+  const baseUrl = getGalleryBaseUrl()
   const params = new URLSearchParams()
   
   for (const [key, value] of Object.entries(item.params)) {
@@ -730,14 +734,14 @@ export function buildGalleryUrl(item: GalleryItem): string {
         params.set(key, value.replace('#', ''))
       } else if (key === 'img' && typeof value === 'string' && value.startsWith('/')) {
         // Convert relative image paths to absolute URLs
-        params.set(key, `${GALLERY_BASE_URL}${value}`)
+        params.set(key, `${baseUrl}${value}`)
       } else {
         params.set(key, String(value))
       }
     }
   }
   
-  return `${GALLERY_BASE_URL}?${params.toString()}`
+  return `${baseUrl}?${params.toString()}`
 }
 
 export function getGalleryImagePath(item: GalleryItem): string {

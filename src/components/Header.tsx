@@ -5,12 +5,16 @@ import { Download, Share2, Moon, Sun, Menu, PanelLeft, Check } from 'lucide-reac
 import { Button } from '@/components/ui/button'
 import { useState, useEffect } from 'react'
 import { copyToClipboard, getShareableUrl } from '@/modules/share-utils'
-import { AdPlaceholder } from '@/components/AdPlaceholder'
+import { AdUnit } from '@/components/AdUnit'
 import { gallerySections, type GalleryCategory } from '@/data/gallery-items'
+import type { StaticPageType } from '@/components/StaticPage'
 
-const NAV_LINKS = [
-  { href: '#', label: 'Editor' },
-  { href: '#gallery', label: 'Gallery' },
+type HeaderPage = 'editor' | 'gallery' | StaticPageType
+
+const NAV_LINKS: Array<{ href: string; label: string; page: HeaderPage }> = [
+  { href: '/', label: 'Generator', page: 'editor' },
+  { href: '/gallery', label: 'Gallery', page: 'gallery' },
+  { href: '/about', label: 'About', page: 'about' },
 ]
 
 interface HeaderProps {
@@ -18,15 +22,23 @@ interface HeaderProps {
   onExport?: () => void
   sidebarOpen?: boolean
   showGallery?: boolean
+  activePage?: HeaderPage
   galleryFilter?: GalleryCategory | 'all'
   onGalleryFilterChange?: (filter: GalleryCategory | 'all') => void
+  onNavigate?: (page: HeaderPage) => void
 }
 
-export function Header({ onToggleSidebar, onExport, sidebarOpen = false, showGallery = false, galleryFilter = 'all', onGalleryFilterChange }: HeaderProps) {
+export function Header({ onToggleSidebar, onExport, sidebarOpen = false, showGallery = false, activePage, galleryFilter = 'all', onGalleryFilterChange, onNavigate }: HeaderProps) {
   const { tier, setTier, getPayloadText, qr, render, overlay } = useQRStore()
   const [darkMode, setDarkMode] = useState(false)
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [copied, setCopied] = useState(false)
+
+  const resolvedPage: HeaderPage = activePage ?? (showGallery ? 'gallery' : 'editor')
+  const isEditor = resolvedPage === 'editor'
+  const isGallery = resolvedPage === 'gallery'
+  const isStatic = !isEditor && !isGallery
+  const isStatic = !isEditor && !isGallery
 
   useEffect(() => {
     const isDark = localStorage.getItem('darkMode') === 'true' || 
@@ -66,17 +78,17 @@ export function Header({ onToggleSidebar, onExport, sidebarOpen = false, showGal
   }
 
   return (
-    <header className={`border-b bg-card shadow-md sticky top-0 z-50 transition-all duration-300 ${sidebarOpen && !showGallery ? 'lg:ml-96' : ''}`}>
+    <header className={`border-b bg-card shadow-md sticky top-0 z-50 transition-all duration-300 ${sidebarOpen && isEditor ? 'lg:ml-96' : ''}`}>
       <div className="px-4 flex items-center justify-between h-[52px]">
         <div className="flex items-center gap-6">
-          <button 
-            onClick={showGallery ? undefined : onToggleSidebar}
-            className={`flex items-center gap-2 transition-opacity ${showGallery ? '' : 'hover:opacity-80 cursor-pointer'}`}
-            title={showGallery ? 'ANQR - Advanced QR Generator' : 'Toggle Settings Panel'}
+          <button
+            onClick={isEditor ? onToggleSidebar : undefined}
+            className={`flex items-center gap-2 transition-opacity ${isEditor ? 'hover:opacity-80 cursor-pointer' : ''}`}
+            title={isEditor ? 'Toggle settings panel' : 'ANQR - QR Code Generator'}
           >
             {/* Fixed-size container for icon to ensure consistent layout in both modes */}
             <span className="w-6 h-6 flex items-center justify-center flex-shrink-0">
-              {!showGallery && <PanelLeft className="h-6 w-6 text-muted-foreground" />}
+              {isEditor && <PanelLeft className="h-6 w-6 text-muted-foreground" />}
             </span>
             <span className="text-xl font-bold leading-6">ANQR</span>
           </button>
@@ -84,8 +96,9 @@ export function Header({ onToggleSidebar, onExport, sidebarOpen = false, showGal
           {/* Desktop Nav */}
           <nav className="hidden lg:flex items-center gap-1">
             {NAV_LINKS.map(link => {
-              const isActive = (link.href === '#gallery' && showGallery) || 
-                              (link.href === '#' && !showGallery)
+              const isActive =
+                link.page === resolvedPage ||
+                (link.page === 'about' && isStatic)
               return (
                 <a
                   key={link.label}
@@ -95,6 +108,11 @@ export function Header({ onToggleSidebar, onExport, sidebarOpen = false, showGal
                       ? 'text-foreground bg-muted font-medium' 
                       : 'text-muted-foreground hover:text-foreground hover:bg-muted'
                   }`}
+                  onClick={(e) => {
+                    if (!onNavigate) return
+                    e.preventDefault()
+                    onNavigate(link.page)
+                  }}
                 >
                   {link.label}
                 </a>
@@ -102,7 +120,7 @@ export function Header({ onToggleSidebar, onExport, sidebarOpen = false, showGal
             })}
             
             {/* Gallery Filter - shown after Gallery nav link */}
-            {showGallery && (
+            {isGallery && (
               <>
                 <span className="text-muted-foreground mx-1">|</span>
                 <button
@@ -134,8 +152,8 @@ export function Header({ onToggleSidebar, onExport, sidebarOpen = false, showGal
         </div>
         
         <div className="flex items-center gap-3">
-          {/* Tier Toggle for Editor - hidden in gallery mode */}
-          {!showGallery && (
+          {/* Tier Toggle */}
+          {isEditor && (
             <>
               <div className="hidden sm:block">
                 <Tabs value={tier} onValueChange={(v) => {
@@ -149,7 +167,7 @@ export function Header({ onToggleSidebar, onExport, sidebarOpen = false, showGal
                       Advanced
                     </TabsTrigger>
                     <TabsTrigger value="professional" className="text-xs px-3">
-                      Pro
+                      Professional
                     </TabsTrigger>
                   </TabsList>
                 </Tabs>
@@ -164,15 +182,15 @@ export function Header({ onToggleSidebar, onExport, sidebarOpen = false, showGal
                   <SelectContent>
                     <SelectItem value="basic">Basic</SelectItem>
                     <SelectItem value="advanced">Advanced</SelectItem>
-                    <SelectItem value="professional">Pro</SelectItem>
+                    <SelectItem value="professional">Professional</SelectItem>
                   </SelectContent>
                 </Select>
               </div>
             </>
           )}
 
-          {/* Actions - hidden in gallery mode */}
-          {!showGallery && (
+          {/* Actions */}
+          {isEditor && (
             <div className="hidden sm:flex items-center gap-2">
               <Button variant="outline" size="sm" className="shadow-sm" onClick={handleShare}>
                 {copied ? <Check className="h-4 w-4 mr-2" /> : <Share2 className="h-4 w-4 mr-2" />}
@@ -185,17 +203,15 @@ export function Header({ onToggleSidebar, onExport, sidebarOpen = false, showGal
             </div>
           )}
 
-          {/* Mobile Menu Button - hidden in gallery mode */}
-          {!showGallery && (
-            <Button 
-              variant="ghost" 
-              size="icon" 
-              className="md:hidden h-9 w-9"
-              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            >
-              <Menu className="h-5 w-5" />
-            </Button>
-          )}
+          {/* Mobile Menu Button */}
+          <Button
+            variant="ghost"
+            size="icon"
+            className="md:hidden h-9 w-9"
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+          >
+            <Menu className="h-5 w-5" />
+          </Button>
           
           {/* Dark Mode Toggle - always on far right */}
           <Button variant="ghost" size="icon" onClick={toggleDarkMode} className="h-9 w-9">
@@ -210,8 +226,9 @@ export function Header({ onToggleSidebar, onExport, sidebarOpen = false, showGal
           {/* Nav links in a single horizontal row */}
           <nav className="flex items-center justify-center gap-0.5 flex-wrap">
             {NAV_LINKS.map(link => {
-              const isActive = (link.href === '#gallery' && showGallery) || 
-                              (link.href === '#' && !showGallery)
+              const isActive =
+                link.page === resolvedPage ||
+                (link.page === 'about' && isStatic)
               return (
                 <a
                   key={link.label}
@@ -221,19 +238,70 @@ export function Header({ onToggleSidebar, onExport, sidebarOpen = false, showGal
                       ? 'text-foreground bg-muted font-medium' 
                       : 'text-muted-foreground hover:bg-muted'
                   }`}
-                  onClick={() => setMobileMenuOpen(false)}
+                  onClick={(e) => {
+                    if (onNavigate) {
+                      e.preventDefault()
+                      onNavigate(link.page)
+                    }
+                    setMobileMenuOpen(false)
+                  }}
                 >
                   {link.label}
                 </a>
               )
             })}
           </nav>
+
+          {/* Secondary links */}
+          <div className="flex items-center justify-center gap-3 text-xs text-muted-foreground">
+            <a
+              href="/privacy"
+              className="hover:underline"
+              onClick={(e) => {
+                if (onNavigate) {
+                  e.preventDefault()
+                  onNavigate('privacy')
+                }
+                setMobileMenuOpen(false)
+              }}
+            >
+              Privacy
+            </a>
+            <span>·</span>
+            <a
+              href="/terms"
+              className="hover:underline"
+              onClick={(e) => {
+                if (onNavigate) {
+                  e.preventDefault()
+                  onNavigate('terms')
+                }
+                setMobileMenuOpen(false)
+              }}
+            >
+              Terms
+            </a>
+            <span>·</span>
+            <a
+              href="/contact"
+              className="hover:underline"
+              onClick={(e) => {
+                if (onNavigate) {
+                  e.preventDefault()
+                  onNavigate('contact')
+                }
+                setMobileMenuOpen(false)
+              }}
+            >
+              Contact
+            </a>
+          </div>
           
           {/* Mobile Ad - Leaderboard 320x50 below nav, above buttons */}
-          <AdPlaceholder slot="header-mobile" width={320} height={50} format="horizontal" className="mx-auto" />
+          <AdUnit slot="header-mobile" width={320} height={50} format="horizontal" className="mx-auto" />
           
-          {/* Share/Export buttons - hidden in gallery mode */}
-          {!showGallery && (
+          {/* Share/Export buttons */}
+          {isEditor && (
             <div className="flex gap-2">
               <Button variant="outline" size="sm" className="flex-1" onClick={handleShare}>
                 {copied ? <Check className="h-4 w-4 mr-2" /> : <Share2 className="h-4 w-4 mr-2" />}

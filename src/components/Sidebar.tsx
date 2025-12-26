@@ -28,7 +28,7 @@ import {
 } from 'lucide-react'
 import { useState, useEffect, useRef } from 'react'
 import { SearchProvider, HighlightedLabel } from '@/lib/search-context'
-import { AdPlaceholder } from '@/components/AdPlaceholder'
+import { AdUnit } from '@/components/AdUnit'
 
 const SECTIONS = [
   { id: 'payload', label: 'Payload / Data', icon: Type, tier: 'basic' as const },
@@ -643,7 +643,7 @@ export function Sidebar({ isOpen, onClose }: SidebarProps) {
 
         {/* Desktop Ad below settings - only visible on large screens */}
         <div className="hidden lg:block p-4 border-t flex-shrink-0">
-          <AdPlaceholder slot="sidebar-bottom" width={"100%"} height={250} format="rectangle" />
+          <AdUnit slot="sidebar-bottom" width={"100%"} height={250} format="rectangle" />
         </div>
       </aside>
     </>

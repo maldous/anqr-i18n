@@ -1,7 +1,7 @@
 import { Loader2, AlertTriangle, Eye, Thermometer, RotateCw, Sparkles } from 'lucide-react'
 import { useQRGenerator } from '@/hooks/useQRGenerator'
 import { useState, useEffect, useMemo, useRef, useCallback } from 'react'
-import { AdPlaceholder } from '@/components/AdPlaceholder'
+import { AdUnit } from '@/components/AdUnit'
 import { useQRStore } from '@/store/qr-store'
 import { analyzeContrast } from '@/modules/safety-analyzer'
 import { getContrastRatio, parseColor } from '@/modules/color-utils'
@@ -191,7 +191,7 @@ export function Preview({ sidebarOpen = true }: PreviewProps) {
     <main className={`min-h-[200px] md:flex-1 flex flex-col lg:flex-row bg-muted/30 overflow-hidden transition-all duration-300 ${sidebarOpen ? 'lg:ml-96' : ''}`}>
       {/* Desktop Left Column Ad - Skyscraper 160x600, always visible */}
       <div className="hidden lg:flex flex-col items-end justify-center w-[160px] border-r bg-muted/10 flex-shrink-0">
-        <AdPlaceholder slot="left-skyscraper" width={160} height={600} format="vertical" />
+        <AdUnit slot="left-skyscraper" width={160} height={600} format="vertical" />
       </div>
       
       {/* Main content area with QR */}
@@ -199,7 +199,7 @@ export function Preview({ sidebarOpen = true }: PreviewProps) {
         {/* Mobile Ad above QR - only when settings is hidden */}
         {!sidebarOpen && (
           <div className="lg:hidden p-4 flex justify-center flex-shrink-0">
-            <AdPlaceholder slot="mobile-above-qr" width={320} height={50} format="horizontal" />
+            <AdUnit slot="mobile-above-qr" width={320} height={50} format="horizontal" />
           </div>
         )}
         
@@ -314,14 +314,14 @@ export function Preview({ sidebarOpen = true }: PreviewProps) {
         {/* Mobile Ad - below QR code, only when settings is hidden */}
         {!sidebarOpen && (
           <div className="lg:hidden p-4 flex justify-center flex-shrink-0">
-            <AdPlaceholder slot="mobile-below-qr" width={320} height={50} format="horizontal" />
+            <AdUnit slot="mobile-below-qr" width={320} height={50} format="horizontal" />
           </div>
         )}
       </div>
       
       {/* Desktop Right Column Ad - Skyscraper 160x600, left-aligned with Share button */}
       <div className="hidden lg:flex flex-col items-start justify-center w-[160px] border-l bg-muted/10 flex-shrink-0">
-        <AdPlaceholder slot="right-skyscraper" width={160} height={600} format="vertical" />
+        <AdUnit slot="right-skyscraper" width={160} height={600} format="vertical" />
       </div>
     </main>
   )

@@ -1,11 +1,11 @@
 # robots.txt for ANQR - Advanced QR Code Generator
-# https://aldous.info
+# https://anqr.aldous.info
 
 User-agent: *
 Allow: /
 
 # Sitemap location
-Sitemap: https://aldous.info/sitemap.xml
+Sitemap: https://anqr.aldous.info/sitemap.xml
 
 # Allow Google AdSense
 User-agent: Mediapartners-Google

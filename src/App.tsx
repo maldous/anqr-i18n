@@ -4,13 +4,31 @@ import { Preview } from '@/components/Preview'
 import { Header } from '@/components/Header'
 import { Gallery } from '@/components/Gallery'
 import { StaticPage, type StaticPageType } from '@/components/StaticPage'
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useCallback } from 'react'
 import { useQRGenerator } from '@/hooks/useQRGenerator'
 import { useQRStore, type Tier } from '@/store/qr-store'
 import { parseUrlParams } from '@/modules/share-utils'
 import type { GalleryCategory } from '@/data/gallery-items'
 
 type PageView = 'editor' | 'gallery' | StaticPageType
+
+function getPageFromLocation(): PageView {
+  const path = window.location.pathname.replace(/\/+$/, '') || '/'
+  const hash = window.location.hash.replace(/^#/, '')
+
+  // Prefer clean paths when present.
+  if (path === '/gallery') return 'gallery'
+  if (path === '/about') return 'about'
+  if (path === '/privacy') return 'privacy'
+  if (path === '/terms') return 'terms'
+  if (path === '/contact') return 'contact'
+
+  // Backward-compatible hash routes.
+  if (hash === 'gallery') return 'gallery'
+  if (hash === 'about' || hash === 'privacy' || hash === 'terms' || hash === 'contact') return hash as StaticPageType
+
+  return 'editor'
+}
 
 function App() {
   const [sidebarOpen, setSidebarOpen] = useState(true)
@@ -21,25 +39,36 @@ function App() {
           setPayloadText, setPayloadKind, setPayloadUrl, setTier, setQrEcc, setQrVersion, setRenderModulePx, setQrQuietZone,
           setRenderFgColor, setRenderBgColor, setRenderModuleStyle, setRenderFinderStyle } = useQRStore()
 
-  // Handle hash changes for page routing
-  useEffect(() => {
-    const handleHashChange = () => {
-      const hash = window.location.hash.slice(1) // Remove the # prefix
-      if (hash === 'gallery') {
-        setCurrentPage('gallery')
-      } else if (hash === 'about' || hash === 'privacy' || hash === 'terms' || hash === 'contact') {
-        setCurrentPage(hash as StaticPageType)
-      } else {
-        setCurrentPage('editor')
-      }
+  const navigateTo = useCallback((page: PageView) => {
+    const nextPath = page === 'editor' ? '/' : `/${page}`
+    const nextSearch = page === 'editor' ? window.location.search : ''
+
+    // Avoid unnecessary history entries.
+    const current = window.location.pathname.replace(/\/+$/, '') || '/'
+    if (current === nextPath && window.location.search === nextSearch) {
+      setCurrentPage(page)
+      return
     }
-    
-    // Check initial hash
-    handleHashChange()
-    
-    // Listen for hash changes
-    window.addEventListener('hashchange', handleHashChange)
-    return () => window.removeEventListener('hashchange', handleHashChange)
+
+    window.history.pushState({}, '', `${nextPath}${nextSearch}`)
+    setCurrentPage(page)
+    window.scrollTo({ top: 0, behavior: 'smooth' })
+  }, [])
+
+  // Handle location changes for routing (paths + legacy hash)
+  useEffect(() => {
+    const handleLocationChange = () => {
+      setCurrentPage(getPageFromLocation())
+    }
+
+    handleLocationChange()
+
+    window.addEventListener('popstate', handleLocationChange)
+    window.addEventListener('hashchange', handleLocationChange)
+    return () => {
+      window.removeEventListener('popstate', handleLocationChange)
+      window.removeEventListener('hashchange', handleLocationChange)
+    }
   }, [])
   
   // Convenience booleans for view states
@@ -47,8 +76,9 @@ function App() {
   const showStaticPage = ['about', 'privacy', 'terms', 'contact'].includes(currentPage)
   const showEditor = currentPage === 'editor'
 
-  // Load settings from URL parameters on mount
+  // Load settings from URL parameters on mount (editor share links)
   useEffect(() => {
+    if (getPageFromLocation() !== 'editor') return
     const params = parseUrlParams()
     
     // Determine required tier based on params used
@@ -170,11 +200,12 @@ function App() {
       <div className="h-screen bg-background flex flex-col overflow-hidden">
         <Header 
           onToggleSidebar={() => setSidebarOpen(!sidebarOpen)} 
-          sidebarOpen={showGallery ? false : sidebarOpen} 
+          sidebarOpen={showEditor ? sidebarOpen : false} 
           onExport={download}
           showGallery={showGallery}
           galleryFilter={galleryFilter}
           onGalleryFilterChange={setGalleryFilter}
+          onNavigate={navigateTo}
         />
         <div className="flex-1 flex overflow-hidden relative">
           {/* Sidebar - only shown in editor mode */}
@@ -203,15 +234,51 @@ function App() {
           {/* Inner wrapper with margins to center over QR area (between ad columns) */}
           <div className="px-4 lg:mx-[160px] text-center">
             <p className="text-xs text-muted-foreground">
-              <a href="#about" className="hover:underline">About</a>
+              <a
+                href="/about"
+                className="hover:underline"
+                onClick={(e) => {
+                  e.preventDefault()
+                  navigateTo('about')
+                }}
+              >
+                About
+              </a>
               {' · '}
-              <a href="#privacy" className="hover:underline">Privacy</a>
+              <a
+                href="/privacy"
+                className="hover:underline"
+                onClick={(e) => {
+                  e.preventDefault()
+                  navigateTo('privacy')
+                }}
+              >
+                Privacy
+              </a>
               {' · '}
-              <a href="#terms" className="hover:underline">Terms</a>
+              <a
+                href="/terms"
+                className="hover:underline"
+                onClick={(e) => {
+                  e.preventDefault()
+                  navigateTo('terms')
+                }}
+              >
+                Terms
+              </a>
               {' · '}
-              <a href="#contact" className="hover:underline">Contact</a>
+              <a
+                href="/contact"
+                className="hover:underline"
+                onClick={(e) => {
+                  e.preventDefault()
+                  navigateTo('contact')
+                }}
+              >
+                Contact
+              </a>
               {' · '}
-              © ANQR 2025
+              © ANQR {new Date().getFullYear()}
             </p>
           </div>
         </footer>

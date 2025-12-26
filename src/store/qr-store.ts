@@ -567,8 +567,8 @@ export const useQRStore = create<QRState>((set, get) => ({
   // Payload defaults
   payload: {
     kind: 'url',
-    text: 'https://aldous.info',
-    url: { href: 'https://aldous.info', forceHttps: false },
+    text: 'https://example.com',
+    url: { href: 'https://example.com', forceHttps: false },
     tel: { number: '' },
     email: { to: '' },
     sms: { number: '' },
