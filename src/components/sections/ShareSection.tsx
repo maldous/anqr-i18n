@@ -32,6 +32,7 @@ export function ShareSection() {
       finder: render.finderStyle !== 'square' ? render.finderStyle : undefined,
       mode: overlay.enabled ? overlay.mode : undefined,
       intensity: overlay.enabled && overlay.intensity !== 50 ? overlay.intensity : undefined,
+      // Include overlay URL if overlay is enabled and URL exists
       overlayUrl: overlay.enabled && overlay.url ? overlay.url : undefined,
     }
     return getShareableUrl(config)

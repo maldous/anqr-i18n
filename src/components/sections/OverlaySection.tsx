@@ -102,6 +102,7 @@ export function OverlaySection() {
       // Store the URL for sharing purposes
       setOverlayUrl(urlInput)
       setOverlayFile(file)
+      setOverlayEnabled(true)  // Explicitly enable overlay
       setShowUrlInput(false)
     } catch (err) {
       console.error('Failed to load image from URL:', err)
@@ -113,7 +114,7 @@ export function OverlaySection() {
     } finally {
       setIsLoadingUrl(false)
     }
-  }, [urlInput, setOverlayFile, setOverlayUrl])
+  }, [urlInput, setOverlayFile, setOverlayUrl, setOverlayEnabled])
 
   const handleFileSelect = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0]

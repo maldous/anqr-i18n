@@ -50,6 +50,7 @@ export function Header({ onToggleSidebar, onExport, sidebarOpen = false }: Heade
       finder: render.finderStyle,
       mode: overlay.enabled ? overlay.mode : undefined,
       intensity: overlay.enabled ? overlay.intensity : undefined,
+      overlayUrl: overlay.enabled && overlay.url ? overlay.url : undefined,
     }
     const url = getShareableUrl(shareConfig)
     const success = await copyToClipboard(url)

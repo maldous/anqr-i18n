@@ -39,9 +39,22 @@ function App() {
 
   // Load overlay image from URL
   const loadOverlayFromUrl = async (url: string) => {
+    // Validate that it's a proper URL
     try {
+      const parsed = new URL(url)
+      if (!parsed.protocol.startsWith('http')) {
+        console.error('Invalid overlay URL - must be http/https:', url)
+        return
+      }
+    } catch {
+      console.error('Invalid overlay URL format:', url)
+      return
+    }
+    
+    try {
+      console.log('Loading overlay from URL:', url)
       const response = await fetch(url, { mode: 'cors' })
-      if (!response.ok) throw new Error('Failed to fetch')
+      if (!response.ok) throw new Error(`Failed to fetch: ${response.status}`)
       
       const blob = await response.blob()
       const filename = url.split('/').pop()?.split('?')[0] || 'image'
@@ -50,6 +63,7 @@ function App() {
       setOverlayUrl(url)
       setOverlayFile(file)
       setOverlayEnabled(true)
+      console.log('Overlay loaded successfully from URL')
     } catch (err) {
       console.error('Failed to load overlay from URL:', err)
     }
