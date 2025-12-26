@@ -748,5 +748,6 @@ export function buildGalleryUrl(item: GalleryItem): string {
 }
 
 export function getGalleryImagePath(item: GalleryItem): string {
-  return `${GALLERY_IMAGE_PATH}/${item.id}.png`
+  const ext = item.isAnimated ? 'gif' : 'png'
+  return `${GALLERY_IMAGE_PATH}/${item.id}.${ext}`
 }

@@ -5,15 +5,17 @@ import { Header } from '@/components/Header'
 import { Gallery } from '@/components/Gallery'
 import { useState, useEffect } from 'react'
 import { useQRGenerator } from '@/hooks/useQRGenerator'
-import { useQRStore } from '@/store/qr-store'
+import { useQRStore, type Tier } from '@/store/qr-store'
 import { parseUrlParams } from '@/modules/share-utils'
+import type { GalleryCategory } from '@/data/gallery-items'
 
 function App() {
   const [sidebarOpen, setSidebarOpen] = useState(true)
   const [showGallery, setShowGallery] = useState(false)
+  const [galleryFilter, setGalleryFilter] = useState<GalleryCategory | 'all'>('all')
   const { download } = useQRGenerator()
   const { setOverlayUrl, setOverlayFile, setOverlayEnabled, setOverlayMode, setOverlayIntensity,
-          setPayloadText, setQrEcc, setQrVersion, setRenderModulePx, setQrQuietZone,
+          setPayloadText, setPayloadKind, setPayloadUrl, setTier, setQrEcc, setQrVersion, setRenderModulePx, setQrQuietZone,
           setRenderFgColor, setRenderBgColor, setRenderModuleStyle, setRenderFinderStyle } = useQRStore()
 
   // Handle hash changes for gallery view
@@ -34,8 +36,71 @@ function App() {
   useEffect(() => {
     const params = parseUrlParams()
     
+    // Determine required tier based on params used
+    let requiredTier: Tier = 'basic'
+    
+    // Check for advanced features
+    if (params.mode || params.overlayUrl || params.intensity !== undefined) {
+      requiredTier = 'advanced'
+    }
+    if (params.style && params.style !== 'square') {
+      requiredTier = 'advanced'
+    }
+    if (params.finder && params.finder !== 'square') {
+      requiredTier = 'advanced'
+    }
+    if (params.fg && params.fg !== '#000000') {
+      requiredTier = 'advanced'
+    }
+    if (params.bg && params.bg !== '#ffffff') {
+      requiredTier = 'advanced'
+    }
+    
+    // Set the tier first so UI shows correct options
+    if (requiredTier !== 'basic') {
+      setTier(requiredTier)
+    }
+    
     // Apply URL parameters to store
-    if (params.data) setPayloadText(params.data)
+    if (params.data) {
+      const data = params.data
+      
+      // Detect payload type from data and set appropriate kind
+      if (data.startsWith('mailto:')) {
+        setPayloadKind('email')
+        setPayloadText(data)
+      } else if (data.startsWith('tel:')) {
+        setPayloadKind('tel')
+        setPayloadText(data)
+      } else if (data.startsWith('sms:')) {
+        setPayloadKind('sms')
+        setPayloadText(data)
+      } else if (data.startsWith('geo:')) {
+        setPayloadKind('geo')
+        setPayloadText(data)
+      } else if (data.startsWith('WIFI:')) {
+        setPayloadKind('wifi')
+        setPayloadText(data)
+      } else if (data.startsWith('BEGIN:VCARD')) {
+        setPayloadKind('vcard')
+        setPayloadText(data)
+      } else if (data.startsWith('BEGIN:VEVENT')) {
+        setPayloadKind('event')
+        setPayloadText(data)
+      } else if (data.startsWith('MECARD:')) {
+        setPayloadKind('mecard')
+        setPayloadText(data)
+      } else if (data.startsWith('http://') || data.startsWith('https://')) {
+        setPayloadKind('url')
+        setPayloadUrl({ href: data })
+        setPayloadText(data)
+      } else {
+        // Plain text or custom format
+        setPayloadKind('plain_text')
+        setPayloadText(data)
+      }
+    }
+    
     if (params.ec) setQrEcc(params.ec as 'L' | 'M' | 'Q' | 'H')
     if (params.version) setQrVersion(params.version)
     if (params.size) setRenderModulePx(params.size)
@@ -93,14 +158,25 @@ function App() {
           sidebarOpen={showGallery ? false : sidebarOpen} 
           onExport={download}
           showGallery={showGallery}
+          galleryFilter={galleryFilter}
+          onGalleryFilterChange={setGalleryFilter}
         />
-        <div className="flex-1 flex flex-col lg:flex-row overflow-hidden relative">
+        <div className="flex-1 flex overflow-hidden relative">
+          {/* Sidebar - only shown in editor mode */}
           {!showGallery && <Sidebar isOpen={sidebarOpen} onClose={() => setSidebarOpen(false)} />}
-          {showGallery ? (
-            <Gallery />
-          ) : (
-            <Preview sidebarOpen={sidebarOpen} />
-          )}
+          
+          {/* Sliding container for Editor/Gallery transition */}
+          <div className="flex-1 relative overflow-hidden">
+            {/* Editor view */}
+            <div className={`absolute inset-0 flex transition-transform duration-500 ease-in-out ${showGallery ? '-translate-x-full' : 'translate-x-0'}`}>
+              <Preview sidebarOpen={sidebarOpen} />
+            </div>
+            
+            {/* Gallery view */}
+            <div className={`absolute inset-0 flex transition-transform duration-500 ease-in-out ${showGallery ? 'translate-x-0' : 'translate-x-full'}`}>
+              <Gallery filter={galleryFilter} />
+            </div>
+          </div>
         </div>
         {/* Fixed Footer - always visible at bottom */}
         <footer className={`border-t bg-muted/30 py-2 flex-shrink-0 transition-all duration-300 ${sidebarOpen && !showGallery ? 'lg:ml-96' : ''}`}>

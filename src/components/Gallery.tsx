@@ -4,9 +4,8 @@
  */
 
 import { useState, useMemo } from 'react'
-import { ExternalLink, ChevronDown, ChevronUp } from 'lucide-react'
+import { ChevronDown, ChevronUp } from 'lucide-react'
 import * as LucideIcons from 'lucide-react'
-import { Button } from '@/components/ui/button'
 import { AdPlaceholder } from '@/components/AdPlaceholder'
 import { 
   gallerySections, 
@@ -41,15 +40,15 @@ function GalleryCard({ item }: { item: GalleryItem }) {
       onMouseLeave={() => setIsHovered(false)}
     >
       <div className={`
-        relative overflow-hidden rounded-lg bg-white dark:bg-zinc-900 
-        border border-zinc-200 dark:border-zinc-700 shadow-md
+        relative overflow-hidden rounded-lg bg-card
+        border border-border shadow-md
         transition-all duration-200 ease-out origin-center
         ${isHovered ? 'scale-[1.8] z-50 shadow-2xl border-blue-500 dark:border-blue-400' : 'z-0'}
       `}>
         {/* Image */}
-        <div className="aspect-square w-full bg-zinc-100 dark:bg-zinc-800 p-1">
+        <div className="aspect-square w-full bg-muted p-1">
           {imageError ? (
-            <div className="w-full h-full flex items-center justify-center text-zinc-400">
+            <div className="w-full h-full flex items-center justify-center text-muted-foreground">
               <span className="text-xs">Image unavailable</span>
             </div>
           ) : (
@@ -73,14 +72,14 @@ function GalleryCard({ item }: { item: GalleryItem }) {
       
       {/* Title below card (hidden when hovered/enlarged) */}
       <div className={`mt-1 px-0.5 transition-opacity duration-200 ${isHovered ? 'opacity-0' : 'opacity-100'}`}>
-        <h4 className="text-[10px] font-medium text-zinc-600 dark:text-zinc-400 truncate">{item.title}</h4>
+        <h4 className="text-[10px] font-medium text-muted-foreground truncate">{item.title}</h4>
       </div>
     </a>
   )
 }
 
 // Section component
-function GallerySection({ section, isExpanded, onToggle }: { 
+function GallerySectionComponent({ section, isExpanded, onToggle }: { 
   section: GallerySection
   isExpanded: boolean
   onToggle: () => void
@@ -93,22 +92,22 @@ function GallerySection({ section, isExpanded, onToggle }: {
         className="w-full flex items-center justify-between gap-4 mb-4 group"
       >
         <div className="flex items-center gap-3">
-          <div className="p-2 rounded-lg bg-zinc-100 dark:bg-zinc-800 group-hover:bg-blue-100 dark:group-hover:bg-blue-900/30 transition-colors">
-            <DynamicIcon name={section.icon} className="w-5 h-5 text-zinc-600 dark:text-zinc-400 group-hover:text-blue-600 dark:group-hover:text-blue-400" />
+          <div className="p-2 rounded-lg bg-muted group-hover:bg-blue-100 dark:group-hover:bg-blue-900/30 transition-colors">
+            <DynamicIcon name={section.icon} className="w-5 h-5 text-muted-foreground group-hover:text-blue-600 dark:group-hover:text-blue-400" />
           </div>
           <div className="text-left">
-            <h3 className="text-lg font-semibold text-zinc-900 dark:text-zinc-100 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
+            <h3 className="text-lg font-semibold text-foreground group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
               {section.title}
-              <span className="ml-2 text-sm font-normal text-zinc-500">({section.items.length})</span>
+              <span className="ml-2 text-sm font-normal text-muted-foreground">({section.items.length})</span>
             </h3>
-            <p className="text-sm text-zinc-500 dark:text-zinc-400">{section.description}</p>
+            <p className="text-sm text-muted-foreground">{section.description}</p>
           </div>
         </div>
         <div className="p-2">
           {isExpanded ? (
-            <ChevronUp className="w-5 h-5 text-zinc-400" />
+            <ChevronUp className="w-5 h-5 text-muted-foreground" />
           ) : (
-            <ChevronDown className="w-5 h-5 text-zinc-400" />
+            <ChevronDown className="w-5 h-5 text-muted-foreground" />
           )}
         </div>
       </button>
@@ -125,12 +124,16 @@ function GallerySection({ section, isExpanded, onToggle }: {
   )
 }
 
+// Props for Gallery component
+interface GalleryProps {
+  filter: GalleryCategory | 'all'
+}
+
 // Main Gallery component
-export function Gallery() {
+export function Gallery({ filter }: GalleryProps) {
   const [expandedSections, setExpandedSections] = useState<Set<GalleryCategory>>(
     new Set(gallerySections.map(s => s.id))
   )
-  const [filter, setFilter] = useState<GalleryCategory | 'all'>('all')
   
   const filteredSections = useMemo(() => {
     if (filter === 'all') return gallerySections
@@ -153,76 +156,31 @@ export function Gallery() {
     })
   }
   
-  const expandAll = () => {
-    setExpandedSections(new Set(gallerySections.map(s => s.id)))
-  }
-  
-  const collapseAll = () => {
-    setExpandedSections(new Set())
-  }
-  
   return (
-    <div className="flex-1 flex min-h-0">
-      {/* Left ad column */}
-      <div className="hidden xl:flex flex-col w-40 flex-shrink-0 p-2 gap-2 items-center justify-center">
-        <AdPlaceholder slot="gallery-left" width={160} height={600} />
+    <main className="min-h-[200px] flex-1 flex bg-muted/30 overflow-hidden transition-all duration-300">
+      {/* Left ad column - matches Preview exactly */}
+      <div className="hidden lg:flex flex-col items-end justify-center w-[160px] border-r bg-muted/10 flex-shrink-0">
+        <AdPlaceholder slot="gallery-left" width={160} height={600} format="vertical" />
       </div>
       
       {/* Main gallery content */}
-      <div className="flex-1 overflow-y-auto bg-gradient-to-br from-zinc-50 to-zinc-100 dark:from-zinc-950 dark:to-zinc-900">
+      <div className="flex-1 overflow-y-auto bg-background">
         {/* Hero section */}
-
-<div className="sticky top-0 z-40 border-b border-zinc-200 dark:border-zinc-700">
-  <div className="max-w-7xl mx-auto px-4 py-3">
-    <div className="flex flex-col items-center gap-3">
-
-      {/* Filters */}
-      <div className="flex flex-wrap justify-center gap-2">
-        <button
-          onClick={() => setFilter('all')}
-          className={`px-3 py-1 rounded-full text-sm font-medium ${
-            filter === 'all'
-              ? 'bg-blue-600 text-white'
-              : 'bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400'
-          }`}
-        >
-          All ({totalItems})
-        </button>
-
-        {gallerySections.map(section => (
-          <button
-            key={section.id}
-            onClick={() => setFilter(section.id)}
-            className={`px-3 py-1 rounded-full text-sm font-medium ${
-              filter === section.id
-                ? 'bg-blue-600 text-white'
-                : 'bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400'
-            }`}
-          >
-            {section.title.split(' ')[0]} ({section.items.length})
-          </button>
-        ))}
-      </div>
-
-      {/* Expand / collapse */}
-      <div className="flex items-center gap-2">
-        <button onClick={expandAll} className="text-sm text-blue-600 dark:text-blue-400 hover:underline">
-          Expand all
-        </button>
-        <span className="text-zinc-300 dark:text-zinc-600">|</span>
-        <button onClick={collapseAll} className="text-sm text-blue-600 dark:text-blue-400 hover:underline">
-          Collapse all
-        </button>
-      </div>
-
-    </div>
-  </div>
-</div>
+        <div className="max-w-7xl mx-auto px-4 py-6">
+          <div className="text-center">
+            <h1 className="text-2xl font-bold mb-2 tracking-tight text-foreground">
+              ANQR Gallery
+            </h1>
+            <p className="text-sm text-muted-foreground max-w-2xl mx-auto">
+              Explore {totalItems} QR code variations. Click any QR code to open it in the editor.
+            </p>
+          </div>
+        </div>
 
         {/* Gallery content */}
-        <div className="max-w-7xl mx-auto px-4 py-8">
+        <div className="max-w-7xl mx-auto px-4 py-4">
           {filteredSections.map(section => (
-            <GallerySection
+            <GallerySectionComponent
               key={section.id}
               section={section}
               isExpanded={expandedSections.has(section.id)}
@@ -232,21 +190,21 @@ export function Gallery() {
         </div>
         
         {/* Footer */}
-        <div className="border-t border-zinc-200 dark:border-zinc-700 bg-white dark:bg-zinc-900">
-          <div className="max-w-7xl mx-auto px-4 py-6 text-center">
-            <p className="text-sm text-zinc-500 dark:text-zinc-400">
-              All QR codes link to <a href="https://aldous.info" className="text-blue-600 dark:text-blue-400 hover:underline">aldous.info</a>.
-              Click any QR code to open it in the editor with those exact settings.
+        <div className="border-t border-border bg-card">
+          <div className="max-w-7xl mx-auto px-4 py-4 text-center">
+            <p className="text-xs text-muted-foreground">
+              All QR codes link to <a href="https://aldous.info" className="text-primary hover:underline">aldous.info</a>.
+              Click any to open in editor.
             </p>
           </div>
         </div>
       </div>
       
-      {/* Right ad column */}
-      <div className="hidden xl:flex flex-col w-40 flex-shrink-0 p-2 gap-2 items-center justify-center">
-        <AdPlaceholder slot="gallery-right" width={160} height={600} />
+      {/* Right ad column - matches Preview exactly */}
+      <div className="hidden lg:flex flex-col items-start justify-center w-[160px] border-l bg-muted/10 flex-shrink-0">
+        <AdPlaceholder slot="gallery-right" width={160} height={600} format="vertical" />
       </div>
-    </div>
+    </main>
   )
 }
 

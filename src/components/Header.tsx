@@ -6,6 +6,7 @@ import { Button } from '@/components/ui/button'
 import { useState, useEffect } from 'react'
 import { copyToClipboard, getShareableUrl } from '@/modules/share-utils'
 import { AdPlaceholder } from '@/components/AdPlaceholder'
+import { gallerySections, type GalleryCategory } from '@/data/gallery-items'
 
 const NAV_LINKS = [
   { href: '#', label: 'Editor' },
@@ -17,9 +18,11 @@ interface HeaderProps {
   onExport?: () => void
   sidebarOpen?: boolean
   showGallery?: boolean
+  galleryFilter?: GalleryCategory | 'all'
+  onGalleryFilterChange?: (filter: GalleryCategory | 'all') => void
 }
 
-export function Header({ onToggleSidebar, onExport, sidebarOpen = false, showGallery = false }: HeaderProps) {
+export function Header({ onToggleSidebar, onExport, sidebarOpen = false, showGallery = false, galleryFilter = 'all', onGalleryFilterChange }: HeaderProps) {
   const { tier, setTier, getPayloadText, qr, render, overlay } = useQRStore()
   const [darkMode, setDarkMode] = useState(false)
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
@@ -64,22 +67,25 @@ export function Header({ onToggleSidebar, onExport, sidebarOpen = false, showGal
 
   return (
     <header className={`border-b bg-card shadow-md sticky top-0 z-50 transition-all duration-300 ${sidebarOpen && !showGallery ? 'lg:ml-96' : ''}`}>
-      <div className="px-4 py-3 flex items-center justify-between">
+      <div className="px-4 flex items-center justify-between h-[52px]">
         <div className="flex items-center gap-6">
           <button 
             onClick={showGallery ? undefined : onToggleSidebar}
             className={`flex items-center gap-2 transition-opacity ${showGallery ? '' : 'hover:opacity-80 cursor-pointer'}`}
             title={showGallery ? 'ANQR - Advanced QR Generator' : 'Toggle Settings Panel'}
           >
-            {!showGallery && <PanelLeft className="h-6 w-6 text-muted-foreground" />}
-            <span className="text-xl font-bold">ANQR</span>
+            {/* Fixed-size container for icon to ensure consistent layout in both modes */}
+            <span className="w-6 h-6 flex items-center justify-center flex-shrink-0">
+              {!showGallery && <PanelLeft className="h-6 w-6 text-muted-foreground" />}
+            </span>
+            <span className="text-xl font-bold leading-6">ANQR</span>
           </button>
           
           {/* Desktop Nav */}
           <nav className="hidden lg:flex items-center gap-1">
             {NAV_LINKS.map(link => {
               const isActive = (link.href === '#gallery' && showGallery) || 
-                              (link.href === '/' && !showGallery)
+                              (link.href === '#' && !showGallery)
               return (
                 <a
                   key={link.label}
@@ -94,11 +100,41 @@ export function Header({ onToggleSidebar, onExport, sidebarOpen = false, showGal
                 </a>
               )
             })}
+            
+            {/* Gallery Filter - shown after Gallery nav link */}
+            {showGallery && (
+              <>
+                <span className="text-muted-foreground mx-1">|</span>
+                <button
+                  onClick={() => onGalleryFilterChange?.('all')}
+                  className={`px-3 py-2 text-sm rounded-md transition-colors ${
+                    galleryFilter === 'all'
+                      ? 'text-foreground bg-muted font-medium'
+                      : 'text-muted-foreground hover:text-foreground hover:bg-muted'
+                  }`}
+                >
+                  All
+                </button>
+                {gallerySections.map(section => (
+                  <button
+                    key={section.id}
+                    onClick={() => onGalleryFilterChange?.(section.id)}
+                    className={`px-3 py-2 text-sm rounded-md whitespace-nowrap transition-colors ${
+                      galleryFilter === section.id
+                        ? 'text-foreground bg-muted font-medium'
+                        : 'text-muted-foreground hover:text-foreground hover:bg-muted'
+                    }`}
+                  >
+                    {section.title.split(' ')[0]}
+                  </button>
+                ))}
+              </>
+            )}
           </nav>
         </div>
         
         <div className="flex items-center gap-3">
-          {/* Tier Toggle - Tabs on desktop, dropdown on mobile - hidden in gallery mode */}
+          {/* Tier Toggle for Editor - hidden in gallery mode */}
           {!showGallery && (
             <>
               <div className="hidden sm:block">
@@ -135,11 +171,6 @@ export function Header({ onToggleSidebar, onExport, sidebarOpen = false, showGal
             </>
           )}
 
-          {/* Dark Mode Toggle */}
-          <Button variant="ghost" size="icon" onClick={toggleDarkMode} className="h-9 w-9">
-            {darkMode ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
-          </Button>
-
           {/* Actions - hidden in gallery mode */}
           {!showGallery && (
             <div className="hidden sm:flex items-center gap-2">
@@ -165,6 +196,11 @@ export function Header({ onToggleSidebar, onExport, sidebarOpen = false, showGal
               <Menu className="h-5 w-5" />
             </Button>
           )}
+          
+          {/* Dark Mode Toggle - always on far right */}
+          <Button variant="ghost" size="icon" onClick={toggleDarkMode} className="h-9 w-9">
+            {darkMode ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
+          </Button>
         </div>
       </div>
 
@@ -175,7 +211,7 @@ export function Header({ onToggleSidebar, onExport, sidebarOpen = false, showGal
           <nav className="flex items-center justify-center gap-0.5 flex-wrap">
             {NAV_LINKS.map(link => {
               const isActive = (link.href === '#gallery' && showGallery) || 
-                              (link.href === '/' && !showGallery)
+                              (link.href === '#' && !showGallery)
               return (
                 <a
                   key={link.label}
