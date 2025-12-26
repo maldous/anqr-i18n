@@ -68,9 +68,9 @@ type TocGroup = {
 function buildDocsToc(sections: PageSection[]): TocGroup[] {
   const groups: TocGroup[] = [
     { title: 'Getting Started', items: [] },
-    { title: 'Basic Tier', items: [] },
-    { title: 'Advanced Tier', items: [] },
-    { title: 'Professional Tier', items: [] },
+    { title: 'Basic', items: [] },
+    { title: 'Advanced', items: [] },
+    { title: 'Professional', items: [] },
     { title: 'Tips & Help', items: [] },
   ]
 
@@ -131,7 +131,7 @@ const pages: Record<StaticPageType, PageDefinition> = {
           'Export in multiple formats: PNG, SVG, WebP, and animated GIF.',
           'Advanced options for error correction, version control, and encoding modes.',
           'Safety analysis tools to help ensure your QR codes remain scannable.',
-          'Three feature tiers (Basic, Advanced, Professional) to match your needs.',
+          'Three feature levels (Basic, Advanced, Professional) to match your needs.',
         ],
       },
       {
@@ -544,7 +544,7 @@ const pages: Record<StaticPageType, PageDefinition> = {
   docs: {
     title: 'ANQR Documentation',
     description:
-      'Complete guide to using ANQR for creating QR codes. Features are organized by tier: Basic, Advanced, and Professional.',
+      'Complete guide to using ANQR for creating QR codes. Features are organized by level: Basic, Advanced, and Professional.',
     lastUpdated: LAST_UPDATED,
     sections: [
       // ==================== GETTING STARTED ====================
@@ -552,7 +552,7 @@ const pages: Record<StaticPageType, PageDefinition> = {
         heading: 'Getting Started',
         paragraphs: [
           'ANQR is a browser-based QR code generator that runs entirely in your browser. No account is required, and your data stays on your device.',
-          'The interface has three tiers: Basic, Advanced, and Professional. Select your tier using the tabs in the header. Each tier unlocks additional features while keeping the interface focused on what you need.',
+          'The interface has three interface levels: Basic, Advanced, and Professional. Select your level using the tabs in the header. Each level unlocks additional features while keeping the interface focused on what you need.',
         ],
         bullets: [
           'Basic: Essential QR code creation with standard content types, colors, and styles.',
@@ -577,7 +577,7 @@ const pages: Record<StaticPageType, PageDefinition> = {
       {
         heading: 'Basic Features',
         paragraphs: [
-          'The Basic tier provides everything needed to create standard QR codes with customizable appearance.',
+          'The Basic level provides everything needed to create standard QR codes with customizable appearance.',
         ],
       },
       {
@@ -678,13 +678,13 @@ const pages: Record<StaticPageType, PageDefinition> = {
       {
         heading: 'Advanced Features',
         paragraphs: [
-          'The Advanced tier adds image overlays, preprocessing filters, extended content types, and fine-grained control over rendering and dithering.',
+          'The Advanced level adds image overlays, preprocessing filters, extended content types, and fine-grained control over rendering and dithering.',
         ],
       },
       {
         heading: 'Content Types (Advanced)',
         paragraphs: [
-          'Advanced tier unlocks additional payload formats:',
+          'Advanced level unlocks additional payload formats:',
         ],
         bullets: [
           'Phone Number (tel:): Creates a callable phone link.',
@@ -718,7 +718,7 @@ const pages: Record<StaticPageType, PageDefinition> = {
       {
         heading: 'Overlay Blend Modes (Basic)',
         paragraphs: [
-          'Basic blend modes available in Advanced tier:',
+          'Basic blend modes available in Advanced level:',
         ],
         bullets: [
           'Center Logo: Places image in the center, relying on error correction.',
@@ -730,7 +730,7 @@ const pages: Record<StaticPageType, PageDefinition> = {
       {
         heading: 'Overlay Blend Modes (Advanced)',
         paragraphs: [
-          'Additional blend modes in Advanced tier:',
+          'Additional blend modes in Advanced level:',
         ],
         bullets: [
           'Subpixel: Divides each module into subpixels for higher detail.',
@@ -905,9 +905,7 @@ const pages: Record<StaticPageType, PageDefinition> = {
           'Fine-tune QR encoding:',
         ],
         bullets: [
-          'Mask Pattern: Auto (optimal) or manually select patterns 0-7.',
           'Encoding Mode: Auto, Numeric, Alphanumeric, Byte/UTF-8, or Kanji.',
-          'ECI: Extended Channel Interpretation for character encoding (0=default, 26=UTF-8).',
           'Enforce Min Quiet Zone: Ensure at least 4 module margin.',
         ],
       },
@@ -945,13 +943,13 @@ const pages: Record<StaticPageType, PageDefinition> = {
       {
         heading: 'Professional Features',
         paragraphs: [
-          'The Professional tier adds enterprise features including payment QR codes, structured append for multi-QR sequences, ECC-aware overlay, safety analysis, and advanced output options.',
+          'The Professional level adds enterprise features including payment QR codes, structured append for multi-QR sequences, ECC-aware overlay, safety analysis, and advanced output options.',
         ],
       },
       {
         heading: 'Content Types (Professional)',
         paragraphs: [
-          'Professional tier adds payment and enterprise content types:',
+          'Professional level adds payment and enterprise content types:',
         ],
         bullets: [
           'EPC/SEPA (EU): European bank transfer QR codes with IBAN, BIC, amount, reference.',
@@ -970,7 +968,7 @@ const pages: Record<StaticPageType, PageDefinition> = {
       {
         heading: 'Overlay Blend Modes (Professional)',
         paragraphs: [
-          'Additional blend modes in Professional tier:',
+          'Additional blend modes in Professional level:',
         ],
         bullets: [
           'Pixelate: Pixelated overlay effect.',
@@ -1004,39 +1002,8 @@ const pages: Record<StaticPageType, PageDefinition> = {
           'Lower budget = safer scanning but less visible overlay.',
         ],
       },
-      {
-        heading: 'Structured Append',
-        paragraphs: [
-          'Split large data across multiple QR codes that scanners reassemble automatically:',
-        ],
-        bullets: [
-          'Enable Multi-QR: Turn on structured append mode.',
-          'Index: This QR\'s position in the sequence (0-based).',
-          'Count: Total number of QR codes in sequence (1-16).',
-          'Parity: Checksum byte for sequence validation (0-255).',
-        ],
-      },
-      {
-        heading: 'FNC1 / GS1 Mode',
-        paragraphs: [
-          'For industrial/retail applications using GS1 standards:',
-        ],
-        bullets: [
-          'Off: Normal QR encoding.',
-          'GS1 First Position: GS1 Application Identifiers in first position.',
-          'GS1 Second Position: GS1 AIs in second position (industry-specific).',
-        ],
-      },
-      {
-        heading: 'Special QR Formats',
-        paragraphs: [
-          'Alternative QR code formats:',
-        ],
-        bullets: [
-          'Micro QR: Smaller codes for limited data (up to 35 alphanumeric).',
-          'rMQR (Rectangular): Rectangular format for narrow spaces.',
-        ],
-      },
+
+
       {
         heading: 'Professional Rendering Options',
         paragraphs: [

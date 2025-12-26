@@ -62,17 +62,13 @@ function GalleryCard({ item }: { item: GalleryItem }) {
           )}
         </div>
         
-        {/* Animated badge */}
-        {item.isAnimated && (
-          <div className="absolute top-1 right-1 px-1 py-0.5 rounded text-[8px] font-bold bg-purple-500 text-white">
-            GIF
-          </div>
-        )}
+
       </div>
       
-      {/* Title below card (hidden when hovered/enlarged) */}
+      {/* Title and description below card (hidden when hovered/enlarged) */}
       <div className={`mt-1 px-0.5 transition-opacity duration-200 ${isHovered ? 'opacity-0' : 'opacity-100'}`}>
-        <h4 className="text-[10px] font-medium text-muted-foreground truncate">{item.title}</h4>
+        <h4 className="text-[10px] font-medium text-foreground truncate">{item.title}</h4>
+        <p className="text-[9px] text-muted-foreground truncate">{item.description}</p>
       </div>
     </a>
   )

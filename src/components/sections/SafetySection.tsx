@@ -6,7 +6,7 @@ import { Switch } from '@/components/ui/switch'
 import { HighlightedLabel } from '@/lib/search-context'
 
 export function SafetySection() {
-  const { safety, qa, auto, setSafetyMode, setSafetyMinModulePx, setSafetyLocks, setQaContrastCheck, setQaSimulateBlur, setQaShowHeatmap, setAutoPickVersion, setAutoPickMask, setAutoPickEcc } = useQRStore()
+  const { safety, qa, auto, setSafetyMode, setSafetyMinModulePx, setSafetyLocks, setQaContrastCheck, setQaSimulateBlur, setQaShowHeatmap, setAutoPickVersion, setAutoPickEcc } = useQRStore()
 
   return (
     <div className="space-y-4">
@@ -171,14 +171,6 @@ export function SafetySection() {
           <Switch 
             checked={auto.pickVersion}
             onCheckedChange={setAutoPickVersion}
-          />
-        </div>
-
-        <div className="flex items-center justify-between">
-          <Label className="text-sm"><HighlightedLabel>Auto-Pick Mask</HighlightedLabel></Label>
-          <Switch 
-            checked={auto.pickMask}
-            onCheckedChange={setAutoPickMask}
           />
         </div>
 

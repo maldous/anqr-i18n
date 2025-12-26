@@ -25,7 +25,7 @@ const GALLERY_DIR = path.join(PROJECT_ROOT, 'public', 'gallery')
 const DEV_SERVER_URL = 'http://localhost:5174'
 const IMAGE_SIZE = 200 // Half size for faster loading
 const VIEWPORT = { width: 800, height: 600 }
-const CAPTURE_DELAY = 2500 // Time to wait for QR to render
+const CAPTURE_DELAY = 30000 // Time to wait for QR to render
 const PARALLEL_CAPTURES = 4 // Number of parallel browser pages
 
 // ============================================
@@ -305,12 +305,42 @@ async function captureQR(page, item) {
   
   if (item.isAnimated) {
     // For animated items, capture multiple frames from the canvas and encode as GIF
-    // Wait extra time for the animated GIF overlay to fully load and start playing
-    await new Promise(resolve => setTimeout(resolve, 2000))
+    // Wait for the animated GIF overlay to fully load
+    console.log(`    Waiting for animation to load...`)
+    await new Promise(resolve => setTimeout(resolve, 30000))
+    
+    // Wait until we see the canvas actually changing (animation is playing)
+    let animationStarted = false
+    let lastPixelSum = 0
+    for (let attempt = 0; attempt < 20; attempt++) {
+      const pixelSum = await page.evaluate(() => {
+        const canvas = document.querySelector('canvas')
+        if (!canvas) return 0
+        const ctx = canvas.getContext('2d')
+        const data = ctx.getImageData(0, 0, 50, 50).data
+        return data.reduce((sum, v) => sum + v, 0)
+      })
+      
+      if (lastPixelSum !== 0 && Math.abs(pixelSum - lastPixelSum) > 1000) {
+        animationStarted = true
+        console.log(`    Animation detected after ${attempt * 200}ms`)
+        break
+      }
+      lastPixelSum = pixelSum
+      await new Promise(r => setTimeout(r, 200))
+    }
+    
+    if (!animationStarted) {
+      console.log(`    Warning: Animation may not have started, capturing anyway...`)
+    }
+    
+    // Additional wait for animation to stabilize
+    await new Promise(resolve => setTimeout(resolve, 1000))
     
     const frames = []
-    const frameCount = 16 // Capture 16 frames
-    const frameDelay = 100 // 100ms between frames (10 fps)
+    const frameCount = 20 // Capture 20 frames
+    const frameDelay = 100 // 100ms between frame captures (10 fps capture rate)
+    const gifFrameDelay = 10 // 100ms (10 centiseconds) per frame in output GIF = 10 fps
     
     for (let i = 0; i < frameCount; i++) {
       // Capture RGBA pixel data directly from the canvas
@@ -356,12 +386,11 @@ async function captureQR(page, item) {
       const palette = quantize(rgbaData, 256)
       const index = applyPalette(rgbaData, palette)
       
-      // Write frame with delay (gifenc uses centiseconds, so divide by 10)
-      // Minimum delay of 2 centiseconds (20ms) for browser compatibility
-      const delayCs = Math.max(2, Math.round(frameDelay / 10))
+      // Write frame with delay in centiseconds (1/100th of a second)
+      // Use gifFrameDelay for consistent playback speed
       gif.writeFrame(index, IMAGE_SIZE, IMAGE_SIZE, {
         palette,
-        delay: delayCs,
+        delay: gifFrameDelay,
         ...(isFirstFrame && { repeat: 0 }), // Loop forever
       })
       isFirstFrame = false
@@ -435,16 +464,29 @@ async function processItemsBatch(browser, items, startIdx) {
 
 // Main function
 async function main() {
+  // Check for --gifs-only flag
+  const gifsOnly = process.argv.includes('--gifs-only')
+  
   console.log('\n🎨 ANQR Gallery Generator\n')
   
   // Generate items
-  const items = generateGalleryItems()
-  console.log(`📋 Generated ${items.length} gallery items\n`)
+  let items = generateGalleryItems()
   
-  // Ensure gallery directory exists and is clean
-  await fs.rm(GALLERY_DIR, { recursive: true, force: true })
+  // Filter to animated items only if --gifs-only flag is passed
+  if (gifsOnly) {
+    items = items.filter(item => item.isAnimated)
+    console.log(`📋 Filtered to ${items.length} animated items (--gifs-only)\n`)
+  } else {
+    console.log(`📋 Generated ${items.length} gallery items\n`)
+  }
+  
+  // Ensure gallery directory exists
+  // Only clean if not in gifs-only mode (preserve existing PNGs)
+  if (!gifsOnly) {
+    await fs.rm(GALLERY_DIR, { recursive: true, force: true })
+  }
   await fs.mkdir(GALLERY_DIR, { recursive: true })
-  console.log(`📁 Created ${GALLERY_DIR}\n`)
+  console.log(`📁 ${gifsOnly ? 'Using' : 'Created'} ${GALLERY_DIR}\n`)
   
   // Launch browser
   console.log('🚀 Launching browser...\n')

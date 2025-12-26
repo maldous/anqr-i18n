@@ -232,15 +232,8 @@ export function useQRGenerator(): UseQRGeneratorResult {
       // === QR ENCODING OPTIONS ===
       typeNumber: qr.version,
       errorCorrection: safetyAdjustedConfig.ecc,
-      mask: qr.mask,
       encodingMode: qr.encodingMode,
-      eci: qr.eci,
-      segmentOptimize: qr.segmentOptimize,
-      structuredAppend: qr.structuredAppend,
-      fnc1: qr.fnc1,
-      model: qr.model,
-      microQr: qr.microQr,
-      rmQr: qr.rmQr,
+
       
       // === RENDER OPTIONS (with safety adjustments) ===
       moduleSize: safetyAdjustedConfig.modulePx,
@@ -346,8 +339,8 @@ export function useQRGenerator(): UseQRGeneratorResult {
     getPayloadText,
     safetyAdjustedConfig, // Include safety-adjusted values
     // QR encoding
-    qr.version, qr.ecc, qr.mask, qr.encodingMode, qr.eci, qr.segmentOptimize,
-    qr.structuredAppend, qr.fnc1, qr.model, qr.microQr, qr.rmQr,
+    qr.version, qr.ecc, qr.encodingMode,
+
     qr.quietZoneModules, qr.borderModulesExtra,
     // Render
     render.modulePx, render.moduleGapPercent, render.gapMode,
