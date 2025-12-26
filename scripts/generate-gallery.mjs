@@ -189,7 +189,6 @@ function generateGalleryItems() {
   
   // Hue rotate (to make 30 total)
   items.push({ id: 'prep-hue-90', params: { data: BASE_DATA, ec: 'H', v: 6, mode: 'dithered', img: TSUNAMI_IMG, intensity: 100, hue: 90 } })
-  items.push({ id: 'prep-hue-180', params: { data: BASE_DATA, ec: 'H', v: 6, mode: 'dithered', img: TSUNAMI_IMG, intensity: 100, hue: 180 } })
   
   // ========== QR ENCODING ==========
   // Versions
