@@ -36,6 +36,7 @@ export function AnimationSection() {
         <Switch 
           checked={animation.loop}
           onCheckedChange={setAnimationLoop}
+          title="Loop animation continuously"
         />
       </div>
 
@@ -45,6 +46,7 @@ export function AnimationSection() {
         <Switch 
           checked={animation.bounce}
           onCheckedChange={setAnimationBounce}
+          title="Play animation forward then backward (ping-pong)"
         />
       </div>
 

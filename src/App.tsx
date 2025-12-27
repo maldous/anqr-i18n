@@ -253,17 +253,6 @@ function App() {
           <div className="px-4 lg:mx-[160px] text-center">
             <p className="text-xs text-muted-foreground">
               <a
-                href="/about"
-                className="hover:underline"
-                onClick={(e) => {
-                  e.preventDefault()
-                  navigateTo('about')
-                }}
-              >
-                About
-              </a>
-              {' · '}
-              <a
                 href="/docs"
                 className="hover:underline"
                 onClick={(e) => {
@@ -272,6 +261,17 @@ function App() {
                 }}
               >
                 Docs
+              </a>
+              {' · '}
+              <a
+                href="/about"
+                className="hover:underline"
+                onClick={(e) => {
+                  e.preventDefault()
+                  navigateTo('about')
+                }}
+              >
+                About
               </a>
               {' · '}
               <a

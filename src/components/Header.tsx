@@ -20,8 +20,8 @@ type HeaderPage = 'editor' | 'gallery' | StaticPageType
 const NAV_LINKS: Array<{ href: string; label: string; page: HeaderPage }> = [
   { href: '/', label: 'Generator', page: 'editor' },
   { href: '/gallery', label: 'Gallery', page: 'gallery' },
-  { href: '/about', label: 'About', page: 'about' },
   { href: '/docs', label: 'Docs', page: 'docs' },
+  { href: '/about', label: 'About', page: 'about' },
   { href: '/privacy', label: 'Privacy', page: 'privacy' },
   { href: '/terms', label: 'Terms', page: 'terms' },
   { href: '/contact', label: 'Contact', page: 'contact' },
@@ -143,10 +143,12 @@ export function Header({ onToggleSidebar, onExport, sidebarOpen = false, showGal
             })}
             
           </nav>
-          
-          {/* Gallery Filter - icon buttons right-justified (moved outside nav) */}
+        </div>
+        
+        <div className="flex items-center gap-3">
+          {/* Gallery Filter - icon buttons right-justified next to dark mode toggle */}
           {isGallery && (
-            <div className="hidden lg:flex items-center gap-1 ml-auto">
+            <div className="hidden lg:flex items-center gap-1">
               <button
                 onClick={() => onGalleryFilterChange?.('all')}
                 className={`p-2 rounded-md transition-colors ${
@@ -174,9 +176,7 @@ export function Header({ onToggleSidebar, onExport, sidebarOpen = false, showGal
               ))}
             </div>
           )}
-        </div>
-        
-        <div className="flex items-center gap-3">
+          
           {/* Tier Toggle */}
           {isEditor && (
             <>
