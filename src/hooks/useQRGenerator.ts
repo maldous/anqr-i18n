@@ -81,6 +81,21 @@ async function loadFileAsCanvas(file: File): Promise<HTMLCanvasElement> {
   })
 }
 
+// Expose animation state globally for external tools (e.g., gallery generator)
+declare global {
+  interface Window {
+    __ANQR_STATE__?: {
+      isLoading: boolean
+      isAnimationReady: boolean
+      animationFrameCount: number
+      currentFrame: number
+      animationFrames: HTMLCanvasElement[]
+      animationSpeedMs: number
+      frameDelays: number[] // Original frame delays from source GIF in ms
+    }
+  }
+}
+
 export function useQRGenerator(): UseQRGeneratorResult {
   const canvasRef = useRef<HTMLCanvasElement | null>(null)
   const [canvas, setCanvas] = useState<HTMLCanvasElement | null>(null)
@@ -700,6 +715,22 @@ export function useQRGenerator(): UseQRGeneratorResult {
     
     return frames
   }, [gifFrames, animation.startFrame, animation.maxFrames, animation.frameStep])
+
+  // Expose state to window for external tools (gallery generator)
+  useEffect(() => {
+    // Get original frame delays from parsed GIF frames
+    const frameDelays = effectiveFrames.map(f => f.delay || 100)
+    
+    window.__ANQR_STATE__ = {
+      isLoading,
+      isAnimationReady: isAnimationCacheReady && animationFrames.length > 1,
+      animationFrameCount: animationFrames.length,
+      currentFrame,
+      animationFrames,
+      animationSpeedMs: animation.speedMs,
+      frameDelays, // Original delays from source GIF
+    }
+  }, [isLoading, isAnimationCacheReady, animationFrames, currentFrame, animation.speedMs, effectiveFrames])
 
   // Animation loop for GIF overlays
   useEffect(() => {

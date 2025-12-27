@@ -24,8 +24,5 @@ dev:
 gallery:
 	node scripts/generate-gallery.mjs
 
-gallery\:gifs:
-	node scripts/generate-gallery.mjs --gifs-only
-
 deploy:
 	netlify deploy --prod --site anqr.link --dir=dist
