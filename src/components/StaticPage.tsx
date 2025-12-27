@@ -1500,7 +1500,7 @@ export function StaticPage({ page }: StaticPageProps) {
     return (
       <main className="min-h-[200px] flex-1 flex bg-background overflow-hidden transition-all duration-300">
         {/* Left ad column - hidden on docs to make room for ToC */}
-        <div className="hidden xl:flex flex-col items-center justify-center w-[160px] min-h-[600px] bg-background flex-shrink-0 px-2">
+        <div className="hidden xl:flex flex-col items-center justify-center w-[180px] min-h-[600px] bg-background flex-shrink-0 pl-3 pr-2">
           <AdUnit slot="static-left" width={160} height={600} format="vertical" />
         </div>
 
@@ -1602,7 +1602,7 @@ export function StaticPage({ page }: StaticPageProps) {
         </div>
 
         {/* Right ad column */}
-        <div className="hidden xl:flex flex-col items-center justify-center w-[160px] min-h-[600px] bg-background flex-shrink-0 px-2">
+        <div className="hidden xl:flex flex-col items-center justify-center w-[180px] min-h-[600px] bg-background flex-shrink-0 pl-2 pr-3">
           <AdUnit slot="static-right" width={160} height={600} format="vertical" />
         </div>
       </main>
@@ -1613,7 +1613,7 @@ export function StaticPage({ page }: StaticPageProps) {
   return (
     <main className="min-h-[200px] flex-1 flex bg-background overflow-hidden transition-all duration-300">
       {/* Left ad column */}
-      <div className="hidden lg:flex flex-col items-center justify-center w-[160px] min-h-[600px] bg-background flex-shrink-0 px-2">
+      <div className="hidden lg:flex flex-col items-center justify-center w-[180px] min-h-[600px] bg-background flex-shrink-0 pl-3 pr-2">
         <AdUnit slot="static-left" width={160} height={600} format="vertical" />
       </div>
 
@@ -1671,7 +1671,7 @@ export function StaticPage({ page }: StaticPageProps) {
       </div>
 
       {/* Right ad column */}
-      <div className="hidden lg:flex flex-col items-center justify-center w-[160px] min-h-[600px] bg-background flex-shrink-0 px-2">
+      <div className="hidden lg:flex flex-col items-center justify-center w-[180px] min-h-[600px] bg-background flex-shrink-0 pl-2 pr-3">
         <AdUnit slot="static-right" width={160} height={600} format="vertical" />
       </div>
     </main>
