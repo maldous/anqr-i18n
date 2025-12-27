@@ -21,7 +21,7 @@ export function OutputSection() {
       <div className="space-y-2">
         <Label><HighlightedLabel>Format</HighlightedLabel></Label>
         <Select value={output.format} onValueChange={(v) => setOutputFormat(v as OutputFormat)}>
-          <SelectTrigger>
+          <SelectTrigger title="Select the output file format for export">
             <SelectValue />
           </SelectTrigger>
           <SelectContent>

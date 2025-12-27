@@ -34,6 +34,7 @@ export function RenderSection() {
           min={2}
           max={20}
           step={1}
+          title="Size of each QR code module in pixels (2-20px)"
         />
       </div>
 
@@ -49,6 +50,7 @@ export function RenderSection() {
           min={0}
           max={30}
           step={1}
+          title="Gap between modules as percentage (0-30%)"
         />
       </div>
 
@@ -56,7 +58,7 @@ export function RenderSection() {
       <div className="space-y-2">
         <Label><HighlightedLabel>Module Style</HighlightedLabel></Label>
         <Select value={render.moduleStyle} onValueChange={(v) => setRenderModuleStyle(v as ModuleStyle)}>
-          <SelectTrigger>
+          <SelectTrigger title="Visual style of QR code modules">
             <SelectValue />
           </SelectTrigger>
           <SelectContent>
@@ -73,7 +75,7 @@ export function RenderSection() {
       <div className="space-y-2">
         <Label><HighlightedLabel>Finder Pattern Style</HighlightedLabel></Label>
         <Select value={render.finderStyle} onValueChange={(v) => setRenderFinderStyle(v as FinderStyle)}>
-          <SelectTrigger>
+          <SelectTrigger title="Style of the corner finder patterns">
             <SelectValue />
           </SelectTrigger>
           <SelectContent>
@@ -88,7 +90,7 @@ export function RenderSection() {
       <div className="space-y-2">
         <Label><HighlightedLabel>Alignment Pattern Style</HighlightedLabel></Label>
         <Select value={render.alignmentStyle} onValueChange={(v) => setRenderAlignmentStyle(v as AlignmentStyle)}>
-          <SelectTrigger>
+          <SelectTrigger title="Style of alignment patterns (used in larger QR codes)">
             <SelectValue />
           </SelectTrigger>
           <SelectContent>
@@ -104,7 +106,7 @@ export function RenderSection() {
       <div className="space-y-2">
         <Label><HighlightedLabel>Timing Pattern Style</HighlightedLabel></Label>
         <Select value={render.timingStyle} onValueChange={(v) => setRenderTimingStyle(v as TimingStyle)}>
-          <SelectTrigger>
+          <SelectTrigger title="Style of timing patterns (horizontal and vertical lines)">
             <SelectValue />
           </SelectTrigger>
           <SelectContent>
@@ -127,12 +129,14 @@ export function RenderSection() {
                 value={render.fgColor}
                 onChange={(e) => setRenderFgColor(e.target.value)}
                 className="w-10 h-10 p-1 cursor-pointer"
+                title="Click to pick foreground color"
               />
               <Input
                 type="text"
                 value={render.fgColor}
                 onChange={(e) => setRenderFgColor(e.target.value)}
                 className="flex-1"
+                title="Foreground color hex code"
               />
             </div>
           </div>
@@ -144,12 +148,14 @@ export function RenderSection() {
                 value={render.bgColor}
                 onChange={(e) => setRenderBgColor(e.target.value)}
                 className="w-10 h-10 p-1 cursor-pointer"
+                title="Click to pick background color"
               />
               <Input
                 type="text"
                 value={render.bgColor}
                 onChange={(e) => setRenderBgColor(e.target.value)}
                 className="flex-1"
+                title="Background color hex code"
               />
             </div>
           </div>
@@ -162,6 +168,7 @@ export function RenderSection() {
         <Switch 
           checked={render.bgTransparent}
           onCheckedChange={setRenderBgTransparent}
+          title="Make the background transparent instead of using background color"
         />
       </div>
 
@@ -172,7 +179,7 @@ export function RenderSection() {
           <div className="space-y-2">
             <Label><HighlightedLabel>Gap Mode</HighlightedLabel></Label>
             <Select value={render.gapMode} onValueChange={(v) => setRenderGapMode(v as GapMode)}>
-              <SelectTrigger>
+              <SelectTrigger title="How gaps between modules are rendered">
                 <SelectValue />
               </SelectTrigger>
               <SelectContent>
@@ -196,6 +203,7 @@ export function RenderSection() {
               min={0}
               max={100}
               step={5}
+              title="Corner radius percentage for rounded modules (0-100%)"
             />
           </div>
 
@@ -203,7 +211,7 @@ export function RenderSection() {
           <div className="space-y-2">
             <Label><HighlightedLabel>Gradient</HighlightedLabel></Label>
             <Select value={render.gradient.type} onValueChange={(v) => setRenderGradient({ type: v as GradientType })}>
-              <SelectTrigger>
+              <SelectTrigger title="Apply a gradient effect to the QR code">
                 <SelectValue />
               </SelectTrigger>
               <SelectContent>
@@ -222,7 +230,7 @@ export function RenderSection() {
               value={render.eyeOuterStyle} 
               onValueChange={(v) => useQRStore.setState((s) => ({ render: { ...s.render, eyeOuterStyle: v as FinderStyle } }))}
             >
-              <SelectTrigger>
+              <SelectTrigger title="Style of the outer ring of finder patterns">
                 <SelectValue />
               </SelectTrigger>
               <SelectContent>
@@ -239,7 +247,7 @@ export function RenderSection() {
               value={render.eyeInnerStyle} 
               onValueChange={(v) => useQRStore.setState((s) => ({ render: { ...s.render, eyeInnerStyle: v as FinderStyle } }))}
             >
-              <SelectTrigger>
+              <SelectTrigger title="Style of the inner square of finder patterns">
                 <SelectValue />
               </SelectTrigger>
               <SelectContent>
@@ -254,7 +262,7 @@ export function RenderSection() {
           <div className="space-y-2">
             <Label><HighlightedLabel>Frame Style</HighlightedLabel></Label>
             <Select value={render.frameStyle} onValueChange={(v) => setRenderFrameStyle(v as FrameStyle)}>
-              <SelectTrigger>
+              <SelectTrigger title="Add a decorative frame around the QR code">
                 <SelectValue />
               </SelectTrigger>
               <SelectContent>
@@ -273,6 +281,7 @@ export function RenderSection() {
                 value={render.frameText}
                 onChange={(e) => setRenderFrameText(e.target.value)}
                 placeholder="Scan Me!"
+                title="Text to display on the frame"
               />
             </div>
           )}
@@ -289,6 +298,7 @@ export function RenderSection() {
               min={0}
               max={360}
               step={15}
+              title="Rotate dot-style modules (0-360 degrees)"
             />
           </div>
 
@@ -304,6 +314,7 @@ export function RenderSection() {
               min={50}
               max={150}
               step={5}
+              title="Scale finder patterns relative to their default size (50-150%)"
             />
           </div>
         </>
@@ -319,6 +330,7 @@ export function RenderSection() {
               <Switch 
                 checked={render.crispEdges}
                 onCheckedChange={(checked) => useQRStore.setState((s) => ({ render: { ...s.render, crispEdges: checked } }))}
+                title="Use pixelated rendering for sharp module edges"
               />
             </div>
             <p className="text-xs text-muted-foreground">Use image-rendering: pixelated for sharp edges</p>
@@ -331,7 +343,7 @@ export function RenderSection() {
               value={render.pixelSnap} 
               onValueChange={(v) => useQRStore.setState((s) => ({ render: { ...s.render, pixelSnap: v as 'floor' | 'round' | 'ceil' } }))}
             >
-              <SelectTrigger>
+              <SelectTrigger title="How to snap module positions to pixel boundaries">
                 <SelectValue />
               </SelectTrigger>
               <SelectContent>
@@ -349,7 +361,7 @@ export function RenderSection() {
               value={render.perModuleColorMode} 
               onValueChange={(v) => useQRStore.setState((s) => ({ render: { ...s.render, perModuleColorMode: v as typeof render.perModuleColorMode } }))}
             >
-              <SelectTrigger>
+              <SelectTrigger title="How to assign colors to individual modules">
                 <SelectValue />
               </SelectTrigger>
               <SelectContent>
@@ -422,6 +434,7 @@ export function RenderSection() {
             <Switch 
               checked={render.contrastGuard}
               onCheckedChange={(checked) => useQRStore.setState((s) => ({ render: { ...s.render, contrastGuard: checked } }))}
+              title="Ensure minimum contrast ratio between foreground and background"
             />
           </div>
 
@@ -437,6 +450,7 @@ export function RenderSection() {
                 min={1}
                 max={21}
                 step={0.5}
+                title="Minimum contrast ratio to enforce (1-21, WCAG AA requires 4.5:1)"
               />
             </div>
           )}

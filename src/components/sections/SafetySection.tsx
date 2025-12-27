@@ -14,7 +14,7 @@ export function SafetySection() {
       <div className="space-y-2">
         <Label><HighlightedLabel>Safety Mode</HighlightedLabel></Label>
         <Select value={safety.mode} onValueChange={(v) => setSafetyMode(v as SafetyMode)}>
-          <SelectTrigger>
+          <SelectTrigger title="Safety analysis mode - how strictly to check QR code readability">
             <SelectValue />
           </SelectTrigger>
           <SelectContent>

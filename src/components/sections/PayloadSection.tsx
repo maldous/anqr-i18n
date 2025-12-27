@@ -270,7 +270,7 @@ export function PayloadSection() {
       <div className="space-y-2">
         <Label><HighlightedLabel>Content Type</HighlightedLabel></Label>
         <Select value={payload.kind} onValueChange={(v) => setPayloadKind(v as PayloadKind)}>
-          <SelectTrigger className="w-full">
+          <SelectTrigger className="w-full" title="Select the type of content to encode in the QR code">
             <SelectValue />
           </SelectTrigger>
           <SelectContent className="max-h-[400px]">
@@ -306,6 +306,7 @@ export function PayloadSection() {
             rows={4}
             className={showStartupHighlight ? 'ring-4 ring-primary/50 ring-offset-2 ring-offset-background animate-pulse' : ''}
             autoFocus={showStartupHighlight}
+            title="Enter the text content to encode in the QR code"
           />
         </div>
       )}
@@ -320,6 +321,7 @@ export function PayloadSection() {
               value={payload.url.href} 
               onChange={(e) => setPayloadUrl({ href: e.target.value })}
               placeholder="https://example.com"
+              title="Enter the URL to encode in the QR code"
             />
           </div>
           {(tier === 'advanced' || tier === 'professional') && (
@@ -329,6 +331,7 @@ export function PayloadSection() {
                 <Switch 
                   checked={payload.url.forceHttps}
                   onCheckedChange={(checked) => setPayloadUrl({ forceHttps: checked })}
+                  title="Convert HTTP URLs to HTTPS automatically"
                 />
               </div>
               <div className="space-y-2">
@@ -337,16 +340,19 @@ export function PayloadSection() {
                   placeholder="utm_source"
                   value={payload.url.utmSource || ''}
                   onChange={(e) => setPayloadUrl({ utmSource: e.target.value })}
+                  title="UTM source parameter for campaign tracking"
                 />
                 <Input 
                   placeholder="utm_medium"
                   value={payload.url.utmMedium || ''}
                   onChange={(e) => setPayloadUrl({ utmMedium: e.target.value })}
+                  title="UTM medium parameter for campaign tracking"
                 />
                 <Input 
                   placeholder="utm_campaign"
                   value={payload.url.utmCampaign || ''}
                   onChange={(e) => setPayloadUrl({ utmCampaign: e.target.value })}
+                  title="UTM campaign parameter for campaign tracking"
                 />
               </div>
             </>
@@ -1592,6 +1598,7 @@ export function PayloadSection() {
             <Switch 
               checked={payload.validate}
               onCheckedChange={(checked) => setPayloadValidation({ validate: checked })}
+              title="Validate input data before encoding"
             />
           </div>
           <div className="flex items-center justify-between">
@@ -1599,6 +1606,7 @@ export function PayloadSection() {
             <Switch 
               checked={payload.trim}
               onCheckedChange={(checked) => setPayloadValidation({ trim: checked })}
+              title="Remove leading and trailing whitespace"
             />
           </div>
           <div className="flex items-center justify-between">
@@ -1606,6 +1614,7 @@ export function PayloadSection() {
             <Switch 
               checked={payload.normalizeNewlines}
               onCheckedChange={(checked) => setPayloadValidation({ normalizeNewlines: checked })}
+              title="Convert different newline formats to a standard format"
             />
           </div>
           <div className="flex items-center justify-between">
@@ -1613,6 +1622,7 @@ export function PayloadSection() {
             <Switch 
               checked={payload.maxLenGuard}
               onCheckedChange={(checked) => setPayloadValidation({ maxLenGuard: checked })}
+              title="Prevent encoding content that exceeds QR code capacity"
             />
           </div>
         </div>

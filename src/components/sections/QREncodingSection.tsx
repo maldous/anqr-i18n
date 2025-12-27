@@ -46,6 +46,7 @@ export function QREncodingSection() {
           min={0}
           max={40}
           step={1}
+          title="QR code version (0=auto, 1-40 increases size and capacity)"
         />
         <p className="text-xs text-muted-foreground">
           {qr.version === 0 
@@ -61,7 +62,7 @@ export function QREncodingSection() {
       <div className="space-y-2">
         <Label><HighlightedLabel>Error Correction</HighlightedLabel></Label>
         <Select value={qr.ecc} onValueChange={(v) => setQrEcc(v as ECCLevel)}>
-          <SelectTrigger>
+          <SelectTrigger title="Error correction level - higher = more damage resistance but larger QR code">
             <SelectValue />
           </SelectTrigger>
           <SelectContent>
@@ -88,6 +89,7 @@ export function QREncodingSection() {
           min={0}
           max={10}
           step={1}
+          title="Quiet zone margin around QR code (0-10 modules, recommended: 4+)"
         />
       </div>
 
@@ -98,7 +100,7 @@ export function QREncodingSection() {
           <div className="space-y-2">
             <Label><HighlightedLabel>Encoding Mode</HighlightedLabel></Label>
             <Select value={qr.encodingMode} onValueChange={(v) => setQrEncodingMode(v as EncodingMode)}>
-              <SelectTrigger>
+              <SelectTrigger title="Data encoding mode - Auto selects the most efficient mode">
                 <SelectValue />
               </SelectTrigger>
               <SelectContent>
@@ -120,6 +122,7 @@ export function QREncodingSection() {
             <Switch 
               checked={qr.quietZoneMinEnforce}
               onCheckedChange={setQrQuietZoneMinEnforce}
+              title="Enforce minimum 4 module quiet zone for better scanning reliability"
             />
           </div>
         </>
@@ -140,6 +143,7 @@ export function QREncodingSection() {
               min={0}
               max={10}
               step={1}
+              title="Additional border modules beyond the quiet zone (0-10)"
             />
             <p className="text-xs text-muted-foreground">
               Additional border beyond quiet zone

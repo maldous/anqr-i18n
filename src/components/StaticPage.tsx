@@ -1151,8 +1151,10 @@ function DocsTableOfContents({
   onClose: () => void
   isOpen: boolean
 }) {
-  if (!isOpen) return null
   const [mobileOpen, setMobileOpen] = useState(false)
+  
+  // On desktop, respect isOpen prop. On mobile, always render (has its own mobileOpen state)
+  // We check window width via CSS classes, so we render both but hide with lg:hidden / hidden lg:block
   const [expandedGroups, setExpandedGroups] = useState<Set<string>>(() => new Set(groups.map(g => g.title)))
 
   const toggleGroup = (title: string) => {
@@ -1216,34 +1218,54 @@ function DocsTableOfContents({
 
   return (
     <>
-      {/* Mobile ToC - collapsible dropdown */}
-      <div className="lg:hidden sticky top-0 z-40 bg-background border-b">
-        <button
-          onClick={() => setMobileOpen(!mobileOpen)}
-          className="flex items-center justify-between w-full px-4 py-3 text-sm font-medium text-foreground"
-        >
-          <div className="flex items-center gap-2">
-            <List className="h-4 w-4" />
-            <span>Contents</span>
-            {activeItem && (
-              <span className="text-muted-foreground font-normal truncate max-w-[180px]">· {activeItem.heading}</span>
-            )}
-          </div>
-          {mobileOpen ? (
-            <ChevronUp className="h-4 w-4" />
-          ) : (
-            <ChevronDown className="h-4 w-4" />
-          )}
-        </button>
+      {/* Mobile ToC - slide-out drawer */}
+      <div className="lg:hidden">
+        {/* Toggle button fixed at top */}
+        {!mobileOpen && (
+          <button
+            onClick={() => setMobileOpen(true)}
+            className="fixed top-16 left-2 z-40 p-2 rounded-lg bg-card border shadow-md hover:bg-muted transition-colors"
+            title="Open documentation sidebar"
+          >
+            <List className="h-5 w-5" />
+          </button>
+        )}
+        
+        {/* Backdrop */}
         {mobileOpen && (
-          <div className="px-4 pb-4 max-h-[60vh] overflow-y-auto border-t bg-background">
+          <div 
+            className="fixed inset-0 z-40 bg-black/50" 
+            onClick={() => setMobileOpen(false)}
+          />
+        )}
+        
+        {/* Sidebar drawer */}
+        <div className={`fixed top-0 left-0 z-50 h-full w-64 bg-background border-r shadow-xl transition-transform duration-300 ease-in-out ${
+          mobileOpen ? 'translate-x-0' : '-translate-x-full'
+        }`}>
+          <div className="flex items-center justify-between p-4 border-b">
+            <h3 className="font-semibold text-foreground flex items-center gap-2">
+              <List className="h-4 w-4" />
+              Contents
+            </h3>
+            <button
+              onClick={() => setMobileOpen(false)}
+              className="p-1 rounded hover:bg-muted transition-colors text-muted-foreground hover:text-foreground"
+              title="Close sidebar"
+            >
+              <X className="h-4 w-4" />
+            </button>
+          </div>
+          <div className="p-4 overflow-y-auto h-[calc(100%-60px)] scrollbar-hide">
             {tocContent}
           </div>
-        )}
+        </div>
       </div>
 
       {/* Desktop ToC - sticky sidebar with slide animation */}
-      <aside className="hidden lg:block w-64 flex-shrink-0 border-r bg-background docs-sidebar transition-all duration-300 ease-in-out">
+      <aside className={`hidden lg:block flex-shrink-0 border-r bg-background docs-sidebar transition-all duration-300 ease-in-out overflow-hidden ${
+        isOpen ? 'w-64' : 'w-0 border-r-0'
+      }`}>
         <div className="sticky top-0 h-screen overflow-y-auto py-6 px-4 scrollbar-hide">
           <div className="flex items-center justify-between mb-4">
             <h3 className="font-semibold text-foreground flex items-center gap-2">
