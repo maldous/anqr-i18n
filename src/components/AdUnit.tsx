@@ -17,8 +17,22 @@ type SlotName =
   | 'sidebar-bottom'
   | 'gallery-left'
   | 'gallery-right'
+  | 'gallery-top'
+  | 'gallery-bottom'
   | 'static-left'
   | 'static-right'
+  | 'preview-mobile-top'
+  | 'preview-mobile-bottom'
+  | 'docs-top'
+  | 'docs-bottom'
+  | 'about-top'
+  | 'about-bottom'
+  | 'privacy-top'
+  | 'privacy-bottom'
+  | 'terms-top'
+  | 'terms-bottom'
+  | 'contact-top'
+  | 'contact-bottom'
 
 /**
  * Optional environment-driven slot configuration.
@@ -35,8 +49,22 @@ const SLOT_IDS: Partial<Record<SlotName, string>> = {
   'sidebar-bottom': import.meta.env.VITE_ADSENSE_SLOT_SIDEBAR_BOTTOM,
   'gallery-left': import.meta.env.VITE_ADSENSE_SLOT_GALLERY_LEFT,
   'gallery-right': import.meta.env.VITE_ADSENSE_SLOT_GALLERY_RIGHT,
+  'gallery-top': import.meta.env.VITE_ADSENSE_SLOT_GALLERY_TOP,
+  'gallery-bottom': import.meta.env.VITE_ADSENSE_SLOT_GALLERY_BOTTOM,
   'static-left': import.meta.env.VITE_ADSENSE_SLOT_STATIC_LEFT,
   'static-right': import.meta.env.VITE_ADSENSE_SLOT_STATIC_RIGHT,
+  'preview-mobile-top': import.meta.env.VITE_ADSENSE_SLOT_PREVIEW_MOBILE_TOP,
+  'preview-mobile-bottom': import.meta.env.VITE_ADSENSE_SLOT_PREVIEW_MOBILE_BOTTOM,
+  'docs-top': import.meta.env.VITE_ADSENSE_SLOT_DOCS_TOP,
+  'docs-bottom': import.meta.env.VITE_ADSENSE_SLOT_DOCS_BOTTOM,
+  'about-top': import.meta.env.VITE_ADSENSE_SLOT_ABOUT_TOP,
+  'about-bottom': import.meta.env.VITE_ADSENSE_SLOT_ABOUT_BOTTOM,
+  'privacy-top': import.meta.env.VITE_ADSENSE_SLOT_PRIVACY_TOP,
+  'privacy-bottom': import.meta.env.VITE_ADSENSE_SLOT_PRIVACY_BOTTOM,
+  'terms-top': import.meta.env.VITE_ADSENSE_SLOT_TERMS_TOP,
+  'terms-bottom': import.meta.env.VITE_ADSENSE_SLOT_TERMS_BOTTOM,
+  'contact-top': import.meta.env.VITE_ADSENSE_SLOT_CONTACT_TOP,
+  'contact-bottom': import.meta.env.VITE_ADSENSE_SLOT_CONTACT_BOTTOM,
 }
 
 function isNumericSlot(value: string | undefined | null): value is string {

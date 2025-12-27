@@ -33,13 +33,13 @@ import { AdUnit } from '@/components/AdUnit'
 const SECTIONS = [
   { id: 'payload', label: 'Payload / Data', icon: Type, tier: 'basic' as const },
   { id: 'overlay', label: 'Overlay / Image', icon: Image, tier: 'basic' as const },
-  { id: 'qr', label: 'QR Encoding', icon: QrCode, tier: 'basic' as const },
-  { id: 'render', label: 'Rendering / Style', icon: Palette, tier: 'basic' as const },
-  { id: 'animation', label: 'Animation', icon: Play, tier: 'basic' as const },
-  { id: 'output', label: 'Output / Export', icon: Download, tier: 'basic' as const },
-  { id: 'watermark', label: 'Watermark', icon: Droplets, tier: 'advanced' as const },
-  { id: 'metadata', label: 'Metadata', icon: FileText, tier: 'advanced' as const },
-  { id: 'share', label: 'Share', icon: Share2, tier: 'advanced' as const },
+  { id: 'qr', label: 'QR Encoding', icon: QrCode, tier: 'advanced' as const },
+  { id: 'render', label: 'Rendering / Style', icon: Palette, tier: 'advanced' as const },
+  { id: 'animation', label: 'Animation', icon: Play, tier: 'advanced' as const },
+  { id: 'output', label: 'Output / Export', icon: Download, tier: 'advanced' as const },
+  { id: 'watermark', label: 'Watermark', icon: Droplets, tier: 'professional' as const },
+  { id: 'metadata', label: 'Metadata', icon: FileText, tier: 'professional' as const },
+  { id: 'share', label: 'Share', icon: Share2, tier: 'professional' as const },
   { id: 'safety', label: 'Safety / QA', icon: Shield, tier: 'professional' as const },
 ]
 
@@ -82,8 +82,8 @@ const SECTION_KEYWORDS: Record<string, { basic: string[], advanced: string[], pr
       'epc', 'sepa', 'bank', 'transfer', 'iban', 'bic', 'upi', 'paynow', 'promptpay', 'pix',
       // Validation options
       'validate', 'validation', 'input', 'trim', 'whitespace', 'normalize', 'newlines', 'max length', 'guard',
-      // UTM
-      'utm', 'source', 'medium', 'campaign', 'term', 'tracking', 'force https',
+      // Marketing Tags
+      'marketing', 'tags', 'utm', 'source', 'medium', 'campaign', 'term', 'tracking', 'force https',
       // Bizcard
       'bizcard'
     ],

@@ -92,7 +92,7 @@ export function AdPlaceholder({
   
   return (
     <div 
-      className={`ad-placeholder bg-muted/20 border border-dashed border-muted-foreground/20 rounded flex items-center justify-center text-xs text-muted-foreground ${className}`}
+      className={`ad-placeholder bg-muted/50 border border-dashed border-muted-foreground/40 rounded flex items-center justify-center text-xs text-muted-foreground ${className}`}
       style={{ 
         width: widthStyle, 
         height: `${height}px`,
@@ -101,7 +101,7 @@ export function AdPlaceholder({
       data-ad-slot={slot}
       data-ad-format={format}
     >
-      <span className="opacity-50">Ad</span>
+      <span>Ad: {slot}</span>
     </div>
   )
 }

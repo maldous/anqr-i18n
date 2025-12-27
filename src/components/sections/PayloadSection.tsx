@@ -335,7 +335,7 @@ export function PayloadSection() {
                 />
               </div>
               <div className="space-y-2">
-                <Label className="text-muted-foreground text-xs"><HighlightedLabel>UTM Parameters</HighlightedLabel></Label>
+                <Label className="text-muted-foreground text-xs"><HighlightedLabel>Marketing Tags</HighlightedLabel></Label>
                 <Input 
                   placeholder="utm_source"
                   value={payload.url.utmSource || ''}
