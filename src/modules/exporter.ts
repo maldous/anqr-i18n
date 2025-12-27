@@ -2,9 +2,12 @@
  * Exporter Module
  * Handles PNG, WebP, GIF, and SVG export with full color support
  * Uses gifenc npm package for high-quality GIF encoding
+ * Supports native file saving on Android/iOS via Capacitor
  */
 
 import { GIFEncoder, quantize, applyPalette } from 'gifenc'
+import { Capacitor } from '@capacitor/core'
+import { Filesystem, Directory } from '@capacitor/filesystem'
 
 // ============================================
 // TYPES
@@ -352,8 +355,11 @@ export async function downloadImage(
   dpi?: number
 ): Promise<void> {
   const result = await exportImage(canvas, config, pngMetadata, dpi)
-  downloadUrl(result.url, result.filename)
-  URL.revokeObjectURL(result.url)
+  downloadUrl(result.url, result.filename, result.blob)
+  // Don't revoke URL immediately on native - file save is async
+  if (!Capacitor.isNativePlatform()) {
+    URL.revokeObjectURL(result.url)
+  }
 }
 
 // ============================================
@@ -453,8 +459,11 @@ export async function downloadGif(
   frameDelays?: number[]
 ): Promise<void> {
   const result = await exportGif(frames, config, frameDelays)
-  downloadUrl(result.url, result.filename)
-  URL.revokeObjectURL(result.url)
+  downloadUrl(result.url, result.filename, result.blob)
+  // Don't revoke URL immediately on native - file save is async
+  if (!Capacitor.isNativePlatform()) {
+    URL.revokeObjectURL(result.url)
+  }
 }
 
 // ============================================
@@ -579,8 +588,11 @@ export async function downloadSvg(
   config: Partial<ExportConfig> = {}
 ): Promise<void> {
   const result = await exportSvg(canvas, config)
-  downloadUrl(result.url, result.filename)
-  URL.revokeObjectURL(result.url)
+  downloadUrl(result.url, result.filename, result.blob)
+  // Don't revoke URL immediately on native - file save is async
+  if (!Capacitor.isNativePlatform()) {
+    URL.revokeObjectURL(result.url)
+  }
 }
 
 // ============================================
@@ -588,9 +600,54 @@ export async function downloadSvg(
 // ============================================
 
 /**
- * Download from URL
+ * Save file on native platform (Android/iOS) using Capacitor Filesystem
  */
-export function downloadUrl(url: string, filename: string): void {
+async function saveFileNative(filename: string, blob: Blob): Promise<boolean> {
+  try {
+    // Convert blob to base64
+    const base64 = await new Promise<string>((resolve, reject) => {
+      const reader = new FileReader()
+      reader.onloadend = () => {
+        const result = reader.result as string
+        // Remove the data URL prefix (e.g., "data:image/png;base64,")
+        const base64Data = result.split(',')[1]
+        resolve(base64Data)
+      }
+      reader.onerror = reject
+      reader.readAsDataURL(blob)
+    })
+
+    // Write to Documents directory
+    const result = await Filesystem.writeFile({
+      path: filename,
+      data: base64,
+      directory: Directory.Documents,
+    })
+
+    console.log('File saved to:', result.uri)
+    
+    // Show a simple alert to confirm save (toast would be better but this works)
+    alert(`Saved to Documents: ${filename}`)
+    
+    return true
+  } catch (error) {
+    console.error('Failed to save file on native platform:', error)
+    alert(`Failed to save file: ${error}`)
+    return false
+  }
+}
+
+/**
+ * Download from URL (web) or save file (native)
+ */
+export function downloadUrl(url: string, filename: string, blob?: Blob): void {
+  // On native platforms, use Filesystem API
+  if (Capacitor.isNativePlatform() && blob) {
+    saveFileNative(filename, blob) // Fire and forget
+    return
+  }
+  
+  // On web, use standard download approach
   const a = document.createElement('a')
   a.href = url
   a.download = filename

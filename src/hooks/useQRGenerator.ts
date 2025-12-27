@@ -837,6 +837,9 @@ export function useQRGenerator(): UseQRGeneratorResult {
   const download = useCallback(async () => {
     if (!canvas) return
 
+    // Show interstitial ad BEFORE download on native platforms
+    await showInterstitial('export')
+
     // Scale canvas to output dimensions if different
     let exportCanvas = canvas
     if (output.widthPx !== canvas.width || output.heightPx !== canvas.height) {
@@ -907,9 +910,6 @@ export function useQRGenerator(): UseQRGeneratorResult {
     } catch (err) {
       console.error('Download error:', err)
     }
-
-    // Show interstitial ad AFTER download completes (non-blocking)
-    showInterstitial('export')
   }, [canvas, output, render.crispEdges, animationFrames, animation.speedMs, animation.loop])
 
   // Generate all animation frames for GIF export and playback cache
