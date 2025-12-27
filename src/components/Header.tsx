@@ -1,11 +1,13 @@
 import { useQRStore, Tier } from '@/store/qr-store'
 import { Tabs, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
-import { Download, Share2, Moon, Sun, Menu, PanelLeft, Check, Grid3x3 } from 'lucide-react'
+import { Download, Share2, Moon, Sun, Menu, PanelLeft, Check, Grid3x3, Play } from 'lucide-react'
+import { Capacitor } from '@capacitor/core'
 import * as LucideIcons from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { useState, useEffect } from 'react'
 import { copyToClipboard, getShareableUrl } from '@/modules/share-utils'
+import { showRewardedAd, prepareRewardedAd } from '@/modules/admob-service'
 import { gallerySections, type GalleryCategory } from '@/data/gallery-items'
 import type { StaticPageType } from '@/components/StaticPage'
 
@@ -20,7 +22,7 @@ type HeaderPage = 'editor' | 'gallery' | StaticPageType
 const NAV_LINKS: Array<{ href: string; label: string; page: HeaderPage }> = [
   { href: '/', label: 'Generator', page: 'editor' },
   { href: '/gallery', label: 'Gallery', page: 'gallery' },
-  { href: '/docs', label: 'Docs', page: 'docs' },
+  { href: '/docs', label: 'Guide', page: 'docs' },
   { href: '/about', label: 'About', page: 'about' },
   { href: '/privacy', label: 'Privacy', page: 'privacy' },
   { href: '/terms', label: 'Terms', page: 'terms' },
@@ -39,10 +41,11 @@ interface HeaderProps {
 }
 
 export function Header({ onToggleSidebar, onExport, sidebarOpen = false, showGallery = false, activePage, galleryFilter = 'all', onGalleryFilterChange, onNavigate }: HeaderProps) {
-  const { tier, setTier, getPayloadText, qr, render, overlay } = useQRStore()
+  const { tier, setTier, getPayloadText, qr, render, overlay, activatePremiumAccess, checkPremiumAccess } = useQRStore()
   const [darkMode, setDarkMode] = useState(false)
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [copied, setCopied] = useState(false)
+  const [loadingAd, setLoadingAd] = useState(false)
 
   const resolvedPage: HeaderPage = activePage ?? (showGallery ? 'gallery' : 'editor')
   const isEditor = resolvedPage === 'editor'
@@ -55,6 +58,46 @@ export function Header({ onToggleSidebar, onExport, sidebarOpen = false, showGal
     setDarkMode(isDark)
     document.documentElement.classList.toggle('dark', isDark)
   }, [])
+
+  // Prepare premium rewarded ad on mount (for native platforms)
+  useEffect(() => {
+    if (Capacitor.isNativePlatform()) {
+      prepareRewardedAd('premium')
+    }
+  }, [])
+
+  // Handle tier change - Professional requires watching ad on native
+  const handleTierChange = async (newTier: Tier) => {
+    // If selecting Professional on native platform, require watching ad
+    if (newTier === 'professional' && Capacitor.isNativePlatform()) {
+      // If already has premium access, allow direct selection
+      if (checkPremiumAccess()) {
+        setTier(newTier)
+        return
+      }
+      
+      // Show rewarded ad
+      setLoadingAd(true)
+      try {
+        const reward = await showRewardedAd('premium')
+        if (reward) {
+          // User watched the ad, grant premium access
+          activatePremiumAccess()
+          setTier('professional')
+        }
+        // If reward is null, user didn't complete the ad - don't change tier
+      } catch (error) {
+        console.error('Failed to show rewarded ad:', error)
+      } finally {
+        setLoadingAd(false)
+        // Prepare next ad
+        prepareRewardedAd('premium')
+      }
+    } else {
+      // Web or non-professional tier - allow direct change
+      setTier(newTier)
+    }
+  }
 
   const toggleDarkMode = () => {
     const newMode = !darkMode
@@ -181,33 +224,35 @@ export function Header({ onToggleSidebar, onExport, sidebarOpen = false, showGal
           {isEditor && (
             <>
               <div className="hidden sm:block">
-                <Tabs value={tier} onValueChange={(v) => {
-                  setTier(v as Tier)
-                }}>
+                <Tabs value={tier} onValueChange={(v) => handleTierChange(v as Tier)}>
                   <TabsList className="shadow-sm">
-                    <TabsTrigger value="basic" className="text-xs px-3" title="Basic mode - Essential QR code features">
+                    <TabsTrigger value="basic" className="text-xs px-3" title="Basic mode - Essential QR code features" disabled={loadingAd}>
                       Basic
                     </TabsTrigger>
-                    <TabsTrigger value="advanced" className="text-xs px-3" title="Advanced mode - Additional styling and encoding options">
+                    <TabsTrigger value="advanced" className="text-xs px-3" title="Advanced mode - Additional styling and encoding options" disabled={loadingAd}>
                       Advanced
                     </TabsTrigger>
-                    <TabsTrigger value="professional" className="text-xs px-3" title="Professional mode - Full feature set with safety analysis">
-                      Professional
+                    <TabsTrigger value="professional" className="text-xs px-3 gap-1" title={Capacitor.isNativePlatform() && !checkPremiumAccess() ? "Watch ad to unlock Professional features for 24 hours" : "Professional mode - Full feature set"} disabled={loadingAd}>
+                      {Capacitor.isNativePlatform() && !checkPremiumAccess() && <Play className="w-3 h-3" />}
+                      Pro
                     </TabsTrigger>
                   </TabsList>
                 </Tabs>
               </div>
               <div className="sm:hidden">
-                <Select value={tier} onValueChange={(v) => {
-                  setTier(v as Tier)
-                }}>
+                <Select value={tier} onValueChange={(v) => handleTierChange(v as Tier)} disabled={loadingAd}>
                   <SelectTrigger className="w-[100px] h-9 text-xs">
                     <SelectValue />
                   </SelectTrigger>
                   <SelectContent>
                     <SelectItem value="basic">Basic</SelectItem>
                     <SelectItem value="advanced">Advanced</SelectItem>
-                    <SelectItem value="professional">Professional</SelectItem>
+                    <SelectItem value="professional">
+                      <span className="flex items-center gap-1">
+                        {Capacitor.isNativePlatform() && !checkPremiumAccess() && <Play className="w-3 h-3" />}
+                        Pro
+                      </span>
+                    </SelectItem>
                   </SelectContent>
                 </Select>
               </div>
@@ -284,8 +329,15 @@ export function Header({ onToggleSidebar, onExport, sidebarOpen = false, showGal
     </header>
 
       {/* Mobile Footer Bar - Share/Export buttons fixed at bottom (only in editor mode on mobile) */}
+      {/* On native platforms (Android/iOS), position above footer (~110px: 70px ad + ~40px footer) */}
       {isEditor && (
-        <div className="md:hidden fixed bottom-0 left-0 right-0 z-50 border-t bg-card p-3" style={{ paddingBottom: 'calc(0.75rem + var(--sab, 0px))' }}>
+        <div 
+          className="md:hidden fixed left-0 right-0 z-50 border-t bg-card p-2" 
+          style={{ 
+            bottom: Capacitor.isNativePlatform() ? '140px' : '48px',
+            paddingBottom: Capacitor.isNativePlatform() ? '0.25rem' : 'calc(0.5rem + var(--sab, 0px))' 
+          }}
+        >
           <div className="flex gap-2">
             <Button variant="outline" size="sm" className="flex-1" onClick={handleShare} title="Copy shareable link to clipboard">
               {copied ? <Check className="h-4 w-4 mr-2" /> : <Share2 className="h-4 w-4 mr-2" />}

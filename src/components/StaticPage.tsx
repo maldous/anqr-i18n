@@ -5,6 +5,7 @@
 
 import { type FormEvent, useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { AdUnit } from '@/components/AdUnit'
+import { Capacitor } from '@capacitor/core'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Textarea } from '@/components/ui/textarea'
@@ -542,7 +543,7 @@ const pages: Record<StaticPageType, PageDefinition> = {
   },
 
   docs: {
-    title: 'ANQR Documentation',
+    title: 'ANQR User Guide',
     description:
       'Complete guide to using ANQR for creating QR codes.',
     lastUpdated: LAST_UPDATED,
@@ -1247,7 +1248,7 @@ function DocsTableOfContents({
         {!mobileOpen && (
           <button
             onClick={() => setMobileOpen(true)}
-            className="fixed top-16 left-2 z-40 p-2 rounded-lg bg-card border shadow-md hover:bg-muted transition-colors"
+            className="fixed top-20 left-3 z-50 p-2.5 rounded-lg bg-primary text-primary-foreground shadow-lg hover:bg-primary/90 transition-colors"
             title="Open documentation sidebar"
           >
             <List className="h-5 w-5" />
