@@ -1,4 +1,5 @@
 import { useQRStore, SafetyMode } from '@/store/qr-store'
+import { useTranslation } from 'react-i18next'
 import { Label } from '@/components/ui/label'
 import { Slider } from '@/components/ui/slider'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
@@ -7,20 +8,21 @@ import { HighlightedLabel } from '@/lib/search-context'
 
 export function SafetySection() {
   const { safety, qa, auto, setSafetyMode, setSafetyMinModulePx, setSafetyLocks, setQaContrastCheck, setQaSimulateBlur, setQaShowHeatmap, setAutoPickVersion, setAutoPickEcc } = useQRStore()
+  const { t } = useTranslation()
 
   return (
     <div className="space-y-4">
       {/* Safety Mode */}
       <div className="space-y-2">
-        <Label><HighlightedLabel>Safety Mode</HighlightedLabel></Label>
+        <Label><HighlightedLabel>{t('safety.safetyMode')}</HighlightedLabel></Label>
         <Select value={safety.mode} onValueChange={(v) => setSafetyMode(v as SafetyMode)}>
-          <SelectTrigger title="Safety analysis mode - how strictly to check QR code readability">
+          <SelectTrigger title={t('hints.safetyMode')}>
             <SelectValue />
           </SelectTrigger>
           <SelectContent>
-            <SelectItem value="off">Off</SelectItem>
-            <SelectItem value="balanced">Balanced</SelectItem>
-            <SelectItem value="strict">Strict</SelectItem>
+            <SelectItem value="off">{t('safety.off')}</SelectItem>
+            <SelectItem value="balanced">{t('safety.balanced')}</SelectItem>
+            <SelectItem value="strict">{t('safety.strict')}</SelectItem>
           </SelectContent>
         </Select>
       </div>
@@ -30,8 +32,8 @@ export function SafetySection() {
           {/* Min Module Size */}
           <div className="space-y-2">
             <div className="flex items-center justify-between">
-              <Label><HighlightedLabel>Min Module Size</HighlightedLabel></Label>
-              <span className="text-sm text-muted-foreground">{safety.minModulePx}px</span>
+              <Label><HighlightedLabel>{t('safety.minModuleSize')}</HighlightedLabel></Label>
+              <span className="text-sm text-muted-foreground">{t('qr.nPx', { count: safety.minModulePx })}</span>
             </div>
             <Slider
               value={[safety.minModulePx]}
@@ -45,8 +47,8 @@ export function SafetySection() {
           {/* Min Quiet Zone */}
           <div className="space-y-2">
             <div className="flex items-center justify-between">
-              <Label><HighlightedLabel>Min Quiet Zone</HighlightedLabel></Label>
-              <span className="text-sm text-muted-foreground">{safety.minQuietZoneModules} modules</span>
+              <Label><HighlightedLabel>{t('safety.minQuietZone')}</HighlightedLabel></Label>
+              <span className="text-sm text-muted-foreground">{t('qr.nModules', { count: safety.minQuietZoneModules })}</span>
             </div>
             <Slider
               value={[safety.minQuietZoneModules]}
@@ -59,37 +61,37 @@ export function SafetySection() {
 
           {/* Locks */}
           <div className="space-y-2 pt-2 border-t">
-            <Label className="text-muted-foreground"><HighlightedLabel>Protection Locks</HighlightedLabel></Label>
+            <Label className="text-muted-foreground"><HighlightedLabel>{t('safety.protectionLocks')}</HighlightedLabel></Label>
             <div className="flex items-center justify-between">
-              <Label className="text-sm"><HighlightedLabel>Lock Finders</HighlightedLabel></Label>
+              <Label className="text-sm"><HighlightedLabel>{t('safety.lockFinders')}</HighlightedLabel></Label>
               <Switch 
                 checked={safety.lockFinders}
                 onCheckedChange={(checked) => setSafetyLocks({ lockFinders: checked })}
               />
             </div>
             <div className="flex items-center justify-between">
-              <Label className="text-sm"><HighlightedLabel>Lock Timing</HighlightedLabel></Label>
+              <Label className="text-sm"><HighlightedLabel>{t('safety.lockTiming')}</HighlightedLabel></Label>
               <Switch 
                 checked={safety.lockTiming}
                 onCheckedChange={(checked) => setSafetyLocks({ lockTiming: checked })}
               />
             </div>
             <div className="flex items-center justify-between">
-              <Label className="text-sm"><HighlightedLabel>Lock Alignment</HighlightedLabel></Label>
+              <Label className="text-sm"><HighlightedLabel>{t('safety.lockAlignment')}</HighlightedLabel></Label>
               <Switch 
                 checked={safety.lockAlign}
                 onCheckedChange={(checked) => setSafetyLocks({ lockAlign: checked })}
               />
             </div>
             <div className="flex items-center justify-between">
-              <Label className="text-sm"><HighlightedLabel>Lock Format Info</HighlightedLabel></Label>
+              <Label className="text-sm"><HighlightedLabel>{t('safety.lockFormat')}</HighlightedLabel></Label>
               <Switch 
                 checked={safety.lockFormat}
                 onCheckedChange={(checked) => setSafetyLocks({ lockFormat: checked })}
               />
             </div>
             <div className="flex items-center justify-between">
-              <Label className="text-sm"><HighlightedLabel>Lock Version Info</HighlightedLabel></Label>
+              <Label className="text-sm"><HighlightedLabel>{t('safety.lockVersion')}</HighlightedLabel></Label>
               <Switch 
                 checked={safety.lockVersion}
                 onCheckedChange={(checked) => setSafetyLocks({ lockVersion: checked })}
@@ -101,10 +103,10 @@ export function SafetySection() {
 
       {/* QA / Analysis */}
       <div className="space-y-2 pt-2 border-t">
-        <Label className="text-muted-foreground"><HighlightedLabel>Quality Analysis</HighlightedLabel></Label>
+        <Label className="text-muted-foreground"><HighlightedLabel>{t('safety.qualityAnalysis')}</HighlightedLabel></Label>
         
         <div className="flex items-center justify-between">
-          <Label className="text-sm"><HighlightedLabel>Contrast Check</HighlightedLabel></Label>
+          <Label className="text-sm"><HighlightedLabel>{t('safety.contrastCheck')}</HighlightedLabel></Label>
           <Switch 
             checked={qa.contrastCheck}
             onCheckedChange={setQaContrastCheck}
@@ -112,7 +114,7 @@ export function SafetySection() {
         </div>
 
         <div className="flex items-center justify-between">
-          <Label className="text-sm"><HighlightedLabel>Show Heatmap</HighlightedLabel></Label>
+          <Label className="text-sm"><HighlightedLabel>{t('safety.showHeatmap')}</HighlightedLabel></Label>
           <Switch 
             checked={qa.showHeatmap}
             onCheckedChange={setQaShowHeatmap}
@@ -121,8 +123,8 @@ export function SafetySection() {
 
         <div className="space-y-2">
           <div className="flex items-center justify-between">
-            <Label className="text-sm"><HighlightedLabel>Simulate Blur</HighlightedLabel></Label>
-            <span className="text-sm text-muted-foreground">{qa.simulateBlurPx}px</span>
+            <Label className="text-sm"><HighlightedLabel>{t('safety.simulateBlur')}</HighlightedLabel></Label>
+            <span className="text-sm text-muted-foreground">{t('qr.nPx', { count: qa.simulateBlurPx })}</span>
           </div>
           <Slider
             value={[qa.simulateBlurPx]}
@@ -135,8 +137,8 @@ export function SafetySection() {
 
         <div className="space-y-2">
           <div className="flex items-center justify-between">
-            <Label className="text-sm"><HighlightedLabel>Simulate Noise</HighlightedLabel></Label>
-            <span className="text-sm text-muted-foreground">{qa.simulateNoise}%</span>
+            <Label className="text-sm"><HighlightedLabel>{t('safety.simulateNoise')}</HighlightedLabel></Label>
+            <span className="text-sm text-muted-foreground">{t('qr.nPercent', { count: qa.simulateNoise })}</span>
           </div>
           <Slider
             value={[qa.simulateNoise]}
@@ -149,8 +151,8 @@ export function SafetySection() {
 
         <div className="space-y-2">
           <div className="flex items-center justify-between">
-            <Label className="text-sm"><HighlightedLabel>Simulate Rotation</HighlightedLabel></Label>
-            <span className="text-sm text-muted-foreground">{qa.simulateRotationDeg}°</span>
+            <Label className="text-sm"><HighlightedLabel>{t('safety.simulateRotation')}</HighlightedLabel></Label>
+            <span className="text-sm text-muted-foreground">{t('qr.nDegrees', { count: qa.simulateRotationDeg })}</span>
           </div>
           <Slider
             value={[qa.simulateRotationDeg]}
@@ -164,10 +166,10 @@ export function SafetySection() {
 
       {/* Auto-Tuning */}
       <div className="space-y-2 pt-2 border-t">
-        <Label className="text-muted-foreground"><HighlightedLabel>Auto-Tuning</HighlightedLabel></Label>
+        <Label className="text-muted-foreground"><HighlightedLabel>{t('safety.autoTuning')}</HighlightedLabel></Label>
         
         <div className="flex items-center justify-between">
-          <Label className="text-sm"><HighlightedLabel>Auto-Pick Version</HighlightedLabel></Label>
+          <Label className="text-sm"><HighlightedLabel>{t('safety.autoPickVersion')}</HighlightedLabel></Label>
           <Switch 
             checked={auto.pickVersion}
             onCheckedChange={setAutoPickVersion}
@@ -175,7 +177,7 @@ export function SafetySection() {
         </div>
 
         <div className="flex items-center justify-between">
-          <Label className="text-sm"><HighlightedLabel>Auto-Pick ECC</HighlightedLabel></Label>
+          <Label className="text-sm"><HighlightedLabel>{t('safety.autoPickEcc')}</HighlightedLabel></Label>
           <Switch 
             checked={auto.pickEcc}
             onCheckedChange={setAutoPickEcc}
@@ -184,8 +186,8 @@ export function SafetySection() {
 
         <div className="flex items-center justify-between">
           <div>
-            <Label className="text-sm"><HighlightedLabel>Auto-Reduce Intensity</HighlightedLabel></Label>
-            <p className="text-xs text-muted-foreground">Until scannable</p>
+            <Label className="text-sm"><HighlightedLabel>{t('safety.autoReduceIntensity')}</HighlightedLabel></Label>
+            <p className="text-xs text-muted-foreground">{t('safety.untilScannable')}</p>
           </div>
           <Switch 
             checked={auto.reduceIntensityUntilSafe}

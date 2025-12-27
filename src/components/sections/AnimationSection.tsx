@@ -1,4 +1,5 @@
 import { useQRStore } from '@/store/qr-store'
+import { useTranslation } from 'react-i18next'
 import { Label } from '@/components/ui/label'
 import { Input } from '@/components/ui/input'
 import { Slider } from '@/components/ui/slider'
@@ -12,14 +13,15 @@ export function AnimationSection() {
     setAnimationSpeedMs, setAnimationLoop, setAnimationBounce,
     setAnimationStartFrame, setAnimationMaxFrames, setAnimationFrameStep
   } = useQRStore()
+  const { t } = useTranslation()
 
   return (
     <div className="space-y-4">
       {/* Speed */}
       <div className="space-y-2">
         <div className="flex items-center justify-between">
-          <Label><HighlightedLabel>Frame Speed</HighlightedLabel></Label>
-          <span className="text-sm text-muted-foreground">{animation.speedMs}ms</span>
+          <Label><HighlightedLabel>{t('animation.speed')}</HighlightedLabel></Label>
+          <span className="text-sm text-muted-foreground">{t('qr.nMs', { count: animation.speedMs })}</span>
         </div>
         <Slider
           value={[animation.speedMs]}
@@ -32,21 +34,21 @@ export function AnimationSection() {
 
       {/* Loop */}
       <div className="flex items-center justify-between">
-        <Label><HighlightedLabel>Loop Animation</HighlightedLabel></Label>
+        <Label><HighlightedLabel>{t('animation.loop')}</HighlightedLabel></Label>
         <Switch 
           checked={animation.loop}
           onCheckedChange={setAnimationLoop}
-          title="Loop animation continuously"
+          title={t('hints.loopAnimation')}
         />
       </div>
 
       {/* Bounce / Ping-Pong */}
       <div className="flex items-center justify-between">
-        <Label><HighlightedLabel>Bounce (Ping-Pong)</HighlightedLabel></Label>
+        <Label><HighlightedLabel>{t('animation.bounce')}</HighlightedLabel></Label>
         <Switch 
           checked={animation.bounce}
           onCheckedChange={setAnimationBounce}
-          title="Play animation forward then backward (ping-pong)"
+          title={t('hints.bounceAnimation')}
         />
       </div>
 
@@ -56,7 +58,7 @@ export function AnimationSection() {
           {/* Start Frame */}
           <div className="space-y-2">
             <div className="flex items-center justify-between">
-              <Label><HighlightedLabel>Start Frame</HighlightedLabel></Label>
+              <Label><HighlightedLabel>{t('animation.startFrame')}</HighlightedLabel></Label>
               <span className="text-sm text-muted-foreground">{animation.startFrame}</span>
             </div>
             <Slider
@@ -71,7 +73,7 @@ export function AnimationSection() {
           {/* Max Frames */}
           <div className="space-y-2">
             <div className="flex items-center justify-between">
-              <Label><HighlightedLabel>Max Frames</HighlightedLabel></Label>
+              <Label><HighlightedLabel>{t('animation.maxFrames')}</HighlightedLabel></Label>
               <span className="text-sm text-muted-foreground">{animation.maxFrames}</span>
             </div>
             <Slider
@@ -86,8 +88,8 @@ export function AnimationSection() {
           {/* Frame Step */}
           <div className="space-y-2">
             <div className="flex items-center justify-between">
-              <Label><HighlightedLabel>Frame Step</HighlightedLabel></Label>
-              <span className="text-sm text-muted-foreground">Every {animation.frameStep} frame(s)</span>
+              <Label><HighlightedLabel>{t('animation.frameStep')}</HighlightedLabel></Label>
+              <span className="text-sm text-muted-foreground">{t('animation.everyNFrames', { count: animation.frameStep })}</span>
             </div>
             <Slider
               value={[animation.frameStep]}
@@ -100,7 +102,7 @@ export function AnimationSection() {
 
           {/* Interpolation */}
           <div className="space-y-2">
-            <Label><HighlightedLabel>Interpolation</HighlightedLabel></Label>
+            <Label><HighlightedLabel>{t('animation.interpolation')}</HighlightedLabel></Label>
             <Select 
               value={animation.interpolate} 
               onValueChange={(v) => useQRStore.setState((s) => ({ animation: { ...s.animation, interpolate: v as typeof animation.interpolate } }))}
@@ -109,9 +111,9 @@ export function AnimationSection() {
                 <SelectValue />
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value="none">None</SelectItem>
-                <SelectItem value="crossfade">Crossfade</SelectItem>
-                <SelectItem value="morph">Morph</SelectItem>
+                <SelectItem value="none">{t('animation.none')}</SelectItem>
+                <SelectItem value="crossfade">{t('animation.crossfade')}</SelectItem>
+                <SelectItem value="morph">{t('animation.morph')}</SelectItem>
               </SelectContent>
             </Select>
           </div>
@@ -123,7 +125,7 @@ export function AnimationSection() {
         <>
           {/* Temporal Dither */}
           <div className="space-y-2 pt-2 border-t">
-            <Label><HighlightedLabel>Temporal Dither</HighlightedLabel></Label>
+            <Label><HighlightedLabel>{t('animation.temporalDither')}</HighlightedLabel></Label>
             <Select 
               value={animation.temporalDither} 
               onValueChange={(v) => useQRStore.setState((s) => ({ animation: { ...s.animation, temporalDither: v as typeof animation.temporalDither } }))}
@@ -132,16 +134,16 @@ export function AnimationSection() {
                 <SelectValue />
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value="off">Off</SelectItem>
-                <SelectItem value="blue_noise">Blue Noise</SelectItem>
-                <SelectItem value="flicker_safe">Flicker Safe</SelectItem>
+                <SelectItem value="off">{t('animation.off')}</SelectItem>
+                <SelectItem value="blue_noise">{t('animation.blueNoise')}</SelectItem>
+                <SelectItem value="flicker_safe">{t('animation.flickerSafe')}</SelectItem>
               </SelectContent>
             </Select>
           </div>
 
           {/* Animation Pattern */}
           <div className="space-y-2">
-            <Label><HighlightedLabel>Generated Pattern</HighlightedLabel></Label>
+            <Label><HighlightedLabel>{t('animation.pattern')}</HighlightedLabel></Label>
             <Select 
               value={animation.pattern} 
               onValueChange={(v) => useQRStore.setState((s) => ({ animation: { ...s.animation, pattern: v as typeof animation.pattern } }))}
@@ -150,12 +152,12 @@ export function AnimationSection() {
                 <SelectValue />
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value="none">None</SelectItem>
-                <SelectItem value="pulse">Pulse</SelectItem>
-                <SelectItem value="wave">Wave</SelectItem>
-                <SelectItem value="scanline">Scanline</SelectItem>
-                <SelectItem value="shimmer">Shimmer</SelectItem>
-                <SelectItem value="drift">Drift</SelectItem>
+                <SelectItem value="none">{t('animation.none')}</SelectItem>
+                <SelectItem value="pulse">{t('animation.pulse')}</SelectItem>
+                <SelectItem value="wave">{t('animation.wave')}</SelectItem>
+                <SelectItem value="scanline">{t('animation.scanline')}</SelectItem>
+                <SelectItem value="shimmer">{t('animation.shimmer')}</SelectItem>
+                <SelectItem value="drift">{t('animation.drift')}</SelectItem>
               </SelectContent>
             </Select>
           </div>
@@ -163,8 +165,8 @@ export function AnimationSection() {
           {/* Module Jitter */}
           <div className="space-y-2">
             <div className="flex items-center justify-between">
-              <Label><HighlightedLabel>Module Jitter</HighlightedLabel></Label>
-              <span className="text-sm text-muted-foreground">{animation.moduleJitterPx}px</span>
+              <Label><HighlightedLabel>{t('animation.moduleJitter')}</HighlightedLabel></Label>
+              <span className="text-sm text-muted-foreground">{t('qr.nPx', { count: animation.moduleJitterPx })}</span>
             </div>
             <Slider
               value={[animation.moduleJitterPx]}
@@ -174,13 +176,13 @@ export function AnimationSection() {
               step={0.5}
             />
             <p className="text-xs text-muted-foreground">
-              ⚠️ May affect scannability
+              {t('hints.moduleJitterWarning')}
             </p>
           </div>
 
           {/* Color Cycle */}
           <div className="flex items-center justify-between">
-            <Label><HighlightedLabel>Color Cycle</HighlightedLabel></Label>
+            <Label><HighlightedLabel>{t('animation.colorCycle')}</HighlightedLabel></Label>
             <Switch 
               checked={animation.colorCycle}
               onCheckedChange={(checked) => useQRStore.setState((s) => ({ animation: { ...s.animation, colorCycle: checked } }))}
@@ -189,7 +191,7 @@ export function AnimationSection() {
 
           {/* Seed */}
           <div className="space-y-2">
-            <Label><HighlightedLabel>Random Seed</HighlightedLabel></Label>
+            <Label><HighlightedLabel>{t('animation.randomSeed')}</HighlightedLabel></Label>
             <Input 
               type="number"
               value={animation.seed}

@@ -1,5 +1,6 @@
 import { useQRStore } from '@/store/qr-store'
 import { Capacitor } from '@capacitor/core'
+import { useTranslation } from 'react-i18next'
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion'
 import { PayloadSection } from '@/components/sections/PayloadSection'
 import { QREncodingSection } from '@/components/sections/QREncodingSection'
@@ -32,16 +33,16 @@ import { SearchProvider, HighlightedLabel } from '@/lib/search-context'
 import { AdUnit } from '@/components/AdUnit'
 
 const SECTIONS = [
-  { id: 'payload', label: 'Payload / Data', icon: Type, tier: 'basic' as const },
-  { id: 'overlay', label: 'Overlay / Image', icon: Image, tier: 'basic' as const },
-  { id: 'qr', label: 'QR Encoding', icon: QrCode, tier: 'advanced' as const },
-  { id: 'render', label: 'Rendering / Style', icon: Palette, tier: 'advanced' as const },
-  { id: 'animation', label: 'Animation', icon: Play, tier: 'advanced' as const },
-  { id: 'output', label: 'Output / Export', icon: Download, tier: 'advanced' as const },
-  { id: 'watermark', label: 'Watermark', icon: Droplets, tier: 'professional' as const },
-  { id: 'metadata', label: 'Metadata', icon: FileText, tier: 'professional' as const },
-  { id: 'share', label: 'Share', icon: Share2, tier: 'professional' as const },
-  { id: 'safety', label: 'Safety / QA', icon: Shield, tier: 'professional' as const },
+  { id: 'payload', labelKey: 'sections.payload', icon: Type, tier: 'basic' as const },
+  { id: 'overlay', labelKey: 'sections.overlay', icon: Image, tier: 'basic' as const },
+  { id: 'qr', labelKey: 'sections.qrEncoding', icon: QrCode, tier: 'advanced' as const },
+  { id: 'render', labelKey: 'sections.rendering', icon: Palette, tier: 'advanced' as const },
+  { id: 'animation', labelKey: 'sections.animation', icon: Play, tier: 'advanced' as const },
+  { id: 'output', labelKey: 'sections.output', icon: Download, tier: 'advanced' as const },
+  { id: 'watermark', labelKey: 'sections.watermark', icon: Droplets, tier: 'professional' as const },
+  { id: 'metadata', labelKey: 'sections.metadata', icon: FileText, tier: 'professional' as const },
+  { id: 'share', labelKey: 'sections.share', icon: Share2, tier: 'professional' as const },
+  { id: 'safety', labelKey: 'sections.safety', icon: Shield, tier: 'professional' as const },
 ]
 
 // Comprehensive keywords for deep search within each section, organized by tier
@@ -425,6 +426,7 @@ interface SidebarProps {
 
 export function Sidebar({ isOpen, onClose }: SidebarProps) {
   const { tier, searchQuery, setSearchQuery } = useQRStore()
+  const { t } = useTranslation()
   const [openSections, setOpenSections] = useState<string[]>(['payload'])
   const sidebarRef = useRef<HTMLDivElement>(null)
 
@@ -479,7 +481,8 @@ export function Sidebar({ isOpen, onClose }: SidebarProps) {
     // Search filter - check section label AND keywords available at current tier
     if (searchQuery) {
       const query = searchQuery.toLowerCase()
-      const labelMatch = section.label.toLowerCase().includes(query)
+      const translatedLabel = t(section.labelKey)
+      const labelMatch = translatedLabel.toLowerCase().includes(query)
       const keywords = getAvailableKeywords(section.id, tier)
       const keywordMatch = keywords.some(keyword => keyword.toLowerCase().includes(query))
       return labelMatch || keywordMatch
@@ -496,7 +499,8 @@ export function Sidebar({ isOpen, onClose }: SidebarProps) {
         if (section.tier === 'advanced' && tier === 'basic') return false
         if (section.tier === 'professional' && tier !== 'professional') return false
         
-        const labelMatch = section.label.toLowerCase().includes(query)
+        const translatedLabel = t(section.labelKey)
+        const labelMatch = translatedLabel.toLowerCase().includes(query)
         const keywords = getAvailableKeywords(section.id, tier)
         const keywordMatch = keywords.some(keyword => keyword.toLowerCase().includes(query))
         return labelMatch || keywordMatch
@@ -577,15 +581,15 @@ export function Sidebar({ isOpen, onClose }: SidebarProps) {
             <input 
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              placeholder="Search settings..."
+              placeholder={t('header.searchSettings')}
               className="flex-1 bg-transparent border-none outline-none text-sm font-medium placeholder:text-muted-foreground"
-              title="Search for settings by name or keyword"
+              title={t('header.searchSettings')}
             />
             {searchQuery && (
               <button
                 className="h-4 w-4 flex-shrink-0 text-muted-foreground hover:text-foreground"
                 onClick={() => setSearchQuery('')}
-                title="Clear search"
+                title={t('common.reset')}
               >
                 <X className="h-4 w-4" />
               </button>
@@ -593,14 +597,14 @@ export function Sidebar({ isOpen, onClose }: SidebarProps) {
             <button 
               className="h-4 w-4 flex-shrink-0 text-muted-foreground hover:text-foreground ml-auto"
               onClick={handleReset}
-              title="Reset all settings"
+              title={t('common.reset')}
             >
               <RotateCcw className="h-4 w-4" />
             </button>
             <button 
               className="h-4 w-4 flex-shrink-0 text-muted-foreground hover:text-foreground"
               onClick={onClose}
-              title="Hide panel"
+              title={t('common.close')}
             >
               <X className="h-4 w-4" />
             </button>
@@ -614,12 +618,12 @@ export function Sidebar({ isOpen, onClose }: SidebarProps) {
               const Icon = section.icon
               return (
                 <AccordionItem key={section.id} value={section.id} className="border-none mb-[6px]">
-                  <AccordionTrigger className="hover:no-underline py-3 px-3 bg-muted/50 rounded-md shadow-sm [&>svg]:ml-auto" title={`${section.label} settings - Click to expand`}>
+                  <AccordionTrigger className="hover:no-underline py-3 px-3 bg-muted/50 rounded-md shadow-sm [&>svg]:ml-auto" title={`${t(section.labelKey)} settings - Click to expand`}>
                     <div className="flex items-center gap-2">
                       <Icon className="h-4 w-4 text-muted-foreground" />
                       <span className="text-sm font-medium">
                         <SearchProvider searchQuery={searchQuery}>
-                          <HighlightedLabel>{section.label}</HighlightedLabel>
+                          <HighlightedLabel>{t(section.labelKey)}</HighlightedLabel>
                         </SearchProvider>
                       </span>
                       {section.tier !== 'basic' && (
