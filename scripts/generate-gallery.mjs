@@ -25,8 +25,11 @@ const GALLERY_DIR = path.join(PROJECT_ROOT, 'public', 'gallery')
 const DEV_SERVER_URL = 'http://localhost:5174'
 const IMAGE_SIZE = 200 // Half size for faster loading
 const VIEWPORT = { width: 800, height: 600 }
-const CAPTURE_DELAY = 600000 // Time to wait for QR to render
-const PARALLEL_CAPTURES = 4 // Number of parallel browser pages
+const STATIC_CAPTURE_DELAY = 500 // Time to wait for static QR to render after canvas ready
+const ANIMATED_MAX_TIMEOUT = 600000 // 10 minutes max for animated GIFs
+const ANIMATED_POLL_INTERVAL = 500 // Poll every 500ms for animation readiness
+const PARALLEL_STATIC = 8 // Higher parallelism for fast static captures
+const PARALLEL_ANIMATED = 2 // Lower parallelism for slow animated captures
 
 // ============================================
 // GALLERY ITEM GENERATION (matches gallery-items.ts)
@@ -292,6 +295,69 @@ function buildUrl(params) {
   return url.toString()
 }
 
+// Wait for canvas to have non-empty content
+async function waitForCanvasReady(page, timeout = 30000) {
+  const startTime = Date.now()
+  while (Date.now() - startTime < timeout) {
+    const hasContent = await page.evaluate(() => {
+      const canvas = document.querySelector('canvas')
+      if (!canvas) return false
+      const ctx = canvas.getContext('2d')
+      const data = ctx.getImageData(0, 0, canvas.width, canvas.height).data
+      // Check if canvas has non-transparent content
+      for (let i = 3; i < data.length; i += 4) {
+        if (data[i] > 0) return true
+      }
+      return false
+    })
+    if (hasContent) return true
+    await new Promise(r => setTimeout(r, 100))
+  }
+  return false
+}
+
+// Wait for animation to be ready (detect frame changes) with 10 minute max timeout
+async function waitForAnimationReady(page, itemId) {
+  const startTime = Date.now()
+  let lastPixelSum = 0
+  let frameChangeCount = 0
+  let lastLogTime = 0
+  const requiredChanges = 3 // Need to see at least 3 frame changes
+  
+  console.log(`    [${itemId}] Waiting for animation (max ${ANIMATED_MAX_TIMEOUT / 60000} minutes)...`)
+  
+  while (Date.now() - startTime < ANIMATED_MAX_TIMEOUT) {
+    const pixelSum = await page.evaluate(() => {
+      const canvas = document.querySelector('canvas')
+      if (!canvas) return 0
+      const ctx = canvas.getContext('2d')
+      const data = ctx.getImageData(0, 0, 50, 50).data
+      return data.reduce((sum, v) => sum + v, 0)
+    })
+    
+    if (lastPixelSum !== 0 && Math.abs(pixelSum - lastPixelSum) > 1000) {
+      frameChangeCount++
+      if (frameChangeCount >= requiredChanges) {
+        const elapsed = Math.round((Date.now() - startTime) / 1000)
+        console.log(`    [${itemId}] Animation detected after ${elapsed}s`)
+        return true
+      }
+    }
+    lastPixelSum = pixelSum
+    await new Promise(r => setTimeout(r, ANIMATED_POLL_INTERVAL))
+    
+    // Log progress every 30 seconds (using separate tracker to avoid timing issues)
+    const elapsed = Date.now() - startTime
+    if (elapsed - lastLogTime >= 30000) {
+      console.log(`    [${itemId}] Still waiting... (${Math.round(elapsed / 1000)}s elapsed)`)
+      lastLogTime = elapsed
+    }
+  }
+  
+  console.log(`    [${itemId}] Warning: Animation timeout reached, capturing anyway...`)
+  return false
+}
+
 // Capture a single QR code (PNG for static, GIF for animated)
 async function captureQR(page, item) {
   const url = buildUrl(item.params)
@@ -299,43 +365,15 @@ async function captureQR(page, item) {
   await page.goto(url, { waitUntil: 'networkidle0', timeout: 300000 })
   await page.waitForSelector('canvas', { timeout: 150000 })
   
-  // Wait for rendering and any animations to load
-  const delay = item.isAnimated ? 4000 : CAPTURE_DELAY
-  await new Promise(resolve => setTimeout(resolve, delay))
+  // Wait for canvas to have content
+  await waitForCanvasReady(page)
   
   if (item.isAnimated) {
-    // For animated items, capture multiple frames from the canvas and encode as GIF
-    // Wait for the animated GIF overlay to fully load
-    console.log(`    Waiting for animation to load...`)
-    await new Promise(resolve => setTimeout(resolve, 600000))
+    // Wait for animation to be ready with proper timeout
+    await waitForAnimationReady(page, item.id)
     
-    // Wait until we see the canvas actually changing (animation is playing)
-    let animationStarted = false
-    let lastPixelSum = 0
-    for (let attempt = 0; attempt < 20; attempt++) {
-      const pixelSum = await page.evaluate(() => {
-        const canvas = document.querySelector('canvas')
-        if (!canvas) return 0
-        const ctx = canvas.getContext('2d')
-        const data = ctx.getImageData(0, 0, 50, 50).data
-        return data.reduce((sum, v) => sum + v, 0)
-      })
-      
-      if (lastPixelSum !== 0 && Math.abs(pixelSum - lastPixelSum) > 1000) {
-        animationStarted = true
-        console.log(`    Animation detected after ${attempt * 200}ms`)
-        break
-      }
-      lastPixelSum = pixelSum
-      await new Promise(r => setTimeout(r, 200))
-    }
-    
-    if (!animationStarted) {
-      console.log(`    Warning: Animation may not have started, capturing anyway...`)
-    }
-    
-    // Additional wait for animation to stabilize
-    await new Promise(resolve => setTimeout(resolve, 1000))
+    // Small stabilization delay after animation detected
+    await new Promise(resolve => setTimeout(resolve, 500))
     
     const frames = []
     const frameCount = 20 // Capture 20 frames
@@ -400,7 +438,10 @@ async function captureQR(page, item) {
     return { buffer: Buffer.from(gif.bytes()), isGif: true }
   }
   
-  // For static items, capture as PNG
+  // For static items, add small delay for rendering to complete
+  await new Promise(resolve => setTimeout(resolve, STATIC_CAPTURE_DELAY))
+  
+  // Capture as PNG
   const canvasData = await page.evaluate((size) => {
     const canvas = document.querySelector('canvas')
     if (!canvas) return null
@@ -425,40 +466,53 @@ async function captureQR(page, item) {
   return { buffer: Buffer.from(base64Data, 'base64'), isGif: false }
 }
 
-// Process items in batches
-async function processItemsBatch(browser, items, startIdx) {
-  const pages = await Promise.all(
-    Array(Math.min(PARALLEL_CAPTURES, items.length - startIdx))
-      .fill(null)
-      .map(() => browser.newPage().then(async p => {
-        await p.setViewport(VIEWPORT)
-        return p
-      }))
+// Process a single item with its own page
+async function processItem(browser, item) {
+  const page = await browser.newPage()
+  await page.setViewport(VIEWPORT)
+  
+  try {
+    const result = await captureQR(page, item)
+    const ext = result.isGif ? 'gif' : 'png'
+    const filepath = path.join(GALLERY_DIR, `${item.id}.${ext}`)
+    await fs.writeFile(filepath, result.buffer)
+    console.log(`  [OK] ${item.id}${result.isGif ? ' (GIF)' : ''}`)
+    return { id: item.id, success: true, isGif: result.isGif }
+  } catch (error) {
+    console.error(`  [FAIL] ${item.id}: ${error.message}`)
+    return { id: item.id, success: false, error: error.message }
+  } finally {
+    await page.close()
+  }
+}
+
+// Process items in parallel batches with specified parallelism
+async function processItemsBatch(browser, items, startIdx, parallelism) {
+  const batchSize = Math.min(parallelism, items.length - startIdx)
+  const batchItems = items.slice(startIdx, startIdx + batchSize)
+  
+  // Process all items in the batch truly in parallel
+  const results = await Promise.all(
+    batchItems.map(item => processItem(browser, item))
   )
   
+  return results
+}
+
+// Process a queue of items with specified parallelism
+async function processQueue(browser, items, parallelism, label, startTime) {
   const results = []
   
-  for (let i = 0; i < pages.length; i++) {
-    const itemIdx = startIdx + i
-    if (itemIdx >= items.length) break
+  for (let i = 0; i < items.length; i += parallelism) {
+    const batchResults = await processItemsBatch(browser, items, i, parallelism)
+    results.push(...batchResults)
     
-    const item = items[itemIdx]
-    const page = pages[i]
-    
-    try {
-      const result = await captureQR(page, item)
-      const ext = result.isGif ? 'gif' : 'png'
-      const filepath = path.join(GALLERY_DIR, `${item.id}.${ext}`)
-      await fs.writeFile(filepath, result.buffer)
-      results.push({ id: item.id, success: true, isGif: result.isGif })
-      console.log(`  ✓ ${item.id}${result.isGif ? ' (GIF)' : ''}`)
-    } catch (error) {
-      results.push({ id: item.id, success: false, error: error.message })
-      console.error(`  ✗ ${item.id}: ${error.message}`)
-    }
+    // Progress
+    const progress = Math.min(i + parallelism, items.length)
+    const elapsed = Math.round((Date.now() - startTime) / 1000)
+    console.log(`  [${label}] Progress: ${progress}/${items.length} (${Math.round(progress / items.length * 100)}%) - ${elapsed}s elapsed`)
   }
   
-  await Promise.all(pages.map(p => p.close()))
   return results
 }
 
@@ -467,17 +521,23 @@ async function main() {
   // Check for --gifs-only flag
   const gifsOnly = process.argv.includes('--gifs-only')
   
-  console.log('\n🎨 ANQR Gallery Generator\n')
+  console.log('\n=== ANQR Gallery Generator ===\n')
   
   // Generate items
-  let items = generateGalleryItems()
+  const allItems = generateGalleryItems()
   
-  // Filter to animated items only if --gifs-only flag is passed
+  // Separate static and animated items
+  const staticItems = allItems.filter(item => !item.isAnimated)
+  const animatedItems = allItems.filter(item => item.isAnimated)
+  
+  // Filter based on --gifs-only flag
+  let itemsToProcess
   if (gifsOnly) {
-    items = items.filter(item => item.isAnimated)
-    console.log(`📋 Filtered to ${items.length} animated items (--gifs-only)\n`)
+    itemsToProcess = animatedItems
+    console.log(`Filtered to ${animatedItems.length} animated items (--gifs-only)\n`)
   } else {
-    console.log(`📋 Generated ${items.length} gallery items\n`)
+    itemsToProcess = allItems
+    console.log(`Generated ${allItems.length} gallery items (${staticItems.length} static, ${animatedItems.length} animated)\n`)
   }
   
   // Ensure gallery directory exists
@@ -486,39 +546,49 @@ async function main() {
     await fs.rm(GALLERY_DIR, { recursive: true, force: true })
   }
   await fs.mkdir(GALLERY_DIR, { recursive: true })
-  console.log(`📁 ${gifsOnly ? 'Using' : 'Created'} ${GALLERY_DIR}\n`)
+  console.log(`${gifsOnly ? 'Using' : 'Created'} ${GALLERY_DIR}\n`)
   
   // Launch browser
-  console.log('🚀 Launching browser...\n')
+  console.log('Launching browser...\n')
   const browser = await puppeteer.launch({
     headless: 'new',
     args: ['--no-sandbox', '--disable-setuid-sandbox']
   })
   
-  // Process in batches
-  console.log(`📸 Capturing ${items.length} QR codes (${IMAGE_SIZE}x${IMAGE_SIZE}px)...\n`)
-  
+  const startTime = Date.now()
   const results = []
-  for (let i = 0; i < items.length; i += PARALLEL_CAPTURES) {
-    const batchResults = await processItemsBatch(browser, items, i)
-    results.push(...batchResults)
-    
-    // Progress
-    const progress = Math.min(i + PARALLEL_CAPTURES, items.length)
-    console.log(`\n  Progress: ${progress}/${items.length} (${Math.round(progress / items.length * 100)}%)\n`)
+  
+  // Process static items first with higher parallelism (they're fast)
+  if (!gifsOnly && staticItems.length > 0) {
+    console.log(`Capturing ${staticItems.length} static QR codes (${IMAGE_SIZE}x${IMAGE_SIZE}px, ${PARALLEL_STATIC} parallel)...\n`)
+    const staticResults = await processQueue(browser, staticItems, PARALLEL_STATIC, 'STATIC', startTime)
+    results.push(...staticResults)
+    console.log('')
+  }
+  
+  // Process animated items with lower parallelism (they take longer and need more resources)
+  if (animatedItems.length > 0 && (gifsOnly || !gifsOnly)) {
+    const animatedToProcess = gifsOnly ? itemsToProcess : animatedItems
+    if (animatedToProcess.length > 0) {
+      console.log(`Capturing ${animatedToProcess.length} animated GIFs (${IMAGE_SIZE}x${IMAGE_SIZE}px, ${PARALLEL_ANIMATED} parallel, up to ${ANIMATED_MAX_TIMEOUT / 60000}min timeout each)...\n`)
+      const animatedResults = await processQueue(browser, animatedToProcess, PARALLEL_ANIMATED, 'ANIMATED', startTime)
+      results.push(...animatedResults)
+    }
   }
   
   await browser.close()
   
   // Summary
+  const totalTime = Math.round((Date.now() - startTime) / 1000)
   const successful = results.filter(r => r.success).length
   const failed = results.filter(r => !r.success)
   
   console.log('\n' + '='.repeat(50))
-  console.log(`✅ Successfully captured: ${successful}/${items.length}`)
+  console.log(`Successfully captured: ${successful}/${items.length}`)
+  console.log(`Total time: ${totalTime}s`)
   
   if (failed.length > 0) {
-    console.log(`\n❌ Failed (${failed.length}):`)
+    console.log(`\nFailed (${failed.length}):`)
     for (const f of failed) {
       console.log(`   - ${f.id}: ${f.error}`)
     }
@@ -539,8 +609,8 @@ async function main() {
     JSON.stringify(manifest, null, 2)
   )
   
-  console.log(`\n📄 Saved manifest to ${path.join(GALLERY_DIR, 'manifest.json')}`)
-  console.log('\n🎉 Done!\n')
+  console.log(`\nSaved manifest to ${path.join(GALLERY_DIR, 'manifest.json')}`)
+  console.log('\nDone!\n')
 }
 
 main().catch(err => {
