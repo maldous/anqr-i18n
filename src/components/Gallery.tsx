@@ -170,7 +170,7 @@ export function Gallery({ filter }: GalleryProps) {
   return (
     <main className="min-h-[200px] flex-1 flex bg-background overflow-hidden transition-all duration-300">
       {/* Left ad column - matches Preview exactly */}
-      <div className="hidden lg:flex flex-col items-center justify-center w-[160px] min-h-[600px] bg-background flex-shrink-0">
+      <div className="hidden lg:flex flex-col items-center justify-center w-[160px] min-h-[600px] bg-background flex-shrink-0 px-2">
         <AdUnit slot="gallery-left" width={160} height={600} format="vertical" />
       </div>
       
@@ -179,9 +179,8 @@ export function Gallery({ filter }: GalleryProps) {
         {/* Hero section */}
         <div className="max-w-7xl mx-auto px-4 py-6">
           <div className="text-center">
-            <h1 className="text-2xl font-bold mb-2 tracking-tight text-foreground">
-              ANQR Gallery
-            </h1>
+            <h1 className="text-2xl font-bold mb-2 tracking-tight text-foreground">ANQR Gallery</h1>
+            <p className="text-sm text-muted-foreground leading-relaxed max-w-2xl mx-auto">Browse our collection of QR code styles and presets</p>
           </div>
         </div>
         
@@ -207,7 +206,7 @@ export function Gallery({ filter }: GalleryProps) {
       </div>
       
       {/* Right ad column - matches Preview exactly */}
-      <div className="hidden lg:flex flex-col items-center justify-center w-[160px] min-h-[600px] bg-background flex-shrink-0">
+      <div className="hidden lg:flex flex-col items-center justify-center w-[160px] min-h-[600px] bg-background flex-shrink-0 px-2">
         <AdUnit slot="gallery-right" width={160} height={600} format="vertical" />
       </div>
     </main>
