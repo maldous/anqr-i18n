@@ -555,9 +555,9 @@ const pages: Record<StaticPageType, PageDefinition> = {
           'The interface has three interface levels: Basic, Advanced, and Professional. Select your level using the tabs in the header. Each level unlocks additional features while keeping the interface focused on what you need.',
         ],
         bullets: [
-          'Basic: Essential QR code creation with standard content types, colors, and styles.',
-          'Advanced: Image overlays, preprocessing filters, dithering algorithms, and extended content types.',
-          'Professional: Enterprise features including payment QR codes, structured append, ECC-aware overlay, and safety analysis.',
+          'Basic: Simple QR code creation with plain text/URL content and image overlay.',
+          'Advanced: QR encoding options, rendering styles, animation, output formats, extended content types, and overlay customization.',
+          'Professional: Watermarks, metadata, sharing, safety analysis, payment QR codes, and enterprise features.',
         ],
       },
       {
@@ -577,7 +577,7 @@ const pages: Record<StaticPageType, PageDefinition> = {
       {
         heading: 'Basic Features',
         paragraphs: [
-          'The Basic level provides everything needed to create standard QR codes with customizable appearance.',
+          'The Basic level provides a streamlined interface for creating QR codes with payload content and image overlays. This is the simplest way to get started.',
         ],
       },
       {
@@ -585,6 +585,29 @@ const pages: Record<StaticPageType, PageDefinition> = {
         paragraphs: [
           'Plain Text: Encode any text up to the QR code capacity limit. Ideal for short messages, codes, or identifiers.',
           'URL: Encode web addresses. The QR code will open the URL when scanned. Supports http:// and https:// protocols.',
+        ],
+      },
+      {
+        heading: 'Image Overlay (Basic)',
+        paragraphs: [
+          'Upload an image (JPG, PNG, GIF, WebP) to blend with your QR code. Basic overlay features include:',
+        ],
+        bullets: [
+          'Upload from file: Select an image from your device.',
+          'Load from URL: Enter an image URL (must allow CORS).',
+          'Center Logo: Places image in the center, relying on error correction.',
+          'Blend: Simple alpha blending of image with QR pattern.',
+          'Intensity: Controls how strongly the overlay affects the QR code (0-100%).',
+          'Color Mode: Full Color, Grayscale, or Black & White.',
+          'Preserve Finder Patterns: Keeps corner patterns unmodified for reliable scanning.',
+        ],
+      },
+
+      // ==================== ADVANCED TIER ====================
+      {
+        heading: 'Advanced Features',
+        paragraphs: [
+          'The Advanced level unlocks QR encoding options, rendering styles, animation, output formats, extended content types, and advanced overlay customization.',
         ],
       },
       {
@@ -656,7 +679,7 @@ const pages: Record<StaticPageType, PageDefinition> = {
         ],
       },
       {
-        heading: 'Output Settings (Basic)',
+        heading: 'Output Settings',
         paragraphs: [
           'Format: Choose your export format based on use case.',
         ],
@@ -673,12 +696,19 @@ const pages: Record<StaticPageType, PageDefinition> = {
           'Width/Height: Set the output size in pixels. For print, calculate based on DPI (e.g., 300 DPI at 1 inch = 300px). Larger sizes scan more reliably at distance.',
         ],
       },
-
-      // ==================== ADVANCED TIER ====================
       {
-        heading: 'Advanced Features',
+        heading: 'Animation Settings (Advanced)',
         paragraphs: [
-          'The Advanced level adds image overlays, preprocessing filters, extended content types, and fine-grained control over rendering and dithering.',
+          'Control animated QR code behavior:',
+        ],
+        bullets: [
+          'Speed: Animation frame rate in milliseconds.',
+          'Loop: Continuous or single-play animation.',
+          'Bounce: Ping-pong animation direction.',
+          'Start Frame: Begin animation from specific frame.',
+          'Max Frames: Limit total frames in animation.',
+          'Frame Step: Skip frames for faster animation.',
+          'Interpolation: None, Crossfade, or Morph between frames.',
         ],
       },
       {
@@ -705,24 +735,12 @@ const pages: Record<StaticPageType, PageDefinition> = {
         ],
       },
       {
-        heading: 'Image Overlay',
+        heading: 'Advanced Overlay Features',
         paragraphs: [
-          'Upload an image (JPG, PNG, GIF, WebP) to blend with your QR code. The overlay is processed to maintain scannability while showing the image.',
+          'Additional overlay capabilities:',
         ],
         bullets: [
-          'Upload from file: Select an image from your device.',
-          'Load from URL: Enter an image URL (must allow CORS).',
           'Crop: Enable cropping to select a square region of your image.',
-        ],
-      },
-      {
-        heading: 'Overlay Blend Modes (Basic)',
-        paragraphs: [
-          'Basic blend modes available in Advanced level:',
-        ],
-        bullets: [
-          'Center Logo: Places image in the center, relying on error correction.',
-          'Blend: Simple alpha blending of image with QR pattern.',
           'Halftone: Classic print-style dot pattern based on image brightness.',
           'Dithered: Error-diffusion dithering for detailed reproduction.',
         ],
@@ -943,7 +961,55 @@ const pages: Record<StaticPageType, PageDefinition> = {
       {
         heading: 'Professional Features',
         paragraphs: [
-          'The Professional level adds enterprise features including payment QR codes, structured append for multi-QR sequences, ECC-aware overlay, safety analysis, and advanced output options.',
+          'The Professional level adds watermarks, metadata, sharing options, safety analysis, payment QR codes, and enterprise features.',
+        ],
+      },
+      {
+        heading: 'Watermark',
+        paragraphs: [
+          'Add watermarks to your QR codes:',
+        ],
+        bullets: [
+          'Kind: Text, Image, or Pattern watermark.',
+          'Position: Center, Corners, Edges, Behind, or Quiet Zone.',
+          'Opacity: Watermark transparency (0-100%).',
+          'Blend Mode: Normal, Multiply, Screen, or Overlay blending.',
+        ],
+      },
+      {
+        heading: 'Metadata',
+        paragraphs: [
+          'Embed metadata in exported files:',
+        ],
+        bullets: [
+          'Title, Author, Copyright, License, Description fields.',
+          'Creation Time: Embed generation timestamp.',
+          'Custom Key-Value: Add arbitrary metadata pairs.',
+        ],
+      },
+      {
+        heading: 'Sharing',
+        paragraphs: [
+          'Share your QR code configurations:',
+        ],
+        bullets: [
+          'Direct Link: Generate a shareable URL with your current settings.',
+          'Embed HTML: Get embed code for websites.',
+          'Encode Parameters: Include all settings in the share URL.',
+          'Note: Overlay images from local files cannot be shared via URL.',
+        ],
+      },
+      {
+        heading: 'Safety Analysis',
+        paragraphs: [
+          'Ensure QR codes remain scannable:',
+        ],
+        bullets: [
+          'Safety Mode: Off, Balanced, or Strict scanning requirements.',
+          'Min Module Size: Minimum pixel size per module.',
+          'Min Quiet Zone: Minimum margin modules.',
+          'Lock Finders/Timing/Align/Format/Version: Protect specific elements.',
+          'Max Overlay Intensity by ECC: Automatic intensity limits based on error correction level.',
         ],
       },
       {
@@ -958,7 +1024,7 @@ const pages: Record<StaticPageType, PageDefinition> = {
           'PromptPay (Thailand): Thai national payment system.',
           'PIX (Brazil): Brazilian instant payment with PIX key.',
           'Crypto: Bitcoin, Ethereum, Litecoin payment addresses with optional amount.',
-          'UTM Campaign Link: URLs with full UTM parameter tracking.',
+          'Marketing Campaign Link: URLs with full UTM parameter (Marketing Tags) tracking.',
           'Short Link: For use with URL shorteners for dynamic/trackable QR codes.',
           'GS1 Digital Link: Product identification with GTIN, serial, batch, expiry.',
           'App Deep Link: iOS/Android app deep links with custom schemes.',
@@ -1031,56 +1097,13 @@ const pages: Record<StaticPageType, PageDefinition> = {
         ],
       },
       {
-        heading: 'Animation Settings',
+        heading: 'Animation Settings (Professional)',
         paragraphs: [
-          'Control animated QR code behavior:',
+          'Additional professional animation features:',
         ],
         bullets: [
-          'Speed: Animation frame rate in milliseconds.',
-          'Loop: Continuous or single-play animation.',
-          'Bounce: Ping-pong animation direction.',
-          'Start Frame: Begin animation from specific frame.',
-          'Max Frames: Limit total frames in animation.',
-          'Frame Step: Skip frames for faster animation.',
-          'Interpolation: None, Crossfade, or Morph between frames.',
           'Temporal Dither: Off, Blue Noise, or Flicker Safe per-frame dithering.',
           'Pattern: None, Pulse, Wave, Scanline, Shimmer, or Drift effects.',
-        ],
-      },
-      {
-        heading: 'Watermark',
-        paragraphs: [
-          'Add watermarks to your QR codes:',
-        ],
-        bullets: [
-          'Kind: Text, Image, or Pattern watermark.',
-          'Position: Center, Corners, Edges, Behind, or Quiet Zone.',
-          'Opacity: Watermark transparency (0-100%).',
-          'Blend Mode: Normal, Multiply, Screen, or Overlay blending.',
-        ],
-      },
-      {
-        heading: 'Metadata',
-        paragraphs: [
-          'Embed metadata in exported files:',
-        ],
-        bullets: [
-          'Title, Author, Copyright, License, Description fields.',
-          'Creation Time: Embed generation timestamp.',
-          'Custom Key-Value: Add arbitrary metadata pairs.',
-        ],
-      },
-      {
-        heading: 'Safety Analysis',
-        paragraphs: [
-          'Ensure QR codes remain scannable:',
-        ],
-        bullets: [
-          'Safety Mode: Off, Balanced, or Strict scanning requirements.',
-          'Min Module Size: Minimum pixel size per module.',
-          'Min Quiet Zone: Minimum margin modules.',
-          'Lock Finders/Timing/Align/Format/Version: Protect specific elements.',
-          'Max Overlay Intensity by ECC: Automatic intensity limits based on error correction level.',
         ],
       },
 
@@ -1124,7 +1147,7 @@ const pages: Record<StaticPageType, PageDefinition> = {
       {
         heading: 'Sharing & Embedding',
         paragraphs: [
-          'Click the Share button to copy a URL with your current settings. Recipients can open this URL to see your exact configuration. Note: Overlay images from local files cannot be shared via URL.',
+          'In Professional mode, click the Share button to copy a URL with your current settings. Recipients can open this URL to see your exact configuration. Note: Overlay images from local files cannot be shared via URL.',
         ],
       },
     ],

@@ -241,14 +241,14 @@ function App() {
           
           {/* Main content area - conditionally render active page */}
           {/* Add bottom padding on mobile in editor mode to account for fixed Share/Export footer */}
-          <div className={`flex-1 flex flex-col min-h-0 overflow-hidden ${showEditor ? 'pb-14 md:pb-0' : ''}`}>
+          <div className="flex-1 flex flex-col min-h-0 overflow-hidden pb-12">
             {showEditor && <Preview sidebarOpen={sidebarOpen} />}
             {showGallery && <Gallery filter={galleryFilter} />}
             {showStaticPage && <StaticPage page={currentPage as StaticPageType} />}
           </div>
         </div>
         {/* Fixed Footer - always visible at bottom */}
-        <footer className={`border-t bg-background py-2 flex-shrink-0 transition-all duration-300 ${sidebarOpen && showEditor ? 'lg:ml-96' : ''}`} style={{ paddingBottom: 'var(--sab, 0px)' }}>
+        <footer className={`border-t bg-background py-2 fixed bottom-0 left-0 right-0 z-40 transition-all duration-300 ${sidebarOpen && showEditor ? 'lg:ml-96' : ''}`} style={{ paddingBottom: 'var(--sab, 0px)' }}>
           {/* Inner wrapper with margins to center over QR area (between ad columns) */}
           <div className="px-4 lg:mx-[160px] text-center">
             <p className="text-xs text-muted-foreground">
