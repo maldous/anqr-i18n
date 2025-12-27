@@ -88,7 +88,7 @@ export function Header({ onToggleSidebar, onExport, sidebarOpen = false, showGal
 
   return (
     <>
-    <header className={`border-b bg-card shadow-md sticky top-0 z-50 transition-all duration-300 ${sidebarOpen && isEditor ? 'lg:ml-96' : ''}`}>
+    <header className={`border-b bg-card shadow-md sticky top-0 z-50 transition-all duration-300 ${sidebarOpen && isEditor ? 'lg:ml-96' : ''}`} style={{ paddingTop: 'max(var(--sat, 0px), env(safe-area-inset-top, 0px))' }}>
       <div className="px-4 flex items-center justify-between h-[52px]">
         <div className="flex items-center gap-6">
           {/* Settings toggle - only in editor mode, placeholder space on other pages */}
@@ -285,7 +285,7 @@ export function Header({ onToggleSidebar, onExport, sidebarOpen = false, showGal
 
       {/* Mobile Footer Bar - Share/Export buttons fixed at bottom (only in editor mode on mobile) */}
       {isEditor && (
-        <div className="md:hidden fixed bottom-0 left-0 right-0 z-50 border-t bg-card p-3">
+        <div className="md:hidden fixed bottom-0 left-0 right-0 z-50 border-t bg-card p-3" style={{ paddingBottom: 'calc(0.75rem + var(--sab, 0px))' }}>
           <div className="flex gap-2">
             <Button variant="outline" size="sm" className="flex-1" onClick={handleShare} title="Copy shareable link to clipboard">
               {copied ? <Check className="h-4 w-4 mr-2" /> : <Share2 className="h-4 w-4 mr-2" />}

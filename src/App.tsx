@@ -248,7 +248,7 @@ function App() {
           </div>
         </div>
         {/* Fixed Footer - always visible at bottom */}
-        <footer className={`border-t bg-background py-2 flex-shrink-0 transition-all duration-300 ${sidebarOpen && showEditor ? 'lg:ml-96' : ''}`}>
+        <footer className={`border-t bg-background py-2 flex-shrink-0 transition-all duration-300 ${sidebarOpen && showEditor ? 'lg:ml-96' : ''}`} style={{ paddingBottom: 'var(--sab, 0px)' }}>
           {/* Inner wrapper with margins to center over QR area (between ad columns) */}
           <div className="px-4 lg:mx-[160px] text-center">
             <p className="text-xs text-muted-foreground">
