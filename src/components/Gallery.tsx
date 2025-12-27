@@ -180,7 +180,7 @@ export function Gallery({ filter }: GalleryProps) {
         <div className="max-w-7xl mx-auto px-4 py-6">
           <div className="text-center">
             <h1 className="text-2xl font-bold mb-2 tracking-tight text-foreground">ANQR Gallery</h1>
-            <p className="text-sm text-muted-foreground leading-relaxed max-w-2xl mx-auto">Browse our collection of QR code styles and presets</p>
+            <p className="text-sm text-muted-foreground leading-relaxed max-w-2xl mx-auto">Browse our collection of QR code styles and presets.</p>
           </div>
         </div>
         
