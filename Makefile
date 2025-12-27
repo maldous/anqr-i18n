@@ -103,6 +103,17 @@ android\:keystore:
 	@echo "Keystore generated at android/app/release-key.keystore"
 	@echo "IMPORTANT: Back up this file and remember your passwords!"
 
+# Bump version code and version name
+android\:bump:
+	@echo "Bumping Android version..."
+	@CURRENT_CODE=$$(grep -oP 'versionCode \K[0-9]+' android/app/build.gradle); \
+	NEW_CODE=$$((CURRENT_CODE + 1)); \
+	CURRENT_NAME=$$(grep -oP 'versionName "\K[^"]+' android/app/build.gradle); \
+	NEW_NAME="1.$$NEW_CODE"; \
+	sed -i "s/versionCode $$CURRENT_CODE/versionCode $$NEW_CODE/" android/app/build.gradle; \
+	sed -i "s/versionName \"$$CURRENT_NAME\"/versionName \"$$NEW_NAME\"/" android/app/build.gradle; \
+	echo "Version bumped: $$CURRENT_NAME ($$CURRENT_CODE) -> $$NEW_NAME ($$NEW_CODE)"
+
 # Full Android production build
 android: android\:release
 	@echo ""
@@ -115,3 +126,21 @@ android: android\:release
 	@echo "2. Create/select your app"
 	@echo "3. Upload the AAB file"
 	@echo "============================================"
+
+# Build and upload to Play Store internal testing track
+# Requires: pip install google-api-python-client oauth2client
+android\:upload:
+	@echo "Uploading to Play Store internal testing track..."
+	@if [ ! -f "play-store-key.json" ]; then \
+		echo "Error: play-store-key.json not found!"; \
+		echo "Download your service account key from Google Play Console:"; \
+		echo "  1. Go to Setup > API access"; \
+		echo "  2. Create/link a service account"; \
+		echo "  3. Download the JSON key and save as play-store-key.json"; \
+		exit 1; \
+	fi
+	@python3 scripts/upload-to-play-store.py
+
+# Build, bump version, and upload to Play Store for testing
+android\:deploy: android\:bump android\:release android\:upload
+	@echo "Deployment complete!"
