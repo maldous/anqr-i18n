@@ -106,7 +106,7 @@ type PageDefinition = {
   sections: PageSection[]
 }
 
-const LAST_UPDATED = '26 December 2025'
+const LAST_UPDATED = '1 January 2026'
 const CONTACT_EMAIL = 'email@anqr.link'
 
 const pages: Record<StaticPageType, PageDefinition> = {

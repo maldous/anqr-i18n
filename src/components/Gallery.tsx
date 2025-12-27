@@ -167,9 +167,6 @@ export function Gallery({ filter }: GalleryProps) {
             <h1 className="text-2xl font-bold mb-2 tracking-tight text-foreground">
               ANQR Gallery
             </h1>
-            <p className="text-sm text-muted-foreground max-w-2xl mx-auto">
-              Explore {totalItems} QR code variations. Click any QR code to open it in the editor.
-            </p>
           </div>
         </div>
 
@@ -185,14 +182,6 @@ export function Gallery({ filter }: GalleryProps) {
           ))}
         </div>
         
-        {/* Footer */}
-        <div className="border-t border-border bg-card">
-          <div className="max-w-7xl mx-auto px-4 py-4 text-center">
-            <p className="text-xs text-muted-foreground">
-              Gallery examples use sample data (for example, example.com). Click any QR code to open it in the editor.
-            </p>
-          </div>
-        </div>
       </div>
       
       {/* Right ad column - matches Preview exactly */}
