@@ -110,7 +110,7 @@ function GallerySectionComponent({ section, isExpanded, onToggle }: {
       
       {/* Items grid - consistent 6 columns with hover space */}
       {isExpanded && (
-        <div className="grid grid-cols-6 gap-4 py-4">
+        <div className="grid grid-cols-3 md:grid-cols-6 gap-4 py-4">
           {section.items.map(item => (
             <GalleryCard key={item.id} item={item} />
           ))}  
