@@ -4,7 +4,7 @@
  * Organized by feature category to help users understand visual differences:
  * - Plain QR: No overlay, different styles/colors/ECC
  * - Image Overlays: tsunami.jpg with different modes
- * - Animated Overlays: willie.gif with different modes  
+ * - Animated Overlays: king.gif with different modes  
  * - Blend Modes: Different overlay blend modes
  * - Color Modes: color, grayscale, bw
  * - Preprocessing: brightness, contrast, gamma, etc.
@@ -50,7 +50,7 @@ const BASE_DATA = 'https://anqr.link'
 
 // Image URLs (will be replaced with absolute URLs during generation)
 const TSUNAMI_IMG = '/tsunami.jpg'
-const WILLIE_GIF = '/willie.gif'
+const KING_GIF = '/king.gif'
 
 // ============================================
 // PLAIN QR CODES - No overlay (6 items)
@@ -239,7 +239,7 @@ imageOverlayItems.push({
 })
 
 // ============================================
-// ANIMATED OVERLAYS - willie.gif
+// ANIMATED OVERLAYS - king.gif
 // ============================================
 const animationOverlayItems: GalleryItem[] = []
 
@@ -251,7 +251,7 @@ for (const overlay of overlayModes.slice(0, 6)) {
     description: `${overlay.desc} with animation`,
     category: 'animation-overlay',
     isAnimated: true,
-    params: { data: BASE_DATA, ec: 'H', v: 6, mode: overlay.mode, img: WILLIE_GIF, intensity: 100 }
+    params: { data: BASE_DATA, ec: 'H', v: 6, mode: overlay.mode, img: KING_GIF, intensity: 100 }
   })
 }
 
@@ -263,7 +263,7 @@ for (const intensity of intensities) {
     description: `Animated blue noise at ${intensity}%`,
     category: 'animation-overlay',
     isAnimated: true,
-    params: { data: BASE_DATA, ec: 'H', v: 6, mode: 'blue-noise', img: WILLIE_GIF, intensity }
+    params: { data: BASE_DATA, ec: 'H', v: 6, mode: 'blue-noise', img: KING_GIF, intensity }
   })
 }
 
@@ -275,7 +275,7 @@ for (const cm of colorModes) {
     description: `${cm} animated overlay`,
     category: 'animation-overlay',
     isAnimated: true,
-    params: { data: BASE_DATA, ec: 'H', v: 6, mode: 'dithered', img: WILLIE_GIF, intensity: 100, colorMode: cm }
+    params: { data: BASE_DATA, ec: 'H', v: 6, mode: 'dithered', img: KING_GIF, intensity: 100, colorMode: cm }
   })
 }
 
@@ -544,9 +544,9 @@ const powerComboItems: GalleryItem[] = [
   { id: 'combo-rounded-subpixel-coral', title: 'Rounded + Subpixel Coral', description: 'High-detail subpixel rendering', category: 'power-combos',
     params: { data: BASE_DATA, ec: 'H', v: 6, style: 'rounded', finder: 'rounded', mode: 'subpixel', img: TSUNAMI_IMG, intensity: 100, fg: 'e85d04', bg: 'ffe8d6' } },
   { id: 'combo-anim-dots-halftone', title: 'Animated Dots + Halftone', description: 'Animated halftone with dot modules', category: 'power-combos', isAnimated: true,
-    params: { data: BASE_DATA, ec: 'H', v: 6, style: 'dots', finder: 'circle', mode: 'halftone', img: WILLIE_GIF, intensity: 100, fg: '1a1a2e', bg: 'eef1ff' } },
+    params: { data: BASE_DATA, ec: 'H', v: 6, style: 'dots', finder: 'circle', mode: 'halftone', img: KING_GIF, intensity: 100, fg: '1a1a2e', bg: 'eef1ff' } },
   { id: 'combo-anim-rounded-blue-noise', title: 'Animated Rounded + Blue Noise', description: 'Animated blue noise with rounded', category: 'power-combos', isAnimated: true,
-    params: { data: BASE_DATA, ec: 'H', v: 6, style: 'rounded', finder: 'rounded', mode: 'blue-noise', img: WILLIE_GIF, intensity: 100, fg: '702459', bg: 'fff5f7' } },
+    params: { data: BASE_DATA, ec: 'H', v: 6, style: 'rounded', finder: 'rounded', mode: 'blue-noise', img: KING_GIF, intensity: 100, fg: '702459', bg: 'fff5f7' } },
 ]
 
 // ============================================
