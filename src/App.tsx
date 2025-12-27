@@ -232,26 +232,19 @@ function App() {
           onGalleryFilterChange={setGalleryFilter}
           onNavigate={navigateTo}
         />
-        <div className="flex-1 flex overflow-hidden relative">
+        <div className="flex-1 flex flex-col md:flex-row overflow-hidden relative">
+          {/* Mobile layout: Sidebar and Preview in column, both visible */}
+          {/* Desktop/Tablet: Sidebar is fixed, Preview takes remaining space */}
+          
           {/* Sidebar - only shown in editor mode */}
           {showEditor && <Sidebar isOpen={sidebarOpen} onClose={() => setSidebarOpen(false)} />}
           
-          {/* Sliding container for page transitions */}
-          <div className="flex-1 relative overflow-hidden">
-            {/* Editor view */}
-            <div className={`absolute inset-0 flex transition-transform duration-500 ease-in-out ${showEditor ? 'translate-x-0' : '-translate-x-full'}`}>
-              <Preview sidebarOpen={sidebarOpen} />
-            </div>
-            
-            {/* Gallery view */}
-            <div className={`absolute inset-0 flex transition-transform duration-500 ease-in-out ${showGallery ? 'translate-x-0' : 'translate-x-full'}`}>
-              <Gallery filter={galleryFilter} />
-            </div>
-            
-            {/* Static pages (About, Privacy, Terms, Contact) */}
-            <div className={`absolute inset-0 flex transition-transform duration-500 ease-in-out ${showStaticPage ? 'translate-x-0' : 'translate-x-full'}`}>
-              {showStaticPage && <StaticPage page={currentPage as StaticPageType} />}
-            </div>
+          {/* Main content area - conditionally render active page */}
+          {/* Add bottom padding on mobile in editor mode to account for fixed Share/Export footer */}
+          <div className={`flex-1 flex flex-col min-h-0 overflow-hidden ${showEditor ? 'pb-14 md:pb-0' : ''}`}>
+            {showEditor && <Preview sidebarOpen={sidebarOpen} />}
+            {showGallery && <Gallery filter={galleryFilter} />}
+            {showStaticPage && <StaticPage page={currentPage as StaticPageType} />}
           </div>
         </div>
         {/* Fixed Footer - always visible at bottom */}

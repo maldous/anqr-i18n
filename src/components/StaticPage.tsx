@@ -8,7 +8,7 @@ import { AdUnit } from '@/components/AdUnit'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Textarea } from '@/components/ui/textarea'
-import { ChevronDown, ChevronUp, List } from 'lucide-react'
+import { ChevronDown, ChevronUp, List, X, Menu } from 'lucide-react'
 
 export type StaticPageType = 'about' | 'docs' | 'privacy' | 'terms' | 'contact'
 
@@ -1141,12 +1141,17 @@ function usePageTitle(page: StaticPageType, title: string) {
 function DocsTableOfContents({ 
   groups, 
   activeSlug, 
-  onNavigate 
+  onNavigate,
+  onClose,
+  isOpen
 }: { 
   groups: TocGroup[]
   activeSlug: string
-  onNavigate: (slug: string) => void 
+  onNavigate: (slug: string) => void
+  onClose: () => void
+  isOpen: boolean
 }) {
+  if (!isOpen) return null
   const [mobileOpen, setMobileOpen] = useState(false)
   const [expandedGroups, setExpandedGroups] = useState<Set<string>>(() => new Set(groups.map(g => g.title)))
 
@@ -1238,12 +1243,21 @@ function DocsTableOfContents({
       </div>
 
       {/* Desktop ToC - sticky sidebar */}
-      <aside className="hidden lg:block w-64 flex-shrink-0 border-r bg-muted/30">
+      <aside className="hidden lg:block w-64 flex-shrink-0 border-r bg-muted/30 docs-sidebar">
         <div className="sticky top-0 h-screen overflow-y-auto py-6 px-4 scrollbar-hide">
-          <h3 className="font-semibold text-foreground mb-4 flex items-center gap-2">
-            <List className="h-4 w-4" />
-            Contents
-          </h3>
+          <div className="flex items-center justify-between mb-4">
+            <h3 className="font-semibold text-foreground flex items-center gap-2">
+              <List className="h-4 w-4" />
+              Contents
+            </h3>
+            <button
+              onClick={onClose}
+              className="p-1 rounded hover:bg-muted transition-colors text-muted-foreground hover:text-foreground"
+              title="Close sidebar"
+            >
+              <X className="h-4 w-4" />
+            </button>
+          </div>
           {tocContent}
         </div>
       </aside>
@@ -1476,20 +1490,50 @@ export function StaticPage({ page }: StaticPageProps) {
     }
   }, [])
 
+  // State for docs sidebar visibility
+  const [isDocsSidebarOpen, setIsDocsSidebarOpen] = useState(true)
+
+  // Close docs sidebar when clicking outside
+  useEffect(() => {
+    if (!isDocsPage || !isDocsSidebarOpen) return
+    
+    const handleClickOutside = (e: MouseEvent) => {
+      const target = e.target as HTMLElement
+      if (!target.closest('.docs-sidebar') && !target.closest('.docs-sidebar-toggle')) {
+        setIsDocsSidebarOpen(false)
+      }
+    }
+    document.addEventListener('click', handleClickOutside)
+    return () => document.removeEventListener('click', handleClickOutside)
+  }, [isDocsPage, isDocsSidebarOpen])
+
   // For docs page, use a different layout with ToC
   if (isDocsPage) {
     return (
       <main className="min-h-[200px] flex-1 flex bg-muted/30 overflow-hidden transition-all duration-300">
         {/* Left ad column - hidden on docs to make room for ToC */}
-        <div className="hidden xl:flex flex-col items-end justify-center w-[160px] border-r bg-muted/10 flex-shrink-0">
+        <div className="hidden xl:flex flex-col items-center justify-center w-[160px] min-h-[600px] border-r bg-muted/10 flex-shrink-0">
           <AdUnit slot="static-left" width={160} height={600} format="vertical" />
         </div>
+
+        {/* Toggle button when sidebar is closed */}
+        {!isDocsSidebarOpen && (
+          <button
+            onClick={() => setIsDocsSidebarOpen(true)}
+            className="hidden lg:flex docs-sidebar-toggle fixed left-4 top-20 z-40 p-2 rounded-lg bg-card border shadow-md hover:bg-muted transition-colors"
+            title="Open documentation sidebar"
+          >
+            <Menu className="h-5 w-5" />
+          </button>
+        )}
 
         {/* Table of Contents */}
         <DocsTableOfContents 
           groups={tocGroups} 
           activeSlug={activeSlug} 
           onNavigate={navigateToSection}
+          onClose={() => setIsDocsSidebarOpen(false)}
+          isOpen={isDocsSidebarOpen}
         />
 
         {/* Main content */}
@@ -1554,7 +1598,7 @@ export function StaticPage({ page }: StaticPageProps) {
         </div>
 
         {/* Right ad column */}
-        <div className="hidden xl:flex flex-col items-start justify-center w-[160px] border-l bg-muted/10 flex-shrink-0">
+        <div className="hidden xl:flex flex-col items-center justify-center w-[160px] min-h-[600px] border-l bg-muted/10 flex-shrink-0">
           <AdUnit slot="static-right" width={160} height={600} format="vertical" />
         </div>
       </main>
@@ -1565,7 +1609,7 @@ export function StaticPage({ page }: StaticPageProps) {
   return (
     <main className="min-h-[200px] flex-1 flex bg-muted/30 overflow-hidden transition-all duration-300">
       {/* Left ad column */}
-      <div className="hidden lg:flex flex-col items-end justify-center w-[160px] border-r bg-muted/10 flex-shrink-0">
+      <div className="hidden lg:flex flex-col items-center justify-center w-[160px] min-h-[600px] border-r bg-muted/10 flex-shrink-0">
         <AdUnit slot="static-left" width={160} height={600} format="vertical" />
       </div>
 
@@ -1613,7 +1657,7 @@ export function StaticPage({ page }: StaticPageProps) {
       </div>
 
       {/* Right ad column */}
-      <div className="hidden lg:flex flex-col items-start justify-center w-[160px] border-l bg-muted/10 flex-shrink-0">
+      <div className="hidden lg:flex flex-col items-center justify-center w-[160px] min-h-[600px] border-l bg-muted/10 flex-shrink-0">
         <AdUnit slot="static-right" width={160} height={600} format="vertical" />
       </div>
     </main>

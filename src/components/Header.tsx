@@ -81,18 +81,30 @@ export function Header({ onToggleSidebar, onExport, sidebarOpen = false, showGal
   }
 
   return (
+    <>
     <header className={`border-b bg-card shadow-md sticky top-0 z-50 transition-all duration-300 ${sidebarOpen && isEditor ? 'lg:ml-96' : ''}`}>
       <div className="px-4 flex items-center justify-between h-[52px]">
         <div className="flex items-center gap-6">
+          {/* Settings toggle - only in editor mode */}
+          {isEditor && (
+            <button
+              onClick={onToggleSidebar}
+              className="flex items-center justify-center w-8 h-8 hover:opacity-80 cursor-pointer"
+              title="Toggle settings panel"
+            >
+              <PanelLeft className="h-6 w-6 text-muted-foreground" />
+            </button>
+          )}
+          
+          {/* ANQR logo/title - always navigates to generator */}
           <button
-            onClick={isEditor ? onToggleSidebar : undefined}
-            className={`flex items-center gap-2 transition-opacity ${isEditor ? 'hover:opacity-80 cursor-pointer' : ''}`}
-            title={isEditor ? 'Toggle settings panel' : 'ANQR - QR Code Generator'}
+            onClick={() => {
+              setMobileMenuOpen(false)
+              onNavigate?.('editor')
+            }}
+            className="flex items-center gap-2 transition-opacity hover:opacity-80 cursor-pointer"
+            title="ANQR - QR Code Generator"
           >
-            {/* Fixed-size container for icon to ensure consistent layout in both modes */}
-            <span className="w-6 h-6 flex items-center justify-center flex-shrink-0">
-              {isEditor && <PanelLeft className="h-6 w-6 text-muted-foreground" />}
-            </span>
             <span className="text-xl font-bold leading-6">ANQR</span>
           </button>
           
@@ -224,18 +236,18 @@ export function Header({ onToggleSidebar, onExport, sidebarOpen = false, showGal
       {/* Mobile Menu */}
       {mobileMenuOpen && (
         <div className="md:hidden border-t bg-card p-3 space-y-2">
-          {/* Nav links in a single horizontal row */}
-          <nav className="flex items-center justify-center gap-0.5 flex-wrap">
+          {/* Nav links as full-width vertical buttons */}
+          <nav className="flex flex-col gap-1">
             {NAV_LINKS.map(link => {
               const isActive = link.page === resolvedPage
               return (
                 <a
                   key={link.label}
                   href={link.href}
-                  className={`px-2 py-1 text-xs rounded ${
+                  className={`w-full px-4 py-3 text-sm rounded-md text-center transition-colors ${
                     isActive 
                       ? 'text-foreground bg-muted font-medium' 
-                      : 'text-muted-foreground hover:bg-muted'
+                      : 'text-muted-foreground hover:bg-muted hover:text-foreground'
                   }`}
                   onClick={(e) => {
                     if (onNavigate) {
@@ -251,69 +263,27 @@ export function Header({ onToggleSidebar, onExport, sidebarOpen = false, showGal
             })}
           </nav>
 
-          {/* Secondary links */}
-          <div className="flex items-center justify-center gap-3 text-xs text-muted-foreground">
-            <a
-              href="/privacy"
-              className="hover:underline"
-              onClick={(e) => {
-                if (onNavigate) {
-                  e.preventDefault()
-                  onNavigate('privacy')
-                }
-                setMobileMenuOpen(false)
-              }}
-            >
-              Privacy
-            </a>
-            <span>·</span>
-            <a
-              href="/terms"
-              className="hover:underline"
-              onClick={(e) => {
-                if (onNavigate) {
-                  e.preventDefault()
-                  onNavigate('terms')
-                }
-                setMobileMenuOpen(false)
-              }}
-            >
-              Terms
-            </a>
-            <span>·</span>
-            <a
-              href="/contact"
-              className="hover:underline"
-              onClick={(e) => {
-                if (onNavigate) {
-                  e.preventDefault()
-                  onNavigate('contact')
-                }
-                setMobileMenuOpen(false)
-              }}
-            >
-              Contact
-            </a>
-          </div>
-          
-          {/* Mobile Ad - Leaderboard 320x50 below nav, above buttons */}
-          <AdUnit slot="header-mobile" width={320} height={50} format="horizontal" className="mx-auto" />
-          
-          {/* Share/Export buttons */}
-          {isEditor && (
-            <div className="flex gap-2">
-              <Button variant="outline" size="sm" className="flex-1" onClick={handleShare}>
-                {copied ? <Check className="h-4 w-4 mr-2" /> : <Share2 className="h-4 w-4 mr-2" />}
-                {copied ? 'Copied!' : 'Share'}
-              </Button>
-              <Button size="sm" className="flex-1" onClick={onExport}>
-                <Download className="h-4 w-4 mr-2" />
-                Export
-              </Button>
-            </div>
-          )}
+
         </div>
       )}
+
     </header>
+
+      {/* Mobile Footer Bar - Share/Export buttons fixed at bottom (only in editor mode on mobile) */}
+      {isEditor && (
+        <div className="md:hidden fixed bottom-0 left-0 right-0 z-50 border-t bg-card shadow-[0_-2px_10px_rgba(0,0,0,0.1)] p-3">
+          <div className="flex gap-2">
+            <Button variant="outline" size="sm" className="flex-1" onClick={handleShare}>
+              {copied ? <Check className="h-4 w-4 mr-2" /> : <Share2 className="h-4 w-4 mr-2" />}
+              {copied ? 'Copied!' : 'Share'}
+            </Button>
+            <Button size="sm" className="flex-1" onClick={onExport}>
+              <Download className="h-4 w-4 mr-2" />
+              Export
+            </Button>
+          </div>
+        </div>
+      )}
+    </>
   )
 }
