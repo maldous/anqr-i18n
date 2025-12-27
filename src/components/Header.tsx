@@ -1,13 +1,19 @@
 import { useQRStore, Tier } from '@/store/qr-store'
 import { Tabs, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
-import { Download, Share2, Moon, Sun, Menu, PanelLeft, Check } from 'lucide-react'
+import { Download, Share2, Moon, Sun, Menu, PanelLeft, Check, Grid3x3 } from 'lucide-react'
+import * as LucideIcons from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { useState, useEffect } from 'react'
 import { copyToClipboard, getShareableUrl } from '@/modules/share-utils'
-import { AdUnit } from '@/components/AdUnit'
 import { gallerySections, type GalleryCategory } from '@/data/gallery-items'
 import type { StaticPageType } from '@/components/StaticPage'
+
+// Dynamic icon component for gallery filters
+function DynamicIcon({ name, className }: { name: string; className?: string }) {
+  const Icon = (LucideIcons as unknown as Record<string, React.ComponentType<{ className?: string }>>)[name]
+  return Icon ? <Icon className={className} /> : null
+}
 
 type HeaderPage = 'editor' | 'gallery' | StaticPageType
 
@@ -132,31 +138,33 @@ export function Header({ onToggleSidebar, onExport, sidebarOpen = false, showGal
               )
             })}
             
-            {/* Gallery Filter - shown after Gallery nav link */}
+            {/* Gallery Filter - icon buttons with hover titles */}
             {isGallery && (
               <>
                 <span className="text-muted-foreground mx-1">|</span>
                 <button
                   onClick={() => onGalleryFilterChange?.('all')}
-                  className={`px-3 py-2 text-sm rounded-md transition-colors ${
+                  className={`p-2 rounded-md transition-colors ${
                     galleryFilter === 'all'
-                      ? 'text-foreground bg-muted font-medium'
+                      ? 'text-foreground bg-muted'
                       : 'text-muted-foreground hover:text-foreground hover:bg-muted'
                   }`}
+                  title="All Categories"
                 >
-                  All
+                  <Grid3x3 className="w-4 h-4" />
                 </button>
                 {gallerySections.map(section => (
                   <button
                     key={section.id}
                     onClick={() => onGalleryFilterChange?.(section.id)}
-                    className={`px-3 py-2 text-sm rounded-md whitespace-nowrap transition-colors ${
+                    className={`p-2 rounded-md transition-colors ${
                       galleryFilter === section.id
-                        ? 'text-foreground bg-muted font-medium'
+                        ? 'text-foreground bg-muted'
                         : 'text-muted-foreground hover:text-foreground hover:bg-muted'
                     }`}
+                    title={section.title}
                   >
-                    {section.title.split(' ')[0]}
+                    <DynamicIcon name={section.icon} className="w-4 h-4" />
                   </button>
                 ))}
               </>
