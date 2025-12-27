@@ -5,6 +5,7 @@ import { Header } from '@/components/Header'
 import { Gallery } from '@/components/Gallery'
 import { StaticPage, type StaticPageType } from '@/components/StaticPage'
 import { useState, useEffect, useCallback } from 'react'
+import { Capacitor } from '@capacitor/core'
 import { useQRGenerator } from '@/hooks/useQRGenerator'
 import { useQRStore, type Tier } from '@/store/qr-store'
 import { parseUrlParams } from '@/modules/share-utils'
@@ -240,17 +241,22 @@ function App() {
           {showEditor && <Sidebar isOpen={sidebarOpen} onClose={() => setSidebarOpen(false)} />}
           
           {/* Main content area - conditionally render active page */}
-          {/* Add bottom padding on mobile in editor mode to account for fixed Share/Export footer */}
-          <div className="flex-1 flex flex-col min-h-0 overflow-hidden pb-12">
+          {/* On native editor: pb-48 for Footer + Share/Export + AdMob. On native non-editor: pb-32 for Footer + AdMob */}
+          {/* On web: pb-12 for footer */}
+          <div className={`flex-1 flex flex-col min-h-0 overflow-hidden ${Capacitor.isNativePlatform() ? (showEditor ? 'pb-48' : 'pb-32') : 'pb-12'}`}>
             {showEditor && <Preview sidebarOpen={sidebarOpen} />}
             {showGallery && <Gallery filter={galleryFilter} />}
             {showStaticPage && <StaticPage page={currentPage as StaticPageType} />}
           </div>
         </div>
-        {/* Fixed Footer - always visible at bottom */}
-        <footer className={`border-t bg-background py-2 fixed bottom-0 left-0 right-0 z-40 transition-all duration-300 ${sidebarOpen && showEditor ? 'lg:ml-96' : ''}`} style={{ paddingBottom: 'var(--sab, 0px)' }}>
+        {/* Fixed Footer - visible on all platforms */}
+        {/* On native: always positioned just above AdMob banner (~70px). Same position on all pages. */}
+        <footer 
+          className={`border-t bg-background py-2 fixed left-0 right-0 z-40 transition-all duration-300 ${sidebarOpen && showEditor ? 'lg:ml-96' : ''}`}
+          style={{ bottom: Capacitor.isNativePlatform() ? '100px' : '0' }}
+        >
           {/* Inner wrapper with margins to center over QR area (between ad columns) */}
-          <div className="px-4 lg:mx-[160px] text-center">
+          <div className="px-4 lg:mx-[160px] text-center flex items-center justify-center min-h-[24px]">
             <p className="text-xs text-muted-foreground">
               <a
                 href="/docs"
@@ -260,7 +266,7 @@ function App() {
                   navigateTo('docs')
                 }}
               >
-                Docs
+                Guide
               </a>
               {' · '}
               <a

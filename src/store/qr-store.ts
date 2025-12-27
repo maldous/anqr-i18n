@@ -3,6 +3,12 @@ import { create } from 'zustand'
 // Tier levels
 export type Tier = 'basic' | 'advanced' | 'professional'
 
+// Premium access state (from watching rewarded ad)
+export interface PremiumAccess {
+  active: boolean
+  expiresAt: number | null  // timestamp when access expires (24 hours from activation)
+}
+
 // Payload types - cleaned up list (removed closed/proprietary payment systems)
 export type PayloadKind = 
   // Core
@@ -211,6 +217,12 @@ export interface QRState {
   // UI tier
   tier: Tier
   setTier: (tier: Tier) => void
+  
+  // Premium access from rewarded ad (temporary Professional tier)
+  premiumAccess: PremiumAccess
+  activatePremiumAccess: () => void  // Activates 24-hour premium
+  checkPremiumAccess: () => boolean   // Returns true if premium is active
+  getEffectiveTier: () => Tier        // Returns 'professional' if premium active, else current tier
 
   // === PAYLOAD ===
   payload: {
@@ -544,10 +556,43 @@ export interface QRState {
   getPayloadText: () => string
 }
 
+// Premium access duration: 24 hours in milliseconds
+const PREMIUM_DURATION_MS = 24 * 60 * 60 * 1000
+
 export const useQRStore = create<QRState>((set, get) => ({
   // Tier
   tier: 'basic',
   setTier: (tier) => set({ tier }),
+  
+  // Premium access (from watching rewarded ad)
+  premiumAccess: {
+    active: false,
+    expiresAt: null,
+  },
+  activatePremiumAccess: () => set({
+    premiumAccess: {
+      active: true,
+      expiresAt: Date.now() + PREMIUM_DURATION_MS,
+    }
+  }),
+  checkPremiumAccess: () => {
+    const { premiumAccess } = get()
+    if (!premiumAccess.active || !premiumAccess.expiresAt) return false
+    if (Date.now() > premiumAccess.expiresAt) {
+      // Premium expired, reset state
+      set({ premiumAccess: { active: false, expiresAt: null } })
+      return false
+    }
+    return true
+  },
+  getEffectiveTier: () => {
+    const state = get()
+    // Check if premium access is active
+    if (state.checkPremiumAccess()) {
+      return 'professional'
+    }
+    return state.tier
+  },
 
   // Payload defaults
   payload: {

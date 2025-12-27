@@ -1,34 +1,84 @@
 .PHONY: dev build gallery gallery\:gif deploy android android\:init android\:sync android\:build android\:release android\:open install clean
 
+# ============================================
 # Environment variables
+# ============================================
 export ENV := PROD
+
+# ============================================
+# AdSense Configuration (for Web - anqr.link)
+# ============================================
+# Publisher ID: ca-pub-2270701384951162 (from ads.txt)
+# 
+# Create ad units at: https://www.google.com/adsense
+#   -> Ads -> By ad unit -> Display ads -> Create new
+#   After creating, copy the numeric slot ID to the variable below
+#
 export VITE_ADSENSE_ENABLED := true
-export VITE_ADSENSE_CLIENT := ca-pub-XXXXXXXXXXXXXXXX
-export VITE_ADSENSE_SLOT_LEFT_SKYSCRAPER := 1234567890
-export VITE_ADSENSE_SLOT_RIGHT_SKYSCRAPER := 1234567891
-export VITE_ADSENSE_SLOT_SIDEBAR_BOTTOM := 1234567892
-export VITE_ADSENSE_SLOT_HEADER_MOBILE := 1234567893
-export VITE_ADSENSE_SLOT_MOBILE_ABOVE_QR := 1234567894
-export VITE_ADSENSE_SLOT_MOBILE_BELOW_QR := 1234567895
-export VITE_ADSENSE_SLOT_GALLERY_LEFT := 1234567896
-export VITE_ADSENSE_SLOT_GALLERY_RIGHT := 1234567897
-export VITE_ADSENSE_SLOT_STATIC_LEFT := 1234567898
-export VITE_ADSENSE_SLOT_STATIC_RIGHT := 1234567899
-export VITE_ADSENSE_SLOT_STATIC_BOTTOM := 1234567900
-export VITE_ADSENSE_SLOT_PREVIEW_MOBILE_TOP := 1234567901
-export VITE_ADSENSE_SLOT_PREVIEW_MOBILE_BOTTOM := 1234567902
-export VITE_ADSENSE_SLOT_GALLERY_TOP := 1234567903
-export VITE_ADSENSE_SLOT_GALLERY_BOTTOM := 1234567904
-export VITE_ADSENSE_SLOT_DOCS_TOP := 1234567905
-export VITE_ADSENSE_SLOT_DOCS_BOTTOM := 1234567906
-export VITE_ADSENSE_SLOT_ABOUT_TOP := 1234567907
-export VITE_ADSENSE_SLOT_ABOUT_BOTTOM := 1234567908
-export VITE_ADSENSE_SLOT_PRIVACY_TOP := 1234567909
-export VITE_ADSENSE_SLOT_PRIVACY_BOTTOM := 1234567910
-export VITE_ADSENSE_SLOT_TERMS_TOP := 1234567911
-export VITE_ADSENSE_SLOT_TERMS_BOTTOM := 1234567912
-export VITE_ADSENSE_SLOT_CONTACT_TOP := 1234567913
-export VITE_ADSENSE_SLOT_CONTACT_BOTTOM := 1234567914
+export VITE_ADSENSE_PUBLISHER_ID := ca-pub-2270701384951162
+
+# HIGH PRIORITY - Main app ads
+export VITE_ADSENSE_SLOT_LEFT_SKYSCRAPER := 7394019600
+export VITE_ADSENSE_SLOT_RIGHT_SKYSCRAPER := 2450289467
+export VITE_ADSENSE_SLOT_PREVIEW_MOBILE_TOP := 6080937938
+export VITE_ADSENSE_SLOT_PREVIEW_MOBILE_BOTTOM := 1137207795
+export VITE_ADSENSE_SLOT_SIDEBAR_BOTTOM := 3247547575
+
+# MEDIUM PRIORITY - Gallery page ads
+export VITE_ADSENSE_SLOT_GALLERY_LEFT := 2684618407
+export VITE_ADSENSE_SLOT_GALLERY_RIGHT := 3454774598
+export VITE_ADSENSE_SLOT_GALLERY_TOP := 9058455062
+export VITE_ADSENSE_SLOT_GALLERY_BOTTOM := 4260589809
+
+# LOWER PRIORITY - Static page ads
+export VITE_ADSENSE_SLOT_STATIC_LEFT := 1934465907
+export VITE_ADSENSE_SLOT_STATIC_RIGHT := 9997606994
+export VITE_ADSENSE_SLOT_DOCS_TOP := 6006391093
+export VITE_ADSENSE_SLOT_DOCS_BOTTOM := 4693309421
+export VITE_ADSENSE_SLOT_ABOUT_TOP := 8437113318
+export VITE_ADSENSE_SLOT_ABOUT_BOTTOM := 2067146087
+export VITE_ADSENSE_SLOT_PRIVACY_TOP := 9754064417
+export VITE_ADSENSE_SLOT_PRIVACY_BOTTOM := 8440982741
+export VITE_ADSENSE_SLOT_TERMS_TOP := 5810949978
+export VITE_ADSENSE_SLOT_TERMS_BOTTOM := 5814819407
+export VITE_ADSENSE_SLOT_CONTACT_TOP := 4497868307
+export VITE_ADSENSE_SLOT_CONTACT_BOTTOM := 9562492724
+
+
+# Gallery section divider ads (between gallery sections)
+export VITE_ADSENSE_SLOT_GALLERY_AFTER_PLAIN := 5862086716
+export VITE_ADSENSE_SLOT_GALLERY_AFTER_CONTENT_TYPES := 2993214945
+export VITE_ADSENSE_SLOT_GALLERY_AFTER_STYLES := 6193275118
+export VITE_ADSENSE_SLOT_GALLERY_AFTER_COLORS := 2254030108
+export VITE_ADSENSE_SLOT_GALLERY_AFTER_IMAGE_OVERLAY := 3432198644
+export VITE_ADSENSE_SLOT_GALLERY_AFTER_ANIMATION_OVERLAY := 6001703423
+export VITE_ADSENSE_SLOT_GALLERY_AFTER_BLEND_MODES := 5382099781
+export VITE_ADSENSE_SLOT_GALLERY_AFTER_COLOR_MODES := 2062458418
+export VITE_ADSENSE_SLOT_GALLERY_AFTER_PREPROCESSING := 8436295070
+export VITE_ADSENSE_SLOT_GALLERY_AFTER_ENCODING := 4497050062
+export VITE_ADSENSE_SLOT_GALLERY_AFTER_DITHERING := 9557805050
+
+# ============================================
+# AdMob Configuration (for native Android/iOS apps)
+# ============================================
+# App ID: ca-app-pub-2270701384951162~3067761782
+# Ad units: https://admob.google.com -> Apps -> ANQR -> Ad units
+#
+# Banner Ads
+export VITE_ADMOB_BANNER_BOTTOM := ca-app-pub-2270701384951162/3063892358
+export VITE_ADMOB_BANNER_TOP := ca-app-pub-2270701384951162/6312694619
+#
+# Interstitial Ads
+export VITE_ADMOB_INTERSTITIAL_EXPORT := ca-app-pub-2270701384951162/4365188125
+export VITE_ADMOB_INTERSTITIAL_GALLERY := ca-app-pub-2270701384951162/5434727214
+export VITE_ADMOB_INTERSTITIAL_GENERATION := ca-app-pub-2270701384951162/7051061212
+#
+# Rewarded Video Ads
+export VITE_ADMOB_REWARDED_PREMIUM := ca-app-pub-2270701384951162/8325432672
+export VITE_ADMOB_REWARDED_EXPORT_HD := ca-app-pub-2270701384951162/4911983037
+#
+# Set to 'true' to show test ads while waiting for approval, 'false' for production
+export VITE_ADMOB_TESTING := true
 
 # Android SDK path (adjust for your system)
 export ANDROID_HOME ?= $(HOME)/Android/Sdk
@@ -137,20 +187,6 @@ android: android\:release
 	@echo "3. Upload the AAB file"
 	@echo "============================================"
 
-# Build and upload to Play Store internal testing track
-# Requires: pip install google-api-python-client oauth2client
-android\:upload:
-	@echo "Uploading to Play Store internal testing track..."
-	@if [ ! -f "play-store-key.json" ]; then \
-		echo "Error: play-store-key.json not found!"; \
-		echo "Download your service account key from Google Play Console:"; \
-		echo "  1. Go to Setup > API access"; \
-		echo "  2. Create/link a service account"; \
-		echo "  3. Download the JSON key and save as play-store-key.json"; \
-		exit 1; \
-	fi
-	@python3 scripts/upload-to-play-store.py
-
-# Build, bump version, and upload to Play Store for testing
-android\:deploy: android\:bump android\:release android\:upload
+# Build, bump version, and instruct release
+android\:deploy: android\:bump android\:release
 	@echo "Deployment complete!"

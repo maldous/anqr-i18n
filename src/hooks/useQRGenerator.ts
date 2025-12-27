@@ -6,6 +6,7 @@
 
 import { useState, useEffect, useRef, useCallback, useMemo } from 'react'
 import { useQRStore } from '@/store/qr-store'
+import { showInterstitial, prepareInterstitial, trackGenerationAndShowAd } from '@/modules/admob-service'
 import { QRGenerator } from '@/modules/qr-generator'
 import { applyWatermark } from '@/modules/watermark'
 import { downloadImage, downloadSvg, downloadGif } from '@/modules/exporter'
@@ -827,9 +828,17 @@ export function useQRGenerator(): UseQRGeneratorResult {
     }
   }, [currentFrame, isAnimationCacheReady, animationFrames])
 
+  // Prepare interstitial ad on mount (so it's ready when user downloads)
+  useEffect(() => {
+    prepareInterstitial('export')
+  }, [])
+
   // Download function with output scaling
   const download = useCallback(async () => {
     if (!canvas) return
+
+    // Show interstitial ad after download (non-blocking)
+    showInterstitial('export')
 
     // Scale canvas to output dimensions if different
     let exportCanvas = canvas

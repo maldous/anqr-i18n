@@ -7,22 +7,23 @@
  */
 
 import { AdSense, AdPlaceholder } from '@/components/AdPlaceholder'
+import { Capacitor } from '@capacitor/core'
 
 type SlotName =
-  | 'header-mobile'
-  | 'mobile-above-qr'
-  | 'mobile-below-qr'
+  // Main app ads
   | 'left-skyscraper'
   | 'right-skyscraper'
+  | 'preview-mobile-top'
+  | 'preview-mobile-bottom'
   | 'sidebar-bottom'
+  // Gallery page ads
   | 'gallery-left'
   | 'gallery-right'
   | 'gallery-top'
   | 'gallery-bottom'
+  // Static page ads
   | 'static-left'
   | 'static-right'
-  | 'preview-mobile-top'
-  | 'preview-mobile-bottom'
   | 'docs-top'
   | 'docs-bottom'
   | 'about-top'
@@ -33,6 +34,18 @@ type SlotName =
   | 'terms-bottom'
   | 'contact-top'
   | 'contact-bottom'
+  // Gallery section divider ads
+  | 'gallery-after-plain'
+  | 'gallery-after-content-types'
+  | 'gallery-after-styles'
+  | 'gallery-after-colors'
+  | 'gallery-after-image-overlay'
+  | 'gallery-after-animation-overlay'
+  | 'gallery-after-blend-modes'
+  | 'gallery-after-color-modes'
+  | 'gallery-after-preprocessing'
+  | 'gallery-after-encoding'
+  | 'gallery-after-dithering'
 
 /**
  * Optional environment-driven slot configuration.
@@ -41,20 +54,20 @@ type SlotName =
  * manual units. If you use AdSense Auto Ads, you can leave these empty.
  */
 const SLOT_IDS: Partial<Record<SlotName, string>> = {
-  'header-mobile': import.meta.env.VITE_ADSENSE_SLOT_HEADER_MOBILE,
-  'mobile-above-qr': import.meta.env.VITE_ADSENSE_SLOT_MOBILE_ABOVE_QR,
-  'mobile-below-qr': import.meta.env.VITE_ADSENSE_SLOT_MOBILE_BELOW_QR,
+  // Main app ads
   'left-skyscraper': import.meta.env.VITE_ADSENSE_SLOT_LEFT_SKYSCRAPER,
   'right-skyscraper': import.meta.env.VITE_ADSENSE_SLOT_RIGHT_SKYSCRAPER,
+  'preview-mobile-top': import.meta.env.VITE_ADSENSE_SLOT_PREVIEW_MOBILE_TOP,
+  'preview-mobile-bottom': import.meta.env.VITE_ADSENSE_SLOT_PREVIEW_MOBILE_BOTTOM,
   'sidebar-bottom': import.meta.env.VITE_ADSENSE_SLOT_SIDEBAR_BOTTOM,
+  // Gallery page ads
   'gallery-left': import.meta.env.VITE_ADSENSE_SLOT_GALLERY_LEFT,
   'gallery-right': import.meta.env.VITE_ADSENSE_SLOT_GALLERY_RIGHT,
   'gallery-top': import.meta.env.VITE_ADSENSE_SLOT_GALLERY_TOP,
   'gallery-bottom': import.meta.env.VITE_ADSENSE_SLOT_GALLERY_BOTTOM,
+  // Static page ads
   'static-left': import.meta.env.VITE_ADSENSE_SLOT_STATIC_LEFT,
   'static-right': import.meta.env.VITE_ADSENSE_SLOT_STATIC_RIGHT,
-  'preview-mobile-top': import.meta.env.VITE_ADSENSE_SLOT_PREVIEW_MOBILE_TOP,
-  'preview-mobile-bottom': import.meta.env.VITE_ADSENSE_SLOT_PREVIEW_MOBILE_BOTTOM,
   'docs-top': import.meta.env.VITE_ADSENSE_SLOT_DOCS_TOP,
   'docs-bottom': import.meta.env.VITE_ADSENSE_SLOT_DOCS_BOTTOM,
   'about-top': import.meta.env.VITE_ADSENSE_SLOT_ABOUT_TOP,
@@ -65,6 +78,18 @@ const SLOT_IDS: Partial<Record<SlotName, string>> = {
   'terms-bottom': import.meta.env.VITE_ADSENSE_SLOT_TERMS_BOTTOM,
   'contact-top': import.meta.env.VITE_ADSENSE_SLOT_CONTACT_TOP,
   'contact-bottom': import.meta.env.VITE_ADSENSE_SLOT_CONTACT_BOTTOM,
+  // Gallery section divider ads
+  'gallery-after-plain': import.meta.env.VITE_ADSENSE_SLOT_GALLERY_AFTER_PLAIN,
+  'gallery-after-content-types': import.meta.env.VITE_ADSENSE_SLOT_GALLERY_AFTER_CONTENT_TYPES,
+  'gallery-after-styles': import.meta.env.VITE_ADSENSE_SLOT_GALLERY_AFTER_STYLES,
+  'gallery-after-colors': import.meta.env.VITE_ADSENSE_SLOT_GALLERY_AFTER_COLORS,
+  'gallery-after-image-overlay': import.meta.env.VITE_ADSENSE_SLOT_GALLERY_AFTER_IMAGE_OVERLAY,
+  'gallery-after-animation-overlay': import.meta.env.VITE_ADSENSE_SLOT_GALLERY_AFTER_ANIMATION_OVERLAY,
+  'gallery-after-blend-modes': import.meta.env.VITE_ADSENSE_SLOT_GALLERY_AFTER_BLEND_MODES,
+  'gallery-after-color-modes': import.meta.env.VITE_ADSENSE_SLOT_GALLERY_AFTER_COLOR_MODES,
+  'gallery-after-preprocessing': import.meta.env.VITE_ADSENSE_SLOT_GALLERY_AFTER_PREPROCESSING,
+  'gallery-after-encoding': import.meta.env.VITE_ADSENSE_SLOT_GALLERY_AFTER_ENCODING,
+  'gallery-after-dithering': import.meta.env.VITE_ADSENSE_SLOT_GALLERY_AFTER_DITHERING,
 }
 
 function isNumericSlot(value: string | undefined | null): value is string {
@@ -98,9 +123,20 @@ export function AdUnit({
   responsive = true,
 }: AdUnitProps) {
   const slotId = resolveSlotId(slot)
+  
+  // Check if running in native app (Android/iOS via Capacitor)
+  // AdSense doesn't work in native WebViews - AdMob handles ads there instead
+  const isNative = Capacitor.isNativePlatform()
+  
+  // On native platforms, don't render inline web ads at all
+  // AdMob banner ads are shown separately via admob-service.ts
+  if (isNative) {
+    return null
+  }
+  
   const enabled = import.meta.env.PROD && import.meta.env.VITE_ADSENSE_ENABLED !== 'false' && !!slotId
 
-  // If you rely on AdSense Auto Ads only, keeping placeholders here is fine.
+  // Show placeholder in development or when slot not configured (web only)
   if (!enabled) {
     return <AdPlaceholder slot={slot} width={width} height={height} className={className} format={format} />
   }

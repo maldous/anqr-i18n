@@ -3,8 +3,10 @@
  * Hero-style gallery showcasing ANQR features organized by category
  */
 
-import { useState, useMemo, useRef } from 'react'
+import { useState, useMemo, useRef, useEffect } from 'react'
 import { ChevronDown, ChevronUp, Grid3x3 } from 'lucide-react'
+import { Capacitor } from '@capacitor/core'
+import { showInterstitial } from '@/modules/admob-service'
 import * as LucideIcons from 'lucide-react'
 import { AdUnit } from '@/components/AdUnit'
 import { 
@@ -175,6 +177,11 @@ export function Gallery({ filter }: GalleryProps) {
     new Set(gallerySections.map(s => s.id))
   )
   const [mobileFilter, setMobileFilter] = useState<GalleryCategory | 'all'>('all')
+  
+  // Show interstitial ad when Gallery opens (on native apps)
+  useEffect(() => {
+    showInterstitial('gallery')
+  }, [])
   
   const filteredSections = useMemo(() => {
     if (filter === 'all') return gallerySections

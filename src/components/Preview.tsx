@@ -1,6 +1,7 @@
 import { Loader2, AlertTriangle, Eye, Thermometer, RotateCw, Sparkles } from 'lucide-react'
 import { useQRGenerator } from '@/hooks/useQRGenerator'
 import { useState, useEffect, useMemo, useRef, useCallback } from 'react'
+import { Capacitor } from '@capacitor/core'
 import { AdUnit } from '@/components/AdUnit'
 import { useQRStore } from '@/store/qr-store'
 import { analyzeContrast } from '@/modules/safety-analyzer'
