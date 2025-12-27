@@ -1242,8 +1242,8 @@ function DocsTableOfContents({
         )}
       </div>
 
-      {/* Desktop ToC - sticky sidebar */}
-      <aside className="hidden lg:block w-64 flex-shrink-0 border-r bg-background docs-sidebar">
+      {/* Desktop ToC - sticky sidebar with slide animation */}
+      <aside className="hidden lg:block w-64 flex-shrink-0 border-r bg-background docs-sidebar transition-all duration-300 ease-in-out">
         <div className="sticky top-0 h-screen overflow-y-auto py-6 px-4 scrollbar-hide">
           <div className="flex items-center justify-between mb-4">
             <h3 className="font-semibold text-foreground flex items-center gap-2">
@@ -1490,8 +1490,8 @@ export function StaticPage({ page }: StaticPageProps) {
     }
   }, [])
 
-  // State for docs sidebar visibility
-  const [isDocsSidebarOpen, setIsDocsSidebarOpen] = useState(true)
+  // State for docs sidebar visibility - starts collapsed
+  const [isDocsSidebarOpen, setIsDocsSidebarOpen] = useState(false)
 
   // Note: Click outside to close is disabled - user must click X button to close sidebar
 
@@ -1500,7 +1500,7 @@ export function StaticPage({ page }: StaticPageProps) {
     return (
       <main className="min-h-[200px] flex-1 flex bg-background overflow-hidden transition-all duration-300">
         {/* Left ad column - hidden on docs to make room for ToC */}
-        <div className="hidden xl:flex flex-col items-center justify-center w-[160px] min-h-[600px] bg-background flex-shrink-0">
+        <div className="hidden xl:flex flex-col items-center justify-center w-[160px] min-h-[600px] bg-background flex-shrink-0 px-2">
           <AdUnit slot="static-left" width={160} height={600} format="vertical" />
         </div>
 
@@ -1531,14 +1531,22 @@ export function StaticPage({ page }: StaticPageProps) {
 
         {/* Main content */}
         <div ref={contentRef} className="flex-1 overflow-y-auto bg-background scrollbar-hide">
-          <article className="max-w-3xl mx-auto px-4 sm:px-6 py-8 sm:py-12">
-            <header className="mb-8">
-              <h1 className="text-2xl sm:text-3xl font-bold text-foreground">{def.title}</h1>
-              <p className="mt-3 text-sm sm:text-base text-muted-foreground leading-relaxed">{def.description}</p>
-              {def.lastUpdated && (
-                <p className="mt-3 text-xs sm:text-sm text-muted-foreground">Last updated: {def.lastUpdated}</p>
-              )}
-            </header>
+          {/* Centered header section like Gallery */}
+          <div className="max-w-7xl mx-auto px-4 py-6">
+            <div className="text-center">
+              <h1 className="text-2xl font-bold mb-2 tracking-tight text-foreground">{def.title}</h1>
+              <p className="text-sm text-muted-foreground leading-relaxed max-w-2xl mx-auto">{def.description}</p>
+            </div>
+          </div>
+          
+          {/* Horizontal ad below header */}
+          <div className="max-w-7xl mx-auto px-4 py-4">
+            <div className="flex justify-center">
+              <AdUnit slot="docs-top" width={728} height={90} format="horizontal" />
+            </div>
+          </div>
+
+          <article className="max-w-3xl mx-auto px-4 sm:px-6 py-4">
 
             <div className="space-y-8 sm:space-y-10">
               {def.sections.map((section) => {
@@ -1582,16 +1590,19 @@ export function StaticPage({ page }: StaticPageProps) {
               })}
             </div>
 
-            <div className="mt-12 pt-8 border-t border-border">
-              <a href="/" className="text-sm text-primary hover:underline">
-                Back to generator
-              </a>
+            {/* Bottom horizontal ad */}
+            <div className="mt-8 flex justify-center">
+              <AdUnit slot="docs-bottom" width={728} height={90} format="horizontal" />
+            </div>
+
+            <div className="mt-8 pt-4 border-t border-border text-center">
+              <p className="text-xs text-muted-foreground">Last Updated: {LAST_UPDATED}</p>
             </div>
           </article>
         </div>
 
         {/* Right ad column */}
-        <div className="hidden xl:flex flex-col items-center justify-center w-[160px] min-h-[600px] bg-background flex-shrink-0">
+        <div className="hidden xl:flex flex-col items-center justify-center w-[160px] min-h-[600px] bg-background flex-shrink-0 px-2">
           <AdUnit slot="static-right" width={160} height={600} format="vertical" />
         </div>
       </main>
@@ -1602,21 +1613,28 @@ export function StaticPage({ page }: StaticPageProps) {
   return (
     <main className="min-h-[200px] flex-1 flex bg-background overflow-hidden transition-all duration-300">
       {/* Left ad column */}
-      <div className="hidden lg:flex flex-col items-center justify-center w-[160px] min-h-[600px] bg-background flex-shrink-0">
+      <div className="hidden lg:flex flex-col items-center justify-center w-[160px] min-h-[600px] bg-background flex-shrink-0 px-2">
         <AdUnit slot="static-left" width={160} height={600} format="vertical" />
       </div>
 
       {/* Main content */}
       <div className="flex-1 overflow-y-auto bg-background scrollbar-hide">
-        <article className="max-w-3xl mx-auto px-6 py-12">
-          <header className="mb-8">
-            <h1 className="text-3xl font-bold text-foreground">{def.title}</h1>
-            <p className="mt-3 text-base text-muted-foreground leading-relaxed">{def.description}</p>
-            {def.lastUpdated && (
-              <p className="mt-3 text-sm text-muted-foreground">Last updated: {def.lastUpdated}</p>
-            )}
-          </header>
+        {/* Centered header section like Gallery */}
+        <div className="max-w-7xl mx-auto px-4 py-6">
+          <div className="text-center">
+            <h1 className="text-2xl font-bold mb-2 tracking-tight text-foreground">{def.title}</h1>
+            <p className="text-sm text-muted-foreground leading-relaxed max-w-2xl mx-auto">{def.description}</p>
+          </div>
+        </div>
+        
+        {/* Horizontal ad below header */}
+        <div className="max-w-7xl mx-auto px-4 py-4">
+          <div className="flex justify-center">
+            <AdUnit slot={`${page}-top`} width={728} height={90} format="horizontal" />
+          </div>
+        </div>
 
+        <article className="max-w-3xl mx-auto px-6 py-4">
           <div className="space-y-10">
             {def.sections.map((section) => (
               <section key={section.heading} className="space-y-4">
@@ -1641,16 +1659,19 @@ export function StaticPage({ page }: StaticPageProps) {
             {page === 'contact' && <ContactForm />}
           </div>
 
-          <div className="mt-12 pt-8 border-t border-border">
-            <a href="/" className="text-sm text-primary hover:underline">
-              Back to generator
-            </a>
+          {/* Bottom horizontal ad */}
+          <div className="mt-8 flex justify-center">
+            <AdUnit slot={`${page}-bottom`} width={728} height={90} format="horizontal" />
+          </div>
+
+          <div className="mt-8 pt-4 border-t border-border text-center">
+            <p className="text-xs text-muted-foreground">Last Updated: {LAST_UPDATED}</p>
           </div>
         </article>
       </div>
 
       {/* Right ad column */}
-      <div className="hidden lg:flex flex-col items-center justify-center w-[160px] min-h-[600px] bg-background flex-shrink-0">
+      <div className="hidden lg:flex flex-col items-center justify-center w-[160px] min-h-[600px] bg-background flex-shrink-0 px-2">
         <AdUnit slot="static-right" width={160} height={600} format="vertical" />
       </div>
     </main>
