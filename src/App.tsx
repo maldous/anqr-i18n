@@ -253,7 +253,7 @@ function App() {
         {/* On native: always positioned just above AdMob banner (~70px). Same position on all pages. */}
         <footer 
           className={`border-t bg-background py-2 fixed left-0 right-0 z-40 transition-all duration-300 ${sidebarOpen && showEditor ? 'lg:ml-96' : ''}`}
-          style={{ bottom: Capacitor.isNativePlatform() ? '100px' : '0' }}
+          style={{ bottom: Capacitor.isNativePlatform() ? '50px' : '0' }}
         >
           {/* Inner wrapper with margins to center over QR area (between ad columns) */}
           <div className="px-4 lg:mx-[160px] text-center flex items-center justify-center min-h-[24px]">
