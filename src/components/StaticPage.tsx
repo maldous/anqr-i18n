@@ -1248,7 +1248,7 @@ function DocsTableOfContents({
         {!mobileOpen && (
           <button
             onClick={() => setMobileOpen(true)}
-            className="fixed top-20 left-3 z-50 p-2.5 rounded-lg bg-primary text-primary-foreground shadow-lg hover:bg-primary/90 transition-colors"
+            className="fixed top-32 left-3 z-50 p-2.5 rounded-lg bg-primary text-primary-foreground shadow-lg hover:bg-primary/90 transition-colors"
             title="Open documentation sidebar"
           >
             <List className="h-5 w-5" />

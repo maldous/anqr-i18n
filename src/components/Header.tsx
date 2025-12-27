@@ -334,7 +334,7 @@ export function Header({ onToggleSidebar, onExport, sidebarOpen = false, showGal
         <div 
           className="md:hidden fixed left-0 right-0 z-50 border-t bg-card p-2" 
           style={{ 
-            bottom: Capacitor.isNativePlatform() ? '140px' : '48px',
+            bottom: Capacitor.isNativePlatform() ? '90px' : '48px',
             paddingBottom: Capacitor.isNativePlatform() ? '0.25rem' : 'calc(0.5rem + var(--sab, 0px))' 
           }}
         >
