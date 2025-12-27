@@ -114,20 +114,20 @@ const pages: Record<StaticPageType, PageDefinition> = {
   about: {
     title: 'About ANQR',
     description:
-      'ANQR is a free, browser-based QR code generator with no account required.',
+      'ANQR is a free QR code generator that runs entirely on your device — no account required.',
     lastUpdated: LAST_UPDATED,
     sections: [
       {
         heading: 'What is ANQR?',
         paragraphs: [
-          'ANQR (pronounced "anchor") is a free online QR code generator that runs entirely in your web browser. Create QR codes for URLs, text, Wi-Fi credentials, contact cards, calendar events, and more.',
-          'The tool is designed for individuals, small businesses, marketers, and developers who need to create QR codes quickly without signing up for an account or installing software.',
+          'ANQR (pronounced "anchor") is a free QR code generator that runs entirely on your device — your computer, phone, or tablet. Create QR codes for URLs, text, Wi-Fi credentials, contact cards, calendar events, and more.',
+          'The tool is designed for individuals, small businesses, marketers, and developers who need to create QR codes quickly without signing up for an account. Your data never leaves your device.',
         ],
       },
       {
         heading: 'Key features',
         bullets: [
-          'Generate QR codes instantly in your browser — no server uploads, no account required.',
+          'Generate QR codes instantly on your device — no server uploads, no account required.',
           'Customise appearance with colours, module styles, finder patterns, and image overlays.',
           'Export in multiple formats: PNG, SVG, WebP, and animated GIF.',
           'Advanced options for error correction, version control, and encoding modes.',
@@ -138,8 +138,8 @@ const pages: Record<StaticPageType, PageDefinition> = {
       {
         heading: 'How ANQR works',
         paragraphs: [
-          'ANQR processes everything locally in your browser using JavaScript. The text or data you enter to create a QR code never leaves your device — it is encoded directly on your computer or phone.',
-          'When you upload an overlay image from your device, it is processed locally. If you load an image from a URL, your browser fetches that image directly from its host server.',
+          'ANQR processes everything locally on your device. The text or data you enter to create a QR code never leaves your device — it is encoded directly on your computer, phone, or tablet without being sent to any server.',
+          'When you upload an overlay image, it is processed locally on your device. If you load an image from a URL, it is fetched directly from its host server.',
           'We do not store, log, or have access to the content you encode into QR codes.',
         ],
       },
@@ -153,7 +153,7 @@ const pages: Record<StaticPageType, PageDefinition> = {
         heading: 'Advertising and how we stay free',
         paragraphs: [
           'ANQR is free to use and supported by advertising. We display ads through Google AdSense and potentially other advertising partners.',
-          'These advertising services may use cookies and similar technologies to serve ads based on your interests and browsing history. You can learn more about this in our Privacy Policy, and you can manage your ad preferences through your browser settings or Google\'s Ads Settings.',
+          'These advertising services may use cookies and similar technologies to serve ads based on your interests and browsing history. You can learn more about this in our Privacy Policy, and you can manage your ad preferences through your device settings or Google\'s Ads Settings.',
           'We believe in transparency: ads help us keep the tool free and accessible to everyone without requiring subscriptions or paywalls.',
         ],
       },
@@ -187,7 +187,7 @@ const pages: Record<StaticPageType, PageDefinition> = {
       {
         heading: 'Summary',
         paragraphs: [
-          'ANQR is a browser-based QR code generator. We do not require you to create an account, and QR codes are generated locally in your browser — we do not have access to the content you encode.',
+          'ANQR is a QR code generator that runs entirely on your device. We do not require you to create an account, and QR codes are generated locally — we do not have access to the content you encode.',
           'We use Google AdSense for advertising and may use analytics services. These services collect information through cookies and similar technologies. This policy explains what data is collected, how it is used, and your rights.',
         ],
       },
@@ -202,7 +202,7 @@ const pages: Record<StaticPageType, PageDefinition> = {
       {
         heading: 'Cookies and third-party technologies',
         paragraphs: [
-          'ANQR does not set any first-party cookies. Your preferences (such as dark mode) are stored locally in your browser using localStorage, which is not transmitted to any server.',
+          'ANQR does not set any first-party cookies. Your preferences (such as dark mode) are stored locally on your device, which is not transmitted to any server.',
           'However, our advertising partners (Google AdSense) and hosting provider may use cookies and similar tracking technologies:',
         ],
         bullets: [
@@ -377,7 +377,7 @@ const pages: Record<StaticPageType, PageDefinition> = {
       {
         heading: 'User content license',
         paragraphs: [
-          'By using ANQR, you grant us no rights to your content — all QR code generation happens locally in your browser and we do not access, store, or transmit your encoded data.',
+          'By using ANQR, you grant us no rights to your content — all QR code generation happens locally on your device and we do not access, store, or transmit your encoded data.',
         ],
       },
       {
@@ -485,13 +485,13 @@ const pages: Record<StaticPageType, PageDefinition> = {
         heading: 'Email',
         paragraphs: [
           `For all enquiries: ${CONTACT_EMAIL}`,
-          'This is the most reliable way to reach us and is recommended for detailed questions, business enquiries, or if the contact form does not work in your browser.',
+          'This is the most reliable way to reach us and is recommended for detailed questions, business enquiries, or if the contact form does not work on your device.',
         ],
       },
       {
         heading: 'Contact form',
         paragraphs: [
-          'Use the form below to send us a message directly. If the form does not submit successfully (which can happen with some browser configurations), please use email instead.',
+          'Use the form below to send us a message directly. If the form does not submit successfully, please use email instead.',
         ],
       },
       {
@@ -536,7 +536,7 @@ const pages: Record<StaticPageType, PageDefinition> = {
         heading: 'DMCA Contact',
         paragraphs: [
           `Send DMCA notices to: ${CONTACT_EMAIL}`,
-          'Please include "DMCA Notice" in the subject line. We will respond to valid notices in accordance with applicable law. Note that ANQR generates QR codes locally in user browsers and does not host user-generated content.',
+          'Please include "DMCA Notice" in the subject line. We will respond to valid notices in accordance with applicable law. Note that ANQR generates QR codes locally on users devices and does not host user-generated content.',
         ],
       },
     ],
@@ -552,7 +552,7 @@ const pages: Record<StaticPageType, PageDefinition> = {
       {
         heading: 'Getting Started',
         paragraphs: [
-          'ANQR is a browser-based QR code generator that runs entirely in your browser. No account is required, and your data stays on your device.',
+          'ANQR is a QR code generator that runs entirely on your device — your computer, phone, or tablet. No account is required, no servers are involved, and your data stays private.',
           'The interface has three interface levels: Basic, Advanced, and Professional. Select your level using the tabs in the header. Each level unlocks additional features while keeping the interface focused on what you need.',
         ],
         bullets: [
@@ -1142,7 +1142,7 @@ const pages: Record<StaticPageType, PageDefinition> = {
       {
         heading: 'Keyboard Shortcuts',
         paragraphs: [
-          'ANQR supports standard browser shortcuts. Use Ctrl/Cmd+S to trigger export (when focused on the preview).',
+          'ANQR supports standard keyboard shortcuts. Use Ctrl/Cmd+S to trigger export (when focused on the preview).',
         ],
       },
       {
@@ -1443,7 +1443,7 @@ function ContactForm() {
 
       {status === 'error' && (
         <p className="mt-4 text-sm text-red-600">
-          We could not submit the form from this browser/session. Please email{' '}
+          We could not submit the form. Please email{' '}
           <a className="text-primary hover:underline" href={`mailto:${CONTACT_EMAIL}`}>
             {CONTACT_EMAIL}
           </a>

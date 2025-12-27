@@ -1,4 +1,5 @@
 import { useQRStore, ECCLevel, EncodingMode } from '@/store/qr-store'
+import { useTranslation } from 'react-i18next'
 import { Label } from '@/components/ui/label'
 import { Slider } from '@/components/ui/slider'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
@@ -9,6 +10,7 @@ import { calculateOptimalVersion } from '@/modules/qr-core'
 
 export function QREncodingSection() {
   const { tier, qr, setQrVersion, setQrEcc, setQrEncodingMode, setQrQuietZone, setQrQuietZoneMinEnforce, getPayloadText } = useQRStore()
+  const { t } = useTranslation()
   
   // Calculate minimum required version for current content
   const minRequiredVersion = useMemo(() => {
@@ -35,9 +37,9 @@ export function QREncodingSection() {
       {/* Version */}
       <div className="space-y-2">
         <div className="flex items-center justify-between">
-          <Label><HighlightedLabel>Version</HighlightedLabel></Label>
+          <Label><HighlightedLabel>{t('qr.version')}</HighlightedLabel></Label>
           <span className="text-sm text-muted-foreground">
-            {qr.version === 0 ? `Auto (min: ${minRequiredVersion})` : qr.version}
+            {qr.version === 0 ? t('qr.autoMin', { version: minRequiredVersion }) : qr.version}
           </span>
         </div>
         <Slider
@@ -46,42 +48,42 @@ export function QREncodingSection() {
           min={0}
           max={40}
           step={1}
-          title="QR code version (0=auto, 1-40 increases size and capacity)"
+          title={t('hints.qrVersion')}
         />
         <p className="text-xs text-muted-foreground">
           {qr.version === 0 
-            ? `Auto-detect (requires v${minRequiredVersion}+ for current content)`
+            ? t('hints.autoDetect', { version: minRequiredVersion })
             : qr.version < minRequiredVersion
-              ? `⚠️ Version too low! Minimum v${minRequiredVersion} required`
-              : `0 = Auto, min v${minRequiredVersion} for current content`
+              ? t('hints.versionTooLow', { version: minRequiredVersion })
+              : t('hints.autoMinVersion', { version: minRequiredVersion })
           }
         </p>
       </div>
 
       {/* Error Correction Level */}
       <div className="space-y-2">
-        <Label><HighlightedLabel>Error Correction</HighlightedLabel></Label>
+        <Label><HighlightedLabel>{t('qr.errorCorrection')}</HighlightedLabel></Label>
         <Select value={qr.ecc} onValueChange={(v) => setQrEcc(v as ECCLevel)}>
-          <SelectTrigger title="Error correction level - higher = more damage resistance but larger QR code">
+          <SelectTrigger title={t('hints.errorCorrection')}>
             <SelectValue />
           </SelectTrigger>
           <SelectContent>
-            <SelectItem value="L">L - Low (7%)</SelectItem>
-            <SelectItem value="M">M - Medium (15%)</SelectItem>
-            <SelectItem value="Q">Q - Quartile (25%)</SelectItem>
-            <SelectItem value="H">H - High (30%)</SelectItem>
+            <SelectItem value="L">{t('qr.low')}</SelectItem>
+            <SelectItem value="M">{t('qr.medium')}</SelectItem>
+            <SelectItem value="Q">{t('qr.quartile')}</SelectItem>
+            <SelectItem value="H">{t('qr.high')}</SelectItem>
           </SelectContent>
         </Select>
         <p className="text-xs text-muted-foreground">
-          Higher = more damage resistance, larger QR
+          {t('hints.higherEccLargerQr')}
         </p>
       </div>
 
       {/* Quiet Zone / Margin */}
       <div className="space-y-2">
         <div className="flex items-center justify-between">
-          <Label><HighlightedLabel>Quiet Zone (Margin)</HighlightedLabel></Label>
-          <span className="text-sm text-muted-foreground">{qr.quietZoneModules} modules</span>
+          <Label><HighlightedLabel>{t('qr.margin')}</HighlightedLabel></Label>
+          <span className="text-sm text-muted-foreground">{t('qr.nModules', { count: qr.quietZoneModules })}</span>
         </div>
         <Slider
           value={[qr.quietZoneModules]}
@@ -89,7 +91,7 @@ export function QREncodingSection() {
           min={0}
           max={10}
           step={1}
-          title="Quiet zone margin around QR code (0-10 modules, recommended: 4+)"
+          title={t('hints.quietZone')}
         />
       </div>
 
@@ -98,17 +100,17 @@ export function QREncodingSection() {
         <>
           {/* Encoding Mode */}
           <div className="space-y-2">
-            <Label><HighlightedLabel>Encoding Mode</HighlightedLabel></Label>
+            <Label><HighlightedLabel>{t('qr.encodingMode')}</HighlightedLabel></Label>
             <Select value={qr.encodingMode} onValueChange={(v) => setQrEncodingMode(v as EncodingMode)}>
-              <SelectTrigger title="Data encoding mode - Auto selects the most efficient mode">
+              <SelectTrigger title={t('hints.encodingMode')}>
                 <SelectValue />
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value="auto">Auto (Optimal)</SelectItem>
-                <SelectItem value="numeric">Numeric Only</SelectItem>
-                <SelectItem value="alphanumeric">Alphanumeric</SelectItem>
-                <SelectItem value="byte">Byte / UTF-8</SelectItem>
-                <SelectItem value="kanji">Kanji</SelectItem>
+                <SelectItem value="auto">{t('qr.autoOptimal')}</SelectItem>
+                <SelectItem value="numeric">{t('qr.numericOnly')}</SelectItem>
+                <SelectItem value="alphanumeric">{t('qr.alphanumeric')}</SelectItem>
+                <SelectItem value="byte">{t('qr.byteUtf8')}</SelectItem>
+                <SelectItem value="kanji">{t('qr.kanji')}</SelectItem>
               </SelectContent>
             </Select>
           </div>
@@ -116,13 +118,13 @@ export function QREncodingSection() {
           {/* Min Quiet Zone Enforce */}
           <div className="flex items-center justify-between">
             <div>
-              <Label><HighlightedLabel>Enforce Min Quiet Zone</HighlightedLabel></Label>
-              <p className="text-xs text-muted-foreground">Ensure ≥4 module margin</p>
+              <Label><HighlightedLabel>{t('qr.enforceMinQuietZone')}</HighlightedLabel></Label>
+              <p className="text-xs text-muted-foreground">{t('qr.enforceMinQuietZoneDesc')}</p>
             </div>
             <Switch 
               checked={qr.quietZoneMinEnforce}
               onCheckedChange={setQrQuietZoneMinEnforce}
-              title="Enforce minimum 4 module quiet zone for better scanning reliability"
+              title={t('hints.enforceMinQuietZone')}
             />
           </div>
         </>
@@ -134,7 +136,7 @@ export function QREncodingSection() {
           {/* Border Modules Extra */}
           <div className="space-y-2 pt-2 border-t">
             <div className="flex items-center justify-between">
-              <Label>Extra Border Modules</Label>
+              <Label>{t('qr.extraBorderModules')}</Label>
               <span className="text-sm text-muted-foreground">{qr.borderModulesExtra}</span>
             </div>
             <Slider
@@ -143,10 +145,10 @@ export function QREncodingSection() {
               min={0}
               max={10}
               step={1}
-              title="Additional border modules beyond the quiet zone (0-10)"
+              title={t('hints.extraBorder')}
             />
             <p className="text-xs text-muted-foreground">
-              Additional border beyond quiet zone
+              {t('qr.additionalBorder')}
             </p>
           </div>
         </>

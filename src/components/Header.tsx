@@ -1,8 +1,10 @@
 import { useQRStore, Tier } from '@/store/qr-store'
 import { Tabs, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
-import { Download, Share2, Moon, Sun, Menu, PanelLeft, Check, Grid3x3, Play } from 'lucide-react'
+import { Download, Share2, Moon, Sun, Menu, PanelLeft, Check, Grid3x3, Play, Globe } from 'lucide-react'
 import { Capacitor } from '@capacitor/core'
+import { useTranslation } from 'react-i18next'
+import { languages } from '@/i18n'
 import * as LucideIcons from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { useState, useEffect } from 'react'
@@ -19,14 +21,14 @@ function DynamicIcon({ name, className }: { name: string; className?: string }) 
 
 type HeaderPage = 'editor' | 'gallery' | StaticPageType
 
-const NAV_LINKS: Array<{ href: string; label: string; page: HeaderPage }> = [
-  { href: '/', label: 'Generator', page: 'editor' },
-  { href: '/gallery', label: 'Gallery', page: 'gallery' },
-  { href: '/docs', label: 'Guide', page: 'docs' },
-  { href: '/about', label: 'About', page: 'about' },
-  { href: '/privacy', label: 'Privacy', page: 'privacy' },
-  { href: '/terms', label: 'Terms', page: 'terms' },
-  { href: '/contact', label: 'Contact', page: 'contact' },
+const NAV_LINKS: Array<{ href: string; labelKey: string; page: HeaderPage }> = [
+  { href: '/', labelKey: 'nav.generator', page: 'editor' },
+  { href: '/gallery', labelKey: 'nav.gallery', page: 'gallery' },
+  { href: '/docs', labelKey: 'nav.guide', page: 'docs' },
+  { href: '/about', labelKey: 'nav.about', page: 'about' },
+  { href: '/privacy', labelKey: 'nav.privacy', page: 'privacy' },
+  { href: '/terms', labelKey: 'nav.terms', page: 'terms' },
+  { href: '/contact', labelKey: 'nav.contact', page: 'contact' },
 ]
 
 interface HeaderProps {
@@ -42,10 +44,19 @@ interface HeaderProps {
 
 export function Header({ onToggleSidebar, onExport, sidebarOpen = false, showGallery = false, activePage, galleryFilter = 'all', onGalleryFilterChange, onNavigate }: HeaderProps) {
   const { tier, setTier, getPayloadText, qr, render, overlay, activatePremiumAccess, checkPremiumAccess } = useQRStore()
+  const { t, i18n } = useTranslation()
   const [darkMode, setDarkMode] = useState(false)
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [copied, setCopied] = useState(false)
   const [loadingAd, setLoadingAd] = useState(false)
+  const [langMenuOpen, setLangMenuOpen] = useState(false)
+
+  const currentLang = languages.find(l => l.code === i18n.language) || languages[0]
+
+  const changeLanguage = (code: string) => {
+    i18n.changeLanguage(code)
+    setLangMenuOpen(false)
+  }
 
   const resolvedPage: HeaderPage = activePage ?? (showGallery ? 'gallery' : 'editor')
   const isEditor = resolvedPage === 'editor'
@@ -166,7 +177,7 @@ export function Header({ onToggleSidebar, onExport, sidebarOpen = false, showGal
               const isActive = link.page === resolvedPage
               return (
                 <a
-                  key={link.label}
+                  key={link.labelKey}
                   href={link.href}
                   className={`px-3 py-2 text-sm rounded-md transition-colors ${
                     isActive 
@@ -178,9 +189,9 @@ export function Header({ onToggleSidebar, onExport, sidebarOpen = false, showGal
                     e.preventDefault()
                     onNavigate(link.page)
                   }}
-                  title={`Go to ${link.label}`}
+                  title={`Go to ${t(link.labelKey)}`}
                 >
-                  {link.label}
+                  {t(link.labelKey)}
                 </a>
               )
             })}
@@ -226,15 +237,15 @@ export function Header({ onToggleSidebar, onExport, sidebarOpen = false, showGal
               <div className="hidden sm:block">
                 <Tabs value={tier} onValueChange={(v) => handleTierChange(v as Tier)}>
                   <TabsList className="shadow-sm">
-                    <TabsTrigger value="basic" className="text-xs px-3" title="Basic mode - Essential QR code features" disabled={loadingAd}>
-                      Basic
+                    <TabsTrigger value="basic" className="text-xs px-3" title={t('tiers.basic')} disabled={loadingAd}>
+                      {t('tiers.basic')}
                     </TabsTrigger>
-                    <TabsTrigger value="advanced" className="text-xs px-3" title="Advanced mode - Additional styling and encoding options" disabled={loadingAd}>
-                      Advanced
+                    <TabsTrigger value="advanced" className="text-xs px-3" title={t('tiers.advanced')} disabled={loadingAd}>
+                      {t('tiers.advanced')}
                     </TabsTrigger>
-                    <TabsTrigger value="professional" className="text-xs px-3 gap-1" title={Capacitor.isNativePlatform() && !checkPremiumAccess() ? "Watch ad to unlock Professional features for 24 hours" : "Professional mode - Full feature set"} disabled={loadingAd}>
+                    <TabsTrigger value="professional" className="text-xs px-3 gap-1" title={Capacitor.isNativePlatform() && !checkPremiumAccess() ? t('tiers.watchAdForPro') : t('tiers.professional')} disabled={loadingAd}>
                       {Capacitor.isNativePlatform() && !checkPremiumAccess() && <Play className="w-3 h-3" />}
-                      Pro
+                      {t('tiers.professional')}
                     </TabsTrigger>
                   </TabsList>
                 </Tabs>
@@ -245,12 +256,12 @@ export function Header({ onToggleSidebar, onExport, sidebarOpen = false, showGal
                     <SelectValue />
                   </SelectTrigger>
                   <SelectContent>
-                    <SelectItem value="basic">Basic</SelectItem>
-                    <SelectItem value="advanced">Advanced</SelectItem>
+                    <SelectItem value="basic">{t('tiers.basic')}</SelectItem>
+                    <SelectItem value="advanced">{t('tiers.advanced')}</SelectItem>
                     <SelectItem value="professional">
                       <span className="flex items-center gap-1">
                         {Capacitor.isNativePlatform() && !checkPremiumAccess() && <Play className="w-3 h-3" />}
-                        Pro
+                        {t('tiers.professional')}
                       </span>
                     </SelectItem>
                   </SelectContent>
@@ -284,6 +295,37 @@ export function Header({ onToggleSidebar, onExport, sidebarOpen = false, showGal
             <Menu className="h-5 w-5" />
           </Button>
           
+          {/* Language Selector */}
+          <div className="relative">
+            <Button 
+              variant="ghost" 
+              size="icon" 
+              onClick={() => setLangMenuOpen(!langMenuOpen)} 
+              className="h-9 w-9" 
+              title={t('language.select')}
+            >
+              <Globe className="h-4 w-4" />
+            </Button>
+            {langMenuOpen && (
+              <>
+                <div className="fixed inset-0 z-40" onClick={() => setLangMenuOpen(false)} />
+                <div className="absolute right-0 top-full mt-1 w-48 bg-card border rounded-lg shadow-lg z-50 py-1">
+                  {languages.map((lang) => (
+                    <button
+                      key={lang.code}
+                      onClick={() => changeLanguage(lang.code)}
+                      className={`w-full px-3 py-2 text-left text-sm hover:bg-muted flex items-center gap-2 ${i18n.language === lang.code || i18n.language.startsWith(lang.code) ? 'bg-muted' : ''}`}
+                    >
+                      <span>{lang.flag}</span>
+                      <span>{lang.nativeName}</span>
+                      {(i18n.language === lang.code || i18n.language.startsWith(lang.code)) && <Check className="h-4 w-4 ml-auto" />}
+                    </button>
+                  ))}
+                </div>
+              </>
+            )}
+          </div>
+
           {/* Dark Mode Toggle - always on far right */}
           <Button variant="ghost" size="icon" onClick={toggleDarkMode} className="h-9 w-9" title={darkMode ? 'Switch to light mode' : 'Switch to dark mode'}>
             {darkMode ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
@@ -300,7 +342,7 @@ export function Header({ onToggleSidebar, onExport, sidebarOpen = false, showGal
               const isActive = link.page === resolvedPage
               return (
                 <a
-                  key={link.label}
+                  key={link.labelKey}
                   href={link.href}
                   className={`w-full px-4 py-3 text-sm rounded-md text-center transition-colors ${
                     isActive 
@@ -314,9 +356,9 @@ export function Header({ onToggleSidebar, onExport, sidebarOpen = false, showGal
                     }
                     setMobileMenuOpen(false)
                   }}
-                  title={`Go to ${link.label}`}
+                  title={`Go to ${t(link.labelKey)}`}
                 >
-                  {link.label}
+                  {t(link.labelKey)}
                 </a>
               )
             })}

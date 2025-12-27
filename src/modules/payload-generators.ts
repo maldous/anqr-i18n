@@ -782,8 +782,6 @@ export function generateMessagingLink(
       return `viber://chat?number=${identifier.replace(/[^0-9]/g, '')}`
     case 'line':
       return `https://line.me/ti/p/${identifier}`
-    case 'wechat':
-      return `weixin://dl/chat?${identifier}`
     case 'skype':
       return `skype:${identifier}?chat`
     default:

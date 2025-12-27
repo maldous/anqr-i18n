@@ -1,4 +1,5 @@
 import { useQRStore, ModuleStyle, FinderStyle, GapMode, GradientType, FrameStyle, AlignmentStyle, TimingStyle } from '@/store/qr-store'
+import { useTranslation } from 'react-i18next'
 import { Label } from '@/components/ui/label'
 import { Input } from '@/components/ui/input'
 import { Slider } from '@/components/ui/slider'
@@ -17,6 +18,7 @@ export function RenderSection() {
     setRenderCornerRadius, setRenderFrameStyle, setRenderFrameText, setRenderGradient,
     setRenderAlignmentStyle, setRenderTimingStyle
   } = useQRStore()
+  const { t } = useTranslation()
   
   const [newPaletteColor, setNewPaletteColor] = useState('#000000')
 
@@ -25,8 +27,8 @@ export function RenderSection() {
       {/* Module Size */}
       <div className="space-y-2">
         <div className="flex items-center justify-between">
-          <Label><HighlightedLabel>Module Size</HighlightedLabel></Label>
-          <span className="text-sm text-muted-foreground">{render.modulePx}px</span>
+          <Label><HighlightedLabel>{t('qr.moduleSize')}</HighlightedLabel></Label>
+          <span className="text-sm text-muted-foreground">{t('qr.nPx', { count: render.modulePx })}</span>
         </div>
         <Slider
           value={[render.modulePx]}
@@ -34,15 +36,15 @@ export function RenderSection() {
           min={2}
           max={20}
           step={1}
-          title="Size of each QR code module in pixels (2-20px)"
+          title={t('hints.moduleSize')}
         />
       </div>
 
       {/* Module Gap */}
       <div className="space-y-2">
         <div className="flex items-center justify-between">
-          <Label><HighlightedLabel>Module Gap</HighlightedLabel></Label>
-          <span className="text-sm text-muted-foreground">{render.moduleGapPercent}%</span>
+          <Label><HighlightedLabel>{t('render.moduleGap')}</HighlightedLabel></Label>
+          <span className="text-sm text-muted-foreground">{t('qr.nPercent', { count: render.moduleGapPercent })}</span>
         </div>
         <Slider
           value={[render.moduleGapPercent]}
@@ -50,112 +52,112 @@ export function RenderSection() {
           min={0}
           max={30}
           step={1}
-          title="Gap between modules as percentage (0-30%)"
+          title={t('hints.moduleGap')}
         />
       </div>
 
       {/* Module Style */}
       <div className="space-y-2">
-        <Label><HighlightedLabel>Module Style</HighlightedLabel></Label>
+        <Label><HighlightedLabel>{t('render.shape')}</HighlightedLabel></Label>
         <Select value={render.moduleStyle} onValueChange={(v) => setRenderModuleStyle(v as ModuleStyle)}>
-          <SelectTrigger title="Visual style of QR code modules">
+          <SelectTrigger title={t('hints.moduleStyle')}>
             <SelectValue />
           </SelectTrigger>
           <SelectContent>
-            <SelectItem value="square">Square</SelectItem>
-            <SelectItem value="rounded">Rounded</SelectItem>
-            <SelectItem value="dots">Dots</SelectItem>
-            <SelectItem value="diamond">Diamond</SelectItem>
-            <SelectItem value="connected">Connected</SelectItem>
+            <SelectItem value="square">{t('render.square')}</SelectItem>
+            <SelectItem value="rounded">{t('render.rounded')}</SelectItem>
+            <SelectItem value="dots">{t('render.dots')}</SelectItem>
+            <SelectItem value="diamond">{t('render.diamond')}</SelectItem>
+            <SelectItem value="connected">{t('render.connected')}</SelectItem>
           </SelectContent>
         </Select>
       </div>
 
       {/* Finder Style */}
       <div className="space-y-2">
-        <Label><HighlightedLabel>Finder Pattern Style</HighlightedLabel></Label>
+        <Label><HighlightedLabel>{t('render.finderStyle')}</HighlightedLabel></Label>
         <Select value={render.finderStyle} onValueChange={(v) => setRenderFinderStyle(v as FinderStyle)}>
-          <SelectTrigger title="Style of the corner finder patterns">
+          <SelectTrigger title={t('hints.finderStyle')}>
             <SelectValue />
           </SelectTrigger>
           <SelectContent>
-            <SelectItem value="square">Square</SelectItem>
-            <SelectItem value="rounded">Rounded</SelectItem>
-            <SelectItem value="circle">Circle</SelectItem>
+            <SelectItem value="square">{t('render.square')}</SelectItem>
+            <SelectItem value="rounded">{t('render.rounded')}</SelectItem>
+            <SelectItem value="circle">{t('render.circle')}</SelectItem>
           </SelectContent>
         </Select>
       </div>
 
       {/* Alignment Pattern Style */}
       <div className="space-y-2">
-        <Label><HighlightedLabel>Alignment Pattern Style</HighlightedLabel></Label>
+        <Label><HighlightedLabel>{t('render.alignmentStyle')}</HighlightedLabel></Label>
         <Select value={render.alignmentStyle} onValueChange={(v) => setRenderAlignmentStyle(v as AlignmentStyle)}>
-          <SelectTrigger title="Style of alignment patterns (used in larger QR codes)">
+          <SelectTrigger title={t('hints.alignmentStyle')}>
             <SelectValue />
           </SelectTrigger>
           <SelectContent>
-            <SelectItem value="match_finder">Match Finder</SelectItem>
-            <SelectItem value="square">Square</SelectItem>
-            <SelectItem value="rounded">Rounded</SelectItem>
-            <SelectItem value="circle">Circle</SelectItem>
+            <SelectItem value="match_finder">{t('render.matchFinder')}</SelectItem>
+            <SelectItem value="square">{t('render.square')}</SelectItem>
+            <SelectItem value="rounded">{t('render.rounded')}</SelectItem>
+            <SelectItem value="circle">{t('render.circle')}</SelectItem>
           </SelectContent>
         </Select>
       </div>
 
       {/* Timing Pattern Style */}
       <div className="space-y-2">
-        <Label><HighlightedLabel>Timing Pattern Style</HighlightedLabel></Label>
+        <Label><HighlightedLabel>{t('render.timingStyle')}</HighlightedLabel></Label>
         <Select value={render.timingStyle} onValueChange={(v) => setRenderTimingStyle(v as TimingStyle)}>
-          <SelectTrigger title="Style of timing patterns (horizontal and vertical lines)">
+          <SelectTrigger title={t('hints.timingStyle')}>
             <SelectValue />
           </SelectTrigger>
           <SelectContent>
-            <SelectItem value="match_module">Match Module</SelectItem>
-            <SelectItem value="solid">Solid</SelectItem>
-            <SelectItem value="dashed">Dashed</SelectItem>
+            <SelectItem value="match_module">{t('render.matchModule')}</SelectItem>
+            <SelectItem value="solid">{t('render.solid')}</SelectItem>
+            <SelectItem value="dashed">{t('render.dashed')}</SelectItem>
           </SelectContent>
         </Select>
       </div>
 
       {/* Colors */}
       <div className="space-y-2">
-        <Label><HighlightedLabel>Colors</HighlightedLabel></Label>
+        <Label><HighlightedLabel>{t('render.gradientColors')}</HighlightedLabel></Label>
         <div className="grid grid-cols-2 gap-2">
           <div className="space-y-1">
-            <Label className="text-xs text-muted-foreground"><HighlightedLabel>Foreground</HighlightedLabel></Label>
+            <Label className="text-xs text-muted-foreground"><HighlightedLabel>{t('render.foreground')}</HighlightedLabel></Label>
             <div className="flex gap-2">
               <Input
                 type="color"
                 value={render.fgColor}
                 onChange={(e) => setRenderFgColor(e.target.value)}
                 className="w-10 h-10 p-1 cursor-pointer"
-                title="Click to pick foreground color"
+                title={t('hints.pickFgColor')}
               />
               <Input
                 type="text"
                 value={render.fgColor}
                 onChange={(e) => setRenderFgColor(e.target.value)}
                 className="flex-1"
-                title="Foreground color hex code"
+                title={t('hints.fgColorHex')}
               />
             </div>
           </div>
           <div className="space-y-1">
-            <Label className="text-xs text-muted-foreground"><HighlightedLabel>Background</HighlightedLabel></Label>
+            <Label className="text-xs text-muted-foreground"><HighlightedLabel>{t('render.background')}</HighlightedLabel></Label>
             <div className="flex gap-2">
               <Input
                 type="color"
                 value={render.bgColor}
                 onChange={(e) => setRenderBgColor(e.target.value)}
                 className="w-10 h-10 p-1 cursor-pointer"
-                title="Click to pick background color"
+                title={t('hints.pickBgColor')}
               />
               <Input
                 type="text"
                 value={render.bgColor}
                 onChange={(e) => setRenderBgColor(e.target.value)}
                 className="flex-1"
-                title="Background color hex code"
+                title={t('hints.bgColorHex')}
               />
             </div>
           </div>
@@ -164,11 +166,11 @@ export function RenderSection() {
 
       {/* Transparent Background */}
       <div className="flex items-center justify-between">
-        <Label><HighlightedLabel>Transparent Background</HighlightedLabel></Label>
+        <Label><HighlightedLabel>{t('render.transparentBg')}</HighlightedLabel></Label>
         <Switch 
           checked={render.bgTransparent}
           onCheckedChange={setRenderBgTransparent}
-          title="Make the background transparent instead of using background color"
+          title={t('hints.transparentBg')}
         />
       </div>
 
@@ -177,16 +179,16 @@ export function RenderSection() {
         <>
           {/* Gap Mode */}
           <div className="space-y-2">
-            <Label><HighlightedLabel>Gap Mode</HighlightedLabel></Label>
+            <Label><HighlightedLabel>{t('render.gapMode')}</HighlightedLabel></Label>
             <Select value={render.gapMode} onValueChange={(v) => setRenderGapMode(v as GapMode)}>
-              <SelectTrigger title="How gaps between modules are rendered">
+              <SelectTrigger title={t('hints.gapMode')}>
                 <SelectValue />
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value="none">None</SelectItem>
-                <SelectItem value="inset">Inset</SelectItem>
-                <SelectItem value="stroke">Stroke</SelectItem>
-                <SelectItem value="negative_space">Negative Space</SelectItem>
+                <SelectItem value="none">{t('render.none')}</SelectItem>
+                <SelectItem value="inset">{t('render.inset')}</SelectItem>
+                <SelectItem value="stroke">{t('render.stroke')}</SelectItem>
+                <SelectItem value="negative_space">{t('render.negativeSpace')}</SelectItem>
               </SelectContent>
             </Select>
           </div>
@@ -194,8 +196,8 @@ export function RenderSection() {
           {/* Corner Radius */}
           <div className="space-y-2">
             <div className="flex items-center justify-between">
-              <Label><HighlightedLabel>Corner Radius</HighlightedLabel></Label>
-              <span className="text-sm text-muted-foreground">{render.cornerRadius}%</span>
+              <Label><HighlightedLabel>{t('render.cornerRadius')}</HighlightedLabel></Label>
+              <span className="text-sm text-muted-foreground">{t('qr.nPercent', { count: render.cornerRadius })}</span>
             </div>
             <Slider
               value={[render.cornerRadius]}
@@ -203,85 +205,85 @@ export function RenderSection() {
               min={0}
               max={100}
               step={5}
-              title="Corner radius percentage for rounded modules (0-100%)"
+              title={t('hints.cornerRadius')}
             />
           </div>
 
           {/* Gradient */}
           <div className="space-y-2">
-            <Label><HighlightedLabel>Gradient</HighlightedLabel></Label>
+            <Label><HighlightedLabel>{t('render.gradient')}</HighlightedLabel></Label>
             <Select value={render.gradient.type} onValueChange={(v) => setRenderGradient({ type: v as GradientType })}>
-              <SelectTrigger title="Apply a gradient effect to the QR code">
+              <SelectTrigger title={t('hints.gradient')}>
                 <SelectValue />
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value="none">None</SelectItem>
-                <SelectItem value="linear">Linear</SelectItem>
-                <SelectItem value="radial">Radial</SelectItem>
-                <SelectItem value="conic">Conic</SelectItem>
+                <SelectItem value="none">{t('render.none')}</SelectItem>
+                <SelectItem value="linear">{t('render.linear')}</SelectItem>
+                <SelectItem value="radial">{t('render.radial')}</SelectItem>
+                <SelectItem value="conic">{t('render.conic')}</SelectItem>
               </SelectContent>
             </Select>
           </div>
 
           {/* Eye Styles */}
           <div className="space-y-2">
-            <Label><HighlightedLabel>Eye Outer Style</HighlightedLabel></Label>
+            <Label><HighlightedLabel>{t('render.eyeOuterStyle')}</HighlightedLabel></Label>
             <Select 
               value={render.eyeOuterStyle} 
               onValueChange={(v) => useQRStore.setState((s) => ({ render: { ...s.render, eyeOuterStyle: v as FinderStyle } }))}
             >
-              <SelectTrigger title="Style of the outer ring of finder patterns">
+              <SelectTrigger title={t('hints.eyeOuterStyle')}>
                 <SelectValue />
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value="square">Square</SelectItem>
-                <SelectItem value="rounded">Rounded</SelectItem>
-                <SelectItem value="circle">Circle</SelectItem>
+                <SelectItem value="square">{t('render.square')}</SelectItem>
+                <SelectItem value="rounded">{t('render.rounded')}</SelectItem>
+                <SelectItem value="circle">{t('render.circle')}</SelectItem>
               </SelectContent>
             </Select>
           </div>
 
           <div className="space-y-2">
-            <Label><HighlightedLabel>Eye Inner Style</HighlightedLabel></Label>
+            <Label><HighlightedLabel>{t('render.eyeInnerStyle')}</HighlightedLabel></Label>
             <Select 
               value={render.eyeInnerStyle} 
               onValueChange={(v) => useQRStore.setState((s) => ({ render: { ...s.render, eyeInnerStyle: v as FinderStyle } }))}
             >
-              <SelectTrigger title="Style of the inner square of finder patterns">
+              <SelectTrigger title={t('hints.eyeInnerStyle')}>
                 <SelectValue />
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value="square">Square</SelectItem>
-                <SelectItem value="rounded">Rounded</SelectItem>
-                <SelectItem value="circle">Circle</SelectItem>
+                <SelectItem value="square">{t('render.square')}</SelectItem>
+                <SelectItem value="rounded">{t('render.rounded')}</SelectItem>
+                <SelectItem value="circle">{t('render.circle')}</SelectItem>
               </SelectContent>
             </Select>
           </div>
 
           {/* Frame */}
           <div className="space-y-2">
-            <Label><HighlightedLabel>Frame Style</HighlightedLabel></Label>
+            <Label><HighlightedLabel>{t('render.frameStyle')}</HighlightedLabel></Label>
             <Select value={render.frameStyle} onValueChange={(v) => setRenderFrameStyle(v as FrameStyle)}>
-              <SelectTrigger title="Add a decorative frame around the QR code">
+              <SelectTrigger title={t('hints.frameStyle')}>
                 <SelectValue />
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value="none">None</SelectItem>
-                <SelectItem value="rounded_frame">Rounded Frame</SelectItem>
-                <SelectItem value="sticker">Sticker</SelectItem>
-                <SelectItem value="tag">Tag</SelectItem>
+                <SelectItem value="none">{t('render.none')}</SelectItem>
+                <SelectItem value="rounded_frame">{t('render.roundedFrame')}</SelectItem>
+                <SelectItem value="sticker">{t('render.sticker')}</SelectItem>
+                <SelectItem value="tag">{t('render.tag')}</SelectItem>
               </SelectContent>
             </Select>
           </div>
 
           {render.frameStyle !== 'none' && (
             <div className="space-y-2">
-              <Label><HighlightedLabel>Frame Text</HighlightedLabel></Label>
+              <Label><HighlightedLabel>{t('render.frameText')}</HighlightedLabel></Label>
               <Input 
                 value={render.frameText}
                 onChange={(e) => setRenderFrameText(e.target.value)}
                 placeholder="Scan Me!"
-                title="Text to display on the frame"
+                title={t('hints.frameText')}
               />
             </div>
           )}
@@ -289,8 +291,8 @@ export function RenderSection() {
           {/* Dot Rotation */}
           <div className="space-y-2">
             <div className="flex items-center justify-between">
-              <Label><HighlightedLabel>Dot Rotation</HighlightedLabel></Label>
-              <span className="text-sm text-muted-foreground">{render.dotRotationDeg}°</span>
+              <Label><HighlightedLabel>{t('render.dotRotation')}</HighlightedLabel></Label>
+              <span className="text-sm text-muted-foreground">{t('qr.nDegrees', { count: render.dotRotationDeg })}</span>
             </div>
             <Slider
               value={[render.dotRotationDeg]}
@@ -298,15 +300,15 @@ export function RenderSection() {
               min={0}
               max={360}
               step={15}
-              title="Rotate dot-style modules (0-360 degrees)"
+              title={t('hints.dotRotation')}
             />
           </div>
 
           {/* Eye Scale */}
           <div className="space-y-2">
             <div className="flex items-center justify-between">
-              <Label><HighlightedLabel>Eye Scale</HighlightedLabel></Label>
-              <span className="text-sm text-muted-foreground">{render.eyeScale}%</span>
+              <Label><HighlightedLabel>{t('render.eyeScale')}</HighlightedLabel></Label>
+              <span className="text-sm text-muted-foreground">{t('qr.nPercent', { count: render.eyeScale })}</span>
             </div>
             <Slider
               value={[render.eyeScale]}
@@ -314,7 +316,7 @@ export function RenderSection() {
               min={50}
               max={150}
               step={5}
-              title="Scale finder patterns relative to their default size (50-150%)"
+              title={t('hints.eyeScale')}
             />
           </div>
         </>
@@ -326,57 +328,57 @@ export function RenderSection() {
           {/* Crisp Edges */}
           <div className="space-y-2 pt-2 border-t">
             <div className="flex items-center justify-between">
-              <Label><HighlightedLabel>Crisp Edges</HighlightedLabel></Label>
+              <Label><HighlightedLabel>{t('render.crispEdges')}</HighlightedLabel></Label>
               <Switch 
                 checked={render.crispEdges}
                 onCheckedChange={(checked) => useQRStore.setState((s) => ({ render: { ...s.render, crispEdges: checked } }))}
-                title="Use pixelated rendering for sharp module edges"
+                title={t('hints.crispEdges')}
               />
             </div>
-            <p className="text-xs text-muted-foreground">Use image-rendering: pixelated for sharp edges</p>
+            <p className="text-xs text-muted-foreground">{t('render.crispEdgesDesc')}</p>
           </div>
 
           {/* Pixel Snap */}
           <div className="space-y-2">
-            <Label><HighlightedLabel>Pixel Snap</HighlightedLabel></Label>
+            <Label><HighlightedLabel>{t('render.pixelSnap')}</HighlightedLabel></Label>
             <Select 
               value={render.pixelSnap} 
               onValueChange={(v) => useQRStore.setState((s) => ({ render: { ...s.render, pixelSnap: v as 'floor' | 'round' | 'ceil' } }))}
             >
-              <SelectTrigger title="How to snap module positions to pixel boundaries">
+              <SelectTrigger title={t('hints.pixelSnap')}>
                 <SelectValue />
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value="floor">Floor</SelectItem>
-                <SelectItem value="round">Round</SelectItem>
-                <SelectItem value="ceil">Ceil</SelectItem>
+                <SelectItem value="floor">{t('render.floor')}</SelectItem>
+                <SelectItem value="round">{t('render.round')}</SelectItem>
+                <SelectItem value="ceil">{t('render.ceil')}</SelectItem>
               </SelectContent>
             </Select>
           </div>
 
           {/* Per-Module Color Mode */}
           <div className="space-y-2">
-            <Label><HighlightedLabel>Per-Module Color Mode</HighlightedLabel></Label>
+            <Label><HighlightedLabel>{t('render.perModuleColorMode')}</HighlightedLabel></Label>
             <Select 
               value={render.perModuleColorMode} 
               onValueChange={(v) => useQRStore.setState((s) => ({ render: { ...s.render, perModuleColorMode: v as typeof render.perModuleColorMode } }))}
             >
-              <SelectTrigger title="How to assign colors to individual modules">
+              <SelectTrigger title={t('hints.perModuleColor')}>
                 <SelectValue />
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value="solid">Solid</SelectItem>
-                <SelectItem value="by_brightness">By Brightness</SelectItem>
-                <SelectItem value="by_position">By Position</SelectItem>
-                <SelectItem value="by_overlay">By Overlay</SelectItem>
-                <SelectItem value="by_cluster">By Cluster</SelectItem>
+                <SelectItem value="solid">{t('render.solid')}</SelectItem>
+                <SelectItem value="by_brightness">{t('render.byBrightness')}</SelectItem>
+                <SelectItem value="by_position">{t('render.byPosition')}</SelectItem>
+                <SelectItem value="by_overlay">{t('render.byOverlay')}</SelectItem>
+                <SelectItem value="by_cluster">{t('render.byCluster')}</SelectItem>
               </SelectContent>
             </Select>
           </div>
 
           {/* Color Palette */}
           <div className="space-y-2">
-            <Label><HighlightedLabel>Color Palette</HighlightedLabel></Label>
+            <Label><HighlightedLabel>{t('render.colorPalette')}</HighlightedLabel></Label>
             <div className="flex flex-wrap gap-2">
               {render.palette.map((color, index) => (
                 <div key={index} className="flex items-center gap-1">
@@ -423,26 +425,26 @@ export function RenderSection() {
                   useQRStore.setState((s) => ({ render: { ...s.render, palette: [...s.render.palette, newPaletteColor] } }))
                 }}
               >
-                <Plus className="h-4 w-4 mr-1" /> Add Color
+                <Plus className="h-4 w-4 mr-1" /> {t('render.addColor')}
               </Button>
             </div>
           </div>
 
           {/* Contrast Guard */}
           <div className="flex items-center justify-between">
-            <Label><HighlightedLabel>Contrast Guard</HighlightedLabel></Label>
+            <Label><HighlightedLabel>{t('render.contrastGuard')}</HighlightedLabel></Label>
             <Switch 
               checked={render.contrastGuard}
               onCheckedChange={(checked) => useQRStore.setState((s) => ({ render: { ...s.render, contrastGuard: checked } }))}
-              title="Ensure minimum contrast ratio between foreground and background"
+              title={t('hints.contrastGuard')}
             />
           </div>
 
           {render.contrastGuard && (
             <div className="space-y-2">
               <div className="flex items-center justify-between">
-                <Label><HighlightedLabel>Min Contrast Ratio</HighlightedLabel></Label>
-                <span className="text-sm text-muted-foreground">{render.minContrastRatio}:1</span>
+                <Label><HighlightedLabel>{t('render.minContrastRatio')}</HighlightedLabel></Label>
+                <span className="text-sm text-muted-foreground">{t('qr.contrastRatio', { count: render.minContrastRatio })}</span>
               </div>
               <Slider
                 value={[render.minContrastRatio]}
@@ -450,7 +452,7 @@ export function RenderSection() {
                 min={1}
                 max={21}
                 step={0.5}
-                title="Minimum contrast ratio to enforce (1-21, WCAG AA requires 4.5:1)"
+                title={t('hints.minContrastRatio')}
               />
             </div>
           )}

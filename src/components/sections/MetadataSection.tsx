@@ -1,4 +1,5 @@
 import { useQRStore } from '@/store/qr-store'
+import { useTranslation } from 'react-i18next'
 import { Label } from '@/components/ui/label'
 import { Input } from '@/components/ui/input'
 import { Textarea } from '@/components/ui/textarea'
@@ -9,6 +10,7 @@ import { HighlightedLabel } from '@/lib/search-context'
 
 export function MetadataSection() {
   const { metadata, setMetadata } = useQRStore()
+  const { t } = useTranslation()
 
   const addCustomKv = () => {
     setMetadata({ customKv: [...metadata.customKv, { k: '', v: '' }] })
@@ -28,7 +30,7 @@ export function MetadataSection() {
     <div className="space-y-4">
       {/* Title */}
       <div className="space-y-2">
-        <Label><HighlightedLabel>Title</HighlightedLabel></Label>
+        <Label><HighlightedLabel>{t('metadata.title')}</HighlightedLabel></Label>
         <Input 
           value={metadata.title}
           onChange={(e) => setMetadata({ title: e.target.value })}
@@ -38,7 +40,7 @@ export function MetadataSection() {
 
       {/* Author */}
       <div className="space-y-2">
-        <Label><HighlightedLabel>Author</HighlightedLabel></Label>
+        <Label><HighlightedLabel>{t('metadata.author')}</HighlightedLabel></Label>
         <Input 
           value={metadata.author}
           onChange={(e) => setMetadata({ author: e.target.value })}
@@ -48,7 +50,7 @@ export function MetadataSection() {
 
       {/* Copyright */}
       <div className="space-y-2">
-        <Label><HighlightedLabel>Copyright</HighlightedLabel></Label>
+        <Label><HighlightedLabel>{t('metadata.copyright')}</HighlightedLabel></Label>
         <Input 
           value={metadata.copyright}
           onChange={(e) => setMetadata({ copyright: e.target.value })}
@@ -58,7 +60,7 @@ export function MetadataSection() {
 
       {/* License */}
       <div className="space-y-2">
-        <Label><HighlightedLabel>License</HighlightedLabel></Label>
+        <Label><HighlightedLabel>{t('metadata.license')}</HighlightedLabel></Label>
         <Input 
           value={metadata.license}
           onChange={(e) => setMetadata({ license: e.target.value })}
@@ -68,7 +70,7 @@ export function MetadataSection() {
 
       {/* Description */}
       <div className="space-y-2">
-        <Label><HighlightedLabel>Description</HighlightedLabel></Label>
+        <Label><HighlightedLabel>{t('metadata.description')}</HighlightedLabel></Label>
         <Textarea 
           value={metadata.description}
           onChange={(e) => setMetadata({ description: e.target.value })}
@@ -79,7 +81,7 @@ export function MetadataSection() {
 
       {/* Creation Time */}
       <div className="flex items-center justify-between">
-        <Label><HighlightedLabel>Include Creation Time</HighlightedLabel></Label>
+        <Label><HighlightedLabel>{t('metadata.includeCreationTime')}</HighlightedLabel></Label>
         <Switch 
           checked={metadata.creationTime}
           onCheckedChange={(checked) => setMetadata({ creationTime: checked })}
@@ -88,19 +90,19 @@ export function MetadataSection() {
 
       {/* Custom Key-Value Pairs */}
       <div className="space-y-2 pt-2 border-t">
-        <Label className="text-muted-foreground"><HighlightedLabel>Custom Metadata</HighlightedLabel></Label>
+        <Label className="text-muted-foreground"><HighlightedLabel>{t('metadata.customMetadata')}</HighlightedLabel></Label>
         {metadata.customKv.map((kv, index) => (
           <div key={index} className="flex gap-2">
             <Input 
               value={kv.k}
               onChange={(e) => updateCustomKv(index, 'k', e.target.value)}
-              placeholder="Key"
+              placeholder={t('metadata.key')}
               className="flex-1"
             />
             <Input 
               value={kv.v}
               onChange={(e) => updateCustomKv(index, 'v', e.target.value)}
-              placeholder="Value"
+              placeholder={t('metadata.value')}
               className="flex-1"
             />
             <Button 
@@ -119,7 +121,7 @@ export function MetadataSection() {
           onClick={addCustomKv}
           className="w-full"
         >
-          <Plus className="h-4 w-4 mr-2" /> Add Custom Field
+          <Plus className="h-4 w-4 mr-2" /> {t('metadata.addCustomField')}
         </Button>
       </div>
     </div>

@@ -1,0 +1,207 @@
+{
+  "app": {
+    "name": "ANQR",
+    "tagline": "二维码生成器"
+  },
+  "nav": {
+    "generator": "生成器",
+    "gallery": "画廊",
+    "guide": "指南",
+    "about": "关于",
+    "privacy": "隐私",
+    "terms": "条款",
+    "contact": "联系"
+  },
+  "header": {
+    "searchSettings": "搜索设置...",
+    "share": "分享",
+    "export": "导出",
+    "reset": "重置",
+    "close": "关闭"
+  },
+  "tiers": {
+    "basic": "基础",
+    "advanced": "高级",
+    "professional": "专业"
+  },
+  "sections": {
+    "payload": "数据",
+    "overlay": "叠加图像",
+    "qrEncoding": "二维码编码",
+    "rendering": "渲染",
+    "animation": "动画",
+    "output": "输出",
+    "watermark": "水印",
+    "metadata": "元数据",
+    "share": "分享",
+    "safety": "安全分析"
+  },
+  "payload": {
+    "contentType": "内容类型",
+    "url": "网址",
+    "text": "文本",
+    "phone": "电话号码",
+    "email": "电子邮件",
+    "sms": "短信",
+    "wifi": "无线网络",
+    "vcard": "联系人卡片",
+    "event": "日历事件",
+    "location": "位置",
+    "forceHttps": "强制HTTPS",
+    "marketingTags": "营销标签",
+    "utmSource": "utm_source",
+    "utmMedium": "utm_medium",
+    "utmCampaign": "utm_campaign",
+    "utmTerm": "utm_term",
+    "utmContent": "utm_content"
+  },
+  "overlay": {
+    "selectImage": "选择图像",
+    "removeImage": "移除",
+    "cropImage": "裁剪图像",
+    "preserveFinders": "保留定位图案",
+    "preserveTiming": "保留时序图案",
+    "preserveAlignment": "保留对齐图案",
+    "intensity": "强度",
+    "mode": "模式",
+    "colorMode": "颜色模式",
+    "invert": "反转",
+    "contrast": "对比度",
+    "brightness": "亮度",
+    "saturation": "饱和度"
+  },
+  "qr": {
+    "errorCorrection": "纠错级别",
+    "version": "版本",
+    "mask": "掩码图案",
+    "auto": "自动",
+    "moduleSize": "模块大小",
+    "margin": "边距"
+  },
+  "render": {
+    "foreground": "前景色",
+    "background": "背景色",
+    "style": "样式",
+    "shape": "形状",
+    "gradient": "渐变",
+    "rounded": "圆角",
+    "dots": "圆点",
+    "squares": "方块"
+  },
+  "animation": {
+    "enabled": "启用动画",
+    "speed": "速度",
+    "loop": "循环",
+    "pattern": "图案"
+  },
+  "output": {
+    "format": "格式",
+    "width": "宽度",
+    "height": "高度",
+    "filename": "文件名",
+    "dpi": "DPI"
+  },
+  "watermark": {
+    "enabled": "启用水印",
+    "text": "文本",
+    "position": "位置",
+    "opacity": "不透明度",
+    "fontSize": "字体大小"
+  },
+  "metadata": {
+    "title": "标题",
+    "description": "描述",
+    "author": "作者",
+    "copyright": "版权"
+  },
+  "safety": {
+    "analysis": "安全分析",
+    "scanability": "可扫描性",
+    "contrast": "对比度",
+    "quietZone": "静区",
+    "lockFinders": "锁定定位图案",
+    "lockTiming": "锁定时序图案",
+    "lockAlignment": "锁定对齐图案"
+  },
+  "gallery": {
+    "title": "二维码画廊",
+    "description": "浏览ANQR创建的二维码示例",
+    "filter": "筛选",
+    "all": "全部",
+    "plain": "普通",
+    "styles": "样式",
+    "colors": "颜色",
+    "overlays": "叠加",
+    "animations": "动画"
+  },
+  "guide": {
+    "title": "ANQR用户指南",
+    "description": "使用ANQR创建二维码的完整指南",
+    "contents": "目录",
+    "gettingStarted": "入门",
+    "quickStart": "快速开始"
+  },
+  "about": {
+    "title": "关于ANQR",
+    "description": "了解更多关于ANQR及其功能"
+  },
+  "privacy": {
+    "title": "隐私政策",
+    "description": "我们如何处理您的数据"
+  },
+  "terms": {
+    "title": "服务条款",
+    "description": "使用ANQR的条款和条件"
+  },
+  "contact": {
+    "title": "联系我们",
+    "description": "与ANQR团队取得联系",
+    "name": "姓名",
+    "email": "电子邮件",
+    "message": "消息",
+    "send": "发送消息"
+  },
+  "common": {
+    "loading": "加载中...",
+    "error": "错误",
+    "success": "成功",
+    "cancel": "取消",
+    "save": "保存",
+    "delete": "删除",
+    "edit": "编辑",
+    "copy": "复制",
+    "copied": "已复制！",
+    "download": "下载",
+    "upload": "上传",
+    "select": "选择",
+    "none": "无",
+    "enabled": "已启用",
+    "disabled": "已禁用",
+    "on": "开",
+    "off": "关",
+    "yes": "是",
+    "no": "否",
+    "ok": "确定",
+    "apply": "应用",
+    "reset": "重置",
+    "close": "关闭",
+    "back": "返回",
+    "next": "下一步",
+    "previous": "上一步",
+    "search": "搜索",
+    "filter": "筛选",
+    "sort": "排序",
+    "more": "更多",
+    "less": "更少",
+    "showMore": "显示更多",
+    "showLess": "显示更少",
+    "viewAll": "查看全部",
+    "copyright": "© ANQR"
+  },
+  "language": {
+    "select": "选择语言",
+    "current": "语言"
+  },
+  "fileSaved": "已保存到文档：{{filename}}",
+  "fileSaveFailed": "保存文件失败：{{error}}"
+}

@@ -1,4 +1,5 @@
 import { useQRStore } from '@/store/qr-store'
+import { useTranslation } from 'react-i18next'
 import { Label } from '@/components/ui/label'
 import { Input } from '@/components/ui/input'
 import { Slider } from '@/components/ui/slider'
@@ -11,6 +12,7 @@ import { HighlightedLabel } from '@/lib/search-context'
 
 export function WatermarkSection() {
   const { watermark, setWatermarkEnabled, setWatermarkKind, setWatermarkText, setWatermarkPosition, setWatermarkOpacity } = useQRStore()
+  const { t } = useTranslation()
   const fileInputRef = useRef<HTMLInputElement>(null)
 
   const handleFileSelect = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -24,7 +26,7 @@ export function WatermarkSection() {
     <div className="space-y-4">
       {/* Enable */}
       <div className="flex items-center justify-between">
-        <Label><HighlightedLabel>Enable Watermark</HighlightedLabel></Label>
+        <Label><HighlightedLabel>{t('watermark.enabled')}</HighlightedLabel></Label>
         <Switch 
           checked={watermark.enabled}
           onCheckedChange={setWatermarkEnabled}
@@ -35,15 +37,15 @@ export function WatermarkSection() {
         <>
           {/* Kind */}
           <div className="space-y-2">
-            <Label><HighlightedLabel>Type</HighlightedLabel></Label>
+            <Label><HighlightedLabel>{t('watermark.type')}</HighlightedLabel></Label>
             <Select value={watermark.kind} onValueChange={(v) => setWatermarkKind(v as typeof watermark.kind)}>
               <SelectTrigger>
                 <SelectValue />
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value="text">Text</SelectItem>
-                <SelectItem value="image">Image</SelectItem>
-                <SelectItem value="pattern">Pattern</SelectItem>
+                <SelectItem value="text">{t('watermark.text')}</SelectItem>
+                <SelectItem value="image">{t('watermark.image')}</SelectItem>
+                <SelectItem value="pattern">{t('watermark.pattern')}</SelectItem>
               </SelectContent>
             </Select>
           </div>
@@ -51,7 +53,7 @@ export function WatermarkSection() {
           {/* Text */}
           {watermark.kind === 'text' && (
             <div className="space-y-2">
-              <Label><HighlightedLabel>Text</HighlightedLabel></Label>
+              <Label><HighlightedLabel>{t('watermark.text')}</HighlightedLabel></Label>
               <Input 
                 value={watermark.text}
                 onChange={(e) => setWatermarkText(e.target.value)}
@@ -63,7 +65,7 @@ export function WatermarkSection() {
           {/* Image Upload */}
           {watermark.kind === 'image' && (
             <div className="space-y-2">
-              <Label><HighlightedLabel>Image</HighlightedLabel></Label>
+              <Label><HighlightedLabel>{t('watermark.image')}</HighlightedLabel></Label>
               <input 
                 ref={fileInputRef}
                 type="file" 
@@ -90,7 +92,7 @@ export function WatermarkSection() {
                   onClick={() => fileInputRef.current?.click()}
                 >
                   <Upload className="h-4 w-4 mr-2" />
-                  Upload Image
+                  {t('watermark.uploadImage')}
                 </Button>
               )}
             </div>
@@ -98,17 +100,17 @@ export function WatermarkSection() {
 
           {/* Position */}
           <div className="space-y-2">
-            <Label><HighlightedLabel>Position</HighlightedLabel></Label>
+            <Label><HighlightedLabel>{t('watermark.position')}</HighlightedLabel></Label>
             <Select value={watermark.position} onValueChange={(v) => setWatermarkPosition(v as typeof watermark.position)}>
               <SelectTrigger>
                 <SelectValue />
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value="center">Center</SelectItem>
-                <SelectItem value="corners">Corners</SelectItem>
-                <SelectItem value="edges">Edges</SelectItem>
-                <SelectItem value="behind">Behind QR</SelectItem>
-                <SelectItem value="quiet_zone">Quiet Zone</SelectItem>
+                <SelectItem value="center">{t('watermark.center')}</SelectItem>
+                <SelectItem value="corners">{t('watermark.corners')}</SelectItem>
+                <SelectItem value="edges">{t('watermark.edges')}</SelectItem>
+                <SelectItem value="behind">{t('watermark.behindQr')}</SelectItem>
+                <SelectItem value="quiet_zone">{t('watermark.quietZone')}</SelectItem>
               </SelectContent>
             </Select>
           </div>
@@ -116,8 +118,8 @@ export function WatermarkSection() {
           {/* Opacity */}
           <div className="space-y-2">
             <div className="flex items-center justify-between">
-              <Label><HighlightedLabel>Opacity</HighlightedLabel></Label>
-              <span className="text-sm text-muted-foreground">{watermark.opacity}%</span>
+              <Label><HighlightedLabel>{t('watermark.opacity')}</HighlightedLabel></Label>
+              <span className="text-sm text-muted-foreground">{t('qr.nPercent', { count: watermark.opacity })}</span>
             </div>
             <Slider
               value={[watermark.opacity]}
@@ -130,7 +132,7 @@ export function WatermarkSection() {
 
           {/* Blend Mode */}
           <div className="space-y-2">
-            <Label><HighlightedLabel>Blend Mode</HighlightedLabel></Label>
+            <Label><HighlightedLabel>{t('watermark.blendMode')}</HighlightedLabel></Label>
             <Select 
               value={watermark.blend} 
               onValueChange={(v) => useQRStore.setState((s) => ({ watermark: { ...s.watermark, blend: v as typeof watermark.blend } }))}
@@ -139,10 +141,10 @@ export function WatermarkSection() {
                 <SelectValue />
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value="normal">Normal</SelectItem>
-                <SelectItem value="multiply">Multiply</SelectItem>
-                <SelectItem value="screen">Screen</SelectItem>
-                <SelectItem value="overlay">Overlay</SelectItem>
+                <SelectItem value="normal">{t('watermark.normal')}</SelectItem>
+                <SelectItem value="multiply">{t('watermark.multiply')}</SelectItem>
+                <SelectItem value="screen">{t('watermark.screen')}</SelectItem>
+                <SelectItem value="overlay">{t('watermark.overlay')}</SelectItem>
               </SelectContent>
             </Select>
           </div>

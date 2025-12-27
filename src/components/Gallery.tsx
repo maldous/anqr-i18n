@@ -4,6 +4,7 @@
  */
 
 import { useState, useMemo, useRef, useEffect } from 'react'
+import { useTranslation } from 'react-i18next'
 import { ChevronDown, ChevronUp, Grid3x3 } from 'lucide-react'
 import { Capacitor } from '@capacitor/core'
 import { showInterstitial } from '@/modules/admob-service'
@@ -173,6 +174,7 @@ function MobileJumpButton({
 
 // Main Gallery component
 export function Gallery({ filter }: GalleryProps) {
+  const { t } = useTranslation()
   const [expandedSections, setExpandedSections] = useState<Set<GalleryCategory>>(
     new Set(gallerySections.map(s => s.id))
   )
@@ -250,8 +252,8 @@ export function Gallery({ filter }: GalleryProps) {
         {/* Hero section */}
         <div className="max-w-7xl mx-auto px-4 py-6">
           <div className="text-center">
-            <h1 className="text-2xl font-bold mb-2 tracking-tight text-foreground">ANQR Gallery</h1>
-            <p className="text-sm text-muted-foreground leading-relaxed max-w-2xl mx-auto">Browse our collection of QR code styles and presets.</p>
+            <h1 className="text-2xl font-bold mb-2 tracking-tight text-foreground">{t('gallery.title')}</h1>
+            <p className="text-sm text-muted-foreground leading-relaxed max-w-2xl mx-auto">{t('gallery.subtitle')}</p>
           </div>
         </div>
         

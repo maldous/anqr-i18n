@@ -1,4 +1,5 @@
 import { Loader2, AlertTriangle, Eye, Thermometer, RotateCw, Sparkles } from 'lucide-react'
+import { useTranslation } from 'react-i18next'
 import { useQRGenerator } from '@/hooks/useQRGenerator'
 import { useState, useEffect, useMemo, useRef, useCallback } from 'react'
 import { Capacitor } from '@capacitor/core'
@@ -12,6 +13,7 @@ interface PreviewProps {
 }
 
 export function Preview({ sidebarOpen = true }: PreviewProps) {
+  const { t } = useTranslation()
   const { 
     canvasRef, isLoading, error, 
     safetyWarnings,
@@ -223,7 +225,7 @@ export function Preview({ sidebarOpen = true }: PreviewProps) {
             {/* Contrast ratio badge and heatmap toggle */}
             {contrastAnalysis && (
               <div className="absolute bottom-2 left-2 z-10 flex items-center gap-1">
-                <div className={`${getContrastBadgeColor(contrastAnalysis.ratio)} text-white text-xs font-medium px-2 py-1 rounded-md shadow-sm flex items-center gap-1`} title={`Contrast ratio: ${contrastAnalysis.ratio.toFixed(2)}:1 - ${contrastAnalysis.meetsAAA ? 'Meets WCAG AAA' : contrastAnalysis.meetsAA ? 'Meets WCAG AA' : 'Below WCAG standards'}`}>
+                <div className={`${getContrastBadgeColor(contrastAnalysis.ratio)} text-white text-xs font-medium px-2 py-1 rounded-md shadow-sm flex items-center gap-1`} title={`${t('safety.contrast')}: ${contrastAnalysis.ratio.toFixed(2)}:1 - ${contrastAnalysis.meetsAAA ? 'WCAG AAA' : contrastAnalysis.meetsAA ? 'WCAG AA' : t('safety.poor')}`}>
                   <Eye className="h-3 w-3" />
                   <span>{contrastAnalysis.ratio.toFixed(1)}:1</span>
                   <span className="opacity-75">({getContrastLabel(contrastAnalysis.ratio)})</span>
@@ -236,10 +238,10 @@ export function Preview({ sidebarOpen = true }: PreviewProps) {
                         ? 'bg-orange-500 text-white' 
                         : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
                     }`}
-                    title="Toggle readability heatmap"
+                    title={t('safety.showHeatmap')}
                   >
                     <Thermometer className="h-3 w-3" />
-                    <span>Heatmap</span>
+                    <span>{t('safety.showHeatmap')}</span>
                   </button>
                 )}
               </div>
@@ -251,7 +253,7 @@ export function Preview({ sidebarOpen = true }: PreviewProps) {
                   <div className="flex items-start gap-2">
                     <AlertTriangle className="h-4 w-4 text-amber-600 flex-shrink-0 mt-0.5" />
                     <div className="flex-1">
-                      <p className="text-xs font-medium text-amber-800">Safety Warnings</p>
+                      <p className="text-xs font-medium text-amber-800">{t('sections.safety')}</p>
                       <ul className="text-xs text-amber-700 mt-1 space-y-0.5">
                         {safetyWarnings.map((warning, i) => (
                           <li key={i}>• {warning}</li>
@@ -261,7 +263,7 @@ export function Preview({ sidebarOpen = true }: PreviewProps) {
                     <button 
                       onClick={() => setShowWarnings(false)}
                       className="text-amber-600 hover:text-amber-800 text-xs"
-                      title="Dismiss warnings"
+                      title={t('common.close')}
                     >
                       ✕
                     </button>
@@ -272,16 +274,16 @@ export function Preview({ sidebarOpen = true }: PreviewProps) {
 <div className="relative inline-block">
               {/* Simulation indicator badge */}
               {hasActiveSimulation && (
-                <div className="absolute -top-2 -right-2 z-20 bg-purple-500 text-white text-xs px-2 py-0.5 rounded-full flex items-center gap-1 shadow-sm" title="Environmental simulation active - Preview shows how QR code may appear under different conditions">
+                <div className="absolute -top-2 -right-2 z-20 bg-purple-500 text-white text-xs px-2 py-0.5 rounded-full flex items-center gap-1 shadow-sm" title={t('preview.simulationActive')}>
                   <Sparkles className="h-3 w-3" />
-                  <span>Simulating</span>
+                  <span>{t('preview.simulating')}</span>
                 </div>
               )}
               <canvas 
                 ref={canvasRef}
                 className="max-w-full max-h-full transition-all duration-200"
                 style={simulationStyles}
-                title="QR Code Preview - Click Export to download"
+                title={t('preview.qrCodePreview')}
               />
               {/* Noise overlay canvas - positioned over the QR canvas */}
               {qa.simulateNoise > 0 && (

@@ -1,4 +1,5 @@
 import { useQRStore, PayloadKind } from '@/store/qr-store'
+import { useTranslation } from 'react-i18next'
 import { Label } from '@/components/ui/label'
 import { Input } from '@/components/ui/input'
 import { Textarea } from '@/components/ui/textarea'
@@ -8,100 +9,91 @@ import { HighlightedLabel } from '@/lib/search-context'
 import { useState, useEffect } from 'react'
 import { generateEPCSepa, generateUPI, generatePayNow, generatePromptPay, generatePIX } from '@/modules/payload-generators'
 
-// Payload kinds organized by category and tier
-// basic = Core only
-// advanced = Core + Contact + Location & Network + Calendar + Documents & Media + Social & Messaging
-// professional = Everything (adds Payments, Marketing, Enterprise)
-const PAYLOAD_CATEGORIES = [
+// Payload category/item keys for translation
+const PAYLOAD_CATEGORY_KEYS = [
   {
-    group: 'Core',
+    groupKey: 'payload.core',
     tier: 'basic' as const,
     items: [
-      { value: 'plain_text' as PayloadKind, label: 'Plain Text' },
-      { value: 'url' as PayloadKind, label: 'URL' },
+      { value: 'plain_text' as PayloadKind, labelKey: 'payload.plainText' },
+      { value: 'url' as PayloadKind, labelKey: 'payload.url' },
     ]
   },
   {
-    group: 'Contact',
+    groupKey: 'payload.contact',
     tier: 'advanced' as const,
     items: [
-      { value: 'tel' as PayloadKind, label: 'Phone Number' },
-      { value: 'email' as PayloadKind, label: 'Email' },
-      { value: 'sms' as PayloadKind, label: 'SMS / MMS' },
-      { value: 'vcard' as PayloadKind, label: 'vCard Contact' },
-      { value: 'mecard' as PayloadKind, label: 'MeCard Contact' },
-      { value: 'bizcard' as PayloadKind, label: 'BizCard (Legacy)' },
+      { value: 'tel' as PayloadKind, labelKey: 'payload.tel' },
+      { value: 'email' as PayloadKind, labelKey: 'payload.email' },
+      { value: 'sms' as PayloadKind, labelKey: 'payload.smsMms' },
+      { value: 'vcard' as PayloadKind, labelKey: 'payload.vcard' },
+      { value: 'mecard' as PayloadKind, labelKey: 'payload.mecard' },
+      { value: 'bizcard' as PayloadKind, labelKey: 'payload.bizcard' },
     ]
   },
   {
-    group: 'Location & Network',
+    groupKey: 'payload.locationNetwork',
     tier: 'advanced' as const,
     items: [
-      { value: 'geo' as PayloadKind, label: 'Geo Location' },
-      { value: 'wifi' as PayloadKind, label: 'WiFi Network' },
+      { value: 'geo' as PayloadKind, labelKey: 'payload.geo' },
+      { value: 'wifi' as PayloadKind, labelKey: 'payload.wifiNetwork' },
     ]
   },
   {
-    group: 'Calendar',
+    groupKey: 'payload.calendar',
     tier: 'advanced' as const,
     items: [
-      { value: 'event' as PayloadKind, label: 'iCalendar Event' },
-      { value: 'event_rsvp' as PayloadKind, label: 'Event RSVP Link' },
-      { value: 'calendar_subscription' as PayloadKind, label: 'Calendar Subscribe' },
+      { value: 'event' as PayloadKind, labelKey: 'payload.event' },
+      { value: 'event_rsvp' as PayloadKind, labelKey: 'payload.eventRsvp' },
+      { value: 'calendar_subscription' as PayloadKind, labelKey: 'payload.calendarSubscription' },
     ]
   },
   {
-    group: 'Documents & Media',
+    groupKey: 'payload.documentsMedia',
     tier: 'advanced' as const,
     items: [
-      { value: 'file_url' as PayloadKind, label: 'File / Document URL' },
-      { value: 'cloud_link' as PayloadKind, label: 'Cloud Storage Link' },
+      { value: 'file_url' as PayloadKind, labelKey: 'payload.fileUrl' },
+      { value: 'cloud_link' as PayloadKind, labelKey: 'payload.cloudLink' },
     ]
   },
   {
-    group: 'Social & Messaging',
+    groupKey: 'payload.socialMessaging',
     tier: 'advanced' as const,
     items: [
-      { value: 'social_profile' as PayloadKind, label: 'Social Profile' },
-      { value: 'messaging_link' as PayloadKind, label: 'WhatsApp / Telegram / Signal' },
+      { value: 'social_profile' as PayloadKind, labelKey: 'payload.socialProfile' },
+      { value: 'messaging_link' as PayloadKind, labelKey: 'payload.messagingLink' },
     ]
   },
   {
-    group: 'Payments (Open Specs)',
+    groupKey: 'payload.payments',
     tier: 'professional' as const,
     items: [
-      { value: 'epc_sepa' as PayloadKind, label: 'EPC / SEPA (EU)' },
-      { value: 'upi' as PayloadKind, label: 'UPI (India)' },
-      { value: 'paynow' as PayloadKind, label: 'PayNow (Singapore)' },
-      { value: 'promptpay' as PayloadKind, label: 'PromptPay (Thailand)' },
-      { value: 'pix' as PayloadKind, label: 'PIX (Brazil)' },
-      { value: 'crypto' as PayloadKind, label: 'Crypto (BTC, ETH, etc.)' },
+      { value: 'epc_sepa' as PayloadKind, labelKey: 'payload.epcSepa' },
+      { value: 'upi' as PayloadKind, labelKey: 'payload.upi' },
+      { value: 'paynow' as PayloadKind, labelKey: 'payload.paynow' },
+      { value: 'promptpay' as PayloadKind, labelKey: 'payload.promptpay' },
+      { value: 'pix' as PayloadKind, labelKey: 'payload.pix' },
+      { value: 'crypto' as PayloadKind, labelKey: 'payload.crypto' },
     ]
   },
   {
-    group: 'Marketing',
+    groupKey: 'payload.marketing',
     tier: 'professional' as const,
     items: [
-      { value: 'utm_link' as PayloadKind, label: 'UTM Campaign Link' },
-      { value: 'short_link' as PayloadKind, label: 'Short Link Redirect' },
+      { value: 'utm_link' as PayloadKind, labelKey: 'payload.utmLink' },
+      { value: 'short_link' as PayloadKind, labelKey: 'payload.shortLink' },
     ]
   },
   {
-    group: 'Enterprise',
+    groupKey: 'payload.enterprise',
     tier: 'professional' as const,
     items: [
-      { value: 'gs1_digital_link' as PayloadKind, label: 'GS1 Digital Link' },
-      { value: 'app_link' as PayloadKind, label: 'App Deep Link (Android/iOS)' },
-      { value: 'custom' as PayloadKind, label: 'Custom Format' },
+      { value: 'gs1_digital_link' as PayloadKind, labelKey: 'payload.gs1DigitalLink' },
+      { value: 'app_link' as PayloadKind, labelKey: 'payload.appLink' },
+      { value: 'custom' as PayloadKind, labelKey: 'payload.custom' },
     ]
   },
 ]
-
-// Legacy flat list for backward compatibility
-const PAYLOAD_KINDS: { value: PayloadKind; label: string; tier: 'basic' | 'advanced' | 'professional' }[] = 
-  PAYLOAD_CATEGORIES.flatMap(cat => 
-    cat.items.map(item => ({ value: item.value, label: item.label, tier: cat.tier }))
-  )
 
 // Payment form state types
 interface EPCSepaForm {
@@ -141,6 +133,7 @@ interface PIXForm {
 
 export function PayloadSection() {
   const { tier, payload, setPayloadKind, setPayloadText, setPayloadUrl, setPayloadTel, setPayloadEmail, setPayloadSms, setPayloadGeo, setPayloadWifi, setPayloadVCard, setPayloadMeCard, setPayloadEvent, setPayloadCrypto, setPayloadOtpAuth, setPayloadValidation } = useQRStore()
+  const { t } = useTranslation()
   const [showStartupHighlight, setShowStartupHighlight] = useState(false)
 
   // Payment form states
@@ -257,33 +250,28 @@ export function PayloadSection() {
     }
   }, [payload.kind, pixForm, setPayloadText])
 
-  const availableKinds = PAYLOAD_KINDS.filter(k => {
-    if (k.tier === 'basic') return true
-    if (k.tier === 'advanced') return tier === 'advanced' || tier === 'professional'
-    if (k.tier === 'professional') return tier === 'professional'
-    return false
-  })
+
 
   return (
     <div className="space-y-4">
       {/* Payload Type Selector */}
       <div className="space-y-2">
-        <Label><HighlightedLabel>Content Type</HighlightedLabel></Label>
+        <Label><HighlightedLabel>{t('payload.contentType')}</HighlightedLabel></Label>
         <Select value={payload.kind} onValueChange={(v) => setPayloadKind(v as PayloadKind)}>
-          <SelectTrigger className="w-full" title="Select the type of content to encode in the QR code">
+          <SelectTrigger className="w-full" title={t('hints.selectContentType')}>
             <SelectValue />
           </SelectTrigger>
           <SelectContent className="max-h-[400px]">
-            {PAYLOAD_CATEGORIES.filter(cat => {
+            {PAYLOAD_CATEGORY_KEYS.filter(cat => {
               if (cat.tier === 'basic') return true
               if (cat.tier === 'advanced') return tier === 'advanced' || tier === 'professional'
               if (cat.tier === 'professional') return tier === 'professional'
               return false
             }).map(cat => (
-              <SelectGroup key={cat.group}>
-                <SelectLabel className="text-xs font-semibold text-muted-foreground px-2 py-1.5 bg-muted/50">{cat.group}</SelectLabel>
+              <SelectGroup key={cat.groupKey}>
+                <SelectLabel className="text-xs font-semibold text-muted-foreground px-2 py-1.5 bg-muted/50">{t(cat.groupKey)}</SelectLabel>
                 {cat.items.map(item => (
-                  <SelectItem key={item.value} value={item.value}>{item.label}</SelectItem>
+                  <SelectItem key={item.value} value={item.value}>{t(item.labelKey)}</SelectItem>
                 ))}
               </SelectGroup>
             ))}
@@ -294,7 +282,7 @@ export function PayloadSection() {
       {/* Plain Text Input */}
       {payload.kind === 'plain_text' && (
         <div className={`space-y-2 ${showStartupHighlight ? 'p-1 -m-1' : ''}`}>
-          <Label><HighlightedLabel>Text Content</HighlightedLabel></Label>
+          <Label><HighlightedLabel>{t('payload.text')}</HighlightedLabel></Label>
           <Textarea 
             value={payload.text} 
             onChange={(e) => {
@@ -306,7 +294,7 @@ export function PayloadSection() {
             rows={4}
             className={showStartupHighlight ? 'ring-4 ring-primary/50 ring-offset-2 ring-offset-background animate-pulse' : ''}
             autoFocus={showStartupHighlight}
-            title="Enter the text content to encode in the QR code"
+            title={t('hints.enterTextContent')}
           />
         </div>
       )}
@@ -315,44 +303,44 @@ export function PayloadSection() {
       {payload.kind === 'url' && (
         <div className="space-y-4">
           <div className="space-y-2">
-            <Label><HighlightedLabel>URL</HighlightedLabel></Label>
+            <Label><HighlightedLabel>{t('payload.url')}</HighlightedLabel></Label>
             <Input 
               type="url"
               value={payload.url.href} 
               onChange={(e) => setPayloadUrl({ href: e.target.value })}
               placeholder="https://example.com"
-              title="Enter the URL to encode in the QR code"
+              title={t('hints.enterUrlContent')}
             />
           </div>
           {(tier === 'advanced' || tier === 'professional') && (
             <>
               <div className="flex items-center justify-between">
-                <Label><HighlightedLabel>Force HTTPS</HighlightedLabel></Label>
+                <Label><HighlightedLabel>{t('payload.forceHttps')}</HighlightedLabel></Label>
                 <Switch 
                   checked={payload.url.forceHttps}
                   onCheckedChange={(checked) => setPayloadUrl({ forceHttps: checked })}
-                  title="Convert HTTP URLs to HTTPS automatically"
+                  title={t('hints.forceHttps')}
                 />
               </div>
               <div className="space-y-2">
-                <Label className="text-muted-foreground text-xs"><HighlightedLabel>Marketing Tags</HighlightedLabel></Label>
+                <Label className="text-muted-foreground text-xs"><HighlightedLabel>{t('payload.marketingTags')}</HighlightedLabel></Label>
                 <Input 
                   placeholder="utm_source"
                   value={payload.url.utmSource || ''}
                   onChange={(e) => setPayloadUrl({ utmSource: e.target.value })}
-                  title="UTM source parameter for campaign tracking"
+                  title={t('hints.utmSource')}
                 />
                 <Input 
                   placeholder="utm_medium"
                   value={payload.url.utmMedium || ''}
                   onChange={(e) => setPayloadUrl({ utmMedium: e.target.value })}
-                  title="UTM medium parameter for campaign tracking"
+                  title={t('hints.utmMedium')}
                 />
                 <Input 
                   placeholder="utm_campaign"
                   value={payload.url.utmCampaign || ''}
                   onChange={(e) => setPayloadUrl({ utmCampaign: e.target.value })}
-                  title="UTM campaign parameter for campaign tracking"
+                  title={t('hints.utmCampaign')}
                 />
               </div>
             </>
@@ -363,7 +351,7 @@ export function PayloadSection() {
       {/* Phone Number */}
       {payload.kind === 'tel' && (
         <div className="space-y-2">
-          <Label><HighlightedLabel>Phone Number</HighlightedLabel></Label>
+          <Label><HighlightedLabel>{t('payload.phone')}</HighlightedLabel></Label>
           <Input 
             type="tel"
             value={payload.tel.number} 
@@ -377,7 +365,7 @@ export function PayloadSection() {
       {payload.kind === 'email' && (
         <div className="space-y-4">
           <div className="space-y-2">
-            <Label><HighlightedLabel>Email Address</HighlightedLabel></Label>
+            <Label><HighlightedLabel>{t('payload.email')}</HighlightedLabel></Label>
             <Input 
               type="email"
               value={payload.email.to} 
@@ -386,7 +374,7 @@ export function PayloadSection() {
             />
           </div>
           <div className="space-y-2">
-            <Label><HighlightedLabel>Subject (optional)</HighlightedLabel></Label>
+            <Label><HighlightedLabel>{t('payload.subject')}</HighlightedLabel></Label>
             <Input 
               value={payload.email.subject || ''} 
               onChange={(e) => setPayloadEmail({ subject: e.target.value })}
@@ -394,7 +382,7 @@ export function PayloadSection() {
             />
           </div>
           <div className="space-y-2">
-            <Label><HighlightedLabel>Body (optional)</HighlightedLabel></Label>
+            <Label><HighlightedLabel>{t('payload.body')}</HighlightedLabel></Label>
             <Textarea 
               value={payload.email.body || ''} 
               onChange={(e) => setPayloadEmail({ body: e.target.value })}
@@ -409,7 +397,7 @@ export function PayloadSection() {
       {payload.kind === 'sms' && (
         <div className="space-y-4">
           <div className="space-y-2">
-            <Label><HighlightedLabel>Phone Number</HighlightedLabel></Label>
+            <Label><HighlightedLabel>{t('payload.tel')}</HighlightedLabel></Label>
             <Input 
               type="tel"
               value={payload.sms.number} 
@@ -418,7 +406,7 @@ export function PayloadSection() {
             />
           </div>
           <div className="space-y-2">
-            <Label><HighlightedLabel>Message (optional)</HighlightedLabel></Label>
+            <Label><HighlightedLabel>{t('payload.messageOptional')}</HighlightedLabel></Label>
             <Textarea 
               value={payload.sms.body || ''} 
               onChange={(e) => setPayloadSms({ body: e.target.value })}
@@ -434,7 +422,7 @@ export function PayloadSection() {
         <div className="space-y-4">
           <div className="grid grid-cols-2 gap-2">
             <div className="space-y-2">
-              <Label><HighlightedLabel>Latitude</HighlightedLabel></Label>
+              <Label><HighlightedLabel>{t('payload.latitude')}</HighlightedLabel></Label>
               <Input 
                 type="number"
                 step="any"
@@ -444,7 +432,7 @@ export function PayloadSection() {
               />
             </div>
             <div className="space-y-2">
-              <Label><HighlightedLabel>Longitude</HighlightedLabel></Label>
+              <Label><HighlightedLabel>{t('payload.longitude')}</HighlightedLabel></Label>
               <Input 
                 type="number"
                 step="any"
@@ -455,7 +443,7 @@ export function PayloadSection() {
             </div>
           </div>
           <div className="space-y-2">
-            <Label><HighlightedLabel>Search Query (optional)</HighlightedLabel></Label>
+            <Label><HighlightedLabel>{t('payload.searchQuery')}</HighlightedLabel></Label>
             <Input 
               value={payload.geo.query || ''} 
               onChange={(e) => setPayloadGeo({ query: e.target.value })}
@@ -469,7 +457,7 @@ export function PayloadSection() {
       {payload.kind === 'wifi' && (
         <div className="space-y-4">
           <div className="space-y-2">
-            <Label><HighlightedLabel>Network Name (SSID)</HighlightedLabel></Label>
+            <Label><HighlightedLabel>{t('payload.ssid')}</HighlightedLabel></Label>
             <Input 
               value={payload.wifi.ssid} 
               onChange={(e) => setPayloadWifi({ ssid: e.target.value })}
@@ -477,7 +465,7 @@ export function PayloadSection() {
             />
           </div>
           <div className="space-y-2">
-            <Label><HighlightedLabel>Security Type</HighlightedLabel></Label>
+            <Label><HighlightedLabel>{t('payload.securityType')}</HighlightedLabel></Label>
             <Select value={payload.wifi.auth} onValueChange={(v) => setPayloadWifi({ auth: v as typeof payload.wifi.auth })}>
               <SelectTrigger>
                 <SelectValue />
@@ -493,7 +481,7 @@ export function PayloadSection() {
           </div>
           {payload.wifi.auth !== 'nopass' && (
             <div className="space-y-2">
-              <Label><HighlightedLabel>Password</HighlightedLabel></Label>
+              <Label><HighlightedLabel>{t('payload.password')}</HighlightedLabel></Label>
               <Input 
                 type="password"
                 value={payload.wifi.password || ''} 
@@ -503,7 +491,7 @@ export function PayloadSection() {
             </div>
           )}
           <div className="flex items-center justify-between">
-            <Label><HighlightedLabel>Hidden Network</HighlightedLabel></Label>
+            <Label><HighlightedLabel>{t('payload.hidden')}</HighlightedLabel></Label>
             <Switch 
               checked={payload.wifi.hidden}
               onCheckedChange={(checked) => setPayloadWifi({ hidden: checked })}
@@ -516,7 +504,7 @@ export function PayloadSection() {
       {payload.kind === 'vcard' && (
         <div className="space-y-4">
           <div className="space-y-2">
-            <Label><HighlightedLabel>Full Name</HighlightedLabel></Label>
+            <Label><HighlightedLabel>{t('payload.fullName')}</HighlightedLabel></Label>
             <Input 
               value={payload.vcard.fn || ''} 
               onChange={(e) => setPayloadVCard({ fn: e.target.value })}
@@ -524,7 +512,7 @@ export function PayloadSection() {
             />
           </div>
           <div className="space-y-2">
-            <Label><HighlightedLabel>Organization</HighlightedLabel></Label>
+            <Label><HighlightedLabel>{t('payload.organization')}</HighlightedLabel></Label>
             <Input 
               value={payload.vcard.org || ''} 
               onChange={(e) => setPayloadVCard({ org: e.target.value })}
@@ -532,7 +520,7 @@ export function PayloadSection() {
             />
           </div>
           <div className="space-y-2">
-            <Label><HighlightedLabel>Title</HighlightedLabel></Label>
+            <Label><HighlightedLabel>{t('payload.title')}</HighlightedLabel></Label>
             <Input 
               value={payload.vcard.title || ''} 
               onChange={(e) => setPayloadVCard({ title: e.target.value })}
@@ -540,7 +528,7 @@ export function PayloadSection() {
             />
           </div>
           <div className="space-y-2">
-            <Label><HighlightedLabel>Phone</HighlightedLabel></Label>
+            <Label><HighlightedLabel>{t('payload.phone')}</HighlightedLabel></Label>
             <Input 
               type="tel"
               value={payload.vcard.tel?.[0] || ''} 
@@ -549,7 +537,7 @@ export function PayloadSection() {
             />
           </div>
           <div className="space-y-2">
-            <Label><HighlightedLabel>Email</HighlightedLabel></Label>
+            <Label><HighlightedLabel>{t('payload.email')}</HighlightedLabel></Label>
             <Input 
               type="email"
               value={payload.vcard.email?.[0] || ''} 
@@ -558,7 +546,7 @@ export function PayloadSection() {
             />
           </div>
           <div className="space-y-2">
-            <Label><HighlightedLabel>Website</HighlightedLabel></Label>
+            <Label><HighlightedLabel>{t('payload.website')}</HighlightedLabel></Label>
             <Input 
               type="url"
               value={payload.vcard.url || ''} 
@@ -573,7 +561,7 @@ export function PayloadSection() {
       {payload.kind === 'mecard' && (
         <div className="space-y-4">
           <div className="space-y-2">
-            <Label><HighlightedLabel>Name</HighlightedLabel></Label>
+            <Label><HighlightedLabel>{t('payload.name')}</HighlightedLabel></Label>
             <Input 
               value={payload.mecard.n || ''} 
               onChange={(e) => setPayloadMeCard({ n: e.target.value })}
@@ -581,7 +569,7 @@ export function PayloadSection() {
             />
           </div>
           <div className="space-y-2">
-            <Label><HighlightedLabel>Nickname</HighlightedLabel></Label>
+            <Label><HighlightedLabel>{t('payload.nickname')}</HighlightedLabel></Label>
             <Input 
               value={payload.mecard.nickname || ''} 
               onChange={(e) => setPayloadMeCard({ nickname: e.target.value })}
@@ -589,7 +577,7 @@ export function PayloadSection() {
             />
           </div>
           <div className="space-y-2">
-            <Label><HighlightedLabel>Phone</HighlightedLabel></Label>
+            <Label><HighlightedLabel>{t('payload.phone')}</HighlightedLabel></Label>
             <Input 
               type="tel"
               value={payload.mecard.tel || ''} 
@@ -598,7 +586,7 @@ export function PayloadSection() {
             />
           </div>
           <div className="space-y-2">
-            <Label><HighlightedLabel>Email</HighlightedLabel></Label>
+            <Label><HighlightedLabel>{t('payload.email')}</HighlightedLabel></Label>
             <Input 
               type="email"
               value={payload.mecard.email || ''} 
@@ -607,7 +595,7 @@ export function PayloadSection() {
             />
           </div>
           <div className="space-y-2">
-            <Label><HighlightedLabel>Organization</HighlightedLabel></Label>
+            <Label><HighlightedLabel>{t('payload.organization')}</HighlightedLabel></Label>
             <Input 
               value={payload.mecard.org || ''} 
               onChange={(e) => setPayloadMeCard({ org: e.target.value })}
@@ -615,7 +603,7 @@ export function PayloadSection() {
             />
           </div>
           <div className="space-y-2">
-            <Label><HighlightedLabel>Address</HighlightedLabel></Label>
+            <Label><HighlightedLabel>{t('payload.address')}</HighlightedLabel></Label>
             <Input 
               value={payload.mecard.adr || ''} 
               onChange={(e) => setPayloadMeCard({ adr: e.target.value })}
@@ -623,7 +611,7 @@ export function PayloadSection() {
             />
           </div>
           <div className="space-y-2">
-            <Label><HighlightedLabel>Birthday</HighlightedLabel></Label>
+            <Label><HighlightedLabel>{t('payload.birthday')}</HighlightedLabel></Label>
             <Input 
               type="date"
               value={payload.mecard.bday || ''} 
@@ -637,7 +625,7 @@ export function PayloadSection() {
       {payload.kind === 'bizcard' && (
         <div className="space-y-4">
           <div className="space-y-2">
-            <Label><HighlightedLabel>First Name</HighlightedLabel></Label>
+            <Label><HighlightedLabel>{t('payload.firstName')}</HighlightedLabel></Label>
             <Input 
               value={payload.text} 
               onChange={(e) => setPayloadText(e.target.value)}
@@ -645,24 +633,24 @@ export function PayloadSection() {
             />
           </div>
           <div className="space-y-2">
-            <Label><HighlightedLabel>Last Name</HighlightedLabel></Label>
+            <Label><HighlightedLabel>{t('payload.lastName')}</HighlightedLabel></Label>
             <Input 
               placeholder="Doe"
             />
           </div>
           <div className="space-y-2">
-            <Label><HighlightedLabel>Company</HighlightedLabel></Label>
+            <Label><HighlightedLabel>{t('payload.company')}</HighlightedLabel></Label>
             <Input 
               placeholder="Company Inc."
             />
           </div>
           <div className="space-y-2">
-            <Label><HighlightedLabel>Title</HighlightedLabel></Label>
+            <Label><HighlightedLabel>{t('payload.title')}</HighlightedLabel></Label>
             <Input 
               placeholder="Manager"
             />
           </div>
-          <p className="text-xs text-muted-foreground">Legacy format - consider using vCard instead</p>
+          <p className="text-xs text-muted-foreground">{t('hints.bizcardLegacy')}</p>
         </div>
       )}
 
@@ -670,7 +658,7 @@ export function PayloadSection() {
       {(payload.kind as string) === 'bluetooth' && (
         <div className="space-y-4">
           <div className="space-y-2">
-            <Label><HighlightedLabel>Device Address (MAC)</HighlightedLabel></Label>
+            <Label><HighlightedLabel>{t('payload.deviceAddress')}</HighlightedLabel></Label>
             <Input 
               value={payload.text} 
               onChange={(e) => setPayloadText(e.target.value)}
@@ -678,12 +666,12 @@ export function PayloadSection() {
             />
           </div>
           <div className="space-y-2">
-            <Label><HighlightedLabel>Device Name (optional)</HighlightedLabel></Label>
+            <Label><HighlightedLabel>{t('payload.deviceName')}</HighlightedLabel></Label>
             <Input 
               placeholder="My Bluetooth Device"
             />
           </div>
-          <p className="text-xs text-muted-foreground">Note: Bluetooth pairing via QR is vendor-specific and may not work on all devices</p>
+          <p className="text-xs text-muted-foreground">{t('hints.bluetoothNote')}</p>
         </div>
       )}
 
@@ -691,7 +679,7 @@ export function PayloadSection() {
       {payload.kind === 'event' && (
         <div className="space-y-4">
           <div className="space-y-2">
-            <Label><HighlightedLabel>Event Title</HighlightedLabel></Label>
+            <Label><HighlightedLabel>{t('payload.summary')}</HighlightedLabel></Label>
             <Input 
               value={payload.event.summary || ''} 
               onChange={(e) => setPayloadEvent({ summary: e.target.value })}
@@ -699,7 +687,7 @@ export function PayloadSection() {
             />
           </div>
           <div className="space-y-2">
-            <Label><HighlightedLabel>Location</HighlightedLabel></Label>
+            <Label><HighlightedLabel>{t('payload.location')}</HighlightedLabel></Label>
             <Input 
               value={payload.event.location || ''} 
               onChange={(e) => setPayloadEvent({ location: e.target.value })}
@@ -707,7 +695,7 @@ export function PayloadSection() {
             />
           </div>
           <div className="space-y-2">
-            <Label><HighlightedLabel>Description</HighlightedLabel></Label>
+            <Label><HighlightedLabel>{t('payload.description')}</HighlightedLabel></Label>
             <Textarea 
               value={payload.event.description || ''} 
               onChange={(e) => setPayloadEvent({ description: e.target.value })}
@@ -717,7 +705,7 @@ export function PayloadSection() {
           </div>
           <div className="grid grid-cols-2 gap-2">
             <div className="space-y-2">
-              <Label><HighlightedLabel>Start</HighlightedLabel></Label>
+              <Label><HighlightedLabel>{t('payload.start')}</HighlightedLabel></Label>
               <Input 
                 type="datetime-local"
                 value={payload.event.start || ''} 
@@ -725,7 +713,7 @@ export function PayloadSection() {
               />
             </div>
             <div className="space-y-2">
-              <Label><HighlightedLabel>End</HighlightedLabel></Label>
+              <Label><HighlightedLabel>{t('payload.end')}</HighlightedLabel></Label>
               <Input 
                 type="datetime-local"
                 value={payload.event.end || ''} 
@@ -740,7 +728,7 @@ export function PayloadSection() {
       {payload.kind === 'event_rsvp' && (
         <div className="space-y-4">
           <div className="space-y-2">
-            <Label><HighlightedLabel>RSVP URL</HighlightedLabel></Label>
+            <Label><HighlightedLabel>{t('payload.rsvpUrl')}</HighlightedLabel></Label>
             <Input 
               type="url"
               value={payload.text} 
@@ -749,12 +737,12 @@ export function PayloadSection() {
             />
           </div>
           <div className="space-y-2">
-            <Label><HighlightedLabel>Event Name</HighlightedLabel></Label>
+            <Label><HighlightedLabel>{t('payload.eventName')}</HighlightedLabel></Label>
             <Input 
               placeholder="Annual Conference 2024"
             />
           </div>
-          <p className="text-xs text-muted-foreground">Link to an online RSVP form or event registration page</p>
+          <p className="text-xs text-muted-foreground">{t('hints.rsvpNote')}</p>
         </div>
       )}
 
@@ -762,7 +750,7 @@ export function PayloadSection() {
       {payload.kind === 'calendar_subscription' && (
         <div className="space-y-4">
           <div className="space-y-2">
-            <Label><HighlightedLabel>Calendar URL (ICS/WebCal)</HighlightedLabel></Label>
+            <Label><HighlightedLabel>{t('payload.calendarUrl')}</HighlightedLabel></Label>
             <Input 
               type="url"
               value={payload.text} 
@@ -771,12 +759,12 @@ export function PayloadSection() {
             />
           </div>
           <div className="space-y-2">
-            <Label><HighlightedLabel>Calendar Name</HighlightedLabel></Label>
+            <Label><HighlightedLabel>{t('payload.calendarName')}</HighlightedLabel></Label>
             <Input 
               placeholder="Team Schedule"
             />
           </div>
-          <p className="text-xs text-muted-foreground">Subscribe to a shared calendar feed</p>
+          <p className="text-xs text-muted-foreground">{t('hints.calendarNote')}</p>
         </div>
       )}
 
@@ -784,7 +772,7 @@ export function PayloadSection() {
       {payload.kind === 'file_url' && (
         <div className="space-y-4">
           <div className="space-y-2">
-            <Label><HighlightedLabel>File URL</HighlightedLabel></Label>
+            <Label><HighlightedLabel>{t('payload.url')}</HighlightedLabel></Label>
             <Input 
               type="url"
               value={payload.text} 
@@ -793,7 +781,7 @@ export function PayloadSection() {
             />
           </div>
           <div className="space-y-2">
-            <Label><HighlightedLabel>File Type</HighlightedLabel></Label>
+            <Label><HighlightedLabel>{t('payload.fileType')}</HighlightedLabel></Label>
             <Select defaultValue="pdf">
               <SelectTrigger>
                 <SelectValue />
@@ -815,7 +803,7 @@ export function PayloadSection() {
       {payload.kind === 'cloud_link' && (
         <div className="space-y-4">
           <div className="space-y-2">
-            <Label><HighlightedLabel>Cloud Link</HighlightedLabel></Label>
+            <Label><HighlightedLabel>{t('payload.url')}</HighlightedLabel></Label>
             <Input 
               type="url"
               value={payload.text} 
@@ -824,7 +812,7 @@ export function PayloadSection() {
             />
           </div>
           <div className="space-y-2">
-            <Label><HighlightedLabel>Service</HighlightedLabel></Label>
+            <Label><HighlightedLabel>{t('payload.service')}</HighlightedLabel></Label>
             <Select defaultValue="gdrive">
               <SelectTrigger>
                 <SelectValue />
@@ -846,7 +834,7 @@ export function PayloadSection() {
       {payload.kind === 'social_profile' && (
         <div className="space-y-4">
           <div className="space-y-2">
-            <Label><HighlightedLabel>Platform</HighlightedLabel></Label>
+            <Label><HighlightedLabel>{t('payload.platform')}</HighlightedLabel></Label>
             <Select defaultValue="linkedin">
               <SelectTrigger>
                 <SelectValue />
@@ -864,7 +852,7 @@ export function PayloadSection() {
             </Select>
           </div>
           <div className="space-y-2">
-            <Label><HighlightedLabel>Profile URL</HighlightedLabel></Label>
+            <Label><HighlightedLabel>{t('payload.profileUrl')}</HighlightedLabel></Label>
             <Input 
               type="url"
               value={payload.text} 
@@ -879,7 +867,7 @@ export function PayloadSection() {
       {payload.kind === 'messaging_link' && (
         <div className="space-y-4">
           <div className="space-y-2">
-            <Label><HighlightedLabel>Platform</HighlightedLabel></Label>
+            <Label><HighlightedLabel>{t('payload.platform')}</HighlightedLabel></Label>
             <Select defaultValue="whatsapp">
               <SelectTrigger>
                 <SelectValue />
@@ -889,14 +877,14 @@ export function PayloadSection() {
                 <SelectItem value="telegram">Telegram</SelectItem>
                 <SelectItem value="signal">Signal</SelectItem>
                 <SelectItem value="messenger">Messenger</SelectItem>
-                <SelectItem value="wechat">WeChat</SelectItem>
+
                 <SelectItem value="line">LINE</SelectItem>
                 <SelectItem value="viber">Viber</SelectItem>
               </SelectContent>
             </Select>
           </div>
           <div className="space-y-2">
-            <Label><HighlightedLabel>Phone/Username</HighlightedLabel></Label>
+            <Label><HighlightedLabel>{t('payload.phoneUsername')}</HighlightedLabel></Label>
             <Input 
               value={payload.text} 
               onChange={(e) => setPayloadText(e.target.value)}
@@ -904,7 +892,7 @@ export function PayloadSection() {
             />
           </div>
           <div className="space-y-2">
-            <Label><HighlightedLabel>Pre-filled Message (optional)</HighlightedLabel></Label>
+            <Label><HighlightedLabel>{t('payload.prefilledMessage')}</HighlightedLabel></Label>
             <Textarea 
               placeholder="Hello! I scanned your QR code..."
               rows={2}
@@ -917,7 +905,7 @@ export function PayloadSection() {
       {payload.kind === 'crypto' && (
         <div className="space-y-4">
           <div className="space-y-2">
-            <Label><HighlightedLabel>Cryptocurrency</HighlightedLabel></Label>
+            <Label><HighlightedLabel>{t('payload.cryptocurrency')}</HighlightedLabel></Label>
             <Select value={payload.crypto.type} onValueChange={(v) => setPayloadCrypto({ type: v })}>
               <SelectTrigger>
                 <SelectValue />
@@ -930,7 +918,7 @@ export function PayloadSection() {
             </Select>
           </div>
           <div className="space-y-2">
-            <Label><HighlightedLabel>Address</HighlightedLabel></Label>
+            <Label><HighlightedLabel>{t('payload.walletAddress')}</HighlightedLabel></Label>
             <Input 
               value={payload.crypto.address} 
               onChange={(e) => setPayloadCrypto({ address: e.target.value })}
@@ -938,7 +926,7 @@ export function PayloadSection() {
             />
           </div>
           <div className="space-y-2">
-            <Label><HighlightedLabel>Amount (optional)</HighlightedLabel></Label>
+            <Label><HighlightedLabel>{t('payload.amount')}</HighlightedLabel></Label>
             <Input 
               type="number"
               step="any"
@@ -948,7 +936,7 @@ export function PayloadSection() {
             />
           </div>
           <div className="space-y-2">
-            <Label><HighlightedLabel>Label (optional)</HighlightedLabel></Label>
+            <Label><HighlightedLabel>{t('payload.label')}</HighlightedLabel></Label>
             <Input 
               value={payload.crypto.label || ''} 
               onChange={(e) => setPayloadCrypto({ label: e.target.value })}
@@ -962,7 +950,7 @@ export function PayloadSection() {
       {payload.kind === 'epc_sepa' && (
         <div className="space-y-4">
           <div className="space-y-2">
-            <Label><HighlightedLabel>Beneficiary Name</HighlightedLabel></Label>
+            <Label><HighlightedLabel>{t('payload.beneficiaryName')}</HighlightedLabel></Label>
             <Input 
               value={epcSepaForm.name} 
               onChange={(e) => setEpcSepaForm(prev => ({ ...prev, name: e.target.value }))}
@@ -970,7 +958,7 @@ export function PayloadSection() {
             />
           </div>
           <div className="space-y-2">
-            <Label><HighlightedLabel>IBAN</HighlightedLabel></Label>
+            <Label><HighlightedLabel>{t('payload.iban')}</HighlightedLabel></Label>
             <Input 
               value={epcSepaForm.iban}
               onChange={(e) => setEpcSepaForm(prev => ({ ...prev, iban: e.target.value }))}
@@ -978,7 +966,7 @@ export function PayloadSection() {
             />
           </div>
           <div className="space-y-2">
-            <Label><HighlightedLabel>BIC/SWIFT (optional)</HighlightedLabel></Label>
+            <Label><HighlightedLabel>{t('payload.bicSwift')}</HighlightedLabel></Label>
             <Input 
               value={epcSepaForm.bic}
               onChange={(e) => setEpcSepaForm(prev => ({ ...prev, bic: e.target.value }))}
@@ -986,7 +974,7 @@ export function PayloadSection() {
             />
           </div>
           <div className="space-y-2">
-            <Label><HighlightedLabel>Amount (EUR)</HighlightedLabel></Label>
+            <Label><HighlightedLabel>{t('payload.amountEur')}</HighlightedLabel></Label>
             <Input 
               type="number"
               step="0.01"
@@ -996,14 +984,14 @@ export function PayloadSection() {
             />
           </div>
           <div className="space-y-2">
-            <Label><HighlightedLabel>Reference</HighlightedLabel></Label>
+            <Label><HighlightedLabel>{t('payload.reference')}</HighlightedLabel></Label>
             <Input 
               value={epcSepaForm.reference}
               onChange={(e) => setEpcSepaForm(prev => ({ ...prev, reference: e.target.value }))}
               placeholder="Invoice 12345"
             />
           </div>
-          <p className="text-xs text-muted-foreground">European Payment Council QR code for SEPA credit transfers</p>
+          <p className="text-xs text-muted-foreground">{t('hints.epcSepaNote')}</p>
         </div>
       )}
 
@@ -1011,7 +999,7 @@ export function PayloadSection() {
       {payload.kind === 'upi' && (
         <div className="space-y-4">
           <div className="space-y-2">
-            <Label><HighlightedLabel>UPI ID (VPA)</HighlightedLabel></Label>
+            <Label><HighlightedLabel>{t('payload.upiId')}</HighlightedLabel></Label>
             <Input 
               value={upiForm.vpa} 
               onChange={(e) => setUpiForm(prev => ({ ...prev, vpa: e.target.value }))}
@@ -1019,7 +1007,7 @@ export function PayloadSection() {
             />
           </div>
           <div className="space-y-2">
-            <Label><HighlightedLabel>Payee Name</HighlightedLabel></Label>
+            <Label><HighlightedLabel>{t('payload.payeeName')}</HighlightedLabel></Label>
             <Input 
               value={upiForm.payeeName}
               onChange={(e) => setUpiForm(prev => ({ ...prev, payeeName: e.target.value }))}
@@ -1027,7 +1015,7 @@ export function PayloadSection() {
             />
           </div>
           <div className="space-y-2">
-            <Label><HighlightedLabel>Amount (INR, optional)</HighlightedLabel></Label>
+            <Label><HighlightedLabel>{t('payload.amountInr')}</HighlightedLabel></Label>
             <Input 
               type="number"
               step="0.01"
@@ -1037,14 +1025,14 @@ export function PayloadSection() {
             />
           </div>
           <div className="space-y-2">
-            <Label><HighlightedLabel>Transaction Note (optional)</HighlightedLabel></Label>
+            <Label><HighlightedLabel>{t('payload.transactionNote')}</HighlightedLabel></Label>
             <Input 
               value={upiForm.transactionNote}
               onChange={(e) => setUpiForm(prev => ({ ...prev, transactionNote: e.target.value }))}
               placeholder="Payment for order"
             />
           </div>
-          <p className="text-xs text-muted-foreground">Unified Payments Interface for India</p>
+          <p className="text-xs text-muted-foreground">{t('hints.upiNote')}</p>
         </div>
       )}
 
@@ -1052,7 +1040,7 @@ export function PayloadSection() {
       {payload.kind === 'paynow' && (
         <div className="space-y-4">
           <div className="space-y-2">
-            <Label><HighlightedLabel>Proxy Type</HighlightedLabel></Label>
+            <Label><HighlightedLabel>{t('payload.proxyType')}</HighlightedLabel></Label>
             <Select 
               value={payNowForm.type} 
               onValueChange={(v) => setPayNowForm(prev => ({ ...prev, type: v as 'mobile' | 'uen' }))}
@@ -1067,7 +1055,7 @@ export function PayloadSection() {
             </Select>
           </div>
           <div className="space-y-2">
-            <Label><HighlightedLabel>UEN/Mobile Number</HighlightedLabel></Label>
+            <Label><HighlightedLabel>{t('payload.uenMobile')}</HighlightedLabel></Label>
             <Input 
               value={payNowForm.value} 
               onChange={(e) => setPayNowForm(prev => ({ ...prev, value: e.target.value }))}
@@ -1075,7 +1063,7 @@ export function PayloadSection() {
             />
           </div>
           <div className="space-y-2">
-            <Label><HighlightedLabel>Amount (SGD, optional)</HighlightedLabel></Label>
+            <Label><HighlightedLabel>{t('payload.amountSgd')}</HighlightedLabel></Label>
             <Input 
               type="number"
               step="0.01"
@@ -1085,14 +1073,14 @@ export function PayloadSection() {
             />
           </div>
           <div className="space-y-2">
-            <Label><HighlightedLabel>Reference (optional)</HighlightedLabel></Label>
+            <Label><HighlightedLabel>{t('payload.referenceOptional')}</HighlightedLabel></Label>
             <Input 
               value={payNowForm.reference}
               onChange={(e) => setPayNowForm(prev => ({ ...prev, reference: e.target.value }))}
               placeholder="Invoice 123"
             />
           </div>
-          <p className="text-xs text-muted-foreground">Singapore fast payment system</p>
+          <p className="text-xs text-muted-foreground">{t('hints.paynowNote')}</p>
         </div>
       )}
 
@@ -1100,7 +1088,7 @@ export function PayloadSection() {
       {payload.kind === 'promptpay' && (
         <div className="space-y-4">
           <div className="space-y-2">
-            <Label><HighlightedLabel>ID Type</HighlightedLabel></Label>
+            <Label><HighlightedLabel>{t('payload.idType')}</HighlightedLabel></Label>
             <Select 
               value={promptPayForm.type} 
               onValueChange={(v) => setPromptPayForm(prev => ({ ...prev, type: v as 'mobile' | 'id' | 'ewallet' }))}
@@ -1116,7 +1104,7 @@ export function PayloadSection() {
             </Select>
           </div>
           <div className="space-y-2">
-            <Label><HighlightedLabel>PromptPay ID</HighlightedLabel></Label>
+            <Label><HighlightedLabel>{t('payload.promptPayId')}</HighlightedLabel></Label>
             <Input 
               value={promptPayForm.value} 
               onChange={(e) => setPromptPayForm(prev => ({ ...prev, value: e.target.value }))}
@@ -1124,7 +1112,7 @@ export function PayloadSection() {
             />
           </div>
           <div className="space-y-2">
-            <Label><HighlightedLabel>Amount (THB, optional)</HighlightedLabel></Label>
+            <Label><HighlightedLabel>{t('payload.amountThb')}</HighlightedLabel></Label>
             <Input 
               type="number"
               step="0.01"
@@ -1133,7 +1121,7 @@ export function PayloadSection() {
               placeholder="100.00"
             />
           </div>
-          <p className="text-xs text-muted-foreground">Thailand national e-payment system</p>
+          <p className="text-xs text-muted-foreground">{t('hints.promptpayNote')}</p>
         </div>
       )}
 
@@ -1141,7 +1129,7 @@ export function PayloadSection() {
       {payload.kind === 'pix' && (
         <div className="space-y-4">
           <div className="space-y-2">
-            <Label><HighlightedLabel>PIX Key</HighlightedLabel></Label>
+            <Label><HighlightedLabel>{t('payload.pixKey')}</HighlightedLabel></Label>
             <Input 
               value={pixForm.key} 
               onChange={(e) => setPixForm(prev => ({ ...prev, key: e.target.value }))}
@@ -1149,7 +1137,7 @@ export function PayloadSection() {
             />
           </div>
           <div className="space-y-2">
-            <Label><HighlightedLabel>Merchant Name (optional)</HighlightedLabel></Label>
+            <Label><HighlightedLabel>{t('payload.merchantName')}</HighlightedLabel></Label>
             <Input 
               value={pixForm.name}
               onChange={(e) => setPixForm(prev => ({ ...prev, name: e.target.value }))}
@@ -1157,7 +1145,7 @@ export function PayloadSection() {
             />
           </div>
           <div className="space-y-2">
-            <Label><HighlightedLabel>City (optional)</HighlightedLabel></Label>
+            <Label><HighlightedLabel>{t('payload.cityOptional')}</HighlightedLabel></Label>
             <Input 
               value={pixForm.city}
               onChange={(e) => setPixForm(prev => ({ ...prev, city: e.target.value }))}
@@ -1165,7 +1153,7 @@ export function PayloadSection() {
             />
           </div>
           <div className="space-y-2">
-            <Label><HighlightedLabel>Amount (BRL, optional)</HighlightedLabel></Label>
+            <Label><HighlightedLabel>{t('payload.amountBrl')}</HighlightedLabel></Label>
             <Input 
               type="number"
               step="0.01"
@@ -1174,73 +1162,17 @@ export function PayloadSection() {
               placeholder="100.00"
             />
           </div>
-          <p className="text-xs text-muted-foreground">Brazilian instant payment system</p>
+          <p className="text-xs text-muted-foreground">{t('hints.pixNote')}</p>
         </div>
       )}
 
-      {/* Alipay */}
-      {(payload.kind as string) === '_removed_alipay' && (
-        <div className="space-y-4">
-          <div className="space-y-2">
-            <Label><HighlightedLabel>Alipay User ID</HighlightedLabel></Label>
-            <Input 
-              value={payload.text} 
-              onChange={(e) => setPayloadText(e.target.value)}
-              placeholder="2088..."
-            />
-          </div>
-          <div className="space-y-2">
-            <Label><HighlightedLabel>Amount (CNY, optional)</HighlightedLabel></Label>
-            <Input 
-              type="number"
-              step="0.01"
-              placeholder="100.00"
-            />
-          </div>
-          <div className="space-y-2">
-            <Label><HighlightedLabel>Memo (optional)</HighlightedLabel></Label>
-            <Input 
-              placeholder="Payment note"
-            />
-          </div>
-          <p className="text-xs text-muted-foreground">Alipay payment QR code</p>
-        </div>
-      )}
 
-      {/* WeChat Pay */}
-      {(payload.kind as string) === '_removed_wechat' && (
-        <div className="space-y-4">
-          <div className="space-y-2">
-            <Label><HighlightedLabel>WeChat ID</HighlightedLabel></Label>
-            <Input 
-              value={payload.text} 
-              onChange={(e) => setPayloadText(e.target.value)}
-              placeholder="wxid_..."
-            />
-          </div>
-          <div className="space-y-2">
-            <Label><HighlightedLabel>Amount (CNY, optional)</HighlightedLabel></Label>
-            <Input 
-              type="number"
-              step="0.01"
-              placeholder="100.00"
-            />
-          </div>
-          <div className="space-y-2">
-            <Label><HighlightedLabel>Memo (optional)</HighlightedLabel></Label>
-            <Input 
-              placeholder="Payment note"
-            />
-          </div>
-          <p className="text-xs text-muted-foreground">WeChat Pay payment QR code</p>
-        </div>
-      )}
 
       {/* OTP Authenticator */}
       {(payload.kind as string) === '_removed_otpauth' && (
         <div className="space-y-4">
           <div className="space-y-2">
-            <Label><HighlightedLabel>Type</HighlightedLabel></Label>
+            <Label><HighlightedLabel>{t('payload.otpType')}</HighlightedLabel></Label>
             <Select value={payload.otpauth.type || 'totp'} onValueChange={(v) => setPayloadOtpAuth({ type: v as 'totp' | 'hotp' })}>
               <SelectTrigger>
                 <SelectValue />
@@ -1252,7 +1184,7 @@ export function PayloadSection() {
             </Select>
           </div>
           <div className="space-y-2">
-            <Label><HighlightedLabel>Issuer</HighlightedLabel></Label>
+            <Label><HighlightedLabel>{t('payload.issuer')}</HighlightedLabel></Label>
             <Input 
               value={payload.otpauth.issuer || ''} 
               onChange={(e) => setPayloadOtpAuth({ issuer: e.target.value })}
@@ -1260,7 +1192,7 @@ export function PayloadSection() {
             />
           </div>
           <div className="space-y-2">
-            <Label><HighlightedLabel>Account Name</HighlightedLabel></Label>
+            <Label><HighlightedLabel>{t('payload.accountName')}</HighlightedLabel></Label>
             <Input 
               value={payload.otpauth.account || ''} 
               onChange={(e) => setPayloadOtpAuth({ account: e.target.value })}
@@ -1268,7 +1200,7 @@ export function PayloadSection() {
             />
           </div>
           <div className="space-y-2">
-            <Label><HighlightedLabel>Secret (Base32)</HighlightedLabel></Label>
+            <Label><HighlightedLabel>{t('payload.secretBase32')}</HighlightedLabel></Label>
             <Input 
               value={payload.otpauth.secret || ''} 
               onChange={(e) => setPayloadOtpAuth({ secret: e.target.value })}
@@ -1276,7 +1208,7 @@ export function PayloadSection() {
             />
           </div>
           <div className="space-y-2">
-            <Label><HighlightedLabel>Algorithm</HighlightedLabel></Label>
+            <Label><HighlightedLabel>{t('payload.algorithm')}</HighlightedLabel></Label>
             <Select value={payload.otpauth.algorithm || 'SHA1'} onValueChange={(v) => setPayloadOtpAuth({ algorithm: v })}>
               <SelectTrigger>
                 <SelectValue />
@@ -1290,7 +1222,7 @@ export function PayloadSection() {
           </div>
           <div className="grid grid-cols-2 gap-2">
             <div className="space-y-2">
-              <Label><HighlightedLabel>Digits</HighlightedLabel></Label>
+              <Label><HighlightedLabel>{t('payload.digits')}</HighlightedLabel></Label>
               <Input 
                 type="number"
                 value={payload.otpauth.digits || 6} 
@@ -1321,7 +1253,7 @@ export function PayloadSection() {
       {payload.kind === 'short_link' && (
         <div className="space-y-4">
           <div className="space-y-2">
-            <Label><HighlightedLabel>Short URL</HighlightedLabel></Label>
+            <Label><HighlightedLabel>{t('payload.shortUrl')}</HighlightedLabel></Label>
             <Input 
               type="url"
               value={payload.text} 
@@ -1329,7 +1261,7 @@ export function PayloadSection() {
               placeholder="https://bit.ly/xxxxx"
             />
           </div>
-          <p className="text-xs text-muted-foreground">Use a URL shortener service for dynamic/trackable QR codes</p>
+          <p className="text-xs text-muted-foreground">{t('hints.shortLinkNote')}</p>
         </div>
       )}
 
@@ -1337,7 +1269,7 @@ export function PayloadSection() {
       {payload.kind === 'utm_link' && (
         <div className="space-y-4">
           <div className="space-y-2">
-            <Label><HighlightedLabel>Base URL</HighlightedLabel></Label>
+            <Label><HighlightedLabel>{t('payload.baseUrl')}</HighlightedLabel></Label>
             <Input 
               type="url"
               value={payload.url.href} 
@@ -1346,7 +1278,7 @@ export function PayloadSection() {
             />
           </div>
           <div className="space-y-2">
-            <Label><HighlightedLabel>Campaign Source</HighlightedLabel></Label>
+            <Label><HighlightedLabel>{t('payload.campaignSource')}</HighlightedLabel></Label>
             <Input 
               value={payload.url.utmSource || ''} 
               onChange={(e) => setPayloadUrl({ utmSource: e.target.value })}
@@ -1354,7 +1286,7 @@ export function PayloadSection() {
             />
           </div>
           <div className="space-y-2">
-            <Label><HighlightedLabel>Campaign Medium</HighlightedLabel></Label>
+            <Label><HighlightedLabel>{t('payload.campaignMedium')}</HighlightedLabel></Label>
             <Input 
               value={payload.url.utmMedium || ''} 
               onChange={(e) => setPayloadUrl({ utmMedium: e.target.value })}
@@ -1362,7 +1294,7 @@ export function PayloadSection() {
             />
           </div>
           <div className="space-y-2">
-            <Label><HighlightedLabel>Campaign Name</HighlightedLabel></Label>
+            <Label><HighlightedLabel>{t('payload.campaignName')}</HighlightedLabel></Label>
             <Input 
               value={payload.url.utmCampaign || ''} 
               onChange={(e) => setPayloadUrl({ utmCampaign: e.target.value })}
@@ -1370,7 +1302,7 @@ export function PayloadSection() {
             />
           </div>
           <div className="space-y-2">
-            <Label><HighlightedLabel>Campaign Term (optional)</HighlightedLabel></Label>
+            <Label><HighlightedLabel>{t('payload.campaignTerm')}</HighlightedLabel></Label>
             <Input 
               value={payload.url.utmTerm || ''} 
               onChange={(e) => setPayloadUrl({ utmTerm: e.target.value })}
@@ -1378,7 +1310,7 @@ export function PayloadSection() {
             />
           </div>
           <div className="space-y-2">
-            <Label><HighlightedLabel>Campaign Content (optional)</HighlightedLabel></Label>
+            <Label><HighlightedLabel>{t('payload.campaignContent')}</HighlightedLabel></Label>
             <Input 
               value={payload.url.utmContent || ''} 
               onChange={(e) => setPayloadUrl({ utmContent: e.target.value })}
@@ -1392,7 +1324,7 @@ export function PayloadSection() {
       {payload.kind === 'app_link' && (
         <div className="space-y-4">
           <div className="space-y-2">
-            <Label><HighlightedLabel>Platform</HighlightedLabel></Label>
+            <Label><HighlightedLabel>{t('payload.platform')}</HighlightedLabel></Label>
             <Select defaultValue="universal">
               <SelectTrigger>
                 <SelectValue />
@@ -1406,7 +1338,7 @@ export function PayloadSection() {
             </Select>
           </div>
           <div className="space-y-2">
-            <Label><HighlightedLabel>Deep Link URL</HighlightedLabel></Label>
+            <Label><HighlightedLabel>{t('payload.deepLinkUrl')}</HighlightedLabel></Label>
             <Input 
               value={payload.text} 
               onChange={(e) => setPayloadText(e.target.value)}
@@ -1414,13 +1346,13 @@ export function PayloadSection() {
             />
           </div>
           <div className="space-y-2">
-            <Label><HighlightedLabel>Fallback URL (optional)</HighlightedLabel></Label>
+            <Label><HighlightedLabel>{t('payload.fallbackUrl')}</HighlightedLabel></Label>
             <Input 
               type="url"
               placeholder="https://example.com/app"
             />
           </div>
-          <p className="text-xs text-muted-foreground">Opens specific content within a mobile app</p>
+          <p className="text-xs text-muted-foreground">{t('hints.appLinkNote')}</p>
         </div>
       )}
 
@@ -1428,7 +1360,7 @@ export function PayloadSection() {
       {payload.kind === 'gs1_digital_link' && (
         <div className="space-y-4">
           <div className="space-y-2">
-            <Label><HighlightedLabel>GTIN (Global Trade Item Number)</HighlightedLabel></Label>
+            <Label><HighlightedLabel>{t('payload.gtin')}</HighlightedLabel></Label>
             <Input 
               value={payload.text} 
               onChange={(e) => setPayloadText(e.target.value)}
@@ -1436,31 +1368,31 @@ export function PayloadSection() {
             />
           </div>
           <div className="space-y-2">
-            <Label><HighlightedLabel>Serial Number (optional)</HighlightedLabel></Label>
+            <Label><HighlightedLabel>{t('payload.serialNumber')}</HighlightedLabel></Label>
             <Input 
               placeholder="ABC123"
             />
           </div>
           <div className="space-y-2">
-            <Label><HighlightedLabel>Batch/Lot (optional)</HighlightedLabel></Label>
+            <Label><HighlightedLabel>{t('payload.batchLot')}</HighlightedLabel></Label>
             <Input 
               placeholder="LOT123"
             />
           </div>
           <div className="space-y-2">
-            <Label><HighlightedLabel>Expiry Date (optional)</HighlightedLabel></Label>
+            <Label><HighlightedLabel>{t('payload.expiryDate')}</HighlightedLabel></Label>
             <Input 
               type="date"
             />
           </div>
           <div className="space-y-2">
-            <Label><HighlightedLabel>Resolver Domain</HighlightedLabel></Label>
+            <Label><HighlightedLabel>{t('payload.resolverDomain')}</HighlightedLabel></Label>
             <Input 
               placeholder="id.gs1.org"
               defaultValue="id.gs1.org"
             />
           </div>
-          <p className="text-xs text-muted-foreground">GS1 Digital Link for product identification and traceability</p>
+          <p className="text-xs text-muted-foreground">{t('hints.gs1Note')}</p>
         </div>
       )}
 
@@ -1468,7 +1400,7 @@ export function PayloadSection() {
       {(payload.kind as string) === '_removed_inventory' && (
         <div className="space-y-4">
           <div className="space-y-2">
-            <Label><HighlightedLabel>Asset/Item ID</HighlightedLabel></Label>
+            <Label><HighlightedLabel>{t('payload.assetItemId')}</HighlightedLabel></Label>
             <Input 
               value={payload.text} 
               onChange={(e) => setPayloadText(e.target.value)}
@@ -1476,7 +1408,7 @@ export function PayloadSection() {
             />
           </div>
           <div className="space-y-2">
-            <Label><HighlightedLabel>Asset Type</HighlightedLabel></Label>
+            <Label><HighlightedLabel>{t('payload.assetType')}</HighlightedLabel></Label>
             <Select defaultValue="equipment">
               <SelectTrigger>
                 <SelectValue />
@@ -1492,19 +1424,19 @@ export function PayloadSection() {
             </Select>
           </div>
           <div className="space-y-2">
-            <Label><HighlightedLabel>Location</HighlightedLabel></Label>
+            <Label><HighlightedLabel>{t('payload.location')}</HighlightedLabel></Label>
             <Input 
               placeholder="Building A, Room 101"
             />
           </div>
           <div className="space-y-2">
-            <Label><HighlightedLabel>Description</HighlightedLabel></Label>
+            <Label><HighlightedLabel>{t('payload.description')}</HighlightedLabel></Label>
             <Input 
               placeholder="Dell Laptop 15-inch"
             />
           </div>
           <div className="space-y-2">
-            <Label><HighlightedLabel>Lookup URL (optional)</HighlightedLabel></Label>
+            <Label><HighlightedLabel>{t('payload.lookupUrl')}</HighlightedLabel></Label>
             <Input 
               type="url"
               placeholder="https://inventory.example.com/asset/"
@@ -1517,7 +1449,7 @@ export function PayloadSection() {
       {(payload.kind as string) === '_removed_ticketing' && (
         <div className="space-y-4">
           <div className="space-y-2">
-            <Label><HighlightedLabel>Ticket ID</HighlightedLabel></Label>
+            <Label><HighlightedLabel>{t('payload.ticketId')}</HighlightedLabel></Label>
             <Input 
               value={payload.text} 
               onChange={(e) => setPayloadText(e.target.value)}
@@ -1525,45 +1457,45 @@ export function PayloadSection() {
             />
           </div>
           <div className="space-y-2">
-            <Label><HighlightedLabel>Event Name</HighlightedLabel></Label>
+            <Label><HighlightedLabel>{t('payload.eventName')}</HighlightedLabel></Label>
             <Input 
               placeholder="Concert 2024"
             />
           </div>
           <div className="space-y-2">
-            <Label><HighlightedLabel>Venue</HighlightedLabel></Label>
+            <Label><HighlightedLabel>{t('payload.venue')}</HighlightedLabel></Label>
             <Input 
               placeholder="Stadium Arena"
             />
           </div>
           <div className="space-y-2">
-            <Label><HighlightedLabel>Date & Time</HighlightedLabel></Label>
+            <Label><HighlightedLabel>{t('payload.dateTime')}</HighlightedLabel></Label>
             <Input 
               type="datetime-local"
             />
           </div>
           <div className="grid grid-cols-2 gap-2">
             <div className="space-y-2">
-              <Label><HighlightedLabel>Section/Zone</HighlightedLabel></Label>
+              <Label><HighlightedLabel>{t('payload.sectionZone')}</HighlightedLabel></Label>
               <Input 
                 placeholder="Section A"
               />
             </div>
             <div className="space-y-2">
-              <Label><HighlightedLabel>Seat</HighlightedLabel></Label>
+              <Label><HighlightedLabel>{t('payload.seat')}</HighlightedLabel></Label>
               <Input 
                 placeholder="Row 5, Seat 12"
               />
             </div>
           </div>
           <div className="space-y-2">
-            <Label><HighlightedLabel>Attendee Name</HighlightedLabel></Label>
+            <Label><HighlightedLabel>{t('payload.attendeeName')}</HighlightedLabel></Label>
             <Input 
               placeholder="John Doe"
             />
           </div>
           <div className="space-y-2">
-            <Label><HighlightedLabel>Validation URL (optional)</HighlightedLabel></Label>
+            <Label><HighlightedLabel>{t('payload.validationUrl')}</HighlightedLabel></Label>
             <Input 
               type="url"
               placeholder="https://tickets.example.com/validate/"
@@ -1576,7 +1508,7 @@ export function PayloadSection() {
       {payload.kind === 'custom' && (
         <div className="space-y-4">
           <div className="space-y-2">
-            <Label><HighlightedLabel>Raw Data</HighlightedLabel></Label>
+            <Label><HighlightedLabel>{t('payload.rawData')}</HighlightedLabel></Label>
             <Textarea 
               value={payload.text} 
               onChange={(e) => setPayloadText(e.target.value)}
@@ -1585,44 +1517,44 @@ export function PayloadSection() {
               className="font-mono text-sm"
             />
           </div>
-          <p className="text-xs text-muted-foreground">Enter raw data in any format. No validation or formatting will be applied.</p>
+          <p className="text-xs text-muted-foreground">{t('hints.customNote')}</p>
         </div>
       )}
 
       {/* Validation Options (Advanced+) */}
       {(tier === 'advanced' || tier === 'professional') && (
         <div className="space-y-2 pt-4 border-t">
-          <Label className="text-muted-foreground text-xs"><HighlightedLabel>Validation Options</HighlightedLabel></Label>
+          <Label className="text-muted-foreground text-xs"><HighlightedLabel>{t('payload.validationOptions')}</HighlightedLabel></Label>
           <div className="flex items-center justify-between">
-            <Label className="text-sm"><HighlightedLabel>Validate Input</HighlightedLabel></Label>
+            <Label className="text-sm"><HighlightedLabel>{t('payload.validateInput')}</HighlightedLabel></Label>
             <Switch 
               checked={payload.validate}
               onCheckedChange={(checked) => setPayloadValidation({ validate: checked })}
-              title="Validate input data before encoding"
+              title={t('hints.validateInput')}
             />
           </div>
           <div className="flex items-center justify-between">
-            <Label className="text-sm"><HighlightedLabel>Trim Whitespace</HighlightedLabel></Label>
+            <Label className="text-sm"><HighlightedLabel>{t('payload.trimWhitespace')}</HighlightedLabel></Label>
             <Switch 
               checked={payload.trim}
               onCheckedChange={(checked) => setPayloadValidation({ trim: checked })}
-              title="Remove leading and trailing whitespace"
+              title={t('hints.trimWhitespace')}
             />
           </div>
           <div className="flex items-center justify-between">
-            <Label className="text-sm"><HighlightedLabel>Normalize Newlines</HighlightedLabel></Label>
+            <Label className="text-sm"><HighlightedLabel>{t('payload.normalizeNewlines')}</HighlightedLabel></Label>
             <Switch 
               checked={payload.normalizeNewlines}
               onCheckedChange={(checked) => setPayloadValidation({ normalizeNewlines: checked })}
-              title="Convert different newline formats to a standard format"
+              title={t('hints.normalizeNewlines')}
             />
           </div>
           <div className="flex items-center justify-between">
-            <Label className="text-sm"><HighlightedLabel>Max Length Guard</HighlightedLabel></Label>
+            <Label className="text-sm"><HighlightedLabel>{t('payload.maxLengthGuard')}</HighlightedLabel></Label>
             <Switch 
               checked={payload.maxLenGuard}
               onCheckedChange={(checked) => setPayloadValidation({ maxLenGuard: checked })}
-              title="Prevent encoding content that exceeds QR code capacity"
+              title={t('hints.maxLengthGuard')}
             />
           </div>
         </div>

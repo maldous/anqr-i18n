@@ -1,4 +1,5 @@
 import { useQRStore } from '@/store/qr-store'
+import { useTranslation } from 'react-i18next'
 import { Label } from '@/components/ui/label'
 import { Switch } from '@/components/ui/switch'
 import { Button } from '@/components/ui/button'
@@ -16,6 +17,7 @@ import {
 
 export function ShareSection() {
   const { share, setShare, getPayloadText, qr, render, overlay } = useQRStore()
+  const { t } = useTranslation()
   const [copiedField, setCopiedField] = useState<string | null>(null)
 
   // Build shareable URL from current config
@@ -63,8 +65,8 @@ export function ShareSection() {
       {/* Direct Link */}
       <div className="flex items-center justify-between">
         <div>
-          <Label><HighlightedLabel>Direct Link</HighlightedLabel></Label>
-          <p className="text-xs text-muted-foreground">Generate shareable URL</p>
+          <Label><HighlightedLabel>{t('share.directLink')}</HighlightedLabel></Label>
+          <p className="text-xs text-muted-foreground">{t('share.directLinkDesc')}</p>
         </div>
         <Switch 
           checked={share.directLink}
@@ -94,8 +96,8 @@ export function ShareSection() {
       {/* Embed HTML */}
       <div className="flex items-center justify-between">
         <div>
-          <Label><HighlightedLabel>Embed HTML</HighlightedLabel></Label>
-          <p className="text-xs text-muted-foreground">Generate embed code</p>
+          <Label><HighlightedLabel>{t('share.embedHtml')}</HighlightedLabel></Label>
+          <p className="text-xs text-muted-foreground">{t('share.embedHtmlDesc')}</p>
         </div>
         <Switch 
           checked={share.embedHtml}
@@ -140,8 +142,8 @@ export function ShareSection() {
       {/* Encode More Params */}
       <div className="flex items-center justify-between">
         <div>
-          <Label><HighlightedLabel>Encode All Parameters</HighlightedLabel></Label>
-          <p className="text-xs text-muted-foreground">Include all settings in URL</p>
+          <Label><HighlightedLabel>{t('share.encodeAllParams')}</HighlightedLabel></Label>
+          <p className="text-xs text-muted-foreground">{t('share.encodeAllParamsDesc')}</p>
         </div>
         <Switch 
           checked={share.encodeMoreParams}
@@ -151,7 +153,7 @@ export function ShareSection() {
 
       {/* Quick Share Buttons */}
       <div className="pt-2 border-t space-y-2">
-        <Label className="text-muted-foreground"><HighlightedLabel>Quick Share</HighlightedLabel></Label>
+        <Label className="text-muted-foreground"><HighlightedLabel>{t('share.quickShare')}</HighlightedLabel></Label>
         <div className="flex gap-2">
           <Button 
             variant="outline" 
@@ -160,7 +162,7 @@ export function ShareSection() {
             onClick={() => handleCopy(shareableUrl, 'quick')}
           >
             {copiedField === 'quick' ? <Check className="h-4 w-4 mr-2" /> : <Link className="h-4 w-4 mr-2" />}
-            {copiedField === 'quick' ? 'Copied!' : 'Copy Link'}
+            {copiedField === 'quick' ? t('share.copied') : t('share.copyLink')}
           </Button>
         </div>
         <div className="flex gap-2">
@@ -170,7 +172,7 @@ export function ShareSection() {
             className="flex-1"
             onClick={() => window.open(socialUrls.twitter, '_blank')}
           >
-            X/Twitter
+            {t('share.twitter')}
           </Button>
           <Button 
             variant="outline" 
@@ -179,7 +181,7 @@ export function ShareSection() {
             onClick={() => window.open(socialUrls.whatsapp, '_blank')}
           >
             <MessageCircle className="h-4 w-4 mr-1" />
-            WhatsApp
+            {t('share.whatsapp')}
           </Button>
         </div>
       </div>

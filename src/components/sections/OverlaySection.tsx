@@ -1,4 +1,5 @@
 import { useQRStore, OverlayMode, ColorMode, FitMode, DitherKind, DiffusionKernel, OrderedMatrix } from '@/store/qr-store'
+import { useTranslation } from 'react-i18next'
 import { Label } from '@/components/ui/label'
 import { Input } from '@/components/ui/input'
 import { Slider } from '@/components/ui/slider'
@@ -9,29 +10,29 @@ import { Upload, X, Move, Link, Loader2 } from 'lucide-react'
 import { useRef, useState, useEffect, useCallback } from 'react'
 import { HighlightedLabel } from '@/lib/search-context'
 
-const BASIC_OVERLAY_MODES: { value: OverlayMode; label: string }[] = [
-  { value: 'center', label: 'Center Logo' },
-  { value: 'blend', label: 'Blend' },
-  { value: 'halftone', label: 'Halftone' },
-  { value: 'dithered', label: 'Dithered' },
+const BASIC_OVERLAY_MODES: { value: OverlayMode; labelKey: string }[] = [
+  { value: 'center', labelKey: 'overlay.centerLogo' },
+  { value: 'blend', labelKey: 'overlay.blendMode' },
+  { value: 'halftone', labelKey: 'overlay.halftoneMode' },
+  { value: 'dithered', labelKey: 'overlay.ditheredMode' },
 ]
 
-const ADVANCED_OVERLAY_MODES: { value: OverlayMode; label: string }[] = [
-  { value: 'subpixel', label: 'Subpixel' },
-  { value: 'blue-noise', label: 'Blue Noise' },
-  { value: 'mosaic', label: 'Mosaic' },
-  { value: 'gapfill', label: 'Gap Fill' },
-  { value: 'brightness', label: 'Brightness' },
-  { value: 'duotone', label: 'Duotone' },
+const ADVANCED_OVERLAY_MODES: { value: OverlayMode; labelKey: string }[] = [
+  { value: 'subpixel', labelKey: 'overlay.subpixelMode' },
+  { value: 'blue-noise', labelKey: 'overlay.blueNoiseMode' },
+  { value: 'mosaic', labelKey: 'overlay.mosaicMode' },
+  { value: 'gapfill', labelKey: 'overlay.gapFillMode' },
+  { value: 'brightness', labelKey: 'overlay.brightnessMode' },
+  { value: 'duotone', labelKey: 'overlay.duotoneMode' },
 ]
 
-const PRO_OVERLAY_MODES: { value: OverlayMode; label: string }[] = [
-  { value: 'pixelate', label: 'Pixelate' },
-  { value: 'outline', label: 'Outline' },
-  { value: 'wave', label: 'Wave' },
-  { value: 'subpixel-size', label: 'Subpixel Size' },
-  { value: 'dither', label: 'True Dither' },
-  { value: 'extreme', label: 'Extreme' },
+const PRO_OVERLAY_MODES: { value: OverlayMode; labelKey: string }[] = [
+  { value: 'pixelate', labelKey: 'overlay.pixelateMode' },
+  { value: 'outline', labelKey: 'overlay.outlineMode' },
+  { value: 'wave', labelKey: 'overlay.waveMode' },
+  { value: 'subpixel-size', labelKey: 'overlay.subpixelSizeMode' },
+  { value: 'dither', labelKey: 'overlay.trueDitherMode' },
+  { value: 'extreme', labelKey: 'overlay.extremeMode' },
 ]
 
 export function OverlaySection() {
@@ -45,6 +46,7 @@ export function OverlaySection() {
     setOverlayPreserveTiming, setOverlayPreserveAlignment,
     setOverlayCrop
   } = useQRStore()
+  const { t } = useTranslation()
 
   const fileInputRef = useRef<HTMLInputElement>(null)
   const [imagePreview, setImagePreview] = useState<string | null>(null)
@@ -186,7 +188,7 @@ export function OverlaySection() {
     <div className="space-y-4">
       {/* File Upload */}
       <div className="space-y-2">
-        <Label><HighlightedLabel>Image / GIF / WebP</HighlightedLabel></Label>
+        <Label><HighlightedLabel>{t('overlay.imageGifWebp')}</HighlightedLabel></Label>
         <input 
           ref={fileInputRef}
           type="file" 
@@ -198,7 +200,7 @@ export function OverlaySection() {
           <div className="space-y-2">
             <div className="flex items-center gap-2 p-2 border rounded-md bg-muted/50">
               <span className="flex-1 text-sm truncate">
-                {overlay.file?.name || (overlay.url ? 'Loaded from URL' : 'No file')}
+                {overlay.file?.name || (overlay.url ? t('overlay.loadedFromUrl') : t('overlay.noFile'))}
               </span>
               <Button 
                 variant="ghost" 
@@ -272,7 +274,7 @@ export function OverlaySection() {
             
             {/* Crop Controls */}
             <div className="flex items-center justify-between">
-              <Label className="text-sm"><HighlightedLabel>Enable Crop</HighlightedLabel></Label>
+              <Label className="text-sm"><HighlightedLabel>{t('overlay.enableCrop')}</HighlightedLabel></Label>
               <Switch 
                 checked={overlay.cropEnabled}
                 onCheckedChange={(checked) => setOverlayCrop({ enabled: checked })}
@@ -282,8 +284,8 @@ export function OverlaySection() {
             {overlay.cropEnabled && (
               <div className="space-y-2">
                 <div className="flex items-center justify-between">
-                  <Label className="text-sm">Crop Size</Label>
-                  <span className="text-sm text-muted-foreground">{Math.round(overlay.cropRegion.size * 100)}%</span>
+                  <Label className="text-sm">{t('overlay.cropSize')}</Label>
+                  <span className="text-sm text-muted-foreground">{t('qr.nPercent', { count: Math.round(overlay.cropRegion.size * 100) })}</span>
                 </div>
                 <Slider
                   value={[overlay.cropRegion.size]}
@@ -297,29 +299,28 @@ export function OverlaySection() {
           </div>
         ) : (
           <div className="space-y-2">
-            <div className="flex gap-2">
-              <Button 
-                variant="outline" 
-                className="flex-1"
-                onClick={() => fileInputRef.current?.click()}
-              >
-                <Upload className="h-4 w-4 mr-2" />
-                Upload
-              </Button>
-              <Button 
-                variant="outline" 
-                className="flex-1"
-                onClick={() => setShowUrlInput(!showUrlInput)}
-              >
-                <Link className="h-4 w-4 mr-2" />
-                From URL
-              </Button>
+            <div className="flex gap-2">                <Button 
+                  variant="outline" 
+                  className="flex-1"
+                  onClick={() => fileInputRef.current?.click()}
+                >
+                  <Upload className="h-4 w-4 mr-2" />
+                  {t('overlay.upload')}
+                </Button>
+                <Button 
+                  variant="outline" 
+                  className="flex-1"
+                  onClick={() => setShowUrlInput(!showUrlInput)}
+                >
+                  <Link className="h-4 w-4 mr-2" />
+                  {t('overlay.fromUrl')}
+                </Button>
             </div>
             
             {/* URL Input */}
             {showUrlInput && (
               <div className="space-y-2 p-3 border rounded-md bg-muted/30">
-                <Label className="text-sm">Image URL</Label>
+                <Label className="text-sm">{t('overlay.imageUrl')}</Label>
                 <div className="flex gap-2">
                   <Input
                     type="url"
@@ -340,7 +341,7 @@ export function OverlaySection() {
                     {isLoadingUrl ? (
                       <Loader2 className="h-4 w-4 animate-spin" />
                     ) : (
-                      'Load'
+                      t('overlay.load')
                     )}
                   </Button>
                 </div>
@@ -348,7 +349,7 @@ export function OverlaySection() {
                   <p className="text-xs text-destructive">{urlError}</p>
                 )}
                 <p className="text-xs text-muted-foreground">
-                  Note: Image must allow cross-origin requests (CORS)
+                  {t('overlay.corsNote')}
                 </p>
               </div>
             )}
@@ -358,7 +359,7 @@ export function OverlaySection() {
 
       {/* Enable Toggle */}
       <div className="flex items-center justify-between">
-        <Label><HighlightedLabel>Enable Overlay</HighlightedLabel></Label>
+        <Label><HighlightedLabel>{t('common.enabled')}</HighlightedLabel></Label>
         <Switch 
           checked={overlay.enabled}
           onCheckedChange={setOverlayEnabled}
@@ -370,14 +371,14 @@ export function OverlaySection() {
         <>
           {/* Overlay Mode */}
           <div className="space-y-2">
-            <Label><HighlightedLabel>Blend Mode</HighlightedLabel></Label>
+            <Label><HighlightedLabel>{t('overlay.mode')}</HighlightedLabel></Label>
             <Select value={overlay.mode} onValueChange={(v) => setOverlayMode(v as OverlayMode)}>
               <SelectTrigger>
                 <SelectValue />
               </SelectTrigger>
               <SelectContent>
                 {availableModes.map(m => (
-                  <SelectItem key={m.value} value={m.value}>{m.label}</SelectItem>
+                  <SelectItem key={m.value} value={m.value}>{t(m.labelKey)}</SelectItem>
                 ))}
               </SelectContent>
             </Select>
@@ -386,8 +387,8 @@ export function OverlaySection() {
           {/* Intensity */}
           <div className="space-y-2">
             <div className="flex items-center justify-between">
-              <Label><HighlightedLabel>Intensity</HighlightedLabel></Label>
-              <span className="text-sm text-muted-foreground">{overlay.intensity}%</span>
+              <Label><HighlightedLabel>{t('overlay.intensity')}</HighlightedLabel></Label>
+              <span className="text-sm text-muted-foreground">{t('qr.nPercent', { count: overlay.intensity })}</span>
             </div>
             <Slider
               value={[overlay.intensity]}
@@ -400,22 +401,22 @@ export function OverlaySection() {
 
           {/* Color Mode */}
           <div className="space-y-2">
-            <Label><HighlightedLabel>Color Mode</HighlightedLabel></Label>
+            <Label><HighlightedLabel>{t('overlay.colorMode')}</HighlightedLabel></Label>
             <Select value={overlay.colorMode} onValueChange={(v) => setOverlayColorMode(v as ColorMode)}>
               <SelectTrigger>
                 <SelectValue />
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value="color">Full Color</SelectItem>
-                <SelectItem value="grayscale">Grayscale</SelectItem>
-                <SelectItem value="bw">Black & White</SelectItem>
+                <SelectItem value="color">{t('overlay.fullColor')}</SelectItem>
+                <SelectItem value="grayscale">{t('overlay.grayscale')}</SelectItem>
+                <SelectItem value="bw">{t('overlay.bw')}</SelectItem>
               </SelectContent>
             </Select>
           </div>
 
           {/* Preserve Finders */}
           <div className="flex items-center justify-between">
-            <Label><HighlightedLabel>Preserve Finder Patterns</HighlightedLabel></Label>
+            <Label><HighlightedLabel>{t('overlay.preserveFinders')}</HighlightedLabel></Label>
             <Switch 
               checked={overlay.preserveFinders}
               onCheckedChange={setOverlayPreserveFinders}
@@ -427,7 +428,7 @@ export function OverlaySection() {
             <>
               {/* Invert */}
               <div className="flex items-center justify-between">
-                <Label><HighlightedLabel>Invert Image</HighlightedLabel></Label>
+                <Label><HighlightedLabel>{t('overlay.invert')}</HighlightedLabel></Label>
                 <Switch 
                   checked={overlay.invert}
                   onCheckedChange={setOverlayInvert}
@@ -436,15 +437,15 @@ export function OverlaySection() {
 
               {/* Fit Mode */}
               <div className="space-y-2">
-                <Label><HighlightedLabel>Fit Mode</HighlightedLabel></Label>
+                <Label><HighlightedLabel>{t('overlay.fitMode')}</HighlightedLabel></Label>
                 <Select value={overlay.fit} onValueChange={(v) => setOverlayFit(v as FitMode)}>
                   <SelectTrigger>
                     <SelectValue />
                   </SelectTrigger>
                   <SelectContent>
-                    <SelectItem value="cover">Cover</SelectItem>
-                    <SelectItem value="contain">Contain</SelectItem>
-                    <SelectItem value="stretch">Stretch</SelectItem>
+                    <SelectItem value="cover">{t('overlay.cover')}</SelectItem>
+                    <SelectItem value="contain">{t('overlay.contain')}</SelectItem>
+                    <SelectItem value="stretch">{t('overlay.stretch')}</SelectItem>
                   </SelectContent>
                 </Select>
               </div>
@@ -452,8 +453,8 @@ export function OverlaySection() {
               {/* Rotation */}
               <div className="space-y-2">
                 <div className="flex items-center justify-between">
-                  <Label><HighlightedLabel>Rotation</HighlightedLabel></Label>
-                  <span className="text-sm text-muted-foreground">{overlay.rotateDeg}°</span>
+                  <Label><HighlightedLabel>{t('overlay.rotation')}</HighlightedLabel></Label>
+                  <span className="text-sm text-muted-foreground">{t('qr.nDegrees', { count: overlay.rotateDeg })}</span>
                 </div>
                 <Slider
                   value={[overlay.rotateDeg]}
@@ -471,21 +472,21 @@ export function OverlaySection() {
                     checked={overlay.flipX}
                     onCheckedChange={(checked) => setOverlayFlip({ x: checked })}
                   />
-                  <Label className="text-sm"><HighlightedLabel>Flip X</HighlightedLabel></Label>
+                  <Label className="text-sm"><HighlightedLabel>{t('overlay.flipX')}</HighlightedLabel></Label>
                 </div>
                 <div className="flex items-center gap-2">
                   <Switch 
                     checked={overlay.flipY}
                     onCheckedChange={(checked) => setOverlayFlip({ y: checked })}
                   />
-                  <Label className="text-sm"><HighlightedLabel>Flip Y</HighlightedLabel></Label>
+                  <Label className="text-sm"><HighlightedLabel>{t('overlay.flipY')}</HighlightedLabel></Label>
                 </div>
               </div>
 
               {/* Brightness */}
               <div className="space-y-2">
                 <div className="flex items-center justify-between">
-                  <Label><HighlightedLabel>Brightness</HighlightedLabel></Label>
+                  <Label><HighlightedLabel>{t('overlay.brightness')}</HighlightedLabel></Label>
                   <span className="text-sm text-muted-foreground">{overlay.brightness}</span>
                 </div>
                 <Slider
@@ -500,7 +501,7 @@ export function OverlaySection() {
               {/* Contrast */}
               <div className="space-y-2">
                 <div className="flex items-center justify-between">
-                  <Label><HighlightedLabel>Contrast</HighlightedLabel></Label>
+                  <Label><HighlightedLabel>{t('overlay.contrast')}</HighlightedLabel></Label>
                   <span className="text-sm text-muted-foreground">{overlay.contrast}</span>
                 </div>
                 <Slider
@@ -515,7 +516,7 @@ export function OverlaySection() {
               {/* Gamma */}
               <div className="space-y-2">
                 <div className="flex items-center justify-between">
-                  <Label><HighlightedLabel>Gamma</HighlightedLabel></Label>
+                  <Label><HighlightedLabel>{t('overlay.gamma')}</HighlightedLabel></Label>
                   <span className="text-sm text-muted-foreground">{overlay.gamma.toFixed(1)}</span>
                 </div>
                 <Slider
@@ -530,7 +531,7 @@ export function OverlaySection() {
               {/* Saturation */}
               <div className="space-y-2">
                 <div className="flex items-center justify-between">
-                  <Label><HighlightedLabel>Saturation</HighlightedLabel></Label>
+                  <Label><HighlightedLabel>{t('overlay.saturation')}</HighlightedLabel></Label>
                   <span className="text-sm text-muted-foreground">{overlay.saturation}</span>
                 </div>
                 <Slider
@@ -545,8 +546,8 @@ export function OverlaySection() {
               {/* Hue Rotate */}
               <div className="space-y-2">
                 <div className="flex items-center justify-between">
-                  <Label><HighlightedLabel>Hue Rotate</HighlightedLabel></Label>
-                  <span className="text-sm text-muted-foreground">{overlay.hueRotateDeg}°</span>
+                  <Label><HighlightedLabel>{t('overlay.hueRotate')}</HighlightedLabel></Label>
+                  <span className="text-sm text-muted-foreground">{t('qr.nDegrees', { count: overlay.hueRotateDeg })}</span>
                 </div>
                 <Slider
                   value={[overlay.hueRotateDeg]}
@@ -560,8 +561,8 @@ export function OverlaySection() {
               {/* Blur */}
               <div className="space-y-2">
                 <div className="flex items-center justify-between">
-                  <Label><HighlightedLabel>Blur</HighlightedLabel></Label>
-                  <span className="text-sm text-muted-foreground">{overlay.blurPx}px</span>
+                  <Label><HighlightedLabel>{t('overlay.blur')}</HighlightedLabel></Label>
+                  <span className="text-sm text-muted-foreground">{t('qr.nPx', { count: overlay.blurPx })}</span>
                 </div>
                 <Slider
                   value={[overlay.blurPx]}
@@ -575,7 +576,7 @@ export function OverlaySection() {
               {/* Sharpen */}
               <div className="space-y-2">
                 <div className="flex items-center justify-between">
-                  <Label><HighlightedLabel>Sharpen</HighlightedLabel></Label>
+                  <Label><HighlightedLabel>{t('overlay.sharpen')}</HighlightedLabel></Label>
                   <span className="text-sm text-muted-foreground">{overlay.sharpen}</span>
                 </div>
                 <Slider
@@ -590,8 +591,8 @@ export function OverlaySection() {
               {/* Posterize */}
               <div className="space-y-2">
                 <div className="flex items-center justify-between">
-                  <Label><HighlightedLabel>Posterize Levels</HighlightedLabel></Label>
-                  <span className="text-sm text-muted-foreground">{overlay.posterizeLevels || 'Off'}</span>
+                  <Label><HighlightedLabel>{t('overlay.posterizeLevels')}</HighlightedLabel></Label>
+                  <span className="text-sm text-muted-foreground">{overlay.posterizeLevels || t('common.off')}</span>
                 </div>
                 <Slider
                   value={[overlay.posterizeLevels]}
@@ -605,7 +606,7 @@ export function OverlaySection() {
               {/* Threshold */}
               <div className="space-y-2">
                 <div className="flex items-center justify-between">
-                  <Label><HighlightedLabel>Threshold</HighlightedLabel></Label>
+                  <Label><HighlightedLabel>{t('overlay.threshold')}</HighlightedLabel></Label>
                   <span className="text-sm text-muted-foreground">{overlay.threshold}</span>
                 </div>
                 <Slider
@@ -619,7 +620,7 @@ export function OverlaySection() {
 
               {/* Edge Detect */}
               <div className="space-y-2">
-                <Label><HighlightedLabel>Edge Detection</HighlightedLabel></Label>
+                <Label><HighlightedLabel>{t('overlay.edge')}</HighlightedLabel></Label>
                 <Select 
                   value={overlay.edgeDetect} 
                   onValueChange={(v) => useQRStore.setState((s) => ({ overlay: { ...s.overlay, edgeDetect: v as typeof overlay.edgeDetect } }))}
@@ -628,9 +629,9 @@ export function OverlaySection() {
                     <SelectValue />
                   </SelectTrigger>
                   <SelectContent>
-                    <SelectItem value="off">Off</SelectItem>
-                    <SelectItem value="sobel">Sobel</SelectItem>
-                    <SelectItem value="canny">Canny</SelectItem>
+                    <SelectItem value="off">{t('overlay.none')}</SelectItem>
+                    <SelectItem value="sobel">{t('overlay.sobel')}</SelectItem>
+                    <SelectItem value="canny">{t('overlay.canny')}</SelectItem>
                   </SelectContent>
                 </Select>
               </div>
@@ -639,48 +640,48 @@ export function OverlaySection() {
               {['dithered', 'blue-noise', 'dither'].includes(overlay.mode) && (
                 <>
                 <div className="space-y-2 pt-2 border-t">
-                  <Label className="text-muted-foreground"><HighlightedLabel>Dither Settings</HighlightedLabel></Label>
+                  <Label className="text-muted-foreground"><HighlightedLabel>{t('overlay.ditherSettings')}</HighlightedLabel></Label>
                     <Select value={overlay.ditherKind} onValueChange={(v) => setOverlayDitherKind(v as DitherKind)}>
                       <SelectTrigger>
                         <SelectValue />
                       </SelectTrigger>
                       <SelectContent>
-                        <SelectItem value="error_diffusion">Error Diffusion</SelectItem>
-                        <SelectItem value="ordered_bayer">Ordered (Bayer)</SelectItem>
-                        <SelectItem value="ordered_clustered">Clustered Dot</SelectItem>
-                        <SelectItem value="ordered_void_cluster">Void & Cluster</SelectItem>
-                        <SelectItem value="blue_noise">Blue Noise</SelectItem>
-                        <SelectItem value="blue_noise_threshold">Blue Noise Threshold</SelectItem>
-                        <SelectItem value="white_noise">White Noise</SelectItem>
-                        <SelectItem value="gaussian_noise">Gaussian Noise</SelectItem>
-                        <SelectItem value="triangular_noise">Triangular Noise</SelectItem>
-                        <SelectItem value="true_dither">True Dither</SelectItem>
-                        <SelectItem value="blue_noise_error_diffusion">Blue Noise + Error Diffusion</SelectItem>
-                        <SelectItem value="screened_blue_noise">Screened Blue Noise</SelectItem>
-                        <SelectItem value="perceptual">Perceptual (Luminance)</SelectItem>
-                        <SelectItem value="edge_aware">Edge-Aware</SelectItem>
-                        <SelectItem value="adaptive_threshold">Adaptive Threshold</SelectItem>
-                        <SelectItem value="temporal_blue_noise">Temporal Blue Noise</SelectItem>
+                        <SelectItem value="error_diffusion">{t('overlay.errorDiffusion')}</SelectItem>
+                        <SelectItem value="ordered_bayer">{t('overlay.orderedBayer')}</SelectItem>
+                        <SelectItem value="ordered_clustered">{t('overlay.clusteredDot')}</SelectItem>
+                        <SelectItem value="ordered_void_cluster">{t('overlay.voidCluster')}</SelectItem>
+                        <SelectItem value="blue_noise">{t('overlay.blueNoise')}</SelectItem>
+                        <SelectItem value="blue_noise_threshold">{t('overlay.blueNoiseThreshold')}</SelectItem>
+                        <SelectItem value="white_noise">{t('overlay.whiteNoise')}</SelectItem>
+                        <SelectItem value="gaussian_noise">{t('overlay.gaussianNoise')}</SelectItem>
+                        <SelectItem value="triangular_noise">{t('overlay.triangularNoise')}</SelectItem>
+                        <SelectItem value="true_dither">{t('overlay.trueDither')}</SelectItem>
+                        <SelectItem value="blue_noise_error_diffusion">{t('overlay.blueNoiseErrorDiffusion')}</SelectItem>
+                        <SelectItem value="screened_blue_noise">{t('overlay.screenedBlueNoise')}</SelectItem>
+                        <SelectItem value="perceptual">{t('overlay.perceptual')}</SelectItem>
+                        <SelectItem value="edge_aware">{t('overlay.edgeAware')}</SelectItem>
+                        <SelectItem value="adaptive_threshold">{t('overlay.adaptiveThreshold')}</SelectItem>
+                        <SelectItem value="temporal_blue_noise">{t('overlay.temporalBlueNoise')}</SelectItem>
                       </SelectContent>
                     </Select>
                   </div>
 
                   {overlay.ditherKind === 'error_diffusion' && (
                   <div className="space-y-2">
-                    <Label><HighlightedLabel>Diffusion Kernel</HighlightedLabel></Label>
+                    <Label><HighlightedLabel>{t('overlay.diffusionKernel')}</HighlightedLabel></Label>
                       <Select value={overlay.diffusionKernel} onValueChange={(v) => setOverlayDiffusionKernel(v as DiffusionKernel)}>
                         <SelectTrigger>
                           <SelectValue />
                         </SelectTrigger>
                         <SelectContent>
-                          <SelectItem value="floyd_steinberg">Floyd-Steinberg</SelectItem>
-                          <SelectItem value="jarvis_judice_ninke">Jarvis-Judice-Ninke</SelectItem>
-                          <SelectItem value="stucki">Stucki</SelectItem>
-                          <SelectItem value="burkes">Burkes</SelectItem>
-                          <SelectItem value="sierra">Sierra</SelectItem>
-                          <SelectItem value="sierra_2">Sierra-2</SelectItem>
-                          <SelectItem value="sierra_lite">Sierra-Lite</SelectItem>
-                          <SelectItem value="atkinson">Atkinson</SelectItem>
+                          <SelectItem value="floyd_steinberg">{t('overlay.floydSteinberg')}</SelectItem>
+                          <SelectItem value="jarvis_judice_ninke">{t('overlay.jarvisJudiceNinke')}</SelectItem>
+                          <SelectItem value="stucki">{t('overlay.stucki')}</SelectItem>
+                          <SelectItem value="burkes">{t('overlay.burkes')}</SelectItem>
+                          <SelectItem value="sierra">{t('overlay.sierra')}</SelectItem>
+                          <SelectItem value="sierra_2">{t('overlay.sierra2')}</SelectItem>
+                          <SelectItem value="sierra_lite">{t('overlay.sierraLite')}</SelectItem>
+                          <SelectItem value="atkinson">{t('overlay.atkinson')}</SelectItem>
                         </SelectContent>
                       </Select>
                     </div>
@@ -689,8 +690,8 @@ export function OverlaySection() {
                   {/* Dither Strength */}
                   <div className="space-y-2">
                     <div className="flex items-center justify-between">
-                      <Label className="text-sm">Dither Strength</Label>
-                      <span className="text-sm text-muted-foreground">{overlay.ditherStrength}%</span>
+                      <Label className="text-sm">{t('overlay.ditherStrength')}</Label>
+                      <span className="text-sm text-muted-foreground">{t('qr.nPercent', { count: overlay.ditherStrength })}</span>
                     </div>
                     <Slider
                       value={[overlay.ditherStrength]}
@@ -703,7 +704,7 @@ export function OverlaySection() {
 
                   {/* Serpentine */}
                   <div className="flex items-center justify-between">
-                    <Label className="text-sm">Serpentine Scanning</Label>
+                    <Label className="text-sm">{t('overlay.serpentineScanning')}</Label>
                     <Switch 
                       checked={overlay.ditherSerpentine}
                       onCheckedChange={(checked) => useQRStore.setState((s) => ({ overlay: { ...s.overlay, ditherSerpentine: checked } }))}
@@ -713,7 +714,7 @@ export function OverlaySection() {
                   {/* Ordered Matrix */}
                   {overlay.ditherKind === 'true_dither' && (
                     <div className="space-y-2">
-                      <Label className="text-sm">Ordered Matrix</Label>
+                      <Label className="text-sm">{t('overlay.orderedMatrix')}</Label>
                       <Select 
                         value={overlay.orderedMatrix} 
                         onValueChange={(v) => useQRStore.setState((s) => ({ overlay: { ...s.overlay, orderedMatrix: v as OrderedMatrix } }))}
@@ -722,11 +723,11 @@ export function OverlaySection() {
                           <SelectValue />
                         </SelectTrigger>
                         <SelectContent>
-                          <SelectItem value="bayer2">Bayer 2×2</SelectItem>
-                          <SelectItem value="bayer4">Bayer 4×4</SelectItem>
-                          <SelectItem value="bayer8">Bayer 8×8</SelectItem>
-                          <SelectItem value="clustered_dot">Clustered Dot</SelectItem>
-                          <SelectItem value="void_cluster">Void & Cluster</SelectItem>
+                          <SelectItem value="bayer2">{t('overlay.bayer2')}</SelectItem>
+                          <SelectItem value="bayer4">{t('overlay.bayer4')}</SelectItem>
+                          <SelectItem value="bayer8">{t('overlay.bayer8')}</SelectItem>
+                          <SelectItem value="clustered_dot">{t('overlay.clusteredDot')}</SelectItem>
+                          <SelectItem value="void_cluster">{t('overlay.voidCluster')}</SelectItem>
                         </SelectContent>
                       </Select>
                     </div>
@@ -737,7 +738,7 @@ export function OverlaySection() {
                     <>
                       <div className="space-y-2">
                         <div className="flex items-center justify-between">
-                          <Label className="text-sm">Tile Size</Label>
+                          <Label className="text-sm">{t('overlay.tileSize')}</Label>
                           <span className="text-sm text-muted-foreground">{overlay.blueNoiseTileSize}</span>
                         </div>
                         <Slider
@@ -749,7 +750,7 @@ export function OverlaySection() {
                         />
                       </div>
                       <div className="space-y-2">
-                        <Label className="text-sm">Seed</Label>
+                        <Label className="text-sm">{t('overlay.seed')}</Label>
                         <Input 
                           type="number"
                           value={overlay.blueNoiseSeed}
@@ -761,7 +762,7 @@ export function OverlaySection() {
 
                   {/* Color Dither */}
                   <div className="space-y-2">
-                    <Label className="text-sm">Color Dither</Label>
+                    <Label className="text-sm">{t('overlay.colorDither')}</Label>
                     <Select 
                       value={overlay.colorDither} 
                       onValueChange={(v) => useQRStore.setState((s) => ({ overlay: { ...s.overlay, colorDither: v as typeof overlay.colorDither } }))}
@@ -770,9 +771,9 @@ export function OverlaySection() {
                         <SelectValue />
                       </SelectTrigger>
                       <SelectContent>
-                        <SelectItem value="none">None</SelectItem>
-                        <SelectItem value="per_channel">Per Channel</SelectItem>
-                        <SelectItem value="perceptual">Perceptual</SelectItem>
+                        <SelectItem value="none">{t('overlay.none')}</SelectItem>
+                        <SelectItem value="per_channel">{t('overlay.perChannel')}</SelectItem>
+                        <SelectItem value="perceptual">{t('overlay.perceptual')}</SelectItem>
                       </SelectContent>
                     </Select>
                   </div>
@@ -782,9 +783,9 @@ export function OverlaySection() {
               {/* Subpixel Settings */}
               {overlay.mode === 'subpixel' && (
                 <div className="space-y-2 pt-2 border-t">
-                  <Label className="text-muted-foreground">Subpixel Settings</Label>
+                  <Label className="text-muted-foreground">{t('overlay.subpixelSettings')}</Label>
                   <div className="space-y-2">
-                    <Label className="text-sm">Grid Size</Label>
+                    <Label className="text-sm">{t('overlay.gridSize')}</Label>
                     <Select 
                       value={overlay.subpixelGridSize} 
                       onValueChange={(v) => useQRStore.setState((s) => ({ overlay: { ...s.overlay, subpixelGridSize: v as typeof overlay.subpixelGridSize } }))}
@@ -800,7 +801,7 @@ export function OverlaySection() {
                     </Select>
                   </div>
                   <div className="space-y-2">
-                    <Label className="text-sm">Center Rule</Label>
+                    <Label className="text-sm">{t('overlay.centerRule')}</Label>
                     <Select 
                       value={overlay.subpixelCenterRule} 
                       onValueChange={(v) => useQRStore.setState((s) => ({ overlay: { ...s.overlay, subpixelCenterRule: v as typeof overlay.subpixelCenterRule } }))}
@@ -809,13 +810,13 @@ export function OverlaySection() {
                         <SelectValue />
                       </SelectTrigger>
                       <SelectContent>
-                        <SelectItem value="strict">Strict</SelectItem>
-                        <SelectItem value="halftone_center">Halftone Center</SelectItem>
+                        <SelectItem value="strict">{t('overlay.strict')}</SelectItem>
+                        <SelectItem value="halftone_center">{t('overlay.halftoneCenter')}</SelectItem>
                       </SelectContent>
                     </Select>
                   </div>
                   <div className="space-y-2">
-                    <Label className="text-sm">Neutral Color</Label>
+                    <Label className="text-sm">{t('overlay.neutralColor')}</Label>
                     <div className="flex gap-2">
                       <Input
                         type="color"
@@ -832,7 +833,7 @@ export function OverlaySection() {
                     </div>
                   </div>
                   <div className="space-y-2">
-                    <Label className="text-sm">Finder Override</Label>
+                    <Label className="text-sm">{t('overlay.finderOverride')}</Label>
                     <Select 
                       value={overlay.subpixelFinderOverride} 
                       onValueChange={(v) => useQRStore.setState((s) => ({ overlay: { ...s.overlay, subpixelFinderOverride: v as typeof overlay.subpixelFinderOverride } }))}
@@ -841,8 +842,8 @@ export function OverlaySection() {
                         <SelectValue />
                       </SelectTrigger>
                       <SelectContent>
-                        <SelectItem value="solid">Solid</SelectItem>
-                        <SelectItem value="stylized">Stylized</SelectItem>
+                        <SelectItem value="solid">{t('render.solid')}</SelectItem>
+                        <SelectItem value="stylized">{t('overlay.stylized')}</SelectItem>
                       </SelectContent>
                     </Select>
                   </div>
@@ -852,9 +853,9 @@ export function OverlaySection() {
               {/* Halftone Settings */}
               {overlay.mode === 'halftone' && (
                 <div className="space-y-2 pt-2 border-t">
-                  <Label className="text-muted-foreground">Halftone Settings</Label>
+                  <Label className="text-muted-foreground">{t('overlay.halftoneSettings')}</Label>
                   <div className="space-y-2">
-                    <Label className="text-sm">Cell Size</Label>
+                    <Label className="text-sm">{t('overlay.cellSize')}</Label>
                     <Select 
                       value={overlay.halftoneCell} 
                       onValueChange={(v) => useQRStore.setState((s) => ({ overlay: { ...s.overlay, halftoneCell: v as typeof overlay.halftoneCell } }))}
@@ -863,13 +864,13 @@ export function OverlaySection() {
                         <SelectValue />
                       </SelectTrigger>
                       <SelectContent>
-                        <SelectItem value="per_module">Per Module</SelectItem>
-                        <SelectItem value="n×n">N×N Grid</SelectItem>
+                        <SelectItem value="per_module">{t('overlay.perModule')}</SelectItem>
+                        <SelectItem value="n×n">{t('overlay.nxnGrid')}</SelectItem>
                       </SelectContent>
                     </Select>
                   </div>
                   <div className="space-y-2">
-                    <Label className="text-sm">Dot Shape</Label>
+                    <Label className="text-sm">{t('overlay.dotShape')}</Label>
                     <Select 
                       value={overlay.halftoneDotShape} 
                       onValueChange={(v) => useQRStore.setState((s) => ({ overlay: { ...s.overlay, halftoneDotShape: v as typeof overlay.halftoneDotShape } }))}
@@ -878,14 +879,14 @@ export function OverlaySection() {
                         <SelectValue />
                       </SelectTrigger>
                       <SelectContent>
-                        <SelectItem value="circle">Circle</SelectItem>
-                        <SelectItem value="square">Square</SelectItem>
-                        <SelectItem value="line">Line</SelectItem>
+                        <SelectItem value="circle">{t('render.circle')}</SelectItem>
+                        <SelectItem value="square">{t('render.square')}</SelectItem>
+                        <SelectItem value="line">{t('overlay.line')}</SelectItem>
                       </SelectContent>
                     </Select>
                   </div>
                   <div className="space-y-2">
-                    <Label className="text-sm">Brightness Curve</Label>
+                    <Label className="text-sm">{t('overlay.brightnessCurve')}</Label>
                     <Select 
                       value={overlay.brightnessCurve} 
                       onValueChange={(v) => useQRStore.setState((s) => ({ overlay: { ...s.overlay, brightnessCurve: v as typeof overlay.brightnessCurve } }))}
@@ -894,9 +895,9 @@ export function OverlaySection() {
                         <SelectValue />
                       </SelectTrigger>
                       <SelectContent>
-                        <SelectItem value="linear">Linear</SelectItem>
-                        <SelectItem value="s-curve">S-Curve</SelectItem>
-                        <SelectItem value="gamma">Gamma</SelectItem>
+                        <SelectItem value="linear">{t('render.linear')}</SelectItem>
+                        <SelectItem value="s-curve">{t('overlay.sCurve')}</SelectItem>
+                        <SelectItem value="gamma">{t('overlay.gamma')}</SelectItem>
                       </SelectContent>
                     </Select>
                   </div>
@@ -906,10 +907,10 @@ export function OverlaySection() {
               {/* Duotone Settings */}
               {overlay.mode === 'duotone' && (
                 <div className="space-y-2 pt-2 border-t">
-                  <Label className="text-muted-foreground">Duotone Colors</Label>
+                  <Label className="text-muted-foreground">{t('overlay.duotoneColors')}</Label>
                   <div className="grid grid-cols-2 gap-2">
                     <div className="space-y-1">
-                      <Label className="text-xs text-muted-foreground">Shadow</Label>
+                      <Label className="text-xs text-muted-foreground">{t('overlay.shadow')}</Label>
                       <div className="flex gap-1">
                         <Input
                           type="color"
@@ -926,7 +927,7 @@ export function OverlaySection() {
                       </div>
                     </div>
                     <div className="space-y-1">
-                      <Label className="text-xs text-muted-foreground">Highlight</Label>
+                      <Label className="text-xs text-muted-foreground">{t('overlay.highlight')}</Label>
                       <div className="flex gap-1">
                         <Input
                           type="color"
@@ -949,9 +950,9 @@ export function OverlaySection() {
               {/* GIF Settings */}
               {overlay.type === 'gif' && (
                 <div className="space-y-2 pt-2 border-t">
-                  <Label className="text-muted-foreground">GIF Settings</Label>
+                  <Label className="text-muted-foreground">{t('overlay.gifSettings')}</Label>
                   <div className="flex items-center justify-between">
-                    <Label className="text-sm">Use Frame Delays</Label>
+                    <Label className="text-sm">{t('overlay.useFrameDelays')}</Label>
                     <Switch 
                       checked={overlay.gifUseFrameDelays}
                       onCheckedChange={(checked) => useQRStore.setState((s) => ({ overlay: { ...s.overlay, gifUseFrameDelays: checked } }))}
@@ -959,7 +960,7 @@ export function OverlaySection() {
                   </div>
                   <div className="space-y-2">
                     <div className="flex items-center justify-between">
-                      <Label className="text-sm">Max FPS</Label>
+                      <Label className="text-sm">{t('overlay.maxFps')}</Label>
                       <span className="text-sm text-muted-foreground">{overlay.gifMaxFps}</span>
                     </div>
                     <Slider
@@ -971,7 +972,7 @@ export function OverlaySection() {
                     />
                   </div>
                   <div className="space-y-2">
-                    <Label className="text-sm">Disposal Handling</Label>
+                    <Label className="text-sm">{t('overlay.disposalHandling')}</Label>
                     <Select 
                       value={overlay.gifDisposalHandling} 
                       onValueChange={(v) => useQRStore.setState((s) => ({ overlay: { ...s.overlay, gifDisposalHandling: v as typeof overlay.gifDisposalHandling } }))}
@@ -980,8 +981,8 @@ export function OverlaySection() {
                         <SelectValue />
                       </SelectTrigger>
                       <SelectContent>
-                        <SelectItem value="respect">Respect</SelectItem>
-                        <SelectItem value="simplify">Simplify</SelectItem>
+                        <SelectItem value="respect">{t('overlay.respect')}</SelectItem>
+                        <SelectItem value="simplify">{t('overlay.simplify')}</SelectItem>
                       </SelectContent>
                     </Select>
                   </div>
@@ -995,30 +996,30 @@ export function OverlaySection() {
             <>
               {/* Preserve Timing & Alignment */}
               <div className="space-y-2 pt-2 border-t">
-                <Label className="text-muted-foreground">Protection</Label>
+                <Label className="text-muted-foreground">{t('overlay.protection')}</Label>
                 <div className="flex items-center justify-between">
-                  <Label className="text-sm">Preserve Timing</Label>
+                  <Label className="text-sm">{t('overlay.preserveTiming')}</Label>
                   <Switch 
                     checked={overlay.preserveTiming}
                     onCheckedChange={setOverlayPreserveTiming}
                   />
                 </div>
                 <div className="flex items-center justify-between">
-                  <Label className="text-sm">Preserve Alignment</Label>
+                  <Label className="text-sm">{t('overlay.preserveAlignment')}</Label>
                   <Switch 
                     checked={overlay.preserveAlignment}
                     onCheckedChange={setOverlayPreserveAlignment}
                   />
                 </div>
                 <div className="flex items-center justify-between">
-                  <Label className="text-sm">Protect Format Info</Label>
+                  <Label className="text-sm">{t('overlay.protectFormatInfo')}</Label>
                   <Switch 
                     checked={overlay.protectFormatInfo}
                     onCheckedChange={(checked) => useQRStore.setState((s) => ({ overlay: { ...s.overlay, protectFormatInfo: checked } }))}
                   />
                 </div>
                 <div className="flex items-center justify-between">
-                  <Label className="text-sm">Protect Version Info</Label>
+                  <Label className="text-sm">{t('overlay.protectVersionInfo')}</Label>
                   <Switch 
                     checked={overlay.protectVersionInfo}
                     onCheckedChange={(checked) => useQRStore.setState((s) => ({ overlay: { ...s.overlay, protectVersionInfo: checked } }))}
@@ -1029,7 +1030,7 @@ export function OverlaySection() {
               {/* ECC Aware */}
               <div className="space-y-2">
                 <div className="flex items-center justify-between">
-                  <Label>ECC-Aware Mode</Label>
+                  <Label>{t('overlay.eccAwareMode')}</Label>
                   <Switch 
                     checked={overlay.eccAwareEnabled}
                     onCheckedChange={(checked) => useQRStore.setState((s) => ({ overlay: { ...s.overlay, eccAwareEnabled: checked } }))}
@@ -1038,8 +1039,8 @@ export function OverlaySection() {
                 {overlay.eccAwareEnabled && (
                   <div className="space-y-2">
                     <div className="flex items-center justify-between">
-                      <Label className="text-sm">Risk Budget</Label>
-                      <span className="text-sm text-muted-foreground">{overlay.eccAwareRiskBudget}%</span>
+                      <Label className="text-sm">{t('overlay.riskBudget')}</Label>
+                      <span className="text-sm text-muted-foreground">{t('qr.nPercent', { count: overlay.eccAwareRiskBudget })}</span>
                     </div>
                     <Slider
                       value={[overlay.eccAwareRiskBudget]}

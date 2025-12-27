@@ -1,0 +1,207 @@
+{
+  "app": {
+    "name": "ANQR",
+    "tagline": "क्यूआर कोड जनरेटर"
+  },
+  "nav": {
+    "generator": "जनरेटर",
+    "gallery": "गैलरी",
+    "guide": "गाइड",
+    "about": "हमारे बारे में",
+    "privacy": "गोपनीयता",
+    "terms": "शर्तें",
+    "contact": "संपर्क"
+  },
+  "header": {
+    "searchSettings": "सेटिंग्स खोजें...",
+    "share": "साझा करें",
+    "export": "निर्यात",
+    "reset": "रीसेट",
+    "close": "बंद करें"
+  },
+  "tiers": {
+    "basic": "बेसिक",
+    "advanced": "एडवांस्ड",
+    "professional": "प्रो"
+  },
+  "sections": {
+    "payload": "पेलोड / डेटा",
+    "overlay": "ओवरले / छवि",
+    "qrEncoding": "क्यूआर एनकोडिंग",
+    "rendering": "रेंडरिंग",
+    "animation": "एनिमेशन",
+    "output": "आउटपुट",
+    "watermark": "वॉटरमार्क",
+    "metadata": "मेटाडेटा",
+    "share": "साझा करें",
+    "safety": "सुरक्षा विश्लेषण"
+  },
+  "payload": {
+    "contentType": "सामग्री प्रकार",
+    "url": "यूआरएल",
+    "text": "टेक्स्ट",
+    "phone": "फोन नंबर",
+    "email": "ईमेल",
+    "sms": "एसएमएस",
+    "wifi": "वाईफाई",
+    "vcard": "संपर्क कार्ड",
+    "event": "कैलेंडर इवेंट",
+    "location": "स्थान",
+    "forceHttps": "HTTPS अनिवार्य करें",
+    "marketingTags": "मार्केटिंग टैग",
+    "utmSource": "utm_source",
+    "utmMedium": "utm_medium",
+    "utmCampaign": "utm_campaign",
+    "utmTerm": "utm_term",
+    "utmContent": "utm_content"
+  },
+  "overlay": {
+    "selectImage": "छवि चुनें",
+    "removeImage": "हटाएं",
+    "cropImage": "छवि क्रॉप करें",
+    "preserveFinders": "फाइंडर पैटर्न सुरक्षित रखें",
+    "preserveTiming": "टाइमिंग पैटर्न सुरक्षित रखें",
+    "preserveAlignment": "एलाइनमेंट पैटर्न सुरक्षित रखें",
+    "intensity": "तीव्रता",
+    "mode": "मोड",
+    "colorMode": "रंग मोड",
+    "invert": "उलटा",
+    "contrast": "कंट्रास्ट",
+    "brightness": "चमक",
+    "saturation": "संतृप्ति"
+  },
+  "qr": {
+    "errorCorrection": "त्रुटि सुधार",
+    "version": "संस्करण",
+    "mask": "मास्क पैटर्न",
+    "auto": "ऑटो",
+    "moduleSize": "मॉड्यूल आकार",
+    "margin": "मार्जिन"
+  },
+  "render": {
+    "foreground": "अग्रभूमि",
+    "background": "पृष्ठभूमि",
+    "style": "शैली",
+    "shape": "आकार",
+    "gradient": "ग्रेडिएंट",
+    "rounded": "गोलाकार",
+    "dots": "डॉट्स",
+    "squares": "वर्ग"
+  },
+  "animation": {
+    "enabled": "एनिमेशन सक्षम करें",
+    "speed": "गति",
+    "loop": "लूप",
+    "pattern": "पैटर्न"
+  },
+  "output": {
+    "format": "प्रारूप",
+    "width": "चौड़ाई",
+    "height": "ऊंचाई",
+    "filename": "फ़ाइल नाम",
+    "dpi": "डीपीआई"
+  },
+  "watermark": {
+    "enabled": "वॉटरमार्क सक्षम करें",
+    "text": "टेक्स्ट",
+    "position": "स्थिति",
+    "opacity": "अपारदर्शिता",
+    "fontSize": "फ़ॉन्ट आकार"
+  },
+  "metadata": {
+    "title": "शीर्षक",
+    "description": "विवरण",
+    "author": "लेखक",
+    "copyright": "कॉपीराइट"
+  },
+  "safety": {
+    "analysis": "सुरक्षा विश्लेषण",
+    "scanability": "स्कैनेबिलिटी",
+    "contrast": "कंट्रास्ट अनुपात",
+    "quietZone": "शांत क्षेत्र",
+    "lockFinders": "फाइंडर पैटर्न लॉक करें",
+    "lockTiming": "टाइमिंग पैटर्न लॉक करें",
+    "lockAlignment": "एलाइनमेंट पैटर्न लॉक करें"
+  },
+  "gallery": {
+    "title": "क्यूआर कोड गैलरी",
+    "description": "ANQR से बनाए गए क्यूआर कोड के उदाहरण देखें",
+    "filter": "फ़िल्टर",
+    "all": "सभी",
+    "plain": "सादा",
+    "styles": "शैलियाँ",
+    "colors": "रंग",
+    "overlays": "ओवरले",
+    "animations": "एनिमेशन"
+  },
+  "guide": {
+    "title": "ANQR उपयोगकर्ता गाइड",
+    "description": "क्यूआर कोड बनाने के लिए ANQR का उपयोग करने की पूरी गाइड",
+    "contents": "विषय-सूची",
+    "gettingStarted": "शुरू करना",
+    "quickStart": "त्वरित प्रारंभ"
+  },
+  "about": {
+    "title": "ANQR के बारे में",
+    "description": "ANQR और इसकी सुविधाओं के बारे में और जानें"
+  },
+  "privacy": {
+    "title": "गोपनीयता नीति",
+    "description": "हम आपके डेटा को कैसे संभालते हैं"
+  },
+  "terms": {
+    "title": "सेवा की शर्तें",
+    "description": "ANQR के उपयोग के लिए नियम और शर्तें"
+  },
+  "contact": {
+    "title": "संपर्क करें",
+    "description": "ANQR टीम से संपर्क करें",
+    "name": "नाम",
+    "email": "ईमेल",
+    "message": "संदेश",
+    "send": "संदेश भेजें"
+  },
+  "common": {
+    "loading": "लोड हो रहा है...",
+    "error": "त्रुटि",
+    "success": "सफल",
+    "cancel": "रद्द करें",
+    "save": "सहेजें",
+    "delete": "हटाएं",
+    "edit": "संपादित करें",
+    "copy": "कॉपी करें",
+    "copied": "कॉपी हो गया!",
+    "download": "डाउनलोड",
+    "upload": "अपलोड",
+    "select": "चुनें",
+    "none": "कोई नहीं",
+    "enabled": "सक्षम",
+    "disabled": "अक्षम",
+    "on": "चालू",
+    "off": "बंद",
+    "yes": "हाँ",
+    "no": "नहीं",
+    "ok": "ठीक है",
+    "apply": "लागू करें",
+    "reset": "रीसेट",
+    "close": "बंद करें",
+    "back": "वापस",
+    "next": "अगला",
+    "previous": "पिछला",
+    "search": "खोजें",
+    "filter": "फ़िल्टर",
+    "sort": "क्रमबद्ध करें",
+    "more": "अधिक",
+    "less": "कम",
+    "showMore": "और दिखाएं",
+    "showLess": "कम दिखाएं",
+    "viewAll": "सभी देखें",
+    "copyright": "© ANQR"
+  },
+  "language": {
+    "select": "भाषा चुनें",
+    "current": "भाषा"
+  },
+  "fileSaved": "डॉक्यूमेंट्स में सहेजा गया: {{filename}}",
+  "fileSaveFailed": "फ़ाइल सहेजने में विफल: {{error}}"
+}

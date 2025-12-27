@@ -78,7 +78,7 @@ export VITE_ADMOB_REWARDED_PREMIUM := ca-app-pub-2270701384951162/8325432672
 export VITE_ADMOB_REWARDED_EXPORT_HD := ca-app-pub-2270701384951162/4911983037
 #
 # Set to 'true' to show test ads while waiting for approval, 'false' for production
-export VITE_ADMOB_TESTING := true
+export VITE_ADMOB_TESTING := false
 
 # Android SDK path (adjust for your system)
 export ANDROID_HOME ?= $(HOME)/Android/Sdk
