@@ -38,7 +38,7 @@ const PARALLEL_ANIMATED = 2 // Lower parallelism for slow animated captures
 const BASE_DATA = 'https://anqr.link'
 // Use local dev server URLs for images during capture (avoids CORS issues)
 const TSUNAMI_IMG = `${DEV_SERVER_URL}/tsunami.jpg`
-const WILLIE_GIF = `${DEV_SERVER_URL}/willie.gif`
+const KING_GIF = `${DEV_SERVER_URL}/king.gif`
 
 function generateGalleryItems() {
   const items = []
@@ -133,15 +133,15 @@ function generateGalleryItems() {
   
   // ========== ANIMATED OVERLAYS ==========
   for (const mode of overlayModes.slice(0, 6)) {
-    items.push({ id: `anim-${mode}`, params: { data: BASE_DATA, ec: 'H', v: 6, mode, img: WILLIE_GIF, intensity: 100 }, isAnimated: true })
+    items.push({ id: `anim-${mode}`, params: { data: BASE_DATA, ec: 'H', v: 6, mode, img: KING_GIF, intensity: 100 }, isAnimated: true })
   }
   
   for (const intensity of [50, 75, 100]) {
-    items.push({ id: `anim-blue-noise-i${intensity}`, params: { data: BASE_DATA, ec: 'H', v: 6, mode: 'blue-noise', img: WILLIE_GIF, intensity }, isAnimated: true })
+    items.push({ id: `anim-blue-noise-i${intensity}`, params: { data: BASE_DATA, ec: 'H', v: 6, mode: 'blue-noise', img: KING_GIF, intensity }, isAnimated: true })
   }
   
   for (const colorMode of ['color', 'grayscale', 'bw']) {
-    items.push({ id: `anim-colormode-${colorMode}`, params: { data: BASE_DATA, ec: 'H', v: 6, mode: 'dithered', img: WILLIE_GIF, intensity: 100, colorMode }, isAnimated: true })
+    items.push({ id: `anim-colormode-${colorMode}`, params: { data: BASE_DATA, ec: 'H', v: 6, mode: 'dithered', img: KING_GIF, intensity: 100, colorMode }, isAnimated: true })
   }
   
   // ========== PREPROCESSING ==========
@@ -249,8 +249,8 @@ function generateGalleryItems() {
     { id: 'combo-connected-pixelate-teal', params: { data: BASE_DATA, ec: 'H', v: 6, style: 'connected', finder: 'square', mode: 'pixelate', img: TSUNAMI_IMG, intensity: 100, fg: '006d77', bg: 'e0f4f5' } },
     { id: 'combo-dots-outline-slate', params: { data: BASE_DATA, ec: 'H', v: 6, style: 'dots', finder: 'circle', mode: 'outline', img: TSUNAMI_IMG, intensity: 100, fg: '343a40', bg: 'e9ecef' } },
     { id: 'combo-rounded-subpixel-coral', params: { data: BASE_DATA, ec: 'H', v: 6, style: 'rounded', finder: 'rounded', mode: 'subpixel', img: TSUNAMI_IMG, intensity: 100, fg: 'e85d04', bg: 'ffe8d6' } },
-    { id: 'combo-anim-dots-halftone', params: { data: BASE_DATA, ec: 'H', v: 6, style: 'dots', finder: 'circle', mode: 'halftone', img: WILLIE_GIF, intensity: 100, fg: '1a1a2e', bg: 'eef1ff' }, isAnimated: true },
-    { id: 'combo-anim-rounded-blue-noise', params: { data: BASE_DATA, ec: 'H', v: 6, style: 'rounded', finder: 'rounded', mode: 'blue-noise', img: WILLIE_GIF, intensity: 100, fg: '702459', bg: 'fff5f7' }, isAnimated: true },
+    { id: 'combo-anim-dots-halftone', params: { data: BASE_DATA, ec: 'H', v: 6, style: 'dots', finder: 'circle', mode: 'halftone', img: KING_GIF, intensity: 100, fg: '1a1a2e', bg: 'eef1ff' }, isAnimated: true },
+    { id: 'combo-anim-rounded-blue-noise', params: { data: BASE_DATA, ec: 'H', v: 6, style: 'rounded', finder: 'rounded', mode: 'blue-noise', img: KING_GIF, intensity: 100, fg: '702459', bg: 'fff5f7' }, isAnimated: true },
   )
   
   // ========== BLEND MODES ==========
