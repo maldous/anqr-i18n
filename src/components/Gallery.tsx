@@ -74,11 +74,23 @@ function GalleryCard({ item }: { item: GalleryItem }) {
   )
 }
 
+// Horizontal ad component
+function HorizontalAd({ slot }: { slot: string }) {
+  return (
+    <div className="max-w-7xl mx-auto px-4 py-4">
+      <div className="flex justify-center">
+        <AdUnit slot={slot} width={728} height={90} format="horizontal" />
+      </div>
+    </div>
+  )
+}
+
 // Section component
-function GallerySectionComponent({ section, isExpanded, onToggle }: { 
+function GallerySectionComponent({ section, isExpanded, onToggle, showAdAfter }: { 
   section: GallerySection
   isExpanded: boolean
   onToggle: () => void
+  showAdAfter?: string
 }) {
   return (
     <div className="mb-8">
@@ -116,6 +128,9 @@ function GallerySectionComponent({ section, isExpanded, onToggle }: {
           ))}  
         </div>
       )}
+      
+      {/* Horizontal ad after section */}
+      {showAdAfter && <HorizontalAd slot={showAdAfter} />}
     </div>
   )
 }
@@ -155,7 +170,7 @@ export function Gallery({ filter }: GalleryProps) {
   return (
     <main className="min-h-[200px] flex-1 flex bg-muted/30 overflow-hidden transition-all duration-300">
       {/* Left ad column - matches Preview exactly */}
-      <div className="hidden lg:flex flex-col items-end justify-center w-[160px] border-r bg-muted/10 flex-shrink-0">
+      <div className="hidden lg:flex flex-col items-center justify-center w-[160px] min-h-[600px] border-r bg-muted/10 flex-shrink-0">
         <AdUnit slot="gallery-left" width={160} height={600} format="vertical" />
       </div>
       
@@ -169,23 +184,30 @@ export function Gallery({ filter }: GalleryProps) {
             </h1>
           </div>
         </div>
+        
+        {/* Top horizontal ad */}
+        <HorizontalAd slot="gallery-top" />
 
         {/* Gallery content */}
         <div className="max-w-7xl mx-auto px-4 py-4">
-          {filteredSections.map(section => (
+          {filteredSections.map((section, index) => (
             <GallerySectionComponent
               key={section.id}
               section={section}
               isExpanded={expandedSections.has(section.id)}
               onToggle={() => toggleSection(section.id)}
+              showAdAfter={index < filteredSections.length - 1 ? `gallery-after-${section.id}` : undefined}
             />
           ))}
         </div>
         
+        {/* Bottom horizontal ad */}
+        <HorizontalAd slot="gallery-bottom" />
+        
       </div>
       
       {/* Right ad column - matches Preview exactly */}
-      <div className="hidden lg:flex flex-col items-start justify-center w-[160px] border-l bg-muted/10 flex-shrink-0">
+      <div className="hidden lg:flex flex-col items-center justify-center w-[160px] min-h-[600px] border-l bg-muted/10 flex-shrink-0">
         <AdUnit slot="gallery-right" width={160} height={600} format="vertical" />
       </div>
     </main>

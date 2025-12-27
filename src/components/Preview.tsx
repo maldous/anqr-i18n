@@ -188,25 +188,23 @@ export function Preview({ sidebarOpen = true }: PreviewProps) {
   const hasActiveSimulation = qa.simulateBlurPx > 0 || qa.simulateNoise > 0 || qa.simulateRotationDeg > 0
 
   return (
-    <main className={`min-h-[200px] md:flex-1 flex flex-col lg:flex-row bg-muted/30 overflow-hidden transition-all duration-300 ${sidebarOpen ? 'lg:ml-96' : ''}`}>
+    <main className={`flex-1 flex flex-col lg:flex-row bg-muted/30 overflow-auto transition-all duration-300 ${sidebarOpen ? 'lg:ml-96' : ''}`}>
       {/* Desktop Left Column Ad - Skyscraper 160x600, always visible */}
-      <div className="hidden lg:flex flex-col items-end justify-center w-[160px] border-r bg-muted/10 flex-shrink-0">
+      <div className="hidden lg:flex flex-col items-center justify-center w-[160px] min-h-[600px] border-r bg-muted/10 flex-shrink-0">
         <AdUnit slot="left-skyscraper" width={160} height={600} format="vertical" />
       </div>
       
       {/* Main content area with QR */}
-      <div className="flex-1 flex flex-col">
-        {/* Mobile Ad above QR - only when settings is hidden */}
-        {!sidebarOpen && (
-          <div className="lg:hidden p-4 flex justify-center flex-shrink-0">
-            <AdUnit slot="mobile-above-qr" width={320} height={50} format="horizontal" />
-          </div>
-        )}
+      <div className="flex-1 flex flex-col min-h-0">
+        {/* Mobile top ad */}
+        <div className="lg:hidden flex justify-center py-2">
+          <AdUnit slot="preview-mobile-top" width={320} height={100} format="horizontal" />
+        </div>
         
-        {/* Preview Area */}
-        <div className="flex-1 flex items-center justify-center p-4 md:p-8">
+        {/* Preview Area - on mobile, center QR in available space */}
+        <div className="flex-1 flex items-center justify-center p-2 md:p-8">
         <div 
-          className="qr-preview-container transition-all duration-300 max-w-md md:max-w-xl lg:max-w-2xl"
+          className="qr-preview-container transition-all duration-300 w-full max-w-[280px] sm:max-w-md md:max-w-xl lg:max-w-2xl"
         >
           {/* QR Code Canvas */}
           <div className="bg-white rounded-lg shadow-xl flex items-center justify-center p-4 relative">
@@ -311,16 +309,14 @@ export function Preview({ sidebarOpen = true }: PreviewProps) {
         </div>
         </div>
         
-        {/* Mobile Ad - below QR code, only when settings is hidden */}
-        {!sidebarOpen && (
-          <div className="lg:hidden p-4 flex justify-center flex-shrink-0">
-            <AdUnit slot="mobile-below-qr" width={320} height={50} format="horizontal" />
-          </div>
-        )}
+        {/* Mobile bottom ad */}
+        <div className="lg:hidden flex justify-center py-2">
+          <AdUnit slot="preview-mobile-bottom" width={320} height={100} format="horizontal" />
+        </div>
       </div>
       
-      {/* Desktop Right Column Ad - Skyscraper 160x600, left-aligned with Share button */}
-      <div className="hidden lg:flex flex-col items-start justify-center w-[160px] border-l bg-muted/10 flex-shrink-0">
+      {/* Desktop Right Column Ad - Skyscraper 160x600 */}
+      <div className="hidden lg:flex flex-col items-center justify-center w-[160px] min-h-[600px] border-l bg-muted/10 flex-shrink-0">
         <AdUnit slot="right-skyscraper" width={160} height={600} format="vertical" />
       </div>
     </main>
