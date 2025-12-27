@@ -1,5 +1,3 @@
-# Serve static assets directly (gallery images, etc.)
-/gallery/*  /gallery/:splat  200
-
-# SPA fallback for clean URLs (/about, /privacy, /terms, /contact, /gallery)
+# SPA fallback - all routes serve index.html, letting React Router handle them
+# Static assets in /gallery/ folder are served directly before this rule applies
 /*    /index.html   200
