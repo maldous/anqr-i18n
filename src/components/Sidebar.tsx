@@ -578,11 +578,13 @@ export function Sidebar({ isOpen, onClose }: SidebarProps) {
               onChange={(e) => setSearchQuery(e.target.value)}
               placeholder="Search settings..."
               className="flex-1 bg-transparent border-none outline-none text-sm font-medium placeholder:text-muted-foreground"
+              title="Search for settings by name or keyword"
             />
             {searchQuery && (
               <button
                 className="h-4 w-4 flex-shrink-0 text-muted-foreground hover:text-foreground"
                 onClick={() => setSearchQuery('')}
+                title="Clear search"
               >
                 <X className="h-4 w-4" />
               </button>
@@ -611,7 +613,7 @@ export function Sidebar({ isOpen, onClose }: SidebarProps) {
               const Icon = section.icon
               return (
                 <AccordionItem key={section.id} value={section.id} className="border-none mb-[6px]">
-                  <AccordionTrigger className="hover:no-underline py-3 px-3 bg-muted/50 rounded-md shadow-sm [&>svg]:ml-auto">
+                  <AccordionTrigger className="hover:no-underline py-3 px-3 bg-muted/50 rounded-md shadow-sm [&>svg]:ml-auto" title={`${section.label} settings - Click to expand`}>
                     <div className="flex items-center gap-2">
                       <Icon className="h-4 w-4 text-muted-foreground" />
                       <span className="text-sm font-medium">

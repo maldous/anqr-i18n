@@ -38,6 +38,7 @@ function GalleryCard({ item }: { item: GalleryItem }) {
       className="group relative block"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
+      title={`${item.title} - ${item.description}. Click to open in generator.`}
     >
       <div className={`
         relative overflow-hidden rounded-lg bg-card
@@ -98,6 +99,7 @@ function GallerySectionComponent({ section, isExpanded, onToggle, showAdAfter }:
       <button
         onClick={onToggle}
         className="w-full flex items-center justify-between gap-4 mb-4 group"
+        title={isExpanded ? `Collapse ${section.title} section` : `Expand ${section.title} section`}
       >
         <div className="flex items-center gap-3">
           <div className="p-2 rounded-lg bg-muted group-hover:bg-blue-100 dark:group-hover:bg-blue-900/30 transition-colors">

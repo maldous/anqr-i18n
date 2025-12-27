@@ -221,7 +221,7 @@ export function Preview({ sidebarOpen = true }: PreviewProps) {
             {/* Contrast ratio badge and heatmap toggle */}
             {contrastAnalysis && (
               <div className="absolute bottom-2 left-2 z-10 flex items-center gap-1">
-                <div className={`${getContrastBadgeColor(contrastAnalysis.ratio)} text-white text-xs font-medium px-2 py-1 rounded-md shadow-sm flex items-center gap-1`}>
+                <div className={`${getContrastBadgeColor(contrastAnalysis.ratio)} text-white text-xs font-medium px-2 py-1 rounded-md shadow-sm flex items-center gap-1`} title={`Contrast ratio: ${contrastAnalysis.ratio.toFixed(2)}:1 - ${contrastAnalysis.meetsAAA ? 'Meets WCAG AAA' : contrastAnalysis.meetsAA ? 'Meets WCAG AA' : 'Below WCAG standards'}`}>
                   <Eye className="h-3 w-3" />
                   <span>{contrastAnalysis.ratio.toFixed(1)}:1</span>
                   <span className="opacity-75">({getContrastLabel(contrastAnalysis.ratio)})</span>
@@ -259,6 +259,7 @@ export function Preview({ sidebarOpen = true }: PreviewProps) {
                     <button 
                       onClick={() => setShowWarnings(false)}
                       className="text-amber-600 hover:text-amber-800 text-xs"
+                      title="Dismiss warnings"
                     >
                       ✕
                     </button>
@@ -269,7 +270,7 @@ export function Preview({ sidebarOpen = true }: PreviewProps) {
 <div className="relative inline-block">
               {/* Simulation indicator badge */}
               {hasActiveSimulation && (
-                <div className="absolute -top-2 -right-2 z-20 bg-purple-500 text-white text-xs px-2 py-0.5 rounded-full flex items-center gap-1 shadow-sm">
+                <div className="absolute -top-2 -right-2 z-20 bg-purple-500 text-white text-xs px-2 py-0.5 rounded-full flex items-center gap-1 shadow-sm" title="Environmental simulation active - Preview shows how QR code may appear under different conditions">
                   <Sparkles className="h-3 w-3" />
                   <span>Simulating</span>
                 </div>
@@ -278,6 +279,7 @@ export function Preview({ sidebarOpen = true }: PreviewProps) {
                 ref={canvasRef}
                 className="max-w-full max-h-full transition-all duration-200"
                 style={simulationStyles}
+                title="QR Code Preview - Click Export to download"
               />
               {/* Noise overlay canvas - positioned over the QR canvas */}
               {qa.simulateNoise > 0 && (

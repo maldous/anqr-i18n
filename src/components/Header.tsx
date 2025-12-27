@@ -91,8 +91,8 @@ export function Header({ onToggleSidebar, onExport, sidebarOpen = false, showGal
     <header className={`border-b bg-card shadow-md sticky top-0 z-50 transition-all duration-300 ${sidebarOpen && isEditor ? 'lg:ml-96' : ''}`}>
       <div className="px-4 flex items-center justify-between h-[52px]">
         <div className="flex items-center gap-6">
-          {/* Settings toggle - only in editor mode */}
-          {isEditor && (
+          {/* Settings toggle - only in editor mode, placeholder space on other pages */}
+          {isEditor ? (
             <button
               onClick={onToggleSidebar}
               className="flex items-center justify-center w-8 h-8 hover:opacity-80 cursor-pointer"
@@ -100,6 +100,9 @@ export function Header({ onToggleSidebar, onExport, sidebarOpen = false, showGal
             >
               <PanelLeft className="h-6 w-6 text-muted-foreground" />
             </button>
+          ) : (
+            /* Placeholder space to keep layout consistent with Generator */
+            <div className="hidden lg:block w-8 h-8" />
           )}
           
           {/* ANQR logo/title - always navigates to generator */}
@@ -132,44 +135,45 @@ export function Header({ onToggleSidebar, onExport, sidebarOpen = false, showGal
                     e.preventDefault()
                     onNavigate(link.page)
                   }}
+                  title={`Go to ${link.label}`}
                 >
                   {link.label}
                 </a>
               )
             })}
             
-            {/* Gallery Filter - icon buttons with hover titles */}
-            {isGallery && (
-              <>
-                <span className="text-muted-foreground mx-1">|</span>
+          </nav>
+          
+          {/* Gallery Filter - icon buttons right-justified (moved outside nav) */}
+          {isGallery && (
+            <div className="hidden lg:flex items-center gap-1 ml-auto">
+              <button
+                onClick={() => onGalleryFilterChange?.('all')}
+                className={`p-2 rounded-md transition-colors ${
+                  galleryFilter === 'all'
+                    ? 'text-foreground bg-muted'
+                    : 'text-muted-foreground hover:text-foreground hover:bg-muted'
+                }`}
+                title="All Categories"
+              >
+                <Grid3x3 className="w-4 h-4" />
+              </button>
+              {gallerySections.map(section => (
                 <button
-                  onClick={() => onGalleryFilterChange?.('all')}
+                  key={section.id}
+                  onClick={() => onGalleryFilterChange?.(section.id)}
                   className={`p-2 rounded-md transition-colors ${
-                    galleryFilter === 'all'
+                    galleryFilter === section.id
                       ? 'text-foreground bg-muted'
                       : 'text-muted-foreground hover:text-foreground hover:bg-muted'
                   }`}
-                  title="All Categories"
+                  title={section.title}
                 >
-                  <Grid3x3 className="w-4 h-4" />
+                  <DynamicIcon name={section.icon} className="w-4 h-4" />
                 </button>
-                {gallerySections.map(section => (
-                  <button
-                    key={section.id}
-                    onClick={() => onGalleryFilterChange?.(section.id)}
-                    className={`p-2 rounded-md transition-colors ${
-                      galleryFilter === section.id
-                        ? 'text-foreground bg-muted'
-                        : 'text-muted-foreground hover:text-foreground hover:bg-muted'
-                    }`}
-                    title={section.title}
-                  >
-                    <DynamicIcon name={section.icon} className="w-4 h-4" />
-                  </button>
-                ))}
-              </>
-            )}
-          </nav>
+              ))}
+            </div>
+          )}
         </div>
         
         <div className="flex items-center gap-3">
@@ -181,13 +185,13 @@ export function Header({ onToggleSidebar, onExport, sidebarOpen = false, showGal
                   setTier(v as Tier)
                 }}>
                   <TabsList className="shadow-sm">
-                    <TabsTrigger value="basic" className="text-xs px-3">
+                    <TabsTrigger value="basic" className="text-xs px-3" title="Basic mode - Essential QR code features">
                       Basic
                     </TabsTrigger>
-                    <TabsTrigger value="advanced" className="text-xs px-3">
+                    <TabsTrigger value="advanced" className="text-xs px-3" title="Advanced mode - Additional styling and encoding options">
                       Advanced
                     </TabsTrigger>
-                    <TabsTrigger value="professional" className="text-xs px-3">
+                    <TabsTrigger value="professional" className="text-xs px-3" title="Professional mode - Full feature set with safety analysis">
                       Professional
                     </TabsTrigger>
                   </TabsList>
@@ -213,11 +217,11 @@ export function Header({ onToggleSidebar, onExport, sidebarOpen = false, showGal
           {/* Actions */}
           {isEditor && (
             <div className="hidden sm:flex items-center gap-2">
-              <Button variant="outline" size="sm" className="shadow-sm" onClick={handleShare}>
+              <Button variant="outline" size="sm" className="shadow-sm" onClick={handleShare} title="Copy shareable link to clipboard">
                 {copied ? <Check className="h-4 w-4 mr-2" /> : <Share2 className="h-4 w-4 mr-2" />}
                 {copied ? 'Copied!' : 'Share'}
               </Button>
-              <Button size="sm" className="shadow-sm" onClick={onExport}>
+              <Button size="sm" className="shadow-sm" onClick={onExport} title="Export QR code to file">
                 <Download className="h-4 w-4 mr-2" />
                 Export
               </Button>
@@ -230,12 +234,13 @@ export function Header({ onToggleSidebar, onExport, sidebarOpen = false, showGal
             size="icon"
             className="md:hidden h-9 w-9"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            title="Open navigation menu"
           >
             <Menu className="h-5 w-5" />
           </Button>
           
           {/* Dark Mode Toggle - always on far right */}
-          <Button variant="ghost" size="icon" onClick={toggleDarkMode} className="h-9 w-9">
+          <Button variant="ghost" size="icon" onClick={toggleDarkMode} className="h-9 w-9" title={darkMode ? 'Switch to light mode' : 'Switch to dark mode'}>
             {darkMode ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
           </Button>
         </div>
@@ -264,6 +269,7 @@ export function Header({ onToggleSidebar, onExport, sidebarOpen = false, showGal
                     }
                     setMobileMenuOpen(false)
                   }}
+                  title={`Go to ${link.label}`}
                 >
                   {link.label}
                 </a>
@@ -281,11 +287,11 @@ export function Header({ onToggleSidebar, onExport, sidebarOpen = false, showGal
       {isEditor && (
         <div className="md:hidden fixed bottom-0 left-0 right-0 z-50 border-t bg-card p-3">
           <div className="flex gap-2">
-            <Button variant="outline" size="sm" className="flex-1" onClick={handleShare}>
+            <Button variant="outline" size="sm" className="flex-1" onClick={handleShare} title="Copy shareable link to clipboard">
               {copied ? <Check className="h-4 w-4 mr-2" /> : <Share2 className="h-4 w-4 mr-2" />}
               {copied ? 'Copied!' : 'Share'}
             </Button>
-            <Button size="sm" className="flex-1" onClick={onExport}>
+            <Button size="sm" className="flex-1" onClick={onExport} title="Export QR code to file">
               <Download className="h-4 w-4 mr-2" />
               Export
             </Button>
