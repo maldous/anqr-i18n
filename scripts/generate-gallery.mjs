@@ -28,8 +28,8 @@ const VIEWPORT = { width: 800, height: 600 }
 const STATIC_CAPTURE_DELAY = 500 // Time to wait for static QR to render after canvas ready
 const ANIMATED_MAX_TIMEOUT = 600000 // 10 minutes max for animated GIFs
 const ANIMATED_POLL_INTERVAL = 500 // Poll every 500ms for animation readiness
-const PARALLEL_STATIC = 8 // Higher parallelism for fast static captures
-const PARALLEL_ANIMATED = 2 // Lower parallelism for slow animated captures
+const PARALLEL_STATIC = 12 // Higher parallelism for fast static captures
+const PARALLEL_ANIMATED = 8 // Lower parallelism for slow animated captures
 
 // ============================================
 // GALLERY ITEM GENERATION (matches gallery-items.ts)
