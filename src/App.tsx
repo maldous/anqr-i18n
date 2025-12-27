@@ -241,9 +241,9 @@ function App() {
           {showEditor && <Sidebar isOpen={sidebarOpen} onClose={() => setSidebarOpen(false)} />}
           
           {/* Main content area - conditionally render active page */}
-          {/* On native editor: pb-48 for Footer + Share/Export + AdMob. On native non-editor: pb-32 for Footer + AdMob */}
+          {/* On native editor: pb-44 for Footer + Share/Export + AdMob. On native non-editor: pb-40 for Footer + AdMob */}
           {/* On web: pb-12 for footer */}
-          <div className={`flex-1 flex flex-col min-h-0 overflow-hidden ${Capacitor.isNativePlatform() ? (showEditor ? 'pb-48' : 'pb-32') : 'pb-12'}`}>
+          <div className={`flex-1 flex flex-col min-h-0 overflow-hidden ${Capacitor.isNativePlatform() ? (showEditor ? 'pb-36' : 'pb-40') : 'pb-12'}`}>
             {showEditor && <Preview sidebarOpen={sidebarOpen} />}
             {showGallery && <Gallery filter={galleryFilter} />}
             {showStaticPage && <StaticPage page={currentPage as StaticPageType} />}

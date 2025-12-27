@@ -191,7 +191,8 @@ export function Preview({ sidebarOpen = true }: PreviewProps) {
   return (
     <main className={`flex-1 flex flex-col lg:flex-row bg-background overflow-auto scrollbar-hide transition-all duration-300 ${sidebarOpen ? 'lg:ml-96' : ''}`}>
       {/* Desktop Left Column Ad - Skyscraper 160x600, always visible */}
-      <div className="hidden lg:flex flex-col items-center justify-center w-[180px] min-h-[600px] bg-background flex-shrink-0 pl-3 pr-2">
+      {/* Fixed height based on viewport to prevent layout shift from AdSense */}
+      <div className="hidden lg:flex flex-col items-center justify-center w-[180px] h-[calc(100vh-8rem)] bg-background flex-shrink-0 pl-3 pr-2">
         <AdUnit slot="left-skyscraper" width={160} height={600} format="vertical" />
       </div>
       
@@ -319,7 +320,8 @@ export function Preview({ sidebarOpen = true }: PreviewProps) {
       </div>
       
       {/* Desktop Right Column Ad - Skyscraper 160x600 */}
-      <div className="hidden lg:flex flex-col items-center justify-center w-[180px] min-h-[600px] bg-background flex-shrink-0 pl-2 pr-3">
+      {/* Fixed height based on viewport to prevent layout shift from AdSense */}
+      <div className="hidden lg:flex flex-col items-center justify-center w-[180px] h-[calc(100vh-8rem)] bg-background flex-shrink-0 pl-2 pr-3">
         <AdUnit slot="right-skyscraper" width={160} height={600} format="vertical" />
       </div>
     </main>
