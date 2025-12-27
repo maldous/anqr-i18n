@@ -188,9 +188,9 @@ export function Preview({ sidebarOpen = true }: PreviewProps) {
   const hasActiveSimulation = qa.simulateBlurPx > 0 || qa.simulateNoise > 0 || qa.simulateRotationDeg > 0
 
   return (
-    <main className={`flex-1 flex flex-col lg:flex-row bg-muted/30 overflow-auto transition-all duration-300 ${sidebarOpen ? 'lg:ml-96' : ''}`}>
+    <main className={`flex-1 flex flex-col lg:flex-row bg-background overflow-auto transition-all duration-300 ${sidebarOpen ? 'lg:ml-96' : ''}`}>
       {/* Desktop Left Column Ad - Skyscraper 160x600, always visible */}
-      <div className="hidden lg:flex flex-col items-center justify-center w-[160px] min-h-[600px] bg-muted/30 flex-shrink-0">
+      <div className="hidden lg:flex flex-col items-center justify-center w-[160px] min-h-[600px] bg-background flex-shrink-0">
         <AdUnit slot="left-skyscraper" width={160} height={600} format="vertical" />
       </div>
       
@@ -316,7 +316,7 @@ export function Preview({ sidebarOpen = true }: PreviewProps) {
       </div>
       
       {/* Desktop Right Column Ad - Skyscraper 160x600 */}
-      <div className="hidden lg:flex flex-col items-center justify-center w-[160px] min-h-[600px] bg-muted/30 flex-shrink-0">
+      <div className="hidden lg:flex flex-col items-center justify-center w-[160px] min-h-[600px] bg-background flex-shrink-0">
         <AdUnit slot="right-skyscraper" width={160} height={600} format="vertical" />
       </div>
     </main>

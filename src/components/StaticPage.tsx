@@ -1243,7 +1243,7 @@ function DocsTableOfContents({
       </div>
 
       {/* Desktop ToC - sticky sidebar */}
-      <aside className="hidden lg:block w-64 flex-shrink-0 border-r bg-muted/30 docs-sidebar">
+      <aside className="hidden lg:block w-64 flex-shrink-0 border-r bg-background docs-sidebar">
         <div className="sticky top-0 h-screen overflow-y-auto py-6 px-4 scrollbar-hide">
           <div className="flex items-center justify-between mb-4">
             <h3 className="font-semibold text-foreground flex items-center gap-2">
@@ -1498,9 +1498,9 @@ export function StaticPage({ page }: StaticPageProps) {
   // For docs page, use a different layout with ToC
   if (isDocsPage) {
     return (
-      <main className="min-h-[200px] flex-1 flex bg-muted/30 overflow-hidden transition-all duration-300">
+      <main className="min-h-[200px] flex-1 flex bg-background overflow-hidden transition-all duration-300">
         {/* Left ad column - hidden on docs to make room for ToC */}
-        <div className="hidden xl:flex flex-col items-center justify-center w-[160px] min-h-[600px] bg-muted/30 flex-shrink-0">
+        <div className="hidden xl:flex flex-col items-center justify-center w-[160px] min-h-[600px] bg-background flex-shrink-0">
           <AdUnit slot="static-left" width={160} height={600} format="vertical" />
         </div>
 
@@ -1591,7 +1591,7 @@ export function StaticPage({ page }: StaticPageProps) {
         </div>
 
         {/* Right ad column */}
-        <div className="hidden xl:flex flex-col items-center justify-center w-[160px] min-h-[600px] bg-muted/30 flex-shrink-0">
+        <div className="hidden xl:flex flex-col items-center justify-center w-[160px] min-h-[600px] bg-background flex-shrink-0">
           <AdUnit slot="static-right" width={160} height={600} format="vertical" />
         </div>
       </main>
@@ -1600,9 +1600,9 @@ export function StaticPage({ page }: StaticPageProps) {
 
   // Standard layout for non-docs pages
   return (
-    <main className="min-h-[200px] flex-1 flex bg-muted/30 overflow-hidden transition-all duration-300">
+    <main className="min-h-[200px] flex-1 flex bg-background overflow-hidden transition-all duration-300">
       {/* Left ad column */}
-      <div className="hidden lg:flex flex-col items-center justify-center w-[160px] min-h-[600px] bg-muted/30 flex-shrink-0">
+      <div className="hidden lg:flex flex-col items-center justify-center w-[160px] min-h-[600px] bg-background flex-shrink-0">
         <AdUnit slot="static-left" width={160} height={600} format="vertical" />
       </div>
 
@@ -1650,7 +1650,7 @@ export function StaticPage({ page }: StaticPageProps) {
       </div>
 
       {/* Right ad column */}
-      <div className="hidden lg:flex flex-col items-center justify-center w-[160px] min-h-[600px] bg-muted/30 flex-shrink-0">
+      <div className="hidden lg:flex flex-col items-center justify-center w-[160px] min-h-[600px] bg-background flex-shrink-0">
         <AdUnit slot="static-right" width={160} height={600} format="vertical" />
       </div>
     </main>
