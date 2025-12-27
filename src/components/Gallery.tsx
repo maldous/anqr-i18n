@@ -3,8 +3,8 @@
  * Hero-style gallery showcasing ANQR features organized by category
  */
 
-import { useState, useMemo } from 'react'
-import { ChevronDown, ChevronUp } from 'lucide-react'
+import { useState, useMemo, useRef } from 'react'
+import { ChevronDown, ChevronUp, Grid3x3 } from 'lucide-react'
 import * as LucideIcons from 'lucide-react'
 import { AdUnit } from '@/components/AdUnit'
 import { 
@@ -140,11 +140,39 @@ interface GalleryProps {
   filter: GalleryCategory | 'all'
 }
 
+// Mobile jump button component
+function MobileJumpButton({ 
+  icon, 
+  label, 
+  isActive, 
+  onClick 
+}: { 
+  icon: string
+  label: string
+  isActive: boolean
+  onClick: () => void 
+}) {
+  return (
+    <button
+      onClick={onClick}
+      className={`flex-shrink-0 flex items-center justify-center w-7 h-7 rounded-full transition-colors ${
+        isActive 
+          ? 'bg-primary text-primary-foreground' 
+          : 'bg-muted text-muted-foreground hover:bg-muted/80'
+      }`}
+      title={label}
+    >
+      <DynamicIcon name={icon} className="w-3 h-3" />
+    </button>
+  )
+}
+
 // Main Gallery component
 export function Gallery({ filter }: GalleryProps) {
   const [expandedSections, setExpandedSections] = useState<Set<GalleryCategory>>(
     new Set(gallerySections.map(s => s.id))
   )
+  const [mobileFilter, setMobileFilter] = useState<GalleryCategory | 'all'>('all')
   
   const filteredSections = useMemo(() => {
     if (filter === 'all') return gallerySections
@@ -166,6 +194,14 @@ export function Gallery({ filter }: GalleryProps) {
       return next
     })
   }
+
+  // Combined filter: use prop filter on desktop, mobile filter on mobile
+  const effectiveFilter = mobileFilter !== 'all' ? mobileFilter : filter
+  
+  const displaySections = useMemo(() => {
+    if (effectiveFilter === 'all') return gallerySections
+    return gallerySections.filter(s => s.id === effectiveFilter)
+  }, [effectiveFilter])
   
   return (
     <main className="min-h-[200px] flex-1 flex bg-background overflow-hidden transition-all duration-300">
@@ -176,6 +212,32 @@ export function Gallery({ filter }: GalleryProps) {
       
       {/* Main gallery content - scrollbar hidden but scrollable */}
       <div className="flex-1 overflow-y-auto bg-background scrollbar-hide">
+        {/* Mobile jump buttons - horizontal scrollable row */}
+        <div className="lg:hidden sticky top-0 z-40 bg-background border-b px-1 py-1.5">
+          <div className="flex gap-1 overflow-x-auto scrollbar-hide justify-between">
+            <button
+              onClick={() => setMobileFilter('all')}
+              className={`flex-shrink-0 flex items-center justify-center w-7 h-7 rounded-full transition-colors ${
+                mobileFilter === 'all' 
+                  ? 'bg-primary text-primary-foreground' 
+                  : 'bg-muted text-muted-foreground hover:bg-muted/80'
+              }`}
+              title="All"
+            >
+              <Grid3x3 className="w-3 h-3" />
+            </button>
+            {gallerySections.map(section => (
+              <MobileJumpButton
+                key={section.id}
+                icon={section.icon}
+                label={section.title}
+                isActive={mobileFilter === section.id}
+                onClick={() => setMobileFilter(section.id)}
+              />
+            ))}
+          </div>
+        </div>
+
         {/* Hero section */}
         <div className="max-w-7xl mx-auto px-4 py-6">
           <div className="text-center">
@@ -189,13 +251,13 @@ export function Gallery({ filter }: GalleryProps) {
 
         {/* Gallery content */}
         <div className="max-w-7xl mx-auto px-4 py-4">
-          {filteredSections.map((section, index) => (
+          {displaySections.map((section, index) => (
             <GallerySectionComponent
               key={section.id}
               section={section}
               isExpanded={expandedSections.has(section.id)}
               onToggle={() => toggleSection(section.id)}
-              showAdAfter={index < filteredSections.length - 1 ? `gallery-after-${section.id}` : undefined}
+              showAdAfter={index < displaySections.length - 1 ? `gallery-after-${section.id}` : undefined}
             />
           ))}
         </div>
