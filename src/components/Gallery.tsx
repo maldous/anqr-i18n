@@ -170,7 +170,7 @@ export function Gallery({ filter }: GalleryProps) {
   return (
     <main className="min-h-[200px] flex-1 flex bg-muted/30 overflow-hidden transition-all duration-300">
       {/* Left ad column - matches Preview exactly */}
-      <div className="hidden lg:flex flex-col items-center justify-center w-[160px] min-h-[600px] border-r bg-muted/10 flex-shrink-0">
+      <div className="hidden lg:flex flex-col items-center justify-center w-[160px] min-h-[600px] bg-muted/30 flex-shrink-0">
         <AdUnit slot="gallery-left" width={160} height={600} format="vertical" />
       </div>
       
@@ -207,7 +207,7 @@ export function Gallery({ filter }: GalleryProps) {
       </div>
       
       {/* Right ad column - matches Preview exactly */}
-      <div className="hidden lg:flex flex-col items-center justify-center w-[160px] min-h-[600px] border-l bg-muted/10 flex-shrink-0">
+      <div className="hidden lg:flex flex-col items-center justify-center w-[160px] min-h-[600px] bg-muted/30 flex-shrink-0">
         <AdUnit slot="gallery-right" width={160} height={600} format="vertical" />
       </div>
     </main>

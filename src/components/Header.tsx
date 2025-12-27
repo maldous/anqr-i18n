@@ -271,7 +271,7 @@ export function Header({ onToggleSidebar, onExport, sidebarOpen = false, showGal
 
       {/* Mobile Footer Bar - Share/Export buttons fixed at bottom (only in editor mode on mobile) */}
       {isEditor && (
-        <div className="md:hidden fixed bottom-0 left-0 right-0 z-50 border-t bg-card shadow-[0_-2px_10px_rgba(0,0,0,0.1)] p-3">
+        <div className="md:hidden fixed bottom-0 left-0 right-0 z-50 border-t bg-card p-3">
           <div className="flex gap-2">
             <Button variant="outline" size="sm" className="flex-1" onClick={handleShare}>
               {copied ? <Check className="h-4 w-4 mr-2" /> : <Share2 className="h-4 w-4 mr-2" />}

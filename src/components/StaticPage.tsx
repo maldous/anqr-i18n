@@ -1493,38 +1493,31 @@ export function StaticPage({ page }: StaticPageProps) {
   // State for docs sidebar visibility
   const [isDocsSidebarOpen, setIsDocsSidebarOpen] = useState(true)
 
-  // Close docs sidebar when clicking outside
-  useEffect(() => {
-    if (!isDocsPage || !isDocsSidebarOpen) return
-    
-    const handleClickOutside = (e: MouseEvent) => {
-      const target = e.target as HTMLElement
-      if (!target.closest('.docs-sidebar') && !target.closest('.docs-sidebar-toggle')) {
-        setIsDocsSidebarOpen(false)
-      }
-    }
-    document.addEventListener('click', handleClickOutside)
-    return () => document.removeEventListener('click', handleClickOutside)
-  }, [isDocsPage, isDocsSidebarOpen])
+  // Note: Click outside to close is disabled - user must click X button to close sidebar
 
   // For docs page, use a different layout with ToC
   if (isDocsPage) {
     return (
       <main className="min-h-[200px] flex-1 flex bg-muted/30 overflow-hidden transition-all duration-300">
         {/* Left ad column - hidden on docs to make room for ToC */}
-        <div className="hidden xl:flex flex-col items-center justify-center w-[160px] min-h-[600px] border-r bg-muted/10 flex-shrink-0">
+        <div className="hidden xl:flex flex-col items-center justify-center w-[160px] min-h-[600px] bg-muted/30 flex-shrink-0">
           <AdUnit slot="static-left" width={160} height={600} format="vertical" />
         </div>
 
-        {/* Toggle button when sidebar is closed */}
+        {/* Toggle button when sidebar is closed - positioned in main content area */}
         {!isDocsSidebarOpen && (
-          <button
-            onClick={() => setIsDocsSidebarOpen(true)}
-            className="hidden lg:flex docs-sidebar-toggle fixed left-4 top-20 z-40 p-2 rounded-lg bg-card border shadow-md hover:bg-muted transition-colors"
-            title="Open documentation sidebar"
-          >
-            <Menu className="h-5 w-5" />
-          </button>
+          <div className="hidden lg:block relative">
+            <button
+              onClick={(e) => {
+                e.stopPropagation()
+                setIsDocsSidebarOpen(true)
+              }}
+              className="docs-sidebar-toggle absolute left-4 top-4 z-40 p-2 rounded-lg bg-card border shadow-md hover:bg-muted transition-colors"
+              title="Open documentation sidebar"
+            >
+              <Menu className="h-5 w-5" />
+            </button>
+          </div>
         )}
 
         {/* Table of Contents */}
@@ -1598,7 +1591,7 @@ export function StaticPage({ page }: StaticPageProps) {
         </div>
 
         {/* Right ad column */}
-        <div className="hidden xl:flex flex-col items-center justify-center w-[160px] min-h-[600px] border-l bg-muted/10 flex-shrink-0">
+        <div className="hidden xl:flex flex-col items-center justify-center w-[160px] min-h-[600px] bg-muted/30 flex-shrink-0">
           <AdUnit slot="static-right" width={160} height={600} format="vertical" />
         </div>
       </main>
@@ -1609,7 +1602,7 @@ export function StaticPage({ page }: StaticPageProps) {
   return (
     <main className="min-h-[200px] flex-1 flex bg-muted/30 overflow-hidden transition-all duration-300">
       {/* Left ad column */}
-      <div className="hidden lg:flex flex-col items-center justify-center w-[160px] min-h-[600px] border-r bg-muted/10 flex-shrink-0">
+      <div className="hidden lg:flex flex-col items-center justify-center w-[160px] min-h-[600px] bg-muted/30 flex-shrink-0">
         <AdUnit slot="static-left" width={160} height={600} format="vertical" />
       </div>
 
@@ -1657,7 +1650,7 @@ export function StaticPage({ page }: StaticPageProps) {
       </div>
 
       {/* Right ad column */}
-      <div className="hidden lg:flex flex-col items-center justify-center w-[160px] min-h-[600px] border-l bg-muted/10 flex-shrink-0">
+      <div className="hidden lg:flex flex-col items-center justify-center w-[160px] min-h-[600px] bg-muted/30 flex-shrink-0">
         <AdUnit slot="static-right" width={160} height={600} format="vertical" />
       </div>
     </main>
