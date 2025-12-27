@@ -113,7 +113,7 @@ const pages: Record<StaticPageType, PageDefinition> = {
   about: {
     title: 'About ANQR',
     description:
-      'ANQR is a free, browser-based QR code generator focused on fast creation, high-quality exports, and practical safety checks. No account required.',
+      'ANQR is a free, browser-based QR code generator with no account required.',
     lastUpdated: LAST_UPDATED,
     sections: [
       {
@@ -180,7 +180,7 @@ const pages: Record<StaticPageType, PageDefinition> = {
   privacy: {
     title: 'Privacy Policy',
     description:
-      'This Privacy Policy explains what information ANQR collects, how it is used, and your rights regarding your personal data under GDPR, CCPA, and other applicable privacy laws.',
+      'Information ANQR collects, how it is used, and your rights under applicable privacy laws.',
     lastUpdated: LAST_UPDATED,
     sections: [
       {
@@ -328,7 +328,7 @@ const pages: Record<StaticPageType, PageDefinition> = {
   terms: {
     title: 'Terms of Service',
     description:
-      'These Terms of Service govern your access to and use of ANQR. By accessing or using the site, you agree to be bound by these terms.',
+      'By accessing or using the site, you agree to be bound by these terms.',
     lastUpdated: LAST_UPDATED,
     sections: [
       {
@@ -471,7 +471,7 @@ const pages: Record<StaticPageType, PageDefinition> = {
   contact: {
     title: 'Contact Us',
     description:
-      'Get in touch with the ANQR team. We welcome feedback, bug reports, feature requests, and general enquiries.',
+      'We welcome feedback, bug reports, feature requests, and general enquiries.',
     lastUpdated: LAST_UPDATED,
     sections: [
       {
@@ -544,7 +544,7 @@ const pages: Record<StaticPageType, PageDefinition> = {
   docs: {
     title: 'ANQR Documentation',
     description:
-      'Complete guide to using ANQR for creating QR codes. Features are organized by level: Basic, Advanced, and Professional.',
+      'Complete guide to using ANQR for creating QR codes.',
     lastUpdated: LAST_UPDATED,
     sections: [
       // ==================== GETTING STARTED ====================
