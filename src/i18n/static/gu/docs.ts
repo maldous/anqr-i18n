@@ -1,12 +1,11 @@
-import type { PageDefinition } from '../types'
-import { LAST_UPDATED } from '../types'
+import type { PageDefinition } from '../types';
+import { LAST_UPDATED } from '../types';
 
 export const docs: PageDefinition = {
   title: 'ANQR User Guide',
   description: 'Complete guide to using ANQR for creating QR codes.',
   lastUpdated: LAST_UPDATED,
   sections: [
-    // ==================== GETTING STARTED ====================
     {
       heading: 'Getting Started',
       paragraphs: [
@@ -21,7 +20,9 @@ export const docs: PageDefinition = {
     },
     {
       heading: 'Quick Start',
-      paragraphs: ['To create your first QR code:'],
+      paragraphs: [
+        'To create your first QR code:',
+      ],
       bullets: [
         '1. Select a content type (URL, text, WiFi, etc.) from the Content Type dropdown.',
         '2. Enter your data in the provided fields.',
@@ -29,8 +30,6 @@ export const docs: PageDefinition = {
         '4. Click Export to download your QR code as PNG, GIF, WebP, or SVG.',
       ],
     },
-
-    // ==================== BASIC TIER ====================
     {
       heading: 'Basic Features',
       paragraphs: [
@@ -59,8 +58,6 @@ export const docs: PageDefinition = {
         'Preserve Finder Patterns: Keeps corner patterns unmodified for reliable scanning.',
       ],
     },
-
-    // ==================== ADVANCED TIER ====================
     {
       heading: 'Advanced Features',
       paragraphs: [
@@ -155,7 +152,9 @@ export const docs: PageDefinition = {
     },
     {
       heading: 'Animation Settings (Advanced)',
-      paragraphs: ['Control animated QR code behavior:'],
+      paragraphs: [
+        'Control animated QR code behavior:',
+      ],
       bullets: [
         'Speed: Animation frame rate in milliseconds.',
         'Loop: Continuous or single-play animation.',
@@ -168,7 +167,9 @@ export const docs: PageDefinition = {
     },
     {
       heading: 'Content Types (Advanced)',
-      paragraphs: ['Advanced level unlocks additional payload formats:'],
+      paragraphs: [
+        'Advanced level unlocks additional payload formats:',
+      ],
       bullets: [
         'Phone Number (tel:): Creates a callable phone link.',
         'Email (mailto:): Opens email client with optional subject and body.',
@@ -189,7 +190,9 @@ export const docs: PageDefinition = {
     },
     {
       heading: 'Advanced Overlay Features',
-      paragraphs: ['Additional overlay capabilities:'],
+      paragraphs: [
+        'Additional overlay capabilities:',
+      ],
       bullets: [
         'Crop: Enable cropping to select a square region of your image.',
         'Halftone: Classic print-style dot pattern based on image brightness.',
@@ -198,7 +201,9 @@ export const docs: PageDefinition = {
     },
     {
       heading: 'Overlay Blend Modes (Advanced)',
-      paragraphs: ['Additional blend modes in Advanced level:'],
+      paragraphs: [
+        'Additional blend modes in Advanced level:',
+      ],
       bullets: [
         'Subpixel: Divides each module into subpixels for higher detail.',
         'Blue Noise: Uses blue noise dithering for artifact-free patterns.',
@@ -216,7 +221,9 @@ export const docs: PageDefinition = {
     },
     {
       heading: 'Color Mode',
-      paragraphs: ['How the overlay image is processed:'],
+      paragraphs: [
+        'How the overlay image is processed:',
+      ],
       bullets: [
         'Full Color: Preserves original image colors.',
         'Grayscale: Converts to black and white tones.',
@@ -250,7 +257,9 @@ export const docs: PageDefinition = {
     },
     {
       heading: 'Fit Mode',
-      paragraphs: ['How the overlay image fits the QR code area:'],
+      paragraphs: [
+        'How the overlay image fits the QR code area:',
+      ],
       bullets: [
         'Cover: Image fills entire area, cropping if needed.',
         'Contain: Entire image visible, may have margins.',
@@ -308,7 +317,9 @@ export const docs: PageDefinition = {
     },
     {
       heading: 'Subpixel Settings',
-      paragraphs: ['When using Subpixel blend mode:'],
+      paragraphs: [
+        'When using Subpixel blend mode:',
+      ],
       bullets: [
         'Grid Size: 2×2, 3×3, or 4×4 subpixels per module. Higher = more detail.',
         'Center Rule: Strict requires center subpixel to match module. Halftone Center allows variation.',
@@ -318,7 +329,9 @@ export const docs: PageDefinition = {
     },
     {
       heading: 'Halftone Settings',
-      paragraphs: ['When using Halftone blend mode:'],
+      paragraphs: [
+        'When using Halftone blend mode:',
+      ],
       bullets: [
         'Cell Size: Per Module or N×N grid.',
         'Dot Shape: Circle, Square, or Line.',
@@ -333,7 +346,9 @@ export const docs: PageDefinition = {
     },
     {
       heading: 'GIF Animation Settings',
-      paragraphs: ['When using animated GIF overlays:'],
+      paragraphs: [
+        'When using animated GIF overlays:',
+      ],
       bullets: [
         'Use Frame Delays: Respect original GIF timing.',
         'Max FPS: Limit frame rate (1-60 fps).',
@@ -342,7 +357,9 @@ export const docs: PageDefinition = {
     },
     {
       heading: 'Advanced Rendering Options',
-      paragraphs: ['Additional rendering controls:'],
+      paragraphs: [
+        'Additional rendering controls:',
+      ],
       bullets: [
         'Gap Mode: None, Inset, Stroke, or Negative Space gap styling.',
         'Corner Radius: Rounded corners percentage for modules.',
@@ -356,7 +373,9 @@ export const docs: PageDefinition = {
     },
     {
       heading: 'Advanced QR Encoding',
-      paragraphs: ['Fine-tune QR encoding:'],
+      paragraphs: [
+        'Fine-tune QR encoding:',
+      ],
       bullets: [
         'Encoding Mode: Auto, Numeric, Alphanumeric, Byte/UTF-8, or Kanji.',
         'Enforce Min Quiet Zone: Ensure at least 4 module margin.',
@@ -364,7 +383,9 @@ export const docs: PageDefinition = {
     },
     {
       heading: 'Advanced Output Options',
-      paragraphs: ['Additional export settings:'],
+      paragraphs: [
+        'Additional export settings:',
+      ],
       bullets: [
         'Filename: Custom filename for downloads.',
         'GIF Palette Size: 2-256 colors in GIF output.',
@@ -379,7 +400,9 @@ export const docs: PageDefinition = {
     },
     {
       heading: 'Validation Options',
-      paragraphs: ['Input processing settings:'],
+      paragraphs: [
+        'Input processing settings:',
+      ],
       bullets: [
         'Validate Input: Check content format before encoding.',
         'Trim Whitespace: Remove leading/trailing spaces.',
@@ -387,8 +410,6 @@ export const docs: PageDefinition = {
         'Max Length Guard: Warn if content exceeds QR capacity.',
       ],
     },
-
-    // ==================== PROFESSIONAL TIER ====================
     {
       heading: 'Professional Features',
       paragraphs: [
@@ -397,7 +418,9 @@ export const docs: PageDefinition = {
     },
     {
       heading: 'Watermark',
-      paragraphs: ['Add watermarks to your QR codes:'],
+      paragraphs: [
+        'Add watermarks to your QR codes:',
+      ],
       bullets: [
         'Kind: Text, Image, or Pattern watermark.',
         'Position: Center, Corners, Edges, Behind, or Quiet Zone.',
@@ -407,7 +430,9 @@ export const docs: PageDefinition = {
     },
     {
       heading: 'Metadata',
-      paragraphs: ['Embed metadata in exported files:'],
+      paragraphs: [
+        'Embed metadata in exported files:',
+      ],
       bullets: [
         'Title, Author, Copyright, License, Description fields.',
         'Creation Time: Embed generation timestamp.',
@@ -416,7 +441,9 @@ export const docs: PageDefinition = {
     },
     {
       heading: 'Sharing',
-      paragraphs: ['Share your QR code configurations:'],
+      paragraphs: [
+        'Share your QR code configurations:',
+      ],
       bullets: [
         'Direct Link: Generate a shareable URL with your current settings.',
         'Embed HTML: Get embed code for websites.',
@@ -426,7 +453,9 @@ export const docs: PageDefinition = {
     },
     {
       heading: 'Safety Analysis',
-      paragraphs: ['Ensure QR codes remain scannable:'],
+      paragraphs: [
+        'Ensure QR codes remain scannable:',
+      ],
       bullets: [
         'Safety Mode: Off, Balanced, or Strict scanning requirements.',
         'Min Module Size: Minimum pixel size per module.',
@@ -456,7 +485,9 @@ export const docs: PageDefinition = {
     },
     {
       heading: 'Overlay Blend Modes (Professional)',
-      paragraphs: ['Additional blend modes in Professional level:'],
+      paragraphs: [
+        'Additional blend modes in Professional level:',
+      ],
       bullets: [
         'Pixelate: Pixelated overlay effect.',
         'Outline: Edge detection overlay showing only contours.',
@@ -491,7 +522,9 @@ export const docs: PageDefinition = {
     },
     {
       heading: 'Professional Rendering Options',
-      paragraphs: ['Advanced rendering controls:'],
+      paragraphs: [
+        'Advanced rendering controls:',
+      ],
       bullets: [
         'Crisp Edges: Use pixelated image rendering for sharp module edges.',
         'Pixel Snap: Floor, Round, or Ceil pixel alignment.',
@@ -504,7 +537,9 @@ export const docs: PageDefinition = {
     },
     {
       heading: 'Professional Output Options',
-      paragraphs: ['Enterprise export settings:'],
+      paragraphs: [
+        'Enterprise export settings:',
+      ],
       bullets: [
         'DPI: Set print resolution (72-600 DPI). 300 DPI recommended for print.',
         'Include Quiet Zone: Toggle quiet zone in output dimensions.',
@@ -513,17 +548,19 @@ export const docs: PageDefinition = {
     },
     {
       heading: 'Animation Settings (Professional)',
-      paragraphs: ['Additional professional animation features:'],
+      paragraphs: [
+        'Additional professional animation features:',
+      ],
       bullets: [
         'Temporal Dither: Off, Blue Noise, or Flicker Safe per-frame dithering.',
         'Pattern: None, Pulse, Wave, Scanline, Shimmer, or Drift effects.',
       ],
     },
-
-    // ==================== TIPS & BEST PRACTICES ====================
     {
       heading: 'Best Practices',
-      paragraphs: ['Follow these guidelines for reliable QR codes:'],
+      paragraphs: [
+        'Follow these guidelines for reliable QR codes:',
+      ],
       bullets: [
         'Always test your QR codes with multiple scanner apps before printing.',
         'Use Error Correction H (High) when adding overlays.',
@@ -537,9 +574,11 @@ export const docs: PageDefinition = {
     },
     {
       heading: 'Troubleshooting',
-      paragraphs: ['Common issues and solutions:'],
+      paragraphs: [
+        'Common issues and solutions:',
+      ],
       bullets: [
-        "QR won't scan: Reduce overlay intensity, increase error correction, check contrast.",
+        'QR won\'t scan: Reduce overlay intensity, increase error correction, check contrast.',
         'Code too large: Reduce content length, use URL shortener, lower version.',
         'Blurry output: Increase module size, use PNG instead of compressed formats.',
         'Colors look wrong: Check color contrast, try grayscale overlay mode.',
@@ -560,4 +599,6 @@ export const docs: PageDefinition = {
       ],
     },
   ],
-}
+};
+
+export default docs;

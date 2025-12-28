@@ -2,140 +2,140 @@ import type { PageDefinition } from '../types'
 import { LAST_UPDATED, CONTACT_EMAIL } from '../types'
 
 export const terms: PageDefinition = {
-  title: '服务条款',
+  title: 'Terms of Service',
   description:
-    '访问或使用本网站即表示您同意受这些条款约束。',
+    'By accessing or using the site, you agree to be bound by these terms.',
   lastUpdated: LAST_UPDATED,
   sections: [
     {
-      heading: '接受条款',
+      heading: 'Acceptance of terms',
       paragraphs: [
-        '访问或使用 ANQR (anqr.link) 即表示您同意受本服务条款和隐私政策的约束。如果您不同意这些条款，请勿使用本网站。',
-        '我们可能不时更新这些条款。变更后继续使用本网站即表示接受新条款。',
+        'By accessing or using ANQR (anqr.link), you agree to be bound by these Terms of Service and our Privacy Policy. If you do not agree to these terms, do not use the site.',
+        'We may update these Terms from time to time. Continued use of the site after changes constitutes acceptance of the new terms.',
       ],
     },
     {
-      heading: '资格',
+      heading: 'Eligibility',
       paragraphs: [
-        '使用 ANQR 必须年满 13 岁。使用本网站即表示您符合此年龄要求。如果您未满 18 岁，即表示您已获得父母或监护人许可使用本网站。',
+        "You must be at least 13 years of age to use ANQR. By using the site, you represent that you meet this age requirement. If you are under 18, you represent that you have your parent or guardian's permission to use the site.",
       ],
     },
     {
-      heading: '允许使用',
+      heading: 'Permitted use',
       paragraphs: [
-        '您仅可将 ANQR 用于合法目的。您对编码到二维码的内容及使用生成二维码的方式负全部责任。',
+        'You may use ANQR for lawful purposes only. You are solely responsible for the content you encode into QR codes and for how you use any QR codes you generate.',
       ],
     },
     {
-      heading: '禁止行为',
-      paragraphs: ['您同意不：'],
+      heading: 'Prohibited conduct',
+      paragraphs: ['You agree not to:'],
       bullets: [
-        '使用 ANQR 创建促进钓鱼、恶意软件分发、欺诈、诈骗、骚扰、诽谤或任何非法活动的二维码。',
-        '编码侵犯知识产权、侵犯隐私或包含非法材料的內容。',
-        '尝试中断、过载或干扰本网站的操作或安全。',
-        '逆向工程、反编译或尝试从本网站提取源代码。',
-        '使用自动化工具（机器人、爬虫）以降低其他用户性能的方式访问本网站。',
-        '规避或禁用任何安全或访问控制功能。',
-        '冒充任何个人或实体或虚假陈述您的隶属关系。',
+        'Use ANQR to create QR codes that facilitate phishing, malware distribution, fraud, scams, harassment, defamation, or any illegal activity.',
+        'Encode content that infringes intellectual property rights, violates privacy, or contains illegal material.',
+        'Attempt to disrupt, overload, or interfere with the operation or security of the site.',
+        'Reverse engineer, decompile, or attempt to extract source code from the site.',
+        'Use automated tools (bots, scrapers) to access the site in a manner that degrades performance for other users.',
+        'Circumvent or disable any security or access control features.',
+        'Impersonate any person or entity or misrepresent your affiliation.',
       ],
     },
     {
-      heading: '知识产权',
+      heading: 'Intellectual property',
       paragraphs: [
-        '您保留编码到二维码的内容所有权。ANQR 不主张您的數據所有权。',
-        'ANQR 名称、徽标、界面设计和底层代码受版权、商标和其他知识产权法保护。未经许可，您不得复制、修改、分发或创建衍生作品。',
-        'QR Code® 是 DENSO WAVE INCORPORATED 的注册商标。ANQR 与 DENSO WAVE 无关联。',
+        'You retain ownership of the content you encode into QR codes. ANQR does not claim ownership of your data.',
+        'The ANQR name, logo, interface design, and underlying code are protected by copyright, trademark, and other intellectual property laws. You may not copy, modify, distribute, or create derivative works without our permission.',
+        'QR Code® is a registered trademark of DENSO WAVE INCORPORATED. ANQR is not affiliated with DENSO WAVE.',
       ],
     },
     {
-      heading: '用户内容许可',
+      heading: 'User content license',
       paragraphs: [
-        '使用 ANQR，您不授予我们任何权利 — 所有二维码生成在您的设备本地进行，我们不访问、存储或传输您的编码數據。',
+        'By using ANQR, you grant us no rights to your content — all QR code generation happens locally on your device and we do not access, store, or transmit your encoded data.',
       ],
     },
     {
-      heading: '第三方服务和广告',
+      heading: 'Third-party services and advertising',
       paragraphs: [
-        '本网站通过 Google AdSense 显示广告，并可能包含第三方网站链接。我们不对第三方内容、服务或隐私实践负责。',
-        '您与广告商和第三方的互动仅在您与他们之间。有关广告數據实践，请参阅隐私政策。',
+        'The site displays advertisements through Google AdSense and may include links to third-party websites. We are not responsible for third-party content, services, or privacy practices.',
+        'Your interactions with advertisers and third parties are solely between you and them. See our Privacy Policy for information about advertising data practices.',
       ],
     },
     {
-      heading: '免责声明',
+      heading: 'Disclaimer of warranties',
       paragraphs: [
-        'ANQR 按“现状”和“可用”基础提供，不提供任何明示或默示保证，包括但不限于适销性、特定用途适用性和非侵权性的默示保证。',
-        '我们不保证：(a) 本网站不间断、安全或无错误；(b) 二维码在所有环境、设备或扫描应用中可扫描；(c) 本网站满足您的要求。',
-        '您应始终在实际使用条件下测试二维码（打印尺寸、照明、屏幕类型、距离、相机质量）。',
+        'ANQR IS PROVIDED ON AN "AS IS" AND "AS AVAILABLE" BASIS WITHOUT WARRANTIES OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, AND NON-INFRINGEMENT.',
+        'We do not warrant that: (a) the site will be uninterrupted, secure, or error-free; (b) QR codes will scan in all environments, on all devices, or with all scanner applications; (c) the site will meet your requirements.',
+        'You should always test QR codes in the conditions where they will be used (print size, lighting, screen type, distance, camera quality).',
       ],
     },
     {
-      heading: '责任限制',
+      heading: 'Limitation of liability',
       paragraphs: [
-        `在法律允许的最大范围内，ANQR 及其运营者、附属公司和许可方不对任何直接、间接、附带、特殊、后果性、惩罚性或惩戒性损害负责，包括但不限于利润、收入、數據、商誉、使用或其他无形损失的损害，该等损害源于或与您访问或使用（或无法访问或使用）服务相关。`,
-        '您明确理解并同意使用服务风险自负。服务免费提供，因此您同意 ANQR 及其运营者对您任何损害或损失不承担任何责任。在任何情况下，我们的总累计责任不超过零美元（$0 AUD）。',
-        '您同意放弃、免除并释放针对 ANQR 及其运营者因使用服务而产生的任何及所有索赔、要求和诉讼原因。',
-        '某些司法管辖区不允许排除某些保证或责任限制。在此类司法管辖区，我们的责任限于适用法允许的最大范围。',
+        'TO THE MAXIMUM EXTENT PERMITTED BY LAW, ANQR AND ITS OPERATORS, AFFILIATES, AND LICENSORS SHALL NOT BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, CONSEQUENTIAL, PUNITIVE, OR EXEMPLARY DAMAGES, INCLUDING BUT NOT LIMITED TO DAMAGES FOR LOSS OF PROFITS, REVENUE, DATA, GOODWILL, USE, OR OTHER INTANGIBLE LOSSES, ARISING FROM OR RELATED TO YOUR ACCESS TO OR USE OF (OR INABILITY TO ACCESS OR USE) THE SERVICE.',
+        'YOU EXPRESSLY UNDERSTAND AND AGREE THAT YOUR USE OF THE SERVICE IS AT YOUR SOLE RISK. THE SERVICE IS PROVIDED FREE OF CHARGE, AND ACCORDINGLY, YOU AGREE THAT ANQR AND ITS OPERATORS SHALL HAVE NO LIABILITY TO YOU WHATSOEVER FOR ANY DAMAGES OR LOSSES. IN NO EVENT SHALL OUR TOTAL AGGREGATE LIABILITY EXCEED ZERO DOLLARS ($0 AUD).',
+        'YOU AGREE TO RELEASE, WAIVE, AND DISCHARGE ANY AND ALL CLAIMS, DEMANDS, AND CAUSES OF ACTION AGAINST ANQR AND ITS OPERATORS ARISING FROM YOUR USE OF THE SERVICE.',
+        'SOME JURISDICTIONS DO NOT ALLOW THE EXCLUSION OF CERTAIN WARRANTIES OR LIMITATIONS OF LIABILITY. IN SUCH JURISDICTIONS, OUR LIABILITY SHALL BE LIMITED TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW.',
       ],
     },
     {
-      heading: '赔偿',
+      heading: 'Indemnification',
       paragraphs: [
-        `您同意赔偿、辩护并使 ANQR、其运营者、附属公司及其各自的高管、董事、员工和代理免受因 (a) 您使用本网站；(b) 您违反本条款；(c) 您违反任何第三方权利；(d) 您编码到二维码的任何内容而产生的任何索赔、损害、损失、责任、费用和开支（包括律师费）的损害。`,
+        'You agree to indemnify, defend, and hold harmless ANQR, its operators, affiliates, and their respective officers, directors, employees, and agents from any claims, damages, losses, liabilities, costs, and expenses (including legal fees) arising from: (a) your use of the site; (b) your violation of these Terms; (c) your violation of any third-party rights; (d) any content you encode into QR codes.',
       ],
     },
     {
-      heading: '争议解决',
+      heading: 'Dispute resolution',
       paragraphs: [
-        `因本条款或您使用 ANQR 产生的任何争议首先尝试通过联系 ${CONTACT_EMAIL} 进行非正式协商解决。`,
-        '非正式解决失败时，争议应通过维多利亚州澳大利亚的约束性仲裁解决，但任何一方可针对知识产权侵权寻求法院禁令救济。',
+        `Any dispute arising from these Terms or your use of ANQR shall first be attempted to be resolved through informal negotiation by contacting ${CONTACT_EMAIL}.`,
+        'If informal resolution fails, disputes shall be resolved through binding arbitration in Victoria, Australia, except that either party may seek injunctive relief in court for intellectual property violations.',
       ],
     },
     {
-      heading: '集体诉讼放弃',
+      heading: 'Class action waiver',
       paragraphs: [
-        '在法律允许范围内，您同意任何争议解决程序仅以个人为基础进行，而非集体、合并或代表性诉讼。',
+        'TO THE EXTENT PERMITTED BY LAW, YOU AGREE THAT ANY DISPUTE RESOLUTION PROCEEDINGS WILL BE CONDUCTED ONLY ON AN INDIVIDUAL BASIS AND NOT IN A CLASS, CONSOLIDATED, OR REPRESENTATIVE ACTION.',
       ],
     },
     {
-      heading: '管辖法律',
+      heading: 'Governing law',
       paragraphs: [
-        '本条款受维多利亚州澳大利亚法律管辖，不考虑法律冲突原则。您同意维多利亚州澳大利亚法院的专属管辖权。',
+        'These Terms are governed by the laws of Victoria, Australia, without regard to conflict of laws principles. You consent to the exclusive jurisdiction of the courts located in Victoria, Australia.',
       ],
     },
     {
-      heading: '变更和可用性',
+      heading: 'Changes and availability',
       paragraphs: [
-        '我们可随时无通知或责任修改、暂停或停止本网站（或任何部分）。',
-        '我们可随时更新本条款。“最后更新”日期表示最近修订。变更后继续使用即表示接受。',
+        'We may modify, suspend, or discontinue the site (or any part of it) at any time without notice or liability.',
+        'We may update these Terms at any time. The "Last updated" date indicates when they were most recently revised. Continued use after changes constitutes acceptance.',
       ],
     },
     {
-      heading: '可分性',
+      heading: 'Severability',
       paragraphs: [
-        '如果本条款任何规定被认定无效或不可执行，该规定将在允许的最大范围内执行，其余规定保持完全效力。',
+        'If any provision of these Terms is held invalid or unenforceable, that provision will be enforced to the maximum extent permissible, and the remaining provisions will remain in full force and effect.',
       ],
     },
     {
-      heading: '放弃',
+      heading: 'Waiver',
       paragraphs: [
-        '我们未能执行本条款任何权利或规定不视为放弃该权利或规定。',
+        'Our failure to enforce any right or provision of these Terms shall not be deemed a waiver of such right or provision.',
       ],
     },
     {
-      heading: '完整协议',
+      heading: 'Entire agreement',
       paragraphs: [
-        '本条款连同隐私政策构成您与 ANQR 关于使用本网站的完整协议，并取代任何先前协议。',
+        'These Terms, together with our Privacy Policy, constitute the entire agreement between you and ANQR regarding your use of the site and supersede any prior agreements.',
       ],
     },
     {
-      heading: '不可抗力',
+      heading: 'Force majeure',
       paragraphs: [
-        '我们不对合理控制之外的情况导致的任何履行失败或延迟负责，包括自然灾害、战争、恐怖主义、骚乱、政府行动或互联网/基础设施故障。',
+        'We shall not be liable for any failure or delay in performance due to circumstances beyond our reasonable control, including natural disasters, war, terrorism, riots, government actions, or internet/infrastructure failures.',
       ],
     },
     {
-      heading: '联系',
-      paragraphs: [`本条款相关问题可发送至：${CONTACT_EMAIL}`],
+      heading: 'Contact',
+      paragraphs: [`Questions about these Terms can be sent to: ${CONTACT_EMAIL}`],
     },
   ],
 }

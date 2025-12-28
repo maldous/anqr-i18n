@@ -1,0 +1,1022 @@
+1	“Tiếng ồn xanh”
+2	“Nảy bóng (Ping-Pong)”
+3	“Chu kỳ màu sắc”
+4	“Chuyển tiếp mượt mà”
+5	“Trôi dạt”
+6	"Bật hoạt ảnh"
+7	“Mỗi {{count}} khung hình”
+8	“Xuất tất cả khung hình”
+9	“Mờ dần vào”
+10	“An toàn khi nhấp nháy”
+11	“Bước khung”
+12	“Nội suy”
+13	“Hoạt ảnh lặp lại”
+14	“Khung hình tối đa”
+15	“Hiện tượng rung giật mô-đun”
+16	“⚠️ Có thể ảnh hưởng đến khả năng quét”
+17	“Biến hình”
+18	“Không có”
+19	“Tắt”
+20	“Mẫu được tạo ra”
+21	“Xung nhịp”
+22	“Hạt giống ngẫu nhiên”
+23	“Xoay”
+24	“Dòng quét”
+25	“Shimmer”
+26	“Trượt vào”
+27	“Tốc độ khung hình”
+28	“Khung bắt đầu”
+29	“Sự dao động thời gian”
+30	“Sóng”
+31	“Tiếng Anh”
+32	“Tiếng Hindi”
+33	“Người Trung Quốc”
+34	“Malay”
+35	“Tiếng Tamil”
+36	“Thái Lan”
+37	“Tiếng Bồ Đào Nha”
+38	“Tiếng Indonesia”
+39	“Tiếng Việt”
+40	“Tiếng Tagalog”
+41	“Người Nhật”
+42	“Hàn Quốc”
+43	“Tiếng Tây Ban Nha”
+44	“Tiếng Ả Rập”
+45	“Tiếng Nga”
+46	“Tiếng Telugu”
+47	“Tiếng Marathi”
+48	“Tiếng Bengali”
+49	“Gujarati”
+50	“Kannada”
+51	“Tiếng Malayalam”
+52	“Tiếng Punjabi”
+53	“ANQR”
+54	“Máy tạo mã QR”
+55	“Tất cả các quyền được bảo lưu”
+56	“Áp dụng”
+57	“Quay lại”
+58	“Hủy bỏ”
+59	“Đóng cửa”
+60	“Đã sao chép!”
+61	“Bản sao”
+62	“© ANQR”
+63	“Xóa”
+64	“Người khuyết tật”
+65	“Tải xuống”
+66	“Chỉnh sửa”
+67	“Đã kích hoạt”
+68	“Lỗi”
+69	“Bộ lọc”
+70	“Ít hơn”
+71	“Đang tải…”
+72	“Thêm nữa”
+73	“Tiếp theo”
+74	“Không”
+75	“Được rồi”
+76	“Bật”
+77	“Trước đó”
+78	“Khởi động lại”
+79	“Lưu”
+80	“Tìm kiếm”
+81	“Chọn”
+82	“Ẩn bớt”
+83	“Xem thêm”
+84	“Sắp xếp”
+85	“Thành công”
+86	“Tải lên”
+87	“Xem tất cả”
+88	“Có”
+89	“Không thể lưu tệp: {{error}}”
+90	“Đã lưu vào Tài liệu: {{filename}}”
+91	“© ANQR {{năm}}”
+92	“Tất cả”
+93	“Hoạt hình”
+94	“Chế độ hòa trộn”
+95	“Sụp đổ”
+96	“Chế độ màu”
+97	“Màu sắc”
+98	“Loại nội dung”
+99	“Làm mờ”
+100	“Mã hóa”
+101	“Mở rộng”
+102	“Lớp phủ hình ảnh”
+103	“Ngưỡng nhiễu xanh với hình ảnh động”
+104	“Tiếng ồn xanh động”
+105	“Tiếng ồn xanh động ở mức 100%”
+106	“Tiếng ồn xanh 100%”
+107	“Tiếng ồn xanh động ở mức 50%”
+108	“Tiếng ồn xanh 50%”
+109	“Tiếng ồn xanh động ở mức 75%”
+110	“Tiếng ồn xanh 75%”
+111	“Sự rực rỡ với hiệu ứng hoạt hình”
+112	“Sự rực rỡ sống động”
+113	“Lớp phủ hoạt hình đen trắng”
+114	“Phim hoạt hình đen trắng”
+115	“Lớp phủ hoạt hình màu”
+116	“Màu sắc động”
+117	“Lớp phủ hoạt hình thang độ xám”
+118	“Ảnh động đen trắng”
+119	“Lan tỏa lỗi bằng hoạt hình”
+120	“Hình ảnh động mờ”
+121	“Biotone với hiệu ứng hoạt hình”
+122	“Hình ảnh hai tông màu động”
+123	“Chấm halftone với hiệu ứng hoạt hình”
+124	“Hình ảnh bán sắc động”
+125	“Tranh ghép hình có hiệu ứng hoạt hình”
+126	“Tranh ghép hoạt hình”
+127	“Lớp phủ nhiễu với bảng màu cổ điển”
+128	“Hỗn hợp cổ điển”
+129	“Lớp phủ nhiễu với bảng màu rừng”
+130	“Hỗn hợp rừng”
+131	“Lớp phủ nhiễu với gam màu xanh hải quân”
+132	“Màu Navy Blend”
+133	“Lớp phủ nhiễu với bảng màu rượu vang”
+134	“Hỗn hợp rượu vang”
+135	“Tiếng ồn xanh trong đen trắng”
+136	“Tiếng ồn xanh đen trắng”
+137	“Tiếng ồn xanh trong màu sắc”
+138	“Màu nhiễu xanh”
+139	“Màu sắc được xử lý nhiễu”
+140	“Màu sắc được làm mờ”
+141	“Được xử lý nhiễu ảnh ở thang độ xám”
+142	“Màu xám nhiễu hạt”
+143	“Ảnh bán sắc đen trắng”
+144	“Ảnh đen trắng”
+145	“Hình ảnh bán sắc trong màu sắc”
+146	“Màu bán sắc”
+147	“#e85d04 trên #ffe8d6”
+148	“San hô”
+149	“San hô với các mô-đun chấm”
+150	“Chấm San Hô”
+151	“#9d0208 trên #ffccd5”
+152	“Đỏ thẫm”
+153	“#1b4332 trên #d8f3dc”
+154	“Rừng”
+155	“Rừng với các mô-đun chấm”
+156	“Chấm Rừng”
+157	“#7f5539 trên #ffe8cc”
+158	“Vàng”
+159	“#ffffff trên #000000”
+160	“Đảo ngược”
+161	“#1a1a2e trên #eef1ff”
+162	“Nửa đêm”
+163	“Nửa đêm với các mô-đun chấm”
+164	“Chấm Nửa Đêm”
+165	“#001d3d trên #a2d2ff”
+166	“Hải quân”
+167	“#023e8a trên #caf0f8”
+168	“Đại dương”
+169	“Đại dương với các mô-đun chấm”
+170	“Chấm biển”
+171	“#4a0080 trên #f5e6ff”
+172	“Hoàng gia”
+173	“Royal với các mô-đun chấm”
+174	“Chấm Hoàng Gia”
+175	“#343a40 trên #e9ecef”
+176	“Slate”
+177	“#bf0603 trên #fff3b0”
+178	“Hoàng hôn”
+179	“Hoàng hôn với các mô-đun chấm”
+180	“Chấm hoàng hôn”
+181	“#006d77 trên #e0f4f5”
+182	“Màu xanh ngọc”
+183	“Hình ảnh bán sắc động với các mô-đun chấm”
+184	“Chấm động + Hiệu ứng bán sắc”
+185	“Tiếng ồn xanh động với hiệu ứng làm tròn”
+186	“Hình tròn động + Nhiễu xanh”
+187	“Lớp phủ pixel với các mô-đun được kết nối”
+188	“Kết nối + Màu xanh ngọc lam dạng pixel”
+189	“Các mô-đun kết nối với bộ dò hình vuông”
+190	“Kết nối + Hình vuông”
+191	“Các mô-đun kết nối với hiệu ứng sóng”
+192	“Kết nối + Đại dương sóng”
+193	“Các mô-đun kim cương với nhiễu xanh”
+194	“Kim cương + Xanh hải quân”
+195	“Hiệu ứng hai tông màu với các mô-đun kim cương”
+196	“Kim cương + Đỏ thẫm hai tông màu”
+197	“Mô-đun kim cương với đầu dò tròn”
+198	“Hình kim cương + Hình tròn”
+199	“Mô-đun chấm có chức năng tìm hình tròn”
+200	“Chấm + Hình tròn”
+201	“Tăng tối đa khả năng quan sát bằng các chấm”
+202	“Chấm điểm + Rừng rậm khắc nghiệt”
+203	“Các mô-đun chấm với lớp phủ bán sắc”
+204	“Chấm + Vàng Halftone”
+205	“Phát hiện cạnh bằng mô-đun chấm”
+206	“Bảng chấm + viền”
+207	“Kiểu tạo hiệu ứng chuyển động cổ điển với đường viền bo tròn”
+208	“Rounded + Dithered Royal”
+209	“Các mô-đun bo tròn với lớp phủ khảm”
+210	“Hoàng hôn tròn trịa + khảm”
+211	“Các mô-đun bo tròn với các đầu dò bo tròn”
+212	“Làm tròn + Làm tròn”
+213	“Kết xuất chi tiết cao ở mức độ điểm ảnh phụ”
+214	“San hô bo tròn + điểm ảnh phụ”
+215	“Liên kết Mailto với màu san hô”
+216	“Địa chỉ email”
+217	“Sự kiện iCal với kiểu chữ tròn màu hoàng gia”
+218	“Sự kiện trên lịch”
+219	“Tọa độ bản đồ với vàng được kết nối”
+220	“Định vị địa lý”
+221	“Tin nhắn SMS điền sẵn với màu xanh ngọc kim cương”
+222	“Tin nhắn SMS”
+223	“Thẻ liên hệ kiểu dáng bo tròn màu xanh hải quân”
+224	“Liên hệ vCard”
+225	“Cấu hình WiFi với dấu chấm màu xanh lá cây đậm”
+226	“Mạng WiFi”
+227	“Ngưỡng thích ứng”
+228	“Thích ứng”
+229	“Ngưỡng nhiễu xanh”
+230	“Tiếng ồn xanh lai”
+231	“Tiếng ồn xanh + Lỗi”
+232	“Phong cách Floyd-Steinberg”
+233	“Lan truyền lỗi”
+234	“Lỗi khuếch tán Atkinson”
+235	“Atkinson”
+236	“Sự lan truyền lỗi của Burkes”
+237	“Burkes”
+238	“Sự lan truyền lỗi Floyd-Steinberg”
+239	“Floyd-Steinberg”
+240	“Sự khuếch tán lỗi Jarvis-Judice-Ninke”
+241	“Jarvis-Judice-Ninke”
+242	“Lỗi lan truyền Sierra”
+243	“Sierra”
+244	“Lỗi khuếch tán Stucki”
+245	“Stucki”
+246	“Phương pháp làm mờ ma trận Bayer”
+247	“Đã đặt hàng Bayer”
+248	“Được trọng số theo độ sáng”
+249	“Nhận thức”
+250	“Cường độ rung lắc ở mức 100%”
+251	“Sức mạnh 100%”
+252	“Độ mạnh dao động ở mức 20%”
+253	“Sức mạnh 20%”
+254	“Độ mạnh dao động ở mức 40%”
+255	“Sức mạnh 40%”
+256	“Độ mạnh dao động ở mức 60%”
+257	“Sức mạnh 60%”
+258	“Độ mạnh dao động ở mức 80%”
+259	“Sức mạnh 80%”
+260	“Ngưỡng nhiễu ngẫu nhiên”
+261	“Tiếng ồn trắng”
+262	“Sửa lỗi 30%”
+263	“Trường trung học ECC”
+264	“Sửa lỗi 7%”
+265	“ECC Thấp”
+266	“Sửa lỗi 15%”
+267	“ECC Medium”
+268	“Sửa lỗi 25%”
+269	“Phần tư ECC”
+270	“Tự động chọn phiên bản”
+271	“Phiên bản tự động”
+272	“Mã QR phiên bản 12”
+273	“Phiên bản 12”
+274	“Tốt nhất cho các lớp phủ (không có mắt ở giữa)”
+275	“Phiên bản 6”
+276	“Phiên bản 6 với khả năng sửa lỗi cao”
+277	“V6 + ECC Cao cấp”
+278	“Phiên bản 6 với khả năng sửa lỗi thấp”
+279	“V6 + ECC Low”
+280	“Mã QR phiên bản 9”
+281	“Phiên bản 9”
+282	“Phiên bản 9 với khả năng sửa lỗi cao”
+283	“V9 + ECC Cao”
+284	“Phiên bản 9 với khả năng sửa lỗi thấp”
+285	“V9 + ECC Low”
+286	“Mẫu tìm hình tròn”
+287	“Người tìm hình tròn”
+288	“Mẫu tìm kiếm bo tròn”
+289	“Dụng cụ tìm kiếm bo tròn”
+290	“Mẫu hình tìm kiếm hình vuông”
+291	“Người tìm hình vuông”
+292	“Hình ảnh bán sắc với bảng màu cổ điển”
+293	“Hình ảnh bán sắc cổ điển”
+294	“Ảnh bán sắc với gam màu rừng”
+295	“Hình ảnh bán sắc rừng”
+296	“Ảnh bán sắc với gam màu xanh hải quân”
+297	“Màu bán sắc hải quân”
+298	“Hình ảnh bán sắc với gam màu rượu vang”
+299	“Màu rượu vang pha trộn”
+300	“Lớp phủ pha trộn màu sắc”
+301	“Chế độ hòa trộn”
+302	“Làm mờ ngưỡng nhiễu xanh”
+303	“Các mô-đun dựa trên độ sáng”
+304	“Độ sáng”
+305	“Xử lý ảnh đen trắng”
+306	“Đen trắng”
+307	“Xử lý màu sắc”
+308	“Màu sắc”
+309	“Xử lý ảnh xám”
+310	“Màu xám”
+311	“Phương pháp làm mờ do khuếch tán lỗi”
+312	“Bị làm mờ”
+313	“Được xử lý bằng hiệu ứng nhiễu ở cường độ 100%”
+314	“Đã xử lý nhiễu 100%”
+315	“Được làm mờ ở cường độ 50%”
+316	“Làm mờ 50%”
+317	“Được làm nhiễu ở cường độ 75%”
+318	“Đã xử lý nhiễu 75%”
+319	“Ánh xạ màu hai tông”
+320	“Duotone”
+321	“Khả năng hiển thị hình ảnh tối đa”
+322	“Cực đoan”
+323	“Các chấm halftone cổ điển”
+324	“Halftone”
+325	“Hiệu ứng gạch khảm”
+326	“Khảm”
+327	“Lớp phủ phát hiện cạnh”
+328	“Đề cương”
+329	“Hiệu ứng lớp phủ pixel”
+330	“Pixelate”
+331	“Kết xuất chi tiết cao ở mức độ điểm ảnh phụ”
+332	“Điểm ảnh phụ”
+333	“Hiệu ứng biến dạng sóng”
+334	“Tranh khảm với gam màu cổ điển”
+335	“Tranh khảm cổ điển”
+336	“Tranh khảm với gam màu rừng”
+337	“Khu rừng khảm”
+338	“Tranh khảm với gam màu xanh hải quân”
+339	“Tranh khảm Hải quân”
+340	“Tranh khảm với gam màu rượu vang”
+341	“Tranh khảm rượu vang”
+342	“Mã QR tiêu chuẩn”
+343	“Cổ điển”
+344	“Sửa lỗi tối thiểu”
+345	“ECC Thấp (7%)”
+346	“Sửa lỗi trung bình-cao”
+347	“Phần tư ECC (25%)”
+348	“Kích thước lớn với nhiều đường căn chỉnh”
+349	“Lớn hơn nếu không có mắt ở giữa”
+350	“Lớn hơn nữa với mắt ở giữa”
+351	“Làm mờ Gaussian 1px”
+352	“Làm mờ 1px”
+353	“Làm mờ Gaussian 2px”
+354	“Làm mờ 2px”
+355	“Làm mờ Gaussian 4px”
+356	“Làm mờ 4px”
+357	“Độ sáng được điều chỉnh tối hơn”
+358	“Độ sáng -25”
+359	“Độ sáng -50”
+360	“Độ sáng được điều chỉnh sáng hơn”
+361	“Độ sáng +25”
+362	“Độ sáng +50”
+363	“Độ tương phản thấp”
+364	“Độ tương phản -50”
+365	“Độ tương phản cao”
+366	“Tương phản +100”
+367	“Tương phản +50”
+368	“Phát hiện cạnh Canny”
+369	“Tinh ranh”
+370	“Phát hiện cạnh Sobel”
+371	“Edge Sobel”
+372	“Hiệu chỉnh Gamma 0,5”
+373	“Gamma 0.5”
+374	“Hiệu chỉnh Gamma 1.5”
+375	“Gamma 1.5”
+376	“Hiệu chỉnh Gamma 2.0”
+377	“Gamma 2.0”
+378	“Xoay màu 90 độ”
+379	“Màu sắc +90°”
+380	“Màu đảo ngược”
+381	“2 mức độ màu”
+382	“Posterize 2”
+383	“4 cấp độ màu”
+384	“Posterize 4”
+385	“8 cấp độ màu”
+386	“Posterize 8”
+387	“Đã giảm độ bão hòa”
+388	“Độ bão hòa -100”
+389	“Giảm độ bão hòa”
+390	“Độ bão hòa -50”
+391	“Bão hòa quá mức”
+392	“Độ bão hòa +100”
+393	“Độ bão hòa +50”
+394	“Mài sắc 100%”
+395	“Mài sắc 100%”
+396	“Mài sắc 25%”
+397	“Mài sắc 25%”
+398	“Mài sắc 50%”
+399	“Mài sắc 50%”
+400	“Ngưỡng nhị phân ở mức 128”
+401	“Ngưỡng 128”
+402	“Ngưỡng nhị phân ở mức 192”
+403	“Ngưỡng 192”
+404	“Ngưỡng nhị phân ở mức 64”
+405	“Ngưỡng 64”
+406	“Kiểu mô-đun kết nối”
+407	“Các mô-đun kết nối”
+408	“Kiểu mô-đun kim cương”
+409	“Mô-đun Kim cương”
+410	“Kiểu mô-đun Dots”
+411	“Mô-đun chấm”
+412	“Kiểu mô-đun bo tròn”
+413	“Mô-đun bo tròn”
+414	“Kiểu mô-đun vuông”
+415	“Mô-đun vuông”
+416	“Bình thường”
+417	“Đòn phối hợp mạnh mẽ”
+418	“Xử lý sơ bộ”
+419	“Lớp phủ GIF động với các chế độ hòa trộn khác nhau”
+420	“Lớp phủ hoạt hình”
+421	“Phối hợp màu sắc khác nhau với lớp phủ hình ảnh”
+422	“Xử lý ảnh màu, ảnh xám và ảnh đen trắng”
+423	“Xử lý màu sắc”
+424	“Các phối màu và bảng màu theo chủ đề”
+425	“Màu sắc & Chủ đề”
+426	“Các định dạng dữ liệu khác nhau - vCard, WiFi, Email, SMS, Geo, Calendar”
+427	“Các phương pháp làm mờ khác nhau và các nhân khuếch tán lỗi”
+428	“Thuật toán làm mờ”
+429	“Các phiên bản mã QR khác nhau và mức độ sửa lỗi”
+430	“Mã hóa QR”
+431	“Lớp phủ hình ảnh tĩnh với các chế độ hòa trộn khác nhau”
+432	“Lớp phủ hình ảnh”
+433	“Mã QR tiêu chuẩn không có lớp phủ - các phiên bản khác nhau và sửa lỗi”
+434	“Mã QR đơn giản”
+435	“Những sự kết hợp đa tính năng nổi bật thể hiện khả năng của ANQR”
+436	“Độ sáng, độ tương phản, gamma, làm mờ, làm sắc nét, tạo hiệu ứng poster, phát hiện cạnh”
+437	“Xử lý sơ bộ hình ảnh”
+438	“Các kiểu hiển thị khác nhau cho mô-đun và mẫu tìm kiếm”
+439	“Kiểu mô-đun & công cụ tìm kiếm”
+440	“Hiển thị tất cả”
+441	“Kiểu dáng”
+442	“Khám phá các ví dụ về mã QR được tạo bằng ANQR”
+443	“Bộ sưu tập mã QR”
+444	“Hãy thử điều này”
+445	“Sao chép liên kết”
+446	“Chuyển sang chế độ tối”
+447	“Xuất khẩu”
+448	“Chuyển sang chế độ sáng”
+449	“Cài đặt tìm kiếm…”
+450	“Chia sẻ”
+451	“Kiểu mẫu căn chỉnh (được sử dụng trong mã QR lớn hơn)”
+452	“Mở nội dung cụ thể trong ứng dụng di động”
+453	“Tự động phát hiện (yêu cầu phiên bản v{{version}}+ để xem nội dung hiện tại)”
+454	“0 = Tự động, phiên bản tối thiểu v{{version}} cho nội dung hiện tại”
+455	“Mã màu thập lục phân của màu nền”
+456	“Định dạng cũ - hãy cân nhắc sử dụng vCard thay thế”
+457	“Lưu ý: Việc ghép nối Bluetooth qua mã QR tùy thuộc vào nhà sản xuất và có thể không hoạt động trên tất cả các thiết bị”
+458	“Phát hoạt ảnh tiến rồi lùi (ping-pong)”
+459	“Đăng ký nhận thông báo lịch chung”
+460	“Đảm bảo tỷ lệ tương phản tối thiểu giữa hình ảnh chính và hình ảnh nền”
+461	“Tỷ lệ bán kính góc cho các mô-đun bo tròn (0-100%)”
+462	“Sử dụng kỹ thuật hiển thị pixel để có các cạnh mô-đun sắc nét”
+463	“Nhập dữ liệu thô ở bất kỳ định dạng nào. Sẽ không có bất kỳ xác thực hoặc định dạng nào được áp dụng.”
+464	“Xoay các mô-đun kiểu chấm (0-360 độ)”
+465	“Chế độ mã hóa dữ liệu - Tự động chọn chế độ hiệu quả nhất”
+466	“Thực thi vùng yên tĩnh tối thiểu 4 mô-đun để đảm bảo độ tin cậy quét tốt hơn”
+467	“Nhập nội dung văn bản cần mã hóa vào mã QR”
+468	“Nhập URL để mã hóa vào mã QR”
+469	“Mã QR của Hội đồng Thanh toán Châu Âu dành cho chuyển khoản tín dụng SEPA”
+470	“Mức độ sửa lỗi - càng cao = khả năng chống hư hại càng tốt nhưng mã QR càng lớn”
+471	“Các mô-đun biên giới bổ sung ngoài khu vực yên tĩnh (0-10)”
+472	“Kiểu dáng của hình vuông bên trong các mẫu tìm kiếm”
+473	“Kiểu dáng của vòng ngoài của các mẫu định vị”
+474	“Các mẫu tìm kiếm theo tỷ lệ so với kích thước mặc định của chúng (50-150%)”
+475	“Mã màu thập lục phân của màu nền trước”
+476	“Kiểu dáng của các mẫu tìm góc”
+477	“Tự động chuyển đổi URL HTTP sang HTTPS”
+478	“Thêm khung trang trí xung quanh mã QR”
+479	“Văn bản hiển thị trên khung”
+480	“Cách hiển thị khoảng trống giữa các mô-đun”
+481	“Áp dụng hiệu ứng chuyển màu cho mã QR”
+482	“Liên kết kỹ thuật số GS1 để nhận dạng và truy xuất nguồn gốc sản phẩm”
+483	“Càng cao = khả năng chống hư hại càng tốt, QR càng lớn”
+484	“Phát hoạt ảnh liên tục”
+485	“Ngăn chặn việc mã hóa nội dung vượt quá dung lượng của mã QR”
+486	“Tỷ lệ tương phản tối thiểu cần thực thi (1-21, WCAG AA yêu cầu 4,5:1)”
+487	“Khoảng cách giữa các mô-đun tính theo phần trăm (0-30%)”
+488	“Kích thước của mỗi mô-đun mã QR tính bằng pixel (2-20px)”
+489	“Phong cách hình ảnh của các mô-đun mã QR”
+490	“Chuyển đổi các định dạng xuống dòng khác nhau sang định dạng chuẩn”
+491	“Chọn định dạng tệp đầu ra để xuất”
+492	“Hệ thống thanh toán nhanh Singapore”
+493	“Cách gán màu sắc cho từng mô-đun”
+494	“Nhấp chuột để chọn màu nền”
+495	“Nhấp chuột để chọn màu chữ”
+496	“Hệ thống thanh toán tức thời của Brazil”
+497	“Cách căn chỉnh vị trí mô-đun theo ranh giới pixel”
+498	“Hệ thống thanh toán điện tử quốc gia Thái Lan”
+499	“Phiên bản mã QR (0=tự động, 1-40 tăng kích thước và dung lượng)”
+500	“Vùng an toàn xung quanh mã QR (0-10 mô-đun, khuyến nghị: 4+)”
+501	“Liên kết đến mẫu đăng ký trực tuyến hoặc trang đăng ký sự kiện”
+502	“Chế độ phân tích an toàn - mức độ nghiêm ngặt trong việc kiểm tra khả năng đọc mã QR”
+503	“Chọn loại nội dung cần mã hóa trong mã QR”
+504	“Sử dụng dịch vụ rút gọn URL cho mã QR động/có thể theo dõi”
+505	“Kiểu mẫu thời gian (đường ngang và đường dọc)”
+506	“Hãy làm cho nền trong suốt thay vì sử dụng màu nền”
+507	“Xóa khoảng trắng đầu và cuối”
+508	“Giao diện thanh toán thống nhất cho Ấn Độ”
+509	“Tham số chiến dịch UTM để theo dõi chiến dịch”
+510	“Tham số trung bình UTM để theo dõi chiến dịch”
+511	“Tham số nguồn UTM để theo dõi chiến dịch”
+512	“Xác thực dữ liệu đầu vào trước khi mã hóa”
+513	“⚠️ Phiên bản quá thấp! Cần phiên bản tối thiểu v{{version}}”
+514	“Ngôn ngữ”
+515	“Chọn ngôn ngữ”
+516	“Thêm trường tùy chỉnh”
+517	“Tác giả”
+518	“Tên tác giả”
+519	“Bản quyền”
+520	“© 2024 Tên công ty”
+521	“Siêu dữ liệu tùy chỉnh”
+522	“Mô tả”
+523	“Mô tả mã QR này…”
+524	“Bao gồm thời điểm tạo dựng”
+525	“Key”
+526	“Từ khóa”
+527	“Giấy phép”
+528	“CC-BY-4.0”
+529	“Tiêu đề”
+530	“Tiêu đề mã QR”
+531	“Giá trị”
+532	“Giới thiệu”
+533	“Liên hệ”
+534	“Hướng dẫn”
+535	“Phòng trưng bày”
+536	“Máy phát điện”
+537	“Quyền riêng tư”
+538	“Điều khoản”
+539	“Ghi đè nền”
+540	“Để trống để sử dụng mặc định”
+541	“DPI (In)”
+542	“Nhúng lớp phủ raster”
+543	“Xuất khẩu dưới dạng (Bổ sung)”
+544	“Tên tệp”
+545	“Định dạng”
+546	“GIF”
+547	“Cài đặt GIF”
+548	“Chiều cao”
+549	“Bao gồm khu vực yên tĩnh”
+550	“Đường cắt trung bình”
+551	“NeuQuant”
+552	“Octree”
+553	“Đã đặt hàng”
+554	“Kích thước đầu ra”
+555	“Kích thước bảng màu”
+556	“PDF”
+557	“Pixel”
+558	“PNG”
+559	“Chính xác”
+560	“Chất lượng”
+561	“Bộ lượng tử”
+562	“Độ chính xác về hình dạng”
+563	“SVG”
+564	“Cài đặt SVG”
+565	“Màu trong suốt”
+566	“#ffffff hoặc trống”
+567	“Vectơ thực”
+568	“Sử dụng đường dẫn thay vì ảnh raster nhúng”
+569	“WebP”
+570	“Chiều rộng”
+571	“Ngưỡng thích ứng”
+572	“Bayer 2×2”
+573	“Bayer 4×4”
+574	“Bayer 8×8”
+575	“Pha trộn”
+576	“Tiếng ồn xanh + Khuếch tán lỗi”
+577	“Ngưỡng nhiễu xanh”
+578	“Mờ nhạt”
+579	“Đường cong độ sáng”
+580	“Kích thước tế bào”
+581	“Logo Trung tâm”
+582	“Quy tắc trung tâm”
+583	“Chấm cụm”
+584	“Color Dither”
+585	“Chế độ màu”
+586	“Chứa”
+587	“Sự tương phản”
+588	“Lưu ý: Hình ảnh phải cho phép các yêu cầu truy cập chéo nguồn gốc (CORS)”
+589	“Trang bìa”
+590	“Cắt ảnh”
+591	“Kích thước cắt xén”
+592	“Hạt nhân khuếch tán”
+593	“Xử lý chất thải”
+594	“Dither”
+595	“Cài đặt Dither”
+596	“Sức mạnh dao động”
+597	“Hình chấm”
+598	“Màu sắc hai tông”
+599	“Chế độ nhận biết ECC”
+600	“Phát hiện cạnh”
+601	“Nhận biết cạnh”
+602	“Kích hoạt chế độ thu hoạch”
+603	“Ghi đè công cụ tìm kiếm”
+604	“Chế độ vừa vặn”
+605	“Flip X”
+606	“Lật Y”
+607	“Từ URL”
+608	“Màu đầy đủ”
+609	“Gamma”
+610	“Điền vào chỗ trống”
+611	“Nhiễu Gaussian”
+612	“Kích thước lưới”
+613	“Trung tâm bán sắc”
+614	“Cài đặt ảnh bán sắc”
+615	“Điểm nổi bật”
+616	“Xoay màu sắc”
+617	“Hình ảnh / GIF / WebP”
+618	“URL hình ảnh”
+619	“Cường độ”
+620	“Đảo ngược hình ảnh”
+621	“Dòng”
+622	“Tải”
+623	“Đã tải từ URL”
+624	“Tốc độ khung hình tối đa”
+625	“Màu trung tính”
+626	“Không có tệp”
+627	“Lưới N×N”
+628	“Đã đặt hàng (Bayer)”
+629	“Ma trận có thứ tự”
+630	“Bản gốc”
+631	“Mỗi kênh”
+632	“Mỗi mô-đun”
+633	“Nhận thức (Độ sáng)”
+634	“Mức độ áp phích”
+635	“Giữ nguyên sự thẳng hàng”
+636	“Bảo tồn các mẫu tìm kiếm”
+637	“Giữ nguyên thời gian”
+638	“Bảo vệ thông tin định dạng”
+639	“Thông tin phiên bản được bảo vệ”
+640	“Bảo vệ”
+641	“Xóa”
+642	“Sự tôn trọng”
+643	“Ngân sách rủi ro”
+644	“Sự quay”
+645	“Đường cong chữ S”
+646	“Bão hòa”
+647	“Tiếng ồn xanh được sàng lọc”
+648	“Hạt giống”
+649	“Chọn hình ảnh”
+650	“Màu nâu đỏ”
+651	“Quét hình rắn”
+652	“Bóng tối”
+653	“Mài”
+654	“Sierra-2”
+655	“Sierra-Lite”
+656	“Đơn giản hóa”
+657	“Giãn nở”
+658	“Nghiêm ngặt”
+659	“Kiểu cách”
+660	“Cài đặt điểm ảnh phụ”
+661	“Kích thước điểm ảnh phụ”
+662	“Tiếng ồn xanh thời gian”
+663	“Ngưỡng”
+664	“Kích thước gạch”
+665	“Tiếng ồn hình tam giác”
+666	“True Dither”
+667	“Sử dụng độ trễ khung hình”
+668	“Khoảng trống & Cụm”
+669	“Tên tài khoản”
+670	“Địa chỉ”
+671	“Thuật toán”
+672	“Sự kiện cả ngày”
+673	“Số tiền (tùy chọn)”
+674	“Số tiền (BRL, tùy chọn)”
+675	“Số tiền (EUR)”
+676	“Số tiền (INR, tùy chọn)”
+677	“Số tiền (SGD, tùy chọn)”
+678	“Số tiền (THB, tùy chọn)”
+679	“Ý định Android”
+680	“Liên kết sâu ứng dụng (Android/iOS)”
+681	“Thẻ tài sản/hàng tồn kho”
+682	“Mã định danh tài sản/mặt hàng”
+683	“Loại tài sản”
+684	“Tên người tham dự”
+685	“Âm thanh”
+686	“URL cơ sở”
+687	“Mẻ/Lô (tùy chọn)”
+688	“Tên người thụ hưởng”
+689	“BIC/SWIFT (tùy chọn)”
+690	“Sinh nhật”
+691	“Bitcoin”
+692	“Thẻ Doanh Nhân (Phiên bản cũ)”
+693	“Bluetooth”
+694	“Nội dung thông điệp”
+695	“Thân (tùy chọn)”
+696	“Hộp”
+697	“Lịch”
+698	“Tên lịch”
+699	“Đăng ký lịch”
+700	“URL Lịch (ICS/WebCal)”
+701	“Nội dung chiến dịch (tùy chọn)”
+702	“Phương tiện truyền thông chiến dịch”
+703	“Tên chiến dịch”
+704	“Nguồn chiến dịch”
+705	“Nhiệm kỳ tranh cử (tùy chọn)”
+706	“Thành phố”
+707	“Thành phố (tùy chọn)”
+708	“Liên kết lưu trữ đám mây”
+709	“Công ty”
+710	“Loại nội dung”
+711	“Cốt lõi”
+712	“Quốc gia”
+713	“Tiền điện tử (BTC, ETH, v.v.)”
+714	“Tiền điện tử”
+715	“Định dạng tùy chỉnh”
+716	“Chương trình tùy chỉnh”
+717	“Ngày & Giờ”
+718	“URL liên kết sâu”
+719	“Địa chỉ thiết bị (MAC)”
+720	“Tên thiết bị (tùy chọn)”
+721	“Chữ số”
+722	“Tài liệu & Phương tiện truyền thông”
+723	“Dropbox”
+724	“Email”
+725	“Mã hóa”
+726	“Kết thúc”
+727	“Ngày kết thúc”
+728	“Doanh nghiệp”
+729	“EPC / SEPA (EU)”
+730	“Thiết bị”
+731	“Ethereum”
+732	“Sự kiện iCalendar”
+733	“Tên sự kiện”
+734	“Liên kết đăng ký tham dự sự kiện”
+735	“Vé sự kiện”
+736	“Ngày hết hạn (tùy chọn)”
+737	“Facebook”
+738	“URL dự phòng (tùy chọn)”
+739	“Fax”
+740	“Loại tệp”
+741	“URL Tệp/Tài liệu”
+742	“Tên”
+743	“Buộc sử dụng HTTPS”
+744	“Họ và tên đầy đủ”
+745	“Đồ nội thất”
+746	“GitHub”
+747	“Google Drive”
+748	“Liên kết kỹ thuật số GS1”
+749	“GTIN (Mã số thương phẩm toàn cầu)”
+750	“Mạng lưới ẩn”
+751	“Điện thoại nhà”
+752	“IBAN”
+753	“Loại ID”
+754	“Hình ảnh”
+755	“Instagram”
+756	“Mặt hàng tồn kho”
+757	“iOS Universal”
+758	“Tổ chức phát hành”
+759	“Tài sản CNTT”
+760	“Nhãn (tùy chọn)”
+761	“Họ”
+762	“Vĩ độ”
+763	“Loại liên kết”
+764	“LinkedIn”
+765	“Litecoin”
+766	“Vị trí”
+767	“Vị trí & Mạng lưới”
+768	“Kinh độ”
+769	“Tìm kiếm URL (tùy chọn)”
+770	“Tiếp thị”
+771	“Thẻ tiếp thị”
+772	“Miếng bảo vệ chiều dài tối đa”
+773	“Liên hệ MeCard”
+774	“Tên người bán (tùy chọn)”
+775	“Thông điệp”
+776	“Tin nhắn (tùy chọn)”
+777	“WhatsApp / Telegram / Signal”
+778	“Người đưa tin”
+779	“Số điện thoại di động”
+780	“Điện thoại di động”
+781	“Tên”
+782	“Chứng minh nhân dân/Mã số thuế”
+783	“Biệt danh”
+784	“Chuẩn hóa xuống dòng”
+785	“Ghi chú”
+786	“OneDrive”
+787	“Mở (Không cần mật khẩu)”
+788	“Tổ chức”
+789	“Khác”
+790	“Máy xác thực OTP”
+791	“Loại”
+792	“Mật khẩu”
+793	“Tên người nhận thanh toán”
+794	“Thanh toán (Thông số kỹ thuật mở)”
+795	“PayNow (Singapore)”
+796	“Điện thoại”
+797	“Số điện thoại/Tên người dùng”
+798	“PIX (Brazil)”
+799	“PIX Key”
+800	“Văn bản thuần túy”
+801	“Nền tảng”
+802	“Tin nhắn điền sẵn (tùy chọn)”
+803	“URL hồ sơ”
+804	“Mã định danh PromptPay”
+805	“PromptPay (Thái Lan)”
+806	“Loại Proxy”
+807	“Dữ liệu thô”
+808	“Người nhận”
+809	“Tham chiếu”
+810	“Tham chiếu (tùy chọn)”
+811	“Tên miền phân giải”
+812	“URL RSVP”
+813	“Truy vấn tìm kiếm (tùy chọn)”
+814	“Ghế”
+815	“Bí mật (Cơ số 32)”
+816	“Khu vực/Vùng”
+817	“Loại bảo mật”
+818	“Số sê-ri (tùy chọn)”
+819	“Dịch vụ”
+820	“Chuyển hướng liên kết rút gọn”
+821	“URL rút gọn”
+822	“Tín hiệu”
+823	“SMS”
+824	“SMS / MMS”
+825	“Mạng xã hội & Nhắn tin”
+826	“Hồ sơ mạng xã hội”
+827	“Tên mạng (SSID)”
+828	“Bắt đầu”
+829	“Ngày bắt đầu”
+830	“Tiểu bang/Tỉnh”
+831	“Đường phố”
+832	“Chủ đề”
+833	“Chủ đề (tùy chọn)”
+834	“Tiêu đề sự kiện”
+835	“Số điện thoại”
+836	“Điện tín”
+837	“Nội dung văn bản”
+838	“Mã vé”
+839	“TikTok”
+840	“Ghi chú giao dịch (tùy chọn)”
+841	“Cắt bỏ khoảng trắng”
+842	“Số UEN/Số di động”
+843	“Liên kết toàn cầu”
+844	“UPI (Ấn Độ)”
+845	“Mã định danh UPI (VPA)”
+846	“URL”
+847	“utm_campaign”
+848	“utm_content”
+849	“Liên kết chiến dịch UTM”
+850	“utm_medium”
+851	“utm_source”
+852	“utm_term”
+853	“Xác thực dữ liệu đầu vào”
+854	“Tùy chọn xác thực”
+855	“URL xác thực (tùy chọn)”
+856	“Phương tiện”
+857	“Địa điểm”
+858	“Viber”
+859	“Video”
+860	“Trang web”
+861	“WhatsApp”
+862	“WiFi”
+863	“Tài liệu Word”
+864	“Điện thoại cơ quan”
+865	“YouTube”
+866	“Mã bưu chính”
+867	“Xem trước mã QR - Nhấp vào Xuất để tải xuống”
+868	“Mô phỏng”
+869	“Mô phỏng môi trường đang hoạt động - Bản xem trước hiển thị cách mã QR có thể xuất hiện trong các điều kiện khác nhau”
+870	“Đường biên giới bổ sung ngoài khu vực yên tĩnh”
+871	“Chữ và số”
+872	“Tự động”
+873	“Tự động (tối thiểu: {{phiên bản}})”
+874	“Tự động (Tối ưu)”
+875	“Byte / UTF-8”
+876	“{{count}}:1”
+877	“Chế độ mã hóa”
+878	“Thực thi Khu vực Yên tĩnh Tối thiểu”
+879	“Đảm bảo khoảng cách tối thiểu 4 mô-đun”
+880	“Sửa lỗi”
+881	“Mô-đun viền bổ sung”
+882	“H - Cao (30%)”
+883	“Kanji”
+884	“L - Thấp (7%)”
+885	“Khu vực yên tĩnh (Lề)”
+886	“Mẫu mặt nạ”
+887	“M - Trung bình (15%)”
+888	“Kích thước mô-đun”
+889	“{{count}}°”
+890	“{{count}} mô-đun”
+891	“{{count}}ms”
+892	“{{count}}%”
+893	“{{count}}px”
+894	“Chỉ số”
+895	“Q - Tứ phân vị (25%)”
+896	“Phiên bản”
+897	“Thêm màu sắc”
+898	“Kiểu mẫu căn chỉnh”
+899	“Bối cảnh”
+900	“Theo độ sáng”
+901	“Theo cụm”
+902	“Theo phương pháp phủ lớp”
+903	“Theo vị trí”
+904	“Trần nhà”
+905	“Vòng tròn”
+906	“Bảng màu”
+907	“Hình nón”
+908	“Đã kết nối”
+909	“Contrast Guard”
+910	“Bán kính góc”
+911	“Các cạnh sắc nét”
+912	“Sử dụng chế độ hiển thị hình ảnh: pixel hóa để có các cạnh sắc nét”
+913	“Đường đứt đoạn”
+914	“Kim cương”
+915	“Xoay chấm”
+916	“Dấu chấm”
+917	“Phong cách bên trong mắt”
+918	“Kiểu dáng viền mắt ngoài”
+919	“Thang đo mắt”
+920	“Kiểu mẫu tìm kiếm”
+921	“Tầng”
+922	“Tiền cảnh”
+923	“Kiểu khung”
+924	“Văn bản khung”
+925	“Chế độ khoảng trống”
+926	“Độ dốc”
+927	“Góc độ dốc”
+928	“Loại độ dốc”
+929	“Hình nhỏ”
+930	“Tuyến tính”
+931	“Công cụ tìm đối tượng phù hợp”
+932	“Mô-đun ghép nối”
+933	“Tỷ lệ tương phản tối thiểu”
+934	“Khoảng trống mô-đun”
+935	“Không gian âm”
+936	“Chế độ màu theo từng mô-đun”
+937	“Pixel Snap”
+938	“Radial”
+939	“Tròn”
+940	“Làm tròn”
+941	“Khung bo tròn”
+942	“Kiểu mô-đun”
+943	“Sắc bén”
+944	“Mượt mà”
+945	“Chắc chắn”
+946	“Quảng trường”
+947	“Hình vuông”
+948	“Nhãn dán”
+949	“Đột quỵ”
+950	“Phong cách”
+951	“Thẻ”
+952	“Kiểu mẫu thời gian”
+953	“Nền trong suốt”
+954	“Phân tích an toàn”
+955	“Tự động chọn ECC”
+956	“Phiên bản tự động chọn”
+957	“Tự động giảm cường độ”
+958	“Tự động điều chỉnh”
+959	“Cân bằng”
+960	“Tỷ lệ tương phản”
+961	“Kiểm tra độ tương phản”
+962	“Xuất sắc”
+963	“Công bằng”
+964	“Tốt”
+965	“Căn chỉnh khóa”
+966	“Dụng cụ tìm khóa”
+967	“Thông tin định dạng khóa”
+968	“Thời điểm khóa”
+969	“Thông tin phiên bản khóa”
+970	“Kích thước mô-đun tối thiểu”
+971	“Khu vực yên tĩnh tối thiểu”
+972	“Nghèo”
+973	“Khóa bảo vệ”
+974	“Phân tích chất lượng”
+975	“Khu vực yên tĩnh”
+976	“Chế độ an toàn”
+977	“Điểm khả năng quét”
+978	“Hiển thị bản đồ nhiệt”
+979	“Mô phỏng hiệu ứng làm mờ”
+980	“Mô phỏng tiếng ồn”
+981	“Mô phỏng chuyển động quay”
+982	“Cho đến khi có thể quét được”
+983	“Siêu dữ liệu”
+984	“Đầu ra”
+985	“Lớp phủ / Hình ảnh”
+986	“Tải trọng / Dữ liệu”
+987	“Kết xuất”
+988	“Dấu bản quyền”
+989	“Liên kết trực tiếp”
+990	“Tạo URL có thể chia sẻ”
+991	“Nhúng HTML”
+992	“Tạo mã nhúng”
+993	“Mã hóa tất cả các tham số”
+994	“Bao gồm tất cả các cài đặt trong URL”
+995	“Giảm giá”
+996	“Chia sẻ nhanh”
+997	“X/Twitter”
+998	“Nâng cao”
+999	“Cơ bản”
+1000	“Chuyên nghiệp”
+1001	“Xem quảng cáo để mở khóa các tính năng Chuyên nghiệp trong 24 giờ”
+1002	“Phía sau mã QR”
+1003	“Góc dưới bên trái”
+1004	“Góc dưới bên phải”
+1005	“Trung tâm”
+1006	“Góc”
+1007	“Các cạnh”
+1008	“Bật hình mờ”
+1009	“Màu chữ”
+1010	“Kích thước phông chữ”
+1011	“Nhân”
+1012	“Bình thường”
+1013	“Độ mờ đục”
+1014	“Lớp phủ”
+1015	“Mẫu”
+1016	“Vị trí”
+1017	“Màn hình”
+1018	“Văn bản”
+1019	“© Tên công ty”
+1020	“Trên cùng bên trái”
+1021	“Trên cùng bên phải”
+1022	“Tải ảnh lên”

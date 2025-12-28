@@ -1,1516 +1,1516 @@
 {
   "animation": {
-    "blueNoise": "Blue Noise",
-    "bounce": "Bounce (Ping-Pong)",
-    "colorCycle": "Color Cycle",
-    "crossfade": "Crossfade",
-    "drift": "Drift",
-    "enabled": "Enable Animation",
-    "everyNFrames": "Every {{count}} frame(s)",
-    "exportAllFrames": "Export All Frames",
-    "fadeIn": "Fade In",
-    "flickerSafe": "Flicker Safe",
-    "frameStep": "Frame Step",
-    "interpolation": "Interpolation",
-    "loop": "Loop Animation",
-    "maxFrames": "Max Frames",
-    "moduleJitter": "Module Jitter",
-    "moduleJitterWarning": "⚠️ May affect scannability",
-    "morph": "Morph",
-    "none": "None",
-    "off": "Off",
-    "pattern": "Generated Pattern",
-    "pulse": "Pulse",
-    "randomSeed": "Random Seed",
-    "rotate": "Rotate",
-    "scanline": "Scanline",
+    "blueNoise": "الضوضاء الزرقاء",
+    "bounce": "القفز (بينغ بونغ)",
+    "colorCycle": "دورة الألوان",
+    "crossfade": "التلاشي التدريجي",
+    "drift": "انجراف",
+    "enabled": "تمكين الرسوم المتحركة",
+    "everyNFrames": "كل {{count}} إطار(إطارات)",
+    "exportAllFrames": "تصدير جميع الإطارات",
+    "fadeIn": "التلاشي التدريجي",
+    "flickerSafe": "آمن من الوميض",
+    "frameStep": "خطوة الإطار",
+    "interpolation": "الاستيفاء",
+    "loop": "الرسوم المتحركة المتكررة",
+    "maxFrames": "إطارات قصوى",
+    "moduleJitter": "تذبذب الوحدة",
+    "moduleJitterWarning": "⚠️ قد يؤثر على إمكانية المسح الضوئي",
+    "morph": "مورف",
+    "none": "لا شيء",
+    "off": "إيقاف",
+    "pattern": "نمط مُولّد",
+    "pulse": "نبض",
+    "randomSeed": "بذرة عشوائية",
+    "rotate": "تدوير",
+    "scanline": "خط المسح",
     "shimmer": "Shimmer",
-    "slideIn": "Slide In",
-    "speed": "Frame Speed",
-    "startFrame": "Start Frame",
-    "temporalDither": "Temporal Dither",
-    "wave": "Wave"
+    "slideIn": "انزلق للداخل",
+    "speed": "سرعة الإطار",
+    "startFrame": "إطار البداية",
+    "temporalDither": "التردد الزمني",
+    "wave": "موجة"
   },
   "languages": {
-    "en": "English",
-    "hi": "Hindi",
-    "zh": "Chinese",
-    "ms": "Malay",
-    "ta": "Tamil",
-    "th": "Thai",
-    "pt": "Portuguese",
-    "id": "Indonesian",
-    "vi": "Vietnamese",
-    "tl": "Tagalog",
-    "ja": "Japanese",
-    "ko": "Korean",
-    "es": "Spanish",
-    "ar": "Arabic",
-    "ru": "Russian",
-    "te": "Telugu",
-    "mr": "Marathi",
-    "bn": "Bengali",
-    "gu": "Gujarati",
-    "kn": "Kannada",
-    "ml": "Malayalam",
-    "pa": "Punjabi"
+    "en": "الإنجليزية",
+    "hi": "هندي",
+    "zh": "صيني",
+    "ms": "ماليزي",
+    "ta": "التاميلية",
+    "th": "تايلاندي",
+    "pt": "البرتغالية",
+    "id": "إندونيسي",
+    "vi": "فيتنامي",
+    "tl": "تاغالوغ",
+    "ja": "ياباني",
+    "ko": "كوري",
+    "es": "الإسبانية",
+    "ar": "عربي",
+    "ru": "روسي",
+    "te": "التيلجو",
+    "mr": "المراثية",
+    "bn": "بنغالي",
+    "gu": "الغوجاراتية",
+    "kn": "كانادا",
+    "ml": "المالايالامية",
+    "pa": "البنجابية"
   },
   "app": {
     "name": "ANQR",
-    "tagline": "QR Code Generator"
+    "tagline": "مولد رمز الاستجابة السريعة"
   },
   "common": {
-    "allRightsReserved": "All rights reserved",
-    "apply": "Apply",
-    "back": "Back",
-    "cancel": "Cancel",
-    "close": "Close",
-    "copied": "Copied!",
-    "copy": "Copy",
+    "allRightsReserved": "جميع الحقوق محفوظة",
+    "apply": "تطبيق",
+    "back": "الخلف",
+    "cancel": "إلغاء",
+    "close": "إغلاق",
+    "copied": "منسوخ!",
+    "copy": "نسخة",
     "copyright": "© ANQR",
-    "delete": "Delete",
-    "disabled": "Disabled",
-    "download": "Download",
-    "edit": "Edit",
-    "enabled": "Enabled",
-    "error": "Error",
-    "filter": "Filter",
-    "less": "Less",
-    "loading": "Loading...",
-    "more": "More",
-    "next": "Next",
-    "no": "No",
-    "none": "None",
-    "off": "Off",
-    "ok": "OK",
-    "on": "On",
-    "previous": "Previous",
-    "reset": "Reset",
-    "save": "Save",
-    "search": "Search",
-    "select": "Select",
-    "showLess": "Show Less",
-    "showMore": "Show More",
-    "sort": "Sort",
-    "success": "Success",
-    "upload": "Upload",
-    "viewAll": "View All",
-    "yes": "Yes"
+    "delete": "حذف",
+    "disabled": "ذوي الاحتياجات الخاصة",
+    "download": "تنزيل",
+    "edit": "تعديل",
+    "enabled": "مُفعّل",
+    "error": "خطأ",
+    "filter": "فلتر",
+    "less": "أقل",
+    "loading": "جارٍ التحميل...",
+    "more": "المزيد",
+    "next": "التالي",
+    "no": "لا",
+    "none": "لا شيء",
+    "off": "إيقاف",
+    "ok": "موافق",
+    "on": "تشغيل",
+    "previous": "السابق",
+    "reset": "إعادة ضبط",
+    "save": "حفظ",
+    "search": "بحث",
+    "select": "اختر",
+    "showLess": "إظهار أقل",
+    "showMore": "عرض المزيد",
+    "sort": "فرز",
+    "success": "النجاح",
+    "upload": "تحميل",
+    "viewAll": "عرض الكل",
+    "yes": "نعم"
   },
-  "fileSaveFailed": "Failed to save file: {{error}}",
-  "fileSaved": "Saved to Documents: {{filename}}",
+  "fileSaveFailed": "فشل حفظ الملف: {{error}}",
+  "fileSaved": "تم الحفظ في المستندات: {{filename}}",
   "footer": {
     "copyright": "© ANQR {{year}}"
   },
   "gallery": {
-    "all": "All",
-    "animationOverlay": "Animation",
-    "blendModes": "Blend Modes",
-    "collapse": "Collapse",
-    "colorModes": "Color Modes",
-    "colors": "Colors",
-    "contentTypes": "Content Types",
-    "dithering": "Dithering",
-    "encoding": "Encoding",
-    "expand": "Expand",
-    "filter": "Filter",
-    "imageOverlay": "Image Overlay",
+    "all": "الكل",
+    "animationOverlay": "الرسوم المتحركة",
+    "blendModes": "أوضاع المزج",
+    "collapse": "انهيار",
+    "colorModes": "وضعًا للألوان",
+    "colors": "ألوان",
+    "contentTypes": "أنواع المحتوى",
+    "dithering": "التردد",
+    "encoding": "ترميز",
+    "expand": "توسيع",
+    "filter": "فلتر",
+    "imageOverlay": "تراكب الصور",
     "items": {
       "anim-blue-noise": {
-        "description": "Blue noise threshold with animation",
-        "title": "Animated Blue Noise"
+        "description": "عتبة الضوضاء الزرقاء مع الرسوم المتحركة",
+        "title": "ضوضاء زرقاء متحركة"
       },
       "anim-blue-noise-i100": {
-        "description": "Animated blue noise at 100%",
-        "title": "Blue Noise 100%"
+        "description": "ضوضاء زرقاء متحركة بنسبة 100%",
+        "title": "ضوضاء زرقاء 100%"
       },
       "anim-blue-noise-i50": {
-        "description": "Animated blue noise at 50%",
-        "title": "Blue Noise 50%"
+        "description": "ضوضاء زرقاء متحركة بنسبة 50%",
+        "title": "الضوضاء الزرقاء 50%"
       },
       "anim-blue-noise-i75": {
-        "description": "Animated blue noise at 75%",
-        "title": "Blue Noise 75%"
+        "description": "ضوضاء زرقاء متحركة بنسبة 75%",
+        "title": "ضوضاء زرقاء 75%"
       },
       "anim-brightness": {
-        "description": "Brightness with animation",
-        "title": "Animated Brightness"
+        "description": "السطوع مع الرسوم المتحركة",
+        "title": "سطوع متحرك"
       },
       "anim-colormode-bw": {
-        "description": "B&W animated overlay",
-        "title": "Animated B&W"
+        "description": "تراكب متحرك بالأبيض والأسود",
+        "title": "رسوم متحركة بالأبيض والأسود"
       },
       "anim-colormode-color": {
-        "description": "Color animated overlay",
-        "title": "Animated Color"
+        "description": "تراكب متحرك ملون",
+        "title": "ألوان متحركة"
       },
       "anim-colormode-grayscale": {
-        "description": "Grayscale animated overlay",
-        "title": "Animated Grayscale"
+        "description": "تراكب متحرك بتدرج الرمادي",
+        "title": "تدرج رمادي متحرك"
       },
       "anim-dithered": {
-        "description": "Error diffusion with animation",
-        "title": "Animated Dithered"
+        "description": "انتشار الخطأ مع الرسوم المتحركة",
+        "title": "متحركة ومترددة"
       },
       "anim-duotone": {
-        "description": "Duotone with animation",
-        "title": "Animated Duotone"
+        "description": "ثنائي اللون مع رسوم متحركة",
+        "title": "ثنائي اللون متحرك"
       },
       "anim-halftone": {
-        "description": "Halftone dots with animation",
-        "title": "Animated Halftone"
+        "description": "نقاط نصفية مع رسوم متحركة",
+        "title": "الطباعة النصفية المتحركة"
       },
       "anim-mosaic": {
-        "description": "Mosaic with animation",
-        "title": "Animated Mosaic"
+        "description": "فسيفساء مع رسوم متحركة",
+        "title": "فسيفساء متحركة"
       },
       "blend-classic": {
-        "description": "Dithered overlay with classic palette",
-        "title": "Classic Blend"
+        "description": "طبقة متداخلة مع لوحة ألوان كلاسيكية",
+        "title": "مزيج كلاسيكي"
       },
       "blend-forest": {
-        "description": "Dithered overlay with forest palette",
-        "title": "Forest Blend"
+        "description": "طبقة متداخلة مع لوحة ألوان الغابة",
+        "title": "مزيج الغابات"
       },
       "blend-navy": {
-        "description": "Dithered overlay with navy palette",
-        "title": "Navy Blend"
+        "description": "طبقة منقطة بلوحة ألوان زرقاء داكنة",
+        "title": "مزيج كحلي"
       },
       "blend-wine": {
-        "description": "Dithered overlay with wine palette",
-        "title": "Wine Blend"
+        "description": "طبقة متداخلة مع لوحة ألوان النبيذ",
+        "title": "مزيج النبيذ"
       },
       "cmode-blue-noise-bw": {
-        "description": "Blue Noise in B&W",
-        "title": "Blue Noise B&W"
+        "description": "ضوضاء زرقاء بالأبيض والأسود",
+        "title": "ضوضاء زرقاء بالأبيض والأسود"
       },
       "cmode-blue-noise-color": {
-        "description": "Blue Noise in Color",
-        "title": "Blue Noise Color"
+        "description": "الضوضاء الزرقاء بالألوان",
+        "title": "لون الضوضاء الزرقاء"
       },
       "cmode-dithered-color": {
-        "description": "Dithered in Color",
-        "title": "Dithered Color"
+        "description": "مُتَمَوِّت في اللون",
+        "title": "لون متداخل"
       },
       "cmode-dithered-grayscale": {
-        "description": "Dithered in Grayscale",
-        "title": "Dithered Grayscale"
+        "description": "مُحَدَّثٌ في تدرج الرمادي",
+        "title": "تدرج رمادي مُنقّط"
       },
       "cmode-halftone-bw": {
-        "description": "Halftone in B&W",
-        "title": "Halftone B&W"
+        "description": "نصف درجة لونية بالأبيض والأسود",
+        "title": "نصف درجة لونية أبيض وأسود"
       },
       "cmode-halftone-color": {
-        "description": "Halftone in Color",
-        "title": "Halftone Color"
+        "description": "نصف درجة لونية بالألوان",
+        "title": "لون نصفي"
       },
       "color-coral": {
-        "description": "#e85d04 on #ffe8d6",
-        "title": "Coral"
+        "description": "“#e85d04 on #ffe8d6”",
+        "title": "كورال"
       },
       "color-coral-dots": {
-        "description": "Coral with dot modules",
-        "title": "Coral Dots"
+        "description": "مرجان مع وحدات نقطية",
+        "title": "نقاط مرجانية"
       },
       "color-crimson": {
-        "description": "#9d0208 on #ffccd5",
-        "title": "Crimson"
+        "description": "“#9d0208 on #ffccd5”",
+        "title": "قرمزي"
       },
       "color-forest": {
-        "description": "#1b4332 on #d8f3dc",
-        "title": "Forest"
+        "description": "#1b4332 على #d8f3dc",
+        "title": "غابة"
       },
       "color-forest-dots": {
-        "description": "Forest with dot modules",
-        "title": "Forest Dots"
+        "description": "غابة مع وحدات نقطية",
+        "title": "نقاط الغابة"
       },
       "color-gold": {
-        "description": "#7f5539 on #ffe8cc",
-        "title": "Gold"
+        "description": "#7f5539 على #ffe8cc",
+        "title": "ذهبي"
       },
       "color-inverted": {
-        "description": "#ffffff on #000000",
-        "title": "Inverted"
+        "description": "“#ffffff on #000000”",
+        "title": "مقلوب"
       },
       "color-midnight": {
-        "description": "#1a1a2e on #eef1ff",
-        "title": "Midnight"
+        "description": "“#1a1a2e on #eef1ff”",
+        "title": "منتصف الليل"
       },
       "color-midnight-dots": {
-        "description": "Midnight with dot modules",
-        "title": "Midnight Dots"
+        "description": "منتصف الليل مع وحدات النقاط",
+        "title": "نقاط منتصف الليل"
       },
       "color-navy": {
-        "description": "#001d3d on #a2d2ff",
-        "title": "Navy"
+        "description": "“#001d3d on #a2d2ff”",
+        "title": "البحرية"
       },
       "color-ocean": {
-        "description": "#023e8a on #caf0f8",
-        "title": "Ocean"
+        "description": "“#023e8a on #caf0f8”",
+        "title": "المحيط"
       },
       "color-ocean-dots": {
-        "description": "Ocean with dot modules",
-        "title": "Ocean Dots"
+        "description": "محيط بوحدات نقطية",
+        "title": "نقاط المحيط"
       },
       "color-royal": {
-        "description": "#4a0080 on #f5e6ff",
-        "title": "Royal"
+        "description": "“#4a0080 on #f5e6ff”",
+        "title": "ملكي"
       },
       "color-royal-dots": {
-        "description": "Royal with dot modules",
-        "title": "Royal Dots"
+        "description": "رويال مع وحدات نقطية",
+        "title": "نقاط ملكية"
       },
       "color-slate": {
-        "description": "#343a40 on #e9ecef",
-        "title": "Slate"
+        "description": "#343a40 على #e9ecef",
+        "title": "سليت"
       },
       "color-sunset": {
-        "description": "#bf0603 on #fff3b0",
-        "title": "Sunset"
+        "description": "“#bf0603 on #fff3b0”",
+        "title": "غروب الشمس"
       },
       "color-sunset-dots": {
-        "description": "Sunset with dot modules",
-        "title": "Sunset Dots"
+        "description": "غروب الشمس مع وحدات النقاط",
+        "title": "نقاط الغروب"
       },
       "color-teal": {
-        "description": "#006d77 on #e0f4f5",
-        "title": "Teal"
+        "description": "“#006d77 on #e0f4f5”",
+        "title": "أزرق مخضر"
       },
       "combo-anim-dots-halftone": {
-        "description": "Animated halftone with dot modules",
-        "title": "Animated Dots + Halftone"
+        "description": "تظليل نصفي متحرك مع وحدات نقطية",
+        "title": "نقاط متحركة + نصف درجة لونية"
       },
       "combo-anim-rounded-blue-noise": {
-        "description": "Animated blue noise with rounded",
-        "title": "Animated Rounded + Blue Noise"
+        "description": "ضوضاء زرقاء متحركة ذات حواف مستديرة",
+        "title": "ضوضاء زرقاء + ضوضاء دائرية متحركة"
       },
       "combo-connected-pixelate-teal": {
-        "description": "Pixelated overlay with connected modules",
-        "title": "Connected + Pixelate Teal"
+        "description": "طبقة منقطة مع وحدات متصلة",
+        "title": "متصل + بكسلة زرقاء مخضرة"
       },
       "combo-connected-square": {
-        "description": "Connected modules with square finders",
-        "title": "Connected + Square"
+        "description": "وحدات متصلة مزودة بمحددات مربعة",
+        "title": "متصل + مربع"
       },
       "combo-connected-wave-ocean": {
-        "description": "Connected modules with wave effect",
-        "title": "Connected + Wave Ocean"
+        "description": "وحدات متصلة ذات تأثير موجي",
+        "title": "متصل + أمواج المحيط"
       },
       "combo-diamond-blue-noise-navy": {
-        "description": "Diamond modules with blue noise",
-        "title": "Diamond + Blue Noise Navy"
+        "description": "وحدات ماسية مع ضوضاء زرقاء",
+        "title": "دايموند + بلو نويز نيفي"
       },
       "combo-diamond-duotone-crimson": {
-        "description": "Duotone effect with diamond modules",
-        "title": "Diamond + Duotone Crimson"
+        "description": "تأثير ثنائي اللون مع وحدات ماسية",
+        "title": "الماس + القرمزي ثنائي اللون"
       },
       "combo-diamond-rounded": {
-        "description": "Diamond modules with rounded finders",
-        "title": "Diamond + Rounded"
+        "description": "وحدات ماسية ذات محددات رؤية مستديرة",
+        "title": "ماسي + مستدير"
       },
       "combo-dots-circle": {
-        "description": "Dots modules with circle finders",
-        "title": "Dots + Circle"
+        "description": "وحدات النقاط مع محددات الدوائر",
+        "title": "نقاط + دائرة"
       },
       "combo-dots-extreme-forest": {
-        "description": "Maximum visibility with dots",
-        "title": "Dots + Extreme Forest"
+        "description": "أقصى قدر من الوضوح باستخدام النقاط",
+        "title": "نقاط + غابة متطرفة"
       },
       "combo-dots-halftone-gold": {
-        "description": "Dot modules with halftone overlay",
-        "title": "Dots + Halftone Gold"
+        "description": "وحدات نقطية مع تراكب نصف لوني",
+        "title": "نقاط + ذهب نصف لوني"
       },
       "combo-dots-outline-slate": {
-        "description": "Edge detection with dot modules",
-        "title": "Dots + Outline Slate"
+        "description": "الكشف عن الحواف باستخدام وحدات النقاط",
+        "title": "نقاط + لوحة مخططة"
       },
       "combo-rounded-dithered-royal": {
-        "description": "Classic dithered with rounded style",
-        "title": "Rounded + Dithered Royal"
+        "description": "تصميم كلاسيكي متردد بأسلوب دائري",
+        "title": "ملكي مستدير + متردد"
       },
       "combo-rounded-mosaic-sunset": {
-        "description": "Rounded modules with mosaic overlay",
-        "title": "Rounded + Mosaic Sunset"
+        "description": "وحدات دائرية ذات طبقة فسيفسائية",
+        "title": "غروب الشمس المستدير + الفسيفساء"
       },
       "combo-rounded-rounded": {
-        "description": "Rounded modules with rounded finders",
-        "title": "Rounded + Rounded"
+        "description": "وحدات مستديرة ذات محددات مستديرة",
+        "title": "مستدير + مستدير"
       },
       "combo-rounded-subpixel-coral": {
-        "description": "High-detail subpixel rendering",
-        "title": "Rounded + Subpixel Coral"
+        "description": "عرض عالي التفاصيل على مستوى البكسل الفرعي",
+        "title": "مرجان مستدير + بكسل فرعي"
       },
       "content-email": {
-        "description": "Mailto link with coral colors",
-        "title": "Email Address"
+        "description": "رابط بريد إلكتروني بألوان مرجانية",
+        "title": "عنوان البريد الإلكتروني"
       },
       "content-event": {
-        "description": "iCal event with rounded royal",
-        "title": "Calendar Event"
+        "description": "حدث iCal مع ملكي مستدير",
+        "title": "حدث في التقويم"
       },
       "content-geo": {
-        "description": "Map coords with connected gold",
-        "title": "Geo Location"
+        "description": "إحداثيات الخريطة مع الذهب المتصل",
+        "title": "تحديد الموقع الجغرافي"
       },
       "content-sms": {
-        "description": "Pre-filled SMS with diamond teal",
-        "title": "SMS Message"
+        "description": "رسالة نصية مُعبأة مسبقًا باللون الأزرق المخضر الماسي",
+        "title": "رسالة نصية قصيرة"
       },
       "content-vcard": {
-        "description": "Contact card with rounded navy style",
-        "title": "vCard Contact"
+        "description": "بطاقة اتصال بتصميم دائري باللون الكحلي",
+        "title": "معلومات الاتصال عبر بطاقة vCard"
       },
       "content-wifi": {
-        "description": "WiFi config with dots forest green",
-        "title": "WiFi Network"
+        "description": "إعدادات الواي فاي بنقاط باللون الأخضر الغابي",
+        "title": "شبكة واي فاي"
       },
       "dither-adaptive-threshold": {
-        "description": "Adaptive threshold",
-        "title": "Adaptive"
+        "description": "العتبة التكيفية",
+        "title": "تكيفي"
       },
       "dither-blue-noise": {
-        "description": "Blue noise threshold",
-        "title": "Blue Noise"
+        "description": "عتبة الضوضاء الزرقاء",
+        "title": "الضوضاء الزرقاء"
       },
       "dither-blue-noise-error-diffusion": {
-        "description": "Hybrid blue noise",
-        "title": "Blue Noise + Error"
+        "description": "ضوضاء زرقاء هجينة",
+        "title": "ضوضاء زرقاء + خطأ"
       },
       "dither-error-diffusion": {
-        "description": "Floyd-Steinberg style",
-        "title": "Error Diffusion"
+        "description": "على طريقة فلويد-شتاينبرغ",
+        "title": "انتشار الخطأ"
       },
       "dither-kernel-atkinson": {
-        "description": "Atkinson error diffusion",
-        "title": "Atkinson"
+        "description": "انتشار خطأ أتكينسون",
+        "title": "أتكينسون"
       },
       "dither-kernel-burkes": {
-        "description": "Burkes error diffusion",
-        "title": "Burkes"
+        "description": "انتشار خطأ بيركس",
+        "title": "بوركس"
       },
       "dither-kernel-floyd-steinberg": {
-        "description": "Floyd-Steinberg error diffusion",
-        "title": "Floyd-Steinberg"
+        "description": "انتشار الخطأ لفلويد-شتاينبرغ",
+        "title": "فلويد-شتاينبرغ"
       },
       "dither-kernel-jarvis-judice-ninke": {
-        "description": "Jarvis-Judice-Ninke error diffusion",
-        "title": "Jarvis-Judice-Ninke"
+        "description": "انتشار خطأ جارفيس-جوديس-نينكي",
+        "title": "جارفيس-جوديس-نينكه"
       },
       "dither-kernel-sierra": {
-        "description": "Sierra error diffusion",
-        "title": "Sierra"
+        "description": "انتشار خطأ سييرا",
+        "title": "سييرا"
       },
       "dither-kernel-stucki": {
-        "description": "Stucki error diffusion",
-        "title": "Stucki"
+        "description": "انتشار خطأ ستوكي",
+        "title": "ستوكي"
       },
       "dither-ordered-bayer": {
-        "description": "Bayer matrix dithering",
-        "title": "Ordered Bayer"
+        "description": "تقنية التمويه المصفوفي من باير",
+        "title": "طلبت باير"
       },
       "dither-perceptual": {
-        "description": "Luminance-weighted",
-        "title": "Perceptual"
+        "description": "مرجح بالسطوع",
+        "title": "إدراكي"
       },
       "dither-strength-100": {
-        "description": "Dither strength at 100%",
-        "title": "Strength 100%"
+        "description": "قوة التذبذب عند 100%",
+        "title": "قوة 100%"
       },
       "dither-strength-20": {
-        "description": "Dither strength at 20%",
-        "title": "Strength 20%"
+        "description": "قوة التردد عند 20%",
+        "title": "قوة 20%"
       },
       "dither-strength-40": {
-        "description": "Dither strength at 40%",
-        "title": "Strength 40%"
+        "description": "قوة التردد عند 40%",
+        "title": "قوة 40%"
       },
       "dither-strength-60": {
-        "description": "Dither strength at 60%",
-        "title": "Strength 60%"
+        "description": "قوة التردد عند 60%",
+        "title": "قوة 60%"
       },
       "dither-strength-80": {
-        "description": "Dither strength at 80%",
-        "title": "Strength 80%"
+        "description": "قوة التردد عند 80%",
+        "title": "قوة 80%"
       },
       "dither-white-noise": {
-        "description": "Random noise threshold",
-        "title": "White Noise"
+        "description": "عتبة الضوضاء العشوائية",
+        "title": "الضوضاء البيضاء"
       },
       "enc-ecc-h": {
-        "description": "30% error correction",
+        "description": "تصحيح الخطأ بنسبة 30%",
         "title": "ECC High"
       },
       "enc-ecc-l": {
-        "description": "7% error correction",
-        "title": "ECC Low"
+        "description": "تصحيح الخطأ بنسبة 7%",
+        "title": "ECC منخفض"
       },
       "enc-ecc-m": {
-        "description": "15% error correction",
+        "description": "تصحيح الخطأ بنسبة 15%",
         "title": "ECC Medium"
       },
       "enc-ecc-q": {
-        "description": "25% error correction",
-        "title": "ECC Quartile"
+        "description": "تصحيح الخطأ بنسبة 25%",
+        "title": "الربع الأعلى"
       },
       "enc-v0": {
-        "description": "Automatic version selection",
-        "title": "Auto Version"
+        "description": "الاختيار التلقائي للإصدار",
+        "title": "النسخة التلقائية"
       },
       "enc-v12": {
-        "description": "Version 12 QR code",
-        "title": "Version 12"
+        "description": "رمز الاستجابة السريعة الإصدار 12",
+        "title": "الإصدار 12"
       },
       "enc-v6": {
-        "description": "Best for overlays (no center eye)",
-        "title": "Version 6"
+        "description": "الأفضل للتراكبات (بدون عين مركزية)",
+        "title": "الإصدار 6"
       },
       "enc-v6-h": {
-        "description": "Version 6 with high error correction",
-        "title": "V6 + ECC High"
+        "description": "الإصدار 6 مع تصحيح عالٍ للأخطاء",
+        "title": "V6 + ECC عالي"
       },
       "enc-v6-l": {
-        "description": "Version 6 with low error correction",
-        "title": "V6 + ECC Low"
+        "description": "الإصدار 6 مع تصحيح منخفض للأخطاء",
+        "title": "V6 + ECC منخفض"
       },
       "enc-v9": {
-        "description": "Version 9 QR code",
-        "title": "Version 9"
+        "description": "رمز الاستجابة السريعة الإصدار 9",
+        "title": "الإصدار 9"
       },
       "enc-v9-h": {
-        "description": "Version 9 with high error correction",
+        "description": "الإصدار 9 مع تصحيح عالٍ للأخطاء",
         "title": "V9 + ECC High"
       },
       "enc-v9-l": {
-        "description": "Version 9 with low error correction",
+        "description": "الإصدار 9 مع تصحيح منخفض للأخطاء",
         "title": "V9 + ECC Low"
       },
       "finder-circle": {
-        "description": "Circle finder pattern",
-        "title": "Circle Finders"
+        "description": "نمط البحث عن الدائرة",
+        "title": "محددات الدوائر"
       },
       "finder-rounded": {
-        "description": "Rounded finder pattern",
-        "title": "Rounded Finders"
+        "description": "نمط محدد مستدير",
+        "title": "محددات مستديرة"
       },
       "finder-square": {
-        "description": "Square finder pattern",
-        "title": "Square Finders"
+        "description": "نمط البحث عن المربع",
+        "title": "باحثو المربعات"
       },
       "halftone-classic": {
-        "description": "Halftone with classic palette",
-        "title": "Classic Halftone"
+        "description": "تظليل نصفي بألوان كلاسيكية",
+        "title": "الطباعة النصفية الكلاسيكية"
       },
       "halftone-forest": {
-        "description": "Halftone with forest palette",
-        "title": "Forest Halftone"
+        "description": "تظليل نصفي بألوان الغابة",
+        "title": "صورة نصفية للغابة"
       },
       "halftone-navy": {
-        "description": "Halftone with navy palette",
+        "description": "تظليل نصفي بألوان زرقاء داكنة",
         "title": "Navy Halftone"
       },
       "halftone-wine": {
-        "description": "Halftone with wine palette",
-        "title": "Wine Halftone"
+        "description": "تظليل نصفي مع لوحة ألوان نبيذية",
+        "title": "لون النبيذ"
       },
       "img-blend": {
-        "description": "Color blend overlay",
-        "title": "Blend Mode"
+        "description": "تراكب مزيج الألوان",
+        "title": "وضع المزج"
       },
       "img-blue-noise": {
-        "description": "Blue noise threshold dithering",
-        "title": "Blue Noise"
+        "description": "التردد عند عتبة الضوضاء الزرقاء",
+        "title": "الضوضاء الزرقاء"
       },
       "img-brightness": {
-        "description": "Brightness-based modules",
-        "title": "Brightness"
+        "description": "وحدات تعتمد على السطوع",
+        "title": "السطوع"
       },
       "img-colormode-bw": {
-        "description": "Black & white processing",
-        "title": "Black & White"
+        "description": "معالجة بالأبيض والأسود",
+        "title": "أبيض وأسود"
       },
       "img-colormode-color": {
-        "description": "Color processing",
-        "title": "Color"
+        "description": "معالجة الألوان",
+        "title": "لون"
       },
       "img-colormode-grayscale": {
-        "description": "Grayscale processing",
-        "title": "Grayscale"
+        "description": "معالجة الصور بتدرج الرمادي",
+        "title": "تدرج الرمادي"
       },
       "img-dithered": {
-        "description": "Error diffusion dithering",
-        "title": "Dithered"
+        "description": "تذبذب انتشار الخطأ",
+        "title": "متردد"
       },
       "img-dithered-i100": {
-        "description": "Dithered at 100% intensity",
-        "title": "Dithered 100%"
+        "description": "تردد بكثافة 100%",
+        "title": "تردد بنسبة 100%"
       },
       "img-dithered-i50": {
-        "description": "Dithered at 50% intensity",
-        "title": "Dithered 50%"
+        "description": "تردد عند شدة 50%",
+        "title": "تردد بنسبة 50%"
       },
       "img-dithered-i75": {
-        "description": "Dithered at 75% intensity",
-        "title": "Dithered 75%"
+        "description": "تردد بنسبة 75% من الكثافة",
+        "title": "تردد بنسبة 75%"
       },
       "img-duotone": {
-        "description": "Two-tone color mapping",
-        "title": "Duotone"
+        "description": "تخطيط الألوان ثنائي الدرجة",
+        "title": "ثنائي اللون"
       },
       "img-extreme": {
-        "description": "Maximum image visibility",
-        "title": "Extreme"
+        "description": "أقصى وضوح للصورة",
+        "title": "متطرف"
       },
       "img-halftone": {
-        "description": "Classic halftone dots",
-        "title": "Halftone"
+        "description": "نقاط نصفية كلاسيكية",
+        "title": "نصف درجة لونية"
       },
       "img-mosaic": {
-        "description": "Mosaic tile effect",
-        "title": "Mosaic"
+        "description": "تأثير بلاط الفسيفساء",
+        "title": "فسيفساء"
       },
       "img-outline": {
-        "description": "Edge detection overlay",
-        "title": "Outline"
+        "description": "تراكب كشف الحواف",
+        "title": "مخطط"
       },
       "img-pixelate": {
-        "description": "Pixelated overlay effect",
-        "title": "Pixelate"
+        "description": "تأثير التراكب المنقط",
+        "title": "بكسلة"
       },
       "img-subpixel": {
-        "description": "High detail subpixel rendering",
-        "title": "Subpixel"
+        "description": "عرض عالي التفاصيل على مستوى البكسل الفرعي",
+        "title": "بكسل فرعي"
       },
       "img-wave": {
-        "description": "Wavy distortion effect",
-        "title": "Wave"
+        "description": "تأثير التشويه المتموج",
+        "title": "موجة"
       },
       "mosaic-classic": {
-        "description": "Mosaic with classic palette",
-        "title": "Classic Mosaic"
+        "description": "فسيفساء بألوان كلاسيكية",
+        "title": "الفسيفساء الكلاسيكية"
       },
       "mosaic-forest": {
-        "description": "Mosaic with forest palette",
-        "title": "Forest Mosaic"
+        "description": "فسيفساء بألوان الغابة",
+        "title": "فسيفساء الغابة"
       },
       "mosaic-navy": {
-        "description": "Mosaic with navy palette",
-        "title": "Navy Mosaic"
+        "description": "فسيفساء بألوان بحرية",
+        "title": "فسيفساء البحرية"
       },
       "mosaic-wine": {
-        "description": "Mosaic with wine palette",
-        "title": "Wine Mosaic"
+        "description": "فسيفساء بألوان النبيذ",
+        "title": "فسيفساء النبيذ"
       },
       "plain-basic": {
-        "description": "Standard QR code",
-        "title": "Classic"
+        "description": "رمز الاستجابة السريعة القياسي",
+        "title": "كلاسيكي"
       },
       "plain-ecc-l": {
-        "description": "Minimal error correction",
-        "title": "ECC Low (7%)"
+        "description": "الحد الأدنى من تصحيح الأخطاء",
+        "title": "ECC منخفض (7٪)"
       },
       "plain-ecc-q": {
-        "description": "Medium-high error correction",
-        "title": "ECC Quartile (25%)"
+        "description": "تصحيح الأخطاء المتوسطة إلى العالية",
+        "title": "الربع الأعلى (25%)"
       },
       "plain-v12": {
-        "description": "Large with multiple alignment",
-        "title": "Version 12"
+        "description": "كبير مع محاذاة متعددة",
+        "title": "الإصدار 12"
       },
       "plain-v6": {
-        "description": "Larger without center eye",
-        "title": "Version 6"
+        "description": "أكبر بدون عين مركزية",
+        "title": "الإصدار 6"
       },
       "plain-v9": {
-        "description": "Even larger with center eye",
-        "title": "Version 9"
+        "description": "أكبر حجماً مع وجود عين مركزية",
+        "title": "الإصدار 9"
       },
       "prep-blur-1": {
-        "description": "1px gaussian blur",
-        "title": "Blur 1px"
+        "description": "ضبابية غاوسية 1 بكسل",
+        "title": "ضبابية 1 بكسل"
       },
       "prep-blur-2": {
-        "description": "2px gaussian blur",
-        "title": "Blur 2px"
+        "description": "ضبابية غاوسية 2 بكسل",
+        "title": "ضبابية 2 بكسل"
       },
       "prep-blur-4": {
-        "description": "4px gaussian blur",
-        "title": "Blur 4px"
+        "description": "ضبابية غاوسية 4 بكسل",
+        "title": "ضبابية 4 بكسل"
       },
       "prep-brightness-n25": {
-        "description": "Brightness adjusted darker",
-        "title": "Brightness -25"
+        "description": "تم تعديل السطوع ليصبح أغمق",
+        "title": "السطوع -25"
       },
       "prep-brightness-n50": {
-        "description": "Brightness adjusted darker",
-        "title": "Brightness -50"
+        "description": "تم تعديل السطوع ليصبح أغمق",
+        "title": "السطوع -50"
       },
       "prep-brightness-p25": {
-        "description": "Brightness adjusted brighter",
-        "title": "Brightness +25"
+        "description": "تم تعديل السطوع ليكون أكثر سطوعًا",
+        "title": "سطوع +25"
       },
       "prep-brightness-p50": {
-        "description": "Brightness adjusted brighter",
-        "title": "Brightness +50"
+        "description": "تم تعديل السطوع ليكون أكثر سطوعًا",
+        "title": "سطوع +50"
       },
       "prep-contrast-n50": {
-        "description": "Low contrast",
-        "title": "Contrast -50"
+        "description": "تباين منخفض",
+        "title": "تباين -50"
       },
       "prep-contrast-p100": {
-        "description": "High contrast",
-        "title": "Contrast +100"
+        "description": "تباين عالي",
+        "title": "تباين +100"
       },
       "prep-contrast-p50": {
-        "description": "High contrast",
-        "title": "Contrast +50"
+        "description": "تباين عالي",
+        "title": "تباين +50"
       },
       "prep-edge-canny": {
-        "description": "Canny edge detection",
+        "description": "كشف حواف كاني",
         "title": "Edge Canny"
       },
       "prep-edge-sobel": {
-        "description": "Sobel edge detection",
-        "title": "Edge Sobel"
+        "description": "كشف حواف سوبل",
+        "title": "إيدج سوبل"
       },
       "prep-gamma-05": {
-        "description": "Gamma correction 0.5",
-        "title": "Gamma 0.5"
+        "description": "تصحيح جاما 0.5",
+        "title": "غاما 0.5"
       },
       "prep-gamma-15": {
-        "description": "Gamma correction 1.5",
-        "title": "Gamma 1.5"
+        "description": "تصحيح جاما 1.5",
+        "title": "غاما 1.5"
       },
       "prep-gamma-20": {
-        "description": "Gamma correction 2.0",
-        "title": "Gamma 2.0"
+        "description": "تصحيح جاما 2.0",
+        "title": "غاما 2.0"
       },
       "prep-hue-90": {
-        "description": "Hue rotation 90 degrees",
-        "title": "Hue +90°"
+        "description": "تدوير اللون 90 درجة",
+        "title": "اللون +90 درجة"
       },
       "prep-invert": {
-        "description": "Inverted colors",
-        "title": "Inverted"
+        "description": "ألوان معكوسة",
+        "title": "مقلوب"
       },
       "prep-posterize-2": {
-        "description": "2 color levels",
+        "description": "مستويان للألوان",
         "title": "Posterize 2"
       },
       "prep-posterize-4": {
-        "description": "4 color levels",
+        "description": "4 مستويات لونية",
         "title": "Posterize 4"
       },
       "prep-posterize-8": {
-        "description": "8 color levels",
+        "description": "8 مستويات لونية",
         "title": "Posterize 8"
       },
       "prep-saturation-n100": {
-        "description": "Desaturated",
-        "title": "Saturation -100"
+        "description": "غير مشبع",
+        "title": "التشبع -100"
       },
       "prep-saturation-n50": {
-        "description": "Reduced saturation",
-        "title": "Saturation -50"
+        "description": "تشبع منخفض",
+        "title": "التشبع -50"
       },
       "prep-saturation-p100": {
-        "description": "Oversaturated",
-        "title": "Saturation +100"
+        "description": "مُشبع",
+        "title": "تشبع +100"
       },
       "prep-saturation-p50": {
-        "description": "Oversaturated",
-        "title": "Saturation +50"
+        "description": "مُشبع",
+        "title": "التشبع +50"
       },
       "prep-sharpen-100": {
-        "description": "100% sharpening",
-        "title": "Sharpen 100%"
+        "description": "شحذ بنسبة 100%",
+        "title": "شحذ 100%"
       },
       "prep-sharpen-25": {
-        "description": "25% sharpening",
-        "title": "Sharpen 25%"
+        "description": "شحذ بنسبة 25%",
+        "title": "شحذ بنسبة 25%"
       },
       "prep-sharpen-50": {
-        "description": "50% sharpening",
-        "title": "Sharpen 50%"
+        "description": "شحذ بنسبة 50%",
+        "title": "شحذ بنسبة 50%"
       },
       "prep-threshold-128": {
-        "description": "Binary threshold at 128",
-        "title": "Threshold 128"
+        "description": "العتبة الثنائية عند 128",
+        "title": "العتبة 128"
       },
       "prep-threshold-192": {
-        "description": "Binary threshold at 192",
-        "title": "Threshold 192"
+        "description": "العتبة الثنائية عند 192",
+        "title": "العتبة 192"
       },
       "prep-threshold-64": {
-        "description": "Binary threshold at 64",
-        "title": "Threshold 64"
+        "description": "العتبة الثنائية عند 64",
+        "title": "العتبة 64"
       },
       "style-connected": {
-        "description": "Connected module style",
-        "title": "Connected Modules"
+        "description": "نمط الوحدة المتصلة",
+        "title": "وحدات متصلة"
       },
       "style-diamond": {
-        "description": "Diamond module style",
-        "title": "Diamond Modules"
+        "description": "نمط وحدة الماس",
+        "title": "وحدات ماسية"
       },
       "style-dots": {
-        "description": "Dots module style",
-        "title": "Dots Modules"
+        "description": "نمط وحدة النقاط",
+        "title": "وحدات النقاط"
       },
       "style-rounded": {
-        "description": "Rounded module style",
-        "title": "Rounded Modules"
+        "description": "نمط الوحدة الدائري",
+        "title": "وحدات دائرية"
       },
       "style-square": {
-        "description": "Square module style",
-        "title": "Square Modules"
+        "description": "نمط الوحدة المربعة",
+        "title": "وحدات مربعة"
       }
     },
-    "plain": "Plain",
-    "powerCombos": "Power Combos",
-    "preprocessing": "Preprocessing",
+    "plain": "عادي",
+    "powerCombos": "مجموعات القوة",
+    "preprocessing": "المعالجة المسبقة",
     "sections": {
       "animation-overlay": {
-        "description": "Animated GIF overlays with different blend modes",
-        "title": "Animated Overlays"
+        "description": "تراكبات صور GIF متحركة بأوضاع مزج مختلفة",
+        "title": "تراكبات متحركة"
       },
       "blend-modes": {
-        "description": "Different color blending with image overlays",
-        "title": "Blend Modes"
+        "description": "مزج ألوان مختلفة مع تراكبات الصور",
+        "title": "أوضاع المزج"
       },
       "color-modes": {
-        "description": "Color, grayscale, and black & white processing",
-        "title": "Color Processing"
+        "description": "معالجة الألوان، وتدرجات الرمادي، والأبيض والأسود",
+        "title": "معالجة الألوان"
       },
       "colors": {
-        "description": "Color schemes and themed palettes",
-        "title": "Colors & Themes"
+        "description": "مخططات الألوان ولوحات الألوان ذات الطابع الخاص",
+        "title": "الألوان والسمات"
       },
       "content-types": {
-        "description": "Different payload formats - vCard, WiFi, Email, SMS, Geo, Calendar",
-        "title": "Content Types"
+        "description": "تنسيقات حمولة مختلفة - vCard، WiFi، البريد الإلكتروني، الرسائل النصية القصيرة، الموقع الجغرافي، التقويم",
+        "title": "أنواع المحتوى"
       },
       "dithering": {
-        "description": "Different dithering methods and error diffusion kernels",
-        "title": "Dithering Algorithms"
+        "description": "طرق التمويه المختلفة ونوى انتشار الخطأ",
+        "title": "خوارزميات التردد"
       },
       "encoding": {
-        "description": "Different QR versions and error correction levels",
-        "title": "QR Encoding"
+        "description": "إصدارات مختلفة من رمز الاستجابة السريعة ومستويات تصحيح الأخطاء",
+        "title": "ترميز رمز الاستجابة السريعة"
       },
       "image-overlay": {
-        "description": "Static image overlays with different blend modes",
-        "title": "Image Overlays"
+        "description": "تراكبات الصور الثابتة مع أوضاع مزج مختلفة",
+        "title": "تراكبات الصور"
       },
       "plain": {
-        "description": "Standard QR codes without overlay - different versions and error correction",
-        "title": "Plain QR Codes"
+        "description": "رموز QR القياسية بدون طبقة إضافية - إصدارات مختلفة وتصحيح الأخطاء",
+        "title": "رموز QR عادية"
       },
       "power-combos": {
-        "description": "Striking multi-feature combinations showcasing ANQR capabilities",
-        "title": "Power Combos"
+        "description": "مجموعات مذهلة من الميزات المتعددة التي تعرض قدرات ANQR",
+        "title": "مجموعات القوة"
       },
       "preprocessing": {
-        "description": "Brightness, contrast, gamma, blur, sharpen, posterize, edge detection",
-        "title": "Image Preprocessing"
+        "description": "السطوع، التباين، جاما، التمويه، التوضيح، التدرج اللوني، كشف الحواف",
+        "title": "معالجة الصور المسبقة"
       },
       "styles": {
-        "description": "Different visual styles for modules and finder patterns",
-        "title": "Module & Finder Styles"
+        "description": "أنماط بصرية مختلفة للوحدات وأنماط البحث",
+        "title": "أنماط الوحدات النمطية وأنماط البحث"
       }
     },
-    "showAll": "Show All",
-    "styles": "Styles",
-    "subtitle": "Explore examples of QR codes created with ANQR",
-    "title": "QR Code Gallery",
-    "tryThis": "Try this"
+    "showAll": "عرض الكل",
+    "styles": "أنماط",
+    "subtitle": "استكشف أمثلة على رموز QR التي تم إنشاؤها باستخدام ANQR",
+    "title": "معرض رموز الاستجابة السريعة",
+    "tryThis": "جرب هذا"
   },
   "header": {
-    "close": "Close",
-    "copied": "Copied!",
-    "copyLink": "Copy Link",
-    "darkMode": "Switch to dark mode",
-    "export": "Export",
-    "lightMode": "Switch to light mode",
-    "reset": "Reset",
-    "searchSettings": "Search settings...",
-    "share": "Share"
+    "close": "إغلاق",
+    "copied": "منسوخ!",
+    "copyLink": "نسخ الرابط",
+    "darkMode": "التبديل إلى الوضع الداكن",
+    "export": "تصدير",
+    "lightMode": "التبديل إلى الوضع الضوئي",
+    "reset": "إعادة ضبط",
+    "searchSettings": "إعدادات البحث...",
+    "share": "مشاركة"
   },
   "hints": {
-    "alignmentStyle": "Style of alignment patterns (used in larger QR codes)",
-    "appLinkNote": "Opens specific content within a mobile app",
-    "autoDetect": "Auto-detect (requires v{{version}}+ for current content)",
-    "autoMinVersion": "0 = Auto, min v{{version}} for current content",
-    "bgColorHex": "Background color hex code",
-    "bizcardLegacy": "Legacy format - consider using vCard instead",
-    "bluetoothNote": "Note: Bluetooth pairing via QR is vendor-specific and may not work on all devices",
-    "bounceAnimation": "Play animation forward then backward (ping-pong)",
-    "calendarNote": "Subscribe to a shared calendar feed",
-    "contrastGuard": "Ensure minimum contrast ratio between foreground and background",
-    "cornerRadius": "Corner radius percentage for rounded modules (0-100%)",
-    "crispEdges": "Use pixelated rendering for sharp module edges",
-    "customNote": "Enter raw data in any format. No validation or formatting will be applied.",
-    "dotRotation": "Rotate dot-style modules (0-360 degrees)",
-    "encodingMode": "Data encoding mode - Auto selects the most efficient mode",
-    "enforceMinQuietZone": "Enforce minimum 4 module quiet zone for better scanning reliability",
-    "enterTextContent": "Enter the text content to encode in the QR code",
-    "enterUrlContent": "Enter the URL to encode in the QR code",
-    "epcSepaNote": "European Payment Council QR code for SEPA credit transfers",
-    "errorCorrection": "Error correction level - higher = more damage resistance but larger QR code",
-    "extraBorder": "Additional border modules beyond the quiet zone (0-10)",
-    "eyeInnerStyle": "Style of the inner square of finder patterns",
-    "eyeOuterStyle": "Style of the outer ring of finder patterns",
-    "eyeScale": "Scale finder patterns relative to their default size (50-150%)",
-    "fgColorHex": "Foreground color hex code",
-    "finderStyle": "Style of the corner finder patterns",
-    "forceHttps": "Convert HTTP URLs to HTTPS automatically",
-    "frameStyle": "Add a decorative frame around the QR code",
-    "frameText": "Text to display on the frame",
-    "gapMode": "How gaps between modules are rendered",
-    "gradient": "Apply a gradient effect to the QR code",
-    "gs1Note": "GS1 Digital Link for product identification and traceability",
-    "higherEccLargerQr": "Higher = more damage resistance, larger QR",
-    "loopAnimation": "Loop animation continuously",
-    "maxLengthGuard": "Prevent encoding content that exceeds QR code capacity",
-    "minContrastRatio": "Minimum contrast ratio to enforce (1-21, WCAG AA requires 4.5:1)",
-    "moduleGap": "Gap between modules as percentage (0-30%)",
-    "moduleJitterWarning": "⚠️ May affect scannability",
-    "moduleSize": "Size of each QR code module in pixels (2-20px)",
-    "moduleStyle": "Visual style of QR code modules",
-    "normalizeNewlines": "Convert different newline formats to a standard format",
-    "outputFormat": "Select the output file format for export",
-    "paynowNote": "Singapore fast payment system",
-    "perModuleColor": "How to assign colors to individual modules",
-    "pickBgColor": "Click to pick background color",
-    "pickFgColor": "Click to pick foreground color",
-    "pixNote": "Brazilian instant payment system",
-    "pixelSnap": "How to snap module positions to pixel boundaries",
-    "promptpayNote": "Thailand national e-payment system",
-    "qrVersion": "QR code version (0=auto, 1-40 increases size and capacity)",
-    "quietZone": "Quiet zone margin around QR code (0-10 modules, recommended: 4+)",
-    "rsvpNote": "Link to an online RSVP form or event registration page",
-    "safetyMode": "Safety analysis mode - how strictly to check QR code readability",
-    "selectContentType": "Select the type of content to encode in the QR code",
-    "shortLinkNote": "Use a URL shortener service for dynamic/trackable QR codes",
-    "timingStyle": "Style of timing patterns (horizontal and vertical lines)",
-    "transparentBg": "Make the background transparent instead of using background color",
-    "trimWhitespace": "Remove leading and trailing whitespace",
-    "upiNote": "Unified Payments Interface for India",
-    "utmCampaign": "UTM campaign parameter for campaign tracking",
-    "utmMedium": "UTM medium parameter for campaign tracking",
-    "utmSource": "UTM source parameter for campaign tracking",
-    "validateInput": "Validate input data before encoding",
-    "versionTooLow": "⚠️ Version too low! Minimum v{{version}} required"
+    "alignmentStyle": "نمط أنماط المحاذاة (المستخدمة في رموز QR الأكبر حجمًا)",
+    "appLinkNote": "يفتح محتوى محدداً داخل تطبيق جوال",
+    "autoDetect": "الكشف التلقائي (يتطلب الإصدار v{{version}}+ للمحتوى الحالي)",
+    "autoMinVersion": "0 = تلقائي، الحد الأدنى للإصدار {{version}} للمحتوى الحالي",
+    "bgColorHex": "رمز اللون السداسي للخلفية",
+    "bizcardLegacy": "تنسيق قديم - يُرجى التفكير في استخدام vCard بدلاً من ذلك",
+    "bluetoothNote": "ملاحظة: عملية الاقتران عبر البلوتوث باستخدام رمز الاستجابة السريعة (QR) خاصة بالبائع وقد لا تعمل على جميع الأجهزة",
+    "bounceAnimation": "تشغيل الرسوم المتحركة للأمام ثم للخلف (بينغ بونغ)",
+    "calendarNote": "الاشتراك في موجز التقويم المشترك",
+    "contrastGuard": "ضمان الحد الأدنى من نسبة التباين بين المقدمة والخلفية",
+    "cornerRadius": "نسبة نصف قطر الزاوية للوحدات ذات الزوايا المستديرة (0-100%)",
+    "crispEdges": "استخدم تقنية العرض البكسلي للحصول على حواف حادة للوحدات النمطية",
+    "customNote": "أدخل البيانات الأولية بأي تنسيق. لن يتم تطبيق أي تحقق أو تنسيق.",
+    "dotRotation": "تدوير الوحدات النمطية النقطية (0-360 درجة)",
+    "encodingMode": "وضع ترميز البيانات - يختار الوضع الأكثر كفاءة تلقائيًا",
+    "enforceMinQuietZone": "فرض منطقة هادئة لا تقل عن 4 وحدات لتحسين موثوقية المسح الضوئي",
+    "enterTextContent": "أدخل محتوى النص المراد ترميزه في رمز الاستجابة السريعة",
+    "enterUrlContent": "أدخل عنوان URL المراد تضمينه في رمز الاستجابة السريعة",
+    "epcSepaNote": "رمز الاستجابة السريعة لمجلس المدفوعات الأوروبي لتحويلات الائتمان SEPA",
+    "errorCorrection": "مستوى تصحيح الأخطاء - كلما ارتفع المستوى زادت مقاومة التلف ولكن زاد حجم رمز الاستجابة السريعة",
+    "extraBorder": "وحدات حدودية إضافية خارج المنطقة الهادئة (0-10)",
+    "eyeInnerStyle": "نمط المربع الداخلي لأنماط البحث",
+    "eyeOuterStyle": "نمط الحلقة الخارجية لأنماط البحث",
+    "eyeScale": "أنماط البحث عن المقياس نسبةً إلى حجمها الافتراضي (50-150%)",
+    "fgColorHex": "رمز اللون السداسي للون المقدمة",
+    "finderStyle": "نمط أنماط البحث عن الزوايا",
+    "forceHttps": "تحويل عناوين URL من HTTP إلى HTTPS تلقائيًا",
+    "frameStyle": "أضف إطارًا زخرفيًا حول رمز الاستجابة السريعة",
+    "frameText": "النص المراد عرضه على الإطار",
+    "gapMode": "كيفية عرض الفجوات بين الوحدات النمطية",
+    "gradient": "تطبيق تأثير التدرج اللوني على رمز الاستجابة السريعة",
+    "gs1Note": "الرابط الرقمي GS1 لتحديد هوية المنتج وتتبعه",
+    "higherEccLargerQr": "الأعلى = مقاومة أكبر للضرر، وQR أكبر",
+    "loopAnimation": "تكرار الرسوم المتحركة بشكل مستمر",
+    "maxLengthGuard": "منع ترميز المحتوى الذي يتجاوز سعة رمز الاستجابة السريعة",
+    "minContrastRatio": "الحد الأدنى لنسبة التباين المطلوب تطبيقه (1-21، يتطلب معيار WCAG AA نسبة 4.5:1)",
+    "moduleGap": "الفجوة بين الوحدات كنسبة مئوية (0-30%)",
+    "moduleJitterWarning": "⚠️ قد يؤثر على إمكانية المسح الضوئي",
+    "moduleSize": "حجم كل وحدة من وحدات رمز الاستجابة السريعة بالبكسل (2-20 بكسل)",
+    "moduleStyle": "النمط البصري لوحدات رمز الاستجابة السريعة",
+    "normalizeNewlines": "تحويل تنسيقات الأسطر الجديدة المختلفة إلى تنسيق قياسي",
+    "outputFormat": "حدد تنسيق ملف الإخراج للتصدير",
+    "paynowNote": "نظام الدفع السريع في سنغافورة",
+    "perModuleColor": "كيفية تعيين الألوان للوحدات الفردية",
+    "pickBgColor": "انقر لاختيار لون الخلفية",
+    "pickFgColor": "انقر لاختيار لون المقدمة",
+    "pixNote": "نظام الدفع الفوري البرازيلي",
+    "pixelSnap": "كيفية ضبط مواضع الوحدات على حدود البكسل",
+    "promptpayNote": "نظام الدفع الإلكتروني الوطني في تايلاند",
+    "qrVersion": "إصدار رمز الاستجابة السريعة (0 = تلقائي، 1-40 يزيد الحجم والسعة)",
+    "quietZone": "هامش المنطقة الهادئة حول رمز الاستجابة السريعة (0-10 وحدات، الموصى به: 4+)",
+    "rsvpNote": "رابط إلى نموذج تأكيد الحضور عبر الإنترنت أو صفحة تسجيل الفعالية",
+    "safetyMode": "وضع تحليل السلامة - كيفية التحقق بدقة من إمكانية قراءة رمز الاستجابة السريعة",
+    "selectContentType": "حدد نوع المحتوى المراد ترميزه في رمز الاستجابة السريعة",
+    "shortLinkNote": "استخدم خدمة اختصار الروابط لرموز الاستجابة السريعة الديناميكية/القابلة للتتبع",
+    "timingStyle": "نمط أنماط التوقيت (الخطوط الأفقية والرأسية)",
+    "transparentBg": "اجعل الخلفية شفافة بدلاً من استخدام لون الخلفية",
+    "trimWhitespace": "إزالة المسافات البيضاء في بداية ونهاية السطر",
+    "upiNote": "واجهة المدفوعات الموحدة للهند",
+    "utmCampaign": "معلمة حملة UTM لتتبع الحملة",
+    "utmMedium": "معلمة وسيطة UTM لتتبع الحملات",
+    "utmSource": "معلمة مصدر UTM لتتبع الحملات",
+    "validateInput": "التحقق من صحة بيانات الإدخال قبل التشفير",
+    "versionTooLow": "⚠️ الإصدار منخفض جدًا! الحد الأدنى المطلوب هو الإصدار {{version}}"
   },
   "language": {
-    "current": "Language",
-    "select": "Select Language"
+    "current": "اللغة",
+    "select": "اختر اللغة"
   },
   "metadata": {
-    "addCustomField": "Add Custom Field",
-    "author": "Author",
-    "authorPlaceholder": "Author name",
-    "copyright": "Copyright",
-    "copyrightPlaceholder": "© 2024 Company Name",
-    "customMetadata": "Custom Metadata",
-    "description": "Description",
-    "descriptionPlaceholder": "Description of this QR code...",
-    "includeCreationTime": "Include Creation Time",
-    "key": "Key",
-    "keyPlaceholder": "Key",
-    "keywords": "Keywords",
-    "license": "License",
+    "addCustomField": "إضافة حقل مخصص",
+    "author": "المؤلف",
+    "authorPlaceholder": "اسم المؤلف",
+    "copyright": "حقوق الطبع والنشر",
+    "copyrightPlaceholder": "© 2024 اسم الشركة",
+    "customMetadata": "البيانات الوصفية المخصصة",
+    "description": "الوصف",
+    "descriptionPlaceholder": "وصف رمز الاستجابة السريعة هذا...",
+    "includeCreationTime": "تضمين وقت الخلق",
+    "key": "مفتاح",
+    "keyPlaceholder": "مفتاح",
+    "keywords": "كلمات مفتاحية",
+    "license": "الترخيص",
     "licensePlaceholder": "CC-BY-4.0",
-    "title": "Title",
-    "titlePlaceholder": "QR Code Title",
-    "value": "Value",
-    "valuePlaceholder": "Value"
+    "title": "العنوان",
+    "titlePlaceholder": "عنوان رمز الاستجابة السريعة",
+    "value": "القيمة",
+    "valuePlaceholder": "القيمة"
   },
   "nav": {
-    "about": "About",
-    "contact": "Contact",
-    "docs": "Guide",
-    "gallery": "Gallery",
-    "generator": "Generator",
-    "guide": "Guide",
-    "privacy": "Privacy",
-    "terms": "Terms"
+    "about": "حول",
+    "contact": "للتواصل",
+    "docs": "دليل",
+    "gallery": "معرض",
+    "generator": "مولد",
+    "guide": "دليل",
+    "privacy": "الخصوصية",
+    "terms": "الشروط"
   },
   "output": {
-    "backgroundOverride": "Background Override",
-    "backgroundOverridePlaceholder": "Leave empty for default",
-    "dithering": "Dithering",
-    "dpi": "DPI (Print)",
-    "embedRasterOverlay": "Embed Raster Overlay",
-    "exportAsAdditional": "Export As (Additional)",
-    "filename": "Filename",
-    "floydSteinberg": "Floyd-Steinberg",
-    "format": "Format",
+    "backgroundOverride": "تجاوز الخلفية",
+    "backgroundOverridePlaceholder": "اتركه فارغًا للوضع الافتراضي",
+    "dithering": "التردد",
+    "dpi": "DPI (طباعة)",
+    "embedRasterOverlay": "تضمين طبقة نقطية",
+    "exportAsAdditional": "تصدير كـ (إضافي)",
+    "filename": "اسم الملف",
+    "floydSteinberg": "فلويد-شتاينبرغ",
+    "format": "التنسيق",
     "gif": "GIF",
-    "gifSettings": "GIF Settings",
-    "height": "Height",
-    "includeQuietZone": "Include Quiet Zone",
-    "medianCut": "Median Cut",
+    "gifSettings": "إعدادات GIF",
+    "height": "الارتفاع",
+    "includeQuietZone": "تضمين منطقة هادئة",
+    "medianCut": "القطع المتوسط",
     "neuquant": "NeuQuant",
-    "none": "None",
-    "octree": "Octree",
-    "off": "Off",
-    "ordered": "Ordered",
-    "outputSize": "Output Size",
-    "paletteSize": "Palette Size",
+    "none": "لا شيء",
+    "octree": "أوكتري",
+    "off": "إيقاف",
+    "ordered": "تم الطلب",
+    "outputSize": "حجم الإخراج",
+    "paletteSize": "حجم لوحة الألوان",
     "pdf": "PDF",
-    "pixel": "Pixel",
+    "pixel": "بكسل",
     "png": "PNG",
-    "precise": "Precise",
-    "quality": "Quality",
-    "quantizer": "Quantizer",
-    "shapePrecision": "Shape Precision",
+    "precise": "دقيق",
+    "quality": "جودة",
+    "quantizer": "المُكمِّم",
+    "shapePrecision": "دقة الشكل",
     "svg": "SVG",
-    "svgSettings": "SVG Settings",
-    "transparentColor": "Transparent Color",
-    "transparentColorPlaceholder": "#ffffff or empty",
-    "trueVector": "True Vector",
-    "trueVectorDesc": "Use paths instead of embedded raster",
+    "svgSettings": "إعدادات SVG",
+    "transparentColor": "لون شفاف",
+    "transparentColorPlaceholder": "#ffffff أو فارغ",
+    "trueVector": "المتجه الحقيقي",
+    "trueVectorDesc": "استخدم المسارات بدلاً من الصور النقطية المضمنة",
     "webp": "WebP",
-    "width": "Width"
+    "width": "العرض"
   },
   "overlay": {
-    "adaptiveThreshold": "Adaptive Threshold",
-    "atkinson": "Atkinson",
-    "bayer2": "Bayer 2×2",
-    "bayer4": "Bayer 4×4",
-    "bayer8": "Bayer 8×8",
-    "blend": "Blend",
-    "blendMode": "Blend",
-    "blueNoise": "Blue Noise",
-    "blueNoiseErrorDiffusion": "Blue Noise + Error Diffusion",
-    "blueNoiseMode": "Blue Noise",
-    "blueNoiseThreshold": "Blue Noise Threshold",
+    "adaptiveThreshold": "العتبة التكيفية",
+    "atkinson": "أتكينسون",
+    "bayer2": "باير 2×2",
+    "bayer4": "باير 4×4",
+    "bayer8": "باير 8×8",
+    "blend": "مزيج",
+    "blendMode": "مزيج",
+    "blueNoise": "الضوضاء الزرقاء",
+    "blueNoiseErrorDiffusion": "الضوضاء الزرقاء + انتشار الخطأ",
+    "blueNoiseMode": "الضوضاء الزرقاء",
+    "blueNoiseThreshold": "عتبة الضوضاء الزرقاء",
     "blur": "Blur",
-    "brightness": "Brightness",
-    "brightnessCurve": "Brightness Curve",
-    "brightnessMode": "Brightness",
-    "burkes": "Burkes",
-    "bw": "Black & White",
-    "cellSize": "Cell Size",
-    "centerLogo": "Center Logo",
-    "centerRule": "Center Rule",
-    "clusteredDot": "Clustered Dot",
-    "colorDither": "Color Dither",
-    "colorMode": "Color Mode",
-    "contain": "Contain",
-    "contrast": "Contrast",
-    "corsNote": "Note: Image must allow cross-origin requests (CORS)",
-    "cover": "Cover",
-    "cropImage": "Crop Image",
-    "cropSize": "Crop Size",
-    "diffusionKernel": "Diffusion Kernel",
-    "disposalHandling": "Disposal Handling",
-    "dither": "Dither",
-    "ditherSettings": "Dither Settings",
-    "ditherStrength": "Dither Strength",
-    "dithered": "Dithered",
-    "ditheredMode": "Dithered",
-    "dotShape": "Dot Shape",
-    "duotone": "Duotone",
-    "duotoneColors": "Duotone Colors",
-    "duotoneMode": "Duotone",
-    "eccAwareMode": "ECC-Aware Mode",
-    "edge": "Edge Detection",
-    "edgeAware": "Edge-Aware",
-    "enableCrop": "Enable Crop",
-    "errorDiffusion": "Error Diffusion",
-    "extreme": "Extreme",
-    "extremeMode": "Extreme",
-    "finderOverride": "Finder Override",
-    "fitMode": "Fit Mode",
+    "brightness": "السطوع",
+    "brightnessCurve": "منحنى السطوع",
+    "brightnessMode": "السطوع",
+    "burkes": "بوركس",
+    "bw": "أبيض وأسود",
+    "cellSize": "حجم الخلية",
+    "centerLogo": "شعار المركز",
+    "centerRule": "قاعدة المركز",
+    "clusteredDot": "نقطة متجمعة",
+    "colorDither": "تدرج الألوان",
+    "colorMode": "وضع الألوان",
+    "contain": "يحتوي",
+    "contrast": "التناقض",
+    "corsNote": "ملاحظة: يجب أن تسمح الصورة بطلبات الوصول من مصادر مختلفة (CORS)",
+    "cover": "غلاف",
+    "cropImage": "قص الصورة",
+    "cropSize": "حجم المحصول",
+    "diffusionKernel": "نواة الانتشار",
+    "disposalHandling": "التخلص من النفايات والتعامل معها",
+    "dither": "التردد",
+    "ditherSettings": "إعدادات التمويه",
+    "ditherStrength": "قوة التردد",
+    "dithered": "متردد",
+    "ditheredMode": "متردد",
+    "dotShape": "شكل النقطة",
+    "duotone": "ثنائي اللون",
+    "duotoneColors": "ألوان ثنائية اللون",
+    "duotoneMode": "ثنائي اللون",
+    "eccAwareMode": "وضع ECC-Aware",
+    "edge": "كشف الحواف",
+    "edgeAware": "مدرك للحواف",
+    "enableCrop": "تمكين المحصول",
+    "errorDiffusion": "انتشار الخطأ",
+    "extreme": "متطرف",
+    "extremeMode": "متطرف",
+    "finderOverride": "تجاوز البحث",
+    "fitMode": "وضع اللياقة",
     "flipX": "Flip X",
-    "flipY": "Flip Y",
-    "floydSteinberg": "Floyd-Steinberg",
-    "fromUrl": "From URL",
-    "fullColor": "Full Color",
-    "gamma": "Gamma",
-    "gapFillMode": "Gap Fill",
-    "gapfill": "Gap Fill",
-    "gaussianNoise": "Gaussian Noise",
-    "gifSettings": "GIF Settings",
-    "grayscale": "Grayscale",
-    "gridSize": "Grid Size",
-    "halftone": "Halftone",
-    "halftoneCenter": "Halftone Center",
-    "halftoneMode": "Halftone",
-    "halftoneSettings": "Halftone Settings",
-    "highlight": "Highlight",
-    "hueRotate": "Hue Rotate",
-    "imageGifWebp": "Image / GIF / WebP",
-    "imageUrl": "Image URL",
-    "intensity": "Intensity",
-    "invert": "Invert Image",
-    "jarvisJudiceNinke": "Jarvis-Judice-Ninke",
-    "line": "Line",
-    "load": "Load",
-    "loadedFromUrl": "Loaded from URL",
-    "maxFps": "Max FPS",
-    "mode": "Blend Mode",
-    "mosaic": "Mosaic",
-    "mosaicMode": "Mosaic",
-    "neutralColor": "Neutral Color",
-    "noFile": "No file",
-    "none": "None",
-    "nxnGrid": "N×N Grid",
-    "orderedBayer": "Ordered (Bayer)",
-    "orderedMatrix": "Ordered Matrix",
-    "original": "Original",
-    "outline": "Outline",
-    "outlineMode": "Outline",
-    "perChannel": "Per Channel",
-    "perModule": "Per Module",
-    "perceptual": "Perceptual (Luminance)",
-    "pixelate": "Pixelate",
-    "pixelateMode": "Pixelate",
-    "posterizeLevels": "Posterize Levels",
-    "preserveAlignment": "Preserve Alignment",
-    "preserveFinders": "Preserve Finder Patterns",
-    "preserveTiming": "Preserve Timing",
-    "protectFormat": "Protect Format Info",
-    "protectFormatInfo": "Protect Format Info",
-    "protectVersion": "Protect Version Info",
-    "protectVersionInfo": "Protect Version Info",
-    "protection": "Protection",
-    "removeImage": "Remove",
-    "respect": "Respect",
-    "riskBudget": "Risk Budget",
-    "rotation": "Rotation",
-    "sCurve": "S-Curve",
-    "saturation": "Saturation",
-    "screenedBlueNoise": "Screened Blue Noise",
-    "seed": "Seed",
-    "selectImage": "Select Image",
-    "sepia": "Sepia",
-    "serpentineScanning": "Serpentine Scanning",
-    "shadow": "Shadow",
-    "sharpen": "Sharpen",
-    "sierra": "Sierra",
-    "sierra2": "Sierra-2",
-    "sierraLite": "Sierra-Lite",
-    "simplify": "Simplify",
-    "stretch": "Stretch",
-    "strict": "Strict",
-    "stucki": "Stucki",
-    "stylized": "Stylized",
-    "subpixel": "Subpixel",
-    "subpixelMode": "Subpixel",
-    "subpixelSettings": "Subpixel Settings",
-    "subpixelSize": "Subpixel Size",
-    "subpixelSizeMode": "Subpixel Size",
-    "temporalBlueNoise": "Temporal Blue Noise",
-    "threshold": "Threshold",
-    "tileSize": "Tile Size",
-    "triangularNoise": "Triangular Noise",
-    "trueDither": "True Dither",
-    "trueDitherMode": "True Dither",
-    "upload": "Upload",
-    "useFrameDelays": "Use Frame Delays",
-    "voidCluster": "Void & Cluster",
-    "wave": "Wave",
-    "waveMode": "Wave",
-    "whiteNoise": "White Noise"
+    "flipY": "قلب على شكل حرف Y",
+    "floydSteinberg": "فلويد-شتاينبرغ",
+    "fromUrl": "من عنوان URL",
+    "fullColor": "ملون بالكامل",
+    "gamma": "غاما",
+    "gapFillMode": "ملء الفراغات",
+    "gapfill": "ملء الفراغات",
+    "gaussianNoise": "ضوضاء غاوسية",
+    "gifSettings": "إعدادات GIF",
+    "grayscale": "تدرج الرمادي",
+    "gridSize": "حجم الشبكة",
+    "halftone": "نصف درجة لونية",
+    "halftoneCenter": "مركز نصف اللون",
+    "halftoneMode": "نصف درجة لونية",
+    "halftoneSettings": "إعدادات نصف اللون",
+    "highlight": "مميز",
+    "hueRotate": "تدوير اللون",
+    "imageGifWebp": "صورة / GIF / WebP",
+    "imageUrl": "رابط الصورة",
+    "intensity": "الشدة",
+    "invert": "عكس الصورة",
+    "jarvisJudiceNinke": "جارفيس-جوديس-نينكه",
+    "line": "الخط",
+    "load": "تحميل",
+    "loadedFromUrl": "تم التحميل من عنوان URL",
+    "maxFps": "أقصى معدل إطارات في الثانية",
+    "mode": "وضع المزج",
+    "mosaic": "فسيفساء",
+    "mosaicMode": "فسيفساء",
+    "neutralColor": "لون محايد",
+    "noFile": "لا يوجد ملف",
+    "none": "لا شيء",
+    "nxnGrid": "شبكة N×N",
+    "orderedBayer": "تم الطلب (باير)",
+    "orderedMatrix": "المصفوفة المرتبة",
+    "original": "أصلي",
+    "outline": "مخطط",
+    "outlineMode": "مخطط",
+    "perChannel": "لكل قناة",
+    "perModule": "لكل وحدة",
+    "perceptual": "الإدراك (السطوع)",
+    "pixelate": "بكسلة",
+    "pixelateMode": "بكسلة",
+    "posterizeLevels": "مستويات الملصق",
+    "preserveAlignment": "الحفاظ على المحاذاة",
+    "preserveFinders": "حفظ أنماط البحث",
+    "preserveTiming": "الحفاظ على التوقيت",
+    "protectFormat": "حماية معلومات التنسيق",
+    "protectFormatInfo": "حماية معلومات التنسيق",
+    "protectVersion": "حماية معلومات الإصدار",
+    "protectVersionInfo": "حماية معلومات الإصدار",
+    "protection": "الحماية",
+    "removeImage": "إزالة",
+    "respect": "الاحترام",
+    "riskBudget": "ميزانية المخاطر",
+    "rotation": "الدوران",
+    "sCurve": "منحنى على شكل حرف S",
+    "saturation": "التشبع",
+    "screenedBlueNoise": "ضوضاء زرقاء محجوبة",
+    "seed": "بذرة",
+    "selectImage": "تحديد الصورة",
+    "sepia": "بني داكن",
+    "serpentineScanning": "المسح السربنتيني",
+    "shadow": "ظل",
+    "sharpen": "شحذ",
+    "sierra": "سييرا",
+    "sierra2": "سييرا-2",
+    "sierraLite": "سييرا لايت",
+    "simplify": "تبسيط",
+    "stretch": "ستريتش",
+    "strict": "صارم",
+    "stucki": "ستوكي",
+    "stylized": "مُنمّق",
+    "subpixel": "بكسل فرعي",
+    "subpixelMode": "بكسل فرعي",
+    "subpixelSettings": "إعدادات البكسل الفرعي",
+    "subpixelSize": "حجم البكسل الفرعي",
+    "subpixelSizeMode": "حجم البكسل الفرعي",
+    "temporalBlueNoise": "ضوضاء زرقاء مؤقتة",
+    "threshold": "العتبة",
+    "tileSize": "حجم البلاط",
+    "triangularNoise": "ضوضاء مثلثة",
+    "trueDither": "التردد الحقيقي",
+    "trueDitherMode": "التردد الحقيقي",
+    "upload": "تحميل",
+    "useFrameDelays": "استخدام تأخيرات الإطارات",
+    "voidCluster": "الفراغ والتكتل",
+    "wave": "موجة",
+    "waveMode": "موجة",
+    "whiteNoise": "الضوضاء البيضاء"
   },
   "payload": {
-    "accountName": "Account Name",
-    "address": "Address",
-    "algorithm": "Algorithm",
-    "allDay": "All Day Event",
-    "amount": "Amount (optional)",
-    "amountBrl": "Amount (BRL, optional)",
-    "amountEur": "Amount (EUR)",
-    "amountInr": "Amount (INR, optional)",
-    "amountSgd": "Amount (SGD, optional)",
-    "amountThb": "Amount (THB, optional)",
-    "androidIntent": "Android Intent",
-    "appLink": "App Deep Link (Android/iOS)",
-    "assetInventory": "Asset/Inventory Tag",
-    "assetItemId": "Asset/Item ID",
-    "assetType": "Asset Type",
-    "attendeeName": "Attendee Name",
-    "audio": "Audio",
-    "baseUrl": "Base URL",
-    "batchLot": "Batch/Lot (optional)",
-    "beneficiaryName": "Beneficiary Name",
-    "bicSwift": "BIC/SWIFT (optional)",
-    "birthday": "Birthday",
-    "bitcoin": "Bitcoin",
-    "bizcard": "BizCard (Legacy)",
-    "bluetooth": "Bluetooth",
-    "body": "Message Body",
-    "bodyOptional": "Body (optional)",
-    "box": "Box",
-    "calendar": "Calendar",
-    "calendarName": "Calendar Name",
-    "calendarSubscription": "Calendar Subscribe",
-    "calendarUrl": "Calendar URL (ICS/WebCal)",
-    "campaignContent": "Campaign Content (optional)",
-    "campaignMedium": "Campaign Medium",
-    "campaignName": "Campaign Name",
-    "campaignSource": "Campaign Source",
-    "campaignTerm": "Campaign Term (optional)",
-    "city": "City",
-    "cityOptional": "City (optional)",
-    "cloudLink": "Cloud Storage Link",
-    "company": "Company",
-    "contact": "Contact",
-    "contentType": "Content Type",
-    "core": "Core",
-    "country": "Country",
-    "crypto": "Crypto (BTC, ETH, etc.)",
-    "cryptocurrency": "Cryptocurrency",
-    "custom": "Custom Format",
-    "customScheme": "Custom Scheme",
-    "dateTime": "Date & Time",
-    "deepLinkUrl": "Deep Link URL",
-    "description": "Description",
-    "deviceAddress": "Device Address (MAC)",
-    "deviceName": "Device Name (optional)",
-    "digits": "Digits",
-    "documentsMedia": "Documents & Media",
-    "dropbox": "Dropbox",
-    "email": "Email",
-    "emailAddress": "Email Address",
-    "encryption": "Encryption",
-    "end": "End",
-    "endDate": "End Date",
-    "enterprise": "Enterprise",
-    "epcSepa": "EPC / SEPA (EU)",
-    "equipment": "Equipment",
-    "ethereum": "Ethereum",
-    "event": "iCalendar Event",
-    "eventName": "Event Name",
-    "eventRsvp": "Event RSVP Link",
-    "eventTicket": "Event Ticket",
-    "expiryDate": "Expiry Date (optional)",
-    "facebook": "Facebook",
-    "fallbackUrl": "Fallback URL (optional)",
-    "fax": "Fax",
-    "fileType": "File Type",
-    "fileUrl": "File / Document URL",
-    "firstName": "First Name",
-    "forceHttps": "Force HTTPS",
-    "fullName": "Full Name",
-    "furniture": "Furniture",
-    "geo": "Geo Location",
+    "accountName": "اسم الحساب",
+    "address": "العنوان",
+    "algorithm": "الخوارزمية",
+    "allDay": "فعالية طوال اليوم",
+    "amount": "المبلغ (اختياري)",
+    "amountBrl": "المبلغ (بالريال البرازيلي، اختياري)",
+    "amountEur": "المبلغ (باليورو)",
+    "amountInr": "المبلغ (بالروبية الهندية، اختياري)",
+    "amountSgd": "المبلغ (بالدولار السنغافوري، اختياري)",
+    "amountThb": "المبلغ (بالبات التايلاندي، اختياري)",
+    "androidIntent": "نية أندرويد",
+    "appLink": "رابط عميق للتطبيق (أندرويد/آي أو إس)",
+    "assetInventory": "علامة الأصول/المخزون",
+    "assetItemId": "معرف الأصل/العنصر",
+    "assetType": "نوع الأصل",
+    "attendeeName": "اسم الحاضر",
+    "audio": "صوتي",
+    "baseUrl": "عنوان URL الأساسي",
+    "batchLot": "الدفعة/المجموعة (اختياري)",
+    "beneficiaryName": "اسم المستفيد",
+    "bicSwift": "BIC/SWIFT (اختياري)",
+    "birthday": "عيد ميلاد",
+    "bitcoin": "بيتكوين",
+    "bizcard": "بطاقة أعمال (قديمة)",
+    "bluetooth": "بلوتوث",
+    "body": "نص الرسالة",
+    "bodyOptional": "الجسم (اختياري)",
+    "box": "صندوق",
+    "calendar": "التقويم",
+    "calendarName": "اسم التقويم",
+    "calendarSubscription": "الاشتراك في التقويم",
+    "calendarUrl": "رابط التقويم (ICS/WebCal)",
+    "campaignContent": "محتوى الحملة (اختياري)",
+    "campaignMedium": "متوسط الحملة",
+    "campaignName": "اسم الحملة",
+    "campaignSource": "مصدر الحملة",
+    "campaignTerm": "مدة الحملة (اختياري)",
+    "city": "المدينة",
+    "cityOptional": "المدينة (اختياري)",
+    "cloudLink": "رابط التخزين السحابي",
+    "company": "شركة",
+    "contact": "للتواصل",
+    "contentType": "نوع المحتوى",
+    "core": "الأساسي",
+    "country": "كانتري",
+    "crypto": "العملات المشفرة (بيتكوين، إيثيريوم، إلخ)",
+    "cryptocurrency": "العملات المشفرة",
+    "custom": "تنسيق مخصص",
+    "customScheme": "مخطط مخصص",
+    "dateTime": "التاريخ والوقت",
+    "deepLinkUrl": "رابط عميق",
+    "description": "الوصف",
+    "deviceAddress": "عنوان الجهاز (MAC)",
+    "deviceName": "اسم الجهاز (اختياري)",
+    "digits": "رقمًا",
+    "documentsMedia": "الوثائق والوسائط",
+    "dropbox": "دروب بوكس",
+    "email": "البريد الإلكتروني",
+    "emailAddress": "عنوان البريد الإلكتروني",
+    "encryption": "التشفير",
+    "end": "نهاية",
+    "endDate": "تاريخ الانتهاء",
+    "enterprise": "إنتربرايز",
+    "epcSepa": "EPC / SEPA (الاتحاد الأوروبي)",
+    "equipment": "المعدات",
+    "ethereum": "إيثيريوم",
+    "event": "حدث في التقويم الإلكتروني",
+    "eventName": "اسم الحدث",
+    "eventRsvp": "رابط تأكيد الحضور للفعالية",
+    "eventTicket": "تذكرة الفعالية",
+    "expiryDate": "تاريخ انتهاء الصلاحية (اختياري)",
+    "facebook": "فيسبوك",
+    "fallbackUrl": "عنوان URL احتياطي (اختياري)",
+    "fax": "فاكس",
+    "fileType": "نوع الملف",
+    "fileUrl": "رابط الملف / المستند",
+    "firstName": "الاسم الأول",
+    "forceHttps": "فرض HTTPS",
+    "fullName": "الاسم الكامل",
+    "furniture": "الأثاث",
+    "geo": "تحديد الموقع الجغرافي",
     "github": "GitHub",
-    "googleDrive": "Google Drive",
+    "googleDrive": "جوجل درايف",
     "gs1DigitalLink": "GS1 Digital Link",
-    "gtin": "GTIN (Global Trade Item Number)",
-    "hidden": "Hidden Network",
-    "homePhone": "Home Phone",
+    "gtin": "GTIN (رقم السلعة التجاري العالمي)",
+    "hidden": "الشبكة الخفية",
+    "homePhone": "هاتف منزلي",
     "iban": "IBAN",
-    "idType": "ID Type",
-    "image": "Image",
-    "instagram": "Instagram",
-    "inventoryItem": "Inventory Item",
+    "idType": "نوع الهوية",
+    "image": "صورة",
+    "instagram": "إنستغرام",
+    "inventoryItem": "بند من بنود المخزون",
     "iosUniversal": "iOS Universal",
-    "issuer": "Issuer",
-    "itAsset": "IT Asset",
-    "label": "Label (optional)",
-    "lastName": "Last Name",
-    "latitude": "Latitude",
-    "linkType": "Link Type",
-    "linkedin": "LinkedIn",
-    "litecoin": "Litecoin",
-    "location": "Location",
-    "locationNetwork": "Location & Network",
-    "longitude": "Longitude",
-    "lookupUrl": "Lookup URL (optional)",
-    "marketing": "Marketing",
-    "marketingTags": "Marketing Tags",
-    "maxLengthGuard": "Max Length Guard",
-    "mecard": "MeCard Contact",
-    "merchantName": "Merchant Name (optional)",
-    "message": "Message",
-    "messageOptional": "Message (optional)",
-    "messagingLink": "WhatsApp / Telegram / Signal",
-    "messenger": "Messenger",
-    "mobileNumber": "Mobile Number",
-    "mobilePhone": "Mobile Phone",
-    "name": "Name",
-    "nationalIdTaxId": "National ID / Tax ID",
-    "nickname": "Nickname",
-    "normalizeNewlines": "Normalize Newlines",
-    "note": "Note",
+    "issuer": "الجهة المصدرة",
+    "itAsset": "أصول تكنولوجيا المعلومات",
+    "label": "ملصق (اختياري)",
+    "lastName": "الاسم الأخير",
+    "latitude": "خط العرض",
+    "linkType": "نوع الرابط",
+    "linkedin": "لينكد إن",
+    "litecoin": "لايتكوين",
+    "location": "الموقع",
+    "locationNetwork": "الموقع والشبكة",
+    "longitude": "خط الطول",
+    "lookupUrl": "عنوان URL للبحث (اختياري)",
+    "marketing": "التسويق",
+    "marketingTags": "علامات التسويق",
+    "maxLengthGuard": "واقي أقصى طول",
+    "mecard": "جهة اتصال بطاقة ميكارد",
+    "merchantName": "اسم التاجر (اختياري)",
+    "message": "رسالة",
+    "messageOptional": "رسالة (اختياري)",
+    "messagingLink": "واتساب / تيليجرام / سيجنال",
+    "messenger": "الرسول",
+    "mobileNumber": "رقم الهاتف المحمول",
+    "mobilePhone": "هاتف محمول",
+    "name": "الاسم",
+    "nationalIdTaxId": "الهوية الوطنية / رقم التعريف الضريبي",
+    "nickname": "اللقب",
+    "normalizeNewlines": "توحيد أسطر جديدة",
+    "note": "ملاحظة",
     "oneDrive": "OneDrive",
-    "openNoPassword": "Open (No Password)",
-    "organization": "Organization",
-    "other": "Other",
-    "otpAuth": "OTP Authenticator",
-    "otpType": "Type",
-    "password": "Password",
-    "payeeName": "Payee Name",
-    "payments": "Payments (Open Specs)",
-    "paynow": "PayNow (Singapore)",
-    "phone": "Phone",
-    "phoneUsername": "Phone/Username",
-    "pix": "PIX (Brazil)",
-    "pixKey": "PIX Key",
-    "plainText": "Plain Text",
-    "platform": "Platform",
-    "prefilledMessage": "Pre-filled Message (optional)",
-    "profileUrl": "Profile URL",
-    "promptPayId": "PromptPay ID",
-    "promptpay": "PromptPay (Thailand)",
-    "proxyType": "Proxy Type",
-    "rawData": "Raw Data",
-    "recipient": "Recipient",
-    "reference": "Reference",
-    "referenceOptional": "Reference (optional)",
-    "resolverDomain": "Resolver Domain",
-    "rsvpUrl": "RSVP URL",
-    "searchQuery": "Search Query (optional)",
-    "seat": "Seat",
-    "secretBase32": "Secret (Base32)",
-    "sectionZone": "Section/Zone",
-    "securityType": "Security Type",
-    "serialNumber": "Serial Number (optional)",
-    "service": "Service",
-    "shortLink": "Short Link Redirect",
-    "shortUrl": "Short URL",
-    "signal": "Signal",
-    "sms": "SMS",
+    "openNoPassword": "فتح (بدون كلمة مرور)",
+    "organization": "منظمة",
+    "other": "أخرى",
+    "otpAuth": "مُصادِق كلمة المرور لمرة واحدة",
+    "otpType": "النوع",
+    "password": "كلمة المرور",
+    "payeeName": "اسم المستفيد",
+    "payments": "المدفوعات (مواصفات مفتوحة)",
+    "paynow": "ادفع الآن (سنغافورة)",
+    "phone": "هاتف",
+    "phoneUsername": "رقم الهاتف/اسم المستخدم",
+    "pix": "PIX (البرازيل)",
+    "pixKey": "مفتاح PIX",
+    "plainText": "نص عادي",
+    "platform": "منصة",
+    "prefilledMessage": "رسالة معبأة مسبقًا (اختياري)",
+    "profileUrl": "رابط الملف الشخصي",
+    "promptPayId": "معرف الدفع الفوري",
+    "promptpay": "برومبت باي (تايلاند)",
+    "proxyType": "نوع الوكيل",
+    "rawData": "البيانات الأولية",
+    "recipient": "المستلم",
+    "reference": "مرجع",
+    "referenceOptional": "مرجع (اختياري)",
+    "resolverDomain": "نطاق المُحلِّل",
+    "rsvpUrl": "رابط تأكيد الحضور",
+    "searchQuery": "استعلام البحث (اختياري)",
+    "seat": "مقعد",
+    "secretBase32": "سري (Base32)",
+    "sectionZone": "القسم/المنطقة",
+    "securityType": "نوع الأمان",
+    "serialNumber": "الرقم التسلسلي (اختياري)",
+    "service": "خدمة",
+    "shortLink": "إعادة توجيه الرابط المختصر",
+    "shortUrl": "رابط مختصر",
+    "signal": "إشارة",
+    "sms": "رسالة نصية قصيرة",
     "smsMms": "SMS / MMS",
-    "socialMessaging": "Social & Messaging",
-    "socialProfile": "Social Profile",
-    "ssid": "Network Name (SSID)",
-    "start": "Start",
-    "startDate": "Start Date",
-    "state": "State/Province",
-    "street": "Street",
-    "subject": "Subject",
-    "subjectOptional": "Subject (optional)",
-    "summary": "Event Title",
-    "tel": "Phone Number",
-    "telegram": "Telegram",
-    "text": "Text Content",
-    "ticketId": "Ticket ID",
-    "tiktok": "TikTok",
-    "title": "Title",
-    "transactionNote": "Transaction Note (optional)",
-    "trimWhitespace": "Trim Whitespace",
-    "uenMobile": "UEN/Mobile Number",
-    "universalLink": "Universal Link",
-    "upi": "UPI (India)",
-    "upiId": "UPI ID (VPA)",
+    "socialMessaging": "التواصل الاجتماعي والمراسلة",
+    "socialProfile": "الملف الشخصي الاجتماعي",
+    "ssid": "اسم الشبكة (SSID)",
+    "start": "ابدأ",
+    "startDate": "تاريخ البدء",
+    "state": "الولاية/المقاطعة",
+    "street": "شارع",
+    "subject": "الموضوع",
+    "subjectOptional": "الموضوع (اختياري)",
+    "summary": "عنوان الحدث",
+    "tel": "رقم الهاتف",
+    "telegram": "تلغراف",
+    "text": "محتوى نصي",
+    "ticketId": "رقم التذكرة",
+    "tiktok": "تيك توك",
+    "title": "العنوان",
+    "transactionNote": "ملاحظة المعاملة (اختياري)",
+    "trimWhitespace": "إزالة المساحات البيضاء",
+    "uenMobile": "رقم تعريف المستخدم/رقم الهاتف المحمول",
+    "universalLink": "الرابط العالمي",
+    "upi": "UPI (الهند)",
+    "upiId": "معرف UPI (VPA)",
     "url": "URL",
     "utmCampaign": "utm_campaign",
     "utmContent": "utm_content",
-    "utmLink": "UTM Campaign Link",
+    "utmLink": "رابط حملة UTM",
     "utmMedium": "utm_medium",
     "utmSource": "utm_source",
     "utmTerm": "utm_term",
-    "validateInput": "Validate Input",
-    "validationOptions": "Validation Options",
-    "validationUrl": "Validation URL (optional)",
-    "vcard": "vCard Contact",
-    "vehicle": "Vehicle",
-    "venue": "Venue",
-    "vevent": "Calendar Event",
-    "viber": "Viber",
-    "video": "Video",
-    "walletAddress": "Address",
-    "website": "Website",
-    "whatsapp": "WhatsApp",
-    "wifi": "WiFi",
-    "wifiNetwork": "WiFi Network",
-    "wordDocument": "Word Document",
-    "workPhone": "Work Phone",
-    "youtube": "YouTube",
-    "zip": "ZIP/Postal Code"
+    "validateInput": "التحقق من صحة المدخلات",
+    "validationOptions": "خيارات التحقق",
+    "validationUrl": "رابط التحقق (اختياري)",
+    "vcard": "معلومات الاتصال عبر بطاقة vCard",
+    "vehicle": "مركبة",
+    "venue": "المكان",
+    "vevent": "حدث في التقويم",
+    "viber": "فايبر",
+    "video": "فيديو",
+    "walletAddress": "العنوان",
+    "website": "موقع إلكتروني",
+    "whatsapp": "واتساب",
+    "wifi": "واي فاي",
+    "wifiNetwork": "شبكة واي فاي",
+    "wordDocument": "مستند وورد",
+    "workPhone": "هاتف العمل",
+    "youtube": "يوتيوب",
+    "zip": "الرمز البريدي"
   },
   "preview": {
-    "qrCodePreview": "QR Code Preview - Click Export to download",
-    "simulating": "Simulating",
-    "simulationActive": "Environmental simulation active - Preview shows how QR code may appear under different conditions"
+    "qrCodePreview": "معاينة رمز الاستجابة السريعة - انقر فوق تصدير للتنزيل",
+    "simulating": "محاكاة",
+    "simulationActive": "محاكاة البيئة نشطة - معاينة توضح كيف قد يظهر رمز الاستجابة السريعة في ظل ظروف مختلفة"
   },
   "qr": {
-    "additionalBorder": "Additional border beyond quiet zone",
-    "alphanumeric": "Alphanumeric",
-    "auto": "Auto",
-    "autoMin": "Auto (min: {{version}})",
-    "autoOptimal": "Auto (Optimal)",
-    "byteUtf8": "Byte / UTF-8",
+    "additionalBorder": "حدود إضافية خارج المنطقة الهادئة",
+    "alphanumeric": "أبجدي رقمي",
+    "auto": "تلقائي",
+    "autoMin": "تلقائي (الحد الأدنى: {{الإصدار}})",
+    "autoOptimal": "تلقائي (مثالي)",
+    "byteUtf8": "بايت / UTF-8",
     "contrastRatio": "{{count}}:1",
-    "encodingMode": "Encoding Mode",
-    "enforceMinQuietZone": "Enforce Min Quiet Zone",
-    "enforceMinQuietZoneDesc": "Ensure ≥4 module margin",
-    "errorCorrection": "Error Correction",
-    "extraBorderModules": "Extra Border Modules",
-    "high": "H - High (30%)",
-    "kanji": "Kanji",
-    "low": "L - Low (7%)",
-    "margin": "Quiet Zone (Margin)",
-    "mask": "Mask Pattern",
-    "medium": "M - Medium (15%)",
-    "moduleSize": "Module Size",
+    "encodingMode": "وضع التشفير",
+    "enforceMinQuietZone": "فرض منطقة هادئة",
+    "enforceMinQuietZoneDesc": "تأكد من وجود هامش لا يقل عن 4 وحدات",
+    "errorCorrection": "تصحيح الأخطاء",
+    "extraBorderModules": "وحدات حدودية إضافية",
+    "high": "H - مرتفع (30%)",
+    "kanji": "كانجي",
+    "low": "L - منخفض (7%)",
+    "margin": "المنطقة الهادئة (الهامش)",
+    "mask": "نمط القناع",
+    "medium": "متوسط - M (15%)",
+    "moduleSize": "حجم الوحدة",
     "nDegrees": "{{count}}°",
-    "nModules": "{{count}} modules",
+    "nModules": "{{count}} وحدة",
     "nMs": "{{count}}ms",
     "nPercent": "{{count}}%",
     "nPx": "{{count}}px",
-    "numericOnly": "Numeric Only",
-    "quartile": "Q - Quartile (25%)",
-    "version": "Version"
+    "numericOnly": "أرقام فقط",
+    "quartile": "Q - الربع (25%)",
+    "version": "الإصدار"
   },
   "render": {
-    "addColor": "Add Color",
-    "alignmentStyle": "Alignment Pattern Style",
-    "background": "Background",
-    "byBrightness": "By Brightness",
-    "byCluster": "By Cluster",
-    "byOverlay": "By Overlay",
-    "byPosition": "By Position",
-    "ceil": "Ceil",
-    "circle": "Circle",
-    "classic": "Classic",
-    "colorPalette": "Color Palette",
-    "conic": "Conic",
-    "connected": "Connected",
-    "contrastGuard": "Contrast Guard",
-    "cornerRadius": "Corner Radius",
-    "crispEdges": "Crisp Edges",
-    "crispEdgesDesc": "Use image-rendering: pixelated for sharp edges",
-    "dashed": "Dashed",
-    "diamond": "Diamond",
-    "dotRotation": "Dot Rotation",
-    "dots": "Dots",
-    "eyeInnerStyle": "Eye Inner Style",
-    "eyeOuterStyle": "Eye Outer Style",
-    "eyeScale": "Eye Scale",
-    "finderStyle": "Finder Pattern Style",
-    "floor": "Floor",
-    "foreground": "Foreground",
-    "frameStyle": "Frame Style",
-    "frameText": "Frame Text",
-    "gapMode": "Gap Mode",
-    "gradient": "Gradient",
-    "gradientAngle": "Gradient Angle",
-    "gradientColors": "Colors",
-    "gradientType": "Gradient Type",
-    "inset": "Inset",
-    "linear": "Linear",
-    "matchFinder": "Match Finder",
-    "matchModule": "Match Module",
-    "minContrastRatio": "Min Contrast Ratio",
-    "moduleGap": "Module Gap",
-    "negativeSpace": "Negative Space",
-    "none": "None",
-    "perModuleColorMode": "Per-Module Color Mode",
-    "pixelSnap": "Pixel Snap",
-    "radial": "Radial",
-    "round": "Round",
-    "rounded": "Rounded",
-    "roundedFrame": "Rounded Frame",
-    "shape": "Module Style",
-    "sharp": "Sharp",
-    "smooth": "Smooth",
-    "solid": "Solid",
-    "square": "Square",
-    "squares": "Squares",
-    "sticker": "Sticker",
-    "stroke": "Stroke",
-    "style": "Style",
-    "tag": "Tag",
-    "timingStyle": "Timing Pattern Style",
-    "transparentBg": "Transparent Background"
+    "addColor": "أضف لونًا",
+    "alignmentStyle": "نمط نمط المحاذاة",
+    "background": "الخلفية",
+    "byBrightness": "بحسب السطوع",
+    "byCluster": "حسب المجموعة",
+    "byOverlay": "بواسطة التراكب",
+    "byPosition": "حسب الموقع",
+    "ceil": "السقف",
+    "circle": "دائرة",
+    "classic": "كلاسيكي",
+    "colorPalette": "لوحة الألوان",
+    "conic": "مخروطي",
+    "connected": "متصل",
+    "contrastGuard": "حماية التباين",
+    "cornerRadius": "نصف قطر الزاوية",
+    "crispEdges": "حواف مقرمشة",
+    "crispEdgesDesc": "استخدم خاصية عرض الصور: بكسلة للحصول على حواف حادة",
+    "dashed": "متقطع",
+    "diamond": "الماس",
+    "dotRotation": "تدوير النقطة",
+    "dots": "نقطة",
+    "eyeInnerStyle": "أسلوب العين الداخلي",
+    "eyeOuterStyle": "أسلوب العين الخارجي",
+    "eyeScale": "مقياس العين",
+    "finderStyle": "نمط البحث",
+    "floor": "الطابق",
+    "foreground": "الخلفية",
+    "frameStyle": "نمط الإطار",
+    "frameText": "نص الإطار",
+    "gapMode": "وضع الفجوة",
+    "gradient": "تدرج",
+    "gradientAngle": "زاوية التدرج",
+    "gradientColors": "ألوان",
+    "gradientType": "النوع المتدرج",
+    "inset": "مُدرج",
+    "linear": "خطي",
+    "matchFinder": "محدد المباريات",
+    "matchModule": "وحدة المطابقة",
+    "minContrastRatio": "الحد الأدنى لنسبة التباين",
+    "moduleGap": "فجوة في الوحدة",
+    "negativeSpace": "المساحة السلبية",
+    "none": "لا شيء",
+    "perModuleColorMode": "وضع اللون لكل وحدة",
+    "pixelSnap": "لقطة بكسل",
+    "radial": "شعاعي",
+    "round": "دائري",
+    "rounded": "مستدير",
+    "roundedFrame": "إطار مستدير",
+    "shape": "نمط الوحدة",
+    "sharp": "شارب",
+    "smooth": "سلس",
+    "solid": "صلب",
+    "square": "مربع",
+    "squares": "مربعات",
+    "sticker": "ملصق",
+    "stroke": "سكتة دماغية",
+    "style": "ستايل",
+    "tag": "الوسم",
+    "timingStyle": "نمط نمط التوقيت",
+    "transparentBg": "خلفية شفافة"
   },
   "safety": {
-    "analysis": "Safety Analysis",
-    "autoPickEcc": "Auto-Pick ECC",
-    "autoPickVersion": "Auto-Pick Version",
-    "autoReduceIntensity": "Auto-Reduce Intensity",
-    "autoTuning": "Auto-Tuning",
-    "balanced": "Balanced",
-    "contrast": "Contrast Ratio",
-    "contrastCheck": "Contrast Check",
-    "contrastRatio": "Contrast Ratio",
-    "excellent": "Excellent",
-    "fair": "Fair",
-    "good": "Good",
-    "lockAlignment": "Lock Alignment",
-    "lockFinders": "Lock Finders",
-    "lockFormat": "Lock Format Info",
-    "lockTiming": "Lock Timing",
-    "lockVersion": "Lock Version Info",
-    "minModuleSize": "Min Module Size",
-    "minQuietZone": "Min Quiet Zone",
-    "off": "Off",
-    "poor": "Poor",
-    "protectionLocks": "Protection Locks",
-    "qualityAnalysis": "Quality Analysis",
-    "quietZone": "Quiet Zone",
-    "safetyMode": "Safety Mode",
-    "scanability": "Scanability Score",
-    "showHeatmap": "Show Heatmap",
-    "simulateBlur": "Simulate Blur",
-    "simulateNoise": "Simulate Noise",
-    "simulateRotation": "Simulate Rotation",
-    "strict": "Strict",
-    "untilScannable": "Until scannable"
+    "analysis": "تحليل السلامة",
+    "autoPickEcc": "اختيار تلقائي ECC",
+    "autoPickVersion": "إصدار الاختيار التلقائي",
+    "autoReduceIntensity": "تقليل الشدة تلقائيًا",
+    "autoTuning": "الضبط التلقائي",
+    "balanced": "متوازن",
+    "contrast": "نسبة التباين",
+    "contrastCheck": "فحص التباين",
+    "contrastRatio": "نسبة التباين",
+    "excellent": "ممتاز",
+    "fair": "عادل",
+    "good": "جيد",
+    "lockAlignment": "محاذاة القفل",
+    "lockFinders": "باحثو الأقفال",
+    "lockFormat": "معلومات تنسيق القفل",
+    "lockTiming": "توقيت القفل",
+    "lockVersion": "معلومات إصدار القفل",
+    "minModuleSize": "الحد الأدنى لحجم الوحدة",
+    "minQuietZone": "منطقة هادئة دقيقة",
+    "off": "إيقاف",
+    "poor": "فقير",
+    "protectionLocks": "أقفال الحماية",
+    "qualityAnalysis": "تحليل الجودة",
+    "quietZone": "منطقة هادئة",
+    "safetyMode": "وضع الأمان",
+    "scanability": "مؤشر سهولة القراءة",
+    "showHeatmap": "عرض خريطة الحرارة",
+    "simulateBlur": "محاكاة التمويه",
+    "simulateNoise": "محاكاة الضوضاء",
+    "simulateRotation": "محاكاة الدوران",
+    "strict": "صارم",
+    "untilScannable": "حتى يصبح قابلاً للمسح الضوئي"
   },
   "sections": {
-    "animation": "Animation",
-    "metadata": "Metadata",
-    "output": "Output",
-    "overlay": "Overlay / Image",
-    "payload": "Payload / Data",
-    "qrEncoding": "QR Encoding",
-    "rendering": "Rendering",
-    "safety": "Safety Analysis",
-    "share": "Share",
-    "watermark": "Watermark"
+    "animation": "الرسوم المتحركة",
+    "metadata": "البيانات الوصفية",
+    "output": "مخرجات",
+    "overlay": "تراكب / صورة",
+    "payload": "الحمولة / البيانات",
+    "qrEncoding": "ترميز رمز الاستجابة السريعة",
+    "rendering": "عرض",
+    "safety": "تحليل السلامة",
+    "share": "مشاركة",
+    "watermark": "علامة مائية"
   },
   "share": {
-    "copied": "Copied!",
-    "copyLink": "Copy Link",
-    "directLink": "Direct Link",
-    "directLinkDesc": "Generate shareable URL",
-    "embedHtml": "Embed HTML",
-    "embedHtmlDesc": "Generate embed code",
-    "encodeAllParams": "Encode All Parameters",
-    "encodeAllParamsDesc": "Include all settings in URL",
-    "markdown": "Markdown",
-    "quickShare": "Quick Share",
-    "twitter": "X/Twitter",
-    "whatsapp": "WhatsApp"
+    "copied": "منسوخ!",
+    "copyLink": "نسخ الرابط",
+    "directLink": "رابط مباشر",
+    "directLinkDesc": "إنشاء رابط قابل للمشاركة",
+    "embedHtml": "تضمين HTML",
+    "embedHtmlDesc": "إنشاء رمز التضمين",
+    "encodeAllParams": "ترميز جميع المعلمات",
+    "encodeAllParamsDesc": "تضمين جميع الإعدادات في عنوان URL",
+    "markdown": "تخفيض السعر",
+    "quickShare": "مشاركة سريعة",
+    "twitter": "X/تويتر",
+    "whatsapp": "واتساب"
   },
   "tiers": {
-    "advanced": "Advanced",
-    "basic": "Basic",
-    "professional": "Pro",
-    "watchAdForPro": "Watch ad to unlock Professional features for 24 hours"
+    "advanced": "متقدم",
+    "basic": "أساسي",
+    "professional": "برو",
+    "watchAdForPro": "شاهد الإعلان لفتح الميزات الاحترافية لمدة 24 ساعة"
   },
   "watermark": {
-    "behindQr": "Behind QR",
-    "blendMode": "Blend Mode",
-    "bottomLeft": "Bottom Left",
-    "bottomRight": "Bottom Right",
-    "center": "Center",
-    "corners": "Corners",
-    "edges": "Edges",
-    "enabled": "Enable Watermark",
-    "fontColor": "Font Color",
-    "fontSize": "Font Size",
-    "image": "Image",
-    "multiply": "Multiply",
-    "normal": "Normal",
-    "opacity": "Opacity",
-    "overlay": "Overlay",
-    "pattern": "Pattern",
-    "position": "Position",
-    "quietZone": "Quiet Zone",
-    "screen": "Screen",
-    "text": "Text",
-    "textPlaceholder": "© Company Name",
-    "topLeft": "Top Left",
-    "topRight": "Top Right",
-    "type": "Type",
-    "uploadImage": "Upload Image"
+    "behindQr": "خلف رمز الاستجابة السريعة",
+    "blendMode": "وضع المزج",
+    "bottomLeft": "أسفل اليسار",
+    "bottomRight": "أسفل اليمين",
+    "center": "المركز",
+    "corners": "الزوايا",
+    "edges": "الحواف",
+    "enabled": "تمكين العلامة المائية",
+    "fontColor": "لون الخط",
+    "fontSize": "حجم الخط",
+    "image": "صورة",
+    "multiply": "ضرب",
+    "normal": "عادي",
+    "opacity": "الشفافية",
+    "overlay": "تراكب",
+    "pattern": "نمط",
+    "position": "الموقف",
+    "quietZone": "منطقة هادئة",
+    "screen": "شاشة",
+    "text": "نص",
+    "textPlaceholder": "© اسم الشركة",
+    "topLeft": "أعلى اليسار",
+    "topRight": "أعلى اليمين",
+    "type": "النوع",
+    "uploadImage": "تحميل صورة"
   }
 }

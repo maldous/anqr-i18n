@@ -1,41 +1,41 @@
 {
   "animation": {
-    "blueNoise": "Blue Noise",
-    "bounce": "เด้ง (Ping-Pong)",
+    "blueNoise": "บลูโนイズ",
+    "bounce": "เด้ง (ปิงปอง)",
     "colorCycle": "วนสี",
     "crossfade": "ครอสเฟด",
     "drift": "ลอย",
     "enabled": "เปิดใช้แอนิเมชัน",
     "everyNFrames": "ทุก {{count}} เฟรม",
-    "exportAllFrames": "ส่งออกเฟรมทั้งหมด",
-    "fadeIn": "เฟดอิน",
-    "flickerSafe": "ป้องกันการกะพริบ",
+    "exportAllFrames": "ส่งออกทุกเฟรม",
+    "fadeIn": "เฟดเข้า",
+    "flickerSafe": "ปลอดการกะพริบ",
     "frameStep": "ขั้นเฟรม",
-    "interpolation": "การประมาณค่า",
-    "loop": "วนซ้ำ",
+    "interpolation": "การแทรกค่า",
+    "loop": "วนแอนิเมชัน",
     "maxFrames": "เฟรมสูงสุด",
     "moduleJitter": "การสั่นของโมดูล",
-    "moduleJitterWarning": "⚠️ อาจส่งผลต่อการสแกน",
+    "moduleJitterWarning": "⚠️ อาจส่งผลต่อความสามารถในการสแกน",
     "morph": "มอร์ฟ",
     "none": "ไม่มี",
     "off": "ปิด",
-    "pattern": "รูปแบบ",
+    "pattern": "รูปแบบที่สร้างขึ้น",
     "pulse": "พัลส์",
-    "randomSeed": "Seed สุ่ม",
+    "randomSeed": "ซีดแบบสุ่ม",
     "rotate": "หมุน",
-    "scanline": "เส้นสแกน",
+    "scanline": "สแกนไลน์",
     "shimmer": "ระยิบระยับ",
-    "slideIn": "สไลด์อิน",
+    "slideIn": "เลื่อนเข้า",
     "speed": "ความเร็วเฟรม",
     "startFrame": "เฟรมเริ่มต้น",
-    "temporalDither": "Temporal Dither",
+    "temporalDither": "ดิเธอร์ตามเวลา",
     "wave": "คลื่น"
   },
   "languages": {
     "en": "อังกฤษ",
     "hi": "ฮินดี",
     "zh": "จีน",
-    "ms": "มาเลย์",
+    "ms": "มลายู",
     "ta": "ทมิฬ",
     "th": "ไทย",
     "pt": "โปรตุเกส",
@@ -45,24 +45,24 @@
     "ja": "ญี่ปุ่น",
     "ko": "เกาหลี",
     "es": "สเปน",
-    "ar": "อารบิก",
+    "ar": "อาหรับ",
     "ru": "รัสเซีย",
     "te": "เตลูกู",
     "mr": "มราฐี",
     "bn": "เบงกาลี",
-    "gu": "คุชราต",
+    "gu": "คุชราตี",
     "kn": "กันนาดา",
     "ml": "มาลายาลัม",
-    "pa": "ปัญจาบ"
+    "pa": "ปัญจาบี"
   },
   "app": {
     "name": "ANQR",
-    "tagline": "เครื่องสร้าง QR Code"
+    "tagline": "ตัวสร้างคิวอาร์โค้ด"
   },
   "common": {
     "allRightsReserved": "สงวนลิขสิทธิ์",
-    "apply": "ใช้",
-    "back": "กลับ",
+    "apply": "นำไปใช้",
+    "back": "ย้อนกลับ",
     "cancel": "ยกเลิก",
     "close": "ปิด",
     "copied": "คัดลอกแล้ว!",
@@ -74,7 +74,7 @@
     "edit": "แก้ไข",
     "enabled": "เปิดใช้งาน",
     "error": "ข้อผิดพลาด",
-    "filter": "กรอง",
+    "filter": "ตัวกรอง",
     "less": "น้อยลง",
     "loading": "กำลังโหลด...",
     "more": "เพิ่มเติม",
@@ -97,7 +97,7 @@
     "viewAll": "ดูทั้งหมด",
     "yes": "ใช่"
   },
-  "fileSaveFailed": "ไม่สามารถบันทึกไฟล์: {{error}}",
+  "fileSaveFailed": "บันทึกไฟล์ไม่สำเร็จ: {{error}}",
   "fileSaved": "บันทึกไปยังเอกสาร: {{filename}}",
   "footer": {
     "copyright": "© ANQR {{year}}"
@@ -113,116 +113,116 @@
     "dithering": "ดิเธอริง",
     "encoding": "การเข้ารหัส",
     "expand": "ขยาย",
-    "filter": "กรอง",
-    "imageOverlay": "ภาพซ้อน",
+    "filter": "ตัวกรอง",
+    "imageOverlay": "ซ้อนทับภาพ",
     "items": {
       "anim-blue-noise": {
-        "description": "ขีดจำกัด Blue Noise พร้อมแอนิเมชัน",
-        "title": "Blue Noise เคลื่อนไหว"
+        "description": "เกณฑ์บลูนอยส์พร้อมแอนิเมชัน",
+        "title": "บลูนอยส์แบบเคลื่อนไหว"
       },
       "anim-blue-noise-i100": {
-        "description": "Blue Noise เคลื่อนไหวที่ 100%",
-        "title": "Blue Noise 100%"
+        "description": "บลูนอยส์แบบเคลื่อนไหวที่ 100%",
+        "title": "บลูนอยส์ 100%"
       },
       "anim-blue-noise-i50": {
-        "description": "Blue Noise เคลื่อนไหวที่ 50%",
-        "title": "Blue Noise 50%"
+        "description": "บลูนอยส์แบบเคลื่อนไหวที่ 50%",
+        "title": "บลูนอยส์ 50%"
       },
       "anim-blue-noise-i75": {
-        "description": "Blue Noise เคลื่อนไหวที่ 75%",
-        "title": "Blue Noise 75%"
+        "description": "บลูนอยส์แบบเคลื่อนไหวที่ 75%",
+        "title": "บลูนอยส์ 75%"
       },
       "anim-brightness": {
         "description": "ความสว่างพร้อมแอนิเมชัน",
-        "title": "ความสว่างเคลื่อนไหว"
+        "title": "ความสว่างแบบเคลื่อนไหว"
       },
       "anim-colormode-bw": {
-        "description": "ภาพซ้อนเคลื่อนไหวขาวดำ",
-        "title": "ขาวดำเคลื่อนไหว"
+        "description": "ซ้อนทับขาว-ดำแบบเคลื่อนไหว",
+        "title": "ขาว-ดำแบบเคลื่อนไหว"
       },
       "anim-colormode-color": {
-        "description": "ภาพซ้อนเคลื่อนไหวสี",
-        "title": "สีเคลื่อนไหว"
+        "description": "ซ้อนทับสีแบบเคลื่อนไหว",
+        "title": "สีแบบเคลื่อนไหว"
       },
       "anim-colormode-grayscale": {
-        "description": "ภาพซ้อนเคลื่อนไหวขาวเทา",
-        "title": "ขาวเทาเคลื่อนไหว"
+        "description": "ซ้อนทับระดับสีเทาแบบเคลื่อนไหว",
+        "title": "ระดับสีเทาแบบเคลื่อนไหว"
       },
       "anim-dithered": {
-        "description": "การกระจายข้อผิดพลาดพร้อมแอนิเมชัน",
-        "title": "ดิเธอร์เคลื่อนไหว"
+        "description": "การกระจายความผิดพลาดพร้อมแอนิเมชัน",
+        "title": "ดิเธอริงแบบเคลื่อนไหว"
       },
       "anim-duotone": {
-        "description": "สองโทนพร้อมแอนิเมชัน",
-        "title": "สองโทนเคลื่อนไหว"
+        "description": "ดูโอโทนพร้อมแอนิเมชัน",
+        "title": "ดูโอโทนแบบเคลื่อนไหว"
       },
       "anim-halftone": {
         "description": "จุดฮาล์ฟโทนพร้อมแอนิเมชัน",
-        "title": "ฮาล์ฟโทนเคลื่อนไหว"
+        "title": "ฮาล์ฟโทนแบบเคลื่อนไหว"
       },
       "anim-mosaic": {
         "description": "โมเสกพร้อมแอนิเมชัน",
-        "title": "โมเสกเคลื่อนไหว"
+        "title": "โมเสกแบบเคลื่อนไหว"
       },
       "blend-classic": {
-        "description": "ภาพซ้อนดิเธอร์พร้อมจานสีคลาสสิก",
-        "title": "ผสมคลาสสิก"
+        "description": "ซ้อนทับดิเธอริงด้วยพาเลตคลาสสิก",
+        "title": "ผสมแบบคลาสสิก"
       },
       "blend-forest": {
-        "description": "ภาพซ้อนดิเธอร์พร้อมจานสีป่า",
-        "title": "ผสมป่า"
+        "description": "ซ้อนทับดิเธอริงด้วยพาเลตฟอเรสต์",
+        "title": "ฟอเรสต์เบลนด์"
       },
       "blend-navy": {
-        "description": "ภาพซ้อนดิเธอร์พร้อมจานสีน้ำเงินเข้ม",
-        "title": "ผสมน้ำเงินเข้ม"
+        "description": "ซ้อนทับดิเธอริงด้วยพาเลตเนวี",
+        "title": "เนวีเบลนด์"
       },
       "blend-wine": {
-        "description": "ภาพซ้อนดิเธอร์พร้อมจานสีไวน์",
-        "title": "ผสมไวน์"
+        "description": "ซ้อนทับดิเธอริงด้วยพาเลตไวน์",
+        "title": "ไวน์เบลนด์"
       },
       "cmode-blue-noise-bw": {
-        "description": "Blue Noise แบบขาวดำ",
-        "title": "Blue Noise ขาวดำ"
+        "description": "บลูนอยส์แบบขาว-ดำ",
+        "title": "บลูนอยส์ ขาว-ดำ"
       },
       "cmode-blue-noise-color": {
-        "description": "Blue Noise แบบสี",
-        "title": "Blue Noise สี"
+        "description": "บลูนอยส์แบบสี",
+        "title": "บลูนอยส์ สี"
       },
       "cmode-dithered-color": {
-        "description": "ดิเธอร์แบบสี",
-        "title": "ดิเธอร์สี"
+        "description": "ดิเธอริงแบบสี",
+        "title": "ดิเธอริง สี"
       },
       "cmode-dithered-grayscale": {
-        "description": "ดิเธอร์แบบขาวเทา",
-        "title": "ดิเธอร์ขาวเทา"
+        "description": "ดิเธอริงแบบระดับสีเทา",
+        "title": "ดิเธอริง ระดับสีเทา"
       },
       "cmode-halftone-bw": {
-        "description": "ฮาล์ฟโทนแบบขาวดำ",
-        "title": "ฮาล์ฟโทนขาวดำ"
+        "description": "ฮาล์ฟโทนแบบขาว-ดำ",
+        "title": "ฮาล์ฟโทน ขาว-ดำ"
       },
       "cmode-halftone-color": {
         "description": "ฮาล์ฟโทนแบบสี",
-        "title": "ฮาล์ฟโทนสี"
+        "title": "ฮาล์ฟโทน สี"
       },
       "color-coral": {
         "description": "#e85d04 บน #ffe8d6",
         "title": "ปะการัง"
       },
       "color-coral-dots": {
-        "description": "ปะการังพร้อมโมดูลจุด",
-        "title": "ปะการังจุด"
+        "description": "ปะการังพร้อมโมดูลแบบจุด",
+        "title": "จุดสีปะการัง"
       },
       "color-crimson": {
         "description": "#9d0208 บน #ffccd5",
-        "title": "แดงเข้ม"
+        "title": "คริมสัน"
       },
       "color-forest": {
         "description": "#1b4332 บน #d8f3dc",
         "title": "ป่า"
       },
       "color-forest-dots": {
-        "description": "ป่าพร้อมโมดูลจุด",
-        "title": "ป่าจุด"
+        "description": "ป่าพร้อมโมดูลแบบจุด",
+        "title": "จุดสีป่า"
       },
       "color-gold": {
         "description": "#7f5539 บน #ffe8cc",
@@ -237,204 +237,204 @@
         "title": "เที่ยงคืน"
       },
       "color-midnight-dots": {
-        "description": "เที่ยงคืนพร้อมโมดูลจุด",
-        "title": "เที่ยงคืนจุด"
+        "description": "เที่ยงคืนพร้อมโมดูลแบบจุด",
+        "title": "จุดสีเที่ยงคืน"
       },
       "color-navy": {
         "description": "#001d3d บน #a2d2ff",
-        "title": "น้ำเงินเข้ม"
+        "title": "เนวี่"
       },
       "color-ocean": {
         "description": "#023e8a บน #caf0f8",
         "title": "มหาสมุทร"
       },
       "color-ocean-dots": {
-        "description": "มหาสมุทรพร้อมโมดูลจุด",
-        "title": "มหาสมุทรจุด"
+        "description": "มหาสมุทรพร้อมโมดูลแบบจุด",
+        "title": "จุดสีมหาสมุทร"
       },
       "color-royal": {
         "description": "#4a0080 บน #f5e6ff",
-        "title": "ราชวงศ์"
+        "title": "รอยัล"
       },
       "color-royal-dots": {
-        "description": "ราชวงศ์พร้อมโมดูลจุด",
-        "title": "ราชวงศ์จุด"
+        "description": "รอยัลพร้อมโมดูลแบบจุด",
+        "title": "จุดสีรอยัล"
       },
       "color-slate": {
         "description": "#343a40 บน #e9ecef",
-        "title": "หินชนวน"
+        "title": "สเลต"
       },
       "color-sunset": {
         "description": "#bf0603 บน #fff3b0",
         "title": "พระอาทิตย์ตก"
       },
       "color-sunset-dots": {
-        "description": "พระอาทิตย์ตกพร้อมโมดูลจุด",
-        "title": "พระอาทิตย์ตกจุด"
+        "description": "พระอาทิตย์ตกพร้อมโมดูลแบบจุด",
+        "title": "จุดสีพระอาทิตย์ตก"
       },
       "color-teal": {
         "description": "#006d77 บน #e0f4f5",
-        "title": "เขียวอมฟ้า"
+        "title": "ทีล"
       },
       "combo-anim-dots-halftone": {
-        "description": "ฮาล์ฟโทนเคลื่อนไหวพร้อมโมดูลจุด",
+        "description": "ฮาล์ฟโทนแบบเคลื่อนไหวพร้อมโมดูลแบบจุด",
         "title": "จุดเคลื่อนไหว + ฮาล์ฟโทน"
       },
       "combo-anim-rounded-blue-noise": {
-        "description": "Blue Noise เคลื่อนไหวพร้อมมน",
-        "title": "มนเคลื่อนไหว + Blue Noise"
+        "description": "บลูโน้ยส์แบบเคลื่อนไหวพร้อมสไตล์มน",
+        "title": "มนแบบเคลื่อนไหว + บลูโน้ยส์"
       },
       "combo-connected-pixelate-teal": {
-        "description": "ภาพซ้อนพิกเซลพร้อมโมดูลเชื่อมต่อ",
-        "title": "เชื่อมต่อ + พิกเซลเขียวอมฟ้า"
+        "description": "โอเวอร์เลย์พิกเซลพร้อมโมดูลแบบเชื่อมต่อ",
+        "title": "เชื่อมต่อ + พิกเซล สีทีล"
       },
       "combo-connected-square": {
-        "description": "โมดูลเชื่อมต่อพร้อมค้นหาสี่เหลี่ยม",
+        "description": "โมดูลแบบเชื่อมต่อพร้อมตัวค้นหาแบบสี่เหลี่ยม",
         "title": "เชื่อมต่อ + สี่เหลี่ยม"
       },
       "combo-connected-wave-ocean": {
-        "description": "โมดูลเชื่อมต่อพร้อมเอฟเฟกต์คลื่น",
-        "title": "เชื่อมต่อ + คลื่นมหาสมุทร"
+        "description": "โมดูลแบบเชื่อมต่อพร้อมเอฟเฟกต์คลื่น",
+        "title": "เชื่อมต่อ + คลื่น มหาสมุทร"
       },
       "combo-diamond-blue-noise-navy": {
-        "description": "โมดูลเพชรพร้อม Blue Noise",
-        "title": "เพชร + Blue Noise น้ำเงินเข้ม"
+        "description": "โมดูลรูปเพชรพร้อมบลูโน้ยส์",
+        "title": "เพชร + บลูโน้ยส์ เนวี่"
       },
       "combo-diamond-duotone-crimson": {
-        "description": "เอฟเฟกต์สองโทนพร้อมโมดูลเพชร",
-        "title": "เพชร + สองโทนแดงเข้ม"
+        "description": "เอฟเฟกต์ดูโอโทนพร้อมโมดูลรูปเพชร",
+        "title": "เพชร + ดูโอโทน คริมสัน"
       },
       "combo-diamond-rounded": {
-        "description": "โมดูลเพชรพร้อมค้นหามน",
+        "description": "โมดูลรูปเพชรพร้อมตัวค้นหาแบบมน",
         "title": "เพชร + มน"
       },
       "combo-dots-circle": {
-        "description": "โมดูลจุดพร้อมค้นหาวงกลม",
+        "description": "โมดูลแบบจุดพร้อมตัวค้นหาแบบวงกลม",
         "title": "จุด + วงกลม"
       },
       "combo-dots-extreme-forest": {
-        "description": "การมองเห็นสูงสุดพร้อมจุด",
-        "title": "จุด + สุดขีดป่า"
+        "description": "มองเห็นชัดสุดด้วยจุด",
+        "title": "จุด + สุดขีด สีป่า"
       },
       "combo-dots-halftone-gold": {
-        "description": "โมดูลจุดพร้อมภาพซ้อนฮาล์ฟโทน",
-        "title": "จุด + ฮาล์ฟโทนทอง"
+        "description": "โมดูลแบบจุดพร้อมโอเวอร์เลย์ฮาล์ฟโทน",
+        "title": "จุด + ฮาล์ฟโทน ทอง"
       },
       "combo-dots-outline-slate": {
-        "description": "ตรวจจับขอบพร้อมโมดูลจุด",
-        "title": "จุด + เส้นขอบหินชนวน"
+        "description": "ตรวจจับขอบด้วยโมดูลแบบจุด",
+        "title": "จุด + เส้นขอบ สเลต"
       },
       "combo-rounded-dithered-royal": {
-        "description": "ดิเธอร์คลาสสิกพร้อมสไตล์มน",
-        "title": "มน + ดิเธอร์ราชวงศ์"
+        "description": "ดิเธอร์แบบคลาสสิกพร้อมสไตล์มน",
+        "title": "มน + ดิเธอร์ รอยัล"
       },
       "combo-rounded-mosaic-sunset": {
-        "description": "โมดูลมนพร้อมภาพซ้อนโมเสก",
-        "title": "มน + โมเสกพระอาทิตย์ตก"
+        "description": "โมดูลแบบมนพร้อมโอเวอร์เลย์โมเสก",
+        "title": "มน + โมเสก พระอาทิตย์ตก"
       },
       "combo-rounded-rounded": {
-        "description": "โมดูลมนพร้อมค้นหามน",
+        "description": "โมดูลแบบมนพร้อมตัวค้นหาแบบมน",
         "title": "มน + มน"
       },
       "combo-rounded-subpixel-coral": {
-        "description": "การเรนเดอร์ซับพิกเซลรายละเอียดสูง",
-        "title": "มน + ซับพิกเซลปะการัง"
+        "description": "เรนเดอร์แบบซับพิกเซลรายละเอียดสูง",
+        "title": "มน + ซับพิกเซล ปะการัง"
       },
       "content-email": {
-        "description": "ลิงก์ mailto พร้อมสีปะการัง",
+        "description": "ลิงก์ Mailto โทนสีปะการัง",
         "title": "ที่อยู่อีเมล"
       },
       "content-event": {
-        "description": "กิจกรรม iCal พร้อมสไตล์มนสีม่วง",
+        "description": "กิจกรรม iCal แบบมน โทนรอยัล",
         "title": "กิจกรรมปฏิทิน"
       },
       "content-geo": {
-        "description": "พิกัดแผนที่พร้อมสีทองเชื่อมต่อ",
-        "title": "ตำแหน่งทางภูมิศาสตร์"
+        "description": "พิกัดแผนที่พร้อมสไตล์เชื่อมต่อโทนทอง",
+        "title": "ตำแหน่งภูมิศาสตร์"
       },
       "content-sms": {
-        "description": "SMS ที่กรอกไว้พร้อมเพชรสีเขียวอมฟ้า",
+        "description": "SMS กรอกล่วงหน้าพร้อมธีมเพชรสีเขียวอมฟ้า",
         "title": "ข้อความ SMS"
       },
       "content-vcard": {
-        "description": "บัตรติดต่อพร้อมสไตล์มนสีน้ำเงิน",
-        "title": "ผู้ติดต่อ vCard"
+        "description": "การ์ดรายชื่อสไตล์กรมท่ามุมมน",
+        "title": "รายชื่อติดต่อ vCard"
       },
       "content-wifi": {
-        "description": "การตั้งค่า WiFi พร้อมจุดสีเขียวป่า",
-        "title": "เครือข่าย WiFi"
+        "description": "การตั้งค่า Wi‑Fi พร้อมลายจุดสีเขียวป่า",
+        "title": "เครือข่าย Wi‑Fi"
       },
       "dither-adaptive-threshold": {
-        "description": "ขีดจำกัดปรับตัว",
-        "title": "ปรับตัว"
+        "description": "เกณฑ์ปรับตามสภาพ",
+        "title": "ปรับตามสภาพ"
       },
       "dither-blue-noise": {
-        "description": "ขีดจำกัด Blue Noise",
-        "title": "Blue Noise"
+        "description": "เกณฑ์บลูนอยส์",
+        "title": "บลูโนイズ"
       },
       "dither-blue-noise-error-diffusion": {
-        "description": "Blue Noise แบบไฮบริด",
-        "title": "Blue Noise + Error"
+        "description": "บลูนอยส์แบบไฮบริด",
+        "title": "บลูนอยส์ + Error"
       },
       "dither-error-diffusion": {
-        "description": "สไตล์ Floyd-Steinberg",
+        "description": "สไตล์ Floyd‑Steinberg",
         "title": "การกระจายข้อผิดพลาด"
       },
       "dither-kernel-atkinson": {
-        "description": "การกระจายข้อผิดพลาด Atkinson",
+        "description": "การกระจายข้อผิดพลาดแบบ Atkinson",
         "title": "Atkinson"
       },
       "dither-kernel-burkes": {
-        "description": "การกระจายข้อผิดพลาด Burkes",
+        "description": "การกระจายข้อผิดพลาดแบบ Burkes",
         "title": "Burkes"
       },
       "dither-kernel-floyd-steinberg": {
-        "description": "การกระจายข้อผิดพลาด Floyd-Steinberg",
-        "title": "Floyd-Steinberg"
+        "description": "การกระจายข้อผิดพลาดแบบ Floyd‑Steinberg",
+        "title": "Floyd‑Steinberg"
       },
       "dither-kernel-jarvis-judice-ninke": {
-        "description": "การกระจายข้อผิดพลาด Jarvis-Judice-Ninke",
-        "title": "Jarvis-Judice-Ninke"
+        "description": "การกระจายข้อผิดพลาดแบบ Jarvis‑Judice‑Ninke",
+        "title": "Jarvis‑Judice‑Ninke"
       },
       "dither-kernel-sierra": {
-        "description": "การกระจายข้อผิดพลาด Sierra",
+        "description": "การกระจายข้อผิดพลาดแบบ Sierra",
         "title": "Sierra"
       },
       "dither-kernel-stucki": {
-        "description": "การกระจายข้อผิดพลาด Stucki",
+        "description": "การกระจายข้อผิดพลาดแบบ Stucki",
         "title": "Stucki"
       },
       "dither-ordered-bayer": {
-        "description": "ดิเธอร์เมทริกซ์ Bayer",
-        "title": "Ordered Bayer"
+        "description": "การดีเธอร์ด้วยเมทริกซ์ Bayer",
+        "title": "Bayer แบบเรียงลำดับ"
       },
       "dither-perceptual": {
-        "description": "ถ่วงน้ำหนักความสว่าง",
-        "title": "การรับรู้"
+        "description": "ถ่วงน้ำหนักตามความสว่าง",
+        "title": "ตามการรับรู้"
       },
       "dither-strength-100": {
-        "description": "ความแรงดิเธอร์ที่ 100%",
+        "description": "ความแรงของดีเธอร์ที่ 100%",
         "title": "ความแรง 100%"
       },
       "dither-strength-20": {
-        "description": "ความแรงดิเธอร์ที่ 20%",
+        "description": "ความแรงของดีเธอร์ที่ 20%",
         "title": "ความแรง 20%"
       },
       "dither-strength-40": {
-        "description": "ความแรงดิเธอร์ที่ 40%",
+        "description": "ความแรงของดีเธอร์ที่ 40%",
         "title": "ความแรง 40%"
       },
       "dither-strength-60": {
-        "description": "ความแรงดิเธอร์ที่ 60%",
+        "description": "ความแรงของดีเธอร์ที่ 60%",
         "title": "ความแรง 60%"
       },
       "dither-strength-80": {
-        "description": "ความแรงดิเธอร์ที่ 80%",
+        "description": "ความแรงของดีเธอร์ที่ 80%",
         "title": "ความแรง 80%"
       },
       "dither-white-noise": {
-        "description": "ขีดจำกัดสัญญาณรบกวนสุ่ม",
-        "title": "White Noise"
+        "description": "เกณฑ์นอยส์สุ่ม",
+        "title": "ไวท์นอยส์"
       },
       "enc-ecc-h": {
         "description": "การแก้ไขข้อผิดพลาด 30%",
@@ -450,18 +450,18 @@
       },
       "enc-ecc-q": {
         "description": "การแก้ไขข้อผิดพลาด 25%",
-        "title": "ECC ควอร์ไทล์"
+        "title": "ECC ควอไทล์"
       },
       "enc-v0": {
         "description": "เลือกเวอร์ชันอัตโนมัติ",
         "title": "เวอร์ชันอัตโนมัติ"
       },
       "enc-v12": {
-        "description": "QR Code เวอร์ชัน 12",
+        "description": "คิวอาร์โค้ดเวอร์ชัน 12",
         "title": "เวอร์ชัน 12"
       },
       "enc-v6": {
-        "description": "ดีที่สุดสำหรับภาพซ้อน (ไม่มีตาตรงกลาง)",
+        "description": "เหมาะกับการวางภาพทับ (ไม่มีจุดตากลาง)",
         "title": "เวอร์ชัน 6"
       },
       "enc-v6-h": {
@@ -473,7 +473,7 @@
         "title": "V6 + ECC ต่ำ"
       },
       "enc-v9": {
-        "description": "QR Code เวอร์ชัน 9",
+        "description": "คิวอาร์โค้ดเวอร์ชัน 9",
         "title": "เวอร์ชัน 9"
       },
       "enc-v9-h": {
@@ -485,76 +485,76 @@
         "title": "V9 + ECC ต่ำ"
       },
       "finder-circle": {
-        "description": "รูปแบบค้นหาวงกลม",
-        "title": "ค้นหาวงกลม"
+        "description": "รูปแบบตัวค้นหาแบบวงกลม",
+        "title": "ตัวค้นหาแบบวงกลม"
       },
       "finder-rounded": {
-        "description": "รูปแบบค้นหามน",
-        "title": "ค้นหามน"
+        "description": "รูปแบบตัวค้นหาแบบมุมมน",
+        "title": "ตัวค้นหาแบบมุมมน"
       },
       "finder-square": {
-        "description": "รูปแบบค้นหาสี่เหลี่ยม",
-        "title": "ค้นหาสี่เหลี่ยม"
+        "description": "รูปแบบตัวค้นหาแบบสี่เหลี่ยม",
+        "title": "ตัวค้นหาแบบสี่เหลี่ยม"
       },
       "halftone-classic": {
-        "description": "ฮาล์ฟโทนพร้อมจานสีคลาสสิก",
+        "description": "ฮาล์ฟโทนพร้อมพาเลตต์คลาสสิก",
         "title": "ฮาล์ฟโทนคลาสสิก"
       },
       "halftone-forest": {
-        "description": "ฮาล์ฟโทนพร้อมจานสีป่า",
-        "title": "ฮาล์ฟโทนป่า"
+        "description": "ฮาล์ฟโทนพร้อมพาเลตต์โทนป่า",
+        "title": "ฮาล์ฟโทนโทนป่า"
       },
       "halftone-navy": {
-        "description": "ฮาล์ฟโทนพร้อมจานสีน้ำเงินเข้ม",
-        "title": "ฮาล์ฟโทนน้ำเงินเข้ม"
+        "description": "ฮาล์ฟโทนพร้อมพาเลตต์โทนกรมท่า",
+        "title": "ฮาล์ฟโทนโทนกรมท่า"
       },
       "halftone-wine": {
-        "description": "ฮาล์ฟโทนพร้อมจานสีไวน์",
-        "title": "ฮาล์ฟโทนไวน์"
+        "description": "ฮาล์ฟโทนพร้อมพาเลตต์โทนไวน์",
+        "title": "ฮาล์ฟโทนโทนไวน์"
       },
       "img-blend": {
-        "description": "ภาพซ้อนผสมสี",
-        "title": "โหมดผสม"
+        "description": "โอเวอร์เลย์ผสมสี",
+        "title": "โหมดการผสม"
       },
       "img-blue-noise": {
-        "description": "ขีดจำกัด Blue Noise",
-        "title": "Blue Noise"
+        "description": "ดีเธอร์แบบเกณฑ์ Blue Noise",
+        "title": "บลูโนイズ"
       },
       "img-brightness": {
         "description": "โมดูลตามความสว่าง",
         "title": "ความสว่าง"
       },
       "img-colormode-bw": {
-        "description": "การประมวลผลขาวดำ",
+        "description": "ประมวลผลขาวดำ",
         "title": "ขาวดำ"
       },
       "img-colormode-color": {
-        "description": "การประมวลผลสี",
+        "description": "ประมวลผลสี",
         "title": "สี"
       },
       "img-colormode-grayscale": {
-        "description": "การประมวลผลขาวเทา",
-        "title": "ขาวเทา"
+        "description": "ประมวลผลสเกลเทา",
+        "title": "สเกลเทา"
       },
       "img-dithered": {
-        "description": "การกระจายข้อผิดพลาดดิเธอร์",
-        "title": "ดิเธอร์"
+        "description": "ดีเธอร์แบบกระจายความผิดพลาด",
+        "title": "ดีเธอร์"
       },
       "img-dithered-i100": {
-        "description": "ดิเธอร์ที่ความเข้ม 100%",
-        "title": "ดิเธอร์ 100%"
+        "description": "ดีเธอร์ที่ความเข้ม 100%",
+        "title": "ดีเธอร์ 100%"
       },
       "img-dithered-i50": {
-        "description": "ดิเธอร์ที่ความเข้ม 50%",
-        "title": "ดิเธอร์ 50%"
+        "description": "ดีเธอร์ที่ความเข้ม 50%",
+        "title": "ดีเธอร์ 50%"
       },
       "img-dithered-i75": {
-        "description": "ดิเธอร์ที่ความเข้ม 75%",
-        "title": "ดิเธอร์ 75%"
+        "description": "ดีเธอร์ที่ความเข้ม 75%",
+        "title": "ดีเธอร์ 75%"
       },
       "img-duotone": {
         "description": "การแมปสีสองโทน",
-        "title": "สองโทน"
+        "title": "ดูโอโทน"
       },
       "img-extreme": {
         "description": "การมองเห็นภาพสูงสุด",
@@ -565,43 +565,43 @@
         "title": "ฮาล์ฟโทน"
       },
       "img-mosaic": {
-        "description": "เอฟเฟกต์กระเบื้องโมเสก",
+        "description": "เอฟเฟกต์โมเสกแบบกระเบื้อง",
         "title": "โมเสก"
       },
       "img-outline": {
-        "description": "ภาพซ้อนตรวจจับขอบ",
+        "description": "โอเวอร์เลย์ตรวจจับขอบ",
         "title": "เส้นขอบ"
       },
       "img-pixelate": {
-        "description": "เอฟเฟกต์ภาพซ้อนพิกเซล",
+        "description": "เอฟเฟกต์โอเวอร์เลย์แบบพิกเซล",
         "title": "พิกเซล"
       },
       "img-subpixel": {
-        "description": "การเรนเดอร์ซับพิกเซลรายละเอียดสูง",
+        "description": "เรนเดอร์ซับพิกเซลรายละเอียดสูง",
         "title": "ซับพิกเซล"
       },
       "img-wave": {
-        "description": "เอฟเฟกต์บิดเบือนคลื่น",
+        "description": "เอฟเฟกต์บิดเบือนเป็นคลื่น",
         "title": "คลื่น"
       },
       "mosaic-classic": {
-        "description": "โมเสกพร้อมจานสีคลาสสิก",
+        "description": "โมเสกพร้อมพาเลตต์คลาสสิก",
         "title": "โมเสกคลาสสิก"
       },
       "mosaic-forest": {
-        "description": "โมเสกพร้อมจานสีป่า",
-        "title": "โมเสกป่า"
+        "description": "โมเสกพร้อมพาเลตต์โทนป่า",
+        "title": "โมเสกโทนป่า"
       },
       "mosaic-navy": {
-        "description": "โมเสกพร้อมจานสีน้ำเงินเข้ม",
-        "title": "โมเสกน้ำเงินเข้ม"
+        "description": "โมเสกพร้อมพาเลตต์โทนกรมท่า",
+        "title": "โมเสกโทนกรมท่า"
       },
       "mosaic-wine": {
-        "description": "โมเสกพร้อมจานสีไวน์",
-        "title": "โมเสกไวน์"
+        "description": "โมเสกพร้อมพาเลตต์โทนไวน์",
+        "title": "โมเสกโทนไวน์"
       },
       "plain-basic": {
-        "description": "QR Code มาตรฐาน",
+        "description": "คิวอาร์โค้ดมาตรฐาน",
         "title": "คลาสสิก"
       },
       "plain-ecc-l": {
@@ -609,31 +609,31 @@
         "title": "ECC ต่ำ (7%)"
       },
       "plain-ecc-q": {
-        "description": "การแก้ไขข้อผิดพลาดปานกลาง-สูง",
-        "title": "ECC ควอร์ไทล์ (25%)"
+        "description": "การแก้ไขข้อผิดพลาดระดับกลาง-สูง",
+        "title": "ECC ระดับควอไทล์ (25%)"
       },
       "plain-v12": {
-        "description": "ใหญ่พร้อมการจัดตำแหน่งหลายจุด",
+        "description": "ขนาดใหญ่พร้อมจุดจัดแนวหลายจุด",
         "title": "เวอร์ชัน 12"
       },
       "plain-v6": {
-        "description": "ใหญ่ขึ้นไม่มีตาตรงกลาง",
+        "description": "ใหญ่ขึ้นโดยไม่มีตากลาง",
         "title": "เวอร์ชัน 6"
       },
       "plain-v9": {
-        "description": "ใหญ่ขึ้นอีกพร้อมตาตรงกลาง",
+        "description": "ใหญ่ยิ่งขึ้นพร้อมตากลาง",
         "title": "เวอร์ชัน 9"
       },
       "prep-blur-1": {
-        "description": "เบลอแบบเกาส์เซียน 1px",
+        "description": "เบลอแบบเกาสเซียน 1px",
         "title": "เบลอ 1px"
       },
       "prep-blur-2": {
-        "description": "เบลอแบบเกาส์เซียน 2px",
+        "description": "เบลอแบบเกาสเซียน 2px",
         "title": "เบลอ 2px"
       },
       "prep-blur-4": {
-        "description": "เบลอแบบเกาส์เซียน 4px",
+        "description": "เบลอแบบเกาสเซียน 4px",
         "title": "เบลอ 4px"
       },
       "prep-brightness-n25": {
@@ -653,23 +653,23 @@
         "title": "ความสว่าง +50"
       },
       "prep-contrast-n50": {
-        "description": "ความคมชัดต่ำ",
-        "title": "ความคมชัด -50"
+        "description": "คอนทราสต์ต่ำ",
+        "title": "คอนทราสต์ -50"
       },
       "prep-contrast-p100": {
-        "description": "ความคมชัดสูง",
-        "title": "ความคมชัด +100"
+        "description": "คอนทราสต์สูง",
+        "title": "คอนทราสต์ +100"
       },
       "prep-contrast-p50": {
-        "description": "ความคมชัดสูง",
-        "title": "ความคมชัด +50"
+        "description": "คอนทราสต์สูง",
+        "title": "คอนทราสต์ +50"
       },
       "prep-edge-canny": {
-        "description": "ตรวจจับขอบ Canny",
+        "description": "การตรวจจับขอบแบบ Canny",
         "title": "ขอบ Canny"
       },
       "prep-edge-sobel": {
-        "description": "ตรวจจับขอบ Sobel",
+        "description": "การตรวจจับขอบแบบ Sobel",
         "title": "ขอบ Sobel"
       },
       "prep-gamma-05": {
@@ -685,221 +685,221 @@
         "title": "แกมมา 2.0"
       },
       "prep-hue-90": {
-        "description": "หมุนสี 90 องศา",
-        "title": "หมุนสี +90°"
+        "description": "หมุนเฉดสี 90 องศา",
+        "title": "เฉดสี +90°"
       },
       "prep-invert": {
         "description": "กลับสี",
         "title": "กลับสี"
       },
       "prep-posterize-2": {
-        "description": "ระดับสี 2",
-        "title": "โปสเตอร์ไรซ์ 2"
+        "description": "2 ระดับสี",
+        "title": "โพสเตอร์ไรซ์ 2"
       },
       "prep-posterize-4": {
-        "description": "ระดับสี 4",
-        "title": "โปสเตอร์ไรซ์ 4"
+        "description": "4 ระดับสี",
+        "title": "โพสเตอร์ไรซ์ 4"
       },
       "prep-posterize-8": {
-        "description": "ระดับสี 8",
-        "title": "โปสเตอร์ไรซ์ 8"
+        "description": "8 ระดับสี",
+        "title": "โพสเตอร์ไรซ์ 8"
       },
       "prep-saturation-n100": {
-        "description": "ลดความอิ่มตัว",
-        "title": "ความอิ่มตัว -100"
+        "description": "ลดความอิ่มสี",
+        "title": "ความอิ่มสี -100"
       },
       "prep-saturation-n50": {
-        "description": "ลดความอิ่มตัว",
-        "title": "ความอิ่มตัว -50"
+        "description": "ลดความอิ่มสีลง",
+        "title": "ความอิ่มสี -50"
       },
       "prep-saturation-p100": {
-        "description": "เพิ่มความอิ่มตัว",
-        "title": "ความอิ่มตัว +100"
+        "description": "อิ่มสีจัด",
+        "title": "ความอิ่มสี +100"
       },
       "prep-saturation-p50": {
-        "description": "เพิ่มความอิ่มตัว",
-        "title": "ความอิ่มตัว +50"
+        "description": "อิ่มสีจัด",
+        "title": "ความอิ่มสี +50"
       },
       "prep-sharpen-100": {
-        "description": "ความคม 100%",
-        "title": "ความคม 100%"
+        "description": "เพิ่มความคมชัด 100%",
+        "title": "คมชัด 100%"
       },
       "prep-sharpen-25": {
-        "description": "ความคม 25%",
-        "title": "ความคม 25%"
+        "description": "เพิ่มความคมชัด 25%",
+        "title": "คมชัด 25%"
       },
       "prep-sharpen-50": {
-        "description": "ความคม 50%",
-        "title": "ความคม 50%"
+        "description": "เพิ่มความคมชัด 50%",
+        "title": "คมชัด 50%"
       },
       "prep-threshold-128": {
-        "description": "ขีดจำกัดไบนารีที่ 128",
-        "title": "ขีดจำกัด 128"
+        "description": "เกณฑ์ไบนารีที่ 128",
+        "title": "เกณฑ์ 128"
       },
       "prep-threshold-192": {
-        "description": "ขีดจำกัดไบนารีที่ 192",
-        "title": "ขีดจำกัด 192"
+        "description": "เกณฑ์ไบนารีที่ 192",
+        "title": "เกณฑ์ 192"
       },
       "prep-threshold-64": {
-        "description": "ขีดจำกัดไบนารีที่ 64",
-        "title": "ขีดจำกัด 64"
+        "description": "เกณฑ์ไบนารีที่ 64",
+        "title": "เกณฑ์ 64"
       },
       "style-connected": {
-        "description": "สไตล์โมดูลเชื่อมต่อ",
-        "title": "โมดูลเชื่อมต่อ"
+        "description": "สไตล์โมดูลแบบเชื่อมต่อ",
+        "title": "โมดูลแบบเชื่อมต่อ"
       },
       "style-diamond": {
-        "description": "สไตล์โมดูลเพชร",
-        "title": "โมดูลเพชร"
+        "description": "สไตล์โมดูลแบบเพชร",
+        "title": "โมดูลแบบเพชร"
       },
       "style-dots": {
-        "description": "สไตล์โมดูลจุด",
-        "title": "โมดูลจุด"
+        "description": "สไตล์โมดูลแบบจุด",
+        "title": "โมดูลแบบจุด"
       },
       "style-rounded": {
-        "description": "สไตล์โมดูลมน",
-        "title": "โมดูลมน"
+        "description": "สไตล์โมดูลแบบมน",
+        "title": "โมดูลแบบมน"
       },
       "style-square": {
-        "description": "สไตล์โมดูลสี่เหลี่ยม",
-        "title": "โมดูลสี่เหลี่ยม"
+        "description": "สไตล์โมดูลแบบสี่เหลี่ยม",
+        "title": "โมดูลแบบสี่เหลี่ยม"
       }
     },
     "plain": "ธรรมดา",
-    "powerCombos": "คอมโบทรงพลัง",
-    "preprocessing": "การประมวลผลล่วงหน้า",
+    "powerCombos": "คอมโบสุดพลัง",
+    "preprocessing": "การเตรียมล่วงหน้า",
     "sections": {
       "animation-overlay": {
-        "description": "ภาพซ้อน GIF เคลื่อนไหวพร้อมโหมดผสมต่างๆ",
-        "title": "ภาพซ้อนเคลื่อนไหว"
+        "description": "โอเวอร์เลย์ GIF แบบเคลื่อนไหวพร้อมโหมดผสมต่างๆ",
+        "title": "โอเวอร์เลย์แบบเคลื่อนไหว"
       },
       "blend-modes": {
-        "description": "การผสมสีต่างๆ กับภาพซ้อน",
+        "description": "การผสมสีที่แตกต่างกันกับโอเวอร์เลย์ภาพ",
         "title": "โหมดผสม"
       },
       "color-modes": {
-        "description": "การประมวลผลสี ขาวเทา และขาวดำ",
+        "description": "การประมวลผลสี, ระดับเทา และขาวดำ",
         "title": "การประมวลผลสี"
       },
       "colors": {
-        "description": "ชุดสีและจานสีตามธีม",
+        "description": "ชุดสีและพาเลตตามธีม",
         "title": "สีและธีม"
       },
       "content-types": {
-        "description": "รูปแบบข้อมูลต่างๆ - vCard, WiFi, อีเมล, SMS, ตำแหน่ง, ปฏิทิน",
+        "description": "รูปแบบเพย์โหลดต่างๆ - vCard, WiFi, อีเมล, SMS, พิกัด, ปฏิทิน",
         "title": "ประเภทเนื้อหา"
       },
       "dithering": {
-        "description": "วิธีดิเธอร์และเคอร์เนลการกระจายข้อผิดพลาดต่างๆ",
-        "title": "อัลกอริทึมดิเธอร์"
+        "description": "วิธีดิเธอริ่งต่างๆ และเคอร์เนลการกระจายข้อผิดพลาด",
+        "title": "อัลกอริทึมดิเธอริ่ง"
       },
       "encoding": {
-        "description": "เวอร์ชัน QR และระดับการแก้ไขข้อผิดพลาดต่างๆ",
+        "description": "เวอร์ชัน QR และระดับการแก้ไขข้อผิดพลาดที่แตกต่างกัน",
         "title": "การเข้ารหัส QR"
       },
       "image-overlay": {
-        "description": "ภาพซ้อนแบบนิ่งพร้อมโหมดผสมต่างๆ",
-        "title": "ภาพซ้อน"
+        "description": "โอเวอร์เลย์ภาพนิ่งพร้อมโหมดผสมต่างๆ",
+        "title": "โอเวอร์เลย์ภาพ"
       },
       "plain": {
-        "description": "QR Code มาตรฐานไม่มีภาพซ้อน - เวอร์ชันและการแก้ไขข้อผิดพลาดต่างๆ",
-        "title": "QR Code ธรรมดา"
+        "description": "คิวอาร์โค้ดมาตรฐานไม่มีโอเวอร์เลย์ - เวอร์ชันและการแก้ไขข้อผิดพลาดต่างๆ",
+        "title": "คิวอาร์โค้ดแบบธรรมดา"
       },
       "power-combos": {
-        "description": "การรวมฟีเจอร์หลายอย่างที่น่าประทับใจแสดงความสามารถของ ANQR",
-        "title": "คอมโบทรงพลัง"
+        "description": "การผสมผสานหลายฟีเจอร์ที่โดดเด่นเพื่อโชว์ความสามารถของ ANQR",
+        "title": "คอมโบสุดพลัง"
       },
       "preprocessing": {
-        "description": "ความสว่าง ความคมชัด แกมมา เบลอ ความคม โปสเตอร์ไรซ์ ตรวจจับขอบ",
-        "title": "การประมวลผลภาพล่วงหน้า"
+        "description": "ความสว่าง, คอนทราสต์, แกมมา, เบลอ, เพิ่มความคมชัด, โพสเตอร์ไรซ์, ตรวจจับขอบ",
+        "title": "การเตรียมภาพล่วงหน้า"
       },
       "styles": {
-        "description": "สไตล์ภาพต่างๆ สำหรับโมดูลและรูปแบบค้นหา",
-        "title": "สไตล์โมดูลและค้นหา"
+        "description": "สไตล์ภาพที่แตกต่างสำหรับโมดูลและแพทเทิร์นตัวค้นหา",
+        "title": "สไตล์โมดูลและลาย Finder"
       }
     },
     "showAll": "แสดงทั้งหมด",
     "styles": "สไตล์",
-    "subtitle": "สำรวจตัวอย่าง QR Code ที่สร้างด้วย ANQR",
-    "title": "แกลเลอรี QR Code",
-    "tryThis": "ลองสิ่งนี้"
+    "subtitle": "สำรวจตัวอย่างคิวอาร์โค้ดที่สร้างด้วย ANQR",
+    "title": "แกลเลอรีคิวอาร์โค้ด",
+    "tryThis": "ลองอันนี้"
   },
   "header": {
     "close": "ปิด",
     "copied": "คัดลอกแล้ว!",
     "copyLink": "คัดลอกลิงก์",
-    "darkMode": "เปลี่ยนเป็นโหมดมืด",
+    "darkMode": "สลับเป็นโหมดมืด",
     "export": "ส่งออก",
-    "lightMode": "เปลี่ยนเป็นโหมดสว่าง",
+    "lightMode": "สลับเป็นโหมดสว่าง",
     "reset": "รีเซ็ต",
     "searchSettings": "ค้นหาการตั้งค่า...",
     "share": "แชร์"
   },
   "hints": {
-    "alignmentStyle": "รูปแบบของรูปแบบการจัดตำแหน่ง (ใช้ใน QR Code ที่ใหญ่กว่า)",
+    "alignmentStyle": "สไตล์ของลายจัดแนว (ใช้ในคิวอาร์โค้ดขนาดใหญ่)",
     "appLinkNote": "เปิดเนื้อหาเฉพาะภายในแอปมือถือ",
-    "autoDetect": "ตรวจจับอัตโนมัติ (ต้องการ v{{version}}+ สำหรับเนื้อหาปัจจุบัน)",
+    "autoDetect": "ตรวจจับอัตโนมัติ (ต้องใช้ v{{version}}+ สำหรับเนื้อหาปัจจุบัน)",
     "autoMinVersion": "0 = อัตโนมัติ, ขั้นต่ำ v{{version}} สำหรับเนื้อหาปัจจุบัน",
-    "bgColorHex": "รหัส hex สีพื้นหลัง",
-    "bizcardLegacy": "รูปแบบเก่า - พิจารณาใช้ vCard แทน",
-    "bluetoothNote": "หมายเหตุ: การจับคู่บลูทูธผ่าน QR ขึ้นอยู่กับผู้ผลิตและอาจไม่ทำงานบนทุกอุปกรณ์",
-    "bounceAnimation": "เล่นแอนิเมชันไปข้างหน้าแล้วย้อนกลับ",
+    "bgColorHex": "รหัสสีพื้นหลังแบบ Hex",
+    "bizcardLegacy": "รูปแบบเดิม - แนะนำให้ใช้ vCard แทน",
+    "bluetoothNote": "หมายเหตุ: การจับคู่ Bluetooth ผ่านคิวอาร์ขึ้นอยู่กับผู้ผลิตและอาจใช้ไม่ได้กับทุกอุปกรณ์",
+    "bounceAnimation": "เล่นแอนิเมชันไปข้างหน้าแล้วถอยกลับ (Ping-Pong)",
     "calendarNote": "สมัครรับฟีดปฏิทินที่แชร์",
     "contrastGuard": "รับประกันอัตราส่วนคอนทราสต์ขั้นต่ำระหว่างพื้นหน้าและพื้นหลัง",
-    "cornerRadius": "เปอร์เซ็นต์รัศมีมุมสำหรับโมดูลมน (0-100%)",
-    "crispEdges": "ใช้การเรนเดอร์แบบพิกเซลสำหรับขอบโมดูลที่คม",
-    "customNote": "ป้อนข้อมูลดิบในรูปแบบใดก็ได้ จะไม่มีการตรวจสอบหรือจัดรูปแบบ",
+    "cornerRadius": "เปอร์เซ็นต์รัศมีมุมสำหรับโมดูลมุมมน (0-100%)",
+    "crispEdges": "ใช้การเรนเดอร์แบบพิกเซลเพื่อให้ขอบโมดูลคมชัด",
+    "customNote": "ป้อนข้อมูลดิบได้ทุกรูปแบบ จะไม่มีการตรวจสอบหรือจัดรูปแบบ",
     "dotRotation": "หมุนโมดูลแบบจุด (0-360 องศา)",
-    "encodingMode": "โหมดเข้ารหัสข้อมูล - อัตโนมัติเลือกโหมดที่มีประสิทธิภาพที่สุด",
-    "enforceMinQuietZone": "บังคับใช้ระยะขอบขั้นต่ำ 4 โมดูลเพื่อความน่าเชื่อถือในการสแกนที่ดีขึ้น",
-    "enterTextContent": "ป้อนเนื้อหาข้อความที่จะเข้ารหัสใน QR Code",
-    "enterUrlContent": "ป้อน URL ที่จะเข้ารหัสใน QR Code",
-    "epcSepaNote": "QR Code ของ European Payment Council สำหรับการโอนเงิน SEPA",
-    "errorCorrection": "ระดับการแก้ไขข้อผิดพลาด - สูงกว่า = ทนความเสียหายได้มากขึ้นแต่ QR ใหญ่ขึ้น",
-    "extraBorder": "โมดูลขอบเพิ่มเติมนอกเหนือจากระยะขอบ (0-10)",
-    "eyeInnerStyle": "รูปแบบของสี่เหลี่ยมภายในของรูปแบบค้นหา",
-    "eyeOuterStyle": "รูปแบบของวงแหวนนอกของรูปแบบค้นหา",
-    "eyeScale": "ปรับขนาดรูปแบบค้นหาเทียบกับขนาดเริ่มต้น (50-150%)",
-    "fgColorHex": "รหัส hex สีพื้นหน้า",
-    "finderStyle": "รูปแบบของรูปแบบค้นหาที่มุม",
-    "forceHttps": "แปลง HTTP URL เป็น HTTPS โดยอัตโนมัติ",
-    "frameStyle": "เพิ่มกรอบตกแต่งรอบ QR Code",
+    "encodingMode": "โหมดการเข้ารหัสข้อมูล - อัตโนมัติจะเลือกโหมดที่มีประสิทธิภาพที่สุด",
+    "enforceMinQuietZone": "บังคับให้มีเขตเงียบอย่างน้อย 4 โมดูลเพื่อให้สแกนได้เสถียรกว่า",
+    "enterTextContent": "กรอกข้อความที่จะเข้ารหัสในคิวอาร์โค้ด",
+    "enterUrlContent": "กรอก URL ที่จะเข้ารหัสในคิวอาร์โค้ด",
+    "epcSepaNote": "คิวอาร์โค้ดของ European Payment Council สำหรับการโอนเครดิต SEPA",
+    "errorCorrection": "ระดับการแก้ไขข้อผิดพลาด - ยิ่งสูงยิ่งทนความเสียหายได้มาก แต่คิวอาร์โค้ดจะใหญ่ขึ้น",
+    "extraBorder": "โมดูลขอบเพิ่มเติมนอกเขตเงียบ (0-10)",
+    "eyeInnerStyle": "สไตล์ของสี่เหลี่ยมด้านในของลาย Finder",
+    "eyeOuterStyle": "สไตล์ของวงแหวนด้านนอกของลาย Finder",
+    "eyeScale": "ปรับสเกลลาย Finder เทียบกับขนาดเริ่มต้น (50-150%)",
+    "fgColorHex": "รหัสสีพื้นหน้าแบบ Hex",
+    "finderStyle": "สไตล์ของลาย Finder ที่มุม",
+    "forceHttps": "แปลง URL แบบ HTTP เป็น HTTPS อัตโนมัติ",
+    "frameStyle": "เพิ่มกรอบตกแต่งรอบคิวอาร์โค้ด",
     "frameText": "ข้อความที่จะแสดงบนกรอบ",
-    "gapMode": "วิธีแสดงช่องว่างระหว่างโมดูล",
-    "gradient": "ใช้เอฟเฟกต์ไล่ระดับสีกับ QR Code",
-    "gs1Note": "GS1 Digital Link สำหรับการระบุตัวตนและการติดตามสินค้า",
-    "higherEccLargerQr": "สูงกว่า = ทนความเสียหายได้มากขึ้น, QR ใหญ่ขึ้น",
-    "loopAnimation": "วนซ้ำแอนิเมชันต่อเนื่อง",
-    "maxLengthGuard": "ป้องกันการเข้ารหัสเนื้อหาที่เกินความจุของ QR Code",
-    "minContrastRatio": "อัตราส่วนคอนทราสต์ขั้นต่ำที่ต้องการ (1-21, WCAG AA ต้องการ 4.5:1)",
+    "gapMode": "วิธีการเรนเดอร์ช่องว่างระหว่างโมดูล",
+    "gradient": "ใช้เอฟเฟกต์ไล่สีกับคิวอาร์โค้ด",
+    "gs1Note": "GS1 Digital Link สำหรับการระบุสินค้าและการติดตามย้อนกลับ",
+    "higherEccLargerQr": "ยิ่งสูง = ทนความเสียหายได้มากขึ้น, คิวอาร์ใหญ่ขึ้น",
+    "loopAnimation": "วนแอนิเมชันอย่างต่อเนื่อง",
+    "maxLengthGuard": "ป้องกันการเข้ารหัสเนื้อหาที่เกินความจุของคิวอาร์โค้ด",
+    "minContrastRatio": "อัตราส่วนคอนทราสต์ขั้นต่ำที่จะบังคับใช้ (1-21, WCAG AA ต้องการ 4.5:1)",
     "moduleGap": "ช่องว่างระหว่างโมดูลเป็นเปอร์เซ็นต์ (0-30%)",
-    "moduleJitterWarning": "⚠️ อาจส่งผลต่อการสแกน",
-    "moduleSize": "ขนาดของแต่ละโมดูลเป็นพิกเซล (2-20px)",
-    "moduleStyle": "รูปแบบภาพของโมดูล QR Code",
-    "normalizeNewlines": "แปลงรูปแบบขึ้นบรรทัดใหม่ที่แตกต่างกันเป็นรูปแบบมาตรฐาน",
-    "outputFormat": "เลือกรูปแบบไฟล์สำหรับการส่งออก",
-    "paynowNote": "ระบบชำระเงินด่วนสิงคโปร์",
-    "perModuleColor": "วิธีกำหนดสีให้แต่ละโมดูล",
+    "moduleJitterWarning": "⚠️ อาจส่งผลต่อความสามารถในการสแกน",
+    "moduleSize": "ขนาดของแต่ละโมดูลคิวอาร์โค้ดเป็นพิกเซล (2-20px)",
+    "moduleStyle": "สไตล์ภาพของโมดูลคิวอาร์โค้ด",
+    "normalizeNewlines": "แปลงรูปแบบขึ้นบรรทัดใหม่ต่าง ๆ ให้เป็นรูปแบบมาตรฐาน",
+    "outputFormat": "เลือกรูปแบบไฟล์เอาต์พุตสำหรับการส่งออก",
+    "paynowNote": "ระบบชำระเงินด่วนของสิงคโปร์",
+    "perModuleColor": "วิธีกำหนดสีให้กับโมดูลแต่ละตัว",
     "pickBgColor": "คลิกเพื่อเลือกสีพื้นหลัง",
     "pickFgColor": "คลิกเพื่อเลือกสีพื้นหน้า",
-    "pixNote": "ระบบชำระเงินทันทีบราซิล",
-    "pixelSnap": "วิธีจัดตำแหน่งโมดูลให้ตรงกับขอบพิกเซล",
-    "promptpayNote": "ระบบชำระเงินอิเล็กทรอนิกส์แห่งชาติของประเทศไทย",
-    "qrVersion": "เวอร์ชัน QR Code (0=อัตโนมัติ, 1-40 เพิ่มขนาดและความจุ)",
-    "quietZone": "ระยะขอบรอบ QR Code (0-10 โมดูล, แนะนำ: 4+)",
-    "rsvpNote": "ลิงก์ไปยังแบบฟอร์มตอบรับออนไลน์หรือหน้าลงทะเบียนกิจกรรม",
-    "safetyMode": "โหมดวิเคราะห์ความปลอดภัย - ตรวจสอบความสามารถอ่านได้ของ QR Code อย่างเข้มงวดแค่ไหน",
-    "selectContentType": "เลือกประเภทเนื้อหาที่จะเข้ารหัสใน QR Code",
-    "shortLinkNote": "ใช้บริการย่อ URL สำหรับ QR Code แบบไดนามิก/ติดตามได้",
-    "timingStyle": "รูปแบบของรูปแบบเวลา (เส้นแนวนอนและแนวตั้ง)",
-    "transparentBg": "ทำให้พื้นหลังโปร่งใสแทนที่จะใช้สีพื้นหลัง",
-    "trimWhitespace": "ลบช่องว่างหน้าและหลัง",
+    "pixNote": "ระบบชำระเงินทันทีของบราซิล",
+    "pixelSnap": "วิธีจัดตำแหน่งโมดูลให้แนบกับขอบพิกเซล",
+    "promptpayNote": "ระบบชำระเงินอิเล็กทรอนิกส์แห่งชาติของไทย",
+    "qrVersion": "เวอร์ชันคิวอาร์โค้ด (0=อัตโนมัติ, 1-40 เพิ่มขนาดและความจุ)",
+    "quietZone": "ระยะขอบเขตเงียบรอบคิวอาร์โค้ด (0-10 โมดูล, แนะนำ: 4+)",
+    "rsvpNote": "ลิงก์ไปยังแบบฟอร์ม RSVP ออนไลน์หรือหน้าลงทะเบียนงาน",
+    "safetyMode": "โหมดวิเคราะห์ความปลอดภัย - ความเข้มงวดในการตรวจสอบความสามารถในการอ่านคิวอาร์โค้ด",
+    "selectContentType": "เลือกประเภทเนื้อหาที่จะเข้ารหัสในคิวอาร์โค้ด",
+    "shortLinkNote": "ใช้บริการย่อลิงก์ URL สำหรับคิวอาร์โค้ดแบบไดนามิก/ติดตามได้",
+    "timingStyle": "สไตล์ของลาย Timing (เส้นแนวนอนและแนวตั้ง)",
+    "transparentBg": "ทำให้พื้นหลังโปร่งใสแทนการใช้สีพื้นหลัง",
+    "trimWhitespace": "ลบช่องว่างนำหน้าและต่อท้าย",
     "upiNote": "Unified Payments Interface สำหรับอินเดีย",
-    "utmCampaign": "พารามิเตอร์แคมเปญ UTM สำหรับการติดตามแคมเปญ",
-    "utmMedium": "พารามิเตอร์สื่อ UTM สำหรับการติดตามแคมเปญ",
-    "utmSource": "พารามิเตอร์แหล่งที่มา UTM สำหรับการติดตามแคมเปญ",
-    "validateInput": "ตรวจสอบข้อมูลก่อนเข้ารหัส",
-    "versionTooLow": "⚠️ เวอร์ชันต่ำเกินไป! ต้องการขั้นต่ำ v{{version}}"
+    "utmCampaign": "พารามิเตอร์ UTM campaign สำหรับการติดตามแคมเปญ",
+    "utmMedium": "พารามิเตอร์ UTM medium สำหรับการติดตามแคมเปญ",
+    "utmSource": "พารามิเตอร์ UTM source สำหรับการติดตามแคมเปญ",
+    "validateInput": "ตรวจสอบความถูกต้องของข้อมูลนำเข้าก่อนเข้ารหัส",
+    "versionTooLow": "⚠️ เวอร์ชันต่ำเกินไป! ต้องมีอย่างน้อย v{{version}}"
   },
   "language": {
     "current": "ภาษา",
@@ -911,9 +911,9 @@
     "authorPlaceholder": "ชื่อผู้เขียน",
     "copyright": "ลิขสิทธิ์",
     "copyrightPlaceholder": "© 2024 ชื่อบริษัท",
-    "customMetadata": "ข้อมูลเมตากำหนดเอง",
+    "customMetadata": "เมทาดาทากำหนดเอง",
     "description": "คำอธิบาย",
-    "descriptionPlaceholder": "คำอธิบาย QR Code...",
+    "descriptionPlaceholder": "คำอธิบายของคิวอาร์โค้ดนี้...",
     "includeCreationTime": "รวมเวลาสร้าง",
     "key": "คีย์",
     "keyPlaceholder": "คีย์",
@@ -921,7 +921,7 @@
     "license": "ใบอนุญาต",
     "licensePlaceholder": "CC-BY-4.0",
     "title": "ชื่อเรื่อง",
-    "titlePlaceholder": "ชื่อ QR Code",
+    "titlePlaceholder": "ชื่อคิวอาร์โค้ด",
     "value": "ค่า",
     "valuePlaceholder": "ค่า"
   },
@@ -930,61 +930,61 @@
     "contact": "ติดต่อ",
     "docs": "คู่มือ",
     "gallery": "แกลเลอรี",
-    "generator": "สร้าง",
+    "generator": "ตัวสร้าง",
     "guide": "คู่มือ",
     "privacy": "ความเป็นส่วนตัว",
     "terms": "ข้อกำหนด"
   },
   "output": {
     "backgroundOverride": "แทนที่พื้นหลัง",
-    "backgroundOverridePlaceholder": "เว้นว่างสำหรับค่าเริ่มต้น",
+    "backgroundOverridePlaceholder": "เว้นว่างไว้เพื่อใช้ค่าเริ่มต้น",
     "dithering": "ดิเธอริง",
     "dpi": "DPI (พิมพ์)",
-    "embedRasterOverlay": "ฝังภาพซ้อนแบบแรสเตอร์",
+    "embedRasterOverlay": "ฝังเลเยอร์แรสเตอร์ทับซ้อน",
     "exportAsAdditional": "ส่งออกเป็น (เพิ่มเติม)",
     "filename": "ชื่อไฟล์",
-    "floydSteinberg": "Floyd-Steinberg",
+    "floydSteinberg": "Floyd‑Steinberg",
     "format": "รูปแบบ",
     "gif": "GIF",
     "gifSettings": "การตั้งค่า GIF",
     "height": "ความสูง",
-    "includeQuietZone": "รวม Quiet Zone",
+    "includeQuietZone": "รวมพื้นที่เงียบ",
     "medianCut": "Median Cut",
     "neuquant": "NeuQuant",
     "none": "ไม่มี",
     "octree": "Octree",
     "off": "ปิด",
-    "ordered": "เรียงลำดับ",
-    "outputSize": "ขนาดผลลัพธ์",
-    "paletteSize": "ขนาดจานสี",
+    "ordered": "แบบมีลำดับ",
+    "outputSize": "ขนาดเอาต์พุต",
+    "paletteSize": "ขนาดพาเล็ตต์",
     "pdf": "PDF",
     "pixel": "พิกเซล",
     "png": "PNG",
     "precise": "แม่นยำ",
     "quality": "คุณภาพ",
     "quantizer": "ตัวควอนไทซ์",
-    "shapePrecision": "ความแม่นยำรูปร่าง",
+    "shapePrecision": "ความแม่นยำของรูปทรง",
     "svg": "SVG",
     "svgSettings": "การตั้งค่า SVG",
     "transparentColor": "สีโปร่งใส",
     "transparentColorPlaceholder": "#ffffff หรือเว้นว่าง",
-    "trueVector": "เวกเตอร์จริง",
+    "trueVector": "เวกเตอร์แท้",
     "trueVectorDesc": "ใช้เส้นทางแทนการฝังแรสเตอร์",
     "webp": "WebP",
     "width": "ความกว้าง"
   },
   "overlay": {
-    "adaptiveThreshold": "ขีดจำกัดปรับตัว",
+    "adaptiveThreshold": "เกณฑ์แบบปรับตัว",
     "atkinson": "Atkinson",
     "bayer2": "Bayer 2×2",
     "bayer4": "Bayer 4×4",
     "bayer8": "Bayer 8×8",
     "blend": "ผสม",
     "blendMode": "ผสม",
-    "blueNoise": "Blue Noise",
+    "blueNoise": "บลูโนイズ",
     "blueNoiseErrorDiffusion": "Blue Noise + การกระจายข้อผิดพลาด",
-    "blueNoiseMode": "Blue Noise",
-    "blueNoiseThreshold": "ขีดจำกัด Blue Noise",
+    "blueNoiseMode": "บลูโนイズ",
+    "blueNoiseThreshold": "เกณฑ์ Blue Noise",
     "blur": "เบลอ",
     "brightness": "ความสว่าง",
     "brightnessCurve": "เส้นโค้งความสว่าง",
@@ -992,85 +992,85 @@
     "burkes": "Burkes",
     "bw": "ขาวดำ",
     "cellSize": "ขนาดเซลล์",
-    "centerLogo": "โลโก้ตรงกลาง",
-    "centerRule": "กฎกลาง",
-    "clusteredDot": "จุดกลุ่ม",
-    "colorDither": "ดิเธอร์สี",
+    "centerLogo": "จัดโลโก้กึ่งกลาง",
+    "centerRule": "กฎกึ่งกลาง",
+    "clusteredDot": "จุดแบบกลุ่ม",
+    "colorDither": "ไดเทอร์สี",
     "colorMode": "โหมดสี",
-    "contain": "บรรจุ",
-    "contrast": "ความคมชัด",
-    "corsNote": "หมายเหตุ: รูปภาพต้องอนุญาต CORS",
-    "cover": "ครอบคลุม",
-    "cropImage": "ครอปรูปภาพ",
-    "cropSize": "ขนาดครอป",
-    "diffusionKernel": "Diffusion Kernel",
-    "disposalHandling": "การจัดการการทิ้ง",
-    "dither": "ดิเธอร์",
-    "ditherSettings": "การตั้งค่าดิเธอร์",
-    "ditherStrength": "ความแรงดิเธอร์",
-    "dithered": "ดิเธอร์",
-    "ditheredMode": "ดิเธอร์",
-    "dotShape": "รูปร่างจุด",
-    "duotone": "สองโทน",
-    "duotoneColors": "สีสองโทน",
-    "duotoneMode": "สองโทน",
-    "eccAwareMode": "โหมด ECC-Aware",
+    "contain": "พอดีในกรอบ",
+    "contrast": "คอนทราสต์",
+    "corsNote": "หมายเหตุ: ภาพต้องอนุญาตคำขอข้ามโดเมน (CORS)",
+    "cover": "ครอบคลุมเต็มกรอบ",
+    "cropImage": "ครอบตัดภาพ",
+    "cropSize": "ขนาดการครอบตัด",
+    "diffusionKernel": "เคอร์เนลการกระจาย",
+    "disposalHandling": "การจัดการ Disposal",
+    "dither": "ดีเธอร์",
+    "ditherSettings": "การตั้งค่าดีเธอร์",
+    "ditherStrength": "ความแรงดีเธอร์",
+    "dithered": "ดีเธอร์",
+    "ditheredMode": "ดีเธอร์",
+    "dotShape": "รูปทรงจุด",
+    "duotone": "ดูโอโทน",
+    "duotoneColors": "สีดูโอโทน",
+    "duotoneMode": "ดูโอโทน",
+    "eccAwareMode": "โหมดคำนึงถึง ECC",
     "edge": "ตรวจจับขอบ",
-    "edgeAware": "ตระหนักขอบ",
-    "enableCrop": "เปิดใช้การครอป",
+    "edgeAware": "คำนึงถึงขอบ",
+    "enableCrop": "เปิดใช้การครอบตัด",
     "errorDiffusion": "การกระจายข้อผิดพลาด",
     "extreme": "สุดขีด",
     "extremeMode": "สุดขีด",
-    "finderOverride": "แทนที่ตัวค้นหา",
-    "fitMode": "โหมดพอดี",
-    "flipX": "พลิก X",
-    "flipY": "พลิก Y",
-    "floydSteinberg": "Floyd-Steinberg",
+    "finderOverride": "แทนที่ Finder",
+    "fitMode": "โหมดการปรับให้พอดี",
+    "flipX": "พลิกแกน X",
+    "flipY": "พลิกแกน Y",
+    "floydSteinberg": "Floyd‑Steinberg",
     "fromUrl": "จาก URL",
     "fullColor": "สีเต็ม",
     "gamma": "แกมมา",
     "gapFillMode": "เติมช่องว่าง",
     "gapfill": "เติมช่องว่าง",
-    "gaussianNoise": "Gaussian Noise",
+    "gaussianNoise": "สัญญาณรบกวนแบบเกาส์เซียน",
     "gifSettings": "การตั้งค่า GIF",
-    "grayscale": "ขาวเทา",
+    "grayscale": "สเกลเทา",
     "gridSize": "ขนาดกริด",
     "halftone": "ฮาล์ฟโทน",
-    "halftoneCenter": "ศูนย์กลางฮาฟโทน",
-    "halftoneMode": "ฮาฟโทน",
+    "halftoneCenter": "ศูนย์กลางฮาล์ฟโทน",
+    "halftoneMode": "ฮาล์ฟโทน",
     "halftoneSettings": "การตั้งค่าฮาล์ฟโทน",
-    "highlight": "ไฮไลท์",
-    "hueRotate": "หมุนสี",
-    "imageGifWebp": "รูปภาพ/GIF/WebP",
-    "imageUrl": "URL รูปภาพ",
+    "highlight": "ไฮไลต์",
+    "hueRotate": "หมุนเฉดสี",
+    "imageGifWebp": "ภาพ / GIF / WebP",
+    "imageUrl": "URL ของภาพ",
     "intensity": "ความเข้ม",
-    "invert": "กลับสี",
-    "jarvisJudiceNinke": "Jarvis-Judice-Ninke",
+    "invert": "กลับสีภาพ",
+    "jarvisJudiceNinke": "Jarvis‑Judice‑Ninke",
     "line": "เส้น",
     "load": "โหลด",
-    "loadedFromUrl": "โหลดจาก URL",
+    "loadedFromUrl": "โหลดจาก URL แล้ว",
     "maxFps": "FPS สูงสุด",
-    "mode": "โหมดผสม",
+    "mode": "โหมดการผสม",
     "mosaic": "โมเสก",
     "mosaicMode": "โมเสก",
-    "neutralColor": "สีเป็นกลาง",
+    "neutralColor": "สีกลาง",
     "noFile": "ไม่มีไฟล์",
     "none": "ไม่มี",
     "nxnGrid": "กริด N×N",
-    "orderedBayer": "เรียงลำดับ (Bayer)",
-    "orderedMatrix": "เมทริกซ์เรียงลำดับ",
+    "orderedBayer": "แบบเรียงลำดับ (Bayer)",
+    "orderedMatrix": "เมทริกซ์แบบเรียงลำดับ",
     "original": "ต้นฉบับ",
     "outline": "เส้นขอบ",
     "outlineMode": "เส้นขอบ",
-    "perChannel": "ต่อช่อง",
+    "perChannel": "ต่อช่องสี",
     "perModule": "ต่อโมดูล",
-    "perceptual": "การรับรู้ (ความสว่าง)",
+    "perceptual": "ตามการรับรู้ (ความสว่าง)",
     "pixelate": "พิกเซล",
     "pixelateMode": "พิกเซล",
-    "posterizeLevels": "ระดับโปสเตอร์",
-    "preserveAlignment": "รักษารูปแบบการจัดตำแหน่ง",
-    "preserveFinders": "รักษารูปแบบค้นหา",
-    "preserveTiming": "รักษารูปแบบเวลา",
+    "posterizeLevels": "ระดับโปสเตอร์ไรซ์",
+    "preserveAlignment": "คงการจัดแนว",
+    "preserveFinders": "คงรูปแบบ Finder",
+    "preserveTiming": "คงรูปแบบ Timing",
     "protectFormat": "ปกป้องข้อมูลรูปแบบ",
     "protectFormatInfo": "ปกป้องข้อมูลรูปแบบ",
     "protectVersion": "ปกป้องข้อมูลเวอร์ชัน",
@@ -1078,70 +1078,70 @@
     "protection": "การป้องกัน",
     "removeImage": "ลบ",
     "respect": "เคารพ",
-    "riskBudget": "งบประมาณความเสี่ยง",
+    "riskBudget": "งบความเสี่ยง",
     "rotation": "การหมุน",
     "sCurve": "เส้นโค้ง S",
-    "saturation": "ความอิ่มตัว",
-    "screenedBlueNoise": "Blue Noise ที่กรองแล้ว",
-    "seed": "ค่าเริ่มต้น",
-    "selectImage": "เลือกรูปภาพ",
+    "saturation": "ความอิ่มสี",
+    "screenedBlueNoise": "บลูโน้ยส์แบบสกรีน",
+    "seed": "ซีด",
+    "selectImage": "เลือกภาพ",
     "sepia": "ซีเปีย",
-    "serpentineScanning": "การสแกนแบบงู",
+    "serpentineScanning": "สแกนแบบสลับทิศทาง",
     "shadow": "เงา",
-    "sharpen": "ความคม",
+    "sharpen": "เพิ่มความคม",
     "sierra": "Sierra",
     "sierra2": "Sierra-2",
     "sierraLite": "Sierra-Lite",
-    "simplify": "ทำให้ง่าย",
+    "simplify": "ทำให้ง่ายขึ้น",
     "stretch": "ยืด",
     "strict": "เข้มงวด",
     "stucki": "Stucki",
-    "stylized": "มีสไตล์",
+    "stylized": "สไตล์ไลซ์",
     "subpixel": "ซับพิกเซล",
     "subpixelMode": "ซับพิกเซล",
     "subpixelSettings": "การตั้งค่าซับพิกเซล",
     "subpixelSize": "ขนาดซับพิกเซล",
     "subpixelSizeMode": "ขนาดซับพิกเซล",
-    "temporalBlueNoise": "Blue Noise ตามเวลา",
-    "threshold": "ขีดจำกัด",
+    "temporalBlueNoise": "บลูโนイズแบบเวลา",
+    "threshold": "เกณฑ์",
     "tileSize": "ขนาดไทล์",
-    "triangularNoise": "สัญญาณรบกวนสามเหลี่ยม",
-    "trueDither": "True Dither",
+    "triangularNoise": "สัญญาณรบกวนแบบสามเหลี่ยม",
+    "trueDither": "ดิเธอร์แท้",
     "trueDitherMode": "ดิเธอร์แท้",
     "upload": "อัปโหลด",
-    "useFrameDelays": "ใช้ความล่าช้าเฟรม",
-    "voidCluster": "ช่องว่างและกลุ่ม",
+    "useFrameDelays": "ใช้การหน่วงเฟรม",
+    "voidCluster": "ช่องว่างและคลัสเตอร์",
     "wave": "คลื่น",
     "waveMode": "คลื่น",
-    "whiteNoise": "White Noise"
+    "whiteNoise": "ไวท์นอยส์"
   },
   "payload": {
     "accountName": "ชื่อบัญชี",
     "address": "ที่อยู่",
     "algorithm": "อัลกอริทึม",
-    "allDay": "ตลอดวัน",
+    "allDay": "กิจกรรมทั้งวัน",
     "amount": "จำนวนเงิน (ไม่บังคับ)",
     "amountBrl": "จำนวนเงิน (BRL, ไม่บังคับ)",
     "amountEur": "จำนวนเงิน (EUR)",
     "amountInr": "จำนวนเงิน (INR, ไม่บังคับ)",
     "amountSgd": "จำนวนเงิน (SGD, ไม่บังคับ)",
     "amountThb": "จำนวนเงิน (THB, ไม่บังคับ)",
-    "androidIntent": "Android Intent",
-    "appLink": "Deep Link แอป",
-    "assetInventory": "แท็กสินทรัพย์/สินค้าคงคลัง",
-    "assetItemId": "ID สินทรัพย์/รายการ",
-    "assetType": "ประเภทสินทรัพย์",
+    "androidIntent": "Intent ของ Android",
+    "appLink": "ดีปลิงก์แอป (Android/iOS)",
+    "assetInventory": "แท็กทรัพย์สิน/สินค้าคงคลัง",
+    "assetItemId": "รหัสทรัพย์สิน/รายการ",
+    "assetType": "ประเภททรัพย์สิน",
     "attendeeName": "ชื่อผู้เข้าร่วม",
     "audio": "เสียง",
-    "baseUrl": "URL หลัก",
-    "batchLot": "ล็อต (ไม่บังคับ)",
-    "beneficiaryName": "ชื่อผู้รับผลประโยชน์",
+    "baseUrl": "URL ฐาน",
+    "batchLot": "แบตช์/ล็อต (ไม่บังคับ)",
+    "beneficiaryName": "ชื่อผู้รับเงิน",
     "bicSwift": "BIC/SWIFT (ไม่บังคับ)",
     "birthday": "วันเกิด",
-    "bitcoin": "Bitcoin",
-    "bizcard": "BizCard (เก่า)",
+    "bitcoin": "บิตคอยน์",
+    "bizcard": "นามบัตร (แบบเดิม)",
     "bluetooth": "บลูทูธ",
-    "body": "เนื้อหา",
+    "body": "เนื้อความข้อความ",
     "bodyOptional": "เนื้อหา (ไม่บังคับ)",
     "box": "Box",
     "calendar": "ปฏิทิน",
@@ -1152,25 +1152,25 @@
     "campaignMedium": "สื่อแคมเปญ",
     "campaignName": "ชื่อแคมเปญ",
     "campaignSource": "แหล่งที่มาแคมเปญ",
-    "campaignTerm": "คำค้นหาแคมเปญ (ไม่บังคับ)",
+    "campaignTerm": "คำค้นแคมเปญ (ไม่บังคับ)",
     "city": "เมือง",
     "cityOptional": "เมือง (ไม่บังคับ)",
-    "cloudLink": "ลิงก์คลาวด์สตอเรจ",
+    "cloudLink": "ลิงก์ที่เก็บข้อมูลบนคลาวด์",
     "company": "บริษัท",
-    "contact": "ผู้ติดต่อ",
+    "contact": "ติดต่อ",
     "contentType": "ประเภทเนื้อหา",
-    "core": "หลัก",
+    "core": "คอร์",
     "country": "ประเทศ",
     "crypto": "คริปโต (BTC, ETH ฯลฯ)",
-    "cryptocurrency": "คริปโตเคอร์เรนซี",
+    "cryptocurrency": "สกุลเงินดิจิทัล",
     "custom": "รูปแบบกำหนดเอง",
     "customScheme": "สคีมกำหนดเอง",
     "dateTime": "วันที่และเวลา",
-    "deepLinkUrl": "URL Deep Link",
+    "deepLinkUrl": "URL ดีปลิงก์",
     "description": "คำอธิบาย",
-    "deviceAddress": "ที่อยู่อุปกรณ์ (MAC)",
+    "deviceAddress": "ที่อยู่ของอุปกรณ์ (MAC)",
     "deviceName": "ชื่ออุปกรณ์ (ไม่บังคับ)",
-    "digits": "จำนวนหลัก",
+    "digits": "ตัวเลข",
     "documentsMedia": "เอกสารและสื่อ",
     "dropbox": "Dropbox",
     "email": "อีเมล",
@@ -1179,73 +1179,73 @@
     "end": "สิ้นสุด",
     "endDate": "วันที่สิ้นสุด",
     "enterprise": "องค์กร",
-    "epcSepa": "EPC/SEPA (EU)",
+    "epcSepa": "EPC / SEPA (EU)",
     "equipment": "อุปกรณ์",
-    "ethereum": "Ethereum",
-    "event": "กิจกรรม iCalendar",
-    "eventName": "ชื่อกิจกรรม",
-    "eventRsvp": "ลิงก์ตอบรับกิจกรรม",
-    "eventTicket": "ตั๋วงาน",
+    "ethereum": "อีเธอเรียม",
+    "event": "อีเวนต์ iCalendar",
+    "eventName": "ชื่ออีเวนต์",
+    "eventRsvp": "ลิงก์ RSVP ของอีเวนต์",
+    "eventTicket": "ตั๋วอีเวนต์",
     "expiryDate": "วันหมดอายุ (ไม่บังคับ)",
     "facebook": "Facebook",
     "fallbackUrl": "URL สำรอง (ไม่บังคับ)",
-    "fax": "โทรสาร",
+    "fax": "แฟกซ์",
     "fileType": "ประเภทไฟล์",
-    "fileUrl": "URL ไฟล์/เอกสาร",
+    "fileUrl": "URL ของไฟล์/เอกสาร",
     "firstName": "ชื่อ",
-    "forceHttps": "บังคับ HTTPS",
+    "forceHttps": "บังคับใช้ HTTPS",
     "fullName": "ชื่อเต็ม",
     "furniture": "เฟอร์นิเจอร์",
-    "geo": "ตำแหน่งทางภูมิศาสตร์",
+    "geo": "ตำแหน่งภูมิศาสตร์",
     "github": "GitHub",
     "googleDrive": "Google Drive",
     "gs1DigitalLink": "GS1 Digital Link",
-    "gtin": "GTIN (หมายเลขสินค้าสากล)",
-    "hidden": "เครือข่ายที่ซ่อน",
+    "gtin": "GTIN (หมายเลขรายการสินค้าสากล)",
+    "hidden": "เครือข่ายที่ซ่อนอยู่",
     "homePhone": "โทรศัพท์บ้าน",
     "iban": "IBAN",
-    "idType": "ประเภท ID",
+    "idType": "ประเภทเอกสารประจำตัว",
     "image": "รูปภาพ",
     "instagram": "Instagram",
     "inventoryItem": "รายการสินค้าคงคลัง",
-    "iosUniversal": "iOS Universal",
+    "iosUniversal": "iOS แบบสากล",
     "issuer": "ผู้ออก",
-    "itAsset": "สินทรัพย์ IT",
+    "itAsset": "สินทรัพย์ไอที",
     "label": "ป้ายกำกับ (ไม่บังคับ)",
     "lastName": "นามสกุล",
     "latitude": "ละติจูด",
     "linkType": "ประเภทลิงก์",
     "linkedin": "LinkedIn",
-    "litecoin": "Litecoin",
+    "litecoin": "ไลต์คอยน์",
     "location": "ตำแหน่ง",
     "locationNetwork": "ตำแหน่งและเครือข่าย",
     "longitude": "ลองจิจูด",
-    "lookupUrl": "URL ค้นหา (ไม่บังคับ)",
+    "lookupUrl": "URL สำหรับค้นหา (ไม่บังคับ)",
     "marketing": "การตลาด",
     "marketingTags": "แท็กการตลาด",
-    "maxLengthGuard": "ป้องกันความยาวเกิน",
-    "mecard": "ผู้ติดต่อ MeCard",
-    "merchantName": "ชื่อร้านค้า (ไม่บังคับ)",
+    "maxLengthGuard": "ตัวป้องกันความยาวสูงสุด",
+    "mecard": "รายชื่อติดต่อ MeCard",
+    "merchantName": "ชื่อผู้ค้า (ไม่บังคับ)",
     "message": "ข้อความ",
     "messageOptional": "ข้อความ (ไม่บังคับ)",
     "messagingLink": "WhatsApp / Telegram / Signal",
     "messenger": "Messenger",
-    "mobileNumber": "หมายเลขโทรศัพท์มือถือ",
+    "mobileNumber": "หมายเลขมือถือ",
     "mobilePhone": "โทรศัพท์มือถือ",
     "name": "ชื่อ",
-    "nationalIdTaxId": "บัตรประชาชน / เลขประจำตัวผู้เสียภาษี",
+    "nationalIdTaxId": "เลขบัตรประชาชน / เลขประจำตัวผู้เสียภาษี",
     "nickname": "ชื่อเล่น",
-    "normalizeNewlines": "ปรับบรรทัดใหม่",
+    "normalizeNewlines": "ปรับรูปแบบการขึ้นบรรทัดใหม่ให้เป็นมาตรฐาน",
     "note": "หมายเหตุ",
     "oneDrive": "OneDrive",
     "openNoPassword": "เปิด (ไม่มีรหัสผ่าน)",
     "organization": "องค์กร",
     "other": "อื่นๆ",
-    "otpAuth": "ตัวตรวจสอบสิทธิ์ OTP",
+    "otpAuth": "แอปยืนยันตัวตน OTP",
     "otpType": "ประเภท",
     "password": "รหัสผ่าน",
     "payeeName": "ชื่อผู้รับเงิน",
-    "payments": "การชำระเงิน",
+    "payments": "การชำระเงิน (สเปกแบบเปิด)",
     "paynow": "PayNow (สิงคโปร์)",
     "phone": "โทรศัพท์",
     "phoneUsername": "โทรศัพท์/ชื่อผู้ใช้",
@@ -1255,47 +1255,47 @@
     "platform": "แพลตฟอร์ม",
     "prefilledMessage": "ข้อความที่กรอกไว้ล่วงหน้า (ไม่บังคับ)",
     "profileUrl": "URL โปรไฟล์",
-    "promptPayId": "PromptPay ID",
-    "promptpay": "PromptPay (ไทย)",
+    "promptPayId": "รหัส PromptPay",
+    "promptpay": "PromptPay (ประเทศไทย)",
     "proxyType": "ประเภทพร็อกซี",
     "rawData": "ข้อมูลดิบ",
     "recipient": "ผู้รับ",
-    "reference": "อ้างอิง",
-    "referenceOptional": "อ้างอิง (ไม่บังคับ)",
-    "resolverDomain": "โดเมนตัวแปลง",
-    "rsvpUrl": "URL ตอบรับ",
+    "reference": "ข้อมูลอ้างอิง",
+    "referenceOptional": "ข้อมูลอ้างอิง (ไม่บังคับ)",
+    "resolverDomain": "โดเมนตัวแก้ชื่อ",
+    "rsvpUrl": "URL สำหรับ RSVP",
     "searchQuery": "คำค้นหา (ไม่บังคับ)",
     "seat": "ที่นั่ง",
-    "secretBase32": "รหัสลับ (Base32)",
-    "sectionZone": "โซน/ส่วน",
+    "secretBase32": "คีย์ลับ (Base32)",
+    "sectionZone": "ส่วน/โซน",
     "securityType": "ประเภทความปลอดภัย",
     "serialNumber": "หมายเลขซีเรียล (ไม่บังคับ)",
     "service": "บริการ",
-    "shortLink": "ลิงก์สั้น",
-    "shortUrl": "URL ย่อ",
-    "signal": "Signal",
+    "shortLink": "เปลี่ยนเส้นทางลิงก์สั้น",
+    "shortUrl": "URL แบบสั้น",
+    "signal": "สัญญาณ",
     "sms": "SMS",
-    "smsMms": "SMS/MMS",
-    "socialMessaging": "โซเชียลและข้อความ",
+    "smsMms": "SMS / MMS",
+    "socialMessaging": "โซเชียลและการส่งข้อความ",
     "socialProfile": "โปรไฟล์โซเชียล",
     "ssid": "ชื่อเครือข่าย (SSID)",
     "start": "เริ่มต้น",
     "startDate": "วันที่เริ่มต้น",
     "state": "รัฐ/จังหวัด",
     "street": "ถนน",
-    "subject": "หัวข้อ",
-    "subjectOptional": "หัวข้อ (ไม่บังคับ)",
-    "summary": "ชื่อกิจกรรม",
+    "subject": "หัวเรื่อง",
+    "subjectOptional": "หัวเรื่อง (ไม่บังคับ)",
+    "summary": "ชื่องานกิจกรรม",
     "tel": "หมายเลขโทรศัพท์",
     "telegram": "Telegram",
     "text": "เนื้อหาข้อความ",
-    "ticketId": "ID ตั๋ว",
+    "ticketId": "รหัสตั๋ว",
     "tiktok": "TikTok",
-    "title": "ตำแหน่ง",
-    "transactionNote": "หมายเหตุธุรกรรม (ไม่บังคับ)",
-    "trimWhitespace": "ตัดช่องว่าง",
+    "title": "ชื่อเรื่อง",
+    "transactionNote": "หมายเหตุรายการ (ไม่บังคับ)",
+    "trimWhitespace": "ตัดช่องว่างหัวท้าย",
     "uenMobile": "UEN/หมายเลขมือถือ",
-    "universalLink": "Universal Link",
+    "universalLink": "ลิงก์สากล",
     "upi": "UPI (อินเดีย)",
     "upiId": "UPI ID (VPA)",
     "url": "URL",
@@ -1305,12 +1305,12 @@
     "utmMedium": "utm_medium",
     "utmSource": "utm_source",
     "utmTerm": "utm_term",
-    "validateInput": "ตรวจสอบข้อมูล",
+    "validateInput": "ตรวจสอบอินพุต",
     "validationOptions": "ตัวเลือกการตรวจสอบ",
-    "validationUrl": "URL ตรวจสอบ (ไม่บังคับ)",
-    "vcard": "ผู้ติดต่อ vCard",
+    "validationUrl": "URL สำหรับการตรวจสอบ (ไม่บังคับ)",
+    "vcard": "รายชื่อติดต่อ vCard",
     "vehicle": "ยานพาหนะ",
-    "venue": "สถานที่",
+    "venue": "สถานที่จัดงาน",
     "vevent": "กิจกรรมปฏิทิน",
     "viber": "Viber",
     "video": "วิดีโอ",
@@ -1318,106 +1318,106 @@
     "website": "เว็บไซต์",
     "whatsapp": "WhatsApp",
     "wifi": "WiFi",
-    "wifiNetwork": "เครือข่าย WiFi",
+    "wifiNetwork": "เครือข่าย Wi‑Fi",
     "wordDocument": "เอกสาร Word",
     "workPhone": "โทรศัพท์ที่ทำงาน",
     "youtube": "YouTube",
     "zip": "รหัสไปรษณีย์"
   },
   "preview": {
-    "qrCodePreview": "ตัวอย่าง QR Code - คลิกส่งออกเพื่อดาวน์โหลด",
+    "qrCodePreview": "ตัวอย่างคิวอาร์โค้ด - คลิก ส่งออก เพื่อดาวน์โหลด",
     "simulating": "กำลังจำลอง",
-    "simulationActive": "การจำลองสภาพแวดล้อมเปิดใช้งาน"
+    "simulationActive": "การจำลองสภาพแวดล้อมทำงานอยู่ - ตัวอย่างแสดงว่าคิวอาร์โค้ดอาจปรากฏอย่างไรภายใต้เงื่อนไขต่าง ๆ"
   },
   "qr": {
-    "additionalBorder": "ขอบเพิ่มเติมนอกเหนือจากระยะขอบ",
+    "additionalBorder": "ขอบเพิ่มเติมนอก quiet zone",
     "alphanumeric": "ตัวอักษรและตัวเลข",
     "auto": "อัตโนมัติ",
     "autoMin": "อัตโนมัติ (ขั้นต่ำ: {{version}})",
-    "autoOptimal": "อัตโนมัติ (เหมาะสม)",
-    "byteUtf8": "Byte/UTF-8",
+    "autoOptimal": "อัตโนมัติ (เหมาะสมที่สุด)",
+    "byteUtf8": "ไบต์ / UTF-8",
     "contrastRatio": "{{count}}:1",
-    "encodingMode": "โหมดเข้ารหัส",
-    "enforceMinQuietZone": "บังคับ Quiet Zone ขั้นต่ำ",
-    "enforceMinQuietZoneDesc": "รับประกันระยะขอบ ≥4 โมดูล",
+    "encodingMode": "โหมดการเข้ารหัส",
+    "enforceMinQuietZone": "บังคับใช้โซนเงียบขั้นต่ำ",
+    "enforceMinQuietZoneDesc": "ให้แน่ใจว่ามีระยะขอบ ≥4 โมดูล",
     "errorCorrection": "การแก้ไขข้อผิดพลาด",
     "extraBorderModules": "โมดูลขอบเพิ่มเติม",
-    "high": "H - สูงมาก (30%)",
+    "high": "H - สูง (30%)",
     "kanji": "คันจิ",
     "low": "L - ต่ำ (7%)",
-    "margin": "ระยะขอบ (Quiet Zone)",
+    "margin": "โซนเงียบ (ระยะขอบ)",
     "mask": "รูปแบบมาสก์",
-    "medium": "M - กลาง (15%)",
+    "medium": "M - ปานกลาง (15%)",
     "moduleSize": "ขนาดโมดูล",
     "nDegrees": "{{count}}°",
     "nModules": "{{count}} โมดูล",
     "nMs": "{{count}}ms",
     "nPercent": "{{count}}%",
     "nPx": "{{count}}px",
-    "numericOnly": "ตัวเลขเท่านั้น",
-    "quartile": "Q - สูง (25%)",
+    "numericOnly": "เฉพาะตัวเลข",
+    "quartile": "Q - ควอไทล์ (25%)",
     "version": "เวอร์ชัน"
   },
   "render": {
     "addColor": "เพิ่มสี",
-    "alignmentStyle": "สไตล์รูปแบบการจัดตำแหน่ง",
-    "background": "สีพื้นหลัง",
+    "alignmentStyle": "สไตล์แพทเทิร์นการจัดแนว",
+    "background": "พื้นหลัง",
     "byBrightness": "ตามความสว่าง",
-    "byCluster": "ตามกลุ่ม",
-    "byOverlay": "ตามภาพซ้อน",
+    "byCluster": "ตามคลัสเตอร์",
+    "byOverlay": "ตามโอเวอร์เลย์",
     "byPosition": "ตามตำแหน่ง",
     "ceil": "ปัดขึ้น",
     "circle": "วงกลม",
     "classic": "คลาสสิก",
-    "colorPalette": "จานสี",
+    "colorPalette": "พาเลตสี",
     "conic": "โคนิก",
     "connected": "เชื่อมต่อ",
-    "contrastGuard": "การ์ดความคมชัด",
+    "contrastGuard": "การป้องกันคอนทราสต์",
     "cornerRadius": "รัศมีมุม",
-    "crispEdges": "ขอบคม",
-    "crispEdgesDesc": "ใช้การเรนเดอร์แบบพิกเซลสำหรับขอบคม",
+    "crispEdges": "ขอบคมชัด",
+    "crispEdgesDesc": "ใช้ image-rendering: pixelated เพื่อให้ขอบคมชัด",
     "dashed": "เส้นประ",
-    "diamond": "เพชร",
+    "diamond": "รูปเพชร",
     "dotRotation": "การหมุนจุด",
     "dots": "จุด",
     "eyeInnerStyle": "สไตล์ตาด้านใน",
     "eyeOuterStyle": "สไตล์ตาด้านนอก",
-    "eyeScale": "ขนาดตา",
-    "finderStyle": "สไตล์รูปแบบค้นหา",
+    "eyeScale": "สเกลตา",
+    "finderStyle": "สไตล์แพทเทิร์นค้นหา",
     "floor": "ปัดลง",
-    "foreground": "สีพื้นหน้า",
+    "foreground": "พื้นหน้า",
     "frameStyle": "สไตล์กรอบ",
     "frameText": "ข้อความกรอบ",
     "gapMode": "โหมดช่องว่าง",
-    "gradient": "ไล่ระดับสี",
-    "gradientAngle": "มุมไล่ระดับ",
+    "gradient": "ไล่สี",
+    "gradientAngle": "มุมการไล่สี",
     "gradientColors": "สี",
-    "gradientType": "ประเภทไล่ระดับ",
-    "inset": "ฝังใน",
-    "linear": "เส้นตรง",
-    "matchFinder": "จับคู่ตัวค้นหา",
-    "matchModule": "จับคู่โมดูล",
-    "minContrastRatio": "อัตราส่วนความคมชัดขั้นต่ำ",
+    "gradientType": "ประเภทการไล่สี",
+    "inset": "เว้าเข้า",
+    "linear": "เชิงเส้น",
+    "matchFinder": "ตรงกับตัวค้นหา",
+    "matchModule": "ตรงกับโมดูล",
+    "minContrastRatio": "อัตราส่วนคอนทราสต์ขั้นต่ำ",
     "moduleGap": "ช่องว่างโมดูล",
-    "negativeSpace": "พื้นที่ว่าง",
+    "negativeSpace": "พื้นที่ว่างเชิงลบ",
     "none": "ไม่มี",
     "perModuleColorMode": "โหมดสีต่อโมดูล",
-    "pixelSnap": "จัดตำแหน่งพิกเซล",
+    "pixelSnap": "จัดชิดพิกเซล",
     "radial": "รัศมี",
-    "round": "ปัดเศษ",
+    "round": "กลม",
     "rounded": "มน",
-    "roundedFrame": "กรอบมน",
-    "shape": "รูปแบบโมดูล",
+    "roundedFrame": "กรอบมุมมน",
+    "shape": "สไตล์โมดูล",
     "sharp": "คม",
     "smooth": "เรียบ",
     "solid": "ทึบ",
-    "square": "สี่เหลี่ยม",
-    "squares": "สี่เหลี่ยม",
-    "sticker": "สติ๊กเกอร์",
-    "stroke": "เส้นขีด",
+    "square": "สี่เหลี่ยมจัตุรัส",
+    "squares": "สี่เหลี่ยมจัตุรัส",
+    "sticker": "สติกเกอร์",
+    "stroke": "เส้นขอบ",
     "style": "สไตล์",
     "tag": "แท็ก",
-    "timingStyle": "สไตล์รูปแบบเวลา",
+    "timingStyle": "สไตล์ลายจังหวะ",
     "transparentBg": "พื้นหลังโปร่งใส"
   },
   "safety": {
@@ -1425,43 +1425,43 @@
     "autoPickEcc": "เลือก ECC อัตโนมัติ",
     "autoPickVersion": "เลือกเวอร์ชันอัตโนมัติ",
     "autoReduceIntensity": "ลดความเข้มอัตโนมัติ",
-    "autoTuning": "การปรับอัตโนมัติ",
+    "autoTuning": "ปรับแต่งอัตโนมัติ",
     "balanced": "สมดุล",
-    "contrast": "ความคมชัด",
-    "contrastCheck": "ตรวจสอบความคมชัด",
+    "contrast": "อัตราส่วนคอนทราสต์",
+    "contrastCheck": "ตรวจสอบคอนทราสต์",
     "contrastRatio": "อัตราส่วนคอนทราสต์",
     "excellent": "ยอดเยี่ยม",
     "fair": "พอใช้",
     "good": "ดี",
-    "lockAlignment": "ล็อค Alignment",
-    "lockFinders": "ล็อค Finders",
-    "lockFormat": "ล็อคข้อมูลรูปแบบ",
-    "lockTiming": "ล็อค Timing",
-    "lockVersion": "ล็อคข้อมูลเวอร์ชัน",
+    "lockAlignment": "ล็อกการจัดแนว",
+    "lockFinders": "ล็อกตัวค้นหา",
+    "lockFormat": "ล็อกข้อมูลรูปแบบ",
+    "lockTiming": "ล็อกจังหวะ",
+    "lockVersion": "ล็อกข้อมูลเวอร์ชัน",
     "minModuleSize": "ขนาดโมดูลขั้นต่ำ",
-    "minQuietZone": "Quiet Zone ขั้นต่ำ",
+    "minQuietZone": "เขตว่างขั้นต่ำ",
     "off": "ปิด",
     "poor": "แย่",
-    "protectionLocks": "ล็อคการป้องกัน",
+    "protectionLocks": "ล็อกการป้องกัน",
     "qualityAnalysis": "การวิเคราะห์คุณภาพ",
-    "quietZone": "Quiet Zone",
+    "quietZone": "เขตว่าง",
     "safetyMode": "โหมดความปลอดภัย",
-    "scanability": "คะแนนการสแกน",
-    "showHeatmap": "แสดง Heatmap",
-    "simulateBlur": "จำลองเบลอ",
+    "scanability": "คะแนนความสามารถในการสแกน",
+    "showHeatmap": "แสดงฮีตแมป",
+    "simulateBlur": "จำลองความเบลอ",
     "simulateNoise": "จำลองสัญญาณรบกวน",
     "simulateRotation": "จำลองการหมุน",
     "strict": "เข้มงวด",
-    "untilScannable": "จนกว่าจะสแกนได้"
+    "untilScannable": "จนกว่าสแกนได้"
   },
   "sections": {
     "animation": "แอนิเมชัน",
-    "metadata": "ข้อมูลเมตา",
-    "output": "ผลลัพธ์",
-    "overlay": "ภาพซ้อน",
-    "payload": "ข้อมูล",
+    "metadata": "เมตาดาตา",
+    "output": "เอาต์พุต",
+    "overlay": "โอเวอร์เลย์ / รูปภาพ",
+    "payload": "เพย์โหลด / ข้อมูล",
     "qrEncoding": "การเข้ารหัส QR",
-    "rendering": "การแสดงผล",
+    "rendering": "การเรนเดอร์",
     "safety": "การวิเคราะห์ความปลอดภัย",
     "share": "แชร์",
     "watermark": "ลายน้ำ"
@@ -1470,12 +1470,12 @@
     "copied": "คัดลอกแล้ว!",
     "copyLink": "คัดลอกลิงก์",
     "directLink": "ลิงก์ตรง",
-    "directLinkDesc": "สร้าง URL ที่แชร์ได้",
+    "directLinkDesc": "สร้าง URL สำหรับแชร์",
     "embedHtml": "ฝัง HTML",
     "embedHtmlDesc": "สร้างโค้ดฝัง",
     "encodeAllParams": "เข้ารหัสพารามิเตอร์ทั้งหมด",
     "encodeAllParamsDesc": "รวมการตั้งค่าทั้งหมดใน URL",
-    "markdown": "Markdown",
+    "markdown": "มาร์กดาวน์",
     "quickShare": "แชร์ด่วน",
     "twitter": "X/Twitter",
     "whatsapp": "WhatsApp"
@@ -1484,27 +1484,27 @@
     "advanced": "ขั้นสูง",
     "basic": "พื้นฐาน",
     "professional": "โปร",
-    "watchAdForPro": "ดูโฆษณาเพื่อปลดล็อกฟีเจอร์ Professional 24 ชั่วโมง"
+    "watchAdForPro": "ดูโฆษณาเพื่อปลดล็อกฟีเจอร์ระดับมืออาชีพเป็นเวลา 24 ชั่วโมง"
   },
   "watermark": {
-    "behindQr": "หลัง QR",
-    "blendMode": "โหมดผสม",
+    "behindQr": "ด้านหลัง QR",
+    "blendMode": "โหมดการผสม",
     "bottomLeft": "ล่างซ้าย",
     "bottomRight": "ล่างขวา",
-    "center": "ตรงกลาง",
+    "center": "กึ่งกลาง",
     "corners": "มุม",
     "edges": "ขอบ",
-    "enabled": "เปิดใช้ลายน้ำ",
+    "enabled": "เปิดใช้งานลายน้ำ",
     "fontColor": "สีตัวอักษร",
     "fontSize": "ขนาดตัวอักษร",
     "image": "รูปภาพ",
     "multiply": "คูณ",
     "normal": "ปกติ",
     "opacity": "ความทึบ",
-    "overlay": "ซ้อนทับ",
-    "pattern": "รูปแบบ",
+    "overlay": "โอเวอร์เลย์",
+    "pattern": "ลวดลาย",
     "position": "ตำแหน่ง",
-    "quietZone": "ระยะขอบ",
+    "quietZone": "เขตว่าง",
     "screen": "สกรีน",
     "text": "ข้อความ",
     "textPlaceholder": "© ชื่อบริษัท",

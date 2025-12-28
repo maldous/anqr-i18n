@@ -1,0 +1,1022 @@
+1	“Kebisingan Biru”
+2	“Pantul (Ping-Pong)”
+3	“Siklus Warna”
+4	“Crossfade”
+5	“Melaju”
+6	“Aktifkan Animasi”
+7	“Setiap {{count}} frame”
+8	“Ekspor Semua Bingkai”
+9	“Fade In”
+10	“Aman dari Kedip”
+11	“Langkah Kerangka”
+12	“Interpolasi”
+13	“Animasi Perulangan”
+14	“Bingkai Maksimum”
+15	“Jitter Modul”
+16	“⚠️ Dapat memengaruhi kemampuan pemindaian”
+17	“Morf”
+18	“Tidak ada”
+19	“Mati”
+20	“Pola yang Dihasilkan”
+21	“Denyut Nadi”
+22	“Benih Acak”
+23	“Putar”
+24	“Scanline”
+25	“Kilauan”
+26	“Geser Masuk”
+27	“Kecepatan Bingkai”
+28	“Bingkai Awal”
+29	“Dither Temporal”
+30	“Gelombang”
+31	“Bahasa Inggris”
+32	“Hindi”
+33	“Tiongkok”
+34	“Melayu”
+35	“Tamil”
+36	“Thailand”
+37	“Portugis”
+38	“Indonesia”
+39	“Vietnam”
+40	“Tagalog”
+41	“Jepang”
+42	“Korea”
+43	“Spanyol”
+44	“Arab”
+45	“Rusia”
+46	“Telugu”
+47	“Marathi”
+48	“Bengali”
+49	“Gujarati”
+50	“Kannada”
+51	“Bahasa Malayalam”
+52	“Punjabi”
+53	“ANQR”
+54	“Generator Kode QR”
+55	“Seluruh hak dilindungi undang-undang”
+56	“Terapkan”
+57	“Kembali”
+58	“Batalkan”
+59	“Tutup”
+60	“Disalin!”
+61	“Salinan”
+62	“© ANQR”
+63	“Hapus”
+64	“Penyandang Disabilitas”
+65	“Unduh”
+66	“Edit”
+67	“Diaktifkan”
+68	“Kesalahan”
+69	“Filter”
+70	“Kurang”
+71	“Memuat…”
+72	“Selengkapnya”
+73	“Selanjutnya”
+74	“Tidak”
+75	“Oke”
+76	“Aktif”
+77	“Sebelumnya”
+78	“Reset”
+79	“Simpan”
+80	“Cari”
+81	“Pilih”
+82	“Tampilkan Lebih Sedikit”
+83	“Tampilkan Lebih Banyak”
+84	“Urutkan”
+85	“Kesuksesan”
+86	“Unggah”
+87	“Lihat Semua”
+88	“Ya”
+89	“Gagal menyimpan file: {{error}}”
+90	“Disimpan ke Dokumen: {{filename}}”
+91	“© ANQR {{tahun}}”
+92	“Semua”
+93	“Animasi”
+94	“Mode Pencampuran”
+95	“Runtuh”
+96	“Mode Warna”
+97	“Warna”
+98	“Jenis Konten”
+99	“Keraguan”
+100	“Pengkodean”
+101	“Perluasan”
+102	“Tampilan Gambar”
+103	“Ambang batas derau biru dengan animasi”
+104	“Kebisingan Biru Animasi”
+105	“Kebisingan biru animasi pada 100%”
+106	“Blue Noise 100%”
+107	“Deretan derau biru animasi pada 50%”
+108	“Blue Noise 50%”
+109	“Derau biru animasi pada 75%”
+110	“Blue Noise 75%”
+111	“Kecerahan dengan animasi”
+112	“Kecerahan Animasi”
+113	“Lapisan animasi hitam putih”
+114	“Animasi Hitam Putih”
+115	“Lapisan animasi warna”
+116	“Warna Animasi”
+117	“Lapisan animasi skala abu-abu”
+118	“Animasi Skala Abu-abu”
+119	“Penyebaran kesalahan dengan animasi”
+120	“Animasi Dithered”
+121	“Duoton dengan animasi”
+122	“Duotone Animasi”
+123	“Titik halftone dengan animasi”
+124	“Halftone Animasi”
+125	“Mosaik dengan animasi”
+126	“Mosaik Animasi”
+127	“Lapisan dithered dengan palet klasik”
+128	“Campuran Klasik”
+129	“Lapisan dithered dengan palet warna hutan”
+130	“Campuran Hutan”
+131	“Lapisan dithered dengan palet warna biru tua”
+132	“Campuran Angkatan Laut”
+133	“Lapisan dithered dengan palet warna anggur”
+134	“Campuran Anggur”
+135	“Blue Noise in B&W”
+136	“Blue Noise B&W”
+137	“Derau Biru dalam Warna”
+138	“Warna Derau Biru”
+139	“Berwarna Terbata-bata”
+140	“Warna Dither”
+141	“Dithered dalam Skala Abu-abu”
+142	“Skala Abu-abu yang Di-dither”
+143	“Halftone dalam Hitam Putih”
+144	“Halftone Hitam Putih”
+145	“Halftone dalam Warna”
+146	“Warna Halftone”
+147	“#e85d04 pada #ffe8d6”
+148	“Karang”
+149	“Karang dengan modul titik”
+150	“Titik Karang”
+151	“#9d0208 pada #ffccd5”
+152	“Merah Tua”
+153	“#1b4332 pada #d8f3dc”
+154	“Hutan”
+155	“Hutan dengan modul titik”
+156	“Titik Hutan”
+157	“#7f5539 di #ffe8cc”
+158	“Emas”
+159	“#ffffff di #000000”
+160	“Terbalik”
+161	“#1a1a2e di #eef1ff”
+162	“Tengah Malam”
+163	“Tengah malam dengan modul titik”
+164	“Titik Tengah Malam”
+165	“#001d3d pada #a2d2ff”
+166	“Angkatan Laut”
+167	“#023e8a di #caf0f8”
+168	“Samudra”
+169	“Samudra dengan modul titik”
+170	“Titik Laut”
+171	“#4a0080 pada #f5e6ff”
+172	“Kerajaan”
+173	“Royal dengan modul titik”
+174	“Titik Kerajaan”
+175	“#343a40 pada #e9ecef”
+176	“Batu Tulis”
+177	“#bf0603 di #fff3b0”
+178	“Matahari Terbenam”
+179	“Matahari terbenam dengan modul titik”
+180	“Titik Matahari Terbenam”
+181	“#006d77 pada #e0f4f5”
+182	“Biru kehijauan”
+183	“Halftone animasi dengan modul titik”
+184	“Titik Animasi + Halftone”
+185	“Animasi noise biru dengan bentuk bulat”
+186	“Animasi Bulat + Derau Biru”
+187	“Lapisan berpiksel dengan modul terhubung”
+188	“Terhubung + Pikselasi Biru Kehijauan”
+189	“Modul terhubung dengan pencari persegi”
+190	“Terhubung + Persegi”
+191	“Modul terhubung dengan efek gelombang”
+192	“Terhubung + Gelombang Laut”
+193	“Modul berlian dengan derau biru”
+194	“Diamond + Blue Noise Navy”
+195	“Efek duotone dengan modul berlian”
+196	“Diamond + Duotone Crimson”
+197	“Modul berlian dengan pencari bulat”
+198	“Berlian + Bulat”
+199	“Modul titik dengan pencari lingkaran”
+200	“Titik + Lingkaran”
+201	“Visibilitas maksimum dengan titik-titik”
+202	“Titik + Hutan Ekstrem”
+203	“Modul titik dengan lapisan halftone”
+204	“Titik + Emas Halftone”
+205	“Deteksi tepi dengan modul titik”
+206	“Titik + Garis Luar Papan Tulis”
+207	“Gaya klasik dengan efek dithering dan pembulatan”
+208	“Royal yang Dibulatkan + Dithered”
+209	“Modul membulat dengan lapisan mosaik”
+210	“Bulat + Matahari Terbenam Mosaik”
+211	“Modul membulat dengan pencari yang membulat”
+212	“Dibulatkan + Dibulatkan”
+213	“Rendering subpiksel detail tinggi”
+214	“Karang Bulat + Subpiksel”
+215	“Tautan Mailto dengan warna karang”
+216	“Alamat Email”
+217	“Acara iCal dengan royal bulat”
+218	“Acara Kalender”
+219	“Koordinat peta dengan emas yang terhubung”
+220	“Lokasi Geografis”
+221	“SMS yang sudah diisi dengan warna biru kehijauan berlian”
+222	“Pesan SMS”
+223	“Kartu kontak dengan gaya biru tua membulat”
+224	“Kontak vCard”
+225	“Konfigurasi WiFi dengan titik-titik hijau hutan”
+226	“Jaringan WiFi”
+227	“Ambang batas adaptif”
+228	“Adaptif”
+229	“Ambang batas kebisingan biru”
+230	“Kebisingan biru hibrida”
+231	“Blue Noise + Error”
+232	“Gaya Floyd-Steinberg”
+233	“Penyebaran Kesalahan”
+234	“Difusi kesalahan Atkinson”
+235	“Atkinson”
+236	“Penyebaran kesalahan Burkes”
+237	“Burkes”
+238	“Penyebaran kesalahan Floyd-Steinberg”
+239	“Floyd-Steinberg”
+240	“Difusi kesalahan Jarvis-Judice-Ninke”
+241	“Jarvis-Judice-Ninke”
+242	“Penyebaran kesalahan Sierra”
+243	“Sierra”
+244	“Difusi kesalahan terjebak”
+245	“Stucki”
+246	“Dithering matriks Bayer”
+247	“Bayer memesan”
+248	“Berbobot Luminansi”
+249	“Persepsi”
+250	“Kekuatan Dither pada 100%”
+251	“Kekuatan 100%”
+252	“Kekuatan Dither pada 20%”
+253	“Kekuatan 20%”
+254	“Kekuatan Dither pada 40%”
+255	“Kekuatan 40%”
+256	“Kekuatan Dither pada 60%”
+257	“Kekuatan 60%”
+258	“Kekuatan Dither pada 80%”
+259	“Kekuatan 80%”
+260	“Ambang batas kebisingan acak”
+261	“Kebisingan Putih”
+262	“Koreksi kesalahan 30%”
+263	“ECC High”
+264	“Koreksi kesalahan 7%”
+265	“ECC Rendah”
+266	“Koreksi kesalahan 15%”
+267	“ECC Sedang”
+268	“Koreksi kesalahan 25%”
+269	“Kuartil ECC”
+270	“Pemilihan versi otomatis”
+271	“Versi Otomatis”
+272	“Kode QR Versi 12”
+273	“Versi 12”
+274	“Terbaik untuk overlay (tanpa mata di tengah)”
+275	“Versi 6”
+276	“Versi 6 dengan koreksi kesalahan tinggi”
+277	“V6 + ECC Tinggi”
+278	“Versi 6 dengan koreksi kesalahan rendah”
+279	“V6 + ECC Rendah”
+280	“Kode QR Versi 9”
+281	“Versi 9”
+282	“Versi 9 dengan koreksi kesalahan tinggi”
+283	“V9 + ECC Tinggi”
+284	“Versi 9 dengan koreksi kesalahan rendah”
+285	“V9 + ECC Rendah”
+286	“Pola pencari lingkaran”
+287	“Pencari Lingkaran”
+288	“Pola pencari bulat”
+289	“Pencari Bulat”
+290	“Pola pencari persegi”
+291	“Pencari Persegi”
+292	“Halftone dengan palet klasik”
+293	“Halftone Klasik”
+294	“Halftone dengan palet warna hutan”
+295	“Halftone Hutan”
+296	“Halftone dengan palet warna navy”
+297	“Halftone Biru Tua”
+298	“Halftone dengan palet warna anggur”
+299	“Warna Setengah Nada Anggur”
+300	“Lapisan campuran warna”
+301	“Mode Campuran”
+302	“Pengacakan ambang batas derau biru”
+303	“Modul berbasis kecerahan”
+304	“Kecerahan”
+305	“Pengolahan hitam putih”
+306	“Hitam & Putih”
+307	“Pengolahan warna”
+308	“Warna”
+309	“Pemrosesan skala abu-abu”
+310	“Skala Abu-abu”
+311	“Pengacakan difusi kesalahan”
+312	“Bimbang”
+313	“Diragukan pada intensitas 100%”
+314	“Ragu-ragu 100%”
+315	“Ditarik-tarik pada intensitas 50%”
+316	“Ragu-ragu 50%”
+317	“Diragukan pada intensitas 75%”
+318	“Ragu-ragu 75%”
+319	“Pemetaan warna dua nada”
+320	“Duotone”
+321	“Visibilitas gambar maksimum”
+322	“Ekstrem”
+323	“Titik halftone klasik”
+324	“Halftone”
+325	“Efek ubin mosaik”
+326	“Mosaik”
+327	“Lapisan deteksi tepi”
+328	“Garis Besar”
+329	“Efek overlay berpiksel”
+330	“Pixelate”
+331	“Rendering subpiksel detail tinggi”
+332	“Subpiksel”
+333	“Efek distorsi bergelombang”
+334	“Mosaik dengan palet klasik”
+335	“Mosaik Klasik”
+336	“Mosaik dengan palet warna hutan”
+337	“Mosaik Hutan”
+338	“Mosaik dengan palet warna biru tua”
+339	“Mosaik Angkatan Laut”
+340	“Mosaik dengan palet warna anggur”
+341	“Mosaik Anggur”
+342	“Kode QR standar”
+343	“Klasik”
+344	“Koreksi kesalahan minimal”
+345	“ECC Rendah (7%)”
+346	“Koreksi kesalahan tingkat menengah-tinggi”
+347	“Kuartil ECC (25%)”
+348	“Besar dengan banyak penyelarasan”
+349	“Lebih besar tanpa mata di tengah”
+350	“Lebih besar lagi dengan mata di tengah”
+351	“1px gaussian blur”
+352	“Buram 1px”
+353	“blur gaussian 2px”
+354	“Buram 2px”
+355	“4px gaussian blur”
+356	“Buram 4px”
+357	“Kecerahan disesuaikan menjadi lebih gelap”
+358	“Kecerahan -25”
+359	“Kecerahan -50”
+360	“Kecerahan disesuaikan menjadi lebih terang”
+361	“Kecerahan +25”
+362	“Kecerahan +50”
+363	“Kontras rendah”
+364	“Kontras -50”
+365	“Kontras tinggi”
+366	“Kontras +100”
+367	“Kontras +50”
+368	“Deteksi tepi Canny”
+369	“Kecerdasan Tepi”
+370	“Deteksi tepi Sobel”
+371	“Edge Sobel”
+372	“Koreksi Gamma 0,5”
+373	“Gamma 0,5”
+374	“Koreksi Gamma 1.5”
+375	“Gamma 1.5”
+376	“Koreksi Gamma 2.0”
+377	“Gamma 2.0”
+378	“Rotasi Hue 90 derajat”
+379	“Hue +90°”
+380	“Warna terbalik”
+381	“2 tingkat warna”
+382	“Posterisasi 2”
+383	“4 tingkat warna”
+384	“Posterisasi 4”
+385	“8 tingkat warna”
+386	“Posterisasi 8”
+387	“Tidak Jenuh”
+388	“Saturasi -100”
+389	“Pengurangan saturasi”
+390	“Saturasi -50”
+391	“Terlalu Jenuh”
+392	“Saturasi +100”
+393	“Saturasi +50”
+394	“Pengasahan 100%”
+395	“Pertajam 100%”
+396	“Pengasahan 25%”
+397	“Pertajam 25%”
+398	“Pengasahan 50%”
+399	“Pertajam 50%”
+400	“Ambang batas biner pada 128”
+401	“Ambang Batas 128”
+402	“Ambang batas biner pada 192”
+403	“Ambang Batas 192”
+404	“Ambang batas biner pada 64”
+405	“Ambang Batas 64”
+406	“Gaya modul terhubung”
+407	“Modul Terhubung”
+408	“Gaya modul berlian”
+409	“Modul Berlian”
+410	“Gaya modul titik”
+411	“Modul Titik”
+412	“Gaya modul membulat”
+413	“Modul Bulat”
+414	“Gaya modul persegi”
+415	“Modul Persegi”
+416	“Polos”
+417	“Kombo Kuat”
+418	“Praproses”
+419	“Lapisan GIF animasi dengan berbagai mode pencampuran”
+420	“Lapisan Animasi”
+421	“Perpaduan warna berbeda dengan overlay gambar”
+422	“Pemrosesan warna, skala abu-abu, dan hitam putih”
+423	“Pengolahan Warna”
+424	“Skema warna dan palet tematik”
+425	“Warna & Tema”
+426	“Berbagai format muatan data - vCard, WiFi, Email, SMS, Geo, Kalender”
+427	“Metode dithering yang berbeda dan kernel difusi kesalahan”
+428	“Algoritma Dithering”
+429	“Berbagai versi QR dan tingkat koreksi kesalahan”
+430	“Pengkodean QR”
+431	“Lapisan gambar statis dengan mode pencampuran yang berbeda”
+432	“Tumpang Tindih Gambar”
+433	“Kode QR standar tanpa overlay - berbagai versi dan koreksi kesalahan”
+434	“Kode QR Biasa”
+435	“Kombinasi multi-fitur yang mencolok yang menampilkan kemampuan ANQR”
+436	“Kecerahan, kontras, gamma, keburaman, penajaman, posterisasi, deteksi tepi”
+437	“Praproses Gambar”
+438	“Gaya visual berbeda untuk modul dan pola pencari”
+439	“Gaya Modul & Pencari”
+440	“Tampilkan Semua”
+441	“Gaya”
+442	“Jelajahi contoh kode QR yang dibuat dengan ANQR”
+443	“Galeri Kode QR”
+444	“Cobalah ini”
+445	“Salin Tautan”
+446	“Beralih ke mode gelap”
+447	“Ekspor”
+448	“Beralih ke mode terang”
+449	“Pengaturan pencarian…”
+450	“Bagikan”
+451	“Gaya pola penyelarasan (digunakan dalam kode QR yang lebih besar)”
+452	“Membuka konten tertentu di dalam aplikasi seluler”
+453	“Deteksi otomatis (membutuhkan v{{version}}+ untuk konten saat ini)”
+454	“0 = Otomatis, min v{{version}} untuk konten saat ini”
+455	“Kode heksadesimal warna latar belakang”
+456	“Format lama - pertimbangkan untuk menggunakan vCard sebagai gantinya”
+457	“Catatan: Pemasangan Bluetooth melalui QR bersifat spesifik vendor dan mungkin tidak berfungsi pada semua perangkat”
+458	“Putar animasi maju lalu mundur (ping-pong)”
+459	“Berlangganan umpan kalender bersama”
+460	“Pastikan rasio kontras minimum antara latar depan dan latar belakang”
+461	“Persentase radius sudut untuk modul bulat (0-100%)”
+462	“Gunakan rendering piksel untuk tepi modul yang tajam”
+463	“Masukkan data mentah dalam format apa pun. Tidak ada validasi atau pemformatan yang akan diterapkan.”
+464	“Putar modul gaya titik (0-360 derajat)”
+465	“Mode pengkodean data - Secara otomatis memilih mode yang paling efisien”
+466	“Terapkan zona tenang minimal 4 modul untuk keandalan pemindaian yang lebih baik”
+467	“Masukkan isi teks yang akan dikodekan ke dalam kode QR”
+468	“Masukkan URL yang akan dienkode dalam kode QR”
+469	“Kode QR Dewan Pembayaran Eropa untuk transfer kredit SEPA”
+470	“Tingkat koreksi kesalahan - lebih tinggi = lebih tahan terhadap kerusakan tetapi kode QR lebih besar”
+471	“Modul perbatasan tambahan di luar zona tenang (0-10)”
+472	“Gaya persegi bagian dalam pola pencari”
+473	“Gaya cincin luar pola pencari”
+474	“Pola pencari skala relatif terhadap ukuran defaultnya (50-150%)”
+475	“Kode heksadesimal warna latar depan”
+476	“Gaya pola pencari sudut”
+477	“Konversi URL HTTP ke HTTPS secara otomatis”
+478	“Tambahkan bingkai dekoratif di sekitar kode QR”
+479	“Teks yang akan ditampilkan pada bingkai”
+480	“Bagaimana celah antar modul ditampilkan”
+481	“Terapkan efek gradien pada kode QR”
+482	“GS1 Digital Link untuk identifikasi dan ketertelusuran produk”
+483	“Semakin tinggi = semakin besar ketahanan terhadap kerusakan, QR semakin besar”
+484	“Animasi berulang terus menerus”
+485	“Mencegah pengkodean konten yang melebihi kapasitas kode QR”
+486	“Rasio kontras minimum yang harus diberlakukan (1-21, WCAG AA mensyaratkan 4,5:1)”
+487	“Selisih antar modul dalam persentase (0-30%)”
+488	“Ukuran setiap modul kode QR dalam piksel (2-20px)”
+489	“Gaya visual modul kode QR”
+490	“Mengonversi berbagai format baris baru ke format standar”
+491	“Pilih format file output untuk ekspor”
+492	“Sistem pembayaran cepat Singapura”
+493	“Cara menetapkan warna pada masing-masing modul”
+494	“Klik untuk memilih warna latar belakang”
+495	“Klik untuk memilih warna latar depan”
+496	“Sistem pembayaran instan Brasil”
+497	“Cara menempelkan posisi modul ke batas piksel”
+498	“Sistem pembayaran elektronik nasional Thailand”
+499	“Versi kode QR (0=otomatis, 1-40 meningkatkan ukuran dan kapasitas)”
+500	“Margin zona tenang di sekitar kode QR (0-10 modul, disarankan: 4+)”
+501	“Tautan ke formulir RSVP online atau halaman pendaftaran acara”
+502	“Mode analisis keamanan - bagaimana cara memeriksa keterbacaan kode QR secara ketat”
+503	“Pilih jenis konten yang akan dikodekan dalam kode QR”
+504	“Gunakan layanan pemendek URL untuk kode QR dinamis/yang dapat dilacak”
+505	“Gaya pola pengaturan waktu (garis horizontal dan vertikal)”
+506	“Buat latar belakang transparan alih-alih menggunakan warna latar belakang”
+507	“Hapus spasi di awal dan akhir”
+508	“Antarmuka Pembayaran Terpadu untuk India”
+509	“Parameter kampanye UTM untuk pelacakan kampanye”
+510	“Parameter menengah UTM untuk pelacakan kampanye”
+511	“Parameter sumber UTM untuk pelacakan kampanye”
+512	“Validasi data masukan sebelum pengkodean”
+513	“⚠️ Versi terlalu rendah! Versi minimum v{{version}} diperlukan”
+514	“Bahasa”
+515	“Pilih Bahasa”
+516	“Tambahkan Bidang Kustom”
+517	“Penulis”
+518	“Nama penulis”
+519	“Hak Cipta”
+520	“© 2024 Nama Perusahaan”
+521	“Metadata Kustom”
+522	“Deskripsi”
+523	“Deskripsi kode QR ini…”
+524	“Sertakan Waktu Penciptaan”
+525	“Kunci”
+526	“Kata Kunci”
+527	“Lisensi”
+528	“CC-BY-4.0”
+529	“Judul”
+530	“Judul Kode QR”
+531	“Nilai”
+532	“Tentang”
+533	“Kontak”
+534	“Panduan”
+535	“Galeri”
+536	“Generator”
+537	“Privasi”
+538	“Ketentuan”
+539	“Penggantian Latar Belakang”
+540	“Biarkan kosong untuk nilai default”
+541	“DPI (Cetak)”
+542	“Sematkan Hamparan Raster”
+543	“Ekspor Sebagai (Tambahan)”
+544	“Nama berkas”
+545	“Format”
+546	“GIF”
+547	“Pengaturan GIF”
+548	“Tinggi”
+549	“Sertakan Zona Tenang”
+550	“Potongan Median”
+551	“NeuQuant”
+552	“Octree”
+553	“Diperintahkan”
+554	“Ukuran Keluaran”
+555	“Ukuran Palet”
+556	“PDF”
+557	“Pixel”
+558	“PNG”
+559	“Tepat”
+560	“Kualitas”
+561	“Kuantisasi”
+562	“Presisi Bentuk”
+563	“SVG”
+564	“Pengaturan SVG”
+565	“Warna Transparan”
+566	“#ffffff atau kosong”
+567	“Vektor Sejati”
+568	“Gunakan jalur alih-alih raster yang disematkan”
+569	“WebP”
+570	“Lebar”
+571	“Ambang Batas Adaptif”
+572	“Bayer 2×2”
+573	“Bayer 4×4”
+574	“Bayer 8×8”
+575	“Campuran”
+576	“Derau Biru + Difusi Kesalahan”
+577	“Ambang Batas Kebisingan Biru”
+578	“Kabur”
+579	“Kurva Kecerahan”
+580	“Ukuran Sel”
+581	“Logo Tengah”
+582	“Aturan Tengah”
+583	“Titik Berkelompok”
+584	“Dither Warna”
+585	“Mode Warna”
+586	“Berisi”
+587	“Kontras”
+588	“Catatan: Gambar harus mengizinkan permintaan lintas asal (CORS)”
+589	“Sampul”
+590	“Potong Gambar”
+591	“Ukuran Tanaman”
+592	“Inti Difusi”
+593	“Penanganan Pembuangan”
+594	“Dither”
+595	“Pengaturan Dither”
+596	“Kekuatan Dither”
+597	“Bentuk Titik”
+598	“Warna Duotone”
+599	“Mode Sadar ECC”
+600	“Deteksi Tepi”
+601	“Sadar Tepi”
+602	“Aktifkan Tanaman”
+603	“Penggantian Finder”
+604	“Mode Kebugaran”
+605	“Flip X”
+606	“Balik Y”
+607	“Dari URL”
+608	“Berwarna Penuh”
+609	“Gamma”
+610	“Isi Celah”
+611	“Kebisingan Gaussian”
+612	“Ukuran Grid”
+613	“Pusat Halftone”
+614	“Pengaturan Halftone”
+615	“Sorotan”
+616	“Putar Warna”
+617	“Gambar / GIF / WebP”
+618	“URL Gambar”
+619	“Intensitas”
+620	“Balikkan Gambar”
+621	“Garis”
+622	“Muat”
+623	“Dimuat dari URL”
+624	“FPS Maksimum”
+625	“Warna Netral”
+626	“Tidak ada berkas”
+627	“Kisi N×N”
+628	“Dipesan (Bayer)”
+629	“Matriks Terurut”
+630	“Asli”
+631	“Per Saluran”
+632	“Per Modul”
+633	“Persepsi (Luminansi)”
+634	“Level Posterisasi”
+635	“Pertahankan Keselarasan”
+636	“Pertahankan Pola Pencari”
+637	“Jaga Waktu”
+638	“Lindungi Informasi Format”
+639	“Lindungi Informasi Versi”
+640	“Perlindungan”
+641	“Hapus”
+642	“Rasa Hormat”
+643	“Anggaran Risiko”
+644	“Rotasi”
+645	“Kurva S”
+646	“Kejenuhan”
+647	“Derau Biru yang Disaring”
+648	“Benih”
+649	“Pilih Gambar”
+650	“Sepia”
+651	“Pemindaian Serpentine”
+652	“Bayangan”
+653	“Mengasah”
+654	“Sierra-2”
+655	“Sierra-Lite”
+656	“Sederhanakan”
+657	“Peregangan”
+658	“Ketat”
+659	“Bergaya”
+660	“Pengaturan Subpiksel”
+661	“Ukuran Subpiksel”
+662	“Kebisingan Biru Temporal”
+663	“Ambang Batas”
+664	“Ukuran Ubin”
+665	“Kebisingan Segitiga”
+666	“Dither Sejati”
+667	“Gunakan Penundaan Bingkai”
+668	“Void & Cluster”
+669	“Nama Akun”
+670	“Alamat”
+671	“Algoritma”
+672	“Acara Sepanjang Hari”
+673	“Jumlah (opsional)”
+674	“Jumlah (BRL, opsional)”
+675	“Jumlah (EUR)”
+676	“Jumlah (INR, opsional)”
+677	“Jumlah (SGD, opsional)”
+678	“Jumlah (THB, opsional)”
+679	“Intent Android”
+680	“Tautan Dalam Aplikasi (Android/iOS)”
+681	“Label Aset/Inventaris”
+682	“ID Aset/Barang”
+683	“Jenis Aset”
+684	“Nama Peserta”
+685	“Audio”
+686	“URL Dasar”
+687	“Batch/Lot (opsional)”
+688	“Nama Penerima Manfaat”
+689	“BIC/SWIFT (opsional)”
+690	“Ulang Tahun”
+691	“Bitcoin”
+692	“Kartu Bisnis (Lama)”
+693	“Bluetooth”
+694	“Isi Pesan”
+695	“Tubuh (opsional)”
+696	“Kotak”
+697	“Kalender”
+698	“Nama Kalender”
+699	“Berlangganan Kalender”
+700	“URL Kalender (ICS/WebCal)”
+701	“Konten Kampanye (opsional)”
+702	“Kampanye Sedang”
+703	“Nama Kampanye”
+704	“Sumber Kampanye”
+705	“Masa Kampanye (opsional)”
+706	“Kota”
+707	“Kota (opsional)”
+708	“Tautan Penyimpanan Cloud”
+709	“Perusahaan”
+710	“Jenis Konten”
+711	“Inti”
+712	“Negara”
+713	“Kripto (BTC, ETH, dll.)”
+714	“Mata Uang Kripto”
+715	“Format Kustom”
+716	“Skema Khusus”
+717	“Tanggal & Waktu”
+718	“URL Deep Link”
+719	“Alamat Perangkat (MAC)”
+720	“Nama Perangkat (opsional)”
+721	“Angka”
+722	“Dokumen & Media”
+723	“Dropbox”
+724	“Email”
+725	“Enkripsi”
+726	“Selesai”
+727	“Tanggal Akhir”
+728	“Perusahaan”
+729	“EPC / SEPA (EU)”
+730	“Peralatan”
+731	“Ethereum”
+732	“Acara iCalendar”
+733	“Nama Acara”
+734	“Tautan RSVP Acara”
+735	“Tiket Acara”
+736	“Tanggal Kedaluwarsa (opsional)”
+737	“Facebook”
+738	“URL Cadangan (opsional)”
+739	“Faks”
+740	“Jenis File”
+741	“URL File / Dokumen”
+742	“Nama Depan”
+743	“Paksa HTTPS”
+744	“Nama Lengkap”
+745	“Perabot”
+746	“GitHub”
+747	“Google Drive”
+748	“GS1 Digital Link”
+749	“GTIN (Nomor Barang Perdagangan Global)”
+750	“Jaringan Tersembunyi”
+751	“Telepon Rumah”
+752	“IBAN”
+753	“Jenis ID”
+754	“Gambar”
+755	“Instagram”
+756	“Barang Inventaris”
+757	“iOS Universal”
+758	“Penerbit”
+759	“Aset TI”
+760	“Label (opsional)”
+761	“Nama Belakang”
+762	“Garis Lintang”
+763	“Jenis Tautan”
+764	“LinkedIn”
+765	“Litecoin”
+766	“Lokasi”
+767	“Lokasi & Jaringan”
+768	“Garis Bujur”
+769	“URL Pencarian (opsional)”
+770	“Pemasaran”
+771	“Label Pemasaran”
+772	“Pelindung Panjang Maksimum”
+773	“Kontak MeCard”
+774	“Nama Pedagang (opsional)”
+775	“Pesan”
+776	“Pesan (opsional)”
+777	“WhatsApp / Telegram / Signal”
+778	“Pembawa Pesan”
+779	“Nomor Ponsel”
+780	“Telepon Seluler”
+781	“Nama”
+782	“KTP/Nomor Identifikasi Pajak”
+783	“Nama Panggilan”
+784	“Normalisasi Baris Baru”
+785	“Catatan”
+786	“OneDrive”
+787	“Buka (Tanpa Kata Sandi)”
+788	“Organisasi”
+789	“Lainnya”
+790	“Authenticator OTP”
+791	“Tipe”
+792	“Kata Sandi”
+793	“Nama Penerima Pembayaran”
+794	“Pembayaran (Spesifikasi Terbuka)”
+795	“PayNow (Singapura)”
+796	“Telepon”
+797	“Telepon/Nama Pengguna”
+798	“PIX (Brasil)”
+799	“Kunci PIX”
+800	“Teks Biasa”
+801	“Platform”
+802	“Pesan yang sudah terisi (opsional)”
+803	“URL Profil”
+804	“ID PromptPay”
+805	“PromptPay (Thailand)”
+806	“Jenis Proksi”
+807	“Data Mentah”
+808	“Penerima”
+809	“Referensi”
+810	“Referensi (opsional)”
+811	“Domain Penyelesai”
+812	“URL RSVP”
+813	“Permintaan Pencarian (opsional)”
+814	“Kursi”
+815	“Rahasia (Basis 32)”
+816	“Bagian/Zona”
+817	“Jenis Keamanan”
+818	“Nomor Seri (opsional)”
+819	“Layanan”
+820	“Pengalihan Tautan Pendek”
+821	“URL Pendek”
+822	“Sinyal”
+823	“SMS”
+824	“SMS / MMS”
+825	“Media Sosial & Pesan”
+826	“Profil Sosial”
+827	“Nama Jaringan (SSID)”
+828	“Mulai”
+829	“Tanggal Mulai”
+830	“Negara Bagian/Provinsi”
+831	“Jalan”
+832	“Subjek”
+833	“Subjek (opsional)”
+834	“Judul Acara”
+835	“Nomor Telepon”
+836	“Telegram”
+837	“Isi Teks”
+838	“ID Tiket”
+839	“TikTok”
+840	“Catatan Transaksi (opsional)”
+841	“Hapus Spasi Kosong”
+842	“UEN/Nomor Ponsel”
+843	“Tautan Universal”
+844	“UPI (India)”
+845	“ID UPI (VPA)”
+846	“URL”
+847	“utm_campaign”
+848	“utm_content”
+849	“Tautan Kampanye UTM”
+850	“utm_medium”
+851	“utm_source”
+852	“utm_term”
+853	“Validasi Masukan”
+854	“Opsi Validasi”
+855	“URL Validasi (opsional)”
+856	“Kendaraan”
+857	“Tempat”
+858	“Viber”
+859	“Video”
+860	“Situs web”
+861	“WhatsApp”
+862	“WiFi”
+863	“Dokumen Word”
+864	“Telepon Kantor”
+865	“YouTube”
+866	“Kode Pos”
+867	“Pratinjau Kode QR - Klik Ekspor untuk mengunduh”
+868	“Mensimulasikan”
+869	“Simulasi lingkungan aktif - Pratinjau menunjukkan bagaimana kode QR dapat muncul dalam kondisi berbeda”
+870	“Perbatasan tambahan di luar zona tenang”
+871	“Alfanumerik”
+872	“Otomatis”
+873	“Otomatis (min: {{versi}})”
+874	“Otomatis (Optimal)”
+875	“Byte / UTF-8”
+876	“{{count}}:1”
+877	“Mode Pengkodean”
+878	“Menerapkan Zona Tenang Minimum”
+879	“Pastikan margin modul ≥4”
+880	“Koreksi Kesalahan”
+881	“Modul Perbatasan Tambahan”
+882	“H - Tinggi (30%)”
+883	“Kanji”
+884	“L - Rendah (7%)”
+885	“Zona Tenang (Margin)”
+886	“Pola Masker”
+887	“M - Sedang (15%)”
+888	“Ukuran Modul”
+889	“{{count}}°”
+890	“{{count}} modul”
+891	“{{count}}ms”
+892	“{{count}}%”
+893	“{{count}}px”
+894	“Hanya Angka”
+895	“Q - Kuartil (25%)”
+896	“Versi”
+897	“Tambahkan Warna”
+898	“Gaya Pola Penyelarasan”
+899	“Latar Belakang”
+900	“Dengan Kecerahan”
+901	“Berdasarkan Klaster”
+902	“Dengan Overlay”
+903	“Berdasarkan Posisi”
+904	“Langit-langit”
+905	“Lingkaran”
+906	“Palet Warna”
+907	“Kerucut”
+908	“Terhubung”
+909	“Pelindung Kontras”
+910	“Radius Sudut”
+911	“Tepi yang Tajam”
+912	“Gunakan rendering gambar: pikselasi untuk tepi yang tajam”
+913	“Diputus-putus”
+914	“Berlian”
+915	“Rotasi Titik”
+916	“Titik”
+917	“Gaya Batin Mata”
+918	“Gaya Luar Mata”
+919	“Skala Mata”
+920	“Gaya Pola Pencari”
+921	“Lantai”
+922	“Latar Depan”
+923	“Gaya Bingkai”
+924	“Teks Bingkai”
+925	“Mode Jeda”
+926	“Gradien”
+927	“Sudut Gradien”
+928	“Tipe Gradien”
+929	“Sisipan”
+930	“Linear”
+931	“Pencari Jodoh”
+932	“Modul Pencocokan”
+933	“Rasio Kontras Minimum”
+934	“Kesenjangan Modul”
+935	“Ruang Negatif”
+936	“Mode Warna Per-Modul”
+937	“Jepretan Piksel”
+938	“Radial”
+939	“Bulat”
+940	“Dibulatkan”
+941	“Bingkai Bulat”
+942	“Gaya Modul”
+943	“Tajam”
+944	“Halus”
+945	“Padat”
+946	“Kotak”
+947	“Kotak”
+948	“Stiker”
+949	“Stroke”
+950	“Gaya”
+951	“Tag”
+952	“Gaya Pola Pengaturan Waktu”
+953	“Latar Belakang Transparan”
+954	“Analisis Keselamatan”
+955	“ECC Pilihan Otomatis”
+956	“Versi Pilihan Otomatis”
+957	“Pengurangan Intensitas Otomatis”
+958	“Penyetelan Otomatis”
+959	“Seimbang”
+960	“Rasio Kontras”
+961	“Pemeriksaan Kontras”
+962	“Sangat Baik”
+963	“Cukup Baik”
+964	“Baik”
+965	“Penyelarasan Kunci”
+966	“Pencari Kunci”
+967	“Informasi Format Kunci”
+968	“Pengaturan Waktu Penguncian”
+969	“Informasi Versi Kunci”
+970	“Ukuran Modul Minimum”
+971	“Zona Tenang Minimum”
+972	“Miskin”
+973	“Kunci Pengaman”
+974	“Analisis Kualitas”
+975	“Zona Tenang”
+976	“Mode Keamanan”
+977	“Skor Kemudahan Pemindaian”
+978	“Tampilkan Peta Panas”
+979	“Simulasikan Efek Buram”
+980	“Simulasi Kebisingan”
+981	“Simulasi Rotasi”
+982	“Sampai dapat dipindai”
+983	“Metadata”
+984	“Keluaran”
+985	“Lapisan / Gambar”
+986	“Muatan / Data”
+987	“Rendering”
+988	“Tanda Air”
+989	“Tautan Langsung”
+990	“Hasilkan URL yang dapat dibagikan”
+991	“Sematkan HTML”
+992	“Hasilkan kode sematan”
+993	“Encode Semua Parameter”
+994	“Sertakan semua pengaturan dalam URL”
+995	“Diskon”
+996	“Berbagi Cepat”
+997	“X/Twitter”
+998	“Lanjutan”
+999	“Dasar”
+1000	“Pro”
+1001	“Tonton iklan untuk membuka fitur Profesional selama 24 jam”
+1002	“Di Balik QR”
+1003	“Kiri Bawah”
+1004	“Kanan Bawah”
+1005	“Pusat”
+1006	“Titik”
+1007	“Tepi”
+1008	“Aktifkan Tanda Air”
+1009	“Warna Huruf”
+1010	“Ukuran Huruf”
+1011	“Perkalian”
+1012	“Normal”
+1013	“Opasitas”
+1014	“Lapisan”
+1015	“Pola”
+1016	“Posisi”
+1017	“Layar”
+1018	“Teks”
+1019	“© Nama Perusahaan”
+1020	“Kiri Atas”
+1021	“Kanan Atas”
+1022	“Unggah Gambar”

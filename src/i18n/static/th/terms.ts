@@ -2,140 +2,140 @@ import type { PageDefinition } from '../types'
 import { LAST_UPDATED, CONTACT_EMAIL } from '../types'
 
 export const terms: PageDefinition = {
-  title: 'ข้อกำหนดการให้บริการ',
+  title: 'Terms of Service',
   description:
-    'เมื่อคุณเข้าถึงหรือใช้งานไซต์ คุณตกลงที่จะผูกพันตามข้อกำหนดเหล่านี้',
+    'By accessing or using the site, you agree to be bound by these terms.',
   lastUpdated: LAST_UPDATED,
   sections: [
     {
-      heading: 'การยอมรับข้อกำหนด',
+      heading: 'Acceptance of terms',
       paragraphs: [
-        'เมื่อคุณเข้าถึงหรือใช้งาน ANQR (anqr.link) คุณตกลงที่จะผูกพันตามข้อกำหนดการให้บริการนี้และนโยบายความเป็นส่วนตัวของเรา หากคุณไม่ยอมรับข้อกำหนดเหล่านี้ โปรดอย่าใช้งานไซต์',
-        'เราอาจอัปเดตข้อกำหนดนี้เป็นครั้งคราว การใช้งานไซต์ต่อไปหลังการเปลี่ยนแปลงถือเป็นการยอมรับข้อกำหนดใหม่',
+        'By accessing or using ANQR (anqr.link), you agree to be bound by these Terms of Service and our Privacy Policy. If you do not agree to these terms, do not use the site.',
+        'We may update these Terms from time to time. Continued use of the site after changes constitutes acceptance of the new terms.',
       ],
     },
     {
-      heading: 'คุณสมบัติ',
+      heading: 'Eligibility',
       paragraphs: [
-        'คุณต้องมีอายุอย่างน้อย 13 ปีจึงจะใช้งาน ANQR ได้ การใช้งานไซต์ถือว่าคุณยืนยันว่าคุณมีคุณสมบัติตามอายุ หากคุณอายุต่ำกว่า 18 ปี คุณยืนยันว่าคุณได้รับอนุญาตจากผู้ปกครองหรือผู้ดูแลให้ใช้งานไซต์',
+        "You must be at least 13 years of age to use ANQR. By using the site, you represent that you meet this age requirement. If you are under 18, you represent that you have your parent or guardian's permission to use the site.",
       ],
     },
     {
-      heading: 'การใช้งานที่อนุญาต',
+      heading: 'Permitted use',
       paragraphs: [
-        'คุณสามารถใช้ ANQR ได้เพื่อวัตถุประสงค์ที่ชอบด้วยกฎหมายเท่านั้น คุณเป็นผู้รับผิดชอบแต่เพียงผู้เดียวต่อเนื้อหาที่คุณเข้ารหัสลงในโค้ด QR และต่อวิธีที่คุณใช้โค้ด QR ใด ๆ ที่คุณสร้างขึ้น',
+        'You may use ANQR for lawful purposes only. You are solely responsible for the content you encode into QR codes and for how you use any QR codes you generate.',
       ],
     },
     {
-      heading: 'พฤติกรรมต้องห้าม',
-      paragraphs: ['คุณตกลงว่าจะไม่:'],
+      heading: 'Prohibited conduct',
+      paragraphs: ['You agree not to:'],
       bullets: [
-        'ใช้ ANQR เพื่อสร้างโค้ด QR ที่เอื้อให้เกิดการฟิชชิง การกระจายมัลแวร์ การฉ้อโกง การหลอกลวง การคุกคาม การหมิ่นประมาท หรือกิจกรรมที่ผิดกฎหมายใด ๆ',
-        'เข้ารหัสเนื้อหาที่ละเมิดสิทธิ์ทรัพย์สินทางปัญญา ละเมิดความเป็นส่วนตัว หรือมีสื่อที่ผิดกฎหมาย',
-        'พยายามรบกวน ทำให้โหลดเกิน หรือแทรกแซงการทำงานหรือความปลอดภัยของไซต์',
-        'ทำวิศวกรรมย้อนกลับ ถอดรหัส/ดีคอมไพล์ หรือพยายามดึงซอร์สโค้ดจากไซต์',
-        'ใช้เครื่องมืออัตโนมัติ (บอต สแครปเปอร์) เพื่อเข้าถึงไซต์ในลักษณะที่ทำให้ประสิทธิภาพลดลงสำหรับผู้ใช้อื่น',
-        'หลีกเลี่ยงหรือปิดการทำงานของคุณสมบัติความปลอดภัยหรือการควบคุมการเข้าถึงใด ๆ',
-        'แอบอ้างเป็นบุคคลหรือหน่วยงานใด ๆ หรือบิดเบือนความเกี่ยวข้องของคุณ',
+        'Use ANQR to create QR codes that facilitate phishing, malware distribution, fraud, scams, harassment, defamation, or any illegal activity.',
+        'Encode content that infringes intellectual property rights, violates privacy, or contains illegal material.',
+        'Attempt to disrupt, overload, or interfere with the operation or security of the site.',
+        'Reverse engineer, decompile, or attempt to extract source code from the site.',
+        'Use automated tools (bots, scrapers) to access the site in a manner that degrades performance for other users.',
+        'Circumvent or disable any security or access control features.',
+        'Impersonate any person or entity or misrepresent your affiliation.',
       ],
     },
     {
-      heading: 'ทรัพย์สินทางปัญญา',
+      heading: 'Intellectual property',
       paragraphs: [
-        'คุณยังคงเป็นเจ้าของเนื้อหาที่คุณเข้ารหัสลงในโค้ด QR ANQR ไม่อ้างสิทธิ์ความเป็นเจ้าของในข้อมูลของคุณ',
-        'ชื่อ ANQR โลโก้ การออกแบบอินเทอร์เฟซ และโค้ดพื้นฐานได้รับการคุ้มครองโดยลิขสิทธิ์ เครื่องหมายการค้า และกฎหมายทรัพย์สินทางปัญญาอื่น ๆ คุณต้องไม่คัดลอก แก้ไข แจกจ่าย หรือสร้างงานดัดแปลงโดยไม่ได้รับอนุญาตจากเรา',
-        'QR Code® เป็นเครื่องหมายการค้าจดทะเบียนของ DENSO WAVE INCORPORATED ANQR ไม่ได้มีความเกี่ยวข้องกับ DENSO WAVE',
+        'You retain ownership of the content you encode into QR codes. ANQR does not claim ownership of your data.',
+        'The ANQR name, logo, interface design, and underlying code are protected by copyright, trademark, and other intellectual property laws. You may not copy, modify, distribute, or create derivative works without our permission.',
+        'QR Code® is a registered trademark of DENSO WAVE INCORPORATED. ANQR is not affiliated with DENSO WAVE.',
       ],
     },
     {
-      heading: 'สิทธิ์การอนุญาตเนื้อหาของผู้ใช้',
+      heading: 'User content license',
       paragraphs: [
-        'การใช้ ANQR ไม่ได้ทำให้คุณมอบสิทธิ์ใด ๆ ในเนื้อหาของคุณให้เรา — การสร้างโค้ด QR ทั้งหมดเกิดขึ้นในอุปกรณ์ของคุณแบบโลคอล และเราไม่เข้าถึง จัดเก็บ หรือส่งต่อข้อมูลที่คุณเข้ารหัส',
+        'By using ANQR, you grant us no rights to your content — all QR code generation happens locally on your device and we do not access, store, or transmit your encoded data.',
       ],
     },
     {
-      heading: 'บริการของบุคคลที่สามและการโฆษณา',
+      heading: 'Third-party services and advertising',
       paragraphs: [
-        'ไซต์แสดงโฆษณาผ่าน Google AdSense และอาจมีลิงก์ไปยังเว็บไซต์ของบุคคลที่สาม เราไม่รับผิดชอบต่อเนื้อหา บริการ หรือแนวปฏิบัติด้านความเป็นส่วนตัวของบุคคลที่สาม',
-        'การติดต่อ/โต้ตอบของคุณกับผู้ลงโฆษณาและบุคคลที่สามเป็นเรื่องระหว่างคุณกับพวกเขาเท่านั้น โปรดดูนโยบายความเป็นส่วนตัวของเราสำหรับข้อมูลเกี่ยวกับแนวปฏิบัติด้านข้อมูลโฆษณา',
+        'The site displays advertisements through Google AdSense and may include links to third-party websites. We are not responsible for third-party content, services, or privacy practices.',
+        'Your interactions with advertisers and third parties are solely between you and them. See our Privacy Policy for information about advertising data practices.',
       ],
     },
     {
-      heading: 'การปฏิเสธการรับประกัน',
+      heading: 'Disclaimer of warranties',
       paragraphs: [
-        'ANQR ให้บริการแบบ "ตามสภาพ" และ "ตามที่มี" โดยไม่มีการรับประกันใด ๆ ไม่ว่าโดยชัดแจ้งหรือโดยนัย รวมถึงแต่ไม่จำกัดเพียงการรับประกันโดยนัยเรื่องความเหมาะสมในการจำหน่าย ความเหมาะสมสำหรับวัตถุประสงค์เฉพาะ และไม่ละเมิดสิทธิ์',
-        'เราไม่รับประกันว่า: (a) ไซต์จะทำงานอย่างต่อเนื่อง ปลอดภัย หรือปราศจากข้อผิดพลาด; (b) โค้ด QR จะสามารถสแกนได้ในทุกสภาพแวดล้อม ทุกอุปกรณ์ หรือทุกแอปสแกน; (c) ไซต์จะตรงตามความต้องการของคุณ',
-        'คุณควรทดสอบโค้ด QR เสมอในสภาพการใช้งานจริง (ขนาดพิมพ์ แสง ประเภทหน้าจอ ระยะทาง คุณภาพกล้อง)',
+        'ANQR IS PROVIDED ON AN "AS IS" AND "AS AVAILABLE" BASIS WITHOUT WARRANTIES OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, AND NON-INFRINGEMENT.',
+        'We do not warrant that: (a) the site will be uninterrupted, secure, or error-free; (b) QR codes will scan in all environments, on all devices, or with all scanner applications; (c) the site will meet your requirements.',
+        'You should always test QR codes in the conditions where they will be used (print size, lighting, screen type, distance, camera quality).',
       ],
     },
     {
-      heading: 'การจำกัดความรับผิด',
+      heading: 'Limitation of liability',
       paragraphs: [
-        'ในขอบเขตสูงสุดที่กฎหมายอนุญาต ANQR และผู้ดำเนินการ บริษัทในเครือ (affiliates) และผู้ให้สิทธิ์ จะไม่รับผิดสำหรับความเสียหายใด ๆ ทั้งทางตรง ทางอ้อม โดยบังเอิญ เป็นพิเศษ เป็นผลสืบเนื่อง เชิงลงโทษ หรือเชิงตัวอย่าง รวมถึงแต่ไม่จำกัดเพียงความเสียหายจากการสูญเสียกำไร รายได้ ข้อมูล ชื่อเสียง (goodwill) การใช้งาน หรือความสูญเสียที่ไม่อาจจับต้องอื่น ๆ อันเกิดจากหรือเกี่ยวข้องกับการเข้าถึงหรือการใช้งานของคุณ (หรือการไม่สามารถเข้าถึงหรือใช้งาน) บริการ',
-        'คุณเข้าใจและยอมรับโดยชัดแจ้งว่าการใช้บริการเป็นความเสี่ยงของคุณเอง บริการนี้ให้ใช้งานฟรี ดังนั้นคุณตกลงว่า ANQR และผู้ดำเนินการจะไม่มีความรับผิดต่อคุณสำหรับความเสียหายหรือการสูญเสียใด ๆ ไม่ว่ากรณีใด ๆ ความรับผิดรวมสูงสุดของเราจะไม่เกินศูนย์ดอลลาร์ ($0 AUD)',
-        'คุณตกลงที่จะปล่อย สละสิทธิ์ และระงับข้อเรียกร้อง คำเรียกร้อง และเหตุแห่งการฟ้องร้องทั้งหมดต่อ ANQR และผู้ดำเนินการที่เกิดจากการใช้บริการของคุณ',
-        'บางเขตอำนาจศาลไม่อนุญาตให้ยกเว้นการรับประกันบางประการหรือจำกัดความรับผิด ในเขตอำนาจศาลดังกล่าว ความรับผิดของเราจะถูกจำกัดในขอบเขตสูงสุดที่กฎหมายที่ใช้บังคับอนุญาต',
+        'TO THE MAXIMUM EXTENT PERMITTED BY LAW, ANQR AND ITS OPERATORS, AFFILIATES, AND LICENSORS SHALL NOT BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, CONSEQUENTIAL, PUNITIVE, OR EXEMPLARY DAMAGES, INCLUDING BUT NOT LIMITED TO DAMAGES FOR LOSS OF PROFITS, REVENUE, DATA, GOODWILL, USE, OR OTHER INTANGIBLE LOSSES, ARISING FROM OR RELATED TO YOUR ACCESS TO OR USE OF (OR INABILITY TO ACCESS OR USE) THE SERVICE.',
+        'YOU EXPRESSLY UNDERSTAND AND AGREE THAT YOUR USE OF THE SERVICE IS AT YOUR SOLE RISK. THE SERVICE IS PROVIDED FREE OF CHARGE, AND ACCORDINGLY, YOU AGREE THAT ANQR AND ITS OPERATORS SHALL HAVE NO LIABILITY TO YOU WHATSOEVER FOR ANY DAMAGES OR LOSSES. IN NO EVENT SHALL OUR TOTAL AGGREGATE LIABILITY EXCEED ZERO DOLLARS ($0 AUD).',
+        'YOU AGREE TO RELEASE, WAIVE, AND DISCHARGE ANY AND ALL CLAIMS, DEMANDS, AND CAUSES OF ACTION AGAINST ANQR AND ITS OPERATORS ARISING FROM YOUR USE OF THE SERVICE.',
+        'SOME JURISDICTIONS DO NOT ALLOW THE EXCLUSION OF CERTAIN WARRANTIES OR LIMITATIONS OF LIABILITY. IN SUCH JURISDICTIONS, OUR LIABILITY SHALL BE LIMITED TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW.',
       ],
     },
     {
-      heading: 'การชดใช้ค่าเสียหาย',
+      heading: 'Indemnification',
       paragraphs: [
-        'คุณตกลงที่จะชดใช้ ปกป้อง และทำให้ ANQR ผู้ดำเนินการ บริษัทในเครือ และเจ้าหน้าที่ กรรมการ พนักงาน และตัวแทนของแต่ละฝ่ายพ้นจากความรับผิดจากข้อเรียกร้อง ความเสียหาย การสูญเสีย ความรับผิด ค่าใช้จ่ายและค่าเสียหาย (รวมถึงค่าทนายความ) ที่เกิดจาก: (a) การใช้ไซต์ของคุณ; (b) การละเมิดข้อกำหนดนี้; (c) การละเมิดสิทธิ์ของบุคคลที่สาม; (d) เนื้อหาใด ๆ ที่คุณเข้ารหัสลงในโค้ด QR',
+        'You agree to indemnify, defend, and hold harmless ANQR, its operators, affiliates, and their respective officers, directors, employees, and agents from any claims, damages, losses, liabilities, costs, and expenses (including legal fees) arising from: (a) your use of the site; (b) your violation of these Terms; (c) your violation of any third-party rights; (d) any content you encode into QR codes.',
       ],
     },
     {
-      heading: 'การระงับข้อพิพาท',
+      heading: 'Dispute resolution',
       paragraphs: [
-        `ข้อพิพาทใด ๆ ที่เกิดจากข้อกำหนดนี้หรือการใช้งาน ANQR ของคุณ จะต้องพยายามแก้ไขผ่านการเจรจาอย่างไม่เป็นทางการก่อน โดยติดต่อ ${CONTACT_EMAIL}.`,
-        'หากการแก้ไขแบบไม่เป็นทางการไม่สำเร็จ ข้อพิพาทจะถูกระงับโดยอนุญาโตตุลาการที่มีผลผูกพันในรัฐวิกตอเรีย ประเทศออสเตรเลีย อย่างไรก็ตาม คู่กรณีฝ่ายใดฝ่ายหนึ่งอาจยื่นคำร้องต่อศาลเพื่อขอคำสั่งห้าม (injunctive relief) สำหรับการละเมิดทรัพย์สินทางปัญญา',
+        `Any dispute arising from these Terms or your use of ANQR shall first be attempted to be resolved through informal negotiation by contacting ${CONTACT_EMAIL}.`,
+        'If informal resolution fails, disputes shall be resolved through binding arbitration in Victoria, Australia, except that either party may seek injunctive relief in court for intellectual property violations.',
       ],
     },
     {
-      heading: 'การสละสิทธิ์การฟ้องร้องแบบกลุ่ม',
+      heading: 'Class action waiver',
       paragraphs: [
-        'ในขอบเขตที่กฎหมายอนุญาต คุณตกลงว่ากระบวนการระงับข้อพิพาทใด ๆ จะดำเนินการเฉพาะในนามบุคคล และไม่เป็นการฟ้องร้องแบบกลุ่ม แบบรวม หรือแบบตัวแทน',
+        'TO THE EXTENT PERMITTED BY LAW, YOU AGREE THAT ANY DISPUTE RESOLUTION PROCEEDINGS WILL BE CONDUCTED ONLY ON AN INDIVIDUAL BASIS AND NOT IN A CLASS, CONSOLIDATED, OR REPRESENTATIVE ACTION.',
       ],
     },
     {
-      heading: 'กฎหมายที่ใช้บังคับ',
+      heading: 'Governing law',
       paragraphs: [
-        'ข้อกำหนดนี้อยู่ภายใต้กฎหมายของรัฐวิกตอเรีย ประเทศออสเตรเลีย โดยไม่คำนึงถึงหลักความขัดแย้งของกฎหมาย คุณยินยอมให้อยู่ภายใต้เขตอำนาจศาลแต่เพียงผู้เดียวของศาลที่ตั้งอยู่ในรัฐวิกตอเรีย ประเทศออสเตรเลีย',
+        'These Terms are governed by the laws of Victoria, Australia, without regard to conflict of laws principles. You consent to the exclusive jurisdiction of the courts located in Victoria, Australia.',
       ],
     },
     {
-      heading: 'การเปลี่ยนแปลงและความพร้อมใช้งาน',
+      heading: 'Changes and availability',
       paragraphs: [
-        'เราอาจแก้ไข ระงับ หรือยุติการให้บริการไซต์ (หรือส่วนใดส่วนหนึ่ง) ได้ตลอดเวลาโดยไม่ต้องแจ้งให้ทราบล่วงหน้าหรือไม่ต้องรับผิด',
-        'เราอาจอัปเดตข้อกำหนดนี้ได้ตลอดเวลา วันที่ "อัปเดตล่าสุด" ระบุว่ามีการแก้ไขครั้งล่าสุดเมื่อใด การใช้งานต่อไปหลังการเปลี่ยนแปลงถือเป็นการยอมรับ',
+        'We may modify, suspend, or discontinue the site (or any part of it) at any time without notice or liability.',
+        'We may update these Terms at any time. The "Last updated" date indicates when they were most recently revised. Continued use after changes constitutes acceptance.',
       ],
     },
     {
-      heading: 'การแยกส่วนของข้อกำหนด',
+      heading: 'Severability',
       paragraphs: [
-        'หากข้อกำหนดใด ๆ ถูกถือว่าไม่ถูกต้องหรือไม่สามารถบังคับใช้ได้ ข้อกำหนดนั้นจะถูกบังคับใช้ในขอบเขตสูงสุดที่เป็นไปได้ และข้อกำหนดที่เหลือจะยังคงมีผลบังคับใช้อย่างเต็มที่',
+        'If any provision of these Terms is held invalid or unenforceable, that provision will be enforced to the maximum extent permissible, and the remaining provisions will remain in full force and effect.',
       ],
     },
     {
-      heading: 'การสละสิทธิ์',
+      heading: 'Waiver',
       paragraphs: [
-        'การที่เราไม่บังคับใช้สิทธิ์หรือข้อกำหนดใด ๆ ภายใต้ข้อกำหนดนี้ จะไม่ถือเป็นการสละสิทธิ์หรือข้อกำหนดนั้น',
+        'Our failure to enforce any right or provision of these Terms shall not be deemed a waiver of such right or provision.',
       ],
     },
     {
-      heading: 'ข้อตกลงทั้งหมด',
+      heading: 'Entire agreement',
       paragraphs: [
-        'ข้อกำหนดนี้ร่วมกับนโยบายความเป็นส่วนตัวของเรา ถือเป็นข้อตกลงทั้งหมดระหว่างคุณกับ ANQR เกี่ยวกับการใช้งานไซต์ และแทนที่ข้อตกลงก่อนหน้าทั้งหมด',
+        'These Terms, together with our Privacy Policy, constitute the entire agreement between you and ANQR regarding your use of the site and supersede any prior agreements.',
       ],
     },
     {
-      heading: 'เหตุสุดวิสัย',
+      heading: 'Force majeure',
       paragraphs: [
-        'เราจะไม่รับผิดสำหรับความล้มเหลวหรือความล่าช้าในการปฏิบัติงานอันเกิดจากเหตุการณ์ที่อยู่นอกเหนือการควบคุมโดยสมเหตุสมผลของเรา รวมถึงภัยพิบัติทางธรรมชาติ สงคราม การก่อการร้าย การจลาจล การกระทำของรัฐบาล หรือความล้มเหลวของอินเทอร์เน็ต/โครงสร้างพื้นฐาน',
+        'We shall not be liable for any failure or delay in performance due to circumstances beyond our reasonable control, including natural disasters, war, terrorism, riots, government actions, or internet/infrastructure failures.',
       ],
     },
     {
-      heading: 'ติดต่อ',
-      paragraphs: [`คำถามเกี่ยวกับข้อกำหนดนี้สามารถส่งไปที่: ${CONTACT_EMAIL}`],
+      heading: 'Contact',
+      paragraphs: [`Questions about these Terms can be sent to: ${CONTACT_EMAIL}`],
     },
   ],
 }

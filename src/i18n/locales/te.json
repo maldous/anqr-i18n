@@ -1,1516 +1,1516 @@
 {
   "animation": {
-    "blueNoise": "Blue Noise",
-    "bounce": "Bounce (Ping-Pong)",
-    "colorCycle": "Color Cycle",
-    "crossfade": "Crossfade",
-    "drift": "Drift",
-    "enabled": "Enable Animation",
-    "everyNFrames": "Every {{count}} frame(s)",
-    "exportAllFrames": "Export All Frames",
-    "fadeIn": "Fade In",
-    "flickerSafe": "Flicker Safe",
-    "frameStep": "Frame Step",
-    "interpolation": "Interpolation",
-    "loop": "Loop Animation",
-    "maxFrames": "Max Frames",
-    "moduleJitter": "Module Jitter",
-    "moduleJitterWarning": "⚠️ May affect scannability",
-    "morph": "Morph",
-    "none": "None",
-    "off": "Off",
-    "pattern": "Generated Pattern",
-    "pulse": "Pulse",
-    "randomSeed": "Random Seed",
-    "rotate": "Rotate",
-    "scanline": "Scanline",
-    "shimmer": "Shimmer",
-    "slideIn": "Slide In",
-    "speed": "Frame Speed",
-    "startFrame": "Start Frame",
-    "temporalDither": "Temporal Dither",
-    "wave": "Wave"
+    "blueNoise": "“నీలి శబ్దం”",
+    "bounce": "“బౌన్స్ (పింగ్-పాంగ్)”",
+    "colorCycle": "రంగు చక్రం",
+    "crossfade": "క్రాస్‌ఫేడ్",
+    "drift": "డ్రిఫ్ట్",
+    "enabled": "“యానిమేషన్‌ను ప్రారంభించు”",
+    "everyNFrames": "“ప్రతి {{కౌంట్}} ఫ్రేమ్(లు)”",
+    "exportAllFrames": "“అన్ని ఫ్రేమ్‌లను ఎగుమతి చేయండి”",
+    "fadeIn": "“ఫేడ్ ఇన్”",
+    "flickerSafe": "“ఫ్లికర్ సేఫ్”",
+    "frameStep": "“ఫ్రేమ్ స్టెప్”",
+    "interpolation": "ఇంటర్పోలేషన్",
+    "loop": "“లూప్ యానిమేషన్”",
+    "maxFrames": "“గరిష్ట ఫ్రేమ్‌లు”",
+    "moduleJitter": "“మాడ్యూల్ జిట్టర్”",
+    "moduleJitterWarning": "“⚠️ స్కానింగ్ సామర్థ్యాన్ని ప్రభావితం చేయవచ్చు”",
+    "morph": "మార్ఫ్",
+    "none": "ఏదీ లేదు",
+    "off": "ఆఫ్",
+    "pattern": "“జనరేటెడ్ ప్యాటర్న్”",
+    "pulse": "పల్స్",
+    "randomSeed": "“యాదృచ్ఛిక విత్తనం”",
+    "rotate": "తిప్పండి",
+    "scanline": "స్కాన్‌లైన్",
+    "shimmer": "“షిమ్మర్”",
+    "slideIn": "“లోపలికి స్లయిడ్ చేయండి”",
+    "speed": "“ఫ్రేమ్ స్పీడ్”",
+    "startFrame": "“ప్రారంభ ఫ్రేమ్”",
+    "temporalDither": "“తాత్కాలిక డిథర్”",
+    "wave": "అల"
   },
   "languages": {
-    "en": "English",
-    "hi": "Hindi",
-    "zh": "Chinese",
-    "ms": "Malay",
-    "ta": "Tamil",
-    "th": "Thai",
-    "pt": "Portuguese",
-    "id": "Indonesian",
-    "vi": "Vietnamese",
-    "tl": "Tagalog",
-    "ja": "Japanese",
-    "ko": "Korean",
-    "es": "Spanish",
-    "ar": "Arabic",
-    "ru": "Russian",
-    "te": "Telugu",
-    "mr": "Marathi",
-    "bn": "Bengali",
-    "gu": "Gujarati",
-    "kn": "Kannada",
-    "ml": "Malayalam",
-    "pa": "Punjabi"
+    "en": "ఇంగ్లీష్",
+    "hi": "“హిందీ”",
+    "zh": "చైనీస్",
+    "ms": "మలయ్",
+    "ta": "“తమిళం”",
+    "th": "థాయ్",
+    "pt": "“పోర్చుగీస్”",
+    "id": "“ఇండోనేషియా”",
+    "vi": "“వియత్నామీస్”",
+    "tl": "తగలోగ్",
+    "ja": "జపనీస్",
+    "ko": "కొరియన్",
+    "es": "“స్పానిష్”",
+    "ar": "అరబిక్",
+    "ru": "రష్యన్",
+    "te": "“తెలుగు”",
+    "mr": "“మరాఠీ”",
+    "bn": "“బెంగాలీ”",
+    "gu": "గుజరాతీ",
+    "kn": "“కన్నడ”",
+    "ml": "“మలయాళం”",
+    "pa": "“పంజాబీ”"
   },
   "app": {
-    "name": "ANQR",
-    "tagline": "QR Code Generator"
+    "name": "“ANQR”",
+    "tagline": "“QR కోడ్ జనరేటర్”"
   },
   "common": {
-    "allRightsReserved": "All rights reserved",
-    "apply": "Apply",
-    "back": "Back",
-    "cancel": "Cancel",
-    "close": "Close",
-    "copied": "Copied!",
-    "copy": "Copy",
-    "copyright": "© ANQR",
-    "delete": "Delete",
-    "disabled": "Disabled",
-    "download": "Download",
-    "edit": "Edit",
-    "enabled": "Enabled",
-    "error": "Error",
-    "filter": "Filter",
-    "less": "Less",
-    "loading": "Loading...",
-    "more": "More",
-    "next": "Next",
-    "no": "No",
-    "none": "None",
-    "off": "Off",
-    "ok": "OK",
-    "on": "On",
-    "previous": "Previous",
-    "reset": "Reset",
-    "save": "Save",
-    "search": "Search",
-    "select": "Select",
-    "showLess": "Show Less",
-    "showMore": "Show More",
-    "sort": "Sort",
-    "success": "Success",
-    "upload": "Upload",
-    "viewAll": "View All",
-    "yes": "Yes"
+    "allRightsReserved": "అన్ని హక్కులు ప్రత్యేకించబడ్డాయి",
+    "apply": "వర్తించు",
+    "back": "తిరిగి",
+    "cancel": "“రద్దు చేయి”",
+    "close": "మూసివేయి",
+    "copied": "“కాపీ చేయబడింది!”",
+    "copy": "“కాపీ”",
+    "copyright": "“© ANQR”",
+    "delete": "తొలగించు",
+    "disabled": "వికలాంగులు",
+    "download": "“డౌన్‌లోడ్”",
+    "edit": "సవరించు",
+    "enabled": "“ప్రారంభించబడింది”",
+    "error": "“లోపం”",
+    "filter": "ఫిల్టర్",
+    "less": "తక్కువ",
+    "loading": "“లోడ్ అవుతోంది…”",
+    "more": "“మరిన్ని”",
+    "next": "తదుపరి",
+    "no": "లేదు",
+    "none": "ఏదీ లేదు",
+    "off": "ఆఫ్",
+    "ok": "సరే",
+    "on": "ఆన్",
+    "previous": "మునుపటి",
+    "reset": "రీసెట్",
+    "save": "“సేవ్”",
+    "search": "శోధన",
+    "select": "ఎంచుకోండి",
+    "showLess": "“తక్కువ చూపించు”",
+    "showMore": "“మరిన్ని చూపించు”",
+    "sort": "క్రమబద్ధీకరించు",
+    "success": "విజయం",
+    "upload": "“అప్‌లోడ్”",
+    "viewAll": "“అన్నీ చూడండి”",
+    "yes": "అవును"
   },
-  "fileSaveFailed": "Failed to save file: {{error}}",
-  "fileSaved": "Saved to Documents: {{filename}}",
+  "fileSaveFailed": "“ఫైల్‌ను సేవ్ చేయడంలో విఫలమైంది: {{error}}”",
+  "fileSaved": "“పత్రాలకు సేవ్ చేయబడింది: {{ఫైల్ పేరు}}”",
   "footer": {
-    "copyright": "© ANQR {{year}}"
+    "copyright": "“© ANQR {{సంవత్సరం}}”"
   },
   "gallery": {
-    "all": "All",
-    "animationOverlay": "Animation",
-    "blendModes": "Blend Modes",
-    "collapse": "Collapse",
-    "colorModes": "Color Modes",
-    "colors": "Colors",
-    "contentTypes": "Content Types",
-    "dithering": "Dithering",
-    "encoding": "Encoding",
-    "expand": "Expand",
-    "filter": "Filter",
-    "imageOverlay": "Image Overlay",
+    "all": "అన్నీ",
+    "animationOverlay": "యానిమేషన్",
+    "blendModes": "బ్లెండ్ మోడ్‌లు",
+    "collapse": "కుదించు",
+    "colorModes": "“రంగు మోడ్‌లు”",
+    "colors": "రంగులు",
+    "contentTypes": "“కంటెంట్ రకాలు”",
+    "dithering": "“డిథరింగ్”",
+    "encoding": "ఎన్కోడింగ్",
+    "expand": "“విస్తరించు”",
+    "filter": "ఫిల్టర్",
+    "imageOverlay": "“చిత్ర అతివ్యాప్తి”",
     "items": {
       "anim-blue-noise": {
-        "description": "Blue noise threshold with animation",
-        "title": "Animated Blue Noise"
+        "description": "“యానిమేషన్‌తో బ్లూ నాయిస్ థ్రెషోల్డ్”",
+        "title": "“యానిమేటెడ్ బ్లూ నాయిస్”"
       },
       "anim-blue-noise-i100": {
-        "description": "Animated blue noise at 100%",
-        "title": "Blue Noise 100%"
+        "description": "“100% వద్ద యానిమేటెడ్ బ్లూ నాయిస్”",
+        "title": "“బ్లూ నాయిస్ 100%”"
       },
       "anim-blue-noise-i50": {
-        "description": "Animated blue noise at 50%",
-        "title": "Blue Noise 50%"
+        "description": "“50% వద్ద యానిమేటెడ్ బ్లూ నాయిస్”",
+        "title": "“బ్లూ నాయిస్ 50%”"
       },
       "anim-blue-noise-i75": {
-        "description": "Animated blue noise at 75%",
-        "title": "Blue Noise 75%"
+        "description": "“75% వద్ద యానిమేటెడ్ బ్లూ నాయిస్”",
+        "title": "“బ్లూ నాయిస్ 75%”"
       },
       "anim-brightness": {
-        "description": "Brightness with animation",
-        "title": "Animated Brightness"
+        "description": "“యానిమేషన్‌తో ప్రకాశం”",
+        "title": "“యానిమేటెడ్ ప్రకాశం”"
       },
       "anim-colormode-bw": {
-        "description": "B&W animated overlay",
-        "title": "Animated B&W"
+        "description": "“నలుపు & తెలుపు యానిమేటెడ్ ఓవర్‌లే”",
+        "title": "“యానిమేటెడ్ బ్లాక్ అండ్ వైట్”"
       },
       "anim-colormode-color": {
-        "description": "Color animated overlay",
-        "title": "Animated Color"
+        "description": "“రంగు యానిమేటెడ్ ఓవర్‌లే”",
+        "title": "“యానిమేటెడ్ కలర్”"
       },
       "anim-colormode-grayscale": {
-        "description": "Grayscale animated overlay",
-        "title": "Animated Grayscale"
+        "description": "“గ్రేస్కేల్ యానిమేటెడ్ ఓవర్లే”",
+        "title": "“యానిమేటెడ్ గ్రేస్కేల్”"
       },
       "anim-dithered": {
-        "description": "Error diffusion with animation",
-        "title": "Animated Dithered"
+        "description": "“యానిమేషన్‌తో లోపం వ్యాప్తి”",
+        "title": "“యానిమేటెడ్ డిథర్డ్”"
       },
       "anim-duotone": {
-        "description": "Duotone with animation",
-        "title": "Animated Duotone"
+        "description": "“యానిమేషన్‌తో డ్యూయోటోన్”",
+        "title": "“యానిమేటెడ్ డ్యూటోన్”"
       },
       "anim-halftone": {
-        "description": "Halftone dots with animation",
-        "title": "Animated Halftone"
+        "description": "“యానిమేషన్‌తో హాఫ్‌టోన్ చుక్కలు”",
+        "title": "“యానిమేటెడ్ హాల్ఫ్‌టోన్”"
       },
       "anim-mosaic": {
-        "description": "Mosaic with animation",
-        "title": "Animated Mosaic"
+        "description": "“యానిమేషన్‌తో మొజాయిక్”",
+        "title": "“యానిమేటెడ్ మొజాయిక్”"
       },
       "blend-classic": {
-        "description": "Dithered overlay with classic palette",
-        "title": "Classic Blend"
+        "description": "“క్లాసిక్ ప్యాలెట్‌తో డైథర్డ్ ఓవర్‌లే”",
+        "title": "“క్లాసిక్ బ్లెండ్”"
       },
       "blend-forest": {
-        "description": "Dithered overlay with forest palette",
-        "title": "Forest Blend"
+        "description": "“అటవీ పాలెట్‌తో డిథర్డ్ ఓవర్‌లే”",
+        "title": "“ఫారెస్ట్ బ్లెండ్”"
       },
       "blend-navy": {
-        "description": "Dithered overlay with navy palette",
-        "title": "Navy Blend"
+        "description": "“నేవీ ప్యాలెట్‌తో డైథర్డ్ ఓవర్‌లే”",
+        "title": "“నేవీ బ్లెండ్”"
       },
       "blend-wine": {
-        "description": "Dithered overlay with wine palette",
-        "title": "Wine Blend"
+        "description": "“వైన్ పాలెట్‌తో డిథర్డ్ ఓవర్‌లే”",
+        "title": "“వైన్ బ్లెండ్”"
       },
       "cmode-blue-noise-bw": {
-        "description": "Blue Noise in B&W",
-        "title": "Blue Noise B&W"
+        "description": "“బ్లూ అండ్ వైట్‌లో బ్లూ నాయిస్”",
+        "title": "“బ్లూ నాయిస్ బ్లాక్&డబ్ల్యూ”"
       },
       "cmode-blue-noise-color": {
-        "description": "Blue Noise in Color",
-        "title": "Blue Noise Color"
+        "description": "“రంగులో నీలి శబ్దం”",
+        "title": "“నీలి శబ్ద రంగు”"
       },
       "cmode-dithered-color": {
-        "description": "Dithered in Color",
-        "title": "Dithered Color"
+        "description": "“రంగు మసకబారింది”",
+        "title": "“డిథర్డ్ కలర్”"
       },
       "cmode-dithered-grayscale": {
-        "description": "Dithered in Grayscale",
-        "title": "Dithered Grayscale"
+        "description": "“గ్రేస్కేల్‌లో మసకబారింది”",
+        "title": "“డిథర్డ్ గ్రేస్కేల్”"
       },
       "cmode-halftone-bw": {
-        "description": "Halftone in B&W",
-        "title": "Halftone B&W"
+        "description": "“నలుపు మరియు తెలుపులో హాఫ్‌టోన్”",
+        "title": "“హాఫ్‌టోన్ బ్లాక్&వెడల్పు”"
       },
       "cmode-halftone-color": {
-        "description": "Halftone in Color",
-        "title": "Halftone Color"
+        "description": "“హాల్ఫ్‌టోన్ ఇన్ కలర్”",
+        "title": "“హాఫ్‌టోన్ కలర్”"
       },
       "color-coral": {
-        "description": "#e85d04 on #ffe8d6",
-        "title": "Coral"
+        "description": "“#ffe8d6 లో #e85d04”",
+        "title": "“పగడపు”"
       },
       "color-coral-dots": {
-        "description": "Coral with dot modules",
-        "title": "Coral Dots"
+        "description": "“చుక్కల మాడ్యూళ్ళతో పగడపు”",
+        "title": "“పగడపు చుక్కలు”"
       },
       "color-crimson": {
-        "description": "#9d0208 on #ffccd5",
-        "title": "Crimson"
+        "description": "“#ffccd5 లో #9d0208”",
+        "title": "క్రిమ్సన్"
       },
       "color-forest": {
-        "description": "#1b4332 on #d8f3dc",
-        "title": "Forest"
+        "description": "“#d8f3dc లో #1b4332”",
+        "title": "అడవి"
       },
       "color-forest-dots": {
-        "description": "Forest with dot modules",
-        "title": "Forest Dots"
+        "description": "“చుక్కల మాడ్యూళ్ళతో అడవి”",
+        "title": "“అటవీ చుక్కలు”"
       },
       "color-gold": {
-        "description": "#7f5539 on #ffe8cc",
-        "title": "Gold"
+        "description": "“#ffe8cc లో #7f5539”",
+        "title": "బంగారం"
       },
       "color-inverted": {
-        "description": "#ffffff on #000000",
-        "title": "Inverted"
+        "description": "“#000000 లో #ffffff”",
+        "title": "తిరిగి తిరగబడింది"
       },
       "color-midnight": {
-        "description": "#1a1a2e on #eef1ff",
-        "title": "Midnight"
+        "description": "“#eef1ff లో #1a1a2e”",
+        "title": "“అర్ధరాత్రి”"
       },
       "color-midnight-dots": {
-        "description": "Midnight with dot modules",
-        "title": "Midnight Dots"
+        "description": "“డాట్ మాడ్యూళ్ళతో అర్ధరాత్రి”",
+        "title": "“మిడ్‌నైట్ డాట్స్”"
       },
       "color-navy": {
-        "description": "#001d3d on #a2d2ff",
-        "title": "Navy"
+        "description": "“#a2d2ff లో #001d3d”",
+        "title": "నేవీ"
       },
       "color-ocean": {
-        "description": "#023e8a on #caf0f8",
-        "title": "Ocean"
+        "description": "“#caf0f8 లో #023e8a”",
+        "title": "సముద్రం"
       },
       "color-ocean-dots": {
-        "description": "Ocean with dot modules",
-        "title": "Ocean Dots"
+        "description": "“చుక్కల మాడ్యూళ్ళతో సముద్రం”",
+        "title": "“సముద్ర చుక్కలు”"
       },
       "color-royal": {
-        "description": "#4a0080 on #f5e6ff",
-        "title": "Royal"
+        "description": "“#f5e6ff లో #4a0080”",
+        "title": "రాయల్"
       },
       "color-royal-dots": {
-        "description": "Royal with dot modules",
-        "title": "Royal Dots"
+        "description": "“రాయల్ విత్ డాట్ మాడ్యూల్స్”",
+        "title": "“రాయల్ డాట్స్”"
       },
       "color-slate": {
-        "description": "#343a40 on #e9ecef",
-        "title": "Slate"
+        "description": "“#e9ecef లో #343a40”",
+        "title": "“స్లేట్”"
       },
       "color-sunset": {
-        "description": "#bf0603 on #fff3b0",
-        "title": "Sunset"
+        "description": "“#fff3b0 లో #bf0603”",
+        "title": "“సూర్యాస్తమయం”"
       },
       "color-sunset-dots": {
-        "description": "Sunset with dot modules",
-        "title": "Sunset Dots"
+        "description": "“డాట్ మాడ్యూళ్ళతో సూర్యాస్తమయం”",
+        "title": "“సూర్యాస్తమయం చుక్కలు”"
       },
       "color-teal": {
-        "description": "#006d77 on #e0f4f5",
-        "title": "Teal"
+        "description": "“#e0f4f5 లో #006d77”",
+        "title": "“టీల్”"
       },
       "combo-anim-dots-halftone": {
-        "description": "Animated halftone with dot modules",
-        "title": "Animated Dots + Halftone"
+        "description": "“డాట్ మాడ్యూల్స్‌తో యానిమేటెడ్ హాల్ఫ్‌టోన్”",
+        "title": "“యానిమేటెడ్ డాట్స్ + హాల్ఫ్‌టోన్”"
       },
       "combo-anim-rounded-blue-noise": {
-        "description": "Animated blue noise with rounded",
-        "title": "Animated Rounded + Blue Noise"
+        "description": "“గుండ్రని ఆకారంతో యానిమేటెడ్ నీలి శబ్దం”",
+        "title": "“యానిమేటెడ్ రౌండ్డ్ + బ్లూ నాయిస్”"
       },
       "combo-connected-pixelate-teal": {
-        "description": "Pixelated overlay with connected modules",
-        "title": "Connected + Pixelate Teal"
+        "description": "“కనెక్ట్ చేయబడిన మాడ్యూళ్ళతో పిక్సలేటెడ్ ఓవర్లే”",
+        "title": "“కనెక్టెడ్ + పిక్సలేట్ టీల్”"
       },
       "combo-connected-square": {
-        "description": "Connected modules with square finders",
-        "title": "Connected + Square"
+        "description": "“స్క్వేర్ ఫైండర్లతో కనెక్ట్ చేయబడిన మాడ్యూల్స్”",
+        "title": "“కనెక్ట్ చేయబడింది + స్క్వేర్”"
       },
       "combo-connected-wave-ocean": {
-        "description": "Connected modules with wave effect",
-        "title": "Connected + Wave Ocean"
+        "description": "“వేవ్ ఎఫెక్ట్‌తో కనెక్ట్ చేయబడిన మాడ్యూల్స్”",
+        "title": "“కనెక్టెడ్ + అలల సముద్రం”"
       },
       "combo-diamond-blue-noise-navy": {
-        "description": "Diamond modules with blue noise",
-        "title": "Diamond + Blue Noise Navy"
+        "description": "“నీలిరంగు శబ్దంతో కూడిన డైమండ్ మాడ్యూల్స్”",
+        "title": "“డైమండ్ + బ్లూ నాయిస్ నేవీ”"
       },
       "combo-diamond-duotone-crimson": {
-        "description": "Duotone effect with diamond modules",
-        "title": "Diamond + Duotone Crimson"
+        "description": "“డైమండ్ మాడ్యూల్స్‌తో డ్యూటోన్ ప్రభావం”",
+        "title": "“డైమండ్ + డ్యూటోన్ క్రిమ్సన్”"
       },
       "combo-diamond-rounded": {
-        "description": "Diamond modules with rounded finders",
-        "title": "Diamond + Rounded"
+        "description": "“గుండ్రని ఫైండర్లతో డైమండ్ మాడ్యూల్స్”",
+        "title": "“వజ్రం + గుండ్రంగా”"
       },
       "combo-dots-circle": {
-        "description": "Dots modules with circle finders",
-        "title": "Dots + Circle"
+        "description": "“సర్కిల్ ఫైండర్లతో చుక్కల మాడ్యూల్స్”",
+        "title": "“చుక్కలు + వృత్తం”"
       },
       "combo-dots-extreme-forest": {
-        "description": "Maximum visibility with dots",
-        "title": "Dots + Extreme Forest"
+        "description": "“చుక్కలతో గరిష్ట దృశ్యమానత”",
+        "title": "“చుక్కలు + విపరీతమైన అడవి”"
       },
       "combo-dots-halftone-gold": {
-        "description": "Dot modules with halftone overlay",
-        "title": "Dots + Halftone Gold"
+        "description": "“హాల్ఫ్‌టోన్ ఓవర్‌లేతో డాట్ మాడ్యూల్స్”",
+        "title": "“చుక్కలు + హాల్ఫ్‌టోన్ బంగారం”"
       },
       "combo-dots-outline-slate": {
-        "description": "Edge detection with dot modules",
-        "title": "Dots + Outline Slate"
+        "description": "“డాట్ మాడ్యూళ్ళతో అంచు గుర్తింపు”",
+        "title": "“చుక్కలు + అవుట్‌లైన్ స్లేట్”"
       },
       "combo-rounded-dithered-royal": {
-        "description": "Classic dithered with rounded style",
-        "title": "Rounded + Dithered Royal"
+        "description": "“గుండ్రని శైలితో కూడిన క్లాసిక్ డైథర్డ్”",
+        "title": "“గుండ్రని + డిథర్డ్ రాయల్”"
       },
       "combo-rounded-mosaic-sunset": {
-        "description": "Rounded modules with mosaic overlay",
-        "title": "Rounded + Mosaic Sunset"
+        "description": "“మొజాయిక్ ఓవర్‌లేతో గుండ్రని మాడ్యూల్స్”",
+        "title": "“గుండ్రని + మొజాయిక్ సూర్యాస్తమయం”"
       },
       "combo-rounded-rounded": {
-        "description": "Rounded modules with rounded finders",
-        "title": "Rounded + Rounded"
+        "description": "“గుండ్రని ఫైండర్లతో గుండ్రని మాడ్యూల్స్”",
+        "title": "“గుండ్రని + గుండ్రని”"
       },
       "combo-rounded-subpixel-coral": {
-        "description": "High-detail subpixel rendering",
-        "title": "Rounded + Subpixel Coral"
+        "description": "“అధిక-వివరాల సబ్‌పిక్సెల్ రెండరింగ్”",
+        "title": "“గుండ్రని + సబ్‌పిక్సెల్ కోరల్”"
       },
       "content-email": {
-        "description": "Mailto link with coral colors",
-        "title": "Email Address"
+        "description": "“పగడపు రంగులతో మెయిల్టో లింక్”",
+        "title": "“ఇమెయిల్ చిరునామా”"
       },
       "content-event": {
-        "description": "iCal event with rounded royal",
-        "title": "Calendar Event"
+        "description": "“గుండ్రని రాయల్‌తో కూడిన iCal ఈవెంట్”",
+        "title": "“క్యాలెండర్ ఈవెంట్”"
       },
       "content-geo": {
-        "description": "Map coords with connected gold",
-        "title": "Geo Location"
+        "description": "“కనెక్ట్ చేయబడిన బంగారంతో మ్యాప్ కోఆర్డినేట్స్”",
+        "title": "“జియో లొకేషన్”"
       },
       "content-sms": {
-        "description": "Pre-filled SMS with diamond teal",
-        "title": "SMS Message"
+        "description": "“డైమండ్ టీల్‌తో ముందే నింపిన SMS”",
+        "title": "“SMS సందేశం”"
       },
       "content-vcard": {
-        "description": "Contact card with rounded navy style",
-        "title": "vCard Contact"
+        "description": "“గుండ్రని నేవీ శైలితో కాంటాక్ట్ కార్డ్”",
+        "title": "“vCard కాంటాక్ట్”"
       },
       "content-wifi": {
-        "description": "WiFi config with dots forest green",
-        "title": "WiFi Network"
+        "description": "“డాట్స్ ఫారెస్ట్ గ్రీన్ తో WiFi కాన్ఫిగరేషన్”",
+        "title": "“వైఫై నెట్‌వర్క్”"
       },
       "dither-adaptive-threshold": {
-        "description": "Adaptive threshold",
-        "title": "Adaptive"
+        "description": "“అనుకూల పరిమితి”",
+        "title": "“అనుకూల”"
       },
       "dither-blue-noise": {
-        "description": "Blue noise threshold",
-        "title": "Blue Noise"
+        "description": "“నీలి శబ్దం పరిమితి”",
+        "title": "“నీలి శబ్దం”"
       },
       "dither-blue-noise-error-diffusion": {
-        "description": "Hybrid blue noise",
-        "title": "Blue Noise + Error"
+        "description": "“హైబ్రిడ్ బ్లూ నాయిస్”",
+        "title": "“నీలి శబ్దం + లోపం”"
       },
       "dither-error-diffusion": {
-        "description": "Floyd-Steinberg style",
-        "title": "Error Diffusion"
+        "description": "“ఫ్లాయిడ్-స్టెయిన్‌బర్గ్ శైలి”",
+        "title": "“లోపం వ్యాప్తి”"
       },
       "dither-kernel-atkinson": {
-        "description": "Atkinson error diffusion",
-        "title": "Atkinson"
+        "description": "“అట్కిన్సన్ ఎర్రర్ డిఫ్యూజన్”",
+        "title": "అట్కిన్సన్"
       },
       "dither-kernel-burkes": {
-        "description": "Burkes error diffusion",
-        "title": "Burkes"
+        "description": "“బర్క్స్ ఎర్రర్ డిఫ్యూజన్”",
+        "title": "బర్క్స్"
       },
       "dither-kernel-floyd-steinberg": {
-        "description": "Floyd-Steinberg error diffusion",
-        "title": "Floyd-Steinberg"
+        "description": "“ఫ్లాయిడ్-స్టెయిన్‌బర్గ్ ఎర్రర్ డిఫ్యూజన్”",
+        "title": "ఫ్లాయిడ్-స్టెయిన్‌బర్గ్"
       },
       "dither-kernel-jarvis-judice-ninke": {
-        "description": "Jarvis-Judice-Ninke error diffusion",
-        "title": "Jarvis-Judice-Ninke"
+        "description": "“జార్విస్-జుడీస్-నింకే లోపం వ్యాప్తి”",
+        "title": "“జార్విస్-జ్యూడిస్-నింకే”"
       },
       "dither-kernel-sierra": {
-        "description": "Sierra error diffusion",
-        "title": "Sierra"
+        "description": "“సియెర్రా ఎర్రర్ డిఫ్యూజన్”",
+        "title": "సియెర్రా"
       },
       "dither-kernel-stucki": {
-        "description": "Stucki error diffusion",
-        "title": "Stucki"
+        "description": "“స్టకీ ఎర్రర్ డిఫ్యూజన్”",
+        "title": "“స్టకీ”"
       },
       "dither-ordered-bayer": {
-        "description": "Bayer matrix dithering",
-        "title": "Ordered Bayer"
+        "description": "“బేయర్ మ్యాట్రిక్స్ డైథరింగ్”",
+        "title": "“ఆర్డర్డ్ బేయర్”"
       },
       "dither-perceptual": {
-        "description": "Luminance-weighted",
-        "title": "Perceptual"
+        "description": "“ప్రకాశం-బరువు”",
+        "title": "“గ్రహణశక్తి”"
       },
       "dither-strength-100": {
-        "description": "Dither strength at 100%",
-        "title": "Strength 100%"
+        "description": "“100% వద్ద డిథర్ బలం”",
+        "title": "“బలం 100%”"
       },
       "dither-strength-20": {
-        "description": "Dither strength at 20%",
-        "title": "Strength 20%"
+        "description": "“20% వద్ద డిథర్ బలం”",
+        "title": "“బలం 20%”"
       },
       "dither-strength-40": {
-        "description": "Dither strength at 40%",
-        "title": "Strength 40%"
+        "description": "“40% వద్ద డిథర్ బలం”",
+        "title": "“బలం 40%”"
       },
       "dither-strength-60": {
-        "description": "Dither strength at 60%",
-        "title": "Strength 60%"
+        "description": "“60% వద్ద డిథర్ బలం”",
+        "title": "“బలం 60%”"
       },
       "dither-strength-80": {
-        "description": "Dither strength at 80%",
-        "title": "Strength 80%"
+        "description": "“80% వద్ద డిథర్ బలం”",
+        "title": "“బలం 80%”"
       },
       "dither-white-noise": {
-        "description": "Random noise threshold",
-        "title": "White Noise"
+        "description": "“యాదృచ్ఛిక శబ్దం పరిమితి”",
+        "title": "“వైట్ నాయిస్”"
       },
       "enc-ecc-h": {
-        "description": "30% error correction",
-        "title": "ECC High"
+        "description": "“30% ఎర్రర్ దిద్దుబాటు”",
+        "title": "“ECC హై”"
       },
       "enc-ecc-l": {
-        "description": "7% error correction",
-        "title": "ECC Low"
+        "description": "“7% ఎర్రర్ దిద్దుబాటు”",
+        "title": "ECC తక్కువ"
       },
       "enc-ecc-m": {
-        "description": "15% error correction",
-        "title": "ECC Medium"
+        "description": "“15% ఎర్రర్ దిద్దుబాటు”",
+        "title": "“ECC మీడియం”"
       },
       "enc-ecc-q": {
-        "description": "25% error correction",
-        "title": "ECC Quartile"
+        "description": "“25% ఎర్రర్ దిద్దుబాటు”",
+        "title": "“ECC క్వార్టైల్”"
       },
       "enc-v0": {
-        "description": "Automatic version selection",
-        "title": "Auto Version"
+        "description": "“ఆటోమేటిక్ వెర్షన్ ఎంపిక”",
+        "title": "“ఆటో వెర్షన్”"
       },
       "enc-v12": {
-        "description": "Version 12 QR code",
-        "title": "Version 12"
+        "description": "“వెర్షన్ 12 QR కోడ్”",
+        "title": "“వెర్షన్ 12”"
       },
       "enc-v6": {
-        "description": "Best for overlays (no center eye)",
-        "title": "Version 6"
+        "description": "“ఓవర్‌లేలకు ఉత్తమమైనది (మధ్య కన్ను లేదు)”",
+        "title": "“వెర్షన్ 6”"
       },
       "enc-v6-h": {
-        "description": "Version 6 with high error correction",
-        "title": "V6 + ECC High"
+        "description": "“అధిక దోష దిద్దుబాటుతో వెర్షన్ 6”",
+        "title": "“V6 + ECC హై”"
       },
       "enc-v6-l": {
-        "description": "Version 6 with low error correction",
-        "title": "V6 + ECC Low"
+        "description": "“తక్కువ ఎర్రర్ కరెక్షన్‌తో వెర్షన్ 6”",
+        "title": "“V6 + ECC తక్కువ”"
       },
       "enc-v9": {
-        "description": "Version 9 QR code",
-        "title": "Version 9"
+        "description": "“వెర్షన్ 9 QR కోడ్”",
+        "title": "“వెర్షన్ 9”"
       },
       "enc-v9-h": {
-        "description": "Version 9 with high error correction",
-        "title": "V9 + ECC High"
+        "description": "“అధిక దోష దిద్దుబాటుతో వెర్షన్ 9”",
+        "title": "“V9 + ECC హై”"
       },
       "enc-v9-l": {
-        "description": "Version 9 with low error correction",
-        "title": "V9 + ECC Low"
+        "description": "“తక్కువ ఎర్రర్ దిద్దుబాటుతో వెర్షన్ 9”",
+        "title": "“V9 + ECC తక్కువ”"
       },
       "finder-circle": {
-        "description": "Circle finder pattern",
-        "title": "Circle Finders"
+        "description": "“సర్కిల్ ఫైండర్ నమూనా”",
+        "title": "“సర్కిల్ ఫైండర్లు”"
       },
       "finder-rounded": {
-        "description": "Rounded finder pattern",
-        "title": "Rounded Finders"
+        "description": "“గుండ్రని ఫైండర్ నమూనా”",
+        "title": "“గుండ్రని ఫైండర్లు”"
       },
       "finder-square": {
-        "description": "Square finder pattern",
-        "title": "Square Finders"
+        "description": "“స్క్వేర్ ఫైండర్ నమూనా”",
+        "title": "“స్క్వేర్ ఫైండర్లు”"
       },
       "halftone-classic": {
-        "description": "Halftone with classic palette",
-        "title": "Classic Halftone"
+        "description": "“క్లాసిక్ ప్యాలెట్‌తో హాఫ్‌టోన్”",
+        "title": "“క్లాసిక్ హాల్ఫ్‌టోన్”"
       },
       "halftone-forest": {
-        "description": "Halftone with forest palette",
-        "title": "Forest Halftone"
+        "description": "“అటవీ పాలెట్‌తో హాఫ్‌టోన్”",
+        "title": "“ఫారెస్ట్ హాల్ఫ్‌టోన్”"
       },
       "halftone-navy": {
-        "description": "Halftone with navy palette",
-        "title": "Navy Halftone"
+        "description": "“నేవీ ప్యాలెట్‌తో హాఫ్‌టోన్”",
+        "title": "“నేవీ హాల్ఫ్‌టోన్”"
       },
       "halftone-wine": {
-        "description": "Halftone with wine palette",
-        "title": "Wine Halftone"
+        "description": "“వైన్ ప్యాలెట్‌తో హాఫ్‌టోన్”",
+        "title": "“వైన్ హాల్ఫ్‌టోన్”"
       },
       "img-blend": {
-        "description": "Color blend overlay",
-        "title": "Blend Mode"
+        "description": "“రంగు మిశ్రమ ఓవర్‌లే”",
+        "title": "“బ్లెండ్ మోడ్”"
       },
       "img-blue-noise": {
-        "description": "Blue noise threshold dithering",
-        "title": "Blue Noise"
+        "description": "“నీలి శబ్దం థ్రెషోల్డ్ డైథరింగ్”",
+        "title": "“నీలి శబ్దం”"
       },
       "img-brightness": {
-        "description": "Brightness-based modules",
-        "title": "Brightness"
+        "description": "“ప్రకాశం ఆధారిత మాడ్యూల్స్”",
+        "title": "ప్రకాశం"
       },
       "img-colormode-bw": {
-        "description": "Black & white processing",
-        "title": "Black & White"
+        "description": "నలుపు & తెలుపు ప్రాసెసింగ్",
+        "title": "“నలుపు & తెలుపు”"
       },
       "img-colormode-color": {
-        "description": "Color processing",
-        "title": "Color"
+        "description": "రంగు ప్రాసెసింగ్",
+        "title": "రంగు"
       },
       "img-colormode-grayscale": {
-        "description": "Grayscale processing",
-        "title": "Grayscale"
+        "description": "“గ్రేస్కేల్ ప్రాసెసింగ్”",
+        "title": "గ్రేస్కేల్"
       },
       "img-dithered": {
-        "description": "Error diffusion dithering",
-        "title": "Dithered"
+        "description": "“డిఫ్యూజన్ డైథరింగ్‌లో లోపం”",
+        "title": "“డిథర్డ్”"
       },
       "img-dithered-i100": {
-        "description": "Dithered at 100% intensity",
-        "title": "Dithered 100%"
+        "description": "“100% తీవ్రతతో తడిసిపోయింది”",
+        "title": "“100% క్షీణించింది”"
       },
       "img-dithered-i50": {
-        "description": "Dithered at 50% intensity",
-        "title": "Dithered 50%"
+        "description": "“50% తీవ్రతతో తడిసిపోయింది”",
+        "title": "“50% క్షీణించింది”"
       },
       "img-dithered-i75": {
-        "description": "Dithered at 75% intensity",
-        "title": "Dithered 75%"
+        "description": "“75% తీవ్రతతో తడిసిపోయింది”",
+        "title": "“75% క్షీణించింది”"
       },
       "img-duotone": {
-        "description": "Two-tone color mapping",
-        "title": "Duotone"
+        "description": "“రెండు-టోన్ కలర్ మ్యాపింగ్”",
+        "title": "“డ్యూటోన్”"
       },
       "img-extreme": {
-        "description": "Maximum image visibility",
-        "title": "Extreme"
+        "description": "“గరిష్ట చిత్ర దృశ్యమానత”",
+        "title": "“ఎక్స్‌ట్రీమ్”"
       },
       "img-halftone": {
-        "description": "Classic halftone dots",
-        "title": "Halftone"
+        "description": "“క్లాసిక్ హాఫ్‌టోన్ చుక్కలు”",
+        "title": "“హాఫ్‌టోన్”"
       },
       "img-mosaic": {
-        "description": "Mosaic tile effect",
-        "title": "Mosaic"
+        "description": "“మొజాయిక్ టైల్ ప్రభావం”",
+        "title": "“మొజాయిక్”"
       },
       "img-outline": {
-        "description": "Edge detection overlay",
-        "title": "Outline"
+        "description": "“ఎడ్జ్ డిటెక్షన్ ఓవర్‌లే”",
+        "title": "“రూపురేఖ”"
       },
       "img-pixelate": {
-        "description": "Pixelated overlay effect",
-        "title": "Pixelate"
+        "description": "“పిక్సలేటెడ్ ఓవర్‌లే ఎఫెక్ట్”",
+        "title": "“పిక్సలేట్”"
       },
       "img-subpixel": {
-        "description": "High detail subpixel rendering",
-        "title": "Subpixel"
+        "description": "“అధిక వివరాల సబ్‌పిక్సెల్ రెండరింగ్”",
+        "title": "“సబ్ పిక్సెల్”"
       },
       "img-wave": {
-        "description": "Wavy distortion effect",
-        "title": "Wave"
+        "description": "“వేవీ వక్రీకరణ ప్రభావం”",
+        "title": "అల"
       },
       "mosaic-classic": {
-        "description": "Mosaic with classic palette",
-        "title": "Classic Mosaic"
+        "description": "“క్లాసిక్ పాలెట్‌తో మొజాయిక్”",
+        "title": "“క్లాసిక్ మొజాయిక్”"
       },
       "mosaic-forest": {
-        "description": "Mosaic with forest palette",
-        "title": "Forest Mosaic"
+        "description": "“అటవీ పాలెట్‌తో మొజాయిక్”",
+        "title": "“అడవి మొజాయిక్”"
       },
       "mosaic-navy": {
-        "description": "Mosaic with navy palette",
-        "title": "Navy Mosaic"
+        "description": "“నేవీ పాలెట్‌తో మొజాయిక్”",
+        "title": "నేవీ మొజాయిక్"
       },
       "mosaic-wine": {
-        "description": "Mosaic with wine palette",
-        "title": "Wine Mosaic"
+        "description": "“వైన్ పాలెట్ తో మొజాయిక్”",
+        "title": "“వైన్ మొజాయిక్”"
       },
       "plain-basic": {
-        "description": "Standard QR code",
-        "title": "Classic"
+        "description": "“ప్రామాణిక QR కోడ్”",
+        "title": "క్లాసిక్"
       },
       "plain-ecc-l": {
-        "description": "Minimal error correction",
-        "title": "ECC Low (7%)"
+        "description": "“కనీస దోష దిద్దుబాటు”",
+        "title": "“ECC తక్కువ (7%)”"
       },
       "plain-ecc-q": {
-        "description": "Medium-high error correction",
-        "title": "ECC Quartile (25%)"
+        "description": "“మధ్యస్థ-అధిక లోపం దిద్దుబాటు”",
+        "title": "“ECC క్వార్టైల్ (25%)”"
       },
       "plain-v12": {
-        "description": "Large with multiple alignment",
-        "title": "Version 12"
+        "description": "“బహుళ అమరికతో పెద్దది”",
+        "title": "“వెర్షన్ 12”"
       },
       "plain-v6": {
-        "description": "Larger without center eye",
-        "title": "Version 6"
+        "description": "“మధ్య కన్ను లేకుండా పెద్దది”",
+        "title": "“వెర్షన్ 6”"
       },
       "plain-v9": {
-        "description": "Even larger with center eye",
-        "title": "Version 9"
+        "description": "“మధ్య కన్నుతో ఇంకా పెద్దది”",
+        "title": "“వెర్షన్ 9”"
       },
       "prep-blur-1": {
-        "description": "1px gaussian blur",
-        "title": "Blur 1px"
+        "description": "“1px గాస్సియన్ బ్లర్”",
+        "title": "“బ్లర్ 1px”"
       },
       "prep-blur-2": {
-        "description": "2px gaussian blur",
-        "title": "Blur 2px"
+        "description": "“2px గాస్సియన్ బ్లర్”",
+        "title": "“బ్లర్ 2px”"
       },
       "prep-blur-4": {
-        "description": "4px gaussian blur",
-        "title": "Blur 4px"
+        "description": "“4px గాస్సియన్ బ్లర్”",
+        "title": "“బ్లర్ 4px”"
       },
       "prep-brightness-n25": {
-        "description": "Brightness adjusted darker",
-        "title": "Brightness -25"
+        "description": "“ప్రకాశం ముదురు రంగులోకి మార్చబడింది”",
+        "title": "“ప్రకాశం -25”"
       },
       "prep-brightness-n50": {
-        "description": "Brightness adjusted darker",
-        "title": "Brightness -50"
+        "description": "“ప్రకాశం ముదురు రంగులోకి మార్చబడింది”",
+        "title": "“ప్రకాశం -50”"
       },
       "prep-brightness-p25": {
-        "description": "Brightness adjusted brighter",
-        "title": "Brightness +25"
+        "description": "“ప్రకాశం మరింత ప్రకాశవంతంగా సర్దుబాటు చేయబడింది”",
+        "title": "“ప్రకాశం +25”"
       },
       "prep-brightness-p50": {
-        "description": "Brightness adjusted brighter",
-        "title": "Brightness +50"
+        "description": "“ప్రకాశం మరింత ప్రకాశవంతంగా సర్దుబాటు చేయబడింది”",
+        "title": "“ప్రకాశం +50”"
       },
       "prep-contrast-n50": {
-        "description": "Low contrast",
-        "title": "Contrast -50"
+        "description": "“తక్కువ కాంట్రాస్ట్”",
+        "title": "“కాంట్రాస్ట్ -50”"
       },
       "prep-contrast-p100": {
-        "description": "High contrast",
-        "title": "Contrast +100"
+        "description": "“అధిక కాంట్రాస్ట్”",
+        "title": "“కాంట్రాస్ట్ +100”"
       },
       "prep-contrast-p50": {
-        "description": "High contrast",
-        "title": "Contrast +50"
+        "description": "“అధిక కాంట్రాస్ట్”",
+        "title": "“కాంట్రాస్ట్ +50”"
       },
       "prep-edge-canny": {
-        "description": "Canny edge detection",
-        "title": "Edge Canny"
+        "description": "“కాన్నీ ఎడ్జ్ డిటెక్షన్”",
+        "title": "“ఎడ్జ్ కానీ”"
       },
       "prep-edge-sobel": {
-        "description": "Sobel edge detection",
-        "title": "Edge Sobel"
+        "description": "“సోబెల్ అంచు గుర్తింపు”",
+        "title": "“ఎడ్జ్ సోబెల్”"
       },
       "prep-gamma-05": {
-        "description": "Gamma correction 0.5",
-        "title": "Gamma 0.5"
+        "description": "“గామా కరెక్షన్ 0.5”",
+        "title": "“గామా 0.5”"
       },
       "prep-gamma-15": {
-        "description": "Gamma correction 1.5",
-        "title": "Gamma 1.5"
+        "description": "“గామా కరెక్షన్ 1.5”",
+        "title": "“గామా 1.5”"
       },
       "prep-gamma-20": {
-        "description": "Gamma correction 2.0",
-        "title": "Gamma 2.0"
+        "description": "“గామా కరెక్షన్ 2.0”",
+        "title": "“గామా 2.0”"
       },
       "prep-hue-90": {
-        "description": "Hue rotation 90 degrees",
-        "title": "Hue +90°"
+        "description": "“రంగు భ్రమణం 90 డిగ్రీలు”",
+        "title": "“రంగు +90°”"
       },
       "prep-invert": {
-        "description": "Inverted colors",
-        "title": "Inverted"
+        "description": "“విలోమ రంగులు”",
+        "title": "తిరిగి తిరగబడింది"
       },
       "prep-posterize-2": {
-        "description": "2 color levels",
-        "title": "Posterize 2"
+        "description": "“2 రంగు స్థాయిలు”",
+        "title": "“పోస్టరైజ్ 2”"
       },
       "prep-posterize-4": {
-        "description": "4 color levels",
-        "title": "Posterize 4"
+        "description": "4 రంగు స్థాయిలు",
+        "title": "“పోస్టరైజ్ 4”"
       },
       "prep-posterize-8": {
-        "description": "8 color levels",
-        "title": "Posterize 8"
+        "description": "8 రంగు స్థాయిలు",
+        "title": "“పోస్టరైజ్ 8”"
       },
       "prep-saturation-n100": {
-        "description": "Desaturated",
-        "title": "Saturation -100"
+        "description": "“అసంతృప్తం”",
+        "title": "“సంతృప్తత -100”"
       },
       "prep-saturation-n50": {
-        "description": "Reduced saturation",
-        "title": "Saturation -50"
+        "description": "“తగ్గిన సంతృప్తత”",
+        "title": "“సంతృప్తత -50”"
       },
       "prep-saturation-p100": {
-        "description": "Oversaturated",
-        "title": "Saturation +100"
+        "description": "“అతిగా నిండినది”",
+        "title": "“సంతృప్తత +100”"
       },
       "prep-saturation-p50": {
-        "description": "Oversaturated",
-        "title": "Saturation +50"
+        "description": "“అతిగా నిండినది”",
+        "title": "“సంతృప్తత +50”"
       },
       "prep-sharpen-100": {
-        "description": "100% sharpening",
-        "title": "Sharpen 100%"
+        "description": "“100% పదునుపెట్టడం”",
+        "title": "“100% పదును పెట్టండి”"
       },
       "prep-sharpen-25": {
-        "description": "25% sharpening",
-        "title": "Sharpen 25%"
+        "description": "“25% పదునుపెట్టడం”",
+        "title": "“25% పదును పెట్టండి”"
       },
       "prep-sharpen-50": {
-        "description": "50% sharpening",
-        "title": "Sharpen 50%"
+        "description": "“50% పదునుపెట్టడం”",
+        "title": "“50% పదును పెట్టండి”"
       },
       "prep-threshold-128": {
-        "description": "Binary threshold at 128",
-        "title": "Threshold 128"
+        "description": "“128 వద్ద బైనరీ థ్రెషోల్డ్”",
+        "title": "“థ్రెషోల్డ్ 128”"
       },
       "prep-threshold-192": {
-        "description": "Binary threshold at 192",
-        "title": "Threshold 192"
+        "description": "“192 వద్ద బైనరీ థ్రెషోల్డ్”",
+        "title": "“థ్రెషోల్డ్ 192”"
       },
       "prep-threshold-64": {
-        "description": "Binary threshold at 64",
-        "title": "Threshold 64"
+        "description": "“64 వద్ద బైనరీ థ్రెషోల్డ్”",
+        "title": "“థ్రెషోల్డ్ 64”"
       },
       "style-connected": {
-        "description": "Connected module style",
-        "title": "Connected Modules"
+        "description": "“కనెక్టెడ్ మాడ్యూల్ స్టైల్”",
+        "title": "“కనెక్టెడ్ మాడ్యూల్స్”"
       },
       "style-diamond": {
-        "description": "Diamond module style",
-        "title": "Diamond Modules"
+        "description": "“డైమండ్ మాడ్యూల్ శైలి”",
+        "title": "“డైమండ్ మాడ్యూల్స్”"
       },
       "style-dots": {
-        "description": "Dots module style",
-        "title": "Dots Modules"
+        "description": "“చుక్కల మాడ్యూల్ శైలి”",
+        "title": "“చుక్కల మాడ్యూల్స్”"
       },
       "style-rounded": {
-        "description": "Rounded module style",
-        "title": "Rounded Modules"
+        "description": "“గుండ్రని మాడ్యూల్ శైలి”",
+        "title": "“గుండ్రని మాడ్యూల్స్”"
       },
       "style-square": {
-        "description": "Square module style",
-        "title": "Square Modules"
+        "description": "“స్క్వేర్ మాడ్యూల్ శైలి”",
+        "title": "“స్క్వేర్ మాడ్యూల్స్”"
       }
     },
-    "plain": "Plain",
-    "powerCombos": "Power Combos",
-    "preprocessing": "Preprocessing",
+    "plain": "“ప్లెయిన్”",
+    "powerCombos": "“పవర్ కాంబోస్”",
+    "preprocessing": "“ప్రీప్రాసెసింగ్”",
     "sections": {
       "animation-overlay": {
-        "description": "Animated GIF overlays with different blend modes",
-        "title": "Animated Overlays"
+        "description": "“విభిన్న బ్లెండ్ మోడ్‌లతో యానిమేటెడ్ GIF ఓవర్‌లేలు”",
+        "title": "“యానిమేటెడ్ ఓవర్లేలు”"
       },
       "blend-modes": {
-        "description": "Different color blending with image overlays",
-        "title": "Blend Modes"
+        "description": "“చిత్ర అతివ్యాప్తులతో విభిన్న రంగుల మిశ్రమం”",
+        "title": "బ్లెండ్ మోడ్‌లు"
       },
       "color-modes": {
-        "description": "Color, grayscale, and black & white processing",
-        "title": "Color Processing"
+        "description": "“రంగు, గ్రేస్కేల్ మరియు నలుపు & తెలుపు ప్రాసెసింగ్”",
+        "title": "“రంగు ప్రాసెసింగ్”"
       },
       "colors": {
-        "description": "Color schemes and themed palettes",
-        "title": "Colors & Themes"
+        "description": "“రంగు పథకాలు మరియు నేపథ్య పాలెట్‌లు”",
+        "title": "“రంగులు & థీమ్‌లు”"
       },
       "content-types": {
-        "description": "Different payload formats - vCard, WiFi, Email, SMS, Geo, Calendar",
-        "title": "Content Types"
+        "description": "“విభిన్న పేలోడ్ ఫార్మాట్‌లు - vCard, WiFi, ఇమెయిల్, SMS, జియో, క్యాలెండర్”",
+        "title": "“కంటెంట్ రకాలు”"
       },
       "dithering": {
-        "description": "Different dithering methods and error diffusion kernels",
-        "title": "Dithering Algorithms"
+        "description": "“విభిన్న డైథరింగ్ పద్ధతులు మరియు ఎర్రర్ డిఫ్యూజన్ కెర్నల్స్”",
+        "title": "“డిథరింగ్ అల్గోరిథంలు”"
       },
       "encoding": {
-        "description": "Different QR versions and error correction levels",
-        "title": "QR Encoding"
+        "description": "“విభిన్న QR వెర్షన్‌లు మరియు ఎర్రర్ కరెక్షన్ స్థాయిలు”",
+        "title": "“QR ఎన్‌కోడింగ్”"
       },
       "image-overlay": {
-        "description": "Static image overlays with different blend modes",
-        "title": "Image Overlays"
+        "description": "“విభిన్న బ్లెండ్ మోడ్‌లతో స్టాటిక్ ఇమేజ్ ఓవర్‌లేలు”",
+        "title": "“చిత్ర అతివ్యాప్తులు”"
       },
       "plain": {
-        "description": "Standard QR codes without overlay - different versions and error correction",
-        "title": "Plain QR Codes"
+        "description": "“ఓవర్లే లేకుండా ప్రామాణిక QR కోడ్‌లు - విభిన్న వెర్షన్‌లు మరియు ఎర్రర్ దిద్దుబాటు”",
+        "title": "“సాదా QR కోడ్‌లు”"
       },
       "power-combos": {
-        "description": "Striking multi-feature combinations showcasing ANQR capabilities",
-        "title": "Power Combos"
+        "description": "“ANQR సామర్థ్యాలను ప్రదర్శించే అద్భుతమైన బహుళ-లక్షణ కలయికలు”",
+        "title": "“పవర్ కాంబోస్”"
       },
       "preprocessing": {
-        "description": "Brightness, contrast, gamma, blur, sharpen, posterize, edge detection",
-        "title": "Image Preprocessing"
+        "description": "“ప్రకాశం, కాంట్రాస్ట్, గామా, బ్లర్, షార్పెన్, పోస్టరైజ్, అంచు గుర్తింపు”",
+        "title": "“ఇమేజ్ ప్రీప్రాసెసింగ్”"
       },
       "styles": {
-        "description": "Different visual styles for modules and finder patterns",
-        "title": "Module & Finder Styles"
+        "description": "“మాడ్యూల్స్ మరియు ఫైండర్ నమూనాల కోసం విభిన్న దృశ్య శైలులు”",
+        "title": "“మాడ్యూల్ & ఫైండర్ స్టైల్స్”"
       }
     },
-    "showAll": "Show All",
-    "styles": "Styles",
-    "subtitle": "Explore examples of QR codes created with ANQR",
-    "title": "QR Code Gallery",
-    "tryThis": "Try this"
+    "showAll": "“అన్నీ చూపించు”",
+    "styles": "శైలులు",
+    "subtitle": "“ANQR తో సృష్టించబడిన QR కోడ్‌ల ఉదాహరణలను అన్వేషించండి”",
+    "title": "“QR కోడ్ గ్యాలరీ”",
+    "tryThis": "“దీన్ని ప్రయత్నించండి”"
   },
   "header": {
-    "close": "Close",
-    "copied": "Copied!",
-    "copyLink": "Copy Link",
-    "darkMode": "Switch to dark mode",
-    "export": "Export",
-    "lightMode": "Switch to light mode",
-    "reset": "Reset",
-    "searchSettings": "Search settings...",
-    "share": "Share"
+    "close": "మూసివేయి",
+    "copied": "“కాపీ చేయబడింది!”",
+    "copyLink": "“లింక్‌ను కాపీ చేయి”",
+    "darkMode": "“డార్క్ మోడ్‌కి మారండి”",
+    "export": "ఎగుమతి",
+    "lightMode": "“లైట్ మోడ్‌కి మారండి”",
+    "reset": "రీసెట్",
+    "searchSettings": "“శోధన సెట్టింగ్‌లు…”",
+    "share": "“షేర్”"
   },
   "hints": {
-    "alignmentStyle": "Style of alignment patterns (used in larger QR codes)",
-    "appLinkNote": "Opens specific content within a mobile app",
-    "autoDetect": "Auto-detect (requires v{{version}}+ for current content)",
-    "autoMinVersion": "0 = Auto, min v{{version}} for current content",
-    "bgColorHex": "Background color hex code",
-    "bizcardLegacy": "Legacy format - consider using vCard instead",
-    "bluetoothNote": "Note: Bluetooth pairing via QR is vendor-specific and may not work on all devices",
-    "bounceAnimation": "Play animation forward then backward (ping-pong)",
-    "calendarNote": "Subscribe to a shared calendar feed",
-    "contrastGuard": "Ensure minimum contrast ratio between foreground and background",
-    "cornerRadius": "Corner radius percentage for rounded modules (0-100%)",
-    "crispEdges": "Use pixelated rendering for sharp module edges",
-    "customNote": "Enter raw data in any format. No validation or formatting will be applied.",
-    "dotRotation": "Rotate dot-style modules (0-360 degrees)",
-    "encodingMode": "Data encoding mode - Auto selects the most efficient mode",
-    "enforceMinQuietZone": "Enforce minimum 4 module quiet zone for better scanning reliability",
-    "enterTextContent": "Enter the text content to encode in the QR code",
-    "enterUrlContent": "Enter the URL to encode in the QR code",
-    "epcSepaNote": "European Payment Council QR code for SEPA credit transfers",
-    "errorCorrection": "Error correction level - higher = more damage resistance but larger QR code",
-    "extraBorder": "Additional border modules beyond the quiet zone (0-10)",
-    "eyeInnerStyle": "Style of the inner square of finder patterns",
-    "eyeOuterStyle": "Style of the outer ring of finder patterns",
-    "eyeScale": "Scale finder patterns relative to their default size (50-150%)",
-    "fgColorHex": "Foreground color hex code",
-    "finderStyle": "Style of the corner finder patterns",
-    "forceHttps": "Convert HTTP URLs to HTTPS automatically",
-    "frameStyle": "Add a decorative frame around the QR code",
-    "frameText": "Text to display on the frame",
-    "gapMode": "How gaps between modules are rendered",
-    "gradient": "Apply a gradient effect to the QR code",
-    "gs1Note": "GS1 Digital Link for product identification and traceability",
-    "higherEccLargerQr": "Higher = more damage resistance, larger QR",
-    "loopAnimation": "Loop animation continuously",
-    "maxLengthGuard": "Prevent encoding content that exceeds QR code capacity",
-    "minContrastRatio": "Minimum contrast ratio to enforce (1-21, WCAG AA requires 4.5:1)",
-    "moduleGap": "Gap between modules as percentage (0-30%)",
-    "moduleJitterWarning": "⚠️ May affect scannability",
-    "moduleSize": "Size of each QR code module in pixels (2-20px)",
-    "moduleStyle": "Visual style of QR code modules",
-    "normalizeNewlines": "Convert different newline formats to a standard format",
-    "outputFormat": "Select the output file format for export",
-    "paynowNote": "Singapore fast payment system",
-    "perModuleColor": "How to assign colors to individual modules",
-    "pickBgColor": "Click to pick background color",
-    "pickFgColor": "Click to pick foreground color",
-    "pixNote": "Brazilian instant payment system",
-    "pixelSnap": "How to snap module positions to pixel boundaries",
-    "promptpayNote": "Thailand national e-payment system",
-    "qrVersion": "QR code version (0=auto, 1-40 increases size and capacity)",
-    "quietZone": "Quiet zone margin around QR code (0-10 modules, recommended: 4+)",
-    "rsvpNote": "Link to an online RSVP form or event registration page",
-    "safetyMode": "Safety analysis mode - how strictly to check QR code readability",
-    "selectContentType": "Select the type of content to encode in the QR code",
-    "shortLinkNote": "Use a URL shortener service for dynamic/trackable QR codes",
-    "timingStyle": "Style of timing patterns (horizontal and vertical lines)",
-    "transparentBg": "Make the background transparent instead of using background color",
-    "trimWhitespace": "Remove leading and trailing whitespace",
-    "upiNote": "Unified Payments Interface for India",
-    "utmCampaign": "UTM campaign parameter for campaign tracking",
-    "utmMedium": "UTM medium parameter for campaign tracking",
-    "utmSource": "UTM source parameter for campaign tracking",
-    "validateInput": "Validate input data before encoding",
-    "versionTooLow": "⚠️ Version too low! Minimum v{{version}} required"
+    "alignmentStyle": "“అమరిక నమూనాల శైలి (పెద్ద QR కోడ్‌లలో ఉపయోగించబడుతుంది)”",
+    "appLinkNote": "“మొబైల్ యాప్‌లో నిర్దిష్ట కంటెంట్‌ను తెరుస్తుంది”",
+    "autoDetect": "“ఆటో-డిటెక్ట్ (ప్రస్తుత కంటెంట్ కోసం v{{వెర్షన్}}+ అవసరం)”",
+    "autoMinVersion": "“0 = ప్రస్తుత కంటెంట్ కోసం ఆటో, కనిష్ట v{{వెర్షన్}}”",
+    "bgColorHex": "“నేపథ్య రంగు హెక్స్ కోడ్”",
+    "bizcardLegacy": "“లెగసీ ఫార్మాట్ - బదులుగా vCard ఉపయోగించడాన్ని పరిగణించండి”",
+    "bluetoothNote": "“గమనిక: QR ద్వారా బ్లూటూత్ జత చేయడం విక్రేత-నిర్దిష్టమైనది మరియు అన్ని పరికరాల్లో పని చేయకపోవచ్చు”",
+    "bounceAnimation": "“యానిమేషన్‌ను ముందుకు, తర్వాత వెనుకకు ప్లే చేయండి (పింగ్-పాంగ్)”",
+    "calendarNote": "“షేర్డ్ క్యాలెండర్ ఫీడ్‌కు సబ్‌స్క్రైబ్ చేయండి”",
+    "contrastGuard": "“ముందుభాగం మరియు నేపథ్యం మధ్య కనీస వ్యత్యాస నిష్పత్తిని నిర్ధారించుకోండి”",
+    "cornerRadius": "“గుండ్రని మాడ్యూళ్లకు మూల వ్యాసార్థ శాతం (0-100%)”",
+    "crispEdges": "“పదునైన మాడ్యూల్ అంచుల కోసం పిక్సలేటెడ్ రెండరింగ్ ఉపయోగించండి”",
+    "customNote": "“ఏ ఫార్మాట్‌లోనైనా ముడి డేటాను నమోదు చేయండి. ధ్రువీకరణ లేదా ఫార్మాటింగ్ వర్తించదు.”",
+    "dotRotation": "“చుక్కల శైలి మాడ్యూళ్ళను తిప్పండి (0-360 డిగ్రీలు)”",
+    "encodingMode": "“డేటా ఎన్‌కోడింగ్ మోడ్ - ఆటో అత్యంత సమర్థవంతమైన మోడ్‌ను ఎంచుకుంటుంది”",
+    "enforceMinQuietZone": "“మెరుగైన స్కానింగ్ విశ్వసనీయత కోసం కనీసం 4 మాడ్యూల్ నిశ్శబ్ద జోన్‌ను అమలు చేయండి”",
+    "enterTextContent": "“QR కోడ్‌లో ఎన్‌కోడ్ చేయడానికి టెక్స్ట్ కంటెంట్‌ను నమోదు చేయండి”",
+    "enterUrlContent": "“QR కోడ్‌లో ఎన్‌కోడ్ చేయడానికి URLని నమోదు చేయండి”",
+    "epcSepaNote": "“SEPA క్రెడిట్ బదిలీల కోసం యూరోపియన్ పేమెంట్ కౌన్సిల్ QR కోడ్”",
+    "errorCorrection": "“లోపాన్ని సరిదిద్దే స్థాయి - ఎక్కువ = నష్ట నిరోధకత ఎక్కువ కానీ QR కోడ్ పెద్దది”",
+    "extraBorder": "“నిశ్శబ్ద మండలం (0-10) దాటి అదనపు సరిహద్దు మాడ్యూల్స్”",
+    "eyeInnerStyle": "“ఫైండర్ నమూనాల లోపలి చతురస్రం శైలి”",
+    "eyeOuterStyle": "“ఫైండర్ నమూనాల బాహ్య వలయం యొక్క శైలి”",
+    "eyeScale": "“వాటి డిఫాల్ట్ పరిమాణానికి (50-150%) సంబంధించి స్కేల్ ఫైండర్ నమూనాలు”",
+    "fgColorHex": "“ముందుభాగం రంగు హెక్స్ కోడ్”",
+    "finderStyle": "“మూల ఫైండర్ నమూనాల శైలి”",
+    "forceHttps": "“HTTP URL లను HTTPS కి స్వయంచాలకంగా మార్చండి”",
+    "frameStyle": "“QR కోడ్ చుట్టూ అలంకార ఫ్రేమ్‌ను జోడించండి”",
+    "frameText": "“ఫ్రేమ్‌లో ప్రదర్శించాల్సిన వచనం”",
+    "gapMode": "“మాడ్యూళ్ల మధ్య అంతరాలు ఎలా రెండర్ చేయబడతాయి”",
+    "gradient": "“QR కోడ్‌కు ప్రవణత ప్రభావాన్ని వర్తింపజేయండి”",
+    "gs1Note": "“ఉత్పత్తి గుర్తింపు మరియు జాడ కనుగొనడం కోసం GS1 డిజిటల్ లింక్”",
+    "higherEccLargerQr": "“ఎక్కువ = ఎక్కువ నష్ట నిరోధకత, పెద్ద QR”",
+    "loopAnimation": "“లూప్ యానిమేషన్ నిరంతరం”",
+    "maxLengthGuard": "“QR కోడ్ సామర్థ్యాన్ని మించిన కంటెంట్‌ను ఎన్‌కోడ్ చేయడాన్ని నిరోధించండి”",
+    "minContrastRatio": "“అమలు చేయడానికి కనీస కాంట్రాస్ట్ నిష్పత్తి (1-21, WCAG AA కి 4.5:1 అవసరం)”",
+    "moduleGap": "“శాతంగా మాడ్యూళ్ల మధ్య అంతరం (0-30%)”",
+    "moduleJitterWarning": "“⚠️ స్కానింగ్ సామర్థ్యాన్ని ప్రభావితం చేయవచ్చు”",
+    "moduleSize": "“ప్రతి QR కోడ్ మాడ్యూల్ పరిమాణం పిక్సెల్‌లలో (2-20px)”",
+    "moduleStyle": "“QR కోడ్ మాడ్యూళ్ల దృశ్య శైలి”",
+    "normalizeNewlines": "“విభిన్న న్యూలైన్ ఫార్మాట్‌లను ప్రామాణిక ఫార్మాట్‌కు మార్చండి”",
+    "outputFormat": "“ఎగుమతి కోసం అవుట్‌పుట్ ఫైల్ ఫార్మాట్‌ను ఎంచుకోండి”",
+    "paynowNote": "“సింగపూర్ ఫాస్ట్ పేమెంట్ సిస్టమ్”",
+    "perModuleColor": "“వ్యక్తిగత మాడ్యూళ్ళకు రంగులను ఎలా కేటాయించాలి”",
+    "pickBgColor": "“నేపథ్య రంగును ఎంచుకోవడానికి క్లిక్ చేయండి”",
+    "pickFgColor": "“ముందుభాగం రంగును ఎంచుకోవడానికి క్లిక్ చేయండి”",
+    "pixNote": "“బ్రెజిలియన్ తక్షణ చెల్లింపు వ్యవస్థ”",
+    "pixelSnap": "“మాడ్యూల్ స్థానాలను పిక్సెల్ సరిహద్దులకు ఎలా స్నాప్ చేయాలి”",
+    "promptpayNote": "“థాయిలాండ్ జాతీయ ఇ-చెల్లింపు వ్యవస్థ”",
+    "qrVersion": "“QR కోడ్ వెర్షన్ (0=ఆటో, 1-40 పరిమాణం మరియు సామర్థ్యాన్ని పెంచుతుంది)”",
+    "quietZone": "“QR కోడ్ చుట్టూ నిశ్శబ్ద జోన్ మార్జిన్ (0-10 మాడ్యూల్స్, సిఫార్సు చేయబడింది: 4+)”",
+    "rsvpNote": "“ఆన్‌లైన్ RSVP ఫారమ్ లేదా ఈవెంట్ రిజిస్ట్రేషన్ పేజీకి లింక్”",
+    "safetyMode": "“భద్రతా విశ్లేషణ మోడ్ - QR కోడ్ రీడబిలిటీని ఎంత ఖచ్చితంగా తనిఖీ చేయాలి”",
+    "selectContentType": "“QR కోడ్‌లో ఎన్‌కోడ్ చేయడానికి కంటెంట్ రకాన్ని ఎంచుకోండి”",
+    "shortLinkNote": "“డైనమిక్/ట్రాక్ చేయగల QR కోడ్‌ల కోసం URL షార్ట్‌నర్ సేవను ఉపయోగించండి”",
+    "timingStyle": "“సమయ నమూనాల శైలి (క్షితిజ సమాంతర మరియు నిలువు వరుసలు)”",
+    "transparentBg": "“నేపథ్య రంగును ఉపయోగించకుండా నేపథ్యాన్ని పారదర్శకంగా చేయండి”",
+    "trimWhitespace": "“ముందు మరియు వెనుక ఉన్న ఖాళీలను తీసివేయండి”",
+    "upiNote": "“భారతదేశం కోసం ఏకీకృత చెల్లింపుల ఇంటర్‌ఫేస్”",
+    "utmCampaign": "“ప్రచార ట్రాకింగ్ కోసం UTM ప్రచార పరామితి”",
+    "utmMedium": "“ప్రచార ట్రాకింగ్ కోసం UTM మీడియం పరామితి”",
+    "utmSource": "“ప్రచార ట్రాకింగ్ కోసం UTM సోర్స్ పరామితి”",
+    "validateInput": "“ఎన్కోడింగ్ చేసే ముందు ఇన్‌పుట్ డేటాను ధృవీకరించండి”",
+    "versionTooLow": "“⚠️ వెర్షన్ చాలా తక్కువ! కనీస v{{వెర్షన్}} అవసరం”"
   },
   "language": {
-    "current": "Language",
-    "select": "Select Language"
+    "current": "“భాష”",
+    "select": "“భాషను ఎంచుకోండి”"
   },
   "metadata": {
-    "addCustomField": "Add Custom Field",
-    "author": "Author",
-    "authorPlaceholder": "Author name",
-    "copyright": "Copyright",
-    "copyrightPlaceholder": "© 2024 Company Name",
-    "customMetadata": "Custom Metadata",
-    "description": "Description",
-    "descriptionPlaceholder": "Description of this QR code...",
-    "includeCreationTime": "Include Creation Time",
-    "key": "Key",
-    "keyPlaceholder": "Key",
-    "keywords": "Keywords",
-    "license": "License",
-    "licensePlaceholder": "CC-BY-4.0",
-    "title": "Title",
-    "titlePlaceholder": "QR Code Title",
-    "value": "Value",
-    "valuePlaceholder": "Value"
+    "addCustomField": "“కస్టమ్ ఫీల్డ్‌ను జోడించు”",
+    "author": "రచయిత",
+    "authorPlaceholder": "“రచయిత పేరు”",
+    "copyright": "“కాపీరైట్”",
+    "copyrightPlaceholder": "“© 2024 కంపెనీ పేరు”",
+    "customMetadata": "“కస్టమ్ మెటాడేటా”",
+    "description": "వివరణ",
+    "descriptionPlaceholder": "“ఈ QR కోడ్ యొక్క వివరణ…”",
+    "includeCreationTime": "“సృష్టి సమయాన్ని చేర్చండి”",
+    "key": "కీ",
+    "keyPlaceholder": "కీ",
+    "keywords": "“కీలకపదాలు”",
+    "license": "లైసెన్స్",
+    "licensePlaceholder": "“CC-BY-4.0”",
+    "title": "శీర్షిక",
+    "titlePlaceholder": "“QR కోడ్ శీర్షిక”",
+    "value": "విలువ",
+    "valuePlaceholder": "విలువ"
   },
   "nav": {
-    "about": "About",
-    "contact": "Contact",
-    "docs": "Guide",
-    "gallery": "Gallery",
-    "generator": "Generator",
-    "guide": "Guide",
-    "privacy": "Privacy",
-    "terms": "Terms"
+    "about": "“గురించి”",
+    "contact": "“సంప్రదింపు”",
+    "docs": "“గైడ్”",
+    "gallery": "గ్యాలరీ",
+    "generator": "జనరేటర్",
+    "guide": "“గైడ్”",
+    "privacy": "గోప్యత",
+    "terms": "“నిబంధనలు”"
   },
   "output": {
-    "backgroundOverride": "Background Override",
-    "backgroundOverridePlaceholder": "Leave empty for default",
-    "dithering": "Dithering",
-    "dpi": "DPI (Print)",
-    "embedRasterOverlay": "Embed Raster Overlay",
-    "exportAsAdditional": "Export As (Additional)",
-    "filename": "Filename",
-    "floydSteinberg": "Floyd-Steinberg",
-    "format": "Format",
-    "gif": "GIF",
-    "gifSettings": "GIF Settings",
-    "height": "Height",
-    "includeQuietZone": "Include Quiet Zone",
-    "medianCut": "Median Cut",
-    "neuquant": "NeuQuant",
-    "none": "None",
-    "octree": "Octree",
-    "off": "Off",
-    "ordered": "Ordered",
-    "outputSize": "Output Size",
-    "paletteSize": "Palette Size",
-    "pdf": "PDF",
-    "pixel": "Pixel",
-    "png": "PNG",
-    "precise": "Precise",
-    "quality": "Quality",
-    "quantizer": "Quantizer",
-    "shapePrecision": "Shape Precision",
-    "svg": "SVG",
-    "svgSettings": "SVG Settings",
-    "transparentColor": "Transparent Color",
-    "transparentColorPlaceholder": "#ffffff or empty",
-    "trueVector": "True Vector",
-    "trueVectorDesc": "Use paths instead of embedded raster",
-    "webp": "WebP",
-    "width": "Width"
+    "backgroundOverride": "“నేపథ్య ఓవర్‌రైడ్”",
+    "backgroundOverridePlaceholder": "“డిఫాల్ట్ కోసం ఖాళీగా ఉంచండి”",
+    "dithering": "“డిథరింగ్”",
+    "dpi": "“DPI (ప్రింట్)”",
+    "embedRasterOverlay": "“రాస్టర్ ఓవర్‌లేను పొందుపరచండి”",
+    "exportAsAdditional": "“(అదనపు)గా ఎగుమతి చేయండి”",
+    "filename": "“ఫైల్ పేరు”",
+    "floydSteinberg": "ఫ్లాయిడ్-స్టెయిన్‌బర్గ్",
+    "format": "ఫార్మాట్",
+    "gif": "“GIF”",
+    "gifSettings": "“GIF సెట్టింగ్‌లు”",
+    "height": "ఎత్తు",
+    "includeQuietZone": "“నిశ్శబ్ద ప్రాంతాన్ని చేర్చు”",
+    "medianCut": "“మీడియన్ కట్”",
+    "neuquant": "“న్యూక్వాంట్”",
+    "none": "ఏదీ లేదు",
+    "octree": "ఆక్ట్రీ",
+    "off": "ఆఫ్",
+    "ordered": "“ఆర్డర్ చేయబడింది”",
+    "outputSize": "“అవుట్‌పుట్ సైజు”",
+    "paletteSize": "“ప్యాలెట్ సైజు”",
+    "pdf": "“పిడిఎఫ్”",
+    "pixel": "“పిక్సెల్”",
+    "png": "“పిఎన్‌జి”",
+    "precise": "“ఖచ్చితమైనది”",
+    "quality": "నాణ్యత",
+    "quantizer": "“క్వాంటైజర్”",
+    "shapePrecision": "“ఆకార ఖచ్చితత్వం”",
+    "svg": "“SVG”",
+    "svgSettings": "“SVG సెట్టింగ్‌లు”",
+    "transparentColor": "“పారదర్శక రంగు”",
+    "transparentColorPlaceholder": "“#ffffff లేదా ఖాళీ”",
+    "trueVector": "“నిజమైన వెక్టర్”",
+    "trueVectorDesc": "“ఎంబెడెడ్ రాస్టర్‌కు బదులుగా పాత్‌లను ఉపయోగించండి”",
+    "webp": "“వెబ్‌పి”",
+    "width": "వెడల్పు"
   },
   "overlay": {
-    "adaptiveThreshold": "Adaptive Threshold",
-    "atkinson": "Atkinson",
-    "bayer2": "Bayer 2×2",
-    "bayer4": "Bayer 4×4",
-    "bayer8": "Bayer 8×8",
-    "blend": "Blend",
-    "blendMode": "Blend",
-    "blueNoise": "Blue Noise",
-    "blueNoiseErrorDiffusion": "Blue Noise + Error Diffusion",
-    "blueNoiseMode": "Blue Noise",
-    "blueNoiseThreshold": "Blue Noise Threshold",
-    "blur": "Blur",
-    "brightness": "Brightness",
-    "brightnessCurve": "Brightness Curve",
-    "brightnessMode": "Brightness",
-    "burkes": "Burkes",
-    "bw": "Black & White",
-    "cellSize": "Cell Size",
-    "centerLogo": "Center Logo",
-    "centerRule": "Center Rule",
-    "clusteredDot": "Clustered Dot",
-    "colorDither": "Color Dither",
-    "colorMode": "Color Mode",
-    "contain": "Contain",
-    "contrast": "Contrast",
-    "corsNote": "Note: Image must allow cross-origin requests (CORS)",
-    "cover": "Cover",
-    "cropImage": "Crop Image",
-    "cropSize": "Crop Size",
-    "diffusionKernel": "Diffusion Kernel",
-    "disposalHandling": "Disposal Handling",
-    "dither": "Dither",
-    "ditherSettings": "Dither Settings",
-    "ditherStrength": "Dither Strength",
-    "dithered": "Dithered",
-    "ditheredMode": "Dithered",
-    "dotShape": "Dot Shape",
-    "duotone": "Duotone",
-    "duotoneColors": "Duotone Colors",
-    "duotoneMode": "Duotone",
-    "eccAwareMode": "ECC-Aware Mode",
-    "edge": "Edge Detection",
-    "edgeAware": "Edge-Aware",
-    "enableCrop": "Enable Crop",
-    "errorDiffusion": "Error Diffusion",
-    "extreme": "Extreme",
-    "extremeMode": "Extreme",
-    "finderOverride": "Finder Override",
-    "fitMode": "Fit Mode",
-    "flipX": "Flip X",
-    "flipY": "Flip Y",
-    "floydSteinberg": "Floyd-Steinberg",
-    "fromUrl": "From URL",
-    "fullColor": "Full Color",
-    "gamma": "Gamma",
-    "gapFillMode": "Gap Fill",
-    "gapfill": "Gap Fill",
-    "gaussianNoise": "Gaussian Noise",
-    "gifSettings": "GIF Settings",
-    "grayscale": "Grayscale",
-    "gridSize": "Grid Size",
-    "halftone": "Halftone",
-    "halftoneCenter": "Halftone Center",
-    "halftoneMode": "Halftone",
-    "halftoneSettings": "Halftone Settings",
-    "highlight": "Highlight",
-    "hueRotate": "Hue Rotate",
-    "imageGifWebp": "Image / GIF / WebP",
-    "imageUrl": "Image URL",
-    "intensity": "Intensity",
-    "invert": "Invert Image",
-    "jarvisJudiceNinke": "Jarvis-Judice-Ninke",
-    "line": "Line",
-    "load": "Load",
-    "loadedFromUrl": "Loaded from URL",
-    "maxFps": "Max FPS",
-    "mode": "Blend Mode",
-    "mosaic": "Mosaic",
-    "mosaicMode": "Mosaic",
-    "neutralColor": "Neutral Color",
-    "noFile": "No file",
-    "none": "None",
-    "nxnGrid": "N×N Grid",
-    "orderedBayer": "Ordered (Bayer)",
-    "orderedMatrix": "Ordered Matrix",
-    "original": "Original",
-    "outline": "Outline",
-    "outlineMode": "Outline",
-    "perChannel": "Per Channel",
-    "perModule": "Per Module",
-    "perceptual": "Perceptual (Luminance)",
-    "pixelate": "Pixelate",
-    "pixelateMode": "Pixelate",
-    "posterizeLevels": "Posterize Levels",
-    "preserveAlignment": "Preserve Alignment",
-    "preserveFinders": "Preserve Finder Patterns",
-    "preserveTiming": "Preserve Timing",
-    "protectFormat": "Protect Format Info",
-    "protectFormatInfo": "Protect Format Info",
-    "protectVersion": "Protect Version Info",
-    "protectVersionInfo": "Protect Version Info",
-    "protection": "Protection",
-    "removeImage": "Remove",
-    "respect": "Respect",
-    "riskBudget": "Risk Budget",
-    "rotation": "Rotation",
-    "sCurve": "S-Curve",
-    "saturation": "Saturation",
-    "screenedBlueNoise": "Screened Blue Noise",
-    "seed": "Seed",
-    "selectImage": "Select Image",
-    "sepia": "Sepia",
-    "serpentineScanning": "Serpentine Scanning",
-    "shadow": "Shadow",
-    "sharpen": "Sharpen",
-    "sierra": "Sierra",
-    "sierra2": "Sierra-2",
-    "sierraLite": "Sierra-Lite",
-    "simplify": "Simplify",
-    "stretch": "Stretch",
-    "strict": "Strict",
-    "stucki": "Stucki",
-    "stylized": "Stylized",
-    "subpixel": "Subpixel",
-    "subpixelMode": "Subpixel",
-    "subpixelSettings": "Subpixel Settings",
-    "subpixelSize": "Subpixel Size",
-    "subpixelSizeMode": "Subpixel Size",
-    "temporalBlueNoise": "Temporal Blue Noise",
-    "threshold": "Threshold",
-    "tileSize": "Tile Size",
-    "triangularNoise": "Triangular Noise",
-    "trueDither": "True Dither",
-    "trueDitherMode": "True Dither",
-    "upload": "Upload",
-    "useFrameDelays": "Use Frame Delays",
-    "voidCluster": "Void & Cluster",
-    "wave": "Wave",
-    "waveMode": "Wave",
-    "whiteNoise": "White Noise"
+    "adaptiveThreshold": "“అనుకూల థ్రెషోల్డ్”",
+    "atkinson": "అట్కిన్సన్",
+    "bayer2": "“బేయర్ 2×2”",
+    "bayer4": "“బేయర్ 4×4”",
+    "bayer8": "“బేయర్ 8×8”",
+    "blend": "“మిశ్రమం”",
+    "blendMode": "“మిశ్రమం”",
+    "blueNoise": "“నీలి శబ్దం”",
+    "blueNoiseErrorDiffusion": "“నీలి శబ్దం + దోష వ్యాప్తి”",
+    "blueNoiseMode": "“నీలి శబ్దం”",
+    "blueNoiseThreshold": "“నీలి శబ్దం థ్రెషోల్డ్”",
+    "blur": "“బ్లర్”",
+    "brightness": "ప్రకాశం",
+    "brightnessCurve": "“ప్రకాశం వక్రత”",
+    "brightnessMode": "ప్రకాశం",
+    "burkes": "బర్క్స్",
+    "bw": "“నలుపు & తెలుపు”",
+    "cellSize": "“సెల్ సైజు”",
+    "centerLogo": "“సెంటర్ లోగో”",
+    "centerRule": "కేంద్ర నియమం",
+    "clusteredDot": "“క్లస్టర్డ్ డాట్”",
+    "colorDither": "“కలర్ డిథర్”",
+    "colorMode": "“రంగు మోడ్”",
+    "contain": "“కలిగి”",
+    "contrast": "“కాంట్రాస్ట్”",
+    "corsNote": "“గమనిక: చిత్రం క్రాస్-ఆరిజిన్ అభ్యర్థనలను (CORS) అనుమతించాలి”",
+    "cover": "“కవర్”",
+    "cropImage": "“చిత్రాన్ని కత్తిరించు”",
+    "cropSize": "“పంట పరిమాణం”",
+    "diffusionKernel": "“డిఫ్యూజన్ కెర్నల్”",
+    "disposalHandling": "“పారవేయడం నిర్వహణ”",
+    "dither": "“డిథర్”",
+    "ditherSettings": "“డిథర్ సెట్టింగులు”",
+    "ditherStrength": "“డిథర్ స్ట్రెంత్”",
+    "dithered": "“డిథర్డ్”",
+    "ditheredMode": "“డిథర్డ్”",
+    "dotShape": "“చుక్కల ఆకారం”",
+    "duotone": "“డ్యూటోన్”",
+    "duotoneColors": "“డ్యూయోటోన్ కలర్స్”",
+    "duotoneMode": "“డ్యూటోన్”",
+    "eccAwareMode": "“ECC-అవేర్ మోడ్”",
+    "edge": "“ఎడ్జ్ డిటెక్షన్”",
+    "edgeAware": "“ఎడ్జ్-అవేర్”",
+    "enableCrop": "“క్రాప్ చేయడాన్ని ప్రారంభించు”",
+    "errorDiffusion": "“లోపం వ్యాప్తి”",
+    "extreme": "“ఎక్స్‌ట్రీమ్”",
+    "extremeMode": "“ఎక్స్‌ట్రీమ్”",
+    "finderOverride": "“ఫైండర్ ఓవర్‌రైడ్”",
+    "fitMode": "“ఫిట్ మోడ్”",
+    "flipX": "“ఫ్లిప్ X”",
+    "flipY": "“ఫ్లిప్ వై”",
+    "floydSteinberg": "ఫ్లాయిడ్-స్టెయిన్‌బర్గ్",
+    "fromUrl": "“URL నుండి”",
+    "fullColor": "“పూర్తి రంగు”",
+    "gamma": "గామా",
+    "gapFillMode": "“గ్యాప్ ఫిల్”",
+    "gapfill": "“గ్యాప్ ఫిల్”",
+    "gaussianNoise": "“గాసియన్ శబ్దం”",
+    "gifSettings": "“GIF సెట్టింగ్‌లు”",
+    "grayscale": "గ్రేస్కేల్",
+    "gridSize": "“గ్రిడ్ పరిమాణం”",
+    "halftone": "“హాఫ్‌టోన్”",
+    "halftoneCenter": "“హాల్ఫ్‌టోన్ సెంటర్”",
+    "halftoneMode": "“హాఫ్‌టోన్”",
+    "halftoneSettings": "“హాఫ్‌టోన్ సెట్టింగ్‌లు”",
+    "highlight": "“హైలైట్”",
+    "hueRotate": "“హ్యూ రొటేట్”",
+    "imageGifWebp": "“చిత్రం / GIF / WebP”",
+    "imageUrl": "“చిత్రం URL”",
+    "intensity": "తీవ్రత",
+    "invert": "“చిత్రాన్ని విలోమం చేయి”",
+    "jarvisJudiceNinke": "“జార్విస్-జ్యూడిస్-నింకే”",
+    "line": "“లైన్”",
+    "load": "“లోడ్”",
+    "loadedFromUrl": "“URL నుండి లోడ్ చేయబడింది”",
+    "maxFps": "“గరిష్ట FPS”",
+    "mode": "“బ్లెండ్ మోడ్”",
+    "mosaic": "“మొజాయిక్”",
+    "mosaicMode": "“మొజాయిక్”",
+    "neutralColor": "“తటస్థ రంగు”",
+    "noFile": "“ఫైల్ లేదు”",
+    "none": "ఏదీ లేదు",
+    "nxnGrid": "“N×N గ్రిడ్”",
+    "orderedBayer": "“ఆర్డర్ చేయబడింది (బేయర్)”",
+    "orderedMatrix": "“క్రమబద్ధీకరించిన మాతృక”",
+    "original": "ఒరిజినల్",
+    "outline": "“రూపురేఖ”",
+    "outlineMode": "“రూపురేఖ”",
+    "perChannel": "“ప్రతి ఛానెల్‌కు”",
+    "perModule": "“ఒక్కో మాడ్యూల్”",
+    "perceptual": "“గ్రహణశక్తి (ప్రకాశం)”",
+    "pixelate": "“పిక్సలేట్”",
+    "pixelateMode": "“పిక్సలేట్”",
+    "posterizeLevels": "“పోస్టరైజ్ లెవెల్స్”",
+    "preserveAlignment": "“అలైన్‌మెంట్‌ను సంరక్షించండి”",
+    "preserveFinders": "“ఫైండర్ నమూనాలను సంరక్షించు”",
+    "preserveTiming": "“సమయాన్ని కాపాడుకోండి”",
+    "protectFormat": "“ఫార్మాట్ సమాచారాన్ని రక్షించండి”",
+    "protectFormatInfo": "“ఫార్మాట్ సమాచారాన్ని రక్షించండి”",
+    "protectVersion": "“సంస్కరణ సమాచారాన్ని రక్షించండి”",
+    "protectVersionInfo": "“సంస్కరణ సమాచారాన్ని రక్షించండి”",
+    "protection": "రక్షణ",
+    "removeImage": "తొలగించు",
+    "respect": "“గౌరవం”",
+    "riskBudget": "“రిస్క్ బడ్జెట్”",
+    "rotation": "భ్రమణం",
+    "sCurve": "“ఎస్-కర్వ్”",
+    "saturation": "“సంతృప్తత”",
+    "screenedBlueNoise": "“స్క్రీన్డ్ బ్లూ నాయిస్”",
+    "seed": "విత్తనం",
+    "selectImage": "“చిత్రాన్ని ఎంచుకోండి”",
+    "sepia": "“సెపియా”",
+    "serpentineScanning": "“సర్పెంటైన్ స్కానింగ్”",
+    "shadow": "నీడ",
+    "sharpen": "“పదునుపెట్టు”",
+    "sierra": "సియెర్రా",
+    "sierra2": "“సియెర్రా-2”",
+    "sierraLite": "“సియెర్రా-లైట్”",
+    "simplify": "“సరళీకృతం”",
+    "stretch": "“సాగదీయండి”",
+    "strict": "కఠినమైనది",
+    "stucki": "“స్టకీ”",
+    "stylized": "“శైలీకృతం”",
+    "subpixel": "“సబ్ పిక్సెల్”",
+    "subpixelMode": "“సబ్ పిక్సెల్”",
+    "subpixelSettings": "“సబ్ పిక్సెల్ సెట్టింగులు”",
+    "subpixelSize": "“సబ్ పిక్సెల్ సైజు”",
+    "subpixelSizeMode": "“సబ్ పిక్సెల్ సైజు”",
+    "temporalBlueNoise": "“తాత్కాలిక నీలి శబ్దం”",
+    "threshold": "“థ్రెషోల్డ్”",
+    "tileSize": "“టైల్ సైజు”",
+    "triangularNoise": "“త్రిభుజాకార శబ్దం”",
+    "trueDither": "“ట్రూ డిథర్”",
+    "trueDitherMode": "“ట్రూ డిథర్”",
+    "upload": "“అప్‌లోడ్”",
+    "useFrameDelays": "“ఫ్రేమ్ జాప్యాలను ఉపయోగించండి”",
+    "voidCluster": "“శూన్యం & క్లస్టర్”",
+    "wave": "అల",
+    "waveMode": "అల",
+    "whiteNoise": "“వైట్ నాయిస్”"
   },
   "payload": {
-    "accountName": "Account Name",
-    "address": "Address",
-    "algorithm": "Algorithm",
-    "allDay": "All Day Event",
-    "amount": "Amount (optional)",
-    "amountBrl": "Amount (BRL, optional)",
-    "amountEur": "Amount (EUR)",
-    "amountInr": "Amount (INR, optional)",
-    "amountSgd": "Amount (SGD, optional)",
-    "amountThb": "Amount (THB, optional)",
-    "androidIntent": "Android Intent",
-    "appLink": "App Deep Link (Android/iOS)",
-    "assetInventory": "Asset/Inventory Tag",
-    "assetItemId": "Asset/Item ID",
-    "assetType": "Asset Type",
-    "attendeeName": "Attendee Name",
-    "audio": "Audio",
-    "baseUrl": "Base URL",
-    "batchLot": "Batch/Lot (optional)",
-    "beneficiaryName": "Beneficiary Name",
-    "bicSwift": "BIC/SWIFT (optional)",
-    "birthday": "Birthday",
-    "bitcoin": "Bitcoin",
-    "bizcard": "BizCard (Legacy)",
-    "bluetooth": "Bluetooth",
-    "body": "Message Body",
-    "bodyOptional": "Body (optional)",
-    "box": "Box",
-    "calendar": "Calendar",
-    "calendarName": "Calendar Name",
-    "calendarSubscription": "Calendar Subscribe",
-    "calendarUrl": "Calendar URL (ICS/WebCal)",
-    "campaignContent": "Campaign Content (optional)",
-    "campaignMedium": "Campaign Medium",
-    "campaignName": "Campaign Name",
-    "campaignSource": "Campaign Source",
-    "campaignTerm": "Campaign Term (optional)",
-    "city": "City",
-    "cityOptional": "City (optional)",
-    "cloudLink": "Cloud Storage Link",
-    "company": "Company",
-    "contact": "Contact",
-    "contentType": "Content Type",
-    "core": "Core",
-    "country": "Country",
-    "crypto": "Crypto (BTC, ETH, etc.)",
-    "cryptocurrency": "Cryptocurrency",
-    "custom": "Custom Format",
-    "customScheme": "Custom Scheme",
-    "dateTime": "Date & Time",
-    "deepLinkUrl": "Deep Link URL",
-    "description": "Description",
-    "deviceAddress": "Device Address (MAC)",
-    "deviceName": "Device Name (optional)",
-    "digits": "Digits",
-    "documentsMedia": "Documents & Media",
-    "dropbox": "Dropbox",
-    "email": "Email",
-    "emailAddress": "Email Address",
-    "encryption": "Encryption",
-    "end": "End",
-    "endDate": "End Date",
-    "enterprise": "Enterprise",
-    "epcSepa": "EPC / SEPA (EU)",
-    "equipment": "Equipment",
-    "ethereum": "Ethereum",
-    "event": "iCalendar Event",
-    "eventName": "Event Name",
-    "eventRsvp": "Event RSVP Link",
-    "eventTicket": "Event Ticket",
-    "expiryDate": "Expiry Date (optional)",
-    "facebook": "Facebook",
-    "fallbackUrl": "Fallback URL (optional)",
-    "fax": "Fax",
-    "fileType": "File Type",
-    "fileUrl": "File / Document URL",
-    "firstName": "First Name",
-    "forceHttps": "Force HTTPS",
-    "fullName": "Full Name",
-    "furniture": "Furniture",
-    "geo": "Geo Location",
-    "github": "GitHub",
-    "googleDrive": "Google Drive",
-    "gs1DigitalLink": "GS1 Digital Link",
-    "gtin": "GTIN (Global Trade Item Number)",
-    "hidden": "Hidden Network",
-    "homePhone": "Home Phone",
-    "iban": "IBAN",
-    "idType": "ID Type",
-    "image": "Image",
-    "instagram": "Instagram",
-    "inventoryItem": "Inventory Item",
-    "iosUniversal": "iOS Universal",
-    "issuer": "Issuer",
-    "itAsset": "IT Asset",
-    "label": "Label (optional)",
-    "lastName": "Last Name",
-    "latitude": "Latitude",
-    "linkType": "Link Type",
-    "linkedin": "LinkedIn",
-    "litecoin": "Litecoin",
-    "location": "Location",
-    "locationNetwork": "Location & Network",
-    "longitude": "Longitude",
-    "lookupUrl": "Lookup URL (optional)",
-    "marketing": "Marketing",
-    "marketingTags": "Marketing Tags",
-    "maxLengthGuard": "Max Length Guard",
-    "mecard": "MeCard Contact",
-    "merchantName": "Merchant Name (optional)",
-    "message": "Message",
-    "messageOptional": "Message (optional)",
-    "messagingLink": "WhatsApp / Telegram / Signal",
-    "messenger": "Messenger",
-    "mobileNumber": "Mobile Number",
-    "mobilePhone": "Mobile Phone",
-    "name": "Name",
-    "nationalIdTaxId": "National ID / Tax ID",
-    "nickname": "Nickname",
-    "normalizeNewlines": "Normalize Newlines",
-    "note": "Note",
-    "oneDrive": "OneDrive",
-    "openNoPassword": "Open (No Password)",
-    "organization": "Organization",
-    "other": "Other",
-    "otpAuth": "OTP Authenticator",
-    "otpType": "Type",
-    "password": "Password",
-    "payeeName": "Payee Name",
-    "payments": "Payments (Open Specs)",
-    "paynow": "PayNow (Singapore)",
-    "phone": "Phone",
-    "phoneUsername": "Phone/Username",
-    "pix": "PIX (Brazil)",
-    "pixKey": "PIX Key",
-    "plainText": "Plain Text",
-    "platform": "Platform",
-    "prefilledMessage": "Pre-filled Message (optional)",
-    "profileUrl": "Profile URL",
-    "promptPayId": "PromptPay ID",
-    "promptpay": "PromptPay (Thailand)",
-    "proxyType": "Proxy Type",
-    "rawData": "Raw Data",
-    "recipient": "Recipient",
-    "reference": "Reference",
-    "referenceOptional": "Reference (optional)",
-    "resolverDomain": "Resolver Domain",
-    "rsvpUrl": "RSVP URL",
-    "searchQuery": "Search Query (optional)",
-    "seat": "Seat",
-    "secretBase32": "Secret (Base32)",
-    "sectionZone": "Section/Zone",
-    "securityType": "Security Type",
-    "serialNumber": "Serial Number (optional)",
-    "service": "Service",
-    "shortLink": "Short Link Redirect",
-    "shortUrl": "Short URL",
-    "signal": "Signal",
-    "sms": "SMS",
-    "smsMms": "SMS / MMS",
-    "socialMessaging": "Social & Messaging",
-    "socialProfile": "Social Profile",
-    "ssid": "Network Name (SSID)",
-    "start": "Start",
-    "startDate": "Start Date",
-    "state": "State/Province",
-    "street": "Street",
-    "subject": "Subject",
-    "subjectOptional": "Subject (optional)",
-    "summary": "Event Title",
-    "tel": "Phone Number",
-    "telegram": "Telegram",
-    "text": "Text Content",
-    "ticketId": "Ticket ID",
-    "tiktok": "TikTok",
-    "title": "Title",
-    "transactionNote": "Transaction Note (optional)",
-    "trimWhitespace": "Trim Whitespace",
-    "uenMobile": "UEN/Mobile Number",
-    "universalLink": "Universal Link",
-    "upi": "UPI (India)",
-    "upiId": "UPI ID (VPA)",
-    "url": "URL",
-    "utmCampaign": "utm_campaign",
-    "utmContent": "utm_content",
-    "utmLink": "UTM Campaign Link",
-    "utmMedium": "utm_medium",
-    "utmSource": "utm_source",
-    "utmTerm": "utm_term",
-    "validateInput": "Validate Input",
-    "validationOptions": "Validation Options",
-    "validationUrl": "Validation URL (optional)",
-    "vcard": "vCard Contact",
-    "vehicle": "Vehicle",
-    "venue": "Venue",
-    "vevent": "Calendar Event",
-    "viber": "Viber",
-    "video": "Video",
-    "walletAddress": "Address",
-    "website": "Website",
-    "whatsapp": "WhatsApp",
-    "wifi": "WiFi",
-    "wifiNetwork": "WiFi Network",
-    "wordDocument": "Word Document",
-    "workPhone": "Work Phone",
-    "youtube": "YouTube",
-    "zip": "ZIP/Postal Code"
+    "accountName": "“ఖాతా పేరు”",
+    "address": "“చిరునామా”",
+    "algorithm": "అల్గోరిథం",
+    "allDay": "“రోజంతా జరిగే కార్యక్రమం”",
+    "amount": "“మొత్తం (ఐచ్ఛికం)”",
+    "amountBrl": "“మొత్తం (BRL, ఐచ్ఛికం)”",
+    "amountEur": "“మొత్తం (EUR)”",
+    "amountInr": "“మొత్తం (INR, ఐచ్ఛికం)”",
+    "amountSgd": "“మొత్తం (SGD, ఐచ్ఛికం)”",
+    "amountThb": "“మొత్తం (THB, ఐచ్ఛికం)”",
+    "androidIntent": "“ఆండ్రాయిడ్ ఇంటెంట్”",
+    "appLink": "“యాప్ డీప్ లింక్ (ఆండ్రాయిడ్/iOS)”",
+    "assetInventory": "“ఆస్తి/ఇన్వెంటరీ ట్యాగ్”",
+    "assetItemId": "“ఆస్తి/వస్తువు ID”",
+    "assetType": "“ఆస్తి రకం”",
+    "attendeeName": "“హాజరు పేరు”",
+    "audio": "“ఆడియో”",
+    "baseUrl": "“బేస్ URL”",
+    "batchLot": "“బ్యాచ్/లాట్ (ఐచ్ఛికం)”",
+    "beneficiaryName": "“లబ్ధిదారుని పేరు”",
+    "bicSwift": "“BIC/SWIFT (ఐచ్ఛికం)”",
+    "birthday": "పుట్టినరోజు",
+    "bitcoin": "“బిట్‌కాయిన్”",
+    "bizcard": "“బిజ్‌కార్డ్ (లెగసీ)”",
+    "bluetooth": "“బ్లూటూత్”",
+    "body": "“సందేశ భాగం”",
+    "bodyOptional": "“శరీరం (ఐచ్ఛికం)”",
+    "box": "“బాక్స్”",
+    "calendar": "క్యాలెండర్",
+    "calendarName": "“క్యాలెండర్ పేరు”",
+    "calendarSubscription": "“క్యాలెండర్ సబ్‌స్క్రైబ్”",
+    "calendarUrl": "“క్యాలెండర్ URL (ICS/WebCal)”",
+    "campaignContent": "“ప్రచార కంటెంట్ (ఐచ్ఛికం)”",
+    "campaignMedium": "“ప్రచార మాధ్యమం”",
+    "campaignName": "“ప్రచార పేరు”",
+    "campaignSource": "“ప్రచార మూలం”",
+    "campaignTerm": "“ప్రచార పదం (ఐచ్ఛికం)”",
+    "city": "నగరం",
+    "cityOptional": "“నగరం (ఐచ్ఛికం)”",
+    "cloudLink": "“క్లౌడ్ స్టోరేజ్ లింక్”",
+    "company": "కంపెనీ",
+    "contact": "“సంప్రదింపు”",
+    "contentType": "“కంటెంట్ రకం”",
+    "core": "కోర్",
+    "country": "దేశం",
+    "crypto": "“క్రిప్టో (BTC, ETH, మొదలైనవి)”",
+    "cryptocurrency": "క్రిప్టోకరెన్సీ",
+    "custom": "“అనుకూల ఫార్మాట్”",
+    "customScheme": "“కస్టమ్ స్కీమ్”",
+    "dateTime": "“తేదీ & సమయం”",
+    "deepLinkUrl": "“డీప్ లింక్ URL”",
+    "description": "వివరణ",
+    "deviceAddress": "“పరికర చిరునామా (MAC)”",
+    "deviceName": "“పరికర పేరు (ఐచ్ఛికం)”",
+    "digits": "అంకెలు",
+    "documentsMedia": "“పత్రాలు & మీడియా”",
+    "dropbox": "“డ్రాప్‌బాక్స్”",
+    "email": "“ఇమెయిల్”",
+    "emailAddress": "“ఇమెయిల్ చిరునామా”",
+    "encryption": "ఎన్క్రిప్షన్",
+    "end": "“ముగింపు”",
+    "endDate": "“ముగింపు తేదీ”",
+    "enterprise": "“ఎంటర్‌ప్రైజ్”",
+    "epcSepa": "“EPC / SEPA (EU)”",
+    "equipment": "సామగ్రి",
+    "ethereum": "“ఎథెరియం”",
+    "event": "“ఐక్యాలెండర్ ఈవెంట్”",
+    "eventName": "“ఈవెంట్ పేరు”",
+    "eventRsvp": "“ఈవెంట్ RSVP లింక్”",
+    "eventTicket": "“ఈవెంట్ టికెట్”",
+    "expiryDate": "“గడువు తేదీ (ఐచ్ఛికం)”",
+    "facebook": "ఫేస్‌బుక్",
+    "fallbackUrl": "“ఫాల్‌బ్యాక్ URL (ఐచ్ఛికం)”",
+    "fax": "ఫ్యాక్స్",
+    "fileType": "“ఫైల్ రకం”",
+    "fileUrl": "“ఫైల్ / డాక్యుమెంట్ URL”",
+    "firstName": "మొదటి పేరు",
+    "forceHttps": "“ఫోర్స్ HTTPS”",
+    "fullName": "“పూర్తి పేరు”",
+    "furniture": "ఫర్నిచర్",
+    "geo": "“జియో లొకేషన్”",
+    "github": "“గిట్‌హబ్”",
+    "googleDrive": "“గూగుల్ డ్రైవ్”",
+    "gs1DigitalLink": "“GS1 డిజిటల్ లింక్”",
+    "gtin": "“GTIN (గ్లోబల్ ట్రేడ్ ఐటెమ్ నంబర్)”",
+    "hidden": "“దాచిన నెట్‌వర్క్”",
+    "homePhone": "“హోమ్ ఫోన్”",
+    "iban": "“ఐబాన్”",
+    "idType": "ID రకం",
+    "image": "“చిత్రం”",
+    "instagram": "“ఇన్‌స్టాగ్రామ్”",
+    "inventoryItem": "“ఇన్వెంటరీ ఐటెమ్”",
+    "iosUniversal": "“iOS యూనివర్సల్”",
+    "issuer": "“జారీ చేసిన వ్యక్తి”",
+    "itAsset": "“ఐటి ఆస్తి”",
+    "label": "“లేబుల్ (ఐచ్ఛికం)”",
+    "lastName": "చివరి పేరు",
+    "latitude": "“అక్షాంశం”",
+    "linkType": "“లింక్ రకం”",
+    "linkedin": "“లింక్డ్ఇన్”",
+    "litecoin": "“లిట్‌కాయిన్”",
+    "location": "“స్థానం”",
+    "locationNetwork": "“స్థానం & నెట్‌వర్క్”",
+    "longitude": "“రేఖాంశం”",
+    "lookupUrl": "“లుకప్ URL (ఐచ్ఛికం)”",
+    "marketing": "మార్కెటింగ్",
+    "marketingTags": "“మార్కెటింగ్ ట్యాగ్‌లు”",
+    "maxLengthGuard": "“మాక్స్ లెంగ్త్ గార్డ్”",
+    "mecard": "“మీకార్డ్ కాంటాక్ట్”",
+    "merchantName": "“వ్యాపారి పేరు (ఐచ్ఛికం)”",
+    "message": "“సందేశం”",
+    "messageOptional": "“సందేశం (ఐచ్ఛికం)”",
+    "messagingLink": "“వాట్సాప్ / టెలిగ్రామ్ / సిగ్నల్”",
+    "messenger": "మెసెంజర్",
+    "mobileNumber": "“మొబైల్ నంబర్”",
+    "mobilePhone": "“మొబైల్ ఫోన్”",
+    "name": "పేరు",
+    "nationalIdTaxId": "“జాతీయ ID / పన్ను ID”",
+    "nickname": "“మారుపేరు”",
+    "normalizeNewlines": "“కొత్త లైన్లను సాధారణీకరించు”",
+    "note": "గమనిక",
+    "oneDrive": "“వన్‌డ్రైవ్”",
+    "openNoPassword": "“తెరువు (పాస్‌వర్డ్ లేదు)”",
+    "organization": "సంస్థ",
+    "other": "“ఇతర”",
+    "otpAuth": "“OTP ప్రామాణీకరణదారు”",
+    "otpType": "రకం",
+    "password": "పాస్‌వర్డ్",
+    "payeeName": "“చెల్లింపుదారుడి పేరు”",
+    "payments": "“చెల్లింపులు (ఓపెన్ స్పెక్స్)”",
+    "paynow": "“పే నౌ (సింగపూర్)”",
+    "phone": "“ఫోన్”",
+    "phoneUsername": "“ఫోన్/యూజర్ పేరు”",
+    "pix": "“PIX (బ్రెజిల్)”",
+    "pixKey": "“PIX కీ”",
+    "plainText": "“సాదా వచనం”",
+    "platform": "“ప్లాట్‌ఫామ్”",
+    "prefilledMessage": "“ముందే నింపిన సందేశం (ఐచ్ఛికం)”",
+    "profileUrl": "“ప్రొఫైల్ URL”",
+    "promptPayId": "“ప్రాంప్ట్‌పే ID”",
+    "promptpay": "“ప్రాంప్ట్‌పే (థాయిలాండ్)”",
+    "proxyType": "“ప్రాక్సీ రకం”",
+    "rawData": "ముడి డేటా",
+    "recipient": "“గ్రహీత”",
+    "reference": "“సూచన”",
+    "referenceOptional": "“రిఫరెన్స్ (ఐచ్ఛికం)”",
+    "resolverDomain": "“రిసల్వర్ డొమైన్”",
+    "rsvpUrl": "“RSVP URL”",
+    "searchQuery": "“శోధన ప్రశ్న (ఐచ్ఛికం)”",
+    "seat": "సీట్",
+    "secretBase32": "“రహస్యం (బేస్ 32)”",
+    "sectionZone": "“విభాగం/జోన్”",
+    "securityType": "భద్రతా రకం",
+    "serialNumber": "“సీరియల్ నంబర్ (ఐచ్ఛికం)”",
+    "service": "సేవ",
+    "shortLink": "“షార్ట్ లింక్ దారిమార్పు”",
+    "shortUrl": "“చిన్న URL”",
+    "signal": "సిగ్నల్",
+    "sms": "“ఎస్ఎంఎస్”",
+    "smsMms": "“SMS / MMS”",
+    "socialMessaging": "“సామాజిక & సందేశం”",
+    "socialProfile": "“సామాజిక ప్రొఫైల్”",
+    "ssid": "“నెట్‌వర్క్ పేరు (SSID)”",
+    "start": "ప్రారంభం",
+    "startDate": "“ప్రారంభ తేదీ”",
+    "state": "“రాష్ట్రం/ప్రావిన్స్”",
+    "street": "“వీధి”",
+    "subject": "“విషయం”",
+    "subjectOptional": "“విషయం (ఐచ్ఛికం)”",
+    "summary": "“ఈవెంట్ శీర్షిక”",
+    "tel": "“ఫోన్ నంబర్”",
+    "telegram": "టెలిగ్రామ్",
+    "text": "“టెక్స్ట్ కంటెంట్”",
+    "ticketId": "“టికెట్ ఐడి”",
+    "tiktok": "“టిక్‌టాక్”",
+    "title": "శీర్షిక",
+    "transactionNote": "“లావాదేవీ గమనిక (ఐచ్ఛికం)”",
+    "trimWhitespace": "“ట్రిమ్ వైట్‌స్పేస్”",
+    "uenMobile": "“UEN/మొబైల్ నంబర్”",
+    "universalLink": "యూనివర్సల్ లింక్",
+    "upi": "“యుపిఐ (భారతదేశం)”",
+    "upiId": "“UPI ID (VPA)”",
+    "url": "“URL”",
+    "utmCampaign": "“utm_campaign”",
+    "utmContent": "“utm_content”",
+    "utmLink": "“UTM ప్రచార లింక్”",
+    "utmMedium": "“ఉమ్_మీడియం”",
+    "utmSource": "“utm_source”",
+    "utmTerm": "“ఉత్మ్_టర్మ్”",
+    "validateInput": "“ఇన్‌పుట్‌ను ధృవీకరించండి”",
+    "validationOptions": "“ధృవీకరణ ఎంపికలు”",
+    "validationUrl": "“ధృవీకరణ URL (ఐచ్ఛికం)”",
+    "vcard": "“vCard కాంటాక్ట్”",
+    "vehicle": "వాహనం",
+    "venue": "వేదిక",
+    "vevent": "“క్యాలెండర్ ఈవెంట్”",
+    "viber": "వైబర్",
+    "video": "“వీడియో”",
+    "walletAddress": "“చిరునామా”",
+    "website": "“వెబ్‌సైట్”",
+    "whatsapp": "“వాట్సాప్”",
+    "wifi": "“వైఫై”",
+    "wifiNetwork": "“వైఫై నెట్‌వర్క్”",
+    "wordDocument": "“వర్డ్ డాక్యుమెంట్”",
+    "workPhone": "“కార్యాలయ ఫోన్”",
+    "youtube": "“యూట్యూబ్”",
+    "zip": "“జిప్/పోస్టల్ కోడ్”"
   },
   "preview": {
-    "qrCodePreview": "QR Code Preview - Click Export to download",
-    "simulating": "Simulating",
-    "simulationActive": "Environmental simulation active - Preview shows how QR code may appear under different conditions"
+    "qrCodePreview": "“QR కోడ్ ప్రివ్యూ - డౌన్‌లోడ్ చేయడానికి ఎగుమతిపై క్లిక్ చేయండి”",
+    "simulating": "సిమ్యులేటింగ్",
+    "simulationActive": "“పర్యావరణ అనుకరణ యాక్టివ్ - వివిధ పరిస్థితులలో QR కోడ్ ఎలా కనిపించవచ్చో ప్రివ్యూ చూపిస్తుంది”"
   },
   "qr": {
-    "additionalBorder": "Additional border beyond quiet zone",
-    "alphanumeric": "Alphanumeric",
-    "auto": "Auto",
-    "autoMin": "Auto (min: {{version}})",
-    "autoOptimal": "Auto (Optimal)",
-    "byteUtf8": "Byte / UTF-8",
-    "contrastRatio": "{{count}}:1",
-    "encodingMode": "Encoding Mode",
-    "enforceMinQuietZone": "Enforce Min Quiet Zone",
-    "enforceMinQuietZoneDesc": "Ensure ≥4 module margin",
-    "errorCorrection": "Error Correction",
-    "extraBorderModules": "Extra Border Modules",
-    "high": "H - High (30%)",
-    "kanji": "Kanji",
-    "low": "L - Low (7%)",
-    "margin": "Quiet Zone (Margin)",
-    "mask": "Mask Pattern",
-    "medium": "M - Medium (15%)",
-    "moduleSize": "Module Size",
-    "nDegrees": "{{count}}°",
-    "nModules": "{{count}} modules",
-    "nMs": "{{count}}ms",
-    "nPercent": "{{count}}%",
-    "nPx": "{{count}}px",
-    "numericOnly": "Numeric Only",
-    "quartile": "Q - Quartile (25%)",
-    "version": "Version"
+    "additionalBorder": "“నిశ్శబ్ద ప్రాంతం దాటి అదనపు సరిహద్దు”",
+    "alphanumeric": "“ఆల్ఫాన్యూమరిక్”",
+    "auto": "“ఆటో”",
+    "autoMin": "“ఆటో (నిమిషం: {{వెర్షన్}})”",
+    "autoOptimal": "“ఆటో (ఆప్టిమల్)”",
+    "byteUtf8": "“బైట్ / UTF-8”",
+    "contrastRatio": "“{{లెక్కింపు}}:1”",
+    "encodingMode": "“ఎన్‌కోడింగ్ మోడ్”",
+    "enforceMinQuietZone": "“కనీస నిశ్శబ్ద మండలాన్ని అమలు చేయండి”",
+    "enforceMinQuietZoneDesc": "“≥4 మాడ్యూల్ మార్జిన్‌ను నిర్ధారించుకోండి”",
+    "errorCorrection": "“లోపాల దిద్దుబాటు”",
+    "extraBorderModules": "“అదనపు సరిహద్దు మాడ్యూల్స్”",
+    "high": "“H - హై (30%)”",
+    "kanji": "“కంజి”",
+    "low": "“L - తక్కువ (7%)”",
+    "margin": "“నిశ్శబ్ద మండలం (మార్జిన్)”",
+    "mask": "“ముసుగు నమూనా”",
+    "medium": "“M - మీడియం (15%)”",
+    "moduleSize": "“మాడ్యూల్ సైజు”",
+    "nDegrees": "“{{లెక్కింపు}}°”",
+    "nModules": "“{{count}} మాడ్యూల్స్”",
+    "nMs": "“{{count}}ms”",
+    "nPercent": "“{{count}}%”",
+    "nPx": "“{{కౌంట్}}px”",
+    "numericOnly": "“సంఖ్యాపరంగా మాత్రమే”",
+    "quartile": "“Q - క్వార్టైల్ (25%)”",
+    "version": "వెర్షన్"
   },
   "render": {
-    "addColor": "Add Color",
-    "alignmentStyle": "Alignment Pattern Style",
-    "background": "Background",
-    "byBrightness": "By Brightness",
-    "byCluster": "By Cluster",
-    "byOverlay": "By Overlay",
-    "byPosition": "By Position",
-    "ceil": "Ceil",
-    "circle": "Circle",
-    "classic": "Classic",
-    "colorPalette": "Color Palette",
-    "conic": "Conic",
-    "connected": "Connected",
-    "contrastGuard": "Contrast Guard",
-    "cornerRadius": "Corner Radius",
-    "crispEdges": "Crisp Edges",
-    "crispEdgesDesc": "Use image-rendering: pixelated for sharp edges",
-    "dashed": "Dashed",
-    "diamond": "Diamond",
-    "dotRotation": "Dot Rotation",
-    "dots": "Dots",
-    "eyeInnerStyle": "Eye Inner Style",
-    "eyeOuterStyle": "Eye Outer Style",
-    "eyeScale": "Eye Scale",
-    "finderStyle": "Finder Pattern Style",
-    "floor": "Floor",
-    "foreground": "Foreground",
-    "frameStyle": "Frame Style",
-    "frameText": "Frame Text",
-    "gapMode": "Gap Mode",
-    "gradient": "Gradient",
-    "gradientAngle": "Gradient Angle",
-    "gradientColors": "Colors",
-    "gradientType": "Gradient Type",
-    "inset": "Inset",
-    "linear": "Linear",
-    "matchFinder": "Match Finder",
-    "matchModule": "Match Module",
-    "minContrastRatio": "Min Contrast Ratio",
-    "moduleGap": "Module Gap",
-    "negativeSpace": "Negative Space",
-    "none": "None",
-    "perModuleColorMode": "Per-Module Color Mode",
-    "pixelSnap": "Pixel Snap",
-    "radial": "Radial",
-    "round": "Round",
-    "rounded": "Rounded",
-    "roundedFrame": "Rounded Frame",
-    "shape": "Module Style",
-    "sharp": "Sharp",
-    "smooth": "Smooth",
-    "solid": "Solid",
-    "square": "Square",
-    "squares": "Squares",
-    "sticker": "Sticker",
-    "stroke": "Stroke",
-    "style": "Style",
-    "tag": "Tag",
-    "timingStyle": "Timing Pattern Style",
-    "transparentBg": "Transparent Background"
+    "addColor": "“రంగును జోడించు”",
+    "alignmentStyle": "“అలైన్‌మెంట్ ప్యాటర్న్ స్టైల్”",
+    "background": "నేపథ్యం",
+    "byBrightness": "“ప్రకాశం ద్వారా”",
+    "byCluster": "“క్లస్టర్ ద్వారా”",
+    "byOverlay": "“ఓవర్లే ద్వారా”",
+    "byPosition": "“స్థానం వారీగా”",
+    "ceil": "“సీల్”",
+    "circle": "“వృత్తం”",
+    "classic": "క్లాసిక్",
+    "colorPalette": "“రంగు పాలెట్”",
+    "conic": "“కోనిక్”",
+    "connected": "“కనెక్ట్ చేయబడింది”",
+    "contrastGuard": "“కాంట్రాస్ట్ గార్డ్”",
+    "cornerRadius": "“కార్నర్ వ్యాసార్థం”",
+    "crispEdges": "“క్రిస్ప్ ఎడ్జెస్”",
+    "crispEdgesDesc": "“ఇమేజ్-రెండరింగ్ ఉపయోగించండి: పదునైన అంచుల కోసం పిక్సలేటెడ్”",
+    "dashed": "“డాష్డ్”",
+    "diamond": "డైమండ్",
+    "dotRotation": "డాట్ రొటేషన్",
+    "dots": "చుక్కలు",
+    "eyeInnerStyle": "“కంటి లోపలి శైలి”",
+    "eyeOuterStyle": "“ఐ ఔటర్ స్టైల్”",
+    "eyeScale": "“కంటి స్కేల్”",
+    "finderStyle": "“ఫైండర్ ప్యాటర్న్ స్టైల్”",
+    "floor": "“అంతస్తు”",
+    "foreground": "“ముందుభాగం”",
+    "frameStyle": "“ఫ్రేమ్ శైలి”",
+    "frameText": "“ఫ్రేమ్ టెక్స్ట్”",
+    "gapMode": "“గ్యాప్ మోడ్”",
+    "gradient": "ప్రవణత",
+    "gradientAngle": "“ప్రవణత కోణం”",
+    "gradientColors": "రంగులు",
+    "gradientType": "“గ్రేడియంట్ రకం”",
+    "inset": "“ఇన్సెట్”",
+    "linear": "లీనియర్",
+    "matchFinder": "“మ్యాచ్ ఫైండర్”",
+    "matchModule": "“మ్యాచ్ మాడ్యూల్”",
+    "minContrastRatio": "“కనిష్ట కాంట్రాస్ట్ నిష్పత్తి”",
+    "moduleGap": "“మాడ్యూల్ గ్యాప్”",
+    "negativeSpace": "“ప్రతికూల స్థలం”",
+    "none": "ఏదీ లేదు",
+    "perModuleColorMode": "“పర్-మాడ్యూల్ కలర్ మోడ్”",
+    "pixelSnap": "“పిక్సెల్ స్నాప్”",
+    "radial": "“రేడియల్”",
+    "round": "“రౌండ్”",
+    "rounded": "“గుండ్రని”",
+    "roundedFrame": "“గుండ్రని చట్రం”",
+    "shape": "“మాడ్యూల్ శైలి”",
+    "sharp": "“షార్ప్”",
+    "smooth": "“మృదువైన”",
+    "solid": "“ఘన”",
+    "square": "“స్క్వేర్”",
+    "squares": "చతురస్రాలు",
+    "sticker": "“స్టిక్కర్”",
+    "stroke": "“స్ట్రోక్”",
+    "style": "శైలి",
+    "tag": "“ట్యాగ్”",
+    "timingStyle": "“సమయ సరళి శైలి”",
+    "transparentBg": "“పారదర్శక నేపథ్యం”"
   },
   "safety": {
-    "analysis": "Safety Analysis",
-    "autoPickEcc": "Auto-Pick ECC",
-    "autoPickVersion": "Auto-Pick Version",
-    "autoReduceIntensity": "Auto-Reduce Intensity",
-    "autoTuning": "Auto-Tuning",
-    "balanced": "Balanced",
-    "contrast": "Contrast Ratio",
-    "contrastCheck": "Contrast Check",
-    "contrastRatio": "Contrast Ratio",
-    "excellent": "Excellent",
-    "fair": "Fair",
-    "good": "Good",
-    "lockAlignment": "Lock Alignment",
-    "lockFinders": "Lock Finders",
-    "lockFormat": "Lock Format Info",
-    "lockTiming": "Lock Timing",
-    "lockVersion": "Lock Version Info",
-    "minModuleSize": "Min Module Size",
-    "minQuietZone": "Min Quiet Zone",
-    "off": "Off",
-    "poor": "Poor",
-    "protectionLocks": "Protection Locks",
-    "qualityAnalysis": "Quality Analysis",
-    "quietZone": "Quiet Zone",
-    "safetyMode": "Safety Mode",
-    "scanability": "Scanability Score",
-    "showHeatmap": "Show Heatmap",
-    "simulateBlur": "Simulate Blur",
-    "simulateNoise": "Simulate Noise",
-    "simulateRotation": "Simulate Rotation",
-    "strict": "Strict",
-    "untilScannable": "Until scannable"
+    "analysis": "భద్రతా విశ్లేషణ",
+    "autoPickEcc": "“ఆటో-పిక్ ECC”",
+    "autoPickVersion": "“ఆటో-పిక్ వెర్షన్”",
+    "autoReduceIntensity": "“ఆటో-రిడ్యూస్ ఇంటెన్సిటీ”",
+    "autoTuning": "“ఆటో-ట్యూనింగ్”",
+    "balanced": "సమతుల్య",
+    "contrast": "“కాంట్రాస్ట్ రేషియో”",
+    "contrastCheck": "“కాంట్రాస్ట్ చెక్”",
+    "contrastRatio": "“కాంట్రాస్ట్ రేషియో”",
+    "excellent": "“అద్భుతం”",
+    "fair": "“ఫెయిర్”",
+    "good": "మంచిది",
+    "lockAlignment": "“లాక్ అలైన్‌మెంట్”",
+    "lockFinders": "“లాక్ ఫైండర్లు”",
+    "lockFormat": "“లాక్ ఫార్మాట్ సమాచారం”",
+    "lockTiming": "“లాక్ టైమింగ్”",
+    "lockVersion": "“లాక్ వెర్షన్ సమాచారం”",
+    "minModuleSize": "“కనిష్ట మాడ్యూల్ పరిమాణం”",
+    "minQuietZone": "“కనీస నిశ్శబ్ద మండలం”",
+    "off": "ఆఫ్",
+    "poor": "“పేద”",
+    "protectionLocks": "“రక్షణ తాళాలు”",
+    "qualityAnalysis": "“నాణ్యత విశ్లేషణ”",
+    "quietZone": "“నిశ్శబ్ద మండలం”",
+    "safetyMode": "భద్రతా మోడ్",
+    "scanability": "“స్కానబిలిటీ స్కోర్”",
+    "showHeatmap": "“హీట్‌మ్యాప్ చూపించు”",
+    "simulateBlur": "“బ్లర్‌ను అనుకరించండి”",
+    "simulateNoise": "“శబ్దాన్ని అనుకరించు”",
+    "simulateRotation": "“భ్రమణాన్ని అనుకరించండి”",
+    "strict": "కఠినమైనది",
+    "untilScannable": "“స్కాన్ చేయగలిగే వరకు”"
   },
   "sections": {
-    "animation": "Animation",
-    "metadata": "Metadata",
-    "output": "Output",
-    "overlay": "Overlay / Image",
-    "payload": "Payload / Data",
-    "qrEncoding": "QR Encoding",
-    "rendering": "Rendering",
-    "safety": "Safety Analysis",
-    "share": "Share",
-    "watermark": "Watermark"
+    "animation": "యానిమేషన్",
+    "metadata": "“మెటాడేటా”",
+    "output": "అవుట్పుట్",
+    "overlay": "“ఓవర్లే / ఇమేజ్”",
+    "payload": "“పేలోడ్ / డేటా”",
+    "qrEncoding": "“QR ఎన్‌కోడింగ్”",
+    "rendering": "“రెండరింగ్”",
+    "safety": "భద్రతా విశ్లేషణ",
+    "share": "“షేర్”",
+    "watermark": "“వాటర్‌మార్క్”"
   },
   "share": {
-    "copied": "Copied!",
-    "copyLink": "Copy Link",
-    "directLink": "Direct Link",
-    "directLinkDesc": "Generate shareable URL",
-    "embedHtml": "Embed HTML",
-    "embedHtmlDesc": "Generate embed code",
-    "encodeAllParams": "Encode All Parameters",
-    "encodeAllParamsDesc": "Include all settings in URL",
-    "markdown": "Markdown",
-    "quickShare": "Quick Share",
-    "twitter": "X/Twitter",
-    "whatsapp": "WhatsApp"
+    "copied": "“కాపీ చేయబడింది!”",
+    "copyLink": "“లింక్‌ను కాపీ చేయి”",
+    "directLink": "“డైరెక్ట్ లింక్”",
+    "directLinkDesc": "“షేర్ చేయదగిన URL ను రూపొందించండి”",
+    "embedHtml": "“HTML ని పొందుపరచండి”",
+    "embedHtmlDesc": "“ఎంబెడ్ కోడ్‌ను రూపొందించండి”",
+    "encodeAllParams": "“అన్ని పారామితులను ఎన్కోడ్ చేయండి”",
+    "encodeAllParamsDesc": "“URL లో అన్ని సెట్టింగ్‌లను చేర్చండి”",
+    "markdown": "“మార్క్‌డౌన్”",
+    "quickShare": "“త్వరిత భాగస్వామ్యం”",
+    "twitter": "“ఎక్స్/ట్విట్టర్”",
+    "whatsapp": "“వాట్సాప్”"
   },
   "tiers": {
-    "advanced": "Advanced",
-    "basic": "Basic",
-    "professional": "Pro",
-    "watchAdForPro": "Watch ad to unlock Professional features for 24 hours"
+    "advanced": "“అధునాతన”",
+    "basic": "ప్రాథమిక",
+    "professional": "“ప్రో”",
+    "watchAdForPro": "“24 గంటల పాటు ప్రొఫెషనల్ ఫీచర్‌లను అన్‌లాక్ చేయడానికి ప్రకటనను చూడండి”"
   },
   "watermark": {
-    "behindQr": "Behind QR",
-    "blendMode": "Blend Mode",
-    "bottomLeft": "Bottom Left",
-    "bottomRight": "Bottom Right",
-    "center": "Center",
-    "corners": "Corners",
-    "edges": "Edges",
-    "enabled": "Enable Watermark",
-    "fontColor": "Font Color",
-    "fontSize": "Font Size",
-    "image": "Image",
-    "multiply": "Multiply",
-    "normal": "Normal",
-    "opacity": "Opacity",
-    "overlay": "Overlay",
-    "pattern": "Pattern",
-    "position": "Position",
-    "quietZone": "Quiet Zone",
-    "screen": "Screen",
-    "text": "Text",
-    "textPlaceholder": "© Company Name",
-    "topLeft": "Top Left",
-    "topRight": "Top Right",
-    "type": "Type",
-    "uploadImage": "Upload Image"
+    "behindQr": "“QR వెనుక”",
+    "blendMode": "“బ్లెండ్ మోడ్”",
+    "bottomLeft": "“దిగువ ఎడమవైపు”",
+    "bottomRight": "“దిగువ కుడివైపు”",
+    "center": "సెంటర్",
+    "corners": "“మూలలు”",
+    "edges": "“అంచులు”",
+    "enabled": "“వాటర్‌మార్క్‌ను ప్రారంభించు”",
+    "fontColor": "“ఫాంట్ కలర్”",
+    "fontSize": "ఫాంట్ సైజు",
+    "image": "“చిత్రం”",
+    "multiply": "గుణించండి",
+    "normal": "సాధారణ",
+    "opacity": "అస్పష్టత",
+    "overlay": "“ఓవర్లే”",
+    "pattern": "నమూనా",
+    "position": "స్థానం",
+    "quietZone": "“నిశ్శబ్ద మండలం”",
+    "screen": "“స్క్రీన్”",
+    "text": "“టెక్స్ట్”",
+    "textPlaceholder": "“© కంపెనీ పేరు”",
+    "topLeft": "“పై ఎడమవైపు”",
+    "topRight": "“పైన కుడివైపు”",
+    "type": "రకం",
+    "uploadImage": "“చిత్రాన్ని అప్‌లోడ్ చేయి”"
   }
 }

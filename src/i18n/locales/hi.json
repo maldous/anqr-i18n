@@ -2,32 +2,32 @@
   "animation": {
     "blueNoise": "ब्लू नॉइज़",
     "bounce": "बाउंस (पिंग-पोंग)",
-    "colorCycle": "कलर साइकल",
+    "colorCycle": "रंग चक्र",
     "crossfade": "क्रॉसफेड",
     "drift": "ड्रिफ्ट",
     "enabled": "एनिमेशन सक्षम करें",
-    "everyNFrames": "हर {{count}} फ्रेम",
-    "exportAllFrames": "सभी फ्रेम निर्यात करें",
+    "everyNFrames": "हर {{count}} फ़्रेम",
+    "exportAllFrames": "सभी फ़्रेम निर्यात करें",
     "fadeIn": "फेड इन",
-    "flickerSafe": "फ्लिकर सेफ",
-    "frameStep": "फ्रेम स्टेप",
+    "flickerSafe": "फ्लिकर-सुरक्षित",
+    "frameStep": "फ़्रेम स्टेप",
     "interpolation": "इंटरपोलेशन",
-    "loop": "लूप एनिमेशन",
-    "maxFrames": "अधिकतम फ्रेम",
+    "loop": "एनिमेशन लूप करें",
+    "maxFrames": "अधिकतम फ़्रेम",
     "moduleJitter": "मॉड्यूल जिटर",
-    "moduleJitterWarning": "⚠️ स्कैनेबिलिटी प्रभावित हो सकती है",
+    "moduleJitterWarning": "⚠️ स्कैन करने की क्षमता प्रभावित हो सकती है",
     "morph": "मॉर्फ",
     "none": "कोई नहीं",
     "off": "बंद",
-    "pattern": "पैटर्न",
+    "pattern": "जनरेटेड पैटर्न",
     "pulse": "पल्स",
     "randomSeed": "रैंडम सीड",
-    "rotate": "रोटेट",
+    "rotate": "घुमाएँ",
     "scanline": "स्कैनलाइन",
     "shimmer": "शिमर",
     "slideIn": "स्लाइड इन",
-    "speed": "फ्रेम स्पीड",
-    "startFrame": "स्टार्ट फ्रेम",
+    "speed": "फ़्रेम गति",
+    "startFrame": "आरंभ फ़्रेम",
     "temporalDither": "टेम्पोरल डिथर",
     "wave": "वेव"
   },
@@ -41,7 +41,7 @@
     "pt": "पुर्तगाली",
     "id": "इंडोनेशियाई",
     "vi": "वियतनामी",
-    "tl": "तागालोग",
+    "tl": "टैगालॉग",
     "ja": "जापानी",
     "ko": "कोरियाई",
     "es": "स्पेनिश",
@@ -66,9 +66,9 @@
     "cancel": "रद्द करें",
     "close": "बंद करें",
     "copied": "कॉपी हो गया!",
-    "copy": "कॉपी करें",
+    "copy": "कॉपी",
     "copyright": "© ANQR",
-    "delete": "हटाएं",
+    "delete": "हटाएँ",
     "disabled": "अक्षम",
     "download": "डाउनलोड",
     "edit": "संपादित करें",
@@ -77,7 +77,7 @@
     "filter": "फ़िल्टर",
     "less": "कम",
     "loading": "लोड हो रहा है...",
-    "more": "अधिक",
+    "more": "और",
     "next": "अगला",
     "no": "नहीं",
     "none": "कोई नहीं",
@@ -89,35 +89,35 @@
     "save": "सहेजें",
     "search": "खोजें",
     "select": "चुनें",
-    "showLess": "कम दिखाएं",
-    "showMore": "और दिखाएं",
+    "showLess": "कम दिखाएँ",
+    "showMore": "और दिखाएँ",
     "sort": "क्रमबद्ध करें",
     "success": "सफल",
-    "upload": "अपलोड",
+    "upload": "अपलोड करें",
     "viewAll": "सभी देखें",
-    "yes": "हां"
+    "yes": "हाँ"
   },
   "fileSaveFailed": "फ़ाइल सहेजने में विफल: {{error}}",
-  "fileSaved": "दस्तावेज़ में सहेजा गया: {{filename}}",
+  "fileSaved": "दस्तावेज़ों में सहेजा गया: {{filename}}",
   "footer": {
     "copyright": "© ANQR {{year}}"
   },
   "gallery": {
     "all": "सभी",
-    "animationOverlay": "एनिमेशन",
-    "blendModes": "मिश्रण मोड",
-    "collapse": "संक्षिप्त करें",
+    "animationOverlay": "एनीमेशन",
+    "blendModes": "ब्लेंड मोड",
+    "collapse": "समेटें",
     "colorModes": "रंग मोड",
     "colors": "रंग",
-    "contentTypes": "कंटेंट प्रकार",
+    "contentTypes": "सामग्री प्रकार",
     "dithering": "डिथरिंग",
     "encoding": "एन्कोडिंग",
-    "expand": "विस्तार करें",
+    "expand": "विस्तृत करें",
     "filter": "फ़िल्टर",
-    "imageOverlay": "इमेज ओवरले",
+    "imageOverlay": "छवि ओवरले",
     "items": {
       "anim-blue-noise": {
-        "description": "एनिमेशन के साथ ब्लू नॉइज़ थ्रेशोल्ड",
+        "description": "एनीमेशन के साथ ब्लू नॉइज़ थ्रेशहोल्ड",
         "title": "एनिमेटेड ब्लू नॉइज़"
       },
       "anim-blue-noise-i100": {
@@ -133,15 +133,15 @@
         "title": "ब्लू नॉइज़ 75%"
       },
       "anim-brightness": {
-        "description": "एनिमेशन के साथ ब्राइटनेस",
+        "description": "एनीमेशन के साथ ब्राइटनेस",
         "title": "एनिमेटेड ब्राइटनेस"
       },
       "anim-colormode-bw": {
-        "description": "काला-सफेद एनिमेटेड ओवरले",
-        "title": "एनिमेटेड काला-सफेद"
+        "description": "B&W एनिमेटेड ओवरले",
+        "title": "एनिमेटेड B&W"
       },
       "anim-colormode-color": {
-        "description": "रंग एनिमेटेड ओवरले",
+        "description": "रंगीन एनिमेटेड ओवरले",
         "title": "एनिमेटेड रंग"
       },
       "anim-colormode-grayscale": {
@@ -149,19 +149,19 @@
         "title": "एनिमेटेड ग्रेस्केल"
       },
       "anim-dithered": {
-        "description": "एनिमेशन के साथ एरर डिफ्यूज़न",
+        "description": "एनीमेशन के साथ एरर डिफ्यूजन",
         "title": "एनिमेटेड डिथर्ड"
       },
       "anim-duotone": {
-        "description": "एनिमेशन के साथ ड्यूओटोन",
+        "description": "एनीमेशन के साथ ड्यूओटोन",
         "title": "एनिमेटेड ड्यूओटोन"
       },
       "anim-halftone": {
-        "description": "एनिमेशन के साथ हाफ़टोन डॉट्स",
+        "description": "एनीमेशन के साथ हाफ़टोन डॉट्स",
         "title": "एनिमेटेड हाफ़टोन"
       },
       "anim-mosaic": {
-        "description": "एनिमेशन के साथ मोज़ेक",
+        "description": "एनीमेशन के साथ मोज़ेक",
         "title": "एनिमेटेड मोज़ेक"
       },
       "blend-classic": {
@@ -181,8 +181,8 @@
         "title": "वाइन ब्लेंड"
       },
       "cmode-blue-noise-bw": {
-        "description": "काला-सफेद में ब्लू नॉइज़",
-        "title": "ब्लू नॉइज़ काला-सफेद"
+        "description": "B&W में ब्लू नॉइज़",
+        "title": "ब्लू नॉइज़ B&W"
       },
       "cmode-blue-noise-color": {
         "description": "रंग में ब्लू नॉइज़",
@@ -197,87 +197,87 @@
         "title": "डिथर्ड ग्रेस्केल"
       },
       "cmode-halftone-bw": {
-        "description": "काला-सफेद में हाफ़टोन",
-        "title": "हाफ़टोन काला-सफेद"
+        "description": "B&W में हाफ़टोन",
+        "title": "हाफ़टोन B&W"
       },
       "cmode-halftone-color": {
         "description": "रंग में हाफ़टोन",
         "title": "हाफ़टोन रंग"
       },
       "color-coral": {
-        "description": "#ffe8d6 पर #e85d04",
+        "description": "#e85d04 पर #ffe8d6",
         "title": "कोरल"
       },
       "color-coral-dots": {
-        "description": "डॉट मॉड्यूल के साथ कोरल",
+        "description": "डॉट मॉड्यूल्स के साथ कोरल",
         "title": "कोरल डॉट्स"
       },
       "color-crimson": {
-        "description": "#ffccd5 पर #9d0208",
+        "description": "#9d0208 पर #ffccd5",
         "title": "क्रिमसन"
       },
       "color-forest": {
-        "description": "#d8f3dc पर #1b4332",
+        "description": "#1b4332 पर #d8f3dc",
         "title": "फॉरेस्ट"
       },
       "color-forest-dots": {
-        "description": "डॉट मॉड्यूल के साथ फॉरेस्ट",
+        "description": "डॉट मॉड्यूल्स के साथ फॉरेस्ट",
         "title": "फॉरेस्ट डॉट्स"
       },
       "color-gold": {
-        "description": "#ffe8cc पर #7f5539",
+        "description": "#7f5539 पर #ffe8cc",
         "title": "गोल्ड"
       },
       "color-inverted": {
-        "description": "#000000 पर #ffffff",
-        "title": "इनवर्टेड"
+        "description": "#ffffff पर #000000",
+        "title": "इन्वर्टेड"
       },
       "color-midnight": {
-        "description": "#eef1ff पर #1a1a2e",
+        "description": "#1a1a2e पर #eef1ff",
         "title": "मिडनाइट"
       },
       "color-midnight-dots": {
-        "description": "डॉट मॉड्यूल के साथ मिडनाइट",
+        "description": "डॉट मॉड्यूल्स के साथ मिडनाइट",
         "title": "मिडनाइट डॉट्स"
       },
       "color-navy": {
-        "description": "#a2d2ff पर #001d3d",
+        "description": "#001d3d पर #a2d2ff",
         "title": "नेवी"
       },
       "color-ocean": {
-        "description": "#caf0f8 पर #023e8a",
+        "description": "#023e8a पर #caf0f8",
         "title": "ओशन"
       },
       "color-ocean-dots": {
-        "description": "डॉट मॉड्यूल के साथ ओशन",
+        "description": "डॉट मॉड्यूल्स के साथ ओशन",
         "title": "ओशन डॉट्स"
       },
       "color-royal": {
-        "description": "#f5e6ff पर #4a0080",
+        "description": "#4a0080 पर #f5e6ff",
         "title": "रॉयल"
       },
       "color-royal-dots": {
-        "description": "डॉट मॉड्यूल के साथ रॉयल",
+        "description": "डॉट मॉड्यूल्स के साथ रॉयल",
         "title": "रॉयल डॉट्स"
       },
       "color-slate": {
-        "description": "#e9ecef पर #343a40",
+        "description": "#343a40 पर #e9ecef",
         "title": "स्लेट"
       },
       "color-sunset": {
-        "description": "#fff3b0 पर #bf0603",
+        "description": "#bf0603 पर #fff3b0",
         "title": "सनसेट"
       },
       "color-sunset-dots": {
-        "description": "डॉट मॉड्यूल के साथ सनसेट",
+        "description": "डॉट मॉड्यूल्स के साथ सनसेट",
         "title": "सनसेट डॉट्स"
       },
       "color-teal": {
-        "description": "#e0f4f5 पर #006d77",
+        "description": "#006d77 पर #e0f4f5",
         "title": "टील"
       },
       "combo-anim-dots-halftone": {
-        "description": "डॉट मॉड्यूल के साथ एनिमेटेड हाफ़टोन",
+        "description": "डॉट मॉड्यूल्स के साथ एनिमेटेड हाफ़टोन",
         "title": "एनिमेटेड डॉट्स + हाफ़टोन"
       },
       "combo-anim-rounded-blue-noise": {
@@ -285,31 +285,31 @@
         "title": "एनिमेटेड राउंडेड + ब्लू नॉइज़"
       },
       "combo-connected-pixelate-teal": {
-        "description": "कनेक्टेड मॉड्यूल के साथ पिक्सेलेटेड ओवरले",
+        "description": "कनेक्टेड मॉड्यूल्स के साथ पिक्सेलेटेड ओवरले",
         "title": "कनेक्टेड + पिक्सेलेट टील"
       },
       "combo-connected-square": {
-        "description": "स्क्वायर फाइंडर के साथ कनेक्टेड मॉड्यूल",
-        "title": "कनेक्टेड + स्क्वायर"
+        "description": "स्क्वेयर फाइंडर्स के साथ कनेक्टेड मॉड्यूल्स",
+        "title": "कनेक्टेड + स्क्वेयर"
       },
       "combo-connected-wave-ocean": {
-        "description": "वेव इफ़ेक्ट के साथ कनेक्टेड मॉड्यूल",
+        "description": "वेव इफ़ेक्ट के साथ कनेक्टेड मॉड्यूल्स",
         "title": "कनेक्टेड + वेव ओशन"
       },
       "combo-diamond-blue-noise-navy": {
-        "description": "ब्लू नॉइज़ के साथ डायमंड मॉड्यूल",
+        "description": "ब्लू नॉइज़ के साथ डायमंड मॉड्यूल्स",
         "title": "डायमंड + ब्लू नॉइज़ नेवी"
       },
       "combo-diamond-duotone-crimson": {
-        "description": "डायमंड मॉड्यूल के साथ ड्यूओटोन इफ़ेक्ट",
-        "title": "डायमंड + ड्यूओटोन क्रिमसन"
+        "description": "डायमंड मॉड्यूल्स के साथ डुओटोन इफ़ेक्ट",
+        "title": "डायमंड + डुओटोन क्रिमसन"
       },
       "combo-diamond-rounded": {
-        "description": "राउंडेड फाइंडर के साथ डायमंड मॉड्यूल",
+        "description": "राउंडेड फाइंडर्स के साथ डायमंड मॉड्यूल्स",
         "title": "डायमंड + राउंडेड"
       },
       "combo-dots-circle": {
-        "description": "सर्कल फाइंडर के साथ डॉट्स मॉड्यूल",
+        "description": "सर्कल फाइंडर्स के साथ डॉट्स मॉड्यूल्स",
         "title": "डॉट्स + सर्कल"
       },
       "combo-dots-extreme-forest": {
@@ -317,23 +317,23 @@
         "title": "डॉट्स + एक्सट्रीम फॉरेस्ट"
       },
       "combo-dots-halftone-gold": {
-        "description": "हाफ़टोन ओवरले के साथ डॉट मॉड्यूल",
+        "description": "हाफ़टोन ओवरले के साथ डॉट मॉड्यूल्स",
         "title": "डॉट्स + हाफ़टोन गोल्ड"
       },
       "combo-dots-outline-slate": {
-        "description": "डॉट मॉड्यूल के साथ एज डिटेक्शन",
+        "description": "डॉट मॉड्यूल्स के साथ एज डिटेक्शन",
         "title": "डॉट्स + आउटलाइन स्लेट"
       },
       "combo-rounded-dithered-royal": {
-        "description": "राउंडेड स्टाइल के साथ क्लासिक डिथर्ड",
+        "description": "राउंडेड स्टाइल के साथ क्लासिक डिथरिंग",
         "title": "राउंडेड + डिथर्ड रॉयल"
       },
       "combo-rounded-mosaic-sunset": {
-        "description": "मोज़ेक ओवरले के साथ राउंडेड मॉड्यूल",
+        "description": "मोज़ेक ओवरले के साथ राउंडेड मॉड्यूल्स",
         "title": "राउंडेड + मोज़ेक सनसेट"
       },
       "combo-rounded-rounded": {
-        "description": "राउंडेड फाइंडर के साथ राउंडेड मॉड्यूल",
+        "description": "राउंडेड फाइंडर्स के साथ राउंडेड मॉड्यूल्स",
         "title": "राउंडेड + राउंडेड"
       },
       "combo-rounded-subpixel-coral": {
@@ -341,7 +341,7 @@
         "title": "राउंडेड + सबपिक्सेल कोरल"
       },
       "content-email": {
-        "description": "कोरल रंगों के साथ Mailto लिंक",
+        "description": "कोरल रंगों के साथ mailto लिंक",
         "title": "ईमेल पता"
       },
       "content-event": {
@@ -349,91 +349,91 @@
         "title": "कैलेंडर इवेंट"
       },
       "content-geo": {
-        "description": "कनेक्टेड गोल्ड के साथ मैप कोऑर्डिनेट",
-        "title": "जियो लोकेशन"
+        "description": "कनेक्टेड गोल्ड के साथ मानचित्र निर्देशांक",
+        "title": "भौगोलिक स्थान"
       },
       "content-sms": {
         "description": "डायमंड टील के साथ प्री-फिल्ड SMS",
         "title": "SMS संदेश"
       },
       "content-vcard": {
-        "description": "गोलाकार नेवी स्टाइल के साथ संपर्क कार्ड",
+        "description": "गोल-कोनों वाली नेवी शैली का संपर्क कार्ड",
         "title": "vCard संपर्क"
       },
       "content-wifi": {
-        "description": "डॉट्स फॉरेस्ट ग्रीन के साथ WiFi कॉन्फ़िग",
+        "description": "डॉट्स फ़ॉरेस्ट ग्रीन के साथ WiFi कॉन्फ़िगरेशन",
         "title": "WiFi नेटवर्क"
       },
       "dither-adaptive-threshold": {
-        "description": "एडैप्टिव थ्रेशोल्ड",
-        "title": "एडैप्टिव"
+        "description": "अनुकूली थ्रेशहोल्ड",
+        "title": "अनुकूली"
       },
       "dither-blue-noise": {
-        "description": "ब्लू नॉइज़ थ्रेशोल्ड",
+        "description": "ब्लू नॉइज़ थ्रेशहोल्ड",
         "title": "ब्लू नॉइज़"
       },
       "dither-blue-noise-error-diffusion": {
         "description": "हाइब्रिड ब्लू नॉइज़",
-        "title": "ब्लू नॉइज़ + एरर"
+        "title": "ब्लू नॉइज़ + त्रुटि"
       },
       "dither-error-diffusion": {
-        "description": "Floyd-Steinberg स्टाइल",
-        "title": "एरर डिफ्यूज़न"
+        "description": "फ्लॉयड-स्टीनबर्ग शैली",
+        "title": "त्रुटि प्रसरण"
       },
       "dither-kernel-atkinson": {
-        "description": "Atkinson एरर डिफ्यूज़न",
-        "title": "Atkinson"
+        "description": "एटकिंसन त्रुटि प्रसरण",
+        "title": "एटकिंसन"
       },
       "dither-kernel-burkes": {
-        "description": "Burkes एरर डिफ्यूज़न",
-        "title": "Burkes"
+        "description": "बर्क्स त्रुटि प्रसरण",
+        "title": "बर्क्स"
       },
       "dither-kernel-floyd-steinberg": {
-        "description": "Floyd-Steinberg एरर डिफ्यूज़न",
-        "title": "Floyd-Steinberg"
+        "description": "फ्लॉयड-स्टीनबर्ग त्रुटि प्रसरण",
+        "title": "फ्लॉयड-स्टीनबर्ग"
       },
       "dither-kernel-jarvis-judice-ninke": {
-        "description": "Jarvis-Judice-Ninke एरर डिफ्यूज़न",
-        "title": "Jarvis-Judice-Ninke"
+        "description": "जार्विस-जूडिस-निंके त्रुटि प्रसरण",
+        "title": "जार्विस-जूडिस-निंके"
       },
       "dither-kernel-sierra": {
-        "description": "Sierra एरर डिफ्यूज़न",
-        "title": "Sierra"
+        "description": "सिएरा त्रुटि प्रसरण",
+        "title": "सिएरा"
       },
       "dither-kernel-stucki": {
-        "description": "Stucki एरर डिफ्यूज़न",
-        "title": "Stucki"
+        "description": "स्टुकी त्रुटि प्रसरण",
+        "title": "स्टुकी"
       },
       "dither-ordered-bayer": {
-        "description": "बेयर मैट्रिक्स डिथरिंग",
-        "title": "ऑर्डर्ड बेयर"
+        "description": "बेयर मैट्रिक्स डिदरिंग",
+        "title": "क्रमबद्ध बेयर"
       },
       "dither-perceptual": {
-        "description": "ल्यूमिनेंस-वेटेड",
+        "description": "ल्यूमिनेंस-भारित",
         "title": "परसेप्चुअल"
       },
       "dither-strength-100": {
-        "description": "100% पर डिथर स्ट्रेंथ",
-        "title": "स्ट्रेंथ 100%"
+        "description": "100% पर डिदरिंग की तीव्रता",
+        "title": "तीव्रता 100%"
       },
       "dither-strength-20": {
-        "description": "20% पर डिथर स्ट्रेंथ",
-        "title": "स्ट्रेंथ 20%"
+        "description": "20% पर डिदरिंग की तीव्रता",
+        "title": "तीव्रता 20%"
       },
       "dither-strength-40": {
-        "description": "40% पर डिथर स्ट्रेंथ",
-        "title": "स्ट्रेंथ 40%"
+        "description": "40% पर डिदरिंग की तीव्रता",
+        "title": "तीव्रता 40%"
       },
       "dither-strength-60": {
-        "description": "60% पर डिथर स्ट्रेंथ",
-        "title": "स्ट्रेंथ 60%"
+        "description": "60% पर डिदरिंग की तीव्रता",
+        "title": "तीव्रता 60%"
       },
       "dither-strength-80": {
-        "description": "80% पर डिथर स्ट्रेंथ",
-        "title": "स्ट्रेंथ 80%"
+        "description": "80% पर डिदरिंग की तीव्रता",
+        "title": "तीव्रता 80%"
       },
       "dither-white-noise": {
-        "description": "रैंडम नॉइज़ थ्रेशोल्ड",
+        "description": "रैंडम नॉइज़ थ्रेशहोल्ड",
         "title": "व्हाइट नॉइज़"
       },
       "enc-ecc-h": {
@@ -442,7 +442,7 @@
       },
       "enc-ecc-l": {
         "description": "7% त्रुटि सुधार",
-        "title": "ECC कम"
+        "title": "ECC निम्न"
       },
       "enc-ecc-m": {
         "description": "15% त्रुटि सुधार",
@@ -450,7 +450,7 @@
       },
       "enc-ecc-q": {
         "description": "25% त्रुटि सुधार",
-        "title": "ECC चतुर्थांश"
+        "title": "ECC क्वार्टाइल"
       },
       "enc-v0": {
         "description": "स्वचालित संस्करण चयन",
@@ -461,7 +461,7 @@
         "title": "संस्करण 12"
       },
       "enc-v6": {
-        "description": "ओवरले के लिए सर्वश्रेष्ठ",
+        "description": "ओवरले के लिए सर्वोत्तम (मध्य में आई नहीं)",
         "title": "संस्करण 6"
       },
       "enc-v6-h": {
@@ -469,8 +469,8 @@
         "title": "V6 + ECC उच्च"
       },
       "enc-v6-l": {
-        "description": "कम त्रुटि सुधार के साथ संस्करण 6",
-        "title": "V6 + ECC कम"
+        "description": "निम्न त्रुटि सुधार के साथ संस्करण 6",
+        "title": "V6 + ECC निम्न"
       },
       "enc-v9": {
         "description": "संस्करण 9 QR कोड",
@@ -481,23 +481,23 @@
         "title": "V9 + ECC उच्च"
       },
       "enc-v9-l": {
-        "description": "कम त्रुटि सुधार के साथ संस्करण 9",
-        "title": "V9 + ECC कम"
+        "description": "निम्न त्रुटि सुधार के साथ संस्करण 9",
+        "title": "V9 + ECC निम्न"
       },
       "finder-circle": {
-        "description": "सर्कल फाइंडर पैटर्न",
-        "title": "सर्कल फाइंडर"
+        "description": "वृत्ताकार फ़ाइंडर पैटर्न",
+        "title": "वृत्ताकार फ़ाइंडर"
       },
       "finder-rounded": {
-        "description": "राउंडेड फाइंडर पैटर्न",
-        "title": "राउंडेड फाइंडर"
+        "description": "गोल-कोनों वाला फ़ाइंडर पैटर्न",
+        "title": "गोल-कोनों वाले फ़ाइंडर"
       },
       "finder-square": {
-        "description": "स्क्वायर फाइंडर पैटर्न",
-        "title": "स्क्वायर फाइंडर"
+        "description": "वर्गाकार फ़ाइंडर पैटर्न",
+        "title": "वर्गाकार फ़ाइंडर"
       },
       "halftone-classic": {
-        "description": "क्लासिक पैलेट के साथ हाफ़टोन",
+        "description": "क्लासिक पैलेट के साथ हाफटोन",
         "title": "क्लासिक हाफ़टोन"
       },
       "halftone-forest": {
@@ -517,48 +517,48 @@
         "title": "ब्लेंड मोड"
       },
       "img-blue-noise": {
-        "description": "ब्लू नॉइज़ थ्रेशोल्ड डिथरिंग",
+        "description": "ब्लू नॉइज़ थ्रेशहोल्ड डिथरिंग",
         "title": "ब्लू नॉइज़"
       },
       "img-brightness": {
-        "description": "ब्राइटनेस-आधारित मॉड्यूल",
-        "title": "ब्राइटनेस"
+        "description": "चमक-आधारित मॉड्यूल",
+        "title": "चमक"
       },
       "img-colormode-bw": {
-        "description": "काला-सफेद प्रोसेसिंग",
-        "title": "काला-सफेद"
+        "description": "काला और सफ़ेद प्रोसेसिंग",
+        "title": "काला और सफ़ेद"
       },
       "img-colormode-color": {
         "description": "रंग प्रोसेसिंग",
         "title": "रंग"
       },
       "img-colormode-grayscale": {
-        "description": "ग्रेस्केल प्रोसेसिंग",
-        "title": "ग्रेस्केल"
+        "description": "ग्रे-स्केल प्रोसेसिंग",
+        "title": "ग्रे-स्केल"
       },
       "img-dithered": {
         "description": "एरर डिफ्यूज़न डिथरिंग",
-        "title": "डिथर्ड"
+        "title": "डिथर किया गया"
       },
       "img-dithered-i100": {
-        "description": "100% तीव्रता पर डिथर्ड",
-        "title": "डिथर्ड 100%"
+        "description": "100% तीव्रता पर डिथर किया गया",
+        "title": "डिथर 100%"
       },
       "img-dithered-i50": {
-        "description": "50% तीव्रता पर डिथर्ड",
-        "title": "डिथर्ड 50%"
+        "description": "50% तीव्रता पर डिथर किया गया",
+        "title": "डिथर 50%"
       },
       "img-dithered-i75": {
-        "description": "75% तीव्रता पर डिथर्ड",
-        "title": "डिथर्ड 75%"
+        "description": "75% तीव्रता पर डिथर किया गया",
+        "title": "डिथर 75%"
       },
       "img-duotone": {
-        "description": "दो-रंग मैपिंग",
-        "title": "ड्यूओटोन"
+        "description": "दो-टोन रंग मैपिंग",
+        "title": "डुओटोन"
       },
       "img-extreme": {
-        "description": "अधिकतम इमेज दृश्यता",
-        "title": "एक्सट्रीम"
+        "description": "अधिकतम छवि दृश्यता",
+        "title": "अत्यधिक"
       },
       "img-halftone": {
         "description": "क्लासिक हाफ़टोन डॉट्स",
@@ -581,7 +581,7 @@
         "title": "सबपिक्सेल"
       },
       "img-wave": {
-        "description": "लहरदार विकृति इफ़ेक्ट",
+        "description": "वेवी डिस्टॉर्शन इफ़ेक्ट",
         "title": "वेव"
       },
       "mosaic-classic": {
@@ -610,18 +610,18 @@
       },
       "plain-ecc-q": {
         "description": "मध्यम-उच्च त्रुटि सुधार",
-        "title": "ECC चतुर्थांश (25%)"
+        "title": "ECC क्वार्टाइल (25%)"
       },
       "plain-v12": {
-        "description": "मल्टीपल अलाइनमेंट के साथ बड़ा",
+        "description": "एकाधिक अलाइनमेंट के साथ बड़ा",
         "title": "संस्करण 12"
       },
       "plain-v6": {
-        "description": "बिना सेंटर आई के बड़ा",
+        "description": "केंद्र आई के बिना बड़ा",
         "title": "संस्करण 6"
       },
       "plain-v9": {
-        "description": "सेंटर आई के साथ और भी बड़ा",
+        "description": "केंद्र आई के साथ और भी बड़ा",
         "title": "संस्करण 9"
       },
       "prep-blur-1": {
@@ -637,40 +637,40 @@
         "title": "ब्लर 4px"
       },
       "prep-brightness-n25": {
-        "description": "ब्राइटनेस गहरा",
-        "title": "ब्राइटनेस -25"
+        "description": "चमक घटाकर गहरा",
+        "title": "चमक -25"
       },
       "prep-brightness-n50": {
-        "description": "ब्राइटनेस गहरा",
-        "title": "ब्राइटनेस -50"
+        "description": "चमक घटाकर गहरा",
+        "title": "चमक -50"
       },
       "prep-brightness-p25": {
-        "description": "ब्राइटनेस उज्जवल",
-        "title": "ब्राइटनेस +25"
+        "description": "चमक बढ़ाकर उजला",
+        "title": "चमक +25"
       },
       "prep-brightness-p50": {
-        "description": "ब्राइटनेस उज्जवल",
-        "title": "ब्राइटनेस +50"
+        "description": "चमक बढ़ाकर उजला",
+        "title": "चमक +50"
       },
       "prep-contrast-n50": {
-        "description": "कम कंट्रास्ट",
-        "title": "कंट्रास्ट -50"
+        "description": "कम कॉन्ट्रास्ट",
+        "title": "कॉन्ट्रास्ट -50"
       },
       "prep-contrast-p100": {
-        "description": "उच्च कंट्रास्ट",
-        "title": "कंट्रास्ट +100"
+        "description": "उच्च कॉन्ट्रास्ट",
+        "title": "कॉन्ट्रास्ट +100"
       },
       "prep-contrast-p50": {
-        "description": "उच्च कंट्रास्ट",
-        "title": "कंट्रास्ट +50"
+        "description": "उच्च कॉन्ट्रास्ट",
+        "title": "कॉन्ट्रास्ट +50"
       },
       "prep-edge-canny": {
-        "description": "कैनी एज डिटेक्शन",
-        "title": "एज कैनी"
+        "description": "कैननी किनारा पहचान",
+        "title": "किनारा (कैननी)"
       },
       "prep-edge-sobel": {
-        "description": "सोबेल एज डिटेक्शन",
-        "title": "एज सोबेल"
+        "description": "सोबेल किनारा पहचान",
+        "title": "किनारा (सोबेल)"
       },
       "prep-gamma-05": {
         "description": "गामा सुधार 0.5",
@@ -685,12 +685,12 @@
         "title": "गामा 2.0"
       },
       "prep-hue-90": {
-        "description": "ह्यू रोटेशन 90 डिग्री",
+        "description": "ह्यू घुमाव 90 डिग्री",
         "title": "ह्यू +90°"
       },
       "prep-invert": {
-        "description": "इनवर्टेड रंग",
-        "title": "इनवर्टेड"
+        "description": "उल्टे रंग",
+        "title": "इन्वर्टेड"
       },
       "prep-posterize-2": {
         "description": "2 रंग स्तर",
@@ -705,7 +705,7 @@
         "title": "पोस्टराइज़ 8"
       },
       "prep-saturation-n100": {
-        "description": "असंतृप्त",
+        "description": "संतृप्ति हटाई गई",
         "title": "संतृप्ति -100"
       },
       "prep-saturation-n50": {
@@ -713,11 +713,11 @@
         "title": "संतृप्ति -50"
       },
       "prep-saturation-p100": {
-        "description": "अधिक संतृप्त",
+        "description": "अत्यधिक संतृप्त",
         "title": "संतृप्ति +100"
       },
       "prep-saturation-p50": {
-        "description": "अधिक संतृप्त",
+        "description": "अत्यधिक संतृप्त",
         "title": "संतृप्ति +50"
       },
       "prep-sharpen-100": {
@@ -733,40 +733,40 @@
         "title": "शार्पन 50%"
       },
       "prep-threshold-128": {
-        "description": "128 पर बाइनरी थ्रेशोल्ड",
-        "title": "थ्रेशोल्ड 128"
+        "description": "128 पर बाइनरी थ्रेशहोल्ड",
+        "title": "थ्रेशहोल्ड 128"
       },
       "prep-threshold-192": {
-        "description": "192 पर बाइनरी थ्रेशोल्ड",
-        "title": "थ्रेशोल्ड 192"
+        "description": "192 पर बाइनरी थ्रेशहोल्ड",
+        "title": "थ्रेशहोल्ड 192"
       },
       "prep-threshold-64": {
-        "description": "64 पर बाइनरी थ्रेशोल्ड",
-        "title": "थ्रेशोल्ड 64"
+        "description": "64 पर बाइनरी थ्रेशहोल्ड",
+        "title": "थ्रेशहोल्ड 64"
       },
       "style-connected": {
-        "description": "कनेक्टेड मॉड्यूल स्टाइल",
+        "description": "कनेक्टेड मॉड्यूल शैली",
         "title": "कनेक्टेड मॉड्यूल"
       },
       "style-diamond": {
-        "description": "डायमंड मॉड्यूल स्टाइल",
-        "title": "डायमंड मॉड्यूल"
+        "description": "हीरा मॉड्यूल शैली",
+        "title": "हीरा मॉड्यूल"
       },
       "style-dots": {
-        "description": "डॉट्स मॉड्यूल स्टाइल",
-        "title": "डॉट्स मॉड्यूल"
+        "description": "बिंदु मॉड्यूल शैली",
+        "title": "बिंदु मॉड्यूल"
       },
       "style-rounded": {
-        "description": "राउंडेड मॉड्यूल स्टाइल",
-        "title": "राउंडेड मॉड्यूल"
+        "description": "गोलाईदार मॉड्यूल शैली",
+        "title": "गोलाईदार मॉड्यूल"
       },
       "style-square": {
-        "description": "स्क्वायर मॉड्यूल स्टाइल",
-        "title": "स्क्वायर मॉड्यूल"
+        "description": "चौकोर मॉड्यूल शैली",
+        "title": "चौकोर मॉड्यूल"
       }
     },
     "plain": "सादा",
-    "powerCombos": "पावर कॉम्बो",
+    "powerCombos": "शक्तिशाली संयोजन",
     "preprocessing": "पूर्व-प्रसंस्करण",
     "sections": {
       "animation-overlay": {
@@ -774,27 +774,27 @@
         "title": "एनिमेटेड ओवरले"
       },
       "blend-modes": {
-        "description": "इमेज ओवरले के साथ विभिन्न रंग मिश्रण",
+        "description": "इमेज ओवरले के साथ विभिन्न रंग ब्लेंडिंग",
         "title": "ब्लेंड मोड"
       },
       "color-modes": {
-        "description": "रंग, ग्रेस्केल और काला-सफेद प्रोसेसिंग",
-        "title": "रंग प्रोसेसिंग"
+        "description": "रंग, ग्रेस्केल, और श्वेत-श्याम प्रसंस्करण",
+        "title": "रंग प्रसंस्करण"
       },
       "colors": {
-        "description": "रंग योजनाएं और थीम वाले पैलेट",
+        "description": "रंग योजनाएँ और थीम वाले पैलेट",
         "title": "रंग और थीम"
       },
       "content-types": {
-        "description": "विभिन्न पेलोड फॉर्मेट - vCard, WiFi, ईमेल, SMS, जियो, कैलेंडर",
-        "title": "कंटेंट प्रकार"
+        "description": "विभिन्न पेलोड फ़ॉर्मैट - vCard, WiFi, ईमेल, SMS, जियो, कैलेंडर",
+        "title": "सामग्री प्रकार"
       },
       "dithering": {
-        "description": "विभिन्न डिथरिंग विधियां और एरर डिफ्यूज़न कर्नेल",
-        "title": "डिथरिंग एल्गोरिदम"
+        "description": "विभिन्न डिथरिंग विधियाँ और त्रुटि-विसरण कर्नेल",
+        "title": "डिथरिंग एल्गोरिद्म"
       },
       "encoding": {
-        "description": "विभिन्न QR संस्करण और त्रुटि सुधार स्तर",
+        "description": "विभिन्न QR संस्करण और त्रुटि-सुधार स्तर",
         "title": "QR एन्कोडिंग"
       },
       "image-overlay": {
@@ -802,27 +802,27 @@
         "title": "इमेज ओवरले"
       },
       "plain": {
-        "description": "बिना ओवरले के मानक QR कोड - विभिन्न संस्करण और त्रुटि सुधार",
+        "description": "ओवरले के बिना मानक QR कोड - विभिन्न संस्करण और त्रुटि-सुधार",
         "title": "सादा QR कोड"
       },
       "power-combos": {
-        "description": "ANQR क्षमताओं को प्रदर्शित करने वाले शानदार मल्टी-फीचर संयोजन",
-        "title": "पावर कॉम्बो"
+        "description": "ANQR क्षमताओं को दिखाने वाले प्रभावशाली बहु-विशेषता संयोजन",
+        "title": "शक्तिशाली संयोजन"
       },
       "preprocessing": {
-        "description": "ब्राइटनेस, कंट्रास्ट, गामा, ब्लर, शार्पन, पोस्टराइज़, एज डिटेक्शन",
-        "title": "इमेज प्रीप्रोसेसिंग"
+        "description": "चमक, कॉन्ट्रास्ट, गामा, धुंधलापन, शार्पन, पोस्टराइज़, किनारा पहचान",
+        "title": "इमेज पूर्व-प्रसंस्करण"
       },
       "styles": {
-        "description": "मॉड्यूल और फाइंडर पैटर्न के लिए विभिन्न विज़ुअल स्टाइल",
-        "title": "मॉड्यूल और फाइंडर स्टाइल"
+        "description": "मॉड्यूल और फ़ाइंडर पैटर्न के लिए विभिन्न दृश्य शैलियाँ",
+        "title": "मॉड्यूल और फ़ाइंडर शैलियाँ"
       }
     },
-    "showAll": "सभी दिखाएं",
-    "styles": "स्टाइल",
-    "subtitle": "ANQR द्वारा बनाए गए QR कोड उदाहरण देखें",
+    "showAll": "सब दिखाएँ",
+    "styles": "शैलियाँ",
+    "subtitle": "ANQR से बनाए गए QR कोड के उदाहरण देखें",
     "title": "QR कोड गैलरी",
-    "tryThis": "इसे आज़माएं"
+    "tryThis": "इसे आज़माएँ"
   },
   "header": {
     "close": "बंद करें",
@@ -833,80 +833,80 @@
     "lightMode": "लाइट मोड पर स्विच करें",
     "reset": "रीसेट",
     "searchSettings": "सेटिंग्स खोजें...",
-    "share": "शेयर करें"
+    "share": "साझा करें"
   },
   "hints": {
-    "alignmentStyle": "एलाइनमेंट पैटर्न की शैली (बड़े QR कोड में उपयोग)",
-    "appLinkNote": "मोबाइल ऐप में विशिष्ट कंटेंट खोलता है",
-    "autoDetect": "ऑटो-डिटेक्ट (वर्तमान कंटेंट के लिए v{{version}}+ आवश्यक)",
-    "autoMinVersion": "0 = ऑटो, वर्तमान कंटेंट के लिए न्यूनतम v{{version}}",
-    "bgColorHex": "पृष्ठभूमि रंग हेक्स कोड",
-    "bizcardLegacy": "पुराना फॉर्मेट - इसके बजाय vCard का उपयोग करें",
-    "bluetoothNote": "नोट: QR के माध्यम से ब्लूटूथ पेयरिंग विक्रेता-विशिष्ट है और सभी डिवाइस पर काम नहीं कर सकती",
-    "bounceAnimation": "एनिमेशन आगे फिर पीछे चलाएं",
+    "alignmentStyle": "एलाइनमेंट पैटर्न की शैली (बड़े QR कोड में उपयोग होती है)",
+    "appLinkNote": "मोबाइल ऐप के भीतर विशिष्ट सामग्री खोलता है",
+    "autoDetect": "स्वतः पता लगाएँ (वर्तमान सामग्री के लिए v{{version}}+ आवश्यक)",
+    "autoMinVersion": "0 = ऑटो, वर्तमान सामग्री के लिए न्यूनतम v{{version}}",
+    "bgColorHex": "पृष्ठभूमि रंग का हेक्स कोड",
+    "bizcardLegacy": "पुराना फ़ॉर्मैट — इसके बजाय vCard उपयोग करने पर विचार करें",
+    "bluetoothNote": "नोट: QR के जरिए ब्लूटूथ पेयरिंग निर्माता-विशिष्ट है और सभी डिवाइसों पर काम नहीं कर सकती",
+    "bounceAnimation": "एनीमेशन आगे चलाएँ फिर पीछे (पिंग-पोंग)",
     "calendarNote": "साझा कैलेंडर फ़ीड की सदस्यता लें",
-    "contrastGuard": "अग्रभूमि और पृष्ठभूमि के बीच न्यूनतम कंट्रास्ट सुनिश्चित करें",
-    "cornerRadius": "गोल मॉड्यूल के लिए कोने त्रिज्या प्रतिशत (0-100%)",
-    "crispEdges": "तेज मॉड्यूल किनारों के लिए पिक्सेलेटेड रेंडरिंग का उपयोग करें",
-    "customNote": "किसी भी फॉर्मेट में कच्चा डेटा दर्ज करें। कोई सत्यापन या फॉर्मेटिंग लागू नहीं होगी।",
-    "dotRotation": "डॉट-स्टाइल मॉड्यूल घुमाएं (0-360 डिग्री)",
-    "encodingMode": "डेटा एन्कोडिंग मोड - ऑटो सबसे कुशल मोड चुनता है",
-    "enforceMinQuietZone": "बेहतर स्कैनिंग विश्वसनीयता के लिए न्यूनतम 4 मॉड्यूल क्वाइट ज़ोन लागू करें",
-    "enterTextContent": "QR कोड में एन्कोड करने के लिए टेक्स्ट कंटेंट दर्ज करें",
+    "contrastGuard": "फ़ोरग्राउंड और बैकग्राउंड के बीच न्यूनतम कॉन्ट्रास्ट अनुपात सुनिश्चित करें",
+    "cornerRadius": "गोल मॉड्यूल के लिए कोने के रेडियस का प्रतिशत (0–100%)",
+    "crispEdges": "तेज़ मॉड्यूल किनारों के लिए पिक्सेलेटेड रेंडरिंग उपयोग करें",
+    "customNote": "किसी भी फ़ॉर्मैट में कच्चा डेटा दर्ज करें। कोई वैलिडेशन या फ़ॉर्मैटिंग लागू नहीं होगी।",
+    "dotRotation": "डॉट-स्टाइल मॉड्यूल घुमाएँ (0–360 डिग्री)",
+    "encodingMode": "डेटा एन्कोडिंग मोड — ऑटो सबसे कुशल मोड चुनता है",
+    "enforceMinQuietZone": "बेहतर स्कैनिंग विश्वसनीयता के लिए न्यूनतम 4 मॉड्यूल का क्वायट ज़ोन लागू करें",
+    "enterTextContent": "QR कोड में एन्कोड करने के लिए टेक्स्ट सामग्री दर्ज करें",
     "enterUrlContent": "QR कोड में एन्कोड करने के लिए URL दर्ज करें",
-    "epcSepaNote": "SEPA क्रेडिट ट्रांसफर के लिए यूरोपीय भुगतान परिषद QR कोड",
-    "errorCorrection": "त्रुटि सुधार स्तर - उच्च = अधिक क्षति प्रतिरोध लेकिन बड़ा QR कोड",
-    "extraBorder": "क्वाइट ज़ोन के अलावा अतिरिक्त बॉर्डर मॉड्यूल (0-10)",
-    "eyeInnerStyle": "फाइंडर पैटर्न के आंतरिक वर्ग की शैली",
-    "eyeOuterStyle": "फाइंडर पैटर्न की बाहरी रिंग की शैली",
-    "eyeScale": "फाइंडर पैटर्न को उनके डिफ़ॉल्ट आकार के सापेक्ष स्केल करें (50-150%)",
-    "fgColorHex": "अग्रभूमि रंग हेक्स कोड",
-    "finderStyle": "कोने के फाइंडर पैटर्न की शैली",
-    "forceHttps": "HTTP URL को स्वचालित रूप से HTTPS में बदलें",
-    "frameStyle": "QR कोड के चारों ओर सजावटी फ्रेम जोड़ें",
-    "frameText": "फ्रेम पर प्रदर्शित करने के लिए टेक्स्ट",
-    "gapMode": "मॉड्यूल के बीच अंतर कैसे रेंडर होता है",
+    "epcSepaNote": "SEPA क्रेडिट ट्रांसफ़र के लिए यूरोपियन पेमेंट काउंसिल QR कोड",
+    "errorCorrection": "त्रुटि सुधार स्तर — अधिक = अधिक क्षति प्रतिरोध, लेकिन बड़ा QR कोड",
+    "extraBorder": "क्वायट ज़ोन के बाहर अतिरिक्त बॉर्डर मॉड्यूल (0–10)",
+    "eyeInnerStyle": "फ़ाइंडर पैटर्न के अंदरूनी वर्ग की शैली",
+    "eyeOuterStyle": "फ़ाइंडर पैटर्न की बाहरी रिंग की शैली",
+    "eyeScale": "फ़ाइंडर पैटर्न को उनके डिफ़ॉल्ट आकार के सापेक्ष स्केल करें (50–150%)",
+    "fgColorHex": "फ़ोरग्राउंड रंग का हेक्स कोड",
+    "finderStyle": "कोने वाले फ़ाइंडर पैटर्न की शैली",
+    "forceHttps": "HTTP URL को स्वतः HTTPS में बदलें",
+    "frameStyle": "QR कोड के चारों ओर सजावटी फ़्रेम जोड़ें",
+    "frameText": "फ़्रेम पर दिखाने के लिए टेक्स्ट",
+    "gapMode": "मॉड्यूल के बीच की जगहें कैसे रेंडर होती हैं",
     "gradient": "QR कोड पर ग्रेडिएंट प्रभाव लागू करें",
-    "gs1Note": "उत्पाद पहचान और ट्रेसेबिलिटी के लिए GS1 डिजिटल लिंक",
-    "higherEccLargerQr": "उच्च = अधिक क्षति प्रतिरोध, बड़ा QR",
-    "loopAnimation": "एनिमेशन लगातार लूप करें",
-    "maxLengthGuard": "QR कोड क्षमता से अधिक कंटेंट एन्कोडिंग रोकें",
-    "minContrastRatio": "न्यूनतम कंट्रास्ट अनुपात लागू करें (1-21, WCAG AA को 4.5:1 चाहिए)",
-    "moduleGap": "मॉड्यूल के बीच प्रतिशत में अंतर (0-30%)",
-    "moduleJitterWarning": "⚠️ स्कैनेबिलिटी प्रभावित हो सकती है",
-    "moduleSize": "प्रत्येक QR कोड मॉड्यूल का पिक्सेल में आकार (2-20px)",
+    "gs1Note": "उत्पाद पहचान और ट्रेसबिलिटी के लिए GS1 डिजिटल लिंक",
+    "higherEccLargerQr": "अधिक = अधिक क्षति प्रतिरोध, बड़ा QR",
+    "loopAnimation": "एनीमेशन को लगातार लूप करें",
+    "maxLengthGuard": "QR कोड क्षमता से अधिक सामग्री एन्कोड होने से रोकें",
+    "minContrastRatio": "लागू करने के लिए न्यूनतम कॉन्ट्रास्ट अनुपात (1–21, WCAG AA के लिए 4.5:1 आवश्यक)",
+    "moduleGap": "मॉड्यूल के बीच गैप का प्रतिशत (0–30%)",
+    "moduleJitterWarning": "⚠️ स्कैन करने की क्षमता प्रभावित हो सकती है",
+    "moduleSize": "प्रत्येक QR कोड मॉड्यूल का आकार पिक्सेल में (2–20px)",
     "moduleStyle": "QR कोड मॉड्यूल की दृश्य शैली",
-    "normalizeNewlines": "विभिन्न न्यूलाइन फॉर्मेट को मानक फॉर्मेट में बदलें",
-    "outputFormat": "निर्यात के लिए आउटपुट फ़ाइल फॉर्मेट चुनें",
-    "paynowNote": "सिंगापुर फास्ट पेमेंट सिस्टम",
-    "perModuleColor": "व्यक्तिगत मॉड्यूल को रंग कैसे असाइन करें",
+    "normalizeNewlines": "विभिन्न न्यूलाइन फ़ॉर्मैट को मानक फ़ॉर्मैट में बदलें",
+    "outputFormat": "निर्यात के लिए आउटपुट फ़ाइल फ़ॉर्मैट चुनें",
+    "paynowNote": "सिंगापुर की फास्ट पेमेंट प्रणाली",
+    "perModuleColor": "अलग-अलग मॉड्यूल को रंग कैसे असाइन करें",
     "pickBgColor": "पृष्ठभूमि रंग चुनने के लिए क्लिक करें",
-    "pickFgColor": "अग्रभूमि रंग चुनने के लिए क्लिक करें",
-    "pixNote": "ब्राज़ील इंस्टेंट पेमेंट सिस्टम",
-    "pixelSnap": "मॉड्यूल स्थिति को पिक्सेल सीमाओं से कैसे स्नैप करें",
-    "promptpayNote": "थाईलैंड राष्ट्रीय ई-पेमेंट सिस्टम",
-    "qrVersion": "QR कोड वर्ज़न (0=ऑटो, 1-40 आकार और क्षमता बढ़ाता है)",
-    "quietZone": "QR कोड के चारों ओर क्वाइट ज़ोन मार्जिन (0-10 मॉड्यूल, अनुशंसित: 4+)",
-    "rsvpNote": "ऑनलाइन RSVP फ़ॉर्म या इवेंट पंजीकरण पृष्ठ का लिंक",
-    "safetyMode": "सुरक्षा विश्लेषण मोड - QR कोड पठनीयता की कितनी सख्ती से जांच करें",
-    "selectContentType": "QR कोड में एन्कोड करने के लिए कंटेंट का प्रकार चुनें",
-    "shortLinkNote": "डायनामिक/ट्रैक करने योग्य QR कोड के लिए URL शॉर्टनर सेवा का उपयोग करें",
-    "timingStyle": "टाइमिंग पैटर्न की शैली (क्षैतिज और ऊर्ध्वाधर रेखाएं)",
-    "transparentBg": "पृष्ठभूमि रंग के बजाय पारदर्शी बनाएं",
-    "trimWhitespace": "आगे और पीछे के व्हाइटस्पेस हटाएं",
-    "upiNote": "भारत के लिए यूनिफाइड पेमेंट्स इंटरफ़ेस",
-    "utmCampaign": "अभियान ट्रैकिंग के लिए UTM अभियान पैरामीटर",
-    "utmMedium": "अभियान ट्रैकिंग के लिए UTM माध्यम पैरामीटर",
-    "utmSource": "अभियान ट्रैकिंग के लिए UTM स्रोत पैरामीटर",
-    "validateInput": "एन्कोडिंग से पहले इनपुट डेटा सत्यापित करें",
-    "versionTooLow": "⚠️ वर्ज़न बहुत कम! न्यूनतम v{{version}} आवश्यक"
+    "pickFgColor": "फ़ोरग्राउंड रंग चुनने के लिए क्लिक करें",
+    "pixNote": "ब्राज़ील की त्वरित भुगतान प्रणाली",
+    "pixelSnap": "मॉड्यूल की स्थितियों को पिक्सेल सीमाओं पर कैसे स्नैप करें",
+    "promptpayNote": "थाईलैंड की राष्ट्रीय ई-पेमेंट प्रणाली",
+    "qrVersion": "QR कोड संस्करण (0=ऑटो, 1–40 आकार और क्षमता बढ़ाता है)",
+    "quietZone": "QR कोड के चारों ओर क्वायट ज़ोन मार्जिन (0–10 मॉड्यूल, अनुशंसित: 4+)",
+    "rsvpNote": "ऑनलाइन RSVP फ़ॉर्म या इवेंट रजिस्ट्रेशन पेज का लिंक",
+    "safetyMode": "सुरक्षा विश्लेषण मोड — QR कोड की पठनीयता कितनी सख्ती से जाँची जाए",
+    "selectContentType": "QR कोड में एन्कोड करने के लिए सामग्री का प्रकार चुनें",
+    "shortLinkNote": "डायनेमिक/ट्रैक करने योग्य QR कोड के लिए URL शॉर्टनर सेवा उपयोग करें",
+    "timingStyle": "टाइमिंग पैटर्न की शैली (क्षैतिज और ऊर्ध्वाधर रेखाएँ)",
+    "transparentBg": "पृष्ठभूमि रंग के बजाय बैकग्राउंड को पारदर्शी करें",
+    "trimWhitespace": "शुरुआत और अंत के खाली स्थान हटाएँ",
+    "upiNote": "भारत के लिए यूनिफ़ाइड पेमेंट्स इंटरफ़ेस",
+    "utmCampaign": "कैंपेन ट्रैकिंग के लिए UTM कैंपेन पैरामीटर",
+    "utmMedium": "कैंपेन ट्रैकिंग के लिए UTM मीडियम पैरामीटर",
+    "utmSource": "कैंपेन ट्रैकिंग के लिए UTM सोर्स पैरामीटर",
+    "validateInput": "एन्कोड करने से पहले इनपुट डेटा सत्यापित करें",
+    "versionTooLow": "⚠️ संस्करण बहुत कम है! न्यूनतम v{{version}} आवश्यक है"
   },
   "language": {
     "current": "भाषा",
     "select": "भाषा चुनें"
   },
   "metadata": {
-    "addCustomField": "कस्टम फील्ड जोड़ें",
+    "addCustomField": "कस्टम फ़ील्ड जोड़ें",
     "author": "लेखक",
     "authorPlaceholder": "लेखक का नाम",
     "copyright": "कॉपीराइट",
@@ -921,40 +921,40 @@
     "license": "लाइसेंस",
     "licensePlaceholder": "CC-BY-4.0",
     "title": "शीर्षक",
-    "titlePlaceholder": "QR कोड शीर्षक",
+    "titlePlaceholder": "QR कोड का शीर्षक",
     "value": "मान",
     "valuePlaceholder": "मान"
   },
   "nav": {
-    "about": "के बारे में",
+    "about": "परिचय",
     "contact": "संपर्क",
-    "docs": "गाइड",
+    "docs": "मार्गदर्शिका",
     "gallery": "गैलरी",
     "generator": "जनरेटर",
-    "guide": "गाइड",
+    "guide": "मार्गदर्शिका",
     "privacy": "गोपनीयता",
     "terms": "शर्तें"
   },
   "output": {
-    "backgroundOverride": "बैकग्राउंड ओवरराइड",
+    "backgroundOverride": "पृष्ठभूमि ओवरराइड",
     "backgroundOverridePlaceholder": "डिफ़ॉल्ट के लिए खाली छोड़ें",
     "dithering": "डिथरिंग",
     "dpi": "DPI (प्रिंट)",
-    "embedRasterOverlay": "रैस्टर ओवरले एम्बेड करें",
-    "exportAsAdditional": "अतिरिक्त के रूप में निर्यात करें",
-    "filename": "फाइलनाम",
-    "floydSteinberg": "Floyd-Steinberg",
-    "format": "फॉर्मेट",
+    "embedRasterOverlay": "रास्टर ओवरले एम्बेड करें",
+    "exportAsAdditional": "इस रूप में निर्यात करें (अतिरिक्त)",
+    "filename": "फ़ाइल नाम",
+    "floydSteinberg": "फ्लॉयड-स्टीनबर्ग",
+    "format": "फ़ॉर्मेट",
     "gif": "GIF",
     "gifSettings": "GIF सेटिंग्स",
-    "height": "ऊंचाई",
+    "height": "ऊँचाई",
     "includeQuietZone": "क्वाइट ज़ोन शामिल करें",
-    "medianCut": "Median Cut",
+    "medianCut": "मीडियन कट",
     "neuquant": "NeuQuant",
     "none": "कोई नहीं",
-    "octree": "Octree",
+    "octree": "ऑक्ट्री",
     "off": "बंद",
-    "ordered": "ऑर्डर्ड",
+    "ordered": "क्रमबद्ध",
     "outputSize": "आउटपुट आकार",
     "paletteSize": "पैलेट आकार",
     "pdf": "PDF",
@@ -963,102 +963,102 @@
     "precise": "सटीक",
     "quality": "गुणवत्ता",
     "quantizer": "क्वांटाइज़र",
-    "shapePrecision": "आकार सटीकता",
+    "shapePrecision": "आकृति की सटीकता",
     "svg": "SVG",
     "svgSettings": "SVG सेटिंग्स",
     "transparentColor": "पारदर्शी रंग",
     "transparentColorPlaceholder": "#ffffff या खाली",
-    "trueVector": "ट्रू वेक्टर",
-    "trueVectorDesc": "एम्बेडेड रैस्टर के बजाय पथ का उपयोग करें",
+    "trueVector": "वास्तविक वेक्टर",
+    "trueVectorDesc": "एम्बेडेड रास्टर की बजाय पाथ्स का उपयोग करें",
     "webp": "WebP",
     "width": "चौड़ाई"
   },
   "overlay": {
-    "adaptiveThreshold": "एडैप्टिव थ्रेशोल्ड",
-    "atkinson": "Atkinson",
-    "bayer2": "Bayer 2×2",
-    "bayer4": "Bayer 4×4",
-    "bayer8": "Bayer 8×8",
-    "blend": "ब्लेंड",
+    "adaptiveThreshold": "अनुकूली थ्रेशोल्ड",
+    "atkinson": "एटकिंसन",
+    "bayer2": "बायर 2×2",
+    "bayer4": "बायर 4×4",
+    "bayer8": "बायर 8×8",
+    "blend": "मिश्रण",
     "blendMode": "मिश्रण",
     "blueNoise": "ब्लू नॉइज़",
-    "blueNoiseErrorDiffusion": "ब्लू नॉइज़ + एरर डिफ्यूज़न",
+    "blueNoiseErrorDiffusion": "ब्लू नॉइज़ + त्रुटि प्रसार",
     "blueNoiseMode": "ब्लू नॉइज़",
     "blueNoiseThreshold": "ब्लू नॉइज़ थ्रेशोल्ड",
-    "blur": "ब्लर",
-    "brightness": "ब्राइटनेस",
-    "brightnessCurve": "ब्राइटनेस कर्व",
-    "brightnessMode": "ब्राइटनेस",
-    "burkes": "Burkes",
-    "bw": "काला और सफेद",
+    "blur": "धुंधलापन",
+    "brightness": "चमक",
+    "brightnessCurve": "चमक वक्र",
+    "brightnessMode": "चमक",
+    "burkes": "बर्क्स",
+    "bw": "काला और सफ़ेद",
     "cellSize": "सेल आकार",
-    "centerLogo": "सेंटर लोगो",
-    "centerRule": "सेंटर नियम",
+    "centerLogo": "लोगो को केंद्र में",
+    "centerRule": "केंद्र नियम",
     "clusteredDot": "क्लस्टर्ड डॉट",
-    "colorDither": "कलर डिथर",
+    "colorDither": "रंग डिथर",
     "colorMode": "रंग मोड",
-    "contain": "कंटेन",
-    "contrast": "कंट्रास्ट",
-    "corsNote": "नोट: इमेज CORS अनुरोधों की अनुमति देनी चाहिए",
+    "contain": "समाहित",
+    "contrast": "कॉन्ट्रास्ट",
+    "corsNote": "नोट: छवि को क्रॉस-ओरिजिन अनुरोधों (CORS) की अनुमति देनी चाहिए",
     "cover": "कवर",
-    "cropImage": "इमेज क्रॉप करें",
+    "cropImage": "छवि क्रॉप करें",
     "cropSize": "क्रॉप आकार",
     "diffusionKernel": "डिफ्यूज़न कर्नेल",
-    "disposalHandling": "डिस्पोजल हैंडलिंग",
+    "disposalHandling": "डिस्पोज़ल हैंडलिंग",
     "dither": "डिथर",
     "ditherSettings": "डिथर सेटिंग्स",
-    "ditherStrength": "डिथर स्ट्रेंथ",
-    "dithered": "डिथर्ड",
-    "ditheredMode": "डिथर्ड",
+    "ditherStrength": "डिथर की तीव्रता",
+    "dithered": "डिथर किया गया",
+    "ditheredMode": "डिथर किया गया",
     "dotShape": "डॉट आकार",
-    "duotone": "ड्यूओटोन",
-    "duotoneColors": "ड्यूओटोन रंग",
-    "duotoneMode": "ड्यूओटोन",
+    "duotone": "डुओटोन",
+    "duotoneColors": "डुओटोन रंग",
+    "duotoneMode": "डुओटोन",
     "eccAwareMode": "ECC-अवेयर मोड",
-    "edge": "एज डिटेक्शन",
-    "edgeAware": "एज-अवेयर",
+    "edge": "किनारा पहचान",
+    "edgeAware": "किनारा-सचेत",
     "enableCrop": "क्रॉप सक्षम करें",
-    "errorDiffusion": "एरर डिफ्यूज़न",
-    "extreme": "एक्सट्रीम",
-    "extremeMode": "एक्सट्रीम",
+    "errorDiffusion": "त्रुटि प्रसरण",
+    "extreme": "अत्यधिक",
+    "extremeMode": "अत्यधिक",
     "finderOverride": "फाइंडर ओवरराइड",
     "fitMode": "फिट मोड",
-    "flipX": "X फ्लिप",
-    "flipY": "Y फ्लिप",
-    "floydSteinberg": "Floyd-Steinberg",
+    "flipX": "X पलटें",
+    "flipY": "Y पलटें",
+    "floydSteinberg": "फ्लॉयड-स्टीनबर्ग",
     "fromUrl": "URL से",
     "fullColor": "पूर्ण रंग",
     "gamma": "गामा",
-    "gapFillMode": "गैप फिल",
-    "gapfill": "गैप फिल",
-    "gaussianNoise": "गाउसियन नॉइज़",
+    "gapFillMode": "गैप भरें",
+    "gapfill": "गैप भरें",
+    "gaussianNoise": "गॉसियन नॉइज़",
     "gifSettings": "GIF सेटिंग्स",
-    "grayscale": "ग्रेस्केल",
+    "grayscale": "ग्रे-स्केल",
     "gridSize": "ग्रिड आकार",
-    "halftone": "हाफटोन",
-    "halftoneCenter": "हाफटोन सेंटर",
-    "halftoneMode": "हाफटोन",
-    "halftoneSettings": "हाफटोन सेटिंग्स",
+    "halftone": "हाफ़टोन",
+    "halftoneCenter": "हाफ़टोन केंद्र",
+    "halftoneMode": "हाफ़टोन",
+    "halftoneSettings": "हाफ़टोन सेटिंग्स",
     "highlight": "हाइलाइट",
-    "hueRotate": "ह्यू रोटेट",
-    "imageGifWebp": "इमेज/GIF/WebP",
-    "imageUrl": "इमेज URL",
+    "hueRotate": "ह्यू घुमाएँ",
+    "imageGifWebp": "छवि / GIF / WebP",
+    "imageUrl": "छवि URL",
     "intensity": "तीव्रता",
-    "invert": "इमेज इन्वर्ट",
-    "jarvisJudiceNinke": "Jarvis-Judice-Ninke",
-    "line": "लाइन",
-    "load": "लोड",
+    "invert": "छवि इनवर्ट करें",
+    "jarvisJudiceNinke": "जार्विस-जूडिस-निंके",
+    "line": "रेखा",
+    "load": "लोड करें",
     "loadedFromUrl": "URL से लोड किया गया",
     "maxFps": "अधिकतम FPS",
     "mode": "ब्लेंड मोड",
     "mosaic": "मोज़ेक",
     "mosaicMode": "मोज़ेक",
-    "neutralColor": "न्यूट्रल रंग",
-    "noFile": "कोई फाइल नहीं",
+    "neutralColor": "तटस्थ रंग",
+    "noFile": "कोई फ़ाइल नहीं",
     "none": "कोई नहीं",
     "nxnGrid": "N×N ग्रिड",
-    "orderedBayer": "ऑर्डर्ड (Bayer)",
-    "orderedMatrix": "ऑर्डर्ड मैट्रिक्स",
+    "orderedBayer": "क्रमित (Bayer)",
+    "orderedMatrix": "क्रमित मैट्रिक्स",
     "original": "मूल",
     "outline": "आउटलाइन",
     "outlineMode": "आउटलाइन",
@@ -1068,48 +1068,48 @@
     "pixelate": "पिक्सेलेट",
     "pixelateMode": "पिक्सेलेट",
     "posterizeLevels": "पोस्टराइज़ स्तर",
-    "preserveAlignment": "एलाइनमेंट पैटर्न संरक्षित करें",
-    "preserveFinders": "फाइंडर पैटर्न संरक्षित करें",
-    "preserveTiming": "टाइमिंग पैटर्न संरक्षित करें",
-    "protectFormat": "फॉर्मेट सुरक्षित करें",
-    "protectFormatInfo": "फॉर्मेट जानकारी सुरक्षित करें",
-    "protectVersion": "वर्ज़न सुरक्षित करें",
-    "protectVersionInfo": "वर्ज़न जानकारी सुरक्षित करें",
+    "preserveAlignment": "संरेखण सुरक्षित रखें",
+    "preserveFinders": "फाइंडर पैटर्न सुरक्षित रखें",
+    "preserveTiming": "टाइमिंग सुरक्षित रखें",
+    "protectFormat": "फ़ॉर्मैट जानकारी सुरक्षित करें",
+    "protectFormatInfo": "फ़ॉर्मैट जानकारी सुरक्षित करें",
+    "protectVersion": "वर्शन जानकारी सुरक्षित करें",
+    "protectVersionInfo": "वर्शन जानकारी सुरक्षित करें",
     "protection": "सुरक्षा",
-    "removeImage": "हटाएं",
-    "respect": "सम्मान",
+    "removeImage": "हटाएँ",
+    "respect": "मानें",
     "riskBudget": "जोखिम बजट",
-    "rotation": "रोटेशन",
+    "rotation": "घुमाव",
     "sCurve": "S-कर्व",
     "saturation": "संतृप्ति",
-    "screenedBlueNoise": "स्क्रीन्ड ब्लू नॉइज़",
+    "screenedBlueNoise": "स्क्रीन किया हुआ नीला नॉइज़",
     "seed": "सीड",
-    "selectImage": "इमेज चुनें",
+    "selectImage": "छवि चुनें",
     "sepia": "सेपिया",
     "serpentineScanning": "सर्पेंटाइन स्कैनिंग",
     "shadow": "छाया",
-    "sharpen": "शार्पन",
-    "sierra": "Sierra",
+    "sharpen": "तीक्ष्ण करें",
+    "sierra": "सिएरा",
     "sierra2": "Sierra-2",
     "sierraLite": "Sierra-Lite",
     "simplify": "सरल करें",
-    "stretch": "स्ट्रेच",
+    "stretch": "खींचें",
     "strict": "सख्त",
-    "stucki": "Stucki",
-    "stylized": "स्टाइलाइज़्ड",
+    "stucki": "स्टुकी",
+    "stylized": "शैलीबद्ध",
     "subpixel": "सबपिक्सेल",
     "subpixelMode": "सबपिक्सेल",
     "subpixelSettings": "सबपिक्सेल सेटिंग्स",
     "subpixelSize": "सबपिक्सेल आकार",
     "subpixelSizeMode": "सबपिक्सेल आकार",
     "temporalBlueNoise": "टेम्पोरल ब्लू नॉइज़",
-    "threshold": "थ्रेशोल्ड",
+    "threshold": "थ्रेशहोल्ड",
     "tileSize": "टाइल आकार",
-    "triangularNoise": "ट्राइएंगुलर नॉइज़",
+    "triangularNoise": "त्रिकोणीय नॉइज़",
     "trueDither": "ट्रू डिथर",
     "trueDitherMode": "ट्रू डिथर",
-    "upload": "अपलोड",
-    "useFrameDelays": "फ्रेम डिले उपयोग करें",
+    "upload": "अपलोड करें",
+    "useFrameDelays": "फ़्रेम डिले का उपयोग करें",
     "voidCluster": "वॉइड और क्लस्टर",
     "wave": "वेव",
     "waveMode": "वेव",
@@ -1118,7 +1118,7 @@
   "payload": {
     "accountName": "खाता नाम",
     "address": "पता",
-    "algorithm": "एल्गोरिथम",
+    "algorithm": "एल्गोरिद्म",
     "allDay": "पूरे दिन का इवेंट",
     "amount": "राशि (वैकल्पिक)",
     "amountBrl": "राशि (BRL, वैकल्पिक)",
@@ -1126,12 +1126,12 @@
     "amountInr": "राशि (INR, वैकल्पिक)",
     "amountSgd": "राशि (SGD, वैकल्पिक)",
     "amountThb": "राशि (THB, वैकल्पिक)",
-    "androidIntent": "Android Intent",
+    "androidIntent": "Android इंटेंट",
     "appLink": "ऐप डीप लिंक (Android/iOS)",
     "assetInventory": "एसेट/इन्वेंटरी टैग",
-    "assetItemId": "एसेट/आइटम ID",
+    "assetItemId": "एसेट/आइटम आईडी",
     "assetType": "एसेट प्रकार",
-    "attendeeName": "उपस्थित का नाम",
+    "attendeeName": "प्रतिभागी का नाम",
     "audio": "ऑडियो",
     "baseUrl": "बेस URL",
     "batchLot": "बैच/लॉट (वैकल्पिक)",
@@ -1139,33 +1139,33 @@
     "bicSwift": "BIC/SWIFT (वैकल्पिक)",
     "birthday": "जन्मदिन",
     "bitcoin": "बिटकॉइन",
-    "bizcard": "BizCard (पुराना)",
+    "bizcard": "बिज़कार्ड (लीगेसी)",
     "bluetooth": "ब्लूटूथ",
-    "body": "संदेश बॉडी",
-    "bodyOptional": "बॉडी (वैकल्पिक)",
+    "body": "संदेश का मुख्य भाग",
+    "bodyOptional": "मुख्य भाग (वैकल्पिक)",
     "box": "Box",
     "calendar": "कैलेंडर",
-    "calendarName": "कैलेंडर नाम",
+    "calendarName": "कैलेंडर का नाम",
     "calendarSubscription": "कैलेंडर सब्सक्राइब",
     "calendarUrl": "कैलेंडर URL (ICS/WebCal)",
-    "campaignContent": "अभियान कंटेंट (वैकल्पिक)",
-    "campaignMedium": "अभियान माध्यम",
-    "campaignName": "अभियान नाम",
-    "campaignSource": "अभियान स्रोत",
-    "campaignTerm": "अभियान शर्त (वैकल्पिक)",
+    "campaignContent": "कैंपेन सामग्री (वैकल्पिक)",
+    "campaignMedium": "कैंपेन माध्यम",
+    "campaignName": "कैंपेन नाम",
+    "campaignSource": "कैंपेन स्रोत",
+    "campaignTerm": "कैंपेन टर्म (वैकल्पिक)",
     "city": "शहर",
     "cityOptional": "शहर (वैकल्पिक)",
     "cloudLink": "क्लाउड स्टोरेज लिंक",
     "company": "कंपनी",
     "contact": "संपर्क",
-    "contentType": "कंटेंट प्रकार",
-    "core": "मुख्य",
+    "contentType": "सामग्री प्रकार",
+    "core": "कोर",
     "country": "देश",
-    "crypto": "क्रिप्टो (BTC, ETH आदि)",
+    "crypto": "क्रिप्टो (BTC, ETH, आदि)",
     "cryptocurrency": "क्रिप्टोकरेंसी",
-    "custom": "कस्टम फॉर्मेट",
+    "custom": "कस्टम फ़ॉर्मैट",
     "customScheme": "कस्टम स्कीम",
-    "dateTime": "तिथि और समय",
+    "dateTime": "तारीख और समय",
     "deepLinkUrl": "डीप लिंक URL",
     "description": "विवरण",
     "deviceAddress": "डिवाइस पता (MAC)",
@@ -1178,44 +1178,44 @@
     "encryption": "एन्क्रिप्शन",
     "end": "समाप्त",
     "endDate": "समाप्ति तिथि",
-    "enterprise": "एंटरप्राइज",
-    "epcSepa": "EPC/SEPA (EU)",
+    "enterprise": "एंटरप्राइज़",
+    "epcSepa": "EPC / SEPA (EU)",
     "equipment": "उपकरण",
     "ethereum": "एथेरियम",
     "event": "iCalendar इवेंट",
-    "eventName": "इवेंट नाम",
+    "eventName": "इवेंट का नाम",
     "eventRsvp": "इवेंट RSVP लिंक",
     "eventTicket": "इवेंट टिकट",
     "expiryDate": "समाप्ति तिथि (वैकल्पिक)",
-    "facebook": "Facebook",
+    "facebook": "फेसबुक",
     "fallbackUrl": "फॉलबैक URL (वैकल्पिक)",
-    "fax": "फैक्स",
+    "fax": "फ़ैक्स",
     "fileType": "फ़ाइल प्रकार",
-    "fileUrl": "फ़ाइल/दस्तावेज़ URL",
+    "fileUrl": "फ़ाइल / दस्तावेज़ URL",
     "firstName": "पहला नाम",
-    "forceHttps": "HTTPS बाध्य करें",
+    "forceHttps": "HTTPS लागू करें",
     "fullName": "पूरा नाम",
     "furniture": "फर्नीचर",
     "geo": "भौगोलिक स्थान",
     "github": "GitHub",
-    "googleDrive": "Google Drive",
+    "googleDrive": "गूगल ड्राइव",
     "gs1DigitalLink": "GS1 डिजिटल लिंक",
     "gtin": "GTIN (ग्लोबल ट्रेड आइटम नंबर)",
-    "hidden": "छिपा नेटवर्क",
-    "homePhone": "घर फोन",
+    "hidden": "छिपा हुआ नेटवर्क",
+    "homePhone": "घर का फोन",
     "iban": "IBAN",
-    "idType": "ID प्रकार",
+    "idType": "आईडी प्रकार",
     "image": "छवि",
-    "instagram": "Instagram",
+    "instagram": "इंस्टाग्राम",
     "inventoryItem": "इन्वेंटरी आइटम",
     "iosUniversal": "iOS यूनिवर्सल",
     "issuer": "जारीकर्ता",
-    "itAsset": "IT एसेट",
+    "itAsset": "आईटी संपत्ति",
     "label": "लेबल (वैकल्पिक)",
     "lastName": "अंतिम नाम",
     "latitude": "अक्षांश",
     "linkType": "लिंक प्रकार",
-    "linkedin": "LinkedIn",
+    "linkedin": "लिंक्डइन",
     "litecoin": "लाइटकॉइन",
     "location": "स्थान",
     "locationNetwork": "स्थान और नेटवर्क",
@@ -1228,37 +1228,37 @@
     "merchantName": "व्यापारी का नाम (वैकल्पिक)",
     "message": "संदेश",
     "messageOptional": "संदेश (वैकल्पिक)",
-    "messagingLink": "WhatsApp/Telegram/Signal",
-    "messenger": "Messenger",
+    "messagingLink": "व्हाट्सऐप / टेलीग्राम / सिग्नल",
+    "messenger": "मैसेंजर",
     "mobileNumber": "मोबाइल नंबर",
     "mobilePhone": "मोबाइल फोन",
     "name": "नाम",
-    "nationalIdTaxId": "राष्ट्रीय ID/कर ID",
+    "nationalIdTaxId": "राष्ट्रीय आईडी / कर आईडी",
     "nickname": "उपनाम",
-    "normalizeNewlines": "न्यूलाइन्स सामान्य करें",
+    "normalizeNewlines": "नई पंक्तियाँ सामान्यीकृत करें",
     "note": "नोट",
     "oneDrive": "OneDrive",
     "openNoPassword": "खुला (बिना पासवर्ड)",
     "organization": "संगठन",
     "other": "अन्य",
-    "otpAuth": "OTP प्रमाणक",
+    "otpAuth": "OTP ऑथेंटिकेटर",
     "otpType": "प्रकार",
     "password": "पासवर्ड",
-    "payeeName": "प्राप्तकर्ता का नाम",
+    "payeeName": "भुगतान प्राप्तकर्ता का नाम",
     "payments": "भुगतान (ओपन स्पेक्स)",
     "paynow": "PayNow (सिंगापुर)",
     "phone": "फोन",
-    "phoneUsername": "फोन/यूज़रनेम",
+    "phoneUsername": "फोन/उपयोगकर्ता नाम",
     "pix": "PIX (ब्राज़ील)",
     "pixKey": "PIX कुंजी",
-    "plainText": "सादा टेक्स्ट",
-    "platform": "प्लेटफॉर्म",
-    "prefilledMessage": "पहले से भरा संदेश (वैकल्पिक)",
-    "profileUrl": "प्रोफाइल URL",
-    "promptPayId": "PromptPay ID",
+    "plainText": "सादा पाठ",
+    "platform": "प्लेटफ़ॉर्म",
+    "prefilledMessage": "पूर्व-भरा संदेश (वैकल्पिक)",
+    "profileUrl": "प्रोफ़ाइल URL",
+    "promptPayId": "PromptPay आईडी",
     "promptpay": "PromptPay (थाईलैंड)",
     "proxyType": "प्रॉक्सी प्रकार",
-    "rawData": "रॉ डेटा",
+    "rawData": "कच्चा डेटा",
     "recipient": "प्राप्तकर्ता",
     "reference": "संदर्भ",
     "referenceOptional": "संदर्भ (वैकल्पिक)",
@@ -1266,8 +1266,8 @@
     "rsvpUrl": "RSVP URL",
     "searchQuery": "खोज क्वेरी (वैकल्पिक)",
     "seat": "सीट",
-    "secretBase32": "सीक्रेट (Base32)",
-    "sectionZone": "सेक्शन/ज़ोन",
+    "secretBase32": "गोपनीय (Base32)",
+    "sectionZone": "खंड/ज़ोन",
     "securityType": "सुरक्षा प्रकार",
     "serialNumber": "सीरियल नंबर (वैकल्पिक)",
     "service": "सेवा",
@@ -1275,33 +1275,33 @@
     "shortUrl": "शॉर्ट URL",
     "signal": "Signal",
     "sms": "SMS",
-    "smsMms": "SMS/MMS",
+    "smsMms": "SMS / MMS",
     "socialMessaging": "सोशल और मैसेजिंग",
-    "socialProfile": "सोशल प्रोफाइल",
+    "socialProfile": "सोशल प्रोफ़ाइल",
     "ssid": "नेटवर्क नाम (SSID)",
     "start": "शुरू",
-    "startDate": "शुरू तिथि",
+    "startDate": "आरंभ तिथि",
     "state": "राज्य/प्रांत",
-    "street": "गली",
+    "street": "सड़क",
     "subject": "विषय",
     "subjectOptional": "विषय (वैकल्पिक)",
     "summary": "इवेंट शीर्षक",
-    "tel": "फोन नंबर",
+    "tel": "फ़ोन नंबर",
     "telegram": "Telegram",
-    "text": "टेक्स्ट कंटेंट",
-    "ticketId": "टिकट ID",
+    "text": "पाठ सामग्री",
+    "ticketId": "टिकट आईडी",
     "tiktok": "TikTok",
-    "title": "पद",
-    "transactionNote": "लेनदेन नोट (वैकल्पिक)",
+    "title": "शीर्षक",
+    "transactionNote": "लेन-देन नोट (वैकल्पिक)",
     "trimWhitespace": "व्हाइटस्पेस ट्रिम करें",
     "uenMobile": "UEN/मोबाइल नंबर",
     "universalLink": "यूनिवर्सल लिंक",
     "upi": "UPI (भारत)",
-    "upiId": "UPI ID (VPA)",
+    "upiId": "UPI आईडी (VPA)",
     "url": "URL",
     "utmCampaign": "utm_campaign",
     "utmContent": "utm_content",
-    "utmLink": "UTM अभियान लिंक",
+    "utmLink": "UTM कैंपेन लिंक",
     "utmMedium": "utm_medium",
     "utmSource": "utm_source",
     "utmTerm": "utm_term",
@@ -1314,28 +1314,28 @@
     "vevent": "कैलेंडर इवेंट",
     "viber": "Viber",
     "video": "वीडियो",
-    "walletAddress": "वॉलेट पता",
+    "walletAddress": "पता",
     "website": "वेबसाइट",
     "whatsapp": "WhatsApp",
-    "wifi": "वाईफाई",
-    "wifiNetwork": "वाईफाई नेटवर्क",
-    "wordDocument": "Word दस्तावेज़",
-    "workPhone": "कार्य फोन",
+    "wifi": "WiFi",
+    "wifiNetwork": "WiFi नेटवर्क",
+    "wordDocument": "वर्ड दस्तावेज़",
+    "workPhone": "कार्य फ़ोन",
     "youtube": "YouTube",
-    "zip": "पिन कोड"
+    "zip": "ZIP/पोस्टल कोड"
   },
   "preview": {
-    "qrCodePreview": "QR कोड पूर्वावलोकन - निर्यात करने के लिए क्लिक करें",
-    "simulating": "सिमुलेट हो रहा है",
-    "simulationActive": "पर्यावरण सिमुलेशन सक्रिय - पूर्वावलोकन दिखाता है कि QR कोड विभिन्न परिस्थितियों में कैसा दिखाई दे सकता है"
+    "qrCodePreview": "QR कोड प्रीव्यू - डाउनलोड करने के लिए एक्सपोर्ट पर क्लिक करें",
+    "simulating": "सिमुलेट किया जा रहा है",
+    "simulationActive": "पर्यावरणीय सिमुलेशन सक्रिय - प्रीव्यू दिखाता है कि QR कोड अलग-अलग परिस्थितियों में कैसा दिख सकता है"
   },
   "qr": {
-    "additionalBorder": "क्वाइट ज़ोन से परे अतिरिक्त बॉर्डर",
+    "additionalBorder": "क्वाइट ज़ोन के बाहर अतिरिक्त बॉर्डर",
     "alphanumeric": "अल्फ़ान्यूमेरिक",
     "auto": "ऑटो",
     "autoMin": "ऑटो (न्यूनतम: {{version}})",
-    "autoOptimal": "ऑटो (इष्टतम)",
-    "byteUtf8": "बाइट/UTF-8",
+    "autoOptimal": "ऑटो (सर्वोत्तम)",
+    "byteUtf8": "बाइट / UTF-8",
     "contrastRatio": "{{count}}:1",
     "encodingMode": "एन्कोडिंग मोड",
     "enforceMinQuietZone": "न्यूनतम क्वाइट ज़ोन लागू करें",
@@ -1344,7 +1344,7 @@
     "extraBorderModules": "अतिरिक्त बॉर्डर मॉड्यूल",
     "high": "H - उच्च (30%)",
     "kanji": "कांजी",
-    "low": "L - कम (7%)",
+    "low": "L - निम्न (7%)",
     "margin": "क्वाइट ज़ोन (मार्जिन)",
     "mask": "मास्क पैटर्न",
     "medium": "M - मध्यम (15%)",
@@ -1354,163 +1354,163 @@
     "nMs": "{{count}}ms",
     "nPercent": "{{count}}%",
     "nPx": "{{count}}px",
-    "numericOnly": "केवल संख्या",
-    "quartile": "Q - चौथाई (25%)",
-    "version": "वर्ज़न"
+    "numericOnly": "केवल संख्यात्मक",
+    "quartile": "Q - क्वार्टाइल (25%)",
+    "version": "संस्करण"
   },
   "render": {
     "addColor": "रंग जोड़ें",
-    "alignmentStyle": "एलाइनमेंट पैटर्न स्टाइल",
-    "background": "पृष्ठभूमि रंग",
-    "byBrightness": "ब्राइटनेस द्वारा",
-    "byCluster": "क्लस्टर द्वारा",
-    "byOverlay": "ओवरले द्वारा",
-    "byPosition": "स्थिति द्वारा",
-    "ceil": "सील",
+    "alignmentStyle": "अलाइनमेंट पैटर्न शैली",
+    "background": "पृष्ठभूमि",
+    "byBrightness": "चमक के अनुसार",
+    "byCluster": "क्लस्टर के अनुसार",
+    "byOverlay": "ओवरले के अनुसार",
+    "byPosition": "स्थिति के अनुसार",
+    "ceil": "ऊपर की ओर गोल",
     "circle": "वृत्त",
     "classic": "क्लासिक",
-    "colorPalette": "कलर पैलेट",
+    "colorPalette": "रंग पैलेट",
     "conic": "कोनिक",
-    "connected": "कनेक्टेड",
-    "contrastGuard": "कंट्रास्ट गार्ड",
+    "connected": "जुड़ा हुआ",
+    "contrastGuard": "कॉन्ट्रास्ट गार्ड",
     "cornerRadius": "कोने की त्रिज्या",
-    "crispEdges": "क्रिस्प एज",
-    "crispEdgesDesc": "शार्प एज के लिए पिक्सेलेटेड रेंडरिंग",
+    "crispEdges": "तेज़ किनारे",
+    "crispEdgesDesc": "तेज़ किनारों के लिए image-rendering: pixelated का उपयोग करें",
     "dashed": "डैश्ड",
     "diamond": "हीरा",
-    "dotRotation": "डॉट रोटेशन",
-    "dots": "बिंदु",
-    "eyeInnerStyle": "आई इनर स्टाइल",
-    "eyeOuterStyle": "आई आउटर स्टाइल",
+    "dotRotation": "डॉट घुमाव",
+    "dots": "डॉट्स",
+    "eyeInnerStyle": "आई इनर शैली",
+    "eyeOuterStyle": "आई आउटर शैली",
     "eyeScale": "आई स्केल",
-    "finderStyle": "फाइंडर पैटर्न स्टाइल",
-    "floor": "फ्लोर",
-    "foreground": "अग्रभूमि रंग",
-    "frameStyle": "फ्रेम स्टाइल",
-    "frameText": "फ्रेम टेक्स्ट",
+    "finderStyle": "फाइंडर पैटर्न शैली",
+    "floor": "नीचे की ओर गोल",
+    "foreground": "अग्रभूमि",
+    "frameStyle": "फ़्रेम शैली",
+    "frameText": "फ़्रेम टेक्स्ट",
     "gapMode": "गैप मोड",
     "gradient": "ग्रेडिएंट",
     "gradientAngle": "ग्रेडिएंट कोण",
     "gradientColors": "रंग",
     "gradientType": "ग्रेडिएंट प्रकार",
     "inset": "इनसेट",
-    "linear": "रैखिक",
-    "matchFinder": "फाइंडर मिलाएं",
-    "matchModule": "मॉड्यूल मिलाएं",
-    "minContrastRatio": "न्यूनतम कंट्रास्ट अनुपात",
+    "linear": "रेखीय",
+    "matchFinder": "फाइंडर से मिलाएं",
+    "matchModule": "मॉड्यूल से मिलाएं",
+    "minContrastRatio": "न्यूनतम कॉन्ट्रास्ट अनुपात",
     "moduleGap": "मॉड्यूल गैप",
     "negativeSpace": "नेगेटिव स्पेस",
     "none": "कोई नहीं",
     "perModuleColorMode": "प्रति-मॉड्यूल रंग मोड",
     "pixelSnap": "पिक्सेल स्नैप",
     "radial": "रेडियल",
-    "round": "राउंड",
-    "rounded": "गोल",
-    "roundedFrame": "गोल फ्रेम",
-    "shape": "मॉड्यूल स्टाइल",
-    "sharp": "शार्प",
-    "smooth": "स्मूथ",
-    "solid": "सॉलिड",
+    "round": "गोल",
+    "rounded": "गोल किनारे",
+    "roundedFrame": "गोल किनारों वाला फ़्रेम",
+    "shape": "मॉड्यूल शैली",
+    "sharp": "तीक्ष्ण",
+    "smooth": "चिकना",
+    "solid": "ठोस",
     "square": "वर्ग",
     "squares": "वर्ग",
     "sticker": "स्टिकर",
     "stroke": "स्ट्रोक",
-    "style": "स्टाइल",
+    "style": "शैली",
     "tag": "टैग",
-    "timingStyle": "टाइमिंग पैटर्न स्टाइल",
+    "timingStyle": "टाइमिंग पैटर्न शैली",
     "transparentBg": "पारदर्शी पृष्ठभूमि"
   },
   "safety": {
     "analysis": "सुरक्षा विश्लेषण",
-    "autoPickEcc": "ऑटो ECC चुनें",
-    "autoPickVersion": "ऑटो वर्ज़न चुनें",
-    "autoReduceIntensity": "ऑटो तीव्रता कम करें",
-    "autoTuning": "ऑटो ट्यूनिंग",
+    "autoPickEcc": "ECC स्वतः चुनें",
+    "autoPickVersion": "संस्करण स्वतः चुनें",
+    "autoReduceIntensity": "तीव्रता स्वतः कम करें",
+    "autoTuning": "स्वचालित ट्यूनिंग",
     "balanced": "संतुलित",
-    "contrast": "कंट्रास्ट",
-    "contrastCheck": "कंट्रास्ट जांच",
-    "contrastRatio": "कंट्रास्ट अनुपात",
+    "contrast": "कॉन्ट्रास्ट अनुपात",
+    "contrastCheck": "कॉन्ट्रास्ट जाँच",
+    "contrastRatio": "कॉन्ट्रास्ट अनुपात",
     "excellent": "उत्कृष्ट",
-    "fair": "ठीक",
+    "fair": "संतोषजनक",
     "good": "अच्छा",
     "lockAlignment": "एलाइनमेंट लॉक करें",
     "lockFinders": "फाइंडर्स लॉक करें",
-    "lockFormat": "फॉर्मेट इन्फो लॉक करें",
+    "lockFormat": "फ़ॉर्मैट जानकारी लॉक करें",
     "lockTiming": "टाइमिंग लॉक करें",
-    "lockVersion": "वर्ज़न इन्फो लॉक करें",
+    "lockVersion": "संस्करण जानकारी लॉक करें",
     "minModuleSize": "न्यूनतम मॉड्यूल आकार",
-    "minQuietZone": "न्यूनतम क्वाइट ज़ोन",
+    "minQuietZone": "न्यूनतम शांत क्षेत्र",
     "off": "बंद",
     "poor": "खराब",
     "protectionLocks": "सुरक्षा लॉक",
     "qualityAnalysis": "गुणवत्ता विश्लेषण",
-    "quietZone": "क्वाइट ज़ोन",
+    "quietZone": "शांत क्षेत्र",
     "safetyMode": "सुरक्षा मोड",
-    "scanability": "स्कैनेबिलिटी स्कोर",
-    "showHeatmap": "हीटमैप दिखाएं",
-    "simulateBlur": "ब्लर सिमुलेट करें",
-    "simulateNoise": "नॉइज़ सिमुलेट करें",
-    "simulateRotation": "रोटेशन सिमुलेट करें",
+    "scanability": "स्कैन-योग्यता स्कोर",
+    "showHeatmap": "हीटमैप दिखाएँ",
+    "simulateBlur": "धुंधलापन सिमुलेट करें",
+    "simulateNoise": "शोर सिमुलेट करें",
+    "simulateRotation": "घुमाव सिमुलेट करें",
     "strict": "सख्त",
-    "untilScannable": "स्कैन योग्य होने तक"
+    "untilScannable": "स्कैन होने योग्य होने तक"
   },
   "sections": {
-    "animation": "एनिमेशन",
+    "animation": "एनीमेशन",
     "metadata": "मेटाडेटा",
     "output": "आउटपुट",
-    "overlay": "ओवरले इमेज",
-    "payload": "डेटा",
+    "overlay": "ओवरले / छवि",
+    "payload": "पेलोड / डेटा",
     "qrEncoding": "QR एन्कोडिंग",
     "rendering": "रेंडरिंग",
     "safety": "सुरक्षा विश्लेषण",
-    "share": "शेयर",
+    "share": "साझा करें",
     "watermark": "वॉटरमार्क"
   },
   "share": {
     "copied": "कॉपी हो गया!",
     "copyLink": "लिंक कॉपी करें",
-    "directLink": "डायरेक्ट लिंक",
-    "directLinkDesc": "शेयर करने योग्य URL बनाएं",
-    "embedHtml": "एम्बेड HTML",
-    "embedHtmlDesc": "एम्बेड कोड जेनरेट करें",
+    "directLink": "सीधा लिंक",
+    "directLinkDesc": "साझा करने योग्य URL बनाएं",
+    "embedHtml": "HTML एम्बेड",
+    "embedHtmlDesc": "एम्बेड कोड बनाएं",
     "encodeAllParams": "सभी पैरामीटर एन्कोड करें",
     "encodeAllParamsDesc": "URL में सभी सेटिंग्स शामिल करें",
-    "markdown": "Markdown",
-    "quickShare": "त्वरित शेयर",
-    "twitter": "X/Twitter",
+    "markdown": "मार्कडाउन",
+    "quickShare": "त्वरित साझा",
+    "twitter": "X/ट्विटर",
     "whatsapp": "WhatsApp"
   },
   "tiers": {
-    "advanced": "एडवांस्ड",
-    "basic": "बेसिक",
+    "advanced": "उन्नत",
+    "basic": "मूल",
     "professional": "प्रो",
-    "watchAdForPro": "24 घंटे के लिए प्रोफेशनल फीचर्स अनलॉक करने के लिए विज्ञापन देखें"
+    "watchAdForPro": "24 घंटे के लिए प्रोफेशनल सुविधाएँ अनलॉक करने हेतु विज्ञापन देखें"
   },
   "watermark": {
     "behindQr": "QR के पीछे",
     "blendMode": "ब्लेंड मोड",
-    "bottomLeft": "नीचे बाएं",
-    "bottomRight": "नीचे दाएं",
+    "bottomLeft": "नीचे बाएँ",
+    "bottomRight": "नीचे दाएँ",
     "center": "केंद्र",
     "corners": "कोने",
     "edges": "किनारे",
     "enabled": "वॉटरमार्क सक्षम करें",
     "fontColor": "फ़ॉन्ट रंग",
     "fontSize": "फ़ॉन्ट आकार",
-    "image": "इमेज",
-    "multiply": "मल्टीप्लाई",
+    "image": "छवि",
+    "multiply": "मल्टिप्लाई",
     "normal": "सामान्य",
     "opacity": "अपारदर्शिता",
     "overlay": "ओवरले",
     "pattern": "पैटर्न",
     "position": "स्थिति",
-    "quietZone": "क्वाइट ज़ोन",
+    "quietZone": "शांत क्षेत्र",
     "screen": "स्क्रीन",
-    "text": "टेक्स्ट",
+    "text": "पाठ",
     "textPlaceholder": "© कंपनी का नाम",
-    "topLeft": "ऊपर बाएं",
-    "topRight": "ऊपर दाएं",
+    "topLeft": "ऊपर बाएँ",
+    "topRight": "ऊपर दाएँ",
     "type": "प्रकार",
-    "uploadImage": "इमेज अपलोड करें"
+    "uploadImage": "छवि अपलोड करें"
   }
 }

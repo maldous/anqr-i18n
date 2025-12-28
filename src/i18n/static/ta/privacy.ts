@@ -2,147 +2,147 @@ import type { PageDefinition } from '../types'
 import { LAST_UPDATED, CONTACT_EMAIL } from '../types'
 
 export const privacy: PageDefinition = {
-  title: 'தனியுரிமைக் கொள்கை',
-  description: 'ANQR சேகரிக்கும் தகவல்கள், அவை எவ்வாறு பயன்படுத்தப்படுகின்றன, மேலும் பொருந்தும் தனியுரிமை சட்டங்களின் கீழ் உங்கள் உரிமைகள்.',
+  title: 'Privacy Policy',
+  description: 'Information ANQR collects, how it is used, and your rights under applicable privacy laws.',
   lastUpdated: LAST_UPDATED,
   sections: [
     {
-      heading: 'சுருக்கம்',
+      heading: 'Summary',
       paragraphs: [
-        'ANQR என்பது முழுவதும் உங்கள் சாதனத்தில் இயங்கும் ஒரு QR குறியீடு உருவாக்கி. கணக்கு உருவாக்க வேண்டிய அவசியமில்லை, மேலும் QR குறியீடுகள் உள்ளூராகவே உருவாக்கப்படுகின்றன — நீங்கள் குறியாக்கும் உள்ளடக்கத்தை நாங்கள் அணுக முடியாது.',
-        'விளம்பரங்களுக்கு Google AdSense-ஐ பயன்படுத்துகிறோம்; மேலும் பகுப்பாய்வு (analytics) சேவைகளையும் பயன்படுத்தலாம். இச்சேவைகள் குக்கிகள் மற்றும் இதே போன்ற தொழில்நுட்பங்கள் மூலம் தகவலைச் சேகரிக்கின்றன. எந்த தரவு சேகரிக்கப்படுகிறது, அது எவ்வாறு பயன்படுத்தப்படுகிறது, மற்றும் உங்கள் உரிமைகள் என்ன என்பதை இக்கொள்கை விளக்குகிறது.',
+        'ANQR is a QR code generator that runs entirely on your device. We do not require you to create an account, and QR codes are generated locally — we do not have access to the content you encode.',
+        'We use Google AdSense for advertising and may use analytics services. These services collect information through cookies and similar technologies. This policy explains what data is collected, how it is used, and your rights.',
       ],
     },
     {
-      heading: 'நாங்கள் சேகரிக்கும் தகவல்கள்',
+      heading: 'Information we collect',
       bullets: [
-        'நீங்கள் வழங்கும் தகவல்: நீங்கள் மின்னஞ்சல் அல்லது எங்கள் தொடர்பு படிவம் மூலம் தொடர்பு கொண்டால், உங்கள் பெயர், மின்னஞ்சல் முகவரி, மற்றும் செய்தி உள்ளடக்கம் சேகரிக்கப்படும்.',
-        'தானாகச் சேகரிக்கப்படும் தகவல்: எங்கள் ஹோஸ்டிங் வழங்குநர் (Netlify), விளம்பர கூட்டாளர்கள், மற்றும் பகுப்பாய்வு சேவைகள் இவற்றைச் சேகரிக்கலாம்: IP முகவரி, உலாவி வகை மற்றும் பதிப்பு, இயக்க முறைமை, சாதன வகை, பரிந்துரை URL, பார்வையிட்ட பக்கங்கள், தளத்தில் செலவிட்ட நேரம், மற்றும் தோராயமான புவியியல் இடம்.',
-        'மூன்றாம் தரப்பு குக்கிகள்: எங்கள் விளம்பர கூட்டாளர்கள் (Google AdSense) விளம்பரங்களை வழங்கவும் அளவிடவும் குக்கிகள் மற்றும் இதே போன்ற தொழில்நுட்பங்களை பயன்படுத்துகின்றனர். ANQR தானாக எந்த முதல் தரப்பு (first‑party) குக்கிகளையும் அமைக்காது.',
+        'Information you provide: If you contact us via email or our contact form, we collect your name, email address, and message content.',
+        'Automatically collected information: Our hosting provider (Netlify), advertising partners, and analytics services may collect: IP address, browser type and version, operating system, device type, referring URL, pages visited, time on site, and approximate geographic location.',
+        'Third-party cookies: Our advertising partners (Google AdSense) use cookies and similar technologies to serve and measure advertisements. ANQR itself does not set any first-party cookies.',
       ],
     },
     {
-      heading: 'குக்கிகள் மற்றும் மூன்றாம் தரப்பு தொழில்நுட்பங்கள்',
+      heading: 'Cookies and third-party technologies',
       paragraphs: [
-        'ANQR முதல் தரப்பு குக்கிகளை அமைக்காது. உங்கள் விருப்பங்கள் (உதா: டார்க் மோடு) உங்கள் சாதனத்தில் உள்ளூராக சேமிக்கப்படும்; அவை எந்த சேவையகத்திற்கும் அனுப்பப்படுவதில்லை.',
-        'ஆனால், எங்கள் விளம்பர கூட்டாளர்கள் (Google AdSense) மற்றும் ஹோஸ்டிங் வழங்குநர் குக்கிகள் மற்றும் இதே போன்ற கண்காணிப்பு தொழில்நுட்பங்களை பயன்படுத்தலாம்:',
-      ],
-      bullets: [
-        'விளம்பர குக்கிகள் (மூன்றாம் தரப்பு): தொடர்புடைய விளம்பரங்களை காட்ட, விளம்பர செயல்திறனை அளவிட, மற்றும் பயனர் விருப்பங்களை புரிந்துகொள்ள Google AdSense மற்றும் விளம்பர கூட்டாளர்கள் அமைக்கின்றனர். இக்குக்கிகள் பல்வேறு இணையதளங்களில் உங்கள் செயல்பாட்டை கண்காணிக்கலாம்.',
-        'பகுப்பாய்வு குக்கிகள் (மூன்றாம் தரப்பு): ஹோஸ்டிங் வழங்குநர் அல்லது பகுப்பாய்வு சேவைகள் பெயரற்ற பயன்பாட்டு தரவை சேகரிக்க பயன்படுத்தலாம்.',
-      ],
-    },
-    {
-      heading: 'Google AdSense மற்றும் விளம்பரம்',
-      paragraphs: [
-        'Google AdSense மூலம் விளம்பரங்களை காட்டுகிறோம். இந்த தளம் மற்றும் பிற தளங்களில் உங்கள் உலாவல் வரலாற்றின் அடிப்படையில் (ஆர்வ அடிப்படையிலான விளம்பரம்) Google மற்றும் அதன் கூட்டாளர்கள் குக்கிகளை பயன்படுத்தி விளம்பரங்களை வழங்குகின்றனர்.',
-        'Google உங்கள் தகவலை எவ்வாறு பயன்படுத்துகிறது என்பதை அறிய: https://policies.google.com/technologies/partner-sites',
-        'விளம்பர தனிப்பயனாக்கத்தை நிர்வகிக்க: https://adssettings.google.com',
-        'Network Advertising Initiative மூலம் விலக: https://optout.networkadvertising.org',
-        'Digital Advertising Alliance மூலம் விலக: https://optout.aboutads.info',
-      ],
-    },
-    {
-      heading: 'தகவலை எவ்வாறு பயன்படுத்துகிறோம்',
-      bullets: [
-        'உங்கள் கேள்விகளுக்கு பதிலளித்து ஆதரவு வழங்க.',
-        'எங்கள் விளம்பர கூட்டாளர்கள் மூலம் தொடர்புடைய விளம்பரங்களை காட்ட.',
-        'தள பயன்பாட்டை பகுப்பாய்ந்து எங்கள் சேவைகளை மேம்படுத்த.',
-        'மோசடி, துஷ்பிரயோகம் மற்றும் பாதுகாப்பு பிரச்சினைகளை கண்டறிந்து, தடுப்பதற்கும் தீர்ப்பதற்கும்.',
-        'சட்டப்பூர்வ கடமைகளை பின்பற்ற.',
-      ],
-    },
-    {
-      heading: 'மூன்றாம் தரப்பு சேவைகள்',
-      bullets: [
-        'Google AdSense: விளம்பரங்களை வழங்கவும் அளவிடவும் தரவைப் பெறுகிறது.',
-        'பகுப்பாய்வு வழங்குநர்கள்: பெயரற்ற பயன்பாட்டு தரவைப் பெறுகின்றனர்.',
-        'Netlify (ஹோஸ்டிங்): கோரிக்கைகளை செயலாக்குகிறது மற்றும் IP முகவரிகளை பதிவேற்றலாம்.',
-        'நாங்கள் உங்கள் தனிப்பட்ட தகவலை விற்கவில்லை. இருப்பினும், விளம்பர கூட்டாளர்களுடன் தரவைப் பகிர்வது CCPA கீழ் "விற்பனை" ஆகக் கருதப்படலாம் (கீழே பார்க்கவும்).',
-      ],
-    },
-    {
-      heading: 'தரவு வைத்திருக்கும் காலம்',
-      bullets: [
-        'தொடர்பு சமர்ப்பிப்புகள்: அதிகபட்சம் 2 ஆண்டுகள்.',
-        'சர்வர் பதிவுகள்: அதிகபட்சம் 30 நாட்கள் (ஹோஸ்டிங் வழங்குநர்).',
-        'பகுப்பாய்வு தரவு: அதிகபட்சம் 26 மாதங்கள் (பெயரற்றது).',
-        'விளம்பர குக்கிகள்: பொதுவாக 13 மாதங்கள் (கூட்டாளருக்கு ஏற்ப மாறும்).',
-      ],
-    },
-    {
-      heading: 'GDPR கீழ் உங்கள் உரிமைகள் (EEA பயனர்கள்)',
-      paragraphs: [
-        'நீங்கள் ஐரோப்பிய பொருளாதார பகுதி (EEA) யில் இருப்பின், General Data Protection Regulation (GDPR) கீழ் பின்வரும் உரிமைகள் உங்களுக்கு உள்ளன:',
+        'ANQR does not set any first-party cookies. Your preferences (such as dark mode) are stored locally on your device, which is not transmitted to any server.',
+        'However, our advertising partners (Google AdSense) and hosting provider may use cookies and similar tracking technologies:',
       ],
       bullets: [
-        'அணுகும் உரிமை: உங்கள் குறித்து எங்களிடம் உள்ள தனிப்பட்ட தரவின் நகலை கோரலாம்.',
-        'திருத்தும் உரிமை: தவறான தரவை திருத்த கோரலாம்.',
-        'அழிக்கும் உரிமை: உங்கள் தரவை அழிக்க கோரலாம் ("மறக்கப்படும் உரிமை").',
-        'செயலாக்கத்தை கட்டுப்படுத்தும் உரிமை: எவ்வாறு தரவை பயன்படுத்துகிறோம் என்பதில் வரம்புகளை கோரலாம்.',
-        'தரவு எடுத்துச்செல்லும் உரிமை: எடுத்துச்செல்லக் கூடிய வடிவில் உங்கள் தரவை கோரலாம்.',
-        'எதிர்ப்பு உரிமை: செயலாக்கத்துக்கு எதிர்ப்பு தெரிவிக்கலாம்; நேரடி மார்க்கெட்டிங் உட்பட.',
-        'ஒப்புதலை வாபஸ் பெறும் உரிமை: ஒப்புதலின் அடிப்படையில் செயலாக்கப்படும் இடங்களில் எந்த நேரத்திலும் ஒப்புதலை வாபஸ் பெறலாம்.',
-        'புகார் அளிக்கும் உரிமை: உங்கள் தரவு பாதுகாப்பு அதிகாரத்திற்கு புகார் அளிக்கலாம்.',
+        'Advertising cookies (third-party): Set by Google AdSense and advertising partners to serve relevant ads, measure ad performance, and understand user interests. These cookies may track your activity across different websites.',
+        'Analytics cookies (third-party): May be used by our hosting provider or analytics services to collect anonymised usage data.',
       ],
     },
     {
-      heading: 'GDPR சட்ட அடிப்படை',
+      heading: 'Google AdSense and advertising',
       paragraphs: [
-        'நாங்கள் தரவை இவ்வடிப்படைகளில் செயலாக்குகிறோம்: (a) ஒப்புதல் — தனிப்பயன் விளம்பரத்திற்கு (எங்கள் விளம்பர கூட்டாளர்கள் நிர்வகிக்கிறார்கள்); (b) சட்டபூர்வ நலன் — பகுப்பாய்வு, பாதுகாப்பு, மற்றும் மேம்பாட்டிற்கு; (c) ஒப்பந்தம் — கேள்விகளுக்கு பதிலளிக்க.',
-        `உங்கள் உரிமைகளை பயன்படுத்த, ${CONTACT_EMAIL} ஐ தொடர்பு கொள்ளுங்கள். 30 நாட்களுக்குள் பதிலளிப்போம்.`,
+        'We display advertisements through Google AdSense. Google and its partners use cookies to serve ads based on your browsing history on this site and other websites (interest-based advertising).',
+        'Learn how Google uses your information: https://policies.google.com/technologies/partner-sites',
+        'Manage ad personalisation: https://adssettings.google.com',
+        'Opt out via Network Advertising Initiative: https://optout.networkadvertising.org',
+        'Opt out via Digital Advertising Alliance: https://optout.aboutads.info',
       ],
     },
     {
-      heading: 'CCPA கீழ் உங்கள் உரிமைகள் (காலிபோர்னியா பயனர்கள்)',
+      heading: 'How we use information',
       bullets: [
-        'தெரிந்து கொள்ளும் உரிமை: சேகரிக்கப்பட்ட தரவு, ஆதாரங்கள், நோக்கங்கள், மற்றும் மூன்றாம் தரப்புகள் குறித்து தகவல் கோரலாம்.',
-        'அழிக்கும் உரிமை: உங்கள் தனிப்பட்ட தகவலை அழிக்க கோரலாம்.',
-        'விலகும் உரிமை: தனிப்பட்ட தகவலின் "விற்பனை" யிலிருந்து விலகலாம் (விளம்பர கூட்டாளர்களுடன் பகிர்வது இதில் வரலாம்).',
-        'பாகுபாடு இல்லாத உரிமை: உங்கள் உரிமைகளை பயன்படுத்தியதற்காக நாங்கள் பாகுபாடு செய்யமாட்டோம்.',
+        'To respond to your enquiries and provide support.',
+        'To display relevant advertisements through our advertising partners.',
+        'To analyse site usage and improve our services.',
+        'To detect, prevent, and address fraud, abuse, and security issues.',
+        'To comply with legal obligations.',
       ],
     },
     {
-      heading: 'CCPA கீழ் சேகரிக்கப்படும் வகைகள்',
-      paragraphs: [
-        'வகைகள்: அடையாளங்கள் (IP முகவரி, சாதன ID), இணைய செயல்பாடு (உலாவல், விளம்பர தொடர்புகள்), புவியிடம் (தோராயமானது), ஊகங்கள் (உலாவலிலிருந்து ஆர்வங்கள்).',
-        `உரிமைகளை பயன்படுத்த அல்லது விலக: ${CONTACT_EMAIL} அல்லது குக்கி அமைப்புகளை மாற்றவும்.`,
+      heading: 'Third-party services',
+      bullets: [
+        'Google AdSense: Receives data to serve and measure advertisements.',
+        'Analytics providers: Receive anonymised usage data.',
+        'Netlify (hosting): Processes requests and may log IP addresses.',
+        'We do not sell your personal information. However, sharing data with advertising partners may be considered a "sale" under CCPA (see below).',
       ],
     },
     {
-      heading: 'சர்வதேச மாற்றங்கள்',
-      paragraphs: [
-        'உங்கள் தகவல், வேறுபட்ட தரவு பாதுகாப்பு சட்டங்கள் உள்ள நாடுகளுக்கு (அமெரிக்கா உட்பட) மாற்றப்படலாம். Standard Contractual Clauses போன்ற பொருத்தமான பாதுகாப்புகளை நாங்கள் பயன்படுத்துகிறோம்.',
+      heading: 'Data retention',
+      bullets: [
+        'Contact submissions: Up to 2 years.',
+        'Server logs: Up to 30 days (hosting provider).',
+        'Analytics data: Up to 26 months (anonymised).',
+        'Advertising cookies: Typically 13 months (varies by partner).',
       ],
     },
     {
-      heading: 'குழந்தைகளின் தனியுரிமை',
+      heading: 'Your rights under GDPR (EEA users)',
       paragraphs: [
-        `ANQR 13 வயதிற்குக் கீழ் (அல்லது EEA இல் 16 வயதிற்குக் கீழ்) உள்ள குழந்தைகளை நோக்கி வடிவமைக்கப்படவில்லை. குழந்தைகளிடமிருந்து தரவை அறிந்தே சேகரிப்பதில்லை. ஒரு குழந்தை தகவல் வழங்கியதாக நீங்கள் நம்பினால் ${CONTACT_EMAIL} ஐ தொடர்பு கொள்ளுங்கள்.`,
+        'If you are in the European Economic Area, you have the following rights under the General Data Protection Regulation:',
+      ],
+      bullets: [
+        'Right of access: Request a copy of personal data we hold about you.',
+        'Right to rectification: Request correction of inaccurate data.',
+        'Right to erasure: Request deletion of your data ("right to be forgotten").',
+        'Right to restrict processing: Request limits on how we use your data.',
+        'Right to data portability: Request your data in a portable format.',
+        'Right to object: Object to processing, including for direct marketing.',
+        'Right to withdraw consent: Withdraw consent at any time where processing is consent-based.',
+        'Right to lodge a complaint: File a complaint with your data protection authority.',
       ],
     },
     {
-      heading: 'பாதுகாப்பு',
+      heading: 'GDPR legal basis',
       paragraphs: [
-        'HTTPS குறியாக்கம் உட்பட தரவை பாதுகாக்க பொருத்தமான தொழில்நுட்ப மற்றும் அமைப்புசார் நடவடிக்கைகளை நாங்கள் பயன்படுத்துகிறோம். இருப்பினும், இணைய பரிமாற்றம் 100% பாதுகாப்பானது அல்ல.',
+        'We process data on these bases: (a) Consent — for personalised advertising (managed by our advertising partners); (b) Legitimate interests — for analytics, security, and improvement; (c) Contract — to respond to enquiries.',
+        `To exercise your rights, contact ${CONTACT_EMAIL}. We respond within 30 days.`,
       ],
     },
     {
-      heading: 'கண்காணிக்க வேண்டாம் (Do Not Track)',
-      paragraphs: [
-        'சாத்தியமான இடங்களில் உலாவியின் Do Not Track சிக்னல்களை மதிப்போம், ஆனால் விளம்பர கூட்டாளர்கள் DNT-க்கு பதிலளிக்காமல் இருக்கலாம்.',
+      heading: 'Your rights under CCPA (California users)',
+      bullets: [
+        'Right to know: Request information about data collected, sources, purposes, and third parties.',
+        'Right to delete: Request deletion of your personal information.',
+        'Right to opt-out: Opt out of the "sale" of personal information (sharing with ad partners may qualify).',
+        'Right to non-discrimination: We will not discriminate for exercising your rights.',
       ],
     },
     {
-      heading: 'இந்தக் கொள்கையில் மாற்றங்கள்',
+      heading: 'CCPA categories collected',
       paragraphs: [
-        'இந்தக் கொள்கையை அவ்வப்போது புதுப்பிக்கலாம். "Last updated" தேதி சமீபத்திய திருத்தத்தை குறிக்கிறது. முக்கிய மாற்றங்கள் தள பன்னர் மூலம் அறிவிக்கப்படலாம்.',
+        'Categories: Identifiers (IP address, device ID), Internet activity (browsing, ad interactions), Geolocation (approximate), Inferences (interests from browsing).',
+        `To exercise rights or opt out: ${CONTACT_EMAIL} or adjust cookie settings.`,
       ],
     },
     {
-      heading: 'தொடர்பு கொள்ளுங்கள்',
+      heading: 'International transfers',
       paragraphs: [
-        `தனியுரிமை தொடர்பான கேள்விகள் அல்லது உங்கள் உரிமைகளை பயன்படுத்த: ${CONTACT_EMAIL} அல்லது எங்கள் Contact பக்கத்தை பயன்படுத்துங்கள். 30 நாட்களுக்குள் தனியுரிமை கோரிக்கைகளுக்கு பதிலளிப்போம்.`,
+        'Your information may be transferred to countries with different data protection laws, including the United States. We use appropriate safeguards such as Standard Contractual Clauses.',
+      ],
+    },
+    {
+      heading: 'Children\'s privacy',
+      paragraphs: [
+        `ANQR is not directed at children under 13 (or 16 in the EEA). We do not knowingly collect data from children. Contact ${CONTACT_EMAIL} if you believe a child has provided information.`,
+      ],
+    },
+    {
+      heading: 'Security',
+      paragraphs: [
+        'We use appropriate technical and organisational measures to protect data, including HTTPS encryption. However, no internet transmission is 100% secure.',
+      ],
+    },
+    {
+      heading: 'Do Not Track',
+      paragraphs: [
+        'We honour Do Not Track browser signals where feasible, though advertising partners may not respond to DNT.',
+      ],
+    },
+    {
+      heading: 'Changes to this policy',
+      paragraphs: [
+        'We may update this policy periodically. The "Last updated" date indicates the most recent revision. Significant changes may be communicated via a site banner.',
+      ],
+    },
+    {
+      heading: 'Contact us',
+      paragraphs: [
+        `For privacy questions or to exercise your rights: ${CONTACT_EMAIL} or use our Contact page. We respond to privacy requests within 30 days.`,
       ],
     },
   ],

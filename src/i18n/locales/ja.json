@@ -1,1516 +1,1516 @@
 {
   "animation": {
-    "blueNoise": "Blue Noise",
-    "bounce": "Bounce (Ping-Pong)",
-    "colorCycle": "Color Cycle",
-    "crossfade": "Crossfade",
-    "drift": "Drift",
-    "enabled": "Enable Animation",
-    "everyNFrames": "Every {{count}} frame(s)",
-    "exportAllFrames": "Export All Frames",
-    "fadeIn": "Fade In",
-    "flickerSafe": "Flicker Safe",
-    "frameStep": "Frame Step",
-    "interpolation": "Interpolation",
-    "loop": "Loop Animation",
-    "maxFrames": "Max Frames",
-    "moduleJitter": "Module Jitter",
-    "moduleJitterWarning": "⚠️ May affect scannability",
-    "morph": "Morph",
-    "none": "None",
-    "off": "Off",
-    "pattern": "Generated Pattern",
-    "pulse": "Pulse",
-    "randomSeed": "Random Seed",
-    "rotate": "Rotate",
-    "scanline": "Scanline",
-    "shimmer": "Shimmer",
-    "slideIn": "Slide In",
-    "speed": "Frame Speed",
-    "startFrame": "Start Frame",
-    "temporalDither": "Temporal Dither",
-    "wave": "Wave"
+    "blueNoise": "ブルーノイズ",
+    "bounce": "バウンス（ピンポン）",
+    "colorCycle": "カラーサイクル",
+    "crossfade": "クロスフェード",
+    "drift": "ドリフト",
+    "enabled": "アニメーションを有効にする",
+    "everyNFrames": "{{count}}フレームごと",
+    "exportAllFrames": "すべてのフレームをエクスポート",
+    "fadeIn": "フェードイン",
+    "flickerSafe": "フリッカーセーフ",
+    "frameStep": "フレームステップ",
+    "interpolation": "補間",
+    "loop": "ループアニメーション",
+    "maxFrames": "最大フレーム数",
+    "moduleJitter": "モジュールジッター",
+    "moduleJitterWarning": "⚠️ スキャン性に影響する可能性があります",
+    "morph": "モーフ",
+    "none": "なし",
+    "off": "オフ",
+    "pattern": "生成されたパターン",
+    "pulse": "パルス",
+    "randomSeed": "ランダムシード",
+    "rotate": "回転",
+    "scanline": "スキャンライン",
+    "shimmer": "シマー",
+    "slideIn": "スライドイン",
+    "speed": "フレーム速度",
+    "startFrame": "開始フレーム",
+    "temporalDither": "時間的ディザー",
+    "wave": "ウェーブ"
   },
   "languages": {
-    "en": "English",
-    "hi": "Hindi",
-    "zh": "Chinese",
-    "ms": "Malay",
-    "ta": "Tamil",
-    "th": "Thai",
-    "pt": "Portuguese",
-    "id": "Indonesian",
-    "vi": "Vietnamese",
-    "tl": "Tagalog",
-    "ja": "Japanese",
-    "ko": "Korean",
-    "es": "Spanish",
-    "ar": "Arabic",
-    "ru": "Russian",
-    "te": "Telugu",
-    "mr": "Marathi",
-    "bn": "Bengali",
-    "gu": "Gujarati",
-    "kn": "Kannada",
-    "ml": "Malayalam",
-    "pa": "Punjabi"
+    "en": "英語",
+    "hi": "ヒンディー語",
+    "zh": "中国人",
+    "ms": "マレー語",
+    "ta": "タミル語",
+    "th": "タイ",
+    "pt": "ポルトガル語",
+    "id": "インドネシア人",
+    "vi": "ベトナム人",
+    "tl": "タガログ語",
+    "ja": "日本人",
+    "ko": "韓国語",
+    "es": "スペイン語",
+    "ar": "アラビア語",
+    "ru": "ロシア人",
+    "te": "テルグ語",
+    "mr": "マラーティー語",
+    "bn": "ベンガル語",
+    "gu": "グジャラート語",
+    "kn": "カンナダ語",
+    "ml": "マラヤーラム語",
+    "pa": "パンジャブ語"
   },
   "app": {
     "name": "ANQR",
-    "tagline": "QR Code Generator"
+    "tagline": "QRコードジェネレーター"
   },
   "common": {
-    "allRightsReserved": "All rights reserved",
-    "apply": "Apply",
-    "back": "Back",
-    "cancel": "Cancel",
-    "close": "Close",
-    "copied": "Copied!",
-    "copy": "Copy",
+    "allRightsReserved": "すべての権利は留保されています",
+    "apply": "応募する",
+    "back": "戻る",
+    "cancel": "キャンセル",
+    "close": "閉じる",
+    "copied": "コピーしました！",
+    "copy": "コピー",
     "copyright": "© ANQR",
-    "delete": "Delete",
-    "disabled": "Disabled",
-    "download": "Download",
-    "edit": "Edit",
-    "enabled": "Enabled",
-    "error": "Error",
-    "filter": "Filter",
-    "less": "Less",
-    "loading": "Loading...",
-    "more": "More",
-    "next": "Next",
-    "no": "No",
-    "none": "None",
-    "off": "Off",
+    "delete": "削除",
+    "disabled": "障害者",
+    "download": "ダウンロード",
+    "edit": "編集",
+    "enabled": "有効",
+    "error": "エラー",
+    "filter": "フィルター",
+    "less": "少ない",
+    "loading": "読み込み中…",
+    "more": "もっと",
+    "next": "次へ",
+    "no": "いいえ",
+    "none": "なし",
+    "off": "オフ",
     "ok": "OK",
-    "on": "On",
-    "previous": "Previous",
-    "reset": "Reset",
-    "save": "Save",
-    "search": "Search",
-    "select": "Select",
-    "showLess": "Show Less",
-    "showMore": "Show More",
-    "sort": "Sort",
-    "success": "Success",
-    "upload": "Upload",
-    "viewAll": "View All",
-    "yes": "Yes"
+    "on": "オン",
+    "previous": "前へ",
+    "reset": "リセット",
+    "save": "保存",
+    "search": "検索",
+    "select": "選択",
+    "showLess": "表示を減らす",
+    "showMore": "もっと見る",
+    "sort": "ソート",
+    "success": "成功",
+    "upload": "アップロード",
+    "viewAll": "すべて表示",
+    "yes": "はい"
   },
-  "fileSaveFailed": "Failed to save file: {{error}}",
-  "fileSaved": "Saved to Documents: {{filename}}",
+  "fileSaveFailed": "ファイルの保存に失敗しました: {{error}}",
+  "fileSaved": "ドキュメントに保存されました: {{filename}}",
   "footer": {
-    "copyright": "© ANQR {{year}}"
+    "copyright": "© ANQR {{年}}"
   },
   "gallery": {
-    "all": "All",
-    "animationOverlay": "Animation",
-    "blendModes": "Blend Modes",
-    "collapse": "Collapse",
-    "colorModes": "Color Modes",
-    "colors": "Colors",
-    "contentTypes": "Content Types",
-    "dithering": "Dithering",
-    "encoding": "Encoding",
-    "expand": "Expand",
-    "filter": "Filter",
-    "imageOverlay": "Image Overlay",
+    "all": "すべて",
+    "animationOverlay": "アニメーション",
+    "blendModes": "ブレンドモード",
+    "collapse": "崩壊",
+    "colorModes": "カラーモード",
+    "colors": "色彩",
+    "contentTypes": "コンテンツタイプ",
+    "dithering": "ディザリング",
+    "encoding": "エンコーディング",
+    "expand": "拡大",
+    "filter": "フィルター",
+    "imageOverlay": "画像オーバーレイ",
     "items": {
       "anim-blue-noise": {
-        "description": "Blue noise threshold with animation",
-        "title": "Animated Blue Noise"
+        "description": "アニメーション付きブルーノイズ閾値",
+        "title": "アニメーションブルーノイズ"
       },
       "anim-blue-noise-i100": {
-        "description": "Animated blue noise at 100%",
-        "title": "Blue Noise 100%"
+        "description": "100%のアニメーションブルーノイズ",
+        "title": "ブルーノイズ100％"
       },
       "anim-blue-noise-i50": {
-        "description": "Animated blue noise at 50%",
-        "title": "Blue Noise 50%"
+        "description": "50%のアニメーションブルーノイズ",
+        "title": "ブルーノイズ50％"
       },
       "anim-blue-noise-i75": {
-        "description": "Animated blue noise at 75%",
-        "title": "Blue Noise 75%"
+        "description": "75%のアニメーションブルーノイズ",
+        "title": "ブルーノイズ75％"
       },
       "anim-brightness": {
-        "description": "Brightness with animation",
-        "title": "Animated Brightness"
+        "description": "アニメーションによる明るさ",
+        "title": "アニメーションの明るさ"
       },
       "anim-colormode-bw": {
-        "description": "B&W animated overlay",
-        "title": "Animated B&W"
+        "description": "白黒アニメーションオーバーレイ",
+        "title": "アニメーション白黒"
       },
       "anim-colormode-color": {
-        "description": "Color animated overlay",
-        "title": "Animated Color"
+        "description": "カラーアニメーションオーバーレイ",
+        "title": "アニメーションカラー"
       },
       "anim-colormode-grayscale": {
-        "description": "Grayscale animated overlay",
-        "title": "Animated Grayscale"
+        "description": "グレースケールアニメーションオーバーレイ",
+        "title": "アニメーショングレースケール"
       },
       "anim-dithered": {
-        "description": "Error diffusion with animation",
-        "title": "Animated Dithered"
+        "description": "アニメーションによる誤差拡散",
+        "title": "アニメーションディザリング"
       },
       "anim-duotone": {
-        "description": "Duotone with animation",
-        "title": "Animated Duotone"
+        "description": "アニメーション付きデュオトーン",
+        "title": "アニメーション・デュオトーン"
       },
       "anim-halftone": {
-        "description": "Halftone dots with animation",
-        "title": "Animated Halftone"
+        "description": "アニメーション付き網点",
+        "title": "アニメーションハーフトーン"
       },
       "anim-mosaic": {
-        "description": "Mosaic with animation",
-        "title": "Animated Mosaic"
+        "description": "アニメーション付きモザイク",
+        "title": "アニメーションモザイク"
       },
       "blend-classic": {
-        "description": "Dithered overlay with classic palette",
-        "title": "Classic Blend"
+        "description": "クラシックパレットを使用したディザオーバーレイ",
+        "title": "クラシックブレンド"
       },
       "blend-forest": {
-        "description": "Dithered overlay with forest palette",
-        "title": "Forest Blend"
+        "description": "森のパレットを使ったディザオーバーレイ",
+        "title": "フォレストブレンド"
       },
       "blend-navy": {
-        "description": "Dithered overlay with navy palette",
-        "title": "Navy Blend"
+        "description": "ネイビーパレットのディザオーバーレイ",
+        "title": "ネイビーブレンド"
       },
       "blend-wine": {
-        "description": "Dithered overlay with wine palette",
-        "title": "Wine Blend"
+        "description": "ワインパレットを使ったディザオーバーレイ",
+        "title": "ワインブレンド"
       },
       "cmode-blue-noise-bw": {
-        "description": "Blue Noise in B&W",
-        "title": "Blue Noise B&W"
+        "description": "白黒のブルーノイズ",
+        "title": "ブルーノイズ 白黒"
       },
       "cmode-blue-noise-color": {
-        "description": "Blue Noise in Color",
-        "title": "Blue Noise Color"
+        "description": "ブルーノイズ・イン・カラー",
+        "title": "ブルーノイズカラー"
       },
       "cmode-dithered-color": {
-        "description": "Dithered in Color",
-        "title": "Dithered Color"
+        "description": "色彩のディザリング",
+        "title": "ディザリングカラー"
       },
       "cmode-dithered-grayscale": {
-        "description": "Dithered in Grayscale",
-        "title": "Dithered Grayscale"
+        "description": "グレースケールでディザリング",
+        "title": "ディザグレースケール"
       },
       "cmode-halftone-bw": {
-        "description": "Halftone in B&W",
-        "title": "Halftone B&W"
+        "description": "白黒のハーフトーン",
+        "title": "ハーフトーン白黒"
       },
       "cmode-halftone-color": {
-        "description": "Halftone in Color",
-        "title": "Halftone Color"
+        "description": "カラーのハーフトーン",
+        "title": "ハーフトーンカラー"
       },
       "color-coral": {
-        "description": "#e85d04 on #ffe8d6",
-        "title": "Coral"
+        "description": "#e85d04 が #ffe8d6 に",
+        "title": "コーラル"
       },
       "color-coral-dots": {
-        "description": "Coral with dot modules",
-        "title": "Coral Dots"
+        "description": "ドットモジュール付きコーラル",
+        "title": "コーラルドット"
       },
       "color-crimson": {
-        "description": "#9d0208 on #ffccd5",
-        "title": "Crimson"
+        "description": "#ffccd5 の #9d0208",
+        "title": "クリムゾン"
       },
       "color-forest": {
-        "description": "#1b4332 on #d8f3dc",
-        "title": "Forest"
+        "description": "#1b4332 が #d8f3dc に",
+        "title": "森"
       },
       "color-forest-dots": {
-        "description": "Forest with dot modules",
-        "title": "Forest Dots"
+        "description": "ドットモジュールの森",
+        "title": "森の点々"
       },
       "color-gold": {
-        "description": "#7f5539 on #ffe8cc",
-        "title": "Gold"
+        "description": "#ffe8cc の #7f5539",
+        "title": "ゴールド"
       },
       "color-inverted": {
-        "description": "#ffffff on #000000",
-        "title": "Inverted"
+        "description": "#000000 の #ffffff",
+        "title": "反転"
       },
       "color-midnight": {
-        "description": "#1a1a2e on #eef1ff",
-        "title": "Midnight"
+        "description": "#1a1a2e が #eef1ff に",
+        "title": "真夜中"
       },
       "color-midnight-dots": {
-        "description": "Midnight with dot modules",
-        "title": "Midnight Dots"
+        "description": "ドットモジュール付きミッドナイト",
+        "title": "ミッドナイト・ドッツ"
       },
       "color-navy": {
-        "description": "#001d3d on #a2d2ff",
-        "title": "Navy"
+        "description": "#001d3d を #a2d2ff に",
+        "title": "ネイビー"
       },
       "color-ocean": {
-        "description": "#023e8a on #caf0f8",
-        "title": "Ocean"
+        "description": "#caf0f8 の #023e8a",
+        "title": "海"
       },
       "color-ocean-dots": {
-        "description": "Ocean with dot modules",
-        "title": "Ocean Dots"
+        "description": "ドットモジュール付き海",
+        "title": "オーシャン・ドッツ"
       },
       "color-royal": {
-        "description": "#4a0080 on #f5e6ff",
-        "title": "Royal"
+        "description": "#4a0080 は #f5e6ff に",
+        "title": "ロイヤル"
       },
       "color-royal-dots": {
-        "description": "Royal with dot modules",
-        "title": "Royal Dots"
+        "description": "ドットモジュール付きロイヤル",
+        "title": "ロイヤル・ドッツ"
       },
       "color-slate": {
-        "description": "#343a40 on #e9ecef",
-        "title": "Slate"
+        "description": "#343a40 が #e9ecef に",
+        "title": "スレート"
       },
       "color-sunset": {
-        "description": "#bf0603 on #fff3b0",
-        "title": "Sunset"
+        "description": "#fff3b0 の #bf0603",
+        "title": "夕焼け"
       },
       "color-sunset-dots": {
-        "description": "Sunset with dot modules",
-        "title": "Sunset Dots"
+        "description": "ドットモジュールのある夕日",
+        "title": "サンセット・ドッツ"
       },
       "color-teal": {
-        "description": "#006d77 on #e0f4f5",
-        "title": "Teal"
+        "description": "#006d77 は #e0f4f5 に",
+        "title": "ティール"
       },
       "combo-anim-dots-halftone": {
-        "description": "Animated halftone with dot modules",
-        "title": "Animated Dots + Halftone"
+        "description": "ドットモジュールを使ったアニメーションハーフトーン",
+        "title": "アニメーションドット＋ハーフトーン"
       },
       "combo-anim-rounded-blue-noise": {
-        "description": "Animated blue noise with rounded",
-        "title": "Animated Rounded + Blue Noise"
+        "description": "丸みのある青いノイズ",
+        "title": "アニメーション化された丸み+ブルーノイズ"
       },
       "combo-connected-pixelate-teal": {
-        "description": "Pixelated overlay with connected modules",
-        "title": "Connected + Pixelate Teal"
+        "description": "接続されたモジュールによるピクセル化されたオーバーレイ",
+        "title": "コネクテッド + ピクセルティール"
       },
       "combo-connected-square": {
-        "description": "Connected modules with square finders",
-        "title": "Connected + Square"
+        "description": "スクエアファインダー付き接続モジュール",
+        "title": "コネクテッド + スクエア"
       },
       "combo-connected-wave-ocean": {
-        "description": "Connected modules with wave effect",
-        "title": "Connected + Wave Ocean"
+        "description": "波のような効果のある接続モジュール",
+        "title": "つながる＋波の海"
       },
       "combo-diamond-blue-noise-navy": {
-        "description": "Diamond modules with blue noise",
-        "title": "Diamond + Blue Noise Navy"
+        "description": "ブルーノイズ付きダイヤモンドモジュール",
+        "title": "ダイヤモンド＋ブルーノイズネイビー"
       },
       "combo-diamond-duotone-crimson": {
-        "description": "Duotone effect with diamond modules",
-        "title": "Diamond + Duotone Crimson"
+        "description": "ダイヤモンドモジュールによるデュオトーン効果",
+        "title": "ダイヤモンド＋デュオトーンクリムゾン"
       },
       "combo-diamond-rounded": {
-        "description": "Diamond modules with rounded finders",
-        "title": "Diamond + Rounded"
+        "description": "丸型ファインダー付きダイヤモンドモジュール",
+        "title": "ダイヤモンド＋ラウンド"
       },
       "combo-dots-circle": {
-        "description": "Dots modules with circle finders",
-        "title": "Dots + Circle"
+        "description": "円ファインダー付きドットモジュール",
+        "title": "ドット＋円"
       },
       "combo-dots-extreme-forest": {
-        "description": "Maximum visibility with dots",
-        "title": "Dots + Extreme Forest"
+        "description": "ドットで視認性を最大限に",
+        "title": "ドット＋エクストリームフォレスト"
       },
       "combo-dots-halftone-gold": {
-        "description": "Dot modules with halftone overlay",
-        "title": "Dots + Halftone Gold"
+        "description": "ハーフトーンオーバーレイ付きドットモジュール",
+        "title": "ドット＋ハーフトーンゴールド"
       },
       "combo-dots-outline-slate": {
-        "description": "Edge detection with dot modules",
-        "title": "Dots + Outline Slate"
+        "description": "ドットモジュールによるエッジ検出",
+        "title": "ドット＋アウトラインスレート"
       },
       "combo-rounded-dithered-royal": {
-        "description": "Classic dithered with rounded style",
-        "title": "Rounded + Dithered Royal"
+        "description": "丸みを帯びたクラシックなディザリング",
+        "title": "ラウンド＋ディザリングロイヤル"
       },
       "combo-rounded-mosaic-sunset": {
-        "description": "Rounded modules with mosaic overlay",
-        "title": "Rounded + Mosaic Sunset"
+        "description": "モザイクオーバーレイを施した丸型モジュール",
+        "title": "丸み＋モザイクの夕日"
       },
       "combo-rounded-rounded": {
-        "description": "Rounded modules with rounded finders",
-        "title": "Rounded + Rounded"
+        "description": "丸型モジュールと丸型ファインダー",
+        "title": "丸み＋丸み"
       },
       "combo-rounded-subpixel-coral": {
-        "description": "High-detail subpixel rendering",
-        "title": "Rounded + Subpixel Coral"
+        "description": "高精細サブピクセルレンダリング",
+        "title": "丸み＋サブピクセルコーラル"
       },
       "content-email": {
-        "description": "Mailto link with coral colors",
-        "title": "Email Address"
+        "description": "コーラルカラーのMailtoリンク",
+        "title": "メールアドレス"
       },
       "content-event": {
-        "description": "iCal event with rounded royal",
-        "title": "Calendar Event"
+        "description": "丸みを帯びたロイヤルのiCalイベント",
+        "title": "カレンダーイベント"
       },
       "content-geo": {
-        "description": "Map coords with connected gold",
-        "title": "Geo Location"
+        "description": "連結した金の座標を地図に表示する",
+        "title": "地理位置情報"
       },
       "content-sms": {
-        "description": "Pre-filled SMS with diamond teal",
-        "title": "SMS Message"
+        "description": "ダイヤモンドティールのテキストが入ったSMS",
+        "title": "SMSメッセージ"
       },
       "content-vcard": {
-        "description": "Contact card with rounded navy style",
-        "title": "vCard Contact"
+        "description": "丸みのあるネイビースタイルの連絡カード",
+        "title": "vCard連絡先"
       },
       "content-wifi": {
-        "description": "WiFi config with dots forest green",
-        "title": "WiFi Network"
+        "description": "フォレストグリーンのドット付きWiFi設定",
+        "title": "WiFiネットワーク"
       },
       "dither-adaptive-threshold": {
-        "description": "Adaptive threshold",
-        "title": "Adaptive"
+        "description": "適応閾値",
+        "title": "適応型"
       },
       "dither-blue-noise": {
-        "description": "Blue noise threshold",
-        "title": "Blue Noise"
+        "description": "ブルーノイズ閾値",
+        "title": "ブルーノイズ"
       },
       "dither-blue-noise-error-diffusion": {
-        "description": "Hybrid blue noise",
-        "title": "Blue Noise + Error"
+        "description": "ハイブリッドブルーノイズ",
+        "title": "ブルーノイズ＋エラー"
       },
       "dither-error-diffusion": {
-        "description": "Floyd-Steinberg style",
-        "title": "Error Diffusion"
+        "description": "フロイド・スタインバーグスタイル",
+        "title": "誤差拡散"
       },
       "dither-kernel-atkinson": {
-        "description": "Atkinson error diffusion",
-        "title": "Atkinson"
+        "description": "アトキンソン誤差拡散法",
+        "title": "アトキンソン"
       },
       "dither-kernel-burkes": {
-        "description": "Burkes error diffusion",
-        "title": "Burkes"
+        "description": "バークス誤差拡散法",
+        "title": "バークス"
       },
       "dither-kernel-floyd-steinberg": {
-        "description": "Floyd-Steinberg error diffusion",
-        "title": "Floyd-Steinberg"
+        "description": "フロイド・スタインバーグ誤差拡散法",
+        "title": "フロイド・スタインバーグ"
       },
       "dither-kernel-jarvis-judice-ninke": {
-        "description": "Jarvis-Judice-Ninke error diffusion",
-        "title": "Jarvis-Judice-Ninke"
+        "description": "ジャービス・ジュディス・ニンケ誤差拡散",
+        "title": "ジャーヴィス・ジュディス・ニンケ"
       },
       "dither-kernel-sierra": {
-        "description": "Sierra error diffusion",
-        "title": "Sierra"
+        "description": "シエラ誤差拡散法",
+        "title": "シエラ"
       },
       "dither-kernel-stucki": {
-        "description": "Stucki error diffusion",
-        "title": "Stucki"
+        "description": "スタッキー誤差拡散",
+        "title": "スタッキ"
       },
       "dither-ordered-bayer": {
-        "description": "Bayer matrix dithering",
-        "title": "Ordered Bayer"
+        "description": "ベイヤーマトリックスディザリング",
+        "title": "バイエルを注文した"
       },
       "dither-perceptual": {
-        "description": "Luminance-weighted",
-        "title": "Perceptual"
+        "description": "輝度加重",
+        "title": "知覚的"
       },
       "dither-strength-100": {
-        "description": "Dither strength at 100%",
-        "title": "Strength 100%"
+        "description": "ディザ強度100%",
+        "title": "強さ100％"
       },
       "dither-strength-20": {
-        "description": "Dither strength at 20%",
-        "title": "Strength 20%"
+        "description": "ディザ強度20%",
+        "title": "強さ20%"
       },
       "dither-strength-40": {
-        "description": "Dither strength at 40%",
-        "title": "Strength 40%"
+        "description": "ディザ強度40%",
+        "title": "強さ40%"
       },
       "dither-strength-60": {
-        "description": "Dither strength at 60%",
-        "title": "Strength 60%"
+        "description": "ディザ強度60%",
+        "title": "強さ60%"
       },
       "dither-strength-80": {
-        "description": "Dither strength at 80%",
-        "title": "Strength 80%"
+        "description": "ディザ強度80%",
+        "title": "強さ80%"
       },
       "dither-white-noise": {
-        "description": "Random noise threshold",
-        "title": "White Noise"
+        "description": "ランダムノイズ閾値",
+        "title": "ホワイトノイズ"
       },
       "enc-ecc-h": {
-        "description": "30% error correction",
-        "title": "ECC High"
+        "description": "30%のエラー訂正",
+        "title": "ECCハイ"
       },
       "enc-ecc-l": {
-        "description": "7% error correction",
-        "title": "ECC Low"
+        "description": "7%の誤り訂正",
+        "title": "ECC 低"
       },
       "enc-ecc-m": {
-        "description": "15% error correction",
-        "title": "ECC Medium"
+        "description": "15%のエラー訂正",
+        "title": "ECCミディアム"
       },
       "enc-ecc-q": {
-        "description": "25% error correction",
-        "title": "ECC Quartile"
+        "description": "25%のエラー訂正",
+        "title": "ECC四分位"
       },
       "enc-v0": {
-        "description": "Automatic version selection",
-        "title": "Auto Version"
+        "description": "自動バージョン選択",
+        "title": "オートバージョン"
       },
       "enc-v12": {
-        "description": "Version 12 QR code",
-        "title": "Version 12"
+        "description": "バージョン12 QRコード",
+        "title": "バージョン12"
       },
       "enc-v6": {
-        "description": "Best for overlays (no center eye)",
-        "title": "Version 6"
+        "description": "オーバーレイに最適（センターアイなし）",
+        "title": "バージョン6"
       },
       "enc-v6-h": {
-        "description": "Version 6 with high error correction",
-        "title": "V6 + ECC High"
+        "description": "高度なエラー訂正機能を備えたバージョン6",
+        "title": "V6 + ECCハイ"
       },
       "enc-v6-l": {
-        "description": "Version 6 with low error correction",
-        "title": "V6 + ECC Low"
+        "description": "バージョン6（低エラー訂正）",
+        "title": "V6 + ECC 低"
       },
       "enc-v9": {
-        "description": "Version 9 QR code",
-        "title": "Version 9"
+        "description": "バージョン9 QRコード",
+        "title": "バージョン9"
       },
       "enc-v9-h": {
-        "description": "Version 9 with high error correction",
-        "title": "V9 + ECC High"
+        "description": "高度なエラー訂正機能を備えたバージョン9",
+        "title": "V9 + ECCハイ"
       },
       "enc-v9-l": {
-        "description": "Version 9 with low error correction",
-        "title": "V9 + ECC Low"
+        "description": "バージョン9（エラー訂正率が低い）",
+        "title": "V9 + ECC 低"
       },
       "finder-circle": {
-        "description": "Circle finder pattern",
-        "title": "Circle Finders"
+        "description": "サークルファインダーパターン",
+        "title": "サークルファインダー"
       },
       "finder-rounded": {
-        "description": "Rounded finder pattern",
-        "title": "Rounded Finders"
+        "description": "丸型ファインダーパターン",
+        "title": "丸いファインダー"
       },
       "finder-square": {
-        "description": "Square finder pattern",
-        "title": "Square Finders"
+        "description": "スクエアファインダーパターン",
+        "title": "スクエアファインダー"
       },
       "halftone-classic": {
-        "description": "Halftone with classic palette",
-        "title": "Classic Halftone"
+        "description": "クラシックパレットのハーフトーン",
+        "title": "クラシックハーフトーン"
       },
       "halftone-forest": {
-        "description": "Halftone with forest palette",
-        "title": "Forest Halftone"
+        "description": "森のパレットを使ったハーフトーン",
+        "title": "フォレストハーフトーン"
       },
       "halftone-navy": {
-        "description": "Halftone with navy palette",
-        "title": "Navy Halftone"
+        "description": "ネイビーパレットのハーフトーン",
+        "title": "ネイビーハーフトーン"
       },
       "halftone-wine": {
-        "description": "Halftone with wine palette",
-        "title": "Wine Halftone"
+        "description": "ワインパレットのハーフトーン",
+        "title": "ワインハーフトーン"
       },
       "img-blend": {
-        "description": "Color blend overlay",
-        "title": "Blend Mode"
+        "description": "カラーブレンドオーバーレイ",
+        "title": "ブレンドモード"
       },
       "img-blue-noise": {
-        "description": "Blue noise threshold dithering",
-        "title": "Blue Noise"
+        "description": "ブルーノイズ閾値ディザリング",
+        "title": "ブルーノイズ"
       },
       "img-brightness": {
-        "description": "Brightness-based modules",
-        "title": "Brightness"
+        "description": "明るさベースのモジュール",
+        "title": "明るさ"
       },
       "img-colormode-bw": {
-        "description": "Black & white processing",
-        "title": "Black & White"
+        "description": "白黒処理",
+        "title": "ブラック＆ホワイト"
       },
       "img-colormode-color": {
-        "description": "Color processing",
-        "title": "Color"
+        "description": "カラー処理",
+        "title": "カラー"
       },
       "img-colormode-grayscale": {
-        "description": "Grayscale processing",
-        "title": "Grayscale"
+        "description": "グレースケール処理",
+        "title": "グレースケール"
       },
       "img-dithered": {
-        "description": "Error diffusion dithering",
-        "title": "Dithered"
+        "description": "誤差拡散ディザリング",
+        "title": "ディザリング"
       },
       "img-dithered-i100": {
-        "description": "Dithered at 100% intensity",
-        "title": "Dithered 100%"
+        "description": "100%の強度でディザリング",
+        "title": "ディザリング100%"
       },
       "img-dithered-i50": {
-        "description": "Dithered at 50% intensity",
-        "title": "Dithered 50%"
+        "description": "50%の強度でディザリング",
+        "title": "ディザリング50%"
       },
       "img-dithered-i75": {
-        "description": "Dithered at 75% intensity",
-        "title": "Dithered 75%"
+        "description": "75%の強度でディザリング",
+        "title": "ディザリング75%"
       },
       "img-duotone": {
-        "description": "Two-tone color mapping",
-        "title": "Duotone"
+        "description": "ツートンカラーマッピング",
+        "title": "デュオトーン"
       },
       "img-extreme": {
-        "description": "Maximum image visibility",
-        "title": "Extreme"
+        "description": "最大限の画像視認性",
+        "title": "エクストリーム"
       },
       "img-halftone": {
-        "description": "Classic halftone dots",
-        "title": "Halftone"
+        "description": "クラシックな網点",
+        "title": "ハーフトーン"
       },
       "img-mosaic": {
-        "description": "Mosaic tile effect",
-        "title": "Mosaic"
+        "description": "モザイクタイル効果",
+        "title": "モザイク"
       },
       "img-outline": {
-        "description": "Edge detection overlay",
-        "title": "Outline"
+        "description": "エッジ検出オーバーレイ",
+        "title": "アウトライン"
       },
       "img-pixelate": {
-        "description": "Pixelated overlay effect",
-        "title": "Pixelate"
+        "description": "ピクセル化されたオーバーレイ効果",
+        "title": "ピクセル化"
       },
       "img-subpixel": {
-        "description": "High detail subpixel rendering",
-        "title": "Subpixel"
+        "description": "高精細サブピクセルレンダリング",
+        "title": "サブピクセル"
       },
       "img-wave": {
-        "description": "Wavy distortion effect",
-        "title": "Wave"
+        "description": "波状の歪み効果",
+        "title": "ウェーブ"
       },
       "mosaic-classic": {
-        "description": "Mosaic with classic palette",
-        "title": "Classic Mosaic"
+        "description": "クラシックなパレットを使ったモザイク",
+        "title": "クラシックモザイク"
       },
       "mosaic-forest": {
-        "description": "Mosaic with forest palette",
-        "title": "Forest Mosaic"
+        "description": "森のパレットを使ったモザイク",
+        "title": "森のモザイク"
       },
       "mosaic-navy": {
-        "description": "Mosaic with navy palette",
-        "title": "Navy Mosaic"
+        "description": "ネイビーパレットのモザイク",
+        "title": "ネイビーモザイク"
       },
       "mosaic-wine": {
-        "description": "Mosaic with wine palette",
-        "title": "Wine Mosaic"
+        "description": "ワインパレットのモザイク",
+        "title": "ワインモザイク"
       },
       "plain-basic": {
-        "description": "Standard QR code",
-        "title": "Classic"
+        "description": "標準QRコード",
+        "title": "クラシック"
       },
       "plain-ecc-l": {
-        "description": "Minimal error correction",
-        "title": "ECC Low (7%)"
+        "description": "最小限のエラー訂正",
+        "title": "ECC低（7％）"
       },
       "plain-ecc-q": {
-        "description": "Medium-high error correction",
-        "title": "ECC Quartile (25%)"
+        "description": "中程度から高いレベルのエラー訂正",
+        "title": "ECC四分位数（25％）"
       },
       "plain-v12": {
-        "description": "Large with multiple alignment",
-        "title": "Version 12"
+        "description": "多重アライメントの大規模",
+        "title": "バージョン12"
       },
       "plain-v6": {
-        "description": "Larger without center eye",
-        "title": "Version 6"
+        "description": "センターアイなしの大きいサイズ",
+        "title": "バージョン6"
       },
       "plain-v9": {
-        "description": "Even larger with center eye",
-        "title": "Version 9"
+        "description": "センターアイでさらに大きく",
+        "title": "バージョン9"
       },
       "prep-blur-1": {
-        "description": "1px gaussian blur",
-        "title": "Blur 1px"
+        "description": "1pxガウスぼかし",
+        "title": "1ピクセルぼかし"
       },
       "prep-blur-2": {
-        "description": "2px gaussian blur",
-        "title": "Blur 2px"
+        "description": "2pxガウスぼかし",
+        "title": "2ピクセルぼかし"
       },
       "prep-blur-4": {
-        "description": "4px gaussian blur",
-        "title": "Blur 4px"
+        "description": "4pxガウスぼかし",
+        "title": "ぼかし4ピクセル"
       },
       "prep-brightness-n25": {
-        "description": "Brightness adjusted darker",
-        "title": "Brightness -25"
+        "description": "明るさを暗めに調整",
+        "title": "明るさ-25"
       },
       "prep-brightness-n50": {
-        "description": "Brightness adjusted darker",
-        "title": "Brightness -50"
+        "description": "明るさを暗めに調整",
+        "title": "明るさ-50"
       },
       "prep-brightness-p25": {
-        "description": "Brightness adjusted brighter",
-        "title": "Brightness +25"
+        "description": "明るさを明るく調整しました",
+        "title": "明るさ+25"
       },
       "prep-brightness-p50": {
-        "description": "Brightness adjusted brighter",
-        "title": "Brightness +50"
+        "description": "明るさを明るく調整しました",
+        "title": "明るさ+50"
       },
       "prep-contrast-n50": {
-        "description": "Low contrast",
-        "title": "Contrast -50"
+        "description": "低コントラスト",
+        "title": "コントラスト -50"
       },
       "prep-contrast-p100": {
-        "description": "High contrast",
-        "title": "Contrast +100"
+        "description": "高コントラスト",
+        "title": "コントラスト+100"
       },
       "prep-contrast-p50": {
-        "description": "High contrast",
-        "title": "Contrast +50"
+        "description": "高コントラスト",
+        "title": "コントラスト+50"
       },
       "prep-edge-canny": {
-        "description": "Canny edge detection",
-        "title": "Edge Canny"
+        "description": "キャニーエッジ検出",
+        "title": "エッジ・キャニー"
       },
       "prep-edge-sobel": {
-        "description": "Sobel edge detection",
-        "title": "Edge Sobel"
+        "description": "ソーベルエッジ検出",
+        "title": "エッジ・ソベル"
       },
       "prep-gamma-05": {
-        "description": "Gamma correction 0.5",
-        "title": "Gamma 0.5"
+        "description": "ガンマ補正0.5",
+        "title": "ガンマ0.5"
       },
       "prep-gamma-15": {
-        "description": "Gamma correction 1.5",
-        "title": "Gamma 1.5"
+        "description": "ガンマ補正1.5",
+        "title": "ガンマ1.5"
       },
       "prep-gamma-20": {
-        "description": "Gamma correction 2.0",
-        "title": "Gamma 2.0"
+        "description": "ガンマ補正2.0",
+        "title": "ガンマ2.0"
       },
       "prep-hue-90": {
-        "description": "Hue rotation 90 degrees",
-        "title": "Hue +90°"
+        "description": "色相回転90度",
+        "title": "色相+90°"
       },
       "prep-invert": {
-        "description": "Inverted colors",
-        "title": "Inverted"
+        "description": "反転した色",
+        "title": "反転"
       },
       "prep-posterize-2": {
-        "description": "2 color levels",
-        "title": "Posterize 2"
+        "description": "2つのカラーレベル",
+        "title": "ポスタライズ2"
       },
       "prep-posterize-4": {
-        "description": "4 color levels",
-        "title": "Posterize 4"
+        "description": "4つのカラーレベル",
+        "title": "ポスタライズ4"
       },
       "prep-posterize-8": {
-        "description": "8 color levels",
-        "title": "Posterize 8"
+        "description": "8つのカラーレベル",
+        "title": "ポスタライズ8"
       },
       "prep-saturation-n100": {
-        "description": "Desaturated",
-        "title": "Saturation -100"
+        "description": "彩度を下げる",
+        "title": "彩度 -100"
       },
       "prep-saturation-n50": {
-        "description": "Reduced saturation",
-        "title": "Saturation -50"
+        "description": "彩度を下げる",
+        "title": "彩度-50"
       },
       "prep-saturation-p100": {
-        "description": "Oversaturated",
-        "title": "Saturation +100"
+        "description": "飽和状態",
+        "title": "彩度+100"
       },
       "prep-saturation-p50": {
-        "description": "Oversaturated",
-        "title": "Saturation +50"
+        "description": "飽和状態",
+        "title": "彩度+50"
       },
       "prep-sharpen-100": {
-        "description": "100% sharpening",
-        "title": "Sharpen 100%"
+        "description": "100%シャープニング",
+        "title": "100%シャープ"
       },
       "prep-sharpen-25": {
-        "description": "25% sharpening",
-        "title": "Sharpen 25%"
+        "description": "25%シャープニング",
+        "title": "25%シャープ"
       },
       "prep-sharpen-50": {
-        "description": "50% sharpening",
-        "title": "Sharpen 50%"
+        "description": "50%シャープニング",
+        "title": "50%シャープ"
       },
       "prep-threshold-128": {
-        "description": "Binary threshold at 128",
-        "title": "Threshold 128"
+        "description": "128でバイナリ閾値",
+        "title": "閾値128"
       },
       "prep-threshold-192": {
-        "description": "Binary threshold at 192",
-        "title": "Threshold 192"
+        "description": "192でバイナリ閾値",
+        "title": "閾値192"
       },
       "prep-threshold-64": {
-        "description": "Binary threshold at 64",
-        "title": "Threshold 64"
+        "description": "64でバイナリしきい値",
+        "title": "閾値64"
       },
       "style-connected": {
-        "description": "Connected module style",
-        "title": "Connected Modules"
+        "description": "接続モジュールスタイル",
+        "title": "接続されたモジュール"
       },
       "style-diamond": {
-        "description": "Diamond module style",
-        "title": "Diamond Modules"
+        "description": "ダイヤモンドモジュールスタイル",
+        "title": "ダイヤモンドモジュール"
       },
       "style-dots": {
-        "description": "Dots module style",
-        "title": "Dots Modules"
+        "description": "ドットモジュールスタイル",
+        "title": "ドットモジュール"
       },
       "style-rounded": {
-        "description": "Rounded module style",
-        "title": "Rounded Modules"
+        "description": "丸みを帯びたモジュールスタイル",
+        "title": "丸いモジュール"
       },
       "style-square": {
-        "description": "Square module style",
-        "title": "Square Modules"
+        "description": "スクエアモジュールスタイル",
+        "title": "スクエアモジュール"
       }
     },
-    "plain": "Plain",
-    "powerCombos": "Power Combos",
-    "preprocessing": "Preprocessing",
+    "plain": "プレーン",
+    "powerCombos": "パワーコンボ",
+    "preprocessing": "前処理",
     "sections": {
       "animation-overlay": {
-        "description": "Animated GIF overlays with different blend modes",
-        "title": "Animated Overlays"
+        "description": "異なるブレンドモードによるアニメーションGIFオーバーレイ",
+        "title": "アニメーションオーバーレイ"
       },
       "blend-modes": {
-        "description": "Different color blending with image overlays",
-        "title": "Blend Modes"
+        "description": "画像オーバーレイによる異なる色のブレンド",
+        "title": "ブレンドモード"
       },
       "color-modes": {
-        "description": "Color, grayscale, and black & white processing",
-        "title": "Color Processing"
+        "description": "カラー、グレースケール、白黒処理",
+        "title": "カラー処理"
       },
       "colors": {
-        "description": "Color schemes and themed palettes",
-        "title": "Colors & Themes"
+        "description": "カラースキームとテーマ別パレット",
+        "title": "色とテーマ"
       },
       "content-types": {
-        "description": "Different payload formats - vCard, WiFi, Email, SMS, Geo, Calendar",
-        "title": "Content Types"
+        "description": "さまざまなペイロード形式 - vCard、WiFi、メール、SMS、地理情報、カレンダー",
+        "title": "コンテンツタイプ"
       },
       "dithering": {
-        "description": "Different dithering methods and error diffusion kernels",
-        "title": "Dithering Algorithms"
+        "description": "さまざまなディザリング手法と誤差拡散カーネル",
+        "title": "ディザリングアルゴリズム"
       },
       "encoding": {
-        "description": "Different QR versions and error correction levels",
-        "title": "QR Encoding"
+        "description": "異なるQRバージョンとエラー訂正レベル",
+        "title": "QRエンコード"
       },
       "image-overlay": {
-        "description": "Static image overlays with different blend modes",
-        "title": "Image Overlays"
+        "description": "異なるブレンドモードによる静止画像オーバーレイ",
+        "title": "画像オーバーレイ"
       },
       "plain": {
-        "description": "Standard QR codes without overlay - different versions and error correction",
-        "title": "Plain QR Codes"
+        "description": "オーバーレイなしの標準QRコード - さまざまなバージョンとエラー訂正",
+        "title": "プレーンQRコード"
       },
       "power-combos": {
-        "description": "Striking multi-feature combinations showcasing ANQR capabilities",
-        "title": "Power Combos"
+        "description": "ANQRの能力を示す印象的なマルチ機能の組み合わせ",
+        "title": "パワーコンボ"
       },
       "preprocessing": {
-        "description": "Brightness, contrast, gamma, blur, sharpen, posterize, edge detection",
-        "title": "Image Preprocessing"
+        "description": "明るさ、コントラスト、ガンマ、ぼかし、シャープネス、ポスタリゼーション、エッジ検出",
+        "title": "画像の前処理"
       },
       "styles": {
-        "description": "Different visual styles for modules and finder patterns",
-        "title": "Module & Finder Styles"
+        "description": "モジュールとファインダーパターンの異なるビジュアルスタイル",
+        "title": "モジュールとファインダーのスタイル"
       }
     },
-    "showAll": "Show All",
-    "styles": "Styles",
-    "subtitle": "Explore examples of QR codes created with ANQR",
-    "title": "QR Code Gallery",
-    "tryThis": "Try this"
+    "showAll": "すべて表示",
+    "styles": "スタイル",
+    "subtitle": "ANQRで作成されたQRコードの例を見る",
+    "title": "QRコードギャラリー",
+    "tryThis": "これを試してみて"
   },
   "header": {
-    "close": "Close",
-    "copied": "Copied!",
-    "copyLink": "Copy Link",
-    "darkMode": "Switch to dark mode",
-    "export": "Export",
-    "lightMode": "Switch to light mode",
-    "reset": "Reset",
-    "searchSettings": "Search settings...",
-    "share": "Share"
+    "close": "閉じる",
+    "copied": "コピーしました！",
+    "copyLink": "リンクをコピー",
+    "darkMode": "ダークモードに切り替える",
+    "export": "輸出",
+    "lightMode": "ライトモードに切り替える",
+    "reset": "リセット",
+    "searchSettings": "検索設定…",
+    "share": "シェア"
   },
   "hints": {
-    "alignmentStyle": "Style of alignment patterns (used in larger QR codes)",
-    "appLinkNote": "Opens specific content within a mobile app",
-    "autoDetect": "Auto-detect (requires v{{version}}+ for current content)",
-    "autoMinVersion": "0 = Auto, min v{{version}} for current content",
-    "bgColorHex": "Background color hex code",
-    "bizcardLegacy": "Legacy format - consider using vCard instead",
-    "bluetoothNote": "Note: Bluetooth pairing via QR is vendor-specific and may not work on all devices",
-    "bounceAnimation": "Play animation forward then backward (ping-pong)",
-    "calendarNote": "Subscribe to a shared calendar feed",
-    "contrastGuard": "Ensure minimum contrast ratio between foreground and background",
-    "cornerRadius": "Corner radius percentage for rounded modules (0-100%)",
-    "crispEdges": "Use pixelated rendering for sharp module edges",
-    "customNote": "Enter raw data in any format. No validation or formatting will be applied.",
-    "dotRotation": "Rotate dot-style modules (0-360 degrees)",
-    "encodingMode": "Data encoding mode - Auto selects the most efficient mode",
-    "enforceMinQuietZone": "Enforce minimum 4 module quiet zone for better scanning reliability",
-    "enterTextContent": "Enter the text content to encode in the QR code",
-    "enterUrlContent": "Enter the URL to encode in the QR code",
-    "epcSepaNote": "European Payment Council QR code for SEPA credit transfers",
-    "errorCorrection": "Error correction level - higher = more damage resistance but larger QR code",
-    "extraBorder": "Additional border modules beyond the quiet zone (0-10)",
-    "eyeInnerStyle": "Style of the inner square of finder patterns",
-    "eyeOuterStyle": "Style of the outer ring of finder patterns",
-    "eyeScale": "Scale finder patterns relative to their default size (50-150%)",
-    "fgColorHex": "Foreground color hex code",
-    "finderStyle": "Style of the corner finder patterns",
-    "forceHttps": "Convert HTTP URLs to HTTPS automatically",
-    "frameStyle": "Add a decorative frame around the QR code",
-    "frameText": "Text to display on the frame",
-    "gapMode": "How gaps between modules are rendered",
-    "gradient": "Apply a gradient effect to the QR code",
-    "gs1Note": "GS1 Digital Link for product identification and traceability",
-    "higherEccLargerQr": "Higher = more damage resistance, larger QR",
-    "loopAnimation": "Loop animation continuously",
-    "maxLengthGuard": "Prevent encoding content that exceeds QR code capacity",
-    "minContrastRatio": "Minimum contrast ratio to enforce (1-21, WCAG AA requires 4.5:1)",
-    "moduleGap": "Gap between modules as percentage (0-30%)",
-    "moduleJitterWarning": "⚠️ May affect scannability",
-    "moduleSize": "Size of each QR code module in pixels (2-20px)",
-    "moduleStyle": "Visual style of QR code modules",
-    "normalizeNewlines": "Convert different newline formats to a standard format",
-    "outputFormat": "Select the output file format for export",
-    "paynowNote": "Singapore fast payment system",
-    "perModuleColor": "How to assign colors to individual modules",
-    "pickBgColor": "Click to pick background color",
-    "pickFgColor": "Click to pick foreground color",
-    "pixNote": "Brazilian instant payment system",
-    "pixelSnap": "How to snap module positions to pixel boundaries",
-    "promptpayNote": "Thailand national e-payment system",
-    "qrVersion": "QR code version (0=auto, 1-40 increases size and capacity)",
-    "quietZone": "Quiet zone margin around QR code (0-10 modules, recommended: 4+)",
-    "rsvpNote": "Link to an online RSVP form or event registration page",
-    "safetyMode": "Safety analysis mode - how strictly to check QR code readability",
-    "selectContentType": "Select the type of content to encode in the QR code",
-    "shortLinkNote": "Use a URL shortener service for dynamic/trackable QR codes",
-    "timingStyle": "Style of timing patterns (horizontal and vertical lines)",
-    "transparentBg": "Make the background transparent instead of using background color",
-    "trimWhitespace": "Remove leading and trailing whitespace",
-    "upiNote": "Unified Payments Interface for India",
-    "utmCampaign": "UTM campaign parameter for campaign tracking",
-    "utmMedium": "UTM medium parameter for campaign tracking",
-    "utmSource": "UTM source parameter for campaign tracking",
-    "validateInput": "Validate input data before encoding",
-    "versionTooLow": "⚠️ Version too low! Minimum v{{version}} required"
+    "alignmentStyle": "アライメントパターンのスタイル（大型QRコードで使用）",
+    "appLinkNote": "モバイルアプリ内で特定のコンテンツを開く",
+    "autoDetect": "自動検出（現在のコンテンツにはv{{version}}+が必要です）",
+    "autoMinVersion": "0 = 自動、現在のコンテンツの最小 v{{version}}",
+    "bgColorHex": "背景色の16進コード",
+    "bizcardLegacy": "レガシーフォーマット - 代わりにvCardの使用を検討してください",
+    "bluetoothNote": "注意: QRによるBluetoothペアリングはベンダー固有であり、すべてのデバイスで機能するとは限りません",
+    "bounceAnimation": "アニメーションを順方向に再生してから逆方向に再生する（ピンポン）",
+    "calendarNote": "共有カレンダーフィードを購読する",
+    "contrastGuard": "前景と背景のコントラスト比を最低限確保する",
+    "cornerRadius": "丸みを帯びたモジュールの角の半径のパーセンテージ（0～100%）",
+    "crispEdges": "モジュールのエッジをシャープにするにはピクセル化されたレンダリングを使用する",
+    "customNote": "生データは任意の形式で入力してください。検証やフォーマットは適用されません。",
+    "dotRotation": "ドット型モジュールの回転（0～360度）",
+    "encodingMode": "データエンコードモード - 最も効率的なモードを自動選択",
+    "enforceMinQuietZone": "スキャンの信頼性を高めるために、最低4モジュールのクワイエットゾーンを強制する",
+    "enterTextContent": "QRコードにエンコードするテキストコンテンツを入力してください",
+    "enterUrlContent": "QRコードにエンコードするURLを入力してください",
+    "epcSepaNote": "SEPAクレジット振替のための欧州決済協議会QRコード",
+    "errorCorrection": "エラー訂正レベル - 高いほど耐損傷性は高いが、QRコードのサイズは大きくなる",
+    "extraBorder": "静穏地帯を越えた追加の境界モジュール（0-10）",
+    "eyeInnerStyle": "ファインダーパターンの内側の正方形のスタイル",
+    "eyeOuterStyle": "ファインダーパターンの外輪のスタイル",
+    "eyeScale": "ファインダーパターンをデフォルトサイズに対して拡大縮小する（50～150%）",
+    "fgColorHex": "前景色の16進コード",
+    "finderStyle": "コーナーファインダーパターンのスタイル",
+    "forceHttps": "HTTP URLをHTTPSに自動的に変換する",
+    "frameStyle": "QRコードの周囲に装飾枠を追加する",
+    "frameText": "フレームに表示するテキスト",
+    "gapMode": "モジュール間の隙間のレンダリング方法",
+    "gradient": "QRコードにグラデーション効果を適用する",
+    "gs1Note": "製品識別とトレーサビリティのためのGS1デジタルリンク",
+    "higherEccLargerQr": "高いほどダメージ耐性が高く、QRが大きい",
+    "loopAnimation": "アニメーションを連続的にループする",
+    "maxLengthGuard": "QRコードの容量を超えるコンテンツのエンコードを防止する",
+    "minContrastRatio": "強制する最小コントラスト比（1-21、WCAG AAでは4.5:1が必要）",
+    "moduleGap": "モジュール間のギャップ（パーセンテージ）（0～30%）",
+    "moduleJitterWarning": "⚠️ スキャン性に影響する可能性があります",
+    "moduleSize": "各QRコードモジュールのサイズ（ピクセル単位、2～20ピクセル）",
+    "moduleStyle": "QRコードモジュールのビジュアルスタイル",
+    "normalizeNewlines": "異なる改行形式を標準形式に変換する",
+    "outputFormat": "エクスポートの出力ファイル形式を選択してください",
+    "paynowNote": "シンガポールの高速決済システム",
+    "perModuleColor": "個々のモジュールに色を割り当てる方法",
+    "pickBgColor": "クリックして背景色を選択",
+    "pickFgColor": "クリックして前景色を選択",
+    "pixNote": "ブラジルの即時決済システム",
+    "pixelSnap": "モジュールの位置をピクセル境界にスナップする方法",
+    "promptpayNote": "タイの国家電子決済システム",
+    "qrVersion": "QRコードバージョン（0=自動、1～40でサイズと容量が増加）",
+    "quietZone": "QRコード周囲の静かな領域のマージン（0～10モジュール、推奨：4以上）",
+    "rsvpNote": "オンラインRSVPフォームまたはイベント登録ページへのリンク",
+    "safetyMode": "安全分析モード - QRコードの読み取り可能性を厳密にチェックする方法",
+    "selectContentType": "QRコードにエンコードするコンテンツの種類を選択してください",
+    "shortLinkNote": "動的/追跡可能なQRコードにはURL短縮サービスを使用してください",
+    "timingStyle": "タイミングパターンのスタイル（水平線と垂直線）",
+    "transparentBg": "背景色を使用する代わりに背景を透明にする",
+    "trimWhitespace": "先頭と末尾の空白を削除する",
+    "upiNote": "インド向け統合決済インターフェース",
+    "utmCampaign": "キャンペーントラッキング用のUTMキャンペーンパラメータ",
+    "utmMedium": "キャンペーントラッキングのためのUTMメディアパラメータ",
+    "utmSource": "キャンペーントラッキング用のUTMソースパラメータ",
+    "validateInput": "エンコード前に入力データを検証する",
+    "versionTooLow": "⚠️ バージョンが低すぎます！最低 v{{version}} が必要です"
   },
   "language": {
-    "current": "Language",
-    "select": "Select Language"
+    "current": "言語",
+    "select": "言語を選択"
   },
   "metadata": {
-    "addCustomField": "Add Custom Field",
-    "author": "Author",
-    "authorPlaceholder": "Author name",
-    "copyright": "Copyright",
-    "copyrightPlaceholder": "© 2024 Company Name",
-    "customMetadata": "Custom Metadata",
-    "description": "Description",
-    "descriptionPlaceholder": "Description of this QR code...",
-    "includeCreationTime": "Include Creation Time",
-    "key": "Key",
-    "keyPlaceholder": "Key",
-    "keywords": "Keywords",
-    "license": "License",
+    "addCustomField": "カスタムフィールドを追加",
+    "author": "著者",
+    "authorPlaceholder": "著者名",
+    "copyright": "著作権",
+    "copyrightPlaceholder": "© 2024 会社名",
+    "customMetadata": "カスタムメタデータ",
+    "description": "説明",
+    "descriptionPlaceholder": "このQRコードの説明…",
+    "includeCreationTime": "作成時間を含める",
+    "key": "キー",
+    "keyPlaceholder": "キー",
+    "keywords": "キーワード",
+    "license": "ライセンス",
     "licensePlaceholder": "CC-BY-4.0",
-    "title": "Title",
-    "titlePlaceholder": "QR Code Title",
-    "value": "Value",
-    "valuePlaceholder": "Value"
+    "title": "タイトル",
+    "titlePlaceholder": "QRコードタイトル",
+    "value": "価値",
+    "valuePlaceholder": "価値"
   },
   "nav": {
-    "about": "About",
-    "contact": "Contact",
-    "docs": "Guide",
-    "gallery": "Gallery",
-    "generator": "Generator",
-    "guide": "Guide",
-    "privacy": "Privacy",
-    "terms": "Terms"
+    "about": "について",
+    "contact": "コンタクト",
+    "docs": "ガイド",
+    "gallery": "ギャラリー",
+    "generator": "ジェネレーター",
+    "guide": "ガイド",
+    "privacy": "プライバシー",
+    "terms": "条件"
   },
   "output": {
-    "backgroundOverride": "Background Override",
-    "backgroundOverridePlaceholder": "Leave empty for default",
-    "dithering": "Dithering",
-    "dpi": "DPI (Print)",
-    "embedRasterOverlay": "Embed Raster Overlay",
-    "exportAsAdditional": "Export As (Additional)",
-    "filename": "Filename",
-    "floydSteinberg": "Floyd-Steinberg",
-    "format": "Format",
+    "backgroundOverride": "背景オーバーライド",
+    "backgroundOverridePlaceholder": "デフォルトは空白のまま",
+    "dithering": "ディザリング",
+    "dpi": "DPI（印刷）",
+    "embedRasterOverlay": "ラスターオーバーレイを埋め込む",
+    "exportAsAdditional": "エクスポート形式（追加）",
+    "filename": "ファイル名",
+    "floydSteinberg": "フロイド・スタインバーグ",
+    "format": "フォーマット",
     "gif": "GIF",
-    "gifSettings": "GIF Settings",
-    "height": "Height",
-    "includeQuietZone": "Include Quiet Zone",
-    "medianCut": "Median Cut",
-    "neuquant": "NeuQuant",
-    "none": "None",
-    "octree": "Octree",
-    "off": "Off",
-    "ordered": "Ordered",
-    "outputSize": "Output Size",
-    "paletteSize": "Palette Size",
+    "gifSettings": "GIF設定",
+    "height": "高さ",
+    "includeQuietZone": "静かなゾーンを含める",
+    "medianCut": "中央切土",
+    "neuquant": "ニュークァント",
+    "none": "なし",
+    "octree": "オクトリー",
+    "off": "オフ",
+    "ordered": "注文済み",
+    "outputSize": "出力サイズ",
+    "paletteSize": "パレットサイズ",
     "pdf": "PDF",
-    "pixel": "Pixel",
+    "pixel": "ピクセル",
     "png": "PNG",
-    "precise": "Precise",
-    "quality": "Quality",
-    "quantizer": "Quantizer",
-    "shapePrecision": "Shape Precision",
+    "precise": "正確",
+    "quality": "品質",
+    "quantizer": "クォンタイザー",
+    "shapePrecision": "形状精度",
     "svg": "SVG",
-    "svgSettings": "SVG Settings",
-    "transparentColor": "Transparent Color",
-    "transparentColorPlaceholder": "#ffffff or empty",
-    "trueVector": "True Vector",
-    "trueVectorDesc": "Use paths instead of embedded raster",
+    "svgSettings": "SVG設定",
+    "transparentColor": "透明な色",
+    "transparentColorPlaceholder": "#ffffffまたは空",
+    "trueVector": "真のベクトル",
+    "trueVectorDesc": "埋め込みラスターの代わりにパスを使用する",
     "webp": "WebP",
-    "width": "Width"
+    "width": "幅"
   },
   "overlay": {
-    "adaptiveThreshold": "Adaptive Threshold",
-    "atkinson": "Atkinson",
-    "bayer2": "Bayer 2×2",
-    "bayer4": "Bayer 4×4",
-    "bayer8": "Bayer 8×8",
-    "blend": "Blend",
-    "blendMode": "Blend",
-    "blueNoise": "Blue Noise",
-    "blueNoiseErrorDiffusion": "Blue Noise + Error Diffusion",
-    "blueNoiseMode": "Blue Noise",
-    "blueNoiseThreshold": "Blue Noise Threshold",
-    "blur": "Blur",
-    "brightness": "Brightness",
-    "brightnessCurve": "Brightness Curve",
-    "brightnessMode": "Brightness",
-    "burkes": "Burkes",
-    "bw": "Black & White",
-    "cellSize": "Cell Size",
-    "centerLogo": "Center Logo",
-    "centerRule": "Center Rule",
-    "clusteredDot": "Clustered Dot",
-    "colorDither": "Color Dither",
-    "colorMode": "Color Mode",
-    "contain": "Contain",
-    "contrast": "Contrast",
-    "corsNote": "Note: Image must allow cross-origin requests (CORS)",
-    "cover": "Cover",
-    "cropImage": "Crop Image",
-    "cropSize": "Crop Size",
-    "diffusionKernel": "Diffusion Kernel",
-    "disposalHandling": "Disposal Handling",
-    "dither": "Dither",
-    "ditherSettings": "Dither Settings",
-    "ditherStrength": "Dither Strength",
-    "dithered": "Dithered",
-    "ditheredMode": "Dithered",
-    "dotShape": "Dot Shape",
-    "duotone": "Duotone",
-    "duotoneColors": "Duotone Colors",
-    "duotoneMode": "Duotone",
-    "eccAwareMode": "ECC-Aware Mode",
-    "edge": "Edge Detection",
-    "edgeAware": "Edge-Aware",
-    "enableCrop": "Enable Crop",
-    "errorDiffusion": "Error Diffusion",
-    "extreme": "Extreme",
-    "extremeMode": "Extreme",
-    "finderOverride": "Finder Override",
-    "fitMode": "Fit Mode",
-    "flipX": "Flip X",
-    "flipY": "Flip Y",
-    "floydSteinberg": "Floyd-Steinberg",
-    "fromUrl": "From URL",
-    "fullColor": "Full Color",
-    "gamma": "Gamma",
-    "gapFillMode": "Gap Fill",
-    "gapfill": "Gap Fill",
-    "gaussianNoise": "Gaussian Noise",
-    "gifSettings": "GIF Settings",
-    "grayscale": "Grayscale",
-    "gridSize": "Grid Size",
-    "halftone": "Halftone",
-    "halftoneCenter": "Halftone Center",
-    "halftoneMode": "Halftone",
-    "halftoneSettings": "Halftone Settings",
-    "highlight": "Highlight",
-    "hueRotate": "Hue Rotate",
-    "imageGifWebp": "Image / GIF / WebP",
-    "imageUrl": "Image URL",
-    "intensity": "Intensity",
-    "invert": "Invert Image",
-    "jarvisJudiceNinke": "Jarvis-Judice-Ninke",
-    "line": "Line",
-    "load": "Load",
-    "loadedFromUrl": "Loaded from URL",
-    "maxFps": "Max FPS",
-    "mode": "Blend Mode",
-    "mosaic": "Mosaic",
-    "mosaicMode": "Mosaic",
-    "neutralColor": "Neutral Color",
-    "noFile": "No file",
-    "none": "None",
-    "nxnGrid": "N×N Grid",
-    "orderedBayer": "Ordered (Bayer)",
-    "orderedMatrix": "Ordered Matrix",
-    "original": "Original",
-    "outline": "Outline",
-    "outlineMode": "Outline",
-    "perChannel": "Per Channel",
-    "perModule": "Per Module",
-    "perceptual": "Perceptual (Luminance)",
-    "pixelate": "Pixelate",
-    "pixelateMode": "Pixelate",
-    "posterizeLevels": "Posterize Levels",
-    "preserveAlignment": "Preserve Alignment",
-    "preserveFinders": "Preserve Finder Patterns",
-    "preserveTiming": "Preserve Timing",
-    "protectFormat": "Protect Format Info",
-    "protectFormatInfo": "Protect Format Info",
-    "protectVersion": "Protect Version Info",
-    "protectVersionInfo": "Protect Version Info",
-    "protection": "Protection",
-    "removeImage": "Remove",
-    "respect": "Respect",
-    "riskBudget": "Risk Budget",
-    "rotation": "Rotation",
-    "sCurve": "S-Curve",
-    "saturation": "Saturation",
-    "screenedBlueNoise": "Screened Blue Noise",
-    "seed": "Seed",
-    "selectImage": "Select Image",
-    "sepia": "Sepia",
-    "serpentineScanning": "Serpentine Scanning",
-    "shadow": "Shadow",
-    "sharpen": "Sharpen",
-    "sierra": "Sierra",
-    "sierra2": "Sierra-2",
-    "sierraLite": "Sierra-Lite",
-    "simplify": "Simplify",
-    "stretch": "Stretch",
-    "strict": "Strict",
-    "stucki": "Stucki",
-    "stylized": "Stylized",
-    "subpixel": "Subpixel",
-    "subpixelMode": "Subpixel",
-    "subpixelSettings": "Subpixel Settings",
-    "subpixelSize": "Subpixel Size",
-    "subpixelSizeMode": "Subpixel Size",
-    "temporalBlueNoise": "Temporal Blue Noise",
-    "threshold": "Threshold",
-    "tileSize": "Tile Size",
-    "triangularNoise": "Triangular Noise",
-    "trueDither": "True Dither",
-    "trueDitherMode": "True Dither",
-    "upload": "Upload",
-    "useFrameDelays": "Use Frame Delays",
-    "voidCluster": "Void & Cluster",
-    "wave": "Wave",
-    "waveMode": "Wave",
-    "whiteNoise": "White Noise"
+    "adaptiveThreshold": "適応閾値",
+    "atkinson": "アトキンソン",
+    "bayer2": "バイエル2×2",
+    "bayer4": "バイエル4×4",
+    "bayer8": "バイエル8×8",
+    "blend": "ブレンド",
+    "blendMode": "ブレンド",
+    "blueNoise": "ブルーノイズ",
+    "blueNoiseErrorDiffusion": "ブルーノイズ＋誤差拡散",
+    "blueNoiseMode": "ブルーノイズ",
+    "blueNoiseThreshold": "ブルーノイズ閾値",
+    "blur": "ぼやけ",
+    "brightness": "明るさ",
+    "brightnessCurve": "明るさカーブ",
+    "brightnessMode": "明るさ",
+    "burkes": "バークス",
+    "bw": "ブラック＆ホワイト",
+    "cellSize": "セルサイズ",
+    "centerLogo": "センターロゴ",
+    "centerRule": "センタールール",
+    "clusteredDot": "クラスタード・ドット",
+    "colorDither": "カラーディザ",
+    "colorMode": "カラーモード",
+    "contain": "収容",
+    "contrast": "コントラスト",
+    "corsNote": "注意: 画像はクロスオリジンリクエスト（CORS）を許可する必要があります",
+    "cover": "カバー",
+    "cropImage": "画像をトリミング",
+    "cropSize": "クロップサイズ",
+    "diffusionKernel": "拡散核",
+    "disposalHandling": "廃棄処理",
+    "dither": "ディザー",
+    "ditherSettings": "ディザ設定",
+    "ditherStrength": "ディザー強度",
+    "dithered": "ディザリング",
+    "ditheredMode": "ディザリング",
+    "dotShape": "ドットシェイプ",
+    "duotone": "デュオトーン",
+    "duotoneColors": "デュオトーンカラー",
+    "duotoneMode": "デュオトーン",
+    "eccAwareMode": "ECC対応モード",
+    "edge": "エッジ検出",
+    "edgeAware": "エッジ認識",
+    "enableCrop": "切り抜きを有効にする",
+    "errorDiffusion": "誤差拡散",
+    "extreme": "エクストリーム",
+    "extremeMode": "エクストリーム",
+    "finderOverride": "ファインダーオーバーライド",
+    "fitMode": "フィットモード",
+    "flipX": "フリップX",
+    "flipY": "フリップY",
+    "floydSteinberg": "フロイド・スタインバーグ",
+    "fromUrl": "URLから",
+    "fullColor": "フルカラー",
+    "gamma": "ガンマ",
+    "gapFillMode": "ギャップフィル",
+    "gapfill": "ギャップフィル",
+    "gaussianNoise": "ガウスノイズ",
+    "gifSettings": "GIF設定",
+    "grayscale": "グレースケール",
+    "gridSize": "グリッドサイズ",
+    "halftone": "ハーフトーン",
+    "halftoneCenter": "ハーフトーンセンター",
+    "halftoneMode": "ハーフトーン",
+    "halftoneSettings": "ハーフトーン設定",
+    "highlight": "ハイライト",
+    "hueRotate": "色相回転",
+    "imageGifWebp": "画像/GIF/WebP",
+    "imageUrl": "画像URL",
+    "intensity": "強度",
+    "invert": "画像を反転",
+    "jarvisJudiceNinke": "ジャーヴィス・ジュディス・ニンケ",
+    "line": "ライン",
+    "load": "ロード",
+    "loadedFromUrl": "URLから読み込みました",
+    "maxFps": "最大FPS",
+    "mode": "ブレンドモード",
+    "mosaic": "モザイク",
+    "mosaicMode": "モザイク",
+    "neutralColor": "ニュートラルカラー",
+    "noFile": "ファイルなし",
+    "none": "なし",
+    "nxnGrid": "N×Nグリッド",
+    "orderedBayer": "注文済み（バイエル）",
+    "orderedMatrix": "順序付けられたマトリックス",
+    "original": "オリジナル",
+    "outline": "アウトライン",
+    "outlineMode": "アウトライン",
+    "perChannel": "チャンネルあたり",
+    "perModule": "モジュールごと",
+    "perceptual": "知覚（輝度）",
+    "pixelate": "ピクセル化",
+    "pixelateMode": "ピクセル化",
+    "posterizeLevels": "ポスタライズレベル",
+    "preserveAlignment": "アライメントの維持",
+    "preserveFinders": "ファインダーパターンを保存する",
+    "preserveTiming": "タイミングを保つ",
+    "protectFormat": "フォーマット情報の保護",
+    "protectFormatInfo": "フォーマット情報の保護",
+    "protectVersion": "バージョン情報を保護する",
+    "protectVersionInfo": "バージョン情報を保護する",
+    "protection": "保護",
+    "removeImage": "削除",
+    "respect": "尊敬",
+    "riskBudget": "リスク予算",
+    "rotation": "回転",
+    "sCurve": "Sカーブ",
+    "saturation": "彩度",
+    "screenedBlueNoise": "スクリーンド・ブルーノイズ",
+    "seed": "シード",
+    "selectImage": "画像を選択",
+    "sepia": "セピア",
+    "serpentineScanning": "蛇行スキャン",
+    "shadow": "影",
+    "sharpen": "研ぐ",
+    "sierra": "シエラ",
+    "sierra2": "シエラ2",
+    "sierraLite": "シエラライト",
+    "simplify": "シンプルに",
+    "stretch": "ストレッチ",
+    "strict": "厳格",
+    "stucki": "スタッキ",
+    "stylized": "様式化された",
+    "subpixel": "サブピクセル",
+    "subpixelMode": "サブピクセル",
+    "subpixelSettings": "サブピクセル設定",
+    "subpixelSize": "サブピクセルサイズ",
+    "subpixelSizeMode": "サブピクセルサイズ",
+    "temporalBlueNoise": "テンポラル・ブルー・ノイズ",
+    "threshold": "閾値",
+    "tileSize": "タイルサイズ",
+    "triangularNoise": "三角ノイズ",
+    "trueDither": "トゥルーディザー",
+    "trueDitherMode": "トゥルーディザー",
+    "upload": "アップロード",
+    "useFrameDelays": "フレーム遅延を使用する",
+    "voidCluster": "ボイド＆クラスター",
+    "wave": "ウェーブ",
+    "waveMode": "ウェーブ",
+    "whiteNoise": "ホワイトノイズ"
   },
   "payload": {
-    "accountName": "Account Name",
-    "address": "Address",
-    "algorithm": "Algorithm",
-    "allDay": "All Day Event",
-    "amount": "Amount (optional)",
-    "amountBrl": "Amount (BRL, optional)",
-    "amountEur": "Amount (EUR)",
-    "amountInr": "Amount (INR, optional)",
-    "amountSgd": "Amount (SGD, optional)",
-    "amountThb": "Amount (THB, optional)",
-    "androidIntent": "Android Intent",
-    "appLink": "App Deep Link (Android/iOS)",
-    "assetInventory": "Asset/Inventory Tag",
-    "assetItemId": "Asset/Item ID",
-    "assetType": "Asset Type",
-    "attendeeName": "Attendee Name",
-    "audio": "Audio",
-    "baseUrl": "Base URL",
-    "batchLot": "Batch/Lot (optional)",
-    "beneficiaryName": "Beneficiary Name",
-    "bicSwift": "BIC/SWIFT (optional)",
-    "birthday": "Birthday",
-    "bitcoin": "Bitcoin",
-    "bizcard": "BizCard (Legacy)",
-    "bluetooth": "Bluetooth",
-    "body": "Message Body",
-    "bodyOptional": "Body (optional)",
-    "box": "Box",
-    "calendar": "Calendar",
-    "calendarName": "Calendar Name",
-    "calendarSubscription": "Calendar Subscribe",
-    "calendarUrl": "Calendar URL (ICS/WebCal)",
-    "campaignContent": "Campaign Content (optional)",
-    "campaignMedium": "Campaign Medium",
-    "campaignName": "Campaign Name",
-    "campaignSource": "Campaign Source",
-    "campaignTerm": "Campaign Term (optional)",
-    "city": "City",
-    "cityOptional": "City (optional)",
-    "cloudLink": "Cloud Storage Link",
-    "company": "Company",
-    "contact": "Contact",
-    "contentType": "Content Type",
-    "core": "Core",
-    "country": "Country",
-    "crypto": "Crypto (BTC, ETH, etc.)",
-    "cryptocurrency": "Cryptocurrency",
-    "custom": "Custom Format",
-    "customScheme": "Custom Scheme",
-    "dateTime": "Date & Time",
-    "deepLinkUrl": "Deep Link URL",
-    "description": "Description",
-    "deviceAddress": "Device Address (MAC)",
-    "deviceName": "Device Name (optional)",
-    "digits": "Digits",
-    "documentsMedia": "Documents & Media",
-    "dropbox": "Dropbox",
-    "email": "Email",
-    "emailAddress": "Email Address",
-    "encryption": "Encryption",
-    "end": "End",
-    "endDate": "End Date",
-    "enterprise": "Enterprise",
-    "epcSepa": "EPC / SEPA (EU)",
-    "equipment": "Equipment",
-    "ethereum": "Ethereum",
-    "event": "iCalendar Event",
-    "eventName": "Event Name",
-    "eventRsvp": "Event RSVP Link",
-    "eventTicket": "Event Ticket",
-    "expiryDate": "Expiry Date (optional)",
-    "facebook": "Facebook",
-    "fallbackUrl": "Fallback URL (optional)",
-    "fax": "Fax",
-    "fileType": "File Type",
-    "fileUrl": "File / Document URL",
-    "firstName": "First Name",
-    "forceHttps": "Force HTTPS",
-    "fullName": "Full Name",
-    "furniture": "Furniture",
-    "geo": "Geo Location",
+    "accountName": "アカウント名",
+    "address": "住所",
+    "algorithm": "アルゴリズム",
+    "allDay": "終日イベント",
+    "amount": "金額（オプション）",
+    "amountBrl": "金額（BRL、オプション）",
+    "amountEur": "金額（ユーロ）",
+    "amountInr": "金額（INR、オプション）",
+    "amountSgd": "金額（SGD、オプション）",
+    "amountThb": "金額（THB、オプション）",
+    "androidIntent": "Androidインテント",
+    "appLink": "アプリディープリンク（Android/iOS）",
+    "assetInventory": "資産/在庫タグ",
+    "assetItemId": "資産/アイテムID",
+    "assetType": "資産の種類",
+    "attendeeName": "出席者名",
+    "audio": "オーディオ",
+    "baseUrl": "ベースURL",
+    "batchLot": "バッチ/ロット（オプション）",
+    "beneficiaryName": "受益者名",
+    "bicSwift": "BIC/SWIFT（オプション）",
+    "birthday": "誕生日",
+    "bitcoin": "ビットコイン",
+    "bizcard": "BizCard（レガシー）",
+    "bluetooth": "ブルートゥース",
+    "body": "メッセージ本文",
+    "bodyOptional": "本文（オプション）",
+    "box": "ボックス",
+    "calendar": "カレンダー",
+    "calendarName": "カレンダー名",
+    "calendarSubscription": "カレンダー購読",
+    "calendarUrl": "カレンダーURL（ICS/WebCal）",
+    "campaignContent": "キャンペーンコンテンツ（オプション）",
+    "campaignMedium": "キャンペーン媒体",
+    "campaignName": "キャンペーン名",
+    "campaignSource": "キャンペーンソース",
+    "campaignTerm": "キャンペーン用語（オプション）",
+    "city": "シティ",
+    "cityOptional": "市（オプション）",
+    "cloudLink": "クラウドストレージリンク",
+    "company": "会社",
+    "contact": "コンタクト",
+    "contentType": "コンテンツタイプ",
+    "core": "コア",
+    "country": "カントリー",
+    "crypto": "暗号通貨（BTC、ETHなど）",
+    "cryptocurrency": "暗号通貨",
+    "custom": "カスタムフォーマット",
+    "customScheme": "カスタムスキーム",
+    "dateTime": "日付と時刻",
+    "deepLinkUrl": "ディープリンクURL",
+    "description": "説明",
+    "deviceAddress": "デバイスアドレス（MAC）",
+    "deviceName": "デバイス名（オプション）",
+    "digits": "数字",
+    "documentsMedia": "文書とメディア",
+    "dropbox": "ドロップボックス",
+    "email": "メール",
+    "emailAddress": "メールアドレス",
+    "encryption": "暗号化",
+    "end": "終わり",
+    "endDate": "終了日",
+    "enterprise": "エンタープライズ",
+    "epcSepa": "EPC / SEPA（EU）",
+    "equipment": "装備",
+    "ethereum": "イーサリアム",
+    "event": "iCalendarイベント",
+    "eventName": "イベント名",
+    "eventRsvp": "イベントRSVPリンク",
+    "eventTicket": "イベントチケット",
+    "expiryDate": "有効期限（オプション）",
+    "facebook": "フェイスブック",
+    "fallbackUrl": "フォールバックURL（オプション）",
+    "fax": "ファックス",
+    "fileType": "ファイルタイプ",
+    "fileUrl": "ファイル/ドキュメントURL",
+    "firstName": "ファーストネーム",
+    "forceHttps": "HTTPSを強制する",
+    "fullName": "フルネーム",
+    "furniture": "家具",
+    "geo": "地理位置情報",
     "github": "GitHub",
-    "googleDrive": "Google Drive",
-    "gs1DigitalLink": "GS1 Digital Link",
-    "gtin": "GTIN (Global Trade Item Number)",
-    "hidden": "Hidden Network",
-    "homePhone": "Home Phone",
+    "googleDrive": "Googleドライブ",
+    "gs1DigitalLink": "GS1デジタルリンク",
+    "gtin": "GTIN（世界貿易品目番号）",
+    "hidden": "隠されたネットワーク",
+    "homePhone": "自宅電話",
     "iban": "IBAN",
-    "idType": "ID Type",
-    "image": "Image",
-    "instagram": "Instagram",
-    "inventoryItem": "Inventory Item",
-    "iosUniversal": "iOS Universal",
-    "issuer": "Issuer",
-    "itAsset": "IT Asset",
-    "label": "Label (optional)",
-    "lastName": "Last Name",
-    "latitude": "Latitude",
-    "linkType": "Link Type",
+    "idType": "IDタイプ",
+    "image": "イメージ",
+    "instagram": "インスタグラム",
+    "inventoryItem": "在庫品目",
+    "iosUniversal": "iOSユニバーサル",
+    "issuer": "発行者",
+    "itAsset": "IT資産",
+    "label": "ラベル（オプション）",
+    "lastName": "姓",
+    "latitude": "緯度",
+    "linkType": "リンクタイプ",
     "linkedin": "LinkedIn",
-    "litecoin": "Litecoin",
-    "location": "Location",
-    "locationNetwork": "Location & Network",
-    "longitude": "Longitude",
-    "lookupUrl": "Lookup URL (optional)",
-    "marketing": "Marketing",
-    "marketingTags": "Marketing Tags",
-    "maxLengthGuard": "Max Length Guard",
-    "mecard": "MeCard Contact",
-    "merchantName": "Merchant Name (optional)",
-    "message": "Message",
-    "messageOptional": "Message (optional)",
+    "litecoin": "ライトコイン",
+    "location": "場所",
+    "locationNetwork": "場所とネットワーク",
+    "longitude": "経度",
+    "lookupUrl": "ルックアップURL（オプション）",
+    "marketing": "マーケティング",
+    "marketingTags": "マーケティングタグ",
+    "maxLengthGuard": "マックスレングスガード",
+    "mecard": "MeCardコンタクト",
+    "merchantName": "販売者名（任意）",
+    "message": "メッセージ",
+    "messageOptional": "メッセージ（オプション）",
     "messagingLink": "WhatsApp / Telegram / Signal",
-    "messenger": "Messenger",
-    "mobileNumber": "Mobile Number",
-    "mobilePhone": "Mobile Phone",
-    "name": "Name",
-    "nationalIdTaxId": "National ID / Tax ID",
-    "nickname": "Nickname",
-    "normalizeNewlines": "Normalize Newlines",
-    "note": "Note",
-    "oneDrive": "OneDrive",
-    "openNoPassword": "Open (No Password)",
-    "organization": "Organization",
-    "other": "Other",
-    "otpAuth": "OTP Authenticator",
-    "otpType": "Type",
-    "password": "Password",
-    "payeeName": "Payee Name",
-    "payments": "Payments (Open Specs)",
-    "paynow": "PayNow (Singapore)",
-    "phone": "Phone",
-    "phoneUsername": "Phone/Username",
-    "pix": "PIX (Brazil)",
-    "pixKey": "PIX Key",
-    "plainText": "Plain Text",
-    "platform": "Platform",
-    "prefilledMessage": "Pre-filled Message (optional)",
-    "profileUrl": "Profile URL",
+    "messenger": "メッセンジャー",
+    "mobileNumber": "携帯電話番号",
+    "mobilePhone": "携帯電話",
+    "name": "名前",
+    "nationalIdTaxId": "国民ID/納税者ID",
+    "nickname": "ニックネーム",
+    "normalizeNewlines": "改行を正規化する",
+    "note": "ノート",
+    "oneDrive": "ワンドライブ",
+    "openNoPassword": "開く（パスワードなし）",
+    "organization": "組織",
+    "other": "その他",
+    "otpAuth": "OTP認証子",
+    "otpType": "タイプ",
+    "password": "パスワード",
+    "payeeName": "受取人名",
+    "payments": "支払い（オープン仕様）",
+    "paynow": "PayNow（シンガポール）",
+    "phone": "電話",
+    "phoneUsername": "電話番号/ユーザー名",
+    "pix": "PIX（ブラジル）",
+    "pixKey": "PIXキー",
+    "plainText": "プレーンテキスト",
+    "platform": "プラットフォーム",
+    "prefilledMessage": "事前入力メッセージ（オプション）",
+    "profileUrl": "プロフィールURL",
     "promptPayId": "PromptPay ID",
-    "promptpay": "PromptPay (Thailand)",
-    "proxyType": "Proxy Type",
-    "rawData": "Raw Data",
-    "recipient": "Recipient",
-    "reference": "Reference",
-    "referenceOptional": "Reference (optional)",
-    "resolverDomain": "Resolver Domain",
+    "promptpay": "PromptPay（タイ）",
+    "proxyType": "プロキシタイプ",
+    "rawData": "生データ",
+    "recipient": "受取人",
+    "reference": "参考",
+    "referenceOptional": "参照（オプション）",
+    "resolverDomain": "リゾルバドメイン",
     "rsvpUrl": "RSVP URL",
-    "searchQuery": "Search Query (optional)",
-    "seat": "Seat",
-    "secretBase32": "Secret (Base32)",
-    "sectionZone": "Section/Zone",
-    "securityType": "Security Type",
-    "serialNumber": "Serial Number (optional)",
-    "service": "Service",
-    "shortLink": "Short Link Redirect",
-    "shortUrl": "Short URL",
-    "signal": "Signal",
+    "searchQuery": "検索クエリ（オプション）",
+    "seat": "シート",
+    "secretBase32": "シークレット（Base32）",
+    "sectionZone": "セクション/ゾーン",
+    "securityType": "セキュリティタイプ",
+    "serialNumber": "シリアル番号（オプション）",
+    "service": "サービス",
+    "shortLink": "ショートリンクリダイレクト",
+    "shortUrl": "短縮URL",
+    "signal": "シグナル",
     "sms": "SMS",
-    "smsMms": "SMS / MMS",
-    "socialMessaging": "Social & Messaging",
-    "socialProfile": "Social Profile",
-    "ssid": "Network Name (SSID)",
-    "start": "Start",
-    "startDate": "Start Date",
-    "state": "State/Province",
-    "street": "Street",
-    "subject": "Subject",
-    "subjectOptional": "Subject (optional)",
-    "summary": "Event Title",
-    "tel": "Phone Number",
-    "telegram": "Telegram",
-    "text": "Text Content",
-    "ticketId": "Ticket ID",
-    "tiktok": "TikTok",
-    "title": "Title",
-    "transactionNote": "Transaction Note (optional)",
-    "trimWhitespace": "Trim Whitespace",
-    "uenMobile": "UEN/Mobile Number",
-    "universalLink": "Universal Link",
-    "upi": "UPI (India)",
-    "upiId": "UPI ID (VPA)",
+    "smsMms": "SMS/MMS",
+    "socialMessaging": "ソーシャル＆メッセージング",
+    "socialProfile": "ソーシャルプロフィール",
+    "ssid": "ネットワーク名（SSID）",
+    "start": "スタート",
+    "startDate": "開始日",
+    "state": "州/県",
+    "street": "ストリート",
+    "subject": "主題",
+    "subjectOptional": "件名（任意）",
+    "summary": "イベントタイトル",
+    "tel": "電話番号",
+    "telegram": "電報",
+    "text": "テキストコンテンツ",
+    "ticketId": "チケットID",
+    "tiktok": "ティックトック",
+    "title": "タイトル",
+    "transactionNote": "取引メモ（オプション）",
+    "trimWhitespace": "空白をトリムする",
+    "uenMobile": "UEN/携帯電話番号",
+    "universalLink": "ユニバーサルリンク",
+    "upi": "UPI（インド）",
+    "upiId": "UPI ID（VPA）",
     "url": "URL",
     "utmCampaign": "utm_campaign",
     "utmContent": "utm_content",
-    "utmLink": "UTM Campaign Link",
+    "utmLink": "UTMキャンペーンリンク",
     "utmMedium": "utm_medium",
     "utmSource": "utm_source",
     "utmTerm": "utm_term",
-    "validateInput": "Validate Input",
-    "validationOptions": "Validation Options",
-    "validationUrl": "Validation URL (optional)",
-    "vcard": "vCard Contact",
-    "vehicle": "Vehicle",
-    "venue": "Venue",
-    "vevent": "Calendar Event",
-    "viber": "Viber",
-    "video": "Video",
-    "walletAddress": "Address",
-    "website": "Website",
+    "validateInput": "入力を検証",
+    "validationOptions": "検証オプション",
+    "validationUrl": "検証URL（オプション）",
+    "vcard": "vCard連絡先",
+    "vehicle": "車両",
+    "venue": "会場",
+    "vevent": "カレンダーイベント",
+    "viber": "バイバー",
+    "video": "ビデオ",
+    "walletAddress": "住所",
+    "website": "ウェブサイト",
     "whatsapp": "WhatsApp",
     "wifi": "WiFi",
-    "wifiNetwork": "WiFi Network",
-    "wordDocument": "Word Document",
-    "workPhone": "Work Phone",
+    "wifiNetwork": "WiFiネットワーク",
+    "wordDocument": "Word文書",
+    "workPhone": "勤務先電話番号",
     "youtube": "YouTube",
-    "zip": "ZIP/Postal Code"
+    "zip": "郵便番号"
   },
   "preview": {
-    "qrCodePreview": "QR Code Preview - Click Export to download",
-    "simulating": "Simulating",
-    "simulationActive": "Environmental simulation active - Preview shows how QR code may appear under different conditions"
+    "qrCodePreview": "QRコードプレビュー - ダウンロードするにはエクスポートをクリックしてください",
+    "simulating": "シミュレーション",
+    "simulationActive": "環境シミュレーションが有効です - プレビューでは、さまざまな条件下でのQRコードの表示方法が表示されます"
   },
   "qr": {
-    "additionalBorder": "Additional border beyond quiet zone",
-    "alphanumeric": "Alphanumeric",
-    "auto": "Auto",
-    "autoMin": "Auto (min: {{version}})",
-    "autoOptimal": "Auto (Optimal)",
-    "byteUtf8": "Byte / UTF-8",
+    "additionalBorder": "静穏地帯を超えた追加境界線",
+    "alphanumeric": "英数字",
+    "auto": "オート",
+    "autoMin": "自動（最小：{{version}}）",
+    "autoOptimal": "自動（最適）",
+    "byteUtf8": "バイト/UTF-8",
     "contrastRatio": "{{count}}:1",
-    "encodingMode": "Encoding Mode",
-    "enforceMinQuietZone": "Enforce Min Quiet Zone",
-    "enforceMinQuietZoneDesc": "Ensure ≥4 module margin",
-    "errorCorrection": "Error Correction",
-    "extraBorderModules": "Extra Border Modules",
-    "high": "H - High (30%)",
-    "kanji": "Kanji",
-    "low": "L - Low (7%)",
-    "margin": "Quiet Zone (Margin)",
-    "mask": "Mask Pattern",
-    "medium": "M - Medium (15%)",
-    "moduleSize": "Module Size",
+    "encodingMode": "エンコードモード",
+    "enforceMinQuietZone": "最小静寂ゾーンの強制",
+    "enforceMinQuietZoneDesc": "4モジュール以上のマージンを確保する",
+    "errorCorrection": "誤り訂正",
+    "extraBorderModules": "追加境界モジュール",
+    "high": "H - 高（30％）",
+    "kanji": "漢字",
+    "low": "L - 低（7％）",
+    "margin": "クワイエットゾーン（マージン）",
+    "mask": "マスクパターン",
+    "medium": "M - 中（15％）",
+    "moduleSize": "モジュールサイズ",
     "nDegrees": "{{count}}°",
-    "nModules": "{{count}} modules",
-    "nMs": "{{count}}ms",
+    "nModules": "{{count}}モジュール",
+    "nMs": "{{count}}ミリ秒",
     "nPercent": "{{count}}%",
-    "nPx": "{{count}}px",
-    "numericOnly": "Numeric Only",
-    "quartile": "Q - Quartile (25%)",
-    "version": "Version"
+    "nPx": "“{{count}}ピクセル”",
+    "numericOnly": "数字のみ",
+    "quartile": "Q - 四分位数（25％）",
+    "version": "バージョン"
   },
   "render": {
-    "addColor": "Add Color",
-    "alignmentStyle": "Alignment Pattern Style",
-    "background": "Background",
-    "byBrightness": "By Brightness",
-    "byCluster": "By Cluster",
-    "byOverlay": "By Overlay",
-    "byPosition": "By Position",
-    "ceil": "Ceil",
-    "circle": "Circle",
-    "classic": "Classic",
-    "colorPalette": "Color Palette",
-    "conic": "Conic",
-    "connected": "Connected",
-    "contrastGuard": "Contrast Guard",
-    "cornerRadius": "Corner Radius",
-    "crispEdges": "Crisp Edges",
-    "crispEdgesDesc": "Use image-rendering: pixelated for sharp edges",
-    "dashed": "Dashed",
-    "diamond": "Diamond",
-    "dotRotation": "Dot Rotation",
-    "dots": "Dots",
-    "eyeInnerStyle": "Eye Inner Style",
-    "eyeOuterStyle": "Eye Outer Style",
-    "eyeScale": "Eye Scale",
-    "finderStyle": "Finder Pattern Style",
-    "floor": "Floor",
-    "foreground": "Foreground",
-    "frameStyle": "Frame Style",
-    "frameText": "Frame Text",
-    "gapMode": "Gap Mode",
-    "gradient": "Gradient",
-    "gradientAngle": "Gradient Angle",
-    "gradientColors": "Colors",
-    "gradientType": "Gradient Type",
-    "inset": "Inset",
-    "linear": "Linear",
-    "matchFinder": "Match Finder",
-    "matchModule": "Match Module",
-    "minContrastRatio": "Min Contrast Ratio",
-    "moduleGap": "Module Gap",
-    "negativeSpace": "Negative Space",
-    "none": "None",
-    "perModuleColorMode": "Per-Module Color Mode",
-    "pixelSnap": "Pixel Snap",
-    "radial": "Radial",
-    "round": "Round",
-    "rounded": "Rounded",
-    "roundedFrame": "Rounded Frame",
-    "shape": "Module Style",
-    "sharp": "Sharp",
-    "smooth": "Smooth",
-    "solid": "Solid",
-    "square": "Square",
-    "squares": "Squares",
-    "sticker": "Sticker",
-    "stroke": "Stroke",
-    "style": "Style",
-    "tag": "Tag",
-    "timingStyle": "Timing Pattern Style",
-    "transparentBg": "Transparent Background"
+    "addColor": "色を加える",
+    "alignmentStyle": "アライメントパターンスタイル",
+    "background": "背景",
+    "byBrightness": "明るさによって",
+    "byCluster": "クラスター別",
+    "byOverlay": "オーバーレイで",
+    "byPosition": "ポジション別",
+    "ceil": "セイル",
+    "circle": "サークル",
+    "classic": "クラシック",
+    "colorPalette": "カラーパレット",
+    "conic": "コニック",
+    "connected": "つながる",
+    "contrastGuard": "コントラストガード",
+    "cornerRadius": "コーナー半径",
+    "crispEdges": "クリスプエッジ",
+    "crispEdgesDesc": "画像レンダリングを使用する：シャープなエッジにはピクセル化",
+    "dashed": "ダッシュド",
+    "diamond": "ダイヤモンド",
+    "dotRotation": "ドット回転",
+    "dots": "ドット",
+    "eyeInnerStyle": "アイインナースタイル",
+    "eyeOuterStyle": "アイアウタースタイル",
+    "eyeScale": "目玉",
+    "finderStyle": "ファインダーパターンスタイル",
+    "floor": "フロア",
+    "foreground": "前景",
+    "frameStyle": "フレームスタイル",
+    "frameText": "フレームテキスト",
+    "gapMode": "ギャップモード",
+    "gradient": "グラデーション",
+    "gradientAngle": "グラデーションアングル",
+    "gradientColors": "色彩",
+    "gradientType": "グラデーションタイプ",
+    "inset": "インセット",
+    "linear": "リニア",
+    "matchFinder": "マッチファインダー",
+    "matchModule": "マッチモジュール",
+    "minContrastRatio": "最小コントラスト比",
+    "moduleGap": "モジュールギャップ",
+    "negativeSpace": "ネガティブスペース",
+    "none": "なし",
+    "perModuleColorMode": "モジュールごとのカラーモード",
+    "pixelSnap": "ピクセルスナップ",
+    "radial": "ラジアル",
+    "round": "ラウンド",
+    "rounded": "丸みを帯びた",
+    "roundedFrame": "丸いフレーム",
+    "shape": "モジュールスタイル",
+    "sharp": "シャープ",
+    "smooth": "スムーズ",
+    "solid": "ソリッド",
+    "square": "スクエア",
+    "squares": "スクエア",
+    "sticker": "ステッカー",
+    "stroke": "脳卒中",
+    "style": "スタイル",
+    "tag": "タグ",
+    "timingStyle": "タイミングパターンスタイル",
+    "transparentBg": "透明な背景"
   },
   "safety": {
-    "analysis": "Safety Analysis",
-    "autoPickEcc": "Auto-Pick ECC",
-    "autoPickVersion": "Auto-Pick Version",
-    "autoReduceIntensity": "Auto-Reduce Intensity",
-    "autoTuning": "Auto-Tuning",
-    "balanced": "Balanced",
-    "contrast": "Contrast Ratio",
-    "contrastCheck": "Contrast Check",
-    "contrastRatio": "Contrast Ratio",
-    "excellent": "Excellent",
-    "fair": "Fair",
-    "good": "Good",
-    "lockAlignment": "Lock Alignment",
-    "lockFinders": "Lock Finders",
-    "lockFormat": "Lock Format Info",
-    "lockTiming": "Lock Timing",
-    "lockVersion": "Lock Version Info",
-    "minModuleSize": "Min Module Size",
-    "minQuietZone": "Min Quiet Zone",
-    "off": "Off",
-    "poor": "Poor",
-    "protectionLocks": "Protection Locks",
-    "qualityAnalysis": "Quality Analysis",
-    "quietZone": "Quiet Zone",
-    "safetyMode": "Safety Mode",
-    "scanability": "Scanability Score",
-    "showHeatmap": "Show Heatmap",
-    "simulateBlur": "Simulate Blur",
-    "simulateNoise": "Simulate Noise",
-    "simulateRotation": "Simulate Rotation",
-    "strict": "Strict",
-    "untilScannable": "Until scannable"
+    "analysis": "安全性分析",
+    "autoPickEcc": "自動選択ECC",
+    "autoPickVersion": "自動選択バージョン",
+    "autoReduceIntensity": "自動輝度低下",
+    "autoTuning": "オートチューニング",
+    "balanced": "バランスの取れた",
+    "contrast": "コントラスト比",
+    "contrastCheck": "コントラストチェック",
+    "contrastRatio": "コントラスト比",
+    "excellent": "素晴らしい",
+    "fair": "公平",
+    "good": "良い",
+    "lockAlignment": "アライメントをロック",
+    "lockFinders": "ロックファインダー",
+    "lockFormat": "ロックフォーマット情報",
+    "lockTiming": "ロックタイミング",
+    "lockVersion": "バージョン情報をロック",
+    "minModuleSize": "最小モジュールサイズ",
+    "minQuietZone": "ミン・クワイエット・ゾーン",
+    "off": "オフ",
+    "poor": "貧しい",
+    "protectionLocks": "保護ロック",
+    "qualityAnalysis": "品質分析",
+    "quietZone": "静かなゾーン",
+    "safetyMode": "セーフティモード",
+    "scanability": "スキャン可能性スコア",
+    "showHeatmap": "ヒートマップを表示",
+    "simulateBlur": "ぼかしをシミュレート",
+    "simulateNoise": "ノイズをシミュレートする",
+    "simulateRotation": "回転をシミュレートする",
+    "strict": "厳格",
+    "untilScannable": "スキャンできるようになるまで"
   },
   "sections": {
-    "animation": "Animation",
-    "metadata": "Metadata",
-    "output": "Output",
-    "overlay": "Overlay / Image",
-    "payload": "Payload / Data",
-    "qrEncoding": "QR Encoding",
-    "rendering": "Rendering",
-    "safety": "Safety Analysis",
-    "share": "Share",
-    "watermark": "Watermark"
+    "animation": "アニメーション",
+    "metadata": "メタデータ",
+    "output": "出力",
+    "overlay": "オーバーレイ/画像",
+    "payload": "ペイロード/データ",
+    "qrEncoding": "QRエンコード",
+    "rendering": "レンダリング",
+    "safety": "安全性分析",
+    "share": "シェア",
+    "watermark": "透かし"
   },
   "share": {
-    "copied": "Copied!",
-    "copyLink": "Copy Link",
-    "directLink": "Direct Link",
-    "directLinkDesc": "Generate shareable URL",
-    "embedHtml": "Embed HTML",
-    "embedHtmlDesc": "Generate embed code",
-    "encodeAllParams": "Encode All Parameters",
-    "encodeAllParamsDesc": "Include all settings in URL",
-    "markdown": "Markdown",
-    "quickShare": "Quick Share",
-    "twitter": "X/Twitter",
+    "copied": "コピーしました！",
+    "copyLink": "リンクをコピー",
+    "directLink": "直接リンク",
+    "directLinkDesc": "共有可能なURLを生成する",
+    "embedHtml": "HTMLを埋め込む",
+    "embedHtmlDesc": "埋め込みコードを生成する",
+    "encodeAllParams": "すべてのパラメータをエンコード",
+    "encodeAllParamsDesc": "URLにすべての設定を含める",
+    "markdown": "マークダウン",
+    "quickShare": "クイックシェア",
+    "twitter": "X/ツイッター",
     "whatsapp": "WhatsApp"
   },
   "tiers": {
-    "advanced": "Advanced",
-    "basic": "Basic",
-    "professional": "Pro",
-    "watchAdForPro": "Watch ad to unlock Professional features for 24 hours"
+    "advanced": "上級",
+    "basic": "ベーシック",
+    "professional": "プロ",
+    "watchAdForPro": "広告を視聴すると、プロフェッショナル機能が24時間ロック解除されます"
   },
   "watermark": {
-    "behindQr": "Behind QR",
-    "blendMode": "Blend Mode",
-    "bottomLeft": "Bottom Left",
-    "bottomRight": "Bottom Right",
-    "center": "Center",
-    "corners": "Corners",
-    "edges": "Edges",
-    "enabled": "Enable Watermark",
-    "fontColor": "Font Color",
-    "fontSize": "Font Size",
-    "image": "Image",
-    "multiply": "Multiply",
-    "normal": "Normal",
-    "opacity": "Opacity",
-    "overlay": "Overlay",
-    "pattern": "Pattern",
-    "position": "Position",
-    "quietZone": "Quiet Zone",
-    "screen": "Screen",
-    "text": "Text",
-    "textPlaceholder": "© Company Name",
-    "topLeft": "Top Left",
-    "topRight": "Top Right",
-    "type": "Type",
-    "uploadImage": "Upload Image"
+    "behindQr": "QRの背後",
+    "blendMode": "ブレンドモード",
+    "bottomLeft": "左下",
+    "bottomRight": "右下",
+    "center": "センター",
+    "corners": "コーナーズ",
+    "edges": "エッジ",
+    "enabled": "透かしを有効にする",
+    "fontColor": "フォントカラー",
+    "fontSize": "フォントサイズ",
+    "image": "イメージ",
+    "multiply": "増殖する",
+    "normal": "通常",
+    "opacity": "不透明度",
+    "overlay": "オーバーレイ",
+    "pattern": "パターン",
+    "position": "ポジション",
+    "quietZone": "静かなゾーン",
+    "screen": "スクリーン",
+    "text": "テキスト",
+    "textPlaceholder": "©会社名",
+    "topLeft": "左上",
+    "topRight": "右上",
+    "type": "タイプ",
+    "uploadImage": "画像をアップロード"
   }
 }
