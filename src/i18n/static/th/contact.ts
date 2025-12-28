@@ -3,74 +3,74 @@ import { LAST_UPDATED, CONTACT_EMAIL } from '../types'
 
 export const contact: PageDefinition = {
   title: 'ติดต่อเรา',
-  description: 'เรายินดีรับความคิดเห็น รายงานบั๊ก คำขอฟีเจอร์ และคำถามทั่วไป',
+  description: 'เรายินดีรับข้อเสนอแนะ รายงานบั๊ก คำขอฟีเจอร์ และการสอบถามทั่วไป',
   lastUpdated: LAST_UPDATED,
   sections: [
     {
-      heading: 'วิธีติดต่อเรา',
+      heading: 'ช่องทางการติดต่อ',
       paragraphs: [
-        `เรามีหลายวิธีติดต่อขึ้นอยู่กับความต้องการของคุณ เราอ่านทุกข้อความ, แม้ว่าเวลาตอบสนองอาจแตกต่างตามปริมาณและประเภทคำถาม`
-      ]
+        'เรามีหลายช่องทางให้คุณติดต่อเราได้ตามความต้องการ เราอ่านทุกข้อความ แต่เวลาตอบกลับอาจแตกต่างกันตามปริมาณและประเภทของการสอบถาม',
+      ],
     },
     {
       heading: 'อีเมล',
       paragraphs: [
-        `สำหรับการติดต่อทั้งหมด: ${CONTACT_EMAIL}`,
-        `This is the most reliable way to reach us and is recommended for detailed questions, business enquiries, or if the contact form does not work on your device.`
-      ]
+        `สำหรับทุกการสอบถาม: ${CONTACT_EMAIL}`,
+        'นี่เป็นวิธีที่เชื่อถือได้ที่สุดในการติดต่อเรา และแนะนำสำหรับคำถามที่ละเอียด การติดต่อด้านธุรกิจ หรือหากแบบฟอร์มติดต่อไม่ทำงานบนอุปกรณ์ของคุณ',
+      ],
     },
     {
       heading: 'แบบฟอร์มติดต่อ',
       paragraphs: [
-        `Use the form below to send us a message directly. If the form does not submit successfully, please use email instead.`
-      ]
+        'ใช้แบบฟอร์มด้านล่างเพื่อส่งข้อความถึงเราโดยตรง หากแบบฟอร์มส่งไม่สำเร็จ โปรดใช้อีเมลแทน',
+      ],
     },
     {
-      heading: 'ประเภทของคำถาม',
+      heading: 'ประเภทการสอบถาม',
       bullets: [
-        `General questions: Questions about how to use ANQR, feature explanations, or general feedback.`,
-        `Bug reports: Please include your browser, operating system, steps to reproduce, and any error messages you see.`,
-        `Feature requests: Suggestions for new features or improvements. We consider all requests though we cannot promise implementation.`,
-        `Business enquiries: Partnership opportunities, licensing questions, or commercial use enquiries.`,
-        `Privacy requests: Requests to exercise your privacy rights under GDPR, CCPA, or other privacy laws (see Privacy Policy).`,
-        'DMCA/Copyright: See the DMCA section below for takedown notice requirements.'
-      ]
+        'คำถามทั่วไป: คำถามเกี่ยวกับวิธีใช้ ANQR คำอธิบายฟีเจอร์ หรือข้อเสนอแนะทั่วไป',
+        'รายงานบั๊ก: โปรดระบุเบราว์เซอร์ ระบบปฏิบัติการ ขั้นตอนการทำซ้ำ และข้อความผิดพลาดใด ๆ ที่คุณพบ',
+        'คำขอฟีเจอร์: ข้อเสนอสำหรับฟีเจอร์ใหม่หรือการปรับปรุง เราพิจารณาทุกคำขอ แต่ไม่สามารถรับประกันการนำไปใช้ได้',
+        'การสอบถามด้านธุรกิจ: โอกาสความร่วมมือ คำถามเรื่องลิขสิทธิ์การใช้งาน หรือการใช้งานเชิงพาณิชย์',
+        'คำขอด้านความเป็นส่วนตัว: คำขอเพื่อใช้สิทธิความเป็นส่วนตัวของคุณภายใต้ GDPR, CCPA หรือกฎหมายความเป็นส่วนตัวอื่น ๆ (ดูนโยบายความเป็นส่วนตัว)',
+        'DMCA/ลิขสิทธิ์: ดูส่วน DMCA ด้านล่างสำหรับข้อกำหนดของคำแจ้งให้ลบเนื้อหา',
+      ],
     },
     {
-      heading: 'ระยะเวลาการตอบกลับ',
+      heading: 'เวลาตอบกลับ',
       paragraphs: [
-        `We aim to respond to enquiries within 5-7 business days. Privacy-related requests will be addressed within 30 days as required by law.`,
-        `During busy periods, response times may be longer. For urgent matters, please indicate "URGENT" in your subject line.`
-      ]
+        'เรามุ่งตอบกลับภายใน 5–7 วันทำการ คำขอที่เกี่ยวกับความเป็นส่วนตัวจะดำเนินการภายใน 30 วันตามที่กฎหมายกำหนด',
+        'ในช่วงที่มีการติดต่อจำนวนมาก เวลาตอบกลับอาจนานขึ้น สำหรับเรื่องเร่งด่วน โปรดระบุ "URGENT" ในหัวข้ออีเมล',
+      ],
     },
     {
       heading: 'ก่อนติดต่อเรา',
       paragraphs: [
-        `Please check our Documentation page for answers to common questions about how to use ANQR features. Many questions about QR code generation, styling, and export options are covered there.`
-      ]
+        'โปรดดูหน้าคู่มือ/เอกสารประกอบ (Documentation) ของเราเพื่อหาคำตอบสำหรับคำถามที่พบบ่อยเกี่ยวกับการใช้ฟีเจอร์ของ ANQR คำถามเกี่ยวกับการสร้าง QR การปรับแต่งสไตล์ และตัวเลือกการส่งออกมีอธิบายไว้ที่นั่น',
+      ],
     },
     {
-      heading: 'การแจ้งลิขสิทธิ์ DMCA',
+      heading: 'ประกาศลิขสิทธิ์ DMCA',
       paragraphs: [
-        `If you believe that content available on ANQR infringes your copyright, you may submit a Digital Millennium Copyright Act (DMCA) takedown notice. To be valid, your notice must include:`
+        'หากคุณเชื่อว่าเนื้อหาบน ANQR ละเมิดลิขสิทธิ์ของคุณ คุณสามารถส่งคำแจ้งให้ลบเนื้อหาตามกฎหมาย Digital Millennium Copyright Act (DMCA) ได้ เพื่อให้มีผล คำแจ้งของคุณต้องมี:',
       ],
       bullets: [
-        'A physical or electronic signature of the copyright owner or authorised agent.',
-        'Identification of the copyrighted work claimed to have been infringed.',
-        `Identification of the material that is claimed to be infringing, with information sufficient to locate it.`,
-        'Your contact information (address, telephone number, and email address).',
-        `A statement that you have a good faith belief that use of the material is not authorised by the copyright owner.`,
-        `A statement, under penalty of perjury, that the information in your notice is accurate and that you are the copyright owner or authorised to act on their behalf.`
-      ]
+        'ลายเซ็นจริงหรืออิเล็กทรอนิกส์ของเจ้าของลิขสิทธิ์หรือผู้แทนที่ได้รับอนุญาต',
+        'การระบุผลงานที่มีลิขสิทธิ์ซึ่งอ้างว่าถูกละเมิด',
+        'การระบุเนื้อหาที่อ้างว่าละเมิด พร้อมข้อมูลเพียงพอสำหรับการค้นหา',
+        'ข้อมูลติดต่อของคุณ (ที่อยู่ หมายเลขโทรศัพท์ และอีเมล)',
+        'คำแถลงว่าคุณเชื่อโดยสุจริตว่าการใช้เนื้อหานั้นไม่ได้รับอนุญาตจากเจ้าของลิขสิทธิ์',
+        'คำแถลงภายใต้โทษฐานให้การเท็จว่า ข้อมูลในคำแจ้งของคุณถูกต้อง และคุณเป็นเจ้าของลิขสิทธิ์หรือได้รับอนุญาตให้ดำเนินการแทน',
+      ],
     },
     {
       heading: 'ติดต่อ DMCA',
       paragraphs: [
-        `ส่งหนังสือแจ้ง DMCA ไปที่: ${CONTACT_EMAIL}`,
-        `Please include "DMCA Notice" in the subject line. We will respond to valid notices in accordance with applicable law. Note that ANQR generates QR codes locally on users devices and does not host user-generated content.`
-      ]
-    }
-  ]
+        `ส่งคำแจ้ง DMCA ไปที่: ${CONTACT_EMAIL}`,
+        'โปรดใส่คำว่า "DMCA Notice" ในหัวข้ออีเมล เราจะตอบกลับคำแจ้งที่ถูกต้องตามกฎหมายที่เกี่ยวข้อง โปรดทราบว่า ANQR สร้าง QR โค้ดแบบโลคัลบนอุปกรณ์ของผู้ใช้ และไม่ได้โฮสต์เนื้อหาที่ผู้ใช้สร้างขึ้น',
+      ],
+    },
+  ],
 };
 
 export default contact;
