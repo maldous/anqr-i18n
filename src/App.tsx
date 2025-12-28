@@ -10,7 +10,7 @@ import { useQRGenerator } from '@/hooks/useQRGenerator'
 import { useQRStore, type Tier } from '@/store/qr-store'
 import { parseUrlParams } from '@/modules/share-utils'
 import type { GalleryCategory } from '@/data/gallery-items'
-import i18n from '@/i18n'
+import i18n, { isRtlLanguage } from '@/i18n'
 import { useTranslation } from 'react-i18next'
 
 type PageView = 'editor' | 'gallery' | StaticPageType
@@ -92,11 +92,16 @@ function App() {
   const showStaticPage = ['about', 'privacy', 'terms', 'contact', 'docs'].includes(currentPage)
   const showEditor = currentPage === 'editor'
 
-  // Update document title for editor page when language changes
+  // Update document title and RTL direction when language changes
   useEffect(() => {
     if (showEditor) {
       document.title = `${t('app.name')} - ${t('app.tagline')}`
     }
+    
+    // Apply RTL direction based on current language
+    const isRtl = isRtlLanguage(i18n.language)
+    document.documentElement.dir = isRtl ? 'rtl' : 'ltr'
+    document.documentElement.lang = i18n.language.split('-')[0]
   }, [showEditor, i18n.language])
 
   // Load settings from URL parameters on mount (editor share links)
@@ -409,12 +414,12 @@ function App() {
         {/* Fixed Footer - visible on all platforms */}
         {/* On native: always positioned just above AdMob banner (~70px). Same position on all pages. */}
         <footer 
-          className={`border-t bg-background py-2 fixed left-0 right-0 z-40 transition-all duration-300 ${sidebarOpen && showEditor ? 'lg:ml-96' : ''}`}
+          className={`border-t bg-background py-2 fixed left-0 right-0 z-40 transition-all duration-300 ${sidebarOpen && showEditor ? 'lg:ms-96' : ''}`}
           style={{ bottom: Capacitor.isNativePlatform() ? '50px' : '0' }}
         >
           {/* Inner wrapper with margins to center over QR area (between ad columns) */}
           <div className="px-4 lg:mx-[160px] text-center flex items-center justify-center min-h-[24px]">
-            <p className="text-xs text-muted-foreground">
+            <p className="text-xs text-muted-foreground" dir="auto">
               <a
                 href="/docs"
                 className="hover:underline"

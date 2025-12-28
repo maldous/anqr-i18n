@@ -191,10 +191,10 @@ export function Preview({ sidebarOpen = true }: PreviewProps) {
   const hasActiveSimulation = qa.simulateBlurPx > 0 || qa.simulateNoise > 0 || qa.simulateRotationDeg > 0
 
   return (
-    <main className={`flex-1 flex flex-col lg:flex-row bg-background overflow-auto scrollbar-hide transition-all duration-300 ${sidebarOpen ? 'lg:ml-96' : ''}`}>
+    <main className={`flex-1 flex flex-col lg:flex-row bg-background overflow-auto scrollbar-hide transition-all duration-300 ${sidebarOpen ? 'lg:ms-96' : ''}`}>
       {/* Desktop Left Column Ad - Skyscraper 160x600, always visible */}
       {/* Fixed height based on viewport to prevent layout shift from AdSense */}
-      <div className="hidden lg:flex flex-col items-center justify-center w-[180px] h-[calc(100vh-8rem)] bg-background flex-shrink-0 pl-3 pr-2">
+      <div className="hidden lg:flex flex-col items-center justify-center w-[180px] h-[calc(100vh-8rem)] bg-background flex-shrink-0 ps-3 pe-2">
         <AdUnit slot="left-skyscraper" width={160} height={600} format="vertical" />
       </div>
       
@@ -323,7 +323,7 @@ export function Preview({ sidebarOpen = true }: PreviewProps) {
       
       {/* Desktop Right Column Ad - Skyscraper 160x600 */}
       {/* Fixed height based on viewport to prevent layout shift from AdSense */}
-      <div className="hidden lg:flex flex-col items-center justify-center w-[180px] h-[calc(100vh-8rem)] bg-background flex-shrink-0 pl-2 pr-3">
+      <div className="hidden lg:flex flex-col items-center justify-center w-[180px] h-[calc(100vh-8rem)] bg-background flex-shrink-0 ps-2 pe-3">
         <AdUnit slot="right-skyscraper" width={160} height={600} format="vertical" />
       </div>
     </main>
