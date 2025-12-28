@@ -236,7 +236,7 @@ export function ShareSection() {
             </Button>
           </div>
           <p className="text-xs text-muted-foreground">
-            {paramCount} {paramCount === 1 ? 'setting' : 'settings'} encoded in URL
+            {t('share.settingsEncodedInUrl', { count: paramCount })}
           </p>
         </div>
       )}

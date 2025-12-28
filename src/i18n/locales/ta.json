@@ -92,7 +92,9 @@
     "success": "வெற்றி",
     "upload": "பதிவேற்று",
     "viewAll": "அனைத்தையும் காண்",
-    "yes": "ஆம்"
+    "yes": "ஆம்",
+    "labelAdv": "மேம்பட்ட",
+    "labelPro": "ப்ரோ"
   },
   "contact": {
     "bugReports": "பக் அறிக்கைகள்",
@@ -1553,7 +1555,9 @@
     "markdown": "Markdown",
     "quickShare": "விரைவு பகிர்வு",
     "twitter": "X/Twitter",
-    "whatsapp": "WhatsApp"
+    "whatsapp": "WhatsApp",
+    "settingsEncodedInUrl_one": "{{count}} அமைப்பு URL-ல் குறியாக்கப்பட்டது",
+    "settingsEncodedInUrl_other": "{{count}} அமைப்புகள் URL-ல் குறியாக்கப்பட்டுள்ளன"
   },
   "terms": {
     "acceptance": "விதிமுறைகள் ஏற்றுக்கொள்ளுதல்",

@@ -92,7 +92,9 @@
     "success": "สำเร็จ",
     "upload": "อัปโหลด",
     "viewAll": "ดูทั้งหมด",
-    "yes": "ใช่"
+    "yes": "ใช่",
+    "labelAdv": "ขั้นสูง",
+    "labelPro": "โปร"
   },
   "contact": {
     "bugReports": "รายงานบั๊ก",
@@ -1553,7 +1555,9 @@
     "markdown": "Markdown",
     "quickShare": "แชร์ด่วน",
     "twitter": "X/Twitter",
-    "whatsapp": "WhatsApp"
+    "whatsapp": "WhatsApp",
+    "settingsEncodedInUrl_one": "{{count}} การตั้งค่าถูกรหัสใน URL",
+    "settingsEncodedInUrl_other": "{{count}} การตั้งค่าถูกรหัสใน URL"
   },
   "terms": {
     "acceptance": "การยอมรับข้อกำหนด",

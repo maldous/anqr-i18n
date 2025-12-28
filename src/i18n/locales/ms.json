@@ -92,7 +92,9 @@
     "success": "Berjaya",
     "upload": "Muat Naik",
     "viewAll": "Lihat Semua",
-    "yes": "Ya"
+    "yes": "Ya",
+    "labelAdv": "Lanj.",
+    "labelPro": "Prof."
   },
   "contact": {
     "bugReports": "Laporan Pepijat",
@@ -1553,7 +1555,9 @@
     "markdown": "Markdown",
     "quickShare": "Kongsi Pantas",
     "twitter": "X/Twitter",
-    "whatsapp": "WhatsApp"
+    "whatsapp": "WhatsApp",
+    "settingsEncodedInUrl_one": "{{count}} tetapan dikodkan dalam URL",
+    "settingsEncodedInUrl_other": "{{count}} tetapan dikodkan dalam URL"
   },
   "terms": {
     "acceptance": "Penerimaan Terma",

@@ -649,7 +649,9 @@
     "copied": "Copied!",
     "markdown": "Markdown",
     "twitter": "X/Twitter",
-    "whatsapp": "WhatsApp"
+    "whatsapp": "WhatsApp",
+    "settingsEncodedInUrl_one": "{{count}} setting encoded in URL",
+    "settingsEncodedInUrl_other": "{{count}} settings encoded in URL"
   },
   "gallery": {
     "title": "QR Code Gallery",
@@ -996,6 +998,8 @@
     "on": "On",
     "off": "Off",
     "yes": "Yes",
+    "labelAdv": "Adv.",
+    "labelPro": "Pro",
     "no": "No",
     "ok": "OK",
     "apply": "Apply",

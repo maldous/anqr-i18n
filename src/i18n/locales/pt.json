@@ -92,7 +92,9 @@
     "success": "Sucesso",
     "upload": "Enviar",
     "viewAll": "Ver Tudo",
-    "yes": "Sim"
+    "yes": "Sim",
+    "labelAdv": "Avan.",
+    "labelPro": "Prof."
   },
   "contact": {
     "bugReports": "Relato de bugs",
@@ -1553,7 +1555,9 @@
     "markdown": "Markdown",
     "quickShare": "Compartilhamento Rápido",
     "twitter": "X/Twitter",
-    "whatsapp": "WhatsApp"
+    "whatsapp": "WhatsApp",
+    "settingsEncodedInUrl_one": "{{count}} configuração codificada na URL",
+    "settingsEncodedInUrl_other": "{{count}} configurações codificadas na URL"
   },
   "terms": {
     "acceptance": "Aceitação dos termos",
