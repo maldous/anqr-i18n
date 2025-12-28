@@ -1,22 +1,22 @@
 {
   "animation": {
     "blueNoise": "蓝噪声",
-    "bounce": "弹跳（乒乓）",
+    "bounce": "往返（乒乓）",
     "colorCycle": "颜色循环",
     "crossfade": "交叉淡入淡出",
     "drift": "漂移",
     "enabled": "启用动画",
-    "everyNFrames": "每{{count}}帧",
+    "everyNFrames": "每隔 {{count}} 帧",
     "exportAllFrames": "导出所有帧",
     "fadeIn": "淡入",
     "flickerSafe": "防闪烁",
     "frameStep": "帧步长",
     "interpolation": "插值",
-    "loop": "循环动画",
+    "loop": "循环播放",
     "maxFrames": "最大帧数",
     "moduleJitter": "模块抖动",
     "moduleJitterWarning": "⚠️ 可能影响可扫描性",
-    "morph": "变形",
+    "morph": "形变",
     "none": "无",
     "off": "关闭",
     "pattern": "生成图案",
@@ -28,7 +28,7 @@
     "slideIn": "滑入",
     "speed": "帧速度",
     "startFrame": "起始帧",
-    "temporalDither": "时序抖动",
+    "temporalDither": "时间抖动",
     "wave": "波浪"
   },
   "languages": {
@@ -41,7 +41,7 @@
     "pt": "葡萄牙语",
     "id": "印尼语",
     "vi": "越南语",
-    "tl": "他加禄语",
+    "tl": "塔加洛语",
     "ja": "日语",
     "ko": "韩语",
     "es": "西班牙语",
@@ -81,10 +81,10 @@
     "next": "下一步",
     "no": "否",
     "none": "无",
-    "off": "关",
+    "off": "关闭",
     "ok": "确定",
     "on": "开",
-    "previous": "上一步",
+    "previous": "上一页",
     "reset": "重置",
     "save": "保存",
     "search": "搜索",
@@ -106,7 +106,7 @@
     "all": "全部",
     "animationOverlay": "动画",
     "blendModes": "混合模式",
-    "collapse": "收起",
+    "collapse": "折叠",
     "colorModes": "颜色模式",
     "colors": "颜色",
     "contentTypes": "内容类型",
@@ -118,251 +118,251 @@
     "items": {
       "anim-blue-noise": {
         "description": "带动画的蓝噪声阈值",
-        "title": "动画蓝噪声"
+        "title": "蓝噪声动画"
       },
       "anim-blue-noise-i100": {
-        "description": "100%动画蓝噪声",
-        "title": "蓝噪声100%"
+        "description": "100% 蓝噪声动画",
+        "title": "蓝噪声 100%"
       },
       "anim-blue-noise-i50": {
-        "description": "50%动画蓝噪声",
-        "title": "蓝噪声50%"
+        "description": "50% 蓝噪声动画",
+        "title": "蓝噪声 50%"
       },
       "anim-blue-noise-i75": {
-        "description": "75%动画蓝噪声",
-        "title": "蓝噪声75%"
+        "description": "75% 蓝噪声动画",
+        "title": "蓝噪声 75%"
       },
       "anim-brightness": {
         "description": "带动画的亮度",
-        "title": "动画亮度"
+        "title": "亮度动画"
       },
       "anim-colormode-bw": {
         "description": "黑白动画叠加",
-        "title": "动画黑白"
+        "title": "黑白动画"
       },
       "anim-colormode-color": {
         "description": "彩色动画叠加",
-        "title": "动画彩色"
+        "title": "彩色动画"
       },
       "anim-colormode-grayscale": {
         "description": "灰度动画叠加",
-        "title": "动画灰度"
+        "title": "灰度动画"
       },
       "anim-dithered": {
         "description": "带动画的误差扩散",
-        "title": "动画抖动"
+        "title": "抖动动画"
       },
       "anim-duotone": {
         "description": "带动画的双色调",
-        "title": "动画双色调"
+        "title": "双色调动画"
       },
       "anim-halftone": {
-        "description": "带动画的半色调点",
-        "title": "动画半色调"
+        "description": "带动画的网点半调",
+        "title": "半调动画"
       },
       "anim-mosaic": {
         "description": "带动画的马赛克",
-        "title": "动画马赛克"
+        "title": "马赛克动画"
       },
       "blend-classic": {
-        "description": "经典调色板抖动叠加",
+        "description": "使用经典调色板的抖动叠加",
         "title": "经典混合"
       },
       "blend-forest": {
-        "description": "森林调色板抖动叠加",
+        "description": "使用森林调色板的抖动叠加",
         "title": "森林混合"
       },
       "blend-navy": {
-        "description": "海军蓝调色板抖动叠加",
+        "description": "使用海军蓝调色板的抖动叠加",
         "title": "海军蓝混合"
       },
       "blend-wine": {
-        "description": "酒红调色板抖动叠加",
+        "description": "使用酒红调色板的抖动叠加",
         "title": "酒红混合"
       },
       "cmode-blue-noise-bw": {
         "description": "黑白蓝噪声",
-        "title": "蓝噪声黑白"
+        "title": "蓝噪声（黑白）"
       },
       "cmode-blue-noise-color": {
         "description": "彩色蓝噪声",
-        "title": "蓝噪声彩色"
+        "title": "蓝噪声（彩色）"
       },
       "cmode-dithered-color": {
         "description": "彩色抖动",
-        "title": "抖动彩色"
+        "title": "抖动（彩色）"
       },
       "cmode-dithered-grayscale": {
         "description": "灰度抖动",
-        "title": "抖动灰度"
+        "title": "抖动（灰度）"
       },
       "cmode-halftone-bw": {
-        "description": "黑白半色调",
-        "title": "半色调黑白"
+        "description": "黑白半调",
+        "title": "半调（黑白）"
       },
       "cmode-halftone-color": {
-        "description": "彩色半色调",
-        "title": "半色调彩色"
+        "description": "彩色半调",
+        "title": "半调（彩色）"
       },
       "color-coral": {
-        "description": "#e85d04 在 #ffe8d6",
+        "description": "#e85d04 搭配 #ffe8d6",
         "title": "珊瑚"
       },
       "color-coral-dots": {
-        "description": "珊瑚配点状模块",
-        "title": "珊瑚点状"
+        "description": "带点状模块的珊瑚",
+        "title": "珊瑚点点"
       },
       "color-crimson": {
-        "description": "#9d0208 在 #ffccd5",
-        "title": "深红"
+        "description": "#9d0208 搭配 #ffccd5",
+        "title": "绯红"
       },
       "color-forest": {
-        "description": "#1b4332 在 #d8f3dc",
+        "description": "#1b4332 搭配 #d8f3dc",
         "title": "森林"
       },
       "color-forest-dots": {
-        "description": "森林配点状模块",
-        "title": "森林点状"
+        "description": "带点状模块的森林",
+        "title": "森林点点"
       },
       "color-gold": {
-        "description": "#7f5539 在 #ffe8cc",
+        "description": "#7f5539 搭配 #ffe8cc",
         "title": "金色"
       },
       "color-inverted": {
-        "description": "#ffffff 在 #000000",
-        "title": "反转"
+        "description": "#ffffff 搭配 #000000",
+        "title": "反色"
       },
       "color-midnight": {
-        "description": "#1a1a2e 在 #eef1ff",
+        "description": "#1a1a2e 搭配 #eef1ff",
         "title": "午夜"
       },
       "color-midnight-dots": {
-        "description": "午夜配点状模块",
-        "title": "午夜点状"
+        "description": "带点状模块的午夜",
+        "title": "午夜点点"
       },
       "color-navy": {
-        "description": "#001d3d 在 #a2d2ff",
+        "description": "#001d3d 搭配 #a2d2ff",
         "title": "海军蓝"
       },
       "color-ocean": {
-        "description": "#023e8a 在 #caf0f8",
+        "description": "#023e8a 搭配 #caf0f8",
         "title": "海洋"
       },
       "color-ocean-dots": {
-        "description": "海洋配点状模块",
-        "title": "海洋点状"
+        "description": "带点状模块的海洋",
+        "title": "海洋点点"
       },
       "color-royal": {
-        "description": "#4a0080 在 #f5e6ff",
-        "title": "皇家"
+        "description": "#4a0080 搭配 #f5e6ff",
+        "title": "皇家紫"
       },
       "color-royal-dots": {
-        "description": "皇家配点状模块",
-        "title": "皇家点状"
+        "description": "带点状模块的皇家紫",
+        "title": "皇家紫点点"
       },
       "color-slate": {
-        "description": "#343a40 在 #e9ecef",
-        "title": "石板"
+        "description": "#343a40 搭配 #e9ecef",
+        "title": "石板灰"
       },
       "color-sunset": {
-        "description": "#bf0603 在 #fff3b0",
+        "description": "#bf0603 搭配 #fff3b0",
         "title": "日落"
       },
       "color-sunset-dots": {
-        "description": "日落配点状模块",
-        "title": "日落点状"
+        "description": "带点状模块的日落",
+        "title": "日落点点"
       },
       "color-teal": {
-        "description": "#006d77 在 #e0f4f5",
-        "title": "青色"
+        "description": "#006d77 搭配 #e0f4f5",
+        "title": "青绿"
       },
       "combo-anim-dots-halftone": {
-        "description": "点状模块动画半色调",
-        "title": "动画点状+半色调"
+        "description": "带点状模块的动画半色调",
+        "title": "动画点点 + 半色调"
       },
       "combo-anim-rounded-blue-noise": {
-        "description": "圆角动画蓝噪声",
-        "title": "动画圆角+蓝噪声"
+        "description": "带圆角的动画蓝噪声",
+        "title": "动画圆角 + 蓝噪声"
       },
       "combo-connected-pixelate-teal": {
-        "description": "连接模块像素化叠加",
-        "title": "连接+像素化青"
+        "description": "连接模块配像素化叠加",
+        "title": "连接 + 像素化 青绿"
       },
       "combo-connected-square": {
-        "description": "连接模块配方形定位器",
-        "title": "连接+方形"
+        "description": "连接模块配方形定位框",
+        "title": "连接 + 方形"
       },
       "combo-connected-wave-ocean": {
-        "description": "波浪效果的连接模块",
-        "title": "连接+波浪海洋"
+        "description": "连接模块配波浪效果",
+        "title": "连接 + 波浪 海洋"
       },
       "combo-diamond-blue-noise-navy": {
-        "description": "蓝噪声的菱形模块",
-        "title": "菱形+蓝噪声海军"
+        "description": "菱形模块配蓝噪声",
+        "title": "菱形 + 蓝噪声 海军蓝"
       },
       "combo-diamond-duotone-crimson": {
-        "description": "菱形模块双色调效果",
-        "title": "菱形+双色调深红"
+        "description": "菱形模块配双色效果",
+        "title": "菱形 + 双色 绯红"
       },
       "combo-diamond-rounded": {
-        "description": "菱形模块配圆角定位器",
-        "title": "菱形+圆角"
+        "description": "菱形模块配圆角定位框",
+        "title": "菱形 + 圆角"
       },
       "combo-dots-circle": {
-        "description": "点状模块配圆形定位器",
-        "title": "点状+圆形"
+        "description": "点状模块配圆形定位框",
+        "title": "点点 + 圆形"
       },
       "combo-dots-extreme-forest": {
-        "description": "点状最大可见度",
-        "title": "点状+极端森林"
+        "description": "点点：最高可见性",
+        "title": "点点 + 极致森林"
       },
       "combo-dots-halftone-gold": {
-        "description": "半色调叠加的点状模块",
-        "title": "点状+半色调金"
+        "description": "点状模块配半色调叠加",
+        "title": "点点 + 半色调 金色"
       },
       "combo-dots-outline-slate": {
-        "description": "点状模块边缘检测",
-        "title": "点状+轮廓石板"
+        "description": "点状模块配边缘检测",
+        "title": "点点 + 轮廓 石板灰"
       },
       "combo-rounded-dithered-royal": {
-        "description": "圆角风格经典抖动",
-        "title": "圆角+抖动皇家"
+        "description": "经典抖动（圆角风格）",
+        "title": "圆角 + 抖动 皇家紫"
       },
       "combo-rounded-mosaic-sunset": {
-        "description": "马赛克叠加的圆角模块",
-        "title": "圆角+马赛克日落"
+        "description": "圆角模块配马赛克叠加",
+        "title": "圆角 + 马赛克 日落"
       },
       "combo-rounded-rounded": {
-        "description": "圆角模块配圆角定位器",
-        "title": "圆角+圆角"
+        "description": "圆角模块配圆角定位框",
+        "title": "圆角 + 圆角"
       },
       "combo-rounded-subpixel-coral": {
         "description": "高细节子像素渲染",
-        "title": "圆角+子像素珊瑚"
+        "title": "圆角 + 子像素 珊瑚"
       },
       "content-email": {
-        "description": "珊瑚色Mailto链接",
+        "description": "珊瑚配色的邮件链接",
         "title": "电子邮件地址"
       },
       "content-event": {
-        "description": "圆角紫色iCal事件",
+        "description": "iCal 事件（圆角皇家紫）",
         "title": "日历事件"
       },
       "content-geo": {
-        "description": "连接金色地图坐标",
+        "description": "地图坐标（连接金色）",
         "title": "地理位置"
       },
       "content-sms": {
-        "description": "菱形青色预填短信",
-        "title": "短信"
+        "description": "带菱形青绿色的预填短信",
+        "title": "短信消息"
       },
       "content-vcard": {
         "description": "圆角海军蓝风格的联系人卡片",
-        "title": "vCard联系人"
+        "title": "vCard 联系人"
       },
       "content-wifi": {
-        "description": "点状森林绿WiFi配置",
-        "title": "WiFi网络"
+        "description": "点状森林绿的 WiFi 配置",
+        "title": "WiFi 网络"
       },
       "dither-adaptive-threshold": {
         "description": "自适应阈值",
@@ -374,142 +374,142 @@
       },
       "dither-blue-noise-error-diffusion": {
         "description": "混合蓝噪声",
-        "title": "蓝噪声+误差"
+        "title": "蓝噪声 + 误差"
       },
       "dither-error-diffusion": {
-        "description": "Floyd-Steinberg风格",
+        "description": "Floyd–Steinberg 风格",
         "title": "误差扩散"
       },
       "dither-kernel-atkinson": {
-        "description": "Atkinson误差扩散",
+        "description": "Atkinson 误差扩散",
         "title": "Atkinson"
       },
       "dither-kernel-burkes": {
-        "description": "Burkes误差扩散",
+        "description": "Burkes 误差扩散",
         "title": "Burkes"
       },
       "dither-kernel-floyd-steinberg": {
-        "description": "Floyd-Steinberg误差扩散",
-        "title": "Floyd-Steinberg"
+        "description": "Floyd–Steinberg 误差扩散",
+        "title": "Floyd–Steinberg"
       },
       "dither-kernel-jarvis-judice-ninke": {
-        "description": "Jarvis-Judice-Ninke误差扩散",
-        "title": "Jarvis-Judice-Ninke"
+        "description": "Jarvis–Judice–Ninke 误差扩散",
+        "title": "Jarvis–Judice–Ninke"
       },
       "dither-kernel-sierra": {
-        "description": "Sierra误差扩散",
+        "description": "Sierra 误差扩散",
         "title": "Sierra"
       },
       "dither-kernel-stucki": {
-        "description": "Stucki误差扩散",
+        "description": "Stucki 误差扩散",
         "title": "Stucki"
       },
       "dither-ordered-bayer": {
-        "description": "Bayer矩阵抖动",
-        "title": "有序Bayer"
+        "description": "Bayer 矩阵抖动",
+        "title": "有序 Bayer"
       },
       "dither-perceptual": {
         "description": "亮度加权",
         "title": "感知"
       },
       "dither-strength-100": {
-        "description": "100%抖动强度",
-        "title": "强度100%"
+        "description": "抖动强度 100%",
+        "title": "强度 100%"
       },
       "dither-strength-20": {
-        "description": "20%抖动强度",
-        "title": "强度20%"
+        "description": "抖动强度 20%",
+        "title": "强度 20%"
       },
       "dither-strength-40": {
-        "description": "40%抖动强度",
-        "title": "强度40%"
+        "description": "抖动强度 40%",
+        "title": "强度 40%"
       },
       "dither-strength-60": {
-        "description": "60%抖动强度",
-        "title": "强度60%"
+        "description": "抖动强度 60%",
+        "title": "强度 60%"
       },
       "dither-strength-80": {
-        "description": "80%抖动强度",
-        "title": "强度80%"
+        "description": "抖动强度 80%",
+        "title": "强度 80%"
       },
       "dither-white-noise": {
         "description": "随机噪声阈值",
         "title": "白噪声"
       },
       "enc-ecc-h": {
-        "description": "30%纠错",
-        "title": "纠错高"
+        "description": "30% 纠错",
+        "title": "高纠错（ECC）"
       },
       "enc-ecc-l": {
-        "description": "7%纠错",
-        "title": "纠错低"
+        "description": "7% 纠错",
+        "title": "低纠错（ECC）"
       },
       "enc-ecc-m": {
-        "description": "15%纠错",
-        "title": "纠错中"
+        "description": "15% 纠错",
+        "title": "中等纠错（ECC）"
       },
       "enc-ecc-q": {
-        "description": "25%纠错",
-        "title": "纠错四分之一"
+        "description": "25% 纠错",
+        "title": "ECC 四分位（Q）"
       },
       "enc-v0": {
-        "description": "自动版本选择",
+        "description": "自动选择版本",
         "title": "自动版本"
       },
       "enc-v12": {
-        "description": "版本12二维码",
-        "title": "版本12"
+        "description": "版本 12 二维码",
+        "title": "版本 12"
       },
       "enc-v6": {
-        "description": "最适合叠加(无中心眼)",
-        "title": "版本6"
+        "description": "最适合叠加（无中心定位眼）",
+        "title": "版本 6"
       },
       "enc-v6-h": {
-        "description": "版本6高纠错",
-        "title": "V6+纠错高"
+        "description": "版本 6（高纠错）",
+        "title": "V6 + 高纠错"
       },
       "enc-v6-l": {
-        "description": "版本6低纠错",
-        "title": "V6+纠错低"
+        "description": "版本 6（低纠错）",
+        "title": "V6 + 低纠错"
       },
       "enc-v9": {
-        "description": "版本9二维码",
-        "title": "版本9"
+        "description": "版本 9 二维码",
+        "title": "版本 9"
       },
       "enc-v9-h": {
-        "description": "版本9高纠错",
-        "title": "V9+纠错高"
+        "description": "版本 9（高纠错）",
+        "title": "V9 + 高纠错"
       },
       "enc-v9-l": {
-        "description": "版本9低纠错",
-        "title": "V9+纠错低"
+        "description": "版本 9（低纠错）",
+        "title": "V9 + 低纠错"
       },
       "finder-circle": {
         "description": "圆形定位图案",
-        "title": "圆形定位器"
+        "title": "圆形定位点"
       },
       "finder-rounded": {
         "description": "圆角定位图案",
-        "title": "圆角定位器"
+        "title": "圆角定位点"
       },
       "finder-square": {
         "description": "方形定位图案",
-        "title": "方形定位器"
+        "title": "方形定位点"
       },
       "halftone-classic": {
         "description": "经典调色板半色调",
         "title": "经典半色调"
       },
       "halftone-forest": {
-        "description": "森林调色板半色调",
+        "description": "森林配色半色调",
         "title": "森林半色调"
       },
       "halftone-navy": {
-        "description": "海军蓝调色板半色调",
+        "description": "海军蓝配色半色调",
         "title": "海军蓝半色调"
       },
       "halftone-wine": {
-        "description": "酒红调色板半色调",
+        "description": "酒红配色半色调",
         "title": "酒红半色调"
       },
       "img-blend": {
@@ -541,31 +541,31 @@
         "title": "抖动"
       },
       "img-dithered-i100": {
-        "description": "100%强度抖动",
-        "title": "抖动100%"
+        "description": "100% 强度抖动",
+        "title": "抖动 100%"
       },
       "img-dithered-i50": {
-        "description": "50%强度抖动",
-        "title": "抖动50%"
+        "description": "50% 强度抖动",
+        "title": "抖动 50%"
       },
       "img-dithered-i75": {
-        "description": "75%强度抖动",
-        "title": "抖动75%"
+        "description": "75% 强度抖动",
+        "title": "抖动 75%"
       },
       "img-duotone": {
-        "description": "双色映射",
-        "title": "双色调"
+        "description": "两色映射",
+        "title": "双色"
       },
       "img-extreme": {
         "description": "最大图像可见度",
-        "title": "极端"
+        "title": "极致"
       },
       "img-halftone": {
-        "description": "经典半色调点",
+        "description": "经典半色调圆点",
         "title": "半色调"
       },
       "img-mosaic": {
-        "description": "马赛克瓷砖效果",
+        "description": "马赛克拼贴效果",
         "title": "马赛克"
       },
       "img-outline": {
@@ -585,19 +585,19 @@
         "title": "波浪"
       },
       "mosaic-classic": {
-        "description": "经典调色板马赛克",
+        "description": "经典配色马赛克",
         "title": "经典马赛克"
       },
       "mosaic-forest": {
-        "description": "森林调色板马赛克",
+        "description": "森林配色马赛克",
         "title": "森林马赛克"
       },
       "mosaic-navy": {
-        "description": "海军蓝调色板马赛克",
+        "description": "海军蓝配色马赛克",
         "title": "海军蓝马赛克"
       },
       "mosaic-wine": {
-        "description": "酒红调色板马赛克",
+        "description": "酒红配色马赛克",
         "title": "酒红马赛克"
       },
       "plain-basic": {
@@ -605,156 +605,156 @@
         "title": "经典"
       },
       "plain-ecc-l": {
-        "description": "最小纠错",
-        "title": "纠错低(7%)"
+        "description": "最低纠错",
+        "title": "纠错级别 低（7%）"
       },
       "plain-ecc-q": {
         "description": "中高纠错",
-        "title": "纠错四分之一(25%)"
+        "title": "纠错级别 Q（25%）"
       },
       "plain-v12": {
-        "description": "大型多重对齐",
-        "title": "版本12"
+        "description": "大尺寸（多对齐点）",
+        "title": "版本 12"
       },
       "plain-v6": {
-        "description": "较大无中心眼",
-        "title": "版本6"
+        "description": "更大（无中心眼）",
+        "title": "版本 6"
       },
       "plain-v9": {
-        "description": "更大带中心眼",
-        "title": "版本9"
+        "description": "更大（带中心眼）",
+        "title": "版本 9"
       },
       "prep-blur-1": {
-        "description": "1px高斯模糊",
-        "title": "模糊1px"
+        "description": "1px 高斯模糊",
+        "title": "模糊 1px"
       },
       "prep-blur-2": {
-        "description": "2px高斯模糊",
-        "title": "模糊2px"
+        "description": "2px 高斯模糊",
+        "title": "模糊 2px"
       },
       "prep-blur-4": {
-        "description": "4px高斯模糊",
-        "title": "模糊4px"
+        "description": "4px 高斯模糊",
+        "title": "模糊 4px"
       },
       "prep-brightness-n25": {
         "description": "亮度调暗",
-        "title": "亮度-25"
+        "title": "亮度 -25"
       },
       "prep-brightness-n50": {
         "description": "亮度调暗",
-        "title": "亮度-50"
+        "title": "亮度 -50"
       },
       "prep-brightness-p25": {
         "description": "亮度调亮",
-        "title": "亮度+25"
+        "title": "亮度 +25"
       },
       "prep-brightness-p50": {
         "description": "亮度调亮",
-        "title": "亮度+50"
+        "title": "亮度 +50"
       },
       "prep-contrast-n50": {
         "description": "低对比度",
-        "title": "对比度-50"
+        "title": "对比度 -50"
       },
       "prep-contrast-p100": {
         "description": "高对比度",
-        "title": "对比度+100"
+        "title": "对比度 +100"
       },
       "prep-contrast-p50": {
         "description": "高对比度",
-        "title": "对比度+50"
+        "title": "对比度 +50"
       },
       "prep-edge-canny": {
-        "description": "Canny边缘检测",
-        "title": "边缘Canny"
+        "description": "Canny 边缘检测",
+        "title": "边缘（Canny）"
       },
       "prep-edge-sobel": {
-        "description": "Sobel边缘检测",
-        "title": "边缘Sobel"
+        "description": "Sobel 边缘检测",
+        "title": "边缘（Sobel）"
       },
       "prep-gamma-05": {
-        "description": "伽马校正0.5",
-        "title": "伽马0.5"
+        "description": "伽马校正 0.5",
+        "title": "伽马 0.5"
       },
       "prep-gamma-15": {
-        "description": "伽马校正1.5",
-        "title": "伽马1.5"
+        "description": "伽马校正 1.5",
+        "title": "伽马 1.5"
       },
       "prep-gamma-20": {
-        "description": "伽马校正2.0",
-        "title": "伽马2.0"
+        "description": "伽马校正 2.0",
+        "title": "伽马 2.0"
       },
       "prep-hue-90": {
-        "description": "色相旋转90度",
-        "title": "色相+90°"
+        "description": "色相旋转 90 度",
+        "title": "色相 +90°"
       },
       "prep-invert": {
-        "description": "反转颜色",
-        "title": "反转"
+        "description": "颜色反转",
+        "title": "反色"
       },
       "prep-posterize-2": {
-        "description": "2色级别",
-        "title": "色调分离2"
+        "description": "2 级色阶",
+        "title": "色调分离 2"
       },
       "prep-posterize-4": {
-        "description": "4色级别",
-        "title": "色调分离4"
+        "description": "4 级色阶",
+        "title": "色调分离 4"
       },
       "prep-posterize-8": {
-        "description": "8色级别",
-        "title": "色调分离8"
+        "description": "8 级色阶",
+        "title": "色调分离 8"
       },
       "prep-saturation-n100": {
         "description": "去饱和",
-        "title": "饱和度-100"
+        "title": "饱和度 -100"
       },
       "prep-saturation-n50": {
         "description": "降低饱和度",
-        "title": "饱和度-50"
+        "title": "饱和度 -50"
       },
       "prep-saturation-p100": {
-        "description": "过饱和",
-        "title": "饱和度+100"
+        "description": "过度饱和",
+        "title": "饱和度 +100"
       },
       "prep-saturation-p50": {
-        "description": "过饱和",
-        "title": "饱和度+50"
+        "description": "过度饱和",
+        "title": "饱和度 +50"
       },
       "prep-sharpen-100": {
-        "description": "100%锐化",
-        "title": "锐化100%"
+        "description": "锐化 100%",
+        "title": "锐化 100%"
       },
       "prep-sharpen-25": {
-        "description": "25%锐化",
-        "title": "锐化25%"
+        "description": "锐化 25%",
+        "title": "锐化 25%"
       },
       "prep-sharpen-50": {
-        "description": "50%锐化",
-        "title": "锐化50%"
+        "description": "锐化 50%",
+        "title": "锐化 50%"
       },
       "prep-threshold-128": {
-        "description": "128二值化阈值",
-        "title": "阈值128"
+        "description": "二值阈值 128",
+        "title": "阈值 128"
       },
       "prep-threshold-192": {
-        "description": "192二值化阈值",
-        "title": "阈值192"
+        "description": "二值阈值 192",
+        "title": "阈值 192"
       },
       "prep-threshold-64": {
-        "description": "64二值化阈值",
-        "title": "阈值64"
+        "description": "二值阈值 64",
+        "title": "阈值 64"
       },
       "style-connected": {
-        "description": "连接模块样式",
-        "title": "连接模块"
+        "description": "连通模块样式",
+        "title": "连通模块"
       },
       "style-diamond": {
         "description": "菱形模块样式",
         "title": "菱形模块"
       },
       "style-dots": {
-        "description": "点状模块样式",
-        "title": "点状模块"
+        "description": "圆点模块样式",
+        "title": "圆点模块"
       },
       "style-rounded": {
         "description": "圆角模块样式",
@@ -770,43 +770,43 @@
     "preprocessing": "预处理",
     "sections": {
       "animation-overlay": {
-        "description": "使用不同混合模式的动画GIF叠加",
-        "title": "动画叠加"
+        "description": "不同混合模式的动态 GIF 叠加",
+        "title": "动态叠加"
       },
       "blend-modes": {
         "description": "图像叠加的不同颜色混合",
         "title": "混合模式"
       },
       "color-modes": {
-        "description": "彩色、灰度和黑白处理",
-        "title": "颜色处理"
+        "description": "彩色、灰度与黑白处理",
+        "title": "色彩处理"
       },
       "colors": {
-        "description": "配色方案和主题调色板",
-        "title": "颜色和主题"
+        "description": "配色方案与主题调色板",
+        "title": "颜色与主题"
       },
       "content-types": {
-        "description": "不同的数据格式 - vCard、WiFi、邮件、短信、地理位置、日历",
+        "description": "不同载荷格式——vCard、WiFi、Email、SMS、Geo、Calendar",
         "title": "内容类型"
       },
       "dithering": {
-        "description": "不同的抖动方法和误差扩散核",
+        "description": "不同抖动方法与误差扩散核",
         "title": "抖动算法"
       },
       "encoding": {
-        "description": "不同的二维码版本和纠错级别",
-        "title": "二维码编码"
+        "description": "不同 QR 版本与纠错级别",
+        "title": "QR 编码"
       },
       "image-overlay": {
-        "description": "使用不同混合模式的静态图像叠加",
+        "description": "不同混合模式的静态图像叠加",
         "title": "图像叠加"
       },
       "plain": {
-        "description": "无叠加的标准二维码 - 不同版本和纠错级别",
-        "title": "普通二维码"
+        "description": "无叠加的标准 QR 码——不同版本与纠错",
+        "title": "普通 QR 码"
       },
       "power-combos": {
-        "description": "展示ANQR功能的精彩多功能组合",
+        "description": "展示 ANQR 能力的醒目多特性组合",
         "title": "强力组合"
       },
       "preprocessing": {
@@ -814,13 +814,13 @@
         "title": "图像预处理"
       },
       "styles": {
-        "description": "模块和定位图案的不同视觉样式",
-        "title": "模块和定位图案样式"
+        "description": "模块与定位图形的不同视觉样式",
+        "title": "模块与定位图样式"
       }
     },
     "showAll": "显示全部",
     "styles": "样式",
-    "subtitle": "探索ANQR创建的二维码示例",
+    "subtitle": "探索使用 ANQR 创建的二维码示例",
     "title": "二维码画廊",
     "tryThis": "试试这个"
   },
@@ -836,70 +836,70 @@
     "share": "分享"
   },
   "hints": {
-    "alignmentStyle": "对齐图案的样式（用于较大的二维码）",
-    "appLinkNote": "在移动应用程序中打开特定内容",
-    "autoDetect": "自动检测（当前内容需要v{{version}}+）",
-    "autoMinVersion": "0 = 自动，当前内容最低v{{version}}",
+    "alignmentStyle": "对齐图形样式（用于更大的二维码）",
+    "appLinkNote": "在移动应用中打开特定内容",
+    "autoDetect": "自动检测（当前内容需要 v{{version}}+）",
+    "autoMinVersion": "0 = 自动，当前内容最低 v{{version}}",
     "bgColorHex": "背景色十六进制代码",
-    "bizcardLegacy": "旧格式 - 考虑使用vCard代替",
-    "bluetoothNote": "注意：通过二维码配对蓝牙是供应商特定的，可能不适用于所有设备",
-    "bounceAnimation": "正向播放动画然后反向播放（乒乓）",
+    "bizcardLegacy": "旧版格式 - 建议改用 vCard",
+    "bluetoothNote": "注意：通过二维码进行蓝牙配对因厂商而异，可能无法在所有设备上工作",
+    "bounceAnimation": "正向播放后反向播放（乒乓）",
     "calendarNote": "订阅共享日历源",
-    "contrastGuard": "确保前景和背景之间的最小对比度",
+    "contrastGuard": "确保前景与背景之间的最小对比度比",
     "cornerRadius": "圆角模块的圆角半径百分比（0-100%）",
-    "crispEdges": "使用像素化渲染以获得锐利的模块边缘",
-    "customNote": "输入任何格式的原始数据。不会应用验证或格式化。",
-    "dotRotation": "旋转点样式模块（0-360度）",
-    "encodingMode": "数据编码模式 - 自动选择最高效的模式",
-    "enforceMinQuietZone": "强制最小4模块静区以提高扫描可靠性",
+    "crispEdges": "使用像素化渲染以获得清晰的模块边缘",
+    "customNote": "输入任意格式的原始数据。不进行验证或格式化。",
+    "dotRotation": "旋转点状模块（0-360 度）",
+    "encodingMode": "数据编码模式 - 自动选择最有效的模式",
+    "enforceMinQuietZone": "强制至少 4 个模块的静区，以提高扫描可靠性",
     "enterTextContent": "输入要编码到二维码中的文本内容",
-    "enterUrlContent": "输入要编码到二维码中的URL",
-    "epcSepaNote": "用于SEPA信用转账的欧洲支付委员会二维码",
-    "errorCorrection": "纠错级别 - 更高 = 更强的损伤抗性但二维码更大",
+    "enterUrlContent": "输入要编码到二维码中的 URL",
+    "epcSepaNote": "欧洲支付委员会用于 SEPA 贷记转账的二维码",
+    "errorCorrection": "纠错级别 - 越高=抗损能力越强，但二维码更大",
     "extraBorder": "静区之外的额外边框模块（0-10）",
-    "eyeInnerStyle": "定位图案内方块的样式",
-    "eyeOuterStyle": "定位图案外环的样式",
-    "eyeScale": "相对于默认大小缩放定位图案（50-150%）",
+    "eyeInnerStyle": "定位图内方块样式",
+    "eyeOuterStyle": "定位图外环样式",
+    "eyeScale": "按默认大小比例缩放定位图（50-150%）",
     "fgColorHex": "前景色十六进制代码",
-    "finderStyle": "角落定位图案的样式",
-    "forceHttps": "自动将HTTP URL转换为HTTPS",
-    "frameStyle": "在二维码周围添加装饰框",
-    "frameText": "显示在框架上的文字",
-    "gapMode": "模块之间间隙的渲染方式",
-    "gradient": "为二维码应用渐变效果",
-    "gs1Note": "GS1数字链接用于产品识别和追溯",
-    "higherEccLargerQr": "更高 = 更强的损伤抗性，更大的二维码",
-    "loopAnimation": "连续循环动画",
-    "maxLengthGuard": "防止编码超过二维码容量的内容",
-    "minContrastRatio": "要强制执行的最小对比度（1-21，WCAG AA要求4.5:1）",
-    "moduleGap": "模块之间的间隙百分比 (0-30%)",
+    "finderStyle": "角部定位图样式",
+    "forceHttps": "自动将 HTTP URL 转换为 HTTPS",
+    "frameStyle": "为二维码添加装饰边框",
+    "frameText": "在边框上显示的文本",
+    "gapMode": "模块之间的间隙如何渲染",
+    "gradient": "对二维码应用渐变效果",
+    "gs1Note": "用于产品识别与可追溯性的 GS1 Digital Link",
+    "higherEccLargerQr": "越高=抗损能力越强，二维码越大",
+    "loopAnimation": "连续循环播放动画",
+    "maxLengthGuard": "阻止编码超过二维码容量的内容",
+    "minContrastRatio": "要强制的最小对比度比（1-21，WCAG AA 要求 4.5:1）",
+    "moduleGap": "模块间隙百分比（0-30%）",
     "moduleJitterWarning": "⚠️ 可能影响可扫描性",
-    "moduleSize": "每个二维码模块的像素大小 (2-20px)",
+    "moduleSize": "每个二维码模块的像素大小（2-20px）",
     "moduleStyle": "二维码模块的视觉样式",
     "normalizeNewlines": "将不同的换行格式转换为标准格式",
     "outputFormat": "选择导出的输出文件格式",
     "paynowNote": "新加坡快速支付系统",
-    "perModuleColor": "如何为各个模块分配颜色",
+    "perModuleColor": "如何为单个模块分配颜色",
     "pickBgColor": "点击选择背景色",
     "pickFgColor": "点击选择前景色",
     "pixNote": "巴西即时支付系统",
     "pixelSnap": "如何将模块位置对齐到像素边界",
     "promptpayNote": "泰国国家电子支付系统",
-    "qrVersion": "二维码版本 (0=自动, 1-40 增加大小和容量)",
-    "quietZone": "二维码周围的静区边距 (0-10 模块, 建议: 4+)",
-    "rsvpNote": "链接到在线RSVP表单或活动注册页面",
-    "safetyMode": "安全分析模式 - 检查二维码可读性的严格程度",
+    "qrVersion": "二维码版本（0=自动，1-40 增加尺寸和容量）",
+    "quietZone": "二维码周围静区边距（0-10 模块，建议：4+）",
+    "rsvpNote": "链接到在线 RSVP 表单或活动注册页面",
+    "safetyMode": "安全性分析模式 - 检查二维码可读性的严格程度",
     "selectContentType": "选择要编码到二维码中的内容类型",
-    "shortLinkNote": "使用URL缩短服务创建动态/可追踪的二维码",
-    "timingStyle": "时序图案的样式（水平和垂直线）",
-    "transparentBg": "使背景透明而不是使用背景色",
-    "trimWhitespace": "删除前后空白",
-    "upiNote": "印度统一支付接口",
-    "utmCampaign": "用于活动跟踪的UTM活动参数",
-    "utmMedium": "用于活动跟踪的UTM媒介参数",
-    "utmSource": "用于活动跟踪的UTM来源参数",
-    "validateInput": "编码前验证输入数据",
-    "versionTooLow": "⚠️ 版本太低！需要最低v{{version}}"
+    "shortLinkNote": "使用 URL 缩短服务生成可动态/可追踪的二维码",
+    "timingStyle": "定时图样式（水平和垂直线）",
+    "transparentBg": "使背景透明，而不是使用背景色",
+    "trimWhitespace": "移除首尾空白字符",
+    "upiNote": "印度统一支付接口（UPI）",
+    "utmCampaign": "用于活动跟踪的 UTM campaign 参数",
+    "utmMedium": "用于活动跟踪的 UTM medium 参数",
+    "utmSource": "用于活动跟踪的 UTM source 参数",
+    "validateInput": "在编码前验证输入数据",
+    "versionTooLow": "⚠️ 版本过低！至少需要 v{{version}}"
   },
   "language": {
     "current": "语言",
@@ -913,7 +913,7 @@
     "copyrightPlaceholder": "© 2024 公司名称",
     "customMetadata": "自定义元数据",
     "description": "描述",
-    "descriptionPlaceholder": "二维码描述...",
+    "descriptionPlaceholder": "此二维码的描述...",
     "includeCreationTime": "包含创建时间",
     "key": "键",
     "keyPlaceholder": "键",
@@ -929,7 +929,7 @@
     "about": "关于",
     "contact": "联系",
     "docs": "指南",
-    "gallery": "画廊",
+    "gallery": "图库",
     "generator": "生成器",
     "guide": "指南",
     "privacy": "隐私",
@@ -937,25 +937,25 @@
   },
   "output": {
     "backgroundOverride": "背景覆盖",
-    "backgroundOverridePlaceholder": "留空使用默认",
+    "backgroundOverridePlaceholder": "留空使用默认值",
     "dithering": "抖动",
     "dpi": "DPI（打印）",
-    "embedRasterOverlay": "嵌入光栅叠加",
-    "exportAsAdditional": "另存为（附加）",
+    "embedRasterOverlay": "嵌入光栅叠加层",
+    "exportAsAdditional": "导出为（附加）",
     "filename": "文件名",
-    "floydSteinberg": "Floyd-Steinberg",
+    "floydSteinberg": "Floyd–Steinberg",
     "format": "格式",
     "gif": "GIF",
-    "gifSettings": "GIF设置",
+    "gifSettings": "GIF 设置",
     "height": "高度",
     "includeQuietZone": "包含静区",
-    "medianCut": "中值切割",
+    "medianCut": "Median Cut",
     "neuquant": "NeuQuant",
     "none": "无",
-    "octree": "八叉树",
+    "octree": "Octree",
     "off": "关闭",
     "ordered": "有序",
-    "outputSize": "输出大小",
+    "outputSize": "输出尺寸",
     "paletteSize": "调色板大小",
     "pdf": "PDF",
     "pixel": "像素",
@@ -965,11 +965,11 @@
     "quantizer": "量化器",
     "shapePrecision": "形状精度",
     "svg": "SVG",
-    "svgSettings": "SVG设置",
-    "transparentColor": "透明颜色",
+    "svgSettings": "SVG 设置",
+    "transparentColor": "透明色",
     "transparentColorPlaceholder": "#ffffff 或留空",
     "trueVector": "真矢量",
-    "trueVectorDesc": "使用路径而非嵌入光栅",
+    "trueVectorDesc": "使用路径而非嵌入的光栅图",
     "webp": "WebP",
     "width": "宽度"
   },
@@ -982,7 +982,7 @@
     "blend": "混合",
     "blendMode": "混合",
     "blueNoise": "蓝噪声",
-    "blueNoiseErrorDiffusion": "蓝噪声+误差扩散",
+    "blueNoiseErrorDiffusion": "蓝噪声 + 误差扩散",
     "blueNoiseMode": "蓝噪声",
     "blueNoiseThreshold": "蓝噪声阈值",
     "blur": "模糊",
@@ -992,9 +992,9 @@
     "burkes": "Burkes",
     "bw": "黑白",
     "cellSize": "单元大小",
-    "centerLogo": "中心标志",
-    "centerRule": "中心规则",
-    "clusteredDot": "聚集点",
+    "centerLogo": "中心徽标",
+    "centerRule": "居中规则",
+    "clusteredDot": "聚簇点",
     "colorDither": "颜色抖动",
     "colorMode": "颜色模式",
     "contain": "包含",
@@ -1002,37 +1002,37 @@
     "corsNote": "注意：图像必须允许跨域请求（CORS）",
     "cover": "覆盖",
     "cropImage": "裁剪图像",
-    "cropSize": "裁剪大小",
+    "cropSize": "裁剪尺寸",
     "diffusionKernel": "扩散核",
-    "disposalHandling": "处理方式",
+    "disposalHandling": "处置方式",
     "dither": "抖动",
     "ditherSettings": "抖动设置",
     "ditherStrength": "抖动强度",
     "dithered": "抖动",
     "ditheredMode": "抖动",
     "dotShape": "点形状",
-    "duotone": "双色调",
+    "duotone": "双色",
     "duotoneColors": "双色调颜色",
-    "duotoneMode": "双色调",
-    "eccAwareMode": "ECC感知模式",
+    "duotoneMode": "双色",
+    "eccAwareMode": "ECC 感知模式",
     "edge": "边缘检测",
     "edgeAware": "边缘感知",
     "enableCrop": "启用裁剪",
     "errorDiffusion": "误差扩散",
-    "extreme": "极端",
-    "extremeMode": "极端",
-    "finderOverride": "定位器覆盖",
+    "extreme": "极致",
+    "extremeMode": "极致",
+    "finderOverride": "定位图形覆盖",
     "fitMode": "适应模式",
     "flipX": "水平翻转",
     "flipY": "垂直翻转",
-    "floydSteinberg": "Floyd-Steinberg",
-    "fromUrl": "从URL",
-    "fullColor": "全彩色",
+    "floydSteinberg": "Floyd–Steinberg",
+    "fromUrl": "从 URL",
+    "fullColor": "全彩",
     "gamma": "伽马",
-    "gapFillMode": "填充间隙",
-    "gapfill": "填充间隙",
+    "gapFillMode": "填补空隙",
+    "gapfill": "填补空隙",
     "gaussianNoise": "高斯噪声",
-    "gifSettings": "GIF设置",
+    "gifSettings": "GIF 设置",
     "grayscale": "灰度",
     "gridSize": "网格大小",
     "halftone": "半色调",
@@ -1041,23 +1041,23 @@
     "halftoneSettings": "半色调设置",
     "highlight": "高光",
     "hueRotate": "色相旋转",
-    "imageGifWebp": "图片/GIF/WebP",
-    "imageUrl": "图像URL",
+    "imageGifWebp": "图像 / GIF / WebP",
+    "imageUrl": "图像 URL",
     "intensity": "强度",
     "invert": "反转图像",
-    "jarvisJudiceNinke": "Jarvis-Judice-Ninke",
+    "jarvisJudiceNinke": "Jarvis–Judice–Ninke",
     "line": "线条",
     "load": "加载",
-    "loadedFromUrl": "从URL加载",
-    "maxFps": "最大FPS",
+    "loadedFromUrl": "已从 URL 加载",
+    "maxFps": "最大 FPS",
     "mode": "混合模式",
     "mosaic": "马赛克",
     "mosaicMode": "马赛克",
     "neutralColor": "中性色",
     "noFile": "无文件",
     "none": "无",
-    "nxnGrid": "N×N网格",
-    "orderedBayer": "有序（Bayer）",
+    "nxnGrid": "N×N 网格",
+    "orderedBayer": "有序（拜耳）",
     "orderedMatrix": "有序矩阵",
     "original": "原始",
     "outline": "轮廓",
@@ -1067,25 +1067,25 @@
     "perceptual": "感知（亮度）",
     "pixelate": "像素化",
     "pixelateMode": "像素化",
-    "posterizeLevels": "色调分离级别",
-    "preserveAlignment": "保留对齐图案",
-    "preserveFinders": "保留定位图案",
-    "preserveTiming": "保留时序图案",
+    "posterizeLevels": "海报化级别",
+    "preserveAlignment": "保留对齐",
+    "preserveFinders": "保留定位图形",
+    "preserveTiming": "保留时序",
     "protectFormat": "保护格式信息",
     "protectFormatInfo": "保护格式信息",
     "protectVersion": "保护版本信息",
     "protectVersionInfo": "保护版本信息",
     "protection": "保护",
     "removeImage": "移除",
-    "respect": "尊重",
+    "respect": "遵循",
     "riskBudget": "风险预算",
     "rotation": "旋转",
-    "sCurve": "S曲线",
+    "sCurve": "S 曲线",
     "saturation": "饱和度",
-    "screenedBlueNoise": "网屏蓝噪声",
+    "screenedBlueNoise": "筛选蓝噪声",
     "seed": "种子",
     "selectImage": "选择图像",
-    "sepia": "深褐色",
+    "sepia": "棕褐色",
     "serpentineScanning": "蛇形扫描",
     "shadow": "阴影",
     "sharpen": "锐化",
@@ -1102,15 +1102,15 @@
     "subpixelSettings": "子像素设置",
     "subpixelSize": "子像素大小",
     "subpixelSizeMode": "子像素大小",
-    "temporalBlueNoise": "时序蓝噪声",
+    "temporalBlueNoise": "时域蓝噪声",
     "threshold": "阈值",
-    "tileSize": "图块大小",
+    "tileSize": "平铺尺寸",
     "triangularNoise": "三角噪声",
     "trueDither": "真实抖动",
     "trueDitherMode": "真实抖动",
     "upload": "上传",
     "useFrameDelays": "使用帧延迟",
-    "voidCluster": "空隙和聚集",
+    "voidCluster": "空洞与簇",
     "wave": "波浪",
     "waveMode": "波浪",
     "whiteNoise": "白噪声"
@@ -1121,271 +1121,271 @@
     "algorithm": "算法",
     "allDay": "全天事件",
     "amount": "金额（可选）",
-    "amountBrl": "金额（巴西雷亚尔，可选）",
-    "amountEur": "金额（欧元）",
-    "amountInr": "金额（印度卢比，可选）",
-    "amountSgd": "金额（新加坡元，可选）",
-    "amountThb": "金额（泰铢，可选）",
+    "amountBrl": "金额（BRL，可选）",
+    "amountEur": "金额（EUR）",
+    "amountInr": "金额（INR，可选）",
+    "amountSgd": "金额（SGD，可选）",
+    "amountThb": "金额（THB，可选）",
     "androidIntent": "Android Intent",
     "appLink": "应用深度链接（Android/iOS）",
     "assetInventory": "资产/库存标签",
-    "assetItemId": "资产/项目ID",
+    "assetItemId": "资产/物品 ID",
     "assetType": "资产类型",
     "attendeeName": "参与者姓名",
     "audio": "音频",
-    "baseUrl": "基础URL",
-    "batchLot": "批次（可选）",
+    "baseUrl": "基础 URL",
+    "batchLot": "批次/批号（可选）",
     "beneficiaryName": "收款人姓名",
     "bicSwift": "BIC/SWIFT（可选）",
     "birthday": "生日",
     "bitcoin": "比特币",
-    "bizcard": "BizCard（旧版）",
+    "bizcard": "名片（旧版）",
     "bluetooth": "蓝牙",
-    "body": "正文",
+    "body": "消息正文",
     "bodyOptional": "正文（可选）",
     "box": "Box",
     "calendar": "日历",
     "calendarName": "日历名称",
-    "calendarSubscription": "日历订阅",
-    "calendarUrl": "日历URL（ICS/WebCal）",
-    "campaignContent": "活动内容（可选）",
-    "campaignMedium": "活动媒介",
-    "campaignName": "活动名称",
-    "campaignSource": "活动来源",
-    "campaignTerm": "活动条款（可选）",
+    "calendarSubscription": "订阅日历",
+    "calendarUrl": "日历 URL（ICS/WebCal）",
+    "campaignContent": "广告系列内容（可选）",
+    "campaignMedium": "广告系列媒介",
+    "campaignName": "广告系列名称",
+    "campaignSource": "广告系列来源",
+    "campaignTerm": "广告系列关键词（可选）",
     "city": "城市",
     "cityOptional": "城市（可选）",
     "cloudLink": "云存储链接",
     "company": "公司",
-    "contact": "联系人",
+    "contact": "联系",
     "contentType": "内容类型",
     "core": "核心",
     "country": "国家",
-    "crypto": "加密货币（BTC、ETH等）",
+    "crypto": "加密货币（BTC、ETH 等）",
     "cryptocurrency": "加密货币",
     "custom": "自定义格式",
-    "customScheme": "自定义方案",
+    "customScheme": "自定义协议",
     "dateTime": "日期和时间",
-    "deepLinkUrl": "深度链接URL",
+    "deepLinkUrl": "深度链接 URL",
     "description": "描述",
     "deviceAddress": "设备地址（MAC）",
     "deviceName": "设备名称（可选）",
-    "digits": "位数",
-    "documentsMedia": "文档和媒体",
+    "digits": "数字",
+    "documentsMedia": "文档与媒体",
     "dropbox": "Dropbox",
     "email": "电子邮件",
-    "emailAddress": "邮箱地址",
-    "encryption": "加密方式",
+    "emailAddress": "电子邮件地址",
+    "encryption": "加密",
     "end": "结束",
     "endDate": "结束日期",
     "enterprise": "企业",
-    "epcSepa": "EPC/SEPA（欧盟）",
+    "epcSepa": "EPC / SEPA（欧盟）",
     "equipment": "设备",
     "ethereum": "以太坊",
-    "event": "iCalendar事件",
+    "event": "iCalendar 事件",
     "eventName": "活动名称",
-    "eventRsvp": "活动回复链接",
+    "eventRsvp": "活动 RSVP 链接",
     "eventTicket": "活动门票",
-    "expiryDate": "过期日期（可选）",
+    "expiryDate": "到期日期（可选）",
     "facebook": "Facebook",
-    "fallbackUrl": "备用URL（可选）",
+    "fallbackUrl": "备用 URL（可选）",
     "fax": "传真",
     "fileType": "文件类型",
-    "fileUrl": "文件/文档URL",
-    "firstName": "名字",
-    "forceHttps": "强制HTTPS",
+    "fileUrl": "文件/文档 URL",
+    "firstName": "名",
+    "forceHttps": "强制 HTTPS",
     "fullName": "全名",
     "furniture": "家具",
     "geo": "地理位置",
     "github": "GitHub",
-    "googleDrive": "Google云端硬盘",
-    "gs1DigitalLink": "GS1数字链接",
-    "gtin": "GTIN（全球贸易项目代码）",
+    "googleDrive": "Google Drive",
+    "gs1DigitalLink": "GS1 数字链接",
+    "gtin": "GTIN（全球贸易项目编号）",
     "hidden": "隐藏网络",
     "homePhone": "家庭电话",
     "iban": "IBAN",
-    "idType": "ID类型",
+    "idType": "证件类型",
     "image": "图片",
     "instagram": "Instagram",
     "inventoryItem": "库存项目",
-    "iosUniversal": "iOS通用",
-    "issuer": "发行者",
-    "itAsset": "IT资产",
+    "iosUniversal": "iOS 通用",
+    "issuer": "签发方",
+    "itAsset": "IT 资产",
     "label": "标签（可选）",
-    "lastName": "姓氏",
+    "lastName": "姓",
     "latitude": "纬度",
     "linkType": "链接类型",
-    "linkedin": "领英",
+    "linkedin": "LinkedIn",
     "litecoin": "莱特币",
     "location": "位置",
-    "locationNetwork": "位置和网络",
+    "locationNetwork": "位置与网络",
     "longitude": "经度",
-    "lookupUrl": "查找URL（可选）",
+    "lookupUrl": "查询 URL（可选）",
     "marketing": "营销",
     "marketingTags": "营销标签",
     "maxLengthGuard": "最大长度保护",
-    "mecard": "MeCard联系人",
+    "mecard": "MeCard 联系人",
     "merchantName": "商户名称（可选）",
     "message": "消息",
     "messageOptional": "消息（可选）",
-    "messagingLink": "WhatsApp/Telegram/Signal",
+    "messagingLink": "WhatsApp / Telegram / Signal",
     "messenger": "Messenger",
     "mobileNumber": "手机号码",
     "mobilePhone": "手机",
     "name": "名称",
-    "nationalIdTaxId": "身份证/税号",
+    "nationalIdTaxId": "国家身份证/税号",
     "nickname": "昵称",
-    "normalizeNewlines": "规范化换行",
+    "normalizeNewlines": "规范化换行符",
     "note": "备注",
     "oneDrive": "OneDrive",
     "openNoPassword": "开放（无密码）",
     "organization": "组织",
     "other": "其他",
-    "otpAuth": "OTP验证器",
+    "otpAuth": "OTP 验证器",
     "otpType": "类型",
     "password": "密码",
-    "payeeName": "收款人名称",
+    "payeeName": "收款人姓名",
     "payments": "支付（开放规范）",
     "paynow": "PayNow（新加坡）",
     "phone": "电话",
     "phoneUsername": "电话/用户名",
     "pix": "PIX（巴西）",
-    "pixKey": "PIX密钥",
+    "pixKey": "PIX 密钥",
     "plainText": "纯文本",
     "platform": "平台",
     "prefilledMessage": "预填消息（可选）",
-    "profileUrl": "个人资料URL",
+    "profileUrl": "个人资料 URL",
     "promptPayId": "PromptPay ID",
     "promptpay": "PromptPay（泰国）",
     "proxyType": "代理类型",
     "rawData": "原始数据",
-    "recipient": "收件人",
+    "recipient": "接收方",
     "reference": "参考",
     "referenceOptional": "参考（可选）",
     "resolverDomain": "解析域名",
-    "rsvpUrl": "回复URL",
+    "rsvpUrl": "RSVP URL",
     "searchQuery": "搜索查询（可选）",
     "seat": "座位",
     "secretBase32": "密钥（Base32）",
-    "sectionZone": "区域",
+    "sectionZone": "区域/分区",
     "securityType": "安全类型",
     "serialNumber": "序列号（可选）",
     "service": "服务",
     "shortLink": "短链接重定向",
     "shortUrl": "短网址",
-    "signal": "Signal",
+    "signal": "信号",
     "sms": "短信",
-    "smsMms": "短信/彩信",
-    "socialMessaging": "社交和消息",
+    "smsMms": "短信 / 彩信",
+    "socialMessaging": "社交与消息",
     "socialProfile": "社交资料",
     "ssid": "网络名称（SSID）",
     "start": "开始",
     "startDate": "开始日期",
-    "state": "省/州",
+    "state": "州/省",
     "street": "街道",
     "subject": "主题",
     "subjectOptional": "主题（可选）",
-    "summary": "事件标题",
+    "summary": "活动标题",
     "tel": "电话号码",
     "telegram": "Telegram",
     "text": "文本内容",
-    "ticketId": "票据ID",
-    "tiktok": "抖音/TikTok",
-    "title": "职位",
+    "ticketId": "票券 ID",
+    "tiktok": "TikTok",
+    "title": "标题",
     "transactionNote": "交易备注（可选）",
-    "trimWhitespace": "去除空白",
+    "trimWhitespace": "去除首尾空格",
     "uenMobile": "UEN/手机号码",
     "universalLink": "通用链接",
     "upi": "UPI（印度）",
-    "upiId": "UPI ID (VPA)",
-    "url": "网址",
+    "upiId": "UPI ID（VPA）",
+    "url": "URL",
     "utmCampaign": "utm_campaign",
     "utmContent": "utm_content",
-    "utmLink": "UTM活动链接",
+    "utmLink": "UTM 活动链接",
     "utmMedium": "utm_medium",
     "utmSource": "utm_source",
     "utmTerm": "utm_term",
     "validateInput": "验证输入",
     "validationOptions": "验证选项",
-    "validationUrl": "验证URL（可选）",
-    "vcard": "vCard联系人",
+    "validationUrl": "验证 URL（可选）",
+    "vcard": "vCard 联系人",
     "vehicle": "车辆",
-    "venue": "场馆",
+    "venue": "场地",
     "vevent": "日历事件",
     "viber": "Viber",
     "video": "视频",
     "walletAddress": "地址",
     "website": "网站",
     "whatsapp": "WhatsApp",
-    "wifi": "无线网络",
-    "wifiNetwork": "WiFi网络",
-    "wordDocument": "Word文档",
+    "wifi": "WiFi",
+    "wifiNetwork": "WiFi 网络",
+    "wordDocument": "Word 文档",
     "workPhone": "工作电话",
     "youtube": "YouTube",
     "zip": "邮编"
   },
   "preview": {
-    "qrCodePreview": "二维码预览 - 点击导出下载",
-    "simulating": "模拟中",
-    "simulationActive": "环境模拟已激活 - 预览显示二维码在不同条件下的显示效果"
+    "qrCodePreview": "二维码预览 - 点击导出以下载",
+    "simulating": "正在模拟",
+    "simulationActive": "环境模拟已启用 - 预览显示二维码在不同条件下可能的外观"
   },
   "qr": {
     "additionalBorder": "静区之外的额外边框",
     "alphanumeric": "字母数字",
     "auto": "自动",
     "autoMin": "自动（最小：{{version}}）",
-    "autoOptimal": "自动（最优）",
-    "byteUtf8": "字节/UTF-8",
+    "autoOptimal": "自动（最佳）",
+    "byteUtf8": "字节 / UTF-8",
     "contrastRatio": "{{count}}:1",
     "encodingMode": "编码模式",
     "enforceMinQuietZone": "强制最小静区",
-    "enforceMinQuietZoneDesc": "确保≥4模块边距",
+    "enforceMinQuietZoneDesc": "确保边距≥4个模块",
     "errorCorrection": "纠错级别",
     "extraBorderModules": "额外边框模块",
     "high": "H - 高 (30%)",
     "kanji": "汉字",
     "low": "L - 低 (7%)",
     "margin": "静区（边距）",
-    "mask": "掩码图案",
+    "mask": "掩膜图案",
     "medium": "M - 中 (15%)",
     "moduleSize": "模块大小",
     "nDegrees": "{{count}}°",
-    "nModules": "{{count}}模块",
+    "nModules": "{{count}}个模块",
     "nMs": "{{count}}毫秒",
     "nPercent": "{{count}}%",
     "nPx": "{{count}}像素",
     "numericOnly": "仅数字",
-    "quartile": "Q - 四分之一 (25%)",
+    "quartile": "Q - 四分位 (25%)",
     "version": "版本"
   },
   "render": {
     "addColor": "添加颜色",
     "alignmentStyle": "对齐图案样式",
-    "background": "背景色",
+    "background": "背景",
     "byBrightness": "按亮度",
-    "byCluster": "按聚集",
+    "byCluster": "按聚类",
     "byOverlay": "按叠加",
     "byPosition": "按位置",
     "ceil": "向上取整",
     "circle": "圆形",
     "classic": "经典",
     "colorPalette": "调色板",
-    "conic": "锥形",
+    "conic": "圆锥",
     "connected": "连接",
     "contrastGuard": "对比度保护",
     "cornerRadius": "圆角半径",
-    "crispEdges": "锐利边缘",
-    "crispEdgesDesc": "使用像素化渲染获得锐利边缘",
+    "crispEdges": "清晰边缘",
+    "crispEdgesDesc": "使用 image-rendering: pixelated 以获得清晰边缘",
     "dashed": "虚线",
     "diamond": "菱形",
     "dotRotation": "点旋转",
-    "dots": "圆点",
-    "eyeInnerStyle": "眼内部样式",
-    "eyeOuterStyle": "眼外部样式",
-    "eyeScale": "眼缩放",
+    "dots": "点",
+    "eyeInnerStyle": "眼内样式",
+    "eyeOuterStyle": "眼外样式",
+    "eyeScale": "眼睛缩放",
     "finderStyle": "定位图案样式",
     "floor": "向下取整",
-    "foreground": "前景色",
+    "foreground": "前景",
     "frameStyle": "边框样式",
     "frameText": "边框文字",
     "gapMode": "间隙模式",
@@ -1395,23 +1395,23 @@
     "gradientType": "渐变类型",
     "inset": "内嵌",
     "linear": "线性",
-    "matchFinder": "匹配定位器",
+    "matchFinder": "匹配定位图案",
     "matchModule": "匹配模块",
-    "minContrastRatio": "最小对比度",
+    "minContrastRatio": "最小对比度比",
     "moduleGap": "模块间隙",
     "negativeSpace": "负空间",
     "none": "无",
-    "perModuleColorMode": "每模块颜色模式",
+    "perModuleColorMode": "逐模块颜色模式",
     "pixelSnap": "像素对齐",
     "radial": "径向",
-    "round": "四舍五入",
+    "round": "圆形",
     "rounded": "圆角",
     "roundedFrame": "圆角边框",
     "shape": "模块样式",
     "sharp": "锐利",
     "smooth": "平滑",
-    "solid": "纯色",
-    "square": "方形",
+    "solid": "实心",
+    "square": "正方形",
     "squares": "方块",
     "sticker": "贴纸",
     "stroke": "描边",
@@ -1422,32 +1422,32 @@
   },
   "safety": {
     "analysis": "安全分析",
-    "autoPickEcc": "自动选择ECC",
+    "autoPickEcc": "自动选择纠错级别",
     "autoPickVersion": "自动选择版本",
     "autoReduceIntensity": "自动降低强度",
-    "autoTuning": "自动调节",
+    "autoTuning": "自动调优",
     "balanced": "平衡",
-    "contrast": "对比度",
+    "contrast": "对比度比",
     "contrastCheck": "对比度检查",
-    "contrastRatio": "对比度",
-    "excellent": "优秀",
+    "contrastRatio": "对比度比",
+    "excellent": "极佳",
     "fair": "一般",
     "good": "良好",
     "lockAlignment": "锁定对齐",
-    "lockFinders": "锁定定位器",
+    "lockFinders": "锁定定位符",
     "lockFormat": "锁定格式信息",
     "lockTiming": "锁定时序",
     "lockVersion": "锁定版本信息",
-    "minModuleSize": "最小模块大小",
+    "minModuleSize": "最小模块尺寸",
     "minQuietZone": "最小静区",
     "off": "关闭",
-    "poor": "差",
+    "poor": "较差",
     "protectionLocks": "保护锁定",
     "qualityAnalysis": "质量分析",
     "quietZone": "静区",
     "safetyMode": "安全模式",
-    "scanability": "可扫描性得分",
-    "showHeatmap": "显示热图",
+    "scanability": "可扫描性评分",
+    "showHeatmap": "显示热力图",
     "simulateBlur": "模拟模糊",
     "simulateNoise": "模拟噪声",
     "simulateRotation": "模拟旋转",
@@ -1458,9 +1458,9 @@
     "animation": "动画",
     "metadata": "元数据",
     "output": "输出",
-    "overlay": "叠加图像",
-    "payload": "数据",
-    "qrEncoding": "二维码编码",
+    "overlay": "叠加 / 图片",
+    "payload": "载荷 / 数据",
+    "qrEncoding": "QR 编码",
     "rendering": "渲染",
     "safety": "安全分析",
     "share": "分享",
@@ -1470,11 +1470,11 @@
     "copied": "已复制！",
     "copyLink": "复制链接",
     "directLink": "直接链接",
-    "directLinkDesc": "生成可分享的URL",
-    "embedHtml": "嵌入HTML",
+    "directLinkDesc": "生成可分享的 URL",
+    "embedHtml": "嵌入 HTML",
     "embedHtmlDesc": "生成嵌入代码",
     "encodeAllParams": "编码所有参数",
-    "encodeAllParamsDesc": "在URL中包含所有设置",
+    "encodeAllParamsDesc": "在 URL 中包含所有设置",
     "markdown": "Markdown",
     "quickShare": "快速分享",
     "twitter": "X/Twitter",
@@ -1483,21 +1483,21 @@
   "tiers": {
     "advanced": "高级",
     "basic": "基础",
-    "professional": "专业",
-    "watchAdForPro": "观看广告解锁专业功能24小时"
+    "professional": "专业版",
+    "watchAdForPro": "观看广告即可解锁专业功能 24 小时"
   },
   "watermark": {
-    "behindQr": "二维码后面",
+    "behindQr": "二维码后方",
     "blendMode": "混合模式",
     "bottomLeft": "左下",
     "bottomRight": "右下",
     "center": "居中",
-    "corners": "角落",
+    "corners": "角",
     "edges": "边缘",
     "enabled": "启用水印",
     "fontColor": "字体颜色",
     "fontSize": "字体大小",
-    "image": "图像",
+    "image": "图片",
     "multiply": "正片叠底",
     "normal": "正常",
     "opacity": "不透明度",
@@ -1511,6 +1511,6 @@
     "topLeft": "左上",
     "topRight": "右上",
     "type": "类型",
-    "uploadImage": "上传图像"
+    "uploadImage": "上传图片"
   }
 }

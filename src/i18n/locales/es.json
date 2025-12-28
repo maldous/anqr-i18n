@@ -1,1516 +1,1516 @@
 {
   "animation": {
-    "blueNoise": "Blue Noise",
-    "bounce": "Bounce (Ping-Pong)",
-    "colorCycle": "Color Cycle",
-    "crossfade": "Crossfade",
-    "drift": "Drift",
-    "enabled": "Enable Animation",
-    "everyNFrames": "Every {{count}} frame(s)",
-    "exportAllFrames": "Export All Frames",
-    "fadeIn": "Fade In",
-    "flickerSafe": "Flicker Safe",
-    "frameStep": "Frame Step",
-    "interpolation": "Interpolation",
-    "loop": "Loop Animation",
-    "maxFrames": "Max Frames",
-    "moduleJitter": "Module Jitter",
-    "moduleJitterWarning": "⚠️ May affect scannability",
-    "morph": "Morph",
-    "none": "None",
-    "off": "Off",
-    "pattern": "Generated Pattern",
-    "pulse": "Pulse",
-    "randomSeed": "Random Seed",
-    "rotate": "Rotate",
-    "scanline": "Scanline",
-    "shimmer": "Shimmer",
-    "slideIn": "Slide In",
-    "speed": "Frame Speed",
-    "startFrame": "Start Frame",
-    "temporalDither": "Temporal Dither",
-    "wave": "Wave"
+    "blueNoise": "“Ruido azul”",
+    "bounce": "“Rebote (Ping-Pong)”",
+    "colorCycle": "“Ciclo de color”",
+    "crossfade": "“Fundido cruzado”",
+    "drift": "“Deriva”",
+    "enabled": "“Habilitar animación”",
+    "everyNFrames": "“Cada {{count}} fotograma(s)”",
+    "exportAllFrames": "“Exportar todos los fotogramas”",
+    "fadeIn": "“Fundido de entrada”",
+    "flickerSafe": "“Seguro contra parpadeos”",
+    "frameStep": "“Paso de marco”",
+    "interpolation": "“Interpolación”",
+    "loop": "“Animación en bucle”",
+    "maxFrames": "“Max Frames”",
+    "moduleJitter": "“Fluctuación del módulo”",
+    "moduleJitterWarning": "“⚠️ Puede afectar la capacidad de escaneo”",
+    "morph": "“Morfo”",
+    "none": "“Ninguno”",
+    "off": "“Apagado”",
+    "pattern": "“Patrón generado”",
+    "pulse": "“Pulso”",
+    "randomSeed": "“Semilla aleatoria”",
+    "rotate": "“Girar”",
+    "scanline": "“Línea de escaneo”",
+    "shimmer": "“Brillo”",
+    "slideIn": "“Deslizarse hacia adentro”",
+    "speed": "“Velocidad de fotogramas”",
+    "startFrame": "“Cuadro de inicio”",
+    "temporalDither": "“Trabalenguas temporal”",
+    "wave": "“Ola”"
   },
   "languages": {
-    "en": "English",
-    "hi": "Hindi",
-    "zh": "Chinese",
-    "ms": "Malay",
-    "ta": "Tamil",
-    "th": "Thai",
-    "pt": "Portuguese",
-    "id": "Indonesian",
-    "vi": "Vietnamese",
-    "tl": "Tagalog",
-    "ja": "Japanese",
-    "ko": "Korean",
-    "es": "Spanish",
-    "ar": "Arabic",
-    "ru": "Russian",
-    "te": "Telugu",
-    "mr": "Marathi",
-    "bn": "Bengali",
-    "gu": "Gujarati",
-    "kn": "Kannada",
-    "ml": "Malayalam",
-    "pa": "Punjabi"
+    "en": "“Inglés”",
+    "hi": "“Hindi”",
+    "zh": "“Chino”",
+    "ms": "“Malayo”",
+    "ta": "“Tamil”",
+    "th": "“Tailandés”",
+    "pt": "“Portugués”",
+    "id": "“Indonesio”",
+    "vi": "“vietnamitas”",
+    "tl": "“Tagalo”",
+    "ja": "“Japonés”",
+    "ko": "“coreano”",
+    "es": "“Español”",
+    "ar": "“Árabe”",
+    "ru": "“Ruso”",
+    "te": "“Telugu”",
+    "mr": "“Maratí”",
+    "bn": "“bengalí”",
+    "gu": "“Gujarati”",
+    "kn": "“Canarés”",
+    "ml": "“Malayalam”",
+    "pa": "“Punjabi”"
   },
   "app": {
-    "name": "ANQR",
-    "tagline": "QR Code Generator"
+    "name": "“ANQR”",
+    "tagline": "“Generador de códigos QR”"
   },
   "common": {
-    "allRightsReserved": "All rights reserved",
-    "apply": "Apply",
-    "back": "Back",
-    "cancel": "Cancel",
-    "close": "Close",
-    "copied": "Copied!",
-    "copy": "Copy",
-    "copyright": "© ANQR",
-    "delete": "Delete",
-    "disabled": "Disabled",
-    "download": "Download",
-    "edit": "Edit",
-    "enabled": "Enabled",
-    "error": "Error",
-    "filter": "Filter",
-    "less": "Less",
-    "loading": "Loading...",
-    "more": "More",
-    "next": "Next",
-    "no": "No",
-    "none": "None",
-    "off": "Off",
-    "ok": "OK",
-    "on": "On",
-    "previous": "Previous",
-    "reset": "Reset",
-    "save": "Save",
-    "search": "Search",
-    "select": "Select",
-    "showLess": "Show Less",
-    "showMore": "Show More",
-    "sort": "Sort",
-    "success": "Success",
-    "upload": "Upload",
-    "viewAll": "View All",
-    "yes": "Yes"
+    "allRightsReserved": "“Todos los derechos reservados”",
+    "apply": "“Aplicar”",
+    "back": "“Atrás”",
+    "cancel": "“Cancelar”",
+    "close": "“Cerrar”",
+    "copied": "“¡Copiado!”",
+    "copy": "“Copia”",
+    "copyright": "“© ANQR”",
+    "delete": "“Borrar”",
+    "disabled": "“Discapacitado”",
+    "download": "“Descargar”",
+    "edit": "“Editar”",
+    "enabled": "“Habilitado”",
+    "error": "“Error”",
+    "filter": "“Filtro”",
+    "less": "“Menos”",
+    "loading": "“Cargando…”",
+    "more": "“Más”",
+    "next": "“Siguiente”",
+    "no": "“No”",
+    "none": "“Ninguno”",
+    "off": "“Apagado”",
+    "ok": "“Está bien”",
+    "on": "“Encendido”",
+    "previous": "“Anterior”",
+    "reset": "“Restablecer”",
+    "save": "“Guardar”",
+    "search": "“Buscar”",
+    "select": "“Seleccionar”",
+    "showLess": "“Mostrar menos”",
+    "showMore": "“Mostrar más”",
+    "sort": "“Ordenar”",
+    "success": "“Éxito”",
+    "upload": "“Subir”",
+    "viewAll": "“Ver todo”",
+    "yes": "“Sí”"
   },
-  "fileSaveFailed": "Failed to save file: {{error}}",
-  "fileSaved": "Saved to Documents: {{filename}}",
+  "fileSaveFailed": "“Error al guardar el archivo: {{error}}”",
+  "fileSaved": "“Guardado en Documentos: {{filename}}”",
   "footer": {
-    "copyright": "© ANQR {{year}}"
+    "copyright": "“© ANQR {{año}}”"
   },
   "gallery": {
-    "all": "All",
-    "animationOverlay": "Animation",
-    "blendModes": "Blend Modes",
-    "collapse": "Collapse",
-    "colorModes": "Color Modes",
-    "colors": "Colors",
-    "contentTypes": "Content Types",
-    "dithering": "Dithering",
-    "encoding": "Encoding",
-    "expand": "Expand",
-    "filter": "Filter",
-    "imageOverlay": "Image Overlay",
+    "all": "“Todos”",
+    "animationOverlay": "“Animación”",
+    "blendModes": "“Modos de fusión”",
+    "collapse": "“Colapso”",
+    "colorModes": "“Modos de color”",
+    "colors": "“Colores”",
+    "contentTypes": "“Tipos de contenido”",
+    "dithering": "“Travesura”",
+    "encoding": "“Codificación”",
+    "expand": "“Expandir”",
+    "filter": "“Filtro”",
+    "imageOverlay": "“Superposición de imágenes”",
     "items": {
       "anim-blue-noise": {
-        "description": "Blue noise threshold with animation",
-        "title": "Animated Blue Noise"
+        "description": "“Umbral de ruido azul con animación”",
+        "title": "“Ruido azul animado”"
       },
       "anim-blue-noise-i100": {
-        "description": "Animated blue noise at 100%",
-        "title": "Blue Noise 100%"
+        "description": "“Ruido azul animado al 100%”",
+        "title": "“Ruido azul 100%”"
       },
       "anim-blue-noise-i50": {
-        "description": "Animated blue noise at 50%",
-        "title": "Blue Noise 50%"
+        "description": "“Ruido azul animado al 50%”",
+        "title": "“Ruido azul 50%”"
       },
       "anim-blue-noise-i75": {
-        "description": "Animated blue noise at 75%",
-        "title": "Blue Noise 75%"
+        "description": "“Ruido azul animado al 75%”",
+        "title": "“Ruido azul 75%”"
       },
       "anim-brightness": {
-        "description": "Brightness with animation",
-        "title": "Animated Brightness"
+        "description": "“Brillo con animación”",
+        "title": "“Brillo animado”"
       },
       "anim-colormode-bw": {
-        "description": "B&W animated overlay",
-        "title": "Animated B&W"
+        "description": "“Superposición animada en blanco y negro”",
+        "title": "“Animación en blanco y negro”"
       },
       "anim-colormode-color": {
-        "description": "Color animated overlay",
-        "title": "Animated Color"
+        "description": "“Superposición animada de color”",
+        "title": "“Color animado”"
       },
       "anim-colormode-grayscale": {
-        "description": "Grayscale animated overlay",
-        "title": "Animated Grayscale"
+        "description": "“Superposición animada en escala de grises”",
+        "title": "“Escala de grises animada”"
       },
       "anim-dithered": {
-        "description": "Error diffusion with animation",
-        "title": "Animated Dithered"
+        "description": "“Difusión de errores con animación”",
+        "title": "“Animación Dithered”"
       },
       "anim-duotone": {
-        "description": "Duotone with animation",
-        "title": "Animated Duotone"
+        "description": "“Duotono con animación”",
+        "title": "“Duotono animado”"
       },
       "anim-halftone": {
-        "description": "Halftone dots with animation",
-        "title": "Animated Halftone"
+        "description": "“Puntos de semitono con animación”",
+        "title": "“Semitonos animados”"
       },
       "anim-mosaic": {
-        "description": "Mosaic with animation",
-        "title": "Animated Mosaic"
+        "description": "“Mosaico con animación”",
+        "title": "“Mosaico animado”"
       },
       "blend-classic": {
-        "description": "Dithered overlay with classic palette",
-        "title": "Classic Blend"
+        "description": "“Superposición tramada con paleta clásica”",
+        "title": "“Mezcla clásica”"
       },
       "blend-forest": {
-        "description": "Dithered overlay with forest palette",
-        "title": "Forest Blend"
+        "description": "“Superposición difuminada con paleta de bosque”",
+        "title": "“Mezcla forestal”"
       },
       "blend-navy": {
-        "description": "Dithered overlay with navy palette",
-        "title": "Navy Blend"
+        "description": "“Superposición difuminada con paleta azul marino”",
+        "title": "“Mezcla azul marino”"
       },
       "blend-wine": {
-        "description": "Dithered overlay with wine palette",
-        "title": "Wine Blend"
+        "description": "“Superposición tramada con paleta de vinos”",
+        "title": "“Mezcla de vinos”"
       },
       "cmode-blue-noise-bw": {
-        "description": "Blue Noise in B&W",
-        "title": "Blue Noise B&W"
+        "description": "“Ruido azul en blanco y negro”",
+        "title": "“Ruido azul en blanco y negro”"
       },
       "cmode-blue-noise-color": {
-        "description": "Blue Noise in Color",
-        "title": "Blue Noise Color"
+        "description": "“Ruido azul en color”",
+        "title": "“Color de ruido azul”"
       },
       "cmode-dithered-color": {
-        "description": "Dithered in Color",
-        "title": "Dithered Color"
+        "description": "“Tramado de color”",
+        "title": "“Color difuminado”"
       },
       "cmode-dithered-grayscale": {
-        "description": "Dithered in Grayscale",
-        "title": "Dithered Grayscale"
+        "description": "“Tramado en escala de grises”",
+        "title": "“Escala de grises difuminada”"
       },
       "cmode-halftone-bw": {
-        "description": "Halftone in B&W",
-        "title": "Halftone B&W"
+        "description": "“Semitono en blanco y negro”",
+        "title": "“Mediotono B&N”"
       },
       "cmode-halftone-color": {
-        "description": "Halftone in Color",
-        "title": "Halftone Color"
+        "description": "“Semitono en color”",
+        "title": "“Color de medios tonos”"
       },
       "color-coral": {
-        "description": "#e85d04 on #ffe8d6",
-        "title": "Coral"
+        "description": "“#e85d04 en #ffe8d6”",
+        "title": "“Coral”"
       },
       "color-coral-dots": {
-        "description": "Coral with dot modules",
-        "title": "Coral Dots"
+        "description": "“Coral con módulos de puntos”",
+        "title": "“Puntos Coral”"
       },
       "color-crimson": {
-        "description": "#9d0208 on #ffccd5",
-        "title": "Crimson"
+        "description": "“#9d0208 en #ffccd5”",
+        "title": "“Carmesí”"
       },
       "color-forest": {
-        "description": "#1b4332 on #d8f3dc",
-        "title": "Forest"
+        "description": "“#1b4332 en #d8f3dc”",
+        "title": "“Bosque”"
       },
       "color-forest-dots": {
-        "description": "Forest with dot modules",
-        "title": "Forest Dots"
+        "description": "“Bosque con módulos de puntos”",
+        "title": "“Puntos del bosque”"
       },
       "color-gold": {
-        "description": "#7f5539 on #ffe8cc",
-        "title": "Gold"
+        "description": "“#7f5539 en #ffe8cc”",
+        "title": "“Oro”"
       },
       "color-inverted": {
-        "description": "#ffffff on #000000",
-        "title": "Inverted"
+        "description": "“#ffffff en #000000”",
+        "title": "“Invertido”"
       },
       "color-midnight": {
-        "description": "#1a1a2e on #eef1ff",
-        "title": "Midnight"
+        "description": "“#1a1a2e en #eef1ff”",
+        "title": "“Medianoche”"
       },
       "color-midnight-dots": {
-        "description": "Midnight with dot modules",
-        "title": "Midnight Dots"
+        "description": "“Medianoche con módulos de puntos”",
+        "title": "“Puntos de medianoche”"
       },
       "color-navy": {
-        "description": "#001d3d on #a2d2ff",
-        "title": "Navy"
+        "description": "“#001d3d en #a2d2ff”",
+        "title": "“Marina”"
       },
       "color-ocean": {
-        "description": "#023e8a on #caf0f8",
-        "title": "Ocean"
+        "description": "“#023e8a en #caf0f8”",
+        "title": "“Océano”"
       },
       "color-ocean-dots": {
-        "description": "Ocean with dot modules",
-        "title": "Ocean Dots"
+        "description": "“Océano con módulos de puntos”",
+        "title": "“Puntos del océano”"
       },
       "color-royal": {
-        "description": "#4a0080 on #f5e6ff",
-        "title": "Royal"
+        "description": "“#4a0080 en #f5e6ff”",
+        "title": "“Real”"
       },
       "color-royal-dots": {
-        "description": "Royal with dot modules",
-        "title": "Royal Dots"
+        "description": "“Royal con módulos de puntos”",
+        "title": "“Puntos Reales”"
       },
       "color-slate": {
-        "description": "#343a40 on #e9ecef",
-        "title": "Slate"
+        "description": "“#343a40 en #e9ecef”",
+        "title": "“Pizarra”"
       },
       "color-sunset": {
-        "description": "#bf0603 on #fff3b0",
-        "title": "Sunset"
+        "description": "“#bf0603 en #fff3b0”",
+        "title": "“Atardecer”"
       },
       "color-sunset-dots": {
-        "description": "Sunset with dot modules",
-        "title": "Sunset Dots"
+        "description": "“Atardecer con módulos de puntos”",
+        "title": "“Puntos de atardecer”"
       },
       "color-teal": {
-        "description": "#006d77 on #e0f4f5",
-        "title": "Teal"
+        "description": "“#006d77 en #e0f4f5”",
+        "title": "“Verde azulado”"
       },
       "combo-anim-dots-halftone": {
-        "description": "Animated halftone with dot modules",
-        "title": "Animated Dots + Halftone"
+        "description": "“Semitono animado con módulos de puntos”",
+        "title": "“Puntos animados + Semitonos”"
       },
       "combo-anim-rounded-blue-noise": {
-        "description": "Animated blue noise with rounded",
-        "title": "Animated Rounded + Blue Noise"
+        "description": "“Ruido azul animado con redondeo”",
+        "title": "“Animación redondeada + ruido azul”"
       },
       "combo-connected-pixelate-teal": {
-        "description": "Pixelated overlay with connected modules",
-        "title": "Connected + Pixelate Teal"
+        "description": "“Superposición pixelada con módulos conectados”",
+        "title": "“Conectado + Pixelado Verde Azulado”"
       },
       "combo-connected-square": {
-        "description": "Connected modules with square finders",
-        "title": "Connected + Square"
+        "description": "“Módulos conectados con detectores de cuadrados”",
+        "title": "“Conectado + Cuadrado”"
       },
       "combo-connected-wave-ocean": {
-        "description": "Connected modules with wave effect",
-        "title": "Connected + Wave Ocean"
+        "description": "“Módulos conectados con efecto onda”",
+        "title": "“Conectado + Océano de Olas”"
       },
       "combo-diamond-blue-noise-navy": {
-        "description": "Diamond modules with blue noise",
-        "title": "Diamond + Blue Noise Navy"
+        "description": "“Módulos de diamante con ruido azul”",
+        "title": "“Diamante + Ruido Azul Marino”"
       },
       "combo-diamond-duotone-crimson": {
-        "description": "Duotone effect with diamond modules",
-        "title": "Diamond + Duotone Crimson"
+        "description": "“Efecto duotono con módulos de diamante”",
+        "title": "“Diamante + Duotono Carmesí”"
       },
       "combo-diamond-rounded": {
-        "description": "Diamond modules with rounded finders",
-        "title": "Diamond + Rounded"
+        "description": "“Módulos de diamantes con visores redondeados”",
+        "title": "“Diamante + Redondeado”"
       },
       "combo-dots-circle": {
-        "description": "Dots modules with circle finders",
-        "title": "Dots + Circle"
+        "description": "“Módulos de puntos con buscadores de círculos”",
+        "title": "“Puntos + Círculo”"
       },
       "combo-dots-extreme-forest": {
-        "description": "Maximum visibility with dots",
-        "title": "Dots + Extreme Forest"
+        "description": "“Máxima visibilidad con puntos”",
+        "title": "“Puntos + Bosque Extremo”"
       },
       "combo-dots-halftone-gold": {
-        "description": "Dot modules with halftone overlay",
-        "title": "Dots + Halftone Gold"
+        "description": "“Módulos de puntos con superposición de medios tonos”",
+        "title": "“Puntos + Semitono Dorado”"
       },
       "combo-dots-outline-slate": {
-        "description": "Edge detection with dot modules",
-        "title": "Dots + Outline Slate"
+        "description": "“Detección de bordes con módulos de puntos”",
+        "title": "“Pizarra de puntos y contorno”"
       },
       "combo-rounded-dithered-royal": {
-        "description": "Classic dithered with rounded style",
-        "title": "Rounded + Dithered Royal"
+        "description": "“Clásico tramado con estilo redondeado”",
+        "title": "“Redondeado + Dithered Royal”"
       },
       "combo-rounded-mosaic-sunset": {
-        "description": "Rounded modules with mosaic overlay",
-        "title": "Rounded + Mosaic Sunset"
+        "description": "“Módulos redondeados con superposición de mosaico”",
+        "title": "“Atardecer redondeado y mosaico”"
       },
       "combo-rounded-rounded": {
-        "description": "Rounded modules with rounded finders",
-        "title": "Rounded + Rounded"
+        "description": "“Módulos redondeados con visores redondeados”",
+        "title": "“Redondeado + Redondeado”"
       },
       "combo-rounded-subpixel-coral": {
-        "description": "High-detail subpixel rendering",
-        "title": "Rounded + Subpixel Coral"
+        "description": "“Renderizado de subpíxeles de alto detalle”",
+        "title": "“Coral redondeado + subpíxel”"
       },
       "content-email": {
-        "description": "Mailto link with coral colors",
-        "title": "Email Address"
+        "description": "“Enlace Mailto con colores coral”",
+        "title": "“Dirección de correo electrónico”"
       },
       "content-event": {
-        "description": "iCal event with rounded royal",
-        "title": "Calendar Event"
+        "description": "“Evento iCal con redondeo real”",
+        "title": "“Evento del calendario”"
       },
       "content-geo": {
-        "description": "Map coords with connected gold",
-        "title": "Geo Location"
+        "description": "“Coordenadas del mapa con oro conectado”",
+        "title": "“Geolocalización”"
       },
       "content-sms": {
-        "description": "Pre-filled SMS with diamond teal",
-        "title": "SMS Message"
+        "description": "“SMS precargado con diamante verde azulado”",
+        "title": "“Mensaje SMS”"
       },
       "content-vcard": {
-        "description": "Contact card with rounded navy style",
-        "title": "vCard Contact"
+        "description": "“Tarjeta de contacto con estilo azul marino redondeado”",
+        "title": "“Contacto vCard”"
       },
       "content-wifi": {
-        "description": "WiFi config with dots forest green",
-        "title": "WiFi Network"
+        "description": "“Configuración WiFi con puntos verde bosque”",
+        "title": "“Red WiFi”"
       },
       "dither-adaptive-threshold": {
-        "description": "Adaptive threshold",
-        "title": "Adaptive"
+        "description": "“Umbral adaptativo”",
+        "title": "“Adaptativo”"
       },
       "dither-blue-noise": {
-        "description": "Blue noise threshold",
-        "title": "Blue Noise"
+        "description": "“Umbral de ruido azul”",
+        "title": "“Ruido azul”"
       },
       "dither-blue-noise-error-diffusion": {
-        "description": "Hybrid blue noise",
-        "title": "Blue Noise + Error"
+        "description": "“Ruido azul híbrido”",
+        "title": "“Ruido azul + error”"
       },
       "dither-error-diffusion": {
-        "description": "Floyd-Steinberg style",
-        "title": "Error Diffusion"
+        "description": "“Estilo Floyd-Steinberg”",
+        "title": "“Difusión de errores”"
       },
       "dither-kernel-atkinson": {
-        "description": "Atkinson error diffusion",
-        "title": "Atkinson"
+        "description": "“Difusión del error de Atkinson”",
+        "title": "“Atkinson”"
       },
       "dither-kernel-burkes": {
-        "description": "Burkes error diffusion",
-        "title": "Burkes"
+        "description": "“Difusión del error de Burkes”",
+        "title": "“Burkes”"
       },
       "dither-kernel-floyd-steinberg": {
-        "description": "Floyd-Steinberg error diffusion",
-        "title": "Floyd-Steinberg"
+        "description": "“Difusión de errores de Floyd-Steinberg”",
+        "title": "“Floyd-Steinberg”"
       },
       "dither-kernel-jarvis-judice-ninke": {
-        "description": "Jarvis-Judice-Ninke error diffusion",
-        "title": "Jarvis-Judice-Ninke"
+        "description": "“Difusión del error Jarvis-Judice-Ninke”",
+        "title": "“Jarvis-Judice-Ninke”"
       },
       "dither-kernel-sierra": {
-        "description": "Sierra error diffusion",
-        "title": "Sierra"
+        "description": "“Difusión del error de Sierra”",
+        "title": "“Sierra”"
       },
       "dither-kernel-stucki": {
-        "description": "Stucki error diffusion",
-        "title": "Stucki"
+        "description": "“Difusión del error de Stucki”",
+        "title": "“Stucki”"
       },
       "dither-ordered-bayer": {
-        "description": "Bayer matrix dithering",
-        "title": "Ordered Bayer"
+        "description": "“Difuminado de la matriz de Bayer”",
+        "title": "“Ordenó Bayer”"
       },
       "dither-perceptual": {
-        "description": "Luminance-weighted",
-        "title": "Perceptual"
+        "description": "“Ponderado por luminancia”",
+        "title": "“Perceptual”"
       },
       "dither-strength-100": {
-        "description": "Dither strength at 100%",
-        "title": "Strength 100%"
+        "description": "“Intensidad de tramado al 100%”",
+        "title": "“Fuerza 100%”"
       },
       "dither-strength-20": {
-        "description": "Dither strength at 20%",
-        "title": "Strength 20%"
+        "description": "“Intensidad de dither al 20%”",
+        "title": "“Fuerza 20%”"
       },
       "dither-strength-40": {
-        "description": "Dither strength at 40%",
-        "title": "Strength 40%"
+        "description": "“Intensidad de tramado al 40%”",
+        "title": "“Fuerza 40%”"
       },
       "dither-strength-60": {
-        "description": "Dither strength at 60%",
-        "title": "Strength 60%"
+        "description": "“Intensidad de tramado al 60%”",
+        "title": "“Fuerza 60%”"
       },
       "dither-strength-80": {
-        "description": "Dither strength at 80%",
-        "title": "Strength 80%"
+        "description": "“Intensidad de tramado al 80%”",
+        "title": "“Fuerza 80%”"
       },
       "dither-white-noise": {
-        "description": "Random noise threshold",
-        "title": "White Noise"
+        "description": "“Umbral de ruido aleatorio”",
+        "title": "“Ruido blanco”"
       },
       "enc-ecc-h": {
-        "description": "30% error correction",
-        "title": "ECC High"
+        "description": "“30% de corrección de errores”",
+        "title": "“ECC Alto”"
       },
       "enc-ecc-l": {
-        "description": "7% error correction",
-        "title": "ECC Low"
+        "description": "“7% de corrección de errores”",
+        "title": "“ECC bajo”"
       },
       "enc-ecc-m": {
-        "description": "15% error correction",
-        "title": "ECC Medium"
+        "description": "“15% de corrección de errores”",
+        "title": "“ECC Medio”"
       },
       "enc-ecc-q": {
-        "description": "25% error correction",
-        "title": "ECC Quartile"
+        "description": "“Corrección de errores del 25%”",
+        "title": "“Cuartil ECC”"
       },
       "enc-v0": {
-        "description": "Automatic version selection",
-        "title": "Auto Version"
+        "description": "“Selección automática de versión”",
+        "title": "“Versión automática”"
       },
       "enc-v12": {
-        "description": "Version 12 QR code",
-        "title": "Version 12"
+        "description": "“Código QR de la versión 12”",
+        "title": "“Versión 12”"
       },
       "enc-v6": {
-        "description": "Best for overlays (no center eye)",
-        "title": "Version 6"
+        "description": "“Ideal para superposiciones (sin ojo central)”",
+        "title": "“Versión 6”"
       },
       "enc-v6-h": {
-        "description": "Version 6 with high error correction",
-        "title": "V6 + ECC High"
+        "description": "“Versión 6 con alta corrección de errores”",
+        "title": "“V6 + ECC alto”"
       },
       "enc-v6-l": {
-        "description": "Version 6 with low error correction",
-        "title": "V6 + ECC Low"
+        "description": "“Versión 6 con baja corrección de errores”",
+        "title": "“V6 + ECC bajo”"
       },
       "enc-v9": {
-        "description": "Version 9 QR code",
-        "title": "Version 9"
+        "description": "“Código QR de la versión 9”",
+        "title": "“Versión 9”"
       },
       "enc-v9-h": {
-        "description": "Version 9 with high error correction",
-        "title": "V9 + ECC High"
+        "description": "“Versión 9 con alta corrección de errores”",
+        "title": "“V9 + ECC Alto”"
       },
       "enc-v9-l": {
-        "description": "Version 9 with low error correction",
-        "title": "V9 + ECC Low"
+        "description": "“Versión 9 con baja corrección de errores”",
+        "title": "“V9 + ECC bajo”"
       },
       "finder-circle": {
-        "description": "Circle finder pattern",
-        "title": "Circle Finders"
+        "description": "“Patrón de buscador de círculos”",
+        "title": "“Buscadores de círculos”"
       },
       "finder-rounded": {
-        "description": "Rounded finder pattern",
-        "title": "Rounded Finders"
+        "description": "“Patrón de visor redondeado”",
+        "title": "“Buscadores redondeados”"
       },
       "finder-square": {
-        "description": "Square finder pattern",
-        "title": "Square Finders"
+        "description": "“Patrón de buscador de cuadrados”",
+        "title": "“Buscadores de cuadrados”"
       },
       "halftone-classic": {
-        "description": "Halftone with classic palette",
-        "title": "Classic Halftone"
+        "description": "“Semitono con paleta clásica”",
+        "title": "“Semitono clásico”"
       },
       "halftone-forest": {
-        "description": "Halftone with forest palette",
-        "title": "Forest Halftone"
+        "description": "“Semitono con paleta de bosque”",
+        "title": "“Semitono del bosque”"
       },
       "halftone-navy": {
-        "description": "Halftone with navy palette",
-        "title": "Navy Halftone"
+        "description": "“Semitono con paleta azul marino”",
+        "title": "“Semitono azul marino”"
       },
       "halftone-wine": {
-        "description": "Halftone with wine palette",
-        "title": "Wine Halftone"
+        "description": "“Semitono con paleta de vino”",
+        "title": "“Semitono de vino”"
       },
       "img-blend": {
-        "description": "Color blend overlay",
-        "title": "Blend Mode"
+        "description": "“Superposición de mezcla de colores”",
+        "title": "“Modo de fusión”"
       },
       "img-blue-noise": {
-        "description": "Blue noise threshold dithering",
-        "title": "Blue Noise"
+        "description": "“Tramado del umbral de ruido azul”",
+        "title": "“Ruido azul”"
       },
       "img-brightness": {
-        "description": "Brightness-based modules",
-        "title": "Brightness"
+        "description": "“Módulos basados en el brillo”",
+        "title": "“Brillo”"
       },
       "img-colormode-bw": {
-        "description": "Black & white processing",
-        "title": "Black & White"
+        "description": "“Revelado en blanco y negro”",
+        "title": "“Blanco y negro”"
       },
       "img-colormode-color": {
-        "description": "Color processing",
-        "title": "Color"
+        "description": "“Procesamiento de color”",
+        "title": "“Color”"
       },
       "img-colormode-grayscale": {
-        "description": "Grayscale processing",
-        "title": "Grayscale"
+        "description": "“Procesamiento en escala de grises”",
+        "title": "“Escala de grises”"
       },
       "img-dithered": {
-        "description": "Error diffusion dithering",
-        "title": "Dithered"
+        "description": "“Difuminado por error”",
+        "title": "“Dithered”"
       },
       "img-dithered-i100": {
-        "description": "Dithered at 100% intensity",
-        "title": "Dithered 100%"
+        "description": "“Dithered al 100% de intensidad”",
+        "title": "“Dithered 100%”"
       },
       "img-dithered-i50": {
-        "description": "Dithered at 50% intensity",
-        "title": "Dithered 50%"
+        "description": "“Dithered al 50% de intensidad”",
+        "title": "“Dithered 50%”"
       },
       "img-dithered-i75": {
-        "description": "Dithered at 75% intensity",
-        "title": "Dithered 75%"
+        "description": "“Dithered al 75% de intensidad”",
+        "title": "“Difuminado al 75%”"
       },
       "img-duotone": {
-        "description": "Two-tone color mapping",
-        "title": "Duotone"
+        "description": "“Mapeo de colores de dos tonos”",
+        "title": "“Duotono”"
       },
       "img-extreme": {
-        "description": "Maximum image visibility",
-        "title": "Extreme"
+        "description": "“Máxima visibilidad de la imagen”",
+        "title": "“Extremo”"
       },
       "img-halftone": {
-        "description": "Classic halftone dots",
-        "title": "Halftone"
+        "description": "“Puntos de semitono clásicos”",
+        "title": "“Semitono”"
       },
       "img-mosaic": {
-        "description": "Mosaic tile effect",
-        "title": "Mosaic"
+        "description": "“Efecto de mosaico”",
+        "title": "“Mosaico”"
       },
       "img-outline": {
-        "description": "Edge detection overlay",
-        "title": "Outline"
+        "description": "“Superposición de detección de bordes”",
+        "title": "“Esquema”"
       },
       "img-pixelate": {
-        "description": "Pixelated overlay effect",
-        "title": "Pixelate"
+        "description": "“Efecto de superposición pixelada”",
+        "title": "“Pixelado”"
       },
       "img-subpixel": {
-        "description": "High detail subpixel rendering",
-        "title": "Subpixel"
+        "description": "“Renderizado de subpíxeles con alto nivel de detalle”",
+        "title": "“Subpíxeles”"
       },
       "img-wave": {
-        "description": "Wavy distortion effect",
-        "title": "Wave"
+        "description": "“Efecto de distorsión ondulada”",
+        "title": "“Ola”"
       },
       "mosaic-classic": {
-        "description": "Mosaic with classic palette",
-        "title": "Classic Mosaic"
+        "description": "“Mosaico con paleta clásica”",
+        "title": "“Mosaico clásico”"
       },
       "mosaic-forest": {
-        "description": "Mosaic with forest palette",
-        "title": "Forest Mosaic"
+        "description": "“Mosaico con paleta de bosque”",
+        "title": "“Mosaico del bosque”"
       },
       "mosaic-navy": {
-        "description": "Mosaic with navy palette",
-        "title": "Navy Mosaic"
+        "description": "“Mosaico con paleta azul marino”",
+        "title": "“Mosaico azul marino”"
       },
       "mosaic-wine": {
-        "description": "Mosaic with wine palette",
-        "title": "Wine Mosaic"
+        "description": "“Mosaico con paleta de vinos”",
+        "title": "“Mosaico del vino”"
       },
       "plain-basic": {
-        "description": "Standard QR code",
-        "title": "Classic"
+        "description": "“Código QR estándar”",
+        "title": "“Clásico”"
       },
       "plain-ecc-l": {
-        "description": "Minimal error correction",
-        "title": "ECC Low (7%)"
+        "description": "“Corrección mínima de errores”",
+        "title": "“ECC bajo (7%)”"
       },
       "plain-ecc-q": {
-        "description": "Medium-high error correction",
-        "title": "ECC Quartile (25%)"
+        "description": "“Corrección de errores media-alta”",
+        "title": "“Cuartil ECC (25%)”"
       },
       "plain-v12": {
-        "description": "Large with multiple alignment",
-        "title": "Version 12"
+        "description": "“Grande con alineación múltiple”",
+        "title": "“Versión 12”"
       },
       "plain-v6": {
-        "description": "Larger without center eye",
-        "title": "Version 6"
+        "description": "“Más grande sin ojo central”",
+        "title": "“Versión 6”"
       },
       "plain-v9": {
-        "description": "Even larger with center eye",
-        "title": "Version 9"
+        "description": "“Aún más grande con ojo central”",
+        "title": "“Versión 9”"
       },
       "prep-blur-1": {
-        "description": "1px gaussian blur",
-        "title": "Blur 1px"
+        "description": "“Desenfoque gaussiano de 1 px”",
+        "title": "“Desenfoque 1px”"
       },
       "prep-blur-2": {
-        "description": "2px gaussian blur",
-        "title": "Blur 2px"
+        "description": "“Desenfoque gaussiano de 2 px”",
+        "title": "“Desenfoque 2px”"
       },
       "prep-blur-4": {
-        "description": "4px gaussian blur",
-        "title": "Blur 4px"
+        "description": "“Desenfoque gaussiano de 4 px”",
+        "title": "“Desenfoque 4px”"
       },
       "prep-brightness-n25": {
-        "description": "Brightness adjusted darker",
-        "title": "Brightness -25"
+        "description": "“Brillo ajustado más oscuro”",
+        "title": "“Brillo -25”"
       },
       "prep-brightness-n50": {
-        "description": "Brightness adjusted darker",
-        "title": "Brightness -50"
+        "description": "“Brillo ajustado más oscuro”",
+        "title": "“Brillo -50”"
       },
       "prep-brightness-p25": {
-        "description": "Brightness adjusted brighter",
-        "title": "Brightness +25"
+        "description": "“Brillo ajustado más brillante”",
+        "title": "“Brillo +25”"
       },
       "prep-brightness-p50": {
-        "description": "Brightness adjusted brighter",
-        "title": "Brightness +50"
+        "description": "“Brillo ajustado más brillante”",
+        "title": "“Brillo +50”"
       },
       "prep-contrast-n50": {
-        "description": "Low contrast",
-        "title": "Contrast -50"
+        "description": "“Bajo contraste”",
+        "title": "“Contraste -50”"
       },
       "prep-contrast-p100": {
-        "description": "High contrast",
-        "title": "Contrast +100"
+        "description": "“Alto contraste”",
+        "title": "“Contraste +100”"
       },
       "prep-contrast-p50": {
-        "description": "High contrast",
-        "title": "Contrast +50"
+        "description": "“Alto contraste”",
+        "title": "“Contraste +50”"
       },
       "prep-edge-canny": {
-        "description": "Canny edge detection",
-        "title": "Edge Canny"
+        "description": "“Detección de bordes astuta”",
+        "title": "“Borde astuto”"
       },
       "prep-edge-sobel": {
-        "description": "Sobel edge detection",
-        "title": "Edge Sobel"
+        "description": "“Detección de bordes Sobel”",
+        "title": "“Borde Sobel”"
       },
       "prep-gamma-05": {
-        "description": "Gamma correction 0.5",
-        "title": "Gamma 0.5"
+        "description": "“Corrección gamma 0,5”",
+        "title": "“Gamma 0.5”"
       },
       "prep-gamma-15": {
-        "description": "Gamma correction 1.5",
-        "title": "Gamma 1.5"
+        "description": "“Corrección gamma 1,5”",
+        "title": "“Gamma 1.5”"
       },
       "prep-gamma-20": {
-        "description": "Gamma correction 2.0",
-        "title": "Gamma 2.0"
+        "description": "“Corrección gamma 2.0”",
+        "title": "“Gamma 2.0”"
       },
       "prep-hue-90": {
-        "description": "Hue rotation 90 degrees",
-        "title": "Hue +90°"
+        "description": "“Rotación de tono 90 grados”",
+        "title": "“Tono +90°”"
       },
       "prep-invert": {
-        "description": "Inverted colors",
-        "title": "Inverted"
+        "description": "“Colores invertidos”",
+        "title": "“Invertido”"
       },
       "prep-posterize-2": {
-        "description": "2 color levels",
-        "title": "Posterize 2"
+        "description": "“2 niveles de color”",
+        "title": "“Posterizar 2”"
       },
       "prep-posterize-4": {
-        "description": "4 color levels",
-        "title": "Posterize 4"
+        "description": "“4 niveles de color”",
+        "title": "“Posterizar 4”"
       },
       "prep-posterize-8": {
-        "description": "8 color levels",
-        "title": "Posterize 8"
+        "description": "“8 niveles de color”",
+        "title": "“Posterizar 8”"
       },
       "prep-saturation-n100": {
-        "description": "Desaturated",
-        "title": "Saturation -100"
+        "description": "“Desaturado”",
+        "title": "“Saturación -100”"
       },
       "prep-saturation-n50": {
-        "description": "Reduced saturation",
-        "title": "Saturation -50"
+        "description": "“Saturación reducida”",
+        "title": "“Saturación -50”"
       },
       "prep-saturation-p100": {
-        "description": "Oversaturated",
-        "title": "Saturation +100"
+        "description": "“Sobresaturado”",
+        "title": "“Saturación +100”"
       },
       "prep-saturation-p50": {
-        "description": "Oversaturated",
-        "title": "Saturation +50"
+        "description": "“Sobresaturado”",
+        "title": "“Saturación +50”"
       },
       "prep-sharpen-100": {
-        "description": "100% sharpening",
-        "title": "Sharpen 100%"
+        "description": "“100% afilado”",
+        "title": "“Afilar al 100%”"
       },
       "prep-sharpen-25": {
-        "description": "25% sharpening",
-        "title": "Sharpen 25%"
+        "description": "“25% de nitidez”",
+        "title": "“Afinar 25%”"
       },
       "prep-sharpen-50": {
-        "description": "50% sharpening",
-        "title": "Sharpen 50%"
+        "description": "“50% de afilado”",
+        "title": "“Afilar al 50%”"
       },
       "prep-threshold-128": {
-        "description": "Binary threshold at 128",
-        "title": "Threshold 128"
+        "description": "“Umbral binario en 128”",
+        "title": "“Umbral 128”"
       },
       "prep-threshold-192": {
-        "description": "Binary threshold at 192",
-        "title": "Threshold 192"
+        "description": "“Umbral binario en 192”",
+        "title": "“Umbral 192”"
       },
       "prep-threshold-64": {
-        "description": "Binary threshold at 64",
-        "title": "Threshold 64"
+        "description": "“Umbral binario a 64”",
+        "title": "“Umbral 64”"
       },
       "style-connected": {
-        "description": "Connected module style",
-        "title": "Connected Modules"
+        "description": "“Estilo de módulo conectado”",
+        "title": "“Módulos conectados”"
       },
       "style-diamond": {
-        "description": "Diamond module style",
-        "title": "Diamond Modules"
+        "description": "“Estilo de módulo de diamante”",
+        "title": "“Módulos Diamante”"
       },
       "style-dots": {
-        "description": "Dots module style",
-        "title": "Dots Modules"
+        "description": "“Estilo de módulo de puntos”",
+        "title": "“Módulos de puntos”"
       },
       "style-rounded": {
-        "description": "Rounded module style",
-        "title": "Rounded Modules"
+        "description": "“Estilo de módulo redondeado”",
+        "title": "“Módulos redondeados”"
       },
       "style-square": {
-        "description": "Square module style",
-        "title": "Square Modules"
+        "description": "“Estilo de módulo cuadrado”",
+        "title": "“Módulos cuadrados”"
       }
     },
-    "plain": "Plain",
-    "powerCombos": "Power Combos",
-    "preprocessing": "Preprocessing",
+    "plain": "“Sencillo”",
+    "powerCombos": "“Combos de poder”",
+    "preprocessing": "“Preprocesamiento”",
     "sections": {
       "animation-overlay": {
-        "description": "Animated GIF overlays with different blend modes",
-        "title": "Animated Overlays"
+        "description": "“Superposiciones GIF animadas con diferentes modos de fusión”",
+        "title": "“Superposiciones animadas”"
       },
       "blend-modes": {
-        "description": "Different color blending with image overlays",
-        "title": "Blend Modes"
+        "description": "“Diferentes combinaciones de colores con superposiciones de imágenes”",
+        "title": "“Modos de fusión”"
       },
       "color-modes": {
-        "description": "Color, grayscale, and black & white processing",
-        "title": "Color Processing"
+        "description": "“Procesamiento de color, escala de grises y blanco y negro”",
+        "title": "“Procesamiento de color”"
       },
       "colors": {
-        "description": "Color schemes and themed palettes",
-        "title": "Colors & Themes"
+        "description": "“Esquemas de color y paletas temáticas”",
+        "title": "“Colores y temas”"
       },
       "content-types": {
-        "description": "Different payload formats - vCard, WiFi, Email, SMS, Geo, Calendar",
-        "title": "Content Types"
+        "description": "“Diferentes formatos de carga útil: vCard, WiFi, correo electrónico, SMS, Geo, Calendario”",
+        "title": "“Tipos de contenido”"
       },
       "dithering": {
-        "description": "Different dithering methods and error diffusion kernels",
-        "title": "Dithering Algorithms"
+        "description": "“Diferentes métodos de tramado y núcleos de difusión de errores”",
+        "title": "“Algoritmos de difuminado”"
       },
       "encoding": {
-        "description": "Different QR versions and error correction levels",
-        "title": "QR Encoding"
+        "description": "“Diferentes versiones de QR y niveles de corrección de errores”",
+        "title": "“Codificación QR”"
       },
       "image-overlay": {
-        "description": "Static image overlays with different blend modes",
-        "title": "Image Overlays"
+        "description": "“Superposiciones de imágenes estáticas con diferentes modos de fusión”",
+        "title": "“Superposiciones de imágenes”"
       },
       "plain": {
-        "description": "Standard QR codes without overlay - different versions and error correction",
-        "title": "Plain QR Codes"
+        "description": "“Códigos QR estándar sin superposición: diferentes versiones y corrección de errores”",
+        "title": "“Códigos QR simples”"
       },
       "power-combos": {
-        "description": "Striking multi-feature combinations showcasing ANQR capabilities",
-        "title": "Power Combos"
+        "description": "“Impresionantes combinaciones de múltiples funciones que muestran las capacidades de ANQR”",
+        "title": "“Combos de poder”"
       },
       "preprocessing": {
-        "description": "Brightness, contrast, gamma, blur, sharpen, posterize, edge detection",
-        "title": "Image Preprocessing"
+        "description": "“Brillo, contraste, gamma, desenfoque, nitidez, posterizar, detección de bordes”",
+        "title": "“Preprocesamiento de imágenes”"
       },
       "styles": {
-        "description": "Different visual styles for modules and finder patterns",
-        "title": "Module & Finder Styles"
+        "description": "“Diferentes estilos visuales para módulos y patrones de búsqueda”",
+        "title": "“Estilos de módulo y buscador”"
       }
     },
-    "showAll": "Show All",
-    "styles": "Styles",
-    "subtitle": "Explore examples of QR codes created with ANQR",
-    "title": "QR Code Gallery",
-    "tryThis": "Try this"
+    "showAll": "“Mostrar todo”",
+    "styles": "“Estilos”",
+    "subtitle": "“Explora ejemplos de códigos QR creados con ANQR”",
+    "title": "“Galería de códigos QR”",
+    "tryThis": "“Prueba esto”"
   },
   "header": {
-    "close": "Close",
-    "copied": "Copied!",
-    "copyLink": "Copy Link",
-    "darkMode": "Switch to dark mode",
-    "export": "Export",
-    "lightMode": "Switch to light mode",
-    "reset": "Reset",
-    "searchSettings": "Search settings...",
-    "share": "Share"
+    "close": "“Cerrar”",
+    "copied": "“¡Copiado!”",
+    "copyLink": "“Copiar enlace”",
+    "darkMode": "“Cambiar al modo oscuro”",
+    "export": "“Exportación”",
+    "lightMode": "“Cambiar al modo de luz”",
+    "reset": "“Restablecer”",
+    "searchSettings": "“Configuración de búsqueda…”",
+    "share": "“Compartir”"
   },
   "hints": {
-    "alignmentStyle": "Style of alignment patterns (used in larger QR codes)",
-    "appLinkNote": "Opens specific content within a mobile app",
-    "autoDetect": "Auto-detect (requires v{{version}}+ for current content)",
-    "autoMinVersion": "0 = Auto, min v{{version}} for current content",
-    "bgColorHex": "Background color hex code",
-    "bizcardLegacy": "Legacy format - consider using vCard instead",
-    "bluetoothNote": "Note: Bluetooth pairing via QR is vendor-specific and may not work on all devices",
-    "bounceAnimation": "Play animation forward then backward (ping-pong)",
-    "calendarNote": "Subscribe to a shared calendar feed",
-    "contrastGuard": "Ensure minimum contrast ratio between foreground and background",
-    "cornerRadius": "Corner radius percentage for rounded modules (0-100%)",
-    "crispEdges": "Use pixelated rendering for sharp module edges",
-    "customNote": "Enter raw data in any format. No validation or formatting will be applied.",
-    "dotRotation": "Rotate dot-style modules (0-360 degrees)",
-    "encodingMode": "Data encoding mode - Auto selects the most efficient mode",
-    "enforceMinQuietZone": "Enforce minimum 4 module quiet zone for better scanning reliability",
-    "enterTextContent": "Enter the text content to encode in the QR code",
-    "enterUrlContent": "Enter the URL to encode in the QR code",
-    "epcSepaNote": "European Payment Council QR code for SEPA credit transfers",
-    "errorCorrection": "Error correction level - higher = more damage resistance but larger QR code",
-    "extraBorder": "Additional border modules beyond the quiet zone (0-10)",
-    "eyeInnerStyle": "Style of the inner square of finder patterns",
-    "eyeOuterStyle": "Style of the outer ring of finder patterns",
-    "eyeScale": "Scale finder patterns relative to their default size (50-150%)",
-    "fgColorHex": "Foreground color hex code",
-    "finderStyle": "Style of the corner finder patterns",
-    "forceHttps": "Convert HTTP URLs to HTTPS automatically",
-    "frameStyle": "Add a decorative frame around the QR code",
-    "frameText": "Text to display on the frame",
-    "gapMode": "How gaps between modules are rendered",
-    "gradient": "Apply a gradient effect to the QR code",
-    "gs1Note": "GS1 Digital Link for product identification and traceability",
-    "higherEccLargerQr": "Higher = more damage resistance, larger QR",
-    "loopAnimation": "Loop animation continuously",
-    "maxLengthGuard": "Prevent encoding content that exceeds QR code capacity",
-    "minContrastRatio": "Minimum contrast ratio to enforce (1-21, WCAG AA requires 4.5:1)",
-    "moduleGap": "Gap between modules as percentage (0-30%)",
-    "moduleJitterWarning": "⚠️ May affect scannability",
-    "moduleSize": "Size of each QR code module in pixels (2-20px)",
-    "moduleStyle": "Visual style of QR code modules",
-    "normalizeNewlines": "Convert different newline formats to a standard format",
-    "outputFormat": "Select the output file format for export",
-    "paynowNote": "Singapore fast payment system",
-    "perModuleColor": "How to assign colors to individual modules",
-    "pickBgColor": "Click to pick background color",
-    "pickFgColor": "Click to pick foreground color",
-    "pixNote": "Brazilian instant payment system",
-    "pixelSnap": "How to snap module positions to pixel boundaries",
-    "promptpayNote": "Thailand national e-payment system",
-    "qrVersion": "QR code version (0=auto, 1-40 increases size and capacity)",
-    "quietZone": "Quiet zone margin around QR code (0-10 modules, recommended: 4+)",
-    "rsvpNote": "Link to an online RSVP form or event registration page",
-    "safetyMode": "Safety analysis mode - how strictly to check QR code readability",
-    "selectContentType": "Select the type of content to encode in the QR code",
-    "shortLinkNote": "Use a URL shortener service for dynamic/trackable QR codes",
-    "timingStyle": "Style of timing patterns (horizontal and vertical lines)",
-    "transparentBg": "Make the background transparent instead of using background color",
-    "trimWhitespace": "Remove leading and trailing whitespace",
-    "upiNote": "Unified Payments Interface for India",
-    "utmCampaign": "UTM campaign parameter for campaign tracking",
-    "utmMedium": "UTM medium parameter for campaign tracking",
-    "utmSource": "UTM source parameter for campaign tracking",
-    "validateInput": "Validate input data before encoding",
-    "versionTooLow": "⚠️ Version too low! Minimum v{{version}} required"
+    "alignmentStyle": "“Estilo de patrones de alineación (utilizado en códigos QR más grandes)”",
+    "appLinkNote": "“Abre contenido específico dentro de una aplicación móvil”",
+    "autoDetect": "“Detección automática (requiere v{{versión}}+ para el contenido actual)”",
+    "autoMinVersion": "“0 = Automático, versión mínima para el contenido actual”",
+    "bgColorHex": "“Código hexadecimal del color de fondo”",
+    "bizcardLegacy": "“Formato heredado: considere usar vCard en su lugar”",
+    "bluetoothNote": "“Nota: El emparejamiento Bluetooth mediante QR es específico del proveedor y puede no funcionar en todos los dispositivos”",
+    "bounceAnimation": "“Reproducir animación hacia adelante y luego hacia atrás (ping-pong)”",
+    "calendarNote": "“Suscribirse a un calendario compartido”",
+    "contrastGuard": "“Asegure una relación de contraste mínima entre el primer plano y el fondo”",
+    "cornerRadius": "“Porcentaje de radio de esquina para módulos redondeados (0-100%)”",
+    "crispEdges": "“Utilice renderizado pixelado para bordes de módulo nítidos”",
+    "customNote": "“Ingrese datos sin procesar en cualquier formato. No se aplicará ninguna validación ni formato.”",
+    "dotRotation": "“Girar módulos de estilo punto (0-360 grados)”",
+    "encodingMode": "“Modo de codificación de datos: selecciona automáticamente el modo más eficiente”",
+    "enforceMinQuietZone": "“Aplicar una zona silenciosa mínima de 4 módulos para una mayor confiabilidad del escaneo”",
+    "enterTextContent": "“Ingrese el contenido del texto a codificar en el código QR”",
+    "enterUrlContent": "“Introduzca la URL a codificar en el código QR”",
+    "epcSepaNote": "“Código QR del Consejo Europeo de Pagos para transferencias SEPA”",
+    "errorCorrection": "“Nivel de corrección de errores: cuanto mayor sea el nivel, mayor será la resistencia al daño, pero el código QR será más grande”.",
+    "extraBorder": "“Módulos fronterizos adicionales más allá de la zona tranquila (0-10)”",
+    "eyeInnerStyle": "“Estilo del cuadrado interior de los patrones de búsqueda”",
+    "eyeOuterStyle": "“Estilo del anillo exterior de los patrones de búsqueda”",
+    "eyeScale": "“Patrones del buscador de escala en relación con su tamaño predeterminado (50-150%)”",
+    "fgColorHex": "“Código hexadecimal del color de primer plano”",
+    "finderStyle": "“Estilo de los patrones de búsqueda de esquinas”",
+    "forceHttps": "“Convertir URL HTTP a HTTPS automáticamente”",
+    "frameStyle": "“Añadir un marco decorativo alrededor del código QR”",
+    "frameText": "“Texto para mostrar en el marco”",
+    "gapMode": "“Cómo se representan los espacios entre módulos”",
+    "gradient": "“Aplicar un efecto de degradado al código QR”",
+    "gs1Note": "“GS1 Digital Link para identificación y trazabilidad de productos”",
+    "higherEccLargerQr": "“Cuanto más alto, mayor resistencia al daño, mayor QR”",
+    "loopAnimation": "“Animación en bucle continuo”",
+    "maxLengthGuard": "“Evitar la codificación de contenido que exceda la capacidad del código QR”",
+    "minContrastRatio": "“Relación de contraste mínima a aplicar (1-21, WCAG AA requiere 4,5:1)”",
+    "moduleGap": "“Distancia entre módulos como porcentaje (0-30%)”",
+    "moduleJitterWarning": "“⚠️ Puede afectar la capacidad de escaneo”",
+    "moduleSize": "“Tamaño de cada módulo de código QR en píxeles (2-20 px)”",
+    "moduleStyle": "“Estilo visual de los módulos de código QR”",
+    "normalizeNewlines": "“Convertir diferentes formatos de nueva línea a un formato estándar”",
+    "outputFormat": "“Seleccione el formato del archivo de salida para la exportación”",
+    "paynowNote": "“Sistema de pago rápido de Singapur”",
+    "perModuleColor": "“Cómo asignar colores a módulos individuales”",
+    "pickBgColor": "“Haga clic para elegir el color de fondo”",
+    "pickFgColor": "“Haga clic para seleccionar el color de primer plano”",
+    "pixNote": "“Sistema brasileño de pago instantáneo”",
+    "pixelSnap": "“Cómo ajustar las posiciones de los módulos a los límites de píxeles”",
+    "promptpayNote": "“Sistema nacional de pagos electrónicos de Tailandia”",
+    "qrVersion": "“Versión del código QR (0=automático, 1-40 aumenta el tamaño y la capacidad)”",
+    "quietZone": "“Margen de zona tranquila alrededor del código QR (0-10 módulos, recomendado: 4+)”",
+    "rsvpNote": "“Enlace a un formulario de RSVP en línea o a una página de registro de eventos”",
+    "safetyMode": "“Modo de análisis de seguridad: cómo comprobar rigurosamente la legibilidad del código QR”",
+    "selectContentType": "“Seleccione el tipo de contenido a codificar en el código QR”",
+    "shortLinkNote": "“Utilice un servicio de acortamiento de URL para códigos QR dinámicos/rastreables”",
+    "timingStyle": "“Estilo de patrones de tiempo (líneas horizontales y verticales)”",
+    "transparentBg": "“Hacer que el fondo sea transparente en lugar de usar color de fondo”",
+    "trimWhitespace": "“Eliminar espacios iniciales y finales”",
+    "upiNote": "“Interfaz de pagos unificada para la India”",
+    "utmCampaign": "“Parámetro de campaña UTM para seguimiento de campañas”",
+    "utmMedium": "“Parámetro medio UTM para el seguimiento de campañas”",
+    "utmSource": "“Parámetro de origen UTM para el seguimiento de campañas”",
+    "validateInput": "“Validar los datos de entrada antes de codificarlos”",
+    "versionTooLow": "“¡⚠️ Versión demasiado baja! Se requiere una versión mínima de v{{version}}”"
   },
   "language": {
-    "current": "Language",
-    "select": "Select Language"
+    "current": "“Lenguaje”",
+    "select": "“Seleccionar idioma”"
   },
   "metadata": {
-    "addCustomField": "Add Custom Field",
-    "author": "Author",
-    "authorPlaceholder": "Author name",
-    "copyright": "Copyright",
-    "copyrightPlaceholder": "© 2024 Company Name",
-    "customMetadata": "Custom Metadata",
-    "description": "Description",
-    "descriptionPlaceholder": "Description of this QR code...",
-    "includeCreationTime": "Include Creation Time",
-    "key": "Key",
-    "keyPlaceholder": "Key",
-    "keywords": "Keywords",
-    "license": "License",
-    "licensePlaceholder": "CC-BY-4.0",
-    "title": "Title",
-    "titlePlaceholder": "QR Code Title",
-    "value": "Value",
-    "valuePlaceholder": "Value"
+    "addCustomField": "“Agregar campo personalizado”",
+    "author": "“Autor”",
+    "authorPlaceholder": "“Nombre del autor”",
+    "copyright": "“Derechos de autor”",
+    "copyrightPlaceholder": "“© 2024 Nombre de la empresa”",
+    "customMetadata": "“Metadatos personalizados”",
+    "description": "“Descripción”",
+    "descriptionPlaceholder": "“Descripción de este código QR…”",
+    "includeCreationTime": "“Incluir el tiempo de la creación”",
+    "key": "“Clave”",
+    "keyPlaceholder": "“Clave”",
+    "keywords": "“Palabras clave”",
+    "license": "“Licencia”",
+    "licensePlaceholder": "“CC-BY-4.0”",
+    "title": "“Título”",
+    "titlePlaceholder": "“Título del código QR”",
+    "value": "“Valor”",
+    "valuePlaceholder": "“Valor”"
   },
   "nav": {
-    "about": "About",
-    "contact": "Contact",
-    "docs": "Guide",
-    "gallery": "Gallery",
-    "generator": "Generator",
-    "guide": "Guide",
-    "privacy": "Privacy",
-    "terms": "Terms"
+    "about": "“Acerca de”",
+    "contact": "“Contacto”",
+    "docs": "“Guía”",
+    "gallery": "“Galería”",
+    "generator": "“Generador”",
+    "guide": "“Guía”",
+    "privacy": "“Privacidad”",
+    "terms": "“Términos”"
   },
   "output": {
-    "backgroundOverride": "Background Override",
-    "backgroundOverridePlaceholder": "Leave empty for default",
-    "dithering": "Dithering",
-    "dpi": "DPI (Print)",
-    "embedRasterOverlay": "Embed Raster Overlay",
-    "exportAsAdditional": "Export As (Additional)",
-    "filename": "Filename",
-    "floydSteinberg": "Floyd-Steinberg",
-    "format": "Format",
-    "gif": "GIF",
-    "gifSettings": "GIF Settings",
-    "height": "Height",
-    "includeQuietZone": "Include Quiet Zone",
-    "medianCut": "Median Cut",
-    "neuquant": "NeuQuant",
-    "none": "None",
-    "octree": "Octree",
-    "off": "Off",
-    "ordered": "Ordered",
-    "outputSize": "Output Size",
-    "paletteSize": "Palette Size",
-    "pdf": "PDF",
-    "pixel": "Pixel",
-    "png": "PNG",
-    "precise": "Precise",
-    "quality": "Quality",
-    "quantizer": "Quantizer",
-    "shapePrecision": "Shape Precision",
-    "svg": "SVG",
-    "svgSettings": "SVG Settings",
-    "transparentColor": "Transparent Color",
-    "transparentColorPlaceholder": "#ffffff or empty",
-    "trueVector": "True Vector",
-    "trueVectorDesc": "Use paths instead of embedded raster",
-    "webp": "WebP",
-    "width": "Width"
+    "backgroundOverride": "“Anulación de fondo”",
+    "backgroundOverridePlaceholder": "“Dejar vacío para el valor predeterminado”",
+    "dithering": "“Travesura”",
+    "dpi": "“DPI (Impresión)”",
+    "embedRasterOverlay": "“Incrustar superposición ráster”",
+    "exportAsAdditional": "“Exportar como (Adicional)”",
+    "filename": "“Nombre de archivo”",
+    "floydSteinberg": "“Floyd-Steinberg”",
+    "format": "“Formato”",
+    "gif": "“GIF”",
+    "gifSettings": "“Configuración de GIF”",
+    "height": "“Altura”",
+    "includeQuietZone": "“Incluir zona tranquila”",
+    "medianCut": "“Corte Mediano”",
+    "neuquant": "“NeuQuant”",
+    "none": "“Ninguno”",
+    "octree": "“Octree”",
+    "off": "“Apagado”",
+    "ordered": "“Ordenado”",
+    "outputSize": "“Tamaño de salida”",
+    "paletteSize": "“Tamaño de paleta”",
+    "pdf": "“PDF”",
+    "pixel": "“Píxeles”",
+    "png": "“PNG”",
+    "precise": "“Preciso”",
+    "quality": "“Calidad”",
+    "quantizer": "“Cuantizador”",
+    "shapePrecision": "“Precisión de forma”",
+    "svg": "“SVG”",
+    "svgSettings": "“Configuración SVG”",
+    "transparentColor": "“Color transparente”",
+    "transparentColorPlaceholder": "“#ffffff o vacío”",
+    "trueVector": "“Vector verdadero”",
+    "trueVectorDesc": "“Utilizar rutas en lugar de ráster incrustado”",
+    "webp": "“WebP”",
+    "width": "“Ancho”"
   },
   "overlay": {
-    "adaptiveThreshold": "Adaptive Threshold",
-    "atkinson": "Atkinson",
-    "bayer2": "Bayer 2×2",
-    "bayer4": "Bayer 4×4",
-    "bayer8": "Bayer 8×8",
-    "blend": "Blend",
-    "blendMode": "Blend",
-    "blueNoise": "Blue Noise",
-    "blueNoiseErrorDiffusion": "Blue Noise + Error Diffusion",
-    "blueNoiseMode": "Blue Noise",
-    "blueNoiseThreshold": "Blue Noise Threshold",
-    "blur": "Blur",
-    "brightness": "Brightness",
-    "brightnessCurve": "Brightness Curve",
-    "brightnessMode": "Brightness",
-    "burkes": "Burkes",
-    "bw": "Black & White",
-    "cellSize": "Cell Size",
-    "centerLogo": "Center Logo",
-    "centerRule": "Center Rule",
-    "clusteredDot": "Clustered Dot",
-    "colorDither": "Color Dither",
-    "colorMode": "Color Mode",
-    "contain": "Contain",
-    "contrast": "Contrast",
-    "corsNote": "Note: Image must allow cross-origin requests (CORS)",
-    "cover": "Cover",
-    "cropImage": "Crop Image",
-    "cropSize": "Crop Size",
-    "diffusionKernel": "Diffusion Kernel",
-    "disposalHandling": "Disposal Handling",
-    "dither": "Dither",
-    "ditherSettings": "Dither Settings",
-    "ditherStrength": "Dither Strength",
-    "dithered": "Dithered",
-    "ditheredMode": "Dithered",
-    "dotShape": "Dot Shape",
-    "duotone": "Duotone",
-    "duotoneColors": "Duotone Colors",
-    "duotoneMode": "Duotone",
-    "eccAwareMode": "ECC-Aware Mode",
-    "edge": "Edge Detection",
-    "edgeAware": "Edge-Aware",
-    "enableCrop": "Enable Crop",
-    "errorDiffusion": "Error Diffusion",
-    "extreme": "Extreme",
-    "extremeMode": "Extreme",
-    "finderOverride": "Finder Override",
-    "fitMode": "Fit Mode",
-    "flipX": "Flip X",
-    "flipY": "Flip Y",
-    "floydSteinberg": "Floyd-Steinberg",
-    "fromUrl": "From URL",
-    "fullColor": "Full Color",
-    "gamma": "Gamma",
-    "gapFillMode": "Gap Fill",
-    "gapfill": "Gap Fill",
-    "gaussianNoise": "Gaussian Noise",
-    "gifSettings": "GIF Settings",
-    "grayscale": "Grayscale",
-    "gridSize": "Grid Size",
-    "halftone": "Halftone",
-    "halftoneCenter": "Halftone Center",
-    "halftoneMode": "Halftone",
-    "halftoneSettings": "Halftone Settings",
-    "highlight": "Highlight",
-    "hueRotate": "Hue Rotate",
-    "imageGifWebp": "Image / GIF / WebP",
-    "imageUrl": "Image URL",
-    "intensity": "Intensity",
-    "invert": "Invert Image",
-    "jarvisJudiceNinke": "Jarvis-Judice-Ninke",
-    "line": "Line",
-    "load": "Load",
-    "loadedFromUrl": "Loaded from URL",
-    "maxFps": "Max FPS",
-    "mode": "Blend Mode",
-    "mosaic": "Mosaic",
-    "mosaicMode": "Mosaic",
-    "neutralColor": "Neutral Color",
-    "noFile": "No file",
-    "none": "None",
-    "nxnGrid": "N×N Grid",
-    "orderedBayer": "Ordered (Bayer)",
-    "orderedMatrix": "Ordered Matrix",
-    "original": "Original",
-    "outline": "Outline",
-    "outlineMode": "Outline",
-    "perChannel": "Per Channel",
-    "perModule": "Per Module",
-    "perceptual": "Perceptual (Luminance)",
-    "pixelate": "Pixelate",
-    "pixelateMode": "Pixelate",
-    "posterizeLevels": "Posterize Levels",
-    "preserveAlignment": "Preserve Alignment",
-    "preserveFinders": "Preserve Finder Patterns",
-    "preserveTiming": "Preserve Timing",
-    "protectFormat": "Protect Format Info",
-    "protectFormatInfo": "Protect Format Info",
-    "protectVersion": "Protect Version Info",
-    "protectVersionInfo": "Protect Version Info",
-    "protection": "Protection",
-    "removeImage": "Remove",
-    "respect": "Respect",
-    "riskBudget": "Risk Budget",
-    "rotation": "Rotation",
-    "sCurve": "S-Curve",
-    "saturation": "Saturation",
-    "screenedBlueNoise": "Screened Blue Noise",
-    "seed": "Seed",
-    "selectImage": "Select Image",
-    "sepia": "Sepia",
-    "serpentineScanning": "Serpentine Scanning",
-    "shadow": "Shadow",
-    "sharpen": "Sharpen",
-    "sierra": "Sierra",
-    "sierra2": "Sierra-2",
-    "sierraLite": "Sierra-Lite",
-    "simplify": "Simplify",
-    "stretch": "Stretch",
-    "strict": "Strict",
-    "stucki": "Stucki",
-    "stylized": "Stylized",
-    "subpixel": "Subpixel",
-    "subpixelMode": "Subpixel",
-    "subpixelSettings": "Subpixel Settings",
-    "subpixelSize": "Subpixel Size",
-    "subpixelSizeMode": "Subpixel Size",
-    "temporalBlueNoise": "Temporal Blue Noise",
-    "threshold": "Threshold",
-    "tileSize": "Tile Size",
-    "triangularNoise": "Triangular Noise",
-    "trueDither": "True Dither",
-    "trueDitherMode": "True Dither",
-    "upload": "Upload",
-    "useFrameDelays": "Use Frame Delays",
-    "voidCluster": "Void & Cluster",
-    "wave": "Wave",
-    "waveMode": "Wave",
-    "whiteNoise": "White Noise"
+    "adaptiveThreshold": "“Umbral adaptativo”",
+    "atkinson": "“Atkinson”",
+    "bayer2": "“Bayer 2×2”",
+    "bayer4": "“Bayer 4×4”",
+    "bayer8": "“Bayer 8×8”",
+    "blend": "“Mezcla”",
+    "blendMode": "“Mezcla”",
+    "blueNoise": "“Ruido azul”",
+    "blueNoiseErrorDiffusion": "“Ruido azul + difusión de errores”",
+    "blueNoiseMode": "“Ruido azul”",
+    "blueNoiseThreshold": "“Umbral de ruido azul”",
+    "blur": "“Desenfoque”",
+    "brightness": "“Brillo”",
+    "brightnessCurve": "“Curva de brillo”",
+    "brightnessMode": "“Brillo”",
+    "burkes": "“Burkes”",
+    "bw": "“Blanco y negro”",
+    "cellSize": "“Tamaño de celda”",
+    "centerLogo": "“Logotipo del centro”",
+    "centerRule": "“Regla del centro”",
+    "clusteredDot": "“Punto agrupado”",
+    "colorDither": "“Tramado de color”",
+    "colorMode": "“Modo de color”",
+    "contain": "“Contener”",
+    "contrast": "“Contraste”",
+    "corsNote": "“Nota: La imagen debe permitir solicitudes de origen cruzado (CORS)”",
+    "cover": "“Portada”",
+    "cropImage": "“Recortar imagen”",
+    "cropSize": "“Tamaño del cultivo”",
+    "diffusionKernel": "“Núcleo de difusión”",
+    "disposalHandling": "“Manejo de la eliminación”",
+    "dither": "“Trabalenguas”",
+    "ditherSettings": "“Configuración de tramado”",
+    "ditherStrength": "“Fuerza de vacilación”",
+    "dithered": "“Dithered”",
+    "ditheredMode": "“Dithered”",
+    "dotShape": "“Forma de punto”",
+    "duotone": "“Duotono”",
+    "duotoneColors": "“Colores Duotono”",
+    "duotoneMode": "“Duotono”",
+    "eccAwareMode": "“Modo compatible con ECC”",
+    "edge": "“Detección de bordes”",
+    "edgeAware": "“Consciente de los bordes”",
+    "enableCrop": "“Habilitar recorte”",
+    "errorDiffusion": "“Difusión de errores”",
+    "extreme": "“Extremo”",
+    "extremeMode": "“Extremo”",
+    "finderOverride": "“Anulación del Finder”",
+    "fitMode": "“Modo de ajuste”",
+    "flipX": "“Voltear X”",
+    "flipY": "“Voltear Y”",
+    "floydSteinberg": "“Floyd-Steinberg”",
+    "fromUrl": "“Desde URL”",
+    "fullColor": "“A todo color”",
+    "gamma": "“Gamma”",
+    "gapFillMode": "“Relleno de huecos”",
+    "gapfill": "“Relleno de huecos”",
+    "gaussianNoise": "“Ruido gaussiano”",
+    "gifSettings": "“Configuración de GIF”",
+    "grayscale": "“Escala de grises”",
+    "gridSize": "“Tamaño de la cuadrícula”",
+    "halftone": "“Semitono”",
+    "halftoneCenter": "“Centro de semitono”",
+    "halftoneMode": "“Semitono”",
+    "halftoneSettings": "“Configuración de medios tonos”",
+    "highlight": "“Lo más destacado”",
+    "hueRotate": "“Rotación de tono”",
+    "imageGifWebp": "“Imagen / GIF / WebP”",
+    "imageUrl": "“URL de la imagen”",
+    "intensity": "“Intensidad”",
+    "invert": "“Invertir imagen”",
+    "jarvisJudiceNinke": "“Jarvis-Judice-Ninke”",
+    "line": "“Línea”",
+    "load": "“Carga”",
+    "loadedFromUrl": "“Cargado desde URL”",
+    "maxFps": "“FPS máximos”",
+    "mode": "“Modo de fusión”",
+    "mosaic": "“Mosaico”",
+    "mosaicMode": "“Mosaico”",
+    "neutralColor": "“Color neutro”",
+    "noFile": "“Sin archivo”",
+    "none": "“Ninguno”",
+    "nxnGrid": "“Cuadrícula N×N”",
+    "orderedBayer": "“Ordenado (Bayer)”",
+    "orderedMatrix": "“Matriz ordenada”",
+    "original": "“Original”",
+    "outline": "“Esquema”",
+    "outlineMode": "“Esquema”",
+    "perChannel": "“Por canal”",
+    "perModule": "“Por módulo”",
+    "perceptual": "“Perceptual (Luminancia)”",
+    "pixelate": "“Pixelado”",
+    "pixelateMode": "“Pixelado”",
+    "posterizeLevels": "“Niveles de Posterización”",
+    "preserveAlignment": "“Preservar la alineación”",
+    "preserveFinders": "“Conservar patrones del buscador”",
+    "preserveTiming": "“Preservar el tiempo”",
+    "protectFormat": "“Proteger información de formato”",
+    "protectFormatInfo": "“Proteger información de formato”",
+    "protectVersion": "“Proteger la información de la versión”",
+    "protectVersionInfo": "“Proteger la información de la versión”",
+    "protection": "“Protección”",
+    "removeImage": "“Quitar”",
+    "respect": "“Respeto”",
+    "riskBudget": "“Presupuesto de riesgo”",
+    "rotation": "“Rotación”",
+    "sCurve": "“Curva en S”",
+    "saturation": "“Saturación”",
+    "screenedBlueNoise": "“Ruido azul filtrado”",
+    "seed": "“Semilla”",
+    "selectImage": "“Seleccionar imagen”",
+    "sepia": "“Sepia”",
+    "serpentineScanning": "“Escaneo serpenteante”",
+    "shadow": "“Sombra”",
+    "sharpen": "“Afilar”",
+    "sierra": "“Sierra”",
+    "sierra2": "“Sierra-2”",
+    "sierraLite": "“Sierra-Lite”",
+    "simplify": "“Simplificar”",
+    "stretch": "“Estiramiento”",
+    "strict": "“Estricto”",
+    "stucki": "“Stucki”",
+    "stylized": "“Estilizado”",
+    "subpixel": "“Subpíxeles”",
+    "subpixelMode": "“Subpíxeles”",
+    "subpixelSettings": "“Configuración de subpíxeles”",
+    "subpixelSize": "“Tamaño de subpíxel”",
+    "subpixelSizeMode": "“Tamaño de subpíxel”",
+    "temporalBlueNoise": "“Ruido azul temporal”",
+    "threshold": "“Umbral”",
+    "tileSize": "“Tamaño del mosaico”",
+    "triangularNoise": "“Ruido triangular”",
+    "trueDither": "“Verdadero vacilación”",
+    "trueDitherMode": "“Verdadero vacilación”",
+    "upload": "“Subir”",
+    "useFrameDelays": "“Usar retrasos de fotogramas”",
+    "voidCluster": "“Vacío y Cúmulo”",
+    "wave": "“Ola”",
+    "waveMode": "“Ola”",
+    "whiteNoise": "“Ruido blanco”"
   },
   "payload": {
-    "accountName": "Account Name",
-    "address": "Address",
-    "algorithm": "Algorithm",
-    "allDay": "All Day Event",
-    "amount": "Amount (optional)",
-    "amountBrl": "Amount (BRL, optional)",
-    "amountEur": "Amount (EUR)",
-    "amountInr": "Amount (INR, optional)",
-    "amountSgd": "Amount (SGD, optional)",
-    "amountThb": "Amount (THB, optional)",
-    "androidIntent": "Android Intent",
-    "appLink": "App Deep Link (Android/iOS)",
-    "assetInventory": "Asset/Inventory Tag",
-    "assetItemId": "Asset/Item ID",
-    "assetType": "Asset Type",
-    "attendeeName": "Attendee Name",
-    "audio": "Audio",
-    "baseUrl": "Base URL",
-    "batchLot": "Batch/Lot (optional)",
-    "beneficiaryName": "Beneficiary Name",
-    "bicSwift": "BIC/SWIFT (optional)",
-    "birthday": "Birthday",
-    "bitcoin": "Bitcoin",
-    "bizcard": "BizCard (Legacy)",
-    "bluetooth": "Bluetooth",
-    "body": "Message Body",
-    "bodyOptional": "Body (optional)",
-    "box": "Box",
-    "calendar": "Calendar",
-    "calendarName": "Calendar Name",
-    "calendarSubscription": "Calendar Subscribe",
-    "calendarUrl": "Calendar URL (ICS/WebCal)",
-    "campaignContent": "Campaign Content (optional)",
-    "campaignMedium": "Campaign Medium",
-    "campaignName": "Campaign Name",
-    "campaignSource": "Campaign Source",
-    "campaignTerm": "Campaign Term (optional)",
-    "city": "City",
-    "cityOptional": "City (optional)",
-    "cloudLink": "Cloud Storage Link",
-    "company": "Company",
-    "contact": "Contact",
-    "contentType": "Content Type",
-    "core": "Core",
-    "country": "Country",
-    "crypto": "Crypto (BTC, ETH, etc.)",
-    "cryptocurrency": "Cryptocurrency",
-    "custom": "Custom Format",
-    "customScheme": "Custom Scheme",
-    "dateTime": "Date & Time",
-    "deepLinkUrl": "Deep Link URL",
-    "description": "Description",
-    "deviceAddress": "Device Address (MAC)",
-    "deviceName": "Device Name (optional)",
-    "digits": "Digits",
-    "documentsMedia": "Documents & Media",
-    "dropbox": "Dropbox",
-    "email": "Email",
-    "emailAddress": "Email Address",
-    "encryption": "Encryption",
-    "end": "End",
-    "endDate": "End Date",
-    "enterprise": "Enterprise",
-    "epcSepa": "EPC / SEPA (EU)",
-    "equipment": "Equipment",
-    "ethereum": "Ethereum",
-    "event": "iCalendar Event",
-    "eventName": "Event Name",
-    "eventRsvp": "Event RSVP Link",
-    "eventTicket": "Event Ticket",
-    "expiryDate": "Expiry Date (optional)",
-    "facebook": "Facebook",
-    "fallbackUrl": "Fallback URL (optional)",
-    "fax": "Fax",
-    "fileType": "File Type",
-    "fileUrl": "File / Document URL",
-    "firstName": "First Name",
-    "forceHttps": "Force HTTPS",
-    "fullName": "Full Name",
-    "furniture": "Furniture",
-    "geo": "Geo Location",
-    "github": "GitHub",
-    "googleDrive": "Google Drive",
-    "gs1DigitalLink": "GS1 Digital Link",
-    "gtin": "GTIN (Global Trade Item Number)",
-    "hidden": "Hidden Network",
-    "homePhone": "Home Phone",
-    "iban": "IBAN",
-    "idType": "ID Type",
-    "image": "Image",
-    "instagram": "Instagram",
-    "inventoryItem": "Inventory Item",
-    "iosUniversal": "iOS Universal",
-    "issuer": "Issuer",
-    "itAsset": "IT Asset",
-    "label": "Label (optional)",
-    "lastName": "Last Name",
-    "latitude": "Latitude",
-    "linkType": "Link Type",
-    "linkedin": "LinkedIn",
-    "litecoin": "Litecoin",
-    "location": "Location",
-    "locationNetwork": "Location & Network",
-    "longitude": "Longitude",
-    "lookupUrl": "Lookup URL (optional)",
-    "marketing": "Marketing",
-    "marketingTags": "Marketing Tags",
-    "maxLengthGuard": "Max Length Guard",
-    "mecard": "MeCard Contact",
-    "merchantName": "Merchant Name (optional)",
-    "message": "Message",
-    "messageOptional": "Message (optional)",
-    "messagingLink": "WhatsApp / Telegram / Signal",
-    "messenger": "Messenger",
-    "mobileNumber": "Mobile Number",
-    "mobilePhone": "Mobile Phone",
-    "name": "Name",
-    "nationalIdTaxId": "National ID / Tax ID",
-    "nickname": "Nickname",
-    "normalizeNewlines": "Normalize Newlines",
-    "note": "Note",
-    "oneDrive": "OneDrive",
-    "openNoPassword": "Open (No Password)",
-    "organization": "Organization",
-    "other": "Other",
-    "otpAuth": "OTP Authenticator",
-    "otpType": "Type",
-    "password": "Password",
-    "payeeName": "Payee Name",
-    "payments": "Payments (Open Specs)",
-    "paynow": "PayNow (Singapore)",
-    "phone": "Phone",
-    "phoneUsername": "Phone/Username",
-    "pix": "PIX (Brazil)",
-    "pixKey": "PIX Key",
-    "plainText": "Plain Text",
-    "platform": "Platform",
-    "prefilledMessage": "Pre-filled Message (optional)",
-    "profileUrl": "Profile URL",
-    "promptPayId": "PromptPay ID",
-    "promptpay": "PromptPay (Thailand)",
-    "proxyType": "Proxy Type",
-    "rawData": "Raw Data",
-    "recipient": "Recipient",
-    "reference": "Reference",
-    "referenceOptional": "Reference (optional)",
-    "resolverDomain": "Resolver Domain",
-    "rsvpUrl": "RSVP URL",
-    "searchQuery": "Search Query (optional)",
-    "seat": "Seat",
-    "secretBase32": "Secret (Base32)",
-    "sectionZone": "Section/Zone",
-    "securityType": "Security Type",
-    "serialNumber": "Serial Number (optional)",
-    "service": "Service",
-    "shortLink": "Short Link Redirect",
-    "shortUrl": "Short URL",
-    "signal": "Signal",
-    "sms": "SMS",
-    "smsMms": "SMS / MMS",
-    "socialMessaging": "Social & Messaging",
-    "socialProfile": "Social Profile",
-    "ssid": "Network Name (SSID)",
-    "start": "Start",
-    "startDate": "Start Date",
-    "state": "State/Province",
-    "street": "Street",
-    "subject": "Subject",
-    "subjectOptional": "Subject (optional)",
-    "summary": "Event Title",
-    "tel": "Phone Number",
-    "telegram": "Telegram",
-    "text": "Text Content",
-    "ticketId": "Ticket ID",
-    "tiktok": "TikTok",
-    "title": "Title",
-    "transactionNote": "Transaction Note (optional)",
-    "trimWhitespace": "Trim Whitespace",
-    "uenMobile": "UEN/Mobile Number",
-    "universalLink": "Universal Link",
-    "upi": "UPI (India)",
-    "upiId": "UPI ID (VPA)",
-    "url": "URL",
-    "utmCampaign": "utm_campaign",
-    "utmContent": "utm_content",
-    "utmLink": "UTM Campaign Link",
-    "utmMedium": "utm_medium",
-    "utmSource": "utm_source",
-    "utmTerm": "utm_term",
-    "validateInput": "Validate Input",
-    "validationOptions": "Validation Options",
-    "validationUrl": "Validation URL (optional)",
-    "vcard": "vCard Contact",
-    "vehicle": "Vehicle",
-    "venue": "Venue",
-    "vevent": "Calendar Event",
-    "viber": "Viber",
-    "video": "Video",
-    "walletAddress": "Address",
-    "website": "Website",
-    "whatsapp": "WhatsApp",
-    "wifi": "WiFi",
-    "wifiNetwork": "WiFi Network",
-    "wordDocument": "Word Document",
-    "workPhone": "Work Phone",
-    "youtube": "YouTube",
-    "zip": "ZIP/Postal Code"
+    "accountName": "“Nombre de la cuenta”",
+    "address": "“Dirección”",
+    "algorithm": "“Algoritmo”",
+    "allDay": "“Evento de todo el día”",
+    "amount": "“Monto (opcional)”",
+    "amountBrl": "“Monto (BRL, opcional)”",
+    "amountEur": "“Importe (EUR)”",
+    "amountInr": "“Monto (INR, opcional)”",
+    "amountSgd": "“Monto (SGD, opcional)”",
+    "amountThb": "“Importe (THB, opcional)”",
+    "androidIntent": "“Intención de Android”",
+    "appLink": "“Enlace profundo de la aplicación (Android/iOS)”",
+    "assetInventory": "“Etiqueta de activo/inventario”",
+    "assetItemId": "“ID de activo/artículo”",
+    "assetType": "“Tipo de activo”",
+    "attendeeName": "“Nombre del asistente”",
+    "audio": "“Audio”",
+    "baseUrl": "“URL base”",
+    "batchLot": "“Lote (opcional)”",
+    "beneficiaryName": "“Nombre del beneficiario”",
+    "bicSwift": "“BIC/SWIFT (opcional)”",
+    "birthday": "“Cumpleaños”",
+    "bitcoin": "“Bitcoin”",
+    "bizcard": "“BizCard (Legado)”",
+    "bluetooth": "“Bluetooth”",
+    "body": "“Cuerpo del mensaje”",
+    "bodyOptional": "“Cuerpo (opcional)”",
+    "box": "“Caja”",
+    "calendar": "“Calendario”",
+    "calendarName": "“Nombre del calendario”",
+    "calendarSubscription": "“Suscripción al calendario”",
+    "calendarUrl": "“URL del calendario (ICS/WebCal)”",
+    "campaignContent": "“Contenido de la campaña (opcional)”",
+    "campaignMedium": "“Medio de campaña”",
+    "campaignName": "“Nombre de la campaña”",
+    "campaignSource": "“Fuente de la campaña”",
+    "campaignTerm": "“Término de la campaña (opcional)”",
+    "city": "“Ciudad”",
+    "cityOptional": "“Ciudad (opcional)”",
+    "cloudLink": "“Enlace de almacenamiento en la nube”",
+    "company": "“Compañía”",
+    "contact": "“Contacto”",
+    "contentType": "“Tipo de contenido”",
+    "core": "“Núcleo”",
+    "country": "“País”",
+    "crypto": "“Criptomonedas (BTC, ETH, etc.)”",
+    "cryptocurrency": "“Criptomoneda”",
+    "custom": "“Formato personalizado”",
+    "customScheme": "“Plan personalizado”",
+    "dateTime": "“Fecha y hora”",
+    "deepLinkUrl": "“URL de enlace profundo”",
+    "description": "“Descripción”",
+    "deviceAddress": "“Dirección del dispositivo (MAC)”",
+    "deviceName": "“Nombre del dispositivo (opcional)”",
+    "digits": "“Dígitos”",
+    "documentsMedia": "“Documentos y medios”",
+    "dropbox": "“Buzón de entrega”",
+    "email": "“Correo electrónico”",
+    "emailAddress": "“Dirección de correo electrónico”",
+    "encryption": "“Cifrado”",
+    "end": "“Fin”",
+    "endDate": "“Fecha de finalización”",
+    "enterprise": "“Empresa”",
+    "epcSepa": "“EPC/SEPA (UE)”",
+    "equipment": "“Equipo”",
+    "ethereum": "“Ethereum”",
+    "event": "“Evento de iCalendar”",
+    "eventName": "“Nombre del evento”",
+    "eventRsvp": "“Enlace RSVP del evento”",
+    "eventTicket": "“Entrada para evento”",
+    "expiryDate": "“Fecha de vencimiento (opcional)”",
+    "facebook": "“Facebook”",
+    "fallbackUrl": "“URL de respaldo (opcional)”",
+    "fax": "“Fax”",
+    "fileType": "“Tipo de archivo”",
+    "fileUrl": "“URL del archivo/documento”",
+    "firstName": "“Nombre”",
+    "forceHttps": "“Forzar HTTPS”",
+    "fullName": "“Nombre completo”",
+    "furniture": "“Muebles”",
+    "geo": "“Geolocalización”",
+    "github": "“GitHub”",
+    "googleDrive": "“Google Drive”",
+    "gs1DigitalLink": "“Enlace digital GS1”",
+    "gtin": "“GTIN (Número global de artículo comercial)”",
+    "hidden": "“Red Oculta”",
+    "homePhone": "“Teléfono de casa”",
+    "iban": "“IBAN”",
+    "idType": "“Tipo de identificación”",
+    "image": "“Imagen”",
+    "instagram": "“Instagram”",
+    "inventoryItem": "“Artículo de inventario”",
+    "iosUniversal": "“iOS Universal”",
+    "issuer": "“Emisor”",
+    "itAsset": "“Activo de TI”",
+    "label": "“Etiqueta (opcional)”",
+    "lastName": "“Apellido”",
+    "latitude": "“Latitud”",
+    "linkType": "“Tipo de enlace”",
+    "linkedin": "“LinkedIn”",
+    "litecoin": "“Litecoin”",
+    "location": "“Ubicación”",
+    "locationNetwork": "“Ubicación y red”",
+    "longitude": "“Longitud”",
+    "lookupUrl": "“URL de búsqueda (opcional)”",
+    "marketing": "“Marketing”",
+    "marketingTags": "“Etiquetas de marketing”",
+    "maxLengthGuard": "“Protector de longitud máxima”",
+    "mecard": "“Contacto MeCard”",
+    "merchantName": "“Nombre del comerciante (opcional)”",
+    "message": "“Mensaje”",
+    "messageOptional": "“Mensaje (opcional)”",
+    "messagingLink": "“WhatsApp / Telegram / Signal”",
+    "messenger": "“Mensajero”",
+    "mobileNumber": "“Número de móvil”",
+    "mobilePhone": "“Teléfono móvil”",
+    "name": "“Nombre”",
+    "nationalIdTaxId": "“Documento de identidad nacional/NIF”",
+    "nickname": "“Apodo”",
+    "normalizeNewlines": "“Normalizar nuevas líneas”",
+    "note": "“Nota”",
+    "oneDrive": "“OneDrive”",
+    "openNoPassword": "“Abrir (sin contraseña)”",
+    "organization": "“Organización”",
+    "other": "“Otros”",
+    "otpAuth": "“Autenticador OTP”",
+    "otpType": "“Tipo”",
+    "password": "“Contraseña”",
+    "payeeName": "“Nombre del beneficiario”",
+    "payments": "“Pagos (Especificaciones Abiertas)”",
+    "paynow": "“PayNow (Singapur)”",
+    "phone": "“Teléfono”",
+    "phoneUsername": "“Teléfono/Nombre de usuario”",
+    "pix": "“PIX (Brasil)”",
+    "pixKey": "“Tecla PIX”",
+    "plainText": "“Texto sin formato”",
+    "platform": "“Plataforma”",
+    "prefilledMessage": "“Mensaje precargado (opcional)”",
+    "profileUrl": "“URL del perfil”",
+    "promptPayId": "“ID de PromptPay”",
+    "promptpay": "“PromptPay (Tailandia)”",
+    "proxyType": "“Tipo de proxy”",
+    "rawData": "“Datos brutos”",
+    "recipient": "“Destinatario”",
+    "reference": "“Referencia”",
+    "referenceOptional": "“Referencia (opcional)”",
+    "resolverDomain": "“Dominio de resolución”",
+    "rsvpUrl": "“URL de confirmación de asistencia”",
+    "searchQuery": "“Consulta de búsqueda (opcional)”",
+    "seat": "“Asiento”",
+    "secretBase32": "“Secreto (Base32)”",
+    "sectionZone": "“Sección/Zona”",
+    "securityType": "“Tipo de seguridad”",
+    "serialNumber": "“Número de serie (opcional)”",
+    "service": "“Servicio”",
+    "shortLink": "“Redireccionamiento de enlace corto”",
+    "shortUrl": "“URL corta”",
+    "signal": "“Señal”",
+    "sms": "“SMS”",
+    "smsMms": "“SMS/MMS”",
+    "socialMessaging": "“Social y mensajería”",
+    "socialProfile": "“Perfil social”",
+    "ssid": "“Nombre de red (SSID)”",
+    "start": "“Inicio”",
+    "startDate": "“Fecha de inicio”",
+    "state": "“Estado/Provincia”",
+    "street": "“Calle”",
+    "subject": "“Asunto”",
+    "subjectOptional": "“Asunto (opcional)”",
+    "summary": "“Título del evento”",
+    "tel": "“Número de teléfono”",
+    "telegram": "“Telegrama”",
+    "text": "“Contenido del texto”",
+    "ticketId": "“ID del billete”",
+    "tiktok": "“TikTok”",
+    "title": "“Título”",
+    "transactionNote": "“Nota de transacción (opcional)”",
+    "trimWhitespace": "“Recortar espacios en blanco”",
+    "uenMobile": "“UEN/Número de móvil”",
+    "universalLink": "“Enlace universal”",
+    "upi": "“UPI (India)”",
+    "upiId": "“Identificación UPI (VPA)”",
+    "url": "“URL”",
+    "utmCampaign": "“utm_campaign”",
+    "utmContent": "“utm_content”",
+    "utmLink": "“Enlace de campaña UTM”",
+    "utmMedium": "“utm_medium”",
+    "utmSource": "“utm_source”",
+    "utmTerm": "“término_utm”",
+    "validateInput": "“Validar entrada”",
+    "validationOptions": "“Opciones de validación”",
+    "validationUrl": "“URL de validación (opcional)”",
+    "vcard": "“Contacto vCard”",
+    "vehicle": "“Vehículo”",
+    "venue": "“Lugar”",
+    "vevent": "“Evento del calendario”",
+    "viber": "“Viber”",
+    "video": "“Vídeo”",
+    "walletAddress": "“Dirección”",
+    "website": "“Sitio web”",
+    "whatsapp": "“WhatsApp”",
+    "wifi": "“WiFi”",
+    "wifiNetwork": "“Red WiFi”",
+    "wordDocument": "“Documento de Word”",
+    "workPhone": "“Teléfono del trabajo”",
+    "youtube": "“YouTube”",
+    "zip": "“Código postal”"
   },
   "preview": {
-    "qrCodePreview": "QR Code Preview - Click Export to download",
-    "simulating": "Simulating",
-    "simulationActive": "Environmental simulation active - Preview shows how QR code may appear under different conditions"
+    "qrCodePreview": "“Vista previa del código QR: haga clic en Exportar para descargar”",
+    "simulating": "“Simulando”",
+    "simulationActive": "“Simulación ambiental activa: la vista previa muestra cómo puede aparecer el código QR en diferentes condiciones”"
   },
   "qr": {
-    "additionalBorder": "Additional border beyond quiet zone",
-    "alphanumeric": "Alphanumeric",
-    "auto": "Auto",
-    "autoMin": "Auto (min: {{version}})",
-    "autoOptimal": "Auto (Optimal)",
-    "byteUtf8": "Byte / UTF-8",
-    "contrastRatio": "{{count}}:1",
-    "encodingMode": "Encoding Mode",
-    "enforceMinQuietZone": "Enforce Min Quiet Zone",
-    "enforceMinQuietZoneDesc": "Ensure ≥4 module margin",
-    "errorCorrection": "Error Correction",
-    "extraBorderModules": "Extra Border Modules",
-    "high": "H - High (30%)",
-    "kanji": "Kanji",
-    "low": "L - Low (7%)",
-    "margin": "Quiet Zone (Margin)",
-    "mask": "Mask Pattern",
-    "medium": "M - Medium (15%)",
-    "moduleSize": "Module Size",
-    "nDegrees": "{{count}}°",
-    "nModules": "{{count}} modules",
-    "nMs": "{{count}}ms",
-    "nPercent": "{{count}}%",
-    "nPx": "{{count}}px",
-    "numericOnly": "Numeric Only",
-    "quartile": "Q - Quartile (25%)",
-    "version": "Version"
+    "additionalBorder": "“Frontera adicional más allá de la zona tranquila”",
+    "alphanumeric": "“Alfanumérico”",
+    "auto": "“Automático”",
+    "autoMin": "“Automático (mín.: {{versión}})”",
+    "autoOptimal": "“Automático (Óptimo)”",
+    "byteUtf8": "“Byte / UTF-8”",
+    "contrastRatio": "“{{cuenta}}:1”",
+    "encodingMode": "“Modo de codificación”",
+    "enforceMinQuietZone": "“Aplicar Zona Mínima de Silencio”",
+    "enforceMinQuietZoneDesc": "“Asegurar un margen de módulo ≥4”",
+    "errorCorrection": "“Corrección de errores”",
+    "extraBorderModules": "“Módulos fronterizos adicionales”",
+    "high": "“H - Alto (30%)”",
+    "kanji": "“Kanji”",
+    "low": "“L - Bajo (7%)”",
+    "margin": "“Zona tranquila (margen)”",
+    "mask": "“Patrón de máscara”",
+    "medium": "“M - Medio (15%)”",
+    "moduleSize": "“Tamaño del módulo”",
+    "nDegrees": "“{{count}}°”",
+    "nModules": "“{{count}} módulos”",
+    "nMs": "“{{count}}ms”",
+    "nPercent": "“{{count}}%”",
+    "nPx": "“{{count}}px”",
+    "numericOnly": "“Solo numérico”",
+    "quartile": "“Q - Cuartil (25%)”",
+    "version": "“Versión”"
   },
   "render": {
-    "addColor": "Add Color",
-    "alignmentStyle": "Alignment Pattern Style",
-    "background": "Background",
-    "byBrightness": "By Brightness",
-    "byCluster": "By Cluster",
-    "byOverlay": "By Overlay",
-    "byPosition": "By Position",
-    "ceil": "Ceil",
-    "circle": "Circle",
-    "classic": "Classic",
-    "colorPalette": "Color Palette",
-    "conic": "Conic",
-    "connected": "Connected",
-    "contrastGuard": "Contrast Guard",
-    "cornerRadius": "Corner Radius",
-    "crispEdges": "Crisp Edges",
-    "crispEdgesDesc": "Use image-rendering: pixelated for sharp edges",
-    "dashed": "Dashed",
-    "diamond": "Diamond",
-    "dotRotation": "Dot Rotation",
-    "dots": "Dots",
-    "eyeInnerStyle": "Eye Inner Style",
-    "eyeOuterStyle": "Eye Outer Style",
-    "eyeScale": "Eye Scale",
-    "finderStyle": "Finder Pattern Style",
-    "floor": "Floor",
-    "foreground": "Foreground",
-    "frameStyle": "Frame Style",
-    "frameText": "Frame Text",
-    "gapMode": "Gap Mode",
-    "gradient": "Gradient",
-    "gradientAngle": "Gradient Angle",
-    "gradientColors": "Colors",
-    "gradientType": "Gradient Type",
-    "inset": "Inset",
-    "linear": "Linear",
-    "matchFinder": "Match Finder",
-    "matchModule": "Match Module",
-    "minContrastRatio": "Min Contrast Ratio",
-    "moduleGap": "Module Gap",
-    "negativeSpace": "Negative Space",
-    "none": "None",
-    "perModuleColorMode": "Per-Module Color Mode",
-    "pixelSnap": "Pixel Snap",
-    "radial": "Radial",
-    "round": "Round",
-    "rounded": "Rounded",
-    "roundedFrame": "Rounded Frame",
-    "shape": "Module Style",
-    "sharp": "Sharp",
-    "smooth": "Smooth",
-    "solid": "Solid",
-    "square": "Square",
-    "squares": "Squares",
-    "sticker": "Sticker",
-    "stroke": "Stroke",
-    "style": "Style",
-    "tag": "Tag",
-    "timingStyle": "Timing Pattern Style",
-    "transparentBg": "Transparent Background"
+    "addColor": "“Añadir color”",
+    "alignmentStyle": "“Estilo de patrón de alineación”",
+    "background": "“Antecedentes”",
+    "byBrightness": "“Por el brillo”",
+    "byCluster": "“Por grupo”",
+    "byOverlay": "“Por superposición”",
+    "byPosition": "“Por posición”",
+    "ceil": "“Techo”",
+    "circle": "“Círculo”",
+    "classic": "“Clásico”",
+    "colorPalette": "“Paleta de colores”",
+    "conic": "“Cónica”",
+    "connected": "“Conectado”",
+    "contrastGuard": "“Protector de contraste”",
+    "cornerRadius": "“Radio de esquina”",
+    "crispEdges": "“Bordes nítidos”",
+    "crispEdgesDesc": "“Utilice la representación de imágenes: pixelada para bordes nítidos”",
+    "dashed": "“Discontinua”",
+    "diamond": "“Diamante”",
+    "dotRotation": "“Rotación de puntos”",
+    "dots": "“Puntos”",
+    "eyeInnerStyle": "“Estilo interior del ojo”",
+    "eyeOuterStyle": "“Estilo exterior del ojo”",
+    "eyeScale": "“Escala de ojos”",
+    "finderStyle": "“Estilo de patrón de buscador”",
+    "floor": "“Piso”",
+    "foreground": "“Primer plano”",
+    "frameStyle": "“Estilo de marco”",
+    "frameText": "“Texto de marco”",
+    "gapMode": "“Modo Gap”",
+    "gradient": "“Gradiente”",
+    "gradientAngle": "“Ángulo de gradiente”",
+    "gradientColors": "“Colores”",
+    "gradientType": "“Tipo degradado”",
+    "inset": "“Inserto”",
+    "linear": "“Lineal”",
+    "matchFinder": "“Buscador de coincidencias”",
+    "matchModule": "“Módulo de coincidencia”",
+    "minContrastRatio": "“Relación de contraste mínima”",
+    "moduleGap": "“Brecha del módulo”",
+    "negativeSpace": "“Espacio negativo”",
+    "none": "“Ninguno”",
+    "perModuleColorMode": "“Modo de color por módulo”",
+    "pixelSnap": "“Píxel instantáneo”",
+    "radial": "“Radial”",
+    "round": "“Redondo”",
+    "rounded": "“Redondeado”",
+    "roundedFrame": "“Marco redondeado”",
+    "shape": "“Estilo de módulo”",
+    "sharp": "“Afilado”",
+    "smooth": "“Suave”",
+    "solid": "“Sólido”",
+    "square": "“Cuadrado”",
+    "squares": "“Cuadrados”",
+    "sticker": "“Pegatina”",
+    "stroke": "“Accidente cerebrovascular”",
+    "style": "“Estilo”",
+    "tag": "“Etiqueta”",
+    "timingStyle": "“Estilo de patrón de sincronización”",
+    "transparentBg": "“Fondo transparente”"
   },
   "safety": {
-    "analysis": "Safety Analysis",
-    "autoPickEcc": "Auto-Pick ECC",
-    "autoPickVersion": "Auto-Pick Version",
-    "autoReduceIntensity": "Auto-Reduce Intensity",
-    "autoTuning": "Auto-Tuning",
-    "balanced": "Balanced",
-    "contrast": "Contrast Ratio",
-    "contrastCheck": "Contrast Check",
-    "contrastRatio": "Contrast Ratio",
-    "excellent": "Excellent",
-    "fair": "Fair",
-    "good": "Good",
-    "lockAlignment": "Lock Alignment",
-    "lockFinders": "Lock Finders",
-    "lockFormat": "Lock Format Info",
-    "lockTiming": "Lock Timing",
-    "lockVersion": "Lock Version Info",
-    "minModuleSize": "Min Module Size",
-    "minQuietZone": "Min Quiet Zone",
-    "off": "Off",
-    "poor": "Poor",
-    "protectionLocks": "Protection Locks",
-    "qualityAnalysis": "Quality Analysis",
-    "quietZone": "Quiet Zone",
-    "safetyMode": "Safety Mode",
-    "scanability": "Scanability Score",
-    "showHeatmap": "Show Heatmap",
-    "simulateBlur": "Simulate Blur",
-    "simulateNoise": "Simulate Noise",
-    "simulateRotation": "Simulate Rotation",
-    "strict": "Strict",
-    "untilScannable": "Until scannable"
+    "analysis": "“Análisis de seguridad”",
+    "autoPickEcc": "“Selección automática ECC”",
+    "autoPickVersion": "“Versión de selección automática”",
+    "autoReduceIntensity": "“Reducción automática de intensidad”",
+    "autoTuning": "“Autoajuste”",
+    "balanced": "“Equilibrado”",
+    "contrast": "“Relación de contraste”",
+    "contrastCheck": "“Comprobación de contraste”",
+    "contrastRatio": "“Relación de contraste”",
+    "excellent": "“Excelente”",
+    "fair": "“Justo”",
+    "good": "“Bueno”",
+    "lockAlignment": "“Alineación de bloqueo”",
+    "lockFinders": "“Buscadores de cerraduras”",
+    "lockFormat": "“Información de formato de bloqueo”",
+    "lockTiming": "“Tiempo de bloqueo”",
+    "lockVersion": "“Información de la versión de bloqueo”",
+    "minModuleSize": "“Tamaño mínimo del módulo”",
+    "minQuietZone": "“Zona mínima de silencio”",
+    "off": "“Apagado”",
+    "poor": "“Pobre”",
+    "protectionLocks": "“Cerraduras de protección”",
+    "qualityAnalysis": "“Análisis de calidad”",
+    "quietZone": "“Zona tranquila”",
+    "safetyMode": "“Modo de seguridad”",
+    "scanability": "“Puntuación de escaneabilidad”",
+    "showHeatmap": "“Mostrar mapa de calor”",
+    "simulateBlur": "“Simular desenfoque”",
+    "simulateNoise": "“Simular ruido”",
+    "simulateRotation": "“Simular rotación”",
+    "strict": "“Estricto”",
+    "untilScannable": "“Hasta escaneable”"
   },
   "sections": {
-    "animation": "Animation",
-    "metadata": "Metadata",
-    "output": "Output",
-    "overlay": "Overlay / Image",
-    "payload": "Payload / Data",
-    "qrEncoding": "QR Encoding",
-    "rendering": "Rendering",
-    "safety": "Safety Analysis",
-    "share": "Share",
-    "watermark": "Watermark"
+    "animation": "“Animación”",
+    "metadata": "“Metadatos”",
+    "output": "“Salida”",
+    "overlay": "“Superposición / Imagen”",
+    "payload": "“Carga útil/Datos”",
+    "qrEncoding": "“Codificación QR”",
+    "rendering": "“Renderizado”",
+    "safety": "“Análisis de seguridad”",
+    "share": "“Compartir”",
+    "watermark": "“Marca de agua”"
   },
   "share": {
-    "copied": "Copied!",
-    "copyLink": "Copy Link",
-    "directLink": "Direct Link",
-    "directLinkDesc": "Generate shareable URL",
-    "embedHtml": "Embed HTML",
-    "embedHtmlDesc": "Generate embed code",
-    "encodeAllParams": "Encode All Parameters",
-    "encodeAllParamsDesc": "Include all settings in URL",
-    "markdown": "Markdown",
-    "quickShare": "Quick Share",
-    "twitter": "X/Twitter",
-    "whatsapp": "WhatsApp"
+    "copied": "“¡Copiado!”",
+    "copyLink": "“Copiar enlace”",
+    "directLink": "“Enlace directo”",
+    "directLinkDesc": "“Generar URL para compartir”",
+    "embedHtml": "“Incrustar HTML”",
+    "embedHtmlDesc": "“Generar código de inserción”",
+    "encodeAllParams": "“Codificar todos los parámetros”",
+    "encodeAllParamsDesc": "“Incluir todas las configuraciones en la URL”",
+    "markdown": "“Rebaja”",
+    "quickShare": "“Compartir rápidamente”",
+    "twitter": "“X/Twitter”",
+    "whatsapp": "“WhatsApp”"
   },
   "tiers": {
-    "advanced": "Advanced",
-    "basic": "Basic",
-    "professional": "Pro",
-    "watchAdForPro": "Watch ad to unlock Professional features for 24 hours"
+    "advanced": "“Avanzado”",
+    "basic": "“Básico”",
+    "professional": "“Pro”",
+    "watchAdForPro": "“Mira el anuncio para desbloquear funciones profesionales durante 24 horas”"
   },
   "watermark": {
-    "behindQr": "Behind QR",
-    "blendMode": "Blend Mode",
-    "bottomLeft": "Bottom Left",
-    "bottomRight": "Bottom Right",
-    "center": "Center",
-    "corners": "Corners",
-    "edges": "Edges",
-    "enabled": "Enable Watermark",
-    "fontColor": "Font Color",
-    "fontSize": "Font Size",
-    "image": "Image",
-    "multiply": "Multiply",
-    "normal": "Normal",
-    "opacity": "Opacity",
-    "overlay": "Overlay",
-    "pattern": "Pattern",
-    "position": "Position",
-    "quietZone": "Quiet Zone",
-    "screen": "Screen",
-    "text": "Text",
-    "textPlaceholder": "© Company Name",
-    "topLeft": "Top Left",
-    "topRight": "Top Right",
-    "type": "Type",
-    "uploadImage": "Upload Image"
+    "behindQr": "“Detrás de QR”",
+    "blendMode": "“Modo de fusión”",
+    "bottomLeft": "“Abajo a la izquierda”",
+    "bottomRight": "“Abajo a la derecha”",
+    "center": "“Centro”",
+    "corners": "“Esquinas”",
+    "edges": "“Bordes”",
+    "enabled": "“Habilitar marca de agua”",
+    "fontColor": "“Color de fuente”",
+    "fontSize": "“Tamaño de fuente”",
+    "image": "“Imagen”",
+    "multiply": "“Multiplicar”",
+    "normal": "“Normal”",
+    "opacity": "“Opacidad”",
+    "overlay": "“Superposición”",
+    "pattern": "“Patrón”",
+    "position": "“Posición”",
+    "quietZone": "“Zona tranquila”",
+    "screen": "“Pantalla”",
+    "text": "“Texto”",
+    "textPlaceholder": "“© Nombre de la empresa”",
+    "topLeft": "“Arriba a la izquierda”",
+    "topRight": "“Arriba a la derecha”",
+    "type": "“Tipo”",
+    "uploadImage": "“Subir imagen”"
   }
 }

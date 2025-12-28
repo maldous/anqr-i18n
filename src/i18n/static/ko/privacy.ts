@@ -3,8 +3,7 @@ import { LAST_UPDATED, CONTACT_EMAIL } from '../types'
 
 export const privacy: PageDefinition = {
   title: 'Privacy Policy',
-  description:
-    'Information ANQR collects, how it is used, and your rights under applicable privacy laws.',
+  description: 'Information ANQR collects, how it is used, and your rights under applicable privacy laws.',
   lastUpdated: LAST_UPDATED,
   sections: [
     {
@@ -117,7 +116,7 @@ export const privacy: PageDefinition = {
       ],
     },
     {
-      heading: "Children's privacy",
+      heading: 'Children\'s privacy',
       paragraphs: [
         `ANQR is not directed at children under 13 (or 16 in the EEA). We do not knowingly collect data from children. Contact ${CONTACT_EMAIL} if you believe a child has provided information.`,
       ],

@@ -1,34 +1,34 @@
 {
   "animation": {
-    "blueNoise": "நீல சத்தம்",
-    "bounce": "குதி (பிங்-பாங்)",
-    "colorCycle": "வண்ண சுழற்சி",
-    "crossfade": "குறுக்கு மங்கல்",
-    "drift": "நகர்வு",
+    "blueNoise": "நீல நொய்ஸ்",
+    "bounce": "பவுன்ஸ் (பிங்-பாங்)",
+    "colorCycle": "நிற சுழற்சி",
+    "crossfade": "கிராஸ்-ஃபேடு",
+    "drift": "சறிதல்",
     "enabled": "அனிமேஷனை இயக்கு",
-    "everyNFrames": "ஒவ்வொரு {{count}} பிரேம்(கள்)",
-    "exportAllFrames": "அனைத்து பிரேம்களையும் ஏற்றுமதி செய்",
-    "fadeIn": "மறைந்து தோன்று",
-    "flickerSafe": "மின்னல் பாதுகாப்பு",
-    "frameStep": "பிரேம் படி",
-    "interpolation": "இடைக்கணிப்பு",
-    "loop": "மீண்டும் இயக்கு",
-    "maxFrames": "அதிகபட்ச பிரேம்கள்",
-    "moduleJitter": "தொகுதி நடுக்கம்",
-    "moduleJitterWarning": "⚠️ ஸ்கேன் திறனை பாதிக்கலாம்",
-    "morph": "உருமாற்றம்",
+    "everyNFrames": "ஒவ்வொரு {{count}} ஃப்ரேம்",
+    "exportAllFrames": "அனைத்து ஃப்ரேம்களையும் ஏற்றுமதி செய்",
+    "fadeIn": "மெதுவாக தோன்றுதல்",
+    "flickerSafe": "ஃப்ளிக்கர்-பாதுகாப்பான",
+    "frameStep": "ஃப்ரேம் படி",
+    "interpolation": "இடைமாற்றம்",
+    "loop": "அனிமேஷனை மீளச்சுழற்று",
+    "maxFrames": "அதிகபட்ச ஃப்ரேம்கள்",
+    "moduleJitter": "மாட்யூல் நடுக்கம்",
+    "moduleJitterWarning": "⚠️ ஸ்கேன் செய்யும் திறனை பாதிக்கலாம்",
+    "morph": "வடிவமாற்றம்",
     "none": "எதுவுமில்லை",
-    "off": "அணைக்கப்பட்டது",
-    "pattern": "வடிவம்",
+    "off": "ஆஃப்",
+    "pattern": "உருவாக்கப்பட்ட வடிவமைப்பு",
     "pulse": "துடிப்பு",
     "randomSeed": "சீரற்ற விதை",
     "rotate": "சுழற்று",
-    "scanline": "ஸ்கேன்லைன்",
-    "shimmer": "மின்னல்",
-    "slideIn": "நழுவி உள்",
-    "speed": "பிரேம் வேகம்",
-    "startFrame": "தொடக்க பிரேம்",
-    "temporalDither": "நேர டிதர்",
+    "scanline": "ஸ்கேன்-வரி",
+    "shimmer": "மின்மினிப்பு",
+    "slideIn": "சறுக்கி நுழை",
+    "speed": "ஃப்ரேம் வேகம்",
+    "startFrame": "தொடக்க ஃப்ரேம்",
+    "temporalDither": "கால சார்ந்த டிதர்",
     "wave": "அலை"
   },
   "languages": {
@@ -38,21 +38,21 @@
     "ms": "மலாய்",
     "ta": "தமிழ்",
     "th": "தாய்",
-    "pt": "போர்த்துகீசியம்",
-    "id": "இந்தோனேசியன்",
+    "pt": "போர்ச்சுகீஸ்",
+    "id": "இந்தோனேசிய",
     "vi": "வியட்நாமியம்",
-    "tl": "தகாலோக்",
+    "tl": "தகலோக்",
     "ja": "ஜப்பானியம்",
     "ko": "கொரியன்",
     "es": "ஸ்பானிஷ்",
     "ar": "அரபிக்",
-    "ru": "ரஷியன்",
+    "ru": "ரஷ்யன்",
     "te": "தெலுங்கு",
     "mr": "மராத்தி",
-    "bn": "பெங்காலி",
+    "bn": "வங்காளம்",
     "gu": "குஜராத்தி",
     "kn": "கன்னடம்",
-    "ml": "மலயாளம்",
+    "ml": "மலையாளம்",
     "pa": "பஞ்சாபி"
   },
   "app": {
@@ -62,28 +62,28 @@
   "common": {
     "allRightsReserved": "அனைத்து உரிமைகளும் பாதுகாக்கப்பட்டவை",
     "apply": "பயன்படுத்து",
-    "back": "பின்",
-    "cancel": "ரத்துசெய்",
+    "back": "பின்செல்",
+    "cancel": "ரத்து",
     "close": "மூடு",
     "copied": "நகலெடுக்கப்பட்டது!",
     "copy": "நகலெடு",
     "copyright": "© ANQR",
-    "delete": "நீக்கு",
+    "delete": "அழி",
     "disabled": "முடக்கப்பட்டது",
     "download": "பதிவிறக்கு",
     "edit": "திருத்து",
     "enabled": "இயக்கப்பட்டது",
     "error": "பிழை",
-    "filter": "வடிகட்டு",
+    "filter": "வடிகட்டி",
     "less": "குறைவு",
     "loading": "ஏற்றுகிறது...",
     "more": "மேலும்",
     "next": "அடுத்து",
     "no": "இல்லை",
     "none": "எதுவுமில்லை",
-    "off": "அணை",
+    "off": "ஆஃப்",
     "ok": "சரி",
-    "on": "இயக்கு",
+    "on": "ஆன்",
     "previous": "முந்தைய",
     "reset": "மீட்டமை",
     "save": "சேமி",
@@ -94,7 +94,7 @@
     "sort": "வரிசைப்படுத்து",
     "success": "வெற்றி",
     "upload": "பதிவேற்று",
-    "viewAll": "அனைத்தையும் காண்",
+    "viewAll": "அனைத்தையும் காண்க",
     "yes": "ஆம்"
   },
   "fileSaveFailed": "கோப்பை சேமிக்க முடியவில்லை: {{error}}",
@@ -105,312 +105,312 @@
   "gallery": {
     "all": "அனைத்தும்",
     "animationOverlay": "அனிமேஷன்",
-    "blendModes": "கலப்பு மோட்கள்",
+    "blendModes": "கலப்பு முறைகள்",
     "collapse": "சுருக்கு",
-    "colorModes": "வண்ண மோட்கள்",
-    "colors": "வண்ணங்கள்",
+    "colorModes": "நிற முறைகள்",
+    "colors": "நிறங்கள்",
     "contentTypes": "உள்ளடக்க வகைகள்",
     "dithering": "டிதரிங்",
-    "encoding": "குறியாக்கம்",
-    "expand": "விரிவாக்கு",
-    "filter": "வடிகட்டு",
+    "encoding": "என்கோடிங்",
+    "expand": "விரிவு",
+    "filter": "வடிகட்டி",
     "imageOverlay": "பட மேலடுக்கு",
     "items": {
       "anim-blue-noise": {
         "description": "அனிமேஷனுடன் நீல சத்த வரம்பு",
-        "title": "அனிமேஷன் நீல சத்தம்"
+        "title": "அனிமேஷன் நீல சத்து"
       },
       "anim-blue-noise-i100": {
-        "description": "100% இல் அனிமேஷன் நீல சத்தம்",
-        "title": "நீல சத்தம் 100%"
+        "description": "100% இல் அனிமேஷன் நீல சத்து",
+        "title": "நீல சத்து 100%"
       },
       "anim-blue-noise-i50": {
-        "description": "50% இல் அனிமேஷன் நீல சத்தம்",
-        "title": "நீல சத்தம் 50%"
+        "description": "50% இல் அனிமேஷன் நீல சத்து",
+        "title": "நீல சத்து 50%"
       },
       "anim-blue-noise-i75": {
-        "description": "75% இல் அனிமேஷன் நீல சத்தம்",
-        "title": "நீல சத்தம் 75%"
+        "description": "75% இல் அனிமேஷன் நீல சத்து",
+        "title": "நீல சத்து 75%"
       },
       "anim-brightness": {
-        "description": "அனிமேஷனுடன் ஒளிர்வு",
-        "title": "அனிமேஷன் ஒளிர்வு"
+        "description": "அனிமேஷனுடன் பிரகாசம்",
+        "title": "அனிமேஷன் பிரகாசம்"
       },
       "anim-colormode-bw": {
         "description": "கருப்பு-வெள்ளை அனிமேஷன் மேலடுக்கு",
-        "title": "அனிமேஷன் கரு-வெள்"
+        "title": "அனிமேஷன் கருப்பு-வெள்ளை"
       },
       "anim-colormode-color": {
-        "description": "வண்ண அனிமேஷன் மேலடுக்கு",
-        "title": "அனிமேஷன் வண்ணம்"
+        "description": "நிற அனிமேஷன் மேலடுக்கு",
+        "title": "அனிமேஷன் நிறம்"
       },
       "anim-colormode-grayscale": {
         "description": "சாம்பல் நிற அனிமேஷன் மேலடுக்கு",
-        "title": "அனிமேஷன் சாம்பல்"
+        "title": "அனிமேஷன் சாம்பல் நிறம்"
       },
       "anim-dithered": {
         "description": "அனிமேஷனுடன் பிழை பரவல்",
-        "title": "அனிமேஷன் டிதர்"
+        "title": "அனிமேஷன் டிதரிங்"
       },
       "anim-duotone": {
-        "description": "அனிமேஷனுடன் இரட்டை தொனி",
-        "title": "அனிமேஷன் இரட்டை தொனி"
+        "description": "அனிமேஷனுடன் இருநிறம்",
+        "title": "அனிமேஷன் இருநிறம்"
       },
       "anim-halftone": {
-        "description": "அனிமேஷனுடன் அரைத்தொனி புள்ளிகள்",
-        "title": "அனிமேஷன் அரைத்தொனி"
+        "description": "அனிமேஷனுடன் ஹால்ஃப்டோன் புள்ளிகள்",
+        "title": "அனிமேஷன் ஹால்ஃப்டோன்"
       },
       "anim-mosaic": {
-        "description": "அனிமேஷனுடன் மொசைக்",
-        "title": "அனிமேஷன் மொசைக்"
+        "description": "அனிமேஷனுடன் மோசைக்",
+        "title": "அனிமேஷன் மோசைக்"
       },
       "blend-classic": {
-        "description": "கிளாசிக் பேலட்டுடன் டிதர் மேலடுக்கு",
+        "description": "கிளாசிக் பலகையுடன் டிதரிங் மேலடுக்கு",
         "title": "கிளாசிக் கலப்பு"
       },
       "blend-forest": {
-        "description": "காடு பேலட்டுடன் டிதர் மேலடுக்கு",
+        "description": "காடு பலகையுடன் டிதரிங் மேலடுக்கு",
         "title": "காடு கலப்பு"
       },
       "blend-navy": {
-        "description": "நேவி பேலட்டுடன் டிதர் மேலடுக்கு",
+        "description": "நேவி பலகையுடன் டிதரிங் மேலடுக்கு",
         "title": "நேவி கலப்பு"
       },
       "blend-wine": {
-        "description": "ஒயின் பேலட்டுடன் டிதர் மேலடுக்கு",
-        "title": "ஒயின் கலப்பு"
+        "description": "வைன் பலகையுடன் டிதரிங் மேலடுக்கு",
+        "title": "வைன் கலப்பு"
       },
       "cmode-blue-noise-bw": {
-        "description": "கருப்பு-வெள்ளையில் நீல சத்தம்",
-        "title": "நீல சத்தம் கரு-வெள்"
+        "description": "கருப்பு-வெள்ளையில் நீல சத்து",
+        "title": "நீல சத்து கருப்பு-வெள்ளை"
       },
       "cmode-blue-noise-color": {
-        "description": "வண்ணத்தில் நீல சத்தம்",
-        "title": "நீல சத்தம் வண்ணம்"
+        "description": "நிறத்தில் நீல சத்து",
+        "title": "நீல சத்து நிறம்"
       },
       "cmode-dithered-color": {
-        "description": "வண்ணத்தில் டிதர்",
-        "title": "டிதர் வண்ணம்"
+        "description": "நிறத்தில் டிதரிங்",
+        "title": "டிதரிங் நிறம்"
       },
       "cmode-dithered-grayscale": {
-        "description": "சாம்பல் நிறத்தில் டிதர்",
-        "title": "டிதர் சாம்பல்"
+        "description": "சாம்பல் நிறத்தில் டிதரிங்",
+        "title": "டிதரிங் சாம்பல் நிறம்"
       },
       "cmode-halftone-bw": {
-        "description": "கருப்பு-வெள்ளையில் அரைத்தொனி",
-        "title": "அரைத்தொனி கரு-வெள்"
+        "description": "கருப்பு-வெள்ளையில் ஹால்ஃப்டோன்",
+        "title": "ஹால்ஃப்டோன் கருப்பு-வெள்ளை"
       },
       "cmode-halftone-color": {
-        "description": "வண்ணத்தில் அரைத்தொனி",
-        "title": "அரைத்தொனி வண்ணம்"
+        "description": "நிறத்தில் ஹால்ஃப்டோன்",
+        "title": "ஹால்ஃப்டோன் நிறம்"
       },
       "color-coral": {
-        "description": "#ffe8d6 இல் #e85d04",
-        "title": "பவளம்"
+        "description": "#e85d04 மீது #ffe8d6",
+        "title": "கோரல்"
       },
       "color-coral-dots": {
-        "description": "புள்ளி தொகுதிகளுடன் பவளம்",
-        "title": "பவள புள்ளிகள்"
+        "description": "புள்ளி அலகுகளுடன் கோரல்",
+        "title": "கோரல் புள்ளிகள்"
       },
       "color-crimson": {
-        "description": "#ffccd5 இல் #9d0208",
-        "title": "கருஞ்சிவப்பு"
+        "description": "#9d0208 மீது #ffccd5",
+        "title": "கிரிம்சன்"
       },
       "color-forest": {
-        "description": "#d8f3dc இல் #1b4332",
-        "title": "காடு"
+        "description": "#1b4332 மீது #d8f3dc",
+        "title": "வனம்"
       },
       "color-forest-dots": {
-        "description": "புள்ளி தொகுதிகளுடன் காடு",
-        "title": "காடு புள்ளிகள்"
+        "description": "புள்ளி அலகுகளுடன் வனம்",
+        "title": "வனம் புள்ளிகள்"
       },
       "color-gold": {
-        "description": "#ffe8cc இல் #7f5539",
+        "description": "#7f5539 மீது #ffe8cc",
         "title": "தங்கம்"
       },
       "color-inverted": {
-        "description": "#000000 இல் #ffffff",
+        "description": "#ffffff மீது #000000",
         "title": "தலைகீழ்"
       },
       "color-midnight": {
-        "description": "#eef1ff இல் #1a1a2e",
+        "description": "#1a1a2e மீது #eef1ff",
         "title": "நள்ளிரவு"
       },
       "color-midnight-dots": {
-        "description": "புள்ளி தொகுதிகளுடன் நள்ளிரவு",
+        "description": "புள்ளி அலகுகளுடன் நள்ளிரவு",
         "title": "நள்ளிரவு புள்ளிகள்"
       },
       "color-navy": {
-        "description": "#a2d2ff இல் #001d3d",
+        "description": "#001d3d மீது #a2d2ff",
         "title": "நேவி"
       },
       "color-ocean": {
-        "description": "#caf0f8 இல் #023e8a",
+        "description": "#023e8a மீது #caf0f8",
         "title": "கடல்"
       },
       "color-ocean-dots": {
-        "description": "புள்ளி தொகுதிகளுடன் கடல்",
+        "description": "புள்ளி அலகுகளுடன் கடல்",
         "title": "கடல் புள்ளிகள்"
       },
       "color-royal": {
-        "description": "#f5e6ff இல் #4a0080",
-        "title": "அரச"
+        "description": "#4a0080 மீது #f5e6ff",
+        "title": "ராயல்"
       },
       "color-royal-dots": {
-        "description": "புள்ளி தொகுதிகளுடன் அரச",
-        "title": "அரச புள்ளிகள்"
+        "description": "புள்ளி அலகுகளுடன் ராயல்",
+        "title": "ராயல் புள்ளிகள்"
       },
       "color-slate": {
-        "description": "#e9ecef இல் #343a40",
+        "description": "#343a40 மீது #e9ecef",
         "title": "ஸ்லேட்"
       },
       "color-sunset": {
-        "description": "#fff3b0 இல் #bf0603",
+        "description": "#bf0603 மீது #fff3b0",
         "title": "சூரிய அஸ்தமனம்"
       },
       "color-sunset-dots": {
-        "description": "புள்ளி தொகுதிகளுடன் அஸ்தமனம்",
-        "title": "அஸ்தமனம் புள்ளிகள்"
+        "description": "புள்ளி அலகுகளுடன் சூரிய அஸ்தமனம்",
+        "title": "சூரிய அஸ்தமனம் புள்ளிகள்"
       },
       "color-teal": {
-        "description": "#e0f4f5 இல் #006d77",
+        "description": "#006d77 மீது #e0f4f5",
         "title": "டீல்"
       },
       "combo-anim-dots-halftone": {
-        "description": "புள்ளி தொகுதிகளுடன் அனிமேஷன் அரைத்தொனி",
-        "title": "அனிமேஷன் புள்ளிகள் + அரைத்தொனி"
+        "description": "புள்ளி அலகுகளுடன் அசைவூட்டப்பட்ட அரைத் தொனி",
+        "title": "அசைவூட்டப்பட்ட புள்ளிகள் + அரைத் தொனி"
       },
       "combo-anim-rounded-blue-noise": {
-        "description": "வட்டமானதுடன் அனிமேஷன் நீல சத்தம்",
-        "title": "அனிமேஷன் வட்டமான + நீல சத்தம்"
+        "description": "வட்டமயமான பாணியுடன் அசைவூட்டப்பட்ட ப்ளூ நோய்ஸ்",
+        "title": "அசைவூட்டப்பட்ட வட்டமயம் + ப்ளூ நோய்ஸ்"
       },
       "combo-connected-pixelate-teal": {
-        "description": "இணைக்கப்பட்ட தொகுதிகளுடன் பிக்சலேட்டட் மேலடுக்கு",
-        "title": "இணைக்கப்பட்ட + பிக்சலேட் டீல்"
+        "description": "இணைந்த அலகுகளுடன் பிக்சலேட் மேலடுக்கம்",
+        "title": "இணைந்த + பிக்சலேட் டீல்"
       },
       "combo-connected-square": {
-        "description": "சதுர கண்டுபிடிப்பான்களுடன் இணைக்கப்பட்ட தொகுதிகள்",
-        "title": "இணைக்கப்பட்ட + சதுரம்"
+        "description": "சதுர ஃபைண்டர்களுடன் இணைந்த அலகுகள்",
+        "title": "இணைந்த + சதுரம்"
       },
       "combo-connected-wave-ocean": {
-        "description": "அலை விளைவுடன் இணைக்கப்பட்ட தொகுதிகள்",
-        "title": "இணைக்கப்பட்ட + அலை கடல்"
+        "description": "அலை விளைவுடன் இணைந்த அலகுகள்",
+        "title": "இணைந்த + அலை கடல்"
       },
       "combo-diamond-blue-noise-navy": {
-        "description": "நீல சத்தத்துடன் வைர தொகுதிகள்",
-        "title": "வைரம் + நீல சத்தம் நேவி"
+        "description": "ப்ளூ நோய்ஸுடன் வைரம் அலகுகள்",
+        "title": "வைரம் + ப்ளூ நோய்ஸ் நேவி"
       },
       "combo-diamond-duotone-crimson": {
-        "description": "வைர தொகுதிகளுடன் இரட்டை தொனி விளைவு",
-        "title": "வைரம் + இரட்டை தொனி கருஞ்சிவப்பு"
+        "description": "வைரம் அலகுகளுடன் இரட்டைத் தொனி விளைவு",
+        "title": "வைரம் + இரட்டைத் தொனி கிரிம்சன்"
       },
       "combo-diamond-rounded": {
-        "description": "வட்டமான கண்டுபிடிப்பான்களுடன் வைர தொகுதிகள்",
-        "title": "வைரம் + வட்டமான"
+        "description": "வட்ட ஃபைண்டர்களுடன் வைரம் அலகுகள்",
+        "title": "வைரம் + வட்டமயம்"
       },
       "combo-dots-circle": {
-        "description": "வட்ட கண்டுபிடிப்பான்களுடன் புள்ளி தொகுதிகள்",
+        "description": "வட்ட ஃபைண்டர்களுடன் புள்ளி அலகுகள்",
         "title": "புள்ளிகள் + வட்டம்"
       },
       "combo-dots-extreme-forest": {
-        "description": "புள்ளிகளுடன் அதிகபட்ச தெரிவுநிலை",
-        "title": "புள்ளிகள் + தீவிர காடு"
+        "description": "புள்ளிகளுடன் அதிகபட்ச தென்பாடு",
+        "title": "புள்ளிகள் + தீவிர வனம்"
       },
       "combo-dots-halftone-gold": {
-        "description": "அரைத்தொனி மேலடுக்குடன் புள்ளி தொகுதிகள்",
-        "title": "புள்ளிகள் + அரைத்தொனி தங்கம்"
+        "description": "அரைத் தொனி மேலடுக்கத்துடன் புள்ளி அலகுகள்",
+        "title": "புள்ளிகள் + அரைத் தொனி தங்கம்"
       },
       "combo-dots-outline-slate": {
-        "description": "புள்ளி தொகுதிகளுடன் விளிம்பு கண்டறிதல்",
-        "title": "புள்ளிகள் + அவுட்லைன் ஸ்லேட்"
+        "description": "புள்ளி அலகுகளுடன் ஓரம் கண்டறிதல்",
+        "title": "புள்ளிகள் + வெளிக்கோடு ஸ்லேட்"
       },
       "combo-rounded-dithered-royal": {
-        "description": "வட்டமான பாணியுடன் கிளாசிக் டிதர்",
-        "title": "வட்டமான + டிதர் அரச"
+        "description": "வட்டமயமான பாணியுடன் பாரம்பரிய டிதர்",
+        "title": "வட்டமயம் + டிதர் ராயல்"
       },
       "combo-rounded-mosaic-sunset": {
-        "description": "மொசைக் மேலடுக்குடன் வட்டமான தொகுதிகள்",
-        "title": "வட்டமான + மொசைக் அஸ்தமனம்"
+        "description": "மொசைக் மேலடுக்கத்துடன் வட்டமயமான அலகுகள்",
+        "title": "வட்டமயம் + மொசைக் சூரிய அஸ்தமனம்"
       },
       "combo-rounded-rounded": {
-        "description": "வட்டமான கண்டுபிடிப்பான்களுடன் வட்டமான தொகுதிகள்",
-        "title": "வட்டமான + வட்டமான"
+        "description": "வட்ட ஃபைண்டர்களுடன் வட்டமயமான அலகுகள்",
+        "title": "வட்டமயம் + வட்டமயம்"
       },
       "combo-rounded-subpixel-coral": {
-        "description": "உயர்-விவர சப்பிக்சல் ரெண்டரிங்",
-        "title": "வட்டமான + சப்பிக்சல் பவளம்"
+        "description": "உயர்-விவர சப்-பிக்சல் ரெண்டரிங்",
+        "title": "வட்டமயம் + சப்-பிக்சல் கோரல்"
       },
       "content-email": {
-        "description": "பவள வண்ணங்களுடன் Mailto இணைப்பு",
+        "description": "கோரல் நிறங்களுடன் Mailto இணைப்பு",
         "title": "மின்னஞ்சல் முகவரி"
       },
       "content-event": {
-        "description": "வட்டமான அரச பாணியுடன் iCal நிகழ்வு",
-        "title": "நாள்காட்டி நிகழ்வு"
+        "description": "வட்டமயமான ராயல் பாணியுடன் iCal நிகழ்வு",
+        "title": "நாட்காட்டி நிகழ்வு"
       },
       "content-geo": {
-        "description": "இணைக்கப்பட்ட தங்கத்துடன் வரைபட ஆயங்கள்",
-        "title": "புவி இருப்பிடம்"
+        "description": "இணைந்த தங்கத்துடன் வரைபட இணக்கோடுகள்",
+        "title": "புவியியல் இருப்பிடம்"
       },
       "content-sms": {
-        "description": "வைர டீல் உடன் முன்னரே நிரப்பப்பட்ட SMS",
+        "description": "டைமண்ட் டீல் நிறத்துடன் முன்கூட்டியே நிரப்பப்பட்ட SMS",
         "title": "SMS செய்தி"
       },
       "content-vcard": {
-        "description": "வட்டமான நேவி பாணியுடன் தொடர்பு அட்டை",
+        "description": "வட்ட மூலை நேவி ஸ்டைலுடன் தொடர்பு அட்டை",
         "title": "vCard தொடர்பு"
       },
       "content-wifi": {
-        "description": "புள்ளிகள் காடு பச்சையுடன் WiFi கட்டமைப்பு",
-        "title": "WiFi நெட்வொர்க்"
+        "description": "புள்ளி காடு பச்சை ஸ்டைலுடன் WiFi கட்டமைப்பு",
+        "title": "WiFi வலைப்பின்னல்"
       },
       "dither-adaptive-threshold": {
-        "description": "தகவமைப்பு வரம்பு",
-        "title": "தகவமைப்பு"
+        "description": "உட்பொருந்தும் தட்டு மதிப்பு",
+        "title": "உட்பொருந்தும்"
       },
       "dither-blue-noise": {
-        "description": "நீல சத்த வரம்பு",
-        "title": "நீல சத்தம்"
+        "description": "நீல இரைச்சல் தட்டு மதிப்பு",
+        "title": "நீல நொய்ஸ்"
       },
       "dither-blue-noise-error-diffusion": {
-        "description": "கலப்பு நீல சத்தம்",
-        "title": "நீல சத்தம் + பிழை"
+        "description": "கலப்பு நீல இரைச்சல்",
+        "title": "நீல இரைச்சல் + பிழை"
       },
       "dither-error-diffusion": {
-        "description": "Floyd-Steinberg பாணி",
+        "description": "ஃப்ளாய்ட்-ஸ்டெயின்பெர்க் பாணி",
         "title": "பிழை பரவல்"
       },
       "dither-kernel-atkinson": {
-        "description": "Atkinson பிழை பரவல்",
-        "title": "Atkinson"
+        "description": "அட்கின்சன் பிழை பரவல்",
+        "title": "அட்கின்சன்"
       },
       "dither-kernel-burkes": {
-        "description": "Burkes பிழை பரவல்",
-        "title": "Burkes"
+        "description": "பர்க்ஸ் பிழை பரவல்",
+        "title": "பர்க்ஸ்"
       },
       "dither-kernel-floyd-steinberg": {
-        "description": "Floyd-Steinberg பிழை பரவல்",
-        "title": "Floyd-Steinberg"
+        "description": "ஃப்ளாய்ட்-ஸ்டெயின்பெர்க் பிழை பரவல்",
+        "title": "ஃப்ளாய்ட்-ஸ்டெயின்பெர்க்"
       },
       "dither-kernel-jarvis-judice-ninke": {
-        "description": "Jarvis-Judice-Ninke பிழை பரவல்",
-        "title": "Jarvis-Judice-Ninke"
+        "description": "ஜார்விஸ்-ஜூடிஸ்-நிங்கே பிழை பரவல்",
+        "title": "ஜார்விஸ்-ஜூடிஸ்-நிங்கே"
       },
       "dither-kernel-sierra": {
-        "description": "Sierra பிழை பரவல்",
-        "title": "Sierra"
+        "description": "சியேரா பிழை பரவல்",
+        "title": "சியேரா"
       },
       "dither-kernel-stucki": {
-        "description": "Stucki பிழை பரவல்",
-        "title": "Stucki"
+        "description": "ஸ்டக்கி பிழை பரவல்",
+        "title": "ஸ்டக்கி"
       },
       "dither-ordered-bayer": {
-        "description": "Bayer மேட்ரிக்ஸ் டிதரிங்",
-        "title": "வரிசைப்படுத்தப்பட்ட Bayer"
+        "description": "பேயர் மேட்ரிக்ஸ் டிதரிங்",
+        "title": "ஒழுங்குபடுத்தப்பட்ட பேயர்"
       },
       "dither-perceptual": {
-        "description": "ஒளிர்வு எடையிடப்பட்ட",
-        "title": "புலன்சார்"
+        "description": "ஒளிர்வு-எடையிடப்பட்ட",
+        "title": "உணர்திறன்"
       },
       "dither-strength-100": {
         "description": "100% இல் டிதர் வலிமை",
@@ -433,8 +433,8 @@
         "title": "வலிமை 80%"
       },
       "dither-white-noise": {
-        "description": "சீரற்ற சத்த வரம்பு",
-        "title": "வெள்ளை சத்தம்"
+        "description": "சீரற்ற இரைச்சல் தட்டு மதிப்பு",
+        "title": "வெள்ளை இரைச்சல்"
       },
       "enc-ecc-h": {
         "description": "30% பிழை திருத்தம்",
@@ -442,15 +442,15 @@
       },
       "enc-ecc-l": {
         "description": "7% பிழை திருத்தம்",
-        "title": "ECC குறைவு"
+        "title": "ECC குறை"
       },
       "enc-ecc-m": {
         "description": "15% பிழை திருத்தம்",
-        "title": "ECC நடுத்தர"
+        "title": "ECC நடுத்தரம்"
       },
       "enc-ecc-q": {
         "description": "25% பிழை திருத்தம்",
-        "title": "ECC கால்"
+        "title": "ECC குவார்டைல்"
       },
       "enc-v0": {
         "description": "தானியங்கி பதிப்பு தேர்வு",
@@ -461,7 +461,7 @@
         "title": "பதிப்பு 12"
       },
       "enc-v6": {
-        "description": "மேலடுக்குகளுக்கு சிறந்தது (மையக் கண் இல்லை)",
+        "description": "மேலிடல்களுக்கு சிறந்தது (மையக் கண் இல்லை)",
         "title": "பதிப்பு 6"
       },
       "enc-v6-h": {
@@ -470,7 +470,7 @@
       },
       "enc-v6-l": {
         "description": "குறைந்த பிழை திருத்தத்துடன் பதிப்பு 6",
-        "title": "V6 + ECC குறைவு"
+        "title": "V6 + ECC குறை"
       },
       "enc-v9": {
         "description": "பதிப்பு 9 QR குறியீடு",
@@ -482,126 +482,126 @@
       },
       "enc-v9-l": {
         "description": "குறைந்த பிழை திருத்தத்துடன் பதிப்பு 9",
-        "title": "V9 + ECC குறைவு"
+        "title": "V9 + ECC குறை"
       },
       "finder-circle": {
-        "description": "வட்ட கண்டுபிடிப்பான் வடிவம்",
-        "title": "வட்ட கண்டுபிடிப்பான்கள்"
+        "description": "வட்ட ஃபைண்டர் முறை",
+        "title": "வட்ட ஃபைண்டர்கள்"
       },
       "finder-rounded": {
-        "description": "வட்டமான கண்டுபிடிப்பான் வடிவம்",
-        "title": "வட்டமான கண்டுபிடிப்பான்கள்"
+        "description": "வட்ட மூலை ஃபைண்டர் முறை",
+        "title": "வட்ட மூலை ஃபைண்டர்கள்"
       },
       "finder-square": {
-        "description": "சதுர கண்டுபிடிப்பான் வடிவம்",
-        "title": "சதுர கண்டுபிடிப்பான்கள்"
+        "description": "சதுர ஃபைண்டர் முறை",
+        "title": "சதுர ஃபைண்டர்கள்"
       },
       "halftone-classic": {
-        "description": "கிளாசிக் பேலட்டுடன் அரைத்தொனி",
-        "title": "கிளாசிக் அரைத்தொனி"
+        "description": "கிளாசிக் பலெட்டுடன் ஹாஃப்-டோன்",
+        "title": "கிளாசிக் ஹாஃப்டோன்"
       },
       "halftone-forest": {
-        "description": "காடு பேலட்டுடன் அரைத்தொனி",
-        "title": "காடு அரைத்தொனி"
+        "description": "காடு பேலெட்டுடன் ஹாஃப்டோன்",
+        "title": "காடு ஹாஃப்டோன்"
       },
       "halftone-navy": {
-        "description": "நேவி பேலட்டுடன் அரைத்தொனி",
-        "title": "நேவி அரைத்தொனி"
+        "description": "நேவி பேலெட்டுடன் ஹாஃப்டோன்",
+        "title": "நேவி ஹாஃப்டோன்"
       },
       "halftone-wine": {
-        "description": "ஒயின் பேலட்டுடன் அரைத்தொனி",
-        "title": "ஒயின் அரைத்தொனி"
+        "description": "வைன் பேலெட்டுடன் ஹாஃப்டோன்",
+        "title": "வைன் ஹாஃப்டோன்"
       },
       "img-blend": {
-        "description": "வண்ண கலப்பு மேலடுக்கு",
+        "description": "நிற கலப்பு மேலடுக்கு",
         "title": "கலப்பு முறை"
       },
       "img-blue-noise": {
-        "description": "நீல சத்த வரம்பு டிதரிங்",
-        "title": "நீல சத்தம்"
+        "description": "நீல சத்தம் வரம்பு டிதரிங்",
+        "title": "நீல நொய்ஸ்"
       },
       "img-brightness": {
-        "description": "ஒளிர்வு அடிப்படையிலான தொகுதிகள்",
-        "title": "ஒளிர்வு"
+        "description": "பிரகாசம் அடிப்படையிலான தொகுதிகள்",
+        "title": "பிரகாசம்"
       },
       "img-colormode-bw": {
         "description": "கருப்பு & வெள்ளை செயலாக்கம்",
         "title": "கருப்பு & வெள்ளை"
       },
       "img-colormode-color": {
-        "description": "வண்ண செயலாக்கம்",
-        "title": "வண்ணம்"
+        "description": "நிற செயலாக்கம்",
+        "title": "நிறம்"
       },
       "img-colormode-grayscale": {
-        "description": "சாம்பல் நிற செயலாக்கம்",
-        "title": "சாம்பல் நிறம்"
+        "description": "சாம்பல் நிற அளவிலான செயலாக்கம்",
+        "title": "சாம்பல் அளவு"
       },
       "img-dithered": {
         "description": "பிழை பரவல் டிதரிங்",
-        "title": "டிதர்"
+        "title": "டிதரிங் செய்யப்பட்ட"
       },
       "img-dithered-i100": {
-        "description": "100% தீவிரத்தில் டிதர்",
-        "title": "டிதர் 100%"
+        "description": "100% தீவிரத்தில் டிதரிங் செய்யப்பட்ட",
+        "title": "டிதரிங் 100%"
       },
       "img-dithered-i50": {
-        "description": "50% தீவிரத்தில் டிதர்",
-        "title": "டிதர் 50%"
+        "description": "50% தீவிரத்தில் டிதரிங் செய்யப்பட்ட",
+        "title": "டிதரிங் 50%"
       },
       "img-dithered-i75": {
-        "description": "75% தீவிரத்தில் டிதர்",
-        "title": "டிதர் 75%"
+        "description": "75% தீவிரத்தில் டிதரிங் செய்யப்பட்ட",
+        "title": "டிதரிங் 75%"
       },
       "img-duotone": {
-        "description": "இரண்டு-வண்ண மேப்பிங்",
-        "title": "இரட்டை தொனி"
+        "description": "இரட்டை-நிற வரைபடம்",
+        "title": "டூயோடோன்"
       },
       "img-extreme": {
-        "description": "அதிகபட்ச பட தெரிவுநிலை",
-        "title": "தீவிர"
+        "description": "அதிகபட்ச படத் தெளிவு",
+        "title": "அதிகமான"
       },
       "img-halftone": {
-        "description": "கிளாசிக் அரைத்தொனி புள்ளிகள்",
-        "title": "அரைத்தொனி"
+        "description": "கிளாசிக் ஹாஃப்டோன் புள்ளிகள்",
+        "title": "ஹாஃப்டோன்"
       },
       "img-mosaic": {
-        "description": "மொசைக் டைல் விளைவு",
-        "title": "மொசைக்"
+        "description": "மொசாயிக் டைல் விளைவு",
+        "title": "மொசாயிக்"
       },
       "img-outline": {
         "description": "விளிம்பு கண்டறிதல் மேலடுக்கு",
-        "title": "அவுட்லைன்"
+        "title": "வரைவு"
       },
       "img-pixelate": {
-        "description": "பிக்சலேட்டட் மேலடுக்கு விளைவு",
+        "description": "பிக்சலேட் மேலடுக்கு விளைவு",
         "title": "பிக்சலேட்"
       },
       "img-subpixel": {
-        "description": "உயர் விவர சப்பிக்சல் ரெண்டரிங்",
-        "title": "சப்பிக்சல்"
+        "description": "உயர் விவர துணை-பிக்சல் ரெண்டரிங்",
+        "title": "துணை-பிக்சல்"
       },
       "img-wave": {
-        "description": "அலை விகாரம் விளைவு",
+        "description": "அலைபோன்ற சிதைவு விளைவு",
         "title": "அலை"
       },
       "mosaic-classic": {
-        "description": "கிளாசிக் பேலட்டுடன் மொசைக்",
-        "title": "கிளாசிக் மொசைக்"
+        "description": "கிளாசிக் பேலெட்டுடன் மொசாயிக்",
+        "title": "கிளாசிக் மொசாயிக்"
       },
       "mosaic-forest": {
-        "description": "காடு பேலட்டுடன் மொசைக்",
-        "title": "காடு மொசைக்"
+        "description": "காடு பேலெட்டுடன் மொசாயிக்",
+        "title": "காடு மொசாயிக்"
       },
       "mosaic-navy": {
-        "description": "நேவி பேலட்டுடன் மொசைக்",
-        "title": "நேவி மொசைக்"
+        "description": "நேவி பேலெட்டுடன் மொசாயிக்",
+        "title": "நேவி மொசாயிக்"
       },
       "mosaic-wine": {
-        "description": "ஒயின் பேலட்டுடன் மொசைக்",
-        "title": "ஒயின் மொசைக்"
+        "description": "வைன் பேலெட்டுடன் மொசாயிக்",
+        "title": "வைன் மொசாயிக்"
       },
       "plain-basic": {
-        "description": "நிலையான QR குறியீடு",
+        "description": "தரமான QR குறியீடு",
         "title": "கிளாசிக்"
       },
       "plain-ecc-l": {
@@ -610,311 +610,311 @@
       },
       "plain-ecc-q": {
         "description": "நடுத்தர-உயர் பிழை திருத்தம்",
-        "title": "ECC கால் (25%)"
+        "title": "ECC குவார்டைல் (25%)"
       },
       "plain-v12": {
-        "description": "பல சீரமைப்புடன் பெரியது",
+        "description": "பல ஒழுங்குபடுத்தலுடன் பெரியது",
         "title": "பதிப்பு 12"
       },
       "plain-v6": {
-        "description": "மையக் கண் இல்லாமல் பெரியது",
+        "description": "மைய கண் இல்லாமல் மேலும் பெரியது",
         "title": "பதிப்பு 6"
       },
       "plain-v9": {
-        "description": "மையக் கண்ணுடன் இன்னும் பெரியது",
+        "description": "மைய கண்ணுடன் இன்னும் பெரியது",
         "title": "பதிப்பு 9"
       },
       "prep-blur-1": {
-        "description": "1px காஸியன் மங்கல்",
+        "description": "1px காஉசியன் மங்கல்",
         "title": "மங்கல் 1px"
       },
       "prep-blur-2": {
-        "description": "2px காஸியன் மங்கல்",
+        "description": "2px காஉசியன் மங்கல்",
         "title": "மங்கல் 2px"
       },
       "prep-blur-4": {
-        "description": "4px காஸியன் மங்கல்",
+        "description": "4px காஉசியன் மங்கல்",
         "title": "மங்கல் 4px"
       },
       "prep-brightness-n25": {
-        "description": "ஒளிர்வு இருண்டது",
-        "title": "ஒளிர்வு -25"
+        "description": "பிரகாசம் குறைத்து இருண்டது",
+        "title": "பிரகாசம் -25"
       },
       "prep-brightness-n50": {
-        "description": "ஒளிர்வு இருண்டது",
-        "title": "ஒளிர்வு -50"
+        "description": "பிரகாசம் குறைத்து இருண்டது",
+        "title": "பிரகாசம் -50"
       },
       "prep-brightness-p25": {
-        "description": "ஒளிர்வு பிரகாசமானது",
-        "title": "ஒளிர்வு +25"
+        "description": "பிரகாசம் உயர்த்து வெளிச்சமானது",
+        "title": "பிரகாசம் +25"
       },
       "prep-brightness-p50": {
-        "description": "ஒளிர்வு பிரகாசமானது",
-        "title": "ஒளிர்வு +50"
+        "description": "பிரகாசம் உயர்த்து வெளிச்சமானது",
+        "title": "பிரகாசம் +50"
       },
       "prep-contrast-n50": {
-        "description": "குறைந்த மாறுபாடு",
-        "title": "மாறுபாடு -50"
+        "description": "குறைந்த கான்ட்ராஸ்ட்",
+        "title": "கான்ட்ராஸ்ட் -50"
       },
       "prep-contrast-p100": {
-        "description": "உயர் மாறுபாடு",
-        "title": "மாறுபாடு +100"
+        "description": "உயர் கான்ட்ராஸ்ட்",
+        "title": "கான்ட்ராஸ்ட் +100"
       },
       "prep-contrast-p50": {
-        "description": "உயர் மாறுபாடு",
-        "title": "மாறுபாடு +50"
+        "description": "உயர் கான்ட்ராஸ்ட்",
+        "title": "கான்ட்ராஸ்ட் +50"
       },
       "prep-edge-canny": {
-        "description": "கேனி விளிம்பு கண்டறிதல்",
-        "title": "விளிம்பு கேனி"
+        "description": "கானி எட்ஜ் கண்டறிதல்",
+        "title": "எட்ஜ் கானி"
       },
       "prep-edge-sobel": {
-        "description": "சோபல் விளிம்பு கண்டறிதல்",
-        "title": "விளிம்பு சோபல்"
+        "description": "சோபெல் எட்ஜ் கண்டறிதல்",
+        "title": "எட்ஜ் சோபெல்"
       },
       "prep-gamma-05": {
-        "description": "காமா திருத்தம் 0.5",
-        "title": "காமா 0.5"
+        "description": "காம்மா திருத்தம் 0.5",
+        "title": "காம்மா 0.5"
       },
       "prep-gamma-15": {
-        "description": "காமா திருத்தம் 1.5",
-        "title": "காமா 1.5"
+        "description": "காம்மா திருத்தம் 1.5",
+        "title": "காம்மா 1.5"
       },
       "prep-gamma-20": {
-        "description": "காமா திருத்தம் 2.0",
-        "title": "காமா 2.0"
+        "description": "காம்மா திருத்தம் 2.0",
+        "title": "காம்மா 2.0"
       },
       "prep-hue-90": {
-        "description": "வண்ண சுழற்சி 90 டிகிரி",
-        "title": "வண்ணம் +90°"
+        "description": "ஹ்யூ சுழற்சி 90 டிகிரி",
+        "title": "ஹ்யூ +90°"
       },
       "prep-invert": {
-        "description": "தலைகீழ் வண்ணங்கள்",
+        "description": "தலைகீழான நிறங்கள்",
         "title": "தலைகீழ்"
       },
       "prep-posterize-2": {
-        "description": "2 வண்ண நிலைகள்",
+        "description": "2 நிற நிலைகள்",
         "title": "போஸ்டரைஸ் 2"
       },
       "prep-posterize-4": {
-        "description": "4 வண்ண நிலைகள்",
+        "description": "4 நிற நிலைகள்",
         "title": "போஸ்டரைஸ் 4"
       },
       "prep-posterize-8": {
-        "description": "8 வண்ண நிலைகள்",
+        "description": "8 நிற நிலைகள்",
         "title": "போஸ்டரைஸ் 8"
       },
       "prep-saturation-n100": {
-        "description": "செறிவற்ற",
-        "title": "செறிவு -100"
+        "description": "நிறத் திளப்பு நீக்கப்பட்டது",
+        "title": "சேச்சுரேஷன் -100"
       },
       "prep-saturation-n50": {
-        "description": "குறைந்த செறிவு",
-        "title": "செறிவு -50"
+        "description": "சேச்சுரேஷன் குறைக்கப்பட்டது",
+        "title": "சேச்சுரேஷன் -50"
       },
       "prep-saturation-p100": {
-        "description": "அதிக செறிவு",
-        "title": "செறிவு +100"
+        "description": "அதிக சேச்சுரேஷன்",
+        "title": "சேச்சுரேஷன் +100"
       },
       "prep-saturation-p50": {
-        "description": "அதிக செறிவு",
-        "title": "செறிவு +50"
+        "description": "அதிக சேச்சுரேஷன்",
+        "title": "சேச்சுரேஷன் +50"
       },
       "prep-sharpen-100": {
-        "description": "100% கூர்மைப்படுத்துதல்",
-        "title": "கூர்மை 100%"
+        "description": "100% கூர்மையாக்கம்",
+        "title": "கூர்மையாக்கு 100%"
       },
       "prep-sharpen-25": {
-        "description": "25% கூர்மைப்படுத்துதல்",
-        "title": "கூர்மை 25%"
+        "description": "25% கூர்மையாக்கம்",
+        "title": "கூர்மையாக்கு 25%"
       },
       "prep-sharpen-50": {
-        "description": "50% கூர்மைப்படுத்துதல்",
-        "title": "கூர்மை 50%"
+        "description": "50% கூர்மையாக்கம்",
+        "title": "கூர்மையாக்கு 50%"
       },
       "prep-threshold-128": {
-        "description": "128 இல் பைனரி வரம்பு",
-        "title": "வரம்பு 128"
+        "description": "128 இல் பைனரி தறுகோடு",
+        "title": "தறுகோடு 128"
       },
       "prep-threshold-192": {
-        "description": "192 இல் பைனரி வரம்பு",
-        "title": "வரம்பு 192"
+        "description": "192 இல் பைனரி தறுகோடு",
+        "title": "தறுகோடு 192"
       },
       "prep-threshold-64": {
-        "description": "64 இல் பைனரி வரம்பு",
-        "title": "வரம்பு 64"
+        "description": "64 இல் பைனரி தறுகோடு",
+        "title": "தறுகோடு 64"
       },
       "style-connected": {
-        "description": "இணைக்கப்பட்ட தொகுதி பாணி",
-        "title": "இணைக்கப்பட்ட தொகுதிகள்"
+        "description": "இணைந்த மாட்யூல் பாணி",
+        "title": "இணைந்த மாட்யூல்கள்"
       },
       "style-diamond": {
-        "description": "வைர தொகுதி பாணி",
-        "title": "வைர தொகுதிகள்"
+        "description": "வைரம் மாட்யூல் பாணி",
+        "title": "வைரம் மாட்யூல்கள்"
       },
       "style-dots": {
-        "description": "புள்ளி தொகுதி பாணி",
-        "title": "புள்ளி தொகுதிகள்"
+        "description": "புள்ளி மாட்யூல் பாணி",
+        "title": "புள்ளி மாட்யூல்கள்"
       },
       "style-rounded": {
-        "description": "வட்டமான தொகுதி பாணி",
-        "title": "வட்டமான தொகுதிகள்"
+        "description": "வட்டமாக்கப்பட்ட மாட்யூல் பாணி",
+        "title": "வட்டமாக்கப்பட்ட மாட்யூல்கள்"
       },
       "style-square": {
-        "description": "சதுர தொகுதி பாணி",
-        "title": "சதுர தொகுதிகள்"
+        "description": "சதுர மாட்யூல் பாணி",
+        "title": "சதுர மாட்யூல்கள்"
       }
     },
-    "plain": "சாதாரண",
+    "plain": "சாதாரணம்",
     "powerCombos": "பவர் காம்போக்கள்",
-    "preprocessing": "முன்-செயலாக்கம்",
+    "preprocessing": "முன்செயலாக்கம்",
     "sections": {
       "animation-overlay": {
-        "description": "வெவ்வேறு கலப்பு முறைகளுடன் அனிமேஷன் GIF மேலடுக்குகள்",
-        "title": "அனிமேஷன் மேலடுக்குகள்"
+        "description": "வேறு கலப்பு முறைகளுடன் அனிமேட்டட் GIF ஓவர்லேக்கள்",
+        "title": "அனிமேட்டட் ஓவர்லேக்கள்"
       },
       "blend-modes": {
-        "description": "பட மேலடுக்குகளுடன் வெவ்வேறு வண்ண கலப்பு",
+        "description": "பட ஓவர்லேக்களுடன் வேறுபட்ட நிற கலப்பு",
         "title": "கலப்பு முறைகள்"
       },
       "color-modes": {
-        "description": "வண்ணம், சாம்பல் நிறம் மற்றும் கருப்பு-வெள்ளை செயலாக்கம்",
-        "title": "வண்ண செயலாக்கம்"
+        "description": "நிற, சாம்பல் நிற, மற்றும் கருப்பு-வெள்ளை செயலாக்கம்",
+        "title": "நிற செயலாக்கம்"
       },
       "colors": {
-        "description": "வண்ண திட்டங்கள் மற்றும் தீம் பேலட்டுகள்",
-        "title": "வண்ணங்கள் & தீம்கள்"
+        "description": "நிறத் திட்டங்கள் மற்றும் தீம் பாலெட்டுகள்",
+        "title": "நிறங்கள் & தீம்கள்"
       },
       "content-types": {
-        "description": "வெவ்வேறு பேலோட் வடிவங்கள் - vCard, WiFi, மின்னஞ்சல், SMS, புவி, நாள்காட்டி",
+        "description": "வேறு பேலோடு வடிவங்கள் - vCard, WiFi, Email, SMS, Geo, Calendar",
         "title": "உள்ளடக்க வகைகள்"
       },
       "dithering": {
-        "description": "வெவ்வேறு டிதரிங் முறைகள் மற்றும் பிழை பரவல் கர்னல்கள்",
+        "description": "வேறு டிதரிங் முறைகள் மற்றும் பிழை பரவல் கர்னல்கள்",
         "title": "டிதரிங் அல்காரிதங்கள்"
       },
       "encoding": {
-        "description": "வெவ்வேறு QR பதிப்புகள் மற்றும் பிழை திருத்த நிலைகள்",
+        "description": "வேறு QR பதிப்புகள் மற்றும் பிழை திருத்த நிலைகள்",
         "title": "QR குறியாக்கம்"
       },
       "image-overlay": {
-        "description": "வெவ்வேறு கலப்பு முறைகளுடன் நிலையான பட மேலடுக்குகள்",
-        "title": "பட மேலடுக்குகள்"
+        "description": "வேறு கலப்பு முறைகளுடன் நிலையான பட ஓவர்லேக்கள்",
+        "title": "பட ஓவர்லேக்கள்"
       },
       "plain": {
-        "description": "மேலடுக்கு இல்லாத நிலையான QR குறியீடுகள் - வெவ்வேறு பதிப்புகள் மற்றும் பிழை திருத்தம்",
+        "description": "ஓவர்லே இல்லாத நிலையான QR குறியீடுகள் - வேறு பதிப்புகள் மற்றும் பிழை திருத்தம்",
         "title": "சாதாரண QR குறியீடுகள்"
       },
       "power-combos": {
-        "description": "ANQR திறன்களை வெளிப்படுத்தும் அற்புதமான பல அம்ச சேர்க்கைகள்",
+        "description": "ANQR திறன்களை காட்டும் கண்கவர் பல-அம்ச சேர்க்கைகள்",
         "title": "பவர் காம்போக்கள்"
       },
       "preprocessing": {
-        "description": "ஒளிர்வு, மாறுபாடு, காமா, மங்கல், கூர்மை, போஸ்டரைஸ், விளிம்பு கண்டறிதல்",
+        "description": "ஒளிர்வு, கான்ட்ராஸ்ட், காம்மா, மங்கலாக்கம், கூர்மையாக்கம், போஸ்டரைஸ், எட்ஜ் கண்டறிதல்",
         "title": "பட முன்செயலாக்கம்"
       },
       "styles": {
-        "description": "தொகுதிகள் மற்றும் கண்டுபிடிப்பான் வடிவங்களுக்கான வெவ்வேறு காட்சி பாணிகள்",
-        "title": "தொகுதி & கண்டுபிடிப்பான் பாணிகள்"
+        "description": "மாட்யூல்கள் மற்றும் ஃபைண்டர் பேட்டர்ன்களுக்கு வேறு காட்சி பாணிகள்",
+        "title": "மாட்யூல் & ஃபைண்டர் பாணிகள்"
       }
     },
-    "showAll": "அனைத்தும் காட்டு",
+    "showAll": "அனைத்தையும் காட்டு",
     "styles": "பாணிகள்",
-    "subtitle": "ANQR உடன் உருவாக்கப்பட்ட QR குறியீடு எடுத்துக்காட்டுகளை ஆராயுங்கள்",
-    "title": "QR குறியீடு கேலரி",
-    "tryThis": "இதை முயற்சிக்கவும்"
+    "subtitle": "ANQR மூலம் உருவாக்கப்பட்ட QR குறியீடுகளின் எடுத்துக்காட்டுகளை ஆராயுங்கள்",
+    "title": "QR குறியீடு காட்சிக் கூடம்",
+    "tryThis": "இதைக் முயற்சிக்கவும்"
   },
   "header": {
     "close": "மூடு",
     "copied": "நகலெடுக்கப்பட்டது!",
     "copyLink": "இணைப்பை நகலெடு",
-    "darkMode": "இருண்ட முறைக்கு மாறு",
+    "darkMode": "டார்க் மோடுக்கு மாறு",
     "export": "ஏற்றுமதி",
-    "lightMode": "ஒளி முறைக்கு மாறு",
+    "lightMode": "லைட் மோடுக்கு மாறு",
     "reset": "மீட்டமை",
     "searchSettings": "அமைப்புகளைத் தேடு...",
     "share": "பகிர்"
   },
   "hints": {
-    "alignmentStyle": "சீரமைப்பு வடிவங்களின் பாணி (பெரிய QR குறியீடுகளில் பயன்படுத்தப்படுகிறது)",
-    "appLinkNote": "மொபைல் பயன்பாட்டில் குறிப்பிட்ட உள்ளடக்கத்தைத் திறக்கிறது",
-    "autoDetect": "தானாக கண்டறி (தற்போதைய உள்ளடக்கத்திற்கு v{{version}}+ தேவை)",
-    "autoMinVersion": "0 = தானியங்கி, தற்போதைய உள்ளடக்கத்திற்கு குறைந்தபட்சம் v{{version}}",
-    "bgColorHex": "பின்புற வண்ண ஹெக்ஸ் குறியீடு",
-    "bizcardLegacy": "பழைய வடிவம் - vCard ஐப் பயன்படுத்துவதைக் கருத்தில் கொள்ளுங்கள்",
-    "bluetoothNote": "குறிப்பு: QR மூலம் புளூடூத் இணைத்தல் விற்பனையாளர்-குறிப்பிட்டது மற்றும் அனைத்து சாதனங்களிலும் வேலை செய்யாமல் போகலாம்",
-    "bounceAnimation": "அனிமேஷனை முன்னும் பின்னும் இயக்கு",
-    "calendarNote": "பகிரப்பட்ட நாள்காட்டி ஊட்டத்திற்கு சந்தா செலுத்து",
-    "contrastGuard": "முன்புறம் மற்றும் பின்புறத்திற்கு இடையே குறைந்தபட்ச மாறுபாடு விகிதத்தை உறுதிப்படுத்து",
-    "cornerRadius": "வட்டமான தொகுதிகளுக்கான மூலை ஆரம் சதவீதம் (0-100%)",
-    "crispEdges": "கூர்மையான தொகுதி விளிம்புகளுக்கு பிக்சல் ரெண்டரிங் பயன்படுத்து",
-    "customNote": "எந்த வடிவத்திலும் மூல தரவை உள்ளிடவும். எந்த சரிபார்ப்பும் வடிவமைப்பும் பயன்படுத்தப்படாது.",
-    "dotRotation": "புள்ளி-பாணி தொகுதிகளை சுழற்று (0-360 டிகிரி)",
-    "encodingMode": "தரவு குறியாக்க முறை - தானியங்கி மிகவும் திறமையான முறையைத் தேர்ந்தெடுக்கிறது",
-    "enforceMinQuietZone": "சிறந்த ஸ்கேன் நம்பகத்தன்மைக்கு குறைந்தபட்ச 4 தொகுதி அமைதி மண்டலத்தை நடைமுறைப்படுத்து",
-    "enterTextContent": "QR குறியீட்டில் குறியாக்க உரை உள்ளடக்கத்தை உள்ளிடவும்",
-    "enterUrlContent": "QR குறியீட்டில் குறியாக்க URL ஐ உள்ளிடவும்",
-    "epcSepaNote": "SEPA கடன் பரிமாற்றங்களுக்கான ஐரோப்பிய கட்டண கவுன்சில் QR குறியீடு",
-    "errorCorrection": "பிழை திருத்த நிலை - உயர்ந்தது = அதிக சேத எதிர்ப்பு ஆனால் பெரிய QR குறியீடு",
-    "extraBorder": "அமைதி மண்டலத்திற்கு அப்பால் கூடுதல் எல்லை தொகுதிகள் (0-10)",
-    "eyeInnerStyle": "கண்டுபிடிப்பான் வடிவங்களின் உள் சதுரத்தின் பாணி",
-    "eyeOuterStyle": "கண்டுபிடிப்பான் வடிவங்களின் வெளிப்புற வளையத்தின் பாணி",
-    "eyeScale": "இயல்புநிலை அளவுடன் ஒப்பிடும்போது கண்டுபிடிப்பான் வடிவங்களை அளவிடு (50-150%)",
-    "fgColorHex": "முன்புற வண்ண ஹெக்ஸ் குறியீடு",
-    "finderStyle": "மூலை கண்டுபிடிப்பான் வடிவங்களின் பாணி",
-    "forceHttps": "HTTP URL களை தானாகவே HTTPS ஆக மாற்று",
+    "alignmentStyle": "ஒழுங்கமைப்பு வடிவங்களின் பாணி (பெரிய QR குறியீடுகளில் பயன்படுத்தப்படும்)",
+    "appLinkNote": "மொபைல் செயலியின் உள்ளே குறிப்பிட்ட உள்ளடக்கத்தைத் திறக்கும்",
+    "autoDetect": "தானாகக் கண்டறிதல் (தற்போதைய உள்ளடக்கத்திற்கு v{{version}}+ தேவை)",
+    "autoMinVersion": "0 = தானாக, தற்போதைய உள்ளடக்கத்திற்கு குறைந்தபட்சம் v{{version}}",
+    "bgColorHex": "பின்புல நிற ஹெக்ஸ் குறியீடு",
+    "bizcardLegacy": "பழைய வடிவம் - பதிலாக vCard பயன்படுத்துவது நல்லது",
+    "bluetoothNote": "குறிப்பு: QR மூலம் Bluetooth இணைப்பு விற்பனையாளர் சார்ந்தது; எல்லா சாதனங்களிலும் செயல்படாமல் இருக்கலாம்",
+    "bounceAnimation": "அனிமேஷனை முன் பின்னாக இயக்கவும் (பிங்-பாங்)",
+    "calendarNote": "பகிரப்பட்ட காலண்டர் ஃபீடுக்கு சந்தாதாரராகுங்கள்",
+    "contrastGuard": "முன்னணி மற்றும் பின்புலத்திற்கிடையில் குறைந்தபட்ச மாறுபாட்டு விகிதம் இருப்பதை உறுதி செய்யவும்",
+    "cornerRadius": "வட்டமான மாட்யூல்களுக்கு மூலை ஆரம் சதவீதம் (0-100%)",
+    "crispEdges": "மாட்யூல் விளிம்புகள் கூர்மையாக இருக்க பிக்சலேட் ரெண்டரிங்கை பயன்படுத்தவும்",
+    "customNote": "எந்த வடிவிலும் மூலத் தரவை உள்ளிடவும். சரிபார்த்தல் அல்லது வடிவமைத்தல் எதுவும் செய்யப்படாது.",
+    "dotRotation": "புள்ளி-பாணி மாட்யூல்களை சுழற்றவும் (0-360 டிகிரி)",
+    "encodingMode": "தரவு குறியாக்க முறை - தானாகவே மிகச் செயல்திறனான முறையைத் தேர்வு செய்யும்",
+    "enforceMinQuietZone": "சிறந்த ஸ்கேன் நம்பகத்தன்மைக்கு குறைந்தபட்சம் 4 மாட்யூல் அமைதி பகுதியை கட்டாயப்படுத்தவும்",
+    "enterTextContent": "QR குறியீடில் குறியாக்க வேண்டிய உரை உள்ளடக்கத்தை உள்ளிடவும்",
+    "enterUrlContent": "QR குறியீடில் குறியாக்க வேண்டிய URL-ஐ உள்ளிடவும்",
+    "epcSepaNote": "SEPA கடன் பரிமாற்றங்களுக்கு European Payment Council QR குறியீடு",
+    "errorCorrection": "பிழை திருத்த நிலை - அதிகமானால் சேத எதிர்ப்பு அதிகம், ஆனால் QR குறியீடு பெரியதாகும்",
+    "extraBorder": "அமைதி பகுதியைத் தாண்டிய கூடுதல் எல்லை மாட்யூல்கள் (0-10)",
+    "eyeInnerStyle": "ஃபைண்டர் வடிவங்களின் உள்ள்சதுர பாணி",
+    "eyeOuterStyle": "ஃபைண்டர் வடிவங்களின் வெளிவளைய பாணி",
+    "eyeScale": "இயல்புநிலை அளவுடன் ஒப்பிட்டு ஃபைண்டர் வடிவங்களை அளவிடவும் (50-150%)",
+    "fgColorHex": "முன்னணி நிற ஹெக்ஸ் குறியீடு",
+    "finderStyle": "மூலை ஃபைண்டர் வடிவங்களின் பாணி",
+    "forceHttps": "HTTP URL-களை தானாக HTTPS ஆக மாற்றவும்",
     "frameStyle": "QR குறியீட்டைச் சுற்றி அலங்கார சட்டத்தைச் சேர்க்கவும்",
     "frameText": "சட்டத்தில் காட்ட வேண்டிய உரை",
-    "gapMode": "தொகுதிகளுக்கிடையே உள்ள இடைவெளிகள் எவ்வாறு வழங்கப்படுகின்றன",
-    "gradient": "QR குறியீட்டிற்கு சாய்வு விளைவைப் பயன்படுத்து",
-    "gs1Note": "தயாரிப்பு அடையாளம் மற்றும் கண்டறியலுக்கான GS1 டிஜிட்டல் இணைப்பு",
-    "higherEccLargerQr": "உயர்ந்தது = அதிக சேத எதிர்ப்பு, பெரிய QR",
-    "loopAnimation": "அனிமேஷனை தொடர்ச்சியாக இயக்கு",
-    "maxLengthGuard": "QR குறியீடு திறனை மீறும் உள்ளடக்கத்தை குறியாக்குவதைத் தடு",
-    "minContrastRatio": "செயல்படுத்த வேண்டிய குறைந்தபட்ச மாறுபாடு விகிதம் (1-21, WCAG AA க்கு 4.5:1 தேவை)",
-    "moduleGap": "தொகுதிகளுக்கிடையே சதவீதமாக இடைவெளி (0-30%)",
-    "moduleJitterWarning": "⚠️ ஸ்கேன் திறனை பாதிக்கலாம்",
-    "moduleSize": "ஒவ்வொரு QR குறியீடு தொகுதியின் பிக்சல் அளவு (2-20px)",
-    "moduleStyle": "QR குறியீடு தொகுதிகளின் காட்சி பாணி",
-    "normalizeNewlines": "வெவ்வேறு புதிய வரி வடிவங்களை நிலையான வடிவமாக மாற்று",
-    "outputFormat": "ஏற்றுமதிக்கான வெளியீட்டு கோப்பு வடிவமைப்பைத் தேர்ந்தெடுக்கவும்",
-    "paynowNote": "சிங்கப்பூர் வேகமான கட்டண அமைப்பு",
-    "perModuleColor": "தனிப்பட்ட தொகுதிகளுக்கு வண்ணங்களை எவ்வாறு ஒதுக்குவது",
-    "pickBgColor": "பின்புற வண்ணத்தை தேர்ந்தெடுக்க கிளிக் செய்யவும்",
-    "pickFgColor": "முன்புற வண்ணத்தை தேர்ந்தெடுக்க கிளிக் செய்யவும்",
-    "pixNote": "பிரேசில் உடனடி கட்டண அமைப்பு",
-    "pixelSnap": "தொகுதி நிலைகளை பிக்சல் எல்லைகளில் எவ்வாறு ஸ்னாப் செய்வது",
-    "promptpayNote": "தாய்லாந்து தேசிய இ-கட்டண அமைப்பு",
-    "qrVersion": "QR குறியீடு பதிப்பு (0=தானியங்கி, 1-40 அளவு மற்றும் திறனை அதிகரிக்கிறது)",
-    "quietZone": "QR குறியீட்டைச் சுற்றி அமைதி மண்டல விளிம்பு (0-10 தொகுதிகள், பரிந்துரைக்கப்படுகிறது: 4+)",
+    "gapMode": "மாட்யூல்களுக்கு இடையேயான இடைவெளிகள் எப்படி ரெண்டர் செய்யப்படுகின்றன",
+    "gradient": "QR குறியீடிற்கு கிரேடியன்ட் விளைவைப் பயன்படுத்தவும்",
+    "gs1Note": "தயாரிப்பு அடையாளம் மற்றும் தடமறிதலுக்கான GS1 டிஜிட்டல் லிங்க்",
+    "higherEccLargerQr": "அதிகமானால் சேத எதிர்ப்பு அதிகம், QR பெரியது",
+    "loopAnimation": "அனிமேஷனை இடையறாது லூப் செய்யவும்",
+    "maxLengthGuard": "QR குறியீட்டு திறனை மீறும் உள்ளடக்கத்தை குறியாக்குவதைத் தடுக்கும்",
+    "minContrastRatio": "கட்டாயப்படுத்த வேண்டிய குறைந்தபட்ச மாறுபாட்டு விகிதம் (1-21, WCAG AAக்கு 4.5:1 தேவை)",
+    "moduleGap": "மாட்யூல்களுக்கு இடையேயான இடைவெளி சதவீதமாக (0-30%)",
+    "moduleJitterWarning": "⚠️ ஸ்கேன் செய்யும் திறனை பாதிக்கலாம்",
+    "moduleSize": "ஒவ்வொரு QR குறியீட்டு மாட்யூலின் அளவு (பிக்சலில்) (2-20px)",
+    "moduleStyle": "QR குறியீட்டு மாட்யூல்களின் காட்சிப் பாணி",
+    "normalizeNewlines": "வேறு புதியவரி வடிவங்களை ஒரு நிலையான வடிவமாக மாற்றவும்",
+    "outputFormat": "ஏற்றுமதிக்கு வெளியீட்டு கோப்பு வடிவத்தைத் தேர்ந்தெடுக்கவும்",
+    "paynowNote": "சிங்கப்பூர் விரைவு கட்டண முறைமை",
+    "perModuleColor": "தனித் தனி மாட்யூல்களுக்கு நிறங்களை எப்படி ஒதுக்குவது",
+    "pickBgColor": "பின்புல நிறத்தைத் தேர்வு செய்ய கிளிக் செய்யவும்",
+    "pickFgColor": "முன்னணி நிறத்தைத் தேர்வு செய்ய கிளிக் செய்யவும்",
+    "pixNote": "பிரேசிலின் உடனடி கட்டண முறைமை",
+    "pixelSnap": "மாட்யூல் இடங்களை பிக்சல் எல்லைகளுக்கு எப்படி ஸ்நாப் செய்வது",
+    "promptpayNote": "தாய்லாந்தின் தேசிய e-பணம் செலுத்தும் முறைமை",
+    "qrVersion": "QR குறியீடு பதிப்பு (0=தானாக, 1-40 அளவும் திறனும் அதிகரிக்கும்)",
+    "quietZone": "QR குறியீட்டைச் சுற்றிய அமைதி பகுதி மார்ஜின் (0-10 மாட்யூல்கள், பரிந்துரை: 4+)",
     "rsvpNote": "ஆன்லைன் RSVP படிவம் அல்லது நிகழ்வு பதிவு பக்கத்திற்கான இணைப்பு",
-    "safetyMode": "பாதுகாப்பு பகுப்பாய்வு முறை - QR குறியீடு வாசிப்புத்திறனை எவ்வளவு கடுமையாக சரிபார்க்க வேண்டும்",
-    "selectContentType": "QR குறியீட்டில் குறியாக்க உள்ளடக்க வகையைத் தேர்ந்தெடுக்கவும்",
-    "shortLinkNote": "டைனமிக்/கண்காணிக்கக்கூடிய QR குறியீடுகளுக்கு URL சுருக்க சேவையைப் பயன்படுத்தவும்",
-    "timingStyle": "நேர வடிவங்களின் பாணி (கிடைமட்ட மற்றும் செங்குத்து கோடுகள்)",
-    "transparentBg": "பின்புற வண்ணத்தைப் பயன்படுத்துவதற்குப் பதிலாக பின்னணியை வெளிப்படையானதாக ஆக்கு",
-    "trimWhitespace": "முன்னால் மற்றும் பின்னால் உள்ள வெள்ளை இடைவெளியை நீக்கு",
-    "upiNote": "இந்தியாவுக்கான ஒருங்கிணைந்த கட்டண இடைமுகம்",
-    "utmCampaign": "பிரச்சார கண்காணிப்புக்கான UTM பிரச்சார அளவுரு",
-    "utmMedium": "பிரச்சார கண்காணிப்புக்கான UTM ஊடக அளவுரு",
-    "utmSource": "பிரச்சார கண்காணிப்புக்கான UTM மூல அளவுரு",
-    "validateInput": "குறியாக்கத்திற்கு முன் உள்ளீட்டு தரவை சரிபார்க்கவும்",
-    "versionTooLow": "⚠️ பதிப்பு மிகக் குறைவு! குறைந்தபட்சம் v{{version}} தேவை"
+    "safetyMode": "பாதுகாப்பு பகுப்பாய்வு முறை - QR குறியீட்டு வாசிப்புத் திறனை எவ்வளவு கடுமையாகச் சரிபார்ப்பது",
+    "selectContentType": "QR குறியீட்டில் குறியாக்க வேண்டிய உள்ளடக்க வகையைத் தேர்ந்தெடுக்கவும்",
+    "shortLinkNote": "டைனமிக்/கண்காணிக்கக்கூடிய QR குறியீடுகளுக்கு URL குறுக்கி சேவையைப் பயன்படுத்தவும்",
+    "timingStyle": "டைமிங் வடிவங்களின் பாணி (கிடை மற்றும் செங்குத்து கோடுகள்)",
+    "transparentBg": "பின்புல நிறத்தைப் பயன்படுத்தாமல் பின்புலத்தை வெளிப்படையாக மாற்றவும்",
+    "trimWhitespace": "முன் மற்றும் பின் வெற்றிடங்களை நீக்கவும்",
+    "upiNote": "இந்தியாவிற்கான ஒருங்கிணைந்த கட்டண இடைமுகம்",
+    "utmCampaign": "பிரச்சார கண்காணிப்பிற்கான UTM campaign அளவுரு",
+    "utmMedium": "பிரச்சார கண்காணிப்பிற்கான UTM medium அளவுரு",
+    "utmSource": "பிரச்சார கண்காணிப்பிற்கான UTM source அளவுரு",
+    "validateInput": "என்கோடு செய்வதற்கு முன் உள்ளீட்டு தரவைச் சரிபார்க்கவும்",
+    "versionTooLow": "⚠️ பதிப்பு மிகவும் குறைவு! குறைந்தபட்சம் v{{version}} தேவை"
   },
   "language": {
     "current": "மொழி",
     "select": "மொழியைத் தேர்ந்தெடுக்கவும்"
   },
   "metadata": {
-    "addCustomField": "தனிப்பயன் புலம் சேர்",
+    "addCustomField": "தனிப்பயன் புலத்தைச் சேர்க்கவும்",
     "author": "ஆசிரியர்",
     "authorPlaceholder": "ஆசிரியர் பெயர்",
     "copyright": "பதிப்புரிமை",
-    "copyrightPlaceholder": "© 2024 நிறுவனத்தின் பெயர்",
-    "customMetadata": "தனிப்பயன் மெட்டாடேட்டா",
-    "description": "விவரணை",
-    "descriptionPlaceholder": "இந்த QR குறியீட்டின் விவரணை...",
-    "includeCreationTime": "உருவாக்க நேரத்தைச் சேர்",
+    "copyrightPlaceholder": "© 2024 நிறுவனப் பெயர்",
+    "customMetadata": "தனிப்பயன் மெட்டாதரவு",
+    "description": "விளக்கம்",
+    "descriptionPlaceholder": "இந்த QR குறியீட்டின் விளக்கம்...",
+    "includeCreationTime": "உருவாக்க நேரத்தைச் சேர்க்கவும்",
     "key": "விசை",
     "keyPlaceholder": "விசை",
     "keywords": "முக்கிய சொற்கள்",
@@ -936,530 +936,530 @@
     "terms": "விதிமுறைகள்"
   },
   "output": {
-    "backgroundOverride": "பின்னணி மேலெழுதல்",
-    "backgroundOverridePlaceholder": "இயல்புநிலைக்கு காலியாக விடு",
+    "backgroundOverride": "பின்புலத்தை மேல் எழுதுதல்",
+    "backgroundOverridePlaceholder": "இயல்புநிலைக்காக காலியாக விடவும்",
     "dithering": "டிதரிங்",
     "dpi": "DPI (அச்சு)",
-    "embedRasterOverlay": "ராஸ்டர் மேலடுக்கை உட்பொதி",
-    "exportAsAdditional": "கூடுதலாக ஏற்றுமதி செய்",
+    "embedRasterOverlay": "ராஸ்டர் ஓவர்லேயை உட்பொதிக்கவும்",
+    "exportAsAdditional": "ஏற்றுமதி செய்ய (கூடுதல்)",
     "filename": "கோப்பு பெயர்",
-    "floydSteinberg": "Floyd-Steinberg",
+    "floydSteinberg": "ஃப்ளாய்ட்-ஸ்டெயின்பெர்க்",
     "format": "வடிவம்",
     "gif": "GIF",
     "gifSettings": "GIF அமைப்புகள்",
     "height": "உயரம்",
-    "includeQuietZone": "அமைதி மண்டலம் சேர்",
+    "includeQuietZone": "அமைதிப் பகுதியைச் சேர்க்கவும்",
     "medianCut": "Median Cut",
     "neuquant": "NeuQuant",
     "none": "எதுவுமில்லை",
     "octree": "Octree",
-    "off": "அணைக்கப்பட்டது",
+    "off": "ஆஃப்",
     "ordered": "வரிசைப்படுத்தப்பட்ட",
     "outputSize": "வெளியீட்டு அளவு",
-    "paletteSize": "தட்டு அளவு",
+    "paletteSize": "வண்ணத் தொகுப்பு அளவு",
     "pdf": "PDF",
     "pixel": "பிக்சல்",
     "png": "PNG",
     "precise": "துல்லியமான",
     "quality": "தரம்",
-    "quantizer": "குவாண்டைசர்",
+    "quantizer": "குவான்டைசர்",
     "shapePrecision": "வடிவ துல்லியம்",
     "svg": "SVG",
     "svgSettings": "SVG அமைப்புகள்",
-    "transparentColor": "வெளிப்படையான வண்ணம்",
-    "transparentColorPlaceholder": "#ffffff அல்லது காலி",
-    "trueVector": "உண்மை வெக்டர்",
-    "trueVectorDesc": "உட்பொதிக்கப்பட்ட ராஸ்டருக்கு பதிலாக பாதைகளைப் பயன்படுத்து",
+    "transparentColor": "வெளிப்படையான நிறம்",
+    "transparentColorPlaceholder": "#ffffff அல்லது காலியாக",
+    "trueVector": "உண்மையான வெக்டர்",
+    "trueVectorDesc": "உட்பொதிக்கப்பட்ட ராஸ்டருக்கு பதிலாக பாதைகளைப் பயன்படுத்தவும்",
     "webp": "WebP",
     "width": "அகலம்"
   },
   "overlay": {
-    "adaptiveThreshold": "தகவமைப்பு வரம்பு",
-    "atkinson": "Atkinson",
+    "adaptiveThreshold": "தழுவும் வரம்பு",
+    "atkinson": "அட்கின்சன்",
     "bayer2": "Bayer 2×2",
     "bayer4": "Bayer 4×4",
     "bayer8": "Bayer 8×8",
     "blend": "கலப்பு",
     "blendMode": "கலப்பு",
-    "blueNoise": "நீல சத்தம்",
-    "blueNoiseErrorDiffusion": "நீல சத்தம் + பிழை பரவல்",
-    "blueNoiseMode": "நீல சத்தம்",
-    "blueNoiseThreshold": "நீல சத்த வரம்பு",
+    "blueNoise": "நீல நொய்ஸ்",
+    "blueNoiseErrorDiffusion": "ப்ளூ நோய்ஸ் + பிழை பரவல்",
+    "blueNoiseMode": "நீல நொய்ஸ்",
+    "blueNoiseThreshold": "ப்ளூ நோய்ஸ் வரம்பு",
     "blur": "மங்கல்",
-    "brightness": "ஒளிர்வு",
+    "brightness": "பிரகாசம்",
     "brightnessCurve": "ஒளிர்வு வளைவு",
-    "brightnessMode": "ஒளிர்வு",
-    "burkes": "Burkes",
+    "brightnessMode": "பிரகாசம்",
+    "burkes": "பர்க்ஸ்",
     "bw": "கருப்பு & வெள்ளை",
     "cellSize": "செல் அளவு",
-    "centerLogo": "மைய லோகோ",
+    "centerLogo": "லோகோவை மையப்படுத்து",
     "centerRule": "மைய விதி",
-    "clusteredDot": "கொத்தான புள்ளி",
-    "colorDither": "வண்ண டிதர்",
-    "colorMode": "வண்ண முறை",
-    "contain": "கொள்",
+    "clusteredDot": "குழுமப் புள்ளி",
+    "colorDither": "நிற டிதரிங்",
+    "colorMode": "நிற முறை",
+    "contain": "உள்ளடக்கு",
     "contrast": "மாறுபாடு",
-    "corsNote": "குறிப்பு: படம் CORS கோரிக்கைகளை அனுமதிக்க வேண்டும்",
+    "corsNote": "குறிப்பு: படம் cross-origin கோரிக்கைகள் (CORS) அனுமதிக்க வேண்டும்",
     "cover": "மூடு",
-    "cropImage": "படத்தை செதுக்கு",
-    "cropSize": "செதுக்கு அளவு",
+    "cropImage": "படத்தை வெட்டு",
+    "cropSize": "வெட்டும் அளவு",
     "diffusionKernel": "பரவல் கர்னல்",
     "disposalHandling": "அகற்றல் கையாளுதல்",
     "dither": "டிதர்",
     "ditherSettings": "டிதர் அமைப்புகள்",
     "ditherStrength": "டிதர் வலிமை",
-    "dithered": "டிதர்",
-    "ditheredMode": "டிதர்",
-    "dotShape": "புள்ளி வடிவம்",
-    "duotone": "இரட்டை தொனி",
-    "duotoneColors": "இரட்டை தொனி வண்ணங்கள்",
-    "duotoneMode": "இரட்டை தொனி",
-    "eccAwareMode": "ECC-விழிப்புணர்வு முறை",
+    "dithered": "டிதரிங் செய்யப்பட்ட",
+    "ditheredMode": "டிதரிங் செய்யப்பட்ட",
+    "dotShape": "புள்ளி வடிவு",
+    "duotone": "டூயோடோன்",
+    "duotoneColors": "இரட்டைநிற நிறங்கள்",
+    "duotoneMode": "டூயோடோன்",
+    "eccAwareMode": "ECC-அறிந்த முறை",
     "edge": "விளிம்பு கண்டறிதல்",
-    "edgeAware": "விளிம்பு-விழிப்புணர்வு",
-    "enableCrop": "செதுக்குதலை இயக்கு",
+    "edgeAware": "விளிம்பு-அறிந்த",
+    "enableCrop": "வெட்டலை இயக்கு",
     "errorDiffusion": "பிழை பரவல்",
-    "extreme": "தீவிர",
-    "extremeMode": "தீவிர",
-    "finderOverride": "கண்டுபிடிப்பான் மேலெழுதல்",
-    "fitMode": "பொருத்த முறை",
-    "flipX": "X புரட்டு",
-    "flipY": "Y புரட்டு",
-    "floydSteinberg": "Floyd-Steinberg",
+    "extreme": "அதிகமான",
+    "extremeMode": "அதிகமான",
+    "finderOverride": "ஃபைண்டர் மேலெழுது",
+    "fitMode": "பொருத்தும் முறை",
+    "flipX": "X-ஐ திருப்பு",
+    "flipY": "Y-ஐ திருப்பு",
+    "floydSteinberg": "ஃப்ளாய்ட்-ஸ்டெயின்பெர்க்",
     "fromUrl": "URL இலிருந்து",
-    "fullColor": "முழு வண்ணம்",
-    "gamma": "காமா",
+    "fullColor": "முழு நிறம்",
+    "gamma": "காம்மா",
     "gapFillMode": "இடைவெளி நிரப்பு",
     "gapfill": "இடைவெளி நிரப்பு",
-    "gaussianNoise": "காஸியன் சத்தம்",
+    "gaussianNoise": "காஸியன் ஒலி",
     "gifSettings": "GIF அமைப்புகள்",
-    "grayscale": "சாம்பல் நிறம்",
-    "gridSize": "கிரிட் அளவு",
-    "halftone": "அரைத்தொனி",
-    "halftoneCenter": "அரைத்தொனி மையம்",
-    "halftoneMode": "அரைத்தொனி",
-    "halftoneSettings": "அரைத்தொனி அமைப்புகள்",
+    "grayscale": "சாம்பல் அளவு",
+    "gridSize": "கட்டம் அளவு",
+    "halftone": "ஹாஃப்டோன்",
+    "halftoneCenter": "ஹால்ஃப்டோன் மையம்",
+    "halftoneMode": "ஹாஃப்டோன்",
+    "halftoneSettings": "ஹால்ஃப்டோன் அமைப்புகள்",
     "highlight": "ஹைலைட்",
-    "hueRotate": "வண்ண சுழற்சி",
-    "imageGifWebp": "படம்/GIF/WebP",
+    "hueRotate": "நிறத் திசை சுழற்று",
+    "imageGifWebp": "படம் / GIF / WebP",
     "imageUrl": "பட URL",
     "intensity": "தீவிரம்",
-    "invert": "படத்தை தலைகீழாக்கு",
-    "jarvisJudiceNinke": "Jarvis-Judice-Ninke",
+    "invert": "பட நிறங்களை புரட்டு",
+    "jarvisJudiceNinke": "ஜார்விஸ்-ஜூடிஸ்-நிங்கே",
     "line": "கோடு",
     "load": "ஏற்று",
     "loadedFromUrl": "URL இலிருந்து ஏற்றப்பட்டது",
     "maxFps": "அதிகபட்ச FPS",
     "mode": "கலப்பு முறை",
-    "mosaic": "மொசைக்",
-    "mosaicMode": "மொசைக்",
-    "neutralColor": "நடுநிலை வண்ணம்",
+    "mosaic": "மொசாயிக்",
+    "mosaicMode": "மொசாயிக்",
+    "neutralColor": "நடுநிலை நிறம்",
     "noFile": "கோப்பு இல்லை",
     "none": "எதுவுமில்லை",
-    "nxnGrid": "N×N கிரிட்",
-    "orderedBayer": "வரிசைப்படுத்தப்பட்ட (Bayer)",
-    "orderedMatrix": "வரிசைப்படுத்தப்பட்ட மேட்ரிக்ஸ்",
-    "original": "அசல்",
-    "outline": "அவுட்லைன்",
-    "outlineMode": "அவுட்லைன்",
-    "perChannel": "ஒவ்வொரு சேனலுக்கும்",
-    "perModule": "ஒவ்வொரு தொகுதிக்கும்",
-    "perceptual": "புலன்சார் (ஒளிர்வு)",
+    "nxnGrid": "N×N கட்டம்",
+    "orderedBayer": "வரிசைப்படுத்தப்பட்டது (Bayer)",
+    "orderedMatrix": "வரிசைப்படுத்திய அணி",
+    "original": "மூல",
+    "outline": "வரைவு",
+    "outlineMode": "வரைவு",
+    "perChannel": "ஒவ்வொரு சேனலுக்கு",
+    "perModule": "ஒவ்வொரு மொட்யூலுக்கு",
+    "perceptual": "உணர்வுப்பூர்வ (ஒளிர்வு)",
     "pixelate": "பிக்சலேட்",
     "pixelateMode": "பிக்சலேட்",
     "posterizeLevels": "போஸ்டரைஸ் நிலைகள்",
-    "preserveAlignment": "சீரமைப்பு வடிவங்களைப் பாதுகா",
-    "preserveFinders": "கண்டுபிடிப்பான் வடிவங்களைப் பாதுகா",
-    "preserveTiming": "நேர வடிவங்களைப் பாதுகா",
-    "protectFormat": "வடிவ தகவலைப் பாதுகா",
-    "protectFormatInfo": "வடிவ தகவலைப் பாதுகா",
-    "protectVersion": "பதிப்பு தகவலைப் பாதுகா",
-    "protectVersionInfo": "பதிப்பு தகவலைப் பாதுகா",
+    "preserveAlignment": "ஒழுங்கமைப்பை பாதுகாக்க",
+    "preserveFinders": "ஃபைண்டர் முறைவடிவங்களை பாதுகாக்க",
+    "preserveTiming": "நேரமிடலை பாதுகாக்க",
+    "protectFormat": "வடிவத் தகவலை பாதுகாக்க",
+    "protectFormatInfo": "வடிவத் தகவலை பாதுகாக்க",
+    "protectVersion": "பதிப்பு தகவலை பாதுகாக்க",
+    "protectVersionInfo": "பதிப்பு தகவலை பாதுகாக்க",
     "protection": "பாதுகாப்பு",
     "removeImage": "அகற்று",
-    "respect": "மதிப்பு",
+    "respect": "மதிக்க",
     "riskBudget": "ஆபத்து பட்ஜெட்",
     "rotation": "சுழற்சி",
     "sCurve": "S-வளைவு",
-    "saturation": "செறிவு",
-    "screenedBlueNoise": "திரையிடப்பட்ட நீல சத்தம்",
+    "saturation": "நிறத் தெறிப்பு",
+    "screenedBlueNoise": "திரையிடப்பட்ட நீல ஒலி",
     "seed": "விதை",
-    "selectImage": "படத்தைத் தேர்ந்தெடு",
-    "sepia": "செபியா",
-    "serpentineScanning": "பாம்பு ஸ்கேனிங்",
+    "selectImage": "படத்தை தேர்வு செய்",
+    "sepia": "சேபியா",
+    "serpentineScanning": "சுருள்-வழி ஸ்கேனிங்",
     "shadow": "நிழல்",
-    "sharpen": "கூர்மை",
-    "sierra": "Sierra",
+    "sharpen": "தெளிவாக்கு",
+    "sierra": "சியேரா",
     "sierra2": "Sierra-2",
     "sierraLite": "Sierra-Lite",
     "simplify": "எளிமைப்படுத்து",
     "stretch": "நீட்டு",
     "strict": "கடுமையான",
-    "stucki": "Stucki",
-    "stylized": "பாணிமயமாக்கப்பட்ட",
-    "subpixel": "சப்பிக்சல்",
-    "subpixelMode": "சப்பிக்சல்",
-    "subpixelSettings": "சப்பிக்சல் அமைப்புகள்",
-    "subpixelSize": "சப்பிக்சல் அளவு",
-    "subpixelSizeMode": "சப்பிக்சல் அளவு",
-    "temporalBlueNoise": "நேர நீல சத்தம்",
+    "stucki": "ஸ்டக்கி",
+    "stylized": "அலங்கரிக்கப்பட்ட",
+    "subpixel": "துணை-பிக்சல்",
+    "subpixelMode": "துணை-பிக்சல்",
+    "subpixelSettings": "உபபிக்சல் அமைப்புகள்",
+    "subpixelSize": "உபபிக்சல் அளவு",
+    "subpixelSizeMode": "உபபிக்சல் அளவு",
+    "temporalBlueNoise": "கால அடிப்படையிலான நீலச் சத்தம்",
     "threshold": "வரம்பு",
     "tileSize": "டைல் அளவு",
-    "triangularNoise": "முக்கோண சத்தம்",
-    "trueDither": "உண்மை டிதர்",
-    "trueDitherMode": "உண்மை டிதர்",
+    "triangularNoise": "முக்கோணச் சத்தம்",
+    "trueDither": "உண்மையான டிதர்",
+    "trueDitherMode": "உண்மையான டிதர்",
     "upload": "பதிவேற்று",
-    "useFrameDelays": "பிரேம் தாமதங்களைப் பயன்படுத்து",
-    "voidCluster": "வெற்றிடம் & கொத்து",
+    "useFrameDelays": "ஃப்ரேம் தாமதங்களை பயன்படுத்து",
+    "voidCluster": "வெற்று & குழுமம்",
     "wave": "அலை",
     "waveMode": "அலை",
-    "whiteNoise": "வெள்ளை சத்தம்"
+    "whiteNoise": "வெள்ளை இரைச்சல்"
   },
   "payload": {
     "accountName": "கணக்கு பெயர்",
     "address": "முகவரி",
-    "algorithm": "அல்காரிதம்",
-    "allDay": "முழு நாள்",
-    "amount": "தொகை (விருப்பம்)",
-    "amountBrl": "தொகை (BRL, விருப்பம்)",
+    "algorithm": "அல்கோரிதம்",
+    "allDay": "முழு நாள் நிகழ்வு",
+    "amount": "தொகை (விருப்பத் தேர்வு)",
+    "amountBrl": "தொகை (BRL, விருப்பத் தேர்வு)",
     "amountEur": "தொகை (EUR)",
-    "amountInr": "தொகை (INR, விருப்பம்)",
-    "amountSgd": "தொகை (SGD, விருப்பம்)",
-    "amountThb": "தொகை (THB, விருப்பம்)",
-    "androidIntent": "Android Intent",
-    "appLink": "ஆப் டீப் இணைப்பு",
-    "assetInventory": "சொத்து/சரக்கு டேக்",
+    "amountInr": "தொகை (INR, விருப்பத் தேர்வு)",
+    "amountSgd": "தொகை (SGD, விருப்பத் தேர்வு)",
+    "amountThb": "தொகை (THB, விருப்பத் தேர்வு)",
+    "androidIntent": "Android இன்டெண்ட்",
+    "appLink": "ஆப் டீப் லிங்க் (Android/iOS)",
+    "assetInventory": "சொத்து/சரக்கு குறிச்சொல்",
     "assetItemId": "சொத்து/பொருள் ID",
     "assetType": "சொத்து வகை",
     "attendeeName": "பங்கேற்பாளர் பெயர்",
     "audio": "ஆடியோ",
     "baseUrl": "அடிப்படை URL",
-    "batchLot": "தொகுப்பு/லாட் (விருப்பம்)",
-    "beneficiaryName": "பயனாளி பெயர்",
-    "bicSwift": "BIC/SWIFT (விருப்பம்)",
-    "birthday": "பிறந்தநாள்",
+    "batchLot": "தொகுதி/லாட் (விருப்பத் தேர்வு)",
+    "beneficiaryName": "பெறுநர் பெயர்",
+    "bicSwift": "BIC/SWIFT (விருப்பத் தேர்வு)",
+    "birthday": "பிறந்த நாள்",
     "bitcoin": "பிட்காயின்",
-    "bizcard": "BizCard (பழைய)",
-    "bluetooth": "புளூடூத்",
-    "body": "உடல்",
-    "bodyOptional": "உடல் (விருப்பம்)",
+    "bizcard": "BizCard (லெகசி)",
+    "bluetooth": "ப்ளூடூத்",
+    "body": "செய்தி உடல்",
+    "bodyOptional": "உடல் (விருப்பத் தேர்வு)",
     "box": "Box",
-    "calendar": "நாள்காட்டி",
-    "calendarName": "நாள்காட்டி பெயர்",
-    "calendarSubscription": "நாள்காட்டி சந்தா",
-    "calendarUrl": "நாள்காட்டி URL (ICS/WebCal)",
-    "campaignContent": "பிரச்சார உள்ளடக்கம் (விருப்பம்)",
+    "calendar": "நாட்காட்டி",
+    "calendarName": "நாட்காட்டி பெயர்",
+    "calendarSubscription": "நாட்காட்டிக்கு சந்தா",
+    "calendarUrl": "நாட்காட்டி URL (ICS/WebCal)",
+    "campaignContent": "பிரச்சார உள்ளடக்கம் (விருப்பத் தேர்வு)",
     "campaignMedium": "பிரச்சார ஊடகம்",
     "campaignName": "பிரச்சார பெயர்",
     "campaignSource": "பிரச்சார மூலம்",
-    "campaignTerm": "பிரச்சார சொல் (விருப்பம்)",
+    "campaignTerm": "பிரச்சார சொல் (விருப்பத் தேர்வு)",
     "city": "நகரம்",
-    "cityOptional": "நகரம் (விருப்பம்)",
-    "cloudLink": "கிளவுட் சேமிப்பக இணைப்பு",
+    "cityOptional": "நகரம் (விருப்பத் தேர்வு)",
+    "cloudLink": "கிளவுட் சேமிப்பு இணைப்பு",
     "company": "நிறுவனம்",
     "contact": "தொடர்பு",
     "contentType": "உள்ளடக்க வகை",
-    "core": "முக்கிய",
+    "core": "மையம்",
     "country": "நாடு",
-    "crypto": "கிரிப்டோ (BTC, ETH, முதலியன)",
-    "cryptocurrency": "கிரிப்டோகரன்சி",
-    "custom": "தனிப்பயன் வடிவம்",
-    "customScheme": "தனிப்பயன் ஸ்கீம்",
+    "crypto": "கிரிப்டோ (BTC, ETH, போன்றவை)",
+    "cryptocurrency": "கிரிப்டோ நாணயம்",
+    "custom": "தனிப்பயன் வடிவு",
+    "customScheme": "தனிப்பயன் திட்டம்",
     "dateTime": "தேதி & நேரம்",
     "deepLinkUrl": "டீப் லிங்க் URL",
-    "description": "விவரணை",
+    "description": "விளக்கம்",
     "deviceAddress": "சாதன முகவரி (MAC)",
-    "deviceName": "சாதன பெயர் (விருப்பம்)",
+    "deviceName": "சாதன பெயர் (விருப்பத் தேர்வு)",
     "digits": "இலக்கங்கள்",
-    "documentsMedia": "ஆவணங்கள் & ஊடகம்",
+    "documentsMedia": "ஆவணங்கள் & மீடியா",
     "dropbox": "Dropbox",
     "email": "மின்னஞ்சல்",
     "emailAddress": "மின்னஞ்சல் முகவரி",
     "encryption": "குறியாக்கம்",
     "end": "முடிவு",
     "endDate": "முடிவு தேதி",
-    "enterprise": "நிறுவன",
-    "epcSepa": "EPC/SEPA (EU)",
-    "equipment": "உபகரணம்",
-    "ethereum": "எதேரியம்",
+    "enterprise": "என்டர்பிரைஸ்",
+    "epcSepa": "EPC / SEPA (EU)",
+    "equipment": "உபகரணங்கள்",
+    "ethereum": "Ethereum",
     "event": "iCalendar நிகழ்வு",
-    "eventName": "நிகழ்வு பெயர்",
+    "eventName": "நிகழ்வின் பெயர்",
     "eventRsvp": "நிகழ்வு RSVP இணைப்பு",
     "eventTicket": "நிகழ்வு டிக்கெட்",
     "expiryDate": "காலாவதி தேதி (விருப்பம்)",
     "facebook": "Facebook",
-    "fallbackUrl": "ஃபால்பேக் URL (விருப்பம்)",
-    "fax": "தொலைநகல்",
+    "fallbackUrl": "மாற்று URL (விருப்பம்)",
+    "fax": "ஃபேக்ஸ்",
     "fileType": "கோப்பு வகை",
-    "fileUrl": "கோப்பு/ஆவணம் URL",
+    "fileUrl": "கோப்பு / ஆவண URL",
     "firstName": "முதல் பெயர்",
-    "forceHttps": "HTTPS கட்டாயப்படுத்து",
+    "forceHttps": "HTTPS-ஐ கட்டாயப்படுத்து",
     "fullName": "முழு பெயர்",
-    "furniture": "மரச்சாமான்",
-    "geo": "புவி இருப்பிடம்",
+    "furniture": "மரச்சாமான்கள்",
+    "geo": "புவியியல் இருப்பிடம்",
     "github": "GitHub",
     "googleDrive": "Google Drive",
     "gs1DigitalLink": "GS1 டிஜிட்டல் இணைப்பு",
-    "gtin": "GTIN (உலகளாவிய வர்த்தக பொருள் எண்)",
-    "hidden": "மறைக்கப்பட்ட நெட்வொர்க்",
+    "gtin": "GTIN (உலகளாவிய வர்த்தகப் பொருள் எண்)",
+    "hidden": "மறைக்கப்பட்ட பிணையம்",
     "homePhone": "வீட்டு தொலைபேசி",
     "iban": "IBAN",
-    "idType": "ID வகை",
+    "idType": "அடையாள வகை",
     "image": "படம்",
     "instagram": "Instagram",
-    "inventoryItem": "சரக்கு பொருள்",
-    "iosUniversal": "iOS யுனிவர்சல்",
-    "issuer": "வழங்குபவர்",
+    "inventoryItem": "சரக்கு உருப்படி",
+    "iosUniversal": "iOS யூனிவர்சல்",
+    "issuer": "வெளியீட்டாளர்",
     "itAsset": "IT சொத்து",
-    "label": "லேபிள் (விருப்பம்)",
+    "label": "குறிச்சொல் (விருப்பம்)",
     "lastName": "கடைசி பெயர்",
     "latitude": "அட்சரேகை",
     "linkType": "இணைப்பு வகை",
     "linkedin": "LinkedIn",
-    "litecoin": "லைட்காயின்",
-    "location": "இருப்பிடம்",
-    "locationNetwork": "இருப்பிடம் & நெட்வொர்க்",
+    "litecoin": "Litecoin",
+    "location": "இடம்",
+    "locationNetwork": "இடம் & பிணையம்",
     "longitude": "தீர்க்கரேகை",
     "lookupUrl": "தேடல் URL (விருப்பம்)",
     "marketing": "சந்தைப்படுத்தல்",
     "marketingTags": "சந்தைப்படுத்தல் குறிச்சொற்கள்",
-    "maxLengthGuard": "அதிகபட்ச நீள பாதுகாப்பு",
+    "maxLengthGuard": "அதிகபட்ச நீளக் காவல்",
     "mecard": "MeCard தொடர்பு",
-    "merchantName": "வணிகர் பெயர் (விருப்பம்)",
+    "merchantName": "வணிகரின் பெயர் (விருப்பம்)",
     "message": "செய்தி",
     "messageOptional": "செய்தி (விருப்பம்)",
     "messagingLink": "WhatsApp / Telegram / Signal",
     "messenger": "Messenger",
     "mobileNumber": "மொபைல் எண்",
-    "mobilePhone": "மொபைல் போன்",
+    "mobilePhone": "மொபைல் தொலைபேசி",
     "name": "பெயர்",
-    "nationalIdTaxId": "தேசிய அடையாளம் / வரி ஐடி",
+    "nationalIdTaxId": "தேசிய அடையாள எண் / வரி அடையாள எண்",
     "nickname": "புனைப்பெயர்",
-    "normalizeNewlines": "புதிய வரிகளை இயல்பாக்கு",
+    "normalizeNewlines": "புதிய வரிகளை ஒரேபோலாக்கு",
     "note": "குறிப்பு",
     "oneDrive": "OneDrive",
-    "openNoPassword": "திறந்தது (கடவுச்சொல் இல்லை)",
+    "openNoPassword": "திற (கடவுச்சொல் இல்லை)",
     "organization": "நிறுவனம்",
     "other": "மற்றவை",
-    "otpAuth": "OTP அங்கீகாரி",
+    "otpAuth": "OTP அத்தாட்சிப்படுத்தி",
     "otpType": "வகை",
     "password": "கடவுச்சொல்",
-    "payeeName": "பெறுபவர் பெயர்",
-    "payments": "கொடுப்பனவுகள்",
+    "payeeName": "பெறுநரின் பெயர்",
+    "payments": "கட்டணங்கள் (Open Specs)",
     "paynow": "PayNow (சிங்கப்பூர்)",
     "phone": "தொலைபேசி",
     "phoneUsername": "தொலைபேசி/பயனர்பெயர்",
     "pix": "PIX (பிரேசில்)",
-    "pixKey": "PIX திறவுகோல்",
-    "plainText": "சாதா உரை",
-    "platform": "பிளாட்பாரம்",
-    "prefilledMessage": "முன்னரே நிரப்பப்பட்ட செய்தி (விருப்பம்)",
-    "profileUrl": "ப்ரொபைல் URL",
-    "promptPayId": "PromptPay ID",
+    "pixKey": "PIX விசை",
+    "plainText": "எளிய உரை",
+    "platform": "தளம்",
+    "prefilledMessage": "முன்கூட்டியே நிரப்பப்பட்ட செய்தி (விருப்பம்)",
+    "profileUrl": "சுயவிவர URL",
+    "promptPayId": "PromptPay ஐடி",
     "promptpay": "PromptPay (தாய்லாந்து)",
     "proxyType": "ப்ராக்சி வகை",
-    "rawData": "மூல தரவு",
+    "rawData": "மூலத் தரவு",
     "recipient": "பெறுநர்",
     "reference": "குறிப்பு",
     "referenceOptional": "குறிப்பு (விருப்பம்)",
-    "resolverDomain": "ரிசால்வர் டொமைன்",
+    "resolverDomain": "Resolver டொமைன்",
     "rsvpUrl": "RSVP URL",
-    "searchQuery": "தேடல் வினவல் (விருப்பம்)",
-    "seat": "இருக்கை",
+    "searchQuery": "தேடல் வினா (விருப்பம்)",
+    "seat": "இருப்பு",
     "secretBase32": "ரகசியம் (Base32)",
     "sectionZone": "பிரிவு/மண்டலம்",
     "securityType": "பாதுகாப்பு வகை",
-    "serialNumber": "வரிசை எண் (விருப்பம்)",
+    "serialNumber": "தொடர் எண் (விருப்பம்)",
     "service": "சேவை",
-    "shortLink": "குறுகிய இணைப்பு",
-    "shortUrl": "குறுகிய URL",
+    "shortLink": "சுருக்க இணைப்பு மறுவழிமாற்றம்",
+    "shortUrl": "சுருக்க URL",
     "signal": "Signal",
     "sms": "SMS",
-    "smsMms": "SMS/MMS",
-    "socialMessaging": "சமூக & செய்தி",
-    "socialProfile": "சமூக ப்ரொபைல்",
+    "smsMms": "SMS / MMS",
+    "socialMessaging": "சமூக மற்றும் செய்தியிடல்",
+    "socialProfile": "சமூக சுயவிவரம்",
     "ssid": "நெட்வொர்க் பெயர் (SSID)",
     "start": "தொடக்கம்",
     "startDate": "தொடக்க தேதி",
-    "state": "மாநிலம்",
+    "state": "மாநிலம்/மாகாணம்",
     "street": "தெரு",
     "subject": "பொருள்",
-    "subjectOptional": "விஷயம் (விருப்பம்)",
+    "subjectOptional": "பொருள் (விருப்பம்)",
     "summary": "நிகழ்வு தலைப்பு",
     "tel": "தொலைபேசி எண்",
     "telegram": "Telegram",
     "text": "உரை உள்ளடக்கம்",
-    "ticketId": "டிக்கெட் ID",
+    "ticketId": "டிக்கெட் ஐடி",
     "tiktok": "TikTok",
-    "title": "பதவி",
+    "title": "தலைப்பு",
     "transactionNote": "பரிவர்த்தனை குறிப்பு (விருப்பம்)",
-    "trimWhitespace": "வெள்ளை இடைவெளியை அகற்று",
+    "trimWhitespace": "வெற்றிடங்களை நீக்கு",
     "uenMobile": "UEN/மொபைல் எண்",
-    "universalLink": "யுனிவர்சல் இணைப்பு",
+    "universalLink": "உலகளாவிய இணைப்பு",
     "upi": "UPI (இந்தியா)",
-    "upiId": "UPI ID (VPA)",
+    "upiId": "UPI ஐடி (VPA)",
     "url": "URL",
     "utmCampaign": "utm_campaign",
     "utmContent": "utm_content",
-    "utmLink": "UTM பிரச்சாரம் இணைப்பு",
+    "utmLink": "UTM பிரச்சார இணைப்பு",
     "utmMedium": "utm_medium",
     "utmSource": "utm_source",
     "utmTerm": "utm_term",
-    "validateInput": "உள்ளீட்டை சரிபார்",
+    "validateInput": "உள்ளீட்டை சரிபார்க்கவும்",
     "validationOptions": "சரிபார்ப்பு விருப்பங்கள்",
     "validationUrl": "சரிபார்ப்பு URL (விருப்பம்)",
     "vcard": "vCard தொடர்பு",
     "vehicle": "வாகனம்",
     "venue": "இடம்",
-    "vevent": "நாள்காட்டி நிகழ்வு",
+    "vevent": "நாட்காட்டி நிகழ்வு",
     "viber": "Viber",
     "video": "வீடியோ",
     "walletAddress": "முகவரி",
-    "website": "இணையதளம்",
+    "website": "வலைத்தளம்",
     "whatsapp": "WhatsApp",
     "wifi": "WiFi",
-    "wifiNetwork": "WiFi நெட்வொர்க்",
+    "wifiNetwork": "WiFi வலைப்பின்னல்",
     "wordDocument": "Word ஆவணம்",
-    "workPhone": "பணி தொலைபேசி",
+    "workPhone": "பணியிட தொலைபேசி",
     "youtube": "YouTube",
-    "zip": "அஞ்சல் குறியீடு"
+    "zip": "ZIP/அஞ்சல் குறியீடு"
   },
   "preview": {
-    "qrCodePreview": "QR குறியீடு முன்னோட்டம் - பதிவிறக்க ஏற்றுமதி கிளிக் செய்க",
-    "simulating": "உருவகப்படுத்துகிறது",
-    "simulationActive": "சுற்றுச்சூழல் உருவகப்படுத்தல் செயலில்"
+    "qrCodePreview": "QR குறியீடு முன்னோட்டம் - பதிவிறக்க Export ஐ கிளிக் செய்யவும்",
+    "simulating": "மாதிரியாக்குகிறது",
+    "simulationActive": "சுற்றுச்சூழல் மாதிரியாக்கம் செயலில் உள்ளது - வெவ்வேறு சூழ்நிலைகளில் QR குறியீடு எப்படி தோன்றலாம் என்பதை முன்னோட்டம் காட்டுகிறது"
   },
   "qr": {
-    "additionalBorder": "அமைதி மண்டலத்திற்கு அப்பால் கூடுதல் எல்லை",
-    "alphanumeric": "எழுத்தெண்",
-    "auto": "தானியங்கி",
-    "autoMin": "தானியங்கி (குறைந்தபட்சம்: {{version}})",
-    "autoOptimal": "தானியங்கி (சிறந்த)",
-    "byteUtf8": "பைட்/UTF-8",
+    "additionalBorder": "Quiet zone க்கு அப்பால் கூடுதல் எல்லை",
+    "alphanumeric": "எண்-எழுத்து",
+    "auto": "தானாக",
+    "autoMin": "தானாக (குறைந்தபட்சம்: {{version}})",
+    "autoOptimal": "தானாக (சிறந்தது)",
+    "byteUtf8": "பைட் / UTF-8",
     "contrastRatio": "{{count}}:1",
-    "encodingMode": "குறியாக்க முறை",
-    "enforceMinQuietZone": "குறைந்தபட்ச அமைதி மண்டலத்தை நடைமுறைப்படுத்து",
-    "enforceMinQuietZoneDesc": "≥4 தொகுதி விளிம்பை உறுதிப்படுத்து",
+    "encodingMode": "குறியீட்டு முறை",
+    "enforceMinQuietZone": "குறைந்தபட்ச அமைதி வலயம் கட்டாயம்",
+    "enforceMinQuietZoneDesc": "குறைந்தது ≥4 மொடியூல் ஓரம் உறுதி செய்",
     "errorCorrection": "பிழை திருத்தம்",
-    "extraBorderModules": "கூடுதல் எல்லை தொகுதிகள்",
-    "high": "H - உயர் (30%)",
-    "kanji": "கான்ஜி",
+    "extraBorderModules": "கூடுதல் எல்லை மொடியூல்கள்",
+    "high": "H - அதிகம் (30%)",
+    "kanji": "Kanji",
     "low": "L - குறைவு (7%)",
-    "margin": "அமைதி மண்டலம் (விளிம்பு)",
+    "margin": "அமைதி வலயம் (ஓரம்)",
     "mask": "மாஸ்க் வடிவம்",
-    "medium": "M - நடுத்தர (15%)",
-    "moduleSize": "தொகுதி அளவு",
+    "medium": "M - நடுத்தரம் (15%)",
+    "moduleSize": "மொடியூல் அளவு",
     "nDegrees": "{{count}}°",
-    "nModules": "{{count}} தொகுதிகள்",
+    "nModules": "{{count}} மொடியூல்கள்",
     "nMs": "{{count}}ms",
     "nPercent": "{{count}}%",
     "nPx": "{{count}}px",
     "numericOnly": "எண்கள் மட்டும்",
-    "quartile": "Q - கால் (25%)",
+    "quartile": "Q - க்வார்டைல் (25%)",
     "version": "பதிப்பு"
   },
   "render": {
-    "addColor": "வண்ணம் சேர்",
-    "alignmentStyle": "சீரமைப்பு வடிவ பாணி",
-    "background": "பின்புற வண்ணம்",
-    "byBrightness": "ஒளிர்வு மூலம்",
-    "byCluster": "கொத்து மூலம்",
-    "byOverlay": "மேலடுக்கு மூலம்",
-    "byPosition": "நிலை மூலம்",
-    "ceil": "மேல்தளம்",
+    "addColor": "நிறம் சேர்க்க",
+    "alignmentStyle": "சீரமைப்பு பேட்டர்ன் பாணி",
+    "background": "பின்னணி",
+    "byBrightness": "ஒளிர்வு அடிப்படையில்",
+    "byCluster": "குழுமம் அடிப்படையில்",
+    "byOverlay": "மேற்படலம் அடிப்படையில்",
+    "byPosition": "இடத்தின்படி",
+    "ceil": "மேல் முழுமைப்படுத்து",
     "circle": "வட்டம்",
     "classic": "கிளாசிக்",
-    "colorPalette": "வண்ண தட்டு",
+    "colorPalette": "நிறத் தொகுப்பு",
     "conic": "கோனிக்",
-    "connected": "இணைக்கப்பட்ட",
-    "contrastGuard": "மாறுபாடு பாதுகாவலர்",
+    "connected": "இணைந்த",
+    "contrastGuard": "மாறுபாடு பாதுகாப்பு",
     "cornerRadius": "மூலை ஆரம்",
-    "crispEdges": "கூர்மையான விளிம்புகள்",
-    "crispEdgesDesc": "கூர்மையான விளிம்புகளுக்கு பிக்சல் ரெண்டரிங் பயன்படுத்து",
-    "dashed": "புள்ளிக்கோடு",
+    "crispEdges": "தெளிவான விளிம்புகள்",
+    "crispEdgesDesc": "கூர்மையான விளிம்புகளுக்காக image-rendering: pixelated பயன்படுத்தவும்",
+    "dashed": "கோடு கோடான",
     "diamond": "வைரம்",
     "dotRotation": "புள்ளி சுழற்சி",
     "dots": "புள்ளிகள்",
-    "eyeInnerStyle": "கண் உள் பாணி",
-    "eyeOuterStyle": "கண் வெளிப்புற பாணி",
-    "eyeScale": "கண் அளவு",
-    "finderStyle": "கண்டுபிடிப்பான் வடிவ பாணி",
-    "floor": "தளம்",
-    "foreground": "முன்புற வண்ணம்",
-    "frameStyle": "சட்ட பாணி",
+    "eyeInnerStyle": "கண் உள்ள்பகுதி பாணி",
+    "eyeOuterStyle": "கண் வெளிப்பகுதி பாணி",
+    "eyeScale": "கண் அளவீடு",
+    "finderStyle": "ஃபைண்டர் பேட்டர்ன் பாணி",
+    "floor": "கீழ் முழுமைப்படுத்து",
+    "foreground": "முன்னணி",
+    "frameStyle": "சட்டத்தின் பாணி",
     "frameText": "சட்ட உரை",
     "gapMode": "இடைவெளி முறை",
     "gradient": "சாய்வு",
     "gradientAngle": "சாய்வு கோணம்",
-    "gradientColors": "வண்ணங்கள்",
+    "gradientColors": "நிறங்கள்",
     "gradientType": "சாய்வு வகை",
-    "inset": "உள்நுழைவு",
+    "inset": "இன்செட்",
     "linear": "நேரியல்",
-    "matchFinder": "கண்டுபிடிப்பான் பொருத்தம்",
-    "matchModule": "தொகுதி பொருத்தம்",
+    "matchFinder": "ஃபைண்டருடன் பொருந்தச்செய்",
+    "matchModule": "மொடியூலுடன் பொருந்தச்செய்",
     "minContrastRatio": "குறைந்தபட்ச மாறுபாடு விகிதம்",
-    "moduleGap": "தொகுதி இடைவெளி",
-    "negativeSpace": "எதிர்மறை இடம்",
+    "moduleGap": "மொடியூல் இடைவெளி",
+    "negativeSpace": "நெகட்டிவ் ஸ்பேஸ்",
     "none": "எதுவுமில்லை",
-    "perModuleColorMode": "ஒவ்வொரு-தொகுதி வண்ண முறை",
+    "perModuleColorMode": "ஒவ்வொரு மொடியூலின் நிற முறை",
     "pixelSnap": "பிக்சல் ஸ்னாப்",
-    "radial": "ஆரை",
-    "round": "வட்டம்",
-    "rounded": "வட்டமான",
-    "roundedFrame": "வட்ட சட்டம்",
-    "shape": "தொகுதி பாணி",
+    "radial": "ரேடியல்",
+    "round": "வட்டமான",
+    "rounded": "வட்டமையாக்கப்பட்ட",
+    "roundedFrame": "வட்டமையாக்கப்பட்ட சட்டம்",
+    "shape": "மொடியூல் பாணி",
     "sharp": "கூர்மையான",
-    "smooth": "மென்மையான",
+    "smooth": "மிருதுவான",
     "solid": "திடமான",
     "square": "சதுரம்",
     "squares": "சதுரங்கள்",
     "sticker": "ஸ்டிக்கர்",
     "stroke": "ஸ்ட்ரோக்",
     "style": "பாணி",
-    "tag": "டேக்",
-    "timingStyle": "நேர வடிவ பாணி",
+    "tag": "குறிச்சொல்",
+    "timingStyle": "டைமிங் மாதிரி பாணி",
     "transparentBg": "வெளிப்படையான பின்னணி"
   },
   "safety": {
     "analysis": "பாதுகாப்பு பகுப்பாய்வு",
-    "autoPickEcc": "தானியங்கி ECC தேர்வு",
-    "autoPickVersion": "தானியங்கி பதிப்பு தேர்வு",
-    "autoReduceIntensity": "தானியங்கி தீவிரம் குறைப்பு",
-    "autoTuning": "தானியங்கி சரிசெய்தல்",
+    "autoPickEcc": "ECC-ஐ தானாகத் தேர்ந்தெடு",
+    "autoPickVersion": "பதிப்பை தானாகத் தேர்ந்தெடு",
+    "autoReduceIntensity": "தீவிரத்தை தானாகக் குறை",
+    "autoTuning": "தானியங்கி சீரமைப்பு",
     "balanced": "சமநிலை",
-    "contrast": "மாறுபாடு",
-    "contrastCheck": "மாறுபாடு சோதனை",
-    "contrastRatio": "மாறுபாடு விகிதம்",
-    "excellent": "சிறப்பு",
-    "fair": "சரியான",
+    "contrast": "மாறுபாட்டு விகிதம்",
+    "contrastCheck": "மாறுபாடு சரிபார்ப்பு",
+    "contrastRatio": "மாறுபாட்டு விகிதம்",
+    "excellent": "மிகச் சிறந்த",
+    "fair": "மிதமான",
     "good": "நல்ல",
-    "lockAlignment": "சீரமைப்பைப் பூட்டு",
-    "lockFinders": "கண்டுபிடிப்பாளர்களைப் பூட்டு",
-    "lockFormat": "வடிவ தகவலைப் பூட்டு",
-    "lockTiming": "நேரத்தைப் பூட்டு",
-    "lockVersion": "பதிப்பு தகவலைப் பூட்டு",
-    "minModuleSize": "குறைந்தபட்ச தொகுதி அளவு",
-    "minQuietZone": "குறைந்தபட்ச அமைதி மண்டலம்",
-    "off": "அணைக்கப்பட்டது",
+    "lockAlignment": "சீரமைப்பை பூட்டு",
+    "lockFinders": "ஃபைண்டர் வடிவங்களை பூட்டு",
+    "lockFormat": "வடிவத் தகவலை பூட்டு",
+    "lockTiming": "டைமிங்கை பூட்டு",
+    "lockVersion": "பதிப்பு தகவலை பூட்டு",
+    "minModuleSize": "குறைந்தபட்ச மொடியூல் அளவு",
+    "minQuietZone": "குறைந்தபட்ச வெற்று ஓரம்",
+    "off": "ஆஃப்",
     "poor": "மோசமான",
     "protectionLocks": "பாதுகாப்பு பூட்டுகள்",
     "qualityAnalysis": "தர பகுப்பாய்வு",
-    "quietZone": "அமைதி மண்டலம்",
+    "quietZone": "வெற்று ஓரம்",
     "safetyMode": "பாதுகாப்பு முறை",
-    "scanability": "ஸ்கேன் மதிப்பெண்",
+    "scanability": "ஸ்கேன் திறன் மதிப்பெண்",
     "showHeatmap": "வெப்ப வரைபடம் காட்டு",
-    "simulateBlur": "மங்கலை உருவகப்படுத்து",
-    "simulateNoise": "சத்தத்தை உருவகப்படுத்து",
-    "simulateRotation": "சுழற்சியை உருவகப்படுத்து",
+    "simulateBlur": "மங்கலாக்கத்தை ஒத்திருப்பு",
+    "simulateNoise": "நோய்ஸை ஒத்திருப்பு",
+    "simulateRotation": "சுழற்சியை ஒத்திருப்பு",
     "strict": "கடுமையான",
-    "untilScannable": "ஸ்கேன் செய்யும் வரை"
+    "untilScannable": "ஸ்கேன் செய்யக்கூடிய வரை"
   },
   "sections": {
     "animation": "அனிமேஷன்",
-    "metadata": "மெட்டாடேட்டா",
+    "metadata": "மேட்டாடேட்டா",
     "output": "வெளியீடு",
-    "overlay": "மேலடுக்கு படம்",
-    "payload": "தரவு",
+    "overlay": "மேலடுக்கம் / படம்",
+    "payload": "பெய்லோடு / தரவு",
     "qrEncoding": "QR குறியாக்கம்",
     "rendering": "ரெண்டரிங்",
     "safety": "பாதுகாப்பு பகுப்பாய்வு",
@@ -1472,22 +1472,22 @@
     "directLink": "நேரடி இணைப்பு",
     "directLinkDesc": "பகிரக்கூடிய URL உருவாக்கு",
     "embedHtml": "HTML உட்பொதி",
-    "embedHtmlDesc": "உட்பொதிக்கும் குறியீடு உருவாக்கு",
+    "embedHtmlDesc": "உட்பொதி குறியீடு உருவாக்கு",
     "encodeAllParams": "அனைத்து அளவுருக்களையும் குறியாக்கு",
-    "encodeAllParamsDesc": "URL இல் அனைத்து அமைப்புகளையும் சேர்",
-    "markdown": "Markdown",
+    "encodeAllParamsDesc": "URL-இல் அனைத்து அமைப்புகளையும் சேர்க்கவும்",
+    "markdown": "மார்க்டவுன்",
     "quickShare": "விரைவு பகிர்வு",
-    "twitter": "X/Twitter",
+    "twitter": "X/ட்விட்டர்",
     "whatsapp": "WhatsApp"
   },
   "tiers": {
     "advanced": "மேம்பட்ட",
     "basic": "அடிப்படை",
     "professional": "புரோ",
-    "watchAdForPro": "24 மணி நேரத்திற்கு Professional அம்சங்களைத் திறக்க விளம்பரத்தைப் பாருங்கள்"
+    "watchAdForPro": "24 மணி நேரத்திற்கு தொழில்முறை அம்சங்களை திறக்க விளம்பரத்தை பாருங்கள்"
   },
   "watermark": {
-    "behindQr": "QR பின்னால்",
+    "behindQr": "QR-க்கு பின்னால்",
     "blendMode": "கலப்பு முறை",
     "bottomLeft": "கீழ் இடது",
     "bottomRight": "கீழ் வலது",
@@ -1498,19 +1498,19 @@
     "fontColor": "எழுத்துரு நிறம்",
     "fontSize": "எழுத்துரு அளவு",
     "image": "படம்",
-    "multiply": "பெருக்கு",
-    "normal": "சாதாரண",
-    "opacity": "ஒளிபுகாநிலை",
-    "overlay": "மேலடுக்கு",
+    "multiply": "பெருக்கல்",
+    "normal": "இயல்பு",
+    "opacity": "ஒளிபுகாமை",
+    "overlay": "மேலோட்டம்",
     "pattern": "வடிவம்",
-    "position": "நிலை",
-    "quietZone": "அமைதி மண்டலம்",
+    "position": "இடம்",
+    "quietZone": "வெற்று ஓரம்",
     "screen": "திரை",
     "text": "உரை",
-    "textPlaceholder": "© நிறுவனத்தின் பெயர்",
+    "textPlaceholder": "© நிறுவனப் பெயர்",
     "topLeft": "மேல் இடது",
     "topRight": "மேல் வலது",
     "type": "வகை",
-    "uploadImage": "படத்தைப் பதிவேற்று"
+    "uploadImage": "படத்தை பதிவேற்று"
   }
 }

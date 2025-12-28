@@ -235,9 +235,6 @@ export function ShareSection() {
               {copiedField === 'link' ? <Check className="h-4 w-4" /> : <Copy className="h-4 w-4" />}
             </Button>
           </div>
-          <p className="text-xs text-muted-foreground">
-            {paramCount} {paramCount === 1 ? 'setting' : 'settings'} encoded in URL
-          </p>
         </div>
       )}
 

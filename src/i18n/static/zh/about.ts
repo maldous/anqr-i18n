@@ -2,66 +2,66 @@ import type { PageDefinition } from '../types'
 import { LAST_UPDATED, CONTACT_EMAIL } from '../types'
 
 export const about: PageDefinition = {
-  title: '关于 ANQR',
-  description: 'ANQR 是一款完全在你的设备上运行的免费二维码生成器——无需账号。',
+  title: 'About ANQR',
+  description: 'ANQR is a free QR code generator that runs entirely on your device — no account required.',
   lastUpdated: LAST_UPDATED,
   sections: [
     {
-      heading: '什么是 ANQR？',
+      heading: 'What is ANQR?',
       paragraphs: [
-        'ANQR（读作“anchor”）是一款免费的二维码生成器，在你的设备上本地运行，可生成用于 URL、文本、Wi-Fi 凭据、联系人卡片、日历事件等的可扫描二维码。',
-        '它面向个人、小型企业、营销人员和开发者，提供强大的二维码工具，无需上传文件或注册账号。你的数据始终保留在你的设备上。',
+        'ANQR (pronounced "anchor") is a free QR code generator that runs locally on your device and creates scannable codes for URLs, text, Wi-Fi credentials, contact cards, calendar events, and more.',
+        'It is built for individuals, small businesses, marketers, and developers who want powerful QR tools without uploading files or signing up. Your data stays on your device.',
       ],
     },
     {
-      heading: '主要功能',
+      heading: 'Key features',
       bullets: [
-        '在你的设备上即时生成二维码——无需上传到服务器，也无需账号。',
-        '可自定义颜色、模块样式、定位图案（finder），并添加图片叠加。',
-        '支持多种导出格式：PNG、SVG、WebP 和动图 GIF。',
-        '提供高级控制：纠错级别、二维码版本、编码模式与掩膜选择。',
-        '提供可扫描性提示与实时预览，帮助二维码在屏幕与印刷中保持可读。',
-        '首次加载后可离线使用——它是一个可在任何地方运行的静态 Web 应用。',
+        'Generate QR codes instantly on your device — no server uploads, no account required.',
+        'Customise colours, module styles, finder patterns, and add image overlays.',
+        'Export in multiple formats: PNG, SVG, WebP, and animated GIF.',
+        'Advanced controls for error correction level, QR version, encoding mode, and mask selection.',
+        'Scan-safety guidance and live preview to help keep codes readable in print and on screens.',
+        'Works offline once loaded — it is a static web app you can run anywhere.',
       ],
     },
     {
-      heading: 'ANQR 如何工作',
+      heading: 'How ANQR works',
       paragraphs: [
-        'ANQR 在浏览器中运行，将你的输入编码为带有 Reed–Solomon 纠错的标准二维码矩阵，然后渲染为你选择的格式。',
-        '所有生成过程都在本地完成。添加叠加或动画时，ANQR 会在外观与可扫描性之间做平衡，确保结果仍然可扫描。',
-        'ANQR 主要面向静态二维码（数据直接写入二维码）。如果你需要动态二维码（可编辑目的地），可以编码你自己的跳转 URL 或短链接。',
+        'ANQR runs in your browser and encodes your input into a standard QR matrix with Reed–Solomon error correction, then renders it to the format you choose.',
+        'All generation happens locally. When you add overlays or animations, ANQR balances styling with scan reliability so the result remains scannable.',
+        'ANQR focuses on static codes (the data is inside the QR). If you need a dynamic code (editable destination), you can encode your own redirect URL or short link.',
       ],
     },
     {
-      heading: '谁在运营 ANQR？',
+      heading: 'Who operates ANQR?',
       paragraphs: [
-        'ANQR 作为独立的网页工具运营。如有问题、需要支持或商务咨询，请使用联系页面或发送邮件至 ' + CONTACT_EMAIL + '。',
+        'ANQR is operated as an independent web tool. For questions, support, or business enquiries, please use the Contact page or email ' + CONTACT_EMAIL + '.',
       ],
     },
     {
-      heading: '广告与我们如何保持免费',
+      heading: 'Advertising and how we stay free',
       paragraphs: [
-        'ANQR 可免费使用，并由广告支持。我们可能通过 Google AdSense 和/或其他广告合作伙伴展示广告。',
-        '广告服务可能使用 Cookie 或类似技术，根据你的兴趣和浏览活动提供个性化广告。你可以在设备设置和 Google 广告设置中管理偏好，并在我们的隐私政策中了解更多信息。',
-        '我们不会出售你编码进二维码的内容。广告有助于覆盖项目运行与持续改进的成本。',
+        'ANQR is free to use and is supported by advertising. We may show ads via Google AdSense and/or other advertising partners.',
+        'Ad providers may use cookies or similar technologies to personalise ads based on your interests and browsing activity. You can manage ad preferences in your device settings and through Google ad settings, and learn more in our Privacy Policy.',
+        'We do not sell the content you encode into QR codes. Ads help cover the cost of running and improving the project.',
       ],
     },
     {
-      heading: '开放标准',
+      heading: 'Open standards',
       paragraphs: [
-        'ANQR 按照 ISO/IEC 18004 标准生成二维码，并力求在各类扫描器、相机与印刷流程中具备广泛兼容性。',
+        'ANQR generates QR codes based on the ISO/IEC 18004 standard and aims for broad compatibility across scanners, cameras, and print workflows.',
       ],
     },
     {
-      heading: '商标声明',
+      heading: 'Trademark notice',
       paragraphs: [
-        'QR Code® 是 DENSO WAVE INCORPORATED 的注册商标。ANQR 与 DENSO WAVE INCORPORATED 无关联，也未获得其认可或赞助。',
+        'QR Code® is a registered trademark of DENSO WAVE INCORPORATED. ANQR is not affiliated with, endorsed by, or sponsored by DENSO WAVE INCORPORATED.',
       ],
     },
     {
-      heading: '反馈与贡献',
+      heading: 'Feedback and contributions',
       paragraphs: [
-        '欢迎反馈、错误报告和功能建议。请通过邮件或联系页面与我们沟通——我们会阅读每条消息，但回复时间可能有所不同。',
+        'We welcome feedback, bug reports, and feature suggestions. Please get in touch via email or the contact page — we read every message, though response times may vary.',
       ],
     },
   ],

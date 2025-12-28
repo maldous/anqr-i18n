@@ -1,1516 +1,1516 @@
 {
   "animation": {
-    "blueNoise": "Blue Noise",
-    "bounce": "Bounce (Ping-Pong)",
-    "colorCycle": "Color Cycle",
-    "crossfade": "Crossfade",
-    "drift": "Drift",
-    "enabled": "Enable Animation",
-    "everyNFrames": "Every {{count}} frame(s)",
-    "exportAllFrames": "Export All Frames",
-    "fadeIn": "Fade In",
-    "flickerSafe": "Flicker Safe",
-    "frameStep": "Frame Step",
-    "interpolation": "Interpolation",
-    "loop": "Loop Animation",
-    "maxFrames": "Max Frames",
-    "moduleJitter": "Module Jitter",
-    "moduleJitterWarning": "⚠️ May affect scannability",
-    "morph": "Morph",
-    "none": "None",
-    "off": "Off",
-    "pattern": "Generated Pattern",
-    "pulse": "Pulse",
-    "randomSeed": "Random Seed",
-    "rotate": "Rotate",
-    "scanline": "Scanline",
-    "shimmer": "Shimmer",
-    "slideIn": "Slide In",
-    "speed": "Frame Speed",
-    "startFrame": "Start Frame",
-    "temporalDither": "Temporal Dither",
-    "wave": "Wave"
+    "blueNoise": "নীল শব্দ",
+    "bounce": "বাউন্স (পিং-পং)",
+    "colorCycle": "রঙ চক্র",
+    "crossfade": "ক্রসফেড",
+    "drift": "ড্রিফট",
+    "enabled": "অ্যানিমেশন সক্ষম করুন",
+    "everyNFrames": "\"প্রতিটি {{গণনা}} ফ্রেম(গুলি)”",
+    "exportAllFrames": "\"সমস্ত ফ্রেম রপ্তানি করুন”",
+    "fadeIn": "ফেইড ইন",
+    "flickerSafe": "ফ্লিকার সেফ",
+    "frameStep": "ফ্রেম ধাপ",
+    "interpolation": "ইন্টারপোলেশন",
+    "loop": "লুপ অ্যানিমেশন",
+    "maxFrames": "সর্বোচ্চ ফ্রেম",
+    "moduleJitter": "মডিউল জিটার",
+    "moduleJitterWarning": "\"⚠️ স্ক্যানযোগ্যতা প্রভাবিত করতে পারে”",
+    "morph": "মর্ফ",
+    "none": "কোনটিই নয়",
+    "off": "বন্ধ",
+    "pattern": "উত্পন্ন প্যাটার্ন",
+    "pulse": "নাড়ি",
+    "randomSeed": "এলোমেলো বীজ",
+    "rotate": "ঘোরান",
+    "scanline": "স্ক্যানলাইন",
+    "shimmer": "ঝিলমিল্লাহ",
+    "slideIn": "স্লাইড ইন",
+    "speed": "ফ্রেম স্পিড",
+    "startFrame": "শুরু ফ্রেম",
+    "temporalDither": "টেম্পোরাল ডিদার",
+    "wave": "তরঙ্গ"
   },
   "languages": {
-    "en": "English",
-    "hi": "Hindi",
-    "zh": "Chinese",
-    "ms": "Malay",
-    "ta": "Tamil",
-    "th": "Thai",
-    "pt": "Portuguese",
-    "id": "Indonesian",
-    "vi": "Vietnamese",
-    "tl": "Tagalog",
-    "ja": "Japanese",
-    "ko": "Korean",
-    "es": "Spanish",
-    "ar": "Arabic",
-    "ru": "Russian",
-    "te": "Telugu",
-    "mr": "Marathi",
-    "bn": "Bengali",
-    "gu": "Gujarati",
-    "kn": "Kannada",
-    "ml": "Malayalam",
-    "pa": "Punjabi"
+    "en": "ইংরেজি",
+    "hi": "হিন্দি",
+    "zh": "চীনা",
+    "ms": "মালয়",
+    "ta": "তামিল",
+    "th": "থাই",
+    "pt": "পর্তুগিজ",
+    "id": "ইন্দোনেশিয়ান",
+    "vi": "ভিয়েতনামী",
+    "tl": "তাগালগ",
+    "ja": "জাপানি",
+    "ko": "কোরিয়ান",
+    "es": "স্প্যানিশ",
+    "ar": "আরবি",
+    "ru": "রাশিয়ান",
+    "te": "তেলেগু",
+    "mr": "\"মারাঠি”",
+    "bn": "বাঙালি",
+    "gu": "\"গুজরাটি”",
+    "kn": "কন্নড়",
+    "ml": "মালায়লাম",
+    "pa": "পাঞ্জাবি"
   },
   "app": {
-    "name": "ANQR",
-    "tagline": "QR Code Generator"
+    "name": "এএনকিউআর",
+    "tagline": "\"কিউআর কোড জেনারেটর”"
   },
   "common": {
-    "allRightsReserved": "All rights reserved",
-    "apply": "Apply",
-    "back": "Back",
-    "cancel": "Cancel",
-    "close": "Close",
-    "copied": "Copied!",
-    "copy": "Copy",
-    "copyright": "© ANQR",
-    "delete": "Delete",
-    "disabled": "Disabled",
-    "download": "Download",
-    "edit": "Edit",
-    "enabled": "Enabled",
-    "error": "Error",
-    "filter": "Filter",
-    "less": "Less",
-    "loading": "Loading...",
-    "more": "More",
-    "next": "Next",
-    "no": "No",
-    "none": "None",
-    "off": "Off",
-    "ok": "OK",
-    "on": "On",
-    "previous": "Previous",
-    "reset": "Reset",
-    "save": "Save",
-    "search": "Search",
-    "select": "Select",
-    "showLess": "Show Less",
-    "showMore": "Show More",
-    "sort": "Sort",
-    "success": "Success",
-    "upload": "Upload",
-    "viewAll": "View All",
-    "yes": "Yes"
+    "allRightsReserved": "\"সর্বস্বত্ব সংরক্ষিত”",
+    "apply": "প্রয়োগ করুন",
+    "back": "পিছনে",
+    "cancel": "বাতিল করুন",
+    "close": "বন্ধ",
+    "copied": "কপি করা!",
+    "copy": "কপি",
+    "copyright": "\"© ANQR”",
+    "delete": "63\t\"মুছুন\"",
+    "disabled": "প্রতিবন্ধী",
+    "download": "ডাউনলোড করুন",
+    "edit": "সম্পাদনা",
+    "enabled": "67\t\"সক্রিয়\"",
+    "error": "ত্রুটি",
+    "filter": "ফিল্টার",
+    "less": "কম",
+    "loading": "লোড হচ্ছে...",
+    "more": "আরও",
+    "next": "পরবর্তী",
+    "no": "না",
+    "none": "কোনটিই নয়",
+    "off": "বন্ধ",
+    "ok": "ঠিক আছে",
+    "on": "চালু",
+    "previous": "পূর্ববর্তী",
+    "reset": "রিসেট",
+    "save": "সংরক্ষণ করুন",
+    "search": "অনুসন্ধান",
+    "select": "নির্বাচন করুন",
+    "showLess": "কম দেখান",
+    "showMore": "আরও দেখান",
+    "sort": "বাছাই",
+    "success": "সাফল্য",
+    "upload": "আপলোড",
+    "viewAll": "\"সব দেখুন”",
+    "yes": "হ্যাঁ"
   },
-  "fileSaveFailed": "Failed to save file: {{error}}",
-  "fileSaved": "Saved to Documents: {{filename}}",
+  "fileSaveFailed": "\"ফাইল সংরক্ষণ করতে ব্যর্থ\t {{error}}”",
+  "fileSaved": "সংরক্ষিত\t {{filename}}”",
   "footer": {
-    "copyright": "© ANQR {{year}}"
+    "copyright": "\"© ANQR {{বছর}}”"
   },
   "gallery": {
-    "all": "All",
-    "animationOverlay": "Animation",
-    "blendModes": "Blend Modes",
-    "collapse": "Collapse",
-    "colorModes": "Color Modes",
-    "colors": "Colors",
-    "contentTypes": "Content Types",
-    "dithering": "Dithering",
-    "encoding": "Encoding",
-    "expand": "Expand",
-    "filter": "Filter",
-    "imageOverlay": "Image Overlay",
+    "all": "সব",
+    "animationOverlay": "অ্যানিমেশন",
+    "blendModes": "ব্লেন্ড মোড",
+    "collapse": "ধসে পড়া",
+    "colorModes": "রঙ মোড",
+    "colors": "রঙ",
+    "contentTypes": "বিষয়বস্তুর ধরণ",
+    "dithering": "অস্থিরতা",
+    "encoding": "এনকোডিং",
+    "expand": "প্রসারিত করুন",
+    "filter": "ফিল্টার",
+    "imageOverlay": "ছবির ওভারলে",
     "items": {
       "anim-blue-noise": {
-        "description": "Blue noise threshold with animation",
-        "title": "Animated Blue Noise"
+        "description": "অ্যানিমেশন সহ নীল শব্দের থ্রেশহোল্ড",
+        "title": "অ্যানিমেটেড ব্লু নয়েজ"
       },
       "anim-blue-noise-i100": {
-        "description": "Animated blue noise at 100%",
-        "title": "Blue Noise 100%"
+        "description": "১০০% অ্যানিমেটেড নীল শব্দ",
+        "title": "নীল শব্দ ১০০%"
       },
       "anim-blue-noise-i50": {
-        "description": "Animated blue noise at 50%",
-        "title": "Blue Noise 50%"
+        "description": "\"৫০% অ্যানিমেটেড নীল শব্দ”",
+        "title": "নীল শব্দ ৫০%"
       },
       "anim-blue-noise-i75": {
-        "description": "Animated blue noise at 75%",
-        "title": "Blue Noise 75%"
+        "description": "\"৭৫% অ্যানিমেটেড নীল শব্দ”",
+        "title": "নীল শব্দ ৭৫%"
       },
       "anim-brightness": {
-        "description": "Brightness with animation",
-        "title": "Animated Brightness"
+        "description": "অ্যানিমেশনের সাথে উজ্জ্বলতা",
+        "title": "অ্যানিমেটেড উজ্জ্বলতা"
       },
       "anim-colormode-bw": {
-        "description": "B&W animated overlay",
-        "title": "Animated B&W"
+        "description": "\"কালো ও সাদা অ্যানিমেটেড ওভারলে”",
+        "title": "অ্যানিমেটেড কালো ও সাদা"
       },
       "anim-colormode-color": {
-        "description": "Color animated overlay",
-        "title": "Animated Color"
+        "description": "\"রঙিন অ্যানিমেটেড ওভারলে”",
+        "title": "অ্যানিমেটেড রঙ"
       },
       "anim-colormode-grayscale": {
-        "description": "Grayscale animated overlay",
-        "title": "Animated Grayscale"
+        "description": "\"গ্রেস্কেল অ্যানিমেটেড ওভারলে”",
+        "title": "অ্যানিমেটেড গ্রেস্কেল"
       },
       "anim-dithered": {
-        "description": "Error diffusion with animation",
-        "title": "Animated Dithered"
+        "description": "অ্যানিমেশনের সাথে ত্রুটি ছড়িয়ে পড়া",
+        "title": "অ্যানিমেটেড ডিদারড"
       },
       "anim-duotone": {
-        "description": "Duotone with animation",
-        "title": "Animated Duotone"
+        "description": "অ্যানিমেশন সহ ডুওটোন",
+        "title": "অ্যানিমেটেড ডুওটোন"
       },
       "anim-halftone": {
-        "description": "Halftone dots with animation",
-        "title": "Animated Halftone"
+        "description": "অ্যানিমেশন সহ হাফটোন ডটস",
+        "title": "অ্যানিমেটেড হাফটোন"
       },
       "anim-mosaic": {
-        "description": "Mosaic with animation",
-        "title": "Animated Mosaic"
+        "description": "অ্যানিমেশন সহ মোজাইক",
+        "title": "অ্যানিমেটেড মোজাইক"
       },
       "blend-classic": {
-        "description": "Dithered overlay with classic palette",
-        "title": "Classic Blend"
+        "description": "\"ক্লাসিক প্যালেট সহ ডাইথার্ড ওভারলে”",
+        "title": "ক্লাসিক মিশ্রণ"
       },
       "blend-forest": {
-        "description": "Dithered overlay with forest palette",
-        "title": "Forest Blend"
+        "description": "\"বন প্যালেট সহ বিচ্ছিন্ন ওভারলে”",
+        "title": "বন মিশ্রণ"
       },
       "blend-navy": {
-        "description": "Dithered overlay with navy palette",
-        "title": "Navy Blend"
+        "description": "\"নেভি প্যালেট সহ ডাইথার্ড ওভারলে”",
+        "title": "নৌবাহিনীর মিশ্রণ"
       },
       "blend-wine": {
-        "description": "Dithered overlay with wine palette",
-        "title": "Wine Blend"
+        "description": "ওয়াইন প্যালেট সহ ডাইথার্ড ওভারলে",
+        "title": "ওয়াইন ব্লেন্ড"
       },
       "cmode-blue-noise-bw": {
-        "description": "Blue Noise in B&W",
-        "title": "Blue Noise B&W"
+        "description": "কালো ও সাদা রঙের নীল আওয়াজ",
+        "title": "নীল নয়েজ কালো ও সাদা"
       },
       "cmode-blue-noise-color": {
-        "description": "Blue Noise in Color",
-        "title": "Blue Noise Color"
+        "description": "রঙে নীল গোলমাল",
+        "title": "নীল শব্দের রঙ"
       },
       "cmode-dithered-color": {
-        "description": "Dithered in Color",
-        "title": "Dithered Color"
+        "description": "রঙে বিকৃত",
+        "title": "বিচ্ছিন্ন রঙ"
       },
       "cmode-dithered-grayscale": {
-        "description": "Dithered in Grayscale",
-        "title": "Dithered Grayscale"
+        "description": "গ্রেস্কেলে ম্লান",
+        "title": "বিচ্ছিন্ন গ্রেস্কেল"
       },
       "cmode-halftone-bw": {
-        "description": "Halftone in B&W",
-        "title": "Halftone B&W"
+        "description": "কালো ও সাদা রঙের হালফোন",
+        "title": "হালফোন বি অ্যান্ড ও"
       },
       "cmode-halftone-color": {
-        "description": "Halftone in Color",
-        "title": "Halftone Color"
+        "description": "রঙে হাফটোন",
+        "title": "হালফোন রঙ"
       },
       "color-coral": {
-        "description": "#e85d04 on #ffe8d6",
-        "title": "Coral"
+        "description": "\"#ffe8d6 তে #e85d04”",
+        "title": "প্রবাল"
       },
       "color-coral-dots": {
-        "description": "Coral with dot modules",
-        "title": "Coral Dots"
+        "description": "ডট মডিউল সহ প্রবাল",
+        "title": "প্রবাল বিন্দু"
       },
       "color-crimson": {
-        "description": "#9d0208 on #ffccd5",
-        "title": "Crimson"
+        "description": "\"#9d0208 #ffccd5 তে”",
+        "title": "ক্রিমসন"
       },
       "color-forest": {
-        "description": "#1b4332 on #d8f3dc",
-        "title": "Forest"
+        "description": "\"#d8f3dc-তে #1b4332”",
+        "title": "বন"
       },
       "color-forest-dots": {
-        "description": "Forest with dot modules",
-        "title": "Forest Dots"
+        "description": "ডট মডিউল সহ বন",
+        "title": "বন বিন্দু"
       },
       "color-gold": {
-        "description": "#7f5539 on #ffe8cc",
-        "title": "Gold"
+        "description": "\"#ffe8cc তে #৭f৫৫৩৯”",
+        "title": "সোনা"
       },
       "color-inverted": {
-        "description": "#ffffff on #000000",
-        "title": "Inverted"
+        "description": "\"#০০০০০০০-এ #ffffff”",
+        "title": "উল্টানো"
       },
       "color-midnight": {
-        "description": "#1a1a2e on #eef1ff",
-        "title": "Midnight"
+        "description": "\"#eef1ff-এ #1a1a2e”",
+        "title": "মধ্যরাত"
       },
       "color-midnight-dots": {
-        "description": "Midnight with dot modules",
-        "title": "Midnight Dots"
+        "description": "\"ডট মডিউল সহ মধ্যরাত্রি”",
+        "title": "মধ্যরাতের বিন্দু"
       },
       "color-navy": {
-        "description": "#001d3d on #a2d2ff",
-        "title": "Navy"
+        "description": "\"#001d3d on #a2d2ff”",
+        "title": "নৌবাহিনী"
       },
       "color-ocean": {
-        "description": "#023e8a on #caf0f8",
-        "title": "Ocean"
+        "description": "\"#023e8a অন #caf0f8”",
+        "title": "মহাসাগর"
       },
       "color-ocean-dots": {
-        "description": "Ocean with dot modules",
-        "title": "Ocean Dots"
+        "description": "ডট মডিউল সহ মহাসাগর",
+        "title": "সমুদ্র বিন্দু"
       },
       "color-royal": {
-        "description": "#4a0080 on #f5e6ff",
-        "title": "Royal"
+        "description": "\"#f5e6ff-এ #4a0080”",
+        "title": "রাজকীয়"
       },
       "color-royal-dots": {
-        "description": "Royal with dot modules",
-        "title": "Royal Dots"
+        "description": "ডট মডিউল সহ রয়েল",
+        "title": "রাজকীয় বিন্দু"
       },
       "color-slate": {
-        "description": "#343a40 on #e9ecef",
-        "title": "Slate"
+        "description": "\"#e9ecef-এ #৩৪৩a৪০”",
+        "title": "স্লেট"
       },
       "color-sunset": {
-        "description": "#bf0603 on #fff3b0",
-        "title": "Sunset"
+        "description": "\"#fff3b0 তে #bf0603”",
+        "title": "সূর্যাস্ত"
       },
       "color-sunset-dots": {
-        "description": "Sunset with dot modules",
-        "title": "Sunset Dots"
+        "description": "বিন্দু মডিউল সহ সূর্যাস্ত",
+        "title": "সূর্যাস্ত বিন্দু"
       },
       "color-teal": {
-        "description": "#006d77 on #e0f4f5",
-        "title": "Teal"
+        "description": "\"#006d77 on #e0f4f5”",
+        "title": "টিল"
       },
       "combo-anim-dots-halftone": {
-        "description": "Animated halftone with dot modules",
-        "title": "Animated Dots + Halftone"
+        "description": "\"ডট মডিউল সহ অ্যানিমেটেড হাফটোন”",
+        "title": "অ্যানিমেটেড ডটস + হালফটোন"
       },
       "combo-anim-rounded-blue-noise": {
-        "description": "Animated blue noise with rounded",
-        "title": "Animated Rounded + Blue Noise"
+        "description": "গোলাকার অ্যানিমেটেড নীল শব্দ",
+        "title": "\"অ্যানিমেটেড গোলাকার + নীল শব্দ”"
       },
       "combo-connected-pixelate-teal": {
-        "description": "Pixelated overlay with connected modules",
-        "title": "Connected + Pixelate Teal"
+        "description": "\"সংযুক্ত মডিউল সহ পিক্সেলেটেড ওভারলে”",
+        "title": "সংযুক্ত + পিক্সেলেট টিল"
       },
       "combo-connected-square": {
-        "description": "Connected modules with square finders",
-        "title": "Connected + Square"
+        "description": "বর্গাকার সন্ধানকারীদের সাথে সংযুক্ত মডিউল",
+        "title": "সংযুক্ত + বর্গক্ষেত্র"
       },
       "combo-connected-wave-ocean": {
-        "description": "Connected modules with wave effect",
-        "title": "Connected + Wave Ocean"
+        "description": "তরঙ্গ প্রভাব সহ সংযুক্ত মডিউল",
+        "title": "সংযুক্ত + তরঙ্গ মহাসাগর"
       },
       "combo-diamond-blue-noise-navy": {
-        "description": "Diamond modules with blue noise",
-        "title": "Diamond + Blue Noise Navy"
+        "description": "নীল শব্দ সহ হীরার মডিউল",
+        "title": "ডায়মন্ড + ব্লু নয়েজ নেভি"
       },
       "combo-diamond-duotone-crimson": {
-        "description": "Duotone effect with diamond modules",
-        "title": "Diamond + Duotone Crimson"
+        "description": "ডায়মন্ড মডিউল সহ ডুওটোন প্রভাব",
+        "title": "ডায়মন্ড + ডুওটোন ক্রিমসন"
       },
       "combo-diamond-rounded": {
-        "description": "Diamond modules with rounded finders",
-        "title": "Diamond + Rounded"
+        "description": "গোলাকার ফাইন্ডার সহ হীরার মডিউল",
+        "title": "হীরা + গোলাকার"
       },
       "combo-dots-circle": {
-        "description": "Dots modules with circle finders",
-        "title": "Dots + Circle"
+        "description": "বৃত্ত সন্ধানকারী সহ বিন্দু মডিউল",
+        "title": "বিন্দু + বৃত্ত"
       },
       "combo-dots-extreme-forest": {
-        "description": "Maximum visibility with dots",
-        "title": "Dots + Extreme Forest"
+        "description": "বিন্দু সহ সর্বাধিক দৃশ্যমানতা",
+        "title": "ডটস + এক্সট্রিম ফরেস্ট"
       },
       "combo-dots-halftone-gold": {
-        "description": "Dot modules with halftone overlay",
-        "title": "Dots + Halftone Gold"
+        "description": "হাফটোন ওভারলে সহ ডট মডিউল",
+        "title": "ডটস + হাফটোন গোল্ড"
       },
       "combo-dots-outline-slate": {
-        "description": "Edge detection with dot modules",
-        "title": "Dots + Outline Slate"
+        "description": "মডিউল দিয়ে প্রান্ত সনাক্তকরণ\"",
+        "title": "বিন্দু + রূপরেখা স্লেট"
       },
       "combo-rounded-dithered-royal": {
-        "description": "Classic dithered with rounded style",
-        "title": "Rounded + Dithered Royal"
+        "description": "গোলাকার স্টাইলের সাথে ক্লাসিক ডিদারড",
+        "title": "গোলাকার + ডাইথার্ড রয়েল"
       },
       "combo-rounded-mosaic-sunset": {
-        "description": "Rounded modules with mosaic overlay",
-        "title": "Rounded + Mosaic Sunset"
+        "description": "\"মোজাইক ওভারলে সহ গোলাকার মডিউল”",
+        "title": "গোলাকার + মোজাইক সূর্যাস্ত"
       },
       "combo-rounded-rounded": {
-        "description": "Rounded modules with rounded finders",
-        "title": "Rounded + Rounded"
+        "description": "ফাইন্ডার সহ গোলাকার মডিউল\"",
+        "title": "+ গোলাকার\""
       },
       "combo-rounded-subpixel-coral": {
-        "description": "High-detail subpixel rendering",
-        "title": "Rounded + Subpixel Coral"
+        "description": "\"উচ্চ-বিস্তারিত সাবপিক্সেল রেন্ডারিং”",
+        "title": "\"গোলাকার + সাবপিক্সেল কোরাল”"
       },
       "content-email": {
-        "description": "Mailto link with coral colors",
-        "title": "Email Address"
+        "description": "প্রবাল রঙের সাথে মেলটো লিঙ্ক",
+        "title": "\"ইমেল ঠিকানা”"
       },
       "content-event": {
-        "description": "iCal event with rounded royal",
-        "title": "Calendar Event"
+        "description": "গোলাকার রাজকীয় সহ আইক্যাল ইভেন্ট",
+        "title": "ইভেন্ট\""
       },
       "content-geo": {
-        "description": "Map coords with connected gold",
-        "title": "Geo Location"
+        "description": "সোনার সাথে মানচিত্রের স্থানাঙ্ক\"",
+        "title": "জিও লোকেশন"
       },
       "content-sms": {
-        "description": "Pre-filled SMS with diamond teal",
-        "title": "SMS Message"
+        "description": "টিল দিয়ে আগে থেকে ভরা এসএমএস”",
+        "title": "\"এসএমএস বার্তা”"
       },
       "content-vcard": {
-        "description": "Contact card with rounded navy style",
-        "title": "vCard Contact"
+        "description": "নেভি স্টাইলের সাথে যোগাযোগ কার্ড”",
+        "title": "\"ভিকার্ড যোগাযোগ”"
       },
       "content-wifi": {
-        "description": "WiFi config with dots forest green",
-        "title": "WiFi Network"
+        "description": "ফরেস্ট গ্রিন সহ ওয়াইফাই কনফিগারেশন”",
+        "title": "ওয়াইফাই নেটওয়ার্ক"
       },
       "dither-adaptive-threshold": {
-        "description": "Adaptive threshold",
-        "title": "Adaptive"
+        "description": "থ্রেশহোল্ড\"",
+        "title": "228\t\"অভিযোজিত\""
       },
       "dither-blue-noise": {
-        "description": "Blue noise threshold",
-        "title": "Blue Noise"
+        "description": "শব্দের সীমা\"",
+        "title": "নীল শব্দ"
       },
       "dither-blue-noise-error-diffusion": {
-        "description": "Hybrid blue noise",
-        "title": "Blue Noise + Error"
+        "description": "নীল শব্দ\"",
+        "title": "নীল শব্দ + ত্রুটি"
       },
       "dither-error-diffusion": {
-        "description": "Floyd-Steinberg style",
-        "title": "Error Diffusion"
+        "description": "ফ্লয়েড-স্টেইনবার্গ স্টাইল",
+        "title": "ত্রুটি বিস্তার"
       },
       "dither-kernel-atkinson": {
-        "description": "Atkinson error diffusion",
-        "title": "Atkinson"
+        "description": "অ্যাটকিনসন ত্রুটি বিস্তার",
+        "title": "অ্যাটকিনসন"
       },
       "dither-kernel-burkes": {
-        "description": "Burkes error diffusion",
-        "title": "Burkes"
+        "description": "বার্কস ত্রুটি বিস্তার",
+        "title": "বার্কস"
       },
       "dither-kernel-floyd-steinberg": {
-        "description": "Floyd-Steinberg error diffusion",
-        "title": "Floyd-Steinberg"
+        "description": "ফ্লয়েড-স্টেইনবার্গ ত্রুটি বিস্তার",
+        "title": "ফ্লয়েড-স্টেইনবার্গ"
       },
       "dither-kernel-jarvis-judice-ninke": {
-        "description": "Jarvis-Judice-Ninke error diffusion",
-        "title": "Jarvis-Judice-Ninke"
+        "description": "ত্রুটির বিস্তার\"",
+        "title": "জারভিস-জুডিস-নিঙ্কে"
       },
       "dither-kernel-sierra": {
-        "description": "Sierra error diffusion",
-        "title": "Sierra"
+        "description": "ত্রুটি বিস্তার\"",
+        "title": "সিয়েরা"
       },
       "dither-kernel-stucki": {
-        "description": "Stucki error diffusion",
-        "title": "Stucki"
+        "description": "এরর ডিফিউশন\"",
+        "title": "স্টুকি"
       },
       "dither-ordered-bayer": {
-        "description": "Bayer matrix dithering",
-        "title": "Ordered Bayer"
+        "description": "বেয়ার ম্যাট্রিক্সের বিচ্যুতি",
+        "title": "অর্ডারড বেয়ার"
       },
       "dither-perceptual": {
-        "description": "Luminance-weighted",
-        "title": "Perceptual"
+        "description": "আলোক-ভারিত",
+        "title": "ইন্দ্রিয়গ্রাহ্য"
       },
       "dither-strength-100": {
-        "description": "Dither strength at 100%",
-        "title": "Strength 100%"
+        "description": "১০০% এ শক্তি হ্রাস করুন",
+        "title": "শক্তি ১০০%"
       },
       "dither-strength-20": {
-        "description": "Dither strength at 20%",
-        "title": "Strength 20%"
+        "description": "\"২০% এ শক্তি কমানো”",
+        "title": "শক্তি ২০%"
       },
       "dither-strength-40": {
-        "description": "Dither strength at 40%",
-        "title": "Strength 40%"
+        "description": "\"৪০% এ শক্তি হ্রাস করুন”",
+        "title": "শক্তি ৪০%"
       },
       "dither-strength-60": {
-        "description": "Dither strength at 60%",
-        "title": "Strength 60%"
+        "description": "\"৬০% এ শক্তি হ্রাস করুন”",
+        "title": "\"শক্তি ৬০%”"
       },
       "dither-strength-80": {
-        "description": "Dither strength at 80%",
-        "title": "Strength 80%"
+        "description": "\"৮০% এ শক্তি হ্রাস”",
+        "title": "শক্তি ৮০%"
       },
       "dither-white-noise": {
-        "description": "Random noise threshold",
-        "title": "White Noise"
+        "description": "শব্দের সীমা\"",
+        "title": "সাদা গোলমাল"
       },
       "enc-ecc-h": {
-        "description": "30% error correction",
-        "title": "ECC High"
+        "description": "\"৩০% ত্রুটি সংশোধন”",
+        "title": "ইসিসি উচ্চ"
       },
       "enc-ecc-l": {
-        "description": "7% error correction",
-        "title": "ECC Low"
+        "description": "\"৭% ত্রুটি সংশোধন”",
+        "title": "\"ইসিসি লো”"
       },
       "enc-ecc-m": {
-        "description": "15% error correction",
-        "title": "ECC Medium"
+        "description": "\"১৫% ত্রুটি সংশোধন”",
+        "title": "\"ইসিসি মাধ্যম”"
       },
       "enc-ecc-q": {
-        "description": "25% error correction",
-        "title": "ECC Quartile"
+        "description": "\"২৫% ত্রুটি সংশোধন”",
+        "title": "ইসিসি কোয়ার্টাইল"
       },
       "enc-v0": {
-        "description": "Automatic version selection",
-        "title": "Auto Version"
+        "description": "সংস্করণ নির্বাচন\"",
+        "title": "ভার্সন\""
       },
       "enc-v12": {
-        "description": "Version 12 QR code",
-        "title": "Version 12"
+        "description": "\"সংস্করণ ১২ QR কোড”",
+        "title": "\"সংস্করণ ১২”"
       },
       "enc-v6": {
-        "description": "Best for overlays (no center eye)",
-        "title": "Version 6"
+        "description": "(কেন্দ্রিক চোখ ছাড়া) জন্য সেরা”",
+        "title": "\"সংস্করণ ৬”"
       },
       "enc-v6-h": {
-        "description": "Version 6 with high error correction",
-        "title": "V6 + ECC High"
+        "description": "ত্রুটি সংশোধন সহ সংস্করণ 6”",
+        "title": "\"V6 + ECC উচ্চ”"
       },
       "enc-v6-l": {
-        "description": "Version 6 with low error correction",
-        "title": "V6 + ECC Low"
+        "description": "ত্রুটি সংশোধন সহ সংস্করণ 6”",
+        "title": "\"V6 + ECC লো”"
       },
       "enc-v9": {
-        "description": "Version 9 QR code",
-        "title": "Version 9"
+        "description": "\"সংস্করণ ৯ QR কোড”",
+        "title": "\"সংস্করণ ৯”"
       },
       "enc-v9-h": {
-        "description": "Version 9 with high error correction",
-        "title": "V9 + ECC High"
+        "description": "ত্রুটি সংশোধন সহ সংস্করণ 9”",
+        "title": "\"V9 + ECC উচ্চ”"
       },
       "enc-v9-l": {
-        "description": "Version 9 with low error correction",
-        "title": "V9 + ECC Low"
+        "description": "ত্রুটি সংশোধন সহ সংস্করণ 9”",
+        "title": "\"V9 + ECC লো”"
       },
       "finder-circle": {
-        "description": "Circle finder pattern",
-        "title": "Circle Finders"
+        "description": "সন্ধানকারী প্যাটার্ন\"",
+        "title": "সন্ধানকারী\""
       },
       "finder-rounded": {
-        "description": "Rounded finder pattern",
-        "title": "Rounded Finders"
+        "description": "সন্ধানকারী প্যাটার্ন\"",
+        "title": "সন্ধানকারী\""
       },
       "finder-square": {
-        "description": "Square finder pattern",
-        "title": "Square Finders"
+        "description": "ফাইন্ডার প্যাটার্ন\"",
+        "title": "ফাইন্ডার\""
       },
       "halftone-classic": {
-        "description": "Halftone with classic palette",
-        "title": "Classic Halftone"
+        "description": "প্যালেট সহ হালফটোন\"",
+        "title": "ক্লাসিক হাফটোন"
       },
       "halftone-forest": {
-        "description": "Halftone with forest palette",
-        "title": "Forest Halftone"
+        "description": "প্যালেট সহ হালফটোন\"",
+        "title": "বন হাফটোন"
       },
       "halftone-navy": {
-        "description": "Halftone with navy palette",
-        "title": "Navy Halftone"
+        "description": "প্যালেট সহ হালফটোন\"",
+        "title": "নৌবাহিনীর হাফটোন"
       },
       "halftone-wine": {
-        "description": "Halftone with wine palette",
-        "title": "Wine Halftone"
+        "description": "প্যালেট সহ হালফটোন\"",
+        "title": "ওয়াইন হাফটোন"
       },
       "img-blend": {
-        "description": "Color blend overlay",
-        "title": "Blend Mode"
+        "description": "রঙের মিশ্রণ ওভারলে",
+        "title": "মোড\""
       },
       "img-blue-noise": {
-        "description": "Blue noise threshold dithering",
-        "title": "Blue Noise"
+        "description": "শব্দের প্রান্তিকতা হ্রাস\"",
+        "title": "নীল শব্দ"
       },
       "img-brightness": {
-        "description": "Brightness-based modules",
-        "title": "Brightness"
+        "description": "মডিউল”",
+        "title": "উজ্জ্বলতা"
       },
       "img-colormode-bw": {
-        "description": "Black & white processing",
-        "title": "Black & White"
+        "description": "ও সাদা প্রক্রিয়াকরণ\"",
+        "title": "কালো ও সাদা"
       },
       "img-colormode-color": {
-        "description": "Color processing",
-        "title": "Color"
+        "description": "প্রক্রিয়াকরণ\"",
+        "title": "রঙ"
       },
       "img-colormode-grayscale": {
-        "description": "Grayscale processing",
-        "title": "Grayscale"
+        "description": "স্কেল প্রক্রিয়াকরণ\"",
+        "title": "ধূসর স্কেল"
       },
       "img-dithered": {
-        "description": "Error diffusion dithering",
-        "title": "Dithered"
+        "description": "বিচ্ছিন্নকরণে ত্রুটি”",
+        "title": "অস্থির"
       },
       "img-dithered-i100": {
-        "description": "Dithered at 100% intensity",
-        "title": "Dithered 100%"
+        "description": "\"১০০% তীব্রতায় নিস্তেজ”",
+        "title": "১০০% বিচ্ছিন্ন"
       },
       "img-dithered-i50": {
-        "description": "Dithered at 50% intensity",
-        "title": "Dithered 50%"
+        "description": "তীব্রতায় নিস্তেজ”",
+        "title": "\"৫০% বিচ্ছিন্ন”"
       },
       "img-dithered-i75": {
-        "description": "Dithered at 75% intensity",
-        "title": "Dithered 75%"
+        "description": "\"৭৫% তীব্রতায় নিস্তেজ”",
+        "title": "\"৭৫% বিচ্ছিন্ন”"
       },
       "img-duotone": {
-        "description": "Two-tone color mapping",
-        "title": "Duotone"
+        "description": "টু-টোন রঙের ম্যাপিং",
+        "title": "ডুওটোন"
       },
       "img-extreme": {
-        "description": "Maximum image visibility",
-        "title": "Extreme"
+        "description": "\"সর্বোচ্চ ছবির দৃশ্যমানতা”",
+        "title": "চরম"
       },
       "img-halftone": {
-        "description": "Classic halftone dots",
-        "title": "Halftone"
+        "description": "ক্লাসিক হাফটোন ডটস",
+        "title": "হালফটোন"
       },
       "img-mosaic": {
-        "description": "Mosaic tile effect",
-        "title": "Mosaic"
+        "description": "মোজাইক টাইল প্রভাব",
+        "title": "মোজাইক"
       },
       "img-outline": {
-        "description": "Edge detection overlay",
-        "title": "Outline"
+        "description": "ডিটেকশন ওভারলে”",
+        "title": "রূপরেখা"
       },
       "img-pixelate": {
-        "description": "Pixelated overlay effect",
-        "title": "Pixelate"
+        "description": "ওভারলে প্রভাব”",
+        "title": "পিক্সেলেট"
       },
       "img-subpixel": {
-        "description": "High detail subpixel rendering",
-        "title": "Subpixel"
+        "description": "\"উচ্চ বিশদ সাবপিক্সেল রেন্ডারিং”",
+        "title": "সাবপিক্সেল"
       },
       "img-wave": {
-        "description": "Wavy distortion effect",
-        "title": "Wave"
+        "description": "বিকৃতি প্রভাব\"",
+        "title": "তরঙ্গ"
       },
       "mosaic-classic": {
-        "description": "Mosaic with classic palette",
-        "title": "Classic Mosaic"
+        "description": "প্যালেট সহ মোজাইক\"",
+        "title": "ক্লাসিক মোজাইক"
       },
       "mosaic-forest": {
-        "description": "Mosaic with forest palette",
-        "title": "Forest Mosaic"
+        "description": "বন প্যালেট সহ মোজাইক",
+        "title": "বন মোজাইক"
       },
       "mosaic-navy": {
-        "description": "Mosaic with navy palette",
-        "title": "Navy Mosaic"
+        "description": "নৌকা রঙের প্যালেট সহ মোজাইক",
+        "title": "নৌ মোজাইক"
       },
       "mosaic-wine": {
-        "description": "Mosaic with wine palette",
-        "title": "Wine Mosaic"
+        "description": "প্যালেট সহ মোজাইক\"",
+        "title": "মোজাইক\""
       },
       "plain-basic": {
-        "description": "Standard QR code",
-        "title": "Classic"
+        "description": "QR কোড”",
+        "title": "343\t\"ক্লাসিক\""
       },
       "plain-ecc-l": {
-        "description": "Minimal error correction",
-        "title": "ECC Low (7%)"
+        "description": "ত্রুটি সংশোধন\"",
+        "title": "\"ইসিসি লো (৭%)”"
       },
       "plain-ecc-q": {
-        "description": "Medium-high error correction",
-        "title": "ECC Quartile (25%)"
+        "description": "ত্রুটি সংশোধন\"",
+        "title": "\"ইসিসি কোয়ার্টাইল (২৫%)”"
       },
       "plain-v12": {
-        "description": "Large with multiple alignment",
-        "title": "Version 12"
+        "description": "একাধিক সারিবদ্ধকরণ সহ”",
+        "title": "\"সংস্করণ ১২”"
       },
       "plain-v6": {
-        "description": "Larger without center eye",
-        "title": "Version 6"
+        "description": "চোখ ছাড়া বৃহত্তর\"",
+        "title": "\"সংস্করণ ৬”"
       },
       "plain-v9": {
-        "description": "Even larger with center eye",
-        "title": "Version 9"
+        "description": "\"মাঝের চোখ দিয়ে আরও বড়”",
+        "title": "\"সংস্করণ ৯”"
       },
       "prep-blur-1": {
-        "description": "1px gaussian blur",
-        "title": "Blur 1px"
+        "description": "\"১ পিক্সেল গাউসিয়ান ব্লার”",
+        "title": "\"অস্পষ্টতা ১ পিক্সেল”"
       },
       "prep-blur-2": {
-        "description": "2px gaussian blur",
-        "title": "Blur 2px"
+        "description": "\"২ পিক্সেল গাউসিয়ান ব্লার”",
+        "title": "\"অস্পষ্টতা ২ পিক্সেল”"
       },
       "prep-blur-4": {
-        "description": "4px gaussian blur",
-        "title": "Blur 4px"
+        "description": "\"৪ পিক্সেল গাউসিয়ান ব্লার”",
+        "title": "\"অস্পষ্টতা ৪পিক্সেল”"
       },
       "prep-brightness-n25": {
-        "description": "Brightness adjusted darker",
-        "title": "Brightness -25"
+        "description": "গাঢ়তরভাবে সামঞ্জস্য করা\"",
+        "title": "উজ্জ্বলতা -২৫"
       },
       "prep-brightness-n50": {
-        "description": "Brightness adjusted darker",
-        "title": "Brightness -50"
+        "description": "গাঢ়তরভাবে সামঞ্জস্য করা\"",
+        "title": "উজ্জ্বলতা -৫০"
       },
       "prep-brightness-p25": {
-        "description": "Brightness adjusted brighter",
-        "title": "Brightness +25"
+        "description": "\"উজ্জ্বলতা আরও উজ্জ্বলভাবে সামঞ্জস্য করা হয়েছে”",
+        "title": "উজ্জ্বলতা +২৫"
       },
       "prep-brightness-p50": {
-        "description": "Brightness adjusted brighter",
-        "title": "Brightness +50"
+        "description": "\"উজ্জ্বলতা আরও উজ্জ্বলভাবে সামঞ্জস্য করা হয়েছে”",
+        "title": "উজ্জ্বলতা +৫০"
       },
       "prep-contrast-n50": {
-        "description": "Low contrast",
-        "title": "Contrast -50"
+        "description": "কম বৈসাদৃশ্য",
+        "title": "\"কনট্রাস্ট -৫০”"
       },
       "prep-contrast-p100": {
-        "description": "High contrast",
-        "title": "Contrast +100"
+        "description": "\"উচ্চ বৈসাদৃশ্য”",
+        "title": "\"কনট্রাস্ট +১০০”"
       },
       "prep-contrast-p50": {
-        "description": "High contrast",
-        "title": "Contrast +50"
+        "description": "\"উচ্চ বৈসাদৃশ্য”",
+        "title": "\"কনট্রাস্ট +৫০”"
       },
       "prep-edge-canny": {
-        "description": "Canny edge detection",
-        "title": "Edge Canny"
+        "description": "এজ সনাক্তকরণ\"",
+        "title": "এজ ক্যানি"
       },
       "prep-edge-sobel": {
-        "description": "Sobel edge detection",
-        "title": "Edge Sobel"
+        "description": "প্রান্ত সনাক্তকরণ\"",
+        "title": "এজ সোবেল"
       },
       "prep-gamma-05": {
-        "description": "Gamma correction 0.5",
-        "title": "Gamma 0.5"
+        "description": "\"গামা সংশোধন ০.৫”",
+        "title": "গামা ০.৫"
       },
       "prep-gamma-15": {
-        "description": "Gamma correction 1.5",
-        "title": "Gamma 1.5"
+        "description": "\"গামা সংশোধন ১.৫”",
+        "title": "গামা ১.৫"
       },
       "prep-gamma-20": {
-        "description": "Gamma correction 2.0",
-        "title": "Gamma 2.0"
+        "description": "\"গামা সংশোধন ২.০”",
+        "title": "\"গামা ২.০”"
       },
       "prep-hue-90": {
-        "description": "Hue rotation 90 degrees",
-        "title": "Hue +90°"
+        "description": "\"আভা ঘূর্ণন ৯০ ডিগ্রি”",
+        "title": "\"আভা +৯০°”"
       },
       "prep-invert": {
-        "description": "Inverted colors",
-        "title": "Inverted"
+        "description": "উল্টানো রঙ",
+        "title": "উল্টানো"
       },
       "prep-posterize-2": {
-        "description": "2 color levels",
-        "title": "Posterize 2"
+        "description": "রঙের স্তর”",
+        "title": "পোস্টারাইজ ২"
       },
       "prep-posterize-4": {
-        "description": "4 color levels",
-        "title": "Posterize 4"
+        "description": "\"৪টি রঙের স্তর”",
+        "title": "পোস্টারাইজ ৪"
       },
       "prep-posterize-8": {
-        "description": "8 color levels",
-        "title": "Posterize 8"
+        "description": "\"৮টি রঙের স্তর”",
+        "title": "পোস্টারাইজ ৮"
       },
       "prep-saturation-n100": {
-        "description": "Desaturated",
-        "title": "Saturation -100"
+        "description": "অসম্পৃক্ত",
+        "title": "স্যাচুরেশন -১০০"
       },
       "prep-saturation-n50": {
-        "description": "Reduced saturation",
-        "title": "Saturation -50"
+        "description": "স্যাচুরেশন\"",
+        "title": "স্যাচুরেশন -৫০"
       },
       "prep-saturation-p100": {
-        "description": "Oversaturated",
-        "title": "Saturation +100"
+        "description": "স্যাচুরেটেড\"",
+        "title": "স্যাচুরেশন +১০০"
       },
       "prep-saturation-p50": {
-        "description": "Oversaturated",
-        "title": "Saturation +50"
+        "description": "স্যাচুরেটেড\"",
+        "title": "স্যাচুরেশন +৫০"
       },
       "prep-sharpen-100": {
-        "description": "100% sharpening",
-        "title": "Sharpen 100%"
+        "description": "ধারালো করা\"",
+        "title": "\"১০০% তীক্ষ্ণ করুন”"
       },
       "prep-sharpen-25": {
-        "description": "25% sharpening",
-        "title": "Sharpen 25%"
+        "description": "ধারালো করা\"",
+        "title": "\"২৫% ধারালো করুন”"
       },
       "prep-sharpen-50": {
-        "description": "50% sharpening",
-        "title": "Sharpen 50%"
+        "description": "ধারালো করা\"",
+        "title": "\"৫০% ধারালো করুন”"
       },
       "prep-threshold-128": {
-        "description": "Binary threshold at 128",
-        "title": "Threshold 128"
+        "description": "\"১২৮ এ বাইনারি থ্রেশহোল্ড”",
+        "title": "থ্রেশহোল্ড ১২৮"
       },
       "prep-threshold-192": {
-        "description": "Binary threshold at 192",
-        "title": "Threshold 192"
+        "description": "\"বাইনারি থ্রেশহোল্ড ১৯২”",
+        "title": "থ্রেশহোল্ড ১৯২"
       },
       "prep-threshold-64": {
-        "description": "Binary threshold at 64",
-        "title": "Threshold 64"
+        "description": "\"বাইনারি থ্রেশহোল্ড ৬৪”",
+        "title": "থ্রেশহোল্ড ৬৪"
       },
       "style-connected": {
-        "description": "Connected module style",
-        "title": "Connected Modules"
+        "description": "মডিউল স্টাইল\"",
+        "title": "মডিউল\""
       },
       "style-diamond": {
-        "description": "Diamond module style",
-        "title": "Diamond Modules"
+        "description": "মডিউল স্টাইল”",
+        "title": "ডায়মন্ড মডিউল"
       },
       "style-dots": {
-        "description": "Dots module style",
-        "title": "Dots Modules"
+        "description": "\"ডটস মডিউল স্টাইল”",
+        "title": "ডটস মডিউল"
       },
       "style-rounded": {
-        "description": "Rounded module style",
-        "title": "Rounded Modules"
+        "description": "\"গোলাকার মডিউল স্টাইল”",
+        "title": "গোলাকার মডিউল"
       },
       "style-square": {
-        "description": "Square module style",
-        "title": "Square Modules"
+        "description": "\"স্কয়ার মডিউল স্টাইল”",
+        "title": "স্কয়ার মডিউল"
       }
     },
-    "plain": "Plain",
-    "powerCombos": "Power Combos",
-    "preprocessing": "Preprocessing",
+    "plain": "সমতল",
+    "powerCombos": "পাওয়ার কম্বোস",
+    "preprocessing": "প্রিপ্রসেসিং",
     "sections": {
       "animation-overlay": {
-        "description": "Animated GIF overlays with different blend modes",
-        "title": "Animated Overlays"
+        "description": "\"বিভিন্ন ব্লেন্ড মোড সহ অ্যানিমেটেড জিআইএফ ওভারলে”",
+        "title": "অ্যানিমেটেড ওভারলে"
       },
       "blend-modes": {
-        "description": "Different color blending with image overlays",
-        "title": "Blend Modes"
+        "description": "\"ছবির ওভারলেগুলির সাথে বিভিন্ন রঙের মিশ্রণ”",
+        "title": "ব্লেন্ড মোড"
       },
       "color-modes": {
-        "description": "Color, grayscale, and black & white processing",
-        "title": "Color Processing"
+        "description": "রঙ, ধূসর স্কেল, এবং কালো ও সাদা প্রক্রিয়াকরণ",
+        "title": "রঙ প্রক্রিয়াকরণ"
       },
       "colors": {
-        "description": "Color schemes and themed palettes",
-        "title": "Colors & Themes"
+        "description": "রঙের স্কিম এবং থিমযুক্ত প্যালেট",
+        "title": "রঙ এবং থিম"
       },
       "content-types": {
-        "description": "Different payload formats - vCard, WiFi, Email, SMS, Geo, Calendar",
-        "title": "Content Types"
+        "description": "\"বিভিন্ন পেলোড ফর্ম্যাট - ভিকার্ড, ওয়াইফাই, ইমেল, এসএমএস, জিও, ক্যালেন্ডার”",
+        "title": "বিষয়বস্তুর ধরণ"
       },
       "dithering": {
-        "description": "Different dithering methods and error diffusion kernels",
-        "title": "Dithering Algorithms"
+        "description": "\"বিভিন্ন ডাইথারিং পদ্ধতি এবং ত্রুটি বিস্তার কার্নেল”",
+        "title": "ডাইদারিং অ্যালগরিদম"
       },
       "encoding": {
-        "description": "Different QR versions and error correction levels",
-        "title": "QR Encoding"
+        "description": "\"বিভিন্ন QR সংস্করণ এবং ত্রুটি সংশোধনের স্তর”",
+        "title": "\"কিউআর এনকোডিং”"
       },
       "image-overlay": {
-        "description": "Static image overlays with different blend modes",
-        "title": "Image Overlays"
+        "description": "ব্লেন্ড মোড সহ স্ট্যাটিক ইমেজ ওভারলে”",
+        "title": "ছবির ওভারলে"
       },
       "plain": {
-        "description": "Standard QR codes without overlay - different versions and error correction",
-        "title": "Plain QR Codes"
+        "description": "\"ওভারলে ছাড়া স্ট্যান্ডার্ড QR কোড - বিভিন্ন সংস্করণ এবং ত্রুটি সংশোধন”",
+        "title": "\"প্লেইন কিউআর কোড”"
       },
       "power-combos": {
-        "description": "Striking multi-feature combinations showcasing ANQR capabilities",
-        "title": "Power Combos"
+        "description": "\"ANQR ক্ষমতা প্রদর্শনকারী আকর্ষণীয় বহু-বৈশিষ্ট্য সমন্বয়”",
+        "title": "পাওয়ার কম্বোস"
       },
       "preprocessing": {
-        "description": "Brightness, contrast, gamma, blur, sharpen, posterize, edge detection",
-        "title": "Image Preprocessing"
+        "description": "\"উজ্জ্বলতা, বৈসাদৃশ্য, গামা, ঝাপসা, তীক্ষ্ণ করা, পোস্টারাইজ করা, প্রান্ত সনাক্তকরণ”",
+        "title": "ছবি প্রিপ্রসেসিং"
       },
       "styles": {
-        "description": "Different visual styles for modules and finder patterns",
-        "title": "Module & Finder Styles"
+        "description": "মডিউল এবং ফাইন্ডার প্যাটার্নের জন্য বিভিন্ন ভিজ্যুয়াল স্টাইল",
+        "title": "মডিউল এবং ফাইন্ডার স্টাইল"
       }
     },
-    "showAll": "Show All",
-    "styles": "Styles",
-    "subtitle": "Explore examples of QR codes created with ANQR",
-    "title": "QR Code Gallery",
-    "tryThis": "Try this"
+    "showAll": "সব দেখান",
+    "styles": "স্টাইল",
+    "subtitle": "দিয়ে তৈরি QR কোডের উদাহরণগুলি অন্বেষণ করুন”",
+    "title": "\"কিউআর কোড গ্যালারি”",
+    "tryThis": "এটা চেষ্টা করে দেখুন"
   },
   "header": {
-    "close": "Close",
-    "copied": "Copied!",
-    "copyLink": "Copy Link",
-    "darkMode": "Switch to dark mode",
-    "export": "Export",
-    "lightMode": "Switch to light mode",
-    "reset": "Reset",
-    "searchSettings": "Search settings...",
-    "share": "Share"
+    "close": "বন্ধ",
+    "copied": "কপি করা!",
+    "copyLink": "লিঙ্ক কপি করুন",
+    "darkMode": "\"ডার্ক মোডে স্যুইচ করুন”",
+    "export": "রপ্তানি",
+    "lightMode": "\"হালকা মোডে স্যুইচ করুন”",
+    "reset": "রিসেট",
+    "searchSettings": "\"অনুসন্ধান সেটিংস…”",
+    "share": "শেয়ার করুন"
   },
   "hints": {
-    "alignmentStyle": "Style of alignment patterns (used in larger QR codes)",
-    "appLinkNote": "Opens specific content within a mobile app",
-    "autoDetect": "Auto-detect (requires v{{version}}+ for current content)",
-    "autoMinVersion": "0 = Auto, min v{{version}} for current content",
-    "bgColorHex": "Background color hex code",
-    "bizcardLegacy": "Legacy format - consider using vCard instead",
-    "bluetoothNote": "Note: Bluetooth pairing via QR is vendor-specific and may not work on all devices",
-    "bounceAnimation": "Play animation forward then backward (ping-pong)",
-    "calendarNote": "Subscribe to a shared calendar feed",
-    "contrastGuard": "Ensure minimum contrast ratio between foreground and background",
-    "cornerRadius": "Corner radius percentage for rounded modules (0-100%)",
-    "crispEdges": "Use pixelated rendering for sharp module edges",
-    "customNote": "Enter raw data in any format. No validation or formatting will be applied.",
-    "dotRotation": "Rotate dot-style modules (0-360 degrees)",
-    "encodingMode": "Data encoding mode - Auto selects the most efficient mode",
-    "enforceMinQuietZone": "Enforce minimum 4 module quiet zone for better scanning reliability",
-    "enterTextContent": "Enter the text content to encode in the QR code",
-    "enterUrlContent": "Enter the URL to encode in the QR code",
-    "epcSepaNote": "European Payment Council QR code for SEPA credit transfers",
-    "errorCorrection": "Error correction level - higher = more damage resistance but larger QR code",
-    "extraBorder": "Additional border modules beyond the quiet zone (0-10)",
-    "eyeInnerStyle": "Style of the inner square of finder patterns",
-    "eyeOuterStyle": "Style of the outer ring of finder patterns",
-    "eyeScale": "Scale finder patterns relative to their default size (50-150%)",
-    "fgColorHex": "Foreground color hex code",
-    "finderStyle": "Style of the corner finder patterns",
-    "forceHttps": "Convert HTTP URLs to HTTPS automatically",
-    "frameStyle": "Add a decorative frame around the QR code",
-    "frameText": "Text to display on the frame",
-    "gapMode": "How gaps between modules are rendered",
-    "gradient": "Apply a gradient effect to the QR code",
-    "gs1Note": "GS1 Digital Link for product identification and traceability",
-    "higherEccLargerQr": "Higher = more damage resistance, larger QR",
-    "loopAnimation": "Loop animation continuously",
-    "maxLengthGuard": "Prevent encoding content that exceeds QR code capacity",
-    "minContrastRatio": "Minimum contrast ratio to enforce (1-21, WCAG AA requires 4.5:1)",
-    "moduleGap": "Gap between modules as percentage (0-30%)",
-    "moduleJitterWarning": "⚠️ May affect scannability",
-    "moduleSize": "Size of each QR code module in pixels (2-20px)",
-    "moduleStyle": "Visual style of QR code modules",
-    "normalizeNewlines": "Convert different newline formats to a standard format",
-    "outputFormat": "Select the output file format for export",
-    "paynowNote": "Singapore fast payment system",
-    "perModuleColor": "How to assign colors to individual modules",
-    "pickBgColor": "Click to pick background color",
-    "pickFgColor": "Click to pick foreground color",
-    "pixNote": "Brazilian instant payment system",
-    "pixelSnap": "How to snap module positions to pixel boundaries",
-    "promptpayNote": "Thailand national e-payment system",
-    "qrVersion": "QR code version (0=auto, 1-40 increases size and capacity)",
-    "quietZone": "Quiet zone margin around QR code (0-10 modules, recommended: 4+)",
-    "rsvpNote": "Link to an online RSVP form or event registration page",
-    "safetyMode": "Safety analysis mode - how strictly to check QR code readability",
-    "selectContentType": "Select the type of content to encode in the QR code",
-    "shortLinkNote": "Use a URL shortener service for dynamic/trackable QR codes",
-    "timingStyle": "Style of timing patterns (horizontal and vertical lines)",
-    "transparentBg": "Make the background transparent instead of using background color",
-    "trimWhitespace": "Remove leading and trailing whitespace",
-    "upiNote": "Unified Payments Interface for India",
-    "utmCampaign": "UTM campaign parameter for campaign tracking",
-    "utmMedium": "UTM medium parameter for campaign tracking",
-    "utmSource": "UTM source parameter for campaign tracking",
-    "validateInput": "Validate input data before encoding",
-    "versionTooLow": "⚠️ Version too low! Minimum v{{version}} required"
+    "alignmentStyle": "ধরণ (বড় QR কোডগুলিতে ব্যবহৃত)”",
+    "appLinkNote": "মোবাইল অ্যাপের মধ্যে নির্দিষ্ট বিষয়বস্তু খোলে\"",
+    "autoDetect": "\"স্বয়ংক্রিয়-সনাক্তকরণ (বর্তমান সামগ্রীর জন্য v{{সংস্করণ}}+ প্রয়োজন)”",
+    "autoMinVersion": "\"০ = বর্তমান কন্টেন্টের জন্য স্বয়ংক্রিয়, সর্বনিম্ন v{{সংস্করণ}}”",
+    "bgColorHex": "\"ব্যাকগ্রাউন্ড কালার হেক্স কোড”",
+    "bizcardLegacy": "\"লিগ্যাসি ফর্ম্যাট - এর পরিবর্তে vCard ব্যবহার করার কথা বিবেচনা করুন”",
+    "bluetoothNote": "\"বিঃদ্রঃ\t QR এর মাধ্যমে ব্লুটুথ পেয়ারিং বিক্রেতা-নির্দিষ্ট এবং সমস্ত ডিভাইসে কাজ নাও করতে পারে”",
+    "bounceAnimation": "\"আগে অ্যানিমেশন খেলো তারপর পিছনে (পিং-পং)”",
+    "calendarNote": "\"একটি শেয়ার্ড ক্যালেন্ডার ফিডে সাবস্ক্রাইব করুন”",
+    "contrastGuard": "এবং পটভূমির মধ্যে ন্যূনতম বৈসাদৃশ্য অনুপাত নিশ্চিত করুন”",
+    "cornerRadius": "\"বৃত্তাকার মডিউলের জন্য কোণার ব্যাসার্ধের শতাংশ (০-১০০%)”",
+    "crispEdges": "মডিউল প্রান্তের জন্য পিক্সেলেটেড রেন্ডারিং ব্যবহার করুন”",
+    "customNote": "যেকোনো ফরম্যাটে কাঁচা ডেটা প্রবেশ করান। কোনও বৈধতা বা ফর্ম্যাটিং প্রয়োগ করা হবে না।",
+    "dotRotation": "\"ডট-স্টাইল মডিউলগুলি ঘোরান (০-৩৬০ ডিগ্রি)”",
+    "encodingMode": "এনকোডিং মোড - স্বয়ংক্রিয়ভাবে সবচেয়ে কার্যকর মোড নির্বাচন করে\"",
+    "enforceMinQuietZone": "স্ক্যানিং নির্ভরযোগ্যতার জন্য ন্যূনতম 4টি মডিউল কোয়াইট জোন প্রয়োগ করুন\"",
+    "enterTextContent": "কোডে এনকোড করার জন্য টেক্সট কন্টেন্ট লিখুন”",
+    "enterUrlContent": "কোডে এনকোড করার জন্য URL লিখুন”",
+    "epcSepaNote": "\"SEPA ক্রেডিট ট্রান্সফারের জন্য ইউরোপীয় পেমেন্ট কাউন্সিলের QR কোড”",
+    "errorCorrection": "\"ত্রুটি সংশোধন স্তর - উচ্চতর = বেশি ক্ষতি প্রতিরোধ ক্ষমতা কিন্তু বৃহত্তর QR কোড”",
+    "extraBorder": "শান্ত অঞ্চলের বাইরে অতিরিক্ত সীমানা মডিউল (০-১০)",
+    "eyeInnerStyle": "প্যাটার্নের ভেতরের বর্গক্ষেত্রের স্টাইল\"",
+    "eyeOuterStyle": "প্যাটার্নের বাইরের বলয়ের স্টাইল\"",
+    "eyeScale": "ফাইন্ডার প্যাটার্নগুলি তাদের ডিফল্ট আকারের (50-150%) সাপেক্ষে”",
+    "fgColorHex": "\"ফোরগ্রাউন্ড কালার হেক্স কোড”",
+    "finderStyle": "সন্ধানকারী নিদর্শনগুলির স্টাইল\"",
+    "forceHttps": "\"HTTP URL গুলিকে স্বয়ংক্রিয়ভাবে HTTPS তে রূপান্তর করুন”",
+    "frameStyle": "\"QR কোডের চারপাশে একটি আলংকারিক ফ্রেম যোগ করুন”",
+    "frameText": "\"ফ্রেমে প্রদর্শনের জন্য টেক্সট”",
+    "gapMode": "মধ্যে ফাঁকগুলি কীভাবে রেন্ডার করা হয়\"",
+    "gradient": "কোডে একটি গ্রেডিয়েন্ট প্রভাব প্রয়োগ করুন”",
+    "gs1Note": "সনাক্তকরণ এবং ট্রেসেবিলিটির জন্য GS1 ডিজিটাল লিঙ্ক”",
+    "higherEccLargerQr": "\"উচ্চতর = অধিক ক্ষতি প্রতিরোধ ক্ষমতা, বৃহত্তর QR”",
+    "loopAnimation": "একটানা লুপ অ্যানিমেশন",
+    "maxLengthGuard": "কোড ধারণক্ষমতার চেয়ে বেশি এনকোডিং কন্টেন্ট প্রতিরোধ করুন”",
+    "minContrastRatio": "\"প্রয়োগের জন্য সর্বনিম্ন বৈসাদৃশ্য অনুপাত (১-২১, WCAG AA-এর জন্য ৪.৫\t১ প্রয়োজন)”",
+    "moduleGap": "\"শতাংশ হিসেবে মডিউলের মধ্যে ব্যবধান (০-৩০%)”",
+    "moduleJitterWarning": "\"⚠️ স্ক্যানযোগ্যতা প্রভাবিত করতে পারে”",
+    "moduleSize": "\"প্রতিটি QR কোড মডিউলের আকার পিক্সেলে (২-২০ পিক্সেল)”",
+    "moduleStyle": "কোড মডিউলের ভিজ্যুয়াল স্টাইল”",
+    "normalizeNewlines": "নতুন লাইন ফর্ম্যাটকে একটি স্ট্যান্ডার্ড ফর্ম্যাটে রূপান্তর করুন\"",
+    "outputFormat": "জন্য আউটপুট ফাইল ফর্ম্যাট নির্বাচন করুন\"",
+    "paynowNote": "\"সিঙ্গাপুর দ্রুত পেমেন্ট সিস্টেম”",
+    "perModuleColor": "মডিউলগুলিতে রঙ কীভাবে বরাদ্দ করবেন\"",
+    "pickBgColor": "\"পটভূমির রঙ নির্বাচন করতে ক্লিক করুন”",
+    "pickFgColor": "\"ফোরগ্রাউন্ড রঙ বেছে নিতে ক্লিক করুন”",
+    "pixNote": "ব্রাজিলিয়ান তাৎক্ষণিক পেমেন্ট সিস্টেম",
+    "pixelSnap": "মডিউলের অবস্থান পিক্সেল সীমানায় স্ন্যাপ করবেন”",
+    "promptpayNote": "\"থাইল্যান্ডের জাতীয় ই-পেমেন্ট সিস্টেম”",
+    "qrVersion": "\"QR কোড সংস্করণ (০=স্বয়ংক্রিয়, ১-৪০ আকার এবং ক্ষমতা বৃদ্ধি করে)”",
+    "quietZone": "\"QR কোডের আশেপাশে শান্ত অঞ্চলের মার্জিন (০-১০টি মডিউল, প্রস্তাবিত\t ৪+)”",
+    "rsvpNote": "অনলাইন RSVP ফর্ম বা ইভেন্ট রেজিস্ট্রেশন পৃষ্ঠার লিঙ্ক”",
+    "safetyMode": "\"নিরাপত্তা বিশ্লেষণ মোড - QR কোডের পঠনযোগ্যতা কীভাবে কঠোরভাবে পরীক্ষা করা যায়”",
+    "selectContentType": "\"QR কোডে এনকোড করার জন্য কন্টেন্টের ধরণ নির্বাচন করুন”",
+    "shortLinkNote": "\"গতিশীল/ট্র্যাকযোগ্য QR কোডের জন্য একটি URL শর্টনার পরিষেবা ব্যবহার করুন”",
+    "timingStyle": "সময়ের ধরণ (অনুভূমিক এবং উল্লম্ব রেখা)",
+    "transparentBg": "\"ব্যাকগ্রাউন্ড কালার ব্যবহার না করে ব্যাকগ্রাউন্ডকে স্বচ্ছ করুন”",
+    "trimWhitespace": "\"লিডিং এবং ট্রেইলিং হোয়াইটস্পেস সরান”",
+    "upiNote": "\"ভারতের জন্য ইউনিফাইড পেমেন্টস ইন্টারফেস”",
+    "utmCampaign": "ট্র্যাকিংয়ের জন্য UTM প্রচারণা প্যারামিটার”",
+    "utmMedium": "প্রচারণা ট্র্যাকিংয়ের জন্য UTM মাঝারি প্যারামিটার",
+    "utmSource": "প্রচারণা ট্র্যাকিংয়ের জন্য UTM সোর্স প্যারামিটার",
+    "validateInput": "আগে ইনপুট ডেটা যাচাই করুন\"",
+    "versionTooLow": "\"⚠️ ভার্সন খুব কম! ন্যূনতম v{{version}} প্রয়োজন”"
   },
   "language": {
-    "current": "Language",
-    "select": "Select Language"
+    "current": "ভাষা",
+    "select": "ভাষা নির্বাচন করুন"
   },
   "metadata": {
-    "addCustomField": "Add Custom Field",
-    "author": "Author",
-    "authorPlaceholder": "Author name",
-    "copyright": "Copyright",
-    "copyrightPlaceholder": "© 2024 Company Name",
-    "customMetadata": "Custom Metadata",
-    "description": "Description",
-    "descriptionPlaceholder": "Description of this QR code...",
-    "includeCreationTime": "Include Creation Time",
-    "key": "Key",
-    "keyPlaceholder": "Key",
-    "keywords": "Keywords",
-    "license": "License",
-    "licensePlaceholder": "CC-BY-4.0",
-    "title": "Title",
-    "titlePlaceholder": "QR Code Title",
-    "value": "Value",
-    "valuePlaceholder": "Value"
+    "addCustomField": "কাস্টম ফিল্ড যোগ করুন",
+    "author": "লেখক",
+    "authorPlaceholder": "লেখকের নাম",
+    "copyright": "কপিরাইট",
+    "copyrightPlaceholder": "\"© ২০২৪ কোম্পানির নাম”",
+    "customMetadata": "কাস্টম মেটাডেটা",
+    "description": "বর্ণনা",
+    "descriptionPlaceholder": "\"এই QR কোডের বিবরণ…”",
+    "includeCreationTime": "সৃষ্টির সময় অন্তর্ভুক্ত করুন",
+    "key": "চাবি",
+    "keyPlaceholder": "চাবি",
+    "keywords": "কীওয়ার্ড",
+    "license": "লাইসেন্স",
+    "licensePlaceholder": "\"সিসি-বাই-৪.০”",
+    "title": "শিরোনাম",
+    "titlePlaceholder": "\"কিউআর কোড শিরোনাম”",
+    "value": "মান",
+    "valuePlaceholder": "মান"
   },
   "nav": {
-    "about": "About",
-    "contact": "Contact",
-    "docs": "Guide",
-    "gallery": "Gallery",
-    "generator": "Generator",
-    "guide": "Guide",
-    "privacy": "Privacy",
-    "terms": "Terms"
+    "about": "সম্পর্কে",
+    "contact": "যোগাযোগ",
+    "docs": "গাইড",
+    "gallery": "গ্যালারি",
+    "generator": "জেনারেটর",
+    "guide": "গাইড",
+    "privacy": "গোপনীয়তা",
+    "terms": "শর্তাবলী"
   },
   "output": {
-    "backgroundOverride": "Background Override",
-    "backgroundOverridePlaceholder": "Leave empty for default",
-    "dithering": "Dithering",
-    "dpi": "DPI (Print)",
-    "embedRasterOverlay": "Embed Raster Overlay",
-    "exportAsAdditional": "Export As (Additional)",
-    "filename": "Filename",
-    "floydSteinberg": "Floyd-Steinberg",
-    "format": "Format",
-    "gif": "GIF",
-    "gifSettings": "GIF Settings",
-    "height": "Height",
-    "includeQuietZone": "Include Quiet Zone",
-    "medianCut": "Median Cut",
-    "neuquant": "NeuQuant",
-    "none": "None",
-    "octree": "Octree",
-    "off": "Off",
-    "ordered": "Ordered",
-    "outputSize": "Output Size",
-    "paletteSize": "Palette Size",
-    "pdf": "PDF",
-    "pixel": "Pixel",
-    "png": "PNG",
-    "precise": "Precise",
-    "quality": "Quality",
-    "quantizer": "Quantizer",
-    "shapePrecision": "Shape Precision",
-    "svg": "SVG",
-    "svgSettings": "SVG Settings",
-    "transparentColor": "Transparent Color",
-    "transparentColorPlaceholder": "#ffffff or empty",
-    "trueVector": "True Vector",
-    "trueVectorDesc": "Use paths instead of embedded raster",
-    "webp": "WebP",
-    "width": "Width"
+    "backgroundOverride": "পটভূমি ওভাররাইড",
+    "backgroundOverridePlaceholder": "\"ডিফল্ট হিসেবে খালি রাখুন”",
+    "dithering": "অস্থিরতা",
+    "dpi": "\"ডিপিআই (প্রিন্ট)”",
+    "embedRasterOverlay": "\"রাস্টার ওভারলে এম্বেড করুন”",
+    "exportAsAdditional": "\"(অতিরিক্ত) হিসেবে রপ্তানি করুন”",
+    "filename": "ফাইলের নাম",
+    "floydSteinberg": "ফ্লয়েড-স্টেইনবার্গ",
+    "format": "ফর্ম্যাট",
+    "gif": "জিআইএফ",
+    "gifSettings": "\"জিআইএফ সেটিংস”",
+    "height": "উচ্চতা",
+    "includeQuietZone": "শান্ত অঞ্চল অন্তর্ভুক্ত করুন",
+    "medianCut": "মাঝারি কাট",
+    "neuquant": "নিউকোয়ান্ট",
+    "none": "কোনটিই নয়",
+    "octree": "অষ্টবৃক্ষ",
+    "off": "বন্ধ",
+    "ordered": "অর্ডার করা হয়েছে",
+    "outputSize": "আউটপুট সাইজ",
+    "paletteSize": "প্যালেটের আকার",
+    "pdf": "\"পিডিএফ”",
+    "pixel": "পিক্সেল",
+    "png": "\"পিএনজি”",
+    "precise": "নির্ভুল",
+    "quality": "গুণমান",
+    "quantizer": "কোয়ান্টাইজার",
+    "shapePrecision": "আকৃতির নির্ভুলতা",
+    "svg": "\"এসভিজি”",
+    "svgSettings": "\"SVG সেটিংস”",
+    "transparentColor": "স্বচ্ছ রঙ",
+    "transparentColorPlaceholder": "\"#ffffff অথবা খালি”",
+    "trueVector": "সত্য ভেক্টর",
+    "trueVectorDesc": "রাস্টারের পরিবর্তে পাথ ব্যবহার করুন”",
+    "webp": "\"ওয়েবপি”",
+    "width": "প্রস্থ"
   },
   "overlay": {
-    "adaptiveThreshold": "Adaptive Threshold",
-    "atkinson": "Atkinson",
-    "bayer2": "Bayer 2×2",
-    "bayer4": "Bayer 4×4",
-    "bayer8": "Bayer 8×8",
-    "blend": "Blend",
-    "blendMode": "Blend",
-    "blueNoise": "Blue Noise",
-    "blueNoiseErrorDiffusion": "Blue Noise + Error Diffusion",
-    "blueNoiseMode": "Blue Noise",
-    "blueNoiseThreshold": "Blue Noise Threshold",
-    "blur": "Blur",
-    "brightness": "Brightness",
-    "brightnessCurve": "Brightness Curve",
-    "brightnessMode": "Brightness",
-    "burkes": "Burkes",
-    "bw": "Black & White",
-    "cellSize": "Cell Size",
-    "centerLogo": "Center Logo",
-    "centerRule": "Center Rule",
-    "clusteredDot": "Clustered Dot",
-    "colorDither": "Color Dither",
-    "colorMode": "Color Mode",
-    "contain": "Contain",
-    "contrast": "Contrast",
-    "corsNote": "Note: Image must allow cross-origin requests (CORS)",
-    "cover": "Cover",
-    "cropImage": "Crop Image",
-    "cropSize": "Crop Size",
-    "diffusionKernel": "Diffusion Kernel",
-    "disposalHandling": "Disposal Handling",
-    "dither": "Dither",
-    "ditherSettings": "Dither Settings",
-    "ditherStrength": "Dither Strength",
-    "dithered": "Dithered",
-    "ditheredMode": "Dithered",
-    "dotShape": "Dot Shape",
-    "duotone": "Duotone",
-    "duotoneColors": "Duotone Colors",
-    "duotoneMode": "Duotone",
-    "eccAwareMode": "ECC-Aware Mode",
-    "edge": "Edge Detection",
-    "edgeAware": "Edge-Aware",
-    "enableCrop": "Enable Crop",
-    "errorDiffusion": "Error Diffusion",
-    "extreme": "Extreme",
-    "extremeMode": "Extreme",
-    "finderOverride": "Finder Override",
-    "fitMode": "Fit Mode",
-    "flipX": "Flip X",
-    "flipY": "Flip Y",
-    "floydSteinberg": "Floyd-Steinberg",
-    "fromUrl": "From URL",
-    "fullColor": "Full Color",
-    "gamma": "Gamma",
-    "gapFillMode": "Gap Fill",
-    "gapfill": "Gap Fill",
-    "gaussianNoise": "Gaussian Noise",
-    "gifSettings": "GIF Settings",
-    "grayscale": "Grayscale",
-    "gridSize": "Grid Size",
-    "halftone": "Halftone",
-    "halftoneCenter": "Halftone Center",
-    "halftoneMode": "Halftone",
-    "halftoneSettings": "Halftone Settings",
-    "highlight": "Highlight",
-    "hueRotate": "Hue Rotate",
-    "imageGifWebp": "Image / GIF / WebP",
-    "imageUrl": "Image URL",
-    "intensity": "Intensity",
-    "invert": "Invert Image",
-    "jarvisJudiceNinke": "Jarvis-Judice-Ninke",
-    "line": "Line",
-    "load": "Load",
-    "loadedFromUrl": "Loaded from URL",
-    "maxFps": "Max FPS",
-    "mode": "Blend Mode",
-    "mosaic": "Mosaic",
-    "mosaicMode": "Mosaic",
-    "neutralColor": "Neutral Color",
-    "noFile": "No file",
-    "none": "None",
-    "nxnGrid": "N×N Grid",
-    "orderedBayer": "Ordered (Bayer)",
-    "orderedMatrix": "Ordered Matrix",
-    "original": "Original",
-    "outline": "Outline",
-    "outlineMode": "Outline",
-    "perChannel": "Per Channel",
-    "perModule": "Per Module",
-    "perceptual": "Perceptual (Luminance)",
-    "pixelate": "Pixelate",
-    "pixelateMode": "Pixelate",
-    "posterizeLevels": "Posterize Levels",
-    "preserveAlignment": "Preserve Alignment",
-    "preserveFinders": "Preserve Finder Patterns",
-    "preserveTiming": "Preserve Timing",
-    "protectFormat": "Protect Format Info",
-    "protectFormatInfo": "Protect Format Info",
-    "protectVersion": "Protect Version Info",
-    "protectVersionInfo": "Protect Version Info",
-    "protection": "Protection",
-    "removeImage": "Remove",
-    "respect": "Respect",
-    "riskBudget": "Risk Budget",
-    "rotation": "Rotation",
-    "sCurve": "S-Curve",
-    "saturation": "Saturation",
-    "screenedBlueNoise": "Screened Blue Noise",
-    "seed": "Seed",
-    "selectImage": "Select Image",
-    "sepia": "Sepia",
-    "serpentineScanning": "Serpentine Scanning",
-    "shadow": "Shadow",
-    "sharpen": "Sharpen",
-    "sierra": "Sierra",
-    "sierra2": "Sierra-2",
-    "sierraLite": "Sierra-Lite",
-    "simplify": "Simplify",
-    "stretch": "Stretch",
-    "strict": "Strict",
-    "stucki": "Stucki",
-    "stylized": "Stylized",
-    "subpixel": "Subpixel",
-    "subpixelMode": "Subpixel",
-    "subpixelSettings": "Subpixel Settings",
-    "subpixelSize": "Subpixel Size",
-    "subpixelSizeMode": "Subpixel Size",
-    "temporalBlueNoise": "Temporal Blue Noise",
-    "threshold": "Threshold",
-    "tileSize": "Tile Size",
-    "triangularNoise": "Triangular Noise",
-    "trueDither": "True Dither",
-    "trueDitherMode": "True Dither",
-    "upload": "Upload",
-    "useFrameDelays": "Use Frame Delays",
-    "voidCluster": "Void & Cluster",
-    "wave": "Wave",
-    "waveMode": "Wave",
-    "whiteNoise": "White Noise"
+    "adaptiveThreshold": "অভিযোজিত থ্রেশহোল্ড",
+    "atkinson": "অ্যাটকিনসন",
+    "bayer2": "বেয়ার ২×২",
+    "bayer4": "বেয়ার ৪×৪",
+    "bayer8": "বেয়ার ৮×৮",
+    "blend": "মিশ্রণ",
+    "blendMode": "মিশ্রণ",
+    "blueNoise": "নীল শব্দ",
+    "blueNoiseErrorDiffusion": "নীল শব্দ + ত্রুটি বিস্তার",
+    "blueNoiseMode": "নীল শব্দ",
+    "blueNoiseThreshold": "নীল শব্দের সীমা",
+    "blur": "অস্পষ্টতা",
+    "brightness": "উজ্জ্বলতা",
+    "brightnessCurve": "উজ্জ্বলতা বক্ররেখা",
+    "brightnessMode": "উজ্জ্বলতা",
+    "burkes": "বার্কস",
+    "bw": "কালো ও সাদা",
+    "cellSize": "কোষের আকার",
+    "centerLogo": "কেন্দ্রের লোগো",
+    "centerRule": "কেন্দ্রের নিয়ম",
+    "clusteredDot": "ক্লাস্টারড ডট",
+    "colorDither": "রঙের ঝাঁকুনি",
+    "colorMode": "রঙ মোড",
+    "contain": "ধারণ",
+    "contrast": "বিপরীতে",
+    "corsNote": "\"বিঃদ্রঃ\t ছবিটি অবশ্যই ক্রস-অরিজিন অনুরোধ (CORS) অনুমোদন করবে”",
+    "cover": "কভার",
+    "cropImage": "ক্রপ ইমেজ",
+    "cropSize": "ফসলের আকার",
+    "diffusionKernel": "ডিফিউশন কার্নেল",
+    "disposalHandling": "নিষ্পত্তি ব্যবস্থাপনা",
+    "dither": "ডাইদার",
+    "ditherSettings": "ডিথার সেটিংস",
+    "ditherStrength": "অন্য শক্তি",
+    "dithered": "অস্থির",
+    "ditheredMode": "অস্থির",
+    "dotShape": "ডট শেপ",
+    "duotone": "ডুওটোন",
+    "duotoneColors": "ডুওটোন রঙ",
+    "duotoneMode": "ডুওটোন",
+    "eccAwareMode": "\"ECC-সচেতন মোড”",
+    "edge": "এজ ডিটেকশন",
+    "edgeAware": "601\t\"এজ-অ্যাওয়ার\"",
+    "enableCrop": "সক্ষম করুন\"",
+    "errorDiffusion": "ত্রুটি বিস্তার",
+    "extreme": "চরম",
+    "extremeMode": "চরম",
+    "finderOverride": "ওভাররাইড\"",
+    "fitMode": "মোড\"",
+    "flipX": "ফ্লিপ এক্স",
+    "flipY": "ফ্লিপ ওয়াই",
+    "floydSteinberg": "ফ্লয়েড-স্টেইনবার্গ",
+    "fromUrl": "থেকে”",
+    "fullColor": "পূর্ণ রঙিন",
+    "gamma": "গামা",
+    "gapFillMode": "শূন্যস্থান পূরণ",
+    "gapfill": "শূন্যস্থান পূরণ",
+    "gaussianNoise": "গাউসিয়ান নয়েজ",
+    "gifSettings": "\"জিআইএফ সেটিংস”",
+    "grayscale": "ধূসর স্কেল",
+    "gridSize": "গ্রিড সাইজ",
+    "halftone": "হালফটোন",
+    "halftoneCenter": "হালফটোন সেন্টার",
+    "halftoneMode": "হালফটোন",
+    "halftoneSettings": "হালফটোন সেটিংস",
+    "highlight": "হাইলাইট",
+    "hueRotate": "হিউ রোটেট",
+    "imageGifWebp": "\"ছবি / জিআইএফ / ওয়েবপি”",
+    "imageUrl": "\"ছবির URL”",
+    "intensity": "তীব্রতা",
+    "invert": "ছবি উল্টে দিন",
+    "jarvisJudiceNinke": "জারভিস-জুডিস-নিঙ্কে",
+    "line": "রেখা",
+    "load": "লোড",
+    "loadedFromUrl": "থেকে লোড করা হয়েছে”",
+    "maxFps": "সর্বোচ্চ FPS",
+    "mode": "মোড\"",
+    "mosaic": "মোজাইক",
+    "mosaicMode": "মোজাইক",
+    "neutralColor": "নিরপেক্ষ রঙ",
+    "noFile": "কোনও ফাইল নেই",
+    "none": "কোনটিই নয়",
+    "nxnGrid": "\"এন×এন গ্রিড”",
+    "orderedBayer": "অর্ডারড (বেয়ার)",
+    "orderedMatrix": "অর্ডারড ম্যাট্রিক্স",
+    "original": "আসল",
+    "outline": "রূপরেখা",
+    "outlineMode": "রূপরেখা",
+    "perChannel": "প্রতি চ্যানেল",
+    "perModule": "মডিউল\"",
+    "perceptual": "ইন্দ্রিয়গ্রাহ্য (আলোক)",
+    "pixelate": "পিক্সেলেট",
+    "pixelateMode": "পিক্সেলেট",
+    "posterizeLevels": "পোস্টারাইজ করুন\"",
+    "preserveAlignment": "সংরক্ষণ করুন\"",
+    "preserveFinders": "প্যাটার্ন সংরক্ষণ করুন\"",
+    "preserveTiming": "সময় সংরক্ষণ করুন",
+    "protectFormat": "তথ্য সুরক্ষিত করুন”",
+    "protectFormatInfo": "তথ্য সুরক্ষিত করুন”",
+    "protectVersion": "তথ্য সুরক্ষিত করুন”",
+    "protectVersionInfo": "তথ্য সুরক্ষিত করুন”",
+    "protection": "সুরক্ষা",
+    "removeImage": "সরান",
+    "respect": "সম্মান",
+    "riskBudget": "ঝুঁকি বাজেট",
+    "rotation": "ঘূর্ণন",
+    "sCurve": "এস-কার্ভ",
+    "saturation": "স্যাচুরেশন",
+    "screenedBlueNoise": "স্ক্রিনড ব্লু নয়েজ",
+    "seed": "বীজ",
+    "selectImage": "ছবি নির্বাচন করুন",
+    "sepia": "সেপিয়া",
+    "serpentineScanning": "সার্পেনটাইন স্ক্যানিং",
+    "shadow": "ছায়া",
+    "sharpen": "তীক্ষ্ণ",
+    "sierra": "সিয়েরা",
+    "sierra2": "সিয়েরা-২",
+    "sierraLite": "সিয়েরা-লাইট",
+    "simplify": "করুন\"",
+    "stretch": "প্রসারিত",
+    "strict": "কঠোর",
+    "stucki": "স্টুকি",
+    "stylized": "স্টাইলাইজড",
+    "subpixel": "সাবপিক্সেল",
+    "subpixelMode": "সাবপিক্সেল",
+    "subpixelSettings": "\"সাবপিক্সেল সেটিংস”",
+    "subpixelSize": "\"সাবপিক্সেল সাইজ”",
+    "subpixelSizeMode": "\"সাবপিক্সেল সাইজ”",
+    "temporalBlueNoise": "টেম্পোরাল ব্লু নয়েজ",
+    "threshold": "থ্রেশহোল্ড",
+    "tileSize": "টাইলের আকার",
+    "triangularNoise": "ত্রিভুজাকার শব্দ",
+    "trueDither": "ট্রু ডিদার",
+    "trueDitherMode": "ট্রু ডিদার",
+    "upload": "আপলোড",
+    "useFrameDelays": "বিলম্ব ব্যবহার করুন”",
+    "voidCluster": "শূন্যতা এবং ক্লাস্টার",
+    "wave": "তরঙ্গ",
+    "waveMode": "তরঙ্গ",
+    "whiteNoise": "সাদা গোলমাল"
   },
   "payload": {
-    "accountName": "Account Name",
-    "address": "Address",
-    "algorithm": "Algorithm",
-    "allDay": "All Day Event",
-    "amount": "Amount (optional)",
-    "amountBrl": "Amount (BRL, optional)",
-    "amountEur": "Amount (EUR)",
-    "amountInr": "Amount (INR, optional)",
-    "amountSgd": "Amount (SGD, optional)",
-    "amountThb": "Amount (THB, optional)",
-    "androidIntent": "Android Intent",
-    "appLink": "App Deep Link (Android/iOS)",
-    "assetInventory": "Asset/Inventory Tag",
-    "assetItemId": "Asset/Item ID",
-    "assetType": "Asset Type",
-    "attendeeName": "Attendee Name",
-    "audio": "Audio",
-    "baseUrl": "Base URL",
-    "batchLot": "Batch/Lot (optional)",
-    "beneficiaryName": "Beneficiary Name",
-    "bicSwift": "BIC/SWIFT (optional)",
-    "birthday": "Birthday",
-    "bitcoin": "Bitcoin",
-    "bizcard": "BizCard (Legacy)",
-    "bluetooth": "Bluetooth",
-    "body": "Message Body",
-    "bodyOptional": "Body (optional)",
-    "box": "Box",
-    "calendar": "Calendar",
-    "calendarName": "Calendar Name",
-    "calendarSubscription": "Calendar Subscribe",
-    "calendarUrl": "Calendar URL (ICS/WebCal)",
-    "campaignContent": "Campaign Content (optional)",
-    "campaignMedium": "Campaign Medium",
-    "campaignName": "Campaign Name",
-    "campaignSource": "Campaign Source",
-    "campaignTerm": "Campaign Term (optional)",
-    "city": "City",
-    "cityOptional": "City (optional)",
-    "cloudLink": "Cloud Storage Link",
-    "company": "Company",
-    "contact": "Contact",
-    "contentType": "Content Type",
-    "core": "Core",
-    "country": "Country",
-    "crypto": "Crypto (BTC, ETH, etc.)",
-    "cryptocurrency": "Cryptocurrency",
-    "custom": "Custom Format",
-    "customScheme": "Custom Scheme",
-    "dateTime": "Date & Time",
-    "deepLinkUrl": "Deep Link URL",
-    "description": "Description",
-    "deviceAddress": "Device Address (MAC)",
-    "deviceName": "Device Name (optional)",
-    "digits": "Digits",
-    "documentsMedia": "Documents & Media",
-    "dropbox": "Dropbox",
-    "email": "Email",
-    "emailAddress": "Email Address",
-    "encryption": "Encryption",
-    "end": "End",
-    "endDate": "End Date",
-    "enterprise": "Enterprise",
-    "epcSepa": "EPC / SEPA (EU)",
-    "equipment": "Equipment",
-    "ethereum": "Ethereum",
-    "event": "iCalendar Event",
-    "eventName": "Event Name",
-    "eventRsvp": "Event RSVP Link",
-    "eventTicket": "Event Ticket",
-    "expiryDate": "Expiry Date (optional)",
-    "facebook": "Facebook",
-    "fallbackUrl": "Fallback URL (optional)",
-    "fax": "Fax",
-    "fileType": "File Type",
-    "fileUrl": "File / Document URL",
-    "firstName": "First Name",
-    "forceHttps": "Force HTTPS",
-    "fullName": "Full Name",
-    "furniture": "Furniture",
-    "geo": "Geo Location",
-    "github": "GitHub",
-    "googleDrive": "Google Drive",
-    "gs1DigitalLink": "GS1 Digital Link",
-    "gtin": "GTIN (Global Trade Item Number)",
-    "hidden": "Hidden Network",
-    "homePhone": "Home Phone",
-    "iban": "IBAN",
-    "idType": "ID Type",
-    "image": "Image",
-    "instagram": "Instagram",
-    "inventoryItem": "Inventory Item",
-    "iosUniversal": "iOS Universal",
-    "issuer": "Issuer",
-    "itAsset": "IT Asset",
-    "label": "Label (optional)",
-    "lastName": "Last Name",
-    "latitude": "Latitude",
-    "linkType": "Link Type",
-    "linkedin": "LinkedIn",
-    "litecoin": "Litecoin",
-    "location": "Location",
-    "locationNetwork": "Location & Network",
-    "longitude": "Longitude",
-    "lookupUrl": "Lookup URL (optional)",
-    "marketing": "Marketing",
-    "marketingTags": "Marketing Tags",
-    "maxLengthGuard": "Max Length Guard",
-    "mecard": "MeCard Contact",
-    "merchantName": "Merchant Name (optional)",
-    "message": "Message",
-    "messageOptional": "Message (optional)",
-    "messagingLink": "WhatsApp / Telegram / Signal",
-    "messenger": "Messenger",
-    "mobileNumber": "Mobile Number",
-    "mobilePhone": "Mobile Phone",
-    "name": "Name",
-    "nationalIdTaxId": "National ID / Tax ID",
-    "nickname": "Nickname",
-    "normalizeNewlines": "Normalize Newlines",
-    "note": "Note",
-    "oneDrive": "OneDrive",
-    "openNoPassword": "Open (No Password)",
-    "organization": "Organization",
-    "other": "Other",
-    "otpAuth": "OTP Authenticator",
-    "otpType": "Type",
-    "password": "Password",
-    "payeeName": "Payee Name",
-    "payments": "Payments (Open Specs)",
-    "paynow": "PayNow (Singapore)",
-    "phone": "Phone",
-    "phoneUsername": "Phone/Username",
-    "pix": "PIX (Brazil)",
-    "pixKey": "PIX Key",
-    "plainText": "Plain Text",
-    "platform": "Platform",
-    "prefilledMessage": "Pre-filled Message (optional)",
-    "profileUrl": "Profile URL",
-    "promptPayId": "PromptPay ID",
-    "promptpay": "PromptPay (Thailand)",
-    "proxyType": "Proxy Type",
-    "rawData": "Raw Data",
-    "recipient": "Recipient",
-    "reference": "Reference",
-    "referenceOptional": "Reference (optional)",
-    "resolverDomain": "Resolver Domain",
-    "rsvpUrl": "RSVP URL",
-    "searchQuery": "Search Query (optional)",
-    "seat": "Seat",
-    "secretBase32": "Secret (Base32)",
-    "sectionZone": "Section/Zone",
-    "securityType": "Security Type",
-    "serialNumber": "Serial Number (optional)",
-    "service": "Service",
-    "shortLink": "Short Link Redirect",
-    "shortUrl": "Short URL",
-    "signal": "Signal",
-    "sms": "SMS",
-    "smsMms": "SMS / MMS",
-    "socialMessaging": "Social & Messaging",
-    "socialProfile": "Social Profile",
-    "ssid": "Network Name (SSID)",
-    "start": "Start",
-    "startDate": "Start Date",
-    "state": "State/Province",
-    "street": "Street",
-    "subject": "Subject",
-    "subjectOptional": "Subject (optional)",
-    "summary": "Event Title",
-    "tel": "Phone Number",
-    "telegram": "Telegram",
-    "text": "Text Content",
-    "ticketId": "Ticket ID",
-    "tiktok": "TikTok",
-    "title": "Title",
-    "transactionNote": "Transaction Note (optional)",
-    "trimWhitespace": "Trim Whitespace",
-    "uenMobile": "UEN/Mobile Number",
-    "universalLink": "Universal Link",
-    "upi": "UPI (India)",
-    "upiId": "UPI ID (VPA)",
-    "url": "URL",
-    "utmCampaign": "utm_campaign",
-    "utmContent": "utm_content",
-    "utmLink": "UTM Campaign Link",
-    "utmMedium": "utm_medium",
-    "utmSource": "utm_source",
-    "utmTerm": "utm_term",
-    "validateInput": "Validate Input",
-    "validationOptions": "Validation Options",
-    "validationUrl": "Validation URL (optional)",
-    "vcard": "vCard Contact",
-    "vehicle": "Vehicle",
-    "venue": "Venue",
-    "vevent": "Calendar Event",
-    "viber": "Viber",
-    "video": "Video",
-    "walletAddress": "Address",
-    "website": "Website",
-    "whatsapp": "WhatsApp",
-    "wifi": "WiFi",
-    "wifiNetwork": "WiFi Network",
-    "wordDocument": "Word Document",
-    "workPhone": "Work Phone",
-    "youtube": "YouTube",
-    "zip": "ZIP/Postal Code"
+    "accountName": "অ্যাকাউন্টের নাম",
+    "address": "ঠিকানা",
+    "algorithm": "671\t\"অ্যালগরিদম\"",
+    "allDay": "সারাদিনের অনুষ্ঠান",
+    "amount": "\"পরিমাণ (ঐচ্ছিক)”",
+    "amountBrl": "\"পরিমাণ (বিআরএল, ঐচ্ছিক)”",
+    "amountEur": "পরিমাণ (EUR)",
+    "amountInr": "\"পরিমাণ (INR, ঐচ্ছিক)”",
+    "amountSgd": "\"পরিমাণ (SGD, ঐচ্ছিক)”",
+    "amountThb": "\"পরিমাণ (THB, ঐচ্ছিক)”",
+    "androidIntent": "\"অ্যান্ড্রয়েড ইন্টেন্ট”",
+    "appLink": "\"অ্যাপ ডিপ লিংক (অ্যান্ড্রয়েড/আইওএস)”",
+    "assetInventory": "\"সম্পদ/ইনভেন্টরি ট্যাগ”",
+    "assetItemId": "\"সম্পদ/আইটেম আইডি”",
+    "assetType": "সম্পত্তির ধরণ",
+    "attendeeName": "অংশগ্রহণকারীদের নাম",
+    "audio": "অডিও",
+    "baseUrl": "\"বেস ইউআরএল”",
+    "batchLot": "\"ব্যাচ/লট (ঐচ্ছিক)”",
+    "beneficiaryName": "\"সুবিধাভোগীর নাম”",
+    "bicSwift": "\"বিআইসি/সুইফট (ঐচ্ছিক)”",
+    "birthday": "জন্মদিন",
+    "bitcoin": "বিটকয়েন",
+    "bizcard": "বিজকার্ড (উত্তরাধিকার)",
+    "bluetooth": "ব্লুটুথ",
+    "body": "মূল অংশ\"",
+    "bodyOptional": "বডি (ঐচ্ছিক)",
+    "box": "বাক্স",
+    "calendar": "ক্যালেন্ডার",
+    "calendarName": "ক্যালেন্ডারের নাম",
+    "calendarSubscription": "\"ক্যালেন্ডার সাবস্ক্রাইব”",
+    "calendarUrl": "\"ক্যালেন্ডার URL (ICS/WebCal)”",
+    "campaignContent": "\"প্রচারণার বিষয়বস্তু (ঐচ্ছিক)”",
+    "campaignMedium": "প্রচারণার মাধ্যম",
+    "campaignName": "প্রচারণার নাম",
+    "campaignSource": "প্রচারণার উৎস",
+    "campaignTerm": "\"প্রচারণার মেয়াদ (ঐচ্ছিক)”",
+    "city": "শহর",
+    "cityOptional": "শহর (ঐচ্ছিক)",
+    "cloudLink": "\"ক্লাউড স্টোরেজ লিঙ্ক”",
+    "company": "কোম্পানি",
+    "contact": "যোগাযোগ",
+    "contentType": "বিষয়বস্তুর ধরণ",
+    "core": "কোর",
+    "country": "দেশ",
+    "crypto": "\"ক্রিপ্টো (বিটিসি, ইটিএইচ, ইত্যাদি)”",
+    "cryptocurrency": "ক্রিপ্টোকারেন্সি",
+    "custom": "কাস্টম ফর্ম্যাট",
+    "customScheme": "কাস্টম স্কিম",
+    "dateTime": "তারিখ এবং সময়",
+    "deepLinkUrl": "\"গভীর লিঙ্কের URL”",
+    "description": "বর্ণনা",
+    "deviceAddress": "\"ডিভাইস ঠিকানা (MAC)”",
+    "deviceName": "\"ডিভাইসের নাম (ঐচ্ছিক)”",
+    "digits": "অঙ্ক",
+    "documentsMedia": "ডকুমেন্টস এবং মিডিয়া",
+    "dropbox": "ড্রপবক্স",
+    "email": "\"ইমেল”",
+    "emailAddress": "\"ইমেল ঠিকানা”",
+    "encryption": "এনক্রিপশন",
+    "end": "শেষ",
+    "endDate": "শেষ তারিখ",
+    "enterprise": "এন্টারপ্রাইজ",
+    "epcSepa": "\"ইপিসি / এসইপিএ (ইইউ)”",
+    "equipment": "সরঞ্জাম",
+    "ethereum": "ইথেরিয়াম",
+    "event": "\"আইক্যালেন্ডার ইভেন্ট”",
+    "eventName": "ইভেন্টের নাম",
+    "eventRsvp": "\"ইভেন্টের আরএসভিপি লিঙ্ক”",
+    "eventTicket": "ইভেন্ট টিকিট",
+    "expiryDate": "\"মেয়াদ শেষ হওয়ার তারিখ (ঐচ্ছিক)”",
+    "facebook": "ফেসবুক",
+    "fallbackUrl": "\"ফলব্যাক URL (ঐচ্ছিক)”",
+    "fax": "ফ্যাক্স",
+    "fileType": "ফাইলের ধরণ",
+    "fileUrl": "\"ফাইল / ডকুমেন্ট URL”",
+    "firstName": "প্রথম নাম",
+    "forceHttps": "\"জোরপূর্বক HTTPS”",
+    "fullName": "পুরো নাম",
+    "furniture": "আসবাবপত্র",
+    "geo": "জিও লোকেশন",
+    "github": "গিটহাব",
+    "googleDrive": "\"গুগল ড্রাইভ”",
+    "gs1DigitalLink": "\"GS1 ডিজিটাল লিঙ্ক”",
+    "gtin": "(গ্লোবাল ট্রেড আইটেম নম্বর)”",
+    "hidden": "লুকানো নেটওয়ার্ক",
+    "homePhone": "হোম ফোন",
+    "iban": "\"আইবিএএন”",
+    "idType": "\"আইডি টাইপ”",
+    "image": "ছবি",
+    "instagram": "ইনস্টাগ্রাম",
+    "inventoryItem": "ইনভেন্টরি আইটেম",
+    "iosUniversal": "\"আইওএস ইউনিভার্সাল”",
+    "issuer": "ইস্যুকারী",
+    "itAsset": "আইটি সম্পদ",
+    "label": "\"লেবেল (ঐচ্ছিক)”",
+    "lastName": "শেষ নাম",
+    "latitude": "অক্ষাংশ",
+    "linkType": "\"লিংকের ধরণ”",
+    "linkedin": "লিঙ্কডইন",
+    "litecoin": "লাইটকয়েন",
+    "location": "অবস্থান",
+    "locationNetwork": "অবস্থান ও নেটওয়ার্ক",
+    "longitude": "দ্রাঘিমাংশ",
+    "lookupUrl": "\"লুকআপ ইউআরএল (ঐচ্ছিক)”",
+    "marketing": "বিপণন",
+    "marketingTags": "\"মার্কেটিং ট্যাগ”",
+    "maxLengthGuard": "সর্বোচ্চ দৈর্ঘ্য গার্ড",
+    "mecard": "\"মিকার্ড যোগাযোগ”",
+    "merchantName": "\"ব্যবসায়ীর নাম (ঐচ্ছিক)”",
+    "message": "বার্তা",
+    "messageOptional": "\"বার্তা (ঐচ্ছিক)”",
+    "messagingLink": "\"হোয়াটসঅ্যাপ / টেলিগ্রাম / সিগন্যাল”",
+    "messenger": "বার্তাবাহক",
+    "mobileNumber": "\"মোবাইল নম্বর”",
+    "mobilePhone": "মোবাইল ফোন",
+    "name": "নাম",
+    "nationalIdTaxId": "\"জাতীয় পরিচয়পত্র / কর পরিচয়পত্র”",
+    "nickname": "ডাকনাম",
+    "normalizeNewlines": "নতুন লাইনগুলিকে স্বাভাবিক করুন",
+    "note": "নোট",
+    "oneDrive": "ওয়ানড্রাইভ",
+    "openNoPassword": "\"খোলা (পাসওয়ার্ড নেই)”",
+    "organization": "সংগঠন",
+    "other": "অন্যান্য",
+    "otpAuth": "\"ওটিপি প্রমাণীকরণকারী”",
+    "otpType": "প্রকার",
+    "password": "পাসওয়ার্ড",
+    "payeeName": "প্রাপকের নাম",
+    "payments": "\"পেমেন্ট (ওপেন স্পেসিফিকেশন)”",
+    "paynow": "\"পেনাউ (সিঙ্গাপুর)”",
+    "phone": "ফোন",
+    "phoneUsername": "\"ফোন/ব্যবহারকারীর নাম”",
+    "pix": "\"পিআইএক্স (ব্রাজিল)”",
+    "pixKey": "পিক্স কী",
+    "plainText": "সরল লেখা",
+    "platform": "প্ল্যাটফর্ম",
+    "prefilledMessage": "\"পূর্ব-পূর্ণ বার্তা (ঐচ্ছিক)”",
+    "profileUrl": "\"প্রোফাইল URL”",
+    "promptPayId": "\"প্রম্পটপে আইডি”",
+    "promptpay": "\"প্রম্পটপে (থাইল্যান্ড)”",
+    "proxyType": "প্রক্সি টাইপ",
+    "rawData": "কাঁচা তথ্য",
+    "recipient": "প্রাপক",
+    "reference": "রেফারেন্স",
+    "referenceOptional": "\"রেফারেন্স (ঐচ্ছিক)”",
+    "resolverDomain": "ডোমেন”",
+    "rsvpUrl": "\"আরএসভিপি ইউআরএল”",
+    "searchQuery": "\"অনুসন্ধান প্রশ্ন (ঐচ্ছিক)”",
+    "seat": "আসন",
+    "secretBase32": "গোপন (বেস৩২)",
+    "sectionZone": "বিভাগ/জোন",
+    "securityType": "\"নিরাপত্তার ধরণ”",
+    "serialNumber": "\"ক্রমিক নম্বর (ঐচ্ছিক)”",
+    "service": "সেবা",
+    "shortLink": "সংক্ষিপ্ত লিঙ্ক পুনঃনির্দেশ",
+    "shortUrl": "\"সংক্ষিপ্ত URL”",
+    "signal": "সংকেত",
+    "sms": "\"এসএমএস”",
+    "smsMms": "\"এসএমএস / এমএমএস”",
+    "socialMessaging": "সামাজিক ও বার্তাপ্রেরণ",
+    "socialProfile": "সামাজিক প্রোফাইল",
+    "ssid": "\"নেটওয়ার্কের নাম (SSID)”",
+    "start": "শুরু",
+    "startDate": "শুরু তারিখ",
+    "state": "রাজ্য/প্রদেশ",
+    "street": "রাস্তা",
+    "subject": "বিষয়",
+    "subjectOptional": "\"বিষয় (ঐচ্ছিক)”",
+    "summary": "ইভেন্টের শিরোনাম",
+    "tel": "ফোন নম্বর",
+    "telegram": "টেলিগ্রাম",
+    "text": "পাঠ্য বিষয়বস্তু",
+    "ticketId": "\"টিকিট আইডি”",
+    "tiktok": "টিকটক",
+    "title": "শিরোনাম",
+    "transactionNote": "\"লেনদেনের নোট (ঐচ্ছিক)”",
+    "trimWhitespace": "ছাঁটাই হোয়াইটস্পেস",
+    "uenMobile": "\"UEN/মোবাইল নম্বর”",
+    "universalLink": "ইউনিভার্সাল লিংক",
+    "upi": "ইউপিআই (ভারত)",
+    "upiId": "\"ইউপিআই আইডি (ভিপিএ)”",
+    "url": "\"ইউআরএল”",
+    "utmCampaign": "\"utm_campaign”",
+    "utmContent": "\"utm_content”",
+    "utmLink": "\"ইউটিএম ক্যাম্পেইন লিংক”",
+    "utmMedium": "\"utm_medium”",
+    "utmSource": "\"utm_source”",
+    "utmTerm": "\"utm_term”",
+    "validateInput": "যাচাই করুন”",
+    "validationOptions": "বিকল্প\"",
+    "validationUrl": "\"যাচাইকরণ URL (ঐচ্ছিক)”",
+    "vcard": "\"ভিকার্ড যোগাযোগ”",
+    "vehicle": "যানবাহন",
+    "venue": "স্থান",
+    "vevent": "ইভেন্ট\"",
+    "viber": "ভাইবার",
+    "video": "ভিডিও",
+    "walletAddress": "ঠিকানা",
+    "website": "\"ওয়েবসাইট”",
+    "whatsapp": "হোয়াটসঅ্যাপ",
+    "wifi": "ওয়াইফাই",
+    "wifiNetwork": "ওয়াইফাই নেটওয়ার্ক",
+    "wordDocument": "শব্দ নথি",
+    "workPhone": "কাজের ফোন",
+    "youtube": "ইউটিউব",
+    "zip": "\"জিপ/পোস্টাল কোড”"
   },
   "preview": {
-    "qrCodePreview": "QR Code Preview - Click Export to download",
-    "simulating": "Simulating",
-    "simulationActive": "Environmental simulation active - Preview shows how QR code may appear under different conditions"
+    "qrCodePreview": "কোড প্রিভিউ - ডাউনলোড করতে এক্সপোর্টে ক্লিক করুন”",
+    "simulating": "সিমুলেট",
+    "simulationActive": "সিমুলেশন সক্রিয় - প্রিভিউ দেখায় কিভাবে বিভিন্ন পরিস্থিতিতে QR কোড প্রদর্শিত হতে পারে”"
   },
   "qr": {
-    "additionalBorder": "Additional border beyond quiet zone",
-    "alphanumeric": "Alphanumeric",
-    "auto": "Auto",
-    "autoMin": "Auto (min: {{version}})",
-    "autoOptimal": "Auto (Optimal)",
-    "byteUtf8": "Byte / UTF-8",
-    "contrastRatio": "{{count}}:1",
-    "encodingMode": "Encoding Mode",
-    "enforceMinQuietZone": "Enforce Min Quiet Zone",
-    "enforceMinQuietZoneDesc": "Ensure ≥4 module margin",
-    "errorCorrection": "Error Correction",
-    "extraBorderModules": "Extra Border Modules",
-    "high": "H - High (30%)",
-    "kanji": "Kanji",
-    "low": "L - Low (7%)",
-    "margin": "Quiet Zone (Margin)",
-    "mask": "Mask Pattern",
-    "medium": "M - Medium (15%)",
-    "moduleSize": "Module Size",
-    "nDegrees": "{{count}}°",
-    "nModules": "{{count}} modules",
-    "nMs": "{{count}}ms",
-    "nPercent": "{{count}}%",
-    "nPx": "{{count}}px",
-    "numericOnly": "Numeric Only",
-    "quartile": "Q - Quartile (25%)",
-    "version": "Version"
+    "additionalBorder": "শান্ত অঞ্চলের বাইরে অতিরিক্ত সীমানা",
+    "alphanumeric": "বর্ণসংখ্যা",
+    "auto": "অটো",
+    "autoMin": "\"স্বয়ংক্রিয় (সর্বনিম্ন\t {{সংস্করণ}})”",
+    "autoOptimal": "অটো (অনুকূল)",
+    "byteUtf8": "\"বাইট / ইউটিএফ-৮”",
+    "contrastRatio": "\"{{গণনা}}\t১”",
+    "encodingMode": "এনকোডিং মোড",
+    "enforceMinQuietZone": "\"ন্যূনতম শান্ত অঞ্চল প্রয়োগ করুন”",
+    "enforceMinQuietZoneDesc": "\"≥৪ মডিউল মার্জিন নিশ্চিত করুন”",
+    "errorCorrection": "ত্রুটি সংশোধন",
+    "extraBorderModules": "অতিরিক্ত বর্ডার মডিউল",
+    "high": "\"উচ্চ - উচ্চ (৩০%)”",
+    "kanji": "কাঞ্জি",
+    "low": "\"এল - নিম্ন (৭%)”",
+    "margin": "শান্ত অঞ্চল (মার্জিন)",
+    "mask": "মাস্ক প্যাটার্ন",
+    "medium": "\"এম - মাঝারি (১৫%)”",
+    "moduleSize": "\"মডিউলের আকার”",
+    "nDegrees": "\"{{গণনা}}°”",
+    "nModules": "\"{{গণনা}} মডিউল”",
+    "nMs": "\"{{গণনা}}মিলিসেকেন্ড”",
+    "nPercent": "\"{{গণনা}}%”",
+    "nPx": "\"{{গণনা}}পিক্সেল”",
+    "numericOnly": "\"শুধুমাত্র সংখ্যাসূচক”",
+    "quartile": "\"কিউ - কোয়ার্টাইল (২৫%)”",
+    "version": "সংস্করণ"
   },
   "render": {
-    "addColor": "Add Color",
-    "alignmentStyle": "Alignment Pattern Style",
-    "background": "Background",
-    "byBrightness": "By Brightness",
-    "byCluster": "By Cluster",
-    "byOverlay": "By Overlay",
-    "byPosition": "By Position",
-    "ceil": "Ceil",
-    "circle": "Circle",
-    "classic": "Classic",
-    "colorPalette": "Color Palette",
-    "conic": "Conic",
-    "connected": "Connected",
-    "contrastGuard": "Contrast Guard",
-    "cornerRadius": "Corner Radius",
-    "crispEdges": "Crisp Edges",
-    "crispEdgesDesc": "Use image-rendering: pixelated for sharp edges",
-    "dashed": "Dashed",
-    "diamond": "Diamond",
-    "dotRotation": "Dot Rotation",
-    "dots": "Dots",
-    "eyeInnerStyle": "Eye Inner Style",
-    "eyeOuterStyle": "Eye Outer Style",
-    "eyeScale": "Eye Scale",
-    "finderStyle": "Finder Pattern Style",
-    "floor": "Floor",
-    "foreground": "Foreground",
-    "frameStyle": "Frame Style",
-    "frameText": "Frame Text",
-    "gapMode": "Gap Mode",
-    "gradient": "Gradient",
-    "gradientAngle": "Gradient Angle",
-    "gradientColors": "Colors",
-    "gradientType": "Gradient Type",
-    "inset": "Inset",
-    "linear": "Linear",
-    "matchFinder": "Match Finder",
-    "matchModule": "Match Module",
-    "minContrastRatio": "Min Contrast Ratio",
-    "moduleGap": "Module Gap",
-    "negativeSpace": "Negative Space",
-    "none": "None",
-    "perModuleColorMode": "Per-Module Color Mode",
-    "pixelSnap": "Pixel Snap",
-    "radial": "Radial",
-    "round": "Round",
-    "rounded": "Rounded",
-    "roundedFrame": "Rounded Frame",
-    "shape": "Module Style",
-    "sharp": "Sharp",
-    "smooth": "Smooth",
-    "solid": "Solid",
-    "square": "Square",
-    "squares": "Squares",
-    "sticker": "Sticker",
-    "stroke": "Stroke",
-    "style": "Style",
-    "tag": "Tag",
-    "timingStyle": "Timing Pattern Style",
-    "transparentBg": "Transparent Background"
+    "addColor": "রঙ যোগ করুন",
+    "alignmentStyle": "অ্যালাইনমেন্ট প্যাটার্ন স্টাইল",
+    "background": "পটভূমি",
+    "byBrightness": "উজ্জ্বলতার মাধ্যমে",
+    "byCluster": "অনুসারে\"",
+    "byOverlay": "দ্বারা\"",
+    "byPosition": "অনুসারে\"",
+    "ceil": "904\t\"সিল\"",
+    "circle": "905\t\"বৃত্ত\"",
+    "classic": "343\t\"ক্লাসিক\"",
+    "colorPalette": "প্যালেট\"",
+    "conic": "কনিক",
+    "connected": "908\t\"সংযুক্ত\"",
+    "contrastGuard": "গার্ড\"",
+    "cornerRadius": "কোণার ব্যাসার্ধ",
+    "crispEdges": "ক্রিস্প এজেস",
+    "crispEdgesDesc": "ব্যবহার করুন\t ধারালো প্রান্তের জন্য পিক্সেলেটেড”",
+    "dashed": "ড্যাশড",
+    "diamond": "হীরা",
+    "dotRotation": "বিন্দু ঘূর্ণন",
+    "dots": "বিন্দু",
+    "eyeInnerStyle": "চোখের ভেতরের স্টাইল",
+    "eyeOuterStyle": "চোখের বাইরের স্টাইল",
+    "eyeScale": "চোখের স্কেল",
+    "finderStyle": "ফাইন্ডার প্যাটার্ন স্টাইল",
+    "floor": "মেঝে",
+    "foreground": "অগ্রভাগ",
+    "frameStyle": "ফ্রেম স্টাইল",
+    "frameText": "ফ্রেম টেক্সট",
+    "gapMode": "গ্যাপ মোড",
+    "gradient": "গ্রেডিয়েন্ট",
+    "gradientAngle": "গ্রেডিয়েন্ট অ্যাঙ্গেল",
+    "gradientColors": "রঙ",
+    "gradientType": "গ্রেডিয়েন্ট টাইপ",
+    "inset": "ইনসেট",
+    "linear": "লিনিয়ার",
+    "matchFinder": "ফাইন্ডার\"",
+    "matchModule": "ম্যাচ মডিউল",
+    "minContrastRatio": "ন্যূনতম বৈসাদৃশ্য অনুপাত",
+    "moduleGap": "মডিউল গ্যাপ",
+    "negativeSpace": "নেতিবাচক স্থান",
+    "none": "কোনটিই নয়",
+    "perModuleColorMode": "রঙ মোড\"",
+    "pixelSnap": "পিক্সেল স্ন্যাপ",
+    "radial": "রেডিয়াল",
+    "round": "রাউন্ড",
+    "rounded": "গোলাকার",
+    "roundedFrame": "গোলাকার ফ্রেম",
+    "shape": "মডিউল স্টাইল",
+    "sharp": "শার্প",
+    "smooth": "মসৃণ",
+    "solid": "কঠিন",
+    "square": "বর্গক্ষেত্র",
+    "squares": "স্কোয়ার",
+    "sticker": "স্টিকার",
+    "stroke": "স্ট্রোক",
+    "style": "স্টাইল",
+    "tag": "ট্যাগ",
+    "timingStyle": "টাইমিং প্যাটার্ন স্টাইল",
+    "transparentBg": "স্বচ্ছ পটভূমি"
   },
   "safety": {
-    "analysis": "Safety Analysis",
-    "autoPickEcc": "Auto-Pick ECC",
-    "autoPickVersion": "Auto-Pick Version",
-    "autoReduceIntensity": "Auto-Reduce Intensity",
-    "autoTuning": "Auto-Tuning",
-    "balanced": "Balanced",
-    "contrast": "Contrast Ratio",
-    "contrastCheck": "Contrast Check",
-    "contrastRatio": "Contrast Ratio",
-    "excellent": "Excellent",
-    "fair": "Fair",
-    "good": "Good",
-    "lockAlignment": "Lock Alignment",
-    "lockFinders": "Lock Finders",
-    "lockFormat": "Lock Format Info",
-    "lockTiming": "Lock Timing",
-    "lockVersion": "Lock Version Info",
-    "minModuleSize": "Min Module Size",
-    "minQuietZone": "Min Quiet Zone",
-    "off": "Off",
-    "poor": "Poor",
-    "protectionLocks": "Protection Locks",
-    "qualityAnalysis": "Quality Analysis",
-    "quietZone": "Quiet Zone",
-    "safetyMode": "Safety Mode",
-    "scanability": "Scanability Score",
-    "showHeatmap": "Show Heatmap",
-    "simulateBlur": "Simulate Blur",
-    "simulateNoise": "Simulate Noise",
-    "simulateRotation": "Simulate Rotation",
-    "strict": "Strict",
-    "untilScannable": "Until scannable"
+    "analysis": "বিশ্লেষণ\"",
+    "autoPickEcc": "অটো-পিক ইসিসি",
+    "autoPickVersion": "অটো-পিক ভার্সন",
+    "autoReduceIntensity": "স্বয়ংক্রিয়ভাবে তীব্রতা হ্রাস করুন",
+    "autoTuning": "অটো-টিউনিং",
+    "balanced": "ভারসাম্যপূর্ণ",
+    "contrast": "কনট্রাস্ট রেশিও",
+    "contrastCheck": "কনট্রাস্ট চেক",
+    "contrastRatio": "কনট্রাস্ট রেশিও",
+    "excellent": "চমৎকার",
+    "fair": "মেলা",
+    "good": "ভালো",
+    "lockAlignment": "লক অ্যালাইনমেন্ট",
+    "lockFinders": "লক ফাইন্ডার",
+    "lockFormat": "\"লক ফরম্যাট তথ্য”",
+    "lockTiming": "লক টাইমিং",
+    "lockVersion": "\"লক ভার্সন তথ্য”",
+    "minModuleSize": "\"ন্যূনতম মডিউল আকার”",
+    "minQuietZone": "ন্যূনতম শান্ত অঞ্চল",
+    "off": "বন্ধ",
+    "poor": "দরিদ্র",
+    "protectionLocks": "সুরক্ষা তালা",
+    "qualityAnalysis": "গুণমান বিশ্লেষণ",
+    "quietZone": "শান্ত অঞ্চল",
+    "safetyMode": "নিরাপত্তা মোড",
+    "scanability": "স্ক্যানেবিলিটি স্কোর",
+    "showHeatmap": "\"হিটম্যাপ দেখান”",
+    "simulateBlur": "অস্পষ্টতা অনুকরণ করুন",
+    "simulateNoise": "সিমুলেট করুন\"",
+    "simulateRotation": "অনুকরণ করুন\"",
+    "strict": "কঠোর",
+    "untilScannable": "\"স্ক্যান করা না হওয়া পর্যন্ত”"
   },
   "sections": {
-    "animation": "Animation",
-    "metadata": "Metadata",
-    "output": "Output",
-    "overlay": "Overlay / Image",
-    "payload": "Payload / Data",
-    "qrEncoding": "QR Encoding",
-    "rendering": "Rendering",
-    "safety": "Safety Analysis",
-    "share": "Share",
-    "watermark": "Watermark"
+    "animation": "অ্যানিমেশন",
+    "metadata": "মেটাডেটা",
+    "output": "আউটপুট",
+    "overlay": "ওভারলে / চিত্র",
+    "payload": "\"পেলোড / ডেটা”",
+    "qrEncoding": "\"কিউআর এনকোডিং”",
+    "rendering": "রেন্ডারিং",
+    "safety": "বিশ্লেষণ\"",
+    "share": "শেয়ার করুন",
+    "watermark": "ওয়াটারমার্ক"
   },
   "share": {
-    "copied": "Copied!",
-    "copyLink": "Copy Link",
-    "directLink": "Direct Link",
-    "directLinkDesc": "Generate shareable URL",
-    "embedHtml": "Embed HTML",
-    "embedHtmlDesc": "Generate embed code",
-    "encodeAllParams": "Encode All Parameters",
-    "encodeAllParamsDesc": "Include all settings in URL",
-    "markdown": "Markdown",
-    "quickShare": "Quick Share",
-    "twitter": "X/Twitter",
-    "whatsapp": "WhatsApp"
+    "copied": "কপি করা!",
+    "copyLink": "লিঙ্ক কপি করুন",
+    "directLink": "সরাসরি লিঙ্ক",
+    "directLinkDesc": "URL তৈরি করুন”",
+    "embedHtml": "\"এইচটিএমএল এম্বেড করুন”",
+    "embedHtmlDesc": "\"এম্বেড কোড তৈরি করুন”",
+    "encodeAllParams": "\"সকল প্যারামিটার এনকোড করুন”",
+    "encodeAllParamsDesc": "\"URL-এ সকল সেটিংস অন্তর্ভুক্ত করুন”",
+    "markdown": "মার্কডাউন",
+    "quickShare": "\"দ্রুত ভাগাভাগি”",
+    "twitter": "\"এক্স/টুইটার”",
+    "whatsapp": "হোয়াটসঅ্যাপ"
   },
   "tiers": {
-    "advanced": "Advanced",
-    "basic": "Basic",
-    "professional": "Pro",
-    "watchAdForPro": "Watch ad to unlock Professional features for 24 hours"
+    "advanced": "উন্নত",
+    "basic": "মৌলিক",
+    "professional": "প্রো",
+    "watchAdForPro": "\"২৪ ঘন্টা পেশাদার বৈশিষ্ট্যগুলি আনলক করতে বিজ্ঞাপন দেখুন”"
   },
   "watermark": {
-    "behindQr": "Behind QR",
-    "blendMode": "Blend Mode",
-    "bottomLeft": "Bottom Left",
-    "bottomRight": "Bottom Right",
-    "center": "Center",
-    "corners": "Corners",
-    "edges": "Edges",
-    "enabled": "Enable Watermark",
-    "fontColor": "Font Color",
-    "fontSize": "Font Size",
-    "image": "Image",
-    "multiply": "Multiply",
-    "normal": "Normal",
-    "opacity": "Opacity",
-    "overlay": "Overlay",
-    "pattern": "Pattern",
-    "position": "Position",
-    "quietZone": "Quiet Zone",
-    "screen": "Screen",
-    "text": "Text",
-    "textPlaceholder": "© Company Name",
-    "topLeft": "Top Left",
-    "topRight": "Top Right",
-    "type": "Type",
-    "uploadImage": "Upload Image"
+    "behindQr": "\"QR এর পিছনে”",
+    "blendMode": "মোড\"",
+    "bottomLeft": "নীচে বাম",
+    "bottomRight": "নীচে ডানদিকে",
+    "center": "কেন্দ্র",
+    "corners": "কোণ",
+    "edges": "প্রান্ত",
+    "enabled": "ওয়াটারমার্ক সক্ষম করুন",
+    "fontColor": "ফন্টের রঙ",
+    "fontSize": "ফন্ট সাইজ",
+    "image": "ছবি",
+    "multiply": "গুণ করুন",
+    "normal": "স্বাভাবিক",
+    "opacity": "অস্বচ্ছতা",
+    "overlay": "ওভারলে",
+    "pattern": "প্যাটার্ন",
+    "position": "অবস্থান",
+    "quietZone": "শান্ত অঞ্চল",
+    "screen": "স্ক্রিন",
+    "text": "টেক্সট",
+    "textPlaceholder": "\"© কোম্পানির নাম”",
+    "topLeft": "উপরে বাম",
+    "topRight": "উপরে ডানদিকে",
+    "type": "প্রকার",
+    "uploadImage": "ছবি আপলোড করুন"
   }
 }

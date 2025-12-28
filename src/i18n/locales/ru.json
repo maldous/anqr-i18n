@@ -1,1516 +1,1516 @@
 {
   "animation": {
-    "blueNoise": "Blue Noise",
-    "bounce": "Bounce (Ping-Pong)",
-    "colorCycle": "Color Cycle",
-    "crossfade": "Crossfade",
-    "drift": "Drift",
-    "enabled": "Enable Animation",
-    "everyNFrames": "Every {{count}} frame(s)",
-    "exportAllFrames": "Export All Frames",
-    "fadeIn": "Fade In",
-    "flickerSafe": "Flicker Safe",
-    "frameStep": "Frame Step",
-    "interpolation": "Interpolation",
-    "loop": "Loop Animation",
-    "maxFrames": "Max Frames",
-    "moduleJitter": "Module Jitter",
-    "moduleJitterWarning": "⚠️ May affect scannability",
-    "morph": "Morph",
-    "none": "None",
-    "off": "Off",
-    "pattern": "Generated Pattern",
-    "pulse": "Pulse",
-    "randomSeed": "Random Seed",
-    "rotate": "Rotate",
-    "scanline": "Scanline",
-    "shimmer": "Shimmer",
-    "slideIn": "Slide In",
-    "speed": "Frame Speed",
-    "startFrame": "Start Frame",
-    "temporalDither": "Temporal Dither",
-    "wave": "Wave"
+    "blueNoise": "Синий шум",
+    "bounce": "Отскок (пинг-понг)",
+    "colorCycle": "Цветовой цикл",
+    "crossfade": "Перекрестное затухание",
+    "drift": "Дрифт",
+    "enabled": "Включить анимацию",
+    "everyNFrames": "Каждый {{count}} кадр(а)",
+    "exportAllFrames": "Экспорт всех кадров",
+    "fadeIn": "Постепенное нарастание",
+    "flickerSafe": "Безопасность мерцания",
+    "frameStep": "Этап формирования структуры",
+    "interpolation": "Интерполяция",
+    "loop": "Зацикленная анимация",
+    "maxFrames": "Максимальных кадров",
+    "moduleJitter": "Дрожание модуля",
+    "moduleJitterWarning": "⚠️ Может повлиять на возможность сканирования",
+    "morph": "Морф",
+    "none": "Нет",
+    "off": "Выкл.",
+    "pattern": "Сгенерированный шаблон",
+    "pulse": "Пульс",
+    "randomSeed": "Случайное начальное значение",
+    "rotate": "Поворот",
+    "scanline": "Сканирующая строка",
+    "shimmer": "Мерцание",
+    "slideIn": "Проскользнуть внутрь",
+    "speed": "Скорость кадра",
+    "startFrame": "Стартовый кадр",
+    "temporalDither": "Временное сглаживание",
+    "wave": "Волна"
   },
   "languages": {
-    "en": "English",
-    "hi": "Hindi",
-    "zh": "Chinese",
-    "ms": "Malay",
-    "ta": "Tamil",
-    "th": "Thai",
-    "pt": "Portuguese",
-    "id": "Indonesian",
-    "vi": "Vietnamese",
-    "tl": "Tagalog",
-    "ja": "Japanese",
-    "ko": "Korean",
-    "es": "Spanish",
-    "ar": "Arabic",
-    "ru": "Russian",
-    "te": "Telugu",
-    "mr": "Marathi",
-    "bn": "Bengali",
-    "gu": "Gujarati",
-    "kn": "Kannada",
-    "ml": "Malayalam",
-    "pa": "Punjabi"
+    "en": "Английский",
+    "hi": "Хинди",
+    "zh": "китайский",
+    "ms": "Малайский",
+    "ta": "Тамильский",
+    "th": "Тайский",
+    "pt": "португальский",
+    "id": "индонезийский",
+    "vi": "вьетнамский",
+    "tl": "Тагальский",
+    "ja": "японский",
+    "ko": "Корейский",
+    "es": "Испанский",
+    "ar": "Арабский",
+    "ru": "Русский",
+    "te": "Телугу",
+    "mr": "Маратхи",
+    "bn": "бенгальский",
+    "gu": "Гуджарати",
+    "kn": "Каннада",
+    "ml": "Малаялам",
+    "pa": "Пенджаби"
   },
   "app": {
     "name": "ANQR",
-    "tagline": "QR Code Generator"
+    "tagline": "Генератор QR-кодов"
   },
   "common": {
-    "allRightsReserved": "All rights reserved",
-    "apply": "Apply",
-    "back": "Back",
-    "cancel": "Cancel",
-    "close": "Close",
-    "copied": "Copied!",
-    "copy": "Copy",
-    "copyright": "© ANQR",
-    "delete": "Delete",
-    "disabled": "Disabled",
-    "download": "Download",
-    "edit": "Edit",
-    "enabled": "Enabled",
-    "error": "Error",
-    "filter": "Filter",
-    "less": "Less",
-    "loading": "Loading...",
-    "more": "More",
-    "next": "Next",
-    "no": "No",
-    "none": "None",
-    "off": "Off",
-    "ok": "OK",
-    "on": "On",
-    "previous": "Previous",
-    "reset": "Reset",
-    "save": "Save",
-    "search": "Search",
-    "select": "Select",
-    "showLess": "Show Less",
-    "showMore": "Show More",
-    "sort": "Sort",
-    "success": "Success",
-    "upload": "Upload",
-    "viewAll": "View All",
-    "yes": "Yes"
+    "allRightsReserved": "Все права защищены",
+    "apply": "Применить",
+    "back": "Назад",
+    "cancel": "Отмена",
+    "close": "Закрыть",
+    "copied": "Скопировано!",
+    "copy": "Копия",
+    "copyright": "“© ANQR”",
+    "delete": "Удалить",
+    "disabled": "Инвалид",
+    "download": "Скачать",
+    "edit": "Редактировать",
+    "enabled": "Включено",
+    "error": "Ошибка",
+    "filter": "Фильтр",
+    "less": "Меньше",
+    "loading": "Загрузка…",
+    "more": "Ещё",
+    "next": "Следующий",
+    "no": "Нет",
+    "none": "Нет",
+    "off": "Выкл.",
+    "ok": "ОК",
+    "on": "Вкл.",
+    "previous": "Предыдущий",
+    "reset": "Сброс",
+    "save": "Сохранить",
+    "search": "Поиск",
+    "select": "Выбрать",
+    "showLess": "Показать меньше",
+    "showMore": "Показать больше",
+    "sort": "Сортировка",
+    "success": "Успех",
+    "upload": "Загрузка",
+    "viewAll": "Посмотреть все",
+    "yes": "Да"
   },
-  "fileSaveFailed": "Failed to save file: {{error}}",
-  "fileSaved": "Saved to Documents: {{filename}}",
+  "fileSaveFailed": "Не удалось сохранить файл: {{error}}",
+  "fileSaved": "Сохранено в Документы: {{filename}}",
   "footer": {
-    "copyright": "© ANQR {{year}}"
+    "copyright": "“© ANQR {{year}}”"
   },
   "gallery": {
-    "all": "All",
-    "animationOverlay": "Animation",
-    "blendModes": "Blend Modes",
-    "collapse": "Collapse",
-    "colorModes": "Color Modes",
-    "colors": "Colors",
-    "contentTypes": "Content Types",
-    "dithering": "Dithering",
-    "encoding": "Encoding",
-    "expand": "Expand",
-    "filter": "Filter",
-    "imageOverlay": "Image Overlay",
+    "all": "Все",
+    "animationOverlay": "Анимация",
+    "blendModes": "Режимы смешивания",
+    "collapse": "Крах",
+    "colorModes": "Цветовые режимы",
+    "colors": "Цвета",
+    "contentTypes": "Типы контента",
+    "dithering": "Нерешительность",
+    "encoding": "Кодирование",
+    "expand": "Расширение",
+    "filter": "Фильтр",
+    "imageOverlay": "Наложение изображения",
     "items": {
       "anim-blue-noise": {
-        "description": "Blue noise threshold with animation",
-        "title": "Animated Blue Noise"
+        "description": "Порог синего шума с анимацией",
+        "title": "Анимированный синий шум"
       },
       "anim-blue-noise-i100": {
-        "description": "Animated blue noise at 100%",
-        "title": "Blue Noise 100%"
+        "description": "Анимированный синий шум на 100%",
+        "title": "Синий шум 100%"
       },
       "anim-blue-noise-i50": {
-        "description": "Animated blue noise at 50%",
-        "title": "Blue Noise 50%"
+        "description": "Анимированный синий шум на 50%",
+        "title": "Синий шум 50%"
       },
       "anim-blue-noise-i75": {
-        "description": "Animated blue noise at 75%",
-        "title": "Blue Noise 75%"
+        "description": "Анимированный синий шум на 75%",
+        "title": "Синий шум 75%"
       },
       "anim-brightness": {
-        "description": "Brightness with animation",
-        "title": "Animated Brightness"
+        "description": "Яркость с помощью анимации",
+        "title": "Анимированная яркость"
       },
       "anim-colormode-bw": {
-        "description": "B&W animated overlay",
-        "title": "Animated B&W"
+        "description": "Черно-белое анимированное наложение",
+        "title": "Анимационный черно-белый"
       },
       "anim-colormode-color": {
-        "description": "Color animated overlay",
-        "title": "Animated Color"
+        "description": "Цветное анимированное наложение",
+        "title": "Анимированный цвет"
       },
       "anim-colormode-grayscale": {
-        "description": "Grayscale animated overlay",
-        "title": "Animated Grayscale"
+        "description": "Анимированное наложение в оттенках серого",
+        "title": "Анимированные изображения в оттенках серого"
       },
       "anim-dithered": {
-        "description": "Error diffusion with animation",
-        "title": "Animated Dithered"
+        "description": "Рассеивание ошибок с помощью анимации",
+        "title": "Анимированный дизеринг"
       },
       "anim-duotone": {
-        "description": "Duotone with animation",
-        "title": "Animated Duotone"
+        "description": "Двухцветная печать с анимацией",
+        "title": "Анимированный дуотон"
       },
       "anim-halftone": {
-        "description": "Halftone dots with animation",
-        "title": "Animated Halftone"
+        "description": "Полутоновые точки с анимацией",
+        "title": "Анимированное полутоновое изображение"
       },
       "anim-mosaic": {
-        "description": "Mosaic with animation",
-        "title": "Animated Mosaic"
+        "description": "Мозаика с анимацией",
+        "title": "Анимированная мозаика"
       },
       "blend-classic": {
-        "description": "Dithered overlay with classic palette",
-        "title": "Classic Blend"
+        "description": "Дизерированное наложение с классической палитрой",
+        "title": "Классическая смесь"
       },
       "blend-forest": {
-        "description": "Dithered overlay with forest palette",
-        "title": "Forest Blend"
+        "description": "Дизерированное наложение с лесной палитрой",
+        "title": "Лесная смесь"
       },
       "blend-navy": {
-        "description": "Dithered overlay with navy palette",
-        "title": "Navy Blend"
+        "description": "Наложение с дизерингом в темно-синей цветовой палитре",
+        "title": "Синяя смесь"
       },
       "blend-wine": {
-        "description": "Dithered overlay with wine palette",
-        "title": "Wine Blend"
+        "description": "Дизертинговое наложение с винной палитрой",
+        "title": "Винная смесь"
       },
       "cmode-blue-noise-bw": {
-        "description": "Blue Noise in B&W",
-        "title": "Blue Noise B&W"
+        "description": "Синий шум в черно-белом варианте",
+        "title": "Синий шум, черно-белый"
       },
       "cmode-blue-noise-color": {
-        "description": "Blue Noise in Color",
-        "title": "Blue Noise Color"
+        "description": "Синий шум в цвете",
+        "title": "Цвет синего шума"
       },
       "cmode-dithered-color": {
-        "description": "Dithered in Color",
-        "title": "Dithered Color"
+        "description": "Смущенный цвет",
+        "title": "Дизертинг цвета"
       },
       "cmode-dithered-grayscale": {
-        "description": "Dithered in Grayscale",
-        "title": "Dithered Grayscale"
+        "description": "Дизертинг в оттенках серого",
+        "title": "Дизергированная шкала серого"
       },
       "cmode-halftone-bw": {
-        "description": "Halftone in B&W",
-        "title": "Halftone B&W"
+        "description": "Полутон в черно-белом варианте",
+        "title": "Полутоновое черно-белое изображение"
       },
       "cmode-halftone-color": {
-        "description": "Halftone in Color",
-        "title": "Halftone Color"
+        "description": "Полутон в цвете",
+        "title": "Полутоновый цвет"
       },
       "color-coral": {
-        "description": "#e85d04 on #ffe8d6",
-        "title": "Coral"
+        "description": "“#e85d04 on #ffe8d6”",
+        "title": "Коралл"
       },
       "color-coral-dots": {
-        "description": "Coral with dot modules",
-        "title": "Coral Dots"
+        "description": "Кораллы с точечными модулями",
+        "title": "коралловых точек"
       },
       "color-crimson": {
-        "description": "#9d0208 on #ffccd5",
-        "title": "Crimson"
+        "description": "“#9d0208 on #ffccd5”",
+        "title": "Багровый"
       },
       "color-forest": {
-        "description": "#1b4332 on #d8f3dc",
-        "title": "Forest"
+        "description": "“#1b4332 on #d8f3dc”",
+        "title": "Лес"
       },
       "color-forest-dots": {
-        "description": "Forest with dot modules",
-        "title": "Forest Dots"
+        "description": "Лес с точечными модулями",
+        "title": "Лесные точки"
       },
       "color-gold": {
-        "description": "#7f5539 on #ffe8cc",
-        "title": "Gold"
+        "description": "“#7f5539 on #ffe8cc”",
+        "title": "Золото"
       },
       "color-inverted": {
-        "description": "#ffffff on #000000",
-        "title": "Inverted"
+        "description": "“#ffffff on #000000”",
+        "title": "Перевернутый"
       },
       "color-midnight": {
-        "description": "#1a1a2e on #eef1ff",
-        "title": "Midnight"
+        "description": "“#1a1a2e on #eef1ff”",
+        "title": "Полночь"
       },
       "color-midnight-dots": {
-        "description": "Midnight with dot modules",
-        "title": "Midnight Dots"
+        "description": "Полночь с точечными модулями",
+        "title": "Полуночные точки"
       },
       "color-navy": {
-        "description": "#001d3d on #a2d2ff",
-        "title": "Navy"
+        "description": "“#001d3d on #a2d2ff”",
+        "title": "Военно-морской флот"
       },
       "color-ocean": {
-        "description": "#023e8a on #caf0f8",
-        "title": "Ocean"
+        "description": "“#023e8a on #caf0f8”",
+        "title": "Океан"
       },
       "color-ocean-dots": {
-        "description": "Ocean with dot modules",
-        "title": "Ocean Dots"
+        "description": "Океан с точечными модулями",
+        "title": "Океанических точек"
       },
       "color-royal": {
-        "description": "#4a0080 on #f5e6ff",
-        "title": "Royal"
+        "description": "“#4a0080 on #f5e6ff”",
+        "title": "Королевский"
       },
       "color-royal-dots": {
-        "description": "Royal with dot modules",
-        "title": "Royal Dots"
+        "description": "Королевский с точечными модулями",
+        "title": "Королевские точки"
       },
       "color-slate": {
-        "description": "#343a40 on #e9ecef",
-        "title": "Slate"
+        "description": "“#343a40 on #e9ecef”",
+        "title": "Сланец"
       },
       "color-sunset": {
-        "description": "#bf0603 on #fff3b0",
-        "title": "Sunset"
+        "description": "“#bf0603 on #fff3b0”",
+        "title": "Закат"
       },
       "color-sunset-dots": {
-        "description": "Sunset with dot modules",
-        "title": "Sunset Dots"
+        "description": "Закат с точечными модулями",
+        "title": "Закатных точек"
       },
       "color-teal": {
-        "description": "#006d77 on #e0f4f5",
-        "title": "Teal"
+        "description": "“#006d77 on #e0f4f5”",
+        "title": "Бирюзовый"
       },
       "combo-anim-dots-halftone": {
-        "description": "Animated halftone with dot modules",
-        "title": "Animated Dots + Halftone"
+        "description": "Анимированное полутоновое изображение с использованием точечных модулей",
+        "title": "Анимированные точки + полутон"
       },
       "combo-anim-rounded-blue-noise": {
-        "description": "Animated blue noise with rounded",
-        "title": "Animated Rounded + Blue Noise"
+        "description": "Анимированный синий шум с округлыми формами",
+        "title": "Анимированный округлый рисунок + синий шум"
       },
       "combo-connected-pixelate-teal": {
-        "description": "Pixelated overlay with connected modules",
+        "description": "Пиксельное наложение с подключенными модулями",
         "title": "Connected + Pixelate Teal"
       },
       "combo-connected-square": {
-        "description": "Connected modules with square finders",
+        "description": "Соединённые модули с квадратными искателями",
         "title": "Connected + Square"
       },
       "combo-connected-wave-ocean": {
-        "description": "Connected modules with wave effect",
+        "description": "Соединённые модули с волновым эффектом",
         "title": "Connected + Wave Ocean"
       },
       "combo-diamond-blue-noise-navy": {
-        "description": "Diamond modules with blue noise",
+        "description": "Алмазные модули с синим шумом",
         "title": "Diamond + Blue Noise Navy"
       },
       "combo-diamond-duotone-crimson": {
-        "description": "Duotone effect with diamond modules",
-        "title": "Diamond + Duotone Crimson"
+        "description": "Двухцветный эффект с алмазными модулями",
+        "title": "Бриллиант + Двухцветный малиновый"
       },
       "combo-diamond-rounded": {
-        "description": "Diamond modules with rounded finders",
-        "title": "Diamond + Rounded"
+        "description": "Алмазные модули с закругленными искателями",
+        "title": "Алмаз + Закругленный"
       },
       "combo-dots-circle": {
-        "description": "Dots modules with circle finders",
-        "title": "Dots + Circle"
+        "description": "Модули Dots с устройствами для поиска окружностей",
+        "title": "Точек + Круг"
       },
       "combo-dots-extreme-forest": {
-        "description": "Maximum visibility with dots",
-        "title": "Dots + Extreme Forest"
+        "description": "Максимальная видимость с помощью точек",
+        "title": "Точки + Экстремальный лес"
       },
       "combo-dots-halftone-gold": {
-        "description": "Dot modules with halftone overlay",
-        "title": "Dots + Halftone Gold"
+        "description": "Точечные модули с полутоновым наложением",
+        "title": "Точки + полутоновое золото"
       },
       "combo-dots-outline-slate": {
-        "description": "Edge detection with dot modules",
-        "title": "Dots + Outline Slate"
+        "description": "Обнаружение границ с помощью точечных модулей",
+        "title": "Доска для рисования точками и контурами"
       },
       "combo-rounded-dithered-royal": {
-        "description": "Classic dithered with rounded style",
-        "title": "Rounded + Dithered Royal"
+        "description": "Классическая нерешительность в сочетании с округлым стилем",
+        "title": "Округленный + Сглаженный Королевский"
       },
       "combo-rounded-mosaic-sunset": {
-        "description": "Rounded modules with mosaic overlay",
-        "title": "Rounded + Mosaic Sunset"
+        "description": "Закругленные модули с мозаичным наложением",
+        "title": "Закат с округлыми очертаниями и мозаикой"
       },
       "combo-rounded-rounded": {
-        "description": "Rounded modules with rounded finders",
-        "title": "Rounded + Rounded"
+        "description": "Закругленные модули с закругленными искателями",
+        "title": "Округленный + Округленный"
       },
       "combo-rounded-subpixel-coral": {
-        "description": "High-detail subpixel rendering",
-        "title": "Rounded + Subpixel Coral"
+        "description": "Высокодетальная субпиксельная отрисовка",
+        "title": "Округлый + субпиксельный коралл"
       },
       "content-email": {
-        "description": "Mailto link with coral colors",
-        "title": "Email Address"
+        "description": "Ссылка Mailto с коралловыми цветами",
+        "title": "Адрес электронной почты"
       },
       "content-event": {
-        "description": "iCal event with rounded royal",
-        "title": "Calendar Event"
+        "description": "iCal-мероприятие с округлым королевским шрифтом",
+        "title": "Календарное событие"
       },
       "content-geo": {
-        "description": "Map coords with connected gold",
-        "title": "Geo Location"
+        "description": "Координаты на карте с прикрепленным золотом",
+        "title": "Геолокация"
       },
       "content-sms": {
-        "description": "Pre-filled SMS with diamond teal",
-        "title": "SMS Message"
+        "description": "Предварительно заполненное SMS-сообщение с бирюзовым бриллиантовым оттенком",
+        "title": "SMS-сообщение"
       },
       "content-vcard": {
-        "description": "Contact card with rounded navy style",
-        "title": "vCard Contact"
+        "description": "Контактная карточка в закругленном стиле темно-синего цвета",
+        "title": "vCard Контакт"
       },
       "content-wifi": {
-        "description": "WiFi config with dots forest green",
-        "title": "WiFi Network"
+        "description": "Настройка Wi-Fi с точками, лесной зеленый",
+        "title": "Сеть Wi-Fi"
       },
       "dither-adaptive-threshold": {
-        "description": "Adaptive threshold",
-        "title": "Adaptive"
+        "description": "Адаптивный порог",
+        "title": "Адаптивный"
       },
       "dither-blue-noise": {
-        "description": "Blue noise threshold",
-        "title": "Blue Noise"
+        "description": "Порог синего шума",
+        "title": "Синий шум"
       },
       "dither-blue-noise-error-diffusion": {
-        "description": "Hybrid blue noise",
-        "title": "Blue Noise + Error"
+        "description": "Гибридный синий шум",
+        "title": "Синий шум + ошибка"
       },
       "dither-error-diffusion": {
-        "description": "Floyd-Steinberg style",
-        "title": "Error Diffusion"
+        "description": "В стиле Флойда-Штайнберга",
+        "title": "Распространение ошибок"
       },
       "dither-kernel-atkinson": {
-        "description": "Atkinson error diffusion",
-        "title": "Atkinson"
+        "description": "Распространение ошибок Аткинсона",
+        "title": "Аткинсон"
       },
       "dither-kernel-burkes": {
-        "description": "Burkes error diffusion",
-        "title": "Burkes"
+        "description": "Распространение ошибок Беркса",
+        "title": "Берк"
       },
       "dither-kernel-floyd-steinberg": {
-        "description": "Floyd-Steinberg error diffusion",
-        "title": "Floyd-Steinberg"
+        "description": "Распространение ошибок Флойда-Штайнберга",
+        "title": "Флойд-Штайнберг"
       },
       "dither-kernel-jarvis-judice-ninke": {
-        "description": "Jarvis-Judice-Ninke error diffusion",
-        "title": "Jarvis-Judice-Ninke"
+        "description": "Распространение ошибок Джарвиса-Джудиса-Нинке",
+        "title": "Джарвис-Джудис-Нинке"
       },
       "dither-kernel-sierra": {
-        "description": "Sierra error diffusion",
-        "title": "Sierra"
+        "description": "Распространение ошибок в Сьерре",
+        "title": "Сьерра"
       },
       "dither-kernel-stucki": {
-        "description": "Stucki error diffusion",
-        "title": "Stucki"
+        "description": "Распространение ошибок Штуки",
+        "title": "Штуки"
       },
       "dither-ordered-bayer": {
-        "description": "Bayer matrix dithering",
-        "title": "Ordered Bayer"
+        "description": "Дизеринг матрицы Байера",
+        "title": "Заказано компанией Bayer"
       },
       "dither-perceptual": {
-        "description": "Luminance-weighted",
-        "title": "Perceptual"
+        "description": "Взвешенный по яркости",
+        "title": "Восприятие"
       },
       "dither-strength-100": {
-        "description": "Dither strength at 100%",
-        "title": "Strength 100%"
+        "description": "Сила дизеринга на 100%",
+        "title": "Сила 100%"
       },
       "dither-strength-20": {
-        "description": "Dither strength at 20%",
-        "title": "Strength 20%"
+        "description": "Сила Дизера составляет 20%",
+        "title": "Сила 20%"
       },
       "dither-strength-40": {
-        "description": "Dither strength at 40%",
-        "title": "Strength 40%"
+        "description": "Сила Дизера составляет 40%",
+        "title": "Сила 40%"
       },
       "dither-strength-60": {
-        "description": "Dither strength at 60%",
-        "title": "Strength 60%"
+        "description": "Сила Дизера составляет 60%",
+        "title": "Сила 60%"
       },
       "dither-strength-80": {
-        "description": "Dither strength at 80%",
-        "title": "Strength 80%"
+        "description": "Сила Дизера составляет 80%",
+        "title": "Сила 80%"
       },
       "dither-white-noise": {
-        "description": "Random noise threshold",
-        "title": "White Noise"
+        "description": "Порог случайного шума",
+        "title": "Белый шум"
       },
       "enc-ecc-h": {
-        "description": "30% error correction",
+        "description": "Коррекция ошибок на 30%",
         "title": "ECC High"
       },
       "enc-ecc-l": {
-        "description": "7% error correction",
+        "description": "Коррекция ошибки 7%",
         "title": "ECC Low"
       },
       "enc-ecc-m": {
-        "description": "15% error correction",
+        "description": "Коррекция ошибки 15%",
         "title": "ECC Medium"
       },
       "enc-ecc-q": {
-        "description": "25% error correction",
-        "title": "ECC Quartile"
+        "description": "Коррекция ошибки на 25%",
+        "title": "Квартиль ECC"
       },
       "enc-v0": {
-        "description": "Automatic version selection",
-        "title": "Auto Version"
+        "description": "Автоматический выбор версии",
+        "title": "Автоматическая версия"
       },
       "enc-v12": {
-        "description": "Version 12 QR code",
-        "title": "Version 12"
+        "description": "QR-код версии 12",
+        "title": "Версия 12"
       },
       "enc-v6": {
-        "description": "Best for overlays (no center eye)",
-        "title": "Version 6"
+        "description": "Лучше всего подходит для наложений (без центрального глаза)",
+        "title": "Версия 6"
       },
       "enc-v6-h": {
-        "description": "Version 6 with high error correction",
-        "title": "V6 + ECC High"
+        "description": "Версия 6 с высокой степенью коррекции ошибок",
+        "title": "“V6 + ECC High”"
       },
       "enc-v6-l": {
-        "description": "Version 6 with low error correction",
-        "title": "V6 + ECC Low"
+        "description": "Версия 6 с низким уровнем коррекции ошибок",
+        "title": "“V6 + ECC Low”"
       },
       "enc-v9": {
-        "description": "Version 9 QR code",
-        "title": "Version 9"
+        "description": "QR-код версии 9",
+        "title": "Версия 9"
       },
       "enc-v9-h": {
-        "description": "Version 9 with high error correction",
-        "title": "V9 + ECC High"
+        "description": "Версия 9 с высокой степенью коррекции ошибок",
+        "title": "“V9 + ECC High”"
       },
       "enc-v9-l": {
-        "description": "Version 9 with low error correction",
-        "title": "V9 + ECC Low"
+        "description": "Версия 9 с низким уровнем коррекции ошибок",
+        "title": "“V9 + ECC Low”"
       },
       "finder-circle": {
-        "description": "Circle finder pattern",
-        "title": "Circle Finders"
+        "description": "Шаблон поиска круга",
+        "title": "Поиск кругов"
       },
       "finder-rounded": {
-        "description": "Rounded finder pattern",
-        "title": "Rounded Finders"
+        "description": "Закругленный рисунок искателя",
+        "title": "Округленные находки"
       },
       "finder-square": {
-        "description": "Square finder pattern",
-        "title": "Square Finders"
+        "description": "Шаблон для поиска квадрата",
+        "title": "Найди квадрат"
       },
       "halftone-classic": {
-        "description": "Halftone with classic palette",
-        "title": "Classic Halftone"
+        "description": "Полутоновое изображение с классической палитрой",
+        "title": "Классический полутон"
       },
       "halftone-forest": {
-        "description": "Halftone with forest palette",
-        "title": "Forest Halftone"
+        "description": "Полутон с лесной палитрой",
+        "title": "Лесной полутон"
       },
       "halftone-navy": {
-        "description": "Halftone with navy palette",
-        "title": "Navy Halftone"
+        "description": "Полутон с темно-синей палитрой",
+        "title": "Синий полутон"
       },
       "halftone-wine": {
-        "description": "Halftone with wine palette",
-        "title": "Wine Halftone"
+        "description": "Полутоновое изображение с винной палитрой",
+        "title": "Полутоновое изображение вина"
       },
       "img-blend": {
-        "description": "Color blend overlay",
-        "title": "Blend Mode"
+        "description": "Наложение цветовых переходов",
+        "title": "Режим смешивания"
       },
       "img-blue-noise": {
-        "description": "Blue noise threshold dithering",
-        "title": "Blue Noise"
+        "description": "Дизеринг порогового значения синего шума",
+        "title": "Синий шум"
       },
       "img-brightness": {
-        "description": "Brightness-based modules",
-        "title": "Brightness"
+        "description": "Модули, основанные на яркости",
+        "title": "Яркость"
       },
       "img-colormode-bw": {
-        "description": "Black & white processing",
-        "title": "Black & White"
+        "description": "Обработка черно-белых изображений",
+        "title": "Черно-белое"
       },
       "img-colormode-color": {
-        "description": "Color processing",
-        "title": "Color"
+        "description": "Обработка цвета",
+        "title": "Цвет"
       },
       "img-colormode-grayscale": {
-        "description": "Grayscale processing",
-        "title": "Grayscale"
+        "description": "Обработка в оттенках серого",
+        "title": "Оттенки серого"
       },
       "img-dithered": {
-        "description": "Error diffusion dithering",
-        "title": "Dithered"
+        "description": "Дизеринг с рассеиванием ошибок",
+        "title": "Нерешительный"
       },
       "img-dithered-i100": {
-        "description": "Dithered at 100% intensity",
-        "title": "Dithered 100%"
+        "description": "Диффузия при 100% интенсивности",
+        "title": "Скользко на 100%"
       },
       "img-dithered-i50": {
-        "description": "Dithered at 50% intensity",
-        "title": "Dithered 50%"
+        "description": "Дрожание при 50% интенсивности",
+        "title": "Нерешительные 50%"
       },
       "img-dithered-i75": {
-        "description": "Dithered at 75% intensity",
-        "title": "Dithered 75%"
+        "description": "Дрожание при 75% интенсивности",
+        "title": "Нерешительные 75%"
       },
       "img-duotone": {
-        "description": "Two-tone color mapping",
-        "title": "Duotone"
+        "description": "Двухцветное отображение",
+        "title": "Двухцветный"
       },
       "img-extreme": {
-        "description": "Maximum image visibility",
-        "title": "Extreme"
+        "description": "Максимальная видимость изображения",
+        "title": "Экстремальный"
       },
       "img-halftone": {
-        "description": "Classic halftone dots",
-        "title": "Halftone"
+        "description": "Классические полутоновые точки",
+        "title": "Полутон"
       },
       "img-mosaic": {
-        "description": "Mosaic tile effect",
-        "title": "Mosaic"
+        "description": "Эффект мозаичной плитки",
+        "title": "Мозаика"
       },
       "img-outline": {
-        "description": "Edge detection overlay",
-        "title": "Outline"
+        "description": "Наложение обнаружения границ",
+        "title": "Очерк"
       },
       "img-pixelate": {
-        "description": "Pixelated overlay effect",
-        "title": "Pixelate"
+        "description": "Эффект пиксельного наложения",
+        "title": "Пикселизация"
       },
       "img-subpixel": {
-        "description": "High detail subpixel rendering",
-        "title": "Subpixel"
+        "description": "Высокодетализированная субпиксельная отрисовка",
+        "title": "Субпиксель"
       },
       "img-wave": {
-        "description": "Wavy distortion effect",
-        "title": "Wave"
+        "description": "Эффект волнового искажения",
+        "title": "Волна"
       },
       "mosaic-classic": {
-        "description": "Mosaic with classic palette",
-        "title": "Classic Mosaic"
+        "description": "Мозаика в классической цветовой палитре",
+        "title": "Классическая мозаика"
       },
       "mosaic-forest": {
-        "description": "Mosaic with forest palette",
-        "title": "Forest Mosaic"
+        "description": "Мозаика в лесной палитре",
+        "title": "Лесная мозаика"
       },
       "mosaic-navy": {
-        "description": "Mosaic with navy palette",
-        "title": "Navy Mosaic"
+        "description": "Мозаика в темно-синей цветовой гамме",
+        "title": "Военно-морская мозаика"
       },
       "mosaic-wine": {
-        "description": "Mosaic with wine palette",
-        "title": "Wine Mosaic"
+        "description": "Мозаика с винной палитрой",
+        "title": "Винная мозаика"
       },
       "plain-basic": {
-        "description": "Standard QR code",
-        "title": "Classic"
+        "description": "Стандартный QR-код",
+        "title": "Классика"
       },
       "plain-ecc-l": {
-        "description": "Minimal error correction",
+        "description": "Коррекция минимальной ошибки",
         "title": "ECC Low (7%)"
       },
       "plain-ecc-q": {
-        "description": "Medium-high error correction",
-        "title": "ECC Quartile (25%)"
+        "description": "Коррекция ошибок средней и высокой степени",
+        "title": "Квартиль ECC (25%)"
       },
       "plain-v12": {
-        "description": "Large with multiple alignment",
-        "title": "Version 12"
+        "description": "Большой, с множественным выравниванием",
+        "title": "Версия 12"
       },
       "plain-v6": {
-        "description": "Larger without center eye",
-        "title": "Version 6"
+        "description": "Больше, без центрального глаза",
+        "title": "Версия 6"
       },
       "plain-v9": {
-        "description": "Even larger with center eye",
-        "title": "Version 9"
+        "description": "Еще крупнее с центральным глазом",
+        "title": "Версия 9"
       },
       "prep-blur-1": {
-        "description": "1px gaussian blur",
-        "title": "Blur 1px"
+        "description": "Размытие по Гауссу на 1 пиксель",
+        "title": "Размытие 1 пиксель"
       },
       "prep-blur-2": {
-        "description": "2px gaussian blur",
-        "title": "Blur 2px"
+        "description": "Размытие по Гауссу на 2 пикселя",
+        "title": "Размытие 2 пикселя"
       },
       "prep-blur-4": {
         "description": "4px gaussian blur",
-        "title": "Blur 4px"
+        "title": "Размытие 4 пикселя"
       },
       "prep-brightness-n25": {
-        "description": "Brightness adjusted darker",
-        "title": "Brightness -25"
+        "description": "Яркость скорректирована в сторону более темного оттенка",
+        "title": "Яркость -25"
       },
       "prep-brightness-n50": {
-        "description": "Brightness adjusted darker",
-        "title": "Brightness -50"
+        "description": "Яркость скорректирована в сторону более темного оттенка",
+        "title": "Яркость -50"
       },
       "prep-brightness-p25": {
-        "description": "Brightness adjusted brighter",
-        "title": "Brightness +25"
+        "description": "Яркость увеличена",
+        "title": "Яркость +25"
       },
       "prep-brightness-p50": {
-        "description": "Brightness adjusted brighter",
-        "title": "Brightness +50"
+        "description": "Яркость увеличена",
+        "title": "Яркость +50"
       },
       "prep-contrast-n50": {
-        "description": "Low contrast",
-        "title": "Contrast -50"
+        "description": "Низкий контраст",
+        "title": "Контраст -50"
       },
       "prep-contrast-p100": {
-        "description": "High contrast",
-        "title": "Contrast +100"
+        "description": "Высокий контраст",
+        "title": "Контраст +100"
       },
       "prep-contrast-p50": {
-        "description": "High contrast",
-        "title": "Contrast +50"
+        "description": "Высокий контраст",
+        "title": "Контраст +50"
       },
       "prep-edge-canny": {
-        "description": "Canny edge detection",
+        "description": "Обнаружение границ Кэнни",
         "title": "Edge Canny"
       },
       "prep-edge-sobel": {
-        "description": "Sobel edge detection",
-        "title": "Edge Sobel"
+        "description": "Обнаружение границ по методу Собеля",
+        "title": "Эдж Собел"
       },
       "prep-gamma-05": {
-        "description": "Gamma correction 0.5",
-        "title": "Gamma 0.5"
+        "description": "Гамма-поправка 0,5",
+        "title": "Гамма 0,5"
       },
       "prep-gamma-15": {
-        "description": "Gamma correction 1.5",
-        "title": "Gamma 1.5"
+        "description": "Гамма-поправка 1,5",
+        "title": "Гамма 1.5"
       },
       "prep-gamma-20": {
-        "description": "Gamma correction 2.0",
-        "title": "Gamma 2.0"
+        "description": "Гамма-коррекция 2.0",
+        "title": "Гамма 2.0"
       },
       "prep-hue-90": {
-        "description": "Hue rotation 90 degrees",
-        "title": "Hue +90°"
+        "description": "Поворот оттенка на 90 градусов",
+        "title": "Оттенок +90°"
       },
       "prep-invert": {
-        "description": "Inverted colors",
-        "title": "Inverted"
+        "description": "Инвертированные цвета",
+        "title": "Перевернутый"
       },
       "prep-posterize-2": {
-        "description": "2 color levels",
-        "title": "Posterize 2"
+        "description": "2 цветовых уровня",
+        "title": "Постеризация 2"
       },
       "prep-posterize-4": {
-        "description": "4 color levels",
-        "title": "Posterize 4"
+        "description": "4 уровня цвета",
+        "title": "Постеризация 4"
       },
       "prep-posterize-8": {
-        "description": "8 color levels",
-        "title": "Posterize 8"
+        "description": "8 уровней цвета",
+        "title": "Постеризация 8"
       },
       "prep-saturation-n100": {
-        "description": "Desaturated",
-        "title": "Saturation -100"
+        "description": "Денасыщенный",
+        "title": "Насыщенность -100"
       },
       "prep-saturation-n50": {
-        "description": "Reduced saturation",
-        "title": "Saturation -50"
+        "description": "Сниженная насыщенность",
+        "title": "Насыщенность -50"
       },
       "prep-saturation-p100": {
-        "description": "Oversaturated",
-        "title": "Saturation +100"
+        "description": "Перенасыщенный",
+        "title": "Насыщенность +100"
       },
       "prep-saturation-p50": {
-        "description": "Oversaturated",
-        "title": "Saturation +50"
+        "description": "Перенасыщенный",
+        "title": "Насыщенность +50"
       },
       "prep-sharpen-100": {
-        "description": "100% sharpening",
-        "title": "Sharpen 100%"
+        "description": "100% заточка",
+        "title": "Заточить на 100%"
       },
       "prep-sharpen-25": {
-        "description": "25% sharpening",
-        "title": "Sharpen 25%"
+        "description": "25% заточка",
+        "title": "Заточить на 25%"
       },
       "prep-sharpen-50": {
-        "description": "50% sharpening",
-        "title": "Sharpen 50%"
+        "description": "50% заточка",
+        "title": "Заточить на 50%"
       },
       "prep-threshold-128": {
-        "description": "Binary threshold at 128",
-        "title": "Threshold 128"
+        "description": "Бинарный порог на уровне 128",
+        "title": "Порог 128"
       },
       "prep-threshold-192": {
-        "description": "Binary threshold at 192",
-        "title": "Threshold 192"
+        "description": "Бинарный порог на уровне 192",
+        "title": "Порог 192"
       },
       "prep-threshold-64": {
-        "description": "Binary threshold at 64",
-        "title": "Threshold 64"
+        "description": "Бинарный порог на уровне 64",
+        "title": "Порог 64"
       },
       "style-connected": {
-        "description": "Connected module style",
-        "title": "Connected Modules"
+        "description": "Модульный тип подключения",
+        "title": "Подключенные модули"
       },
       "style-diamond": {
-        "description": "Diamond module style",
-        "title": "Diamond Modules"
+        "description": "Модульный стиль Алмаз",
+        "title": "Алмазные модули"
       },
       "style-dots": {
-        "description": "Dots module style",
-        "title": "Dots Modules"
+        "description": "Модульный стиль Dots",
+        "title": "Модули Dots"
       },
       "style-rounded": {
-        "description": "Rounded module style",
-        "title": "Rounded Modules"
+        "description": "Закругленный модульный стиль",
+        "title": "Закругленные модули"
       },
       "style-square": {
-        "description": "Square module style",
-        "title": "Square Modules"
+        "description": "Квадратный модульный стиль",
+        "title": "Квадратных модулей"
       }
     },
-    "plain": "Plain",
-    "powerCombos": "Power Combos",
-    "preprocessing": "Preprocessing",
+    "plain": "Простой",
+    "powerCombos": "Мощных комбинаций",
+    "preprocessing": "Предварительная обработка",
     "sections": {
       "animation-overlay": {
-        "description": "Animated GIF overlays with different blend modes",
-        "title": "Animated Overlays"
+        "description": "Анимированные GIF-наложения с различными режимами наложения",
+        "title": "Анимированные наложения"
       },
       "blend-modes": {
-        "description": "Different color blending with image overlays",
-        "title": "Blend Modes"
+        "description": "Различные способы смешивания цветов при наложении изображений",
+        "title": "Режимы смешивания"
       },
       "color-modes": {
-        "description": "Color, grayscale, and black & white processing",
-        "title": "Color Processing"
+        "description": "Обработка цветных, полутоновых и черно-белых изображений",
+        "title": "Обработка цвета"
       },
       "colors": {
-        "description": "Color schemes and themed palettes",
-        "title": "Colors & Themes"
+        "description": "Цветовые схемы и тематические палитры",
+        "title": "Цвета и темы"
       },
       "content-types": {
-        "description": "Different payload formats - vCard, WiFi, Email, SMS, Geo, Calendar",
-        "title": "Content Types"
+        "description": "Различные форматы полезной нагрузки — vCard, WiFi, Email, SMS, Geo, Calendar",
+        "title": "Типы контента"
       },
       "dithering": {
-        "description": "Different dithering methods and error diffusion kernels",
-        "title": "Dithering Algorithms"
+        "description": "Различные методы дизеринга и ядра распространения ошибок",
+        "title": "Алгоритмы дизеринга"
       },
       "encoding": {
-        "description": "Different QR versions and error correction levels",
-        "title": "QR Encoding"
+        "description": "Различные версии QR-кодов и уровни коррекции ошибок",
+        "title": "QR-кодирование"
       },
       "image-overlay": {
-        "description": "Static image overlays with different blend modes",
-        "title": "Image Overlays"
+        "description": "Наложение статических изображений с различными режимами наложения",
+        "title": "Наложение изображений"
       },
       "plain": {
-        "description": "Standard QR codes without overlay - different versions and error correction",
-        "title": "Plain QR Codes"
+        "description": "Стандартные QR-коды без наложения — различные версии и коррекция ошибок",
+        "title": "Простые QR-коды"
       },
       "power-combos": {
-        "description": "Striking multi-feature combinations showcasing ANQR capabilities",
-        "title": "Power Combos"
+        "description": "Впечатляющие многофункциональные комбинации, демонстрирующие возможности ANQR",
+        "title": "Мощных комбинаций"
       },
       "preprocessing": {
-        "description": "Brightness, contrast, gamma, blur, sharpen, posterize, edge detection",
-        "title": "Image Preprocessing"
+        "description": "Яркость, контраст, гамма, размытие, повышение резкости, постеризация, обнаружение границ",
+        "title": "Предварительная обработка изображений"
       },
       "styles": {
-        "description": "Different visual styles for modules and finder patterns",
-        "title": "Module & Finder Styles"
+        "description": "Различные визуальные стили для модулей и шаблонов поиска",
+        "title": "Стили модулей и виджетов"
       }
     },
-    "showAll": "Show All",
-    "styles": "Styles",
-    "subtitle": "Explore examples of QR codes created with ANQR",
-    "title": "QR Code Gallery",
-    "tryThis": "Try this"
+    "showAll": "Показать все",
+    "styles": "Стили",
+    "subtitle": "Ознакомьтесь с примерами QR-кодов, созданных с помощью ANQR",
+    "title": "Галерея QR-кодов",
+    "tryThis": "Попробуйте это"
   },
   "header": {
-    "close": "Close",
-    "copied": "Copied!",
-    "copyLink": "Copy Link",
-    "darkMode": "Switch to dark mode",
-    "export": "Export",
-    "lightMode": "Switch to light mode",
-    "reset": "Reset",
-    "searchSettings": "Search settings...",
-    "share": "Share"
+    "close": "Закрыть",
+    "copied": "Скопировано!",
+    "copyLink": "Скопировать ссылку",
+    "darkMode": "Переключиться в темный режим",
+    "export": "Экспорт",
+    "lightMode": "Переключиться в световой режим",
+    "reset": "Сброс",
+    "searchSettings": "Настройки поиска…",
+    "share": "Поделиться"
   },
   "hints": {
-    "alignmentStyle": "Style of alignment patterns (used in larger QR codes)",
-    "appLinkNote": "Opens specific content within a mobile app",
-    "autoDetect": "Auto-detect (requires v{{version}}+ for current content)",
-    "autoMinVersion": "0 = Auto, min v{{version}} for current content",
-    "bgColorHex": "Background color hex code",
-    "bizcardLegacy": "Legacy format - consider using vCard instead",
-    "bluetoothNote": "Note: Bluetooth pairing via QR is vendor-specific and may not work on all devices",
-    "bounceAnimation": "Play animation forward then backward (ping-pong)",
-    "calendarNote": "Subscribe to a shared calendar feed",
-    "contrastGuard": "Ensure minimum contrast ratio between foreground and background",
-    "cornerRadius": "Corner radius percentage for rounded modules (0-100%)",
-    "crispEdges": "Use pixelated rendering for sharp module edges",
-    "customNote": "Enter raw data in any format. No validation or formatting will be applied.",
-    "dotRotation": "Rotate dot-style modules (0-360 degrees)",
-    "encodingMode": "Data encoding mode - Auto selects the most efficient mode",
-    "enforceMinQuietZone": "Enforce minimum 4 module quiet zone for better scanning reliability",
-    "enterTextContent": "Enter the text content to encode in the QR code",
-    "enterUrlContent": "Enter the URL to encode in the QR code",
-    "epcSepaNote": "European Payment Council QR code for SEPA credit transfers",
-    "errorCorrection": "Error correction level - higher = more damage resistance but larger QR code",
-    "extraBorder": "Additional border modules beyond the quiet zone (0-10)",
-    "eyeInnerStyle": "Style of the inner square of finder patterns",
-    "eyeOuterStyle": "Style of the outer ring of finder patterns",
-    "eyeScale": "Scale finder patterns relative to their default size (50-150%)",
-    "fgColorHex": "Foreground color hex code",
-    "finderStyle": "Style of the corner finder patterns",
-    "forceHttps": "Convert HTTP URLs to HTTPS automatically",
-    "frameStyle": "Add a decorative frame around the QR code",
-    "frameText": "Text to display on the frame",
-    "gapMode": "How gaps between modules are rendered",
-    "gradient": "Apply a gradient effect to the QR code",
-    "gs1Note": "GS1 Digital Link for product identification and traceability",
-    "higherEccLargerQr": "Higher = more damage resistance, larger QR",
-    "loopAnimation": "Loop animation continuously",
-    "maxLengthGuard": "Prevent encoding content that exceeds QR code capacity",
-    "minContrastRatio": "Minimum contrast ratio to enforce (1-21, WCAG AA requires 4.5:1)",
-    "moduleGap": "Gap between modules as percentage (0-30%)",
-    "moduleJitterWarning": "⚠️ May affect scannability",
-    "moduleSize": "Size of each QR code module in pixels (2-20px)",
-    "moduleStyle": "Visual style of QR code modules",
-    "normalizeNewlines": "Convert different newline formats to a standard format",
-    "outputFormat": "Select the output file format for export",
-    "paynowNote": "Singapore fast payment system",
-    "perModuleColor": "How to assign colors to individual modules",
-    "pickBgColor": "Click to pick background color",
-    "pickFgColor": "Click to pick foreground color",
-    "pixNote": "Brazilian instant payment system",
-    "pixelSnap": "How to snap module positions to pixel boundaries",
-    "promptpayNote": "Thailand national e-payment system",
-    "qrVersion": "QR code version (0=auto, 1-40 increases size and capacity)",
-    "quietZone": "Quiet zone margin around QR code (0-10 modules, recommended: 4+)",
-    "rsvpNote": "Link to an online RSVP form or event registration page",
-    "safetyMode": "Safety analysis mode - how strictly to check QR code readability",
-    "selectContentType": "Select the type of content to encode in the QR code",
-    "shortLinkNote": "Use a URL shortener service for dynamic/trackable QR codes",
-    "timingStyle": "Style of timing patterns (horizontal and vertical lines)",
-    "transparentBg": "Make the background transparent instead of using background color",
-    "trimWhitespace": "Remove leading and trailing whitespace",
-    "upiNote": "Unified Payments Interface for India",
-    "utmCampaign": "UTM campaign parameter for campaign tracking",
-    "utmMedium": "UTM medium parameter for campaign tracking",
-    "utmSource": "UTM source parameter for campaign tracking",
-    "validateInput": "Validate input data before encoding",
-    "versionTooLow": "⚠️ Version too low! Minimum v{{version}} required"
+    "alignmentStyle": "Стиль шаблонов выравнивания (используемых в больших QR-кодах)",
+    "appLinkNote": "Открывает определенный контент в мобильном приложении",
+    "autoDetect": "Автоматическое определение (требуется v{{version}}+ для текущего содержимого)",
+    "autoMinVersion": "“0 = Авто, минимальная версия для текущего контента”",
+    "bgColorHex": "Шестнадцатеричный код цвета фона",
+    "bizcardLegacy": "Устаревший формат — рассмотрите возможность использования vCard вместо него",
+    "bluetoothNote": "Примечание: сопряжение по Bluetooth через QR-код зависит от производителя и может не работать на всех устройствах",
+    "bounceAnimation": "Воспроизвести анимацию сначала вперед, затем назад (пинг-понг)",
+    "calendarNote": "Подписаться на ленту общего календаря",
+    "contrastGuard": "Обеспечить минимальное соотношение контрастности между передним и задним планом",
+    "cornerRadius": "Процент радиуса закругления углов для закругленных модулей (0-100%)",
+    "crispEdges": "Используйте пиксельную отрисовку для получения четких краев модулей",
+    "customNote": "Вводите исходные данные в любом формате. Проверка достоверности или форматирование не применяются.",
+    "dotRotation": "Вращающиеся модули точечного типа (0-360 градусов)",
+    "encodingMode": "Режим кодирования данных — автоматический выбор наиболее эффективного режима",
+    "enforceMinQuietZone": "Для повышения надежности сканирования необходимо обеспечить наличие как минимум 4 тихих зон из модулей",
+    "enterTextContent": "Введите текстовое содержимое для кодирования в QR-код",
+    "enterUrlContent": "Введите URL-адрес для кодирования в QR-код",
+    "epcSepaNote": "QR-код Европейского платежного совета для кредитных переводов SEPA",
+    "errorCorrection": "Уровень коррекции ошибок — чем выше уровень, тем выше устойчивость к повреждениям, но тем больше QR-код",
+    "extraBorder": "Дополнительные пограничные модули за пределами тихой зоны (0-10)",
+    "eyeInnerStyle": "Стиль внутреннего квадрата в схемах поиска",
+    "eyeOuterStyle": "Стиль внешнего кольца узоров-искателей",
+    "eyeScale": "Размеры чешуек относительно их стандартного размера (50-150%)",
+    "fgColorHex": "Шестнадцатеричный код цвета переднего плана",
+    "finderStyle": "Стиль схем для поиска углов",
+    "forceHttps": "Автоматическое преобразование HTTP-адресов в HTTPS",
+    "frameStyle": "Добавьте декоративную рамку вокруг QR-кода",
+    "frameText": "Текст для отображения на рамке",
+    "gapMode": "Как отображаются промежутки между модулями",
+    "gradient": "Примените градиентный эффект к QR-коду",
+    "gs1Note": "Цифровая связь GS1 для идентификации и отслеживания продукции",
+    "higherEccLargerQr": "Чем выше значение, тем выше сопротивление повреждениям и больше QR-код",
+    "loopAnimation": "Непрерывная циклическая анимация",
+    "maxLengthGuard": "Предотвратить кодирование контента, превышающего возможности QR-кода",
+    "minContrastRatio": "Минимальное соотношение контрастности для обеспечения соблюдения требований (1-21, WCAG AA требует 4,5:1)",
+    "moduleGap": "Разница между модулями в процентах (0-30%)",
+    "moduleJitterWarning": "⚠️ Может повлиять на возможность сканирования",
+    "moduleSize": "Размер каждого модуля QR-кода в пикселях (2-20 пикселей)",
+    "moduleStyle": "Визуальный стиль модулей QR-кодов",
+    "normalizeNewlines": "Преобразовать различные форматы переноса строк в стандартный формат",
+    "outputFormat": "Выберите формат выходного файла для экспорта",
+    "paynowNote": "Сингапурская система быстрых платежей",
+    "perModuleColor": "Как присвоить цвета отдельным модулям",
+    "pickBgColor": "Нажмите, чтобы выбрать цвет фона",
+    "pickFgColor": "Щелкните, чтобы выбрать цвет переднего плана",
+    "pixNote": "Бразильская система мгновенных платежей",
+    "pixelSnap": "Как привязать положение модулей к границам пикселей",
+    "promptpayNote": "Национальная система электронных платежей Таиланда",
+    "qrVersion": "Версия QR-кода (0=автоматическая, 1-40 увеличивает размер и вместимость)",
+    "quietZone": "Запас пространства вокруг QR-кода (0-10 модулей, рекомендуется: 4+)",
+    "rsvpNote": "Ссылка на онлайн-форму подтверждения участия или страницу регистрации на мероприятие",
+    "safetyMode": "Режим анализа безопасности — насколько строго проверять читаемость QR-кода",
+    "selectContentType": "Выберите тип контента для кодирования в QR-коде",
+    "shortLinkNote": "Используйте сервис сокращения URL-адресов для динамических/отслеживаемых QR-кодов",
+    "timingStyle": "Стиль временных паттернов (горизонтальные и вертикальные линии)",
+    "transparentBg": "Сделайте фон прозрачным вместо использования цвета фона",
+    "trimWhitespace": "Удалить пробелы в начале и конце текста",
+    "upiNote": "Единый платежный интерфейс для Индии",
+    "utmCampaign": "Параметр UTM-кампании для отслеживания кампаний",
+    "utmMedium": "Средний параметр UTM для отслеживания кампаний",
+    "utmSource": "Параметр источника UTM для отслеживания кампаний",
+    "validateInput": "Проверяйте входные данные перед кодированием",
+    "versionTooLow": "⚠️ Версия слишком низкая! Требуется минимальная версия v{{version}}"
   },
   "language": {
-    "current": "Language",
-    "select": "Select Language"
+    "current": "Язык",
+    "select": "Выберите язык"
   },
   "metadata": {
-    "addCustomField": "Add Custom Field",
-    "author": "Author",
-    "authorPlaceholder": "Author name",
-    "copyright": "Copyright",
-    "copyrightPlaceholder": "© 2024 Company Name",
-    "customMetadata": "Custom Metadata",
-    "description": "Description",
-    "descriptionPlaceholder": "Description of this QR code...",
-    "includeCreationTime": "Include Creation Time",
-    "key": "Key",
-    "keyPlaceholder": "Key",
-    "keywords": "Keywords",
-    "license": "License",
-    "licensePlaceholder": "CC-BY-4.0",
-    "title": "Title",
-    "titlePlaceholder": "QR Code Title",
-    "value": "Value",
-    "valuePlaceholder": "Value"
+    "addCustomField": "Добавить пользовательское поле",
+    "author": "Автор",
+    "authorPlaceholder": "Имя автора",
+    "copyright": "Авторское право",
+    "copyrightPlaceholder": "© 2024 Название компании",
+    "customMetadata": "Пользовательские метаданные",
+    "description": "Описание",
+    "descriptionPlaceholder": "Описание этого QR-кода…",
+    "includeCreationTime": "Включить время сотворения мира",
+    "key": "Ключ",
+    "keyPlaceholder": "Ключ",
+    "keywords": "Ключевые слова",
+    "license": "Лицензия",
+    "licensePlaceholder": "“CC-BY-4.0”",
+    "title": "Название",
+    "titlePlaceholder": "QR-код заголовка",
+    "value": "Ценность",
+    "valuePlaceholder": "Ценность"
   },
   "nav": {
-    "about": "About",
-    "contact": "Contact",
-    "docs": "Guide",
-    "gallery": "Gallery",
-    "generator": "Generator",
-    "guide": "Guide",
-    "privacy": "Privacy",
-    "terms": "Terms"
+    "about": "О нас",
+    "contact": "Контакт",
+    "docs": "Руководство",
+    "gallery": "Галерея",
+    "generator": "Генератор",
+    "guide": "Руководство",
+    "privacy": "Конфиденциальность",
+    "terms": "Условия"
   },
   "output": {
-    "backgroundOverride": "Background Override",
-    "backgroundOverridePlaceholder": "Leave empty for default",
-    "dithering": "Dithering",
-    "dpi": "DPI (Print)",
-    "embedRasterOverlay": "Embed Raster Overlay",
-    "exportAsAdditional": "Export As (Additional)",
-    "filename": "Filename",
-    "floydSteinberg": "Floyd-Steinberg",
-    "format": "Format",
+    "backgroundOverride": "Переопределение фона",
+    "backgroundOverridePlaceholder": "Оставьте пустым для значения по умолчанию",
+    "dithering": "Нерешительность",
+    "dpi": "DPI (печать)",
+    "embedRasterOverlay": "Встроить растровое наложение",
+    "exportAsAdditional": "Экспорт в качестве (дополнительного)",
+    "filename": "Имя файла",
+    "floydSteinberg": "Флойд-Штайнберг",
+    "format": "Формат",
     "gif": "GIF",
-    "gifSettings": "GIF Settings",
-    "height": "Height",
-    "includeQuietZone": "Include Quiet Zone",
-    "medianCut": "Median Cut",
-    "neuquant": "NeuQuant",
-    "none": "None",
-    "octree": "Octree",
-    "off": "Off",
-    "ordered": "Ordered",
-    "outputSize": "Output Size",
-    "paletteSize": "Palette Size",
+    "gifSettings": "Настройки GIF",
+    "height": "Рост",
+    "includeQuietZone": "Включить зону тишины",
+    "medianCut": "Средний размер",
+    "neuquant": "Нейквант",
+    "none": "Нет",
+    "octree": "Октодерево",
+    "off": "Выкл.",
+    "ordered": "Приказано",
+    "outputSize": "Размер выходных данных",
+    "paletteSize": "Размер поддона",
     "pdf": "PDF",
-    "pixel": "Pixel",
+    "pixel": "Пиксель",
     "png": "PNG",
-    "precise": "Precise",
-    "quality": "Quality",
-    "quantizer": "Quantizer",
-    "shapePrecision": "Shape Precision",
-    "svg": "SVG",
-    "svgSettings": "SVG Settings",
-    "transparentColor": "Transparent Color",
-    "transparentColorPlaceholder": "#ffffff or empty",
-    "trueVector": "True Vector",
-    "trueVectorDesc": "Use paths instead of embedded raster",
+    "precise": "Точный",
+    "quality": "Качество",
+    "quantizer": "Квантизатор",
+    "shapePrecision": "Точность формы",
+    "svg": "“SVG”",
+    "svgSettings": "Настройки SVG",
+    "transparentColor": "Прозрачный цвет",
+    "transparentColorPlaceholder": "#ffffff или пусто",
+    "trueVector": "Истинный вектор",
+    "trueVectorDesc": "Используйте пути вместо встроенного растра",
     "webp": "WebP",
-    "width": "Width"
+    "width": "Ширина"
   },
   "overlay": {
-    "adaptiveThreshold": "Adaptive Threshold",
-    "atkinson": "Atkinson",
-    "bayer2": "Bayer 2×2",
+    "adaptiveThreshold": "Адаптивный порог",
+    "atkinson": "Аткинсон",
+    "bayer2": "Байер 2×2",
     "bayer4": "Bayer 4×4",
-    "bayer8": "Bayer 8×8",
-    "blend": "Blend",
-    "blendMode": "Blend",
-    "blueNoise": "Blue Noise",
-    "blueNoiseErrorDiffusion": "Blue Noise + Error Diffusion",
-    "blueNoiseMode": "Blue Noise",
-    "blueNoiseThreshold": "Blue Noise Threshold",
-    "blur": "Blur",
-    "brightness": "Brightness",
-    "brightnessCurve": "Brightness Curve",
-    "brightnessMode": "Brightness",
-    "burkes": "Burkes",
-    "bw": "Black & White",
-    "cellSize": "Cell Size",
-    "centerLogo": "Center Logo",
-    "centerRule": "Center Rule",
-    "clusteredDot": "Clustered Dot",
-    "colorDither": "Color Dither",
-    "colorMode": "Color Mode",
-    "contain": "Contain",
-    "contrast": "Contrast",
-    "corsNote": "Note: Image must allow cross-origin requests (CORS)",
-    "cover": "Cover",
-    "cropImage": "Crop Image",
-    "cropSize": "Crop Size",
-    "diffusionKernel": "Diffusion Kernel",
-    "disposalHandling": "Disposal Handling",
-    "dither": "Dither",
-    "ditherSettings": "Dither Settings",
-    "ditherStrength": "Dither Strength",
-    "dithered": "Dithered",
-    "ditheredMode": "Dithered",
-    "dotShape": "Dot Shape",
-    "duotone": "Duotone",
-    "duotoneColors": "Duotone Colors",
-    "duotoneMode": "Duotone",
-    "eccAwareMode": "ECC-Aware Mode",
-    "edge": "Edge Detection",
-    "edgeAware": "Edge-Aware",
-    "enableCrop": "Enable Crop",
-    "errorDiffusion": "Error Diffusion",
-    "extreme": "Extreme",
-    "extremeMode": "Extreme",
-    "finderOverride": "Finder Override",
-    "fitMode": "Fit Mode",
+    "bayer8": "Байер 8×8",
+    "blend": "Смесь",
+    "blendMode": "Смесь",
+    "blueNoise": "Синий шум",
+    "blueNoiseErrorDiffusion": "Синий шум + диффузия ошибок",
+    "blueNoiseMode": "Синий шум",
+    "blueNoiseThreshold": "Порог синего шума",
+    "blur": "Размытие",
+    "brightness": "Яркость",
+    "brightnessCurve": "Кривая яркости",
+    "brightnessMode": "Яркость",
+    "burkes": "Берк",
+    "bw": "Черно-белое",
+    "cellSize": "Размер клетки",
+    "centerLogo": "Центральный логотип",
+    "centerRule": "Правило центра",
+    "clusteredDot": "Сгруппированная точка",
+    "colorDither": "Цветовое сглаживание",
+    "colorMode": "Цветовой режим",
+    "contain": "Содержать",
+    "contrast": "Контраст",
+    "corsNote": "Примечание: Изображение должно поддерживать междоменные запросы (CORS)",
+    "cover": "Обложка",
+    "cropImage": "Обрезанное изображение",
+    "cropSize": "Размер урожая",
+    "diffusionKernel": "Диффузионное ядро",
+    "disposalHandling": "Обращение с отходами",
+    "dither": "Дитер",
+    "ditherSettings": "Настройки дизеринга",
+    "ditherStrength": "Сила Дизера",
+    "dithered": "Нерешительный",
+    "ditheredMode": "Нерешительный",
+    "dotShape": "Точечная форма",
+    "duotone": "Двухцветный",
+    "duotoneColors": "Двухцветные цвета",
+    "duotoneMode": "Двухцветный",
+    "eccAwareMode": "Режим с поддержкой ECC",
+    "edge": "Обнаружение границ",
+    "edgeAware": "Осведомленность о границах",
+    "enableCrop": "Возможность выращивания урожая",
+    "errorDiffusion": "Распространение ошибок",
+    "extreme": "Экстремальный",
+    "extremeMode": "Экстремальный",
+    "finderOverride": "Переопределение Finder",
+    "fitMode": "Режим подгонки",
     "flipX": "Flip X",
-    "flipY": "Flip Y",
-    "floydSteinberg": "Floyd-Steinberg",
-    "fromUrl": "From URL",
-    "fullColor": "Full Color",
-    "gamma": "Gamma",
-    "gapFillMode": "Gap Fill",
-    "gapfill": "Gap Fill",
-    "gaussianNoise": "Gaussian Noise",
-    "gifSettings": "GIF Settings",
-    "grayscale": "Grayscale",
-    "gridSize": "Grid Size",
-    "halftone": "Halftone",
+    "flipY": "Перевернуть Y",
+    "floydSteinberg": "Флойд-Штайнберг",
+    "fromUrl": "Из URL",
+    "fullColor": "Полноцветное изображение",
+    "gamma": "Гамма",
+    "gapFillMode": "Заполнение пробелов",
+    "gapfill": "Заполнение пробелов",
+    "gaussianNoise": "Гауссовский шум",
+    "gifSettings": "Настройки GIF",
+    "grayscale": "Оттенки серого",
+    "gridSize": "Размер сетки",
+    "halftone": "Полутон",
     "halftoneCenter": "Halftone Center",
-    "halftoneMode": "Halftone",
-    "halftoneSettings": "Halftone Settings",
-    "highlight": "Highlight",
-    "hueRotate": "Hue Rotate",
-    "imageGifWebp": "Image / GIF / WebP",
-    "imageUrl": "Image URL",
-    "intensity": "Intensity",
-    "invert": "Invert Image",
-    "jarvisJudiceNinke": "Jarvis-Judice-Ninke",
-    "line": "Line",
-    "load": "Load",
-    "loadedFromUrl": "Loaded from URL",
-    "maxFps": "Max FPS",
-    "mode": "Blend Mode",
-    "mosaic": "Mosaic",
-    "mosaicMode": "Mosaic",
-    "neutralColor": "Neutral Color",
-    "noFile": "No file",
-    "none": "None",
-    "nxnGrid": "N×N Grid",
-    "orderedBayer": "Ordered (Bayer)",
-    "orderedMatrix": "Ordered Matrix",
-    "original": "Original",
-    "outline": "Outline",
-    "outlineMode": "Outline",
-    "perChannel": "Per Channel",
-    "perModule": "Per Module",
-    "perceptual": "Perceptual (Luminance)",
-    "pixelate": "Pixelate",
-    "pixelateMode": "Pixelate",
-    "posterizeLevels": "Posterize Levels",
-    "preserveAlignment": "Preserve Alignment",
-    "preserveFinders": "Preserve Finder Patterns",
-    "preserveTiming": "Preserve Timing",
-    "protectFormat": "Protect Format Info",
-    "protectFormatInfo": "Protect Format Info",
-    "protectVersion": "Protect Version Info",
-    "protectVersionInfo": "Protect Version Info",
-    "protection": "Protection",
-    "removeImage": "Remove",
-    "respect": "Respect",
-    "riskBudget": "Risk Budget",
-    "rotation": "Rotation",
-    "sCurve": "S-Curve",
-    "saturation": "Saturation",
-    "screenedBlueNoise": "Screened Blue Noise",
-    "seed": "Seed",
-    "selectImage": "Select Image",
-    "sepia": "Sepia",
-    "serpentineScanning": "Serpentine Scanning",
-    "shadow": "Shadow",
-    "sharpen": "Sharpen",
-    "sierra": "Sierra",
-    "sierra2": "Sierra-2",
-    "sierraLite": "Sierra-Lite",
-    "simplify": "Simplify",
-    "stretch": "Stretch",
-    "strict": "Strict",
-    "stucki": "Stucki",
-    "stylized": "Stylized",
-    "subpixel": "Subpixel",
-    "subpixelMode": "Subpixel",
-    "subpixelSettings": "Subpixel Settings",
-    "subpixelSize": "Subpixel Size",
-    "subpixelSizeMode": "Subpixel Size",
-    "temporalBlueNoise": "Temporal Blue Noise",
-    "threshold": "Threshold",
-    "tileSize": "Tile Size",
-    "triangularNoise": "Triangular Noise",
-    "trueDither": "True Dither",
-    "trueDitherMode": "True Dither",
-    "upload": "Upload",
-    "useFrameDelays": "Use Frame Delays",
-    "voidCluster": "Void & Cluster",
-    "wave": "Wave",
-    "waveMode": "Wave",
-    "whiteNoise": "White Noise"
+    "halftoneMode": "Полутон",
+    "halftoneSettings": "Настройки полутона",
+    "highlight": "Главный момент",
+    "hueRotate": "Поворот оттенка",
+    "imageGifWebp": "Изображение / GIF / WebP",
+    "imageUrl": "URL изображения",
+    "intensity": "Интенсивность",
+    "invert": "Инвертировать изображение",
+    "jarvisJudiceNinke": "Джарвис-Джудис-Нинке",
+    "line": "Линия",
+    "load": "Нагрузка",
+    "loadedFromUrl": "Загружено с URL",
+    "maxFps": "Максимальная частота кадров",
+    "mode": "Режим смешивания",
+    "mosaic": "Мозаика",
+    "mosaicMode": "Мозаика",
+    "neutralColor": "Нейтральный цвет",
+    "noFile": "Нет файла",
+    "none": "Нет",
+    "nxnGrid": "Сетка N×N",
+    "orderedBayer": "Заказано (Байер)",
+    "orderedMatrix": "Упорядоченная матрица",
+    "original": "Оригинал",
+    "outline": "Очерк",
+    "outlineMode": "Очерк",
+    "perChannel": "За канал",
+    "perModule": "За модуль",
+    "perceptual": "Восприятие (яркости)",
+    "pixelate": "Пикселизация",
+    "pixelateMode": "Пикселизация",
+    "posterizeLevels": "Уровни постеризации",
+    "preserveAlignment": "Сохранение выравнивания",
+    "preserveFinders": "Сохранение шаблонов поиска",
+    "preserveTiming": "Сохраняйте чувство времени",
+    "protectFormat": "Защитить информацию о формате",
+    "protectFormatInfo": "Защитить информацию о формате",
+    "protectVersion": "Защитить информацию о версии",
+    "protectVersionInfo": "Защитить информацию о версии",
+    "protection": "Защита",
+    "removeImage": "Удалить",
+    "respect": "Уважение",
+    "riskBudget": "Бюджет рисков",
+    "rotation": "Вращение",
+    "sCurve": "S-образная кривая",
+    "saturation": "Насыщение",
+    "screenedBlueNoise": "Синий шум, отфильтрованный",
+    "seed": "Семя",
+    "selectImage": "Выбрать изображение",
+    "sepia": "Сепия",
+    "serpentineScanning": "Змеевидное сканирование",
+    "shadow": "Тень",
+    "sharpen": "Заточить",
+    "sierra": "Сьерра",
+    "sierra2": "Сьерра-2",
+    "sierraLite": "Сьерра-Лайт",
+    "simplify": "Упростите",
+    "stretch": "Растяжка",
+    "strict": "Строгий",
+    "stucki": "Штуки",
+    "stylized": "Стилизованный",
+    "subpixel": "Субпиксель",
+    "subpixelMode": "Субпиксель",
+    "subpixelSettings": "Настройки субпикселей",
+    "subpixelSize": "Размер субпикселя",
+    "subpixelSizeMode": "Размер субпикселя",
+    "temporalBlueNoise": "Временной синий шум",
+    "threshold": "Порог",
+    "tileSize": "Размер плитки",
+    "triangularNoise": "Треугольный шум",
+    "trueDither": "Истинный дизеринг",
+    "trueDitherMode": "Истинный дизеринг",
+    "upload": "Загрузка",
+    "useFrameDelays": "Использовать задержки кадров",
+    "voidCluster": "Пустота и скопление",
+    "wave": "Волна",
+    "waveMode": "Волна",
+    "whiteNoise": "Белый шум"
   },
   "payload": {
-    "accountName": "Account Name",
-    "address": "Address",
-    "algorithm": "Algorithm",
-    "allDay": "All Day Event",
-    "amount": "Amount (optional)",
-    "amountBrl": "Amount (BRL, optional)",
-    "amountEur": "Amount (EUR)",
-    "amountInr": "Amount (INR, optional)",
-    "amountSgd": "Amount (SGD, optional)",
-    "amountThb": "Amount (THB, optional)",
+    "accountName": "Название счета",
+    "address": "Адрес",
+    "algorithm": "Алгоритм",
+    "allDay": "Мероприятие на весь день",
+    "amount": "Сумма (необязательно)",
+    "amountBrl": "Сумма (бразильские реалы, необязательно)",
+    "amountEur": "Сумма (евро)",
+    "amountInr": "Сумма (INR, необязательно)",
+    "amountSgd": "Сумма (SGD, необязательно)",
+    "amountThb": "Сумма (THB, по желанию)",
     "androidIntent": "Android Intent",
-    "appLink": "App Deep Link (Android/iOS)",
-    "assetInventory": "Asset/Inventory Tag",
-    "assetItemId": "Asset/Item ID",
-    "assetType": "Asset Type",
-    "attendeeName": "Attendee Name",
-    "audio": "Audio",
-    "baseUrl": "Base URL",
-    "batchLot": "Batch/Lot (optional)",
-    "beneficiaryName": "Beneficiary Name",
-    "bicSwift": "BIC/SWIFT (optional)",
-    "birthday": "Birthday",
-    "bitcoin": "Bitcoin",
+    "appLink": "Глубокая ссылка на приложение (Android/iOS)",
+    "assetInventory": "Инвентарный номер актива/инвентарная бирка",
+    "assetItemId": "Идентификатор актива/предмета",
+    "assetType": "Тип актива",
+    "attendeeName": "Имя участника",
+    "audio": "Аудио",
+    "baseUrl": "Базовый URL",
+    "batchLot": "Партия/лот (необязательно)",
+    "beneficiaryName": "Имя бенефициара",
+    "bicSwift": "BIC/SWIFT (опционально)",
+    "birthday": "День рождения",
+    "bitcoin": "Биткойн",
     "bizcard": "BizCard (Legacy)",
     "bluetooth": "Bluetooth",
-    "body": "Message Body",
-    "bodyOptional": "Body (optional)",
-    "box": "Box",
-    "calendar": "Calendar",
-    "calendarName": "Calendar Name",
-    "calendarSubscription": "Calendar Subscribe",
-    "calendarUrl": "Calendar URL (ICS/WebCal)",
-    "campaignContent": "Campaign Content (optional)",
-    "campaignMedium": "Campaign Medium",
-    "campaignName": "Campaign Name",
-    "campaignSource": "Campaign Source",
-    "campaignTerm": "Campaign Term (optional)",
-    "city": "City",
-    "cityOptional": "City (optional)",
-    "cloudLink": "Cloud Storage Link",
-    "company": "Company",
-    "contact": "Contact",
-    "contentType": "Content Type",
-    "core": "Core",
-    "country": "Country",
-    "crypto": "Crypto (BTC, ETH, etc.)",
-    "cryptocurrency": "Cryptocurrency",
-    "custom": "Custom Format",
-    "customScheme": "Custom Scheme",
-    "dateTime": "Date & Time",
-    "deepLinkUrl": "Deep Link URL",
-    "description": "Description",
-    "deviceAddress": "Device Address (MAC)",
-    "deviceName": "Device Name (optional)",
-    "digits": "Digits",
-    "documentsMedia": "Documents & Media",
+    "body": "Текст сообщения",
+    "bodyOptional": "Тело (необязательно)",
+    "box": "Коробка",
+    "calendar": "Календарь",
+    "calendarName": "Название календаря",
+    "calendarSubscription": "Подписка на календарь",
+    "calendarUrl": "URL календаря (ICS/WebCal)",
+    "campaignContent": "Содержание кампании (необязательно)",
+    "campaignMedium": "Средний уровень кампании",
+    "campaignName": "Название кампании",
+    "campaignSource": "Источник кампании",
+    "campaignTerm": "Срок избирательной кампании (необязательно)",
+    "city": "Город",
+    "cityOptional": "Город (по желанию)",
+    "cloudLink": "Ссылка на облачное хранилище",
+    "company": "Компания",
+    "contact": "Контакт",
+    "contentType": "Тип контента",
+    "core": "Ядро",
+    "country": "Страна",
+    "crypto": "Криптовалюты (BTC, ETH и т. д.)",
+    "cryptocurrency": "Криптовалюта",
+    "custom": "Пользовательский формат",
+    "customScheme": "Индивидуальная схема",
+    "dateTime": "Дата и время",
+    "deepLinkUrl": "Глубокая ссылка",
+    "description": "Описание",
+    "deviceAddress": "Адрес устройства (MAC)",
+    "deviceName": "Название устройства (необязательно)",
+    "digits": "Цифры",
+    "documentsMedia": "Документы и медиа",
     "dropbox": "Dropbox",
-    "email": "Email",
-    "emailAddress": "Email Address",
-    "encryption": "Encryption",
-    "end": "End",
-    "endDate": "End Date",
-    "enterprise": "Enterprise",
-    "epcSepa": "EPC / SEPA (EU)",
-    "equipment": "Equipment",
-    "ethereum": "Ethereum",
-    "event": "iCalendar Event",
-    "eventName": "Event Name",
-    "eventRsvp": "Event RSVP Link",
-    "eventTicket": "Event Ticket",
-    "expiryDate": "Expiry Date (optional)",
-    "facebook": "Facebook",
-    "fallbackUrl": "Fallback URL (optional)",
-    "fax": "Fax",
-    "fileType": "File Type",
-    "fileUrl": "File / Document URL",
-    "firstName": "First Name",
-    "forceHttps": "Force HTTPS",
-    "fullName": "Full Name",
-    "furniture": "Furniture",
-    "geo": "Geo Location",
-    "github": "GitHub",
+    "email": "Электронная почта",
+    "emailAddress": "Адрес электронной почты",
+    "encryption": "Шифрование",
+    "end": "Конец",
+    "endDate": "Дата окончания",
+    "enterprise": "Предприятие",
+    "epcSepa": "EPC / SEPA (ЕС)",
+    "equipment": "Оборудование",
+    "ethereum": "Эфириум",
+    "event": "Событие iCalendar",
+    "eventName": "Название события",
+    "eventRsvp": "Ссылка для подтверждения участия в мероприятии",
+    "eventTicket": "Билет на мероприятие",
+    "expiryDate": "Срок действия (необязательно)",
+    "facebook": "Фейсбук",
+    "fallbackUrl": "Запасной URL (необязательно)",
+    "fax": "Факс",
+    "fileType": "Тип файла",
+    "fileUrl": "URL файла/документа",
+    "firstName": "Имя",
+    "forceHttps": "Принудительное использование HTTPS",
+    "fullName": "Полное имя",
+    "furniture": "Мебель",
+    "geo": "Геолокация",
+    "github": "“GitHub”",
     "googleDrive": "Google Drive",
     "gs1DigitalLink": "GS1 Digital Link",
-    "gtin": "GTIN (Global Trade Item Number)",
-    "hidden": "Hidden Network",
-    "homePhone": "Home Phone",
+    "gtin": "GTIN (глобальный номер предмета торговли)",
+    "hidden": "Скрытая сеть",
+    "homePhone": "Домашний телефон",
     "iban": "IBAN",
-    "idType": "ID Type",
-    "image": "Image",
-    "instagram": "Instagram",
-    "inventoryItem": "Inventory Item",
+    "idType": "Тип идентификатора",
+    "image": "Изображение",
+    "instagram": "Инстаграм",
+    "inventoryItem": "Товар на складе",
     "iosUniversal": "iOS Universal",
-    "issuer": "Issuer",
-    "itAsset": "IT Asset",
-    "label": "Label (optional)",
-    "lastName": "Last Name",
-    "latitude": "Latitude",
-    "linkType": "Link Type",
+    "issuer": "Эмитент",
+    "itAsset": "ИТ-актив",
+    "label": "Метка (необязательно)",
+    "lastName": "Фамилия",
+    "latitude": "Широта",
+    "linkType": "Тип ссылки",
     "linkedin": "LinkedIn",
-    "litecoin": "Litecoin",
-    "location": "Location",
-    "locationNetwork": "Location & Network",
-    "longitude": "Longitude",
-    "lookupUrl": "Lookup URL (optional)",
-    "marketing": "Marketing",
-    "marketingTags": "Marketing Tags",
-    "maxLengthGuard": "Max Length Guard",
-    "mecard": "MeCard Contact",
-    "merchantName": "Merchant Name (optional)",
-    "message": "Message",
-    "messageOptional": "Message (optional)",
-    "messagingLink": "WhatsApp / Telegram / Signal",
-    "messenger": "Messenger",
-    "mobileNumber": "Mobile Number",
-    "mobilePhone": "Mobile Phone",
-    "name": "Name",
-    "nationalIdTaxId": "National ID / Tax ID",
-    "nickname": "Nickname",
-    "normalizeNewlines": "Normalize Newlines",
-    "note": "Note",
+    "litecoin": "Лайткоин",
+    "location": "Местоположение",
+    "locationNetwork": "Местоположение и сеть",
+    "longitude": "Долгота",
+    "lookupUrl": "URL-адрес для поиска (необязательно)",
+    "marketing": "Маркетинг",
+    "marketingTags": "Маркетинговые теги",
+    "maxLengthGuard": "Защитный кожух максимальной длины",
+    "mecard": "Контакт MeCard",
+    "merchantName": "Название продавца (необязательно)",
+    "message": "Сообщение",
+    "messageOptional": "Сообщение (необязательно)",
+    "messagingLink": "“WhatsApp / Telegram / Signal”",
+    "messenger": "Посланник",
+    "mobileNumber": "Номер мобильного телефона",
+    "mobilePhone": "Мобильный телефон",
+    "name": "Имя",
+    "nationalIdTaxId": "Национальный идентификационный номер / Налоговый идентификационный номер",
+    "nickname": "Прозвище",
+    "normalizeNewlines": "Нормализация переносов строк",
+    "note": "Примечание",
     "oneDrive": "OneDrive",
-    "openNoPassword": "Open (No Password)",
-    "organization": "Organization",
-    "other": "Other",
-    "otpAuth": "OTP Authenticator",
-    "otpType": "Type",
-    "password": "Password",
-    "payeeName": "Payee Name",
-    "payments": "Payments (Open Specs)",
-    "paynow": "PayNow (Singapore)",
-    "phone": "Phone",
-    "phoneUsername": "Phone/Username",
-    "pix": "PIX (Brazil)",
+    "openNoPassword": "Открыть (без пароля)",
+    "organization": "Организация",
+    "other": "Другое",
+    "otpAuth": "Аутентификатор OTP",
+    "otpType": "Тип",
+    "password": "Пароль",
+    "payeeName": "Имя получателя платежа",
+    "payments": "Платежи (открытые спецификации)",
+    "paynow": "PayNow (Сингапур)",
+    "phone": "Телефон",
+    "phoneUsername": "Телефон/Имя пользователя",
+    "pix": "PIX (Бразилия)",
     "pixKey": "PIX Key",
-    "plainText": "Plain Text",
-    "platform": "Platform",
-    "prefilledMessage": "Pre-filled Message (optional)",
-    "profileUrl": "Profile URL",
-    "promptPayId": "PromptPay ID",
-    "promptpay": "PromptPay (Thailand)",
-    "proxyType": "Proxy Type",
-    "rawData": "Raw Data",
-    "recipient": "Recipient",
-    "reference": "Reference",
-    "referenceOptional": "Reference (optional)",
-    "resolverDomain": "Resolver Domain",
-    "rsvpUrl": "RSVP URL",
-    "searchQuery": "Search Query (optional)",
-    "seat": "Seat",
-    "secretBase32": "Secret (Base32)",
-    "sectionZone": "Section/Zone",
-    "securityType": "Security Type",
-    "serialNumber": "Serial Number (optional)",
-    "service": "Service",
-    "shortLink": "Short Link Redirect",
-    "shortUrl": "Short URL",
-    "signal": "Signal",
+    "plainText": "Простой текст",
+    "platform": "Платформа",
+    "prefilledMessage": "Предварительно заполненное сообщение (необязательно)",
+    "profileUrl": "URL профиля",
+    "promptPayId": "“PromptPay ID”",
+    "promptpay": "PromptPay (Таиланд)",
+    "proxyType": "Тип прокси",
+    "rawData": "Исходные данные",
+    "recipient": "Получатель",
+    "reference": "Ссылка",
+    "referenceOptional": "Ссылка (необязательно)",
+    "resolverDomain": "Домен разрешения имен",
+    "rsvpUrl": "“RSVP URL”",
+    "searchQuery": "Поисковый запрос (необязательно)",
+    "seat": "Место",
+    "secretBase32": "Секрет (Base32)",
+    "sectionZone": "Секция/Зона",
+    "securityType": "Тип безопасности",
+    "serialNumber": "Серийный номер (необязательно)",
+    "service": "Сервис",
+    "shortLink": "Перенаправление короткой ссылки",
+    "shortUrl": "Короткий URL",
+    "signal": "Сигнал",
     "sms": "SMS",
-    "smsMms": "SMS / MMS",
-    "socialMessaging": "Social & Messaging",
-    "socialProfile": "Social Profile",
-    "ssid": "Network Name (SSID)",
-    "start": "Start",
-    "startDate": "Start Date",
-    "state": "State/Province",
-    "street": "Street",
-    "subject": "Subject",
-    "subjectOptional": "Subject (optional)",
-    "summary": "Event Title",
-    "tel": "Phone Number",
-    "telegram": "Telegram",
-    "text": "Text Content",
-    "ticketId": "Ticket ID",
-    "tiktok": "TikTok",
-    "title": "Title",
-    "transactionNote": "Transaction Note (optional)",
-    "trimWhitespace": "Trim Whitespace",
-    "uenMobile": "UEN/Mobile Number",
-    "universalLink": "Universal Link",
-    "upi": "UPI (India)",
+    "smsMms": "“SMS / MMS”",
+    "socialMessaging": "Социальные сети и мессенджеры",
+    "socialProfile": "Социальный профиль",
+    "ssid": "Имя сети (SSID)",
+    "start": "Старт",
+    "startDate": "Дата начала",
+    "state": "Штат/Провинция",
+    "street": "Улица",
+    "subject": "Тема",
+    "subjectOptional": "Тема (необязательно)",
+    "summary": "Название мероприятия",
+    "tel": "Номер телефона",
+    "telegram": "Телеграмма",
+    "text": "Содержание текста",
+    "ticketId": "Идентификатор билета",
+    "tiktok": "ТикТок",
+    "title": "Название",
+    "transactionNote": "Примечание к транзакции (необязательно)",
+    "trimWhitespace": "Удаление пустого пространства",
+    "uenMobile": "UEN/Номер мобильного телефона",
+    "universalLink": "Универсальная связь",
+    "upi": "UPI (Индия)",
     "upiId": "UPI ID (VPA)",
-    "url": "URL",
-    "utmCampaign": "utm_campaign",
-    "utmContent": "utm_content",
-    "utmLink": "UTM Campaign Link",
-    "utmMedium": "utm_medium",
-    "utmSource": "utm_source",
-    "utmTerm": "utm_term",
-    "validateInput": "Validate Input",
-    "validationOptions": "Validation Options",
-    "validationUrl": "Validation URL (optional)",
-    "vcard": "vCard Contact",
-    "vehicle": "Vehicle",
-    "venue": "Venue",
-    "vevent": "Calendar Event",
+    "url": "“URL”",
+    "utmCampaign": "“utm_campaign”",
+    "utmContent": "“utm_content”",
+    "utmLink": "Ссылка на кампанию UTM",
+    "utmMedium": "“utm_medium”",
+    "utmSource": "“utm_source”",
+    "utmTerm": "“utm_term”",
+    "validateInput": "Проверка входных данных",
+    "validationOptions": "Варианты проверки",
+    "validationUrl": "URL-адрес проверки (необязательно)",
+    "vcard": "vCard Контакт",
+    "vehicle": "Транспортное средство",
+    "venue": "Место проведения",
+    "vevent": "Календарное событие",
     "viber": "Viber",
-    "video": "Video",
-    "walletAddress": "Address",
-    "website": "Website",
+    "video": "Видео",
+    "walletAddress": "Адрес",
+    "website": "Веб-сайт",
     "whatsapp": "WhatsApp",
-    "wifi": "WiFi",
-    "wifiNetwork": "WiFi Network",
-    "wordDocument": "Word Document",
-    "workPhone": "Work Phone",
+    "wifi": "Wi-Fi",
+    "wifiNetwork": "Сеть Wi-Fi",
+    "wordDocument": "Документ Word",
+    "workPhone": "Рабочий телефон",
     "youtube": "YouTube",
-    "zip": "ZIP/Postal Code"
+    "zip": "Почтовый индекс"
   },
   "preview": {
-    "qrCodePreview": "QR Code Preview - Click Export to download",
-    "simulating": "Simulating",
-    "simulationActive": "Environmental simulation active - Preview shows how QR code may appear under different conditions"
+    "qrCodePreview": "Предварительный просмотр QR-кода — нажмите Экспорт для загрузки",
+    "simulating": "Моделирование",
+    "simulationActive": "Активна имитация окружающей среды — предварительный просмотр показывает, как QR-код может выглядеть в различных условиях"
   },
   "qr": {
-    "additionalBorder": "Additional border beyond quiet zone",
-    "alphanumeric": "Alphanumeric",
-    "auto": "Auto",
-    "autoMin": "Auto (min: {{version}})",
-    "autoOptimal": "Auto (Optimal)",
-    "byteUtf8": "Byte / UTF-8",
-    "contrastRatio": "{{count}}:1",
-    "encodingMode": "Encoding Mode",
-    "enforceMinQuietZone": "Enforce Min Quiet Zone",
-    "enforceMinQuietZoneDesc": "Ensure ≥4 module margin",
-    "errorCorrection": "Error Correction",
-    "extraBorderModules": "Extra Border Modules",
-    "high": "H - High (30%)",
-    "kanji": "Kanji",
-    "low": "L - Low (7%)",
-    "margin": "Quiet Zone (Margin)",
-    "mask": "Mask Pattern",
-    "medium": "M - Medium (15%)",
-    "moduleSize": "Module Size",
-    "nDegrees": "{{count}}°",
-    "nModules": "{{count}} modules",
-    "nMs": "{{count}}ms",
-    "nPercent": "{{count}}%",
-    "nPx": "{{count}}px",
-    "numericOnly": "Numeric Only",
-    "quartile": "Q - Quartile (25%)",
-    "version": "Version"
+    "additionalBorder": "Дополнительная граница за пределами тихой зоны",
+    "alphanumeric": "Буквенно-цифровой",
+    "auto": "Авто",
+    "autoMin": "“Авто (мин: {{версия}})”",
+    "autoOptimal": "Авто (Оптимальный)",
+    "byteUtf8": "байт / UTF-8",
+    "contrastRatio": "“{{count}}:1”",
+    "encodingMode": "Режим кодирования",
+    "enforceMinQuietZone": "Обеспечить соблюдение минимальной зоны тишины",
+    "enforceMinQuietZoneDesc": "Обеспечить запас прочности ≥4 модуля",
+    "errorCorrection": "Исправление ошибок",
+    "extraBorderModules": "Дополнительные пограничные модули",
+    "high": "H - Высокий (30%)",
+    "kanji": "Кандзи",
+    "low": "L - Низкий (7%)",
+    "margin": "Спокойная зона (граница)",
+    "mask": "Шаблон маски",
+    "medium": "M - Средний (15%)",
+    "moduleSize": "Размер модуля",
+    "nDegrees": "“{{count}}°”",
+    "nModules": "{{count}} модулей",
+    "nMs": "“{{count}}ms”",
+    "nPercent": "“{{count}}%”",
+    "nPx": "“{{count}}px”",
+    "numericOnly": "Только числовые значения",
+    "quartile": "Q — Квартиль (25%)",
+    "version": "Версия"
   },
   "render": {
-    "addColor": "Add Color",
-    "alignmentStyle": "Alignment Pattern Style",
-    "background": "Background",
-    "byBrightness": "By Brightness",
-    "byCluster": "By Cluster",
-    "byOverlay": "By Overlay",
-    "byPosition": "By Position",
-    "ceil": "Ceil",
-    "circle": "Circle",
-    "classic": "Classic",
-    "colorPalette": "Color Palette",
-    "conic": "Conic",
-    "connected": "Connected",
-    "contrastGuard": "Contrast Guard",
-    "cornerRadius": "Corner Radius",
-    "crispEdges": "Crisp Edges",
-    "crispEdgesDesc": "Use image-rendering: pixelated for sharp edges",
-    "dashed": "Dashed",
-    "diamond": "Diamond",
-    "dotRotation": "Dot Rotation",
-    "dots": "Dots",
-    "eyeInnerStyle": "Eye Inner Style",
-    "eyeOuterStyle": "Eye Outer Style",
-    "eyeScale": "Eye Scale",
-    "finderStyle": "Finder Pattern Style",
-    "floor": "Floor",
-    "foreground": "Foreground",
-    "frameStyle": "Frame Style",
-    "frameText": "Frame Text",
-    "gapMode": "Gap Mode",
-    "gradient": "Gradient",
-    "gradientAngle": "Gradient Angle",
-    "gradientColors": "Colors",
-    "gradientType": "Gradient Type",
-    "inset": "Inset",
-    "linear": "Linear",
-    "matchFinder": "Match Finder",
-    "matchModule": "Match Module",
-    "minContrastRatio": "Min Contrast Ratio",
-    "moduleGap": "Module Gap",
-    "negativeSpace": "Negative Space",
-    "none": "None",
-    "perModuleColorMode": "Per-Module Color Mode",
-    "pixelSnap": "Pixel Snap",
-    "radial": "Radial",
-    "round": "Round",
-    "rounded": "Rounded",
-    "roundedFrame": "Rounded Frame",
-    "shape": "Module Style",
-    "sharp": "Sharp",
-    "smooth": "Smooth",
+    "addColor": "Добавить цвет",
+    "alignmentStyle": "Стиль шаблона выравнивания",
+    "background": "Предыстория",
+    "byBrightness": "По яркости",
+    "byCluster": "По кластерам",
+    "byOverlay": "По наложению",
+    "byPosition": "По позиции",
+    "ceil": "Сейл",
+    "circle": "Круг",
+    "classic": "Классика",
+    "colorPalette": "Цветовая палитра",
+    "conic": "Конический",
+    "connected": "Подключено",
+    "contrastGuard": "Контрастная защита",
+    "cornerRadius": "Закругление углов",
+    "crispEdges": "Четкие края",
+    "crispEdgesDesc": "Используйте рендеринг изображений: пикселизация для получения четких краев",
+    "dashed": "Разгром",
+    "diamond": "Бриллиант",
+    "dotRotation": "Вращение точки",
+    "dots": "Точек",
+    "eyeInnerStyle": "Внутренний стиль глаз",
+    "eyeOuterStyle": "Внешний вид глаза",
+    "eyeScale": "Шкала зрения",
+    "finderStyle": "Стиль выкройки Finder",
+    "floor": "Этаж",
+    "foreground": "Передний план",
+    "frameStyle": "Стиль рамки",
+    "frameText": "Текст рамки",
+    "gapMode": "Режим разрыва",
+    "gradient": "Градиент",
+    "gradientAngle": "Угол градиента",
+    "gradientColors": "Цвета",
+    "gradientType": "Градиентный тип",
+    "inset": "Вставка",
+    "linear": "Линейный",
+    "matchFinder": "Поиск совпадений",
+    "matchModule": "Спецификатор",
+    "minContrastRatio": "Минимальный коэффициент контрастности",
+    "moduleGap": "Разрыв между модулями",
+    "negativeSpace": "Негативное пространство",
+    "none": "Нет",
+    "perModuleColorMode": "Цветовой режим для каждого модуля",
+    "pixelSnap": "Пиксельный щелчок",
+    "radial": "Радиальный",
+    "round": "Раунд",
+    "rounded": "Округленный",
+    "roundedFrame": "Закругленная рама",
+    "shape": "Модульный стиль",
+    "sharp": "Острый",
+    "smooth": "Гладкий",
     "solid": "Solid",
-    "square": "Square",
-    "squares": "Squares",
-    "sticker": "Sticker",
-    "stroke": "Stroke",
-    "style": "Style",
-    "tag": "Tag",
-    "timingStyle": "Timing Pattern Style",
-    "transparentBg": "Transparent Background"
+    "square": "Квадрат",
+    "squares": "Квадратов",
+    "sticker": "Наклейка",
+    "stroke": "Инсульт",
+    "style": "Стиль",
+    "tag": "Тег",
+    "timingStyle": "Стиль временного шаблона",
+    "transparentBg": "Прозрачный фон"
   },
   "safety": {
-    "analysis": "Safety Analysis",
-    "autoPickEcc": "Auto-Pick ECC",
-    "autoPickVersion": "Auto-Pick Version",
-    "autoReduceIntensity": "Auto-Reduce Intensity",
-    "autoTuning": "Auto-Tuning",
-    "balanced": "Balanced",
-    "contrast": "Contrast Ratio",
-    "contrastCheck": "Contrast Check",
-    "contrastRatio": "Contrast Ratio",
-    "excellent": "Excellent",
-    "fair": "Fair",
-    "good": "Good",
-    "lockAlignment": "Lock Alignment",
-    "lockFinders": "Lock Finders",
-    "lockFormat": "Lock Format Info",
-    "lockTiming": "Lock Timing",
-    "lockVersion": "Lock Version Info",
-    "minModuleSize": "Min Module Size",
-    "minQuietZone": "Min Quiet Zone",
-    "off": "Off",
-    "poor": "Poor",
-    "protectionLocks": "Protection Locks",
-    "qualityAnalysis": "Quality Analysis",
-    "quietZone": "Quiet Zone",
-    "safetyMode": "Safety Mode",
-    "scanability": "Scanability Score",
-    "showHeatmap": "Show Heatmap",
-    "simulateBlur": "Simulate Blur",
-    "simulateNoise": "Simulate Noise",
-    "simulateRotation": "Simulate Rotation",
-    "strict": "Strict",
-    "untilScannable": "Until scannable"
+    "analysis": "Анализ безопасности",
+    "autoPickEcc": "Автоматический выбор ECC",
+    "autoPickVersion": "Версия с автоматическим выбором",
+    "autoReduceIntensity": "Автоматическое снижение интенсивности",
+    "autoTuning": "Автотюнинг",
+    "balanced": "Сбалансированный",
+    "contrast": "Коэффициент контрастности",
+    "contrastCheck": "Проверка контрастности",
+    "contrastRatio": "Коэффициент контрастности",
+    "excellent": "Отлично",
+    "fair": "Справедливый",
+    "good": "Хорошо",
+    "lockAlignment": "Выравнивание замка",
+    "lockFinders": "Искатели замков",
+    "lockFormat": "Информация о формате замка",
+    "lockTiming": "Время блокировки",
+    "lockVersion": "Информация о версии блокировки",
+    "minModuleSize": "Минимальный размер модуля",
+    "minQuietZone": "Минимальная зона тишины",
+    "off": "Выкл.",
+    "poor": "Плохо",
+    "protectionLocks": "Защитные замки",
+    "qualityAnalysis": "Анализ качества",
+    "quietZone": "Тихая зона",
+    "safetyMode": "Режим безопасности",
+    "scanability": "Показатель сканируемости",
+    "showHeatmap": "Показать тепловую карту",
+    "simulateBlur": "Имитация размытия",
+    "simulateNoise": "Имитация шума",
+    "simulateRotation": "Имитация вращения",
+    "strict": "Строгий",
+    "untilScannable": "До возможности сканирования"
   },
   "sections": {
-    "animation": "Animation",
-    "metadata": "Metadata",
-    "output": "Output",
-    "overlay": "Overlay / Image",
-    "payload": "Payload / Data",
-    "qrEncoding": "QR Encoding",
-    "rendering": "Rendering",
-    "safety": "Safety Analysis",
-    "share": "Share",
-    "watermark": "Watermark"
+    "animation": "Анимация",
+    "metadata": "Метаданные",
+    "output": "Выход",
+    "overlay": "Наложение / Изображение",
+    "payload": "Полезная нагрузка / Данные",
+    "qrEncoding": "QR-кодирование",
+    "rendering": "Визуализация",
+    "safety": "Анализ безопасности",
+    "share": "Поделиться",
+    "watermark": "Водяной знак"
   },
   "share": {
-    "copied": "Copied!",
-    "copyLink": "Copy Link",
-    "directLink": "Direct Link",
-    "directLinkDesc": "Generate shareable URL",
-    "embedHtml": "Embed HTML",
-    "embedHtmlDesc": "Generate embed code",
-    "encodeAllParams": "Encode All Parameters",
-    "encodeAllParamsDesc": "Include all settings in URL",
-    "markdown": "Markdown",
-    "quickShare": "Quick Share",
-    "twitter": "X/Twitter",
+    "copied": "Скопировано!",
+    "copyLink": "Скопировать ссылку",
+    "directLink": "Прямая ссылка",
+    "directLinkDesc": "Сгенерировать URL-адрес, которым можно поделиться",
+    "embedHtml": "Встроить HTML",
+    "embedHtmlDesc": "Сгенерировать код встраивания",
+    "encodeAllParams": "Закодировать все параметры",
+    "encodeAllParamsDesc": "Включить все настройки в URL",
+    "markdown": "Скидка",
+    "quickShare": "Быстрая публикация",
+    "twitter": "“X/Twitter”",
     "whatsapp": "WhatsApp"
   },
   "tiers": {
-    "advanced": "Advanced",
-    "basic": "Basic",
-    "professional": "Pro",
-    "watchAdForPro": "Watch ad to unlock Professional features for 24 hours"
+    "advanced": "Продвинутый",
+    "basic": "Базовый",
+    "professional": "Про",
+    "watchAdForPro": "Посмотрите рекламу, чтобы разблокировать профессиональные функции на 24 часа"
   },
   "watermark": {
-    "behindQr": "Behind QR",
-    "blendMode": "Blend Mode",
-    "bottomLeft": "Bottom Left",
-    "bottomRight": "Bottom Right",
-    "center": "Center",
-    "corners": "Corners",
-    "edges": "Edges",
-    "enabled": "Enable Watermark",
-    "fontColor": "Font Color",
-    "fontSize": "Font Size",
-    "image": "Image",
-    "multiply": "Multiply",
-    "normal": "Normal",
-    "opacity": "Opacity",
-    "overlay": "Overlay",
-    "pattern": "Pattern",
-    "position": "Position",
-    "quietZone": "Quiet Zone",
-    "screen": "Screen",
-    "text": "Text",
-    "textPlaceholder": "© Company Name",
-    "topLeft": "Top Left",
-    "topRight": "Top Right",
-    "type": "Type",
-    "uploadImage": "Upload Image"
+    "behindQr": "За QR-кодом",
+    "blendMode": "Режим смешивания",
+    "bottomLeft": "Внизу слева",
+    "bottomRight": "Внизу справа",
+    "center": "Центр",
+    "corners": "Углы",
+    "edges": "Грани",
+    "enabled": "Включить водяной знак",
+    "fontColor": "Цвет шрифта",
+    "fontSize": "Размер шрифта",
+    "image": "Изображение",
+    "multiply": "Умножить",
+    "normal": "Нормальный",
+    "opacity": "Непрозрачность",
+    "overlay": "Наложение",
+    "pattern": "Узор",
+    "position": "Позиция",
+    "quietZone": "Тихая зона",
+    "screen": "Экран",
+    "text": "Текст",
+    "textPlaceholder": "© Название компании",
+    "topLeft": "Вверху слева",
+    "topRight": "Вверху справа",
+    "type": "Тип",
+    "uploadImage": "Загрузить изображение"
   }
 }

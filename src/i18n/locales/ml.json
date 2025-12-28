@@ -1,1516 +1,1516 @@
 {
   "animation": {
-    "blueNoise": "Blue Noise",
-    "bounce": "Bounce (Ping-Pong)",
-    "colorCycle": "Color Cycle",
-    "crossfade": "Crossfade",
-    "drift": "Drift",
-    "enabled": "Enable Animation",
-    "everyNFrames": "Every {{count}} frame(s)",
-    "exportAllFrames": "Export All Frames",
-    "fadeIn": "Fade In",
-    "flickerSafe": "Flicker Safe",
-    "frameStep": "Frame Step",
-    "interpolation": "Interpolation",
-    "loop": "Loop Animation",
-    "maxFrames": "Max Frames",
-    "moduleJitter": "Module Jitter",
-    "moduleJitterWarning": "⚠️ May affect scannability",
-    "morph": "Morph",
-    "none": "None",
-    "off": "Off",
-    "pattern": "Generated Pattern",
-    "pulse": "Pulse",
-    "randomSeed": "Random Seed",
-    "rotate": "Rotate",
-    "scanline": "Scanline",
-    "shimmer": "Shimmer",
-    "slideIn": "Slide In",
-    "speed": "Frame Speed",
-    "startFrame": "Start Frame",
-    "temporalDither": "Temporal Dither",
-    "wave": "Wave"
+    "blueNoise": "നീല ശബ്ദം",
+    "bounce": "ബൗൺസ് (പിംഗ്-പോംഗ്)",
+    "colorCycle": "വർണ്ണ ചക്രം",
+    "crossfade": "ക്രോസ്ഫേഡ്",
+    "drift": "ഡ്രിഫ്റ്റ്",
+    "enabled": "ആനിമേഷൻ പ്രാപ്തമാക്കുക",
+    "everyNFrames": "ഓരോ {{എണ്ണം}} ഫ്രെയിമും(കളും)",
+    "exportAllFrames": "എല്ലാ ഫ്രെയിമുകളും കയറ്റുമതി ചെയ്യുക",
+    "fadeIn": "ഫേഡ് ഇൻ",
+    "flickerSafe": "ഫ്ലിക്കർ സേഫ്",
+    "frameStep": "ഫ്രെയിം സ്റ്റെപ്പ്",
+    "interpolation": "ഇന്റർപോളേഷൻ",
+    "loop": "ലൂപ്പ് ആനിമേഷൻ",
+    "maxFrames": "പരമാവധി ഫ്രെയിമുകൾ",
+    "moduleJitter": "മൊഡ്യൂൾ ജിറ്റർ",
+    "moduleJitterWarning": "⚠️ സ്കാൻ ചെയ്യാനുള്ള കഴിവിനെ ബാധിച്ചേക്കാം",
+    "morph": "മോർഫ്",
+    "none": "ഒന്നുമില്ല",
+    "off": "ഓഫ്",
+    "pattern": "ജനറേറ്റഡ് പാറ്റേൺ",
+    "pulse": "പൾസ്",
+    "randomSeed": "റാൻഡം സീഡ്",
+    "rotate": "തിരിക്കുക",
+    "scanline": "സ്കാൻലൈൻ",
+    "shimmer": "ഷിമ്മർ",
+    "slideIn": "സ്ലൈഡ് ഇൻ",
+    "speed": "ഫ്രെയിം വേഗത",
+    "startFrame": "സ്റ്റാർട്ട് ഫ്രെയിം",
+    "temporalDither": "ടെമ്പറൽ ഡിതർ",
+    "wave": "തരംഗം"
   },
   "languages": {
-    "en": "English",
-    "hi": "Hindi",
-    "zh": "Chinese",
-    "ms": "Malay",
-    "ta": "Tamil",
-    "th": "Thai",
-    "pt": "Portuguese",
-    "id": "Indonesian",
-    "vi": "Vietnamese",
-    "tl": "Tagalog",
-    "ja": "Japanese",
-    "ko": "Korean",
-    "es": "Spanish",
-    "ar": "Arabic",
-    "ru": "Russian",
-    "te": "Telugu",
-    "mr": "Marathi",
-    "bn": "Bengali",
-    "gu": "Gujarati",
-    "kn": "Kannada",
-    "ml": "Malayalam",
-    "pa": "Punjabi"
+    "en": "ഇംഗ്ലീഷ്",
+    "hi": "ഹിന്ദി",
+    "zh": "ചൈനീസ്",
+    "ms": "മലയ്",
+    "ta": "തമിഴ്",
+    "th": "തായ്",
+    "pt": "പോർച്ചുഗീസ്",
+    "id": "ഇന്തോനേഷ്യൻ",
+    "vi": "വിയറ്റ്നാമീസ്",
+    "tl": "ടാഗലോഗ്",
+    "ja": "ജാപ്പനീസ്",
+    "ko": "കൊറിയൻ",
+    "es": "സ്പാനിഷ്",
+    "ar": "അറബിക്",
+    "ru": "റഷ്യൻ",
+    "te": "തെലുങ്ക്",
+    "mr": "മറാത്തി",
+    "bn": "ബംഗാളി",
+    "gu": "ഗുജറാത്തി",
+    "kn": "കന്നഡ",
+    "ml": "മലയാളം",
+    "pa": "പഞ്ചാബി"
   },
   "app": {
     "name": "ANQR",
-    "tagline": "QR Code Generator"
+    "tagline": "ക്യുആർ കോഡ് ജനറേറ്റർ"
   },
   "common": {
-    "allRightsReserved": "All rights reserved",
-    "apply": "Apply",
-    "back": "Back",
-    "cancel": "Cancel",
-    "close": "Close",
-    "copied": "Copied!",
-    "copy": "Copy",
+    "allRightsReserved": "എല്ലാ അവകാശങ്ങളും നിക്ഷിപ്തം",
+    "apply": "പ്രയോഗിക്കുക",
+    "back": "തിരികെ",
+    "cancel": "റദ്ദാക്കുക",
+    "close": "അടയ്ക്കുക",
+    "copied": "പകർത്തി!",
+    "copy": "പകർപ്പ്",
     "copyright": "© ANQR",
-    "delete": "Delete",
-    "disabled": "Disabled",
-    "download": "Download",
-    "edit": "Edit",
-    "enabled": "Enabled",
-    "error": "Error",
-    "filter": "Filter",
-    "less": "Less",
-    "loading": "Loading...",
-    "more": "More",
-    "next": "Next",
-    "no": "No",
-    "none": "None",
-    "off": "Off",
-    "ok": "OK",
-    "on": "On",
-    "previous": "Previous",
-    "reset": "Reset",
-    "save": "Save",
-    "search": "Search",
-    "select": "Select",
-    "showLess": "Show Less",
-    "showMore": "Show More",
-    "sort": "Sort",
-    "success": "Success",
-    "upload": "Upload",
-    "viewAll": "View All",
-    "yes": "Yes"
+    "delete": "ഇല്ലാതാക്കുക",
+    "disabled": "വൈകല്യം",
+    "download": "ഡൗൺലോഡ്",
+    "edit": "എഡിറ്റ്",
+    "enabled": "പ്രാപ്തമാക്കി",
+    "error": "പിശക്",
+    "filter": "ഫിൽട്ടർ",
+    "less": "കുറവ്",
+    "loading": "ലോഡ് ചെയ്യുന്നു…",
+    "more": "കൂടുതൽ",
+    "next": "അടുത്തത്",
+    "no": "ഇല്ല",
+    "none": "ഒന്നുമില്ല",
+    "off": "ഓഫ്",
+    "ok": "ശരി",
+    "on": "ഓൺ",
+    "previous": "മുമ്പത്തേത്",
+    "reset": "പുനഃസജ്ജമാക്കുക",
+    "save": "സംരക്ഷിക്കുക",
+    "search": "തിരയൽ",
+    "select": "തിരഞ്ഞെടുക്കുക",
+    "showLess": "കുറച്ചു കാണിക്കുക",
+    "showMore": "കൂടുതൽ കാണിക്കുക",
+    "sort": "ക്രമീകരിക്കുക",
+    "success": "വിജയം",
+    "upload": "അപ്‌ലോഡ്",
+    "viewAll": "എല്ലാം കാണുക",
+    "yes": "അതെ"
   },
-  "fileSaveFailed": "Failed to save file: {{error}}",
-  "fileSaved": "Saved to Documents: {{filename}}",
+  "fileSaveFailed": "ഫയൽ സേവ് ചെയ്യുന്നതിൽ പരാജയപ്പെട്ടു: {{error}}",
+  "fileSaved": "ഡോക്യുമെന്റുകളിലേക്ക് സംരക്ഷിച്ചു: {{ഫയൽനാമം}}",
   "footer": {
-    "copyright": "© ANQR {{year}}"
+    "copyright": "© ANQR {{വർഷം}}"
   },
   "gallery": {
-    "all": "All",
-    "animationOverlay": "Animation",
-    "blendModes": "Blend Modes",
-    "collapse": "Collapse",
-    "colorModes": "Color Modes",
-    "colors": "Colors",
-    "contentTypes": "Content Types",
-    "dithering": "Dithering",
-    "encoding": "Encoding",
-    "expand": "Expand",
-    "filter": "Filter",
-    "imageOverlay": "Image Overlay",
+    "all": "എല്ലാം",
+    "animationOverlay": "ആനിമേഷൻ",
+    "blendModes": "ബ്ലെൻഡ് മോഡുകൾ",
+    "collapse": "ചുരുക്കുക",
+    "colorModes": "കളർ മോഡുകൾ",
+    "colors": "നിറങ്ങൾ",
+    "contentTypes": "ഉള്ളടക്ക തരങ്ങൾ",
+    "dithering": "ഡിതറിംഗ്",
+    "encoding": "എൻകോഡിംഗ്",
+    "expand": "വികസിപ്പിക്കുക",
+    "filter": "ഫിൽട്ടർ",
+    "imageOverlay": "ഇമേജ് ഓവർലേ",
     "items": {
       "anim-blue-noise": {
-        "description": "Blue noise threshold with animation",
-        "title": "Animated Blue Noise"
+        "description": "ആനിമേഷനോടുകൂടിയ നീല ശബ്ദ പരിധി",
+        "title": "ആനിമേറ്റഡ് ബ്ലൂ നോയ്‌സ്"
       },
       "anim-blue-noise-i100": {
-        "description": "Animated blue noise at 100%",
-        "title": "Blue Noise 100%"
+        "description": "100% ആനിമേറ്റഡ് നീല ശബ്‌ദം",
+        "title": "നീല ശബ്ദം 100%"
       },
       "anim-blue-noise-i50": {
-        "description": "Animated blue noise at 50%",
-        "title": "Blue Noise 50%"
+        "description": "50% നിരക്കിൽ ആനിമേറ്റഡ് നീല ശബ്‌ദം",
+        "title": "നീല ശബ്ദ 50%"
       },
       "anim-blue-noise-i75": {
-        "description": "Animated blue noise at 75%",
-        "title": "Blue Noise 75%"
+        "description": "75% ആനിമേറ്റഡ് നീല ശബ്‌ദം",
+        "title": "നീല ശബ്ദ 75%"
       },
       "anim-brightness": {
-        "description": "Brightness with animation",
-        "title": "Animated Brightness"
+        "description": "ആനിമേഷനോടുകൂടിയ തെളിച്ചം",
+        "title": "ആനിമേറ്റഡ് തെളിച്ചം"
       },
       "anim-colormode-bw": {
-        "description": "B&W animated overlay",
-        "title": "Animated B&W"
+        "description": "കറുപ്പും വെളുപ്പും ആനിമേറ്റഡ് ഓവർലേ",
+        "title": "ആനിമേറ്റഡ് ബ്ലാക്ക് ആൻഡ് വൈറ്റ്"
       },
       "anim-colormode-color": {
-        "description": "Color animated overlay",
-        "title": "Animated Color"
+        "description": "വർണ്ണ ആനിമേറ്റഡ് ഓവർലേ",
+        "title": "ആനിമേറ്റഡ് കളർ"
       },
       "anim-colormode-grayscale": {
-        "description": "Grayscale animated overlay",
-        "title": "Animated Grayscale"
+        "description": "ഗ്രേസ്‌കെയിൽ ആനിമേറ്റഡ് ഓവർലേ",
+        "title": "ആനിമേറ്റഡ് ഗ്രേസ്കെയിൽ"
       },
       "anim-dithered": {
-        "description": "Error diffusion with animation",
-        "title": "Animated Dithered"
+        "description": "ആനിമേഷനിൽ പിശക് വ്യാപനം",
+        "title": "ആനിമേറ്റഡ് ഡിതേർഡ്"
       },
       "anim-duotone": {
-        "description": "Duotone with animation",
-        "title": "Animated Duotone"
+        "description": "ആനിമേഷനോടുകൂടിയ ഡ്യുവറ്റോൺ",
+        "title": "ആനിമേറ്റഡ് ഡ്യുവറ്റോൺ"
       },
       "anim-halftone": {
-        "description": "Halftone dots with animation",
-        "title": "Animated Halftone"
+        "description": "ആനിമേഷനോടുകൂടിയ ഹാഫ്‌ടോൺ ഡോട്ടുകൾ",
+        "title": "ആനിമേറ്റഡ് ഹാൽഫ്‌ടോൺ"
       },
       "anim-mosaic": {
-        "description": "Mosaic with animation",
-        "title": "Animated Mosaic"
+        "description": "ആനിമേഷനോടുകൂടിയ മൊസൈക്ക്",
+        "title": "ആനിമേറ്റഡ് മൊസൈക്ക്"
       },
       "blend-classic": {
-        "description": "Dithered overlay with classic palette",
-        "title": "Classic Blend"
+        "description": "ക്ലാസിക് പാലറ്റുള്ള ഡൈതേർഡ് ഓവർലേ",
+        "title": "ക്ലാസിക് ബ്ലെൻഡ്"
       },
       "blend-forest": {
-        "description": "Dithered overlay with forest palette",
-        "title": "Forest Blend"
+        "description": "ഫോറസ്റ്റ് പാലറ്റ് ഉള്ള ഡൈതേർഡ് ഓവർലേ",
+        "title": "ഫോറസ്റ്റ് ബ്ലെൻഡ്"
       },
       "blend-navy": {
-        "description": "Dithered overlay with navy palette",
-        "title": "Navy Blend"
+        "description": "നേവി പാലറ്റുള്ള ഡൈതേർഡ് ഓവർലേ",
+        "title": "നേവി ബ്ലെൻഡ്"
       },
       "blend-wine": {
-        "description": "Dithered overlay with wine palette",
-        "title": "Wine Blend"
+        "description": "വൈൻ പാലറ്റ് ഉള്ള ഡൈതേർഡ് ഓവർലേ",
+        "title": "വൈൻ മിശ്രിതം"
       },
       "cmode-blue-noise-bw": {
-        "description": "Blue Noise in B&W",
-        "title": "Blue Noise B&W"
+        "description": "ബ്ലൂ നോയ്‌സ് ഇൻ ബ്ലാക്ക് ആൻഡ് വൈറ്റ്",
+        "title": "ബ്ലൂ നോയ്‌സ് ബ്ലാക്ക് ആൻഡ് വൈറ്റ്"
       },
       "cmode-blue-noise-color": {
-        "description": "Blue Noise in Color",
-        "title": "Blue Noise Color"
+        "description": "നിറത്തിലുള്ള നീല ശബ്ദം",
+        "title": "നീല ശബ്ദ നിറം"
       },
       "cmode-dithered-color": {
-        "description": "Dithered in Color",
-        "title": "Dithered Color"
+        "description": "നിറം മങ്ങി",
+        "title": "മങ്ങിയ നിറം"
       },
       "cmode-dithered-grayscale": {
-        "description": "Dithered in Grayscale",
-        "title": "Dithered Grayscale"
+        "description": "ഗ്രേസ്കെയിലിൽ മങ്ങിപ്പോയി",
+        "title": "ഡിതേർഡ് ഗ്രേസ്കെയിൽ"
       },
       "cmode-halftone-bw": {
-        "description": "Halftone in B&W",
-        "title": "Halftone B&W"
+        "description": "ഹാൾഫ്‌ടോൺ ഇൻ ബ്ലാക്ക് ആൻഡ് വൈറ്റ്",
+        "title": "ഹാഫ്‌ടോൺ കറുപ്പും വെളുപ്പും"
       },
       "cmode-halftone-color": {
-        "description": "Halftone in Color",
-        "title": "Halftone Color"
+        "description": "ഹാഫ്‌ടോൺ ഇൻ കളർ",
+        "title": "ഹാഫ്‌ടോൺ നിറം"
       },
       "color-coral": {
-        "description": "#e85d04 on #ffe8d6",
-        "title": "Coral"
+        "description": "#ffe8d6-ലെ #e85d04",
+        "title": "പവിഴം"
       },
       "color-coral-dots": {
-        "description": "Coral with dot modules",
-        "title": "Coral Dots"
+        "description": "ഡോട്ട് മൊഡ്യൂളുകളുള്ള പവിഴപ്പുറ്റ്",
+        "title": "പവിഴപ്പുറ്റുകൾ"
       },
       "color-crimson": {
-        "description": "#9d0208 on #ffccd5",
-        "title": "Crimson"
+        "description": "#ffccd5-ൽ #9d0208",
+        "title": "ക്രിംസൺ"
       },
       "color-forest": {
-        "description": "#1b4332 on #d8f3dc",
-        "title": "Forest"
+        "description": "#d8f3dc-ൽ #1b4332",
+        "title": "വനം"
       },
       "color-forest-dots": {
-        "description": "Forest with dot modules",
-        "title": "Forest Dots"
+        "description": "ഡോട്ട് മൊഡ്യൂളുകളുള്ള വനം",
+        "title": "വനബിന്ദുക്കൾ"
       },
       "color-gold": {
-        "description": "#7f5539 on #ffe8cc",
-        "title": "Gold"
+        "description": "#ffe8cc-ൽ #7f5539",
+        "title": "സ്വർണ്ണം"
       },
       "color-inverted": {
-        "description": "#ffffff on #000000",
-        "title": "Inverted"
+        "description": "#000000-ൽ #ffffff",
+        "title": "വിപരീതം"
       },
       "color-midnight": {
-        "description": "#1a1a2e on #eef1ff",
-        "title": "Midnight"
+        "description": "#eef1ff-ൽ #1a1a2e",
+        "title": "അർദ്ധരാത്രി"
       },
       "color-midnight-dots": {
-        "description": "Midnight with dot modules",
-        "title": "Midnight Dots"
+        "description": "ഡോട്ട് മൊഡ്യൂളുകളുള്ള അർദ്ധരാത്രി",
+        "title": "മിഡ്‌നൈറ്റ് ഡോട്ട്‌സ്"
       },
       "color-navy": {
-        "description": "#001d3d on #a2d2ff",
-        "title": "Navy"
+        "description": "#a2d2ff-ൽ #001d3d",
+        "title": "നാവികസേന"
       },
       "color-ocean": {
-        "description": "#023e8a on #caf0f8",
-        "title": "Ocean"
+        "description": "#caf0f8-ൽ #023e8a",
+        "title": "സമുദ്രം"
       },
       "color-ocean-dots": {
-        "description": "Ocean with dot modules",
-        "title": "Ocean Dots"
+        "description": "ഡോട്ട് മൊഡ്യൂളുകളുള്ള സമുദ്രം",
+        "title": "സമുദ്രത്തിലെ കുത്തുകൾ"
       },
       "color-royal": {
-        "description": "#4a0080 on #f5e6ff",
-        "title": "Royal"
+        "description": "#f5e6ff-ൽ #4a0080",
+        "title": "റോയൽ"
       },
       "color-royal-dots": {
-        "description": "Royal with dot modules",
-        "title": "Royal Dots"
+        "description": "ഡോട്ട് മൊഡ്യൂളുകളുള്ള റോയൽ",
+        "title": "രാജകീയ ഡോട്ടുകൾ"
       },
       "color-slate": {
-        "description": "#343a40 on #e9ecef",
-        "title": "Slate"
+        "description": "#e9ecef-ൽ #343a40",
+        "title": "സ്ലേറ്റ്"
       },
       "color-sunset": {
-        "description": "#bf0603 on #fff3b0",
-        "title": "Sunset"
+        "description": "#fff3b0-ൽ #bf0603",
+        "title": "സൂര്യാസ്തമയം"
       },
       "color-sunset-dots": {
-        "description": "Sunset with dot modules",
-        "title": "Sunset Dots"
+        "description": "ഡോട്ട് മൊഡ്യൂളുകളുള്ള സൂര്യാസ്തമയം",
+        "title": "സൂര്യാസ്തമയ ബിന്ദുക്കൾ"
       },
       "color-teal": {
-        "description": "#006d77 on #e0f4f5",
-        "title": "Teal"
+        "description": "#e0f4f5-ൽ #006d77",
+        "title": "ടീൽ"
       },
       "combo-anim-dots-halftone": {
-        "description": "Animated halftone with dot modules",
-        "title": "Animated Dots + Halftone"
+        "description": "ഡോട്ട് മൊഡ്യൂളുകളുള്ള ആനിമേറ്റഡ് ഹാൽഫ്‌ടോൺ",
+        "title": "ആനിമേറ്റഡ് ഡോട്ടുകൾ + ഹാൽഫ്‌ടോൺ"
       },
       "combo-anim-rounded-blue-noise": {
-        "description": "Animated blue noise with rounded",
-        "title": "Animated Rounded + Blue Noise"
+        "description": "വൃത്താകൃതിയിലുള്ള ആനിമേറ്റഡ് നീല ശബ്ദം",
+        "title": "ആനിമേറ്റഡ് റൗണ്ടഡ് + ബ്ലൂ നോയ്‌സ്"
       },
       "combo-connected-pixelate-teal": {
-        "description": "Pixelated overlay with connected modules",
-        "title": "Connected + Pixelate Teal"
+        "description": "ബന്ധിപ്പിച്ച മൊഡ്യൂളുകളുള്ള പിക്സലേറ്റഡ് ഓവർലേ",
+        "title": "കണക്റ്റഡ് + പിക്സലേറ്റ് ടീൽ"
       },
       "combo-connected-square": {
-        "description": "Connected modules with square finders",
-        "title": "Connected + Square"
+        "description": "ചതുര ഫൈൻഡറുകളുമായി ബന്ധിപ്പിച്ച മൊഡ്യൂളുകൾ",
+        "title": "കണക്റ്റഡ് + സ്ക്വയർ"
       },
       "combo-connected-wave-ocean": {
-        "description": "Connected modules with wave effect",
-        "title": "Connected + Wave Ocean"
+        "description": "തരംഗ പ്രഭാവമുള്ള ബന്ധിപ്പിച്ച മൊഡ്യൂളുകൾ",
+        "title": "ബന്ധിത + തിരമാല സമുദ്രം"
       },
       "combo-diamond-blue-noise-navy": {
-        "description": "Diamond modules with blue noise",
-        "title": "Diamond + Blue Noise Navy"
+        "description": "നീല ശബ്ദമുള്ള ഡയമണ്ട് മൊഡ്യൂളുകൾ",
+        "title": "ഡയമണ്ട് + ബ്ലൂ നോയ്‌സ് നേവി"
       },
       "combo-diamond-duotone-crimson": {
-        "description": "Duotone effect with diamond modules",
-        "title": "Diamond + Duotone Crimson"
+        "description": "ഡയമണ്ട് മൊഡ്യൂളുകളുള്ള ഡ്യുവറ്റോൺ ഇഫക്റ്റ്",
+        "title": "ഡയമണ്ട് + ഡ്യുവറ്റോൺ ക്രിംസൺ"
       },
       "combo-diamond-rounded": {
-        "description": "Diamond modules with rounded finders",
-        "title": "Diamond + Rounded"
+        "description": "വൃത്താകൃതിയിലുള്ള ഫൈൻഡറുകളുള്ള ഡയമണ്ട് മൊഡ്യൂളുകൾ",
+        "title": "ഡയമണ്ട് + വൃത്താകൃതിയിലുള്ളത്"
       },
       "combo-dots-circle": {
-        "description": "Dots modules with circle finders",
-        "title": "Dots + Circle"
+        "description": "സർക്കിൾ ഫൈൻഡറുകളുള്ള ഡോട്ട്സ് മൊഡ്യൂളുകൾ",
+        "title": "ഡോട്ടുകൾ + സർക്കിൾ"
       },
       "combo-dots-extreme-forest": {
-        "description": "Maximum visibility with dots",
-        "title": "Dots + Extreme Forest"
+        "description": "ഡോട്ടുകളുള്ള പരമാവധി ദൃശ്യപരത",
+        "title": "ഡോട്ടുകൾ + എക്സ്ട്രീം ഫോറസ്റ്റ്"
       },
       "combo-dots-halftone-gold": {
-        "description": "Dot modules with halftone overlay",
-        "title": "Dots + Halftone Gold"
+        "description": "ഹാൽഫ്റ്റോൺ ഓവർലേ ഉള്ള ഡോട്ട് മൊഡ്യൂളുകൾ",
+        "title": "ഡോട്ടുകൾ + ഹാഫ്‌ടോൺ ഗോൾഡ്"
       },
       "combo-dots-outline-slate": {
-        "description": "Edge detection with dot modules",
-        "title": "Dots + Outline Slate"
+        "description": "ഡോട്ട് മൊഡ്യൂളുകൾ ഉപയോഗിച്ചുള്ള എഡ്ജ് ഡിറ്റക്ഷൻ",
+        "title": "ഡോട്ടുകൾ + ഔട്ട്‌ലൈൻ സ്ലേറ്റ്"
       },
       "combo-rounded-dithered-royal": {
-        "description": "Classic dithered with rounded style",
-        "title": "Rounded + Dithered Royal"
+        "description": "വൃത്താകൃതിയിലുള്ള ശൈലിയിൽ ഡൈതർ ചെയ്ത ക്ലാസിക്",
+        "title": "വൃത്താകൃതിയിലുള്ള + മങ്ങിയ റോയൽ"
       },
       "combo-rounded-mosaic-sunset": {
-        "description": "Rounded modules with mosaic overlay",
-        "title": "Rounded + Mosaic Sunset"
+        "description": "മൊസൈക് ഓവർലേ ഉള്ള വൃത്താകൃതിയിലുള്ള മൊഡ്യൂളുകൾ",
+        "title": "വൃത്താകൃതിയിലുള്ള + മൊസൈക് സൂര്യാസ്തമയം"
       },
       "combo-rounded-rounded": {
-        "description": "Rounded modules with rounded finders",
-        "title": "Rounded + Rounded"
+        "description": "വൃത്താകൃതിയിലുള്ള ഫൈൻഡറുകളുള്ള വൃത്താകൃതിയിലുള്ള മൊഡ്യൂളുകൾ",
+        "title": "വൃത്താകൃതിയിലുള്ള + വൃത്താകൃതിയിലുള്ള"
       },
       "combo-rounded-subpixel-coral": {
-        "description": "High-detail subpixel rendering",
-        "title": "Rounded + Subpixel Coral"
+        "description": "ഹൈ-ഡെറ്റെയിൽ സബ്പിക്സൽ റെൻഡറിംഗ്",
+        "title": "വൃത്താകൃതിയിലുള്ള + സബ്പിക്സൽ കോറൽ"
       },
       "content-email": {
-        "description": "Mailto link with coral colors",
-        "title": "Email Address"
+        "description": "പവിഴപ്പുറ്റുകളുടെ നിറങ്ങളുമായി മെയിൽറ്റോ ലിങ്ക്",
+        "title": "ഇമെയിൽ വിലാസം"
       },
       "content-event": {
-        "description": "iCal event with rounded royal",
-        "title": "Calendar Event"
+        "description": "വൃത്താകൃതിയിലുള്ള റോയൽ ഉള്ള iCal ഇവന്റ്",
+        "title": "കലണ്ടർ ഇവന്റ്"
       },
       "content-geo": {
-        "description": "Map coords with connected gold",
-        "title": "Geo Location"
+        "description": "ബന്ധിപ്പിച്ച സ്വർണ്ണം ഉപയോഗിച്ച് ഭൂപട കോർഡുകൾ",
+        "title": "ജിയോ ലൊക്കേഷൻ"
       },
       "content-sms": {
-        "description": "Pre-filled SMS with diamond teal",
-        "title": "SMS Message"
+        "description": "ഡയമണ്ട് ടീൽ നിറച്ച മുൻകൂട്ടി പൂരിപ്പിച്ച SMS",
+        "title": "എസ്എംഎസ് സന്ദേശം"
       },
       "content-vcard": {
-        "description": "Contact card with rounded navy style",
-        "title": "vCard Contact"
+        "description": "വൃത്താകൃതിയിലുള്ള നേവി ശൈലിയിലുള്ള കോൺടാക്റ്റ് കാർഡ്",
+        "title": "vCard കോൺടാക്റ്റ്"
       },
       "content-wifi": {
-        "description": "WiFi config with dots forest green",
-        "title": "WiFi Network"
+        "description": "ഡോട്ടുകൾ ഫോറസ്റ്റ് ഗ്രീൻ ഉള്ള വൈഫൈ കോൺഫിഗറേഷൻ",
+        "title": "വൈഫൈ നെറ്റ്‌വർക്ക്"
       },
       "dither-adaptive-threshold": {
-        "description": "Adaptive threshold",
-        "title": "Adaptive"
+        "description": "അഡാപ്റ്റീവ് ത്രെഷോൾഡ്",
+        "title": "അഡാപ്റ്റീവ്"
       },
       "dither-blue-noise": {
-        "description": "Blue noise threshold",
-        "title": "Blue Noise"
+        "description": "നീല ശബ്ദ പരിധി",
+        "title": "നീല ശബ്ദം"
       },
       "dither-blue-noise-error-diffusion": {
-        "description": "Hybrid blue noise",
-        "title": "Blue Noise + Error"
+        "description": "ഹൈബ്രിഡ് നീല ശബ്ദം",
+        "title": "നീല ശബ്ദം + പിശക്"
       },
       "dither-error-diffusion": {
-        "description": "Floyd-Steinberg style",
-        "title": "Error Diffusion"
+        "description": "ഫ്ലോയ്ഡ്-സ്റ്റെയിൻബർഗ് ശൈലി",
+        "title": "പിശക് വ്യാപനം"
       },
       "dither-kernel-atkinson": {
-        "description": "Atkinson error diffusion",
-        "title": "Atkinson"
+        "description": "അറ്റ്കിൻസൺ പിശക് വ്യാപനം",
+        "title": "അറ്റ്കിൻസൺ"
       },
       "dither-kernel-burkes": {
-        "description": "Burkes error diffusion",
-        "title": "Burkes"
+        "description": "ബർക്സ് പിശക് വ്യാപനം",
+        "title": "ബർക്കുകൾ"
       },
       "dither-kernel-floyd-steinberg": {
-        "description": "Floyd-Steinberg error diffusion",
-        "title": "Floyd-Steinberg"
+        "description": "ഫ്ലോയ്ഡ്-സ്റ്റെയിൻബർഗ് പിശക് വ്യാപനം",
+        "title": "ഫ്ലോയ്ഡ്-സ്റ്റെയിൻബർഗ്"
       },
       "dither-kernel-jarvis-judice-ninke": {
-        "description": "Jarvis-Judice-Ninke error diffusion",
-        "title": "Jarvis-Judice-Ninke"
+        "description": "ജാർവിസ്-ജുഡീസ്-നിങ്കെ പിശക് വ്യാപനം",
+        "title": "ജാർവിസ്-ജൂഡിസ്-നിങ്കെ"
       },
       "dither-kernel-sierra": {
-        "description": "Sierra error diffusion",
-        "title": "Sierra"
+        "description": "സിയറ പിശക് വ്യാപനം",
+        "title": "സിയറ"
       },
       "dither-kernel-stucki": {
-        "description": "Stucki error diffusion",
-        "title": "Stucki"
+        "description": "സ്റ്റക്കി പിശക് വ്യാപനം",
+        "title": "സ്റ്റക്കി"
       },
       "dither-ordered-bayer": {
-        "description": "Bayer matrix dithering",
-        "title": "Ordered Bayer"
+        "description": "ബേയർ മാട്രിക്സ് ഡൈതറിംഗ്",
+        "title": "ഓർഡർ ചെയ്ത ബേയർ"
       },
       "dither-perceptual": {
-        "description": "Luminance-weighted",
-        "title": "Perceptual"
+        "description": "ലുമിനൻസ്-വെയ്റ്റഡ്",
+        "title": "പെർസെപ്ച്വൽ"
       },
       "dither-strength-100": {
-        "description": "Dither strength at 100%",
-        "title": "Strength 100%"
+        "description": "100% ൽ ബലം കുറയുന്നു",
+        "title": "ശക്തി 100%"
       },
       "dither-strength-20": {
-        "description": "Dither strength at 20%",
-        "title": "Strength 20%"
+        "description": "20% ൽ ബലം കുറയുന്നു",
+        "title": "ശക്തി 20%"
       },
       "dither-strength-40": {
-        "description": "Dither strength at 40%",
-        "title": "Strength 40%"
+        "description": "40% ൽ ഡിതർ ബലം",
+        "title": "ശക്തി 40%"
       },
       "dither-strength-60": {
-        "description": "Dither strength at 60%",
-        "title": "Strength 60%"
+        "description": "60% ൽ ഡിതർ ബലം",
+        "title": "ശക്തി 60%"
       },
       "dither-strength-80": {
-        "description": "Dither strength at 80%",
-        "title": "Strength 80%"
+        "description": "80% ൽ ഡിതർ ബലം",
+        "title": "ശക്തി 80%"
       },
       "dither-white-noise": {
-        "description": "Random noise threshold",
-        "title": "White Noise"
+        "description": "റാൻഡം നോയ്‌സ് ത്രെഷോൾഡ്",
+        "title": "വൈറ്റ് നോയ്‌സ്"
       },
       "enc-ecc-h": {
-        "description": "30% error correction",
-        "title": "ECC High"
+        "description": "30% പിശക് തിരുത്തൽ",
+        "title": "ഇസിസി ഹൈ"
       },
       "enc-ecc-l": {
-        "description": "7% error correction",
-        "title": "ECC Low"
+        "description": "7% പിശക് തിരുത്തൽ",
+        "title": "ഇസിസി താഴ്ന്നത്"
       },
       "enc-ecc-m": {
-        "description": "15% error correction",
-        "title": "ECC Medium"
+        "description": "15% പിശക് തിരുത്തൽ",
+        "title": "ECC മീഡിയം"
       },
       "enc-ecc-q": {
-        "description": "25% error correction",
-        "title": "ECC Quartile"
+        "description": "25% പിശക് തിരുത്തൽ",
+        "title": "ECC ക്വാർട്ടൈൽ"
       },
       "enc-v0": {
-        "description": "Automatic version selection",
-        "title": "Auto Version"
+        "description": "ഓട്ടോമാറ്റിക് പതിപ്പ് തിരഞ്ഞെടുക്കൽ",
+        "title": "ഓട്ടോ പതിപ്പ്"
       },
       "enc-v12": {
-        "description": "Version 12 QR code",
-        "title": "Version 12"
+        "description": "പതിപ്പ് 12 QR കോഡ്",
+        "title": "പതിപ്പ് 12"
       },
       "enc-v6": {
-        "description": "Best for overlays (no center eye)",
-        "title": "Version 6"
+        "description": "ഓവർലേകൾക്ക് ഏറ്റവും മികച്ചത് (സെന്റർ ഐ ഇല്ലാതെ)",
+        "title": "പതിപ്പ് 6"
       },
       "enc-v6-h": {
-        "description": "Version 6 with high error correction",
-        "title": "V6 + ECC High"
+        "description": "ഉയർന്ന പിശക് തിരുത്തലുള്ള പതിപ്പ് 6",
+        "title": "V6 + ECC ഹൈ"
       },
       "enc-v6-l": {
-        "description": "Version 6 with low error correction",
-        "title": "V6 + ECC Low"
+        "description": "കുറഞ്ഞ പിശക് തിരുത്തലുള്ള പതിപ്പ് 6",
+        "title": "V6 + ECC ലോ"
       },
       "enc-v9": {
-        "description": "Version 9 QR code",
-        "title": "Version 9"
+        "description": "പതിപ്പ് 9 QR കോഡ്",
+        "title": "പതിപ്പ് 9"
       },
       "enc-v9-h": {
-        "description": "Version 9 with high error correction",
-        "title": "V9 + ECC High"
+        "description": "ഉയർന്ന പിശക് തിരുത്തലുള്ള പതിപ്പ് 9",
+        "title": "V9 + ECC ഹൈ"
       },
       "enc-v9-l": {
-        "description": "Version 9 with low error correction",
-        "title": "V9 + ECC Low"
+        "description": "കുറഞ്ഞ പിശക് തിരുത്തലുള്ള പതിപ്പ് 9",
+        "title": "V9 + ECC ലോ"
       },
       "finder-circle": {
-        "description": "Circle finder pattern",
-        "title": "Circle Finders"
+        "description": "സർക്കിൾ ഫൈൻഡർ പാറ്റേൺ",
+        "title": "സർക്കിൾ ഫൈൻഡറുകൾ"
       },
       "finder-rounded": {
-        "description": "Rounded finder pattern",
-        "title": "Rounded Finders"
+        "description": "വൃത്താകൃതിയിലുള്ള ഫൈൻഡർ പാറ്റേൺ",
+        "title": "വൃത്താകൃതിയിലുള്ള കണ്ടെത്തലുകൾ"
       },
       "finder-square": {
-        "description": "Square finder pattern",
-        "title": "Square Finders"
+        "description": "ചതുരാകൃതിയിലുള്ള കണ്ടെത്തൽ പാറ്റേൺ",
+        "title": "ചതുരാകൃതിയിലുള്ള കണ്ടെത്തലുകൾ"
       },
       "halftone-classic": {
-        "description": "Halftone with classic palette",
-        "title": "Classic Halftone"
+        "description": "ക്ലാസിക് പാലറ്റുള്ള ഹാഫ്‌ടോൺ",
+        "title": "ക്ലാസിക് ഹാൽഫ്റ്റോൺ"
       },
       "halftone-forest": {
-        "description": "Halftone with forest palette",
-        "title": "Forest Halftone"
+        "description": "ഫോറസ്റ്റ് പാലറ്റുള്ള ഹാഫ്‌ടോൺ",
+        "title": "ഫോറസ്റ്റ് ഹാൽഫ്‌ടോൺ"
       },
       "halftone-navy": {
-        "description": "Halftone with navy palette",
-        "title": "Navy Halftone"
+        "description": "നേവി പാലറ്റുള്ള ഹാഫ്‌ടോൺ",
+        "title": "നേവി ഹാൽഫ്റ്റോൺ"
       },
       "halftone-wine": {
-        "description": "Halftone with wine palette",
-        "title": "Wine Halftone"
+        "description": "ഹാൾഫ്‌ടോൺ വിത്ത് വൈൻ പാലറ്റ്",
+        "title": "വൈൻ ഹാൽഫ്റ്റോൺ"
       },
       "img-blend": {
-        "description": "Color blend overlay",
-        "title": "Blend Mode"
+        "description": "വർണ്ണ മിശ്രിത ഓവർലേ",
+        "title": "ബ്ലെൻഡ് മോഡ്"
       },
       "img-blue-noise": {
-        "description": "Blue noise threshold dithering",
-        "title": "Blue Noise"
+        "description": "നീല ശബ്ദ പരിധി ഡൈതറിംഗ്",
+        "title": "നീല ശബ്ദം"
       },
       "img-brightness": {
-        "description": "Brightness-based modules",
-        "title": "Brightness"
+        "description": "തെളിച്ചത്തെ അടിസ്ഥാനമാക്കിയുള്ള മൊഡ്യൂളുകൾ",
+        "title": "തെളിച്ചം"
       },
       "img-colormode-bw": {
-        "description": "Black & white processing",
-        "title": "Black & White"
+        "description": "കറുപ്പും വെളുപ്പും പ്രോസസ്സിംഗ്",
+        "title": "കറുപ്പും വെളുപ്പും"
       },
       "img-colormode-color": {
-        "description": "Color processing",
-        "title": "Color"
+        "description": "കളർ പ്രോസസ്സിംഗ്",
+        "title": "നിറം"
       },
       "img-colormode-grayscale": {
-        "description": "Grayscale processing",
-        "title": "Grayscale"
+        "description": "ഗ്രേസ്‌കെയിൽ പ്രോസസ്സിംഗ്",
+        "title": "ഗ്രേസ്കെയിൽ"
       },
       "img-dithered": {
-        "description": "Error diffusion dithering",
-        "title": "Dithered"
+        "description": "ഡിഫ്യൂഷൻ ഡൈതറിംഗ് പിശക്",
+        "title": "അലഞ്ഞുതിരിഞ്ഞു"
       },
       "img-dithered-i100": {
-        "description": "Dithered at 100% intensity",
-        "title": "Dithered 100%"
+        "description": "100% തീവ്രതയിൽ മുങ്ങി",
+        "title": "100% മങ്ങി"
       },
       "img-dithered-i50": {
-        "description": "Dithered at 50% intensity",
-        "title": "Dithered 50%"
+        "description": "50% തീവ്രതയിൽ മുക്കി",
+        "title": "50% കുറഞ്ഞു"
       },
       "img-dithered-i75": {
-        "description": "Dithered at 75% intensity",
-        "title": "Dithered 75%"
+        "description": "75% തീവ്രതയിൽ മങ്ങി",
+        "title": "75% കുറഞ്ഞു"
       },
       "img-duotone": {
-        "description": "Two-tone color mapping",
-        "title": "Duotone"
+        "description": "ടു-ടോൺ കളർ മാപ്പിംഗ്",
+        "title": "ഡ്യുട്ടോൺ"
       },
       "img-extreme": {
-        "description": "Maximum image visibility",
-        "title": "Extreme"
+        "description": "പരമാവധി ഇമേജ് ദൃശ്യപരത",
+        "title": "എക്‌സ്ട്രീം"
       },
       "img-halftone": {
-        "description": "Classic halftone dots",
-        "title": "Halftone"
+        "description": "ക്ലാസിക് ഹാഫ്‌ടോൺ ഡോട്ടുകൾ",
+        "title": "ഹാഫ്‌ടോൺ"
       },
       "img-mosaic": {
-        "description": "Mosaic tile effect",
-        "title": "Mosaic"
+        "description": "മൊസൈക് ടൈൽ ഇഫക്റ്റ്",
+        "title": "മൊസൈക്"
       },
       "img-outline": {
-        "description": "Edge detection overlay",
-        "title": "Outline"
+        "description": "എഡ്ജ് ഡിറ്റക്ഷൻ ഓവർലേ",
+        "title": "രൂപരേഖ"
       },
       "img-pixelate": {
-        "description": "Pixelated overlay effect",
-        "title": "Pixelate"
+        "description": "പിക്സലേറ്റഡ് ഓവർലേ ഇഫക്റ്റ്",
+        "title": "പിക്സലേറ്റ്"
       },
       "img-subpixel": {
-        "description": "High detail subpixel rendering",
-        "title": "Subpixel"
+        "description": "ഉയർന്ന വിശദാംശമുള്ള സബ്പിക്സൽ റെൻഡറിംഗ്",
+        "title": "സബ്പിക്സൽ"
       },
       "img-wave": {
-        "description": "Wavy distortion effect",
-        "title": "Wave"
+        "description": "തരംഗ രൂപഭേദ പ്രഭാവം",
+        "title": "തരംഗം"
       },
       "mosaic-classic": {
-        "description": "Mosaic with classic palette",
-        "title": "Classic Mosaic"
+        "description": "ക്ലാസിക് പാലറ്റുള്ള മൊസൈക്",
+        "title": "ക്ലാസിക് മൊസൈക്ക്"
       },
       "mosaic-forest": {
-        "description": "Mosaic with forest palette",
-        "title": "Forest Mosaic"
+        "description": "ഫോറസ്റ്റ് പാലറ്റുള്ള മൊസൈക്",
+        "title": "വന മൊസൈക്ക്"
       },
       "mosaic-navy": {
-        "description": "Mosaic with navy palette",
-        "title": "Navy Mosaic"
+        "description": "നാവി പാലറ്റുള്ള മൊസൈക്",
+        "title": "നേവി മൊസൈക്ക്"
       },
       "mosaic-wine": {
-        "description": "Mosaic with wine palette",
-        "title": "Wine Mosaic"
+        "description": "വൈൻ പാലറ്റുള്ള മൊസൈക്",
+        "title": "വൈൻ മൊസൈക്ക്"
       },
       "plain-basic": {
-        "description": "Standard QR code",
-        "title": "Classic"
+        "description": "സ്റ്റാൻഡേർഡ് ക്യുആർ കോഡ്",
+        "title": "ക്ലാസിക്"
       },
       "plain-ecc-l": {
-        "description": "Minimal error correction",
-        "title": "ECC Low (7%)"
+        "description": "കുറഞ്ഞ പിശക് തിരുത്തൽ",
+        "title": "ഇസിസി കുറവ് (7%)"
       },
       "plain-ecc-q": {
-        "description": "Medium-high error correction",
-        "title": "ECC Quartile (25%)"
+        "description": "ഇടത്തരം ഉയർന്ന പിശക് തിരുത്തൽ",
+        "title": "ECC ക്വാർട്ടൈൽ (25%)"
       },
       "plain-v12": {
-        "description": "Large with multiple alignment",
-        "title": "Version 12"
+        "description": "ഒന്നിലധികം വിന്യാസങ്ങളുള്ള വലുത്",
+        "title": "പതിപ്പ് 12"
       },
       "plain-v6": {
-        "description": "Larger without center eye",
-        "title": "Version 6"
+        "description": "മധ്യക്കണ്ണില്ലാത്ത വലുത്",
+        "title": "പതിപ്പ് 6"
       },
       "plain-v9": {
-        "description": "Even larger with center eye",
-        "title": "Version 9"
+        "description": "മധ്യക്കണ്ണോടെ ഇതിലും വലുത്",
+        "title": "പതിപ്പ് 9"
       },
       "prep-blur-1": {
-        "description": "1px gaussian blur",
-        "title": "Blur 1px"
+        "description": "1px ഗൗസിയൻ ബ്ലർ",
+        "title": "മങ്ങൽ 1px"
       },
       "prep-blur-2": {
-        "description": "2px gaussian blur",
-        "title": "Blur 2px"
+        "description": "2px ഗൗസിയൻ ബ്ലർ",
+        "title": "മങ്ങൽ 2px"
       },
       "prep-blur-4": {
-        "description": "4px gaussian blur",
-        "title": "Blur 4px"
+        "description": "4px ഗൗസിയൻ ബ്ലർ",
+        "title": "മങ്ങൽ 4px"
       },
       "prep-brightness-n25": {
-        "description": "Brightness adjusted darker",
-        "title": "Brightness -25"
+        "description": "തെളിച്ചം കൂടുതൽ ഇരുണ്ടതാക്കി",
+        "title": "തെളിച്ചം -25"
       },
       "prep-brightness-n50": {
-        "description": "Brightness adjusted darker",
-        "title": "Brightness -50"
+        "description": "തെളിച്ചം കൂടുതൽ ഇരുണ്ടതാക്കി",
+        "title": "തെളിച്ചം -50"
       },
       "prep-brightness-p25": {
-        "description": "Brightness adjusted brighter",
-        "title": "Brightness +25"
+        "description": "തെളിച്ചം കൂടുതൽ കൂടുതൽ ക്രമീകരിച്ചു",
+        "title": "തെളിച്ചം +25"
       },
       "prep-brightness-p50": {
-        "description": "Brightness adjusted brighter",
-        "title": "Brightness +50"
+        "description": "തെളിച്ചം കൂടുതൽ കൂടുതൽ ക്രമീകരിച്ചു",
+        "title": "തെളിച്ചം +50"
       },
       "prep-contrast-n50": {
-        "description": "Low contrast",
-        "title": "Contrast -50"
+        "description": "കുറഞ്ഞ ദൃശ്യതീവ്രത",
+        "title": "കോൺട്രാസ്റ്റ് -50"
       },
       "prep-contrast-p100": {
-        "description": "High contrast",
-        "title": "Contrast +100"
+        "description": "ഉയർന്ന ദൃശ്യതീവ്രത",
+        "title": "കോൺട്രാസ്റ്റ് +100"
       },
       "prep-contrast-p50": {
-        "description": "High contrast",
-        "title": "Contrast +50"
+        "description": "ഉയർന്ന ദൃശ്യതീവ്രത",
+        "title": "കോൺട്രാസ്റ്റ് +50"
       },
       "prep-edge-canny": {
-        "description": "Canny edge detection",
-        "title": "Edge Canny"
+        "description": "കാനി എഡ്ജ് ഡിറ്റക്ഷൻ",
+        "title": "എഡ്ജ് കാനി"
       },
       "prep-edge-sobel": {
-        "description": "Sobel edge detection",
-        "title": "Edge Sobel"
+        "description": "സോബൽ എഡ്ജ് ഡിറ്റക്ഷൻ",
+        "title": "എഡ്ജ് സോബൽ"
       },
       "prep-gamma-05": {
-        "description": "Gamma correction 0.5",
-        "title": "Gamma 0.5"
+        "description": "ഗാമ തിരുത്തൽ 0.5",
+        "title": "ഗാമ 0.5"
       },
       "prep-gamma-15": {
-        "description": "Gamma correction 1.5",
-        "title": "Gamma 1.5"
+        "description": "ഗാമ തിരുത്തൽ 1.5",
+        "title": "ഗാമ 1.5"
       },
       "prep-gamma-20": {
-        "description": "Gamma correction 2.0",
-        "title": "Gamma 2.0"
+        "description": "ഗാമ കറക്ഷൻ 2.0",
+        "title": "ഗാമ 2.0"
       },
       "prep-hue-90": {
-        "description": "Hue rotation 90 degrees",
-        "title": "Hue +90°"
+        "description": "ഹ്യൂ റൊട്ടേഷൻ 90 ഡിഗ്രി",
+        "title": "ഹ്യൂ +90°"
       },
       "prep-invert": {
-        "description": "Inverted colors",
-        "title": "Inverted"
+        "description": "വിപരീത നിറങ്ങൾ",
+        "title": "വിപരീതം"
       },
       "prep-posterize-2": {
-        "description": "2 color levels",
-        "title": "Posterize 2"
+        "description": "2 വർണ്ണ ലെവലുകൾ",
+        "title": "പോസ്റ്ററൈസ് 2"
       },
       "prep-posterize-4": {
-        "description": "4 color levels",
-        "title": "Posterize 4"
+        "description": "4 വർണ്ണ ലെവലുകൾ",
+        "title": "പോസ്റ്ററൈസ് 4"
       },
       "prep-posterize-8": {
-        "description": "8 color levels",
-        "title": "Posterize 8"
+        "description": "8 വർണ്ണ ലെവലുകൾ",
+        "title": "പോസ്റ്ററൈസ് 8"
       },
       "prep-saturation-n100": {
-        "description": "Desaturated",
-        "title": "Saturation -100"
+        "description": "ഡീസാച്ചുറേറ്റഡ്",
+        "title": "സാച്ചുറേഷൻ -100"
       },
       "prep-saturation-n50": {
-        "description": "Reduced saturation",
-        "title": "Saturation -50"
+        "description": "കുറഞ്ഞ സാച്ചുറേഷൻ",
+        "title": "സാച്ചുറേഷൻ -50"
       },
       "prep-saturation-p100": {
-        "description": "Oversaturated",
-        "title": "Saturation +100"
+        "description": "അമിതമായി പൂരിതമായത്",
+        "title": "സാച്ചുറേഷൻ +100"
       },
       "prep-saturation-p50": {
-        "description": "Oversaturated",
-        "title": "Saturation +50"
+        "description": "അമിതമായി പൂരിതമായത്",
+        "title": "സാച്ചുറേഷൻ +50"
       },
       "prep-sharpen-100": {
-        "description": "100% sharpening",
-        "title": "Sharpen 100%"
+        "description": "100% മൂർച്ച കൂട്ടൽ",
+        "title": "100% മൂർച്ച കൂട്ടുക"
       },
       "prep-sharpen-25": {
-        "description": "25% sharpening",
-        "title": "Sharpen 25%"
+        "description": "25% മൂർച്ച കൂട്ടൽ",
+        "title": "25% മൂർച്ച കൂട്ടുക"
       },
       "prep-sharpen-50": {
-        "description": "50% sharpening",
-        "title": "Sharpen 50%"
+        "description": "50% മൂർച്ച കൂട്ടൽ",
+        "title": "50% മൂർച്ച കൂട്ടുക"
       },
       "prep-threshold-128": {
-        "description": "Binary threshold at 128",
-        "title": "Threshold 128"
+        "description": "128 ൽ ബൈനറി പരിധി",
+        "title": "ത്രെഷോൾഡ് 128"
       },
       "prep-threshold-192": {
-        "description": "Binary threshold at 192",
-        "title": "Threshold 192"
+        "description": "ബൈനറി പരിധി 192 ൽ",
+        "title": "ത്രെഷോൾഡ് 192"
       },
       "prep-threshold-64": {
-        "description": "Binary threshold at 64",
-        "title": "Threshold 64"
+        "description": "64-ൽ ബൈനറി പരിധി",
+        "title": "ത്രെഷോൾഡ് 64"
       },
       "style-connected": {
-        "description": "Connected module style",
-        "title": "Connected Modules"
+        "description": "കണക്റ്റഡ് മൊഡ്യൂൾ ശൈലി",
+        "title": "ബന്ധിപ്പിച്ച മൊഡ്യൂളുകൾ"
       },
       "style-diamond": {
-        "description": "Diamond module style",
-        "title": "Diamond Modules"
+        "description": "ഡയമണ്ട് മൊഡ്യൂൾ ശൈലി",
+        "title": "ഡയമണ്ട് മൊഡ്യൂളുകൾ"
       },
       "style-dots": {
-        "description": "Dots module style",
-        "title": "Dots Modules"
+        "description": "ഡോട്ട്സ് മൊഡ്യൂൾ ശൈലി",
+        "title": "ഡോട്ട്സ് മൊഡ്യൂളുകൾ"
       },
       "style-rounded": {
-        "description": "Rounded module style",
-        "title": "Rounded Modules"
+        "description": "വൃത്താകൃതിയിലുള്ള മൊഡ്യൂൾ ശൈലി",
+        "title": "വൃത്താകൃതിയിലുള്ള മൊഡ്യൂളുകൾ"
       },
       "style-square": {
-        "description": "Square module style",
-        "title": "Square Modules"
+        "description": "ചതുര മൊഡ്യൂൾ ശൈലി",
+        "title": "ചതുര മൊഡ്യൂളുകൾ"
       }
     },
-    "plain": "Plain",
-    "powerCombos": "Power Combos",
-    "preprocessing": "Preprocessing",
+    "plain": "പ്ലെയിൻ",
+    "powerCombos": "പവർ കോമ്പോസ്",
+    "preprocessing": "പ്രീപ്രോസസ്സിംഗ്",
     "sections": {
       "animation-overlay": {
-        "description": "Animated GIF overlays with different blend modes",
-        "title": "Animated Overlays"
+        "description": "വ്യത്യസ്ത ബ്ലെൻഡ് മോഡുകളുള്ള ആനിമേറ്റഡ് GIF ഓവർലേകൾ",
+        "title": "ആനിമേറ്റഡ് ഓവർലേകൾ"
       },
       "blend-modes": {
-        "description": "Different color blending with image overlays",
-        "title": "Blend Modes"
+        "description": "ഇമേജ് ഓവർലേകളുമായി വ്യത്യസ്ത വർണ്ണ മിശ്രണം",
+        "title": "ബ്ലെൻഡ് മോഡുകൾ"
       },
       "color-modes": {
-        "description": "Color, grayscale, and black & white processing",
-        "title": "Color Processing"
+        "description": "നിറം, ഗ്രേസ്കെയിൽ, കറുപ്പും വെളുപ്പും പ്രോസസ്സിംഗ്",
+        "title": "കളർ പ്രോസസ്സിംഗ്"
       },
       "colors": {
-        "description": "Color schemes and themed palettes",
-        "title": "Colors & Themes"
+        "description": "വർണ്ണ സ്കീമുകളും തീം പാലറ്റുകളും",
+        "title": "നിറങ്ങളും തീമുകളും"
       },
       "content-types": {
-        "description": "Different payload formats - vCard, WiFi, Email, SMS, Geo, Calendar",
-        "title": "Content Types"
+        "description": "വ്യത്യസ്ത പേലോഡ് ഫോർമാറ്റുകൾ - vCard, WiFi, ഇമെയിൽ, SMS, ജിയോ, കലണ്ടർ",
+        "title": "ഉള്ളടക്ക തരങ്ങൾ"
       },
       "dithering": {
-        "description": "Different dithering methods and error diffusion kernels",
-        "title": "Dithering Algorithms"
+        "description": "വ്യത്യസ്ത ഡൈതറിംഗ് രീതികളും പിശക് വ്യാപന കേർണലുകളും",
+        "title": "ഡിതറിംഗ് അൽഗോരിതങ്ങൾ"
       },
       "encoding": {
-        "description": "Different QR versions and error correction levels",
-        "title": "QR Encoding"
+        "description": "വ്യത്യസ്ത QR പതിപ്പുകളും പിശക് തിരുത്തൽ നിലകളും",
+        "title": "ക്യുആർ എൻകോഡിംഗ്"
       },
       "image-overlay": {
-        "description": "Static image overlays with different blend modes",
-        "title": "Image Overlays"
+        "description": "വ്യത്യസ്ത ബ്ലെൻഡ് മോഡുകളുള്ള സ്റ്റാറ്റിക് ഇമേജ് ഓവർലേകൾ",
+        "title": "ഇമേജ് ഓവർലേകൾ"
       },
       "plain": {
-        "description": "Standard QR codes without overlay - different versions and error correction",
-        "title": "Plain QR Codes"
+        "description": "ഓവർലേ ഇല്ലാത്ത സ്റ്റാൻഡേർഡ് ക്യുആർ കോഡുകൾ - വ്യത്യസ്ത പതിപ്പുകളും പിശക് തിരുത്തലും",
+        "title": "പ്ലെയിൻ ക്യുആർ കോഡുകൾ"
       },
       "power-combos": {
-        "description": "Striking multi-feature combinations showcasing ANQR capabilities",
-        "title": "Power Combos"
+        "description": "ANQR കഴിവുകൾ പ്രദർശിപ്പിക്കുന്ന ശ്രദ്ധേയമായ മൾട്ടി-ഫീച്ചർ കോമ്പിനേഷനുകൾ",
+        "title": "പവർ കോമ്പോസ്"
       },
       "preprocessing": {
-        "description": "Brightness, contrast, gamma, blur, sharpen, posterize, edge detection",
-        "title": "Image Preprocessing"
+        "description": "തെളിച്ചം, ദൃശ്യതീവ്രത, ഗാമ, മങ്ങൽ, മൂർച്ച കൂട്ടൽ, പോസ്റ്ററൈസ് ചെയ്യൽ, അരികുകൾ കണ്ടെത്തൽ",
+        "title": "ഇമേജ് പ്രീപ്രോസസ്സിംഗ്"
       },
       "styles": {
-        "description": "Different visual styles for modules and finder patterns",
-        "title": "Module & Finder Styles"
+        "description": "മൊഡ്യൂളുകൾക്കും ഫൈൻഡർ പാറ്റേണുകൾക്കുമുള്ള വ്യത്യസ്ത ദൃശ്യ ശൈലികൾ",
+        "title": "മൊഡ്യൂളും ഫൈൻഡർ ശൈലികളും"
       }
     },
-    "showAll": "Show All",
-    "styles": "Styles",
-    "subtitle": "Explore examples of QR codes created with ANQR",
-    "title": "QR Code Gallery",
-    "tryThis": "Try this"
+    "showAll": "എല്ലാം കാണിക്കുക",
+    "styles": "ശൈലികൾ",
+    "subtitle": "ANQR ഉപയോഗിച്ച് സൃഷ്ടിച്ച QR കോഡുകളുടെ ഉദാഹരണങ്ങൾ പര്യവേക്ഷണം ചെയ്യുക",
+    "title": "ക്യുആർ കോഡ് ഗാലറി",
+    "tryThis": "ഇത് പരീക്ഷിച്ചു നോക്കൂ"
   },
   "header": {
-    "close": "Close",
-    "copied": "Copied!",
-    "copyLink": "Copy Link",
-    "darkMode": "Switch to dark mode",
-    "export": "Export",
-    "lightMode": "Switch to light mode",
-    "reset": "Reset",
-    "searchSettings": "Search settings...",
-    "share": "Share"
+    "close": "അടയ്ക്കുക",
+    "copied": "പകർത്തി!",
+    "copyLink": "ലിങ്ക് പകർത്തുക",
+    "darkMode": "ഡാർക്ക് മോഡിലേക്ക് മാറുക",
+    "export": "കയറ്റുമതി",
+    "lightMode": "ലൈറ്റ് മോഡിലേക്ക് മാറുക",
+    "reset": "പുനഃസജ്ജമാക്കുക",
+    "searchSettings": "തിരയൽ ക്രമീകരണങ്ങൾ…",
+    "share": "പങ്കിടുക"
   },
   "hints": {
-    "alignmentStyle": "Style of alignment patterns (used in larger QR codes)",
-    "appLinkNote": "Opens specific content within a mobile app",
-    "autoDetect": "Auto-detect (requires v{{version}}+ for current content)",
-    "autoMinVersion": "0 = Auto, min v{{version}} for current content",
-    "bgColorHex": "Background color hex code",
-    "bizcardLegacy": "Legacy format - consider using vCard instead",
-    "bluetoothNote": "Note: Bluetooth pairing via QR is vendor-specific and may not work on all devices",
-    "bounceAnimation": "Play animation forward then backward (ping-pong)",
-    "calendarNote": "Subscribe to a shared calendar feed",
-    "contrastGuard": "Ensure minimum contrast ratio between foreground and background",
-    "cornerRadius": "Corner radius percentage for rounded modules (0-100%)",
-    "crispEdges": "Use pixelated rendering for sharp module edges",
-    "customNote": "Enter raw data in any format. No validation or formatting will be applied.",
-    "dotRotation": "Rotate dot-style modules (0-360 degrees)",
-    "encodingMode": "Data encoding mode - Auto selects the most efficient mode",
-    "enforceMinQuietZone": "Enforce minimum 4 module quiet zone for better scanning reliability",
-    "enterTextContent": "Enter the text content to encode in the QR code",
-    "enterUrlContent": "Enter the URL to encode in the QR code",
-    "epcSepaNote": "European Payment Council QR code for SEPA credit transfers",
-    "errorCorrection": "Error correction level - higher = more damage resistance but larger QR code",
-    "extraBorder": "Additional border modules beyond the quiet zone (0-10)",
-    "eyeInnerStyle": "Style of the inner square of finder patterns",
-    "eyeOuterStyle": "Style of the outer ring of finder patterns",
-    "eyeScale": "Scale finder patterns relative to their default size (50-150%)",
-    "fgColorHex": "Foreground color hex code",
-    "finderStyle": "Style of the corner finder patterns",
-    "forceHttps": "Convert HTTP URLs to HTTPS automatically",
-    "frameStyle": "Add a decorative frame around the QR code",
-    "frameText": "Text to display on the frame",
-    "gapMode": "How gaps between modules are rendered",
-    "gradient": "Apply a gradient effect to the QR code",
-    "gs1Note": "GS1 Digital Link for product identification and traceability",
-    "higherEccLargerQr": "Higher = more damage resistance, larger QR",
-    "loopAnimation": "Loop animation continuously",
-    "maxLengthGuard": "Prevent encoding content that exceeds QR code capacity",
-    "minContrastRatio": "Minimum contrast ratio to enforce (1-21, WCAG AA requires 4.5:1)",
-    "moduleGap": "Gap between modules as percentage (0-30%)",
-    "moduleJitterWarning": "⚠️ May affect scannability",
-    "moduleSize": "Size of each QR code module in pixels (2-20px)",
-    "moduleStyle": "Visual style of QR code modules",
-    "normalizeNewlines": "Convert different newline formats to a standard format",
-    "outputFormat": "Select the output file format for export",
-    "paynowNote": "Singapore fast payment system",
-    "perModuleColor": "How to assign colors to individual modules",
-    "pickBgColor": "Click to pick background color",
-    "pickFgColor": "Click to pick foreground color",
-    "pixNote": "Brazilian instant payment system",
-    "pixelSnap": "How to snap module positions to pixel boundaries",
-    "promptpayNote": "Thailand national e-payment system",
-    "qrVersion": "QR code version (0=auto, 1-40 increases size and capacity)",
-    "quietZone": "Quiet zone margin around QR code (0-10 modules, recommended: 4+)",
-    "rsvpNote": "Link to an online RSVP form or event registration page",
-    "safetyMode": "Safety analysis mode - how strictly to check QR code readability",
-    "selectContentType": "Select the type of content to encode in the QR code",
-    "shortLinkNote": "Use a URL shortener service for dynamic/trackable QR codes",
-    "timingStyle": "Style of timing patterns (horizontal and vertical lines)",
-    "transparentBg": "Make the background transparent instead of using background color",
-    "trimWhitespace": "Remove leading and trailing whitespace",
-    "upiNote": "Unified Payments Interface for India",
-    "utmCampaign": "UTM campaign parameter for campaign tracking",
-    "utmMedium": "UTM medium parameter for campaign tracking",
-    "utmSource": "UTM source parameter for campaign tracking",
-    "validateInput": "Validate input data before encoding",
-    "versionTooLow": "⚠️ Version too low! Minimum v{{version}} required"
+    "alignmentStyle": "അലൈൻമെന്റ് പാറ്റേണുകളുടെ ശൈലി (വലിയ QR കോഡുകളിൽ ഉപയോഗിക്കുന്നു)",
+    "appLinkNote": "ഒരു മൊബൈൽ ആപ്പിനുള്ളിൽ നിർദ്ദിഷ്ട ഉള്ളടക്കം തുറക്കുന്നു",
+    "autoDetect": "സ്വയമേവ കണ്ടെത്തുക (നിലവിലെ ഉള്ളടക്കത്തിന് v{{version}}+ ആവശ്യമാണ്)",
+    "autoMinVersion": "0 = നിലവിലെ ഉള്ളടക്കത്തിന് ഓട്ടോ, മിനിമം v{{version}}",
+    "bgColorHex": "പശ്ചാത്തല വർണ്ണ ഹെക്സ് കോഡ്",
+    "bizcardLegacy": "ലെഗസി ഫോർമാറ്റ് - പകരം vCard ഉപയോഗിക്കുന്നത് പരിഗണിക്കുക",
+    "bluetoothNote": "ശ്രദ്ധിക്കുക: QR വഴിയുള്ള ബ്ലൂടൂത്ത് ജോടിയാക്കൽ വെണ്ടർ നിർദ്ദിഷ്ടമാണ്, എല്ലാ ഉപകരണങ്ങളിലും ഇത് പ്രവർത്തിച്ചേക്കില്ല",
+    "bounceAnimation": "ആനിമേഷൻ മുന്നോട്ടും പിന്നോട്ടും പ്ലേ ചെയ്യുക (പിംഗ്-പോംഗ്)",
+    "calendarNote": "പങ്കിട്ട കലണ്ടർ ഫീഡിലേക്ക് സബ്‌സ്‌ക്രൈബുചെയ്യുക",
+    "contrastGuard": "ഫോർഗ്രൗണ്ടിനും പശ്ചാത്തലത്തിനും ഇടയിലുള്ള ഏറ്റവും കുറഞ്ഞ കോൺട്രാസ്റ്റ് അനുപാതം ഉറപ്പാക്കുക",
+    "cornerRadius": "വൃത്താകൃതിയിലുള്ള മൊഡ്യൂളുകൾക്കുള്ള കോർണർ ആരം ശതമാനം (0-100%)",
+    "crispEdges": "മൂർച്ചയുള്ള മൊഡ്യൂൾ അരികുകൾക്ക് പിക്സലേറ്റഡ് റെൻഡറിംഗ് ഉപയോഗിക്കുക",
+    "customNote": "ഏതെങ്കിലും ഫോർമാറ്റിൽ അസംസ്കൃത ഡാറ്റ നൽകുക. ഒരു സാധൂകരണമോ ഫോർമാറ്റിംഗോ പ്രയോഗിക്കില്ല.",
+    "dotRotation": "ഡോട്ട്-സ്റ്റൈൽ മൊഡ്യൂളുകൾ തിരിക്കുക (0-360 ഡിഗ്രി)",
+    "encodingMode": "ഡാറ്റ എൻകോഡിംഗ് മോഡ് - ഏറ്റവും കാര്യക്ഷമമായ മോഡ് ഓട്ടോ തിരഞ്ഞെടുക്കുന്നു",
+    "enforceMinQuietZone": "മികച്ച സ്കാനിംഗ് വിശ്വാസ്യതയ്ക്കായി കുറഞ്ഞത് 4 മൊഡ്യൂൾ നിശബ്‌ദ മേഖല നടപ്പിലാക്കുക",
+    "enterTextContent": "QR കോഡിൽ എൻകോഡ് ചെയ്യേണ്ട ടെക്സ്റ്റ് ഉള്ളടക്കം നൽകുക",
+    "enterUrlContent": "QR കോഡിൽ എൻകോഡ് ചെയ്യേണ്ട URL നൽകുക",
+    "epcSepaNote": "SEPA ക്രെഡിറ്റ് ട്രാൻസ്ഫറുകൾക്കുള്ള യൂറോപ്യൻ പേയ്‌മെന്റ് കൗൺസിൽ QR കോഡ്",
+    "errorCorrection": "പിശക് തിരുത്തൽ നില - ഉയർന്നത് = കേടുപാടുകൾക്കുള്ള പ്രതിരോധം കൂടുതലാണ്, പക്ഷേ QR കോഡ് കൂടുതലാണ്",
+    "extraBorder": "നിശബ്ദ മേഖലയ്ക്ക് പുറത്തുള്ള അധിക ബോർഡർ മൊഡ്യൂളുകൾ (0-10)",
+    "eyeInnerStyle": "ഫൈൻഡർ പാറ്റേണുകളുടെ ആന്തരിക ചതുരത്തിന്റെ ശൈലി",
+    "eyeOuterStyle": "ഫൈൻഡർ പാറ്റേണുകളുടെ പുറം വളയത്തിന്റെ ശൈലി",
+    "eyeScale": "സ്കെയിൽ ഫൈൻഡർ പാറ്റേണുകൾ അവയുടെ സ്ഥിരസ്ഥിതി വലുപ്പവുമായി (50-150%) താരതമ്യപ്പെടുത്തുമ്പോൾ",
+    "fgColorHex": "ഫോർഗ്രൗണ്ട് കളർ ഹെക്സ് കോഡ്",
+    "finderStyle": "കോണിലെ കണ്ടെത്തൽ പാറ്റേണുകളുടെ ശൈലി",
+    "forceHttps": "HTTP URL-കൾ HTTPS-ലേക്ക് സ്വയമേവ പരിവർത്തനം ചെയ്യുക",
+    "frameStyle": "QR കോഡിന് ചുറ്റും ഒരു അലങ്കാര ഫ്രെയിം ചേർക്കുക",
+    "frameText": "ഫ്രെയിമിൽ പ്രദർശിപ്പിക്കേണ്ട വാചകം",
+    "gapMode": "മൊഡ്യൂളുകൾക്കിടയിലുള്ള വിടവുകൾ എങ്ങനെയാണ് റെൻഡർ ചെയ്യുന്നത്",
+    "gradient": "QR കോഡിൽ ഒരു ഗ്രേഡിയന്റ് ഇഫക്റ്റ് പ്രയോഗിക്കുക",
+    "gs1Note": "ഉൽപ്പന്ന തിരിച്ചറിയലിനും കണ്ടെത്തലിനും വേണ്ടിയുള്ള GS1 ഡിജിറ്റൽ ലിങ്ക്",
+    "higherEccLargerQr": "ഉയർന്നത് = കൂടുതൽ നാശനഷ്ട പ്രതിരോധം, കൂടുതൽ QR",
+    "loopAnimation": "ലൂപ്പ് ആനിമേഷൻ തുടർച്ചയായി",
+    "maxLengthGuard": "QR കോഡ് ശേഷി കവിയുന്ന ഉള്ളടക്കം എൻകോഡ് ചെയ്യുന്നത് തടയുക",
+    "minContrastRatio": "നിർബന്ധിതമാക്കേണ്ട ഏറ്റവും കുറഞ്ഞ ദൃശ്യതീവ്രതാ അനുപാതം (1-21, WCAG AA 4.5:1 ആവശ്യമാണ്)",
+    "moduleGap": "മൊഡ്യൂളുകൾ തമ്മിലുള്ള അന്തരം ശതമാനമായി (0-30%)",
+    "moduleJitterWarning": "⚠️ സ്കാൻ ചെയ്യാനുള്ള കഴിവിനെ ബാധിച്ചേക്കാം",
+    "moduleSize": "ഓരോ QR കോഡ് മൊഡ്യൂളിന്റെയും വലുപ്പം പിക്സലുകളിൽ (2-20px)",
+    "moduleStyle": "ക്യുആർ കോഡ് മൊഡ്യൂളുകളുടെ ദൃശ്യ ശൈലി",
+    "normalizeNewlines": "വ്യത്യസ്ത ന്യൂലൈൻ ഫോർമാറ്റുകൾ ഒരു സ്റ്റാൻഡേർഡ് ഫോർമാറ്റിലേക്ക് പരിവർത്തനം ചെയ്യുക",
+    "outputFormat": "കയറ്റുമതി ചെയ്യുന്നതിനുള്ള ഔട്ട്‌പുട്ട് ഫയൽ ഫോർമാറ്റ് തിരഞ്ഞെടുക്കുക",
+    "paynowNote": "സിംഗപ്പൂർ ഫാസ്റ്റ് പേയ്‌മെന്റ് സിസ്റ്റം",
+    "perModuleColor": "വ്യക്തിഗത മൊഡ്യൂളുകൾക്ക് നിറങ്ങൾ എങ്ങനെ നൽകാം",
+    "pickBgColor": "പശ്ചാത്തല നിറം തിരഞ്ഞെടുക്കാൻ ക്ലിക്കുചെയ്യുക",
+    "pickFgColor": "ഫോർഗ്രൗണ്ട് നിറം തിരഞ്ഞെടുക്കാൻ ക്ലിക്ക് ചെയ്യുക",
+    "pixNote": "ബ്രസീലിയൻ തൽക്ഷണ പണമടയ്ക്കൽ സംവിധാനം",
+    "pixelSnap": "മൊഡ്യൂൾ പൊസിഷനുകൾ പിക്സൽ ബൗണ്ടറികളിലേക്ക് എങ്ങനെ സ്നാപ്പ് ചെയ്യാം",
+    "promptpayNote": "തായ്‌ലൻഡ് ദേശീയ ഇ-പേയ്‌മെന്റ് സംവിധാനം",
+    "qrVersion": "QR കോഡ് പതിപ്പ് (0=ഓട്ടോ, 1-40 വലുപ്പവും ശേഷിയും വർദ്ധിപ്പിക്കുന്നു)",
+    "quietZone": "QR കോഡിന് ചുറ്റുമുള്ള നിശബ്ദ മേഖല മാർജിൻ (0-10 മൊഡ്യൂളുകൾ, ശുപാർശ ചെയ്യുന്നത്: 4+)",
+    "rsvpNote": "ഒരു ഓൺലൈൻ RSVP ഫോമിലേക്കോ ഇവന്റ് രജിസ്ട്രേഷൻ പേജിലേക്കോ ഉള്ള ലിങ്ക്",
+    "safetyMode": "സുരക്ഷാ വിശകലന മോഡ് - QR കോഡിന്റെ വായനാക്ഷമത എത്ര കർശനമായി പരിശോധിക്കാം",
+    "selectContentType": "QR കോഡിൽ എൻകോഡ് ചെയ്യേണ്ട ഉള്ളടക്ക തരം തിരഞ്ഞെടുക്കുക",
+    "shortLinkNote": "ഡൈനാമിക്/ട്രാക്ക് ചെയ്യാവുന്ന QR കോഡുകൾക്കായി ഒരു URL ഷോർട്ടനർ സേവനം ഉപയോഗിക്കുക",
+    "timingStyle": "സമയക്രമീകരണ പാറ്റേണുകളുടെ ശൈലി (തിരശ്ചീനവും ലംബവുമായ വരകൾ)",
+    "transparentBg": "പശ്ചാത്തല നിറം ഉപയോഗിക്കുന്നതിന് പകരം പശ്ചാത്തലം സുതാര്യമാക്കുക",
+    "trimWhitespace": "മുൻപിലും പിന്നിലും ഉള്ള വൈറ്റ്‌സ്‌പെയ്‌സ് നീക്കം ചെയ്യുക",
+    "upiNote": "ഇന്ത്യയ്ക്കുള്ള ഏകീകൃത പേയ്‌മെന്റ് ഇന്റർഫേസ്",
+    "utmCampaign": "കാമ്പെയ്‌ൻ ട്രാക്കിംഗിനായുള്ള UTM കാമ്പെയ്‌ൻ പാരാമീറ്റർ",
+    "utmMedium": "കാമ്പെയ്‌ൻ ട്രാക്കിംഗിനുള്ള UTM മീഡിയം പാരാമീറ്റർ",
+    "utmSource": "കാമ്പെയ്‌ൻ ട്രാക്കിംഗിനായുള്ള UTM ഉറവിട പാരാമീറ്റർ",
+    "validateInput": "എൻകോഡ് ചെയ്യുന്നതിന് മുമ്പ് ഇൻപുട്ട് ഡാറ്റ സാധൂകരിക്കുക",
+    "versionTooLow": "⚠️ പതിപ്പ് വളരെ കുറവാണ്! ഏറ്റവും കുറഞ്ഞ v{{version}} ആവശ്യമാണ്"
   },
   "language": {
-    "current": "Language",
-    "select": "Select Language"
+    "current": "ഭാഷ",
+    "select": "ഭാഷ തിരഞ്ഞെടുക്കുക"
   },
   "metadata": {
-    "addCustomField": "Add Custom Field",
-    "author": "Author",
-    "authorPlaceholder": "Author name",
-    "copyright": "Copyright",
-    "copyrightPlaceholder": "© 2024 Company Name",
-    "customMetadata": "Custom Metadata",
-    "description": "Description",
-    "descriptionPlaceholder": "Description of this QR code...",
-    "includeCreationTime": "Include Creation Time",
-    "key": "Key",
-    "keyPlaceholder": "Key",
-    "keywords": "Keywords",
-    "license": "License",
-    "licensePlaceholder": "CC-BY-4.0",
-    "title": "Title",
-    "titlePlaceholder": "QR Code Title",
-    "value": "Value",
-    "valuePlaceholder": "Value"
+    "addCustomField": "ഇഷ്‌ടാനുസൃത ഫീൽഡ് ചേർക്കുക",
+    "author": "രചയിതാവ്",
+    "authorPlaceholder": "രചയിതാവിന്റെ പേര്",
+    "copyright": "പകർപ്പവകാശം",
+    "copyrightPlaceholder": "© 2024 കമ്പനിയുടെ പേര്",
+    "customMetadata": "ഇഷ്‌ടാനുസൃത മെറ്റാഡാറ്റ",
+    "description": "വിവരണം",
+    "descriptionPlaceholder": "ഈ QR കോഡിന്റെ വിവരണം…",
+    "includeCreationTime": "സൃഷ്ടി സമയം ഉൾപ്പെടുത്തുക",
+    "key": "കീ",
+    "keyPlaceholder": "കീ",
+    "keywords": "കീവേഡുകൾ",
+    "license": "ലൈസൻസ്",
+    "licensePlaceholder": "സിസി-ബൈ-4.0",
+    "title": "തലക്കെട്ട്",
+    "titlePlaceholder": "QR കോഡ് ശീർഷകം",
+    "value": "മൂല്യം",
+    "valuePlaceholder": "മൂല്യം"
   },
   "nav": {
-    "about": "About",
-    "contact": "Contact",
-    "docs": "Guide",
-    "gallery": "Gallery",
-    "generator": "Generator",
-    "guide": "Guide",
-    "privacy": "Privacy",
-    "terms": "Terms"
+    "about": "കുറിച്ച്",
+    "contact": "ബന്ധപ്പെടുക",
+    "docs": "ഗൈഡ്",
+    "gallery": "ഗാലറി",
+    "generator": "ജനറേറ്റർ",
+    "guide": "ഗൈഡ്",
+    "privacy": "സ്വകാര്യത",
+    "terms": "നിബന്ധനകൾ"
   },
   "output": {
-    "backgroundOverride": "Background Override",
-    "backgroundOverridePlaceholder": "Leave empty for default",
-    "dithering": "Dithering",
-    "dpi": "DPI (Print)",
-    "embedRasterOverlay": "Embed Raster Overlay",
-    "exportAsAdditional": "Export As (Additional)",
-    "filename": "Filename",
-    "floydSteinberg": "Floyd-Steinberg",
-    "format": "Format",
+    "backgroundOverride": "പശ്ചാത്തല ഓവർറൈഡ്",
+    "backgroundOverridePlaceholder": "സ്ഥിരസ്ഥിതിയായി ശൂന്യമായി വിടുക",
+    "dithering": "ഡിതറിംഗ്",
+    "dpi": "ഡിപിഐ (പ്രിന്റ്)",
+    "embedRasterOverlay": "റാസ്റ്റർ ഓവർലേ എംബഡ് ചെയ്യുക",
+    "exportAsAdditional": "(അധികമായി) കയറ്റുമതി ചെയ്യുക",
+    "filename": "ഫയൽ നാമം",
+    "floydSteinberg": "ഫ്ലോയ്ഡ്-സ്റ്റെയിൻബർഗ്",
+    "format": "ഫോർമാറ്റ്",
     "gif": "GIF",
-    "gifSettings": "GIF Settings",
-    "height": "Height",
-    "includeQuietZone": "Include Quiet Zone",
-    "medianCut": "Median Cut",
-    "neuquant": "NeuQuant",
-    "none": "None",
-    "octree": "Octree",
-    "off": "Off",
-    "ordered": "Ordered",
-    "outputSize": "Output Size",
-    "paletteSize": "Palette Size",
-    "pdf": "PDF",
-    "pixel": "Pixel",
-    "png": "PNG",
-    "precise": "Precise",
-    "quality": "Quality",
-    "quantizer": "Quantizer",
-    "shapePrecision": "Shape Precision",
-    "svg": "SVG",
-    "svgSettings": "SVG Settings",
-    "transparentColor": "Transparent Color",
-    "transparentColorPlaceholder": "#ffffff or empty",
-    "trueVector": "True Vector",
-    "trueVectorDesc": "Use paths instead of embedded raster",
-    "webp": "WebP",
-    "width": "Width"
+    "gifSettings": "GIF ക്രമീകരണങ്ങൾ",
+    "height": "ഉയരം",
+    "includeQuietZone": "നിശബ്ദ മേഖല ഉൾപ്പെടുത്തുക",
+    "medianCut": "മീഡിയൻ കട്ട്",
+    "neuquant": "ന്യൂക്വന്റ്",
+    "none": "ഒന്നുമില്ല",
+    "octree": "ഒക്ട്രീ",
+    "off": "ഓഫ്",
+    "ordered": "ഓർഡർ ചെയ്തു",
+    "outputSize": "ഔട്ട്പുട്ട് വലുപ്പം",
+    "paletteSize": "പാലറ്റ് വലുപ്പം",
+    "pdf": "പിഡിഎഫ്",
+    "pixel": "പിക്സൽ",
+    "png": "പി‌എൻ‌ജി",
+    "precise": "കൃത്യം",
+    "quality": "ഗുണനിലവാരം",
+    "quantizer": "ക്വാണ്ടൈസർ",
+    "shapePrecision": "ആകൃതി കൃത്യത",
+    "svg": "എസ്‌വിജി",
+    "svgSettings": "എസ്‌വിജി ക്രമീകരണങ്ങൾ",
+    "transparentColor": "സുതാര്യമായ നിറം",
+    "transparentColorPlaceholder": "#ffffff അല്ലെങ്കിൽ ശൂന്യം",
+    "trueVector": "ട്രൂ വെക്റ്റർ",
+    "trueVectorDesc": "എംബഡഡ് റാസ്റ്ററിന് പകരം പാതകൾ ഉപയോഗിക്കുക",
+    "webp": "വെബ്‌പി",
+    "width": "വീതി"
   },
   "overlay": {
-    "adaptiveThreshold": "Adaptive Threshold",
-    "atkinson": "Atkinson",
-    "bayer2": "Bayer 2×2",
-    "bayer4": "Bayer 4×4",
-    "bayer8": "Bayer 8×8",
-    "blend": "Blend",
-    "blendMode": "Blend",
-    "blueNoise": "Blue Noise",
-    "blueNoiseErrorDiffusion": "Blue Noise + Error Diffusion",
-    "blueNoiseMode": "Blue Noise",
-    "blueNoiseThreshold": "Blue Noise Threshold",
-    "blur": "Blur",
-    "brightness": "Brightness",
-    "brightnessCurve": "Brightness Curve",
-    "brightnessMode": "Brightness",
-    "burkes": "Burkes",
-    "bw": "Black & White",
-    "cellSize": "Cell Size",
-    "centerLogo": "Center Logo",
-    "centerRule": "Center Rule",
-    "clusteredDot": "Clustered Dot",
-    "colorDither": "Color Dither",
-    "colorMode": "Color Mode",
-    "contain": "Contain",
-    "contrast": "Contrast",
-    "corsNote": "Note: Image must allow cross-origin requests (CORS)",
-    "cover": "Cover",
-    "cropImage": "Crop Image",
-    "cropSize": "Crop Size",
-    "diffusionKernel": "Diffusion Kernel",
-    "disposalHandling": "Disposal Handling",
-    "dither": "Dither",
-    "ditherSettings": "Dither Settings",
-    "ditherStrength": "Dither Strength",
-    "dithered": "Dithered",
-    "ditheredMode": "Dithered",
-    "dotShape": "Dot Shape",
-    "duotone": "Duotone",
-    "duotoneColors": "Duotone Colors",
-    "duotoneMode": "Duotone",
-    "eccAwareMode": "ECC-Aware Mode",
-    "edge": "Edge Detection",
-    "edgeAware": "Edge-Aware",
-    "enableCrop": "Enable Crop",
-    "errorDiffusion": "Error Diffusion",
-    "extreme": "Extreme",
-    "extremeMode": "Extreme",
-    "finderOverride": "Finder Override",
-    "fitMode": "Fit Mode",
-    "flipX": "Flip X",
-    "flipY": "Flip Y",
-    "floydSteinberg": "Floyd-Steinberg",
-    "fromUrl": "From URL",
-    "fullColor": "Full Color",
-    "gamma": "Gamma",
-    "gapFillMode": "Gap Fill",
-    "gapfill": "Gap Fill",
-    "gaussianNoise": "Gaussian Noise",
-    "gifSettings": "GIF Settings",
-    "grayscale": "Grayscale",
-    "gridSize": "Grid Size",
-    "halftone": "Halftone",
-    "halftoneCenter": "Halftone Center",
-    "halftoneMode": "Halftone",
-    "halftoneSettings": "Halftone Settings",
-    "highlight": "Highlight",
-    "hueRotate": "Hue Rotate",
-    "imageGifWebp": "Image / GIF / WebP",
-    "imageUrl": "Image URL",
-    "intensity": "Intensity",
-    "invert": "Invert Image",
-    "jarvisJudiceNinke": "Jarvis-Judice-Ninke",
-    "line": "Line",
-    "load": "Load",
-    "loadedFromUrl": "Loaded from URL",
-    "maxFps": "Max FPS",
-    "mode": "Blend Mode",
-    "mosaic": "Mosaic",
-    "mosaicMode": "Mosaic",
-    "neutralColor": "Neutral Color",
-    "noFile": "No file",
-    "none": "None",
-    "nxnGrid": "N×N Grid",
-    "orderedBayer": "Ordered (Bayer)",
-    "orderedMatrix": "Ordered Matrix",
-    "original": "Original",
-    "outline": "Outline",
-    "outlineMode": "Outline",
-    "perChannel": "Per Channel",
-    "perModule": "Per Module",
-    "perceptual": "Perceptual (Luminance)",
-    "pixelate": "Pixelate",
-    "pixelateMode": "Pixelate",
-    "posterizeLevels": "Posterize Levels",
-    "preserveAlignment": "Preserve Alignment",
-    "preserveFinders": "Preserve Finder Patterns",
-    "preserveTiming": "Preserve Timing",
-    "protectFormat": "Protect Format Info",
-    "protectFormatInfo": "Protect Format Info",
-    "protectVersion": "Protect Version Info",
-    "protectVersionInfo": "Protect Version Info",
-    "protection": "Protection",
-    "removeImage": "Remove",
-    "respect": "Respect",
-    "riskBudget": "Risk Budget",
-    "rotation": "Rotation",
-    "sCurve": "S-Curve",
-    "saturation": "Saturation",
-    "screenedBlueNoise": "Screened Blue Noise",
-    "seed": "Seed",
-    "selectImage": "Select Image",
-    "sepia": "Sepia",
-    "serpentineScanning": "Serpentine Scanning",
-    "shadow": "Shadow",
-    "sharpen": "Sharpen",
-    "sierra": "Sierra",
-    "sierra2": "Sierra-2",
-    "sierraLite": "Sierra-Lite",
-    "simplify": "Simplify",
-    "stretch": "Stretch",
-    "strict": "Strict",
-    "stucki": "Stucki",
-    "stylized": "Stylized",
-    "subpixel": "Subpixel",
-    "subpixelMode": "Subpixel",
-    "subpixelSettings": "Subpixel Settings",
-    "subpixelSize": "Subpixel Size",
-    "subpixelSizeMode": "Subpixel Size",
-    "temporalBlueNoise": "Temporal Blue Noise",
-    "threshold": "Threshold",
-    "tileSize": "Tile Size",
-    "triangularNoise": "Triangular Noise",
-    "trueDither": "True Dither",
-    "trueDitherMode": "True Dither",
-    "upload": "Upload",
-    "useFrameDelays": "Use Frame Delays",
-    "voidCluster": "Void & Cluster",
-    "wave": "Wave",
-    "waveMode": "Wave",
-    "whiteNoise": "White Noise"
+    "adaptiveThreshold": "അഡാപ്റ്റീവ് ത്രെഷോൾഡ്",
+    "atkinson": "അറ്റ്കിൻസൺ",
+    "bayer2": "ബേയർ 2×2",
+    "bayer4": "ബേയർ 4×4",
+    "bayer8": "ബേയർ 8×8",
+    "blend": "മിശ്രിതം",
+    "blendMode": "മിശ്രിതം",
+    "blueNoise": "നീല ശബ്ദം",
+    "blueNoiseErrorDiffusion": "നീല ശബ്ദം + പിശക് വ്യാപനം",
+    "blueNoiseMode": "നീല ശബ്ദം",
+    "blueNoiseThreshold": "നീല ശബ്ദ പരിധി",
+    "blur": "മങ്ങൽ",
+    "brightness": "തെളിച്ചം",
+    "brightnessCurve": "തെളിച്ച വക്രം",
+    "brightnessMode": "തെളിച്ചം",
+    "burkes": "ബർക്കുകൾ",
+    "bw": "കറുപ്പും വെളുപ്പും",
+    "cellSize": "സെൽ വലുപ്പം",
+    "centerLogo": "സെന്റർ ലോഗോ",
+    "centerRule": "കേന്ദ്ര നിയമം",
+    "clusteredDot": "ക്ലസ്റ്റേർഡ് ഡോട്ട്",
+    "colorDither": "കളർ ഡിതർ",
+    "colorMode": "കളർ മോഡ്",
+    "contain": "ഉൾക്കൊള്ളുക",
+    "contrast": "കോൺട്രാസ്റ്റ്",
+    "corsNote": "കുറിപ്പ്: ചിത്രം ക്രോസ്-ഒറിജിൻ അഭ്യർത്ഥനകൾ (CORS) അനുവദിക്കണം",
+    "cover": "കവർ",
+    "cropImage": "ചിത്രം മുറിക്കുക",
+    "cropSize": "വിള വലുപ്പം",
+    "diffusionKernel": "ഡിഫ്യൂഷൻ കേർണൽ",
+    "disposalHandling": "നിർമാർജനം കൈകാര്യം ചെയ്യൽ",
+    "dither": "ഡിതർ",
+    "ditherSettings": "ഡിതർ സെറ്റിംഗ്സ്",
+    "ditherStrength": "മങ്ങിയ ശക്തി",
+    "dithered": "അലഞ്ഞുതിരിഞ്ഞു",
+    "ditheredMode": "അലഞ്ഞുതിരിഞ്ഞു",
+    "dotShape": "ഡോട്ട് ഷേപ്പ്",
+    "duotone": "ഡ്യുട്ടോൺ",
+    "duotoneColors": "ഡ്യുവോട്ടോൺ നിറങ്ങൾ",
+    "duotoneMode": "ഡ്യുട്ടോൺ",
+    "eccAwareMode": "ECC-അവെയർ മോഡ്",
+    "edge": "എഡ്ജ് ഡിറ്റക്ഷൻ",
+    "edgeAware": "എഡ്ജ്-അവെയർ",
+    "enableCrop": "ക്രോപ്പ് പ്രവർത്തനക്ഷമമാക്കുക",
+    "errorDiffusion": "പിശക് വ്യാപനം",
+    "extreme": "എക്‌സ്ട്രീം",
+    "extremeMode": "എക്‌സ്ട്രീം",
+    "finderOverride": "ഫൈൻഡർ ഓവർറൈഡ്",
+    "fitMode": "ഫിറ്റ് മോഡ്",
+    "flipX": "ഫ്ലിപ്പ് എക്സ്",
+    "flipY": "ഫ്ലിപ്പ് വൈ",
+    "floydSteinberg": "ഫ്ലോയ്ഡ്-സ്റ്റെയിൻബർഗ്",
+    "fromUrl": "URL-ൽ നിന്ന്",
+    "fullColor": "പൂർണ്ണ വർണ്ണം",
+    "gamma": "ഗാമ",
+    "gapFillMode": "വിടവ് നികത്തൽ",
+    "gapfill": "വിടവ് നികത്തൽ",
+    "gaussianNoise": "ഗോഷ്യൻ ശബ്ദം",
+    "gifSettings": "GIF ക്രമീകരണങ്ങൾ",
+    "grayscale": "ഗ്രേസ്കെയിൽ",
+    "gridSize": "ഗ്രിഡ് വലുപ്പം",
+    "halftone": "ഹാഫ്‌ടോൺ",
+    "halftoneCenter": "ഹാൽഫ്‌ടോൺ സെന്റർ",
+    "halftoneMode": "ഹാഫ്‌ടോൺ",
+    "halftoneSettings": "ഹാഫ്‌ടോൺ ക്രമീകരണങ്ങൾ",
+    "highlight": "ഹൈലൈറ്റ്",
+    "hueRotate": "ഹ്യൂ റൊട്ടേറ്റ്",
+    "imageGifWebp": "ചിത്രം / GIF / WebP",
+    "imageUrl": "ഇമേജ് URL",
+    "intensity": "തീവ്രത",
+    "invert": "ചിത്രം വിപരീതമാക്കുക",
+    "jarvisJudiceNinke": "ജാർവിസ്-ജൂഡിസ്-നിങ്കെ",
+    "line": "ലൈൻ",
+    "load": "ലോഡ്",
+    "loadedFromUrl": "URL-ൽ നിന്ന് ലോഡ് ചെയ്‌തു",
+    "maxFps": "പരമാവധി എഫ്പിഎസ്",
+    "mode": "ബ്ലെൻഡ് മോഡ്",
+    "mosaic": "മൊസൈക്",
+    "mosaicMode": "മൊസൈക്",
+    "neutralColor": "നിഷ്പക്ഷ നിറം",
+    "noFile": "ഫയലില്ല",
+    "none": "ഒന്നുമില്ല",
+    "nxnGrid": "N×N ഗ്രിഡ്",
+    "orderedBayer": "ഓർഡർ ചെയ്തു (ബേയർ)",
+    "orderedMatrix": "ക്രമീകരിച്ച മാട്രിക്സ്",
+    "original": "ഒറിജിനൽ",
+    "outline": "രൂപരേഖ",
+    "outlineMode": "രൂപരേഖ",
+    "perChannel": "ഓരോ ചാനലിനും",
+    "perModule": "ഓരോ മൊഡ്യൂളിനും",
+    "perceptual": "പെർസെപ്ച്വൽ (പ്രകാശം)",
+    "pixelate": "പിക്സലേറ്റ്",
+    "pixelateMode": "പിക്സലേറ്റ്",
+    "posterizeLevels": "പോസ്റ്ററൈസ് ലെവലുകൾ",
+    "preserveAlignment": "അലൈൻമെന്റ് സംരക്ഷിക്കുക",
+    "preserveFinders": "ഫൈൻഡർ പാറ്റേണുകൾ സംരക്ഷിക്കുക",
+    "preserveTiming": "സമയം സൂക്ഷിക്കുക",
+    "protectFormat": "ഫോർമാറ്റ് വിവരങ്ങൾ സംരക്ഷിക്കുക",
+    "protectFormatInfo": "ഫോർമാറ്റ് വിവരങ്ങൾ സംരക്ഷിക്കുക",
+    "protectVersion": "പതിപ്പ് വിവരങ്ങൾ സംരക്ഷിക്കുക",
+    "protectVersionInfo": "പതിപ്പ് വിവരങ്ങൾ സംരക്ഷിക്കുക",
+    "protection": "സംരക്ഷണം",
+    "removeImage": "നീക്കം ചെയ്യുക",
+    "respect": "ബഹുമാനം",
+    "riskBudget": "റിസ്ക് ബജറ്റ്",
+    "rotation": "ഭ്രമണം",
+    "sCurve": "എസ്-കർവ്",
+    "saturation": "സാച്ചുറേഷൻ",
+    "screenedBlueNoise": "സ്‌ക്രീൻ ചെയ്‌ത നീല ശബ്‌ദം",
+    "seed": "വിത്ത്",
+    "selectImage": "ചിത്രം തിരഞ്ഞെടുക്കുക",
+    "sepia": "സെപിയ",
+    "serpentineScanning": "സെർപന്റൈൻ സ്കാനിംഗ്",
+    "shadow": "നിഴൽ",
+    "sharpen": "മൂർച്ച കൂട്ടുക",
+    "sierra": "സിയറ",
+    "sierra2": "സിയറ-2",
+    "sierraLite": "സിയറ-ലൈറ്റ്",
+    "simplify": "ലളിതമാക്കുക",
+    "stretch": "സ്ട്രെച്ച്",
+    "strict": "കർക്കശമായത്",
+    "stucki": "സ്റ്റക്കി",
+    "stylized": "ശൈലീകരിച്ചത്",
+    "subpixel": "സബ്പിക്സൽ",
+    "subpixelMode": "സബ്പിക്സൽ",
+    "subpixelSettings": "സബ്പിക്സൽ ക്രമീകരണങ്ങൾ",
+    "subpixelSize": "സബ്പിക്സൽ വലുപ്പം",
+    "subpixelSizeMode": "സബ്പിക്സൽ വലുപ്പം",
+    "temporalBlueNoise": "ടെമ്പറൽ ബ്ലൂ നോയ്‌സ്",
+    "threshold": "പരിധി",
+    "tileSize": "ടൈൽ വലുപ്പം",
+    "triangularNoise": "ത്രികോണ ശബ്ദം",
+    "trueDither": "ട്രൂ ഡിതർ",
+    "trueDitherMode": "ട്രൂ ഡിതർ",
+    "upload": "അപ്‌ലോഡ്",
+    "useFrameDelays": "ഫ്രെയിം കാലതാമസം ഉപയോഗിക്കുക",
+    "voidCluster": "ശൂന്യവും ക്ലസ്റ്ററും",
+    "wave": "തരംഗം",
+    "waveMode": "തരംഗം",
+    "whiteNoise": "വൈറ്റ് നോയ്‌സ്"
   },
   "payload": {
-    "accountName": "Account Name",
-    "address": "Address",
-    "algorithm": "Algorithm",
-    "allDay": "All Day Event",
-    "amount": "Amount (optional)",
-    "amountBrl": "Amount (BRL, optional)",
-    "amountEur": "Amount (EUR)",
-    "amountInr": "Amount (INR, optional)",
-    "amountSgd": "Amount (SGD, optional)",
-    "amountThb": "Amount (THB, optional)",
-    "androidIntent": "Android Intent",
-    "appLink": "App Deep Link (Android/iOS)",
-    "assetInventory": "Asset/Inventory Tag",
-    "assetItemId": "Asset/Item ID",
-    "assetType": "Asset Type",
-    "attendeeName": "Attendee Name",
-    "audio": "Audio",
-    "baseUrl": "Base URL",
-    "batchLot": "Batch/Lot (optional)",
-    "beneficiaryName": "Beneficiary Name",
-    "bicSwift": "BIC/SWIFT (optional)",
-    "birthday": "Birthday",
-    "bitcoin": "Bitcoin",
-    "bizcard": "BizCard (Legacy)",
-    "bluetooth": "Bluetooth",
-    "body": "Message Body",
-    "bodyOptional": "Body (optional)",
-    "box": "Box",
-    "calendar": "Calendar",
-    "calendarName": "Calendar Name",
-    "calendarSubscription": "Calendar Subscribe",
-    "calendarUrl": "Calendar URL (ICS/WebCal)",
-    "campaignContent": "Campaign Content (optional)",
-    "campaignMedium": "Campaign Medium",
-    "campaignName": "Campaign Name",
-    "campaignSource": "Campaign Source",
-    "campaignTerm": "Campaign Term (optional)",
-    "city": "City",
-    "cityOptional": "City (optional)",
-    "cloudLink": "Cloud Storage Link",
-    "company": "Company",
-    "contact": "Contact",
-    "contentType": "Content Type",
-    "core": "Core",
-    "country": "Country",
-    "crypto": "Crypto (BTC, ETH, etc.)",
-    "cryptocurrency": "Cryptocurrency",
-    "custom": "Custom Format",
-    "customScheme": "Custom Scheme",
-    "dateTime": "Date & Time",
-    "deepLinkUrl": "Deep Link URL",
-    "description": "Description",
-    "deviceAddress": "Device Address (MAC)",
-    "deviceName": "Device Name (optional)",
-    "digits": "Digits",
-    "documentsMedia": "Documents & Media",
-    "dropbox": "Dropbox",
-    "email": "Email",
-    "emailAddress": "Email Address",
-    "encryption": "Encryption",
-    "end": "End",
-    "endDate": "End Date",
-    "enterprise": "Enterprise",
-    "epcSepa": "EPC / SEPA (EU)",
-    "equipment": "Equipment",
-    "ethereum": "Ethereum",
-    "event": "iCalendar Event",
-    "eventName": "Event Name",
-    "eventRsvp": "Event RSVP Link",
-    "eventTicket": "Event Ticket",
-    "expiryDate": "Expiry Date (optional)",
-    "facebook": "Facebook",
-    "fallbackUrl": "Fallback URL (optional)",
-    "fax": "Fax",
-    "fileType": "File Type",
-    "fileUrl": "File / Document URL",
-    "firstName": "First Name",
-    "forceHttps": "Force HTTPS",
-    "fullName": "Full Name",
-    "furniture": "Furniture",
-    "geo": "Geo Location",
-    "github": "GitHub",
-    "googleDrive": "Google Drive",
-    "gs1DigitalLink": "GS1 Digital Link",
-    "gtin": "GTIN (Global Trade Item Number)",
-    "hidden": "Hidden Network",
-    "homePhone": "Home Phone",
-    "iban": "IBAN",
-    "idType": "ID Type",
-    "image": "Image",
-    "instagram": "Instagram",
-    "inventoryItem": "Inventory Item",
-    "iosUniversal": "iOS Universal",
-    "issuer": "Issuer",
-    "itAsset": "IT Asset",
-    "label": "Label (optional)",
-    "lastName": "Last Name",
-    "latitude": "Latitude",
-    "linkType": "Link Type",
-    "linkedin": "LinkedIn",
-    "litecoin": "Litecoin",
-    "location": "Location",
-    "locationNetwork": "Location & Network",
-    "longitude": "Longitude",
-    "lookupUrl": "Lookup URL (optional)",
-    "marketing": "Marketing",
-    "marketingTags": "Marketing Tags",
-    "maxLengthGuard": "Max Length Guard",
-    "mecard": "MeCard Contact",
-    "merchantName": "Merchant Name (optional)",
-    "message": "Message",
-    "messageOptional": "Message (optional)",
-    "messagingLink": "WhatsApp / Telegram / Signal",
-    "messenger": "Messenger",
-    "mobileNumber": "Mobile Number",
-    "mobilePhone": "Mobile Phone",
-    "name": "Name",
-    "nationalIdTaxId": "National ID / Tax ID",
-    "nickname": "Nickname",
-    "normalizeNewlines": "Normalize Newlines",
-    "note": "Note",
-    "oneDrive": "OneDrive",
-    "openNoPassword": "Open (No Password)",
-    "organization": "Organization",
-    "other": "Other",
-    "otpAuth": "OTP Authenticator",
-    "otpType": "Type",
-    "password": "Password",
-    "payeeName": "Payee Name",
-    "payments": "Payments (Open Specs)",
-    "paynow": "PayNow (Singapore)",
-    "phone": "Phone",
-    "phoneUsername": "Phone/Username",
-    "pix": "PIX (Brazil)",
-    "pixKey": "PIX Key",
-    "plainText": "Plain Text",
-    "platform": "Platform",
-    "prefilledMessage": "Pre-filled Message (optional)",
-    "profileUrl": "Profile URL",
-    "promptPayId": "PromptPay ID",
-    "promptpay": "PromptPay (Thailand)",
-    "proxyType": "Proxy Type",
-    "rawData": "Raw Data",
-    "recipient": "Recipient",
-    "reference": "Reference",
-    "referenceOptional": "Reference (optional)",
-    "resolverDomain": "Resolver Domain",
+    "accountName": "അക്കൗണ്ട് നാമം",
+    "address": "വിലാസം",
+    "algorithm": "അൽഗോരിതം",
+    "allDay": "മുഴുവൻ ദിവസത്തെ പരിപാടി",
+    "amount": "തുക (ഓപ്ഷണൽ)",
+    "amountBrl": "തുക (BRL, ഓപ്ഷണൽ)",
+    "amountEur": "തുക (EUR)",
+    "amountInr": "തുക (INR, ഓപ്ഷണൽ)",
+    "amountSgd": "തുക (SGD, ഓപ്ഷണൽ)",
+    "amountThb": "തുക (THB, ഓപ്ഷണൽ)",
+    "androidIntent": "ആൻഡ്രോയിഡ് ഇന്റന്റ്",
+    "appLink": "ആപ്പ് ഡീപ് ലിങ്ക് (ആൻഡ്രോയിഡ്/ഐഒഎസ്)",
+    "assetInventory": "അസറ്റ്/ഇൻവെന്ററി ടാഗ്",
+    "assetItemId": "അസറ്റ്/ഇനം ഐഡി",
+    "assetType": "അസറ്റ് തരം",
+    "attendeeName": "പങ്കെടുക്കുന്നയാളുടെ പേര്",
+    "audio": "ഓഡിയോ",
+    "baseUrl": "അടിസ്ഥാന URL",
+    "batchLot": "ബാച്ച്/ലോട്ട് (ഓപ്ഷണൽ)",
+    "beneficiaryName": "ഗുണഭോക്താവിന്റെ പേര്",
+    "bicSwift": "BIC/SWIFT (ഓപ്ഷണൽ)",
+    "birthday": "ജന്മദിനം",
+    "bitcoin": "ബിറ്റ്കോയിൻ",
+    "bizcard": "ബിസ്കാർഡ് (ലെഗസി)",
+    "bluetooth": "ബ്ലൂടൂത്ത്",
+    "body": "സന്ദേശ ബോഡി",
+    "bodyOptional": "ശരീരം (ഓപ്ഷണൽ)",
+    "box": "പെട്ടി",
+    "calendar": "കലണ്ടർ",
+    "calendarName": "കലണ്ടർ നാമം",
+    "calendarSubscription": "കലണ്ടർ സബ്‌സ്‌ക്രൈബ്",
+    "calendarUrl": "കലണ്ടർ URL (ICS/WebCal)",
+    "campaignContent": "കാമ്പെയ്‌ൻ ഉള്ളടക്കം (ഓപ്ഷണൽ)",
+    "campaignMedium": "കാമ്പെയ്ൻ മീഡിയം",
+    "campaignName": "കാമ്പെയ്‌ൻ നാമം",
+    "campaignSource": "പ്രചാരണ ഉറവിടം",
+    "campaignTerm": "കാമ്പെയ്‌ൻ കാലാവധി (ഓപ്ഷണൽ)",
+    "city": "നഗരം",
+    "cityOptional": "നഗരം (ഓപ്ഷണൽ)",
+    "cloudLink": "ക്ലൗഡ് സ്റ്റോറേജ് ലിങ്ക്",
+    "company": "കമ്പനി",
+    "contact": "ബന്ധപ്പെടുക",
+    "contentType": "ഉള്ളടക്ക തരം",
+    "core": "കോർ",
+    "country": "രാജ്യം",
+    "crypto": "ക്രിപ്‌റ്റോ (BTC, ETH, മുതലായവ)",
+    "cryptocurrency": "ക്രിപ്‌റ്റോകറൻസി",
+    "custom": "ഇഷ്ടാനുസൃത ഫോർമാറ്റ്",
+    "customScheme": "കസ്റ്റം സ്കീം",
+    "dateTime": "തീയതിയും സമയവും",
+    "deepLinkUrl": "ഡീപ് ലിങ്ക് URL",
+    "description": "വിവരണം",
+    "deviceAddress": "ഉപകരണ വിലാസം (MAC)",
+    "deviceName": "ഉപകരണ നാമം (ഓപ്ഷണൽ)",
+    "digits": "അക്കങ്ങൾ",
+    "documentsMedia": "രേഖകളും മാധ്യമങ്ങളും",
+    "dropbox": "ഡ്രോപ്പ്ബോക്സ്",
+    "email": "ഇമെയിൽ",
+    "emailAddress": "ഇമെയിൽ വിലാസം",
+    "encryption": "എൻക്രിപ്ഷൻ",
+    "end": "അവസാനം",
+    "endDate": "അവസാന തീയതി",
+    "enterprise": "എന്റർപ്രൈസ്",
+    "epcSepa": "ഇപിസി / എസ്ഇപിഎ (ഇയു)",
+    "equipment": "ഉപകരണങ്ങൾ",
+    "ethereum": "എതെറിയം",
+    "event": "ഐകലണ്ടർ ഇവന്റ്",
+    "eventName": "ഇവന്റ് നാമം",
+    "eventRsvp": "ഇവന്റ് RSVP ലിങ്ക്",
+    "eventTicket": "ഇവന്റ് ടിക്കറ്റ്",
+    "expiryDate": "കാലഹരണ തീയതി (ഓപ്ഷണൽ)",
+    "facebook": "ഫേസ്ബുക്ക്",
+    "fallbackUrl": "ഫോൾബാക്ക് URL (ഓപ്ഷണൽ)",
+    "fax": "ഫാക്സ്",
+    "fileType": "ഫയൽ തരം",
+    "fileUrl": "ഫയൽ / ഡോക്യുമെന്റ് URL",
+    "firstName": "ആദ്യ നാമം",
+    "forceHttps": "ഫോഴ്‌സ് HTTPS",
+    "fullName": "പൂർണ്ണ നാമം",
+    "furniture": "ഫർണിച്ചർ",
+    "geo": "ജിയോ ലൊക്കേഷൻ",
+    "github": "ഗിറ്റ്ഹബ്",
+    "googleDrive": "ഗൂഗിൾ ഡ്രൈവ്",
+    "gs1DigitalLink": "GS1 ഡിജിറ്റൽ ലിങ്ക്",
+    "gtin": "GTIN (ഗ്ലോബൽ ട്രേഡ് ഇനം നമ്പർ)",
+    "hidden": "മറഞ്ഞിരിക്കുന്ന നെറ്റ്‌വർക്ക്",
+    "homePhone": "ഹോം ഫോൺ",
+    "iban": "ഐബാൻ",
+    "idType": "ഐഡി തരം",
+    "image": "ചിത്രം",
+    "instagram": "ഇൻസ്റ്റാഗ്രാം",
+    "inventoryItem": "ഇൻവെന്ററി ഇനം",
+    "iosUniversal": "iOS യൂണിവേഴ്സൽ",
+    "issuer": "ഇഷ്യൂവർ",
+    "itAsset": "ഐടി അസറ്റ്",
+    "label": "ലേബൽ (ഓപ്ഷണൽ)",
+    "lastName": "അവസാന നാമം",
+    "latitude": "അക്ഷാംശം",
+    "linkType": "ലിങ്ക് തരം",
+    "linkedin": "ലിങ്ക്ഡ്ഇൻ",
+    "litecoin": "ലിറ്റ്കോയിൻ",
+    "location": "സ്ഥലം",
+    "locationNetwork": "ലൊക്കേഷനും നെറ്റ്‌വർക്കും",
+    "longitude": "രേഖാംശം",
+    "lookupUrl": "തിരയൽ URL (ഓപ്ഷണൽ)",
+    "marketing": "മാർക്കറ്റിംഗ്",
+    "marketingTags": "മാർക്കറ്റിംഗ് ടാഗുകൾ",
+    "maxLengthGuard": "മാക്സ് ലെങ്ത് ഗാർഡ്",
+    "mecard": "മീകാർഡ് കോൺടാക്റ്റ്",
+    "merchantName": "വ്യാപാരിയുടെ പേര് (ഓപ്ഷണൽ)",
+    "message": "സന്ദേശം",
+    "messageOptional": "സന്ദേശം (ഓപ്ഷണൽ)",
+    "messagingLink": "വാട്ട്‌സ്ആപ്പ് / ടെലിഗ്രാം / സിഗ്നൽ",
+    "messenger": "മെസഞ്ചർ",
+    "mobileNumber": "മൊബൈൽ നമ്പർ",
+    "mobilePhone": "മൊബൈൽ ഫോൺ",
+    "name": "പേര്",
+    "nationalIdTaxId": "ദേശീയ ഐഡി / നികുതി ഐഡി",
+    "nickname": "വിളിപ്പേര്",
+    "normalizeNewlines": "പുതിയ ലൈനുകൾ സാധാരണമാക്കുക",
+    "note": "കുറിപ്പ്",
+    "oneDrive": "വൺഡ്രൈവ്",
+    "openNoPassword": "തുറക്കുക (പാസ്‌വേഡ് ഇല്ല)",
+    "organization": "സംഘടന",
+    "other": "മറ്റുള്ളവ",
+    "otpAuth": "ഒടിപി ഓതന്റിക്കേറ്റർ",
+    "otpType": "തരം",
+    "password": "പാസ്‌വേഡ്",
+    "payeeName": "പണം സ്വീകരിക്കുന്നയാളുടെ പേര്",
+    "payments": "പേയ്‌മെന്റുകൾ (ഓപ്പൺ സ്പെക്‌സ്)",
+    "paynow": "പേ നൗ (സിംഗപ്പൂർ)",
+    "phone": "ഫോൺ",
+    "phoneUsername": "ഫോൺ/ഉപയോക്തൃനാമം",
+    "pix": "പിക്സ് (ബ്രസീൽ)",
+    "pixKey": "പിക്സ് കീ",
+    "plainText": "പ്ലെയിൻ ടെക്സ്റ്റ്",
+    "platform": "പ്ലാറ്റ്ഫോം",
+    "prefilledMessage": "മുൻകൂട്ടി പൂരിപ്പിച്ച സന്ദേശം (ഓപ്ഷണൽ)",
+    "profileUrl": "പ്രൊഫൈൽ URL",
+    "promptPayId": "പ്രോംപ്റ്റ്പേ ഐഡി",
+    "promptpay": "പ്രോംപ്റ്റ്പേ (തായ്‌ലൻഡ്)",
+    "proxyType": "പ്രോക്സി തരം",
+    "rawData": "റോ ഡാറ്റ",
+    "recipient": "സ്വീകർത്താവ്",
+    "reference": "റഫറൻസ്",
+    "referenceOptional": "റഫറൻസ് (ഓപ്ഷണൽ)",
+    "resolverDomain": "റിസോൾവർ ഡൊമെയ്ൻ",
     "rsvpUrl": "RSVP URL",
-    "searchQuery": "Search Query (optional)",
-    "seat": "Seat",
-    "secretBase32": "Secret (Base32)",
-    "sectionZone": "Section/Zone",
-    "securityType": "Security Type",
-    "serialNumber": "Serial Number (optional)",
-    "service": "Service",
-    "shortLink": "Short Link Redirect",
-    "shortUrl": "Short URL",
-    "signal": "Signal",
-    "sms": "SMS",
-    "smsMms": "SMS / MMS",
-    "socialMessaging": "Social & Messaging",
-    "socialProfile": "Social Profile",
-    "ssid": "Network Name (SSID)",
-    "start": "Start",
-    "startDate": "Start Date",
-    "state": "State/Province",
-    "street": "Street",
-    "subject": "Subject",
-    "subjectOptional": "Subject (optional)",
-    "summary": "Event Title",
-    "tel": "Phone Number",
-    "telegram": "Telegram",
-    "text": "Text Content",
-    "ticketId": "Ticket ID",
-    "tiktok": "TikTok",
-    "title": "Title",
-    "transactionNote": "Transaction Note (optional)",
-    "trimWhitespace": "Trim Whitespace",
-    "uenMobile": "UEN/Mobile Number",
-    "universalLink": "Universal Link",
-    "upi": "UPI (India)",
-    "upiId": "UPI ID (VPA)",
-    "url": "URL",
+    "searchQuery": "തിരയൽ അന്വേഷണം (ഓപ്ഷണൽ)",
+    "seat": "സീറ്റ്",
+    "secretBase32": "രഹസ്യം (ബേസ് 32)",
+    "sectionZone": "വിഭാഗം/മേഖല",
+    "securityType": "സുരക്ഷാ തരം",
+    "serialNumber": "സീരിയൽ നമ്പർ (ഓപ്ഷണൽ)",
+    "service": "സേവനം",
+    "shortLink": "ഷോർട്ട് ലിങ്ക് റീഡയറക്‌ട്",
+    "shortUrl": "ഹ്രസ്വ URL",
+    "signal": "സിഗ്നൽ",
+    "sms": "എസ്എംഎസ്",
+    "smsMms": "എസ്എംഎസ് / എംഎംഎസ്",
+    "socialMessaging": "സാമൂഹികവും സന്ദേശമയയ്ക്കലും",
+    "socialProfile": "സോഷ്യൽ പ്രൊഫൈൽ",
+    "ssid": "നെറ്റ്‌വർക്ക് നാമം (SSID)",
+    "start": "ആരംഭിക്കുക",
+    "startDate": "ആരംഭ തീയതി",
+    "state": "സംസ്ഥാനം/പ്രവിശ്യ",
+    "street": "തെരുവ്",
+    "subject": "വിഷയം",
+    "subjectOptional": "വിഷയം (ഓപ്ഷണൽ)",
+    "summary": "ഇവന്റ് തലക്കെട്ട്",
+    "tel": "ഫോൺ നമ്പർ",
+    "telegram": "ടെലിഗ്രാം",
+    "text": "ടെക്സ്റ്റ് ഉള്ളടക്കം",
+    "ticketId": "ടിക്കറ്റ് ഐഡി",
+    "tiktok": "ടിക് ടോക്ക്",
+    "title": "തലക്കെട്ട്",
+    "transactionNote": "ഇടപാട് കുറിപ്പ് (ഓപ്ഷണൽ)",
+    "trimWhitespace": "വൈറ്റ്‌സ്‌പെയ്‌സ് ട്രിം ചെയ്യുക",
+    "uenMobile": "UEN/മൊബൈൽ നമ്പർ",
+    "universalLink": "യൂണിവേഴ്സൽ ലിങ്ക്",
+    "upi": "യുപിഐ (ഇന്ത്യ)",
+    "upiId": "UPI ഐഡി (VPA)",
+    "url": "യുആർഎൽ",
     "utmCampaign": "utm_campaign",
     "utmContent": "utm_content",
-    "utmLink": "UTM Campaign Link",
-    "utmMedium": "utm_medium",
+    "utmLink": "UTM കാമ്പെയ്‌ൻ ലിങ്ക്",
+    "utmMedium": "ഉത്മ്_മീഡിയം",
     "utmSource": "utm_source",
-    "utmTerm": "utm_term",
-    "validateInput": "Validate Input",
-    "validationOptions": "Validation Options",
-    "validationUrl": "Validation URL (optional)",
-    "vcard": "vCard Contact",
-    "vehicle": "Vehicle",
-    "venue": "Venue",
-    "vevent": "Calendar Event",
-    "viber": "Viber",
-    "video": "Video",
-    "walletAddress": "Address",
-    "website": "Website",
-    "whatsapp": "WhatsApp",
-    "wifi": "WiFi",
-    "wifiNetwork": "WiFi Network",
-    "wordDocument": "Word Document",
-    "workPhone": "Work Phone",
-    "youtube": "YouTube",
-    "zip": "ZIP/Postal Code"
+    "utmTerm": "ഉത്മ്_ടേം",
+    "validateInput": "ഇൻപുട്ട് സാധൂകരിക്കുക",
+    "validationOptions": "മൂല്യനിർണ്ണയ ഓപ്ഷനുകൾ",
+    "validationUrl": "സാധൂകരണ URL (ഓപ്ഷണൽ)",
+    "vcard": "vCard കോൺടാക്റ്റ്",
+    "vehicle": "വാഹനം",
+    "venue": "വേദി",
+    "vevent": "കലണ്ടർ ഇവന്റ്",
+    "viber": "വൈബർ",
+    "video": "വീഡിയോ",
+    "walletAddress": "വിലാസം",
+    "website": "വെബ്‌സൈറ്റ്",
+    "whatsapp": "വാട്ട്‌സ്ആപ്പ്",
+    "wifi": "വൈഫൈ",
+    "wifiNetwork": "വൈഫൈ നെറ്റ്‌വർക്ക്",
+    "wordDocument": "വേഡ് ഡോക്യുമെന്റ്",
+    "workPhone": "വർക്ക് ഫോൺ",
+    "youtube": "യൂട്യൂബ്",
+    "zip": "പിൻ/തപാൽ കോഡ്"
   },
   "preview": {
-    "qrCodePreview": "QR Code Preview - Click Export to download",
-    "simulating": "Simulating",
-    "simulationActive": "Environmental simulation active - Preview shows how QR code may appear under different conditions"
+    "qrCodePreview": "QR കോഡ് പ്രിവ്യൂ - ഡൗൺലോഡ് ചെയ്യാൻ എക്സ്പോർട്ട് ക്ലിക്ക് ചെയ്യുക",
+    "simulating": "സിമുലേറ്റിംഗ്",
+    "simulationActive": "പരിസ്ഥിതി സിമുലേഷൻ സജീവമാണ് - വ്യത്യസ്ത സാഹചര്യങ്ങളിൽ QR കോഡ് എങ്ങനെ ദൃശ്യമാകുമെന്ന് പ്രിവ്യൂ കാണിക്കുന്നു"
   },
   "qr": {
-    "additionalBorder": "Additional border beyond quiet zone",
-    "alphanumeric": "Alphanumeric",
-    "auto": "Auto",
-    "autoMin": "Auto (min: {{version}})",
-    "autoOptimal": "Auto (Optimal)",
-    "byteUtf8": "Byte / UTF-8",
-    "contrastRatio": "{{count}}:1",
-    "encodingMode": "Encoding Mode",
-    "enforceMinQuietZone": "Enforce Min Quiet Zone",
-    "enforceMinQuietZoneDesc": "Ensure ≥4 module margin",
-    "errorCorrection": "Error Correction",
-    "extraBorderModules": "Extra Border Modules",
-    "high": "H - High (30%)",
-    "kanji": "Kanji",
-    "low": "L - Low (7%)",
-    "margin": "Quiet Zone (Margin)",
-    "mask": "Mask Pattern",
-    "medium": "M - Medium (15%)",
-    "moduleSize": "Module Size",
-    "nDegrees": "{{count}}°",
-    "nModules": "{{count}} modules",
-    "nMs": "{{count}}ms",
-    "nPercent": "{{count}}%",
-    "nPx": "{{count}}px",
-    "numericOnly": "Numeric Only",
-    "quartile": "Q - Quartile (25%)",
-    "version": "Version"
+    "additionalBorder": "നിശബ്ദ മേഖലയ്ക്ക് അപ്പുറത്തുള്ള അധിക അതിർത്തി",
+    "alphanumeric": "ആൽഫാന്യൂമെറിക്",
+    "auto": "ഓട്ടോ",
+    "autoMin": "ഓട്ടോ (മിനിറ്റ്: {{പതിപ്പ്}})",
+    "autoOptimal": "ഓട്ടോ (ഒപ്റ്റിമൽ)",
+    "byteUtf8": "ബൈറ്റ് / യുടിഎഫ്-8",
+    "contrastRatio": "{{എണ്ണം}}:1",
+    "encodingMode": "എൻകോഡിംഗ് മോഡ്",
+    "enforceMinQuietZone": "മിനിമം നിശബ്ദ മേഖല നടപ്പിലാക്കുക",
+    "enforceMinQuietZoneDesc": "≥4 മൊഡ്യൂൾ മാർജിൻ ഉറപ്പാക്കുക",
+    "errorCorrection": "പിശക് തിരുത്തൽ",
+    "extraBorderModules": "അധിക ബോർഡർ മൊഡ്യൂളുകൾ",
+    "high": "H - ഉയർന്നത് (30%)",
+    "kanji": "കാഞ്ചി",
+    "low": "L - താഴ്ന്നത് (7%)",
+    "margin": "നിശബ്ദ മേഖല (മാർജിൻ)",
+    "mask": "മാസ്ക് പാറ്റേൺ",
+    "medium": "എം - മീഡിയം (15%)",
+    "moduleSize": "മൊഡ്യൂൾ വലുപ്പം",
+    "nDegrees": "{{എണ്ണം}}°",
+    "nModules": "{{count}} മൊഡ്യൂളുകൾ",
+    "nMs": "{{എണ്ണം}}ms",
+    "nPercent": "{{എണ്ണം}}%",
+    "nPx": "{{എണ്ണം}}പിക്സൽ",
+    "numericOnly": "സംഖ്യ മാത്രം",
+    "quartile": "Q - ക്വാർട്ടൈൽ (25%)",
+    "version": "പതിപ്പ്"
   },
   "render": {
-    "addColor": "Add Color",
-    "alignmentStyle": "Alignment Pattern Style",
-    "background": "Background",
-    "byBrightness": "By Brightness",
-    "byCluster": "By Cluster",
-    "byOverlay": "By Overlay",
-    "byPosition": "By Position",
-    "ceil": "Ceil",
-    "circle": "Circle",
-    "classic": "Classic",
-    "colorPalette": "Color Palette",
-    "conic": "Conic",
-    "connected": "Connected",
-    "contrastGuard": "Contrast Guard",
-    "cornerRadius": "Corner Radius",
-    "crispEdges": "Crisp Edges",
-    "crispEdgesDesc": "Use image-rendering: pixelated for sharp edges",
-    "dashed": "Dashed",
-    "diamond": "Diamond",
-    "dotRotation": "Dot Rotation",
-    "dots": "Dots",
-    "eyeInnerStyle": "Eye Inner Style",
-    "eyeOuterStyle": "Eye Outer Style",
-    "eyeScale": "Eye Scale",
-    "finderStyle": "Finder Pattern Style",
-    "floor": "Floor",
-    "foreground": "Foreground",
-    "frameStyle": "Frame Style",
-    "frameText": "Frame Text",
-    "gapMode": "Gap Mode",
-    "gradient": "Gradient",
-    "gradientAngle": "Gradient Angle",
-    "gradientColors": "Colors",
-    "gradientType": "Gradient Type",
-    "inset": "Inset",
-    "linear": "Linear",
-    "matchFinder": "Match Finder",
-    "matchModule": "Match Module",
-    "minContrastRatio": "Min Contrast Ratio",
-    "moduleGap": "Module Gap",
-    "negativeSpace": "Negative Space",
-    "none": "None",
-    "perModuleColorMode": "Per-Module Color Mode",
-    "pixelSnap": "Pixel Snap",
-    "radial": "Radial",
-    "round": "Round",
-    "rounded": "Rounded",
-    "roundedFrame": "Rounded Frame",
-    "shape": "Module Style",
-    "sharp": "Sharp",
-    "smooth": "Smooth",
-    "solid": "Solid",
-    "square": "Square",
-    "squares": "Squares",
-    "sticker": "Sticker",
-    "stroke": "Stroke",
-    "style": "Style",
-    "tag": "Tag",
-    "timingStyle": "Timing Pattern Style",
-    "transparentBg": "Transparent Background"
+    "addColor": "നിറം ചേർക്കുക",
+    "alignmentStyle": "അലൈൻമെന്റ് പാറ്റേൺ സ്റ്റൈൽ",
+    "background": "പശ്ചാത്തലം",
+    "byBrightness": "തെളിച്ചത്താൽ",
+    "byCluster": "ക്ലസ്റ്റർ പ്രകാരം",
+    "byOverlay": "ഓവർലേ പ്രകാരം",
+    "byPosition": "സ്ഥാനം അനുസരിച്ച്",
+    "ceil": "സീൽ",
+    "circle": "വൃത്തം",
+    "classic": "ക്ലാസിക്",
+    "colorPalette": "കളർ പാലറ്റ്",
+    "conic": "കോണിക്ക്",
+    "connected": "ബന്ധിപ്പിച്ചു",
+    "contrastGuard": "കോൺട്രാസ്റ്റ് ഗാർഡ്",
+    "cornerRadius": "കോർണർ റേഡിയസ്",
+    "crispEdges": "ക്രിസ്പ് എഡ്ജസ്",
+    "crispEdgesDesc": "ഇമേജ്-റെൻഡറിംഗ് ഉപയോഗിക്കുക: മൂർച്ചയുള്ള അരികുകൾക്കായി പിക്സലേറ്റഡ്",
+    "dashed": "ഡാഷ്ഡ്",
+    "diamond": "ഡയമണ്ട്",
+    "dotRotation": "ഡോട്ട് റൊട്ടേഷൻ",
+    "dots": "ഡോട്ടുകൾ",
+    "eyeInnerStyle": "കണ്ണിന്റെ ആന്തരിക ശൈലി",
+    "eyeOuterStyle": "ഐ ഔട്ടർ സ്റ്റൈൽ",
+    "eyeScale": "കണ്ണിന്റെ സ്കെയിൽ",
+    "finderStyle": "ഫൈൻഡർ പാറ്റേൺ സ്റ്റൈൽ",
+    "floor": "ഫ്ലോർ",
+    "foreground": "മുൻവശം",
+    "frameStyle": "ഫ്രെയിം സ്റ്റൈൽ",
+    "frameText": "ഫ്രെയിം ടെക്സ്റ്റ്",
+    "gapMode": "ഗ്യാപ് മോഡ്",
+    "gradient": "ഗ്രേഡിയന്റ്",
+    "gradientAngle": "ഗ്രേഡിയന്റ് ആംഗിൾ",
+    "gradientColors": "നിറങ്ങൾ",
+    "gradientType": "ഗ്രേഡിയന്റ് തരം",
+    "inset": "ഇൻസെറ്റ്",
+    "linear": "ലീനിയർ",
+    "matchFinder": "മാച്ച് ഫൈൻഡർ",
+    "matchModule": "മാച്ച് മൊഡ്യൂൾ",
+    "minContrastRatio": "കുറഞ്ഞത് ദൃശ്യതീവ്രത അനുപാതം",
+    "moduleGap": "മൊഡ്യൂൾ ഗ്യാപ്",
+    "negativeSpace": "നെഗറ്റീവ് സ്പേസ്",
+    "none": "ഒന്നുമില്ല",
+    "perModuleColorMode": "ഓരോ മൊഡ്യൂളിനും കളർ മോഡ്",
+    "pixelSnap": "പിക്സൽ സ്നാപ്പ്",
+    "radial": "റേഡിയൽ",
+    "round": "വൃത്താകൃതി",
+    "rounded": "വൃത്താകൃതിയിലുള്ളത്",
+    "roundedFrame": "വൃത്താകൃതിയിലുള്ള ഫ്രെയിം",
+    "shape": "മൊഡ്യൂൾ സ്റ്റൈൽ",
+    "sharp": "ഷാർപ്പ്",
+    "smooth": "മിനുസമാർന്ന",
+    "solid": "സോളിഡ്",
+    "square": "ചതുരം",
+    "squares": "സ്ക്വയറുകൾ",
+    "sticker": "സ്റ്റിക്കർ",
+    "stroke": "സ്ട്രോക്ക്",
+    "style": "സ്റ്റൈൽ",
+    "tag": "ടാഗ്",
+    "timingStyle": "സമയ പാറ്റേൺ ശൈലി",
+    "transparentBg": "സുതാര്യമായ പശ്ചാത്തലം"
   },
   "safety": {
-    "analysis": "Safety Analysis",
-    "autoPickEcc": "Auto-Pick ECC",
-    "autoPickVersion": "Auto-Pick Version",
-    "autoReduceIntensity": "Auto-Reduce Intensity",
-    "autoTuning": "Auto-Tuning",
-    "balanced": "Balanced",
-    "contrast": "Contrast Ratio",
-    "contrastCheck": "Contrast Check",
-    "contrastRatio": "Contrast Ratio",
-    "excellent": "Excellent",
-    "fair": "Fair",
-    "good": "Good",
-    "lockAlignment": "Lock Alignment",
-    "lockFinders": "Lock Finders",
-    "lockFormat": "Lock Format Info",
-    "lockTiming": "Lock Timing",
-    "lockVersion": "Lock Version Info",
-    "minModuleSize": "Min Module Size",
-    "minQuietZone": "Min Quiet Zone",
-    "off": "Off",
-    "poor": "Poor",
-    "protectionLocks": "Protection Locks",
-    "qualityAnalysis": "Quality Analysis",
-    "quietZone": "Quiet Zone",
-    "safetyMode": "Safety Mode",
-    "scanability": "Scanability Score",
-    "showHeatmap": "Show Heatmap",
-    "simulateBlur": "Simulate Blur",
-    "simulateNoise": "Simulate Noise",
-    "simulateRotation": "Simulate Rotation",
-    "strict": "Strict",
-    "untilScannable": "Until scannable"
+    "analysis": "സുരക്ഷാ വിശകലനം",
+    "autoPickEcc": "ഓട്ടോ-പിക്ക് ഇസിസി",
+    "autoPickVersion": "ഓട്ടോ-പിക്ക് പതിപ്പ്",
+    "autoReduceIntensity": "സ്വയമേവ കുറയ്ക്കൽ തീവ്രത",
+    "autoTuning": "ഓട്ടോ-ട്യൂണിംഗ്",
+    "balanced": "സന്തുലിതമായത്",
+    "contrast": "കോൺട്രാസ്റ്റ് റേഷ്യോ",
+    "contrastCheck": "കോൺട്രാസ്റ്റ് പരിശോധന",
+    "contrastRatio": "കോൺട്രാസ്റ്റ് റേഷ്യോ",
+    "excellent": "മികച്ചത്",
+    "fair": "മേള",
+    "good": "നല്ലത്",
+    "lockAlignment": "ലോക്ക് അലൈൻമെന്റ്",
+    "lockFinders": "ലോക്ക് ഫൈൻഡറുകൾ",
+    "lockFormat": "ലോക്ക് ഫോർമാറ്റ് വിവരങ്ങൾ",
+    "lockTiming": "ലോക്ക് ടൈമിംഗ്",
+    "lockVersion": "ലോക്ക് പതിപ്പ് വിവരങ്ങൾ",
+    "minModuleSize": "കുറഞ്ഞ മൊഡ്യൂൾ വലുപ്പം",
+    "minQuietZone": "മിനിറ്റ് നിശബ്ദ മേഖല",
+    "off": "ഓഫ്",
+    "poor": "പാവം",
+    "protectionLocks": "പ്രൊട്ടക്ഷൻ ലോക്കുകൾ",
+    "qualityAnalysis": "ഗുണനിലവാര വിശകലനം",
+    "quietZone": "നിശബ്ദ മേഖല",
+    "safetyMode": "സുരക്ഷാ മോഡ്",
+    "scanability": "സ്കാനബിലിറ്റി സ്കോർ",
+    "showHeatmap": "ഹീറ്റ്മാപ്പ് കാണിക്കുക",
+    "simulateBlur": "മങ്ങൽ അനുകരിക്കുക",
+    "simulateNoise": "ശബ്ദം അനുകരിക്കുക",
+    "simulateRotation": "ഭ്രമണം അനുകരിക്കുക",
+    "strict": "കർക്കശമായത്",
+    "untilScannable": "സ്കാൻ ചെയ്യാൻ കഴിയുന്നതുവരെ"
   },
   "sections": {
-    "animation": "Animation",
-    "metadata": "Metadata",
-    "output": "Output",
-    "overlay": "Overlay / Image",
-    "payload": "Payload / Data",
-    "qrEncoding": "QR Encoding",
-    "rendering": "Rendering",
-    "safety": "Safety Analysis",
-    "share": "Share",
-    "watermark": "Watermark"
+    "animation": "ആനിമേഷൻ",
+    "metadata": "മെറ്റാഡാറ്റ",
+    "output": "ഔട്ട്പുട്ട്",
+    "overlay": "ഓവർലേ / ഇമേജ്",
+    "payload": "പേലോഡ് / ഡാറ്റ",
+    "qrEncoding": "ക്യുആർ എൻകോഡിംഗ്",
+    "rendering": "റെൻഡറിംഗ്",
+    "safety": "സുരക്ഷാ വിശകലനം",
+    "share": "പങ്കിടുക",
+    "watermark": "വാട്ടർമാർക്ക്"
   },
   "share": {
-    "copied": "Copied!",
-    "copyLink": "Copy Link",
-    "directLink": "Direct Link",
-    "directLinkDesc": "Generate shareable URL",
-    "embedHtml": "Embed HTML",
-    "embedHtmlDesc": "Generate embed code",
-    "encodeAllParams": "Encode All Parameters",
-    "encodeAllParamsDesc": "Include all settings in URL",
-    "markdown": "Markdown",
-    "quickShare": "Quick Share",
-    "twitter": "X/Twitter",
-    "whatsapp": "WhatsApp"
+    "copied": "പകർത്തി!",
+    "copyLink": "ലിങ്ക് പകർത്തുക",
+    "directLink": "ഡയറക്ട് ലിങ്ക്",
+    "directLinkDesc": "പങ്കിടാവുന്ന URL സൃഷ്ടിക്കുക",
+    "embedHtml": "HTML ഉൾച്ചേർക്കുക",
+    "embedHtmlDesc": "എംബെഡ് കോഡ് സൃഷ്ടിക്കുക",
+    "encodeAllParams": "എല്ലാ പാരാമീറ്ററുകളും എൻകോഡ് ചെയ്യുക",
+    "encodeAllParamsDesc": "URL-ൽ എല്ലാ ക്രമീകരണങ്ങളും ഉൾപ്പെടുത്തുക",
+    "markdown": "മാർക്ക്ഡൗൺ",
+    "quickShare": "ക്വിക്ക് ഷെയർ",
+    "twitter": "എക്സ്/ട്വിറ്റർ",
+    "whatsapp": "വാട്ട്‌സ്ആപ്പ്"
   },
   "tiers": {
-    "advanced": "Advanced",
-    "basic": "Basic",
-    "professional": "Pro",
-    "watchAdForPro": "Watch ad to unlock Professional features for 24 hours"
+    "advanced": "വിപുലമായത്",
+    "basic": "അടിസ്ഥാനം",
+    "professional": "പ്രൊ",
+    "watchAdForPro": "24 മണിക്കൂർ പ്രൊഫഷണൽ സവിശേഷതകൾ അൺലോക്ക് ചെയ്യാൻ പരസ്യം കാണുക"
   },
   "watermark": {
-    "behindQr": "Behind QR",
-    "blendMode": "Blend Mode",
-    "bottomLeft": "Bottom Left",
-    "bottomRight": "Bottom Right",
-    "center": "Center",
-    "corners": "Corners",
-    "edges": "Edges",
-    "enabled": "Enable Watermark",
-    "fontColor": "Font Color",
-    "fontSize": "Font Size",
-    "image": "Image",
-    "multiply": "Multiply",
-    "normal": "Normal",
-    "opacity": "Opacity",
-    "overlay": "Overlay",
-    "pattern": "Pattern",
-    "position": "Position",
-    "quietZone": "Quiet Zone",
-    "screen": "Screen",
-    "text": "Text",
-    "textPlaceholder": "© Company Name",
-    "topLeft": "Top Left",
-    "topRight": "Top Right",
-    "type": "Type",
-    "uploadImage": "Upload Image"
+    "behindQr": "QR ന് പിന്നിൽ",
+    "blendMode": "ബ്ലെൻഡ് മോഡ്",
+    "bottomLeft": "താഴെ ഇടത്",
+    "bottomRight": "താഴെ വലത്",
+    "center": "സെന്റർ",
+    "corners": "കോണുകൾ",
+    "edges": "അരികുകൾ",
+    "enabled": "വാട്ടർമാർക്ക് പ്രാപ്തമാക്കുക",
+    "fontColor": "ഫോണ്ട് കളർ",
+    "fontSize": "ഫോണ്ട് വലുപ്പം",
+    "image": "ചിത്രം",
+    "multiply": "ഗുണിക്കുക",
+    "normal": "സാധാരണ",
+    "opacity": "അതാര്യത",
+    "overlay": "ഓവർലേ",
+    "pattern": "പാറ്റേൺ",
+    "position": "സ്ഥാനം",
+    "quietZone": "നിശബ്ദ മേഖല",
+    "screen": "സ്ക്രീൻ",
+    "text": "ടെക്സ്റ്റ്",
+    "textPlaceholder": "© കമ്പനി നാമം",
+    "topLeft": "മുകളിൽ ഇടത്",
+    "topRight": "മുകളിൽ വലത്",
+    "type": "തരം",
+    "uploadImage": "ചിത്രം അപ്‌ലോഡ് ചെയ്യുക"
   }
 }
