@@ -3,144 +3,139 @@ import { LAST_UPDATED, CONTACT_EMAIL } from '../types'
 
 export const terms: PageDefinition = {
   title: 'Terma Perkhidmatan',
-  description: 'Dengan mengakses atau menggunakan laman ini, anda bersetuju terikat dengan terma ini.',
+  description:
+    'Dengan mengakses atau menggunakan laman ini, anda bersetuju untuk terikat dengan terma ini.',
   lastUpdated: LAST_UPDATED,
   sections: [
     {
       heading: 'Penerimaan terma',
       paragraphs: [
-        `Dengan mengakses atau menggunakan ANQR (anqr.link), anda bersetuju terikat dengan Terma Perkhidmatan ini dan Dasar Privasi kami. Jika anda tidak bersetuju dengan terma ini, jangan gunakan laman web.`,
-        `Kami boleh mengemas kini Terma ini dari semasa ke semasa. Penggunaan berterusan selepas perubahan merupakan penerimaan terma baru.`
-      ]
+        'Dengan mengakses atau menggunakan ANQR (anqr.link), anda bersetuju untuk terikat dengan Terma Perkhidmatan ini dan Polisi Privasi kami. Jika anda tidak bersetuju dengan terma ini, jangan gunakan laman ini.',
+        'Kami boleh mengemas kini Terma ini dari semasa ke semasa. Penggunaan berterusan selepas perubahan dianggap sebagai penerimaan terhadap terma baharu.',
+      ],
     },
     {
       heading: 'Kelayakan',
       paragraphs: [
-        `You must be at least 13 years of age to use ANQR. By using the site, you represent that you meet this age requirement. If you are under 18, you represent that you have your parent or guardian's permission to use the site.`
-      ]
+        'Anda mestilah berumur sekurang-kurangnya 13 tahun untuk menggunakan ANQR. Dengan menggunakan laman ini, anda menyatakan bahawa anda memenuhi syarat umur ini. Jika anda berumur di bawah 18 tahun, anda menyatakan bahawa anda mempunyai kebenaran ibu bapa atau penjaga untuk menggunakan laman ini.',
+      ],
     },
     {
       heading: 'Penggunaan dibenarkan',
       paragraphs: [
-        `You may use ANQR for lawful purposes only. You are solely responsible for the content you encode into QR codes and for how you use any QR codes you generate.`
-      ]
+        'Anda boleh menggunakan ANQR untuk tujuan yang sah sahaja. Anda bertanggungjawab sepenuhnya terhadap kandungan yang anda enkodkan ke dalam kod QR dan bagaimana anda menggunakan mana-mana kod QR yang anda jana.',
+      ],
     },
     {
-      heading: 'Kelakuan dilarang',
-      paragraphs: [
-        'You agree not to:'
-      ],
+      heading: 'Tingkah laku dilarang',
+      paragraphs: ['Anda bersetuju untuk tidak:'],
       bullets: [
-        `Use ANQR to create QR codes that facilitate phishing, malware distribution, fraud, scams, harassment, defamation, or any illegal activity.`,
-        `Encode content that infringes intellectual property rights, violates privacy, or contains illegal material.`,
-        'Attempt to disrupt, overload, or interfere with the operation or security of the site.',
-        'Reverse engineer, decompile, or attempt to extract source code from the site.',
-        `Use automated tools (bots, scrapers) to access the site in a manner that degrades performance for other users.`,
-        'Circumvent or disable any security or access control features.',
-        'Impersonate any person or entity or misrepresent your affiliation.'
-      ]
+        'Menggunakan ANQR untuk mencipta kod QR yang memudahkan phishing, pengedaran perisian hasad, penipuan, scam, gangguan, fitnah, atau sebarang aktiviti haram.',
+        'Menenkod kandungan yang melanggar hak harta intelek, melanggar privasi, atau mengandungi bahan yang menyalahi undang-undang.',
+        'Cuba mengganggu, membebankan, atau menghalang operasi atau keselamatan laman ini.',
+        'Melakukan kejuruteraan songsang, menyahkompil, atau cuba mengekstrak kod sumber daripada laman ini.',
+        'Menggunakan alat automatik (bot, pengikis) untuk mengakses laman ini dengan cara yang menjejaskan prestasi untuk pengguna lain.',
+        'Memintas atau melumpuhkan sebarang ciri keselamatan atau kawalan akses.',
+        'Menyamar sebagai mana-mana individu atau entiti atau menyalahnyatakan hubungan/afiliasi anda.',
+      ],
     },
     {
       heading: 'Harta intelek',
       paragraphs: [
-        `You retain ownership of the content you encode into QR codes. ANQR does not claim ownership of your data.`,
-        `The ANQR name, logo, interface design, and underlying code are protected by copyright, trademark, and other intellectual property laws. You may not copy, modify, distribute, or create derivative works without our permission.`,
-        `QR Code® is a registered trademark of DENSO WAVE INCORPORATED. ANQR is not affiliated with DENSO WAVE.`
-      ]
+        'Anda mengekalkan pemilikan kandungan yang anda enkodkan ke dalam kod QR. ANQR tidak menuntut pemilikan terhadap data anda.',
+        'Nama ANQR, logo, reka bentuk antara muka dan kod asas dilindungi oleh hak cipta, cap dagangan dan undang-undang harta intelek lain. Anda tidak boleh menyalin, mengubah suai, mengedar atau mencipta karya terbitan tanpa kebenaran kami.',
+        'QR Code® ialah cap dagangan berdaftar DENSO WAVE INCORPORATED. ANQR tidak berafiliasi dengan DENSO WAVE.',
+      ],
     },
     {
       heading: 'Lesen kandungan pengguna',
       paragraphs: [
-        `By using ANQR, you grant us no rights to your content — all QR code generation happens locally on your device and we do not access, store, or transmit your encoded data.`
-      ]
+        'Dengan menggunakan ANQR, anda tidak memberikan kami sebarang hak terhadap kandungan anda — semua penjanaan kod QR berlaku secara tempatan pada peranti anda dan kami tidak mengakses, menyimpan atau menghantar data yang anda enkodkan.',
+      ],
     },
     {
       heading: 'Perkhidmatan pihak ketiga dan pengiklanan',
       paragraphs: [
-        `The site displays advertisements through Google AdSense and may include links to third-party websites. We are not responsible for third-party content, services, or privacy practices.`,
-        `Your interactions with advertisers and third parties are solely between you and them. See our Privacy Policy for information about advertising data practices.`
-      ]
+        'Laman ini memaparkan iklan melalui Google AdSense dan mungkin termasuk pautan ke laman web pihak ketiga. Kami tidak bertanggungjawab terhadap kandungan, perkhidmatan atau amalan privasi pihak ketiga.',
+        'Interaksi anda dengan pengiklan dan pihak ketiga adalah semata-mata antara anda dan mereka. Lihat Polisi Privasi kami untuk maklumat tentang amalan data pengiklanan.',
+      ],
     },
     {
       heading: 'Penafian jaminan',
       paragraphs: [
-        `ANQR IS PROVIDED ON AN "AS IS" AND "AS AVAILABLE" BASIS WITHOUT WARRANTIES OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, AND NON-INFRINGEMENT.`,
-        `We do not warrant that: (a) the site will be uninterrupted, secure, or error-free; (b) QR codes will scan in all environments, on all devices, or with all scanner applications; (c) the site will meet your requirements.`,
-        `You should always test QR codes in the conditions where they will be used (print size, lighting, screen type, distance, camera quality).`
-      ]
+        'ANQR disediakan atas dasar "seadanya" dan "sebagaimana tersedia" tanpa sebarang jaminan, sama ada tersurat atau tersirat, termasuk tetapi tidak terhad kepada jaminan tersirat kebolehdagangan, kesesuaian untuk tujuan tertentu, dan tiada pelanggaran.',
+        'Kami tidak menjamin bahawa: (a) laman ini akan beroperasi tanpa gangguan, selamat, atau bebas ralat; (b) kod QR akan dapat diimbas dalam semua persekitaran, pada semua peranti, atau dengan semua aplikasi pengimbas; (c) laman ini akan memenuhi keperluan anda.',
+        'Anda hendaklah sentiasa menguji kod QR dalam keadaan ia akan digunakan (saiz cetakan, pencahayaan, jenis skrin, jarak, kualiti kamera).',
+      ],
     },
     {
       heading: 'Had liabiliti',
       paragraphs: [
-        `TO THE MAXIMUM EXTENT PERMITTED BY LAW, ANQR AND ITS OPERATORS, AFFILIATES, AND LICENSORS SHALL NOT BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, CONSEQUENTIAL, PUNITIVE, OR EXEMPLARY DAMAGES, INCLUDING BUT NOT LIMITED TO DAMAGES FOR LOSS OF PROFITS, REVENUE, DATA, GOODWILL, USE, OR OTHER INTANGIBLE LOSSES, ARISING FROM OR RELATED TO YOUR ACCESS TO OR USE OF (OR INABILITY TO ACCESS OR USE) THE SERVICE.`,
-        `YOU EXPRESSLY UNDERSTAND AND AGREE THAT YOUR USE OF THE SERVICE IS AT YOUR SOLE RISK. THE SERVICE IS PROVIDED FREE OF CHARGE, AND ACCORDINGLY, YOU AGREE THAT ANQR AND ITS OPERATORS SHALL HAVE NO LIABILITY TO YOU WHATSOEVER FOR ANY DAMAGES OR LOSSES. IN NO EVENT SHALL OUR TOTAL AGGREGATE LIABILITY EXCEED ZERO DOLLARS ($0 AUD).`,
-        `YOU AGREE TO RELEASE, WAIVE, AND DISCHARGE ANY AND ALL CLAIMS, DEMANDS, AND CAUSES OF ACTION AGAINST ANQR AND ITS OPERATORS ARISING FROM YOUR USE OF THE SERVICE.`,
-        `SOME JURISDICTIONS DO NOT ALLOW THE EXCLUSION OF CERTAIN WARRANTIES OR LIMITATIONS OF LIABILITY. IN SUCH JURISDICTIONS, OUR LIABILITY SHALL BE LIMITED TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW.`
-      ]
+        'Setakat maksimum yang dibenarkan oleh undang-undang, ANQR dan pengendalinya, sekutu (affiliates) serta pemberi lesennya tidak akan bertanggungjawab atas sebarang kerosakan langsung, tidak langsung, sampingan, khas, berbangkit, punitif atau teladan, termasuk tetapi tidak terhad kepada kerosakan akibat kehilangan keuntungan, hasil, data, goodwill, penggunaan, atau kerugian tidak ketara lain, yang timbul daripada atau berkaitan dengan akses atau penggunaan anda (atau ketidakupayaan untuk mengakses atau menggunakan) perkhidmatan.',
+        'Anda dengan jelas memahami dan bersetuju bahawa penggunaan perkhidmatan adalah atas risiko anda sendiri. Perkhidmatan ini disediakan secara percuma, dan oleh itu anda bersetuju bahawa ANQR dan pengendalinya tidak mempunyai sebarang liabiliti kepada anda bagi apa-apa kerosakan atau kerugian. Dalam apa jua keadaan, jumlah liabiliti agregat kami tidak akan melebihi sifar dolar ($0 AUD).',
+        'Anda bersetuju untuk melepaskan, mengetepikan dan membebaskan apa-apa dan semua tuntutan, permintaan dan sebab tindakan terhadap ANQR dan pengendalinya yang timbul daripada penggunaan perkhidmatan oleh anda.',
+        'Sesetengah bidang kuasa tidak membenarkan pengecualian jaminan tertentu atau had liabiliti. Dalam bidang kuasa tersebut, liabiliti kami akan dihadkan setakat maksimum yang dibenarkan oleh undang-undang yang terpakai.',
+      ],
     },
     {
       heading: 'Ganti rugi',
       paragraphs: [
-        `You agree to indemnify, defend, and hold harmless ANQR, its operators, affiliates, and their respective officers, directors, employees, and agents from any claims, damages, losses, liabilities, costs, and expenses (including legal fees) arising from: (a) your use of the site; (b) your violation of these Terms; (c) your violation of any third-party rights; (d) any content you encode into QR codes.`
-      ]
+        'Anda bersetuju untuk menanggung rugi, mempertahankan dan melindungi ANQR, pengendalinya, sekutu serta pegawai, pengarah, pekerja dan ejen masing-masing daripada sebarang tuntutan, kerosakan, kerugian, liabiliti, kos dan perbelanjaan (termasuk yuran guaman) yang timbul daripada: (a) penggunaan laman ini oleh anda; (b) pelanggaran Terma ini oleh anda; (c) pelanggaran hak pihak ketiga oleh anda; (d) sebarang kandungan yang anda enkodkan ke dalam kod QR.',
+      ],
     },
     {
       heading: 'Penyelesaian pertikaian',
       paragraphs: [
-        `Any dispute arising from these Terms or your use of ANQR shall first be attempted to be resolved through informal negotiation by contacting ${CONTACT_EMAIL}.`,
-        `If informal resolution fails, disputes shall be resolved through binding arbitration in Victoria, Australia, except that either party may seek injunctive relief in court for intellectual property violations.`
-      ]
+        `Sebarang pertikaian yang timbul daripada Terma ini atau penggunaan ANQR oleh anda hendaklah terlebih dahulu cuba diselesaikan melalui rundingan tidak formal dengan menghubungi ${CONTACT_EMAIL}.`,
+        'Jika penyelesaian tidak formal gagal, pertikaian akan diselesaikan melalui timbang tara yang mengikat di Victoria, Australia, kecuali bahawa mana-mana pihak boleh mendapatkan perintah injunksi di mahkamah bagi pelanggaran harta intelek.',
+      ],
     },
     {
       heading: 'Penepian tindakan kelas',
       paragraphs: [
-        `TO THE EXTENT PERMITTED BY LAW, YOU AGREE THAT ANY DISPUTE RESOLUTION PROCEEDINGS WILL BE CONDUCTED ONLY ON AN INDIVIDUAL BASIS AND NOT IN A CLASS, CONSOLIDATED, OR REPRESENTATIVE ACTION.`
-      ]
+        'Setakat yang dibenarkan oleh undang-undang, anda bersetuju bahawa sebarang prosiding penyelesaian pertikaian akan dijalankan hanya secara individu dan bukan sebagai tindakan kelas, disatukan, atau tindakan perwakilan.',
+      ],
     },
     {
-      heading: 'Undang-undang terpakai',
+      heading: 'Undang-undang yang mentadbir',
       paragraphs: [
-        `These Terms are governed by the laws of Victoria, Australia, without regard to conflict of laws principles. You consent to the exclusive jurisdiction of the courts located in Victoria, Australia.`
-      ]
+        'Terma ini ditadbir oleh undang-undang Victoria, Australia, tanpa mengambil kira prinsip konflik undang-undang. Anda bersetuju kepada bidang kuasa eksklusif mahkamah yang terletak di Victoria, Australia.',
+      ],
     },
     {
       heading: 'Perubahan dan ketersediaan',
       paragraphs: [
-        `We may modify, suspend, or discontinue the site (or any part of it) at any time without notice or liability.`,
-        `We may update these Terms at any time. The "Last updated" date indicates when they were most recently revised. Continued use after changes constitutes acceptance.`
-      ]
+        'Kami boleh mengubah suai, menggantung, atau menghentikan laman ini (atau mana-mana bahagiannya) pada bila-bila masa tanpa notis atau liabiliti.',
+        'Kami boleh mengemas kini Terma ini pada bila-bila masa. Tarikh "Terakhir dikemas kini" menunjukkan bila ia terakhir disemak. Penggunaan berterusan selepas perubahan dianggap sebagai penerimaan.',
+      ],
     },
     {
-      heading: 'Kebolehasingan',
+      heading: 'Kebolehpisahan',
       paragraphs: [
-        `If any provision of these Terms is held invalid or unenforceable, that provision will be enforced to the maximum extent permissible, and the remaining provisions will remain in full force and effect.`
-      ]
+        'Jika mana-mana peruntukan Terma ini didapati tidak sah atau tidak boleh dikuatkuasakan, peruntukan tersebut akan dikuatkuasakan setakat maksimum yang dibenarkan, dan peruntukan selebihnya akan kekal berkuat kuasa sepenuhnya.',
+      ],
     },
     {
       heading: 'Penepian',
       paragraphs: [
-        `Our failure to enforce any right or provision of these Terms shall not be deemed a waiver of such right or provision.`
-      ]
+        'Kegagalan kami untuk menguatkuasakan mana-mana hak atau peruntukan Terma ini tidak akan dianggap sebagai penepian hak atau peruntukan tersebut.',
+      ],
     },
     {
-      heading: 'Perjanjian keseluruhan',
+      heading: 'Keseluruhan perjanjian',
       paragraphs: [
-        `These Terms, together with our Privacy Policy, constitute the entire agreement between you and ANQR regarding your use of the site and supersede any prior agreements.`
-      ]
+        'Terma ini, bersama Polisi Privasi kami, merupakan keseluruhan perjanjian antara anda dan ANQR mengenai penggunaan laman ini dan menggantikan sebarang perjanjian terdahulu.',
+      ],
     },
     {
       heading: 'Force majeure',
       paragraphs: [
-        `We shall not be liable for any failure or delay in performance due to circumstances beyond our reasonable control, including natural disasters, war, terrorism, riots, government actions, or internet/infrastructure failures.`
-      ]
+        'Kami tidak akan bertanggungjawab atas sebarang kegagalan atau kelewatan prestasi disebabkan keadaan di luar kawalan munasabah kami, termasuk bencana alam, perang, keganasan, rusuhan, tindakan kerajaan, atau kegagalan internet/infrastruktur.',
+      ],
     },
     {
       heading: 'Hubungi',
-      paragraphs: [
-        `Questions about these Terms can be sent to: ${CONTACT_EMAIL}`
-      ]
-    }
-  ]
-};
-
-export default terms;
+      paragraphs: [`Soalan tentang Terma ini boleh dihantar ke: ${CONTACT_EMAIL}`],
+    },
+  ],
+}
