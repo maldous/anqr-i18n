@@ -5,15 +5,25 @@
 
 import type { PageDefinition, StaticPageType } from './types'
 import * as en from './en'
+import * as zh from './zh'
+import * as hi from './hi'
+import * as ms from './ms'
+import * as pt from './pt'
+import * as ta from './ta'
+import * as th from './th'
 
 // Re-export types for convenience
 export type { PageDefinition, PageSection, StaticPageType } from './types'
 export { LAST_UPDATED, CONTACT_EMAIL } from './types'
 
-// Language content map - add new languages here
 const contentByLanguage: Record<string, Record<StaticPageType, PageDefinition>> = {
   en,
-  // zh will be added when Chinese translations are ready
+  zh,
+  hi,
+  ms,
+  pt,
+  ta,
+  th,
 }
 
 /**

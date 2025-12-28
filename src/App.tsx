@@ -11,6 +11,7 @@ import { useQRStore, type Tier } from '@/store/qr-store'
 import { parseUrlParams } from '@/modules/share-utils'
 import type { GalleryCategory } from '@/data/gallery-items'
 import i18n from '@/i18n'
+import { useTranslation } from 'react-i18next'
 
 type PageView = 'editor' | 'gallery' | StaticPageType
 
@@ -34,6 +35,7 @@ function getPageFromLocation(): PageView {
 }
 
 function App() {
+  const { t } = useTranslation()
   const [sidebarOpen, setSidebarOpen] = useState(true)
   const [currentPage, setCurrentPage] = useState<PageView>('editor')
   const [galleryFilter, setGalleryFilter] = useState<GalleryCategory | 'all'>('all')
@@ -89,6 +91,13 @@ function App() {
   const showGallery = currentPage === 'gallery'
   const showStaticPage = ['about', 'privacy', 'terms', 'contact', 'docs'].includes(currentPage)
   const showEditor = currentPage === 'editor'
+
+  // Update document title for editor page when language changes
+  useEffect(() => {
+    if (showEditor) {
+      document.title = `${t('app.name')} - ${t('app.tagline')}`
+    }
+  }, [showEditor, i18n.language])
 
   // Load settings from URL parameters on mount (editor share links)
   useEffect(() => {
@@ -414,7 +423,7 @@ function App() {
                   navigateTo('docs')
                 }}
               >
-                Guide
+                {t('nav.guide')}
               </a>
               {' · '}
               <a
@@ -425,7 +434,7 @@ function App() {
                   navigateTo('about')
                 }}
               >
-                About
+                {t('nav.about')}
               </a>
               {' · '}
               <a
@@ -436,7 +445,7 @@ function App() {
                   navigateTo('privacy')
                 }}
               >
-                Privacy
+                {t('nav.privacy')}
               </a>
               {' · '}
               <a
@@ -447,7 +456,7 @@ function App() {
                   navigateTo('terms')
                 }}
               >
-                Terms
+                {t('nav.terms')}
               </a>
               {' · '}
               <a
@@ -458,10 +467,10 @@ function App() {
                   navigateTo('contact')
                 }}
               >
-                Contact
+                {t('nav.contact')}
               </a>
               {' · '}
-              © ANQR {new Date().getFullYear()}
+              {t('footer.copyright', { year: new Date().getFullYear() })}
             </p>
           </div>
         </footer>
