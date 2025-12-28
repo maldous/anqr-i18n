@@ -27,11 +27,14 @@ function DynamicIcon({ name, className }: { name: string; className?: string }) 
 
 // Gallery card component with hover-to-enlarge
 function GalleryCard({ item }: { item: GalleryItem }) {
+  const { t } = useTranslation()
   const [imageError, setImageError] = useState(false)
   const [isHovered, setIsHovered] = useState(false)
   
   const imagePath = getGalleryImagePath(item)
   const shareUrl = buildGalleryUrl(item)
+  const itemTitle = t(`gallery.items.${item.id}.title`, { defaultValue: item.title })
+  const itemDescription = t(`gallery.items.${item.id}.description`, { defaultValue: item.description })
   
   return (
     <a
@@ -41,7 +44,7 @@ function GalleryCard({ item }: { item: GalleryItem }) {
       className="group relative block"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
-      title={`${item.title} - ${item.description}. Click to open in generator.`}
+      title={`${itemTitle} - ${itemDescription}. Click to open in generator.`}
     >
       <div className={`
         relative overflow-hidden rounded-lg bg-card
@@ -58,7 +61,7 @@ function GalleryCard({ item }: { item: GalleryItem }) {
           ) : (
             <img
               src={imagePath}
-              alt={item.title}
+              alt={itemTitle}
               className="w-full h-full object-contain"
               loading="lazy"
               onError={() => setImageError(true)}
@@ -71,8 +74,8 @@ function GalleryCard({ item }: { item: GalleryItem }) {
       
       {/* Title and description below card (hidden when hovered/enlarged) */}
       <div className={`mt-1 px-0.5 transition-opacity duration-200 ${isHovered ? 'opacity-0' : 'opacity-100'}`}>
-        <h4 className="text-[10px] font-medium text-foreground truncate">{item.title}</h4>
-        <p className="text-[9px] text-muted-foreground truncate">{item.description}</p>
+        <h4 className="text-[10px] font-medium text-foreground truncate">{itemTitle}</h4>
+        <p className="text-[9px] text-muted-foreground truncate">{itemDescription}</p>
       </div>
     </a>
   )
@@ -96,13 +99,17 @@ function GallerySectionComponent({ section, isExpanded, onToggle, showAdAfter }:
   onToggle: () => void
   showAdAfter?: string
 }) {
+  const { t } = useTranslation()
+  const sectionTitle = t(`gallery.sections.${section.id}.title`, { defaultValue: section.title })
+  const sectionDescription = t(`gallery.sections.${section.id}.description`, { defaultValue: section.description })
+  
   return (
     <div className="mb-8">
       {/* Section header */}
       <button
         onClick={onToggle}
         className="w-full flex items-center justify-between gap-4 mb-4 group"
-        title={isExpanded ? `Collapse ${section.title} section` : `Expand ${section.title} section`}
+        title={isExpanded ? t('gallery.collapse') : t('gallery.expand')}
       >
         <div className="flex items-center gap-3">
           <div className="p-2 rounded-lg bg-muted group-hover:bg-blue-100 dark:group-hover:bg-blue-900/30 transition-colors">
@@ -110,10 +117,10 @@ function GallerySectionComponent({ section, isExpanded, onToggle, showAdAfter }:
           </div>
           <div className="text-left">
             <h3 className="text-lg font-semibold text-foreground group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
-              {section.title}
+              {sectionTitle}
               <span className="ml-2 text-sm font-normal text-muted-foreground">({section.items.length})</span>
             </h3>
-            <p className="text-sm text-muted-foreground">{section.description}</p>
+            <p className="text-sm text-muted-foreground">{sectionDescription}</p>
           </div>
         </div>
         <div className="p-2">
@@ -174,7 +181,7 @@ function MobileJumpButton({
 
 // Main Gallery component
 export function Gallery({ filter }: GalleryProps) {
-  const { t } = useTranslation()
+  const { t, i18n } = useTranslation()
   const [expandedSections, setExpandedSections] = useState<Set<GalleryCategory>>(
     new Set(gallerySections.map(s => s.id))
   )
@@ -184,6 +191,11 @@ export function Gallery({ filter }: GalleryProps) {
   useEffect(() => {
     showInterstitial('gallery')
   }, [])
+  
+  // Update document title when language changes
+  useEffect(() => {
+    document.title = `${t('gallery.title')} | ANQR`
+  }, [t, i18n.language])
   
   const filteredSections = useMemo(() => {
     if (filter === 'all') return gallerySections
@@ -241,7 +253,7 @@ export function Gallery({ filter }: GalleryProps) {
               <MobileJumpButton
                 key={section.id}
                 icon={section.icon}
-                label={section.title}
+                label={t(`gallery.sections.${section.id}.title`, { defaultValue: section.title })}
                 isActive={mobileFilter === section.id}
                 onClick={() => setMobileFilter(section.id)}
               />
