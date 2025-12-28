@@ -194,7 +194,6 @@
     "custom": "Custom Format",
     "deviceAddress": "Device Address (MAC)",
     "deviceName": "Device Name (optional)",
-
     "otpType": "Type",
     "issuer": "Issuer",
     "accountName": "Account Name",
@@ -212,7 +211,6 @@
     "attendeeName": "Attendee Name",
     "validationUrl": "Validation URL (optional)",
     "bluetooth": "Bluetooth",
-
     "otpAuth": "OTP Authenticator",
     "assetInventory": "Asset/Inventory Tag",
     "eventTicket": "Event Ticket",
@@ -314,7 +312,6 @@
     "subpixelSize": "Subpixel Size",
     "trueDither": "True Dither",
     "extreme": "Extreme",
-    "centerLogo": "Center Logo",
     "blendMode": "Blend",
     "halftoneMode": "Halftone",
     "ditheredMode": "Dithered",
@@ -649,9 +646,7 @@
     "copied": "Copied!",
     "markdown": "Markdown",
     "twitter": "X/Twitter",
-    "whatsapp": "WhatsApp",
-    "settingsEncodedInUrl_one": "{{count}} setting encoded in URL",
-    "settingsEncodedInUrl_other": "{{count}} settings encoded in URL"
+    "whatsapp": "WhatsApp"
   },
   "gallery": {
     "title": "QR Code Gallery",
@@ -675,304 +670,705 @@
     "collapse": "Collapse",
     "expand": "Expand",
     "sections": {
-      "plain": { "title": "Plain QR Codes", "description": "Standard QR codes without overlay - different versions and error correction" },
-      "content-types": { "title": "Content Types", "description": "Different payload formats - vCard, WiFi, Email, SMS, Geo, Calendar" },
-      "styles": { "title": "Module & Finder Styles", "description": "Different visual styles for modules and finder patterns" },
-      "colors": { "title": "Colors & Themes", "description": "Color schemes and themed palettes" },
-      "image-overlay": { "title": "Image Overlays", "description": "Static image overlays with different blend modes" },
-      "animation-overlay": { "title": "Animated Overlays", "description": "Animated GIF overlays with different blend modes" },
-      "blend-modes": { "title": "Blend Modes", "description": "Different color blending with image overlays" },
-      "color-modes": { "title": "Color Processing", "description": "Color, grayscale, and black & white processing" },
-      "preprocessing": { "title": "Image Preprocessing", "description": "Brightness, contrast, gamma, blur, sharpen, posterize, edge detection" },
-      "encoding": { "title": "QR Encoding", "description": "Different QR versions and error correction levels" },
-      "dithering": { "title": "Dithering Algorithms", "description": "Different dithering methods and error diffusion kernels" },
-      "power-combos": { "title": "Power Combos", "description": "Striking multi-feature combinations showcasing ANQR capabilities" }
+      "plain": {
+        "title": "Plain QR Codes",
+        "description": "Standard QR codes without overlay - different versions and error correction"
+      },
+      "content-types": {
+        "title": "Content Types",
+        "description": "Different payload formats - vCard, WiFi, Email, SMS, Geo, Calendar"
+      },
+      "styles": {
+        "title": "Module & Finder Styles",
+        "description": "Different visual styles for modules and finder patterns"
+      },
+      "colors": {
+        "title": "Colors & Themes",
+        "description": "Color schemes and themed palettes"
+      },
+      "image-overlay": {
+        "title": "Image Overlays",
+        "description": "Static image overlays with different blend modes"
+      },
+      "animation-overlay": {
+        "title": "Animated Overlays",
+        "description": "Animated GIF overlays with different blend modes"
+      },
+      "blend-modes": {
+        "title": "Blend Modes",
+        "description": "Different color blending with image overlays"
+      },
+      "color-modes": {
+        "title": "Color Processing",
+        "description": "Color, grayscale, and black & white processing"
+      },
+      "preprocessing": {
+        "title": "Image Preprocessing",
+        "description": "Brightness, contrast, gamma, blur, sharpen, posterize, edge detection"
+      },
+      "encoding": {
+        "title": "QR Encoding",
+        "description": "Different QR versions and error correction levels"
+      },
+      "dithering": {
+        "title": "Dithering Algorithms",
+        "description": "Different dithering methods and error diffusion kernels"
+      },
+      "power-combos": {
+        "title": "Power Combos",
+        "description": "Striking multi-feature combinations showcasing ANQR capabilities"
+      }
     },
     "items": {
-      "plain-basic": { "title": "Classic", "description": "Standard QR code" },
-      "plain-v6": { "title": "Version 6", "description": "Larger without center eye" },
-      "plain-v9": { "title": "Version 9", "description": "Even larger with center eye" },
-      "plain-v12": { "title": "Version 12", "description": "Large with multiple alignment" },
-      "plain-ecc-l": { "title": "ECC Low (7%)", "description": "Minimal error correction" },
-      "plain-ecc-q": { "title": "ECC Quartile (25%)", "description": "Medium-high error correction" },
-      "content-vcard": { "title": "vCard Contact", "description": "Contact card with rounded navy style" },
-      "content-wifi": { "title": "WiFi Network", "description": "WiFi config with dots forest green" },
-      "content-email": { "title": "Email Address", "description": "Mailto link with coral colors" },
-      "content-sms": { "title": "SMS Message", "description": "Pre-filled SMS with diamond teal" },
-      "content-geo": { "title": "Geo Location", "description": "Map coords with connected gold" },
-      "content-event": { "title": "Calendar Event", "description": "iCal event with rounded royal" },
-      "style-square": { "title": "Square Modules", "description": "Square module style" },
-      "style-rounded": { "title": "Rounded Modules", "description": "Rounded module style" },
-      "style-dots": { "title": "Dots Modules", "description": "Dots module style" },
-      "style-diamond": { "title": "Diamond Modules", "description": "Diamond module style" },
-      "style-connected": { "title": "Connected Modules", "description": "Connected module style" },
-      "finder-square": { "title": "Square Finders", "description": "Square finder pattern" },
-      "finder-rounded": { "title": "Rounded Finders", "description": "Rounded finder pattern" },
-      "finder-circle": { "title": "Circle Finders", "description": "Circle finder pattern" },
-      "combo-rounded-rounded": { "title": "Rounded + Rounded", "description": "Rounded modules with rounded finders" },
-      "combo-dots-circle": { "title": "Dots + Circle", "description": "Dots modules with circle finders" },
-      "combo-diamond-rounded": { "title": "Diamond + Rounded", "description": "Diamond modules with rounded finders" },
-      "combo-connected-square": { "title": "Connected + Square", "description": "Connected modules with square finders" },
-      "color-midnight": { "title": "Midnight", "description": "#1a1a2e on #eef1ff" },
-      "color-forest": { "title": "Forest", "description": "#1b4332 on #d8f3dc" },
-      "color-ocean": { "title": "Ocean", "description": "#023e8a on #caf0f8" },
-      "color-sunset": { "title": "Sunset", "description": "#bf0603 on #fff3b0" },
-      "color-royal": { "title": "Royal", "description": "#4a0080 on #f5e6ff" },
-      "color-coral": { "title": "Coral", "description": "#e85d04 on #ffe8d6" },
-      "color-slate": { "title": "Slate", "description": "#343a40 on #e9ecef" },
-      "color-crimson": { "title": "Crimson", "description": "#9d0208 on #ffccd5" },
-      "color-teal": { "title": "Teal", "description": "#006d77 on #e0f4f5" },
-      "color-gold": { "title": "Gold", "description": "#7f5539 on #ffe8cc" },
-      "color-inverted": { "title": "Inverted", "description": "#ffffff on #000000" },
-      "color-navy": { "title": "Navy", "description": "#001d3d on #a2d2ff" },
-      "color-midnight-dots": { "title": "Midnight Dots", "description": "Midnight with dot modules" },
-      "color-forest-dots": { "title": "Forest Dots", "description": "Forest with dot modules" },
-      "color-ocean-dots": { "title": "Ocean Dots", "description": "Ocean with dot modules" },
-      "color-sunset-dots": { "title": "Sunset Dots", "description": "Sunset with dot modules" },
-      "color-royal-dots": { "title": "Royal Dots", "description": "Royal with dot modules" },
-      "color-coral-dots": { "title": "Coral Dots", "description": "Coral with dot modules" },
-      "img-dithered": { "title": "Dithered", "description": "Error diffusion dithering" },
-      "img-blue-noise": { "title": "Blue Noise", "description": "Blue noise threshold dithering" },
-      "img-halftone": { "title": "Halftone", "description": "Classic halftone dots" },
-      "img-mosaic": { "title": "Mosaic", "description": "Mosaic tile effect" },
-      "img-brightness": { "title": "Brightness", "description": "Brightness-based modules" },
-      "img-duotone": { "title": "Duotone", "description": "Two-tone color mapping" },
-      "img-subpixel": { "title": "Subpixel", "description": "High detail subpixel rendering" },
-      "img-pixelate": { "title": "Pixelate", "description": "Pixelated overlay effect" },
-      "img-outline": { "title": "Outline", "description": "Edge detection overlay" },
-      "img-wave": { "title": "Wave", "description": "Wavy distortion effect" },
-      "img-extreme": { "title": "Extreme", "description": "Maximum image visibility" },
-      "img-dithered-i50": { "title": "Dithered 50%", "description": "Dithered at 50% intensity" },
-      "img-dithered-i75": { "title": "Dithered 75%", "description": "Dithered at 75% intensity" },
-      "img-dithered-i100": { "title": "Dithered 100%", "description": "Dithered at 100% intensity" },
-      "img-colormode-color": { "title": "Color", "description": "Color processing" },
-      "img-colormode-grayscale": { "title": "Grayscale", "description": "Grayscale processing" },
-      "img-colormode-bw": { "title": "Black & White", "description": "Black & white processing" },
-      "img-blend": { "title": "Blend Mode", "description": "Color blend overlay" },
-      "anim-dithered": { "title": "Animated Dithered", "description": "Error diffusion with animation" },
-      "anim-blue-noise": { "title": "Animated Blue Noise", "description": "Blue noise threshold with animation" },
-      "anim-halftone": { "title": "Animated Halftone", "description": "Halftone dots with animation" },
-      "anim-mosaic": { "title": "Animated Mosaic", "description": "Mosaic with animation" },
-      "anim-brightness": { "title": "Animated Brightness", "description": "Brightness with animation" },
-      "anim-duotone": { "title": "Animated Duotone", "description": "Duotone with animation" },
-      "anim-blue-noise-i50": { "title": "Blue Noise 50%", "description": "Animated blue noise at 50%" },
-      "anim-blue-noise-i75": { "title": "Blue Noise 75%", "description": "Animated blue noise at 75%" },
-      "anim-blue-noise-i100": { "title": "Blue Noise 100%", "description": "Animated blue noise at 100%" },
-      "anim-colormode-color": { "title": "Animated Color", "description": "Color animated overlay" },
-      "anim-colormode-grayscale": { "title": "Animated Grayscale", "description": "Grayscale animated overlay" },
-      "anim-colormode-bw": { "title": "Animated B&W", "description": "B&W animated overlay" },
-      "prep-brightness-n50": { "title": "Brightness -50", "description": "Brightness adjusted darker" },
-      "prep-brightness-n25": { "title": "Brightness -25", "description": "Brightness adjusted darker" },
-      "prep-brightness-p25": { "title": "Brightness +25", "description": "Brightness adjusted brighter" },
-      "prep-brightness-p50": { "title": "Brightness +50", "description": "Brightness adjusted brighter" },
-      "prep-contrast-n50": { "title": "Contrast -50", "description": "Low contrast" },
-      "prep-contrast-p50": { "title": "Contrast +50", "description": "High contrast" },
-      "prep-contrast-p100": { "title": "Contrast +100", "description": "High contrast" },
-      "prep-gamma-05": { "title": "Gamma 0.5", "description": "Gamma correction 0.5" },
-      "prep-gamma-15": { "title": "Gamma 1.5", "description": "Gamma correction 1.5" },
-      "prep-gamma-20": { "title": "Gamma 2.0", "description": "Gamma correction 2.0" },
-      "prep-saturation-n100": { "title": "Saturation -100", "description": "Desaturated" },
-      "prep-saturation-n50": { "title": "Saturation -50", "description": "Reduced saturation" },
-      "prep-saturation-p50": { "title": "Saturation +50", "description": "Oversaturated" },
-      "prep-saturation-p100": { "title": "Saturation +100", "description": "Oversaturated" },
-      "prep-blur-1": { "title": "Blur 1px", "description": "1px gaussian blur" },
-      "prep-blur-2": { "title": "Blur 2px", "description": "2px gaussian blur" },
-      "prep-blur-4": { "title": "Blur 4px", "description": "4px gaussian blur" },
-      "prep-sharpen-25": { "title": "Sharpen 25%", "description": "25% sharpening" },
-      "prep-sharpen-50": { "title": "Sharpen 50%", "description": "50% sharpening" },
-      "prep-sharpen-100": { "title": "Sharpen 100%", "description": "100% sharpening" },
-      "prep-posterize-2": { "title": "Posterize 2", "description": "2 color levels" },
-      "prep-posterize-4": { "title": "Posterize 4", "description": "4 color levels" },
-      "prep-posterize-8": { "title": "Posterize 8", "description": "8 color levels" },
-      "prep-threshold-64": { "title": "Threshold 64", "description": "Binary threshold at 64" },
-      "prep-threshold-128": { "title": "Threshold 128", "description": "Binary threshold at 128" },
-      "prep-threshold-192": { "title": "Threshold 192", "description": "Binary threshold at 192" },
-      "prep-edge-sobel": { "title": "Edge Sobel", "description": "Sobel edge detection" },
-      "prep-edge-canny": { "title": "Edge Canny", "description": "Canny edge detection" },
-      "prep-invert": { "title": "Inverted", "description": "Inverted colors" },
-      "prep-hue-90": { "title": "Hue +90°", "description": "Hue rotation 90 degrees" },
-      "enc-v0": { "title": "Auto Version", "description": "Automatic version selection" },
-      "enc-v6": { "title": "Version 6", "description": "Best for overlays (no center eye)" },
-      "enc-v9": { "title": "Version 9", "description": "Version 9 QR code" },
-      "enc-v12": { "title": "Version 12", "description": "Version 12 QR code" },
-      "enc-ecc-l": { "title": "ECC Low", "description": "7% error correction" },
-      "enc-ecc-m": { "title": "ECC Medium", "description": "15% error correction" },
-      "enc-ecc-q": { "title": "ECC Quartile", "description": "25% error correction" },
-      "enc-ecc-h": { "title": "ECC High", "description": "30% error correction" },
-      "enc-v6-l": { "title": "V6 + ECC Low", "description": "Version 6 with low error correction" },
-      "enc-v6-h": { "title": "V6 + ECC High", "description": "Version 6 with high error correction" },
-      "enc-v9-l": { "title": "V9 + ECC Low", "description": "Version 9 with low error correction" },
-      "enc-v9-h": { "title": "V9 + ECC High", "description": "Version 9 with high error correction" },
-      "dither-error-diffusion": { "title": "Error Diffusion", "description": "Floyd-Steinberg style" },
-      "dither-ordered-bayer": { "title": "Ordered Bayer", "description": "Bayer matrix dithering" },
-      "dither-blue-noise": { "title": "Blue Noise", "description": "Blue noise threshold" },
-      "dither-white-noise": { "title": "White Noise", "description": "Random noise threshold" },
-      "dither-blue-noise-error-diffusion": { "title": "Blue Noise + Error", "description": "Hybrid blue noise" },
-      "dither-perceptual": { "title": "Perceptual", "description": "Luminance-weighted" },
-      "dither-adaptive-threshold": { "title": "Adaptive", "description": "Adaptive threshold" },
-      "dither-kernel-floyd-steinberg": { "title": "Floyd-Steinberg", "description": "Floyd-Steinberg error diffusion" },
-      "dither-kernel-jarvis-judice-ninke": { "title": "Jarvis-Judice-Ninke", "description": "Jarvis-Judice-Ninke error diffusion" },
-      "dither-kernel-stucki": { "title": "Stucki", "description": "Stucki error diffusion" },
-      "dither-kernel-atkinson": { "title": "Atkinson", "description": "Atkinson error diffusion" },
-      "dither-kernel-sierra": { "title": "Sierra", "description": "Sierra error diffusion" },
-      "dither-kernel-burkes": { "title": "Burkes", "description": "Burkes error diffusion" },
-      "dither-strength-20": { "title": "Strength 20%", "description": "Dither strength at 20%" },
-      "dither-strength-40": { "title": "Strength 40%", "description": "Dither strength at 40%" },
-      "dither-strength-60": { "title": "Strength 60%", "description": "Dither strength at 60%" },
-      "dither-strength-80": { "title": "Strength 80%", "description": "Dither strength at 80%" },
-      "dither-strength-100": { "title": "Strength 100%", "description": "Dither strength at 100%" },
-      "combo-dots-halftone-gold": { "title": "Dots + Halftone Gold", "description": "Dot modules with halftone overlay" },
-      "combo-diamond-blue-noise-navy": { "title": "Diamond + Blue Noise Navy", "description": "Diamond modules with blue noise" },
-      "combo-rounded-mosaic-sunset": { "title": "Rounded + Mosaic Sunset", "description": "Rounded modules with mosaic overlay" },
-      "combo-connected-wave-ocean": { "title": "Connected + Wave Ocean", "description": "Connected modules with wave effect" },
-      "combo-dots-extreme-forest": { "title": "Dots + Extreme Forest", "description": "Maximum visibility with dots" },
-      "combo-rounded-dithered-royal": { "title": "Rounded + Dithered Royal", "description": "Classic dithered with rounded style" },
-      "combo-diamond-duotone-crimson": { "title": "Diamond + Duotone Crimson", "description": "Duotone effect with diamond modules" },
-      "combo-connected-pixelate-teal": { "title": "Connected + Pixelate Teal", "description": "Pixelated overlay with connected modules" },
-      "combo-dots-outline-slate": { "title": "Dots + Outline Slate", "description": "Edge detection with dot modules" },
-      "combo-rounded-subpixel-coral": { "title": "Rounded + Subpixel Coral", "description": "High-detail subpixel rendering" },
-      "combo-anim-dots-halftone": { "title": "Animated Dots + Halftone", "description": "Animated halftone with dot modules" },
-      "combo-anim-rounded-blue-noise": { "title": "Animated Rounded + Blue Noise", "description": "Animated blue noise with rounded" },
-      "blend-classic": { "title": "Classic Blend", "description": "Dithered overlay with classic palette" },
-      "blend-navy": { "title": "Navy Blend", "description": "Dithered overlay with navy palette" },
-      "blend-wine": { "title": "Wine Blend", "description": "Dithered overlay with wine palette" },
-      "blend-forest": { "title": "Forest Blend", "description": "Dithered overlay with forest palette" },
-      "halftone-classic": { "title": "Classic Halftone", "description": "Halftone with classic palette" },
-      "halftone-navy": { "title": "Navy Halftone", "description": "Halftone with navy palette" },
-      "halftone-wine": { "title": "Wine Halftone", "description": "Halftone with wine palette" },
-      "halftone-forest": { "title": "Forest Halftone", "description": "Halftone with forest palette" },
-      "mosaic-classic": { "title": "Classic Mosaic", "description": "Mosaic with classic palette" },
-      "mosaic-navy": { "title": "Navy Mosaic", "description": "Mosaic with navy palette" },
-      "mosaic-wine": { "title": "Wine Mosaic", "description": "Mosaic with wine palette" },
-      "mosaic-forest": { "title": "Forest Mosaic", "description": "Mosaic with forest palette" },
-      "cmode-dithered-color": { "title": "Dithered Color", "description": "Dithered in Color" },
-      "cmode-dithered-grayscale": { "title": "Dithered Grayscale", "description": "Dithered in Grayscale" },
-      "cmode-blue-noise-color": { "title": "Blue Noise Color", "description": "Blue Noise in Color" },
-      "cmode-blue-noise-bw": { "title": "Blue Noise B&W", "description": "Blue Noise in B&W" },
-      "cmode-halftone-color": { "title": "Halftone Color", "description": "Halftone in Color" },
-      "cmode-halftone-bw": { "title": "Halftone B&W", "description": "Halftone in B&W" }
+      "plain-basic": {
+        "title": "Classic",
+        "description": "Standard QR code"
+      },
+      "plain-v6": {
+        "title": "Version 6",
+        "description": "Larger without center eye"
+      },
+      "plain-v9": {
+        "title": "Version 9",
+        "description": "Even larger with center eye"
+      },
+      "plain-v12": {
+        "title": "Version 12",
+        "description": "Large with multiple alignment"
+      },
+      "plain-ecc-l": {
+        "title": "ECC Low (7%)",
+        "description": "Minimal error correction"
+      },
+      "plain-ecc-q": {
+        "title": "ECC Quartile (25%)",
+        "description": "Medium-high error correction"
+      },
+      "content-vcard": {
+        "title": "vCard Contact",
+        "description": "Contact card with rounded navy style"
+      },
+      "content-wifi": {
+        "title": "WiFi Network",
+        "description": "WiFi config with dots forest green"
+      },
+      "content-email": {
+        "title": "Email Address",
+        "description": "Mailto link with coral colors"
+      },
+      "content-sms": {
+        "title": "SMS Message",
+        "description": "Pre-filled SMS with diamond teal"
+      },
+      "content-geo": {
+        "title": "Geo Location",
+        "description": "Map coords with connected gold"
+      },
+      "content-event": {
+        "title": "Calendar Event",
+        "description": "iCal event with rounded royal"
+      },
+      "style-square": {
+        "title": "Square Modules",
+        "description": "Square module style"
+      },
+      "style-rounded": {
+        "title": "Rounded Modules",
+        "description": "Rounded module style"
+      },
+      "style-dots": {
+        "title": "Dots Modules",
+        "description": "Dots module style"
+      },
+      "style-diamond": {
+        "title": "Diamond Modules",
+        "description": "Diamond module style"
+      },
+      "style-connected": {
+        "title": "Connected Modules",
+        "description": "Connected module style"
+      },
+      "finder-square": {
+        "title": "Square Finders",
+        "description": "Square finder pattern"
+      },
+      "finder-rounded": {
+        "title": "Rounded Finders",
+        "description": "Rounded finder pattern"
+      },
+      "finder-circle": {
+        "title": "Circle Finders",
+        "description": "Circle finder pattern"
+      },
+      "combo-rounded-rounded": {
+        "title": "Rounded + Rounded",
+        "description": "Rounded modules with rounded finders"
+      },
+      "combo-dots-circle": {
+        "title": "Dots + Circle",
+        "description": "Dots modules with circle finders"
+      },
+      "combo-diamond-rounded": {
+        "title": "Diamond + Rounded",
+        "description": "Diamond modules with rounded finders"
+      },
+      "combo-connected-square": {
+        "title": "Connected + Square",
+        "description": "Connected modules with square finders"
+      },
+      "color-midnight": {
+        "title": "Midnight",
+        "description": "#1a1a2e on #eef1ff"
+      },
+      "color-forest": {
+        "title": "Forest",
+        "description": "#1b4332 on #d8f3dc"
+      },
+      "color-ocean": {
+        "title": "Ocean",
+        "description": "#023e8a on #caf0f8"
+      },
+      "color-sunset": {
+        "title": "Sunset",
+        "description": "#bf0603 on #fff3b0"
+      },
+      "color-royal": {
+        "title": "Royal",
+        "description": "#4a0080 on #f5e6ff"
+      },
+      "color-coral": {
+        "title": "Coral",
+        "description": "#e85d04 on #ffe8d6"
+      },
+      "color-slate": {
+        "title": "Slate",
+        "description": "#343a40 on #e9ecef"
+      },
+      "color-crimson": {
+        "title": "Crimson",
+        "description": "#9d0208 on #ffccd5"
+      },
+      "color-teal": {
+        "title": "Teal",
+        "description": "#006d77 on #e0f4f5"
+      },
+      "color-gold": {
+        "title": "Gold",
+        "description": "#7f5539 on #ffe8cc"
+      },
+      "color-inverted": {
+        "title": "Inverted",
+        "description": "#ffffff on #000000"
+      },
+      "color-navy": {
+        "title": "Navy",
+        "description": "#001d3d on #a2d2ff"
+      },
+      "color-midnight-dots": {
+        "title": "Midnight Dots",
+        "description": "Midnight with dot modules"
+      },
+      "color-forest-dots": {
+        "title": "Forest Dots",
+        "description": "Forest with dot modules"
+      },
+      "color-ocean-dots": {
+        "title": "Ocean Dots",
+        "description": "Ocean with dot modules"
+      },
+      "color-sunset-dots": {
+        "title": "Sunset Dots",
+        "description": "Sunset with dot modules"
+      },
+      "color-royal-dots": {
+        "title": "Royal Dots",
+        "description": "Royal with dot modules"
+      },
+      "color-coral-dots": {
+        "title": "Coral Dots",
+        "description": "Coral with dot modules"
+      },
+      "img-dithered": {
+        "title": "Dithered",
+        "description": "Error diffusion dithering"
+      },
+      "img-blue-noise": {
+        "title": "Blue Noise",
+        "description": "Blue noise threshold dithering"
+      },
+      "img-halftone": {
+        "title": "Halftone",
+        "description": "Classic halftone dots"
+      },
+      "img-mosaic": {
+        "title": "Mosaic",
+        "description": "Mosaic tile effect"
+      },
+      "img-brightness": {
+        "title": "Brightness",
+        "description": "Brightness-based modules"
+      },
+      "img-duotone": {
+        "title": "Duotone",
+        "description": "Two-tone color mapping"
+      },
+      "img-subpixel": {
+        "title": "Subpixel",
+        "description": "High detail subpixel rendering"
+      },
+      "img-pixelate": {
+        "title": "Pixelate",
+        "description": "Pixelated overlay effect"
+      },
+      "img-outline": {
+        "title": "Outline",
+        "description": "Edge detection overlay"
+      },
+      "img-wave": {
+        "title": "Wave",
+        "description": "Wavy distortion effect"
+      },
+      "img-extreme": {
+        "title": "Extreme",
+        "description": "Maximum image visibility"
+      },
+      "img-dithered-i50": {
+        "title": "Dithered 50%",
+        "description": "Dithered at 50% intensity"
+      },
+      "img-dithered-i75": {
+        "title": "Dithered 75%",
+        "description": "Dithered at 75% intensity"
+      },
+      "img-dithered-i100": {
+        "title": "Dithered 100%",
+        "description": "Dithered at 100% intensity"
+      },
+      "img-colormode-color": {
+        "title": "Color",
+        "description": "Color processing"
+      },
+      "img-colormode-grayscale": {
+        "title": "Grayscale",
+        "description": "Grayscale processing"
+      },
+      "img-colormode-bw": {
+        "title": "Black & White",
+        "description": "Black & white processing"
+      },
+      "img-blend": {
+        "title": "Blend Mode",
+        "description": "Color blend overlay"
+      },
+      "anim-dithered": {
+        "title": "Animated Dithered",
+        "description": "Error diffusion with animation"
+      },
+      "anim-blue-noise": {
+        "title": "Animated Blue Noise",
+        "description": "Blue noise threshold with animation"
+      },
+      "anim-halftone": {
+        "title": "Animated Halftone",
+        "description": "Halftone dots with animation"
+      },
+      "anim-mosaic": {
+        "title": "Animated Mosaic",
+        "description": "Mosaic with animation"
+      },
+      "anim-brightness": {
+        "title": "Animated Brightness",
+        "description": "Brightness with animation"
+      },
+      "anim-duotone": {
+        "title": "Animated Duotone",
+        "description": "Duotone with animation"
+      },
+      "anim-blue-noise-i50": {
+        "title": "Blue Noise 50%",
+        "description": "Animated blue noise at 50%"
+      },
+      "anim-blue-noise-i75": {
+        "title": "Blue Noise 75%",
+        "description": "Animated blue noise at 75%"
+      },
+      "anim-blue-noise-i100": {
+        "title": "Blue Noise 100%",
+        "description": "Animated blue noise at 100%"
+      },
+      "anim-colormode-color": {
+        "title": "Animated Color",
+        "description": "Color animated overlay"
+      },
+      "anim-colormode-grayscale": {
+        "title": "Animated Grayscale",
+        "description": "Grayscale animated overlay"
+      },
+      "anim-colormode-bw": {
+        "title": "Animated B&W",
+        "description": "B&W animated overlay"
+      },
+      "prep-brightness-n50": {
+        "title": "Brightness -50",
+        "description": "Brightness adjusted darker"
+      },
+      "prep-brightness-n25": {
+        "title": "Brightness -25",
+        "description": "Brightness adjusted darker"
+      },
+      "prep-brightness-p25": {
+        "title": "Brightness +25",
+        "description": "Brightness adjusted brighter"
+      },
+      "prep-brightness-p50": {
+        "title": "Brightness +50",
+        "description": "Brightness adjusted brighter"
+      },
+      "prep-contrast-n50": {
+        "title": "Contrast -50",
+        "description": "Low contrast"
+      },
+      "prep-contrast-p50": {
+        "title": "Contrast +50",
+        "description": "High contrast"
+      },
+      "prep-contrast-p100": {
+        "title": "Contrast +100",
+        "description": "High contrast"
+      },
+      "prep-gamma-05": {
+        "title": "Gamma 0.5",
+        "description": "Gamma correction 0.5"
+      },
+      "prep-gamma-15": {
+        "title": "Gamma 1.5",
+        "description": "Gamma correction 1.5"
+      },
+      "prep-gamma-20": {
+        "title": "Gamma 2.0",
+        "description": "Gamma correction 2.0"
+      },
+      "prep-saturation-n100": {
+        "title": "Saturation -100",
+        "description": "Desaturated"
+      },
+      "prep-saturation-n50": {
+        "title": "Saturation -50",
+        "description": "Reduced saturation"
+      },
+      "prep-saturation-p50": {
+        "title": "Saturation +50",
+        "description": "Oversaturated"
+      },
+      "prep-saturation-p100": {
+        "title": "Saturation +100",
+        "description": "Oversaturated"
+      },
+      "prep-blur-1": {
+        "title": "Blur 1px",
+        "description": "1px gaussian blur"
+      },
+      "prep-blur-2": {
+        "title": "Blur 2px",
+        "description": "2px gaussian blur"
+      },
+      "prep-blur-4": {
+        "title": "Blur 4px",
+        "description": "4px gaussian blur"
+      },
+      "prep-sharpen-25": {
+        "title": "Sharpen 25%",
+        "description": "25% sharpening"
+      },
+      "prep-sharpen-50": {
+        "title": "Sharpen 50%",
+        "description": "50% sharpening"
+      },
+      "prep-sharpen-100": {
+        "title": "Sharpen 100%",
+        "description": "100% sharpening"
+      },
+      "prep-posterize-2": {
+        "title": "Posterize 2",
+        "description": "2 color levels"
+      },
+      "prep-posterize-4": {
+        "title": "Posterize 4",
+        "description": "4 color levels"
+      },
+      "prep-posterize-8": {
+        "title": "Posterize 8",
+        "description": "8 color levels"
+      },
+      "prep-threshold-64": {
+        "title": "Threshold 64",
+        "description": "Binary threshold at 64"
+      },
+      "prep-threshold-128": {
+        "title": "Threshold 128",
+        "description": "Binary threshold at 128"
+      },
+      "prep-threshold-192": {
+        "title": "Threshold 192",
+        "description": "Binary threshold at 192"
+      },
+      "prep-edge-sobel": {
+        "title": "Edge Sobel",
+        "description": "Sobel edge detection"
+      },
+      "prep-edge-canny": {
+        "title": "Edge Canny",
+        "description": "Canny edge detection"
+      },
+      "prep-invert": {
+        "title": "Inverted",
+        "description": "Inverted colors"
+      },
+      "prep-hue-90": {
+        "title": "Hue +90°",
+        "description": "Hue rotation 90 degrees"
+      },
+      "enc-v0": {
+        "title": "Auto Version",
+        "description": "Automatic version selection"
+      },
+      "enc-v6": {
+        "title": "Version 6",
+        "description": "Best for overlays (no center eye)"
+      },
+      "enc-v9": {
+        "title": "Version 9",
+        "description": "Version 9 QR code"
+      },
+      "enc-v12": {
+        "title": "Version 12",
+        "description": "Version 12 QR code"
+      },
+      "enc-ecc-l": {
+        "title": "ECC Low",
+        "description": "7% error correction"
+      },
+      "enc-ecc-m": {
+        "title": "ECC Medium",
+        "description": "15% error correction"
+      },
+      "enc-ecc-q": {
+        "title": "ECC Quartile",
+        "description": "25% error correction"
+      },
+      "enc-ecc-h": {
+        "title": "ECC High",
+        "description": "30% error correction"
+      },
+      "enc-v6-l": {
+        "title": "V6 + ECC Low",
+        "description": "Version 6 with low error correction"
+      },
+      "enc-v6-h": {
+        "title": "V6 + ECC High",
+        "description": "Version 6 with high error correction"
+      },
+      "enc-v9-l": {
+        "title": "V9 + ECC Low",
+        "description": "Version 9 with low error correction"
+      },
+      "enc-v9-h": {
+        "title": "V9 + ECC High",
+        "description": "Version 9 with high error correction"
+      },
+      "dither-error-diffusion": {
+        "title": "Error Diffusion",
+        "description": "Floyd-Steinberg style"
+      },
+      "dither-ordered-bayer": {
+        "title": "Ordered Bayer",
+        "description": "Bayer matrix dithering"
+      },
+      "dither-blue-noise": {
+        "title": "Blue Noise",
+        "description": "Blue noise threshold"
+      },
+      "dither-white-noise": {
+        "title": "White Noise",
+        "description": "Random noise threshold"
+      },
+      "dither-blue-noise-error-diffusion": {
+        "title": "Blue Noise + Error",
+        "description": "Hybrid blue noise"
+      },
+      "dither-perceptual": {
+        "title": "Perceptual",
+        "description": "Luminance-weighted"
+      },
+      "dither-adaptive-threshold": {
+        "title": "Adaptive",
+        "description": "Adaptive threshold"
+      },
+      "dither-kernel-floyd-steinberg": {
+        "title": "Floyd-Steinberg",
+        "description": "Floyd-Steinberg error diffusion"
+      },
+      "dither-kernel-jarvis-judice-ninke": {
+        "title": "Jarvis-Judice-Ninke",
+        "description": "Jarvis-Judice-Ninke error diffusion"
+      },
+      "dither-kernel-stucki": {
+        "title": "Stucki",
+        "description": "Stucki error diffusion"
+      },
+      "dither-kernel-atkinson": {
+        "title": "Atkinson",
+        "description": "Atkinson error diffusion"
+      },
+      "dither-kernel-sierra": {
+        "title": "Sierra",
+        "description": "Sierra error diffusion"
+      },
+      "dither-kernel-burkes": {
+        "title": "Burkes",
+        "description": "Burkes error diffusion"
+      },
+      "dither-strength-20": {
+        "title": "Strength 20%",
+        "description": "Dither strength at 20%"
+      },
+      "dither-strength-40": {
+        "title": "Strength 40%",
+        "description": "Dither strength at 40%"
+      },
+      "dither-strength-60": {
+        "title": "Strength 60%",
+        "description": "Dither strength at 60%"
+      },
+      "dither-strength-80": {
+        "title": "Strength 80%",
+        "description": "Dither strength at 80%"
+      },
+      "dither-strength-100": {
+        "title": "Strength 100%",
+        "description": "Dither strength at 100%"
+      },
+      "combo-dots-halftone-gold": {
+        "title": "Dots + Halftone Gold",
+        "description": "Dot modules with halftone overlay"
+      },
+      "combo-diamond-blue-noise-navy": {
+        "title": "Diamond + Blue Noise Navy",
+        "description": "Diamond modules with blue noise"
+      },
+      "combo-rounded-mosaic-sunset": {
+        "title": "Rounded + Mosaic Sunset",
+        "description": "Rounded modules with mosaic overlay"
+      },
+      "combo-connected-wave-ocean": {
+        "title": "Connected + Wave Ocean",
+        "description": "Connected modules with wave effect"
+      },
+      "combo-dots-extreme-forest": {
+        "title": "Dots + Extreme Forest",
+        "description": "Maximum visibility with dots"
+      },
+      "combo-rounded-dithered-royal": {
+        "title": "Rounded + Dithered Royal",
+        "description": "Classic dithered with rounded style"
+      },
+      "combo-diamond-duotone-crimson": {
+        "title": "Diamond + Duotone Crimson",
+        "description": "Duotone effect with diamond modules"
+      },
+      "combo-connected-pixelate-teal": {
+        "title": "Connected + Pixelate Teal",
+        "description": "Pixelated overlay with connected modules"
+      },
+      "combo-dots-outline-slate": {
+        "title": "Dots + Outline Slate",
+        "description": "Edge detection with dot modules"
+      },
+      "combo-rounded-subpixel-coral": {
+        "title": "Rounded + Subpixel Coral",
+        "description": "High-detail subpixel rendering"
+      },
+      "combo-anim-dots-halftone": {
+        "title": "Animated Dots + Halftone",
+        "description": "Animated halftone with dot modules"
+      },
+      "combo-anim-rounded-blue-noise": {
+        "title": "Animated Rounded + Blue Noise",
+        "description": "Animated blue noise with rounded"
+      },
+      "blend-classic": {
+        "title": "Classic Blend",
+        "description": "Dithered overlay with classic palette"
+      },
+      "blend-navy": {
+        "title": "Navy Blend",
+        "description": "Dithered overlay with navy palette"
+      },
+      "blend-wine": {
+        "title": "Wine Blend",
+        "description": "Dithered overlay with wine palette"
+      },
+      "blend-forest": {
+        "title": "Forest Blend",
+        "description": "Dithered overlay with forest palette"
+      },
+      "halftone-classic": {
+        "title": "Classic Halftone",
+        "description": "Halftone with classic palette"
+      },
+      "halftone-navy": {
+        "title": "Navy Halftone",
+        "description": "Halftone with navy palette"
+      },
+      "halftone-wine": {
+        "title": "Wine Halftone",
+        "description": "Halftone with wine palette"
+      },
+      "halftone-forest": {
+        "title": "Forest Halftone",
+        "description": "Halftone with forest palette"
+      },
+      "mosaic-classic": {
+        "title": "Classic Mosaic",
+        "description": "Mosaic with classic palette"
+      },
+      "mosaic-navy": {
+        "title": "Navy Mosaic",
+        "description": "Mosaic with navy palette"
+      },
+      "mosaic-wine": {
+        "title": "Wine Mosaic",
+        "description": "Mosaic with wine palette"
+      },
+      "mosaic-forest": {
+        "title": "Forest Mosaic",
+        "description": "Mosaic with forest palette"
+      },
+      "cmode-dithered-color": {
+        "title": "Dithered Color",
+        "description": "Dithered in Color"
+      },
+      "cmode-dithered-grayscale": {
+        "title": "Dithered Grayscale",
+        "description": "Dithered in Grayscale"
+      },
+      "cmode-blue-noise-color": {
+        "title": "Blue Noise Color",
+        "description": "Blue Noise in Color"
+      },
+      "cmode-blue-noise-bw": {
+        "title": "Blue Noise B&W",
+        "description": "Blue Noise in B&W"
+      },
+      "cmode-halftone-color": {
+        "title": "Halftone Color",
+        "description": "Halftone in Color"
+      },
+      "cmode-halftone-bw": {
+        "title": "Halftone B&W",
+        "description": "Halftone in B&W"
+      }
     }
-  },
-  "guide": {
-    "title": "ANQR User Guide",
-    "subtitle": "Complete guide to using ANQR for creating QR codes",
-    "contents": "Contents",
-    "gettingStarted": "Getting Started",
-    "gettingStartedText": "ANQR is a browser-based QR code generator that runs entirely in your browser. No account is required, and your data stays on your device.",
-    "interfaceLevels": "The interface has three interface levels: Basic, Advanced, and Professional. Select your level using the tabs in the header. Each level unlocks additional features while keeping the interface focused on what you need.",
-    "basicLevel": "Basic: Simple QR code creation with plain text/URL content and image overlay.",
-    "advancedLevel": "Advanced: QR encoding options, rendering styles, animation, output formats, and extended content types.",
-    "professionalLevel": "Professional: Watermarks, metadata, sharing, safety analysis, and enterprise features.",
-    "quickStart": "Quick Start",
-    "quickStartIntro": "To create your first QR code:",
-    "step1": "Select a content type (URL, text, WiFi, etc.) from the Content Type dropdown.",
-    "step2": "Enter your data in the provided fields.",
-    "step3": "Optionally customize colors, styles, and add an overlay image.",
-    "step4": "Click Export to download your QR code as PNG, GIF, WebP, or SVG.",
-    "payloadSection": "Payload / Data Section",
-    "payloadSectionText": "The Payload section is where you enter the data that will be encoded in your QR code. ANQR supports many content types including URLs, plain text, phone numbers, email addresses, SMS messages, WiFi credentials, contact cards (vCard), calendar events, and geographic locations.",
-    "overlaySection": "Overlay / Image Section",
-    "overlaySectionText": "Add images to your QR codes while maintaining scanability. ANQR uses advanced dithering algorithms to blend your image with the QR pattern. You can adjust intensity, use different color modes, and preserve critical QR patterns for reliable scanning.",
-    "qrEncodingSection": "QR Encoding Section",
-    "qrEncodingSectionText": "Control the technical aspects of your QR code. Error correction level determines how much damage the code can sustain while remaining scanable. Higher levels (Q, H) allow for more image overlay but result in larger codes.",
-    "renderingSection": "Rendering Section",
-    "renderingSectionText": "Customize the visual appearance of your QR code. Change foreground and background colors, module shapes (squares, dots, rounded), and apply gradients. The finder pattern style can be customized separately.",
-    "animationSection": "Animation Section",
-    "animationSectionText": "Create animated QR codes with various patterns. Set the animation speed, enable looping, and export as GIF. Animated overlays are also supported.",
-    "outputSection": "Output Section",
-    "outputSectionText": "Configure the export settings including format (PNG, SVG, GIF, WebP), dimensions, filename, and DPI for print quality.",
-    "watermarkSection": "Watermark Section",
-    "watermarkSectionText": "Add text watermarks to your QR codes. Customize position, opacity, font size, and color. Useful for branding or attribution.",
-    "metadataSection": "Metadata Section",
-    "metadataSectionText": "Embed metadata in your exported images including title, description, author, and copyright information.",
-    "safetySection": "Safety Analysis Section",
-    "safetySectionText": "Monitor the scanability of your QR code in real-time. The safety analyzer checks contrast ratio, quiet zone adequacy, and pattern integrity. Lock critical patterns to prevent overlay from affecting scanability."
-  },
-  "about": {
-    "title": "About ANQR",
-    "subtitle": "Learn more about ANQR and its features",
-    "whatIsAnqr": "What is ANQR?",
-    "whatIsAnqrText": "ANQR is a powerful, browser-based QR code generator that combines simplicity with advanced customization options. Create beautiful, scanable QR codes with custom colors, styles, image overlays, and animations.",
-    "features": "Features",
-    "feature1": "Multiple content types: URLs, text, WiFi, contacts, events, and more",
-    "feature2": "Advanced image overlay with dithering algorithms",
-    "feature3": "Custom colors, gradients, and module shapes",
-    "feature4": "Animation support with GIF export",
-    "feature5": "Real-time scanability analysis",
-    "feature6": "Privacy-focused: all processing happens in your browser",
-    "feature7": "No account required",
-    "feature8": "Export to PNG, SVG, GIF, and WebP",
-    "privacy": "Privacy First",
-    "privacyText": "ANQR runs entirely in your browser. Your data never leaves your device. We don't track what QR codes you create or store any of your content.",
-    "openSource": "Open Source",
-    "openSourceText": "ANQR is built with modern web technologies including React, TypeScript, and Vite. The QR encoding is based on established open-source libraries.",
-    "support": "Support",
-    "supportText": "If you find ANQR useful, please consider sharing it with others. For bug reports and feature requests, please contact us."
-  },
-  "privacy": {
-    "title": "Privacy Policy",
-    "subtitle": "How we handle your data",
-    "lastUpdated": "Last Updated",
-    "intro": "ANQR is committed to protecting your privacy. This policy explains how we handle your data.",
-    "dataCollection": "Data Collection",
-    "dataCollectionText": "ANQR processes all data locally in your browser. We do not collect, store, or transmit any of the content you use to create QR codes. Your URLs, text, contact information, and images stay on your device.",
-    "localStorage": "Local Storage",
-    "localStorageText": "We use browser local storage to save your preferences such as dark mode setting and language preference. This data never leaves your device.",
-    "analytics": "Analytics",
-    "analyticsText": "We may use basic analytics to understand how ANQR is used in aggregate. This does not include any personal information or QR code content.",
-    "advertising": "Advertising",
-    "advertisingText": "ANQR displays ads to support free access to the service. Our advertising partners may use cookies to serve relevant ads. You can manage cookie preferences in your browser settings.",
-    "thirdParty": "Third-Party Services",
-    "thirdPartyText": "ANQR may include links to external services. We are not responsible for the privacy practices of these services.",
-    "changes": "Changes to This Policy",
-    "changesText": "We may update this privacy policy from time to time. Changes will be posted on this page with an updated revision date.",
-    "contact": "Contact",
-    "contactText": "If you have questions about this privacy policy, please contact us through the Contact page."
-  },
-  "terms": {
-    "title": "Terms of Service",
-    "subtitle": "Terms and conditions for using ANQR",
-    "lastUpdated": "Last Updated",
-    "acceptance": "Acceptance of Terms",
-    "acceptanceText": "By accessing and using ANQR, you agree to be bound by these Terms of Service. If you do not agree to these terms, please do not use the service.",
-    "serviceDescription": "Service Description",
-    "serviceDescriptionText": "ANQR is a free, browser-based QR code generator. The service is provided \"as is\" without warranties of any kind.",
-    "userResponsibilities": "User Responsibilities",
-    "userResponsibilitiesText": "You are responsible for the content you encode in QR codes. Do not use ANQR for illegal purposes, malicious links, or content that violates the rights of others.",
-    "intellectualProperty": "Intellectual Property",
-    "intellectualPropertyText": "ANQR and its original content are protected by intellectual property laws. QR codes you create are yours to use as you wish.",
-    "disclaimer": "Disclaimer",
-    "disclaimerText": "ANQR is provided without warranty. We do not guarantee that QR codes will scan correctly on all devices or that the service will be available at all times.",
-    "limitation": "Limitation of Liability",
-    "limitationText": "ANQR shall not be liable for any indirect, incidental, special, or consequential damages arising from your use of the service.",
-    "changes": "Changes to Terms",
-    "changesText": "We reserve the right to modify these terms at any time. Continued use of ANQR after changes constitutes acceptance of the new terms.",
-    "governing": "Governing Law",
-    "governingText": "These terms shall be governed by and construed in accordance with applicable laws."
-  },
-  "contact": {
-    "title": "Contact Us",
-    "subtitle": "Get in touch with the ANQR team",
-    "intro": "Have questions, feedback, or need support? We'd love to hear from you.",
-    "name": "Name",
-    "email": "Email",
-    "subject": "Subject",
-    "message": "Message",
-    "send": "Send Message",
-    "sending": "Sending...",
-    "success": "Message sent successfully!",
-    "error": "Failed to send message. Please try again.",
-    "required": "Required",
-    "emailPlaceholder": "your@email.com",
-    "messagePlaceholder": "Your message...",
-    "generalInquiries": "General Inquiries",
-    "generalInquiriesText": "For general questions about ANQR, features, or usage.",
-    "bugReports": "Bug Reports",
-    "bugReportsText": "Found a bug? Please describe what happened and steps to reproduce it.",
-    "featureRequests": "Feature Requests",
-    "featureRequestsText": "Have an idea to make ANQR better? We'd love to hear it.",
-    "business": "Business Inquiries",
-    "businessText": "For business partnerships, licensing, or enterprise solutions."
   },
   "preview": {
     "qrCodePreview": "QR Code Preview - Click Export to download",
@@ -998,8 +1394,6 @@
     "on": "On",
     "off": "Off",
     "yes": "Yes",
-    "labelAdv": "Adv.",
-    "labelPro": "Pro",
     "no": "No",
     "ok": "OK",
     "apply": "Apply",
