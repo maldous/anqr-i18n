@@ -31,6 +31,30 @@
     "temporalDither": "Pontilhamento Temporal",
     "wave": "Onda"
   },
+  "languages": {
+    "en": "Inglês",
+    "hi": "Hindi",
+    "zh": "Chinês",
+    "ms": "Malaio",
+    "ta": "Tâmil",
+    "th": "Tailandês",
+    "pt": "Português",
+    "id": "Indonésio",
+    "vi": "Vietnamita",
+    "tl": "Tagalo",
+    "ja": "Japonês",
+    "ko": "Coreano",
+    "es": "Espanhol",
+    "ar": "Árabe",
+    "ru": "Russo",
+    "te": "Telugu",
+    "mr": "Marata",
+    "bn": "Bengali",
+    "gu": "Guzerate",
+    "kn": "Canarês",
+    "ml": "Malaiala",
+    "pa": "Punjabi"
+  },
   "app": {
     "name": "ANQR",
     "tagline": "Gerador de Código QR"

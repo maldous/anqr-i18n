@@ -445,15 +445,16 @@ export function Header({ onToggleSidebar, onExport, sidebarOpen = false, showGal
             {langMenuOpen && (
               <>
                 <div className="fixed inset-0 z-40" onClick={() => setLangMenuOpen(false)} />
-                <div className="absolute right-0 top-full mt-1 w-48 bg-card border rounded-lg shadow-lg z-50 py-1">
+                <div className="absolute right-0 top-full mt-1 w-64 bg-card border rounded-lg shadow-lg z-50 py-1">
                   {languages.map((lang) => (
                     <button
                       key={lang.code}
                       onClick={() => changeLanguage(lang.code)}
                       className={`w-full px-3 py-2 text-left text-sm hover:bg-muted flex items-center gap-2 ${i18n.language === lang.code || i18n.language.startsWith(lang.code) ? 'bg-muted' : ''}`}
+                      title={`${lang.nativeName} - ${t(`languages.${lang.code}`)}`}
                     >
                       <span>{lang.flag}</span>
-                      <span>{lang.nativeName}</span>
+                      <span>{lang.nativeName}{lang.code !== i18n.language && !i18n.language.startsWith(lang.code) ? ` (${t(`languages.${lang.code}`)})` : ''}</span>
                       {(i18n.language === lang.code || i18n.language.startsWith(lang.code)) && <Check className="h-4 w-4 ml-auto" />}
                     </button>
                   ))}
