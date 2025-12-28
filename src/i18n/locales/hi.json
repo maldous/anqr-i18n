@@ -92,7 +92,9 @@
     "success": "सफल",
     "upload": "अपलोड",
     "viewAll": "सभी देखें",
-    "yes": "हां"
+    "yes": "हां",
+    "labelAdv": "उन्नत",
+    "labelPro": "प्रो"
   },
   "contact": {
     "bugReports": "बग रिपोर्ट",
@@ -1554,7 +1556,9 @@
     "markdown": "Markdown",
     "quickShare": "त्वरित शेयर",
     "twitter": "X/Twitter",
-    "whatsapp": "WhatsApp"
+    "whatsapp": "WhatsApp",
+    "settingsEncodedInUrl_one": "{{count}} सेटिंग URL में एन्कोड की गई",
+    "settingsEncodedInUrl_other": "{{count}} सेटिंग्स URL में एन्कोड की गईं"
   },
   "terms": {
     "acceptance": "शर्तों की स्वीकृति",

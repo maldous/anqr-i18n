@@ -632,7 +632,7 @@ export function Sidebar({ isOpen, onClose }: SidebarProps) {
                             ? 'bg-blue-100 text-blue-700 dark:bg-blue-900 dark:text-blue-300' 
                             : 'bg-purple-100 text-purple-700 dark:bg-purple-900 dark:text-purple-300'
                         }`}>
-                          {section.tier === 'advanced' ? 'ADV' : 'PRO'}
+                          {section.tier === 'advanced' ? t('common.labelAdv') : t('common.labelPro')}
                         </span>
                       )}
                     </div>

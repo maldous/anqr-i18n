@@ -92,7 +92,9 @@
     "success": "成功",
     "upload": "上传",
     "viewAll": "查看全部",
-    "yes": "是"
+    "yes": "是",
+    "labelAdv": "高级",
+    "labelPro": "专业"
   },
   "contact": {
     "bugReports": "Bug 报告",
@@ -1554,7 +1556,9 @@
     "markdown": "Markdown",
     "quickShare": "快速分享",
     "twitter": "X/Twitter",
-    "whatsapp": "WhatsApp"
+    "whatsapp": "WhatsApp",
+    "settingsEncodedInUrl_one": "{{count}} 个设置已编码到 URL 中",
+    "settingsEncodedInUrl_other": "{{count}} 个设置已编码到 URL 中"
   },
   "terms": {
     "acceptance": "接受条款",
