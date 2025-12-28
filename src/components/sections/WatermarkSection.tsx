@@ -57,7 +57,7 @@ export function WatermarkSection() {
               <Input 
                 value={watermark.text}
                 onChange={(e) => setWatermarkText(e.target.value)}
-                placeholder="© Company Name"
+                placeholder={t('watermark.textPlaceholder')}
               />
             </div>
           )}

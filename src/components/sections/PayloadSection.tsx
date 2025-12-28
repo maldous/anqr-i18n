@@ -475,7 +475,7 @@ export function PayloadSection() {
                 <SelectItem value="WPA2">WPA2</SelectItem>
                 <SelectItem value="WPA3">WPA3</SelectItem>
                 <SelectItem value="WEP">WEP</SelectItem>
-                <SelectItem value="nopass">Open (No Password)</SelectItem>
+                <SelectItem value="nopass">{t('payload.openNoPassword')}</SelectItem>
               </SelectContent>
             </Select>
           </div>
@@ -788,11 +788,11 @@ export function PayloadSection() {
               </SelectTrigger>
               <SelectContent>
                 <SelectItem value="pdf">PDF Document</SelectItem>
-                <SelectItem value="doc">Word Document</SelectItem>
-                <SelectItem value="image">Image</SelectItem>
-                <SelectItem value="video">Video</SelectItem>
-                <SelectItem value="audio">Audio</SelectItem>
-                <SelectItem value="other">Other</SelectItem>
+                <SelectItem value="doc">{t('payload.wordDocument')}</SelectItem>
+                <SelectItem value="image">{t('payload.image')}</SelectItem>
+                <SelectItem value="video">{t('payload.video')}</SelectItem>
+                <SelectItem value="audio">{t('payload.audio')}</SelectItem>
+                <SelectItem value="other">{t('payload.other')}</SelectItem>
               </SelectContent>
             </Select>
           </div>
@@ -818,12 +818,12 @@ export function PayloadSection() {
                 <SelectValue />
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value="gdrive">Google Drive</SelectItem>
-                <SelectItem value="dropbox">Dropbox</SelectItem>
-                <SelectItem value="onedrive">OneDrive</SelectItem>
+                <SelectItem value="gdrive">{t('payload.googleDrive')}</SelectItem>
+                <SelectItem value="dropbox">{t('payload.dropbox')}</SelectItem>
+                <SelectItem value="onedrive">{t('payload.oneDrive')}</SelectItem>
                 <SelectItem value="icloud">iCloud</SelectItem>
-                <SelectItem value="box">Box</SelectItem>
-                <SelectItem value="other">Other</SelectItem>
+                <SelectItem value="box">{t('payload.box')}</SelectItem>
+                <SelectItem value="other">{t('payload.other')}</SelectItem>
               </SelectContent>
             </Select>
           </div>
@@ -840,14 +840,14 @@ export function PayloadSection() {
                 <SelectValue />
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value="linkedin">LinkedIn</SelectItem>
+                <SelectItem value="linkedin">{t('payload.linkedin')}</SelectItem>
                 <SelectItem value="twitter">X (Twitter)</SelectItem>
-                <SelectItem value="instagram">Instagram</SelectItem>
-                <SelectItem value="facebook">Facebook</SelectItem>
-                <SelectItem value="tiktok">TikTok</SelectItem>
-                <SelectItem value="youtube">YouTube</SelectItem>
-                <SelectItem value="github">GitHub</SelectItem>
-                <SelectItem value="other">Other</SelectItem>
+                <SelectItem value="instagram">{t('payload.instagram')}</SelectItem>
+                <SelectItem value="facebook">{t('payload.facebook')}</SelectItem>
+                <SelectItem value="tiktok">{t('payload.tiktok')}</SelectItem>
+                <SelectItem value="youtube">{t('payload.youtube')}</SelectItem>
+                <SelectItem value="github">{t('payload.github')}</SelectItem>
+                <SelectItem value="other">{t('payload.other')}</SelectItem>
               </SelectContent>
             </Select>
           </div>
@@ -873,13 +873,13 @@ export function PayloadSection() {
                 <SelectValue />
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value="whatsapp">WhatsApp</SelectItem>
-                <SelectItem value="telegram">Telegram</SelectItem>
-                <SelectItem value="signal">Signal</SelectItem>
-                <SelectItem value="messenger">Messenger</SelectItem>
+                <SelectItem value="whatsapp">{t('payload.whatsapp')}</SelectItem>
+                <SelectItem value="telegram">{t('payload.telegram')}</SelectItem>
+                <SelectItem value="signal">{t('payload.signal')}</SelectItem>
+                <SelectItem value="messenger">{t('payload.messenger')}</SelectItem>
 
                 <SelectItem value="line">LINE</SelectItem>
-                <SelectItem value="viber">Viber</SelectItem>
+                <SelectItem value="viber">{t('payload.viber')}</SelectItem>
               </SelectContent>
             </Select>
           </div>
@@ -911,9 +911,9 @@ export function PayloadSection() {
                 <SelectValue />
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value="bitcoin">Bitcoin</SelectItem>
-                <SelectItem value="ethereum">Ethereum</SelectItem>
-                <SelectItem value="litecoin">Litecoin</SelectItem>
+                <SelectItem value="bitcoin">{t('payload.bitcoin')}</SelectItem>
+                <SelectItem value="ethereum">{t('payload.ethereum')}</SelectItem>
+                <SelectItem value="litecoin">{t('payload.litecoin')}</SelectItem>
               </SelectContent>
             </Select>
           </div>
@@ -1050,7 +1050,7 @@ export function PayloadSection() {
               </SelectTrigger>
               <SelectContent>
                 <SelectItem value="uen">UEN (Business)</SelectItem>
-                <SelectItem value="mobile">Mobile Number</SelectItem>
+                <SelectItem value="mobile">{t('payload.mobileNumber')}</SelectItem>
               </SelectContent>
             </Select>
           </div>
@@ -1097,8 +1097,8 @@ export function PayloadSection() {
                 <SelectValue />
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value="mobile">Mobile Number</SelectItem>
-                <SelectItem value="id">National ID / Tax ID</SelectItem>
+                <SelectItem value="mobile">{t('payload.mobileNumber')}</SelectItem>
+                <SelectItem value="id">{t('payload.nationalIdTaxId')}</SelectItem>
                 <SelectItem value="ewallet">E-Wallet ID</SelectItem>
               </SelectContent>
             </Select>
@@ -1330,10 +1330,10 @@ export function PayloadSection() {
                 <SelectValue />
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value="universal">Universal Link</SelectItem>
-                <SelectItem value="android">Android Intent</SelectItem>
+                <SelectItem value="universal">{t('payload.universalLink')}</SelectItem>
+                <SelectItem value="android">{t('payload.androidIntent')}</SelectItem>
                 <SelectItem value="ios">iOS URL Scheme</SelectItem>
-                <SelectItem value="custom">Custom Scheme</SelectItem>
+                <SelectItem value="custom">{t('payload.customScheme')}</SelectItem>
               </SelectContent>
             </Select>
           </div>
@@ -1414,12 +1414,12 @@ export function PayloadSection() {
                 <SelectValue />
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value="equipment">Equipment</SelectItem>
-                <SelectItem value="furniture">Furniture</SelectItem>
+                <SelectItem value="equipment">{t('payload.equipment')}</SelectItem>
+                <SelectItem value="furniture">{t('payload.furniture')}</SelectItem>
                 <SelectItem value="it">IT Asset</SelectItem>
-                <SelectItem value="vehicle">Vehicle</SelectItem>
-                <SelectItem value="inventory">Inventory Item</SelectItem>
-                <SelectItem value="other">Other</SelectItem>
+                <SelectItem value="vehicle">{t('payload.vehicle')}</SelectItem>
+                <SelectItem value="inventory">{t('payload.inventoryItem')}</SelectItem>
+                <SelectItem value="other">{t('payload.other')}</SelectItem>
               </SelectContent>
             </Select>
           </div>
