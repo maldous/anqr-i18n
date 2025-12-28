@@ -278,7 +278,7 @@ export function Header({ onToggleSidebar, onExport, sidebarOpen = false, showGal
 
   return (
     <>
-    <header className={`border-b bg-card shadow-md sticky top-0 z-50 transition-all duration-300 ${sidebarOpen && isEditor ? 'lg:ml-96' : ''}`} style={{ paddingTop: 'max(var(--sat, 0px), env(safe-area-inset-top, 0px))' }}>
+    <header className={`border-b bg-card shadow-md sticky top-0 z-50 transition-all duration-300 ${sidebarOpen && isEditor ? 'lg:ms-96' : ''}`} style={{ paddingTop: 'max(var(--sat, 0px), env(safe-area-inset-top, 0px))' }}>
       <div className="px-4 flex items-center justify-between h-[52px]">
         <div className="flex items-center gap-6">
           {/* Settings toggle - only in editor mode, placeholder space on other pages */}
@@ -440,12 +440,12 @@ export function Header({ onToggleSidebar, onExport, sidebarOpen = false, showGal
               className="h-9 w-9" 
               title={t('language.select')}
             >
-              <Globe className="h-4 w-4" />
+              <span className="text-base">{currentLang.flag}</span>
             </Button>
             {langMenuOpen && (
               <>
                 <div className="fixed inset-0 z-40" onClick={() => setLangMenuOpen(false)} />
-                <div className="absolute right-0 top-full mt-1 w-72 bg-card border rounded-lg shadow-lg z-50 py-1 max-h-[50vh] overflow-y-auto">
+                <div className="absolute end-0 top-full mt-1 w-72 bg-card border rounded-lg shadow-lg z-50 py-1 max-h-[50vh] overflow-y-auto">
                   {/* Sort languages: current language first, then alphabetically by translated name */}
                   {[...languages]
                     .sort((a, b) => {
@@ -468,7 +468,14 @@ export function Header({ onToggleSidebar, onExport, sidebarOpen = false, showGal
                       title={`${lang.nativeName} - ${t(`languages.${lang.code}`)}`}
                     >
                       <span>{lang.flag}</span>
-                      <span>{lang.nativeName}{lang.code !== i18n.language && !i18n.language.startsWith(lang.code) ? ` (${t(`languages.${lang.code}`)})` : ''}</span>
+                      <span>
+                        {lang.nativeName}
+                        {/* Show English name for current language if not English, otherwise show translated name for other languages */}
+                        {(lang.code === i18n.language || i18n.language.startsWith(lang.code))
+                          ? (lang.code !== 'en' ? ` (${lang.name})` : '')
+                          : ` (${t(`languages.${lang.code}`)})`
+                        }
+                      </span>
                       {(i18n.language === lang.code || i18n.language.startsWith(lang.code)) && <Check className="h-4 w-4 ml-auto" />}
                     </button>
                   ))}
