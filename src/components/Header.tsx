@@ -445,8 +445,22 @@ export function Header({ onToggleSidebar, onExport, sidebarOpen = false, showGal
             {langMenuOpen && (
               <>
                 <div className="fixed inset-0 z-40" onClick={() => setLangMenuOpen(false)} />
-                <div className="absolute right-0 top-full mt-1 w-64 bg-card border rounded-lg shadow-lg z-50 py-1">
-                  {languages.map((lang) => (
+                <div className="absolute right-0 top-full mt-1 w-72 bg-card border rounded-lg shadow-lg z-50 py-1 max-h-[50vh] overflow-y-auto">
+                  {/* Sort languages: current language first, then alphabetically by translated name */}
+                  {[...languages]
+                    .sort((a, b) => {
+                      const currentCode = i18n.language.split('-')[0]
+                      const aIsCurrent = a.code === currentCode || a.code === i18n.language
+                      const bIsCurrent = b.code === currentCode || b.code === i18n.language
+                      // Current language always first
+                      if (aIsCurrent && !bIsCurrent) return -1
+                      if (bIsCurrent && !aIsCurrent) return 1
+                      // Sort by translated name in current language
+                      const aName = t(`languages.${a.code}`)
+                      const bName = t(`languages.${b.code}`)
+                      return aName.localeCompare(bName, i18n.language)
+                    })
+                    .map((lang) => (
                     <button
                       key={lang.code}
                       onClick={() => changeLanguage(lang.code)}

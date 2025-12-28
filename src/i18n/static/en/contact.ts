@@ -3,8 +3,7 @@ import { LAST_UPDATED, CONTACT_EMAIL } from '../types'
 
 export const contact: PageDefinition = {
   title: 'Contact Us',
-  description:
-    'We welcome feedback, bug reports, feature requests, and general enquiries.',
+  description: 'We welcome feedback, bug reports, feature requests, and general enquiries.',
   lastUpdated: LAST_UPDATED,
   sections: [
     {
@@ -72,4 +71,6 @@ export const contact: PageDefinition = {
       ],
     },
   ],
-}
+};
+
+export default contact;
