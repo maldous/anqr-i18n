@@ -10,6 +10,7 @@ import { useQRGenerator } from '@/hooks/useQRGenerator'
 import { useQRStore, type Tier } from '@/store/qr-store'
 import { parseUrlParams } from '@/modules/share-utils'
 import type { GalleryCategory } from '@/data/gallery-items'
+import i18n from '@/i18n'
 
 type PageView = 'editor' | 'gallery' | StaticPageType
 
@@ -39,11 +40,18 @@ function App() {
   const { download } = useQRGenerator()
   const { setOverlayUrl, setOverlayFile, setOverlayEnabled, setOverlayMode, setOverlayIntensity,
           setPayloadText, setPayloadKind, setPayloadUrl, setTier, setQrEcc, setQrVersion, setRenderModulePx, setQrQuietZone,
-          setRenderFgColor, setRenderBgColor, setRenderModuleStyle, setRenderFinderStyle,
+          setRenderFgColor, setRenderBgColor, setRenderBgTransparent, setRenderModuleStyle, setRenderFinderStyle,
           setOverlayColorMode, setOverlayBrightness, setOverlayContrast, setOverlayGamma,
           setOverlayInvert, setOverlayDitherKind, setOverlayDiffusionKernel, setOverlayDitherStrength,
           setOverlaySaturation, setOverlayHueRotate, setOverlayBlur, setOverlaySharpen,
-          setOverlayPosterize, setOverlayThreshold, setOverlayEdgeDetect } = useQRStore()
+          setOverlayPosterize, setOverlayThreshold, setOverlayEdgeDetect,
+          setAnimationSpeedMs, setAnimationLoop, setAnimationBounce,
+          setQrEncodingMode, setRenderModuleGap, setRenderGapMode, setRenderCornerRadius,
+          setRenderFrameStyle, setRenderFrameText, setRenderGradient, setRenderAlignmentStyle, setRenderTimingStyle,
+          setOverlayFit, setOverlayRotate, setOverlayFlip, setOverlayPreserveFinders, setOverlayPreserveTiming, setOverlayPreserveAlignment,
+          setAnimationStartFrame, setAnimationMaxFrames, setAnimationFrameStep,
+          setOutputFormat, setOutputWidth, setOutputHeight, setOutputQuality, setOutputFilename,
+          setOutputGifPaletteSize, setOutputGifQuantizer, setOutputSvgTrueVector } = useQRStore()
 
   const navigateTo = useCallback((page: PageView) => {
     const nextPath = page === 'editor' ? '/' : `/${page}`
@@ -86,6 +94,11 @@ function App() {
   useEffect(() => {
     if (getPageFromLocation() !== 'editor') return
     const params = parseUrlParams()
+    
+    // Apply language from URL params if present
+    if (params.lang) {
+      i18n.changeLanguage(params.lang)
+    }
     
     // Determine required tier based on params used
     let requiredTier: Tier = 'basic'
@@ -158,10 +171,42 @@ function App() {
     if (params.margin !== undefined) setQrQuietZone(params.margin)
     if (params.fg) setRenderFgColor(params.fg)
     if (params.bg) setRenderBgColor(params.bg)
+    if (params.transparent) setRenderBgTransparent(true)
     if (params.style) setRenderModuleStyle(params.style as 'square' | 'rounded' | 'dots' | 'diamond' | 'connected')
     if (params.finder) setRenderFinderStyle(params.finder as 'square' | 'rounded' | 'circle')
+    if (params.alignmentStyle) setRenderAlignmentStyle(params.alignmentStyle as 'match_finder' | 'square' | 'rounded' | 'circle')
+    if (params.timingStyle) setRenderTimingStyle(params.timingStyle as 'match_module' | 'solid' | 'dashed')
+    // Render settings
+    if (params.moduleGap !== undefined) setRenderModuleGap(params.moduleGap)
+    if (params.gapMode) setRenderGapMode(params.gapMode as 'none' | 'inset' | 'stroke' | 'negative_space')
+    if (params.cornerRadius !== undefined) setRenderCornerRadius(params.cornerRadius)
+    if (params.gradientType) setRenderGradient({ type: params.gradientType as 'none' | 'linear' | 'radial' | 'conic' })
+    if (params.eyeOuterStyle) useQRStore.setState((s) => ({ render: { ...s.render, eyeOuterStyle: params.eyeOuterStyle as 'square' | 'rounded' | 'circle' } }))
+    if (params.eyeInnerStyle) useQRStore.setState((s) => ({ render: { ...s.render, eyeInnerStyle: params.eyeInnerStyle as 'square' | 'rounded' | 'circle' } }))
+    if (params.eyeScale !== undefined) useQRStore.setState((s) => ({ render: { ...s.render, eyeScale: params.eyeScale } }))
+    if (params.frameStyle) setRenderFrameStyle(params.frameStyle as 'none' | 'rounded_frame' | 'sticker' | 'tag')
+    if (params.frameText) setRenderFrameText(params.frameText)
+    if (params.dotRotation !== undefined) useQRStore.setState((s) => ({ render: { ...s.render, dotRotationDeg: params.dotRotation } }))
+    if (params.crispEdges === false) useQRStore.setState((s) => ({ render: { ...s.render, crispEdges: false } }))
+    if (params.pixelSnap) useQRStore.setState((s) => ({ render: { ...s.render, pixelSnap: params.pixelSnap as 'floor' | 'round' | 'ceil' } }))
+    if (params.perModuleColorMode) useQRStore.setState((s) => ({ render: { ...s.render, perModuleColorMode: params.perModuleColorMode as 'solid' | 'by_brightness' | 'by_position' | 'by_overlay' | 'by_cluster' } }))
+    if (params.contrastGuard) useQRStore.setState((s) => ({ render: { ...s.render, contrastGuard: true } }))
+    if (params.minContrastRatio !== undefined) useQRStore.setState((s) => ({ render: { ...s.render, minContrastRatio: params.minContrastRatio } }))
+    // Overlay
     if (params.mode) setOverlayMode(params.mode as any)
     if (params.intensity !== undefined) setOverlayIntensity(params.intensity)
+    if (params.fit) setOverlayFit(params.fit as 'cover' | 'contain' | 'stretch')
+    if (params.rotate !== undefined) setOverlayRotate(params.rotate)
+    if (params.flipX) setOverlayFlip({ x: true })
+    if (params.flipY) setOverlayFlip({ y: true })
+    if (params.preserveFinders === false) setOverlayPreserveFinders(false)
+    if (params.preserveTiming) setOverlayPreserveTiming(true)
+    if (params.preserveAlignment) setOverlayPreserveAlignment(true)
+    if (params.protectFormatInfo) useQRStore.setState((s) => ({ overlay: { ...s.overlay, protectFormatInfo: true } }))
+    if (params.protectVersionInfo) useQRStore.setState((s) => ({ overlay: { ...s.overlay, protectVersionInfo: true } }))
+    if (params.eccAwareEnabled) useQRStore.setState((s) => ({ overlay: { ...s.overlay, eccAwareEnabled: true } }))
+    if (params.eccAwareRiskBudget !== undefined) useQRStore.setState((s) => ({ overlay: { ...s.overlay, eccAwareRiskBudget: params.eccAwareRiskBudget } }))
+    if (params.eccAwareWeightMap) useQRStore.setState((s) => ({ overlay: { ...s.overlay, eccAwareWeightMap: params.eccAwareWeightMap as any } }))
     
     // Apply preprocessing params
     if (params.colorMode) setOverlayColorMode(params.colorMode as 'color' | 'grayscale' | 'bw')
@@ -181,10 +226,113 @@ function App() {
     if (params.ditherKind) setOverlayDitherKind(params.ditherKind as any)
     if (params.diffusionKernel) setOverlayDiffusionKernel(params.diffusionKernel as any)
     if (params.ditherStrength !== undefined) setOverlayDitherStrength(params.ditherStrength)
+    if (params.ditherSerpentine) useQRStore.setState((s) => ({ overlay: { ...s.overlay, ditherSerpentine: true } }))
+    if (params.orderedMatrix) useQRStore.setState((s) => ({ overlay: { ...s.overlay, orderedMatrix: params.orderedMatrix as any } }))
+    if (params.blueNoiseTileSize !== undefined) useQRStore.setState((s) => ({ overlay: { ...s.overlay, blueNoiseTileSize: params.blueNoiseTileSize } }))
+    if (params.blueNoiseSeed !== undefined) useQRStore.setState((s) => ({ overlay: { ...s.overlay, blueNoiseSeed: params.blueNoiseSeed } }))
+    if (params.colorDither) useQRStore.setState((s) => ({ overlay: { ...s.overlay, colorDither: params.colorDither as any } }))
+    
+    // Subpixel params
+    if (params.subpixelGridSize) useQRStore.setState((s) => ({ overlay: { ...s.overlay, subpixelGridSize: params.subpixelGridSize as any } }))
+    if (params.subpixelCenterRule) useQRStore.setState((s) => ({ overlay: { ...s.overlay, subpixelCenterRule: params.subpixelCenterRule as any } }))
+    if (params.subpixelNeutralColor) useQRStore.setState((s) => ({ overlay: { ...s.overlay, subpixelNeutralColor: params.subpixelNeutralColor } }))
+    if (params.subpixelFinderOverride) useQRStore.setState((s) => ({ overlay: { ...s.overlay, subpixelFinderOverride: params.subpixelFinderOverride as any } }))
+    
+    // Halftone params
+    if (params.halftoneCell) useQRStore.setState((s) => ({ overlay: { ...s.overlay, halftoneCell: params.halftoneCell as any } }))
+    if (params.halftoneDotShape) useQRStore.setState((s) => ({ overlay: { ...s.overlay, halftoneDotShape: params.halftoneDotShape as any } }))
+    if (params.brightnessCurve) useQRStore.setState((s) => ({ overlay: { ...s.overlay, brightnessCurve: params.brightnessCurve as any } }))
+    if (params.duotoneColor1) useQRStore.setState((s) => ({ overlay: { ...s.overlay, duotoneColors: [params.duotoneColor1!, s.overlay.duotoneColors[1]] } }))
+    if (params.duotoneColor2) useQRStore.setState((s) => ({ overlay: { ...s.overlay, duotoneColors: [s.overlay.duotoneColors[0], params.duotoneColor2!] } }))
+    
+    // Animation params
+    if (params.speed !== undefined) setAnimationSpeedMs(params.speed)
+    if (params.loop === false) setAnimationLoop(false)
+    if (params.reverse) setAnimationBounce(true)
+    if (params.startFrame !== undefined) setAnimationStartFrame(params.startFrame)
+    if (params.maxFrames !== undefined) setAnimationMaxFrames(params.maxFrames)
+    if (params.frameStep !== undefined) setAnimationFrameStep(params.frameStep)
+    if (params.interpolate) useQRStore.setState((s) => ({ animation: { ...s.animation, interpolate: params.interpolate as any } }))
+    if (params.temporalDither) useQRStore.setState((s) => ({ animation: { ...s.animation, temporalDither: params.temporalDither as any } }))
+    if (params.pattern) useQRStore.setState((s) => ({ animation: { ...s.animation, pattern: params.pattern as any } }))
+    if (params.moduleJitter !== undefined) useQRStore.setState((s) => ({ animation: { ...s.animation, moduleJitterPx: params.moduleJitter } }))
+    if (params.colorCycle) useQRStore.setState((s) => ({ animation: { ...s.animation, colorCycle: true } }))
+    if (params.seed !== undefined) useQRStore.setState((s) => ({ animation: { ...s.animation, seed: params.seed } }))
+    
+    // Output params
+    if (params.format) setOutputFormat(params.format as 'png' | 'webp' | 'gif' | 'svg')
+    if (params.width !== undefined) setOutputWidth(params.width)
+    if (params.height !== undefined) setOutputHeight(params.height)
+    if (params.quality !== undefined) setOutputQuality(params.quality)
+    if (params.filename) setOutputFilename(params.filename)
+    if (params.gifPaletteSize !== undefined) setOutputGifPaletteSize(params.gifPaletteSize)
+    if (params.gifQuantizer) setOutputGifQuantizer(params.gifQuantizer as 'median_cut' | 'neuquant' | 'octree')
+    if (params.gifDither) useQRStore.setState((s) => ({ output: { ...s.output, gifDither: params.gifDither as any } }))
+    if (params.svgTrueVector) setOutputSvgTrueVector(true)
+    if (params.dpi !== undefined) useQRStore.setState((s) => ({ output: { ...s.output, dpi: params.dpi } }))
+    if (params.includeQuietZone === false) useQRStore.setState((s) => ({ output: { ...s.output, includeQuietZone: false } }))
+    if (params.bgOverride) useQRStore.setState((s) => ({ output: { ...s.output, bgOverride: params.bgOverride } }))
+    if (params.gifTransparentColor) useQRStore.setState((s) => ({ output: { ...s.output, gifTransparentColor: params.gifTransparentColor } }))
+    if (params.svgShapePrecision) useQRStore.setState((s) => ({ output: { ...s.output, svgShapePrecision: params.svgShapePrecision as any } }))
+    if (params.svgEmbedRasterOverlay === false) useQRStore.setState((s) => ({ output: { ...s.output, svgEmbedRasterOverlay: false } }))
+    if (params.formatExtra) useQRStore.setState((s) => ({ output: { ...s.output, formatExtra: params.formatExtra as any } }))
+    
+    // QR encoding params
+    if (params.encodingMode) setQrEncodingMode(params.encodingMode as 'auto' | 'numeric' | 'alphanumeric' | 'byte' | 'kanji')
+    if (params.borderModulesExtra !== undefined) useQRStore.setState((s) => ({ qr: { ...s.qr, borderModulesExtra: params.borderModulesExtra } }))
+    if (params.quietZoneMinEnforce === false) useQRStore.setState((s) => ({ qr: { ...s.qr, quietZoneMinEnforce: false } }))
     
     // Load overlay from URL if provided
     if (params.overlayUrl) {
       loadOverlayFromUrl(params.overlayUrl)
+    }
+    
+    // Safety params
+    if (params.safetyMode) useQRStore.setState((s) => ({ safety: { ...s.safety, mode: params.safetyMode as any } }))
+    if (params.safetyMinModulePx !== undefined) useQRStore.setState((s) => ({ safety: { ...s.safety, minModulePx: params.safetyMinModulePx } }))
+    if (params.safetyMinQuietZone !== undefined) useQRStore.setState((s) => ({ safety: { ...s.safety, minQuietZoneModules: params.safetyMinQuietZone } }))
+    if (params.lockFinders === false) useQRStore.setState((s) => ({ safety: { ...s.safety, lockFinders: false } }))
+    if (params.lockTiming === false) useQRStore.setState((s) => ({ safety: { ...s.safety, lockTiming: false } }))
+    if (params.lockAlign === false) useQRStore.setState((s) => ({ safety: { ...s.safety, lockAlign: false } }))
+    if (params.lockFormat === false) useQRStore.setState((s) => ({ safety: { ...s.safety, lockFormat: false } }))
+    if (params.lockVersion === false) useQRStore.setState((s) => ({ safety: { ...s.safety, lockVersion: false } }))
+    
+    // QA params
+    if (params.qaContrastCheck) useQRStore.setState((s) => ({ qa: { ...s.qa, contrastCheck: true } }))
+    if (params.qaSimulateBlur !== undefined) useQRStore.setState((s) => ({ qa: { ...s.qa, simulateBlurPx: params.qaSimulateBlur } }))
+    if (params.qaSimulateNoise !== undefined) useQRStore.setState((s) => ({ qa: { ...s.qa, simulateNoise: params.qaSimulateNoise } }))
+    if (params.qaSimulateRotation !== undefined) useQRStore.setState((s) => ({ qa: { ...s.qa, simulateRotationDeg: params.qaSimulateRotation } }))
+    if (params.qaShowHeatmap) useQRStore.setState((s) => ({ qa: { ...s.qa, showHeatmap: true } }))
+    
+    // Auto-tuning params
+    if (params.autoPickVersion === false) useQRStore.setState((s) => ({ auto: { ...s.auto, pickVersion: false } }))
+    if (params.autoPickEcc) useQRStore.setState((s) => ({ auto: { ...s.auto, pickEcc: true } }))
+    if (params.autoReduceIntensity) useQRStore.setState((s) => ({ auto: { ...s.auto, reduceIntensityUntilSafe: true } }))
+    
+    // Watermark params
+    if (params.watermarkEnabled) useQRStore.setState((s) => ({ watermark: { ...s.watermark, enabled: true } }))
+    if (params.watermarkKind) useQRStore.setState((s) => ({ watermark: { ...s.watermark, kind: params.watermarkKind as any } }))
+    if (params.watermarkText) useQRStore.setState((s) => ({ watermark: { ...s.watermark, text: params.watermarkText } }))
+    if (params.watermarkPosition) useQRStore.setState((s) => ({ watermark: { ...s.watermark, position: params.watermarkPosition as any } }))
+    if (params.watermarkOpacity !== undefined) useQRStore.setState((s) => ({ watermark: { ...s.watermark, opacity: params.watermarkOpacity } }))
+    if (params.watermarkBlend) useQRStore.setState((s) => ({ watermark: { ...s.watermark, blend: params.watermarkBlend as any } }))
+    
+    // Metadata params
+    if (params.metaTitle) useQRStore.setState((s) => ({ metadata: { ...s.metadata, title: params.metaTitle } }))
+    if (params.metaAuthor) useQRStore.setState((s) => ({ metadata: { ...s.metadata, author: params.metaAuthor } }))
+    if (params.metaCopyright) useQRStore.setState((s) => ({ metadata: { ...s.metadata, copyright: params.metaCopyright } }))
+    if (params.metaLicense) useQRStore.setState((s) => ({ metadata: { ...s.metadata, license: params.metaLicense } }))
+    if (params.metaDescription) useQRStore.setState((s) => ({ metadata: { ...s.metadata, description: params.metaDescription } }))
+    if (params.metaCreationTime) useQRStore.setState((s) => ({ metadata: { ...s.metadata, creationTime: true } }))
+    if (params.metaCustomKv) {
+      try {
+        const customKv = JSON.parse(params.metaCustomKv)
+        if (Array.isArray(customKv)) {
+          useQRStore.setState((s) => ({ metadata: { ...s.metadata, customKv } }))
+        }
+      } catch (e) {
+        console.error('Failed to parse custom metadata:', e)
+      }
     }
   }, [])
 

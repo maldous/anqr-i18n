@@ -205,7 +205,7 @@ export function OutputSection() {
                   type="text"
                   value={output.gifTransparentColor}
                   onChange={(e) => useQRStore.setState((s) => ({ output: { ...s.output, gifTransparentColor: e.target.value } }))}
-                  placeholder="#ffffff or empty"
+                  placeholder={t('output.transparentColorPlaceholder')}
                   className="flex-1"
                 />
               </div>
@@ -226,7 +226,7 @@ export function OutputSection() {
                 type="text"
                 value={output.bgOverride}
                 onChange={(e) => useQRStore.setState((s) => ({ output: { ...s.output, bgOverride: e.target.value } }))}
-                placeholder="Leave empty for default"
+                placeholder={t('output.backgroundOverridePlaceholder')}
                 className="flex-1"
               />
             </div>
