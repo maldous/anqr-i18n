@@ -11,6 +11,21 @@ import * as ms from './ms'
 import * as pt from './pt'
 import * as ta from './ta'
 import * as th from './th'
+import * as id from './id'
+import * as vi from './vi'
+import * as tl from './tl'
+import * as ja from './ja'
+import * as ko from './ko'
+import * as es from './es'
+import * as ar from './ar'
+import * as ru from './ru'
+import * as te from './te'
+import * as mr from './mr'
+import * as bn from './bn'
+import * as gu from './gu'
+import * as kn from './kn'
+import * as ml from './ml'
+import * as pa from './pa'
 
 // Re-export types for convenience
 export type { PageDefinition, PageSection, StaticPageType } from './types'
@@ -24,6 +39,21 @@ const contentByLanguage: Record<string, Record<StaticPageType, PageDefinition>> 
   pt,
   ta,
   th,
+  id,
+  vi,
+  tl,
+  ja,
+  ko,
+  es,
+  ar,
+  ru,
+  te,
+  mr,
+  bn,
+  gu,
+  kn,
+  ml,
+  pa,
 }
 
 /**

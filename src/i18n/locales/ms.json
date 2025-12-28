@@ -31,6 +31,30 @@
     "temporalDither": "Dither Temporal",
     "wave": "Gelombang"
   },
+  "languages": {
+    "en": "Inggeris",
+    "hi": "Hindi",
+    "zh": "Cina",
+    "ms": "Melayu",
+    "ta": "Tamil",
+    "th": "Thai",
+    "pt": "Portugis",
+    "id": "Indonesia",
+    "vi": "Vietnam",
+    "tl": "Tagalog",
+    "ja": "Jepun",
+    "ko": "Korea",
+    "es": "Sepanyol",
+    "ar": "Arab",
+    "ru": "Rusia",
+    "te": "Telugu",
+    "mr": "Marathi",
+    "bn": "Bengali",
+    "gu": "Gujarati",
+    "kn": "Kannada",
+    "ml": "Malayalam",
+    "pa": "Punjabi"
+  },
   "app": {
     "name": "ANQR",
     "tagline": "Penjana Kod QR"
