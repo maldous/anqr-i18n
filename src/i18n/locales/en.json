@@ -226,7 +226,32 @@
     "itAsset": "IT Asset",
     "vehicle": "Vehicle",
     "inventoryItem": "Inventory Item",
-    "other": "Other"
+    "other": "Other",
+    "openNoPassword": "Open (No Password)",
+    "wordDocument": "Word Document",
+    "image": "Image",
+    "video": "Video",
+    "audio": "Audio",
+    "googleDrive": "Google Drive",
+    "dropbox": "Dropbox",
+    "oneDrive": "OneDrive",
+    "box": "Box",
+    "linkedin": "LinkedIn",
+    "instagram": "Instagram",
+    "facebook": "Facebook",
+    "tiktok": "TikTok",
+    "youtube": "YouTube",
+    "github": "GitHub",
+    "whatsapp": "WhatsApp",
+    "telegram": "Telegram",
+    "signal": "Signal",
+    "messenger": "Messenger",
+    "viber": "Viber",
+    "bitcoin": "Bitcoin",
+    "ethereum": "Ethereum",
+    "litecoin": "Litecoin",
+    "mobileNumber": "Mobile Number",
+    "nationalIdTaxId": "National ID / Tax ID"
   },
   "overlay": {
     "imageGifWebp": "Image / GIF / WebP",
@@ -554,7 +579,8 @@
     "topLeft": "Top Left",
     "topRight": "Top Right",
     "bottomLeft": "Bottom Left",
-    "bottomRight": "Bottom Right"
+    "bottomRight": "Bottom Right",
+    "textPlaceholder": "© Company Name"
   },
   "metadata": {
     "title": "Title",
@@ -567,7 +593,14 @@
     "customMetadata": "Custom Metadata",
     "key": "Key",
     "value": "Value",
-    "addCustomField": "Add Custom Field"
+    "addCustomField": "Add Custom Field",
+    "titlePlaceholder": "QR Code Title",
+    "authorPlaceholder": "Author name",
+    "copyrightPlaceholder": "© 2024 Company Name",
+    "licensePlaceholder": "CC-BY-4.0",
+    "descriptionPlaceholder": "Description of this QR code...",
+    "keyPlaceholder": "Key",
+    "valuePlaceholder": "Value"
   },
   "safety": {
     "analysis": "Safety Analysis",

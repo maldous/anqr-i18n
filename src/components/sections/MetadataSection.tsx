@@ -34,7 +34,7 @@ export function MetadataSection() {
         <Input 
           value={metadata.title}
           onChange={(e) => setMetadata({ title: e.target.value })}
-          placeholder="QR Code Title"
+          placeholder={t('metadata.titlePlaceholder')}
         />
       </div>
 
@@ -44,7 +44,7 @@ export function MetadataSection() {
         <Input 
           value={metadata.author}
           onChange={(e) => setMetadata({ author: e.target.value })}
-          placeholder="Author name"
+          placeholder={t('metadata.authorPlaceholder')}
         />
       </div>
 
@@ -54,7 +54,7 @@ export function MetadataSection() {
         <Input 
           value={metadata.copyright}
           onChange={(e) => setMetadata({ copyright: e.target.value })}
-          placeholder="© 2024 Company Name"
+          placeholder={t('metadata.copyrightPlaceholder')}
         />
       </div>
 
@@ -64,7 +64,7 @@ export function MetadataSection() {
         <Input 
           value={metadata.license}
           onChange={(e) => setMetadata({ license: e.target.value })}
-          placeholder="CC-BY-4.0"
+          placeholder={t('metadata.licensePlaceholder')}
         />
       </div>
 
@@ -74,7 +74,7 @@ export function MetadataSection() {
         <Textarea 
           value={metadata.description}
           onChange={(e) => setMetadata({ description: e.target.value })}
-          placeholder="Description of this QR code..."
+          placeholder={t('metadata.descriptionPlaceholder')}
           rows={3}
         />
       </div>
