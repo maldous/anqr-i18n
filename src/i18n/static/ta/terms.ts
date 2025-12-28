@@ -3,144 +3,139 @@ import { LAST_UPDATED, CONTACT_EMAIL } from '../types'
 
 export const terms: PageDefinition = {
   title: 'சேவை விதிமுறைகள்',
-  description: 'தளத்தை அணுகுவதாலும் பயன்படுத்துவதாலும், இந்த விதிமுறைகளுக்கு நீங்கள் உடன்படுகிறீர்கள்.',
+  description:
+    'இந்த தளத்தை அணுகுவதாலும் அல்லது பயன்படுத்துவதாலும், நீங்கள் இந்த விதிமுறைகளால் கட்டுப்பட ஒப்புக்கொள்கிறீர்கள்.',
   lastUpdated: LAST_UPDATED,
   sections: [
     {
-      heading: 'விதிமுறைகளை ஏற்றுக்கொள்வது',
+      heading: 'விதிமுறைகள் ஏற்றுக்கொள்ளுதல்',
       paragraphs: [
-        `By accessing or using ANQR (anqr.link), you agree to be bound by these Terms of Service and our Privacy Policy. If you do not agree to these terms, do not use the site.`,
-        `We may update these Terms from time to time. Continued use of the site after changes constitutes acceptance of the new terms.`
-      ]
+        'ANQR (anqr.link) ஐ அணுகுவதாலும் அல்லது பயன்படுத்துவதாலும், நீங்கள் இந்த சேவை விதிமுறைகளையும் எங்கள் தனியுரிமைக் கொள்கையையும் ஏற்றுக்கொள்கிறீர்கள். நீங்கள் ஒப்புக்கொள்ளவில்லை என்றால், தளத்தை பயன்படுத்த வேண்டாம்.',
+        'நாங்கள் அவ்வப்போது இந்த விதிமுறைகளை புதுப்பிக்கலாம். மாற்றங்களுக்குப் பிறகு தொடர்ந்த பயன்பாடு புதிய விதிமுறைகளை ஏற்றுக்கொண்டதாக கருதப்படும்.',
+      ],
     },
     {
       heading: 'தகுதி',
       paragraphs: [
-        `You must be at least 13 years of age to use ANQR. By using the site, you represent that you meet this age requirement. If you are under 18, you represent that you have your parent or guardian's permission to use the site.`
-      ]
+        'ANQR ஐ பயன்படுத்த நீங்கள் குறைந்தது 13 வயது இருக்க வேண்டும். தளத்தை பயன்படுத்துவதன் மூலம், நீங்கள் இந்த வயது தேவையை பூர்த்தி செய்கிறீர்கள் எனக் கூறுகிறீர்கள். நீங்கள் 18 வயதிற்கு குறைவானவராக இருந்தால், பெற்றோர் அல்லது பாதுகாவலரின் அனுமதி உங்களிடம் உள்ளது எனக் கூறுகிறீர்கள்.',
+      ],
     },
     {
       heading: 'அனுமதிக்கப்பட்ட பயன்பாடு',
       paragraphs: [
-        `You may use ANQR for lawful purposes only. You are solely responsible for the content you encode into QR codes and for how you use any QR codes you generate.`
-      ]
+        'நீங்கள் ANQR ஐ சட்டப்படி அனுமதிக்கப்பட்ட நோக்கங்களுக்காக மட்டுமே பயன்படுத்தலாம். QR குறியீடுகளில் நீங்கள் குறியாக்கும் உள்ளடக்கம் மற்றும் நீங்கள் உருவாக்கும் எந்த QR குறியீடுகளையும் நீங்கள் எப்படி பயன்படுத்துகிறீர்கள் என்பதற்கும் முழு பொறுப்பும் உங்களதே.',
+      ],
     },
     {
       heading: 'தடைசெய்யப்பட்ட நடத்தை',
-      paragraphs: [
-        'You agree not to:'
-      ],
+      paragraphs: ['நீங்கள் பின்வருவனவற்றை செய்யமாட்டேன் என்று ஒப்புக்கொள்கிறீர்கள்:'],
       bullets: [
-        `Use ANQR to create QR codes that facilitate phishing, malware distribution, fraud, scams, harassment, defamation, or any illegal activity.`,
-        `Encode content that infringes intellectual property rights, violates privacy, or contains illegal material.`,
-        'Attempt to disrupt, overload, or interfere with the operation or security of the site.',
-        'Reverse engineer, decompile, or attempt to extract source code from the site.',
-        `Use automated tools (bots, scrapers) to access the site in a manner that degrades performance for other users.`,
-        'Circumvent or disable any security or access control features.',
-        'Impersonate any person or entity or misrepresent your affiliation.'
-      ]
+        'ஃபிஷிங், மால்வேர் விநியோகம், மோசடி, ஏமாற்று திட்டங்கள், தொல்லை, அவதூறு அல்லது எந்த சட்டவிரோத செயலையும் எளிதாக்கும் QR குறியீடுகளை உருவாக்க ANQR ஐ பயன்படுத்துதல்.',
+        'அறிவுசார் சொத்து உரிமைகளை மீறுவது, தனியுரிமையை மீறுவது அல்லது சட்டவிரோதப் பொருள் உள்ளடக்குவது போன்ற உள்ளடக்கத்தை குறியாக்குதல்.',
+        'தளத்தின் செயல்பாடு அல்லது பாதுகாப்பை குழப்ப, அதிக சுமை ஏற்படுத்த, அல்லது இடையூறு செய்ய முயற்சித்தல்.',
+        'ரிவர்ஸ் எஞ்சினியரிங் செய்யல், டீகம்பைல் செய்யல், அல்லது தளத்தின் மூலக் குறியீட்டை எடுக்க முயற்சித்தல்.',
+        'மற்ற பயனர்களுக்கு செயல்திறன் குறையும்படி தளத்தை அணுக தானியங்கி கருவிகள் (பாட்கள், ஸ்க்ரேப்பர்கள்) பயன்படுத்துதல்.',
+        'பாதுகாப்பு அம்சங்கள் அல்லது அணுகல் கட்டுப்பாடுகளை தாண்டுதல் அல்லது முடக்குதல்.',
+        'ஏதேனும் நபர் அல்லது நிறுவனமாக நடித்து காட்டுதல் அல்லது உங்கள் தொடர்பை தவறாக சித்தரித்தல்.',
+      ],
     },
     {
       heading: 'அறிவுசார் சொத்து',
       paragraphs: [
-        `You retain ownership of the content you encode into QR codes. ANQR does not claim ownership of your data.`,
-        `The ANQR name, logo, interface design, and underlying code are protected by copyright, trademark, and other intellectual property laws. You may not copy, modify, distribute, or create derivative works without our permission.`,
-        `QR Code® is a registered trademark of DENSO WAVE INCORPORATED. ANQR is not affiliated with DENSO WAVE.`
-      ]
+        'QR குறியீடுகளில் நீங்கள் குறியாக்கும் உள்ளடக்கத்தின் உரிமை உங்களிடமே இருக்கும். உங்கள் தரவின் உரிமையை ANQR கோராது.',
+        'ANQR பெயர், லோகோ, இடைமுக வடிவமைப்பு மற்றும் அடிப்படை குறியீடு ஆகியவை பதிப்புரிமை, வர்த்தகமுத்திரை மற்றும் பிற அறிவுசார் சொத்து சட்டங்களால் பாதுகாக்கப்படுகின்றன. எங்கள் அனுமதியின்றி நீங்கள் நகலெடுக்க, மாற்ற, பகிர, அல்லது துணை படைப்புகளை உருவாக்க முடியாது.',
+        'QR Code® என்பது DENSO WAVE INCORPORATED நிறுவனத்தின் பதிவுசெய்யப்பட்ட வர்த்தகமுத்திரை. ANQR, DENSO WAVE உடன் இணைக்கப்படவில்லை.',
+      ],
     },
     {
       heading: 'பயனர் உள்ளடக்க உரிமம்',
       paragraphs: [
-        `By using ANQR, you grant us no rights to your content — all QR code generation happens locally on your device and we do not access, store, or transmit your encoded data.`
-      ]
+        'ANQR ஐ பயன்படுத்துவதன் மூலம், உங்கள் உள்ளடக்கத்தில் எந்த உரிமையும் எங்களுக்கு வழங்கவில்லை — அனைத்து QR குறியீடு உருவாக்கமும் உங்கள் சாதனத்தில் உள்ளூராக நடைபெறுகிறது, மேலும் நீங்கள் குறியாக்கும் தரவை நாங்கள் அணுக, சேமிக்க அல்லது பரிமாற மாட்டோம்.',
+      ],
     },
     {
-      heading: 'மூன்றாம் தரப்பு சேவைகள் மற்றும் விளம்பரம்',
+      heading: 'மூன்றாம் தரப்பு சேவைகள் மற்றும் விளம்பரங்கள்',
       paragraphs: [
-        `The site displays advertisements through Google AdSense and may include links to third-party websites. We are not responsible for third-party content, services, or privacy practices.`,
-        `Your interactions with advertisers and third parties are solely between you and them. See our Privacy Policy for information about advertising data practices.`
-      ]
+        'இந்த தளம் Google AdSense மூலம் விளம்பரங்களை காட்டுகிறது மற்றும் மூன்றாம் தரப்பு தளங்களுக்கு இணைப்புகளை கொண்டிருக்கலாம். மூன்றாம் தரப்பு உள்ளடக்கம், சேவைகள் அல்லது தனியுரிமை நடைமுறைகளுக்கு நாங்கள் பொறுப்பல்ல.',
+        'விளம்பரதாரர்கள் மற்றும் மூன்றாம் தரப்புகளுடன் உங்கள் தொடர்புகள் முழுமையாக உங்களுக்கும் அவர்களுக்கும் இடையே மட்டுமே. விளம்பரத் தரவு நடைமுறைகள் தொடர்பான தகவல்களுக்கு எங்கள் தனியுரிமைக் கொள்கையை பார்க்கவும்.',
+      ],
     },
     {
-      heading: 'உத்தரவாத மறுப்பு',
+      heading: 'உத்தரவாதத் துறப்பு',
       paragraphs: [
-        `ANQR IS PROVIDED ON AN "AS IS" AND "AS AVAILABLE" BASIS WITHOUT WARRANTIES OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, AND NON-INFRINGEMENT.`,
-        `We do not warrant that: (a) the site will be uninterrupted, secure, or error-free; (b) QR codes will scan in all environments, on all devices, or with all scanner applications; (c) the site will meet your requirements.`,
-        `You should always test QR codes in the conditions where they will be used (print size, lighting, screen type, distance, camera quality).`
-      ]
+        'ANQR "இப்படியே" மற்றும் "கிடைக்கும் நிலையில்" எந்தவிதமான வெளிப்படை அல்லது மறைமுக உத்தரவாதமும் இல்லாமல் வழங்கப்படுகிறது; இதில் வாணிபத் தகுதி, குறிப்பிட்ட நோக்கத்திற்கு பொருத்தம், மற்றும் மீறாமை போன்ற மறைமுக உத்தரவாதங்கள் உள்ளிட்டவை (ஆனால் இதற்கு மட்டுப்படாமல்) அடங்கும்.',
+        'நாங்கள் இதை உத்தரவாதம் அளிக்கவில்லை: (a) தளம் இடையூறு இல்லாமல், பாதுகாப்பாக அல்லது பிழையில்லாமல் இயங்கும்; (b) QR குறியீடுகள் எல்லா சூழ்நிலைகளிலும், எல்லா சாதனங்களிலும் அல்லது எல்லா ஸ்கேனர் செயலிகளிலும் ஸ்கேன் செய்யப்படும்; (c) தளம் உங்கள் தேவைகளை பூர்த்தி செய்யும்.',
+        'QR குறியீடுகள் பயன்படுத்தப்படும் சூழ்நிலையில் (அச்சு அளவு, ஒளி, திரை வகை, தூரம், கேமரா தரம்) நீங்கள் எப்போதும் சோதிக்க வேண்டும்.',
+      ],
     },
     {
-      heading: 'பொறுப்பு வரம்பு',
+      heading: 'பொறுப்பு வரம்பு',
       paragraphs: [
-        `TO THE MAXIMUM EXTENT PERMITTED BY LAW, ANQR AND ITS OPERATORS, AFFILIATES, AND LICENSORS SHALL NOT BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, CONSEQUENTIAL, PUNITIVE, OR EXEMPLARY DAMAGES, INCLUDING BUT NOT LIMITED TO DAMAGES FOR LOSS OF PROFITS, REVENUE, DATA, GOODWILL, USE, OR OTHER INTANGIBLE LOSSES, ARISING FROM OR RELATED TO YOUR ACCESS TO OR USE OF (OR INABILITY TO ACCESS OR USE) THE SERVICE.`,
-        `YOU EXPRESSLY UNDERSTAND AND AGREE THAT YOUR USE OF THE SERVICE IS AT YOUR SOLE RISK. THE SERVICE IS PROVIDED FREE OF CHARGE, AND ACCORDINGLY, YOU AGREE THAT ANQR AND ITS OPERATORS SHALL HAVE NO LIABILITY TO YOU WHATSOEVER FOR ANY DAMAGES OR LOSSES. IN NO EVENT SHALL OUR TOTAL AGGREGATE LIABILITY EXCEED ZERO DOLLARS ($0 AUD).`,
-        `YOU AGREE TO RELEASE, WAIVE, AND DISCHARGE ANY AND ALL CLAIMS, DEMANDS, AND CAUSES OF ACTION AGAINST ANQR AND ITS OPERATORS ARISING FROM YOUR USE OF THE SERVICE.`,
-        `SOME JURISDICTIONS DO NOT ALLOW THE EXCLUSION OF CERTAIN WARRANTIES OR LIMITATIONS OF LIABILITY. IN SUCH JURISDICTIONS, OUR LIABILITY SHALL BE LIMITED TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW.`
-      ]
+        'சட்டத்தால் அனுமதிக்கப்பட்ட அதிகபட்ச அளவிற்கு, ANQR மற்றும் அதன் இயக்குநர்கள், இணை நிறுவனங்கள் (affiliates) மற்றும் உரிமம் வழங்குநர்கள், நேரடி, மறைமுக, தற்செயல், சிறப்பு, தொடர்ச்சியான, தண்டனை அல்லது எடுத்துக்காட்டு சேதங்களுக்கு பொறுப்பல்ல — இதில் (ஆனால் இதற்கு மட்டுப்படாமல்) லாப இழப்பு, வருவாய், தரவு, நல்லெண்ணம் (goodwill), பயன்பாடு அல்லது பிற கண்மூடித் இழப்புகள் ஆகியவற்றிற்கான சேதங்கள் அடங்கும் — இது உங்கள் சேவையை அணுகுதல் அல்லது பயன்படுத்துதல் (அல்லது அணுக/பயன்படுத்த இயலாமை) காரணமாக அல்லது அதனுடன் தொடர்புடையதாக ஏற்படும்.',
+        'சேவையின் பயன்பாடு உங்கள் சொந்த ஆபத்தில் இருப்பதை நீங்கள் தெளிவாக புரிந்து கொண்டு ஒப்புக்கொள்கிறீர்கள். சேவை இலவசமாக வழங்கப்படுகிறது; எனவே எந்த சேதம் அல்லது இழப்புக்கும் ANQR மற்றும் அதன் இயக்குநர்கள் உங்களிடம் எந்த பொறுப்பும் இல்லை என நீங்கள் ஒப்புக்கொள்கிறீர்கள். எந்த நிலையிலும் எங்கள் மொத்த கூட்டு பொறுப்பு பூஜ்ஜிய டாலர்கள் ($0 AUD) ஐ மீறாது.',
+        'சேவையை நீங்கள் பயன்படுத்துவதிலிருந்து ஏற்படும் ANQR மற்றும் அதன் இயக்குநர்களுக்கு எதிரான எந்தவொரு/அனைத்து கோரிக்கைகள், வேண்டுகோள்கள் மற்றும் நடவடிக்கை காரணங்களையும் நீங்கள் விடுவித்து, விலக்கி, முடிவுக்கு கொண்டு வர ஒப்புக்கொள்கிறீர்கள்.',
+        'சில நீதிமன்றப் பகுதிகள் சில உத்தரவாதத் துறப்புகள் அல்லது பொறுப்பு வரம்புகளை அனுமதிக்காது. அத்தகைய பகுதிகளில், பொருந்தும் சட்டம் அனுமதிக்கும் அதிகபட்ச அளவிற்கு எங்கள் பொறுப்பு வரையறுக்கப்படும்.',
+      ],
     },
     {
       heading: 'இழப்பீடு',
       paragraphs: [
-        `You agree to indemnify, defend, and hold harmless ANQR, its operators, affiliates, and their respective officers, directors, employees, and agents from any claims, damages, losses, liabilities, costs, and expenses (including legal fees) arising from: (a) your use of the site; (b) your violation of these Terms; (c) your violation of any third-party rights; (d) any content you encode into QR codes.`
-      ]
+        'நீங்கள் ANQR, அதன் இயக்குநர்கள், இணை நிறுவனங்கள் மற்றும் அவர்களது உரிய அதிகாரிகள், இயக்குநர்கள், ஊழியர்கள் மற்றும் முகவர்கள் ஆகியோரைக் (a) உங்கள் தளப் பயன்பாடு; (b) இந்த விதிமுறைகள் மீறல்; (c) மூன்றாம் தரப்பு உரிமைகள் மீறல்; (d) நீங்கள் QR குறியீடுகளில் குறியாக்கும் எந்த உள்ளடக்கமும் காரணமாக எழும் எந்த கோரிக்கை, சேதம், இழப்பு, பொறுப்பு, செலவு மற்றும் செலவினங்கள் (சட்டக் கட்டணங்கள் உட்பட) இலிருந்து இழப்பீடு வழங்க, காப்பாற்ற மற்றும் பாதிப்பின்றி வைத்திருக்க ஒப்புக்கொள்கிறீர்கள்.',
+      ],
     },
     {
       heading: 'தகராறு தீர்வு',
       paragraphs: [
-        `Any dispute arising from these Terms or your use of ANQR shall first be attempted to be resolved through informal negotiation by contacting ${CONTACT_EMAIL}.`,
-        `If informal resolution fails, disputes shall be resolved through binding arbitration in Victoria, Australia, except that either party may seek injunctive relief in court for intellectual property violations.`
-      ]
+        `இந்த விதிமுறைகள் அல்லது உங்கள் ANQR பயன்பாட்டிலிருந்து எழும் எந்த தகராறும் முதலில் அனௌபசாரிக பேச்சுவார்த்தை மூலம் தீர்க்க முயற்சிக்கப்படும்; தொடர்புக்கு: ${CONTACT_EMAIL}.`,
+        'அனௌபசாரிக தீர்வு தோல்வியடைந்தால், தகராறுகள் விக்டோரியா, ஆஸ்திரேலியாவில் கட்டுப்படுத்தும் 仲裁 (arbitration) மூலம் தீர்க்கப்படும்; இருப்பினும், அறிவுசார் சொத்து மீறல்களுக்கு தடை உத்தரவு (injunctive relief) பெற எந்த தரப்பும் நீதிமன்றத்தில் செல்லலாம்.',
+      ],
     },
     {
-      heading: 'கூட்டு வழக்கு விலக்கு',
+      heading: 'குழு வழக்கு விலக்கு',
       paragraphs: [
-        `TO THE EXTENT PERMITTED BY LAW, YOU AGREE THAT ANY DISPUTE RESOLUTION PROCEEDINGS WILL BE CONDUCTED ONLY ON AN INDIVIDUAL BASIS AND NOT IN A CLASS, CONSOLIDATED, OR REPRESENTATIVE ACTION.`
-      ]
+        'சட்டத்தால் அனுமதிக்கப்பட்ட அளவிற்கு, எந்த தகராறு தீர்வு நடவடிக்கையும் தனிப்பட்ட அடிப்படையில் மட்டும் நடக்கும்; அது குழு வழக்கு, ஒன்றிணைந்த அல்லது பிரதிநிதி நடவடிக்கையாக இருக்காது என்று நீங்கள் ஒப்புக்கொள்கிறீர்கள்.',
+      ],
     },
     {
-      heading: 'பொருந்தும் சட்டம்',
+      heading: 'நிர்வகிக்கும் சட்டம்',
       paragraphs: [
-        `These Terms are governed by the laws of Victoria, Australia, without regard to conflict of laws principles. You consent to the exclusive jurisdiction of the courts located in Victoria, Australia.`
-      ]
+        'இந்த விதிமுறைகள் விக்டோரியா, ஆஸ்திரேலியாவின் சட்டங்களால் நிர்வகிக்கப்படுகின்றன; சட்ட மோதல் கொள்கைகளைப் பொருட்படுத்தாமல். விக்டோரியா, ஆஸ்திரேலியாவில் உள்ள நீதிமன்றங்களின் தனிப்பட்ட அதிகார வரம்பிற்கு நீங்கள் ஒப்புக்கொள்கிறீர்கள்.',
+      ],
     },
     {
-      heading: 'மாற்றங்களும் கிடைக்கும் தன்மையும்',
+      heading: 'மாற்றங்கள் மற்றும் கிடைப்புத் தன்மை',
       paragraphs: [
-        `We may modify, suspend, or discontinue the site (or any part of it) at any time without notice or liability.`,
-        `We may update these Terms at any time. The "Last updated" date indicates when they were most recently revised. Continued use after changes constitutes acceptance.`
-      ]
+        'எந்த நேரத்திலும் அறிவிப்பு அல்லது பொறுப்பு இன்றி, தளத்தை (அல்லது அதன் எந்த பகுதியையும்) மாற்ற, இடைநிறுத்த அல்லது நிறுத்த நாங்கள் முடியும்.',
+        'எந்த நேரத்திலும் இந்த விதிமுறைகளை நாங்கள் புதுப்பிக்கலாம். "கடைசியாக புதுப்பிக்கப்பட்டது" தேதி கடைசியாக எப்போது திருத்தப்பட்டது என்பதை காட்டுகிறது. மாற்றங்களுக்குப் பிறகு தொடர்ந்த பயன்பாடு ஏற்றுக்கொள்ளுதல் ஆகும்.',
+      ],
     },
     {
-      heading: 'பிரிக்கத்தக்க தன்மை',
+      heading: 'பிரித்தளிப்பு',
       paragraphs: [
-        `If any provision of these Terms is held invalid or unenforceable, that provision will be enforced to the maximum extent permissible, and the remaining provisions will remain in full force and effect.`
-      ]
+        'இந்த விதிமுறைகளின் ஏதேனும் விதி செல்லாது அல்லது அமல்படுத்த இயலாது என தீர்மானிக்கப்பட்டால், அந்த விதி முடிந்தவரை அதிகபட்ச அளவிற்கு அமல்படுத்தப்படும், மற்றும் மீதமுள்ள விதிகள் முழு பலத்துடன் தொடரும்.',
+      ],
     },
     {
       heading: 'விலக்கு',
       paragraphs: [
-        `Our failure to enforce any right or provision of these Terms shall not be deemed a waiver of such right or provision.`
-      ]
+        'இந்த விதிமுறைகளின் கீழ் எந்த உரிமை அல்லது விதியையும் அமல்படுத்த நாங்கள் தவறினால், அது அந்த உரிமை அல்லது விதியை விலக்குவதாக கருதப்படாது.',
+      ],
     },
     {
       heading: 'முழு ஒப்பந்தம்',
       paragraphs: [
-        `These Terms, together with our Privacy Policy, constitute the entire agreement between you and ANQR regarding your use of the site and supersede any prior agreements.`
-      ]
+        'இந்த விதிமுறைகள் மற்றும் எங்கள் தனியுரிமைக் கொள்கை சேர்ந்து, தளப் பயன்பாட்டைச் சார்ந்து உங்களுக்கும் ANQR க்கும் இடையிலான முழு ஒப்பந்தமாகும், மேலும் முன்னைய எந்த ஒப்பந்தங்களையும் மாற்றுகிறது.',
+      ],
     },
     {
-      heading: 'தவிர்க்க முடியாத சூழ்நிலைகள்',
+      heading: 'ஏமாற்ற இயலாத காரணங்கள்',
       paragraphs: [
-        `We shall not be liable for any failure or delay in performance due to circumstances beyond our reasonable control, including natural disasters, war, terrorism, riots, government actions, or internet/infrastructure failures.`
-      ]
+        'இயற்கை பேரழிவுகள், போர், தீவிரவாதம், கலவரங்கள், அரசாங்க நடவடிக்கைகள் அல்லது இணைய/உள்கட்டமைப்பு தோல்விகள் உள்ளிட்ட, எங்கள் நியாயமான கட்டுப்பாட்டுக்கு வெளியான சூழ்நிலைகளால் ஏற்படும் செயல்படுத்தத் தவறுதல் அல்லது தாமதத்திற்கு நாங்கள் பொறுப்பல்ல.',
+      ],
     },
     {
       heading: 'தொடர்பு',
-      paragraphs: [
-        `Questions about these Terms can be sent to: ${CONTACT_EMAIL}`
-      ]
-    }
-  ]
-};
-
-export default terms;
+      paragraphs: [`இந்த விதிமுறைகள் குறித்து கேள்விகளை இங்கே அனுப்பலாம்: ${CONTACT_EMAIL}`],
+    },
+  ],
+}
