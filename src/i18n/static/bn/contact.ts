@@ -2,72 +2,72 @@ import type { PageDefinition } from '../types'
 import { LAST_UPDATED, CONTACT_EMAIL } from '../types'
 
 export const contact: PageDefinition = {
-  title: 'Contact Us',
-  description: 'We welcome feedback, bug reports, feature requests, and general enquiries.',
+  title: 'আমাদের সাথে যোগাযোগ করুন',
+  description: 'আমরা প্রতিক্রিয়া, বাগ রিপোর্ট, বৈশিষ্ট্য অনুরোধ এবং সাধারণ জিজ্ঞাসাকে স্বাগত জানাই।',
   lastUpdated: LAST_UPDATED,
   sections: [
     {
-      heading: 'How to reach us',
+      heading: 'আমাদের সাথে কীভাবে যোগাযোগ করবেন',
       paragraphs: [
-        'We offer several ways to contact us depending on your needs. We read every message, though response times may vary based on volume and enquiry type.',
+        'আপনার চাহিদার উপর নির্ভর করে আমরা আমাদের সাথে যোগাযোগ করার বিভিন্ন উপায় অফার করি। আমরা প্রতিটি বার্তা পড়ি, যদিও উত্তর দেওয়ার সময় পরিমাণ এবং অনুসন্ধানের ধরণের উপর নির্ভর করে পরিবর্তিত হতে পারে।',
       ],
     },
     {
-      heading: 'Email',
+      heading: 'ইমেল',
       paragraphs: [
-        `For all enquiries: ${CONTACT_EMAIL}`,
-        'This is the most reliable way to reach us and is recommended for detailed questions, business enquiries, or if the contact form does not work on your device.',
+        `সকল জিজ্ঞাসার জন্য: ${CONTACT_EMAIL}`,
+        'আমাদের সাথে যোগাযোগ করার জন্য এটি সবচেয়ে নির্ভরযোগ্য উপায় এবং বিস্তারিত প্রশ্ন, ব্যবসায়িক অনুসন্ধান, অথবা যদি যোগাযোগ ফর্মটি আপনার ডিভাইসে কাজ না করে তবে এটি সুপারিশ করা হয়।',
       ],
     },
     {
-      heading: 'Contact form',
+      heading: 'যোগাযোগ ফর্ম',
       paragraphs: [
-        'Use the form below to send us a message directly. If the form does not submit successfully, please use email instead.',
+        'সরাসরি একটি বার্তা পাঠাতে নীচের ফর্মটি ব্যবহার করুন। যদি ফর্মটি সফলভাবে জমা না হয়, তাহলে অনুগ্রহ করে ইমেল ব্যবহার করুন।',
       ],
     },
     {
-      heading: 'Types of enquiries',
+      heading: 'প্রকার অনুসন্ধান',
       bullets: [
-        'General questions: Questions about how to use ANQR, feature explanations, or general feedback.',
-        'Bug reports: Please include your browser, operating system, steps to reproduce, and any error messages you see.',
-        'Feature requests: Suggestions for new features or improvements. We consider all requests though we cannot promise implementation.',
-        'Business enquiries: Partnership opportunities, licensing questions, or commercial use enquiries.',
-        'Privacy requests: Requests to exercise your privacy rights under GDPR, CCPA, or other privacy laws (see Privacy Policy).',
-        'DMCA/Copyright: See the DMCA section below for takedown notice requirements.',
+        'সাধারণ প্রশ্ন: ANQR, বৈশিষ্ট্য ব্যাখ্যা, অথবা সাধারণ প্রতিক্রিয়া কীভাবে ব্যবহার করবেন সে সম্পর্কে প্রশ্ন।',
+        'বাগ রিপোর্ট: অনুগ্রহ করে আপনার ব্রাউজার, অপারেটিং সিস্টেম, পুনরুৎপাদনের ধাপ এবং আপনি যে কোনও ত্রুটির বার্তা দেখতে পান তা অন্তর্ভুক্ত করুন।',
+        'বৈশিষ্ট্যের অনুরোধ: নতুন বৈশিষ্ট্য বা উন্নতির জন্য পরামর্শ। আমরা সমস্ত অনুরোধ বিবেচনা করি যদিও আমরা বাস্তবায়নের প্রতিশ্রুতি দিতে পারি না।',
+        'ব্যবসায়িক অনুসন্ধান: অংশীদারিত্বের সুযোগ, লাইসেন্সিং প্রশ্ন, অথবা বাণিজ্যিক ব্যবহারের অনুসন্ধান।',
+        'গোপনীয়তার অনুরোধ: GDPR, CCPA, অথবা অন্যান্য গোপনীয়তা আইনের অধীনে আপনার গোপনীয়তার অধিকার প্রয়োগের অনুরোধ (গোপনীয়তা নীতি দেখুন)।',
+        'DMCA/কপিরাইট: টেকডাউন নোটিশের প্রয়োজনীয়তার জন্য নীচের DMCA বিভাগটি দেখুন।',
       ],
     },
     {
-      heading: 'Response times',
+      heading: 'প্রতিক্রিয়ার সময়',
       paragraphs: [
-        'We aim to respond to enquiries within 5-7 business days. Privacy-related requests will be addressed within 30 days as required by law.',
-        'During busy periods, response times may be longer. For urgent matters, please indicate "URGENT" in your subject line.',
+        'আমরা ৫-৭ কার্যদিবসের মধ্যে অনুসন্ধানের জবাব দেওয়ার লক্ষ্য রাখি। আইন অনুসারে গোপনীয়তা-সম্পর্কিত অনুরোধগুলি ৩০ দিনের মধ্যে সমাধান করা হবে।',
+        'ব্যস্ততার সময়, প্রতিক্রিয়ার সময় বেশি হতে পারে। জরুরি বিষয়ের জন্য, অনুগ্রহ করে আপনার বিষয় লাইনে জরুরি নির্দেশ করুন।',
       ],
     },
     {
-      heading: 'Before contacting us',
+      heading: 'আমাদের সাথে যোগাযোগ করার আগে',
       paragraphs: [
-        'Please check our Documentation page for answers to common questions about how to use ANQR features. Many questions about QR code generation, styling, and export options are covered there.',
+        'ANQR বৈশিষ্ট্যগুলি কীভাবে ব্যবহার করবেন সে সম্পর্কে সাধারণ প্রশ্নের উত্তরের জন্য অনুগ্রহ করে আমাদের ডকুমেন্টেশন পৃষ্ঠাটি দেখুন। QR কোড তৈরি, স্টাইলিং এবং রপ্তানি বিকল্পগুলি সম্পর্কে অনেক প্রশ্ন এখানে আলোচনা করা হয়েছে।',
       ],
     },
     {
-      heading: 'DMCA Copyright Notices',
+      heading: 'DMCA কপিরাইট নোটিশ',
       paragraphs: [
-        'If you believe that content available on ANQR infringes your copyright, you may submit a Digital Millennium Copyright Act (DMCA) takedown notice. To be valid, your notice must include:',
+        'যদি আপনি বিশ্বাস করেন যে ANQR-এ উপলব্ধ বিষয়বস্তু আপনার কপিরাইট লঙ্ঘন করে, তাহলে আপনি একটি ডিজিটাল মিলেনিয়াম কপিরাইট আইন (DMCA) টেকডাউন নোটিশ জমা দিতে পারেন। বৈধ হওয়ার জন্য, আপনার নোটিশে অবশ্যই অন্তর্ভুক্ত থাকতে হবে:',
       ],
       bullets: [
-        'A physical or electronic signature of the copyright owner or authorised agent.',
-        'Identification of the copyrighted work claimed to have been infringed.',
-        'Identification of the material that is claimed to be infringing, with information sufficient to locate it.',
-        'Your contact information (address, telephone number, and email address).',
-        'A statement that you have a good faith belief that use of the material is not authorised by the copyright owner.',
-        'A statement, under penalty of perjury, that the information in your notice is accurate and that you are the copyright owner or authorised to act on their behalf.',
+        'কপিরাইট মালিক বা অনুমোদিত এজেন্টের একটি বাস্তব বা ইলেকট্রনিক স্বাক্ষর।',
+        'কপিরাইটযুক্ত কাজের সনাক্তকরণ যা লঙ্ঘন করা হয়েছে বলে দাবি করা হয়েছে।',
+        'যে উপাদানটি লঙ্ঘনকারী বলে দাবি করা হচ্ছে তার সনাক্তকরণ, যাতে এটি সনাক্ত করার জন্য পর্যাপ্ত তথ্য থাকে।',
+        'আপনার যোগাযোগের তথ্য (ঠিকানা, টেলিফোন নম্বর এবং ইমেল ঠিকানা)।',
+        'একটি বিবৃতি যা আপনার দৃঢ় বিশ্বাস যে উপাদানটির ব্যবহার কপিরাইট মালিক কর্তৃক অনুমোদিত নয়।',
+        'মিথ্যা সাক্ষ্যের শাস্তির অধীনে একটি বিবৃতি, যে আপনার নোটিশে থাকা তথ্য সঠিক এবং আপনি কপিরাইটের মালিক অথবা তাদের পক্ষে কাজ করার জন্য অনুমোদিত।',
       ],
     },
     {
-      heading: 'DMCA Contact',
+      heading: 'ডিএমসিএ যোগাযোগ',
       paragraphs: [
-        `Send DMCA notices to: ${CONTACT_EMAIL}`,
-        'Please include "DMCA Notice" in the subject line. We will respond to valid notices in accordance with applicable law. Note that ANQR generates QR codes locally on users devices and does not host user-generated content.',
+        `DMCA নোটিশ পাঠান: ${CONTACT_EMAIL}`,
+        'বিষয়বস্তুতে DMCA Notice অন্তর্ভুক্ত করুন। প্রযোজ্য আইন অনুসারে আমরা বৈধ Notices-এর জবাব দেব। মনে রাখবেন যে ANQR ব্যবহারকারীর ডিভাইসে স্থানীয়ভাবে QR কোড তৈরি করে এবং ব্যবহারকারী-উত্পাদিত কন্টেন্ট হোস্ট করে না।',
       ],
     },
   ],

@@ -2,66 +2,66 @@ import type { PageDefinition } from '../types'
 import { LAST_UPDATED, CONTACT_EMAIL } from '../types'
 
 export const about: PageDefinition = {
-  title: 'About ANQR',
-  description: 'ANQR is a free QR code generator that runs entirely on your device — no account required.',
+  title: 'เกี่ยวกับ ANQR',
+  description: 'ANQR เป็นโปรแกรมสร้างคิวอาร์โค้ดฟรี ที่ทำงานได้บนอุปกรณ์ของคุณโดยสมบูรณ์ ไม่จำเป็นต้องสร้างบัญชีผู้ใช้',
   lastUpdated: LAST_UPDATED,
   sections: [
     {
-      heading: 'What is ANQR?',
+      heading: 'ANQR คืออะไร?',
       paragraphs: [
-        'ANQR (pronounced "anchor") is a free QR code generator that runs locally on your device and creates scannable codes for URLs, text, Wi-Fi credentials, contact cards, calendar events, and more.',
-        'It is built for individuals, small businesses, marketers, and developers who want powerful QR tools without uploading files or signing up. Your data stays on your device.',
+        'ANQR (อ่านว่า แองเคอร์) เป็นโปรแกรมสร้างคิวอาร์โค้ดฟรีที่ทำงานบนอุปกรณ์ของคุณ และสร้างโค้ดที่สามารถสแกนได้สำหรับ URL ข้อความ ข้อมูลประจำตัว Wi-Fi บัตรรายชื่อติดต่อ กิจกรรมในปฏิทิน และอื่นๆ',
+        'แอปนี้สร้างขึ้นสำหรับบุคคลทั่วไป ธุรกิจขนาดเล็ก นักการตลาด และนักพัฒนาที่ต้องการเครื่องมือ QR ที่ทรงพลังโดยไม่ต้องอัปโหลดไฟล์หรือลงทะเบียน ข้อมูลของคุณจะอยู่บนอุปกรณ์ของคุณ',
       ],
     },
     {
-      heading: 'Key features',
+      heading: 'คุณสมบัติหลัก',
       bullets: [
-        'Generate QR codes instantly on your device — no server uploads, no account required.',
-        'Customise colours, module styles, finder patterns, and add image overlays.',
-        'Export in multiple formats: PNG, SVG, WebP, and animated GIF.',
-        'Advanced controls for error correction level, QR version, encoding mode, and mask selection.',
-        'Scan-safety guidance and live preview to help keep codes readable in print and on screens.',
-        'Works offline once loaded — it is a static web app you can run anywhere.',
+        'สร้างคิวอาร์โค้ดได้ทันทีบนอุปกรณ์ของคุณ — ไม่ต้องอัปโหลดไปยังเซิร์ฟเวอร์ ไม่ต้องสร้างบัญชี',
+        'ปรับแต่งสี รูปแบบโมดูล รูปแบบตัวค้นหา และเพิ่มภาพซ้อนทับได้',
+        'ส่งออกได้หลายรูปแบบ: PNG, SVG, WebP และ GIF แบบเคลื่อนไหว',
+        'การควบคุมขั้นสูงสำหรับระดับการแก้ไขข้อผิดพลาด เวอร์ชัน QR โหมดการเข้ารหัส และการเลือกมาสก์',
+        'คำแนะนำด้านความปลอดภัยในการสแกนและการแสดงตัวอย่างแบบเรียลไทม์ เพื่อช่วยให้รหัสสามารถอ่านได้ชัดเจนทั้งในรูปแบบสิ่งพิมพ์และบนหน้าจอ',
+        'ใช้งานแบบออฟไลน์ได้เมื่อโหลดเสร็จแล้ว — เป็นเว็บแอปพลิเคชันแบบคงที่ที่คุณสามารถเรียกใช้ได้ทุกที่',
       ],
     },
     {
-      heading: 'How ANQR works',
+      heading: 'วิธีการทำงานของ ANQR',
       paragraphs: [
-        'ANQR runs in your browser and encodes your input into a standard QR matrix with Reed–Solomon error correction, then renders it to the format you choose.',
-        'All generation happens locally. When you add overlays or animations, ANQR balances styling with scan reliability so the result remains scannable.',
-        'ANQR focuses on static codes (the data is inside the QR). If you need a dynamic code (editable destination), you can encode your own redirect URL or short link.',
+        'ANQR ทำงานในเบราว์เซอร์ของคุณและเข้ารหัสข้อมูลที่คุณป้อนลงในเมทริกซ์ QR มาตรฐานพร้อมการแก้ไขข้อผิดพลาดแบบ Reed–Solomon จากนั้นแสดงผลในรูปแบบที่คุณเลือก',
+        'เมื่อคุณเพิ่มภาพซ้อนทับหรือภาพเคลื่อนไหว ANQR จะปรับสมดุลระหว่างการจัดสไตล์กับความน่าเชื่อถือในการสแกน เพื่อให้ผลลัพธ์ยังคงสามารถสแกนได้',
+        'ANQR เน้นที่รหัสแบบคงที่ (ข้อมูลอยู่ภายใน QR Code) หากคุณต้องการรหัสแบบไดนามิก (ปลายทางที่แก้ไขได้) คุณสามารถเข้ารหัส URL สำหรับการเปลี่ยนเส้นทางหรือลิงก์สั้นของคุณเองได้',
       ],
     },
     {
-      heading: 'Who operates ANQR?',
+      heading: 'ใครเป็นผู้ดำเนินการ ANQR?',
       paragraphs: [
-        'ANQR is operated as an independent web tool. For questions, support, or business enquiries, please use the Contact page or email ' + CONTACT_EMAIL + '.',
+        'ANQR เป็นเครื่องมือบนเว็บที่ทำงานอย่างอิสระ สำหรับคำถาม การสนับสนุน หรือข้อสงสัยทางธุรกิจ โปรดใช้หน้าติดต่อ หรือส่งอีเมล' + CONTACT_EMAIL + '.',
       ],
     },
     {
-      heading: 'Advertising and how we stay free',
+      heading: 'การโฆษณาและวิธีที่เราจะรักษาอิสรภาพไว้ได้',
       paragraphs: [
-        'ANQR is free to use and is supported by advertising. We may show ads via Google AdSense and/or other advertising partners.',
-        'Ad providers may use cookies or similar technologies to personalise ads based on your interests and browsing activity. You can manage ad preferences in your device settings and through Google ad settings, and learn more in our Privacy Policy.',
-        'We do not sell the content you encode into QR codes. Ads help cover the cost of running and improving the project.',
+        'สามารถใช้งานได้ฟรีและได้รับการสนับสนุนจากโฆษณา เราอาจแสดงโฆษณาผ่าน Google AdSense และ/หรือพันธมิตรโฆษณาอื่นๆ',
+        'คุณสามารถจัดการการตั้งค่าโฆษณาได้ในการตั้งค่าอุปกรณ์ของคุณและผ่านการตั้งค่าโฆษณาของ Google และเรียนรู้เพิ่มเติมได้ในนโยบายความเป็นส่วนตัวของเรา',
+        'เราไม่ได้ขายเนื้อหาที่คุณเข้ารหัสลงในคิวอาร์โค้ด โฆษณาช่วยครอบคลุมค่าใช้จ่ายในการดำเนินงานและปรับปรุงโครงการ',
       ],
     },
     {
-      heading: 'Open standards',
+      heading: 'มาตรฐานแบบเปิด',
       paragraphs: [
-        'ANQR generates QR codes based on the ISO/IEC 18004 standard and aims for broad compatibility across scanners, cameras, and print workflows.',
+        'ANQR สร้างคิวอาร์โค้ดโดยอิงตามมาตรฐาน ISO/IEC 18004 และมุ่งเน้นความเข้ากันได้ในวงกว้างกับเครื่องสแกน กล้อง และเวิร์กโฟลว์การพิมพ์',
       ],
     },
     {
-      heading: 'Trademark notice',
+      heading: 'ประกาศเกี่ยวกับเครื่องหมายการค้า',
       paragraphs: [
-        'QR Code® is a registered trademark of DENSO WAVE INCORPORATED. ANQR is not affiliated with, endorsed by, or sponsored by DENSO WAVE INCORPORATED.',
+        'QR Code® เป็นเครื่องหมายการค้าจดทะเบียนของ DENSO WAVE INCORPORATED ANQR ไม่มีส่วนเกี่ยวข้อง สนับสนุน หรือได้รับการรับรองจาก DENSO WAVE INCORPORATED แต่อย่างใด',
       ],
     },
     {
-      heading: 'Feedback and contributions',
+      heading: 'ข้อเสนอแนะและการมีส่วนร่วม',
       paragraphs: [
-        'We welcome feedback, bug reports, and feature suggestions. Please get in touch via email or the contact page — we read every message, though response times may vary.',
+        'รายงานข้อผิดพลาด และคำแนะนำเกี่ยวกับฟีเจอร์ต่างๆ โปรดติดต่อเราผ่านทางอีเมลหรือหน้าติดต่อ เราอ่านทุกข้อความ แต่เวลาในการตอบกลับอาจแตกต่างกันไป',
       ],
     },
   ],

@@ -2,147 +2,147 @@ import type { PageDefinition } from '../types'
 import { LAST_UPDATED, CONTACT_EMAIL } from '../types'
 
 export const privacy: PageDefinition = {
-  title: 'Privacy Policy',
-  description: 'Information ANQR collects, how it is used, and your rights under applicable privacy laws.',
+  title: 'Política de Privacidade',
+  description: 'Informações que a ANQR coleta, como elas são usadas e seus direitos de acordo com as leis de privacidade aplicáveis.',
   lastUpdated: LAST_UPDATED,
   sections: [
     {
-      heading: 'Summary',
+      heading: 'Resumo',
       paragraphs: [
-        'ANQR is a QR code generator that runs entirely on your device. We do not require you to create an account, and QR codes are generated locally — we do not have access to the content you encode.',
-        'We use Google AdSense for advertising and may use analytics services. These services collect information through cookies and similar technologies. This policy explains what data is collected, how it is used, and your rights.',
+        'O ANQR é um gerador de código QR que funciona inteiramente no seu dispositivo. Não exigimos que você crie uma conta e os códigos QR são gerados localmente — não temos acesso ao conteúdo que você codifica.',
+        'Utilizamos o Google AdSense para publicidade e podemos usar serviços de análise. Esses serviços coletam informações por meio de cookies e tecnologias semelhantes. Esta política explica quais dados são coletados, como são usados e seus direitos.',
       ],
     },
     {
-      heading: 'Information we collect',
+      heading: 'Informações que coletamos',
       bullets: [
-        'Information you provide: If you contact us via email or our contact form, we collect your name, email address, and message content.',
-        'Automatically collected information: Our hosting provider (Netlify), advertising partners, and analytics services may collect: IP address, browser type and version, operating system, device type, referring URL, pages visited, time on site, and approximate geographic location.',
-        'Third-party cookies: Our advertising partners (Google AdSense) use cookies and similar technologies to serve and measure advertisements. ANQR itself does not set any first-party cookies.',
+        'Informações que você fornece: Se você entrar em contato conosco por e-mail ou por meio do nosso formulário de contato, coletamos seu nome, endereço de e-mail e conteúdo da mensagem.',
+        'Informações coletadas automaticamente: Nosso provedor de hospedagem (Netlify), parceiros de publicidade e serviços de análise podem coletar: endereço IP, tipo e versão do navegador, sistema operacional, tipo de dispositivo, URL de referência, páginas visitadas, tempo no site e localização geográfica aproximada.',
+        'Cookies de terceiros: Nossos parceiros de publicidade (Google AdSense) usam cookies e tecnologias semelhantes para exibir e medir anúncios. A própria ANQR não define nenhum cookie primário.',
       ],
     },
     {
-      heading: 'Cookies and third-party technologies',
+      heading: 'Cookies e tecnologias de terceiros',
       paragraphs: [
-        'ANQR does not set any first-party cookies. Your preferences (such as dark mode) are stored locally on your device, which is not transmitted to any server.',
-        'However, our advertising partners (Google AdSense) and hosting provider may use cookies and similar tracking technologies:',
-      ],
-      bullets: [
-        'Advertising cookies (third-party): Set by Google AdSense and advertising partners to serve relevant ads, measure ad performance, and understand user interests. These cookies may track your activity across different websites.',
-        'Analytics cookies (third-party): May be used by our hosting provider or analytics services to collect anonymised usage data.',
-      ],
-    },
-    {
-      heading: 'Google AdSense and advertising',
-      paragraphs: [
-        'We display advertisements through Google AdSense. Google and its partners use cookies to serve ads based on your browsing history on this site and other websites (interest-based advertising).',
-        'Learn how Google uses your information: https://policies.google.com/technologies/partner-sites',
-        'Manage ad personalisation: https://adssettings.google.com',
-        'Opt out via Network Advertising Initiative: https://optout.networkadvertising.org',
-        'Opt out via Digital Advertising Alliance: https://optout.aboutads.info',
-      ],
-    },
-    {
-      heading: 'How we use information',
-      bullets: [
-        'To respond to your enquiries and provide support.',
-        'To display relevant advertisements through our advertising partners.',
-        'To analyse site usage and improve our services.',
-        'To detect, prevent, and address fraud, abuse, and security issues.',
-        'To comply with legal obligations.',
-      ],
-    },
-    {
-      heading: 'Third-party services',
-      bullets: [
-        'Google AdSense: Receives data to serve and measure advertisements.',
-        'Analytics providers: Receive anonymised usage data.',
-        'Netlify (hosting): Processes requests and may log IP addresses.',
-        'We do not sell your personal information. However, sharing data with advertising partners may be considered a "sale" under CCPA (see below).',
-      ],
-    },
-    {
-      heading: 'Data retention',
-      bullets: [
-        'Contact submissions: Up to 2 years.',
-        'Server logs: Up to 30 days (hosting provider).',
-        'Analytics data: Up to 26 months (anonymised).',
-        'Advertising cookies: Typically 13 months (varies by partner).',
-      ],
-    },
-    {
-      heading: 'Your rights under GDPR (EEA users)',
-      paragraphs: [
-        'If you are in the European Economic Area, you have the following rights under the General Data Protection Regulation:',
+        'A ANQR não define nenhum cookie primário. Suas preferências (como o modo escuro) são armazenadas localmente em seu dispositivo e não são transmitidas para nenhum servidor.',
+        'No entanto, nossos parceiros de publicidade (Google AdSense) e provedor de hospedagem podem usar cookies e tecnologias de rastreamento semelhantes:',
       ],
       bullets: [
-        'Right of access: Request a copy of personal data we hold about you.',
-        'Right to rectification: Request correction of inaccurate data.',
-        'Right to erasure: Request deletion of your data ("right to be forgotten").',
-        'Right to restrict processing: Request limits on how we use your data.',
-        'Right to data portability: Request your data in a portable format.',
-        'Right to object: Object to processing, including for direct marketing.',
-        'Right to withdraw consent: Withdraw consent at any time where processing is consent-based.',
-        'Right to lodge a complaint: File a complaint with your data protection authority.',
+        'Cookies de publicidade (de terceiros): Definidos pelo Google AdSense e parceiros de publicidade para exibir anúncios relevantes, medir o desempenho dos anúncios e entender os interesses do usuário. Esses cookies podem rastrear sua atividade em diferentes sites.',
+        'Cookies analíticos (de terceiros): Podem ser utilizados pelo nosso fornecedor de hospedagem ou serviços de análise para coletar dados de uso anonimizados.',
       ],
     },
     {
-      heading: 'GDPR legal basis',
+      heading: 'Google AdSense e publicidade',
       paragraphs: [
-        'We process data on these bases: (a) Consent — for personalised advertising (managed by our advertising partners); (b) Legitimate interests — for analytics, security, and improvement; (c) Contract — to respond to enquiries.',
-        `To exercise your rights, contact ${CONTACT_EMAIL}. We respond within 30 days.`,
+        'Exibimos anúncios por meio do Google AdSense. O Google e seus parceiros usam cookies para exibir anúncios com base no seu histórico de navegação neste site e em outros sites (publicidade baseada em interesses).',
+        'Saiba como o Google usa suas informações: https://policies.google.com/technologies/partner-sites',
+        'Gerenciar a personalização de anúncios: https://adssettings.google.com',
+        'Opte por não participar através da Network Advertising Initiative: https://optout.networkadvertising.org',
+        'Desative a publicidade digital através da Digital Advertising Alliance: https://optout.aboutads.info',
       ],
     },
     {
-      heading: 'Your rights under CCPA (California users)',
+      heading: 'Como usamos a informação',
       bullets: [
-        'Right to know: Request information about data collected, sources, purposes, and third parties.',
-        'Right to delete: Request deletion of your personal information.',
-        'Right to opt-out: Opt out of the "sale" of personal information (sharing with ad partners may qualify).',
-        'Right to non-discrimination: We will not discriminate for exercising your rights.',
+        'Para responder às suas perguntas e prestar apoio.',
+        'Exibir anúncios relevantes por meio de nossos parceiros de publicidade.',
+        'Para analisar a utilização do site e melhorar os nossos serviços.',
+        'Detectar, prevenir e lidar com fraudes, abusos e problemas de segurança.',
+        'Para cumprir as obrigações legais.',
       ],
     },
     {
-      heading: 'CCPA categories collected',
-      paragraphs: [
-        'Categories: Identifiers (IP address, device ID), Internet activity (browsing, ad interactions), Geolocation (approximate), Inferences (interests from browsing).',
-        `To exercise rights or opt out: ${CONTACT_EMAIL} or adjust cookie settings.`,
+      heading: 'Serviços de terceiros',
+      bullets: [
+        'Google AdSense: Recebe dados para exibir e mensurar anúncios.',
+        'Fornecedores de análises: Recebam dados de uso anonimizados.',
+        'Netlify (hospedagem): Processa solicitações e pode registrar endereços IP.',
+        'Não vendemos suas informações pessoais. No entanto, o compartilhamento de dados com parceiros de publicidade pode ser considerado uma venda de acordo com a CCPA (veja abaixo).',
       ],
     },
     {
-      heading: 'International transfers',
-      paragraphs: [
-        'Your information may be transferred to countries with different data protection laws, including the United States. We use appropriate safeguards such as Standard Contractual Clauses.',
+      heading: 'Retenção de dados',
+      bullets: [
+        'Envio de contatos: até 2 anos.',
+        'Registros do servidor: até 30 dias (provedor de hospedagem).',
+        'Dados analíticos: até 26 meses (anonimizados).',
+        'Cookies de publicidade: Normalmente 13 meses (varia conforme o parceiro).',
       ],
     },
     {
-      heading: 'Children\'s privacy',
+      heading: 'Seus direitos ao abrigo do RGPD (utilizadores do EEE)',
       paragraphs: [
-        `ANQR is not directed at children under 13 (or 16 in the EEA). We do not knowingly collect data from children. Contact ${CONTACT_EMAIL} if you believe a child has provided information.`,
+        'Se você estiver no Espaço Econômico Europeu, você tem os seguintes direitos de acordo com o Regulamento Geral de Proteção de Dados:',
+      ],
+      bullets: [
+        'Direito de acesso: Solicitar uma cópia dos dados pessoais que mantemos sobre você.',
+        'Direito à retificação: Solicitar a correção de dados incorretos.',
+        'Direito ao apagamento: Solicitar a eliminação dos seus dados (direito ao esquecimento).',
+        'Direito de restringir o processamento: Solicitar limites sobre como usamos seus dados.',
+        'Direito à portabilidade de dados: Solicite seus dados em um formato portátil.',
+        'Direito de oposição: Opor-se ao processamento, inclusive para fins de marketing direto.',
+        'Direito de retirar o consentimento: Retirar o consentimento a qualquer momento, sempre que o processamento for baseado no consentimento.',
+        'Direito de apresentar uma reclamação: Apresente uma reclamação à sua autoridade de proteção de dados.',
       ],
     },
     {
-      heading: 'Security',
+      heading: 'Base jurídica do RGPD',
       paragraphs: [
-        'We use appropriate technical and organisational measures to protect data, including HTTPS encryption. However, no internet transmission is 100% secure.',
+        'Processamos dados com base nestes fundamentos: (a) Consentimento — para publicidade personalizada (gerida pelos nossos parceiros de publicidade); (b) Interesses legítimos — para análises, segurança e melhoria; (c) Contrato — para responder a pedidos de informação.',
+        `Para exercer seus direitos, entre em contato com ${CONTACT_EMAIL}. Responderemos em até 30 dias.`,
       ],
     },
     {
-      heading: 'Do Not Track',
-      paragraphs: [
-        'We honour Do Not Track browser signals where feasible, though advertising partners may not respond to DNT.',
+      heading: 'Seus direitos sob a CCPA (usuários da Califórnia)',
+      bullets: [
+        'Direito de saber: Solicitar informações sobre os dados coletados, suas fontes, finalidades e terceiros envolvidos.',
+        'Direito ao apagamento: Solicite a eliminação das suas informações pessoais.',
+        'Direito de optar por não participar: Optar por não participar da venda de informações pessoais (o compartilhamento com parceiros de publicidade pode se qualificar).',
+        'Direito à não discriminação: Não discriminaremos você por exercer seus direitos.',
       ],
     },
     {
-      heading: 'Changes to this policy',
+      heading: 'Categorias CCPA coletadas',
       paragraphs: [
-        'We may update this policy periodically. The "Last updated" date indicates the most recent revision. Significant changes may be communicated via a site banner.',
+        'Categorias: Identificadores (endereço IP, ID do dispositivo), Atividade na Internet (navegação, interações com anúncios), Geolocalização (aproximada), Inferências (interesses da navegação).',
+        `Para exercer seus direitos ou optar por não participar: ${CONTACT_EMAIL} ou ajuste as configurações de cookies.`,
       ],
     },
     {
-      heading: 'Contact us',
+      heading: 'Transferências internacionais',
       paragraphs: [
-        `For privacy questions or to exercise your rights: ${CONTACT_EMAIL} or use our Contact page. We respond to privacy requests within 30 days.`,
+        'Suas informações podem ser transferidas para países com leis de proteção de dados diferentes, incluindo os Estados Unidos. Utilizamos salvaguardas apropriadas, como Cláusulas Contratuais Padrão.',
+      ],
+    },
+    {
+      heading: 'Privacidade das crianças',
+      paragraphs: [
+        `O ANQR não se destina a crianças menores de 13 anos (ou 16 anos no EEE). Não coletamos dados de crianças intencionalmente. Entre em contato com ${CONTACT_EMAIL} se você acredita que uma criança forneceu informações.`,
+      ],
+    },
+    {
+      heading: 'Segurança',
+      paragraphs: [
+        'Utilizamos medidas técnicas e organizacionais adequadas para proteger os dados, incluindo criptografia HTTPS. No entanto, nenhuma transmissão pela internet é 100% segura.',
+      ],
+    },
+    {
+      heading: 'Não rastrear',
+      paragraphs: [
+        'Respeitamos os sinais de ‘Não Rastrear’ do navegador sempre que possível, embora os parceiros de publicidade possam não responder ao ‘Não Rastrear’.',
+      ],
+    },
+    {
+      heading: 'Alterações a esta política',
+      paragraphs: [
+        'Podemos atualizar esta política periodicamente. A data de Última atualização indica a revisão mais recente. Alterações significativas podem ser comunicadas por meio de um banner no site.',
+      ],
+    },
+    {
+      heading: 'Contacte-nos',
+      paragraphs: [
+        `Para questões de privacidade ou para exercer seus direitos: ${CONTACT_EMAIL} ou use nossa página de contato. Respondemos às solicitações de privacidade em até 30 dias.`,
       ],
     },
   ],

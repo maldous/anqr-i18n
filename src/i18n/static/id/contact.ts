@@ -2,72 +2,72 @@ import type { PageDefinition } from '../types'
 import { LAST_UPDATED, CONTACT_EMAIL } from '../types'
 
 export const contact: PageDefinition = {
-  title: 'Contact Us',
-  description: 'We welcome feedback, bug reports, feature requests, and general enquiries.',
+  title: 'Hubungi Kami',
+  description: 'Kami menerima masukan, laporan bug, permintaan fitur, dan pertanyaan umum.',
   lastUpdated: LAST_UPDATED,
   sections: [
     {
-      heading: 'How to reach us',
+      heading: 'Cara menghubungi kami',
       paragraphs: [
-        'We offer several ways to contact us depending on your needs. We read every message, though response times may vary based on volume and enquiry type.',
+        'Kami menawarkan beberapa cara untuk menghubungi kami, tergantung pada kebutuhan Anda. Kami membaca setiap pesan, meskipun waktu respons dapat bervariasi berdasarkan volume dan jenis pertanyaan.',
       ],
     },
     {
       heading: 'Email',
       paragraphs: [
-        `For all enquiries: ${CONTACT_EMAIL}`,
-        'This is the most reliable way to reach us and is recommended for detailed questions, business enquiries, or if the contact form does not work on your device.',
+        `Untuk semua pertanyaan: ${CONTACT_EMAIL}`,
+        'Ini adalah cara paling andal untuk menghubungi kami dan direkomendasikan untuk pertanyaan detail, pertanyaan bisnis, atau jika formulir kontak tidak berfungsi di perangkat Anda.',
       ],
     },
     {
-      heading: 'Contact form',
+      heading: 'Formulir kontak',
       paragraphs: [
-        'Use the form below to send us a message directly. If the form does not submit successfully, please use email instead.',
+        'Gunakan formulir di bawah ini untuk mengirimkan pesan langsung kepada kami. Jika formulir tidak berhasil terkirim, silakan gunakan email sebagai gantinya.',
       ],
     },
     {
-      heading: 'Types of enquiries',
+      heading: 'Jenis-jenis pertanyaan',
       bullets: [
-        'General questions: Questions about how to use ANQR, feature explanations, or general feedback.',
-        'Bug reports: Please include your browser, operating system, steps to reproduce, and any error messages you see.',
-        'Feature requests: Suggestions for new features or improvements. We consider all requests though we cannot promise implementation.',
-        'Business enquiries: Partnership opportunities, licensing questions, or commercial use enquiries.',
-        'Privacy requests: Requests to exercise your privacy rights under GDPR, CCPA, or other privacy laws (see Privacy Policy).',
-        'DMCA/Copyright: See the DMCA section below for takedown notice requirements.',
+        'Pertanyaan umum: Pertanyaan tentang cara menggunakan ANQR, penjelasan fitur, atau umpan balik umum.',
+        'Laporan bug: Harap sertakan peramban Anda, sistem operasi, langkah-langkah untuk mereproduksi masalah, dan pesan kesalahan apa pun yang Anda lihat.',
+        'Permintaan fitur: Saran untuk fitur baru atau peningkatan. Kami mempertimbangkan semua permintaan meskipun kami tidak dapat menjanjikan implementasinya.',
+        'Pertanyaan bisnis: Peluang kemitraan, pertanyaan perizinan, atau pertanyaan penggunaan komersial.',
+        'Permintaan privasi: Permintaan untuk menggunakan hak privasi Anda berdasarkan GDPR, CCPA, atau undang-undang privasi lainnya (lihat Kebijakan Privasi).',
+        'DMCA/Hak Cipta: Lihat bagian DMCA di bawah ini untuk persyaratan pemberitahuan penghapusan konten.',
       ],
     },
     {
-      heading: 'Response times',
+      heading: 'Waktu respons',
       paragraphs: [
-        'We aim to respond to enquiries within 5-7 business days. Privacy-related requests will be addressed within 30 days as required by law.',
-        'During busy periods, response times may be longer. For urgent matters, please indicate "URGENT" in your subject line.',
+        'Kami berupaya menanggapi pertanyaan dalam waktu 5-7 hari kerja. Permintaan terkait privasi akan ditangani dalam waktu 30 hari sesuai dengan ketentuan hukum.',
+        'Selama periode sibuk, waktu respons mungkin lebih lama. Untuk hal-hal yang mendesak, harap cantumkan URGENT di baris subjek email Anda.',
       ],
     },
     {
-      heading: 'Before contacting us',
+      heading: 'Sebelum menghubungi kami',
       paragraphs: [
-        'Please check our Documentation page for answers to common questions about how to use ANQR features. Many questions about QR code generation, styling, and export options are covered there.',
+        'Silakan periksa halaman Dokumentasi kami untuk jawaban atas pertanyaan umum tentang cara menggunakan fitur ANQR. Banyak pertanyaan tentang pembuatan kode QR, penataan gaya, dan opsi ekspor dibahas di sana.',
       ],
     },
     {
-      heading: 'DMCA Copyright Notices',
+      heading: 'Pemberitahuan Hak Cipta DMCA',
       paragraphs: [
-        'If you believe that content available on ANQR infringes your copyright, you may submit a Digital Millennium Copyright Act (DMCA) takedown notice. To be valid, your notice must include:',
+        'Jika Anda yakin bahwa konten yang tersedia di ANQR melanggar hak cipta Anda, Anda dapat mengirimkan pemberitahuan penghapusan berdasarkan Digital Millennium Copyright Act (DMCA). Agar sah, pemberitahuan Anda harus mencakup:',
       ],
       bullets: [
-        'A physical or electronic signature of the copyright owner or authorised agent.',
-        'Identification of the copyrighted work claimed to have been infringed.',
-        'Identification of the material that is claimed to be infringing, with information sufficient to locate it.',
-        'Your contact information (address, telephone number, and email address).',
-        'A statement that you have a good faith belief that use of the material is not authorised by the copyright owner.',
-        'A statement, under penalty of perjury, that the information in your notice is accurate and that you are the copyright owner or authorised to act on their behalf.',
+        'Tanda tangan fisik atau elektronik dari pemilik hak cipta atau agen yang diberi wewenang.',
+        'Identifikasi karya berhak cipta yang diklaim telah dilanggar.',
+        'Identifikasi materi yang diklaim sebagai pelanggaran, dengan informasi yang cukup untuk menemukannya.',
+        'Informasi kontak Anda (alamat, nomor telepon, dan alamat email).',
+        'Pernyataan bahwa Anda memiliki keyakinan yang jujur bahwa penggunaan materi tersebut tidak diizinkan oleh pemilik hak cipta.',
+        'Suatu pernyataan, di bawah sumpah, bahwa informasi dalam pemberitahuan Anda akurat dan bahwa Anda adalah pemilik hak cipta atau berwenang untuk bertindak atas nama mereka.',
       ],
     },
     {
-      heading: 'DMCA Contact',
+      heading: 'Kontak DMCA',
       paragraphs: [
-        `Send DMCA notices to: ${CONTACT_EMAIL}`,
-        'Please include "DMCA Notice" in the subject line. We will respond to valid notices in accordance with applicable law. Note that ANQR generates QR codes locally on users devices and does not host user-generated content.',
+        `Kirim pemberitahuan DMCA ke: ${CONTACT_EMAIL}`,
+        'Harap sertakan Pemberitahuan DMCA di baris subjek. Kami akan menanggapi pemberitahuan yang sah sesuai dengan hukum yang berlaku. Harap dicatat bahwa ANQR menghasilkan kode QR secara lokal di perangkat pengguna dan tidak menghosting konten yang dibuat pengguna.',
       ],
     },
   ],

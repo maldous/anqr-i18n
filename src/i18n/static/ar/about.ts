@@ -2,66 +2,66 @@ import type { PageDefinition } from '../types'
 import { LAST_UPDATED, CONTACT_EMAIL } from '../types'
 
 export const about: PageDefinition = {
-  title: 'About ANQR',
-  description: 'ANQR is a free QR code generator that runs entirely on your device — no account required.',
+  title: 'نبذة عن ANQR',
+  description: 'ANQR هو مولد رموز QR مجاني يعمل بالكامل على جهازك - لا يلزم وجود حساب.',
   lastUpdated: LAST_UPDATED,
   sections: [
     {
-      heading: 'What is ANQR?',
+      heading: 'ما هو ANQR؟',
       paragraphs: [
-        'ANQR (pronounced "anchor") is a free QR code generator that runs locally on your device and creates scannable codes for URLs, text, Wi-Fi credentials, contact cards, calendar events, and more.',
-        'It is built for individuals, small businesses, marketers, and developers who want powerful QR tools without uploading files or signing up. Your data stays on your device.',
+        'ANQR (يُنطق anchor) هو مولد رموز QR مجاني يعمل محليًا على جهازك ويقوم بإنشاء رموز قابلة للمسح الضوئي لعناوين URL والنصوص وبيانات اعتماد Wi-Fi وبطاقات جهات الاتصال وأحداث التقويم والمزيد.',
+        'تم تصميمه للأفراد والشركات الصغيرة والمسوقين والمطورين الذين يرغبون في الحصول على أدوات QR قوية دون تحميل ملفات أو التسجيل. بياناتك تبقى على جهازك.',
       ],
     },
     {
-      heading: 'Key features',
+      heading: 'الميزات الرئيسية',
       bullets: [
-        'Generate QR codes instantly on your device — no server uploads, no account required.',
-        'Customise colours, module styles, finder patterns, and add image overlays.',
-        'Export in multiple formats: PNG, SVG, WebP, and animated GIF.',
-        'Advanced controls for error correction level, QR version, encoding mode, and mask selection.',
-        'Scan-safety guidance and live preview to help keep codes readable in print and on screens.',
-        'Works offline once loaded — it is a static web app you can run anywhere.',
+        'قم بإنشاء رموز QR على جهازك فورًا - لا حاجة لتحميلها على خادم، ولا يلزم وجود حساب.',
+        'تخصيص الألوان، وأنماط الوحدات، وأنماط البحث، وإضافة طبقات الصور.',
+        'التصدير بصيغ متعددة: PNG و SVG و WebP و GIF المتحركة.',
+        'عناصر تحكم متقدمة لمستوى تصحيح الأخطاء، وإصدار رمز الاستجابة السريعة، ووضع التشفير، واختيار القناع.',
+        'إرشادات السلامة الخاصة بالمسح الضوئي والمعاينة المباشرة للمساعدة في الحفاظ على إمكانية قراءة الرموز في الطباعة وعلى الشاشات.',
+        'يعمل دون اتصال بالإنترنت بمجرد تحميله - إنه تطبيق ويب ثابت يمكنك تشغيله في أي مكان.',
       ],
     },
     {
-      heading: 'How ANQR works',
+      heading: 'كيف يعمل نظام ANQR',
       paragraphs: [
-        'ANQR runs in your browser and encodes your input into a standard QR matrix with Reed–Solomon error correction, then renders it to the format you choose.',
-        'All generation happens locally. When you add overlays or animations, ANQR balances styling with scan reliability so the result remains scannable.',
-        'ANQR focuses on static codes (the data is inside the QR). If you need a dynamic code (editable destination), you can encode your own redirect URL or short link.',
+        'يعمل برنامج ANQR في متصفحك ويقوم بتشفير مدخلاتك إلى مصفوفة QR قياسية مع تصحيح أخطاء ريد-سولومون، ثم يعرضها بالتنسيق الذي تختاره.',
+        'يتم إنشاء كل شيء محليًا. عند إضافة طبقات أو رسوم متحركة، يوازن ANQR بين التصميم وموثوقية المسح الضوئي بحيث تظل النتيجة قابلة للمسح الضوئي.',
+        'يركز نظام ANQR على الرموز الثابتة (البيانات موجودة داخل رمز الاستجابة السريعة). إذا كنت بحاجة إلى رمز ديناميكي (وجهة قابلة للتعديل)، يمكنك ترميز عنوان URL لإعادة التوجيه أو رابط مختصر خاص بك.',
       ],
     },
     {
-      heading: 'Who operates ANQR?',
+      heading: 'من يدير ANQR؟',
       paragraphs: [
-        'ANQR is operated as an independent web tool. For questions, support, or business enquiries, please use the Contact page or email ' + CONTACT_EMAIL + '.',
+        'يتم تشغيل ANQR كأداة ويب مستقلة. للاستفسارات أو الدعم أو الاستفسارات التجارية، يرجى استخدام صفحة الاتصال أو البريد الإلكتروني.' + CONTACT_EMAIL + '.',
       ],
     },
     {
-      heading: 'Advertising and how we stay free',
+      heading: 'الإعلان وكيف نحافظ على حريتنا',
       paragraphs: [
-        'ANQR is free to use and is supported by advertising. We may show ads via Google AdSense and/or other advertising partners.',
-        'Ad providers may use cookies or similar technologies to personalise ads based on your interests and browsing activity. You can manage ad preferences in your device settings and through Google ad settings, and learn more in our Privacy Policy.',
-        'We do not sell the content you encode into QR codes. Ads help cover the cost of running and improving the project.',
+        'خدمة ANQR مجانية الاستخدام ومدعومة بالإعلانات. قد نعرض إعلانات عبر Google AdSense و/أو شركاء إعلانيين آخرين.',
+        'قد يستخدم مزودو الإعلانات ملفات تعريف الارتباط أو تقنيات مشابهة لتخصيص الإعلانات بناءً على اهتماماتك ونشاط التصفح الخاص بك. يمكنك إدارة تفضيلات الإعلانات في إعدادات جهازك ومن خلال إعدادات إعلانات جوجل، ومعرفة المزيد في سياسة الخصوصية الخاصة بنا.',
+        'نحن لا نبيع المحتوى الذي تقوم بتشفيره في رموز QR. تساعد الإعلانات في تغطية تكلفة تشغيل المشروع وتحسينه.',
       ],
     },
     {
-      heading: 'Open standards',
+      heading: 'المعايير المفتوحة',
       paragraphs: [
-        'ANQR generates QR codes based on the ISO/IEC 18004 standard and aims for broad compatibility across scanners, cameras, and print workflows.',
+        'تقوم ANQR بإنشاء رموز QR بناءً على معيار ISO/IEC 18004 وتهدف إلى تحقيق توافق واسع النطاق عبر الماسحات الضوئية والكاميرات وسير عمل الطباعة.',
       ],
     },
     {
-      heading: 'Trademark notice',
+      heading: 'إشعار العلامة التجارية',
       paragraphs: [
-        'QR Code® is a registered trademark of DENSO WAVE INCORPORATED. ANQR is not affiliated with, endorsed by, or sponsored by DENSO WAVE INCORPORATED.',
+        'رمز الاستجابة السريعة® هو علامة تجارية مسجلة لشركة دينسو ويف إنكوربوريتد. لا ترتبط ANQR بشركة دينسو ويف إنكوربوريتد، ولا تحظى بتأييدها أو رعايتها.',
       ],
     },
     {
-      heading: 'Feedback and contributions',
+      heading: 'التعليقات والمساهمات',
       paragraphs: [
-        'We welcome feedback, bug reports, and feature suggestions. Please get in touch via email or the contact page — we read every message, though response times may vary.',
+        'نرحب بالتعليقات وتقارير الأخطاء واقتراحات الميزات. يرجى التواصل معنا عبر البريد الإلكتروني أو صفحة الاتصال - نقرأ كل رسالة، على الرغم من أن أوقات الرد قد تختلف.',
       ],
     },
   ],

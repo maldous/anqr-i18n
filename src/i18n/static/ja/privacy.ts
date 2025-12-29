@@ -2,147 +2,147 @@ import type { PageDefinition } from '../types'
 import { LAST_UPDATED, CONTACT_EMAIL } from '../types'
 
 export const privacy: PageDefinition = {
-  title: 'Privacy Policy',
-  description: 'Information ANQR collects, how it is used, and your rights under applicable privacy laws.',
+  title: 'プライバシーポリシー',
+  description: 'ANQR が収集する情報、その使用方法、および適用されるプライバシー法に基づくお客様の権利',
   lastUpdated: LAST_UPDATED,
   sections: [
     {
-      heading: 'Summary',
+      heading: '要約',
       paragraphs: [
-        'ANQR is a QR code generator that runs entirely on your device. We do not require you to create an account, and QR codes are generated locally — we do not have access to the content you encode.',
-        'We use Google AdSense for advertising and may use analytics services. These services collect information through cookies and similar technologies. This policy explains what data is collected, how it is used, and your rights.',
+        'ANQRは、お使いのデバイス上で完全に動作するQRコードジェネレータです。アカウントの作成は不要で、QRコードはローカルで生成されます。エンコードされたコンテンツにはアクセスできません。',
+        '当社は広告掲載にGoogle AdSenseを使用し、分析サービスを使用する場合があります。これらのサービスはCookieや類似の技術を通じて情報を収集します。本ポリシーでは、収集されるデータの種類、その使用方法、およびお客様の権利について説明します。',
       ],
     },
     {
-      heading: 'Information we collect',
+      heading: '当社が収集する情報',
       bullets: [
-        'Information you provide: If you contact us via email or our contact form, we collect your name, email address, and message content.',
-        'Automatically collected information: Our hosting provider (Netlify), advertising partners, and analytics services may collect: IP address, browser type and version, operating system, device type, referring URL, pages visited, time on site, and approximate geographic location.',
-        'Third-party cookies: Our advertising partners (Google AdSense) use cookies and similar technologies to serve and measure advertisements. ANQR itself does not set any first-party cookies.',
+        'お客様から提供される情報：お客様がメールまたはお問い合わせフォームから当社にご連絡いただいた場合、当社はお客様のお名前、メールアドレス、メッセージの内容を収集します。',
+        '自動的に収集される情報：当社のホスティングプロバイダー（Netlify）、広告パートナー、分析サービスは、IPアドレス、ブラウザの種類とバージョン、オペレーティングシステム、デバイスの種類、参照元URL、アクセスしたページ、サイト滞在時間、おおよその地理的位置を収集する場合があります。',
+        'サードパーティCookie：当社の広告パートナー（Google AdSense）は、広告の配信と測定にCookieおよび類似の技術を使用しています。ANQR自体はファーストパーティCookieを設定していません。',
       ],
     },
     {
-      heading: 'Cookies and third-party technologies',
+      heading: 'Cookieとサードパーティのテクノロジー',
       paragraphs: [
-        'ANQR does not set any first-party cookies. Your preferences (such as dark mode) are stored locally on your device, which is not transmitted to any server.',
-        'However, our advertising partners (Google AdSense) and hosting provider may use cookies and similar tracking technologies:',
-      ],
-      bullets: [
-        'Advertising cookies (third-party): Set by Google AdSense and advertising partners to serve relevant ads, measure ad performance, and understand user interests. These cookies may track your activity across different websites.',
-        'Analytics cookies (third-party): May be used by our hosting provider or analytics services to collect anonymised usage data.',
-      ],
-    },
-    {
-      heading: 'Google AdSense and advertising',
-      paragraphs: [
-        'We display advertisements through Google AdSense. Google and its partners use cookies to serve ads based on your browsing history on this site and other websites (interest-based advertising).',
-        'Learn how Google uses your information: https://policies.google.com/technologies/partner-sites',
-        'Manage ad personalisation: https://adssettings.google.com',
-        'Opt out via Network Advertising Initiative: https://optout.networkadvertising.org',
-        'Opt out via Digital Advertising Alliance: https://optout.aboutads.info',
-      ],
-    },
-    {
-      heading: 'How we use information',
-      bullets: [
-        'To respond to your enquiries and provide support.',
-        'To display relevant advertisements through our advertising partners.',
-        'To analyse site usage and improve our services.',
-        'To detect, prevent, and address fraud, abuse, and security issues.',
-        'To comply with legal obligations.',
-      ],
-    },
-    {
-      heading: 'Third-party services',
-      bullets: [
-        'Google AdSense: Receives data to serve and measure advertisements.',
-        'Analytics providers: Receive anonymised usage data.',
-        'Netlify (hosting): Processes requests and may log IP addresses.',
-        'We do not sell your personal information. However, sharing data with advertising partners may be considered a "sale" under CCPA (see below).',
-      ],
-    },
-    {
-      heading: 'Data retention',
-      bullets: [
-        'Contact submissions: Up to 2 years.',
-        'Server logs: Up to 30 days (hosting provider).',
-        'Analytics data: Up to 26 months (anonymised).',
-        'Advertising cookies: Typically 13 months (varies by partner).',
-      ],
-    },
-    {
-      heading: 'Your rights under GDPR (EEA users)',
-      paragraphs: [
-        'If you are in the European Economic Area, you have the following rights under the General Data Protection Regulation:',
+        'ANQRはファーストパーティCookieを一切設定しません。お客様の設定（ダークモードなど）はデバイス上にローカルに保存され、サーバーに送信されることはありません。',
+        'ただし、当社の広告パートナー（Google AdSense）およびホスティングプロバイダーは、Cookieおよび同様の追跡技術を使用する場合があります。',
       ],
       bullets: [
-        'Right of access: Request a copy of personal data we hold about you.',
-        'Right to rectification: Request correction of inaccurate data.',
-        'Right to erasure: Request deletion of your data ("right to be forgotten").',
-        'Right to restrict processing: Request limits on how we use your data.',
-        'Right to data portability: Request your data in a portable format.',
-        'Right to object: Object to processing, including for direct marketing.',
-        'Right to withdraw consent: Withdraw consent at any time where processing is consent-based.',
-        'Right to lodge a complaint: File a complaint with your data protection authority.',
+        '広告Cookie（サードパーティ）：Google AdSenseおよび広告パートナーが、関連性の高い広告の配信、広告パフォーマンスの測定、ユーザーの興味関心の把握を目的として設定します。これらのCookieは、複数のウェブサイトにおけるユーザーのアクティビティを追跡する場合があります。',
+        'アナリティクスクッキー（サードパーティ）：ホスティングプロバイダーまたはアナリティクスサービスによって匿名の使用状況データを収集するために使用される場合があります。',
       ],
     },
     {
-      heading: 'GDPR legal basis',
+      heading: 'Google AdSenseと広告',
       paragraphs: [
-        'We process data on these bases: (a) Consent — for personalised advertising (managed by our advertising partners); (b) Legitimate interests — for analytics, security, and improvement; (c) Contract — to respond to enquiries.',
-        `To exercise your rights, contact ${CONTACT_EMAIL}. We respond within 30 days.`,
+        '当サイトはGoogle AdSenseを通じて広告を表示しています。GoogleとそのパートナーはCookieを使用して、当サイトや他のウェブサイトにおけるお客様の閲覧履歴に基づいて広告を配信します（インタレストベース広告）。',
+        'Googleがあなたの情報をどのように使用するかについて詳しくは、https://policies.google.com/technologies/partner-sitesをご覧ください',
+        '広告のパーソナライズを管理する: https://adssettings.google.com',
+        'Network Advertising Initiative 経由でオプトアウト: https://optout.networkadvertising.org',
+        'デジタル広告連合経由でオプトアウト：https://optout.aboutads.info',
       ],
     },
     {
-      heading: 'Your rights under CCPA (California users)',
+      heading: '情報の利用方法',
       bullets: [
-        'Right to know: Request information about data collected, sources, purposes, and third parties.',
-        'Right to delete: Request deletion of your personal information.',
-        'Right to opt-out: Opt out of the "sale" of personal information (sharing with ad partners may qualify).',
-        'Right to non-discrimination: We will not discriminate for exercising your rights.',
+        'お客様からのお問い合わせに回答し、サポートを提供するため。',
+        '広告パートナーを通じて関連性の高い広告を表示するため。',
+        'サイトの使用状況を分析し、サービスを改善するため。',
+        '詐欺、不正使用、セキュリティ上の問題を検出し、防止し、対処するため。',
+        '法的義務を遵守するため。',
       ],
     },
     {
-      heading: 'CCPA categories collected',
-      paragraphs: [
-        'Categories: Identifiers (IP address, device ID), Internet activity (browsing, ad interactions), Geolocation (approximate), Inferences (interests from browsing).',
-        `To exercise rights or opt out: ${CONTACT_EMAIL} or adjust cookie settings.`,
+      heading: 'サードパーティのサービス',
+      bullets: [
+        'Google AdSense: 広告の配信と測定のためにデータを受信します。',
+        'アナリティクスプロバイダー: 匿名化された使用状況データを受信します。',
+        'Netlify（ホスティング）：リクエストを処理し、IP アドレスをログに記録する場合があります。',
+        '当社はお客様の個人情報を販売しません。ただし、広告パートナーとデータを共有することは、CCPA（カリフォルニア州消費者プライバシー法）に基づく 販売とみなされる場合があります（下記参照）。',
       ],
     },
     {
-      heading: 'International transfers',
-      paragraphs: [
-        'Your information may be transferred to countries with different data protection laws, including the United States. We use appropriate safeguards such as Standard Contractual Clauses.',
+      heading: 'データ保持',
+      bullets: [
+        '連絡先の送信: 最大 2 年間',
+        'サーバーログ: 最大30日間 (ホスティングプロバイダー)',
+        '分析データ：最大26か月（匿名化）',
+        '広告クッキー：通常13か月（パートナーによって異なります）',
       ],
     },
     {
-      heading: 'Children\'s privacy',
+      heading: 'GDPRに基づくお客様の権利（EEAユーザー）',
       paragraphs: [
-        `ANQR is not directed at children under 13 (or 16 in the EEA). We do not knowingly collect data from children. Contact ${CONTACT_EMAIL} if you believe a child has provided information.`,
+        '欧州経済地域にお住まいの場合、一般データ保護規則に基づき以下の権利を有します。',
+      ],
+      bullets: [
+        'アクセス権：当社が保有するお客様の個人データのコピーを要求する。',
+        '訂正権：不正確なデータの訂正を要求する。',
+        '消去権：データの削除を要求する（忘れられる権利）',
+        '処理制限の権利：データの使用方法の制限を要求する。',
+        'データポータビリティの権利：ポータブル形式でのデータの要求。',
+        '異議申し立て権：ダイレクトマーケティングを含む、処理に異議を申し立てる。',
+        '同意を撤回する権利：処理が同意に基づいている場合はいつでも同意を撤回できます。',
+        '苦情を申し立てる権利：データ保護当局に苦情を申し立てます。',
       ],
     },
     {
-      heading: 'Security',
+      heading: 'GDPRの法的根拠',
       paragraphs: [
-        'We use appropriate technical and organisational measures to protect data, including HTTPS encryption. However, no internet transmission is 100% secure.',
+        '当社は以下の根拠に基づいてデータを処理します。(a) 同意 - パーソナライズされた広告のため（当社の広告パートナーが管理します）(b) 正当な利益 - 分析、セキュリティ、改善のため(c) 契約 - お問い合わせに対応するため。',
+        `権利を行使するには、${CONTACT_EMAIL}までご連絡ください。30日以内にご返信いたします。`,
       ],
     },
     {
-      heading: 'Do Not Track',
-      paragraphs: [
-        'We honour Do Not Track browser signals where feasible, though advertising partners may not respond to DNT.',
+      heading: 'CCPAに基づくあなたの権利（カリフォルニア州ユーザー）',
+      bullets: [
+        '知る権利：収集されたデータ、その情報源、目的、第三者に関する情報を要求する。',
+        '削除権：個人情報の削除を要求する。',
+        'オプトアウトの権利：個人情報の販売をオプトアウトする（広告パートナーとの共有は対象となる場合があります）',
+        '差別されない権利：私たちはあなたの権利を行使したことを理由に差別しません。',
       ],
     },
     {
-      heading: 'Changes to this policy',
+      heading: 'CCPAカテゴリー収集',
       paragraphs: [
-        'We may update this policy periodically. The "Last updated" date indicates the most recent revision. Significant changes may be communicated via a site banner.',
+        'カテゴリー:識別子（IPアドレス、デバイスID）、インターネットアクティビティ（閲覧、広告インタラクション）、地理位置情報（おおよそ）、推論（閲覧からの興味）。',
+        `権利を行使またはオプトアウトするには：${CONTACT_EMAIL}にアクセスするか、Cookie設定を調整してください。`,
       ],
     },
     {
-      heading: 'Contact us',
+      heading: '国際送金',
       paragraphs: [
-        `For privacy questions or to exercise your rights: ${CONTACT_EMAIL} or use our Contact page. We respond to privacy requests within 30 days.`,
+        'お客様の情報は、米国を含む、データ保護法が異なる国に転送される場合があります。当社は、標準契約条項などの適切な保護措置を講じています。',
+      ],
+    },
+    {
+      heading: '子どものプライバシー',
+      paragraphs: [
+        `ANQRは13歳未満（EEAでは16歳未満）のお子様を対象としていません。当社は、お子様から故意にデータを収集することはありません。お子様が情報を提供したと思われる場合は、${CONTACT_EMAIL}までご連絡ください。`,
+      ],
+    },
+    {
+      heading: 'セキュリティ',
+      paragraphs: [
+        '当社は、HTTPS暗号化を含む適切な技術的および組織的措置を講じてデータを保護しています。ただし、インターネット通信は100%安全ではありません。',
+      ],
+    },
+    {
+      heading: '追跡しないでください',
+      paragraphs: [
+        '当社は可能な限りDo Not Trackブラウザ信号を尊重しますが、広告パートナーはDNTに応答しない場合があります。',
+      ],
+    },
+    {
+      heading: 'このポリシーの変更',
+      paragraphs: [
+        '本ポリシーは定期的に更新される場合があります。最終更新日は最新の改訂日を示します。重要な変更については、サイトバナーでお知らせする場合があります。',
+      ],
+    },
+    {
+      heading: 'お問い合わせ',
+      paragraphs: [
+        `プライバシーに関するご質問、または権利行使については、${CONTACT_EMAIL}までご連絡いただくか、お問い合わせページをご利用ください。プライバシーに関するお問い合わせには30日以内に対応いたします。`,
       ],
     },
   ],

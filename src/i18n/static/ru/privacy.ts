@@ -2,147 +2,147 @@ import type { PageDefinition } from '../types'
 import { LAST_UPDATED, CONTACT_EMAIL } from '../types'
 
 export const privacy: PageDefinition = {
-  title: 'Privacy Policy',
-  description: 'Information ANQR collects, how it is used, and your rights under applicable privacy laws.',
+  title: 'конфиденциальности',
+  description: 'которую собирает ANQR, способы ее использования и ваши права в соответствии с применимыми законами о защите персональных данных.',
   lastUpdated: LAST_UPDATED,
   sections: [
     {
-      heading: 'Summary',
+      heading: 'изложение',
       paragraphs: [
-        'ANQR is a QR code generator that runs entirely on your device. We do not require you to create an account, and QR codes are generated locally — we do not have access to the content you encode.',
-        'We use Google AdSense for advertising and may use analytics services. These services collect information through cookies and similar technologies. This policy explains what data is collected, how it is used, and your rights.',
+        '— это генератор QR-кодов, который работает полностью на вашем устройстве. Вам не нужно создавать учетную запись, и QR-коды генерируются локально — у нас нет доступа к закодированному вами содержимому.',
+        'используем Google AdSense для размещения рекламы и можем использовать аналитические сервисы. Эти сервисы собирают информацию с помощью файлов cookie и аналогичных технологий. Данная политика объясняет, какие данные собираются, как они используются и каковы ваши права.',
       ],
     },
     {
-      heading: 'Information we collect',
+      heading: 'которую мы собираем',
       bullets: [
-        'Information you provide: If you contact us via email or our contact form, we collect your name, email address, and message content.',
-        'Automatically collected information: Our hosting provider (Netlify), advertising partners, and analytics services may collect: IP address, browser type and version, operating system, device type, referring URL, pages visited, time on site, and approximate geographic location.',
-        'Third-party cookies: Our advertising partners (Google AdSense) use cookies and similar technologies to serve and measure advertisements. ANQR itself does not set any first-party cookies.',
+        'вами информация: Если вы связываетесь с нами по электронной почте или через форму обратной связи, мы собираем ваше имя, адрес электронной почты и содержание сообщения.',
+        'собираемая информация: наш хостинг-провайдер (Netlify), рекламные партнеры и аналитические сервисы могут собирать: IP-адрес, тип и версию браузера, операционную систему, тип устройства, URL-адрес источника перехода, посещенные страницы, время, проведенное на сайте, и приблизительное географическое местоположение.',
+        'файлы cookie: Наши рекламные партнеры (Google AdSense) используют файлы cookie и аналогичные технологии для показа и измерения эффективности рекламы. Сама компания ANQR не устанавливает никаких собственных файлов cookie.',
       ],
     },
     {
-      heading: 'Cookies and third-party technologies',
+      heading: 'cookie и сторонние технологии',
       paragraphs: [
-        'ANQR does not set any first-party cookies. Your preferences (such as dark mode) are stored locally on your device, which is not transmitted to any server.',
-        'However, our advertising partners (Google AdSense) and hosting provider may use cookies and similar tracking technologies:',
-      ],
-      bullets: [
-        'Advertising cookies (third-party): Set by Google AdSense and advertising partners to serve relevant ads, measure ad performance, and understand user interests. These cookies may track your activity across different websites.',
-        'Analytics cookies (third-party): May be used by our hosting provider or analytics services to collect anonymised usage data.',
-      ],
-    },
-    {
-      heading: 'Google AdSense and advertising',
-      paragraphs: [
-        'We display advertisements through Google AdSense. Google and its partners use cookies to serve ads based on your browsing history on this site and other websites (interest-based advertising).',
-        'Learn how Google uses your information: https://policies.google.com/technologies/partner-sites',
-        'Manage ad personalisation: https://adssettings.google.com',
-        'Opt out via Network Advertising Initiative: https://optout.networkadvertising.org',
-        'Opt out via Digital Advertising Alliance: https://optout.aboutads.info',
-      ],
-    },
-    {
-      heading: 'How we use information',
-      bullets: [
-        'To respond to your enquiries and provide support.',
-        'To display relevant advertisements through our advertising partners.',
-        'To analyse site usage and improve our services.',
-        'To detect, prevent, and address fraud, abuse, and security issues.',
-        'To comply with legal obligations.',
-      ],
-    },
-    {
-      heading: 'Third-party services',
-      bullets: [
-        'Google AdSense: Receives data to serve and measure advertisements.',
-        'Analytics providers: Receive anonymised usage data.',
-        'Netlify (hosting): Processes requests and may log IP addresses.',
-        'We do not sell your personal information. However, sharing data with advertising partners may be considered a "sale" under CCPA (see below).',
-      ],
-    },
-    {
-      heading: 'Data retention',
-      bullets: [
-        'Contact submissions: Up to 2 years.',
-        'Server logs: Up to 30 days (hosting provider).',
-        'Analytics data: Up to 26 months (anonymised).',
-        'Advertising cookies: Typically 13 months (varies by partner).',
-      ],
-    },
-    {
-      heading: 'Your rights under GDPR (EEA users)',
-      paragraphs: [
-        'If you are in the European Economic Area, you have the following rights under the General Data Protection Regulation:',
+        'не устанавливает никаких собственных файлов cookie. Ваши предпочтения (например, темный режим) хранятся локально на вашем устройстве и не передаются ни на какой сервер.',
+        'наши рекламные партнеры (Google AdSense) и хостинг-провайдер могут использовать файлы cookie и аналогичные технологии отслеживания:',
       ],
       bullets: [
-        'Right of access: Request a copy of personal data we hold about you.',
-        'Right to rectification: Request correction of inaccurate data.',
-        'Right to erasure: Request deletion of your data ("right to be forgotten").',
-        'Right to restrict processing: Request limits on how we use your data.',
-        'Right to data portability: Request your data in a portable format.',
-        'Right to object: Object to processing, including for direct marketing.',
-        'Right to withdraw consent: Withdraw consent at any time where processing is consent-based.',
-        'Right to lodge a complaint: File a complaint with your data protection authority.',
+        'файлы cookie (сторонних разработчиков): устанавливаются Google AdSense и рекламными партнерами для показа релевантной рекламы, измерения эффективности рекламы и понимания интересов пользователей. Эти файлы cookie могут отслеживать вашу активность на разных веб-сайтах.',
+        'файлы cookie (третьих лиц): могут использоваться нашим хостинг-провайдером или аналитическими службами для сбора анонимных данных об использовании.',
       ],
     },
     {
-      heading: 'GDPR legal basis',
+      heading: 'AdSense и реклама',
       paragraphs: [
-        'We process data on these bases: (a) Consent — for personalised advertising (managed by our advertising partners); (b) Legitimate interests — for analytics, security, and improvement; (c) Contract — to respond to enquiries.',
-        `To exercise your rights, contact ${CONTACT_EMAIL}. We respond within 30 days.`,
+        'показываем рекламу через Google AdSense. Google и его партнеры используют файлы cookie для показа рекламы на основе вашей истории просмотров на этом сайте и других веб-сайтах (реклама на основе интересов).',
+        'как Google использует вашу информацию: https://policies.google.com/technologies/partner-sites',
+        'персонализацией рекламы: https://adssettings.google.com',
+        'от участия можно через Инициативу сетевой рекламы: https://optout.networkadvertising.org',
+        'от участия можно через Digital Advertising Alliance: https://optout.aboutads.info',
       ],
     },
     {
-      heading: 'Your rights under CCPA (California users)',
+      heading: 'мы используем информацию',
       bullets: [
-        'Right to know: Request information about data collected, sources, purposes, and third parties.',
-        'Right to delete: Request deletion of your personal information.',
-        'Right to opt-out: Opt out of the "sale" of personal information (sharing with ad partners may qualify).',
-        'Right to non-discrimination: We will not discriminate for exercising your rights.',
+        'на ваши запросы и оказывать поддержку.',
+        'показа релевантной рекламы через наших рекламных партнеров.',
+        'анализа использования сайта и улучшения наших услуг.',
+        'предотвращать и устранять мошенничество, злоупотребления и проблемы безопасности.',
+        'юридические обязательства.',
       ],
     },
     {
-      heading: 'CCPA categories collected',
-      paragraphs: [
-        'Categories: Identifiers (IP address, device ID), Internet activity (browsing, ad interactions), Geolocation (approximate), Inferences (interests from browsing).',
-        `To exercise rights or opt out: ${CONTACT_EMAIL} or adjust cookie settings.`,
+      heading: 'услуги',
+      bullets: [
+        'AdSense: получает данные для показа и измерения эффективности рекламы.',
+        'аналитических услуг: получают анонимизированные данные об использовании.',
+        '(хостинг): обрабатывает запросы и может регистрировать IP-адреса.',
+        'не продаем вашу личную информацию. Однако передача данных рекламным партнерам может рассматриваться как продажа в соответствии с CCPA (см. ниже).',
       ],
     },
     {
-      heading: 'International transfers',
-      paragraphs: [
-        'Your information may be transferred to countries with different data protection laws, including the United States. We use appropriate safeguards such as Standard Contractual Clauses.',
+      heading: 'данных',
+      bullets: [
+        'действия контактных данных: до 2 лет.',
+        'сервера: до 30 дней (хостинг-провайдер).',
+        'данные: до 26 месяцев (анонимизированные).',
+        'файлы cookie: обычно 13 месяцев (может варьироваться в зависимости от партнера).',
       ],
     },
     {
-      heading: 'Children\'s privacy',
+      heading: 'права в соответствии с GDPR (для пользователей из ЕЭЗ)',
       paragraphs: [
-        `ANQR is not directed at children under 13 (or 16 in the EEA). We do not knowingly collect data from children. Contact ${CONTACT_EMAIL} if you believe a child has provided information.`,
+        'вы находитесь в Европейской экономической зоне, вы имеете следующие права в соответствии с Общим регламентом по защите данных:',
+      ],
+      bullets: [
+        'доступа: запросите копию ваших персональных данных, которые мы храним.',
+        'на исправление: Запрос на исправление неточных данных.',
+        'на удаление: Запросите удаление ваших данных (право быть забытым).',
+        'на ограничение обработки: Запросите ограничения на использование ваших данных.',
+        'на переносимость данных: запросите свои данные в переносимом формате.',
+        'на возражение: Возражать против обработки данных, в том числе для целей прямой маркетинговой рассылки.',
+        'на отзыв согласия: Вы можете отозвать согласие в любое время, если обработка данных основана на согласии.',
+        'подать жалобу: подайте жалобу в орган по защите данных.',
       ],
     },
     {
-      heading: 'Security',
+      heading: 'основа GDPR',
       paragraphs: [
-        'We use appropriate technical and organisational measures to protect data, including HTTPS encryption. However, no internet transmission is 100% secure.',
+        'обрабатываем данные на следующих основаниях: (а) Согласие — для персонализированной рекламы (управляемой нашими рекламными партнерами); (б) Законные интересы — для аналитики, безопасности и улучшения; (в) Договор — для ответа на запросы.',
+        `осуществления своих прав свяжитесь с ${CONTACT_EMAIL}. Мы ответим в течение 30 дней.`,
       ],
     },
     {
-      heading: 'Do Not Track',
-      paragraphs: [
-        'We honour Do Not Track browser signals where feasible, though advertising partners may not respond to DNT.',
+      heading: 'права в соответствии с CCPA (пользователи из Калифорнии)',
+      bullets: [
+        'на получение информации: Запрос информации о собранных данных, их источниках, целях и третьих лицах.',
+        'на удаление: Запросите удаление вашей личной информации.',
+        'на отказ: Откажитесь от продажи персональной информации (передача рекламным партнерам может подпадать под это право).',
+        'на недискриминацию: Мы не будем дискриминировать вас за осуществление ваших прав.',
       ],
     },
     {
-      heading: 'Changes to this policy',
+      heading: 'категории CCPA',
       paragraphs: [
-        'We may update this policy periodically. The "Last updated" date indicates the most recent revision. Significant changes may be communicated via a site banner.',
+        'Идентификаторы (IP-адрес, идентификатор устройства), Интернет-активность (просмотр веб-страниц, взаимодействие с рекламой), Геолокация (приблизительная), Выводы (интересы, выявленные на основе просмотра веб-страниц).',
+        `воспользоваться своими правами или отказаться от участия: ${CONTACT_EMAIL} или изменить настройки файлов cookie.`,
       ],
     },
     {
-      heading: 'Contact us',
+      heading: 'переводы',
       paragraphs: [
-        `For privacy questions or to exercise your rights: ${CONTACT_EMAIL} or use our Contact page. We respond to privacy requests within 30 days.`,
+        'информация может быть передана в страны с иным законодательством о защите данных, включая Соединенные Штаты. Мы используем соответствующие меры защиты, такие как стандартные договорные положения.',
+      ],
+    },
+    {
+      heading: 'частной жизни детей',
+      paragraphs: [
+        `не предназначен для детей младше 13 лет (или 16 лет в ЕЭЗ). Мы сознательно не собираем данные от детей. Свяжитесь с ${CONTACT_EMAIL}, если вы считаете, что ребенок предоставил информацию.`,
+      ],
+    },
+    {
+      heading: 'Безопасность',
+      paragraphs: [
+        'используем соответствующие технические и организационные меры для защиты данных, включая шифрование HTTPS. Однако ни одна передача данных через Интернет не является на 100% безопасной.',
+      ],
+    },
+    {
+      heading: 'отслеживать',
+      paragraphs: [
+        'учитываем сигналы браузера Не отслеживать, где это возможно, хотя рекламные партнеры могут не реагировать на DNT.',
+      ],
+    },
+    {
+      heading: 'в данной политике',
+      paragraphs: [
+        'можем периодически обновлять эту политику. Дата Последнее обновление указывает на последнюю редакцию. О существенных изменениях может сообщаться через баннер на сайте.',
+      ],
+    },
+    {
+      heading: 'с нами',
+      paragraphs: [
+        `вопросам конфиденциальности или для осуществления ваших прав: ${CONTACT_EMAIL} или воспользуйтесь нашей страницей Контакты. Мы отвечаем на запросы о конфиденциальности в течение 30 дней.`,
       ],
     },
   ],

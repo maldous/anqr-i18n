@@ -2,147 +2,147 @@ import type { PageDefinition } from '../types'
 import { LAST_UPDATED, CONTACT_EMAIL } from '../types'
 
 export const privacy: PageDefinition = {
-  title: 'Privacy Policy',
-  description: 'Information ANQR collects, how it is used, and your rights under applicable privacy laws.',
+  title: 'سياسة الخصوصية',
+  description: 'المعلومات التي تجمعها ANQR، وكيفية استخدامها، وحقوقك بموجب قوانين الخصوصية المعمول بها.',
   lastUpdated: LAST_UPDATED,
   sections: [
     {
-      heading: 'Summary',
+      heading: 'ملخص',
       paragraphs: [
-        'ANQR is a QR code generator that runs entirely on your device. We do not require you to create an account, and QR codes are generated locally — we do not have access to the content you encode.',
-        'We use Google AdSense for advertising and may use analytics services. These services collect information through cookies and similar technologies. This policy explains what data is collected, how it is used, and your rights.',
+        'ANQR هو مولد رموز QR يعمل بالكامل على جهازك. لا نطلب منك إنشاء حساب، ويتم إنشاء رموز QR محليًا - ليس لدينا إمكانية الوصول إلى المحتوى الذي تقوم بتشفيره.',
+        'نستخدم خدمة جوجل أدسنس للإعلان، وقد نستخدم خدمات التحليل. تجمع هذه الخدمات معلومات من خلال ملفات تعريف الارتباط وتقنيات مشابهة. توضح هذه السياسة البيانات التي يتم جمعها، وكيفية استخدامها، وحقوقك.',
       ],
     },
     {
-      heading: 'Information we collect',
+      heading: 'المعلومات التي نجمعها',
       bullets: [
-        'Information you provide: If you contact us via email or our contact form, we collect your name, email address, and message content.',
-        'Automatically collected information: Our hosting provider (Netlify), advertising partners, and analytics services may collect: IP address, browser type and version, operating system, device type, referring URL, pages visited, time on site, and approximate geographic location.',
-        'Third-party cookies: Our advertising partners (Google AdSense) use cookies and similar technologies to serve and measure advertisements. ANQR itself does not set any first-party cookies.',
+        'المعلومات التي تقدمها: إذا اتصلت بنا عبر البريد الإلكتروني أو نموذج الاتصال الخاص بنا، فإننا نجمع اسمك وعنوان بريدك الإلكتروني ومحتوى رسالتك.',
+        'المعلومات التي يتم جمعها تلقائيًا: قد يقوم مزود خدمة الاستضافة لدينا (Netlify) وشركاء الإعلان وخدمات التحليلات بجمع ما يلي: عنوان IP ونوع المتصفح وإصداره ونظام التشغيل ونوع الجهاز وعنوان URL المُحيل والصفحات التي تمت زيارتها والوقت الذي قضاه المستخدم على الموقع والموقع الجغرافي التقريبي.',
+        'ملفات تعريف الارتباط الخاصة بأطراف ثالثة: يستخدم شركاؤنا الإعلانيون (Google AdSense) ملفات تعريف الارتباط وتقنيات مشابهة لعرض الإعلانات وقياسها. لا تقوم ANQR نفسها بتعيين أي ملفات تعريف ارتباط خاصة بالطرف الأول.',
       ],
     },
     {
-      heading: 'Cookies and third-party technologies',
+      heading: 'ملفات تعريف الارتباط وتقنيات الطرف الثالث',
       paragraphs: [
-        'ANQR does not set any first-party cookies. Your preferences (such as dark mode) are stored locally on your device, which is not transmitted to any server.',
-        'However, our advertising partners (Google AdSense) and hosting provider may use cookies and similar tracking technologies:',
-      ],
-      bullets: [
-        'Advertising cookies (third-party): Set by Google AdSense and advertising partners to serve relevant ads, measure ad performance, and understand user interests. These cookies may track your activity across different websites.',
-        'Analytics cookies (third-party): May be used by our hosting provider or analytics services to collect anonymised usage data.',
-      ],
-    },
-    {
-      heading: 'Google AdSense and advertising',
-      paragraphs: [
-        'We display advertisements through Google AdSense. Google and its partners use cookies to serve ads based on your browsing history on this site and other websites (interest-based advertising).',
-        'Learn how Google uses your information: https://policies.google.com/technologies/partner-sites',
-        'Manage ad personalisation: https://adssettings.google.com',
-        'Opt out via Network Advertising Initiative: https://optout.networkadvertising.org',
-        'Opt out via Digital Advertising Alliance: https://optout.aboutads.info',
-      ],
-    },
-    {
-      heading: 'How we use information',
-      bullets: [
-        'To respond to your enquiries and provide support.',
-        'To display relevant advertisements through our advertising partners.',
-        'To analyse site usage and improve our services.',
-        'To detect, prevent, and address fraud, abuse, and security issues.',
-        'To comply with legal obligations.',
-      ],
-    },
-    {
-      heading: 'Third-party services',
-      bullets: [
-        'Google AdSense: Receives data to serve and measure advertisements.',
-        'Analytics providers: Receive anonymised usage data.',
-        'Netlify (hosting): Processes requests and may log IP addresses.',
-        'We do not sell your personal information. However, sharing data with advertising partners may be considered a "sale" under CCPA (see below).',
-      ],
-    },
-    {
-      heading: 'Data retention',
-      bullets: [
-        'Contact submissions: Up to 2 years.',
-        'Server logs: Up to 30 days (hosting provider).',
-        'Analytics data: Up to 26 months (anonymised).',
-        'Advertising cookies: Typically 13 months (varies by partner).',
-      ],
-    },
-    {
-      heading: 'Your rights under GDPR (EEA users)',
-      paragraphs: [
-        'If you are in the European Economic Area, you have the following rights under the General Data Protection Regulation:',
+        'لا يقوم ANQR بتعيين أي ملفات تعريف ارتباط خاصة بالطرف الأول. يتم تخزين تفضيلاتك (مثل الوضع الداكن) محليًا على جهازك، ولا يتم إرسالها إلى أي خادم.',
+        'ومع ذلك، قد يستخدم شركاؤنا الإعلانيون (Google AdSense) ومزود خدمة الاستضافة ملفات تعريف الارتباط وتقنيات التتبع المماثلة:',
       ],
       bullets: [
-        'Right of access: Request a copy of personal data we hold about you.',
-        'Right to rectification: Request correction of inaccurate data.',
-        'Right to erasure: Request deletion of your data ("right to be forgotten").',
-        'Right to restrict processing: Request limits on how we use your data.',
-        'Right to data portability: Request your data in a portable format.',
-        'Right to object: Object to processing, including for direct marketing.',
-        'Right to withdraw consent: Withdraw consent at any time where processing is consent-based.',
-        'Right to lodge a complaint: File a complaint with your data protection authority.',
+        'ملفات تعريف الارتباط الإعلانية (طرف ثالث): يتم تعيينها بواسطة Google AdSense وشركاء الإعلان لعرض إعلانات ذات صلة، وقياس أداء الإعلانات، وفهم اهتمامات المستخدم. قد تتعقب ملفات تعريف الارتباط هذه نشاطك عبر مواقع ويب مختلفة.',
+        'ملفات تعريف الارتباط التحليلية (طرف ثالث): قد يتم استخدامها من قبل مزود الاستضافة أو خدمات التحليلات لجمع بيانات الاستخدام المجهولة المصدر.',
       ],
     },
     {
-      heading: 'GDPR legal basis',
+      heading: 'جوجل أدسنس والإعلان',
       paragraphs: [
-        'We process data on these bases: (a) Consent — for personalised advertising (managed by our advertising partners); (b) Legitimate interests — for analytics, security, and improvement; (c) Contract — to respond to enquiries.',
-        `To exercise your rights, contact ${CONTACT_EMAIL}. We respond within 30 days.`,
+        'نعرض الإعلانات من خلال Google AdSense. تستخدم Google وشركاؤها ملفات تعريف الارتباط لعرض الإعلانات بناءً على سجل التصفح الخاص بك على هذا الموقع ومواقع الويب الأخرى (الإعلانات القائمة على الاهتمامات).',
+        'تعرّف على كيفية استخدام جوجل لمعلوماتك: https://policies.google.com/technologies/partner-sites',
+        'إدارة تخصيص الإعلانات: https://adssettings.google.com',
+        'إلغاء الاشتراك عبر مبادرة الإعلان الشبكي: https://optout.networkadvertising.org',
+        'إلغاء الاشتراك عبر تحالف الإعلان الرقمي: https://optout.aboutads.info',
       ],
     },
     {
-      heading: 'Your rights under CCPA (California users)',
+      heading: 'كيف نستخدم المعلومات',
       bullets: [
-        'Right to know: Request information about data collected, sources, purposes, and third parties.',
-        'Right to delete: Request deletion of your personal information.',
-        'Right to opt-out: Opt out of the "sale" of personal information (sharing with ad partners may qualify).',
-        'Right to non-discrimination: We will not discriminate for exercising your rights.',
+        'للرد على استفساراتكم وتقديم الدعم.',
+        'لعرض الإعلانات ذات الصلة من خلال شركائنا الإعلانيين.',
+        'لتحليل استخدام الموقع وتحسين خدماتنا.',
+        'للكشف عن الاحتيال وسوء الاستخدام والمشاكل الأمنية ومنعها ومعالجتها.',
+        'الامتثال للالتزامات القانونية.',
       ],
     },
     {
-      heading: 'CCPA categories collected',
-      paragraphs: [
-        'Categories: Identifiers (IP address, device ID), Internet activity (browsing, ad interactions), Geolocation (approximate), Inferences (interests from browsing).',
-        `To exercise rights or opt out: ${CONTACT_EMAIL} or adjust cookie settings.`,
+      heading: 'خدمات الطرف الثالث',
+      bullets: [
+        'جوجل أدسنس: يستقبل البيانات لعرض الإعلانات وقياسها.',
+        'مقدمو خدمات التحليلات: استلام بيانات الاستخدام المجهولة المصدر.',
+        'Netlify (الاستضافة): تعالج الطلبات وقد تسجل عناوين IP.',
+        'نحن لا نبيع معلوماتك الشخصية. ومع ذلك، قد يُعتبر مشاركة البيانات مع شركاء الإعلان بيعًا بموجب قانون خصوصية المستهلك في كاليفورنيا (انظر أدناه).',
       ],
     },
     {
-      heading: 'International transfers',
-      paragraphs: [
-        'Your information may be transferred to countries with different data protection laws, including the United States. We use appropriate safeguards such as Standard Contractual Clauses.',
+      heading: 'الاحتفاظ بالبيانات',
+      bullets: [
+        'طلبات الاتصال: حتى سنتين.',
+        'سجلات الخادم: حتى 30 يومًا (مزود الاستضافة).',
+        'بيانات التحليلات: حتى 26 شهرًا (مجهولة المصدر).',
+        'ملفات تعريف الارتباط الإعلانية: عادةً 13 شهرًا (يختلف ذلك حسب الشريك).',
       ],
     },
     {
-      heading: 'Children\'s privacy',
+      heading: 'حقوقك بموجب اللائحة العامة لحماية البيانات (مستخدمو المنطقة الاقتصادية الأوروبية)',
       paragraphs: [
-        `ANQR is not directed at children under 13 (or 16 in the EEA). We do not knowingly collect data from children. Contact ${CONTACT_EMAIL} if you believe a child has provided information.`,
+        'إذا كنت في المنطقة الاقتصادية الأوروبية، فلديك الحقوق التالية بموجب اللائحة العامة لحماية البيانات:',
+      ],
+      bullets: [
+        'حق الوصول: اطلب نسخة من البيانات الشخصية التي نحتفظ بها عنك.',
+        'الحق في التصحيح: طلب تصحيح البيانات غير الدقيقة.',
+        'الحق في المحو: اطلب حذف بياناتك (الحق في النسيان).',
+        'الحق في تقييد المعالجة: اطلب وضع قيود على كيفية استخدامنا لبياناتك.',
+        'الحق في نقل البيانات: اطلب بياناتك بتنسيق قابل للنقل.',
+        'الحق في الاعتراض: الاعتراض على المعالجة، بما في ذلك لأغراض التسويق المباشر.',
+        'الحق في سحب الموافقة: سحب الموافقة في أي وقت عندما تكون المعالجة قائمة على الموافقة.',
+        'الحق في تقديم شكوى: قدم شكوى إلى هيئة حماية البيانات الخاصة بك.',
       ],
     },
     {
-      heading: 'Security',
+      heading: 'الأساس القانوني للائحة العامة لحماية البيانات',
       paragraphs: [
-        'We use appropriate technical and organisational measures to protect data, including HTTPS encryption. However, no internet transmission is 100% secure.',
+        'نقوم بمعالجة البيانات على هذه الأسس: (أ) الموافقة - للإعلانات المخصصة (التي يديرها شركاؤنا الإعلانيون)؛ (ب) المصالح المشروعة - للتحليلات والأمن والتحسين؛ (ج) العقد - للرد على الاستفسارات.',
+        `لممارسة حقوقك، تواصل مع ${CONTACT_EMAIL}. سنرد عليك في غضون 30 يومًا.`,
       ],
     },
     {
-      heading: 'Do Not Track',
-      paragraphs: [
-        'We honour Do Not Track browser signals where feasible, though advertising partners may not respond to DNT.',
+      heading: 'حقوقك بموجب قانون خصوصية المستهلك في كاليفورنيا (مستخدمو كاليفورنيا)',
+      bullets: [
+        'الحق في المعرفة: طلب معلومات حول البيانات التي تم جمعها ومصادرها وأغراضها والأطراف الثالثة.',
+        'الحق في الحذف: اطلب حذف معلوماتك الشخصية.',
+        'الحق في الانسحاب: الانسحاب من بيع المعلومات الشخصية (قد يشمل ذلك المشاركة مع شركاء الإعلان).',
+        'الحق في عدم التمييز: لن نميز ضدك لممارستك حقوقك.',
       ],
     },
     {
-      heading: 'Changes to this policy',
+      heading: 'فئة من فئات قانون حماية المستهلك في كاليفورنيا تم جمعها',
       paragraphs: [
-        'We may update this policy periodically. The "Last updated" date indicates the most recent revision. Significant changes may be communicated via a site banner.',
+        'الفئات: المعرفات (عنوان IP، معرف الجهاز)، نشاط الإنترنت (التصفح، التفاعلات الإعلانية)، الموقع الجغرافي (تقريبي)، الاستنتاجات (الاهتمامات من التصفح).',
+        `لممارسة الحقوق أو إلغاء الاشتراك: ${CONTACT_EMAIL} أو تعديل إعدادات ملفات تعريف الارتباط.`,
       ],
     },
     {
-      heading: 'Contact us',
+      heading: 'التحويلات الدولية',
       paragraphs: [
-        `For privacy questions or to exercise your rights: ${CONTACT_EMAIL} or use our Contact page. We respond to privacy requests within 30 days.`,
+        'قد يتم نقل معلوماتك إلى دول ذات قوانين مختلفة لحماية البيانات، بما في ذلك الولايات المتحدة. ونحن نستخدم ضمانات مناسبة مثل البنود التعاقدية القياسية.',
+      ],
+    },
+    {
+      heading: 'خصوصية الأطفال',
+      paragraphs: [
+        `لا تستهدف خدمة ANQR الأطفال دون سن 13 عامًا (أو 16 عامًا في المنطقة الاقتصادية الأوروبية). لا نقوم بجمع بيانات من الأطفال عن قصد. تواصل معنا عبر البريد الإلكتروني ${CONTACT_EMAIL} إذا كنت تعتقد أن طفلًا قدّم معلومات.`,
+      ],
+    },
+    {
+      heading: 'الأمن',
+      paragraphs: [
+        'نستخدم تدابير تقنية وتنظيمية مناسبة لحماية البيانات، بما في ذلك تشفير HTTPS. ومع ذلك، لا يوجد نقل بيانات عبر الإنترنت آمن بنسبة 100%.',
+      ],
+    },
+    {
+      heading: 'عدم التتبع',
+      paragraphs: [
+        'نحن نحترم إشارات عدم التتبع من المتصفح حيثما كان ذلك ممكناً، على الرغم من أن شركاء الإعلان قد لا يستجيبون لـ عدم التتبع.',
+      ],
+    },
+    {
+      heading: 'تغييرات على هذه السياسة',
+      paragraphs: [
+        'قد نقوم بتحديث هذه السياسة بشكل دوري. يشير تاريخ آخر تحديث إلى أحدث مراجعة. قد يتم الإعلان عن التغييرات الهامة عبر لافتة على الموقع.',
+      ],
+    },
+    {
+      heading: 'اتصل بنا',
+      paragraphs: [
+        `للاستفسارات المتعلقة بالخصوصية أو لممارسة حقوقك: ${CONTACT_EMAIL} أو استخدم صفحة الاتصال الخاصة بنا. نرد على طلبات الخصوصية في غضون 30 يومًا.`,
       ],
     },
   ],

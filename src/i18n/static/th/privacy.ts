@@ -2,147 +2,147 @@ import type { PageDefinition } from '../types'
 import { LAST_UPDATED, CONTACT_EMAIL } from '../types'
 
 export const privacy: PageDefinition = {
-  title: 'Privacy Policy',
-  description: 'Information ANQR collects, how it is used, and your rights under applicable privacy laws.',
+  title: 'นโยบายความเป็นส่วนตัว',
+  description: 'ANQR รวบรวม วิธีการใช้งาน และสิทธิ์ของคุณภายใต้กฎหมายคุ้มครองความเป็นส่วนตัวที่เกี่ยวข้อง',
   lastUpdated: LAST_UPDATED,
   sections: [
     {
-      heading: 'Summary',
+      heading: 'สรุป',
       paragraphs: [
-        'ANQR is a QR code generator that runs entirely on your device. We do not require you to create an account, and QR codes are generated locally — we do not have access to the content you encode.',
-        'We use Google AdSense for advertising and may use analytics services. These services collect information through cookies and similar technologies. This policy explains what data is collected, how it is used, and your rights.',
+        'คือโปรแกรมสร้างคิวอาร์โค้ดที่ทำงานบนอุปกรณ์ของคุณโดยสมบูรณ์ เราไม่ต้องการให้คุณสร้างบัญชี และคิวอาร์โค้ดจะถูกสร้างขึ้นในเครื่อง — เราไม่สามารถเข้าถึงเนื้อหาที่คุณเข้ารหัสได้',
+        'Google AdSense สำหรับการโฆษณา และอาจใช้บริการวิเคราะห์ข้อมูล บริการเหล่านี้รวบรวมข้อมูลผ่านคุกกี้และเทคโนโลยีที่คล้ายคลึงกัน นโยบายนี้อธิบายว่าข้อมูลใดบ้างที่ถูกรวบรวม วิธีการใช้งาน และสิทธิ์ของคุณ',
       ],
     },
     {
-      heading: 'Information we collect',
+      heading: 'ข้อมูลที่เราเก็บรวบรวม',
       bullets: [
-        'Information you provide: If you contact us via email or our contact form, we collect your name, email address, and message content.',
-        'Automatically collected information: Our hosting provider (Netlify), advertising partners, and analytics services may collect: IP address, browser type and version, operating system, device type, referring URL, pages visited, time on site, and approximate geographic location.',
-        'Third-party cookies: Our advertising partners (Google AdSense) use cookies and similar technologies to serve and measure advertisements. ANQR itself does not set any first-party cookies.',
+        'หากคุณติดต่อเราผ่านทางอีเมลหรือแบบฟอร์มติดต่อ เราจะเก็บรวบรวมชื่อ ที่อยู่อีเมล และเนื้อหาข้อความของคุณ',
+        'ผู้ให้บริการโฮสติ้งของเรา (Netlify) พันธมิตรด้านการโฆษณา และบริการวิเคราะห์อาจรวบรวมข้อมูลต่อไปนี้: ที่อยู่ IP, ประเภทและเวอร์ชันของเบราว์เซอร์, ระบบปฏิบัติการ, ประเภทของอุปกรณ์, URL ที่อ้างอิง, หน้าที่เข้าชม, เวลาที่ใช้บนเว็บไซต์ และตำแหน่งทางภูมิศาสตร์โดยประมาณ',
+        'พันธมิตรด้านการโฆษณาของเรา (Google AdSense) ใช้คุกกี้และเทคโนโลยีที่คล้ายคลึงกันเพื่อแสดงและวัดผลโฆษณา ANQR เองไม่ได้ตั้งค่าคุกกี้ของบุคคลที่หนึ่งใดๆ',
       ],
     },
     {
-      heading: 'Cookies and third-party technologies',
+      heading: 'คุกกี้และเทคโนโลยีของบุคคลที่สาม',
       paragraphs: [
-        'ANQR does not set any first-party cookies. Your preferences (such as dark mode) are stored locally on your device, which is not transmitted to any server.',
-        'However, our advertising partners (Google AdSense) and hosting provider may use cookies and similar tracking technologies:',
-      ],
-      bullets: [
-        'Advertising cookies (third-party): Set by Google AdSense and advertising partners to serve relevant ads, measure ad performance, and understand user interests. These cookies may track your activity across different websites.',
-        'Analytics cookies (third-party): May be used by our hosting provider or analytics services to collect anonymised usage data.',
-      ],
-    },
-    {
-      heading: 'Google AdSense and advertising',
-      paragraphs: [
-        'We display advertisements through Google AdSense. Google and its partners use cookies to serve ads based on your browsing history on this site and other websites (interest-based advertising).',
-        'Learn how Google uses your information: https://policies.google.com/technologies/partner-sites',
-        'Manage ad personalisation: https://adssettings.google.com',
-        'Opt out via Network Advertising Initiative: https://optout.networkadvertising.org',
-        'Opt out via Digital Advertising Alliance: https://optout.aboutads.info',
-      ],
-    },
-    {
-      heading: 'How we use information',
-      bullets: [
-        'To respond to your enquiries and provide support.',
-        'To display relevant advertisements through our advertising partners.',
-        'To analyse site usage and improve our services.',
-        'To detect, prevent, and address fraud, abuse, and security issues.',
-        'To comply with legal obligations.',
-      ],
-    },
-    {
-      heading: 'Third-party services',
-      bullets: [
-        'Google AdSense: Receives data to serve and measure advertisements.',
-        'Analytics providers: Receive anonymised usage data.',
-        'Netlify (hosting): Processes requests and may log IP addresses.',
-        'We do not sell your personal information. However, sharing data with advertising partners may be considered a "sale" under CCPA (see below).',
-      ],
-    },
-    {
-      heading: 'Data retention',
-      bullets: [
-        'Contact submissions: Up to 2 years.',
-        'Server logs: Up to 30 days (hosting provider).',
-        'Analytics data: Up to 26 months (anonymised).',
-        'Advertising cookies: Typically 13 months (varies by partner).',
-      ],
-    },
-    {
-      heading: 'Your rights under GDPR (EEA users)',
-      paragraphs: [
-        'If you are in the European Economic Area, you have the following rights under the General Data Protection Regulation:',
+        'ไม่ได้ตั้งค่าคุกกี้ของบุคคลที่หนึ่งใดๆ การตั้งค่าของคุณ (เช่น โหมดมืด) จะถูกจัดเก็บไว้ในอุปกรณ์ของคุณโดยตรง และจะไม่ถูกส่งไปยังเซิร์ฟเวอร์ใดๆ',
+        'พันธมิตรด้านการโฆษณาของเรา (Google AdSense) และผู้ให้บริการโฮสติ้งอาจใช้คุกกี้และเทคโนโลยีการติดตามที่คล้ายคลึงกัน:',
       ],
       bullets: [
-        'Right of access: Request a copy of personal data we hold about you.',
-        'Right to rectification: Request correction of inaccurate data.',
-        'Right to erasure: Request deletion of your data ("right to be forgotten").',
-        'Right to restrict processing: Request limits on how we use your data.',
-        'Right to data portability: Request your data in a portable format.',
-        'Right to object: Object to processing, including for direct marketing.',
-        'Right to withdraw consent: Withdraw consent at any time where processing is consent-based.',
-        'Right to lodge a complaint: File a complaint with your data protection authority.',
+        '(บุคคลที่สาม): ตั้งค่าโดย Google AdSense และพันธมิตรโฆษณาเพื่อแสดงโฆษณาที่เกี่ยวข้อง วัดประสิทธิภาพของโฆษณา และทำความเข้าใจความสนใจของผู้ใช้ คุกกี้เหล่านี้อาจติดตามกิจกรรมของคุณในเว็บไซต์ต่างๆ',
+        '(บุคคลที่สาม): อาจถูกใช้โดยผู้ให้บริการโฮสติ้งหรือบริการวิเคราะห์ของเราเพื่อรวบรวมข้อมูลการใช้งานที่ไม่ระบุตัวตน',
       ],
     },
     {
-      heading: 'GDPR legal basis',
+      heading: 'AdSense และการโฆษณา',
       paragraphs: [
-        'We process data on these bases: (a) Consent — for personalised advertising (managed by our advertising partners); (b) Legitimate interests — for analytics, security, and improvement; (c) Contract — to respond to enquiries.',
-        `To exercise your rights, contact ${CONTACT_EMAIL}. We respond within 30 days.`,
+        'Google AdSense Google และพันธมิตรใช้คุกกี้เพื่อแสดงโฆษณาตามประวัติการท่องเว็บของคุณบนเว็บไซต์นี้และเว็บไซต์อื่นๆ (การโฆษณาตามความสนใจ)',
+        'Google ใช้ข้อมูลของคุณ: https://policies.google.com/technologies/partner-sites',
+        'https://adssettings.google.com',
+        'Network Advertising Initiative: https://optout.networkadvertising.org',
+        'Digital Advertising Alliance: https://optout.aboutads.info',
       ],
     },
     {
-      heading: 'Your rights under CCPA (California users)',
+      heading: 'วิธีการที่เราใช้ข้อมูล',
       bullets: [
-        'Right to know: Request information about data collected, sources, purposes, and third parties.',
-        'Right to delete: Request deletion of your personal information.',
-        'Right to opt-out: Opt out of the "sale" of personal information (sharing with ad partners may qualify).',
-        'Right to non-discrimination: We will not discriminate for exercising your rights.',
+        'เพื่อตอบข้อซักถามและให้ความช่วยเหลือแก่ท่าน',
+        'เพื่อแสดงโฆษณาที่เกี่ยวข้องผ่านทางพันธมิตรด้านการโฆษณาของเรา',
+        'เพื่อวิเคราะห์การใช้งานเว็บไซต์และปรับปรุงบริการของเรา',
+        'ป้องกัน และแก้ไขปัญหาการฉ้อโกง การละเมิด และปัญหาด้านความปลอดภัย',
+        'เพื่อปฏิบัติตามข้อผูกพันทางกฎหมาย',
       ],
     },
     {
-      heading: 'CCPA categories collected',
-      paragraphs: [
-        'Categories: Identifiers (IP address, device ID), Internet activity (browsing, ad interactions), Geolocation (approximate), Inferences (interests from browsing).',
-        `To exercise rights or opt out: ${CONTACT_EMAIL} or adjust cookie settings.`,
+      heading: 'บริการจากบุคคลภายนอก',
+      bullets: [
+        'AdSense: รับข้อมูลเพื่อแสดงและวัดผลโฆษณา',
+        'รับข้อมูลการใช้งานที่ไม่ระบุตัวตน',
+        '(โฮสติ้ง): ประมวลผลคำขอและอาจบันทึกที่อยู่ IP',
+        'อย่างไรก็ตาม การแบ่งปันข้อมูลกับพันธมิตรด้านการโฆษณาอาจถือเป็นการ ขาย ภายใต้กฎหมาย CCPA (ดูด้านล่าง)',
       ],
     },
     {
-      heading: 'International transfers',
-      paragraphs: [
-        'Your information may be transferred to countries with different data protection laws, including the United States. We use appropriate safeguards such as Standard Contractual Clauses.',
+      heading: 'การเก็บรักษาข้อมูล',
+      bullets: [
+        'สูงสุด 2 ปี',
+        'สูงสุด 30 วัน (ผู้ให้บริการโฮสติ้ง)',
+        'สูงสุด 26 เดือน (ไม่ระบุชื่อ)',
+        'โดยทั่วไป 13 เดือน (อาจแตกต่างกันไปตามพันธมิตร)',
       ],
     },
     {
-      heading: 'Children\'s privacy',
+      heading: 'GDPR (ผู้ใช้ในเขตเศรษฐกิจยุโรป)',
       paragraphs: [
-        `ANQR is not directed at children under 13 (or 16 in the EEA). We do not knowingly collect data from children. Contact ${CONTACT_EMAIL} if you believe a child has provided information.`,
+        'คุณมีสิทธิ์ดังต่อไปนี้ภายใต้กฎระเบียบว่าด้วยการคุ้มครองข้อมูลทั่วไป (GDPR):',
+      ],
+      bullets: [
+        'ขอรับสำเนาข้อมูลส่วนบุคคลที่เราเก็บรักษาไว้เกี่ยวกับคุณ',
+        'ร้องขอแก้ไขข้อมูลที่ไม่ถูกต้อง',
+        'ขอให้ลบข้อมูลของคุณ (สิทธิที่จะถูกลืม)',
+        'ขอจำกัดวิธีการที่เราใช้ข้อมูลของคุณ',
+        'ขอรับข้อมูลของคุณในรูปแบบที่สามารถโอนย้ายได้',
+        'คัดค้านการประมวลผลข้อมูล รวมถึงการประมวลผลเพื่อการตลาดโดยตรง',
+        'เพิกถอนความยินยอมได้ทุกเมื่อในกรณีที่การประมวลผลข้อมูลนั้นอาศัยความยินยอมเป็นหลัก',
+        'ยื่นเรื่องร้องเรียนต่อหน่วยงานคุ้มครองข้อมูลส่วนบุคคลของคุณ',
       ],
     },
     {
-      heading: 'Security',
+      heading: 'GDPR',
       paragraphs: [
-        'We use appropriate technical and organisational measures to protect data, including HTTPS encryption. However, no internet transmission is 100% secure.',
+        '(ก) ความยินยอม — สำหรับการโฆษณาแบบเฉพาะบุคคล (ซึ่งจัดการโดยพันธมิตรด้านการโฆษณาของเรา); (ข) ผลประโยชน์ที่ชอบด้วยกฎหมาย — สำหรับการวิเคราะห์ ความปลอดภัย และการปรับปรุง; (ค) สัญญา — เพื่อตอบข้อซักถาม',
+        `โปรดติดต่อ ${CONTACT_EMAIL} เราจะตอบกลับภายใน 30 วัน`,
       ],
     },
     {
-      heading: 'Do Not Track',
-      paragraphs: [
-        'We honour Do Not Track browser signals where feasible, though advertising partners may not respond to DNT.',
+      heading: 'CCPA (ผู้ใช้ในแคลิฟอร์เนีย)',
+      bullets: [
+        'ขอข้อมูลเกี่ยวกับข้อมูลที่รวบรวม แหล่งที่มา วัตถุประสงค์ และบุคคลที่สาม',
+        'ขอให้ลบข้อมูลส่วนบุคคลของคุณ',
+        'เลือกไม่รับการ ขาย ข้อมูลส่วนบุคคล (การแบ่งปันกับพันธมิตรด้านโฆษณาอาจเข้าข่าย)',
+        'เราจะไม่เลือกปฏิบัติเนื่องจากการใช้สิทธิของคุณ',
       ],
     },
     {
-      heading: 'Changes to this policy',
+      heading: 'CCPA ที่รวบรวมได้',
       paragraphs: [
-        'We may update this policy periodically. The "Last updated" date indicates the most recent revision. Significant changes may be communicated via a site banner.',
+        'ตัวระบุ (ที่อยู่ IP, รหัสอุปกรณ์), กิจกรรมทางอินเทอร์เน็ต (การท่องเว็บ, การโต้ตอบกับโฆษณา), ตำแหน่งทางภูมิศาสตร์ (โดยประมาณ), การอนุมาน (ความสนใจจากการท่องเว็บ)',
+        `ติดต่อ ${CONTACT_EMAIL} หรือปรับการตั้งค่าคุกกี้`,
       ],
     },
     {
-      heading: 'Contact us',
+      heading: 'การโอนเงินระหว่างประเทศ',
       paragraphs: [
-        `For privacy questions or to exercise your rights: ${CONTACT_EMAIL} or use our Contact page. We respond to privacy requests within 30 days.`,
+        'รวมถึงสหรัฐอเมริกา เราใช้มาตรการป้องกันที่เหมาะสม เช่น ข้อกำหนดสัญญามาตรฐาน',
+      ],
+    },
+    {
+      heading: 'สิทธิความเป็นส่วนตัวของเด็ก',
+      paragraphs: [
+        `ไม่ได้มุ่งเป้าไปที่เด็กอายุต่ำกว่า 13 ปี (หรือ 16 ปีในเขตเศรษฐกิจยุโรป) เราไม่ได้เก็บรวบรวมข้อมูลจากเด็กโดยเจตนา โปรดติดต่อ ${CONTACT_EMAIL} หากคุณเชื่อว่าเด็กได้ให้ข้อมูล`,
+      ],
+    },
+    {
+      heading: 'ความปลอดภัย',
+      paragraphs: [
+        'รวมถึงการเข้ารหัส HTTPS อย่างไรก็ตาม การส่งข้อมูลทางอินเทอร์เน็ตนั้นไม่ปลอดภัย 100%',
+      ],
+    },
+    {
+      heading: 'ห้ามติดตาม',
+      paragraphs: [
+        'Do Not Track จากเบราว์เซอร์ในกรณีที่ทำได้ แม้ว่าพันธมิตรด้านการโฆษณาอาจไม่ตอบสนองต่อ DNT ก็ตาม',
+      ],
+    },
+    {
+      heading: 'การเปลี่ยนแปลงนโยบายนี้',
+      paragraphs: [
+        'วันที่ ปรับปรุงล่าสุด แสดงถึงการแก้ไขล่าสุด การเปลี่ยนแปลงที่สำคัญอาจแจ้งให้ทราบผ่านทางแบนเนอร์บนเว็บไซต์',
+      ],
+    },
+    {
+      heading: 'ติดต่อเรา',
+      paragraphs: [
+        `โปรดติดต่อ ${CONTACT_EMAIL} หรือใช้หน้าติดต่อเรา เราจะตอบกลับคำขอเกี่ยวกับความเป็นส่วนตัวภายใน 30 วัน`,
       ],
     },
   ],

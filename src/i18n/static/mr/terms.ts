@@ -2,140 +2,140 @@ import type { PageDefinition } from '../types'
 import { LAST_UPDATED, CONTACT_EMAIL } from '../types'
 
 export const terms: PageDefinition = {
-  title: 'Terms of Service',
+  title: 'सेवेच्या अटी',
   description:
-    'By accessing or using the site, you agree to be bound by these terms.',
+    'साइट अ‍ॅक्सेस करून किंवा वापरून, तुम्ही या अटींशी बांधील राहण्यास सहमत आहात.',
   lastUpdated: LAST_UPDATED,
   sections: [
     {
-      heading: 'Acceptance of terms',
+      heading: 'अटींचा स्वीकार',
       paragraphs: [
-        'By accessing or using ANQR (anqr.link), you agree to be bound by these Terms of Service and our Privacy Policy. If you do not agree to these terms, do not use the site.',
-        'We may update these Terms from time to time. Continued use of the site after changes constitutes acceptance of the new terms.',
+        'ANQR (anqr.link) मध्ये प्रवेश करून किंवा वापरून, तुम्ही या सेवा अटी आणि आमच्या गोपनीयता धोरणाशी बांधील राहण्यास सहमत आहात. जर तुम्ही या अटींशी सहमत नसाल, तर साइट वापरू नका.',
+        'आम्ही वेळोवेळी या अटी अद्यतनित करू शकतो. बदलांनंतर साइटचा सतत वापर करणे म्हणजे नवीन अटींची स्वीकृती होय.',
       ],
     },
     {
-      heading: 'Eligibility',
+      heading: 'पात्रता',
       paragraphs: [
-        "You must be at least 13 years of age to use ANQR. By using the site, you represent that you meet this age requirement. If you are under 18, you represent that you have your parent or guardian's permission to use the site.",
+        "ANQR वापरण्यासाठी तुमचे वय किमान १३ वर्षे असणे आवश्यक आहे. साइट वापरून, तुम्ही हे दर्शवित आहात की तुम्ही ही वयाची आवश्यकता पूर्ण करता. जर तुम्ही १८ वर्षांपेक्षा कमी असाल, तर तुम्ही हे दर्शवित आहात की तुम्हाला साइट वापरण्यासाठी तुमच्या पालकांची किंवा पालकांची परवानगी आहे.",
       ],
     },
     {
-      heading: 'Permitted use',
+      heading: 'अनुमती वापर',
       paragraphs: [
-        'You may use ANQR for lawful purposes only. You are solely responsible for the content you encode into QR codes and for how you use any QR codes you generate.',
+        'तुम्ही फक्त कायदेशीर हेतूंसाठी ANQR वापरू शकता. तुम्ही QR कोडमध्ये एन्कोड केलेल्या कंटेंटसाठी आणि तुम्ही जनरेट केलेल्या कोणत्याही QR कोडचा वापर कसा करता यासाठी तुम्ही पूर्णपणे जबाबदार आहात.',
       ],
     },
     {
-      heading: 'Prohibited conduct',
-      paragraphs: ['You agree not to:'],
+      heading: 'निषिद्ध वर्तन',
+      paragraphs: ['तुम्ही हे मान्य करत नाही:'],
       bullets: [
-        'Use ANQR to create QR codes that facilitate phishing, malware distribution, fraud, scams, harassment, defamation, or any illegal activity.',
-        'Encode content that infringes intellectual property rights, violates privacy, or contains illegal material.',
-        'Attempt to disrupt, overload, or interfere with the operation or security of the site.',
-        'Reverse engineer, decompile, or attempt to extract source code from the site.',
-        'Use automated tools (bots, scrapers) to access the site in a manner that degrades performance for other users.',
-        'Circumvent or disable any security or access control features.',
-        'Impersonate any person or entity or misrepresent your affiliation.',
+        'फिशिंग, मालवेअर वितरण, फसवणूक, घोटाळे, छळ, बदनामी किंवा कोणत्याही बेकायदेशीर क्रियाकलापांना सुलभ करणारे QR कोड तयार करण्यासाठी ANQR वापरा.',
+        'बौद्धिक संपदा अधिकारांचे उल्लंघन करणारी, गोपनीयतेचे उल्लंघन करणारी किंवा बेकायदेशीर सामग्री असलेली सामग्री एन्कोड करा.',
+        'साइटच्या ऑपरेशन किंवा सुरक्षिततेमध्ये व्यत्यय आणण्याचा, ओव्हरलोड करण्याचा किंवा हस्तक्षेप करण्याचा प्रयत्न.',
+        'साइटवरून रिव्हर्स इंजिनिअर, डिकंपाइल किंवा सोर्स कोड काढण्याचा प्रयत्न.',
+        'इतर वापरकर्त्यांसाठी कामगिरी कमी होईल अशा पद्धतीने साइटवर प्रवेश करण्यासाठी स्वयंचलित साधने (बॉट्स, स्क्रॅपर्स) वापरा.',
+        'कोणत्याही सुरक्षा किंवा प्रवेश नियंत्रण वैशिष्ट्यांना अडथळा आणा किंवा अक्षम करा.',
+        'कोणत्याही व्यक्तीची किंवा संस्थेची तोतयागिरी करा किंवा तुमच्या संलग्नतेचे चुकीचे प्रतिनिधित्व करा.',
       ],
     },
     {
-      heading: 'Intellectual property',
+      heading: 'बौद्धिक संपदा',
       paragraphs: [
-        'You retain ownership of the content you encode into QR codes. ANQR does not claim ownership of your data.',
-        'The ANQR name, logo, interface design, and underlying code are protected by copyright, trademark, and other intellectual property laws. You may not copy, modify, distribute, or create derivative works without our permission.',
-        'QR Code® is a registered trademark of DENSO WAVE INCORPORATED. ANQR is not affiliated with DENSO WAVE.',
+        'तुम्ही QR कोडमध्ये एन्कोड केलेल्या कंटेंटची मालकी तुमच्याकडेच राहते. ANQR तुमच्या डेटाची मालकी हक्क सांगत नाही.',
+        'ANQR नाव, लोगो, इंटरफेस डिझाइन आणि अंतर्निहित कोड कॉपीराइट, ट्रेडमार्क आणि इतर बौद्धिक संपदा कायद्यांद्वारे संरक्षित आहेत. तुम्ही आमच्या परवानगीशिवाय कॉपी, सुधारणा, वितरण किंवा व्युत्पन्न कामे तयार करू शकत नाही.',
+        'QR Code® हा DENSO WAVE INCORPORATED चा नोंदणीकृत ट्रेडमार्क आहे. ANQR DENSO WAVE शी संलग्न नाही.',
       ],
     },
     {
-      heading: 'User content license',
+      heading: 'वापरकर्ता सामग्री परवाना',
       paragraphs: [
-        'By using ANQR, you grant us no rights to your content — all QR code generation happens locally on your device and we do not access, store, or transmit your encoded data.',
+        'ANQR वापरून, तुम्ही आम्हाला तुमच्या कंटेंटवर कोणतेही अधिकार देत नाही — सर्व QR कोड जनरेशन तुमच्या डिव्हाइसवर स्थानिक पातळीवर होते आणि आम्ही तुमचा एन्कोडेड डेटा अॅक्सेस करत नाही, स्टोअर करत नाही किंवा ट्रान्समिट करत नाही.',
       ],
     },
     {
-      heading: 'Third-party services and advertising',
+      heading: 'तृतीय-पक्ष सेवा आणि जाहिरात',
       paragraphs: [
-        'The site displays advertisements through Google AdSense and may include links to third-party websites. We are not responsible for third-party content, services, or privacy practices.',
-        'Your interactions with advertisers and third parties are solely between you and them. See our Privacy Policy for information about advertising data practices.',
+        'ही साइट Google AdSense द्वारे जाहिराती प्रदर्शित करते आणि त्यामध्ये तृतीय-पक्ष वेबसाइटच्या लिंक्स असू शकतात. आम्ही तृतीय-पक्ष सामग्री, सेवा किंवा गोपनीयता पद्धतींसाठी जबाबदार नाही.',
+        'जाहिरातदार आणि तृतीय पक्षांसोबतचे तुमचे संवाद केवळ तुमच्या आणि त्यांच्यामध्ये आहेत. जाहिरात डेटा पद्धतींबद्दल माहितीसाठी आमचे गोपनीयता धोरण पहा.',
       ],
     },
     {
-      heading: 'Disclaimer of warranties',
+      heading: 'हमीपत्रांचे अस्वीकरण',
       paragraphs: [
-        'ANQR IS PROVIDED ON AN "AS IS" AND "AS AVAILABLE" BASIS WITHOUT WARRANTIES OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, AND NON-INFRINGEMENT.',
-        'We do not warrant that: (a) the site will be uninterrupted, secure, or error-free; (b) QR codes will scan in all environments, on all devices, or with all scanner applications; (c) the site will meet your requirements.',
-        'You should always test QR codes in the conditions where they will be used (print size, lighting, screen type, distance, camera quality).',
+        'ANQR हे जसे आहे तसे आणि जसे उपलब्ध आहे तसे आधारावर प्रदान केले जाते, कोणत्याही प्रकारच्या, स्पष्ट किंवा निहित हमीशिवाय, ज्यामध्ये व्यापारक्षमता, विशिष्ट उद्देशासाठी योग्यता आणि उल्लंघन न करण्याच्या गर्भित हमींचा समावेश आहे परंतु त्यापुरते मर्यादित नाही.',
+        'आम्ही याची हमी देत नाही की: (अ) साइट अखंड, सुरक्षित किंवा त्रुटीमुक्त असेल; (ब) क्यूआर कोड सर्व वातावरणात, सर्व उपकरणांवर किंवा सर्व स्कॅनर अनुप्रयोगांसह स्कॅन केले जातील; (क) साइट तुमच्या आवश्यकता पूर्ण करेल.',
+        'तुम्ही नेहमी QR कोड ज्या परिस्थितीत वापरल्या जातील त्या परिस्थितीत (प्रिंट आकार, प्रकाशयोजना, स्क्रीन प्रकार, अंतर, कॅमेरा गुणवत्ता) त्यांची चाचणी करावी.',
       ],
     },
     {
-      heading: 'Limitation of liability',
+      heading: 'दायित्वाची मर्यादा',
       paragraphs: [
-        'TO THE MAXIMUM EXTENT PERMITTED BY LAW, ANQR AND ITS OPERATORS, AFFILIATES, AND LICENSORS SHALL NOT BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, CONSEQUENTIAL, PUNITIVE, OR EXEMPLARY DAMAGES, INCLUDING BUT NOT LIMITED TO DAMAGES FOR LOSS OF PROFITS, REVENUE, DATA, GOODWILL, USE, OR OTHER INTANGIBLE LOSSES, ARISING FROM OR RELATED TO YOUR ACCESS TO OR USE OF (OR INABILITY TO ACCESS OR USE) THE SERVICE.',
-        'YOU EXPRESSLY UNDERSTAND AND AGREE THAT YOUR USE OF THE SERVICE IS AT YOUR SOLE RISK. THE SERVICE IS PROVIDED FREE OF CHARGE, AND ACCORDINGLY, YOU AGREE THAT ANQR AND ITS OPERATORS SHALL HAVE NO LIABILITY TO YOU WHATSOEVER FOR ANY DAMAGES OR LOSSES. IN NO EVENT SHALL OUR TOTAL AGGREGATE LIABILITY EXCEED ZERO DOLLARS ($0 AUD).',
-        'YOU AGREE TO RELEASE, WAIVE, AND DISCHARGE ANY AND ALL CLAIMS, DEMANDS, AND CAUSES OF ACTION AGAINST ANQR AND ITS OPERATORS ARISING FROM YOUR USE OF THE SERVICE.',
-        'SOME JURISDICTIONS DO NOT ALLOW THE EXCLUSION OF CERTAIN WARRANTIES OR LIMITATIONS OF LIABILITY. IN SUCH JURISDICTIONS, OUR LIABILITY SHALL BE LIMITED TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW.',
+        'कायद्याने परवानगी दिलेल्या कमाल मर्यादेपर्यंत, ANQR आणि त्याचे ऑपरेटर, सहयोगी आणि परवानाधारक कोणत्याही प्रत्यक्ष, अप्रत्यक्ष, आकस्मिक, विशेष, परिणामी, दंडात्मक किंवा उदाहरणात्मक नुकसानांसाठी जबाबदार राहणार नाहीत, ज्यामध्ये नफा, महसूल, डेटा, सद्भावना, वापर किंवा इतर अमूर्त नुकसानांचा समावेश आहे, जे तुमच्या सेवेच्या प्रवेशामुळे किंवा वापराशी संबंधित (किंवा प्रवेश करण्यास किंवा वापरण्यास असमर्थता) उद्भवतात.',
+        'तुम्ही स्पष्टपणे समजून घेता आणि सहमत आहात की सेवेचा वापर तुमच्या स्वतःच्या जोखमीवर आहे. ही सेवा मोफत दिली जाते आणि त्यानुसार, तुम्ही सहमत आहात की ANQR आणि त्याचे ऑपरेटर कोणत्याही नुकसानीसाठी किंवा तोट्यासाठी तुमच्यावर कोणतेही उत्तरदायित्व असणार नाहीत. कोणत्याही परिस्थितीत आमची एकूण एकूण जबाबदारी शून्य डॉलर्स ($० AUD) पेक्षा जास्त असणार नाही.',
+        'तुम्ही तुमच्या सेवेच्या वापरामुळे उद्भवणारे ANQR आणि त्याच्या ऑपरेटर्सविरुद्धचे कोणतेही आणि सर्व दावे, मागण्या आणि कारवाईची कारणे सोडण्यास, माफ करण्यास आणि माफ करण्यास सहमत आहात.',
+        'काही अधिकारक्षेत्रे काही हमी किंवा दायित्वाच्या मर्यादा वगळण्याची परवानगी देत नाहीत. अशा अधिकारक्षेत्रांमध्ये, आमची जबाबदारी लागू कायद्याने परवानगी दिलेल्या कमाल मर्यादेपर्यंत मर्यादित असेल.',
       ],
     },
     {
-      heading: 'Indemnification',
+      heading: 'नुकसान भरपाई',
       paragraphs: [
-        'You agree to indemnify, defend, and hold harmless ANQR, its operators, affiliates, and their respective officers, directors, employees, and agents from any claims, damages, losses, liabilities, costs, and expenses (including legal fees) arising from: (a) your use of the site; (b) your violation of these Terms; (c) your violation of any third-party rights; (d) any content you encode into QR codes.',
+        'तुम्ही ANQR, त्याचे ऑपरेटर, सहयोगी आणि त्यांचे संबंधित अधिकारी, संचालक, कर्मचारी आणि एजंट यांना खालील गोष्टींमुळे उद्भवणारे कोणतेही दावे, नुकसान, तोटे, दायित्वे, खर्च आणि खर्च (कायदेशीर शुल्कासह) पासून नुकसानभरपाई देण्यास, बचाव करण्यास आणि हानीरहित ठेवण्यास सहमत आहात: (अ) साइटचा तुमचा वापर; (ब) या अटींचे तुमचे उल्लंघन; (क) कोणत्याही तृतीय-पक्षाच्या अधिकारांचे तुमचे उल्लंघन; (ड) तुम्ही QR कोडमध्ये एन्कोड केलेली कोणतीही सामग्री.',
       ],
     },
     {
-      heading: 'Dispute resolution',
+      heading: 'वादाचे निराकरण',
       paragraphs: [
-        `Any dispute arising from these Terms or your use of ANQR shall first be attempted to be resolved through informal negotiation by contacting ${CONTACT_EMAIL}.`,
-        'If informal resolution fails, disputes shall be resolved through binding arbitration in Victoria, Australia, except that either party may seek injunctive relief in court for intellectual property violations.',
+        `या अटींमुळे किंवा तुमच्या ANQR च्या वापरामुळे उद्भवणारा कोणताही वाद प्रथम ${CONTACT_EMAIL} शी संपर्क साधून अनौपचारिक वाटाघाटीद्वारे सोडवण्याचा प्रयत्न केला जाईल.`,
+        'जर अनौपचारिक निराकरण अयशस्वी झाले, तर विवादांचे निराकरण ऑस्ट्रेलियातील व्हिक्टोरिया येथील बंधनकारक मध्यस्थीद्वारे केले जाईल, परंतु बौद्धिक संपदा उल्लंघनासाठी कोणताही पक्ष न्यायालयात मनाई सवलत मागू शकेल.',
       ],
     },
     {
-      heading: 'Class action waiver',
+      heading: 'वर्ग कारवाईतून माफी',
       paragraphs: [
-        'TO THE EXTENT PERMITTED BY LAW, YOU AGREE THAT ANY DISPUTE RESOLUTION PROCEEDINGS WILL BE CONDUCTED ONLY ON AN INDIVIDUAL BASIS AND NOT IN A CLASS, CONSOLIDATED, OR REPRESENTATIVE ACTION.',
+        'कायद्याने परवानगी दिलेल्या मर्यादेपर्यंत, तुम्ही सहमत आहात की कोणत्याही वादाचे निराकरण कार्यवाही केवळ वैयक्तिक आधारावर केली जाईल आणि वर्गात, एकत्रितपणे किंवा प्रतिनिधी कृतीत नाही.',
       ],
     },
     {
-      heading: 'Governing law',
+      heading: 'शासकीय कायदा',
       paragraphs: [
-        'These Terms are governed by the laws of Victoria, Australia, without regard to conflict of laws principles. You consent to the exclusive jurisdiction of the courts located in Victoria, Australia.',
+        'या अटी व्हिक्टोरिया, ऑस्ट्रेलियाच्या कायद्यांद्वारे नियंत्रित केल्या जातात, कायद्यांच्या संघर्षाच्या तत्त्वांचा विचार न करता. तुम्ही व्हिक्टोरिया, ऑस्ट्रेलिया येथे असलेल्या न्यायालयांच्या विशेष अधिकारक्षेत्राला संमती देता.',
       ],
     },
     {
-      heading: 'Changes and availability',
+      heading: 'बदल आणि उपलब्धता',
       paragraphs: [
-        'We may modify, suspend, or discontinue the site (or any part of it) at any time without notice or liability.',
-        'We may update these Terms at any time. The "Last updated" date indicates when they were most recently revised. Continued use after changes constitutes acceptance.',
+        'आम्ही कोणत्याही वेळी सूचना किंवा दायित्वाशिवाय साइट (किंवा तिचा कोणताही भाग) सुधारित, निलंबित किंवा बंद करू शकतो.',
+        'आम्ही या अटी कधीही अपडेट करू शकतो. शेवटचे अपडेट तारीख त्या सर्वात अलिकडे कधी सुधारित केल्या गेल्या हे दर्शवते. बदलांनंतर सतत वापरल्याने स्वीकृती मिळते.',
       ],
     },
     {
-      heading: 'Severability',
+      heading: 'विभाजनक्षमता',
       paragraphs: [
-        'If any provision of these Terms is held invalid or unenforceable, that provision will be enforced to the maximum extent permissible, and the remaining provisions will remain in full force and effect.',
+        'जर या अटींमधील कोणतीही तरतूद अवैध किंवा लागू करण्यायोग्य नसल्याचा आरोप केला गेला, तर ती तरतूद जास्तीत जास्त परवानगीयोग्य मर्यादेपर्यंत लागू केली जाईल आणि उर्वरित तरतुदी पूर्ण ताकदीने आणि प्रभावी राहतील.',
       ],
     },
     {
-      heading: 'Waiver',
+      heading: 'माफी',
       paragraphs: [
-        'Our failure to enforce any right or provision of these Terms shall not be deemed a waiver of such right or provision.',
+        'या अटींमधील कोणताही अधिकार किंवा तरतूद लागू करण्यात आमचे अपयश अशा अधिकार किंवा तरतूदीचा त्याग मानला जाणार नाही.',
       ],
     },
     {
-      heading: 'Entire agreement',
+      heading: 'संपूर्ण करार',
       paragraphs: [
-        'These Terms, together with our Privacy Policy, constitute the entire agreement between you and ANQR regarding your use of the site and supersede any prior agreements.',
+        'या अटी, आमच्या गोपनीयता धोरणासह, तुमच्या आणि ANQR मधील साइटच्या वापराबाबतचा संपूर्ण करार तयार करतात आणि कोणत्याही पूर्वीच्या करारांना रद्द करतात.',
       ],
     },
     {
-      heading: 'Force majeure',
+      heading: 'सक्तीची घटना',
       paragraphs: [
-        'We shall not be liable for any failure or delay in performance due to circumstances beyond our reasonable control, including natural disasters, war, terrorism, riots, government actions, or internet/infrastructure failures.',
+        'नैसर्गिक आपत्ती, युद्ध, दहशतवाद, दंगली, सरकारी कृती किंवा इंटरनेट/पायाभूत सुविधांच्या अपयशांसह, आमच्या नियंत्रणाबाहेरील परिस्थितीमुळे कोणत्याही अपयशासाठी किंवा कामगिरीतील विलंबासाठी आम्ही जबाबदार राहणार नाही.',
       ],
     },
     {
-      heading: 'Contact',
-      paragraphs: [`Questions about these Terms can be sent to: ${CONTACT_EMAIL}`],
+      heading: 'संपर्क',
+      paragraphs: [`या अटींबद्दलचे प्रश्न ${CONTACT_EMAIL} वर पाठवता येतील`],
     },
   ],
 }

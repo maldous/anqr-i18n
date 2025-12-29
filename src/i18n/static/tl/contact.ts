@@ -2,72 +2,72 @@ import type { PageDefinition } from '../types'
 import { LAST_UPDATED, CONTACT_EMAIL } from '../types'
 
 export const contact: PageDefinition = {
-  title: 'Contact Us',
-  description: 'We welcome feedback, bug reports, feature requests, and general enquiries.',
+  title: 'Makipag-ugnayan sa Amin',
+  description: 'Tinatanggap namin ang feedback, mga ulat ng bug, mga kahilingan sa tampok, at mga pangkalahatang katanungan.',
   lastUpdated: LAST_UPDATED,
   sections: [
     {
-      heading: 'How to reach us',
+      heading: 'Paano kami makontak',
       paragraphs: [
-        'We offer several ways to contact us depending on your needs. We read every message, though response times may vary based on volume and enquiry type.',
+        'Nag-aalok kami ng ilang paraan upang makipag-ugnayan sa amin depende sa iyong mga pangangailangan. Binabasa namin ang bawat mensahe, bagama\'t maaaring mag-iba ang mga oras ng pagtugon batay sa dami ng tao at uri ng pagtatanong.',
       ],
     },
     {
       heading: 'Email',
       paragraphs: [
-        `For all enquiries: ${CONTACT_EMAIL}`,
-        'This is the most reliable way to reach us and is recommended for detailed questions, business enquiries, or if the contact form does not work on your device.',
+        `Para sa lahat ng mga katanungan: ${CONTACT_EMAIL}`,
+        'Ito ang pinaka-maaasahang paraan upang makontak kami at inirerekomenda para sa mga detalyadong tanong, mga katanungan tungkol sa negosyo, o kung ang contact form ay hindi gumagana sa iyong device.',
       ],
     },
     {
-      heading: 'Contact form',
+      heading: 'Form ng Pakikipag-ugnayan',
       paragraphs: [
-        'Use the form below to send us a message directly. If the form does not submit successfully, please use email instead.',
+        'Gamitin ang form sa ibaba upang magpadala sa amin ng mensahe nang direkta. Kung hindi matagumpay na maisumite ang form, mangyaring gumamit na lang ng email.',
       ],
     },
     {
-      heading: 'Types of enquiries',
+      heading: 'Mga Uri ng Pagtatanong',
       bullets: [
-        'General questions: Questions about how to use ANQR, feature explanations, or general feedback.',
-        'Bug reports: Please include your browser, operating system, steps to reproduce, and any error messages you see.',
-        'Feature requests: Suggestions for new features or improvements. We consider all requests though we cannot promise implementation.',
-        'Business enquiries: Partnership opportunities, licensing questions, or commercial use enquiries.',
-        'Privacy requests: Requests to exercise your privacy rights under GDPR, CCPA, or other privacy laws (see Privacy Policy).',
-        'DMCA/Copyright: See the DMCA section below for takedown notice requirements.',
+        'Mga pangkalahatang tanong: Mga tanong tungkol sa kung paano gamitin ang ANQR, mga paliwanag sa tampok, o pangkalahatang feedback.',
+        'Mga ulat ng bug: Pakisama ang iyong browser, operating system, mga hakbang sa pagkopya, at anumang mga mensahe ng error na iyong nakikita.',
+        'Mga kahilingan para sa tampok: Mga mungkahi para sa mga bagong tampok o pagpapabuti. Isinasaalang-alang namin ang lahat ng kahilingan bagama\'t hindi namin maipapangako ang pagpapatupad.',
+        'Mga katanungan sa negosyo: Mga oportunidad sa pakikipagsosyo, mga katanungan sa paglilisensya, o mga katanungan sa paggamit ng komersyo.',
+        'Mga kahilingan sa privacy: Mga kahilingan na gamitin ang iyong mga karapatan sa privacy sa ilalim ng GDPR, CCPA, o iba pang mga batas sa privacy (tingnan ang Patakaran sa Privacy).',
+        'DMCA/Karapatang-ari: Tingnan ang seksyon ng DMCA sa ibaba para sa mga kinakailangan sa abiso ng pagtanggal.',
       ],
     },
     {
-      heading: 'Response times',
+      heading: 'na Mga oras ng pagtugon',
       paragraphs: [
-        'We aim to respond to enquiries within 5-7 business days. Privacy-related requests will be addressed within 30 days as required by law.',
-        'During busy periods, response times may be longer. For urgent matters, please indicate "URGENT" in your subject line.',
+        'Layunin naming tumugon sa mga katanungan sa loob ng 5-7 araw ng negosyo. Ang mga kahilingang may kaugnayan sa privacy ay tutugunan sa loob ng 30 araw ayon sa hinihingi ng batas.',
+        'Sa mga panahong abala, maaaring mas matagal ang oras ng pagtugon. Para sa mga apurahang bagay, mangyaring ilagay ang URGENT sa iyong subject line.',
       ],
     },
     {
-      heading: 'Before contacting us',
+      heading: 'Bago makipag-ugnayan sa amin',
       paragraphs: [
-        'Please check our Documentation page for answers to common questions about how to use ANQR features. Many questions about QR code generation, styling, and export options are covered there.',
+        'Pakitingnan ang aming pahina ng Dokumentasyon para sa mga sagot sa mga karaniwang tanong tungkol sa kung paano gamitin ang mga tampok ng ANQR. Maraming tanong tungkol sa pagbuo, pag-istilo, at mga opsyon sa pag-export ng QR code ang sakop doon.',
       ],
     },
     {
-      heading: 'DMCA Copyright Notices',
+      heading: 'Mga Paunawa sa Karapatang-ari ng DMCA',
       paragraphs: [
-        'If you believe that content available on ANQR infringes your copyright, you may submit a Digital Millennium Copyright Act (DMCA) takedown notice. To be valid, your notice must include:',
+        'Kung naniniwala kang ang nilalamang makukuha sa ANQR ay lumalabag sa iyong karapatang-ari, maaari kang magsumite ng isang paunawa sa pagtanggal ng kopya ng Digital Millennium Copyright Act (DMCA). Upang maging wasto, dapat kasama sa iyong paunawa ang:',
       ],
       bullets: [
-        'A physical or electronic signature of the copyright owner or authorised agent.',
-        'Identification of the copyrighted work claimed to have been infringed.',
-        'Identification of the material that is claimed to be infringing, with information sufficient to locate it.',
-        'Your contact information (address, telephone number, and email address).',
-        'A statement that you have a good faith belief that use of the material is not authorised by the copyright owner.',
-        'A statement, under penalty of perjury, that the information in your notice is accurate and that you are the copyright owner or authorised to act on their behalf.',
+        'Isang pisikal o elektronikong lagda ng may-ari ng karapatang-ari o awtorisadong ahente.',
+        'Pagkilala sa akdang may karapatang-ari na inaangkin na nilabag.',
+        'Pagkilala sa materyal na sinasabing lumalabag, na may sapat na impormasyon upang mahanap ito.',
+        'Ang iyong impormasyon sa pakikipag-ugnayan (tirahan, numero ng telepono, at email address).',
+        'Isang pahayag na mayroon kang mabuting pananampalataya na paniniwala na ang paggamit ng materyal ay hindi pinahihintulutan ng may-ari ng karapatang-ari.',
+        'Isang pahayag, sa ilalim ng parusa ng perjury, na ang impormasyon sa iyong paunawa ay tumpak at ikaw ang may-ari ng copyright o awtorisadong kumilos para sa kanila.',
       ],
     },
     {
-      heading: 'DMCA Contact',
+      heading: 'Pakikipag-ugnayan sa DMCA',
       paragraphs: [
-        `Send DMCA notices to: ${CONTACT_EMAIL}`,
-        'Please include "DMCA Notice" in the subject line. We will respond to valid notices in accordance with applicable law. Note that ANQR generates QR codes locally on users devices and does not host user-generated content.',
+        `Ipadala ang mga abiso ng DMCA sa: ${CONTACT_EMAIL}`,
+        'Pakilagay ang Paunawa ng DMCA sa subject line. Sasagot kami sa mga wastong abiso alinsunod sa naaangkop na batas. Tandaan na ang ANQR ay bumubuo ng mga QR code nang lokal sa mga device ng gumagamit at hindi nagho-host ng nilalamang binuo ng gumagamit.',
       ],
     },
   ],
