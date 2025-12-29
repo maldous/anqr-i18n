@@ -59,41 +59,38 @@ function renderTextWithLinks(text: string): React.ReactNode {
 // ToC group structure for docs
 type TocGroup = {
   title: string
-  items: Array<{ heading: string; slug: string }>
+  items: { id: string; title: string }[]
 }
 
 // Group docs sections into logical categories
-function buildDocsToc(sections: PageSection[]): TocGroup[] {
+// titleKey is used for i18n translation lookup
+function buildDocsToc(sections: PageSection[], t: (key: string) => string): TocGroup[] {
   const groups: TocGroup[] = [
-    { title: 'Getting Started', items: [] },
-    { title: 'Basic', items: [] },
-    { title: 'Advanced', items: [] },
-    { title: 'Professional', items: [] },
-    { title: 'Tips & Help', items: [] },
+    { title: t('nav.guide'), items: [] },
+    { title: t('tiers.basic'), items: [] },
+    { title: t('tiers.advanced'), items: [] },
+    { title: t('tiers.professional'), items: [] },
+    { title: t('payload.other'), items: [] },
   ]
-
-  let currentGroupIndex = 0
-
-  for (const section of sections) {
-    const heading = section.heading
-    const slug = slugify(heading)
-
-    // Determine which group this section belongs to
-    if (heading === 'Getting Started' || heading === 'Quick Start') {
-      currentGroupIndex = 0
-    } else if (heading === 'Basic Features') {
-      currentGroupIndex = 1
-    } else if (heading === 'Advanced Features') {
-      currentGroupIndex = 2
-    } else if (heading === 'Professional Features') {
-      currentGroupIndex = 3
-    } else if (heading === 'Best Practices') {
-      currentGroupIndex = 4
-    }
-
-    groups[currentGroupIndex].items.push({ heading, slug })
+  
+  // Map section indices to groups (stable across languages)
+  // Based on the consistent section order in all translations
+  const getGroupIndex = (sectionIndex: number): number => {
+    if (sectionIndex <= 1) return 0   // Getting Started: sections 0-1
+    if (sectionIndex <= 4) return 1   // Basic Features: sections 2-4
+    if (sectionIndex <= 35) return 2  // Advanced Features: sections 5-35
+    if (sectionIndex <= 47) return 3  // Pro Features: sections 36-47
+    return 4                          // Other: sections 48+
   }
-
+  
+  sections.forEach((section, index) => {
+    if (!section.heading) return
+    // Use index-based ID for stable linking across languages
+    const id = `section-${index}`
+    const groupIndex = getGroupIndex(index)
+    groups[groupIndex].items.push({ id, title: section.heading })
+  })
+  
   return groups.filter(g => g.items.length > 0)
 }
 
@@ -109,13 +106,15 @@ function DocsTableOfContents({
   activeSlug, 
   onNavigate,
   onClose,
-  isOpen
+  isOpen,
+  t
 }: { 
   groups: TocGroup[]
   activeSlug: string
   onNavigate: (slug: string) => void
   onClose: () => void
   isOpen: boolean
+  t: (key: string) => string
 }) {
   const [mobileOpen, setMobileOpen] = useState(false)
   
@@ -146,8 +145,8 @@ function DocsTableOfContents({
   }
 
   // Find active group for mobile display
-  const activeGroup = groups.find(g => g.items.some(item => item.slug === activeSlug))
-  const activeItem = activeGroup?.items.find(item => item.slug === activeSlug)
+  const activeGroup = groups.find(g => g.items.some(item => item.id === activeSlug))
+  const activeItem = activeGroup?.items.find(item => item.id === activeSlug)
 
   const tocContent = (
     <nav className="text-sm">
@@ -167,16 +166,16 @@ function DocsTableOfContents({
           {expandedGroups.has(group.title) && (
             <ul className="mt-1 space-y-0.5 border-l-2 border-muted ml-2">
               {group.items.map((item) => (
-                <li key={item.slug}>
+                <li key={item.id}>
                   <button
-                    onClick={() => handleItemClick(item.slug)}
+                    onClick={() => handleItemClick(item.id)}
                     className={`block w-full text-left py-1 pl-3 pr-2 text-xs leading-snug transition-colors rounded-r ${
-                      activeSlug === item.slug
+                      activeSlug === item.id
                         ? 'text-primary font-medium bg-primary/10 border-l-2 border-primary -ml-[2px]'
                         : 'text-muted-foreground hover:text-foreground hover:bg-muted/50'
                     }`}
                   >
-                    {item.heading}
+                    {item.title}
                   </button>
                 </li>
               ))}
@@ -217,7 +216,7 @@ function DocsTableOfContents({
           <div className="flex items-center justify-between p-4 border-b">
             <h3 className="font-semibold text-foreground flex items-center gap-2">
               <List className="h-4 w-4" />
-              Contents
+              ANQR
             </h3>
             <button
               onClick={() => setMobileOpen(false)}
@@ -241,7 +240,7 @@ function DocsTableOfContents({
           <div className="flex items-center justify-between mb-4">
             <h3 className="font-semibold text-foreground flex items-center gap-2">
               <List className="h-4 w-4" />
-              Contents
+              ANQR
             </h3>
             <button
               onClick={onClose}
@@ -411,12 +410,12 @@ function ContactForm() {
 }
 
 export function StaticPage({ page }: StaticPageProps) {
-  const { i18n } = useTranslation()
+  const { t, i18n } = useTranslation()
   const def = getStaticContent(i18n.language, page)
   usePageTitle(page, def.title)
   
   const isDocsPage = page === 'docs'
-  const tocGroups = useMemo(() => isDocsPage ? buildDocsToc(def.sections) : [], [isDocsPage, def.sections])
+  const tocGroups = useMemo(() => isDocsPage ? buildDocsToc(def.sections, t) : [], [isDocsPage, def.sections, t])
   const [activeSlug, setActiveSlug] = useState('')
   const contentRef = useRef<HTMLDivElement>(null)
   const sectionRefs = useRef<Map<string, HTMLElement>>(new Map())
@@ -476,7 +475,7 @@ export function StaticPage({ page }: StaticPageProps) {
       // Delay to ensure refs are populated
       setTimeout(() => navigateToSection(hash), 100)
     } else if (tocGroups.length > 0 && tocGroups[0].items.length > 0) {
-      setActiveSlug(tocGroups[0].items[0].slug)
+      setActiveSlug(tocGroups[0].items[0].id)
     }
   }, [isDocsPage, tocGroups, navigateToSection])
 
@@ -526,6 +525,7 @@ export function StaticPage({ page }: StaticPageProps) {
           onNavigate={navigateToSection}
           onClose={() => setIsDocsSidebarOpen(false)}
           isOpen={isDocsSidebarOpen}
+          t={t}
         />
 
         {/* Main content */}
@@ -548,8 +548,8 @@ export function StaticPage({ page }: StaticPageProps) {
           <article className="max-w-3xl mx-auto px-4 sm:px-6 py-4">
 
             <div className="space-y-8 sm:space-y-10">
-              {def.sections.map((section) => {
-                const slug = slugify(section.heading)
+              {def.sections.map((section, i) => {
+                const slug = `section-${i}`
                 return (
                   <section 
                     key={section.heading} 
