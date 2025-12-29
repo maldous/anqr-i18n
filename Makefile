@@ -175,7 +175,7 @@ android\:bump:
 	echo "Version bumped: $$CURRENT_NAME ($$CURRENT_CODE) -> $$NEW_NAME ($$NEW_CODE)"
 
 # Full Android production build
-android: android\:release
+android: android\:bump android\:release
 	@echo ""
 	@echo "============================================"
 	@echo "Android production build complete!"
@@ -186,7 +186,3 @@ android: android\:release
 	@echo "2. Create/select your app"
 	@echo "3. Upload the AAB file"
 	@echo "============================================"
-
-# Build, bump version, and instruct release
-android\:deploy: android\:bump android\:release
-	@echo "Deployment complete!"

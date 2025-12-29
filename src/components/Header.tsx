@@ -7,7 +7,7 @@ import { useTranslation } from 'react-i18next'
 import { languages } from '@/i18n'
 import * as LucideIcons from 'lucide-react'
 import { Button } from '@/components/ui/button'
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { copyToClipboard, getShareableUrl } from '@/modules/share-utils'
 import { showRewardedAd, prepareRewardedAd } from '@/modules/admob-service'
 import { gallerySections, type GalleryCategory } from '@/data/gallery-items'
@@ -50,12 +50,31 @@ export function Header({ onToggleSidebar, onExport, sidebarOpen = false, showGal
   const [copied, setCopied] = useState(false)
   const [loadingAd, setLoadingAd] = useState(false)
   const [langMenuOpen, setLangMenuOpen] = useState(false)
+  const [isLangMenuClosing, setIsLangMenuClosing] = useState(false)
+  const [isMobileMenuClosing, setIsMobileMenuClosing] = useState(false)
+  const langButtonRef = useRef<HTMLDivElement>(null)
 
   const currentLang = languages.find(l => l.code === i18n.language) || languages[0]
 
   const changeLanguage = (code: string) => {
     i18n.changeLanguage(code)
-    setLangMenuOpen(false)
+    closeLangMenu()
+  }
+
+  // Smooth close for language menu
+  const closeLangMenu = () => {
+    if (langMenuOpen) {
+      setIsLangMenuClosing(true)
+      setLangMenuOpen(false)
+    }
+  }
+
+  // Smooth close for mobile menu
+  const closeMobileMenu = () => {
+    if (mobileMenuOpen) {
+      setIsMobileMenuClosing(true)
+      setMobileMenuOpen(false)
+    }
   }
 
   const resolvedPage: HeaderPage = activePage ?? (showGallery ? 'gallery' : 'editor')
@@ -279,8 +298,8 @@ export function Header({ onToggleSidebar, onExport, sidebarOpen = false, showGal
   return (
     <>
     <header className={`border-b bg-card shadow-md sticky top-0 z-50 transition-all duration-300 ${sidebarOpen && isEditor ? 'lg:ms-96' : ''}`} style={{ paddingTop: 'max(var(--sat, 0px), env(safe-area-inset-top, 0px))' }}>
-      <div className="px-4 flex items-center justify-between h-[52px]">
-        <div className="flex items-center gap-6">
+      <div className="px-2 sm:px-4 flex items-center justify-between h-[52px] overflow-x-auto scrollbar-hide">
+        <div className="flex items-center gap-2 sm:gap-4 lg:gap-6">
           {/* Settings toggle - only in editor mode, placeholder space on other pages */}
           {isEditor ? (
             <button
@@ -298,7 +317,7 @@ export function Header({ onToggleSidebar, onExport, sidebarOpen = false, showGal
           {/* ANQR logo/title - always navigates to generator */}
           <button
             onClick={() => {
-              setMobileMenuOpen(false)
+              closeMobileMenu()
               onNavigate?.('editor')
             }}
             className="flex items-center gap-2 transition-opacity hover:opacity-80 cursor-pointer"
@@ -335,7 +354,7 @@ export function Header({ onToggleSidebar, onExport, sidebarOpen = false, showGal
           </nav>
         </div>
         
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-1.5 sm:gap-2 lg:gap-3">
           {/* Gallery Filter - icon buttons right-justified next to dark mode toggle */}
           {isGallery && (
             <div className="hidden lg:flex items-center gap-1">
@@ -425,27 +444,42 @@ export function Header({ onToggleSidebar, onExport, sidebarOpen = false, showGal
             variant="ghost"
             size="icon"
             className="md:hidden h-9 w-9"
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            onClick={() => mobileMenuOpen ? closeMobileMenu() : setMobileMenuOpen(true)}
             title="Open navigation menu"
           >
             <Menu className="h-5 w-5" />
           </Button>
           
           {/* Language Selector */}
-          <div className="relative">
+          <div className="relative" ref={langButtonRef}>
             <Button 
               variant="ghost" 
               size="icon" 
-              onClick={() => setLangMenuOpen(!langMenuOpen)} 
+              onClick={() => langMenuOpen ? closeLangMenu() : setLangMenuOpen(true)} 
               className="h-9 w-9" 
               title={t('language.select')}
             >
               <span className="text-base">{currentLang.flag}</span>
             </Button>
-            {langMenuOpen && (
+            {(langMenuOpen || isLangMenuClosing) && (
               <>
-                <div className="fixed inset-0 z-40" onClick={() => setLangMenuOpen(false)} />
-                <div className="absolute end-0 top-full mt-1 w-72 bg-card border rounded-lg shadow-lg z-50 py-1 max-h-[50vh] overflow-y-auto">
+                <div className="fixed inset-0 z-[60]" onClick={closeLangMenu} />
+                <div 
+                  className={`fixed w-72 bg-card border rounded-lg shadow-lg z-[70] py-1 max-h-[50vh] overflow-y-auto origin-top ${
+                    isLangMenuClosing 
+                      ? 'animate-[dropdown-close_0.15s_ease-in_forwards]' 
+                      : 'animate-[dropdown_0.2s_ease-out]'
+                  }`}
+                  style={{
+                    top: langButtonRef.current ? langButtonRef.current.getBoundingClientRect().bottom + 4 : 0,
+                    right: langButtonRef.current ? window.innerWidth - langButtonRef.current.getBoundingClientRect().right : 0,
+                  }}
+                  onAnimationEnd={() => {
+                    if (isLangMenuClosing) {
+                      setIsLangMenuClosing(false)
+                    }
+                  }}
+                >
                   {/* Sort languages: current language first, then alphabetically by translated name */}
                   {[...languages]
                     .sort((a, b) => {
@@ -492,8 +526,19 @@ export function Header({ onToggleSidebar, onExport, sidebarOpen = false, showGal
       </div>
 
       {/* Mobile Menu */}
-      {mobileMenuOpen && (
-        <div className="md:hidden border-t bg-card p-3 space-y-2">
+      {(mobileMenuOpen || isMobileMenuClosing) && (
+        <div 
+          className={`md:hidden border-t bg-card p-3 space-y-2 overflow-hidden origin-top ${
+            isMobileMenuClosing 
+              ? 'animate-[slide-up_0.2s_ease-in_forwards]' 
+              : 'animate-[slide-down_0.2s_ease-out_forwards]'
+          }`}
+          onAnimationEnd={() => {
+            if (isMobileMenuClosing) {
+              setIsMobileMenuClosing(false)
+            }
+          }}
+        >
           {/* Nav links as full-width vertical buttons */}
           <nav className="flex flex-col gap-1">
             {NAV_LINKS.map(link => {
@@ -512,7 +557,7 @@ export function Header({ onToggleSidebar, onExport, sidebarOpen = false, showGal
                       e.preventDefault()
                       onNavigate(link.page)
                     }
-                    setMobileMenuOpen(false)
+                    closeMobileMenu()
                   }}
                   title={`Go to ${t(link.labelKey)}`}
                 >

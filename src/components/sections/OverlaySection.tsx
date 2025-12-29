@@ -324,7 +324,7 @@ export function OverlaySection() {
                 <div className="flex gap-2">
                   <Input
                     type="url"
-                    placeholder="https://example.com/image.gif"
+                    placeholder="https://anqr.link/image.gif"
                     value={urlInput}
                     onChange={(e) => {
                       setUrlInput(e.target.value)

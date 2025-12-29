@@ -405,7 +405,7 @@ function App() {
           {/* Main content area - conditionally render active page */}
           {/* On native editor: pb-44 for Footer + Share/Export + AdMob. On native non-editor: pb-40 for Footer + AdMob */}
           {/* On web: pb-12 for footer */}
-          <div className={`flex-1 flex flex-col min-h-0 overflow-hidden ${Capacitor.isNativePlatform() ? (showEditor ? 'pb-36' : 'pb-40') : 'pb-12'}`}>
+          <div className={`flex-1 flex flex-col min-h-0 ${Capacitor.isNativePlatform() ? (showEditor ? 'pb-36' : 'pb-40') : 'pb-12'}`}>
             {showEditor && <Preview sidebarOpen={sidebarOpen} />}
             {showGallery && <Gallery filter={galleryFilter} />}
             {showStaticPage && <StaticPage page={currentPage as StaticPageType} />}
@@ -419,7 +419,7 @@ function App() {
         >
           {/* Inner wrapper with margins to center over QR area (between ad columns) */}
           <div className="px-4 lg:mx-[160px] text-center flex items-center justify-center min-h-[24px]">
-            <p className="text-xs text-muted-foreground" dir="auto">
+            <p className="text-[10px] sm:text-xs text-muted-foreground" dir="auto">
               <a
                 href="/docs"
                 className="hover:underline"

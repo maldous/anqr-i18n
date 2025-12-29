@@ -79,7 +79,7 @@ const contentTypeItems: GalleryItem[] = [
   { id: 'content-wifi', title: 'WiFi Network', description: 'WiFi config with dots forest green', category: 'content-types',
     params: { data: 'WIFI:T:WPA;S:MyNetwork;P:password123;;', ec: 'H', v: 0, style: 'dots', finder: 'circle', fg: '1b4332', bg: 'd8f3dc' } },
   { id: 'content-email', title: 'Email Address', description: 'Mailto link with coral colors', category: 'content-types',
-    params: { data: 'mailto:hello@example.com?subject=Hello', ec: 'H', v: 0, style: 'square', finder: 'square', fg: 'e85d04', bg: 'ffe8d6' } },
+    params: { data: 'mailto:hello@anqr.link?subject=Hello', ec: 'H', v: 0, style: 'square', finder: 'square', fg: 'e85d04', bg: 'ffe8d6' } },
   { id: 'content-sms', title: 'SMS Message', description: 'Pre-filled SMS with diamond teal', category: 'content-types',
     params: { data: 'sms:+1234567890?body=Hello%20from%20ANQR', ec: 'H', v: 0, style: 'diamond', finder: 'rounded', fg: '006d77', bg: 'e0f4f5' } },
   { id: 'content-geo', title: 'Geo Location', description: 'Map coords with connected gold', category: 'content-types',

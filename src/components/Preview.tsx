@@ -191,7 +191,7 @@ export function Preview({ sidebarOpen = true }: PreviewProps) {
   const hasActiveSimulation = qa.simulateBlurPx > 0 || qa.simulateNoise > 0 || qa.simulateRotationDeg > 0
 
   return (
-    <main className={`flex-1 flex flex-col lg:flex-row bg-background overflow-auto scrollbar-hide transition-all duration-300 ${sidebarOpen ? 'lg:ms-96' : ''}`}>
+    <main className={`flex-1 flex flex-col lg:flex-row bg-background overflow-auto transition-all duration-300 ${sidebarOpen ? 'lg:ms-96' : ''}`}>
       {/* Desktop Left Column Ad - Skyscraper 160x600, always visible */}
       {/* Fixed height based on viewport to prevent layout shift from AdSense */}
       <div className="hidden lg:flex flex-col items-center justify-center w-[180px] h-[calc(100vh-8rem)] bg-background flex-shrink-0 ps-3 pe-2">
@@ -200,15 +200,11 @@ export function Preview({ sidebarOpen = true }: PreviewProps) {
       
       {/* Main content area with QR */}
       <div className="flex-1 flex flex-col min-h-0">
-        {/* Mobile top ad */}
-        <div className="lg:hidden flex justify-center py-2">
-          <AdUnit slot="preview-mobile-top" width={320} height={100} format="horizontal" />
-        </div>
-        
         {/* Preview Area - on mobile, center QR in available space */}
-        <div className="flex-1 flex items-center justify-center p-2 md:p-8">
+        {/* Equal top/bottom padding for centering, with extra bottom space for scrolling above fixed buttons */}
+        <div className="flex-1 flex items-center justify-center px-4 py-24 md:p-8 overflow-auto scrollbar-hide">
         <div 
-          className="qr-preview-container transition-all duration-300 w-full max-w-[280px] sm:max-w-md md:max-w-xl lg:max-w-2xl"
+          className="qr-preview-container transition-all duration-300 w-full max-w-[280px] sm:max-w-md md:max-w-xl lg:max-w-2xl mx-auto"
         >
           {/* QR Code Canvas */}
           <div className="bg-white rounded-lg shadow-xl flex items-center justify-center p-4 relative">
@@ -313,11 +309,6 @@ export function Preview({ sidebarOpen = true }: PreviewProps) {
             </div>
           </div>
         </div>
-        </div>
-        
-        {/* Mobile bottom ad */}
-        <div className="lg:hidden flex justify-center py-2">
-          <AdUnit slot="preview-mobile-bottom" width={320} height={100} format="horizontal" />
         </div>
       </div>
       
