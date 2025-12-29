@@ -353,7 +353,7 @@ function ContactForm() {
             type="email"
             value={form.email}
             onChange={(e) => setForm((s) => ({ ...s, email: e.target.value }))}
-            placeholder="you@example.com"
+            placeholder="you@anqr.link"
             required
           />
         </div>
