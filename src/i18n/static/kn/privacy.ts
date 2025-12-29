@@ -2,147 +2,147 @@ import type { PageDefinition } from '../types'
 import { LAST_UPDATED, CONTACT_EMAIL } from '../types'
 
 export const privacy: PageDefinition = {
-  title: 'Privacy Policy',
-  description: 'Information ANQR collects, how it is used, and your rights under applicable privacy laws.',
+  title: 'ಗೌಪ್ಯತೆ ನೀತಿ',
+  description: 'ANQR ಸಂಗ್ರಹಿಸುವ ಮಾಹಿತಿ, ಅದನ್ನು ಹೇಗೆ ಬಳಸಲಾಗುತ್ತದೆ ಮತ್ತು ಅನ್ವಯವಾಗುವ ಗೌಪ್ಯತೆ ಕಾನೂನುಗಳ ಅಡಿಯಲ್ಲಿ ನಿಮ್ಮ ಹಕ್ಕುಗಳು.',
   lastUpdated: LAST_UPDATED,
   sections: [
     {
-      heading: 'Summary',
+      heading: 'ಸಾರಾಂಶ',
       paragraphs: [
-        'ANQR is a QR code generator that runs entirely on your device. We do not require you to create an account, and QR codes are generated locally — we do not have access to the content you encode.',
-        'We use Google AdSense for advertising and may use analytics services. These services collect information through cookies and similar technologies. This policy explains what data is collected, how it is used, and your rights.',
+        'ANQR ನಿಮ್ಮ ಸಾಧನದಲ್ಲಿ ಸಂಪೂರ್ಣವಾಗಿ ಕಾರ್ಯನಿರ್ವಹಿಸುವ QR ಕೋಡ್ ಜನರೇಟರ್ ಆಗಿದೆ. ನಾವು ನಿಮಗೆ ಖಾತೆಯನ್ನು ರಚಿಸುವ ಅಗತ್ಯವಿಲ್ಲ, ಮತ್ತು QR ಕೋಡ್‌ಗಳನ್ನು ಸ್ಥಳೀಯವಾಗಿ ರಚಿಸಲಾಗುತ್ತದೆ - ನೀವು ಎನ್‌ಕೋಡ್ ಮಾಡುವ ವಿಷಯಕ್ಕೆ ನಮಗೆ ಪ್ರವೇಶವಿಲ್ಲ.',
+        'ನಾವು ಜಾಹೀರಾತುಗಳಿಗಾಗಿ Google AdSense ಅನ್ನು ಬಳಸುತ್ತೇವೆ ಮತ್ತು ವಿಶ್ಲೇಷಣಾ ಸೇವೆಗಳನ್ನು ಬಳಸಬಹುದು. ಈ ಸೇವೆಗಳು ಕುಕೀಸ್ ಮತ್ತು ಅಂತಹುದೇ ತಂತ್ರಜ್ಞಾನಗಳ ಮೂಲಕ ಮಾಹಿತಿಯನ್ನು ಸಂಗ್ರಹಿಸುತ್ತವೆ. ಈ ನೀತಿಯು ಯಾವ ಡೇಟಾವನ್ನು ಸಂಗ್ರಹಿಸಲಾಗುತ್ತದೆ, ಅದನ್ನು ಹೇಗೆ ಬಳಸಲಾಗುತ್ತದೆ ಮತ್ತು ನಿಮ್ಮ ಹಕ್ಕುಗಳನ್ನು ವಿವರಿಸುತ್ತದೆ.',
       ],
     },
     {
-      heading: 'Information we collect',
+      heading: 'ನಾವು ಸಂಗ್ರಹಿಸುವ ಮಾಹಿತಿ',
       bullets: [
-        'Information you provide: If you contact us via email or our contact form, we collect your name, email address, and message content.',
-        'Automatically collected information: Our hosting provider (Netlify), advertising partners, and analytics services may collect: IP address, browser type and version, operating system, device type, referring URL, pages visited, time on site, and approximate geographic location.',
-        'Third-party cookies: Our advertising partners (Google AdSense) use cookies and similar technologies to serve and measure advertisements. ANQR itself does not set any first-party cookies.',
+        'ನೀವು ಒದಗಿಸುವ ಮಾಹಿತಿ: ನೀವು ಇಮೇಲ್ ಅಥವಾ ನಮ್ಮ ಸಂಪರ್ಕ ಫಾರ್ಮ್ ಮೂಲಕ ನಮ್ಮನ್ನು ಸಂಪರ್ಕಿಸಿದರೆ, ನಾವು ನಿಮ್ಮ ಹೆಸರು, ಇಮೇಲ್ ವಿಳಾಸ ಮತ್ತು ಸಂದೇಶ ವಿಷಯವನ್ನು ಸಂಗ್ರಹಿಸುತ್ತೇವೆ.',
+        'ಸ್ವಯಂಚಾಲಿತವಾಗಿ ಸಂಗ್ರಹಿಸಿದ ಮಾಹಿತಿ: ನಮ್ಮ ಹೋಸ್ಟಿಂಗ್ ಪೂರೈಕೆದಾರರು (ನೆಟ್‌ಲಿಫೈ), ಜಾಹೀರಾತು ಪಾಲುದಾರರು ಮತ್ತು ವಿಶ್ಲೇಷಣಾ ಸೇವೆಗಳು ಇವುಗಳನ್ನು ಸಂಗ್ರಹಿಸಬಹುದು: IP ವಿಳಾಸ, ಬ್ರೌಸರ್ ಪ್ರಕಾರ ಮತ್ತು ಆವೃತ್ತಿ, ಆಪರೇಟಿಂಗ್ ಸಿಸ್ಟಮ್, ಸಾಧನದ ಪ್ರಕಾರ, ಉಲ್ಲೇಖಿಸುವ URL, ಭೇಟಿ ನೀಡಿದ ಪುಟಗಳು, ಸೈಟ್‌ನಲ್ಲಿ ಸಮಯ ಮತ್ತು ಅಂದಾಜು ಭೌಗೋಳಿಕ ಸ್ಥಳ.',
+        'ಮೂರನೇ ವ್ಯಕ್ತಿಯ ಕುಕೀಗಳು: ನಮ್ಮ ಜಾಹೀರಾತು ಪಾಲುದಾರರು (ಗೂಗಲ್ ಆಡ್ಸೆನ್ಸ್) ಜಾಹೀರಾತುಗಳನ್ನು ಒದಗಿಸಲು ಮತ್ತು ಅಳೆಯಲು ಕುಕೀಗಳು ಮತ್ತು ಅಂತಹುದೇ ತಂತ್ರಜ್ಞಾನಗಳನ್ನು ಬಳಸುತ್ತಾರೆ. ANQR ಸ್ವತಃ ಯಾವುದೇ ಮೊದಲ-ಪಕ್ಷದ ಕುಕೀಗಳನ್ನು ಹೊಂದಿಸುವುದಿಲ್ಲ.',
       ],
     },
     {
-      heading: 'Cookies and third-party technologies',
+      heading: 'ಕುಕೀಸ್ ಮತ್ತು ಮೂರನೇ ವ್ಯಕ್ತಿಯ ತಂತ್ರಜ್ಞಾನಗಳು',
       paragraphs: [
-        'ANQR does not set any first-party cookies. Your preferences (such as dark mode) are stored locally on your device, which is not transmitted to any server.',
-        'However, our advertising partners (Google AdSense) and hosting provider may use cookies and similar tracking technologies:',
-      ],
-      bullets: [
-        'Advertising cookies (third-party): Set by Google AdSense and advertising partners to serve relevant ads, measure ad performance, and understand user interests. These cookies may track your activity across different websites.',
-        'Analytics cookies (third-party): May be used by our hosting provider or analytics services to collect anonymised usage data.',
-      ],
-    },
-    {
-      heading: 'Google AdSense and advertising',
-      paragraphs: [
-        'We display advertisements through Google AdSense. Google and its partners use cookies to serve ads based on your browsing history on this site and other websites (interest-based advertising).',
-        'Learn how Google uses your information: https://policies.google.com/technologies/partner-sites',
-        'Manage ad personalisation: https://adssettings.google.com',
-        'Opt out via Network Advertising Initiative: https://optout.networkadvertising.org',
-        'Opt out via Digital Advertising Alliance: https://optout.aboutads.info',
-      ],
-    },
-    {
-      heading: 'How we use information',
-      bullets: [
-        'To respond to your enquiries and provide support.',
-        'To display relevant advertisements through our advertising partners.',
-        'To analyse site usage and improve our services.',
-        'To detect, prevent, and address fraud, abuse, and security issues.',
-        'To comply with legal obligations.',
-      ],
-    },
-    {
-      heading: 'Third-party services',
-      bullets: [
-        'Google AdSense: Receives data to serve and measure advertisements.',
-        'Analytics providers: Receive anonymised usage data.',
-        'Netlify (hosting): Processes requests and may log IP addresses.',
-        'We do not sell your personal information. However, sharing data with advertising partners may be considered a "sale" under CCPA (see below).',
-      ],
-    },
-    {
-      heading: 'Data retention',
-      bullets: [
-        'Contact submissions: Up to 2 years.',
-        'Server logs: Up to 30 days (hosting provider).',
-        'Analytics data: Up to 26 months (anonymised).',
-        'Advertising cookies: Typically 13 months (varies by partner).',
-      ],
-    },
-    {
-      heading: 'Your rights under GDPR (EEA users)',
-      paragraphs: [
-        'If you are in the European Economic Area, you have the following rights under the General Data Protection Regulation:',
+        'ANQR ಯಾವುದೇ ಪ್ರಥಮ-ಪಕ್ಷದ ಕುಕೀಗಳನ್ನು ಹೊಂದಿಸುವುದಿಲ್ಲ. ನಿಮ್ಮ ಆದ್ಯತೆಗಳು (ಡಾರ್ಕ್ ಮೋಡ್‌ನಂತಹವು) ನಿಮ್ಮ ಸಾಧನದಲ್ಲಿ ಸ್ಥಳೀಯವಾಗಿ ಸಂಗ್ರಹಿಸಲ್ಪಡುತ್ತವೆ, ಅದು ಯಾವುದೇ ಸರ್ವರ್‌ಗೆ ರವಾನೆಯಾಗುವುದಿಲ್ಲ.',
+        'ಆದಾಗ್ಯೂ, ನಮ್ಮ ಜಾಹೀರಾತು ಪಾಲುದಾರರು (ಗೂಗಲ್ ಆಡ್ಸೆನ್ಸ್) ಮತ್ತು ಹೋಸ್ಟಿಂಗ್ ಪೂರೈಕೆದಾರರು ಕುಕೀಗಳು ಮತ್ತು ಅಂತಹುದೇ ಟ್ರ್ಯಾಕಿಂಗ್ ತಂತ್ರಜ್ಞಾನಗಳನ್ನು ಬಳಸಬಹುದು:',
       ],
       bullets: [
-        'Right of access: Request a copy of personal data we hold about you.',
-        'Right to rectification: Request correction of inaccurate data.',
-        'Right to erasure: Request deletion of your data ("right to be forgotten").',
-        'Right to restrict processing: Request limits on how we use your data.',
-        'Right to data portability: Request your data in a portable format.',
-        'Right to object: Object to processing, including for direct marketing.',
-        'Right to withdraw consent: Withdraw consent at any time where processing is consent-based.',
-        'Right to lodge a complaint: File a complaint with your data protection authority.',
+        'ಜಾಹೀರಾತು ಕುಕೀಗಳು (ಮೂರನೇ ವ್ಯಕ್ತಿ): ಸಂಬಂಧಿತ ಜಾಹೀರಾತುಗಳನ್ನು ಒದಗಿಸಲು, ಜಾಹೀರಾತು ಕಾರ್ಯಕ್ಷಮತೆಯನ್ನು ಅಳೆಯಲು ಮತ್ತು ಬಳಕೆದಾರರ ಆಸಕ್ತಿಗಳನ್ನು ಅರ್ಥಮಾಡಿಕೊಳ್ಳಲು Google AdSense ಮತ್ತು ಜಾಹೀರಾತು ಪಾಲುದಾರರಿಂದ ಹೊಂದಿಸಲಾಗಿದೆ. ಈ ಕುಕೀಗಳು ವಿಭಿನ್ನ ವೆಬ್‌ಸೈಟ್‌ಗಳಲ್ಲಿ ನಿಮ್ಮ ಚಟುವಟಿಕೆಯನ್ನು ಟ್ರ್ಯಾಕ್ ಮಾಡಬಹುದು.',
+        'ಅನಾಲಿಟಿಕ್ಸ್ ಕುಕೀಗಳು (ಮೂರನೇ ವ್ಯಕ್ತಿ): ಅನಾಮಧೇಯ ಬಳಕೆಯ ಡೇಟಾವನ್ನು ಸಂಗ್ರಹಿಸಲು ನಮ್ಮ ಹೋಸ್ಟಿಂಗ್ ಪೂರೈಕೆದಾರರು ಅಥವಾ ವಿಶ್ಲೇಷಣಾ ಸೇವೆಗಳಿಂದ ಬಳಸಬಹುದು.',
       ],
     },
     {
-      heading: 'GDPR legal basis',
+      heading: 'ಗೂಗಲ್ ಆಡ್ಸೆನ್ಸ್ ಮತ್ತು ಜಾಹೀರಾತು',
       paragraphs: [
-        'We process data on these bases: (a) Consent — for personalised advertising (managed by our advertising partners); (b) Legitimate interests — for analytics, security, and improvement; (c) Contract — to respond to enquiries.',
-        `To exercise your rights, contact ${CONTACT_EMAIL}. We respond within 30 days.`,
+        'ನಾವು Google AdSense ಮೂಲಕ ಜಾಹೀರಾತುಗಳನ್ನು ಪ್ರದರ್ಶಿಸುತ್ತೇವೆ. ಈ ಸೈಟ್ ಮತ್ತು ಇತರ ವೆಬ್‌ಸೈಟ್‌ಗಳಲ್ಲಿ (ಆಸಕ್ತಿ ಆಧಾರಿತ ಜಾಹೀರಾತು) ನಿಮ್ಮ ಬ್ರೌಸಿಂಗ್ ಇತಿಹಾಸವನ್ನು ಆಧರಿಸಿ ಜಾಹೀರಾತುಗಳನ್ನು ಒದಗಿಸಲು Google ಮತ್ತು ಅದರ ಪಾಲುದಾರರು ಕುಕೀಗಳನ್ನು ಬಳಸುತ್ತಾರೆ.',
+        'Google ನಿಮ್ಮ ಮಾಹಿತಿಯನ್ನು ಹೇಗೆ ಬಳಸುತ್ತದೆ ಎಂಬುದನ್ನು ತಿಳಿಯಿರಿ: https://policies.google.com/technologies/partner-sites',
+        'ಜಾಹೀರಾತು ವೈಯಕ್ತೀಕರಣವನ್ನು ನಿರ್ವಹಿಸಿ: https://adssettings.google.com',
+        'ನೆಟ್‌ವರ್ಕ್ ಜಾಹೀರಾತು ಉಪಕ್ರಮದ ಮೂಲಕ ಹೊರಗುಳಿಯಿರಿ: https://optout.networkadvertising.org',
+        'ಡಿಜಿಟಲ್ ಜಾಹೀರಾತು ಒಕ್ಕೂಟದ ಮೂಲಕ ಹೊರಗುಳಿಯಿರಿ: https://optout.aboutads.info',
       ],
     },
     {
-      heading: 'Your rights under CCPA (California users)',
+      heading: 'ನಾವು ಮಾಹಿತಿಯನ್ನು ಹೇಗೆ ಬಳಸುತ್ತೇವೆ',
       bullets: [
-        'Right to know: Request information about data collected, sources, purposes, and third parties.',
-        'Right to delete: Request deletion of your personal information.',
-        'Right to opt-out: Opt out of the "sale" of personal information (sharing with ad partners may qualify).',
-        'Right to non-discrimination: We will not discriminate for exercising your rights.',
+        'ನಿಮ್ಮ ವಿಚಾರಣೆಗಳಿಗೆ ಪ್ರತಿಕ್ರಿಯಿಸಲು ಮತ್ತು ಬೆಂಬಲ ನೀಡಲು.',
+        'ನಮ್ಮ ಜಾಹೀರಾತು ಪಾಲುದಾರರ ಮೂಲಕ ಸಂಬಂಧಿತ ಜಾಹೀರಾತುಗಳನ್ನು ಪ್ರದರ್ಶಿಸಲು.',
+        'ಸೈಟ್ ಬಳಕೆಯನ್ನು ವಿಶ್ಲೇಷಿಸಲು ಮತ್ತು ನಮ್ಮ ಸೇವೆಗಳನ್ನು ಸುಧಾರಿಸಲು.',
+        'ವಂಚನೆ, ದುರುಪಯೋಗ ಮತ್ತು ಭದ್ರತಾ ಸಮಸ್ಯೆಗಳನ್ನು ಪತ್ತೆಹಚ್ಚಲು, ತಡೆಯಲು ಮತ್ತು ಪರಿಹರಿಸಲು.',
+        'ಕಾನೂನು ಬಾಧ್ಯತೆಗಳನ್ನು ಪಾಲಿಸಲು.',
       ],
     },
     {
-      heading: 'CCPA categories collected',
-      paragraphs: [
-        'Categories: Identifiers (IP address, device ID), Internet activity (browsing, ad interactions), Geolocation (approximate), Inferences (interests from browsing).',
-        `To exercise rights or opt out: ${CONTACT_EMAIL} or adjust cookie settings.`,
+      heading: 'ಮೂರನೇ ವ್ಯಕ್ತಿಯ ಸೇವೆಗಳು',
+      bullets: [
+        'ಗೂಗಲ್ ಆಡ್ಸೆನ್ಸ್: ಜಾಹೀರಾತುಗಳನ್ನು ಒದಗಿಸಲು ಮತ್ತು ಅಳೆಯಲು ಡೇಟಾವನ್ನು ಪಡೆಯುತ್ತದೆ.',
+        'ವಿಶ್ಲೇಷಣಾ ಪೂರೈಕೆದಾರರು: ಅನಾಮಧೇಯ ಬಳಕೆಯ ಡೇಟಾವನ್ನು ಸ್ವೀಕರಿಸಿ.',
+        'ನೆಟ್‌ಲಿಫೈ (ಹೋಸ್ಟಿಂಗ್): ವಿನಂತಿಗಳನ್ನು ಪ್ರಕ್ರಿಯೆಗೊಳಿಸುತ್ತದೆ ಮತ್ತು ಐಪಿ ವಿಳಾಸಗಳನ್ನು ಲಾಗ್ ಮಾಡಬಹುದು.',
+        'ನಾವು ನಿಮ್ಮ ವೈಯಕ್ತಿಕ ಮಾಹಿತಿಯನ್ನು ಮಾರಾಟ ಮಾಡುವುದಿಲ್ಲ. ಆದಾಗ್ಯೂ, ಜಾಹೀರಾತು ಪಾಲುದಾರರೊಂದಿಗೆ ಡೇಟಾವನ್ನು ಹಂಚಿಕೊಳ್ಳುವುದನ್ನು CCPA ಅಡಿಯಲ್ಲಿ ಮಾರಾಟ ಎಂದು ಪರಿಗಣಿಸಬಹುದು (ಕೆಳಗೆ ನೋಡಿ). ',
       ],
     },
     {
-      heading: 'International transfers',
-      paragraphs: [
-        'Your information may be transferred to countries with different data protection laws, including the United States. We use appropriate safeguards such as Standard Contractual Clauses.',
+      heading: 'ಡೇಟಾ ಧಾರಣ',
+      bullets: [
+        'ಸಂಪರ್ಕ ಸಲ್ಲಿಕೆಗಳು: 2 ವರ್ಷಗಳವರೆಗೆ.',
+        'ಸರ್ವರ್ ಲಾಗ್‌ಗಳು: 30 ದಿನಗಳವರೆಗೆ (ಹೋಸ್ಟಿಂಗ್ ಪೂರೈಕೆದಾರ).',
+        'ವಿಶ್ಲೇಷಣಾ ಡೇಟಾ: 26 ತಿಂಗಳವರೆಗೆ (ಅನಾಮಧೇಯಗೊಳಿಸಲಾಗಿದೆ).',
+        'ಜಾಹೀರಾತು ಕುಕೀಗಳು: ಸಾಮಾನ್ಯವಾಗಿ 13 ತಿಂಗಳುಗಳು (ಪಾಲುದಾರರಿಂದ ಬದಲಾಗುತ್ತದೆ).',
       ],
     },
     {
-      heading: 'Children\'s privacy',
+      heading: 'GDPR (EEA ಬಳಕೆದಾರರು) ಅಡಿಯಲ್ಲಿ ನಿಮ್ಮ ಹಕ್ಕುಗಳು',
       paragraphs: [
-        `ANQR is not directed at children under 13 (or 16 in the EEA). We do not knowingly collect data from children. Contact ${CONTACT_EMAIL} if you believe a child has provided information.`,
+        'ನೀವು ಯುರೋಪಿಯನ್ ಆರ್ಥಿಕ ಪ್ರದೇಶದಲ್ಲಿದ್ದರೆ, ಸಾಮಾನ್ಯ ದತ್ತಾಂಶ ಸಂರಕ್ಷಣಾ ನಿಯಂತ್ರಣದ ಅಡಿಯಲ್ಲಿ ನಿಮಗೆ ಈ ಕೆಳಗಿನ ಹಕ್ಕುಗಳಿವೆ:',
+      ],
+      bullets: [
+        'ಪ್ರವೇಶದ ಹಕ್ಕು: ನಿಮ್ಮ ಬಗ್ಗೆ ನಾವು ಹೊಂದಿರುವ ವೈಯಕ್ತಿಕ ಡೇಟಾದ ನಕಲನ್ನು ವಿನಂತಿಸಿ.',
+        'ಸರಿಪಡಿಸುವ ಹಕ್ಕು: ತಪ್ಪಾದ ಡೇಟಾದ ತಿದ್ದುಪಡಿಯನ್ನು ವಿನಂತಿಸಿ.',
+        'ಅಳಿಸುವಿಕೆಯ ಹಕ್ಕು: ನಿಮ್ಮ ಡೇಟಾವನ್ನು ಅಳಿಸಲು ವಿನಂತಿಸಿ (ಮರೆತುಹೋಗುವ ಹಕ್ಕು).',
+        'ಸಂಸ್ಕರಣೆಯನ್ನು ನಿರ್ಬಂಧಿಸುವ ಹಕ್ಕು: ನಿಮ್ಮ ಡೇಟಾವನ್ನು ನಾವು ಹೇಗೆ ಬಳಸುತ್ತೇವೆ ಎಂಬುದರ ಮೇಲೆ ಮಿತಿಗಳನ್ನು ವಿನಂತಿಸಿ.',
+        'ಡೇಟಾ ಪೋರ್ಟಬಿಲಿಟಿ ಹಕ್ಕು: ನಿಮ್ಮ ಡೇಟಾವನ್ನು ಪೋರ್ಟಬಲ್ ಸ್ವರೂಪದಲ್ಲಿ ವಿನಂತಿಸಿ.',
+        'ಆಕ್ಷೇಪಣೆಯ ಹಕ್ಕು: ನೇರ ಮಾರುಕಟ್ಟೆ ಸೇರಿದಂತೆ ಪ್ರಕ್ರಿಯೆಗೆ ಆಕ್ಷೇಪಣೆ.',
+        'ಸಮ್ಮತಿಯನ್ನು ಹಿಂತೆಗೆದುಕೊಳ್ಳುವ ಹಕ್ಕು: ಪ್ರಕ್ರಿಯೆಯು ಒಪ್ಪಿಗೆ ಆಧಾರಿತವಾಗಿರುವ ಯಾವುದೇ ಸಮಯದಲ್ಲಿ ಒಪ್ಪಿಗೆಯನ್ನು ಹಿಂಪಡೆಯಿರಿ.',
+        'ದೂರು ದಾಖಲಿಸುವ ಹಕ್ಕು: ನಿಮ್ಮ ಡೇಟಾ ಸಂರಕ್ಷಣಾ ಪ್ರಾಧಿಕಾರಕ್ಕೆ ದೂರು ಸಲ್ಲಿಸಿ.',
       ],
     },
     {
-      heading: 'Security',
+      heading: 'GDPR ಕಾನೂನು ಆಧಾರ',
       paragraphs: [
-        'We use appropriate technical and organisational measures to protect data, including HTTPS encryption. However, no internet transmission is 100% secure.',
+        'ನಾವು ಈ ಕೆಳಗಿನ ಆಧಾರದ ಮೇಲೆ ಡೇಟಾವನ್ನು ಪ್ರಕ್ರಿಯೆಗೊಳಿಸುತ್ತೇವೆ: (ಎ) ಸಮ್ಮತಿ - ವೈಯಕ್ತಿಕಗೊಳಿಸಿದ ಜಾಹೀರಾತಿಗಾಗಿ (ನಮ್ಮ ಜಾಹೀರಾತು ಪಾಲುದಾರರಿಂದ ನಿರ್ವಹಿಸಲ್ಪಡುತ್ತದೆ); (ಬಿ) ಕಾನೂನುಬದ್ಧ ಆಸಕ್ತಿಗಳು - ವಿಶ್ಲೇಷಣೆ, ಭದ್ರತೆ ಮತ್ತು ಸುಧಾರಣೆಗಾಗಿ; (ಸಿ) ವಿಚಾರಣೆಗಳಿಗೆ ಪ್ರತಿಕ್ರಿಯಿಸಲು ಒಪ್ಪಂದ.',
+        `ನಿಮ್ಮ ಹಕ್ಕುಗಳನ್ನು ಚಲಾಯಿಸಲು, ${CONTACT_EMAIL} ಅವರನ್ನು ಸಂಪರ್ಕಿಸಿ. ನಾವು 30 ದಿನಗಳಲ್ಲಿ ಪ್ರತಿಕ್ರಿಯಿಸುತ್ತೇವೆ.`,
       ],
     },
     {
-      heading: 'Do Not Track',
-      paragraphs: [
-        'We honour Do Not Track browser signals where feasible, though advertising partners may not respond to DNT.',
+      heading: 'CCPA ಅಡಿಯಲ್ಲಿ ನಿಮ್ಮ ಹಕ್ಕುಗಳು (ಕ್ಯಾಲಿಫೋರ್ನಿಯಾ ಬಳಕೆದಾರರು)',
+      bullets: [
+        'ತಿಳಿದುಕೊಳ್ಳುವ ಹಕ್ಕು: ಸಂಗ್ರಹಿಸಿದ ಡೇಟಾ, ಮೂಲಗಳು, ಉದ್ದೇಶಗಳು ಮತ್ತು ಮೂರನೇ ವ್ಯಕ್ತಿಗಳ ಬಗ್ಗೆ ಮಾಹಿತಿಯನ್ನು ವಿನಂತಿಸಿ.',
+        'ಅಳಿಸುವ ಹಕ್ಕು: ನಿಮ್ಮ ವೈಯಕ್ತಿಕ ಮಾಹಿತಿಯನ್ನು ಅಳಿಸಲು ವಿನಂತಿಸಿ.',
+        'ಆಯ್ಕೆಯಿಂದ ಹೊರಗುಳಿಯುವ ಹಕ್ಕು: ವೈಯಕ್ತಿಕ ಮಾಹಿತಿಯ ಮಾರಾಟದಿಂದ ಹೊರಗುಳಿಯುವುದು (ಜಾಹೀರಾತು ಪಾಲುದಾರರೊಂದಿಗೆ ಹಂಚಿಕೊಳ್ಳುವುದು ಅರ್ಹವಾಗಬಹುದು).',
+        'ತಾರತಮ್ಯ ಮಾಡದಿರುವ ಹಕ್ಕು: ನಿಮ್ಮ ಹಕ್ಕುಗಳನ್ನು ಚಲಾಯಿಸಲು ನಾವು ತಾರತಮ್ಯ ಮಾಡುವುದಿಲ್ಲ.',
       ],
     },
     {
-      heading: 'Changes to this policy',
+      heading: 'CCPA ವರ್ಗಗಳನ್ನು ಸಂಗ್ರಹಿಸಲಾಗಿದೆ',
       paragraphs: [
-        'We may update this policy periodically. The "Last updated" date indicates the most recent revision. Significant changes may be communicated via a site banner.',
+        'ವರ್ಗಗಳು: ಗುರುತಿಸುವಿಕೆಗಳು (IP ವಿಳಾಸ, ಸಾಧನ ID), ಇಂಟರ್ನೆಟ್ ಚಟುವಟಿಕೆ (ಬ್ರೌಸಿಂಗ್, ಜಾಹೀರಾತು ಸಂವಹನಗಳು), ಜಿಯೋಲೊಕೇಶನ್ (ಅಂದಾಜು), ಅನುಮಾನಗಳು (ಬ್ರೌಸಿಂಗ್‌ನಿಂದ ಆಸಕ್ತಿಗಳು).',
+        `ಹಕ್ಕುಗಳನ್ನು ಚಲಾಯಿಸಲು ಅಥವಾ ಆಯ್ಕೆಯಿಂದ ಹೊರಗುಳಿಯಲು: ${CONTACT_EMAIL} ಅಥವಾ ಕುಕೀ ಸೆಟ್ಟಿಂಗ್‌ಗಳನ್ನು ಹೊಂದಿಸಿ.`,
       ],
     },
     {
-      heading: 'Contact us',
+      heading: 'ಅಂತರರಾಷ್ಟ್ರೀಯ ವರ್ಗಾವಣೆಗಳು',
       paragraphs: [
-        `For privacy questions or to exercise your rights: ${CONTACT_EMAIL} or use our Contact page. We respond to privacy requests within 30 days.`,
+        'ನಿಮ್ಮ ಮಾಹಿತಿಯನ್ನು ಯುನೈಟೆಡ್ ಸ್ಟೇಟ್ಸ್ ಸೇರಿದಂತೆ ವಿವಿಧ ಡೇಟಾ ಸಂರಕ್ಷಣಾ ಕಾನೂನುಗಳನ್ನು ಹೊಂದಿರುವ ದೇಶಗಳಿಗೆ ವರ್ಗಾಯಿಸಬಹುದು. ನಾವು ಪ್ರಮಾಣಿತ ಒಪ್ಪಂದದ ಷರತ್ತುಗಳಂತಹ ಸೂಕ್ತ ಸುರಕ್ಷತಾ ಕ್ರಮಗಳನ್ನು ಬಳಸುತ್ತೇವೆ.',
+      ],
+    },
+    {
+      heading: 'ಮಕ್ಕಳ ಗೌಪ್ಯತೆ',
+      paragraphs: [
+        `ANQR 13 ವರ್ಷದೊಳಗಿನ (ಅಥವಾ EEA ನಲ್ಲಿ 16) ಮಕ್ಕಳಿಗೆ ಉದ್ದೇಶಿಸಿಲ್ಲ. ನಾವು ಉದ್ದೇಶಪೂರ್ವಕವಾಗಿ ಮಕ್ಕಳಿಂದ ಡೇಟಾವನ್ನು ಸಂಗ್ರಹಿಸುವುದಿಲ್ಲ. ಮಗುವು ಮಾಹಿತಿಯನ್ನು ಒದಗಿಸಿದೆ ಎಂದು ನೀವು ಭಾವಿಸಿದರೆ ${CONTACT_EMAIL} ಅನ್ನು ಸಂಪರ್ಕಿಸಿ.`,
+      ],
+    },
+    {
+      heading: 'ಭದ್ರತೆ',
+      paragraphs: [
+        'ನಾವು HTTPS ಗೂಢಲಿಪೀಕರಣ ಸೇರಿದಂತೆ ಡೇಟಾವನ್ನು ರಕ್ಷಿಸಲು ಸೂಕ್ತವಾದ ತಾಂತ್ರಿಕ ಮತ್ತು ಸಾಂಸ್ಥಿಕ ಕ್ರಮಗಳನ್ನು ಬಳಸುತ್ತೇವೆ. ಆದಾಗ್ಯೂ, ಯಾವುದೇ ಇಂಟರ್ನೆಟ್ ಪ್ರಸರಣವು 100% ಸುರಕ್ಷಿತವಲ್ಲ.',
+      ],
+    },
+    {
+      heading: 'ಟ್ರ್ಯಾಕ್ ಮಾಡಬೇಡಿ',
+      paragraphs: [
+        'ಜಾಹೀರಾತು ಪಾಲುದಾರರು DNT ಗೆ ಪ್ರತಿಕ್ರಿಯಿಸದಿದ್ದರೂ, ಸಾಧ್ಯವಾದಲ್ಲೆಲ್ಲಾ ನಾವು ಡೋಂಟ್ ಟ್ರ್ಯಾಕ್ ಬ್ರೌಸರ್ ಸಿಗ್ನಲ್‌ಗಳನ್ನು ಗೌರವಿಸುತ್ತೇವೆ.',
+      ],
+    },
+    {
+      heading: 'ಈ ನೀತಿಗೆ ಬದಲಾವಣೆಗಳು',
+      paragraphs: [
+        'ನಾವು ಈ ನೀತಿಯನ್ನು ನಿಯತಕಾಲಿಕವಾಗಿ ನವೀಕರಿಸಬಹುದು. ಕೊನೆಯದಾಗಿ ನವೀಕರಿಸಲಾಗಿದೆ ದಿನಾಂಕವು ಇತ್ತೀಚಿನ ಪರಿಷ್ಕರಣೆಯನ್ನು ಸೂಚಿಸುತ್ತದೆ. ಗಮನಾರ್ಹ ಬದಲಾವಣೆಗಳನ್ನು ಸೈಟ್ ಬ್ಯಾನರ್ ಮೂಲಕ ತಿಳಿಸಬಹುದು.',
+      ],
+    },
+    {
+      heading: 'ನಮ್ಮನ್ನು ಸಂಪರ್ಕಿಸಿ',
+      paragraphs: [
+        `ಗೌಪ್ಯತೆಯ ಪ್ರಶ್ನೆಗಳಿಗೆ ಅಥವಾ ನಿಮ್ಮ ಹಕ್ಕುಗಳನ್ನು ಚಲಾಯಿಸಲು: ${CONTACT_EMAIL} ಅಥವಾ ನಮ್ಮ ಸಂಪರ್ಕ ಪುಟವನ್ನು ಬಳಸಿ. ನಾವು 30 ದಿನಗಳಲ್ಲಿ ಗೌಪ್ಯತೆಯ ವಿನಂತಿಗಳಿಗೆ ಪ್ರತಿಕ್ರಿಯಿಸುತ್ತೇವೆ.`,
       ],
     },
   ],

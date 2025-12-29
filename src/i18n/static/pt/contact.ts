@@ -2,72 +2,72 @@ import type { PageDefinition } from '../types'
 import { LAST_UPDATED, CONTACT_EMAIL } from '../types'
 
 export const contact: PageDefinition = {
-  title: 'Contact Us',
-  description: 'We welcome feedback, bug reports, feature requests, and general enquiries.',
+  title: 'Contacte-nos',
+  description: 'Agradecemos comentários, relatórios de erros, solicitações de recursos e dúvidas em geral.',
   lastUpdated: LAST_UPDATED,
   sections: [
     {
-      heading: 'How to reach us',
+      heading: 'Como nos contactar',
       paragraphs: [
-        'We offer several ways to contact us depending on your needs. We read every message, though response times may vary based on volume and enquiry type.',
+        'Oferecemos diversas formas de contato, dependendo das suas necessidades. Lemos todas as mensagens, embora o tempo de resposta possa variar de acordo com o volume e o tipo de consulta.',
       ],
     },
     {
-      heading: 'Email',
+      heading: 'E-mail',
       paragraphs: [
-        `For all enquiries: ${CONTACT_EMAIL}`,
-        'This is the most reliable way to reach us and is recommended for detailed questions, business enquiries, or if the contact form does not work on your device.',
+        `Para quaisquer dúvidas: ${CONTACT_EMAIL}`,
+        'Esta é a forma mais confiável de entrar em contato conosco e é recomendada para perguntas detalhadas, consultas comerciais ou caso o formulário de contato não funcione no seu dispositivo.',
       ],
     },
     {
-      heading: 'Contact form',
+      heading: 'Formulário de contato',
       paragraphs: [
-        'Use the form below to send us a message directly. If the form does not submit successfully, please use email instead.',
+        'Use o formulário abaixo para nos enviar uma mensagem diretamente. Se o formulário não for enviado com sucesso, use o e-mail.',
       ],
     },
     {
-      heading: 'Types of enquiries',
+      heading: 'Tipos de consultas',
       bullets: [
-        'General questions: Questions about how to use ANQR, feature explanations, or general feedback.',
-        'Bug reports: Please include your browser, operating system, steps to reproduce, and any error messages you see.',
-        'Feature requests: Suggestions for new features or improvements. We consider all requests though we cannot promise implementation.',
-        'Business enquiries: Partnership opportunities, licensing questions, or commercial use enquiries.',
-        'Privacy requests: Requests to exercise your privacy rights under GDPR, CCPA, or other privacy laws (see Privacy Policy).',
-        'DMCA/Copyright: See the DMCA section below for takedown notice requirements.',
+        'Perguntas gerais: Perguntas sobre como usar o ANQR, explicações de recursos ou feedback geral.',
+        'Relatórios de erros: Inclua seu navegador, sistema operacional, etapas para reproduzir o problema e quaisquer mensagens de erro que você veja.',
+        'Solicitações de recursos: Sugestões para novos recursos ou melhorias. Consideramos todas as solicitações, embora não possamos prometer a implementação.',
+        'Consultas comerciais: Oportunidades de parceria, questões de licenciamento ou consultas sobre uso comercial.',
+        'Solicitações de privacidade: Solicitações para exercer seus direitos de privacidade de acordo com o GDPR, CCPA ou outras leis de privacidade (consulte a Política de Privacidade).',
+        'DMCA/Direitos Autorais: Consulte a seção DMCA abaixo para obter informações sobre os requisitos de notificação de remoção.',
       ],
     },
     {
-      heading: 'Response times',
+      heading: 'Tempos de resposta',
       paragraphs: [
-        'We aim to respond to enquiries within 5-7 business days. Privacy-related requests will be addressed within 30 days as required by law.',
-        'During busy periods, response times may be longer. For urgent matters, please indicate "URGENT" in your subject line.',
+        'Nosso objetivo é responder às solicitações dentro de 5 a 7 dias úteis. As solicitações relacionadas à privacidade serão atendidas dentro de 30 dias, conforme exigido por lei.',
+        'Durante períodos de grande movimento, os tempos de resposta podem ser mais longos. Para assuntos urgentes, indique URGENTE na linha de assunto.',
       ],
     },
     {
-      heading: 'Before contacting us',
+      heading: 'Antes de nos contactar',
       paragraphs: [
-        'Please check our Documentation page for answers to common questions about how to use ANQR features. Many questions about QR code generation, styling, and export options are covered there.',
+        'Consulte nossa página de Documentação para obter respostas às perguntas mais frequentes sobre como usar os recursos do ANQR. Muitas dúvidas sobre geração de código QR, formatação e opções de exportação são abordadas lá.',
       ],
     },
     {
-      heading: 'DMCA Copyright Notices',
+      heading: 'Avisos de direitos autorais da DMCA',
       paragraphs: [
-        'If you believe that content available on ANQR infringes your copyright, you may submit a Digital Millennium Copyright Act (DMCA) takedown notice. To be valid, your notice must include:',
+        'Se você acredita que algum conteúdo disponível na ANQR infringe seus direitos autorais, você pode enviar uma notificação de remoção de conteúdo de acordo com a Lei de Direitos Autorais do Milênio Digital (DMCA). Para ser válida, sua notificação deve incluir:',
       ],
       bullets: [
-        'A physical or electronic signature of the copyright owner or authorised agent.',
-        'Identification of the copyrighted work claimed to have been infringed.',
-        'Identification of the material that is claimed to be infringing, with information sufficient to locate it.',
-        'Your contact information (address, telephone number, and email address).',
-        'A statement that you have a good faith belief that use of the material is not authorised by the copyright owner.',
-        'A statement, under penalty of perjury, that the information in your notice is accurate and that you are the copyright owner or authorised to act on their behalf.',
+        'Uma assinatura física ou eletrônica do proprietário dos direitos autorais ou de seu agente autorizado.',
+        'Identificação da obra protegida por direitos autorais que supostamente foi infringida.',
+        'Identificação do material que se alega estar infringindo direitos autorais, com informações suficientes para localizá-lo.',
+        'Suas informações de contato (endereço, número de telefone e endereço de e-mail).',
+        'Uma declaração de que você acredita de boa-fé que o uso do material não é autorizado pelo proprietário dos direitos autorais.',
+        'Uma declaração, sob pena de perjúrio, de que as informações em sua notificação são precisas e de que você é o proprietário dos direitos autorais ou está autorizado a agir em nome deles.',
       ],
     },
     {
-      heading: 'DMCA Contact',
+      heading: 'Contato DMCA',
       paragraphs: [
-        `Send DMCA notices to: ${CONTACT_EMAIL}`,
-        'Please include "DMCA Notice" in the subject line. We will respond to valid notices in accordance with applicable law. Note that ANQR generates QR codes locally on users devices and does not host user-generated content.',
+        `Enviar notificações DMCA para: ${CONTACT_EMAIL}`,
+        'Por favor, inclua Notificação DMCA na linha de assunto. Responderemos às notificações válidas de acordo com a legislação aplicável. Observe que a ANQR gera códigos QR localmente nos dispositivos dos usuários e não hospeda conteúdo gerado pelo usuário.',
       ],
     },
   ],

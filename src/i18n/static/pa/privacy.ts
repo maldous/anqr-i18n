@@ -2,147 +2,147 @@ import type { PageDefinition } from '../types'
 import { LAST_UPDATED, CONTACT_EMAIL } from '../types'
 
 export const privacy: PageDefinition = {
-  title: 'Privacy Policy',
-  description: 'Information ANQR collects, how it is used, and your rights under applicable privacy laws.',
+  title: 'ਗੋਪਨੀਯਤਾ ਨੀਤੀ',
+  description: 'ANQR ਦੁਆਰਾ ਇਕੱਠੀ ਕੀਤੀ ਜਾਣ ਵਾਲੀ ਜਾਣਕਾਰੀ, ਇਸਦੀ ਵਰਤੋਂ ਕਿਵੇਂ ਕੀਤੀ ਜਾਂਦੀ ਹੈ, ਅਤੇ ਲਾਗੂ ਗੋਪਨੀਯਤਾ ਕਾਨੂੰਨਾਂ ਅਧੀਨ ਤੁਹਾਡੇ ਅਧਿਕਾਰ।',
   lastUpdated: LAST_UPDATED,
   sections: [
     {
-      heading: 'Summary',
+      heading: 'ਸਾਰਾਂਸ਼',
       paragraphs: [
-        'ANQR is a QR code generator that runs entirely on your device. We do not require you to create an account, and QR codes are generated locally — we do not have access to the content you encode.',
-        'We use Google AdSense for advertising and may use analytics services. These services collect information through cookies and similar technologies. This policy explains what data is collected, how it is used, and your rights.',
+        'ANQR ਇੱਕ QR ਕੋਡ ਜਨਰੇਟਰ ਹੈ ਜੋ ਪੂਰੀ ਤਰ੍ਹਾਂ ਤੁਹਾਡੀ ਡਿਵਾਈਸ \'ਤੇ ਚੱਲਦਾ ਹੈ। ਸਾਨੂੰ ਤੁਹਾਨੂੰ ਖਾਤਾ ਬਣਾਉਣ ਦੀ ਲੋੜ ਨਹੀਂ ਹੈ, ਅਤੇ QR ਕੋਡ ਸਥਾਨਕ ਤੌਰ \'ਤੇ ਤਿਆਰ ਕੀਤੇ ਜਾਂਦੇ ਹਨ — ਸਾਡੇ ਕੋਲ ਤੁਹਾਡੇ ਦੁਆਰਾ ਏਨਕੋਡ ਕੀਤੀ ਗਈ ਸਮੱਗਰੀ ਤੱਕ ਪਹੁੰਚ ਨਹੀਂ ਹੈ।',
+        'ਅਸੀਂ ਇਸ਼ਤਿਹਾਰਬਾਜ਼ੀ ਲਈ Google AdSense ਦੀ ਵਰਤੋਂ ਕਰਦੇ ਹਾਂ ਅਤੇ ਵਿਸ਼ਲੇਸ਼ਣ ਸੇਵਾਵਾਂ ਦੀ ਵਰਤੋਂ ਕਰ ਸਕਦੇ ਹਾਂ। ਇਹ ਸੇਵਾਵਾਂ ਕੂਕੀਜ਼ ਅਤੇ ਸਮਾਨ ਤਕਨਾਲੋਜੀਆਂ ਰਾਹੀਂ ਜਾਣਕਾਰੀ ਇਕੱਠੀ ਕਰਦੀਆਂ ਹਨ। ਇਹ ਨੀਤੀ ਦੱਸਦੀ ਹੈ ਕਿ ਕਿਹੜਾ ਡੇਟਾ ਇਕੱਠਾ ਕੀਤਾ ਜਾਂਦਾ ਹੈ, ਇਸਦੀ ਵਰਤੋਂ ਕਿਵੇਂ ਕੀਤੀ ਜਾਂਦੀ ਹੈ, ਅਤੇ ਤੁਹਾਡੇ ਅਧਿਕਾਰ।',
       ],
     },
     {
-      heading: 'Information we collect',
+      heading: 'ਸਾਡੇ ਵੱਲੋਂ ਇਕੱਠੀ ਕੀਤੀ ਜਾਣ ਵਾਲੀ ਜਾਣਕਾਰੀ',
       bullets: [
-        'Information you provide: If you contact us via email or our contact form, we collect your name, email address, and message content.',
-        'Automatically collected information: Our hosting provider (Netlify), advertising partners, and analytics services may collect: IP address, browser type and version, operating system, device type, referring URL, pages visited, time on site, and approximate geographic location.',
-        'Third-party cookies: Our advertising partners (Google AdSense) use cookies and similar technologies to serve and measure advertisements. ANQR itself does not set any first-party cookies.',
+        'ਤੁਹਾਡੇ ਦੁਆਰਾ ਪ੍ਰਦਾਨ ਕੀਤੀ ਗਈ ਜਾਣਕਾਰੀ: ਜੇਕਰ ਤੁਸੀਂ ਸਾਡੇ ਨਾਲ ਈਮੇਲ ਜਾਂ ਸਾਡੇ ਸੰਪਰਕ ਫਾਰਮ ਰਾਹੀਂ ਸੰਪਰਕ ਕਰਦੇ ਹੋ, ਤਾਂ ਅਸੀਂ ਤੁਹਾਡਾ ਨਾਮ, ਈਮੇਲ ਪਤਾ ਅਤੇ ਸੁਨੇਹਾ ਸਮੱਗਰੀ ਇਕੱਠੀ ਕਰਦੇ ਹਾਂ।',
+        'ਆਟੋਮੈਟਿਕਲੀ ਇਕੱਠੀ ਕੀਤੀ ਗਈ ਜਾਣਕਾਰੀ: ਸਾਡਾ ਹੋਸਟਿੰਗ ਪ੍ਰਦਾਤਾ (ਨੈੱਟਲੀਫਾਈ), ਵਿਗਿਆਪਨ ਭਾਈਵਾਲ, ਅਤੇ ਵਿਸ਼ਲੇਸ਼ਣ ਸੇਵਾਵਾਂ ਇਹ ਇਕੱਠੀਆਂ ਕਰ ਸਕਦੀਆਂ ਹਨ: IP ਪਤਾ, ਬ੍ਰਾਊਜ਼ਰ ਦੀ ਕਿਸਮ ਅਤੇ ਸੰਸਕਰਣ, ਓਪਰੇਟਿੰਗ ਸਿਸਟਮ, ਡਿਵਾਈਸ ਦੀ ਕਿਸਮ, ਰੈਫਰਿੰਗ URL, ਦੇਖੇ ਗਏ ਪੰਨੇ, ਸਾਈਟ \'ਤੇ ਸਮਾਂ, ਅਤੇ ਲਗਭਗ ਭੂਗੋਲਿਕ ਸਥਾਨ।',
+        'ਤੀਜੀ-ਧਿਰ ਕੂਕੀਜ਼: ਸਾਡੇ ਇਸ਼ਤਿਹਾਰਬਾਜ਼ੀ ਭਾਈਵਾਲ (Google AdSense) ਇਸ਼ਤਿਹਾਰਾਂ ਨੂੰ ਪਰੋਸਣ ਅਤੇ ਮਾਪਣ ਲਈ ਕੂਕੀਜ਼ ਅਤੇ ਸਮਾਨ ਤਕਨਾਲੋਜੀਆਂ ਦੀ ਵਰਤੋਂ ਕਰਦੇ ਹਨ। ANQR ਖੁਦ ਕੋਈ ਪਹਿਲੀ-ਧਿਰ ਕੂਕੀਜ਼ ਸੈੱਟ ਨਹੀਂ ਕਰਦਾ ਹੈ।',
       ],
     },
     {
-      heading: 'Cookies and third-party technologies',
+      heading: 'ਕੂਕੀਜ਼ ਅਤੇ ਤੀਜੀ-ਧਿਰ ਤਕਨਾਲੋਜੀਆਂ',
       paragraphs: [
-        'ANQR does not set any first-party cookies. Your preferences (such as dark mode) are stored locally on your device, which is not transmitted to any server.',
-        'However, our advertising partners (Google AdSense) and hosting provider may use cookies and similar tracking technologies:',
-      ],
-      bullets: [
-        'Advertising cookies (third-party): Set by Google AdSense and advertising partners to serve relevant ads, measure ad performance, and understand user interests. These cookies may track your activity across different websites.',
-        'Analytics cookies (third-party): May be used by our hosting provider or analytics services to collect anonymised usage data.',
-      ],
-    },
-    {
-      heading: 'Google AdSense and advertising',
-      paragraphs: [
-        'We display advertisements through Google AdSense. Google and its partners use cookies to serve ads based on your browsing history on this site and other websites (interest-based advertising).',
-        'Learn how Google uses your information: https://policies.google.com/technologies/partner-sites',
-        'Manage ad personalisation: https://adssettings.google.com',
-        'Opt out via Network Advertising Initiative: https://optout.networkadvertising.org',
-        'Opt out via Digital Advertising Alliance: https://optout.aboutads.info',
-      ],
-    },
-    {
-      heading: 'How we use information',
-      bullets: [
-        'To respond to your enquiries and provide support.',
-        'To display relevant advertisements through our advertising partners.',
-        'To analyse site usage and improve our services.',
-        'To detect, prevent, and address fraud, abuse, and security issues.',
-        'To comply with legal obligations.',
-      ],
-    },
-    {
-      heading: 'Third-party services',
-      bullets: [
-        'Google AdSense: Receives data to serve and measure advertisements.',
-        'Analytics providers: Receive anonymised usage data.',
-        'Netlify (hosting): Processes requests and may log IP addresses.',
-        'We do not sell your personal information. However, sharing data with advertising partners may be considered a "sale" under CCPA (see below).',
-      ],
-    },
-    {
-      heading: 'Data retention',
-      bullets: [
-        'Contact submissions: Up to 2 years.',
-        'Server logs: Up to 30 days (hosting provider).',
-        'Analytics data: Up to 26 months (anonymised).',
-        'Advertising cookies: Typically 13 months (varies by partner).',
-      ],
-    },
-    {
-      heading: 'Your rights under GDPR (EEA users)',
-      paragraphs: [
-        'If you are in the European Economic Area, you have the following rights under the General Data Protection Regulation:',
+        'ANQR ਕੋਈ ਵੀ ਪਹਿਲੀ-ਧਿਰ ਕੂਕੀਜ਼ ਸੈੱਟ ਨਹੀਂ ਕਰਦਾ ਹੈ। ਤੁਹਾਡੀਆਂ ਤਰਜੀਹਾਂ (ਜਿਵੇਂ ਕਿ ਡਾਰਕ ਮੋਡ) ਤੁਹਾਡੀ ਡਿਵਾਈਸ \'ਤੇ ਸਥਾਨਕ ਤੌਰ \'ਤੇ ਸਟੋਰ ਕੀਤੀਆਂ ਜਾਂਦੀਆਂ ਹਨ, ਜੋ ਕਿਸੇ ਵੀ ਸਰਵਰ \'ਤੇ ਪ੍ਰਸਾਰਿਤ ਨਹੀਂ ਹੁੰਦੀਆਂ ਹਨ।',
+        'ਹਾਲਾਂਕਿ, ਸਾਡੇ ਇਸ਼ਤਿਹਾਰਬਾਜ਼ੀ ਭਾਈਵਾਲ (ਗੂਗਲ ਐਡਸੈਂਸ) ਅਤੇ ਹੋਸਟਿੰਗ ਪ੍ਰਦਾਤਾ ਕੂਕੀਜ਼ ਅਤੇ ਸਮਾਨ ਟਰੈਕਿੰਗ ਤਕਨਾਲੋਜੀਆਂ ਦੀ ਵਰਤੋਂ ਕਰ ਸਕਦੇ ਹਨ:',
       ],
       bullets: [
-        'Right of access: Request a copy of personal data we hold about you.',
-        'Right to rectification: Request correction of inaccurate data.',
-        'Right to erasure: Request deletion of your data ("right to be forgotten").',
-        'Right to restrict processing: Request limits on how we use your data.',
-        'Right to data portability: Request your data in a portable format.',
-        'Right to object: Object to processing, including for direct marketing.',
-        'Right to withdraw consent: Withdraw consent at any time where processing is consent-based.',
-        'Right to lodge a complaint: File a complaint with your data protection authority.',
+        'ਇਸ਼ਤਿਹਾਰਬਾਜ਼ੀ ਕੂਕੀਜ਼ (ਤੀਜੀ-ਧਿਰ): Google AdSense ਅਤੇ ਵਿਗਿਆਪਨ ਭਾਈਵਾਲਾਂ ਦੁਆਰਾ ਸੰਬੰਧਿਤ ਇਸ਼ਤਿਹਾਰ ਦੇਣ, ਵਿਗਿਆਪਨ ਪ੍ਰਦਰਸ਼ਨ ਨੂੰ ਮਾਪਣ ਅਤੇ ਉਪਭੋਗਤਾ ਦੀਆਂ ਦਿਲਚਸਪੀਆਂ ਨੂੰ ਸਮਝਣ ਲਈ ਸੈੱਟ ਕੀਤੀਆਂ ਗਈਆਂ ਹਨ। ਇਹ ਕੂਕੀਜ਼ ਵੱਖ-ਵੱਖ ਵੈੱਬਸਾਈਟਾਂ \'ਤੇ ਤੁਹਾਡੀ ਗਤੀਵਿਧੀ ਨੂੰ ਟਰੈਕ ਕਰ ਸਕਦੀਆਂ ਹਨ।',
+        'ਵਿਸ਼ਲੇਸ਼ਣ ਕੂਕੀਜ਼ (ਤੀਜੀ-ਧਿਰ): ਸਾਡੇ ਹੋਸਟਿੰਗ ਪ੍ਰਦਾਤਾ ਜਾਂ ਵਿਸ਼ਲੇਸ਼ਣ ਸੇਵਾਵਾਂ ਦੁਆਰਾ ਗੁਮਨਾਮ ਵਰਤੋਂ ਡੇਟਾ ਇਕੱਠਾ ਕਰਨ ਲਈ ਵਰਤਿਆ ਜਾ ਸਕਦਾ ਹੈ।',
       ],
     },
     {
-      heading: 'GDPR legal basis',
+      heading: 'ਗੂਗਲ ਐਡਸੈਂਸ ਅਤੇ ਇਸ਼ਤਿਹਾਰਬਾਜ਼ੀ',
       paragraphs: [
-        'We process data on these bases: (a) Consent — for personalised advertising (managed by our advertising partners); (b) Legitimate interests — for analytics, security, and improvement; (c) Contract — to respond to enquiries.',
-        `To exercise your rights, contact ${CONTACT_EMAIL}. We respond within 30 days.`,
+        'ਅਸੀਂ ਗੂਗਲ ਐਡਸੈਂਸ ਰਾਹੀਂ ਇਸ਼ਤਿਹਾਰ ਪ੍ਰਦਰਸ਼ਿਤ ਕਰਦੇ ਹਾਂ। ਗੂਗਲ ਅਤੇ ਇਸਦੇ ਭਾਈਵਾਲ ਇਸ ਸਾਈਟ ਅਤੇ ਹੋਰ ਵੈੱਬਸਾਈਟਾਂ (ਦਿਲਚਸਪੀ-ਅਧਾਰਤ ਇਸ਼ਤਿਹਾਰਬਾਜ਼ੀ) \'ਤੇ ਤੁਹਾਡੇ ਬ੍ਰਾਊਜ਼ਿੰਗ ਇਤਿਹਾਸ ਦੇ ਆਧਾਰ \'ਤੇ ਇਸ਼ਤਿਹਾਰ ਦੇਣ ਲਈ ਕੂਕੀਜ਼ ਦੀ ਵਰਤੋਂ ਕਰਦੇ ਹਨ।',
+        'ਜਾਣੋ ਕਿ Google ਤੁਹਾਡੀ ਜਾਣਕਾਰੀ ਕਿਵੇਂ ਵਰਤਦਾ ਹੈ: https://policies.google.com/technologies/partner-sites',
+        'ਵਿਗਿਆਪਨ ਵਿਅਕਤੀਗਤਕਰਨ ਦਾ ਪ੍ਰਬੰਧਨ ਕਰੋ: https://adssettings.google.com',
+        'ਨੈੱਟਵਰਕ ਐਡਵਰਟਾਈਜ਼ਿੰਗ ਇਨੀਸ਼ੀਏਟਿਵ ਰਾਹੀਂ ਬਾਹਰ ਨਿਕਲਣਾ: https://optout.networkadvertising.org',
+        'ਡਿਜੀਟਲ ਐਡਵਰਟਾਈਜ਼ਿੰਗ ਅਲਾਇੰਸ ਰਾਹੀਂ ਬਾਹਰ ਨਿਕਲੋ: https://optout.aboutads.info',
       ],
     },
     {
-      heading: 'Your rights under CCPA (California users)',
+      heading: 'ਅਸੀਂ ਜਾਣਕਾਰੀ ਦੀ ਵਰਤੋਂ ਕਿਵੇਂ ਕਰਦੇ ਹਾਂ',
       bullets: [
-        'Right to know: Request information about data collected, sources, purposes, and third parties.',
-        'Right to delete: Request deletion of your personal information.',
-        'Right to opt-out: Opt out of the "sale" of personal information (sharing with ad partners may qualify).',
-        'Right to non-discrimination: We will not discriminate for exercising your rights.',
+        'ਤੁਹਾਡੀਆਂ ਪੁੱਛਗਿੱਛਾਂ ਦਾ ਜਵਾਬ ਦੇਣ ਅਤੇ ਸਹਾਇਤਾ ਪ੍ਰਦਾਨ ਕਰਨ ਲਈ।',
+        'ਸਾਡੇ ਇਸ਼ਤਿਹਾਰਬਾਜ਼ੀ ਭਾਈਵਾਲਾਂ ਰਾਹੀਂ ਸੰਬੰਧਿਤ ਇਸ਼ਤਿਹਾਰ ਪ੍ਰਦਰਸ਼ਿਤ ਕਰਨ ਲਈ।',
+        'ਸਾਈਟ ਵਰਤੋਂ ਦਾ ਵਿਸ਼ਲੇਸ਼ਣ ਕਰਨਾ ਅਤੇ ਸਾਡੀਆਂ ਸੇਵਾਵਾਂ ਨੂੰ ਬਿਹਤਰ ਬਣਾਉਣਾ।',
+        'ਧੋਖਾਧੜੀ, ਦੁਰਵਿਵਹਾਰ, ਅਤੇ ਸੁਰੱਖਿਆ ਮੁੱਦਿਆਂ ਦਾ ਪਤਾ ਲਗਾਉਣ, ਰੋਕਣ ਅਤੇ ਹੱਲ ਕਰਨ ਲਈ।',
+        'ਕਾਨੂੰਨੀ ਜ਼ਿੰਮੇਵਾਰੀਆਂ ਦੀ ਪਾਲਣਾ ਕਰਨਾ।',
       ],
     },
     {
-      heading: 'CCPA categories collected',
-      paragraphs: [
-        'Categories: Identifiers (IP address, device ID), Internet activity (browsing, ad interactions), Geolocation (approximate), Inferences (interests from browsing).',
-        `To exercise rights or opt out: ${CONTACT_EMAIL} or adjust cookie settings.`,
+      heading: 'ਤੀਜੀ-ਧਿਰ ਸੇਵਾਵਾਂ',
+      bullets: [
+        'ਗੂਗਲ ਐਡਸੈਂਸ: ਇਸ਼ਤਿਹਾਰਾਂ ਨੂੰ ਪਰੋਸਣ ਅਤੇ ਮਾਪਣ ਲਈ ਡੇਟਾ ਪ੍ਰਾਪਤ ਕਰਦਾ ਹੈ।',
+        'ਵਿਸ਼ਲੇਸ਼ਣ ਪ੍ਰਦਾਤਾ: ਗੁਮਨਾਮ ਵਰਤੋਂ ਡੇਟਾ ਪ੍ਰਾਪਤ ਕਰੋ।',
+        'ਨੈੱਟਲੀਫਾਈ (ਹੋਸਟਿੰਗ): ਬੇਨਤੀਆਂ ਦੀ ਪ੍ਰਕਿਰਿਆ ਕਰਦਾ ਹੈ ਅਤੇ IP ਪਤਿਆਂ ਨੂੰ ਲੌਗ ਕਰ ਸਕਦਾ ਹੈ।',
+        'ਅਸੀਂ ਤੁਹਾਡੀ ਨਿੱਜੀ ਜਾਣਕਾਰੀ ਨਹੀਂ ਵੇਚਦੇ। ਹਾਲਾਂਕਿ, ਵਿਗਿਆਪਨ ਭਾਈਵਾਲਾਂ ਨਾਲ ਡੇਟਾ ਸਾਂਝਾ ਕਰਨਾ CCPA (ਹੇਠਾਂ ਦੇਖੋ) ਦੇ ਅਧੀਨ ਵਿਕਰੀ ਮੰਨਿਆ ਜਾ ਸਕਦਾ ਹੈ।',
       ],
     },
     {
-      heading: 'International transfers',
-      paragraphs: [
-        'Your information may be transferred to countries with different data protection laws, including the United States. We use appropriate safeguards such as Standard Contractual Clauses.',
+      heading: 'ਡੇਟਾ ਧਾਰਨ',
+      bullets: [
+        'ਸੰਪਰਕ ਬੇਨਤੀਆਂ: 2 ਸਾਲ ਤੱਕ।',
+        'ਸਰਵਰ ਲੌਗ: 30 ਦਿਨਾਂ ਤੱਕ (ਹੋਸਟਿੰਗ ਪ੍ਰਦਾਤਾ)।',
+        'ਵਿਸ਼ਲੇਸ਼ਣ ਡੇਟਾ: 26 ਮਹੀਨਿਆਂ ਤੱਕ (ਗੁਮਨਾਮ)।',
+        'ਇਸ਼ਤਿਹਾਰਬਾਜ਼ੀ ਕੂਕੀਜ਼: ਆਮ ਤੌਰ \'ਤੇ 13 ਮਹੀਨੇ (ਸਾਥੀ ਅਨੁਸਾਰ ਬਦਲਦੇ ਹਨ)।',
       ],
     },
     {
-      heading: 'Children\'s privacy',
+      heading: 'GDPR (EEA ਉਪਭੋਗਤਾ) ਅਧੀਨ ਤੁਹਾਡੇ ਅਧਿਕਾਰ',
       paragraphs: [
-        `ANQR is not directed at children under 13 (or 16 in the EEA). We do not knowingly collect data from children. Contact ${CONTACT_EMAIL} if you believe a child has provided information.`,
+        'ਜੇਕਰ ਤੁਸੀਂ ਯੂਰਪੀਅਨ ਆਰਥਿਕ ਖੇਤਰ ਵਿੱਚ ਹੋ, ਤਾਂ ਤੁਹਾਡੇ ਕੋਲ ਜਨਰਲ ਡੇਟਾ ਪ੍ਰੋਟੈਕਸ਼ਨ ਰੈਗੂਲੇਸ਼ਨ ਦੇ ਤਹਿਤ ਹੇਠ ਲਿਖੇ ਅਧਿਕਾਰ ਹਨ:',
+      ],
+      bullets: [
+        'ਪਹੁੰਚ ਦਾ ਅਧਿਕਾਰ: ਸਾਡੇ ਕੋਲ ਤੁਹਾਡੇ ਬਾਰੇ ਰੱਖੇ ਨਿੱਜੀ ਡੇਟਾ ਦੀ ਇੱਕ ਕਾਪੀ ਦੀ ਬੇਨਤੀ ਕਰੋ।',
+        'ਸੁਧਾਰ ਦਾ ਅਧਿਕਾਰ: ਗਲਤ ਡੇਟਾ ਦੇ ਸੁਧਾਰ ਦੀ ਬੇਨਤੀ।',
+        'ਮਿਟਾਉਣ ਦਾ ਅਧਿਕਾਰ: ਆਪਣੇ ਡੇਟਾ ਨੂੰ ਮਿਟਾਉਣ ਦੀ ਬੇਨਤੀ ਕਰੋ (ਭੁੱਲ ਜਾਣ ਦਾ ਅਧਿਕਾਰ)।',
+        'ਪ੍ਰੋਸੈਸਿੰਗ ਨੂੰ ਸੀਮਤ ਕਰਨ ਦਾ ਅਧਿਕਾਰ: ਅਸੀਂ ਤੁਹਾਡੇ ਡੇਟਾ ਦੀ ਵਰਤੋਂ ਕਿਵੇਂ ਕਰਦੇ ਹਾਂ ਇਸ \'ਤੇ ਸੀਮਾਵਾਂ ਦੀ ਬੇਨਤੀ ਕਰੋ।',
+        'ਡੇਟਾ ਪੋਰਟੇਬਿਲਟੀ ਦਾ ਅਧਿਕਾਰ: ਆਪਣੇ ਡੇਟਾ ਨੂੰ ਪੋਰਟੇਬਲ ਫਾਰਮੈਟ ਵਿੱਚ ਬੇਨਤੀ ਕਰੋ।',
+        'ਇਤਰਾਜ਼ ਕਰਨ ਦਾ ਅਧਿਕਾਰ: ਪ੍ਰਕਿਰਿਆ ਦਾ ਇਤਰਾਜ਼, ਸਿੱਧੀ ਮਾਰਕੀਟਿੰਗ ਸਮੇਤ।',
+        'ਸਹਿਮਤੀ ਵਾਪਸ ਲੈਣ ਦਾ ਅਧਿਕਾਰ: ਕਿਸੇ ਵੀ ਸਮੇਂ ਸਹਿਮਤੀ ਵਾਪਸ ਲਓ ਜਿੱਥੇ ਪ੍ਰਕਿਰਿਆ ਸਹਿਮਤੀ-ਅਧਾਰਤ ਹੋਵੇ।',
+        'ਸ਼ਿਕਾਇਤ ਦਰਜ ਕਰਨ ਦਾ ਅਧਿਕਾਰ: ਆਪਣੇ ਡੇਟਾ ਸੁਰੱਖਿਆ ਅਥਾਰਟੀ ਕੋਲ ਸ਼ਿਕਾਇਤ ਦਰਜ ਕਰੋ।',
       ],
     },
     {
-      heading: 'Security',
+      heading: 'GDPR ਕਾਨੂੰਨੀ ਆਧਾਰ',
       paragraphs: [
-        'We use appropriate technical and organisational measures to protect data, including HTTPS encryption. However, no internet transmission is 100% secure.',
+        'ਅਸੀਂ ਇਹਨਾਂ ਆਧਾਰਾਂ \'ਤੇ ਡੇਟਾ ਦੀ ਪ੍ਰਕਿਰਿਆ ਕਰਦੇ ਹਾਂ: (a) ਸਹਿਮਤੀ — ਵਿਅਕਤੀਗਤ ਵਿਗਿਆਪਨ ਲਈ (ਸਾਡੇ ਵਿਗਿਆਪਨ ਭਾਈਵਾਲਾਂ ਦੁਆਰਾ ਪ੍ਰਬੰਧਿਤ); (b) ਜਾਇਜ਼ ਹਿੱਤ — ਵਿਸ਼ਲੇਸ਼ਣ, ਸੁਰੱਖਿਆ ਅਤੇ ਸੁਧਾਰ ਲਈ; (c) ਇਕਰਾਰਨਾਮਾ — ਪੁੱਛਗਿੱਛਾਂ ਦਾ ਜਵਾਬ ਦੇਣ ਲਈ।',
+        `ਆਪਣੇ ਅਧਿਕਾਰਾਂ ਦੀ ਵਰਤੋਂ ਕਰਨ ਲਈ, ${CONTACT_EMAIL} ਨਾਲ ਸੰਪਰਕ ਕਰੋ। ਅਸੀਂ 30 ਦਿਨਾਂ ਦੇ ਅੰਦਰ ਜਵਾਬ ਦਿੰਦੇ ਹਾਂ।`,
       ],
     },
     {
-      heading: 'Do Not Track',
-      paragraphs: [
-        'We honour Do Not Track browser signals where feasible, though advertising partners may not respond to DNT.',
+      heading: 'CCPA (ਕੈਲੀਫੋਰਨੀਆ ਉਪਭੋਗਤਾ) ਅਧੀਨ ਤੁਹਾਡੇ ਅਧਿਕਾਰ',
+      bullets: [
+        'ਜਾਣਨ ਦਾ ਅਧਿਕਾਰ: ਇਕੱਤਰ ਕੀਤੇ ਡੇਟਾ, ਸਰੋਤਾਂ, ਉਦੇਸ਼ਾਂ ਅਤੇ ਤੀਜੀਆਂ ਧਿਰਾਂ ਬਾਰੇ ਜਾਣਕਾਰੀ ਦੀ ਬੇਨਤੀ ਕਰੋ।',
+        'ਮਿਟਾਉਣ ਦਾ ਅਧਿਕਾਰ: ਆਪਣੀ ਨਿੱਜੀ ਜਾਣਕਾਰੀ ਨੂੰ ਮਿਟਾਉਣ ਦੀ ਬੇਨਤੀ ਕਰੋ।',
+        'ਬਾਹਰ ਨਿਕਲਣ ਦਾ ਅਧਿਕਾਰ: ਨਿੱਜੀ ਜਾਣਕਾਰੀ ਦੀ ਵਿਕਰੀ ਤੋਂ ਬਾਹਰ ਨਿਕਲਣ ਦੀ ਚੋਣ ਕਰੋ (ਵਿਗਿਆਪਨ ਭਾਈਵਾਲਾਂ ਨਾਲ ਸਾਂਝਾ ਕਰਨਾ ਯੋਗ ਹੋ ਸਕਦਾ ਹੈ)।',
+        'ਭੇਦਭਾਵ ਰਹਿਤ ਅਧਿਕਾਰ: ਅਸੀਂ ਤੁਹਾਡੇ ਅਧਿਕਾਰਾਂ ਦੀ ਵਰਤੋਂ ਕਰਨ ਲਈ ਵਿਤਕਰਾ ਨਹੀਂ ਕਰਾਂਗੇ।',
       ],
     },
     {
-      heading: 'Changes to this policy',
+      heading: 'CCPA ਸ਼੍ਰੇਣੀਆਂ ਇਕੱਠੀਆਂ ਕੀਤੀਆਂ ਗਈਆਂ',
       paragraphs: [
-        'We may update this policy periodically. The "Last updated" date indicates the most recent revision. Significant changes may be communicated via a site banner.',
+        'ਸ਼੍ਰੇਣੀਆਂ: ਪਛਾਣਕਰਤਾ (IP ਪਤਾ, ਡਿਵਾਈਸ ID), ਇੰਟਰਨੈੱਟ ਗਤੀਵਿਧੀ (ਬ੍ਰਾਊਜ਼ਿੰਗ, ਵਿਗਿਆਪਨ ਪਰਸਪਰ ਪ੍ਰਭਾਵ), ਭੂ-ਸਥਾਨ (ਲਗਭਗ), ਅਨੁਮਾਨ (ਬ੍ਰਾਊਜ਼ਿੰਗ ਤੋਂ ਦਿਲਚਸਪੀਆਂ)।',
+        `ਅਧਿਕਾਰਾਂ ਦੀ ਵਰਤੋਂ ਕਰਨ ਜਾਂ ਬਾਹਰ ਨਿਕਲਣ ਦੀ ਚੋਣ ਕਰਨ ਲਈ: ${CONTACT_EMAIL} ਜਾਂ ਕੂਕੀ ਸੈਟਿੰਗਾਂ ਨੂੰ ਵਿਵਸਥਿਤ ਕਰੋ।`,
       ],
     },
     {
-      heading: 'Contact us',
+      heading: 'ਅੰਤਰਰਾਸ਼ਟਰੀ ਤਬਾਦਲੇ',
       paragraphs: [
-        `For privacy questions or to exercise your rights: ${CONTACT_EMAIL} or use our Contact page. We respond to privacy requests within 30 days.`,
+        'ਤੁਹਾਡੀ ਜਾਣਕਾਰੀ ਵੱਖ-ਵੱਖ ਡੇਟਾ ਸੁਰੱਖਿਆ ਕਾਨੂੰਨਾਂ ਵਾਲੇ ਦੇਸ਼ਾਂ ਨੂੰ ਟ੍ਰਾਂਸਫਰ ਕੀਤੀ ਜਾ ਸਕਦੀ ਹੈ, ਜਿਸ ਵਿੱਚ ਸੰਯੁਕਤ ਰਾਜ ਅਮਰੀਕਾ ਵੀ ਸ਼ਾਮਲ ਹੈ। ਅਸੀਂ ਮਿਆਰੀ ਇਕਰਾਰਨਾਮੇ ਦੀਆਂ ਧਾਰਾਵਾਂ ਵਰਗੇ ਢੁਕਵੇਂ ਸੁਰੱਖਿਆ ਉਪਾਵਾਂ ਦੀ ਵਰਤੋਂ ਕਰਦੇ ਹਾਂ।',
+      ],
+    },
+    {
+      heading: 'ਬੱਚਿਆਂ ਦੀ ਨਿੱਜਤਾ',
+      paragraphs: [
+        `ANQR 13 ਸਾਲ ਤੋਂ ਘੱਟ ਉਮਰ ਦੇ ਬੱਚਿਆਂ (ਜਾਂ EEA ਵਿੱਚ 16) ਲਈ ਨਹੀਂ ਹੈ। ਅਸੀਂ ਜਾਣਬੁੱਝ ਕੇ ਬੱਚਿਆਂ ਤੋਂ ਡੇਟਾ ਇਕੱਠਾ ਨਹੀਂ ਕਰਦੇ। ਜੇਕਰ ਤੁਹਾਨੂੰ ਲੱਗਦਾ ਹੈ ਕਿ ਕਿਸੇ ਬੱਚੇ ਨੇ ਜਾਣਕਾਰੀ ਪ੍ਰਦਾਨ ਕੀਤੀ ਹੈ ਤਾਂ ${CONTACT_EMAIL} ਨਾਲ ਸੰਪਰਕ ਕਰੋ।`,
+      ],
+    },
+    {
+      heading: 'ਸੁਰੱਖਿਆ',
+      paragraphs: [
+        'ਅਸੀਂ ਡੇਟਾ ਦੀ ਸੁਰੱਖਿਆ ਲਈ ਢੁਕਵੇਂ ਤਕਨੀਕੀ ਅਤੇ ਸੰਗਠਨਾਤਮਕ ਉਪਾਵਾਂ ਦੀ ਵਰਤੋਂ ਕਰਦੇ ਹਾਂ, ਜਿਸ ਵਿੱਚ HTTPS ਇਨਕ੍ਰਿਪਸ਼ਨ ਵੀ ਸ਼ਾਮਲ ਹੈ। ਹਾਲਾਂਕਿ, ਕੋਈ ਵੀ ਇੰਟਰਨੈਟ ਟ੍ਰਾਂਸਮਿਸ਼ਨ 100% ਸੁਰੱਖਿਅਤ ਨਹੀਂ ਹੈ।',
+      ],
+    },
+    {
+      heading: 'ਟਰੈਕ ਨਾ ਕਰੋ',
+      paragraphs: [
+        'ਅਸੀਂ ਜਿੱਥੇ ਸੰਭਵ ਹੋਵੇ, ਬ੍ਰਾਊਜ਼ਰ ਸਿਗਨਲਾਂ ਨੂੰ ਟਰੈਕ ਨਾ ਕਰੋ ਦਾ ਸਨਮਾਨ ਕਰਦੇ ਹਾਂ, ਹਾਲਾਂਕਿ ਵਿਗਿਆਪਨ ਭਾਗੀਦਾਰ DNT ਦਾ ਜਵਾਬ ਨਹੀਂ ਦੇ ਸਕਦੇ।',
+      ],
+    },
+    {
+      heading: 'ਇਸ ਨੀਤੀ ਵਿੱਚ ਬਦਲਾਅ',
+      paragraphs: [
+        'ਅਸੀਂ ਇਸ ਨੀਤੀ ਨੂੰ ਸਮੇਂ-ਸਮੇਂ \'ਤੇ ਅੱਪਡੇਟ ਕਰ ਸਕਦੇ ਹਾਂ। ਆਖਰੀ ਵਾਰ ਅੱਪਡੇਟ ਮਿਤੀ ਸਭ ਤੋਂ ਤਾਜ਼ਾ ਸੋਧ ਨੂੰ ਦਰਸਾਉਂਦੀ ਹੈ। ਮਹੱਤਵਪੂਰਨ ਤਬਦੀਲੀਆਂ ਨੂੰ ਸਾਈਟ ਬੈਨਰ ਰਾਹੀਂ ਸੂਚਿਤ ਕੀਤਾ ਜਾ ਸਕਦਾ ਹੈ।',
+      ],
+    },
+    {
+      heading: 'ਸਾਡੇ ਨਾਲ ਸੰਪਰਕ ਕਰੋ',
+      paragraphs: [
+        `ਗੋਪਨੀਯਤਾ ਸੰਬੰਧੀ ਸਵਾਲਾਂ ਲਈ ਜਾਂ ਆਪਣੇ ਅਧਿਕਾਰਾਂ ਦੀ ਵਰਤੋਂ ਕਰਨ ਲਈ: ${CONTACT_EMAIL} ਜਾਂ ਸਾਡੇ ਸੰਪਰਕ ਪੰਨੇ ਦੀ ਵਰਤੋਂ ਕਰੋ। ਅਸੀਂ 30 ਦਿਨਾਂ ਦੇ ਅੰਦਰ ਗੋਪਨੀਯਤਾ ਬੇਨਤੀਆਂ ਦਾ ਜਵਾਬ ਦਿੰਦੇ ਹਾਂ।`,
       ],
     },
   ],

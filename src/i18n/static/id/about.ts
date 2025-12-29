@@ -2,66 +2,66 @@ import type { PageDefinition } from '../types'
 import { LAST_UPDATED, CONTACT_EMAIL } from '../types'
 
 export const about: PageDefinition = {
-  title: 'About ANQR',
-  description: 'ANQR is a free QR code generator that runs entirely on your device — no account required.',
+  title: 'Tentang ANQR',
+  description: 'ANQR adalah generator kode QR gratis yang berjalan sepenuhnya di perangkat Anda — tidak memerlukan akun.',
   lastUpdated: LAST_UPDATED,
   sections: [
     {
-      heading: 'What is ANQR?',
+      heading: 'Apa itu ANQR?',
       paragraphs: [
-        'ANQR (pronounced "anchor") is a free QR code generator that runs locally on your device and creates scannable codes for URLs, text, Wi-Fi credentials, contact cards, calendar events, and more.',
-        'It is built for individuals, small businesses, marketers, and developers who want powerful QR tools without uploading files or signing up. Your data stays on your device.',
+        'ANQR (diucapkan anchor) adalah generator kode QR gratis yang berjalan secara lokal di perangkat Anda dan membuat kode yang dapat dipindai untuk URL, teks, kredensial Wi-Fi, kartu kontak, acara kalender, dan banyak lagi.',
+        'Aplikasi ini dirancang untuk individu, usaha kecil, pemasar, dan pengembang yang menginginkan alat QR yang canggih tanpa perlu mengunggah file atau mendaftar. Data Anda tetap berada di perangkat Anda.',
       ],
     },
     {
-      heading: 'Key features',
+      heading: 'Fitur-fitur utama',
       bullets: [
-        'Generate QR codes instantly on your device — no server uploads, no account required.',
-        'Customise colours, module styles, finder patterns, and add image overlays.',
-        'Export in multiple formats: PNG, SVG, WebP, and animated GIF.',
-        'Advanced controls for error correction level, QR version, encoding mode, and mask selection.',
-        'Scan-safety guidance and live preview to help keep codes readable in print and on screens.',
-        'Works offline once loaded — it is a static web app you can run anywhere.',
+        'Hasilkan kode QR secara instan di perangkat Anda — tanpa unggahan server, tanpa perlu akun.',
+        'Sesuaikan warna, gaya modul, pola pencari, dan tambahkan lapisan gambar.',
+        'Ekspor dalam berbagai format: PNG, SVG, WebP, dan GIF animasi.',
+        'Kontrol lanjutan untuk tingkat koreksi kesalahan, versi QR, mode pengkodean, dan pemilihan mask.',
+        'Panduan keamanan pemindaian dan pratinjau langsung untuk membantu menjaga agar kode tetap mudah dibaca dalam bentuk cetak dan di layar.',
+        'Berfungsi secara offline setelah dimuat — ini adalah aplikasi web statis yang dapat Anda jalankan di mana saja.',
       ],
     },
     {
-      heading: 'How ANQR works',
+      heading: 'Cara kerja ANQR',
       paragraphs: [
-        'ANQR runs in your browser and encodes your input into a standard QR matrix with Reed–Solomon error correction, then renders it to the format you choose.',
-        'All generation happens locally. When you add overlays or animations, ANQR balances styling with scan reliability so the result remains scannable.',
-        'ANQR focuses on static codes (the data is inside the QR). If you need a dynamic code (editable destination), you can encode your own redirect URL or short link.',
+        'ANQR berjalan di peramban Anda dan mengkodekan input Anda ke dalam matriks QR standar dengan koreksi kesalahan Reed–Solomon, lalu menampilkannya dalam format yang Anda pilih.',
+        'Semua proses pembuatan terjadi secara lokal. Saat Anda menambahkan overlay atau animasi, ANQR menyeimbangkan penataan gaya dengan keandalan pemindaian sehingga hasilnya tetap dapat dipindai.',
+        'ANQR berfokus pada kode statis (data berada di dalam QR). Jika Anda memerlukan kode dinamis (tujuan yang dapat diedit), Anda dapat mengkodekan URL pengalihan atau tautan pendek Anda sendiri.',
       ],
     },
     {
-      heading: 'Who operates ANQR?',
+      heading: 'Siapa yang mengoperasikan ANQR?',
       paragraphs: [
-        'ANQR is operated as an independent web tool. For questions, support, or business enquiries, please use the Contact page or email ' + CONTACT_EMAIL + '.',
+        'ANQR dioperasikan sebagai alat web independen. Untuk pertanyaan, dukungan, atau pertanyaan bisnis, silakan gunakan halaman Kontak atau email.' + CONTACT_EMAIL + '.',
       ],
     },
     {
-      heading: 'Advertising and how we stay free',
+      heading: 'Periklanan dan bagaimana kita tetap bebas',
       paragraphs: [
-        'ANQR is free to use and is supported by advertising. We may show ads via Google AdSense and/or other advertising partners.',
-        'Ad providers may use cookies or similar technologies to personalise ads based on your interests and browsing activity. You can manage ad preferences in your device settings and through Google ad settings, and learn more in our Privacy Policy.',
-        'We do not sell the content you encode into QR codes. Ads help cover the cost of running and improving the project.',
+        'ANQR gratis untuk digunakan dan didukung oleh iklan. Kami dapat menampilkan iklan melalui Google AdSense dan/atau mitra periklanan lainnya.',
+        'Penyedia iklan dapat menggunakan cookie atau teknologi serupa untuk mempersonalisasi iklan berdasarkan minat dan aktivitas penjelajahan Anda. Anda dapat mengelola preferensi iklan di pengaturan perangkat Anda dan melalui pengaturan iklan Google, dan mempelajari lebih lanjut di Kebijakan Privasi kami.',
+        'Kami tidak menjual konten yang Anda encode ke dalam kode QR. Iklan membantu menutupi biaya pengoperasian dan peningkatan proyek.',
       ],
     },
     {
-      heading: 'Open standards',
+      heading: 'Standar terbuka',
       paragraphs: [
-        'ANQR generates QR codes based on the ISO/IEC 18004 standard and aims for broad compatibility across scanners, cameras, and print workflows.',
+        'ANQR menghasilkan kode QR berdasarkan standar ISO/IEC 18004 dan bertujuan untuk kompatibilitas luas di berbagai pemindai, kamera, dan alur kerja pencetakan.',
       ],
     },
     {
-      heading: 'Trademark notice',
+      heading: 'Pemberitahuan merek dagang',
       paragraphs: [
-        'QR Code® is a registered trademark of DENSO WAVE INCORPORATED. ANQR is not affiliated with, endorsed by, or sponsored by DENSO WAVE INCORPORATED.',
+        'QR Code® adalah merek dagang terdaftar dari DENSO WAVE INCORPORATED. ANQR tidak berafiliasi dengan, didukung oleh, atau disponsori oleh DENSO WAVE INCORPORATED.',
       ],
     },
     {
-      heading: 'Feedback and contributions',
+      heading: 'Umpan balik dan kontribusi',
       paragraphs: [
-        'We welcome feedback, bug reports, and feature suggestions. Please get in touch via email or the contact page — we read every message, though response times may vary.',
+        'Kami menerima masukan, laporan bug, dan saran fitur. Silakan hubungi kami melalui email atau halaman kontak — kami membaca setiap pesan, meskipun waktu respons dapat bervariasi.',
       ],
     },
   ],

@@ -2,72 +2,72 @@ import type { PageDefinition } from '../types'
 import { LAST_UPDATED, CONTACT_EMAIL } from '../types'
 
 export const contact: PageDefinition = {
-  title: 'Contact Us',
-  description: 'We welcome feedback, bug reports, feature requests, and general enquiries.',
+  title: '문의하기',
+  description: '피드백, 버그 보고, 기능 요청 및 일반 문의 사항을 환영합니다.',
   lastUpdated: LAST_UPDATED,
   sections: [
     {
-      heading: 'How to reach us',
+      heading: '저희에게 연락하는 방법',
       paragraphs: [
-        'We offer several ways to contact us depending on your needs. We read every message, though response times may vary based on volume and enquiry type.',
+        '고객님의 필요에 따라 다양한 연락 방법을 제공하고 있습니다. 모든 메시지를 꼼꼼히 읽어보지만, 응답 시간은 문의량과 문의 유형에 따라 다를 수 있습니다.',
       ],
     },
     {
-      heading: 'Email',
+      heading: '이메일',
       paragraphs: [
-        `For all enquiries: ${CONTACT_EMAIL}`,
-        'This is the most reliable way to reach us and is recommended for detailed questions, business enquiries, or if the contact form does not work on your device.',
+        `문의 사항은 ${CONTACT_EMAIL}로 연락주세요.`,
+        '저희에게 연락하는 가장 확실한 방법이며, 자세한 질문, 사업 관련 문의 또는 문의 양식이 기기에서 작동하지 않는 경우에 권장합니다.',
       ],
     },
     {
-      heading: 'Contact form',
+      heading: '양식',
       paragraphs: [
-        'Use the form below to send us a message directly. If the form does not submit successfully, please use email instead.',
+        '아래 양식을 사용하여 저희에게 직접 메시지를 보내주세요. 양식이 제대로 제출되지 않으면 이메일을 사용해 주세요.',
       ],
     },
     {
-      heading: 'Types of enquiries',
+      heading: '문의 유형',
       bullets: [
-        'General questions: Questions about how to use ANQR, feature explanations, or general feedback.',
-        'Bug reports: Please include your browser, operating system, steps to reproduce, and any error messages you see.',
-        'Feature requests: Suggestions for new features or improvements. We consider all requests though we cannot promise implementation.',
-        'Business enquiries: Partnership opportunities, licensing questions, or commercial use enquiries.',
-        'Privacy requests: Requests to exercise your privacy rights under GDPR, CCPA, or other privacy laws (see Privacy Policy).',
-        'DMCA/Copyright: See the DMCA section below for takedown notice requirements.',
+        '일반 질문: ANQR 사용 방법, 기능 설명 또는 일반적인 피드백에 대한 질문.',
+        '버그 보고: 사용하시는 브라우저, 운영 체제, 재현 단계 및 표시되는 오류 메시지를 포함해 주십시오.',
+        '기능 요청: 새로운 기능이나 개선 사항에 대한 제안입니다. 모든 요청을 검토하지만 구현을 보장할 수는 없습니다.',
+        '사업 문의: 파트너십 기회, 라이선스 관련 질문 또는 상업적 이용 문의.',
+        '개인정보 보호 요청: GDPR, CCPA 또는 기타 개인정보 보호법에 따른 개인정보 보호 권리 행사 요청(개인정보 보호정책 참조).',
+        'DMCA/저작권: 삭제 요청 통지 요건은 아래 DMCA 섹션을 참조하십시오.',
       ],
     },
     {
-      heading: 'Response times',
+      heading: '응답 시간',
       paragraphs: [
-        'We aim to respond to enquiries within 5-7 business days. Privacy-related requests will be addressed within 30 days as required by law.',
-        'During busy periods, response times may be longer. For urgent matters, please indicate "URGENT" in your subject line.',
+        '저희는 영업일 기준 5~7일 이내에 문의에 답변드리는 것을 목표로 하고 있습니다. 개인정보 관련 요청은 법률에 따라 30일 이내에 처리해 드립니다.',
+        '업무량이 많은 기간에는 응답 시간이 길어질 수 있습니다. 긴급한 사항은 제목에 \'긴급\'이라고 표시해 주십시오.',
       ],
     },
     {
-      heading: 'Before contacting us',
+      heading: '저희에게 연락하시기 전에',
       paragraphs: [
-        'Please check our Documentation page for answers to common questions about how to use ANQR features. Many questions about QR code generation, styling, and export options are covered there.',
+        '기능 사용 방법에 대한 일반적인 질문에 대한 답변은 문서 페이지를 참조하십시오. QR 코드 생성, 스타일 지정 및 내보내기 옵션에 대한 많은 질문에 대한 답변이 거기에 있습니다.',
       ],
     },
     {
-      heading: 'DMCA Copyright Notices',
+      heading: '저작권 고지',
       paragraphs: [
-        'If you believe that content available on ANQR infringes your copyright, you may submit a Digital Millennium Copyright Act (DMCA) takedown notice. To be valid, your notice must include:',
+        'ANQR에서 제공되는 콘텐츠가 귀하의 저작권을 침해한다고 생각되는 경우, 디지털 밀레니엄 저작권법(DMCA)에 따른 삭제 요청 통지를 제출할 수 있습니다. 유효한 통지를 위해서는 다음 사항이 포함되어야 합니다.',
       ],
       bullets: [
-        'A physical or electronic signature of the copyright owner or authorised agent.',
-        'Identification of the copyrighted work claimed to have been infringed.',
-        'Identification of the material that is claimed to be infringing, with information sufficient to locate it.',
-        'Your contact information (address, telephone number, and email address).',
-        'A statement that you have a good faith belief that use of the material is not authorised by the copyright owner.',
-        'A statement, under penalty of perjury, that the information in your notice is accurate and that you are the copyright owner or authorised to act on their behalf.',
+        '소유자 또는 권한 있는 대리인의 자필 서명 또는 전자 서명.',
+        '침해를 주장하는 저작물의 식별.',
+        '대상 자료의 식별 및 해당 자료를 찾을 수 있도록 충분한 정보 제공.',
+        '연락처 정보(주소, 전화번호 및 이메일 주소)',
+        '귀하는 해당 자료의 사용이 저작권 소유자에 의해 허가되지 않았다고 선의로 믿는다는 진술.',
+        '위증 시 처벌을 받을 수 있음을 인지하고, 귀하의 통지서에 기재된 정보가 정확하며 귀하가 저작권 소유자이거나 저작권 소유자를 대리하여 행동할 권한을 부여받았다는 진술.',
       ],
     },
     {
-      heading: 'DMCA Contact',
+      heading: '연락처',
       paragraphs: [
-        `Send DMCA notices to: ${CONTACT_EMAIL}`,
-        'Please include "DMCA Notice" in the subject line. We will respond to valid notices in accordance with applicable law. Note that ANQR generates QR codes locally on users devices and does not host user-generated content.',
+        `통지는 다음 주소로 보내주세요: ${CONTACT_EMAIL}`,
+        '제목에 \'DMCA 통지\'를 포함해 주십시오. 유효한 통지에 대해서는 관련 법률에 따라 답변드리겠습니다. ANQR은 사용자의 기기에서 QR 코드를 로컬로 생성하며 사용자 생성 콘텐츠를 호스팅하지 않습니다.',
       ],
     },
   ],

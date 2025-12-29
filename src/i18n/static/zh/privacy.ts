@@ -2,147 +2,147 @@ import type { PageDefinition } from '../types'
 import { LAST_UPDATED, CONTACT_EMAIL } from '../types'
 
 export const privacy: PageDefinition = {
-  title: 'Privacy Policy',
-  description: 'Information ANQR collects, how it is used, and your rights under applicable privacy laws.',
+  title: '隐私政策',
+  description: 'ANQR 收集的信息、信息的使用方式以及您在适用隐私法律下的权利。',
   lastUpdated: LAST_UPDATED,
   sections: [
     {
-      heading: 'Summary',
+      heading: '摘要',
       paragraphs: [
-        'ANQR is a QR code generator that runs entirely on your device. We do not require you to create an account, and QR codes are generated locally — we do not have access to the content you encode.',
-        'We use Google AdSense for advertising and may use analytics services. These services collect information through cookies and similar technologies. This policy explains what data is collected, how it is used, and your rights.',
+        'ANQR 是一款完全在您的设备上运行的二维码生成器。我们不要求您创建帐户，二维码是在本地生成的——我们无法访问您编码的内容。',
+        '我们使用 Google AdSense 进行广告投放，并可能使用分析服务。这些服务通过 Cookie 和类似技术收集信息。本政策解释了收集哪些数据、如何使用这些数据以及您的权利。',
       ],
     },
     {
-      heading: 'Information we collect',
+      heading: '我们收集的信息',
       bullets: [
-        'Information you provide: If you contact us via email or our contact form, we collect your name, email address, and message content.',
-        'Automatically collected information: Our hosting provider (Netlify), advertising partners, and analytics services may collect: IP address, browser type and version, operating system, device type, referring URL, pages visited, time on site, and approximate geographic location.',
-        'Third-party cookies: Our advertising partners (Google AdSense) use cookies and similar technologies to serve and measure advertisements. ANQR itself does not set any first-party cookies.',
+        '您提供的信息：如果您通过电子邮件或我们的联系表格与我们联系，我们会收集您的姓名、电子邮件地址和消息内容。',
+        '自动收集的信息：我们的托管服务提供商（Netlify）、广告合作伙伴和分析服务可能会收集：IP 地址、浏览器类型和版本、操作系统、设备类型、引荐网址、访问的页面、网站停留时间和大致地理位置。',
+        '第三方 Cookie：我们的广告合作伙伴（Google AdSense）使用 Cookie 和类似技术来投放和衡量广告效果。ANQR 本身不设置任何第一方 Cookie。',
       ],
     },
     {
-      heading: 'Cookies and third-party technologies',
+      heading: 'Cookie 和第三方技术',
       paragraphs: [
-        'ANQR does not set any first-party cookies. Your preferences (such as dark mode) are stored locally on your device, which is not transmitted to any server.',
-        'However, our advertising partners (Google AdSense) and hosting provider may use cookies and similar tracking technologies:',
-      ],
-      bullets: [
-        'Advertising cookies (third-party): Set by Google AdSense and advertising partners to serve relevant ads, measure ad performance, and understand user interests. These cookies may track your activity across different websites.',
-        'Analytics cookies (third-party): May be used by our hosting provider or analytics services to collect anonymised usage data.',
-      ],
-    },
-    {
-      heading: 'Google AdSense and advertising',
-      paragraphs: [
-        'We display advertisements through Google AdSense. Google and its partners use cookies to serve ads based on your browsing history on this site and other websites (interest-based advertising).',
-        'Learn how Google uses your information: https://policies.google.com/technologies/partner-sites',
-        'Manage ad personalisation: https://adssettings.google.com',
-        'Opt out via Network Advertising Initiative: https://optout.networkadvertising.org',
-        'Opt out via Digital Advertising Alliance: https://optout.aboutads.info',
-      ],
-    },
-    {
-      heading: 'How we use information',
-      bullets: [
-        'To respond to your enquiries and provide support.',
-        'To display relevant advertisements through our advertising partners.',
-        'To analyse site usage and improve our services.',
-        'To detect, prevent, and address fraud, abuse, and security issues.',
-        'To comply with legal obligations.',
-      ],
-    },
-    {
-      heading: 'Third-party services',
-      bullets: [
-        'Google AdSense: Receives data to serve and measure advertisements.',
-        'Analytics providers: Receive anonymised usage data.',
-        'Netlify (hosting): Processes requests and may log IP addresses.',
-        'We do not sell your personal information. However, sharing data with advertising partners may be considered a "sale" under CCPA (see below).',
-      ],
-    },
-    {
-      heading: 'Data retention',
-      bullets: [
-        'Contact submissions: Up to 2 years.',
-        'Server logs: Up to 30 days (hosting provider).',
-        'Analytics data: Up to 26 months (anonymised).',
-        'Advertising cookies: Typically 13 months (varies by partner).',
-      ],
-    },
-    {
-      heading: 'Your rights under GDPR (EEA users)',
-      paragraphs: [
-        'If you are in the European Economic Area, you have the following rights under the General Data Protection Regulation:',
+        'ANQR 不会设置任何第一方 Cookie。您的偏好设置（例如深色模式）存储在您的设备本地，不会传输到任何服务器。',
+        '但是，我们的广告合作伙伴（Google AdSense）和托管服务提供商可能会使用 Cookie 和类似追踪技术：',
       ],
       bullets: [
-        'Right of access: Request a copy of personal data we hold about you.',
-        'Right to rectification: Request correction of inaccurate data.',
-        'Right to erasure: Request deletion of your data ("right to be forgotten").',
-        'Right to restrict processing: Request limits on how we use your data.',
-        'Right to data portability: Request your data in a portable format.',
-        'Right to object: Object to processing, including for direct marketing.',
-        'Right to withdraw consent: Withdraw consent at any time where processing is consent-based.',
-        'Right to lodge a complaint: File a complaint with your data protection authority.',
+        '广告 Cookie（第三方）：由 Google AdSense 和广告合作伙伴设置，用于投放相关广告、衡量广告效果并了解用户兴趣。这些 Cookie 可能会跟踪您在不同网站上的活动。',
+        '分析 cookie（第三方）：可能由我们的托管服务提供商或分析服务提供商用于收集匿名使用数据。',
       ],
     },
     {
-      heading: 'GDPR legal basis',
+      heading: 'Google AdSense 和广告',
       paragraphs: [
-        'We process data on these bases: (a) Consent — for personalised advertising (managed by our advertising partners); (b) Legitimate interests — for analytics, security, and improvement; (c) Contract — to respond to enquiries.',
-        `To exercise your rights, contact ${CONTACT_EMAIL}. We respond within 30 days.`,
+        '我们通过 Google AdSense 展示广告。Google 及其合作伙伴使用 Cookie，根据您在本网站和其他网站上的浏览历史记录来投放广告（基于兴趣的广告）。',
+        '了解谷歌如何使用您的信息：https://policies.google.com/technologies/partner-sites',
+        '管理广告个性化：https://adssettings.google.com',
+        '通过网络广告联盟选择退出：https://optout.networkadvertising.org',
+        '通过数字广告联盟选择退出：https://optout.aboutads.info',
       ],
     },
     {
-      heading: 'Your rights under CCPA (California users)',
+      heading: '我们如何使用信息',
       bullets: [
-        'Right to know: Request information about data collected, sources, purposes, and third parties.',
-        'Right to delete: Request deletion of your personal information.',
-        'Right to opt-out: Opt out of the "sale" of personal information (sharing with ad partners may qualify).',
-        'Right to non-discrimination: We will not discriminate for exercising your rights.',
+        '回复您的询问并提供支持。',
+        '通过我们的广告合作伙伴展示相关广告。',
+        '分析网站使用情况并改进我们的服务。',
+        '检测、预防和处理欺诈、滥用和安全问题。',
+        '履行法律义务。',
       ],
     },
     {
-      heading: 'CCPA categories collected',
-      paragraphs: [
-        'Categories: Identifiers (IP address, device ID), Internet activity (browsing, ad interactions), Geolocation (approximate), Inferences (interests from browsing).',
-        `To exercise rights or opt out: ${CONTACT_EMAIL} or adjust cookie settings.`,
+      heading: '第三方服务',
+      bullets: [
+        'Google AdSense：接收数据以投放和衡量广告。',
+        '分析提供商：接收匿名使用数据。',
+        'Netlify（托管）：处理请求并可能记录 IP 地址。',
+        '我们不会出售您的个人信息。但是，根据《加州消费者隐私法案》(CCPA)（见下文），与广告合作伙伴共享数据可能被视为出售。',
       ],
     },
     {
-      heading: 'International transfers',
-      paragraphs: [
-        'Your information may be transferred to countries with different data protection laws, including the United States. We use appropriate safeguards such as Standard Contractual Clauses.',
+      heading: '数据保留',
+      bullets: [
+        '联系提交：最长 2 年。',
+        '服务器日志：最多 30 天（主机提供商）。',
+        '分析数据：最长 26 个月（匿名化）。',
+        '广告 cookie：通常为 13 个月（因合作伙伴而异）。',
       ],
     },
     {
-      heading: 'Children\'s privacy',
+      heading: '您在 GDPR 下的权利（欧洲经济区用户）',
       paragraphs: [
-        `ANQR is not directed at children under 13 (or 16 in the EEA). We do not knowingly collect data from children. Contact ${CONTACT_EMAIL} if you believe a child has provided information.`,
+        '如果您身处欧洲经济区，根据《通用数据保护条例》，您享有以下权利：',
+      ],
+      bullets: [
+        '访问权：请求获取我们持有的关于您的个人数据副本。',
+        '更正权：请求更正不准确的数据。',
+        '删除权：请求删除您的数据（被遗忘权）。',
+        '限制处理的权利：请求限制我们如何使用您的数据。',
+        '数据可移植权：请求以可移植格式获取您的数据。',
+        '反对权：反对处理，包括用于直接营销的处理。',
+        '撤回同意的权利：在基于同意的处理过程中，可以随时撤回同意。',
+        '投诉权：向您的数据保护机构提出投诉。',
       ],
     },
     {
-      heading: 'Security',
+      heading: 'GDPR 法律依据',
       paragraphs: [
-        'We use appropriate technical and organisational measures to protect data, including HTTPS encryption. However, no internet transmission is 100% secure.',
+        '我们基于以下依据处理数据：（a）同意——用于个性化广告（由我们的广告合作伙伴管理）；（b）合法权益——用于分析、安全和改进；（c）合同——用于回应询问。',
+        `如需行使您的权利，请联系 ${CONTACT_EMAIL}。我们将在 30 天内回复。`,
       ],
     },
     {
-      heading: 'Do Not Track',
-      paragraphs: [
-        'We honour Do Not Track browser signals where feasible, though advertising partners may not respond to DNT.',
+      heading: '您在 CCPA 下的权利（加州用户）',
+      bullets: [
+        '知情权：请求提供有关所收集数据、来源、目的和第三方的信息。',
+        '删除权：请求删除您的个人信息。',
+        '选择退出权：选择退出个人信息的‘出售’（与广告合作伙伴共享可能符合条件）。',
+        '不受歧视的权利：我们不会因为您行使您的权利而歧视您。',
       ],
     },
     {
-      heading: 'Changes to this policy',
+      heading: '收集的 CCPA 类别',
       paragraphs: [
-        'We may update this policy periodically. The "Last updated" date indicates the most recent revision. Significant changes may be communicated via a site banner.',
+        '类别：标识符（IP 地址、设备 ID）、互联网活动（浏览、广告互动）、地理位置（近似值）、推断（浏览兴趣）。',
+        `如需行使权利或选择退出：${CONTACT_EMAIL} 或调整 cookie 设置。`,
       ],
     },
     {
-      heading: 'Contact us',
+      heading: '国际转账',
       paragraphs: [
-        `For privacy questions or to exercise your rights: ${CONTACT_EMAIL} or use our Contact page. We respond to privacy requests within 30 days.`,
+        '您的信息可能会被传输到数据保护法律不同的国家/地区，包括美国。我们采取了适当的保障措施，例如标准合同条款。',
+      ],
+    },
+    {
+      heading: '儿童隐私',
+      paragraphs: [
+        `ANQR 不针对 13 岁以下（或欧洲经济区 16 岁以下）儿童。我们不会故意收集儿童数据。如果您认为有儿童提供了信息，请联系 ${CONTACT_EMAIL}。`,
+      ],
+    },
+    {
+      heading: '安全',
+      paragraphs: [
+        '我们采取适当的技术和组织措施来保护数据，包括HTTPS加密。但是，没有任何互联网传输是100%安全的。',
+      ],
+    },
+    {
+      heading: '请勿追踪',
+      paragraphs: [
+        '我们会在可行的情况下尊重浏览器的‘请勿追踪’信号，但广告合作伙伴可能不会响应 DNT 信号。',
+      ],
+    },
+    {
+      heading: '本政策的变更',
+      paragraphs: [
+        '我们可能会定期更新此政策。最后更新日期表示最近一次修订。重大变更可能会通过网站横幅进行通知。',
+      ],
+    },
+    {
+      heading: '联系我们',
+      paragraphs: [
+        `如有隐私问题或想行使您的权利，请发送邮件至 ${CONTACT_EMAIL} 或使用我们的联系页面。我们会在 30 天内回复您的隐私请求。`,
       ],
     },
   ],

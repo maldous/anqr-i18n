@@ -2,66 +2,66 @@ import type { PageDefinition } from '../types'
 import { LAST_UPDATED, CONTACT_EMAIL } from '../types'
 
 export const about: PageDefinition = {
-  title: 'About ANQR',
-  description: 'ANQR is a free QR code generator that runs entirely on your device — no account required.',
+  title: 'ANQR ਬਾਰੇ',
+  description: 'ANQR ਇੱਕ ਮੁਫ਼ਤ QR ਕੋਡ ਜਨਰੇਟਰ ਹੈ ਜੋ ਪੂਰੀ ਤਰ੍ਹਾਂ ਤੁਹਾਡੀ ਡਿਵਾਈਸ \'ਤੇ ਚੱਲਦਾ ਹੈ — ਕਿਸੇ ਖਾਤੇ ਦੀ ਲੋੜ ਨਹੀਂ ਹੈ।',
   lastUpdated: LAST_UPDATED,
   sections: [
     {
-      heading: 'What is ANQR?',
+      heading: 'ANQR ਕੀ ਹੈ?',
       paragraphs: [
-        'ANQR (pronounced "anchor") is a free QR code generator that runs locally on your device and creates scannable codes for URLs, text, Wi-Fi credentials, contact cards, calendar events, and more.',
-        'It is built for individuals, small businesses, marketers, and developers who want powerful QR tools without uploading files or signing up. Your data stays on your device.',
+        'ANQR (ਜਿਸਨੂੰ ਐਂਕਰ ਕਿਹਾ ਜਾਂਦਾ ਹੈ) ਇੱਕ ਮੁਫ਼ਤ QR ਕੋਡ ਜਨਰੇਟਰ ਹੈ ਜੋ ਤੁਹਾਡੀ ਡਿਵਾਈਸ \'ਤੇ ਸਥਾਨਕ ਤੌਰ \'ਤੇ ਚੱਲਦਾ ਹੈ ਅਤੇ URL, ਟੈਕਸਟ, Wi-Fi ਪ੍ਰਮਾਣ ਪੱਤਰ, ਸੰਪਰਕ ਕਾਰਡ, ਕੈਲੰਡਰ ਇਵੈਂਟ ਅਤੇ ਹੋਰ ਬਹੁਤ ਕੁਝ ਲਈ ਸਕੈਨ ਕਰਨ ਯੋਗ ਕੋਡ ਬਣਾਉਂਦਾ ਹੈ।',
+        'ਇਹ ਉਹਨਾਂ ਵਿਅਕਤੀਆਂ, ਛੋਟੇ ਕਾਰੋਬਾਰਾਂ, ਮਾਰਕਿਟਰਾਂ ਅਤੇ ਡਿਵੈਲਪਰਾਂ ਲਈ ਬਣਾਇਆ ਗਿਆ ਹੈ ਜੋ ਫਾਈਲਾਂ ਅਪਲੋਡ ਕੀਤੇ ਜਾਂ ਸਾਈਨ ਅੱਪ ਕੀਤੇ ਬਿਨਾਂ ਸ਼ਕਤੀਸ਼ਾਲੀ QR ਟੂਲ ਚਾਹੁੰਦੇ ਹਨ। ਤੁਹਾਡਾ ਡੇਟਾ ਤੁਹਾਡੀ ਡਿਵਾਈਸ \'ਤੇ ਰਹਿੰਦਾ ਹੈ।',
       ],
     },
     {
-      heading: 'Key features',
+      heading: 'ਮੁੱਖ ਵਿਸ਼ੇਸ਼ਤਾਵਾਂ',
       bullets: [
-        'Generate QR codes instantly on your device — no server uploads, no account required.',
-        'Customise colours, module styles, finder patterns, and add image overlays.',
-        'Export in multiple formats: PNG, SVG, WebP, and animated GIF.',
-        'Advanced controls for error correction level, QR version, encoding mode, and mask selection.',
-        'Scan-safety guidance and live preview to help keep codes readable in print and on screens.',
-        'Works offline once loaded — it is a static web app you can run anywhere.',
+        'ਆਪਣੇ ਡਿਵਾਈਸ \'ਤੇ ਤੁਰੰਤ QR ਕੋਡ ਤਿਆਰ ਕਰੋ — ਕੋਈ ਸਰਵਰ ਅਪਲੋਡ ਨਹੀਂ, ਕੋਈ ਖਾਤਾ ਲੋੜੀਂਦਾ ਨਹੀਂ।',
+        'ਰੰਗ, ਮੋਡੀਊਲ ਸਟਾਈਲ, ਫਾਈਂਡਰ ਪੈਟਰਨ ਨੂੰ ਅਨੁਕੂਲਿਤ ਕਰੋ, ਅਤੇ ਚਿੱਤਰ ਓਵਰਲੇਅ ਸ਼ਾਮਲ ਕਰੋ।',
+        'ਕਈ ਫਾਰਮੈਟਾਂ ਵਿੱਚ ਨਿਰਯਾਤ ਕਰੋ: PNG, SVG, WebP, ਅਤੇ ਐਨੀਮੇਟਡ GIF।',
+        'ਗਲਤੀ ਸੁਧਾਰ ਪੱਧਰ, QR ਸੰਸਕਰਣ, ਏਨਕੋਡਿੰਗ ਮੋਡ, ਅਤੇ ਮਾਸਕ ਚੋਣ ਲਈ ਉੱਨਤ ਨਿਯੰਤਰਣ।',
+        'ਸਕੈਨ-ਸੁਰੱਖਿਆ ਮਾਰਗਦਰਸ਼ਨ ਅਤੇ ਲਾਈਵ ਪ੍ਰੀਵਿਊ ਕੋਡਾਂ ਨੂੰ ਪ੍ਰਿੰਟ ਅਤੇ ਸਕ੍ਰੀਨਾਂ \'ਤੇ ਪੜ੍ਹਨਯੋਗ ਰੱਖਣ ਵਿੱਚ ਮਦਦ ਕਰਨ ਲਈ।',
+        'ਇੱਕ ਵਾਰ ਲੋਡ ਹੋਣ ਤੋਂ ਬਾਅਦ ਔਫਲਾਈਨ ਕੰਮ ਕਰਦਾ ਹੈ — ਇਹ ਇੱਕ ਸਥਿਰ ਵੈੱਬ ਐਪ ਹੈ ਜਿਸਨੂੰ ਤੁਸੀਂ ਕਿਤੇ ਵੀ ਚਲਾ ਸਕਦੇ ਹੋ।',
       ],
     },
     {
-      heading: 'How ANQR works',
+      heading: 'ANQR ਕਿਵੇਂ ਕੰਮ ਕਰਦਾ ਹੈ',
       paragraphs: [
-        'ANQR runs in your browser and encodes your input into a standard QR matrix with Reed–Solomon error correction, then renders it to the format you choose.',
-        'All generation happens locally. When you add overlays or animations, ANQR balances styling with scan reliability so the result remains scannable.',
-        'ANQR focuses on static codes (the data is inside the QR). If you need a dynamic code (editable destination), you can encode your own redirect URL or short link.',
+        'ANQR ਤੁਹਾਡੇ ਬ੍ਰਾਊਜ਼ਰ ਵਿੱਚ ਚੱਲਦਾ ਹੈ ਅਤੇ ਤੁਹਾਡੇ ਇਨਪੁਟ ਨੂੰ ਰੀਡ-ਸੋਲੋਮਨ ਗਲਤੀ ਸੁਧਾਰ ਦੇ ਨਾਲ ਇੱਕ ਮਿਆਰੀ QR ਮੈਟ੍ਰਿਕਸ ਵਿੱਚ ਏਨਕੋਡ ਕਰਦਾ ਹੈ, ਫਿਰ ਇਸਨੂੰ ਤੁਹਾਡੇ ਦੁਆਰਾ ਚੁਣੇ ਗਏ ਫਾਰਮੈਟ ਵਿੱਚ ਰੈਂਡਰ ਕਰਦਾ ਹੈ।',
+        'ਸਾਰੀ ਪੀੜ੍ਹੀ ਸਥਾਨਕ ਤੌਰ \'ਤੇ ਹੁੰਦੀ ਹੈ। ਜਦੋਂ ਤੁਸੀਂ ਓਵਰਲੇਅ ਜਾਂ ਐਨੀਮੇਸ਼ਨ ਜੋੜਦੇ ਹੋ, ਤਾਂ ANQR ਸਟਾਈਲਿੰਗ ਨੂੰ ਸਕੈਨ ਭਰੋਸੇਯੋਗਤਾ ਨਾਲ ਸੰਤੁਲਿਤ ਕਰਦਾ ਹੈ ਤਾਂ ਜੋ ਨਤੀਜਾ ਸਕੈਨ ਕਰਨ ਯੋਗ ਰਹੇ।',
+        'ANQR ਸਥਿਰ ਕੋਡਾਂ \'ਤੇ ਕੇਂਦ੍ਰਤ ਕਰਦਾ ਹੈ (ਡੇਟਾ QR ਦੇ ਅੰਦਰ ਹੈ)। ਜੇਕਰ ਤੁਹਾਨੂੰ ਇੱਕ ਗਤੀਸ਼ੀਲ ਕੋਡ (ਸੰਪਾਦਨਯੋਗ ਮੰਜ਼ਿਲ) ਦੀ ਲੋੜ ਹੈ, ਤਾਂ ਤੁਸੀਂ ਆਪਣੇ ਖੁਦ ਦੇ ਰੀਡਾਇਰੈਕਟ URL ਜਾਂ ਛੋਟੇ ਲਿੰਕ ਨੂੰ ਏਨਕੋਡ ਕਰ ਸਕਦੇ ਹੋ।',
       ],
     },
     {
-      heading: 'Who operates ANQR?',
+      heading: 'ANQR ਕੌਣ ਚਲਾਉਂਦਾ ਹੈ?',
       paragraphs: [
-        'ANQR is operated as an independent web tool. For questions, support, or business enquiries, please use the Contact page or email ' + CONTACT_EMAIL + '.',
+        'ANQR ਇੱਕ ਸੁਤੰਤਰ ਵੈੱਬ ਟੂਲ ਵਜੋਂ ਚਲਾਇਆ ਜਾਂਦਾ ਹੈ। ਸਵਾਲਾਂ, ਸਹਾਇਤਾ, ਜਾਂ ਕਾਰੋਬਾਰੀ ਪੁੱਛਗਿੱਛਾਂ ਲਈ, ਕਿਰਪਾ ਕਰਕੇ ਸੰਪਰਕ ਪੰਨੇ ਜਾਂ ਈਮੇਲ ਦੀ ਵਰਤੋਂ ਕਰੋ' + CONTACT_EMAIL + '।',
       ],
     },
     {
-      heading: 'Advertising and how we stay free',
+      heading: 'ਇਸ਼ਤਿਹਾਰਬਾਜ਼ੀ ਅਤੇ ਅਸੀਂ ਕਿਵੇਂ ਆਜ਼ਾਦ ਰਹਿੰਦੇ ਹਾਂ',
       paragraphs: [
-        'ANQR is free to use and is supported by advertising. We may show ads via Google AdSense and/or other advertising partners.',
-        'Ad providers may use cookies or similar technologies to personalise ads based on your interests and browsing activity. You can manage ad preferences in your device settings and through Google ad settings, and learn more in our Privacy Policy.',
-        'We do not sell the content you encode into QR codes. Ads help cover the cost of running and improving the project.',
+        'ANQR ਵਰਤਣ ਲਈ ਮੁਫ਼ਤ ਹੈ ਅਤੇ ਇਸ਼ਤਿਹਾਰਬਾਜ਼ੀ ਦੁਆਰਾ ਸਮਰਥਿਤ ਹੈ। ਅਸੀਂ Google AdSense ਅਤੇ/ਜਾਂ ਹੋਰ ਇਸ਼ਤਿਹਾਰਬਾਜ਼ੀ ਭਾਈਵਾਲਾਂ ਰਾਹੀਂ ਇਸ਼ਤਿਹਾਰ ਦਿਖਾ ਸਕਦੇ ਹਾਂ।',
+        'ਵਿਗਿਆਪਨ ਪ੍ਰਦਾਤਾ ਤੁਹਾਡੀਆਂ ਦਿਲਚਸਪੀਆਂ ਅਤੇ ਬ੍ਰਾਊਜ਼ਿੰਗ ਗਤੀਵਿਧੀ ਦੇ ਆਧਾਰ \'ਤੇ ਇਸ਼ਤਿਹਾਰਾਂ ਨੂੰ ਵਿਅਕਤੀਗਤ ਬਣਾਉਣ ਲਈ ਕੂਕੀਜ਼ ਜਾਂ ਸਮਾਨ ਤਕਨਾਲੋਜੀਆਂ ਦੀ ਵਰਤੋਂ ਕਰ ਸਕਦੇ ਹਨ। ਤੁਸੀਂ ਆਪਣੀਆਂ ਡਿਵਾਈਸ ਸੈਟਿੰਗਾਂ ਅਤੇ Google ਵਿਗਿਆਪਨ ਸੈਟਿੰਗਾਂ ਰਾਹੀਂ ਵਿਗਿਆਪਨ ਤਰਜੀਹਾਂ ਦਾ ਪ੍ਰਬੰਧਨ ਕਰ ਸਕਦੇ ਹੋ, ਅਤੇ ਸਾਡੀ ਗੋਪਨੀਯਤਾ ਨੀਤੀ ਵਿੱਚ ਹੋਰ ਜਾਣ ਸਕਦੇ ਹੋ।',
+        'ਅਸੀਂ ਤੁਹਾਡੇ ਦੁਆਰਾ QR ਕੋਡਾਂ ਵਿੱਚ ਏਨਕੋਡ ਕੀਤੀ ਗਈ ਸਮੱਗਰੀ ਨੂੰ ਨਹੀਂ ਵੇਚਦੇ। ਇਸ਼ਤਿਹਾਰ ਪ੍ਰੋਜੈਕਟ ਨੂੰ ਚਲਾਉਣ ਅਤੇ ਬਿਹਤਰ ਬਣਾਉਣ ਦੀ ਲਾਗਤ ਨੂੰ ਪੂਰਾ ਕਰਨ ਵਿੱਚ ਮਦਦ ਕਰਦੇ ਹਨ।',
       ],
     },
     {
-      heading: 'Open standards',
+      heading: 'ਖੁੱਲ੍ਹੇ ਮਿਆਰ',
       paragraphs: [
-        'ANQR generates QR codes based on the ISO/IEC 18004 standard and aims for broad compatibility across scanners, cameras, and print workflows.',
+        'ANQR ISO/IEC 18004 ਸਟੈਂਡਰਡ ਦੇ ਆਧਾਰ \'ਤੇ QR ਕੋਡ ਤਿਆਰ ਕਰਦਾ ਹੈ ਅਤੇ ਸਕੈਨਰਾਂ, ਕੈਮਰਿਆਂ ਅਤੇ ਪ੍ਰਿੰਟ ਵਰਕਫਲੋ ਵਿੱਚ ਵਿਆਪਕ ਅਨੁਕੂਲਤਾ ਦਾ ਉਦੇਸ਼ ਰੱਖਦਾ ਹੈ।',
       ],
     },
     {
-      heading: 'Trademark notice',
+      heading: 'ਟ੍ਰੇਡਮਾਰਕ ਨੋਟਿਸ',
       paragraphs: [
-        'QR Code® is a registered trademark of DENSO WAVE INCORPORATED. ANQR is not affiliated with, endorsed by, or sponsored by DENSO WAVE INCORPORATED.',
+        'QR Code® DENSO WAVE INCORPORATED ਦਾ ਇੱਕ ਰਜਿਸਟਰਡ ਟ੍ਰੇਡਮਾਰਕ ਹੈ। ANQR DENSO WAVE INCORPORATED ਨਾਲ ਸੰਬੰਧਿਤ, ਸਮਰਥਨ ਪ੍ਰਾਪਤ ਜਾਂ ਸਪਾਂਸਰ ਨਹੀਂ ਹੈ।',
       ],
     },
     {
-      heading: 'Feedback and contributions',
+      heading: 'ਫੀਡਬੈਕ ਅਤੇ ਯੋਗਦਾਨ',
       paragraphs: [
-        'We welcome feedback, bug reports, and feature suggestions. Please get in touch via email or the contact page — we read every message, though response times may vary.',
+        'ਅਸੀਂ ਫੀਡਬੈਕ, ਬੱਗ ਰਿਪੋਰਟਾਂ, ਅਤੇ ਵਿਸ਼ੇਸ਼ਤਾ ਸੁਝਾਵਾਂ ਦਾ ਸਵਾਗਤ ਕਰਦੇ ਹਾਂ। ਕਿਰਪਾ ਕਰਕੇ ਈਮੇਲ ਜਾਂ ਸੰਪਰਕ ਪੰਨੇ ਰਾਹੀਂ ਸੰਪਰਕ ਕਰੋ - ਅਸੀਂ ਹਰੇਕ ਸੁਨੇਹਾ ਪੜ੍ਹਦੇ ਹਾਂ, ਹਾਲਾਂਕਿ ਜਵਾਬ ਦੇਣ ਦਾ ਸਮਾਂ ਵੱਖ-ਵੱਖ ਹੋ ਸਕਦਾ ਹੈ।',
       ],
     },
   ],

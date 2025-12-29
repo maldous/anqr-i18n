@@ -2,66 +2,66 @@ import type { PageDefinition } from '../types'
 import { LAST_UPDATED, CONTACT_EMAIL } from '../types'
 
 export const about: PageDefinition = {
-  title: 'About ANQR',
-  description: 'ANQR is a free QR code generator that runs entirely on your device — no account required.',
+  title: 'ANQR সম্পর্কে',
+  description: 'ANQR হল একটি বিনামূল্যের QR কোড জেনারেটর যা সম্পূর্ণরূপে আপনার ডিভাইসে চলে — কোনও অ্যাকাউন্টের প্রয়োজন নেই।',
   lastUpdated: LAST_UPDATED,
   sections: [
     {
-      heading: 'What is ANQR?',
+      heading: 'ANQR কী?',
       paragraphs: [
-        'ANQR (pronounced "anchor") is a free QR code generator that runs locally on your device and creates scannable codes for URLs, text, Wi-Fi credentials, contact cards, calendar events, and more.',
-        'It is built for individuals, small businesses, marketers, and developers who want powerful QR tools without uploading files or signing up. Your data stays on your device.',
+        'ANQR (উচ্চারণ anchor) হল একটি বিনামূল্যের QR কোড জেনারেটর যা আপনার ডিভাইসে স্থানীয়ভাবে চলে এবং URL, টেক্সট, Wi-Fi শংসাপত্র, যোগাযোগ কার্ড, ক্যালেন্ডার ইভেন্ট এবং আরও অনেক কিছুর জন্য স্ক্যানযোগ্য কোড তৈরি করে।',
+        'এটি এমন ব্যক্তি, ছোট ব্যবসা, বিপণনকারী এবং ডেভেলপারদের জন্য তৈরি করা হয়েছে যারা ফাইল আপলোড বা সাইন আপ না করেই শক্তিশালী QR টুল চান। আপনার ডেটা আপনার ডিভাইসে থাকে।',
       ],
     },
     {
-      heading: 'Key features',
+      heading: 'প্রধান বৈশিষ্ট্য',
       bullets: [
-        'Generate QR codes instantly on your device — no server uploads, no account required.',
-        'Customise colours, module styles, finder patterns, and add image overlays.',
-        'Export in multiple formats: PNG, SVG, WebP, and animated GIF.',
-        'Advanced controls for error correction level, QR version, encoding mode, and mask selection.',
-        'Scan-safety guidance and live preview to help keep codes readable in print and on screens.',
-        'Works offline once loaded — it is a static web app you can run anywhere.',
+        'আপনার ডিভাইসে তাৎক্ষণিকভাবে QR কোড তৈরি করুন — কোনও সার্ভার আপলোড নেই, কোনও অ্যাকাউন্টের প্রয়োজন নেই।',
+        'রঙ, মডিউল স্টাইল, ফাইন্ডার প্যাটার্ন কাস্টমাইজ করুন এবং ছবির ওভারলে যোগ করুন।',
+        'একাধিক ফর্ম্যাটে রপ্তানি করুন: PNG, SVG, WebP, এবং অ্যানিমেটেড GIF।',
+        'ত্রুটি সংশোধন স্তর, QR সংস্করণ, এনকোডিং মোড এবং মাস্ক নির্বাচনের জন্য উন্নত নিয়ন্ত্রণ।',
+        'স্ক্যান-নিরাপত্তা নির্দেশিকা এবং লাইভ প্রিভিউ যাতে কোডগুলি মুদ্রিত এবং স্ক্রিনে পঠনযোগ্য থাকে।',
+        'লোড করার পর অফলাইনে কাজ করে — এটি একটি স্ট্যাটিক ওয়েব অ্যাপ যা আপনি যেকোনো জায়গায় চালাতে পারবেন।',
       ],
     },
     {
-      heading: 'How ANQR works',
+      heading: 'ANQR কীভাবে কাজ করে',
       paragraphs: [
-        'ANQR runs in your browser and encodes your input into a standard QR matrix with Reed–Solomon error correction, then renders it to the format you choose.',
-        'All generation happens locally. When you add overlays or animations, ANQR balances styling with scan reliability so the result remains scannable.',
-        'ANQR focuses on static codes (the data is inside the QR). If you need a dynamic code (editable destination), you can encode your own redirect URL or short link.',
+        'ANQR আপনার ব্রাউজারে চলে এবং Reed-Solomon ত্রুটি সংশোধনের মাধ্যমে আপনার ইনপুটকে একটি স্ট্যান্ডার্ড QR ম্যাট্রিক্সে এনকোড করে, তারপর আপনার পছন্দের ফর্ম্যাটে রেন্ডার করে।',
+        'সমস্ত প্রজন্ম স্থানীয়ভাবে ঘটে। যখন আপনি ওভারলে বা অ্যানিমেশন যোগ করেন, তখন ANQR স্টাইলিং এবং স্ক্যান নির্ভরযোগ্যতার মধ্যে ভারসাম্য বজায় রাখে যাতে ফলাফল স্ক্যানযোগ্য থাকে।',
+        'ANQR স্ট্যাটিক কোডের উপর ফোকাস করে (ডেটা QR এর ভিতরে থাকে)। যদি আপনার একটি ডায়নামিক কোড (সম্পাদনাযোগ্য গন্তব্য) প্রয়োজন হয়, তাহলে আপনি আপনার নিজস্ব রিডাইরেক্ট URL বা ছোট লিঙ্ক এনকোড করতে পারেন।',
       ],
     },
     {
-      heading: 'Who operates ANQR?',
+      heading: 'এএনকিউআর কে পরিচালনা করে?',
       paragraphs: [
-        'ANQR is operated as an independent web tool. For questions, support, or business enquiries, please use the Contact page or email ' + CONTACT_EMAIL + '.',
+        'ANQR একটি স্বাধীন ওয়েব টুল হিসেবে পরিচালিত হয়। প্রশ্ন, সহায়তা, বা ব্যবসায়িক অনুসন্ধানের জন্য, অনুগ্রহ করে যোগাযোগ পৃষ্ঠা বা ইমেল ব্যবহার করুন' + CONTACT_EMAIL + '।',
       ],
     },
     {
-      heading: 'Advertising and how we stay free',
+      heading: 'বিজ্ঞাপন এবং আমরা কীভাবে মুক্ত থাকি',
       paragraphs: [
-        'ANQR is free to use and is supported by advertising. We may show ads via Google AdSense and/or other advertising partners.',
-        'Ad providers may use cookies or similar technologies to personalise ads based on your interests and browsing activity. You can manage ad preferences in your device settings and through Google ad settings, and learn more in our Privacy Policy.',
-        'We do not sell the content you encode into QR codes. Ads help cover the cost of running and improving the project.',
+        'ANQR বিনামূল্যে ব্যবহার করা যায় এবং বিজ্ঞাপন দ্বারা সমর্থিত। আমরা Google AdSense এবং/অথবা অন্যান্য বিজ্ঞাপনী অংশীদারদের মাধ্যমে বিজ্ঞাপন দেখাতে পারি।',
+        'বিজ্ঞাপন প্রদানকারীরা আপনার আগ্রহ এবং ব্রাউজিং কার্যকলাপের উপর ভিত্তি করে বিজ্ঞাপন ব্যক্তিগতকৃত করতে কুকিজ বা অনুরূপ প্রযুক্তি ব্যবহার করতে পারে। আপনি আপনার ডিভাইস সেটিংসে এবং Google বিজ্ঞাপন সেটিংসের মাধ্যমে বিজ্ঞাপন পছন্দগুলি পরিচালনা করতে পারেন এবং আমাদের গোপনীয়তা নীতিতে আরও জানতে পারেন।',
+        'আপনার QR কোডে এনকোড করা কন্টেন্ট আমরা বিক্রি করি না। বিজ্ঞাপনগুলি প্রকল্প পরিচালনা এবং উন্নত করার খরচ মেটাতে সাহায্য করে।',
       ],
     },
     {
-      heading: 'Open standards',
+      heading: 'উন্মুক্ত মান',
       paragraphs: [
-        'ANQR generates QR codes based on the ISO/IEC 18004 standard and aims for broad compatibility across scanners, cameras, and print workflows.',
+        'ANQR ISO/IEC 18004 স্ট্যান্ডার্ডের উপর ভিত্তি করে QR কোড তৈরি করে এবং স্ক্যানার, ক্যামেরা এবং প্রিন্ট ওয়ার্কফ্লো জুড়ে বিস্তৃত সামঞ্জস্যের লক্ষ্য রাখে।',
       ],
     },
     {
-      heading: 'Trademark notice',
+      heading: 'ট্রেডমার্ক নোটিশ',
       paragraphs: [
-        'QR Code® is a registered trademark of DENSO WAVE INCORPORATED. ANQR is not affiliated with, endorsed by, or sponsored by DENSO WAVE INCORPORATED.',
+        'Code® হল DENSO WAVE INCORPORATED-এর একটি নিবন্ধিত ট্রেডমার্ক। ANQR DENSO WAVE INCORPORATED-এর সাথে সম্পর্কিত, অনুমোদিত বা স্পনসর করা হয় না।',
       ],
     },
     {
-      heading: 'Feedback and contributions',
+      heading: 'প্রতিক্রিয়া এবং অবদান',
       paragraphs: [
-        'We welcome feedback, bug reports, and feature suggestions. Please get in touch via email or the contact page — we read every message, though response times may vary.',
+        'আমরা প্রতিক্রিয়া, বাগ রিপোর্ট এবং বৈশিষ্ট্য পরামর্শ স্বাগত জানাই। অনুগ্রহ করে ইমেল বা যোগাযোগ পৃষ্ঠার মাধ্যমে যোগাযোগ করুন - আমরা প্রতিটি বার্তা পড়ি, যদিও প্রতিক্রিয়ার সময় পরিবর্তিত হতে পারে।',
       ],
     },
   ],

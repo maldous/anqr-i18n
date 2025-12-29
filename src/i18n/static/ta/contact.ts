@@ -2,72 +2,72 @@ import type { PageDefinition } from '../types'
 import { LAST_UPDATED, CONTACT_EMAIL } from '../types'
 
 export const contact: PageDefinition = {
-  title: 'Contact Us',
-  description: 'We welcome feedback, bug reports, feature requests, and general enquiries.',
+  title: 'எங்களைத் தொடர்பு கொள்ளுங்கள்',
+  description: 'கருத்துகள், பிழை அறிக்கைகள், அம்ச கோரிக்கைகள் மற்றும் பொதுவான விசாரணைகளை நாங்கள் வரவேற்கிறோம்.',
   lastUpdated: LAST_UPDATED,
   sections: [
     {
-      heading: 'How to reach us',
+      heading: 'எங்களை எவ்வாறு தொடர்பு கொள்வது',
       paragraphs: [
-        'We offer several ways to contact us depending on your needs. We read every message, though response times may vary based on volume and enquiry type.',
+        'உங்கள் தேவைகளைப் பொறுத்து எங்களைத் தொடர்பு கொள்ள நாங்கள் பல வழிகளை வழங்குகிறோம். ஒவ்வொரு செய்தியையும் நாங்கள் படிக்கிறோம், இருப்பினும் பதில் நேரம் அளவு மற்றும் விசாரணை வகையைப் பொறுத்து மாறுபடலாம்.',
       ],
     },
     {
-      heading: 'Email',
+      heading: 'மின்னஞ்சல்',
       paragraphs: [
-        `For all enquiries: ${CONTACT_EMAIL}`,
-        'This is the most reliable way to reach us and is recommended for detailed questions, business enquiries, or if the contact form does not work on your device.',
+        `அனைத்து விசாரணைகளுக்கும்: ${CONTACT_EMAIL}`,
+        'எங்களைத் தொடர்புகொள்வதற்கான மிகவும் நம்பகமான வழி இது, மேலும் விரிவான கேள்விகள், வணிக விசாரணைகள் அல்லது உங்கள் சாதனத்தில் தொடர்பு படிவம் வேலை செய்யவில்லை என்றால் இது பரிந்துரைக்கப்படுகிறது.',
       ],
     },
     {
-      heading: 'Contact form',
+      heading: 'தொடர்பு படிவம்',
       paragraphs: [
-        'Use the form below to send us a message directly. If the form does not submit successfully, please use email instead.',
+        'எங்களுக்கு நேரடியாக செய்தி அனுப்ப கீழே உள்ள படிவத்தைப் பயன்படுத்தவும். படிவம் வெற்றிகரமாக சமர்ப்பிக்கப்படவில்லை என்றால், தயவுசெய்து மின்னஞ்சலைப் பயன்படுத்தவும்.',
       ],
     },
     {
-      heading: 'Types of enquiries',
+      heading: 'விசாரணைகளின் வகைகள்',
       bullets: [
-        'General questions: Questions about how to use ANQR, feature explanations, or general feedback.',
-        'Bug reports: Please include your browser, operating system, steps to reproduce, and any error messages you see.',
-        'Feature requests: Suggestions for new features or improvements. We consider all requests though we cannot promise implementation.',
-        'Business enquiries: Partnership opportunities, licensing questions, or commercial use enquiries.',
-        'Privacy requests: Requests to exercise your privacy rights under GDPR, CCPA, or other privacy laws (see Privacy Policy).',
-        'DMCA/Copyright: See the DMCA section below for takedown notice requirements.',
+        'பொதுவான கேள்விகள்: ANQR ஐ எவ்வாறு பயன்படுத்துவது என்பது பற்றிய கேள்விகள், அம்ச விளக்கங்கள் அல்லது பொதுவான கருத்து.',
+        'பிழை அறிக்கைகள்: உங்கள் உலாவி, இயக்க முறைமை, மீண்டும் உருவாக்குவதற்கான படிகள் மற்றும் நீங்கள் காணும் ஏதேனும் பிழைச் செய்திகளைச் சேர்க்கவும்.',
+        'அம்ச கோரிக்கைகள்: புதிய அம்சங்கள் அல்லது மேம்பாடுகளுக்கான பரிந்துரைகள். செயல்படுத்துவதாக உறுதியளிக்க முடியாது என்றாலும், அனைத்து கோரிக்கைகளையும் நாங்கள் கருத்தில் கொள்கிறோம்.',
+        'வணிக விசாரணைகள்: கூட்டாண்மை வாய்ப்புகள், உரிமக் கேள்விகள் அல்லது வணிகப் பயன்பாட்டு விசாரணைகள்.',
+        'தனியுரிமை கோரிக்கைகள்: GDPR, CCPA அல்லது பிற தனியுரிமைச் சட்டங்களின் கீழ் உங்கள் தனியுரிமை உரிமைகளைப் பயன்படுத்துவதற்கான கோரிக்கைகள் (தனியுரிமைக் கொள்கையைப் பார்க்கவும்).',
+        'DMCA/பதிப்புரிமை: நீக்குதல் அறிவிப்பு தேவைகளுக்கு கீழே உள்ள DMCA பகுதியைப் பார்க்கவும்.',
       ],
     },
     {
-      heading: 'Response times',
+      heading: 'பதில் நேரங்கள்',
       paragraphs: [
-        'We aim to respond to enquiries within 5-7 business days. Privacy-related requests will be addressed within 30 days as required by law.',
-        'During busy periods, response times may be longer. For urgent matters, please indicate "URGENT" in your subject line.',
+        'விசாரணைகளுக்கு 5-7 வணிக நாட்களுக்குள் பதிலளிப்பதை நாங்கள் நோக்கமாகக் கொண்டுள்ளோம். சட்டப்படி தேவைப்படும் 30 நாட்களுக்குள் தனியுரிமை தொடர்பான கோரிக்கைகள் தீர்க்கப்படும்.',
+        'பரபரப்பான நேரங்களில், பதிலளிக்கும் நேரம் அதிகமாக இருக்கலாம். அவசர விஷயங்களுக்கு, உங்கள் தலைப்பு வரியில் அவசரம் என்பதைக் குறிப்பிடவும்.',
       ],
     },
     {
-      heading: 'Before contacting us',
+      heading: 'எங்களைத் தொடர்பு கொள்வதற்கு முன்',
       paragraphs: [
-        'Please check our Documentation page for answers to common questions about how to use ANQR features. Many questions about QR code generation, styling, and export options are covered there.',
+        'ANQR அம்சங்களை எவ்வாறு பயன்படுத்துவது என்பது பற்றிய பொதுவான கேள்விகளுக்கான பதில்களுக்கு எங்கள் ஆவணப் பக்கத்தைப் பார்க்கவும். QR குறியீடு உருவாக்கம், ஸ்டைலிங் மற்றும் ஏற்றுமதி விருப்பங்கள் பற்றிய பல கேள்விகள் அங்கு விவாதிக்கப்பட்டுள்ளன.',
       ],
     },
     {
-      heading: 'DMCA Copyright Notices',
+      heading: 'DMCA பதிப்புரிமை அறிவிப்புகள்',
       paragraphs: [
-        'If you believe that content available on ANQR infringes your copyright, you may submit a Digital Millennium Copyright Act (DMCA) takedown notice. To be valid, your notice must include:',
+        'ANQR இல் கிடைக்கும் உள்ளடக்கம் உங்கள் பதிப்புரிமையை மீறுவதாக நீங்கள் நம்பினால், டிஜிட்டல் மில்லினியம் பதிப்புரிமைச் சட்டம் (DMCA) தரமிறக்குதல் அறிவிப்பைச் சமர்ப்பிக்கலாம். செல்லுபடியாகும் வகையில், உங்கள் அறிவிப்பில் பின்வருவன அடங்கும்:',
       ],
       bullets: [
-        'A physical or electronic signature of the copyright owner or authorised agent.',
-        'Identification of the copyrighted work claimed to have been infringed.',
-        'Identification of the material that is claimed to be infringing, with information sufficient to locate it.',
-        'Your contact information (address, telephone number, and email address).',
-        'A statement that you have a good faith belief that use of the material is not authorised by the copyright owner.',
-        'A statement, under penalty of perjury, that the information in your notice is accurate and that you are the copyright owner or authorised to act on their behalf.',
+        'பதிப்புரிமை உரிமையாளர் அல்லது அங்கீகரிக்கப்பட்ட முகவரின் உடல் அல்லது மின்னணு கையொப்பம்.',
+        'மீறப்பட்டதாகக் கூறப்படும் பதிப்புரிமை பெற்ற படைப்பின் அடையாளம்.',
+        'மீறுவதாகக் கூறப்படும் பொருளைக் கண்டறிய போதுமான தகவலுடன் அடையாளம் காணுதல்.',
+        'உங்கள் தொடர்புத் தகவல் (முகவரி, தொலைபேசி எண் மற்றும் மின்னஞ்சல் முகவரி).',
+        'பதிப்புரிமை உரிமையாளரால் பொருளின் பயன்பாடு அங்கீகரிக்கப்படவில்லை என்று நீங்கள் நல்ல நம்பிக்கை கொண்டிருப்பதாக ஒரு அறிக்கை.',
+        'உங்கள் அறிவிப்பில் உள்ள தகவல்கள் துல்லியமானவை என்றும், நீங்கள் பதிப்புரிமை உரிமையாளர் அல்லது அவர்களின் சார்பாக செயல்பட அங்கீகரிக்கப்பட்டவர் என்றும், பொய் சாட்சியத்தின் கீழ் ஒரு அறிக்கை.',
       ],
     },
     {
-      heading: 'DMCA Contact',
+      heading: 'DMCA தொடர்பு',
       paragraphs: [
-        `Send DMCA notices to: ${CONTACT_EMAIL}`,
-        'Please include "DMCA Notice" in the subject line. We will respond to valid notices in accordance with applicable law. Note that ANQR generates QR codes locally on users devices and does not host user-generated content.',
+        `DMCA அறிவிப்புகளை இதற்கு அனுப்பு: ${CONTACT_EMAIL}`,
+        'பொருள் வரியில் DMCA அறிவிப்பு என்பதைச் சேர்க்கவும். பொருந்தக்கூடிய சட்டத்தின்படி செல்லுபடியாகும் அறிவிப்புகளுக்கு நாங்கள் பதிலளிப்போம். ANQR பயனர்களின் சாதனங்களில் உள்ளூரில் QR குறியீடுகளை உருவாக்குகிறது மற்றும் பயனர் உருவாக்கிய உள்ளடக்கத்தை ஹோஸ்ட் செய்யாது என்பதை நினைவில் கொள்ளவும்.',
       ],
     },
   ],

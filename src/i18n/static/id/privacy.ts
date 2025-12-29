@@ -2,147 +2,147 @@ import type { PageDefinition } from '../types'
 import { LAST_UPDATED, CONTACT_EMAIL } from '../types'
 
 export const privacy: PageDefinition = {
-  title: 'Privacy Policy',
-  description: 'Information ANQR collects, how it is used, and your rights under applicable privacy laws.',
+  title: 'Kebijakan Privasi',
+  description: 'Informasi yang dikumpulkan ANQR, bagaimana informasi tersebut digunakan, dan hak-hak Anda berdasarkan hukum privasi yang berlaku.',
   lastUpdated: LAST_UPDATED,
   sections: [
     {
-      heading: 'Summary',
+      heading: 'Ringkasan',
       paragraphs: [
-        'ANQR is a QR code generator that runs entirely on your device. We do not require you to create an account, and QR codes are generated locally — we do not have access to the content you encode.',
-        'We use Google AdSense for advertising and may use analytics services. These services collect information through cookies and similar technologies. This policy explains what data is collected, how it is used, and your rights.',
+        'ANQR adalah generator kode QR yang berjalan sepenuhnya di perangkat Anda. Kami tidak mengharuskan Anda membuat akun, dan kode QR dihasilkan secara lokal — kami tidak memiliki akses ke konten yang Anda encode.',
+        'Kami menggunakan Google AdSense untuk periklanan dan dapat menggunakan layanan analitik. Layanan ini mengumpulkan informasi melalui cookie dan teknologi serupa. Kebijakan ini menjelaskan data apa yang dikumpulkan, bagaimana data tersebut digunakan, dan hak-hak Anda.',
       ],
     },
     {
-      heading: 'Information we collect',
+      heading: 'Informasi yang kami kumpulkan',
       bullets: [
-        'Information you provide: If you contact us via email or our contact form, we collect your name, email address, and message content.',
-        'Automatically collected information: Our hosting provider (Netlify), advertising partners, and analytics services may collect: IP address, browser type and version, operating system, device type, referring URL, pages visited, time on site, and approximate geographic location.',
-        'Third-party cookies: Our advertising partners (Google AdSense) use cookies and similar technologies to serve and measure advertisements. ANQR itself does not set any first-party cookies.',
+        'Informasi yang Anda berikan: Jika Anda menghubungi kami melalui email atau formulir kontak kami, kami mengumpulkan nama, alamat email, dan isi pesan Anda.',
+        'Informasi yang dikumpulkan secara otomatis: Penyedia hosting kami (Netlify), mitra periklanan, dan layanan analitik dapat mengumpulkan: alamat IP, jenis dan versi peramban, sistem operasi, jenis perangkat, URL perujuk, halaman yang dikunjungi, waktu di situs, dan perkiraan lokasi geografis.',
+        'Cookie pihak ketiga: Mitra periklanan kami (Google AdSense) menggunakan cookie dan teknologi serupa untuk menayangkan dan mengukur iklan. ANQR sendiri tidak memasang cookie pihak pertama apa pun.',
       ],
     },
     {
-      heading: 'Cookies and third-party technologies',
+      heading: 'Cookie dan teknologi pihak ketiga',
       paragraphs: [
-        'ANQR does not set any first-party cookies. Your preferences (such as dark mode) are stored locally on your device, which is not transmitted to any server.',
-        'However, our advertising partners (Google AdSense) and hosting provider may use cookies and similar tracking technologies:',
-      ],
-      bullets: [
-        'Advertising cookies (third-party): Set by Google AdSense and advertising partners to serve relevant ads, measure ad performance, and understand user interests. These cookies may track your activity across different websites.',
-        'Analytics cookies (third-party): May be used by our hosting provider or analytics services to collect anonymised usage data.',
-      ],
-    },
-    {
-      heading: 'Google AdSense and advertising',
-      paragraphs: [
-        'We display advertisements through Google AdSense. Google and its partners use cookies to serve ads based on your browsing history on this site and other websites (interest-based advertising).',
-        'Learn how Google uses your information: https://policies.google.com/technologies/partner-sites',
-        'Manage ad personalisation: https://adssettings.google.com',
-        'Opt out via Network Advertising Initiative: https://optout.networkadvertising.org',
-        'Opt out via Digital Advertising Alliance: https://optout.aboutads.info',
-      ],
-    },
-    {
-      heading: 'How we use information',
-      bullets: [
-        'To respond to your enquiries and provide support.',
-        'To display relevant advertisements through our advertising partners.',
-        'To analyse site usage and improve our services.',
-        'To detect, prevent, and address fraud, abuse, and security issues.',
-        'To comply with legal obligations.',
-      ],
-    },
-    {
-      heading: 'Third-party services',
-      bullets: [
-        'Google AdSense: Receives data to serve and measure advertisements.',
-        'Analytics providers: Receive anonymised usage data.',
-        'Netlify (hosting): Processes requests and may log IP addresses.',
-        'We do not sell your personal information. However, sharing data with advertising partners may be considered a "sale" under CCPA (see below).',
-      ],
-    },
-    {
-      heading: 'Data retention',
-      bullets: [
-        'Contact submissions: Up to 2 years.',
-        'Server logs: Up to 30 days (hosting provider).',
-        'Analytics data: Up to 26 months (anonymised).',
-        'Advertising cookies: Typically 13 months (varies by partner).',
-      ],
-    },
-    {
-      heading: 'Your rights under GDPR (EEA users)',
-      paragraphs: [
-        'If you are in the European Economic Area, you have the following rights under the General Data Protection Regulation:',
+        'ANQR tidak memasang cookie pihak pertama apa pun. Preferensi Anda (seperti mode gelap) disimpan secara lokal di perangkat Anda, yang tidak dikirimkan ke server mana pun.',
+        'Namun, mitra periklanan kami (Google AdSense) dan penyedia hosting dapat menggunakan cookie dan teknologi pelacakan serupa:',
       ],
       bullets: [
-        'Right of access: Request a copy of personal data we hold about you.',
-        'Right to rectification: Request correction of inaccurate data.',
-        'Right to erasure: Request deletion of your data ("right to be forgotten").',
-        'Right to restrict processing: Request limits on how we use your data.',
-        'Right to data portability: Request your data in a portable format.',
-        'Right to object: Object to processing, including for direct marketing.',
-        'Right to withdraw consent: Withdraw consent at any time where processing is consent-based.',
-        'Right to lodge a complaint: File a complaint with your data protection authority.',
+        'Cookie iklan (pihak ketiga): Ditetapkan oleh Google AdSense dan mitra periklanan untuk menayangkan iklan yang relevan, mengukur kinerja iklan, dan memahami minat pengguna. Cookie ini dapat melacak aktivitas Anda di berbagai situs web.',
+        'Cookie analitik (pihak ketiga): Dapat digunakan oleh penyedia hosting kami atau layanan analitik untuk mengumpulkan data penggunaan anonim.',
       ],
     },
     {
-      heading: 'GDPR legal basis',
+      heading: 'Google AdSense dan periklanan',
       paragraphs: [
-        'We process data on these bases: (a) Consent — for personalised advertising (managed by our advertising partners); (b) Legitimate interests — for analytics, security, and improvement; (c) Contract — to respond to enquiries.',
-        `To exercise your rights, contact ${CONTACT_EMAIL}. We respond within 30 days.`,
+        'Kami menampilkan iklan melalui Google AdSense. Google dan mitranya menggunakan cookie untuk menayangkan iklan berdasarkan riwayat penelusuran Anda di situs ini dan situs web lain (iklan berbasis minat).',
+        'Pelajari cara Google menggunakan informasi Anda: https://policies.google.com/technologies/partner-sites',
+        'Kelola personalisasi iklan: https://adssettings.google.com',
+        'Pilih untuk tidak ikut serta melalui Network Advertising Initiative: https://optout.networkadvertising.org',
+        'Pilih untuk tidak ikut serta melalui Digital Advertising Alliance: https://optout.aboutads.info',
       ],
     },
     {
-      heading: 'Your rights under CCPA (California users)',
+      heading: 'Bagaimana kita menggunakan informasi',
       bullets: [
-        'Right to know: Request information about data collected, sources, purposes, and third parties.',
-        'Right to delete: Request deletion of your personal information.',
-        'Right to opt-out: Opt out of the "sale" of personal information (sharing with ad partners may qualify).',
-        'Right to non-discrimination: We will not discriminate for exercising your rights.',
+        'Untuk menanggapi pertanyaan Anda dan memberikan dukungan.',
+        'Untuk menampilkan iklan yang relevan melalui mitra periklanan kami.',
+        'Untuk menganalisis penggunaan situs dan meningkatkan layanan kami.',
+        'Untuk mendeteksi, mencegah, dan mengatasi penipuan, penyalahgunaan, dan masalah keamanan.',
+        'Untuk mematuhi kewajiban hukum.',
       ],
     },
     {
-      heading: 'CCPA categories collected',
-      paragraphs: [
-        'Categories: Identifiers (IP address, device ID), Internet activity (browsing, ad interactions), Geolocation (approximate), Inferences (interests from browsing).',
-        `To exercise rights or opt out: ${CONTACT_EMAIL} or adjust cookie settings.`,
+      heading: 'Layanan pihak ketiga',
+      bullets: [
+        'Google AdSense: Menerima data untuk menayangkan dan mengukur iklan.',
+        'Penyedia analitik: Terima data penggunaan yang dianonimkan.',
+        'Netlify (hosting): Memproses permintaan dan dapat mencatat alamat IP.',
+        'Kami tidak menjual informasi pribadi Anda. Namun, berbagi data dengan mitra periklanan dapat dianggap sebagai penjualan berdasarkan CCPA (lihat di bawah).',
       ],
     },
     {
-      heading: 'International transfers',
-      paragraphs: [
-        'Your information may be transferred to countries with different data protection laws, including the United States. We use appropriate safeguards such as Standard Contractual Clauses.',
+      heading: 'Retensi data',
+      bullets: [
+        'Pengajuan kontak: Hingga 2 tahun.',
+        'Log server: Hingga 30 hari (penyedia hosting).',
+        'Data analitik: Hingga 26 bulan (anonim).',
+        'Cookie iklan: Biasanya 13 bulan (bervariasi tergantung mitra).',
       ],
     },
     {
-      heading: 'Children\'s privacy',
+      heading: 'Hak Anda berdasarkan GDPR (pengguna EEA)',
       paragraphs: [
-        `ANQR is not directed at children under 13 (or 16 in the EEA). We do not knowingly collect data from children. Contact ${CONTACT_EMAIL} if you believe a child has provided information.`,
+        'Jika Anda berada di Wilayah Ekonomi Eropa, Anda memiliki hak-hak berikut berdasarkan Peraturan Perlindungan Data Umum:',
+      ],
+      bullets: [
+        'Hak akses: Meminta salinan data pribadi yang kami simpan tentang Anda.',
+        'Hak untuk perbaikan: Meminta koreksi atas data yang tidak akurat.',
+        'Hak untuk penghapusan: Meminta penghapusan data Anda (hak untuk dilupakan).',
+        'Hak untuk membatasi pemrosesan: Minta batasan tentang bagaimana kami menggunakan data Anda.',
+        'Hak atas portabilitas data: Mintalah data Anda dalam format portabel.',
+        'Hak untuk mengajukan keberatan: Mengajukan keberatan terhadap pemrosesan, termasuk untuk pemasaran langsung.',
+        'Hak untuk mencabut persetujuan: Mencabut persetujuan kapan saja jika pemrosesan didasarkan pada persetujuan.',
+        'Hak untuk mengajukan pengaduan: Ajukan pengaduan kepada otoritas perlindungan data Anda.',
       ],
     },
     {
-      heading: 'Security',
+      heading: 'Dasar hukum GDPR',
       paragraphs: [
-        'We use appropriate technical and organisational measures to protect data, including HTTPS encryption. However, no internet transmission is 100% secure.',
+        'Kami memproses data berdasarkan hal-hal berikut: (a) Persetujuan — untuk iklan yang dipersonalisasi (dikelola oleh mitra periklanan kami); (b) Kepentingan sah — untuk analitik, keamanan, dan peningkatan; (c) Kontrak — untuk menanggapi pertanyaan.',
+        `Untuk menggunakan hak Anda, hubungi ${CONTACT_EMAIL}. Kami akan merespons dalam waktu 30 hari.`,
       ],
     },
     {
-      heading: 'Do Not Track',
-      paragraphs: [
-        'We honour Do Not Track browser signals where feasible, though advertising partners may not respond to DNT.',
+      heading: 'Hak Anda berdasarkan CCPA (Pengguna California)',
+      bullets: [
+        'Hak untuk mengetahui: Meminta informasi tentang data yang dikumpulkan, sumber, tujuan, dan pihak ketiga.',
+        'Hak untuk menghapus: Ajukan permohonan penghapusan informasi pribadi Anda.',
+        'Hak untuk menolak: Menolak untuk menjual informasi pribadi (berbagi dengan mitra iklan mungkin termasuk).',
+        'Hak untuk tidak didiskriminasi: Kami tidak akan melakukan diskriminasi karena Anda menggunakan hak Anda.',
       ],
     },
     {
-      heading: 'Changes to this policy',
+      heading: 'Kategori CCPA yang dikumpulkan',
       paragraphs: [
-        'We may update this policy periodically. The "Last updated" date indicates the most recent revision. Significant changes may be communicated via a site banner.',
+        'Kategori: Pengidentifikasi (alamat IP, ID perangkat), Aktivitas internet (penjelajahan, interaksi iklan), Geolokasi (perkiraan), Kesimpulan (minat dari penjelajahan).',
+        `Untuk menggunakan hak atau menolak: ${CONTACT_EMAIL} atau sesuaikan pengaturan cookie.`,
       ],
     },
     {
-      heading: 'Contact us',
+      heading: 'Transfer internasional',
       paragraphs: [
-        `For privacy questions or to exercise your rights: ${CONTACT_EMAIL} or use our Contact page. We respond to privacy requests within 30 days.`,
+        'Informasi Anda dapat ditransfer ke negara-negara dengan hukum perlindungan data yang berbeda, termasuk Amerika Serikat. Kami menggunakan pengamanan yang sesuai seperti Klausul Kontrak Standar.',
+      ],
+    },
+    {
+      heading: 'Privasi anak-anak',
+      paragraphs: [
+        `ANQR tidak ditujukan untuk anak-anak di bawah usia 13 tahun (atau 16 tahun di EEA). Kami tidak dengan sengaja mengumpulkan data dari anak-anak. Hubungi ${CONTACT_EMAIL} jika Anda yakin seorang anak telah memberikan informasi.`,
+      ],
+    },
+    {
+      heading: 'Keamanan',
+      paragraphs: [
+        'Kami menggunakan langkah-langkah teknis dan organisasi yang tepat untuk melindungi data, termasuk enkripsi HTTPS. Namun, tidak ada transmisi internet yang 100% aman.',
+      ],
+    },
+    {
+      heading: 'Jangan Lacak',
+      paragraphs: [
+        'Kami menghormati sinyal Jangan Lacak (Do Not Track) dari peramban jika memungkinkan, meskipun mitra periklanan mungkin tidak menanggapi DNT.',
+      ],
+    },
+    {
+      heading: 'Perubahan pada kebijakan ini',
+      paragraphs: [
+        'Kami dapat memperbarui kebijakan ini secara berkala. Tanggal Terakhir diperbarui menunjukkan revisi terbaru. Perubahan signifikan dapat dikomunikasikan melalui banner situs.',
+      ],
+    },
+    {
+      heading: 'Hubungi kami',
+      paragraphs: [
+        `Untuk pertanyaan privasi atau untuk menggunakan hak Anda: ${CONTACT_EMAIL} atau gunakan halaman Kontak kami. Kami menanggapi permintaan privasi dalam waktu 30 hari.`,
       ],
     },
   ],

@@ -2,140 +2,140 @@ import type { PageDefinition } from '../types'
 import { LAST_UPDATED, CONTACT_EMAIL } from '../types'
 
 export const terms: PageDefinition = {
-  title: 'Terms of Service',
+  title: 'предоставления услуг',
   description:
-    'By accessing or using the site, you agree to be bound by these terms.',
+    'доступ к сайту или используя его, вы соглашаетесь соблюдать настоящие условия.',
   lastUpdated: LAST_UPDATED,
   sections: [
     {
-      heading: 'Acceptance of terms',
+      heading: 'условий',
       paragraphs: [
-        'By accessing or using ANQR (anqr.link), you agree to be bound by these Terms of Service and our Privacy Policy. If you do not agree to these terms, do not use the site.',
-        'We may update these Terms from time to time. Continued use of the site after changes constitutes acceptance of the new terms.',
+        'доступ к сайту ANQR (anqr.link) или используя его, вы соглашаетесь соблюдать настоящие Условия обслуживания и нашу Политику конфиденциальности. Если вы не согласны с этими условиями, не используйте сайт.',
+        'можем время от времени обновлять настоящие Условия. Продолжение использования сайта после внесения изменений означает принятие новых условий.',
       ],
     },
     {
-      heading: 'Eligibility',
+      heading: 'на участие',
       paragraphs: [
-        "You must be at least 13 years of age to use ANQR. By using the site, you represent that you meet this age requirement. If you are under 18, you represent that you have your parent or guardian's permission to use the site.",
+        "использования ANQR вам должно быть не менее 13 лет. Используя сайт, вы подтверждаете, что соответствуете этому возрастному требованию. Если вам меньше 18 лет, вы подтверждаете, что у вас есть разрешение родителей или опекуна на использование сайта.",
       ],
     },
     {
-      heading: 'Permitted use',
+      heading: 'использование',
       paragraphs: [
-        'You may use ANQR for lawful purposes only. You are solely responsible for the content you encode into QR codes and for how you use any QR codes you generate.',
+        'можете использовать ANQR только в законных целях. Вы несете полную ответственность за контент, который вы кодируете в QR-коды, и за то, как вы используете любые созданные вами QR-коды.',
       ],
     },
     {
-      heading: 'Prohibited conduct',
-      paragraphs: ['You agree not to:'],
+      heading: 'поведение',
+      paragraphs: ['соглашаетесь не делать:'],
       bullets: [
-        'Use ANQR to create QR codes that facilitate phishing, malware distribution, fraud, scams, harassment, defamation, or any illegal activity.',
-        'Encode content that infringes intellectual property rights, violates privacy, or contains illegal material.',
-        'Attempt to disrupt, overload, or interfere with the operation or security of the site.',
-        'Reverse engineer, decompile, or attempt to extract source code from the site.',
-        'Use automated tools (bots, scrapers) to access the site in a manner that degrades performance for other users.',
-        'Circumvent or disable any security or access control features.',
-        'Impersonate any person or entity or misrepresent your affiliation.',
+        'ANQR для создания QR-кодов, способствующих фишингу, распространению вредоносного ПО, мошенничеству, аферам, преследованию, клевете или любой другой незаконной деятельности.',
+        'контент, нарушающий права интеллектуальной собственности, посягающий на неприкосновенность частной жизни или содержащий незаконные материалы.',
+        'нарушить, перегрузить или помешать работе или безопасности сайта.',
+        'проектирование, декомпиляция или попытка извлечения исходного кода с сайта.',
+        'Использование автоматизированных инструментов (ботов, скрейперов) для доступа к сайту таким образом, который ухудшает производительность для других пользователей.',
+        'или отключить любые функции безопасности или контроля доступа.',
+        'себя за другое лицо или организацию, а также искажать свою принадлежность к какой-либо организации.',
       ],
     },
     {
-      heading: 'Intellectual property',
+      heading: 'собственность',
       paragraphs: [
-        'You retain ownership of the content you encode into QR codes. ANQR does not claim ownership of your data.',
-        'The ANQR name, logo, interface design, and underlying code are protected by copyright, trademark, and other intellectual property laws. You may not copy, modify, distribute, or create derivative works without our permission.',
-        'QR Code® is a registered trademark of DENSO WAVE INCORPORATED. ANQR is not affiliated with DENSO WAVE.',
+        'сохраняете право собственности на контент, который кодируете в QR-коды. ANQR не претендует на право собственности на ваши данные.',
+        'ANQR, логотип, дизайн интерфейса и базовый код защищены авторским правом, товарными знаками и другими законами об интеллектуальной собственности. Вы не имеете права копировать, изменять, распространять или создавать производные произведения без нашего разрешения.',
+        'Code® является зарегистрированным товарным знаком компании DENSO WAVE INCORPORATED. ANQR не связана с DENSO WAVE.',
       ],
     },
     {
-      heading: 'User content license',
+      heading: 'на пользовательский контент',
       paragraphs: [
-        'By using ANQR, you grant us no rights to your content — all QR code generation happens locally on your device and we do not access, store, or transmit your encoded data.',
+        'ANQR, вы не предоставляете нам никаких прав на ваш контент — вся генерация QR-кодов происходит локально на вашем устройстве, и мы не получаем доступ, не храним и не передаем ваши закодированные данные.',
       ],
     },
     {
-      heading: 'Third-party services and advertising',
+      heading: 'услуги и реклама',
       paragraphs: [
-        'The site displays advertisements through Google AdSense and may include links to third-party websites. We are not responsible for third-party content, services, or privacy practices.',
-        'Your interactions with advertisers and third parties are solely between you and them. See our Privacy Policy for information about advertising data practices.',
+        'сайте размещается реклама через Google AdSense, и он может содержать ссылки на сторонние веб-сайты. Мы не несем ответственности за контент, услуги или политику конфиденциальности третьих лиц.',
+        'взаимодействие с рекламодателями и третьими сторонами происходит исключительно между вами и ними. См. нашу Политику конфиденциальности для получения информации о методах обработки рекламных данных.',
       ],
     },
     {
-      heading: 'Disclaimer of warranties',
+      heading: 'от гарантий',
       paragraphs: [
-        'ANQR IS PROVIDED ON AN "AS IS" AND "AS AVAILABLE" BASIS WITHOUT WARRANTIES OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, AND NON-INFRINGEMENT.',
-        'We do not warrant that: (a) the site will be uninterrupted, secure, or error-free; (b) QR codes will scan in all environments, on all devices, or with all scanner applications; (c) the site will meet your requirements.',
-        'You should always test QR codes in the conditions where they will be used (print size, lighting, screen type, distance, camera quality).',
+        'предоставляется как есть и в наличии без каких-либо гарантий, явных или подразумеваемых, включая, помимо прочего, подразумеваемые гарантии товарной пригодности, пригодности для определенной цели и отсутствия нарушений прав.',
+        'не гарантируем, что: (а) работа сайта будет бесперебойной, безопасной или безошибочной; (б) QR-коды будут сканироваться во всех средах, на всех устройствах или со всеми приложениями для сканирования; (в) сайт будет соответствовать вашим требованиям.',
+        'следует тестировать QR-коды в условиях, в которых они будут использоваться (размер шрифта, освещение, тип экрана, расстояние, качество камеры).',
       ],
     },
     {
-      heading: 'Limitation of liability',
+      heading: 'ответственности',
       paragraphs: [
-        'TO THE MAXIMUM EXTENT PERMITTED BY LAW, ANQR AND ITS OPERATORS, AFFILIATES, AND LICENSORS SHALL NOT BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, CONSEQUENTIAL, PUNITIVE, OR EXEMPLARY DAMAGES, INCLUDING BUT NOT LIMITED TO DAMAGES FOR LOSS OF PROFITS, REVENUE, DATA, GOODWILL, USE, OR OTHER INTANGIBLE LOSSES, ARISING FROM OR RELATED TO YOUR ACCESS TO OR USE OF (OR INABILITY TO ACCESS OR USE) THE SERVICE.',
-        'YOU EXPRESSLY UNDERSTAND AND AGREE THAT YOUR USE OF THE SERVICE IS AT YOUR SOLE RISK. THE SERVICE IS PROVIDED FREE OF CHARGE, AND ACCORDINGLY, YOU AGREE THAT ANQR AND ITS OPERATORS SHALL HAVE NO LIABILITY TO YOU WHATSOEVER FOR ANY DAMAGES OR LOSSES. IN NO EVENT SHALL OUR TOTAL AGGREGATE LIABILITY EXCEED ZERO DOLLARS ($0 AUD).',
-        'YOU AGREE TO RELEASE, WAIVE, AND DISCHARGE ANY AND ALL CLAIMS, DEMANDS, AND CAUSES OF ACTION AGAINST ANQR AND ITS OPERATORS ARISING FROM YOUR USE OF THE SERVICE.',
-        'SOME JURISDICTIONS DO NOT ALLOW THE EXCLUSION OF CERTAIN WARRANTIES OR LIMITATIONS OF LIABILITY. IN SUCH JURISDICTIONS, OUR LIABILITY SHALL BE LIMITED TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW.',
+        'МАКСИМАЛЬНОЙ СТЕПЕНИ, ДОПУСКАЕМОЙ ЗАКОНОМ, ANQR И ЕЕ ОПЕРАТОРЫ, АФФИЛИАТЫ И ЛИЦЕНЗИАРЫ НЕ НЕСУТ ОТВЕТСТВЕННОСТИ ЗА ЛЮБЫЕ ПРЯМЫЕ, НЕПРЯМЫЕ, СЛУЧАЙНЫЕ, СПЕЦИАЛЬНЫЕ, ПОСЛЕДСТВЕННЫЕ, ШТРАФНЫЕ ИЛИ ПРИМЕРНЫЕ УЩЕРБЫ, ВКЛЮЧАЯ, ПОМИМО ПРОЧЕГО, УЩЕРБЫ В СВЯЗИ С ПОТЕРЕЙ ПРИБЫЛИ, ДОХОДА, ДАННЫХ, ДЕЛОВОЙ РЕПУТАЦИИ, ВОЗМОЖНОСТИ ИСПОЛЬЗОВАНИЯ ИЛИ ДРУГИМИ НЕМАТЕРИАЛЬНЫМИ ПОТЕРЯМИ, ВОЗНИКАЮЩИМИ В РЕЗУЛЬТАТЕ ИЛИ В СВЯЗИ С ВАШИМ ДОСТУПОМ К СЕРВИСУ ИЛИ ЕГО ИСПОЛЬЗОВАНИЕМ (ИЛИ НЕВОЗМОЖНОСТЬЮ ДОСТУПА К СЕРВИСУ ИЛИ ЕГО ИСПОЛЬЗОВАНИЯ).',
+        'прямо понимаете и соглашаетесь с тем, что используете услугу на свой собственный риск. Услуга предоставляется бесплатно, и, соответственно, вы соглашаетесь с тем, что ANQR и ее операторы не несут перед вами никакой ответственности за любые убытки или потери. Ни при каких обстоятельствах наша общая совокупная ответственность не должна превышать 0 долларов США (0 австралийских долларов).',
+        'СОГЛАШАЕТЕСЬ ОСВОБОДИТЬ, ОТКАЗАТЬСЯ И ПРЕКРАТИТЬ ВСЕ ПРЕТЕНЗИИ, ТРЕБОВАНИЯ И ОСНОВАНИЯ ДЛЯ ИСКОВЫХ ЗАЯВЛЕНИЙ ПРОТИВ ANQR И ЕЕ ОПЕРАТОРОВ, ВОЗНИКАЮЩИЕ В РЕЗУЛЬТАТЕ ВАШЕГО ИСПОЛЬЗОВАНИЯ СЕРВИСА.',
+        'некоторых юрисдикциях не допускается исключение определенных гарантий или ограничение ответственности. В таких юрисдикциях наша ответственность ограничивается в максимальной степени, разрешенной применимым законодательством.',
       ],
     },
     {
-      heading: 'Indemnification',
+      heading: 'убытков',
       paragraphs: [
-        'You agree to indemnify, defend, and hold harmless ANQR, its operators, affiliates, and their respective officers, directors, employees, and agents from any claims, damages, losses, liabilities, costs, and expenses (including legal fees) arising from: (a) your use of the site; (b) your violation of these Terms; (c) your violation of any third-party rights; (d) any content you encode into QR codes.',
+        'соглашаетесь возместить ущерб, защитить и оградить ANQR, его операторов, аффилированных лиц и их соответствующих должностных лиц, директоров, сотрудников и агентов от любых претензий, убытков, потерь, обязательств, затрат и расходов (включая юридические издержки), возникающих в результате: (а) вашего использования сайта; (б) вашего нарушения настоящих Условий; (в) вашего нарушения любых прав третьих лиц; (г) любого контента, который вы кодируете в QR-коды.',
       ],
     },
     {
-      heading: 'Dispute resolution',
+      heading: 'споров',
       paragraphs: [
-        `Any dispute arising from these Terms or your use of ANQR shall first be attempted to be resolved through informal negotiation by contacting ${CONTACT_EMAIL}.`,
-        'If informal resolution fails, disputes shall be resolved through binding arbitration in Victoria, Australia, except that either party may seek injunctive relief in court for intellectual property violations.',
+        `споры, возникающие из настоящих Условий или в связи с использованием вами ANQR, должны быть сначала урегулированы путем неформальных переговоров путем обращения по адресу ${CONTACT_EMAIL}.`,
+        'неформальное урегулирование не удается, споры разрешаются путем обязательного арбитража в штате Виктория, Австралия, за исключением случаев, когда любая из сторон может обратиться в суд за судебным запретом в связи с нарушениями прав интеллектуальной собственности.',
       ],
     },
     {
-      heading: 'Class action waiver',
+      heading: 'от коллективного иска',
       paragraphs: [
-        'TO THE EXTENT PERMITTED BY LAW, YOU AGREE THAT ANY DISPUTE RESOLUTION PROCEEDINGS WILL BE CONDUCTED ONLY ON AN INDIVIDUAL BASIS AND NOT IN A CLASS, CONSOLIDATED, OR REPRESENTATIVE ACTION.',
+        'той мере, в какой это разрешено законом, вы соглашаетесь с тем, что любые процедуры разрешения споров будут проводиться исключительно в индивидуальном порядке, а не в рамках коллективного, консолидированного или представительного иска.',
       ],
     },
     {
-      heading: 'Governing law',
+      heading: 'право',
       paragraphs: [
-        'These Terms are governed by the laws of Victoria, Australia, without regard to conflict of laws principles. You consent to the exclusive jurisdiction of the courts located in Victoria, Australia.',
+        'Условия регулируются законодательством штата Виктория, Австралия, без учета принципов коллизионного права. Вы соглашаетесь с исключительной юрисдикцией судов, расположенных в штате Виктория, Австралия.',
       ],
     },
     {
-      heading: 'Changes and availability',
+      heading: 'и доступность',
       paragraphs: [
-        'We may modify, suspend, or discontinue the site (or any part of it) at any time without notice or liability.',
-        'We may update these Terms at any time. The "Last updated" date indicates when they were most recently revised. Continued use after changes constitutes acceptance.',
+        'можем изменять, приостанавливать или прекращать работу сайта (или любой его части) в любое время без предварительного уведомления и без какой-либо ответственности.',
+        'можем обновлять настоящие Условия в любое время. Дата Последнее обновление указывает, когда они были в последний раз пересмотрены. Продолжение использования после внесения изменений означает принятие этих условий.',
       ],
     },
     {
-      heading: 'Severability',
+      heading: 'Разделимость',
       paragraphs: [
-        'If any provision of these Terms is held invalid or unenforceable, that provision will be enforced to the maximum extent permissible, and the remaining provisions will remain in full force and effect.',
+        'какое-либо положение настоящих Условий будет признано недействительным или не имеющим юридической силы, это положение будет применяться в максимально допустимой степени, а остальные положения останутся в полной силе и действии.',
       ],
     },
     {
-      heading: 'Waiver',
+      heading: 'Отказ',
       paragraphs: [
-        'Our failure to enforce any right or provision of these Terms shall not be deemed a waiver of such right or provision.',
+        'неисполнение какого-либо права или положения настоящих Условий не должно рассматриваться как отказ от такого права или положения.',
       ],
     },
     {
-      heading: 'Entire agreement',
+      heading: 'соглашение',
       paragraphs: [
-        'These Terms, together with our Privacy Policy, constitute the entire agreement between you and ANQR regarding your use of the site and supersede any prior agreements.',
+        'Условия, вместе с нашей Политикой конфиденциальности, составляют полное соглашение между вами и ANQR относительно использования вами сайта и заменяют любые предыдущие соглашения.',
       ],
     },
     {
-      heading: 'Force majeure',
+      heading: 'Форс-мажор',
       paragraphs: [
-        'We shall not be liable for any failure or delay in performance due to circumstances beyond our reasonable control, including natural disasters, war, terrorism, riots, government actions, or internet/infrastructure failures.',
+        'не несем ответственности за любые сбои или задержки в исполнении обязательств, вызванные обстоятельствами, находящимися вне нашего разумного контроля, включая стихийные бедствия, войну, терроризм, беспорядки, действия правительства или сбои в работе интернета/инфраструктуры.',
       ],
     },
     {
-      heading: 'Contact',
-      paragraphs: [`Questions about these Terms can be sent to: ${CONTACT_EMAIL}`],
+      heading: 'Контакт',
+      paragraphs: [`относительно данных Условий можно направлять по адресу: ${CONTACT_EMAIL}`],
     },
   ],
 }

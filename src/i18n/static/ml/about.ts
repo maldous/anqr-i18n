@@ -2,66 +2,66 @@ import type { PageDefinition } from '../types'
 import { LAST_UPDATED, CONTACT_EMAIL } from '../types'
 
 export const about: PageDefinition = {
-  title: 'About ANQR',
-  description: 'ANQR is a free QR code generator that runs entirely on your device — no account required.',
+  title: 'ANQR-നെക്കുറിച്ച്',
+  description: 'നിങ്ങളുടെ ഉപകരണത്തിൽ പൂർണ്ണമായും പ്രവർത്തിക്കുന്ന ഒരു സൗജന്യ QR കോഡ് ജനറേറ്ററാണ് ANQR — അക്കൗണ്ട് ആവശ്യമില്ല.',
   lastUpdated: LAST_UPDATED,
   sections: [
     {
-      heading: 'What is ANQR?',
+      heading: 'എന്താണ് ANQR?',
       paragraphs: [
-        'ANQR (pronounced "anchor") is a free QR code generator that runs locally on your device and creates scannable codes for URLs, text, Wi-Fi credentials, contact cards, calendar events, and more.',
-        'It is built for individuals, small businesses, marketers, and developers who want powerful QR tools without uploading files or signing up. Your data stays on your device.',
+        'ANQR (ആങ്കർ എന്ന് ഉച്ചരിക്കുന്നത്) നിങ്ങളുടെ ഉപകരണത്തിൽ ലോക്കലായി പ്രവർത്തിക്കുന്ന ഒരു സൗജന്യ QR കോഡ് ജനറേറ്ററാണ്, കൂടാതെ URL-കൾ, ടെക്സ്റ്റ്, Wi-Fi ക്രെഡൻഷ്യലുകൾ, കോൺടാക്റ്റ് കാർഡുകൾ, കലണ്ടർ ഇവന്റുകൾ എന്നിവയ്‌ക്കും അതിലേറെ കാര്യങ്ങൾക്കുമായി സ്‌കാൻ ചെയ്യാവുന്ന കോഡുകൾ സൃഷ്ടിക്കുന്നു.',
+        'ഫയലുകൾ അപ്‌ലോഡ് ചെയ്യാതെയോ സൈൻ അപ്പ് ചെയ്യാതെയോ ശക്തമായ QR ഉപകരണങ്ങൾ ആഗ്രഹിക്കുന്ന വ്യക്തികൾ, ചെറുകിട ബിസിനസുകൾ, മാർക്കറ്റർമാർ, ഡെവലപ്പർമാർ എന്നിവർക്കായി ഇത് നിർമ്മിച്ചിരിക്കുന്നു. നിങ്ങളുടെ ഡാറ്റ നിങ്ങളുടെ ഉപകരണത്തിൽ തന്നെ തുടരും.',
       ],
     },
     {
-      heading: 'Key features',
+      heading: 'പ്രധാന സവിശേഷതകൾ',
       bullets: [
-        'Generate QR codes instantly on your device — no server uploads, no account required.',
-        'Customise colours, module styles, finder patterns, and add image overlays.',
-        'Export in multiple formats: PNG, SVG, WebP, and animated GIF.',
-        'Advanced controls for error correction level, QR version, encoding mode, and mask selection.',
-        'Scan-safety guidance and live preview to help keep codes readable in print and on screens.',
-        'Works offline once loaded — it is a static web app you can run anywhere.',
+        'നിങ്ങളുടെ ഉപകരണത്തിൽ തൽക്ഷണം QR കോഡുകൾ സൃഷ്ടിക്കുക — സെർവർ അപ്‌ലോഡുകളില്ല, അക്കൗണ്ടിന്റെ ആവശ്യമില്ല.',
+        'നിറങ്ങൾ, മൊഡ്യൂൾ ശൈലികൾ, ഫൈൻഡർ പാറ്റേണുകൾ എന്നിവ ഇഷ്ടാനുസൃതമാക്കുക, ഇമേജ് ഓവർലേകൾ ചേർക്കുക.',
+        'ഒന്നിലധികം ഫോർമാറ്റുകളിൽ കയറ്റുമതി ചെയ്യുക: PNG, SVG, WebP, ആനിമേറ്റഡ് GIF.',
+        'പിശക് തിരുത്തൽ നില, QR പതിപ്പ്, എൻകോഡിംഗ് മോഡ്, മാസ്ക് തിരഞ്ഞെടുക്കൽ എന്നിവയ്ക്കുള്ള വിപുലമായ നിയന്ത്രണങ്ങൾ.',
+        'പ്രിന്റ്, സ്‌ക്രീനുകളിൽ കോഡുകൾ വായിക്കാൻ കഴിയുന്ന തരത്തിൽ നിലനിർത്താൻ സഹായിക്കുന്നതിന് സ്കാൻ-സുരക്ഷാ മാർഗ്ഗനിർദ്ദേശവും തത്സമയ പ്രിവ്യൂവും.',
+        'ഒരിക്കൽ ലോഡ് ചെയ്‌താൽ ഓഫ്‌ലൈനായി പ്രവർത്തിക്കും — എവിടെയും പ്രവർത്തിപ്പിക്കാൻ കഴിയുന്ന ഒരു സ്റ്റാറ്റിക് വെബ് ആപ്പാണിത്.',
       ],
     },
     {
-      heading: 'How ANQR works',
+      heading: 'എങ്ങനെയാണ് ANQR പ്രവർത്തിക്കുന്നത്',
       paragraphs: [
-        'ANQR runs in your browser and encodes your input into a standard QR matrix with Reed–Solomon error correction, then renders it to the format you choose.',
-        'All generation happens locally. When you add overlays or animations, ANQR balances styling with scan reliability so the result remains scannable.',
-        'ANQR focuses on static codes (the data is inside the QR). If you need a dynamic code (editable destination), you can encode your own redirect URL or short link.',
+        'ANQR നിങ്ങളുടെ ബ്രൗസറിൽ പ്രവർത്തിക്കുകയും റീഡ്–സോളമൻ പിശക് തിരുത്തലുള്ള ഒരു സ്റ്റാൻഡേർഡ് QR മാട്രിക്സിലേക്ക് നിങ്ങളുടെ ഇൻപുട്ട് എൻകോഡ് ചെയ്യുകയും തുടർന്ന് നിങ്ങൾ തിരഞ്ഞെടുക്കുന്ന ഫോർമാറ്റിലേക്ക് അത് റെൻഡർ ചെയ്യുകയും ചെയ്യുന്നു.',
+        'എല്ലാ തലമുറയും പ്രാദേശികമായി സംഭവിക്കുന്നു. നിങ്ങൾ ഓവർലേകളോ ആനിമേഷനുകളോ ചേർക്കുമ്പോൾ, ANQR സ്കാൻ വിശ്വാസ്യതയുമായി സ്റ്റൈലിംഗ് സന്തുലിതമാക്കുന്നു, അതിനാൽ ഫലം സ്കാൻ ചെയ്യാൻ കഴിയുന്നതായി തുടരും.',
+        'ANQR സ്റ്റാറ്റിക് കോഡുകളിലാണ് ശ്രദ്ധ കേന്ദ്രീകരിക്കുന്നത് (ഡാറ്റ QR-നുള്ളിലാണ്). നിങ്ങൾക്ക് ഒരു ഡൈനാമിക് കോഡ് (എഡിറ്റ് ചെയ്യാവുന്ന ഡെസ്റ്റിനേഷൻ) ആവശ്യമുണ്ടെങ്കിൽ, നിങ്ങൾക്ക് നിങ്ങളുടെ സ്വന്തം റീഡയറക്ട് URL അല്ലെങ്കിൽ ഷോർട്ട് ലിങ്ക് എൻകോഡ് ചെയ്യാൻ കഴിയും.',
       ],
     },
     {
-      heading: 'Who operates ANQR?',
+      heading: 'ആരാണ് ANQR പ്രവർത്തിപ്പിക്കുന്നത്?',
       paragraphs: [
-        'ANQR is operated as an independent web tool. For questions, support, or business enquiries, please use the Contact page or email ' + CONTACT_EMAIL + '.',
+        'ഒരു സ്വതന്ത്ര വെബ് ഉപകരണമായിട്ടാണ് ANQR പ്രവർത്തിക്കുന്നത്. ചോദ്യങ്ങൾ, പിന്തുണ അല്ലെങ്കിൽ ബിസിനസ് അന്വേഷണങ്ങൾക്ക്, ദയവായി കോൺടാക്റ്റ് പേജ് അല്ലെങ്കിൽ ഇമെയിൽ ഉപയോഗിക്കുക' + CONTACT_EMAIL + '.',
       ],
     },
     {
-      heading: 'Advertising and how we stay free',
+      heading: 'പരസ്യവും നമ്മൾ എങ്ങനെ സ്വതന്ത്രരായി തുടരുന്നു',
       paragraphs: [
-        'ANQR is free to use and is supported by advertising. We may show ads via Google AdSense and/or other advertising partners.',
-        'Ad providers may use cookies or similar technologies to personalise ads based on your interests and browsing activity. You can manage ad preferences in your device settings and through Google ad settings, and learn more in our Privacy Policy.',
-        'We do not sell the content you encode into QR codes. Ads help cover the cost of running and improving the project.',
+        'ANQR സൗജന്യമായി ഉപയോഗിക്കാം, പരസ്യങ്ങൾ ഇതിനെ പിന്തുണയ്ക്കുന്നു. Google AdSense വഴിയും മറ്റ് പരസ്യ പങ്കാളികൾ വഴിയും ഞങ്ങൾ പരസ്യങ്ങൾ കാണിച്ചേക്കാം.',
+        'നിങ്ങളുടെ താൽപ്പര്യങ്ങളെയും ബ്രൗസിംഗ് പ്രവർത്തനത്തെയും അടിസ്ഥാനമാക്കി പരസ്യങ്ങൾ വ്യക്തിഗതമാക്കാൻ പരസ്യ ദാതാക്കൾ കുക്കികളോ സമാന സാങ്കേതികവിദ്യകളോ ഉപയോഗിച്ചേക്കാം. നിങ്ങളുടെ ഉപകരണ ക്രമീകരണങ്ങളിലും Google പരസ്യ ക്രമീകരണങ്ങളിലൂടെയും നിങ്ങൾക്ക് പരസ്യ മുൻഗണനകൾ നിയന്ത്രിക്കാനും ഞങ്ങളുടെ സ്വകാര്യതാ നയത്തിൽ കൂടുതലറിയാനും കഴിയും.',
+        'നിങ്ങൾ QR കോഡുകളിലേക്ക് എൻകോഡ് ചെയ്യുന്ന ഉള്ളടക്കം ഞങ്ങൾ വിൽക്കുന്നില്ല. പ്രോജക്റ്റ് നടത്തുന്നതിനും മെച്ചപ്പെടുത്തുന്നതിനുമുള്ള ചെലവ് വഹിക്കാൻ പരസ്യങ്ങൾ സഹായിക്കുന്നു.',
       ],
     },
     {
-      heading: 'Open standards',
+      heading: 'തുറന്ന മാനദണ്ഡങ്ങൾ',
       paragraphs: [
-        'ANQR generates QR codes based on the ISO/IEC 18004 standard and aims for broad compatibility across scanners, cameras, and print workflows.',
+        'ISO/IEC 18004 സ്റ്റാൻഡേർഡിനെ അടിസ്ഥാനമാക്കിയാണ് ANQR QR കോഡുകൾ സൃഷ്ടിക്കുന്നത്, കൂടാതെ സ്കാനറുകൾ, ക്യാമറകൾ, പ്രിന്റ് വർക്ക്ഫ്ലോകൾ എന്നിവയിലുടനീളം വിശാലമായ അനുയോജ്യത ലക്ഷ്യമിടുന്നു.',
       ],
     },
     {
-      heading: 'Trademark notice',
+      heading: 'വ്യാപാരമുദ്രാ അറിയിപ്പ്',
       paragraphs: [
-        'QR Code® is a registered trademark of DENSO WAVE INCORPORATED. ANQR is not affiliated with, endorsed by, or sponsored by DENSO WAVE INCORPORATED.',
+        'QR Code® എന്നത് DENSO WAVE INCORPORATED-ന്റെ രജിസ്റ്റർ ചെയ്ത വ്യാപാരമുദ്രയാണ്. ANQR, DENSO WAVE INCORPORATED-മായി അഫിലിയേറ്റ് ചെയ്തിട്ടില്ല, അംഗീകരിച്ചിട്ടില്ല, അല്ലെങ്കിൽ സ്പോൺസർ ചെയ്തിട്ടില്ല.',
       ],
     },
     {
-      heading: 'Feedback and contributions',
+      heading: 'ഫീഡ്‌ബാക്കും സംഭാവനകളും',
       paragraphs: [
-        'We welcome feedback, bug reports, and feature suggestions. Please get in touch via email or the contact page — we read every message, though response times may vary.',
+        'ഫീഡ്‌ബാക്ക്, ബഗ് റിപ്പോർട്ടുകൾ, ഫീച്ചർ നിർദ്ദേശങ്ങൾ എന്നിവ ഞങ്ങൾ സ്വാഗതം ചെയ്യുന്നു. ദയവായി ഇമെയിൽ വഴിയോ കോൺടാക്റ്റ് പേജ് വഴിയോ ബന്ധപ്പെടുക - പ്രതികരണ സമയം വ്യത്യാസപ്പെടാമെങ്കിലും ഞങ്ങൾ എല്ലാ സന്ദേശങ്ങളും വായിക്കുന്നു.',
       ],
     },
   ],

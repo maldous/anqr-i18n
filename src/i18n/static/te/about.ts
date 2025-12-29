@@ -2,66 +2,66 @@ import type { PageDefinition } from '../types'
 import { LAST_UPDATED, CONTACT_EMAIL } from '../types'
 
 export const about: PageDefinition = {
-  title: 'About ANQR',
-  description: 'ANQR is a free QR code generator that runs entirely on your device — no account required.',
+  title: 'ANQR గురించి',
+  description: 'ANQR అనేది మీ పరికరంలో పూర్తిగా పనిచేసే ఉచిత QR కోడ్ జనరేటర్ — ఖాతా అవసరం లేదు.',
   lastUpdated: LAST_UPDATED,
   sections: [
     {
-      heading: 'What is ANQR?',
+      heading: 'ANQR అంటే ఏమిటి?',
       paragraphs: [
-        'ANQR (pronounced "anchor") is a free QR code generator that runs locally on your device and creates scannable codes for URLs, text, Wi-Fi credentials, contact cards, calendar events, and more.',
-        'It is built for individuals, small businesses, marketers, and developers who want powerful QR tools without uploading files or signing up. Your data stays on your device.',
+        'ANQR (యాంకర్ అని ఉచ్ఛరిస్తారు) అనేది మీ పరికరంలో స్థానికంగా పనిచేసే ఉచిత QR కోడ్ జనరేటర్ మరియు URLలు, టెక్స్ట్, Wi-Fi ఆధారాలు, కాంటాక్ట్ కార్డ్‌లు, క్యాలెండర్ ఈవెంట్‌లు మరియు మరిన్నింటి కోసం స్కాన్ చేయగల కోడ్‌లను సృష్టిస్తుంది.',
+        'ఇది వ్యక్తులు, చిన్న వ్యాపారాలు, మార్కెటర్లు మరియు డెవలపర్‌ల కోసం రూపొందించబడింది, వారు ఫైల్‌లను అప్‌లోడ్ చేయకుండా లేదా సైన్ అప్ చేయకుండా శక్తివంతమైన QR సాధనాలను కోరుకుంటారు. మీ డేటా మీ పరికరంలోనే ఉంటుంది.',
       ],
     },
     {
-      heading: 'Key features',
+      heading: 'ముఖ్య లక్షణాలు',
       bullets: [
-        'Generate QR codes instantly on your device — no server uploads, no account required.',
-        'Customise colours, module styles, finder patterns, and add image overlays.',
-        'Export in multiple formats: PNG, SVG, WebP, and animated GIF.',
-        'Advanced controls for error correction level, QR version, encoding mode, and mask selection.',
-        'Scan-safety guidance and live preview to help keep codes readable in print and on screens.',
-        'Works offline once loaded — it is a static web app you can run anywhere.',
+        'మీ పరికరంలో తక్షణమే QR కోడ్‌లను రూపొందించండి — సర్వర్ అప్‌లోడ్‌లు లేవు, ఖాతా అవసరం లేదు.',
+        'రంగులు, మాడ్యూల్ శైలులు, ఫైండర్ నమూనాలను అనుకూలీకరించండి మరియు చిత్ర అతివ్యాప్తులను జోడించండి.',
+        'బహుళ ఫార్మాట్లలో ఎగుమతి చేయండి: PNG, SVG, WebP మరియు యానిమేటెడ్ GIF.',
+        'లోపం దిద్దుబాటు స్థాయి, QR వెర్షన్, ఎన్‌కోడింగ్ మోడ్ మరియు మాస్క్ ఎంపిక కోసం అధునాతన నియంత్రణలు.',
+        'ప్రింట్‌లో మరియు స్క్రీన్‌లలో కోడ్‌లను చదవగలిగేలా ఉంచడంలో సహాయపడటానికి స్కాన్-భద్రతా మార్గదర్శకత్వం మరియు ప్రత్యక్ష ప్రివ్యూ.',
+        'ఒకసారి లోడ్ అయిన తర్వాత ఆఫ్‌లైన్‌లో పనిచేస్తుంది — ఇది మీరు ఎక్కడైనా అమలు చేయగల స్టాటిక్ వెబ్ యాప్.',
       ],
     },
     {
-      heading: 'How ANQR works',
+      heading: 'ANQR ఎలా పనిచేస్తుంది',
       paragraphs: [
-        'ANQR runs in your browser and encodes your input into a standard QR matrix with Reed–Solomon error correction, then renders it to the format you choose.',
-        'All generation happens locally. When you add overlays or animations, ANQR balances styling with scan reliability so the result remains scannable.',
-        'ANQR focuses on static codes (the data is inside the QR). If you need a dynamic code (editable destination), you can encode your own redirect URL or short link.',
+        'ANQR మీ బ్రౌజర్‌లో నడుస్తుంది మరియు మీ ఇన్‌పుట్‌ను రీడ్–సోలమన్ ఎర్రర్ కరెక్షన్‌తో ప్రామాణిక QR మ్యాట్రిక్స్‌లోకి ఎన్‌కోడ్ చేస్తుంది, ఆపై దానిని మీరు ఎంచుకున్న ఫార్మాట్‌కు రెండర్ చేస్తుంది.',
+        'అన్ని జనరేషన్‌లు స్థానికంగా జరుగుతాయి. మీరు ఓవర్‌లేలు లేదా యానిమేషన్‌లను జోడించినప్పుడు, ANQR స్టైలింగ్‌ను స్కాన్ విశ్వసనీయతతో సమతుల్యం చేస్తుంది, తద్వారా ఫలితం స్కాన్ చేయగలిగేలా ఉంటుంది.',
+        'ANQR స్టాటిక్ కోడ్‌లపై దృష్టి పెడుతుంది (డేటా QR లోపల ఉంటుంది). మీకు డైనమిక్ కోడ్ (సవరించదగిన గమ్యస్థానం) అవసరమైతే, మీరు మీ స్వంత దారిమార్పు URL లేదా చిన్న లింక్‌ను ఎన్‌కోడ్ చేయవచ్చు.',
       ],
     },
     {
-      heading: 'Who operates ANQR?',
+      heading: 'ANQR ను ఎవరు నిర్వహిస్తారు?',
       paragraphs: [
-        'ANQR is operated as an independent web tool. For questions, support, or business enquiries, please use the Contact page or email ' + CONTACT_EMAIL + '.',
+        'ANQR ఒక స్వతంత్ర వెబ్ సాధనంగా నిర్వహించబడుతుంది. ప్రశ్నలు, మద్దతు లేదా వ్యాపార విచారణల కోసం, దయచేసి సంప్రదింపు పేజీ లేదా ఇమెయిల్‌ను ఉపయోగించండి' + CONTACT_EMAIL + '.',
       ],
     },
     {
-      heading: 'Advertising and how we stay free',
+      heading: 'ప్రకటనలు మరియు మనం ఎలా స్వేచ్ఛగా ఉంటాము',
       paragraphs: [
-        'ANQR is free to use and is supported by advertising. We may show ads via Google AdSense and/or other advertising partners.',
-        'Ad providers may use cookies or similar technologies to personalise ads based on your interests and browsing activity. You can manage ad preferences in your device settings and through Google ad settings, and learn more in our Privacy Policy.',
-        'We do not sell the content you encode into QR codes. Ads help cover the cost of running and improving the project.',
+        'ANQR ఉపయోగించడానికి ఉచితం మరియు ప్రకటనల ద్వారా మద్దతు ఇవ్వబడుతుంది. మేము Google AdSense మరియు/లేదా ఇతర ప్రకటన భాగస్వాముల ద్వారా ప్రకటనలను చూపవచ్చు.',
+        'మీ ఆసక్తులు మరియు బ్రౌజింగ్ కార్యాచరణ ఆధారంగా ప్రకటనలను వ్యక్తిగతీకరించడానికి ప్రకటన ప్రదాతలు కుక్కీలు లేదా ఇలాంటి సాంకేతికతలను ఉపయోగించవచ్చు. మీరు మీ పరికర సెట్టింగ్‌లలో మరియు Google ప్రకటన సెట్టింగ్‌ల ద్వారా ప్రకటన ప్రాధాన్యతలను నిర్వహించవచ్చు మరియు మా గోప్యతా విధానంలో మరింత తెలుసుకోండి.',
+        'మీరు QR కోడ్‌లలోకి ఎన్‌కోడ్ చేసిన కంటెంట్‌ను మేము విక్రయించము. ప్రాజెక్ట్‌ను అమలు చేయడానికి మరియు మెరుగుపరచడానికి అయ్యే ఖర్చును కవర్ చేయడానికి ప్రకటనలు సహాయపడతాయి.',
       ],
     },
     {
-      heading: 'Open standards',
+      heading: 'ఓపెన్ స్టాండర్డ్స్',
       paragraphs: [
-        'ANQR generates QR codes based on the ISO/IEC 18004 standard and aims for broad compatibility across scanners, cameras, and print workflows.',
+        'ANQR ISO/IEC 18004 ప్రమాణం ఆధారంగా QR కోడ్‌లను ఉత్పత్తి చేస్తుంది మరియు స్కానర్లు, కెమెరాలు మరియు ప్రింట్ వర్క్‌ఫ్లోలలో విస్తృత అనుకూలతను లక్ష్యంగా పెట్టుకుంది.',
       ],
     },
     {
-      heading: 'Trademark notice',
+      heading: 'ట్రేడ్‌మార్క్ నోటీసు',
       paragraphs: [
-        'QR Code® is a registered trademark of DENSO WAVE INCORPORATED. ANQR is not affiliated with, endorsed by, or sponsored by DENSO WAVE INCORPORATED.',
+        'QR కోడ్® అనేది DENSO WAVE INCORPORATED యొక్క రిజిస్టర్డ్ ట్రేడ్‌మార్క్. ANQR అనేది DENSO WAVE INCORPORATEDతో అనుబంధించబడలేదు, ఆమోదించబడలేదు లేదా స్పాన్సర్ చేయబడలేదు.',
       ],
     },
     {
-      heading: 'Feedback and contributions',
+      heading: 'అభిప్రాయం మరియు సహకారాలు',
       paragraphs: [
-        'We welcome feedback, bug reports, and feature suggestions. Please get in touch via email or the contact page — we read every message, though response times may vary.',
+        'మేము అభిప్రాయాన్ని, బగ్ నివేదికలను మరియు ఫీచర్ సూచనలను స్వాగతిస్తాము. దయచేసి ఇమెయిల్ లేదా కాంటాక్ట్ పేజీ ద్వారా మమ్మల్ని సంప్రదించండి — ప్రతిస్పందన సమయాలు మారవచ్చు, అయితే మేము ప్రతి సందేశాన్ని చదువుతాము.',
       ],
     },
   ],

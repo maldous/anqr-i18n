@@ -2,140 +2,140 @@ import type { PageDefinition } from '../types'
 import { LAST_UPDATED, CONTACT_EMAIL } from '../types'
 
 export const terms: PageDefinition = {
-  title: 'Terms of Service',
+  title: 'Condiciones de servicio',
   description:
-    'By accessing or using the site, you agree to be bound by these terms.',
+    'Al acceder o utilizar el sitio, usted acepta estar sujeto a estos términos.',
   lastUpdated: LAST_UPDATED,
   sections: [
     {
-      heading: 'Acceptance of terms',
+      heading: 'Aceptación de los términos',
       paragraphs: [
-        'By accessing or using ANQR (anqr.link), you agree to be bound by these Terms of Service and our Privacy Policy. If you do not agree to these terms, do not use the site.',
-        'We may update these Terms from time to time. Continued use of the site after changes constitutes acceptance of the new terms.',
+        'Al acceder o utilizar ANQR (anqr.link), usted acepta estas Condiciones de Servicio y nuestra Política de Privacidad. Si no las acepta, no utilice el sitio.',
+        'Es posible que actualicemos estos Términos ocasionalmente. El uso continuado del sitio después de los cambios constituye la aceptación de los nuevos términos.',
       ],
     },
     {
-      heading: 'Eligibility',
+      heading: 'Elegibilidad',
       paragraphs: [
-        "You must be at least 13 years of age to use ANQR. By using the site, you represent that you meet this age requirement. If you are under 18, you represent that you have your parent or guardian's permission to use the site.",
+        "Debes tener al menos 13 años para usar ANQR. Al usar el sitio, declaras que cumples con este requisito de edad. Si eres menor de 18 años, declaras que tienes el permiso de tus padres o tutores para usar el sitio.",
       ],
     },
     {
-      heading: 'Permitted use',
+      heading: 'Uso permitido',
       paragraphs: [
-        'You may use ANQR for lawful purposes only. You are solely responsible for the content you encode into QR codes and for how you use any QR codes you generate.',
+        'Solo puede usar ANQR con fines legales. Usted es el único responsable del contenido que codifica en códigos QR y del uso que hace de los códigos QR que genere.',
       ],
     },
     {
-      heading: 'Prohibited conduct',
-      paragraphs: ['You agree not to:'],
+      heading: 'Conducta prohibida',
+      paragraphs: ['Usted acepta no'],
       bullets: [
-        'Use ANQR to create QR codes that facilitate phishing, malware distribution, fraud, scams, harassment, defamation, or any illegal activity.',
-        'Encode content that infringes intellectual property rights, violates privacy, or contains illegal material.',
-        'Attempt to disrupt, overload, or interfere with the operation or security of the site.',
-        'Reverse engineer, decompile, or attempt to extract source code from the site.',
-        'Use automated tools (bots, scrapers) to access the site in a manner that degrades performance for other users.',
-        'Circumvent or disable any security or access control features.',
-        'Impersonate any person or entity or misrepresent your affiliation.',
+        'Utilice ANQR para crear códigos QR que faciliten el phishing, la distribución de malware, el fraude, las estafas, el acoso, la difamación o cualquier actividad ilegal.',
+        'Codificar contenido que infrinja derechos de propiedad intelectual, viole la privacidad o contenga material ilegal.',
+        'Intentar interrumpir, sobrecargar o interferir con el funcionamiento o la seguridad del sitio.',
+        'Realizar ingeniería inversa, descompilar o intentar extraer el código fuente del sitio.',
+        'Utilizar herramientas automatizadas (bots, scrapers) para acceder al sitio de una manera que degrada el rendimiento para otros usuarios.',
+        'Evitar o desactivar cualquier función de seguridad o control de acceso.',
+        'Hacerse pasar por cualquier persona o entidad o tergiversar su afiliación.',
       ],
     },
     {
-      heading: 'Intellectual property',
+      heading: 'Propiedad intelectual',
       paragraphs: [
-        'You retain ownership of the content you encode into QR codes. ANQR does not claim ownership of your data.',
-        'The ANQR name, logo, interface design, and underlying code are protected by copyright, trademark, and other intellectual property laws. You may not copy, modify, distribute, or create derivative works without our permission.',
-        'QR Code® is a registered trademark of DENSO WAVE INCORPORATED. ANQR is not affiliated with DENSO WAVE.',
+        'Usted conserva la propiedad del contenido que codifica en códigos QR. ANQR no reclama la propiedad de sus datos.',
+        'El nombre, el logotipo, el diseño de la interfaz y el código subyacente de ANQR están protegidos por derechos de autor, marcas registradas y otras leyes de propiedad intelectual. No se permite copiar, modificar, distribuir ni crear obras derivadas sin nuestro permiso.',
+        'QR Code® es una marca registrada de DENSO WAVE INCORPORATED. ANQR no está afiliado a DENSO WAVE.',
       ],
     },
     {
-      heading: 'User content license',
+      heading: 'Licencia de contenido de usuario',
       paragraphs: [
-        'By using ANQR, you grant us no rights to your content — all QR code generation happens locally on your device and we do not access, store, or transmit your encoded data.',
+        'Al usar ANQR, no nos otorga ningún derecho sobre su contenido: toda la generación de códigos QR se realiza localmente en su dispositivo y no accedemos, almacenamos ni transmitimos sus datos codificados.',
       ],
     },
     {
-      heading: 'Third-party services and advertising',
+      heading: 'Servicios y publicidad de terceros',
       paragraphs: [
-        'The site displays advertisements through Google AdSense and may include links to third-party websites. We are not responsible for third-party content, services, or privacy practices.',
-        'Your interactions with advertisers and third parties are solely between you and them. See our Privacy Policy for information about advertising data practices.',
+        'El sitio muestra anuncios a través de Google AdSense y puede incluir enlaces a sitios web de terceros. No nos responsabilizamos del contenido, los servicios ni las prácticas de privacidad de terceros.',
+        'Sus interacciones con anunciantes y terceros son exclusivamente entre usted y ellos. Consulte nuestra Política de Privacidad para obtener información sobre las prácticas de datos publicitarios.',
       ],
     },
     {
-      heading: 'Disclaimer of warranties',
+      heading: 'Exención de garantías',
       paragraphs: [
-        'ANQR IS PROVIDED ON AN "AS IS" AND "AS AVAILABLE" BASIS WITHOUT WARRANTIES OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, AND NON-INFRINGEMENT.',
-        'We do not warrant that: (a) the site will be uninterrupted, secure, or error-free; (b) QR codes will scan in all environments, on all devices, or with all scanner applications; (c) the site will meet your requirements.',
-        'You should always test QR codes in the conditions where they will be used (print size, lighting, screen type, distance, camera quality).',
+        'ANQR SE PROPORCIONA TAL CUAL Y SEGÚN DISPONIBILIDAD SIN GARANTÍAS DE NINGÚN TIPO, EXPRESAS O IMPLÍCITAS, INCLUIDAS, ENTRE OTRAS, LAS GARANTÍAS IMPLÍCITAS DE COMERCIABILIDAD, IDONEIDAD PARA UN PROPÓSITO PARTICULAR Y NO INFRACCIÓN.',
+        'No garantizamos que: (a) el sitio será ininterrumpido, seguro o libre de errores; (b) los códigos QR se escanearán en todos los entornos, en todos los dispositivos o con todas las aplicaciones de escáner; (c) el sitio cumplirá con sus requisitos.',
+        'Siempre debes probar los códigos QR en las condiciones en las que se utilizarán (tamaño de impresión, iluminación, tipo de pantalla, distancia, calidad de la cámara).',
       ],
     },
     {
-      heading: 'Limitation of liability',
+      heading: 'Limitación de responsabilidad',
       paragraphs: [
-        'TO THE MAXIMUM EXTENT PERMITTED BY LAW, ANQR AND ITS OPERATORS, AFFILIATES, AND LICENSORS SHALL NOT BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, CONSEQUENTIAL, PUNITIVE, OR EXEMPLARY DAMAGES, INCLUDING BUT NOT LIMITED TO DAMAGES FOR LOSS OF PROFITS, REVENUE, DATA, GOODWILL, USE, OR OTHER INTANGIBLE LOSSES, ARISING FROM OR RELATED TO YOUR ACCESS TO OR USE OF (OR INABILITY TO ACCESS OR USE) THE SERVICE.',
-        'YOU EXPRESSLY UNDERSTAND AND AGREE THAT YOUR USE OF THE SERVICE IS AT YOUR SOLE RISK. THE SERVICE IS PROVIDED FREE OF CHARGE, AND ACCORDINGLY, YOU AGREE THAT ANQR AND ITS OPERATORS SHALL HAVE NO LIABILITY TO YOU WHATSOEVER FOR ANY DAMAGES OR LOSSES. IN NO EVENT SHALL OUR TOTAL AGGREGATE LIABILITY EXCEED ZERO DOLLARS ($0 AUD).',
-        'YOU AGREE TO RELEASE, WAIVE, AND DISCHARGE ANY AND ALL CLAIMS, DEMANDS, AND CAUSES OF ACTION AGAINST ANQR AND ITS OPERATORS ARISING FROM YOUR USE OF THE SERVICE.',
-        'SOME JURISDICTIONS DO NOT ALLOW THE EXCLUSION OF CERTAIN WARRANTIES OR LIMITATIONS OF LIABILITY. IN SUCH JURISDICTIONS, OUR LIABILITY SHALL BE LIMITED TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW.',
+        'HASTA EL GRADO MÁXIMO PERMITIDO POR LA LEY, ANQR Y SUS OPERADORES, AFILIADOS Y LICENCIANTES NO SERÁN RESPONSABLES DE NINGÚN DAÑO DIRECTO, INDIRECTO, INCIDENTAL, ESPECIAL, DERIVADO, PUNITIVO O EJEMPLAR, INCLUYENDO, ENTRE OTROS, DAÑOS POR PÉRDIDA DE BENEFICIOS, INGRESOS, DATOS, FONDOS DE COMERCIO, USO U OTRAS PÉRDIDAS INTANGIBLES, QUE SURJAN DE O ESTÉN RELACIONADOS CON SU ACCESO O USO (O INCAPACIDAD DE ACCEDER O USAR) EL SERVICIO.',
+        'USTED ENTIENDE Y ACEPTA EXPRESAMENTE QUE EL USO DEL SERVICIO ES BAJO SU PROPIA RESPONSABILIDAD. EL SERVICIO SE PROPORCIONA GRATUITAMENTE Y, POR CONSIGUIENTE, USTED ACEPTA QUE ANQR Y SUS OPERADORES NO TENDRÁN NINGUNA RESPONSABILIDAD ANTE USTED POR DAÑOS O PÉRDIDAS. EN NINGÚN CASO NUESTRA RESPONSABILIDAD TOTAL AGREGADA SUPERARÁ CERO DÓLARES (0 AUD).',
+        'USTED ACEPTA LIBERAR, RENUNCIAR Y DESCARGAR TODAS Y CADA UNA DE LAS RECLAMACIONES, DEMANDAS Y CAUSAS DE ACCIÓN CONTRA ANQR Y SUS OPERADORES QUE SURJAN DE SU USO DEL SERVICIO.',
+        'ALGUNAS JURISDICCIONES NO PERMITEN LA EXCLUSIÓN DE CIERTAS GARANTÍAS O LIMITACIONES DE RESPONSABILIDAD. EN DICHAS JURISDICCIONES, NUESTRA RESPONSABILIDAD SE LIMITARÁ AL MÁXIMO PERMITIDO POR LA LEY APLICABLE.',
       ],
     },
     {
-      heading: 'Indemnification',
+      heading: 'Indemnización',
       paragraphs: [
-        'You agree to indemnify, defend, and hold harmless ANQR, its operators, affiliates, and their respective officers, directors, employees, and agents from any claims, damages, losses, liabilities, costs, and expenses (including legal fees) arising from: (a) your use of the site; (b) your violation of these Terms; (c) your violation of any third-party rights; (d) any content you encode into QR codes.',
+        'Usted acepta indemnizar, defender y eximir de responsabilidad a ANQR, sus operadores, afiliados y sus respectivos funcionarios, directores, empleados y agentes de cualquier reclamo, daño, pérdida, responsabilidad, costo y gasto (incluidos los honorarios legales) que surjan de: (a) su uso del sitio; (b) su violación de estos Términos; (c) su violación de cualquier derecho de terceros; (d) cualquier contenido que codifique en códigos QR.',
       ],
     },
     {
-      heading: 'Dispute resolution',
+      heading: 'Resolución de disputas',
       paragraphs: [
-        `Any dispute arising from these Terms or your use of ANQR shall first be attempted to be resolved through informal negotiation by contacting ${CONTACT_EMAIL}.`,
-        'If informal resolution fails, disputes shall be resolved through binding arbitration in Victoria, Australia, except that either party may seek injunctive relief in court for intellectual property violations.',
+        `Cualquier disputa que surja de estos Términos o su uso de ANQR se intentará resolver primero mediante una negociación informal contactándose con ${CONTACT_EMAIL}.`,
+        'Si la resolución informal falla, las disputas se resolverán mediante arbitraje vinculante en Victoria, Australia, excepto que cualquiera de las partes pueda solicitar una medida cautelar ante el tribunal por violaciones de propiedad intelectual.',
       ],
     },
     {
-      heading: 'Class action waiver',
+      heading: 'Renuncia a la demanda colectiva',
       paragraphs: [
-        'TO THE EXTENT PERMITTED BY LAW, YOU AGREE THAT ANY DISPUTE RESOLUTION PROCEEDINGS WILL BE CONDUCTED ONLY ON AN INDIVIDUAL BASIS AND NOT IN A CLASS, CONSOLIDATED, OR REPRESENTATIVE ACTION.',
+        'EN LA MEDIDA EN QUE LO PERMITA LA LEY, USTED ACEPTA QUE CUALQUIER PROCEDIMIENTO DE RESOLUCIÓN DE DISPUTAS SE LLEVARÁ A CABO SOLO DE FORMA INDIVIDUAL Y NO EN UNA ACCIÓN COLECTIVA, CONSOLIDADA O REPRESENTATIVA.',
       ],
     },
     {
-      heading: 'Governing law',
+      heading: 'Ley aplicable',
       paragraphs: [
-        'These Terms are governed by the laws of Victoria, Australia, without regard to conflict of laws principles. You consent to the exclusive jurisdiction of the courts located in Victoria, Australia.',
+        'Estos Términos se rigen por las leyes de Victoria, Australia, sin perjuicio de los principios de conflicto de leyes. Usted acepta la jurisdicción exclusiva de los tribunales de Victoria, Australia.',
       ],
     },
     {
-      heading: 'Changes and availability',
+      heading: 'Cambios y disponibilidad',
       paragraphs: [
-        'We may modify, suspend, or discontinue the site (or any part of it) at any time without notice or liability.',
-        'We may update these Terms at any time. The "Last updated" date indicates when they were most recently revised. Continued use after changes constitutes acceptance.',
+        'Podemos modificar, suspender o discontinuar el sitio (o cualquier parte del mismo) en cualquier momento sin previo aviso ni responsabilidad.',
+        'Podemos actualizar estos Términos en cualquier momento. La fecha de Última actualización indica cuándo se revisaron por última vez. El uso continuado después de los cambios constituye su aceptación.',
       ],
     },
     {
-      heading: 'Severability',
+      heading: 'Divisibilidad',
       paragraphs: [
-        'If any provision of these Terms is held invalid or unenforceable, that provision will be enforced to the maximum extent permissible, and the remaining provisions will remain in full force and effect.',
+        'Si alguna disposición de estos Términos se considera inválida o inaplicable, dicha disposición se aplicará en la máxima medida permitida y las disposiciones restantes permanecerán en pleno vigor y efecto.',
       ],
     },
     {
-      heading: 'Waiver',
+      heading: 'Renuncia',
       paragraphs: [
-        'Our failure to enforce any right or provision of these Terms shall not be deemed a waiver of such right or provision.',
+        'Nuestra falta de hacer cumplir cualquier derecho o disposición de estos Términos no se considerará una renuncia a dicho derecho o disposición.',
       ],
     },
     {
-      heading: 'Entire agreement',
+      heading: 'Acuerdo completo',
       paragraphs: [
-        'These Terms, together with our Privacy Policy, constitute the entire agreement between you and ANQR regarding your use of the site and supersede any prior agreements.',
+        'Estos Términos, junto con nuestra Política de Privacidad, constituyen el acuerdo completo entre usted y ANQR con respecto a su uso del sitio y reemplazan cualquier acuerdo anterior.',
       ],
     },
     {
-      heading: 'Force majeure',
+      heading: 'Fuerza mayor',
       paragraphs: [
-        'We shall not be liable for any failure or delay in performance due to circumstances beyond our reasonable control, including natural disasters, war, terrorism, riots, government actions, or internet/infrastructure failures.',
+        'No seremos responsables de ningún fallo o retraso en el cumplimiento debido a circunstancias fuera de nuestro control razonable, incluidos desastres naturales, guerra, terrorismo, disturbios, acciones gubernamentales o fallos de Internet/infraestructura.',
       ],
     },
     {
-      heading: 'Contact',
-      paragraphs: [`Questions about these Terms can be sent to: ${CONTACT_EMAIL}`],
+      heading: 'Contacto',
+      paragraphs: [`Las preguntas sobre estos Términos se pueden enviar a: ${CONTACT_EMAIL}`],
     },
   ],
 }

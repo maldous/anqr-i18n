@@ -2,72 +2,72 @@ import type { PageDefinition } from '../types'
 import { LAST_UPDATED, CONTACT_EMAIL } from '../types'
 
 export const contact: PageDefinition = {
-  title: 'Contact Us',
-  description: 'We welcome feedback, bug reports, feature requests, and general enquiries.',
+  title: '联系我们',
+  description: '我们欢迎反馈、错误报告、功能请求和一般咨询。',
   lastUpdated: LAST_UPDATED,
   sections: [
     {
-      heading: 'How to reach us',
+      heading: '如何联系我们',
       paragraphs: [
-        'We offer several ways to contact us depending on your needs. We read every message, though response times may vary based on volume and enquiry type.',
+        '我们提供多种联系方式，具体取决于您的需求。我们会阅读每一条信息，但回复时间可能会因信息量和咨询类型而异。',
       ],
     },
     {
-      heading: 'Email',
+      heading: '电子邮件',
       paragraphs: [
-        `For all enquiries: ${CONTACT_EMAIL}`,
-        'This is the most reliable way to reach us and is recommended for detailed questions, business enquiries, or if the contact form does not work on your device.',
+        `如有任何疑问，请联系：${CONTACT_EMAIL}`,
+        '这是联系我们的最可靠方式，建议用于详细问题、业务咨询，或者如果您的设备上联系表格无法正常工作时使用。',
       ],
     },
     {
-      heading: 'Contact form',
+      heading: '联系表格',
       paragraphs: [
-        'Use the form below to send us a message directly. If the form does not submit successfully, please use email instead.',
+        '请使用下面的表格直接给我们发送消息。如果表格提交失败，请改用电子邮件。',
       ],
     },
     {
-      heading: 'Types of enquiries',
+      heading: '查询类型',
       bullets: [
-        'General questions: Questions about how to use ANQR, feature explanations, or general feedback.',
-        'Bug reports: Please include your browser, operating system, steps to reproduce, and any error messages you see.',
-        'Feature requests: Suggestions for new features or improvements. We consider all requests though we cannot promise implementation.',
-        'Business enquiries: Partnership opportunities, licensing questions, or commercial use enquiries.',
-        'Privacy requests: Requests to exercise your privacy rights under GDPR, CCPA, or other privacy laws (see Privacy Policy).',
-        'DMCA/Copyright: See the DMCA section below for takedown notice requirements.',
+        '一般性问题：关于如何使用 ANQR、功能解释或一般性反馈的问题。',
+        '错误报告：请提供您的浏览器、操作系统、重现步骤以及您看到的任何错误消息。',
+        '功能请求：对新功能或改进的建议。我们会考虑所有请求，但不能保证一定会实现。',
+        '商业咨询：合作机会、许可问题或商业用途咨询。',
+        '隐私请求：根据 GDPR、CCPA 或其他隐私法律行使您的隐私权的请求（请参阅隐私政策）。',
+        'DMCA/版权：有关下架通知的要求，请参阅下面的 DMCA 部分。',
       ],
     },
     {
-      heading: 'Response times',
+      heading: '响应时间',
       paragraphs: [
-        'We aim to respond to enquiries within 5-7 business days. Privacy-related requests will be addressed within 30 days as required by law.',
-        'During busy periods, response times may be longer. For urgent matters, please indicate "URGENT" in your subject line.',
+        '我们力求在 5-7 个工作日内回复咨询。根据法律规定，与隐私相关的请求将在 30 天内处理。',
+        '繁忙时段回复时间可能会延长。如有紧急情况，请在邮件主题栏注明‘紧急’。',
       ],
     },
     {
-      heading: 'Before contacting us',
+      heading: '联系我们之前',
       paragraphs: [
-        'Please check our Documentation page for answers to common questions about how to use ANQR features. Many questions about QR code generation, styling, and export options are covered there.',
+        '请查看我们的文档页面，了解有关如何使用 ANQR 功能的常见问题解答。其中涵盖了许多关于二维码生成、样式和导出选项的问题。',
       ],
     },
     {
-      heading: 'DMCA Copyright Notices',
+      heading: 'DMCA版权声明',
       paragraphs: [
-        'If you believe that content available on ANQR infringes your copyright, you may submit a Digital Millennium Copyright Act (DMCA) takedown notice. To be valid, your notice must include:',
+        '如果您认为 ANQR 上的内容侵犯了您的版权，您可以提交一份《数字千年版权法案》(DMCA) 删除通知。有效的通知必须包含以下内容：',
       ],
       bullets: [
-        'A physical or electronic signature of the copyright owner or authorised agent.',
-        'Identification of the copyrighted work claimed to have been infringed.',
-        'Identification of the material that is claimed to be infringing, with information sufficient to locate it.',
-        'Your contact information (address, telephone number, and email address).',
-        'A statement that you have a good faith belief that use of the material is not authorised by the copyright owner.',
-        'A statement, under penalty of perjury, that the information in your notice is accurate and that you are the copyright owner or authorised to act on their behalf.',
+        '版权所有者或其授权代理人的亲笔签名或电子签名。',
+        '被侵权的受版权保护作品的识别。',
+        '指明被指控侵权的材料，并提供足以找到该材料的信息。',
+        '您的联系信息（地址、电话号码和电子邮件地址）。',
+        '声明您真诚地相信，使用该材料未经版权所有者授权。',
+        '一份声明，声明中需保证通知中的信息准确无误，并且您是版权所有者或已获得版权所有者的授权代表其行事，否则将承担伪证罪的法律责任。',
       ],
     },
     {
-      heading: 'DMCA Contact',
+      heading: 'DMCA 联系方式',
       paragraphs: [
-        `Send DMCA notices to: ${CONTACT_EMAIL}`,
-        'Please include "DMCA Notice" in the subject line. We will respond to valid notices in accordance with applicable law. Note that ANQR generates QR codes locally on users devices and does not host user-generated content.',
+        `请将DMCA通知发送至：${CONTACT_EMAIL}`,
+        '请在邮件主题栏注明‘DMCA通知’。我们将根据适用法律对有效的通知作出回应。请注意，ANQR在用户设备本地生成二维码，并不托管用户生成的内容。',
       ],
     },
   ],

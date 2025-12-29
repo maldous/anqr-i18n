@@ -2,66 +2,66 @@ import type { PageDefinition } from '../types'
 import { LAST_UPDATED, CONTACT_EMAIL } from '../types'
 
 export const about: PageDefinition = {
-  title: 'About ANQR',
-  description: 'ANQR is a free QR code generator that runs entirely on your device — no account required.',
+  title: 'ANQR 소개',
+  description: 'ANQR은 계정 없이 기기에서 완전히 실행되는 무료 QR 코드 생성기입니다.',
   lastUpdated: LAST_UPDATED,
   sections: [
     {
-      heading: 'What is ANQR?',
+      heading: 'ANQR이란 무엇인가요?',
       paragraphs: [
-        'ANQR (pronounced "anchor") is a free QR code generator that runs locally on your device and creates scannable codes for URLs, text, Wi-Fi credentials, contact cards, calendar events, and more.',
-        'It is built for individuals, small businesses, marketers, and developers who want powerful QR tools without uploading files or signing up. Your data stays on your device.',
+        'ANQR(발음은 \'앵커\')은 기기에서 로컬로 실행되는 무료 QR 코드 생성기로, URL, 텍스트, Wi-Fi 자격 증명, 연락처 카드, 캘린더 이벤트 등을 스캔할 수 있는 코드를 생성합니다.',
+        '이 앱은 파일을 업로드하거나 가입할 필요 없이 강력한 QR 코드 도구를 원하는 개인, 소규모 사업체, 마케터 및 개발자를 위해 설계되었습니다. 데이터는 기기에 안전하게 보관됩니다.',
       ],
     },
     {
-      heading: 'Key features',
+      heading: '주요 특징',
       bullets: [
-        'Generate QR codes instantly on your device — no server uploads, no account required.',
-        'Customise colours, module styles, finder patterns, and add image overlays.',
-        'Export in multiple formats: PNG, SVG, WebP, and animated GIF.',
-        'Advanced controls for error correction level, QR version, encoding mode, and mask selection.',
-        'Scan-safety guidance and live preview to help keep codes readable in print and on screens.',
-        'Works offline once loaded — it is a static web app you can run anywhere.',
+        '서버 업로드나 계정 없이 기기에서 QR 코드를 즉시 생성하세요.',
+        '색상, 모듈 스타일, 찾기 패턴을 사용자 지정하고 이미지 오버레이를 추가하세요.',
+        '다양한 형식으로 내보내기: PNG, SVG, WebP 및 애니메이션 GIF.',
+        '오류 수정 수준, QR 버전, 인코딩 모드 및 마스크 선택을 위한 고급 제어 기능.',
+        '스캔 안전 지침 및 실시간 미리보기 기능을 통해 인쇄물과 화면에서 코드를 읽기 쉽게 유지할 수 있도록 지원합니다.',
+        '한번 로드되면 오프라인에서도 작동합니다. 어디서든 실행할 수 있는 정적 웹 앱입니다.',
       ],
     },
     {
-      heading: 'How ANQR works',
+      heading: 'ANQR 작동 방식',
       paragraphs: [
-        'ANQR runs in your browser and encodes your input into a standard QR matrix with Reed–Solomon error correction, then renders it to the format you choose.',
-        'All generation happens locally. When you add overlays or animations, ANQR balances styling with scan reliability so the result remains scannable.',
-        'ANQR focuses on static codes (the data is inside the QR). If you need a dynamic code (editable destination), you can encode your own redirect URL or short link.',
+        '브라우저에서 실행되어 입력값을 리드-솔로몬 오류 수정 기능을 사용하여 표준 QR 행렬로 인코딩한 다음 사용자가 선택한 형식으로 렌더링합니다.',
+        '모든 생성 과정은 로컬에서 이루어집니다. 오버레이나 애니메이션을 추가할 때 ANQR은 스타일과 스캔 안정성 사이의 균형을 유지하여 결과물이 스캔 가능한 상태를 유지하도록 합니다.',
+        'ANQR은 정적 코드(데이터가 QR 코드 내부에 있는 경우)에 중점을 둡니다. 동적 코드(편집 가능한 대상)가 필요한 경우, 자체 리디렉션 URL 또는 단축 링크를 인코딩할 수 있습니다.',
       ],
     },
     {
-      heading: 'Who operates ANQR?',
+      heading: 'ANQR은 누가 운영합니까?',
       paragraphs: [
-        'ANQR is operated as an independent web tool. For questions, support, or business enquiries, please use the Contact page or email ' + CONTACT_EMAIL + '.',
+        'ANQR은 독립적인 웹 도구로 운영됩니다. 질문, 지원 또는 비즈니스 문의는 연락처 페이지 또는 이메일을 이용해 주십시오.' + CONTACT_EMAIL + '.',
       ],
     },
     {
-      heading: 'Advertising and how we stay free',
+      heading: '광고와 우리가 자유를 유지하는 방법',
       paragraphs: [
-        'ANQR is free to use and is supported by advertising. We may show ads via Google AdSense and/or other advertising partners.',
-        'Ad providers may use cookies or similar technologies to personalise ads based on your interests and browsing activity. You can manage ad preferences in your device settings and through Google ad settings, and learn more in our Privacy Policy.',
-        'We do not sell the content you encode into QR codes. Ads help cover the cost of running and improving the project.',
+        'ANQR은 무료로 이용할 수 있으며 광고 수익으로 운영됩니다. Google AdSense 및/또는 기타 광고 파트너를 통해 광고를 게재할 수 있습니다.',
+        '광고 제공업체는 쿠키 또는 유사한 기술을 사용하여 사용자의 관심사 및 검색 활동을 기반으로 맞춤형 광고를 제공할 수 있습니다. 기기 설정 및 Google 광고 설정을 통해 광고 환경설정을 관리할 수 있으며, 자세한 내용은 개인정보처리방침을 참조하세요.',
+        '저희는 사용자가 QR 코드에 인코딩한 콘텐츠를 판매하지 않습니다. 광고 수익은 프로젝트 운영 및 개선 비용을 충당하는 데 도움이 됩니다.',
       ],
     },
     {
-      heading: 'Open standards',
+      heading: '개방형 표준',
       paragraphs: [
-        'ANQR generates QR codes based on the ISO/IEC 18004 standard and aims for broad compatibility across scanners, cameras, and print workflows.',
+        'ANQR은 ISO/IEC 18004 표준을 기반으로 QR 코드를 생성하며 스캐너, 카메라 및 인쇄 워크플로 전반에 걸쳐 폭넓은 호환성을 목표로 합니다.',
       ],
     },
     {
-      heading: 'Trademark notice',
+      heading: '고지',
       paragraphs: [
-        'QR Code® is a registered trademark of DENSO WAVE INCORPORATED. ANQR is not affiliated with, endorsed by, or sponsored by DENSO WAVE INCORPORATED.',
+        'QR Code®는 DENSO WAVE INCORPORATED의 등록 상표입니다. ANQR은 DENSO WAVE INCORPORATED와 제휴, 보증 또는 후원 관계가 없습니다.',
       ],
     },
     {
-      heading: 'Feedback and contributions',
+      heading: '피드백 및 의견',
       paragraphs: [
-        'We welcome feedback, bug reports, and feature suggestions. Please get in touch via email or the contact page — we read every message, though response times may vary.',
+        '버그 보고 및 기능 제안을 환영합니다. 이메일이나 문의 페이지를 통해 연락해 주세요. 모든 메시지를 읽고 있지만, 답변 시간은 다소 차이가 있을 수 있습니다.',
       ],
     },
   ],

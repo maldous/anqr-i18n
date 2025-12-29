@@ -2,140 +2,140 @@ import type { PageDefinition } from '../types'
 import { LAST_UPDATED, CONTACT_EMAIL } from '../types'
 
 export const terms: PageDefinition = {
-  title: 'Terms of Service',
+  title: 'khoản dịch vụ',
   description:
-    'By accessing or using the site, you agree to be bound by these terms.',
+    'cách truy cập hoặc sử dụng trang web, bạn đồng ý chịu ràng buộc bởi các điều khoản này.',
   lastUpdated: LAST_UPDATED,
   sections: [
     {
-      heading: 'Acceptance of terms',
+      heading: 'nhận các điều khoản',
       paragraphs: [
-        'By accessing or using ANQR (anqr.link), you agree to be bound by these Terms of Service and our Privacy Policy. If you do not agree to these terms, do not use the site.',
-        'We may update these Terms from time to time. Continued use of the site after changes constitutes acceptance of the new terms.',
+        'cách truy cập hoặc sử dụng ANQR (anqr.link), bạn đồng ý chịu ràng buộc bởi Điều khoản dịch vụ và Chính sách bảo mật của chúng tôi. Nếu bạn không đồng ý với các điều khoản này, vui lòng không sử dụng trang web.',
+        'tôi có thể cập nhật các Điều khoản này theo thời gian. Việc tiếp tục sử dụng trang web sau khi có thay đổi đồng nghĩa với việc bạn chấp nhận các điều khoản mới.',
       ],
     },
     {
-      heading: 'Eligibility',
+      heading: 'kiện đủ điều kiện',
       paragraphs: [
-        "You must be at least 13 years of age to use ANQR. By using the site, you represent that you meet this age requirement. If you are under 18, you represent that you have your parent or guardian's permission to use the site.",
+        "phải ít nhất 13 tuổi mới được sử dụng ANQR. Bằng cách sử dụng trang web, bạn xác nhận rằng bạn đáp ứng yêu cầu về độ tuổi này. Nếu bạn dưới 18 tuổi, bạn xác nhận rằng bạn đã có sự cho phép của cha mẹ hoặc người giám hộ để sử dụng trang web.",
       ],
     },
     {
-      heading: 'Permitted use',
+      heading: 'đích sử dụng được phép',
       paragraphs: [
-        'You may use ANQR for lawful purposes only. You are solely responsible for the content you encode into QR codes and for how you use any QR codes you generate.',
+        'chỉ được phép sử dụng ANQR cho các mục đích hợp pháp. Bạn hoàn toàn chịu trách nhiệm về nội dung bạn mã hóa vào mã QR và cách bạn sử dụng bất kỳ mã QR nào bạn tạo ra.',
       ],
     },
     {
-      heading: 'Prohibited conduct',
-      paragraphs: ['You agree not to:'],
+      heading: 'vi bị cấm',
+      paragraphs: ['đồng ý không:'],
       bullets: [
-        'Use ANQR to create QR codes that facilitate phishing, malware distribution, fraud, scams, harassment, defamation, or any illegal activity.',
-        'Encode content that infringes intellectual property rights, violates privacy, or contains illegal material.',
-        'Attempt to disrupt, overload, or interfere with the operation or security of the site.',
-        'Reverse engineer, decompile, or attempt to extract source code from the site.',
-        'Use automated tools (bots, scrapers) to access the site in a manner that degrades performance for other users.',
-        'Circumvent or disable any security or access control features.',
-        'Impersonate any person or entity or misrepresent your affiliation.',
+        'dụng ANQR để tạo mã QR nhằm hỗ trợ các hoạt động lừa đảo trực tuyến, phát tán phần mềm độc hại, gian lận, quấy rối, phỉ báng hoặc bất kỳ hoạt động bất hợp pháp nào.',
+        'hóa nội dung vi phạm quyền sở hữu trí tuệ, xâm phạm quyền riêng tư hoặc chứa nội dung bất hợp pháp.',
+        'gắng làm gián đoạn, gây quá tải hoặc can thiệp vào hoạt động hoặc an ninh của trang web.',
+        'tích ngược, dịch ngược mã nguồn hoặc cố gắng trích xuất mã nguồn từ trang web.',
+        'dụng các công cụ tự động (bot, trình thu thập dữ liệu) để truy cập trang web theo cách làm giảm hiệu suất cho người dùng khác.',
+        'qua hoặc vô hiệu hóa bất kỳ tính năng bảo mật hoặc kiểm soát truy cập nào.',
+        'danh bất kỳ cá nhân hoặc tổ chức nào hoặc xuyên tạc mối quan hệ của bạn.',
       ],
     },
     {
-      heading: 'Intellectual property',
+      heading: 'sở hữu trí tuệ',
       paragraphs: [
-        'You retain ownership of the content you encode into QR codes. ANQR does not claim ownership of your data.',
-        'The ANQR name, logo, interface design, and underlying code are protected by copyright, trademark, and other intellectual property laws. You may not copy, modify, distribute, or create derivative works without our permission.',
-        'QR Code® is a registered trademark of DENSO WAVE INCORPORATED. ANQR is not affiliated with DENSO WAVE.',
+        'vẫn giữ quyền sở hữu nội dung mà bạn mã hóa thành mã QR. ANQR không tuyên bố quyền sở hữu dữ liệu của bạn.',
+        'logo, thiết kế giao diện và mã nguồn của ANQR được bảo vệ bởi luật bản quyền, nhãn hiệu và các luật sở hữu trí tuệ khác. Bạn không được sao chép, sửa đổi, phân phối hoặc tạo ra các tác phẩm phái sinh mà không có sự cho phép của chúng tôi.',
+        'QR® là nhãn hiệu đã được đăng ký của DENSO WAVE INCORPORATED. ANQR không liên kết với DENSO WAVE.',
       ],
     },
     {
-      heading: 'User content license',
+      heading: 'phép nội dung người dùng',
       paragraphs: [
-        'By using ANQR, you grant us no rights to your content — all QR code generation happens locally on your device and we do not access, store, or transmit your encoded data.',
+        'cách sử dụng ANQR, bạn không trao cho chúng tôi bất kỳ quyền nào đối với nội dung của bạn — tất cả quá trình tạo mã QR đều diễn ra cục bộ trên thiết bị của bạn và chúng tôi không truy cập, lưu trữ hoặc truyền dữ liệu được mã hóa của bạn.',
       ],
     },
     {
-      heading: 'Third-party services and advertising',
+      heading: 'vụ và quảng cáo của bên thứ ba',
       paragraphs: [
-        'The site displays advertisements through Google AdSense and may include links to third-party websites. We are not responsible for third-party content, services, or privacy practices.',
-        'Your interactions with advertisers and third parties are solely between you and them. See our Privacy Policy for information about advertising data practices.',
+        'web này hiển thị quảng cáo thông qua Google AdSense và có thể bao gồm các liên kết đến các trang web của bên thứ ba. Chúng tôi không chịu trách nhiệm về nội dung, dịch vụ hoặc chính sách bảo mật của bên thứ ba.',
+        'bạn tương tác với các nhà quảng cáo và bên thứ ba hoàn toàn là giữa bạn và họ. Vui lòng xem Chính sách Bảo mật của chúng tôi để biết thông tin về các hoạt động dữ liệu quảng cáo.',
       ],
     },
     {
-      heading: 'Disclaimer of warranties',
+      heading: 'bố từ chối bảo hành',
       paragraphs: [
-        'ANQR IS PROVIDED ON AN "AS IS" AND "AS AVAILABLE" BASIS WITHOUT WARRANTIES OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, AND NON-INFRINGEMENT.',
-        'We do not warrant that: (a) the site will be uninterrupted, secure, or error-free; (b) QR codes will scan in all environments, on all devices, or with all scanner applications; (c) the site will meet your requirements.',
-        'You should always test QR codes in the conditions where they will be used (print size, lighting, screen type, distance, camera quality).',
+        'được cung cấp trên cơ sở nguyên trạng và sẵn có mà không có bất kỳ bảo đảm nào, dù rõ ràng hay ngụ ý, bao gồm nhưng không giới hạn ở các bảo đảm ngụ ý về khả năng thương mại, sự phù hợp cho mục đích cụ thể và không vi phạm bản quyền.',
+        'tôi không đảm bảo rằng: (a) trang web sẽ hoạt động liên tục, an toàn hoặc không có lỗi; (b) mã QR sẽ được quét trong mọi môi trường, trên mọi thiết bị hoặc với mọi ứng dụng quét; (c) trang web sẽ đáp ứng các yêu cầu của bạn.',
+        'nên luôn kiểm tra mã QR trong điều kiện thực tế khi sử dụng (kích thước in, ánh sáng, loại màn hình, khoảng cách, chất lượng camera).',
       ],
     },
     {
-      heading: 'Limitation of liability',
+      heading: 'hạn trách nhiệm',
       paragraphs: [
-        'TO THE MAXIMUM EXTENT PERMITTED BY LAW, ANQR AND ITS OPERATORS, AFFILIATES, AND LICENSORS SHALL NOT BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, CONSEQUENTIAL, PUNITIVE, OR EXEMPLARY DAMAGES, INCLUDING BUT NOT LIMITED TO DAMAGES FOR LOSS OF PROFITS, REVENUE, DATA, GOODWILL, USE, OR OTHER INTANGIBLE LOSSES, ARISING FROM OR RELATED TO YOUR ACCESS TO OR USE OF (OR INABILITY TO ACCESS OR USE) THE SERVICE.',
-        'YOU EXPRESSLY UNDERSTAND AND AGREE THAT YOUR USE OF THE SERVICE IS AT YOUR SOLE RISK. THE SERVICE IS PROVIDED FREE OF CHARGE, AND ACCORDINGLY, YOU AGREE THAT ANQR AND ITS OPERATORS SHALL HAVE NO LIABILITY TO YOU WHATSOEVER FOR ANY DAMAGES OR LOSSES. IN NO EVENT SHALL OUR TOTAL AGGREGATE LIABILITY EXCEED ZERO DOLLARS ($0 AUD).',
-        'YOU AGREE TO RELEASE, WAIVE, AND DISCHARGE ANY AND ALL CLAIMS, DEMANDS, AND CAUSES OF ACTION AGAINST ANQR AND ITS OPERATORS ARISING FROM YOUR USE OF THE SERVICE.',
-        'SOME JURISDICTIONS DO NOT ALLOW THE EXCLUSION OF CERTAIN WARRANTIES OR LIMITATIONS OF LIABILITY. IN SUCH JURISDICTIONS, OUR LIABILITY SHALL BE LIMITED TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW.',
+        'PHẠM VI TỐI ĐA CHO PHÉP THEO LUẬT, ANQR VÀ CÁC NHÀ VẬN HÀNH, CÔNG TY LIÊN KẾT VÀ BÊN CẤP PHÉP CỦA NÓ SẼ KHÔNG CHỊU TRÁCH NHIỆM ĐỐI VỚI BẤT KỲ THIỆT HẠI TRỰC TIẾP, GIÁN TIẾP, NGẪN NHIÊN, ĐẶC BIỆT, HẬU QUẢ, TRỪNG PHẠT HOẶC MANG TÍNH CHUẨN MỰC NÀO, BAO GỒM NHƯNG KHÔNG GIỚI HẠN Ở CÁC THIỆT HẠI DO MẤT LỢI NHUẬN, DOANH THU, DỮ LIỆU, UY TÍN, QUYỀN SỬ DỤNG HOẶC CÁC TỔN THẤT VÔ HÌNH KHÁC, PHÁT SINH TỪ HOẶC LIÊN QUAN ĐẾN VIỆC TRUY CẬP HOẶC SỬ DỤNG (HOẶC KHÔNG THỂ TRUY CẬP HOẶC SỬ DỤNG) DỊCH VỤ.',
+        'HIỂU VÀ ĐỒNG Ý RÕ RÀNG RẰNG VIỆC SỬ DỤNG DỊCH VỤ LÀ HOÀN TOÀN DO RỦI RO CỦA BẠN. DỊCH VỤ ĐƯỢC CUNG CẤP MIỄN PHÍ, VÀ THEO ĐÓ, BẠN ĐỒNG Ý RẰNG ANQR VÀ CÁC NHÀ VẬN HÀNH CỦA NÓ SẼ KHÔNG CHỊU BẤT KỲ TRÁCH NHIỆM NÀO ĐỐI VỚI BẠN VỀ BẤT KỲ THIỆT HẠI HOẶC TỔN THẤT NÀO. TRONG MỌI TRƯỜNG HỢP, TỔNG TRÁCH NHIỆM CỦA CHÚNG TÔI SẼ KHÔNG VƯỢT QUÁ 0 ĐÔ LA MỸ (AUD).',
+        'ĐỒNG Ý TỪ BỎ, MIỄN TRỪ VÀ GIẢI PHÓNG MỌI KHIẾU NGHĨ, YÊU CẦU VÀ NGUYÊN NHÂN GÂY RA TRANH CHẤP ĐỐI VỚI ANQR VÀ CÁC NHÀ VẬN HÀNH CỦA NÓ PHÁT SINH TỪ VIỆC BẠN SỬ DỤNG DỊCH VỤ.',
+        'SỐ KHU VỰC PHÁP LÝ KHÔNG CHO PHÉP LOẠI TRỪ MỘT SỐ BẢO HÀNH HOẶC GIỚI HẠN TRÁCH NHIỆM. TẠI NHỮNG KHU VỰC PHÁP LÝ ĐÓ, TRÁCH NHIỆM CỦA CHÚNG TÔI SẼ BỊ GIỚI HẠN Ở MỨC TỐI ĐA CHO PHÉP THEO LUẬT ÁP DỤNG.',
       ],
     },
     {
-      heading: 'Indemnification',
+      heading: 'thường',
       paragraphs: [
-        'You agree to indemnify, defend, and hold harmless ANQR, its operators, affiliates, and their respective officers, directors, employees, and agents from any claims, damages, losses, liabilities, costs, and expenses (including legal fees) arising from: (a) your use of the site; (b) your violation of these Terms; (c) your violation of any third-party rights; (d) any content you encode into QR codes.',
+        'đồng ý bồi thường, bảo vệ và giữ cho ANQR, các nhà điều hành, chi nhánh của ANQR và các cán bộ, giám đốc, nhân viên và đại lý tương ứng của họ không bị tổn hại trước bất kỳ khiếu nại, thiệt hại, tổn thất, trách nhiệm pháp lý, chi phí và phí tổn nào (bao gồm cả phí luật sư) phát sinh từ: (a) việc bạn sử dụng trang web; (b) việc bạn vi phạm các Điều khoản này; (c) việc bạn vi phạm bất kỳ quyền nào của bên thứ ba; (d) bất kỳ nội dung nào bạn mã hóa thành mã QR.',
       ],
     },
     {
-      heading: 'Dispute resolution',
+      heading: 'quyết tranh chấp',
       paragraphs: [
-        `Any dispute arising from these Terms or your use of ANQR shall first be attempted to be resolved through informal negotiation by contacting ${CONTACT_EMAIL}.`,
-        'If informal resolution fails, disputes shall be resolved through binding arbitration in Victoria, Australia, except that either party may seek injunctive relief in court for intellectual property violations.',
+        `tranh chấp phát sinh từ các Điều khoản này hoặc việc bạn sử dụng ANQR trước tiên sẽ được cố gắng giải quyết thông qua đàm phán không chính thức bằng cách liên hệ với ${CONTACT_EMAIL}.`,
+        'việc giải quyết không chính thức thất bại, các tranh chấp sẽ được giải quyết thông qua trọng tài ràng buộc tại Victoria, Úc, ngoại trừ việc mỗi bên có thể yêu cầu tòa án ra lệnh cấm đối với các vi phạm quyền sở hữu trí tuệ.',
       ],
     },
     {
-      heading: 'Class action waiver',
+      heading: 'trừ khởi kiện tập thể',
       paragraphs: [
-        'TO THE EXTENT PERMITTED BY LAW, YOU AGREE THAT ANY DISPUTE RESOLUTION PROCEEDINGS WILL BE CONDUCTED ONLY ON AN INDIVIDUAL BASIS AND NOT IN A CLASS, CONSOLIDATED, OR REPRESENTATIVE ACTION.',
+        'PHẠM VI CHO PHÉP CỦA PHÁP LUẬT, BẠN ĐỒNG Ý RẰNG BẤT KỲ THỦ TỤC GIẢI QUYẾT TRANH CHẤP NÀO SẼ CHỈ ĐƯỢC TIẾN HÀNH TRÊN CƠ SỞ CÁ NHÂN VÀ KHÔNG PHẢI LÀ VỤ KIỆN TẬP THỂ, HỢP NHẤT HOẶC ĐẠI DIỆN.',
       ],
     },
     {
-      heading: 'Governing law',
+      heading: 'điều chỉnh',
       paragraphs: [
-        'These Terms are governed by the laws of Victoria, Australia, without regard to conflict of laws principles. You consent to the exclusive jurisdiction of the courts located in Victoria, Australia.',
+        'Điều khoản này được điều chỉnh bởi luật pháp của Victoria, Úc, mà không xét đến các nguyên tắc xung đột pháp luật. Bạn đồng ý với thẩm quyền độc quyền của các tòa án đặt tại Victoria, Úc.',
       ],
     },
     {
-      heading: 'Changes and availability',
+      heading: 'đổi và tình trạng sẵn có',
       paragraphs: [
-        'We may modify, suspend, or discontinue the site (or any part of it) at any time without notice or liability.',
-        'We may update these Terms at any time. The "Last updated" date indicates when they were most recently revised. Continued use after changes constitutes acceptance.',
+        'tôi có thể sửa đổi, tạm ngừng hoặc ngừng hoạt động trang web (hoặc bất kỳ phần nào của trang web) bất cứ lúc nào mà không cần thông báo hoặc chịu trách nhiệm.',
+        'tôi có thể cập nhật các Điều khoản này bất cứ lúc nào. Ngày Cập nhật lần cuối cho biết thời điểm chúng được sửa đổi gần đây nhất. Việc tiếp tục sử dụng sau khi có thay đổi đồng nghĩa với việc bạn chấp nhận các Điều khoản này.',
       ],
     },
     {
-      heading: 'Severability',
+      heading: 'khả tách',
       paragraphs: [
-        'If any provision of these Terms is held invalid or unenforceable, that provision will be enforced to the maximum extent permissible, and the remaining provisions will remain in full force and effect.',
+        'bất kỳ điều khoản nào trong các Điều khoản này bị coi là không hợp lệ hoặc không thể thi hành, thì điều khoản đó sẽ được thi hành ở mức tối đa cho phép, và các điều khoản còn lại vẫn có hiệu lực đầy đủ.',
       ],
     },
     {
-      heading: 'Waiver',
+      heading: 'trừ',
       paragraphs: [
-        'Our failure to enforce any right or provision of these Terms shall not be deemed a waiver of such right or provision.',
+        'chúng tôi không thực thi bất kỳ quyền hoặc điều khoản nào trong các Điều khoản này sẽ không được coi là sự từ bỏ quyền hoặc điều khoản đó.',
       ],
     },
     {
-      heading: 'Entire agreement',
+      heading: 'thuận toàn diện',
       paragraphs: [
-        'These Terms, together with our Privacy Policy, constitute the entire agreement between you and ANQR regarding your use of the site and supersede any prior agreements.',
+        'Điều khoản này, cùng với Chính sách Bảo mật của chúng tôi, tạo thành toàn bộ thỏa thuận giữa bạn và ANQR liên quan đến việc bạn sử dụng trang web và thay thế mọi thỏa thuận trước đó.',
       ],
     },
     {
-      heading: 'Force majeure',
+      heading: 'kiện bất khả kháng',
       paragraphs: [
-        'We shall not be liable for any failure or delay in performance due to circumstances beyond our reasonable control, including natural disasters, war, terrorism, riots, government actions, or internet/infrastructure failures.',
+        'Chúng tôi sẽ không chịu trách nhiệm đối với bất kỳ sự thất bại hoặc chậm trễ nào trong việc thực hiện do các trường hợp nằm ngoài tầm kiểm soát hợp lý của chúng tôi, bao gồm thiên tai, chiến tranh, khủng bố, bạo loạn, hành động của chính phủ hoặc sự cố mạng/cơ sở hạ tầng.',
       ],
     },
     {
-      heading: 'Contact',
-      paragraphs: [`Questions about these Terms can be sent to: ${CONTACT_EMAIL}`],
+      heading: 'hệ',
+      paragraphs: [`thắc mắc về các Điều khoản này có thể gửi đến: ${CONTACT_EMAIL}`],
     },
   ],
 }
