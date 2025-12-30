@@ -1512,5 +1512,42 @@
     "topRight": "1021",
     "type": "791",
     "uploadImage": "1022"
+  },
+  "accessibility": {
+    "toggleSettings": "1023",
+    "allCategories": "1024",
+    "copyShareLink": "1025",
+    "exportQrCode": "1026",
+    "openNavMenu": "1027",
+    "openDocsSidebar": "1028",
+    "closeSidebar": "1029",
+    "imageUnavailable": "1030",
+    "messageSent": "1031",
+    "lastUpdated": "1032",
+    "scanMePlaceholder": "1033"
+  },
+  "placeholders": {
+    "enterText": "1034",
+    "emailSubject": "1035",
+    "emailBody": "1036",
+    "prefilledMessage": "1037",
+    "placeNameOrAddress": "1038",
+    "networkPassword": "1039",
+    "eventDetails": "1040",
+    "paymentFor": "1041",
+    "rawQrData": "1042",
+    "yourName": "1043",
+    "helpSubject": "1044",
+    "helpMessage": "1045"
+  },
+  "contact": {
+    "messageSentTitle": "1046",
+    "messageSentDesc": "1047",
+    "submitError": "1048",
+    "sendMessage": "1049",
+    "sending": "1050",
+    "privacyNote": "1051",
+    "emailUs": "1052",
+    "emailUsDesc": "1053"
   }
 }

@@ -56,7 +56,7 @@ function GalleryCard({ item }: { item: GalleryItem }) {
         <div className="aspect-square w-full bg-muted p-1">
           {imageError ? (
             <div className="w-full h-full flex items-center justify-center text-muted-foreground">
-              <span className="text-xs">Image unavailable</span>
+              <span className="text-xs">{t('accessibility.imageUnavailable')}</span>
             </div>
           ) : (
             <img
@@ -245,7 +245,7 @@ export function Gallery({ filter }: GalleryProps) {
                   ? 'bg-primary text-primary-foreground' 
                   : 'bg-muted text-muted-foreground hover:bg-muted/80'
               }`}
-              title="All"
+              title={t('gallery.all')}
             >
               <Grid3x3 className="w-3 h-3" />
             </button>

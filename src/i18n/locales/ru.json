@@ -1512,5 +1512,33 @@
     "topRight": "Вверху справа",
     "type": "Тип",
     "uploadImage": "Загрузить изображение"
+  },
+  "accessibility": {
+    "toggleSettings": "Переключить панель настроек",
+    "allCategories": "Все категории",
+    "copyShareLink": "Скопировать ссылку для обмена в буфер обмена",
+    "exportQrCode": "Экспортировать QR-код в файл",
+    "openNavMenu": "Открыть меню навигации",
+    "openDocsSidebar": "Открыть боковую панель документации",
+    "closeSidebar": "Закрыть боковую панель",
+    "imageUnavailable": "Изображение недоступно",
+    "messageSent": "Сообщение отправлено",
+    "lastUpdated": "Последнее обновление",
+    "scanMePlaceholder": "Отсканируй меня!"
+  },
+  "contact": {
+    "emailUs": "Напишите нам",
+    "emailUsDesc": "Есть вопрос, предложение или нужна помощь? Напишите нам, и мы ответим."
+  },
+  "placeholders": {
+    "enterText": "Введите текст для кодирования...",
+    "emailSubject": "Тема письма",
+    "emailBody": "Текст письма",
+    "prefilledMessage": "Предзаполненное сообщение",
+    "placeNameOrAddress": "Название места или адрес",
+    "networkPassword": "Пароль сети",
+    "eventDetails": "Детали события...",
+    "paymentFor": "Оплата за...",
+    "rawQrData": "Введите сырые данные QR-кода..."
   }
 }

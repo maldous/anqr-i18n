@@ -1512,5 +1512,33 @@
     "topRight": "“Trên cùng bên phải”",
     "type": "“Loại”",
     "uploadImage": "“Tải ảnh lên”"
+  },
+  "accessibility": {
+    "toggleSettings": "Chuyển đổi bảng cài đặt",
+    "allCategories": "Tất cả danh mục",
+    "copyShareLink": "Sao chép liên kết chia sẻ vào bộ nhớ tạm",
+    "exportQrCode": "Xuất mã QR ra tệp",
+    "openNavMenu": "Mở menu điều hướng",
+    "openDocsSidebar": "Mở thanh bên tài liệu",
+    "closeSidebar": "Đóng thanh bên",
+    "imageUnavailable": "Không có hình ảnh",
+    "messageSent": "Đã gửi tin nhắn",
+    "lastUpdated": "Cập nhật lần cuối",
+    "scanMePlaceholder": "Quét tôi!"
+  },
+  "contact": {
+    "emailUs": "Gửi email cho chúng tôi",
+    "emailUsDesc": "Có câu hỏi, đề xuất hoặc cần trợ giúp? Gửi email cho chúng tôi và chúng tôi sẽ phản hồi."
+  },
+  "placeholders": {
+    "enterText": "Nhập văn bản để mã hóa...",
+    "emailSubject": "Tiêu đề email",
+    "emailBody": "Nội dung email",
+    "prefilledMessage": "Tin nhắn điền sẵn",
+    "placeNameOrAddress": "Tên địa điểm hoặc địa chỉ",
+    "networkPassword": "Mật khẩu mạng",
+    "eventDetails": "Chi tiết sự kiện...",
+    "paymentFor": "Thanh toán cho...",
+    "rawQrData": "Nhập dữ liệu QR thô..."
   }
 }

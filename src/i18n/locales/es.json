@@ -1512,5 +1512,33 @@
     "topRight": "Arriba a la derecha",
     "type": "Tipo",
     "uploadImage": "Subir imagen"
+  },
+  "accessibility": {
+    "toggleSettings": "Alternar panel de configuración",
+    "allCategories": "Todas las categorías",
+    "copyShareLink": "Copiar enlace para compartir al portapapeles",
+    "exportQrCode": "Exportar código QR a archivo",
+    "openNavMenu": "Abrir menú de navegación",
+    "openDocsSidebar": "Abrir barra lateral de documentación",
+    "closeSidebar": "Cerrar barra lateral",
+    "imageUnavailable": "Imagen no disponible",
+    "messageSent": "Mensaje enviado",
+    "lastUpdated": "Última actualización",
+    "scanMePlaceholder": "¡Escanéame!"
+  },
+  "contact": {
+    "emailUs": "Envíanos un correo",
+    "emailUsDesc": "¿Tienes alguna pregunta, sugerencia o necesitas ayuda? Envíanos un correo y te responderemos."
+  },
+  "placeholders": {
+    "enterText": "Ingrese texto para codificar...",
+    "emailSubject": "Asunto del correo",
+    "emailBody": "Cuerpo del correo",
+    "prefilledMessage": "Mensaje prellenado",
+    "placeNameOrAddress": "Nombre del lugar o dirección",
+    "networkPassword": "Contraseña de red",
+    "eventDetails": "Detalles del evento...",
+    "paymentFor": "Pago por...",
+    "rawQrData": "Ingrese datos QR sin procesar..."
   }
 }

@@ -1512,5 +1512,33 @@
     "topRight": "บนขวา",
     "type": "ประเภท",
     "uploadImage": "อัปโหลดรูปภาพ"
+  },
+  "accessibility": {
+    "toggleSettings": "สลับแผงการตั้งค่า",
+    "allCategories": "ทุกหมวดหมู่",
+    "copyShareLink": "คัดลอกลิงก์แชร์ไปยังคลิปบอร์ด",
+    "exportQrCode": "ส่งออกคิวอาร์โค้ดเป็นไฟล์",
+    "openNavMenu": "เปิดเมนูนำทาง",
+    "openDocsSidebar": "เปิดแถบด้านข้างเอกสาร",
+    "closeSidebar": "ปิดแถบด้านข้าง",
+    "imageUnavailable": "ไม่มีรูปภาพ",
+    "messageSent": "ส่งข้อความแล้ว",
+    "lastUpdated": "อัปเดตล่าสุด",
+    "scanMePlaceholder": "สแกนฉัน!"
+  },
+  "contact": {
+    "emailUs": "ส่งอีเมลหาเรา",
+    "emailUsDesc": "มีคำถาม ข้อเสนอแนะ หรือต้องการความช่วยเหลือ? ส่งอีเมลหาเราได้เลย"
+  },
+  "placeholders": {
+    "enterText": "ป้อนข้อความที่ต้องการเข้ารหัส...",
+    "emailSubject": "หัวเรื่องอีเมล",
+    "emailBody": "เนื้อหาอีเมล",
+    "prefilledMessage": "ข้อความที่กรอกไว้ล่วงหน้า",
+    "placeNameOrAddress": "ชื่อสถานที่หรือที่อยู่",
+    "networkPassword": "รหัสผ่านเครือข่าย",
+    "eventDetails": "รายละเอียดกิจกรรม...",
+    "paymentFor": "ชำระเงินสำหรับ...",
+    "rawQrData": "ป้อนข้อมูล QR ดิบ..."
   }
 }

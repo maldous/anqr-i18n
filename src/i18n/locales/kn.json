@@ -1512,5 +1512,33 @@
     "topRight": "오른쪽 상단",
     "type": "유형",
     "uploadImage": "이미지 업로드"
+  },
+  "accessibility": {
+    "toggleSettings": "ಸೆಟ್ಟಿಂಗ್‌ಗಳ ಪ್ಯಾನೆಲ್ ಟಾಗಲ್ ಮಾಡಿ",
+    "allCategories": "ಎಲ್ಲಾ ವರ್ಗಗಳು",
+    "copyShareLink": "ಹಂಚಿಕೊಳ್ಳಬಹುದಾದ ಲಿಂಕ್ ಅನ್ನು ಕ್ಲಿಪ್‌ಬೋರ್ಡ್‌ಗೆ ನಕಲಿಸಿ",
+    "exportQrCode": "QR ಕೋಡ್ ಅನ್ನು ಫೈಲ್‌ಗೆ ರಫ್ತು ಮಾಡಿ",
+    "openNavMenu": "ನ್ಯಾವಿಗೇಶನ್ ಮೆನು ತೆರೆಯಿರಿ",
+    "openDocsSidebar": "ಡಾಕ್ಯುಮೆಂಟೇಶನ್ ಸೈಡ್‌ಬಾರ್ ತೆರೆಯಿರಿ",
+    "closeSidebar": "ಸೈಡ್‌ಬಾರ್ ಮುಚ್ಚಿ",
+    "imageUnavailable": "ಚಿತ್ರ ಲಭ್ಯವಿಲ್ಲ",
+    "messageSent": "ಸಂದೇಶ ಕಳುಹಿಸಲಾಗಿದೆ",
+    "lastUpdated": "ಕೊನೆಯ ನವೀಕರಣ",
+    "scanMePlaceholder": "ನನ್ನನ್ನು ಸ್ಕ್ಯಾನ್ ಮಾಡಿ!"
+  },
+  "contact": {
+    "emailUs": "ನಮಗೆ ಇಮೇಲ್ ಮಾಡಿ",
+    "emailUsDesc": "ಪ್ರಶ್ನೆ, ಸಲಹೆ ಅಥವಾ ಸಹಾಯ ಬೇಕೇ? ನಮಗೆ ಇಮೇಲ್ ಕಳುಹಿಸಿ."
+  },
+  "placeholders": {
+    "enterText": "ಎನ್‌ಕೋಡ್ ಮಾಡಲು ಪಠ್ಯ ನಮೂದಿಸಿ...",
+    "emailSubject": "ಇಮೇಲ್ ವಿಷಯ",
+    "emailBody": "ಇಮೇಲ್ ಮುಖ್ಯಭಾಗ",
+    "prefilledMessage": "ಪೂರ್ವ-ಭರ್ತಿ ಸಂದೇಶ",
+    "placeNameOrAddress": "ಸ್ಥಳದ ಹೆಸರು ಅಥವಾ ವಿಳಾಸ",
+    "networkPassword": "ನೆಟ್‌ವರ್ಕ್ ಪಾಸ್‌ವರ್ಡ್",
+    "eventDetails": "ಈವೆಂಟ್ ವಿವರಗಳು...",
+    "paymentFor": "ಪಾವತಿ...",
+    "rawQrData": "ಕಚ್ಚಾ QR ಕೋಡ್ ಡೇಟಾ ನಮೂದಿಸಿ..."
   }
 }

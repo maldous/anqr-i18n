@@ -20,12 +20,6 @@ export const contact: PageDefinition = {
       ],
     },
     {
-      heading: 'Form ng Pakikipag-ugnayan',
-      paragraphs: [
-        'Gamitin ang form sa ibaba upang magpadala sa amin ng mensahe nang direkta. Kung hindi matagumpay na maisumite ang form, mangyaring gumamit na lang ng email.',
-      ],
-    },
-    {
       heading: 'Mga Uri ng Pagtatanong',
       bullets: [
         'Mga pangkalahatang tanong: Mga tanong tungkol sa kung paano gamitin ang ANQR, mga paliwanag sa tampok, o pangkalahatang feedback.',

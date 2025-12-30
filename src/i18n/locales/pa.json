@@ -1512,5 +1512,33 @@
     "topRight": "“ਉੱਪਰ ਸੱਜੇ”",
     "type": "“ਕਿਸਮ”",
     "uploadImage": "“ਚਿੱਤਰ ਅੱਪਲੋਡ ਕਰੋ”"
+  },
+  "accessibility": {
+    "toggleSettings": "ਸੈਟਿੰਗਾਂ ਪੈਨਲ ਟੌਗਲ ਕਰੋ",
+    "allCategories": "ਸਾਰੀਆਂ ਸ਼੍ਰੇਣੀਆਂ",
+    "copyShareLink": "ਸਾਂਝਾ ਕਰਨ ਯੋਗ ਲਿੰਕ ਕਲਿੱਪਬੋਰਡ ਤੇ ਕਾਪੀ ਕਰੋ",
+    "exportQrCode": "QR ਕੋਡ ਫਾਈਲ ਵਿੱਚ ਨਿਰਯਾਤ ਕਰੋ",
+    "openNavMenu": "ਨੈਵੀਗੇਸ਼ਨ ਮੀਨੂ ਖੋਲ੍ਹੋ",
+    "openDocsSidebar": "ਦਸਤਾਵੇਜ਼ ਸਾਈਡਬਾਰ ਖੋਲ੍ਹੋ",
+    "closeSidebar": "ਸਾਈਡਬਾਰ ਬੰਦ ਕਰੋ",
+    "imageUnavailable": "ਚਿੱਤਰ ਉਪਲਬਧ ਨਹੀਂ",
+    "messageSent": "ਸੁਨੇਹਾ ਭੇਜਿਆ ਗਿਆ",
+    "lastUpdated": "ਆਖਰੀ ਅੱਪਡੇਟ",
+    "scanMePlaceholder": "ਮੈਨੂੰ ਸਕੈਨ ਕਰੋ!"
+  },
+  "contact": {
+    "emailUs": "ਸਾਨੂੰ ਈਮੇਲ ਕਰੋ",
+    "emailUsDesc": "ਕੋਈ ਸਵਾਲ, ਸੁਝਾਅ ਜਾਂ ਮਦਦ ਚਾਹੀਦੀ ਹੈ? ਸਾਨੂੰ ਈਮੇਲ ਕਰੋ ਅਤੇ ਅਸੀਂ ਜਵਾਬ ਦੇਵਾਂਗੇ।"
+  },
+  "placeholders": {
+    "enterText": "ਏਨਕੋਡ ਕਰਨ ਲਈ ਟੈਕਸਟ ਦਾਖਲ ਕਰੋ...",
+    "emailSubject": "ਈਮੇਲ ਵਿਸ਼ਾ",
+    "emailBody": "ਈਮੇਲ ਬਾਡੀ",
+    "prefilledMessage": "ਪਹਿਲਾਂ ਤੋਂ ਭਰਿਆ ਸੁਨੇਹਾ",
+    "placeNameOrAddress": "ਥਾਂ ਦਾ ਨਾਮ ਜਾਂ ਪਤਾ",
+    "networkPassword": "ਨੈੱਟਵਰਕ ਪਾਸਵਰਡ",
+    "eventDetails": "ਇਵੈਂਟ ਵੇਰਵੇ...",
+    "paymentFor": "ਭੁਗਤਾਨ ਲਈ...",
+    "rawQrData": "ਕੱਚਾ QR ਕੋਡ ਡਾਟਾ ਦਾਖਲ ਕਰੋ..."
   }
 }

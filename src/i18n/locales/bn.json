@@ -1512,5 +1512,33 @@
     "topRight": "উপরে ডানদিকে",
     "type": "প্রকার",
     "uploadImage": "ছবি আপলোড করুন"
+  },
+  "accessibility": {
+    "toggleSettings": "সেটিংস প্যানেল টগল করুন",
+    "allCategories": "সব বিভাগ",
+    "copyShareLink": "শেয়ারযোগ্য লিঙ্ক ক্লিপবোর্ডে কপি করুন",
+    "exportQrCode": "QR কোড ফাইলে এক্সপোর্ট করুন",
+    "openNavMenu": "নেভিগেশন মেনু খুলুন",
+    "openDocsSidebar": "ডকুমেন্টেশন সাইডবার খুলুন",
+    "closeSidebar": "সাইডবার বন্ধ করুন",
+    "imageUnavailable": "ছবি উপলব্ধ নয়",
+    "messageSent": "বার্তা পাঠানো হয়েছে",
+    "lastUpdated": "সর্বশেষ আপডেট",
+    "scanMePlaceholder": "স্ক্যান করুন!"
+  },
+  "contact": {
+    "emailUs": "ইমেইল করুন",
+    "emailUsDesc": "কোনো প্রশ্ন, পরামর্শ বা সাহায্য দরকার? আমাদের ইমেইল করুন এবং আমরা আপনাকে জানাব।"
+  },
+  "placeholders": {
+    "enterText": "এনকোড করতে টেক্সট লিখুন...",
+    "emailSubject": "ইমেইল বিষয়",
+    "emailBody": "ইমেইল বডি",
+    "prefilledMessage": "পূর্ব-পূরিত বার্তা",
+    "placeNameOrAddress": "স্থানের নাম বা ঠিকানা",
+    "networkPassword": "নেটওয়ার্ক পাসওয়ার্ড",
+    "eventDetails": "ইভেন্টের বিবরণ...",
+    "paymentFor": "পেমেন্ট এর জন্য...",
+    "rawQrData": "কাঁচা QR কোড ডেটা লিখুন..."
   }
 }

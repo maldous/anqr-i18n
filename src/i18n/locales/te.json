@@ -1512,5 +1512,33 @@
     "topRight": "“పైన కుడివైపు”",
     "type": "రకం",
     "uploadImage": "“చిత్రాన్ని అప్‌లోడ్ చేయి”"
+  },
+  "accessibility": {
+    "toggleSettings": "సెట్టింగ్‌ల ప్యానెల్‌ను టోగుల్ చేయండి",
+    "allCategories": "అన్ని వర్గాలు",
+    "copyShareLink": "షేర్ చేయగల లింక్‌ను క్లిప్‌బోర్డ్‌కు కాపీ చేయండి",
+    "exportQrCode": "QR కోడ్‌ను ఫైల్‌కు ఎగుమతి చేయండి",
+    "openNavMenu": "నావిగేషన్ మెనూని తెరవండి",
+    "openDocsSidebar": "డాక్యుమెంటేషన్ సైడ్‌బార్‌ని తెరవండి",
+    "closeSidebar": "సైడ్‌బార్‌ను మూసివేయండి",
+    "imageUnavailable": "చిత్రం అందుబాటులో లేదు",
+    "messageSent": "సందేశం పంపబడింది",
+    "lastUpdated": "చివరిగా నవీకరించబడింది",
+    "scanMePlaceholder": "నన్ను స్కాన్ చేయండి!"
+  },
+  "contact": {
+    "emailUs": "మాకు ఇమెయిల్ చేయండి",
+    "emailUsDesc": "ఏదైనా ప్రశ్న, సూచన లేదా సహాయం కావాలా? మాకు ఇమెయిల్ పంపండి."
+  },
+  "placeholders": {
+    "enterText": "ఎన్‌కోడ్ చేయడానికి టెక్స్ట్ నమోదు చేయండి...",
+    "emailSubject": "ఇమెయిల్ విషయం",
+    "emailBody": "ఇమెయిల్ బాడీ",
+    "prefilledMessage": "ముందే నింపిన సందేశం",
+    "placeNameOrAddress": "ప్రదేశం పేరు లేదా చిరునామా",
+    "networkPassword": "నెట్‌వర్క్ పాస్‌వర్డ్",
+    "eventDetails": "ఈవెంట్ వివరాలు...",
+    "paymentFor": "చెల్లింపు...",
+    "rawQrData": "రా QR కోడ్ డేటా నమోదు చేయండి..."
   }
 }
