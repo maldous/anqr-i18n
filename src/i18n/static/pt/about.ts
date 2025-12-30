@@ -3,7 +3,7 @@ import { LAST_UPDATED, CONTACT_EMAIL } from '../types'
 
 export const about: PageDefinition = {
   title: 'Sobre a ANQR',
-  description: 'O ANQR é um gerador de código QR gratuito que funciona inteiramente no seu dispositivo - sem necessidade de conta.',
+  description: 'O ANQR é um gerador de código QR gratuito com uma abordagem cliente-primeiro — gere códigos QR localmente ou use nossa API para incorporação.',
   lastUpdated: LAST_UPDATED,
   sections: [
     {
@@ -16,18 +16,20 @@ export const about: PageDefinition = {
     {
       heading: 'Características principais',
       bullets: [
-        'Gere códigos QR instantaneamente no seu dispositivo - sem uploads para o servidor, sem necessidade de conta."',
+        'Gere códigos QR instantaneamente no seu dispositivo — sem uploads para o servidor, sem necessidade de conta."',
         'Personalize cores, estilos de módulos, padrões de busca e adicione sobreposições de imagens.',
         'Exportar em vários formatos: PNG, SVG, WebP e GIF animado.',
         'Controles avançados para nível de correção de erros, versão do QR Code, modo de codificação e seleção de máscara.',
         'Orientações de segurança de leitura e pré-visualização em tempo real para ajudar a manter os códigos legíveis tanto na impressão quanto nas telas.',
-        'Funciona offline depois de carregado - é um aplicativo web estático que você pode executar em qualquer lugar.',
+        'API do lado do servidor para incorporação profissional com suporte completo a parâmetros.',
+        'Funciona offline depois de carregado — é um aplicativo web estático que você pode executar em qualquer lugar.',
       ],
     },
     {
       heading: 'Como funciona o ANQR',
       paragraphs: [
         'O ANQR é executado no seu navegador e codifica a sua entrada em uma matriz QR padrão com correção de erros Reed-Solomon, e então a renderiza no formato que você escolher.',
+        'Por padrão, a geração acontece localmente no seu navegador. Para uso profissional, você também pode usar a API do lado do servidor para gerar códigos QR via parâmetros de URL — perfeito para incorporar em sites, e-mails ou fluxos de trabalho automatizados.',
         'Toda a geração ocorre localmente. Ao adicionar sobreposições ou animações, o ANQR equilibra o estilo com a confiabilidade da leitura, para que o resultado permaneça legível.',
         'O ANQR se concentra em códigos estáticos (os dados estão dentro do QR). Se você precisar de um código dinâmico (destino editável), poderá codificar seu próprio URL de redirecionamento ou link curto.',
       ],
@@ -61,7 +63,7 @@ export const about: PageDefinition = {
     {
       heading: 'Feedback e contribuições',
       paragraphs: [
-        'Agradecemos comentários, relatórios de erros e sugestões de recursos. Entre em contato conosco por e-mail ou pela página de contato - lemos todas as mensagens, embora o tempo de resposta possa variar.',
+        'Agradecemos comentários, relatórios de erros e sugestões de recursos. Entre em contato conosco por e-mail ou pela página de contato — lemos todas as mensagens, embora o tempo de resposta possa variar.',
       ],
     },
   ],

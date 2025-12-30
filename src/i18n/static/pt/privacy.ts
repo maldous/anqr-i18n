@@ -9,7 +9,8 @@ export const privacy: PageDefinition = {
     {
       heading: 'Resumo',
       paragraphs: [
-        'O ANQR é um gerador de código QR que funciona inteiramente no seu dispositivo. Não exigimos que você crie uma conta e os códigos QR são gerados localmente - não temos acesso ao conteúdo que você codifica.',
+        'O ANQR é um gerador de código QR que funciona inteiramente no seu dispositivo. Não exigimos que você crie uma conta e os códigos QR são gerados localmente — não temos acesso ao conteúdo que você codifica.',
+        'Para uso profissional, o ANQR fornece uma API do lado do servidor que gera códigos QR a partir de parâmetros de URL. Ao usar a API, seu conteúdo QR é processado em nossos servidores para renderizar a imagem, mas não é armazenado ou registrado.',
         'Utilizamos o Google AdSense para publicidade e podemos usar serviços de análise. Esses serviços coletam informações por meio de cookies e tecnologias semelhantes. Esta política explica quais dados são coletados, como são usados e seus direitos.',
       ],
     },
@@ -89,8 +90,8 @@ export const privacy: PageDefinition = {
     {
       heading: 'Base jurídica do RGPD',
       paragraphs: [
-        'Processamos dados com base nestes fundamentos: (a) Consentimento - para publicidade personalizada (gerida pelos nossos parceiros de publicidade); (b) Interesses legítimos - para análises, segurança e melhoria; (c) Contrato - para responder a pedidos de informação.',
-        `Para exercer seus direitos, entre em contato com ${CONTACT_EMAIL}. Responderemos em até 30 dias.`,
+        'Processamos dados com base nestes fundamentos: (a) Consentimento — para publicidade personalizada (gerida pelos nossos parceiros de publicidade); (b) Interesses legítimos — para análises, segurança e melhoria; (c) Contrato — para responder a pedidos de informação.',
+        'Para exercer seus direitos, entre em contato com ${CONTACT_EMAIL}. Responderemos em até 30 dias.',
       ],
     },
     {
@@ -106,7 +107,7 @@ export const privacy: PageDefinition = {
       heading: 'Categorias CCPA coletadas',
       paragraphs: [
         'Categorias: Identificadores (endereço IP, ID do dispositivo), Atividade na Internet (navegação, interações com anúncios), Geolocalização (aproximada), Inferências (interesses da navegação).',
-        `Para exercer seus direitos ou optar por não participar: ${CONTACT_EMAIL} ou ajuste as configurações de cookies.`,
+        'Para exercer seus direitos ou optar por não participar: ${CONTACT_EMAIL} ou ajuste as configurações de cookies.',
       ],
     },
     {
@@ -118,7 +119,7 @@ export const privacy: PageDefinition = {
     {
       heading: 'Privacidade das crianças',
       paragraphs: [
-        `O ANQR não se destina a crianças menores de 13 anos (ou 16 anos no EEE). Não coletamos dados de crianças intencionalmente. Entre em contato com ${CONTACT_EMAIL} se você acredita que uma criança forneceu informações.`,
+        'O ANQR não se destina a crianças menores de 13 anos (ou 16 anos no EEE). Não coletamos dados de crianças intencionalmente. Entre em contato com ${CONTACT_EMAIL} se você acredita que uma criança forneceu informações.',
       ],
     },
     {
@@ -142,8 +143,10 @@ export const privacy: PageDefinition = {
     {
       heading: 'Contacte-nos',
       paragraphs: [
-        `Para questões de privacidade ou para exercer seus direitos: ${CONTACT_EMAIL} ou use nossa página de contato. Respondemos às solicitações de privacidade em até 30 dias.`,
+        'Para questões de privacidade ou para exercer seus direitos: ${CONTACT_EMAIL} ou use nossa página de contato. Respondemos às solicitações de privacidade em até 30 dias.',
       ],
     },
   ],
 }
+
+export default privacy;

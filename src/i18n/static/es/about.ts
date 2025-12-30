@@ -3,7 +3,7 @@ import { LAST_UPDATED, CONTACT_EMAIL } from '../types'
 
 export const about: PageDefinition = {
   title: 'Acerca de ANQR',
-  description: 'ANQR es un generador de códigos QR gratuito que funciona completamente en tu dispositivo, sin necesidad de tener una cuenta.',
+  description: 'ANQR es un generador de códigos QR gratuito con un enfoque cliente-primero — genera códigos QR localmente o usa nuestra API para integraciones.',
   lastUpdated: LAST_UPDATED,
   sections: [
     {
@@ -21,13 +21,15 @@ export const about: PageDefinition = {
         'Exportar en múltiples formatos: PNG, SVG, WebP y GIF animado.',
         'Controles avanzados para el nivel de corrección de errores, versión QR, modo de codificación y selección de máscara.',
         'Guía de seguridad de escaneo y vista previa en vivo para ayudar a mantener los códigos legibles en la impresión y en las pantallas.',
-        'Funciona sin conexión una vez cargado: es una aplicación web estática que puedes ejecutar en cualquier lugar.',
+        'API del lado del servidor para integración profesional con soporte completo de parámetros.',
+        'Funciona sin conexión una vez cargado — es una aplicación web estática que puedes ejecutar en cualquier lugar.',
       ],
     },
     {
       heading: 'Cómo funciona ANQR',
       paragraphs: [
         'ANQR se ejecuta en su navegador y codifica su entrada en una matriz QR estándar con corrección de errores Reed-Solomon, luego la convierte al formato que usted elija.',
+        'Por defecto, la generación ocurre localmente en tu navegador. Para uso profesional, también puedes usar la API del lado del servidor para generar códigos QR mediante parámetros URL — perfecto para integrar en sitios web, correos electrónicos o flujos de trabajo automatizados.',
         'Toda la generación se realiza localmente. Al añadir superposiciones o animaciones, ANQR equilibra el estilo con la fiabilidad del escaneo para que el resultado siga siendo escaneable.',
         'ANQR se centra en códigos estáticos (los datos se encuentran dentro del QR). Si necesita un código dinámico (destino editable), puede codificar su propia URL de redireccionamiento o enlace corto.',
       ],

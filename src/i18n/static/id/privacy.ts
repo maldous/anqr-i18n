@@ -9,7 +9,8 @@ export const privacy: PageDefinition = {
     {
       heading: 'Ringkasan',
       paragraphs: [
-        'ANQR adalah generator kode QR yang berjalan sepenuhnya di perangkat Anda. Kami tidak mengharuskan Anda membuat akun, dan kode QR dihasilkan secara lokal - kami tidak memiliki akses ke konten yang Anda encode.',
+        'ANQR adalah generator kode QR yang berjalan sepenuhnya di perangkat Anda. Kami tidak mengharuskan Anda membuat akun, dan kode QR dihasilkan secara lokal — kami tidak memiliki akses ke konten yang Anda encode.',
+        'Untuk penggunaan profesional, ANQR menyediakan API sisi server yang menghasilkan kode QR dari parameter URL. Saat menggunakan API, konten QR Anda diproses di server kami untuk merender gambar, tetapi tidak disimpan atau dicatat.',
         'Kami menggunakan Google AdSense untuk periklanan dan dapat menggunakan layanan analitik. Layanan ini mengumpulkan informasi melalui cookie dan teknologi serupa. Kebijakan ini menjelaskan data apa yang dikumpulkan, bagaimana data tersebut digunakan, dan hak-hak Anda.',
       ],
     },
@@ -89,8 +90,8 @@ export const privacy: PageDefinition = {
     {
       heading: 'Dasar hukum GDPR',
       paragraphs: [
-        'Kami memproses data berdasarkan hal-hal berikut: (a) Persetujuan - untuk iklan yang dipersonalisasi (dikelola oleh mitra periklanan kami); (b) Kepentingan sah - untuk analitik, keamanan, dan peningkatan; (c) Kontrak - untuk menanggapi pertanyaan.',
-        `Untuk menggunakan hak Anda, hubungi ${CONTACT_EMAIL}. Kami akan merespons dalam waktu 30 hari.`,
+        'Kami memproses data berdasarkan hal-hal berikut: (a) Persetujuan — untuk iklan yang dipersonalisasi (dikelola oleh mitra periklanan kami); (b) Kepentingan sah — untuk analitik, keamanan, dan peningkatan; (c) Kontrak — untuk menanggapi pertanyaan.',
+        'Untuk menggunakan hak Anda, hubungi ${CONTACT_EMAIL}. Kami akan merespons dalam waktu 30 hari.',
       ],
     },
     {
@@ -106,7 +107,7 @@ export const privacy: PageDefinition = {
       heading: 'Kategori CCPA yang dikumpulkan',
       paragraphs: [
         'Kategori: Pengidentifikasi (alamat IP, ID perangkat), Aktivitas internet (penjelajahan, interaksi iklan), Geolokasi (perkiraan), Kesimpulan (minat dari penjelajahan).',
-        `Untuk menggunakan hak atau menolak: ${CONTACT_EMAIL} atau sesuaikan pengaturan cookie.`,
+        'Untuk menggunakan hak atau menolak: ${CONTACT_EMAIL} atau sesuaikan pengaturan cookie.',
       ],
     },
     {
@@ -118,7 +119,7 @@ export const privacy: PageDefinition = {
     {
       heading: 'Privasi anak-anak',
       paragraphs: [
-        `ANQR tidak ditujukan untuk anak-anak di bawah usia 13 tahun (atau 16 tahun di EEA). Kami tidak dengan sengaja mengumpulkan data dari anak-anak. Hubungi ${CONTACT_EMAIL} jika Anda yakin seorang anak telah memberikan informasi.`,
+        'ANQR tidak ditujukan untuk anak-anak di bawah usia 13 tahun (atau 16 tahun di EEA). Kami tidak dengan sengaja mengumpulkan data dari anak-anak. Hubungi ${CONTACT_EMAIL} jika Anda yakin seorang anak telah memberikan informasi.',
       ],
     },
     {
@@ -142,8 +143,10 @@ export const privacy: PageDefinition = {
     {
       heading: 'Hubungi kami',
       paragraphs: [
-        `Untuk pertanyaan privasi atau untuk menggunakan hak Anda: ${CONTACT_EMAIL} atau gunakan halaman Kontak kami. Kami menanggapi permintaan privasi dalam waktu 30 hari.`,
+        'Untuk pertanyaan privasi atau untuk menggunakan hak Anda: ${CONTACT_EMAIL} atau gunakan halaman Kontak kami. Kami menanggapi permintaan privasi dalam waktu 30 hari.',
       ],
     },
   ],
 }
+
+export default privacy;

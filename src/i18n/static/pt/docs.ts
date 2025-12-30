@@ -9,7 +9,7 @@ export const docs: PageDefinition = {
     {
       heading: 'Primeiros passos',
       paragraphs: [
-        'O ANQR é um gerador de código QR que funciona inteiramente no seu dispositivo - seu computador, celular ou tablet. Não é necessário criar uma conta, não há servidores envolvidos e seus dados permanecem privados.',
+        'O ANQR é um gerador de código QR que funciona inteiramente no seu dispositivo — seu computador, celular ou tablet. Não é necessário criar uma conta, não há servidores envolvidos e seus dados permanecem privados.',
         'A interface possui três níveis: Básico, Avançado e Profissional. Selecione o seu nível usando as abas no cabeçalho. Cada nível desbloqueia recursos adicionais, mantendo a interface focada no que você precisa.',
       ],
       bullets: [
@@ -554,6 +554,178 @@ export const docs: PageDefinition = {
       bullets: [
         'Dithering Temporal: Desativado, Ruído Azul ou Dithering por quadro seguro contra cintilação.',
         'Padrão: Nenhum, Pulso, Onda, Linha de Varredura, Brilho ou efeitos de Deriva.',
+      ],
+    },
+    {
+      heading: 'Referência da API',
+      paragraphs: [
+        'O ANQR fornece uma API do lado do servidor para gerar códigos QR via parâmetros de URL. Isso é ideal para incorporar códigos QR em sites, e-mails, documentos ou fluxos de trabalho automatizados sem JavaScript do lado do cliente.',
+        'URL Base: https://anqr.link/api/qr',
+      ],
+    },
+    {
+      heading: 'API: Parâmetros Básicos',
+      paragraphs: [
+        'Parâmetros obrigatórios e comuns (os nomes dos parâmetros não são traduzidos):',
+      ],
+      bullets: [
+        'data (obrigatório): O conteúdo a ser codificado no código QR. Codifique caracteres especiais na URL.',
+        'size: Tamanho da imagem em pixels (padrão: 400, máximo: 2000). Usado se w/h não for especificado.',
+        'w, h: Largura e altura de saída em pixels. Substitui o parâmetro size.',
+        'format: Formato de saída — png, webp ou gif (padrão: png).',
+        'ec: Nível de correção de erros — L, M, Q ou H (padrão: H).',
+        'fg: Cor do primeiro plano em hex sem # (padrão: 000000).',
+        'bg: Cor de fundo em hex sem # (padrão: ffffff).',
+        'transparent: Defina como 1 para fundo transparente.',
+        'margin: Zona de silêncio em módulos (padrão: 4).',
+      ],
+    },
+    {
+      heading: 'API: Parâmetros de Estilo',
+      paragraphs: [
+        'Estilo de módulos e padrões:',
+      ],
+      bullets: [
+        'style: Estilo do módulo — square, rounded, dots, diamond, connected.',
+        'finder: Estilo do padrão localizador — square, rounded, circle.',
+        'align: Estilo do padrão de alinhamento — match_finder, square, rounded, circle.',
+        'timing: Estilo do padrão de temporização — match_module, solid, dashed.',
+        'radius: Percentual do raio do canto 0-100.',
+        'gap: Percentual de espaçamento entre módulos 0-50.',
+        'gapMode: Modo de espaçamento — none, inset, stroke, negative_space.',
+        'eyeOuter, eyeInner: Estilos dos olhos — square, rounded, circle.',
+        'eyeScale: Percentual de escala do olho (padrão: 100).',
+        'grad: Tipo de gradiente — none, linear, radial, conic.',
+        'gradAngle: Ângulo do gradiente para gradientes lineares.',
+        'gradStops: Pontos de parada do gradiente como cor1,pos1,cor2,pos2,... (ex: ff0000,0,0000ff,1).',
+      ],
+    },
+    {
+      heading: 'API: Parâmetros de Sobreposição',
+      paragraphs: [
+        'Opções de sobreposição de imagem (a imagem de sobreposição é buscada do lado do servidor):',
+      ],
+      bullets: [
+        'img: URL da imagem de sobreposição (deve ser acessível publicamente).',
+        'mode: Modo de sobreposição — center, halftone, blend, brightness, mosaic, dithered, blue-noise, subpixel.',
+        'intensity: Intensidade da sobreposição 0-100 (padrão: 100).',
+        'colorMode: Modo de cor da sobreposição — color, grayscale, bw.',
+        'fit: Como a sobreposição se ajusta — cover, contain, stretch.',
+        'rot: Rotação da sobreposição em graus.',
+        'flipX, flipY: Defina como 1 para inverter a sobreposição.',
+        'keepFinders: Preservar padrões localizadores (padrão: 1).',
+        'keepTiming, keepAlign: Defina como 1 para preservar padrões de temporização/alinhamento.',
+      ],
+    },
+    {
+      heading: 'API: Parâmetros de Pré-processamento',
+      paragraphs: [
+        'Pré-processamento de imagem aplicado à sobreposição:',
+      ],
+      bullets: [
+        'brightness: Ajuste de -100 a 100 (padrão: 0).',
+        'contrast: Ajuste de -100 a 100 (padrão: 0).',
+        'gamma: Valor de 0.1 a 3 (padrão: 1).',
+        'saturation: Ajuste de -100 a 100 (padrão: 0).',
+        'hue: Rotação de matiz em graus.',
+        'blur: Desfoque em pixels.',
+        'sharpen: Quantidade de nitidez 0-100.',
+        'posterize: Níveis de posterização.',
+        'threshold: Limiar binário 0-255.',
+        'edge: Detecção de bordas — off, sobel, canny.',
+        'invert: Defina como 1 para inverter cores.',
+      ],
+    },
+    {
+      heading: 'API: Parâmetros de Marca d\'água',
+      paragraphs: [
+        'Adicione marcas d\'água aos códigos QR gerados:',
+      ],
+      bullets: [
+        'wmEn: Defina como 1 para habilitar marca d\'água.',
+        'wmKind: Tipo de marca d\'água — text, image, pattern.',
+        'wmText: Texto da marca d\'água (codificado em URL).',
+        'wmImg: URL da imagem da marca d\'água.',
+        'wmPos: Posição — center, corners, edges, behind, quiet_zone.',
+        'wmOpacity: Opacidade 0-100 (padrão: 50).',
+        'wmBlend: Modo de mesclagem — normal, multiply, screen, overlay.',
+      ],
+    },
+    {
+      heading: 'API: Parâmetros de Animação',
+      paragraphs: [
+        'Para saída de GIF animado (requer format=gif):',
+      ],
+      bullets: [
+        'animPattern: Padrão de animação — none, pulse, wave, scanline, shimmer, drift, color_cycle.',
+        'animFrames: Número de quadros 1-60 (padrão: 24).',
+        'animSpeed: Atraso de quadro em milissegundos 10-1000 (padrão: 100).',
+        'animSeed: Semente aleatória para animação.',
+        'easing: Suavização da animação — linear, ease_in, ease_out, ease_in_out, bounce.',
+      ],
+    },
+    {
+      heading: 'API: Parâmetros de Saída',
+      paragraphs: [
+        'Opções de formato de saída:',
+      ],
+      bullets: [
+        'quality: Qualidade WebP 0-1 (padrão: 0.9).',
+        'webpQ: Qualidade WebP 0-100 (padrão: 90).',
+        'gifColors: Tamanho da paleta GIF 2-256 (padrão: 256).',
+        'dpi: DPI de saída para PNG (padrão: 72).',
+        'metaTitle, metaAuthor, metaCopy, metaDesc: Campos de metadados PNG.',
+      ],
+    },
+    {
+      heading: 'API: Exemplo de Uso',
+      paragraphs: [
+        'Código QR básico:',
+        'https://anqr.link/api/qr?data=https://example.com',
+        'Código QR estilizado com cores personalizadas:',
+        'https://anqr.link/api/qr?data=Hello&size=300&fg=1e40af&bg=ffffff&style=rounded&radius=30',
+        'Código QR com imagem de sobreposição:',
+        'https://anqr.link/api/qr?data=https://example.com&ec=H&img=https://example.com/logo.png&mode=halftone&intensity=70',
+        'GIF animado:',
+        'https://anqr.link/api/qr?data=Hello&format=gif&animPattern=pulse&animFrames=24&easing=ease_in_out',
+      ],
+    },
+    {
+      heading: 'Incorporando Códigos QR',
+      paragraphs: [
+        'No modo Profissional, o recurso Compartilhar gera HTML e URLs incorporáveis. Veja como a incorporação funciona:',
+      ],
+      bullets: [
+        'Link de Compartilhamento: Cria uma URL para o aplicativo ANQR com todas as suas configurações codificadas como parâmetros de URL. Os destinatários podem visualizar e modificar o código QR.',
+        'Incorporar Imagem: Gera uma tag <img> apontando para a API do servidor. O código QR é renderizado do lado do servidor e servido como imagem.',
+        'Incorporar Markdown: Cria sintaxe de imagem Markdown para documentação e arquivos README.',
+        'URL Direto da API: A URL bruta da API para uso em aplicativos, scripts ou outras integrações.',
+      ],
+    },
+    {
+      heading: 'Incorporação: Exemplo HTML',
+      paragraphs: [
+        'Para incorporar um código QR em seu site:',
+        '<img src="https://anqr.link/api/qr?data=https://yoursite.com&size=200" alt="Código QR" />',
+        'Para dimensionamento responsivo:',
+        '<img src="https://anqr.link/api/qr?data=https://yoursite.com&size=400" alt="Código QR" style="max-width: 100%; height: auto;" />',
+        'O servidor armazena respostas em cache com cabeçalhos de cache longos, então solicitações repetidas para a mesma URL são rápidas.',
+      ],
+    },
+    {
+      heading: 'Incorporação: Formato da URL de Compartilhamento',
+      paragraphs: [
+        'Quando você clica em Compartilhar no modo Profissional, o ANQR codifica suas configurações atuais em parâmetros de URL. O formato é:',
+        'https://anqr.link/?data=...&ec=H&style=rounded&....',
+        'Esses parâmetros espelham os parâmetros da API, então você pode converter uma URL de compartilhamento em uma URL de API alterando o caminho base de / para /api/qr e ajustando os parâmetros w/h conforme necessário.',
+        'Nota: Imagens de sobreposição carregadas de arquivos locais não podem ser compartilhadas via URL — apenas sobreposições baseadas em URL (parâmetro img) funcionam em links compartilhados e chamadas de API.',
+      ],
+    },
+    {
+      heading: 'API: Limites de Taxa e Uso',
+      paragraphs: [
+        'A API é gratuita para uso em volumes razoáveis. Para uso de alto volume ou aplicações comerciais que exigem tempo de atividade garantido, entre em contato conosco.',
+        'As respostas da API incluem cabeçalhos de cache agressivos. Para melhor desempenho, armazene as respostas em cache do seu lado ou use a mesma URL consistentemente para códigos QR idênticos.',
       ],
     },
     {

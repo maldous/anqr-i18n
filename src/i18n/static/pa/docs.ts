@@ -557,6 +557,178 @@ export const docs: PageDefinition = {
       ],
     },
     {
+      heading: 'API ਹਵਾਲਾ',
+      paragraphs: [
+        'ANQR URL ਪੈਰਾਮੀਟਰਾਂ ਰਾਹੀਂ QR ਕੋਡ ਤਿਆਰ ਕਰਨ ਲਈ ਇੱਕ ਸਰਵਰ-ਸਾਈਡ API ਪ੍ਰਦਾਨ ਕਰਦਾ ਹੈ। ਇਹ ਕਲਾਇੰਟ-ਸਾਈਡ JavaScript ਤੋਂ ਬਿਨਾਂ ਵੈੱਬਸਾਈਟਾਂ, ਈਮੇਲਾਂ, ਦਸਤਾਵੇਜ਼ਾਂ, ਜਾਂ ਆਟੋਮੈਟਿਕ ਵਰਕਫਲੋ ਵਿੱਚ QR ਕੋਡ ਏਮਬੈਡ ਕਰਨ ਲਈ ਆਦਰਸ਼ ਹੈ।',
+        'ਬੇਸ URL: https://anqr.link/api/qr',
+      ],
+    },
+    {
+      heading: 'API: ਮੁੱਢਲੇ ਪੈਰਾਮੀਟਰ',
+      paragraphs: [
+        'ਲੋੜੀਂਦੇ ਅਤੇ ਆਮ ਪੈਰਾਮੀਟਰ (ਪੈਰਾਮੀਟਰ ਨਾਮ ਅਨੁਵਾਦ ਨਹੀਂ ਕੀਤੇ ਜਾਂਦੇ):',
+      ],
+      bullets: [
+        'data (ਲੋੜੀਂਦਾ): QR ਕੋਡ ਵਿੱਚ ਏਨਕੋਡ ਕਰਨ ਲਈ ਸਮੱਗਰੀ। ਵਿਸ਼ੇਸ਼ ਅੱਖਰਾਂ ਨੂੰ URL-ਏਨਕੋਡ ਕਰੋ।',
+        'size: ਪਿਕਸਲ ਵਿੱਚ ਚਿੱਤਰ ਦਾ ਆਕਾਰ (ਡਿਫਾਲਟ: 400, ਵੱਧ ਤੋਂ ਵੱਧ: 2000)। w/h ਨਿਰਧਾਰਤ ਨਾ ਹੋਣ \'ਤੇ ਵਰਤਿਆ ਜਾਂਦਾ ਹੈ।',
+        'w, h: ਪਿਕਸਲ ਵਿੱਚ ਆਉਟਪੁੱਟ ਚੌੜਾਈ ਅਤੇ ਉਚਾਈ। size ਪੈਰਾਮੀਟਰ ਨੂੰ ਓਵਰਰਾਈਡ ਕਰਦਾ ਹੈ।',
+        'format: ਆਉਟਪੁੱਟ ਫਾਰਮੈਟ — png, webp, ਜਾਂ gif (ਡਿਫਾਲਟ: png)।',
+        'ec: ਗਲਤੀ ਸੁਧਾਰ ਪੱਧਰ — L, M, Q, ਜਾਂ H (ਡਿਫਾਲਟ: H)।',
+        'fg: # ਤੋਂ ਬਿਨਾਂ hex ਵਜੋਂ ਫੋਰਗਰਾਉਂਡ ਰੰਗ (ਡਿਫਾਲਟ: 000000)।',
+        'bg: # ਤੋਂ ਬਿਨਾਂ hex ਵਜੋਂ ਬੈਕਗ੍ਰਾਉਂਡ ਰੰਗ (ਡਿਫਾਲਟ: ffffff)।',
+        'transparent: ਪਾਰਦਰਸ਼ੀ ਬੈਕਗ੍ਰਾਉਂਡ ਲਈ 1 ਸੈੱਟ ਕਰੋ।',
+        'margin: ਮੋਡੀਊਲਾਂ ਵਿੱਚ ਸ਼ਾਂਤ ਜ਼ੋਨ (ਡਿਫਾਲਟ: 4)।',
+      ],
+    },
+    {
+      heading: 'API: ਸਟਾਈਲਿੰਗ ਪੈਰਾਮੀਟਰ',
+      paragraphs: [
+        'ਮੋਡੀਊਲ ਅਤੇ ਪੈਟਰਨ ਸਟਾਈਲਿੰਗ:',
+      ],
+      bullets: [
+        'style: ਮੋਡੀਊਲ ਸਟਾਈਲ — square, rounded, dots, diamond, connected।',
+        'finder: ਫਾਈਂਡਰ ਪੈਟਰਨ ਸਟਾਈਲ — square, rounded, circle।',
+        'align: ਅਲਾਈਨਮੈਂਟ ਪੈਟਰਨ ਸਟਾਈਲ — match_finder, square, rounded, circle।',
+        'timing: ਟਾਈਮਿੰਗ ਪੈਟਰਨ ਸਟਾਈਲ — match_module, solid, dashed।',
+        'radius: ਕੋਨੇ ਦਾ ਘੇਰਾ ਪ੍ਰਤੀਸ਼ਤ 0-100।',
+        'gap: ਮੋਡੀਊਲ ਗੈਪ ਪ੍ਰਤੀਸ਼ਤ 0-50।',
+        'gapMode: ਗੈਪ ਮੋਡ — none, inset, stroke, negative_space।',
+        'eyeOuter, eyeInner: ਅੱਖ ਸਟਾਈਲ — square, rounded, circle।',
+        'eyeScale: ਅੱਖ ਸਕੇਲ ਪ੍ਰਤੀਸ਼ਤ (ਡਿਫਾਲਟ: 100)।',
+        'grad: ਗ੍ਰੇਡੀਐਂਟ ਕਿਸਮ — none, linear, radial, conic।',
+        'gradAngle: ਲੀਨੀਅਰ ਗ੍ਰੇਡੀਐਂਟ ਲਈ ਗ੍ਰੇਡੀਐਂਟ ਐਂਗਲ।',
+        'gradStops: ਗ੍ਰੇਡੀਐਂਟ ਸਟੌਪਸ color1,pos1,color2,pos2,... ਵਜੋਂ (ਉਦਾਹਰਨ, ff0000,0,0000ff,1)।',
+      ],
+    },
+    {
+      heading: 'API: ਓਵਰਲੇ ਪੈਰਾਮੀਟਰ',
+      paragraphs: [
+        'ਚਿੱਤਰ ਓਵਰਲੇ ਵਿਕਲਪ (ਓਵਰਲੇ ਚਿੱਤਰ ਸਰਵਰ-ਸਾਈਡ ਫੈਚ ਕੀਤਾ ਜਾਂਦਾ ਹੈ):',
+      ],
+      bullets: [
+        'img: ਓਵਰਲੇ ਚਿੱਤਰ ਦਾ URL (ਜਨਤਕ ਤੌਰ \'ਤੇ ਪਹੁੰਚਯੋਗ ਹੋਣਾ ਚਾਹੀਦਾ ਹੈ)।',
+        'mode: ਓਵਰਲੇ ਮੋਡ — center, halftone, blend, brightness, mosaic, dithered, blue-noise, subpixel।',
+        'intensity: ਓਵਰਲੇ ਤੀਬਰਤਾ 0-100 (ਡਿਫਾਲਟ: 100)।',
+        'colorMode: ਓਵਰਲੇ ਰੰਗ ਮੋਡ — color, grayscale, bw।',
+        'fit: ਓਵਰਲੇ ਕਿਵੇਂ ਫਿੱਟ ਹੁੰਦਾ ਹੈ — cover, contain, stretch।',
+        'rot: ਡਿਗਰੀਆਂ ਵਿੱਚ ਓਵਰਲੇ ਰੋਟੇਸ਼ਨ।',
+        'flipX, flipY: ਓਵਰਲੇ ਫਲਿੱਪ ਕਰਨ ਲਈ 1 ਸੈੱਟ ਕਰੋ।',
+        'keepFinders: ਫਾਈਂਡਰ ਪੈਟਰਨ ਸੁਰੱਖਿਅਤ ਰੱਖੋ (ਡਿਫਾਲਟ: 1)।',
+        'keepTiming, keepAlign: ਟਾਈਮਿੰਗ/ਅਲਾਈਨਮੈਂਟ ਪੈਟਰਨ ਸੁਰੱਖਿਅਤ ਰੱਖਣ ਲਈ 1 ਸੈੱਟ ਕਰੋ।',
+      ],
+    },
+    {
+      heading: 'API: ਪ੍ਰੀਪ੍ਰੋਸੈਸਿੰਗ ਪੈਰਾਮੀਟਰ',
+      paragraphs: [
+        'ਓਵਰਲੇ \'ਤੇ ਲਾਗੂ ਚਿੱਤਰ ਪ੍ਰੀਪ੍ਰੋਸੈਸਿੰਗ:',
+      ],
+      bullets: [
+        'brightness: -100 ਤੋਂ 100 ਤੱਕ ਐਡਜਸਟਮੈਂਟ (ਡਿਫਾਲਟ: 0)।',
+        'contrast: -100 ਤੋਂ 100 ਤੱਕ ਐਡਜਸਟਮੈਂਟ (ਡਿਫਾਲਟ: 0)।',
+        'gamma: 0.1 ਤੋਂ 3 ਤੱਕ ਮੁੱਲ (ਡਿਫਾਲਟ: 1)।',
+        'saturation: -100 ਤੋਂ 100 ਤੱਕ ਐਡਜਸਟਮੈਂਟ (ਡਿਫਾਲਟ: 0)।',
+        'hue: ਡਿਗਰੀਆਂ ਵਿੱਚ ਹਿਊ ਰੋਟੇਸ਼ਨ।',
+        'blur: ਪਿਕਸਲਾਂ ਵਿੱਚ ਬਲਰ।',
+        'sharpen: ਸ਼ਾਰਪਨ ਮਾਤਰਾ 0-100।',
+        'posterize: ਪੋਸਟਰਾਈਜ਼ ਪੱਧਰ।',
+        'threshold: ਬਾਈਨਰੀ ਥ੍ਰੈਸ਼ਹੋਲਡ 0-255।',
+        'edge: ਕਿਨਾਰਾ ਖੋਜ — off, sobel, canny।',
+        'invert: ਰੰਗ ਉਲਟਾਉਣ ਲਈ 1 ਸੈੱਟ ਕਰੋ।',
+      ],
+    },
+    {
+      heading: 'API: ਵਾਟਰਮਾਰਕ ਪੈਰਾਮੀਟਰ',
+      paragraphs: [
+        'ਤਿਆਰ ਕੀਤੇ QR ਕੋਡਾਂ ਵਿੱਚ ਵਾਟਰਮਾਰਕ ਸ਼ਾਮਲ ਕਰੋ:',
+      ],
+      bullets: [
+        'wmEn: ਵਾਟਰਮਾਰਕ ਸਮਰੱਥ ਕਰਨ ਲਈ 1 ਸੈੱਟ ਕਰੋ।',
+        'wmKind: ਵਾਟਰਮਾਰਕ ਕਿਸਮ — text, image, pattern।',
+        'wmText: ਵਾਟਰਮਾਰਕ ਟੈਕਸਟ (URL-ਏਨਕੋਡਡ)।',
+        'wmImg: ਵਾਟਰਮਾਰਕ ਚਿੱਤਰ ਦਾ URL।',
+        'wmPos: ਸਥਿਤੀ — center, corners, edges, behind, quiet_zone।',
+        'wmOpacity: ਧੁੰਦਲਾਪਨ 0-100 (ਡਿਫਾਲਟ: 50)।',
+        'wmBlend: ਬਲੈਂਡ ਮੋਡ — normal, multiply, screen, overlay।',
+      ],
+    },
+    {
+      heading: 'API: ਐਨੀਮੇਸ਼ਨ ਪੈਰਾਮੀਟਰ',
+      paragraphs: [
+        'ਐਨੀਮੇਟਡ GIF ਆਉਟਪੁੱਟ ਲਈ (format=gif ਲੋੜੀਂਦਾ ਹੈ):',
+      ],
+      bullets: [
+        'animPattern: ਐਨੀਮੇਸ਼ਨ ਪੈਟਰਨ — none, pulse, wave, scanline, shimmer, drift, color_cycle।',
+        'animFrames: ਫਰੇਮਾਂ ਦੀ ਗਿਣਤੀ 1-60 (ਡਿਫਾਲਟ: 24)।',
+        'animSpeed: ਮਿਲੀਸਕਿੰਟਾਂ ਵਿੱਚ ਫਰੇਮ ਦੇਰੀ 10-1000 (ਡਿਫਾਲਟ: 100)।',
+        'animSeed: ਐਨੀਮੇਸ਼ਨ ਲਈ ਬੇਤਰਤੀਬ ਬੀਜ।',
+        'easing: ਐਨੀਮੇਸ਼ਨ ਈਜ਼ਿੰਗ — linear, ease_in, ease_out, ease_in_out, bounce।',
+      ],
+    },
+    {
+      heading: 'API: ਆਉਟਪੁੱਟ ਪੈਰਾਮੀਟਰ',
+      paragraphs: [
+        'ਆਉਟਪੁੱਟ ਫਾਰਮੈਟ ਵਿਕਲਪ:',
+      ],
+      bullets: [
+        'quality: WebP ਗੁਣਵੱਤਾ 0-1 (ਡਿਫਾਲਟ: 0.9)।',
+        'webpQ: WebP ਗੁਣਵੱਤਾ 0-100 (ਡਿਫਾਲਟ: 90)।',
+        'gifColors: GIF ਪੈਲੇਟ ਆਕਾਰ 2-256 (ਡਿਫਾਲਟ: 256)।',
+        'dpi: PNG ਲਈ ਆਉਟਪੁੱਟ DPI (ਡਿਫਾਲਟ: 72)।',
+        'metaTitle, metaAuthor, metaCopy, metaDesc: PNG ਮੈਟਾਡੇਟਾ ਖੇਤਰ।',
+      ],
+    },
+    {
+      heading: 'API: ਵਰਤੋਂ ਦੀ ਉਦਾਹਰਨ',
+      paragraphs: [
+        'ਮੁੱਢਲਾ QR ਕੋਡ:',
+        'https://anqr.link/api/qr?data=https://example.com',
+        'ਕਸਟਮ ਰੰਗਾਂ ਨਾਲ ਸਟਾਈਲਡ QR ਕੋਡ:',
+        'https://anqr.link/api/qr?data=Hello&size=300&fg=1e40af&bg=ffffff&style=rounded&radius=30',
+        'ਓਵਰਲੇ ਚਿੱਤਰ ਨਾਲ QR ਕੋਡ:',
+        'https://anqr.link/api/qr?data=https://example.com&ec=H&img=https://example.com/logo.png&mode=halftone&intensity=70',
+        'ਐਨੀਮੇਟਡ GIF:',
+        'https://anqr.link/api/qr?data=Hello&format=gif&animPattern=pulse&animFrames=24&easing=ease_in_out',
+      ],
+    },
+    {
+      heading: 'QR ਕੋਡ ਏਮਬੈਡ ਕਰਨਾ',
+      paragraphs: [
+        'ਪੇਸ਼ੇਵਰ ਮੋਡ ਵਿੱਚ, ਸ਼ੇਅਰ ਫੀਚਰ ਏਮਬੈਡ ਕਰਨ ਯੋਗ HTML ਅਤੇ URL ਤਿਆਰ ਕਰਦਾ ਹੈ। ਏਮਬੈਡਿੰਗ ਕਿਵੇਂ ਕੰਮ ਕਰਦੀ ਹੈ:',
+      ],
+      bullets: [
+        'ਸ਼ੇਅਰ ਲਿੰਕ: ANQR ਐਪ ਲਈ ਤੁਹਾਡੀਆਂ ਸਾਰੀਆਂ ਸੈਟਿੰਗਾਂ URL ਪੈਰਾਮੀਟਰਾਂ ਵਜੋਂ ਏਨਕੋਡ ਕੀਤੀਆਂ ਨਾਲ ਇੱਕ URL ਬਣਾਉਂਦਾ ਹੈ। ਪ੍ਰਾਪਤਕਰਤਾ QR ਕੋਡ ਨੂੰ ਦੇਖ ਅਤੇ ਸੋਧ ਸਕਦੇ ਹਨ।',
+        'ਚਿੱਤਰ ਏਮਬੈਡ ਕਰੋ: ਸਰਵਰ API ਵੱਲ ਇਸ਼ਾਰਾ ਕਰਦੀ ਇੱਕ <img> ਟੈਗ ਤਿਆਰ ਕਰਦਾ ਹੈ। QR ਕੋਡ ਸਰਵਰ-ਸਾਈਡ ਰੈਂਡਰ ਕੀਤਾ ਜਾਂਦਾ ਹੈ ਅਤੇ ਚਿੱਤਰ ਵਜੋਂ ਸਰਵ ਕੀਤਾ ਜਾਂਦਾ ਹੈ।',
+        'Markdown ਏਮਬੈਡ ਕਰੋ: ਦਸਤਾਵੇਜ਼ਾਂ ਅਤੇ README ਫਾਈਲਾਂ ਲਈ Markdown ਚਿੱਤਰ ਸਿੰਟੈਕਸ ਬਣਾਉਂਦਾ ਹੈ।',
+        'ਸਿੱਧਾ API URL: ਐਪਲੀਕੇਸ਼ਨਾਂ, ਸਕ੍ਰਿਪਟਾਂ, ਜਾਂ ਹੋਰ ਏਕੀਕਰਣਾਂ ਵਿੱਚ ਵਰਤਣ ਲਈ ਕੱਚਾ API URL।',
+      ],
+    },
+    {
+      heading: 'ਏਮਬੈਡਿੰਗ: HTML ਉਦਾਹਰਨ',
+      paragraphs: [
+        'ਆਪਣੀ ਵੈੱਬਸਾਈਟ ਵਿੱਚ QR ਕੋਡ ਏਮਬੈਡ ਕਰਨ ਲਈ:',
+        '<img src="https://anqr.link/api/qr?data=https://yoursite.com&size=200" alt="QR ਕੋਡ" />',
+        'ਜਵਾਬਦੇਹ ਆਕਾਰ ਲਈ:',
+        '<img src="https://anqr.link/api/qr?data=https://yoursite.com&size=400" alt="QR ਕੋਡ" style="max-width: 100%; height: auto;" />',
+        'ਸਰਵਰ ਲੰਬੇ ਕੈਸ਼ ਹੈਡਰਾਂ ਨਾਲ ਜਵਾਬਾਂ ਨੂੰ ਕੈਸ਼ ਕਰਦਾ ਹੈ, ਇਸ ਲਈ ਇੱਕੋ URL ਲਈ ਦੁਹਰਾਈਆਂ ਬੇਨਤੀਆਂ ਤੇਜ਼ ਹੁੰਦੀਆਂ ਹਨ।',
+      ],
+    },
+    {
+      heading: 'ਏਮਬੈਡਿੰਗ: ਸ਼ੇਅਰ URL ਫਾਰਮੈਟ',
+      paragraphs: [
+        'ਜਦੋਂ ਤੁਸੀਂ ਪੇਸ਼ੇਵਰ ਮੋਡ ਵਿੱਚ ਸ਼ੇਅਰ \'ਤੇ ਕਲਿੱਕ ਕਰਦੇ ਹੋ, ANQR ਤੁਹਾਡੀਆਂ ਮੌਜੂਦਾ ਸੈਟਿੰਗਾਂ ਨੂੰ URL ਪੈਰਾਮੀਟਰਾਂ ਵਿੱਚ ਏਨਕੋਡ ਕਰਦਾ ਹੈ। ਫਾਰਮੈਟ ਹੈ:',
+        'https://anqr.link/?data=...&ec=H&style=rounded&....',
+        'ਇਹ ਪੈਰਾਮੀਟਰ API ਪੈਰਾਮੀਟਰਾਂ ਨੂੰ ਮਿਰਰ ਕਰਦੇ ਹਨ, ਇਸ ਲਈ ਤੁਸੀਂ ਬੇਸ ਪਾਥ ਨੂੰ / ਤੋਂ /api/qr ਵਿੱਚ ਬਦਲ ਕੇ ਅਤੇ ਲੋੜ ਅਨੁਸਾਰ w/h ਪੈਰਾਮੀਟਰਾਂ ਨੂੰ ਐਡਜਸਟ ਕਰਕੇ ਸ਼ੇਅਰ URL ਨੂੰ API URL ਵਿੱਚ ਬਦਲ ਸਕਦੇ ਹੋ।',
+        'ਨੋਟ: ਸਥਾਨਕ ਫਾਈਲਾਂ ਤੋਂ ਅੱਪਲੋਡ ਕੀਤੇ ਓਵਰਲੇ ਚਿੱਤਰਾਂ ਨੂੰ URL ਰਾਹੀਂ ਸਾਂਝਾ ਨਹੀਂ ਕੀਤਾ ਜਾ ਸਕਦਾ — ਸਿਰਫ਼ URL-ਅਧਾਰਤ ਓਵਰਲੇਅ (img ਪੈਰਾਮੀਟਰ) ਸਾਂਝੇ ਕੀਤੇ ਲਿੰਕਾਂ ਅਤੇ API ਕਾਲਾਂ ਵਿੱਚ ਕੰਮ ਕਰਦੇ ਹਨ।',
+      ],
+    },
+    {
+      heading: 'API: ਰੇਟ ਲਿਮਿਟ ਅਤੇ ਵਰਤੋਂ',
+      paragraphs: [
+        'API ਵਾਜਬ ਮਾਤਰਾਵਾਂ ਲਈ ਮੁਫ਼ਤ ਵਰਤਣ ਯੋਗ ਹੈ। ਉੱਚ-ਮਾਤਰਾ ਵਰਤੋਂ ਜਾਂ ਗਾਰੰਟੀਸ਼ੁਦਾ ਅਪਟਾਈਮ ਲੋੜੀਂਦੇ ਵਪਾਰਕ ਐਪਲੀਕੇਸ਼ਨਾਂ ਲਈ, ਕਿਰਪਾ ਕਰਕੇ ਸਾਡੇ ਨਾਲ ਸੰਪਰਕ ਕਰੋ।',
+        'API ਜਵਾਬਾਂ ਵਿੱਚ ਹਮਲਾਵਰ ਕੈਸ਼ਿੰਗ ਹੈਡਰ ਸ਼ਾਮਲ ਹਨ। ਵਧੀਆ ਪ੍ਰਦਰਸ਼ਨ ਲਈ, ਆਪਣੇ ਪਾਸੇ ਜਵਾਬਾਂ ਨੂੰ ਕੈਸ਼ ਕਰੋ ਜਾਂ ਇੱਕੋ ਜਿਹੇ QR ਕੋਡਾਂ ਲਈ ਲਗਾਤਾਰ ਇੱਕੋ URL ਵਰਤੋ।',
+      ],
+    },
+    {
       heading: 'ਸਭ ਤੋਂ ਵਧੀਆ ਅਭਿਆਸ',
       paragraphs: [
         'ਭਰੋਸੇਯੋਗ QR ਕੋਡਾਂ ਲਈ ਇਹਨਾਂ ਦਿਸ਼ਾ-ਨਿਰਦੇਸ਼ਾਂ ਦੀ ਪਾਲਣਾ ਕਰੋ:',

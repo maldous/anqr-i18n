@@ -90,8 +90,8 @@ export const privacy: PageDefinition = {
     {
       heading: 'GDPR legal basis',
       paragraphs: [
-        'We process data on these bases: (a) Consent - for personalised advertising (managed by our advertising partners); (b) Legitimate interests - for analytics, security, and improvement; (c) Contract - to respond to enquiries.',
-        `To exercise your rights, contact ${CONTACT_EMAIL}. We respond within 30 days.`,
+        'We process data on these bases: (a) Consent — for personalised advertising (managed by our advertising partners); (b) Legitimate interests — for analytics, security, and improvement; (c) Contract — to respond to enquiries.',
+        'To exercise your rights, contact ${CONTACT_EMAIL}. We respond within 30 days.',
       ],
     },
     {
@@ -107,7 +107,7 @@ export const privacy: PageDefinition = {
       heading: 'CCPA categories collected',
       paragraphs: [
         'Categories: Identifiers (IP address, device ID), Internet activity (browsing, ad interactions), Geolocation (approximate), Inferences (interests from browsing).',
-        `To exercise rights or opt out: ${CONTACT_EMAIL} or adjust cookie settings.`,
+        'To exercise rights or opt out: ${CONTACT_EMAIL} or adjust cookie settings.',
       ],
     },
     {
@@ -119,7 +119,7 @@ export const privacy: PageDefinition = {
     {
       heading: 'Children\'s privacy',
       paragraphs: [
-        `ANQR is not directed at children under 13 (or 16 in the EEA). We do not knowingly collect data from children. Contact ${CONTACT_EMAIL} if you believe a child has provided information.`,
+        'ANQR is not directed at children under 13 (or 16 in the EEA). We do not knowingly collect data from children. Contact ${CONTACT_EMAIL} if you believe a child has provided information.',
       ],
     },
     {
@@ -143,8 +143,10 @@ export const privacy: PageDefinition = {
     {
       heading: 'Contact us',
       paragraphs: [
-        `For privacy questions or to exercise your rights: ${CONTACT_EMAIL} or use our Contact page. We respond to privacy requests within 30 days.`,
+        'For privacy questions or to exercise your rights: ${CONTACT_EMAIL} or use our Contact page. We respond to privacy requests within 30 days.',
       ],
     },
   ],
 }
+
+export default privacy;

@@ -557,6 +557,178 @@ export const docs: PageDefinition = {
       ],
     },
     {
+      heading: 'API 参考',
+      paragraphs: [
+        'ANQR 提供服务器端 API，可通过 URL 参数生成二维码。这非常适合在网站、电子邮件、文档或自动化工作流程中嵌入二维码，无需客户端 JavaScript。',
+        '基础 URL：https://anqr.link/api/qr',
+      ],
+    },
+    {
+      heading: 'API：基本参数',
+      paragraphs: [
+        '必需和常用参数（参数名称不翻译）：',
+      ],
+      bullets: [
+        'data（必需）：要编码到二维码中的内容。特殊字符需要 URL 编码。',
+        'size：图像大小（像素），默认：400，最大：2000。如果未指定 w/h 则使用此参数。',
+        'w, h：输出宽度和高度（像素）。覆盖 size 参数。',
+        'format：输出格式 — png、webp 或 gif（默认：png）。',
+        'ec：纠错级别 — L、M、Q 或 H（默认：H）。',
+        'fg：前景颜色，不带 # 的十六进制值（默认：000000）。',
+        'bg：背景颜色，不带 # 的十六进制值（默认：ffffff）。',
+        'transparent：设为 1 表示透明背景。',
+        'margin：静默区模块数（默认：4）。',
+      ],
+    },
+    {
+      heading: 'API：样式参数',
+      paragraphs: [
+        '模块和图案样式：',
+      ],
+      bullets: [
+        'style：模块样式 — square、rounded、dots、diamond、connected。',
+        'finder：定位图案样式 — square、rounded、circle。',
+        'align：对齐图案样式 — match_finder、square、rounded、circle。',
+        'timing：时序图案样式 — match_module、solid、dashed。',
+        'radius：圆角半径百分比 0-100。',
+        'gap：模块间隙百分比 0-50。',
+        'gapMode：间隙模式 — none、inset、stroke、negative_space。',
+        'eyeOuter, eyeInner：眼睛样式 — square、rounded、circle。',
+        'eyeScale：眼睛缩放百分比（默认：100）。',
+        'grad：渐变类型 — none、linear、radial、conic。',
+        'gradAngle：线性渐变的角度。',
+        'gradStops：渐变色标，格式为 color1,pos1,color2,pos2,...（例如：ff0000,0,0000ff,1）。',
+      ],
+    },
+    {
+      heading: 'API：叠加参数',
+      paragraphs: [
+        '图像叠加选项（叠加图像在服务器端获取）：',
+      ],
+      bullets: [
+        'img：叠加图像的 URL（必须可公开访问）。',
+        'mode：叠加模式 — center、halftone、blend、brightness、mosaic、dithered、blue-noise、subpixel。',
+        'intensity：叠加强度 0-100（默认：100）。',
+        'colorMode：叠加颜色模式 — color、grayscale、bw。',
+        'fit：叠加适应方式 — cover、contain、stretch。',
+        'rot：叠加旋转角度（度）。',
+        'flipX, flipY：设为 1 翻转叠加图像。',
+        'keepFinders：保留定位图案（默认：1）。',
+        'keepTiming, keepAlign：设为 1 保留时序/对齐图案。',
+      ],
+    },
+    {
+      heading: 'API：预处理参数',
+      paragraphs: [
+        '应用于叠加图像的预处理：',
+      ],
+      bullets: [
+        'brightness：亮度调整 -100 到 100（默认：0）。',
+        'contrast：对比度调整 -100 到 100（默认：0）。',
+        'gamma：伽马值 0.1 到 3（默认：1）。',
+        'saturation：饱和度调整 -100 到 100（默认：0）。',
+        'hue：色相旋转角度（度）。',
+        'blur：模糊程度（像素）。',
+        'sharpen：锐化程度 0-100。',
+        'posterize：色调分离级别。',
+        'threshold：二值化阈值 0-255。',
+        'edge：边缘检测 — off、sobel、canny。',
+        'invert：设为 1 反转颜色。',
+      ],
+    },
+    {
+      heading: 'API：水印参数',
+      paragraphs: [
+        '为生成的二维码添加水印：',
+      ],
+      bullets: [
+        'wmEn：设为 1 启用水印。',
+        'wmKind：水印类型 — text、image、pattern。',
+        'wmText：水印文本（URL 编码）。',
+        'wmImg：水印图像的 URL。',
+        'wmPos：位置 — center、corners、edges、behind、quiet_zone。',
+        'wmOpacity：不透明度 0-100（默认：50）。',
+        'wmBlend：混合模式 — normal、multiply、screen、overlay。',
+      ],
+    },
+    {
+      heading: 'API：动画参数',
+      paragraphs: [
+        '用于动画 GIF 输出（需要 format=gif）：',
+      ],
+      bullets: [
+        'animPattern：动画图案 — none、pulse、wave、scanline、shimmer、drift、color_cycle。',
+        'animFrames：帧数 1-60（默认：24）。',
+        'animSpeed：帧延迟（毫秒）10-1000（默认：100）。',
+        'animSeed：动画随机种子。',
+        'easing：动画缓动 — linear、ease_in、ease_out、ease_in_out、bounce。',
+      ],
+    },
+    {
+      heading: 'API：输出参数',
+      paragraphs: [
+        '输出格式选项：',
+      ],
+      bullets: [
+        'quality：WebP 质量 0-1（默认：0.9）。',
+        'webpQ：WebP 质量 0-100（默认：90）。',
+        'gifColors：GIF 调色板大小 2-256（默认：256）。',
+        'dpi：PNG 输出 DPI（默认：72）。',
+        'metaTitle, metaAuthor, metaCopy, metaDesc：PNG 元数据字段。',
+      ],
+    },
+    {
+      heading: 'API：使用示例',
+      paragraphs: [
+        '基本二维码：',
+        'https://anqr.link/api/qr?data=https://example.com',
+        '带自定义颜色的样式二维码：',
+        'https://anqr.link/api/qr?data=Hello&size=300&fg=1e40af&bg=ffffff&style=rounded&radius=30',
+        '带叠加图像的二维码：',
+        'https://anqr.link/api/qr?data=https://example.com&ec=H&img=https://example.com/logo.png&mode=halftone&intensity=70',
+        '动画 GIF：',
+        'https://anqr.link/api/qr?data=Hello&format=gif&animPattern=pulse&animFrames=24&easing=ease_in_out',
+      ],
+    },
+    {
+      heading: '嵌入二维码',
+      paragraphs: [
+        '在专业模式下，分享功能可生成可嵌入的 HTML 和 URL。嵌入方式如下：',
+      ],
+      bullets: [
+        '分享链接：创建一个指向 ANQR 应用的 URL，其中包含所有设置作为 URL 参数。收件人可以查看和修改二维码。',
+        '图像嵌入：生成指向服务器 API 的 <img> 标签。二维码在服务器端渲染并作为图像提供。',
+        'Markdown 嵌入：为文档和 README 文件创建 Markdown 图像语法。',
+        '直接 API URL：用于应用程序、脚本或其他集成的原始 API URL。',
+      ],
+    },
+    {
+      heading: '嵌入：HTML 示例',
+      paragraphs: [
+        '在您的网站中嵌入二维码：',
+        '<img src="https://anqr.link/api/qr?data=https://yoursite.com&size=200" alt="二维码" />',
+        '响应式尺寸：',
+        '<img src="https://anqr.link/api/qr?data=https://yoursite.com&size=400" alt="二维码" style="max-width: 100%; height: auto;" />',
+        '服务器使用长缓存头缓存响应，因此对同一 URL 的重复请求速度很快。',
+      ],
+    },
+    {
+      heading: '嵌入：分享 URL 格式',
+      paragraphs: [
+        '在专业模式下点击分享时，ANQR 会将您当前的设置编码为 URL 参数。格式如下：',
+        'https://anqr.link/?data=...&ec=H&style=rounded&....',
+        '这些参数与 API 参数相对应，因此您可以将分享 URL 转换为 API URL，只需将基础路径从 / 更改为 /api/qr，并根据需要调整 w/h 参数。',
+        '注意：从本地文件上传的叠加图像无法通过 URL 分享 — 只有基于 URL 的叠加（img 参数）才能在分享链接和 API 调用中使用。',
+      ],
+    },
+    {
+      heading: 'API：速率限制和使用',
+      paragraphs: [
+        'API 可免费用于合理的请求量。对于大量使用或需要保证正常运行时间的商业应用，请联系我们。',
+        'API 响应包含积极的缓存头。为获得最佳性能，请在您这边缓存响应，或对相同的二维码始终使用相同的 URL。',
+      ],
+    },
+    {
       heading: '最佳实践',
       paragraphs: [
         '请遵循以下准则，以确保二维码的可靠性：',

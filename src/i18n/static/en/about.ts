@@ -63,7 +63,7 @@ export const about: PageDefinition = {
     {
       heading: 'Feedback and contributions',
       paragraphs: [
-        'We welcome feedback, bug reports, and feature suggestions. Please get in touch via email or the contact page - we read every message, though response times may vary.',
+        'We welcome feedback, bug reports, and feature suggestions. Please get in touch via email or the contact page — we read every message, though response times may vary.',
       ],
     },
   ],

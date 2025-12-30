@@ -3,8 +3,7 @@ import { LAST_UPDATED, CONTACT_EMAIL } from '../types'
 
 export const terms: PageDefinition = {
   title: '약관',
-  description:
-    '사이트에 접속하거나 이용함으로써 귀하는 본 약관에 동의하는 것으로 간주됩니다.',
+  description: '사이트에 접속하거나 이용함으로써 귀하는 본 약관에 동의하는 것으로 간주됩니다.',
   lastUpdated: LAST_UPDATED,
   sections: [
     {
@@ -17,7 +16,7 @@ export const terms: PageDefinition = {
     {
       heading: '요건',
       paragraphs: [
-        "이용하려면 만 13세 이상이어야 합니다. 사이트를 이용함으로써 귀하는 이 연령 요건을 충족함을 보증합니다. 만 18세 미만인 경우, 귀하는 부모 또는 보호자의 허가를 받아 사이트를 이용함을 보증합니다.",
+        '이용하려면 만 13세 이상이어야 합니다. 사이트를 이용함으로써 귀하는 이 연령 요건을 충족함을 보증합니다. 만 18세 미만인 경우, 귀하는 부모 또는 보호자의 허가를 받아 사이트를 이용함을 보증합니다.',
       ],
     },
     {
@@ -28,7 +27,9 @@ export const terms: PageDefinition = {
     },
     {
       heading: '행위',
-      paragraphs: ['다음 사항을 하지 않기로 동의합니다:'],
+      paragraphs: [
+        '다음 사항을 하지 않기로 동의합니다:',
+      ],
       bullets: [
         '사용하여 피싱, 악성코드 배포, 사기, 스캠, 괴롭힘, 명예훼손 또는 기타 불법 활동을 조장하는 QR 코드를 생성하는 행위.',
         '재산권을 침해하거나, 사생활을 침해하거나, 불법적인 자료를 포함하는 콘텐츠를 인코딩하는 행위.',
@@ -51,6 +52,7 @@ export const terms: PageDefinition = {
       heading: '콘텐츠 라이선스',
       paragraphs: [
         '사용한다고 해서 귀하의 콘텐츠에 대한 권리가 당사에 부여되는 것은 아닙니다. 모든 QR 코드 생성은 귀하의 기기에서 로컬로 이루어지며 당사는 귀하의 인코딩된 데이터에 접근, 저장 또는 전송하지 않습니다.',
+        '서버 측 API를 사용할 때 콘텐츠는 QR 이미지를 생성하기 위해 처리되지만 요청된 이미지 렌더링 외의 다른 목적으로 저장, 로그 또는 사용되지 않습니다.',
       ],
     },
     {
@@ -86,7 +88,7 @@ export const terms: PageDefinition = {
     {
       heading: '해결',
       paragraphs: [
-        `약관 또는 ANQR 사용과 관련하여 발생하는 모든 분쟁은 먼저 ${CONTACT_EMAIL}로 연락하여 비공식적인 협상을 통해 해결을 시도해야 합니다.`,
+        '약관 또는 ANQR 사용과 관련하여 발생하는 모든 분쟁은 먼저 ${CONTACT_EMAIL}로 연락하여 비공식적인 협상을 통해 해결을 시도해야 합니다.',
         '해결이 실패할 경우, 분쟁은 호주 빅토리아 주에서 구속력 있는 중재를 통해 해결됩니다. 단, 어느 당사자든 지적 재산권 침해에 대해 법원에 금지 명령 구제를 요청할 수 있습니다.',
       ],
     },
@@ -135,7 +137,11 @@ export const terms: PageDefinition = {
     },
     {
       heading: '연락처',
-      paragraphs: [`약관에 대한 문의 사항은 ${CONTACT_EMAIL}로 보내주시기 바랍니다.`],
+      paragraphs: [
+        '약관에 대한 문의 사항은 ${CONTACT_EMAIL}로 보내주시기 바랍니다.',
+      ],
     },
   ],
 }
+
+export default terms;

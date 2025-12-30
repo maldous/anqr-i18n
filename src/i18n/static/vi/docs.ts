@@ -9,7 +9,7 @@ export const docs: PageDefinition = {
     {
       heading: 'đầu',
       paragraphs: [
-        'ANQR là một trình tạo mã QR hoạt động hoàn toàn trên thiết bị của bạn - máy tính, điện thoại hoặc máy tính bảng. Không cần tài khoản, không có máy chủ nào tham gia và dữ liệu của bạn được bảo mật.',
+        'ANQR là một trình tạo mã QR hoạt động hoàn toàn trên thiết bị của bạn — máy tính, điện thoại hoặc máy tính bảng. Không cần tài khoản, không có máy chủ nào tham gia và dữ liệu của bạn được bảo mật.',
         'Giao diện có ba cấp độ: Cơ bản, Nâng cao và Chuyên nghiệp. Chọn cấp độ của bạn bằng cách sử dụng các tab ở phần đầu trang. Mỗi cấp độ sẽ mở khóa thêm các tính năng trong khi vẫn giữ cho giao diện tập trung vào những gì bạn cần.',
       ],
       bullets: [
@@ -554,6 +554,178 @@ export const docs: PageDefinition = {
       bullets: [
         'Dither: Tắt, Blue Noise, hoặc Flicker Safe (chế độ làm mờ từng khung hình).',
         'Không có, Xung, Sóng, Đường quét, Lấp lánh hoặc Hiệu ứng trôi.',
+      ],
+    },
+    {
+      heading: 'Tài liệu tham khảo API',
+      paragraphs: [
+        'ANQR cung cấp API phía máy chủ để tạo mã QR thông qua các tham số URL. Điều này lý tưởng để nhúng mã QR vào trang web, email, tài liệu hoặc quy trình tự động mà không cần JavaScript phía client.',
+        'URL cơ sở: https://anqr.link/api/qr',
+      ],
+    },
+    {
+      heading: 'API: Tham số cơ bản',
+      paragraphs: [
+        'Các tham số bắt buộc và phổ biến (tên tham số không được dịch):',
+      ],
+      bullets: [
+        'data (bắt buộc): Nội dung cần mã hóa trong mã QR. Mã hóa URL các ký tự đặc biệt.',
+        'size: Kích thước hình ảnh tính bằng pixel (mặc định: 400, tối đa: 2000). Được sử dụng nếu w/h không được chỉ định.',
+        'w, h: Chiều rộng và chiều cao đầu ra tính bằng pixel. Ghi đè tham số size.',
+        'format: Định dạng đầu ra — png, webp hoặc gif (mặc định: png).',
+        'ec: Mức sửa lỗi — L, M, Q hoặc H (mặc định: H).',
+        'fg: Màu nền trước dạng hex không có # (mặc định: 000000).',
+        'bg: Màu nền dạng hex không có # (mặc định: ffffff).',
+        'transparent: Đặt thành 1 để có nền trong suốt.',
+        'margin: Vùng yên tĩnh tính bằng mô-đun (mặc định: 4).',
+      ],
+    },
+    {
+      heading: 'API: Tham số định kiểu',
+      paragraphs: [
+        'Định kiểu mô-đun và mẫu:',
+      ],
+      bullets: [
+        'style: Kiểu mô-đun — square, rounded, dots, diamond, connected.',
+        'finder: Kiểu mẫu tìm kiếm — square, rounded, circle.',
+        'align: Kiểu mẫu căn chỉnh — match_finder, square, rounded, circle.',
+        'timing: Kiểu mẫu thời gian — match_module, solid, dashed.',
+        'radius: Phần trăm bán kính góc 0-100.',
+        'gap: Phần trăm khoảng cách mô-đun 0-50.',
+        'gapMode: Chế độ khoảng cách — none, inset, stroke, negative_space.',
+        'eyeOuter, eyeInner: Kiểu mắt — square, rounded, circle.',
+        'eyeScale: Phần trăm tỷ lệ mắt (mặc định: 100).',
+        'grad: Loại gradient — none, linear, radial, conic.',
+        'gradAngle: Góc gradient cho gradient tuyến tính.',
+        'gradStops: Điểm dừng gradient dạng color1,pos1,color2,pos2,... (ví dụ: ff0000,0,0000ff,1).',
+      ],
+    },
+    {
+      heading: 'API: Tham số lớp phủ',
+      paragraphs: [
+        'Tùy chọn lớp phủ hình ảnh (hình ảnh lớp phủ được tải từ phía máy chủ):',
+      ],
+      bullets: [
+        'img: URL đến hình ảnh lớp phủ (phải có thể truy cập công khai).',
+        'mode: Chế độ lớp phủ — center, halftone, blend, brightness, mosaic, dithered, blue-noise, subpixel.',
+        'intensity: Cường độ lớp phủ 0-100 (mặc định: 100).',
+        'colorMode: Chế độ màu lớp phủ — color, grayscale, bw.',
+        'fit: Cách lớp phủ vừa khít — cover, contain, stretch.',
+        'rot: Góc xoay lớp phủ tính bằng độ.',
+        'flipX, flipY: Đặt thành 1 để lật lớp phủ.',
+        'keepFinders: Giữ nguyên mẫu tìm kiếm (mặc định: 1).',
+        'keepTiming, keepAlign: Đặt thành 1 để giữ nguyên mẫu thời gian/căn chỉnh.',
+      ],
+    },
+    {
+      heading: 'API: Tham số tiền xử lý',
+      paragraphs: [
+        'Tiền xử lý hình ảnh áp dụng cho lớp phủ:',
+      ],
+      bullets: [
+        'brightness: Điều chỉnh từ -100 đến 100 (mặc định: 0).',
+        'contrast: Điều chỉnh từ -100 đến 100 (mặc định: 0).',
+        'gamma: Giá trị từ 0.1 đến 3 (mặc định: 1).',
+        'saturation: Điều chỉnh từ -100 đến 100 (mặc định: 0).',
+        'hue: Xoay màu sắc tính bằng độ.',
+        'blur: Làm mờ tính bằng pixel.',
+        'sharpen: Mức làm sắc nét 0-100.',
+        'posterize: Mức poster hóa.',
+        'threshold: Ngưỡng nhị phân 0-255.',
+        'edge: Phát hiện cạnh — off, sobel, canny.',
+        'invert: Đặt thành 1 để đảo ngược màu.',
+      ],
+    },
+    {
+      heading: 'API: Tham số hình mờ',
+      paragraphs: [
+        'Thêm hình mờ vào mã QR đã tạo:',
+      ],
+      bullets: [
+        'wmEn: Đặt thành 1 để bật hình mờ.',
+        'wmKind: Loại hình mờ — text, image, pattern.',
+        'wmText: Văn bản hình mờ (đã mã hóa URL).',
+        'wmImg: URL đến hình ảnh hình mờ.',
+        'wmPos: Vị trí — center, corners, edges, behind, quiet_zone.',
+        'wmOpacity: Độ mờ 0-100 (mặc định: 50).',
+        'wmBlend: Chế độ hòa trộn — normal, multiply, screen, overlay.',
+      ],
+    },
+    {
+      heading: 'API: Tham số hoạt ảnh',
+      paragraphs: [
+        'Cho đầu ra GIF động (yêu cầu format=gif):',
+      ],
+      bullets: [
+        'animPattern: Mẫu hoạt ảnh — none, pulse, wave, scanline, shimmer, drift, color_cycle.',
+        'animFrames: Số khung hình 1-60 (mặc định: 24).',
+        'animSpeed: Độ trễ khung hình tính bằng mili giây 10-1000 (mặc định: 100).',
+        'animSeed: Seed ngẫu nhiên cho hoạt ảnh.',
+        'easing: Easing hoạt ảnh — linear, ease_in, ease_out, ease_in_out, bounce.',
+      ],
+    },
+    {
+      heading: 'API: Tham số đầu ra',
+      paragraphs: [
+        'Tùy chọn định dạng đầu ra:',
+      ],
+      bullets: [
+        'quality: Chất lượng WebP 0-1 (mặc định: 0.9).',
+        'webpQ: Chất lượng WebP 0-100 (mặc định: 90).',
+        'gifColors: Kích thước bảng màu GIF 2-256 (mặc định: 256).',
+        'dpi: DPI đầu ra cho PNG (mặc định: 72).',
+        'metaTitle, metaAuthor, metaCopy, metaDesc: Các trường siêu dữ liệu PNG.',
+      ],
+    },
+    {
+      heading: 'API: Ví dụ sử dụng',
+      paragraphs: [
+        'Mã QR cơ bản:',
+        'https://anqr.link/api/qr?data=https://example.com',
+        'Mã QR có kiểu với màu tùy chỉnh:',
+        'https://anqr.link/api/qr?data=Hello&size=300&fg=1e40af&bg=ffffff&style=rounded&radius=30',
+        'Mã QR với hình ảnh lớp phủ:',
+        'https://anqr.link/api/qr?data=https://example.com&ec=H&img=https://example.com/logo.png&mode=halftone&intensity=70',
+        'GIF động:',
+        'https://anqr.link/api/qr?data=Hello&format=gif&animPattern=pulse&animFrames=24&easing=ease_in_out',
+      ],
+    },
+    {
+      heading: 'Nhúng mã QR',
+      paragraphs: [
+        'Trong chế độ Chuyên nghiệp, tính năng Chia sẻ tạo HTML và URL có thể nhúng. Đây là cách nhúng hoạt động:',
+      ],
+      bullets: [
+        'Liên kết chia sẻ: Tạo URL đến ứng dụng ANQR với tất cả cài đặt của bạn được mã hóa dưới dạng tham số URL. Người nhận có thể xem và chỉnh sửa mã QR.',
+        'Nhúng hình ảnh: Tạo thẻ <img> trỏ đến API máy chủ. Mã QR được hiển thị phía máy chủ và phục vụ dưới dạng hình ảnh.',
+        'Nhúng Markdown: Tạo cú pháp hình ảnh Markdown cho tài liệu và tệp README.',
+        'URL API trực tiếp: URL API thô để sử dụng trong ứng dụng, script hoặc các tích hợp khác.',
+      ],
+    },
+    {
+      heading: 'Nhúng: Ví dụ HTML',
+      paragraphs: [
+        'Để nhúng mã QR vào trang web của bạn:',
+        '<img src="https://anqr.link/api/qr?data=https://yoursite.com&size=200" alt="Mã QR" />',
+        'Cho kích thước đáp ứng:',
+        '<img src="https://anqr.link/api/qr?data=https://yoursite.com&size=400" alt="Mã QR" style="max-width: 100%; height: auto;" />',
+        'Máy chủ lưu cache các phản hồi với header cache dài, vì vậy các yêu cầu lặp lại cho cùng một URL sẽ nhanh.',
+      ],
+    },
+    {
+      heading: 'Nhúng: Định dạng URL chia sẻ',
+      paragraphs: [
+        'Khi bạn nhấp vào Chia sẻ trong chế độ Chuyên nghiệp, ANQR mã hóa cài đặt hiện tại của bạn vào các tham số URL. Định dạng là:',
+        'https://anqr.link/?data=...&ec=H&style=rounded&....',
+        'Các tham số này phản ánh các tham số API, vì vậy bạn có thể chuyển đổi URL chia sẻ thành URL API bằng cách thay đổi đường dẫn cơ sở từ / thành /api/qr và điều chỉnh các tham số w/h khi cần.',
+        'Lưu ý: Hình ảnh lớp phủ tải lên từ tệp cục bộ không thể chia sẻ qua URL — chỉ lớp phủ dựa trên URL (tham số img) hoạt động trong liên kết chia sẻ và lệnh gọi API.',
+      ],
+    },
+    {
+      heading: 'API: Giới hạn tốc độ và sử dụng',
+      paragraphs: [
+        'API miễn phí sử dụng cho khối lượng hợp lý. Đối với việc sử dụng khối lượng lớn hoặc ứng dụng thương mại yêu cầu thời gian hoạt động được đảm bảo, vui lòng liên hệ với chúng tôi.',
+        'Phản hồi API bao gồm header cache mạnh. Để có hiệu suất tốt nhất, hãy cache phản hồi ở phía bạn hoặc sử dụng cùng một URL nhất quán cho các mã QR giống hệt nhau.',
       ],
     },
     {

@@ -9,7 +9,8 @@ export const privacy: PageDefinition = {
     {
       heading: 'tắt',
       paragraphs: [
-        'là một trình tạo mã QR hoạt động hoàn toàn trên thiết bị của bạn. Chúng tôi không yêu cầu bạn tạo tài khoản và mã QR được tạo cục bộ - chúng tôi không có quyền truy cập vào nội dung bạn mã hóa.',
+        'là một trình tạo mã QR hoạt động hoàn toàn trên thiết bị của bạn. Chúng tôi không yêu cầu bạn tạo tài khoản và mã QR được tạo cục bộ — chúng tôi không có quyền truy cập vào nội dung bạn mã hóa.',
+        'Để sử dụng chuyên nghiệp, ANQR cung cấp API phía máy chủ tạo mã QR từ các tham số URL. Khi sử dụng API, nội dung QR của bạn được xử lý trên máy chủ của chúng tôi để hiển thị hình ảnh, nhưng không được lưu trữ hoặc ghi nhật ký.',
         'tôi sử dụng Google AdSense cho quảng cáo và có thể sử dụng các dịch vụ phân tích. Các dịch vụ này thu thập thông tin thông qua cookie và các công nghệ tương tự. Chính sách này giải thích dữ liệu nào được thu thập, cách sử dụng và quyền của bạn.',
       ],
     },
@@ -89,8 +90,8 @@ export const privacy: PageDefinition = {
     {
       heading: 'sở pháp lý của GDPR',
       paragraphs: [
-        'tôi xử lý dữ liệu trên các cơ sở sau: (a) Sự đồng ý - cho quảng cáo cá nhân hóa (do các đối tác quảng cáo của chúng tôi quản lý); (b) Lợi ích hợp pháp - cho mục đích phân tích, bảo mật và cải tiến; (c) Hợp đồng - để trả lời các yêu cầu.',
-        `thực hiện các quyền của bạn, vui lòng liên hệ ${CONTACT_EMAIL}. Chúng tôi sẽ phản hồi trong vòng 30 ngày.`,
+        'tôi xử lý dữ liệu trên các cơ sở sau: (a) Sự đồng ý — cho quảng cáo cá nhân hóa (do các đối tác quảng cáo của chúng tôi quản lý); (b) Lợi ích hợp pháp — cho mục đích phân tích, bảo mật và cải tiến; (c) Hợp đồng — để trả lời các yêu cầu.',
+        'thực hiện các quyền của bạn, vui lòng liên hệ ${CONTACT_EMAIL}. Chúng tôi sẽ phản hồi trong vòng 30 ngày.',
       ],
     },
     {
@@ -106,7 +107,7 @@ export const privacy: PageDefinition = {
       heading: 'mục CCPA đã được thu thập',
       paragraphs: [
         'mục: Mã định danh (địa chỉ IP, ID thiết bị), Hoạt động Internet (duyệt web, tương tác quảng cáo), Vị trí địa lý (xấp xỉ), Suy luận (sở thích từ việc duyệt web).',
-        `thực hiện quyền hoặc từ chối: ${CONTACT_EMAIL} hoặc điều chỉnh cài đặt cookie.`,
+        'thực hiện quyền hoặc từ chối: ${CONTACT_EMAIL} hoặc điều chỉnh cài đặt cookie.',
       ],
     },
     {
@@ -118,7 +119,7 @@ export const privacy: PageDefinition = {
     {
       heading: 'riêng tư của trẻ em',
       paragraphs: [
-        `không hướng đến trẻ em dưới 13 tuổi (hoặc 16 tuổi ở Khu vực Kinh tế Châu Âu). Chúng tôi không cố ý thu thập dữ liệu từ trẻ em. Vui lòng liên hệ ${CONTACT_EMAIL} nếu bạn cho rằng trẻ em đã cung cấp thông tin.`,
+        'không hướng đến trẻ em dưới 13 tuổi (hoặc 16 tuổi ở Khu vực Kinh tế Châu Âu). Chúng tôi không cố ý thu thập dữ liệu từ trẻ em. Vui lòng liên hệ ${CONTACT_EMAIL} nếu bạn cho rằng trẻ em đã cung cấp thông tin.',
       ],
     },
     {
@@ -142,8 +143,10 @@ export const privacy: PageDefinition = {
     {
       heading: 'hệ với chúng tôi',
       paragraphs: [
-        `với các câu hỏi về quyền riêng tư hoặc để thực hiện các quyền của bạn: ${CONTACT_EMAIL} hoặc sử dụng trang Liên hệ của chúng tôi. Chúng tôi sẽ phản hồi các yêu cầu về quyền riêng tư trong vòng 30 ngày.`,
+        'với các câu hỏi về quyền riêng tư hoặc để thực hiện các quyền của bạn: ${CONTACT_EMAIL} hoặc sử dụng trang Liên hệ của chúng tôi. Chúng tôi sẽ phản hồi các yêu cầu về quyền riêng tư trong vòng 30 ngày.',
       ],
     },
   ],
 }
+
+export default privacy;

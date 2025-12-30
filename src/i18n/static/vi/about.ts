@@ -3,7 +3,7 @@ import { LAST_UPDATED, CONTACT_EMAIL } from '../types'
 
 export const about: PageDefinition = {
   title: 'Giới thiệu về ANQR',
-  description: 'ANQR là một trình tạo mã QR miễn phí hoạt động hoàn toàn trên thiết bị của bạn - không cần tài khoản.',
+  description: 'ANQR là trình tạo mã QR miễn phí với phương pháp ưu tiên client — tạo mã QR cục bộ hoặc sử dụng API của chúng tôi để nhúng.',
   lastUpdated: LAST_UPDATED,
   sections: [
     {
@@ -16,18 +16,20 @@ export const about: PageDefinition = {
     {
       heading: 'năng chính',
       bullets: [
-        'Tạo mã QR ngay lập tức trên thiết bị của bạn - không cần tải lên máy chủ, không cần tài khoản.',
+        'Tạo mã QR ngay lập tức trên thiết bị của bạn — không cần tải lên máy chủ, không cần tài khoản.',
         'Tùy chỉnh màu sắc, kiểu mô-đun, mẫu tìm kiếm và thêm lớp phủ hình ảnh.',
         'Xuất ở nhiều định dạng: PNG, SVG, WebP và ảnh GIF động.',
         'Các tùy chọn điều khiển nâng cao cho mức độ sửa lỗi, phiên bản mã QR, chế độ mã hóa và lựa chọn mặt nạ.',
         'Hướng dẫn an toàn khi quét và xem trước trực tiếp giúp đảm bảo mã vạch dễ đọc trên bản in và trên màn hình.',
-        'Ứng dụng hoạt động ngoại tuyến sau khi được tải – đây là một ứng dụng web tĩnh mà bạn có thể chạy ở bất cứ đâu.',
+        'API phía máy chủ cho việc nhúng chuyên nghiệp với hỗ trợ đầy đủ các tham số.',
+        'Hoạt động ngoại tuyến sau khi tải — đây là ứng dụng web tĩnh mà bạn có thể chạy ở bất cứ đâu.',
       ],
     },
     {
       heading: 'Cách thức hoạt động của ANQR',
       paragraphs: [
         'ANQR chạy trên trình duyệt của bạn và mã hóa dữ liệu nhập vào thành ma trận QR tiêu chuẩn với thuật toán sửa lỗi Reed-Solomon, sau đó hiển thị nó theo định dạng bạn chọn.',
+        'Theo mặc định, việc tạo mã diễn ra cục bộ trong trình duyệt của bạn. Để sử dụng chuyên nghiệp, bạn cũng có thể sử dụng API phía máy chủ để tạo mã QR thông qua các tham số URL — hoàn hảo để nhúng vào trang web, email hoặc quy trình tự động.',
         'Tất cả quá trình tạo ra đều diễn ra cục bộ. Khi bạn thêm các lớp phủ hoặc hoạt ảnh, ANQR cân bằng giữa kiểu dáng và độ tin cậy khi quét để kết quả vẫn có thể quét được.',
         'ANQR tập trung vào các mã tĩnh (dữ liệu nằm bên trong mã QR). Nếu bạn cần mã động (đích đến có thể chỉnh sửa), bạn có thể mã hóa URL chuyển hướng hoặc liên kết rút gọn của riêng mình.',
       ],
@@ -61,7 +63,7 @@ export const about: PageDefinition = {
     {
       heading: 'Phản hồi và đóng góp',
       paragraphs: [
-        'Chúng tôi hoan nghênh phản hồi, báo cáo lỗi và đề xuất tính năng. Vui lòng liên hệ với chúng tôi qua email hoặc trang liên hệ - chúng tôi đọc mọi tin nhắn, mặc dù thời gian phản hồi có thể khác nhau.',
+        'Chúng tôi hoan nghênh phản hồi, báo cáo lỗi và đề xuất tính năng. Vui lòng liên hệ với chúng tôi qua email hoặc trang liên hệ — chúng tôi đọc mọi tin nhắn, mặc dù thời gian phản hồi có thể khác nhau.',
       ],
     },
   ],

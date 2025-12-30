@@ -3,8 +3,7 @@ import { LAST_UPDATED, CONTACT_EMAIL } from '../types'
 
 export const terms: PageDefinition = {
   title: 'Syarat Perkhidmatan',
-  description:
-    'Dengan mengakses atau menggunakan laman web ini, anda bersetuju untuk terikat dengan terma-terma ini.',
+  description: 'Dengan mengakses atau menggunakan laman web ini, anda bersetuju untuk terikat dengan terma-terma ini.',
   lastUpdated: LAST_UPDATED,
   sections: [
     {
@@ -17,7 +16,7 @@ export const terms: PageDefinition = {
     {
       heading: 'Kelayakan',
       paragraphs: [
-        "Anda mesti berumur sekurang-kurangnya 13 tahun untuk menggunakan ANQR. Dengan menggunakan laman web ini, anda menyatakan bahawa anda memenuhi syarat umur ini. Jika anda berumur di bawah 18 tahun, anda menyatakan bahawa anda mempunyai kebenaran ibu bapa atau penjaga anda untuk menggunakan laman web ini.",
+        'Anda mesti berumur sekurang-kurangnya 13 tahun untuk menggunakan ANQR. Dengan menggunakan laman web ini, anda menyatakan bahawa anda memenuhi syarat umur ini. Jika anda berumur di bawah 18 tahun, anda menyatakan bahawa anda mempunyai kebenaran ibu bapa atau penjaga anda untuk menggunakan laman web ini.',
       ],
     },
     {
@@ -28,7 +27,9 @@ export const terms: PageDefinition = {
     },
     {
       heading: 'Kelakuan yang dilarang',
-      paragraphs: ['Anda bersetuju untuk tidak:'],
+      paragraphs: [
+        'Anda bersetuju untuk tidak:',
+      ],
       bullets: [
         'Gunakan ANQR untuk mencipta kod QR yang memudahkan pancingan data, pengedaran perisian hasad, penipuan, gangguan, fitnah atau sebarang aktiviti haram.',
         'Mengekod kandungan yang melanggar hak harta intelek, melanggar privasi atau mengandungi bahan haram.',
@@ -50,7 +51,8 @@ export const terms: PageDefinition = {
     {
       heading: 'Lesen kandungan pengguna',
       paragraphs: [
-        'Dengan menggunakan ANQR, anda tidak memberi kami sebarang hak ke atas kandungan anda - semua penjanaan kod QR berlaku secara setempat pada peranti anda dan kami tidak mengakses, menyimpan atau menghantar data yang dikodkan anda.',
+        'Dengan menggunakan ANQR, anda tidak memberi kami sebarang hak ke atas kandungan anda — semua penjanaan kod QR berlaku secara setempat pada peranti anda dan kami tidak mengakses, menyimpan atau menghantar data yang dikodkan anda.',
+        'Apabila menggunakan API sebelah pelayan, kandungan anda diproses untuk menjana imej QR tetapi tidak disimpan, direkodkan atau digunakan untuk sebarang tujuan lain selain memaparkan imej yang diminta.',
       ],
     },
     {
@@ -86,7 +88,7 @@ export const terms: PageDefinition = {
     {
       heading: 'Penyelesaian pertikaian',
       paragraphs: [
-        `Sebarang pertikaian yang timbul daripada Terma ini atau penggunaan ANQR anda hendaklah terlebih dahulu cuba diselesaikan melalui rundingan tidak rasmi dengan menghubungi ${CONTACT_EMAIL}.`,
+        'Sebarang pertikaian yang timbul daripada Terma ini atau penggunaan ANQR anda hendaklah terlebih dahulu cuba diselesaikan melalui rundingan tidak rasmi dengan menghubungi ${CONTACT_EMAIL}.',
         'Jika penyelesaian tidak formal gagal, pertikaian hendaklah diselesaikan melalui timbang tara yang mengikat di Victoria, Australia, kecuali mana-mana pihak boleh mendapatkan bantuan injunksi di mahkamah untuk pelanggaran harta intelek.',
       ],
     },
@@ -135,7 +137,11 @@ export const terms: PageDefinition = {
     },
     {
       heading: 'Hubungi',
-      paragraphs: [`Soalan tentang Terma ini boleh dihantar ke: ${CONTACT_EMAIL}`],
+      paragraphs: [
+        'Soalan tentang Terma ini boleh dihantar ke: ${CONTACT_EMAIL}',
+      ],
     },
   ],
 }
+
+export default terms;

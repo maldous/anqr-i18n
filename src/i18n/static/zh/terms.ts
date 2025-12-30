@@ -3,8 +3,7 @@ import { LAST_UPDATED, CONTACT_EMAIL } from '../types'
 
 export const terms: PageDefinition = {
   title: '服务条款',
-  description:
-    '访问或使用本网站，即表示您同意受这些条款的约束。',
+  description: '访问或使用本网站，即表示您同意受这些条款的约束。',
   lastUpdated: LAST_UPDATED,
   sections: [
     {
@@ -17,7 +16,7 @@ export const terms: PageDefinition = {
     {
       heading: '资格',
       paragraphs: [
-        "您必须年满13周岁才能使用ANQR。使用本网站即表示您已满足此年龄要求。如果您未满18周岁，则表示您已获得父母或监护人的许可使用本网站。",
+        '您必须年满13周岁才能使用ANQR。使用本网站即表示您已满足此年龄要求。如果您未满18周岁，则表示您已获得父母或监护人的许可使用本网站。',
       ],
     },
     {
@@ -28,7 +27,9 @@ export const terms: PageDefinition = {
     },
     {
       heading: '禁止行为',
-      paragraphs: ['您同意不：'],
+      paragraphs: [
+        '您同意不：',
+      ],
       bullets: [
         '使用 ANQR 创建二维码，以促进网络钓鱼、恶意软件传播、欺诈、诈骗、骚扰、诽谤或任何非法活动。',
         '对侵犯知识产权、侵犯隐私或包含非法材料的内容进行编码。',
@@ -50,7 +51,8 @@ export const terms: PageDefinition = {
     {
       heading: '用户内容许可',
       paragraphs: [
-        '使用 ANQR，您并未授予我们任何关于您内容的权利--所有二维码生成均在您的设备本地进行，我们不会访问、存储或传输您的编码数据。',
+        '使用 ANQR，您并未授予我们任何关于您内容的权利——所有二维码生成均在您的设备本地进行，我们不会访问、存储或传输您的编码数据。',
+        '使用服务器端 API 时，您的内容仅用于生成二维码图像，不会被存储、记录或用于渲染请求图像之外的任何其他目的。',
       ],
     },
     {
@@ -86,7 +88,7 @@ export const terms: PageDefinition = {
     {
       heading: '争议解决',
       paragraphs: [
-        `因本条款或您使用 ANQR 而引起的任何争议，应首先尝试通过联系 ${CONTACT_EMAIL} 进行非正式协商解决。`,
+        '因本条款或您使用 ANQR 而引起的任何争议，应首先尝试通过联系 ${CONTACT_EMAIL} 进行非正式协商解决。',
         '如果非正式解决失败，争议应通过在澳大利亚维多利亚州进行有约束力的仲裁来解决，但任何一方均可就知识产权侵权行为向法院寻求禁令救济。',
       ],
     },
@@ -135,7 +137,11 @@ export const terms: PageDefinition = {
     },
     {
       heading: '联系',
-      paragraphs: [`有关这些条款的问题，请发送至：${CONTACT_EMAIL}`],
+      paragraphs: [
+        '有关这些条款的问题，请发送至：${CONTACT_EMAIL}',
+      ],
     },
   ],
 }
+
+export default terms;

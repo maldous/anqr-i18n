@@ -15,8 +15,8 @@ export const contact: PageDefinition = {
     {
       heading: 'Email',
       paragraphs: [
-        `Para sa lahat ng mga katanungan: ${CONTACT_EMAIL}`,
-        'Ito ang pinaka-maaasahang paraan upang makontak kami at inirerekomenda para sa mga detalyadong tanong, mga katanungan tungkol sa negosyo, o kung ang contact form ay hindi gumagana sa iyong device.',
+        'Para sa lahat ng mga katanungan: ${CONTACT_EMAIL}',
+        'Ito ang pinaka-maaasahang paraan upang makontak kami at inirerekomenda para sa mga detalyadong tanong, mga katanungan tungkol sa negosyo, o anumang iba pang mga katanungan.',
       ],
     },
     {
@@ -60,7 +60,7 @@ export const contact: PageDefinition = {
     {
       heading: 'Pakikipag-ugnayan sa DMCA',
       paragraphs: [
-        `Ipadala ang mga abiso ng DMCA sa: ${CONTACT_EMAIL}`,
+        'Ipadala ang mga abiso ng DMCA sa: ${CONTACT_EMAIL}',
         'Pakilagay ang Paunawa ng DMCA sa subject line. Sasagot kami sa mga wastong abiso alinsunod sa naaangkop na batas. Tandaan na ang ANQR ay bumubuo ng mga QR code nang lokal sa mga device ng gumagamit at hindi nagho-host ng nilalamang binuo ng gumagamit.',
       ],
     },

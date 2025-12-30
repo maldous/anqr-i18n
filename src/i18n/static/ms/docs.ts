@@ -9,7 +9,7 @@ export const docs: PageDefinition = {
     {
       heading: 'Bermula',
       paragraphs: [
-        'ANQR ialah penjana kod QR yang berfungsi sepenuhnya pada peranti anda - komputer, telefon atau tablet anda. Tiada akaun diperlukan, tiada pelayan yang terlibat dan data anda kekal sulit.',
+        'ANQR ialah penjana kod QR yang berfungsi sepenuhnya pada peranti anda — komputer, telefon atau tablet anda. Tiada akaun diperlukan, tiada pelayan yang terlibat dan data anda kekal sulit.',
         'Antara muka ini mempunyai tiga tahap antara muka: Asas, Lanjutan dan Profesional. Pilih tahap anda menggunakan tab dalam pengepala. Setiap tahap membuka kunci ciri tambahan sambil memastikan antara muka tertumpu pada apa yang anda perlukan.',
       ],
       bullets: [
@@ -554,6 +554,178 @@ export const docs: PageDefinition = {
       bullets: [
         'Dither Temporal: Mati, Bunyi Biru atau Dithering setiap bingkai Berkelip Selamat.',
         'Corak: Tiada, Nadi, Gelombang, Garis Imbas, Berkilau atau Kesan Hanyut.',
+      ],
+    },
+    {
+      heading: 'Rujukan API',
+      paragraphs: [
+        'ANQR menyediakan API sebelah pelayan untuk menjana kod QR melalui parameter URL. Ini sesuai untuk menyematkan kod QR dalam laman web, e-mel, dokumen atau aliran kerja automatik tanpa JavaScript sebelah klien.',
+        'URL Asas: https://anqr.link/api/qr',
+      ],
+    },
+    {
+      heading: 'API: Parameter Asas',
+      paragraphs: [
+        'Parameter yang diperlukan dan lazim (nama parameter tidak diterjemahkan):',
+      ],
+      bullets: [
+        'data (diperlukan): Kandungan untuk dikodkan dalam kod QR. URL-kodkan aksara khas.',
+        'size: Saiz imej dalam piksel (lalai: 400, maks: 2000). Digunakan jika w/h tidak dinyatakan.',
+        'w, h: Lebar dan tinggi output dalam piksel. Mengatasi parameter size.',
+        'format: Format output — png, webp, atau gif (lalai: png).',
+        'ec: Tahap pembetulan ralat — L, M, Q, atau H (lalai: H).',
+        'fg: Warna latar depan sebagai hex tanpa # (lalai: 000000).',
+        'bg: Warna latar belakang sebagai hex tanpa # (lalai: ffffff).',
+        'transparent: Tetapkan kepada 1 untuk latar belakang lutsinar.',
+        'margin: Zon senyap dalam modul (lalai: 4).',
+      ],
+    },
+    {
+      heading: 'API: Parameter Penggayaan',
+      paragraphs: [
+        'Penggayaan modul dan corak:',
+      ],
+      bullets: [
+        'style: Gaya modul — square, rounded, dots, diamond, connected.',
+        'finder: Gaya corak pencari — square, rounded, circle.',
+        'align: Gaya corak penjajaran — match_finder, square, rounded, circle.',
+        'timing: Gaya corak pemasaan — match_module, solid, dashed.',
+        'radius: Peratusan jejari sudut 0-100.',
+        'gap: Peratusan jurang modul 0-50.',
+        'gapMode: Mod jurang — none, inset, stroke, negative_space.',
+        'eyeOuter, eyeInner: Gaya mata — square, rounded, circle.',
+        'eyeScale: Peratusan skala mata (lalai: 100).',
+        'grad: Jenis kecerunan — none, linear, radial, conic.',
+        'gradAngle: Sudut kecerunan untuk kecerunan linear.',
+        'gradStops: Hentian kecerunan sebagai color1,pos1,color2,pos2,... (cth., ff0000,0,0000ff,1).',
+      ],
+    },
+    {
+      heading: 'API: Parameter Tindanan',
+      paragraphs: [
+        'Pilihan tindanan imej (imej tindanan diambil dari sebelah pelayan):',
+      ],
+      bullets: [
+        'img: URL ke imej tindanan (mesti boleh diakses secara awam).',
+        'mode: Mod tindanan — center, halftone, blend, brightness, mosaic, dithered, blue-noise, subpixel.',
+        'intensity: Keamatan tindanan 0-100 (lalai: 100).',
+        'colorMode: Mod warna tindanan — color, grayscale, bw.',
+        'fit: Cara tindanan sesuai — cover, contain, stretch.',
+        'rot: Putaran tindanan dalam darjah.',
+        'flipX, flipY: Tetapkan kepada 1 untuk membalikkan tindanan.',
+        'keepFinders: Kekalkan corak pencari (lalai: 1).',
+        'keepTiming, keepAlign: Tetapkan kepada 1 untuk mengekalkan corak pemasaan/penjajaran.',
+      ],
+    },
+    {
+      heading: 'API: Parameter Prapemprosesan',
+      paragraphs: [
+        'Prapemprosesan imej yang digunakan pada tindanan:',
+      ],
+      bullets: [
+        'brightness: Pelarasan -100 hingga 100 (lalai: 0).',
+        'contrast: Pelarasan -100 hingga 100 (lalai: 0).',
+        'gamma: Nilai 0.1 hingga 3 (lalai: 1).',
+        'saturation: Pelarasan -100 hingga 100 (lalai: 0).',
+        'hue: Putaran hue dalam darjah.',
+        'blur: Kabur dalam piksel.',
+        'sharpen: Jumlah penajaman 0-100.',
+        'posterize: Tahap posterisasi.',
+        'threshold: Ambang binari 0-255.',
+        'edge: Pengesanan tepi — off, sobel, canny.',
+        'invert: Tetapkan kepada 1 untuk menyongsangkan warna.',
+      ],
+    },
+    {
+      heading: 'API: Parameter Tera Air',
+      paragraphs: [
+        'Tambah tera air pada kod QR yang dijana:',
+      ],
+      bullets: [
+        'wmEn: Tetapkan kepada 1 untuk mengaktifkan tera air.',
+        'wmKind: Jenis tera air — text, image, pattern.',
+        'wmText: Teks tera air (dikodkan URL).',
+        'wmImg: URL ke imej tera air.',
+        'wmPos: Kedudukan — center, corners, edges, behind, quiet_zone.',
+        'wmOpacity: Kelegapan 0-100 (lalai: 50).',
+        'wmBlend: Mod adunan — normal, multiply, screen, overlay.',
+      ],
+    },
+    {
+      heading: 'API: Parameter Animasi',
+      paragraphs: [
+        'Untuk output GIF animasi (memerlukan format=gif):',
+      ],
+      bullets: [
+        'animPattern: Corak animasi — none, pulse, wave, scanline, shimmer, drift, color_cycle.',
+        'animFrames: Bilangan bingkai 1-60 (lalai: 24).',
+        'animSpeed: Kelewatan bingkai dalam milisaat 10-1000 (lalai: 100).',
+        'animSeed: Benih rawak untuk animasi.',
+        'easing: Pelicinan animasi — linear, ease_in, ease_out, ease_in_out, bounce.',
+      ],
+    },
+    {
+      heading: 'API: Parameter Output',
+      paragraphs: [
+        'Pilihan format output:',
+      ],
+      bullets: [
+        'quality: Kualiti WebP 0-1 (lalai: 0.9).',
+        'webpQ: Kualiti WebP 0-100 (lalai: 90).',
+        'gifColors: Saiz palet GIF 2-256 (lalai: 256).',
+        'dpi: DPI output untuk PNG (lalai: 72).',
+        'metaTitle, metaAuthor, metaCopy, metaDesc: Medan metadata PNG.',
+      ],
+    },
+    {
+      heading: 'API: Contoh Penggunaan',
+      paragraphs: [
+        'Kod QR asas:',
+        'https://anqr.link/api/qr?data=https://example.com',
+        'Kod QR bergaya dengan warna tersuai:',
+        'https://anqr.link/api/qr?data=Hello&size=300&fg=1e40af&bg=ffffff&style=rounded&radius=30',
+        'Kod QR dengan imej tindanan:',
+        'https://anqr.link/api/qr?data=https://example.com&ec=H&img=https://example.com/logo.png&mode=halftone&intensity=70',
+        'GIF animasi:',
+        'https://anqr.link/api/qr?data=Hello&format=gif&animPattern=pulse&animFrames=24&easing=ease_in_out',
+      ],
+    },
+    {
+      heading: 'Menyematkan Kod QR',
+      paragraphs: [
+        'Dalam mod Profesional, ciri Kongsi menjana HTML dan URL yang boleh disematkan. Begini cara penyematan berfungsi:',
+      ],
+      bullets: [
+        'Pautan Kongsi: Mencipta URL ke aplikasi ANQR dengan semua tetapan anda dikodkan sebagai parameter URL. Penerima boleh melihat dan mengubah suai kod QR.',
+        'Semat Imej: Menjana tag <img> yang menghala ke API pelayan. Kod QR dipaparkan di sebelah pelayan dan disajikan sebagai imej.',
+        'Semat Markdown: Mencipta sintaks imej Markdown untuk dokumentasi dan fail README.',
+        'URL API Langsung: URL API mentah untuk kegunaan dalam aplikasi, skrip atau integrasi lain.',
+      ],
+    },
+    {
+      heading: 'Penyematan: Contoh HTML',
+      paragraphs: [
+        'Untuk menyematkan kod QR dalam laman web anda:',
+        '<img src="https://anqr.link/api/qr?data=https://yoursite.com&size=200" alt="Kod QR" />',
+        'Untuk saiz responsif:',
+        '<img src="https://anqr.link/api/qr?data=https://yoursite.com&size=400" alt="Kod QR" style="max-width: 100%; height: auto;" />',
+        'Pelayan mencache respons dengan pengepala cache yang lama, jadi permintaan berulang untuk URL yang sama adalah pantas.',
+      ],
+    },
+    {
+      heading: 'Penyematan: Format URL Kongsi',
+      paragraphs: [
+        'Apabila anda mengklik Kongsi dalam mod Profesional, ANQR mengekod tetapan semasa anda ke dalam parameter URL. Formatnya ialah:',
+        'https://anqr.link/?data=...&ec=H&style=rounded&....',
+        'Parameter ini mencerminkan parameter API, jadi anda boleh menukar URL kongsi kepada URL API dengan menukar laluan asas daripada / kepada /api/qr dan melaraskan parameter w/h mengikut keperluan.',
+        'Nota: Imej tindanan yang dimuat naik daripada fail setempat tidak boleh dikongsi melalui URL — hanya tindanan berasaskan URL (parameter img) berfungsi dalam pautan kongsi dan panggilan API.',
+      ],
+    },
+    {
+      heading: 'API: Had Kadar dan Penggunaan',
+      paragraphs: [
+        'API adalah percuma untuk digunakan bagi volum yang munasabah. Untuk penggunaan volum tinggi atau aplikasi komersial yang memerlukan masa operasi terjamin, sila hubungi kami.',
+        'Respons API termasuk pengepala caching yang agresif. Untuk prestasi terbaik, cache respons di pihak anda atau gunakan URL yang sama secara konsisten untuk kod QR yang serupa.',
       ],
     },
     {

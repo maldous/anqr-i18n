@@ -9,7 +9,8 @@ export const privacy: PageDefinition = {
     {
       heading: 'Buod',
       paragraphs: [
-        'Ang ANQR ay isang QR code generator na ganap na tumatakbo sa iyong device. Hindi ka namin hinihiling na gumawa ng account, at ang mga QR code ay lokal na nabubuo - wala kaming access sa nilalamang iyong ine-encode.',
+        'Ang ANQR ay isang QR code generator na ganap na tumatakbo sa iyong device. Hindi ka namin hinihiling na gumawa ng account, at ang mga QR code ay lokal na nabubuo — wala kaming access sa nilalamang iyong ine-encode.',
+        'Para sa propesyonal na paggamit, nagbibigay ang ANQR ng server-side API na bumubuo ng mga QR code mula sa mga parameter ng URL. Kapag ginagamit ang API, ang iyong QR content ay pinoproseso sa aming mga server upang i-render ang imahe, ngunit hindi iniimbak o nilololog.',
         'Ginagamit namin ang Google AdSense para sa advertising at maaaring gumamit ng mga serbisyo ng analytics. Nangongolekta ang mga serbisyong ito ng impormasyon sa pamamagitan ng cookies at mga katulad na teknolohiya. Ipinapaliwanag ng patakarang ito kung anong data ang kinokolekta, kung paano ito ginagamit, at ang iyong mga karapatan.',
       ],
     },
@@ -89,8 +90,8 @@ export const privacy: PageDefinition = {
     {
       heading: 'Legal na batayan ng GDPR',
       paragraphs: [
-        'Pinoproseso namin ang datos batay sa mga sumusunod: (a) Pahintulot - para sa personalized na advertising (pinamamahalaan ng aming mga kasosyo sa advertising); (b) Mga lehitimong interes - para sa analytics, seguridad, at pagpapabuti; (c) Kontrata - upang tumugon sa mga katanungan.',
-        `Para magamit ang iyong mga karapatan, makipag-ugnayan sa ${CONTACT_EMAIL}. Tutugon kami sa loob ng 30 araw.`,
+        'Pinoproseso namin ang datos batay sa mga sumusunod: (a) Pahintulot — para sa personalized na advertising (pinamamahalaan ng aming mga kasosyo sa advertising); (b) Mga lehitimong interes — para sa analytics, seguridad, at pagpapabuti; (c) Kontrata — upang tumugon sa mga katanungan.',
+        'Para magamit ang iyong mga karapatan, makipag-ugnayan sa ${CONTACT_EMAIL}. Tutugon kami sa loob ng 30 araw.',
       ],
     },
     {
@@ -106,7 +107,7 @@ export const privacy: PageDefinition = {
       heading: 'Mga kategorya ng CCPA na nakolekta',
       paragraphs: [
         'Mga Kategorya: Mga Tagatukoy (IP address, ID ng device), Aktibidad sa Internet (pag-browse, mga interaksyon sa ad), Geolocation (tinatayang), Mga Hinuha (mga interes mula sa pag-browse).',
-        `Para gamitin ang mga karapatan o mag-opt out: ${CONTACT_EMAIL} o isaayos ang mga setting ng cookie.`,
+        'Para gamitin ang mga karapatan o mag-opt out: ${CONTACT_EMAIL} o isaayos ang mga setting ng cookie.',
       ],
     },
     {
@@ -118,7 +119,7 @@ export const privacy: PageDefinition = {
     {
       heading: 'Pagiging pribado ng mga bata',
       paragraphs: [
-        `Ang ANQR ay hindi para sa mga batang wala pang 13 taong gulang (o 16 sa EEA). Hindi namin sadyang nangongolekta ng datos mula sa mga bata. Makipag-ugnayan sa ${CONTACT_EMAIL} kung naniniwala kang nagbigay ng impormasyon ang isang bata.`,
+        'Ang ANQR ay hindi para sa mga batang wala pang 13 taong gulang (o 16 sa EEA). Hindi namin sadyang nangongolekta ng datos mula sa mga bata. Makipag-ugnayan sa ${CONTACT_EMAIL} kung naniniwala kang nagbigay ng impormasyon ang isang bata.',
       ],
     },
     {
@@ -142,8 +143,10 @@ export const privacy: PageDefinition = {
     {
       heading: 'Makipag-ugnayan sa amin',
       paragraphs: [
-        `Para sa mga tanong tungkol sa privacy o para gamitin ang iyong mga karapatan: ${CONTACT_EMAIL} o gamitin ang aming pahina ng Makipag-ugnayan. Tumutugon kami sa mga kahilingan sa privacy sa loob ng 30 araw.`,
+        'Para sa mga tanong tungkol sa privacy o para gamitin ang iyong mga karapatan: ${CONTACT_EMAIL} o gamitin ang aming pahina ng Makipag-ugnayan. Tumutugon kami sa mga kahilingan sa privacy sa loob ng 30 araw.',
       ],
     },
   ],
 }
+
+export default privacy;

@@ -9,7 +9,7 @@ export const docs: PageDefinition = {
     {
       heading: 'Memulai',
       paragraphs: [
-        'ANQR adalah generator kode QR yang berjalan sepenuhnya di perangkat Anda - komputer, ponsel, atau tablet Anda. Tidak diperlukan akun, tidak ada server yang terlibat, dan data Anda tetap terjaga kerahasiaannya.',
+        'ANQR adalah generator kode QR yang berjalan sepenuhnya di perangkat Anda — komputer, ponsel, atau tablet Anda. Tidak diperlukan akun, tidak ada server yang terlibat, dan data Anda tetap terjaga kerahasiaannya.',
         'Antarmuka ini memiliki tiga level antarmuka: Dasar, Lanjutan, dan Profesional. Pilih level Anda menggunakan tab di header. Setiap level membuka fitur tambahan sambil tetap memfokuskan antarmuka pada apa yang Anda butuhkan.',
       ],
       bullets: [
@@ -554,6 +554,178 @@ export const docs: PageDefinition = {
       bullets: [
         'Dither Temporal: Mati, Derau Biru, atau Dither per-frame Aman dari Kedipan.',
         'Pola: Tidak ada, Pulsa, Gelombang, Garis Pindai, Kilauan, atau efek Melayang.',
+      ],
+    },
+    {
+      heading: 'Referensi API',
+      paragraphs: [
+        'ANQR menyediakan API sisi server untuk menghasilkan kode QR melalui parameter URL. Ini ideal untuk menyematkan kode QR di situs web, email, dokumen, atau alur kerja otomatis tanpa JavaScript sisi klien.',
+        'URL Dasar: https://anqr.link/api/qr',
+      ],
+    },
+    {
+      heading: 'API: Parameter Dasar',
+      paragraphs: [
+        'Parameter yang diperlukan dan umum (nama parameter tidak diterjemahkan):',
+      ],
+      bullets: [
+        'data (wajib): Konten yang akan dikodekan dalam kode QR. URL-encode karakter khusus.',
+        'size: Ukuran gambar dalam piksel (default: 400, maks: 2000). Digunakan jika w/h tidak ditentukan.',
+        'w, h: Lebar dan tinggi output dalam piksel. Menimpa parameter size.',
+        'format: Format output — png, webp, atau gif (default: png).',
+        'ec: Tingkat koreksi kesalahan — L, M, Q, atau H (default: H).',
+        'fg: Warna latar depan sebagai hex tanpa # (default: 000000).',
+        'bg: Warna latar belakang sebagai hex tanpa # (default: ffffff).',
+        'transparent: Atur ke 1 untuk latar belakang transparan.',
+        'margin: Zona tenang dalam modul (default: 4).',
+      ],
+    },
+    {
+      heading: 'API: Parameter Styling',
+      paragraphs: [
+        'Styling modul dan pola:',
+      ],
+      bullets: [
+        'style: Gaya modul — square, rounded, dots, diamond, connected.',
+        'finder: Gaya pola finder — square, rounded, circle.',
+        'align: Gaya pola alignment — match_finder, square, rounded, circle.',
+        'timing: Gaya pola timing — match_module, solid, dashed.',
+        'radius: Persentase radius sudut 0-100.',
+        'gap: Persentase celah modul 0-50.',
+        'gapMode: Mode celah — none, inset, stroke, negative_space.',
+        'eyeOuter, eyeInner: Gaya mata — square, rounded, circle.',
+        'eyeScale: Persentase skala mata (default: 100).',
+        'grad: Jenis gradien — none, linear, radial, conic.',
+        'gradAngle: Sudut gradien untuk gradien linear.',
+        'gradStops: Stop gradien sebagai color1,pos1,color2,pos2,... (mis., ff0000,0,0000ff,1).',
+      ],
+    },
+    {
+      heading: 'API: Parameter Overlay',
+      paragraphs: [
+        'Opsi overlay gambar (gambar overlay diambil dari sisi server):',
+      ],
+      bullets: [
+        'img: URL ke gambar overlay (harus dapat diakses publik).',
+        'mode: Mode overlay — center, halftone, blend, brightness, mosaic, dithered, blue-noise, subpixel.',
+        'intensity: Intensitas overlay 0-100 (default: 100).',
+        'colorMode: Mode warna overlay — color, grayscale, bw.',
+        'fit: Cara overlay menyesuaikan — cover, contain, stretch.',
+        'rot: Rotasi overlay dalam derajat.',
+        'flipX, flipY: Atur ke 1 untuk membalik overlay.',
+        'keepFinders: Pertahankan pola finder (default: 1).',
+        'keepTiming, keepAlign: Atur ke 1 untuk mempertahankan pola timing/alignment.',
+      ],
+    },
+    {
+      heading: 'API: Parameter Preprocessing',
+      paragraphs: [
+        'Preprocessing gambar yang diterapkan ke overlay:',
+      ],
+      bullets: [
+        'brightness: Penyesuaian -100 hingga 100 (default: 0).',
+        'contrast: Penyesuaian -100 hingga 100 (default: 0).',
+        'gamma: Nilai 0.1 hingga 3 (default: 1).',
+        'saturation: Penyesuaian -100 hingga 100 (default: 0).',
+        'hue: Rotasi hue dalam derajat.',
+        'blur: Blur dalam piksel.',
+        'sharpen: Jumlah sharpen 0-100.',
+        'posterize: Level posterize.',
+        'threshold: Threshold biner 0-255.',
+        'edge: Deteksi tepi — off, sobel, canny.',
+        'invert: Atur ke 1 untuk membalik warna.',
+      ],
+    },
+    {
+      heading: 'API: Parameter Watermark',
+      paragraphs: [
+        'Tambahkan watermark ke kode QR yang dihasilkan:',
+      ],
+      bullets: [
+        'wmEn: Atur ke 1 untuk mengaktifkan watermark.',
+        'wmKind: Jenis watermark — text, image, pattern.',
+        'wmText: Teks watermark (URL-encoded).',
+        'wmImg: URL ke gambar watermark.',
+        'wmPos: Posisi — center, corners, edges, behind, quiet_zone.',
+        'wmOpacity: Opasitas 0-100 (default: 50).',
+        'wmBlend: Mode blend — normal, multiply, screen, overlay.',
+      ],
+    },
+    {
+      heading: 'API: Parameter Animasi',
+      paragraphs: [
+        'Untuk output GIF animasi (memerlukan format=gif):',
+      ],
+      bullets: [
+        'animPattern: Pola animasi — none, pulse, wave, scanline, shimmer, drift, color_cycle.',
+        'animFrames: Jumlah frame 1-60 (default: 24).',
+        'animSpeed: Delay frame dalam milidetik 10-1000 (default: 100).',
+        'animSeed: Seed acak untuk animasi.',
+        'easing: Easing animasi — linear, ease_in, ease_out, ease_in_out, bounce.',
+      ],
+    },
+    {
+      heading: 'API: Parameter Output',
+      paragraphs: [
+        'Opsi format output:',
+      ],
+      bullets: [
+        'quality: Kualitas WebP 0-1 (default: 0.9).',
+        'webpQ: Kualitas WebP 0-100 (default: 90).',
+        'gifColors: Ukuran palet GIF 2-256 (default: 256).',
+        'dpi: DPI output untuk PNG (default: 72).',
+        'metaTitle, metaAuthor, metaCopy, metaDesc: Field metadata PNG.',
+      ],
+    },
+    {
+      heading: 'API: Contoh Penggunaan',
+      paragraphs: [
+        'Kode QR dasar:',
+        'https://anqr.link/api/qr?data=https://example.com',
+        'Kode QR bergaya dengan warna kustom:',
+        'https://anqr.link/api/qr?data=Hello&size=300&fg=1e40af&bg=ffffff&style=rounded&radius=30',
+        'Kode QR dengan gambar overlay:',
+        'https://anqr.link/api/qr?data=https://example.com&ec=H&img=https://example.com/logo.png&mode=halftone&intensity=70',
+        'GIF Animasi:',
+        'https://anqr.link/api/qr?data=Hello&format=gif&animPattern=pulse&animFrames=24&easing=ease_in_out',
+      ],
+    },
+    {
+      heading: 'Menyematkan Kode QR',
+      paragraphs: [
+        'Dalam mode Profesional, fitur Bagikan menghasilkan HTML dan URL yang dapat disematkan. Berikut cara penyematan bekerja:',
+      ],
+      bullets: [
+        'Tautan Bagikan: Membuat URL ke aplikasi ANQR dengan semua pengaturan Anda dikodekan sebagai parameter URL. Penerima dapat melihat dan memodifikasi kode QR.',
+        'Sematkan Gambar: Menghasilkan tag <img> yang mengarah ke API server. Kode QR dirender di sisi server dan disajikan sebagai gambar.',
+        'Sematkan Markdown: Membuat sintaks gambar Markdown untuk dokumentasi dan file README.',
+        'URL API Langsung: URL API mentah untuk digunakan dalam aplikasi, skrip, atau integrasi lainnya.',
+      ],
+    },
+    {
+      heading: 'Penyematan: Contoh HTML',
+      paragraphs: [
+        'Untuk menyematkan kode QR di situs web Anda:',
+        '<img src="https://anqr.link/api/qr?data=https://yoursite.com&size=200" alt="Kode QR" />',
+        'Untuk ukuran responsif:',
+        '<img src="https://anqr.link/api/qr?data=https://yoursite.com&size=400" alt="Kode QR" style="max-width: 100%; height: auto;" />',
+        'Server meng-cache respons dengan header cache yang panjang, sehingga permintaan berulang untuk URL yang sama cepat.',
+      ],
+    },
+    {
+      heading: 'Penyematan: Format URL Bagikan',
+      paragraphs: [
+        'Ketika Anda mengklik Bagikan dalam mode Profesional, ANQR mengkodekan pengaturan Anda saat ini ke dalam parameter URL. Formatnya adalah:',
+        'https://anqr.link/?data=...&ec=H&style=rounded&....',
+        'Parameter ini mencerminkan parameter API, sehingga Anda dapat mengonversi URL bagikan ke URL API dengan mengubah path dasar dari / ke /api/qr dan menyesuaikan parameter w/h sesuai kebutuhan.',
+        'Catatan: Gambar overlay yang diunggah dari file lokal tidak dapat dibagikan melalui URL — hanya overlay berbasis URL (parameter img) yang berfungsi di tautan yang dibagikan dan panggilan API.',
+      ],
+    },
+    {
+      heading: 'API: Batas Rate dan Penggunaan',
+      paragraphs: [
+        'API gratis untuk digunakan untuk volume yang wajar. Untuk penggunaan volume tinggi atau aplikasi komersial yang memerlukan uptime terjamin, silakan hubungi kami.',
+        'Respons API menyertakan header caching yang agresif. Untuk performa terbaik, cache respons di sisi Anda atau gunakan URL yang sama secara konsisten untuk kode QR yang identik.',
       ],
     },
     {

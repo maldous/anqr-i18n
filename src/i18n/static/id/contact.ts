@@ -15,8 +15,8 @@ export const contact: PageDefinition = {
     {
       heading: 'Email',
       paragraphs: [
-        `Untuk semua pertanyaan: ${CONTACT_EMAIL}`,
-        'Ini adalah cara paling andal untuk menghubungi kami dan direkomendasikan untuk pertanyaan detail, pertanyaan bisnis, atau jika formulir kontak tidak berfungsi di perangkat Anda.',
+        'Untuk semua pertanyaan: ${CONTACT_EMAIL}',
+        'Ini adalah cara paling andal untuk menghubungi kami dan direkomendasikan untuk pertanyaan detail, pertanyaan bisnis, atau pertanyaan lainnya.',
       ],
     },
     {
@@ -60,7 +60,7 @@ export const contact: PageDefinition = {
     {
       heading: 'Kontak DMCA',
       paragraphs: [
-        `Kirim pemberitahuan DMCA ke: ${CONTACT_EMAIL}`,
+        'Kirim pemberitahuan DMCA ke: ${CONTACT_EMAIL}',
         'Harap sertakan Pemberitahuan DMCA di baris subjek. Kami akan menanggapi pemberitahuan yang sah sesuai dengan hukum yang berlaku. Harap dicatat bahwa ANQR menghasilkan kode QR secara lokal di perangkat pengguna dan tidak menghosting konten yang dibuat pengguna.',
       ],
     },

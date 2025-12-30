@@ -9,7 +9,7 @@ export const docs: PageDefinition = {
     {
       heading: 'Pagsisimula',
       paragraphs: [
-        'Ang ANQR ay isang QR code generator na ganap na tumatakbo sa iyong device - sa iyong computer, telepono, o tablet. Hindi kinakailangan ng account, walang server na kasangkot, at ang iyong data ay nananatiling pribado.',
+        'Ang ANQR ay isang QR code generator na ganap na tumatakbo sa iyong device — sa iyong computer, telepono, o tablet. Hindi kinakailangan ng account, walang server na kasangkot, at ang iyong data ay nananatiling pribado.',
         'Ang interface ay may tatlong antas ng interface: Basic, Advanced, at Professional. Piliin ang iyong antas gamit ang mga tab sa header. Ang bawat antas ay nagbubukas ng mga karagdagang tampok habang pinapanatiling nakatuon ang interface sa kung ano ang kailangan mo.',
       ],
       bullets: [
@@ -554,6 +554,178 @@ export const docs: PageDefinition = {
       bullets: [
         'Temporal Dither: Naka-off, Blue Noise, o Flicker Safe per-frame dithering.',
         'Pattern: Wala, Pulso, Alon, Scanline, Kumikinang, o Mga Epektong Naaanod.',
+      ],
+    },
+    {
+      heading: 'Sanggunian ng API',
+      paragraphs: [
+        'Nagbibigay ang ANQR ng server-side API para sa pagbuo ng mga QR code sa pamamagitan ng mga parameter ng URL. Ito ay perpekto para sa pag-embed ng mga QR code sa mga website, email, dokumento, o automated na workflow nang walang client-side JavaScript.',
+        'Base URL: https://anqr.link/api/qr',
+      ],
+    },
+    {
+      heading: 'API: Mga Pangunahing Parameter',
+      paragraphs: [
+        'Mga kinakailangan at karaniwang parameter (hindi isinasalin ang mga pangalan ng parameter):',
+      ],
+      bullets: [
+        'data (kinakailangan): Ang content na ie-encode sa QR code. I-URL-encode ang mga espesyal na karakter.',
+        'size: Laki ng imahe sa pixels (default: 400, max: 2000). Ginagamit kung hindi tinukoy ang w/h.',
+        'w, h: Lapad at taas ng output sa pixels. Nag-o-override sa size parameter.',
+        'format: Format ng output — png, webp, o gif (default: png).',
+        'ec: Antas ng pagwawasto ng error — L, M, Q, o H (default: H).',
+        'fg: Kulay ng foreground bilang hex na walang # (default: 000000).',
+        'bg: Kulay ng background bilang hex na walang # (default: ffffff).',
+        'transparent: Itakda sa 1 para sa transparent na background.',
+        'margin: Tahimik na sona sa mga module (default: 4).',
+      ],
+    },
+    {
+      heading: 'API: Mga Parameter ng Istilo',
+      paragraphs: [
+        'Pag-istilo ng module at pattern:',
+      ],
+      bullets: [
+        'style: Istilo ng module — square, rounded, dots, diamond, connected.',
+        'finder: Istilo ng finder pattern — square, rounded, circle.',
+        'align: Istilo ng alignment pattern — match_finder, square, rounded, circle.',
+        'timing: Istilo ng timing pattern — match_module, solid, dashed.',
+        'radius: Porsyento ng radius ng sulok 0-100.',
+        'gap: Porsyento ng gap ng module 0-50.',
+        'gapMode: Mode ng gap — none, inset, stroke, negative_space.',
+        'eyeOuter, eyeInner: Mga istilo ng mata — square, rounded, circle.',
+        'eyeScale: Porsyento ng scale ng mata (default: 100).',
+        'grad: Uri ng gradient — none, linear, radial, conic.',
+        'gradAngle: Anggulo ng gradient para sa mga linear gradient.',
+        'gradStops: Mga gradient stop bilang color1,pos1,color2,pos2,... (hal., ff0000,0,0000ff,1).',
+      ],
+    },
+    {
+      heading: 'API: Mga Parameter ng Overlay',
+      paragraphs: [
+        'Mga opsyon ng image overlay (kinukuha ang overlay image sa server-side):',
+      ],
+      bullets: [
+        'img: URL sa overlay image (dapat na publicly accessible).',
+        'mode: Mode ng overlay — center, halftone, blend, brightness, mosaic, dithered, blue-noise, subpixel.',
+        'intensity: Intensity ng overlay 0-100 (default: 100).',
+        'colorMode: Color mode ng overlay — color, grayscale, bw.',
+        'fit: Paano umaakma ang overlay — cover, contain, stretch.',
+        'rot: Rotasyon ng overlay sa degrees.',
+        'flipX, flipY: Itakda sa 1 upang i-flip ang overlay.',
+        'keepFinders: Panatilihin ang mga finder pattern (default: 1).',
+        'keepTiming, keepAlign: Itakda sa 1 upang panatilihin ang timing/alignment pattern.',
+      ],
+    },
+    {
+      heading: 'API: Mga Parameter ng Preprocessing',
+      paragraphs: [
+        'Image preprocessing na inilalapat sa overlay:',
+      ],
+      bullets: [
+        'brightness: Pagsasaayos -100 hanggang 100 (default: 0).',
+        'contrast: Pagsasaayos -100 hanggang 100 (default: 0).',
+        'gamma: Halaga 0.1 hanggang 3 (default: 1).',
+        'saturation: Pagsasaayos -100 hanggang 100 (default: 0).',
+        'hue: Rotasyon ng hue sa degrees.',
+        'blur: Blur sa pixels.',
+        'sharpen: Halaga ng sharpen 0-100.',
+        'posterize: Mga antas ng posterize.',
+        'threshold: Binary threshold 0-255.',
+        'edge: Edge detection — off, sobel, canny.',
+        'invert: Itakda sa 1 upang i-invert ang mga kulay.',
+      ],
+    },
+    {
+      heading: 'API: Mga Parameter ng Watermark',
+      paragraphs: [
+        'Magdagdag ng mga watermark sa mga nabuong QR code:',
+      ],
+      bullets: [
+        'wmEn: Itakda sa 1 upang paganahin ang watermark.',
+        'wmKind: Uri ng watermark — text, image, pattern.',
+        'wmText: Text ng watermark (URL-encoded).',
+        'wmImg: URL sa watermark image.',
+        'wmPos: Posisyon — center, corners, edges, behind, quiet_zone.',
+        'wmOpacity: Opacity 0-100 (default: 50).',
+        'wmBlend: Blend mode — normal, multiply, screen, overlay.',
+      ],
+    },
+    {
+      heading: 'API: Mga Parameter ng Animation',
+      paragraphs: [
+        'Para sa animated GIF output (nangangailangan ng format=gif):',
+      ],
+      bullets: [
+        'animPattern: Pattern ng animation — none, pulse, wave, scanline, shimmer, drift, color_cycle.',
+        'animFrames: Bilang ng mga frame 1-60 (default: 24).',
+        'animSpeed: Delay ng frame sa milliseconds 10-1000 (default: 100).',
+        'animSeed: Random seed para sa animation.',
+        'easing: Easing ng animation — linear, ease_in, ease_out, ease_in_out, bounce.',
+      ],
+    },
+    {
+      heading: 'API: Mga Parameter ng Output',
+      paragraphs: [
+        'Mga opsyon ng format ng output:',
+      ],
+      bullets: [
+        'quality: Kalidad ng WebP 0-1 (default: 0.9).',
+        'webpQ: Kalidad ng WebP 0-100 (default: 90).',
+        'gifColors: Laki ng GIF palette 2-256 (default: 256).',
+        'dpi: Output DPI para sa PNG (default: 72).',
+        'metaTitle, metaAuthor, metaCopy, metaDesc: Mga field ng PNG metadata.',
+      ],
+    },
+    {
+      heading: 'API: Halimbawa ng Paggamit',
+      paragraphs: [
+        'Pangunahing QR code:',
+        'https://anqr.link/api/qr?data=https://example.com',
+        'Naka-istilo na QR code na may custom na mga kulay:',
+        'https://anqr.link/api/qr?data=Hello&size=300&fg=1e40af&bg=ffffff&style=rounded&radius=30',
+        'QR code na may overlay image:',
+        'https://anqr.link/api/qr?data=https://example.com&ec=H&img=https://example.com/logo.png&mode=halftone&intensity=70',
+        'Animated GIF:',
+        'https://anqr.link/api/qr?data=Hello&format=gif&animPattern=pulse&animFrames=24&easing=ease_in_out',
+      ],
+    },
+    {
+      heading: 'Pag-embed ng mga QR Code',
+      paragraphs: [
+        'Sa Professional mode, ang Share feature ay bumubuo ng embeddable na HTML at mga URL. Narito kung paano gumagana ang pag-embed:',
+      ],
+      bullets: [
+        'Share Link: Gumagawa ng URL sa ANQR app na may lahat ng iyong mga setting na naka-encode bilang mga URL parameter. Maaaring tingnan at baguhin ng mga tatanggap ang QR code.',
+        'Embed Image: Bumubuo ng <img> tag na nakaturo sa server API. Ang QR code ay nire-render sa server-side at ibinibigay bilang imahe.',
+        'Embed Markdown: Gumagawa ng Markdown image syntax para sa dokumentasyon at mga README file.',
+        'Direct API URL: Ang raw API URL para sa paggamit sa mga application, script, o iba pang integration.',
+      ],
+    },
+    {
+      heading: 'Pag-embed: Halimbawa ng HTML',
+      paragraphs: [
+        'Upang mag-embed ng QR code sa iyong website:',
+        '<img src="https://anqr.link/api/qr?data=https://yoursite.com&size=200" alt="QR Code" />',
+        'Para sa responsive sizing:',
+        '<img src="https://anqr.link/api/qr?data=https://yoursite.com&size=400" alt="QR Code" style="max-width: 100%; height: auto;" />',
+        'Ang server ay nagca-cache ng mga response na may mahabang cache header, kaya ang paulit-ulit na request para sa parehong URL ay mabilis.',
+      ],
+    },
+    {
+      heading: 'Pag-embed: Format ng Share URL',
+      paragraphs: [
+        'Kapag nag-click ka ng Share sa Professional mode, ini-encode ng ANQR ang iyong kasalukuyang mga setting sa mga URL parameter. Ang format ay:',
+        'https://anqr.link/?data=...&ec=H&style=rounded&....',
+        'Ang mga parameter na ito ay tumutugma sa mga API parameter, kaya maaari mong i-convert ang share URL sa API URL sa pamamagitan ng pagpapalit ng base path mula / sa /api/qr at pag-aayos ng mga w/h parameter kung kinakailangan.',
+        'Paalala: Ang mga overlay image na na-upload mula sa mga lokal na file ay hindi maaaring ibahagi sa pamamagitan ng URL — ang mga URL-based na overlay lamang (img parameter) ang gumagana sa mga shared link at API call.',
+      ],
+    },
+    {
+      heading: 'API: Mga Rate Limit at Paggamit',
+      paragraphs: [
+        'Ang API ay libreng gamitin para sa mga makatwirang dami. Para sa mataas na dami ng paggamit o mga komersyal na application na nangangailangan ng garantisadong uptime, mangyaring makipag-ugnayan sa amin.',
+        'Kasama sa mga API response ang agresibong caching header. Para sa pinakamahusay na pagganap, mag-cache ng mga response sa iyong panig o gumamit ng parehong URL nang tuluy-tuloy para sa magkaparehong mga QR code.',
       ],
     },
     {

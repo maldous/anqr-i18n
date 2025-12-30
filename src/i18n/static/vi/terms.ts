@@ -3,8 +3,7 @@ import { LAST_UPDATED, CONTACT_EMAIL } from '../types'
 
 export const terms: PageDefinition = {
   title: 'khoản dịch vụ',
-  description:
-    'cách truy cập hoặc sử dụng trang web, bạn đồng ý chịu ràng buộc bởi các điều khoản này.',
+  description: 'cách truy cập hoặc sử dụng trang web, bạn đồng ý chịu ràng buộc bởi các điều khoản này.',
   lastUpdated: LAST_UPDATED,
   sections: [
     {
@@ -17,7 +16,7 @@ export const terms: PageDefinition = {
     {
       heading: 'kiện đủ điều kiện',
       paragraphs: [
-        "phải ít nhất 13 tuổi mới được sử dụng ANQR. Bằng cách sử dụng trang web, bạn xác nhận rằng bạn đáp ứng yêu cầu về độ tuổi này. Nếu bạn dưới 18 tuổi, bạn xác nhận rằng bạn đã có sự cho phép của cha mẹ hoặc người giám hộ để sử dụng trang web.",
+        'phải ít nhất 13 tuổi mới được sử dụng ANQR. Bằng cách sử dụng trang web, bạn xác nhận rằng bạn đáp ứng yêu cầu về độ tuổi này. Nếu bạn dưới 18 tuổi, bạn xác nhận rằng bạn đã có sự cho phép của cha mẹ hoặc người giám hộ để sử dụng trang web.',
       ],
     },
     {
@@ -28,7 +27,9 @@ export const terms: PageDefinition = {
     },
     {
       heading: 'vi bị cấm',
-      paragraphs: ['đồng ý không:'],
+      paragraphs: [
+        'đồng ý không:',
+      ],
       bullets: [
         'dụng ANQR để tạo mã QR nhằm hỗ trợ các hoạt động lừa đảo trực tuyến, phát tán phần mềm độc hại, gian lận, quấy rối, phỉ báng hoặc bất kỳ hoạt động bất hợp pháp nào.',
         'hóa nội dung vi phạm quyền sở hữu trí tuệ, xâm phạm quyền riêng tư hoặc chứa nội dung bất hợp pháp.',
@@ -50,7 +51,8 @@ export const terms: PageDefinition = {
     {
       heading: 'phép nội dung người dùng',
       paragraphs: [
-        'cách sử dụng ANQR, bạn không trao cho chúng tôi bất kỳ quyền nào đối với nội dung của bạn - tất cả quá trình tạo mã QR đều diễn ra cục bộ trên thiết bị của bạn và chúng tôi không truy cập, lưu trữ hoặc truyền dữ liệu được mã hóa của bạn.',
+        'cách sử dụng ANQR, bạn không trao cho chúng tôi bất kỳ quyền nào đối với nội dung của bạn — tất cả quá trình tạo mã QR đều diễn ra cục bộ trên thiết bị của bạn và chúng tôi không truy cập, lưu trữ hoặc truyền dữ liệu được mã hóa của bạn.',
+        'Khi sử dụng API phía máy chủ, nội dung của bạn được xử lý để tạo hình ảnh QR nhưng không được lưu trữ, ghi nhật ký hoặc sử dụng cho bất kỳ mục đích nào khác ngoài việc hiển thị hình ảnh được yêu cầu.',
       ],
     },
     {
@@ -86,7 +88,7 @@ export const terms: PageDefinition = {
     {
       heading: 'quyết tranh chấp',
       paragraphs: [
-        `tranh chấp phát sinh từ các Điều khoản này hoặc việc bạn sử dụng ANQR trước tiên sẽ được cố gắng giải quyết thông qua đàm phán không chính thức bằng cách liên hệ với ${CONTACT_EMAIL}.`,
+        'tranh chấp phát sinh từ các Điều khoản này hoặc việc bạn sử dụng ANQR trước tiên sẽ được cố gắng giải quyết thông qua đàm phán không chính thức bằng cách liên hệ với ${CONTACT_EMAIL}.',
         'việc giải quyết không chính thức thất bại, các tranh chấp sẽ được giải quyết thông qua trọng tài ràng buộc tại Victoria, Úc, ngoại trừ việc mỗi bên có thể yêu cầu tòa án ra lệnh cấm đối với các vi phạm quyền sở hữu trí tuệ.',
       ],
     },
@@ -135,7 +137,11 @@ export const terms: PageDefinition = {
     },
     {
       heading: 'hệ',
-      paragraphs: [`thắc mắc về các Điều khoản này có thể gửi đến: ${CONTACT_EMAIL}`],
+      paragraphs: [
+        'thắc mắc về các Điều khoản này có thể gửi đến: ${CONTACT_EMAIL}',
+      ],
     },
   ],
 }
+
+export default terms;
