@@ -9,7 +9,7 @@ export const docs: PageDefinition = {
     {
       heading: 'Primeiros passos',
       paragraphs: [
-        'O ANQR é um gerador de código QR que funciona inteiramente no seu dispositivo — seu computador, celular ou tablet. Não é necessário criar uma conta, não há servidores envolvidos e seus dados permanecem privados.',
+        'O ANQR é um gerador de código QR que funciona inteiramente no seu dispositivo - seu computador, celular ou tablet. Não é necessário criar uma conta, não há servidores envolvidos e seus dados permanecem privados.',
         'A interface possui três níveis: Básico, Avançado e Profissional. Selecione o seu nível usando as abas no cabeçalho. Cada nível desbloqueia recursos adicionais, mantendo a interface focada no que você precisa.',
       ],
       bullets: [

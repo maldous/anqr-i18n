@@ -3,7 +3,7 @@ import { LAST_UPDATED, CONTACT_EMAIL } from '../types'
 
 export const about: PageDefinition = {
   title: 'Tungkol sa ANQR',
-  description: 'Ang ANQR ay isang libreng QR code generator na ganap na tumatakbo sa iyong device — hindi kinakailangan ng account.',
+  description: 'Ang ANQR ay isang libreng QR code generator na ganap na tumatakbo sa iyong device - hindi kinakailangan ng account.',
   lastUpdated: LAST_UPDATED,
   sections: [
     {
@@ -16,12 +16,12 @@ export const about: PageDefinition = {
     {
       heading: 'Mga Pangunahing Tampok',
       bullets: [
-        'Gumawa agad ng mga QR code sa iyong device — hindi na kailangan ng pag-upload ng server, hindi na kailangan ng account.',
+        'Gumawa agad ng mga QR code sa iyong device - hindi na kailangan ng pag-upload ng server, hindi na kailangan ng account.',
         'I-customize ang mga kulay, istilo ng modyul, pattern ng finder, at magdagdag ng mga overlay ng imahe.',
         'I-export sa iba\'t ibang format: PNG, SVG, WebP, at animated GIF.',
         'Mga advanced na kontrol para sa antas ng pagwawasto ng error, bersyon ng QR, mode ng pag-encode, at pagpili ng mask.',
         'Gabay sa kaligtasan ng pag-scan at live preview upang makatulong na mapanatiling nababasa ang mga code sa print at sa mga screen.',
-        'Gumagana offline kapag na-load na — ito ay isang static na web app na maaari mong patakbuhin kahit saan.',
+        'Gumagana offline kapag na-load na - ito ay isang static na web app na maaari mong patakbuhin kahit saan.',
       ],
     },
     {
@@ -61,7 +61,7 @@ export const about: PageDefinition = {
     {
       heading: 'Mga puna at kontribusyon',
       paragraphs: [
-        'Tinatanggap namin ang feedback, mga ulat ng bug, at mga mungkahi sa feature. Mangyaring makipag-ugnayan sa amin sa pamamagitan ng email o sa pahina ng pakikipag-ugnayan — binabasa namin ang bawat mensahe, bagama\'t maaaring mag-iba ang mga oras ng pagtugon.',
+        'Tinatanggap namin ang feedback, mga ulat ng bug, at mga mungkahi sa feature. Mangyaring makipag-ugnayan sa amin sa pamamagitan ng email o sa pahina ng pakikipag-ugnayan - binabasa namin ang bawat mensahe, bagama\'t maaaring mag-iba ang mga oras ng pagtugon.',
       ],
     },
   ],

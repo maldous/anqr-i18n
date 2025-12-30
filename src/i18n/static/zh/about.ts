@@ -3,7 +3,7 @@ import { LAST_UPDATED, CONTACT_EMAIL } from '../types'
 
 export const about: PageDefinition = {
   title: '关于 ANQR',
-  description: 'ANQR 是一款完全在您的设备上运行的免费二维码生成器——无需帐户。',
+  description: 'ANQR 是一款完全在您的设备上运行的免费二维码生成器--无需帐户。',
   lastUpdated: LAST_UPDATED,
   sections: [
     {
@@ -16,12 +16,12 @@ export const about: PageDefinition = {
     {
       heading: '主要特点',
       bullets: [
-        '在您的设备上即时生成二维码——无需上传到服务器，无需注册帐户。',
+        '在您的设备上即时生成二维码--无需上传到服务器，无需注册帐户。',
         '自定义颜色、模块样式、查找器图案，并添加图像叠加层。',
         '导出为多种格式：PNG、SVG、WebP 和动画 GIF。',
         '高级控制功能，包括纠错级别、QR 版本、编码模式和掩码选择。',
         '扫描安全指南和实时预览，有助于保持条码在打印和屏幕上的可读性。',
-        '加载完成后即可离线使用——这是一个静态 Web 应用程序，您可以在任何地方运行。',
+        '加载完成后即可离线使用--这是一个静态 Web 应用程序，您可以在任何地方运行。',
       ],
     },
     {
@@ -61,7 +61,7 @@ export const about: PageDefinition = {
     {
       heading: '反馈与贡献',
       paragraphs: [
-        '我们欢迎您的反馈、错误报告和功能建议。请通过电子邮件或联系页面与我们联系——我们会阅读每一条信息，但回复时间可能会有所不同。',
+        '我们欢迎您的反馈、错误报告和功能建议。请通过电子邮件或联系页面与我们联系--我们会阅读每一条信息，但回复时间可能会有所不同。',
       ],
     },
   ],

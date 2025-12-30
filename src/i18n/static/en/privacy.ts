@@ -9,7 +9,7 @@ export const privacy: PageDefinition = {
     {
       heading: 'Summary',
       paragraphs: [
-        'ANQR is a QR code generator that runs entirely on your device. We do not require you to create an account, and QR codes are generated locally — we do not have access to the content you encode.',
+        'ANQR is a QR code generator that runs entirely on your device. We do not require you to create an account, and QR codes are generated locally - we do not have access to the content you encode.',
         'We use Google AdSense for advertising and may use analytics services. These services collect information through cookies and similar technologies. This policy explains what data is collected, how it is used, and your rights.',
       ],
     },
@@ -89,7 +89,7 @@ export const privacy: PageDefinition = {
     {
       heading: 'GDPR legal basis',
       paragraphs: [
-        'We process data on these bases: (a) Consent — for personalised advertising (managed by our advertising partners); (b) Legitimate interests — for analytics, security, and improvement; (c) Contract — to respond to enquiries.',
+        'We process data on these bases: (a) Consent - for personalised advertising (managed by our advertising partners); (b) Legitimate interests - for analytics, security, and improvement; (c) Contract - to respond to enquiries.',
         `To exercise your rights, contact ${CONTACT_EMAIL}. We respond within 30 days.`,
       ],
     },

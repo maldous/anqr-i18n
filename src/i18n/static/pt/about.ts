@@ -3,7 +3,7 @@ import { LAST_UPDATED, CONTACT_EMAIL } from '../types'
 
 export const about: PageDefinition = {
   title: 'Sobre a ANQR',
-  description: 'O ANQR é um gerador de código QR gratuito que funciona inteiramente no seu dispositivo — sem necessidade de conta.',
+  description: 'O ANQR é um gerador de código QR gratuito que funciona inteiramente no seu dispositivo - sem necessidade de conta.',
   lastUpdated: LAST_UPDATED,
   sections: [
     {
@@ -16,12 +16,12 @@ export const about: PageDefinition = {
     {
       heading: 'Características principais',
       bullets: [
-        'Gere códigos QR instantaneamente no seu dispositivo — sem uploads para o servidor, sem necessidade de conta."',
+        'Gere códigos QR instantaneamente no seu dispositivo - sem uploads para o servidor, sem necessidade de conta."',
         'Personalize cores, estilos de módulos, padrões de busca e adicione sobreposições de imagens.',
         'Exportar em vários formatos: PNG, SVG, WebP e GIF animado.',
         'Controles avançados para nível de correção de erros, versão do QR Code, modo de codificação e seleção de máscara.',
         'Orientações de segurança de leitura e pré-visualização em tempo real para ajudar a manter os códigos legíveis tanto na impressão quanto nas telas.',
-        'Funciona offline depois de carregado — é um aplicativo web estático que você pode executar em qualquer lugar.',
+        'Funciona offline depois de carregado - é um aplicativo web estático que você pode executar em qualquer lugar.',
       ],
     },
     {
@@ -61,7 +61,7 @@ export const about: PageDefinition = {
     {
       heading: 'Feedback e contribuições',
       paragraphs: [
-        'Agradecemos comentários, relatórios de erros e sugestões de recursos. Entre em contato conosco por e-mail ou pela página de contato — lemos todas as mensagens, embora o tempo de resposta possa variar.',
+        'Agradecemos comentários, relatórios de erros e sugestões de recursos. Entre em contato conosco por e-mail ou pela página de contato - lemos todas as mensagens, embora o tempo de resposta possa variar.',
       ],
     },
   ],

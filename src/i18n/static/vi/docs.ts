@@ -9,7 +9,7 @@ export const docs: PageDefinition = {
     {
       heading: 'đầu',
       paragraphs: [
-        'ANQR là một trình tạo mã QR hoạt động hoàn toàn trên thiết bị của bạn — máy tính, điện thoại hoặc máy tính bảng. Không cần tài khoản, không có máy chủ nào tham gia và dữ liệu của bạn được bảo mật.',
+        'ANQR là một trình tạo mã QR hoạt động hoàn toàn trên thiết bị của bạn - máy tính, điện thoại hoặc máy tính bảng. Không cần tài khoản, không có máy chủ nào tham gia và dữ liệu của bạn được bảo mật.',
         'Giao diện có ba cấp độ: Cơ bản, Nâng cao và Chuyên nghiệp. Chọn cấp độ của bạn bằng cách sử dụng các tab ở phần đầu trang. Mỗi cấp độ sẽ mở khóa thêm các tính năng trong khi vẫn giữ cho giao diện tập trung vào những gì bạn cần.',
       ],
       bullets: [

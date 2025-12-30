@@ -9,7 +9,7 @@ export const docs: PageDefinition = {
     {
       heading: 'Pagsisimula',
       paragraphs: [
-        'Ang ANQR ay isang QR code generator na ganap na tumatakbo sa iyong device — sa iyong computer, telepono, o tablet. Hindi kinakailangan ng account, walang server na kasangkot, at ang iyong data ay nananatiling pribado.',
+        'Ang ANQR ay isang QR code generator na ganap na tumatakbo sa iyong device - sa iyong computer, telepono, o tablet. Hindi kinakailangan ng account, walang server na kasangkot, at ang iyong data ay nananatiling pribado.',
         'Ang interface ay may tatlong antas ng interface: Basic, Advanced, at Professional. Piliin ang iyong antas gamit ang mga tab sa header. Ang bawat antas ay nagbubukas ng mga karagdagang tampok habang pinapanatiling nakatuon ang interface sa kung ano ang kailangan mo.',
       ],
       bullets: [

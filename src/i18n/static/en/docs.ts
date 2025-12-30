@@ -9,7 +9,7 @@ export const docs: PageDefinition = {
     {
       heading: 'Getting Started',
       paragraphs: [
-        'ANQR is a QR code generator that runs entirely on your device — your computer, phone, or tablet. No account is required, no servers are involved, and your data stays private.',
+        'ANQR is a QR code generator that runs entirely on your device - your computer, phone, or tablet. No account is required, no servers are involved, and your data stays private.',
         'The interface has three interface levels: Basic, Advanced, and Professional. Select your level using the tabs in the header. Each level unlocks additional features while keeping the interface focused on what you need.',
       ],
       bullets: [

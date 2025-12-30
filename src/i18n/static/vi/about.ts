@@ -3,7 +3,7 @@ import { LAST_UPDATED, CONTACT_EMAIL } from '../types'
 
 export const about: PageDefinition = {
   title: 'Giới thiệu về ANQR',
-  description: 'ANQR là một trình tạo mã QR miễn phí hoạt động hoàn toàn trên thiết bị của bạn — không cần tài khoản.',
+  description: 'ANQR là một trình tạo mã QR miễn phí hoạt động hoàn toàn trên thiết bị của bạn - không cần tài khoản.',
   lastUpdated: LAST_UPDATED,
   sections: [
     {
@@ -16,7 +16,7 @@ export const about: PageDefinition = {
     {
       heading: 'năng chính',
       bullets: [
-        'Tạo mã QR ngay lập tức trên thiết bị của bạn — không cần tải lên máy chủ, không cần tài khoản.',
+        'Tạo mã QR ngay lập tức trên thiết bị của bạn - không cần tải lên máy chủ, không cần tài khoản.',
         'Tùy chỉnh màu sắc, kiểu mô-đun, mẫu tìm kiếm và thêm lớp phủ hình ảnh.',
         'Xuất ở nhiều định dạng: PNG, SVG, WebP và ảnh GIF động.',
         'Các tùy chọn điều khiển nâng cao cho mức độ sửa lỗi, phiên bản mã QR, chế độ mã hóa và lựa chọn mặt nạ.',
@@ -61,7 +61,7 @@ export const about: PageDefinition = {
     {
       heading: 'Phản hồi và đóng góp',
       paragraphs: [
-        'Chúng tôi hoan nghênh phản hồi, báo cáo lỗi và đề xuất tính năng. Vui lòng liên hệ với chúng tôi qua email hoặc trang liên hệ — chúng tôi đọc mọi tin nhắn, mặc dù thời gian phản hồi có thể khác nhau.',
+        'Chúng tôi hoan nghênh phản hồi, báo cáo lỗi và đề xuất tính năng. Vui lòng liên hệ với chúng tôi qua email hoặc trang liên hệ - chúng tôi đọc mọi tin nhắn, mặc dù thời gian phản hồi có thể khác nhau.',
       ],
     },
   ],

@@ -9,7 +9,7 @@ export const docs: PageDefinition = {
     {
       heading: 'Memulai',
       paragraphs: [
-        'ANQR adalah generator kode QR yang berjalan sepenuhnya di perangkat Anda — komputer, ponsel, atau tablet Anda. Tidak diperlukan akun, tidak ada server yang terlibat, dan data Anda tetap terjaga kerahasiaannya.',
+        'ANQR adalah generator kode QR yang berjalan sepenuhnya di perangkat Anda - komputer, ponsel, atau tablet Anda. Tidak diperlukan akun, tidak ada server yang terlibat, dan data Anda tetap terjaga kerahasiaannya.',
         'Antarmuka ini memiliki tiga level antarmuka: Dasar, Lanjutan, dan Profesional. Pilih level Anda menggunakan tab di header. Setiap level membuka fitur tambahan sambil tetap memfokuskan antarmuka pada apa yang Anda butuhkan.',
       ],
       bullets: [

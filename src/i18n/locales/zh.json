@@ -786,7 +786,7 @@
         "title": "颜色与主题"
       },
       "content-types": {
-        "description": "不同载荷格式——vCard、WiFi、Email、SMS、Geo、Calendar",
+        "description": "不同载荷格式--vCard、WiFi、Email、SMS、Geo、Calendar",
         "title": "内容类型"
       },
       "dithering": {
@@ -802,7 +802,7 @@
         "title": "图像叠加"
       },
       "plain": {
-        "description": "无叠加的标准 QR 码——不同版本与纠错",
+        "description": "无叠加的标准 QR 码--不同版本与纠错",
         "title": "普通 QR 码"
       },
       "power-combos": {
