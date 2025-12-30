@@ -1232,7 +1232,7 @@ export function PayloadSection() {
               />
             </div>
             <div className="space-y-2">
-              <Label><HighlightedLabel>{payload.otpauth.type === 'hotp' ? 'Counter' : 'Period (sec)'}</HighlightedLabel></Label>
+              <Label><HighlightedLabel>{payload.otpauth.type === 'hotp' ? t('payload.counter') : t('payload.periodSec')}</HighlightedLabel></Label>
               <Input 
                 type="number"
                 value={payload.otpauth.type === 'hotp' ? (payload.otpauth.counter || 0) : (payload.otpauth.period || 30)} 

@@ -73,7 +73,7 @@ export function OverlaySection() {
   // Load image from URL
   const loadFromUrl = useCallback(async () => {
     if (!urlInput.trim()) {
-      setUrlError('Please enter a URL')
+      setUrlError(t('overlay.pleaseEnterUrl'))
       return
     }
     
@@ -234,7 +234,7 @@ export function OverlaySection() {
               >
                 <img 
                   src={imagePreview} 
-                  alt="Preview" 
+                  alt={t('overlay.preview')} 
                   className="w-full h-full object-contain"
                   draggable={false}
                 />
