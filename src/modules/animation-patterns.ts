@@ -3,8 +3,16 @@
  * Generates animated QR code effects from static images
  */
 
+import { hslToRgb as sharedHslToRgb } from './color-utils'
+
 export type AnimationPattern = 'none' | 'pulse' | 'wave' | 'scanline' | 'shimmer' | 'drift' | 'jitter' | 'color_cycle'
 export type InterpolationMode = 'none' | 'crossfade' | 'morph'
+
+// Use shared color conversion - wrapper to return tuple format
+function hslToRgb(h: number, s: number, l: number): [number, number, number] {
+  const rgb = sharedHslToRgb(h, s, l)
+  return [rgb.r, rgb.g, rgb.b]
+}
 
 /**
  * Generate animation frames using a pattern effect on a static image
@@ -71,7 +79,8 @@ export function generatePatternFrames(
 }
 
 /**
- * Pulse pattern - brightness oscillates
+ * Pulse pattern - scale and color intensity oscillates
+ * Works on black/white QR codes by pulsing color tint
  */
 function applyPulsePattern(
   imageData: ImageData,
@@ -80,18 +89,39 @@ function applyPulsePattern(
 ): void {
   const data = imageData.data
   // Sine wave oscillation for smooth pulsing
-  const intensity = 0.15 + 0.1 * Math.sin(seed * 0.1)
-  const factor = 1 + Math.sin(progress * Math.PI * 2) * intensity
-
+  const pulsePhase = Math.sin(progress * Math.PI * 2)
+  const intensity = 0.3 + 0.2 * Math.abs(pulsePhase)
+  
+  // Pulse color based on seed
+  const hue = (seed * 31) % 360
+  const pulseColor = hslToRgb(hue, 70, 50)
+  
   for (let i = 0; i < data.length; i += 4) {
-    data[i] = Math.min(255, data[i] * factor)     // R
-    data[i + 1] = Math.min(255, data[i + 1] * factor) // G
-    data[i + 2] = Math.min(255, data[i + 2] * factor) // B
+    const r = data[i]
+    const g = data[i + 1]
+    const b = data[i + 2]
+    const brightness = (r + g + b) / 3
+    const isDark = brightness < 128
+    
+    if (isDark) {
+      // Pulse dark pixels with color tint
+      const tintAmount = intensity * (0.5 + pulsePhase * 0.5)
+      data[i] = Math.min(255, r + pulseColor[0] * tintAmount)
+      data[i + 1] = Math.min(255, g + pulseColor[1] * tintAmount)
+      data[i + 2] = Math.min(255, b + pulseColor[2] * tintAmount)
+    } else {
+      // Subtle brightness pulse on light pixels
+      const brightnessFactor = 1 - intensity * 0.1 * (1 + pulsePhase)
+      data[i] = Math.max(0, Math.round(r * brightnessFactor))
+      data[i + 1] = Math.max(0, Math.round(g * brightnessFactor))
+      data[i + 2] = Math.max(0, Math.round(b * brightnessFactor))
+    }
   }
 }
 
 /**
- * Wave pattern - horizontal wave distortion effect via brightness
+ * Wave pattern - horizontal wave with color gradient effect
+ * Works on black/white QR codes by adding wave-based color tints
  */
 function applyWavePattern(
   imageData: ImageData,
@@ -102,24 +132,47 @@ function applyWavePattern(
 ): void {
   const data = imageData.data
   const waveFrequency = 3 + (seed % 5)
-  const waveAmplitude = 0.2
+  
+  // Base hue for wave colors
+  const baseHue = (seed * 23) % 360
 
   for (let y = 0; y < height; y++) {
-    // Calculate wave offset for this row
-    const waveOffset = Math.sin((y / height) * waveFrequency * Math.PI * 2 + progress * Math.PI * 2) * waveAmplitude
-    const factor = 1 + waveOffset
+    // Calculate wave phase for this row
+    const wavePhase = Math.sin((y / height) * waveFrequency * Math.PI * 2 + progress * Math.PI * 2)
+    const waveIntensity = (wavePhase + 1) / 2 // Normalize to 0-1
+    
+    // Wave color varies along the wave (ensure positive hue)
+    const rowHue = ((baseHue + wavePhase * 30) % 360 + 360) % 360
+    const waveColor = hslToRgb(rowHue, 70, 50)
 
     for (let x = 0; x < width; x++) {
       const i = (y * width + x) * 4
-      data[i] = Math.min(255, Math.max(0, data[i] * factor))
-      data[i + 1] = Math.min(255, Math.max(0, data[i + 1] * factor))
-      data[i + 2] = Math.min(255, Math.max(0, data[i + 2] * factor))
+      const r = data[i]
+      const g = data[i + 1]
+      const b = data[i + 2]
+      const brightness = (r + g + b) / 3
+      const isDark = brightness < 128
+      
+      if (isDark) {
+        // Tint dark pixels based on wave phase
+        const tintAmount = waveIntensity * 0.6
+        data[i] = Math.min(255, r + waveColor[0] * tintAmount)
+        data[i + 1] = Math.min(255, g + waveColor[1] * tintAmount)
+        data[i + 2] = Math.min(255, b + waveColor[2] * tintAmount)
+      } else {
+        // Subtle darkening wave on light pixels
+        const darkenAmount = waveIntensity * 0.15
+        data[i] = Math.round(r * (1 - darkenAmount))
+        data[i + 1] = Math.round(g * (1 - darkenAmount))
+        data[i + 2] = Math.round(b * (1 - darkenAmount))
+      }
     }
   }
 }
 
 /**
- * Scanline pattern - moving bright line across image
+ * Scanline pattern - moving bright line across image with inversion effect
+ * Works on black/white QR codes by inverting colors near the scanline
  */
 function applyScanlinePattern(
   imageData: ImageData,
@@ -129,32 +182,52 @@ function applyScanlinePattern(
   seed: number
 ): void {
   const data = imageData.data
-  const lineWidth = Math.max(2, height * 0.05) // 5% of height
-  const lineY = progress * (height + lineWidth * 2) - lineWidth
+  const lineWidth = Math.max(4, height * 0.08) // 8% of height for more visibility
   const horizontal = seed % 2 === 0
+  const maxPos = horizontal ? height : width
+  const linePos = progress * (maxPos + lineWidth * 2) - lineWidth
+  
+  // Scanline color based on seed for variety
+  const hue = (seed * 37) % 360
+  const scanColor = hslToRgb(hue, 80, 60)
 
   for (let y = 0; y < height; y++) {
     for (let x = 0; x < width; x++) {
       const i = (y * width + x) * 4
-      
-      // Calculate distance from scanline
       const pos = horizontal ? y : x
-      const linePos = horizontal ? lineY : progress * (width + lineWidth * 2) - lineWidth
       const distance = Math.abs(pos - linePos)
       
       if (distance < lineWidth) {
-        // Brighten pixels near the scanline
-        const brightness = 1 + (1 - distance / lineWidth) * 0.5
-        data[i] = Math.min(255, data[i] * brightness)
-        data[i + 1] = Math.min(255, data[i + 1] * brightness)
-        data[i + 2] = Math.min(255, data[i + 2] * brightness)
+        // Calculate intensity based on distance (1 at center, 0 at edges)
+        const intensity = 1 - (distance / lineWidth)
+        const r = data[i]
+        const g = data[i + 1]
+        const b = data[i + 2]
+        
+        // Determine if pixel is dark (QR module) or light (background)
+        const brightness = (r + g + b) / 3
+        const isDark = brightness < 128
+        
+        if (isDark) {
+          // For dark pixels: tint with scanline color
+          data[i] = Math.min(255, r + scanColor[0] * intensity * 0.8)
+          data[i + 1] = Math.min(255, g + scanColor[1] * intensity * 0.8)
+          data[i + 2] = Math.min(255, b + scanColor[2] * intensity * 0.8)
+        } else {
+          // For light pixels: add complementary tint and slight darkening
+          const compColor = hslToRgb((hue + 180) % 360, 60, 70)
+          data[i] = Math.max(0, r - (255 - compColor[0]) * intensity * 0.3)
+          data[i + 1] = Math.max(0, g - (255 - compColor[1]) * intensity * 0.3)
+          data[i + 2] = Math.max(0, b - (255 - compColor[2]) * intensity * 0.3)
+        }
       }
     }
   }
 }
 
 /**
- * Shimmer pattern - random sparkle effect
+ * Shimmer pattern - colorful sparkle effect
+ * Works on black/white QR codes by adding colored sparkles
  */
 function applyShimmerPattern(
   imageData: ImageData,
@@ -166,26 +239,51 @@ function applyShimmerPattern(
   const data = imageData.data
   
   // Use seeded random for consistency
-  const random = seededRandom(seed + Math.floor(progress * 1000))
+  const random = seededRandom(seed + Math.floor(progress * 100))
   
-  // Add random bright spots
-  const spotCount = Math.floor(width * height * 0.001) // 0.1% of pixels
+  // More spots for visibility (2% of pixels)
+  const spotCount = Math.floor(width * height * 0.02)
+  
+  // Generate sparkle colors that cycle over time
+  const baseHue = (progress * 360 + seed * 17) % 360
   
   for (let s = 0; s < spotCount; s++) {
     const x = Math.floor(random() * width)
     const y = Math.floor(random() * height)
     const i = (y * width + x) * 4
     
-    // Brighten this pixel
-    const brightness = 1.3 + random() * 0.4
-    data[i] = Math.min(255, data[i] * brightness)
-    data[i + 1] = Math.min(255, data[i + 1] * brightness)
-    data[i + 2] = Math.min(255, data[i + 2] * brightness)
+    const r = data[i]
+    const g = data[i + 1]
+    const b = data[i + 2]
+    const brightness = (r + g + b) / 3
+    const isDark = brightness < 128
+    
+    // Random sparkle color with hue variation
+    const sparkleHue = (baseHue + random() * 60 - 30) % 360
+    const sparkleSat = 70 + random() * 30
+    const sparkleLightness = isDark ? (50 + random() * 30) : (30 + random() * 20)
+    const sparkleColor = hslToRgb(sparkleHue, sparkleSat, sparkleLightness)
+    
+    // Blend intensity varies by spot
+    const intensity = 0.5 + random() * 0.5
+    
+    if (isDark) {
+      // Add bright colored sparkle to dark pixels
+      data[i] = Math.min(255, r + sparkleColor[0] * intensity)
+      data[i + 1] = Math.min(255, g + sparkleColor[1] * intensity)
+      data[i + 2] = Math.min(255, b + sparkleColor[2] * intensity)
+    } else {
+      // Add darker colored sparkle to light pixels
+      data[i] = Math.max(0, Math.min(255, r - (255 - sparkleColor[0]) * intensity * 0.5))
+      data[i + 1] = Math.max(0, Math.min(255, g - (255 - sparkleColor[1]) * intensity * 0.5))
+      data[i + 2] = Math.max(0, Math.min(255, b - (255 - sparkleColor[2]) * intensity * 0.5))
+    }
   }
 }
 
 /**
- * Drift pattern - subtle color/brightness drift
+ * Drift pattern - flowing color gradient drift
+ * Works on black/white QR codes by adding drifting color patterns
  */
 function applyDriftPattern(
   imageData: ImageData,
@@ -196,21 +294,43 @@ function applyDriftPattern(
 ): void {
   const data = imageData.data
   
-  // Create a drifting pattern using perlin-like noise
-  const scale = 0.02 + (seed % 10) * 0.005
+  // Create a drifting pattern using sine waves
+  const scale = 0.015 + (seed % 10) * 0.003
   const timeOffset = progress * Math.PI * 2
+  
+  // Base hue for drifting colors
+  const baseHue = (seed * 41 + progress * 60) % 360
   
   for (let y = 0; y < height; y++) {
     for (let x = 0; x < width; x++) {
       const i = (y * width + x) * 4
+      const r = data[i]
+      const g = data[i + 1]
+      const b = data[i + 2]
+      const brightness = (r + g + b) / 3
+      const isDark = brightness < 128
       
-      // Simple drift using sine waves
-      const drift = Math.sin(x * scale + timeOffset) * Math.cos(y * scale + timeOffset) * 0.15
-      const factor = 1 + drift
+      // Calculate drift value using sine waves
+      const drift = Math.sin(x * scale + timeOffset) * Math.cos(y * scale + timeOffset)
+      const driftIntensity = (drift + 1) / 2 // Normalize to 0-1
       
-      data[i] = Math.min(255, Math.max(0, data[i] * factor))
-      data[i + 1] = Math.min(255, Math.max(0, data[i + 1] * factor))
-      data[i + 2] = Math.min(255, Math.max(0, data[i + 2] * factor))
+      // Drift color varies spatially (ensure positive hue)
+      const driftHue = ((baseHue + drift * 40) % 360 + 360) % 360
+      const driftColor = hslToRgb(driftHue, 60, 50)
+      
+      if (isDark) {
+        // Apply drifting color tint to dark pixels
+        const tintAmount = driftIntensity * 0.5
+        data[i] = Math.min(255, r + driftColor[0] * tintAmount)
+        data[i + 1] = Math.min(255, g + driftColor[1] * tintAmount)
+        data[i + 2] = Math.min(255, b + driftColor[2] * tintAmount)
+      } else {
+        // Subtle drift on light pixels
+        const darkenAmount = driftIntensity * 0.1
+        data[i] = Math.round(r * (1 - darkenAmount))
+        data[i + 1] = Math.round(g * (1 - darkenAmount))
+        data[i + 2] = Math.round(b * (1 - darkenAmount))
+      }
     }
   }
 }
@@ -264,7 +384,8 @@ function applyJitterPattern(
 }
 
 /**
- * Color Cycle pattern - hue rotation over time
+ * Color Cycle pattern - tints QR code with cycling colors
+ * Works on black/white QR codes by tinting dark modules with cycling colors
  */
 function applyColorCyclePattern(
   imageData: ImageData,
@@ -274,94 +395,40 @@ function applyColorCyclePattern(
   seed: number
 ): void {
   const data = imageData.data
-  const hueShift = (progress * 360 + seed) % 360 // Full hue rotation per cycle
+  
+  // Calculate cycling hue (full rotation per animation cycle)
+  const hue = (progress * 360 + seed * 17) % 360
+  
+  // Generate the tint color for dark modules
+  const tintColor = hslToRgb(hue, 85, 45) // Saturated, medium lightness
+  
+  // Generate complementary color for subtle background tinting
+  const compHue = (hue + 180) % 360
+  const bgTintColor = hslToRgb(compHue, 30, 90) // Low saturation, high lightness
   
   for (let i = 0; i < data.length; i += 4) {
     const r = data[i]
     const g = data[i + 1]
     const b = data[i + 2]
     
-    // Convert RGB to HSL
-    const [h, s, l] = rgbToHsl(r, g, b)
+    // Determine if pixel is dark (QR module) or light (background)
+    const brightness = (r + g + b) / 3
     
-    // Shift hue
-    const newH = (h + hueShift) % 360
-    
-    // Convert back to RGB
-    const [newR, newG, newB] = hslToRgb(newH, s, l)
-    
-    data[i] = newR
-    data[i + 1] = newG
-    data[i + 2] = newB
-  }
-}
-
-/**
- * Convert RGB to HSL
- */
-function rgbToHsl(r: number, g: number, b: number): [number, number, number] {
-  r /= 255
-  g /= 255
-  b /= 255
-  
-  const max = Math.max(r, g, b)
-  const min = Math.min(r, g, b)
-  let h = 0
-  let s = 0
-  const l = (max + min) / 2
-  
-  if (max !== min) {
-    const d = max - min
-    s = l > 0.5 ? d / (2 - max - min) : d / (max + min)
-    
-    switch (max) {
-      case r:
-        h = ((g - b) / d + (g < b ? 6 : 0)) * 60
-        break
-      case g:
-        h = ((b - r) / d + 2) * 60
-        break
-      case b:
-        h = ((r - g) / d + 4) * 60
-        break
+    if (brightness < 128) {
+      // Dark pixel - replace with tint color, preserving relative darkness
+      const darkFactor = 1 - (brightness / 128) // 1 for pure black, 0 for mid-gray
+      data[i] = Math.round(tintColor[0] * darkFactor + r * (1 - darkFactor))
+      data[i + 1] = Math.round(tintColor[1] * darkFactor + g * (1 - darkFactor))
+      data[i + 2] = Math.round(tintColor[2] * darkFactor + b * (1 - darkFactor))
+    } else {
+      // Light pixel - subtle complementary tint
+      const lightFactor = (brightness - 128) / 127 // 0 for mid-gray, 1 for pure white
+      const tintStrength = 0.15 // Subtle background tint
+      data[i] = Math.round(r * (1 - tintStrength) + bgTintColor[0] * tintStrength)
+      data[i + 1] = Math.round(g * (1 - tintStrength) + bgTintColor[1] * tintStrength)
+      data[i + 2] = Math.round(b * (1 - tintStrength) + bgTintColor[2] * tintStrength)
     }
   }
-  
-  return [h, s * 100, l * 100]
-}
-
-/**
- * Convert HSL to RGB
- */
-function hslToRgb(h: number, s: number, l: number): [number, number, number] {
-  s /= 100
-  l /= 100
-  
-  const c = (1 - Math.abs(2 * l - 1)) * s
-  const x = c * (1 - Math.abs(((h / 60) % 2) - 1))
-  const m = l - c / 2
-  
-  let r = 0, g = 0, b = 0
-  
-  if (h < 60) {
-    r = c; g = x; b = 0
-  } else if (h < 120) {
-    r = x; g = c; b = 0
-  } else if (h < 180) {
-    r = 0; g = c; b = x
-  } else if (h < 240) {
-    r = 0; g = x; b = c
-  } else if (h < 300) {
-    r = x; g = 0; b = c
-  } else {
-    r = c; g = 0; b = x
-  }
-  
-  return [
-    Math.round((r + m) * 255),
-    Math.round((g + m) * 255),
-    Math.round((b + m) * 255)
-  ]
 }
 
 /**

@@ -273,7 +273,8 @@ export function OutputSection() {
               </SelectTrigger>
               <SelectContent>
                 <SelectItem value="none">{t('output.none')}</SelectItem>
-                <SelectItem value="pdf">{t('output.pdf')}</SelectItem>
+                <SelectItem value="eps">EPS</SelectItem>
+                <SelectItem value="animated_webp">{t('output.animatedWebp')}</SelectItem>
               </SelectContent>
             </Select>
           </div>

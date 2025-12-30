@@ -628,8 +628,12 @@ export function interpolateFrames(
 // COLOR CYCLING
 // ============================================
 
+import { hslToRgb } from './color-utils'
+
 /**
  * Apply color cycling effect to a frame
+ * Optimized for QR codes - tints dark pixels with cycling colors,
+ * adds complementary tints to light pixels (works on black/white)
  */
 export function applyColorCycle(
   canvas: HTMLCanvasElement,
@@ -645,47 +649,34 @@ export function applyColorCycle(
   const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height)
   const data = imageData.data
 
-  const hueShift = (frameIndex / totalFrames) * 360
+  // Calculate hue for this frame (full rainbow cycle)
+  const progress = frameIndex / Math.max(1, totalFrames)
+  const baseHue = progress * 360
+  
+  // Generate tint colors using shared color-utils
+  const tintColor = hslToRgb(baseHue, 80, 50)
+  const complementHue = (baseHue + 180) % 360
+  const complementColor = hslToRgb(complementHue, 30, 70)
 
   for (let i = 0; i < data.length; i += 4) {
     const r = data[i]
     const g = data[i + 1]
     const b = data[i + 2]
-
-    // Convert RGB to HSL
-    const max = Math.max(r, g, b) / 255
-    const min = Math.min(r, g, b) / 255
-    const l = (max + min) / 2
-
-    if (max !== min) {
-      const d = max - min
-      const s = l > 0.5 ? d / (2 - max - min) : d / (max + min)
-      let h = 0
-
-      if (max === r / 255) h = ((g / 255 - b / 255) / d + (g < b ? 6 : 0)) * 60
-      else if (max === g / 255) h = ((b / 255 - r / 255) / d + 2) * 60
-      else h = ((r / 255 - g / 255) / d + 4) * 60
-
-      // Apply hue shift
-      h = (h + hueShift) % 360
-
-      // Convert back to RGB
-      const c = (1 - Math.abs(2 * l - 1)) * s
-      const x = c * (1 - Math.abs(((h / 60) % 2) - 1))
-      const m = l - c / 2
-
-      let r1 = 0, g1 = 0, b1 = 0
-
-      if (h < 60) { r1 = c; g1 = x }
-      else if (h < 120) { r1 = x; g1 = c }
-      else if (h < 180) { g1 = c; b1 = x }
-      else if (h < 240) { g1 = x; b1 = c }
-      else if (h < 300) { r1 = x; b1 = c }
-      else { r1 = c; b1 = x }
-
-      data[i] = Math.round((r1 + m) * 255)
-      data[i + 1] = Math.round((g1 + m) * 255)
-      data[i + 2] = Math.round((b1 + m) * 255)
+    const brightness = (r + g + b) / 3
+    const isDark = brightness < 128
+    
+    if (isDark) {
+      // Tint dark pixels with cycling color
+      const tintAmount = 0.7
+      data[i] = Math.min(255, r + tintColor.r * tintAmount)
+      data[i + 1] = Math.min(255, g + tintColor.g * tintAmount)
+      data[i + 2] = Math.min(255, b + tintColor.b * tintAmount)
+    } else {
+      // Add subtle complementary tint to light pixels
+      const tintAmount = 0.15
+      data[i] = Math.max(0, Math.round(r - (255 - complementColor.r) * tintAmount))
+      data[i + 1] = Math.max(0, Math.round(g - (255 - complementColor.g) * tintAmount))
+      data[i + 2] = Math.max(0, Math.round(b - (255 - complementColor.b) * tintAmount))
     }
   }
 
