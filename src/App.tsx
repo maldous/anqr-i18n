@@ -7,6 +7,7 @@ import { StaticPage, type StaticPageType } from '@/components/StaticPage'
 import { useState, useEffect, useCallback } from 'react'
 import { Capacitor } from '@capacitor/core'
 import { useQRGenerator } from '@/hooks/useQRGenerator'
+import { BusyOverlay } from '@/components/BusyOverlay'
 import { useQRStore, type Tier } from '@/store/qr-store'
 import { useBannerHeight } from '@/hooks/useBannerHeight'
 import { parseUrlParams } from '@/modules/share-utils'
@@ -41,7 +42,7 @@ function App() {
   const [currentPage, setCurrentPage] = useState<PageView>('editor')
   const [galleryFilter, setGalleryFilter] = useState<GalleryCategory | 'all'>('all')
   const bannerHeight = useBannerHeight()
-  const { download } = useQRGenerator()
+  const { download, isExporting } = useQRGenerator()
   const { setOverlayUrl, setOverlayFile, setOverlayEnabled, setOverlayMode, setOverlayIntensity,
           setPayloadText, setPayloadKind, setPayloadUrl, setTier, setQrEcc, setQrVersion, setRenderModulePx, setQrQuietZone,
           setRenderFgColor, setRenderBgColor, setRenderBgTransparent, setRenderModuleStyle, setRenderFinderStyle,
@@ -386,7 +387,9 @@ function App() {
 
   return (
     <TooltipProvider>
-      <div className="h-screen bg-background flex flex-col overflow-hidden">
+      <div className="h-screen bg-background flex flex-col overflow-hidden relative">
+        {/* Global busy overlay for export operations */}
+        <BusyOverlay visible={isExporting} />
         <Header 
           onToggleSidebar={() => setSidebarOpen(!sidebarOpen)} 
           sidebarOpen={showEditor ? sidebarOpen : false} 

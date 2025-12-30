@@ -101,6 +101,16 @@ clean:
 	rm -rf dist node_modules android/app/build
 
 # ============================================
+# PWA Icons Generation
+# ============================================
+
+icons:
+	node scripts/generate-pwa-icons.mjs
+
+icons\:android:
+	node scripts/generate-android-icons.mjs
+
+# ============================================
 # Gallery Generation
 # ============================================
 
@@ -175,7 +185,7 @@ android\:bump:
 	echo "Version bumped: $$CURRENT_NAME ($$CURRENT_CODE) -> $$NEW_NAME ($$NEW_CODE)"
 
 # Full Android production build
-android: android\:bump android\:release
+android: build android\:bump android\:release
 	@echo ""
 	@echo "============================================"
 	@echo "Android production build complete!"

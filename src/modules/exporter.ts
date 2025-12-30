@@ -420,12 +420,12 @@ export async function exportGif(
     // Apply palette to get indexed pixel data
     const index = applyPalette(data, palette)
 
-    // Write frame with delay (gifenc uses centiseconds, so divide by 10)
-    // Ensure minimum delay of 2 centiseconds (20ms) for browser compatibility
-    const delayCs = Math.max(2, Math.round(frameDelay / 10))
+    // Write frame with delay (gifenc uses milliseconds directly)
+    // Use a minimum of 100ms for compatibility with most image viewers
+    const delayMs = Math.max(100, frameDelay)
     gif.writeFrame(index, width, height, {
       palette,
-      delay: delayCs,
+      delay: delayMs,
       ...(isFirstFrame && { repeat }),
     })
     isFirstFrame = false

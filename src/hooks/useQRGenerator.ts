@@ -23,6 +23,7 @@ interface UseQRGeneratorResult {
   canvasRef: React.RefObject<HTMLCanvasElement>
   canvas: HTMLCanvasElement | null
   isLoading: boolean
+  isExporting: boolean
   error: string | null
   regenerate: () => void
   download: () => Promise<void>
@@ -101,6 +102,7 @@ export function useQRGenerator(): UseQRGeneratorResult {
   const canvasRef = useRef<HTMLCanvasElement | null>(null)
   const [canvas, setCanvas] = useState<HTMLCanvasElement | null>(null)
   const [isLoading, setIsLoading] = useState(false)
+  const [isExporting, setIsExporting] = useState(false)
   const [error, setError] = useState<string | null>(null)
   const [overlayCanvas, setOverlayCanvas] = useState<HTMLCanvasElement | null>(null)
   
@@ -837,8 +839,14 @@ export function useQRGenerator(): UseQRGeneratorResult {
   const download = useCallback(async () => {
     if (!canvas) return
 
-    // Show interstitial ad BEFORE download on native platforms
-    await showInterstitial('export')
+    setIsExporting(true)
+    
+    // Allow React to render the busy overlay before starting export
+    await new Promise(resolve => setTimeout(resolve, 50))
+    
+    try {
+      // Show interstitial ad BEFORE download on native platforms
+      await showInterstitial('export')
 
     // Scale canvas to output dimensions if different
     let exportCanvas = canvas
@@ -875,7 +883,6 @@ export function useQRGenerator(): UseQRGeneratorResult {
       svgEmbedRasterOverlay: output.svgEmbedRasterOverlay,
     }
 
-    try {
       if (output.format === 'svg') {
         await downloadSvg(exportCanvas, exportConfig)
       } else if (output.format === 'gif' && animationFrames.length > 1) {
@@ -909,6 +916,8 @@ export function useQRGenerator(): UseQRGeneratorResult {
       }
     } catch (err) {
       console.error('Download error:', err)
+    } finally {
+      setIsExporting(false)
     }
   }, [canvas, output, render.crispEdges, animationFrames, animation.speedMs, animation.loop])
 
@@ -1061,6 +1070,7 @@ export function useQRGenerator(): UseQRGeneratorResult {
     canvasRef,
     canvas,
     isLoading,
+    isExporting,
     error,
     regenerate: generate,
     download,
