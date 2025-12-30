@@ -1,15 +1,14 @@
+functionsDirectory = "/home/user/src/anqr/netlify/functions"
+functionsDirectoryOrigin = "default"
 plugins = []
 headers = []
-
-[functions]
-
-[functions."*"]
 
 [build]
 publish = "/home/user/src/anqr/dist"
 publishOrigin = "ui"
 commandOrigin = "ui"
 command = "npm run build"
+functions = "/home/user/src/anqr/netlify/functions"
 
 [build.environment]
 
@@ -24,6 +23,10 @@ command = "npm run build"
 [build.processing.js]
 
 [build.services]
+
+[functions]
+
+[functions."*"]
 
 [[redirects]]
 from = "/*"

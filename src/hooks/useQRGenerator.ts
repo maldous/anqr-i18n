@@ -278,6 +278,7 @@ export function useQRGenerator(): UseQRGeneratorResult {
       transparentBg: render.bgTransparent,
       gradient: render.gradient,
       palette: render.palette,
+      paletteMode: render.paletteMode,
       perModuleColorMode: render.perModuleColorMode,
       contrastGuard: render.contrastGuard,
       minContrastRatio: render.minContrastRatio,
@@ -368,7 +369,7 @@ export function useQRGenerator(): UseQRGeneratorResult {
     render.frameStyle, render.frameText,
     render.crispEdges, render.pixelSnap,
     render.fgColor, render.bgColor, render.bgTransparent,
-    render.gradient, render.palette, render.perModuleColorMode,
+    render.gradient, render.palette, render.paletteMode, render.perModuleColorMode,
     render.contrastGuard, render.minContrastRatio,
     // Overlay
     overlay.enabled, overlay.mode, overlay.intensity,
@@ -638,8 +639,8 @@ export function useQRGenerator(): UseQRGeneratorResult {
       if (watermark.enabled && result) {
         let watermarkImage: HTMLImageElement | HTMLCanvasElement | null = null
 
-        if (watermark.kind === 'image' && watermark.image) {
-          // Load watermark image
+        if ((watermark.kind === 'image' || watermark.kind === 'pattern') && watermark.image) {
+          // Load watermark image (used for both image and pattern types)
           watermarkImage = await loadFileAsCanvas(watermark.image)
         }
 
@@ -881,7 +882,27 @@ export function useQRGenerator(): UseQRGeneratorResult {
       svgTrueVector: output.svgTrueVector,
       svgShapePrecision: output.svgShapePrecision,
       svgEmbedRasterOverlay: output.svgEmbedRasterOverlay,
+      // Metadata
+      metadata: {
+        title: metadata.title || undefined,
+        author: metadata.author || undefined,
+        copyright: metadata.copyright || undefined,
+        license: metadata.license || undefined,
+        description: metadata.description || undefined,
+        creationTime: metadata.creationTime,
+        customKv: metadata.customKv.filter(kv => kv.k && kv.v),
+      },
     }
+
+      // Build PNG metadata object for embedding
+      const pngMetadata = (metadata.title || metadata.author || metadata.copyright || metadata.description) ? {
+        title: metadata.title || undefined,
+        author: metadata.author || undefined,
+        copyright: metadata.copyright || undefined,
+        description: metadata.description || undefined,
+        creationTime: metadata.creationTime ? new Date().toISOString() : undefined,
+        software: 'ANQR - anqr.link',
+      } : undefined
 
       if (output.format === 'svg') {
         await downloadSvg(exportCanvas, exportConfig)
@@ -912,14 +933,14 @@ export function useQRGenerator(): UseQRGeneratorResult {
         // Single frame GIF
         await downloadGif([exportCanvas], exportConfig)
       } else {
-        await downloadImage(exportCanvas, exportConfig)
+        await downloadImage(exportCanvas, exportConfig, pngMetadata, output.dpi)
       }
     } catch (err) {
       console.error('Download error:', err)
     } finally {
       setIsExporting(false)
     }
-  }, [canvas, output, render.crispEdges, animationFrames, animation.speedMs, animation.loop])
+  }, [canvas, output, render.crispEdges, animationFrames, animation.speedMs, animation.loop, metadata])
 
   // Generate all animation frames for GIF export and playback cache
   // This runs once when config changes, then frames are cached for fast playback
@@ -947,9 +968,9 @@ export function useQRGenerator(): UseQRGeneratorResult {
     const generateAllFrames = async () => {
       let frames: HTMLCanvasElement[] = []
       
-      // Load watermark image once if needed
+      // Load watermark image once if needed (for both image and pattern types)
       let watermarkImage: HTMLImageElement | HTMLCanvasElement | null = null
-      if (watermark.enabled && watermark.kind === 'image' && watermark.image) {
+      if (watermark.enabled && (watermark.kind === 'image' || watermark.kind === 'pattern') && watermark.image) {
         try {
           watermarkImage = await loadFileAsCanvas(watermark.image)
         } catch (err) {

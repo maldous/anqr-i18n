@@ -3,32 +3,34 @@ import { LAST_UPDATED, CONTACT_EMAIL } from '../types'
 
 export const about: PageDefinition = {
   title: 'About ANQR',
-  description: 'ANQR is a free QR code generator that runs entirely on your device - no account required.',
+  description: 'ANQR is a free QR code generator with a client-first approach — generate QR codes locally or use our API for embedding.',
   lastUpdated: LAST_UPDATED,
   sections: [
     {
       heading: 'What is ANQR?',
       paragraphs: [
-        'ANQR (pronounced "anchor") is a free QR code generator that runs locally on your device and creates scannable codes for URLs, text, Wi-Fi credentials, contact cards, calendar events, and more.',
-        'It is built for individuals, small businesses, marketers, and developers who want powerful QR tools without uploading files or signing up. Your data stays on your device.',
+        'ANQR (pronounced "anchor") is a free QR code generator that creates scannable codes for URLs, text, Wi-Fi credentials, contact cards, calendar events, and more.',
+        'It is built for individuals, small businesses, marketers, and developers who want powerful QR tools without signing up. The client-first design means QR codes are generated locally in your browser by default, with an optional server API for professional embedding and integration.',
       ],
     },
     {
       heading: 'Key features',
       bullets: [
-        'Generate QR codes instantly on your device - no server uploads, no account required.',
+        'Generate QR codes instantly in your browser — no account required.',
         'Customise colours, module styles, finder patterns, and add image overlays.',
         'Export in multiple formats: PNG, SVG, WebP, and animated GIF.',
         'Advanced controls for error correction level, QR version, encoding mode, and mask selection.',
         'Scan-safety guidance and live preview to help keep codes readable in print and on screens.',
-        'Works offline once loaded - it is a static web app you can run anywhere.',
+        'Server-side API for professional embedding with full parameter support.',
+        'Works offline once loaded — it is a static web app you can run anywhere.',
       ],
     },
     {
       heading: 'How ANQR works',
       paragraphs: [
         'ANQR runs in your browser and encodes your input into a standard QR matrix with Reed–Solomon error correction, then renders it to the format you choose.',
-        'All generation happens locally. When you add overlays or animations, ANQR balances styling with scan reliability so the result remains scannable.',
+        'By default, generation happens locally in your browser. For professional use, you can also use the server-side API to generate QR codes via URL parameters — perfect for embedding in websites, emails, or automated workflows.',
+        'When you add overlays or animations, ANQR balances styling with scan reliability so the result remains scannable.',
         'ANQR focuses on static codes (the data is inside the QR). If you need a dynamic code (editable destination), you can encode your own redirect URL or short link.',
       ],
     },

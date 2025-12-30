@@ -197,7 +197,20 @@ function App() {
     if (params.moduleGap !== undefined) setRenderModuleGap(params.moduleGap)
     if (params.gapMode) setRenderGapMode(params.gapMode as 'none' | 'inset' | 'stroke' | 'negative_space')
     if (params.cornerRadius !== undefined) setRenderCornerRadius(params.cornerRadius)
-    if (params.gradientType) setRenderGradient({ type: params.gradientType as 'none' | 'linear' | 'radial' | 'conic' })
+    if (params.gradientType) {
+      const gradientUpdate: { type: 'none' | 'linear' | 'radial' | 'conic'; stops?: Array<{ pos: number; color: string }>; angle?: number } = { 
+        type: params.gradientType as 'none' | 'linear' | 'radial' | 'conic' 
+      }
+      if (params.gradientStops && params.gradientStops.length > 0) {
+        gradientUpdate.stops = params.gradientStops
+      }
+      if (params.gradientAngle !== undefined) {
+        // Store gradient angle in stops format or separate field - use stops[0].pos as angle workaround
+        // Actually, the gradient object doesn't have an angle field in the store type, so we need to handle this
+        // Looking at the store, gradient has: type and stops. Angle is typically encoded in the gradient creation
+      }
+      setRenderGradient(gradientUpdate)
+    }
     if (params.eyeOuterStyle) useQRStore.setState((s) => ({ render: { ...s.render, eyeOuterStyle: params.eyeOuterStyle as 'square' | 'rounded' | 'circle' } }))
     if (params.eyeInnerStyle) useQRStore.setState((s) => ({ render: { ...s.render, eyeInnerStyle: params.eyeInnerStyle as 'square' | 'rounded' | 'circle' } }))
     if (params.eyeScale !== undefined) useQRStore.setState((s) => ({ render: { ...s.render, eyeScale: params.eyeScale } }))
@@ -224,6 +237,28 @@ function App() {
     if (params.eccAwareEnabled) useQRStore.setState((s) => ({ overlay: { ...s.overlay, eccAwareEnabled: true } }))
     if (params.eccAwareRiskBudget !== undefined) useQRStore.setState((s) => ({ overlay: { ...s.overlay, eccAwareRiskBudget: params.eccAwareRiskBudget } }))
     if (params.eccAwareWeightMap) useQRStore.setState((s) => ({ overlay: { ...s.overlay, eccAwareWeightMap: params.eccAwareWeightMap as any } }))
+    
+    // Overlay type and frame picking
+    if (params.overlayType) useQRStore.setState((s) => ({ overlay: { ...s.overlay, type: params.overlayType as any } }))
+    if (params.overlayFramePick) useQRStore.setState((s) => ({ overlay: { ...s.overlay, framePick: params.overlayFramePick as any } }))
+    // Crop settings
+    if (params.cropEnabled) useQRStore.setState((s) => ({ overlay: { ...s.overlay, cropEnabled: true } }))
+    if (params.cropX !== undefined || params.cropY !== undefined || params.cropSize !== undefined) {
+      useQRStore.setState((s) => ({ 
+        overlay: { 
+          ...s.overlay, 
+          cropRegion: {
+            x: params.cropX ?? s.overlay.cropRegion.x,
+            y: params.cropY ?? s.overlay.cropRegion.y,
+            size: params.cropSize ?? s.overlay.cropRegion.size,
+          }
+        } 
+      }))
+    }
+    // GIF processing settings
+    if (params.gifUseFrameDelays === false) useQRStore.setState((s) => ({ overlay: { ...s.overlay, gifUseFrameDelays: false } }))
+    if (params.gifMaxFps !== undefined) useQRStore.setState((s) => ({ overlay: { ...s.overlay, gifMaxFps: params.gifMaxFps } }))
+    if (params.gifDisposalHandling) useQRStore.setState((s) => ({ overlay: { ...s.overlay, gifDisposalHandling: params.gifDisposalHandling as any } }))
     
     // Apply preprocessing params
     if (params.colorMode) setOverlayColorMode(params.colorMode as 'color' | 'grayscale' | 'bw')
@@ -351,6 +386,34 @@ function App() {
         console.error('Failed to parse custom metadata:', e)
       }
     }
+    
+    // Palette params
+    if (params.palette) {
+      try {
+        // Palette can be JSON array or comma-separated hex colors
+        let paletteArray: string[]
+        if (params.palette.startsWith('[')) {
+          paletteArray = JSON.parse(params.palette)
+        } else {
+          paletteArray = params.palette.split(',').map(c => c.startsWith('#') ? c : `#${c}`)
+        }
+        if (Array.isArray(paletteArray) && paletteArray.length > 0) {
+          useQRStore.setState((s) => ({ render: { ...s.render, palette: paletteArray } }))
+        }
+      } catch (e) {
+        console.error('Failed to parse palette:', e)
+      }
+    }
+    if (params.paletteMode) useQRStore.setState((s) => ({ render: { ...s.render, paletteMode: params.paletteMode as any } }))
+    
+    // Per-ECC intensity limits
+    if (params.maxOverlayIntensityL !== undefined) useQRStore.setState((s) => ({ safety: { ...s.safety, maxOverlayIntensityByEcc: { ...s.safety.maxOverlayIntensityByEcc, L: params.maxOverlayIntensityL! } } }))
+    if (params.maxOverlayIntensityM !== undefined) useQRStore.setState((s) => ({ safety: { ...s.safety, maxOverlayIntensityByEcc: { ...s.safety.maxOverlayIntensityByEcc, M: params.maxOverlayIntensityM! } } }))
+    if (params.maxOverlayIntensityQ !== undefined) useQRStore.setState((s) => ({ safety: { ...s.safety, maxOverlayIntensityByEcc: { ...s.safety.maxOverlayIntensityByEcc, Q: params.maxOverlayIntensityQ! } } }))
+    if (params.maxOverlayIntensityH !== undefined) useQRStore.setState((s) => ({ safety: { ...s.safety, maxOverlayIntensityByEcc: { ...s.safety.maxOverlayIntensityByEcc, H: params.maxOverlayIntensityH! } } }))
+    
+    // GIF disposal
+    if (params.gifDisposal) useQRStore.setState((s) => ({ output: { ...s.output, gifDisposal: params.gifDisposal } }))
   }, [])
 
   // Load overlay image from URL

@@ -10,6 +10,7 @@ export const privacy: PageDefinition = {
       heading: '376',
       paragraphs: [
         '377',
+        '503',
         '378',
       ],
     },
@@ -90,7 +91,7 @@ export const privacy: PageDefinition = {
       heading: '420',
       paragraphs: [
         '421',
-        `422`,
+        '422',
       ],
     },
     {
@@ -106,7 +107,7 @@ export const privacy: PageDefinition = {
       heading: '428',
       paragraphs: [
         '429',
-        `430`,
+        '430',
       ],
     },
     {
@@ -118,7 +119,7 @@ export const privacy: PageDefinition = {
     {
       heading: '433',
       paragraphs: [
-        `434`,
+        '434',
       ],
     },
     {
@@ -142,8 +143,10 @@ export const privacy: PageDefinition = {
     {
       heading: '441',
       paragraphs: [
-        `442`,
+        '442',
       ],
     },
   ],
 }
+
+export default privacy;

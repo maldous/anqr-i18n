@@ -34,7 +34,7 @@
         -->
         <activity
             android:name="com.google.android.gms.ads.AdActivity"
-            android:theme="@android:style/Theme.Translucent"
+            android:theme="@style/AppTheme.AdMobActivity"
             android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize"
             tools:replace="android:theme,android:configChanges"
             tools:node="merge" />

@@ -39,6 +39,10 @@ export interface ShareConfig {
   gapMode?: string
   cornerRadius?: number
   gradientType?: string
+  gradientAngle?: number
+  gradientStops?: Array<{ color: string; pos: number }>
+  subpixelMode?: boolean
+  subpixelGrid?: number
   eyeOuterStyle?: string
   eyeInnerStyle?: string
   eyeScale?: number
@@ -56,10 +60,19 @@ export interface ShareConfig {
   intensity?: number
   logoSize?: number
   overlayUrl?: string  // URL source for overlay image
+  overlayType?: string  // static, gif, apng, webp_anim, video
+  overlayFramePick?: string  // all, every_n, max_frames, duration_limit
+  cropEnabled?: boolean
+  cropX?: number
+  cropY?: number
+  cropSize?: number
   fit?: string
   rotate?: number
   flipX?: boolean
   flipY?: boolean
+  gifUseFrameDelays?: boolean
+  gifMaxFps?: number
+  gifDisposalHandling?: string
   preserveFinders?: boolean
   preserveTiming?: boolean
   preserveAlignment?: boolean
@@ -75,13 +88,13 @@ export interface ShareConfig {
   contrast?: number
   gamma?: number
   saturation?: number
+  hue?: number
   blur?: number
   sharpen?: number
   posterize?: number
   threshold?: number
   edge?: string
   invert?: boolean
-  hue?: number
   
   // Dithering
   ditherKind?: string
@@ -110,6 +123,8 @@ export interface ShareConfig {
   speed?: number
   loop?: boolean
   reverse?: boolean
+  bounce?: boolean
+  easing?: string
   startFrame?: number
   maxFrames?: number
   frameStep?: number
@@ -125,10 +140,14 @@ export interface ShareConfig {
   height?: number
   format?: string
   quality?: number
+  jpegQuality?: number
+  webpQuality?: number
+  gifColors?: number
   filename?: string
   gifPaletteSize?: number
   gifQuantizer?: string
   gifDither?: string
+  gifDisposal?: string
   gifTransparentColor?: string
   svgTrueVector?: boolean
   svgShapePrecision?: string
@@ -164,10 +183,27 @@ export interface ShareConfig {
   watermarkEnabled?: boolean
   watermarkKind?: string
   watermarkText?: string
+  watermarkImageUrl?: string  // URL for image/pattern watermark
   watermarkPosition?: string
   watermarkOpacity?: number
   watermarkBlend?: string
+  
+  // Animation (for animated GIF via server)
+  animationPattern?: string  // none/pulse/wave/scanline/shimmer/drift/color_cycle
+  animationFrames?: number
+  animationSpeed?: number
+  animationSeed?: number
 
+  // Render palette
+  palette?: string  // JSON encoded or comma-separated hex colors
+  paletteMode?: string  // position, brightness, diagonal, radial, random, row, column
+  
+  // Safety per-ECC limits
+  maxOverlayIntensityL?: number
+  maxOverlayIntensityM?: number
+  maxOverlayIntensityQ?: number
+  maxOverlayIntensityH?: number
+  
   // Metadata
   metaTitle?: string
   metaAuthor?: string
@@ -221,6 +257,16 @@ export function parseUrlParams(): Partial<ShareConfig> {
     gapMode: params.get('gapMode') || undefined,
     cornerRadius: params.get('radius') ? parseInt(params.get('radius')!, 10) : undefined,
     gradientType: params.get('grad') || undefined,
+    // Gradient stops/angle - parse from URL
+    ...(params.get('gradStops') ? {
+      gradientStops: params.get('gradStops')!.split(',').reduce((acc, part, i, arr) => {
+        if (i % 2 === 0 && arr[i + 1]) {
+          acc.push({ color: `#${part}`, pos: parseFloat(arr[i + 1]) })
+        }
+        return acc
+      }, [] as Array<{ color: string; pos: number }>)
+    } : {}),
+    ...(params.get('gradAngle') ? { gradientAngle: parseInt(params.get('gradAngle')!, 10) } : {}),
     eyeOuterStyle: params.get('eyeOuter') || undefined,
     eyeInnerStyle: params.get('eyeInner') || undefined,
     eyeScale: params.get('eyeScale') ? parseInt(params.get('eyeScale')!, 10) : undefined,
@@ -237,6 +283,15 @@ export function parseUrlParams(): Partial<ShareConfig> {
     intensity: params.get('intensity') ? parseInt(params.get('intensity')!, 10) : undefined,
     logoSize: params.get('logoSize') ? parseInt(params.get('logoSize')!, 10) : undefined,
     overlayUrl: params.get('img') || undefined,
+    overlayType: params.get('ovType') || undefined,
+    overlayFramePick: params.get('ovFramePick') || undefined,
+    cropEnabled: params.get('cropEn') === '1',
+    cropX: params.get('cropX') ? parseFloat(params.get('cropX')!) : undefined,
+    cropY: params.get('cropY') ? parseFloat(params.get('cropY')!) : undefined,
+    cropSize: params.get('cropSize') ? parseFloat(params.get('cropSize')!) : undefined,
+    gifUseFrameDelays: params.has('gifDelays') ? params.get('gifDelays') === '1' : undefined,
+    gifMaxFps: params.get('gifMaxFps') ? parseInt(params.get('gifMaxFps')!, 10) : undefined,
+    gifDisposalHandling: params.get('gifDispH') || undefined,
     fit: params.get('fit') || undefined,
     rotate: params.get('rot') ? parseInt(params.get('rot')!, 10) : undefined,
     flipX: params.get('flipX') === '1',
@@ -262,6 +317,9 @@ export function parseUrlParams(): Partial<ShareConfig> {
     edge: params.get('edge') || undefined,
     invert: params.get('invert') === '1',
     hue: params.get('hue') ? parseInt(params.get('hue')!, 10) : undefined,
+    // Subpixel rendering
+    subpixelMode: params.get('subpixel') === '1',
+    subpixelGrid: params.get('spGridNum') ? parseInt(params.get('spGridNum')!, 10) : undefined,
     // Dithering
     ditherKind: params.get('ditherKind') || undefined,
     diffusionKernel: params.get('diffusionKernel') || undefined,
@@ -286,6 +344,7 @@ export function parseUrlParams(): Partial<ShareConfig> {
     speed: params.get('speed') ? parseInt(params.get('speed')!, 10) : undefined,
     loop: params.has('loop') ? params.get('loop') !== '0' : undefined,
     reverse: params.get('reverse') === '1',
+    bounce: params.get('bounce') === '1',
     startFrame: params.get('startF') ? parseInt(params.get('startF')!, 10) : undefined,
     maxFrames: params.get('maxF') ? parseInt(params.get('maxF')!, 10) : undefined,
     frameStep: params.get('stepF') ? parseInt(params.get('stepF')!, 10) : undefined,
@@ -295,15 +354,20 @@ export function parseUrlParams(): Partial<ShareConfig> {
     moduleJitter: params.get('jitter') ? parseFloat(params.get('jitter')!) : undefined,
     colorCycle: params.get('colorCycle') === '1',
     seed: params.get('seed') ? parseInt(params.get('seed')!, 10) : undefined,
+    easing: params.get('easing') || undefined,
     // Output
     width: params.get('w') ? parseInt(params.get('w')!, 10) : undefined,
     height: params.get('h') ? parseInt(params.get('h')!, 10) : undefined,
     format: params.get('format') || undefined,
     quality: params.get('quality') ? parseFloat(params.get('quality')!) : undefined,
+    jpegQuality: params.get('jpegQ') ? parseInt(params.get('jpegQ')!, 10) : undefined,
+    webpQuality: params.get('webpQ') ? parseInt(params.get('webpQ')!, 10) : undefined,
+    gifColors: params.get('gifColors') ? parseInt(params.get('gifColors')!, 10) : undefined,
     filename: params.get('fname') ? decodeURIComponent(params.get('fname')!) : undefined,
     gifPaletteSize: params.get('gifPal') ? parseInt(params.get('gifPal')!, 10) : undefined,
     gifQuantizer: params.get('gifQuant') || undefined,
     gifDither: params.get('gifDith') || undefined,
+    gifDisposal: params.get('gifDisp') || undefined,
     gifTransparentColor: params.get('gifTrans') ? `#${params.get('gifTrans')}` : undefined,
     svgTrueVector: params.get('svgVec') === '1',
     svgShapePrecision: params.get('svgPrec') || undefined,
@@ -341,6 +405,13 @@ export function parseUrlParams(): Partial<ShareConfig> {
     watermarkPosition: params.get('wmPos') || undefined,
     watermarkOpacity: params.get('wmOpacity') ? parseInt(params.get('wmOpacity')!, 10) : undefined,
     watermarkBlend: params.get('wmBlend') || undefined,
+    watermarkImageUrl: params.get('wmImg') || undefined,
+    
+    // Animation
+    animationPattern: params.get('animPattern') || undefined,
+    animationFrames: params.get('animFrames') ? parseInt(params.get('animFrames')!, 10) : undefined,
+    animationSpeed: params.get('animSpeed') ? parseInt(params.get('animSpeed')!, 10) : undefined,
+    animationSeed: params.get('animSeed') ? parseInt(params.get('animSeed')!, 10) : undefined,
 
     // Metadata
     metaTitle: params.get('metaTitle') ? decodeURIComponent(params.get('metaTitle')!) : undefined,
@@ -350,6 +421,16 @@ export function parseUrlParams(): Partial<ShareConfig> {
     metaDescription: params.get('metaDesc') ? decodeURIComponent(params.get('metaDesc')!) : undefined,
     metaCreationTime: params.get('metaTime') === '1',
     metaCustomKv: params.get('metaKv') ? decodeURIComponent(params.get('metaKv')!) : undefined,
+    
+    // Render palette
+    palette: params.get('palette') ? decodeURIComponent(params.get('palette')!) : undefined,
+    paletteMode: params.get('paletteMode') || undefined,
+    
+    // Safety per-ECC limits
+    maxOverlayIntensityL: params.get('maxIntL') ? parseInt(params.get('maxIntL')!, 10) : undefined,
+    maxOverlayIntensityM: params.get('maxIntM') ? parseInt(params.get('maxIntM')!, 10) : undefined,
+    maxOverlayIntensityQ: params.get('maxIntQ') ? parseInt(params.get('maxIntQ')!, 10) : undefined,
+    maxOverlayIntensityH: params.get('maxIntH') ? parseInt(params.get('maxIntH')!, 10) : undefined,
   }
 }
 
@@ -429,6 +510,14 @@ export function buildUrlParams(config: Partial<ShareConfig>): string {
   }
   if (config.gradientType && config.gradientType !== 'none') {
     params.set('grad', config.gradientType)
+    // Also encode gradient stops and angle
+    if (config.gradientStops && config.gradientStops.length > 0) {
+      const stopsStr = config.gradientStops.map(s => `${s.color.replace('#', '')},${s.pos}`).join(',')
+      params.set('gradStops', stopsStr)
+    }
+    if (config.gradientAngle !== undefined && config.gradientAngle !== 0) {
+      params.set('gradAngle', config.gradientAngle.toString())
+    }
   }
   if (config.eyeOuterStyle && config.eyeOuterStyle !== 'square') {
     params.set('eyeOuter', config.eyeOuterStyle)
@@ -463,6 +552,12 @@ export function buildUrlParams(config: Partial<ShareConfig>): string {
   if (config.minContrastRatio !== undefined && config.minContrastRatio !== 4.5) {
     params.set('minContrast', config.minContrastRatio.toString())
   }
+  if (config.subpixelMode) {
+    params.set('subpixel', '1')
+  }
+  if (config.subpixelGrid !== undefined && config.subpixelGrid !== 3) {
+    params.set('spGridNum', config.subpixelGrid.toString())
+  }
 
   // Overlay
   if (config.mode && config.mode !== 'dithered') {
@@ -476,6 +571,33 @@ export function buildUrlParams(config: Partial<ShareConfig>): string {
   }
   if (config.overlayUrl) {
     params.set('img', config.overlayUrl)
+  }
+  if (config.overlayType && config.overlayType !== 'static') {
+    params.set('ovType', config.overlayType)
+  }
+  if (config.overlayFramePick && config.overlayFramePick !== 'all') {
+    params.set('ovFramePick', config.overlayFramePick)
+  }
+  if (config.cropEnabled) {
+    params.set('cropEn', '1')
+  }
+  if (config.cropX !== undefined && config.cropX !== 0.5) {
+    params.set('cropX', config.cropX.toString())
+  }
+  if (config.cropY !== undefined && config.cropY !== 0.5) {
+    params.set('cropY', config.cropY.toString())
+  }
+  if (config.cropSize !== undefined && config.cropSize !== 1) {
+    params.set('cropSize', config.cropSize.toString())
+  }
+  if (config.gifUseFrameDelays === false) {
+    params.set('gifDelays', '0')
+  }
+  if (config.gifMaxFps !== undefined && config.gifMaxFps !== 30) {
+    params.set('gifMaxFps', config.gifMaxFps.toString())
+  }
+  if (config.gifDisposalHandling && config.gifDisposalHandling !== 'respect') {
+    params.set('gifDispH', config.gifDisposalHandling)
   }
   if (config.fit && config.fit !== 'cover') {
     params.set('fit', config.fit)
@@ -619,6 +741,9 @@ export function buildUrlParams(config: Partial<ShareConfig>): string {
   if (config.reverse) {
     params.set('reverse', '1')
   }
+  if (config.bounce) {
+    params.set('bounce', '1')
+  }
   if (config.startFrame !== undefined && config.startFrame !== 0) {
     params.set('startF', config.startFrame.toString())
   }
@@ -646,6 +771,9 @@ export function buildUrlParams(config: Partial<ShareConfig>): string {
   if (config.seed !== undefined && config.seed !== 0) {
     params.set('seed', config.seed.toString())
   }
+  if (config.easing && config.easing !== 'linear') {
+    params.set('easing', config.easing)
+  }
 
   // Output
   if (config.width && config.width !== 400) {
@@ -660,6 +788,15 @@ export function buildUrlParams(config: Partial<ShareConfig>): string {
   if (config.quality !== undefined && config.quality !== 0.9) {
     params.set('quality', config.quality.toString())
   }
+  if (config.jpegQuality !== undefined && config.jpegQuality !== 92) {
+    params.set('jpegQ', config.jpegQuality.toString())
+  }
+  if (config.webpQuality !== undefined && config.webpQuality !== 90) {
+    params.set('webpQ', config.webpQuality.toString())
+  }
+  if (config.gifColors !== undefined && config.gifColors !== 256) {
+    params.set('gifColors', config.gifColors.toString())
+  }
   if (config.filename && config.filename !== 'anqr-qrcode') {
     params.set('fname', encodeURIComponent(config.filename))
   }
@@ -671,6 +808,9 @@ export function buildUrlParams(config: Partial<ShareConfig>): string {
   }
   if (config.gifDither && config.gifDither !== 'floyd') {
     params.set('gifDith', config.gifDither)
+  }
+  if (config.gifDisposal && config.gifDisposal !== 'restore_background') {
+    params.set('gifDisp', config.gifDisposal)
   }
   if (config.svgTrueVector) {
     params.set('svgVec', '1')
@@ -771,6 +911,23 @@ export function buildUrlParams(config: Partial<ShareConfig>): string {
   if (config.watermarkBlend && config.watermarkBlend !== 'normal') {
     params.set('wmBlend', config.watermarkBlend)
   }
+  if (config.watermarkImageUrl) {
+    params.set('wmImg', config.watermarkImageUrl)
+  }
+
+  // Animation (for animated GIF via server)
+  if (config.animationPattern && config.animationPattern !== 'none') {
+    params.set('animPattern', config.animationPattern)
+  }
+  if (config.animationFrames !== undefined && config.animationFrames !== 24) {
+    params.set('animFrames', config.animationFrames.toString())
+  }
+  if (config.animationSpeed !== undefined && config.animationSpeed !== 100) {
+    params.set('animSpeed', config.animationSpeed.toString())
+  }
+  if (config.animationSeed !== undefined && config.animationSeed !== 0) {
+    params.set('animSeed', config.animationSeed.toString())
+  }
 
   // Metadata
   if (config.metaTitle) {
@@ -793,6 +950,28 @@ export function buildUrlParams(config: Partial<ShareConfig>): string {
   }
   if (config.metaCustomKv) {
     params.set('metaKv', encodeURIComponent(config.metaCustomKv))
+  }
+
+  // Render palette
+  if (config.palette) {
+    params.set('palette', encodeURIComponent(config.palette))
+  }
+  if (config.paletteMode && config.paletteMode !== 'position') {
+    params.set('paletteMode', config.paletteMode)
+  }
+
+  // Safety per-ECC limits
+  if (config.maxOverlayIntensityL !== undefined && config.maxOverlayIntensityL !== 100) {
+    params.set('maxIntL', config.maxOverlayIntensityL.toString())
+  }
+  if (config.maxOverlayIntensityM !== undefined && config.maxOverlayIntensityM !== 100) {
+    params.set('maxIntM', config.maxOverlayIntensityM.toString())
+  }
+  if (config.maxOverlayIntensityQ !== undefined && config.maxOverlayIntensityQ !== 100) {
+    params.set('maxIntQ', config.maxOverlayIntensityQ.toString())
+  }
+  if (config.maxOverlayIntensityH !== undefined && config.maxOverlayIntensityH !== 100) {
+    params.set('maxIntH', config.maxOverlayIntensityH.toString())
   }
 
   return params.toString()
@@ -822,9 +1001,10 @@ export function getShareableUrl(config: Partial<ShareConfig>, baseUrl?: string):
 
 /**
  * Generate HTML embed code for an image
+ * Uses the /api/qr endpoint to return an image (PNG, WebP, or GIF based on format param)
  */
 export function generateImageEmbed(
-  imageUrl: string,
+  shareableUrl: string,
   alt: string = 'QR Code',
   options: Partial<EmbedOptions> = {}
 ): string {
@@ -836,6 +1016,9 @@ export function generateImageEmbed(
     includeLink: options.includeLink ?? false,
   }
 
+  // Convert shareable URL to image API URL with proper dimensions
+  const imageUrl = convertToImageApiUrl(shareableUrl, opts.width, opts.width !== opts.height ? opts.width : undefined, opts.width !== opts.height ? opts.height : undefined)
+
   const style = opts.responsive
     ? 'max-width: 100%; height: auto;'
     : `width: ${opts.width}px; height: ${opts.height}px;`
@@ -845,10 +1028,118 @@ export function generateImageEmbed(
   const imgTag = `<img src="${imageUrl}" alt="${alt}" style="${style}${border}" />`
 
   if (opts.includeLink) {
-    return `<a href="${imageUrl}" target="_blank">${imgTag}</a>`
+    return `<a href="${shareableUrl}" target="_blank">${imgTag}</a>`
   }
 
   return imgTag
+}
+
+/**
+ * Convert a shareable app URL to an image API URL
+ * Extracts parameters and maps them to the /api/qr endpoint format
+ * @param shareableUrl - The shareable app URL with QR parameters
+ * @param size - Default size (used if w/h not in URL)
+ * @param width - Optional explicit width (overrides size)
+ * @param height - Optional explicit height (overrides size)
+ */
+export function convertToImageApiUrl(
+  shareableUrl: string, 
+  size: number = 200,
+  width?: number,
+  height?: number
+): string {
+  try {
+    const url = new URL(shareableUrl)
+    const params = url.searchParams
+    
+    // Build image API URL with supported parameters
+    const imageParams = new URLSearchParams()
+    
+    // Required: data
+    const data = params.get('data')
+    if (data) {
+      imageParams.set('data', data)
+    }
+    
+    // Output dimensions: use explicit params > URL params > size argument
+    const urlWidth = params.get('w')
+    const urlHeight = params.get('h')
+    const finalWidth = width ?? (urlWidth ? parseInt(urlWidth, 10) : null)
+    const finalHeight = height ?? (urlHeight ? parseInt(urlHeight, 10) : null)
+    
+    // If either w or h is specified, use w/h params; otherwise use size
+    if (finalWidth || finalHeight) {
+      // Use w/h - default missing dimension to the other or to size
+      imageParams.set('w', (finalWidth ?? finalHeight ?? size).toString())
+      imageParams.set('h', (finalHeight ?? finalWidth ?? size).toString())
+    } else {
+      imageParams.set('size', size.toString())
+    }
+    
+    // All parameters supported by /api/qr that can be passed through directly
+    // Note: w/h are handled separately above, not included here to avoid duplicates
+    const passThroughParams = [
+      // Colors
+      'fg', 'bg', 'transparent',
+      // QR settings
+      'ec', 'margin', 'enc', 'v', 'border',
+      // Rendering options
+      'crisp', 'snap', 'modColor', 'cGuard', 'minContrast',
+      // Module styling
+      'style', 'finder', 'align', 'timing', 'eyeOuter', 'eyeInner', 'eyeScale',
+      // Rendering
+      'radius', 'gap', 'gapMode', 'dotRot',
+      // Frame
+      'frame', 'frameText',
+      // Gradient
+      'grad', 'gradAngle', 'gradStops',
+      // Overlay
+      'img', 'mode', 'intensity', 'colorMode', 'logoSize',
+      // Protection settings
+      'keepFinders', 'keepTiming', 'keepAlign', 'protectFmt', 'protectVer',
+      // ECC-aware
+      'eccAware', 'eccRisk', 'eccMap',
+      // Overlay preprocessing
+      'brightness', 'contrast', 'gamma', 'saturation', 'hue', 'invert',
+      'blur', 'sharpen', 'posterize', 'threshold', 'edge',
+      'fit', 'rot', 'flipX', 'flipY',
+      // Dithering
+      'ditherKind', 'diffusionKernel', 'ditherStrength', 'serpentine',
+      'matrix', 'bnTile', 'bnSeed', 'colorDither',
+      // Subpixel
+      'spGrid', 'spCenter', 'spNeutral', 'spFinder',
+      // Halftone
+      'htCell', 'htDot', 'htCurve', 'duo1', 'duo2',
+      // Palette
+      'palette', 'paletteMode',
+      // Safety per-ECC limits
+      'maxIntL', 'maxIntM', 'maxIntQ', 'maxIntH',
+      // Output format
+      'format', 'quality', 'dpi',
+      // Watermark
+      'wmEn', 'wmKind', 'wmText', 'wmPos', 'wmOpacity', 'wmBlend',
+      // Metadata
+      'metaTitle', 'metaAuthor', 'metaCopy', 'metaDesc',
+      // Animation (for animated GIF)
+      'animPattern', 'animFrames', 'animSpeed', 'animSeed',
+      // Watermark image URL
+      'wmImg',
+      // Additional params
+      'subpixel', 'spGridNum', 'jpegQ', 'webpQ', 'gifColors', 'easing',
+    ]
+    
+    for (const key of passThroughParams) {
+      const val = params.get(key)
+      if (val) {
+        imageParams.set(key, val)
+      }
+    }
+    
+    return `${url.origin}/api/qr?${imageParams.toString()}`
+  } catch {
+    // Fallback: use the data parameter with default origin
+    return `https://anqr.link/api/qr?data=${encodeURIComponent(shareableUrl)}&size=${size}`
+  }
 }
 
 /**
@@ -877,11 +1168,16 @@ export function generateIframeEmbed(
 
 /**
  * Generate markdown embed
+ * Converts shareable URL to image API URL for actual image embedding
  */
 export function generateMarkdownEmbed(
-  imageUrl: string,
-  alt: string = 'QR Code'
+  shareableUrl: string,
+  alt: string = 'QR Code',
+  size: number = 200,
+  width?: number,
+  height?: number
 ): string {
+  const imageUrl = convertToImageApiUrl(shareableUrl, size, width, height)
   return `![${alt}](${imageUrl})`
 }
 

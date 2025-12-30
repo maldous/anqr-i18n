@@ -50,7 +50,8 @@ export const terms: PageDefinition = {
     {
       heading: 'User content license',
       paragraphs: [
-        'By using ANQR, you grant us no rights to your content - all QR code generation happens locally on your device and we do not access, store, or transmit your encoded data.',
+        'By using ANQR, you grant us no rights to your content. When using local generation (the default), all QR code generation happens in your browser and we do not access, store, or transmit your encoded data.',
+        'When using the server-side API, your content is processed to generate the QR image but is not stored, logged, or used for any other purpose beyond rendering the requested image.',
       ],
     },
     {
