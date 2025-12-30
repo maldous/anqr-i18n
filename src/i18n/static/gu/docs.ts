@@ -564,7 +564,7 @@ export const docs: PageDefinition = {
       ],
     },
     {
-      heading: 'API: મૂળભૂત પેરામીટર્સ',
+      heading: 'મૂળભૂત પેરામીટર્સ',
       paragraphs: [
         'જરૂરી અને સામાન્ય પેરામીટર્સ (પેરામીટર નામો અનુવાદિત નથી):',
       ],
@@ -581,7 +581,7 @@ export const docs: PageDefinition = {
       ],
     },
     {
-      heading: 'API: સ્ટાઇલિંગ પેરામીટર્સ',
+      heading: 'સ્ટાઇલિંગ પેરામીટર્સ',
       paragraphs: [
         'મોડ્યુલ અને પેટર્ન સ્ટાઇલિંગ:',
       ],
@@ -601,7 +601,7 @@ export const docs: PageDefinition = {
       ],
     },
     {
-      heading: 'API: ઓવરલે પેરામીટર્સ',
+      heading: 'ઓવરલે પેરામીટર્સ',
       paragraphs: [
         'ઇમેજ ઓવરલે વિકલ્પો (ઓવરલે ઇમેજ સર્વર-સાઇડ ફેચ થાય છે):',
       ],
@@ -618,7 +618,7 @@ export const docs: PageDefinition = {
       ],
     },
     {
-      heading: 'API: પ્રીપ્રોસેસિંગ પેરામીટર્સ',
+      heading: 'પ્રીપ્રોસેસિંગ પેરામીટર્સ',
       paragraphs: [
         'ઓવરલે પર લાગુ ઇમેજ પ્રીપ્રોસેસિંગ:',
       ],
@@ -637,7 +637,7 @@ export const docs: PageDefinition = {
       ],
     },
     {
-      heading: 'API: વોટરમાર્ક પેરામીટર્સ',
+      heading: 'વોટરમાર્ક પેરામીટર્સ',
       paragraphs: [
         'જનરેટ કરેલા QR કોડ્સમાં વોટરમાર્ક ઉમેરો:',
       ],
@@ -652,7 +652,7 @@ export const docs: PageDefinition = {
       ],
     },
     {
-      heading: 'API: એનિમેશન પેરામીટર્સ',
+      heading: 'એનિમેશન પેરામીટર્સ',
       paragraphs: [
         'એનિમેટેડ GIF આઉટપુટ માટે (format=gif જરૂરી):',
       ],
@@ -665,7 +665,7 @@ export const docs: PageDefinition = {
       ],
     },
     {
-      heading: 'API: આઉટપુટ પેરામીટર્સ',
+      heading: 'આઉટપુટ પેરામીટર્સ',
       paragraphs: [
         'આઉટપુટ ફોર્મેટ વિકલ્પો:',
       ],
@@ -678,7 +678,7 @@ export const docs: PageDefinition = {
       ],
     },
     {
-      heading: 'API: ઉપયોગ ઉદાહરણ',
+      heading: 'ઉપયોગ ઉદાહરણ',
       paragraphs: [
         'મૂળભૂત QR કોડ:',
         'https://anqr.link/api/qr?data=https://example.com',
@@ -703,7 +703,7 @@ export const docs: PageDefinition = {
       ],
     },
     {
-      heading: 'એમ્બેડિંગ: HTML ઉદાહરણ',
+      heading: 'HTML ઉદાહરણ',
       paragraphs: [
         'તમારી વેબસાઇટમાં QR કોડ એમ્બેડ કરવા માટે:',
         '<img src="https://anqr.link/api/qr?data=https://yoursite.com&size=200" alt="QR Code" />',
@@ -713,7 +713,7 @@ export const docs: PageDefinition = {
       ],
     },
     {
-      heading: 'એમ્બેડિંગ: શેર URL ફોર્મેટ',
+      heading: 'શેર URL ફોર્મેટ',
       paragraphs: [
         'જ્યારે તમે પ્રોફેશનલ મોડમાં શેર પર ક્લિક કરો છો, ત્યારે ANQR તમારી વર્તમાન સેટિંગ્સને URL પેરામીટર્સમાં એન્કોડ કરે છે. ફોર્મેટ છે:',
         'https://anqr.link/?data=...&ec=H&style=rounded&....',
@@ -722,7 +722,7 @@ export const docs: PageDefinition = {
       ],
     },
     {
-      heading: 'API: રેટ લિમિટ્સ અને ઉપયોગ',
+      heading: 'રેટ લિમિટ્સ અને ઉપયોગ',
       paragraphs: [
         'API વાજબી વોલ્યુમ માટે મફત ઉપયોગ કરી શકાય છે. ઉચ્ચ-વોલ્યુમ ઉપયોગ અથવા ગેરંટીડ અપટાઇમની જરૂર હોય તેવા વ્યાવસાયિક એપ્લિકેશન્સ માટે, કૃપા કરીને અમારો સંપર્ક કરો.',
         'API પ્રતિસાદોમાં આક્રમક કેશિંગ હેડર્સ શામેલ છે. શ્રેષ્ઠ પ્રદર્શન માટે, તમારી બાજુએ પ્રતિસાદોને કેશ કરો અથવા સમાન QR કોડ્સ માટે સતત સમાન URL નો ઉપયોગ કરો.',

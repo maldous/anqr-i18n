@@ -564,7 +564,7 @@ export const docs: PageDefinition = {
       ],
     },
     {
-      heading: 'API: బేసిక్ పారామీటర్లు',
+      heading: 'బేసిక్ పారామీటర్లు',
       paragraphs: [
         'అవసరమైన మరియు సాధారణ పారామీటర్లు (పారామీటర్ పేర్లు అనువదించబడవు):',
       ],
@@ -581,7 +581,7 @@ export const docs: PageDefinition = {
       ],
     },
     {
-      heading: 'API: స్టైలింగ్ పారామీటర్లు',
+      heading: 'స్టైలింగ్ పారామీటర్లు',
       paragraphs: [
         'మాడ్యూల్ మరియు నమూనా స్టైలింగ్:',
       ],
@@ -601,7 +601,7 @@ export const docs: PageDefinition = {
       ],
     },
     {
-      heading: 'API: ఓవర్‌లే పారామీటర్లు',
+      heading: 'ఓవర్‌లే పారామీటర్లు',
       paragraphs: [
         'చిత్ర ఓవర్‌లే ఎంపికలు (ఓవర్‌లే చిత్రం సర్వర్-సైడ్ ఫెచ్ చేయబడుతుంది):',
       ],
@@ -618,7 +618,7 @@ export const docs: PageDefinition = {
       ],
     },
     {
-      heading: 'API: ప్రీప్రాసెసింగ్ పారామీటర్లు',
+      heading: 'ప్రీప్రాసెసింగ్ పారామీటర్లు',
       paragraphs: [
         'ఓవర్‌లేకు వర్తించే చిత్ర ప్రీప్రాసెసింగ్:',
       ],
@@ -637,7 +637,7 @@ export const docs: PageDefinition = {
       ],
     },
     {
-      heading: 'API: వాటర్‌మార్క్ పారామీటర్లు',
+      heading: 'వాటర్‌మార్క్ పారామీటర్లు',
       paragraphs: [
         'రూపొందించిన QR కోడ్‌లకు వాటర్‌మార్క్‌లను జోడించండి:',
       ],
@@ -652,7 +652,7 @@ export const docs: PageDefinition = {
       ],
     },
     {
-      heading: 'API: యానిమేషన్ పారామీటర్లు',
+      heading: 'యానిమేషన్ పారామీటర్లు',
       paragraphs: [
         'యానిమేటెడ్ GIF అవుట్‌పుట్ కోసం (format=gif అవసరం):',
       ],
@@ -665,7 +665,7 @@ export const docs: PageDefinition = {
       ],
     },
     {
-      heading: 'API: అవుట్‌పుట్ పారామీటర్లు',
+      heading: 'అవుట్‌పుట్ పారామీటర్లు',
       paragraphs: [
         'అవుట్‌పుట్ ఫార్మాట్ ఎంపికలు:',
       ],
@@ -678,7 +678,7 @@ export const docs: PageDefinition = {
       ],
     },
     {
-      heading: 'API: ఉపయోగ ఉదాహరణ',
+      heading: 'ఉపయోగ ఉదాహరణ',
       paragraphs: [
         'బేసిక్ QR కోడ్:',
         'https://anqr.link/api/qr?data=https://example.com',
@@ -703,7 +703,7 @@ export const docs: PageDefinition = {
       ],
     },
     {
-      heading: 'ఎంబెడ్డింగ్: HTML ఉదాహరణ',
+      heading: 'HTML ఉదాహరణ',
       paragraphs: [
         'మీ వెబ్‌సైట్‌లో QR కోడ్‌ను ఎంబెడ్ చేయడానికి:',
         '<img src="https://anqr.link/api/qr?data=https://yoursite.com&size=200" alt="QR Code" />',
@@ -713,7 +713,7 @@ export const docs: PageDefinition = {
       ],
     },
     {
-      heading: 'ఎంబెడ్డింగ్: షేర్ URL ఫార్మాట్',
+      heading: 'షేర్ URL ఫార్మాట్',
       paragraphs: [
         'ప్రొఫెషనల్ మోడ్‌లో మీరు షేర్‌పై క్లిక్ చేసినప్పుడు, ANQR మీ ప్రస్తుత సెట్టింగ్‌లను URL పారామీటర్‌లలోకి ఎన్‌కోడ్ చేస్తుంది. ఫార్మాట్ ఇది:',
         'https://anqr.link/?data=...&ec=H&style=rounded&....',
@@ -722,7 +722,7 @@ export const docs: PageDefinition = {
       ],
     },
     {
-      heading: 'API: రేట్ లిమిట్‌లు మరియు వినియోగం',
+      heading: 'రేట్ లిమిట్‌లు మరియు వినియోగం',
       paragraphs: [
         'సహేతుక వాల్యూమ్‌ల కోసం API ఉచితంగా ఉపయోగించడానికి అందుబాటులో ఉంది. అధిక-వాల్యూమ్ వినియోగం లేదా గ్యారెంటీడ్ అప్‌టైమ్ అవసరమయ్యే వాణిజ్య అప్లికేషన్‌ల కోసం, దయచేసి మమ్మల్ని సంప్రదించండి.',
         'API ప్రతిస్పందనలు అగ్రెసివ్ కాషింగ్ హెడర్‌లను కలిగి ఉంటాయి. ఉత్తమ పనితీరు కోసం, మీ వైపు ప్రతిస్పందనలను కాష్ చేయండి లేదా ఒకే విధమైన QR కోడ్‌ల కోసం స్థిరంగా అదే URLను ఉపయోగించండి.',

@@ -564,7 +564,7 @@ export const docs: PageDefinition = {
       ],
     },
     {
-      heading: 'API: ਮੁੱਢਲੇ ਪੈਰਾਮੀਟਰ',
+      heading: 'ਮੁੱਢਲੇ ਪੈਰਾਮੀਟਰ',
       paragraphs: [
         'ਲੋੜੀਂਦੇ ਅਤੇ ਆਮ ਪੈਰਾਮੀਟਰ (ਪੈਰਾਮੀਟਰ ਨਾਮ ਅਨੁਵਾਦ ਨਹੀਂ ਕੀਤੇ ਜਾਂਦੇ):',
       ],
@@ -581,7 +581,7 @@ export const docs: PageDefinition = {
       ],
     },
     {
-      heading: 'API: ਸਟਾਈਲਿੰਗ ਪੈਰਾਮੀਟਰ',
+      heading: 'ਸਟਾਈਲਿੰਗ ਪੈਰਾਮੀਟਰ',
       paragraphs: [
         'ਮੋਡੀਊਲ ਅਤੇ ਪੈਟਰਨ ਸਟਾਈਲਿੰਗ:',
       ],
@@ -601,7 +601,7 @@ export const docs: PageDefinition = {
       ],
     },
     {
-      heading: 'API: ਓਵਰਲੇ ਪੈਰਾਮੀਟਰ',
+      heading: 'ਓਵਰਲੇ ਪੈਰਾਮੀਟਰ',
       paragraphs: [
         'ਚਿੱਤਰ ਓਵਰਲੇ ਵਿਕਲਪ (ਓਵਰਲੇ ਚਿੱਤਰ ਸਰਵਰ-ਸਾਈਡ ਫੈਚ ਕੀਤਾ ਜਾਂਦਾ ਹੈ):',
       ],
@@ -618,7 +618,7 @@ export const docs: PageDefinition = {
       ],
     },
     {
-      heading: 'API: ਪ੍ਰੀਪ੍ਰੋਸੈਸਿੰਗ ਪੈਰਾਮੀਟਰ',
+      heading: 'ਪ੍ਰੀਪ੍ਰੋਸੈਸਿੰਗ ਪੈਰਾਮੀਟਰ',
       paragraphs: [
         'ਓਵਰਲੇ \'ਤੇ ਲਾਗੂ ਚਿੱਤਰ ਪ੍ਰੀਪ੍ਰੋਸੈਸਿੰਗ:',
       ],
@@ -637,7 +637,7 @@ export const docs: PageDefinition = {
       ],
     },
     {
-      heading: 'API: ਵਾਟਰਮਾਰਕ ਪੈਰਾਮੀਟਰ',
+      heading: 'ਵਾਟਰਮਾਰਕ ਪੈਰਾਮੀਟਰ',
       paragraphs: [
         'ਤਿਆਰ ਕੀਤੇ QR ਕੋਡਾਂ ਵਿੱਚ ਵਾਟਰਮਾਰਕ ਸ਼ਾਮਲ ਕਰੋ:',
       ],
@@ -652,7 +652,7 @@ export const docs: PageDefinition = {
       ],
     },
     {
-      heading: 'API: ਐਨੀਮੇਸ਼ਨ ਪੈਰਾਮੀਟਰ',
+      heading: 'ਐਨੀਮੇਸ਼ਨ ਪੈਰਾਮੀਟਰ',
       paragraphs: [
         'ਐਨੀਮੇਟਡ GIF ਆਉਟਪੁੱਟ ਲਈ (format=gif ਲੋੜੀਂਦਾ ਹੈ):',
       ],
@@ -665,7 +665,7 @@ export const docs: PageDefinition = {
       ],
     },
     {
-      heading: 'API: ਆਉਟਪੁੱਟ ਪੈਰਾਮੀਟਰ',
+      heading: 'ਆਉਟਪੁੱਟ ਪੈਰਾਮੀਟਰ',
       paragraphs: [
         'ਆਉਟਪੁੱਟ ਫਾਰਮੈਟ ਵਿਕਲਪ:',
       ],
@@ -678,7 +678,7 @@ export const docs: PageDefinition = {
       ],
     },
     {
-      heading: 'API: ਵਰਤੋਂ ਦੀ ਉਦਾਹਰਨ',
+      heading: 'ਵਰਤੋਂ ਦੀ ਉਦਾਹਰਨ',
       paragraphs: [
         'ਮੁੱਢਲਾ QR ਕੋਡ:',
         'https://anqr.link/api/qr?data=https://example.com',
@@ -703,7 +703,7 @@ export const docs: PageDefinition = {
       ],
     },
     {
-      heading: 'ਏਮਬੈਡਿੰਗ: HTML ਉਦਾਹਰਨ',
+      heading: 'HTML ਉਦਾਹਰਨ',
       paragraphs: [
         'ਆਪਣੀ ਵੈੱਬਸਾਈਟ ਵਿੱਚ QR ਕੋਡ ਏਮਬੈਡ ਕਰਨ ਲਈ:',
         '<img src="https://anqr.link/api/qr?data=https://yoursite.com&size=200" alt="QR ਕੋਡ" />',
@@ -713,7 +713,7 @@ export const docs: PageDefinition = {
       ],
     },
     {
-      heading: 'ਏਮਬੈਡਿੰਗ: ਸ਼ੇਅਰ URL ਫਾਰਮੈਟ',
+      heading: 'ਸ਼ੇਅਰ URL ਫਾਰਮੈਟ',
       paragraphs: [
         'ਜਦੋਂ ਤੁਸੀਂ ਪੇਸ਼ੇਵਰ ਮੋਡ ਵਿੱਚ ਸ਼ੇਅਰ \'ਤੇ ਕਲਿੱਕ ਕਰਦੇ ਹੋ, ANQR ਤੁਹਾਡੀਆਂ ਮੌਜੂਦਾ ਸੈਟਿੰਗਾਂ ਨੂੰ URL ਪੈਰਾਮੀਟਰਾਂ ਵਿੱਚ ਏਨਕੋਡ ਕਰਦਾ ਹੈ। ਫਾਰਮੈਟ ਹੈ:',
         'https://anqr.link/?data=...&ec=H&style=rounded&....',
@@ -722,7 +722,7 @@ export const docs: PageDefinition = {
       ],
     },
     {
-      heading: 'API: ਰੇਟ ਲਿਮਿਟ ਅਤੇ ਵਰਤੋਂ',
+      heading: 'ਰੇਟ ਲਿਮਿਟ ਅਤੇ ਵਰਤੋਂ',
       paragraphs: [
         'API ਵਾਜਬ ਮਾਤਰਾਵਾਂ ਲਈ ਮੁਫ਼ਤ ਵਰਤਣ ਯੋਗ ਹੈ। ਉੱਚ-ਮਾਤਰਾ ਵਰਤੋਂ ਜਾਂ ਗਾਰੰਟੀਸ਼ੁਦਾ ਅਪਟਾਈਮ ਲੋੜੀਂਦੇ ਵਪਾਰਕ ਐਪਲੀਕੇਸ਼ਨਾਂ ਲਈ, ਕਿਰਪਾ ਕਰਕੇ ਸਾਡੇ ਨਾਲ ਸੰਪਰਕ ਕਰੋ।',
         'API ਜਵਾਬਾਂ ਵਿੱਚ ਹਮਲਾਵਰ ਕੈਸ਼ਿੰਗ ਹੈਡਰ ਸ਼ਾਮਲ ਹਨ। ਵਧੀਆ ਪ੍ਰਦਰਸ਼ਨ ਲਈ, ਆਪਣੇ ਪਾਸੇ ਜਵਾਬਾਂ ਨੂੰ ਕੈਸ਼ ਕਰੋ ਜਾਂ ਇੱਕੋ ਜਿਹੇ QR ਕੋਡਾਂ ਲਈ ਲਗਾਤਾਰ ਇੱਕੋ URL ਵਰਤੋ।',

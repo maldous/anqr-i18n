@@ -564,7 +564,7 @@ export const docs: PageDefinition = {
       ],
     },
     {
-      heading: 'API: അടിസ്ഥാന പാരാമീറ്ററുകൾ',
+      heading: 'അടിസ്ഥാന പാരാമീറ്ററുകൾ',
       paragraphs: [
         'ആവശ്യമായതും സാധാരണവുമായ പാരാമീറ്ററുകൾ (പാരാമീറ്റർ പേരുകൾ വിവർത്തനം ചെയ്യുന്നില്ല):',
       ],
@@ -581,7 +581,7 @@ export const docs: PageDefinition = {
       ],
     },
     {
-      heading: 'API: സ്റ്റൈലിംഗ് പാരാമീറ്ററുകൾ',
+      heading: 'സ്റ്റൈലിംഗ് പാരാമീറ്ററുകൾ',
       paragraphs: [
         'മൊഡ്യൂൾ, പാറ്റേൺ സ്റ്റൈലിംഗ്:',
       ],
@@ -601,7 +601,7 @@ export const docs: PageDefinition = {
       ],
     },
     {
-      heading: 'API: ഓവർലേ പാരാമീറ്ററുകൾ',
+      heading: 'ഓവർലേ പാരാമീറ്ററുകൾ',
       paragraphs: [
         'ഇമേജ് ഓവർലേ ഓപ്ഷനുകൾ (ഓവർലേ ഇമേജ് സെർവർ-സൈഡിൽ ഫെച്ച് ചെയ്യുന്നു):',
       ],
@@ -618,7 +618,7 @@ export const docs: PageDefinition = {
       ],
     },
     {
-      heading: 'API: പ്രീപ്രോസസ്സിംഗ് പാരാമീറ്ററുകൾ',
+      heading: 'പ്രീപ്രോസസ്സിംഗ് പാരാമീറ്ററുകൾ',
       paragraphs: [
         'ഓവർലേയിൽ പ്രയോഗിച്ച ഇമേജ് പ്രീപ്രോസസ്സിംഗ്:',
       ],
@@ -637,7 +637,7 @@ export const docs: PageDefinition = {
       ],
     },
     {
-      heading: 'API: വാട്ടർമാർക്ക് പാരാമീറ്ററുകൾ',
+      heading: 'വാട്ടർമാർക്ക് പാരാമീറ്ററുകൾ',
       paragraphs: [
         'സൃഷ്ടിച്ച QR കോഡുകളിൽ വാട്ടർമാർക്കുകൾ ചേർക്കുക:',
       ],
@@ -652,7 +652,7 @@ export const docs: PageDefinition = {
       ],
     },
     {
-      heading: 'API: ആനിമേഷൻ പാരാമീറ്ററുകൾ',
+      heading: 'ആനിമേഷൻ പാരാമീറ്ററുകൾ',
       paragraphs: [
         'ആനിമേറ്റഡ് GIF ഔട്ട്പുട്ടിന് (format=gif ആവശ്യമാണ്):',
       ],
@@ -665,7 +665,7 @@ export const docs: PageDefinition = {
       ],
     },
     {
-      heading: 'API: ഔട്ട്പുട്ട് പാരാമീറ്ററുകൾ',
+      heading: 'ഔട്ട്പുട്ട് പാരാമീറ്ററുകൾ',
       paragraphs: [
         'ഔട്ട്പുട്ട് ഫോർമാറ്റ് ഓപ്ഷനുകൾ:',
       ],
@@ -678,7 +678,7 @@ export const docs: PageDefinition = {
       ],
     },
     {
-      heading: 'API: ഉപയോഗ ഉദാഹരണം',
+      heading: 'ഉപയോഗ ഉദാഹരണം',
       paragraphs: [
         'അടിസ്ഥാന QR കോഡ്:',
         'https://anqr.link/api/qr?data=https://example.com',
@@ -703,7 +703,7 @@ export const docs: PageDefinition = {
       ],
     },
     {
-      heading: 'എംബെഡ്ഡിംഗ്: HTML ഉദാഹരണം',
+      heading: 'HTML ഉദാഹരണം',
       paragraphs: [
         'നിങ്ങളുടെ വെബ്‌സൈറ്റിൽ ഒരു QR കോഡ് എംബെഡ് ചെയ്യാൻ:',
         '<img src="https://anqr.link/api/qr?data=https://yoursite.com&size=200" alt="QR Code" />',
@@ -713,7 +713,7 @@ export const docs: PageDefinition = {
       ],
     },
     {
-      heading: 'എംബെഡ്ഡിംഗ്: ഷെയർ URL ഫോർമാറ്റ്',
+      heading: 'ഷെയർ URL ഫോർമാറ്റ്',
       paragraphs: [
         'പ്രൊഫഷണൽ മോഡിൽ ഷെയർ ക്ലിക്ക് ചെയ്യുമ്പോൾ, ANQR നിങ്ങളുടെ നിലവിലെ ക്രമീകരണങ്ങൾ URL പാരാമീറ്ററുകളിലേക്ക് എൻകോഡ് ചെയ്യുന്നു. ഫോർമാറ്റ് ഇതാണ്:',
         'https://anqr.link/?data=...&ec=H&style=rounded&....',
@@ -722,7 +722,7 @@ export const docs: PageDefinition = {
       ],
     },
     {
-      heading: 'API: റേറ്റ് പരിധികളും ഉപയോഗവും',
+      heading: 'റേറ്റ് പരിധികളും ഉപയോഗവും',
       paragraphs: [
         'ന്യായമായ വോള്യങ്ങൾക്ക് API സൗജന്യമായി ഉപയോഗിക്കാം. ഉയർന്ന-വോള്യം ഉപയോഗത്തിനോ ഗ്യാരന്റിയുള്ള അപ്‌ടൈം ആവശ്യമുള്ള വാണിജ്യ ആപ്ലിക്കേഷനുകൾക്കോ, ദയവായി ഞങ്ങളെ ബന്ധപ്പെടുക.',
         'API പ്രതികരണങ്ങളിൽ ആക്രമണാത്മക കാഷിംഗ് ഹെഡറുകൾ ഉൾപ്പെടുന്നു. മികച്ച പ്രകടനത്തിന്, നിങ്ങളുടെ ഭാഗത്ത് പ്രതികരണങ്ങൾ കാഷെ ചെയ്യുക അല്ലെങ്കിൽ സമാനമായ QR കോഡുകൾക്കായി ഒരേ URL സ്ഥിരമായി ഉപയോഗിക്കുക.',

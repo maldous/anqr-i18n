@@ -4,7 +4,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 import { Download, Share2, Moon, Sun, Menu, PanelLeft, Check, Grid3x3, Play, Globe } from 'lucide-react'
 import { Capacitor } from '@capacitor/core'
 import { useTranslation } from 'react-i18next'
-import { languages, isRtlLanguage } from '@/i18n'
+import { languages, isRtlLanguage, loadLocale } from '@/i18n'
 import * as LucideIcons from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { useState, useEffect, useRef } from 'react'
@@ -58,7 +58,9 @@ export function Header({ onToggleSidebar, onExport, sidebarOpen = false, showGal
 
   const currentLang = languages.find(l => l.code === i18n.language) || languages[0]
 
-  const changeLanguage = (code: string) => {
+  const changeLanguage = async (code: string) => {
+    // Pre-load locale before switching to ensure translations are available immediately
+    await loadLocale(code)
     i18n.changeLanguage(code)
     closeLangMenu()
   }

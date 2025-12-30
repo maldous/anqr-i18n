@@ -564,7 +564,7 @@ export const docs: PageDefinition = {
       ],
     },
     {
-      heading: 'API: ಮೂಲಭೂತ ಪ್ಯಾರಾಮೀಟರ್‌ಗಳು',
+      heading: 'ಮೂಲಭೂತ ಪ್ಯಾರಾಮೀಟರ್‌ಗಳು',
       paragraphs: [
         'ಅಗತ್ಯ ಮತ್ತು ಸಾಮಾನ್ಯ ಪ್ಯಾರಾಮೀಟರ್‌ಗಳು (ಪ್ಯಾರಾಮೀಟರ್ ಹೆಸರುಗಳನ್ನು ಅನುವಾದಿಸಲಾಗಿಲ್ಲ):',
       ],
@@ -581,7 +581,7 @@ export const docs: PageDefinition = {
       ],
     },
     {
-      heading: 'API: ಸ್ಟೈಲಿಂಗ್ ಪ್ಯಾರಾಮೀಟರ್‌ಗಳು',
+      heading: 'ಸ್ಟೈಲಿಂಗ್ ಪ್ಯಾರಾಮೀಟರ್‌ಗಳು',
       paragraphs: [
         'ಮಾಡ್ಯೂಲ್ ಮತ್ತು ಮಾದರಿ ಸ್ಟೈಲಿಂಗ್:',
       ],
@@ -601,7 +601,7 @@ export const docs: PageDefinition = {
       ],
     },
     {
-      heading: 'API: ಓವರ್‌ಲೇ ಪ್ಯಾರಾಮೀಟರ್‌ಗಳು',
+      heading: 'ಓವರ್‌ಲೇ ಪ್ಯಾರಾಮೀಟರ್‌ಗಳು',
       paragraphs: [
         'ಚಿತ್ರ ಓವರ್‌ಲೇ ಆಯ್ಕೆಗಳು (ಓವರ್‌ಲೇ ಚಿತ್ರವನ್ನು ಸರ್ವರ್-ಸೈಡ್‌ನಲ್ಲಿ ಪಡೆಯಲಾಗುತ್ತದೆ):',
       ],
@@ -618,7 +618,7 @@ export const docs: PageDefinition = {
       ],
     },
     {
-      heading: 'API: ಪ್ರಿಪ್ರೊಸೆಸಿಂಗ್ ಪ್ಯಾರಾಮೀಟರ್‌ಗಳು',
+      heading: 'ಪ್ರಿಪ್ರೊಸೆಸಿಂಗ್ ಪ್ಯಾರಾಮೀಟರ್‌ಗಳು',
       paragraphs: [
         'ಓವರ್‌ಲೇಗೆ ಅನ್ವಯಿಸಲಾದ ಚಿತ್ರ ಪ್ರಿಪ್ರೊಸೆಸಿಂಗ್:',
       ],
@@ -637,7 +637,7 @@ export const docs: PageDefinition = {
       ],
     },
     {
-      heading: 'API: ವಾಟರ್‌ಮಾರ್ಕ್ ಪ್ಯಾರಾಮೀಟರ್‌ಗಳು',
+      heading: 'ವಾಟರ್‌ಮಾರ್ಕ್ ಪ್ಯಾರಾಮೀಟರ್‌ಗಳು',
       paragraphs: [
         'ರಚಿಸಲಾದ QR ಕೋಡ್‌ಗಳಿಗೆ ವಾಟರ್‌ಮಾರ್ಕ್‌ಗಳನ್ನು ಸೇರಿಸಿ:',
       ],
@@ -652,7 +652,7 @@ export const docs: PageDefinition = {
       ],
     },
     {
-      heading: 'API: ಅನಿಮೇಷನ್ ಪ್ಯಾರಾಮೀಟರ್‌ಗಳು',
+      heading: 'ಅನಿಮೇಷನ್ ಪ್ಯಾರಾಮೀಟರ್‌ಗಳು',
       paragraphs: [
         'ಅನಿಮೇಟೆಡ್ GIF ಔಟ್‌ಪುಟ್‌ಗಾಗಿ (format=gif ಅಗತ್ಯವಿದೆ):',
       ],
@@ -665,7 +665,7 @@ export const docs: PageDefinition = {
       ],
     },
     {
-      heading: 'API: ಔಟ್‌ಪುಟ್ ಪ್ಯಾರಾಮೀಟರ್‌ಗಳು',
+      heading: 'ಔಟ್‌ಪುಟ್ ಪ್ಯಾರಾಮೀಟರ್‌ಗಳು',
       paragraphs: [
         'ಔಟ್‌ಪುಟ್ ಸ್ವರೂಪ ಆಯ್ಕೆಗಳು:',
       ],
@@ -678,7 +678,7 @@ export const docs: PageDefinition = {
       ],
     },
     {
-      heading: 'API: ಬಳಕೆಯ ಉದಾಹರಣೆ',
+      heading: 'ಬಳಕೆಯ ಉದಾಹರಣೆ',
       paragraphs: [
         'ಮೂಲಭೂತ QR ಕೋಡ್:',
         'https://anqr.link/api/qr?data=https://example.com',
@@ -703,7 +703,7 @@ export const docs: PageDefinition = {
       ],
     },
     {
-      heading: 'ಎಂಬೆಡಿಂಗ್: HTML ಉದಾಹರಣೆ',
+      heading: 'HTML ಉದಾಹರಣೆ',
       paragraphs: [
         'ನಿಮ್ಮ ವೆಬ್‌ಸೈಟ್‌ನಲ್ಲಿ QR ಕೋಡ್ ಅನ್ನು ಎಂಬೆಡ್ ಮಾಡಲು:',
         '<img src="https://anqr.link/api/qr?data=https://yoursite.com&size=200" alt="QR Code" />',
@@ -713,7 +713,7 @@ export const docs: PageDefinition = {
       ],
     },
     {
-      heading: 'ಎಂಬೆಡಿಂಗ್: ಹಂಚಿಕೆ URL ಸ್ವರೂಪ',
+      heading: 'ಹಂಚಿಕೆ URL ಸ್ವರೂಪ',
       paragraphs: [
         'ವೃತ್ತಿಪರ ಮೋಡ್‌ನಲ್ಲಿ ಹಂಚಿಕೆ ಅನ್ನು ಕ್ಲಿಕ್ ಮಾಡಿದಾಗ, ANQR ನಿಮ್ಮ ಪ್ರಸ್ತುತ ಸೆಟ್ಟಿಂಗ್‌ಗಳನ್ನು URL ಪ್ಯಾರಾಮೀಟರ್‌ಗಳಾಗಿ ಎನ್‌ಕೋಡ್ ಮಾಡುತ್ತದೆ. ಸ್ವರೂಪವು:',
         'https://anqr.link/?data=...&ec=H&style=rounded&....',
@@ -722,7 +722,7 @@ export const docs: PageDefinition = {
       ],
     },
     {
-      heading: 'API: ದರ ಮಿತಿಗಳು ಮತ್ತು ಬಳಕೆ',
+      heading: 'ದರ ಮಿತಿಗಳು ಮತ್ತು ಬಳಕೆ',
       paragraphs: [
         'ಸಮಂಜಸ ಪ್ರಮಾಣಗಳಿಗೆ API ಉಚಿತವಾಗಿ ಬಳಸಲು ಲಭ್ಯವಿದೆ. ಖಾತರಿಪಡಿಸಿದ ಅಪ್‌ಟೈಮ್ ಅಗತ್ಯವಿರುವ ಹೆಚ್ಚಿನ-ಪ್ರಮಾಣದ ಬಳಕೆ ಅಥವಾ ವಾಣಿಜ್ಯ ಅಪ್ಲಿಕೇಶನ್‌ಗಳಿಗಾಗಿ, ದಯವಿಟ್ಟು ನಮ್ಮನ್ನು ಸಂಪರ್ಕಿಸಿ.',
         'API ಪ್ರತಿಕ್ರಿಯೆಗಳು ಆಕ್ರಮಣಕಾರಿ ಕ್ಯಾಶಿಂಗ್ ಹೆಡರ್‌ಗಳನ್ನು ಒಳಗೊಂಡಿವೆ. ಉತ್ತಮ ಕಾರ್ಯಕ್ಷಮತೆಗಾಗಿ, ನಿಮ್ಮ ಕಡೆಯಲ್ಲಿ ಪ್ರತಿಕ್ರಿಯೆಗಳನ್ನು ಕ್ಯಾಶ್ ಮಾಡಿ ಅಥವಾ ಒಂದೇ ರೀತಿಯ QR ಕೋಡ್‌ಗಳಿಗಾಗಿ ಅದೇ URL ಅನ್ನು ಸ್ಥಿರವಾಗಿ ಬಳಸಿ.',

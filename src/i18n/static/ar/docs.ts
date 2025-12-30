@@ -703,7 +703,7 @@ export const docs: PageDefinition = {
       ],
     },
     {
-      heading: 'التضمين: مثال HTML',
+      heading: 'مثال HTML',
       paragraphs: [
         'لتضمين رمز QR في موقع الويب الخاص بك:',
         '<img src="https://anqr.link/api/qr?data=https://yoursite.com&size=200" alt="رمز QR" />',
@@ -713,7 +713,7 @@ export const docs: PageDefinition = {
       ],
     },
     {
-      heading: 'التضمين: تنسيق عنوان URL للمشاركة',
+      heading: 'تنسيق عنوان URL للمشاركة',
       paragraphs: [
         'عند النقر على مشاركة في الوضع الاحترافي، يقوم ANQR بترميز إعداداتك الحالية في معلمات URL. التنسيق هو:',
         'https://anqr.link/?data=...&ec=H&style=rounded&....',

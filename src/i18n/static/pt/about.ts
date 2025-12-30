@@ -16,7 +16,7 @@ export const about: PageDefinition = {
     {
       heading: 'Características principais',
       bullets: [
-        'Gere códigos QR instantaneamente no seu dispositivo — sem uploads para o servidor, sem necessidade de conta."',
+        'Gere códigos QR instantaneamente no seu dispositivo — sem uploads para o servidor, sem necessidade de conta.',
         'Personalize cores, estilos de módulos, padrões de busca e adicione sobreposições de imagens.',
         'Exportar em vários formatos: PNG, SVG, WebP e GIF animado.',
         'Controles avançados para nível de correção de erros, versão do QR Code, modo de codificação e seleção de máscara.',

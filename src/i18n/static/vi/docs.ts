@@ -564,7 +564,7 @@ export const docs: PageDefinition = {
       ],
     },
     {
-      heading: 'API: Tham số cơ bản',
+      heading: 'Tham số cơ bản',
       paragraphs: [
         'Các tham số bắt buộc và phổ biến (tên tham số không được dịch):',
       ],
@@ -581,7 +581,7 @@ export const docs: PageDefinition = {
       ],
     },
     {
-      heading: 'API: Tham số định kiểu',
+      heading: 'Tham số định kiểu',
       paragraphs: [
         'Định kiểu mô-đun và mẫu:',
       ],
@@ -601,7 +601,7 @@ export const docs: PageDefinition = {
       ],
     },
     {
-      heading: 'API: Tham số lớp phủ',
+      heading: 'Tham số lớp phủ',
       paragraphs: [
         'Tùy chọn lớp phủ hình ảnh (hình ảnh lớp phủ được tải từ phía máy chủ):',
       ],
@@ -618,7 +618,7 @@ export const docs: PageDefinition = {
       ],
     },
     {
-      heading: 'API: Tham số tiền xử lý',
+      heading: 'Tham số tiền xử lý',
       paragraphs: [
         'Tiền xử lý hình ảnh áp dụng cho lớp phủ:',
       ],
@@ -637,7 +637,7 @@ export const docs: PageDefinition = {
       ],
     },
     {
-      heading: 'API: Tham số hình mờ',
+      heading: 'Tham số hình mờ',
       paragraphs: [
         'Thêm hình mờ vào mã QR đã tạo:',
       ],
@@ -652,7 +652,7 @@ export const docs: PageDefinition = {
       ],
     },
     {
-      heading: 'API: Tham số hoạt ảnh',
+      heading: 'Tham số hoạt ảnh',
       paragraphs: [
         'Cho đầu ra GIF động (yêu cầu format=gif):',
       ],
@@ -665,7 +665,7 @@ export const docs: PageDefinition = {
       ],
     },
     {
-      heading: 'API: Tham số đầu ra',
+      heading: 'Tham số đầu ra',
       paragraphs: [
         'Tùy chọn định dạng đầu ra:',
       ],
@@ -678,7 +678,7 @@ export const docs: PageDefinition = {
       ],
     },
     {
-      heading: 'API: Ví dụ sử dụng',
+      heading: 'Ví dụ sử dụng',
       paragraphs: [
         'Mã QR cơ bản:',
         'https://anqr.link/api/qr?data=https://example.com',
@@ -703,7 +703,7 @@ export const docs: PageDefinition = {
       ],
     },
     {
-      heading: 'Nhúng: Ví dụ HTML',
+      heading: 'Ví dụ HTML',
       paragraphs: [
         'Để nhúng mã QR vào trang web của bạn:',
         '<img src="https://anqr.link/api/qr?data=https://yoursite.com&size=200" alt="Mã QR" />',
@@ -713,7 +713,7 @@ export const docs: PageDefinition = {
       ],
     },
     {
-      heading: 'Nhúng: Định dạng URL chia sẻ',
+      heading: 'Định dạng URL chia sẻ',
       paragraphs: [
         'Khi bạn nhấp vào Chia sẻ trong chế độ Chuyên nghiệp, ANQR mã hóa cài đặt hiện tại của bạn vào các tham số URL. Định dạng là:',
         'https://anqr.link/?data=...&ec=H&style=rounded&....',
@@ -722,7 +722,7 @@ export const docs: PageDefinition = {
       ],
     },
     {
-      heading: 'API: Giới hạn tốc độ và sử dụng',
+      heading: 'Giới hạn tốc độ và sử dụng',
       paragraphs: [
         'API miễn phí sử dụng cho khối lượng hợp lý. Đối với việc sử dụng khối lượng lớn hoặc ứng dụng thương mại yêu cầu thời gian hoạt động được đảm bảo, vui lòng liên hệ với chúng tôi.',
         'Phản hồi API bao gồm header cache mạnh. Để có hiệu suất tốt nhất, hãy cache phản hồi ở phía bạn hoặc sử dụng cùng một URL nhất quán cho các mã QR giống hệt nhau.',

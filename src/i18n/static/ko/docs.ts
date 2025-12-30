@@ -564,7 +564,7 @@ export const docs: PageDefinition = {
       ],
     },
     {
-      heading: 'API: 기본 파라미터',
+      heading: '기본 파라미터',
       paragraphs: [
         '필수 및 일반 파라미터(파라미터 이름은 번역되지 않습니다):',
       ],
@@ -581,7 +581,7 @@ export const docs: PageDefinition = {
       ],
     },
     {
-      heading: 'API: 스타일링 파라미터',
+      heading: '스타일링 파라미터',
       paragraphs: [
         '모듈 및 패턴 스타일링:',
       ],
@@ -601,7 +601,7 @@ export const docs: PageDefinition = {
       ],
     },
     {
-      heading: 'API: 오버레이 파라미터',
+      heading: '오버레이 파라미터',
       paragraphs: [
         '이미지 오버레이 옵션(오버레이 이미지는 서버 측에서 가져옵니다):',
       ],
@@ -618,7 +618,7 @@ export const docs: PageDefinition = {
       ],
     },
     {
-      heading: 'API: 전처리 파라미터',
+      heading: '전처리 파라미터',
       paragraphs: [
         '오버레이에 적용되는 이미지 전처리:',
       ],
@@ -637,7 +637,7 @@ export const docs: PageDefinition = {
       ],
     },
     {
-      heading: 'API: 워터마크 파라미터',
+      heading: '워터마크 파라미터',
       paragraphs: [
         '생성된 QR 코드에 워터마크 추가:',
       ],
@@ -652,7 +652,7 @@ export const docs: PageDefinition = {
       ],
     },
     {
-      heading: 'API: 애니메이션 파라미터',
+      heading: '애니메이션 파라미터',
       paragraphs: [
         '애니메이션 GIF 출력용(format=gif 필요):',
       ],
@@ -665,7 +665,7 @@ export const docs: PageDefinition = {
       ],
     },
     {
-      heading: 'API: 출력 파라미터',
+      heading: '출력 파라미터',
       paragraphs: [
         '출력 형식 옵션:',
       ],
@@ -678,7 +678,7 @@ export const docs: PageDefinition = {
       ],
     },
     {
-      heading: 'API: 사용 예시',
+      heading: '사용 예시',
       paragraphs: [
         '기본 QR 코드:',
         'https://anqr.link/api/qr?data=https://example.com',
@@ -703,7 +703,7 @@ export const docs: PageDefinition = {
       ],
     },
     {
-      heading: '임베딩: HTML 예시',
+      heading: 'HTML 예시',
       paragraphs: [
         '웹사이트에 QR 코드를 임베드하려면:',
         '<img src="https://anqr.link/api/qr?data=https://yoursite.com&size=200" alt="QR Code" />',
@@ -713,7 +713,7 @@ export const docs: PageDefinition = {
       ],
     },
     {
-      heading: '임베딩: 공유 URL 형식',
+      heading: '공유 URL 형식',
       paragraphs: [
         'Professional 모드에서 공유를 클릭하면 ANQR이 현재 설정을 URL 파라미터로 인코딩합니다. 형식은 다음과 같습니다:',
         'https://anqr.link/?data=...&ec=H&style=rounded&....',
@@ -722,7 +722,7 @@ export const docs: PageDefinition = {
       ],
     },
     {
-      heading: 'API: 사용량 제한',
+      heading: '사용량 제한',
       paragraphs: [
         'API는 합리적인 볼륨에 대해 무료로 사용할 수 있습니다. 대용량 사용 또는 보장된 가동 시간이 필요한 상업용 애플리케이션의 경우 문의해 주세요.',
         'API 응답에는 적극적인 캐싱 헤더가 포함됩니다. 최상의 성능을 위해 응답을 캐시하거나 동일한 QR 코드에 대해 일관되게 동일한 URL을 사용하세요.',
