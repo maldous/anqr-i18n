@@ -564,7 +564,7 @@ export const docs: PageDefinition = {
       ],
     },
     {
-      heading: 'API: Parâmetros Básicos',
+      heading: 'Parâmetros Básicos',
       paragraphs: [
         'Parâmetros obrigatórios e comuns (os nomes dos parâmetros não são traduzidos):',
       ],
@@ -581,7 +581,7 @@ export const docs: PageDefinition = {
       ],
     },
     {
-      heading: 'API: Parâmetros de Estilo',
+      heading: 'Parâmetros de Estilo',
       paragraphs: [
         'Estilo de módulos e padrões:',
       ],
@@ -601,7 +601,7 @@ export const docs: PageDefinition = {
       ],
     },
     {
-      heading: 'API: Parâmetros de Sobreposição',
+      heading: 'Parâmetros de Sobreposição',
       paragraphs: [
         'Opções de sobreposição de imagem (a imagem de sobreposição é buscada do lado do servidor):',
       ],
@@ -618,7 +618,7 @@ export const docs: PageDefinition = {
       ],
     },
     {
-      heading: 'API: Parâmetros de Pré-processamento',
+      heading: 'Parâmetros de Pré-processamento',
       paragraphs: [
         'Pré-processamento de imagem aplicado à sobreposição:',
       ],
@@ -637,7 +637,7 @@ export const docs: PageDefinition = {
       ],
     },
     {
-      heading: 'API: Parâmetros de Marca d\'água',
+      heading: 'Parâmetros de Marca d\'água',
       paragraphs: [
         'Adicione marcas d\'água aos códigos QR gerados:',
       ],
@@ -652,7 +652,7 @@ export const docs: PageDefinition = {
       ],
     },
     {
-      heading: 'API: Parâmetros de Animação',
+      heading: 'Parâmetros de Animação',
       paragraphs: [
         'Para saída de GIF animado (requer format=gif):',
       ],
@@ -665,7 +665,7 @@ export const docs: PageDefinition = {
       ],
     },
     {
-      heading: 'API: Parâmetros de Saída',
+      heading: 'Parâmetros de Saída',
       paragraphs: [
         'Opções de formato de saída:',
       ],
@@ -678,7 +678,7 @@ export const docs: PageDefinition = {
       ],
     },
     {
-      heading: 'API: Exemplo de Uso',
+      heading: 'Exemplo de Uso',
       paragraphs: [
         'Código QR básico:',
         'https://anqr.link/api/qr?data=https://example.com',
@@ -703,7 +703,7 @@ export const docs: PageDefinition = {
       ],
     },
     {
-      heading: 'Incorporação: Exemplo HTML',
+      heading: 'Exemplo HTML',
       paragraphs: [
         'Para incorporar um código QR em seu site:',
         '<img src="https://anqr.link/api/qr?data=https://yoursite.com&size=200" alt="Código QR" />',
@@ -713,7 +713,7 @@ export const docs: PageDefinition = {
       ],
     },
     {
-      heading: 'Incorporação: Formato da URL de Compartilhamento',
+      heading: 'Formato da URL de Compartilhamento',
       paragraphs: [
         'Quando você clica em Compartilhar no modo Profissional, o ANQR codifica suas configurações atuais em parâmetros de URL. O formato é:',
         'https://anqr.link/?data=...&ec=H&style=rounded&....',
@@ -722,7 +722,7 @@ export const docs: PageDefinition = {
       ],
     },
     {
-      heading: 'API: Limites de Taxa e Uso',
+      heading: 'Limites de Taxa e Uso',
       paragraphs: [
         'A API é gratuita para uso em volumes razoáveis. Para uso de alto volume ou aplicações comerciais que exigem tempo de atividade garantido, entre em contato conosco.',
         'As respostas da API incluem cabeçalhos de cache agressivos. Para melhor desempenho, armazene as respostas em cache do seu lado ou use a mesma URL consistentemente para códigos QR idênticos.',

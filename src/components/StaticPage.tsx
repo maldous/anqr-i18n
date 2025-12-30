@@ -67,7 +67,7 @@ function buildDocsToc(sections: PageSection[], t: (key: string) => string): TocG
     { title: t('tiers.basic'), items: [] },
     { title: t('tiers.advanced'), items: [] },
     { title: t('tiers.professional'), items: [] },
-    { title: t('nav.api'), items: [] },
+    { title: 'API', items: [] },
     { title: t('payload.other'), items: [] },
   ]
   

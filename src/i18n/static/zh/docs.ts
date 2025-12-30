@@ -703,7 +703,7 @@ export const docs: PageDefinition = {
       ],
     },
     {
-      heading: '嵌入：HTML 示例',
+      heading: 'HTML 示例',
       paragraphs: [
         '在您的网站中嵌入二维码：',
         '<img src="https://anqr.link/api/qr?data=https://yoursite.com&size=200" alt="二维码" />',
@@ -713,7 +713,7 @@ export const docs: PageDefinition = {
       ],
     },
     {
-      heading: '嵌入：分享 URL 格式',
+      heading: '分享 URL 格式',
       paragraphs: [
         '在专业模式下点击分享时，ANQR 会将您当前的设置编码为 URL 参数。格式如下：',
         'https://anqr.link/?data=...&ec=H&style=rounded&....',

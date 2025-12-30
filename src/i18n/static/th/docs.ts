@@ -564,7 +564,7 @@ export const docs: PageDefinition = {
       ],
     },
     {
-      heading: 'API: พารามิเตอร์พื้นฐาน',
+      heading: 'พารามิเตอร์พื้นฐาน',
       paragraphs: [
         'พารามิเตอร์ที่จำเป็นและทั่วไป (ชื่อพารามิเตอร์ไม่ได้แปล):',
       ],
@@ -581,7 +581,7 @@ export const docs: PageDefinition = {
       ],
     },
     {
-      heading: 'API: พารามิเตอร์การจัดรูปแบบ',
+      heading: 'พารามิเตอร์การจัดรูปแบบ',
       paragraphs: [
         'การจัดรูปแบบโมดูลและรูปแบบ:',
       ],
@@ -601,7 +601,7 @@ export const docs: PageDefinition = {
       ],
     },
     {
-      heading: 'API: พารามิเตอร์การซ้อนทับ',
+      heading: 'พารามิเตอร์การซ้อนทับ',
       paragraphs: [
         'ตัวเลือกการซ้อนทับภาพ (ภาพซ้อนทับถูกดึงจากฝั่งเซิร์ฟเวอร์):',
       ],
@@ -618,7 +618,7 @@ export const docs: PageDefinition = {
       ],
     },
     {
-      heading: 'API: พารามิเตอร์การประมวลผลล่วงหน้า',
+      heading: 'พารามิเตอร์การประมวลผลล่วงหน้า',
       paragraphs: [
         'การประมวลผลภาพล่วงหน้าที่ใช้กับการซ้อนทับ:',
       ],
@@ -637,7 +637,7 @@ export const docs: PageDefinition = {
       ],
     },
     {
-      heading: 'API: พารามิเตอร์ลายน้ำ',
+      heading: 'พารามิเตอร์ลายน้ำ',
       paragraphs: [
         'เพิ่มลายน้ำลงในคิวอาร์โค้ดที่สร้างขึ้น:',
       ],
@@ -652,7 +652,7 @@ export const docs: PageDefinition = {
       ],
     },
     {
-      heading: 'API: พารามิเตอร์แอนิเมชัน',
+      heading: 'พารามิเตอร์แอนิเมชัน',
       paragraphs: [
         'สำหรับเอาต์พุต GIF แบบเคลื่อนไหว (ต้องใช้ format=gif):',
       ],
@@ -665,7 +665,7 @@ export const docs: PageDefinition = {
       ],
     },
     {
-      heading: 'API: พารามิเตอร์เอาต์พุต',
+      heading: 'พารามิเตอร์เอาต์พุต',
       paragraphs: [
         'ตัวเลือกรูปแบบเอาต์พุต:',
       ],
@@ -678,7 +678,7 @@ export const docs: PageDefinition = {
       ],
     },
     {
-      heading: 'API: ตัวอย่างการใช้งาน',
+      heading: 'ตัวอย่างการใช้งาน',
       paragraphs: [
         'คิวอาร์โค้ดพื้นฐาน:',
         'https://anqr.link/api/qr?data=https://example.com',
@@ -703,7 +703,7 @@ export const docs: PageDefinition = {
       ],
     },
     {
-      heading: 'การฝัง: ตัวอย่าง HTML',
+      heading: 'ตัวอย่าง HTML',
       paragraphs: [
         'เพื่อฝังคิวอาร์โค้ดในเว็บไซต์ของคุณ:',
         '<img src="https://anqr.link/api/qr?data=https://yoursite.com&size=200" alt="QR Code" />',
@@ -713,7 +713,7 @@ export const docs: PageDefinition = {
       ],
     },
     {
-      heading: 'การฝัง: รูปแบบ URL แชร์',
+      heading: 'รูปแบบ URL แชร์',
       paragraphs: [
         'เมื่อคุณคลิกแชร์ในโหมด Professional ANQR จะเข้ารหัสการตั้งค่าปัจจุบันของคุณลงในพารามิเตอร์ URL รูปแบบคือ:',
         'https://anqr.link/?data=...&ec=H&style=rounded&....',
@@ -722,7 +722,7 @@ export const docs: PageDefinition = {
       ],
     },
     {
-      heading: 'API: ขีดจำกัดอัตราและการใช้งาน',
+      heading: 'ขีดจำกัดอัตราและการใช้งาน',
       paragraphs: [
         'API ใช้งานฟรีสำหรับปริมาณที่เหมาะสม สำหรับการใช้งานปริมาณมากหรือแอปพลิเคชันเชิงพาณิชย์ที่ต้องการเวลาทำงานที่รับประกัน โปรดติดต่อเรา',
         'การตอบสนอง API รวมถึงส่วนหัวแคชแบบเข้มข้น เพื่อประสิทธิภาพที่ดีที่สุด ให้แคชการตอบสนองในฝั่งของคุณหรือใช้ URL เดียวกันอย่างสม่ำเสมอสำหรับคิวอาร์โค้ดที่เหมือนกัน',

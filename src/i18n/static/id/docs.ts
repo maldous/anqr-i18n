@@ -564,7 +564,7 @@ export const docs: PageDefinition = {
       ],
     },
     {
-      heading: 'API: Parameter Dasar',
+      heading: 'Parameter Dasar',
       paragraphs: [
         'Parameter yang diperlukan dan umum (nama parameter tidak diterjemahkan):',
       ],
@@ -581,7 +581,7 @@ export const docs: PageDefinition = {
       ],
     },
     {
-      heading: 'API: Parameter Styling',
+      heading: 'Parameter Styling',
       paragraphs: [
         'Styling modul dan pola:',
       ],
@@ -601,7 +601,7 @@ export const docs: PageDefinition = {
       ],
     },
     {
-      heading: 'API: Parameter Overlay',
+      heading: 'Parameter Overlay',
       paragraphs: [
         'Opsi overlay gambar (gambar overlay diambil dari sisi server):',
       ],
@@ -618,7 +618,7 @@ export const docs: PageDefinition = {
       ],
     },
     {
-      heading: 'API: Parameter Preprocessing',
+      heading: 'Parameter Preprocessing',
       paragraphs: [
         'Preprocessing gambar yang diterapkan ke overlay:',
       ],
@@ -637,7 +637,7 @@ export const docs: PageDefinition = {
       ],
     },
     {
-      heading: 'API: Parameter Watermark',
+      heading: 'Parameter Watermark',
       paragraphs: [
         'Tambahkan watermark ke kode QR yang dihasilkan:',
       ],
@@ -652,7 +652,7 @@ export const docs: PageDefinition = {
       ],
     },
     {
-      heading: 'API: Parameter Animasi',
+      heading: 'Parameter Animasi',
       paragraphs: [
         'Untuk output GIF animasi (memerlukan format=gif):',
       ],
@@ -665,7 +665,7 @@ export const docs: PageDefinition = {
       ],
     },
     {
-      heading: 'API: Parameter Output',
+      heading: 'Parameter Output',
       paragraphs: [
         'Opsi format output:',
       ],
@@ -678,7 +678,7 @@ export const docs: PageDefinition = {
       ],
     },
     {
-      heading: 'API: Contoh Penggunaan',
+      heading: 'Contoh Penggunaan',
       paragraphs: [
         'Kode QR dasar:',
         'https://anqr.link/api/qr?data=https://example.com',
@@ -703,7 +703,7 @@ export const docs: PageDefinition = {
       ],
     },
     {
-      heading: 'Penyematan: Contoh HTML',
+      heading: 'Contoh HTML',
       paragraphs: [
         'Untuk menyematkan kode QR di situs web Anda:',
         '<img src="https://anqr.link/api/qr?data=https://yoursite.com&size=200" alt="Kode QR" />',
@@ -713,7 +713,7 @@ export const docs: PageDefinition = {
       ],
     },
     {
-      heading: 'Penyematan: Format URL Bagikan',
+      heading: 'Format URL Bagikan',
       paragraphs: [
         'Ketika Anda mengklik Bagikan dalam mode Profesional, ANQR mengkodekan pengaturan Anda saat ini ke dalam parameter URL. Formatnya adalah:',
         'https://anqr.link/?data=...&ec=H&style=rounded&....',
@@ -722,7 +722,7 @@ export const docs: PageDefinition = {
       ],
     },
     {
-      heading: 'API: Batas Rate dan Penggunaan',
+      heading: 'Batas Rate dan Penggunaan',
       paragraphs: [
         'API gratis untuk digunakan untuk volume yang wajar. Untuk penggunaan volume tinggi atau aplikasi komersial yang memerlukan uptime terjamin, silakan hubungi kami.',
         'Respons API menyertakan header caching yang agresif. Untuk performa terbaik, cache respons di sisi Anda atau gunakan URL yang sama secara konsisten untuk kode QR yang identik.',

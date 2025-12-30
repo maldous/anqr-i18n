@@ -564,7 +564,7 @@ export const docs: PageDefinition = {
       ],
     },
     {
-      heading: 'API: Базовые параметры',
+      heading: 'Базовые параметры',
       paragraphs: [
         'Обязательные и общие параметры (названия параметров не переводятся):',
       ],
@@ -581,7 +581,7 @@ export const docs: PageDefinition = {
       ],
     },
     {
-      heading: 'API: Параметры стилизации',
+      heading: 'Параметры стилизации',
       paragraphs: [
         'Стилизация модулей и паттернов:',
       ],
@@ -601,7 +601,7 @@ export const docs: PageDefinition = {
       ],
     },
     {
-      heading: 'API: Параметры наложения',
+      heading: 'Параметры наложения',
       paragraphs: [
         'Параметры наложения изображения (изображение наложения загружается на сервере):',
       ],
@@ -618,7 +618,7 @@ export const docs: PageDefinition = {
       ],
     },
     {
-      heading: 'API: Параметры предобработки',
+      heading: 'Параметры предобработки',
       paragraphs: [
         'Предобработка изображения, применяемая к наложению:',
       ],
@@ -637,7 +637,7 @@ export const docs: PageDefinition = {
       ],
     },
     {
-      heading: 'API: Параметры водяного знака',
+      heading: 'Параметры водяного знака',
       paragraphs: [
         'Добавление водяных знаков к сгенерированным QR-кодам:',
       ],
@@ -652,7 +652,7 @@ export const docs: PageDefinition = {
       ],
     },
     {
-      heading: 'API: Параметры анимации',
+      heading: 'Параметры анимации',
       paragraphs: [
         'Для анимированного GIF-вывода (требуется format=gif):',
       ],
@@ -665,7 +665,7 @@ export const docs: PageDefinition = {
       ],
     },
     {
-      heading: 'API: Параметры вывода',
+      heading: 'Параметры вывода',
       paragraphs: [
         'Параметры формата вывода:',
       ],
@@ -678,7 +678,7 @@ export const docs: PageDefinition = {
       ],
     },
     {
-      heading: 'API: Примеры использования',
+      heading: 'Примеры использования',
       paragraphs: [
         'Базовый QR-код:',
         'https://anqr.link/api/qr?data=https://example.com',
@@ -703,7 +703,7 @@ export const docs: PageDefinition = {
       ],
     },
     {
-      heading: 'Встраивание: Пример HTML',
+      heading: 'Пример HTML',
       paragraphs: [
         'Для встраивания QR-кода на ваш веб-сайт:',
         '<img src="https://anqr.link/api/qr?data=https://yoursite.com&size=200" alt="QR Code" />',
@@ -713,7 +713,7 @@ export const docs: PageDefinition = {
       ],
     },
     {
-      heading: 'Встраивание: Формат URL для обмена',
+      heading: 'Формат URL для обмена',
       paragraphs: [
         'Когда вы нажимаете Поделиться в профессиональном режиме, ANQR кодирует ваши текущие настройки в параметры URL. Формат следующий:',
         'https://anqr.link/?data=...&ec=H&style=rounded&....',
@@ -722,7 +722,7 @@ export const docs: PageDefinition = {
       ],
     },
     {
-      heading: 'API: Лимиты и использование',
+      heading: 'Лимиты и использование',
       paragraphs: [
         'API бесплатен для использования в разумных объемах. Для высоконагруженного использования или коммерческих приложений, требующих гарантированной доступности, пожалуйста, свяжитесь с нами.',
         'Ответы API включают агрессивные заголовки кэширования. Для лучшей производительности кэшируйте ответы на своей стороне или используйте один и тот же URL последовательно для идентичных QR-кодов.',

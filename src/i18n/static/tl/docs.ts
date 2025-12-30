@@ -564,7 +564,7 @@ export const docs: PageDefinition = {
       ],
     },
     {
-      heading: 'API: Mga Pangunahing Parameter',
+      heading: 'Mga Pangunahing Parameter',
       paragraphs: [
         'Mga kinakailangan at karaniwang parameter (hindi isinasalin ang mga pangalan ng parameter):',
       ],
@@ -581,7 +581,7 @@ export const docs: PageDefinition = {
       ],
     },
     {
-      heading: 'API: Mga Parameter ng Istilo',
+      heading: 'Mga Parameter ng Istilo',
       paragraphs: [
         'Pag-istilo ng module at pattern:',
       ],
@@ -601,7 +601,7 @@ export const docs: PageDefinition = {
       ],
     },
     {
-      heading: 'API: Mga Parameter ng Overlay',
+      heading: 'Mga Parameter ng Overlay',
       paragraphs: [
         'Mga opsyon ng image overlay (kinukuha ang overlay image sa server-side):',
       ],
@@ -618,7 +618,7 @@ export const docs: PageDefinition = {
       ],
     },
     {
-      heading: 'API: Mga Parameter ng Preprocessing',
+      heading: 'Mga Parameter ng Preprocessing',
       paragraphs: [
         'Image preprocessing na inilalapat sa overlay:',
       ],
@@ -637,7 +637,7 @@ export const docs: PageDefinition = {
       ],
     },
     {
-      heading: 'API: Mga Parameter ng Watermark',
+      heading: 'Mga Parameter ng Watermark',
       paragraphs: [
         'Magdagdag ng mga watermark sa mga nabuong QR code:',
       ],
@@ -652,7 +652,7 @@ export const docs: PageDefinition = {
       ],
     },
     {
-      heading: 'API: Mga Parameter ng Animation',
+      heading: 'Mga Parameter ng Animation',
       paragraphs: [
         'Para sa animated GIF output (nangangailangan ng format=gif):',
       ],
@@ -665,7 +665,7 @@ export const docs: PageDefinition = {
       ],
     },
     {
-      heading: 'API: Mga Parameter ng Output',
+      heading: 'Mga Parameter ng Output',
       paragraphs: [
         'Mga opsyon ng format ng output:',
       ],
@@ -678,7 +678,7 @@ export const docs: PageDefinition = {
       ],
     },
     {
-      heading: 'API: Halimbawa ng Paggamit',
+      heading: 'Halimbawa ng Paggamit',
       paragraphs: [
         'Pangunahing QR code:',
         'https://anqr.link/api/qr?data=https://example.com',
@@ -703,7 +703,7 @@ export const docs: PageDefinition = {
       ],
     },
     {
-      heading: 'Pag-embed: Halimbawa ng HTML',
+      heading: 'Halimbawa ng HTML',
       paragraphs: [
         'Upang mag-embed ng QR code sa iyong website:',
         '<img src="https://anqr.link/api/qr?data=https://yoursite.com&size=200" alt="QR Code" />',
@@ -713,7 +713,7 @@ export const docs: PageDefinition = {
       ],
     },
     {
-      heading: 'Pag-embed: Format ng Share URL',
+      heading: 'Format ng Share URL',
       paragraphs: [
         'Kapag nag-click ka ng Share sa Professional mode, ini-encode ng ANQR ang iyong kasalukuyang mga setting sa mga URL parameter. Ang format ay:',
         'https://anqr.link/?data=...&ec=H&style=rounded&....',
@@ -722,7 +722,7 @@ export const docs: PageDefinition = {
       ],
     },
     {
-      heading: 'API: Mga Rate Limit at Paggamit',
+      heading: 'Mga Rate Limit at Paggamit',
       paragraphs: [
         'Ang API ay libreng gamitin para sa mga makatwirang dami. Para sa mataas na dami ng paggamit o mga komersyal na application na nangangailangan ng garantisadong uptime, mangyaring makipag-ugnayan sa amin.',
         'Kasama sa mga API response ang agresibong caching header. Para sa pinakamahusay na pagganap, mag-cache ng mga response sa iyong panig o gumamit ng parehong URL nang tuluy-tuloy para sa magkaparehong mga QR code.',

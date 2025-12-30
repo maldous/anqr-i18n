@@ -564,7 +564,7 @@ export const docs: PageDefinition = {
       ],
     },
     {
-      heading: 'API: 基本パラメータ',
+      heading: '基本パラメータ',
       paragraphs: [
         '必須および一般的なパラメータ（パラメータ名は翻訳されません）:',
       ],
@@ -581,7 +581,7 @@ export const docs: PageDefinition = {
       ],
     },
     {
-      heading: 'API: スタイリングパラメータ',
+      heading: 'スタイリングパラメータ',
       paragraphs: [
         'モジュールとパターンのスタイリング:',
       ],
@@ -601,7 +601,7 @@ export const docs: PageDefinition = {
       ],
     },
     {
-      heading: 'API: オーバーレイパラメータ',
+      heading: 'オーバーレイパラメータ',
       paragraphs: [
         '画像オーバーレイオプション（オーバーレイ画像はサーバーサイドで取得されます）:',
       ],
@@ -618,7 +618,7 @@ export const docs: PageDefinition = {
       ],
     },
     {
-      heading: 'API: 前処理パラメータ',
+      heading: '前処理パラメータ',
       paragraphs: [
         'オーバーレイに適用される画像前処理:',
       ],
@@ -637,7 +637,7 @@ export const docs: PageDefinition = {
       ],
     },
     {
-      heading: 'API: 透かしパラメータ',
+      heading: '透かしパラメータ',
       paragraphs: [
         '生成された QR コードに透かしを追加:',
       ],
@@ -652,7 +652,7 @@ export const docs: PageDefinition = {
       ],
     },
     {
-      heading: 'API: アニメーションパラメータ',
+      heading: 'アニメーションパラメータ',
       paragraphs: [
         'アニメーション GIF 出力用（format=gif が必要）:',
       ],
@@ -665,7 +665,7 @@ export const docs: PageDefinition = {
       ],
     },
     {
-      heading: 'API: 出力パラメータ',
+      heading: '出力パラメータ',
       paragraphs: [
         '出力形式オプション:',
       ],
@@ -678,7 +678,7 @@ export const docs: PageDefinition = {
       ],
     },
     {
-      heading: 'API: 使用例',
+      heading: '使用例',
       paragraphs: [
         '基本的な QR コード:',
         'https://anqr.link/api/qr?data=https://example.com',
@@ -703,7 +703,7 @@ export const docs: PageDefinition = {
       ],
     },
     {
-      heading: '埋め込み: HTML の例',
+      heading: 'HTML の例',
       paragraphs: [
         'ウェブサイトに QR コードを埋め込むには:',
         '<img src="https://anqr.link/api/qr?data=https://yoursite.com&size=200" alt="QR Code" />',
@@ -713,7 +713,7 @@ export const docs: PageDefinition = {
       ],
     },
     {
-      heading: '埋め込み: 共有 URL 形式',
+      heading: '共有 URL 形式',
       paragraphs: [
         'プロフェッショナルモードで共有をクリックすると、ANQR は現在の設定を URL パラメータにエンコードします。形式は:',
         'https://anqr.link/?data=...&ec=H&style=rounded&....',
@@ -722,7 +722,7 @@ export const docs: PageDefinition = {
       ],
     },
     {
-      heading: 'API: レート制限と使用量',
+      heading: 'レート制限と使用量',
       paragraphs: [
         'API は適切な量であれば無料でご利用いただけます。大量使用または稼働時間保証が必要な商用アプリケーションについては、お問い合わせください。',
         'API 応答には積極的なキャッシュヘッダーが含まれています。最高のパフォーマンスを得るには、応答をお客様側でキャッシュするか、同一の QR コードに対して同じ URL を一貫して使用してください。',

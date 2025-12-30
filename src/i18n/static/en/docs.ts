@@ -564,7 +564,7 @@ export const docs: PageDefinition = {
       ],
     },
     {
-      heading: 'API: Basic Parameters',
+      heading: 'Basic Parameters',
       paragraphs: [
         'Required and common parameters (parameter names are not translated):',
       ],
@@ -581,7 +581,7 @@ export const docs: PageDefinition = {
       ],
     },
     {
-      heading: 'API: Styling Parameters',
+      heading: 'Styling Parameters',
       paragraphs: [
         'Module and pattern styling:',
       ],
@@ -601,7 +601,7 @@ export const docs: PageDefinition = {
       ],
     },
     {
-      heading: 'API: Overlay Parameters',
+      heading: 'Overlay Parameters',
       paragraphs: [
         'Image overlay options (overlay image is fetched server-side):',
       ],
@@ -618,7 +618,7 @@ export const docs: PageDefinition = {
       ],
     },
     {
-      heading: 'API: Preprocessing Parameters',
+      heading: 'Preprocessing Parameters',
       paragraphs: [
         'Image preprocessing applied to overlay:',
       ],
@@ -637,7 +637,7 @@ export const docs: PageDefinition = {
       ],
     },
     {
-      heading: 'API: Watermark Parameters',
+      heading: 'Watermark Parameters',
       paragraphs: [
         'Add watermarks to generated QR codes:',
       ],
@@ -652,7 +652,7 @@ export const docs: PageDefinition = {
       ],
     },
     {
-      heading: 'API: Animation Parameters',
+      heading: 'Animation Parameters',
       paragraphs: [
         'For animated GIF output (requires format=gif):',
       ],
@@ -665,7 +665,7 @@ export const docs: PageDefinition = {
       ],
     },
     {
-      heading: 'API: Output Parameters',
+      heading: 'Output Parameters',
       paragraphs: [
         'Output format options:',
       ],
@@ -678,7 +678,7 @@ export const docs: PageDefinition = {
       ],
     },
     {
-      heading: 'API: Example Usage',
+      heading: 'Example Usage',
       paragraphs: [
         'Basic QR code:',
         'https://anqr.link/api/qr?data=https://example.com',
@@ -703,7 +703,7 @@ export const docs: PageDefinition = {
       ],
     },
     {
-      heading: 'Embedding: HTML Example',
+      heading: 'HTML Example',
       paragraphs: [
         'To embed a QR code in your website:',
         '<img src="https://anqr.link/api/qr?data=https://yoursite.com&size=200" alt="QR Code" />',
@@ -713,7 +713,7 @@ export const docs: PageDefinition = {
       ],
     },
     {
-      heading: 'Embedding: Share URL Format',
+      heading: 'Share URL Format',
       paragraphs: [
         'When you click Share in Professional mode, ANQR encodes your current settings into URL parameters. The format is:',
         'https://anqr.link/?data=...&ec=H&style=rounded&....',
@@ -722,7 +722,7 @@ export const docs: PageDefinition = {
       ],
     },
     {
-      heading: 'API: Rate Limits and Usage',
+      heading: 'Rate Limits and Usage',
       paragraphs: [
         'The API is free to use for reasonable volumes. For high-volume usage or commercial applications requiring guaranteed uptime, please contact us.',
         'API responses include aggressive caching headers. For best performance, cache responses on your end or use the same URL consistently for identical QR codes.',

@@ -564,7 +564,7 @@ export const docs: PageDefinition = {
       ],
     },
     {
-      heading: 'API: அடிப்படை அளவுருக்கள்',
+      heading: 'அடிப்படை அளவுருக்கள்',
       paragraphs: [
         'தேவையான மற்றும் பொதுவான அளவுருக்கள் (அளவுரு பெயர்கள் மொழிபெயர்க்கப்படவில்லை):',
       ],
@@ -581,7 +581,7 @@ export const docs: PageDefinition = {
       ],
     },
     {
-      heading: 'API: ஸ்டைலிங் அளவுருக்கள்',
+      heading: 'ஸ்டைலிங் அளவுருக்கள்',
       paragraphs: [
         'தொகுதி மற்றும் வடிவ ஸ்டைலிங்:',
       ],
@@ -601,7 +601,7 @@ export const docs: PageDefinition = {
       ],
     },
     {
-      heading: 'API: மேலடுக்கு அளவுருக்கள்',
+      heading: 'மேலடுக்கு அளவுருக்கள்',
       paragraphs: [
         'பட மேலடுக்கு விருப்பங்கள் (மேலடுக்கு படம் சர்வர்-பக்கத்தில் பெறப்படுகிறது):',
       ],
@@ -618,7 +618,7 @@ export const docs: PageDefinition = {
       ],
     },
     {
-      heading: 'API: முன்செயலாக்க அளவுருக்கள்',
+      heading: 'முன்செயலாக்க அளவுருக்கள்',
       paragraphs: [
         'மேலடுக்குக்கு பயன்படுத்தப்படும் பட முன்செயலாக்கம்:',
       ],
@@ -637,7 +637,7 @@ export const docs: PageDefinition = {
       ],
     },
     {
-      heading: 'API: வாட்டர்மார்க் அளவுருக்கள்',
+      heading: 'வாட்டர்மார்க் அளவுருக்கள்',
       paragraphs: [
         'உருவாக்கப்பட்ட QR குறியீடுகளில் வாட்டர்மார்க்குகளைச் சேர்க்கவும்:',
       ],
@@ -652,7 +652,7 @@ export const docs: PageDefinition = {
       ],
     },
     {
-      heading: 'API: அனிமேஷன் அளவுருக்கள்',
+      heading: 'அனிமேஷன் அளவுருக்கள்',
       paragraphs: [
         'அனிமேஷன் செய்யப்பட்ட GIF வெளியீட்டிற்கு (format=gif தேவை):',
       ],
@@ -665,7 +665,7 @@ export const docs: PageDefinition = {
       ],
     },
     {
-      heading: 'API: வெளியீட்டு அளவுருக்கள்',
+      heading: 'வெளியீட்டு அளவுருக்கள்',
       paragraphs: [
         'வெளியீட்டு வடிவ விருப்பங்கள்:',
       ],
@@ -678,7 +678,7 @@ export const docs: PageDefinition = {
       ],
     },
     {
-      heading: 'API: பயன்பாட்டு எடுத்துக்காட்டு',
+      heading: 'பயன்பாட்டு எடுத்துக்காட்டு',
       paragraphs: [
         'அடிப்படை QR குறியீடு:',
         'https://anqr.link/api/qr?data=https://example.com',
@@ -703,7 +703,7 @@ export const docs: PageDefinition = {
       ],
     },
     {
-      heading: 'உட்பொதித்தல்: HTML எடுத்துக்காட்டு',
+      heading: 'HTML எடுத்துக்காட்டு',
       paragraphs: [
         'உங்கள் வலைத்தளத்தில் QR குறியீட்டை உட்பொதிக்க:',
         '<img src="https://anqr.link/api/qr?data=https://yoursite.com&size=200" alt="QR Code" />',
@@ -713,7 +713,7 @@ export const docs: PageDefinition = {
       ],
     },
     {
-      heading: 'உட்பொதித்தல்: பகிர்வு URL வடிவம்',
+      heading: 'பகிர்வு URL வடிவம்',
       paragraphs: [
         'தொழில்முறை பயன்முறையில் பகிர் என்பதைக் கிளிக் செய்யும்போது, ANQR உங்கள் தற்போதைய அமைப்புகளை URL அளவுருக்களில் குறியிடுகிறது. வடிவம்:',
         'https://anqr.link/?data=...&ec=H&style=rounded&....',
@@ -722,7 +722,7 @@ export const docs: PageDefinition = {
       ],
     },
     {
-      heading: 'API: வீத வரம்புகள் மற்றும் பயன்பாடு',
+      heading: 'வீத வரம்புகள் மற்றும் பயன்பாடு',
       paragraphs: [
         'நியாயமான அளவுகளுக்கு API இலவசமாகப் பயன்படுத்தலாம். உத்தரவாதமான இயங்குநேரம் தேவைப்படும் அதிக அளவு பயன்பாடு அல்லது வணிக பயன்பாடுகளுக்கு, எங்களைத் தொடர்பு கொள்ளவும்.',
         'API பதில்களில் ஆக்கிரமிப்பு கேச்சிங் தலைப்புகள் உள்ளன. சிறந்த செயல்திறனுக்கு, உங்கள் பக்கத்தில் பதில்களை கேச் செய்யுங்கள் அல்லது ஒரே மாதிரியான QR குறியீடுகளுக்கு அதே URL ஐ தொடர்ந்து பயன்படுத்தவும்.',
