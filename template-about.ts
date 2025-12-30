@@ -22,12 +22,14 @@ export const about: PageDefinition = {
         '10',
         '11',
         '12',
+        '501',
       ],
     },
     {
       heading: '13',
       paragraphs: [
         '14',
+        '502',
         '15',
         '16',
       ],

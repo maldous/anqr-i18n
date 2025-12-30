@@ -15,14 +15,8 @@ export const contact: PageDefinition = {
     {
       heading: '34',
       paragraphs: [
-        `35`,
+        '35',
         '36',
-      ],
-    },
-    {
-      heading: '37',
-      paragraphs: [
-        '38',
       ],
     },
     {
@@ -66,7 +60,7 @@ export const contact: PageDefinition = {
     {
       heading: '59',
       paragraphs: [
-        `60`,
+        '60',
         '61',
       ],
     },
