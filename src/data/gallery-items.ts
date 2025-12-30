@@ -747,5 +747,14 @@ export function buildGalleryUrl(item: GalleryItem): string {
 export function getGalleryImagePath(item: GalleryItem): string {
   // Animated items are saved as GIF, static items as PNG
   const ext = item.isAnimated ? 'gif' : 'png'
-  return `${GALLERY_IMAGE_PATH}/${item.id}.${ext}`
+  const relativePath = `${GALLERY_IMAGE_PATH}/${item.id}.${ext}`
+  
+  // On native apps (Android/iOS), load gallery images from the web
+  // since we don't bundle them locally to reduce APK size
+  if (typeof window !== 'undefined' && window.location.protocol === 'capacitor:') {
+    return `https://anqr.link${relativePath}`
+  }
+  
+  // On web, use relative path (works on anqr.link)
+  return relativePath
 }

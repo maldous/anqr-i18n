@@ -1,12 +1,13 @@
 functionsDirectory = "/home/user/src/anqr/netlify/functions"
-functionsDirectoryOrigin = "default"
+functionsDirectoryOrigin = "config-v1"
+redirectsOrigin = "config"
 plugins = []
 headers = []
 
 [build]
 publish = "/home/user/src/anqr/dist"
-publishOrigin = "ui"
-commandOrigin = "ui"
+publishOrigin = "config"
+commandOrigin = "config"
 command = "npm run build"
 functions = "/home/user/src/anqr/netlify/functions"
 
@@ -27,6 +28,31 @@ functions = "/home/user/src/anqr/netlify/functions"
 [functions]
 
 [functions."*"]
+node_bundler = "esbuild"
+
+[[redirects]]
+from = "/api/qr"
+to = "/.netlify/functions/qr"
+status = 200.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/api/qr.png"
+to = "/api/qr"
+status = 301.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
 
 [[redirects]]
 from = "/*"
