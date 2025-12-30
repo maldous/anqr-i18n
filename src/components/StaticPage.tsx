@@ -194,7 +194,11 @@ function DocsTableOfContents({
         {!mobileOpen && (
           <button
             onClick={() => setMobileOpen(true)}
-            className="fixed top-32 left-3 z-50 p-2.5 rounded-lg bg-primary text-primary-foreground shadow-lg hover:bg-primary/90 transition-colors"
+            className="fixed z-50 p-2.5 rounded-lg bg-primary text-primary-foreground shadow-lg hover:bg-primary/90 transition-colors"
+            style={{
+              top: 'calc(52px + max(var(--sat, 0px), env(safe-area-inset-top, 0px)) + 8px)',
+              left: '12px'
+            }}
             title="Open documentation sidebar"
           >
             <List className="h-5 w-5" />
@@ -299,7 +303,7 @@ function ContactForm() {
       <div className="rounded-xl border bg-card p-6">
         <h3 className="text-base font-semibold text-foreground">Message sent</h3>
         <p className="mt-2 text-sm text-muted-foreground">
-          Thanks — we received your message. If you do not hear back, email us at{' '}
+          Thanks - we received your message. If you do not hear back, email us at{' '}
           <a className="text-primary hover:underline" href={`mailto:${CONTACT_EMAIL}`}>
             {CONTACT_EMAIL}
           </a>

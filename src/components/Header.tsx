@@ -10,6 +10,7 @@ import { Button } from '@/components/ui/button'
 import { useState, useEffect, useRef } from 'react'
 import { copyToClipboard, getShareableUrl } from '@/modules/share-utils'
 import { showRewardedAd, prepareRewardedAd } from '@/modules/admob-service'
+import { useBannerHeight } from '@/hooks/useBannerHeight'
 import { gallerySections, type GalleryCategory } from '@/data/gallery-items'
 import type { StaticPageType } from '@/components/StaticPage'
 
@@ -52,6 +53,7 @@ export function Header({ onToggleSidebar, onExport, sidebarOpen = false, showGal
   const [langMenuOpen, setLangMenuOpen] = useState(false)
   const [isLangMenuClosing, setIsLangMenuClosing] = useState(false)
   const [isMobileMenuClosing, setIsMobileMenuClosing] = useState(false)
+  const bannerHeight = useBannerHeight()
   const langButtonRef = useRef<HTMLDivElement>(null)
 
   const currentLang = languages.find(l => l.code === i18n.language) || languages[0]
@@ -95,7 +97,7 @@ export function Header({ onToggleSidebar, onExport, sidebarOpen = false, showGal
       prepareRewardedAd('premium')
     }
   }, [])
-
+  
   // Handle tier change - Professional requires watching ad on native
   const handleTierChange = async (newTier: Tier) => {
     // If selecting Professional on native platform, require watching ad
@@ -574,12 +576,12 @@ export function Header({ onToggleSidebar, onExport, sidebarOpen = false, showGal
     </header>
 
       {/* Mobile Footer Bar - Share/Export buttons fixed at bottom (only in editor mode on mobile) */}
-      {/* On native platforms (Android/iOS), position above footer (~110px: 70px ad + ~40px footer) */}
+      {/* On native platforms: position above footer (40px) + AdMob banner (dynamic height) */}
       {isEditor && (
         <div 
           className="md:hidden fixed left-0 right-0 z-50 border-t bg-card p-2" 
           style={{ 
-            bottom: Capacitor.isNativePlatform() ? '90px' : '48px',
+            bottom: Capacitor.isNativePlatform() ? `${bannerHeight + 40}px` : '48px',
             paddingBottom: Capacitor.isNativePlatform() ? '0.25rem' : 'calc(0.5rem + var(--sab, 0px))' 
           }}
         >

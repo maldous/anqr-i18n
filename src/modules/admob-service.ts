@@ -2,7 +2,7 @@
  * AdMob Service
  * 
  * Handles AdMob ads for native Android/iOS apps via Capacitor.
- * Supports: Banner ads, Interstitial ads, Rewarded video ads
+ * Supports: Banner ads, Interstitial ads, Rewarded interstitial ads
  * This service is only used when running in a native app context.
  */
 
@@ -15,10 +15,10 @@ import {
   BannerAdPluginEvents, 
   AdMobBannerSize,
   InterstitialAdPluginEvents,
-  RewardAdPluginEvents,
+  RewardInterstitialAdPluginEvents,
   AdOptions,
-  RewardAdOptions,
-  AdMobRewardItem
+  RewardInterstitialAdOptions,
+  AdMobRewardInterstitialItem
 } from '@capacitor-community/admob'
 
 // ============================================
@@ -34,7 +34,7 @@ export type RewardedType = 'premium' | 'export_hd'
 
 const TEST_BANNER_AD_ID = 'ca-app-pub-3940256099942544/6300978111'
 const TEST_INTERSTITIAL_AD_ID = 'ca-app-pub-3940256099942544/1033173712'
-const TEST_REWARDED_AD_ID = 'ca-app-pub-3940256099942544/5224354917'
+const TEST_REWARDED_INTERSTITIAL_AD_ID = 'ca-app-pub-3940256099942544/6978759866'
 
 // ============================================
 // Production Ad Unit IDs (from environment variables)
@@ -51,10 +51,10 @@ const PROD_INTERSTITIAL_IDS: Record<InterstitialType, string> = {
   generation: import.meta.env.VITE_ADMOB_INTERSTITIAL_GENERATION || TEST_INTERSTITIAL_AD_ID,
 }
 
-// Rewarded video ads
+// Rewarded interstitial ads
 const PROD_REWARDED_IDS: Record<RewardedType, string> = {
-  premium: import.meta.env.VITE_ADMOB_REWARDED_PREMIUM || TEST_REWARDED_AD_ID,
-  export_hd: import.meta.env.VITE_ADMOB_REWARDED_EXPORT_HD || TEST_REWARDED_AD_ID,
+  premium: import.meta.env.VITE_ADMOB_REWARDED_PREMIUM || TEST_REWARDED_INTERSTITIAL_AD_ID,
+  export_hd: import.meta.env.VITE_ADMOB_REWARDED_EXPORT_HD || TEST_REWARDED_INTERSTITIAL_AD_ID,
 }
 
 // Use test ads in development or when testing flag is set
@@ -65,7 +65,16 @@ const USE_TEST_ADS = import.meta.env.DEV || import.meta.env.VITE_ADMOB_TESTING =
 // ============================================
 
 let isInitialized = false
+
+// Guard against concurrent initialization / duplicate listeners
+let initInFlight: Promise<boolean> | null = null
+let listenersSetup = false
 let currentBannerPosition: 'top' | 'bottom' | null = null
+let currentBannerHeight = 0
+
+// Callbacks for banner height changes
+type BannerHeightCallback = (height: number) => void
+const bannerHeightCallbacks: Set<BannerHeightCallback> = new Set()
 
 // Track loaded state for each interstitial type
 const interstitialLoadedState: Record<InterstitialType, boolean> = {
@@ -82,6 +91,8 @@ const rewardedLoadedState: Record<RewardedType, boolean> = {
 
 // Track which interstitial/rewarded is currently being prepared
 let currentlyPreparingInterstitial: InterstitialType | null = null
+let currentlyShowingInterstitial: InterstitialType | null = null
+let interstitialDismissResolver: ((ok: boolean) => void) | null = null
 let currentlyPreparingRewarded: RewardedType | null = null
 
 // Generation counter for showing ads every N generations
@@ -97,7 +108,7 @@ let generationCount = 0
  */
 export async function initializeAdMob(): Promise<boolean> {
   if (!Capacitor.isNativePlatform()) {
-    console.log('AdMob: Not a native platform, skipping initialization')
+    console.warn('AdMob: Not a native platform, skipping initialization')
     return false
   }
 
@@ -105,27 +116,47 @@ export async function initializeAdMob(): Promise<boolean> {
     return true
   }
 
-  try {
-    await AdMob.initialize({
-      initializeForTesting: USE_TEST_ADS,
-    })
-    isInitialized = true
-    console.log('AdMob: Initialized successfully')
-    
-    // Set up event listeners
-    setupAdMobListeners()
-    
-    return true
-  } catch (error) {
-    console.error('AdMob: Initialization failed:', error)
-    return false
+  // If multiple parts of the app call initialize at the same time, share the same promise
+  if (initInFlight) {
+    return initInFlight
   }
+
+  initInFlight = (async () => {
+    try {
+      console.log('AdMob: Initializing...')
+      await AdMob.initialize({
+        initializeForTesting: USE_TEST_ADS,
+      })
+      console.log('AdMob: Initialized')
+
+      setupAdMobListeners()
+      isInitialized = true
+
+      // Preload the most common ads only; others can be prepared on-demand
+      await prepareInterstitial('export')
+      await prepareRewardedAd('premium')
+
+      return true
+    } catch (error) {
+      console.error('AdMob: Initialization failed:', error)
+      return false
+    } finally {
+      initInFlight = null
+    }
+  })()
+
+  return initInFlight
 }
 
 /**
  * Set up AdMob event listeners for debugging and analytics
  */
 function setupAdMobListeners() {
+  if (listenersSetup) {
+    return
+  }
+  listenersSetup = true
+
   // Banner ad listeners
   AdMob.addListener(BannerAdPluginEvents.Loaded, () => {
     console.log('AdMob: Banner ad loaded')
@@ -145,6 +176,11 @@ function setupAdMobListeners() {
 
   AdMob.addListener(BannerAdPluginEvents.SizeChanged, (size: AdMobBannerSize) => {
     console.log('AdMob: Banner size changed:', size)
+    // Update banner height and notify subscribers
+    if (size && size.height) {
+      currentBannerHeight = size.height
+      bannerHeightCallbacks.forEach(cb => cb(currentBannerHeight))
+    }
   })
 
   // Interstitial ad listeners
@@ -168,48 +204,60 @@ function setupAdMobListeners() {
 
   AdMob.addListener(InterstitialAdPluginEvents.Dismissed, () => {
     console.log('AdMob: Interstitial ad dismissed')
-    // Reset loaded state - ad needs to be prepared again
+
+    // The plugin only keeps a single interstitial instance; after dismissal it must be prepared again.
     Object.keys(interstitialLoadedState).forEach(key => {
       interstitialLoadedState[key as InterstitialType] = false
     })
+
+    currentlyShowingInterstitial = null
+    if (interstitialDismissResolver) {
+      interstitialDismissResolver(true)
+      interstitialDismissResolver = null
+    }
   })
 
   AdMob.addListener(InterstitialAdPluginEvents.FailedToShow, (error) => {
     console.error('AdMob: Interstitial ad failed to show:', error)
+    currentlyShowingInterstitial = null
+    if (interstitialDismissResolver) {
+      interstitialDismissResolver(false)
+      interstitialDismissResolver = null
+    }
   })
 
-  // Rewarded ad listeners
-  AdMob.addListener(RewardAdPluginEvents.Loaded, () => {
-    console.log('AdMob: Rewarded ad loaded')
+  // Rewarded Interstitial ad listeners
+  AdMob.addListener(RewardInterstitialAdPluginEvents.Loaded, () => {
+    console.log('AdMob: Rewarded Interstitial ad loaded')
     if (currentlyPreparingRewarded) {
       rewardedLoadedState[currentlyPreparingRewarded] = true
     }
   })
 
-  AdMob.addListener(RewardAdPluginEvents.FailedToLoad, (error) => {
-    console.error('AdMob: Rewarded ad failed to load:', error)
+  AdMob.addListener(RewardInterstitialAdPluginEvents.FailedToLoad, (error) => {
+    console.error('AdMob: Rewarded Interstitial ad failed to load:', error)
     if (currentlyPreparingRewarded) {
       rewardedLoadedState[currentlyPreparingRewarded] = false
     }
   })
 
-  AdMob.addListener(RewardAdPluginEvents.Showed, () => {
-    console.log('AdMob: Rewarded ad showed')
+  AdMob.addListener(RewardInterstitialAdPluginEvents.Showed, () => {
+    console.log('AdMob: Rewarded Interstitial ad showed')
   })
 
-  AdMob.addListener(RewardAdPluginEvents.Dismissed, () => {
-    console.log('AdMob: Rewarded ad dismissed')
+  AdMob.addListener(RewardInterstitialAdPluginEvents.Dismissed, () => {
+    console.log('AdMob: Rewarded Interstitial ad dismissed')
     // Reset loaded state
     Object.keys(rewardedLoadedState).forEach(key => {
       rewardedLoadedState[key as RewardedType] = false
     })
   })
 
-  AdMob.addListener(RewardAdPluginEvents.FailedToShow, (error) => {
-    console.error('AdMob: Rewarded ad failed to show:', error)
+  AdMob.addListener(RewardInterstitialAdPluginEvents.FailedToShow, (error) => {
+    console.error('AdMob: Rewarded Interstitial ad failed to show:', error)
   })
 
-  AdMob.addListener(RewardAdPluginEvents.Rewarded, (reward: AdMobRewardItem) => {
+  AdMob.addListener(RewardInterstitialAdPluginEvents.Rewarded, (reward: AdMobRewardInterstitialItem) => {
     console.log('AdMob: User earned reward:', reward)
   })
 }
@@ -363,12 +411,21 @@ export async function showInterstitial(type: InterstitialType = 'export'): Promi
     return false
   }
 
-  // Prepare if not loaded
+  // Initialize if not already done
+  if (!isInitialized) {
+    const success = await initializeAdMob()
+    if (!success) return false
+  }
+
+  // Ensure the requested interstitial is loaded (prepareInterstitial may replace the currently loaded one)
   if (!interstitialLoadedState[type]) {
     console.log(`AdMob: Interstitial (${type}) not loaded, preparing...`)
     await prepareInterstitial(type)
-    // Give it a moment to load
-    await new Promise(resolve => setTimeout(resolve, 1500))
+
+    const start = Date.now()
+    while (!interstitialLoadedState[type] && Date.now() - start < 15000) {
+      await new Promise((r) => setTimeout(r, 250))
+    }
   }
 
   if (!interstitialLoadedState[type]) {
@@ -376,13 +433,29 @@ export async function showInterstitial(type: InterstitialType = 'export'): Promi
     return false
   }
 
+  // If an interstitial is already being shown, don't attempt to show another
+  if (interstitialDismissResolver) {
+    console.warn('AdMob: Interstitial already showing, skipping')
+    return false
+  }
+
+  currentlyShowingInterstitial = type
+
+  const dismissed = new Promise<boolean>((resolve) => {
+    interstitialDismissResolver = resolve
+  })
+
   try {
     await AdMob.showInterstitial()
-    console.log(`AdMob: Interstitial (${type}) shown`)
-    interstitialLoadedState[type] = false
-    return true
+    console.log(`AdMob: Interstitial (${type}) show requested`)
+
+    // Wait until the user dismisses the ad (or it fails to show)
+    const timeout = new Promise<boolean>((resolve) => setTimeout(() => resolve(false), 60000))
+    return await Promise.race([dismissed, timeout])
   } catch (error) {
     console.error(`AdMob: Failed to show interstitial (${type}):`, error)
+    interstitialDismissResolver = null
+    currentlyShowingInterstitial = null
     return false
   }
 }
@@ -418,11 +491,11 @@ export function getGenerationCount(): number {
 }
 
 // ============================================
-// Rewarded Video Ads
+// Rewarded Interstitial Ads
 // ============================================
 
 /**
- * Prepare (preload) a rewarded video ad
+ * Prepare (preload) a rewarded interstitial ad
  * @param type - 'premium' or 'export_hd'
  */
 export async function prepareRewardedAd(type: RewardedType): Promise<boolean> {
@@ -445,52 +518,52 @@ export async function prepareRewardedAd(type: RewardedType): Promise<boolean> {
     currentlyPreparingRewarded = type
     const prodAdId = PROD_REWARDED_IDS[type]
     
-    const options: RewardAdOptions = {
-      adId: USE_TEST_ADS ? TEST_REWARDED_AD_ID : prodAdId,
+    const options: RewardInterstitialAdOptions = {
+      adId: USE_TEST_ADS ? TEST_REWARDED_INTERSTITIAL_AD_ID : prodAdId,
       isTesting: USE_TEST_ADS,
     }
 
-    await AdMob.prepareRewardVideoAd(options)
-    console.log(`AdMob: Rewarded ad (${type}) prepared`)
+    await AdMob.prepareRewardInterstitialAd(options)
+    console.log(`AdMob: Rewarded Interstitial ad (${type}) prepared`)
     return true
   } catch (error) {
-    console.error(`AdMob: Failed to prepare rewarded ad (${type}):`, error)
+    console.error(`AdMob: Failed to prepare rewarded interstitial ad (${type}):`, error)
     return false
   }
 }
 
 /**
- * Show a rewarded video ad and return the reward if earned
+ * Show a rewarded interstitial ad and return the reward if earned
  * @param type - 'premium' or 'export_hd'
  * @returns Promise with reward info if earned, null otherwise
  */
-export async function showRewardedAd(type: RewardedType): Promise<AdMobRewardItem | null> {
+export async function showRewardedAd(type: RewardedType): Promise<AdMobRewardInterstitialItem | null> {
   if (!Capacitor.isNativePlatform()) {
     return null
   }
 
   // Prepare if not loaded
   if (!rewardedLoadedState[type]) {
-    console.log(`AdMob: Rewarded ad (${type}) not loaded, preparing...`)
+    console.log(`AdMob: Rewarded Interstitial ad (${type}) not loaded, preparing...`)
     await prepareRewardedAd(type)
     // Give it a moment to load
     await new Promise(resolve => setTimeout(resolve, 2000))
   }
 
   if (!rewardedLoadedState[type]) {
-    console.log(`AdMob: Rewarded ad (${type}) still not ready`)
+    console.log(`AdMob: Rewarded Interstitial ad (${type}) still not ready`)
     return null
   }
 
   try {
-    const result = await AdMob.showRewardVideoAd()
-    console.log(`AdMob: Rewarded ad (${type}) completed:`, result)
+    const result = await AdMob.showRewardInterstitialAd()
+    console.log(`AdMob: Rewarded Interstitial ad (${type}) completed:`, result)
     rewardedLoadedState[type] = false
     
-    // Return the reward (result is the AdMobRewardItem itself)
+    // Return the reward (result is the AdMobRewardInterstitialItem itself)
     return result || null
   } catch (error) {
-    console.error(`AdMob: Failed to show rewarded ad (${type}):`, error)
+    console.error(`AdMob: Failed to show rewarded interstitial ad (${type}):`, error)
     return null
   }
 }
@@ -521,19 +594,40 @@ export function getCurrentBannerPosition(): 'top' | 'bottom' | null {
 }
 
 /**
+ * Get the current banner height in pixels
+ */
+export function getBannerHeight(): number {
+  return currentBannerHeight
+}
+
+/**
+ * Subscribe to banner height changes
+ * @returns Unsubscribe function
+ */
+export function onBannerHeightChange(callback: BannerHeightCallback): () => void {
+  bannerHeightCallbacks.add(callback)
+  // Immediately call with current height if banner is showing
+  if (currentBannerHeight > 0) {
+    callback(currentBannerHeight)
+  }
+  return () => bannerHeightCallbacks.delete(callback)
+}
+
+/**
  * Prepare all ads (call on app startup for best UX)
  */
 export async function prepareAllAds(): Promise<void> {
-  if (!Capacitor.isNativePlatform()) return
-  
-  await initializeAdMob()
-  
-  // Prepare interstitials in background
-  prepareInterstitial('export')
-  prepareInterstitial('gallery')
-  prepareInterstitial('generation')
-  
-  // Prepare rewarded ads in background
-  prepareRewardedAd('premium')
-  prepareRewardedAd('export_hd')
+  if (!Capacitor.isNativePlatform()) {
+    return
+  }
+
+  if (!isInitialized) {
+    const success = await initializeAdMob()
+    if (!success) return
+  }
+
+  // NOTE: The underlying plugin does not reliably disambiguate multiple interstitial instances.
+  // Preload only the most common ads; prepare others on-demand.
+  await prepareInterstitial('export')
+  await prepareRewardedAd('premium')
 }
