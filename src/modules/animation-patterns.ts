@@ -3,12 +3,12 @@
  * Generates animated QR code effects from static images
  */
 
-import { hslToRgb as sharedHslToRgb } from './color-utils'
+import { hslToRgb as sharedHslToRgb, seededRandom } from './color-utils'
 
 export type AnimationPattern = 'none' | 'pulse' | 'wave' | 'scanline' | 'shimmer' | 'drift' | 'jitter' | 'color_cycle'
 export type InterpolationMode = 'none' | 'crossfade' | 'morph'
 
-// Use shared color conversion - wrapper to return tuple format
+// Use shared color conversion - wrapper to return tuple format for internal use
 function hslToRgb(h: number, s: number, l: number): [number, number, number] {
   const rgb = sharedHslToRgb(h, s, l)
   return [rgb.r, rgb.g, rgb.b]
@@ -428,17 +428,6 @@ function applyColorCyclePattern(
       data[i + 1] = Math.round(g * (1 - tintStrength) + bgTintColor[1] * tintStrength)
       data[i + 2] = Math.round(b * (1 - tintStrength) + bgTintColor[2] * tintStrength)
     }
-  }
-}
-
-/**
- * Seeded random number generator
- */
-function seededRandom(seed: number): () => number {
-  let s = seed
-  return () => {
-    s = Math.sin(s * 9999) * 10000
-    return s - Math.floor(s)
   }
 }
 

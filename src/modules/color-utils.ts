@@ -591,6 +591,24 @@ export function getTriadic(color: string): [string, string] {
 }
 
 // ============================================
+// RANDOM NUMBER GENERATION
+// ============================================
+
+/** Create a seeded random number generator */
+export function createSeededRandom(seed: number): () => number {
+  let s = seed
+  return () => {
+    s = Math.sin(s * 9999) * 10000
+    return s - Math.floor(s)
+  }
+}
+
+/** Simple seeded random (stateful, for compatibility) */
+export function seededRandom(seed: number): () => number {
+  return createSeededRandom(seed)
+}
+
+// ============================================
 // EXPORT
 // ============================================
 
@@ -637,6 +655,10 @@ export const ColorUtils = {
   getComplementary,
   getAnalogous,
   getTriadic,
+  
+  // Random
+  createSeededRandom,
+  seededRandom,
 }
 
 export default ColorUtils

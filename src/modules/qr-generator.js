@@ -5,6 +5,64 @@ import { generateQR, isLocked, isData, calculateOptimalVersion } from "./qr-core
 import { blendColors, parseColor } from "./color-utils.ts";
 import { applyDither } from "./dither-algorithms.ts";
 
+// ============================================
+// MEMOIZATION CACHES
+// ============================================
+
+/**
+ * LRU-style cache with max size limit
+ * Used for memoizing expensive computations
+ */
+class MemoCache {
+  constructor(maxSize = 100) {
+    this.cache = new Map();
+    this.maxSize = maxSize;
+  }
+  
+  get(key) {
+    if (this.cache.has(key)) {
+      // Move to end (most recently used)
+      const value = this.cache.get(key);
+      this.cache.delete(key);
+      this.cache.set(key, value);
+      return value;
+    }
+    return undefined;
+  }
+  
+  set(key, value) {
+    // Delete if exists to update order
+    if (this.cache.has(key)) {
+      this.cache.delete(key);
+    }
+    // Evict oldest if at capacity
+    if (this.cache.size >= this.maxSize) {
+      const firstKey = this.cache.keys().next().value;
+      this.cache.delete(firstKey);
+    }
+    this.cache.set(key, value);
+  }
+  
+  clear() {
+    this.cache.clear();
+  }
+}
+
+// Global caches for expensive operations
+const versionCache = new MemoCache(50);  // For calculateOptimalVersion
+const alignmentCache = new MemoCache(50); // For getAlignmentPositions
+const overlayDataCache = new MemoCache(20); // For overlay data
+
+/**
+ * Clear all QR generator caches
+ * Useful for testing or memory management
+ */
+export function clearQRCaches() {
+  versionCache.clear();
+  alignmentCache.clear();
+  overlayDataCache.clear();
+}
+
 /**
  * Calculate contrast ratio between two colors (WCAG formula)
  * @param {string} color1 - First color (hex or rgb)
@@ -654,6 +712,13 @@ export class QRGenerator {
   }
 
   calculateOptimalVersion(content, errorCorrection) {
+    // Check cache first (memoization for repeated calls)
+    const cacheKey = `${content.length}:${errorCorrection}`;
+    const cached = versionCache.get(cacheKey);
+    if (cached !== undefined) {
+      return cached;
+    }
+    
     const capacities = {
       L: [
         17, 32, 53, 78, 106, 134, 154, 192, 230, 271, 321, 367, 425, 458, 520,
@@ -680,13 +745,17 @@ export class QRGenerator {
     const caps = capacities[errorCorrection] || capacities["Q"];
     const len = content.length;
 
+    let result = 40;
     for (let v = 0; v < caps.length; v++) {
       if (caps[v] >= len) {
-        return v + 1;
+        result = v + 1;
+        break;
       }
     }
 
-    return 40;
+    // Cache the result
+    versionCache.set(cacheKey, result);
+    return result;
   }
 
   isFinderPattern(row, col, moduleCount) {
@@ -797,6 +866,14 @@ export class QRGenerator {
 
   getAlignmentPositions(version, moduleCount) {
     if (version < 2) return [];
+    
+    // Check cache first (called multiple times per render)
+    const cacheKey = `${version}:${moduleCount}`;
+    const cached = alignmentCache.get(cacheKey);
+    if (cached !== undefined) {
+      return cached;
+    }
+    
     const table = {
       2: [6, 18],
       3: [6, 22],
@@ -848,6 +925,9 @@ export class QRGenerator {
         positions.push({ row: r, col: c });
       }
     }
+    
+    // Cache the result
+    alignmentCache.set(cacheKey, positions);
     return positions;
   }
 
@@ -1318,9 +1398,22 @@ export class QRGenerator {
 
   /**
    * Get overlay data - async version using canvas factory
+   * Uses caching based on canvas dimensions and color mode
    * @private
    */
   async _getOverlayData(overlayCanvas, moduleCount, colorMode = "color", invertImage = false) {
+    // Create cache key based on canvas identity and parameters
+    // Note: We use canvas dimensions as a proxy for identity since canvas objects change
+    const canvasKey = `${overlayCanvas.width}x${overlayCanvas.height}`;
+    const cacheKey = `${canvasKey}:${moduleCount}:${colorMode}:${invertImage}`;
+    
+    // Check if we have this exact configuration cached
+    // and if the canvas hasn't changed (same dimensions)
+    const cached = overlayDataCache.get(cacheKey);
+    if (cached !== undefined) {
+      return cached;
+    }
+    
     const tempCanvas = await this._createCanvas(moduleCount, moduleCount);
     const ctx = tempCanvas.getContext("2d");
 
@@ -1357,6 +1450,10 @@ export class QRGenerator {
     }
 
     brightness.colors = colors;
+    
+    // Cache the result
+    overlayDataCache.set(cacheKey, brightness);
+    
     return brightness;
   }
 

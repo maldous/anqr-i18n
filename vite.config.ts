@@ -1,6 +1,7 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import { VitePWA } from 'vite-plugin-pwa'
+import compression from 'vite-plugin-compression'
 import path from 'path'
 import fs from 'fs'
 
@@ -47,6 +48,20 @@ export default defineConfig({
   plugins: [
     serveGalleryFiles(), // Serve gallery files before React plugin
     react(),
+    // Gzip compression for production builds
+    compression({
+      verbose: false,
+      algorithm: 'gzip',
+      ext: '.gz',
+      threshold: 1024, // Only compress files > 1KB
+    }),
+    // Brotli compression for modern browsers (better compression ratio)
+    compression({
+      verbose: false,
+      algorithm: 'brotliCompress',
+      ext: '.br',
+      threshold: 1024,
+    }),
     VitePWA({
       registerType: 'autoUpdate',
       includeAssets: ['favicon.ico', 'robots.txt', 'sitemap.xml'],
@@ -109,6 +124,51 @@ export default defineConfig({
         // Cache strategies
         runtimeCaching: [
           {
+            // Cache locale chunks for offline language switching
+            urlPattern: /\/assets\/locale-.*\.js$/i,
+            handler: 'CacheFirst',
+            options: {
+              cacheName: 'locale-chunks-cache',
+              expiration: {
+                maxEntries: 30,
+                maxAgeSeconds: 60 * 60 * 24 * 30 // 30 days
+              },
+              cacheableResponse: {
+                statuses: [0, 200]
+              }
+            }
+          },
+          {
+            // Cache static content chunks for offline docs/pages
+            urlPattern: /\/assets\/static-.*\.js$/i,
+            handler: 'CacheFirst',
+            options: {
+              cacheName: 'static-chunks-cache',
+              expiration: {
+                maxEntries: 30,
+                maxAgeSeconds: 60 * 60 * 24 * 30 // 30 days
+              },
+              cacheableResponse: {
+                statuses: [0, 200]
+              }
+            }
+          },
+          {
+            // Cache all other JS chunks (vendor, app modules)
+            urlPattern: /\/assets\/.*\.js$/i,
+            handler: 'CacheFirst',
+            options: {
+              cacheName: 'js-chunks-cache',
+              expiration: {
+                maxEntries: 100,
+                maxAgeSeconds: 60 * 60 * 24 * 30 // 30 days
+              },
+              cacheableResponse: {
+                statuses: [0, 200]
+              }
+            }
+          },
+          {
             urlPattern: /^https:\/\/fonts\.googleapis\.com\/.*/i,
             handler: 'CacheFirst',
             options: {
@@ -149,13 +209,31 @@ export default defineConfig({
                 statuses: [0, 200]
               }
             }
+          },
+          {
+            // Fallback for navigation requests (SPA support)
+            urlPattern: ({ request }) => request.mode === 'navigate',
+            handler: 'NetworkFirst',
+            options: {
+              cacheName: 'pages-cache',
+              networkTimeoutSeconds: 3,
+              expiration: {
+                maxEntries: 50,
+                maxAgeSeconds: 60 * 60 * 24 * 7 // 7 days
+              },
+              cacheableResponse: {
+                statuses: [0, 200]
+              }
+            }
           }
         ],
         // Skip waiting and claim clients immediately
         skipWaiting: true,
         clientsClaim: true,
-        // Precache app shell
-        globPatterns: ['**/*.{js,css,html,ico,png,svg,woff2}']
+        // Precache app shell - include all JS chunks for offline support
+        globPatterns: ['**/*.{js,css,html,ico,png,svg,woff2,woff,ttf,json}'],
+        // Ensure locale and static chunks are included
+        globIgnores: ['**/node_modules/**/*', 'sw.js', 'workbox-*.js']
       }
     }),
   ],
@@ -167,6 +245,8 @@ export default defineConfig({
   build: {
     // Target modern browsers for smaller bundles
     target: 'es2020',
+    // Enable CSS code splitting for better caching
+    cssCodeSplit: true,
     // Increase chunk size warning limit (we'll optimize chunks manually)
     chunkSizeWarningLimit: 700, // Icons bundle is ~566KB due to lucide-react
     // Minification options
@@ -176,9 +256,13 @@ export default defineConfig({
         drop_console: true, // Remove console.log in production
         drop_debugger: true,
         pure_funcs: ['console.log', 'console.info', 'console.debug', 'console.warn'],
+        passes: 2, // Multiple compression passes for better optimization
       },
       format: {
         comments: false, // Remove comments
+      },
+      mangle: {
+        safari10: true, // Work around Safari 10 bugs
       },
     },
     rollupOptions: {
@@ -272,9 +356,14 @@ export default defineConfig({
       },
     },
   },
+  // Web Worker configuration
+  worker: {
+    format: 'es',
+    plugins: () => [react()],
+  },
   // Optimize dependencies
   optimizeDeps: {
-    include: ['react', 'react-dom', 'zustand', 'clsx', 'tailwind-merge'],
+    include: ['react', 'react-dom', 'zustand', 'clsx', 'tailwind-merge', 'comlink'],
     exclude: ['sharp', 'puppeteer'], // These are dev/build only
   },
 })

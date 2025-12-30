@@ -628,6 +628,7 @@ export function interpolateFrames(
 // COLOR CYCLING
 // ============================================
 
+// hslToRgb is imported from color-utils.ts - single source of truth for color conversions
 import { hslToRgb } from './color-utils'
 
 /**

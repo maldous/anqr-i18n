@@ -99,6 +99,11 @@
 -allowaccessmodification
 -repackageclasses ''
 
+# Aggressive optimization passes
+-optimizationpasses 5
+-dontusemixedcaseclassnames
+-verbose
+
 # ============================================
 # Remove Logging in Release
 # ============================================
@@ -106,4 +111,21 @@
     public static int v(...);
     public static int d(...);
     public static int i(...);
+    public static int w(...);
 }
+
+# Remove System.out prints
+-assumenosideeffects class java.io.PrintStream {
+    public void println(...);
+    public void print(...);
+}
+
+# ============================================
+# Additional Size Optimizations
+# ============================================
+# Remove unused code more aggressively
+-dontnote **
+-dontwarn **
+
+# Merge similar classes where possible
+-mergeinterfacesaggressively

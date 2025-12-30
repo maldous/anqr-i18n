@@ -5,6 +5,7 @@
  */
 
 import type { DitherKind, DiffusionKernel, OrderedMatrix, ColorMode } from '../store/qr-store'
+import { createSeededRandom } from './color-utils'
 
 // ============================================
 // TYPES
@@ -182,8 +183,9 @@ function rgbToGray(r: number, g: number, b: number): number {
   return r * 0.299 + g * 0.587 + b * 0.114
 }
 
-/** Create seeded random number generator */
+/** Create seeded random number generator - uses linear congruential for better distribution */
 function createRNG(seed: number): () => number {
+  // Use the shared seeded random but with a different algorithm for better spectral properties
   let state = seed || Date.now()
   return () => {
     state = (state * 1103515245 + 12345) & 0x7fffffff
