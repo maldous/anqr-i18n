@@ -74,15 +74,20 @@ export function AnimationSection() {
           <div className="space-y-2">
             <div className="flex items-center justify-between">
               <Label><HighlightedLabel>{t('animation.maxFrames')}</HighlightedLabel></Label>
-              <span className="text-sm text-muted-foreground">{animation.maxFrames}</span>
+              <span className="text-sm text-muted-foreground">
+                {animation.maxFrames === 0 ? t('animation.auto', { defaultValue: 'Auto' }) : animation.maxFrames}
+              </span>
             </div>
             <Slider
               value={[animation.maxFrames]}
               onValueChange={([v]) => setAnimationMaxFrames(v)}
-              min={1}
-              max={200}
+              min={0}
+              max={100}
               step={1}
             />
+            <p className="text-xs text-muted-foreground">
+              {t('hints.maxFramesAuto', { defaultValue: '0 = Auto (uses source frames, max 50 for performance)' })}
+            </p>
           </div>
 
           {/* Frame Step */}

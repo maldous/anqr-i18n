@@ -112,7 +112,7 @@ export function ShareSection() {
       loop: animation.loop === false ? false : undefined,
       reverse: animation.bounce ? true : undefined,
       startFrame: animation.startFrame !== 0 ? animation.startFrame : undefined,
-      maxFrames: animation.maxFrames !== 100 ? animation.maxFrames : undefined,
+      maxFrames: animation.maxFrames !== 0 ? animation.maxFrames : undefined,
       frameStep: animation.frameStep !== 1 ? animation.frameStep : undefined,
       interpolate: animation.interpolate !== 'none' ? animation.interpolate : undefined,
       temporalDither: animation.temporalDither !== 'off' ? animation.temporalDither : undefined,

@@ -21,6 +21,9 @@ import { getEffectiveDitherKind, STORE_DEFAULT_DITHER } from '@/modules/overlay-
 // Singleton QR generator instance
 const qrGenerator = new QRGenerator()
 
+// Performance cap: limit to 50 frames max in auto mode to prevent very long render times
+const MAX_AUTO_FRAMES = 50
+
 /**
  * Yield to main thread to prevent UI blocking during heavy computation
  * Uses requestIdleCallback with timeout fallback for mobile performance
@@ -772,7 +775,10 @@ export function useQRGenerator(): UseQRGeneratorResult {
     if (gifFrames.length === 0) return []
     
     const startIdx = Math.min(animation.startFrame, gifFrames.length - 1)
-    const maxCount = animation.maxFrames > 0 ? animation.maxFrames : gifFrames.length
+    // maxFrames = 0 means "auto" - use source frames but cap for performance
+    const maxCount = animation.maxFrames > 0 
+      ? animation.maxFrames 
+      : Math.min(gifFrames.length, MAX_AUTO_FRAMES)
     const step = Math.max(1, animation.frameStep)
     
     const frames: AnimationFrame[] = []
