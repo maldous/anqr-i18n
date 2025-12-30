@@ -196,7 +196,7 @@ function DocsTableOfContents({
             onClick={() => setMobileOpen(true)}
             className="fixed z-50 p-2.5 rounded-lg bg-primary text-primary-foreground shadow-lg hover:bg-primary/90 transition-colors"
             style={{
-              top: 'calc(52px + max(var(--sat, 0px), env(safe-area-inset-top, 0px)) + 8px)',
+              top: 'calc(60px + env(safe-area-inset-top, 0px) + 12px)',
               left: '12px'
             }}
             title="Open documentation sidebar"
