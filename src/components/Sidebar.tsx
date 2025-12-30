@@ -426,8 +426,11 @@ interface SidebarProps {
 
 export function Sidebar({ isOpen, onClose }: SidebarProps) {
   const { tier, searchQuery, setSearchQuery } = useQRStore()
-  const { t } = useTranslation()
+  const { t, i18n } = useTranslation()
   const [openSections, setOpenSections] = useState<string[]>(['payload'])
+  
+  // Force re-render when language changes by using i18n.language as a key dependency
+  const currentLanguage = i18n.language
   const sidebarRef = useRef<HTMLDivElement>(null)
 
   // Click outside to close on tablet and desktop
@@ -511,7 +514,8 @@ export function Sidebar({ isOpen, onClose }: SidebarProps) {
       }
     }
     // Note: Don't reset when search is cleared - let user keep their open sections
-  }, [searchQuery, tier])
+    // Include currentLanguage to re-run search when language changes
+  }, [searchQuery, tier, currentLanguage, t])
 
   // When tier changes, keep currently open sections that are still visible,
   // and add any newly available sections if user upgraded

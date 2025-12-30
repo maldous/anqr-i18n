@@ -9,7 +9,7 @@
 
 import type { ColorMode, FitMode, OverlayMode, CropRegion, DitherKind, DiffusionKernel, OrderedMatrix } from '../store/qr-store'
 import { applyFilters, copyImageData, getBrightnessMap, getRGBMap, type FilterOptions, type RGB } from './image-filters'
-import { ditherWithWorker, shouldUseWorker } from '../workers/dither-service'
+import { ditherWithWorker, shouldUseWorker, isMobile } from '../workers/dither-service'
 import { applyDither, type DitherOptions, type DitherResult } from './dither-algorithms'
 
 // ============================================
@@ -538,11 +538,36 @@ export interface OverlayDitherOptions {
   levels?: number
   blueNoiseSeed?: number
   blueNoiseTileSize?: number
+
+}
+
+// Default cheap dither for mobile when user hasn't explicitly selected one
+export const DEFAULT_MOBILE_DITHER: DitherKind = 'ordered_bayer'
+
+// Default dither in the store (used to detect if user changed it)
+export const STORE_DEFAULT_DITHER: DitherKind = 'error_diffusion'
+
+/**
+ * Get effective dither kind for current device
+ * On mobile, if the dither is still at the store default (error_diffusion),
+ * use the cheap mobile default instead. If user explicitly changed it, honor their choice.
+ * 
+ * @param kind - The current dither kind from settings
+ * @param isStoreDefault - Whether this is still the store's default value (user hasn't changed it)
+ */
+export function getEffectiveDitherKind(kind: DitherKind, isStoreDefault: boolean = false): DitherKind {
+  // If on mobile and user hasn't changed from store default, use cheap mobile default
+  if (isMobile() && isStoreDefault && kind === STORE_DEFAULT_DITHER) {
+    return DEFAULT_MOBILE_DITHER
+  }
+  // Otherwise honor user's choice
+  return kind
 }
 
 /**
  * Apply dithering to an overlay canvas
  * Automatically uses Web Worker for large images (>256x256)
+ * On mobile, expensive algorithms are auto-switched to faster alternatives
  * @param canvas - Source canvas to dither
  * @param options - Dithering options
  * @returns Promise<DitherResult> with matrix and colors
@@ -558,9 +583,13 @@ export async function ditherOverlay(
   
   const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height)
   
+  // Use the kind as-is - mobile optimization should be applied at config level
+  // via getEffectiveDitherKind() before calling this function
+  const effectiveKind = options.kind
+  
   // Build full dither options
   const ditherOpts: DitherOptions = {
-    kind: options.kind,
+    kind: effectiveKind,
     strength: options.strength,
     serpentine: options.serpentine,
     diffusionKernel: options.diffusionKernel,

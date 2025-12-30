@@ -16,6 +16,38 @@ import type { DitherWorkerApi, DitherWorkerInput, DitherWorkerResult } from './d
 import { applyDither, type DitherOptions as ModuleDitherOptions, type DitherResult } from '../modules/dither-algorithms'
 
 // ============================================
+// MOBILE DETECTION
+// ============================================
+
+let _isMobile: boolean | null = null
+
+/**
+ * Detect if running on a mobile device
+ * Caches result for performance
+ */
+export function isMobile(): boolean {
+  if (_isMobile !== null) return _isMobile
+  
+  if (typeof navigator === 'undefined') {
+    _isMobile = false
+    return false
+  }
+  
+  // Check user agent for mobile indicators
+  const ua = navigator.userAgent || ''
+  const isMobileUA = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(ua)
+  
+  // Also check for touch capability as a secondary signal
+  const hasTouch = 'ontouchstart' in window || navigator.maxTouchPoints > 0
+  
+  // Consider mobile if user agent matches OR if it's a touch device with small screen
+  const isSmallScreen = typeof window !== 'undefined' && window.innerWidth < 768
+  
+  _isMobile = isMobileUA || (hasTouch && isSmallScreen)
+  return _isMobile
+}
+
+// ============================================
 // TYPES
 // ============================================
 
@@ -35,9 +67,11 @@ class DitherWorkerPool {
   private initialized = false
   private useWorkers = true
 
-  constructor(maxWorkers = navigator.hardwareConcurrency || 4) {
-    // Limit to reasonable number of workers
-    this.maxWorkers = Math.min(maxWorkers, 8)
+  constructor(maxWorkers?: number) {
+    // On mobile, limit to 2 workers to reduce overhead
+    // On desktop, use hardware concurrency up to 8
+    const defaultMax = isMobile() ? 2 : (navigator.hardwareConcurrency || 4)
+    this.maxWorkers = Math.min(maxWorkers ?? defaultMax, isMobile() ? 2 : 8)
     
     // Check if Web Workers are supported
     if (typeof Worker === 'undefined') {
@@ -216,11 +250,14 @@ export async function ditherWithWorker(
 
 /**
  * Check if dithering should use workers (for large images)
+ * On mobile, use higher threshold since worker overhead is more significant
  */
 export function shouldUseWorker(width: number, height: number): boolean {
-  // Use worker for images larger than 256x256
   const pixels = width * height
-  return pixels > 65536
+  // On mobile, only use worker for larger images (>512x512) due to overhead
+  // On desktop, use worker for images >256x256
+  const threshold = isMobile() ? 262144 : 65536
+  return pixels > threshold
 }
 
 /**
