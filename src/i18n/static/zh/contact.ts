@@ -15,14 +15,8 @@ export const contact: PageDefinition = {
     {
       heading: '电子邮件',
       paragraphs: [
-        `如有任何疑问，请联系：${CONTACT_EMAIL}`,
-        '这是联系我们的最可靠方式，建议用于详细问题、业务咨询，或者如果您的设备上联系表格无法正常工作时使用。',
-      ],
-    },
-    {
-      heading: '联系表格',
-      paragraphs: [
-        '请使用下面的表格直接给我们发送消息。如果表格提交失败，请改用电子邮件。',
+        '如有任何疑问，请联系：${CONTACT_EMAIL}',
+        '这是联系我们的最可靠方式，建议用于详细问题、业务咨询或任何其他咨询。',
       ],
     },
     {
@@ -66,7 +60,7 @@ export const contact: PageDefinition = {
     {
       heading: 'DMCA 联系方式',
       paragraphs: [
-        `请将DMCA通知发送至：${CONTACT_EMAIL}`,
+        '请将DMCA通知发送至：${CONTACT_EMAIL}',
         '请在邮件主题栏注明‘DMCA通知’。我们将根据适用法律对有效的通知作出回应。请注意，ANQR在用户设备本地生成二维码，并不托管用户生成的内容。',
       ],
     },

@@ -3,7 +3,7 @@ import { LAST_UPDATED, CONTACT_EMAIL } from '../types'
 
 export const about: PageDefinition = {
   title: 'Tentang ANQR',
-  description: 'ANQR adalah generator kode QR gratis yang berjalan sepenuhnya di perangkat Anda - tidak memerlukan akun.',
+  description: 'ANQR adalah generator kode QR gratis dengan pendekatan client-first — buat kode QR secara lokal atau gunakan API kami untuk penyematan.',
   lastUpdated: LAST_UPDATED,
   sections: [
     {
@@ -16,18 +16,20 @@ export const about: PageDefinition = {
     {
       heading: 'Fitur-fitur utama',
       bullets: [
-        'Hasilkan kode QR secara instan di perangkat Anda - tanpa unggahan server, tanpa perlu akun.',
+        'Hasilkan kode QR secara instan di perangkat Anda — tanpa unggahan server, tanpa perlu akun.',
         'Sesuaikan warna, gaya modul, pola pencari, dan tambahkan lapisan gambar.',
         'Ekspor dalam berbagai format: PNG, SVG, WebP, dan GIF animasi.',
         'Kontrol lanjutan untuk tingkat koreksi kesalahan, versi QR, mode pengkodean, dan pemilihan mask.',
         'Panduan keamanan pemindaian dan pratinjau langsung untuk membantu menjaga agar kode tetap mudah dibaca dalam bentuk cetak dan di layar.',
-        'Berfungsi secara offline setelah dimuat - ini adalah aplikasi web statis yang dapat Anda jalankan di mana saja.',
+        'API sisi server untuk penyematan profesional dengan dukungan parameter lengkap.',
+        'Berfungsi secara offline setelah dimuat — ini adalah aplikasi web statis yang dapat Anda jalankan di mana saja.',
       ],
     },
     {
       heading: 'Cara kerja ANQR',
       paragraphs: [
         'ANQR berjalan di peramban Anda dan mengkodekan input Anda ke dalam matriks QR standar dengan koreksi kesalahan Reed–Solomon, lalu menampilkannya dalam format yang Anda pilih.',
+        'Secara default, pembuatan terjadi secara lokal di browser Anda. Untuk penggunaan profesional, Anda juga dapat menggunakan API sisi server untuk menghasilkan kode QR melalui parameter URL — sempurna untuk penyematan di situs web, email, atau alur kerja otomatis.',
         'Semua proses pembuatan terjadi secara lokal. Saat Anda menambahkan overlay atau animasi, ANQR menyeimbangkan penataan gaya dengan keandalan pemindaian sehingga hasilnya tetap dapat dipindai.',
         'ANQR berfokus pada kode statis (data berada di dalam QR). Jika Anda memerlukan kode dinamis (tujuan yang dapat diedit), Anda dapat mengkodekan URL pengalihan atau tautan pendek Anda sendiri.',
       ],
@@ -61,7 +63,7 @@ export const about: PageDefinition = {
     {
       heading: 'Umpan balik dan kontribusi',
       paragraphs: [
-        'Kami menerima masukan, laporan bug, dan saran fitur. Silakan hubungi kami melalui email atau halaman kontak - kami membaca setiap pesan, meskipun waktu respons dapat bervariasi.',
+        'Kami menerima masukan, laporan bug, dan saran fitur. Silakan hubungi kami melalui email atau halaman kontak — kami membaca setiap pesan, meskipun waktu respons dapat bervariasi.',
       ],
     },
   ],

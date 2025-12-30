@@ -9,7 +9,8 @@ export const privacy: PageDefinition = {
     {
       heading: '摘要',
       paragraphs: [
-        'ANQR 是一款完全在您的设备上运行的二维码生成器。我们不要求您创建帐户，二维码是在本地生成的--我们无法访问您编码的内容。',
+        'ANQR 是一款完全在您的设备上运行的二维码生成器。我们不要求您创建帐户，二维码是在本地生成的——我们无法访问您编码的内容。',
+        '如需专业用途，ANQR 提供服务器端 API，可从 URL 参数生成二维码。使用 API 时，您的二维码内容会在我们的服务器上处理以渲染图像，但不会被存储或记录。',
         '我们使用 Google AdSense 进行广告投放，并可能使用分析服务。这些服务通过 Cookie 和类似技术收集信息。本政策解释了收集哪些数据、如何使用这些数据以及您的权利。',
       ],
     },
@@ -89,8 +90,8 @@ export const privacy: PageDefinition = {
     {
       heading: 'GDPR 法律依据',
       paragraphs: [
-        '我们基于以下依据处理数据：（a）同意--用于个性化广告（由我们的广告合作伙伴管理）；（b）合法权益--用于分析、安全和改进；（c）合同--用于回应询问。',
-        `如需行使您的权利，请联系 ${CONTACT_EMAIL}。我们将在 30 天内回复。`,
+        '我们基于以下依据处理数据：（a）同意——用于个性化广告（由我们的广告合作伙伴管理）；（b）合法权益——用于分析、安全和改进；（c）合同——用于回应询问。',
+        '如需行使您的权利，请联系 ${CONTACT_EMAIL}。我们将在 30 天内回复。',
       ],
     },
     {
@@ -106,7 +107,7 @@ export const privacy: PageDefinition = {
       heading: '收集的 CCPA 类别',
       paragraphs: [
         '类别：标识符（IP 地址、设备 ID）、互联网活动（浏览、广告互动）、地理位置（近似值）、推断（浏览兴趣）。',
-        `如需行使权利或选择退出：${CONTACT_EMAIL} 或调整 cookie 设置。`,
+        '如需行使权利或选择退出：${CONTACT_EMAIL} 或调整 cookie 设置。',
       ],
     },
     {
@@ -118,7 +119,7 @@ export const privacy: PageDefinition = {
     {
       heading: '儿童隐私',
       paragraphs: [
-        `ANQR 不针对 13 岁以下（或欧洲经济区 16 岁以下）儿童。我们不会故意收集儿童数据。如果您认为有儿童提供了信息，请联系 ${CONTACT_EMAIL}。`,
+        'ANQR 不针对 13 岁以下（或欧洲经济区 16 岁以下）儿童。我们不会故意收集儿童数据。如果您认为有儿童提供了信息，请联系 ${CONTACT_EMAIL}。',
       ],
     },
     {
@@ -142,8 +143,10 @@ export const privacy: PageDefinition = {
     {
       heading: '联系我们',
       paragraphs: [
-        `如有隐私问题或想行使您的权利，请发送邮件至 ${CONTACT_EMAIL} 或使用我们的联系页面。我们会在 30 天内回复您的隐私请求。`,
+        '如有隐私问题或想行使您的权利，请发送邮件至 ${CONTACT_EMAIL} 或使用我们的联系页面。我们会在 30 天内回复您的隐私请求。',
       ],
     },
   ],
 }
+
+export default privacy;

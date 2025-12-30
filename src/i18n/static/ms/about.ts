@@ -3,7 +3,7 @@ import { LAST_UPDATED, CONTACT_EMAIL } from '../types'
 
 export const about: PageDefinition = {
   title: 'Mengenai ANQR',
-  description: 'ANQR ialah penjana kod QR percuma yang berfungsi sepenuhnya pada peranti anda - tiada akaun diperlukan.',
+  description: 'ANQR ialah penjana kod QR percuma dengan pendekatan klien-dahulu — jana kod QR secara setempat atau gunakan API kami untuk penyematan.',
   lastUpdated: LAST_UPDATED,
   sections: [
     {
@@ -16,18 +16,20 @@ export const about: PageDefinition = {
     {
       heading: 'Ciri-ciri utama',
       bullets: [
-        'Jana kod QR serta-merta pada peranti anda - tiada muat naik pelayan, tiada akaun diperlukan.',
+        'Jana kod QR serta-merta pada peranti anda — tiada muat naik pelayan, tiada akaun diperlukan.',
         'Sesuaikan warna, gaya modul, corak pencari dan tambahkan tindanan imej.',
         'Eksport dalam pelbagai format: PNG, SVG, WebP dan GIF animasi.',
         'Kawalan lanjutan untuk tahap pembetulan ralat, versi QR, mod pengekodan dan pemilihan topeng.',
         'Panduan keselamatan imbasan dan pratonton langsung untuk membantu memastikan kod boleh dibaca dalam bentuk cetakan dan pada skrin.',
-        'Berfungsi di luar talian setelah dimuatkan - ia merupakan aplikasi web statik yang boleh anda jalankan di mana-mana sahaja.',
+        'API sebelah pelayan untuk penyematan profesional dengan sokongan parameter penuh.',
+        'Berfungsi di luar talian setelah dimuatkan — ia merupakan aplikasi web statik yang boleh anda jalankan di mana-mana sahaja.',
       ],
     },
     {
       heading: 'Bagaimana ANQR berfungsi',
       paragraphs: [
         'ANQR berjalan dalam pelayar anda dan mengekod input anda ke dalam matriks QR standard dengan pembetulan ralat Reed–Solomon, kemudian memaparkannya kepada format yang anda pilih.',
+        'Secara lalai, penjanaan berlaku secara setempat dalam pelayar anda. Untuk kegunaan profesional, anda juga boleh menggunakan API sebelah pelayan untuk menjana kod QR melalui parameter URL — sesuai untuk penyematan dalam laman web, e-mel atau aliran kerja automatik.',
         'Semua penjanaan berlaku secara setempat. Apabila anda menambah tindanan atau animasi, ANQR mengimbangi penggayaan dengan kebolehpercayaan imbasan supaya hasilnya kekal boleh diimbas.',
         'ANQR memberi tumpuan kepada kod statik (data berada di dalam QR). Jika anda memerlukan kod dinamik (destinasi yang boleh diedit), anda boleh mengekod URL pengalihan atau pautan pendek anda sendiri.',
       ],
@@ -61,7 +63,7 @@ export const about: PageDefinition = {
     {
       heading: 'Maklum balas dan sumbangan',
       paragraphs: [
-        'Kami mengalu-alukan maklum balas, laporan pepijat dan cadangan ciri. Sila hubungi kami melalui e-mel atau halaman hubungan - kami membaca setiap mesej, walaupun masa respons mungkin berbeza-beza.',
+        'Kami mengalu-alukan maklum balas, laporan pepijat dan cadangan ciri. Sila hubungi kami melalui e-mel atau halaman hubungan — kami membaca setiap mesej, walaupun masa respons mungkin berbeza-beza.',
       ],
     },
   ],

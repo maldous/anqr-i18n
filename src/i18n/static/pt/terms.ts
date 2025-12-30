@@ -3,8 +3,7 @@ import { LAST_UPDATED, CONTACT_EMAIL } from '../types'
 
 export const terms: PageDefinition = {
   title: 'Termos de Serviço',
-  description:
-    'Ao acessar ou usar o site, você concorda em ficar vinculado a estes termos.',
+  description: 'Ao acessar ou usar o site, você concorda em ficar vinculado a estes termos.',
   lastUpdated: LAST_UPDATED,
   sections: [
     {
@@ -17,7 +16,7 @@ export const terms: PageDefinition = {
     {
       heading: 'Elegibilidade',
       paragraphs: [
-        "Você deve ter pelo menos 13 anos de idade para usar o ANQR. Ao usar o site, você declara que atende a esse requisito de idade. Se você for menor de 18 anos, declara que tem a permissão de seus pais ou responsáveis para usar o site.",
+        'Você deve ter pelo menos 13 anos de idade para usar o ANQR. Ao usar o site, você declara que atende a esse requisito de idade. Se você for menor de 18 anos, declara que tem a permissão de seus pais ou responsáveis para usar o site.',
       ],
     },
     {
@@ -28,7 +27,9 @@ export const terms: PageDefinition = {
     },
     {
       heading: 'Conduta proibida',
-      paragraphs: ['Você concorda em não:'],
+      paragraphs: [
+        'Você concorda em não:',
+      ],
       bullets: [
         'Use ANQR para criar códigos QR que facilitem phishing, distribuição de malware, fraude, golpes, assédio, difamação ou qualquer atividade ilegal.',
         'Codificar conteúdo que infrinja direitos de propriedade intelectual, viole a privacidade ou contenha material ilegal.',
@@ -50,7 +51,8 @@ export const terms: PageDefinition = {
     {
       heading: 'Licença de conteúdo do usuário',
       paragraphs: [
-        'Ao usar o ANQR, você não nos concede nenhum direito sobre o seu conteúdo - toda a geração do código QR ocorre localmente no seu dispositivo e não acessamos, armazenamos ou transmitimos seus dados codificados.',
+        'Ao usar o ANQR, você não nos concede nenhum direito sobre o seu conteúdo — toda a geração do código QR ocorre localmente no seu dispositivo e não acessamos, armazenamos ou transmitimos seus dados codificados.',
+        'Ao usar a API do lado do servidor, seu conteúdo é processado para gerar a imagem QR, mas não é armazenado, registrado ou usado para qualquer outro propósito além de renderizar a imagem solicitada.',
       ],
     },
     {
@@ -86,7 +88,7 @@ export const terms: PageDefinition = {
     {
       heading: 'Resolução de litígios',
       paragraphs: [
-        `Qualquer disputa decorrente destes Termos ou do seu uso do ANQR deverá ser primeiramente tentada a ser resolvida por meio de negociação informal, entrando em contato com ${CONTACT_EMAIL}.`,
+        'Qualquer disputa decorrente destes Termos ou do seu uso do ANQR deverá ser primeiramente tentada a ser resolvida por meio de negociação informal, entrando em contato com ${CONTACT_EMAIL}.',
         'Caso a resolução informal falhe, as disputas serão resolvidas por meio de arbitragem vinculativa em Victoria, Austrália, exceto que qualquer uma das partes poderá buscar medidas cautelares em juízo por violações de propriedade intelectual.',
       ],
     },
@@ -135,7 +137,11 @@ export const terms: PageDefinition = {
     },
     {
       heading: 'Contato',
-      paragraphs: [`Dúvidas sobre estes Termos podem ser enviadas para: ${CONTACT_EMAIL}`],
+      paragraphs: [
+        'Dúvidas sobre estes Termos podem ser enviadas para: ${CONTACT_EMAIL}',
+      ],
     },
   ],
 }
+
+export default terms;

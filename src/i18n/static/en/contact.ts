@@ -15,7 +15,7 @@ export const contact: PageDefinition = {
     {
       heading: 'Email',
       paragraphs: [
-        `For all enquiries: ${CONTACT_EMAIL}`,
+        'For all enquiries: ${CONTACT_EMAIL}',
         'This is the most reliable way to reach us and is recommended for detailed questions, business enquiries, or any other enquiries.',
       ],
     },
@@ -60,7 +60,7 @@ export const contact: PageDefinition = {
     {
       heading: 'DMCA Contact',
       paragraphs: [
-        `Send DMCA notices to: ${CONTACT_EMAIL}`,
+        'Send DMCA notices to: ${CONTACT_EMAIL}',
         'Please include "DMCA Notice" in the subject line. We will respond to valid notices in accordance with applicable law. Note that ANQR generates QR codes locally on users devices and does not host user-generated content.',
       ],
     },

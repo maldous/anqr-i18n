@@ -3,8 +3,7 @@ import { LAST_UPDATED, CONTACT_EMAIL } from '../types'
 
 export const terms: PageDefinition = {
   title: 'Mga Tuntunin ng Serbisyo',
-  description:
-    'Sa pamamagitan ng pag-access o paggamit ng site, sumasang-ayon kang masaklaw ng mga tuntuning ito.',
+  description: 'Sa pamamagitan ng pag-access o paggamit ng site, sumasang-ayon kang masaklaw ng mga tuntuning ito.',
   lastUpdated: LAST_UPDATED,
   sections: [
     {
@@ -17,7 +16,7 @@ export const terms: PageDefinition = {
     {
       heading: 'Pagiging Karapat-dapat',
       paragraphs: [
-        "Dapat ay hindi ka bababa sa 13 taong gulang upang magamit ang ANQR. Sa paggamit ng site, ipinapahayag mo na natutugunan mo ang kinakailangang edad na ito. Kung ikaw ay wala pang 18 taong gulang, ipinapahayag mo na mayroon kang pahintulot ng iyong magulang o tagapag-alaga na gamitin ang site.",
+        'Dapat ay hindi ka bababa sa 13 taong gulang upang magamit ang ANQR. Sa paggamit ng site, ipinapahayag mo na natutugunan mo ang kinakailangang edad na ito. Kung ikaw ay wala pang 18 taong gulang, ipinapahayag mo na mayroon kang pahintulot ng iyong magulang o tagapag-alaga na gamitin ang site.',
       ],
     },
     {
@@ -28,7 +27,9 @@ export const terms: PageDefinition = {
     },
     {
       heading: 'Ipinagbabawal na pag-uugali',
-      paragraphs: ['Sumasang-ayon kang hindi:'],
+      paragraphs: [
+        'Sumasang-ayon kang hindi:',
+      ],
       bullets: [
         'Gumamit ng ANQR upang lumikha ng mga QR code na nagpapadali sa phishing, pamamahagi ng malware, pandaraya, mga scam, panliligalig, paninirang-puri, o anumang ilegal na aktibidad.',
         'I-encode ang nilalamang lumalabag sa mga karapatan sa intelektwal na ari-arian, lumalabag sa privacy, o naglalaman ng ilegal na materyal.',
@@ -50,7 +51,8 @@ export const terms: PageDefinition = {
     {
       heading: 'Lisensya ng nilalaman ng gumagamit',
       paragraphs: [
-        'Sa paggamit ng ANQR, wala kang ibinibigay sa amin na karapatan sa iyong nilalaman - lahat ng pagbuo ng QR code ay nangyayari nang lokal sa iyong device at hindi namin ina-access, iniimbak, o ipinapadala ang iyong naka-encode na data.',
+        'Sa paggamit ng ANQR, wala kang ibinibigay sa amin na karapatan sa iyong nilalaman — lahat ng pagbuo ng QR code ay nangyayari nang lokal sa iyong device at hindi namin ina-access, iniimbak, o ipinapadala ang iyong naka-encode na data.',
+        'Kapag ginagamit ang server-side API, ang iyong content ay pinoproseso upang buuin ang QR image ngunit hindi iniimbak, nilololog, o ginagamit para sa anumang ibang layunin maliban sa pag-render ng hiniling na imahe.',
       ],
     },
     {
@@ -86,7 +88,7 @@ export const terms: PageDefinition = {
     {
       heading: 'Paglutas ng Hindi Pagkakasundo',
       paragraphs: [
-        `Anumang hindi pagkakaunawaan na magmumula sa mga Tuntuning ito o sa iyong paggamit ng ANQR ay susubukan munang lutasin sa pamamagitan ng impormal na negosasyon sa pamamagitan ng pakikipag-ugnayan sa ${CONTACT_EMAIL}.`,
+        'Anumang hindi pagkakaunawaan na magmumula sa mga Tuntuning ito o sa iyong paggamit ng ANQR ay susubukan munang lutasin sa pamamagitan ng impormal na negosasyon sa pamamagitan ng pakikipag-ugnayan sa ${CONTACT_EMAIL}.',
         'Kung mabigo ang impormal na resolusyon, ang mga hindi pagkakaunawaan ay lulutasin sa pamamagitan ng may bisang arbitrasyon sa Victoria, Australia, maliban na ang alinmang partido ay maaaring humingi ng injunctive relief sa korte para sa mga paglabag sa intelektwal na ari-arian.',
       ],
     },
@@ -135,7 +137,11 @@ export const terms: PageDefinition = {
     },
     {
       heading: 'Makipag-ugnayan',
-      paragraphs: [`Maaaring ipadala ang mga tanong tungkol sa mga Tuntuning ito sa: ${CONTACT_EMAIL}`],
+      paragraphs: [
+        'Maaaring ipadala ang mga tanong tungkol sa mga Tuntuning ito sa: ${CONTACT_EMAIL}',
+      ],
     },
   ],
 }
+
+export default terms;

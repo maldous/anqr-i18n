@@ -15,14 +15,8 @@ export const contact: PageDefinition = {
     {
       heading: 'E-mel',
       paragraphs: [
-        `Untuk semua pertanyaan: ${CONTACT_EMAIL}`,
-        'Ini adalah cara yang paling boleh dipercayai untuk menghubungi kami dan disyorkan untuk soalan terperinci, pertanyaan perniagaan atau jika borang hubungan tidak berfungsi pada peranti anda.',
-      ],
-    },
-    {
-      heading: 'Borang hubungan',
-      paragraphs: [
-        'Gunakan borang di bawah untuk menghantar mesej terus kepada kami. Jika borang tidak berjaya dihantar, sila gunakan e-mel.',
+        'Untuk semua pertanyaan: ${CONTACT_EMAIL}',
+        'Ini adalah cara yang paling boleh dipercayai untuk menghubungi kami dan disyorkan untuk soalan terperinci, pertanyaan perniagaan atau sebarang pertanyaan lain.',
       ],
     },
     {
@@ -66,7 +60,7 @@ export const contact: PageDefinition = {
     {
       heading: 'Hubungan DMCA',
       paragraphs: [
-        `Hantar notis DMCA kepada: ${CONTACT_EMAIL}`,
+        'Hantar notis DMCA kepada: ${CONTACT_EMAIL}',
         'Sila sertakan Notis DMCA dalam baris subjek. Kami akan membalas notis yang sah mengikut undang-undang yang terpakai. Ambil perhatian bahawa ANQR menjana kod QR secara setempat pada peranti pengguna dan tidak mengehoskan kandungan yang dijana pengguna.',
       ],
     },

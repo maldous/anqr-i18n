@@ -3,8 +3,7 @@ import { LAST_UPDATED, CONTACT_EMAIL } from '../types'
 
 export const terms: PageDefinition = {
   title: 'Terms of Service',
-  description:
-    'By accessing or using the site, you agree to be bound by these terms.',
+  description: 'By accessing or using the site, you agree to be bound by these terms.',
   lastUpdated: LAST_UPDATED,
   sections: [
     {
@@ -17,7 +16,7 @@ export const terms: PageDefinition = {
     {
       heading: 'Eligibility',
       paragraphs: [
-        "You must be at least 13 years of age to use ANQR. By using the site, you represent that you meet this age requirement. If you are under 18, you represent that you have your parent or guardian's permission to use the site.",
+        'You must be at least 13 years of age to use ANQR. By using the site, you represent that you meet this age requirement. If you are under 18, you represent that you have your parent or guardian\'s permission to use the site.',
       ],
     },
     {
@@ -28,7 +27,9 @@ export const terms: PageDefinition = {
     },
     {
       heading: 'Prohibited conduct',
-      paragraphs: ['You agree not to:'],
+      paragraphs: [
+        'You agree not to:',
+      ],
       bullets: [
         'Use ANQR to create QR codes that facilitate phishing, malware distribution, fraud, scams, harassment, defamation, or any illegal activity.',
         'Encode content that infringes intellectual property rights, violates privacy, or contains illegal material.',
@@ -87,7 +88,7 @@ export const terms: PageDefinition = {
     {
       heading: 'Dispute resolution',
       paragraphs: [
-        `Any dispute arising from these Terms or your use of ANQR shall first be attempted to be resolved through informal negotiation by contacting ${CONTACT_EMAIL}.`,
+        'Any dispute arising from these Terms or your use of ANQR shall first be attempted to be resolved through informal negotiation by contacting ${CONTACT_EMAIL}.',
         'If informal resolution fails, disputes shall be resolved through binding arbitration in Victoria, Australia, except that either party may seek injunctive relief in court for intellectual property violations.',
       ],
     },
@@ -136,7 +137,11 @@ export const terms: PageDefinition = {
     },
     {
       heading: 'Contact',
-      paragraphs: [`Questions about these Terms can be sent to: ${CONTACT_EMAIL}`],
+      paragraphs: [
+        'Questions about these Terms can be sent to: ${CONTACT_EMAIL}',
+      ],
     },
   ],
 }
+
+export default terms;

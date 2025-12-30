@@ -15,14 +15,8 @@ export const contact: PageDefinition = {
     {
       heading: 'Email',
       paragraphs: [
-        `thắc mắc xin liên hệ: ${CONTACT_EMAIL}`,
-        'Đây là cách liên hệ đáng tin cậy nhất với chúng tôi và được khuyến nghị cho các câu hỏi chi tiết, các thắc mắc kinh doanh hoặc nếu biểu mẫu liên hệ không hoạt động trên thiết bị của bạn.',
-      ],
-    },
-    {
-      heading: 'Mẫu liên hệ',
-      paragraphs: [
-        'Sử dụng biểu mẫu bên dưới để gửi tin nhắn trực tiếp cho chúng tôi. Nếu biểu mẫu không gửi thành công, vui lòng sử dụng email thay thế.',
+        'thắc mắc xin liên hệ: ${CONTACT_EMAIL}',
+        'Đây là cách liên hệ đáng tin cậy nhất với chúng tôi và được khuyến nghị cho các câu hỏi chi tiết, thắc mắc kinh doanh hoặc bất kỳ thắc mắc nào khác.',
       ],
     },
     {
@@ -66,7 +60,7 @@ export const contact: PageDefinition = {
     {
       heading: 'hệ DMCA',
       paragraphs: [
-        `thông báo DMCA đến: ${CONTACT_EMAIL}`,
+        'thông báo DMCA đến: ${CONTACT_EMAIL}',
         'Vui lòng ghi rõ Thông báo DMCA trong tiêu đề email. Chúng tôi sẽ phản hồi các thông báo hợp lệ theo luật hiện hành. Xin lưu ý rằng ANQR tạo mã QR cục bộ trên thiết bị của người dùng và không lưu trữ nội dung do người dùng tạo ra.',
       ],
     },

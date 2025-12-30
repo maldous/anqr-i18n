@@ -557,6 +557,178 @@ export const docs: PageDefinition = {
       ],
     },
     {
+      heading: 'API リファレンス',
+      paragraphs: [
+        'ANQR は URL パラメータを介して QR コードを生成するサーバーサイド API を提供しています。クライアントサイド JavaScript なしで、ウェブサイト、メール、ドキュメント、または自動化ワークフローに QR コードを埋め込むのに最適です。',
+        'ベース URL: https://anqr.link/api/qr',
+      ],
+    },
+    {
+      heading: 'API: 基本パラメータ',
+      paragraphs: [
+        '必須および一般的なパラメータ（パラメータ名は翻訳されません）:',
+      ],
+      bullets: [
+        'data（必須）: QR コードにエンコードするコンテンツ。特殊文字は URL エンコードしてください。',
+        'size: 画像サイズ（ピクセル単位、デフォルト: 400、最大: 2000）。w/h が指定されていない場合に使用されます。',
+        'w, h: 出力の幅と高さ（ピクセル単位）。size パラメータを上書きします。',
+        'format: 出力形式 — png、webp、または gif（デフォルト: png）。',
+        'ec: エラー訂正レベル — L、M、Q、または H（デフォルト: H）。',
+        'fg: 前景色（# なしの hex 形式、デフォルト: 000000）。',
+        'bg: 背景色（# なしの hex 形式、デフォルト: ffffff）。',
+        'transparent: 透明な背景にするには 1 を設定。',
+        'margin: クワイエットゾーン（モジュール単位、デフォルト: 4）。',
+      ],
+    },
+    {
+      heading: 'API: スタイリングパラメータ',
+      paragraphs: [
+        'モジュールとパターンのスタイリング:',
+      ],
+      bullets: [
+        'style: モジュールスタイル — square、rounded、dots、diamond、connected。',
+        'finder: ファインダーパターンスタイル — square、rounded、circle。',
+        'align: アライメントパターンスタイル — match_finder、square、rounded、circle。',
+        'timing: タイミングパターンスタイル — match_module、solid、dashed。',
+        'radius: コーナー半径パーセンテージ 0-100。',
+        'gap: モジュールギャップパーセンテージ 0-50。',
+        'gapMode: ギャップモード — none、inset、stroke、negative_space。',
+        'eyeOuter, eyeInner: アイスタイル — square、rounded、circle。',
+        'eyeScale: アイスケールパーセンテージ（デフォルト: 100）。',
+        'grad: グラデーションタイプ — none、linear、radial、conic。',
+        'gradAngle: リニアグラデーションのグラデーション角度。',
+        'gradStops: グラデーションストップ（color1,pos1,color2,pos2,... 形式、例: ff0000,0,0000ff,1）。',
+      ],
+    },
+    {
+      heading: 'API: オーバーレイパラメータ',
+      paragraphs: [
+        '画像オーバーレイオプション（オーバーレイ画像はサーバーサイドで取得されます）:',
+      ],
+      bullets: [
+        'img: オーバーレイ画像の URL（公開アクセス可能である必要があります）。',
+        'mode: オーバーレイモード — center、halftone、blend、brightness、mosaic、dithered、blue-noise、subpixel。',
+        'intensity: オーバーレイ強度 0-100（デフォルト: 100）。',
+        'colorMode: オーバーレイカラーモード — color、grayscale、bw。',
+        'fit: オーバーレイのフィット方法 — cover、contain、stretch。',
+        'rot: オーバーレイの回転角度（度単位）。',
+        'flipX, flipY: オーバーレイを反転するには 1 を設定。',
+        'keepFinders: ファインダーパターンを保持（デフォルト: 1）。',
+        'keepTiming, keepAlign: タイミング/アライメントパターンを保持するには 1 を設定。',
+      ],
+    },
+    {
+      heading: 'API: 前処理パラメータ',
+      paragraphs: [
+        'オーバーレイに適用される画像前処理:',
+      ],
+      bullets: [
+        'brightness: 調整 -100 から 100（デフォルト: 0）。',
+        'contrast: 調整 -100 から 100（デフォルト: 0）。',
+        'gamma: 値 0.1 から 3（デフォルト: 1）。',
+        'saturation: 調整 -100 から 100（デフォルト: 0）。',
+        'hue: 色相回転（度単位）。',
+        'blur: ぼかし（ピクセル単位）。',
+        'sharpen: シャープネス量 0-100。',
+        'posterize: ポスタライズレベル。',
+        'threshold: 2値化しきい値 0-255。',
+        'edge: エッジ検出 — off、sobel、canny。',
+        'invert: 色を反転するには 1 を設定。',
+      ],
+    },
+    {
+      heading: 'API: 透かしパラメータ',
+      paragraphs: [
+        '生成された QR コードに透かしを追加:',
+      ],
+      bullets: [
+        'wmEn: 透かしを有効にするには 1 を設定。',
+        'wmKind: 透かしタイプ — text、image、pattern。',
+        'wmText: 透かしテキスト（URL エンコード済み）。',
+        'wmImg: 透かし画像の URL。',
+        'wmPos: 位置 — center、corners、edges、behind、quiet_zone。',
+        'wmOpacity: 不透明度 0-100（デフォルト: 50）。',
+        'wmBlend: ブレンドモード — normal、multiply、screen、overlay。',
+      ],
+    },
+    {
+      heading: 'API: アニメーションパラメータ',
+      paragraphs: [
+        'アニメーション GIF 出力用（format=gif が必要）:',
+      ],
+      bullets: [
+        'animPattern: アニメーションパターン — none、pulse、wave、scanline、shimmer、drift、color_cycle。',
+        'animFrames: フレーム数 1-60（デフォルト: 24）。',
+        'animSpeed: フレーム遅延（ミリ秒単位）10-1000（デフォルト: 100）。',
+        'animSeed: アニメーション用ランダムシード。',
+        'easing: アニメーションイージング — linear、ease_in、ease_out、ease_in_out、bounce。',
+      ],
+    },
+    {
+      heading: 'API: 出力パラメータ',
+      paragraphs: [
+        '出力形式オプション:',
+      ],
+      bullets: [
+        'quality: WebP 品質 0-1（デフォルト: 0.9）。',
+        'webpQ: WebP 品質 0-100（デフォルト: 90）。',
+        'gifColors: GIF パレットサイズ 2-256（デフォルト: 256）。',
+        'dpi: PNG の出力 DPI（デフォルト: 72）。',
+        'metaTitle, metaAuthor, metaCopy, metaDesc: PNG メタデータフィールド。',
+      ],
+    },
+    {
+      heading: 'API: 使用例',
+      paragraphs: [
+        '基本的な QR コード:',
+        'https://anqr.link/api/qr?data=https://example.com',
+        'カスタムカラーでスタイル設定された QR コード:',
+        'https://anqr.link/api/qr?data=Hello&size=300&fg=1e40af&bg=ffffff&style=rounded&radius=30',
+        'オーバーレイ画像付き QR コード:',
+        'https://anqr.link/api/qr?data=https://example.com&ec=H&img=https://example.com/logo.png&mode=halftone&intensity=70',
+        'アニメーション GIF:',
+        'https://anqr.link/api/qr?data=Hello&format=gif&animPattern=pulse&animFrames=24&easing=ease_in_out',
+      ],
+    },
+    {
+      heading: 'QR コードの埋め込み',
+      paragraphs: [
+        'プロフェッショナルモードでは、共有機能が埋め込み可能な HTML と URL を生成します。埋め込みの仕組み:',
+      ],
+      bullets: [
+        '共有リンク: すべての設定を URL パラメータとしてエンコードした ANQR アプリへの URL を作成します。受信者は QR コードを表示および変更できます。',
+        '画像埋め込み: サーバー API を指す <img> タグを生成します。QR コードはサーバーサイドでレンダリングされ、画像として提供されます。',
+        'Markdown 埋め込み: ドキュメントや README ファイル用の Markdown 画像構文を作成します。',
+        '直接 API URL: アプリケーション、スクリプト、またはその他の統合で使用するための生の API URL。',
+      ],
+    },
+    {
+      heading: '埋め込み: HTML の例',
+      paragraphs: [
+        'ウェブサイトに QR コードを埋め込むには:',
+        '<img src="https://anqr.link/api/qr?data=https://yoursite.com&size=200" alt="QR Code" />',
+        'レスポンシブサイズ設定の場合:',
+        '<img src="https://anqr.link/api/qr?data=https://yoursite.com&size=400" alt="QR Code" style="max-width: 100%; height: auto;" />',
+        'サーバーは長いキャッシュヘッダーで応答をキャッシュするため、同じ URL への繰り返しリクエストは高速です。',
+      ],
+    },
+    {
+      heading: '埋め込み: 共有 URL 形式',
+      paragraphs: [
+        'プロフェッショナルモードで共有をクリックすると、ANQR は現在の設定を URL パラメータにエンコードします。形式は:',
+        'https://anqr.link/?data=...&ec=H&style=rounded&....',
+        'これらのパラメータは API パラメータを反映しているため、ベースパスを / から /api/qr に変更し、必要に応じて w/h パラメータを調整することで、共有 URL を API URL に変換できます。',
+        '注意: ローカルファイルからアップロードされたオーバーレイ画像は URL 経由で共有できません — URL ベースのオーバーレイ（img パラメータ）のみが共有リンクと API 呼び出しで機能します。',
+      ],
+    },
+    {
+      heading: 'API: レート制限と使用量',
+      paragraphs: [
+        'API は適切な量であれば無料でご利用いただけます。大量使用または稼働時間保証が必要な商用アプリケーションについては、お問い合わせください。',
+        'API 応答には積極的なキャッシュヘッダーが含まれています。最高のパフォーマンスを得るには、応答をお客様側でキャッシュするか、同一の QR コードに対して同じ URL を一貫して使用してください。',
+      ],
+    },
+    {
       heading: 'ベストプラクティス',
       paragraphs: [
         '信頼できるQRコードについては、以下のガイドラインに従ってください。',

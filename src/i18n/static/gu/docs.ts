@@ -557,6 +557,178 @@ export const docs: PageDefinition = {
       ],
     },
     {
+      heading: 'API સંદર્ભ',
+      paragraphs: [
+        'ANQR URL પેરામીટર્સ દ્વારા QR કોડ જનરેટ કરવા માટે સર્વર-સાઇડ API પ્રદાન કરે છે. આ ક્લાયન્ટ-સાઇડ JavaScript વિના વેબસાઇટ્સ, ઇમેઇલ્સ, દસ્તાવેજો અથવા સ્વચાલિત વર્કફ્લોમાં QR કોડ એમ્બેડ કરવા માટે આદર્શ છે.',
+        'બેઝ URL: https://anqr.link/api/qr',
+      ],
+    },
+    {
+      heading: 'API: મૂળભૂત પેરામીટર્સ',
+      paragraphs: [
+        'જરૂરી અને સામાન્ય પેરામીટર્સ (પેરામીટર નામો અનુવાદિત નથી):',
+      ],
+      bullets: [
+        'data (જરૂરી): QR કોડમાં એન્કોડ કરવાની સામગ્રી. ખાસ અક્ષરોને URL-એન્કોડ કરો.',
+        'size: પિક્સેલ્સમાં ઇમેજ કદ (ડિફોલ્ટ: 400, મહત્તમ: 2000). w/h નિર્દિષ્ટ ન હોય તો ઉપયોગમાં લેવાય છે.',
+        'w, h: પિક્સેલ્સમાં આઉટપુટ પહોળાઈ અને ઊંચાઈ. size પેરામીટરને ઓવરરાઇડ કરે છે.',
+        'format: આઉટપુટ ફોર્મેટ — png, webp, અથવા gif (ડિફોલ્ટ: png).',
+        'ec: ભૂલ સુધારણા સ્તર — L, M, Q, અથવા H (ડિફોલ્ટ: H).',
+        'fg: # વિના hex તરીકે ફોરગ્રાઉન્ડ રંગ (ડિફોલ્ટ: 000000).',
+        'bg: # વિના hex તરીકે બેકગ્રાઉન્ડ રંગ (ડિફોલ્ટ: ffffff).',
+        'transparent: પારદર્શક બેકગ્રાઉન્ડ માટે 1 સેટ કરો.',
+        'margin: મોડ્યુલ્સમાં શાંત ક્ષેત્ર (ડિફોલ્ટ: 4).',
+      ],
+    },
+    {
+      heading: 'API: સ્ટાઇલિંગ પેરામીટર્સ',
+      paragraphs: [
+        'મોડ્યુલ અને પેટર્ન સ્ટાઇલિંગ:',
+      ],
+      bullets: [
+        'style: મોડ્યુલ શૈલી — square, rounded, dots, diamond, connected.',
+        'finder: ફાઇન્ડર પેટર્ન શૈલી — square, rounded, circle.',
+        'align: સંરેખણ પેટર્ન શૈલી — match_finder, square, rounded, circle.',
+        'timing: ટાઇમિંગ પેટર્ન શૈલી — match_module, solid, dashed.',
+        'radius: કોર્નર રેડિયસ ટકાવારી 0-100.',
+        'gap: મોડ્યુલ ગેપ ટકાવારી 0-50.',
+        'gapMode: ગેપ મોડ — none, inset, stroke, negative_space.',
+        'eyeOuter, eyeInner: આંખ શૈલીઓ — square, rounded, circle.',
+        'eyeScale: આંખ સ્કેલ ટકાવારી (ડિફોલ્ટ: 100).',
+        'grad: ગ્રેડિયન્ટ પ્રકાર — none, linear, radial, conic.',
+        'gradAngle: રેખીય ગ્રેડિયન્ટ્સ માટે ગ્રેડિયન્ટ એંગલ.',
+        'gradStops: color1,pos1,color2,pos2,... તરીકે ગ્રેડિયન્ટ સ્ટોપ્સ (દા.ત., ff0000,0,0000ff,1).',
+      ],
+    },
+    {
+      heading: 'API: ઓવરલે પેરામીટર્સ',
+      paragraphs: [
+        'ઇમેજ ઓવરલે વિકલ્પો (ઓવરલે ઇમેજ સર્વર-સાઇડ ફેચ થાય છે):',
+      ],
+      bullets: [
+        'img: ઓવરલે ઇમેજનું URL (જાહેરમાં ઍક્સેસ કરી શકાય તેવું હોવું જોઈએ).',
+        'mode: ઓવરલે મોડ — center, halftone, blend, brightness, mosaic, dithered, blue-noise, subpixel.',
+        'intensity: ઓવરલે તીવ્રતા 0-100 (ડિફોલ્ટ: 100).',
+        'colorMode: ઓવરલે કલર મોડ — color, grayscale, bw.',
+        'fit: ઓવરલે કેવી રીતે ફિટ થાય — cover, contain, stretch.',
+        'rot: ડિગ્રીમાં ઓવરલે રોટેશન.',
+        'flipX, flipY: ઓવરલે ફ્લિપ કરવા માટે 1 સેટ કરો.',
+        'keepFinders: ફાઇન્ડર પેટર્ન સાચવો (ડિફોલ્ટ: 1).',
+        'keepTiming, keepAlign: ટાઇમિંગ/સંરેખણ પેટર્ન સાચવવા માટે 1 સેટ કરો.',
+      ],
+    },
+    {
+      heading: 'API: પ્રીપ્રોસેસિંગ પેરામીટર્સ',
+      paragraphs: [
+        'ઓવરલે પર લાગુ ઇમેજ પ્રીપ્રોસેસિંગ:',
+      ],
+      bullets: [
+        'brightness: -100 થી 100 એડજસ્ટમેન્ટ (ડિફોલ્ટ: 0).',
+        'contrast: -100 થી 100 એડજસ્ટમેન્ટ (ડિફોલ્ટ: 0).',
+        'gamma: 0.1 થી 3 મૂલ્ય (ડિફોલ્ટ: 1).',
+        'saturation: -100 થી 100 એડજસ્ટમેન્ટ (ડિફોલ્ટ: 0).',
+        'hue: ડિગ્રીમાં હ્યુ રોટેશન.',
+        'blur: પિક્સેલ્સમાં બ્લર.',
+        'sharpen: શાર્પન રકમ 0-100.',
+        'posterize: પોસ્ટરાઇઝ સ્તરો.',
+        'threshold: બાઈનરી થ્રેશોલ્ડ 0-255.',
+        'edge: એજ ડિટેક્શન — off, sobel, canny.',
+        'invert: રંગો ઉલટાવવા માટે 1 સેટ કરો.',
+      ],
+    },
+    {
+      heading: 'API: વોટરમાર્ક પેરામીટર્સ',
+      paragraphs: [
+        'જનરેટ કરેલા QR કોડ્સમાં વોટરમાર્ક ઉમેરો:',
+      ],
+      bullets: [
+        'wmEn: વોટરમાર્ક સક્ષમ કરવા માટે 1 સેટ કરો.',
+        'wmKind: વોટરમાર્ક પ્રકાર — text, image, pattern.',
+        'wmText: વોટરમાર્ક ટેક્સ્ટ (URL-એન્કોડેડ).',
+        'wmImg: વોટરમાર્ક ઇમેજનું URL.',
+        'wmPos: સ્થિતિ — center, corners, edges, behind, quiet_zone.',
+        'wmOpacity: અપારદર્શકતા 0-100 (ડિફોલ્ટ: 50).',
+        'wmBlend: બ્લેન્ડ મોડ — normal, multiply, screen, overlay.',
+      ],
+    },
+    {
+      heading: 'API: એનિમેશન પેરામીટર્સ',
+      paragraphs: [
+        'એનિમેટેડ GIF આઉટપુટ માટે (format=gif જરૂરી):',
+      ],
+      bullets: [
+        'animPattern: એનિમેશન પેટર્ન — none, pulse, wave, scanline, shimmer, drift, color_cycle.',
+        'animFrames: ફ્રેમ્સની સંખ્યા 1-60 (ડિફોલ્ટ: 24).',
+        'animSpeed: મિલિસેકન્ડમાં ફ્રેમ વિલંબ 10-1000 (ડિફોલ્ટ: 100).',
+        'animSeed: એનિમેશન માટે રેન્ડમ સીડ.',
+        'easing: એનિમેશન ઇઝિંગ — linear, ease_in, ease_out, ease_in_out, bounce.',
+      ],
+    },
+    {
+      heading: 'API: આઉટપુટ પેરામીટર્સ',
+      paragraphs: [
+        'આઉટપુટ ફોર્મેટ વિકલ્પો:',
+      ],
+      bullets: [
+        'quality: WebP ગુણવત્તા 0-1 (ડિફોલ્ટ: 0.9).',
+        'webpQ: WebP ગુણવત્તા 0-100 (ડિફોલ્ટ: 90).',
+        'gifColors: GIF પેલેટ કદ 2-256 (ડિફોલ્ટ: 256).',
+        'dpi: PNG માટે આઉટપુટ DPI (ડિફોલ્ટ: 72).',
+        'metaTitle, metaAuthor, metaCopy, metaDesc: PNG મેટાડેટા ફીલ્ડ્સ.',
+      ],
+    },
+    {
+      heading: 'API: ઉપયોગ ઉદાહરણ',
+      paragraphs: [
+        'મૂળભૂત QR કોડ:',
+        'https://anqr.link/api/qr?data=https://example.com',
+        'કસ્ટમ રંગો સાથે સ્ટાઇલ કરેલ QR કોડ:',
+        'https://anqr.link/api/qr?data=Hello&size=300&fg=1e40af&bg=ffffff&style=rounded&radius=30',
+        'ઓવરલે ઇમેજ સાથે QR કોડ:',
+        'https://anqr.link/api/qr?data=https://example.com&ec=H&img=https://example.com/logo.png&mode=halftone&intensity=70',
+        'એનિમેટેડ GIF:',
+        'https://anqr.link/api/qr?data=Hello&format=gif&animPattern=pulse&animFrames=24&easing=ease_in_out',
+      ],
+    },
+    {
+      heading: 'QR કોડ્સ એમ્બેડ કરવા',
+      paragraphs: [
+        'પ્રોફેશનલ મોડમાં, શેર સુવિધા એમ્બેડ કરી શકાય તેવા HTML અને URLs જનરેટ કરે છે. એમ્બેડિંગ કેવી રીતે કાર્ય કરે છે તે અહીં છે:',
+      ],
+      bullets: [
+        'શેર લિંક: URL પેરામીટર્સ તરીકે તમારી બધી સેટિંગ્સ એન્કોડ કરેલ ANQR એપનું URL બનાવે છે. પ્રાપ્તકર્તાઓ QR કોડ જોઈ અને સંશોધિત કરી શકે છે.',
+        'ઇમેજ એમ્બેડ: સર્વર API તરફ નિર્દેશ કરતું <img> ટેગ જનરેટ કરે છે. QR કોડ સર્વર-સાઇડ રેન્ડર થાય છે અને ઇમેજ તરીકે સર્વ થાય છે.',
+        'Markdown એમ્બેડ: દસ્તાવેજીકરણ અને README ફાઇલો માટે Markdown ઇમેજ સિન્ટેક્સ બનાવે છે.',
+        'ડાયરેક્ટ API URL: એપ્લિકેશન્સ, સ્ક્રિપ્ટ્સ અથવા અન્ય ઇન્ટિગ્રેશન્સમાં ઉપયોગ માટે કાચું API URL.',
+      ],
+    },
+    {
+      heading: 'એમ્બેડિંગ: HTML ઉદાહરણ',
+      paragraphs: [
+        'તમારી વેબસાઇટમાં QR કોડ એમ્બેડ કરવા માટે:',
+        '<img src="https://anqr.link/api/qr?data=https://yoursite.com&size=200" alt="QR Code" />',
+        'રિસ્પોન્સિવ સાઇઝિંગ માટે:',
+        '<img src="https://anqr.link/api/qr?data=https://yoursite.com&size=400" alt="QR Code" style="max-width: 100%; height: auto;" />',
+        'સર્વર લાંબા કેશ હેડર્સ સાથે પ્રતિસાદોને કેશ કરે છે, તેથી સમાન URL માટે પુનરાવર્તિત વિનંતીઓ ઝડપી છે.',
+      ],
+    },
+    {
+      heading: 'એમ્બેડિંગ: શેર URL ફોર્મેટ',
+      paragraphs: [
+        'જ્યારે તમે પ્રોફેશનલ મોડમાં શેર પર ક્લિક કરો છો, ત્યારે ANQR તમારી વર્તમાન સેટિંગ્સને URL પેરામીટર્સમાં એન્કોડ કરે છે. ફોર્મેટ છે:',
+        'https://anqr.link/?data=...&ec=H&style=rounded&....',
+        'આ પેરામીટર્સ API પેરામીટર્સને પ્રતિબિંબિત કરે છે, તેથી તમે બેઝ પાથને / થી /api/qr માં બદલીને અને જરૂર મુજબ w/h પેરામીટર્સ એડજસ્ટ કરીને શેર URL ને API URL માં રૂપાંતરિત કરી શકો છો.',
+        'નોંધ: સ્થાનિક ફાઇલોમાંથી અપલોડ કરેલી ઓવરલે ઇમેજ URL દ્વારા શેર કરી શકાતી નથી — ફક્ત URL-આધારિત ઓવરલે (img પેરામીટર) શેર કરેલ લિંક્સ અને API કૉલ્સમાં કાર્ય કરે છે.',
+      ],
+    },
+    {
+      heading: 'API: રેટ લિમિટ્સ અને ઉપયોગ',
+      paragraphs: [
+        'API વાજબી વોલ્યુમ માટે મફત ઉપયોગ કરી શકાય છે. ઉચ્ચ-વોલ્યુમ ઉપયોગ અથવા ગેરંટીડ અપટાઇમની જરૂર હોય તેવા વ્યાવસાયિક એપ્લિકેશન્સ માટે, કૃપા કરીને અમારો સંપર્ક કરો.',
+        'API પ્રતિસાદોમાં આક્રમક કેશિંગ હેડર્સ શામેલ છે. શ્રેષ્ઠ પ્રદર્શન માટે, તમારી બાજુએ પ્રતિસાદોને કેશ કરો અથવા સમાન QR કોડ્સ માટે સતત સમાન URL નો ઉપયોગ કરો.',
+      ],
+    },
+    {
       heading: 'શ્રેષ્ઠ પ્રથાઓ',
       paragraphs: [
         'QR કોડ્સ માટે આ માર્ગદર્શિકા અનુસરો:',
