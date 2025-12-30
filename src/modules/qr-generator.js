@@ -3,10 +3,80 @@ import qrcode from "../../vendor/lib/qrcode-generator/qrcode.mjs";
 import { generateBlueNoiseDithered } from "./blue-noise-dither.ts";
 import { generateQR, isLocked, isData, calculateOptimalVersion } from "./qr-core.ts";
 import { blendColors, parseColor } from "./color-utils.ts";
+import { applyDither } from "./dither-algorithms.ts";
+
+/**
+ * Calculate contrast ratio between two colors (WCAG formula)
+ * @param {string} color1 - First color (hex or rgb)
+ * @param {string} color2 - Second color (hex or rgb)
+ * @returns {number} Contrast ratio (1 to 21)
+ */
+function getContrastRatio(color1, color2) {
+  const getLuminance = (color) => {
+    const parsed = parseColor(color);
+    const [r, g, b] = [parsed.r, parsed.g, parsed.b].map(c => {
+      c = c / 255;
+      return c <= 0.03928 ? c / 12.92 : Math.pow((c + 0.055) / 1.055, 2.4);
+    });
+    return 0.2126 * r + 0.7152 * g + 0.0722 * b;
+  };
+  const l1 = getLuminance(color1);
+  const l2 = getLuminance(color2);
+  const lighter = Math.max(l1, l2);
+  const darker = Math.min(l1, l2);
+  return (lighter + 0.05) / (darker + 0.05);
+}
+
+
+/**
+ * Canvas factory interface for environment-agnostic canvas creation.
+ * Allows QRGenerator to work in both browser and Node.js (Netlify functions).
+ * 
+ * @typedef {Object} CanvasFactory
+ * @property {function(number, number): Promise<HTMLCanvasElement|object>} createCanvas - Creates a canvas with given width/height
+ * @property {function(string): Promise<HTMLImageElement|object>} [loadImage] - Optional: loads an image from URL/buffer
+ */
+
+/**
+ * Default browser canvas factory - uses DOM APIs
+ * Exported for reference/extension by custom factories
+ */
+export const defaultBrowserCanvasFactory = {
+  createCanvas: (width, height) => {
+    const canvas = document.createElement('canvas');
+    canvas.width = width;
+    canvas.height = height;
+    return Promise.resolve(canvas);
+  },
+  loadImage: (src) => {
+    return new Promise((resolve, reject) => {
+      const img = new Image();
+      img.crossOrigin = 'anonymous';
+      img.onload = () => resolve(img);
+      img.onerror = (e) => reject(new Error(`Failed to load image: ${src}`));
+      img.src = src;
+    });
+  }
+};
 
 export class QRGenerator {
-  constructor() {
+  /**
+   * Create a QR generator instance
+   * @param {CanvasFactory} [canvasFactory] - Optional canvas factory for non-browser environments
+   */
+  constructor(canvasFactory = null) {
     this.qrcode = qrcode;
+    this._canvasFactory = canvasFactory || defaultBrowserCanvasFactory;
+  }
+
+  /**
+   * Create a canvas using the configured factory
+   * @param {number} width
+   * @param {number} height
+   * @returns {Promise<HTMLCanvasElement|object>}
+   */
+  async _createCanvas(width, height) {
+    return this._canvasFactory.createCanvas(width, height);
   }
 
   async loadLibrary() {
@@ -29,20 +99,26 @@ export class QRGenerator {
       );
     }
 
+    // Apply overlay preprocessing if we have an overlay
+    let processedOverlayCanvas = overlayCanvas;
+    if (overlayCanvas && this._hasPreprocessingOptions(config)) {
+      processedOverlayCanvas = await this._preprocessOverlay(overlayCanvas, config);
+    }
+
     // Dithered mode uses the `qr` encoder directly (and has its own
     // overflow handling). Skip qrcode-generator entirely to avoid
     // `code length overflow` when a manual version is too small.
-    if (config.overlayMode === "dithered" && overlayCanvas) {
-      return this.generateDitheredSubpixelQR(
+    if (config.overlayMode === "dithered" && processedOverlayCanvas) {
+      return await this.generateDitheredSubpixelQR(
         null,
         { ...config, typeNumber },
-        overlayCanvas,
+        processedOverlayCanvas,
       );
     }
 
     // Blue-noise mode generates animated frames with temporal dithering
-    if (config.overlayMode === "blue-noise" && overlayCanvas) {
-      return this.generateBlueNoiseQR({ ...config, typeNumber }, overlayCanvas);
+    if (config.overlayMode === "blue-noise" && processedOverlayCanvas) {
+      return await this.generateBlueNoiseQR({ ...config, typeNumber }, processedOverlayCanvas);
     }
 
     const qr = this.qrcode(typeNumber, config.errorCorrection);
@@ -55,7 +131,7 @@ export class QRGenerator {
     // Dithered QR Codes (error diffusion) style rendering
     // Inspired by the idea of using error diffusion to compensate for fixed QR data modules.
     if (config.overlayMode === "dithered" && overlayCanvas) {
-      return this.generateDitheredSubpixelQR(
+      return await this.generateDitheredSubpixelQR(
         qr,
         config,
         overlayCanvas,
@@ -63,20 +139,20 @@ export class QRGenerator {
       );
     }
 
-    if (config.overlayMode === "subpixel" && overlayCanvas) {
-      return this.generateSubpixelQR(
+    if (config.overlayMode === "subpixel" && processedOverlayCanvas) {
+      return await this.generateSubpixelQR(
         qr,
         config,
-        overlayCanvas,
+        processedOverlayCanvas,
         moduleCount,
         false,
       );
     }
-    if (config.overlayMode === "subpixel-size" && overlayCanvas) {
-      return this.generateSubpixelQR(
+    if (config.overlayMode === "subpixel-size" && processedOverlayCanvas) {
+      return await this.generateSubpixelQR(
         qr,
         config,
-        overlayCanvas,
+        processedOverlayCanvas,
         moduleCount,
         true,
       );
@@ -87,9 +163,7 @@ export class QRGenerator {
     const frameExtra = (config.frameStyle && config.frameStyle !== 'none' && config.frameText) ? moduleSize * 4 : 0;
     const size = moduleCount * moduleSize + margin * 2 * moduleSize + frameExtra;
 
-    const canvas = document.createElement("canvas");
-    canvas.width = size;
-    canvas.height = size;
+    const canvas = await this._createCanvas(size, size);
     const ctx = canvas.getContext("2d");
 
     // Keep edges crisp (critical for QR scanning)
@@ -103,21 +177,55 @@ export class QRGenerator {
 
     // Get overlay image data if provided
     let overlayData = null;
-    if (overlayCanvas) {
-      overlayData = this.getOverlayData(
-        overlayCanvas,
+    if (processedOverlayCanvas) {
+      overlayData = await this._getOverlayData(
+        processedOverlayCanvas,
         moduleCount,
         config.colorMode || "color",
         config.invertImage || false,
       );
     }
 
+    // Apply per-ECC intensity limits if configured - used for ALL overlay modes
+    let effectiveIntensity = config.overlayIntensity ?? 100;
+    if (config.maxOverlayIntensityByEcc) {
+      const eccLimits = config.maxOverlayIntensityByEcc;
+      const eccLimit = eccLimits[config.errorCorrection];
+      if (eccLimit !== undefined && eccLimit < effectiveIntensity) {
+        effectiveIntensity = eccLimit;
+      }
+    }
+    // Also check individual per-ECC params (maxOverlayIntensityL, maxOverlayIntensityM, etc.)
+    const eccIntensityKey = `maxOverlayIntensity${config.errorCorrection}`;
+    if (config[eccIntensityKey] !== undefined && config[eccIntensityKey] < effectiveIntensity) {
+      effectiveIntensity = config[eccIntensityKey];
+    }
+    // Create a modified config with effective intensity for all processing
+    const effectiveConfig = { ...config, overlayIntensity: effectiveIntensity };
+
     // For true dither mode, we modify which modules are on/off
     let ditherPattern = null;
-    if (config.overlayMode === "dither" && overlayData) {
-      ditherPattern = this.applyTrueDither(qr, overlayData, config, false);
-    } else if (config.overlayMode === "extreme" && overlayData) {
-      ditherPattern = this.applyTrueDither(qr, overlayData, config, true);
+    let advancedDitherResult = null;
+    
+    if ((config.overlayMode === "dither" || config.overlayMode === "extreme") && overlayData) {
+      // Check if advanced dithering params are specified
+      const useAdvancedDither = config.ditherKind && 
+        config.ditherKind !== 'true_dither' && 
+        config.ditherKind !== 'error_diffusion';
+      
+      if (useAdvancedDither && overlayCanvas) {
+        // Use advanced dithering from dither-algorithms module
+        try {
+          advancedDitherResult = await this.applyAdvancedDither(overlayCanvas, moduleCount, effectiveConfig);
+          ditherPattern = advancedDitherResult.matrix;
+        } catch (e) {
+          console.warn('Advanced dithering failed, falling back to true dither:', e);
+          ditherPattern = this.applyTrueDither(qr, overlayData, effectiveConfig, config.overlayMode === "extreme");
+        }
+      } else {
+        // Use built-in true dither with configured diffusion kernel and serpentine
+        ditherPattern = this.applyTrueDither(qr, overlayData, effectiveConfig, config.overlayMode === "extreme");
+      }
     }
 
     // Get version for alignment pattern detection
@@ -192,9 +300,22 @@ export class QRGenerator {
 
         const isFinder = this.isFinderPattern(row, col, moduleCount);
         const isTiming = this.isTimingPattern(row, col, moduleCount);
+        const isFormatInfo = this.isFormatInfo(row, col, moduleCount);
+        const isVersionInfo = this.isVersionInfo(row, col, moduleCount, version);
+        // Note: alignment pattern modules are already skipped via drawnAlignmentPatterns set
+        const isInAlignmentSet = drawnAlignmentPatterns.has(`${row},${col}`);
+        
+        // Protection settings
+        const protectFormat = config.protectFormatInfo || false;
+        const protectVersion = config.protectVersionInfo || false;
+        
         const applyOverlay =
-          overlayData && (!config.preserveFinders || !isFinder) && 
-          (!config.preserveTiming || !isTiming);
+          overlayData && 
+          (!config.preserveFinders || !isFinder) && 
+          (!config.preserveTiming || !isTiming) &&
+          (!config.preserveAlignment || !isInAlignmentSet) &&
+          (!protectFormat || !isFormatInfo) &&
+          (!protectVersion || !isVersionInfo);
 
         let moduleColor = isDark ? config.fgColor : config.bgColor;
         let moduleSizeModifier = 1;
@@ -202,6 +323,8 @@ export class QRGenerator {
         let waveOffsetX = 0;
         let waveOffsetY = 0;
         let drawOutlineOnly = false;
+        let useHalftoneRendering = false;
+        let halftoneBrightness = 0.5;
 
         // For mosaic mode, we draw both dark and white cells
         let shouldDrawCell = isDark;
@@ -212,13 +335,21 @@ export class QRGenerator {
           switch (config.overlayMode) {
             case "halftone":
               if (isDark) {
-                const intensity = config.overlayIntensity / 100;
-                const minSize = 0.3;
-                const maxSize = 1.0;
-                moduleSizeModifier =
-                  minSize +
-                  (1 - brightness) * (maxSize - minSize) * intensity +
-                  ((1 - intensity) * (maxSize - minSize)) / 2;
+                // Use halftone params if available
+                if (config.halftoneCell || config.halftoneDotShape || config.brightnessCurve) {
+                  // Store brightness for halftone rendering - will be handled specially below
+                  useHalftoneRendering = true;
+                  halftoneBrightness = brightness;
+                } else {
+                  // Legacy halftone behavior
+                  const intensity = effectiveIntensity / 100;
+                  const minSize = 0.3;
+                  const maxSize = 1.0;
+                  moduleSizeModifier =
+                    minSize +
+                    (1 - brightness) * (maxSize - minSize) * intensity +
+                    ((1 - intensity) * (maxSize - minSize)) / 2;
+                }
               }
               break;
 
@@ -226,7 +357,7 @@ export class QRGenerator {
               if (isDark) {
                 const blendColor = overlayData.colors?.[row]?.[col];
                 if (blendColor) {
-                  const blendAmount = config.overlayIntensity / 100;
+                  const blendAmount = effectiveIntensity / 100;
                   moduleColor = blendColors(
                     config.fgColor,
                     blendColor,
@@ -238,7 +369,7 @@ export class QRGenerator {
 
             case "brightness":
               if (isDark) {
-                const threshold = (100 - config.overlayIntensity) / 100;
+                const threshold = (100 - effectiveIntensity) / 100;
                 if (brightness > threshold) {
                   moduleOpacity = 0;
                 }
@@ -367,7 +498,7 @@ export class QRGenerator {
               shouldDrawCell = true; // Draw all cells
               const mosaicColor = overlayData.colors?.[row]?.[col];
               if (mosaicColor) {
-                const intensity = config.overlayIntensity / 100;
+                const intensity = effectiveIntensity / 100;
                 if (isDark) {
                   // Dark cells get the actual image color (darkened slightly to maintain QR readability)
                   const parsed = parseColor(mosaicColor);
@@ -398,11 +529,40 @@ export class QRGenerator {
           ctx.save();
           ctx.globalAlpha = moduleOpacity;
           
+          // Apply per-module color mode
+          let finalModuleColor = moduleColor;
+          if (isDark && config.perModuleColorMode && config.perModuleColorMode !== 'solid' && overlayData) {
+            finalModuleColor = this._applyPerModuleColor(
+              config.perModuleColorMode,
+              moduleColor,
+              overlayData,
+              row,
+              col,
+              moduleCount,
+              config
+            );
+          }
+          
+          // Apply palette coloring if palette is provided
+          const paletteBrightness = overlayData?.[row]?.[col] ?? 0.5;
+          if (isDark && config.palette && config.palette.length > 0) {
+            finalModuleColor = this._applyPaletteColor(row, col, moduleCount, paletteBrightness, config.palette, config);
+          }
+          
+          // Apply contrast guard if enabled
+          if (isDark && config.contrastGuard && config.minContrastRatio) {
+            finalModuleColor = this._ensureContrast(
+              finalModuleColor,
+              config.bgColor,
+              config.minContrastRatio
+            );
+          }
+          
           // Use gradient for dark modules if configured, otherwise use module color
           if (isDark && useGradient) {
             ctx.fillStyle = gradientFill;
           } else {
-            ctx.fillStyle = moduleColor;
+            ctx.fillStyle = finalModuleColor;
           }
 
           let gap = config.moduleGap
@@ -444,9 +604,12 @@ export class QRGenerator {
           }
 
           if (drawOutlineOnly || (gapMode === 'stroke' && isDark)) {
-            ctx.strokeStyle = moduleColor;
+            ctx.strokeStyle = finalModuleColor;
             ctx.lineWidth = strokeWidth || 1;
             ctx.strokeRect(drawX + ctx.lineWidth/2, drawY + ctx.lineWidth/2, adjustedSize - ctx.lineWidth, adjustedSize - ctx.lineWidth);
+          } else if (useHalftoneRendering && isDark) {
+            // Use advanced halftone rendering with htDot/htCurve params
+            this._drawHalftoneModule(ctx, drawX, drawY, adjustedSize, halftoneBrightness, config);
           } else if (isTiming) {
             // Draw timing pattern module with timing style
             this.drawTimingModule(ctx, drawX, drawY, adjustedSize, timingStyle, config);
@@ -467,8 +630,8 @@ export class QRGenerator {
     }
 
     // Draw center logo if in center mode
-    if (overlayCanvas && config.overlayMode === "center") {
-      this.drawCenterLogo(ctx, overlayCanvas, size, config.logoSize);
+    if (processedOverlayCanvas && config.overlayMode === "center") {
+      this.drawCenterLogo(ctx, processedOverlayCanvas, size, config.logoSize);
     }
 
     // Draw frame if configured
@@ -542,6 +705,31 @@ export class QRGenerator {
         return true;
       }
     }
+    return false;
+  }
+
+  /**
+   * Check if a module is part of format information area
+   */
+  isFormatInfo(row, col, moduleCount) {
+    // Format info is around finder patterns
+    // Horizontal: row 8, cols 0-8 and moduleCount-8 to moduleCount-1
+    // Vertical: col 8, rows 0-8 and moduleCount-7 to moduleCount-1
+    if (row === 8 && (col <= 8 || col >= moduleCount - 8)) return true;
+    if (col === 8 && (row <= 8 || row >= moduleCount - 7)) return true;
+    return false;
+  }
+
+  /**
+   * Check if a module is part of version information area (version 7+)
+   */
+  isVersionInfo(row, col, moduleCount, version) {
+    if (version < 7) return false;
+    // Version info is in two 6x3 blocks
+    // Bottom-left: rows moduleCount-11 to moduleCount-9, cols 0-5
+    // Top-right: rows 0-5, cols moduleCount-11 to moduleCount-9
+    if (row >= moduleCount - 11 && row <= moduleCount - 9 && col <= 5) return true;
+    if (col >= moduleCount - 11 && col <= moduleCount - 9 && row <= 5) return true;
     return false;
   }
 
@@ -653,6 +841,10 @@ export class QRGenerator {
   applyTrueDither(qr, overlayData, config, extremeMode = false) {
     const moduleCount = qr.getModuleCount();
     const version = config.typeNumber || Math.ceil((moduleCount - 17) / 4);
+    
+    // ECC-aware mode tracking
+    const eccAware = config.eccAwareEnabled === true;
+    let totalModifiedCount = 0;
 
     // Create modifiable pattern - start with original QR
     const modifiedPattern = [];
@@ -661,6 +853,16 @@ export class QRGenerator {
       modifiedPattern[row] = [];
       for (let col = 0; col < moduleCount; col++) {
         modifiedPattern[row][col] = qr.isDark(row, col);
+      }
+    }
+
+    // Count total data modules for ECC budget calculation
+    let totalDataModules = 0;
+    for (let row = 0; row < moduleCount; row++) {
+      for (let col = 0; col < moduleCount; col++) {
+        if (!this.isStructuralModule(row, col, moduleCount, version)) {
+          totalDataModules++;
+        }
       }
     }
 
@@ -678,6 +880,14 @@ export class QRGenerator {
 
           // Desired state based on image
           const desiredDark = brightness < 0.5;
+          
+          // ECC-aware check
+          if (eccAware && desiredDark !== modifiedPattern[row][col]) {
+            if (!this._isEccSafeToModify(row, col, moduleCount, version, config, totalModifiedCount, totalDataModules)) {
+              continue; // Skip this modification
+            }
+            totalModifiedCount++;
+          }
 
           // Apply with intensity blend
           if (intensity >= 1 || Math.random() < intensity) {
@@ -1093,10 +1303,12 @@ export class QRGenerator {
     ctx.closePath();
   }
 
-  getOverlayData(overlayCanvas, moduleCount, colorMode = "color") {
-    const tempCanvas = document.createElement("canvas");
-    tempCanvas.width = moduleCount;
-    tempCanvas.height = moduleCount;
+  /**
+   * Get overlay data - async version using canvas factory
+   * @private
+   */
+  async _getOverlayData(overlayCanvas, moduleCount, colorMode = "color", invertImage = false) {
+    const tempCanvas = await this._createCanvas(moduleCount, moduleCount);
     const ctx = tempCanvas.getContext("2d");
 
     ctx.drawImage(overlayCanvas, 0, 0, moduleCount, moduleCount);
@@ -1158,7 +1370,7 @@ export class QRGenerator {
    * - Free pixels are set from the image via error diffusion.
    * - Supports color, grayscale, and B&W modes for higher fidelity.
    */
-  generateDitheredSubpixelQR(_qr, config, overlayCanvas) {
+  async generateDitheredSubpixelQR(_qr, config, overlayCanvas) {
     const scale = 3;
 
     // Generate QR matrix using qr-core
@@ -1172,7 +1384,7 @@ export class QRGenerator {
     const { matrix: baseMatrix, moduleCount: scaledSize } = qrResult;
     
     // Apply dithering with overlay
-    const ditheredResult = this.applyDitherToMatrix(
+    const ditheredResult = await this._applyDitherToMatrix(
       baseMatrix,
       scaledSize,
       scale,
@@ -1196,9 +1408,7 @@ export class QRGenerator {
     const size = scaledCount * subPixelSize + marginPx * 2;
     const pixelSize = subPixelSize;
 
-    const canvas = document.createElement("canvas");
-    canvas.width = size;
-    canvas.height = size;
+    const canvas = await this._createCanvas(size, size);
     const ctx = canvas.getContext("2d");
 
     // Keep edges crisp (critical for QR scanning)
@@ -1253,7 +1463,7 @@ export class QRGenerator {
    * - Only free points are dithered using blue noise threshold
    * - Intensity slider controls blend between QR and image
    */
-  generateBlueNoiseQR(config, overlayCanvas) {
+  async generateBlueNoiseQR(config, overlayCanvas) {
     const scale = 3;
 
     // Use the new generateBlueNoiseDithered function that follows
@@ -1279,9 +1489,7 @@ export class QRGenerator {
     const pixelSize = subPixelSize;
 
     // Render to a single canvas
-    const canvas = document.createElement("canvas");
-    canvas.width = size;
-    canvas.height = size;
+    const canvas = await this._createCanvas(size, size);
     const ctx = canvas.getContext("2d");
 
     ctx.imageSmoothingEnabled = false;
@@ -1328,7 +1536,7 @@ export class QRGenerator {
    * - 8 SURROUNDING pixels = freely show overlay image
    * This allows ~89% of pixels to show the image while maintaining 100% scannability
    */
-  generateSubpixelQR(
+  async generateSubpixelQR(
     qr,
     config,
     overlayCanvas,
@@ -1346,9 +1554,7 @@ export class QRGenerator {
     const marginPixels = margin * config.moduleSize;
     const size = canvasModules * pixelSize + marginPixels * 2;
 
-    const canvas = document.createElement("canvas");
-    canvas.width = size;
-    canvas.height = size;
+    const canvas = await this._createCanvas(size, size);
     const ctx = canvas.getContext("2d");
 
     // Keep edges crisp (critical for QR scanning)
@@ -1361,13 +1567,13 @@ export class QRGenerator {
     }
 
     // Get overlay data at 3x resolution to match subpixel grid
-    const overlayData = this.getSubpixelOverlayData(
+    const overlayData = await this._getSubpixelOverlayData(
       overlayCanvas,
       moduleCount * subpixelSize,
       config.colorMode || "color",
     );
     // Also get per-module brightness for halftone center
-    const moduleBrightness = this.getOverlayData(overlayCanvas, moduleCount);
+    const moduleBrightness = await this._getOverlayData(overlayCanvas, moduleCount);
     const intensity = config.overlayIntensity / 100;
 
     // Draw each QR module as a 3x3 subpixel grid
@@ -1464,7 +1670,11 @@ export class QRGenerator {
    * Uses Floyd-Steinberg error diffusion for free points
    * Supports serpentine scanning for better quality
    */
-  applyDitherToMatrix(baseMatrix, scaledSize, scale, overlayCanvas, overlayIntensity, colorMode, serpentine = false) {
+  /**
+   * Apply dithering to QR matrix - async version using canvas factory
+   * @private
+   */
+  async _applyDitherToMatrix(baseMatrix, scaledSize, scale, overlayCanvas, overlayIntensity, colorMode, serpentine = false) {
     // Initialize output
     const matrix = baseMatrix.map(row => [...row]);
     const colors = baseMatrix.map(row => row.map(isDark => 
@@ -1476,7 +1686,7 @@ export class QRGenerator {
     }
 
     // Load overlay image data
-    const imageData = this.loadImageDataRGB(overlayCanvas, scaledSize);
+    const imageData = await this._loadImageDataRGB(overlayCanvas, scaledSize);
     const intensity = overlayIntensity / 100;
 
     // Convert to grayscale if needed
@@ -1562,11 +1772,10 @@ export class QRGenerator {
 
   /**
    * Load image data from canvas as RGB values (0-1 range)
+   * @private
    */
-  loadImageDataRGB(canvas, size) {
-    const tempCanvas = document.createElement('canvas');
-    tempCanvas.width = size;
-    tempCanvas.height = size;
+  async _loadImageDataRGB(canvas, size) {
+    const tempCanvas = await this._createCanvas(size, size);
     const ctx = tempCanvas.getContext('2d');
     ctx.drawImage(canvas, 0, 0, size, size);
     const imgData = ctx.getImageData(0, 0, size, size);
@@ -1631,10 +1840,12 @@ export class QRGenerator {
     }
   }
 
-  getSubpixelOverlayData(overlayCanvas, subpixelCount, colorMode = "color") {
-    const tempCanvas = document.createElement("canvas");
-    tempCanvas.width = subpixelCount;
-    tempCanvas.height = subpixelCount;
+  /**
+   * Get subpixel overlay data - async version using canvas factory
+   * @private
+   */
+  async _getSubpixelOverlayData(overlayCanvas, subpixelCount, colorMode = "color") {
+    const tempCanvas = await this._createCanvas(subpixelCount, subpixelCount);
     const ctx = tempCanvas.getContext("2d");
 
     ctx.drawImage(overlayCanvas, 0, 0, subpixelCount, subpixelCount);
@@ -1671,5 +1882,628 @@ export class QRGenerator {
 
     brightness.colors = colors;
     return brightness;
+  }
+
+  /**
+   * Check if any preprocessing options are set
+   * @private
+   */
+  _hasPreprocessingOptions(config) {
+    return (
+      (config.overlayBrightness && config.overlayBrightness !== 0) ||
+      (config.overlayContrast && config.overlayContrast !== 0) ||
+      (config.overlayGamma && config.overlayGamma !== 1) ||
+      (config.overlaySaturation && config.overlaySaturation !== 0) ||
+      (config.overlayHueRotate && config.overlayHueRotate !== 0) ||
+      config.invertImage ||
+      (config.overlayBlur && config.overlayBlur > 0) ||
+      (config.overlaySharpen && config.overlaySharpen > 0) ||
+      (config.overlayPosterize && config.overlayPosterize > 0) ||
+      (config.overlayEdgeDetect && config.overlayEdgeDetect !== 'off') ||
+      (config.overlayThreshold !== undefined && config.overlayThreshold !== 128) ||
+      config.overlayFlipX ||
+      config.overlayFlipY ||
+      (config.overlayRotate && config.overlayRotate !== 0)
+    );
+  }
+
+  /**
+   * Preprocess overlay canvas with filters and transforms
+   * @private
+   */
+  async _preprocessOverlay(overlayCanvas, config) {
+    const width = overlayCanvas.width;
+    const height = overlayCanvas.height;
+    
+    // Create a new canvas for processing
+    const processedCanvas = await this._createCanvas(width, height);
+    const ctx = processedCanvas.getContext('2d');
+    
+    // Apply geometric transforms first
+    ctx.save();
+    
+    // Handle rotation
+    if (config.overlayRotate && config.overlayRotate !== 0) {
+      ctx.translate(width / 2, height / 2);
+      ctx.rotate((config.overlayRotate * Math.PI) / 180);
+      ctx.translate(-width / 2, -height / 2);
+    }
+    
+    // Handle flips
+    if (config.overlayFlipX || config.overlayFlipY) {
+      ctx.translate(
+        config.overlayFlipX ? width : 0,
+        config.overlayFlipY ? height : 0
+      );
+      ctx.scale(
+        config.overlayFlipX ? -1 : 1,
+        config.overlayFlipY ? -1 : 1
+      );
+    }
+    
+    ctx.drawImage(overlayCanvas, 0, 0);
+    ctx.restore();
+    
+    // Get image data for filter processing
+    const imageData = ctx.getImageData(0, 0, width, height);
+    
+    // Build filter options
+    const filterOptions = {
+      brightness: config.overlayBrightness || 0,
+      contrast: config.overlayContrast || 0,
+      gamma: config.overlayGamma || 1,
+      saturation: config.overlaySaturation || 0,
+      hueRotate: config.overlayHueRotate || 0,
+      invert: config.invertImage || false,
+      blur: config.overlayBlur || 0,
+      sharpen: config.overlaySharpen || 0,
+      posterize: config.overlayPosterize || 0,
+      edgeDetect: config.overlayEdgeDetect || 'off',
+    };
+    
+    // Only apply threshold if explicitly set and edge detection is off
+    if (config.overlayThreshold !== undefined && 
+        config.overlayThreshold !== 128 && 
+        filterOptions.edgeDetect === 'off') {
+      filterOptions.threshold = config.overlayThreshold;
+    }
+    
+    // Apply filters manually (self-contained implementation)
+    this._applyFiltersManual(imageData, filterOptions);
+    
+    // Put processed image data back
+    ctx.putImageData(imageData, 0, 0);
+    
+    return processedCanvas;
+  }
+
+  /**
+   * Manual filter application - self-contained implementation
+   * @private
+   */
+  _applyFiltersManual(imageData, options) {
+    const data = imageData.data;
+    
+    // First pass: per-pixel adjustments
+    for (let i = 0; i < data.length; i += 4) {
+      let r = data[i];
+      let g = data[i + 1];
+      let b = data[i + 2];
+      
+      // Brightness
+      if (options.brightness && options.brightness !== 0) {
+        const factor = options.brightness * 2.55;
+        r = Math.max(0, Math.min(255, r + factor));
+        g = Math.max(0, Math.min(255, g + factor));
+        b = Math.max(0, Math.min(255, b + factor));
+      }
+      
+      // Contrast
+      if (options.contrast && options.contrast !== 0) {
+        const factor = (259 * (options.contrast + 255)) / (255 * (259 - options.contrast));
+        r = Math.max(0, Math.min(255, factor * (r - 128) + 128));
+        g = Math.max(0, Math.min(255, factor * (g - 128) + 128));
+        b = Math.max(0, Math.min(255, factor * (b - 128) + 128));
+      }
+      
+      // Gamma
+      if (options.gamma && options.gamma !== 1) {
+        const gammaCorrection = 1 / options.gamma;
+        r = 255 * Math.pow(r / 255, gammaCorrection);
+        g = 255 * Math.pow(g / 255, gammaCorrection);
+        b = 255 * Math.pow(b / 255, gammaCorrection);
+      }
+      
+      // Saturation
+      if (options.saturation && options.saturation !== 0) {
+        const gray = r * 0.299 + g * 0.587 + b * 0.114;
+        const factor = (options.saturation + 100) / 100;
+        r = Math.max(0, Math.min(255, gray + factor * (r - gray)));
+        g = Math.max(0, Math.min(255, gray + factor * (g - gray)));
+        b = Math.max(0, Math.min(255, gray + factor * (b - gray)));
+      }
+      
+      // Hue rotation
+      if (options.hueRotate && options.hueRotate !== 0) {
+        const angle = (options.hueRotate * Math.PI) / 180;
+        const cos = Math.cos(angle);
+        const sin = Math.sin(angle);
+        const newR = r * (0.213 + cos * 0.787 - sin * 0.213) + 
+                     g * (0.715 - cos * 0.715 - sin * 0.715) + 
+                     b * (0.072 - cos * 0.072 + sin * 0.928);
+        const newG = r * (0.213 - cos * 0.213 + sin * 0.143) + 
+                     g * (0.715 + cos * 0.285 + sin * 0.14) + 
+                     b * (0.072 - cos * 0.072 - sin * 0.283);
+        const newB = r * (0.213 - cos * 0.213 - sin * 0.787) + 
+                     g * (0.715 - cos * 0.715 + sin * 0.715) + 
+                     b * (0.072 + cos * 0.928 + sin * 0.072);
+        r = Math.max(0, Math.min(255, newR));
+        g = Math.max(0, Math.min(255, newG));
+        b = Math.max(0, Math.min(255, newB));
+      }
+      
+      // Posterize
+      if (options.posterize && options.posterize > 0) {
+        const levels = options.posterize;
+        const step = 255 / (levels - 1);
+        r = Math.round(Math.round(r / step) * step);
+        g = Math.round(Math.round(g / step) * step);
+        b = Math.round(Math.round(b / step) * step);
+      }
+      
+      // Invert
+      if (options.invert) {
+        r = 255 - r;
+        g = 255 - g;
+        b = 255 - b;
+      }
+      
+      data[i] = Math.round(r);
+      data[i + 1] = Math.round(g);
+      data[i + 2] = Math.round(b);
+    }
+    
+    // Second pass: convolution filters (blur, sharpen)
+    if (options.blur && options.blur > 0) {
+      this._applyBoxBlur(imageData, Math.min(options.blur, 5));
+    }
+    
+    if (options.sharpen && options.sharpen > 0) {
+      this._applySharpen(imageData, options.sharpen / 100);
+    }
+    
+    // Edge detection
+    if (options.edgeDetect === 'sobel') {
+      this._applySobelEdge(imageData);
+    }
+  }
+
+  /**
+   * Apply box blur
+   * @private
+   */
+  _applyBoxBlur(imageData, radius) {
+    const data = imageData.data;
+    const width = imageData.width;
+    const height = imageData.height;
+    const copy = new Uint8ClampedArray(data);
+    const size = radius * 2 + 1;
+    const divisor = size * size;
+    
+    for (let y = radius; y < height - radius; y++) {
+      for (let x = radius; x < width - radius; x++) {
+        let r = 0, g = 0, b = 0;
+        
+        for (let ky = -radius; ky <= radius; ky++) {
+          for (let kx = -radius; kx <= radius; kx++) {
+            const idx = ((y + ky) * width + (x + kx)) * 4;
+            r += copy[idx];
+            g += copy[idx + 1];
+            b += copy[idx + 2];
+          }
+        }
+        
+        const outIdx = (y * width + x) * 4;
+        data[outIdx] = Math.round(r / divisor);
+        data[outIdx + 1] = Math.round(g / divisor);
+        data[outIdx + 2] = Math.round(b / divisor);
+      }
+    }
+  }
+
+  /**
+   * Apply sharpen filter
+   * @private
+   */
+  _applySharpen(imageData, amount) {
+    const data = imageData.data;
+    const width = imageData.width;
+    const height = imageData.height;
+    const copy = new Uint8ClampedArray(data);
+    
+    // Sharpen kernel: center = 1 + 4*amount, neighbors = -amount
+    const kernel = [
+      0, -amount, 0,
+      -amount, 1 + 4 * amount, -amount,
+      0, -amount, 0,
+    ];
+    
+    for (let y = 1; y < height - 1; y++) {
+      for (let x = 1; x < width - 1; x++) {
+        let r = 0, g = 0, b = 0;
+        let ki = 0;
+        
+        for (let ky = -1; ky <= 1; ky++) {
+          for (let kx = -1; kx <= 1; kx++) {
+            const idx = ((y + ky) * width + (x + kx)) * 4;
+            const k = kernel[ki++];
+            r += copy[idx] * k;
+            g += copy[idx + 1] * k;
+            b += copy[idx + 2] * k;
+          }
+        }
+        
+        const outIdx = (y * width + x) * 4;
+        data[outIdx] = Math.max(0, Math.min(255, Math.round(r)));
+        data[outIdx + 1] = Math.max(0, Math.min(255, Math.round(g)));
+        data[outIdx + 2] = Math.max(0, Math.min(255, Math.round(b)));
+      }
+    }
+  }
+
+  /**
+   * Apply Sobel edge detection
+   * @private
+   */
+  _applySobelEdge(imageData) {
+    const data = imageData.data;
+    const width = imageData.width;
+    const height = imageData.height;
+    
+    // Convert to grayscale first
+    const gray = new Float32Array(width * height);
+    for (let i = 0; i < width * height; i++) {
+      const idx = i * 4;
+      gray[i] = data[idx] * 0.299 + data[idx + 1] * 0.587 + data[idx + 2] * 0.114;
+    }
+    
+    // Sobel kernels
+    const sobelX = [-1, 0, 1, -2, 0, 2, -1, 0, 1];
+    const sobelY = [-1, -2, -1, 0, 0, 0, 1, 2, 1];
+    
+    for (let y = 1; y < height - 1; y++) {
+      for (let x = 1; x < width - 1; x++) {
+        let gx = 0, gy = 0;
+        let ki = 0;
+        
+        for (let ky = -1; ky <= 1; ky++) {
+          for (let kx = -1; kx <= 1; kx++) {
+            const grayIdx = (y + ky) * width + (x + kx);
+            gx += gray[grayIdx] * sobelX[ki];
+            gy += gray[grayIdx] * sobelY[ki];
+            ki++;
+          }
+        }
+        
+        const magnitude = Math.min(255, Math.sqrt(gx * gx + gy * gy));
+        const outIdx = (y * width + x) * 4;
+        data[outIdx] = magnitude;
+        data[outIdx + 1] = magnitude;
+        data[outIdx + 2] = magnitude;
+      }
+    }
+  }
+
+  /**
+   * Apply per-module color mode
+   * @private
+   */
+  _applyPerModuleColor(mode, baseColor, overlayData, row, col, moduleCount, config) {
+    const brightness = overlayData[row]?.[col] ?? 0.5;
+    const overlayColor = overlayData.colors?.[row]?.[col];
+    const intensity = (config.overlayIntensity || 100) / 100;
+    
+    switch (mode) {
+      case 'by_brightness': {
+        // Vary module color based on image brightness
+        const parsed = parseColor(baseColor);
+        const factor = 0.5 + brightness * 0.5; // 0.5 to 1.0
+        return `rgb(${Math.round(parsed.r * factor)},${Math.round(parsed.g * factor)},${Math.round(parsed.b * factor)})`;
+      }
+      
+      case 'by_position': {
+        // Color varies based on position in QR code
+        const parsed = parseColor(baseColor);
+        const xFactor = col / moduleCount;
+        const yFactor = row / moduleCount;
+        const r = Math.round(parsed.r * (0.5 + xFactor * 0.5));
+        const g = Math.round(parsed.g * (0.5 + yFactor * 0.5));
+        const b = Math.round(parsed.b * (0.5 + (1 - xFactor) * 0.5));
+        return `rgb(${r},${g},${b})`;
+      }
+      
+      case 'by_overlay': {
+        // Use overlay image color directly
+        if (overlayColor) {
+          return blendColors(baseColor, overlayColor, intensity);
+        }
+        return baseColor;
+      }
+      
+      case 'by_cluster': {
+        // Group nearby modules with similar colors
+        const blockSize = 3;
+        const blockRow = Math.floor(row / blockSize);
+        const blockCol = Math.floor(col / blockSize);
+        const seed = blockRow * 100 + blockCol;
+        const hueShift = (seed * 37) % 360;
+        const parsed = parseColor(baseColor);
+        // Simple hue rotation approximation
+        const angle = (hueShift * Math.PI) / 180;
+        const cos = Math.cos(angle);
+        const sin = Math.sin(angle);
+        const r = Math.max(0, Math.min(255, parsed.r * (0.213 + cos * 0.787 - sin * 0.213) + 
+                                             parsed.g * (0.715 - cos * 0.715 - sin * 0.715) + 
+                                             parsed.b * (0.072 - cos * 0.072 + sin * 0.928)));
+        const g = Math.max(0, Math.min(255, parsed.r * (0.213 - cos * 0.213 + sin * 0.143) + 
+                                             parsed.g * (0.715 + cos * 0.285 + sin * 0.14) + 
+                                             parsed.b * (0.072 - cos * 0.072 - sin * 0.283)));
+        const b = Math.max(0, Math.min(255, parsed.r * (0.213 - cos * 0.213 - sin * 0.787) + 
+                                             parsed.g * (0.715 - cos * 0.715 + sin * 0.715) + 
+                                             parsed.b * (0.072 + cos * 0.928 + sin * 0.072)));
+        return `rgb(${Math.round(r)},${Math.round(g)},${Math.round(b)})`;
+      }
+      
+      default:
+        return baseColor;
+    }
+  }
+
+  /**
+   * Ensure module color has sufficient contrast with background
+   * @private
+   */
+  _ensureContrast(moduleColor, bgColor, minRatio) {
+    try {
+      const ratio = getContrastRatio(moduleColor, bgColor);
+      if (ratio >= minRatio) {
+        return moduleColor;
+      }
+      
+      // Darken the module color to improve contrast
+      const parsed = parseColor(moduleColor);
+      let factor = 0.9;
+      let newColor = moduleColor;
+      
+      // Iteratively darken until we meet contrast ratio
+      for (let i = 0; i < 10; i++) {
+        const r = Math.round(parsed.r * factor);
+        const g = Math.round(parsed.g * factor);
+        const b = Math.round(parsed.b * factor);
+        newColor = `rgb(${r},${g},${b})`;
+        
+        const newRatio = getContrastRatio(newColor, bgColor);
+        if (newRatio >= minRatio) {
+          return newColor;
+        }
+        factor *= 0.85;
+      }
+      
+      // If still not enough contrast, return black
+      return '#000000';
+    } catch (e) {
+      return moduleColor;
+    }
+  }
+
+  /**
+   * Apply advanced dithering using dither-algorithms module
+   * Supports all dithering types: ordered, error diffusion, blue noise, etc.
+   */
+  async applyAdvancedDither(overlayCanvas, moduleCount, config) {
+    // Get overlay as ImageData at module resolution using canvas factory
+    const tempCanvas = await this._createCanvas(moduleCount, moduleCount);
+    const ctx = tempCanvas.getContext('2d');
+    ctx.drawImage(overlayCanvas, 0, 0, moduleCount, moduleCount);
+    const imageData = ctx.getImageData(0, 0, moduleCount, moduleCount);
+    
+    // Build dither options from config
+    const ditherOptions = {
+      kind: config.ditherKind || 'error_diffusion',
+      strength: config.ditherStrength ?? 100,
+      serpentine: config.serpentine !== false,
+      diffusionKernel: config.diffusionKernel || 'floyd_steinberg',
+      orderedMatrix: config.orderedMatrix || 'bayer4',
+      colorMode: config.colorMode || 'bw',
+      levels: 2,
+      blueNoiseSeed: config.blueNoiseSeed || 0,
+      blueNoiseTileSize: config.blueNoiseTileSize || 64,
+    };
+    
+    // Apply dithering algorithm
+    const result = applyDither(imageData, ditherOptions);
+    return result;
+  }
+
+  /**
+   * Apply palette color to a module based on position/brightness
+   * @private
+   */
+  _applyPaletteColor(row, col, moduleCount, brightness, palette, config) {
+    if (!palette || palette.length === 0) return config.fgColor;
+    
+    const paletteMode = config.paletteMode || 'position';
+    
+    switch (paletteMode) {
+      case 'brightness': {
+        // Map brightness to palette index
+        const idx = Math.floor((1 - brightness) * (palette.length - 0.01));
+        return palette[Math.max(0, Math.min(palette.length - 1, idx))];
+      }
+      case 'diagonal': {
+        // Color based on diagonal position
+        const diag = (row + col) / (moduleCount * 2);
+        const idx = Math.floor(diag * palette.length) % palette.length;
+        return palette[idx];
+      }
+      case 'radial': {
+        // Color based on distance from center
+        const cx = moduleCount / 2;
+        const cy = moduleCount / 2;
+        const dist = Math.sqrt((row - cy) ** 2 + (col - cx) ** 2);
+        const maxDist = Math.sqrt(cx ** 2 + cy ** 2);
+        const idx = Math.floor((dist / maxDist) * palette.length) % palette.length;
+        return palette[idx];
+      }
+      case 'random': {
+        // Deterministic random based on position
+        const hash = ((row * 31 + col) * 17) % palette.length;
+        return palette[hash];
+      }
+      case 'row': {
+        // Color by row
+        const idx = Math.floor((row / moduleCount) * palette.length) % palette.length;
+        return palette[idx];
+      }
+      case 'column': {
+        // Color by column
+        const idx = Math.floor((col / moduleCount) * palette.length) % palette.length;
+        return palette[idx];
+      }
+      case 'position':
+      default: {
+        // Cycle through palette based on linear position
+        const linearPos = row * moduleCount + col;
+        const idx = linearPos % palette.length;
+        return palette[idx];
+      }
+    }
+  }
+
+  /**
+   * Apply halftone rendering to a module
+   * @private
+   */
+  _drawHalftoneModule(ctx, x, y, size, brightness, config) {
+    const htCell = config.halftoneCell || 'per_module';
+    const htDot = config.halftoneDotShape || 'circle';
+    const htCurve = config.brightnessCurve || 'linear';
+    
+    // Apply brightness curve
+    let adjustedBrightness = brightness;
+    switch (htCurve) {
+      case 's-curve':
+        adjustedBrightness = brightness * brightness * (3 - 2 * brightness);
+        break;
+      case 'gamma':
+        adjustedBrightness = Math.pow(brightness, 2.2);
+        break;
+      default: // linear
+        break;
+    }
+    
+    // Calculate dot size based on brightness (darker = larger dot)
+    const minSize = 0.2;
+    const maxSize = 1.0;
+    const dotSizeRatio = minSize + (1 - adjustedBrightness) * (maxSize - minSize);
+    const dotSize = size * dotSizeRatio;
+    const offset = (size - dotSize) / 2;
+    
+    const centerX = x + size / 2;
+    const centerY = y + size / 2;
+    
+    switch (htDot) {
+      case 'circle':
+        ctx.beginPath();
+        ctx.arc(centerX, centerY, dotSize / 2, 0, Math.PI * 2);
+        ctx.fill();
+        break;
+        
+      case 'square':
+        ctx.fillRect(x + offset, y + offset, dotSize, dotSize);
+        break;
+        
+      case 'line': {
+        // Draw a line that varies in thickness
+        const lineWidth = dotSize * 0.8;
+        ctx.fillRect(x, y + (size - lineWidth) / 2, size, lineWidth);
+        break;
+      }
+        
+      case 'diamond':
+        ctx.beginPath();
+        ctx.moveTo(centerX, y + offset);
+        ctx.lineTo(x + size - offset, centerY);
+        ctx.lineTo(centerX, y + size - offset);
+        ctx.lineTo(x + offset, centerY);
+        ctx.closePath();
+        ctx.fill();
+        break;
+        
+      default:
+        ctx.beginPath();
+        ctx.arc(centerX, centerY, dotSize / 2, 0, Math.PI * 2);
+        ctx.fill();
+    }
+  }
+
+  /**
+   * Calculate ECC-aware weight for a module position
+   * Higher weight = more important to preserve
+   * @private
+   */
+  _getEccWeight(row, col, moduleCount, version, weightMap) {
+    switch (weightMap) {
+      case 'distance_to_finders': {
+        // Closer to finders = more important
+        const distTL = Math.sqrt(row * row + col * col);
+        const distTR = Math.sqrt(row * row + Math.pow(moduleCount - 1 - col, 2));
+        const distBL = Math.sqrt(Math.pow(moduleCount - 1 - row, 2) + col * col);
+        const minDist = Math.min(distTL, distTR, distBL);
+        const maxDist = Math.sqrt(2) * moduleCount / 2;
+        return 1 - (minDist / maxDist);
+      }
+      
+      case 'block_heatmap': {
+        // Center blocks are less critical than edge blocks
+        const centerRow = moduleCount / 2;
+        const centerCol = moduleCount / 2;
+        const distToCenter = Math.sqrt(
+          Math.pow(row - centerRow, 2) + Math.pow(col - centerCol, 2)
+        );
+        const maxDist = Math.sqrt(2) * moduleCount / 2;
+        return distToCenter / maxDist;
+      }
+      
+      case 'empirical_scan_heatmap': {
+        // Simulate typical scanner patterns - top-left to bottom-right priority
+        const scanProgress = (row + col) / (2 * moduleCount);
+        // Earlier in scan = more important
+        return 1 - scanProgress * 0.5;
+      }
+      
+      default:
+        return 0.5;
+    }
+  }
+
+  /**
+   * Check if modifying a module is safe given ECC-aware constraints
+   * @private
+   */
+  _isEccSafeToModify(row, col, moduleCount, version, config, modifiedCount, totalDataModules) {
+    if (!config.eccAwareEnabled) return true;
+    
+    const riskBudget = (config.eccAwareRiskBudget || 50) / 100;
+    const eccCapacity = { L: 0.07, M: 0.15, Q: 0.25, H: 0.3 };
+    const maxRisk = eccCapacity[config.errorCorrection] || 0.25;
+    const allowedModifications = Math.floor(totalDataModules * maxRisk * riskBudget);
+    
+    if (modifiedCount >= allowedModifications) return false;
+    
+    const weight = this._getEccWeight(row, col, moduleCount, version, config.eccAwareWeightMap || 'distance_to_finders');
+    
+    // Higher weight modules are less likely to be modified
+    return Math.random() > weight * 0.5;
   }
 }

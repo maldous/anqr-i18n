@@ -9,7 +9,8 @@ export const privacy: PageDefinition = {
     {
       heading: 'Summary',
       paragraphs: [
-        'ANQR is a QR code generator that runs entirely on your device. We do not require you to create an account, and QR codes are generated locally - we do not have access to the content you encode.',
+        'ANQR is a QR code generator with a client-first approach. We do not require you to create an account. By default, QR codes are generated locally in your browser — we do not have access to the content you encode.',
+        'For professional use, ANQR provides a server-side API that generates QR codes from URL parameters. When using the API, your QR content is processed on our servers to render the image, but is not stored or logged.',
         'We use Google AdSense for advertising and may use analytics services. These services collect information through cookies and similar technologies. This policy explains what data is collected, how it is used, and your rights.',
       ],
     },

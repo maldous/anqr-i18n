@@ -9,7 +9,7 @@ export const docs: PageDefinition = {
     {
       heading: 'Getting Started',
       paragraphs: [
-        'ANQR is a QR code generator that runs entirely on your device - your computer, phone, or tablet. No account is required, no servers are involved, and your data stays private.',
+        'ANQR is a client-first QR code generator that primarily runs on your device - your computer, phone, or tablet. No account is required, and your data stays on your device by default. For professional use cases, an optional server-side API is available for automated generation and embedding.',
         'The interface has three interface levels: Basic, Advanced, and Professional. Select your level using the tabs in the header. Each level unlocks additional features while keeping the interface focused on what you need.',
       ],
       bullets: [
@@ -557,6 +557,248 @@ export const docs: PageDefinition = {
       ],
     },
     {
+      heading: 'API Reference',
+      paragraphs: [
+        'ANQR provides a server-side API for automated QR code generation. This is useful for embedding QR codes in websites, generating codes programmatically, or integrating with other services.',
+        'Base URL: https://anqr.link/api/qr',
+        'All parameters are passed as URL query parameters. The API returns the generated QR code image directly.',
+      ],
+    },
+    {
+      heading: 'Basic Parameters',
+      paragraphs: [
+        'Core parameters for QR code generation:',
+      ],
+      bullets: [
+        'data (required): The content to encode in the QR code. URL-encode special characters.',
+        'size: Output size in pixels (default: 400, max: 2000).',
+        'w: Output width in pixels (overrides size).',
+        'h: Output height in pixels (overrides size).',
+        'ec: Error correction level - L, M, Q, or H (default: H).',
+        'v: QR version 1-40, or 0 for auto (default: 0).',
+        'enc: Encoding mode - auto, numeric, alphanumeric, byte, kanji (default: auto).',
+        'format: Output format - png, gif, webp, svg (default: png).',
+        'fg: Foreground color as hex without # (default: 000000).',
+        'bg: Background color as hex without # (default: ffffff).',
+        'transparent: Set to 1 for transparent background.',
+        'margin: Quiet zone modules 0-20 (default: 4).',
+        'border: Extra border modules 0-10 (default: 0).',
+      ],
+    },
+    {
+      heading: 'Style Parameters',
+      paragraphs: [
+        'Customize the visual appearance:',
+      ],
+      bullets: [
+        'style: Module style - square, rounded, dots, diamond, connected (default: square).',
+        'finder: Finder pattern style - square, rounded, circle (default: square).',
+        'align: Alignment pattern style - match_finder, square, rounded, circle.',
+        'timing: Timing pattern style - match_module, solid, dashed.',
+        'eyeOuter: Eye outer ring style - square, rounded, circle.',
+        'eyeInner: Eye inner style - square, rounded, circle.',
+        'eyeScale: Eye scale percentage 50-150 (default: 100).',
+        'radius: Corner radius percentage 0-100 (default: 0).',
+        'gap: Module gap percentage 0-50 (default: 0).',
+        'gapMode: Gap rendering - none, inset, stroke, negative_space.',
+        'dotRot: Dot/diamond rotation in degrees.',
+        'frame: Frame style - none, rounded_frame, sticker, tag.',
+        'frameText: Text to show in frame (URL encoded).',
+        'crisp: Crisp edges 0/1 (default: 1).',
+        'snap: Pixel snap - floor, round, ceil (default: floor).',
+      ],
+    },
+    {
+      heading: 'Color and Gradient Parameters',
+      paragraphs: [
+        'Advanced color options:',
+      ],
+      bullets: [
+        'grad: Gradient type - none, linear, radial, conic.',
+        'gradAngle: Gradient angle in degrees for linear (default: 0).',
+        'gradStops: Gradient color stops as hex,pos,hex,pos (e.g., ff0000,0,0000ff,1).',
+        'modColor: Per-module color mode - solid, by_brightness, by_position, by_overlay, by_cluster.',
+        'palette: Custom color palette as comma-separated hex colors.',
+        'paletteMode: Palette assignment mode - position, brightness, diagonal, radial, random, row, column.',
+        'cGuard: Contrast guard 0/1 (default: 0).',
+        'minContrast: Minimum contrast ratio (default: 4.5).',
+      ],
+    },
+    {
+      heading: 'Overlay Parameters',
+      paragraphs: [
+        'Add image overlays to QR codes:',
+      ],
+      bullets: [
+        'img: URL of overlay image (must be publicly accessible).',
+        'mode: Overlay blend mode - center_logo, blend, halftone, dithered, mosaic, gap_fill, brightness, duotone, subpixel, blue_noise.',
+        'intensity: Overlay intensity 0-100 (default: 100).',
+        'logoSize: Center logo size percentage 5-50 (default: 25).',
+        'colorMode: Image processing - color, grayscale, bw.',
+        'fit: Image fit mode - cover, contain, stretch (default: cover).',
+        'rot: Rotation in degrees (default: 0).',
+        'flipX: Flip horizontally 0/1 (default: 0).',
+        'flipY: Flip vertically 0/1 (default: 0).',
+      ],
+    },
+    {
+      heading: 'Overlay Preprocessing Parameters',
+      paragraphs: [
+        'Adjust the overlay image before blending:',
+      ],
+      bullets: [
+        'brightness: Brightness adjustment -100 to 100 (default: 0).',
+        'contrast: Contrast adjustment -100 to 100 (default: 0).',
+        'gamma: Gamma adjustment 0.1-3 (default: 1).',
+        'saturation: Saturation adjustment -100 to 100 (default: 0).',
+        'hue: Hue rotation in degrees 0-360 (default: 0).',
+        'blur: Blur in pixels 0-20 (default: 0).',
+        'sharpen: Sharpen amount 0-100 (default: 0).',
+        'posterize: Posterize levels 0-16 (default: 0).',
+        'threshold: Binary threshold 0-255 (default: 128).',
+        'edge: Edge detection - off, sobel, canny (default: off).',
+        'invert: Invert colors 0/1 (default: 0).',
+      ],
+    },
+    {
+      heading: 'Protection Parameters',
+      paragraphs: [
+        'Control which QR elements are protected:',
+      ],
+      bullets: [
+        'keepFinders: Preserve finder patterns 0/1 (default: 1).',
+        'keepTiming: Preserve timing patterns 0/1 (default: 0).',
+        'keepAlign: Preserve alignment patterns 0/1 (default: 0).',
+        'protectFmt: Protect format info 0/1 (default: 0).',
+        'protectVer: Protect version info 0/1 (default: 0).',
+        'eccAware: ECC-aware mode 0/1 (default: 0).',
+        'eccRisk: ECC risk budget 0-100 (default: 50).',
+        'eccMap: ECC weight map - distance_to_finders, block_heatmap, empirical_scan_heatmap.',
+        'maxIntL: Max overlay intensity for ECC L (default: 100).',
+        'maxIntM: Max overlay intensity for ECC M (default: 100).',
+        'maxIntQ: Max overlay intensity for ECC Q (default: 100).',
+        'maxIntH: Max overlay intensity for ECC H (default: 100).',
+      ],
+    },
+    {
+      heading: 'Dithering Parameters',
+      paragraphs: [
+        'Control dithering when using dithered blend modes:',
+      ],
+      bullets: [
+        'ditherKind: Dither algorithm - error_diffusion, ordered, clustered_dot, void_cluster, blue_noise, etc.',
+        'diffusionKernel: Error diffusion kernel - floyd_steinberg, jarvis_judice_ninke, stucki, burkes, sierra, atkinson.',
+        'ditherStrength: Dither strength 0-100 (default: 50).',
+        'serpentine: Serpentine scanning 0/1 (default: 0).',
+        'matrix: Ordered matrix - bayer2, bayer4, bayer8, etc.',
+        'bnTile: Blue noise tile size (default: 64).',
+        'bnSeed: Blue noise seed (default: 0).',
+        'colorDither: Color dithering - none, per_channel, perceptual.',
+      ],
+    },
+    {
+      heading: 'Subpixel Parameters',
+      paragraphs: [
+        'Control subpixel blend mode:',
+      ],
+      bullets: [
+        'spGrid: Subpixel grid - 2x2, 3x3, 4x4 (default: 3x3).',
+        'spCenter: Center rule - strict, halftone_center (default: strict).',
+        'spNeutral: Neutral color hex without # (default: 808080).',
+        'spFinder: Finder override - solid, stylized (default: solid).',
+      ],
+    },
+    {
+      heading: 'Halftone and Duotone Parameters',
+      paragraphs: [
+        'Control halftone and duotone blend modes:',
+      ],
+      bullets: [
+        'htCell: Halftone cell size - per_module or NxN.',
+        'htDot: Halftone dot shape - circle, square, line.',
+        'htCurve: Brightness curve - linear, s-curve, gamma.',
+        'duo1: Duotone shadow color hex without # (default: 000000).',
+        'duo2: Duotone highlight color hex without # (default: ffffff).',
+      ],
+    },
+    {
+      heading: 'Watermark Parameters',
+      paragraphs: [
+        'Add watermarks to generated codes:',
+      ],
+      bullets: [
+        'wmEn: Enable watermark 0/1 (default: 0).',
+        'wmKind: Watermark type - text, image, pattern (default: text).',
+        'wmText: Watermark text (URL encoded).',
+        'wmImg: URL of watermark image (for image/pattern types).',
+        'wmPos: Position - center, corners, edges, behind, quiet_zone (default: center).',
+        'wmOpacity: Opacity 0-100 (default: 50).',
+        'wmBlend: Blend mode - normal, multiply, screen, overlay (default: normal).',
+      ],
+    },
+    {
+      heading: 'Animation Parameters',
+      paragraphs: [
+        'Create animated GIF output (requires format=gif):',
+      ],
+      bullets: [
+        'animPattern: Animation effect - none, pulse, wave, scanline, shimmer, drift, color_cycle.',
+        'animFrames: Number of frames 1-60 (default: 24).',
+        'animSpeed: Frame delay in milliseconds 10-1000 (default: 100).',
+        'animSeed: Random seed for reproducible animations.',
+        'easing: Animation easing - linear, ease_in, ease_out, ease_in_out, bounce.',
+      ],
+    },
+    {
+      heading: 'Output Quality Parameters',
+      paragraphs: [
+        'Control output format and quality:',
+      ],
+      bullets: [
+        'quality: General quality 0-1 for lossy formats (default: 0.9).',
+        'webpQ: WebP quality 0-100 (default: 90).',
+        'gifColors: GIF palette size 2-256 (default: 256).',
+        'dpi: DPI metadata for PNG 1-1200 (default: 72).',
+      ],
+    },
+    {
+      heading: 'Metadata Parameters',
+      paragraphs: [
+        'Embed metadata in PNG output:',
+      ],
+      bullets: [
+        'metaTitle: Image title (URL encoded).',
+        'metaAuthor: Author name (URL encoded).',
+        'metaCopy: Copyright notice (URL encoded).',
+        'metaDesc: Image description (URL encoded).',
+      ],
+    },
+    {
+      heading: 'API Examples',
+      paragraphs: [
+        'Basic QR code:',
+        'https://anqr.link/api/qr?data=https://example.com&size=300',
+        'Styled QR code with rounded modules:',
+        'https://anqr.link/api/qr?data=Hello&style=rounded&fg=336699&radius=30',
+        'QR code with image overlay:',
+        'https://anqr.link/api/qr?data=https://example.com&img=https://example.com/logo.png&mode=center_logo&ec=H',
+        'Animated QR code:',
+        'https://anqr.link/api/qr?data=Scan%20Me&format=gif&animPattern=pulse&animFrames=24&easing=ease_in_out',
+        'QR code with watermark:',
+        'https://anqr.link/api/qr?data=https://example.com&wmEn=1&wmText=SAMPLE&wmPos=center&wmOpacity=30',
+      ],
+    },
+    {
+      heading: 'Embedding QR Codes',
+      paragraphs: [
+        'In Professional mode, the Share feature generates embed code for websites. You can embed QR codes using either the API URL directly or the generated HTML.',
+        'Direct image embedding:',
+        '<img src="https://anqr.link/api/qr?data=YOUR_DATA" alt="QR Code" />',
+        'The embed HTML includes responsive sizing and accessibility attributes. All your current settings are encoded in the URL, so recipients see the exact same QR code.',
+        'Note: When using local file overlays, the image cannot be embedded via URL. Use a publicly accessible image URL instead.',
+      ],
+    },
+    {
       heading: 'Best Practices',
       paragraphs: [
         'Follow these guidelines for reliable QR codes:',
@@ -590,12 +832,6 @@ export const docs: PageDefinition = {
       heading: 'Keyboard Shortcuts',
       paragraphs: [
         'ANQR supports standard keyboard shortcuts. Use Ctrl/Cmd+S to trigger export (when focused on the preview).',
-      ],
-    },
-    {
-      heading: 'Sharing & Embedding',
-      paragraphs: [
-        'In Professional mode, click the Share button to copy a URL with your current settings. Recipients can open this URL to see your exact configuration. Note: Overlay images from local files cannot be shared via URL.',
       ],
     },
   ],

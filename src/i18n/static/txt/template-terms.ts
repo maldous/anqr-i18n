@@ -3,8 +3,7 @@ import { LAST_UPDATED, CONTACT_EMAIL } from '../types'
 
 export const terms: PageDefinition = {
   title: '443',
-  description:
-    '444',
+  description: '444',
   lastUpdated: LAST_UPDATED,
   sections: [
     {
@@ -17,7 +16,7 @@ export const terms: PageDefinition = {
     {
       heading: '448',
       paragraphs: [
-        "449",
+        '449',
       ],
     },
     {
@@ -28,7 +27,9 @@ export const terms: PageDefinition = {
     },
     {
       heading: '452',
-      paragraphs: ['453'],
+      paragraphs: [
+        '453',
+      ],
       bullets: [
         '454',
         '455',
@@ -51,6 +52,7 @@ export const terms: PageDefinition = {
       heading: '465',
       paragraphs: [
         '466',
+        '504',
       ],
     },
     {
@@ -86,7 +88,7 @@ export const terms: PageDefinition = {
     {
       heading: '481',
       paragraphs: [
-        `482`,
+        '482',
         '483',
       ],
     },
@@ -135,7 +137,11 @@ export const terms: PageDefinition = {
     },
     {
       heading: '499',
-      paragraphs: [`500`],
+      paragraphs: [
+        '500',
+      ],
     },
   ],
 }
+
+export default terms;

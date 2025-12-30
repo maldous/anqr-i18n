@@ -927,6 +927,7 @@
   },
   "nav": {
     "about": "About",
+    "api": "API",
     "contact": "Contact",
     "docs": "Guide",
     "gallery": "Gallery",
@@ -1360,6 +1361,14 @@
   },
   "render": {
     "addColor": "Add Color",
+    "paletteMode": "Palette Mode",
+    "paletteModePosition": "Sequential (Position)",
+    "paletteModeBrightness": "By Brightness",
+    "paletteModeDiagonal": "Diagonal",
+    "paletteModeRadial": "Radial",
+    "paletteModeRandom": "Random",
+    "paletteModeRow": "By Row",
+    "paletteModeColumn": "By Column",
     "alignmentStyle": "Alignment Pattern Style",
     "background": "Background",
     "byBrightness": "By Brightness",
@@ -1452,7 +1461,16 @@
     "simulateNoise": "Simulate Noise",
     "simulateRotation": "Simulate Rotation",
     "strict": "Strict",
-    "untilScannable": "Until scannable"
+    "untilScannable": "Until scannable",
+    "eccAwareMode": "ECC-Aware Mode",
+    "eccAwareEnabled": "Enable ECC-Aware",
+    "eccAwareDesc": "Limit overlay modifications based on error correction capacity",
+    "eccAwareRiskBudget": "Risk Budget",
+    "eccAwareRiskBudgetDesc": "Percentage of ECC capacity to use for overlay (lower = safer)",
+    "eccAwareWeightMap": "Weight Map",
+    "eccMapDistanceToFinders": "Distance to Finders",
+    "eccMapBlockHeatmap": "Block Heatmap",
+    "eccMapEmpiricalScan": "Empirical Scan Heatmap"
   },
   "sections": {
     "animation": "Animation",

@@ -62,8 +62,8 @@ export function WatermarkSection() {
             </div>
           )}
 
-          {/* Image Upload */}
-          {watermark.kind === 'image' && (
+          {/* Image Upload - for image and pattern types (pattern uses image as tile source) */}
+          {(watermark.kind === 'image' || watermark.kind === 'pattern') && (
             <div className="space-y-2">
               <Label><HighlightedLabel>{t('watermark.image')}</HighlightedLabel></Label>
               <input 

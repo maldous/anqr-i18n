@@ -7,7 +7,7 @@ import { Switch } from '@/components/ui/switch'
 import { HighlightedLabel } from '@/lib/search-context'
 
 export function SafetySection() {
-  const { safety, qa, auto, setSafetyMode, setSafetyMinModulePx, setSafetyLocks, setQaContrastCheck, setQaSimulateBlur, setQaShowHeatmap, setAutoPickVersion, setAutoPickEcc } = useQRStore()
+  const { safety, qa, auto, overlay, setSafetyMode, setSafetyMinModulePx, setSafetyLocks, setQaContrastCheck, setQaSimulateBlur, setQaShowHeatmap, setAutoPickVersion, setAutoPickEcc } = useQRStore()
   const { t } = useTranslation()
 
   return (
@@ -194,6 +194,58 @@ export function SafetySection() {
             onCheckedChange={(checked) => useQRStore.setState((s) => ({ auto: { ...s.auto, reduceIntensityUntilSafe: checked } }))}
           />
         </div>
+      </div>
+
+      {/* ECC-Aware Mode */}
+      <div className="space-y-2 pt-2 border-t">
+        <Label className="text-muted-foreground"><HighlightedLabel>{t('safety.eccAwareMode')}</HighlightedLabel></Label>
+        
+        <div className="flex items-center justify-between">
+          <div>
+            <Label className="text-sm"><HighlightedLabel>{t('safety.eccAwareEnabled')}</HighlightedLabel></Label>
+            <p className="text-xs text-muted-foreground">{t('safety.eccAwareDesc')}</p>
+          </div>
+          <Switch 
+            checked={overlay.eccAwareEnabled}
+            onCheckedChange={(checked) => useQRStore.setState((s) => ({ overlay: { ...s.overlay, eccAwareEnabled: checked } }))}
+          />
+        </div>
+
+        {overlay.eccAwareEnabled && (
+          <>
+            <div className="space-y-2">
+              <div className="flex items-center justify-between">
+                <Label className="text-sm"><HighlightedLabel>{t('safety.eccAwareRiskBudget')}</HighlightedLabel></Label>
+                <span className="text-sm text-muted-foreground">{t('qr.nPercent', { count: overlay.eccAwareRiskBudget })}</span>
+              </div>
+              <Slider
+                value={[overlay.eccAwareRiskBudget]}
+                onValueChange={([v]) => useQRStore.setState((s) => ({ overlay: { ...s.overlay, eccAwareRiskBudget: v } }))}
+                min={0}
+                max={100}
+                step={5}
+              />
+              <p className="text-xs text-muted-foreground">{t('safety.eccAwareRiskBudgetDesc')}</p>
+            </div>
+
+            <div className="space-y-2">
+              <Label className="text-sm"><HighlightedLabel>{t('safety.eccAwareWeightMap')}</HighlightedLabel></Label>
+              <Select 
+                value={overlay.eccAwareWeightMap} 
+                onValueChange={(v) => useQRStore.setState((s) => ({ overlay: { ...s.overlay, eccAwareWeightMap: v as 'distance_to_finders' | 'block_heatmap' | 'empirical_scan_heatmap' } }))}
+              >
+                <SelectTrigger>
+                  <SelectValue />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="distance_to_finders">{t('safety.eccMapDistanceToFinders')}</SelectItem>
+                  <SelectItem value="block_heatmap">{t('safety.eccMapBlockHeatmap')}</SelectItem>
+                  <SelectItem value="empirical_scan_heatmap">{t('safety.eccMapEmpiricalScan')}</SelectItem>
+                </SelectContent>
+              </Select>
+            </div>
+          </>
+        )}
       </div>
     </div>
   )

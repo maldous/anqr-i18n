@@ -299,6 +299,7 @@ export interface QRState {
     bgColor: string
     bgTransparent: boolean
     palette: string[]
+  paletteMode: 'position' | 'brightness' | 'diagonal' | 'radial' | 'random' | 'row' | 'column'
     gradient: {
       type: GradientType
       stops: GradientStop[]
@@ -666,6 +667,7 @@ export const useQRStore = create<QRState>((set, get) => ({
     bgColor: '#ffffff',
     bgTransparent: false,
     palette: [],
+    paletteMode: 'position',
     gradient: { type: 'none', stops: [] },
     perModuleColorMode: 'solid',
     contrastGuard: false,

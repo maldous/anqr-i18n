@@ -430,6 +430,30 @@ export function RenderSection() {
             </div>
           </div>
 
+          {/* Palette Mode - only show when palette has colors */}
+          {render.palette.length > 0 && (
+            <div className="space-y-2">
+              <Label><HighlightedLabel>{t('render.paletteMode')}</HighlightedLabel></Label>
+              <Select 
+                value={render.paletteMode} 
+                onValueChange={(v) => useQRStore.setState((s) => ({ render: { ...s.render, paletteMode: v as typeof render.paletteMode } }))}
+              >
+                <SelectTrigger title={t('hints.paletteMode')}>
+                  <SelectValue />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="position">{t('render.paletteModePosition')}</SelectItem>
+                  <SelectItem value="brightness">{t('render.paletteModeBrightness')}</SelectItem>
+                  <SelectItem value="diagonal">{t('render.paletteModeDiagonal')}</SelectItem>
+                  <SelectItem value="radial">{t('render.paletteModeRadial')}</SelectItem>
+                  <SelectItem value="random">{t('render.paletteModeRandom')}</SelectItem>
+                  <SelectItem value="row">{t('render.paletteModeRow')}</SelectItem>
+                  <SelectItem value="column">{t('render.paletteModeColumn')}</SelectItem>
+                </SelectContent>
+              </Select>
+            </div>
+          )}
+
           {/* Contrast Guard */}
           <div className="flex items-center justify-between">
             <Label><HighlightedLabel>{t('render.contrastGuard')}</HighlightedLabel></Label>

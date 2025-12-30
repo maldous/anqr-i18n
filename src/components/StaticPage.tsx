@@ -67,6 +67,7 @@ function buildDocsToc(sections: PageSection[], t: (key: string) => string): TocG
     { title: t('tiers.basic'), items: [] },
     { title: t('tiers.advanced'), items: [] },
     { title: t('tiers.professional'), items: [] },
+    { title: t('nav.api'), items: [] },
     { title: t('payload.other'), items: [] },
   ]
   
@@ -77,7 +78,8 @@ function buildDocsToc(sections: PageSection[], t: (key: string) => string): TocG
     if (sectionIndex <= 4) return 1   // Basic Features: sections 2-4
     if (sectionIndex <= 35) return 2  // Advanced Features: sections 5-35
     if (sectionIndex <= 47) return 3  // Pro Features: sections 36-47
-    return 4                          // Other: sections 48+
+    if (sectionIndex <= 63) return 4  // API Reference: sections 48-63
+    return 5                          // Other (Best Practices+): sections 64+
   }
   
   sections.forEach((section, index) => {

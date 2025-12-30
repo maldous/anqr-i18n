@@ -1,0 +1,1473 @@
+/**
+ * Netlify Function: QR Code Image Generator
+ * 
+ * Generates QR code images server-side for embedding via <img> tags.
+ * Uses the same QRGenerator as the main app with a Node.js canvas factory.
+ * Supports PNG, WebP, GIF output with watermarks and metadata embedding.
+ * 
+ * Usage: GET /api/qr?data=https://example.com&size=200&fg=000000&bg=ffffff
+ * 
+ * Parameters:
+ * - data: The content to encode (required)
+ * - size: Image size in pixels (default: 400, max: 2000) - used if w/h not specified
+ * - w: Output width in pixels (overrides size)
+ * - h: Output height in pixels (overrides size)
+ * - format: Output format - png/webp/gif (default: png)
+ * - quality: Output quality 0-1 for webp (default: 0.9)
+ * - fg: Foreground color hex without # (default: 000000)
+ * - bg: Background color hex without # (default: ffffff)
+ * - ec: Error correction level L/M/Q/H (default: H)
+ * - v: QR version 1-40 (default: 0 = auto)
+ * - enc: Encoding mode - auto/numeric/alphanumeric/byte/kanji (default: auto)
+ * - margin: Quiet zone modules (default: 4)
+ * - border: Extra border modules (default: 0)
+ * - crisp: Crisp edges 0/1 (default: 1)
+ * - snap: Pixel snap - floor/round/ceil (default: floor)
+ * - style: Module style - square/rounded/dots/diamond/connected (default: square)
+ * - finder: Finder style - square/rounded/circle (default: square)
+ * - align: Alignment pattern style - match_finder/square/rounded/circle (default: match_finder)
+ * - timing: Timing pattern style - match_module/solid/dashed (default: match_module)
+ * - eyeOuter: Eye outer style - square/rounded/circle
+ * - eyeInner: Eye inner style - square/rounded/circle  
+ * - eyeScale: Eye scale percentage (default: 100)
+ * - radius: Corner radius percentage 0-100 (default: 0)
+ * - gap: Module gap percentage (default: 0)
+ * - gapMode: Gap mode - none/inset/stroke/negative_space
+ * - frame: Frame style - none/rounded_frame/sticker/tag
+ * - frameText: Text to show in frame
+ * - grad: Gradient type - none/linear/radial/conic
+ * - gradAngle: Gradient angle for linear (default: 0)
+ * - gradStops: Gradient stops as color1,pos1,color2,pos2,... (e.g. ff0000,0,0000ff,1)
+ * - modColor: Per-module color mode - solid/by_brightness/by_position/by_overlay/by_cluster
+ * - cGuard: Contrast guard 0/1 (default: 0)
+ * - minContrast: Minimum contrast ratio (default: 4.5)
+ * - img: URL to overlay image (fetched server-side)
+ * - mode: Overlay mode - center/halftone/blend/brightness/mosaic/dithered/blue-noise/subpixel
+ * - intensity: Overlay intensity 0-100 (default: 100)
+ * - colorMode: Overlay color mode - color/grayscale/bw
+ * - transparent: Set to 1 for transparent background
+ * - keepFinders: Preserve finder patterns (default: 1)
+ * - keepTiming: Preserve timing patterns (default: 0)
+ * - keepAlign: Preserve alignment patterns (default: 0)
+ * - protectFmt: Protect format info (default: 0)
+ * - protectVer: Protect version info (default: 0)
+ * - eccAware: ECC-aware mode (default: 0)
+ * - eccRisk: ECC risk budget 0-100 (default: 50)
+ * - eccMap: ECC weight map - distance_to_finders/block_heatmap/empirical_scan_heatmap
+ * - brightness: Overlay brightness adjustment -100 to 100 (default: 0)
+ * - contrast: Overlay contrast adjustment -100 to 100 (default: 0)
+ * - gamma: Overlay gamma 0.1 to 3 (default: 1)
+ * - saturation: Overlay saturation -100 to 100 (default: 0)
+ * - hue: Overlay hue rotation in degrees (default: 0)
+ * - invert: Invert overlay colors (default: 0)
+ * - blur: Overlay blur in pixels (default: 0)
+ * - sharpen: Overlay sharpen 0-100 (default: 0)
+ * - posterize: Overlay posterize levels (default: 0)
+ * - threshold: Overlay threshold 0-255 (default: 128)
+ * - edge: Edge detection - off/sobel/canny (default: off)
+ * - fit: Overlay fit mode - cover/contain/stretch (default: cover)
+ * - rot: Overlay rotation in degrees (default: 0)
+ * - flipX: Flip overlay horizontally (default: 0)
+ * - flipY: Flip overlay vertically (default: 0)
+ * - ditherKind: Dither algorithm (default: error_diffusion)
+ * - diffusionKernel: Diffusion kernel - floyd_steinberg/jarvis_judice_ninke/stucki/etc
+ * - ditherStrength: Dither strength 0-100 (default: 50)
+ * - serpentine: Serpentine dithering 0/1 (default: 0)
+ * - matrix: Ordered dither matrix - bayer2/bayer4/bayer8/etc
+ * - bnTile: Blue noise tile size (default: 64)
+ * - bnSeed: Blue noise seed (default: 0)
+ * - colorDither: Color dither - none/per_channel/perceptual
+ * - spGrid: Subpixel grid size - 2x2/3x3/4x4
+ * - spCenter: Subpixel center rule - strict/halftone_center
+ * - spNeutral: Subpixel neutral color hex (default: 808080)
+ * - spFinder: Subpixel finder override - solid/stylized
+ * - htCell: Halftone cell - per_module/n×n
+ * - htDot: Halftone dot shape - circle/square/line
+ * - htCurve: Brightness curve - linear/s-curve/gamma
+ * - duo1: Duotone color 1 hex (default: 000000)
+ * - duo2: Duotone color 2 hex (default: ffffff)
+ * - wmEn: Watermark enabled 0/1 (default: 0)
+ * - wmKind: Watermark kind - text/image/pattern (default: text)
+ * - wmText: Watermark text (URL encoded)
+ * - wmPos: Watermark position - center/corners/edges/behind/quiet_zone (default: center)
+ * - wmOpacity: Watermark opacity 0-100 (default: 50)
+ * - wmBlend: Watermark blend - normal/multiply/screen/overlay (default: normal)
+ * - wmImg: URL to watermark image (for image/pattern watermark types)
+ * - animPattern: Animation pattern for GIF - none/pulse/wave/scanline/shimmer/drift/color_cycle
+ * - animFrames: Number of animation frames 1-60 (default: 24)
+ * - animSpeed: Animation frame delay in ms 10-1000 (default: 100)
+ * - animSeed: Animation random seed (default: 0)
+ * - easing: Animation easing function - linear/ease_in/ease_out/ease_in_out/bounce (default: linear)
+ * - webpQ: WebP quality 0-100 (default: 90)
+ * - gifColors: GIF palette size 2-256 (default: 256)
+ * - metaTitle: PNG metadata title
+ * - metaAuthor: PNG metadata author
+ * - metaCopy: PNG metadata copyright
+ * - metaDesc: PNG metadata description
+ * - dpi: Output DPI for PNG (default: 72)
+ */
+
+import { createCanvas, loadImage, type Canvas, type SKRSContext2D } from '@napi-rs/canvas'
+import gifenc from 'gifenc'
+const { GIFEncoder, quantize, applyPalette } = gifenc
+import { parseGIF, decompressFrames } from 'gifuct-js'
+// @ts-ignore - JS module
+import { QRGenerator } from "../../src/modules/qr-generator.js"
+
+type ECCLevel = 'L' | 'M' | 'Q' | 'H'
+type OutputFormat = 'png' | 'webp' | 'gif'
+type WatermarkKind = 'text' | 'image' | 'pattern'
+type WatermarkPosition = 'center' | 'corners' | 'edges' | 'behind' | 'quiet_zone'
+type WatermarkBlend = 'normal' | 'multiply' | 'screen' | 'overlay'
+
+/**
+ * Node.js canvas factory using @napi-rs/canvas
+ */
+const nodeCanvasFactory = {
+  createCanvas: async (width: number, height: number) => {
+    return createCanvas(width, height)
+  },
+  loadImage: async (src: string) => {
+    return loadImage(src)
+  }
+}
+
+// ============================================
+// WATERMARK FUNCTIONS (server-side adaptation)
+// ============================================
+
+/**
+ * Create a text watermark canvas (server-side)
+ */
+function createTextWatermark(
+  text: string,
+  fontSize: number = 14,
+  fontFamily: string = 'sans-serif',
+  color: string = '#000000'
+): Canvas {
+  // First measure the text
+  const measureCanvas = createCanvas(1, 1)
+  const measureCtx = measureCanvas.getContext('2d')
+  measureCtx.font = `${fontSize}px ${fontFamily}`
+  const metrics = measureCtx.measureText(text)
+  const textHeight = fontSize * 1.2
+
+  const canvas = createCanvas(Math.ceil(metrics.width) + 10, Math.ceil(textHeight) + 10)
+  const ctx = canvas.getContext('2d')
+
+  ctx.font = `${fontSize}px ${fontFamily}`
+  ctx.fillStyle = color
+  ctx.textBaseline = 'middle'
+  ctx.fillText(text, 5, canvas.height / 2)
+
+  return canvas
+}
+
+/**
+ * Get watermark positions based on position type
+ */
+function getWatermarkPositions(
+  position: WatermarkPosition,
+  canvasWidth: number,
+  canvasHeight: number,
+  watermarkWidth: number,
+  watermarkHeight: number,
+  margin: number = 10
+): Array<{ x: number; y: number }> {
+  const positions: Array<{ x: number; y: number }> = []
+
+  switch (position) {
+    case 'center':
+      positions.push({
+        x: (canvasWidth - watermarkWidth) / 2,
+        y: (canvasHeight - watermarkHeight) / 2,
+      })
+      break
+
+    case 'corners':
+      positions.push(
+        { x: margin, y: margin },
+        { x: canvasWidth - watermarkWidth - margin, y: margin },
+        { x: margin, y: canvasHeight - watermarkHeight - margin },
+        { x: canvasWidth - watermarkWidth - margin, y: canvasHeight - watermarkHeight - margin }
+      )
+      break
+
+    case 'edges':
+      positions.push(
+        { x: (canvasWidth - watermarkWidth) / 2, y: margin },
+        { x: (canvasWidth - watermarkWidth) / 2, y: canvasHeight - watermarkHeight - margin },
+        { x: margin, y: (canvasHeight - watermarkHeight) / 2 },
+        { x: canvasWidth - watermarkWidth - margin, y: (canvasHeight - watermarkHeight) / 2 }
+      )
+      break
+
+    case 'quiet_zone':
+      positions.push(
+        { x: margin / 2, y: canvasHeight - watermarkHeight - margin / 2 }
+      )
+      break
+
+    case 'behind':
+    default:
+      positions.push({
+        x: (canvasWidth - watermarkWidth) / 2,
+        y: (canvasHeight - watermarkHeight) / 2,
+      })
+  }
+
+  return positions
+}
+
+/**
+ * Apply blend mode to context
+ */
+function applyBlendMode(ctx: SKRSContext2D, blend: WatermarkBlend): void {
+  switch (blend) {
+    case 'multiply':
+      ctx.globalCompositeOperation = 'multiply'
+      break
+    case 'screen':
+      ctx.globalCompositeOperation = 'screen'
+      break
+    case 'overlay':
+      ctx.globalCompositeOperation = 'overlay'
+      break
+    case 'normal':
+    default:
+      ctx.globalCompositeOperation = 'source-over'
+      break
+  }
+}
+
+interface WatermarkOptions {
+  enabled: boolean
+  kind: WatermarkKind
+  text: string
+  imageCanvas?: Canvas | null
+  position: WatermarkPosition
+  opacity: number
+  blend: WatermarkBlend
+}
+
+/**
+ * Apply watermark to a canvas (server-side)
+ */
+function applyWatermarkServer(
+  source: Canvas,
+  options: WatermarkOptions
+): Canvas {
+  if (!options.enabled || (options.kind === 'text' && !options.text)) {
+    return source
+  }
+
+  const result = createCanvas(source.width, source.height)
+  const ctx = result.getContext('2d')
+
+  // For 'behind' position, draw watermark first
+  if (options.position === 'behind') {
+    drawWatermarkLayerServer(ctx, options, source.width, source.height)
+    ctx.drawImage(source, 0, 0)
+  } else {
+    ctx.drawImage(source, 0, 0)
+    drawWatermarkLayerServer(ctx, options, source.width, source.height)
+  }
+
+  return result
+}
+
+/**
+ * Draw watermark layer (server-side)
+ */
+function drawWatermarkLayerServer(
+  ctx: SKRSContext2D,
+  options: WatermarkOptions,
+  canvasWidth: number,
+  canvasHeight: number
+): void {
+  let watermarkCanvas: Canvas | null = null
+
+  if (options.kind === 'text' && options.text) {
+    watermarkCanvas = createTextWatermark(options.text, 14, 'sans-serif', '#000000')
+  } else if ((options.kind === 'image' || options.kind === 'pattern') && options.imageCanvas) {
+    watermarkCanvas = options.imageCanvas
+  }
+
+  if (!watermarkCanvas) return
+
+  ctx.save()
+  applyBlendMode(ctx, options.blend)
+  ctx.globalAlpha = options.opacity / 100
+
+  const positions = getWatermarkPositions(
+    options.position,
+    canvasWidth,
+    canvasHeight,
+    watermarkCanvas.width,
+    watermarkCanvas.height,
+    10
+  )
+
+  for (const pos of positions) {
+    ctx.drawImage(watermarkCanvas, pos.x, pos.y)
+  }
+
+  ctx.restore()
+}
+
+// ============================================
+// PNG METADATA EMBEDDING
+// ============================================
+
+interface PngMetadata {
+  title?: string
+  author?: string
+  description?: string
+  copyright?: string
+  creationTime?: string
+  software?: string
+}
+
+/**
+ * CRC32 calculation for PNG chunks
+ */
+function calculateCrc32(data: Uint8Array): number {
+  let crc = 0xFFFFFFFF
+  
+  const table: number[] = []
+  for (let n = 0; n < 256; n++) {
+    let c = n
+    for (let k = 0; k < 8; k++) {
+      c = (c & 1) ? (0xEDB88320 ^ (c >>> 1)) : (c >>> 1)
+    }
+    table[n] = c
+  }
+  
+  for (let i = 0; i < data.length; i++) {
+    crc = table[(crc ^ data[i]) & 0xFF] ^ (crc >>> 8)
+  }
+  
+  return (crc ^ 0xFFFFFFFF) >>> 0
+}
+
+/**
+ * Create a PNG tEXt chunk for metadata
+ */
+function createPngTextChunk(keyword: string, text: string): Uint8Array {
+  const keywordBytes = new TextEncoder().encode(keyword)
+  const textBytes = new TextEncoder().encode(text)
+  
+  const chunkData = new Uint8Array(keywordBytes.length + 1 + textBytes.length)
+  chunkData.set(keywordBytes, 0)
+  chunkData.set([0], keywordBytes.length)
+  chunkData.set(textBytes, keywordBytes.length + 1)
+  
+  const chunkType = new TextEncoder().encode('tEXt')
+  const chunk = new Uint8Array(4 + 4 + chunkData.length + 4)
+  
+  const dataView = new DataView(chunk.buffer)
+  dataView.setUint32(0, chunkData.length, false)
+  chunk.set(chunkType, 4)
+  chunk.set(chunkData, 8)
+  
+  const crcData = new Uint8Array(4 + chunkData.length)
+  crcData.set(chunkType, 0)
+  crcData.set(chunkData, 4)
+  const crc = calculateCrc32(crcData)
+  dataView.setUint32(8 + chunkData.length, crc, false)
+  
+  return chunk
+}
+
+/**
+ * Create PNG pHYs chunk for DPI
+ */
+function createPngPhysChunk(dpi: number): Uint8Array {
+  const pixelsPerMeter = Math.round(dpi / 0.0254)
+  
+  const chunkData = new Uint8Array(9)
+  const chunkDataView = new DataView(chunkData.buffer)
+  chunkDataView.setUint32(0, pixelsPerMeter, false)
+  chunkDataView.setUint32(4, pixelsPerMeter, false)
+  chunkData[8] = 1
+  
+  const chunkType = new TextEncoder().encode('pHYs')
+  const chunk = new Uint8Array(4 + 4 + 9 + 4)
+  const chunkView = new DataView(chunk.buffer)
+  
+  chunkView.setUint32(0, 9, false)
+  chunk.set(chunkType, 4)
+  chunk.set(chunkData, 8)
+  
+  const crcData = new Uint8Array(4 + 9)
+  crcData.set(chunkType, 0)
+  crcData.set(chunkData, 4)
+  const crc = calculateCrc32(crcData)
+  chunkView.setUint32(17, crc, false)
+  
+  return chunk
+}
+
+/**
+ * Embed metadata and DPI into PNG buffer
+ */
+function embedPngMetadataAndDpi(pngBuffer: Buffer, metadata?: PngMetadata, dpi?: number): Buffer {
+  const data = new Uint8Array(pngBuffer)
+  
+  // Verify PNG signature
+  const pngSignature = [137, 80, 78, 71, 13, 10, 26, 10]
+  for (let i = 0; i < 8; i++) {
+    if (data[i] !== pngSignature[i]) {
+      return pngBuffer
+    }
+  }
+  
+  const chunks: Uint8Array[] = []
+  
+  // Add DPI chunk after IHDR (position 33)
+  if (dpi && dpi > 0 && dpi !== 72) {
+    chunks.push(createPngPhysChunk(dpi))
+  }
+  
+  // Add metadata chunks
+  if (metadata) {
+    const keywordMap: Record<string, string> = {
+      title: 'Title',
+      author: 'Author',
+      description: 'Description',
+      copyright: 'Copyright',
+      creationTime: 'Creation Time',
+      software: 'Software'
+    }
+    
+    for (const [key, value] of Object.entries(metadata)) {
+      if (value && typeof value === 'string') {
+        const keyword = keywordMap[key] || key
+        chunks.push(createPngTextChunk(keyword, value))
+      }
+    }
+  }
+  
+  if (chunks.length === 0) {
+    return pngBuffer
+  }
+  
+  // Insert chunks after IHDR (at position 33)
+  const ihdrEnd = 33
+  const totalChunksSize = chunks.reduce((sum, chunk) => sum + chunk.length, 0)
+  
+  const newPng = new Uint8Array(data.length + totalChunksSize)
+  newPng.set(data.slice(0, ihdrEnd), 0)
+  
+  let offset = ihdrEnd
+  for (const chunk of chunks) {
+    newPng.set(chunk, offset)
+    offset += chunk.length
+  }
+  
+  newPng.set(data.slice(ihdrEnd), offset)
+  
+  return Buffer.from(newPng)
+}
+
+// ============================================
+// GIF ENCODING
+// ============================================
+
+/**
+ * Encode canvas as GIF (single frame)
+ */
+function encodeGif(canvas: Canvas, colors: number = 256): Buffer {
+  const width = canvas.width
+  const height = canvas.height
+  const ctx = canvas.getContext('2d')
+  const imageData = ctx.getImageData(0, 0, width, height)
+  const { data } = imageData
+  
+  const gif = GIFEncoder()
+  const palette = quantize(data, Math.min(256, Math.max(2, colors)))
+  const index = applyPalette(data, palette)
+  
+  gif.writeFrame(index, width, height, {
+    palette,
+    delay: 100,
+    repeat: 0,
+  })
+  
+  gif.finish()
+  return Buffer.from(gif.bytes())
+}
+
+/**
+ * Encode multiple canvases as animated GIF
+ * @param frames Array of canvas frames
+ * @param frameDelayMs Frame delay in milliseconds
+ * @param colors Palette size 2-256
+ */
+function encodeAnimatedGif(frames: Canvas[], frameDelayMs: number = 100, colors: number = 256): Buffer {
+  if (frames.length === 0) {
+    throw new Error('No frames to encode')
+  }
+  
+  const width = frames[0].width
+  const height = frames[0].height
+  const gif = GIFEncoder()
+  const paletteSize = Math.min(256, Math.max(2, colors))
+  
+  // Convert milliseconds to centiseconds (gifenc uses 1/100th seconds)
+  const delayCentiseconds = Math.max(1, Math.round(frameDelayMs / 10))
+  
+  for (let i = 0; i < frames.length; i++) {
+    const frame = frames[i]
+    const ctx = frame.getContext('2d')
+    const imageData = ctx.getImageData(0, 0, width, height)
+    const { data } = imageData
+    
+    const palette = quantize(data, paletteSize)
+    const index = applyPalette(data, palette)
+    
+    // Only set repeat on first frame
+    const frameOptions: Record<string, unknown> = {
+      palette,
+      delay: delayCentiseconds,
+    }
+    if (i === 0) {
+      frameOptions.repeat = 0 // 0 = loop forever
+    }
+    
+    gif.writeFrame(index, width, height, frameOptions)
+  }
+  
+  gif.finish()
+  return Buffer.from(gif.bytes())
+}
+
+// ============================================
+// ANIMATION PATTERNS (server-side)
+// ============================================
+
+type AnimationPattern = 'none' | 'pulse' | 'wave' | 'scanline' | 'shimmer' | 'drift' | 'color_cycle'
+type AnimationEasing = 'linear' | 'ease_in' | 'ease_out' | 'ease_in_out' | 'bounce'
+
+/**
+ * Apply easing function to progress value (0-1)
+ */
+function applyEasing(progress: number, easing: AnimationEasing): number {
+  switch (easing) {
+    case 'ease_in':
+      return progress * progress
+    case 'ease_out':
+      return 1 - (1 - progress) * (1 - progress)
+    case 'ease_in_out':
+      return progress < 0.5
+        ? 2 * progress * progress
+        : 1 - Math.pow(-2 * progress + 2, 2) / 2
+    case 'bounce':
+      if (progress < 0.5) {
+        return 8 * progress * progress * progress * progress
+      } else {
+        return 1 - Math.pow(-2 * progress + 2, 4) / 2
+      }
+    case 'linear':
+    default:
+      return progress
+  }
+}
+
+/**
+ * Generate animation frames using a pattern effect
+ */
+function generatePatternFramesServer(
+  sourceCanvas: Canvas,
+  pattern: AnimationPattern,
+  frameCount: number = 24,
+  seed: number = 0,
+  easing: AnimationEasing = 'linear'
+): Canvas[] {
+  if (pattern === 'none') {
+    return [sourceCanvas]
+  }
+
+  const frames: Canvas[] = []
+  const width = sourceCanvas.width
+  const height = sourceCanvas.height
+
+  const sourceCtx = sourceCanvas.getContext('2d')
+  const sourceData = sourceCtx.getImageData(0, 0, width, height)
+
+  for (let i = 0; i < frameCount; i++) {
+    const linearProgress = i / frameCount
+    const progress = applyEasing(linearProgress, easing)
+    const frame = createCanvas(width, height)
+    const ctx = frame.getContext('2d')
+
+    const frameData = ctx.createImageData(width, height)
+    frameData.data.set(sourceData.data)
+
+    switch (pattern) {
+      case 'pulse':
+        applyPulsePatternServer(frameData, progress, seed)
+        break
+      case 'wave':
+        applyWavePatternServer(frameData, progress, width, height, seed)
+        break
+      case 'scanline':
+        applyScanlinePatternServer(frameData, progress, width, height, seed)
+        break
+      case 'shimmer':
+        applyShimmerPatternServer(frameData, progress, width, height, seed)
+        break
+      case 'drift':
+        applyDriftPatternServer(frameData, progress, width, height, seed)
+        break
+      case 'color_cycle':
+        applyColorCyclePatternServer(frameData, progress, seed)
+        break
+    }
+
+    ctx.putImageData(frameData, 0, 0)
+    frames.push(frame)
+  }
+
+  return frames
+}
+
+function applyPulsePatternServer(imageData: ImageData, progress: number, seed: number): void {
+  const data = imageData.data
+  const intensity = 0.15 + 0.1 * Math.sin(seed * 0.1)
+  const factor = 1 + Math.sin(progress * Math.PI * 2) * intensity
+
+  for (let i = 0; i < data.length; i += 4) {
+    data[i] = Math.min(255, data[i] * factor)
+    data[i + 1] = Math.min(255, data[i + 1] * factor)
+    data[i + 2] = Math.min(255, data[i + 2] * factor)
+  }
+}
+
+function applyWavePatternServer(imageData: ImageData, progress: number, width: number, height: number, seed: number): void {
+  const data = imageData.data
+  const waveFrequency = 3 + (seed % 5)
+  const waveAmplitude = 0.2
+
+  for (let y = 0; y < height; y++) {
+    const waveOffset = Math.sin((y / height) * waveFrequency * Math.PI * 2 + progress * Math.PI * 2) * waveAmplitude
+    const factor = 1 + waveOffset
+
+    for (let x = 0; x < width; x++) {
+      const i = (y * width + x) * 4
+      data[i] = Math.min(255, Math.max(0, data[i] * factor))
+      data[i + 1] = Math.min(255, Math.max(0, data[i + 1] * factor))
+      data[i + 2] = Math.min(255, Math.max(0, data[i + 2] * factor))
+    }
+  }
+}
+
+function applyScanlinePatternServer(imageData: ImageData, progress: number, width: number, height: number, seed: number): void {
+  const data = imageData.data
+  const lineWidth = Math.max(2, height * 0.05)
+  const lineY = progress * (height + lineWidth * 2) - lineWidth
+  const horizontal = seed % 2 === 0
+
+  for (let y = 0; y < height; y++) {
+    for (let x = 0; x < width; x++) {
+      const i = (y * width + x) * 4
+      const pos = horizontal ? y : x
+      const linePos = horizontal ? lineY : progress * (width + lineWidth * 2) - lineWidth
+      const distance = Math.abs(pos - linePos)
+      
+      if (distance < lineWidth) {
+        const brightness = 1 + (1 - distance / lineWidth) * 0.5
+        data[i] = Math.min(255, data[i] * brightness)
+        data[i + 1] = Math.min(255, data[i + 1] * brightness)
+        data[i + 2] = Math.min(255, data[i + 2] * brightness)
+      }
+    }
+  }
+}
+
+function seededRandomServer(seed: number): () => number {
+  let s = seed
+  return () => {
+    s = Math.sin(s * 9999) * 10000
+    return s - Math.floor(s)
+  }
+}
+
+function applyShimmerPatternServer(imageData: ImageData, progress: number, width: number, height: number, seed: number): void {
+  const data = imageData.data
+  const random = seededRandomServer(seed + Math.floor(progress * 1000))
+  const spotCount = Math.floor(width * height * 0.001)
+  
+  for (let s = 0; s < spotCount; s++) {
+    const x = Math.floor(random() * width)
+    const y = Math.floor(random() * height)
+    const i = (y * width + x) * 4
+    
+    const brightness = 1.3 + random() * 0.4
+    data[i] = Math.min(255, data[i] * brightness)
+    data[i + 1] = Math.min(255, data[i + 1] * brightness)
+    data[i + 2] = Math.min(255, data[i + 2] * brightness)
+  }
+}
+
+function applyDriftPatternServer(imageData: ImageData, progress: number, width: number, height: number, seed: number): void {
+  const data = imageData.data
+  const scale = 0.02 + (seed % 10) * 0.005
+  const timeOffset = progress * Math.PI * 2
+  
+  for (let y = 0; y < height; y++) {
+    for (let x = 0; x < width; x++) {
+      const i = (y * width + x) * 4
+      const drift = Math.sin(x * scale + timeOffset) * Math.cos(y * scale + timeOffset) * 0.15
+      const factor = 1 + drift
+      
+      data[i] = Math.min(255, Math.max(0, data[i] * factor))
+      data[i + 1] = Math.min(255, Math.max(0, data[i + 1] * factor))
+      data[i + 2] = Math.min(255, Math.max(0, data[i + 2] * factor))
+    }
+  }
+}
+
+function applyColorCyclePatternServer(imageData: ImageData, progress: number, seed: number): void {
+  const data = imageData.data
+  const hueShift = (progress * 360 + seed) % 360
+  
+  for (let i = 0; i < data.length; i += 4) {
+    const r = data[i]
+    const g = data[i + 1]
+    const b = data[i + 2]
+    
+    const [h, s, l] = rgbToHslServer(r, g, b)
+    const newH = (h + hueShift) % 360
+    const [newR, newG, newB] = hslToRgbServer(newH, s, l)
+    
+    data[i] = newR
+    data[i + 1] = newG
+    data[i + 2] = newB
+  }
+}
+
+function rgbToHslServer(r: number, g: number, b: number): [number, number, number] {
+  r /= 255
+  g /= 255
+  b /= 255
+  
+  const max = Math.max(r, g, b)
+  const min = Math.min(r, g, b)
+  let h = 0
+  let s = 0
+  const l = (max + min) / 2
+  
+  if (max !== min) {
+    const d = max - min
+    s = l > 0.5 ? d / (2 - max - min) : d / (max + min)
+    
+    switch (max) {
+      case r:
+        h = ((g - b) / d + (g < b ? 6 : 0)) * 60
+        break
+      case g:
+        h = ((b - r) / d + 2) * 60
+        break
+      case b:
+        h = ((r - g) / d + 4) * 60
+        break
+    }
+  }
+  
+  return [h, s * 100, l * 100]
+}
+
+function hslToRgbServer(h: number, s: number, l: number): [number, number, number] {
+  s /= 100
+  l /= 100
+  
+  const c = (1 - Math.abs(2 * l - 1)) * s
+  const x = c * (1 - Math.abs(((h / 60) % 2) - 1))
+  const m = l - c / 2
+  
+  let r = 0, g = 0, b = 0
+  
+  if (h < 60) {
+    r = c; g = x; b = 0
+  } else if (h < 120) {
+    r = x; g = c; b = 0
+  } else if (h < 180) {
+    r = 0; g = c; b = x
+  } else if (h < 240) {
+    r = 0; g = x; b = c
+  } else if (h < 300) {
+    r = x; g = 0; b = c
+  } else {
+    r = c; g = 0; b = x
+  }
+  
+  return [
+    Math.round((r + m) * 255),
+    Math.round((g + m) * 255),
+    Math.round((b + m) * 255)
+  ]
+}
+
+// ============================================
+// GIF FRAME PARSING (server-side)
+// ============================================
+
+interface ServerAnimationFrame {
+  canvas: Canvas
+  delay: number // milliseconds
+  disposalType: number
+}
+
+/**
+ * Detect if an ArrayBuffer contains a GIF
+ */
+function isGifBuffer(buffer: ArrayBuffer): boolean {
+  const view = new DataView(buffer)
+  if (view.byteLength < 6) return false
+  const sig = String.fromCharCode(view.getUint8(0), view.getUint8(1), view.getUint8(2))
+  return sig === 'GIF'
+}
+
+/**
+ * Parse a GIF file and extract frames as Canvas elements (server-side)
+ * Adapted from src/modules/animation.ts for Node.js
+ */
+function parseGifFramesServer(arrayBuffer: ArrayBuffer): ServerAnimationFrame[] {
+  const gif = parseGIF(arrayBuffer)
+  const frames = decompressFrames(gif, true)
+
+  if (frames.length === 0) {
+    throw new Error('No frames found in GIF')
+  }
+
+  const { width, height } = gif.lsd
+
+  // Create a persistent canvas for compositing frames
+  const compositeCanvas = createCanvas(width, height)
+  const compositeCtx = compositeCanvas.getContext('2d')
+
+  const animationFrames: ServerAnimationFrame[] = []
+
+  for (let i = 0; i < frames.length; i++) {
+    const frame = frames[i]
+    const { dims, patch, disposalType, delay } = frame
+
+    // Create ImageData from patch
+    const imageData = compositeCtx.createImageData(dims.width, dims.height)
+    imageData.data.set(new Uint8ClampedArray(patch))
+
+    // Create temporary canvas for this frame's patch
+    const patchCanvas = createCanvas(dims.width, dims.height)
+    const patchCtx = patchCanvas.getContext('2d')
+    patchCtx.putImageData(imageData, 0, 0)
+
+    // Draw patch onto composite canvas
+    compositeCtx.drawImage(patchCanvas, dims.left, dims.top)
+
+    // Create output canvas for this frame
+    const outputCanvas = createCanvas(width, height)
+    const outputCtx = outputCanvas.getContext('2d')
+    outputCtx.drawImage(compositeCanvas, 0, 0)
+
+    animationFrames.push({
+      canvas: outputCanvas,
+      delay: delay * 10, // GIF delay is in centiseconds, convert to ms
+      disposalType,
+    })
+
+    // Handle disposal
+    if (disposalType === 2) {
+      // Restore to background
+      compositeCtx.clearRect(dims.left, dims.top, dims.width, dims.height)
+    }
+    // disposalType 0, 1, or 3: leave frame in place
+  }
+
+  return animationFrames
+}
+
+/**
+ * Encode multiple canvases as animated GIF with per-frame delays
+ */
+function encodeAnimatedGifWithDelays(frames: ServerAnimationFrame[], colors: number = 256): Buffer {
+  if (frames.length === 0) {
+    throw new Error('No frames to encode')
+  }
+  
+  const width = frames[0].canvas.width
+  const height = frames[0].canvas.height
+  const gif = GIFEncoder()
+  const paletteSize = Math.min(256, Math.max(2, colors))
+  
+  for (let i = 0; i < frames.length; i++) {
+    const frame = frames[i]
+    const ctx = frame.canvas.getContext('2d')
+    const imageData = ctx.getImageData(0, 0, width, height)
+    const { data } = imageData
+    
+    const palette = quantize(data, paletteSize)
+    const index = applyPalette(data, palette)
+    
+    // Convert milliseconds to centiseconds
+    const delayCentiseconds = Math.max(1, Math.round(frame.delay / 10))
+    
+    const frameOptions: Record<string, unknown> = {
+      palette,
+      delay: delayCentiseconds,
+    }
+    if (i === 0) {
+      frameOptions.repeat = 0 // 0 = loop forever
+    }
+    
+    gif.writeFrame(index, width, height, frameOptions)
+  }
+  
+  gif.finish()
+  return Buffer.from(gif.bytes())
+}
+
+/**
+ * Parse gradient stops from URL parameter
+ * Format: color1,pos1,color2,pos2,...
+ * Example: ff0000,0,00ff00,0.5,0000ff,1
+ */
+function parseGradientStops(stopsParam: string): Array<{ pos: number; color: string }> {
+  const parts = stopsParam.split(',')
+  const stops: Array<{ pos: number; color: string }> = []
+  
+  for (let i = 0; i < parts.length - 1; i += 2) {
+    const color = `#${parts[i]}`
+    const pos = parseFloat(parts[i + 1])
+    if (!isNaN(pos)) {
+      stops.push({ color, pos })
+    }
+  }
+  
+  return stops.length > 0 ? stops : [{ color: '#000000', pos: 0 }, { color: '#000000', pos: 1 }]
+}
+
+interface FetchedImage {
+  canvas: Canvas
+  arrayBuffer: ArrayBuffer
+  isAnimatedGif: boolean
+}
+
+/**
+ * Fetch an image from URL and load it into a canvas
+ * Also returns the raw array buffer to detect animated GIFs
+ */
+async function fetchImageWithBuffer(url: string): Promise<FetchedImage | null> {
+  try {
+    // Validate URL format
+    let parsedUrl: URL
+    try {
+      parsedUrl = new URL(url)
+      if (!['http:', 'https:'].includes(parsedUrl.protocol)) {
+        console.error(`Invalid URL protocol: ${parsedUrl.protocol}`)
+        return null
+      }
+    } catch {
+      console.error(`Invalid URL format: ${url}`)
+      return null
+    }
+
+    const response = await fetch(url, {
+      headers: {
+        'User-Agent': 'ANQR-QR-Generator/1.0',
+      },
+    })
+    
+    if (!response.ok) {
+      console.error(`Failed to fetch image: ${response.status} ${response.statusText}`)
+      return null
+    }
+    
+    // Check Content-Type header for image types
+    const contentType = response.headers.get('Content-Type') || ''
+    const validImageTypes = ['image/png', 'image/jpeg', 'image/gif', 'image/webp', 'image/svg+xml', 'image/bmp']
+    const isImage = validImageTypes.some(type => contentType.toLowerCase().startsWith(type))
+    if (!isImage && contentType && !contentType.startsWith('application/octet-stream')) {
+      console.error(`Invalid Content-Type for image: ${contentType}`)
+      return null
+    }
+    
+    const arrayBuffer = await response.arrayBuffer()
+    const buffer = Buffer.from(arrayBuffer)
+    
+    // Check if it's a GIF with multiple frames
+    let isAnimatedGif = false
+    if (isGifBuffer(arrayBuffer)) {
+      try {
+        const gif = parseGIF(arrayBuffer)
+        const frames = decompressFrames(gif, true)
+        isAnimatedGif = frames.length > 1
+      } catch (e) {
+        console.warn('Failed to parse GIF for frame detection:', e)
+      }
+    }
+    
+    const img = await loadImage(buffer)
+    
+    // Validate image dimensions
+    if (!img.width || !img.height || img.width <= 0 || img.height <= 0) {
+      console.error(`Invalid image dimensions: ${img.width}x${img.height}`)
+      return null
+    }
+    
+    const canvas = createCanvas(img.width, img.height)
+    const ctx = canvas.getContext('2d')
+    ctx.drawImage(img, 0, 0)
+    
+    return {
+      canvas,
+      arrayBuffer,
+      isAnimatedGif,
+    }
+  } catch (error) {
+    console.error('Error fetching overlay image:', error)
+    return null
+  }
+}
+
+/**
+ * Fetch an image from URL and load it into a canvas (legacy wrapper)
+ */
+async function fetchImageAsCanvas(url: string): Promise<ReturnType<typeof createCanvas> | null> {
+  const result = await fetchImageWithBuffer(url)
+  return result?.canvas ?? null
+}
+
+export default async (request: Request) => {
+  const url = new URL(request.url)
+  const params = url.searchParams
+  
+  // Get required parameter
+  const data = params.get('data')
+  if (!data) {
+    return new Response('Missing required "data" parameter', { status: 400 })
+  }
+  
+  // Parse all parameters with defaults
+  const sizeParam = parseInt(params.get('size') || '400', 10)
+  const widthParam = params.get('w') ? parseInt(params.get('w')!, 10) : null
+  const heightParam = params.get('h') ? parseInt(params.get('h')!, 10) : null
+  
+  // Use w/h if provided, otherwise fall back to size
+  const outputWidth = Math.min(2000, Math.max(50, widthParam ?? sizeParam))
+  const outputHeight = Math.min(2000, Math.max(50, heightParam ?? sizeParam))
+  // For QR generation, use the larger dimension to ensure quality
+  const size = Math.max(outputWidth, outputHeight)
+  const fg = params.get('fg') || '000000'
+  const bg = params.get('bg') || 'ffffff'
+  const ec = (params.get('ec')?.toUpperCase() || 'H') as ECCLevel
+  const margin = Math.min(20, Math.max(0, parseInt(params.get('margin') || '4', 10)))
+  const transparent = params.get('transparent') === '1'
+  const encodingMode = params.get('enc') || 'auto'
+  const version = params.get('v') ? parseInt(params.get('v')!, 10) : 0
+  const borderModulesExtra = Math.min(10, Math.max(0, parseInt(params.get('border') || '0', 10)))
+  const crispEdges = params.get('crisp') !== '0'
+  const pixelSnap = params.get('snap') || 'floor'
+  const perModuleColorMode = params.get('modColor') || 'solid'
+  const contrastGuard = params.get('cGuard') === '1'
+  const minContrastRatio = parseFloat(params.get('minContrast') || '4.5')
+  
+  // Module styling
+  const moduleStyle = params.get('style') || 'square'
+  const finderStyle = params.get('finder') || 'square'
+  const eyeOuterStyle = params.get('eyeOuter') || finderStyle
+  const eyeInnerStyle = params.get('eyeInner') || finderStyle
+  const eyeScale = Math.min(150, Math.max(50, parseInt(params.get('eyeScale') || '100', 10)))
+  const cornerRadius = Math.min(100, Math.max(0, parseInt(params.get('radius') || '0', 10)))
+  const moduleGap = Math.min(50, Math.max(0, parseInt(params.get('gap') || '0', 10)))
+  const gapMode = params.get('gapMode') || 'none'
+  const dotRotationDeg = parseInt(params.get('dotRot') || '0', 10)
+  
+  // Frame
+  const frameStyle = params.get('frame') || 'none'
+  const frameText = params.get('frameText') ? decodeURIComponent(params.get('frameText')!) : ''
+  
+  // Gradient
+  const gradientType = params.get('grad') || 'none'
+  const gradientAngle = parseInt(params.get('gradAngle') || '0', 10)
+  const gradientStopsParam = params.get('gradStops')
+  const gradientStops = gradientStopsParam ? parseGradientStops(gradientStopsParam) : undefined
+  
+  // Additional styling
+  const alignmentStyle = params.get('align') || 'match_finder'
+  const timingStyle = params.get('timing') || 'match_module'
+  
+  // Protection settings
+  const preserveFinders = params.get('keepFinders') !== '0'
+  const preserveTiming = params.get('keepTiming') === '1'
+  const preserveAlignment = params.get('keepAlign') === '1'
+  const protectFormatInfo = params.get('protectFmt') === '1'
+  const protectVersionInfo = params.get('protectVer') === '1'
+  const eccAwareEnabled = params.get('eccAware') === '1'
+  const eccAwareRiskBudget = Math.min(100, Math.max(0, parseInt(params.get('eccRisk') || '50', 10)))
+  const eccAwareWeightMap = params.get('eccMap') || 'distance_to_finders'
+  
+  // Overlay
+  const overlayUrl = params.get('img')
+  const overlayMode = params.get('mode') || undefined
+  const overlayIntensity = Math.min(100, Math.max(0, parseInt(params.get('intensity') || '100', 10)))
+  const colorMode = params.get('colorMode') || 'color'
+  const logoSize = Math.min(50, Math.max(5, parseInt(params.get('logoSize') || '25', 10)))
+  
+  // Overlay preprocessing
+  const overlayBrightness = Math.min(100, Math.max(-100, parseInt(params.get('brightness') || '0', 10)))
+  const overlayContrast = Math.min(100, Math.max(-100, parseInt(params.get('contrast') || '0', 10)))
+  const overlayGamma = Math.max(0.1, Math.min(3, parseFloat(params.get('gamma') || '1')))
+  const overlaySaturation = Math.min(100, Math.max(-100, parseInt(params.get('saturation') || '0', 10)))
+  const overlayHueRotate = parseInt(params.get('hue') || '0', 10)
+  const overlayInvert = params.get('invert') === '1'
+  const overlayBlur = Math.max(0, parseInt(params.get('blur') || '0', 10))
+  const overlaySharpen = Math.max(0, parseInt(params.get('sharpen') || '0', 10))
+  const overlayPosterize = Math.max(0, parseInt(params.get('posterize') || '0', 10))
+  const overlayThreshold = Math.min(255, Math.max(0, parseInt(params.get('threshold') || '128', 10)))
+  const overlayEdgeDetect = params.get('edge') || 'off'
+  const overlayFit = params.get('fit') || 'cover'
+  const overlayRotate = parseInt(params.get('rot') || '0', 10)
+  const overlayFlipX = params.get('flipX') === '1'
+  const overlayFlipY = params.get('flipY') === '1'
+  
+  // Dithering options
+  const ditherKind = params.get('ditherKind') || 'error_diffusion'
+  const diffusionKernel = params.get('diffusionKernel') || 'floyd_steinberg'
+  const ditherStrength = Math.min(100, Math.max(0, parseInt(params.get('ditherStrength') || '50', 10)))
+  const ditherSerpentine = params.get('serpentine') === '1'
+  const orderedMatrix = params.get('matrix') || 'bayer4'
+  const blueNoiseTileSize = parseInt(params.get('bnTile') || '64', 10)
+  const blueNoiseSeed = parseInt(params.get('bnSeed') || '0', 10)
+  const colorDither = params.get('colorDither') || 'none'
+  
+  // Subpixel options
+  const subpixelGridSize = params.get('spGrid') || '3x3'
+  const subpixelCenterRule = params.get('spCenter') || 'strict'
+  const subpixelNeutralColor = params.get('spNeutral') ? `#${params.get('spNeutral')}` : '#808080'
+  const subpixelFinderOverride = params.get('spFinder') || 'solid'
+  
+  // Halftone options
+  const halftoneCell = params.get('htCell') || 'per_module'
+  const halftoneDotShape = params.get('htDot') || 'circle'
+  const brightnessCurve = params.get('htCurve') || 'linear'
+  const duotoneColor1 = params.get('duo1') ? `#${params.get('duo1')}` : '#000000'
+  const duotoneColor2 = params.get('duo2') ? `#${params.get('duo2')}` : '#ffffff'
+  
+  // Render palette
+  const paletteParam = params.get('palette')
+  const palette = paletteParam ? decodeURIComponent(paletteParam).split(',').map(c => c.startsWith('#') ? c : `#${c}`) : undefined
+  const paletteMode = params.get('paletteMode') || 'position'
+  
+  // Safety per-ECC limits (support both short and long param names)
+  const maxOverlayIntensityL = parseInt(params.get('maxIntL') || params.get('maxOverlayIntensityL') || '100', 10)
+  const maxOverlayIntensityM = parseInt(params.get('maxIntM') || params.get('maxOverlayIntensityM') || '100', 10)
+  const maxOverlayIntensityQ = parseInt(params.get('maxIntQ') || params.get('maxOverlayIntensityQ') || '100', 10)
+  const maxOverlayIntensityH = parseInt(params.get('maxIntH') || params.get('maxOverlayIntensityH') || '100', 10)
+  
+  // Output format
+  const outputFormat = (params.get('format') || 'png') as OutputFormat
+  const outputQuality = Math.max(0, Math.min(1, parseFloat(params.get('quality') || '0.9')))
+  const outputDpi = Math.max(1, Math.min(1200, parseInt(params.get('dpi') || '72', 10)))
+  
+  // Watermark
+  const watermarkEnabled = params.get('wmEn') === '1'
+  const watermarkKind = (params.get('wmKind') || 'text') as WatermarkKind
+  const watermarkText = params.get('wmText') ? decodeURIComponent(params.get('wmText')!) : ''
+  const watermarkImageUrl = params.get('wmImg') || undefined
+  const watermarkPosition = (params.get('wmPos') || 'center') as WatermarkPosition
+  const watermarkOpacity = Math.min(100, Math.max(0, parseInt(params.get('wmOpacity') || '50', 10)))
+  const watermarkBlend = (params.get('wmBlend') || 'normal') as WatermarkBlend
+  
+  // Animation (for animated GIF output)
+  const animationPattern = (params.get('animPattern') || 'none') as AnimationPattern
+  // Ensure frame count is at least 1 to prevent empty animation loops
+  const animationFramesRaw = parseInt(params.get('animFrames') || '24', 10)
+  const animationFrames = Math.min(60, Math.max(1, isNaN(animationFramesRaw) ? 24 : animationFramesRaw))
+  // Ensure speed is valid to prevent division issues
+  const animationSpeedRaw = parseInt(params.get('animSpeed') || '100', 10)
+  const animationSpeed = Math.min(1000, Math.max(10, isNaN(animationSpeedRaw) ? 100 : animationSpeedRaw))
+  const animationSeed = parseInt(params.get('animSeed') || '0', 10)
+  const animationEasing = params.get('easing') || 'linear'
+  
+  // Format-specific quality params
+  const webpQuality = Math.min(100, Math.max(0, parseInt(params.get('webpQ') || '90', 10)))
+  const gifColors = Math.min(256, Math.max(2, parseInt(params.get('gifColors') || '256', 10)))
+  
+  // Metadata
+  const metaTitle = params.get('metaTitle') ? decodeURIComponent(params.get('metaTitle')!) : undefined
+  const metaAuthor = params.get('metaAuthor') ? decodeURIComponent(params.get('metaAuthor')!) : undefined
+  const metaCopyright = params.get('metaCopy') ? decodeURIComponent(params.get('metaCopy')!) : undefined
+  const metaDescription = params.get('metaDesc') ? decodeURIComponent(params.get('metaDesc')!) : undefined
+  
+  // Validate ECC level
+  if (!['L', 'M', 'Q', 'H'].includes(ec)) {
+    return new Response('Invalid "ec" parameter. Use L, M, Q, or H', { status: 400 })
+  }
+  
+  // Validate module style
+  const validModuleStyles = ['square', 'rounded', 'dots', 'diamond', 'connected']
+  if (!validModuleStyles.includes(moduleStyle)) {
+    return new Response(`Invalid "style" parameter. Use one of: ${validModuleStyles.join(', ')}`, { status: 400 })
+  }
+  
+  try {
+    // Create QRGenerator with Node.js canvas factory
+    const qrGenerator = new QRGenerator(nodeCanvasFactory)
+    
+    // Calculate module size based on desired output size
+    // Estimate module count first (depends on content length and ECC)
+    const estimatedVersion = qrGenerator.calculateOptimalVersion(decodeURIComponent(data), ec)
+    const estimatedModuleCount = estimatedVersion * 4 + 17
+    const moduleSize = Math.max(1, Math.floor((size - margin * 2) / (estimatedModuleCount + margin * 2)))
+    
+    // Build config (same structure as client-side)
+    const config = {
+      content: decodeURIComponent(data),
+      typeNumber: version, // 0 = auto-detect
+      errorCorrection: ec,
+      encodingMode,
+      moduleSize,
+      margin: margin + borderModulesExtra,
+      crispEdges,
+      pixelSnap,
+      fgColor: `#${fg}`,
+      bgColor: `#${bg}`,
+      transparentBg: transparent,
+      moduleStyle,
+      finderStyle,
+      alignmentStyle,
+      timingStyle,
+      eyeOuterStyle,
+      eyeInnerStyle,
+      eyeScale,
+      cornerRadius,
+      moduleGap,
+      gapMode,
+      dotRotationDeg,
+      frameStyle,
+      frameText,
+      perModuleColorMode,
+      contrastGuard,
+      minContrastRatio,
+      overlayMode,
+      overlayIntensity,
+      colorMode,
+      logoSize,
+      preserveFinders,
+      preserveTiming,
+      preserveAlignment,
+      protectFormatInfo,
+      protectVersionInfo,
+      eccAwareEnabled,
+      eccAwareRiskBudget,
+      eccAwareWeightMap,
+      overlayBrightness,
+      overlayContrast,
+      overlayGamma,
+      overlaySaturation,
+      overlayHueRotate,
+      invertImage: overlayInvert,
+      overlayBlur,
+      overlaySharpen,
+      overlayPosterize,
+      overlayThreshold,
+      overlayEdgeDetect,
+      overlayFit,
+      overlayRotate,
+      overlayFlipX,
+      overlayFlipY,
+      // Dither options
+      ditherKind,
+      diffusionKernel,
+      ditherStrength,
+      ditherSerpentine,
+      orderedMatrix,
+      blueNoiseTileSize,
+      blueNoiseSeed,
+      colorDither,
+      // Subpixel options
+      subpixelGridSize,
+      subpixelCenterRule,
+      subpixelNeutralColor,
+      subpixelFinderOverride,
+      // Halftone options
+      halftoneCell,
+      halftoneDotShape,
+      brightnessCurve,
+      duotoneColors: [duotoneColor1, duotoneColor2],
+      // Palette
+      palette,
+      paletteMode,
+      gradient: gradientType !== 'none' ? {
+        type: gradientType,
+        angle: gradientAngle,
+        stops: gradientStops,
+      } : undefined,
+      // Per-ECC intensity limits
+      maxOverlayIntensityByEcc: {
+        L: maxOverlayIntensityL,
+        M: maxOverlayIntensityM,
+        Q: maxOverlayIntensityQ,
+        H: maxOverlayIntensityH,
+      },
+    }
+    
+    // Load overlay image if URL provided
+    let overlayCanvas: Canvas | null = null
+    let overlayFrames: ServerAnimationFrame[] = []
+    let hasAnimatedOverlay = false
+    
+    if (overlayUrl && overlayMode) {
+      const fetchedImage = await fetchImageWithBuffer(overlayUrl)
+      if (fetchedImage) {
+        overlayCanvas = fetchedImage.canvas
+        
+        // Check if it's an animated GIF and we're outputting GIF format
+        if (fetchedImage.isAnimatedGif && outputFormat === 'gif') {
+          hasAnimatedOverlay = true
+          overlayFrames = parseGifFramesServer(fetchedImage.arrayBuffer)
+        }
+      }
+    }
+    
+    // Generate QR code using the same method as client-side
+    let canvas = await qrGenerator.generate(config, overlayCanvas)
+    
+    // Load watermark image if URL provided
+    let watermarkImageCanvas: Canvas | null = null
+    if (watermarkEnabled && (watermarkKind === 'image' || watermarkKind === 'pattern') && watermarkImageUrl) {
+      watermarkImageCanvas = await fetchImageAsCanvas(watermarkImageUrl)
+    }
+    
+    // Apply watermark if enabled
+    if (watermarkEnabled) {
+      canvas = applyWatermarkServer(canvas, {
+        enabled: watermarkEnabled,
+        kind: watermarkKind,
+        text: watermarkText,
+        imageCanvas: watermarkImageCanvas,
+        position: watermarkPosition,
+        opacity: watermarkOpacity,
+        blend: watermarkBlend,
+      })
+    }
+    
+    // Scale to requested output dimensions
+    let outputCanvas = canvas
+    if (canvas.width !== outputWidth || canvas.height !== outputHeight) {
+      outputCanvas = createCanvas(outputWidth, outputHeight)
+      const ctx = outputCanvas.getContext('2d')
+      ctx.imageSmoothingEnabled = false
+      ctx.drawImage(canvas, 0, 0, outputWidth, outputHeight)
+    }
+    
+    // Build metadata object
+    const metadata: PngMetadata | undefined = (metaTitle || metaAuthor || metaCopyright || metaDescription) ? {
+      title: metaTitle,
+      author: metaAuthor,
+      copyright: metaCopyright,
+      description: metaDescription,
+      creationTime: new Date().toISOString(),
+      software: 'ANQR - anqr.link',
+    } : undefined
+    
+    // Generate animation frames based on source
+    let animationFrameCanvases: Canvas[] = []
+    let animatedOverlayFrames: ServerAnimationFrame[] = []
+    
+    if (outputFormat === 'gif') {
+      if (hasAnimatedOverlay && overlayFrames.length > 1) {
+        // Animated GIF overlay - generate a QR frame for each overlay frame
+        for (const overlayFrame of overlayFrames) {
+          const frameCanvas = await qrGenerator.generate(config, overlayFrame.canvas)
+          
+          // Scale to output size if needed
+          let scaledFrame = frameCanvas
+          if (frameCanvas.width !== outputWidth || frameCanvas.height !== outputHeight) {
+            scaledFrame = createCanvas(outputWidth, outputHeight)
+            const ctx = scaledFrame.getContext('2d')
+            ctx.imageSmoothingEnabled = false
+            ctx.drawImage(frameCanvas, 0, 0, outputWidth, outputHeight)
+          }
+          
+          // Apply watermark if enabled
+          if (watermarkEnabled) {
+            scaledFrame = applyWatermarkServer(scaledFrame, {
+              enabled: watermarkEnabled,
+              kind: watermarkKind,
+              text: watermarkText,
+              imageCanvas: watermarkImageCanvas,
+              position: watermarkPosition,
+              opacity: watermarkOpacity,
+              blend: watermarkBlend,
+            })
+          }
+          
+          animatedOverlayFrames.push({
+            canvas: scaledFrame,
+            delay: overlayFrame.delay,
+            disposalType: overlayFrame.disposalType,
+          })
+        }
+      } else if (animationPattern !== 'none') {
+        // Pattern-based animation
+        animationFrameCanvases = generatePatternFramesServer(
+          outputCanvas,
+          animationPattern,
+          animationFrames,
+          animationSeed,
+          animationEasing as AnimationEasing
+        )
+      }
+    }
+    
+    // Encode based on format
+    let outputBuffer: Buffer
+    let contentType: string
+    
+    switch (outputFormat) {
+      case 'gif':
+        if (animatedOverlayFrames.length > 1) {
+          // Animated GIF from overlay frames (preserves original frame delays)
+          outputBuffer = encodeAnimatedGifWithDelays(animatedOverlayFrames, gifColors)
+        } else if (animationFrameCanvases.length > 1) {
+          // Animated GIF with pattern
+          outputBuffer = encodeAnimatedGif(animationFrameCanvases, animationSpeed, gifColors)
+        } else {
+          // Single frame GIF
+          outputBuffer = encodeGif(outputCanvas, gifColors)
+        }
+        contentType = 'image/gif'
+        break
+        
+      case 'webp':
+        outputBuffer = outputCanvas.toBuffer('image/webp', webpQuality)
+        contentType = 'image/webp'
+        break
+        
+      case 'png':
+      default:
+        outputBuffer = outputCanvas.toBuffer('image/png')
+        // Embed metadata and DPI into PNG
+        if (metadata || outputDpi !== 72) {
+          outputBuffer = embedPngMetadataAndDpi(outputBuffer, metadata, outputDpi)
+        }
+        contentType = 'image/png'
+        break
+    }
+    
+    return new Response(new Uint8Array(outputBuffer), {
+      status: 200,
+      headers: {
+        'Content-Type': contentType,
+        'Cache-Control': 'public, max-age=31536000, immutable',
+        'Access-Control-Allow-Origin': '*',
+      },
+    })
+  } catch (error) {
+    const message = error instanceof Error ? error.message : 'Unknown error'
+    console.error('QR generation error:', error)
+    return new Response(`Error generating QR code: ${message}`, { status: 500 })
+  }
+}
