@@ -323,7 +323,7 @@ export function Header({ onToggleSidebar, onExport, sidebarOpen = false, showGal
               onNavigate?.('editor')
             }}
             className="flex items-center gap-2 transition-opacity hover:opacity-80 cursor-pointer"
-            title="ANQR - QR Code Generator"
+            title={`${t('app.name')} - ${t('app.tagline')}`}
           >
             <span className="text-xl font-bold leading-6">ANQR</span>
           </button>

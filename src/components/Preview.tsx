@@ -1,4 +1,5 @@
-import { Loader2, AlertTriangle, Eye, Thermometer, RotateCw, Sparkles } from 'lucide-react'
+import { AlertTriangle, Eye, Thermometer, Sparkles } from 'lucide-react'
+import { BusyOverlay } from '@/components/BusyOverlay'
 import { useTranslation } from 'react-i18next'
 import { useQRGenerator } from '@/hooks/useQRGenerator'
 import { useState, useEffect, useMemo, useRef, useCallback } from 'react'
@@ -208,11 +209,7 @@ export function Preview({ sidebarOpen = true }: PreviewProps) {
         >
           {/* QR Code Canvas */}
           <div className="bg-white rounded-lg shadow-xl flex items-center justify-center p-4 relative">
-            {isLoading && (
-              <div className="absolute inset-0 bg-white/80 flex items-center justify-center rounded-lg z-10">
-                <Loader2 className="h-8 w-8 animate-spin text-primary" />
-              </div>
-            )}
+            {isLoading && <BusyOverlay visible={true} />}
             {error && (
               <div className="absolute inset-0 bg-red-50 flex items-center justify-center rounded-lg z-10 p-4">
                 <p className="text-red-600 text-sm text-center">{error}</p>

@@ -1,21 +1,109 @@
-# Add project specific ProGuard rules here.
-# You can control the set of applied configuration files using the
-# proguardFiles setting in build.gradle.
-#
-# For more details, see
-#   http://developer.android.com/guide/developing/tools/proguard.html
+# ============================================
+# ANQR ProGuard/R8 Rules
+# Production-optimized for Play Store
+# ============================================
 
-# If your project uses WebView with JS, uncomment the following
-# and specify the fully qualified class name to the JavaScript interface
-# class:
-#-keepclassmembers class fqcn.of.javascript.interface.for.webview {
-#   public *;
-#}
+# Preserve line numbers for crash reporting/deobfuscation
+-keepattributes SourceFile,LineNumberTable
+-renamesourcefileattribute SourceFile
 
-# Uncomment this to preserve the line number information for
-# debugging stack traces.
-#-keepattributes SourceFile,LineNumberTable
+# ============================================
+# Capacitor WebView JavaScript Interface
+# ============================================
+-keepclassmembers class * {
+    @android.webkit.JavascriptInterface <methods>;
+}
 
-# If you keep the line number information, uncomment this to
-# hide the original source file name.
-#-renamesourcefileattribute SourceFile
+# Keep Capacitor plugin classes
+-keep class com.getcapacitor.** { *; }
+-keep class link.anqr.app.** { *; }
+-dontwarn com.getcapacitor.**
+
+# ============================================
+# Google Mobile Ads (AdMob)
+# ============================================
+-keep class com.google.android.gms.ads.** { *; }
+-keep class com.google.ads.** { *; }
+-dontwarn com.google.android.gms.ads.**
+
+# Keep AdMob initialization
+-keep class com.google.android.gms.internal.** { *; }
+
+# ============================================
+# AndroidX and Support Libraries
+# ============================================
+-keep class androidx.** { *; }
+-keep interface androidx.** { *; }
+-dontwarn androidx.**
+
+-keep class android.support.** { *; }
+-dontwarn android.support.**
+
+# ============================================
+# WebView
+# ============================================
+-keepclassmembers class * extends android.webkit.WebViewClient {
+    public void *(android.webkit.WebView, java.lang.String, android.graphics.Bitmap);
+    public boolean *(android.webkit.WebView, java.lang.String);
+    public void *(android.webkit.WebView, java.lang.String);
+}
+
+-keepclassmembers class * extends android.webkit.WebChromeClient {
+    public void *(android.webkit.WebView, java.lang.String, java.lang.String, int, android.webkit.JsResult);
+}
+
+# ============================================
+# Serialization (for Capacitor data transfer)
+# ============================================
+-keepclassmembers class * implements java.io.Serializable {
+    static final long serialVersionUID;
+    private static final java.io.ObjectStreamField[] serialPersistentFields;
+    private void writeObject(java.io.ObjectOutputStream);
+    private void readObject(java.io.ObjectInputStream);
+    java.lang.Object writeReplace();
+    java.lang.Object readResolve();
+}
+
+# ============================================
+# JSON Processing
+# ============================================
+-keepclassmembers class * {
+    @org.json.JSONObject *;
+}
+
+# ============================================
+# Enums
+# ============================================
+-keepclassmembers enum * {
+    public static **[] values();
+    public static ** valueOf(java.lang.String);
+}
+
+# ============================================
+# Native Methods
+# ============================================
+-keepclasseswithmembernames class * {
+    native <methods>;
+}
+
+# ============================================
+# Parcelables
+# ============================================
+-keepclassmembers class * implements android.os.Parcelable {
+    public static final ** CREATOR;
+}
+
+# ============================================
+# R8 Full Mode Compatibility
+# ============================================
+-allowaccessmodification
+-repackageclasses ''
+
+# ============================================
+# Remove Logging in Release
+# ============================================
+-assumenosideeffects class android.util.Log {
+    public static int v(...);
+    public static int d(...);
+    public static int i(...);
+}

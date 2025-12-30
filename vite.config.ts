@@ -1,5 +1,6 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
+import { VitePWA } from 'vite-plugin-pwa'
 import path from 'path'
 import fs from 'fs'
 
@@ -16,7 +17,7 @@ function serveGalleryFiles() {
           // Check if file exists
           if (fs.existsSync(filePath)) {
             const ext = path.extname(filePath).toLowerCase()
-            const mimeTypes = {
+            const mimeTypes: Record<string, string> = {
               '.png': 'image/png',
               '.gif': 'image/gif',
               '.jpg': 'image/jpeg',
@@ -46,10 +47,234 @@ export default defineConfig({
   plugins: [
     serveGalleryFiles(), // Serve gallery files before React plugin
     react(),
+    VitePWA({
+      registerType: 'autoUpdate',
+      includeAssets: ['favicon.ico', 'robots.txt', 'sitemap.xml'],
+      manifest: {
+        name: 'ANQR - QR Code Generator',
+        short_name: 'ANQR',
+        description: 'Free browser-based QR code generator with advanced styling, animations, and safety checks.',
+        theme_color: '#0f172a',
+        background_color: '#0f172a',
+        display: 'standalone',
+        orientation: 'any',
+        categories: ['utilities', 'productivity'],
+        start_url: '/',
+        scope: '/',
+        icons: [
+          {
+            src: '/icons/icon-72.png',
+            sizes: '72x72',
+            type: 'image/png'
+          },
+          {
+            src: '/icons/icon-96.png',
+            sizes: '96x96',
+            type: 'image/png'
+          },
+          {
+            src: '/icons/icon-128.png',
+            sizes: '128x128',
+            type: 'image/png'
+          },
+          {
+            src: '/icons/icon-144.png',
+            sizes: '144x144',
+            type: 'image/png'
+          },
+          {
+            src: '/icons/icon-152.png',
+            sizes: '152x152',
+            type: 'image/png'
+          },
+          {
+            src: '/icons/icon-192.png',
+            sizes: '192x192',
+            type: 'image/png'
+          },
+          {
+            src: '/icons/icon-384.png',
+            sizes: '384x384',
+            type: 'image/png'
+          },
+          {
+            src: '/icons/icon-512.png',
+            sizes: '512x512',
+            type: 'image/png',
+            purpose: 'any maskable'
+          }
+        ]
+      },
+      workbox: {
+        // Cache strategies
+        runtimeCaching: [
+          {
+            urlPattern: /^https:\/\/fonts\.googleapis\.com\/.*/i,
+            handler: 'CacheFirst',
+            options: {
+              cacheName: 'google-fonts-cache',
+              expiration: {
+                maxEntries: 10,
+                maxAgeSeconds: 60 * 60 * 24 * 365 // 1 year
+              },
+              cacheableResponse: {
+                statuses: [0, 200]
+              }
+            }
+          },
+          {
+            urlPattern: /^https:\/\/fonts\.gstatic\.com\/.*/i,
+            handler: 'CacheFirst',
+            options: {
+              cacheName: 'gstatic-fonts-cache',
+              expiration: {
+                maxEntries: 10,
+                maxAgeSeconds: 60 * 60 * 24 * 365 // 1 year
+              },
+              cacheableResponse: {
+                statuses: [0, 200]
+              }
+            }
+          },
+          {
+            urlPattern: /\/gallery\/.*/i,
+            handler: 'CacheFirst',
+            options: {
+              cacheName: 'gallery-images-cache',
+              expiration: {
+                maxEntries: 200,
+                maxAgeSeconds: 60 * 60 * 24 * 30 // 30 days
+              },
+              cacheableResponse: {
+                statuses: [0, 200]
+              }
+            }
+          }
+        ],
+        // Skip waiting and claim clients immediately
+        skipWaiting: true,
+        clientsClaim: true,
+        // Precache app shell
+        globPatterns: ['**/*.{js,css,html,ico,png,svg,woff2}']
+      }
+    }),
   ],
   resolve: {
     alias: {
       '@': path.resolve(__dirname, './src'),
     },
+  },
+  build: {
+    // Target modern browsers for smaller bundles
+    target: 'es2020',
+    // Increase chunk size warning limit (we'll optimize chunks manually)
+    chunkSizeWarningLimit: 700, // Icons bundle is ~566KB due to lucide-react
+    // Minification options
+    minify: 'terser',
+    terserOptions: {
+      compress: {
+        drop_console: true, // Remove console.log in production
+        drop_debugger: true,
+        pure_funcs: ['console.log', 'console.info', 'console.debug', 'console.warn'],
+      },
+      format: {
+        comments: false, // Remove comments
+      },
+    },
+    rollupOptions: {
+      output: {
+        // Manual chunk splitting for optimal caching
+        manualChunks: (id) => {
+          // React core
+          if (id.includes('node_modules/react/') || id.includes('node_modules/react-dom/')) {
+            return 'vendor-react'
+          }
+          // Radix UI components
+          if (id.includes('node_modules/@radix-ui/')) {
+            return 'vendor-radix'
+          }
+          // i18n libraries
+          if (id.includes('node_modules/i18next') || id.includes('node_modules/react-i18next')) {
+            return 'vendor-i18n'
+          }
+          // GIF processing (heavy, rarely used)
+          if (id.includes('node_modules/gifenc') || id.includes('node_modules/gifuct-js')) {
+            return 'vendor-gif'
+          }
+          // Image processing
+          if (id.includes('node_modules/image-q')) {
+            return 'vendor-image'
+          }
+          // QR scanning
+          if (id.includes('node_modules/jsqr')) {
+            return 'vendor-qr-scanner'
+          }
+          // Form and validation
+          if (id.includes('node_modules/zod') || id.includes('node_modules/react-hook-form') || id.includes('node_modules/@hookform')) {
+            return 'vendor-forms'
+          }
+          // Drag and drop
+          if (id.includes('node_modules/@dnd-kit')) {
+            return 'vendor-dnd'
+          }
+          // Utility libraries
+          if (id.includes('node_modules/clsx') || id.includes('node_modules/tailwind-merge') || id.includes('node_modules/class-variance-authority')) {
+            return 'vendor-utils'
+          }
+          // Capacitor (native platform support)
+          if (id.includes('node_modules/@capacitor')) {
+            return 'vendor-capacitor'
+          }
+          // Zustand state management
+          if (id.includes('node_modules/zustand')) {
+            return 'vendor-zustand'
+          }
+          // Lucide icons - large but necessary for UI
+          if (id.includes('node_modules/lucide-react')) {
+            return 'vendor-icons'
+          }
+          // QR code generation vendor library
+          if (id.includes('vendor/lib/qrcode-generator') || id.includes('vendor/lib/dithered-qr')) {
+            return 'vendor-qr-lib'
+          }
+          // App modules - split heavy processing
+          if (id.includes('/modules/exporter') || id.includes('/modules/animation')) {
+            return 'app-exporter'
+          }
+          if (id.includes('/modules/overlay-processor') || id.includes('/modules/image-filters') || id.includes('/modules/dither')) {
+            return 'app-image-processing'
+          }
+          if (id.includes('/modules/renderer') || id.includes('/modules/qr-core') || id.includes('/modules/qr-generator')) {
+            return 'app-qr-core'
+          }
+          // Gallery data
+          if (id.includes('/data/gallery-items')) {
+            return 'app-gallery-data'
+          }
+          // Locale JSON files - split by language
+          if (id.includes('/locales/') && id.endsWith('.json')) {
+            const match = id.match(/locales\/([a-z]{2})\.json/)
+            if (match) {
+              // Keep English in main bundle, lazy load others
+              if (match[1] === 'en') return 'locale-en'
+              return `locale-${match[1]}`
+            }
+          }
+          // Static page content - split by language
+          if (id.includes('/static/') && !id.includes('/txt/')) {
+            const match = id.match(/static\/([a-z]{2})\//)  
+            if (match) {
+              if (match[1] === 'en') return 'static-en'
+              return `static-${match[1]}`
+            }
+          }
+        },
+      },
+    },
+  },
+  // Optimize dependencies
+  optimizeDeps: {
+    include: ['react', 'react-dom', 'zustand', 'clsx', 'tailwind-merge'],
+    exclude: ['sharp', 'puppeteer'], // These are dev/build only
   },
 })

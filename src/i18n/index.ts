@@ -3,35 +3,16 @@
  * 
  * Internationalization setup using react-i18next
  * Supports: English, Hindi, Chinese, Malay, Tamil, Thai, Portuguese, Indonesian, Vietnamese, Tagalog, Japanese, Korean, Spanish, Arabic, Russian, Telugu, Marathi, Bengali, Gujarati, Kannada, Malayalam, Punjabi
+ * 
+ * OPTIMIZATION: Only English is bundled. Other locales are lazy-loaded on demand.
  */
 
 import i18n from 'i18next'
 import { initReactI18next } from 'react-i18next'
 import LanguageDetector from 'i18next-browser-languagedetector'
 
-// Import translation files
+// Only import English - other locales are lazy-loaded
 import en from './locales/en.json'
-import hi from './locales/hi.json'
-import zh from './locales/zh.json'
-import ms from './locales/ms.json'
-import ta from './locales/ta.json'
-import th from './locales/th.json'
-import pt from './locales/pt.json'
-import id from './locales/id.json'
-import vi from './locales/vi.json'
-import tl from './locales/tl.json'
-import ja from './locales/ja.json'
-import ko from './locales/ko.json'
-import es from './locales/es.json'
-import ar from './locales/ar.json'
-import ru from './locales/ru.json'
-import te from './locales/te.json'
-import mr from './locales/mr.json'
-import bn from './locales/bn.json'
-import gu from './locales/gu.json'
-import kn from './locales/kn.json'
-import ml from './locales/ml.json'
-import pa from './locales/pa.json'
 
 // Language metadata for the selector
 export const languages = [
@@ -70,33 +51,34 @@ export function isRtlLanguage(langCode: string): boolean {
 
 export type LanguageCode = typeof languages[number]['code']
 
-const resources = {
+// Initial resources - only English bundled, others lazy-loaded
+const resources: Record<string, { translation: Record<string, unknown> }> = {
   en: { translation: en },
-  hi: { translation: hi },
-  zh: { translation: zh },
-  ms: { translation: ms },
-  ta: { translation: ta },
-  th: { translation: th },
-  pt: { translation: pt },
-  id: { translation: id },
-  vi: { translation: vi },
-  tl: { translation: tl },
-  ja: { translation: ja },
-  ko: { translation: ko },
-  es: { translation: es },
-  ar: { translation: ar },
-  ru: { translation: ru },
-  te: { translation: te },
-  mr: { translation: mr },
-  bn: { translation: bn },
-  gu: { translation: gu },
-  kn: { translation: kn },
-  ml: { translation: ml },
-  pa: { translation: pa },
 }
 
 // List of supported language codes for detection
 const supportedLngs = languages.map(l => l.code)
+
+// Track which locales have been loaded
+const loadedLocales = new Set<string>(['en'])
+
+/**
+ * Lazy load a locale on demand
+ * This significantly reduces initial bundle size by ~1.5MB
+ */
+export async function loadLocale(lang: string): Promise<void> {
+  if (loadedLocales.has(lang)) return
+  
+  try {
+    // Dynamic import - Vite will code-split these
+    const localeModule = await import(`./locales/${lang}.json`)
+    i18n.addResourceBundle(lang, 'translation', localeModule.default, true, true)
+    loadedLocales.add(lang)
+  } catch (error) {
+    console.error(`Failed to load locale: ${lang}`, error)
+    // Fall back to English if locale fails to load
+  }
+}
 
 i18n
   .use(LanguageDetector)
@@ -107,7 +89,7 @@ i18n
     supportedLngs,
     // Allow loading of base language (e.g., 'zh' for 'zh-CN')
     load: 'languageOnly',
-    debug: import.meta.env.DEV,
+    debug: false, // Disable debug logging in all environments
     
     interpolation: {
       escapeValue: false, // React already escapes values
@@ -122,5 +104,19 @@ i18n
       convertDetectedLanguage: (lng: string) => lng.split('-')[0],
     },
   })
+
+// Listen for language changes and lazy-load locales
+i18n.on('languageChanged', async (lng) => {
+  const baseLang = lng.split('-')[0]
+  if (!loadedLocales.has(baseLang)) {
+    await loadLocale(baseLang)
+  }
+})
+
+// Pre-load detected language if not English
+const detectedLang = i18n.language?.split('-')[0]
+if (detectedLang && detectedLang !== 'en') {
+  loadLocale(detectedLang)
+}
 
 export default i18n
