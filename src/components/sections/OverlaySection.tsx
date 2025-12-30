@@ -124,6 +124,9 @@ export function OverlaySection() {
       setOverlayUrl('') // Clear URL when file is selected
       setOverlayFile(file)
     }
+    // Reset input value so the same file can be selected again
+    // This is necessary because browsers don't fire onChange if the value hasn't changed
+    e.target.value = ''
   }
 
   const clearOverlay = () => {

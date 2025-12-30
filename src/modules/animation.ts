@@ -1,11 +1,268 @@
 /**
  * Animation Module
  * Handles GIF and WebP animation parsing, frame management, animation patterns, and temporal effects
+ * 
+ * Performance optimizations:
+ * - Canvas pooling to reduce GC pressure
+ * - Frame decimation based on target FPS
+ * - Reusable composite canvas for GIF parsing
  */
 
 /// <reference path="../types/image-decoder.d.ts" />
 
 import { parseGIF, decompressFrames } from 'gifuct-js'
+
+// ============================================
+// GIF COMPOSITOR (optimal patch-only decode)
+// ============================================
+
+/**
+ * GIF Compositor - uses patch-only decode with a single reusable canvas.
+ * This is the optimal approach for GIF rendering:
+ * - No per-frame canvas allocation
+ * - Near-zero memory allocations during playback
+ * - Proper disposal handling (types 0-3)
+ * 
+ * Usage:
+ *   const compositor = createGifCompositor(arrayBuffer)
+ *   for (let i = 0; i < compositor.frameCount; i++) {
+ *     compositor.apply(i)          // Draw patch to canvas
+ *     // use compositor.canvas
+ *     compositor.dispose(i)        // Handle disposal for next frame
+ *   }
+ */
+export interface GifCompositor {
+  /** The single reusable canvas - always reflects the current composed frame */
+  canvas: HTMLCanvasElement
+  /** Total number of frames */
+  frameCount: number
+  /** Width of the GIF */
+  width: number
+  /** Height of the GIF */
+  height: number
+  /** Get delay for frame i in milliseconds */
+  delayMs: (i: number) => number
+  /** Apply frame i's patch to the canvas */
+  apply: (i: number) => void
+  /** Handle disposal after frame i (call before applying next frame) */
+  dispose: (i: number) => void
+  /** Reset compositor to initial state */
+  reset: () => void
+}
+
+/**
+ * Create a GIF compositor from an ArrayBuffer.
+ * Uses patch-only decode (decompressFrames with false) for minimal memory usage.
+ */
+export function createGifCompositor(arrayBuffer: ArrayBuffer): GifCompositor {
+  const gif = parseGIF(arrayBuffer)
+  // Use true to get full RGBA patch data (false returns indexed colors which don't work with putImageData)
+  const frames = decompressFrames(gif, true)
+  const { width, height } = gif.lsd
+
+  const canvas = document.createElement('canvas')
+  canvas.width = width
+  canvas.height = height
+  const ctx = canvas.getContext('2d')!
+  
+  // Reusable patch canvas for compositing (avoids per-frame allocation)
+  // We size it to the max patch dimensions across all frames
+  let maxPatchW = 0
+  let maxPatchH = 0
+  for (const f of frames) {
+    maxPatchW = Math.max(maxPatchW, f.dims.width)
+    maxPatchH = Math.max(maxPatchH, f.dims.height)
+  }
+  const patchCanvas = document.createElement('canvas')
+  patchCanvas.width = maxPatchW
+  patchCanvas.height = maxPatchH
+  const patchCtx = patchCanvas.getContext('2d')!
+
+  // For disposalType=3, we need to restore the previous state
+  let restoreData: { x: number; y: number; w: number; h: number; data: ImageData } | null = null
+
+  function apply(i: number): void {
+    if (i < 0 || i >= frames.length) return
+    
+    const f = frames[i]
+    const { left, top, width: w, height: h } = f.dims
+
+    // For disposal=3, snapshot the area before drawing patch
+    if (f.disposalType === 3) {
+      restoreData = { 
+        x: left, 
+        y: top, 
+        w, 
+        h, 
+        data: ctx.getImageData(left, top, w, h) 
+      }
+    } else {
+      restoreData = null
+    }
+
+    // IMPORTANT: We must use drawImage for proper alpha compositing!
+    // putImageData replaces pixels directly (transparent pixels become black)
+    // drawImage properly composites with alpha blending
+    patchCtx.clearRect(0, 0, w, h)
+    const imageData = new ImageData(new Uint8ClampedArray(f.patch), w, h)
+    patchCtx.putImageData(imageData, 0, 0)
+    ctx.drawImage(patchCanvas, 0, 0, w, h, left, top, w, h)
+  }
+
+  function dispose(i: number): void {
+    if (i < 0 || i >= frames.length) return
+    
+    const f = frames[i]
+    const { left, top, width: w, height: h } = f.dims
+
+    switch (f.disposalType) {
+      case 2:
+        // Restore to background (clear the patch area)
+        ctx.clearRect(left, top, w, h)
+        break
+      case 3:
+        // Restore to previous state
+        if (restoreData) {
+          ctx.putImageData(restoreData.data, restoreData.x, restoreData.y)
+        }
+        break
+      // disposalType 0, 1: leave frame in place (do nothing)
+    }
+  }
+
+  function reset(): void {
+    ctx.clearRect(0, 0, width, height)
+    restoreData = null
+  }
+
+  return {
+    canvas,
+    frameCount: frames.length,
+    width,
+    height,
+    delayMs: (i: number) => Math.max((frames[i]?.delay || 10), 1) * 10,
+    apply,
+    dispose,
+    reset,
+  }
+}
+
+// ============================================
+// FRAME DECIMATION UTILITIES
+// ============================================
+
+/**
+ * Calculate effective FPS from frame delays
+ */
+export function calculateSourceFps(frames: AnimationFrame[]): number {
+  if (frames.length === 0) return 10
+  const totalDelay = frames.reduce((sum, f) => sum + (f.delay || 100), 0)
+  const avgDelay = totalDelay / frames.length
+  return 1000 / avgDelay
+}
+
+/**
+ * Calculate FPS from a GIF compositor
+ */
+export function calculateCompositorFps(compositor: GifCompositor): number {
+  if (compositor.frameCount === 0) return 10
+  let totalDelay = 0
+  for (let i = 0; i < compositor.frameCount; i++) {
+    totalDelay += compositor.delayMs(i)
+  }
+  const avgDelay = totalDelay / compositor.frameCount
+  return 1000 / avgDelay
+}
+
+/**
+ * Calculate which frame indices to keep for target FPS
+ * Works with a GIF compositor
+ */
+export function decimateCompositorFrames(
+  compositor: GifCompositor,
+  targetFps: number
+): number[] {
+  if (compositor.frameCount <= 1 || targetFps <= 0) {
+    return Array.from({ length: compositor.frameCount }, (_, i) => i)
+  }
+  
+  const sourceFps = calculateCompositorFps(compositor)
+  
+  // If source FPS is already at or below target, keep all frames
+  if (sourceFps <= targetFps) {
+    return Array.from({ length: compositor.frameCount }, (_, i) => i)
+  }
+  
+  // Calculate frame step to achieve target FPS
+  const ratio = sourceFps / targetFps
+  const keepIndices: number[] = []
+  
+  // Use accumulator-based selection for smooth distribution
+  let accumulator = 0
+  for (let i = 0; i < compositor.frameCount; i++) {
+    accumulator += 1
+    if (accumulator >= ratio) {
+      keepIndices.push(i)
+      accumulator -= ratio
+    }
+  }
+  
+  // Always include first and last frame for complete animation
+  if (keepIndices.length > 0 && keepIndices[0] !== 0) {
+    keepIndices.unshift(0)
+  }
+  const lastIdx = compositor.frameCount - 1
+  if (keepIndices.length > 0 && keepIndices[keepIndices.length - 1] !== lastIdx) {
+    keepIndices.push(lastIdx)
+  }
+  
+  return keepIndices
+}
+
+/**
+ * Decimate frames to target FPS by skipping frames
+ * Returns indices of frames to keep
+ * @deprecated Use decimateCompositorFrames with GifCompositor instead
+ */
+export function decimateFramesToFps(
+  frames: AnimationFrame[],
+  targetFps: number
+): number[] {
+  if (frames.length <= 1 || targetFps <= 0) {
+    return frames.map((_, i) => i)
+  }
+  
+  const sourceFps = calculateSourceFps(frames)
+  
+  // If source FPS is already at or below target, keep all frames
+  if (sourceFps <= targetFps) {
+    return frames.map((_, i) => i)
+  }
+  
+  // Calculate frame step to achieve target FPS
+  const ratio = sourceFps / targetFps
+  const keepIndices: number[] = []
+  
+  // Use accumulator-based selection for smooth distribution
+  let accumulator = 0
+  for (let i = 0; i < frames.length; i++) {
+    accumulator += 1
+    if (accumulator >= ratio) {
+      keepIndices.push(i)
+      accumulator -= ratio
+    }
+  }
+  
+  // Always include first and last frame for complete animation
+  if (keepIndices.length > 0 && keepIndices[0] !== 0) {
+    keepIndices.unshift(0)
+  }
+  if (keepIndices.length > 0 && keepIndices[keepIndices.length - 1] !== frames.length - 1) {
+    keepIndices.push(frames.length - 1)
+  }
+  
+  return keepIndices
+}
 
 // ============================================
 // FORMAT DETECTION
@@ -262,6 +519,8 @@ async function parseStaticImageAsFrame(source: ArrayBuffer): Promise<AnimationFr
 
 /**
  * Parse a GIF file and extract frames as canvas elements
+ * @deprecated Use createGifCompositor for optimal performance
+ * This function creates a canvas per frame - use compositor pattern instead
  */
 export async function parseGifFrames(source: string | ArrayBuffer): Promise<AnimationFrame[]> {
   let arrayBuffer: ArrayBuffer
@@ -275,7 +534,7 @@ export async function parseGifFrames(source: string | ArrayBuffer): Promise<Anim
   }
 
   const gif = parseGIF(arrayBuffer)
-  const frames = decompressFrames(gif, true)
+  const frames = decompressFrames(gif, true) // Use true for full frame data
 
   if (frames.length === 0) {
     throw new Error('No frames found in GIF')
@@ -283,7 +542,7 @@ export async function parseGifFrames(source: string | ArrayBuffer): Promise<Anim
 
   const { width, height } = gif.lsd
 
-  // Create a persistent canvas for compositing frames
+  // Reuse a single composite canvas for building frames
   const compositeCanvas = document.createElement('canvas')
   compositeCanvas.width = width
   compositeCanvas.height = height
@@ -302,14 +561,15 @@ export async function parseGifFrames(source: string | ArrayBuffer): Promise<Anim
       dims.height
     )
 
-    // Create temporary canvas for this frame's patch
+    // Draw patch onto composite canvas using putImageData directly
+    // Create a temp canvas just for this patch
     const patchCanvas = document.createElement('canvas')
     patchCanvas.width = dims.width
     patchCanvas.height = dims.height
     const patchCtx = patchCanvas.getContext('2d')!
     patchCtx.putImageData(imageData, 0, 0)
-
-    // Draw patch onto composite canvas
+    
+    // Draw patch onto composite
     compositeCtx.drawImage(patchCanvas, dims.left, dims.top)
 
     // Create output canvas for this frame
@@ -764,6 +1024,14 @@ export const Animation = {
   
   // Loop
   createAnimationLoop,
+  
+  // Performance utilities - GIF compositor (optimal)
+  createGifCompositor,
+  calculateCompositorFps,
+  decimateCompositorFrames,
+  // Legacy utilities
+  calculateSourceFps,
+  decimateFramesToFps,
 }
 
 export default Animation

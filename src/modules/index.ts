@@ -77,11 +77,15 @@ export type { BlueNoiseOptions, BlueNoiseResult, ColorMode as BlueNoiseColorMode
 // ANIMATION (AnimationSection)
 // ============================================
 export { Animation, default as AnimationDefault } from './animation'
-export type { 
-  AnimationFrame, AnimationOptions, AnimationPattern, AnimationState 
+export type {
+  AnimationFrame, AnimationOptions, AnimationPattern, AnimationState, GifCompositor
 } from './animation'
 export {
   parseGifFrames, getGifDelays,
+  // GIF compositor (optimal patch-only decode)
+  createGifCompositor, calculateCompositorFps, decimateCompositorFrames,
+  // Legacy utilities
+  calculateSourceFps, decimateFramesToFps,
   createAnimationState, getNextFrame, advanceAnimation,
   applyAnimationPattern, applyTemporalDither,
   interpolateFrames, applyColorCycle, createAnimationLoop
