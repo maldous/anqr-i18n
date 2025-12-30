@@ -5,6 +5,10 @@ import compression from 'vite-plugin-compression'
 import path from 'path'
 import fs from 'fs'
 
+// Disable compression for Android builds (Capacitor sync causes duplicate resource errors)
+// Android WebView doesn't use pre-compressed .gz/.br files anyway
+const isAndroidBuild = process.env.CAPACITOR_PLATFORM === 'android' || process.env.npm_lifecycle_event?.includes('cap')
+
 // Custom middleware to serve static files from public/gallery before SPA fallback
 function serveGalleryFiles() {
   return {
@@ -48,20 +52,22 @@ export default defineConfig({
   plugins: [
     serveGalleryFiles(), // Serve gallery files before React plugin
     react(),
-    // Gzip compression for production builds
-    compression({
-      verbose: false,
-      algorithm: 'gzip',
-      ext: '.gz',
-      threshold: 1024, // Only compress files > 1KB
-    }),
-    // Brotli compression for modern browsers (better compression ratio)
-    compression({
-      verbose: false,
-      algorithm: 'brotliCompress',
-      ext: '.br',
-      threshold: 1024,
-    }),
+    // Gzip compression for production builds (disabled for Android)
+    ...(!isAndroidBuild ? [
+      compression({
+        verbose: false,
+        algorithm: 'gzip',
+        ext: '.gz',
+        threshold: 1024, // Only compress files > 1KB
+      }),
+      // Brotli compression for modern browsers (better compression ratio)
+      compression({
+        verbose: false,
+        algorithm: 'brotliCompress',
+        ext: '.br',
+        threshold: 1024,
+      }),
+    ] : []),
     VitePWA({
       registerType: 'autoUpdate',
       includeAssets: ['favicon.ico', 'robots.txt', 'sitemap.xml'],

@@ -139,7 +139,10 @@ android\:init:
 
 # Sync web assets to Android project
 android\:sync:
-	npm run build
+	CAPACITOR_PLATFORM=android npm run build
+	# Remove pre-compressed files that cause Android asset merger conflicts
+	find dist -name '*.gz' -delete 2>/dev/null || true
+	find dist -name '*.br' -delete 2>/dev/null || true
 	npx cap sync android
 
 # Open in Android Studio for development
@@ -148,21 +151,42 @@ android\:open:
 
 # Build debug APK
 android\:build:
-	npm run build
+	CAPACITOR_PLATFORM=android npm run build
+	# Remove pre-compressed files that cause Android asset merger conflicts
+	find dist -name '*.gz' -delete 2>/dev/null || true
+	find dist -name '*.br' -delete 2>/dev/null || true
+	# Remove gallery folder to reduce APK size (gallery is web-only feature)
+	rm -rf dist/gallery 2>/dev/null || true
+	# Remove source maps if any
+	find dist -name '*.map' -delete 2>/dev/null || true
+	# Remove large demo files not needed in mobile app (gallery loads from anqr.link)
+	rm -f dist/king.gif dist/tsunami.jpg 2>/dev/null || true
 	npx cap sync android
 	cd android && ./gradlew assembleDebug
 	@echo "Debug APK: android/app/build/outputs/apk/debug/app-debug.apk"
 
 # Build release AAB for Play Store
 android\:release:
-	npm run build
+	CAPACITOR_PLATFORM=android npm run build
+	# Remove pre-compressed files that cause Android asset merger conflicts
+	find dist -name '*.gz' -delete 2>/dev/null || true
+	find dist -name '*.br' -delete 2>/dev/null || true
+	# Remove gallery folder to reduce APK size (gallery is web-only feature)
+	rm -rf dist/gallery 2>/dev/null || true
+	# Remove source maps if any
+	find dist -name '*.map' -delete 2>/dev/null || true
+	# Remove large demo files not needed in mobile app (gallery loads from anqr.link)
+	rm -f dist/king.gif dist/tsunami.jpg 2>/dev/null || true
 	npx cap sync android
 	cd android && ./gradlew bundleRelease
 	@echo "Release AAB: android/app/build/outputs/bundle/release/app-release.aab"
 
 # Run on connected device or emulator
 android\:run:
-	npm run build
+	CAPACITOR_PLATFORM=android npm run build
+	# Remove pre-compressed files that cause Android asset merger conflicts
+	find dist -name '*.gz' -delete 2>/dev/null || true
+	find dist -name '*.br' -delete 2>/dev/null || true
 	npx cap sync android
 	npx cap run android
 
