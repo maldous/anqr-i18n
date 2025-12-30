@@ -9,8 +9,39 @@
 
 import type { ColorMode, FitMode, OverlayMode, CropRegion, DitherKind, DiffusionKernel, OrderedMatrix } from '../store/qr-store'
 import { applyFilters, copyImageData, getBrightnessMap, getRGBMap, type FilterOptions, type RGB } from './image-filters'
-import { ditherWithWorker, shouldUseWorker, isMobile } from '../workers/dither-service'
 import { applyDither, type DitherOptions, type DitherResult } from './dither-algorithms'
+
+// ============================================
+// MOBILE DETECTION
+// ============================================
+
+let _isMobile: boolean | null = null
+
+/**
+ * Detect if running on a mobile device
+ * Caches result for performance
+ */
+function isMobile(): boolean {
+  if (_isMobile !== null) return _isMobile
+  
+  if (typeof navigator === 'undefined') {
+    _isMobile = false
+    return false
+  }
+  
+  // Check user agent for mobile indicators
+  const ua = navigator.userAgent || ''
+  const isMobileUA = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(ua)
+  
+  // Also check for touch capability as a secondary signal
+  const hasTouch = 'ontouchstart' in window || navigator.maxTouchPoints > 0
+  
+  // Consider mobile if user agent matches OR if it's a touch device with small screen
+  const isSmallScreen = typeof window !== 'undefined' && window.innerWidth < 768
+  
+  _isMobile = isMobileUA || (hasTouch && isSmallScreen)
+  return _isMobile
+}
 
 // ============================================
 // TYPES
@@ -600,12 +631,8 @@ export async function ditherOverlay(
     blueNoiseTileSize: options.blueNoiseTileSize ?? 64,
   }
   
-  // Use worker for large images, main thread for small ones
-  if (shouldUseWorker(canvas.width, canvas.height)) {
-    return ditherWithWorker(imageData, ditherOpts)
-  } else {
-    return applyDither(imageData, ditherOpts)
-  }
+  // Always use direct dithering on main thread (workers degraded performance)
+  return applyDither(imageData, ditherOpts)
 }
 
 /**

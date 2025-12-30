@@ -14,6 +14,8 @@
  * - Finder Styles: square, rounded, circle
  */
 
+import { Capacitor } from '@capacitor/core'
+
 export type GalleryCategory = 
   | 'plain'
   | 'content-types'
@@ -751,7 +753,7 @@ export function getGalleryImagePath(item: GalleryItem): string {
   
   // On native apps (Android/iOS), load gallery images from the web
   // since we don't bundle them locally to reduce APK size
-  if (typeof window !== 'undefined' && window.location.protocol === 'capacitor:') {
+  if (Capacitor.isNativePlatform()) {
     return `https://anqr.link${relativePath}`
   }
   
