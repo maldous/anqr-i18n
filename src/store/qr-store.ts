@@ -793,7 +793,7 @@ export const useQRStore = create<QRState>((set, get) => ({
     bounce: false,
     playing: true,
     startFrame: 0,
-    maxFrames: 100,
+    maxFrames: 0,  // 0 = auto (use source frames, capped for performance)
     frameStep: 1,
     perFrameDelay: [],
     interpolate: 'none',

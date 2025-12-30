@@ -747,7 +747,7 @@ export function buildUrlParams(config: Partial<ShareConfig>): string {
   if (config.startFrame !== undefined && config.startFrame !== 0) {
     params.set('startF', config.startFrame.toString())
   }
-  if (config.maxFrames !== undefined && config.maxFrames !== 100) {
+  if (config.maxFrames !== undefined && config.maxFrames !== 0) {
     params.set('maxF', config.maxFrames.toString())
   }
   if (config.frameStep !== undefined && config.frameStep !== 1) {
