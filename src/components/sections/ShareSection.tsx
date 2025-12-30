@@ -271,7 +271,7 @@ export function ShareSection() {
               readOnly
               value={markdownEmbed}
               className="flex-1 text-xs font-mono"
-              placeholder="Markdown"
+              placeholder={t('share.markdown')}
             />
             <Button 
               variant="outline" 
