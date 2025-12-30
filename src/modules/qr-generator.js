@@ -558,6 +558,9 @@ export class QRGenerator {
             );
           }
           
+          // Note: colorCycle is now applied as post-processing in useQRGenerator.ts
+          // using the applyColorCycle function from animation.ts for better results
+          
           // Use gradient for dark modules if configured, otherwise use module color
           if (isDark && useGradient) {
             ctx.fillStyle = gradientFill;
@@ -589,6 +592,16 @@ export class QRGenerator {
 
           let drawX = x + offset + waveOffsetX;
           let drawY = y + offset + waveOffsetY;
+          
+          // Apply module jitter if configured (for animation effects)
+          if (config.moduleJitterPx && config.moduleJitterPx > 0) {
+            // Use deterministic jitter based on row, col, and frame index for consistency
+            const jitterSeed = (row * 31 + col * 17 + (config.frameIndex || 0) * 13) % 1000;
+            const jitterX = ((jitterSeed % 100) / 100 - 0.5) * 2 * config.moduleJitterPx;
+            const jitterY = (((jitterSeed * 7) % 100) / 100 - 0.5) * 2 * config.moduleJitterPx;
+            drawX += jitterX;
+            drawY += jitterY;
+          }
           
           // Apply pixel snap if configured
           const pixelSnap = config.pixelSnap || 'floor';

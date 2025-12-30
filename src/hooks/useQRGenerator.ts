@@ -15,6 +15,7 @@ import { applyFilters, type FilterOptions } from '@/modules/image-filters'
 import { validateQRCodeRobust, type ValidationResult } from '@/modules/qr-scanner'
 import { calculateTemporalOffset, applyTemporalNoiseToCanvas, isTemporalDitherActive, type TemporalDitherMode } from '@/modules/temporal-dither'
 import { generatePatternFrames, interpolateFrames, type AnimationPattern } from '@/modules/animation-patterns'
+import { applyColorCycle } from '@/modules/animation'
 
 // Singleton QR generator instance
 const qrGenerator = new QRGenerator()
@@ -326,6 +327,7 @@ export function useQRGenerator(): UseQRGeneratorResult {
       subpixelGridSize: overlay.subpixelGridSize,
       subpixelCenterRule: overlay.subpixelCenterRule,
       subpixelNeutralColor: overlay.subpixelNeutralColor,
+      subpixelFinderOverride: overlay.subpixelFinderOverride,
       
       // Halftone options
       halftoneCell: overlay.halftoneCell,
@@ -342,6 +344,11 @@ export function useQRGenerator(): UseQRGeneratorResult {
       temporalDither: animation.temporalDither,
       frameIndex: 0, // Default for static images, will be overridden per-frame for animations
       animationSeed: animation.seed,
+      moduleJitterPx: animation.moduleJitterPx,
+      colorCycle: animation.colorCycle,
+      
+      // === QR ENCODING ENFORCEMENT ===
+      quietZoneMinEnforce: qr.quietZoneMinEnforce,
       
       // === SAFETY CONSTRAINTS ===
       safetyMode: safety.mode,
@@ -359,8 +366,7 @@ export function useQRGenerator(): UseQRGeneratorResult {
     safetyAdjustedConfig, // Include safety-adjusted values
     // QR encoding
     qr.version, qr.ecc, qr.encodingMode,
-
-    qr.quietZoneModules, qr.borderModulesExtra,
+    qr.quietZoneModules, qr.borderModulesExtra, qr.quietZoneMinEnforce,
     // Render
     render.modulePx, render.moduleGapPercent, render.gapMode,
     render.moduleStyle, render.finderStyle, render.alignmentStyle, render.timingStyle,
@@ -375,6 +381,7 @@ export function useQRGenerator(): UseQRGeneratorResult {
     overlay.enabled, overlay.mode, overlay.intensity,
     overlay.colorMode, overlay.invert,
     overlay.preserveFinders, overlay.preserveTiming, overlay.preserveAlignment,
+    overlay.protectFormatInfo, overlay.protectVersionInfo,
     overlay.brightness, overlay.contrast, overlay.gamma, overlay.saturation,
     overlay.hueRotateDeg, overlay.blurPx, overlay.sharpen,
     overlay.posterizeLevels, overlay.threshold, overlay.edgeDetect,
@@ -383,11 +390,12 @@ export function useQRGenerator(): UseQRGeneratorResult {
     overlay.ditherKind, overlay.ditherStrength, overlay.ditherSerpentine,
     overlay.diffusionKernel, overlay.orderedMatrix,
     overlay.blueNoiseTileSize, overlay.blueNoiseSeed, overlay.colorDither,
-    overlay.subpixelGridSize, overlay.subpixelCenterRule, overlay.subpixelNeutralColor,
+    overlay.subpixelGridSize, overlay.subpixelCenterRule, overlay.subpixelNeutralColor, overlay.subpixelFinderOverride,
     overlay.halftoneCell, overlay.halftoneDotShape, overlay.duotoneColors, overlay.brightnessCurve,
     overlay.eccAwareEnabled, overlay.eccAwareRiskBudget, overlay.eccAwareWeightMap,
+    overlay.gifUseFrameDelays, overlay.gifMaxFps, overlay.gifDisposalHandling,
     // Animation
-    animation.temporalDither, animation.seed,
+    animation.temporalDither, animation.seed, animation.moduleJitterPx, animation.colorCycle,
     // Safety
     safety.mode, safety.lockFinders, safety.lockTiming, safety.lockAlign,
     safety.lockFormat, safety.lockVersion, safety.minModulePx, safety.minQuietZoneModules,
@@ -635,6 +643,14 @@ export function useQRGenerator(): UseQRGeneratorResult {
         overlay.enabled ? overlayCanvas : null
       )
 
+      // Apply color cycle as post-processing for static images if enabled
+      // For static images, we apply a hue shift based on the animation seed for variety
+      if (animation.colorCycle && result) {
+        // Use seed to determine hue shift for static images (gives consistent but visible effect)
+        const staticHueShift = (animation.seed % 360) || 60 // Default to 60 degree shift if seed is 0
+        result = applyColorCycle(result, staticHueShift, 360) // This gives hueShift = staticHueShift degrees
+      }
+
       // Apply watermark if enabled
       if (watermark.enabled && result) {
         let watermarkImage: HTMLImageElement | HTMLCanvasElement | null = null
@@ -691,7 +707,7 @@ export function useQRGenerator(): UseQRGeneratorResult {
     } finally {
       setIsLoading(false)
     }
-  }, [debouncedConfig, overlay.enabled, overlayCanvas, watermark.enabled, watermark.kind, watermark.text, watermark.image, watermark.position, watermark.opacity, watermark.blend])
+  }, [debouncedConfig, overlay.enabled, overlayCanvas, watermark.enabled, watermark.kind, watermark.text, watermark.image, watermark.position, watermark.opacity, watermark.blend, animation.colorCycle, animation.seed])
 
   // Regenerate when config changes
   // Skip if we're playing from cached animation frames
@@ -736,10 +752,18 @@ export function useQRGenerator(): UseQRGeneratorResult {
     }
   }, [isLoading, isAnimationCacheReady, animationFrames, currentFrame, animation.speedMs, effectiveFrames])
 
-  // Animation loop for GIF overlays
+  // Determine the total frame count for animation playback
+  // This handles both overlay-based animations (effectiveFrames) and base QR animations (animationFrames)
+  const playbackFrameCount = useMemo(() => {
+    if (effectiveFrames.length > 1) return effectiveFrames.length
+    if (isAnimationCacheReady && animationFrames.length > 1) return animationFrames.length
+    return 0
+  }, [effectiveFrames.length, isAnimationCacheReady, animationFrames.length])
+
+  // Animation loop for both overlay-based and base QR animations
   useEffect(() => {
     // Only animate if we have multiple frames and animation is playing
-    if (effectiveFrames.length <= 1 || !animation.playing) {
+    if (playbackFrameCount <= 1 || !animation.playing) {
       setIsAnimating(false)
       if (animationRef.current) {
         cancelAnimationFrame(animationRef.current)
@@ -765,28 +789,28 @@ export function useQRGenerator(): UseQRGeneratorResult {
           // Get frame delay from current frame if available
           let next = prev + animationDirection.current
 
-          // Handle bounds based on effective frames
-          if (next >= effectiveFrames.length) {
+          // Handle bounds based on playback frame count
+          if (next >= playbackFrameCount) {
             if (animation.bounce) {
               animationDirection.current = -1
-              next = effectiveFrames.length - 2
+              next = playbackFrameCount - 2
             } else if (animation.loop) {
               next = 0
             } else {
-              next = effectiveFrames.length - 1
+              next = playbackFrameCount - 1
             }
           } else if (next < 0) {
             if (animation.bounce) {
               animationDirection.current = 1
               next = 1
             } else if (animation.loop) {
-              next = effectiveFrames.length - 1
+              next = playbackFrameCount - 1
             } else {
               next = 0
             }
           }
 
-          return Math.max(0, Math.min(effectiveFrames.length - 1, next))
+          return Math.max(0, Math.min(playbackFrameCount - 1, next))
         })
       }
 
@@ -801,7 +825,7 @@ export function useQRGenerator(): UseQRGeneratorResult {
         animationRef.current = null
       }
     }
-  }, [effectiveFrames.length, animation.playing, animation.speedMs, animation.loop, animation.bounce])
+  }, [playbackFrameCount, animation.playing, animation.speedMs, animation.loop, animation.bounce])
 
   // Update raw overlay canvas when current frame changes (for animation)
   // BUT only if we don't have cached animation frames yet
@@ -871,6 +895,7 @@ export function useQRGenerator(): UseQRGeneratorResult {
       outputQuality: output.quality,
       filename: output.filename,
       dpi: output.dpi,
+      // Output options
       includeQuietZone: output.includeQuietZone,
       bgOverride: output.bgOverride,
       // GIF options
@@ -878,6 +903,7 @@ export function useQRGenerator(): UseQRGeneratorResult {
       gifQuantizer: output.gifQuantizer,
       gifDither: output.gifDither,
       gifTransparentColor: output.gifTransparentColor,
+      gifDisposal: output.gifDisposal,
       // SVG options
       svgTrueVector: output.svgTrueVector,
       svgShapePrecision: output.svgShapePrecision,
@@ -923,12 +949,24 @@ export function useQRGenerator(): UseQRGeneratorResult {
           }
           return scaledCanvas
         })
+        
+        // Calculate frame delays - use original GIF delays if enabled, otherwise use animation speed
+        let frameDelays: number[] | undefined
+        if (overlay.gifUseFrameDelays && effectiveFrames.length > 0) {
+          // Use original frame delays from source GIF, capped by maxFps
+          const minDelayMs = overlay.gifMaxFps > 0 ? Math.floor(1000 / overlay.gifMaxFps) : 0
+          frameDelays = effectiveFrames.map(f => Math.max(f.delay || animation.speedMs, minDelayMs))
+        } else if (animationFrames.length > 1 && effectiveFrames.length === 0) {
+          // For base QR animations (no overlay), use uniform animation speed
+          frameDelays = animationFrames.map(() => animation.speedMs)
+        }
+        
         // Export animated GIF with all frames
         await downloadGif(scaledFrames, {
           ...exportConfig,
           animationSpeed: animation.speedMs,
           loopAnimation: animation.loop,
-        })
+        }, frameDelays)
       } else if (output.format === 'gif') {
         // Single frame GIF
         await downloadGif([exportCanvas], exportConfig)
@@ -940,7 +978,7 @@ export function useQRGenerator(): UseQRGeneratorResult {
     } finally {
       setIsExporting(false)
     }
-  }, [canvas, output, render.crispEdges, animationFrames, animation.speedMs, animation.loop, metadata])
+  }, [canvas, output, render.crispEdges, animationFrames, animation.speedMs, animation.loop, metadata, overlay.gifUseFrameDelays, overlay.gifMaxFps, effectiveFrames])
 
   // Generate all animation frames for GIF export and playback cache
   // This runs once when config changes, then frames are cached for fast playback
@@ -948,13 +986,26 @@ export function useQRGenerator(): UseQRGeneratorResult {
     // Track if this effect is still current (for cleanup/cancellation)
     let isCancelled = false
     
-    // Check if we should generate pattern-based animation from static image
+    // Check if animation effects are enabled (works even without overlay)
+    const hasAnimationEffects = 
+      animation.colorCycle ||
+      animation.pattern !== 'none' ||
+      animation.temporalDither !== 'off' ||
+      animation.moduleJitterPx > 0
+    
+    // Check if we should generate pattern-based animation from static overlay image
     const shouldGeneratePatternAnimation = 
       animation.pattern !== 'none' && 
       overlay.enabled && 
       effectiveFrames.length === 1
     
-    if (effectiveFrames.length <= 1 && !shouldGeneratePatternAnimation && !overlay.enabled) {
+    // Check if we should generate animation from base QR (no overlay)
+    const shouldGenerateBaseAnimation = 
+      hasAnimationEffects && 
+      !overlay.enabled
+    
+    // Early return only if no animation is needed
+    if (effectiveFrames.length <= 1 && !shouldGeneratePatternAnimation && !shouldGenerateBaseAnimation && !overlay.enabled) {
       setAnimationFrames([])
       setIsAnimationCacheReady(false)
       return
@@ -985,8 +1036,98 @@ export function useQRGenerator(): UseQRGeneratorResult {
       // Determine frames to process
       let framesToProcess = effectiveFrames
       
-      // Generate pattern animation frames if applicable
-      if (shouldGeneratePatternAnimation && effectiveFrames.length === 1) {
+      // Generate animation frames for base QR (no overlay)
+      if (shouldGenerateBaseAnimation) {
+        const frameCount = 24
+        
+        // Check if we need per-frame QR generation (for moduleJitter)
+        const needsPerFrameQR = animation.moduleJitterPx > 0
+        
+        if (animation.pattern !== 'none' && !needsPerFrameQR) {
+          // Generate base QR once, then apply pattern animation
+          const baseQR = await qrGenerator.generate(debouncedConfig, null)
+          if (!baseQR || isCancelled) return
+          
+          const patternFrames = generatePatternFrames(
+            baseQR,
+            animation.pattern as AnimationPattern,
+            frameCount,
+            animation.seed
+          )
+          framesToProcess = patternFrames.map(canvas => ({
+            canvas,
+            delay: animation.speedMs,
+            disposalType: 0
+          }))
+        } else if (animation.pattern !== 'none' && needsPerFrameQR) {
+          // Generate QR per frame for jitter, then apply pattern
+          // First generate all pattern frames from a base QR to get the pattern progression
+          const baseQR = await qrGenerator.generate(debouncedConfig, null)
+          if (!baseQR || isCancelled) return
+          
+          const basePatternFrames = generatePatternFrames(
+            baseQR,
+            animation.pattern as AnimationPattern,
+            frameCount,
+            animation.seed
+          )
+          
+          // Now generate jittered QR frames and combine with pattern effects
+          const combinedFrames: HTMLCanvasElement[] = []
+          for (let i = 0; i < frameCount; i++) {
+            if (isCancelled) return
+            // Generate QR with jitter for this frame
+            const frameConfig = { ...debouncedConfig, frameIndex: i }
+            const jitteredQR = await qrGenerator.generate(frameConfig, null)
+            if (!jitteredQR) continue
+            
+            // Apply the same pattern effect that would be at this frame index
+            // by generating pattern frames for this specific jittered QR
+            const patternForFrame = generatePatternFrames(
+              jitteredQR,
+              animation.pattern as AnimationPattern,
+              frameCount,
+              animation.seed
+            )
+            // Pick the frame at index i to match the animation progression
+            combinedFrames.push(patternForFrame[i] || jitteredQR)
+          }
+          
+          framesToProcess = combinedFrames.map(canvas => ({
+            canvas,
+            delay: animation.speedMs,
+            disposalType: 0
+          }))
+        } else if (needsPerFrameQR) {
+          // Just moduleJitter without pattern - generate frames with jitter
+          const jitteredFrames: HTMLCanvasElement[] = []
+          for (let i = 0; i < frameCount; i++) {
+            if (isCancelled) return
+            const frameConfig = { ...debouncedConfig, frameIndex: i }
+            const qrFrame = await qrGenerator.generate(frameConfig, null)
+            if (qrFrame) jitteredFrames.push(qrFrame)
+          }
+          
+          framesToProcess = jitteredFrames.map(canvas => ({
+            canvas,
+            delay: animation.speedMs,
+            disposalType: 0
+          }))
+        } else {
+          // For colorCycle/temporalDither without pattern or jitter
+          // Generate base QR once, then create placeholder frames for post-processing
+          const staticBaseQR = await qrGenerator.generate(debouncedConfig, null)
+          if (!staticBaseQR || isCancelled) return
+          
+          framesToProcess = Array.from({ length: frameCount }, () => ({
+            canvas: staticBaseQR,
+            delay: animation.speedMs,
+            disposalType: 0
+          }))
+        }
+      }
+      // Generate pattern animation frames from static overlay image
+      else if (shouldGeneratePatternAnimation && effectiveFrames.length === 1) {
         // Generate 24 frames of pattern animation from single frame
         const patternFrameCount = 24
         const baseCanvas = applyPreprocessing(effectiveFrames[0].canvas)
@@ -1010,31 +1151,59 @@ export function useQRGenerator(): UseQRGeneratorResult {
         if (isCancelled) return
         
         try {
-          let processedOverlay = shouldGeneratePatternAnimation 
-            ? frame.canvas // Already processed for pattern animation
-            : applyPreprocessing(frame.canvas)
+          let result: HTMLCanvasElement | null = null
           
-          // Apply temporal dithering offset to the overlay image
-          // This varies the input slightly per frame for smoother perceived quality
-          if (useTemporalDither) {
-            const temporalOffset = calculateTemporalOffset(frameIdx, temporalMode, animation.seed)
-            processedOverlay = applyTemporalNoiseToCanvas(processedOverlay, temporalOffset, 0.015)
+          if (shouldGenerateBaseAnimation) {
+            // For base QR animation, the frame.canvas is either:
+            // - A pattern-processed frame (if pattern !== 'none')
+            // - The base QR itself (for colorCycle/temporalDither only)
+            if (animation.pattern !== 'none' || animation.moduleJitterPx > 0) {
+              // Pattern and/or jitter already applied during frame generation, just use the frame directly
+              result = frame.canvas
+            } else {
+              // Re-render QR with different frameIndex for temporal effects
+              const frameConfig = { 
+                ...debouncedConfig, 
+                frameIndex: frameIdx,
+                temporalOffset: useTemporalDither ? calculateTemporalOffset(frameIdx, temporalMode, animation.seed) : 0
+              }
+              result = await qrGenerator.generate(frameConfig, null)
+            }
+          } else {
+            // Overlay-based animation
+            let processedOverlay = shouldGeneratePatternAnimation 
+              ? frame.canvas // Already processed for pattern animation
+              : applyPreprocessing(frame.canvas)
+            
+            // Apply temporal dithering offset to the overlay image
+            // This varies the input slightly per frame for smoother perceived quality
+            if (useTemporalDither) {
+              const temporalOffset = calculateTemporalOffset(frameIdx, temporalMode, animation.seed)
+              processedOverlay = applyTemporalNoiseToCanvas(processedOverlay, temporalOffset, 0.015)
+            }
+            
+            // Pass frame index for temporal dithering (also used in qr-generator for dither pattern offset)
+            const frameConfig = { 
+              ...debouncedConfig, 
+              frameIndex: frameIdx,
+              temporalOffset: useTemporalDither ? calculateTemporalOffset(frameIdx, temporalMode, animation.seed) : 0
+            }
+            result = await qrGenerator.generate(frameConfig, processedOverlay)
           }
-          
-          // Pass frame index for temporal dithering (also used in qr-generator for dither pattern offset)
-          const frameConfig = { 
-            ...debouncedConfig, 
-            frameIndex: frameIdx,
-            temporalOffset: useTemporalDither ? calculateTemporalOffset(frameIdx, temporalMode, animation.seed) : 0
-          }
-          const result = await qrGenerator.generate(frameConfig, processedOverlay)
           
           if (isCancelled) return
           
           if (result) {
+            let finalResult = result
+            
+            // Apply color cycle as post-processing if enabled
+            if (animation.colorCycle) {
+              finalResult = applyColorCycle(finalResult, frameIdx, framesToProcess.length)
+            }
+            
             // Apply watermark if enabled
             if (watermark.enabled) {
-              const watermarked = applyWatermark(result, {
+              const watermarked = applyWatermark(finalResult, {
                 enabled: watermark.enabled,
                 kind: watermark.kind,
                 text: watermark.text,
@@ -1045,7 +1214,7 @@ export function useQRGenerator(): UseQRGeneratorResult {
               })
               frames.push(watermarked.canvas)
             } else {
-              frames.push(result)
+              frames.push(finalResult)
             }
           }
         } catch (err) {
@@ -1085,7 +1254,7 @@ export function useQRGenerator(): UseQRGeneratorResult {
     return () => {
       isCancelled = true
     }
-  }, [effectiveFrames, overlay.enabled, debouncedConfig, applyPreprocessing, watermark, animation.temporalDither, animation.seed, animation.pattern, animation.interpolate, animation.speedMs])
+  }, [effectiveFrames, overlay.enabled, debouncedConfig, applyPreprocessing, watermark, animation.temporalDither, animation.seed, animation.pattern, animation.interpolate, animation.speedMs, animation.colorCycle, animation.moduleJitterPx])
 
   return {
     canvasRef,
@@ -1098,7 +1267,7 @@ export function useQRGenerator(): UseQRGeneratorResult {
     // Animation state
     isAnimating,
     currentFrame,
-    totalFrames: effectiveFrames.length,
+    totalFrames: playbackFrameCount || effectiveFrames.length,
     // Safety warnings
     safetyWarnings,
     // Validation

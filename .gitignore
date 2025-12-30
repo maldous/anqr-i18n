@@ -1,5 +1,10 @@
 # Dependencies
 node_modules/
+
+# Netlify build cache (but not functions/)
+.netlify/blobs-serve/
+.netlify/functions-internal/
+.netlify/v1/
 .pnp
 .pnp.js
 

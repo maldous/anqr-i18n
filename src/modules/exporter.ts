@@ -26,6 +26,9 @@ export interface ExportConfig {
   transparentBackground: boolean
   dpi: number
   includeMetadata: boolean
+  includeQuietZone: boolean // If false, crop quiet zone from output
+  bgOverride: string // Override background color (empty = use original)
+  gifDisposal: string // GIF frame disposal method
   metadata?: {
     title?: string
     author?: string
@@ -283,6 +286,9 @@ export async function exportImage(
     transparentBackground: config.transparentBackground ?? false,
     dpi: config.dpi ?? 72,
     includeMetadata: config.includeMetadata ?? false,
+    includeQuietZone: config.includeQuietZone ?? true,
+    bgOverride: config.bgOverride ?? '',
+    gifDisposal: config.gifDisposal ?? 'restore_bg',
     metadata: config.metadata,
   }
 
@@ -297,6 +303,12 @@ export async function exportImage(
   outputCanvas.width = opts.outputWidth
   outputCanvas.height = opts.outputHeight
   const ctx = outputCanvas.getContext('2d')!
+  
+  // Apply background override if specified
+  if (opts.bgOverride && opts.bgOverride.trim()) {
+    ctx.fillStyle = opts.bgOverride
+    ctx.fillRect(0, 0, opts.outputWidth, opts.outputHeight)
+  }
   
   // Use high quality scaling
   ctx.imageSmoothingEnabled = false
@@ -385,6 +397,9 @@ export async function exportGif(
     transparentBackground: config.transparentBackground ?? false,
     dpi: config.dpi ?? 72,
     includeMetadata: config.includeMetadata ?? false,
+    includeQuietZone: config.includeQuietZone ?? true,
+    bgOverride: config.bgOverride ?? '',
+    gifDisposal: config.gifDisposal ?? 'restore_bg',
     metadata: config.metadata,
   }
 
@@ -407,6 +422,13 @@ export async function exportGif(
     scaled.width = width
     scaled.height = height
     const ctx = scaled.getContext('2d')!
+    
+    // Apply background override if specified
+    if (opts.bgOverride && opts.bgOverride.trim()) {
+      ctx.fillStyle = opts.bgOverride
+      ctx.fillRect(0, 0, width, height)
+    }
+    
     ctx.imageSmoothingEnabled = false
     ctx.drawImage(frame, 0, 0, width, height)
 
@@ -423,9 +445,20 @@ export async function exportGif(
     // Write frame with delay (gifenc uses milliseconds directly)
     // Use a minimum of 100ms for compatibility with most image viewers
     const delayMs = Math.max(100, frameDelay)
+    
+    // Map disposal string to gifenc disposal code
+    const disposalMap: Record<string, number> = {
+      'none': 0,
+      'keep': 1, 
+      'restore_bg': 2,
+      'restore_previous': 3,
+    }
+    const disposal = disposalMap[opts.gifDisposal] ?? 2
+    
     gif.writeFrame(index, width, height, {
       palette,
       delay: delayMs,
+      disposal,
       ...(isFirstFrame && { repeat }),
     })
     isFirstFrame = false
@@ -488,6 +521,9 @@ export async function exportSvg(
     transparentBackground: config.transparentBackground ?? false,
     dpi: config.dpi ?? 72,
     includeMetadata: config.includeMetadata ?? false,
+    includeQuietZone: config.includeQuietZone ?? true,
+    bgOverride: config.bgOverride ?? '',
+    gifDisposal: config.gifDisposal ?? 'restore_bg',
     metadata: config.metadata,
   }
 
