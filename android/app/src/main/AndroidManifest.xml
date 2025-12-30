@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <application
         android:allowBackup="true"
@@ -24,6 +25,20 @@
 
         </activity>
 
+        <!--
+          Work around Android 15 (API 35) edge-to-edge enforcement issues in
+          Google Mobile Ads' full-screen AdActivity.
+
+          The GMA SDK declares this Activity in its own manifest; we re-declare it
+          here solely to override its theme.
+        -->
+        <activity
+            android:name="com.google.android.gms.ads.AdActivity"
+            android:theme="@android:style/Theme.Translucent"
+            android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize"
+            tools:replace="android:theme,android:configChanges"
+            tools:node="merge" />
+
         <provider
             android:name="androidx.core.content.FileProvider"
             android:authorities="${applicationId}.fileprovider"
@@ -38,6 +53,9 @@
         <meta-data
             android:name="com.google.android.gms.ads.APPLICATION_ID"
             android:value="ca-app-pub-2270701384951162~3067761782"/>
+        
+
+
     </application>
 
     <!-- Permissions -->

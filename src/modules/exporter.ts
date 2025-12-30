@@ -7,7 +7,7 @@
 
 import { GIFEncoder, quantize, applyPalette } from 'gifenc'
 import { Capacitor } from '@capacitor/core'
-import { Filesystem, Directory } from '@capacitor/filesystem'
+import { saveBase64ToDocuments } from './media-store-writer'
 
 // ============================================
 // TYPES
@@ -600,34 +600,36 @@ export async function downloadSvg(
 // ============================================
 
 /**
- * Save file on native platform (Android/iOS) using Capacitor Filesystem
+ * Save file on native platform (Android/iOS) using MediaStore API
+ * This works with Android scoped storage (Android 10+)
  */
 async function saveFileNative(filename: string, blob: Blob): Promise<boolean> {
   try {
-    // Convert blob to base64
-    const base64 = await new Promise<string>((resolve, reject) => {
+    // Convert blob to base64 data URL
+    const base64DataUrl = await new Promise<string>((resolve, reject) => {
       const reader = new FileReader()
       reader.onloadend = () => {
-        const result = reader.result as string
-        // Remove the data URL prefix (e.g., "data:image/png;base64,")
-        const base64Data = result.split(',')[1]
-        resolve(base64Data)
+        resolve(reader.result as string)
       }
       reader.onerror = reject
       reader.readAsDataURL(blob)
     })
 
-    // Write to Documents directory
-    const result = await Filesystem.writeFile({
-      path: filename,
-      data: base64,
-      directory: Directory.Documents,
+    // Determine mime type from blob
+    const mimeType = blob.type || 'application/octet-stream'
+
+    // Write to Documents directory via MediaStore
+    const result = await saveBase64ToDocuments({
+      filename,
+      base64: base64DataUrl,
+      mimeType,
+      subdir: 'ANQR',
     })
 
-    console.log('File saved to:', result.uri)
+    console.log('File saved:', result)
     
-    // Show a simple alert to confirm save (toast would be better but this works)
-    alert(`Saved to Documents: ${filename}`)
+    // Show a simple alert to confirm save
+    alert(`Saved to Documents/ANQR: ${filename}`)
     
     return true
   } catch (error) {

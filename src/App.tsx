@@ -8,6 +8,7 @@ import { useState, useEffect, useCallback } from 'react'
 import { Capacitor } from '@capacitor/core'
 import { useQRGenerator } from '@/hooks/useQRGenerator'
 import { useQRStore, type Tier } from '@/store/qr-store'
+import { useBannerHeight } from '@/hooks/useBannerHeight'
 import { parseUrlParams } from '@/modules/share-utils'
 import type { GalleryCategory } from '@/data/gallery-items'
 import i18n, { isRtlLanguage } from '@/i18n'
@@ -39,6 +40,7 @@ function App() {
   const [sidebarOpen, setSidebarOpen] = useState(true)
   const [currentPage, setCurrentPage] = useState<PageView>('editor')
   const [galleryFilter, setGalleryFilter] = useState<GalleryCategory | 'all'>('all')
+  const bannerHeight = useBannerHeight()
   const { download } = useQRGenerator()
   const { setOverlayUrl, setOverlayFile, setOverlayEnabled, setOverlayMode, setOverlayIntensity,
           setPayloadText, setPayloadKind, setPayloadUrl, setTier, setQrEcc, setQrVersion, setRenderModulePx, setQrQuietZone,
@@ -403,19 +405,31 @@ function App() {
           {showEditor && <Sidebar isOpen={sidebarOpen} onClose={() => setSidebarOpen(false)} />}
           
           {/* Main content area - conditionally render active page */}
-          {/* On native editor: pb-44 for Footer + Share/Export + AdMob. On native non-editor: pb-40 for Footer + AdMob */}
-          {/* On web: pb-12 for footer */}
-          <div className={`flex-1 flex flex-col min-h-0 ${Capacitor.isNativePlatform() ? (showEditor ? 'pb-36' : 'pb-40') : 'pb-12'}`}>
+          {/* Content is constrained above footer and AdMob banner */}
+          {/* On native: account for footer (~40px) + share/export bar (~48px) + AdMob banner (dynamic) */}
+          {/* On web: just footer (~48px) */}
+          <div 
+            className="flex-1 flex flex-col min-h-0"
+            style={{ 
+              paddingBottom: showEditor 
+                ? (Capacitor.isNativePlatform() 
+                    ? `${bannerHeight + 88}px`  // banner + footer(40) + share/export bar(48)
+                    : '48px')  // just footer
+                : (Capacitor.isNativePlatform() 
+                    ? `${bannerHeight + 40}px`  // banner + footer on non-editor pages
+                    : '48px')
+            }}
+          >
             {showEditor && <Preview sidebarOpen={sidebarOpen} />}
             {showGallery && <Gallery filter={galleryFilter} />}
             {showStaticPage && <StaticPage page={currentPage as StaticPageType} />}
           </div>
         </div>
         {/* Fixed Footer - visible on all platforms */}
-        {/* On native: always positioned just above AdMob banner (~70px). Same position on all pages. */}
+        {/* On native: positioned just above AdMob banner. Ad is pinned to safe area, footer sits above it. */}
         <footer 
           className={`border-t bg-background py-2 fixed left-0 right-0 z-40 transition-all duration-300 ${sidebarOpen && showEditor ? 'lg:ms-96' : ''}`}
-          style={{ bottom: Capacitor.isNativePlatform() ? '50px' : '0' }}
+          style={{ bottom: Capacitor.isNativePlatform() ? `${bannerHeight}px` : '0' }}
         >
           {/* Inner wrapper with margins to center over QR area (between ad columns) */}
           <div className="px-4 lg:mx-[160px] text-center flex items-center justify-center min-h-[24px]">
