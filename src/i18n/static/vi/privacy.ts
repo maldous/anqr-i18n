@@ -9,7 +9,7 @@ export const privacy: PageDefinition = {
     {
       heading: 'tắt',
       paragraphs: [
-        'là một trình tạo mã QR hoạt động hoàn toàn trên thiết bị của bạn. Chúng tôi không yêu cầu bạn tạo tài khoản và mã QR được tạo cục bộ — chúng tôi không có quyền truy cập vào nội dung bạn mã hóa.',
+        'là một trình tạo mã QR hoạt động hoàn toàn trên thiết bị của bạn. Chúng tôi không yêu cầu bạn tạo tài khoản và mã QR được tạo cục bộ - chúng tôi không có quyền truy cập vào nội dung bạn mã hóa.',
         'tôi sử dụng Google AdSense cho quảng cáo và có thể sử dụng các dịch vụ phân tích. Các dịch vụ này thu thập thông tin thông qua cookie và các công nghệ tương tự. Chính sách này giải thích dữ liệu nào được thu thập, cách sử dụng và quyền của bạn.',
       ],
     },
@@ -89,7 +89,7 @@ export const privacy: PageDefinition = {
     {
       heading: 'sở pháp lý của GDPR',
       paragraphs: [
-        'tôi xử lý dữ liệu trên các cơ sở sau: (a) Sự đồng ý — cho quảng cáo cá nhân hóa (do các đối tác quảng cáo của chúng tôi quản lý); (b) Lợi ích hợp pháp — cho mục đích phân tích, bảo mật và cải tiến; (c) Hợp đồng — để trả lời các yêu cầu.',
+        'tôi xử lý dữ liệu trên các cơ sở sau: (a) Sự đồng ý - cho quảng cáo cá nhân hóa (do các đối tác quảng cáo của chúng tôi quản lý); (b) Lợi ích hợp pháp - cho mục đích phân tích, bảo mật và cải tiến; (c) Hợp đồng - để trả lời các yêu cầu.',
         `thực hiện các quyền của bạn, vui lòng liên hệ ${CONTACT_EMAIL}. Chúng tôi sẽ phản hồi trong vòng 30 ngày.`,
       ],
     },

@@ -9,7 +9,7 @@ export const privacy: PageDefinition = {
     {
       heading: 'Buod',
       paragraphs: [
-        'Ang ANQR ay isang QR code generator na ganap na tumatakbo sa iyong device. Hindi ka namin hinihiling na gumawa ng account, at ang mga QR code ay lokal na nabubuo — wala kaming access sa nilalamang iyong ine-encode.',
+        'Ang ANQR ay isang QR code generator na ganap na tumatakbo sa iyong device. Hindi ka namin hinihiling na gumawa ng account, at ang mga QR code ay lokal na nabubuo - wala kaming access sa nilalamang iyong ine-encode.',
         'Ginagamit namin ang Google AdSense para sa advertising at maaaring gumamit ng mga serbisyo ng analytics. Nangongolekta ang mga serbisyong ito ng impormasyon sa pamamagitan ng cookies at mga katulad na teknolohiya. Ipinapaliwanag ng patakarang ito kung anong data ang kinokolekta, kung paano ito ginagamit, at ang iyong mga karapatan.',
       ],
     },
@@ -89,7 +89,7 @@ export const privacy: PageDefinition = {
     {
       heading: 'Legal na batayan ng GDPR',
       paragraphs: [
-        'Pinoproseso namin ang datos batay sa mga sumusunod: (a) Pahintulot — para sa personalized na advertising (pinamamahalaan ng aming mga kasosyo sa advertising); (b) Mga lehitimong interes — para sa analytics, seguridad, at pagpapabuti; (c) Kontrata — upang tumugon sa mga katanungan.',
+        'Pinoproseso namin ang datos batay sa mga sumusunod: (a) Pahintulot - para sa personalized na advertising (pinamamahalaan ng aming mga kasosyo sa advertising); (b) Mga lehitimong interes - para sa analytics, seguridad, at pagpapabuti; (c) Kontrata - upang tumugon sa mga katanungan.',
         `Para magamit ang iyong mga karapatan, makipag-ugnayan sa ${CONTACT_EMAIL}. Tutugon kami sa loob ng 30 araw.`,
       ],
     },

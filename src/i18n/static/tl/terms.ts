@@ -50,7 +50,7 @@ export const terms: PageDefinition = {
     {
       heading: 'Lisensya ng nilalaman ng gumagamit',
       paragraphs: [
-        'Sa paggamit ng ANQR, wala kang ibinibigay sa amin na karapatan sa iyong nilalaman — lahat ng pagbuo ng QR code ay nangyayari nang lokal sa iyong device at hindi namin ina-access, iniimbak, o ipinapadala ang iyong naka-encode na data.',
+        'Sa paggamit ng ANQR, wala kang ibinibigay sa amin na karapatan sa iyong nilalaman - lahat ng pagbuo ng QR code ay nangyayari nang lokal sa iyong device at hindi namin ina-access, iniimbak, o ipinapadala ang iyong naka-encode na data.',
       ],
     },
     {

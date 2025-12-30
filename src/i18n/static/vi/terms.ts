@@ -50,7 +50,7 @@ export const terms: PageDefinition = {
     {
       heading: 'phép nội dung người dùng',
       paragraphs: [
-        'cách sử dụng ANQR, bạn không trao cho chúng tôi bất kỳ quyền nào đối với nội dung của bạn — tất cả quá trình tạo mã QR đều diễn ra cục bộ trên thiết bị của bạn và chúng tôi không truy cập, lưu trữ hoặc truyền dữ liệu được mã hóa của bạn.',
+        'cách sử dụng ANQR, bạn không trao cho chúng tôi bất kỳ quyền nào đối với nội dung của bạn - tất cả quá trình tạo mã QR đều diễn ra cục bộ trên thiết bị của bạn và chúng tôi không truy cập, lưu trữ hoặc truyền dữ liệu được mã hóa của bạn.',
       ],
     },
     {

@@ -3,7 +3,7 @@ import { LAST_UPDATED, CONTACT_EMAIL } from '../types'
 
 export const about: PageDefinition = {
   title: 'Mengenai ANQR',
-  description: 'ANQR ialah penjana kod QR percuma yang berfungsi sepenuhnya pada peranti anda — tiada akaun diperlukan.',
+  description: 'ANQR ialah penjana kod QR percuma yang berfungsi sepenuhnya pada peranti anda - tiada akaun diperlukan.',
   lastUpdated: LAST_UPDATED,
   sections: [
     {
@@ -16,12 +16,12 @@ export const about: PageDefinition = {
     {
       heading: 'Ciri-ciri utama',
       bullets: [
-        'Jana kod QR serta-merta pada peranti anda — tiada muat naik pelayan, tiada akaun diperlukan.',
+        'Jana kod QR serta-merta pada peranti anda - tiada muat naik pelayan, tiada akaun diperlukan.',
         'Sesuaikan warna, gaya modul, corak pencari dan tambahkan tindanan imej.',
         'Eksport dalam pelbagai format: PNG, SVG, WebP dan GIF animasi.',
         'Kawalan lanjutan untuk tahap pembetulan ralat, versi QR, mod pengekodan dan pemilihan topeng.',
         'Panduan keselamatan imbasan dan pratonton langsung untuk membantu memastikan kod boleh dibaca dalam bentuk cetakan dan pada skrin.',
-        'Berfungsi di luar talian setelah dimuatkan — ia merupakan aplikasi web statik yang boleh anda jalankan di mana-mana sahaja.',
+        'Berfungsi di luar talian setelah dimuatkan - ia merupakan aplikasi web statik yang boleh anda jalankan di mana-mana sahaja.',
       ],
     },
     {
@@ -61,7 +61,7 @@ export const about: PageDefinition = {
     {
       heading: 'Maklum balas dan sumbangan',
       paragraphs: [
-        'Kami mengalu-alukan maklum balas, laporan pepijat dan cadangan ciri. Sila hubungi kami melalui e-mel atau halaman hubungan — kami membaca setiap mesej, walaupun masa respons mungkin berbeza-beza.',
+        'Kami mengalu-alukan maklum balas, laporan pepijat dan cadangan ciri. Sila hubungi kami melalui e-mel atau halaman hubungan - kami membaca setiap mesej, walaupun masa respons mungkin berbeza-beza.',
       ],
     },
   ],

@@ -9,7 +9,7 @@ export const docs: PageDefinition = {
     {
       heading: 'Bermula',
       paragraphs: [
-        'ANQR ialah penjana kod QR yang berfungsi sepenuhnya pada peranti anda — komputer, telefon atau tablet anda. Tiada akaun diperlukan, tiada pelayan yang terlibat dan data anda kekal sulit.',
+        'ANQR ialah penjana kod QR yang berfungsi sepenuhnya pada peranti anda - komputer, telefon atau tablet anda. Tiada akaun diperlukan, tiada pelayan yang terlibat dan data anda kekal sulit.',
         'Antara muka ini mempunyai tiga tahap antara muka: Asas, Lanjutan dan Profesional. Pilih tahap anda menggunakan tab dalam pengepala. Setiap tahap membuka kunci ciri tambahan sambil memastikan antara muka tertumpu pada apa yang anda perlukan.',
       ],
       bullets: [

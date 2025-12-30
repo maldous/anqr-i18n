@@ -3,7 +3,7 @@ import { LAST_UPDATED, CONTACT_EMAIL } from '../types'
 
 export const about: PageDefinition = {
   title: 'Tentang ANQR',
-  description: 'ANQR adalah generator kode QR gratis yang berjalan sepenuhnya di perangkat Anda — tidak memerlukan akun.',
+  description: 'ANQR adalah generator kode QR gratis yang berjalan sepenuhnya di perangkat Anda - tidak memerlukan akun.',
   lastUpdated: LAST_UPDATED,
   sections: [
     {
@@ -16,12 +16,12 @@ export const about: PageDefinition = {
     {
       heading: 'Fitur-fitur utama',
       bullets: [
-        'Hasilkan kode QR secara instan di perangkat Anda — tanpa unggahan server, tanpa perlu akun.',
+        'Hasilkan kode QR secara instan di perangkat Anda - tanpa unggahan server, tanpa perlu akun.',
         'Sesuaikan warna, gaya modul, pola pencari, dan tambahkan lapisan gambar.',
         'Ekspor dalam berbagai format: PNG, SVG, WebP, dan GIF animasi.',
         'Kontrol lanjutan untuk tingkat koreksi kesalahan, versi QR, mode pengkodean, dan pemilihan mask.',
         'Panduan keamanan pemindaian dan pratinjau langsung untuk membantu menjaga agar kode tetap mudah dibaca dalam bentuk cetak dan di layar.',
-        'Berfungsi secara offline setelah dimuat — ini adalah aplikasi web statis yang dapat Anda jalankan di mana saja.',
+        'Berfungsi secara offline setelah dimuat - ini adalah aplikasi web statis yang dapat Anda jalankan di mana saja.',
       ],
     },
     {
@@ -61,7 +61,7 @@ export const about: PageDefinition = {
     {
       heading: 'Umpan balik dan kontribusi',
       paragraphs: [
-        'Kami menerima masukan, laporan bug, dan saran fitur. Silakan hubungi kami melalui email atau halaman kontak — kami membaca setiap pesan, meskipun waktu respons dapat bervariasi.',
+        'Kami menerima masukan, laporan bug, dan saran fitur. Silakan hubungi kami melalui email atau halaman kontak - kami membaca setiap pesan, meskipun waktu respons dapat bervariasi.',
       ],
     },
   ],

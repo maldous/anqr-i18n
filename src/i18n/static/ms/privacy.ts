@@ -9,7 +9,7 @@ export const privacy: PageDefinition = {
     {
       heading: 'Ringkasan',
       paragraphs: [
-        'ANQR ialah penjana kod QR yang berjalan sepenuhnya pada peranti anda. Kami tidak memerlukan anda membuat akaun dan kod QR dijana secara setempat — kami tidak mempunyai akses kepada kandungan yang anda kodkan.',
+        'ANQR ialah penjana kod QR yang berjalan sepenuhnya pada peranti anda. Kami tidak memerlukan anda membuat akaun dan kod QR dijana secara setempat - kami tidak mempunyai akses kepada kandungan yang anda kodkan.',
         'Kami menggunakan Google AdSense untuk pengiklanan dan mungkin menggunakan perkhidmatan analitik. Perkhidmatan ini mengumpul maklumat melalui kuki dan teknologi serupa. Dasar ini menerangkan data yang dikumpul, cara ia digunakan dan hak anda.',
       ],
     },
@@ -89,7 +89,7 @@ export const privacy: PageDefinition = {
     {
       heading: 'Asas perundangan GDPR',
       paragraphs: [
-        'Kami memproses data berdasarkan perkara berikut: (a) Persetujuan — untuk pengiklanan diperibadikan (diuruskan oleh rakan kongsi pengiklanan kami); (b) Kepentingan sah — untuk analitik, keselamatan dan penambahbaikan; (c) Kontrak — untuk menjawab pertanyaan.',
+        'Kami memproses data berdasarkan perkara berikut: (a) Persetujuan - untuk pengiklanan diperibadikan (diuruskan oleh rakan kongsi pengiklanan kami); (b) Kepentingan sah - untuk analitik, keselamatan dan penambahbaikan; (c) Kontrak - untuk menjawab pertanyaan.',
         `Untuk melaksanakan hak anda, hubungi ${CONTACT_EMAIL}. Kami akan memberi maklum balas dalam tempoh 30 hari.`,
       ],
     },

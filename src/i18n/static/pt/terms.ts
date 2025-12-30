@@ -50,7 +50,7 @@ export const terms: PageDefinition = {
     {
       heading: 'Licença de conteúdo do usuário',
       paragraphs: [
-        'Ao usar o ANQR, você não nos concede nenhum direito sobre o seu conteúdo — toda a geração do código QR ocorre localmente no seu dispositivo e não acessamos, armazenamos ou transmitimos seus dados codificados.',
+        'Ao usar o ANQR, você não nos concede nenhum direito sobre o seu conteúdo - toda a geração do código QR ocorre localmente no seu dispositivo e não acessamos, armazenamos ou transmitimos seus dados codificados.',
       ],
     },
     {

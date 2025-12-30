@@ -3,7 +3,7 @@ import { LAST_UPDATED, CONTACT_EMAIL } from '../types'
 
 export const about: PageDefinition = {
   title: 'About ANQR',
-  description: 'ANQR is a free QR code generator that runs entirely on your device — no account required.',
+  description: 'ANQR is a free QR code generator that runs entirely on your device - no account required.',
   lastUpdated: LAST_UPDATED,
   sections: [
     {
@@ -16,12 +16,12 @@ export const about: PageDefinition = {
     {
       heading: 'Key features',
       bullets: [
-        'Generate QR codes instantly on your device — no server uploads, no account required.',
+        'Generate QR codes instantly on your device - no server uploads, no account required.',
         'Customise colours, module styles, finder patterns, and add image overlays.',
         'Export in multiple formats: PNG, SVG, WebP, and animated GIF.',
         'Advanced controls for error correction level, QR version, encoding mode, and mask selection.',
         'Scan-safety guidance and live preview to help keep codes readable in print and on screens.',
-        'Works offline once loaded — it is a static web app you can run anywhere.',
+        'Works offline once loaded - it is a static web app you can run anywhere.',
       ],
     },
     {
@@ -61,7 +61,7 @@ export const about: PageDefinition = {
     {
       heading: 'Feedback and contributions',
       paragraphs: [
-        'We welcome feedback, bug reports, and feature suggestions. Please get in touch via email or the contact page — we read every message, though response times may vary.',
+        'We welcome feedback, bug reports, and feature suggestions. Please get in touch via email or the contact page - we read every message, though response times may vary.',
       ],
     },
   ],

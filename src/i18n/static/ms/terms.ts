@@ -50,7 +50,7 @@ export const terms: PageDefinition = {
     {
       heading: 'Lesen kandungan pengguna',
       paragraphs: [
-        'Dengan menggunakan ANQR, anda tidak memberi kami sebarang hak ke atas kandungan anda — semua penjanaan kod QR berlaku secara setempat pada peranti anda dan kami tidak mengakses, menyimpan atau menghantar data yang dikodkan anda.',
+        'Dengan menggunakan ANQR, anda tidak memberi kami sebarang hak ke atas kandungan anda - semua penjanaan kod QR berlaku secara setempat pada peranti anda dan kami tidak mengakses, menyimpan atau menghantar data yang dikodkan anda.',
       ],
     },
     {
