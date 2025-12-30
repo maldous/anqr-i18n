@@ -4,7 +4,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 import { Download, Share2, Moon, Sun, Menu, PanelLeft, Check, Grid3x3, Play, Globe } from 'lucide-react'
 import { Capacitor } from '@capacitor/core'
 import { useTranslation } from 'react-i18next'
-import { languages } from '@/i18n'
+import { languages, isRtlLanguage } from '@/i18n'
 import * as LucideIcons from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { useState, useEffect, useRef } from 'react'
@@ -432,26 +432,15 @@ export function Header({ onToggleSidebar, onExport, sidebarOpen = false, showGal
             <div className="hidden sm:flex items-center gap-2">
               <Button variant="outline" size="sm" className="shadow-sm" onClick={handleShare} title="Copy shareable link to clipboard">
                 {copied ? <Check className="h-4 w-4 mr-2" /> : <Share2 className="h-4 w-4 mr-2" />}
-                {copied ? 'Copied!' : 'Share'}
+                {copied ? t('share.copied') : t('header.share')}
               </Button>
               <Button size="sm" className="shadow-sm" onClick={onExport} title="Export QR code to file">
                 <Download className="h-4 w-4 mr-2" />
-                Export
+                {t('header.export')}
               </Button>
             </div>
           )}
 
-          {/* Mobile Menu Button */}
-          <Button
-            variant="ghost"
-            size="icon"
-            className="md:hidden h-9 w-9"
-            onClick={() => mobileMenuOpen ? closeMobileMenu() : setMobileMenuOpen(true)}
-            title="Open navigation menu"
-          >
-            <Menu className="h-5 w-5" />
-          </Button>
-          
           {/* Language Selector */}
           <div className="relative" ref={langButtonRef}>
             <Button 
@@ -474,7 +463,10 @@ export function Header({ onToggleSidebar, onExport, sidebarOpen = false, showGal
                   }`}
                   style={{
                     top: langButtonRef.current ? langButtonRef.current.getBoundingClientRect().bottom + 4 : 0,
-                    right: langButtonRef.current ? window.innerWidth - langButtonRef.current.getBoundingClientRect().right : 0,
+                    // Position flush against the appropriate edge based on text direction
+                    ...(isRtlLanguage(i18n.language) 
+                      ? { left: 8 }  // RTL: flush against left edge
+                      : { right: 8 }) // LTR: flush against right edge
                   }}
                   onAnimationEnd={() => {
                     if (isLangMenuClosing) {
@@ -520,9 +512,20 @@ export function Header({ onToggleSidebar, onExport, sidebarOpen = false, showGal
             )}
           </div>
 
-          {/* Dark Mode Toggle - always on far right */}
+          {/* Dark Mode Toggle */}
           <Button variant="ghost" size="icon" onClick={toggleDarkMode} className="h-9 w-9" title={darkMode ? 'Switch to light mode' : 'Switch to dark mode'}>
             {darkMode ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
+          </Button>
+
+          {/* Mobile Menu Button - always on far right for easy thumb access */}
+          <Button
+            variant="ghost"
+            size="icon"
+            className="md:hidden h-9 w-9"
+            onClick={() => mobileMenuOpen ? closeMobileMenu() : setMobileMenuOpen(true)}
+            title="Open navigation menu"
+          >
+            <Menu className="h-5 w-5" />
           </Button>
         </div>
       </div>
@@ -588,11 +591,11 @@ export function Header({ onToggleSidebar, onExport, sidebarOpen = false, showGal
           <div className="flex gap-2">
             <Button variant="outline" size="sm" className="flex-1" onClick={handleShare} title="Copy shareable link to clipboard">
               {copied ? <Check className="h-4 w-4 mr-2" /> : <Share2 className="h-4 w-4 mr-2" />}
-              {copied ? 'Copied!' : 'Share'}
+              {copied ? t('share.copied') : t('header.share')}
             </Button>
             <Button size="sm" className="flex-1" onClick={onExport} title="Export QR code to file">
               <Download className="h-4 w-4 mr-2" />
-              Export
+              {t('header.export')}
             </Button>
           </div>
         </div>

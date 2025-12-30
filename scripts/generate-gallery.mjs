@@ -9,7 +9,7 @@
  * 
  * Prerequisites:
  * - npm install puppeteer gifenc sharp
- * - Dev server running on port 5174
+ * - Dev server running on port 5173
  */
 
 import puppeteer from 'puppeteer'
@@ -22,7 +22,7 @@ const PROJECT_ROOT = path.resolve(__dirname, '..')
 const GALLERY_DIR = path.join(PROJECT_ROOT, 'public', 'gallery')
 
 // Configuration
-const DEV_SERVER_URL = 'http://localhost:5174'
+const DEV_SERVER_URL = 'http://localhost:5173'
 const IMAGE_SIZE = 200 // Half size for faster loading
 const VIEWPORT = { width: 800, height: 600 }
 const STATIC_CAPTURE_DELAY = 500 // Time to wait for static QR to render after canvas ready
