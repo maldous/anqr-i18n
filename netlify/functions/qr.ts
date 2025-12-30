@@ -9,9 +9,9 @@
  * 
  * Parameters:
  * - data: The content to encode (required)
- * - size: Image size in pixels (default: 400, max: 2000) - used if w/h not specified
- * - w: Output width in pixels (overrides size)
- * - h: Output height in pixels (overrides size)
+ * - size: Image size in pixels (default: 400, max: 1024) - used if w/h not specified
+ * - w: Output width in pixels (max: 1024, overrides size)
+ * - h: Output height in pixels (max: 1024, overrides size)
  * - format: Output format - png/webp/gif (default: png)
  * - quality: Output quality 0-1 for webp (default: 0.9)
  * - fg: Foreground color hex without # (default: 000000)
@@ -69,7 +69,7 @@
  * - rot: Overlay rotation in degrees (default: 0)
  * - flipX: Flip overlay horizontally (default: 0)
  * - flipY: Flip overlay vertically (default: 0)
- * - ditherKind: Dither algorithm (default: error_diffusion)
+ * - ditherKind: Dither algorithm (default: ordered_bayer for performance)
  * - diffusionKernel: Diffusion kernel - floyd_steinberg/jarvis_judice_ninke/stucki/etc
  * - ditherStrength: Dither strength 0-100 (default: 50)
  * - serpentine: Serpentine dithering 0/1 (default: 0)
@@ -134,6 +134,20 @@ type OutputFormat = 'png' | 'webp' | 'gif'
 type WatermarkKind = 'text' | 'image' | 'pattern'
 type WatermarkPosition = 'center' | 'corners' | 'edges' | 'behind' | 'quiet_zone'
 type WatermarkBlend = 'normal' | 'multiply' | 'screen' | 'overlay'
+type DitherKind = 'error_diffusion' | 'ordered_bayer' | 'ordered_clustered' | 'ordered_void_cluster' |
+  'blue_noise_threshold' | 'true_dither' | 'blue_noise' | 'white_noise' | 'gaussian_noise' |
+  'triangular_noise' | 'blue_noise_error_diffusion' | 'screened_blue_noise' | 'perceptual' |
+  'edge_aware' | 'adaptive_threshold' | 'temporal_blue_noise'
+
+// ============================================
+// SERVER-SIDE OPTIMIZATIONS
+// ============================================
+
+// Maximum image size for server-side processing (prevents excessive CPU usage)
+const MAX_SERVER_IMAGE_SIZE = 1024
+
+// Default dither algorithm for server-side when none specified (fast)
+const DEFAULT_SERVER_DITHER: DitherKind = 'ordered_bayer'
 
 /**
  * Node.js canvas factory using @napi-rs/canvas
@@ -868,8 +882,9 @@ export default async (request: Request) => {
   const heightParam = params.get('h') ? parseInt(params.get('h')!, 10) : null
   
   // Use w/h if provided, otherwise fall back to size
-  const outputWidth = Math.min(2000, Math.max(50, widthParam ?? sizeParam))
-  const outputHeight = Math.min(2000, Math.max(50, heightParam ?? sizeParam))
+  // Cap at MAX_SERVER_IMAGE_SIZE for server-side performance
+  const outputWidth = Math.min(MAX_SERVER_IMAGE_SIZE, Math.max(50, widthParam ?? sizeParam))
+  const outputHeight = Math.min(MAX_SERVER_IMAGE_SIZE, Math.max(50, heightParam ?? sizeParam))
   // For QR generation, use the larger dimension to ensure quality
   const size = Math.max(outputWidth, outputHeight)
   const fg = params.get('fg') || '000000'
@@ -945,8 +960,9 @@ export default async (request: Request) => {
   const overlayFlipX = params.get('flipX') === '1'
   const overlayFlipY = params.get('flipY') === '1'
   
-  // Dithering options
-  const ditherKind = params.get('ditherKind') || 'error_diffusion'
+  // Dithering options - use cheap default if not specified, otherwise honor user's choice
+  const ditherKindParam = params.get('ditherKind')
+  const ditherKind = (ditherKindParam || DEFAULT_SERVER_DITHER) as DitherKind
   const diffusionKernel = params.get('diffusionKernel') || 'floyd_steinberg'
   const ditherStrength = Math.min(100, Math.max(0, parseInt(params.get('ditherStrength') || '50', 10)))
   const ditherSerpentine = params.get('serpentine') === '1'

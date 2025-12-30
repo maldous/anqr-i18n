@@ -16,9 +16,25 @@ import { validateQRCodeRobust, type ValidationResult } from '@/modules/qr-scanne
 import { calculateTemporalOffset, applyTemporalNoiseToCanvas, isTemporalDitherActive, type TemporalDitherMode } from '@/modules/temporal-dither'
 import { generatePatternFrames, interpolateFrames, type AnimationPattern } from '@/modules/animation-patterns'
 import { applyColorCycle } from '@/modules/animation'
+import { getEffectiveDitherKind, STORE_DEFAULT_DITHER } from '@/modules/overlay-processor'
 
 // Singleton QR generator instance
 const qrGenerator = new QRGenerator()
+
+/**
+ * Yield to main thread to prevent UI blocking during heavy computation
+ * Uses requestIdleCallback with timeout fallback for mobile performance
+ */
+function yieldToMainThread(timeout = 50): Promise<void> {
+  return new Promise(resolve => {
+    if (typeof requestIdleCallback !== 'undefined') {
+      requestIdleCallback(() => resolve(), { timeout })
+    } else {
+      // Fallback for browsers without requestIdleCallback
+      setTimeout(resolve, 0)
+    }
+  })
+}
 
 interface UseQRGeneratorResult {
   canvasRef: React.RefObject<HTMLCanvasElement>
@@ -313,8 +329,8 @@ export function useQRGenerator(): UseQRGeneratorResult {
       overlayCrop: overlay.cropEnabled ? overlay.cropRegion : undefined,
       overlayFit: overlay.fit,
       
-      // Dither options
-      ditherKind: overlay.ditherKind,
+      // Dither options - on mobile, use cheap default unless user explicitly changed it
+      ditherKind: getEffectiveDitherKind(overlay.ditherKind, overlay.ditherKind === STORE_DEFAULT_DITHER),
       ditherStrength: overlay.ditherStrength,
       ditherSerpentine: overlay.ditherSerpentine,
       diffusionKernel: overlay.diffusionKernel,
@@ -403,6 +419,33 @@ export function useQRGenerator(): UseQRGeneratorResult {
 
   // Debounce config changes to prevent excessive regeneration
   const debouncedConfig = useDebounce(config, 150)
+
+  // Determine if animation caching will be needed (used to coordinate loading state)
+  // This is computed early so generate() can check it before turning off loading
+  const needsAnimationCaching = useMemo(() => {
+    const hasAnimationEffects = 
+      animation.colorCycle ||
+      animation.pattern !== 'none' ||
+      animation.temporalDither !== 'off' ||
+      animation.moduleJitterPx > 0
+    
+    // Check if we have multi-frame overlay (animated GIF/WebP)
+    const hasMultiFrameOverlay = gifFrames.length > 1
+    
+    // Check if pattern animation from static overlay
+    const shouldGeneratePatternAnimation = 
+      animation.pattern !== 'none' && 
+      overlay.enabled && 
+      gifFrames.length === 1
+    
+    // Check if base QR animation (no overlay)
+    const shouldGenerateBaseAnimation = 
+      hasAnimationEffects && 
+      !overlay.enabled
+    
+    // Animation caching is needed for multi-frame overlays, pattern animations, or base QR animations
+    return hasMultiFrameOverlay || shouldGeneratePatternAnimation || shouldGenerateBaseAnimation
+  }, [animation.colorCycle, animation.pattern, animation.temporalDither, animation.moduleJitterPx, overlay.enabled, gifFrames.length])
 
   // Apply preprocessing filters to a canvas
   const applyPreprocessing = useCallback((sourceCanvas: HTMLCanvasElement): HTMLCanvasElement => {
@@ -705,9 +748,13 @@ export function useQRGenerator(): UseQRGeneratorResult {
       console.error('QR generation error:', err)
       setError(err instanceof Error ? err.message : 'Failed to generate QR code')
     } finally {
-      setIsLoading(false)
+      // Only turn off loading if animation caching is NOT needed
+      // If animation caching is needed, the animation effect will turn off loading when complete
+      if (!needsAnimationCaching) {
+        setIsLoading(false)
+      }
     }
-  }, [debouncedConfig, overlay.enabled, overlayCanvas, watermark.enabled, watermark.kind, watermark.text, watermark.image, watermark.position, watermark.opacity, watermark.blend, animation.colorCycle, animation.seed])
+  }, [debouncedConfig, overlay.enabled, overlayCanvas, watermark.enabled, watermark.kind, watermark.text, watermark.image, watermark.position, watermark.opacity, watermark.blend, animation.colorCycle, animation.seed, needsAnimationCaching])
 
   // Regenerate when config changes
   // Skip if we're playing from cached animation frames
@@ -1011,7 +1058,8 @@ export function useQRGenerator(): UseQRGeneratorResult {
       return
     }
 
-    // Mark cache as not ready while generating
+    // Mark cache as not ready while generating and ensure loading indicator stays on
+    // This coordinates with generate() which checks needsAnimationCaching before turning off loading
     setIsAnimationCacheReady(false)
     setIsLoading(true)
 
@@ -1076,6 +1124,13 @@ export function useQRGenerator(): UseQRGeneratorResult {
           const combinedFrames: HTMLCanvasElement[] = []
           for (let i = 0; i < frameCount; i++) {
             if (isCancelled) return
+            
+            // Yield to main thread every 4 frames to prevent UI blocking
+            if (i > 0 && i % 4 === 0) {
+              await yieldToMainThread()
+              if (isCancelled) return
+            }
+            
             // Generate QR with jitter for this frame
             const frameConfig = { ...debouncedConfig, frameIndex: i }
             const jitteredQR = await qrGenerator.generate(frameConfig, null)
@@ -1103,6 +1158,13 @@ export function useQRGenerator(): UseQRGeneratorResult {
           const jitteredFrames: HTMLCanvasElement[] = []
           for (let i = 0; i < frameCount; i++) {
             if (isCancelled) return
+            
+            // Yield to main thread every 4 frames to prevent UI blocking
+            if (i > 0 && i % 4 === 0) {
+              await yieldToMainThread()
+              if (isCancelled) return
+            }
+            
             const frameConfig = { ...debouncedConfig, frameIndex: i }
             const qrFrame = await qrGenerator.generate(frameConfig, null)
             if (qrFrame) jitteredFrames.push(qrFrame)
@@ -1149,6 +1211,12 @@ export function useQRGenerator(): UseQRGeneratorResult {
         const frame = framesToProcess[frameIdx]
         // Check if cancelled before each expensive operation
         if (isCancelled) return
+        
+        // Yield to main thread every 4 frames to prevent UI blocking on mobile
+        if (frameIdx > 0 && frameIdx % 4 === 0) {
+          await yieldToMainThread()
+          if (isCancelled) return
+        }
         
         try {
           let result: HTMLCanvasElement | null = null

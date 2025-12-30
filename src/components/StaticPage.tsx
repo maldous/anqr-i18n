@@ -291,10 +291,11 @@ export function StaticPage({ page }: StaticPageProps) {
   const contentRef = useRef<HTMLDivElement>(null)
   const sectionRefs = useRef<Map<string, HTMLElement>>(new Map())
 
-  // Clear section refs when language/content changes to prevent stale refs accumulating
+  // Clear section refs when language changes to prevent stale refs accumulating
+  // Note: Only depend on language, not def.sections (which creates new reference each render)
   useEffect(() => {
     sectionRefs.current.clear()
-  }, [i18n.language, def.sections])
+  }, [i18n.language])
 
   // Track active section with IntersectionObserver
   useEffect(() => {
@@ -342,12 +343,27 @@ export function StaticPage({ page }: StaticPageProps) {
   useEffect(() => {
     if (!isDocsPage) return
     const hash = window.location.hash.slice(1)
+    let timeoutId: ReturnType<typeof setTimeout>
     if (hash) {
-      // Delay to ensure refs are populated
-      setTimeout(() => navigateToSection(hash), 100)
+      // Wait for refs to be populated before navigating
+      // Use polling since production may load slower than dev
+      let attempts = 0
+      const maxAttempts = 20 // 20 * 50ms = 1000ms max wait
+      const pollForRef = () => {
+        attempts++
+        const el = sectionRefs.current.get(hash)
+        if (el) {
+          navigateToSection(hash)
+        } else if (attempts < maxAttempts) {
+          timeoutId = setTimeout(pollForRef, 50)
+        }
+      }
+      // Start polling after a short initial delay for hydration
+      timeoutId = setTimeout(pollForRef, 50)
     } else if (tocGroups.length > 0 && tocGroups[0].items.length > 0) {
       setActiveSlug(tocGroups[0].items[0].id)
     }
+    return () => clearTimeout(timeoutId)
   }, [isDocsPage, tocGroups, navigateToSection])
 
   // Register section ref

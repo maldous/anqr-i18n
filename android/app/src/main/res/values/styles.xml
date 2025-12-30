@@ -27,6 +27,8 @@
       hit-target don't end up behind navigation bars / cutouts.
     -->
     <style name="AppTheme.AdMobActivity" parent="@android:style/Theme.Translucent.NoTitleBar.Fullscreen">
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowActionBar">false</item>
         <item name="android:windowOptOutEdgeToEdgeEnforcement" tools:targetApi="35">true</item>
         <item name="android:windowLayoutInDisplayCutoutMode" tools:targetApi="28">never</item>
     </style>
