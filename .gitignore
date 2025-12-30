@@ -55,6 +55,3 @@ coverage/
 Thumbs.db
 ehthumbs.db
 Desktop.ini
-
-# Local Netlify folder
-.netlify
