@@ -241,6 +241,7 @@ export class QRGenerator {
         moduleCount,
         config.colorMode || "color",
         config.invertImage || false,
+        config.frameIndex || 0,
       );
     }
 
@@ -1401,14 +1402,13 @@ export class QRGenerator {
    * Uses caching based on canvas dimensions and color mode
    * @private
    */
-  async _getOverlayData(overlayCanvas, moduleCount, colorMode = "color", invertImage = false) {
+  async _getOverlayData(overlayCanvas, moduleCount, colorMode = "color", invertImage = false, frameIndex = 0) {
     // Create cache key based on canvas identity and parameters
-    // Note: We use canvas dimensions as a proxy for identity since canvas objects change
+    // Include frameIndex to ensure different animation frames aren't cached together
     const canvasKey = `${overlayCanvas.width}x${overlayCanvas.height}`;
-    const cacheKey = `${canvasKey}:${moduleCount}:${colorMode}:${invertImage}`;
+    const cacheKey = `${canvasKey}:${moduleCount}:${colorMode}:${invertImage}:${frameIndex}`;
     
     // Check if we have this exact configuration cached
-    // and if the canvas hasn't changed (same dimensions)
     const cached = overlayDataCache.get(cacheKey);
     if (cached !== undefined) {
       return cached;
@@ -1683,7 +1683,7 @@ export class QRGenerator {
       config.colorMode || "color",
     );
     // Also get per-module brightness for halftone center
-    const moduleBrightness = await this._getOverlayData(overlayCanvas, moduleCount);
+    const moduleBrightness = await this._getOverlayData(overlayCanvas, moduleCount, "color", false, config.frameIndex || 0);
     const intensity = config.overlayIntensity / 100;
 
     // Draw each QR module as a 3x3 subpixel grid

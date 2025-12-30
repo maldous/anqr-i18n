@@ -21,8 +21,9 @@ import { getEffectiveDitherKind, STORE_DEFAULT_DITHER } from '@/modules/overlay-
 // Singleton QR generator instance
 const qrGenerator = new QRGenerator()
 
-// Performance cap: limit to 50 frames max in auto mode to prevent very long render times
-const MAX_AUTO_FRAMES = 50
+// Performance cap: limit to 24 frames max in auto mode to prevent very long render times
+// 24 frames at 100ms = 2.4 second animation, which is sufficient for most use cases
+const MAX_AUTO_FRAMES = 24
 
 /**
  * Yield to main thread to prevent UI blocking during heavy computation
@@ -423,33 +424,6 @@ export function useQRGenerator(): UseQRGeneratorResult {
   // Debounce config changes to prevent excessive regeneration
   const debouncedConfig = useDebounce(config, 150)
 
-  // Determine if animation caching will be needed (used to coordinate loading state)
-  // This is computed early so generate() can check it before turning off loading
-  const needsAnimationCaching = useMemo(() => {
-    const hasAnimationEffects = 
-      animation.colorCycle ||
-      animation.pattern !== 'none' ||
-      animation.temporalDither !== 'off' ||
-      animation.moduleJitterPx > 0
-    
-    // Check if we have multi-frame overlay (animated GIF/WebP)
-    const hasMultiFrameOverlay = gifFrames.length > 1
-    
-    // Check if pattern animation from static overlay
-    const shouldGeneratePatternAnimation = 
-      animation.pattern !== 'none' && 
-      overlay.enabled && 
-      gifFrames.length === 1
-    
-    // Check if base QR animation (no overlay)
-    const shouldGenerateBaseAnimation = 
-      hasAnimationEffects && 
-      !overlay.enabled
-    
-    // Animation caching is needed for multi-frame overlays, pattern animations, or base QR animations
-    return hasMultiFrameOverlay || shouldGeneratePatternAnimation || shouldGenerateBaseAnimation
-  }, [animation.colorCycle, animation.pattern, animation.temporalDither, animation.moduleJitterPx, overlay.enabled, gifFrames.length])
-
   // Apply preprocessing filters to a canvas
   const applyPreprocessing = useCallback((sourceCanvas: HTMLCanvasElement): HTMLCanvasElement => {
     // Check if any preprocessing is needed
@@ -689,14 +663,6 @@ export function useQRGenerator(): UseQRGeneratorResult {
         overlay.enabled ? overlayCanvas : null
       )
 
-      // Apply color cycle as post-processing for static images if enabled
-      // For static images, we apply a hue shift based on the animation seed for variety
-      if (animation.colorCycle && result) {
-        // Use seed to determine hue shift for static images (gives consistent but visible effect)
-        const staticHueShift = (animation.seed % 360) || 60 // Default to 60 degree shift if seed is 0
-        result = applyColorCycle(result, staticHueShift, 360) // This gives hueShift = staticHueShift degrees
-      }
-
       // Apply watermark if enabled
       if (watermark.enabled && result) {
         let watermarkImage: HTMLImageElement | HTMLCanvasElement | null = null
@@ -751,13 +717,9 @@ export function useQRGenerator(): UseQRGeneratorResult {
       console.error('QR generation error:', err)
       setError(err instanceof Error ? err.message : 'Failed to generate QR code')
     } finally {
-      // Only turn off loading if animation caching is NOT needed
-      // If animation caching is needed, the animation effect will turn off loading when complete
-      if (!needsAnimationCaching) {
-        setIsLoading(false)
-      }
+      setIsLoading(false)
     }
-  }, [debouncedConfig, overlay.enabled, overlayCanvas, watermark.enabled, watermark.kind, watermark.text, watermark.image, watermark.position, watermark.opacity, watermark.blend, animation.colorCycle, animation.seed, needsAnimationCaching])
+  }, [debouncedConfig, overlay.enabled, overlayCanvas, watermark.enabled, watermark.kind, watermark.text, watermark.image, watermark.position, watermark.opacity, watermark.blend])
 
   // Regenerate when config changes
   // Skip if we're playing from cached animation frames
@@ -1058,14 +1020,16 @@ export function useQRGenerator(): UseQRGeneratorResult {
       !overlay.enabled
     
     // Early return only if no animation is needed
-    if (effectiveFrames.length <= 1 && !shouldGeneratePatternAnimation && !shouldGenerateBaseAnimation && !overlay.enabled) {
+    // For multi-frame overlays (animated GIFs), we need to generate frames regardless of other animation effects
+    const hasMultiFrameOverlay = effectiveFrames.length > 1 && overlay.enabled
+    
+    if (!hasMultiFrameOverlay && effectiveFrames.length <= 1 && !shouldGeneratePatternAnimation && !shouldGenerateBaseAnimation) {
       setAnimationFrames([])
       setIsAnimationCacheReady(false)
       return
     }
 
-    // Mark cache as not ready while generating and ensure loading indicator stays on
-    // This coordinates with generate() which checks needsAnimationCaching before turning off loading
+    // Mark cache as not ready while generating
     setIsAnimationCacheReady(false)
     setIsLoading(true)
 
@@ -1328,7 +1292,8 @@ export function useQRGenerator(): UseQRGeneratorResult {
     return () => {
       isCancelled = true
     }
-  }, [effectiveFrames, overlay.enabled, debouncedConfig, applyPreprocessing, watermark, animation.temporalDither, animation.seed, animation.pattern, animation.interpolate, animation.speedMs, animation.colorCycle, animation.moduleJitterPx])
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [effectiveFrames, overlay.enabled, debouncedConfig, watermark, animation.temporalDither, animation.seed, animation.pattern, animation.interpolate, animation.speedMs, animation.colorCycle, animation.moduleJitterPx])
 
   return {
     canvasRef,
