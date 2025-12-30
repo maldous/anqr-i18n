@@ -1,10 +1,16 @@
 /**
  * Overlay Processor Module
  * Handles image loading, cropping, filter application, and blend modes
+ * 
+ * Optimizations:
+ * - Uses Web Worker for CPU-heavy dithering on large images (>256x256)
+ * - Caches processed overlay data for repeated access
  */
 
-import type { ColorMode, FitMode, OverlayMode, CropRegion } from '../store/qr-store'
+import type { ColorMode, FitMode, OverlayMode, CropRegion, DitherKind, DiffusionKernel, OrderedMatrix } from '../store/qr-store'
 import { applyFilters, copyImageData, getBrightnessMap, getRGBMap, type FilterOptions, type RGB } from './image-filters'
+import { ditherWithWorker, shouldUseWorker } from '../workers/dither-service'
+import { applyDither, type DitherOptions, type DitherResult } from './dither-algorithms'
 
 // ============================================
 // TYPES
@@ -516,6 +522,87 @@ export function applyOverlayMode(
 }
 
 // ============================================
+// DITHERING WITH WORKER SUPPORT
+// ============================================
+
+/**
+ * Options for dithering an overlay image
+ */
+export interface OverlayDitherOptions {
+  kind: DitherKind
+  strength: number
+  serpentine: boolean
+  diffusionKernel: DiffusionKernel
+  orderedMatrix: OrderedMatrix
+  colorMode: ColorMode
+  levels?: number
+  blueNoiseSeed?: number
+  blueNoiseTileSize?: number
+}
+
+/**
+ * Apply dithering to an overlay canvas
+ * Automatically uses Web Worker for large images (>256x256)
+ * @param canvas - Source canvas to dither
+ * @param options - Dithering options
+ * @returns Promise<DitherResult> with matrix and colors
+ */
+export async function ditherOverlay(
+  canvas: HTMLCanvasElement,
+  options: OverlayDitherOptions
+): Promise<DitherResult> {
+  const ctx = canvas.getContext('2d')
+  if (!ctx) {
+    throw new Error('Could not get canvas context')
+  }
+  
+  const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height)
+  
+  // Build full dither options
+  const ditherOpts: DitherOptions = {
+    kind: options.kind,
+    strength: options.strength,
+    serpentine: options.serpentine,
+    diffusionKernel: options.diffusionKernel,
+    orderedMatrix: options.orderedMatrix,
+    colorMode: options.colorMode === 'color' ? 'color' : options.colorMode === 'grayscale' ? 'grayscale' : 'bw',
+    levels: options.levels ?? 2,
+    blueNoiseSeed: options.blueNoiseSeed ?? 0,
+    blueNoiseTileSize: options.blueNoiseTileSize ?? 64,
+  }
+  
+  // Use worker for large images, main thread for small ones
+  if (shouldUseWorker(canvas.width, canvas.height)) {
+    return ditherWithWorker(imageData, ditherOpts)
+  } else {
+    return applyDither(imageData, ditherOpts)
+  }
+}
+
+/**
+ * Apply dithering to overlay at module resolution (for QR code integration)
+ * @param overlayCanvas - Source overlay image
+ * @param moduleCount - Number of QR modules (determines output resolution)
+ * @param options - Dithering options
+ * @returns Promise<DitherResult> at module resolution
+ */
+export async function ditherOverlayForQR(
+  overlayCanvas: HTMLCanvasElement,
+  moduleCount: number,
+  options: OverlayDitherOptions
+): Promise<DitherResult> {
+  // First resize to module resolution
+  const tempCanvas = document.createElement('canvas')
+  tempCanvas.width = moduleCount
+  tempCanvas.height = moduleCount
+  const ctx = tempCanvas.getContext('2d')!
+  ctx.drawImage(overlayCanvas, 0, 0, moduleCount, moduleCount)
+  
+  // Then apply dithering
+  return ditherOverlay(tempCanvas, options)
+}
+
+// ============================================
 // EXPORT
 // ============================================
 
@@ -538,6 +625,10 @@ export const OverlayProcessor = {
   
   // Blending
   applyOverlayMode,
+  
+  // Dithering (with worker support)
+  ditherOverlay,
+  ditherOverlayForQR,
 }
 
 export default OverlayProcessor

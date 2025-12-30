@@ -79,6 +79,7 @@
     "puppeteer": "^23.11.1",
     "tailwindcss": "^4.1.18",
     "terser": "^5.44.1",
+    "vite-plugin-compression": "^0.5.1",
     "vite-plugin-pwa": "^1.2.0"
   }
 }

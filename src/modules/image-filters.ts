@@ -2,6 +2,10 @@
  * Image Filters Module
  * Provides all image processing filters for overlay preprocessing
  * Works with Canvas ImageData for real-time processing
+ * 
+ * Note: Some utility functions (rgbToGray, hslToRgb, rgbToHsl) are also
+ * exported from color-utils.ts for consistency. This module keeps its own
+ * optimized implementations for tight inner loops.
  */
 
 import type { ColorMode } from '../store/qr-store'
@@ -164,16 +168,19 @@ export function gamma(imageData: ImageData, value: number): ImageData {
   const data = imageData.data
   const gammaCorrection = 1 / value
 
-  // Build lookup table for performance
+  // Build lookup table for performance - avoids Math.pow in hot loop
   const lut = new Uint8Array(256)
   for (let i = 0; i < 256; i++) {
     lut[i] = clamp(255 * Math.pow(i / 255, gammaCorrection))
   }
 
-  for (let i = 0; i < data.length; i += 4) {
+  // Apply lookup table to all RGB values
+  const len = data.length
+  for (let i = 0; i < len; i += 4) {
     data[i] = lut[data[i]]
     data[i + 1] = lut[data[i + 1]]
     data[i + 2] = lut[data[i + 2]]
+    // Alpha (data[i + 3]) is preserved
   }
 
   return imageData
