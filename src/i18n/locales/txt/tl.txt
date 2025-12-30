@@ -1020,3 +1020,14 @@
 1020	“Kaliwang Itaas”
 1021	“Kanang Itaas”
 1022	“Mag-upload ng Larawan”
+1023	"I-toggle ang panel ng mga setting"
+1024	"Lahat ng Kategorya"
+1025	"Kopyahin ang link ng pagbabahagi sa clipboard"
+1026	"I-export ang QR code sa file"
+1027	"Buksan ang navigation menu"
+1028	"Buksan ang documentation sidebar"
+1029	"Isara ang sidebar"
+1030	"Hindi available ang larawan"
+1031	"Naipadala ang mensahe"
+1032	"Huling Na-update"
+1033	"I-scan Ako!"

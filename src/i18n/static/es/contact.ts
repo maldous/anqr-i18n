@@ -20,12 +20,6 @@ export const contact: PageDefinition = {
       ],
     },
     {
-      heading: 'Formulario de contacto',
-      paragraphs: [
-        'Utilice el formulario a continuación para enviarnos un mensaje directamente. Si no se envía correctamente, utilice el correo electrónico.',
-      ],
-    },
-    {
       heading: 'Tipos de consultas',
       bullets: [
         'Preguntas generales: preguntas sobre cómo utilizar ANQR, explicaciones de funciones o comentarios generales.',

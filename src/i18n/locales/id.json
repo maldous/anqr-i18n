@@ -1512,5 +1512,33 @@
     "topRight": "“Kanan Atas”",
     "type": "“Tipe”",
     "uploadImage": "“Unggah Gambar”"
+  },
+  "accessibility": {
+    "toggleSettings": "Beralih panel pengaturan",
+    "allCategories": "Semua Kategori",
+    "copyShareLink": "Salin tautan berbagi ke clipboard",
+    "exportQrCode": "Ekspor kode QR ke file",
+    "openNavMenu": "Buka menu navigasi",
+    "openDocsSidebar": "Buka sidebar dokumentasi",
+    "closeSidebar": "Tutup sidebar",
+    "imageUnavailable": "Gambar tidak tersedia",
+    "messageSent": "Pesan terkirim",
+    "lastUpdated": "Terakhir Diperbarui",
+    "scanMePlaceholder": "Pindai Saya!"
+  },
+  "contact": {
+    "emailUs": "Email Kami",
+    "emailUsDesc": "Ada pertanyaan, saran, atau butuh bantuan? Kirim email kepada kami dan kami akan membalas."
+  },
+  "placeholders": {
+    "enterText": "Masukkan teks untuk dikodekan...",
+    "emailSubject": "Subjek email",
+    "emailBody": "Isi email",
+    "prefilledMessage": "Pesan yang sudah diisi",
+    "placeNameOrAddress": "Nama tempat atau alamat",
+    "networkPassword": "Kata sandi jaringan",
+    "eventDetails": "Detail acara...",
+    "paymentFor": "Pembayaran untuk...",
+    "rawQrData": "Masukkan data QR mentah..."
   }
 }

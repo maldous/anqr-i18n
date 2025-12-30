@@ -1512,5 +1512,33 @@
     "topRight": "Top Right",
     "type": "Type",
     "uploadImage": "Upload Image"
+  },
+  "accessibility": {
+    "toggleSettings": "Toggle settings panel",
+    "allCategories": "All Categories",
+    "copyShareLink": "Copy shareable link to clipboard",
+    "exportQrCode": "Export QR code to file",
+    "openNavMenu": "Open navigation menu",
+    "openDocsSidebar": "Open documentation sidebar",
+    "closeSidebar": "Close sidebar",
+    "imageUnavailable": "Image unavailable",
+    "messageSent": "Message sent",
+    "lastUpdated": "Last Updated",
+    "scanMePlaceholder": "Scan Me!"
+  },
+  "placeholders": {
+    "enterText": "Enter text to encode...",
+    "emailSubject": "Email subject",
+    "emailBody": "Email body",
+    "prefilledMessage": "Pre-filled message",
+    "placeNameOrAddress": "Place name or address",
+    "networkPassword": "Network password",
+    "eventDetails": "Event details...",
+    "paymentFor": "Payment for...",
+    "rawQrData": "Enter raw QR code data..."
+  },
+  "contact": {
+    "emailUs": "Email Us",
+    "emailUsDesc": "Have a question, suggestion, or need help? Send us an email and we'll get back to you."
   }
 }

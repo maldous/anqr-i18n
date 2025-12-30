@@ -1512,5 +1512,33 @@
     "topRight": "ઉપર જમણે",
     "type": "પ્રકાર",
     "uploadImage": "છબી અપલોડ કરો"
+  },
+  "accessibility": {
+    "toggleSettings": "સેટિંગ્સ પેનલ ટૉગલ કરો",
+    "allCategories": "બધી શ્રેણીઓ",
+    "copyShareLink": "શેર કરી શકાય તેવી લિંક ક્લિપબોર્ડ પર કૉપિ કરો",
+    "exportQrCode": "QR કોડ ફાઇલમાં નિકાસ કરો",
+    "openNavMenu": "નેવિગેશન મેનૂ ખોલો",
+    "openDocsSidebar": "દસ્તાવેજીકરણ સાઇડબાર ખોલો",
+    "closeSidebar": "સાઇડબાર બંધ કરો",
+    "imageUnavailable": "છબી ઉપલબ્ધ નથી",
+    "messageSent": "સંદેશ મોકલાયો",
+    "lastUpdated": "છેલ્લે અપડેટ",
+    "scanMePlaceholder": "મને સ્કેન કરો!"
+  },
+  "contact": {
+    "emailUs": "અમને ઈમેલ કરો",
+    "emailUsDesc": "કોઈ પ્રશ્ન, સૂચન અથવા મદદ જોઈએ છે? અમને ઈમેલ કરો અને અમે તમને જવાબ આપીશું."
+  },
+  "placeholders": {
+    "enterText": "એન્કોડ કરવા માટે ટેક્સ્ટ દાખલ કરો...",
+    "emailSubject": "ઇમેઇલ વિષય",
+    "emailBody": "ઇમેઇલ બોડી",
+    "prefilledMessage": "પ્રી-ફિલ્ડ સંદેશ",
+    "placeNameOrAddress": "સ્થળનું નામ અથવા સરનામું",
+    "networkPassword": "નેટવર્ક પાસવર્ડ",
+    "eventDetails": "ઇવેન્ટ વિગતો...",
+    "paymentFor": "ચુકવણી માટે...",
+    "rawQrData": "કાચો QR કોડ ડેટા દાખલ કરો..."
   }
 }

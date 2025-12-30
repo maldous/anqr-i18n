@@ -3,13 +3,10 @@
  * About, Privacy, Terms, Contact, and Docs pages.
  */
 
-import { type FormEvent, useCallback, useEffect, useMemo, useRef, useState } from 'react'
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { AdUnit } from '@/components/AdUnit'
-import { Capacitor } from '@capacitor/core'
 import { Button } from '@/components/ui/button'
-import { Input } from '@/components/ui/input'
-import { Textarea } from '@/components/ui/textarea'
-import { ChevronDown, ChevronUp, List, X, Menu } from 'lucide-react'
+import { ChevronDown, ChevronUp, List, X, Menu, Mail } from 'lucide-react'
 
 import { useTranslation } from 'react-i18next'
 import type { PageDefinition, PageSection } from '@/i18n/static'
@@ -199,7 +196,7 @@ function DocsTableOfContents({
               top: 'calc(60px + env(safe-area-inset-top, 0px) + 12px)',
               left: '12px'
             }}
-            title="Open documentation sidebar"
+            title={t('accessibility.openDocsSidebar')}
           >
             <List className="h-5 w-5" />
           </button>
@@ -225,7 +222,7 @@ function DocsTableOfContents({
             <button
               onClick={() => setMobileOpen(false)}
               className="p-1 rounded hover:bg-muted transition-colors text-muted-foreground hover:text-foreground"
-              title="Close sidebar"
+              title={t('accessibility.closeSidebar')}
             >
               <X className="h-4 w-4" />
             </button>
@@ -249,7 +246,7 @@ function DocsTableOfContents({
             <button
               onClick={onClose}
               className="p-1 rounded hover:bg-muted transition-colors text-muted-foreground hover:text-foreground"
-              title="Close sidebar"
+              title={t('accessibility.closeSidebar')}
             >
               <X className="h-4 w-4" />
             </button>
@@ -261,155 +258,23 @@ function DocsTableOfContents({
   )
 }
 
-function ContactForm() {
-  const [status, setStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle')
-  const [form, setForm] = useState({ name: '', email: '', subject: '', message: '' })
-  const [botField, setBotField] = useState('')
-
-  const encodedBody = useMemo(() => {
-    const data: Record<string, string> = {
-      'form-name': 'contact',
-      name: form.name,
-      email: form.email,
-      subject: form.subject,
-      message: form.message,
-      'bot-field': botField,
-    }
-    return new URLSearchParams(data).toString()
-  }, [form, botField])
-
-  const onSubmit = async (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault()
-    setStatus('submitting')
-
-    try {
-      const res = await fetch('/', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: encodedBody,
-      })
-
-      if (!res.ok) throw new Error(`HTTP ${res.status}`)
-      setStatus('success')
-      setForm({ name: '', email: '', subject: '', message: '' })
-      setBotField('')
-    } catch {
-      setStatus('error')
-    }
-  }
-
-  if (status === 'success') {
-    return (
-      <div className="rounded-xl border bg-card p-6">
-        <h3 className="text-base font-semibold text-foreground">Message sent</h3>
-        <p className="mt-2 text-sm text-muted-foreground">
-          Thanks - we received your message. If you do not hear back, email us at{' '}
-          <a className="text-primary hover:underline" href={`mailto:${CONTACT_EMAIL}`}>
-            {CONTACT_EMAIL}
-          </a>
-          .
-        </p>
-      </div>
-    )
-  }
-
+function ContactEmailLink() {
+  const { t } = useTranslation()
+  
   return (
-    <form
-      name="contact"
-      data-netlify="true"
-      netlify-honeypot="bot-field"
-      onSubmit={onSubmit}
-      className="rounded-xl border bg-card p-6"
-    >
-      {/* Netlify form detection */}
-      <input type="hidden" name="form-name" value="contact" />
-      <div className="hidden">
-        <label>
-          Do not fill this out if you are human: <input name="bot-field" value={botField} onChange={(e) => setBotField(e.target.value)} />
-        </label>
-      </div>
-
-      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-        <div className="space-y-2">
-          <label className="text-sm font-medium text-foreground" htmlFor="contact-name">
-            Name
-          </label>
-          <Input
-            id="contact-name"
-            name="name"
-            autoComplete="name"
-            value={form.name}
-            onChange={(e) => setForm((s) => ({ ...s, name: e.target.value }))}
-            placeholder="Your name"
-            required
-          />
-        </div>
-
-        <div className="space-y-2">
-          <label className="text-sm font-medium text-foreground" htmlFor="contact-email">
-            Email
-          </label>
-          <Input
-            id="contact-email"
-            name="email"
-            autoComplete="email"
-            type="email"
-            value={form.email}
-            onChange={(e) => setForm((s) => ({ ...s, email: e.target.value }))}
-            placeholder="you@anqr.link"
-            required
-          />
-        </div>
-      </div>
-
-      <div className="mt-4 space-y-2">
-        <label className="text-sm font-medium text-foreground" htmlFor="contact-subject">
-          Subject
-        </label>
-        <Input
-          id="contact-subject"
-          name="subject"
-          value={form.subject}
-          onChange={(e) => setForm((s) => ({ ...s, subject: e.target.value }))}
-          placeholder="What can we help with?"
-          required
-        />
-      </div>
-
-      <div className="mt-4 space-y-2">
-        <label className="text-sm font-medium text-foreground" htmlFor="contact-message">
-          Message
-        </label>
-        <Textarea
-          id="contact-message"
-          name="message"
-          value={form.message}
-          onChange={(e) => setForm((s) => ({ ...s, message: e.target.value }))}
-          placeholder="Tell us what you are trying to do, and include any error messages if relevant."
-          rows={6}
-          required
-        />
-      </div>
-
-      {status === 'error' && (
-        <p className="mt-4 text-sm text-red-600">
-          We could not submit the form. Please email{' '}
-          <a className="text-primary hover:underline" href={`mailto:${CONTACT_EMAIL}`}>
-            {CONTACT_EMAIL}
-          </a>
-          .
-        </p>
-      )}
-
-      <div className="mt-6 flex items-center justify-between gap-3">
-        <p className="text-xs text-muted-foreground">
-          By sending a message, you agree that we can use your details to respond. See the Privacy Policy.
-        </p>
-        <Button type="submit" disabled={status === 'submitting'}>
-          {status === 'submitting' ? 'Sending...' : 'Send message'}
-        </Button>
-      </div>
-    </form>
+    <div className="rounded-xl border bg-card p-6 text-center">
+      <Mail className="h-12 w-12 mx-auto mb-4 text-primary" />
+      <h3 className="text-lg font-semibold text-foreground mb-2">{t('contact.emailUs')}</h3>
+      <p className="text-sm text-muted-foreground mb-4">
+        {t('contact.emailUsDesc')}
+      </p>
+      <Button asChild size="lg">
+        <a href={`mailto:${CONTACT_EMAIL}`}>
+          <Mail className="h-4 w-4 mr-2" />
+          {CONTACT_EMAIL}
+        </a>
+      </Button>
+    </div>
   )
 }
 
@@ -515,7 +380,7 @@ export function StaticPage({ page }: StaticPageProps) {
                 setIsDocsSidebarOpen(true)
               }}
               className="docs-sidebar-toggle absolute left-4 top-4 z-40 p-2 rounded-lg bg-card border shadow-md hover:bg-muted transition-colors"
-              title="Open documentation sidebar"
+              title={t('accessibility.openDocsSidebar')}
             >
               <Menu className="h-5 w-5" />
             </button>
@@ -599,7 +464,7 @@ export function StaticPage({ page }: StaticPageProps) {
             </div>
 
             <div className="mt-8 pt-4 border-t border-border text-center">
-              <p className="text-xs text-muted-foreground">Last Updated: {LAST_UPDATED}</p>
+              <p className="text-xs text-muted-foreground">{t('accessibility.lastUpdated')}: {LAST_UPDATED}</p>
             </div>
           </article>
         </div>
@@ -659,7 +524,7 @@ export function StaticPage({ page }: StaticPageProps) {
               </section>
             ))}
 
-            {page === 'contact' && <ContactForm />}
+            {page === 'contact' && <ContactEmailLink />}
           </div>
 
           {/* Bottom horizontal ad */}
@@ -668,7 +533,7 @@ export function StaticPage({ page }: StaticPageProps) {
           </div>
 
           <div className="mt-8 pt-4 border-t border-border text-center">
-            <p className="text-xs text-muted-foreground">Last Updated: {LAST_UPDATED}</p>
+            <p className="text-xs text-muted-foreground">{t('accessibility.lastUpdated')}: {LAST_UPDATED}</p>
           </div>
         </article>
       </div>

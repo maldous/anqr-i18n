@@ -1512,5 +1512,33 @@
     "topRight": "“Kanang Itaas”",
     "type": "“Uri”",
     "uploadImage": "“Mag-upload ng Larawan”"
+  },
+  "accessibility": {
+    "toggleSettings": "I-toggle ang panel ng mga setting",
+    "allCategories": "Lahat ng Kategorya",
+    "copyShareLink": "Kopyahin ang link ng pagbabahagi sa clipboard",
+    "exportQrCode": "I-export ang QR code sa file",
+    "openNavMenu": "Buksan ang navigation menu",
+    "openDocsSidebar": "Buksan ang documentation sidebar",
+    "closeSidebar": "Isara ang sidebar",
+    "imageUnavailable": "Hindi available ang larawan",
+    "messageSent": "Naipadala ang mensahe",
+    "lastUpdated": "Huling Na-update",
+    "scanMePlaceholder": "I-scan Ako!"
+  },
+  "contact": {
+    "emailUs": "I-email Kami",
+    "emailUsDesc": "May tanong, mungkahi, o kailangan ng tulong? Mag-email sa amin at sasagutin namin."
+  },
+  "placeholders": {
+    "enterText": "Ilagay ang teksto para i-encode...",
+    "emailSubject": "Paksa ng email",
+    "emailBody": "Katawan ng email",
+    "prefilledMessage": "Pre-filled na mensahe",
+    "placeNameOrAddress": "Pangalan ng lugar o address",
+    "networkPassword": "Password ng network",
+    "eventDetails": "Mga detalye ng event...",
+    "paymentFor": "Bayad para sa...",
+    "rawQrData": "Ilagay ang raw QR code data..."
   }
 }

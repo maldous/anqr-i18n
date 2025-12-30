@@ -1512,5 +1512,33 @@
     "topRight": "Atas Kanan",
     "type": "Jenis",
     "uploadImage": "Muat Naik Imej"
+  },
+  "accessibility": {
+    "toggleSettings": "Togol panel tetapan",
+    "allCategories": "Semua Kategori",
+    "copyShareLink": "Salin pautan kongsi ke papan keratan",
+    "exportQrCode": "Eksport kod QR ke fail",
+    "openNavMenu": "Buka menu navigasi",
+    "openDocsSidebar": "Buka bar sisi dokumentasi",
+    "closeSidebar": "Tutup bar sisi",
+    "imageUnavailable": "Imej tidak tersedia",
+    "messageSent": "Mesej dihantar",
+    "lastUpdated": "Kemas Kini Terakhir",
+    "scanMePlaceholder": "Imbas Saya!"
+  },
+  "contact": {
+    "emailUs": "E-mel Kami",
+    "emailUsDesc": "Ada soalan, cadangan, atau perlukan bantuan? Hantar e-mel kepada kami dan kami akan membalas."
+  },
+  "placeholders": {
+    "enterText": "Masukkan teks untuk dikodkan...",
+    "emailSubject": "Subjek e-mel",
+    "emailBody": "Isi e-mel",
+    "prefilledMessage": "Mesej pra-isi",
+    "placeNameOrAddress": "Nama tempat atau alamat",
+    "networkPassword": "Kata laluan rangkaian",
+    "eventDetails": "Butiran acara...",
+    "paymentFor": "Bayaran untuk...",
+    "rawQrData": "Masukkan data QR mentah..."
   }
 }

@@ -1512,5 +1512,33 @@
     "topRight": "右上",
     "type": "类型",
     "uploadImage": "上传图片"
+  },
+  "accessibility": {
+    "toggleSettings": "切换设置面板",
+    "allCategories": "所有类别",
+    "copyShareLink": "复制分享链接到剪贴板",
+    "exportQrCode": "将二维码导出为文件",
+    "openNavMenu": "打开导航菜单",
+    "openDocsSidebar": "打开文档侧边栏",
+    "closeSidebar": "关闭侧边栏",
+    "imageUnavailable": "图片不可用",
+    "messageSent": "消息已发送",
+    "lastUpdated": "最后更新",
+    "scanMePlaceholder": "扫描我!"
+  },
+  "contact": {
+    "emailUs": "发送邮件",
+    "emailUsDesc": "有问题、建议或需要帮助？给我们发邮件，我们会回复您。"
+  },
+  "placeholders": {
+    "enterText": "输入要编码的文本...",
+    "emailSubject": "邮件主题",
+    "emailBody": "邮件正文",
+    "prefilledMessage": "预填消息",
+    "placeNameOrAddress": "地点名称或地址",
+    "networkPassword": "网络密码",
+    "eventDetails": "活动详情...",
+    "paymentFor": "付款用于...",
+    "rawQrData": "输入原始QR码数据..."
   }
 }

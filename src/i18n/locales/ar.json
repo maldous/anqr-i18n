@@ -1512,5 +1512,33 @@
     "topRight": "أعلى اليمين",
     "type": "النوع",
     "uploadImage": "تحميل صورة"
+  },
+  "accessibility": {
+    "toggleSettings": "تبديل لوحة الإعدادات",
+    "allCategories": "جميع الفئات",
+    "copyShareLink": "نسخ رابط المشاركة إلى الحافظة",
+    "exportQrCode": "تصدير رمز QR إلى ملف",
+    "openNavMenu": "فتح قائمة التنقل",
+    "openDocsSidebar": "فتح الشريط الجانبي للوثائق",
+    "closeSidebar": "إغلاق الشريط الجانبي",
+    "imageUnavailable": "الصورة غير متوفرة",
+    "messageSent": "تم إرسال الرسالة",
+    "lastUpdated": "آخر تحديث",
+    "scanMePlaceholder": "امسحني!"
+  },
+  "contact": {
+    "emailUs": "راسلنا",
+    "emailUsDesc": "هل لديك سؤال أو اقتراح أو تحتاج مساعدة؟ أرسل لنا بريدًا إلكترونيًا وسنرد عليك."
+  },
+  "placeholders": {
+    "enterText": "أدخل النص للتشفير...",
+    "emailSubject": "موضوع البريد الإلكتروني",
+    "emailBody": "نص البريد الإلكتروني",
+    "prefilledMessage": "رسالة معبأة مسبقاً",
+    "placeNameOrAddress": "اسم المكان أو العنوان",
+    "networkPassword": "كلمة مرور الشبكة",
+    "eventDetails": "تفاصيل الحدث...",
+    "paymentFor": "الدفع مقابل...",
+    "rawQrData": "أدخل بيانات رمز QR الخام..."
   }
 }

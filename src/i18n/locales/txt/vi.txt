@@ -1020,3 +1020,14 @@
 1020	“Trên cùng bên trái”
 1021	“Trên cùng bên phải”
 1022	“Tải ảnh lên”
+1023	"Chuyển đổi bảng cài đặt"
+1024	"Tất cả danh mục"
+1025	"Sao chép liên kết chia sẻ vào bộ nhớ tạm"
+1026	"Xuất mã QR ra tệp"
+1027	"Mở menu điều hướng"
+1028	"Mở thanh bên tài liệu"
+1029	"Đóng thanh bên"
+1030	"Không có hình ảnh"
+1031	"Đã gửi tin nhắn"
+1032	"Cập nhật lần cuối"
+1033	"Quét tôi!"

@@ -20,12 +20,6 @@ export const contact: PageDefinition = {
       ],
     },
     {
-      heading: 'Formulir kontak',
-      paragraphs: [
-        'Gunakan formulir di bawah ini untuk mengirimkan pesan langsung kepada kami. Jika formulir tidak berhasil terkirim, silakan gunakan email sebagai gantinya.',
-      ],
-    },
-    {
       heading: 'Jenis-jenis pertanyaan',
       bullets: [
         'Pertanyaan umum: Pertanyaan tentang cara menggunakan ANQR, penjelasan fitur, atau umpan balik umum.',

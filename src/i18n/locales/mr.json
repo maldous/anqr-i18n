@@ -1512,5 +1512,33 @@
     "topRight": "वर",
     "type": "प्रकार",
     "uploadImage": "प्रतिमा"
+  },
+  "accessibility": {
+    "toggleSettings": "सेटिंग्ज पॅनेल टॉगल करा",
+    "allCategories": "सर्व श्रेण्या",
+    "copyShareLink": "शेअर करण्यायोग्य लिंक क्लिपबोर्डवर कॉपी करा",
+    "exportQrCode": "QR कोड फाइलमध्ये निर्यात करा",
+    "openNavMenu": "नेव्हिगेशन मेनू उघडा",
+    "openDocsSidebar": "दस्तऐवज साइडबार उघडा",
+    "closeSidebar": "साइडबार बंद करा",
+    "imageUnavailable": "प्रतिमा उपलब्ध नाही",
+    "messageSent": "संदेश पाठवला",
+    "lastUpdated": "शेवटचे अपडेट",
+    "scanMePlaceholder": "मला स्कॅन करा!"
+  },
+  "contact": {
+    "emailUs": "आम्हाला ईमेल करा",
+    "emailUsDesc": "काही प्रश्न, सूचना किंवा मदत हवी आहे? आम्हाला ईमेल करा आणि आम्ही उत्तर देऊ."
+  },
+  "placeholders": {
+    "enterText": "एनकोड करण्यासाठी मजकूर प्रविष्ट करा...",
+    "emailSubject": "ईमेल विषय",
+    "emailBody": "ईमेल बॉडी",
+    "prefilledMessage": "पूर्व-भरलेला संदेश",
+    "placeNameOrAddress": "ठिकाणाचे नाव किंवा पत्ता",
+    "networkPassword": "नेटवर्क पासवर्ड",
+    "eventDetails": "कार्यक्रम तपशील...",
+    "paymentFor": "देयक...",
+    "rawQrData": "कच्चा QR कोड डेटा प्रविष्ट करा..."
   }
 }

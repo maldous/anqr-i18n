@@ -1020,3 +1020,14 @@
 1020	“Kiri Atas”
 1021	“Kanan Atas”
 1022	“Unggah Gambar”
+1023	"Beralih panel pengaturan"
+1024	"Semua Kategori"
+1025	"Salin tautan berbagi ke clipboard"
+1026	"Ekspor kode QR ke file"
+1027	"Buka menu navigasi"
+1028	"Buka sidebar dokumentasi"
+1029	"Tutup sidebar"
+1030	"Gambar tidak tersedia"
+1031	"Pesan terkirim"
+1032	"Terakhir Diperbarui"
+1033	"Pindai Saya!"

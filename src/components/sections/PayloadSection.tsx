@@ -290,7 +290,7 @@ export function PayloadSection() {
               setShowStartupHighlight(false)
             }}
             onFocus={() => setShowStartupHighlight(false)}
-            placeholder="Enter text to encode..."
+            placeholder={t('placeholders.enterText')}
             rows={4}
             className={showStartupHighlight ? 'ring-4 ring-primary/50 ring-offset-2 ring-offset-background animate-pulse' : ''}
             autoFocus={showStartupHighlight}
@@ -378,7 +378,7 @@ export function PayloadSection() {
             <Input 
               value={payload.email.subject || ''} 
               onChange={(e) => setPayloadEmail({ subject: e.target.value })}
-              placeholder="Email subject"
+              placeholder={t('placeholders.emailSubject')}
             />
           </div>
           <div className="space-y-2">
@@ -386,7 +386,7 @@ export function PayloadSection() {
             <Textarea 
               value={payload.email.body || ''} 
               onChange={(e) => setPayloadEmail({ body: e.target.value })}
-              placeholder="Email body"
+              placeholder={t('placeholders.emailBody')}
               rows={3}
             />
           </div>
@@ -410,7 +410,7 @@ export function PayloadSection() {
             <Textarea 
               value={payload.sms.body || ''} 
               onChange={(e) => setPayloadSms({ body: e.target.value })}
-              placeholder="Pre-filled message"
+              placeholder={t('placeholders.prefilledMessage')}
               rows={3}
             />
           </div>
@@ -447,7 +447,7 @@ export function PayloadSection() {
             <Input 
               value={payload.geo.query || ''} 
               onChange={(e) => setPayloadGeo({ query: e.target.value })}
-              placeholder="Place name or address"
+              placeholder={t('placeholders.placeNameOrAddress')}
             />
           </div>
         </div>
@@ -486,7 +486,7 @@ export function PayloadSection() {
                 type="password"
                 value={payload.wifi.password || ''} 
                 onChange={(e) => setPayloadWifi({ password: e.target.value })}
-                placeholder="Network password"
+                placeholder={t('placeholders.networkPassword')}
               />
             </div>
           )}
@@ -699,7 +699,7 @@ export function PayloadSection() {
             <Textarea 
               value={payload.event.description || ''} 
               onChange={(e) => setPayloadEvent({ description: e.target.value })}
-              placeholder="Event details..."
+              placeholder={t('placeholders.eventDetails')}
               rows={2}
             />
           </div>
@@ -940,7 +940,7 @@ export function PayloadSection() {
             <Input 
               value={payload.crypto.label || ''} 
               onChange={(e) => setPayloadCrypto({ label: e.target.value })}
-              placeholder="Payment for..."
+              placeholder={t('placeholders.paymentFor')}
             />
           </div>
         </div>
@@ -1512,7 +1512,7 @@ export function PayloadSection() {
             <Textarea 
               value={payload.text} 
               onChange={(e) => setPayloadText(e.target.value)}
-              placeholder="Enter raw QR code data..."
+              placeholder={t('placeholders.rawQrData')}
               rows={6}
               className="font-mono text-sm"
             />

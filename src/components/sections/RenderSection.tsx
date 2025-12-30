@@ -282,7 +282,7 @@ export function RenderSection() {
               <Input 
                 value={render.frameText}
                 onChange={(e) => setRenderFrameText(e.target.value)}
-                placeholder="Scan Me!"
+                placeholder={t('accessibility.scanMePlaceholder')}
                 title={t('hints.frameText')}
               />
             </div>

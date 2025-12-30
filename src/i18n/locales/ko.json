@@ -1512,5 +1512,33 @@
     "topRight": "오른쪽 상단",
     "type": "유형",
     "uploadImage": "이미지 업로드"
+  },
+  "accessibility": {
+    "toggleSettings": "설정 패널 전환",
+    "allCategories": "모든 카테고리",
+    "copyShareLink": "공유 링크를 클립보드에 복사",
+    "exportQrCode": "QR 코드를 파일로 내보내기",
+    "openNavMenu": "탐색 메뉴 열기",
+    "openDocsSidebar": "문서 사이드바 열기",
+    "closeSidebar": "사이드바 닫기",
+    "imageUnavailable": "이미지를 사용할 수 없음",
+    "messageSent": "메시지가 전송됨",
+    "lastUpdated": "최종 업데이트",
+    "scanMePlaceholder": "스캔해주세요!"
+  },
+  "contact": {
+    "emailUs": "이메일 보내기",
+    "emailUsDesc": "질문, 제안 또는 도움이 필요하신가요? 이메일을 보내주시면 답변드리겠습니다."
+  },
+  "placeholders": {
+    "enterText": "인코딩할 텍스트 입력...",
+    "emailSubject": "이메일 제목",
+    "emailBody": "이메일 본문",
+    "prefilledMessage": "미리 채워진 메시지",
+    "placeNameOrAddress": "장소 이름 또는 주소",
+    "networkPassword": "네트워크 비밀번호",
+    "eventDetails": "이벤트 세부정보...",
+    "paymentFor": "결제 대상...",
+    "rawQrData": "원시 QR 코드 데이터 입력..."
   }
 }

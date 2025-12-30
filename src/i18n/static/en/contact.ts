@@ -16,13 +16,7 @@ export const contact: PageDefinition = {
       heading: 'Email',
       paragraphs: [
         `For all enquiries: ${CONTACT_EMAIL}`,
-        'This is the most reliable way to reach us and is recommended for detailed questions, business enquiries, or if the contact form does not work on your device.',
-      ],
-    },
-    {
-      heading: 'Contact form',
-      paragraphs: [
-        'Use the form below to send us a message directly. If the form does not submit successfully, please use email instead.',
+        'This is the most reliable way to reach us and is recommended for detailed questions, business enquiries, or any other enquiries.',
       ],
     },
     {

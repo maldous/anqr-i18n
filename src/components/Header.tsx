@@ -307,7 +307,7 @@ export function Header({ onToggleSidebar, onExport, sidebarOpen = false, showGal
             <button
               onClick={onToggleSidebar}
               className="flex items-center justify-center w-8 h-8 hover:opacity-80 cursor-pointer"
-              title="Toggle settings panel"
+              title={t('accessibility.toggleSettings')}
             >
               <PanelLeft className="h-6 w-6 text-muted-foreground" />
             </button>
@@ -367,7 +367,7 @@ export function Header({ onToggleSidebar, onExport, sidebarOpen = false, showGal
                     ? 'text-foreground bg-muted'
                     : 'text-muted-foreground hover:text-foreground hover:bg-muted'
                 }`}
-                title="All Categories"
+                title={t('accessibility.allCategories')}
               >
                 <Grid3x3 className="w-4 h-4" />
               </button>
@@ -430,11 +430,11 @@ export function Header({ onToggleSidebar, onExport, sidebarOpen = false, showGal
           {/* Actions */}
           {isEditor && (
             <div className="hidden sm:flex items-center gap-2">
-              <Button variant="outline" size="sm" className="shadow-sm" onClick={handleShare} title="Copy shareable link to clipboard">
+              <Button variant="outline" size="sm" className="shadow-sm" onClick={handleShare} title={t('accessibility.copyShareLink')}>
                 {copied ? <Check className="h-4 w-4 mr-2" /> : <Share2 className="h-4 w-4 mr-2" />}
                 {copied ? t('share.copied') : t('header.share')}
               </Button>
-              <Button size="sm" className="shadow-sm" onClick={onExport} title="Export QR code to file">
+              <Button size="sm" className="shadow-sm" onClick={onExport} title={t('accessibility.exportQrCode')}>
                 <Download className="h-4 w-4 mr-2" />
                 {t('header.export')}
               </Button>
@@ -513,7 +513,7 @@ export function Header({ onToggleSidebar, onExport, sidebarOpen = false, showGal
           </div>
 
           {/* Dark Mode Toggle */}
-          <Button variant="ghost" size="icon" onClick={toggleDarkMode} className="h-9 w-9" title={darkMode ? 'Switch to light mode' : 'Switch to dark mode'}>
+          <Button variant="ghost" size="icon" onClick={toggleDarkMode} className="h-9 w-9" title={darkMode ? t('header.lightMode') : t('header.darkMode')}>
             {darkMode ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
           </Button>
 
@@ -523,7 +523,7 @@ export function Header({ onToggleSidebar, onExport, sidebarOpen = false, showGal
             size="icon"
             className="md:hidden h-9 w-9"
             onClick={() => mobileMenuOpen ? closeMobileMenu() : setMobileMenuOpen(true)}
-            title="Open navigation menu"
+            title={t('accessibility.openNavMenu')}
           >
             <Menu className="h-5 w-5" />
           </Button>
@@ -589,11 +589,11 @@ export function Header({ onToggleSidebar, onExport, sidebarOpen = false, showGal
           }}
         >
           <div className="flex gap-2">
-            <Button variant="outline" size="sm" className="flex-1" onClick={handleShare} title="Copy shareable link to clipboard">
+            <Button variant="outline" size="sm" className="flex-1" onClick={handleShare} title={t('accessibility.copyShareLink')}>
               {copied ? <Check className="h-4 w-4 mr-2" /> : <Share2 className="h-4 w-4 mr-2" />}
               {copied ? t('share.copied') : t('header.share')}
             </Button>
-            <Button size="sm" className="flex-1" onClick={onExport} title="Export QR code to file">
+            <Button size="sm" className="flex-1" onClick={onExport} title={t('accessibility.exportQrCode')}>
               <Download className="h-4 w-4 mr-2" />
               {t('header.export')}
             </Button>

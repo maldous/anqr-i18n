@@ -1512,5 +1512,33 @@
     "topRight": "மேல் வலது",
     "type": "வகை",
     "uploadImage": "படத்தை பதிவேற்று"
+  },
+  "accessibility": {
+    "toggleSettings": "அமைப்புகள் பலகத்தை மாற்று",
+    "allCategories": "அனைத்து வகைகள்",
+    "copyShareLink": "பகிரக்கூடிய இணைப்பை கிளிப்போர்டுக்கு நகலெடு",
+    "exportQrCode": "QR குறியீட்டை கோப்பில் ஏற்றுமதி செய்",
+    "openNavMenu": "வழிசெலுத்தல் மெனுவைத் திற",
+    "openDocsSidebar": "ஆவண பக்கப்பட்டியைத் திற",
+    "closeSidebar": "பக்கப்பட்டியை மூடு",
+    "imageUnavailable": "படம் கிடைக்கவில்லை",
+    "messageSent": "செய்தி அனுப்பப்பட்டது",
+    "lastUpdated": "கடைசியாக புதுப்பிக்கப்பட்டது",
+    "scanMePlaceholder": "என்னை ஸ்கேன் செய்!"
+  },
+  "contact": {
+    "emailUs": "எங்களுக்கு மின்னஞ்சல் அனுப்புங்கள்",
+    "emailUsDesc": "கேள்வி, பரிந்துரை அல்லது உதவி தேவையா? எங்களுக்கு மின்னஞ்சல் அனுப்புங்கள்."
+  },
+  "placeholders": {
+    "enterText": "குறியாக்கம் செய்ய உரையை உள்ளிடுக...",
+    "emailSubject": "மின்னஞ்சல் பொருள்",
+    "emailBody": "மின்னஞ்சல் உடல்",
+    "prefilledMessage": "முன்-நிரப்பப்பட்ட செய்தி",
+    "placeNameOrAddress": "இடத்தின் பெயர் அல்லது முகவரி",
+    "networkPassword": "நெட்வொர்க் கடவுச்சொல்",
+    "eventDetails": "நிகழ்வு விவரங்கள்...",
+    "paymentFor": "கட்டணம்...",
+    "rawQrData": "மூல QR குறியீடு தரவை உள்ளிடுக..."
   }
 }

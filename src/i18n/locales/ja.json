@@ -1512,5 +1512,33 @@
     "topRight": "右上",
     "type": "タイプ",
     "uploadImage": "画像をアップロード"
+  },
+  "accessibility": {
+    "toggleSettings": "設定パネルを切り替え",
+    "allCategories": "すべてのカテゴリ",
+    "copyShareLink": "共有リンクをクリップボードにコピー",
+    "exportQrCode": "QRコードをファイルにエクスポート",
+    "openNavMenu": "ナビゲーションメニューを開く",
+    "openDocsSidebar": "ドキュメントサイドバーを開く",
+    "closeSidebar": "サイドバーを閉じる",
+    "imageUnavailable": "画像が利用できません",
+    "messageSent": "メッセージが送信されました",
+    "lastUpdated": "最終更新",
+    "scanMePlaceholder": "スキャンしてね!"
+  },
+  "contact": {
+    "emailUs": "メールする",
+    "emailUsDesc": "ご質問、ご提案、またはサポートが必要ですか？メールでお問い合わせください。"
+  },
+  "placeholders": {
+    "enterText": "エンコードするテキストを入力...",
+    "emailSubject": "メール件名",
+    "emailBody": "メール本文",
+    "prefilledMessage": "事前入力メッセージ",
+    "placeNameOrAddress": "場所名または住所",
+    "networkPassword": "ネットワークパスワード",
+    "eventDetails": "イベント詳細...",
+    "paymentFor": "支払い対象...",
+    "rawQrData": "生のQRコードデータを入力..."
   }
 }
