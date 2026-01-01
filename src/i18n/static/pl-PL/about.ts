@@ -2,41 +2,41 @@ import type { PageDefinition } from '../types';
 import { CONTACT_EMAIL, LAST_UPDATED } from '../types';
 
 export const about: PageDefinition = {
-  title: 'About ANQR',
-  description: 'ANQR is a free QR code generator with a client-first approach — generate QR codes locally or use our API for embedding.',
+  title: 'O ANQR',
+  description: 'ANQR to darmowy generator kodów QR, który stawia klienta na pierwszym miejscu — generuj kody QR lokalnie lub korzystaj z naszego API do osadzania.',
   lastUpdated: LAST_UPDATED,
   sections: [
     {
-      heading: 'What is ANQR?',
-      paragraphs: ['ANQR (pronounced "anchor") is a free QR code generator that creates scannable codes for URLs, text, Wi-Fi credentials, contact cards, calendar events, and more.', 'It is built for individuals, small businesses, marketers, and developers who want powerful QR tools without signing up. The client-first design means QR codes are generated locally in your browser by default, with an optional server API for professional embedding and integration.'],
+      heading: 'Co to jest ANQR?',
+      paragraphs: ['ANQR (wymawiane anchor) to darmowy generator kodów QR, który tworzy skanowalne kody dla adresów URL, tekstów, danych uwierzytelniających Wi-Fi, wizytówek, wydarzeń w kalendarzu i nie tylko.', 'Jest on przeznaczony dla osób prywatnych, małych firm, marketerów i deweloperów, którzy potrzebują zaawansowanych narzędzi QR bez konieczności rejestracji. Projekt zorientowany na klienta oznacza, że kody QR są domyślnie generowane lokalnie w przeglądarce, z opcjonalnym serwerowym API do profesjonalnego osadzania i integracji.'],
     },
     {
-      heading: 'Key features',
-      bullets: ['Generate QR codes instantly in your browser — no account required.', 'Customise colours, module styles, finder patterns, and add image overlays.', 'Export in multiple formats: PNG, SVG, WebP, and animated GIF.', 'Advanced controls for error correction level, QR version, encoding mode, and mask selection.', 'Scan-safety guidance and live preview to help keep codes readable in print and on screens.', 'Server-side API for professional embedding with full parameter support.', 'Works offline once loaded — it is a static web app you can run anywhere.'],
+      heading: 'Kluczowe cechy',
+      bullets: ['Generuj kody QR natychmiast w swojej przeglądarce — nie musisz zakładać konta.', 'Dostosuj kolory, style modułów, wzory wyszukiwarki i dodaj nakładki graficzne.', 'Eksportuj do wielu formatów: PNG, SVG, WebP i animowany GIF.', 'Zaawansowane sterowanie poziomem korekcji błędów, wersją QR, trybem kodowania i wyborem maski.', 'Wskazówki dotyczące bezpieczeństwa skanowania i podgląd na żywo pomagają zachować czytelność kodów w wersji drukowanej i na ekranie.', 'Interfejs API po stronie serwera do profesjonalnego osadzania z pełną obsługą parametrów.', 'Działa w trybie offline po załadowaniu — jest to statyczna aplikacja internetowa, którą można uruchomić w dowolnym miejscu.'],
     },
     {
-      heading: 'How ANQR works',
-      paragraphs: ['ANQR runs in your browser and encodes your input into a standard QR matrix with Reed–Solomon error correction, then renders it to the format you choose.', 'By default, generation happens locally in your browser. For professional use, you can also use the server-side API to generate QR codes via URL parameters — perfect for embedding in websites, emails, or automated workflows.', 'When you add overlays or animations, ANQR balances styling with scan reliability so the result remains scannable.', 'ANQR focuses on static codes (the data is inside the QR). If you need a dynamic code (editable destination), you can encode your own redirect URL or short link.'],
+      heading: 'Jak działa ANQR',
+      paragraphs: ['ANQR działa w przeglądarce i koduje wprowadzone dane do standardowej macierzy QR z korekcją błędów Reeda-Solomona, a następnie renderuje je do wybranego formatu.', 'Domyślnie generowanie odbywa się lokalnie w przeglądarce. W zastosowaniach profesjonalnych można również użyć API po stronie serwera do generowania kodów QR za pomocą parametrów adresu URL — idealne do osadzania w witrynach internetowych, wiadomościach e-mail lub zautomatyzowanych przepływach pracy.', 'Gdy dodajesz nakładki lub animacje, ANQR zachowuje równowagę między stylem a niezawodnością skanowania, dzięki czemu wynik pozostaje możliwy do zeskanowania.', 'ANQR koncentruje się na kodach statycznych (dane znajdują się w kodzie QR). Jeśli potrzebujesz kodu dynamicznego (edytowalnego miejsca docelowego), możesz zakodować własny adres URL przekierowania lub krótki link.'],
     },
     {
-      heading: 'Who operates ANQR?',
+      heading: 'Kto obsługuje ANQR?',
       paragraphs: [`18${CONTACT_EMAIL}19`],
     },
     {
-      heading: 'Advertising and how we stay free',
-      paragraphs: ['ANQR is free to use and is supported by advertising. We may show ads via Google AdSense and/or other advertising partners.', 'Ad providers may use cookies or similar technologies to personalise ads based on your interests and browsing activity. You can manage ad preferences in your device settings and through Google ad settings, and learn more in our Privacy Policy.', 'We do not sell the content you encode into QR codes. Ads help cover the cost of running and improving the project.'],
+      heading: 'Reklama i jak zachować wolność',
+      paragraphs: ['ANQR jest darmowy i wspierany reklamami. Możemy wyświetlać reklamy za pośrednictwem Google AdSense i/lub innych partnerów reklamowych.', 'Dostawcy reklam mogą używać plików cookie lub podobnych technologii do personalizacji reklam na podstawie Twoich zainteresowań i aktywności w sieci. Możesz zarządzać preferencjami reklamowymi w ustawieniach urządzenia oraz w ustawieniach reklam Google. Więcej informacji znajdziesz w naszej Polityce Prywatności.', 'Nie sprzedajemy treści, które kodujesz w kodach QR. Reklamy pomagają pokryć koszty prowadzenia i ulepszania projektu.'],
     },
     {
-      heading: 'Open standards',
-      paragraphs: ['ANQR generates QR codes based on the ISO/IEC 18004 standard and aims for broad compatibility across scanners, cameras, and print workflows.'],
+      heading: 'Otwarte standardy',
+      paragraphs: ['ANQR generuje kody QR w oparciu o normę ISO/IEC 18004 i ma na celu zapewnienie szerokiej kompatybilności między skanerami, aparatami i procesami drukowania.'],
     },
     {
-      heading: 'Trademark notice',
-      paragraphs: ['QR Code® is a registered trademark of DENSO WAVE INCORPORATED. ANQR is not affiliated with, endorsed by, or sponsored by DENSO WAVE INCORPORATED.'],
+      heading: 'Informacja o znaku towarowym',
+      paragraphs: ['QR Code® jest zastrzeżonym znakiem towarowym firmy DENSO WAVE INCORPORATED. ANQR nie jest powiązany, wspierany ani sponsorowany przez firmę DENSO WAVE INCORPORATED.'],
     },
     {
-      heading: 'Feedback and contributions',
-      paragraphs: ['We welcome feedback, bug reports, and feature suggestions. Please get in touch via email or the contact page — we read every message, though response times may vary.'],
+      heading: 'Opinie i uwagi',
+      paragraphs: ['Z przyjemnością przyjmujemy opinie, zgłoszenia błędów i sugestie dotyczące funkcji. Prosimy o kontakt mailowy lub za pośrednictwem strony kontaktowej — czytamy każdą wiadomość, choć czas odpowiedzi może się różnić.'],
     },
   ],
 };

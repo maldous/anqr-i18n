@@ -2,41 +2,41 @@ import type { PageDefinition } from '../types';
 import { CONTACT_EMAIL, LAST_UPDATED } from '../types';
 
 export const about: PageDefinition = {
-  title: 'About ANQR',
-  description: 'ANQR is a free QR code generator with a client-first approach — generate QR codes locally or use our API for embedding.',
+  title: 'ANQR အကြောင်း',
+  description: 'ANQR သည် client-first approach ပါရှိသော အခမဲ့ QR code generator တစ်ခုဖြစ်ပြီး ဒေသတွင်းတွင် QR code များကို generate လုပ်ပါ သို့မဟုတ် embed လုပ်ရန်အတွက် ကျွန်ုပ်တို့၏ API ကို အသုံးပြုပါ။',
   lastUpdated: LAST_UPDATED,
   sections: [
     {
-      heading: 'What is ANQR?',
-      paragraphs: ['ANQR (pronounced "anchor") is a free QR code generator that creates scannable codes for URLs, text, Wi-Fi credentials, contact cards, calendar events, and more.', 'It is built for individuals, small businesses, marketers, and developers who want powerful QR tools without signing up. The client-first design means QR codes are generated locally in your browser by default, with an optional server API for professional embedding and integration.'],
+      heading: 'ANQR ဆိုတာ ဘာလဲ။',
+      paragraphs: ['ANQR (anchor လို့ အသံထွက်ပါတယ်) သည် URL များ၊ စာသားများ၊ Wi-Fi အထောက်အထားများ၊ ဆက်သွယ်ရန်ကတ်များ၊ ပြက္ခဒိန်ပွဲများနှင့် အခြားအရာများအတွက် စကင်ဖတ်နိုင်သော ကုဒ်များကို ဖန်တီးပေးသည့် အခမဲ့ QR ကုဒ်ထုတ်လုပ်သည့် ကိရိယာတစ်ခုဖြစ်သည်။', '၎င်းကို မှတ်ပုံတင်စရာမလိုဘဲ အစွမ်းထက်သော QR tools များကို လိုချင်သော လူပုဂ္ဂိုလ်များ၊ အသေးစားစီးပွားရေးလုပ်ငန်းများ၊ စျေးကွက်ရှာဖွေသူများနှင့် developer များအတွက် တည်ဆောက်ထားသည်။ client-first ဒီဇိုင်းကြောင့် QR code များကို သင့် browser တွင် default အနေဖြင့် ထုတ်လုပ်ပေးပြီး professional embedding နှင့် integration အတွက် optional server API ပါရှိသည်။'],
     },
     {
-      heading: 'Key features',
-      bullets: ['Generate QR codes instantly in your browser — no account required.', 'Customise colours, module styles, finder patterns, and add image overlays.', 'Export in multiple formats: PNG, SVG, WebP, and animated GIF.', 'Advanced controls for error correction level, QR version, encoding mode, and mask selection.', 'Scan-safety guidance and live preview to help keep codes readable in print and on screens.', 'Server-side API for professional embedding with full parameter support.', 'Works offline once loaded — it is a static web app you can run anywhere.'],
+      heading: 'အဓိကအင်္ဂါရပ်များ',
+      bullets: ['သင့်ဘရောက်ဆာတွင် QR ကုဒ်များကို ချက်ချင်းထုတ်လုပ်ပါ — အကောင့်မလိုအပ်ပါ။', 'အရောင်များ၊ မော်ဂျူးစတိုင်များ၊ ရှာဖွေကိရိယာပုံစံများကို စိတ်ကြိုက်ပြင်ဆင်ပြီး ရုပ်ပုံထပ်ဆင့်များကို ထည့်သွင်းပါ။', 'ဖော်မတ်များစွာဖြင့် ထုတ်ယူပါ- PNG၊ SVG၊ WebP နှင့် animated GIF။', 'အမှားပြင်ဆင်ခြင်းအဆင့်၊ QR ဗားရှင်း၊ ကုဒ်ဝှက်ခြင်းမုဒ်နှင့် မျက်နှာဖုံးရွေးချယ်မှုအတွက် အဆင့်မြင့်ထိန်းချုပ်မှုများ။', 'ကုဒ်များကို ပုံနှိပ်နှင့် မျက်နှာပြင်များတွင် ဖတ်ရှုနိုင်စေရန် စကင်ဖတ်ခြင်း-ဘေးကင်းရေး လမ်းညွှန်ချက်နှင့် တိုက်ရိုက်ကြိုတင်ကြည့်ရှုခြင်း။', 'အပြည့်အဝ parameter ပံ့ပိုးမှုဖြင့် ပရော်ဖက်ရှင်နယ် embedding အတွက် Server-side API။', 'တင်ပြီးသည်နှင့် အော့ဖ်လိုင်းအလုပ်လုပ်သည် — ၎င်းသည် မည်သည့်နေရာတွင်မဆို သင်အသုံးပြုနိုင်သော static web app တစ်ခုဖြစ်သည်။'],
     },
     {
-      heading: 'How ANQR works',
-      paragraphs: ['ANQR runs in your browser and encodes your input into a standard QR matrix with Reed–Solomon error correction, then renders it to the format you choose.', 'By default, generation happens locally in your browser. For professional use, you can also use the server-side API to generate QR codes via URL parameters — perfect for embedding in websites, emails, or automated workflows.', 'When you add overlays or animations, ANQR balances styling with scan reliability so the result remains scannable.', 'ANQR focuses on static codes (the data is inside the QR). If you need a dynamic code (editable destination), you can encode your own redirect URL or short link.'],
+      heading: 'ANQR ဘယ်လိုအလုပ်လုပ်လဲ',
+      paragraphs: ['ANQR သည် သင့်ဘရောက်ဆာတွင် လုပ်ဆောင်ပြီး သင့်ထည့်သွင်းမှုကို Reed–Solomon အမှားပြင်ဆင်ချက်ဖြင့် စံ QR matrix ထဲသို့ encode လုပ်ပြီးနောက် သင်ရွေးချယ်ထားသော format သို့ ပြန်ဆိုပေးသည်။', 'ပုံမှန်အားဖြင့်၊ ထုတ်လုပ်မှုသည် သင့်ဘရောက်ဆာတွင် ဒေသတွင်းတွင် ဖြစ်ပေါ်သည်။ ပရော်ဖက်ရှင်နယ်အသုံးပြုမှုအတွက်၊ URL parameters များမှတစ်ဆင့် QR ကုဒ်များကို ထုတ်လုပ်ရန် server-side API ကိုလည်း အသုံးပြုနိုင်သည် — ဝဘ်ဆိုက်များ၊ အီးမေးလ်များ သို့မဟုတ် အလိုအလျောက် workflows များတွင် embed လုပ်ရန်အတွက် အလွန်သင့်လျော်ပါသည်။', 'ထပ်ဆင့်ပုံများ သို့မဟုတ် အန်နီမေးရှင်းများထည့်သောအခါ၊ ANQR သည် စကင်န်ဖတ်ခြင်း၏ ယုံကြည်စိတ်ချရမှုနှင့် စတိုင်လ်ကို ဟန်ချက်ညီစေသောကြောင့် ရလဒ်ကို စကင်န်ဖတ်နိုင်မည်ဖြစ်သည်။', 'ANQR သည် static code များကို အာရုံစိုက်သည် (ဒေတာသည် QR အတွင်းတွင်ရှိသည်)။ သင်သည် dynamic code (တည်းဖြတ်နိုင်သော destination) လိုအပ်ပါက သင်၏ကိုယ်ပိုင် redirect URL သို့မဟုတ် short link ကို encode လုပ်နိုင်သည်။'],
     },
     {
-      heading: 'Who operates ANQR?',
+      heading: 'ANQR ကို ဘယ်သူလည်ပတ်သလဲ။',
       paragraphs: [`18${CONTACT_EMAIL}19`],
     },
     {
-      heading: 'Advertising and how we stay free',
-      paragraphs: ['ANQR is free to use and is supported by advertising. We may show ads via Google AdSense and/or other advertising partners.', 'Ad providers may use cookies or similar technologies to personalise ads based on your interests and browsing activity. You can manage ad preferences in your device settings and through Google ad settings, and learn more in our Privacy Policy.', 'We do not sell the content you encode into QR codes. Ads help cover the cost of running and improving the project.'],
+      heading: 'ကြော်ငြာများနှင့် ကျွန်ုပ်တို့ လွတ်လပ်နေပုံ',
+      paragraphs: ['ANQR ကို အခမဲ့အသုံးပြုနိုင်ပြီး ကြော်ငြာများဖြင့် ပံ့ပိုးပေးထားပါသည်။ ကျွန်ုပ်တို့သည် Google AdSense နှင့်/သို့မဟုတ် အခြားကြော်ငြာမိတ်ဖက်များမှတစ်ဆင့် ကြော်ငြာများကို ပြသနိုင်ပါသည်။', 'ကြော်ငြာပံ့ပိုးပေးသူများသည် သင်၏စိတ်ဝင်စားမှုများနှင့် ကြည့်ရှုမှုလုပ်ဆောင်ချက်များအပေါ် အခြေခံ၍ ကြော်ငြာများကို စိတ်ကြိုက်ပြင်ဆင်ရန်အတွက် ကွတ်ကီးများ သို့မဟုတ် အလားတူနည်းပညာများကို အသုံးပြုနိုင်ပါသည်။ သင်၏စက်ပစ္စည်းဆက်တင်များနှင့် Google ကြော်ငြာဆက်တင်များမှတစ်ဆင့် ကြော်ငြာဦးစားပေးမှုများကို စီမံခန့်ခွဲနိုင်ပြီး ကျွန်ုပ်တို့၏ ကိုယ်ရေးကိုယ်တာမူဝါဒတွင် ပိုမိုလေ့လာနိုင်ပါသည်။', 'ကျွန်ုပ်တို့သည် သင် QR ကုဒ်များအဖြစ် ကုဒ်လုပ်ထားသော အကြောင်းအရာများကို မရောင်းပါ။ ကြော်ငြာများသည် ပရောဂျက်လည်ပတ်ခြင်းနှင့် တိုးတက်ကောင်းမွန်စေခြင်း၏ ကုန်ကျစရိတ်ကို ကာမိစေရန် ကူညီပေးသည်။'],
     },
     {
-      heading: 'Open standards',
-      paragraphs: ['ANQR generates QR codes based on the ISO/IEC 18004 standard and aims for broad compatibility across scanners, cameras, and print workflows.'],
+      heading: 'ပွင့်လင်းသောစံနှုန်းများ',
+      paragraphs: ['ANQR သည် ISO/IEC 18004 စံနှုန်းအပေါ် အခြေခံ၍ QR ကုဒ်များကို ထုတ်ပေးပြီး စကင်နာများ၊ ကင်မရာများနှင့် ပုံနှိပ်လုပ်ငန်းစဉ်များတွင် ကျယ်ပြန့်စွာ တွဲဖက်အသုံးပြုနိုင်ရန် ရည်ရွယ်ပါသည်။'],
     },
     {
-      heading: 'Trademark notice',
-      paragraphs: ['QR Code® is a registered trademark of DENSO WAVE INCORPORATED. ANQR is not affiliated with, endorsed by, or sponsored by DENSO WAVE INCORPORATED.'],
+      heading: 'ကုန်အမှတ်တံဆိပ် အသိပေးချက်',
+      paragraphs: ['QR Code® သည် DENSO WAVE INCORPORATED ၏ မှတ်ပုံတင်ထားသော ကုန်အမှတ်တံဆိပ်တစ်ခုဖြစ်သည်။ ANQR သည် DENSO WAVE INCORPORATED နှင့် ဆက်နွှယ်မှုမရှိ၊ ထောက်ခံမှုမရှိ သို့မဟုတ် ပံ့ပိုးမှုမရှိပါ။'],
     },
     {
-      heading: 'Feedback and contributions',
-      paragraphs: ['We welcome feedback, bug reports, and feature suggestions. Please get in touch via email or the contact page — we read every message, though response times may vary.'],
+      heading: 'တုံ့ပြန်ချက်များနှင့် ပံ့ပိုးကူညီမှုများ',
+      paragraphs: ['ကျွန်ုပ်တို့သည် တုံ့ပြန်ချက်၊ bug အစီရင်ခံစာများနှင့် အင်္ဂါရပ်အကြံပြုချက်များကို ကြိုဆိုပါသည်။ အီးမေးလ် သို့မဟုတ် ဆက်သွယ်ရန်စာမျက်နှာမှတစ်ဆင့် ဆက်သွယ်ပါ — ကျွန်ုပ်တို့သည် မက်ဆေ့ချ်တိုင်းကို ဖတ်ရှုပါသည်၊ သို့သော် တုံ့ပြန်ချိန်များ ကွဲပြားနိုင်ပါသည်။'],
     },
   ],
 };

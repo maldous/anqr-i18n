@@ -2,38 +2,38 @@ import type { PageDefinition } from '../types';
 import { LAST_UPDATED } from '../types';
 
 export const contact: PageDefinition = {
-  title: 'Contact Us',
-  description: 'We welcome feedback, bug reports, feature requests, and general enquiries.',
+  title: 'ຕິດຕໍ່ພວກເຮົາ',
+  description: 'ພວກເຮົາຍິນດີຕ້ອນຮັບຄຳຕິຊົມ, ລາຍງານຂໍ້ຜິດພາດ, ການຮ້ອງຂໍຄຸນສົມບັດ ແລະ ການສອບຖາມທົ່ວໄປ.',
   lastUpdated: LAST_UPDATED,
   sections: [
     {
-      heading: 'How to reach us',
-      paragraphs: ['We offer several ways to contact us depending on your needs. We read every message, though response times may vary based on volume and enquiry type.'],
+      heading: 'ວິທີການຕິດຕໍ່ພວກເຮົາ',
+      paragraphs: ['ພວກເຮົາສະເໜີຫຼາຍວິທີໃນການຕິດຕໍ່ພວກເຮົາໂດຍອີງຕາມຄວາມຕ້ອງການຂອງທ່ານ. ພວກເຮົາອ່ານທຸກໆຂໍ້ຄວາມ, ເຖິງແມ່ນວ່າເວລາຕອບສະໜອງອາດແຕກຕ່າງກັນໄປຕາມປະລິມານ ແລະ ປະເພດການສອບຖາມ.'],
     },
     {
-      heading: 'Email',
-      paragraphs: ['For all enquiries: ${CONTACT_EMAIL}', 'This is the most reliable way to reach us and is recommended for detailed questions, business enquiries, or any other enquiries.'],
+      heading: 'ອີເມວ',
+      paragraphs: ['ສຳລັບການສອບຖາມທັງໝົດ: ${CONTACT_EMAIL}', 'ນີ້ແມ່ນວິທີທີ່ໜ້າເຊື່ອຖືທີ່ສຸດໃນການຕິດຕໍ່ພວກເຮົາ ແລະ ແນະນຳໃຫ້ໃຊ້ສຳລັບຄຳຖາມລະອຽດ, ການສອບຖາມທາງທຸລະກິດ, ຫຼື ການສອບຖາມອື່ນໆ.'],
     },
     {
-      heading: 'Types of enquiries',
-      bullets: ['General questions: Questions about how to use ANQR, feature explanations, or general feedback.', 'Bug reports: Please include your browser, operating system, steps to reproduce, and any error messages you see.', 'Feature requests: Suggestions for new features or improvements. We consider all requests though we cannot promise implementation.', 'Business enquiries: Partnership opportunities, licensing questions, or commercial use enquiries.', 'Privacy requests: Requests to exercise your privacy rights under GDPR, CCPA, or other privacy laws (see Privacy Policy).', 'DMCA/Copyright: See the DMCA section below for takedown notice requirements.'],
+      heading: 'ປະເພດຂອງການສອບຖາມ',
+      bullets: ['ຄຳຖາມທົ່ວໄປ: ຄຳຖາມກ່ຽວກັບວິທີການໃຊ້ ANQR, ຄຳອະທິບາຍຄຸນສົມບັດ, ຫຼື ຄຳຕິຊົມທົ່ວໄປ.', 'ລາຍງານຂໍ້ຜິດພາດ: ກະລຸນາລວມເອົາບຣາວເຊີ, ລະບົບປະຕິບັດການ, ຂັ້ນຕອນໃນການສ້າງຄືນໃໝ່, ແລະ ຂໍ້ຄວາມຜິດພາດທີ່ທ່ານເຫັນ.', 'ການຮ້ອງຂໍຄຸນສົມບັດ: ຄໍາແນະນໍາສໍາລັບຄຸນສົມບັດໃໝ່ ຫຼື ການປັບປຸງ. ພວກເຮົາພິຈາລະນາຄໍາຮ້ອງຂໍທັງໝົດເຖິງແມ່ນວ່າພວກເຮົາບໍ່ສາມາດສັນຍາວ່າຈະຈັດຕັ້ງປະຕິບັດໄດ້.', 'ການສອບຖາມທາງທຸລະກິດ: ໂອກາດການຮ່ວມມື, ຄຳຖາມກ່ຽວກັບໃບອະນຸຍາດ, ຫຼື ການສອບຖາມກ່ຽວກັບການນຳໃຊ້ທາງການຄ້າ.', 'ການຮ້ອງຂໍຄວາມເປັນສ່ວນຕົວ: ການຮ້ອງຂໍເພື່ອໃຊ້ສິດຄວາມເປັນສ່ວນຕົວຂອງທ່ານພາຍໃຕ້ GDPR, CCPA, ຫຼືກົດໝາຍຄວາມເປັນສ່ວນຕົວອື່ນໆ (ເບິ່ງນະໂຍບາຍຄວາມເປັນສ່ວນຕົວ).', 'DMCA/ລິຂະສິດ: ເບິ່ງພາກສ່ວນ DMCA ຂ້າງລຸ່ມນີ້ສຳລັບຂໍ້ກຳນົດແຈ້ງການລຶບອອກ.'],
     },
     {
-      heading: 'Response times',
-      paragraphs: ['We aim to respond to enquiries within 5-7 business days. Privacy-related requests will be addressed within 30 days as required by law.', 'During busy periods, response times may be longer. For urgent matters, please indicate "URGENT" in your subject line.'],
+      heading: 'ເວລາຕອບສະໜອງ',
+      paragraphs: ['ພວກເຮົາມຸ່ງໝັ້ນທີ່ຈະຕອບຄຳຖາມພາຍໃນ 5-7 ມື້ເຮັດວຽກ. ການຮ້ອງຂໍທີ່ກ່ຽວຂ້ອງກັບຄວາມເປັນສ່ວນຕົວຈະຖືກແກ້ໄຂພາຍໃນ 30 ມື້ຕາມທີ່ກົດໝາຍກຳນົດ.', 'ໃນຊ່ວງເວລາທີ່ຫຍຸ້ງຫຼາຍ, ເວລາຕອບສະໜອງອາດຈະດົນກວ່າ. ສຳລັບເລື່ອງຮີບດ່ວນ, ກະລຸນາລະບຸ ດ່ວນ ໃນຫົວຂໍ້ຂອງທ່ານ.'],
     },
     {
-      heading: 'Before contacting us',
-      paragraphs: ['Please check our Documentation page for answers to common questions about how to use ANQR features. Many questions about QR code generation, styling, and export options are covered there.'],
+      heading: 'ກ່ອນທີ່ຈະຕິດຕໍ່ຫາພວກເຮົາ',
+      paragraphs: ['ກະລຸນາກວດສອບໜ້າເອກະສານຂອງພວກເຮົາສຳລັບຄຳຕອບຕໍ່ຄຳຖາມທົ່ວໄປກ່ຽວກັບວິທີການໃຊ້ຄຸນສົມບັດ ANQR. ຄຳຖາມຫຼາຍຢ່າງກ່ຽວກັບການສ້າງລະຫັດ QR, ຮູບແບບ, ແລະຕົວເລືອກການສົ່ງອອກແມ່ນໄດ້ກວມເອົາຢູ່ທີ່ນັ້ນ.'],
     },
     {
-      heading: 'DMCA Copyright Notices',
-      paragraphs: ['If you believe that content available on ANQR infringes your copyright, you may submit a Digital Millennium Copyright Act (DMCA) takedown notice. To be valid, your notice must include:'],
-      bullets: ['A physical or electronic signature of the copyright owner or authorised agent.', 'Identification of the copyrighted work claimed to have been infringed.', 'Identification of the material that is claimed to be infringing, with information sufficient to locate it.', 'Your contact information (address, telephone number, and email address).', 'A statement that you have a good faith belief that use of the material is not authorised by the copyright owner.', 'A statement, under penalty of perjury, that the information in your notice is accurate and that you are the copyright owner or authorised to act on their behalf.'],
+      heading: 'ແຈ້ງການລິຂະສິດ DMCA',
+      paragraphs: ['ຖ້າທ່ານເຊື່ອວ່າເນື້ອຫາທີ່ມີຢູ່ໃນ ANQR ລະເມີດລິຂະສິດຂອງທ່ານ, ທ່ານອາດຈະຍື່ນແຈ້ງການລຶບອອກຕາມກົດໝາຍວ່າດ້ວຍລິຂະສິດສະຫັດສະຫວັດດິຈິຕອລ (DMCA). ເພື່ອໃຫ້ຖືກຕ້ອງ, ແຈ້ງການຂອງທ່ານຕ້ອງປະກອບມີ:'],
+      bullets: ['ລາຍເຊັນທາງກາຍະພາບ ຫຼື ລາຍເຊັນເອເລັກໂຕຣນິກຂອງເຈົ້າຂອງລິຂະສິດ ຫຼື ຕົວແທນທີ່ໄດ້ຮັບອະນຸຍາດ.', 'ການລະບຸຜົນງານທີ່ມີລິຂະສິດທີ່ຖືກອ້າງວ່າຖືກລະເມີດ.', 'ການລະບຸເອກະສານທີ່ຖືກອ້າງວ່າເປັນການລະເມີດ, ພ້ອມດ້ວຍຂໍ້ມູນທີ່ພຽງພໍທີ່ຈະຊອກຫາມັນ.', 'ຂໍ້ມູນຕິດຕໍ່ຂອງທ່ານ (ທີ່ຢູ່, ເບີໂທລະສັບ ແລະ ທີ່ຢູ່ອີເມວ).', 'ຖະແຫຼງການທີ່ທ່ານເຊື່ອດ້ວຍຄວາມຈິງໃຈວ່າການນຳໃຊ້ເອກະສານດັ່ງກ່າວບໍ່ໄດ້ຮັບອະນຸຍາດຈາກເຈົ້າຂອງລິຂະສິດ.', 'ຖະແຫຼງການ, ພາຍໃຕ້ການລົງໂທດຂອງການສາບານຕົວເທັດ, ວ່າຂໍ້ມູນໃນແຈ້ງການຂອງທ່ານແມ່ນຖືກຕ້ອງ ແລະ ທ່ານເປັນເຈົ້າຂອງລິຂະສິດ ຫຼື ໄດ້ຮັບອະນຸຍາດໃຫ້ປະຕິບັດໃນນາມຂອງເຂົາເຈົ້າ.'],
     },
     {
-      heading: 'DMCA Contact',
-      paragraphs: ['Send DMCA notices to: ${CONTACT_EMAIL}', 'Please include "DMCA Notice" in the subject line. We will respond to valid notices in accordance with applicable law. Note that ANQR generates QR codes locally on users devices and does not host user-generated content.'],
+      heading: 'ຕິດຕໍ່ DMCA',
+      paragraphs: ['ສົ່ງແຈ້ງການ DMCA ໄປທີ່: ${CONTACT_EMAIL}', 'ກະລຸນາລວມເອົາ ແຈ້ງການ DMCA ໃນຫົວຂໍ້. ພວກເຮົາຈະຕອບກັບແຈ້ງການທີ່ຖືກຕ້ອງຕາມກົດໝາຍທີ່ກ່ຽວຂ້ອງ. ໃຫ້ສັງເກດວ່າ ANQR ສ້າງລະຫັດ QR ໃນທ້ອງຖິ່ນໃນອຸປະກອນຂອງຜູ້ໃຊ້ ແລະ ບໍ່ໄດ້ເກັບຮັກສາເນື້ອຫາທີ່ຜູ້ໃຊ້ສ້າງຂຶ້ນ.'],
     },
   ],
 };

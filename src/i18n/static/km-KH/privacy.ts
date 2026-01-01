@@ -2,79 +2,79 @@ import type { PageDefinition } from '../types';
 import { LAST_UPDATED } from '../types';
 
 export const privacy: PageDefinition = {
-  title: 'Privacy Policy',
-  description: 'Information ANQR collects, how it is used, and your rights under applicable privacy laws.',
+  title: 'គោលការណ៍ឯកជនភាព',
+  description: 'ព័ត៌មានដែល ANQR ប្រមូលបាន របៀបដែលវាត្រូវបានប្រើប្រាស់ និងសិទ្ធិរបស់អ្នកក្រោមច្បាប់ស្តីពីភាពឯកជនដែលអាចអនុវត្តបាន។',
   lastUpdated: LAST_UPDATED,
   sections: [
     {
-      heading: 'Summary',
-      paragraphs: ['ANQR is a QR code generator with a client-first approach. We do not require you to create an account. By default, QR codes are generated locally in your browser — we do not have access to the content you encode.', 'For professional use, ANQR provides a server-side API that generates QR codes from URL parameters. When using the API, your QR content is processed on our servers to render the image, but is not stored or logged.', 'We use Google AdSense for advertising and may use analytics services. These services collect information through cookies and similar technologies. This policy explains what data is collected, how it is used, and your rights.'],
+      heading: 'សេចក្តីសង្ខេប',
+      paragraphs: ['ANQR គឺជាកម្មវិធីបង្កើតលេខកូដ QR ដែលមានវិធីសាស្រ្តផ្តោតលើអតិថិជនជាចម្បង។ យើងមិនតម្រូវឱ្យអ្នកបង្កើតគណនីទេ។ តាមលំនាំដើម លេខកូដ QR ត្រូវបានបង្កើតនៅក្នុងកម្មវិធីរុករករបស់អ្នក — យើងមិនមានសិទ្ធិចូលប្រើខ្លឹមសារដែលអ្នកបានអ៊ិនកូដទេ។', 'ANQR ផ្តល់នូវ API ផ្នែកម៉ាស៊ីនបម្រើដែលបង្កើតលេខកូដ QR ពីប៉ារ៉ាម៉ែត្រ URL។ នៅពេលប្រើ API ខ្លឹមសារ QR របស់អ្នកត្រូវបានដំណើរការនៅលើម៉ាស៊ីនបម្រើរបស់យើងដើម្បីបង្ហាញរូបភាព ប៉ុន្តែមិនត្រូវបានរក្សាទុក ឬកត់ត្រាទុកទេ។', 'យើងប្រើប្រាស់ Google AdSense សម្រាប់ការផ្សាយពាណិជ្ជកម្ម ហើយអាចប្រើប្រាស់សេវាកម្មវិភាគ។ សេវាកម្មទាំងនេះប្រមូលព័ត៌មានតាមរយៈខូគី និងបច្ចេកវិទ្យាស្រដៀងគ្នា។ គោលការណ៍នេះពន្យល់ពីទិន្នន័យដែលត្រូវបានប្រមូល របៀបដែលវាត្រូវបានប្រើប្រាស់ និងសិទ្ធិរបស់អ្នក។'],
     },
     {
-      heading: 'Information we collect',
-      bullets: ['Information you provide: If you contact us via email or our contact form, we collect your name, email address, and message content.', 'Automatically collected information: Our hosting provider (Netlify), advertising partners, and analytics services may collect: IP address, browser type and version, operating system, device type, referring URL, pages visited, time on site, and approximate geographic location.', 'Third-party cookies: Our advertising partners (Google AdSense) use cookies and similar technologies to serve and measure advertisements. ANQR itself does not set any first-party cookies.'],
+      heading: 'ព័ត៌មានដែលយើងប្រមូល',
+      bullets: ['ព័ត៌មានដែលអ្នកផ្តល់៖ ប្រសិនបើអ្នកទាក់ទងមកយើងតាមរយៈអ៊ីមែល ឬទម្រង់ទំនាក់ទំនងរបស់យើង យើងប្រមូលឈ្មោះ អាសយដ្ឋានអ៊ីមែល និងខ្លឹមសារសាររបស់អ្នក។', 'ព័ត៌មានដែលប្រមូលបានដោយស្វ័យប្រវត្តិ៖ អ្នកផ្តល់សេវាបង្ហោះរបស់យើង (Netlify) ដៃគូផ្សាយពាណិជ្ជកម្ម និងសេវាកម្មវិភាគអាចប្រមូល៖ អាសយដ្ឋាន IP ប្រភេទ និងកំណែកម្មវិធីរុករក ប្រព័ន្ធប្រតិបត្តិការ ប្រភេទឧបករណ៍ URL យោង ទំព័រដែលបានចូលមើល ពេលវេលានៅលើគេហទំព័រ និងទីតាំងភូមិសាស្ត្រប្រហាក់ប្រហែល។', 'ខូគីភាគីទីបី៖ ដៃគូផ្សាយពាណិជ្ជកម្មរបស់យើង (Google AdSense) ប្រើប្រាស់ខូគី និងបច្ចេកវិទ្យាស្រដៀងគ្នា ដើម្បីបម្រើ និងវាស់វែងការផ្សាយពាណិជ្ជកម្ម។ ANQR ខ្លួនវាមិនកំណត់ខូគីភាគីទីមួយណាមួយទេ។'],
     },
     {
-      heading: 'Cookies and third-party technologies',
-      paragraphs: ['ANQR does not set any first-party cookies. Your preferences (such as dark mode) are stored locally on your device, which is not transmitted to any server.', 'However, our advertising partners (Google AdSense) and hosting provider may use cookies and similar tracking technologies:'],
-      bullets: ['Advertising cookies (third-party): Set by Google AdSense and advertising partners to serve relevant ads, measure ad performance, and understand user interests. These cookies may track your activity across different websites.', 'Analytics cookies (third-party): May be used by our hosting provider or analytics services to collect anonymised usage data.'],
+      heading: 'ឃុកឃី និងបច្ចេកវិទ្យាភាគីទីបី',
+      paragraphs: ['ANQR មិនកំណត់ខូគីភាគីទីមួយណាមួយទេ។ ចំណូលចិត្តរបស់អ្នក (ដូចជារបៀបងងឹត) ត្រូវបានរក្សាទុកនៅក្នុងឧបករណ៍របស់អ្នក ដែលមិនត្រូវបានបញ្ជូនទៅម៉ាស៊ីនមេណាមួយឡើយ។', 'ទោះជាយ៉ាងណាក៏ដោយ ដៃគូផ្សាយពាណិជ្ជកម្មរបស់យើង (Google AdSense) និងអ្នកផ្តល់សេវាបង្ហោះអាចប្រើប្រាស់ខូឃី និងបច្ចេកវិទ្យាតាមដានស្រដៀងគ្នា៖'],
+      bullets: ['ខូគីផ្សាយពាណិជ្ជកម្ម (ភាគីទីបី)៖ កំណត់ដោយ Google AdSense និងដៃគូផ្សាយពាណិជ្ជកម្ម ដើម្បីបម្រើការផ្សាយពាណិជ្ជកម្មពាក់ព័ន្ធ វាស់ស្ទង់ការអនុវត្តការផ្សាយពាណិជ្ជកម្ម និងយល់ពីចំណាប់អារម្មណ៍របស់អ្នកប្រើប្រាស់។ ខូគីទាំងនេះអាចតាមដានសកម្មភាពរបស់អ្នកនៅទូទាំងគេហទំព័រផ្សេងៗគ្នា។', 'ខូគីវិភាគ (ភាគីទីបី)៖ អាចត្រូវបានប្រើប្រាស់ដោយអ្នកផ្តល់សេវាបង្ហោះ ឬសេវាកម្មវិភាគរបស់យើង ដើម្បីប្រមូលទិន្នន័យប្រើប្រាស់អនាមិក។'],
     },
     {
-      heading: 'Google AdSense and advertising',
-      paragraphs: ['We display advertisements through Google AdSense. Google and its partners use cookies to serve ads based on your browsing history on this site and other websites (interest-based advertising).', 'Learn how Google uses your information: https://policies.google.com/technologies/partner-sites', 'Manage ad personalisation: https://adssettings.google.com', 'Opt out via Network Advertising Initiative: https://optout.networkadvertising.org', 'Opt out via Digital Advertising Alliance: https://optout.aboutads.info'],
+      heading: 'Google AdSense និងការផ្សាយពាណិជ្ជកម្ម',
+      paragraphs: ['យើងបង្ហាញការផ្សាយពាណិជ្ជកម្មតាមរយៈ Google AdSense។ Google និងដៃគូរបស់ខ្លួនប្រើប្រាស់ខូគីដើម្បីបម្រើការផ្សាយពាណិជ្ជកម្មដោយផ្អែកលើប្រវត្តិរុករករបស់អ្នកនៅលើគេហទំព័រនេះ និងគេហទំព័រផ្សេងទៀត (ការផ្សាយពាណិជ្ជកម្មផ្អែកលើចំណាប់អារម្មណ៍)។', 'ស្វែងយល់ពីរបៀបដែល Google ប្រើប្រាស់ព័ត៌មានរបស់អ្នក៖ https://policies.google.com/technologies/partner-sites', 'គ្រប់គ្រងការកំណត់ការផ្សាយពាណិជ្ជកម្មឱ្យស្របតាមបុគ្គល៖ https://adssettings.google.com', 'ជ្រើសរើសមិនចូលរួមតាមរយៈគំនិតផ្តួចផ្តើមផ្សព្វផ្សាយតាមបណ្តាញ៖ https://optout.networkadvertising.org', 'ជ្រើសរើសមិនចូលរួមតាមរយៈ Digital Advertising Alliance៖ https://optout.aboutads.info'],
     },
     {
-      heading: 'How we use information',
-      bullets: ['To respond to your enquiries and provide support.', 'To display relevant advertisements through our advertising partners.', 'To analyse site usage and improve our services.', 'To detect, prevent, and address fraud, abuse, and security issues.', 'To comply with legal obligations.'],
+      heading: 'របៀបដែលយើងប្រើប្រាស់ព័ត៌មាន',
+      bullets: ['ដើម្បីឆ្លើយតបទៅនឹងសំណួររបស់អ្នក និងផ្តល់ការគាំទ្រ។', 'ដើម្បីបង្ហាញការផ្សាយពាណិជ្ជកម្មពាក់ព័ន្ធតាមរយៈដៃគូផ្សាយពាណិជ្ជកម្មរបស់យើង។', 'ដើម្បីវិភាគការប្រើប្រាស់គេហទំព័រ និងកែលម្អសេវាកម្មរបស់យើង។', 'ដើម្បីរកឃើញ ទប់ស្កាត់ និងដោះស្រាយបញ្ហាក្លែងបន្លំ ការរំលោភបំពាន និងសន្តិសុខ។', 'ដើម្បីអនុវត្តតាមកាតព្វកិច្ចផ្លូវច្បាប់។'],
     },
     {
-      heading: 'Third-party services',
-      bullets: ['Google AdSense: Receives data to serve and measure advertisements.', 'Analytics providers: Receive anonymised usage data.', 'Netlify (hosting): Processes requests and may log IP addresses.', 'We do not sell your personal information. However, sharing data with advertising partners may be considered a "sale" under CCPA (see below).'],
+      heading: 'សេវាកម្មភាគីទីបី',
+      bullets: ['Google AdSense៖ ទទួលទិន្នន័យដើម្បីបម្រើ និងវាស់វែងការផ្សាយពាណិជ្ជកម្ម។', 'អ្នកផ្តល់សេវាវិភាគ៖ ទទួលទិន្នន័យប្រើប្រាស់អនាមិក។', 'Netlify (ការបង្ហោះ): ដំណើរការសំណើ និងអាចកត់ត្រាអាសយដ្ឋាន IP។', 'យើងមិនលក់ព័ត៌មានផ្ទាល់ខ្លួនរបស់អ្នកទេ។ ទោះជាយ៉ាងណាក៏ដោយ ការចែករំលែកទិន្នន័យជាមួយដៃគូផ្សាយពាណិជ្ជកម្មអាចត្រូវបានចាត់ទុកថាជា ការលក់ ក្រោម CCPA (សូមមើលខាងក្រោម)។'],
     },
     {
-      heading: 'Data retention',
-      bullets: ['Contact submissions: Up to 2 years.', 'Server logs: Up to 30 days (hosting provider).', 'Analytics data: Up to 26 months (anonymised).', 'Advertising cookies: Typically 13 months (varies by partner).'],
+      heading: 'ការរក្សាទុកទិន្នន័យ',
+      bullets: ['ការដាក់ស្នើទំនាក់ទំនង៖ រហូតដល់ ២ ឆ្នាំ។', 'កំណត់ហេតុម៉ាស៊ីនមេ៖ រហូតដល់ ៣០ ថ្ងៃ (អ្នកផ្តល់សេវាបង្ហោះ)។', 'ទិន្នន័យវិភាគ៖ រហូតដល់ ២៦ ខែ (អនាមិក)។', 'ខូគីផ្សាយពាណិជ្ជកម្ម៖ ជាធម្មតា ១៣ ខែ (ប្រែប្រួលទៅតាមដៃគូ)។'],
     },
     {
-      heading: 'Your rights under GDPR (EEA users)',
-      paragraphs: ['If you are in the European Economic Area, you have the following rights under the General Data Protection Regulation:'],
-      bullets: ['Right of access: Request a copy of personal data we hold about you.', 'Right to rectification: Request correction of inaccurate data.', 'Right to erasure: Request deletion of your data ("right to be forgotten").', 'Right to restrict processing: Request limits on how we use your data.', 'Right to data portability: Request your data in a portable format.', 'Right to object: Object to processing, including for direct marketing.', 'Right to withdraw consent: Withdraw consent at any time where processing is consent-based.', 'Right to lodge a complaint: File a complaint with your data protection authority.'],
+      heading: 'សិទ្ធិរបស់អ្នកក្រោម GDPR (អ្នកប្រើប្រាស់ EEA)',
+      paragraphs: ['ប្រសិនបើអ្នកស្ថិតនៅក្នុងតំបន់សេដ្ឋកិច្ចអឺរ៉ុប អ្នកមានសិទ្ធិដូចខាងក្រោមក្រោមបទប្បញ្ញត្តិការពារទិន្នន័យទូទៅ៖'],
+      bullets: ['សិទ្ធិចូលមើល៖ ស្នើសុំច្បាប់ចម្លងនៃទិន្នន័យផ្ទាល់ខ្លួនដែលយើងរក្សាទុកអំពីអ្នក។', 'សិទ្ធិក្នុងការកែតម្រូវ៖ ស្នើសុំការកែតម្រូវទិន្នន័យមិនត្រឹមត្រូវ។', 'សិទ្ធិក្នុងការលុប៖ ស្នើសុំលុបទិន្នន័យរបស់អ្នក (សិទ្ធិត្រូវបានបំភ្លេចចោល)។', 'សិទ្ធិក្នុងការដាក់កម្រិតដំណើរការ៖ ស្នើសុំការកំណត់លើរបៀបដែលយើងប្រើប្រាស់ទិន្នន័យរបស់អ្នក។', 'សិទ្ធិក្នុងការចល័តទិន្នន័យ៖ ស្នើសុំទិន្នន័យរបស់អ្នកក្នុងទម្រង់ចល័ត។', 'សិទ្ធិជំទាស់៖ ជំទាស់នឹងដំណើរការ រួមទាំងការធ្វើទីផ្សារដោយផ្ទាល់ផងដែរ។', 'សិទ្ធិដកការយល់ព្រម៖ ដកការយល់ព្រមនៅពេលណាក៏បាន ដែលដំណើរការគឺផ្អែកលើការយល់ព្រម។', 'សិទ្ធិដាក់ពាក្យបណ្តឹង៖ ដាក់ពាក្យបណ្តឹងជាមួយអាជ្ញាធរការពារទិន្នន័យរបស់អ្នក។'],
     },
     {
-      heading: 'GDPR legal basis',
-      paragraphs: ['We process data on these bases: (a) Consent — for personalised advertising (managed by our advertising partners); (b) Legitimate interests — for analytics, security, and improvement; (c) Contract — to respond to enquiries.', 'To exercise your rights, contact ${CONTACT_EMAIL}. We respond within 30 days.'],
+      heading: 'មូលដ្ឋានច្បាប់ GDPR',
+      paragraphs: ['យើងដំណើរការទិន្នន័យដោយផ្អែកលើមូលដ្ឋានទាំងនេះ៖ (ក) ការយល់ព្រម — សម្រាប់ការផ្សាយពាណិជ្ជកម្មផ្ទាល់ខ្លួន (គ្រប់គ្រងដោយដៃគូផ្សាយពាណិជ្ជកម្មរបស់យើង); (ខ) ផលប្រយោជន៍ស្របច្បាប់ — សម្រាប់ការវិភាគ សុវត្ថិភាព និងការកែលម្អ; (គ) កិច្ចសន្យា — ដើម្បីឆ្លើយតបទៅនឹងការសាកសួរ។', 'ដើម្បីអនុវត្តសិទ្ធិរបស់អ្នក សូមទាក់ទង ${CONTACT_EMAIL}។ យើងខ្ញុំនឹងឆ្លើយតបក្នុងរយៈពេល ៣០ ថ្ងៃ។'],
     },
     {
-      heading: 'Your rights under CCPA (California users)',
-      bullets: ['Right to know: Request information about data collected, sources, purposes, and third parties.', 'Right to delete: Request deletion of your personal information.', 'Right to opt-out: Opt out of the "sale" of personal information (sharing with ad partners may qualify).', 'Right to non-discrimination: We will not discriminate for exercising your rights.'],
+      heading: 'សិទ្ធិរបស់អ្នកក្រោម CCPA (អ្នកប្រើប្រាស់រដ្ឋកាលីហ្វ័រញ៉ា)',
+      bullets: ['សិទ្ធិដឹង៖ ស្នើសុំព័ត៌មានអំពីទិន្នន័យដែលប្រមូលបាន ប្រភព គោលបំណង និងភាគីទីបី។', 'សិទ្ធិលុប៖ ស្នើសុំលុបព័ត៌មានផ្ទាល់ខ្លួនរបស់អ្នក។', 'សិទ្ធិក្នុងការឈប់ទទួលព័ត៌មាន៖ ឈប់ទទួលព័ត៌មានផ្ទាល់ខ្លួន (ការចែករំលែកជាមួយដៃគូផ្សាយពាណិជ្ជកម្មអាចមានលក្ខណៈសម្បត្តិគ្រប់គ្រាន់)។', 'សិទ្ធិមិនរើសអើង៖ យើងនឹងមិនរើសអើងចំពោះការអនុវត្តសិទ្ធិរបស់អ្នកទេ។'],
     },
     {
-      heading: 'CCPA categories collected',
-      paragraphs: ['Categories: Identifiers (IP address, device ID), Internet activity (browsing, ad interactions), Geolocation (approximate), Inferences (interests from browsing).', 'To exercise rights or opt out: ${CONTACT_EMAIL} or adjust cookie settings.'],
+      heading: 'ប្រភេទ CCPA ដែលប្រមូលបាន',
+      paragraphs: ['ប្រភេទ៖ លេខសម្គាល់ (អាសយដ្ឋាន IP លេខសម្គាល់ឧបករណ៍) សកម្មភាពអ៊ីនធឺណិត (ការរុករក អន្តរកម្មផ្សាយពាណិជ្ជកម្ម) ទីតាំងភូមិសាស្ត្រ (ប្រហាក់ប្រហែល) ការសន្និដ្ឋាន (ចំណាប់អារម្មណ៍ពីការរុករក)។', 'ដើម្បីអនុវត្តសិទ្ធិ ឬជ្រើសរើសមិនចូលរួម៖ ${CONTACT_EMAIL} ឬកែតម្រូវការកំណត់ខូគី។'],
     },
     {
-      heading: 'International transfers',
-      paragraphs: ['Your information may be transferred to countries with different data protection laws, including the United States. We use appropriate safeguards such as Standard Contractual Clauses.'],
+      heading: 'ការផ្ទេរប្រាក់អន្តរជាតិ',
+      paragraphs: ['ព័ត៌មានរបស់អ្នកអាចត្រូវបានផ្ទេរទៅកាន់ប្រទេសដែលមានច្បាប់ការពារទិន្នន័យផ្សេងៗគ្នា រួមទាំងសហរដ្ឋអាមេរិកផងដែរ។ យើងប្រើប្រាស់វិធានការការពារសមស្របដូចជា ឃ្លាកិច្ចសន្យាស្តង់ដារ។'],
     },
     {
-      heading: 'Children\'s privacy',
-      paragraphs: ['ANQR is not directed at children under 13 (or 16 in the EEA). We do not knowingly collect data from children. Contact ${CONTACT_EMAIL} if you believe a child has provided information.'],
+      heading: 'ភាពឯកជនរបស់កុមារ',
+      paragraphs: ['ANQR មិនមែនសំដៅលើកុមារអាយុក្រោម ១៣ ឆ្នាំ (ឬ ១៦ ឆ្នាំនៅក្នុងតំបន់ EEA) ទេ។ យើងមិនប្រមូលទិន្នន័យពីកុមារដោយចេតនាទេ។ សូមទាក់ទង ${CONTACT_EMAIL} ប្រសិនបើអ្នកជឿថាកុមារបានផ្តល់ព័ត៌មាន។'],
     },
     {
-      heading: 'Security',
-      paragraphs: ['We use appropriate technical and organisational measures to protect data, including HTTPS encryption. However, no internet transmission is 100% secure.'],
+      heading: 'សន្តិសុខ',
+      paragraphs: ['យើងប្រើប្រាស់វិធានការបច្ចេកទេស និងអង្គការសមស្រប ដើម្បីការពារទិន្នន័យ រួមទាំងការអ៊ិនគ្រីប HTTPS។ ទោះជាយ៉ាងណាក៏ដោយ គ្មានការបញ្ជូនអ៊ីនធឺណិតណាមួយមានសុវត្ថិភាព 100% នោះទេ។'],
     },
     {
-      heading: 'Do Not Track',
-      paragraphs: ['We honour Do Not Track browser signals where feasible, though advertising partners may not respond to DNT.'],
+      heading: 'កុំតាមដាន',
+      paragraphs: ['យើងគោរពសញ្ញាកម្មវិធីរុករកតាមអ៊ីនធឺណិត Do Not Track ដែលអាចធ្វើទៅបាន ទោះបីជាដៃគូផ្សាយពាណិជ្ជកម្មអាចនឹងមិនឆ្លើយតបទៅនឹង DNT ក៏ដោយ។'],
     },
     {
-      heading: 'Changes to this policy',
-      paragraphs: ['We may update this policy periodically. The "Last updated" date indicates the most recent revision. Significant changes may be communicated via a site banner.'],
+      heading: 'ការផ្លាស់ប្តូរគោលការណ៍នេះ',
+      paragraphs: ['យើងអាចធ្វើបច្ចុប្បន្នភាពគោលការណ៍នេះជាប្រចាំ។ កាលបរិច្ឆេទ ធ្វើបច្ចុប្បន្នភាពចុងក្រោយ បង្ហាញពីការកែប្រែថ្មីបំផុត។ ការផ្លាស់ប្តូរសំខាន់ៗអាចត្រូវបានទំនាក់ទំនងតាមរយៈបដាគេហទំព័រ។'],
     },
     {
-      heading: 'Contact us',
-      paragraphs: ['For privacy questions or to exercise your rights: ${CONTACT_EMAIL} or use our Contact page. We respond to privacy requests within 30 days.'],
+      heading: 'ទាក់ទងមកយើងខ្ញុំ',
+      paragraphs: ['សម្រាប់សំណួរអំពីភាពឯកជន ឬដើម្បីអនុវត្តសិទ្ធិរបស់អ្នក៖ ${CONTACT_EMAIL} ឬប្រើប្រាស់ទំព័រទំនាក់ទំនងរបស់យើង។ យើងឆ្លើយតបទៅនឹងសំណើសុំភាពឯកជនក្នុងរយៈពេល 30 ថ្ងៃ។'],
     },
   ],
 };

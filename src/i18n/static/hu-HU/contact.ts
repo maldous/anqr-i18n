@@ -2,38 +2,38 @@ import type { PageDefinition } from '../types';
 import { LAST_UPDATED } from '../types';
 
 export const contact: PageDefinition = {
-  title: 'Contact Us',
-  description: 'We welcome feedback, bug reports, feature requests, and general enquiries.',
+  title: 'Kapcsolatfelvétel',
+  description: 'Szívesen fogadjuk a visszajelzéseket, hibajelentéseket, funkcióigényléseket és általános megkereséseket.',
   lastUpdated: LAST_UPDATED,
   sections: [
     {
-      heading: 'How to reach us',
-      paragraphs: ['We offer several ways to contact us depending on your needs. We read every message, though response times may vary based on volume and enquiry type.'],
+      heading: 'Hogyan juthat el hozzánk',
+      paragraphs: ['Több módot is kínálunk a kapcsolatfelvételre, az Ön igényeitől függően. Minden üzenetet elolvasunk, bár a válaszidő a mennyiségtől és a megkeresés típusától függően változhat.'],
     },
     {
-      heading: 'Email',
-      paragraphs: ['For all enquiries: ${CONTACT_EMAIL}', 'This is the most reliable way to reach us and is recommended for detailed questions, business enquiries, or any other enquiries.'],
+      heading: 'E-mail',
+      paragraphs: ['Minden kérdés esetén: ${CONTACT_EMAIL}', 'Ez a legmegbízhatóbb módja annak, hogy elérjen minket, és ezt ajánljuk részletes kérdések, üzleti megkeresések vagy bármilyen egyéb megkeresés esetén.'],
     },
     {
-      heading: 'Types of enquiries',
-      bullets: ['General questions: Questions about how to use ANQR, feature explanations, or general feedback.', 'Bug reports: Please include your browser, operating system, steps to reproduce, and any error messages you see.', 'Feature requests: Suggestions for new features or improvements. We consider all requests though we cannot promise implementation.', 'Business enquiries: Partnership opportunities, licensing questions, or commercial use enquiries.', 'Privacy requests: Requests to exercise your privacy rights under GDPR, CCPA, or other privacy laws (see Privacy Policy).', 'DMCA/Copyright: See the DMCA section below for takedown notice requirements.'],
+      heading: 'Kérdezések típusai',
+      bullets: ['Általános kérdések: Kérdések az ANQR használatával kapcsolatban, funkciók magyarázata vagy általános visszajelzés.', 'Hibajelentések: Kérjük, tüntesse fel a böngészőjét, az operációs rendszerét, a hiba reprodukálásához szükséges lépéseket és az esetlegesen megjelenő hibaüzeneteket.', 'Funkciókérés: Javaslatok új funkciókra vagy fejlesztésekre. Minden kérést figyelembe veszünk, bár a megvalósítást nem tudjuk garantálni.', 'Üzleti megkeresések: Partnerségi lehetőségek, licenckérdések vagy kereskedelmi felhasználással kapcsolatos megkeresések.', 'Adatvédelmi kérelmek: Az Ön adatvédelmi jogainak gyakorlására irányuló kérelmek a GDPR, a CCPA vagy más adatvédelmi törvények értelmében (lásd az Adatvédelmi irányelveket).', 'DMCA/Szerzői jog: Az eltávolítási értesítéssel kapcsolatos követelményeket lásd az alábbi DMCA szakaszban.'],
     },
     {
-      heading: 'Response times',
-      paragraphs: ['We aim to respond to enquiries within 5-7 business days. Privacy-related requests will be addressed within 30 days as required by law.', 'During busy periods, response times may be longer. For urgent matters, please indicate "URGENT" in your subject line.'],
+      heading: 'Válaszidő',
+      paragraphs: ['Célunk, hogy 5-7 munkanapon belül válaszoljunk a megkeresésekre. Az adatvédelemmel kapcsolatos kérelmeket a törvényi előírásoknak megfelelően 30 napon belül megválaszoljuk.', 'Forgalmas időszakokban a válaszadási idő hosszabb lehet. Sürgős ügyek esetén kérjük, a tárgy mezőben tüntesse fel, hogy SÜRGŐS.'],
     },
     {
-      heading: 'Before contacting us',
-      paragraphs: ['Please check our Documentation page for answers to common questions about how to use ANQR features. Many questions about QR code generation, styling, and export options are covered there.'],
+      heading: 'Mielőtt kapcsolatba lépne velünk',
+      paragraphs: ['Kérjük, tekintse meg a Dokumentáció oldalunkat az ANQR funkciók használatával kapcsolatos gyakori kérdések megválaszolásáért. Számos kérdést tárgyalunk a QR-kód generálásával, formázásával és exportálási lehetőségekkel kapcsolatban.'],
     },
     {
-      heading: 'DMCA Copyright Notices',
-      paragraphs: ['If you believe that content available on ANQR infringes your copyright, you may submit a Digital Millennium Copyright Act (DMCA) takedown notice. To be valid, your notice must include:'],
-      bullets: ['A physical or electronic signature of the copyright owner or authorised agent.', 'Identification of the copyrighted work claimed to have been infringed.', 'Identification of the material that is claimed to be infringing, with information sufficient to locate it.', 'Your contact information (address, telephone number, and email address).', 'A statement that you have a good faith belief that use of the material is not authorised by the copyright owner.', 'A statement, under penalty of perjury, that the information in your notice is accurate and that you are the copyright owner or authorised to act on their behalf.'],
+      heading: 'DMCA szerzői jogi közlemények',
+      paragraphs: ['Ha úgy gondolod, hogy az ANQR-en elérhető tartalom sérti a szerzői jogaidat, benyújthatsz egy Digitális Millenniumi Szerzői Jogi Törvény (DMCA) szerinti eltávolítási értesítést. Ahhoz, hogy az értesítés érvényes legyen, a következőket kell tartalmaznia:'],
+      bullets: ['A szerzői jog tulajdonosának vagy meghatalmazott képviselőjének fizikai vagy elektronikus aláírása.', 'A jogsértésnek vélt szerzői jogvédelem alatt álló mű azonosítása.', 'A jogsértőnek vélt anyag azonosítása, a helymeghatározásához elegendő információval.', 'Elérhetőségei (cím, telefonszám és e-mail cím).', 'Nyilatkozat arról, hogy jóhiszeműen feltételezed, hogy az anyag felhasználását a szerzői jog tulajdonosa nem engedélyezte.', 'Nyilatkozat – hamis tanúzás terhe mellett – arról, hogy az értesítésben szereplő információk pontosak, és hogy Ön a szerzői jog tulajdonosa, vagy felhatalmazást kapott arra, hogy az ő nevében járjon el.'],
     },
     {
-      heading: 'DMCA Contact',
-      paragraphs: ['Send DMCA notices to: ${CONTACT_EMAIL}', 'Please include "DMCA Notice" in the subject line. We will respond to valid notices in accordance with applicable law. Note that ANQR generates QR codes locally on users devices and does not host user-generated content.'],
+      heading: 'DMCA kapcsolat',
+      paragraphs: ['DMCA értesítések küldése ide: ${CONTACT_EMAIL}', 'Kérjük, a tárgy mezőben tüntesse fel a DMCA közlemény szöveget. Az érvényes értesítésekre a vonatkozó törvényeknek megfelelően válaszolunk. Felhívjuk figyelmét, hogy az ANQR QR-kódokat generál helyben a felhasználók eszközein, és nem tárol felhasználók által generált tartalmat.'],
     },
   ],
 };

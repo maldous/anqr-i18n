@@ -2,38 +2,38 @@ import type { PageDefinition } from '../types';
 import { LAST_UPDATED } from '../types';
 
 export const contact: PageDefinition = {
-  title: 'Contact Us',
-  description: 'We welcome feedback, bug reports, feature requests, and general enquiries.',
+  title: 'Свържете се с нас',
+  description: 'Приветстваме обратна връзка, доклади за грешки, заявки за функции и общи запитвания.',
   lastUpdated: LAST_UPDATED,
   sections: [
     {
-      heading: 'How to reach us',
-      paragraphs: ['We offer several ways to contact us depending on your needs. We read every message, though response times may vary based on volume and enquiry type.'],
+      heading: 'Как да стигнете до нас',
+      paragraphs: ['Предлагаме няколко начина да се свържете с нас в зависимост от вашите нужди. Четем всяко съобщение, въпреки че времето за отговор може да варира в зависимост от обема и вида на запитването.'],
     },
     {
-      heading: 'Email',
-      paragraphs: ['For all enquiries: ${CONTACT_EMAIL}', 'This is the most reliable way to reach us and is recommended for detailed questions, business enquiries, or any other enquiries.'],
+      heading: 'Имейл',
+      paragraphs: ['За всички запитвания: ${CONTACT_EMAIL}', 'Това е най-надеждният начин да се свържете с нас и се препоръчва за подробни въпроси, бизнес запитвания или всякакви други запитвания.'],
     },
     {
-      heading: 'Types of enquiries',
-      bullets: ['General questions: Questions about how to use ANQR, feature explanations, or general feedback.', 'Bug reports: Please include your browser, operating system, steps to reproduce, and any error messages you see.', 'Feature requests: Suggestions for new features or improvements. We consider all requests though we cannot promise implementation.', 'Business enquiries: Partnership opportunities, licensing questions, or commercial use enquiries.', 'Privacy requests: Requests to exercise your privacy rights under GDPR, CCPA, or other privacy laws (see Privacy Policy).', 'DMCA/Copyright: See the DMCA section below for takedown notice requirements.'],
+      heading: 'Видове запитвания',
+      bullets: ['Общи въпроси: Въпроси относно използването на ANQR, обяснения на функции или обща обратна връзка.', 'Съобщения за грешки: Моля, включете вашия браузър, операционна система, стъпки за възпроизвеждане и всички съобщения за грешки, които виждате.', 'Заявки за функции: Предложения за нови функции или подобрения. Разглеждаме всички заявки, въпреки че не можем да обещаем внедряване.', 'Бизнес запитвания: Възможности за партньорство, въпроси относно лицензиране или запитвания за търговска употреба.', 'Заявки за поверителност: Заявки за упражняване на вашите права за поверителност съгласно GDPR, CCPA или други закони за поверителност (вижте Политиката за поверителност).', 'DMCA/Авторско право: Вижте раздела за DMCA по-долу за изискванията за уведомление за премахване.'],
     },
     {
-      heading: 'Response times',
-      paragraphs: ['We aim to respond to enquiries within 5-7 business days. Privacy-related requests will be addressed within 30 days as required by law.', 'During busy periods, response times may be longer. For urgent matters, please indicate "URGENT" in your subject line.'],
+      heading: 'Време за реакция',
+      paragraphs: ['Стремим се да отговаряме на запитванията в рамките на 5-7 работни дни. Заявките, свързани с поверителността, ще бъдат разгледани в рамките на 30 дни, както се изисква от закона.', 'По време на натоварени периоди времето за отговор може да е по-дълго. За спешни въпроси, моля, посочете СПЕШНО в темата на писмото.'],
     },
     {
-      heading: 'Before contacting us',
-      paragraphs: ['Please check our Documentation page for answers to common questions about how to use ANQR features. Many questions about QR code generation, styling, and export options are covered there.'],
+      heading: 'Преди да се свържете с нас',
+      paragraphs: ['Моля, проверете нашата страница с документация за отговори на често задавани въпроси относно използването на функциите на ANQR. Много въпроси относно генерирането, стилизирането и опциите за експортиране на QR кодове са разгледани там.'],
     },
     {
-      heading: 'DMCA Copyright Notices',
-      paragraphs: ['If you believe that content available on ANQR infringes your copyright, you may submit a Digital Millennium Copyright Act (DMCA) takedown notice. To be valid, your notice must include:'],
-      bullets: ['A physical or electronic signature of the copyright owner or authorised agent.', 'Identification of the copyrighted work claimed to have been infringed.', 'Identification of the material that is claimed to be infringing, with information sufficient to locate it.', 'Your contact information (address, telephone number, and email address).', 'A statement that you have a good faith belief that use of the material is not authorised by the copyright owner.', 'A statement, under penalty of perjury, that the information in your notice is accurate and that you are the copyright owner or authorised to act on their behalf.'],
+      heading: 'Известия за авторски права по DMCA',
+      paragraphs: ['Ако смятате, че съдържание, достъпно в ANQR, нарушава вашите авторски права, можете да подадете известие за премахване съгласно Закона за авторското право в цифровото хилядолетие (DMCA). За да бъде валидно, вашето известие трябва да включва:'],
+      bullets: ['Физически или електронен подпис на притежателя на авторските права или упълномощения представител.', 'Идентифициране на защитеното с авторски права произведение, за което се твърди, че е било нарушено.', 'Идентифициране на материала, за който се твърди, че е в нарушение, с информация, достатъчна за локализирането му.', 'Вашата информация за контакт (адрес, телефонен номер и имейл адрес).', 'Декларация, че добросъвестно смятате, че използването на материала не е разрешено от притежателя на авторските права.', 'Декларация, под страх от наказателна отговорност за лъжесвидетелстване, че информацията във вашето известие е точна и че вие сте притежателят на авторските права или сте упълномощен да действате от тяхно име.'],
     },
     {
-      heading: 'DMCA Contact',
-      paragraphs: ['Send DMCA notices to: ${CONTACT_EMAIL}', 'Please include "DMCA Notice" in the subject line. We will respond to valid notices in accordance with applicable law. Note that ANQR generates QR codes locally on users devices and does not host user-generated content.'],
+      heading: 'Контакт по DMCA',
+      paragraphs: ['Изпращане на DMCA известия до: ${CONTACT_EMAIL}', 'Моля, включете DMCA Notice в темата на имейла. Ще отговорим на валидни известия в съответствие с приложимото законодателство. Обърнете внимание, че ANQR генерира QR кодове локално на устройствата на потребителите и не хоства генерирано от потребителите съдържание.'],
     },
   ],
 };

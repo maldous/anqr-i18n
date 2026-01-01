@@ -2,38 +2,38 @@ import type { PageDefinition } from '../types';
 import { LAST_UPDATED } from '../types';
 
 export const contact: PageDefinition = {
-  title: 'Contact Us',
-  description: 'We welcome feedback, bug reports, feature requests, and general enquiries.',
+  title: 'ကျွန်ုပ်တို့ကို ဆက်သွယ်ပါ',
+  description: 'ကျွန်ုပ်တို့သည် တုံ့ပြန်ချက်၊ bug အစီရင်ခံစာများ၊ အင်္ဂါရပ်တောင်းဆိုမှုများနှင့် အထွေထွေမေးမြန်းမှုများကို ကြိုဆိုပါသည်။',
   lastUpdated: LAST_UPDATED,
   sections: [
     {
-      heading: 'How to reach us',
-      paragraphs: ['We offer several ways to contact us depending on your needs. We read every message, though response times may vary based on volume and enquiry type.'],
+      heading: 'ကျွန်ုပ်တို့ထံ မည်သို့ဆက်သွယ်ရမည်နည်း',
+      paragraphs: ['သင့်လိုအပ်ချက်ပေါ် မူတည်၍ ကျွန်ုပ်တို့ထံ ဆက်သွယ်ရန် နည်းလမ်းများစွာကို ကျွန်ုပ်တို့ ပေးဆောင်ပါသည်။ ကျွန်ုပ်တို့သည် မက်ဆေ့ချ်တိုင်းကို ဖတ်ရှုသော်လည်း ပမာဏနှင့် မေးမြန်းမှုအမျိုးအစားပေါ် မူတည်၍ တုံ့ပြန်မှုအချိန်များ ကွဲပြားနိုင်ပါသည်။'],
     },
     {
-      heading: 'Email',
-      paragraphs: ['For all enquiries: ${CONTACT_EMAIL}', 'This is the most reliable way to reach us and is recommended for detailed questions, business enquiries, or any other enquiries.'],
+      heading: 'အီးမေးလ်',
+      paragraphs: ['မေးမြန်းစုံစမ်းလိုသည်များအားလုံးအတွက်- ${CONTACT_EMAIL}', 'ဤသည်မှာ ကျွန်ုပ်တို့ထံ ဆက်သွယ်ရန် အယုံကြည်ရဆုံးနည်းလမ်းဖြစ်ပြီး အသေးစိတ်မေးခွန်းများ၊ စီးပွားရေးဆိုင်ရာ စုံစမ်းမေးမြန်းမှုများ သို့မဟုတ် အခြားစုံစမ်းမေးမြန်းမှုများအတွက် အကြံပြုထားပါသည်။'],
     },
     {
-      heading: 'Types of enquiries',
-      bullets: ['General questions: Questions about how to use ANQR, feature explanations, or general feedback.', 'Bug reports: Please include your browser, operating system, steps to reproduce, and any error messages you see.', 'Feature requests: Suggestions for new features or improvements. We consider all requests though we cannot promise implementation.', 'Business enquiries: Partnership opportunities, licensing questions, or commercial use enquiries.', 'Privacy requests: Requests to exercise your privacy rights under GDPR, CCPA, or other privacy laws (see Privacy Policy).', 'DMCA/Copyright: See the DMCA section below for takedown notice requirements.'],
+      heading: 'မေးမြန်းစုံစမ်းမှု အမျိုးအစားများ',
+      bullets: ['အထွေထွေမေးခွန်းများ- ANQR ကို မည်သို့အသုံးပြုရမည်နှင့်ပတ်သက်သည့် မေးခွန်းများ၊ အင်္ဂါရပ်ရှင်းလင်းချက်များ သို့မဟုတ် အထွေထွေတုံ့ပြန်ချက်။', 'ချို့ယွင်းချက်အစီရင်ခံစာများ- ကျေးဇူးပြု၍ သင့်ဘရောက်ဆာ၊ လည်ပတ်မှုစနစ်၊ ပြန်လည်ထုတ်လုပ်ရန် အဆင့်များနှင့် သင်တွေ့မြင်ရသည့် မည်သည့်အမှားအယွင်းမက်ဆေ့ချ်များကိုမဆို ထည့်သွင်းပါ။', 'အင်္ဂါရပ်တောင်းဆိုမှုများ- အင်္ဂါရပ်အသစ်များ သို့မဟုတ် တိုးတက်မှုများအတွက် အကြံပြုချက်များ။ အကောင်အထည်ဖော်မည်ဟု ကျွန်ုပ်တို့ အာမမခံနိုင်သော်လည်း တောင်းဆိုမှုအားလုံးကို ကျွန်ုပ်တို့ ထည့်သွင်းစဉ်းစားပါသည်။', 'စီးပွားရေးဆိုင်ရာ စုံစမ်းမေးမြန်းမှုများ- မိတ်ဖက်အခွင့်အလမ်းများ၊ လိုင်စင်ဆိုင်ရာ မေးခွန်းများ သို့မဟုတ် စီးပွားဖြစ်အသုံးပြုမှုဆိုင်ရာ စုံစမ်းမေးမြန်းမှုများ။', 'လျှို့ဝှက်ရေး တောင်းဆိုချက်များ- GDPR၊ CCPA သို့မဟုတ် အခြားလျှို့ဝှက်ရေး ဥပဒေများအောက်တွင် သင်၏ လျှို့ဝှက်ရေး အခွင့်အရေးများကို ကျင့်သုံးရန် တောင်းဆိုမှုများ (လျှို့ဝှက်ရေးမူဝါဒကို ကြည့်ပါ)။', 'DMCA/မူပိုင်ခွင့်- ဖယ်ရှားရန် အသိပေးချက် လိုအပ်ချက်များအတွက် အောက်ပါ DMCA အပိုင်းကို ကြည့်ပါ။'],
     },
     {
-      heading: 'Response times',
-      paragraphs: ['We aim to respond to enquiries within 5-7 business days. Privacy-related requests will be addressed within 30 days as required by law.', 'During busy periods, response times may be longer. For urgent matters, please indicate "URGENT" in your subject line.'],
+      heading: 'တုံ့ပြန်မှုအချိန်များ',
+      paragraphs: ['ကျွန်ုပ်တို့သည် မေးမြန်းမှုများကို ၅ ရက်မှ ၇ ရက်အတွင်း တုံ့ပြန်ရန် ရည်ရွယ်ပါသည်။ ကိုယ်ရေးကိုယ်တာနှင့်သက်ဆိုင်သော တောင်းဆိုမှုများကို ဥပဒေအရ လိုအပ်သည့်အတိုင်း ရက်ပေါင်း ၃၀ အတွင်း ကိုင်တွယ်ဖြေရှင်းပေးပါမည်။', 'အလုပ်များသောအချိန်များတွင် တုံ့ပြန်ချိန် ပိုကြာနိုင်ပါသည်။ အရေးတကြီးကိစ္စရပ်များအတွက် သင့်ခေါင်းစဉ်တွင် URGENT ကို ဖော်ပြပေးပါ။'],
     },
     {
-      heading: 'Before contacting us',
-      paragraphs: ['Please check our Documentation page for answers to common questions about how to use ANQR features. Many questions about QR code generation, styling, and export options are covered there.'],
+      heading: 'ကျွန်ုပ်တို့ကို မဆက်သွယ်မီ',
+      paragraphs: ['ANQR အင်္ဂါရပ်များကို မည်သို့အသုံးပြုရမည်နှင့်ပတ်သက်သည့် အမေးများသောမေးခွန်းများအတွက် အဖြေများအတွက် ကျွန်ုပ်တို့၏ စာရွက်စာတမ်းစာမျက်နှာကို ကြည့်ရှုပါ။ QR ကုဒ်ထုတ်လုပ်ခြင်း၊ ပုံစံချခြင်းနှင့် တင်ပို့ခြင်းရွေးချယ်မှုများအကြောင်း မေးခွန်းများစွာကို ထိုနေရာတွင် ဖော်ပြထားပါသည်။'],
     },
     {
-      heading: 'DMCA Copyright Notices',
-      paragraphs: ['If you believe that content available on ANQR infringes your copyright, you may submit a Digital Millennium Copyright Act (DMCA) takedown notice. To be valid, your notice must include:'],
-      bullets: ['A physical or electronic signature of the copyright owner or authorised agent.', 'Identification of the copyrighted work claimed to have been infringed.', 'Identification of the material that is claimed to be infringing, with information sufficient to locate it.', 'Your contact information (address, telephone number, and email address).', 'A statement that you have a good faith belief that use of the material is not authorised by the copyright owner.', 'A statement, under penalty of perjury, that the information in your notice is accurate and that you are the copyright owner or authorised to act on their behalf.'],
+      heading: 'DMCA မူပိုင်ခွင့် အသိပေးချက်များ',
+      paragraphs: ['ANQR တွင် ရရှိနိုင်သော အကြောင်းအရာများသည် သင့်မူပိုင်ခွင့်ကို ချိုးဖောက်သည်ဟု သင်ယုံကြည်ပါက Digital Millennium Copyright Act (DMCA) ၏ ဖယ်ရှားခြင်းအကြောင်းကြားစာကို တင်သွင်းနိုင်သည်။ တရားဝင်ဖြစ်စေရန်အတွက် သင့်အကြောင်းကြားစာတွင် အောက်ပါတို့ ပါဝင်ရမည်-'],
+      bullets: ['မူပိုင်ခွင့်ပိုင်ရှင် သို့မဟုတ် ခွင့်ပြုထားသော အေးဂျင့်၏ ရုပ်ပိုင်းဆိုင်ရာ သို့မဟုတ် အီလက်ထရွန်းနစ် လက်မှတ်။', 'မူပိုင်ခွင့်ချိုးဖောက်ခံရသည်ဟု ဆိုထားသော လက်ရာကို ဖော်ထုတ်ခြင်း။', 'ချိုးဖောက်သည်ဟု ဆိုထားသော အကြောင်းအရာကို ရှာဖွေရန် လုံလောက်သော အချက်အလက်များဖြင့် ဖော်ထုတ်ခြင်း။', 'သင့်ဆက်သွယ်ရန်အချက်အလက် (လိပ်စာ၊ ဖုန်းနံပါတ်နှင့် အီးမေးလ်လိပ်စာ)။', 'မူပိုင်ခွင့်ပိုင်ရှင်မှ ပစ္စည်းအသုံးပြုမှုကို ခွင့်မပြုထားကြောင်း သင်ယုံကြည်ကြောင်း ဖော်ပြချက်။', 'သင့်အကြောင်းကြားစာပါ အချက်အလက်များသည် တိကျမှန်ကန်ကြောင်းနှင့် သင်သည် မူပိုင်ခွင့်ပိုင်ရှင် သို့မဟုတ် ၎င်းတို့ကိုယ်စား လုပ်ဆောင်ရန် အခွင့်အာဏာရှိကြောင်း မမှန်မကန် ကျိန်ဆိုခြင်း၏ ပြစ်ဒဏ်အောက်တွင် ဖော်ပြချက်။'],
     },
     {
-      heading: 'DMCA Contact',
-      paragraphs: ['Send DMCA notices to: ${CONTACT_EMAIL}', 'Please include "DMCA Notice" in the subject line. We will respond to valid notices in accordance with applicable law. Note that ANQR generates QR codes locally on users devices and does not host user-generated content.'],
+      heading: 'DMCA ဆက်သွယ်ရန်',
+      paragraphs: ['DMCA အသိပေးချက်များကို ${CONTACT_EMAIL} သို့ ပေးပို့ပါ', 'ခေါင်းစဉ်တွင် DMCA အသိပေးချက် ကို ထည့်သွင်းပါ။ သက်ဆိုင်ရာဥပဒေနှင့်အညီ တရားဝင်အသိပေးချက်များကို ကျွန်ုပ်တို့ တုံ့ပြန်ပါမည်။ ANQR သည် အသုံးပြုသူများ၏ စက်ပစ္စည်းများတွင် QR ကုဒ်များကို ထုတ်လုပ်ပေးပြီး အသုံးပြုသူမှ ထုတ်လုပ်သော အကြောင်းအရာများကို လက်ခံထားရှိမည်မဟုတ်ကြောင်း သတိပြုပါ။'],
     },
   ],
 };

@@ -2,79 +2,79 @@ import type { PageDefinition } from '../types';
 import { LAST_UPDATED } from '../types';
 
 export const privacy: PageDefinition = {
-  title: 'Privacy Policy',
-  description: 'Information ANQR collects, how it is used, and your rights under applicable privacy laws.',
+  title: 'Inqubomgomo Yobumfihlo',
+  description: 'Ulwazi oluqoqwa yi-ANQR, indlela olusetshenziswa ngayo, kanye namalungelo akho ngaphansi kwemithetho yobumfihlo esebenzayo.',
   lastUpdated: LAST_UPDATED,
   sections: [
     {
-      heading: 'Summary',
-      paragraphs: ['ANQR is a QR code generator with a client-first approach. We do not require you to create an account. By default, QR codes are generated locally in your browser — we do not have access to the content you encode.', 'For professional use, ANQR provides a server-side API that generates QR codes from URL parameters. When using the API, your QR content is processed on our servers to render the image, but is not stored or logged.', 'We use Google AdSense for advertising and may use analytics services. These services collect information through cookies and similar technologies. This policy explains what data is collected, how it is used, and your rights.'],
+      heading: 'Isifinyezo',
+      paragraphs: ['I-ANQR iyisikhiqizi sekhodi ye-QR esinendlela yokubona iklayenti kuqala. Asidingi ukuthi udale i-akhawunti. Ngokuzenzakalelayo, amakhodi e-QR akhiqizwa endaweni yakho kusiphequluli sakho — asinakho ukufinyelela kokuqukethwe okufaka ikhodi.', 'Ukuze kusetshenziswe ngobungcweti, i-ANQR inikeza i-API eseceleni kweseva ekhiqiza amakhodi e-QR kusuka kumapharamitha e-URL. Uma usebenzisa i-API, okuqukethwe kwakho kwe-QR kuyacutshungulwa kumaseva ethu ukuze kuboniswe isithombe, kodwa akugciniwe noma akulogwa.', 'Sisebenzisa i-Google AdSense ekukhangiseni futhi singasebenzisa izinsizakalo zokuhlaziya. Lezi zinsizakalo ziqoqa ulwazi ngamakhukhi nobuchwepheshe obufanayo. Le nqubomgomo ichaza ukuthi yiluphi ulwazi oluqoqwayo, ukuthi lusetshenziswa kanjani, kanye namalungelo akho.'],
     },
     {
-      heading: 'Information we collect',
-      bullets: ['Information you provide: If you contact us via email or our contact form, we collect your name, email address, and message content.', 'Automatically collected information: Our hosting provider (Netlify), advertising partners, and analytics services may collect: IP address, browser type and version, operating system, device type, referring URL, pages visited, time on site, and approximate geographic location.', 'Third-party cookies: Our advertising partners (Google AdSense) use cookies and similar technologies to serve and measure advertisements. ANQR itself does not set any first-party cookies.'],
+      heading: 'Ulwazi esiluqoqayo',
+      bullets: ['Ulwazi olunikezayo: Uma usithinta nge-imeyili noma ifomu lethu lokuxhumana, siqoqa igama lakho, ikheli le-imeyili, kanye nokuqukethwe kwemiyalezo.', 'Ulwazi oluqoqwe ngokuzenzakalelayo: Umhlinzeki wethu wokusingatha (i-Netlify), ozakwethu bokukhangisa, kanye nezinsizakalo zokuhlaziya zingase ziqoqe: ikheli le-IP, uhlobo lwesiphequluli kanye nenguqulo, uhlelo lokusebenza, uhlobo lwedivayisi, i-URL yokubhekisela, amakhasi avakashelwe, isikhathi esikusayithi, kanye nendawo eseduze.', 'Amakhukhi eqembu lesithathu: Abalingani bethu bokukhangisa (i-Google AdSense) basebenzisa amakhukhi nobuchwepheshe obufanayo ukuze bakhonze futhi balinganise izikhangiso. I-ANQR ngokwayo ayibeki noma yimaphi amakhukhi eqembu lesithathu.'],
     },
     {
-      heading: 'Cookies and third-party technologies',
-      paragraphs: ['ANQR does not set any first-party cookies. Your preferences (such as dark mode) are stored locally on your device, which is not transmitted to any server.', 'However, our advertising partners (Google AdSense) and hosting provider may use cookies and similar tracking technologies:'],
-      bullets: ['Advertising cookies (third-party): Set by Google AdSense and advertising partners to serve relevant ads, measure ad performance, and understand user interests. These cookies may track your activity across different websites.', 'Analytics cookies (third-party): May be used by our hosting provider or analytics services to collect anonymised usage data.'],
+      heading: 'Amakhukhi nobuchwepheshe bezinkampani zangaphandle',
+      paragraphs: ['I-ANQR ayibeki noma yimaphi amakhukhi eqembu lokuqala. Izintandokazi zakho (njengemodi emnyama) zigcinwa endaweni kudivayisi yakho, ezingadluliselwa kunoma iyiphi iseva.', 'Kodwa-ke, ozakwethu bokukhangisa (i-Google AdSense) kanye nomhlinzeki wokusingatha bangasebenzisa amakhukhi kanye nobuchwepheshe obufanayo bokulandelela:'],
+      bullets: ['Amakhukhi okukhangisa (owesithathu): Asethwe yi-Google AdSense kanye nabalingani bokukhangisa ukuze bakhonze izikhangiso ezifanele, balinganise ukusebenza kwezikhangiso, futhi baqonde izintshisekelo zomsebenzisi. Lawa makhukhi angalandelela umsebenzi wakho kumawebhusayithi ahlukene.', 'Amakhukhi e-Analytics (owesithathu): Angasetshenziswa umhlinzeki wethu wokusingathwa noma izinsizakalo ze-analytics ukuqoqa idatha yokusetshenziswa engaziwa.'],
     },
     {
-      heading: 'Google AdSense and advertising',
-      paragraphs: ['We display advertisements through Google AdSense. Google and its partners use cookies to serve ads based on your browsing history on this site and other websites (interest-based advertising).', 'Learn how Google uses your information: https://policies.google.com/technologies/partner-sites', 'Manage ad personalisation: https://adssettings.google.com', 'Opt out via Network Advertising Initiative: https://optout.networkadvertising.org', 'Opt out via Digital Advertising Alliance: https://optout.aboutads.info'],
+      heading: 'I-Google AdSense kanye nokukhangisa',
+      paragraphs: ['Sibonisa izikhangiso nge-Google AdSense. I-Google kanye nabalingani bayo basebenzisa amakhukhi ukuze banikeze izikhangiso ngokusekelwe emlandweni wakho wokuphequlula kule sayithi nakwamanye amawebhusayithi (ukukhangisa okusekelwe ezithakazelweni).', 'Funda ukuthi i-Google isebenzisa kanjani ulwazi lwakho: https://policies.google.com/technologies/partner-sites', 'Phatha ukwenza ngezifiso izikhangiso: https://adssettings.google.com', 'Khetha ukuphuma nge-Network Advertising Initiative: https://optout.networkadvertising.org', 'Khetha ukuphuma nge-Digital Advertising Alliance: https://optout.aboutads.info'],
     },
     {
-      heading: 'How we use information',
-      bullets: ['To respond to your enquiries and provide support.', 'To display relevant advertisements through our advertising partners.', 'To analyse site usage and improve our services.', 'To detect, prevent, and address fraud, abuse, and security issues.', 'To comply with legal obligations.'],
+      heading: 'Indlela esisebenzisa ngayo ulwazi',
+      bullets: ['Ukuphendula imibuzo yakho nokunikeza ukwesekwa.', 'Ukubonisa izikhangiso ezifanele ngabalingani bethu bokukhangisa.', 'Ukuhlaziya ukusetshenziswa kwesayithi nokuthuthukisa izinsizakalo zethu.', 'Ukuthola, ukuvimbela, nokubhekana nezinkinga zokukhwabanisa, ukuxhashazwa, kanye nezokuphepha.', 'Ukuthobela izibopho zomthetho.'],
     },
     {
-      heading: 'Third-party services',
-      bullets: ['Google AdSense: Receives data to serve and measure advertisements.', 'Analytics providers: Receive anonymised usage data.', 'Netlify (hosting): Processes requests and may log IP addresses.', 'We do not sell your personal information. However, sharing data with advertising partners may be considered a "sale" under CCPA (see below).'],
+      heading: 'Izinsizakalo zeqembu lesithathu',
+      bullets: ['I-Google AdSense: Yamukela idatha yokukhonza nokulinganisa izikhangiso.', 'Abahlinzeki bezibalo: Thola idatha yokusetshenziswa engaziwa.', 'I-Netlify (ukusingatha): Icubungula izicelo futhi ingangena ngemvume kumakheli e-IP.', 'Asithengisi imininingwane yakho yomuntu siqu. Kodwa-ke, ukwabelana ngemininingwane nabalingani bokukhangisa kungabhekwa njengokuthengisa ngaphansi kwe-CCPA (bheka ngezansi).'],
     },
     {
-      heading: 'Data retention',
-      bullets: ['Contact submissions: Up to 2 years.', 'Server logs: Up to 30 days (hosting provider).', 'Analytics data: Up to 26 months (anonymised).', 'Advertising cookies: Typically 13 months (varies by partner).'],
+      heading: 'Ukugcinwa kwedatha',
+      bullets: ['Izithulo zokuxhumana: Kuze kube yiminyaka emi-2.', 'Amalogi eseva: Kufika ezinsukwini ezingu-30 (umhlinzeki wokusingatha).', 'Idatha yokuhlaziya: Kuze kufike ezinyangeni ezingama-26 (ayibonakali).', 'Amakhukhi okukhangisa: Ngokuvamile izinyanga ezingu-13 (ziyahlukahluka ngomlingani).'],
     },
     {
-      heading: 'Your rights under GDPR (EEA users)',
-      paragraphs: ['If you are in the European Economic Area, you have the following rights under the General Data Protection Regulation:'],
-      bullets: ['Right of access: Request a copy of personal data we hold about you.', 'Right to rectification: Request correction of inaccurate data.', 'Right to erasure: Request deletion of your data ("right to be forgotten").', 'Right to restrict processing: Request limits on how we use your data.', 'Right to data portability: Request your data in a portable format.', 'Right to object: Object to processing, including for direct marketing.', 'Right to withdraw consent: Withdraw consent at any time where processing is consent-based.', 'Right to lodge a complaint: File a complaint with your data protection authority.'],
+      heading: 'Amalungelo akho ngaphansi kwe-GDPR (abasebenzisi be-EEA)',
+      paragraphs: ['Uma use-European Economic Area, unamalungelo alandelayo ngaphansi koMthethonqubo Ojwayelekile Wokuvikelwa Kwedatha:'],
+      bullets: ['Ilungelo lokufinyelela: Cela ikhophi yedatha yomuntu siqu esinayo ngawe.', 'Ilungelo lokulungiswa: Cela ukulungiswa kwedatha enganembile.', 'Ilungelo lokusula: Cela ukususwa kwedatha yakho (ilungelo lokukhohlwa).', 'Ilungelo lokukhawulela ukucubungula: Cela imikhawulo yokuthi siyisebenzisa kanjani idatha yakho.', 'Ilungelo lokuphatheka kwedatha: Cela idatha yakho ngefomethi ephathekayo.', 'Ilungelo lokuphikisa: Ukuphikisana nokucutshungulwa, okuhlanganisa nokumaketha okuqondile.', 'Ilungelo lokuhoxisa imvume: Ukuhoxisa imvume nganoma yisiphi isikhathi lapho ukucubungula kusekelwe esivumelwaneni.', 'Ilungelo lokufaka isikhalazo: Faka isikhalazo egunyeni lakho lokuvikela idatha.'],
     },
     {
-      heading: 'GDPR legal basis',
-      paragraphs: ['We process data on these bases: (a) Consent — for personalised advertising (managed by our advertising partners); (b) Legitimate interests — for analytics, security, and improvement; (c) Contract — to respond to enquiries.', 'To exercise your rights, contact ${CONTACT_EMAIL}. We respond within 30 days.'],
+      heading: 'Isisekelo esisemthethweni se-GDPR',
+      paragraphs: ['Sicubungula idatha ngalezi zisekelo: (a) Imvume — yokukhangisa okwenziwe ngezifiso (okuphethwe ngabalingani bethu bokukhangisa); (b) Izintshisekelo ezisemthethweni — zokuhlaziya, ukuphepha, kanye nokuthuthukiswa; (c) Inkontileka — yokuphendula imibuzo.', 'Ukuze usebenzise amalungelo akho, xhumana no-${CONTACT_EMAIL}. Siphendula zingakapheli izinsuku ezingu-30.'],
     },
     {
-      heading: 'Your rights under CCPA (California users)',
-      bullets: ['Right to know: Request information about data collected, sources, purposes, and third parties.', 'Right to delete: Request deletion of your personal information.', 'Right to opt-out: Opt out of the "sale" of personal information (sharing with ad partners may qualify).', 'Right to non-discrimination: We will not discriminate for exercising your rights.'],
+      heading: 'Amalungelo akho ngaphansi kwe-CCPA (abasebenzisi baseCalifornia)',
+      bullets: ['Ilungelo lokwazi: Cela ulwazi mayelana nedatha eqoqwe, imithombo, izinjongo, kanye nabantu besithathu.', 'Ilungelo lokususa: Cela ukususwa kolwazi lwakho lomuntu siqu.', 'Ilungelo lokuzikhipha: Ukuzikhipha ekuthengisweni kolwazi lomuntu siqu (ukwabelana nabalingani bezikhangiso kungafaneleka).', 'Ilungelo lokungabandlululwa: Ngeke sibandlulule ngokusebenzisa amalungelo akho.'],
     },
     {
-      heading: 'CCPA categories collected',
-      paragraphs: ['Categories: Identifiers (IP address, device ID), Internet activity (browsing, ad interactions), Geolocation (approximate), Inferences (interests from browsing).', 'To exercise rights or opt out: ${CONTACT_EMAIL} or adjust cookie settings.'],
+      heading: 'Izigaba ze-CCPA eziqoqiwe',
+      paragraphs: ['Izigaba: Izikhombisi (ikheli le-IP, i-ID yedivayisi), umsebenzi we-inthanethi (ukuphequlula, ukusebenzisana kwezikhangiso), Indawo (cishe), Izincazelo (izintshisekelo ezivela ekuphequluleni).', 'Ukusebenzisa amalungelo noma ukukhetha ukuphuma: ${CONTACT_EMAIL} noma ukulungisa izilungiselelo zamakhukhi.'],
     },
     {
-      heading: 'International transfers',
-      paragraphs: ['Your information may be transferred to countries with different data protection laws, including the United States. We use appropriate safeguards such as Standard Contractual Clauses.'],
+      heading: 'Ukudluliselwa kwamanye amazwe',
+      paragraphs: ['Ulwazi lwakho lungadluliselwa emazweni anemithetho ehlukene yokuvikela idatha, okuhlanganisa ne-United States. Sisebenzisa izindlela zokuvikela ezifanele njenge-Standard Contractual Clauses.'],
     },
     {
-      heading: 'Children\'s privacy',
-      paragraphs: ['ANQR is not directed at children under 13 (or 16 in the EEA). We do not knowingly collect data from children. Contact ${CONTACT_EMAIL} if you believe a child has provided information.'],
+      heading: 'Ubumfihlo bezingane',
+      paragraphs: ['I-ANQR ayiqondisiwe ezinganeni ezingaphansi kweminyaka engu-13 (noma engu-16 ku-EEA). Asiqoqi ngamabomu idatha evela ezinganeni. Xhumana no-${CONTACT_EMAIL} uma ukholelwa ukuthi ingane inikeze ulwazi.'],
     },
     {
-      heading: 'Security',
-      paragraphs: ['We use appropriate technical and organisational measures to protect data, including HTTPS encryption. However, no internet transmission is 100% secure.'],
+      heading: 'Ukuphepha',
+      paragraphs: ['Sisebenzisa izindlela ezifanele zobuchwepheshe kanye nezokuhlela ukuvikela idatha, okuhlanganisa nokubethela kwe-HTTPS. Kodwa-ke, akukho ukudluliswa kwe-inthanethi okuphephile ngokuphelele.'],
     },
     {
-      heading: 'Do Not Track',
-      paragraphs: ['We honour Do Not Track browser signals where feasible, though advertising partners may not respond to DNT.'],
+      heading: 'Ungalandeli',
+      paragraphs: ['Siyawahlonipha amasignali esiphequluli se-Do Not Track lapho kungenzeka khona, yize ozakwethu bezokukhangisa bengase bangaphenduli ku-DNT.'],
     },
     {
-      heading: 'Changes to this policy',
-      paragraphs: ['We may update this policy periodically. The "Last updated" date indicates the most recent revision. Significant changes may be communicated via a site banner.'],
+      heading: 'Izinguquko kule nqubomgomo',
+      paragraphs: ['Singabuyekeza le nqubomgomo njalo. Usuku Lokugcina ukubuyekezwa lubonisa ukubuyekezwa kwakamuva kakhulu. Izinguquko ezibalulekile zingadluliselwa ngesibhengezo sesayithi.'],
     },
     {
-      heading: 'Contact us',
-      paragraphs: ['For privacy questions or to exercise your rights: ${CONTACT_EMAIL} or use our Contact page. We respond to privacy requests within 30 days.'],
+      heading: 'Xhumana nathi',
+      paragraphs: ['Ngemibuzo yobumfihlo noma ukusebenzisa amalungelo akho: ${CONTACT_EMAIL} noma sebenzisa ikhasi lethu lokuxhumana. Siphendula izicelo zobumfihlo zingakapheli izinsuku ezingu-30.'],
     },
   ],
 };
