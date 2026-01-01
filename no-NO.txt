@@ -1,1105 +1,1397 @@
-1	"Blue Noise"
-2	"Bounce (Ping-Pong)"
-3	"Color Cycle"
-4	"Crossfade"
-5	"Drift"
-6	"Enable Animation"
-7	"Every {{count}} frame(s)"
-8	"Export All Frames"
-9	"Fade In"
-10	"Flicker Safe"
-11	"Frame Step"
-12	"Interpolation"
-13	"Loop Animation"
-14	"Max Frames"
-15	"Module Jitter"
-16	"⚠️ May affect scannability"
-17	"Morph"
-18	"None"
-19	"Off"
-20	"Generated Pattern"
-21	"Pulse"
-22	"Random Seed"
-23	"Rotate"
-24	"Scanline"
-25	"Shimmer"
-26	"Slide In"
-27	"Frame Speed"
-28	"Start Frame"
-29	"Temporal Dither"
-30	"Wave"
-31	"English"
-32	"Hindi"
-33	"Chinese"
-34	"Malay"
-35	"Tamil"
-36	"Thai"
-37	"Portuguese"
-38	"Indonesian"
-39	"Vietnamese"
-40	"Tagalog"
-41	"Japanese"
-42	"Korean"
-43	"Spanish"
-44	"Arabic"
-45	"Russian"
-46	"Telugu"
-47	"Marathi"
-48	"Bengali"
-49	"Gujarati"
-50	"Kannada"
-51	"Malayalam"
-52	"Punjabi"
-53	"ANQR"
-54	"QR Code Generator"
-55	"All rights reserved"
-56	"Apply"
-57	"Back"
-58	"Cancel"
-59	"Close"
-60	"Copied!"
-61	"Copy"
-62	"© ANQR"
-63	"Delete"
-64	"Disabled"
-65	"Download"
-66	"Edit"
-67	"Enabled"
-68	"Error"
-69	"Filter"
-70	"Less"
-71	"Loading..."
-72	"More"
-73	"Next"
-74	"No"
-75	"OK"
-76	"On"
-77	"Previous"
-78	"Reset"
-79	"Save"
-80	"Search"
-81	"Select"
-82	"Show Less"
-83	"Show More"
-84	"Sort"
-85	"Success"
-86	"Upload"
-87	"View All"
-88	"Yes"
-89	"Failed to save file: {{error}}"
-90	"Saved to Documents: {{filename}}"
-91	"© ANQR {{year}}"
-92	"All"
-93	"Animation"
-94	"Blend Modes"
-95	"Collapse"
-96	"Color Modes"
-97	"Colors"
-98	"Content Types"
-99	"Dithering"
-100	"Encoding"
-101	"Expand"
-102	"Image Overlay"
-103	"Blue noise threshold with animation"
-104	"Animated Blue Noise"
-105	"Animated blue noise at 100%"
-106	"Blue Noise 100%"
-107	"Animated blue noise at 50%"
-108	"Blue Noise 50%"
-109	"Animated blue noise at 75%"
-110	"Blue Noise 75%"
-111	"Brightness with animation"
-112	"Animated Brightness"
-113	"B&W animated overlay"
-114	"Animated B&W"
-115	"Color animated overlay"
-116	"Animated Color"
-117	"Grayscale animated overlay"
-118	"Animated Grayscale"
-119	"Error diffusion with animation"
-120	"Animated Dithered"
-121	"Duotone with animation"
-122	"Animated Duotone"
-123	"Halftone dots with animation"
-124	"Animated Halftone"
-125	"Mosaic with animation"
-126	"Animated Mosaic"
-127	"Dithered overlay with classic palette"
-128	"Classic Blend"
-129	"Dithered overlay with forest palette"
-130	"Forest Blend"
-131	"Dithered overlay with navy palette"
-132	"Navy Blend"
-133	"Dithered overlay with wine palette"
-134	"Wine Blend"
-135	"Blue Noise in B&W"
-136	"Blue Noise B&W"
-137	"Blue Noise in Color"
-138	"Blue Noise Color"
-139	"Dithered in Color"
-140	"Dithered Color"
-141	"Dithered in Grayscale"
-142	"Dithered Grayscale"
-143	"Halftone in B&W"
-144	"Halftone B&W"
-145	"Halftone in Color"
-146	"Halftone Color"
-147	"#e85d04 on #ffe8d6"
-148	"Coral"
-149	"Coral with dot modules"
-150	"Coral Dots"
-151	"#9d0208 on #ffccd5"
-152	"Crimson"
-153	"#1b4332 on #d8f3dc"
-154	"Forest"
-155	"Forest with dot modules"
-156	"Forest Dots"
-157	"#7f5539 on #ffe8cc"
-158	"Gold"
-159	"#ffffff on #000000"
-160	"Inverted"
-161	"#1a1a2e on #eef1ff"
-162	"Midnight"
-163	"Midnight with dot modules"
-164	"Midnight Dots"
-165	"#001d3d on #a2d2ff"
-166	"Navy"
-167	"#023e8a on #caf0f8"
-168	"Ocean"
-169	"Ocean with dot modules"
-170	"Ocean Dots"
-171	"#4a0080 on #f5e6ff"
-172	"Royal"
-173	"Royal with dot modules"
-174	"Royal Dots"
-175	"#343a40 on #e9ecef"
-176	"Slate"
-177	"#bf0603 on #fff3b0"
-178	"Sunset"
-179	"Sunset with dot modules"
-180	"Sunset Dots"
-181	"#006d77 on #e0f4f5"
-182	"Teal"
-183	"Animated halftone with dot modules"
-184	"Animated Dots + Halftone"
-185	"Animated blue noise with rounded"
-186	"Animated Rounded + Blue Noise"
-187	"Pixelated overlay with connected modules"
-188	"Connected + Pixelate Teal"
-189	"Connected modules with square finders"
-190	"Connected + Square"
-191	"Connected modules with wave effect"
-192	"Connected + Wave Ocean"
-193	"Diamond modules with blue noise"
-194	"Diamond + Blue Noise Navy"
-195	"Duotone effect with diamond modules"
-196	"Diamond + Duotone Crimson"
-197	"Diamond modules with rounded finders"
-198	"Diamond + Rounded"
-199	"Dots modules with circle finders"
-200	"Dots + Circle"
-201	"Maximum visibility with dots"
-202	"Dots + Extreme Forest"
-203	"Dot modules with halftone overlay"
-204	"Dots + Halftone Gold"
-205	"Edge detection with dot modules"
-206	"Dots + Outline Slate"
-207	"Classic dithered with rounded style"
-208	"Rounded + Dithered Royal"
-209	"Rounded modules with mosaic overlay"
-210	"Rounded + Mosaic Sunset"
-211	"Rounded modules with rounded finders"
-212	"Rounded + Rounded"
-213	"High-detail subpixel rendering"
-214	"Rounded + Subpixel Coral"
-215	"Mailto link with coral colors"
-216	"Email Address"
-217	"iCal event with rounded royal"
-218	"Calendar Event"
-219	"Map coords with connected gold"
-220	"Geo Location"
-221	"Pre-filled SMS with diamond teal"
-222	"SMS Message"
-223	"Contact card with rounded navy style"
-224	"vCard Contact"
-225	"WiFi config with dots forest green"
-226	"WiFi Network"
-227	"Adaptive threshold"
-228	"Adaptive"
-229	"Blue noise threshold"
-230	"Hybrid blue noise"
-231	"Blue Noise + Error"
-232	"Floyd-Steinberg style"
-233	"Error Diffusion"
-234	"Atkinson error diffusion"
-235	"Atkinson"
-236	"Burkes error diffusion"
-237	"Burkes"
-238	"Floyd-Steinberg error diffusion"
-239	"Floyd-Steinberg"
-240	"Jarvis-Judice-Ninke error diffusion"
-241	"Jarvis-Judice-Ninke"
-242	"Sierra error diffusion"
-243	"Sierra"
+1	«Blå støy»
+2	«Sprett (Ping-Pong)»
+3	«Fargesyklus»
+4	«Kryssovertoning»
+5	«Drift»
+6	«Aktiver animasjon»
+7	«Hver {{count}} ramme(r)»
+8	«Eksporter alle rammer»
+9	«Fade inn»
+10	«Flimringssikker»
+11	«Rammetrinn»
+12	«Interpolasjon»
+13	«Loop-animasjon»
+14	«Maksimalt antall rammer»
+15	«Moduljitter»
+16	«⚠️ Kan påvirke skanningsmuligheten»
+17	«Morf»
+18	«Ingen»
+19	«Av»
+20	«Generert mønster»
+21	«Puls»
+22	«Tilfeldig frø»
+23	«Roter»
+24	«Skannelinje»
+25	«Glitre»
+26	«Skyv inn»
+27	«Bildehastighet»
+28	«Startramme»
+29	«Temporal Dither»
+30	«Bølge»
+31	«Engelsk»
+32	«Hindi»
+33	«kinesisk»
+34	«malayisk»
+35	«tamilsk»
+36	«Thailandsk»
+37	«Portugisisk»
+38	«Indonesisk»
+39	«vietnamesisk»
+40	«Filippinsk»
+41	«Japansk»
+42	«Koreansk»
+43	«Spansk»
+44	«Arabisk»
+45	«russisk»
+46	«Telugu»
+47	«Marathi»
+48	«bengalsk»
+49	«Gujarati»
+50	«Kannada»
+51	«Malayalam»
+52	«Punjabi»
+53	«ANQR»
+54	«QR-kodegenerator»
+55	«Alle rettigheter forbeholdt»
+56	«Bruk»
+57	«Tilbake»
+58	«Avbryt»
+59	«Nær»
+60	«Kopiert!»
+61	«Kopi»
+62	«© ANQR»
+63	«Slett»
+64	«Funksjonshemmede»
+65	«Nedlasting»
+66	«Rediger»
+67	«Aktivert»
+68	«Feil»
+69	«Filter»
+70	«Mindre»
+71	«Laster inn...»
+72	«Mer»
+73	«Neste»
+74	«Nei»
+75	«OK»
+76	«På»
+77	«Forrige»
+78	«Tilbakestill»
+79	«Lagre»
+80	«Søk»
+81	«Velg»
+82	«Vis mindre»
+83	«Vis mer»
+84	«Sorter»
+85	«Suksess»
+86	«Opplasting»
+87	«Vis alle»
+88	«Ja»
+89	«Kunne ikke lagre filen: {{error}}»
+90	«Lagret i dokumenter: {{filnavn}}»
+91	«© ANQR {{år}}»
+92	«Alle»
+93	«Animasjon»
+94	«Blandingsmoduser»
+95	«Kollaps»
+96	«Fargemoduser»
+97	«Farger»
+98	«Innholdstyper»
+99	«Dithering»
+100	«Koding»
+101	«Utvid»
+102	«Bildeoverlegg»
+103	«Terskel for blå støy med animasjon»
+104	«Animert blå støy»
+105	«Animert blå støy på 100 %»
+106	«Blå støy 100 %»
+107	«Animert blå støy på 50 %»
+108	«Blå støy 50 %»
+109	«Animert blå støy på 75 %»
+110	«Blå støy 75 %»
+111	«Lysstyrke med animasjon»
+112	«Animert lysstyrke»
+113	«Svart-hvitt animert overlegg»
+114	«Animert svart-hvitt»
+115	«Animert fargeoverlegg»
+116	«Animert farge»
+117	«Animert gråtoneoverlegg»
+118	«Animert gråtone»
+119	«Feildiffusjon med animasjon»
+120	«Animert, rasterbasert»
+121	«Duotone med animasjon»
+122	«Animert duotone»
+123	«Halvtoneprikker med animasjon»
+124	«Animert raster»
+125	«Mosaikk med animasjon»
+126	«Animert mosaikk»
+127	«Rastert overlegg med klassisk palett»
+128	«Klassisk blanding»
+129	«Rastert overlegg med skogpalett»
+130	«Skogblanding»
+131	«Rastert overlegg med marineblå palett»
+132	«Marineblå blanding»
+133	«Rastert overlegg med vinpalett»
+134	«Vinblanding»
+135	«Blå støy i svart-hvitt»
+136	«Blå støy svart-hvitt»
+137	«Blå støy i farger»
+138	«Blå støyfarge»
+139	«Fargespektret»
+140	«Rastrert farge»
+141	«Rastrert i gråtoner»
+142	«Rastrerte gråtoner»
+143	«Halvtone i svart-hvitt»
+144	«Halvtone svart-hvitt»
+145	«Halvtone i farger»
+146	«Rasterfarge»
+147	«#e85d04 på #ffe8d6»
+148	«Korall»
+149	«Korall med prikkmoduler»
+150	«Korallprikker»
+151	«#9d0208 på #ffccd5»
+152	«Karmosinrød»
+153	«#1b4332 på #d8f3dc»
+154	«Skog»
+155	«Skog med punktmoduler»
+156	«Skogprikker»
+157	«#7f5539 på #ffe8cc»
+158	«Gull»
+159	«#ffffff på #000000»
+160	«Invertert»
+161	«#1a1a2e på #eef1ff»
+162	«Midnatt»
+163	«Midnatt med punktmoduler»
+164	«Midnattsprikker»
+165	«#001d3d på #a2d2ff»
+166	«Marinen»
+167	«#023e8a på #caf0f8»
+168	«Havet»
+169	«Hav med prikkmoduler»
+170	«Havprikker»
+171	«#4a0080 på #f5e6ff»
+172	«Kongelig»
+173	«Kongelig med prikkmoduler»
+174	«Kongelige prikker»
+175	«#343a40 på #e9ecef»
+176	«Skifer»
+177	«#bf0603 på #fff3b0»
+178	«Solnedgang»
+179	«Solnedgang med punktmoduler»
+180	«Solnedgangsprikker»
+181	«#006d77 på #e0f4f5»
+182	«Blågrønn»
+183	«Animert halvtone med punktmoduler»
+184	«Animerte prikker + raster»
+185	«Animert blå støy med avrundet»
+186	«Animert avrundet + blå støy»
+187	«Pikselert overlegg med tilkoblede moduler»
+188	«Tilkoblet + Pikselert blågrønn»
+189	«Tilkoblede moduler med firkantfinnere»
+190	«Tilkoblet + Kvadratisk»
+191	«Tilkoblede moduler med bølgeeffekt»
+192	«Tilkoblet + Bølgehav»
+193	«Diamantmoduler med blå støy»
+194	«Diamant + Blå støy marineblå»
+195	«Duotoneffekt med diamantmoduler»
+196	«Diamant + Duotone Crimson»
+197	«Diamantmoduler med avrundede finnere»
+198	«Diamant + Avrundet»
+199	«Prikkmoduler med sirkelfinnere»
+200	«Prikker + Sirkel»
+201	«Maksimal synlighet med prikker»
+202	«Prikker + Ekstrem skog»
+203	«Punktmoduler med rasteroverlegg»
+204	«Prikker + Halvtone gull»
+205	«Kantdeteksjon med punktmoduler»
+206	«Prikker + Omriss Skifer»
+207	«Klassisk dithered med avrundet stil»
+208	«Avrundet + Dithered Royal»
+209	«Avrundede moduler med mosaikkoverlegg»
+210	«Avrundet + Mosaikk Solnedgang»
+211	«Avrundede moduler med avrundede søkere»
+212	«Avrundet + Avrundet»
+213	«Gjengivelse av delpiksler med høy detaljrikdom»
+214	«Avrundet + Subpixel Coral»
+215	«Mailto-lenke med korallfarger»
+216	«E-postadresse»
+217	«iCal-arrangement med avrundede kongelige»
+218	«Kalenderhendelse»
+219	«Kartkoordinater med tilkoblet gull»
+220	«Geografisk plassering»
+221	«Forhåndsutfylt SMS med diamantblågrønn»
+222	«SMS-melding»
+223	«Kontaktkort med avrundet marineblå stil»
+224	«vCard-kontakt»
+225	«WiFi-konfigurasjon med skoggrønne prikker»
+226	«WiFi-nettverk»
+227	«Adaptiv terskel»
+228	«Adaptiv»
+229	«Terskel for blå støy»
+230	«Hybrid blå støy»
+231	«Blå støy + feil»
+232	«Floyd-Steinberg-stil»
+233	«Feildiffusjon»
+234	«Atkinson-feildiffusjon»
+235	«Atkinson»
+236	«Burkes feildiffusjon»
+237	«Burkes»
+238	«Floyd-Steinberg-feildiffusjon»
+239	«Floyd-Steinberg»
+240	"Jarvis-Judice-Ninke-feilspredning"
+241	«Jarvis-Judice-Ninke»
+242	"Sierra-feildiffusjon"
+243	«Sierra»
 244	"Stucki error diffusion"
-245	"Stucki"
-246	"Bayer matrix dithering"
-247	"Ordered Bayer"
-248	"Luminance-weighted"
-249	"Perceptual"
-250	"Dither strength at 100%"
-251	"Strength 100%"
-252	"Dither strength at 20%"
-253	"Strength 20%"
-254	"Dither strength at 40%"
-255	"Strength 40%"
-256	"Dither strength at 60%"
-257	"Strength 60%"
-258	"Dither strength at 80%"
-259	"Strength 80%"
-260	"Random noise threshold"
-261	"White Noise"
-262	"30% error correction"
-263	"ECC High"
-264	"7% error correction"
-265	"ECC Low"
-266	"15% error correction"
-267	"ECC Medium"
-268	"25% error correction"
-269	"ECC Quartile"
-270	"Automatic version selection"
-271	"Auto Version"
-272	"Version 12 QR code"
-273	"Version 12"
-274	"Best for overlays (no center eye)"
-275	"Version 6"
-276	"Version 6 with high error correction"
-277	"V6 + ECC High"
-278	"Version 6 with low error correction"
-279	"V6 + ECC Low"
-280	"Version 9 QR code"
-281	"Version 9"
-282	"Version 9 with high error correction"
-283	"V9 + ECC High"
-284	"Version 9 with low error correction"
-285	"V9 + ECC Low"
-286	"Circle finder pattern"
-287	"Circle Finders"
-288	"Rounded finder pattern"
-289	"Rounded Finders"
-290	"Square finder pattern"
-291	"Square Finders"
-292	"Halftone with classic palette"
-293	"Classic Halftone"
-294	"Halftone with forest palette"
-295	"Forest Halftone"
-296	"Halftone with navy palette"
-297	"Navy Halftone"
-298	"Halftone with wine palette"
-299	"Wine Halftone"
-300	"Color blend overlay"
-301	"Blend Mode"
-302	"Blue noise threshold dithering"
-303	"Brightness-based modules"
-304	"Brightness"
-305	"Black & white processing"
-306	"Black & White"
-307	"Color processing"
-308	"Color"
-309	"Grayscale processing"
-310	"Grayscale"
-311	"Error diffusion dithering"
-312	"Dithered"
-313	"Dithered at 100% intensity"
-314	"Dithered 100%"
-315	"Dithered at 50% intensity"
-316	"Dithered 50%"
-317	"Dithered at 75% intensity"
-318	"Dithered 75%"
-319	"Two-tone color mapping"
-320	"Duotone"
-321	"Maximum image visibility"
-322	"Extreme"
-323	"Classic halftone dots"
-324	"Halftone"
-325	"Mosaic tile effect"
-326	"Mosaic"
-327	"Edge detection overlay"
-328	"Outline"
-329	"Pixelated overlay effect"
-330	"Pixelate"
-331	"High detail subpixel rendering"
-332	"Subpixel"
-333	"Wavy distortion effect"
-334	"Mosaic with classic palette"
-335	"Classic Mosaic"
-336	"Mosaic with forest palette"
-337	"Forest Mosaic"
-338	"Mosaic with navy palette"
-339	"Navy Mosaic"
-340	"Mosaic with wine palette"
-341	"Wine Mosaic"
-342	"Standard QR code"
-343	"Classic"
-344	"Minimal error correction"
-345	"ECC Low (7%)"
-346	"Medium-high error correction"
-347	"ECC Quartile (25%)"
-348	"Large with multiple alignment"
-349	"Larger without center eye"
-350	"Even larger with center eye"
-351	"1px gaussian blur"
-352	"Blur 1px"
-353	"2px gaussian blur"
-354	"Blur 2px"
-355	"4px gaussian blur"
-356	"Blur 4px"
-357	"Brightness adjusted darker"
-358	"Brightness -25"
-359	"Brightness -50"
-360	"Brightness adjusted brighter"
-361	"Brightness +25"
-362	"Brightness +50"
-363	"Low contrast"
-364	"Contrast -50"
-365	"High contrast"
-366	"Contrast +100"
-367	"Contrast +50"
-368	"Canny edge detection"
-369	"Edge Canny"
-370	"Sobel edge detection"
-371	"Edge Sobel"
-372	"Gamma correction 0.5"
-373	"Gamma 0.5"
-374	"Gamma correction 1.5"
-375	"Gamma 1.5"
-376	"Gamma correction 2.0"
-377	"Gamma 2.0"
-378	"Hue rotation 90 degrees"
-379	"Hue +90°"
-380	"Inverted colors"
-381	"2 color levels"
-382	"Posterize 2"
-383	"4 color levels"
-384	"Posterize 4"
-385	"8 color levels"
-386	"Posterize 8"
-387	"Desaturated"
-388	"Saturation -100"
-389	"Reduced saturation"
-390	"Saturation -50"
-391	"Oversaturated"
-392	"Saturation +100"
-393	"Saturation +50"
-394	"100% sharpening"
-395	"Sharpen 100%"
-396	"25% sharpening"
-397	"Sharpen 25%"
-398	"50% sharpening"
-399	"Sharpen 50%"
-400	"Binary threshold at 128"
-401	"Threshold 128"
-402	"Binary threshold at 192"
-403	"Threshold 192"
-404	"Binary threshold at 64"
-405	"Threshold 64"
-406	"Connected module style"
-407	"Connected Modules"
-408	"Diamond module style"
-409	"Diamond Modules"
-410	"Dots module style"
-411	"Dots Modules"
-412	"Rounded module style"
-413	"Rounded Modules"
-414	"Square module style"
-415	"Square Modules"
-416	"Plain"
-417	"Power Combos"
-418	"Preprocessing"
-419	"Animated GIF overlays with different blend modes"
-420	"Animated Overlays"
-421	"Different color blending with image overlays"
-422	"Color, grayscale, and black & white processing"
-423	"Color Processing"
-424	"Color schemes and themed palettes"
-425	"Colors & Themes"
-426	"Different payload formats - vCard, WiFi, Email, SMS, Geo, Calendar"
-427	"Different dithering methods and error diffusion kernels"
-428	"Dithering Algorithms"
-429	"Different QR versions and error correction levels"
-430	"QR Encoding"
-431	"Static image overlays with different blend modes"
-432	"Image Overlays"
-433	"Standard QR codes without overlay - different versions and error correction"
-434	"Plain QR Codes"
-435	"Striking multi-feature combinations showcasing ANQR capabilities"
-436	"Brightness, contrast, gamma, blur, sharpen, posterize, edge detection"
-437	"Image Preprocessing"
-438	"Different visual styles for modules and finder patterns"
-439	"Module & Finder Styles"
-440	"Show All"
-441	"Styles"
-442	"Explore examples of QR codes created with ANQR"
-443	"QR Code Gallery"
-444	"Try this"
-445	"Copy Link"
-446	"Switch to dark mode"
-447	"Export"
-448	"Switch to light mode"
-449	"Search settings..."
-450	"Share"
-451	"Style of alignment patterns (used in larger QR codes)"
-452	"Opens specific content within a mobile app"
-453	"Auto-detect (requires v{{version}}+ for current content)"
-454	"0 = Auto, min v{{version}} for current content"
-455	"Background color hex code"
-456	"Legacy format - consider using vCard instead"
-457	"Note: Bluetooth pairing via QR is vendor-specific and may not work on all devices"
-458	"Play animation forward then backward (ping-pong)"
-459	"Subscribe to a shared calendar feed"
-460	"Ensure minimum contrast ratio between foreground and background"
-461	"Corner radius percentage for rounded modules (0-100%)"
-462	"Use pixelated rendering for sharp module edges"
-463	"Enter raw data in any format. No validation or formatting will be applied."
-464	"Rotate dot-style modules (0-360 degrees)"
-465	"Data encoding mode - Auto selects the most efficient mode"
-466	"Enforce minimum 4 module quiet zone for better scanning reliability"
-467	"Enter the text content to encode in the QR code"
-468	"Enter the URL to encode in the QR code"
-469	"European Payment Council QR code for SEPA credit transfers"
-470	"Error correction level - higher = more damage resistance but larger QR code"
-471	"Additional border modules beyond the quiet zone (0-10)"
-472	"Style of the inner square of finder patterns"
-473	"Style of the outer ring of finder patterns"
-474	"Scale finder patterns relative to their default size (50-150%)"
-475	"Foreground color hex code"
-476	"Style of the corner finder patterns"
-477	"Convert HTTP URLs to HTTPS automatically"
-478	"Add a decorative frame around the QR code"
-479	"Text to display on the frame"
-480	"How gaps between modules are rendered"
-481	"Apply a gradient effect to the QR code"
-482	"GS1 Digital Link for product identification and traceability"
-483	"Higher = more damage resistance, larger QR"
-484	"Loop animation continuously"
-485	"Prevent encoding content that exceeds QR code capacity"
-486	"Minimum contrast ratio to enforce (1-21, WCAG AA requires 4.5:1)"
-487	"Gap between modules as percentage (0-30%)"
-488	"Size of each QR code module in pixels (2-20px)"
-489	"Visual style of QR code modules"
-490	"Convert different newline formats to a standard format"
-491	"Select the output file format for export"
-492	"Singapore fast payment system"
-493	"How to assign colors to individual modules"
-494	"Click to pick background color"
-495	"Click to pick foreground color"
-496	"Brazilian instant payment system"
-497	"How to snap module positions to pixel boundaries"
-498	"Thailand national e-payment system"
-499	"QR code version (0=auto, 1-40 increases size and capacity)"
-500	"Quiet zone margin around QR code (0-10 modules, recommended: 4+)"
-501	"Link to an online RSVP form or event registration page"
-502	"Safety analysis mode - how strictly to check QR code readability"
-503	"Select the type of content to encode in the QR code"
-504	"Use a URL shortener service for dynamic/trackable QR codes"
-505	"Style of timing patterns (horizontal and vertical lines)"
-506	"Make the background transparent instead of using background color"
-507	"Remove leading and trailing whitespace"
-508	"Unified Payments Interface for India"
-509	"UTM campaign parameter for campaign tracking"
-510	"UTM medium parameter for campaign tracking"
-511	"UTM source parameter for campaign tracking"
-512	"Validate input data before encoding"
-513	"⚠️ Version too low! Minimum v{{version}} required"
-514	"Language"
-515	"Select Language"
-516	"Add Custom Field"
-517	"Author"
-518	"Author name"
-519	"Copyright"
-520	"© 2024 Company Name"
-521	"Custom Metadata"
-522	"Description"
-523	"Description of this QR code..."
-524	"Include Creation Time"
-525	"Key"
-526	"Keywords"
-527	"License"
-528	"CC-BY-4.0"
-529	"Title"
-530	"QR Code Title"
-531	"Value"
-532	"About"
-533	"Contact"
-534	"Guide"
-535	"Gallery"
-536	"Generator"
-537	"Privacy"
-538	"Terms"
-539	"Background Override"
-540	"Leave empty for default"
-541	"DPI (Print)"
-542	"Embed Raster Overlay"
-543	"Export As (Additional)"
-544	"Filename"
-545	"Format"
-546	"GIF"
-547	"GIF Settings"
-548	"Height"
-549	"Include Quiet Zone"
-550	"Median Cut"
-551	"NeuQuant"
-552	"Octree"
-553	"Ordered"
-554	"Output Size"
-555	"Palette Size"
-556	"PDF"
-557	"Pixel"
-558	"PNG"
-559	"Precise"
-560	"Quality"
-561	"Quantizer"
-562	"Shape Precision"
-563	"SVG"
-564	"SVG Settings"
-565	"Transparent Color"
-566	"#ffffff or empty"
-567	"True Vector"
-568	"Use paths instead of embedded raster"
-569	"WebP"
-570	"Width"
-571	"Adaptive Threshold"
-572	"Bayer 2×2"
-573	"Bayer 4×4"
-574	"Bayer 8×8"
-575	"Blend"
-576	"Blue Noise + Error Diffusion"
-577	"Blue Noise Threshold"
-578	"Blur"
-579	"Brightness Curve"
-580	"Cell Size"
-581	"Center Logo"
-582	"Center Rule"
-583	"Clustered Dot"
-584	"Color Dither"
-585	"Color Mode"
-586	"Contain"
-587	"Contrast"
-588	"Note: Image must allow cross-origin requests (CORS)"
-589	"Cover"
-590	"Crop Image"
-591	"Crop Size"
-592	"Diffusion Kernel"
-593	"Disposal Handling"
-594	"Dither"
-595	"Dither Settings"
-596	"Dither Strength"
-597	"Dot Shape"
-598	"Duotone Colors"
-599	"ECC-Aware Mode"
-600	"Edge Detection"
-601	"Edge-Aware"
-602	"Enable Crop"
-603	"Finder Override"
-604	"Fit Mode"
-605	"Flip X"
-606	"Flip Y"
-607	"From URL"
-608	"Full Color"
-609	"Gamma"
-610	"Gap Fill"
-611	"Gaussian Noise"
-612	"Grid Size"
-613	"Halftone Center"
-614	"Halftone Settings"
-615	"Highlight"
-616	"Hue Rotate"
-617	"Image / GIF / WebP"
-618	"Image URL"
-619	"Intensity"
-620	"Invert Image"
-621	"Line"
-622	"Load"
-623	"Loaded from URL"
-624	"Max FPS"
-625	"Neutral Color"
-626	"No file"
-627	"N×N Grid"
-628	"Ordered (Bayer)"
-629	"Ordered Matrix"
-630	"Original"
-631	"Per Channel"
-632	"Per Module"
-633	"Perceptual (Luminance)"
-634	"Posterize Levels"
-635	"Preserve Alignment"
-636	"Preserve Finder Patterns"
-637	"Preserve Timing"
-638	"Protect Format Info"
-639	"Protect Version Info"
-640	"Protection"
-641	"Remove"
-642	"Respect"
-643	"Risk Budget"
-644	"Rotation"
-645	"S-Curve"
-646	"Saturation"
-647	"Screened Blue Noise"
-648	"Seed"
-649	"Select Image"
-650	"Sepia"
-651	"Serpentine Scanning"
-652	"Shadow"
-653	"Sharpen"
-654	"Sierra-2"
-655	"Sierra-Lite"
-656	"Simplify"
-657	"Stretch"
-658	"Strict"
-659	"Stylized"
-660	"Subpixel Settings"
-661	"Subpixel Size"
-662	"Temporal Blue Noise"
-663	"Threshold"
-664	"Tile Size"
-665	"Triangular Noise"
-666	"True Dither"
-667	"Use Frame Delays"
-668	"Void & Cluster"
-669	"Account Name"
-670	"Address"
-671	"Algorithm"
-672	"All Day Event"
-673	"Amount (optional)"
-674	"Amount (BRL, optional)"
-675	"Amount (EUR)"
-676	"Amount (INR, optional)"
-677	"Amount (SGD, optional)"
-678	"Amount (THB, optional)"
-679	"Android Intent"
-680	"App Deep Link (Android/iOS)"
-681	"Asset/Inventory Tag"
-682	"Asset/Item ID"
-683	"Asset Type"
-684	"Attendee Name"
-685	"Audio"
-686	"Base URL"
-687	"Batch/Lot (optional)"
-688	"Beneficiary Name"
-689	"BIC/SWIFT (optional)"
-690	"Birthday"
-691	"Bitcoin"
-692	"BizCard (Legacy)"
-693	"Bluetooth"
-694	"Message Body"
-695	"Body (optional)"
-696	"Box"
-697	"Calendar"
-698	"Calendar Name"
-699	"Calendar Subscribe"
-700	"Calendar URL (ICS/WebCal)"
-701	"Campaign Content (optional)"
-702	"Campaign Medium"
-703	"Campaign Name"
-704	"Campaign Source"
-705	"Campaign Term (optional)"
-706	"City"
-707	"City (optional)"
-708	"Cloud Storage Link"
-709	"Company"
-710	"Content Type"
-711	"Core"
-712	"Country"
-713	"Crypto (BTC, ETH, etc.)"
-714	"Cryptocurrency"
-715	"Custom Format"
-716	"Custom Scheme"
-717	"Date & Time"
-718	"Deep Link URL"
-719	"Device Address (MAC)"
-720	"Device Name (optional)"
-721	"Digits"
-722	"Documents & Media"
-723	"Dropbox"
-724	"Email"
-725	"Encryption"
-726	"End"
-727	"End Date"
-728	"Enterprise"
-729	"EPC / SEPA (EU)"
-730	"Equipment"
-731	"Ethereum"
-732	"iCalendar Event"
-733	"Event Name"
-734	"Event RSVP Link"
-735	"Event Ticket"
-736	"Expiry Date (optional)"
-737	"Facebook"
-738	"Fallback URL (optional)"
-739	"Fax"
-740	"File Type"
-741	"File / Document URL"
-742	"First Name"
-743	"Force HTTPS"
-744	"Full Name"
-745	"Furniture"
-746	"GitHub"
-747	"Google Drive"
-748	"GS1 Digital Link"
+245	«Fast»
+246	«Bayer-matrise-dithering»
+247	«Bestilte Bayer»
+248	«Luminansvektet»
+249	«Perseptuell»
+250	«Vibrasjonsstyrke på 100 %»
+251	«Styrke 100 %»
+252	«Rasterstyrke på 20 %»
+253	«Styrke 20 %»
+254	«Ditheringsstyrke på 40 %»
+255	«Styrke 40 %»
+256	«Rasterstyrke på 60 %»
+257	«Styrke 60 %»
+258	«Ditheringstyrke på 80 %»
+259	«Styrke 80 %»
+260	«Terskelen for tilfeldig støy»
+261	«Hvit støy»
+262	«30 % feilretting»
+263	«ECC høy»
+264	«7 % feilretting»
+265	«ECC lav»
+266	«15 % feilretting»
+267	«ECC-medium»
+268	«25 % feilretting»
+269	«ECC-kvartil»
+270	«Automatisk versjonsvalg»
+271	«Automatisk versjon»
+272	«QR-kode versjon 12»
+273	«Versjon 12»
+274	«Best for overlegg (uten midtre øye)»
+275	«Versjon 6»
+276	«Versjon 6 med høy feilretting»
+277	«V6 + ECC Høy»
+278	«Versjon 6 med lav feilretting»
+279	«V6 + ECC Lav»
+280	«Versjon 9 QR-kode»
+281	«Versjon 9»
+282	«Versjon 9 med høy feilretting»
+283	«V9 + ECC Høy»
+284	«Versjon 9 med lav feilretting»
+285	«V9 + ECC Lav»
+286	«Sirkelsøkermønster»
+287	«Sirkelfinnere»
+288	«Avrundet søkermønster»
+289	«Avrundede finnere»
+290	«Firkantet søkermønster»
+291	«Firkantfinnere»
+292	«Halvtone med klassisk palett»
+293	«Klassisk rastertone»
+294	«Halvtone med skogpalett»
+295	«Skogshalvtone»
+296	«Halvtone med marineblå palett»
+297	«Marineblå halvtone»
+298	«Halvtone med vinpalett»
+299	«Vin-halvtone»
+300	«Overlegg for fargeblanding»
+301	«Blandingsmodus»
+302	«Blå støyterskel-dithering»
+303	«Lysstyrkebaserte moduler»
+304	«Lysstyrke»
+305	«Svart-hvitt-behandling»
+306	«Svart og hvitt»
+307	«Fargebehandling»
+308	«Farge»
+309	«Gråtonebehandling»
+310	«Gråtone»
+311	«Feildiffusjonsdithering»
+312	«Dithered»
+313	«Rastert med 100 % intensitet»
+314	«100 % rastløs»
+315	«Rastert ved 50 % intensitet»
+316	«Dithered 50%»
+317	«Rastert ved 75 % intensitet»
+318	«Dithered 75 %»
+319	«Tofarget fargekartlegging»
+320	«Duotone»
+321	«Maksimal bildesynlighet»
+322	«Ekstrem»
+323	«Klassiske rasterpunkter»
+324	«Halvtone»
+325	«Mosaikkfliseffekt»
+326	«Mosaikk»
+327	«Overlegg for kantdeteksjon»
+328	«Oversikt»
+329	«Pikselert overleggseffekt»
+330	«Pikselering»
+331	«Gjengivelse av underpiksler med høy detaljrikdom»
+332	«Underpiksel»
+333	«Bølget forvrengningseffekt»
+334	«Mosaikk med klassisk palett»
+335	«Klassisk mosaikk»
+336	«Mosaikk med skogpalett»
+337	«Skogmosaikk»
+338	«Mosaikk med marineblå palett»
+339	«Marineblå mosaikk»
+340	«Mosaikk med vinpalett»
+341	«Vinmosaikk»
+342	«Standard QR-kode»
+343	«Klassisk»
+344	«Minimal feilretting»
+345	«ECC lav (7 %)»
+346	«Middels-høy feilretting»
+347	«ECC-kvartil (25 %)»
+348	«Stor med flere justeringer»
+349	«Større uten midtøye»
+350	«Enda større med midtøye»
+351	«1px gaussisk uskarphet»
+352	«Uskarphet 1 piksel»
+353	«2px gaussisk uskarphet»
+354	«Uskarphet 2px»
+355	«4px gaussisk uskarphet»
+356	«Uskarphet 4 piksler»
+357	«Lysstyrke justert mørkere»
+358	«Lysstyrke -25»
+359	«Lysstyrke -50»
+360	«Lysstyrke justert lysere»
+361	«Lysstyrke +25»
+362	«Lysstyrke +50»
+363	«Lav kontrast»
+364	«Kontrast -50»
+365	«Høy kontrast»
+366	«Kontrast +100»
+367	«Kontrast +50»
+368	«Deteksjon av slu kant»
+369	«Edge Canny»
+370	«Sobel-kantdeteksjon»
+371	«Edge Sobel»
+372	«Gammakorreksjon 0,5»
+373	«Gamma 0,5»
+374	«Gammakorreksjon 1,5»
+375	«Gamma 1,5»
+376	«Gammakorreksjon 2.0»
+377	«Gamma 2.0»
+378	«Fargetonerotasjon 90 grader»
+379	«Fargetone +90°»
+380	«Inverterte farger»
+381	«2 fargenivåer»
+382	«Plakatisering 2»
+383	«4 fargenivåer»
+384	«Plakatisering 4»
+385	«8 fargenivåer»
+386	«Plakatisering 8»
+387	«Desaturert»
+388	«Metning -100»
+389	«Redusert metning»
+390	«Metning -50»
+391	«Overmettet»
+392	«Metning +100»
+393	«Metning +50»
+394	«100 % skjerping»
+395	«Skjær 100 %»
+396	«25 % skjerping»
+397	«Skjær 25 %»
+398	«50 % skjerping»
+399	«Skjær 50 %»
+400	«Binær terskel ved 128»
+401	«Terskel 128»
+402	«Binær terskel ved 192»
+403	«Terskel 192»
+404	«Binær terskel ved 64»
+405	«Terskel 64»
+406	«Tilkoblet modulstil»
+407	«Tilkoblede moduler»
+408	«Diamantmodulstil»
+409	«Diamantmoduler»
+410	«Dots-modulstil»
+411	«Dots-moduler»
+412	«Avrundet modulstil»
+413	«Avrundede moduler»
+414	«Firkantet modulstil»
+415	«Firkantmoduler»
+416	«Vanlig»
+417	«Kraftkombinasjoner»
+418	«Forbehandling»
+419	«Animerte GIF-overlegg med forskjellige blandingsmoduser»
+420	«Animerte overlegg»
+421	«Ulike fargeblandinger med bildeoverlegg»
+422	«Farge-, gråtone- og svart-hvitt-behandling»
+423	«Fargebehandling»
+424	«Fargevalg og temapaletter»
+425	«Farger og temaer»
+426	«Ulike nyttelastformater -- vCard, WiFi, e-post, SMS, Geo, Kalender»
+427	«Ulike ditheringsmetoder og feildiffusjonskjerner»
+428	«Dithering-algoritmer»
+429	«Ulike QR-versjoner og feilkorrigeringsnivåer»
+430	«QR-koding»
+431	«Statiske bildeoverlegg med forskjellige blandingsmoduser»
+432	«Bildeoverlegg»
+433	«Standard QR-koder uten overlegg -- forskjellige versjoner og feilretting»
+434	«Vanlige QR-koder»
+435	«Slående kombinasjoner med flere funksjoner som viser frem ANQR-muligheter»
+436	«Lysstyrke, kontrast, gamma, uskarphet, skjerping, posterisering, kantdeteksjon»
+437	"Forbehandling av bilde"
+438	«Ulike visuelle stiler for moduler og søkemønstre»
+439	«Modul- og søkerstiler»
+440	«Vis alle»
+441	«Stiler»
+442	«Utforsk eksempler på QR-koder laget med ANQR»
+443	«QR-kodegalleri»
+444	«Prøv dette»
+445	«Kopier lenke»
+446	«Bytt til mørk modus»
+447	«Eksport»
+448	«Bytt til lysmodus»
+449	«Søkeinnstillinger...»
+450	«Del»
+451	«Stil for justeringsmønstre (brukt i større QR-koder)»
+452	«Åpner spesifikt innhold i en mobilapp»
+453	«Automatisk deteksjon (krever v{{version}}+ for gjeldende innhold)»
+454	«0 = Auto, min v{{versjon}} for gjeldende innhold»
+455	«Heksadesimal kode for bakgrunnsfarge»
+456	«Eldre format -- vurder å bruke vCard i stedet»
+457	«Merk: Bluetooth-paring via QR er leverandørspesifikk og fungerer kanskje ikke på alle enheter»
+458	«Spill av animasjon fremover og deretter bakover (ping-pong)»
+459	«Abonner på en delt kalenderfeed»
+460	«Sørg for minimum kontrastforhold mellom forgrunn og bakgrunn»
+461	«Hjøreradiusprosent for avrundede moduler (0--100 %)»
+462	«Bruk pikselert gjengivelse for skarpe modulkanter»
+463	«Skriv inn rådata i et hvilket som helst format. Ingen validering eller formatering vil bli brukt.»
+464	«Roter punktformede moduler (0--360 grader)»
+465	«Datakodingsmodus -- Velger automatisk den mest effektive modusen»
+466	«Håndhev minimum 4 modulers stille sone for bedre skanningspålitelighet»
+467	«Skriv inn tekstinnholdet som skal kodes i QR-koden»
+468	«Skriv inn URL-en som skal kodes inn i QR-koden»
+469	«Det europeiske betalingsrådets QR-kode for SEPA-kredittoverføringer»
+470	«Feilkorreksjonsnivå - høyere = mer skademotstand, men større QR-kode»
+471	«Ytterligere grensemoduler utenfor stillesonen (0--10)»
+472	«Stilen til den indre firkanten av søkermønstre»
+473	«Stilen til den ytre ringen av søkermønstre»
+474	«Skaler søkemønstre i forhold til standardstørrelsen (50--150 %)»
+475	«Heksadesimal kode for forgrunnsfarge»
+476	«Stilen til hjørnefinnermønstrene»
+477	«Konverter HTTP-URL-er til HTTPS automatisk»
+478	«Legg til en dekorativ ramme rundt QR-koden»
+479	«Tekst som skal vises på rammen»
+480	«Hvordan mellomrom mellom moduler gjengis»
+481	«Bruk en gradienteffekt på QR-koden»
+482	«GS1 Digital Link for produktidentifikasjon og sporbarhet»
+483	«Høyere = mer skademotstand, større QR»
+484	«Løpeanimasjon kontinuerlig»
+485	«Forhindre koding av innhold som overskrider QR-kodekapasiteten»
+486	«Minimum kontrastforhold som skal håndheves (1--21, WCAG AA krever 4,5:1)»
+487	«Avstand mellom moduler som prosentandel (0--30 %)»
+488	«Størrelsen på hver QR-kodemodul i piksler (2--20 piksler)»
+489	«Visuell stil for QR-kodemoduler»
+490	«Konverter forskjellige linjeskiftformater til et standardformat»
+491	«Velg utdatafilformat for eksport»
+492	«Singapores hurtigbetalingssystem»
+493	«Hvordan tilordne farger til individuelle moduler»
+494	«Klikk for å velge bakgrunnsfarge»
+495	«Klikk for å velge forgrunnsfarge»
+496	«Brasiliansk system for øyeblikkelig betaling»
+497	«Hvordan feste modulposisjoner til pikselgrenser»
+498	«Thailands nasjonale e-betalingssystem»
+499	«QR-kodeversjon (0=auto, 1--40 øker størrelse og kapasitet)»
+500	«Stillesonemargin rundt QR-kode (0--10 moduler, anbefalt: 4+)»
+501	«Lenke til et RSVP-skjema på nett eller en registreringsside for arrangementet»
+502	«Sikkerhetsanalysemodus -- hvordan man strengt kontrollerer lesbarheten til QR-koder»
+503	«Velg innholdstypen som skal kodes i QR-koden»
+504	«Bruk en URL-forkortingstjeneste for dynamiske/sporbare QR-koder»
+505	«Stil for tidsmønstre (horisontale og vertikale linjer)»
+506	«Gjør bakgrunnen gjennomsiktig i stedet for å bruke bakgrunnsfarge»
+507	«Fjern innledende og etterfølgende mellomrom»
+508	«Enhetlig betalingsgrensesnitt for India»
+509	«UTM-kampanjeparameter for kampanjesporing»
+510	«UTM-mediumparameter for kampanjesporing»
+511	«UTM-kildeparameter for kampanjesporing»
+512	«Valider inndata før koding»
+513	«⚠️ Versjonen er for lav! Minimum v{{version}} kreves»
+514	«Språk»
+515	«Velg språk»
+516	«Legg til tilpasset felt»
+517	«Forfatter»
+518	«Forfatternavn»
+519	«Opphavsrett»
+520	«© 2024 Firmanavn»
+521	«Tilpassede metadata»
+522	«Beskrivelse»
+523	«Beskrivelse av denne QR-koden...»
+524	«Inkluder opprettelsestidspunkt»
+525	«Nøkkel»
+526	«Nøkkelord»
+527	«Lisens»
+528	«CC-BY-4.0»
+529	«Tittel»
+530	«QR-kodetittel»
+531	«Verdi»
+532	«Om»
+533	«Kontakt»
+534	«Guide»
+535	«Galleri»
+536	«Generator»
+537	«Personvern»
+538	«Vilkår»
+539	«Overstyring av bakgrunn»
+540	«La stå tomt for standard»
+541	«DPI (utskrift)»
+542	«Legg inn rasteroverlegg»
+543	«Eksporter som (tillegg)»
+544	«Filnavn»
+545	«Format»
+546	«GIF»
+547	«GIF-innstillinger»
+548	«Høyde»
+549	«Inkluder stillesone»
+550	«Medianskutt»
+551	«NeuQuant»
+552	«Oktre»
+553	«Bestilt»
+554	«Utdatastørrelse»
+555	«Palettstørrelse»
+556	«PDF»
+557	«Piksel»
+558	«PNG»
+559	«Presis»
+560	«Kvalitet»
+561	«Kvantiseringsenhet»
+562	«Formpresisjon»
+563	«SVG»
+564	«SVG-innstillinger»
+565	«Gjennomsiktig farge»
+566	«#ffffff eller tom»
+567	«Sann vektor»
+568	«Bruk stier i stedet for innebygd raster»
+569	«WebP»
+570	"Bredde"
+571	«Adaptiv terskel»
+572	«Bayer 2×2»
+573	«Bayer 4×4»
+574	«Bayer 8×8»
+575	«Blanding»
+576	«Blå støy + feildiffusjon»
+577	«Terskel for blå støy»
+578	«Uskarphet»
+579	«Lysstyrkekurve»
+580	«Cellestørrelse»
+581	«Senterlogo»
+582	«Senterregelen»
+583	«Klynget prikk»
+584	«Fargevariasjon»
+585	«Fargemodus»
+586	«Inneholder»
+587	«Kontrast»
+588	«Merk: Bildet må tillate forespørsler på tvers av opprinnelse (CORS)»
+589	«Omslag»
+590	«Beskjær bilde»
+591	«Avlingsstørrelse»
+592	«Diffusjonskjerne»
+593	«Håndtering av avfall»
+594	«Dither»
+595	«Innstillinger for raster»
+596	«Ditherstyrke»
+597	«Prikkform»
+598	«Totonefarger»
+599	«ECC-bevisst modus»
+600	"Kantdeteksjon"
+601	«Kantbevisst»
+602	«Aktiver beskjæring»
+603	«Overstyring av søker»
+604	«Tilpasningsmodus»
+605	«Flip X»
+606	«Vend Y»
+607	«Fra URL»
+608	«Fullfarget»
+609	«Gamma»
+610	«Fylling av mellomrom»
+611	"Gaussisk støy"
+612	«Rutenettstørrelse»
+613	«Halvtonesenter»
+614	«Rasterinnstillinger»
+615	«Høydepunkt»
+616	«Roter fargetone»
+617	«Bilde / GIF / WebP»
+618	«Bilde-URL»
+619	«Intensitet»
+620	«Inverter bilde»
+621	«Linje»
+622	«Last inn»
+623	«Lastet inn fra URL»
+624	«Maksimal FPS»
+625	«Nøytral farge»
+626	«Ingen fil»
+627	«N×N-rutenett»
+628	«Bestilt (Bayer)»
+629	«Ordert matrise»
+630	«Original»
+631	«Per kanal»
+632	«Per modul»
+633	«Perseptuell (luminans)»
+634	«Posteriser nivåer»
+635	«Bevar linjeføringen»
+636	«Bevar søkermønstre»
+637	«Bevar timingen»
+638	«Beskytt formatinformasjon»
+639	«Beskytt versjonsinformasjon»
+640	«Beskyttelse»
+641	«Fjern»
+642	«Respekt»
+643	«Risikobudsjett»
+644	«Rotasjon»
+645	«S-kurve»
+646	«Metning»
+647	«Skjermet blå støy»
+648	«Frø»
+649	«Velg bilde»
+650	«Sepia»
+651	«Slangeskanning»
+652	«Skygge»
+653	«Skjærp»
+654	«Sierra-2»
+655	«Sierra-Lite»
+656	«Forenkle»
+657	«Strekk»
+658	«Streng»
+659	«Stilisert»
+660	«Innstillinger for underpiksler»
+661	«Subpikselstørrelse»
+662	«Temporal blå støy»
+663	«Terskel»
+664	«Flisstørrelse»
+665	«Trekantet støy»
+666	«Sann dither»
+667	«Bruk bildeforsinkelser»
+668	«Tomrom og klynge»
+669	«Kontonavn»
+670	«Adresse»
+671	«Algoritme»
+672	«Heldagsarrangement»
+673	«Beløp»
+674	«Beløp (BRL)»
+675	«Beløp (EUR)»
+676	«Beløp (INR)»
+677	«Beløp (SGD)»
+678	«Beløp (THB)»
+679	«Android-intensjon»
+680	«Dyplenking til appen (Android/iOS)»
+681	«Eiendeler/inventarmerke»
+682	«Eiendel/vare-ID»
+683	«Eiendelstype»
+684	«Deltakernavn»
+685	«Lyd»
+686	«Basis-URL»
+687	«Batch/Lot»
+688	«Mottakernavn»
+689	«BIC/SWIFT»
+690	«Bursdag»
+691	«Bitcoin»
+692	«BizCard (Eldre)»
+693	«Bluetooth»
+694	«Meldingstekst»
+695	«Kropp»
+696	«Eske»
+697	«Kalender»
+698	«Kalendernavn»
+699	«Kalenderabonnement»
+700	«Kalender-URL (ICS/WebCal)»
+701	«Kampanjeinnhold»
+702	«Kampanjemedium»
+703	«Kampanjenavn»
+704	«Kampanjekilde»
+705	«Kampanjebegrep»
+706	«Byen»
+707	«By»
+708	«Link til skylagring»
+709	«Selskap»
+710	«Innholdstype»
+711	«Kjerne»
+712	«Land»
+713	«Krypto (BTC, ETH, osv.)»
+714	«Kryptovaluta»
+715	«Tilpasset format»
+716	«Tilpasset ordning»
+717	«Dato og klokkeslett»
+718	«URL for dyp lenke»
+719	«Enhetsadresse (MAC)»
+720	«Enhetsnavn»
+721	«Sifrene»
+722	«Dokumenter og media»
+723	«Dropbox»
+724	«E-post»
+725	«Kryptering»
+726	«Slutt»
+727	«Sluttdato»
+728	«Foretak»
+729	«EPC / SEPA (EU)»
+730	«Utstyr»
+731	«Ethereum»
+732	«iCalendar-hendelse»
+733	«Hendelsesnavn»
+734	«Lenke til påmelding til arrangement»
+735	«Eventbillett»
+736	«Utløpsdato»
+737	«Facebook»
+738	«Reserve-URL»
+739	«Faks»
+740	«Filtype»
+741	«URL til fil/dokument»
+742	«Fornavn»
+743	«Tving HTTPS frem»
+744	«Fullt navn»
+745	«Møbler»
+746	«GitHub»
+747	«Google Disk»
+748	«GS1 Digital Link»
 749	"GTIN (Global Trade Item Number)"
-750	"Hidden Network"
-751	"Home Phone"
-752	"IBAN"
-753	"ID Type"
-754	"Image"
-755	"Instagram"
-756	"Inventory Item"
-757	"iOS Universal"
-758	"Issuer"
-759	"IT Asset"
-760	"Label (optional)"
-761	"Last Name"
-762	"Latitude"
-763	"Link Type"
-764	"LinkedIn"
-765	"Litecoin"
-766	"Location"
-767	"Location & Network"
-768	"Longitude"
-769	"Lookup URL (optional)"
-770	"Marketing"
-771	"Marketing Tags"
-772	"Max Length Guard"
-773	"MeCard Contact"
-774	"Merchant Name (optional)"
-775	"Message"
-776	"Message (optional)"
-777	"WhatsApp / Telegram / Signal"
-778	"Messenger"
-779	"Mobile Number"
-780	"Mobile Phone"
-781	"Name"
-782	"National ID / Tax ID"
-783	"Nickname"
-784	"Normalize Newlines"
-785	"Note"
-786	"OneDrive"
-787	"Open (No Password)"
-788	"Organization"
-789	"Other"
-790	"OTP Authenticator"
-791	"Type"
-792	"Password"
-793	"Payee Name"
-794	"Payments (Open Specs)"
-795	"PayNow (Singapore)"
-796	"Phone"
-797	"Phone/Username"
-798	"PIX (Brazil)"
-799	"PIX Key"
-800	"Plain Text"
-801	"Platform"
-802	"Pre-filled Message (optional)"
-803	"Profile URL"
-804	"PromptPay ID"
-805	"PromptPay (Thailand)"
-806	"Proxy Type"
-807	"Raw Data"
-808	"Recipient"
-809	"Reference"
-810	"Reference (optional)"
-811	"Resolver Domain"
-812	"RSVP URL"
-813	"Search Query (optional)"
-814	"Seat"
-815	"Secret (Base32)"
-816	"Section/Zone"
-817	"Security Type"
-818	"Serial Number (optional)"
-819	"Service"
-820	"Short Link Redirect"
-821	"Short URL"
-822	"Signal"
-823	"SMS"
-824	"SMS / MMS"
-825	"Social & Messaging"
-826	"Social Profile"
-827	"Network Name (SSID)"
-828	"Start"
-829	"Start Date"
-830	"State/Province"
-831	"Street"
-832	"Subject"
-833	"Subject (optional)"
-834	"Event Title"
-835	"Phone Number"
-836	"Telegram"
-837	"Text Content"
-838	"Ticket ID"
-839	"TikTok"
-840	"Transaction Note (optional)"
-841	"Trim Whitespace"
-842	"UEN/Mobile Number"
-843	"Universal Link"
-844	"UPI (India)"
-845	"UPI ID (VPA)"
-846	"URL"
-847	"utm_campaign"
-848	"utm_content"
-849	"UTM Campaign Link"
-850	"utm_medium"
-851	"utm_source"
-852	"utm_term"
-853	"Validate Input"
-854	"Validation Options"
-855	"Validation URL (optional)"
-856	"Vehicle"
-857	"Venue"
-858	"Viber"
-859	"Video"
-860	"Website"
-861	"WhatsApp"
-862	"WiFi"
-863	"Word Document"
-864	"Work Phone"
-865	"YouTube"
-866	"ZIP/Postal Code"
-867	"QR Code Preview - Click Export to download"
-868	"Simulating"
-869	"Environmental simulation active - Preview shows how QR code may appear under different conditions"
-870	"Additional border beyond quiet zone"
-871	"Alphanumeric"
-872	"Auto"
-873	"Auto (min: {{version}})"
-874	"Auto (Optimal)"
-875	"Byte / UTF-8"
-876	"{{count}}:1"
-877	"Encoding Mode"
-878	"Enforce Min Quiet Zone"
-879	"Ensure ≥4 module margin"
-880	"Error Correction"
-881	"Extra Border Modules"
-882	"H - High (30%)"
-883	"Kanji"
-884	"L - Low (7%)"
-885	"Quiet Zone (Margin)"
-886	"Mask Pattern"
-887	"M - Medium (15%)"
-888	"Module Size"
-889	"{{count}}°"
-890	"{{count}} modules"
-891	"{{count}}ms"
-892	"{{count}}%"
-893	"{{count}}px"
-894	"Numeric Only"
-895	"Q - Quartile (25%)"
-896	"Version"
-897	"Add Color"
-898	"Alignment Pattern Style"
-899	"Background"
-900	"By Brightness"
-901	"By Cluster"
-902	"By Overlay"
-903	"By Position"
-904	"Ceil"
-905	"Circle"
-906	"Color Palette"
-907	"Conic"
-908	"Connected"
-909	"Contrast Guard"
-910	"Corner Radius"
-911	"Crisp Edges"
-912	"Use image-rendering: pixelated for sharp edges"
-913	"Dashed"
-914	"Diamond"
-915	"Dot Rotation"
-916	"Dots"
-917	"Eye Inner Style"
-918	"Eye Outer Style"
-919	"Eye Scale"
-920	"Finder Pattern Style"
-921	"Floor"
-922	"Foreground"
-923	"Frame Style"
-924	"Frame Text"
-925	"Gap Mode"
-926	"Gradient"
-927	"Gradient Angle"
-928	"Gradient Type"
-929	"Inset"
-930	"Linear"
-931	"Match Finder"
-932	"Match Module"
-933	"Min Contrast Ratio"
-934	"Module Gap"
-935	"Negative Space"
-936	"Per-Module Color Mode"
-937	"Pixel Snap"
-938	"Radial"
-939	"Round"
-940	"Rounded"
-941	"Rounded Frame"
-942	"Module Style"
-943	"Sharp"
-944	"Smooth"
-945	"Solid"
-946	"Square"
-947	"Squares"
-948	"Sticker"
-949	"Stroke"
-950	"Style"
-951	"Tag"
-952	"Timing Pattern Style"
-953	"Transparent Background"
-954	"Safety Analysis"
-955	"Auto-Pick ECC"
-956	"Auto-Pick Version"
-957	"Auto-Reduce Intensity"
-958	"Auto-Tuning"
-959	"Balanced"
-960	"Contrast Ratio"
-961	"Contrast Check"
-962	"Excellent"
-963	"Fair"
-964	"Good"
-965	"Lock Alignment"
-966	"Lock Finders"
-967	"Lock Format Info"
-968	"Lock Timing"
-969	"Lock Version Info"
-970	"Min Module Size"
-971	"Min Quiet Zone"
-972	"Poor"
-973	"Protection Locks"
-974	"Quality Analysis"
-975	"Quiet Zone"
-976	"Safety Mode"
-977	"Scanability Score"
-978	"Show Heatmap"
-979	"Simulate Blur"
-980	"Simulate Noise"
-981	"Simulate Rotation"
-982	"Until scannable"
-983	"Metadata"
-984	"Output"
-985	"Overlay / Image"
-986	"Payload / Data"
-987	"Rendering"
-988	"Watermark"
-989	"Direct Link"
-990	"Generate shareable URL"
-991	"Embed HTML"
-992	"Generate embed code"
-993	"Encode All Parameters"
-994	"Include all settings in URL"
-995	"Markdown"
-996	"Quick Share"
-997	"X/Twitter"
-998	"Advanced"
-999	"Basic"
-1000	"Pro"
-1001	"Watch ad to unlock Professional features for 24 hours"
-1002	"Behind QR"
-1003	"Bottom Left"
-1004	"Bottom Right"
-1005	"Center"
-1006	"Corners"
-1007	"Edges"
-1008	"Enable Watermark"
-1009	"Font Color"
-1010	"Font Size"
-1011	"Multiply"
-1012	"Normal"
-1013	"Opacity"
-1014	"Overlay"
-1015	"Pattern"
-1016	"Position"
-1017	"Screen"
-1018	"Text"
-1019	"© Company Name"
-1020	"Top Left"
-1021	"Top Right"
-1022	"Upload Image"
-1023	"Toggle settings panel"
-1024	"All Categories"
-1025	"Copy shareable link to clipboard"
-1026	"Export QR code to file"
-1027	"Open navigation menu"
-1028	"Open documentation sidebar"
-1029	"Close sidebar"
-1030	"Image unavailable"
-1031	"Message sent"
-1032	"Last Updated"
-1033	"Scan Me!"
-1034	"Enter text to encode..."
-1035	"Email subject"
-1036	"Email body"
-1037	"Pre-filled message"
-1038	"Place name or address"
-1039	"Network password"
-1040	"Event details..."
-1041	"Payment for..."
-1042	"Enter raw QR code data..."
-1043	"Your name"
-1044	"What can we help with?"
-1045	"Tell us what you are trying to do, and include any error messages if relevant."
-1046	"Message sent"
-1047	"Thanks - we received your message. If you do not hear back, email us at"
-1048	"We could not submit the form. Please email"
-1049	"Send message"
-1050	"Sending..."
-1051	"By sending a message, you agree that we can use your details to respond. See the Privacy Policy."
-1052	"Email Us"
-1053	"Have a question, suggestion, or need help? Send us an email and we'll get back to you."
-1054	"Please enter a URL"
-1055	"Preview"
-1056	"PDF Document"
-1057	"UEN (Business)"
-1058	"E-Wallet ID"
-1059	"TOTP (Time-based)"
-1060	"HOTP (Counter-based)"
-1061	"iOS URL Scheme"
-1062	"X (Twitter)"
-1063	"Counter"
-1064	"Period (sec)"
-1065	"utm_source"
-1066	"utm_medium"
-1067	"utm_campaign"
-1068	"+1234567890"
-1069	"name@anqr.link"
-1070	"0.0"
-1071	"MyWiFiNetwork"
-1072	"John Doe"
-1073	"John"
-1074	"Doe"
-1075	"Johnny"
-1076	"Company Inc."
-1077	"Software Engineer"
-1078	"Doe,John"
-1079	"123 Main St, City"
-1080	"My Bluetooth Device"
-1081	"Meeting"
-1082	"Conference Room A"
-1083	"Annual Conference 2024"
-1084	"Team Schedule"
-1085	"+1234567890 or @username"
-1086	"Hello! I scanned your QR code..."
-1087	"Wallet address"
-1088	"Invoice 12345"
-1089	"name@upi"
-1090	"Payment for order"
-1091	"João Silva"
-1092	"São Paulo"
-1093	"CPF, CNPJ, Email, Phone, or Random Key"
-1094	"MyApp"
-1095	"user@anqr.link"
-1096	"ABC123"
-1097	"LOT123"
-1098	"id.gs1.org"
-1099	"Building A, Room 101"
-1100	"Dell Laptop 15-inch"
-1101	"TKT-2024-001234"
-1102	"Concert 2024"
-1103	"Stadium Arena"
-1104	"Section A"
-1105	"Row 5, Seat 12"
+750	«Skjult nettverk»
+751	«Hjemmetelefon»
+752	«IBAN»
+753	«ID-type»
+754	«Bilde»
+755	«Instagram»
+756	«Lagervare»
+757	«iOS Universal»
+758	«Utsteder»
+759	«IT-ressurs»
+760	«Etikett»
+761	«Etternavn»
+762	«Breddegrad»
+763	«Lenketype»
+764	«LinkedIn»
+765	«Litecoin»
+766	«Sted»
+767	«Plassering og nettverk»
+768	«Lengdegrad»
+769	«Søk etter URL»
+770	«Markedsføring»
+771	«Markedsføringsetiketter»
+772	«Max Lengde Beskyttelse»
+773	«MeCard-kontakt»
+774	«Forhandlernavn»
+775	«Melding»
+776	«Melding»
+777	«WhatsApp / Telegram / Signal»
+778	«Sendebud»
+779	«Mobilnummer»
+780	«Mobiltelefon»
+781	«Navn»
+782	«Nasjonal ID / Skatte-ID»
+783	«Kallenavn»
+784	«Normaliser nye linjer»
+785	«Merknad»
+786	«OneDrive»
+787	«Åpen (Ingen passord)»
+788	«Organisasjon»
+789	«Annet»
+790	«OTP-autentisering»
+791	«Type»
+792	«Passord»
+793	«Mottakernavn»
+794	«Betalinger (åpne spesifikasjoner)»
+795	«Betal nå (Singapore)»
+796	«Telefon»
+797	«Telefon/brukernavn»
+798	«PIX (Brasil)»
+799	«PIX-nøkkel»
+800	«Vanlig tekst»
+801	«Plattform»
+802	«Forhåndsutfylt melding»
+803	«Profil-URL»
+804	«PromptPay-ID»
+805	«Rask betaling (Thailand)»
+806	«Proxytype»
+807	«Rådata»
+808	«Mottaker»
+809	«Referanse»
+810	«Referanse»
+811	«Resolverdomene»
+812	«RSVP-URL»
+813	«Søkeforespørsel»
+814	«Sete»
+815	«Hemmelighet (Base32)»
+816	«Seksjon/Sone»
+817	«Sikkerhetstype»
+818	«Serienummer»
+819	«Tjeneste»
+820	«Omdirigering av kortlenker»
+821	«Kort URL»
+822	«Signal»
+823	«SMS»
+824	«SMS/MMS»
+825	«Sosiale medier og meldinger»
+826	«Sosial profil»
+827	«Nettverksnavn (SSID)»
+828	«Start»
+829	«Startdato»
+830	«Stat/provins»
+831	«Gate»
+832	«Emne»
+833	«Emne»
+834	«Hendelsestittel»
+835	«Telefonnummer»
+836	«Telegram»
+837	«Tekstinnhold»
+838	«Billett-ID»
+839	«TikTok»
+840	«Transaksjonsnotat»
+841	«Reduser mellomrom»
+842	«UEN/mobilnummer»
+843	«Universell lenke»
+844	«UPI (India)»
+845	«UPI-ID (VPA)»
+846	«URL»
+847	«utm_kampanje»
+848	«utm_innhold»
+849	«UTM-kampanjekobling»
+850	«utm_medium»
+851	«utm_kilde»
+852	«utm_term»
+853	«Valider inndata»
+854	«Valideringsalternativer»
+855	«Validerings-URL»
+856	«Kjøretøy»
+857	«Sted»
+858	«Viber»
+859	«Video»
+860	«Nettsted»
+861	«WhatsApp»
+862	«WiFi»
+863	«Word-dokument»
+864	«Jobbtelefon»
+865	«YouTube»
+866	«Postnummer»
+867	«Forhåndsvisning av QR-kode -- klikk på Eksporter for å laste ned»
+868	«Simulering»
+869	«Miljøsimulering aktiv -- Forhåndsvisning viser hvordan QR-koden kan se ut under forskjellige forhold»
+870	«Ytterligere grense utenfor stillesonen»
+871	«Alfanumerisk»
+872	«Auto»
+873	«Auto (min: {{versjon}})»
+874	«Auto (Optimal)»
+875	«Byte / UTF-8»
+876	«{{antall}}:1»
+877	"Koderingsmodus"
+878	«Håndhev minimumsstillesone»
+879	«Sørg for ≥4 modulmargin»
+880	«Feilretting»
+881	«Ekstra grensemoduler»
+882	«H - Høy (30 %)»
+883	«Kanji»
+884	«L - Lav (7 %)»
+885	«Stillesone (margin)»
+886	«Maskemønster»
+887	«M - Middels (15 %)»
+888	«Modulstørrelse»
+889	«{{count}}°»
+890	«{{count}} moduler»
+891	«{{count}}ms»
+892	«{{count}}%»
+893	«{{count}}px»
+894	«Kun numerisk»
+895	«Q - Kvartil (25 %)»
+896	«Versjon»
+897	«Legg til farge»
+898	«Justeringsmønsterstil»
+899	«Bakgrunn»
+900	«Ved lysstyrke»
+901	«Etter klynge»
+902	«Ved overlegg»
+903	«Etter posisjon»
+904	«Tak»
+905	«Sirkel»
+906	«Fargepalett»
+907	«Konisk»
+908	«Tilkoblet»
+909	«Kontrastbeskyttelse»
+910	«Hjørneradius»
+911	"Sprø kanter"
+912	«Bruk bildegjengivelse: pikselert for skarpe kanter»
+913	«Strøket»
+914	«Diamant»
+915	«Punktrotasjon»
+916	«Prikker»
+917	«Øyets indre stil»
+918	«Øyestil med ytre perspektiv»
+919	«Øyeskala»
+920	«Finder-mønsterstil»
+921	«Etasje»
+922	«Forgrunn»
+923	«Rammestil»
+924	«Rammetekst»
+925	«Gap-modus»
+926	«Gradient»
+927	«Gradientvinkel»
+928	«Gradienttype»
+929	«Innsatt»
+930	«Lineær»
+931	«Trendfinner»
+932	«Tilpasningsmodul»
+933	«Minimumskontrastforhold»
+934	«Modulgap»
+935	«Negativt rom»
+936	«Fargemodus per modul»
+937	«Pikselbilde»
+938	«Radial»
+939	«Rund»
+940	«Avrundet»
+941	«Avrundet ramme»
+942	«Modulstil»
+943	«Skarp»
+944	«Glatt»
+945	«Solid»
+946	«Kvadrat»
+947	«Firkanter»
+948	«Klistremerke»
+949	«Hjerneslag»
+950	«Stil»
+951	«Etikett»
+952	«Tidsmønsterstil»
+953	«Gjennomsiktig bakgrunn»
+954	«Sikkerhetsanalyse»
+955	«Automatisk valg av ECC»
+956	«Automatisk valg av versjon»
+957	«Automatisk reduksjon av intensitet»
+958	«Automatisk innstilling»
+959	«Balansert»
+960	"Kontrastforhold"
+961	«Kontrastkontroll»
+962	«Utmerket»
+963	«Rettferdig»
+964	«Bra»
+965	«Låsejustering»
+966	«Låsefinnere»
+967	«Informasjon om låsformat»
+968	«Låsetidspunkt»
+969	«Informasjon om låsversjon»
+970	«Minimum modulstørrelse»
+971	«Minimums stille sone»
+972	«Dårlig»
+973	«Beskyttelseslås»
+974	«Kvalitetsanalyse»
+975	«Stille sone»
+976	«Sikkerhetsmodus»
+977	«Skannbarhetspoengsum»
+978	«Vis varmekart»
+979	«Simuler uskarphet»
+980	«Simuler støy»
+981	«Simuler rotasjon»
+982	«Inntil skanning mulig»
+983	«Metadata»
+984	«Utgang»
+985	«Overlegg / Bilde»
+986	«Nyttelast / Data»
+987	"Gjengivelse"
+988	«Vannmerke»
+989	«Direktekobling»
+990	«Generer delbar URL»
+991	«Legg inn HTML»
+992	«Generer innebygd kode»
+993	«Kod alle parametere»
+994	«Inkluder alle innstillinger i URL-adressen»
+995	«Rabatt»
+996	«Rask deling»
+997	«X/Twitter»
+998	«Avansert»
+999	«Basic»
+1000	«proff»
+1001	«Se annonsen for å låse opp profesjonelle funksjoner i 24 timer»
+1002	«Bak QR»
+1003	«Nederst til venstre»
+1004	«Nederst til høyre»
+1005	«Senter»
+1006	«Hjørner»
+1007	«Kanter»
+1008	«Aktiver vannmerke»
+1009	«Skriftfarge»
+1010	«Skriftstørrelse»
+1011	«Multipliser»
+1012	«Normal»
+1013	«Opasitet»
+1014	«Overlegg»
+1015	«Mønster»
+1016	«Posisjon»
+1017	«Skjerm»
+1018	«Tekst»
+1019	«© Firmanavn»
+1020	«Øverst til venstre»
+1021	«Øverst til høyre»
+1022	«Last opp bilde»
+1023	«Veksle innstillingspanel»
+1024	«Alle kategorier»
+1025	«Kopier delbar lenke til utklippstavlen»
+1026	«Eksporter QR-kode til fil»
+1027	«Åpne navigasjonsmenyen»
+1028	«Åpne sidefeltet for dokumentasjon»
+1029	«Lukk sidefeltet»
+1030	«Bilde utilgjengelig»
+1031	«Melding sendt»
+1032	«Sist oppdatert»
+1033	«Skann meg!»
+1034	«Skriv inn tekst som skal kodes...»
+1035	«Emne for e-post»
+1036	«E-postinnhold»
+1037	«Forhåndsutfylt melding»
+1038	«Stedsnavn eller adresse»
+1039	«Nettverkspassord»
+1040	«Detaljer om arrangementet...»
+1041	«Betaling for...»
+1042	«Skriv inn rå QR-kodedata ...»
+1043	«Ditt navn»
+1044	«Hva kan vi hjelpe med?»
+1045	«Fortell oss hva du prøver å gjøre, og inkluder eventuelle feilmeldinger hvis relevant.»
+1046	«Melding sendt»
+1047	«Takk -- vi har mottatt meldingen din. Hvis du ikke hører fra oss, kan du sende oss en e-post på»
+1048	«Vi kunne ikke sende skjemaet. Send det på e-post.»
+1049	«Send melding»
+1050	«Sender...»
+1051	«Ved å sende en melding samtykker du i at vi kan bruke opplysningene dine til å svare. Se personvernerklæringen.»
+1052	«Send oss en e-post»
+1053	«Har du et spørsmål, et forslag eller trenger du hjelp? Send oss en e-post, så tar vi kontakt med deg.»
+1054	«Skriv inn en URL»
+1055	«Forhåndsvisning»
+1056	«PDF-dokument»
+1057	«UEN (Forretningsliv)»
+1058	«E-lommebok-ID»
+1059	«TOTP (tidsbasert)»
+1060	«HOTP (Tellerbasert)»
+1061	«iOS URL-skjema»
+1062	«X (Twitter)»
+1063	«Teller»
+1064	«Punktum (sek)»
+1065	«utm_kilde»
+1066	«utm_medium»
+1067	«utm_kampanje»
+1068	«+1234567890»
+1069	«navn@anqr.lenke»
+1070	«0,0»
+1071	«MittWiFi-nettverk»
+1072	«John Doe»
+1073	«Johannes»
+1074	«Hind»
+1075	«Johnny»
+1076	«Selskap AS»
+1077	«Programvareingeniør»
+1078	«Henrik, John»
+1079	«Hovedgaten 123, City»
+1080	«Min Bluetooth-enhet»
+1081	«Møte»
+1082	«Konferanserom A»
+1083	«Årskonferanse 2024»
+1084	«Lagplan»
+1085	«+1234567890 eller @brukernavn»
+1086	«Hallo! Jeg skannet QR-koden din...»
+1087	«Lommebokadresse»
+1088	«Faktura 12345»
+1089	«navn@upi»
+1090	«Betaling for bestilling»
+1091	«João Silva»
+1092	«São Paulo»
+1093	«CPF, CNPJ, e-post, telefon eller tilfeldig nøkkel»
+1094	«Min app»
+1095	«bruker@anqr.lenke»
+1096	«ABC123»
+1097	«LOT123»
+1098	«id.gs1.org»
+1099	«Bygning A, rom 101»
+1100	«Dell bærbar PC 15-tommers»
+1101	«TKT-2024-001234»
+1102	«Konsert 2024»
+1103	«Stadionarenaen»
+1104	«Avsnitt A»
+1105	«Rad 5, sete 12»
+1106	«Sveitsisk QR-seddel (CH/LI)»
+1107	«Sveitsisk QR-faktura for fakturering i Sveits og Liechtenstein»
+1108	«Kreditors IBAN»
+1109	«Kreditornavn»
+1110	«Adressetype»
+1111	«Strukturert»
+1112	«Kombinert»
+1113	«Gate»
+1114	«Bygningsnummer»
+1115	«Postnummer»
+1116	«Kreditorland»
+1117	«Referansetype»
+1118	«QR-referanse»
+1119	«Kreditorreferanse (ISO 11649)»
+1120	«Ingen referanse»
+1121	«Ustrukturert melding»
+1122	«Fakturainformasjon (Swico)»
+1123	«Lynfaktura»
+1124	«Betaling via Bitcoin Lightning Network (BOLT11)»
+1125	«BOLT11-faktura»
+1126	«Lim inn din BOLT11-kodede faktura»
+1127	«Ethereum (EIP-681)»
+1128	«Ethereum-transaksjonsforespørsel med kjede- og gassparametere»
+1129	«Måladresse»
+1130	«Kjede-ID»
+1131	«1 = Hovednett, 137 = Polygon, osv.»
+1132	"Verdi (wei)"
+1133	«Beløp i wei (minste enhet)»
+1134	«Gassgrense»
+1135	«Bensinpris (wei)»
+1136	«Adresse for tokenkontrakt»
+1137	«For ERC-20-tokenoverføringer»
+1138	«Tokenbeløp»
+1139	«QRIS (Indonesia)»
+1140	«Rask responskode indonesisk standard»
+1141	«Selger-ID»
+1142	«Nasjonal selger-ID (NMID)»
+1143	«Kriteriene for selgere»
+1144	«Vanlig»
+1145	«Liten kjøpmann»
+1146	«Mikrokjøpmann»
+1147	«DuitNow (Malaysia)»
+1148	"Malaysisk nasjonalt QR-betalingssystem"
+1149	«Proxy-type»
+1150	«NRIC»
+1151	«Pass»
+1152	«Hærens ID»
+1153	«Bedriftsregistrering»
+1154	«Proxyverdi»
+1155	«BharatQR (India)»
+1156	«Enhetlig QR-kode for kort- og UPI-betalinger i India»
+1157	«VPA for kjøpmenn»
+1158	«Kjøpmanns-PAN»
+1159	«GST-detaljer»
+1160	«Fakturanummer»
+1161	«VietQR (Vietnam)»
+1162	«Vietnams nasjonale QR-betalingsstandard»
+1163	«Bank-BIN»
+1164	«NAPAS-bankidentifikasjonsnummer»
+1165	«Kontonummer»
+1166	«Kontonavn»
+1167	«Tjenestekode»
+1168	«QR-trykk»
+1169	«Interbankoverføring (24/7)»
+1170	"Interbankoverføring (Citad)"
+1171	«QR Ph (Filippinene)»
+1172	«Filippinenes nasjonale QR-betalingsstandard»
+1173	«TWQR (Taiwan)»
+1174	«Taiwans nasjonale QR-betalingsstandard»
+1175	«Skattenummer»
+1176	«HKQR (Hongkong)»
+1177	«Hong Kongs raskere betalingssystem QR»
+1178	«FPS-ID»
+1179	«JPQR (Japan)»
+1180	«Japans nasjonale QR-betalingsstandard»
+1181	«Butikk-ID»
+1182	«AusPayNet (Australia)»
+1183	«Australsk ny betalingsplattform PayID»
+1184	«Betalings-ID»
+1185	«Betalings-ID-type»
+1186	«BSB»
+1187	«ABN»
+1188	«Organisasjons-ID»
+1189	«PayPal.Me»
+1190	«Personlig PayPal-betalingslenke»
+1191	«PayPal-brukernavn»
+1192	«Kontantapp»
+1193	«Betalingslenke for Cash App $cashtag»
+1194	«$kontantlapp»
+1195	«Ditt Cash App-brukernavn (uten $)»
+1196	«EMV QR (generisk)»
+1197	«Generisk EMVCo QR-kode for tilpassede betalingsordninger»
+1198	«Landskode»
+1199	"ISO 3166-1 alpha-2 (f.eks. SG, TH, ID)"
+1200	"Valutakode"
+1201	«ISO 4217 numerisk (f.eks. 702 for SGD)»
+1202	«Statisk QR»
+1203	«Gjenbrukbar QR-kode (ingen fast mengde)»
+1204	«Tips-/gebyrindikator»
+1205	«Be om tips»
+1206	«Fast avgift»
+1207	«Prosentvis avgift»
+1208	«Gebyrbeløp»
+1209	«Gebyrprosent»
+1210	«Butikketikett»
+1211	«Lojalitetsnummer»
+1212	«Kundeetikett»
+1213	«Terminaletikett»
+1214	«Formålet med transaksjonen»
+1215	«Redigerbart beløp»
+1216	«Tillat betaler å endre beløpet»
+1217	«Utløpsdato»
+1218	«ÅÅÅÅMMDD-format»
+1219	«Regningsreferanse 1»
+1220	«Regningsreferanse 2»
+1221	«Fakturareferanse 3 / Terminal-ID»
+1222	«Beskrivelse»
+1223	«Transaksjons-ID»
+1224	«Gebyr-/tipstype»
+1225	«Fast»
+1226	«Prosentandel»
+1227	«Sveitsisk QR-fakturaformat for CH/LI-betalinger i henhold til SIX-retningslinjene»
+1228	«Lightning Network BOLT11-faktura for Bitcoin-betalinger»
+1229	«Format for forespørsel om transaksjon for Ethereum EIP-681»
+1230	«Indonesisk standard for rask respons for nasjonale betalinger»
+1231	«DuitNow QR for Malaysia PayNet-betalinger»
+1232	«BharatQR for enhetlige kort- og UPI-betalinger i India»
+1233	"VietQR for Vietnam NAPAS bankoverføringer"
+1234	«QR Ph for filippinske InstaPay/PESONet-betalinger»
+1235	«TWQR for betalinger til taiwanske finansinstitusjoner»
+1236	«HKQR for Hong Kongs raskere betalingssystem»
+1237	«JPQR for Japans enhetlige QR-betalinger»
+1238	«AusPayNet for australske NPP PayID-betalinger»
+1239	«Delbar PayPal.Me-betalingslenke»
+1240	«Betalingslenke for Cash App $cashtag»
+1241	«Generisk EMVCo MPM QR-kodeformat»
+1242	«Afrikaans»
+1243	«Assamesisk»
+1244	«Bulgarsk»
+1245	«Tsjekkisk»
+1246	«dansk»
+1247	«Tysk»
+1248	«gresk»
+1249	«Finsk»
+1250	«Fransk»
+1251	Hausa
+1252	"Kroatisk"
+1253	"Ungarsk"
+1254	«Igbo»
+1255	"Italiensk"
+1256	Khmer
+1257	Fasiliteter
+1258	«Laotisk»
+1259	«Burmesisk»
+1260	nepalsk
+1261	"nederlandsk"
+1262	"Norsk"
+1263	«Odia»
+1264	"Polsk"
+1265	«Pashto»
+1266	Romantikk
+1267	"Rumensk"
+1268	Sindhi
+1269	Swati
+1270	«Sør-Sotho»
+1271	"svensk"
+1272	Tswana
+1273	Tsonga
+1274	«Venda»
+1275	«Xhosa»
+1276	«Yoruba»
+1277	«Zulu»
+1278	«Sør-Ndebele»
+1279	«Valuta»
+1280	«Referansetype»
+1281	«BOLT11-faktura»
+1282	«Kjede-ID»
+1283	"Verdi (wei)"
+1284	«Gassgrense (valgfritt)»
+1285	«Selger-ID»
+1286	«Proxyverdi»
+1287	«Bank-BIN»
+1288	«Kontonummer»
+1289	«FPS-ID»
+1290	«Butikk-ID»
+1291	«Betalings-ID-type»
+1292	«Betalings-ID»
+1293	«PayPal.Me-brukernavn»
+1294	«$Cashtag»
+1295	«Landskode»
+1296	«Valutakode»
+1297	«MCC»
+1298	«Tips/servicegebyr»
+1299	«Tipsbeløp»
+1300	«Tipsprosent»
+1301	«Sveits»
+1302	«Liechtenstein»
+1303	«QR-referanse»
+1304	«Kreditorreferanse (ISO 11649)»
+1305	«Mobilnummer»
+1306	«NRIC»
+1307	«Pass»
+1308	«Hærens ID»
+1309	«Bedriftsregistrering»
+1310	«Andre»
+1311	«E-post»
+1312	«Mobil»
+1313	«ABN»
+1314	«Organisasjons-ID»
+1315	«Spør bruker»
+1316	«Fast beløp»
+1317	«Prosentandel»
+1318	"Ethereum hovednett (1)"
+1319	«Polygon (137)»
+1320	«BSC (56)»
+1321	«Snøskred (43114)»
+1322	«Arbitrum (42161)»
+1323	«Optimisme (10)»
+1324	«Sveitsisk QR-betalingsstandard (SIX)»
+1325	«Lim inn en BOLT11 Lightning-faktura»
+1326	«EIP-681 transaksjonsforespørsels-URI»
+1327	«Rask responskode indonesisk standard»
+1328	«Malaysias direktebetalingssystem»
+1329	«India samlet QR for UPI + kortbetalinger»
+1330	«NAPAS-bankidentifikasjonsnummer»
+1331	«Filippinenes QR-betalingsstandard»
+1332	«Taiwan QR-betalingsstandard»
+1333	«Identifikator for raskere betalingssystem»
+1334	«Japans enhetlige QR-betalingsstandard»
+1335	«Australsk NPP PayID-betaling»
+1336	«Oppretter paypal.me/dittnavn-lenke»
+1337	«Oppretter cash.app/$yourname-lenken»
+1338	«Generisk EMVCo-QR for selgerpresentert modus»
+1339	«ISO 3166-1 alfa-2»
+1340	«ISO 4217 numerisk»
+1341	«WPA/WPA2»
+1342	«iCloud»
+1343	«LINJE»
+1344	«UEN (Forretningsliv)»
+1345	«E-lommebok-ID»
+1346	«Beløp (IDR)»
+1347	«Beløp (MYR)»
+1348	«Beløp (VND)»
+1349	«Beløp (PHP)»
+1350	«Beløp (TWD)»
+1351	«Beløp (HKD)»
+1352	«Beløp (JPY)»
+1353	«Beløp (AUD)»
+1354	«dittnavn»
+1355	«Zürich»
+1356	«lnbc1...»
+1357	«0x...»
+1358	«1000000000000000000000»
+1359	«21000»
+1360	«ID1234567890123»
+1361	«Min butikk»
+1362	«Jakarta»
+1363	«+60123456789»
+1364	«Mumbai»
+1365	«970415»
+1366	«1234567890»
+1367	«NGUYEN VAN A»
+1368	«100000»
+1369	«Juan Dela Cruz»
+1370	«Manila»
+1371	«TW1234567890»
+1372	«Butikknavn»
+1373	«JP1234567890»
+1374	"Butikknavn"
+1375	«+61400123456»
+1376	«12345678901»
+1377	«50000»
+1378	«IT-ressurs»
+1379	«X (Twitter)»
+1380	«PDF-dokument»
+1381	«Sveitsisk QR-seddel (CH/LI)»
+1382	«Lyn (Bitcoin)»
+1383	«Ethereum (EIP-681)»
+1384	«QRIS (Indonesia)»
+1385	«DuitNow (Malaysia)»
+1386	«BharatQR (India)»
+1387	«VietQR (Vietnam)»
+1388	«QR Ph (Filippinene)»
+1389	«TWQR (Taiwan)»
+1390	«HKQR (Hongkong)»
+1391	«JPQR (Japan)»
+1392	«AusPayNet (Australia)»
+1393	«PayPal.Me»
+1394	«Kontantapp»
+1395	«EMV QR (generisk)»
+1396	«(valgfritt)»
+1397	«(obligatorisk)»

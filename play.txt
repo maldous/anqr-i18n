@@ -443,18 +443,6 @@ Google group here: https://groups.google.com/g/anqr-app
 ANQR web link here: https://anqr.link
 </pl-PL>
 
-<rm>
-ANQR is a QR code generator that supports images and animations.
-
-The interface has three interface levels: Basic, Advanced, and Professional.
-
-Select your level using the tabs in the header. Each level unlocks additional features while keeping the interface focused on what you need.
-
-Google group here: https://groups.google.com/g/anqr-app
-
-ANQR web link here: https://anqr.link
-</rm>
-
 <ro>
 ANQR is a QR code generator that supports images and animations.
 
