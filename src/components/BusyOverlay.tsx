@@ -1,25 +1,25 @@
 /**
  * BusyOverlay Component
- * 
+ *
  * Modern, minimal visual busy indicator for long-running operations.
  * No text - pure CSS animation. Always appears fullscreen centered.
  */
 
 interface BusyOverlayProps {
   /** Whether to show the overlay */
-  visible: boolean
+  visible: boolean;
 }
 
 export function BusyOverlay({ visible }: BusyOverlayProps) {
-  if (!visible) return null
-  
+  if (!visible) return null;
+
   return (
-    <div 
+    <div
       className="fixed inset-0 z-[100] flex items-center justify-center backdrop-blur-sm"
       style={{ backgroundColor: 'rgba(0, 0, 0, 0.4)' }}
     >
       {/* Modern spinner - simple border technique */}
-      <div 
+      <div
         className="w-10 h-10 rounded-full animate-spin"
         style={{
           border: '3px solid rgba(255, 255, 255, 0.3)',
@@ -27,7 +27,7 @@ export function BusyOverlay({ visible }: BusyOverlayProps) {
         }}
       />
     </div>
-  )
+  );
 }
 
-export default BusyOverlay
+export default BusyOverlay;

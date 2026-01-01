@@ -1,70 +1,42 @@
-import type { PageDefinition } from '../types'
-import { LAST_UPDATED, CONTACT_EMAIL } from '../types'
+import type { PageDefinition } from '../types';
+import { CONTACT_EMAIL, LAST_UPDATED } from '../types';
 
 export const about: PageDefinition = {
-  title: '"Mayelana ne-ANQR”',
-  description: '"I-ANQR iyisikhiqizi samakhodi e-QR samahhala esinendlela yokuqagela iklayenti — khiqiza amakhodi e-QR endaweni noma sebenzisa i-API yethu ukuze ushumeke.”',
+  title: 'About ANQR',
+  description: 'ANQR is a free QR code generator with a client-first approach — generate QR codes locally or use our API for embedding.',
   lastUpdated: LAST_UPDATED,
   sections: [
     {
-      heading: '"Kuyini i-ANQR?”',
-      paragraphs: [
-        '"I-ANQR (ebizwa ngokuthi "i-anchor”) iyi-generator yamakhodi e-QR yamahhala edala amakhodi askenikayo ama-URL, umbhalo, iziqinisekiso ze-Wi-Fi, amakhadi okuxhumana, imicimbi yekhalenda, nokuningi.”',
-        '"Yakhelwe abantu ngabanye, amabhizinisi amancane, abathengisi, kanye nabathuthukisi abafuna amathuluzi e-QR anamandla ngaphandle kokubhalisa. Umklamo wokuqala weklayenti usho ukuthi amakhodi e-QR akhiqizwa endaweni yakho kusiphequluli sakho ngokuzenzakalelayo, nge-API yeseva yokuzikhethela yokushumeka nokuhlanganisa kobungcweti.”',
-      ],
+      heading: 'What is ANQR?',
+      paragraphs: ['ANQR (pronounced "anchor") is a free QR code generator that creates scannable codes for URLs, text, Wi-Fi credentials, contact cards, calendar events, and more.', 'It is built for individuals, small businesses, marketers, and developers who want powerful QR tools without signing up. The client-first design means QR codes are generated locally in your browser by default, with an optional server API for professional embedding and integration.'],
     },
     {
-      heading: '"Izici Eziyinhloko”',
-      bullets: [
-        '"Khiqiza amakhodi e-QR ngokushesha kusiphequluli sakho — akudingeki i-akhawunti.”',
-        '"Yenza ngokwezifiso imibala, izitayela zamamojula, amaphethini okuthola, bese wengeza ukunqwabelanisa kwesithombe.”',
-        '"Thumela ngaphandle ngamafomethi amaningi: i-PNG, i-SVG, i-WebP, kanye ne-GIF egqwayizayo.”',
-        '"Izilawuli ezithuthukisiwe zezinga lokulungisa amaphutha, inguqulo ye-QR, imodi yokufaka ikhodi, kanye nokukhetha imaski.”',
-        '"Isiqondiso sokuphepha kokuskena kanye nokubuka kuqala bukhoma ukusiza ukugcina amakhodi efundeka ephrintiwe nasezikrinini.”',
-        '"I-API eseceleni kweseva yokushumeka kobungcweti ngokusekelwa okugcwele kwamapharamitha.”',
-        '"Isebenza ingaxhunyiwe ku-inthanethi uma isilayishiwe — uhlelo lokusebenza lwewebhu olungaguquki ongalusebenzisa noma kuphi.”',
-      ],
+      heading: 'Key features',
+      bullets: ['Generate QR codes instantly in your browser — no account required.', 'Customise colours, module styles, finder patterns, and add image overlays.', 'Export in multiple formats: PNG, SVG, WebP, and animated GIF.', 'Advanced controls for error correction level, QR version, encoding mode, and mask selection.', 'Scan-safety guidance and live preview to help keep codes readable in print and on screens.', 'Server-side API for professional embedding with full parameter support.', 'Works offline once loaded — it is a static web app you can run anywhere.'],
     },
     {
-      heading: '"Indlela i-ANQR esebenza ngayo”',
-      paragraphs: [
-        '"I-ANQR isebenza kusiphequluli sakho bese ifaka ikhodi yokufaka kwakho ku-QR matrix ejwayelekile ngokulungiswa kwamaphutha kaReed–Solomon, bese ikwenza kufomethi oyikhethayo.”',
-        '"Ngokuzenzakalelayo, ukwenziwa kwenzeka endaweni yakho kusiphequluli sakho. Ukuze kusetshenziswe ngobungcweti, ungasebenzisa futhi i-API eseceleni kweseva ukukhiqiza amakhodi e-QR ngamapharamitha e-URL — afanele ukushumeka kumawebhusayithi, ama-imeyili, noma imisebenzi ezenzakalelayo.”',
-        '"Uma ungeza ama-overlays noma ama-animation, i-ANQR ibhalansisa isitayela nokuthembeka kokuskena ukuze umphumela uhlale ungaskenwa.”',
-        '"I-ANQR igxile kumakhodi angaguquki (idatha ingaphakathi kwe-QR). Uma udinga ikhodi enamandla (indawo ehlelekayo), ungabhala ikhodi ye-URL yakho yokuqondisa kabusha noma isixhumanisi esifushane.”',
-      ],
+      heading: 'How ANQR works',
+      paragraphs: ['ANQR runs in your browser and encodes your input into a standard QR matrix with Reed–Solomon error correction, then renders it to the format you choose.', 'By default, generation happens locally in your browser. For professional use, you can also use the server-side API to generate QR codes via URL parameters — perfect for embedding in websites, emails, or automated workflows.', 'When you add overlays or animations, ANQR balances styling with scan reliability so the result remains scannable.', 'ANQR focuses on static codes (the data is inside the QR). If you need a dynamic code (editable destination), you can encode your own redirect URL or short link.'],
     },
     {
-      heading: '"Ubani osebenzisa i-ANQR?”',
-      paragraphs: [
-        '"I-ANQR isebenza njengethuluzi lewebhu elizimele. Uma unemibuzo, ukwesekwa, noma imibuzo yebhizinisi, sicela usebenzise ikhasi lokuxhumana noma i-imeyili”' + CONTACT_EMAIL + '".”',
-      ],
+      heading: 'Who operates ANQR?',
+      paragraphs: [`18${CONTACT_EMAIL}19`],
     },
     {
-      heading: '"Ukukhangisa nokuthi sihlala kanjani sikhululekile”',
-      paragraphs: [
-        '"I-ANQR imahhala ukuyisebenzisa futhi isekelwa ukukhangisa. Singase sibonise izikhangiso nge-Google AdSense kanye/noma abanye ozakwethu bokukhangisa.”',
-        '"Abahlinzeki bezikhangiso bangasebenzisa amakhukhi noma ubuchwepheshe obufanayo ukwenza izikhangiso zibe ngezakho ngokusekelwe ezithakazelweni zakho kanye nomsebenzi wakho wokuphequlula. Ungaphatha izintandokazi zezikhangiso kuzilungiselelo zedivayisi yakho kanye nezilungiselelo zezikhangiso ze-Google, futhi ufunde kabanzi kuNqubomgomo yethu Yobumfihlo.”',
-        '"Asithengisi okuqukethwe okufaka ikhodi kumakhodi e-QR. Izikhangiso ziyasiza ekukhokheleni izindleko zokuqhuba nokuthuthukisa iphrojekthi.”',
-      ],
+      heading: 'Advertising and how we stay free',
+      paragraphs: ['ANQR is free to use and is supported by advertising. We may show ads via Google AdSense and/or other advertising partners.', 'Ad providers may use cookies or similar technologies to personalise ads based on your interests and browsing activity. You can manage ad preferences in your device settings and through Google ad settings, and learn more in our Privacy Policy.', 'We do not sell the content you encode into QR codes. Ads help cover the cost of running and improving the project.'],
     },
     {
-      heading: '"Izindinganiso ezivulekile”',
-      paragraphs: [
-        '"I-ANQR ikhiqiza amakhodi e-QR asekelwe ku-ISO/IEC 18004 standard futhi ihlose ukuhambisana okubanzi kuzo zonke izikena, amakhamera, kanye nemisebenzi yokuphrinta.”',
-      ],
+      heading: 'Open standards',
+      paragraphs: ['ANQR generates QR codes based on the ISO/IEC 18004 standard and aims for broad compatibility across scanners, cameras, and print workflows.'],
     },
     {
-      heading: '"Isaziso sophawu lokuhweba”',
-      paragraphs: [
-        '"I-QR Code® wuphawu lokuhweba olubhalisiwe lwe-DENSO WAVE INCORPORATED. I-ANQR ayixhunyanisiwe, ayivunyelwe, noma ayixhasiwe yi-DENSO WAVE INCORPORATED.”',
-      ],
+      heading: 'Trademark notice',
+      paragraphs: ['QR Code® is a registered trademark of DENSO WAVE INCORPORATED. ANQR is not affiliated with, endorsed by, or sponsored by DENSO WAVE INCORPORATED.'],
     },
     {
-      heading: '"Impendulo kanye neminikelo”',
-      paragraphs: [
-        '"Siyakwamukela impendulo, imibiko yeziphazamiso, kanye neziphakamiso zezici. Sicela uxhumane nathi nge-imeyili noma ikhasi lokuxhumana — sifunda yonke imiyalezo, yize izikhathi zokuphendula zingahluka.”',
-      ],
+      heading: 'Feedback and contributions',
+      paragraphs: ['We welcome feedback, bug reports, and feature suggestions. Please get in touch via email or the contact page — we read every message, though response times may vary.'],
     },
   ],
 };

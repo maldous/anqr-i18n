@@ -6,8 +6,8 @@
  * builds, or when slot IDs have not been configured yet.
  */
 
-import { AdSense, AdPlaceholder } from '@/components/AdPlaceholder'
-import { Capacitor } from '@capacitor/core'
+import { Capacitor } from '@capacitor/core';
+import { AdPlaceholder, AdSense } from '@/components/AdPlaceholder';
 
 type SlotName =
   // Main app ads
@@ -45,7 +45,7 @@ type SlotName =
   | 'gallery-after-color-modes'
   | 'gallery-after-preprocessing'
   | 'gallery-after-encoding'
-  | 'gallery-after-dithering'
+  | 'gallery-after-dithering';
 
 /**
  * Optional environment-driven slot configuration.
@@ -84,34 +84,35 @@ const SLOT_IDS: Partial<Record<SlotName, string>> = {
   'gallery-after-styles': import.meta.env.VITE_ADSENSE_SLOT_GALLERY_AFTER_STYLES,
   'gallery-after-colors': import.meta.env.VITE_ADSENSE_SLOT_GALLERY_AFTER_COLORS,
   'gallery-after-image-overlay': import.meta.env.VITE_ADSENSE_SLOT_GALLERY_AFTER_IMAGE_OVERLAY,
-  'gallery-after-animation-overlay': import.meta.env.VITE_ADSENSE_SLOT_GALLERY_AFTER_ANIMATION_OVERLAY,
+  'gallery-after-animation-overlay': import.meta.env
+    .VITE_ADSENSE_SLOT_GALLERY_AFTER_ANIMATION_OVERLAY,
   'gallery-after-blend-modes': import.meta.env.VITE_ADSENSE_SLOT_GALLERY_AFTER_BLEND_MODES,
   'gallery-after-color-modes': import.meta.env.VITE_ADSENSE_SLOT_GALLERY_AFTER_COLOR_MODES,
   'gallery-after-preprocessing': import.meta.env.VITE_ADSENSE_SLOT_GALLERY_AFTER_PREPROCESSING,
   'gallery-after-encoding': import.meta.env.VITE_ADSENSE_SLOT_GALLERY_AFTER_ENCODING,
   'gallery-after-dithering': import.meta.env.VITE_ADSENSE_SLOT_GALLERY_AFTER_DITHERING,
-}
+};
 
 function isNumericSlot(value: string | undefined | null): value is string {
-  return !!value && /^\d+$/.test(value)
+  return !!value && /^\d+$/.test(value);
 }
 
 function resolveSlotId(slot: string): string | null {
   // Allow callers to pass numeric ad-unit IDs directly.
-  if (isNumericSlot(slot)) return slot
+  if (isNumericSlot(slot)) return slot;
 
   // Otherwise, map known slot names to configured IDs.
-  const mapped = SLOT_IDS[slot as SlotName]
-  return isNumericSlot(mapped) ? mapped : null
+  const mapped = SLOT_IDS[slot as SlotName];
+  return isNumericSlot(mapped) ? mapped : null;
 }
 
 export interface AdUnitProps {
-  slot: string
-  width?: number | string
-  height?: number
-  className?: string
-  format?: 'horizontal' | 'vertical' | 'rectangle' | 'auto'
-  responsive?: boolean
+  slot: string;
+  width?: number | string;
+  height?: number;
+  className?: string;
+  format?: 'horizontal' | 'vertical' | 'rectangle' | 'auto';
+  responsive?: boolean;
 }
 
 export function AdUnit({
@@ -122,28 +123,46 @@ export function AdUnit({
   format = 'auto',
   responsive = true,
 }: AdUnitProps) {
-  const slotId = resolveSlotId(slot)
-  
+  const slotId = resolveSlotId(slot);
+
   // Check if running in native app (Android/iOS via Capacitor)
   // AdSense doesn't work in native WebViews - AdMob handles ads there instead
-  const isNative = Capacitor.isNativePlatform()
-  
+  const isNative = Capacitor.isNativePlatform();
+
   // On native platforms, don't render inline web ads at all
   // AdMob banner ads are shown separately via admob-service.ts
   if (isNative) {
-    return null
+    return null;
   }
-  
-  const enabled = import.meta.env.PROD && import.meta.env.VITE_ADSENSE_ENABLED !== 'false' && !!slotId
+
+  const enabled =
+    import.meta.env.PROD && import.meta.env.VITE_ADSENSE_ENABLED !== 'false' && !!slotId;
 
   // Show placeholder in development or when slot not configured (web only)
   if (!enabled) {
-    return <AdPlaceholder slot={slot} width={width} height={height} className={className} format={format} />
+    return (
+      <AdPlaceholder
+        slot={slot}
+        width={width}
+        height={height}
+        className={className}
+        format={format}
+      />
+    );
   }
 
   // When rendering a fixed-size unit, pass width/height via inline style.
-  const w = typeof width === 'number' ? width : undefined
-  return <AdSense slot={slotId} format={format} responsive={responsive} className={className} width={w} height={height} />
+  const w = typeof width === 'number' ? width : undefined;
+  return (
+    <AdSense
+      slot={slotId}
+      format={format}
+      responsive={responsive}
+      className={className}
+      width={w}
+      height={height}
+    />
+  );
 }
 
-export default AdUnit
+export default AdUnit;

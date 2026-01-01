@@ -1,13 +1,13 @@
-import { getHideFreePoints } from "./form.ts";
-import isLocked, { isData } from "./locked.ts";
+import { getHideFreePoints } from './form.ts';
+import isLocked, { isData } from './locked.ts';
 
-const canvas = document.getElementById("output") as HTMLCanvasElement;
+const canvas = document.getElementById('output') as HTMLCanvasElement;
 
 export default function drawQR(data: boolean[][]) {
   const l = data.length;
   canvas.width = l;
   canvas.height = l;
-  const ctx = canvas.getContext("2d")!;
+  const ctx = canvas.getContext('2d')!;
   const imgData = ctx.getImageData(0, 0, l, l);
   let i = 0;
   const hideFreePoints = getHideFreePoints();

@@ -60,3 +60,6 @@ coverage/
 Thumbs.db
 ehthumbs.db
 Desktop.ini
+
+# Python cache
+__pycache__/

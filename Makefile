@@ -1,4 +1,4 @@
-.PHONY: dev build gallery gallery\:gif deploy android android\:init android\:sync android\:build android\:release android\:open install clean
+.PHONY: dev build gallery gallery\:gif deploy android android\:init android\:sync android\:build android\:release android\:open install clean fix lint format check
 
 # ============================================
 # Environment variables
@@ -99,6 +99,26 @@ build:
 
 clean:
 	rm -rf dist node_modules android/app/build
+
+# ============================================
+# Code Quality (Biome - modern all-in-one formatter/linter)
+# ============================================
+
+# Fix all: format, lint with auto-fix, and organize imports
+fix:
+	npx @biomejs/biome check --write --unsafe .
+
+# Lint only (no formatting)
+lint:
+	npx @biomejs/biome lint .
+
+# Format only (no linting)
+format:
+	npx @biomejs/biome format --write .
+
+# Check all without making changes (for CI)
+check:
+	npx @biomejs/biome check --max-diagnostics=0 .
 
 # ============================================
 # PWA Icons Generation

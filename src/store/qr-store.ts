@@ -1,824 +1,894 @@
-import { create } from 'zustand'
+import { create } from 'zustand';
 import {
-  generateSwissQRBill,
-  generateLightning,
-  generateEthereumEIP681,
-  generateQRIS,
-  generateDuitNow,
+  generateAusPayNet,
   generateBharatQR,
-  generateVietQR,
-  generateQRPh,
-  generateTWQR,
+  generateCashApp,
+  generateDuitNow,
+  generateEMVMPM,
+  generateEthereumEIP681,
   generateHKQR,
   generateJPQR,
-  generateAusPayNet,
+  generateLightning,
   generatePayPalMe,
-  generateCashApp,
-  generateEMVMPM,
-} from '@/modules/payload-generators'
+  generateQRIS,
+  generateQRPh,
+  generateSwissQRBill,
+  generateTWQR,
+  generateVietQR,
+} from '@/modules/payload-generators';
 
 // Tier levels
-export type Tier = 'basic' | 'advanced' | 'professional'
+export type Tier = 'basic' | 'advanced' | 'professional';
 
 // Premium access state (from watching rewarded ad)
 export interface PremiumAccess {
-  active: boolean
-  expiresAt: number | null  // timestamp when access expires (24 hours from activation)
+  active: boolean;
+  expiresAt: number | null; // timestamp when access expires (24 hours from activation)
 }
 
 // Payload types - cleaned up list (removed closed/proprietary payment systems)
-export type PayloadKind = 
+export type PayloadKind =
   // Core
-  | 'plain_text' | 'url' | 'tel' | 'email' | 'sms' | 'geo' 
+  | 'plain_text'
+  | 'url'
+  | 'tel'
+  | 'email'
+  | 'sms'
+  | 'geo'
   // Contact/Identity
-  | 'vcard' | 'mecard' | 'bizcard'
-  // Network/Device  
-  | 'wifi' | 'app_link'
+  | 'vcard'
+  | 'mecard'
+  | 'bizcard'
+  // Network/Device
+  | 'wifi'
+  | 'app_link'
   // Calendar/Productivity
-  | 'event' | 'event_rsvp' | 'calendar_subscription'
+  | 'event'
+  | 'event_rsvp'
+  | 'calendar_subscription'
   // Documents/Media
-  | 'file_url' | 'cloud_link'
+  | 'file_url'
+  | 'cloud_link'
   // Social/Communication
-  | 'social_profile' | 'messaging_link'
+  | 'social_profile'
+  | 'messaging_link'
   // Payments (open specs only)
-  | 'epc_sepa' | 'upi' | 'paynow' | 'promptpay' | 'pix' | 'crypto'
+  | 'epc_sepa'
+  | 'upi'
+  | 'paynow'
+  | 'promptpay'
+  | 'pix'
+  | 'crypto'
   // Additional payment standards
-  | 'swiss_qr_bill' | 'lightning' | 'ethereum_eip681'
+  | 'swiss_qr_bill'
+  | 'lightning'
+  | 'ethereum_eip681'
   // EMV-based national payment schemes
-  | 'qris' | 'duitnow' | 'bharatqr' | 'vietqr' | 'qrph' | 'twqr' | 'hkqr' | 'jpqr' | 'auspaynet'
+  | 'qris'
+  | 'duitnow'
+  | 'bharatqr'
+  | 'vietqr'
+  | 'qrph'
+  | 'twqr'
+  | 'hkqr'
+  | 'jpqr'
+  | 'auspaynet'
   // Payment link services
-  | 'paypal_me' | 'cashapp'
+  | 'paypal_me'
+  | 'cashapp'
   // Generic EMV
   | 'emv_generic'
   // Industrial/Enterprise
   | 'gs1_digital_link'
   // Marketing/Dynamic
-  | 'short_link' | 'utm_link'
+  | 'short_link'
+  | 'utm_link'
   // Custom
-  | 'custom'
+  | 'custom';
 
 // QR encoding
-export type ECCLevel = 'L' | 'M' | 'Q' | 'H'
-export type EncodingMode = 'auto' | 'numeric' | 'alphanumeric' | 'byte' | 'kanji'
+export type ECCLevel = 'L' | 'M' | 'Q' | 'H';
+export type EncodingMode = 'auto' | 'numeric' | 'alphanumeric' | 'byte' | 'kanji';
 
 // Rendering
-export type ModuleStyle = 'square' | 'rounded' | 'dots' | 'diamond' | 'connected'
-export type FinderStyle = 'square' | 'rounded' | 'circle'
-export type AlignmentStyle = 'match_finder' | 'square' | 'rounded' | 'circle'
-export type TimingStyle = 'match_module' | 'solid' | 'dashed'
-export type GapMode = 'none' | 'inset' | 'stroke' | 'negative_space'
-export type GradientType = 'none' | 'linear' | 'radial' | 'conic'
-export type FrameStyle = 'none' | 'rounded_frame' | 'sticker' | 'tag'
+export type ModuleStyle = 'square' | 'rounded' | 'dots' | 'diamond' | 'connected';
+export type FinderStyle = 'square' | 'rounded' | 'circle';
+export type AlignmentStyle = 'match_finder' | 'square' | 'rounded' | 'circle';
+export type TimingStyle = 'match_module' | 'solid' | 'dashed';
+export type GapMode = 'none' | 'inset' | 'stroke' | 'negative_space';
+export type GradientType = 'none' | 'linear' | 'radial' | 'conic';
+export type FrameStyle = 'none' | 'rounded_frame' | 'sticker' | 'tag';
 
 // Overlay
-export type OverlayMode = 
-  | 'center' | 'blend' | 'halftone' | 'mosaic' | 'gapfill' | 'brightness' | 'duotone'
-  | 'subpixel' | 'dithered' | 'blue-noise' 
-  | 'pixelate' | 'outline' | 'wave' | 'subpixel-size' | 'dither' | 'extreme'
-export type ColorMode = 'color' | 'grayscale' | 'bw'
-export type FitMode = 'cover' | 'contain' | 'stretch'
-export type OverlayType = 'static' | 'gif' | 'apng' | 'webp_anim' | 'video'
+export type OverlayMode =
+  | 'center'
+  | 'blend'
+  | 'halftone'
+  | 'mosaic'
+  | 'gapfill'
+  | 'brightness'
+  | 'duotone'
+  | 'subpixel'
+  | 'dithered'
+  | 'blue-noise'
+  | 'pixelate'
+  | 'outline'
+  | 'wave'
+  | 'subpixel-size'
+  | 'dither'
+  | 'extreme';
+export type ColorMode = 'color' | 'grayscale' | 'bw';
+export type FitMode = 'cover' | 'contain' | 'stretch';
+export type OverlayType = 'static' | 'gif' | 'apng' | 'webp_anim' | 'video';
 
 // Dither - comprehensive algorithms
-export type DitherKind = 
+export type DitherKind =
   // Error diffusion
-  | 'error_diffusion' 
+  | 'error_diffusion'
   // Ordered/threshold
-  | 'ordered_bayer' | 'ordered_clustered' | 'ordered_void_cluster'
-  | 'blue_noise_threshold' | 'true_dither'
+  | 'ordered_bayer'
+  | 'ordered_clustered'
+  | 'ordered_void_cluster'
+  | 'blue_noise_threshold'
+  | 'true_dither'
   // Noise-based
-  | 'blue_noise' | 'white_noise' | 'gaussian_noise' | 'triangular_noise'
+  | 'blue_noise'
+  | 'white_noise'
+  | 'gaussian_noise'
+  | 'triangular_noise'
   // Hybrid/Advanced
-  | 'blue_noise_error_diffusion' | 'screened_blue_noise' | 'perceptual' | 'edge_aware' | 'adaptive_threshold' | 'temporal_blue_noise'
+  | 'blue_noise_error_diffusion'
+  | 'screened_blue_noise'
+  | 'perceptual'
+  | 'edge_aware'
+  | 'adaptive_threshold'
+  | 'temporal_blue_noise';
 
-export type DiffusionKernel = 
-  | 'floyd_steinberg' | 'jarvis_judice_ninke' | 'stucki' | 'burkes' 
-  | 'sierra' | 'sierra_2' | 'sierra_lite' | 'atkinson'
+export type DiffusionKernel =
+  | 'floyd_steinberg'
+  | 'jarvis_judice_ninke'
+  | 'stucki'
+  | 'burkes'
+  | 'sierra'
+  | 'sierra_2'
+  | 'sierra_lite'
+  | 'atkinson';
 
-export type OrderedMatrix = 
-  | 'bayer2' | 'bayer4' | 'bayer8' 
-  | 'clustered_dot' | 'void_cluster'
+export type OrderedMatrix = 'bayer2' | 'bayer4' | 'bayer8' | 'clustered_dot' | 'void_cluster';
 
 // Output
-export type OutputFormat = 'png' | 'webp' | 'gif' | 'svg'
-export type GifQuantizer = 'median_cut' | 'neuquant' | 'octree'
-export type GifDither = 'off' | 'floyd' | 'ordered'
+export type OutputFormat = 'png' | 'webp' | 'gif' | 'svg';
+export type GifQuantizer = 'median_cut' | 'neuquant' | 'octree';
+export type GifDither = 'off' | 'floyd' | 'ordered';
 
 // Safety
-export type SafetyMode = 'off' | 'balanced' | 'strict'
+export type SafetyMode = 'off' | 'balanced' | 'strict';
 
 // WiFi auth types
-export type WifiAuth = 'WPA' | 'WPA2' | 'WPA3' | 'WEP' | 'nopass'
+export type WifiAuth = 'WPA' | 'WPA2' | 'WPA3' | 'WEP' | 'nopass';
 
 // VCard version
-export type VCardVersion = '2.1' | '3.0' | '4.0'
+export type VCardVersion = '2.1' | '3.0' | '4.0';
 
 // Gradient stop
 export interface GradientStop {
-  pos: number
-  color: string
+  pos: number;
+  color: string;
 }
 
 // Crop region
 export interface CropRegion {
-  x: number
-  y: number
-  size: number
+  x: number;
+  y: number;
+  size: number;
 }
 
 // URL helper
 export interface UrlHelper {
-  href: string
-  forceHttps: boolean
-  utmSource?: string
-  utmMedium?: string
-  utmCampaign?: string
-  utmTerm?: string
-  utmContent?: string
+  href: string;
+  forceHttps: boolean;
+  utmSource?: string;
+  utmMedium?: string;
+  utmCampaign?: string;
+  utmTerm?: string;
+  utmContent?: string;
 }
 
 // Tel helper
 export interface TelHelper {
-  number: string
+  number: string;
 }
 
 // Email helper
 export interface EmailHelper {
-  to: string
-  subject?: string
-  body?: string
+  to: string;
+  subject?: string;
+  body?: string;
 }
 
 // SMS helper
 export interface SmsHelper {
-  number: string
-  body?: string
+  number: string;
+  body?: string;
 }
 
 // Geo helper
 export interface GeoHelper {
-  lat: number
-  lon: number
-  query?: string
+  lat: number;
+  lon: number;
+  query?: string;
 }
 
 // WiFi helper
 export interface WifiHelper {
-  ssid: string
-  auth: WifiAuth
-  password?: string
-  hidden: boolean
-  eapIdentity?: string
-  eapAnonymous?: string
-  eapPhase2?: string
-  eapCaCert?: string
+  ssid: string;
+  auth: WifiAuth;
+  password?: string;
+  hidden: boolean;
+  eapIdentity?: string;
+  eapAnonymous?: string;
+  eapPhase2?: string;
+  eapCaCert?: string;
 }
 
 // VCard helper
 export interface VCardHelper {
-  version: VCardVersion
-  fn?: string
-  n?: string
-  org?: string
-  title?: string
-  tel?: string[]
-  email?: string[]
-  url?: string
-  adr?: string[]
-  note?: string
-  photo?: string
-  bday?: string
-  role?: string
-  impp?: string
-  uid?: string
+  version: VCardVersion;
+  fn?: string;
+  n?: string;
+  org?: string;
+  title?: string;
+  tel?: string[];
+  email?: string[];
+  url?: string;
+  adr?: string[];
+  note?: string;
+  photo?: string;
+  bday?: string;
+  role?: string;
+  impp?: string;
+  uid?: string;
 }
 
 // MeCard helper
 export interface MeCardHelper {
-  n?: string
-  tel?: string
-  email?: string
-  adr?: string
-  org?: string
-  url?: string
-  note?: string
-  bday?: string
-  nickname?: string
+  n?: string;
+  tel?: string;
+  email?: string;
+  adr?: string;
+  org?: string;
+  url?: string;
+  note?: string;
+  bday?: string;
+  nickname?: string;
 }
 
 // Event helper
 export interface EventHelper {
-  summary?: string
-  location?: string
-  description?: string
-  start?: string
-  end?: string
-  tz?: string
-  rrule?: string
+  summary?: string;
+  location?: string;
+  description?: string;
+  start?: string;
+  end?: string;
+  tz?: string;
+  rrule?: string;
 }
 
 // Crypto payment helper
 export interface CryptoHelper {
-  type: string
-  address: string
-  amount?: number
-  label?: string
+  type: string;
+  address: string;
+  amount?: number;
+  label?: string;
 }
 
 // OTP Auth helper
 export interface OtpAuthHelper {
-  issuer?: string
-  account?: string
-  secret?: string
-  algorithm?: string
-  digits?: number
-  period?: number
-  counter?: number
-  type?: 'totp' | 'hotp'
+  issuer?: string;
+  account?: string;
+  secret?: string;
+  algorithm?: string;
+  digits?: number;
+  period?: number;
+  counter?: number;
+  type?: 'totp' | 'hotp';
 }
 
 // Swiss QR-bill helper (SIX payment standard)
 export interface SwissQRBillHelper {
-  creditorIBAN: string
-  creditorName: string
-  creditorAddressType: 'S' | 'K'  // S=Structured, K=Combined
-  creditorStreet?: string
-  creditorBuildingNumber?: string
-  creditorPostalCode?: string
-  creditorCity?: string
-  creditorCountry: string
-  amount?: number
-  currency: 'CHF' | 'EUR'
-  referenceType: 'QRR' | 'SCOR' | 'NON'
-  reference?: string
-  unstructuredMessage?: string
-  billInformation?: string
+  creditorIBAN: string;
+  creditorName: string;
+  creditorAddressType: 'S' | 'K'; // S=Structured, K=Combined
+  creditorStreet?: string;
+  creditorBuildingNumber?: string;
+  creditorPostalCode?: string;
+  creditorCity?: string;
+  creditorCountry: string;
+  amount?: number;
+  currency: 'CHF' | 'EUR';
+  referenceType: 'QRR' | 'SCOR' | 'NON';
+  reference?: string;
+  unstructuredMessage?: string;
+  billInformation?: string;
 }
 
 // Lightning Network helper (BOLT11)
 export interface LightningHelper {
-  invoice: string  // BOLT11 encoded invoice string
+  invoice: string; // BOLT11 encoded invoice string
 }
 
 // Ethereum EIP-681 helper
 export interface EthereumHelper {
-  targetAddress: string
-  chainId?: number  // 1=Mainnet, 137=Polygon, etc.
-  value?: string    // Amount in wei
-  gas?: number
-  gasLimit?: number
-  gasPrice?: string
-  tokenAddress?: string  // For ERC-20 transfers
-  tokenValue?: string    // For ERC-20 transfers (amount in token's smallest unit)
-  functionName?: string  // For contract calls
+  targetAddress: string;
+  chainId?: number; // 1=Mainnet, 137=Polygon, etc.
+  value?: string; // Amount in wei
+  gas?: number;
+  gasLimit?: number;
+  gasPrice?: string;
+  tokenAddress?: string; // For ERC-20 transfers
+  tokenValue?: string; // For ERC-20 transfers (amount in token's smallest unit)
+  functionName?: string; // For contract calls
 }
 
 // QRIS (Indonesia) helper
 export interface QRISHelper {
-  merchantId: string
-  nmid?: string  // National Merchant ID
-  merchantCriteria?: '00' | '01' | '02' | '03'  // UMI classification
-  merchantName: string
-  merchantCity: string
-  postalCode?: string
-  amount?: number
-  feeType?: 'FIXED' | 'PERCENT'
-  feeAmount?: number
-  terminalLabel?: string
+  merchantId: string;
+  nmid?: string; // National Merchant ID
+  merchantCriteria?: '00' | '01' | '02' | '03'; // UMI classification
+  merchantName: string;
+  merchantCity: string;
+  postalCode?: string;
+  amount?: number;
+  feeType?: 'FIXED' | 'PERCENT';
+  feeAmount?: number;
+  terminalLabel?: string;
 }
 
 // DuitNow (Malaysia) helper
 export interface DuitNowHelper {
-  proxyType: 'NRIC' | 'MOBILE' | 'PASSPORT' | 'ARMY' | 'BUSINESS' | 'OTHERS'
-  proxyValue: string
-  merchantName: string
-  merchantCity?: string
-  amount?: number
-  reference?: string
+  proxyType: 'NRIC' | 'MOBILE' | 'PASSPORT' | 'ARMY' | 'BUSINESS' | 'OTHERS';
+  proxyValue: string;
+  merchantName: string;
+  merchantCity?: string;
+  amount?: number;
+  reference?: string;
 }
 
 // BharatQR (India) helper
 export interface BharatQRHelper {
-  merchantVPA?: string
-  merchantPAN?: string
-  merchantID?: string
-  merchantName: string
-  merchantCity: string
-  mcc?: string
-  amount?: number
-  gstDetails?: string
-  invoiceNumber?: string
-  referenceNumber?: string
-  terminalId?: string
+  merchantVPA?: string;
+  merchantPAN?: string;
+  merchantID?: string;
+  merchantName: string;
+  merchantCity: string;
+  mcc?: string;
+  amount?: number;
+  gstDetails?: string;
+  invoiceNumber?: string;
+  referenceNumber?: string;
+  terminalId?: string;
 }
 
 // VietQR (Vietnam) helper
 export interface VietQRHelper {
-  bankBin: string
-  accountNumber: string
-  accountName?: string
-  serviceCode?: 'QRPUSH' | 'QRIBFTTA' | 'QRIBFTTC'
-  amount?: number
-  description?: string
+  bankBin: string;
+  accountNumber: string;
+  accountName?: string;
+  serviceCode?: 'QRPUSH' | 'QRIBFTTA' | 'QRIBFTTC';
+  amount?: number;
+  description?: string;
 }
 
 // QR Ph (Philippines) helper
 export interface QRPhHelper {
-  accountNumber: string
-  merchantName: string
-  merchantCity: string
-  amount?: number
-  reference?: string
+  accountNumber: string;
+  merchantName: string;
+  merchantCity: string;
+  amount?: number;
+  reference?: string;
 }
 
 // TWQR (Taiwan) helper
 export interface TWQRHelper {
-  merchantId: string
-  merchantName: string
-  merchantCity?: string
-  taxId?: string
-  amount?: number
+  merchantId: string;
+  merchantName: string;
+  merchantCity?: string;
+  taxId?: string;
+  amount?: number;
 }
 
 // HKQR (Hong Kong) helper
 export interface HKQRHelper {
-  fpsId: string
-  merchantName: string
-  merchantCity: string
-  amount?: number
-  reference?: string
+  fpsId: string;
+  merchantName: string;
+  merchantCity: string;
+  amount?: number;
+  reference?: string;
 }
 
 // JPQR (Japan) helper
 export interface JPQRHelper {
-  storeId: string
-  merchantName: string
-  merchantCity?: string
-  amount?: number
+  storeId: string;
+  merchantName: string;
+  merchantCity?: string;
+  amount?: number;
 }
 
 // AusPayNet (Australia) helper
 // Per NPP spec: Need either PayID OR BSB+AccountNumber for routing
 // MerchantName is OPTIONAL - payer sees registered name from NPP lookup
 export interface AusPayNetHelper {
-  payId?: string
-  payIdType?: 'EMAIL' | 'MOBILE' | 'ABN' | 'ORG'
-  bsb?: string
-  accountNumber?: string
-  merchantName?: string  // Optional - NPP lookup shows registered name to payer
-  merchantCity?: string
-  amount?: number
-  reference?: string
+  payId?: string;
+  payIdType?: 'EMAIL' | 'MOBILE' | 'ABN' | 'ORG';
+  bsb?: string;
+  accountNumber?: string;
+  merchantName?: string; // Optional - NPP lookup shows registered name to payer
+  merchantCity?: string;
+  amount?: number;
+  reference?: string;
 }
 
 // PayPal.Me helper
 export interface PayPalMeHelper {
-  username: string
-  amount?: number
-  currencyCode?: string
+  username: string;
+  amount?: number;
+  currencyCode?: string;
 }
 
 // Cash App helper
 export interface CashAppHelper {
-  cashtag: string
-  amount?: number
+  cashtag: string;
+  amount?: number;
 }
 
 // Generic EMV QR helper
 export interface EMVGenericHelper {
-  merchantId: string
-  merchantName: string
-  merchantCity: string
-  countryCode: string
-  currencyCode: string
-  amount?: number
-  isStatic?: boolean
-  tipIndicator?: 'none' | 'prompt' | 'fixed' | 'percent'
-  tipAmount?: number
-  tipPercent?: number
-  storeLabel?: string
-  customerLabel?: string
-  terminalLabel?: string
-  loyaltyNumber?: string
-  reference?: string
-  purposeOfTransaction?: string
-  postalCode?: string
-  mcc?: string
+  merchantId: string;
+  merchantName: string;
+  merchantCity: string;
+  countryCode: string;
+  currencyCode: string;
+  amount?: number;
+  isStatic?: boolean;
+  tipIndicator?: 'none' | 'prompt' | 'fixed' | 'percent';
+  tipAmount?: number;
+  tipPercent?: number;
+  storeLabel?: string;
+  customerLabel?: string;
+  terminalLabel?: string;
+  loyaltyNumber?: string;
+  reference?: string;
+  purposeOfTransaction?: string;
+  postalCode?: string;
+  mcc?: string;
 }
 
 // Main QR Store State
 export interface QRState {
   // UI tier
-  tier: Tier
-  setTier: (tier: Tier) => void
-  
+  tier: Tier;
+  setTier: (tier: Tier) => void;
+
   // Premium access from rewarded ad (temporary Professional tier)
-  premiumAccess: PremiumAccess
-  activatePremiumAccess: () => void  // Activates 24-hour premium
-  checkPremiumAccess: () => boolean   // Returns true if premium is active
-  getEffectiveTier: () => Tier        // Returns 'professional' if premium active, else current tier
+  premiumAccess: PremiumAccess;
+  activatePremiumAccess: () => void; // Activates 24-hour premium
+  checkPremiumAccess: () => boolean; // Returns true if premium is active
+  getEffectiveTier: () => Tier; // Returns 'professional' if premium active, else current tier
 
   // === PAYLOAD ===
   payload: {
-    kind: PayloadKind
-    text: string
+    kind: PayloadKind;
+    text: string;
     // Helpers
-    url: UrlHelper
-    tel: TelHelper
-    email: EmailHelper
-    sms: SmsHelper
-    geo: GeoHelper
-    wifi: WifiHelper
-    vcard: VCardHelper
-    mecard: MeCardHelper
-    event: EventHelper
-    crypto: CryptoHelper
-    otpauth: OtpAuthHelper
+    url: UrlHelper;
+    tel: TelHelper;
+    email: EmailHelper;
+    sms: SmsHelper;
+    geo: GeoHelper;
+    wifi: WifiHelper;
+    vcard: VCardHelper;
+    mecard: MeCardHelper;
+    event: EventHelper;
+    crypto: CryptoHelper;
+    otpauth: OtpAuthHelper;
     // Payment helpers
-    swissQRBill: SwissQRBillHelper
-    lightning: LightningHelper
-    ethereum: EthereumHelper
-    qris: QRISHelper
-    duitnow: DuitNowHelper
-    bharatqr: BharatQRHelper
-    vietqr: VietQRHelper
-    qrph: QRPhHelper
-    twqr: TWQRHelper
-    hkqr: HKQRHelper
-    jpqr: JPQRHelper
-    auspaynet: AusPayNetHelper
-    paypalMe: PayPalMeHelper
-    cashapp: CashAppHelper
-    emvGeneric: EMVGenericHelper
+    swissQRBill: SwissQRBillHelper;
+    lightning: LightningHelper;
+    ethereum: EthereumHelper;
+    qris: QRISHelper;
+    duitnow: DuitNowHelper;
+    bharatqr: BharatQRHelper;
+    vietqr: VietQRHelper;
+    qrph: QRPhHelper;
+    twqr: TWQRHelper;
+    hkqr: HKQRHelper;
+    jpqr: JPQRHelper;
+    auspaynet: AusPayNetHelper;
+    paypalMe: PayPalMeHelper;
+    cashapp: CashAppHelper;
+    emvGeneric: EMVGenericHelper;
     // Validation
-    validate: boolean
-    normalizeNewlines: boolean
-    trim: boolean
-    maxLenGuard: boolean
-  }
-  setPayloadKind: (kind: PayloadKind) => void
-  setPayloadText: (text: string) => void
-  setPayloadUrl: (url: Partial<UrlHelper>) => void
-  setPayloadTel: (tel: Partial<TelHelper>) => void
-  setPayloadEmail: (email: Partial<EmailHelper>) => void
-  setPayloadSms: (sms: Partial<SmsHelper>) => void
-  setPayloadGeo: (geo: Partial<GeoHelper>) => void
-  setPayloadWifi: (wifi: Partial<WifiHelper>) => void
-  setPayloadVCard: (vcard: Partial<VCardHelper>) => void
-  setPayloadMeCard: (mecard: Partial<MeCardHelper>) => void
-  setPayloadEvent: (event: Partial<EventHelper>) => void
-  setPayloadCrypto: (crypto: Partial<CryptoHelper>) => void
-  setPayloadOtpAuth: (otpauth: Partial<OtpAuthHelper>) => void
+    validate: boolean;
+    normalizeNewlines: boolean;
+    trim: boolean;
+    maxLenGuard: boolean;
+  };
+  setPayloadKind: (kind: PayloadKind) => void;
+  setPayloadText: (text: string) => void;
+  setPayloadUrl: (url: Partial<UrlHelper>) => void;
+  setPayloadTel: (tel: Partial<TelHelper>) => void;
+  setPayloadEmail: (email: Partial<EmailHelper>) => void;
+  setPayloadSms: (sms: Partial<SmsHelper>) => void;
+  setPayloadGeo: (geo: Partial<GeoHelper>) => void;
+  setPayloadWifi: (wifi: Partial<WifiHelper>) => void;
+  setPayloadVCard: (vcard: Partial<VCardHelper>) => void;
+  setPayloadMeCard: (mecard: Partial<MeCardHelper>) => void;
+  setPayloadEvent: (event: Partial<EventHelper>) => void;
+  setPayloadCrypto: (crypto: Partial<CryptoHelper>) => void;
+  setPayloadOtpAuth: (otpauth: Partial<OtpAuthHelper>) => void;
   // Payment setters
-  setPayloadSwissQRBill: (swissQRBill: Partial<SwissQRBillHelper>) => void
-  setPayloadLightning: (lightning: Partial<LightningHelper>) => void
-  setPayloadEthereum: (ethereum: Partial<EthereumHelper>) => void
-  setPayloadQRIS: (qris: Partial<QRISHelper>) => void
-  setPayloadDuitNow: (duitnow: Partial<DuitNowHelper>) => void
-  setPayloadBharatQR: (bharatqr: Partial<BharatQRHelper>) => void
-  setPayloadVietQR: (vietqr: Partial<VietQRHelper>) => void
-  setPayloadQRPh: (qrph: Partial<QRPhHelper>) => void
-  setPayloadTWQR: (twqr: Partial<TWQRHelper>) => void
-  setPayloadHKQR: (hkqr: Partial<HKQRHelper>) => void
-  setPayloadJPQR: (jpqr: Partial<JPQRHelper>) => void
-  setPayloadAusPayNet: (auspaynet: Partial<AusPayNetHelper>) => void
-  setPayloadPayPalMe: (paypalMe: Partial<PayPalMeHelper>) => void
-  setPayloadCashApp: (cashapp: Partial<CashAppHelper>) => void
-  setPayloadEMVGeneric: (emvGeneric: Partial<EMVGenericHelper>) => void
-  setPayloadValidation: (opts: { validate?: boolean; normalizeNewlines?: boolean; trim?: boolean; maxLenGuard?: boolean }) => void
+  setPayloadSwissQRBill: (swissQRBill: Partial<SwissQRBillHelper>) => void;
+  setPayloadLightning: (lightning: Partial<LightningHelper>) => void;
+  setPayloadEthereum: (ethereum: Partial<EthereumHelper>) => void;
+  setPayloadQRIS: (qris: Partial<QRISHelper>) => void;
+  setPayloadDuitNow: (duitnow: Partial<DuitNowHelper>) => void;
+  setPayloadBharatQR: (bharatqr: Partial<BharatQRHelper>) => void;
+  setPayloadVietQR: (vietqr: Partial<VietQRHelper>) => void;
+  setPayloadQRPh: (qrph: Partial<QRPhHelper>) => void;
+  setPayloadTWQR: (twqr: Partial<TWQRHelper>) => void;
+  setPayloadHKQR: (hkqr: Partial<HKQRHelper>) => void;
+  setPayloadJPQR: (jpqr: Partial<JPQRHelper>) => void;
+  setPayloadAusPayNet: (auspaynet: Partial<AusPayNetHelper>) => void;
+  setPayloadPayPalMe: (paypalMe: Partial<PayPalMeHelper>) => void;
+  setPayloadCashApp: (cashapp: Partial<CashAppHelper>) => void;
+  setPayloadEMVGeneric: (emvGeneric: Partial<EMVGenericHelper>) => void;
+  setPayloadValidation: (opts: {
+    validate?: boolean;
+    normalizeNewlines?: boolean;
+    trim?: boolean;
+    maxLenGuard?: boolean;
+  }) => void;
 
   // === QR ENCODING ===
   qr: {
-    version: number // 0 = auto, 1-40
-    ecc: ECCLevel
-    encodingMode: EncodingMode
-    quietZoneModules: number
-    quietZoneMinEnforce: boolean
-    borderModulesExtra: number
-  }
-  setQrVersion: (version: number) => void
-  setQrEcc: (ecc: ECCLevel) => void
-  setQrEncodingMode: (mode: EncodingMode) => void
-  setQrQuietZone: (modules: number) => void
-  setQrQuietZoneMinEnforce: (enforce: boolean) => void
+    version: number; // 0 = auto, 1-40
+    ecc: ECCLevel;
+    encodingMode: EncodingMode;
+    quietZoneModules: number;
+    quietZoneMinEnforce: boolean;
+    borderModulesExtra: number;
+  };
+  setQrVersion: (version: number) => void;
+  setQrEcc: (ecc: ECCLevel) => void;
+  setQrEncodingMode: (mode: EncodingMode) => void;
+  setQrQuietZone: (modules: number) => void;
+  setQrQuietZoneMinEnforce: (enforce: boolean) => void;
 
   // === RENDERING ===
   render: {
-    modulePx: number
-    crispEdges: boolean
-    pixelSnap: 'floor' | 'round' | 'ceil'
-    moduleGapPercent: number
-    gapMode: GapMode
-    moduleStyle: ModuleStyle
-    finderStyle: FinderStyle
-    alignmentStyle: AlignmentStyle
-    timingStyle: TimingStyle
-    cornerRadius: number
-    dotRotationDeg: number
-    eyeOuterStyle: FinderStyle
-    eyeInnerStyle: FinderStyle
-    eyeScale: number
-    frameStyle: FrameStyle
-    frameText: string
+    modulePx: number;
+    crispEdges: boolean;
+    pixelSnap: 'floor' | 'round' | 'ceil';
+    moduleGapPercent: number;
+    gapMode: GapMode;
+    moduleStyle: ModuleStyle;
+    finderStyle: FinderStyle;
+    alignmentStyle: AlignmentStyle;
+    timingStyle: TimingStyle;
+    cornerRadius: number;
+    dotRotationDeg: number;
+    eyeOuterStyle: FinderStyle;
+    eyeInnerStyle: FinderStyle;
+    eyeScale: number;
+    frameStyle: FrameStyle;
+    frameText: string;
     // Colors
-    fgColor: string
-    bgColor: string
-    bgTransparent: boolean
-    palette: string[]
-  paletteMode: 'position' | 'brightness' | 'diagonal' | 'radial' | 'random' | 'row' | 'column'
+    fgColor: string;
+    bgColor: string;
+    bgTransparent: boolean;
+    palette: string[];
+    paletteMode: 'position' | 'brightness' | 'diagonal' | 'radial' | 'random' | 'row' | 'column';
     gradient: {
-      type: GradientType
-      stops: GradientStop[]
-    }
-    perModuleColorMode: 'solid' | 'by_brightness' | 'by_position' | 'by_overlay' | 'by_cluster'
-    contrastGuard: boolean
-    minContrastRatio: number
-  }
-  setRenderModulePx: (px: number) => void
-  setRenderCrispEdges: (crisp: boolean) => void
-  setRenderModuleGap: (percent: number) => void
-  setRenderGapMode: (mode: GapMode) => void
-  setRenderModuleStyle: (style: ModuleStyle) => void
-  setRenderFinderStyle: (style: FinderStyle) => void
-  setRenderAlignmentStyle: (style: AlignmentStyle) => void
-  setRenderTimingStyle: (style: TimingStyle) => void
-  setRenderCornerRadius: (radius: number) => void
-  setRenderFrameStyle: (style: FrameStyle) => void
-  setRenderFrameText: (text: string) => void
-  setRenderFgColor: (color: string) => void
-  setRenderBgColor: (color: string) => void
-  setRenderBgTransparent: (transparent: boolean) => void
-  setRenderGradient: (gradient: Partial<QRState['render']['gradient']>) => void
+      type: GradientType;
+      stops: GradientStop[];
+    };
+    perModuleColorMode: 'solid' | 'by_brightness' | 'by_position' | 'by_overlay' | 'by_cluster';
+    contrastGuard: boolean;
+    minContrastRatio: number;
+  };
+  setRenderModulePx: (px: number) => void;
+  setRenderCrispEdges: (crisp: boolean) => void;
+  setRenderModuleGap: (percent: number) => void;
+  setRenderGapMode: (mode: GapMode) => void;
+  setRenderModuleStyle: (style: ModuleStyle) => void;
+  setRenderFinderStyle: (style: FinderStyle) => void;
+  setRenderAlignmentStyle: (style: AlignmentStyle) => void;
+  setRenderTimingStyle: (style: TimingStyle) => void;
+  setRenderCornerRadius: (radius: number) => void;
+  setRenderFrameStyle: (style: FrameStyle) => void;
+  setRenderFrameText: (text: string) => void;
+  setRenderFgColor: (color: string) => void;
+  setRenderBgColor: (color: string) => void;
+  setRenderBgTransparent: (transparent: boolean) => void;
+  setRenderGradient: (gradient: Partial<QRState['render']['gradient']>) => void;
 
   // === OVERLAY ===
   overlay: {
-    enabled: boolean
-    file: File | null
-    url: string
-    type: OverlayType
-    framePick: 'all' | 'every_n' | 'max_frames' | 'duration_limit'
+    enabled: boolean;
+    file: File | null;
+    url: string;
+    type: OverlayType;
+    framePick: 'all' | 'every_n' | 'max_frames' | 'duration_limit';
     // Crop & transform
-    cropEnabled: boolean
-    cropRegion: CropRegion
-    fit: FitMode
-    rotateDeg: number
-    flipX: boolean
-    flipY: boolean
+    cropEnabled: boolean;
+    cropRegion: CropRegion;
+    fit: FitMode;
+    rotateDeg: number;
+    flipX: boolean;
+    flipY: boolean;
     // Preprocess
-    colorMode: ColorMode
-    invert: boolean
-    brightness: number
-    contrast: number
-    gamma: number
-    saturation: number
-    hueRotateDeg: number
-    blurPx: number
-    sharpen: number
-    posterizeLevels: number
-    threshold: number
-    edgeDetect: 'off' | 'sobel' | 'canny'
+    colorMode: ColorMode;
+    invert: boolean;
+    brightness: number;
+    contrast: number;
+    gamma: number;
+    saturation: number;
+    hueRotateDeg: number;
+    blurPx: number;
+    sharpen: number;
+    posterizeLevels: number;
+    threshold: number;
+    edgeDetect: 'off' | 'sobel' | 'canny';
     // Blend
-    mode: OverlayMode
-    intensity: number
-    preserveFinders: boolean
-    preserveTiming: boolean
-    preserveAlignment: boolean
-    protectFormatInfo: boolean
-    protectVersionInfo: boolean
+    mode: OverlayMode;
+    intensity: number;
+    preserveFinders: boolean;
+    preserveTiming: boolean;
+    preserveAlignment: boolean;
+    protectFormatInfo: boolean;
+    protectVersionInfo: boolean;
     // Subpixel
-    subpixelGridSize: '2x2' | '3x3' | '4x4'
-    subpixelCenterRule: 'strict' | 'halftone_center'
-    subpixelNeutralColor: string
-    subpixelFinderOverride: 'solid' | 'stylized'
+    subpixelGridSize: '2x2' | '3x3' | '4x4';
+    subpixelCenterRule: 'strict' | 'halftone_center';
+    subpixelNeutralColor: string;
+    subpixelFinderOverride: 'solid' | 'stylized';
     // Dither
-    ditherKind: DitherKind
-    ditherStrength: number
-    ditherSerpentine: boolean
-    diffusionKernel: DiffusionKernel
-    orderedMatrix: OrderedMatrix
-    blueNoiseTileSize: number
-    blueNoiseSeed: number
-    colorDither: 'none' | 'per_channel' | 'perceptual'
+    ditherKind: DitherKind;
+    ditherStrength: number;
+    ditherSerpentine: boolean;
+    diffusionKernel: DiffusionKernel;
+    orderedMatrix: OrderedMatrix;
+    blueNoiseTileSize: number;
+    blueNoiseSeed: number;
+    colorDither: 'none' | 'per_channel' | 'perceptual';
     // Halftone
-    halftoneCell: 'per_module' | 'n×n'
-    halftoneDotShape: 'circle' | 'square' | 'line'
-    duotoneColors: [string, string]
-    brightnessCurve: 'linear' | 's-curve' | 'gamma'
+    halftoneCell: 'per_module' | 'n×n';
+    halftoneDotShape: 'circle' | 'square' | 'line';
+    duotoneColors: [string, string];
+    brightnessCurve: 'linear' | 's-curve' | 'gamma';
     // ECC aware
-    eccAwareEnabled: boolean
-    eccAwareRiskBudget: number
-    eccAwareWeightMap: 'distance_to_finders' | 'block_heatmap' | 'empirical_scan_heatmap'
+    eccAwareEnabled: boolean;
+    eccAwareRiskBudget: number;
+    eccAwareWeightMap: 'distance_to_finders' | 'block_heatmap' | 'empirical_scan_heatmap';
     // GIF specific
-    gifUseFrameDelays: boolean
-    gifMaxFps: number
-    gifDisposalHandling: 'respect' | 'simplify'
-  }
-  setOverlayEnabled: (enabled: boolean) => void
-  setOverlayFile: (file: File | null) => void
-  setOverlayUrl: (url: string) => void
-  clearOverlay: () => void
-  setOverlayType: (type: OverlayType) => void
-  setOverlayCrop: (crop: Partial<{ enabled: boolean; region: CropRegion }>) => void
-  setOverlayFit: (fit: FitMode) => void
-  setOverlayRotate: (deg: number) => void
-  setOverlayFlip: (flip: { x?: boolean; y?: boolean }) => void
-  setOverlayColorMode: (mode: ColorMode) => void
-  setOverlayInvert: (invert: boolean) => void
-  setOverlayBrightness: (brightness: number) => void
-  setOverlayContrast: (contrast: number) => void
-  setOverlayGamma: (gamma: number) => void
-  setOverlayMode: (mode: OverlayMode) => void
-  setOverlayIntensity: (intensity: number) => void
-  setOverlayPreserveFinders: (preserve: boolean) => void
-  setOverlayPreserveTiming: (preserve: boolean) => void
-  setOverlayPreserveAlignment: (preserve: boolean) => void
-  setOverlayDitherKind: (kind: DitherKind) => void
-  setOverlayDitherStrength: (strength: number) => void
-  setOverlayDiffusionKernel: (kernel: DiffusionKernel) => void
-  setOverlaySaturation: (saturation: number) => void
-  setOverlayHueRotate: (hue: number) => void
-  setOverlayBlur: (blur: number) => void
-  setOverlaySharpen: (sharpen: number) => void
-  setOverlayPosterize: (levels: number) => void
-  setOverlayThreshold: (threshold: number) => void
-  setOverlayEdgeDetect: (edge: 'off' | 'sobel' | 'canny') => void
+    gifUseFrameDelays: boolean;
+    gifMaxFps: number;
+    gifDisposalHandling: 'respect' | 'simplify';
+  };
+  setOverlayEnabled: (enabled: boolean) => void;
+  setOverlayFile: (file: File | null) => void;
+  setOverlayUrl: (url: string) => void;
+  clearOverlay: () => void;
+  setOverlayType: (type: OverlayType) => void;
+  setOverlayCrop: (crop: Partial<{ enabled: boolean; region: CropRegion }>) => void;
+  setOverlayFit: (fit: FitMode) => void;
+  setOverlayRotate: (deg: number) => void;
+  setOverlayFlip: (flip: { x?: boolean; y?: boolean }) => void;
+  setOverlayColorMode: (mode: ColorMode) => void;
+  setOverlayInvert: (invert: boolean) => void;
+  setOverlayBrightness: (brightness: number) => void;
+  setOverlayContrast: (contrast: number) => void;
+  setOverlayGamma: (gamma: number) => void;
+  setOverlayMode: (mode: OverlayMode) => void;
+  setOverlayIntensity: (intensity: number) => void;
+  setOverlayPreserveFinders: (preserve: boolean) => void;
+  setOverlayPreserveTiming: (preserve: boolean) => void;
+  setOverlayPreserveAlignment: (preserve: boolean) => void;
+  setOverlayDitherKind: (kind: DitherKind) => void;
+  setOverlayDitherStrength: (strength: number) => void;
+  setOverlayDiffusionKernel: (kernel: DiffusionKernel) => void;
+  setOverlaySaturation: (saturation: number) => void;
+  setOverlayHueRotate: (hue: number) => void;
+  setOverlayBlur: (blur: number) => void;
+  setOverlaySharpen: (sharpen: number) => void;
+  setOverlayPosterize: (levels: number) => void;
+  setOverlayThreshold: (threshold: number) => void;
+  setOverlayEdgeDetect: (edge: 'off' | 'sobel' | 'canny') => void;
 
   // === ANIMATION ===
   animation: {
-    speedMs: number
-    loop: boolean
-    bounce: boolean
-    playing: boolean
-    startFrame: number
-    maxFrames: number
-    frameStep: number
-    perFrameDelay: number[]
-    interpolate: 'none' | 'crossfade' | 'morph'
-    temporalDither: 'off' | 'blue_noise' | 'flicker_safe'
-    seed: number
-    pattern: 'none' | 'pulse' | 'wave' | 'scanline' | 'shimmer' | 'drift'
-    moduleJitterPx: number
-    colorCycle: boolean
-  }
-  setAnimationSpeedMs: (speed: number) => void
-  setAnimationLoop: (loop: boolean) => void
-  setAnimationBounce: (bounce: boolean) => void
-  setAnimationPlaying: (playing: boolean) => void
-  setAnimationStartFrame: (frame: number) => void
-  setAnimationMaxFrames: (frames: number) => void
-  setAnimationFrameStep: (step: number) => void
+    speedMs: number;
+    loop: boolean;
+    bounce: boolean;
+    playing: boolean;
+    startFrame: number;
+    maxFrames: number;
+    frameStep: number;
+    perFrameDelay: number[];
+    interpolate: 'none' | 'crossfade' | 'morph';
+    temporalDither: 'off' | 'blue_noise' | 'flicker_safe';
+    seed: number;
+    pattern: 'none' | 'pulse' | 'wave' | 'scanline' | 'shimmer' | 'drift';
+    moduleJitterPx: number;
+    colorCycle: boolean;
+  };
+  setAnimationSpeedMs: (speed: number) => void;
+  setAnimationLoop: (loop: boolean) => void;
+  setAnimationBounce: (bounce: boolean) => void;
+  setAnimationPlaying: (playing: boolean) => void;
+  setAnimationStartFrame: (frame: number) => void;
+  setAnimationMaxFrames: (frames: number) => void;
+  setAnimationFrameStep: (step: number) => void;
 
   // === OUTPUT ===
   output: {
-    format: OutputFormat
-    widthPx: number
-    heightPx: number
-    quality: number
-    filename: string
-    includeQuietZone: boolean
-    dpi: number
-    bgOverride: string
+    format: OutputFormat;
+    widthPx: number;
+    heightPx: number;
+    quality: number;
+    filename: string;
+    includeQuietZone: boolean;
+    dpi: number;
+    bgOverride: string;
     // GIF encoder
-    gifPaletteSize: number
-    gifQuantizer: GifQuantizer
-    gifDither: GifDither
-    gifTransparentColor: string
-    gifDisposal: string
+    gifPaletteSize: number;
+    gifQuantizer: GifQuantizer;
+    gifDither: GifDither;
+    gifTransparentColor: string;
+    gifDisposal: string;
     // SVG
-    svgTrueVector: boolean
-    svgShapePrecision: 'pixel' | 'precise'
-    svgEmbedRasterOverlay: boolean
-    svgMetadata: Record<string, string>
+    svgTrueVector: boolean;
+    svgShapePrecision: 'pixel' | 'precise';
+    svgEmbedRasterOverlay: boolean;
+    svgMetadata: Record<string, string>;
     // Extra formats
-    formatExtra: 'none' | 'eps' | 'animated_webp'
-  }
-  setOutputFormat: (format: OutputFormat) => void
-  setOutputWidth: (width: number) => void
-  setOutputHeight: (height: number) => void
-  setOutputQuality: (quality: number) => void
-  setOutputFilename: (filename: string) => void
-  setOutputGifPaletteSize: (size: number) => void
-  setOutputGifQuantizer: (quantizer: GifQuantizer) => void
-  setOutputSvgTrueVector: (trueVector: boolean) => void
+    formatExtra: 'none' | 'eps' | 'animated_webp';
+  };
+  setOutputFormat: (format: OutputFormat) => void;
+  setOutputWidth: (width: number) => void;
+  setOutputHeight: (height: number) => void;
+  setOutputQuality: (quality: number) => void;
+  setOutputFilename: (filename: string) => void;
+  setOutputGifPaletteSize: (size: number) => void;
+  setOutputGifQuantizer: (quantizer: GifQuantizer) => void;
+  setOutputSvgTrueVector: (trueVector: boolean) => void;
 
   // === WATERMARK ===
   watermark: {
-    enabled: boolean
-    kind: 'text' | 'image' | 'pattern'
-    text: string
-    image: File | null
-    position: 'center' | 'corners' | 'edges' | 'behind' | 'quiet_zone'
-    opacity: number
-    blend: 'normal' | 'multiply' | 'screen' | 'overlay'
-  }
-  setWatermarkEnabled: (enabled: boolean) => void
-  setWatermarkKind: (kind: QRState['watermark']['kind']) => void
-  setWatermarkText: (text: string) => void
-  setWatermarkPosition: (position: QRState['watermark']['position']) => void
-  setWatermarkOpacity: (opacity: number) => void
+    enabled: boolean;
+    kind: 'text' | 'image' | 'pattern';
+    text: string;
+    image: File | null;
+    position: 'center' | 'corners' | 'edges' | 'behind' | 'quiet_zone';
+    opacity: number;
+    blend: 'normal' | 'multiply' | 'screen' | 'overlay';
+  };
+  setWatermarkEnabled: (enabled: boolean) => void;
+  setWatermarkKind: (kind: QRState['watermark']['kind']) => void;
+  setWatermarkText: (text: string) => void;
+  setWatermarkPosition: (position: QRState['watermark']['position']) => void;
+  setWatermarkOpacity: (opacity: number) => void;
 
   // === METADATA ===
   metadata: {
-    title: string
-    author: string
-    copyright: string
-    license: string
-    description: string
-    creationTime: boolean
-    customKv: Array<{ k: string; v: string }>
-  }
-  setMetadata: (meta: Partial<QRState['metadata']>) => void
+    title: string;
+    author: string;
+    copyright: string;
+    license: string;
+    description: string;
+    creationTime: boolean;
+    customKv: Array<{ k: string; v: string }>;
+  };
+  setMetadata: (meta: Partial<QRState['metadata']>) => void;
 
   // === SAFETY ===
   safety: {
-    mode: SafetyMode
-    minModulePx: number
-    minQuietZoneModules: number
-    lockFinders: boolean
-    lockTiming: boolean
-    lockAlign: boolean
-    lockFormat: boolean
-    lockVersion: boolean
-    maxOverlayIntensityByEcc: Record<ECCLevel, number>
-  }
-  setSafetyMode: (mode: SafetyMode) => void
-  setSafetyMinModulePx: (px: number) => void
-  setSafetyLocks: (locks: Partial<Pick<QRState['safety'], 'lockFinders' | 'lockTiming' | 'lockAlign' | 'lockFormat' | 'lockVersion'>>) => void
+    mode: SafetyMode;
+    minModulePx: number;
+    minQuietZoneModules: number;
+    lockFinders: boolean;
+    lockTiming: boolean;
+    lockAlign: boolean;
+    lockFormat: boolean;
+    lockVersion: boolean;
+    maxOverlayIntensityByEcc: Record<ECCLevel, number>;
+  };
+  setSafetyMode: (mode: SafetyMode) => void;
+  setSafetyMinModulePx: (px: number) => void;
+  setSafetyLocks: (
+    locks: Partial<
+      Pick<
+        QRState['safety'],
+        'lockFinders' | 'lockTiming' | 'lockAlign' | 'lockFormat' | 'lockVersion'
+      >
+    >
+  ) => void;
 
   // === QA / ANALYSIS ===
   qa: {
-    contrastCheck: boolean
-    simulateBlurPx: number
-    simulateNoise: number
-    simulateRotationDeg: number
-    scoreReadability: boolean
-    showHeatmap: boolean
-  }
-  setQaContrastCheck: (check: boolean) => void
-  setQaSimulateBlur: (blur: number) => void
-  setQaShowHeatmap: (show: boolean) => void
+    contrastCheck: boolean;
+    simulateBlurPx: number;
+    simulateNoise: number;
+    simulateRotationDeg: number;
+    scoreReadability: boolean;
+    showHeatmap: boolean;
+  };
+  setQaContrastCheck: (check: boolean) => void;
+  setQaSimulateBlur: (blur: number) => void;
+  setQaShowHeatmap: (show: boolean) => void;
 
   // === AUTO-TUNING ===
   auto: {
-    pickVersion: boolean
-    pickEcc: boolean
-    reduceIntensityUntilSafe: boolean
-  }
-  setAutoPickVersion: (pick: boolean) => void
-  setAutoPickEcc: (pick: boolean) => void
+    pickVersion: boolean;
+    pickEcc: boolean;
+    reduceIntensityUntilSafe: boolean;
+  };
+  setAutoPickVersion: (pick: boolean) => void;
+  setAutoPickEcc: (pick: boolean) => void;
 
   // === SHARE ===
   share: {
-    directLink: boolean
-    embedHtml: boolean
-    encodeMoreParams: boolean
-  }
-  setShare: (share: Partial<QRState['share']>) => void
+    directLink: boolean;
+    embedHtml: boolean;
+    encodeMoreParams: boolean;
+  };
+  setShare: (share: Partial<QRState['share']>) => void;
 
   // === UI STATE ===
-  searchQuery: string
-  setSearchQuery: (query: string) => void
+  searchQuery: string;
+  setSearchQuery: (query: string) => void;
 
   // Generate final payload text
-  getPayloadText: () => string
+  getPayloadText: () => string;
 }
 
 // Premium access duration: 24 hours in milliseconds
-const PREMIUM_DURATION_MS = 24 * 60 * 60 * 1000
+const PREMIUM_DURATION_MS = 24 * 60 * 60 * 1000;
 
 export const useQRStore = create<QRState>((set, get) => ({
   // Tier
   tier: 'basic',
   setTier: (tier) => set({ tier }),
-  
+
   // Premium access (from watching rewarded ad)
   premiumAccess: {
     active: false,
     expiresAt: null,
   },
-  activatePremiumAccess: () => set({
-    premiumAccess: {
-      active: true,
-      expiresAt: Date.now() + PREMIUM_DURATION_MS,
-    }
-  }),
+  activatePremiumAccess: () =>
+    set({
+      premiumAccess: {
+        active: true,
+        expiresAt: Date.now() + PREMIUM_DURATION_MS,
+      },
+    }),
   checkPremiumAccess: () => {
-    const { premiumAccess } = get()
-    if (!premiumAccess.active || !premiumAccess.expiresAt) return false
+    const { premiumAccess } = get();
+    if (!(premiumAccess.active && premiumAccess.expiresAt)) return false;
     if (Date.now() > premiumAccess.expiresAt) {
       // Premium expired, reset state
-      set({ premiumAccess: { active: false, expiresAt: null } })
-      return false
+      set({ premiumAccess: { active: false, expiresAt: null } });
+      return false;
     }
-    return true
+    return true;
   },
   getEffectiveTier: () => {
-    const state = get()
+    const state = get();
     // Check if premium access is active
     if (state.checkPremiumAccess()) {
-      return 'professional'
+      return 'professional';
     }
-    return state.tier
+    return state.tier;
   },
 
   // Payload defaults
@@ -837,7 +907,14 @@ export const useQRStore = create<QRState>((set, get) => ({
     crypto: { type: 'bitcoin', address: '' },
     otpauth: { type: 'totp' },
     // Payment helpers defaults
-    swissQRBill: { creditorIBAN: '', creditorName: '', creditorAddressType: 'S', creditorCountry: 'CH', currency: 'CHF', referenceType: 'NON' },
+    swissQRBill: {
+      creditorIBAN: '',
+      creditorName: '',
+      creditorAddressType: 'S',
+      creditorCountry: 'CH',
+      currency: 'CHF',
+      referenceType: 'NON',
+    },
     lightning: { invoice: '' },
     ethereum: { targetAddress: '' },
     qris: { merchantId: '', merchantName: '', merchantCity: '' },
@@ -851,7 +928,13 @@ export const useQRStore = create<QRState>((set, get) => ({
     auspaynet: { merchantName: '' },
     paypalMe: { username: '' },
     cashapp: { cashtag: '' },
-    emvGeneric: { merchantId: '', merchantName: '', merchantCity: '', countryCode: '', currencyCode: '' },
+    emvGeneric: {
+      merchantId: '',
+      merchantName: '',
+      merchantCity: '',
+      countryCode: '',
+      currencyCode: '',
+    },
     validate: false,
     normalizeNewlines: false,
     trim: true,
@@ -859,33 +942,67 @@ export const useQRStore = create<QRState>((set, get) => ({
   },
   setPayloadKind: (kind) => set((s) => ({ payload: { ...s.payload, kind } })),
   setPayloadText: (text) => set((s) => ({ payload: { ...s.payload, text } })),
-  setPayloadUrl: (url) => set((s) => ({ payload: { ...s.payload, url: { ...s.payload.url, ...url } } })),
-  setPayloadTel: (tel) => set((s) => ({ payload: { ...s.payload, tel: { ...s.payload.tel, ...tel } } })),
-  setPayloadEmail: (email) => set((s) => ({ payload: { ...s.payload, email: { ...s.payload.email, ...email } } })),
-  setPayloadSms: (sms) => set((s) => ({ payload: { ...s.payload, sms: { ...s.payload.sms, ...sms } } })),
-  setPayloadGeo: (geo) => set((s) => ({ payload: { ...s.payload, geo: { ...s.payload.geo, ...geo } } })),
-  setPayloadWifi: (wifi) => set((s) => ({ payload: { ...s.payload, wifi: { ...s.payload.wifi, ...wifi } } })),
-  setPayloadVCard: (vcard) => set((s) => ({ payload: { ...s.payload, vcard: { ...s.payload.vcard, ...vcard } } })),
-  setPayloadMeCard: (mecard) => set((s) => ({ payload: { ...s.payload, mecard: { ...s.payload.mecard, ...mecard } } })),
-  setPayloadEvent: (event) => set((s) => ({ payload: { ...s.payload, event: { ...s.payload.event, ...event } } })),
-  setPayloadCrypto: (crypto) => set((s) => ({ payload: { ...s.payload, crypto: { ...s.payload.crypto, ...crypto } } })),
-  setPayloadOtpAuth: (otpauth) => set((s) => ({ payload: { ...s.payload, otpauth: { ...s.payload.otpauth, ...otpauth } } })),
+  setPayloadUrl: (url) =>
+    set((s) => ({ payload: { ...s.payload, url: { ...s.payload.url, ...url } } })),
+  setPayloadTel: (tel) =>
+    set((s) => ({ payload: { ...s.payload, tel: { ...s.payload.tel, ...tel } } })),
+  setPayloadEmail: (email) =>
+    set((s) => ({ payload: { ...s.payload, email: { ...s.payload.email, ...email } } })),
+  setPayloadSms: (sms) =>
+    set((s) => ({ payload: { ...s.payload, sms: { ...s.payload.sms, ...sms } } })),
+  setPayloadGeo: (geo) =>
+    set((s) => ({ payload: { ...s.payload, geo: { ...s.payload.geo, ...geo } } })),
+  setPayloadWifi: (wifi) =>
+    set((s) => ({ payload: { ...s.payload, wifi: { ...s.payload.wifi, ...wifi } } })),
+  setPayloadVCard: (vcard) =>
+    set((s) => ({ payload: { ...s.payload, vcard: { ...s.payload.vcard, ...vcard } } })),
+  setPayloadMeCard: (mecard) =>
+    set((s) => ({ payload: { ...s.payload, mecard: { ...s.payload.mecard, ...mecard } } })),
+  setPayloadEvent: (event) =>
+    set((s) => ({ payload: { ...s.payload, event: { ...s.payload.event, ...event } } })),
+  setPayloadCrypto: (crypto) =>
+    set((s) => ({ payload: { ...s.payload, crypto: { ...s.payload.crypto, ...crypto } } })),
+  setPayloadOtpAuth: (otpauth) =>
+    set((s) => ({ payload: { ...s.payload, otpauth: { ...s.payload.otpauth, ...otpauth } } })),
   // Payment setters
-  setPayloadSwissQRBill: (swissQRBill) => set((s) => ({ payload: { ...s.payload, swissQRBill: { ...s.payload.swissQRBill, ...swissQRBill } } })),
-  setPayloadLightning: (lightning) => set((s) => ({ payload: { ...s.payload, lightning: { ...s.payload.lightning, ...lightning } } })),
-  setPayloadEthereum: (ethereum) => set((s) => ({ payload: { ...s.payload, ethereum: { ...s.payload.ethereum, ...ethereum } } })),
-  setPayloadQRIS: (qris) => set((s) => ({ payload: { ...s.payload, qris: { ...s.payload.qris, ...qris } } })),
-  setPayloadDuitNow: (duitnow) => set((s) => ({ payload: { ...s.payload, duitnow: { ...s.payload.duitnow, ...duitnow } } })),
-  setPayloadBharatQR: (bharatqr) => set((s) => ({ payload: { ...s.payload, bharatqr: { ...s.payload.bharatqr, ...bharatqr } } })),
-  setPayloadVietQR: (vietqr) => set((s) => ({ payload: { ...s.payload, vietqr: { ...s.payload.vietqr, ...vietqr } } })),
-  setPayloadQRPh: (qrph) => set((s) => ({ payload: { ...s.payload, qrph: { ...s.payload.qrph, ...qrph } } })),
-  setPayloadTWQR: (twqr) => set((s) => ({ payload: { ...s.payload, twqr: { ...s.payload.twqr, ...twqr } } })),
-  setPayloadHKQR: (hkqr) => set((s) => ({ payload: { ...s.payload, hkqr: { ...s.payload.hkqr, ...hkqr } } })),
-  setPayloadJPQR: (jpqr) => set((s) => ({ payload: { ...s.payload, jpqr: { ...s.payload.jpqr, ...jpqr } } })),
-  setPayloadAusPayNet: (auspaynet) => set((s) => ({ payload: { ...s.payload, auspaynet: { ...s.payload.auspaynet, ...auspaynet } } })),
-  setPayloadPayPalMe: (paypalMe) => set((s) => ({ payload: { ...s.payload, paypalMe: { ...s.payload.paypalMe, ...paypalMe } } })),
-  setPayloadCashApp: (cashapp) => set((s) => ({ payload: { ...s.payload, cashapp: { ...s.payload.cashapp, ...cashapp } } })),
-  setPayloadEMVGeneric: (emvGeneric) => set((s) => ({ payload: { ...s.payload, emvGeneric: { ...s.payload.emvGeneric, ...emvGeneric } } })),
+  setPayloadSwissQRBill: (swissQRBill) =>
+    set((s) => ({
+      payload: { ...s.payload, swissQRBill: { ...s.payload.swissQRBill, ...swissQRBill } },
+    })),
+  setPayloadLightning: (lightning) =>
+    set((s) => ({
+      payload: { ...s.payload, lightning: { ...s.payload.lightning, ...lightning } },
+    })),
+  setPayloadEthereum: (ethereum) =>
+    set((s) => ({ payload: { ...s.payload, ethereum: { ...s.payload.ethereum, ...ethereum } } })),
+  setPayloadQRIS: (qris) =>
+    set((s) => ({ payload: { ...s.payload, qris: { ...s.payload.qris, ...qris } } })),
+  setPayloadDuitNow: (duitnow) =>
+    set((s) => ({ payload: { ...s.payload, duitnow: { ...s.payload.duitnow, ...duitnow } } })),
+  setPayloadBharatQR: (bharatqr) =>
+    set((s) => ({ payload: { ...s.payload, bharatqr: { ...s.payload.bharatqr, ...bharatqr } } })),
+  setPayloadVietQR: (vietqr) =>
+    set((s) => ({ payload: { ...s.payload, vietqr: { ...s.payload.vietqr, ...vietqr } } })),
+  setPayloadQRPh: (qrph) =>
+    set((s) => ({ payload: { ...s.payload, qrph: { ...s.payload.qrph, ...qrph } } })),
+  setPayloadTWQR: (twqr) =>
+    set((s) => ({ payload: { ...s.payload, twqr: { ...s.payload.twqr, ...twqr } } })),
+  setPayloadHKQR: (hkqr) =>
+    set((s) => ({ payload: { ...s.payload, hkqr: { ...s.payload.hkqr, ...hkqr } } })),
+  setPayloadJPQR: (jpqr) =>
+    set((s) => ({ payload: { ...s.payload, jpqr: { ...s.payload.jpqr, ...jpqr } } })),
+  setPayloadAusPayNet: (auspaynet) =>
+    set((s) => ({
+      payload: { ...s.payload, auspaynet: { ...s.payload.auspaynet, ...auspaynet } },
+    })),
+  setPayloadPayPalMe: (paypalMe) =>
+    set((s) => ({ payload: { ...s.payload, paypalMe: { ...s.payload.paypalMe, ...paypalMe } } })),
+  setPayloadCashApp: (cashapp) =>
+    set((s) => ({ payload: { ...s.payload, cashapp: { ...s.payload.cashapp, ...cashapp } } })),
+  setPayloadEMVGeneric: (emvGeneric) =>
+    set((s) => ({
+      payload: { ...s.payload, emvGeneric: { ...s.payload.emvGeneric, ...emvGeneric } },
+    })),
   setPayloadValidation: (opts) => set((s) => ({ payload: { ...s.payload, ...opts } })),
 
   // QR defaults
@@ -901,7 +1018,8 @@ export const useQRStore = create<QRState>((set, get) => ({
   setQrEcc: (ecc) => set((s) => ({ qr: { ...s.qr, ecc } })),
   setQrEncodingMode: (encodingMode) => set((s) => ({ qr: { ...s.qr, encodingMode } })),
   setQrQuietZone: (quietZoneModules) => set((s) => ({ qr: { ...s.qr, quietZoneModules } })),
-  setQrQuietZoneMinEnforce: (quietZoneMinEnforce) => set((s) => ({ qr: { ...s.qr, quietZoneMinEnforce } })),
+  setQrQuietZoneMinEnforce: (quietZoneMinEnforce) =>
+    set((s) => ({ qr: { ...s.qr, quietZoneMinEnforce } })),
 
   // Render defaults
   render: {
@@ -933,19 +1051,23 @@ export const useQRStore = create<QRState>((set, get) => ({
   },
   setRenderModulePx: (modulePx) => set((s) => ({ render: { ...s.render, modulePx } })),
   setRenderCrispEdges: (crispEdges) => set((s) => ({ render: { ...s.render, crispEdges } })),
-  setRenderModuleGap: (moduleGapPercent) => set((s) => ({ render: { ...s.render, moduleGapPercent } })),
+  setRenderModuleGap: (moduleGapPercent) =>
+    set((s) => ({ render: { ...s.render, moduleGapPercent } })),
   setRenderGapMode: (gapMode) => set((s) => ({ render: { ...s.render, gapMode } })),
   setRenderModuleStyle: (moduleStyle) => set((s) => ({ render: { ...s.render, moduleStyle } })),
   setRenderFinderStyle: (finderStyle) => set((s) => ({ render: { ...s.render, finderStyle } })),
-  setRenderAlignmentStyle: (alignmentStyle) => set((s) => ({ render: { ...s.render, alignmentStyle } })),
+  setRenderAlignmentStyle: (alignmentStyle) =>
+    set((s) => ({ render: { ...s.render, alignmentStyle } })),
   setRenderTimingStyle: (timingStyle) => set((s) => ({ render: { ...s.render, timingStyle } })),
   setRenderCornerRadius: (cornerRadius) => set((s) => ({ render: { ...s.render, cornerRadius } })),
   setRenderFrameStyle: (frameStyle) => set((s) => ({ render: { ...s.render, frameStyle } })),
   setRenderFrameText: (frameText) => set((s) => ({ render: { ...s.render, frameText } })),
   setRenderFgColor: (fgColor) => set((s) => ({ render: { ...s.render, fgColor } })),
   setRenderBgColor: (bgColor) => set((s) => ({ render: { ...s.render, bgColor } })),
-  setRenderBgTransparent: (bgTransparent) => set((s) => ({ render: { ...s.render, bgTransparent } })),
-  setRenderGradient: (gradient) => set((s) => ({ render: { ...s.render, gradient: { ...s.render.gradient, ...gradient } } })),
+  setRenderBgTransparent: (bgTransparent) =>
+    set((s) => ({ render: { ...s.render, bgTransparent } })),
+  setRenderGradient: (gradient) =>
+    set((s) => ({ render: { ...s.render, gradient: { ...s.render.gradient, ...gradient } } })),
 
   // Overlay defaults
   overlay: {
@@ -1003,26 +1125,30 @@ export const useQRStore = create<QRState>((set, get) => ({
     gifDisposalHandling: 'respect',
   },
   setOverlayEnabled: (enabled) => set((s) => ({ overlay: { ...s.overlay, enabled } })),
-  setOverlayFile: (file) => set((s) => ({ overlay: { ...s.overlay, file, enabled: !!file || !!s.overlay.url } })),
+  setOverlayFile: (file) =>
+    set((s) => ({ overlay: { ...s.overlay, file, enabled: !!file || !!s.overlay.url } })),
   setOverlayUrl: (url) => set((s) => ({ overlay: { ...s.overlay, url } })),
-  clearOverlay: () => set((s) => ({ overlay: { ...s.overlay, file: null, url: '', enabled: false } })),
+  clearOverlay: () =>
+    set((s) => ({ overlay: { ...s.overlay, file: null, url: '', enabled: false } })),
   setOverlayType: (type) => set((s) => ({ overlay: { ...s.overlay, type } })),
-  setOverlayCrop: (crop) => set((s) => ({ 
-    overlay: { 
-      ...s.overlay, 
-      cropEnabled: crop.enabled ?? s.overlay.cropEnabled,
-      cropRegion: crop.region ?? s.overlay.cropRegion,
-    } 
-  })),
+  setOverlayCrop: (crop) =>
+    set((s) => ({
+      overlay: {
+        ...s.overlay,
+        cropEnabled: crop.enabled ?? s.overlay.cropEnabled,
+        cropRegion: crop.region ?? s.overlay.cropRegion,
+      },
+    })),
   setOverlayFit: (fit) => set((s) => ({ overlay: { ...s.overlay, fit } })),
   setOverlayRotate: (rotateDeg) => set((s) => ({ overlay: { ...s.overlay, rotateDeg } })),
-  setOverlayFlip: (flip) => set((s) => ({ 
-    overlay: { 
-      ...s.overlay, 
-      flipX: flip.x ?? s.overlay.flipX,
-      flipY: flip.y ?? s.overlay.flipY,
-    } 
-  })),
+  setOverlayFlip: (flip) =>
+    set((s) => ({
+      overlay: {
+        ...s.overlay,
+        flipX: flip.x ?? s.overlay.flipX,
+        flipY: flip.y ?? s.overlay.flipY,
+      },
+    })),
   setOverlayColorMode: (colorMode) => set((s) => ({ overlay: { ...s.overlay, colorMode } })),
   setOverlayInvert: (invert) => set((s) => ({ overlay: { ...s.overlay, invert } })),
   setOverlayBrightness: (brightness) => set((s) => ({ overlay: { ...s.overlay, brightness } })),
@@ -1030,17 +1156,23 @@ export const useQRStore = create<QRState>((set, get) => ({
   setOverlayGamma: (gamma) => set((s) => ({ overlay: { ...s.overlay, gamma } })),
   setOverlayMode: (mode) => set((s) => ({ overlay: { ...s.overlay, mode } })),
   setOverlayIntensity: (intensity) => set((s) => ({ overlay: { ...s.overlay, intensity } })),
-  setOverlayPreserveFinders: (preserveFinders) => set((s) => ({ overlay: { ...s.overlay, preserveFinders } })),
-  setOverlayPreserveTiming: (preserveTiming) => set((s) => ({ overlay: { ...s.overlay, preserveTiming } })),
-  setOverlayPreserveAlignment: (preserveAlignment) => set((s) => ({ overlay: { ...s.overlay, preserveAlignment } })),
+  setOverlayPreserveFinders: (preserveFinders) =>
+    set((s) => ({ overlay: { ...s.overlay, preserveFinders } })),
+  setOverlayPreserveTiming: (preserveTiming) =>
+    set((s) => ({ overlay: { ...s.overlay, preserveTiming } })),
+  setOverlayPreserveAlignment: (preserveAlignment) =>
+    set((s) => ({ overlay: { ...s.overlay, preserveAlignment } })),
   setOverlayDitherKind: (ditherKind) => set((s) => ({ overlay: { ...s.overlay, ditherKind } })),
-  setOverlayDitherStrength: (ditherStrength) => set((s) => ({ overlay: { ...s.overlay, ditherStrength } })),
-  setOverlayDiffusionKernel: (diffusionKernel) => set((s) => ({ overlay: { ...s.overlay, diffusionKernel } })),
+  setOverlayDitherStrength: (ditherStrength) =>
+    set((s) => ({ overlay: { ...s.overlay, ditherStrength } })),
+  setOverlayDiffusionKernel: (diffusionKernel) =>
+    set((s) => ({ overlay: { ...s.overlay, diffusionKernel } })),
   setOverlaySaturation: (saturation) => set((s) => ({ overlay: { ...s.overlay, saturation } })),
   setOverlayHueRotate: (hueRotateDeg) => set((s) => ({ overlay: { ...s.overlay, hueRotateDeg } })),
   setOverlayBlur: (blurPx) => set((s) => ({ overlay: { ...s.overlay, blurPx } })),
   setOverlaySharpen: (sharpen) => set((s) => ({ overlay: { ...s.overlay, sharpen } })),
-  setOverlayPosterize: (posterizeLevels) => set((s) => ({ overlay: { ...s.overlay, posterizeLevels } })),
+  setOverlayPosterize: (posterizeLevels) =>
+    set((s) => ({ overlay: { ...s.overlay, posterizeLevels } })),
   setOverlayThreshold: (threshold) => set((s) => ({ overlay: { ...s.overlay, threshold } })),
   setOverlayEdgeDetect: (edgeDetect) => set((s) => ({ overlay: { ...s.overlay, edgeDetect } })),
 
@@ -1051,7 +1183,7 @@ export const useQRStore = create<QRState>((set, get) => ({
     bounce: false,
     playing: true,
     startFrame: 0,
-    maxFrames: 0,  // 0 = auto (use source frames, capped for performance)
+    maxFrames: 0, // 0 = auto (use source frames, capped for performance)
     frameStep: 1,
     perFrameDelay: [],
     interpolate: 'none',
@@ -1065,7 +1197,8 @@ export const useQRStore = create<QRState>((set, get) => ({
   setAnimationLoop: (loop) => set((s) => ({ animation: { ...s.animation, loop } })),
   setAnimationBounce: (bounce) => set((s) => ({ animation: { ...s.animation, bounce } })),
   setAnimationPlaying: (playing) => set((s) => ({ animation: { ...s.animation, playing } })),
-  setAnimationStartFrame: (startFrame) => set((s) => ({ animation: { ...s.animation, startFrame } })),
+  setAnimationStartFrame: (startFrame) =>
+    set((s) => ({ animation: { ...s.animation, startFrame } })),
   setAnimationMaxFrames: (maxFrames) => set((s) => ({ animation: { ...s.animation, maxFrames } })),
   setAnimationFrameStep: (frameStep) => set((s) => ({ animation: { ...s.animation, frameStep } })),
 
@@ -1095,9 +1228,11 @@ export const useQRStore = create<QRState>((set, get) => ({
   setOutputHeight: (heightPx) => set((s) => ({ output: { ...s.output, heightPx } })),
   setOutputQuality: (quality) => set((s) => ({ output: { ...s.output, quality } })),
   setOutputFilename: (filename) => set((s) => ({ output: { ...s.output, filename } })),
-  setOutputGifPaletteSize: (gifPaletteSize) => set((s) => ({ output: { ...s.output, gifPaletteSize } })),
+  setOutputGifPaletteSize: (gifPaletteSize) =>
+    set((s) => ({ output: { ...s.output, gifPaletteSize } })),
   setOutputGifQuantizer: (gifQuantizer) => set((s) => ({ output: { ...s.output, gifQuantizer } })),
-  setOutputSvgTrueVector: (svgTrueVector) => set((s) => ({ output: { ...s.output, svgTrueVector } })),
+  setOutputSvgTrueVector: (svgTrueVector) =>
+    set((s) => ({ output: { ...s.output, svgTrueVector } })),
 
   // Watermark defaults
   watermark: {
@@ -1179,270 +1314,272 @@ export const useQRStore = create<QRState>((set, get) => ({
 
   // Generate final payload text based on kind
   getPayloadText: () => {
-    const state = get()
-    const { payload } = state
+    const state = get();
+    const { payload } = state;
 
     // Helper to apply text transformations
     const applyTransforms = (text: string): string => {
-      let result = text
+      let result = text;
       if (payload.trim) {
-        result = result.trim()
+        result = result.trim();
       }
       if (payload.normalizeNewlines) {
-        result = result.replace(/\r\n/g, '\n').replace(/\r/g, '\n')
+        result = result.replace(/\r\n/g, '\n').replace(/\r/g, '\n');
       }
-      return result
-    }
+      return result;
+    };
 
-    let result: string
+    let _result: string;
 
     switch (payload.kind) {
       case 'plain_text':
-        return applyTransforms(payload.text)
+        return applyTransforms(payload.text);
 
       case 'url': {
-        let url = payload.url.href
+        let url = payload.url.href;
         if (payload.url.forceHttps && url.startsWith('http://')) {
-          url = url.replace('http://', 'https://')
+          url = url.replace('http://', 'https://');
         }
-        const params = new URLSearchParams()
-        if (payload.url.utmSource) params.set('utm_source', payload.url.utmSource)
-        if (payload.url.utmMedium) params.set('utm_medium', payload.url.utmMedium)
-        if (payload.url.utmCampaign) params.set('utm_campaign', payload.url.utmCampaign)
-        if (payload.url.utmTerm) params.set('utm_term', payload.url.utmTerm)
-        if (payload.url.utmContent) params.set('utm_content', payload.url.utmContent)
-        const paramStr = params.toString()
-        return paramStr ? `${url}${url.includes('?') ? '&' : '?'}${paramStr}` : url
+        const params = new URLSearchParams();
+        if (payload.url.utmSource) params.set('utm_source', payload.url.utmSource);
+        if (payload.url.utmMedium) params.set('utm_medium', payload.url.utmMedium);
+        if (payload.url.utmCampaign) params.set('utm_campaign', payload.url.utmCampaign);
+        if (payload.url.utmTerm) params.set('utm_term', payload.url.utmTerm);
+        if (payload.url.utmContent) params.set('utm_content', payload.url.utmContent);
+        const paramStr = params.toString();
+        return paramStr ? `${url}${url.includes('?') ? '&' : '?'}${paramStr}` : url;
       }
 
       case 'tel':
-        return `tel:${payload.tel.number}`
+        return `tel:${payload.tel.number}`;
 
       case 'email': {
-        let mailto = `mailto:${payload.email.to}`
-        const params = new URLSearchParams()
-        if (payload.email.subject) params.set('subject', payload.email.subject)
-        if (payload.email.body) params.set('body', payload.email.body)
-        const paramStr = params.toString()
-        return paramStr ? `${mailto}?${paramStr}` : mailto
+        const mailto = `mailto:${payload.email.to}`;
+        const params = new URLSearchParams();
+        if (payload.email.subject) params.set('subject', payload.email.subject);
+        if (payload.email.body) params.set('body', payload.email.body);
+        const paramStr = params.toString();
+        return paramStr ? `${mailto}?${paramStr}` : mailto;
       }
 
       case 'sms': {
-        let sms = `sms:${payload.sms.number}`
-        if (payload.sms.body) sms += `?body=${encodeURIComponent(payload.sms.body)}`
-        return sms
+        let sms = `sms:${payload.sms.number}`;
+        if (payload.sms.body) sms += `?body=${encodeURIComponent(payload.sms.body)}`;
+        return sms;
       }
 
       case 'geo': {
-        let geo = `geo:${payload.geo.lat},${payload.geo.lon}`
-        if (payload.geo.query) geo += `?q=${encodeURIComponent(payload.geo.query)}`
-        return geo
+        let geo = `geo:${payload.geo.lat},${payload.geo.lon}`;
+        if (payload.geo.query) geo += `?q=${encodeURIComponent(payload.geo.query)}`;
+        return geo;
       }
 
       case 'wifi': {
-        const w = payload.wifi
-        let wifi = `WIFI:T:${w.auth};S:${w.ssid};`
-        if (w.password) wifi += `P:${w.password};`
-        if (w.hidden) wifi += 'H:true;'
-        wifi += ';'
-        return wifi
+        const w = payload.wifi;
+        let wifi = `WIFI:T:${w.auth};S:${w.ssid};`;
+        if (w.password) wifi += `P:${w.password};`;
+        if (w.hidden) wifi += 'H:true;';
+        wifi += ';';
+        return wifi;
       }
 
       case 'vcard': {
-        const v = payload.vcard
-        let vcard = `BEGIN:VCARD\nVERSION:${v.version}\n`
-        if (v.fn) vcard += `FN:${v.fn}\n`
-        if (v.n) vcard += `N:${v.n}\n`
-        if (v.org) vcard += `ORG:${v.org}\n`
-        if (v.title) vcard += `TITLE:${v.title}\n`
-        v.tel?.forEach(t => vcard += `TEL:${t}\n`)
-        v.email?.forEach(e => vcard += `EMAIL:${e}\n`)
-        if (v.url) vcard += `URL:${v.url}\n`
-        v.adr?.forEach(a => vcard += `ADR:${a}\n`)
-        if (v.note) vcard += `NOTE:${v.note}\n`
-        if (v.bday) vcard += `BDAY:${v.bday}\n`
-        vcard += 'END:VCARD'
-        return vcard
+        const v = payload.vcard;
+        let vcard = `BEGIN:VCARD\nVERSION:${v.version}\n`;
+        if (v.fn) vcard += `FN:${v.fn}\n`;
+        if (v.n) vcard += `N:${v.n}\n`;
+        if (v.org) vcard += `ORG:${v.org}\n`;
+        if (v.title) vcard += `TITLE:${v.title}\n`;
+        v.tel?.forEach((t) => (vcard += `TEL:${t}\n`));
+        v.email?.forEach((e) => (vcard += `EMAIL:${e}\n`));
+        if (v.url) vcard += `URL:${v.url}\n`;
+        v.adr?.forEach((a) => (vcard += `ADR:${a}\n`));
+        if (v.note) vcard += `NOTE:${v.note}\n`;
+        if (v.bday) vcard += `BDAY:${v.bday}\n`;
+        vcard += 'END:VCARD';
+        return vcard;
       }
 
       case 'mecard': {
-        const m = payload.mecard
-        let mecard = 'MECARD:'
-        if (m.n) mecard += `N:${m.n};`
-        if (m.tel) mecard += `TEL:${m.tel};`
-        if (m.email) mecard += `EMAIL:${m.email};`
-        if (m.adr) mecard += `ADR:${m.adr};`
-        if (m.org) mecard += `ORG:${m.org};`
-        if (m.url) mecard += `URL:${m.url};`
-        if (m.note) mecard += `NOTE:${m.note};`
-        if (m.bday) mecard += `BDAY:${m.bday};`
-        if (m.nickname) mecard += `NICKNAME:${m.nickname};`
-        mecard += ';'
-        return mecard
+        const m = payload.mecard;
+        let mecard = 'MECARD:';
+        if (m.n) mecard += `N:${m.n};`;
+        if (m.tel) mecard += `TEL:${m.tel};`;
+        if (m.email) mecard += `EMAIL:${m.email};`;
+        if (m.adr) mecard += `ADR:${m.adr};`;
+        if (m.org) mecard += `ORG:${m.org};`;
+        if (m.url) mecard += `URL:${m.url};`;
+        if (m.note) mecard += `NOTE:${m.note};`;
+        if (m.bday) mecard += `BDAY:${m.bday};`;
+        if (m.nickname) mecard += `NICKNAME:${m.nickname};`;
+        mecard += ';';
+        return mecard;
       }
 
       case 'event': {
-        const e = payload.event
-        let event = 'BEGIN:VEVENT\n'
-        if (e.summary) event += `SUMMARY:${e.summary}\n`
-        if (e.location) event += `LOCATION:${e.location}\n`
-        if (e.description) event += `DESCRIPTION:${e.description}\n`
-        if (e.start) event += `DTSTART:${e.start}\n`
-        if (e.end) event += `DTEND:${e.end}\n`
-        if (e.rrule) event += `RRULE:${e.rrule}\n`
-        event += 'END:VEVENT'
-        return event
+        const e = payload.event;
+        let event = 'BEGIN:VEVENT\n';
+        if (e.summary) event += `SUMMARY:${e.summary}\n`;
+        if (e.location) event += `LOCATION:${e.location}\n`;
+        if (e.description) event += `DESCRIPTION:${e.description}\n`;
+        if (e.start) event += `DTSTART:${e.start}\n`;
+        if (e.end) event += `DTEND:${e.end}\n`;
+        if (e.rrule) event += `RRULE:${e.rrule}\n`;
+        event += 'END:VEVENT';
+        return event;
       }
 
       case 'crypto': {
-        const c = payload.crypto
-        let payment = `${c.type}:${c.address}`
-        const params = new URLSearchParams()
-        if (c.amount) params.set('amount', c.amount.toString())
-        if (c.label) params.set('label', c.label)
-        const paramStr = params.toString()
-        return paramStr ? `${payment}?${paramStr}` : payment
+        const c = payload.crypto;
+        const payment = `${c.type}:${c.address}`;
+        const params = new URLSearchParams();
+        if (c.amount) params.set('amount', c.amount.toString());
+        if (c.label) params.set('label', c.label);
+        const paramStr = params.toString();
+        return paramStr ? `${payment}?${paramStr}` : payment;
       }
 
       case 'bizcard': {
         // BizCard format (simplified vCard variant)
-        let bc = 'BIZCARD:'
-        const v = payload.vcard
-        if (v.fn) bc += `N:${v.fn};`
-        if (v.title) bc += `T:${v.title};`
-        if (v.org) bc += `C:${v.org};`
-        if (v.tel?.[0]) bc += `B:${v.tel[0]};`
-        if (v.email?.[0]) bc += `E:${v.email[0]};`
-        if (v.adr?.[0]) bc += `A:${v.adr[0]};`
-        bc += ';'
-        return bc
+        let bc = 'BIZCARD:';
+        const v = payload.vcard;
+        if (v.fn) bc += `N:${v.fn};`;
+        if (v.title) bc += `T:${v.title};`;
+        if (v.org) bc += `C:${v.org};`;
+        if (v.tel?.[0]) bc += `B:${v.tel[0]};`;
+        if (v.email?.[0]) bc += `E:${v.email[0]};`;
+        if (v.adr?.[0]) bc += `A:${v.adr[0]};`;
+        bc += ';';
+        return bc;
       }
 
       case 'calendar_subscription': {
         // Convert URL to webcal:// protocol
-        let url = payload.text
+        let url = payload.text;
         if (url.startsWith('https://')) {
-          url = url.replace('https://', 'webcal://')
+          url = url.replace('https://', 'webcal://');
         } else if (url.startsWith('http://')) {
-          url = url.replace('http://', 'webcal://')
+          url = url.replace('http://', 'webcal://');
         } else if (!url.startsWith('webcal://')) {
-          url = 'webcal://' + url
+          url = `webcal://${url}`;
         }
-        return url
+        return url;
       }
 
       case 'event_rsvp': {
         // RSVP is typically just a URL, but could add mailto: fallback
-        const url = payload.text
+        const url = payload.text;
         if (url.includes('@') && !url.startsWith('mailto:') && !url.startsWith('http')) {
-          return `mailto:${url}?subject=RSVP`
+          return `mailto:${url}?subject=RSVP`;
         }
-        return url
+        return url;
       }
 
       case 'file_url': {
         // File URL - just ensure proper URL format
-        let url = payload.text
-        if (!url.startsWith('http://') && !url.startsWith('https://') && !url.startsWith('file://')) {
-          url = 'https://' + url
+        let url = payload.text;
+        if (
+          !(url.startsWith('http://') || url.startsWith('https://') || url.startsWith('file://'))
+        ) {
+          url = `https://${url}`;
         }
-        return url
+        return url;
       }
 
       case 'cloud_link': {
         // Cloud link - just ensure proper URL format
-        let url = payload.text
-        if (!url.startsWith('http://') && !url.startsWith('https://')) {
-          url = 'https://' + url
+        let url = payload.text;
+        if (!(url.startsWith('http://') || url.startsWith('https://'))) {
+          url = `https://${url}`;
         }
-        return url
+        return url;
       }
 
       case 'social_profile': {
         // Social profile - ensure proper URL format
-        let url = payload.text
-        if (!url.startsWith('http://') && !url.startsWith('https://')) {
-          url = 'https://' + url
+        let url = payload.text;
+        if (!(url.startsWith('http://') || url.startsWith('https://'))) {
+          url = `https://${url}`;
         }
-        return url
+        return url;
       }
 
       case 'messaging_link': {
         // Messaging links - detect platform and format appropriately
-        const text = payload.text
+        const text = payload.text;
         // If it's a phone number, format as sms:
         if (/^\+?[\d\s-]+$/.test(text)) {
-          return `sms:${text.replace(/[\s-]/g, '')}`
+          return `sms:${text.replace(/[\s-]/g, '')}`;
         }
         // If it looks like a WhatsApp link
         if (text.includes('wa.me') || text.includes('whatsapp')) {
-          return text.startsWith('http') ? text : 'https://' + text
+          return text.startsWith('http') ? text : `https://${text}`;
         }
         // If it's a Telegram username
         if (text.startsWith('@') || text.includes('t.me')) {
           if (text.startsWith('@')) {
-            return `https://t.me/${text.slice(1)}`
+            return `https://t.me/${text.slice(1)}`;
           }
-          return text.startsWith('http') ? text : 'https://' + text
+          return text.startsWith('http') ? text : `https://${text}`;
         }
-        return text
+        return text;
       }
 
       case 'gs1_digital_link': {
         // GS1 Digital Link format
         // Format: https://id.gs1.org/01/{GTIN}
-        const text = payload.text
+        const text = payload.text;
         // If already a URL, return as-is
-        if (text.startsWith('http')) return text
+        if (text.startsWith('http')) return text;
         // If it's just a GTIN number, format it
-        const gtin = text.replace(/[^\d]/g, '')
+        const gtin = text.replace(/[^\d]/g, '');
         if (gtin.length >= 8) {
-          return `https://id.gs1.org/01/${gtin.padStart(14, '0')}`
+          return `https://id.gs1.org/01/${gtin.padStart(14, '0')}`;
         }
-        return text
+        return text;
       }
 
       case 'app_link': {
         // App deep link - detect platform and format
-        const text = payload.text
+        const text = payload.text;
         // Android intent
         if (text.startsWith('intent://') || text.startsWith('android-app://')) {
-          return text
+          return text;
         }
         // iOS universal link or custom scheme
         if (text.includes('://')) {
-          return text
+          return text;
         }
         // If it's a package name, format as market link
         if (text.includes('.') && !text.includes('/')) {
-          return `market://details?id=${text}`
+          return `market://details?id=${text}`;
         }
-        return text
+        return text;
       }
 
       case 'utm_link': {
         // UTM campaign link - use same logic as URL
-        let url = payload.url.href
+        let url = payload.url.href;
         if (payload.url.forceHttps && url.startsWith('http://')) {
-          url = url.replace('http://', 'https://')
+          url = url.replace('http://', 'https://');
         }
-        const params = new URLSearchParams()
-        if (payload.url.utmSource) params.set('utm_source', payload.url.utmSource)
-        if (payload.url.utmMedium) params.set('utm_medium', payload.url.utmMedium)
-        if (payload.url.utmCampaign) params.set('utm_campaign', payload.url.utmCampaign)
-        if (payload.url.utmTerm) params.set('utm_term', payload.url.utmTerm)
-        if (payload.url.utmContent) params.set('utm_content', payload.url.utmContent)
-        const paramStr = params.toString()
-        return paramStr ? `${url}${url.includes('?') ? '&' : '?'}${paramStr}` : url
+        const params = new URLSearchParams();
+        if (payload.url.utmSource) params.set('utm_source', payload.url.utmSource);
+        if (payload.url.utmMedium) params.set('utm_medium', payload.url.utmMedium);
+        if (payload.url.utmCampaign) params.set('utm_campaign', payload.url.utmCampaign);
+        if (payload.url.utmTerm) params.set('utm_term', payload.url.utmTerm);
+        if (payload.url.utmContent) params.set('utm_content', payload.url.utmContent);
+        const paramStr = params.toString();
+        return paramStr ? `${url}${url.includes('?') ? '&' : '?'}${paramStr}` : url;
       }
 
       case 'short_link':
         // Short link - return as-is
-        return payload.text
+        return payload.text;
 
       case 'swiss_qr_bill': {
-        const sqb = payload.swissQRBill
-        if (!sqb.creditorIBAN || !sqb.creditorName) return ''
+        const sqb = payload.swissQRBill;
+        if (!(sqb.creditorIBAN && sqb.creditorName)) return '';
         return generateSwissQRBill({
           creditorIBAN: sqb.creditorIBAN,
           creditorName: sqb.creditorName,
@@ -1458,18 +1595,18 @@ export const useQRStore = create<QRState>((set, get) => ({
           reference: sqb.reference,
           unstructuredMessage: sqb.unstructuredMessage,
           billInformation: sqb.billInformation,
-        })
+        });
       }
 
       case 'lightning': {
-        const ln = payload.lightning
-        if (!ln.invoice) return ''
-        return generateLightning({ invoice: ln.invoice })
+        const ln = payload.lightning;
+        if (!ln.invoice) return '';
+        return generateLightning({ invoice: ln.invoice });
       }
 
       case 'ethereum_eip681': {
-        const eth = payload.ethereum
-        if (!eth.targetAddress) return ''
+        const eth = payload.ethereum;
+        if (!eth.targetAddress) return '';
         return generateEthereumEIP681({
           targetAddress: eth.targetAddress,
           chainId: eth.chainId,
@@ -1480,11 +1617,11 @@ export const useQRStore = create<QRState>((set, get) => ({
           tokenAddress: eth.tokenAddress,
           tokenValue: eth.tokenValue,
           functionName: eth.functionName,
-        })
+        });
       }
 
       case 'qris': {
-        const q = payload.qris
+        const q = payload.qris;
         // EMV spec requires merchantName (tag 59), merchantId for QRIS
         // Allow generation for preview - generator provides defaults
         return generateQRIS({
@@ -1498,11 +1635,11 @@ export const useQRStore = create<QRState>((set, get) => ({
           feeType: q.feeType,
           feeAmount: q.feeAmount,
           terminalLabel: q.terminalLabel,
-        })
+        });
       }
 
       case 'duitnow': {
-        const d = payload.duitnow
+        const d = payload.duitnow;
         // ProxyValue is the payment identifier (required for routing)
         // MerchantName is required by EMV spec (tag 59)
         // Allow generation for preview
@@ -1513,11 +1650,11 @@ export const useQRStore = create<QRState>((set, get) => ({
           merchantCity: d.merchantCity,
           amount: d.amount,
           reference: d.reference,
-        })
+        });
       }
 
       case 'bharatqr': {
-        const b = payload.bharatqr
+        const b = payload.bharatqr;
         // MerchantName is required by EMV spec (tag 59)
         // VPA is optional (can use other payment networks)
         // Allow generation for preview
@@ -1533,11 +1670,11 @@ export const useQRStore = create<QRState>((set, get) => ({
           invoiceNumber: b.invoiceNumber,
           referenceNumber: b.referenceNumber,
           terminalId: b.terminalId,
-        })
+        });
       }
 
       case 'vietqr': {
-        const v = payload.vietqr
+        const v = payload.vietqr;
         // BankBin and accountNumber are required for VietQR routing
         // Allow generation for preview
         return generateVietQR({
@@ -1547,23 +1684,23 @@ export const useQRStore = create<QRState>((set, get) => ({
           serviceCode: v.serviceCode,
           amount: v.amount,
           description: v.description,
-        })
+        });
       }
 
       case 'qrph': {
-        const p = payload.qrph
-        if (!p.accountNumber || !p.merchantName) return ''
+        const p = payload.qrph;
+        if (!(p.accountNumber && p.merchantName)) return '';
         return generateQRPh({
           accountNumber: p.accountNumber,
           merchantName: p.merchantName,
           merchantCity: p.merchantCity,
           amount: p.amount,
           reference: p.reference,
-        })
+        });
       }
 
       case 'twqr': {
-        const t = payload.twqr
+        const t = payload.twqr;
         // MerchantId and merchantName required by TWQR spec
         // Allow generation for preview
         return generateTWQR({
@@ -1572,23 +1709,23 @@ export const useQRStore = create<QRState>((set, get) => ({
           merchantCity: t.merchantCity,
           taxId: t.taxId,
           amount: t.amount,
-        })
+        });
       }
 
       case 'hkqr': {
-        const h = payload.hkqr
-        if (!h.fpsId || !h.merchantName) return ''
+        const h = payload.hkqr;
+        if (!(h.fpsId && h.merchantName)) return '';
         return generateHKQR({
           fpsId: h.fpsId,
           merchantName: h.merchantName,
           merchantCity: h.merchantCity,
           amount: h.amount,
           reference: h.reference,
-        })
+        });
       }
 
       case 'jpqr': {
-        const j = payload.jpqr
+        const j = payload.jpqr;
         // StoreId and merchantName required by JPQR spec
         // Allow generation for preview
         return generateJPQR({
@@ -1596,11 +1733,11 @@ export const useQRStore = create<QRState>((set, get) => ({
           merchantName: j.merchantName,
           merchantCity: j.merchantCity,
           amount: j.amount,
-        })
+        });
       }
 
       case 'auspaynet': {
-        const a = payload.auspaynet
+        const a = payload.auspaynet;
         // NPP PayID spec: Need either PayID OR BSB+AccountNumber for routing
         // MerchantName is OPTIONAL - payer sees registered name from NPP lookup
         // Amount is OPTIONAL - can be entered by payer
@@ -1613,38 +1750,38 @@ export const useQRStore = create<QRState>((set, get) => ({
           merchantCity: a.merchantCity,
           amount: a.amount,
           reference: a.reference,
-        })
+        });
       }
 
       case 'paypal_me': {
-        const pp = payload.paypalMe
-        if (!pp.username) return ''
+        const pp = payload.paypalMe;
+        if (!pp.username) return '';
         return generatePayPalMe({
           username: pp.username,
           amount: pp.amount,
           currencyCode: pp.currencyCode,
-        })
+        });
       }
 
       case 'cashapp': {
-        const ca = payload.cashapp
-        if (!ca.cashtag) return ''
+        const ca = payload.cashapp;
+        if (!ca.cashtag) return '';
         return generateCashApp({
           cashtag: ca.cashtag,
           amount: ca.amount,
-        })
+        });
       }
 
       case 'emv_generic': {
-        const emv = payload.emvGeneric
-        if (!emv.merchantName || !emv.countryCode || !emv.currencyCode) return ''
+        const emv = payload.emvGeneric;
+        if (!(emv.merchantName && emv.countryCode && emv.currencyCode)) return '';
         // Map our helper interface to EMVMPMParams
         const tipIndicatorMap: Record<string, '01' | '02' | '03' | undefined> = {
-          'prompt': '01',
-          'fixed': '02',
-          'percent': '03',
-          'none': undefined
-        }
+          prompt: '01',
+          fixed: '02',
+          percent: '03',
+          none: undefined,
+        };
         return generateEMVMPM({
           merchantName: emv.merchantName,
           merchantCity: emv.merchantCity,
@@ -1663,14 +1800,14 @@ export const useQRStore = create<QRState>((set, get) => ({
           purposeOfTransaction: emv.purposeOfTransaction,
           postalCode: emv.postalCode,
           mcc: emv.mcc,
-        })
+        });
       }
 
       case 'custom':
-        return applyTransforms(payload.text)
+        return applyTransforms(payload.text);
 
       default:
-        return applyTransforms(payload.text)
+        return applyTransforms(payload.text);
     }
   },
-}))
+}));

@@ -1,1 +1,2 @@
-import * as bootstrap from './___netlify-bootstrap.mjs';export const handler = bootstrap.getLambdaHandler('./netlify/functions/qr.mjs')
+import * as bootstrap from './___netlify-bootstrap.mjs';
+export const handler = bootstrap.getLambdaHandler('./netlify/functions/qr.mjs');

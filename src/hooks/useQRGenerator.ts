@@ -4,43 +4,58 @@
  * Supports animated GIF overlays
  */
 
-import { useState, useEffect, useRef, useCallback, useMemo } from 'react'
-import { useQRStore } from '@/store/qr-store'
-import { showInterstitial, prepareInterstitial, trackGenerationAndShowAd } from '@/modules/admob-service'
-import { QRGenerator } from '@/modules/qr-generator'
-import { applyWatermark } from '@/modules/watermark'
-import { downloadImage, downloadSvg, downloadGif } from '@/modules/exporter'
-import { parseAnimatedImage, createGifCompositor, decimateCompositorFrames, type AnimationFrame, type GifCompositor } from '@/modules/animation'
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import { prepareInterstitial, showInterstitial } from '@/modules/admob-service';
+import {
+  type AnimationFrame,
+  applyColorCycle,
+  createGifCompositor,
+  decimateCompositorFrames,
+  type GifCompositor,
+  parseAnimatedImage,
+} from '@/modules/animation';
+import {
+  type AnimationPattern,
+  generatePatternFrames,
+  interpolateFrames,
+} from '@/modules/animation-patterns';
+import { downloadGif, downloadImage, downloadSvg } from '@/modules/exporter';
+import { getEffectiveDitherKind, STORE_DEFAULT_DITHER } from '@/modules/overlay-processor';
+import { QRGenerator } from '@/modules/qr-generator';
 // Note: applyFilters is no longer used here - color adjustments are done at moduleCount
 // resolution inside qr-generator.js for 10-50x speedup
-import { validateQRCodeRobust, type ValidationResult } from '@/modules/qr-scanner'
-import { calculateTemporalOffset, applyTemporalNoiseToCanvas, isTemporalDitherActive, type TemporalDitherMode } from '@/modules/temporal-dither'
-import { generatePatternFrames, interpolateFrames, type AnimationPattern } from '@/modules/animation-patterns'
-import { applyColorCycle } from '@/modules/animation'
-import { getEffectiveDitherKind, STORE_DEFAULT_DITHER } from '@/modules/overlay-processor'
+import { type ValidationResult, validateQRCodeRobust } from '@/modules/qr-scanner';
+import {
+  applyTemporalNoiseToCanvas,
+  calculateTemporalOffset,
+  isTemporalDitherActive,
+  type TemporalDitherMode,
+} from '@/modules/temporal-dither';
+import { applyWatermark } from '@/modules/watermark';
+import { useQRStore } from '@/store/qr-store';
 
 // Singleton QR generator instance
-const qrGenerator = new QRGenerator()
+const qrGenerator = new QRGenerator();
 
 // Target FPS for preview mode (source GIFs above this will be decimated)
-const PREVIEW_TARGET_FPS = 15
+const _PREVIEW_TARGET_FPS = 15;
 
 // Yield interval: yield after this many ms of processing to keep UI responsive
-const YIELD_INTERVAL_MS = 16 // ~60fps frame budget
+const YIELD_INTERVAL_MS = 16; // ~60fps frame budget
 
 /**
  * Yield to main thread to prevent UI blocking during heavy computation
  * Uses requestIdleCallback with timeout fallback for mobile performance
  */
 function yieldToMainThread(timeout = 50): Promise<void> {
-  return new Promise(resolve => {
+  return new Promise((resolve) => {
     if (typeof requestIdleCallback !== 'undefined') {
-      requestIdleCallback(() => resolve(), { timeout })
+      requestIdleCallback(() => resolve(), { timeout });
     } else {
       // Fallback for browsers without requestIdleCallback
-      setTimeout(resolve, 0)
+      setTimeout(resolve, 0);
     }
-  })
+  });
 }
 
 /**
@@ -48,70 +63,70 @@ function yieldToMainThread(timeout = 50): Promise<void> {
  * Returns true if enough time has passed that we should yield
  */
 class YieldController {
-  private lastYieldTime: number = 0
-  
+  private lastYieldTime: number = 0;
+
   reset(): void {
-    this.lastYieldTime = performance.now()
+    this.lastYieldTime = performance.now();
   }
-  
+
   shouldYield(): boolean {
-    const now = performance.now()
+    const now = performance.now();
     if (now - this.lastYieldTime >= YIELD_INTERVAL_MS) {
-      return true
+      return true;
     }
-    return false
+    return false;
   }
-  
+
   async yieldIfNeeded(): Promise<boolean> {
     if (this.shouldYield()) {
-      await yieldToMainThread(8) // Short timeout for responsive yielding
-      this.lastYieldTime = performance.now()
-      return true
+      await yieldToMainThread(8); // Short timeout for responsive yielding
+      this.lastYieldTime = performance.now();
+      return true;
     }
-    return false
+    return false;
   }
 }
 
 interface UseQRGeneratorResult {
-  canvasRef: React.RefObject<HTMLCanvasElement>
-  canvas: HTMLCanvasElement | null
-  isLoading: boolean
-  isExporting: boolean
-  error: string | null
-  regenerate: () => void
-  download: () => Promise<void>
+  canvasRef: React.RefObject<HTMLCanvasElement>;
+  canvas: HTMLCanvasElement | null;
+  isLoading: boolean;
+  isExporting: boolean;
+  error: string | null;
+  regenerate: () => void;
+  download: () => Promise<void>;
   // Animation state
-  isAnimating: boolean
-  currentFrame: number
-  totalFrames: number
+  isAnimating: boolean;
+  currentFrame: number;
+  totalFrames: number;
   // True when we have multi-frame content but animation cache isn't ready yet
-  isPreparingAnimation: boolean
+  isPreparingAnimation: boolean;
   // Safety warnings
-  safetyWarnings: string[]
+  safetyWarnings: string[];
   // Validation
-  validation: ValidationResult | null
-  isValidating: boolean
+  validation: ValidationResult | null;
+  isValidating: boolean;
   // Animation frames for GIF export
-  animationFrames: HTMLCanvasElement[]
+  animationFrames: HTMLCanvasElement[];
 }
 
 /**
  * Debounce helper
  */
 function useDebounce<T>(value: T, delay: number): T {
-  const [debouncedValue, setDebouncedValue] = useState<T>(value)
+  const [debouncedValue, setDebouncedValue] = useState<T>(value);
 
   useEffect(() => {
     const handler = setTimeout(() => {
-      setDebouncedValue(value)
-    }, delay)
+      setDebouncedValue(value);
+    }, delay);
 
     return () => {
-      clearTimeout(handler)
-    }
-  }, [value, delay])
+      clearTimeout(handler);
+    };
+  }, [value, delay]);
 
-  return debouncedValue
+  return debouncedValue;
 }
 
 /**
@@ -119,171 +134,183 @@ function useDebounce<T>(value: T, delay: number): T {
  */
 async function loadFileAsCanvas(file: File): Promise<HTMLCanvasElement> {
   return new Promise((resolve, reject) => {
-    const reader = new FileReader()
+    const reader = new FileReader();
     reader.onload = (e) => {
-      const img = new Image()
+      const img = new Image();
       img.onload = () => {
-        const canvas = document.createElement('canvas')
-        canvas.width = img.naturalWidth
-        canvas.height = img.naturalHeight
-        const ctx = canvas.getContext('2d')!
-        ctx.drawImage(img, 0, 0)
-        resolve(canvas)
-      }
-      img.onerror = () => reject(new Error('Failed to load image'))
-      img.src = e.target?.result as string
-    }
-    reader.onerror = () => reject(new Error('Failed to read file'))
-    reader.readAsDataURL(file)
-  })
+        const canvas = document.createElement('canvas');
+        canvas.width = img.naturalWidth;
+        canvas.height = img.naturalHeight;
+        const ctx = canvas.getContext('2d')!;
+        ctx.drawImage(img, 0, 0);
+        resolve(canvas);
+      };
+      img.onerror = () => reject(new Error('Failed to load image'));
+      img.src = e.target?.result as string;
+    };
+    reader.onerror = () => reject(new Error('Failed to read file'));
+    reader.readAsDataURL(file);
+  });
 }
 
 // Expose animation state globally for external tools (e.g., gallery generator)
 declare global {
   interface Window {
     __ANQR_STATE__?: {
-      isLoading: boolean
-      isAnimationReady: boolean
-      animationFrameCount: number
-      currentFrame: number
-      animationFrames: HTMLCanvasElement[]
-      animationSpeedMs: number
-      frameDelays: number[] // Original frame delays from source GIF in ms
-    }
+      isLoading: boolean;
+      isAnimationReady: boolean;
+      animationFrameCount: number;
+      currentFrame: number;
+      animationFrames: HTMLCanvasElement[];
+      animationSpeedMs: number;
+      frameDelays: number[]; // Original frame delays from source GIF in ms
+    };
   }
 }
 
 export function useQRGenerator(): UseQRGeneratorResult {
-  const canvasRef = useRef<HTMLCanvasElement | null>(null)
-  const [canvas, setCanvas] = useState<HTMLCanvasElement | null>(null)
-  const [isLoading, setIsLoading] = useState(false)
-  const [isExporting, setIsExporting] = useState(false)
-  const [error, setError] = useState<string | null>(null)
-  const [overlayCanvas, setOverlayCanvas] = useState<HTMLCanvasElement | null>(null)
-  
+  const canvasRef = useRef<HTMLCanvasElement | null>(null);
+  const [canvas, setCanvas] = useState<HTMLCanvasElement | null>(null);
+  const [isLoading, setIsLoading] = useState(false);
+  const [isExporting, setIsExporting] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  const [overlayCanvas, setOverlayCanvas] = useState<HTMLCanvasElement | null>(null);
+
   // Animation state
-  const [gifFrames, setGifFrames] = useState<AnimationFrame[]>([])
-  const [currentFrame, setCurrentFrame] = useState(0)
-  const [isAnimating, setIsAnimating] = useState(false)
-  const animationDirection = useRef<1 | -1>(1)
-  const lastFrameTime = useRef(0)
-  const animationRef = useRef<number | null>(null)
-  
+  const [gifFrames, setGifFrames] = useState<AnimationFrame[]>([]);
+  const [currentFrame, setCurrentFrame] = useState(0);
+  const [isAnimating, setIsAnimating] = useState(false);
+  const animationDirection = useRef<1 | -1>(1);
+  const lastFrameTime = useRef(0);
+  const animationRef = useRef<number | null>(null);
+
   // GIF Compositor for optimal patch-only decoding (no per-frame canvas allocation)
-  const [gifCompositor, setGifCompositor] = useState<GifCompositor | null>(null)
-  
+  const [gifCompositor, setGifCompositor] = useState<GifCompositor | null>(null);
+
   // Store raw overlay canvas before preprocessing
-  const [rawOverlayCanvas, setRawOverlayCanvas] = useState<HTMLCanvasElement | null>(null)
-  
+  const [rawOverlayCanvas, setRawOverlayCanvas] = useState<HTMLCanvasElement | null>(null);
+
   // Track when we're loading/parsing an overlay file (prevents busy overlay flickering)
-  const [isLoadingOverlay, setIsLoadingOverlay] = useState(false)
-  
+  const [isLoadingOverlay, setIsLoadingOverlay] = useState(false);
+
   // Validation state
-  const [validation, setValidation] = useState<ValidationResult | null>(null)
-  const [isValidating, setIsValidating] = useState(false)
-  
+  const [validation, setValidation] = useState<ValidationResult | null>(null);
+  const [isValidating, setIsValidating] = useState(false);
+
   // Store generated frames for GIF export and playback cache
-  const [animationFrames, setAnimationFrames] = useState<HTMLCanvasElement[]>([])
-  const [isAnimationCacheReady, setIsAnimationCacheReady] = useState(false)
+  const [animationFrames, setAnimationFrames] = useState<HTMLCanvasElement[]>([]);
+  const [isAnimationCacheReady, setIsAnimationCacheReady] = useState(false);
 
   // Get all relevant state from store
-  const payload = useQRStore((s) => s.payload)
-  const qr = useQRStore((s) => s.qr)
-  const render = useQRStore((s) => s.render)
-  const overlay = useQRStore((s) => s.overlay)
-  const watermark = useQRStore((s) => s.watermark)
-  const output = useQRStore((s) => s.output)
-  const animation = useQRStore((s) => s.animation)
-  const setAnimationPlaying = useQRStore((s) => s.setAnimationPlaying)
-  const safety = useQRStore((s) => s.safety)
-  const metadata = useQRStore((s) => s.metadata)
-  const auto = useQRStore((s) => s.auto)
-  const getPayloadText = useQRStore((s) => s.getPayloadText)
-  const setOverlayIntensity = useQRStore((s) => s.setOverlayIntensity)
+  const _payload = useQRStore((s) => s.payload);
+  const qr = useQRStore((s) => s.qr);
+  const render = useQRStore((s) => s.render);
+  const overlay = useQRStore((s) => s.overlay);
+  const watermark = useQRStore((s) => s.watermark);
+  const output = useQRStore((s) => s.output);
+  const animation = useQRStore((s) => s.animation);
+  const _setAnimationPlaying = useQRStore((s) => s.setAnimationPlaying);
+  const safety = useQRStore((s) => s.safety);
+  const metadata = useQRStore((s) => s.metadata);
+  const auto = useQRStore((s) => s.auto);
+  const getPayloadText = useQRStore((s) => s.getPayloadText);
+  const _setOverlayIntensity = useQRStore((s) => s.setOverlayIntensity);
 
   // Auto-pick ECC based on content length and overlay usage
   const autoPickedEcc = useMemo(() => {
-    if (!auto.pickEcc) return qr.ecc
-    
-    const content = getPayloadText()
-    const contentLength = content.length
-    
+    if (!auto.pickEcc) return qr.ecc;
+
+    const content = getPayloadText();
+    const contentLength = content.length;
+
     // If overlay is enabled with high intensity, prefer higher ECC
     if (overlay.enabled && overlay.intensity > 50) {
-      return 'H' // Maximum error correction for heavy overlays
+      return 'H'; // Maximum error correction for heavy overlays
     }
-    
+
     if (overlay.enabled && overlay.intensity > 25) {
-      return 'Q' // High error correction for moderate overlays
+      return 'Q'; // High error correction for moderate overlays
     }
-    
+
     // For longer content, use lower ECC to fit more data
     if (contentLength > 500) {
-      return 'L' // Low ECC for very long content
+      return 'L'; // Low ECC for very long content
     }
-    
+
     if (contentLength > 200) {
-      return 'M' // Medium ECC for long content
+      return 'M'; // Medium ECC for long content
     }
-    
+
     // Default to Q for good balance
-    return 'Q'
-  }, [auto.pickEcc, qr.ecc, overlay.enabled, overlay.intensity, getPayloadText])
+    return 'Q';
+  }, [auto.pickEcc, qr.ecc, overlay.enabled, overlay.intensity, getPayloadText]);
 
   // Apply safety constraints and generate warnings
   const { safetyAdjustedConfig, safetyWarnings } = useMemo(() => {
-    const warnings: string[] = []
-    let adjustedModulePx = render.modulePx
-    let adjustedQuietZone = qr.quietZoneModules
-    let adjustedIntensity = overlay.intensity
-    const effectiveEcc = auto.pickEcc ? autoPickedEcc : qr.ecc
-    
+    const warnings: string[] = [];
+    let adjustedModulePx = render.modulePx;
+    let adjustedQuietZone = qr.quietZoneModules;
+    let adjustedIntensity = overlay.intensity;
+    const effectiveEcc = auto.pickEcc ? autoPickedEcc : qr.ecc;
+
     // Apply safety mode constraints
     if (safety.mode !== 'off') {
       // Enforce minimum module size
       if (render.modulePx < safety.minModulePx) {
-        adjustedModulePx = safety.minModulePx
-        warnings.push(`Module size increased to ${safety.minModulePx}px for scannability`)
+        adjustedModulePx = safety.minModulePx;
+        warnings.push(`Module size increased to ${safety.minModulePx}px for scannability`);
       }
-      
+
       // Enforce minimum quiet zone
       if (qr.quietZoneModules < safety.minQuietZoneModules) {
-        adjustedQuietZone = safety.minQuietZoneModules
-        warnings.push(`Quiet zone increased to ${safety.minQuietZoneModules} modules`)
+        adjustedQuietZone = safety.minQuietZoneModules;
+        warnings.push(`Quiet zone increased to ${safety.minQuietZoneModules} modules`);
       }
-      
+
       // Check overlay intensity against ECC capacity
-      const maxIntensityByEcc: Record<string, number> = { L: 30, M: 50, Q: 70, H: 85 }
-      const maxSafeIntensity = maxIntensityByEcc[effectiveEcc] || 50
-      
+      const maxIntensityByEcc: Record<string, number> = { L: 30, M: 50, Q: 70, H: 85 };
+      const maxSafeIntensity = maxIntensityByEcc[effectiveEcc] || 50;
+
       if (safety.mode === 'strict' && overlay.enabled && overlay.intensity > maxSafeIntensity) {
-        adjustedIntensity = maxSafeIntensity
-        warnings.push(`Overlay intensity reduced to ${maxSafeIntensity}% for ECC level ${effectiveEcc}`)
-      } else if (safety.mode === 'balanced' && overlay.enabled && overlay.intensity > maxSafeIntensity) {
-        warnings.push(`Overlay intensity (${overlay.intensity}%) may reduce scannability with ECC ${effectiveEcc}`)
+        adjustedIntensity = maxSafeIntensity;
+        warnings.push(
+          `Overlay intensity reduced to ${maxSafeIntensity}% for ECC level ${effectiveEcc}`
+        );
+      } else if (
+        safety.mode === 'balanced' &&
+        overlay.enabled &&
+        overlay.intensity > maxSafeIntensity
+      ) {
+        warnings.push(
+          `Overlay intensity (${overlay.intensity}%) may reduce scannability with ECC ${effectiveEcc}`
+        );
       }
-      
+
       // Auto-reduce intensity if enabled
-      if (auto.reduceIntensityUntilSafe && overlay.enabled && overlay.intensity > maxSafeIntensity) {
-        adjustedIntensity = maxSafeIntensity
-        warnings.push(`Auto-reduced overlay intensity to ${maxSafeIntensity}% for safe scanning`)
+      if (
+        auto.reduceIntensityUntilSafe &&
+        overlay.enabled &&
+        overlay.intensity > maxSafeIntensity
+      ) {
+        adjustedIntensity = maxSafeIntensity;
+        warnings.push(`Auto-reduced overlay intensity to ${maxSafeIntensity}% for safe scanning`);
       }
-      
+
       // Warn about risky style combinations
       if (render.moduleGapPercent > 20) {
-        warnings.push('Large module gaps may affect QR readability')
+        warnings.push('Large module gaps may affect QR readability');
       }
-      
+
       if (render.moduleStyle === 'dots' && render.moduleGapPercent > 10) {
-        warnings.push('Dots with large gaps may be hard to scan')
+        warnings.push('Dots with large gaps may be hard to scan');
       }
     }
-    
+
     // Show auto-pick ECC info
     if (auto.pickEcc && autoPickedEcc !== qr.ecc) {
-      warnings.push(`Auto-selected ECC level ${autoPickedEcc} for optimal balance`)
+      warnings.push(`Auto-selected ECC level ${autoPickedEcc} for optimal balance`);
     }
-    
+
     return {
       safetyAdjustedConfig: {
         modulePx: adjustedModulePx,
@@ -292,20 +319,28 @@ export function useQRGenerator(): UseQRGeneratorResult {
         ecc: effectiveEcc,
       },
       safetyWarnings: warnings,
-    }
+    };
   }, [
-    safety.mode, safety.minModulePx, safety.minQuietZoneModules,
-    render.modulePx, render.moduleGapPercent, render.moduleStyle,
-    qr.quietZoneModules, qr.ecc,
-    overlay.enabled, overlay.intensity,
-    auto.pickEcc, auto.reduceIntensityUntilSafe, autoPickedEcc,
-  ])
+    safety.mode,
+    safety.minModulePx,
+    safety.minQuietZoneModules,
+    render.modulePx,
+    render.moduleGapPercent,
+    render.moduleStyle,
+    qr.quietZoneModules,
+    qr.ecc,
+    overlay.enabled,
+    overlay.intensity,
+    auto.pickEcc,
+    auto.reduceIntensityUntilSafe,
+    autoPickedEcc,
+  ]);
 
   // Build comprehensive config object for QRGenerator
   // Note: We depend on `payload` to trigger re-renders when payload changes
   const config = useMemo(() => {
-    const content = getPayloadText()
-    
+    const content = getPayloadText();
+
     return {
       content,
       // === QR ENCODING OPTIONS ===
@@ -313,7 +348,6 @@ export function useQRGenerator(): UseQRGeneratorResult {
       errorCorrection: safetyAdjustedConfig.ecc,
       encodingMode: qr.encodingMode,
 
-      
       // === RENDER OPTIONS (with safety adjustments) ===
       moduleSize: safetyAdjustedConfig.modulePx,
       margin: safetyAdjustedConfig.quietZone + qr.borderModulesExtra,
@@ -332,7 +366,7 @@ export function useQRGenerator(): UseQRGeneratorResult {
       frameText: render.frameText,
       crispEdges: render.crispEdges,
       pixelSnap: render.pixelSnap,
-      
+
       // Colors
       fgColor: render.fgColor,
       bgColor: render.bgColor,
@@ -343,7 +377,7 @@ export function useQRGenerator(): UseQRGeneratorResult {
       perModuleColorMode: render.perModuleColorMode,
       contrastGuard: render.contrastGuard,
       minContrastRatio: render.minContrastRatio,
-      
+
       // === OVERLAY SETTINGS (with safety adjustments) ===
       overlayMode: overlay.enabled ? overlay.mode : undefined,
       overlayIntensity: safetyAdjustedConfig.intensity,
@@ -355,7 +389,7 @@ export function useQRGenerator(): UseQRGeneratorResult {
       protectFormatInfo: overlay.protectFormatInfo || safety.lockFormat,
       protectVersionInfo: overlay.protectVersionInfo || safety.lockVersion,
       logoSize: 25, // For center mode
-      
+
       // Overlay preprocessing
       overlayBrightness: overlay.brightness,
       overlayContrast: overlay.contrast,
@@ -372,9 +406,12 @@ export function useQRGenerator(): UseQRGeneratorResult {
       overlayFlipY: overlay.flipY,
       overlayCrop: overlay.cropEnabled ? overlay.cropRegion : undefined,
       overlayFit: overlay.fit,
-      
+
       // Dither options - on mobile, use cheap default unless user explicitly changed it
-      ditherKind: getEffectiveDitherKind(overlay.ditherKind, overlay.ditherKind === STORE_DEFAULT_DITHER),
+      ditherKind: getEffectiveDitherKind(
+        overlay.ditherKind,
+        overlay.ditherKind === STORE_DEFAULT_DITHER
+      ),
       ditherStrength: overlay.ditherStrength,
       ditherSerpentine: overlay.ditherSerpentine,
       diffusionKernel: overlay.diffusionKernel,
@@ -382,34 +419,34 @@ export function useQRGenerator(): UseQRGeneratorResult {
       blueNoiseTileSize: overlay.blueNoiseTileSize,
       blueNoiseSeed: overlay.blueNoiseSeed,
       colorDither: overlay.colorDither,
-      
+
       // Subpixel options
       subpixelGridSize: overlay.subpixelGridSize,
       subpixelCenterRule: overlay.subpixelCenterRule,
       subpixelNeutralColor: overlay.subpixelNeutralColor,
       subpixelFinderOverride: overlay.subpixelFinderOverride,
-      
+
       // Halftone options
       halftoneCell: overlay.halftoneCell,
       halftoneDotShape: overlay.halftoneDotShape,
       duotoneColors: overlay.duotoneColors,
       brightnessCurve: overlay.brightnessCurve,
-      
+
       // ECC aware
       eccAwareEnabled: overlay.eccAwareEnabled,
       eccAwareRiskBudget: overlay.eccAwareRiskBudget,
       eccAwareWeightMap: overlay.eccAwareWeightMap,
-      
+
       // === ANIMATION / TEMPORAL DITHERING ===
       temporalDither: animation.temporalDither,
       frameIndex: 0, // Default for static images, will be overridden per-frame for animations
       animationSeed: animation.seed,
       moduleJitterPx: animation.moduleJitterPx,
       colorCycle: animation.colorCycle,
-      
+
       // === QR ENCODING ENFORCEMENT ===
       quietZoneMinEnforce: qr.quietZoneMinEnforce,
-      
+
       // === SAFETY CONSTRAINTS ===
       safetyMode: safety.mode,
       safetyLockFinders: safety.lockFinders,
@@ -419,314 +456,366 @@ export function useQRGenerator(): UseQRGeneratorResult {
       safetyLockVersion: safety.lockVersion,
       safetyMinModulePx: safety.minModulePx,
       safetyMinQuietZone: safety.minQuietZoneModules,
-    }
+    };
   }, [
-    payload, // Subscribe to payload changes to trigger re-generation
     getPayloadText,
-    safetyAdjustedConfig, // Include safety-adjusted values
+    safetyAdjustedConfig,
     // QR encoding
-    qr.version, qr.ecc, qr.encodingMode,
-    qr.quietZoneModules, qr.borderModulesExtra, qr.quietZoneMinEnforce,
-    // Render
-    render.modulePx, render.moduleGapPercent, render.gapMode,
-    render.moduleStyle, render.finderStyle, render.alignmentStyle, render.timingStyle,
-    render.cornerRadius, render.dotRotationDeg,
-    render.eyeOuterStyle, render.eyeInnerStyle, render.eyeScale,
-    render.frameStyle, render.frameText,
-    render.crispEdges, render.pixelSnap,
-    render.fgColor, render.bgColor, render.bgTransparent,
-    render.gradient, render.palette, render.paletteMode, render.perModuleColorMode,
-    render.contrastGuard, render.minContrastRatio,
+    qr.version,
+    qr.encodingMode,
+    qr.borderModulesExtra,
+    qr.quietZoneMinEnforce,
+    render.moduleGapPercent,
+    render.gapMode,
+    render.moduleStyle,
+    render.finderStyle,
+    render.alignmentStyle,
+    render.timingStyle,
+    render.cornerRadius,
+    render.dotRotationDeg,
+    render.eyeOuterStyle,
+    render.eyeInnerStyle,
+    render.eyeScale,
+    render.frameStyle,
+    render.frameText,
+    render.crispEdges,
+    render.pixelSnap,
+    render.fgColor,
+    render.bgColor,
+    render.bgTransparent,
+    render.gradient,
+    render.palette,
+    render.paletteMode,
+    render.perModuleColorMode,
+    render.contrastGuard,
+    render.minContrastRatio,
     // Overlay
-    overlay.enabled, overlay.mode, overlay.intensity,
-    overlay.colorMode, overlay.invert,
-    overlay.preserveFinders, overlay.preserveTiming, overlay.preserveAlignment,
-    overlay.protectFormatInfo, overlay.protectVersionInfo,
-    overlay.brightness, overlay.contrast, overlay.gamma, overlay.saturation,
-    overlay.hueRotateDeg, overlay.blurPx, overlay.sharpen,
-    overlay.posterizeLevels, overlay.threshold, overlay.edgeDetect,
-    overlay.rotateDeg, overlay.flipX, overlay.flipY,
-    overlay.cropEnabled, overlay.cropRegion, overlay.fit,
-    overlay.ditherKind, overlay.ditherStrength, overlay.ditherSerpentine,
-    overlay.diffusionKernel, overlay.orderedMatrix,
-    overlay.blueNoiseTileSize, overlay.blueNoiseSeed, overlay.colorDither,
-    overlay.subpixelGridSize, overlay.subpixelCenterRule, overlay.subpixelNeutralColor, overlay.subpixelFinderOverride,
-    overlay.halftoneCell, overlay.halftoneDotShape, overlay.duotoneColors, overlay.brightnessCurve,
-    overlay.eccAwareEnabled, overlay.eccAwareRiskBudget, overlay.eccAwareWeightMap,
-    overlay.gifUseFrameDelays, overlay.gifMaxFps, overlay.gifDisposalHandling,
+    overlay.enabled,
+    overlay.mode,
+    overlay.colorMode,
+    overlay.invert,
+    overlay.preserveFinders,
+    overlay.preserveTiming,
+    overlay.preserveAlignment,
+    overlay.protectFormatInfo,
+    overlay.protectVersionInfo,
+    overlay.brightness,
+    overlay.contrast,
+    overlay.gamma,
+    overlay.saturation,
+    overlay.hueRotateDeg,
+    overlay.blurPx,
+    overlay.sharpen,
+    overlay.posterizeLevels,
+    overlay.threshold,
+    overlay.edgeDetect,
+    overlay.rotateDeg,
+    overlay.flipX,
+    overlay.flipY,
+    overlay.cropEnabled,
+    overlay.cropRegion,
+    overlay.fit,
+    overlay.ditherKind,
+    overlay.ditherStrength,
+    overlay.ditherSerpentine,
+    overlay.diffusionKernel,
+    overlay.orderedMatrix,
+    overlay.blueNoiseTileSize,
+    overlay.blueNoiseSeed,
+    overlay.colorDither,
+    overlay.subpixelGridSize,
+    overlay.subpixelCenterRule,
+    overlay.subpixelNeutralColor,
+    overlay.subpixelFinderOverride,
+    overlay.halftoneCell,
+    overlay.halftoneDotShape,
+    overlay.duotoneColors,
+    overlay.brightnessCurve,
+    overlay.eccAwareEnabled,
+    overlay.eccAwareRiskBudget,
+    overlay.eccAwareWeightMap,
     // Animation
-    animation.temporalDither, animation.seed, animation.moduleJitterPx, animation.colorCycle,
+    animation.temporalDither,
+    animation.seed,
+    animation.moduleJitterPx,
+    animation.colorCycle,
     // Safety
-    safety.mode, safety.lockFinders, safety.lockTiming, safety.lockAlign,
-    safety.lockFormat, safety.lockVersion, safety.minModulePx, safety.minQuietZoneModules,
-  ])
+    safety.mode,
+    safety.lockFinders,
+    safety.lockTiming,
+    safety.lockAlign,
+    safety.lockFormat,
+    safety.lockVersion,
+    safety.minModulePx,
+    safety.minQuietZoneModules,
+  ]);
 
   // Debounce config changes to prevent excessive regeneration
-  const debouncedConfig = useDebounce(config, 150)
+  const debouncedConfig = useDebounce(config, 150);
 
   /**
    * Apply only geometric transforms (crop, fit, rotate, flip) to a canvas.
-   * Color adjustments (brightness, contrast, etc.) are now done at moduleCount 
+   * Color adjustments (brightness, contrast, etc.) are now done at moduleCount
    * resolution inside qr-generator.js for 10-50x speedup.
    */
-  const applyGeometricTransforms = useCallback((sourceCanvas: HTMLCanvasElement): HTMLCanvasElement => {
-    // Check if any geometric transforms are needed
-    const needsTransform = 
-      overlay.rotateDeg !== 0 ||
-      overlay.flipX ||
-      overlay.flipY ||
-      overlay.cropEnabled ||
-      !!overlay.fit
+  const applyGeometricTransforms = useCallback(
+    (sourceCanvas: HTMLCanvasElement): HTMLCanvasElement => {
+      // Check if any geometric transforms are needed
+      const needsTransform =
+        overlay.rotateDeg !== 0 ||
+        overlay.flipX ||
+        overlay.flipY ||
+        overlay.cropEnabled ||
+        !!overlay.fit;
 
-    if (!needsTransform) {
-      return sourceCanvas
-    }
-    
-    // First apply crop if enabled
-    let workingCanvas = sourceCanvas
-    if (overlay.cropEnabled && overlay.cropRegion) {
-      const { x, y, size } = overlay.cropRegion
-      const cropCanvas = document.createElement('canvas')
-      const cropCtx = cropCanvas.getContext('2d')!
-      
-      const srcWidth = sourceCanvas.width
-      const srcHeight = sourceCanvas.height
-      const cropW = srcWidth * size
-      const cropH = srcHeight * size
-      const cropX = Math.max(0, (x - size / 2) * srcWidth)
-      const cropY = Math.max(0, (y - size / 2) * srcHeight)
-      
-      const outputSize = Math.min(cropW, cropH)
-      cropCanvas.width = outputSize
-      cropCanvas.height = outputSize
-      
-      cropCtx.drawImage(
-        sourceCanvas,
-        cropX, cropY, cropW, cropH,
-        0, 0, outputSize, outputSize
-      )
-      workingCanvas = cropCanvas
-    }
-    
-    // Apply fit mode if specified
-    if (overlay.fit) {
-      const fitCanvas = document.createElement('canvas')
-      const fitCtx = fitCanvas.getContext('2d')!
-      const srcW = workingCanvas.width
-      const srcH = workingCanvas.height
-      const targetSize = Math.max(srcW, srcH)
-      
-      fitCanvas.width = targetSize
-      fitCanvas.height = targetSize
-      
-      let drawX = 0, drawY = 0, drawW = srcW, drawH = srcH
-      
-      if (overlay.fit === 'cover') {
-        const scale = Math.max(targetSize / srcW, targetSize / srcH)
-        drawW = srcW * scale
-        drawH = srcH * scale
-        drawX = (targetSize - drawW) / 2
-        drawY = (targetSize - drawH) / 2
-      } else if (overlay.fit === 'contain') {
-        const scale = Math.min(targetSize / srcW, targetSize / srcH)
-        drawW = srcW * scale
-        drawH = srcH * scale
-        drawX = (targetSize - drawW) / 2
-        drawY = (targetSize - drawH) / 2
-        fitCtx.fillStyle = 'transparent'
-        fitCtx.fillRect(0, 0, targetSize, targetSize)
-      } else if (overlay.fit === 'stretch') {
-        drawW = targetSize
-        drawH = targetSize
-      }
-      
-      fitCtx.drawImage(workingCanvas, drawX, drawY, drawW, drawH)
-      workingCanvas = fitCanvas
-    }
-
-    // Apply rotation and flip if needed
-    if (overlay.rotateDeg !== 0 || overlay.flipX || overlay.flipY) {
-      const processedCanvas = document.createElement('canvas')
-      const ctx = processedCanvas.getContext('2d')!
-      const angle = overlay.rotateDeg * Math.PI / 180
-      const isRightAngle = overlay.rotateDeg === 90 || overlay.rotateDeg === 270
-      
-      if (isRightAngle) {
-        processedCanvas.width = workingCanvas.height
-        processedCanvas.height = workingCanvas.width
-      } else {
-        processedCanvas.width = workingCanvas.width
-        processedCanvas.height = workingCanvas.height
+      if (!needsTransform) {
+        return sourceCanvas;
       }
 
-      ctx.save()
-      ctx.translate(processedCanvas.width / 2, processedCanvas.height / 2)
-      
-      if (overlay.rotateDeg !== 0) {
-        ctx.rotate(angle)
-      }
-      if (overlay.flipX) {
-        ctx.scale(-1, 1)
-      }
-      if (overlay.flipY) {
-        ctx.scale(1, -1)
-      }
-      
-      ctx.drawImage(
-        workingCanvas,
-        -workingCanvas.width / 2,
-        -workingCanvas.height / 2
-      )
-      ctx.restore()
-      workingCanvas = processedCanvas
-    }
+      // First apply crop if enabled
+      let workingCanvas = sourceCanvas;
+      if (overlay.cropEnabled && overlay.cropRegion) {
+        const { x, y, size } = overlay.cropRegion;
+        const cropCanvas = document.createElement('canvas');
+        const cropCtx = cropCanvas.getContext('2d')!;
 
-    return workingCanvas
-  }, [
-    overlay.rotateDeg, overlay.flipX, overlay.flipY,
-    overlay.cropEnabled, overlay.cropRegion, overlay.fit
-  ])
+        const srcWidth = sourceCanvas.width;
+        const srcHeight = sourceCanvas.height;
+        const cropW = srcWidth * size;
+        const cropH = srcHeight * size;
+        const cropX = Math.max(0, (x - size / 2) * srcWidth);
+        const cropY = Math.max(0, (y - size / 2) * srcHeight);
+
+        const outputSize = Math.min(cropW, cropH);
+        cropCanvas.width = outputSize;
+        cropCanvas.height = outputSize;
+
+        cropCtx.drawImage(sourceCanvas, cropX, cropY, cropW, cropH, 0, 0, outputSize, outputSize);
+        workingCanvas = cropCanvas;
+      }
+
+      // Apply fit mode if specified
+      if (overlay.fit) {
+        const fitCanvas = document.createElement('canvas');
+        const fitCtx = fitCanvas.getContext('2d')!;
+        const srcW = workingCanvas.width;
+        const srcH = workingCanvas.height;
+        const targetSize = Math.max(srcW, srcH);
+
+        fitCanvas.width = targetSize;
+        fitCanvas.height = targetSize;
+
+        let drawX = 0,
+          drawY = 0,
+          drawW = srcW,
+          drawH = srcH;
+
+        if (overlay.fit === 'cover') {
+          const scale = Math.max(targetSize / srcW, targetSize / srcH);
+          drawW = srcW * scale;
+          drawH = srcH * scale;
+          drawX = (targetSize - drawW) / 2;
+          drawY = (targetSize - drawH) / 2;
+        } else if (overlay.fit === 'contain') {
+          const scale = Math.min(targetSize / srcW, targetSize / srcH);
+          drawW = srcW * scale;
+          drawH = srcH * scale;
+          drawX = (targetSize - drawW) / 2;
+          drawY = (targetSize - drawH) / 2;
+          fitCtx.fillStyle = 'transparent';
+          fitCtx.fillRect(0, 0, targetSize, targetSize);
+        } else if (overlay.fit === 'stretch') {
+          drawW = targetSize;
+          drawH = targetSize;
+        }
+
+        fitCtx.drawImage(workingCanvas, drawX, drawY, drawW, drawH);
+        workingCanvas = fitCanvas;
+      }
+
+      // Apply rotation and flip if needed
+      if (overlay.rotateDeg !== 0 || overlay.flipX || overlay.flipY) {
+        const processedCanvas = document.createElement('canvas');
+        const ctx = processedCanvas.getContext('2d')!;
+        const angle = (overlay.rotateDeg * Math.PI) / 180;
+        const isRightAngle = overlay.rotateDeg === 90 || overlay.rotateDeg === 270;
+
+        if (isRightAngle) {
+          processedCanvas.width = workingCanvas.height;
+          processedCanvas.height = workingCanvas.width;
+        } else {
+          processedCanvas.width = workingCanvas.width;
+          processedCanvas.height = workingCanvas.height;
+        }
+
+        ctx.save();
+        ctx.translate(processedCanvas.width / 2, processedCanvas.height / 2);
+
+        if (overlay.rotateDeg !== 0) {
+          ctx.rotate(angle);
+        }
+        if (overlay.flipX) {
+          ctx.scale(-1, 1);
+        }
+        if (overlay.flipY) {
+          ctx.scale(1, -1);
+        }
+
+        ctx.drawImage(workingCanvas, -workingCanvas.width / 2, -workingCanvas.height / 2);
+        ctx.restore();
+        workingCanvas = processedCanvas;
+      }
+
+      return workingCanvas;
+    },
+    [
+      overlay.rotateDeg,
+      overlay.flipX,
+      overlay.flipY,
+      overlay.cropEnabled,
+      overlay.cropRegion,
+      overlay.fit,
+    ]
+  );
 
   // Load overlay image when file changes
   // For GIFs: use compositor for optimal patch-only decoding
   // For static images: load directly
   useEffect(() => {
     if (!overlay.file) {
-      setRawOverlayCanvas(null)
-      setOverlayCanvas(null)
-      setGifFrames([])
-      setGifCompositor(null)
-      setCurrentFrame(0)
-      setIsLoadingOverlay(false)
-      return
+      setRawOverlayCanvas(null);
+      setOverlayCanvas(null);
+      setGifFrames([]);
+      setGifCompositor(null);
+      setCurrentFrame(0);
+      setIsLoadingOverlay(false);
+      return;
     }
 
     // Set loading state immediately when starting to load overlay
     // This prevents busy overlay flickering between QR render and animation cache build
-    setIsLoadingOverlay(true)
+    setIsLoadingOverlay(true);
 
     // Check for GIF format (use compositor for optimal decoding)
-    const isGif = 
-      overlay.file.type === 'image/gif' ||
-      overlay.file.name.toLowerCase().endsWith('.gif')
-    
+    const isGif =
+      overlay.file.type === 'image/gif' || overlay.file.name.toLowerCase().endsWith('.gif');
+
     // Check for animated WebP (still uses legacy path for now)
-    const isAnimatedWebP = 
-      overlay.file.type === 'image/webp' ||
-      overlay.file.name.toLowerCase().endsWith('.webp')
-    
+    const isAnimatedWebP =
+      overlay.file.type === 'image/webp' || overlay.file.name.toLowerCase().endsWith('.webp');
+
     if (isGif) {
       // Use GIF compositor for optimal patch-only decoding
-      const reader = new FileReader()
+      const reader = new FileReader();
       reader.onload = (e) => {
         try {
-          const arrayBuffer = e.target?.result as ArrayBuffer
-          const compositor = createGifCompositor(arrayBuffer)
-          setGifCompositor(compositor)
-          setGifFrames([]) // Clear legacy frames
-          setCurrentFrame(0)
-          
+          const arrayBuffer = e.target?.result as ArrayBuffer;
+          const compositor = createGifCompositor(arrayBuffer);
+          setGifCompositor(compositor);
+          setGifFrames([]); // Clear legacy frames
+          setCurrentFrame(0);
+
           // Apply first frame to get initial canvas
-          compositor.reset()
-          compositor.apply(0)
-          setRawOverlayCanvas(compositor.canvas)
+          compositor.reset();
+          compositor.apply(0);
+          setRawOverlayCanvas(compositor.canvas);
           // Note: Don't clear isLoadingOverlay here - wait for animation cache to be ready
         } catch (err) {
-          console.error('Failed to create GIF compositor:', err)
-          setGifCompositor(null)
+          console.error('Failed to create GIF compositor:', err);
+          setGifCompositor(null);
           // Fall back to static image loading
           loadFileAsCanvas(overlay.file!)
             .then((canvas) => {
-              setRawOverlayCanvas(canvas)
-              setGifFrames([{ canvas, delay: 100, disposalType: 0 }])
-              setIsLoadingOverlay(false)
+              setRawOverlayCanvas(canvas);
+              setGifFrames([{ canvas, delay: 100, disposalType: 0 }]);
+              setIsLoadingOverlay(false);
             })
             .catch(() => {
-              setRawOverlayCanvas(null)
-              setIsLoadingOverlay(false)
-            })
+              setRawOverlayCanvas(null);
+              setIsLoadingOverlay(false);
+            });
         }
-      }
-      reader.readAsArrayBuffer(overlay.file)
+      };
+      reader.readAsArrayBuffer(overlay.file);
     } else if (isAnimatedWebP) {
       // Use legacy parseAnimatedImage for WebP (compositor only supports GIF)
-      const reader = new FileReader()
+      const reader = new FileReader();
       reader.onload = async (e) => {
         try {
-          const arrayBuffer = e.target?.result as ArrayBuffer
-          const frames = await parseAnimatedImage(arrayBuffer)
-          setGifFrames(frames)
-          setGifCompositor(null)
-          setCurrentFrame(0)
+          const arrayBuffer = e.target?.result as ArrayBuffer;
+          const frames = await parseAnimatedImage(arrayBuffer);
+          setGifFrames(frames);
+          setGifCompositor(null);
+          setCurrentFrame(0);
           if (frames.length > 0) {
-            setRawOverlayCanvas(frames[0].canvas)
+            setRawOverlayCanvas(frames[0].canvas);
           }
           // Note: Don't clear isLoadingOverlay here for multi-frame - wait for animation cache
           if (frames.length <= 1) {
-            setIsLoadingOverlay(false)
+            setIsLoadingOverlay(false);
           }
         } catch (err) {
-          console.error('Failed to parse animated WebP:', err)
+          console.error('Failed to parse animated WebP:', err);
           loadFileAsCanvas(overlay.file!)
             .then((canvas) => {
-              setRawOverlayCanvas(canvas)
-              setGifFrames([{ canvas, delay: 100, disposalType: 0 }])
-              setIsLoadingOverlay(false)
+              setRawOverlayCanvas(canvas);
+              setGifFrames([{ canvas, delay: 100, disposalType: 0 }]);
+              setIsLoadingOverlay(false);
             })
             .catch(() => {
-              setRawOverlayCanvas(null)
-              setIsLoadingOverlay(false)
-            })
+              setRawOverlayCanvas(null);
+              setIsLoadingOverlay(false);
+            });
         }
-      }
-      reader.readAsArrayBuffer(overlay.file)
+      };
+      reader.readAsArrayBuffer(overlay.file);
     } else {
       // Static image (PNG, JPG, etc.)
-      setGifFrames([])
-      setGifCompositor(null)
+      setGifFrames([]);
+      setGifCompositor(null);
       loadFileAsCanvas(overlay.file)
         .then((canvas) => {
-          setRawOverlayCanvas(canvas)
-          setIsLoadingOverlay(false)
+          setRawOverlayCanvas(canvas);
+          setIsLoadingOverlay(false);
         })
         .catch((err) => {
-          console.error('Failed to load overlay:', err)
-          setRawOverlayCanvas(null)
-          setIsLoadingOverlay(false)
-        })
+          console.error('Failed to load overlay:', err);
+          setRawOverlayCanvas(null);
+          setIsLoadingOverlay(false);
+        });
     }
-  }, [overlay.file])
+  }, [overlay.file]);
 
   // Apply geometric transforms when raw canvas or transform settings change
   // NOTE: Color adjustments are now done at moduleCount resolution in qr-generator.js
   useEffect(() => {
     if (rawOverlayCanvas) {
-      const transformed = applyGeometricTransforms(rawOverlayCanvas)
-      setOverlayCanvas(transformed)
+      const transformed = applyGeometricTransforms(rawOverlayCanvas);
+      setOverlayCanvas(transformed);
     } else {
-      setOverlayCanvas(null)
+      setOverlayCanvas(null);
     }
-  }, [rawOverlayCanvas, applyGeometricTransforms])
+  }, [rawOverlayCanvas, applyGeometricTransforms]);
 
   // Generate QR code
   const generate = useCallback(async () => {
-    setIsLoading(true)
-    setError(null)
+    setIsLoading(true);
+    setError(null);
 
     try {
       // Generate QR code
       let result = await qrGenerator.generate(
         debouncedConfig,
         overlay.enabled ? overlayCanvas : null
-      )
+      );
 
       // Apply watermark if enabled
       if (watermark.enabled && result) {
-        let watermarkImage: HTMLImageElement | HTMLCanvasElement | null = null
+        let watermarkImage: HTMLImageElement | HTMLCanvasElement | null = null;
 
         if ((watermark.kind === 'image' || watermark.kind === 'pattern') && watermark.image) {
           // Load watermark image (used for both image and pattern types)
-          watermarkImage = await loadFileAsCanvas(watermark.image)
+          watermarkImage = await loadFileAsCanvas(watermark.image);
         }
 
         const watermarked = applyWatermark(result, {
@@ -737,49 +826,62 @@ export function useQRGenerator(): UseQRGeneratorResult {
           position: watermark.position,
           opacity: watermark.opacity,
           blend: watermark.blend,
-        })
-        
-        result = watermarked.canvas
+        });
+
+        result = watermarked.canvas;
       }
 
-      setCanvas(result)
+      setCanvas(result);
 
       // Copy to display canvas if ref exists
       if (canvasRef.current && result) {
-        const ctx = canvasRef.current.getContext('2d')
+        const ctx = canvasRef.current.getContext('2d');
         if (ctx) {
-          canvasRef.current.width = result.width
-          canvasRef.current.height = result.height
-          ctx.drawImage(result, 0, 0)
+          canvasRef.current.width = result.width;
+          canvasRef.current.height = result.height;
+          ctx.drawImage(result, 0, 0);
         }
       }
-      
+
       // Validate the generated QR code (skip during animation playback for performance)
       // Validation will run when animation is paused or for static QR codes
-      const isCurrentlyAnimating = animationFrames.length > 1 && animation.playing
-      const shouldValidate = result && debouncedConfig.content && !isCurrentlyAnimating
+      const isCurrentlyAnimating = animationFrames.length > 1 && animation.playing;
+      const shouldValidate = result && debouncedConfig.content && !isCurrentlyAnimating;
       if (shouldValidate) {
-        setIsValidating(true)
+        setIsValidating(true);
         // Use setTimeout to not block the main thread
         setTimeout(() => {
           try {
-            const validationResult = validateQRCodeRobust(result, debouncedConfig.content)
-            setValidation(validationResult)
+            const validationResult = validateQRCodeRobust(result, debouncedConfig.content);
+            setValidation(validationResult);
           } catch (err) {
-            console.error('Validation error:', err)
-            setValidation(null)
+            console.error('Validation error:', err);
+            setValidation(null);
           } finally {
-            setIsValidating(false)
+            setIsValidating(false);
           }
-        }, 50)
+        }, 50);
       }
     } catch (err) {
-      console.error('QR generation error:', err)
-      setError(err instanceof Error ? err.message : 'Failed to generate QR code')
+      console.error('QR generation error:', err);
+      setError(err instanceof Error ? err.message : 'Failed to generate QR code');
     } finally {
-      setIsLoading(false)
+      setIsLoading(false);
     }
-  }, [debouncedConfig, overlay.enabled, overlayCanvas, watermark.enabled, watermark.kind, watermark.text, watermark.image, watermark.position, watermark.opacity, watermark.blend])
+  }, [
+    debouncedConfig,
+    overlay.enabled,
+    overlayCanvas,
+    watermark.enabled,
+    watermark.kind,
+    watermark.text,
+    watermark.image,
+    watermark.position,
+    watermark.opacity,
+    watermark.blend,
+    animation.playing,
+    animationFrames.length,
+  ]);
 
   // Regenerate when config changes
   // Skip if we're playing from cached animation frames
@@ -787,461 +889,507 @@ export function useQRGenerator(): UseQRGeneratorResult {
     // If we have cached animation frames and animation is playing, don't regenerate
     // The cached frames will be displayed by the animation playback effect
     if (isAnimationCacheReady && animationFrames.length > 1 && animation.playing) {
-      return
+      return;
     }
-    generate()
-  }, [generate, isAnimationCacheReady, animationFrames.length, animation.playing])
+    generate();
+  }, [generate, isAnimationCacheReady, animationFrames.length, animation.playing]);
 
   // Calculate effective frame indices based on startFrame, maxFrames, frameStep, and FPS decimation
   // Works with both GIF compositor and legacy AnimationFrame array
   const effectiveFrameIndices = useMemo(() => {
-    const totalFrames = gifCompositor?.frameCount || gifFrames.length
-    if (totalFrames === 0) return []
-    
-    const startIdx = Math.min(animation.startFrame, totalFrames - 1)
-    const maxCount = animation.maxFrames > 0 
-      ? animation.maxFrames 
-      : totalFrames  // Use all frames when maxFrames is 0 (no limit)
-    const step = Math.max(1, animation.frameStep)
-    
+    const totalFrames = gifCompositor?.frameCount || gifFrames.length;
+    if (totalFrames === 0) return [];
+
+    const startIdx = Math.min(animation.startFrame, totalFrames - 1);
+    const maxCount = animation.maxFrames > 0 ? animation.maxFrames : totalFrames; // Use all frames when maxFrames is 0 (no limit)
+    const step = Math.max(1, animation.frameStep);
+
     // First pass: apply startFrame and frameStep
-    let candidateIndices: number[] = []
+    let candidateIndices: number[] = [];
     for (let i = startIdx; i < totalFrames && candidateIndices.length < maxCount; i += step) {
-      candidateIndices.push(i)
+      candidateIndices.push(i);
     }
-    
+
     // Second pass: apply FPS-based decimation if source FPS > target
     if (candidateIndices.length > 1 && overlay.gifMaxFps > 0 && gifCompositor) {
       // Use compositor-based decimation for GIFs
-      const allIndices = decimateCompositorFrames(gifCompositor, overlay.gifMaxFps)
+      const allIndices = decimateCompositorFrames(gifCompositor, overlay.gifMaxFps);
       // Filter to only keep indices that are in our candidate set
-      candidateIndices = candidateIndices.filter(i => allIndices.includes(i))
+      candidateIndices = candidateIndices.filter((i) => allIndices.includes(i));
     }
-    
-    return candidateIndices
-  }, [gifCompositor, gifFrames.length, animation.startFrame, animation.maxFrames, animation.frameStep, overlay.gifMaxFps])
+
+    return candidateIndices;
+  }, [
+    gifCompositor,
+    gifFrames.length,
+    animation.startFrame,
+    animation.maxFrames,
+    animation.frameStep,
+    overlay.gifMaxFps,
+  ]);
 
   // For backward compatibility - get effective frames for legacy code paths
   const effectiveFrames = useMemo(() => {
     if (gifCompositor) {
       // Create synthetic AnimationFrame objects from compositor
-      return effectiveFrameIndices.map(i => ({
+      return effectiveFrameIndices.map((i) => ({
         canvas: gifCompositor.canvas, // Note: this is the same canvas, caller must use compositor.apply(i)
         delay: gifCompositor.delayMs(i),
         disposalType: 0, // Compositor handles disposal internally
-      }))
+      }));
     }
     // Legacy path for WebP
-    return effectiveFrameIndices.map(i => gifFrames[i]).filter(Boolean)
-  }, [gifCompositor, gifFrames, effectiveFrameIndices])
+    return effectiveFrameIndices.map((i) => gifFrames[i]).filter(Boolean);
+  }, [gifCompositor, gifFrames, effectiveFrameIndices]);
 
   // Expose state to window for external tools (gallery generator)
   // NOTE: We intentionally DON'T store animationFrames directly to avoid pinning
   // large canvases in memory. External tools should use getAnimationFrames() getter.
   useEffect(() => {
     // Get original frame delays from parsed GIF frames
-    const frameDelays = effectiveFrames.map(f => f.delay || 100)
-    
+    const frameDelays = effectiveFrames.map((f) => f.delay || 100);
+
     window.__ANQR_STATE__ = {
       isLoading,
       isAnimationReady: isAnimationCacheReady && animationFrames.length > 1,
       animationFrameCount: animationFrames.length,
       currentFrame,
       // Use getter function instead of direct reference to allow GC when not actively used
-      get animationFrames() { return animationFrames },
+      get animationFrames() {
+        return animationFrames;
+      },
       animationSpeedMs: animation.speedMs,
       frameDelays, // Original delays from source GIF
-    }
-    
+    };
+
     // Cleanup: remove reference when component unmounts or deps change
     return () => {
       if (window.__ANQR_STATE__) {
         // Clear the reference to allow GC
-        window.__ANQR_STATE__ = undefined
+        window.__ANQR_STATE__ = undefined;
       }
-    }
-  }, [isLoading, isAnimationCacheReady, animationFrames, currentFrame, animation.speedMs, effectiveFrames])
+    };
+  }, [
+    isLoading,
+    isAnimationCacheReady,
+    animationFrames,
+    currentFrame,
+    animation.speedMs,
+    effectiveFrames,
+  ]);
 
   // Determine the total frame count for animation playback
   // This handles both overlay-based animations (effectiveFrames) and base QR animations (animationFrames)
   const playbackFrameCount = useMemo(() => {
-    if (effectiveFrames.length > 1) return effectiveFrames.length
-    if (isAnimationCacheReady && animationFrames.length > 1) return animationFrames.length
-    return 0
-  }, [effectiveFrames.length, isAnimationCacheReady, animationFrames.length])
+    if (effectiveFrames.length > 1) return effectiveFrames.length;
+    if (isAnimationCacheReady && animationFrames.length > 1) return animationFrames.length;
+    return 0;
+  }, [effectiveFrames.length, isAnimationCacheReady, animationFrames.length]);
 
   // Animation loop for both overlay-based and base QR animations
   useEffect(() => {
     // Only animate if we have multiple frames and animation is playing
     if (playbackFrameCount <= 1 || !animation.playing) {
-      setIsAnimating(false)
+      setIsAnimating(false);
       if (animationRef.current) {
-        cancelAnimationFrame(animationRef.current)
-        animationRef.current = null
+        cancelAnimationFrame(animationRef.current);
+        animationRef.current = null;
       }
-      return
+      return;
     }
 
-    setIsAnimating(true)
-    lastFrameTime.current = performance.now()
+    setIsAnimating(true);
+    lastFrameTime.current = performance.now();
     // Reset direction when animation settings change
-    animationDirection.current = 1
+    animationDirection.current = 1;
 
     const tick = (now: number) => {
-      const elapsed = now - lastFrameTime.current
+      const elapsed = now - lastFrameTime.current;
       // Use configured speed (frames have their own delays but we use speedMs for consistency)
-      const frameDelay = animation.speedMs
+      const frameDelay = animation.speedMs;
 
       if (elapsed >= frameDelay) {
-        lastFrameTime.current = now
+        lastFrameTime.current = now;
 
         setCurrentFrame((prev) => {
           // Get frame delay from current frame if available
-          let next = prev + animationDirection.current
+          let next = prev + animationDirection.current;
 
           // Handle bounds based on playback frame count
           if (next >= playbackFrameCount) {
             if (animation.bounce) {
-              animationDirection.current = -1
-              next = playbackFrameCount - 2
+              animationDirection.current = -1;
+              next = playbackFrameCount - 2;
             } else if (animation.loop) {
-              next = 0
+              next = 0;
             } else {
-              next = playbackFrameCount - 1
+              next = playbackFrameCount - 1;
             }
           } else if (next < 0) {
             if (animation.bounce) {
-              animationDirection.current = 1
-              next = 1
+              animationDirection.current = 1;
+              next = 1;
             } else if (animation.loop) {
-              next = playbackFrameCount - 1
+              next = playbackFrameCount - 1;
             } else {
-              next = 0
+              next = 0;
             }
           }
 
-          return Math.max(0, Math.min(playbackFrameCount - 1, next))
-        })
+          return Math.max(0, Math.min(playbackFrameCount - 1, next));
+        });
       }
 
-      animationRef.current = requestAnimationFrame(tick)
-    }
+      animationRef.current = requestAnimationFrame(tick);
+    };
 
-    animationRef.current = requestAnimationFrame(tick)
+    animationRef.current = requestAnimationFrame(tick);
 
     return () => {
       if (animationRef.current) {
-        cancelAnimationFrame(animationRef.current)
-        animationRef.current = null
+        cancelAnimationFrame(animationRef.current);
+        animationRef.current = null;
       }
-    }
-  }, [playbackFrameCount, animation.playing, animation.speedMs, animation.loop, animation.bounce])
+    };
+  }, [playbackFrameCount, animation.playing, animation.speedMs, animation.loop, animation.bounce]);
 
   // Update overlay canvas when current frame changes (for animation preview)
   // Uses compositor for GIFs (optimal), legacy frames for WebP
   useEffect(() => {
     // If we have cached animation frames, skip - we'll draw from cache
     if (isAnimationCacheReady && animationFrames.length > 0) {
-      return
+      return;
     }
-    
-    const frameIdx = effectiveFrameIndices[currentFrame]
-    if (frameIdx === undefined) return
-    
+
+    const frameIdx = effectiveFrameIndices[currentFrame];
+    if (frameIdx === undefined) return;
+
     if (gifCompositor) {
       // Use compositor for GIF - apply frame patch to canvas
       // Note: We need to replay frames from start for proper disposal handling
-      gifCompositor.reset()
+      gifCompositor.reset();
       for (let i = 0; i <= frameIdx; i++) {
-        if (i > 0) gifCompositor.dispose(i - 1)
-        gifCompositor.apply(i)
+        if (i > 0) gifCompositor.dispose(i - 1);
+        gifCompositor.apply(i);
       }
       // Trigger re-render with updated compositor canvas
-      setRawOverlayCanvas(gifCompositor.canvas)
+      setRawOverlayCanvas(gifCompositor.canvas);
     } else if (gifFrames[frameIdx]) {
       // Legacy path for WebP
-      setRawOverlayCanvas(gifFrames[frameIdx].canvas)
+      setRawOverlayCanvas(gifFrames[frameIdx].canvas);
     }
-  }, [currentFrame, effectiveFrameIndices, gifCompositor, gifFrames, isAnimationCacheReady, animationFrames.length])
+  }, [
+    currentFrame,
+    effectiveFrameIndices,
+    gifCompositor,
+    gifFrames,
+    isAnimationCacheReady,
+    animationFrames.length,
+  ]);
 
   // Display cached animation frames during playback (fast path - no re-encoding)
   useEffect(() => {
     if (isAnimationCacheReady && animationFrames.length > 1 && animationFrames[currentFrame]) {
-      const cachedFrame = animationFrames[currentFrame]
-      
+      const cachedFrame = animationFrames[currentFrame];
+
       // Draw directly to display canvas (skip setCanvas during playback to avoid re-renders)
       if (canvasRef.current) {
-        const ctx = canvasRef.current.getContext('2d')
+        const ctx = canvasRef.current.getContext('2d');
         if (ctx) {
-          canvasRef.current.width = cachedFrame.width
-          canvasRef.current.height = cachedFrame.height
-          ctx.drawImage(cachedFrame, 0, 0)
+          canvasRef.current.width = cachedFrame.width;
+          canvasRef.current.height = cachedFrame.height;
+          ctx.drawImage(cachedFrame, 0, 0);
         }
       }
     }
-  }, [currentFrame, isAnimationCacheReady, animationFrames])
+  }, [currentFrame, isAnimationCacheReady, animationFrames]);
 
   // Prepare interstitial ad on mount (so it's ready when user downloads)
   useEffect(() => {
-    prepareInterstitial('export')
-  }, [])
+    prepareInterstitial('export');
+  }, []);
 
   // Download function with output scaling
   const download = useCallback(async () => {
-    if (!canvas) return
+    if (!canvas) return;
 
-    setIsExporting(true)
-    
+    setIsExporting(true);
+
     // Allow React to render the busy overlay before starting export
-    await new Promise(resolve => setTimeout(resolve, 50))
-    
+    await new Promise((resolve) => setTimeout(resolve, 50));
+
     try {
       // Show interstitial ad BEFORE download on native platforms
-      await showInterstitial('export')
+      await showInterstitial('export');
 
-    // Scale canvas to output dimensions if different
-    let exportCanvas = canvas
-    if (output.widthPx !== canvas.width || output.heightPx !== canvas.height) {
-      exportCanvas = document.createElement('canvas')
-      exportCanvas.width = output.widthPx
-      exportCanvas.height = output.heightPx
-      const ctx = exportCanvas.getContext('2d')
-      if (ctx) {
-        // Use high-quality scaling
-        ctx.imageSmoothingEnabled = !render.crispEdges
-        ctx.imageSmoothingQuality = 'high'
-        ctx.drawImage(canvas, 0, 0, output.widthPx, output.heightPx)
+      // Scale canvas to output dimensions if different
+      let exportCanvas = canvas;
+      if (output.widthPx !== canvas.width || output.heightPx !== canvas.height) {
+        exportCanvas = document.createElement('canvas');
+        exportCanvas.width = output.widthPx;
+        exportCanvas.height = output.heightPx;
+        const ctx = exportCanvas.getContext('2d');
+        if (ctx) {
+          // Use high-quality scaling
+          ctx.imageSmoothingEnabled = !render.crispEdges;
+          ctx.imageSmoothingQuality = 'high';
+          ctx.drawImage(canvas, 0, 0, output.widthPx, output.heightPx);
+        }
       }
-    }
 
-    const exportConfig = {
-      outputFormat: output.format,
-      outputWidth: output.widthPx,
-      outputHeight: output.heightPx,
-      outputQuality: output.quality,
-      filename: output.filename,
-      dpi: output.dpi,
-      // Output options
-      includeQuietZone: output.includeQuietZone,
-      bgOverride: output.bgOverride,
-      // GIF options
-      gifPaletteSize: output.gifPaletteSize,
-      gifQuantizer: output.gifQuantizer,
-      gifDither: output.gifDither,
-      gifTransparentColor: output.gifTransparentColor,
-      gifDisposal: output.gifDisposal,
-      // SVG options
-      svgTrueVector: output.svgTrueVector,
-      svgShapePrecision: output.svgShapePrecision,
-      svgEmbedRasterOverlay: output.svgEmbedRasterOverlay,
-      // Metadata
-      metadata: {
-        title: metadata.title || undefined,
-        author: metadata.author || undefined,
-        copyright: metadata.copyright || undefined,
-        license: metadata.license || undefined,
-        description: metadata.description || undefined,
-        creationTime: metadata.creationTime,
-        customKv: metadata.customKv.filter(kv => kv.k && kv.v),
-      },
-    }
+      const exportConfig = {
+        outputFormat: output.format,
+        outputWidth: output.widthPx,
+        outputHeight: output.heightPx,
+        outputQuality: output.quality,
+        filename: output.filename,
+        dpi: output.dpi,
+        // Output options
+        includeQuietZone: output.includeQuietZone,
+        bgOverride: output.bgOverride,
+        // GIF options
+        gifPaletteSize: output.gifPaletteSize,
+        gifQuantizer: output.gifQuantizer,
+        gifDither: output.gifDither,
+        gifTransparentColor: output.gifTransparentColor,
+        gifDisposal: output.gifDisposal,
+        // SVG options
+        svgTrueVector: output.svgTrueVector,
+        svgShapePrecision: output.svgShapePrecision,
+        svgEmbedRasterOverlay: output.svgEmbedRasterOverlay,
+        // Metadata
+        metadata: {
+          title: metadata.title || undefined,
+          author: metadata.author || undefined,
+          copyright: metadata.copyright || undefined,
+          license: metadata.license || undefined,
+          description: metadata.description || undefined,
+          creationTime: metadata.creationTime,
+          customKv: metadata.customKv.filter((kv) => kv.k && kv.v),
+        },
+      };
 
       // Build PNG metadata object for embedding
-      const pngMetadata = (metadata.title || metadata.author || metadata.copyright || metadata.description) ? {
-        title: metadata.title || undefined,
-        author: metadata.author || undefined,
-        copyright: metadata.copyright || undefined,
-        description: metadata.description || undefined,
-        creationTime: metadata.creationTime ? new Date().toISOString() : undefined,
-        software: 'ANQR - anqr.link',
-      } : undefined
+      const pngMetadata =
+        metadata.title || metadata.author || metadata.copyright || metadata.description
+          ? {
+              title: metadata.title || undefined,
+              author: metadata.author || undefined,
+              copyright: metadata.copyright || undefined,
+              description: metadata.description || undefined,
+              creationTime: metadata.creationTime ? new Date().toISOString() : undefined,
+              software: 'ANQR - anqr.link',
+            }
+          : undefined;
 
       if (output.format === 'svg') {
-        await downloadSvg(exportCanvas, exportConfig)
+        await downloadSvg(exportCanvas, exportConfig);
       } else if (output.format === 'gif' && animationFrames.length > 1) {
         // Scale animation frames to output dimensions
         // Use canvas pool for temporary scaled frames to reduce GC pressure
-        const scaledFrames = animationFrames.map(frame => {
+        const scaledFrames = animationFrames.map((frame) => {
           if (frame.width === output.widthPx && frame.height === output.heightPx) {
-            return frame
+            return frame;
           }
-          const scaledCanvas = document.createElement('canvas')
-          scaledCanvas.width = output.widthPx
-          scaledCanvas.height = output.heightPx
-          const ctx = scaledCanvas.getContext('2d')
+          const scaledCanvas = document.createElement('canvas');
+          scaledCanvas.width = output.widthPx;
+          scaledCanvas.height = output.heightPx;
+          const ctx = scaledCanvas.getContext('2d');
           if (ctx) {
-            ctx.imageSmoothingEnabled = !render.crispEdges
-            ctx.imageSmoothingQuality = 'high'
-            ctx.drawImage(frame, 0, 0, output.widthPx, output.heightPx)
+            ctx.imageSmoothingEnabled = !render.crispEdges;
+            ctx.imageSmoothingQuality = 'high';
+            ctx.drawImage(frame, 0, 0, output.widthPx, output.heightPx);
           }
-          return scaledCanvas
-        })
-        
+          return scaledCanvas;
+        });
+
         // Calculate frame delays - use original GIF delays if enabled, otherwise use animation speed
-        let frameDelays: number[] | undefined
+        let frameDelays: number[] | undefined;
         if (overlay.gifUseFrameDelays && effectiveFrames.length > 0) {
           // Use original frame delays from source GIF, capped by maxFps
-          const minDelayMs = overlay.gifMaxFps > 0 ? Math.floor(1000 / overlay.gifMaxFps) : 0
-          frameDelays = effectiveFrames.map(f => Math.max(f.delay || animation.speedMs, minDelayMs))
+          const minDelayMs = overlay.gifMaxFps > 0 ? Math.floor(1000 / overlay.gifMaxFps) : 0;
+          frameDelays = effectiveFrames.map((f) =>
+            Math.max(f.delay || animation.speedMs, minDelayMs)
+          );
         } else if (animationFrames.length > 1 && effectiveFrames.length === 0) {
           // For base QR animations (no overlay), use uniform animation speed
-          frameDelays = animationFrames.map(() => animation.speedMs)
+          frameDelays = animationFrames.map(() => animation.speedMs);
         }
-        
+
         // Export animated GIF with all frames
-        await downloadGif(scaledFrames, {
-          ...exportConfig,
-          animationSpeed: animation.speedMs,
-          loopAnimation: animation.loop,
-        }, frameDelays)
-        
+        await downloadGif(
+          scaledFrames,
+          {
+            ...exportConfig,
+            animationSpeed: animation.speedMs,
+            loopAnimation: animation.loop,
+          },
+          frameDelays
+        );
+
         // Note: We intentionally don't release scaled canvases back to the pool here
         // because downloadGif is async and may still be using the canvas data.
         // The canvases will be garbage collected naturally after export completes.
       } else if (output.format === 'gif') {
         // Single frame GIF
-        await downloadGif([exportCanvas], exportConfig)
+        await downloadGif([exportCanvas], exportConfig);
       } else {
-        await downloadImage(exportCanvas, exportConfig, pngMetadata, output.dpi)
+        await downloadImage(exportCanvas, exportConfig, pngMetadata, output.dpi);
       }
     } catch (err) {
-      console.error('Download error:', err)
+      console.error('Download error:', err);
     } finally {
-      setIsExporting(false)
+      setIsExporting(false);
     }
-  }, [canvas, output, render.crispEdges, animationFrames, animation.speedMs, animation.loop, metadata, overlay.gifUseFrameDelays, overlay.gifMaxFps, effectiveFrames])
+  }, [
+    canvas,
+    output,
+    render.crispEdges,
+    animationFrames,
+    animation.speedMs,
+    animation.loop,
+    metadata,
+    overlay.gifUseFrameDelays,
+    overlay.gifMaxFps,
+    effectiveFrames,
+  ]);
 
   // Generate all animation frames for GIF export and playback cache
   // This runs once when config changes, then frames are cached for fast playback
   useEffect(() => {
     // Track if this effect is still current (for cleanup/cancellation)
-    let isCancelled = false
-    
+    let isCancelled = false;
+
     // ==========================================
     // ANIMATION EFFECT FLAGS - only true when actually enabled
     // ==========================================
-    const hasColorCycle = animation.colorCycle === true
-    const hasPattern = animation.pattern !== 'none'
-    const hasTemporalDither = animation.temporalDither !== 'off'
-    const hasInterpolation = animation.interpolate !== 'none'
-    const hasJitter = animation.moduleJitterPx > 0
-    
+    const hasColorCycle = animation.colorCycle === true;
+    const hasPattern = animation.pattern !== 'none';
+    const hasTemporalDither = animation.temporalDither !== 'off';
+    const hasInterpolation = animation.interpolate !== 'none';
+    const hasJitter = animation.moduleJitterPx > 0;
+
     // True only if at least one animation effect is actually enabled
-    const hasAnyAnimationEffect = hasColorCycle || hasPattern || hasTemporalDither || hasJitter
-    
+    const hasAnyAnimationEffect = hasColorCycle || hasPattern || hasTemporalDither || hasJitter;
+
     // Check if we should generate pattern-based animation from static overlay image
-    const shouldGeneratePatternAnimation = 
-      hasPattern && 
-      overlay.enabled && 
-      effectiveFrames.length === 1
-    
+    const shouldGeneratePatternAnimation =
+      hasPattern && overlay.enabled && effectiveFrames.length === 1;
+
     // Check if we should generate animation from base QR (no overlay)
     // Only when at least one effect is actually enabled
-    const shouldGenerateBaseAnimation = 
-      hasAnyAnimationEffect && 
-      !overlay.enabled
-    
+    const shouldGenerateBaseAnimation = hasAnyAnimationEffect && !overlay.enabled;
+
     // Check if we should generate animation effects on a static overlay image
     // This handles colorCycle, temporalDither, jitter on single-frame overlays
-    const shouldGenerateStaticOverlayAnimation = 
-      hasAnyAnimationEffect && 
-      overlay.enabled && 
-      effectiveFrames.length === 1
-    
+    const shouldGenerateStaticOverlayAnimation =
+      hasAnyAnimationEffect && overlay.enabled && effectiveFrames.length === 1;
+
     // Early return only if no animation is needed
     // For multi-frame overlays (animated GIFs), we need to generate frames regardless of other animation effects
-    const hasMultiFrameOverlay = effectiveFrames.length > 1 && overlay.enabled
-    
+    const hasMultiFrameOverlay = effectiveFrames.length > 1 && overlay.enabled;
+
     // OPTIMIZATION: If we have a single static overlay with NO animation effects enabled,
     // skip batch frame generation entirely - the normal generate() path handles this
-    if (!hasMultiFrameOverlay && !shouldGeneratePatternAnimation && !shouldGenerateBaseAnimation && !shouldGenerateStaticOverlayAnimation) {
-      setAnimationFrames([])
-      setIsAnimationCacheReady(false)
-      return
+    if (
+      !(
+        hasMultiFrameOverlay ||
+        shouldGeneratePatternAnimation ||
+        shouldGenerateBaseAnimation ||
+        shouldGenerateStaticOverlayAnimation
+      )
+    ) {
+      setAnimationFrames([]);
+      setIsAnimationCacheReady(false);
+      return;
     }
 
     // Mark cache as not ready while generating
-    setIsAnimationCacheReady(false)
-    setIsLoading(true)
+    setIsAnimationCacheReady(false);
+    setIsLoading(true);
 
     // Generate QR for each frame (batch generation)
     const generateAllFrames = async () => {
-      let frames: HTMLCanvasElement[] = []
-      
+      let frames: HTMLCanvasElement[] = [];
+
       // Create yield controller for time-based yielding
-      const yieldCtrl = new YieldController()
-      yieldCtrl.reset()
-      
+      const yieldCtrl = new YieldController();
+      yieldCtrl.reset();
+
       // Load watermark image once if needed (for both image and pattern types)
-      let watermarkImage: HTMLImageElement | HTMLCanvasElement | null = null
-      if (watermark.enabled && (watermark.kind === 'image' || watermark.kind === 'pattern') && watermark.image) {
+      let watermarkImage: HTMLImageElement | HTMLCanvasElement | null = null;
+      if (
+        watermark.enabled &&
+        (watermark.kind === 'image' || watermark.kind === 'pattern') &&
+        watermark.image
+      ) {
         try {
-          watermarkImage = await loadFileAsCanvas(watermark.image)
+          watermarkImage = await loadFileAsCanvas(watermark.image);
         } catch (err) {
-          console.error('Error loading watermark:', err)
+          console.error('Error loading watermark:', err);
         }
       }
-      
+
       // Calculate temporal dither mode - only if enabled
-      const temporalMode = animation.temporalDither as TemporalDitherMode
-      const useTemporalDither = hasTemporalDither && isTemporalDitherActive(temporalMode)
-      
+      const temporalMode = animation.temporalDither as TemporalDitherMode;
+      const useTemporalDither = hasTemporalDither && isTemporalDitherActive(temporalMode);
+
       // Determine frames to process
       // For GIF compositor, we need to process frames sequentially using apply/dispose
-      let framesToProcess = effectiveFrames
-      const useCompositor = gifCompositor && effectiveFrameIndices.length > 0 && overlay.enabled
-      
+      let framesToProcess = effectiveFrames;
+      const useCompositor = gifCompositor && effectiveFrameIndices.length > 0 && overlay.enabled;
+
       // Generate animation frames for base QR (no overlay)
       if (shouldGenerateBaseAnimation) {
-        const frameCount = 24
-        
+        const frameCount = 24;
+
         // Check if we need per-frame QR generation (for moduleJitter)
-        const needsPerFrameQR = hasJitter
-        
+        const needsPerFrameQR = hasJitter;
+
         if (hasPattern && !needsPerFrameQR) {
           // Generate base QR once, then apply pattern animation
-          const baseQR = await qrGenerator.generate(debouncedConfig, null)
-          if (!baseQR || isCancelled) return
-          
+          const baseQR = await qrGenerator.generate(debouncedConfig, null);
+          if (!baseQR || isCancelled) return;
+
           const patternFrames = generatePatternFrames(
             baseQR,
             animation.pattern as AnimationPattern,
             frameCount,
             animation.seed
-          )
-          framesToProcess = patternFrames.map(canvas => ({
+          );
+          framesToProcess = patternFrames.map((canvas) => ({
             canvas,
             delay: animation.speedMs,
-            disposalType: 0
-          }))
+            disposalType: 0,
+          }));
         } else if (hasPattern && needsPerFrameQR) {
           // Generate QR per frame for jitter, then apply pattern
           // First generate all pattern frames from a base QR to get the pattern progression
-          const baseQR = await qrGenerator.generate(debouncedConfig, null)
-          if (!baseQR || isCancelled) return
-          
-          const basePatternFrames = generatePatternFrames(
+          const baseQR = await qrGenerator.generate(debouncedConfig, null);
+          if (!baseQR || isCancelled) return;
+
+          const _basePatternFrames = generatePatternFrames(
             baseQR,
             animation.pattern as AnimationPattern,
             frameCount,
             animation.seed
-          )
-          
+          );
+
           // Now generate jittered QR frames and combine with pattern effects
-          const combinedFrames: HTMLCanvasElement[] = []
+          const combinedFrames: HTMLCanvasElement[] = [];
           for (let i = 0; i < frameCount; i++) {
-            if (isCancelled) return
-            
+            if (isCancelled) return;
+
             // Time-based yielding for smoother UI
             if (await yieldCtrl.yieldIfNeeded()) {
-              if (isCancelled) return
+              if (isCancelled) return;
             }
-            
+
             // Generate QR with jitter for this frame
-            const frameConfig = { ...debouncedConfig, frameIndex: i }
-            const jitteredQR = await qrGenerator.generate(frameConfig, null)
-            if (!jitteredQR) continue
-            
+            const frameConfig = { ...debouncedConfig, frameIndex: i };
+            const jitteredQR = await qrGenerator.generate(frameConfig, null);
+            if (!jitteredQR) continue;
+
             // Apply the same pattern effect that would be at this frame index
             // by generating pattern frames for this specific jittered QR
             const patternForFrame = generatePatternFrames(
@@ -1249,123 +1397,125 @@ export function useQRGenerator(): UseQRGeneratorResult {
               animation.pattern as AnimationPattern,
               frameCount,
               animation.seed
-            )
+            );
             // Pick the frame at index i to match the animation progression
-            combinedFrames.push(patternForFrame[i] || jitteredQR)
+            combinedFrames.push(patternForFrame[i] || jitteredQR);
           }
-          
-          framesToProcess = combinedFrames.map(canvas => ({
+
+          framesToProcess = combinedFrames.map((canvas) => ({
             canvas,
             delay: animation.speedMs,
-            disposalType: 0
-          }))
+            disposalType: 0,
+          }));
         } else if (hasJitter) {
           // Just moduleJitter without pattern - generate frames with jitter
-          const jitteredFrames: HTMLCanvasElement[] = []
+          const jitteredFrames: HTMLCanvasElement[] = [];
           for (let i = 0; i < frameCount; i++) {
-            if (isCancelled) return
-            
+            if (isCancelled) return;
+
             // Time-based yielding for smoother UI
             if (await yieldCtrl.yieldIfNeeded()) {
-              if (isCancelled) return
+              if (isCancelled) return;
             }
-            
-            const frameConfig = { ...debouncedConfig, frameIndex: i }
-            const qrFrame = await qrGenerator.generate(frameConfig, null)
-            if (qrFrame) jitteredFrames.push(qrFrame)
+
+            const frameConfig = { ...debouncedConfig, frameIndex: i };
+            const qrFrame = await qrGenerator.generate(frameConfig, null);
+            if (qrFrame) jitteredFrames.push(qrFrame);
           }
-          
-          framesToProcess = jitteredFrames.map(canvas => ({
+
+          framesToProcess = jitteredFrames.map((canvas) => ({
             canvas,
             delay: animation.speedMs,
-            disposalType: 0
-          }))
+            disposalType: 0,
+          }));
         } else {
           // For colorCycle/temporalDither without pattern or jitter
           // Generate base QR once, then create placeholder frames for post-processing
-          const staticBaseQR = await qrGenerator.generate(debouncedConfig, null)
-          if (!staticBaseQR || isCancelled) return
-          
+          const staticBaseQR = await qrGenerator.generate(debouncedConfig, null);
+          if (!staticBaseQR || isCancelled) return;
+
           framesToProcess = Array.from({ length: frameCount }, () => ({
             canvas: staticBaseQR,
             delay: animation.speedMs,
-            disposalType: 0
-          }))
+            disposalType: 0,
+          }));
         }
       }
       // Generate pattern animation frames from static overlay image
       else if (shouldGeneratePatternAnimation && effectiveFrames.length === 1) {
         // Generate 24 frames of pattern animation from single frame
-        const patternFrameCount = 24
-        const baseCanvas = applyGeometricTransforms(effectiveFrames[0].canvas)
+        const patternFrameCount = 24;
+        const baseCanvas = applyGeometricTransforms(effectiveFrames[0].canvas);
         const patternFrames = generatePatternFrames(
           baseCanvas,
           animation.pattern as AnimationPattern,
           patternFrameCount,
           animation.seed
-        )
+        );
         // Convert to AnimationFrame format
-        framesToProcess = patternFrames.map(canvas => ({
+        framesToProcess = patternFrames.map((canvas) => ({
           canvas,
           delay: animation.speedMs,
-          disposalType: 0
-        }))
+          disposalType: 0,
+        }));
       }
       // Generate animation frames from static overlay with non-pattern effects (colorCycle, temporalDither, jitter)
       else if (shouldGenerateStaticOverlayAnimation && effectiveFrames.length === 1) {
         // Generate 24 frames of animation effects on the static overlay
-        const frameCount = 24
-        const baseCanvas = applyGeometricTransforms(effectiveFrames[0].canvas)
-        
+        const frameCount = 24;
+        const baseCanvas = applyGeometricTransforms(effectiveFrames[0].canvas);
+
         // Create placeholder frames - the actual effects (colorCycle, temporalDither) are applied per-frame below
         framesToProcess = Array.from({ length: frameCount }, () => ({
           canvas: baseCanvas,
           delay: animation.speedMs,
-          disposalType: 0
-        }))
+          disposalType: 0,
+        }));
       }
-      
+
       // If using GIF compositor, reset it before processing frames
       if (useCompositor && gifCompositor) {
-        gifCompositor.reset()
+        gifCompositor.reset();
       }
-      
+
       for (let frameIdx = 0; frameIdx < framesToProcess.length; frameIdx++) {
-        const frame = framesToProcess[frameIdx]
+        const frame = framesToProcess[frameIdx];
         // Check if cancelled before each expensive operation
-        if (isCancelled) return
-        
+        if (isCancelled) return;
+
         // Time-based yielding: yield when we've used up our frame budget
         // This is more efficient than fixed-interval yielding
         if (await yieldCtrl.yieldIfNeeded()) {
-          if (isCancelled) return
+          if (isCancelled) return;
         }
-        
+
         try {
-          let result: HTMLCanvasElement | null = null
-          
+          let result: HTMLCanvasElement | null = null;
+
           if (shouldGenerateBaseAnimation) {
             // For base QR animation, the frame.canvas is either:
             // - A pattern-processed frame (if pattern enabled)
             // - The base QR itself (for colorCycle/temporalDither only)
             if (hasPattern || hasJitter) {
               // Pattern and/or jitter already applied during frame generation, just use the frame directly
-              result = frame.canvas
+              result = frame.canvas;
             } else {
               // Re-render QR with different frameIndex for temporal effects
-              const frameConfig = { 
-                ...debouncedConfig, 
+              const frameConfig = {
+                ...debouncedConfig,
                 frameIndex: frameIdx,
-                temporalOffset: useTemporalDither ? calculateTemporalOffset(frameIdx, temporalMode, animation.seed) : 0
-              }
-              result = await qrGenerator.generate(frameConfig, null)
+                temporalOffset: useTemporalDither
+                  ? calculateTemporalOffset(frameIdx, temporalMode, animation.seed)
+                  : 0,
+              };
+              result = await qrGenerator.generate(frameConfig, null);
             }
           } else if (useCompositor && gifCompositor) {
             // OPTIMAL PATH: Use GIF compositor for overlay animation
             // This avoids per-frame canvas allocation - compositor.canvas is reused
-            const actualFrameIdx = effectiveFrameIndices[frameIdx]
-            const prevActualFrameIdx = frameIdx > 0 ? effectiveFrameIndices[frameIdx - 1] : -1
-            
+            const actualFrameIdx = effectiveFrameIndices[frameIdx];
+            const prevActualFrameIdx = frameIdx > 0 ? effectiveFrameIndices[frameIdx - 1] : -1;
+
             // CRITICAL: GIF frames are delta patches that build on each other.
             // We cannot skip intermediate frames - we must apply ALL frames from
             // the previous target frame to the current target frame.
@@ -1373,63 +1523,79 @@ export function useQRGenerator(): UseQRGeneratorResult {
             // we need to apply frames 1, 2, 3, 4, 5 (not just jump from 0 to 5)
             for (let i = prevActualFrameIdx + 1; i <= actualFrameIdx; i++) {
               if (i > 0) {
-                gifCompositor.dispose(i - 1)
+                gifCompositor.dispose(i - 1);
               }
-              gifCompositor.apply(i)
+              gifCompositor.apply(i);
             }
-            
+
             // Apply geometric transforms only (color adjustments at moduleCount resolution)
-            const processedOverlay = applyGeometricTransforms(gifCompositor.canvas)
-            
+            const processedOverlay = applyGeometricTransforms(gifCompositor.canvas);
+
             // Apply temporal dithering if enabled (reduced strength for preview)
-            let overlayToUse = processedOverlay
+            let overlayToUse = processedOverlay;
             if (useTemporalDither) {
-              const temporalOffset = calculateTemporalOffset(frameIdx, temporalMode, animation.seed)
-              overlayToUse = applyTemporalNoiseToCanvas(processedOverlay, temporalOffset, 0.008)
+              const temporalOffset = calculateTemporalOffset(
+                frameIdx,
+                temporalMode,
+                animation.seed
+              );
+              overlayToUse = applyTemporalNoiseToCanvas(processedOverlay, temporalOffset, 0.008);
             }
-            
-            const frameConfig = { 
-              ...debouncedConfig, 
+
+            const frameConfig = {
+              ...debouncedConfig,
               frameIndex: frameIdx,
-              temporalOffset: useTemporalDither ? calculateTemporalOffset(frameIdx, temporalMode, animation.seed) : 0
-            }
-            result = await qrGenerator.generate(frameConfig, overlayToUse)
+              temporalOffset: useTemporalDither
+                ? calculateTemporalOffset(frameIdx, temporalMode, animation.seed)
+                : 0,
+            };
+            result = await qrGenerator.generate(frameConfig, overlayToUse);
           } else {
             // Legacy path for WebP or pattern animation
             // NOTE: Color adjustments (brightness/contrast/etc) are now done at moduleCount
             // resolution inside qr-generator.js - we only apply geometric transforms here
-            let processedOverlay = shouldGeneratePatternAnimation 
+            let processedOverlay = shouldGeneratePatternAnimation
               ? frame.canvas // Already processed for pattern animation
-              : applyGeometricTransforms(frame.canvas)
-            
+              : applyGeometricTransforms(frame.canvas);
+
             // Apply temporal dithering offset to the overlay image
             // This varies the input slightly per frame for smoother perceived quality
             // NOTE: Use reduced strength (0.008) during preview generation for speed
             // Full strength (0.015) is applied during export
             if (useTemporalDither) {
-              const temporalOffset = calculateTemporalOffset(frameIdx, temporalMode, animation.seed)
-              processedOverlay = applyTemporalNoiseToCanvas(processedOverlay, temporalOffset, 0.008)
+              const temporalOffset = calculateTemporalOffset(
+                frameIdx,
+                temporalMode,
+                animation.seed
+              );
+              processedOverlay = applyTemporalNoiseToCanvas(
+                processedOverlay,
+                temporalOffset,
+                0.008
+              );
             }
-            
+
             // Pass frame index for temporal dithering (also used in qr-generator for dither pattern offset)
-            const frameConfig = { 
-              ...debouncedConfig, 
+            const frameConfig = {
+              ...debouncedConfig,
               frameIndex: frameIdx,
-              temporalOffset: useTemporalDither ? calculateTemporalOffset(frameIdx, temporalMode, animation.seed) : 0
-            }
-            result = await qrGenerator.generate(frameConfig, processedOverlay)
+              temporalOffset: useTemporalDither
+                ? calculateTemporalOffset(frameIdx, temporalMode, animation.seed)
+                : 0,
+            };
+            result = await qrGenerator.generate(frameConfig, processedOverlay);
           }
-          
-          if (isCancelled) return
-          
+
+          if (isCancelled) return;
+
           if (result) {
-            let finalResult = result
-            
+            let finalResult = result;
+
             // Apply color cycle as post-processing - ONLY if actually enabled
             if (hasColorCycle) {
-              finalResult = applyColorCycle(finalResult, frameIdx, framesToProcess.length)
+              finalResult = applyColorCycle(finalResult, frameIdx, framesToProcess.length);
             }
-            
+
             // Apply watermark if enabled
             if (watermark.enabled) {
               const watermarked = applyWatermark(finalResult, {
@@ -1440,71 +1606,89 @@ export function useQRGenerator(): UseQRGeneratorResult {
                 position: watermark.position,
                 opacity: watermark.opacity,
                 blend: watermark.blend,
-              })
-              frames.push(watermarked.canvas)
+              });
+              frames.push(watermarked.canvas);
             } else {
-              frames.push(finalResult)
+              frames.push(finalResult);
             }
           }
         } catch (err) {
-          console.error('Error generating frame:', err)
+          console.error('Error generating frame:', err);
         }
       }
-      
+
       // Apply interpolation - ONLY if actually enabled
       if (hasInterpolation && frames.length > 1) {
-        frames = interpolateFrames(frames, animation.interpolate, 2)
+        frames = interpolateFrames(frames, animation.interpolate, 2);
       }
-      
+
       // Only update state if not cancelled
-      if (isCancelled) return
-      
-      setAnimationFrames(frames)
-      setIsAnimationCacheReady(true)
-      setIsLoading(false)
-      setIsLoadingOverlay(false)  // Clear overlay loading state when animation cache is ready
-      
+      if (isCancelled) return;
+
+      setAnimationFrames(frames);
+      setIsAnimationCacheReady(true);
+      setIsLoading(false);
+      setIsLoadingOverlay(false); // Clear overlay loading state when animation cache is ready
+
       // Set the first frame as current canvas
       if (frames.length > 0) {
-        setCanvas(frames[0])
+        setCanvas(frames[0]);
         if (canvasRef.current) {
-          const ctx = canvasRef.current.getContext('2d')
+          const ctx = canvasRef.current.getContext('2d');
           if (ctx) {
-            canvasRef.current.width = frames[0].width
-            canvasRef.current.height = frames[0].height
-            ctx.drawImage(frames[0], 0, 0)
+            canvasRef.current.width = frames[0].width;
+            canvasRef.current.height = frames[0].height;
+            ctx.drawImage(frames[0], 0, 0);
           }
         }
       }
-    }
+    };
 
-    generateAllFrames()
-    
+    generateAllFrames();
+
     // Cleanup: cancel in-flight generation if deps change
     return () => {
-      isCancelled = true
-    }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [effectiveFrames, effectiveFrameIndices, gifCompositor, overlay.enabled, debouncedConfig, watermark, animation.temporalDither, animation.seed, animation.pattern, animation.interpolate, animation.speedMs, animation.colorCycle, animation.moduleJitterPx])
+      isCancelled = true;
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [
+    effectiveFrames,
+    effectiveFrameIndices,
+    gifCompositor,
+    overlay.enabled,
+    debouncedConfig,
+    watermark,
+    animation.temporalDither,
+    animation.seed,
+    animation.pattern,
+    animation.interpolate,
+    animation.speedMs,
+    animation.colorCycle,
+    animation.moduleJitterPx,
+    applyGeometricTransforms,
+  ]);
 
   // Determine if we're still preparing animation
   // This covers: GIF overlays, static overlays with animation effects, and base QR animation effects
-  const hasMultiFrameContent = (gifCompositor?.frameCount || 0) > 1 || gifFrames.length > 1
-  const hasAnimationEffectsEnabled = 
-    animation.colorCycle || 
-    animation.pattern !== 'none' || 
-    animation.temporalDither !== 'off' || 
-    animation.moduleJitterPx > 0
-  
+  const hasMultiFrameContent = (gifCompositor?.frameCount || 0) > 1 || gifFrames.length > 1;
+  const hasAnimationEffectsEnabled =
+    animation.colorCycle ||
+    animation.pattern !== 'none' ||
+    animation.temporalDither !== 'off' ||
+    animation.moduleJitterPx > 0;
+
   // Show preparing state when:
   // 1. We're loading an overlay file (GIF parsing, etc.), OR
   // 2. We have multi-frame GIF content and cache isn't ready, OR
   // 3. We have animation effects enabled (on static image or no overlay) and cache isn't ready
-  const isPreparingAnimation = 
+  const isPreparingAnimation =
     isLoadingOverlay ||
     (!isAnimationCacheReady && hasMultiFrameContent) ||
-    (!isAnimationCacheReady && hasAnimationEffectsEnabled && animationFrames.length === 0 && isLoading)
-  
+    (!isAnimationCacheReady &&
+      hasAnimationEffectsEnabled &&
+      animationFrames.length === 0 &&
+      isLoading);
+
   return {
     canvasRef,
     canvas,
@@ -1526,7 +1710,7 @@ export function useQRGenerator(): UseQRGeneratorResult {
     isValidating,
     // Animation frames for GIF export
     animationFrames,
-  }
+  };
 }
 
-export default useQRGenerator
+export default useQRGenerator;

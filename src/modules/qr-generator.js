@@ -1,9 +1,9 @@
-import qrcode from "../../vendor/lib/qrcode-generator/qrcode.mjs";
+import qrcode from '../../vendor/lib/qrcode-generator/qrcode.mjs';
 
-import { generateBlueNoiseDithered } from "./blue-noise-dither.ts";
-import { generateQR, isLocked, isData, calculateOptimalVersion } from "./qr-core.ts";
-import { blendColors, parseColor } from "./color-utils.ts";
-import { applyDither } from "./dither-algorithms.ts";
+import { generateBlueNoiseDithered } from './blue-noise-dither.ts';
+import { blendColors, parseColor } from './color-utils.ts';
+import { applyDither } from './dither-algorithms.ts';
+import { generateQR, isData, isLocked } from './qr-core.ts';
 
 // ============================================
 // MEMOIZATION CACHES
@@ -18,7 +18,7 @@ class MemoCache {
     this.cache = new Map();
     this.maxSize = maxSize;
   }
-  
+
   get(key) {
     if (this.cache.has(key)) {
       // Move to end (most recently used)
@@ -29,7 +29,7 @@ class MemoCache {
     }
     return undefined;
   }
-  
+
   set(key, value) {
     // Delete if exists to update order
     if (this.cache.has(key)) {
@@ -42,14 +42,14 @@ class MemoCache {
     }
     this.cache.set(key, value);
   }
-  
+
   clear() {
     this.cache.clear();
   }
 }
 
 // Global caches for expensive operations
-const versionCache = new MemoCache(50);  // For calculateOptimalVersion
+const versionCache = new MemoCache(50); // For calculateOptimalVersion
 const alignmentCache = new MemoCache(50); // For getAlignmentPositions
 const overlayDataCache = new MemoCache(20); // For overlay data
 
@@ -72,9 +72,9 @@ export function clearQRCaches() {
 function getContrastRatio(color1, color2) {
   const getLuminance = (color) => {
     const parsed = parseColor(color);
-    const [r, g, b] = [parsed.r, parsed.g, parsed.b].map(c => {
+    const [r, g, b] = [parsed.r, parsed.g, parsed.b].map((c) => {
       c = c / 255;
-      return c <= 0.03928 ? c / 12.92 : Math.pow((c + 0.055) / 1.055, 2.4);
+      return c <= 0.03928 ? c / 12.92 : ((c + 0.055) / 1.055) ** 2.4;
     });
     return 0.2126 * r + 0.7152 * g + 0.0722 * b;
   };
@@ -85,11 +85,10 @@ function getContrastRatio(color1, color2) {
   return (lighter + 0.05) / (darker + 0.05);
 }
 
-
 /**
  * Canvas factory interface for environment-agnostic canvas creation.
  * Allows QRGenerator to work in both browser and Node.js (Netlify functions).
- * 
+ *
  * @typedef {Object} CanvasFactory
  * @property {function(number, number): Promise<HTMLCanvasElement|object>} createCanvas - Creates a canvas with given width/height
  * @property {function(string): Promise<HTMLImageElement|object>} [loadImage] - Optional: loads an image from URL/buffer
@@ -111,10 +110,10 @@ export const defaultBrowserCanvasFactory = {
       const img = new Image();
       img.crossOrigin = 'anonymous';
       img.onload = () => resolve(img);
-      img.onerror = (e) => reject(new Error(`Failed to load image: ${src}`));
+      img.onerror = (_e) => reject(new Error(`Failed to load image: ${src}`));
       img.src = src;
     });
-  }
+  },
 };
 
 export class QRGenerator {
@@ -151,10 +150,7 @@ export class QRGenerator {
     // Auto-detect best version if set to 0
     let typeNumber = config.typeNumber;
     if (typeNumber === 0) {
-      typeNumber = this.calculateOptimalVersion(
-        config.content,
-        config.errorCorrection,
-      );
+      typeNumber = this.calculateOptimalVersion(config.content, config.errorCorrection);
     }
 
     // NOTE: Preprocessing is now done at moduleCount resolution inside _getOverlayData
@@ -168,16 +164,16 @@ export class QRGenerator {
     // Dithered mode uses the `qr` encoder directly (and has its own
     // overflow handling). Skip qrcode-generator entirely to avoid
     // `code length overflow` when a manual version is too small.
-    if (config.overlayMode === "dithered" && processedOverlayCanvas) {
+    if (config.overlayMode === 'dithered' && processedOverlayCanvas) {
       return await this.generateDitheredSubpixelQR(
         null,
         { ...config, typeNumber },
-        processedOverlayCanvas,
+        processedOverlayCanvas
       );
     }
 
     // Blue-noise mode generates animated frames with temporal dithering
-    if (config.overlayMode === "blue-noise" && processedOverlayCanvas) {
+    if (config.overlayMode === 'blue-noise' && processedOverlayCanvas) {
       return await this.generateBlueNoiseQR({ ...config, typeNumber }, processedOverlayCanvas);
     }
 
@@ -190,41 +186,25 @@ export class QRGenerator {
     // For subpixel modes, use special 3x3 rendering
     // Dithered QR Codes (error diffusion) style rendering
     // Inspired by the idea of using error diffusion to compensate for fixed QR data modules.
-    if (config.overlayMode === "dithered" && overlayCanvas) {
-      return await this.generateDitheredSubpixelQR(
-        qr,
-        config,
-        overlayCanvas,
-        moduleCount,
-      );
+    if (config.overlayMode === 'dithered' && overlayCanvas) {
+      return await this.generateDitheredSubpixelQR(qr, config, overlayCanvas, moduleCount);
     }
 
-    if (config.overlayMode === "subpixel" && processedOverlayCanvas) {
-      return await this.generateSubpixelQR(
-        qr,
-        config,
-        processedOverlayCanvas,
-        moduleCount,
-        false,
-      );
+    if (config.overlayMode === 'subpixel' && processedOverlayCanvas) {
+      return await this.generateSubpixelQR(qr, config, processedOverlayCanvas, moduleCount, false);
     }
-    if (config.overlayMode === "subpixel-size" && processedOverlayCanvas) {
-      return await this.generateSubpixelQR(
-        qr,
-        config,
-        processedOverlayCanvas,
-        moduleCount,
-        true,
-      );
+    if (config.overlayMode === 'subpixel-size' && processedOverlayCanvas) {
+      return await this.generateSubpixelQR(qr, config, processedOverlayCanvas, moduleCount, true);
     }
 
     const moduleSize = config.moduleSize;
     const margin = config.margin;
-    const frameExtra = (config.frameStyle && config.frameStyle !== 'none' && config.frameText) ? moduleSize * 4 : 0;
+    const frameExtra =
+      config.frameStyle && config.frameStyle !== 'none' && config.frameText ? moduleSize * 4 : 0;
     const size = moduleCount * moduleSize + margin * 2 * moduleSize + frameExtra;
 
     const canvas = await this._createCanvas(size, size);
-    const ctx = canvas.getContext("2d");
+    const ctx = canvas.getContext('2d');
 
     // Keep edges crisp (critical for QR scanning)
     ctx.imageSmoothingEnabled = false;
@@ -243,10 +223,10 @@ export class QRGenerator {
       overlayData = await this._getOverlayData(
         processedOverlayCanvas,
         moduleCount,
-        config.colorMode || "color",
-        config.invertImage || false,
+        config.colorMode || 'color',
+        config.invertImage,
         config.frameIndex || 0,
-        config, // Pass full config for preprocessing
+        config // Pass full config for preprocessing
       );
     }
 
@@ -270,35 +250,50 @@ export class QRGenerator {
     // For true dither mode, we modify which modules are on/off
     let ditherPattern = null;
     let advancedDitherResult = null;
-    
-    if ((config.overlayMode === "dither" || config.overlayMode === "extreme") && overlayData) {
+
+    if ((config.overlayMode === 'dither' || config.overlayMode === 'extreme') && overlayData) {
       // Check if advanced dithering params are specified
-      const useAdvancedDither = config.ditherKind && 
-        config.ditherKind !== 'true_dither' && 
+      const useAdvancedDither =
+        config.ditherKind &&
+        config.ditherKind !== 'true_dither' &&
         config.ditherKind !== 'error_diffusion';
-      
+
       if (useAdvancedDither && overlayCanvas) {
         // Use advanced dithering from dither-algorithms module
         try {
-          advancedDitherResult = await this.applyAdvancedDither(overlayCanvas, moduleCount, effectiveConfig);
+          advancedDitherResult = await this.applyAdvancedDither(
+            overlayCanvas,
+            moduleCount,
+            effectiveConfig
+          );
           ditherPattern = advancedDitherResult.matrix;
         } catch (e) {
           console.warn('Advanced dithering failed, falling back to true dither:', e);
-          ditherPattern = this.applyTrueDither(qr, overlayData, effectiveConfig, config.overlayMode === "extreme");
+          ditherPattern = this.applyTrueDither(
+            qr,
+            overlayData,
+            effectiveConfig,
+            config.overlayMode === 'extreme'
+          );
         }
       } else {
         // Use built-in true dither with configured diffusion kernel and serpentine
-        ditherPattern = this.applyTrueDither(qr, overlayData, effectiveConfig, config.overlayMode === "extreme");
+        ditherPattern = this.applyTrueDither(
+          qr,
+          overlayData,
+          effectiveConfig,
+          config.overlayMode === 'extreme'
+        );
       }
     }
 
     // Get version for alignment pattern detection
     const version = config.typeNumber || Math.ceil((moduleCount - 17) / 4);
-    
+
     // Create gradient fill if configured
     const gradientFill = this.createGradientFill(ctx, config, size);
     const useGradient = config.gradient && config.gradient.type !== 'none';
-    
+
     // Render options
     const cornerRadius = config.cornerRadius || 0;
     const dotRotation = config.dotRotationDeg || 0;
@@ -315,12 +310,12 @@ export class QRGenerator {
       { row: 0, col: moduleCount - 7 }, // Top-right
       { row: moduleCount - 7, col: 0 }, // Bottom-left
     ];
-    
+
     for (const pos of finderPositions) {
       const x = (pos.col + margin) * moduleSize;
       const y = (pos.row + margin) * moduleSize;
       this.drawFinderPatternComplete(ctx, x, y, moduleSize, config);
-      
+
       // Mark all modules in this finder pattern as drawn
       for (let r = pos.row; r < pos.row + 7; r++) {
         for (let c = pos.col; c < pos.col + 7; c++) {
@@ -336,7 +331,7 @@ export class QRGenerator {
         const centerX = (pos.col + margin) * moduleSize + moduleSize / 2;
         const centerY = (pos.row + margin) * moduleSize + moduleSize / 2;
         this.drawAlignmentPattern(ctx, centerX, centerY, moduleSize, alignmentStyle, config);
-        
+
         // Mark all modules in this alignment pattern as drawn
         for (let r = pos.row - 2; r <= pos.row + 2; r++) {
           for (let c = pos.col - 2; c <= pos.col + 2; c++) {
@@ -351,14 +346,12 @@ export class QRGenerator {
       for (let col = 0; col < moduleCount; col++) {
         // Skip if this module is part of a finder pattern (already drawn)
         if (drawnFinderPatterns.has(`${row},${col}`)) continue;
-        
+
         // Skip if this module is part of an alignment pattern (already drawn)
         if (drawnAlignmentPatterns.has(`${row},${col}`)) continue;
-        
+
         // Use dithered pattern if available, otherwise use original QR
-        const isDark = ditherPattern
-          ? ditherPattern[row][col]
-          : qr.isDark(row, col);
+        const isDark = ditherPattern ? ditherPattern[row][col] : qr.isDark(row, col);
         const x = (col + margin) * moduleSize;
         const y = (row + margin) * moduleSize;
 
@@ -368,18 +361,18 @@ export class QRGenerator {
         const isVersionInfo = this.isVersionInfo(row, col, moduleCount, version);
         // Note: alignment pattern modules are already skipped via drawnAlignmentPatterns set
         const isInAlignmentSet = drawnAlignmentPatterns.has(`${row},${col}`);
-        
+
         // Protection settings
-        const protectFormat = config.protectFormatInfo || false;
-        const protectVersion = config.protectVersionInfo || false;
-        
+        const protectFormat = config.protectFormatInfo;
+        const protectVersion = config.protectVersionInfo;
+
         const applyOverlay =
-          overlayData && 
-          (!config.preserveFinders || !isFinder) && 
-          (!config.preserveTiming || !isTiming) &&
-          (!config.preserveAlignment || !isInAlignmentSet) &&
-          (!protectFormat || !isFormatInfo) &&
-          (!protectVersion || !isVersionInfo);
+          overlayData &&
+          !(config.preserveFinders && isFinder) &&
+          !(config.preserveTiming && isTiming) &&
+          !(config.preserveAlignment && isInAlignmentSet) &&
+          !(protectFormat && isFormatInfo) &&
+          !(protectVersion && isVersionInfo);
 
         let moduleColor = isDark ? config.fgColor : config.bgColor;
         let moduleSizeModifier = 1;
@@ -397,7 +390,7 @@ export class QRGenerator {
           const brightness = overlayData[row][col];
 
           switch (config.overlayMode) {
-            case "halftone":
+            case 'halftone':
               if (isDark) {
                 // Use halftone params if available
                 if (config.halftoneCell || config.halftoneDotShape || config.brightnessCurve) {
@@ -417,21 +410,17 @@ export class QRGenerator {
               }
               break;
 
-            case "blend":
+            case 'blend':
               if (isDark) {
                 const blendColor = overlayData.colors?.[row]?.[col];
                 if (blendColor) {
                   const blendAmount = effectiveIntensity / 100;
-                  moduleColor = blendColors(
-                    config.fgColor,
-                    blendColor,
-                    blendAmount,
-                  );
+                  moduleColor = blendColors(config.fgColor, blendColor, blendAmount);
                 }
               }
               break;
 
-            case "brightness":
+            case 'brightness':
               if (isDark) {
                 const threshold = (100 - effectiveIntensity) / 100;
                 if (brightness > threshold) {
@@ -440,7 +429,7 @@ export class QRGenerator {
               }
               break;
 
-            case "gapfill":
+            case 'gapfill':
               // Fill white spaces with faded image colors
               if (isDark) {
                 moduleColor = config.fgColor;
@@ -449,17 +438,13 @@ export class QRGenerator {
                 const gapColor = overlayData.colors?.[row]?.[col];
                 if (gapColor) {
                   const fadeAmount = (config.overlayIntensity / 100) * 0.4; // Max 40% opacity
-                  moduleColor = blendColors(
-                    config.bgColor,
-                    gapColor,
-                    fadeAmount,
-                  );
+                  moduleColor = blendColors(config.bgColor, gapColor, fadeAmount);
                   shouldDrawCell = true;
                 }
               }
               break;
 
-            case "pixelate":
+            case 'pixelate':
               // True pixelation - 3x3 blocks get same averaged color for chunky pixel look
               if (isDark) {
                 const blockSize = 3;
@@ -469,18 +454,9 @@ export class QRGenerator {
                   avgG = 0,
                   avgB = 0,
                   pixCount = 0;
-                for (
-                  let br = 0;
-                  br < blockSize && blockRow + br < moduleCount;
-                  br++
-                ) {
-                  for (
-                    let bc = 0;
-                    bc < blockSize && blockCol + bc < moduleCount;
-                    bc++
-                  ) {
-                    const c =
-                      overlayData.colors?.[blockRow + br]?.[blockCol + bc];
+                for (let br = 0; br < blockSize && blockRow + br < moduleCount; br++) {
+                  for (let bc = 0; bc < blockSize && blockCol + bc < moduleCount; bc++) {
+                    const c = overlayData.colors?.[blockRow + br]?.[blockCol + bc];
                     if (c) {
                       const parsed = parseColor(c);
                       avgR += parsed.r;
@@ -496,27 +472,27 @@ export class QRGenerator {
                   avgB = Math.round(avgB / pixCount);
                   const blockColor = `rgb(${avgR},${avgG},${avgB})`;
                   const pixBlendAmt = config.overlayIntensity / 100;
-                  moduleColor = blendColors(
-                    config.fgColor,
-                    blockColor,
-                    pixBlendAmt,
-                  );
+                  moduleColor = blendColors(config.fgColor, blockColor, pixBlendAmt);
                 }
               }
               break;
 
-            case "duotone":
+            case 'duotone':
               if (isDark) {
                 // duotoneColors is an array [shadowColor, highlightColor] from the store
                 const duotoneArr = config.duotoneColors || [];
                 const shadowColor = duotoneArr[0] || config.fgColor;
                 const highlightColor = duotoneArr[1] || null;
                 const intensity = config.overlayIntensity / 100;
-                
+
                 if (brightness > 0.5) {
                   // Bright areas get highlight color
                   if (highlightColor) {
-                    moduleColor = blendColors(config.fgColor, highlightColor, intensity * (brightness - 0.5) * 2);
+                    moduleColor = blendColors(
+                      config.fgColor,
+                      highlightColor,
+                      intensity * (brightness - 0.5) * 2
+                    );
                   } else {
                     // Fallback: lighten the foreground color
                     const fgParsed = parseColor(config.fgColor);
@@ -527,36 +503,35 @@ export class QRGenerator {
                   }
                 } else {
                   // Dark areas get shadow color
-                  moduleColor = blendColors(config.fgColor, shadowColor, intensity * (0.5 - brightness) * 2);
-                }
-              }
-              break;
-
-            case "outline":
-              if (isDark) {
-                drawOutlineOnly = true;
-                const outlineColor = overlayData.colors?.[row]?.[col];
-                if (outlineColor) {
-                  const outlineBlend = config.overlayIntensity / 100;
                   moduleColor = blendColors(
                     config.fgColor,
-                    outlineColor,
-                    outlineBlend,
+                    shadowColor,
+                    intensity * (0.5 - brightness) * 2
                   );
                 }
               }
               break;
 
-            case "wave":
+            case 'outline':
               if (isDark) {
-                const waveAmt =
-                  (1 - brightness) * (config.overlayIntensity / 100) * 3;
+                drawOutlineOnly = true;
+                const outlineColor = overlayData.colors?.[row]?.[col];
+                if (outlineColor) {
+                  const outlineBlend = config.overlayIntensity / 100;
+                  moduleColor = blendColors(config.fgColor, outlineColor, outlineBlend);
+                }
+              }
+              break;
+
+            case 'wave':
+              if (isDark) {
+                const waveAmt = (1 - brightness) * (config.overlayIntensity / 100) * 3;
                 waveOffsetX = Math.sin(row * 0.5) * waveAmt;
                 waveOffsetY = Math.cos(col * 0.5) * waveAmt;
               }
               break;
 
-            case "mosaic": {
+            case 'mosaic': {
               // Mosaic fills EVERY cell with image colors - reveals full image
               // Dark modules get actual color, white spaces get lighter version
               shouldDrawCell = true; // Draw all cells
@@ -572,15 +547,9 @@ export class QRGenerator {
                   // White cells get a lighter/brighter version of the image color
                   const parsed = parseColor(mosaicColor);
                   const lightFactor = 0.4 + (1 - intensity) * 0.4;
-                  const lightR = Math.round(
-                    255 - (255 - parsed.r) * lightFactor,
-                  );
-                  const lightG = Math.round(
-                    255 - (255 - parsed.g) * lightFactor,
-                  );
-                  const lightB = Math.round(
-                    255 - (255 - parsed.b) * lightFactor,
-                  );
+                  const lightR = Math.round(255 - (255 - parsed.r) * lightFactor);
+                  const lightG = Math.round(255 - (255 - parsed.g) * lightFactor);
+                  const lightB = Math.round(255 - (255 - parsed.b) * lightFactor);
                   moduleColor = `rgb(${lightR},${lightG},${lightB})`;
                 }
               }
@@ -592,10 +561,15 @@ export class QRGenerator {
         if (shouldDrawCell && moduleOpacity > 0) {
           ctx.save();
           ctx.globalAlpha = moduleOpacity;
-          
+
           // Apply per-module color mode
           let finalModuleColor = moduleColor;
-          if (isDark && config.perModuleColorMode && config.perModuleColorMode !== 'solid' && overlayData) {
+          if (
+            isDark &&
+            config.perModuleColorMode &&
+            config.perModuleColorMode !== 'solid' &&
+            overlayData
+          ) {
             finalModuleColor = this._applyPerModuleColor(
               config.perModuleColorMode,
               moduleColor,
@@ -606,13 +580,20 @@ export class QRGenerator {
               config
             );
           }
-          
+
           // Apply palette coloring if palette is provided
           const paletteBrightness = overlayData?.[row]?.[col] ?? 0.5;
           if (isDark && config.palette && config.palette.length > 0) {
-            finalModuleColor = this._applyPaletteColor(row, col, moduleCount, paletteBrightness, config.palette, config);
+            finalModuleColor = this._applyPaletteColor(
+              row,
+              col,
+              moduleCount,
+              paletteBrightness,
+              config.palette,
+              config
+            );
           }
-          
+
           // Apply contrast guard if enabled
           if (isDark && config.contrastGuard && config.minContrastRatio) {
             finalModuleColor = this._ensureContrast(
@@ -621,10 +602,10 @@ export class QRGenerator {
               config.minContrastRatio
             );
           }
-          
+
           // Note: colorCycle is now applied as post-processing in useQRGenerator.ts
           // using the applyColorCycle function from animation.ts for better results
-          
+
           // Use gradient for dark modules if configured, otherwise use module color
           if (isDark && useGradient) {
             ctx.fillStyle = gradientFill;
@@ -632,10 +613,8 @@ export class QRGenerator {
             ctx.fillStyle = finalModuleColor;
           }
 
-          let gap = config.moduleGap
-            ? (moduleSize * config.moduleGap) / 100
-            : 0;
-          
+          let gap = config.moduleGap ? (moduleSize * config.moduleGap) / 100 : 0;
+
           // Apply gap mode
           const gapMode = config.gapMode || 'none';
           let strokeWidth = 0;
@@ -650,13 +629,13 @@ export class QRGenerator {
             // Negative space: larger gaps for artistic effect
             gap = Math.max(gap, moduleSize * 0.2);
           }
-          
+
           const adjustedSize = (moduleSize - gap) * moduleSizeModifier;
           const offset = (moduleSize - adjustedSize) / 2;
 
           let drawX = x + offset + waveOffsetX;
           let drawY = y + offset + waveOffsetY;
-          
+
           // Apply module jitter if configured (for animation effects)
           if (config.moduleJitterPx && config.moduleJitterPx > 0) {
             // Use deterministic jitter based on row, col, and frame index for consistency
@@ -666,7 +645,7 @@ export class QRGenerator {
             drawX += jitterX;
             drawY += jitterY;
           }
-          
+
           // Apply pixel snap if configured
           const pixelSnap = config.pixelSnap || 'floor';
           if (pixelSnap === 'floor') {
@@ -683,7 +662,12 @@ export class QRGenerator {
           if (drawOutlineOnly || (gapMode === 'stroke' && isDark)) {
             ctx.strokeStyle = finalModuleColor;
             ctx.lineWidth = strokeWidth || 1;
-            ctx.strokeRect(drawX + ctx.lineWidth/2, drawY + ctx.lineWidth/2, adjustedSize - ctx.lineWidth, adjustedSize - ctx.lineWidth);
+            ctx.strokeRect(
+              drawX + ctx.lineWidth / 2,
+              drawY + ctx.lineWidth / 2,
+              adjustedSize - ctx.lineWidth,
+              adjustedSize - ctx.lineWidth
+            );
           } else if (useHalftoneRendering && isDark) {
             // Use advanced halftone rendering with htDot/htCurve params
             this._drawHalftoneModule(ctx, drawX, drawY, adjustedSize, halftoneBrightness, config);
@@ -691,14 +675,10 @@ export class QRGenerator {
             // Draw timing pattern module with timing style
             this.drawTimingModule(ctx, drawX, drawY, adjustedSize, timingStyle, config);
           } else {
-            this.drawModule(
-              ctx,
-              drawX,
-              drawY,
-              adjustedSize,
-              config.moduleStyle,
-              { cornerRadius, rotation: dotRotation }
-            );
+            this.drawModule(ctx, drawX, drawY, adjustedSize, config.moduleStyle, {
+              cornerRadius,
+              rotation: dotRotation,
+            });
           }
 
           ctx.restore();
@@ -707,7 +687,7 @@ export class QRGenerator {
     }
 
     // Draw center logo if in center mode
-    if (processedOverlayCanvas && config.overlayMode === "center") {
+    if (processedOverlayCanvas && config.overlayMode === 'center') {
       this.drawCenterLogo(ctx, processedOverlayCanvas, size, config.logoSize);
     }
 
@@ -724,31 +704,31 @@ export class QRGenerator {
     if (cached !== undefined) {
       return cached;
     }
-    
+
     const capacities = {
       L: [
-        17, 32, 53, 78, 106, 134, 154, 192, 230, 271, 321, 367, 425, 458, 520,
-        586, 644, 718, 792, 858, 929, 1003, 1091, 1171, 1273, 1367, 1465, 1528,
-        1628, 1732, 1840, 1952, 2068, 2188, 2303, 2431, 2563, 2699, 2809, 2953,
+        17, 32, 53, 78, 106, 134, 154, 192, 230, 271, 321, 367, 425, 458, 520, 586, 644, 718, 792,
+        858, 929, 1003, 1091, 1171, 1273, 1367, 1465, 1528, 1628, 1732, 1840, 1952, 2068, 2188,
+        2303, 2431, 2563, 2699, 2809, 2953,
       ],
       M: [
-        14, 26, 42, 62, 84, 106, 122, 152, 180, 213, 251, 287, 331, 362, 412,
-        450, 504, 560, 624, 666, 711, 779, 857, 911, 997, 1059, 1125, 1190,
-        1264, 1370, 1452, 1538, 1628, 1722, 1809, 1911, 1989, 2099, 2213, 2331,
+        14, 26, 42, 62, 84, 106, 122, 152, 180, 213, 251, 287, 331, 362, 412, 450, 504, 560, 624,
+        666, 711, 779, 857, 911, 997, 1059, 1125, 1190, 1264, 1370, 1452, 1538, 1628, 1722, 1809,
+        1911, 1989, 2099, 2213, 2331,
       ],
       Q: [
-        11, 20, 32, 46, 60, 74, 86, 108, 130, 151, 177, 203, 241, 258, 292, 322,
-        364, 394, 442, 482, 509, 565, 611, 661, 715, 751, 805, 868, 908, 982,
-        1030, 1112, 1168, 1228, 1283, 1351, 1423, 1499, 1579, 1663,
+        11, 20, 32, 46, 60, 74, 86, 108, 130, 151, 177, 203, 241, 258, 292, 322, 364, 394, 442, 482,
+        509, 565, 611, 661, 715, 751, 805, 868, 908, 982, 1030, 1112, 1168, 1228, 1283, 1351, 1423,
+        1499, 1579, 1663,
       ],
       H: [
-        7, 14, 24, 34, 44, 58, 64, 84, 98, 119, 137, 155, 177, 194, 220, 250,
-        280, 310, 338, 382, 403, 439, 461, 511, 535, 593, 625, 658, 698, 742,
-        790, 842, 898, 958, 983, 1051, 1093, 1139, 1219, 1273,
+        7, 14, 24, 34, 44, 58, 64, 84, 98, 119, 137, 155, 177, 194, 220, 250, 280, 310, 338, 382,
+        403, 439, 461, 511, 535, 593, 625, 658, 698, 742, 790, 842, 898, 958, 983, 1051, 1093, 1139,
+        1219, 1273,
       ],
     };
 
-    const caps = capacities[errorCorrection] || capacities["Q"];
+    const caps = capacities[errorCorrection] || capacities.Q;
     const len = content.length;
 
     let result = 40;
@@ -854,17 +834,14 @@ export class QRGenerator {
     if (row === moduleCount - 8 && col === 8) return true;
     // Version info (version 7+)
     if (version >= 7) {
-      if (row >= moduleCount - 11 && row < moduleCount - 8 && col < 6)
-        return true;
-      if (col >= moduleCount - 11 && col < moduleCount - 8 && row < 6)
-        return true;
+      if (row >= moduleCount - 11 && row < moduleCount - 8 && col < 6) return true;
+      if (col >= moduleCount - 11 && col < moduleCount - 8 && row < 6) return true;
     }
     // Alignment patterns (version 2+)
     if (version >= 2) {
       const positions = this.getAlignmentPositions(version, moduleCount);
       for (const pos of positions) {
-        if (Math.abs(row - pos.row) <= 2 && Math.abs(col - pos.col) <= 2)
-          return true;
+        if (Math.abs(row - pos.row) <= 2 && Math.abs(col - pos.col) <= 2) return true;
       }
     }
     return false;
@@ -872,14 +849,14 @@ export class QRGenerator {
 
   getAlignmentPositions(version, moduleCount) {
     if (version < 2) return [];
-    
+
     // Check cache first (called multiple times per render)
     const cacheKey = `${version}:${moduleCount}`;
     const cached = alignmentCache.get(cacheKey);
     if (cached !== undefined) {
       return cached;
     }
-    
+
     const table = {
       2: [6, 18],
       3: [6, 22],
@@ -931,7 +908,7 @@ export class QRGenerator {
         positions.push({ row: r, col: c });
       }
     }
-    
+
     // Cache the result
     alignmentCache.set(cacheKey, positions);
     return positions;
@@ -940,7 +917,7 @@ export class QRGenerator {
   applyTrueDither(qr, overlayData, config, extremeMode = false) {
     const moduleCount = qr.getModuleCount();
     const version = config.typeNumber || Math.ceil((moduleCount - 17) / 4);
-    
+
     // ECC-aware mode tracking
     const eccAware = config.eccAwareEnabled === true;
     let totalModifiedCount = 0;
@@ -984,10 +961,20 @@ export class QRGenerator {
 
           // Desired state based on image
           const desiredDark = brightness < 0.5;
-          
+
           // ECC-aware check
           if (eccAware && desiredDark !== modifiedPattern[row][col]) {
-            if (!this._isEccSafeToModify(row, col, moduleCount, version, config, totalModifiedCount, totalDataModules)) {
+            if (
+              !this._isEccSafeToModify(
+                row,
+                col,
+                moduleCount,
+                version,
+                config,
+                totalModifiedCount,
+                totalDataModules
+              )
+            ) {
               continue; // Skip this modification
             }
             totalModifiedCount++;
@@ -1048,8 +1035,8 @@ export class QRGenerator {
    */
   _createSeededRandom(seed) {
     let state = seed >>> 0; // Ensure unsigned 32-bit integer
-    return function() {
-      state = (state + 0x6D2B79F5) >>> 0;
+    return () => {
+      state = (state + 0x6d2b79f5) >>> 0;
       let t = state;
       t = Math.imul(t ^ (t >>> 15), t | 1);
       t ^= t + Math.imul(t ^ (t >>> 7), t | 61);
@@ -1064,7 +1051,7 @@ export class QRGenerator {
   _hashString(str) {
     let hash = 5381;
     for (let i = 0; i < str.length; i++) {
-      hash = ((hash << 5) + hash) + str.charCodeAt(i);
+      hash = (hash << 5) + hash + str.charCodeAt(i);
       hash = hash >>> 0; // Keep as unsigned 32-bit
     }
     return hash;
@@ -1080,32 +1067,32 @@ export class QRGenerator {
       const ctx = canvas.getContext('2d');
       const width = canvas.width;
       const height = canvas.height;
-      
+
       // Get full image data once (much faster than N² getImageData calls)
       const imageData = ctx.getImageData(0, 0, width, height);
       const data = imageData.data;
-      
+
       // Sample a small grid of pixels for speed (8x8 = 64 samples)
       const sampleSize = 8;
       const stepX = Math.max(1, Math.floor(width / sampleSize));
       const stepY = Math.max(1, Math.floor(height / sampleSize));
-      
+
       let hash = 5381;
-      
+
       for (let y = 0; y < height; y += stepY) {
         for (let x = 0; x < width; x += stepX) {
           // Calculate pixel index in the flat data array (RGBA = 4 bytes per pixel)
           const idx = (y * width + x) * 4;
           // Combine RGB values into hash (skip alpha)
-          hash = ((hash << 5) + hash) + data[idx];
-          hash = ((hash << 5) + hash) + data[idx + 1];
-          hash = ((hash << 5) + hash) + data[idx + 2];
+          hash = (hash << 5) + hash + data[idx];
+          hash = (hash << 5) + hash + data[idx + 1];
+          hash = (hash << 5) + hash + data[idx + 2];
           hash = hash >>> 0;
         }
       }
-      
+
       return hash.toString(16);
-    } catch (e) {
+    } catch (_e) {
       // Fallback to dimensions-only if getImageData fails
       return `${canvas.width}x${canvas.height}`;
     }
@@ -1118,14 +1105,14 @@ export class QRGenerator {
     const { cornerRadius = 0, rotation = 0 } = options;
     const padding = size * 0.05;
     const innerSize = size - padding * 2;
-    
+
     // Calculate corner radius based on percentage
     const radiusPercent = cornerRadius / 100;
     const maxRadius = innerSize / 2;
     const actualRadius = maxRadius * radiusPercent;
 
     ctx.save();
-    
+
     // Apply rotation around center if specified
     if (rotation !== 0) {
       const centerX = x + size / 2;
@@ -1136,27 +1123,21 @@ export class QRGenerator {
     }
 
     switch (style) {
-      case "rounded":
+      case 'rounded': {
         // Use cornerRadius if specified, otherwise default rounded
         const roundedRadius = actualRadius > 0 ? actualRadius : size * 0.3;
-        this.roundRect(
-          ctx,
-          x + padding,
-          y + padding,
-          innerSize,
-          innerSize,
-          roundedRadius,
-        );
+        this.roundRect(ctx, x + padding, y + padding, innerSize, innerSize, roundedRadius);
         ctx.fill();
         break;
+      }
 
-      case "dots":
+      case 'dots':
         ctx.beginPath();
         ctx.arc(x + size / 2, y + size / 2, innerSize / 2, 0, Math.PI * 2);
         ctx.fill();
         break;
 
-      case "diamond":
+      case 'diamond':
         ctx.beginPath();
         ctx.moveTo(x + size / 2, y + padding);
         ctx.lineTo(x + size - padding, y + size / 2);
@@ -1166,7 +1147,7 @@ export class QRGenerator {
         ctx.fill();
         break;
 
-      case "connected":
+      case 'connected':
         // Draw full rectangle with no gaps for connected look
         if (actualRadius > 0) {
           this.roundRect(ctx, x, y, size, size, actualRadius);
@@ -1175,8 +1156,6 @@ export class QRGenerator {
           ctx.fillRect(x, y, size, size);
         }
         break;
-
-      case "square":
       default:
         if (actualRadius > 0) {
           this.roundRect(ctx, x + padding, y + padding, innerSize, innerSize, actualRadius);
@@ -1186,7 +1165,7 @@ export class QRGenerator {
         }
         break;
     }
-    
+
     ctx.restore();
   }
 
@@ -1197,21 +1176,20 @@ export class QRGenerator {
     const radiusPercent = cornerRadius / 100;
     const maxRadius = size / 2;
     const actualRadius = maxRadius * radiusPercent;
-    
+
     switch (style) {
-      case "rounded":
+      case 'rounded': {
         const roundedRadius = actualRadius > 0 ? actualRadius : size * 0.2;
         this.roundRect(ctx, x, y, size, size, roundedRadius);
         ctx.fill();
         break;
+      }
 
-      case "circle":
+      case 'circle':
         ctx.beginPath();
         ctx.arc(x + size / 2, y + size / 2, size / 2, 0, Math.PI * 2);
         ctx.fill();
         break;
-
-      case "square":
       default:
         if (actualRadius > 0) {
           this.roundRect(ctx, x, y, size, size, actualRadius);
@@ -1231,30 +1209,44 @@ export class QRGenerator {
     const innerStyle = config.eyeInnerStyle || config.finderStyle || 'square';
     const scale = (config.eyeScale || 100) / 100;
     const cornerRadius = config.cornerRadius || 0;
-    
+
     // Finder pattern is 7x7 modules
     // Outer: 7x7, Middle (white): 5x5, Inner: 3x3
     const outerSize = 7 * moduleSize * scale;
     const middleSize = 5 * moduleSize * scale;
     const innerSize = 3 * moduleSize * scale;
-    
+
     const outerOffset = (7 * moduleSize - outerSize) / 2;
     const x = centerX + outerOffset;
     const y = centerY + outerOffset;
-    
+
     // Draw outer (dark)
     ctx.fillStyle = config.fgColor;
     this.drawFinderModule(ctx, x, y, outerSize, outerStyle, cornerRadius);
-    
+
     // Draw middle (light/background)
     ctx.fillStyle = config.bgColor;
     const middleOffset = (outerSize - middleSize) / 2;
-    this.drawFinderModule(ctx, x + middleOffset, y + middleOffset, middleSize, outerStyle, cornerRadius);
-    
+    this.drawFinderModule(
+      ctx,
+      x + middleOffset,
+      y + middleOffset,
+      middleSize,
+      outerStyle,
+      cornerRadius
+    );
+
     // Draw inner (dark)
     ctx.fillStyle = config.fgColor;
     const innerOffset = (outerSize - innerSize) / 2;
-    this.drawFinderModule(ctx, x + innerOffset, y + innerOffset, innerSize, innerStyle, cornerRadius);
+    this.drawFinderModule(
+      ctx,
+      x + innerOffset,
+      y + innerOffset,
+      innerSize,
+      innerStyle,
+      cornerRadius
+    );
   }
 
   /**
@@ -1262,29 +1254,29 @@ export class QRGenerator {
    */
   drawAlignmentPattern(ctx, centerX, centerY, moduleSize, style, config) {
     const cornerRadius = config.cornerRadius || 0;
-    
+
     // Alignment pattern is 5x5 modules
     // Outer: 5x5, Middle (white): 3x3, Inner: 1x1
     const outerSize = 5 * moduleSize;
     const middleSize = 3 * moduleSize;
     const innerSize = 1 * moduleSize;
-    
+
     const x = centerX - outerSize / 2;
     const y = centerY - outerSize / 2;
-    
+
     // Use the specified style or match finder style
-    const effectiveStyle = style === 'match_finder' ? (config.finderStyle || 'square') : style;
-    
+    const effectiveStyle = style === 'match_finder' ? config.finderStyle || 'square' : style;
+
     // Draw outer (dark)
     ctx.fillStyle = config.fgColor;
     this.drawFinderModule(ctx, x, y, outerSize, effectiveStyle, cornerRadius);
-    
+
     // Draw middle (light/background)
     ctx.fillStyle = config.bgColor;
     const middleX = centerX - middleSize / 2;
     const middleY = centerY - middleSize / 2;
     this.drawFinderModule(ctx, middleX, middleY, middleSize, effectiveStyle, cornerRadius);
-    
+
     // Draw inner (dark)
     ctx.fillStyle = config.fgColor;
     const innerX = centerX - innerSize / 2;
@@ -1297,20 +1289,21 @@ export class QRGenerator {
    */
   drawTimingModule(ctx, x, y, size, style, config) {
     const cornerRadius = config.cornerRadius || 0;
-    
+
     // Use the specified style or match module style
-    const effectiveStyle = style === 'match_module' ? (config.moduleStyle || 'square') : style;
-    
+    const effectiveStyle = style === 'match_module' ? config.moduleStyle || 'square' : style;
+
     switch (effectiveStyle) {
       case 'solid':
         ctx.fillRect(x, y, size, size);
         break;
-      case 'dashed':
+      case 'dashed': {
         // Draw a smaller centered rectangle for dashed look
         const dashSize = size * 0.7;
         const offset = (size - dashSize) / 2;
         ctx.fillRect(x + offset, y + offset, dashSize, dashSize);
         break;
+      }
       default:
         // Use regular module drawing
         this.drawModule(ctx, x, y, size, effectiveStyle, { cornerRadius });
@@ -1324,19 +1317,19 @@ export class QRGenerator {
     if (!config.gradient || config.gradient.type === 'none') {
       return config.fgColor;
     }
-    
+
     const { type, stops, centerX = 0.5, centerY = 0.5 } = config.gradient;
     const angle = config.gradient.angle || 0;
     let gradient;
-    
+
     switch (type) {
       case 'linear': {
         // Convert angle to start/end points
         const angleRad = (angle * Math.PI) / 180;
-        const x1 = size / 2 - Math.cos(angleRad) * size / 2;
-        const y1 = size / 2 - Math.sin(angleRad) * size / 2;
-        const x2 = size / 2 + Math.cos(angleRad) * size / 2;
-        const y2 = size / 2 + Math.sin(angleRad) * size / 2;
+        const x1 = size / 2 - (Math.cos(angleRad) * size) / 2;
+        const y1 = size / 2 - (Math.sin(angleRad) * size) / 2;
+        const x2 = size / 2 + (Math.cos(angleRad) * size) / 2;
+        const y2 = size / 2 + (Math.sin(angleRad) * size) / 2;
         gradient = ctx.createLinearGradient(x1, y1, x2, y2);
         break;
       }
@@ -1357,10 +1350,10 @@ export class QRGenerator {
       default:
         return config.fgColor;
     }
-    
+
     // Add color stops
     if (stops && stops.length > 0) {
-      stops.forEach(stop => {
+      stops.forEach((stop) => {
         gradient.addColorStop(stop.pos, stop.color);
       });
     } else {
@@ -1368,7 +1361,7 @@ export class QRGenerator {
       gradient.addColorStop(0, config.fgColor);
       gradient.addColorStop(1, config.bgColor);
     }
-    
+
     return gradient;
   }
 
@@ -1378,13 +1371,13 @@ export class QRGenerator {
   drawFrame(ctx, size, moduleSize, margin, config) {
     const frameStyle = config.frameStyle;
     if (!frameStyle || frameStyle === 'none') return;
-    
+
     const frameText = config.frameText || '';
     const qrSize = size - margin * 2 * moduleSize - (frameText ? moduleSize * 4 : 0);
     const qrStart = margin * moduleSize;
-    
+
     ctx.save();
-    
+
     switch (frameStyle) {
       case 'rounded_frame': {
         // Draw rounded rectangle frame around QR
@@ -1402,14 +1395,14 @@ export class QRGenerator {
         ctx.stroke();
         break;
       }
-      
+
       case 'sticker': {
         // Draw sticker-style background with shadow
         ctx.shadowColor = 'rgba(0,0,0,0.2)';
         ctx.shadowBlur = moduleSize * 2;
         ctx.shadowOffsetX = moduleSize * 0.5;
         ctx.shadowOffsetY = moduleSize * 0.5;
-        
+
         ctx.fillStyle = config.bgColor;
         const stickerPadding = moduleSize * 1.5;
         this.roundRect(
@@ -1424,7 +1417,7 @@ export class QRGenerator {
         ctx.shadowColor = 'transparent';
         break;
       }
-      
+
       case 'tag': {
         // Draw tag-style frame with pointed end
         ctx.fillStyle = config.fgColor;
@@ -1433,13 +1426,18 @@ export class QRGenerator {
         const tagHeight = qrSize + tagPadding * 2 + (frameText ? moduleSize * 4 : 0);
         const tagX = qrStart - tagPadding;
         const tagY = qrStart - tagPadding;
-        
+
         ctx.beginPath();
         ctx.moveTo(tagX + moduleSize, tagY);
         ctx.lineTo(tagX + tagWidth - moduleSize, tagY);
         ctx.quadraticCurveTo(tagX + tagWidth, tagY, tagX + tagWidth, tagY + moduleSize);
         ctx.lineTo(tagX + tagWidth, tagY + tagHeight - moduleSize);
-        ctx.quadraticCurveTo(tagX + tagWidth, tagY + tagHeight, tagX + tagWidth - moduleSize, tagY + tagHeight);
+        ctx.quadraticCurveTo(
+          tagX + tagWidth,
+          tagY + tagHeight,
+          tagX + tagWidth - moduleSize,
+          tagY + tagHeight
+        );
         ctx.lineTo(tagX + moduleSize, tagY + tagHeight);
         ctx.quadraticCurveTo(tagX, tagY + tagHeight, tagX, tagY + tagHeight - moduleSize);
         ctx.lineTo(tagX, tagY + moduleSize);
@@ -1449,7 +1447,7 @@ export class QRGenerator {
         break;
       }
     }
-    
+
     // Draw frame text if provided
     if (frameText) {
       ctx.fillStyle = config.fgColor;
@@ -1459,7 +1457,7 @@ export class QRGenerator {
       const textY = qrStart + qrSize + moduleSize * 1.5;
       ctx.fillText(frameText, size / 2, textY);
     }
-    
+
     ctx.restore();
   }
 
@@ -1483,7 +1481,14 @@ export class QRGenerator {
    * This is 10-50x faster than preprocessing at full resolution.
    * @private
    */
-  async _getOverlayData(overlayCanvas, moduleCount, colorMode = "color", invertImage = false, frameIndex = 0, config = {}) {
+  async _getOverlayData(
+    overlayCanvas,
+    moduleCount,
+    colorMode = 'color',
+    invertImage = false,
+    frameIndex = 0,
+    config = {}
+  ) {
     // Create cache key based on canvas identity, content hash, and parameters
     // Include frameIndex to ensure different animation frames aren't cached together
     // Use content hash to disambiguate different images with same dimensions
@@ -1491,15 +1496,15 @@ export class QRGenerator {
     const canvasKey = `${overlayCanvas.width}x${overlayCanvas.height}:${contentHash}`;
     const preprocessKey = `${config.overlayBrightness || 0}:${config.overlayContrast || 0}:${config.overlayGamma || 1}:${config.overlaySaturation || 0}:${config.overlayHueRotate || 0}:${invertImage}`;
     const cacheKey = `${canvasKey}:${moduleCount}:${colorMode}:${preprocessKey}:${frameIndex}`;
-    
+
     // Check if we have this exact configuration cached
     const cached = overlayDataCache.get(cacheKey);
     if (cached !== undefined) {
       return cached;
     }
-    
+
     const tempCanvas = await this._createCanvas(moduleCount, moduleCount);
-    const ctx = tempCanvas.getContext("2d");
+    const ctx = tempCanvas.getContext('2d');
 
     // STEP 1: Downscale to moduleCount FIRST (this is the key optimization)
     ctx.drawImage(overlayCanvas, 0, 0, moduleCount, moduleCount);
@@ -1507,23 +1512,27 @@ export class QRGenerator {
     // STEP 2: Apply preprocessing on the SMALL image (O(moduleCount^2) instead of O(overlay_width*height))
     const imageData = ctx.getImageData(0, 0, moduleCount, moduleCount);
     const data = imageData.data;
-    
+
     // Apply per-pixel preprocessing at moduleCount resolution
     const brightness_adj = config.overlayBrightness || 0;
     const contrast_adj = config.overlayContrast || 0;
     const gamma_adj = config.overlayGamma || 1;
     const saturation_adj = config.overlaySaturation || 0;
     const hueRotate_adj = config.overlayHueRotate || 0;
-    const needsPreprocess = brightness_adj !== 0 || contrast_adj !== 0 || 
-                           gamma_adj !== 1 || saturation_adj !== 0 || 
-                           hueRotate_adj !== 0 || invertImage;
-    
+    const needsPreprocess =
+      brightness_adj !== 0 ||
+      contrast_adj !== 0 ||
+      gamma_adj !== 1 ||
+      saturation_adj !== 0 ||
+      hueRotate_adj !== 0 ||
+      invertImage;
+
     if (needsPreprocess) {
       for (let i = 0; i < data.length; i += 4) {
         let r = data[i];
         let g = data[i + 1];
         let b = data[i + 2];
-        
+
         // Brightness
         if (brightness_adj !== 0) {
           const factor = brightness_adj * 2.55;
@@ -1531,7 +1540,7 @@ export class QRGenerator {
           g = Math.max(0, Math.min(255, g + factor));
           b = Math.max(0, Math.min(255, b + factor));
         }
-        
+
         // Contrast
         if (contrast_adj !== 0) {
           const factor = (259 * (contrast_adj + 255)) / (255 * (259 - contrast_adj));
@@ -1539,15 +1548,15 @@ export class QRGenerator {
           g = Math.max(0, Math.min(255, factor * (g - 128) + 128));
           b = Math.max(0, Math.min(255, factor * (b - 128) + 128));
         }
-        
+
         // Gamma
         if (gamma_adj !== 1) {
           const gammaCorrection = 1 / gamma_adj;
-          r = 255 * Math.pow(r / 255, gammaCorrection);
-          g = 255 * Math.pow(g / 255, gammaCorrection);
-          b = 255 * Math.pow(b / 255, gammaCorrection);
+          r = 255 * (r / 255) ** gammaCorrection;
+          g = 255 * (g / 255) ** gammaCorrection;
+          b = 255 * (b / 255) ** gammaCorrection;
         }
-        
+
         // Saturation
         if (saturation_adj !== 0) {
           const gray = r * 0.299 + g * 0.587 + b * 0.114;
@@ -1556,33 +1565,36 @@ export class QRGenerator {
           g = Math.max(0, Math.min(255, gray + factor * (g - gray)));
           b = Math.max(0, Math.min(255, gray + factor * (b - gray)));
         }
-        
+
         // Hue rotation
         if (hueRotate_adj !== 0) {
           const angle = (hueRotate_adj * Math.PI) / 180;
           const cos = Math.cos(angle);
           const sin = Math.sin(angle);
-          const newR = r * (0.213 + cos * 0.787 - sin * 0.213) + 
-                       g * (0.715 - cos * 0.715 - sin * 0.715) + 
-                       b * (0.072 - cos * 0.072 + sin * 0.928);
-          const newG = r * (0.213 - cos * 0.213 + sin * 0.143) + 
-                       g * (0.715 + cos * 0.285 + sin * 0.14) + 
-                       b * (0.072 - cos * 0.072 - sin * 0.283);
-          const newB = r * (0.213 - cos * 0.213 - sin * 0.787) + 
-                       g * (0.715 - cos * 0.715 + sin * 0.715) + 
-                       b * (0.072 + cos * 0.928 + sin * 0.072);
+          const newR =
+            r * (0.213 + cos * 0.787 - sin * 0.213) +
+            g * (0.715 - cos * 0.715 - sin * 0.715) +
+            b * (0.072 - cos * 0.072 + sin * 0.928);
+          const newG =
+            r * (0.213 - cos * 0.213 + sin * 0.143) +
+            g * (0.715 + cos * 0.285 + sin * 0.14) +
+            b * (0.072 - cos * 0.072 - sin * 0.283);
+          const newB =
+            r * (0.213 - cos * 0.213 - sin * 0.787) +
+            g * (0.715 - cos * 0.715 + sin * 0.715) +
+            b * (0.072 + cos * 0.928 + sin * 0.072);
           r = Math.max(0, Math.min(255, newR));
           g = Math.max(0, Math.min(255, newG));
           b = Math.max(0, Math.min(255, newB));
         }
-        
+
         // Invert
         if (invertImage) {
           r = 255 - r;
           g = 255 - g;
           b = 255 - b;
         }
-        
+
         data[i] = Math.round(r);
         data[i + 1] = Math.round(g);
         data[i + 2] = Math.round(b);
@@ -1606,10 +1618,10 @@ export class QRGenerator {
         const gray = Math.round(r * 0.299 + g * 0.587 + b * 0.114);
         brightness[row][col] = gray / 255;
 
-        if (colorMode === "bw") {
+        if (colorMode === 'bw') {
           const bw = gray > 127 ? 255 : 0;
           colors[row][col] = `rgb(${bw},${bw},${bw})`;
-        } else if (colorMode === "grayscale") {
+        } else if (colorMode === 'grayscale') {
           colors[row][col] = `rgb(${gray},${gray},${gray})`;
         } else {
           colors[row][col] = `rgb(${r},${g},${b})`;
@@ -1618,10 +1630,10 @@ export class QRGenerator {
     }
 
     brightness.colors = colors;
-    
+
     // Cache the result
     overlayDataCache.set(cacheKey, brightness);
-    
+
     return brightness;
   }
 
@@ -1632,7 +1644,7 @@ export class QRGenerator {
     const x = (canvasSize - logoSize) / 2;
     const y = (canvasSize - logoSize) / 2;
 
-    ctx.fillStyle = "#ffffff";
+    ctx.fillStyle = '#ffffff';
     ctx.fillRect(x - 4, y - 4, logoSize + 8, logoSize + 8);
 
     ctx.drawImage(logoCanvas, x, y, logoSize, logoSize);
@@ -1660,7 +1672,7 @@ export class QRGenerator {
     });
 
     const { matrix: baseMatrix, moduleCount: scaledSize } = qrResult;
-    
+
     // Apply dithering with overlay
     const ditheredResult = await this._applyDitherToMatrix(
       baseMatrix,
@@ -1668,7 +1680,7 @@ export class QRGenerator {
       scale,
       overlayCanvas,
       config.overlayIntensity,
-      config.colorMode || "color"
+      config.colorMode || 'color'
     );
 
     const { matrix: dithered, colors } = ditheredResult;
@@ -1676,7 +1688,7 @@ export class QRGenerator {
     // Safety: if the QR library picked a different version than our current `qr`
     // instance, use the matrix size to drive rendering.
     const scaledCount = dithered.length;
-    const derivedModuleCount = Math.round(scaledCount / scale);
+    const _derivedModuleCount = Math.round(scaledCount / scale);
     const marginModules = Math.max(5, config.margin);
     // For scannability: keep an integer subpixel size (avoid fractional canvas coords)
     // and ensure a full quiet zone (>= 4 modules; we use 5 here, matching the reference).
@@ -1687,7 +1699,7 @@ export class QRGenerator {
     const pixelSize = subPixelSize;
 
     const canvas = await this._createCanvas(size, size);
-    const ctx = canvas.getContext("2d");
+    const ctx = canvas.getContext('2d');
 
     // Keep edges crisp (critical for QR scanning)
     ctx.imageSmoothingEnabled = false;
@@ -1698,7 +1710,7 @@ export class QRGenerator {
     }
 
     // Determine if we should use color rendering
-    const useColorRendering = overlayCanvas && config.colorMode !== "bw";
+    const useColorRendering = overlayCanvas && config.colorMode !== 'bw';
 
     for (let y = 0; y < scaledCount; y++) {
       for (let x = 0; x < scaledCount; x++) {
@@ -1707,7 +1719,7 @@ export class QRGenerator {
 
         // Skip white/light pixels in the background (they're already the bg color)
         // unless we're doing color rendering with non-black/white colors
-        if (!isDark && !useColorRendering) continue;
+        if (!(isDark || useColorRendering)) continue;
 
         const dx = marginPx + x * pixelSize;
         const dy = marginPx + y * pixelSize;
@@ -1753,7 +1765,7 @@ export class QRGenerator {
       scale,
       overlayCanvas,
       overlayIntensity: config.overlayIntensity,
-      colorMode: config.colorMode || "color",
+      colorMode: config.colorMode || 'color',
       canvasFactory: this._canvasFactory,
     });
 
@@ -1769,7 +1781,7 @@ export class QRGenerator {
 
     // Render to a single canvas
     const canvas = await this._createCanvas(size, size);
-    const ctx = canvas.getContext("2d");
+    const ctx = canvas.getContext('2d');
 
     ctx.imageSmoothingEnabled = false;
 
@@ -1778,7 +1790,7 @@ export class QRGenerator {
       ctx.fillRect(0, 0, size, size);
     }
 
-    const useColorRendering = overlayCanvas && config.colorMode !== "bw";
+    const useColorRendering = overlayCanvas && config.colorMode !== 'bw';
 
     for (let y = 0; y < scaledCount; y++) {
       for (let x = 0; x < scaledCount; x++) {
@@ -1786,7 +1798,7 @@ export class QRGenerator {
         const color = colors[y][x];
 
         // Skip white/light pixels unless doing color rendering
-        if (!isDark && !useColorRendering) continue;
+        if (!(isDark || useColorRendering)) continue;
 
         const dx = marginPx + x * pixelSize;
         const dy = marginPx + y * pixelSize;
@@ -1815,16 +1827,10 @@ export class QRGenerator {
    * - 8 SURROUNDING pixels = freely show overlay image
    * This allows ~89% of pixels to show the image while maintaining 100% scannability
    */
-  async generateSubpixelQR(
-    qr,
-    config,
-    overlayCanvas,
-    moduleCount,
-    useHalftoneCenter = false,
-  ) {
+  async generateSubpixelQR(qr, config, overlayCanvas, moduleCount, useHalftoneCenter = false) {
     // Get subpixel grid size from config (2x2, 3x3, or 4x4)
     const gridSizeStr = config.subpixelGridSize || '3x3';
-    const subpixelSize = parseInt(gridSizeStr.charAt(0)) || 3; // Each module is NxN subpixels
+    const subpixelSize = parseInt(gridSizeStr.charAt(0), 10) || 3; // Each module is NxN subpixels
     const margin = config.margin;
     const pixelSize = config.moduleSize / subpixelSize; // Size of each subpixel
 
@@ -1834,7 +1840,7 @@ export class QRGenerator {
     const size = canvasModules * pixelSize + marginPixels * 2;
 
     const canvas = await this._createCanvas(size, size);
-    const ctx = canvas.getContext("2d");
+    const ctx = canvas.getContext('2d');
 
     // Keep edges crisp (critical for QR scanning)
     ctx.imageSmoothingEnabled = false;
@@ -1849,10 +1855,16 @@ export class QRGenerator {
     const overlayData = await this._getSubpixelOverlayData(
       overlayCanvas,
       moduleCount * subpixelSize,
-      config.colorMode || "color",
+      config.colorMode || 'color'
     );
     // Also get per-module brightness for halftone center
-    const moduleBrightness = await this._getOverlayData(overlayCanvas, moduleCount, "color", false, config.frameIndex || 0);
+    const moduleBrightness = await this._getOverlayData(
+      overlayCanvas,
+      moduleCount,
+      'color',
+      false,
+      config.frameIndex || 0
+    );
     const intensity = config.overlayIntensity / 100;
 
     // Draw each QR module as a 3x3 subpixel grid
@@ -1868,12 +1880,7 @@ export class QRGenerator {
         // For finder patterns, draw solid 3x3 (no subpixel effect) for better scanning
         if (isFinder) {
           ctx.fillStyle = isDark ? config.fgColor : config.bgColor;
-          ctx.fillRect(
-            baseX,
-            baseY,
-            subpixelSize * pixelSize,
-            subpixelSize * pixelSize,
-          );
+          ctx.fillRect(baseX, baseY, subpixelSize * pixelSize, subpixelSize * pixelSize);
           continue;
         }
 
@@ -1895,8 +1902,7 @@ export class QRGenerator {
                 const brightness = moduleBrightness[row]?.[col] ?? 0.5;
                 const minSize = 0.4;
                 const maxSize = 1.0;
-                const sizeRatio =
-                  minSize + (1 - brightness) * (maxSize - minSize) * intensity;
+                const sizeRatio = minSize + (1 - brightness) * (maxSize - minSize) * intensity;
                 const centerSize = pixelSize * sizeRatio;
                 const offset = (pixelSize - centerSize) / 2;
 
@@ -1905,12 +1911,7 @@ export class QRGenerator {
                 ctx.fillRect(subX, subY, pixelSize, pixelSize);
                 // Then draw sized center
                 ctx.fillStyle = config.fgColor;
-                ctx.fillRect(
-                  subX + offset,
-                  subY + offset,
-                  centerSize,
-                  centerSize,
-                );
+                ctx.fillRect(subX + offset, subY + offset, centerSize, centerSize);
               } else {
                 ctx.fillStyle = isDark ? config.fgColor : config.bgColor;
                 ctx.fillRect(subX, subY, pixelSize, pixelSize);
@@ -1924,15 +1925,11 @@ export class QRGenerator {
                 if (intensity >= 1) {
                   ctx.fillStyle = overlayColor;
                 } else {
-                  ctx.fillStyle = blendColors(
-                    "#808080",
-                    overlayColor,
-                    intensity,
-                  );
+                  ctx.fillStyle = blendColors('#808080', overlayColor, intensity);
                 }
               } else {
                 // No overlay - show based on QR pattern with reduced contrast
-                ctx.fillStyle = isDark ? "#404040" : "#c0c0c0";
+                ctx.fillStyle = isDark ? '#404040' : '#c0c0c0';
               }
               ctx.fillRect(subX, subY, pixelSize, pixelSize);
             }
@@ -1953,12 +1950,20 @@ export class QRGenerator {
    * Apply dithering to QR matrix - async version using canvas factory
    * @private
    */
-  async _applyDitherToMatrix(baseMatrix, scaledSize, scale, overlayCanvas, overlayIntensity, colorMode, serpentine = false) {
+  async _applyDitherToMatrix(
+    baseMatrix,
+    scaledSize,
+    scale,
+    overlayCanvas,
+    overlayIntensity,
+    colorMode,
+    serpentine = false
+  ) {
     // Initialize output
-    const matrix = baseMatrix.map(row => [...row]);
-    const colors = baseMatrix.map(row => row.map(isDark => 
-      isDark ? { r: 0, g: 0, b: 0 } : { r: 255, g: 255, b: 255 }
-    ));
+    const matrix = baseMatrix.map((row) => [...row]);
+    const colors = baseMatrix.map((row) =>
+      row.map((isDark) => (isDark ? { r: 0, g: 0, b: 0 } : { r: 255, g: 255, b: 255 }))
+    );
 
     if (!overlayCanvas) {
       return { matrix, colors };
@@ -1982,23 +1987,23 @@ export class QRGenerator {
     // Apply Floyd-Steinberg error diffusion to free points
     // With optional serpentine scanning (alternating row direction)
     for (let y = 0; y < scaledSize; y++) {
-      const leftToRight = !serpentine || (y % 2 === 0);
+      const leftToRight = !serpentine || y % 2 === 0;
       const xStart = leftToRight ? 0 : scaledSize - 1;
       const xEnd = leftToRight ? scaledSize : -1;
       const xStep = leftToRight ? 1 : -1;
-      
+
       for (let x = xStart; x !== xEnd; x += xStep) {
         // Skip locked areas and data points
         if (isLocked(scaledSize, x, y, scale)) continue;
         if (isData(x, y, scale)) continue;
 
         const pixel = imageData[y][x];
-        
+
         if (colorMode === 'bw') {
           const gray = pixel.r * 0.299 + pixel.g * 0.587 + pixel.b * 0.114;
           const newVal = gray > 0.5 ? 1 : 0;
           const error = gray - newVal;
-          
+
           imageData[y][x] = { r: newVal, g: newVal, b: newVal };
           this.distributeError(imageData, x, y, scaledSize, scale, error, error, error);
         } else if (colorMode === 'grayscale') {
@@ -2006,21 +2011,41 @@ export class QRGenerator {
           const levels = 4;
           const newVal = Math.round(gray * (levels - 1)) / (levels - 1);
           const error = gray - newVal;
-          
+
           imageData[y][x] = { r: newVal, g: newVal, b: newVal };
-          this.distributeError(imageData, x, y, scaledSize, scale, error, error, error, leftToRight);
+          this.distributeError(
+            imageData,
+            x,
+            y,
+            scaledSize,
+            scale,
+            error,
+            error,
+            error,
+            leftToRight
+          );
         } else {
           const levels = 4;
           const newR = Math.round(pixel.r * (levels - 1)) / (levels - 1);
           const newG = Math.round(pixel.g * (levels - 1)) / (levels - 1);
           const newB = Math.round(pixel.b * (levels - 1)) / (levels - 1);
-          
+
           const errorR = pixel.r - newR;
           const errorG = pixel.g - newG;
           const errorB = pixel.b - newB;
-          
+
           imageData[y][x] = { r: newR, g: newG, b: newB };
-          this.distributeError(imageData, x, y, scaledSize, scale, errorR, errorG, errorB, leftToRight);
+          this.distributeError(
+            imageData,
+            x,
+            y,
+            scaledSize,
+            scale,
+            errorR,
+            errorG,
+            errorB,
+            leftToRight
+          );
         }
       }
     }
@@ -2082,13 +2107,13 @@ export class QRGenerator {
   distributeError(imageData, x, y, size, scale, errorR, errorG, errorB, leftToRight = true) {
     const canChange = (px, py) => {
       if (px < 0 || py < 0 || px >= size || py >= size) return false;
-      return !isLocked(size, px, py, scale) && !isData(px, py, scale);
+      return !(isLocked(size, px, py, scale) || isData(px, py, scale));
     };
 
     // Adjust direction based on scan direction
     const nextX = leftToRight ? x + 1 : x - 1;
     const prevX = leftToRight ? x - 1 : x + 1;
-    
+
     const a = canChange(nextX, y);
     const b = canChange(prevX, y + 1);
     const c = canChange(x, y + 1);
@@ -2123,9 +2148,9 @@ export class QRGenerator {
    * Get subpixel overlay data - async version using canvas factory
    * @private
    */
-  async _getSubpixelOverlayData(overlayCanvas, subpixelCount, colorMode = "color") {
+  async _getSubpixelOverlayData(overlayCanvas, subpixelCount, colorMode = 'color') {
     const tempCanvas = await this._createCanvas(subpixelCount, subpixelCount);
-    const ctx = tempCanvas.getContext("2d");
+    const ctx = tempCanvas.getContext('2d');
 
     ctx.drawImage(overlayCanvas, 0, 0, subpixelCount, subpixelCount);
 
@@ -2148,10 +2173,10 @@ export class QRGenerator {
         const gray = Math.round(r * 0.299 + g * 0.587 + b * 0.114);
         brightness[row][col] = gray / 255;
 
-        if (colorMode === "bw") {
+        if (colorMode === 'bw') {
           const bw = gray > 127 ? 255 : 0;
           colors[row][col] = `rgb(${bw},${bw},${bw})`;
-        } else if (colorMode === "grayscale") {
+        } else if (colorMode === 'grayscale') {
           colors[row][col] = `rgb(${gray},${gray},${gray})`;
         } else {
           colors[row][col] = `rgb(${r},${g},${b})`;
@@ -2208,34 +2233,28 @@ export class QRGenerator {
   async _applyGeometricTransforms(overlayCanvas, config) {
     const width = overlayCanvas.width;
     const height = overlayCanvas.height;
-    
+
     const processedCanvas = await this._createCanvas(width, height);
     const ctx = processedCanvas.getContext('2d');
-    
+
     ctx.save();
-    
+
     // Handle rotation
     if (config.overlayRotate && config.overlayRotate !== 0) {
       ctx.translate(width / 2, height / 2);
       ctx.rotate((config.overlayRotate * Math.PI) / 180);
       ctx.translate(-width / 2, -height / 2);
     }
-    
+
     // Handle flips
     if (config.overlayFlipX || config.overlayFlipY) {
-      ctx.translate(
-        config.overlayFlipX ? width : 0,
-        config.overlayFlipY ? height : 0
-      );
-      ctx.scale(
-        config.overlayFlipX ? -1 : 1,
-        config.overlayFlipY ? -1 : 1
-      );
+      ctx.translate(config.overlayFlipX ? width : 0, config.overlayFlipY ? height : 0);
+      ctx.scale(config.overlayFlipX ? -1 : 1, config.overlayFlipY ? -1 : 1);
     }
-    
+
     ctx.drawImage(overlayCanvas, 0, 0);
     ctx.restore();
-    
+
     return processedCanvas;
   }
 
@@ -2246,39 +2265,33 @@ export class QRGenerator {
   async _preprocessOverlay(overlayCanvas, config) {
     const width = overlayCanvas.width;
     const height = overlayCanvas.height;
-    
+
     // Create a new canvas for processing
     const processedCanvas = await this._createCanvas(width, height);
     const ctx = processedCanvas.getContext('2d');
-    
+
     // Apply geometric transforms first
     ctx.save();
-    
+
     // Handle rotation
     if (config.overlayRotate && config.overlayRotate !== 0) {
       ctx.translate(width / 2, height / 2);
       ctx.rotate((config.overlayRotate * Math.PI) / 180);
       ctx.translate(-width / 2, -height / 2);
     }
-    
+
     // Handle flips
     if (config.overlayFlipX || config.overlayFlipY) {
-      ctx.translate(
-        config.overlayFlipX ? width : 0,
-        config.overlayFlipY ? height : 0
-      );
-      ctx.scale(
-        config.overlayFlipX ? -1 : 1,
-        config.overlayFlipY ? -1 : 1
-      );
+      ctx.translate(config.overlayFlipX ? width : 0, config.overlayFlipY ? height : 0);
+      ctx.scale(config.overlayFlipX ? -1 : 1, config.overlayFlipY ? -1 : 1);
     }
-    
+
     ctx.drawImage(overlayCanvas, 0, 0);
     ctx.restore();
-    
+
     // Get image data for filter processing
     const imageData = ctx.getImageData(0, 0, width, height);
-    
+
     // Build filter options
     const filterOptions = {
       brightness: config.overlayBrightness || 0,
@@ -2286,26 +2299,28 @@ export class QRGenerator {
       gamma: config.overlayGamma || 1,
       saturation: config.overlaySaturation || 0,
       hueRotate: config.overlayHueRotate || 0,
-      invert: config.invertImage || false,
+      invert: config.invertImage,
       blur: config.overlayBlur || 0,
       sharpen: config.overlaySharpen || 0,
       posterize: config.overlayPosterize || 0,
       edgeDetect: config.overlayEdgeDetect || 'off',
     };
-    
+
     // Only apply threshold if explicitly set and edge detection is off
-    if (config.overlayThreshold !== undefined && 
-        config.overlayThreshold !== 128 && 
-        filterOptions.edgeDetect === 'off') {
+    if (
+      config.overlayThreshold !== undefined &&
+      config.overlayThreshold !== 128 &&
+      filterOptions.edgeDetect === 'off'
+    ) {
       filterOptions.threshold = config.overlayThreshold;
     }
-    
+
     // Apply filters manually (self-contained implementation)
     this._applyFiltersManual(imageData, filterOptions);
-    
+
     // Put processed image data back
     ctx.putImageData(imageData, 0, 0);
-    
+
     return processedCanvas;
   }
 
@@ -2315,13 +2330,13 @@ export class QRGenerator {
    */
   _applyFiltersManual(imageData, options) {
     const data = imageData.data;
-    
+
     // First pass: per-pixel adjustments
     for (let i = 0; i < data.length; i += 4) {
       let r = data[i];
       let g = data[i + 1];
       let b = data[i + 2];
-      
+
       // Brightness
       if (options.brightness && options.brightness !== 0) {
         const factor = options.brightness * 2.55;
@@ -2329,7 +2344,7 @@ export class QRGenerator {
         g = Math.max(0, Math.min(255, g + factor));
         b = Math.max(0, Math.min(255, b + factor));
       }
-      
+
       // Contrast
       if (options.contrast && options.contrast !== 0) {
         const factor = (259 * (options.contrast + 255)) / (255 * (259 - options.contrast));
@@ -2337,15 +2352,15 @@ export class QRGenerator {
         g = Math.max(0, Math.min(255, factor * (g - 128) + 128));
         b = Math.max(0, Math.min(255, factor * (b - 128) + 128));
       }
-      
+
       // Gamma
       if (options.gamma && options.gamma !== 1) {
         const gammaCorrection = 1 / options.gamma;
-        r = 255 * Math.pow(r / 255, gammaCorrection);
-        g = 255 * Math.pow(g / 255, gammaCorrection);
-        b = 255 * Math.pow(b / 255, gammaCorrection);
+        r = 255 * (r / 255) ** gammaCorrection;
+        g = 255 * (g / 255) ** gammaCorrection;
+        b = 255 * (b / 255) ** gammaCorrection;
       }
-      
+
       // Saturation
       if (options.saturation && options.saturation !== 0) {
         const gray = r * 0.299 + g * 0.587 + b * 0.114;
@@ -2354,26 +2369,29 @@ export class QRGenerator {
         g = Math.max(0, Math.min(255, gray + factor * (g - gray)));
         b = Math.max(0, Math.min(255, gray + factor * (b - gray)));
       }
-      
+
       // Hue rotation
       if (options.hueRotate && options.hueRotate !== 0) {
         const angle = (options.hueRotate * Math.PI) / 180;
         const cos = Math.cos(angle);
         const sin = Math.sin(angle);
-        const newR = r * (0.213 + cos * 0.787 - sin * 0.213) + 
-                     g * (0.715 - cos * 0.715 - sin * 0.715) + 
-                     b * (0.072 - cos * 0.072 + sin * 0.928);
-        const newG = r * (0.213 - cos * 0.213 + sin * 0.143) + 
-                     g * (0.715 + cos * 0.285 + sin * 0.14) + 
-                     b * (0.072 - cos * 0.072 - sin * 0.283);
-        const newB = r * (0.213 - cos * 0.213 - sin * 0.787) + 
-                     g * (0.715 - cos * 0.715 + sin * 0.715) + 
-                     b * (0.072 + cos * 0.928 + sin * 0.072);
+        const newR =
+          r * (0.213 + cos * 0.787 - sin * 0.213) +
+          g * (0.715 - cos * 0.715 - sin * 0.715) +
+          b * (0.072 - cos * 0.072 + sin * 0.928);
+        const newG =
+          r * (0.213 - cos * 0.213 + sin * 0.143) +
+          g * (0.715 + cos * 0.285 + sin * 0.14) +
+          b * (0.072 - cos * 0.072 - sin * 0.283);
+        const newB =
+          r * (0.213 - cos * 0.213 - sin * 0.787) +
+          g * (0.715 - cos * 0.715 + sin * 0.715) +
+          b * (0.072 + cos * 0.928 + sin * 0.072);
         r = Math.max(0, Math.min(255, newR));
         g = Math.max(0, Math.min(255, newG));
         b = Math.max(0, Math.min(255, newB));
       }
-      
+
       // Posterize
       if (options.posterize && options.posterize > 0) {
         const levels = options.posterize;
@@ -2382,28 +2400,28 @@ export class QRGenerator {
         g = Math.round(Math.round(g / step) * step);
         b = Math.round(Math.round(b / step) * step);
       }
-      
+
       // Invert
       if (options.invert) {
         r = 255 - r;
         g = 255 - g;
         b = 255 - b;
       }
-      
+
       data[i] = Math.round(r);
       data[i + 1] = Math.round(g);
       data[i + 2] = Math.round(b);
     }
-    
+
     // Second pass: convolution filters (blur, sharpen)
     if (options.blur && options.blur > 0) {
       this._applyBoxBlur(imageData, Math.min(options.blur, 5));
     }
-    
+
     if (options.sharpen && options.sharpen > 0) {
       this._applySharpen(imageData, options.sharpen / 100);
     }
-    
+
     // Edge detection
     if (options.edgeDetect === 'sobel') {
       this._applySobelEdge(imageData);
@@ -2421,11 +2439,13 @@ export class QRGenerator {
     const copy = new Uint8ClampedArray(data);
     const size = radius * 2 + 1;
     const divisor = size * size;
-    
+
     for (let y = radius; y < height - radius; y++) {
       for (let x = radius; x < width - radius; x++) {
-        let r = 0, g = 0, b = 0;
-        
+        let r = 0,
+          g = 0,
+          b = 0;
+
         for (let ky = -radius; ky <= radius; ky++) {
           for (let kx = -radius; kx <= radius; kx++) {
             const idx = ((y + ky) * width + (x + kx)) * 4;
@@ -2434,7 +2454,7 @@ export class QRGenerator {
             b += copy[idx + 2];
           }
         }
-        
+
         const outIdx = (y * width + x) * 4;
         data[outIdx] = Math.round(r / divisor);
         data[outIdx + 1] = Math.round(g / divisor);
@@ -2452,19 +2472,17 @@ export class QRGenerator {
     const width = imageData.width;
     const height = imageData.height;
     const copy = new Uint8ClampedArray(data);
-    
+
     // Sharpen kernel: center = 1 + 4*amount, neighbors = -amount
-    const kernel = [
-      0, -amount, 0,
-      -amount, 1 + 4 * amount, -amount,
-      0, -amount, 0,
-    ];
-    
+    const kernel = [0, -amount, 0, -amount, 1 + 4 * amount, -amount, 0, -amount, 0];
+
     for (let y = 1; y < height - 1; y++) {
       for (let x = 1; x < width - 1; x++) {
-        let r = 0, g = 0, b = 0;
+        let r = 0,
+          g = 0,
+          b = 0;
         let ki = 0;
-        
+
         for (let ky = -1; ky <= 1; ky++) {
           for (let kx = -1; kx <= 1; kx++) {
             const idx = ((y + ky) * width + (x + kx)) * 4;
@@ -2474,7 +2492,7 @@ export class QRGenerator {
             b += copy[idx + 2] * k;
           }
         }
-        
+
         const outIdx = (y * width + x) * 4;
         data[outIdx] = Math.max(0, Math.min(255, Math.round(r)));
         data[outIdx + 1] = Math.max(0, Math.min(255, Math.round(g)));
@@ -2491,23 +2509,24 @@ export class QRGenerator {
     const data = imageData.data;
     const width = imageData.width;
     const height = imageData.height;
-    
+
     // Convert to grayscale first
     const gray = new Float32Array(width * height);
     for (let i = 0; i < width * height; i++) {
       const idx = i * 4;
       gray[i] = data[idx] * 0.299 + data[idx + 1] * 0.587 + data[idx + 2] * 0.114;
     }
-    
+
     // Sobel kernels
     const sobelX = [-1, 0, 1, -2, 0, 2, -1, 0, 1];
     const sobelY = [-1, -2, -1, 0, 0, 0, 1, 2, 1];
-    
+
     for (let y = 1; y < height - 1; y++) {
       for (let x = 1; x < width - 1; x++) {
-        let gx = 0, gy = 0;
+        let gx = 0,
+          gy = 0;
         let ki = 0;
-        
+
         for (let ky = -1; ky <= 1; ky++) {
           for (let kx = -1; kx <= 1; kx++) {
             const grayIdx = (y + ky) * width + (x + kx);
@@ -2516,7 +2535,7 @@ export class QRGenerator {
             ki++;
           }
         }
-        
+
         const magnitude = Math.min(255, Math.sqrt(gx * gx + gy * gy));
         const outIdx = (y * width + x) * 4;
         data[outIdx] = magnitude;
@@ -2534,7 +2553,7 @@ export class QRGenerator {
     const brightness = overlayData[row]?.[col] ?? 0.5;
     const overlayColor = overlayData.colors?.[row]?.[col];
     const intensity = (config.overlayIntensity || 100) / 100;
-    
+
     switch (mode) {
       case 'by_brightness': {
         // Vary module color based on image brightness
@@ -2542,7 +2561,7 @@ export class QRGenerator {
         const factor = 0.5 + brightness * 0.5; // 0.5 to 1.0
         return `rgb(${Math.round(parsed.r * factor)},${Math.round(parsed.g * factor)},${Math.round(parsed.b * factor)})`;
       }
-      
+
       case 'by_position': {
         // Color varies based on position in QR code
         const parsed = parseColor(baseColor);
@@ -2553,7 +2572,7 @@ export class QRGenerator {
         const b = Math.round(parsed.b * (0.5 + (1 - xFactor) * 0.5));
         return `rgb(${r},${g},${b})`;
       }
-      
+
       case 'by_overlay': {
         // Use overlay image color directly
         if (overlayColor) {
@@ -2561,7 +2580,7 @@ export class QRGenerator {
         }
         return baseColor;
       }
-      
+
       case 'by_cluster': {
         // Group nearby modules with similar colors
         const blockSize = 3;
@@ -2574,18 +2593,36 @@ export class QRGenerator {
         const angle = (hueShift * Math.PI) / 180;
         const cos = Math.cos(angle);
         const sin = Math.sin(angle);
-        const r = Math.max(0, Math.min(255, parsed.r * (0.213 + cos * 0.787 - sin * 0.213) + 
-                                             parsed.g * (0.715 - cos * 0.715 - sin * 0.715) + 
-                                             parsed.b * (0.072 - cos * 0.072 + sin * 0.928)));
-        const g = Math.max(0, Math.min(255, parsed.r * (0.213 - cos * 0.213 + sin * 0.143) + 
-                                             parsed.g * (0.715 + cos * 0.285 + sin * 0.14) + 
-                                             parsed.b * (0.072 - cos * 0.072 - sin * 0.283)));
-        const b = Math.max(0, Math.min(255, parsed.r * (0.213 - cos * 0.213 - sin * 0.787) + 
-                                             parsed.g * (0.715 - cos * 0.715 + sin * 0.715) + 
-                                             parsed.b * (0.072 + cos * 0.928 + sin * 0.072)));
+        const r = Math.max(
+          0,
+          Math.min(
+            255,
+            parsed.r * (0.213 + cos * 0.787 - sin * 0.213) +
+              parsed.g * (0.715 - cos * 0.715 - sin * 0.715) +
+              parsed.b * (0.072 - cos * 0.072 + sin * 0.928)
+          )
+        );
+        const g = Math.max(
+          0,
+          Math.min(
+            255,
+            parsed.r * (0.213 - cos * 0.213 + sin * 0.143) +
+              parsed.g * (0.715 + cos * 0.285 + sin * 0.14) +
+              parsed.b * (0.072 - cos * 0.072 - sin * 0.283)
+          )
+        );
+        const b = Math.max(
+          0,
+          Math.min(
+            255,
+            parsed.r * (0.213 - cos * 0.213 - sin * 0.787) +
+              parsed.g * (0.715 - cos * 0.715 + sin * 0.715) +
+              parsed.b * (0.072 + cos * 0.928 + sin * 0.072)
+          )
+        );
         return `rgb(${Math.round(r)},${Math.round(g)},${Math.round(b)})`;
       }
-      
+
       default:
         return baseColor;
     }
@@ -2601,29 +2638,29 @@ export class QRGenerator {
       if (ratio >= minRatio) {
         return moduleColor;
       }
-      
+
       // Darken the module color to improve contrast
       const parsed = parseColor(moduleColor);
       let factor = 0.9;
       let newColor = moduleColor;
-      
+
       // Iteratively darken until we meet contrast ratio
       for (let i = 0; i < 10; i++) {
         const r = Math.round(parsed.r * factor);
         const g = Math.round(parsed.g * factor);
         const b = Math.round(parsed.b * factor);
         newColor = `rgb(${r},${g},${b})`;
-        
+
         const newRatio = getContrastRatio(newColor, bgColor);
         if (newRatio >= minRatio) {
           return newColor;
         }
         factor *= 0.85;
       }
-      
+
       // If still not enough contrast, return black
       return '#000000';
-    } catch (e) {
+    } catch (_e) {
       return moduleColor;
     }
   }
@@ -2638,7 +2675,7 @@ export class QRGenerator {
     const ctx = tempCanvas.getContext('2d');
     ctx.drawImage(overlayCanvas, 0, 0, moduleCount, moduleCount);
     const imageData = ctx.getImageData(0, 0, moduleCount, moduleCount);
-    
+
     // Build dither options from config
     const ditherOptions = {
       kind: config.ditherKind || 'error_diffusion',
@@ -2651,7 +2688,7 @@ export class QRGenerator {
       blueNoiseSeed: config.blueNoiseSeed || 0,
       blueNoiseTileSize: config.blueNoiseTileSize || 64,
     };
-    
+
     // Apply dithering algorithm
     const result = applyDither(imageData, ditherOptions);
     return result;
@@ -2663,9 +2700,9 @@ export class QRGenerator {
    */
   _applyPaletteColor(row, col, moduleCount, brightness, palette, config) {
     if (!palette || palette.length === 0) return config.fgColor;
-    
+
     const paletteMode = config.paletteMode || 'position';
-    
+
     switch (paletteMode) {
       case 'brightness': {
         // Map brightness to palette index
@@ -2702,7 +2739,6 @@ export class QRGenerator {
         const idx = Math.floor((col / moduleCount) * palette.length) % palette.length;
         return palette[idx];
       }
-      case 'position':
       default: {
         // Cycle through palette based on linear position
         const linearPos = row * moduleCount + col;
@@ -2717,10 +2753,10 @@ export class QRGenerator {
    * @private
    */
   _drawHalftoneModule(ctx, x, y, size, brightness, config) {
-    const htCell = config.halftoneCell || 'per_module';
+    const _htCell = config.halftoneCell || 'per_module';
     const htDot = config.halftoneDotShape || 'circle';
     const htCurve = config.brightnessCurve || 'linear';
-    
+
     // Apply brightness curve
     let adjustedBrightness = brightness;
     switch (htCurve) {
@@ -2728,40 +2764,40 @@ export class QRGenerator {
         adjustedBrightness = brightness * brightness * (3 - 2 * brightness);
         break;
       case 'gamma':
-        adjustedBrightness = Math.pow(brightness, 2.2);
+        adjustedBrightness = brightness ** 2.2;
         break;
       default: // linear
         break;
     }
-    
+
     // Calculate dot size based on brightness (darker = larger dot)
     const minSize = 0.2;
     const maxSize = 1.0;
     const dotSizeRatio = minSize + (1 - adjustedBrightness) * (maxSize - minSize);
     const dotSize = size * dotSizeRatio;
     const offset = (size - dotSize) / 2;
-    
+
     const centerX = x + size / 2;
     const centerY = y + size / 2;
-    
+
     switch (htDot) {
       case 'circle':
         ctx.beginPath();
         ctx.arc(centerX, centerY, dotSize / 2, 0, Math.PI * 2);
         ctx.fill();
         break;
-        
+
       case 'square':
         ctx.fillRect(x + offset, y + offset, dotSize, dotSize);
         break;
-        
+
       case 'line': {
         // Draw a line that varies in thickness
         const lineWidth = dotSize * 0.8;
         ctx.fillRect(x, y + (size - lineWidth) / 2, size, lineWidth);
         break;
       }
-        
+
       case 'diamond':
         ctx.beginPath();
         ctx.moveTo(centerX, y + offset);
@@ -2771,7 +2807,7 @@ export class QRGenerator {
         ctx.closePath();
         ctx.fill();
         break;
-        
+
       default:
         ctx.beginPath();
         ctx.arc(centerX, centerY, dotSize / 2, 0, Math.PI * 2);
@@ -2784,36 +2820,34 @@ export class QRGenerator {
    * Higher weight = more important to preserve
    * @private
    */
-  _getEccWeight(row, col, moduleCount, version, weightMap) {
+  _getEccWeight(row, col, moduleCount, _version, weightMap) {
     switch (weightMap) {
       case 'distance_to_finders': {
         // Closer to finders = more important
         const distTL = Math.sqrt(row * row + col * col);
-        const distTR = Math.sqrt(row * row + Math.pow(moduleCount - 1 - col, 2));
-        const distBL = Math.sqrt(Math.pow(moduleCount - 1 - row, 2) + col * col);
+        const distTR = Math.sqrt(row * row + (moduleCount - 1 - col) ** 2);
+        const distBL = Math.sqrt((moduleCount - 1 - row) ** 2 + col * col);
         const minDist = Math.min(distTL, distTR, distBL);
-        const maxDist = Math.sqrt(2) * moduleCount / 2;
-        return 1 - (minDist / maxDist);
+        const maxDist = (Math.sqrt(2) * moduleCount) / 2;
+        return 1 - minDist / maxDist;
       }
-      
+
       case 'block_heatmap': {
         // Center blocks are less critical than edge blocks
         const centerRow = moduleCount / 2;
         const centerCol = moduleCount / 2;
-        const distToCenter = Math.sqrt(
-          Math.pow(row - centerRow, 2) + Math.pow(col - centerCol, 2)
-        );
-        const maxDist = Math.sqrt(2) * moduleCount / 2;
+        const distToCenter = Math.sqrt((row - centerRow) ** 2 + (col - centerCol) ** 2);
+        const maxDist = (Math.sqrt(2) * moduleCount) / 2;
         return distToCenter / maxDist;
       }
-      
+
       case 'empirical_scan_heatmap': {
         // Simulate typical scanner patterns - top-left to bottom-right priority
         const scanProgress = (row + col) / (2 * moduleCount);
         // Earlier in scan = more important
         return 1 - scanProgress * 0.5;
       }
-      
+
       default:
         return 0.5;
     }
@@ -2826,21 +2860,27 @@ export class QRGenerator {
    */
   _isEccSafeToModify(row, col, moduleCount, version, config, modifiedCount, totalDataModules) {
     if (!config.eccAwareEnabled) return true;
-    
+
     const riskBudget = (config.eccAwareRiskBudget || 50) / 100;
     const eccCapacity = { L: 0.07, M: 0.15, Q: 0.25, H: 0.3 };
     const maxRisk = eccCapacity[config.errorCorrection] || 0.25;
     const allowedModifications = Math.floor(totalDataModules * maxRisk * riskBudget);
-    
+
     if (modifiedCount >= allowedModifications) return false;
-    
-    const weight = this._getEccWeight(row, col, moduleCount, version, config.eccAwareWeightMap || 'distance_to_finders');
-    
+
+    const weight = this._getEccWeight(
+      row,
+      col,
+      moduleCount,
+      version,
+      config.eccAwareWeightMap || 'distance_to_finders'
+    );
+
     // Use deterministic decision based on position hash for reproducibility
     // This replaces Math.random() to ensure same settings = same output
     const positionHash = ((row * 31 + col) * 17 + (config.seed || 0)) % 1000;
     const deterministicValue = positionHash / 1000;
-    
+
     // Higher weight modules are less likely to be modified
     return deterministicValue > weight * 0.5;
   }

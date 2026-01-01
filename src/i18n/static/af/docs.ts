@@ -2,840 +2,381 @@ import type { PageDefinition } from '../types';
 import { LAST_UPDATED } from '../types';
 
 export const docs: PageDefinition = {
-  title: '"ANQR Gebruikersgids”',
-  description: '"Volledige gids vir die gebruik van ANQR vir die skep van QR-kodes.”',
+  title: 'ANQR User Guide',
+  description: 'Complete guide to using ANQR for creating QR codes.',
   lastUpdated: LAST_UPDATED,
   sections: [
     {
-      heading: '"Aan die gang kom”',
-      paragraphs: [
-        '"ANQR is \'n QR-kodegenerator met \'n kliënt-eerste benadering. Standaard word QR-kodes plaaslik in jou blaaier gegenereer — geen rekening nodig nie en jou data bly privaat. Vir professionele inbedding kan jy ook die bedienerkant-API gebruik.”',
-        '"Die koppelvlak het drie koppelvlakvlakke: Basies, Gevorderd en Professioneel. Kies jou vlak deur die oortjies in die koptekst te gebruik. Elke vlak ontsluit bykomende funksies terwyl die koppelvlak gefokus bly op wat jy nodig het.”',
-      ],
+      heading: 'Getting Started',
+      paragraphs: ['ANQR is a QR code generator with a client-first approach. By default, QR codes are generated locally in your browser — no account required and your data stays private. For professional embedding, you can also use the server-side API.', 'The interface has three interface levels: Basic, Advanced, and Professional. Select your level using the tabs in the header. Each level unlocks additional features while keeping the interface focused on what you need.'],
+      bullets: ['Basic: Simple QR code creation with plain text/URL content and image overlay.', 'Advanced: QR encoding options, rendering styles, animation, output formats, extended content types, and overlay customization.', 'Professional: Watermarks, metadata, sharing, safety analysis, payment QR codes, and enterprise features.'],
+    },
+    {
+      heading: 'Quick Start',
+      paragraphs: ['To create your first QR code:'],
+      bullets: ['1. Select a content type (URL, text, WiFi, etc.) from the Content Type dropdown.', '2. Enter your data in the provided fields.', '3. Optionally customize colors, styles, and add an overlay image.', '4. Click Export to download your QR code as PNG, GIF, WebP, or SVG.'],
+    },
+    {
+      heading: 'Basic Features',
+      paragraphs: ['The Basic level provides a streamlined interface for creating QR codes with payload content and image overlays. This is the simplest way to get started.'],
+    },
+    {
+      heading: 'Content Types (Basic)',
+      paragraphs: ['Plain Text: Encode any text up to the QR code capacity limit. Ideal for short messages, codes, or identifiers.', 'URL: Encode web addresses. The QR code will open the URL when scanned. Supports http:// and https:// protocols.'],
+    },
+    {
+      heading: 'Image Overlay (Basic)',
+      paragraphs: ['Upload an image (JPG, PNG, GIF, WebP) to blend with your QR code. Basic overlay features include:'],
+      bullets: ['Upload from file: Select an image from your device.', 'Load from URL: Enter an image URL (must allow CORS).', 'Center Logo: Places image in the center, relying on error correction.', 'Blend: Simple alpha blending of image with QR pattern.', 'Intensity: Controls how strongly the overlay affects the QR code (0-100%).', 'Color Mode: Full Color, Grayscale, or Black & White.', 'Preserve Finder Patterns: Keeps corner patterns unmodified for reliable scanning.'],
+    },
+    {
+      heading: 'Advanced Features',
+      paragraphs: ['The Advanced level unlocks QR encoding options, rendering styles, animation, output formats, extended content types, and advanced overlay customization.'],
+    },
+    {
+      heading: 'QR Encoding Settings',
+      paragraphs: ['Version: QR codes come in versions 1-40, with higher versions holding more data but being larger. Set to 0 (Auto) to let ANQR choose the smallest version that fits your content.', 'Error Correction: Determines how much damage a QR code can sustain while remaining scannable.'],
+      bullets: ['L (Low): 7% error correction - smallest size, least redundancy.', 'M (Medium): 15% error correction - balanced option.', 'Q (Quartile): 25% error correction - good for printed codes.', 'H (High): 30% error correction - best for codes with overlays or in harsh conditions.'],
+    },
+    {
+      heading: 'Quiet Zone (Margin)',
+      paragraphs: ['The quiet zone is the white space around the QR code. Scanners need this margin to detect where the code starts. The standard recommends at least 4 modules. Reducing below 4 may cause scanning issues.'],
+    },
+    {
+      heading: 'Module Style',
+      paragraphs: ['Modules are the individual squares that make up a QR code. ANQR offers five styles:'],
+      bullets: ['Square: Classic QR appearance with sharp corners.', 'Rounded: Softened corners for a friendlier look.', 'Dots: Circular modules for a modern aesthetic.', 'Diamond: 45° rotated squares for a distinctive pattern.', 'Connected: Modules merge when adjacent, creating organic shapes.'],
+    },
+    {
+      heading: 'Finder Pattern Style',
+      paragraphs: ['Finder patterns are the three large squares in QR corners that help scanners orient the code. Available styles:'],
+      bullets: ['Square: Standard square corners.', 'Rounded: Softened corners matching rounded module style.', 'Circle: Circular finder patterns for dot-style codes.'],
+    },
+    {
+      heading: 'Alignment & Timing Patterns',
+      paragraphs: ['Alignment patterns appear in larger QR codes (version 2+) to help correct distortion. Timing patterns are the alternating lines connecting finder patterns.'],
+      bullets: ['Alignment Style: Match Finder, Square, Rounded, or Circle.', 'Timing Style: Match Module, Solid, or Dashed.'],
+    },
+    {
+      heading: 'Colors',
+      paragraphs: ['Foreground: The color of the QR modules. Black (#000000) is standard but any dark color works.', 'Background: The background color. White (#ffffff) is standard. Ensure sufficient contrast with the foreground.', 'Transparent Background: Remove the background entirely for use on colored surfaces. Ensure the surface provides adequate contrast.'],
+    },
+    {
+      heading: 'Module Size & Gap',
+      paragraphs: ['Module Size: Controls how large each module is rendered in pixels. Larger values create bigger, easier-to-scan codes.', 'Module Gap: Adds space between modules as a percentage. Small gaps (5-15%) can improve scannability in some conditions but excessive gaps reduce reliability.'],
+    },
+    {
+      heading: 'Output Settings',
+      paragraphs: ['Format: Choose your export format based on use case.'],
+      bullets: ['PNG: Lossless raster format, ideal for most uses. Best for print and digital.', 'WebP: Modern format with smaller file sizes. Good for web use.', 'GIF: Required for animated QR codes. Supports transparency.', 'SVG: Vector format that scales infinitely. Best for large print or when you need to edit the code.'],
+    },
+    {
+      heading: 'Output Dimensions',
+      paragraphs: ['Width/Height: Set the output size in pixels. For print, calculate based on DPI (e.g., 300 DPI at 1 inch = 300px). Larger sizes scan more reliably at distance.'],
+    },
+    {
+      heading: 'Animation Settings (Advanced)',
+      paragraphs: ['Control animated QR code behavior:'],
+      bullets: ['Speed: Animation frame rate in milliseconds.', 'Loop: Continuous or single-play animation.', 'Bounce: Ping-pong animation direction.', 'Start Frame: Begin animation from specific frame.', 'Max Frames: Limit total frames in animation.', 'Frame Step: Skip frames for faster animation.', 'Interpolation: None, Crossfade, or Morph between frames.'],
+    },
+    {
+      heading: 'Content Types (Advanced)',
+      paragraphs: ['Advanced level unlocks additional payload formats:'],
       bullets: [
-        '"Basies: Eenvoudige QR-kode-skepping met gewone teks/URL-inhoud en beeldoorleg.”',
-        '"Gevorderd: QR-koderingsopsies, weergawestyle, animasie, uitvoerformate, uitgebreide inhoudtipes en oorleg-aanpassing.”',
-        '"Professioneel: Watermerke, metadata, deling, veiligheidsanalise, QR-kodes vir betaling en ondernemingskenmerke.”',
+        'Phone Number (tel:): Creates a callable phone link.',
+        'Email (mailto:): Opens email client with optional subject and body.',
+        'SMS: Pre-filled text message to a phone number.',
+        'vCard: Full contact card with name, organization, phone, email, address.',
+        'MeCard: Compact contact format popular in Japan.',
+        'BizCard: Legacy business card format.',
+        'Geo Location: GPS coordinates that open in maps.',
+        'WiFi: Network credentials for automatic connection (SSID, password, security type).',
+        'Calendar Event: iCalendar format with title, location, date/time.',
+        'Event RSVP: Link to event registration page.',
+        'Calendar Subscribe: Subscribe to an ICS/WebCal feed.',
+        'File/Document URL: Direct link to downloadable files.',
+        'Cloud Storage Link: Links to Google Drive, Dropbox, OneDrive, etc.',
+        'Social Profile: Links to LinkedIn, Twitter, Instagram, etc.',
+        'Messaging Link: WhatsApp, Telegram, Signal deep links.',
       ],
     },
     {
-      heading: '"Vinnige Begin”',
-      paragraphs: [
-        '"Om jou eerste QR-kode te skep:”',
-      ],
+      heading: 'Advanced Overlay Features',
+      paragraphs: ['Additional overlay capabilities:'],
+      bullets: ['Crop: Enable cropping to select a square region of your image.', 'Halftone: Classic print-style dot pattern based on image brightness.', 'Dithered: Error-diffusion dithering for detailed reproduction.'],
+    },
+    {
+      heading: 'Overlay Blend Modes (Advanced)',
+      paragraphs: ['Additional blend modes in Advanced level:'],
+      bullets: ['Subpixel: Divides each module into subpixels for higher detail.', 'Blue Noise: Uses blue noise dithering for artifact-free patterns.', 'Mosaic: Tile-based effect preserving image structure.', 'Gap Fill: Places image in gaps between modules.', 'Brightness: Varies module size based on image brightness.', 'Duotone: Maps image to two colors for striking contrast.'],
+    },
+    {
+      heading: 'Overlay Intensity',
+      paragraphs: ['Controls how strongly the overlay affects the QR code (0-100%). Higher values show more image detail but may reduce scannability. Start around 70% and adjust based on testing.'],
+    },
+    {
+      heading: 'Color Mode',
+      paragraphs: ['How the overlay image is processed:'],
+      bullets: ['Full Color: Preserves original image colors.', 'Grayscale: Converts to black and white tones.', 'Black & White: High contrast binary conversion.'],
+    },
+    {
+      heading: 'Preserve Finder Patterns',
+      paragraphs: ['When enabled, keeps the three corner finder patterns unmodified by the overlay. Strongly recommended for reliable scanning.'],
+    },
+    {
+      heading: 'Image Preprocessing',
+      paragraphs: ['Apply filters to your overlay image before blending. These adjustments can improve how the image appears in the final QR code.'],
+      bullets: ['Brightness (-100 to +100): Lighten or darken the image.', 'Contrast (-100 to +100): Increase or decrease tonal range.', 'Gamma (0.2 to 3.0): Non-linear brightness adjustment. Values below 1 lighten midtones, above 1 darken them.', 'Saturation (-100 to +100): Color intensity. -100 is grayscale, +100 is oversaturated.', 'Hue Rotate (0-360°): Shift all colors around the color wheel.', 'Blur (0-20px): Soften image details.', 'Sharpen (0-100%): Enhance edges and details.', 'Posterize (0-16 levels): Reduce color levels for a poster effect.', 'Threshold (0-255): Convert to binary black/white at cutoff point.', 'Edge Detection: Sobel or Canny algorithms to show only edges.', 'Invert: Reverse all colors.'],
+    },
+    {
+      heading: 'Fit Mode',
+      paragraphs: ['How the overlay image fits the QR code area:'],
+      bullets: ['Cover: Image fills entire area, cropping if needed.', 'Contain: Entire image visible, may have margins.', 'Stretch: Image distorts to fill exactly.'],
+    },
+    {
+      heading: 'Transform Options',
+      paragraphs: ['Rotation: Rotate overlay in 90° increments.', 'Flip X/Y: Mirror the image horizontally or vertically.'],
+    },
+    {
+      heading: 'Dithering Algorithms',
+      paragraphs: ['Dithering converts continuous-tone images to patterns that QR codes can represent. Available when using Dithered, Blue Noise, or True Dither blend modes.'],
       bullets: [
-        '"1. Kies \'n inhoudtipe (URL, teks, WiFi, ens.) uit die Inhoudtipe-aftreklys.”',
-        '"2. Voer jou data in die voorsiene velde in.”',
-        '"3. Pas kleure en style aan, en voeg \'n oorlegbeeld by.”',
-        '"4. Klik Uitvoer om jou QR-kode as PNG, GIF, WebP of SVG af te laai.”',
+        'Error Diffusion: Classic Floyd-Steinberg style. Spreads quantization error to neighboring pixels.',
+        'Ordered (Bayer): Uses a threshold matrix for regular patterns.',
+        'Clustered Dot: Simulates halftone printing.',
+        'Void & Cluster: Optimized ordered dithering.',
+        'Blue Noise: Visually pleasant random-looking pattern.',
+        'Blue Noise Threshold: Threshold dithering with blue noise texture.',
+        'White Noise: Random threshold dithering.',
+        'Gaussian/Triangular Noise: Noise with different distributions.',
+        'Blue Noise + Error Diffusion: Hybrid combining both techniques.',
+        'Screened Blue Noise: Screen-like blue noise pattern.',
+        'Perceptual: Luminance-weighted for better visual results.',
+        'Edge-Aware: Preserves image edges during dithering.',
+        'Adaptive Threshold: Locally-adaptive thresholding.',
+        'Temporal Blue Noise: For animated GIFs, varies pattern per frame.',
       ],
     },
     {
-      heading: '"Basiese Kenmerke”',
-      paragraphs: [
-        '"Die Basiese vlak bied \'n vaartbelynde koppelvlak vir die skep van QR-kodes met vraginhoud en beeldoorlegsels. Dit is die eenvoudigste manier om te begin.”',
-      ],
-    },
-    {
-      heading: '"Inhoudsoorte (Basies)”',
-      paragraphs: [
-        '"Gewone teks: Enkodeer enige teks tot die QR-kodekapasiteitslimiet. Ideaal vir kort boodskappe, kodes of identifiseerders.”',
-        '"URL: Enkodeer webadresse. Die QR-kode sal die URL oopmaak wanneer dit geskandeer word. Ondersteun http://- en https://-protokolle.”',
-      ],
-    },
-    {
-      heading: '"Beeldoorleg (Basies)”',
-      paragraphs: [
-        '"Laai \'n beeld (JPG, PNG, GIF, WebP) op om met jou QR-kode te meng. Basiese oorlegfunksies sluit in:”',
-      ],
-      bullets: [
-        '"Laai op vanaf lêer: Kies \'n beeld vanaf jou toestel.”',
-        '"Laai vanaf URL: Voer \'n beeld-URL in (moet CORS toelaat).”',
-        '"Sentrale Logo: Plaas beeld in die middel, afhangende van foutkorreksie.”',
-        '"Vermenging: Eenvoudige alfa-vermenging van beeld met QR-patroon.”',
-        '"Intensiteit: Beheer hoe sterk die oorlegsel die QR-kode beïnvloed (0-100%).”',
-        '"Kleurmodus: Volkleur, Grysskaal of Swart & Wit.”',
-        '"Bewaar Soekerpatrone: Hou hoekpatrone onveranderd vir betroubare skandering.”',
-      ],
-    },
-    {
-      heading: '"Gevorderde kenmerke”',
-      paragraphs: [
-        '"Die Gevorderde vlak ontsluit QR-koderingsopsies, weergawestyle, animasie, uitvoerformate, uitgebreide inhoudtipes en gevorderde oorleg-aanpassing.”',
-      ],
-    },
-    {
-      heading: '"QR-koderinginstellings”',
-      paragraphs: [
-        '"Weergawe: QR-kodes kom in weergawes 1-40, met hoër weergawes wat meer data bevat, maar groter is. Stel op 0 (Auto) om ANQR die kleinste weergawe te laat kies wat by jou inhoud pas.”',
-        '"Foutkorreksie: Bepaal hoeveel skade \'n QR-kode kan ly terwyl dit skandeerbaar bly.”',
-      ],
-      bullets: [
-        '"L (Laag): 7% foutkorreksie - kleinste grootte, minste oortolligheid.”',
-        '"M (Medium): 15% foutkorreksie - gebalanseerde opsie.”',
-        '"Q (Kwartiel): 25% foutkorreksie - goed vir gedrukte kodes.”',
-        '"H (Hoog): 30% foutkorreksie - die beste vir kodes met oorlegsels of in strawwe toestande.”',
-      ],
-    },
-    {
-      heading: '"Stil Sone (Marge)”',
-      paragraphs: [
-        '"Die stil sone is die wit spasie rondom die QR-kode. Skandeerders benodig hierdie marge om te bepaal waar die kode begin. Die standaard beveel ten minste 4 modules aan. As dit onder 4 verminder word, kan dit skanderingsprobleme veroorsaak.”',
-      ],
-    },
-    {
-      heading: '"Modulestyl”',
-      paragraphs: [
-        '"Modules is die individuele vierkante wat \'n QR-kode uitmaak. ANQR bied vyf style:”',
-      ],
-      bullets: [
-        '"Vierkant: Klassieke QR-voorkoms met skerp hoeke.”',
-        '"Afgerond: Versagde hoeke vir \'n vriendeliker voorkoms.”',
-        '"Pukke: Sirkelvormige modules vir \'n moderne estetika.”',
-        '"Diamant: 45° geroteerde vierkante vir \'n kenmerkende patroon.”',
-        '"Verbonde: Modules smelt saam wanneer hulle aangrensend is, wat organiese vorms skep.”',
-      ],
-    },
-    {
-      heading: '"Vindpatroonstyl”',
-      paragraphs: [
-        '"Vindpatrone is die drie groot vierkante in QR-hoeke wat skandeerders help om die kode te oriënteer. Beskikbare style:”',
-      ],
-      bullets: [
-        '"Vierkant: Standaard vierkantige hoeke.”',
-        '"Afgerond: Versagde hoeke wat ooreenstem met die afgeronde modulestyl.”',
-        '"Sirkel: Sirkelvormige soekpatrone vir puntstylkodes.”',
-      ],
-    },
-    {
-      heading: '"Belyning en tydsberekeningpatrone”',
-      paragraphs: [
-        '"Belyningspatrone verskyn in groter QR-kodes (weergawe 2+) om vervorming te help korrigeer. Tydspatrone is die afwisselende lyne wat soekpatrone verbind.”',
-      ],
-      bullets: [
-        '"Belyningstyl: Pasmaatvinder, Vierkantig, Afgerond of Sirkel.”',
-        '"Tydsberekeningstyl: Pasmodule, Solied of Gestreep.”',
-      ],
-    },
-    {
-      heading: '"Kleure”',
-      paragraphs: [
-        '"Voorgrond: Die kleur van die QR-modules. Swart (#000000) is standaard, maar enige donker kleur werk.”',
-        '"Agtergrond: Die agtergrondkleur. Wit (#ffffff) is standaard. Verseker voldoende kontras met die voorgrond.”',
-        '"Deursigtige agtergrond: Verwyder die agtergrond heeltemal vir gebruik op gekleurde oppervlaktes. Maak seker dat die oppervlak voldoende kontras bied.”',
-      ],
-    },
-    {
-      heading: '"Modulegrootte en gaping”',
-      paragraphs: [
-        '"Modulegrootte: Beheer hoe groot elke module in pixels weergegee word. Groter waardes skep groter, makliker skandeerbare kodes.”',
-        '"Module-gaping: Voeg spasie tussen modules as \'n persentasie by. Klein gapings (5-15%) kan skandeerbaarheid in sommige toestande verbeter, maar oormatige gapings verminder betroubaarheid.”',
-      ],
-    },
-    {
-      heading: '"Uitvoerinstellings”',
-      paragraphs: [
-        '"Formaat: Kies jou uitvoerformaat gebaseer op die gebruiksgeval.”',
-      ],
-      bullets: [
-        '"PNG: Verlieslose rasterformaat, ideaal vir die meeste gebruike. Die beste vir drukwerk en digitaal.”',
-        '"WebP: Moderne formaat met kleiner lêergroottes. Goed vir webgebruik.”',
-        '"GIF: Vereis vir geanimeerde QR-kodes. Ondersteun deursigtigheid.”',
-        '"SVG: Vektorformaat wat oneindig skaal. Die beste vir grootdruk of wanneer jy die kode moet wysig.”',
-      ],
-    },
-    {
-      heading: '"Uitvoerdimensies”',
-      paragraphs: [
-        '"Breedte/Hoogte: Stel die uitvoergrootte in pixels. Vir drukwerk, bereken gebaseer op DPI (bv. 300 DPI teen 1 duim = 300px). Groter groottes skandeer meer betroubaar op afstand.”',
-      ],
-    },
-    {
-      heading: '"Animasie-instellings (Gevorderd)”',
-      paragraphs: [
-        '"Beheer geanimeerde QR-kodegedrag:”',
-      ],
-      bullets: [
-        '"Spoed: Animasieraamtempo in millisekondes.”',
-        '"Lus: Deurlopende of enkelspel-animasie.”',
-        '"Bounce: Ping-pong animasie regie.”',
-        '"Beginraam: Begin animasie vanaf spesifieke raam.”',
-        '"Maksimum rame: Beperk totale rame in animasie.”',
-        '"Raamstap: Slaan rame oor vir vinniger animasie.”',
-        '"Interpolasie: Geen, Kruisvervaag of Verander tussen rame.”',
-      ],
-    },
-    {
-      heading: '"Inhoudsoorte (Gevorderd)”',
-      paragraphs: [
-        '"Gevorderde vlak ontsluit bykomende vragformate:”',
-      ],
-      bullets: [
-        '"Telefoonnommer (tel:): Skep \'n oproepbare telefoonskakel.”',
-        '"E-pos (mailto:): Maak e-poskliënt oop met opsionele onderwerp en liggaam.”',
-        '"SMS: Voorafgevulde teksboodskap na \'n telefoonnommer.”',
-        '"vCard: Volledige kontakkaart met naam, organisasie, telefoon, e-pos, adres.”',
-        '"MeCard: Kompakte kontakformaat gewild in Japan.”',
-        '"BizCard: Ouer besigheidskaartjieformaat.”',
-        '"Geo-ligging: GPS-koördinate wat in kaarte oopmaak.”',
-        '"WiFi: Netwerkbewyse vir outomatiese verbinding (SSID, wagwoord, sekuriteitstipe).”',
-        '"Kalendergebeurtenis: iCalendar-formaat met titel, ligging, datum/tyd.”',
-        '"Geleentheid RSVP: Skakel na geleentheidsregistrasiebladsy.”',
-        '"Kalenderintekening: Teken in op \'n ICS/WebCal-voer.”',
-        '"Lêer-/Dokument-URL: Direkte skakel na aflaaibare lêers.”',
-        '"Wolkbergingskakel: Skakels na Google Drive, Dropbox, OneDrive, ens.”',
-        '"Sosiale Profiel: Skakels na LinkedIn, Twitter, Instagram, ens.”',
-        '"Boodskapskakel: WhatsApp, Telegram, Signal diep skakels.”',
-      ],
-    },
-    {
-      heading: '"Gevorderde oorlegfunksies”',
-      paragraphs: [
-        '"Bykomende oorlegvermoëns:”',
-      ],
-      bullets: [
-        '"Sny: Aktiveer sny om \'n vierkantige streek van jou beeld te kies.”',
-        '"Halftoon: Klassieke drukstyl-kolletjiepatroon gebaseer op beeldhelderheid.”',
-        '"Gedithered: Foutdiffusie-dithering vir gedetailleerde reproduksie.”',
-      ],
-    },
-    {
-      heading: '"Oorleg-mengmodusse (Gevorderd)”',
-      paragraphs: [
-        '"Bykomende mengmodusse in Gevorderde vlak:”',
-      ],
-      bullets: [
-        '"Subpixel: Verdeel elke module in subpixels vir hoër detail.”',
-        '"Blou Geraas: Gebruik blou geraas-dithering vir artefakvrye patrone.”',
-        '"Mosaïek: Teëlgebaseerde effek wat beeldstruktuur bewaar.”',
-        '"Gapevul: Plaas beeld in gapings tussen modules.”',
-        '"Helderheid: Varieer modulegrootte gebaseer op beeldhelderheid.”',
-        '"Duotoon: Verbind beeld met twee kleure vir treffende kontras.”',
-      ],
-    },
-    {
-      heading: '"Oorlegintensiteit”',
-      paragraphs: [
-        '"Beheer hoe sterk die oorlegsel die QR-kode beïnvloed (0-100%). Hoër waardes wys meer beelddetail, maar kan skandeerbaarheid verminder. Begin rondom 70% en pas aan op grond van toetsing.”',
-      ],
-    },
-    {
-      heading: '"Kleurmodus”',
-      paragraphs: [
-        '"Hoe die oorlegbeeld verwerk word:”',
-      ],
-      bullets: [
-        '"Volle kleur: Behou oorspronklike beeldkleure.”',
-        '"Grysskaal: Skakel om na swart en wit kleure.”',
-        '"Swart & Wit: Hoëkontras binêre omskakeling.”',
-      ],
-    },
-    {
-      heading: '"Bewaar Soekerpatrone”',
-      paragraphs: [
-        '"Wanneer dit geaktiveer is, bly die driehoeksoekpatrone onveranderd deur die oorlegsel. Sterk aanbeveel vir betroubare skandering.”',
-      ],
-    },
-    {
-      heading: '"Beeldvoorverwerking”',
-      paragraphs: [
-        '"Pas filters toe op jou oorlegbeeld voordat jy dit meng. Hierdie aanpassings kan verbeter hoe die beeld in die finale QR-kode verskyn.”',
-      ],
-      bullets: [
-        '"Helderheid (-100 tot +100): Verlig of verdonker die beeld.”',
-        '"Kontras (-100 tot +100): Verhoog of verlaag die toonbereik.”',
-        '"Gamma (0.2 tot 3.0): Nie-lineêre helderheidsaanpassing. Waardes onder 1 verlig middeltone, bo 1 verdonker hulle.”',
-        '"Vasadasie (-100 tot +100): Kleurintensiteit. -100 is grysskaal, +100 is oorversadig.”',
-        '"Kleurrotasie (0-360°): Verskuif alle kleure rondom die kleurwiel.”',
-        '"Vervaag (0-20px): Versag beeldbesonderhede.”',
-        '"Verskerp (0-100%): Verbeter rande en besonderhede.”',
-        '"Plakkateer (0-16 vlakke): Verminder kleurvlakke vir \'n plakkaateffek.”',
-        '"Drempel (0-255): Skakel om na binêre swart/wit by die afsnypunt.”',
-        '"Randopsporing: Sobel- of Canny-algoritmes om slegs rande te wys.”',
-        '"Omkeer: Keer alle kleure om.”',
-      ],
-    },
-    {
-      heading: '"Pasmodus”',
-      paragraphs: [
-        '"Hoe die oorlegbeeld by die QR-kode-area pas:”',
-      ],
-      bullets: [
-        '"Omslag: Beeld vul die hele area, sny indien nodig.”',
-        '"Bevat: Hele beeld sigbaar, mag kantlyne hê.”',
-        '"Strek: Beeld vervorm om presies te vul.”',
-      ],
-    },
-    {
-      heading: '"Transformeer Opsies”',
-      paragraphs: [
-        '"Rotasie: Roteer die oorlegsel in 90°-inkremente.”',
-        '"Flip X/Y: Spieël die beeld horisontaal of vertikaal.”',
-      ],
-    },
-    {
-      heading: '"Dithering-algoritmes”',
-      paragraphs: [
-        '"Dithering skakel deurlopende toonbeelde om na patrone wat QR-kodes kan voorstel. Beskikbaar wanneer Dithered, Blue Noise of True Dither-mengmodusse gebruik word.”',
-      ],
-      bullets: [
-        '"Foutverspreiding: Klassieke Floyd-Steinberg-styl. Versprei kwantiseringsfout na aangrensende pixels.”',
-        '"Georden (Bayer): Gebruik \'n drempelmatriks vir gereelde patrone.”',
-        '"Gegroepeerde punt: Simuleer halftoondrukwerk.”',
-        '"Leegte en Groep: Geoptimaliseerde geordende dithering.”',
-        '"Blou Geraas: Visueel aangename, lukraak lykende patroon.”',
-        '"Blou Geraas Drempel: Drempel-dithering met blou geraas tekstuur.”',
-        '"Witgeraas: Willekeurige drempel-dithering.”',
-        '"Gaussiese/Driehoekige Geraas: Geraas met verskillende verspreidings.”',
-        '"Blou Geraas + Foutdiffusie: Hibriede kombinasie van beide tegnieke.”',
-        '"Geskermde Blou Geraas: Skermagtige blou geraaspatroon.”',
-        '"Perseptueel: Luminansie-geweeg vir beter visuele resultate.”',
-        '"Randbewus: Bewaar beeldrande tydens dithering.”',
-        '"Aanpasbare Drempel: Lokaal-aanpasbare drempelbepaling.”',
-        '"Temporale Blou Geraas: Vir geanimeerde GIF\'s, wissel patroon per raam.”',
-      ],
-    },
-    {
-      heading: '"Diffusiepitte”',
-      paragraphs: [
-        '"Wanneer Foutverspreiding-dithering gebruik word, kies hoe fout versprei word:”',
-      ],
-      bullets: [
-        '"Floyd-Steinberg: Klassieke 4-buur diffusie. Goeie algemene keuse.”',
-        '"Jarvis-Judice-Ninke: 12-buurman, gladder maar stadiger.”',
-        '"Stucki: Soortgelyk aan JJN met verskillende gewigte.”',
-        '"Burkes: Vereenvoudigde JJN, vinniger.”',
-        '"Sierra: Familie van pitte wat kwaliteit en spoed balanseer.”',
-        '"Atkinson: Ligverspreiding, behou detail maar kan korrelrig wees.”',
-      ],
+      heading: 'Diffusion Kernels',
+      paragraphs: ['When using Error Diffusion dithering, choose how error is distributed:'],
+      bullets: ['Floyd-Steinberg: Classic 4-neighbor diffusion. Good general choice.', 'Jarvis-Judice-Ninke: 12-neighbor, smoother but slower.', 'Stucki: Similar to JJN with different weights.', 'Burkes: Simplified JJN, faster.', 'Sierra: Family of kernels balancing quality and speed.', 'Atkinson: Light diffusion, preserves detail but can be grainy.'],
     },
     {
-      heading: '"Dither Krag”',
-      paragraphs: [
-        '"Beheer hoeveel dithering toegepas word (0-100%). Laer waardes behou meer van die oorspronklike patroon, hoër waardes wys meer beelddetail.”',
-      ],
+      heading: 'Dither Strength',
+      paragraphs: ['Controls how much dithering is applied (0-100%). Lower values preserve more of the original pattern, higher values show more image detail.'],
     },
     {
-      heading: '"Subpixel-instellings”',
-      paragraphs: [
-        '"Wanneer Subpixel-mengmodus gebruik word:”',
-      ],
-      bullets: [
-        '"Roostergrootte: 2×2, 3×3, of 4×4 subpixels per module. Hoër = meer detail.”',
-        '"Sentrumreël: Streng vereis dat die middelste subpixel by die module pas. Halftoonsentrum laat variasie toe.”',
-        '"Neutrale Kleur: Kleur wat gebruik word vir onbepaalde subpixels.”',
-        '"Vindoorskakeling: Hoe vinderpatrone weergegee word (Solied of Gestileerd).”',
-      ],
+      heading: 'Subpixel Settings',
+      paragraphs: ['When using Subpixel blend mode:'],
+      bullets: ['Grid Size: 2×2, 3×3, or 4×4 subpixels per module. Higher = more detail.', 'Center Rule: Strict requires center subpixel to match module. Halftone Center allows variation.', 'Neutral Color: Color used for undetermined subpixels.', 'Finder Override: How finder patterns are rendered (Solid or Stylized).'],
     },
     {
-      heading: '"Ralftooninstellings”',
-      paragraphs: [
-        '"Wanneer halftoon-mengmodus gebruik word:”',
-      ],
-      bullets: [
-        '"Selgrootte: Per Module of N×N-rooster.”',
-        '"Puntvorm: Sirkel, Vierkant of Lyn.”',
-        '"Helderheidskromme: Lineêr, S-kromme of Gamma.”',
-      ],
+      heading: 'Halftone Settings',
+      paragraphs: ['When using Halftone blend mode:'],
+      bullets: ['Cell Size: Per Module or N×N grid.', 'Dot Shape: Circle, Square, or Line.', 'Brightness Curve: Linear, S-Curve, or Gamma.'],
     },
     {
-      heading: '"Duotoonkleure”',
-      paragraphs: [
-        '"Wanneer jy Duotone-mengmodus gebruik, stel die Skadukleur (donker areas) en Uitligkleur (helder areas) in.”',
-      ],
+      heading: 'Duotone Colors',
+      paragraphs: ['When using Duotone blend mode, set the Shadow color (dark areas) and Highlight color (bright areas).'],
     },
     {
-      heading: '"GIF-animasie-instellings”',
-      paragraphs: [
-        '"Wanneer geanimeerde GIF-oorlegsels gebruik word:”',
-      ],
-      bullets: [
-        '"Gebruik raamvertragings: Respekteer oorspronklike GIF-tydsberekening.”',
-        '"Maksimum FPS: Beperk raamtempo (1-60 fps).”',
-        '"Beskikkingshantering: Respekteer of vereenvoudig raambeskikkingsmetodes.”',
-      ],
+      heading: 'GIF Animation Settings',
+      paragraphs: ['When using animated GIF overlays:'],
+      bullets: ['Use Frame Delays: Respect original GIF timing.', 'Max FPS: Limit frame rate (1-60 fps).', 'Disposal Handling: Respect or Simplify frame disposal methods.'],
     },
     {
-      heading: '"Gevorderde Leweropsies”',
-      paragraphs: [
-        '"Bykomende weergawekontroles:”',
-      ],
-      bullets: [
-        '"Gapmodus: Geen, Inset, Strek of Negatiewe Ruimte gapingstilering.”',
-        '"Hoekradius: Persentasie afgeronde hoeke vir modules.”',
-        '"Gradiënt: Geen, Lineêr, Radiaal of Koniese gradiënt op modules.”',
-        '"Oog Buite/Binne Styl: Onafhanklike stilering vir soekpatroonringe.”',
-        '"Puntrotasie: Roteer diamant-/puntmodules.”',
-        '"Oogskaal: Grootte-aanpassing vir soekpatrone.”',
-        '"Raamstyl: Voeg dekoratiewe rame by (Afgeronde raam, plakker, etiket).”',
-        '"Raamteks: Voeg teks soos "Skandeer my!" by rame.”',
-      ],
+      heading: 'Advanced Rendering Options',
+      paragraphs: ['Additional rendering controls:'],
+      bullets: ['Gap Mode: None, Inset, Stroke, or Negative Space gap styling.', 'Corner Radius: Rounded corners percentage for modules.', 'Gradient: None, Linear, Radial, or Conic gradient on modules.', 'Eye Outer/Inner Style: Independent styling for finder pattern rings.', 'Dot Rotation: Rotate diamond/dot modules.', 'Eye Scale: Size adjustment for finder patterns.', 'Frame Style: Add decorative frames (Rounded Frame, Sticker, Tag).', 'Frame Text: Add text like "Scan Me!" to frames.'],
     },
     {
-      heading: '"Gevorderde QR-kodering”',
-      paragraphs: [
-        '"Verfyn QR-kodering:”',
-      ],
-      bullets: [
-        '"Enkoderingsmodus: Outomaties, Numeries, Alfanumeries, Byte/UTF-8, of Kanji.”',
-        '"Dwing Min Stil Sone Af: Verseker ten minste 4 module marge.”',
-      ],
+      heading: 'Advanced QR Encoding',
+      paragraphs: ['Fine-tune QR encoding:'],
+      bullets: ['Encoding Mode: Auto, Numeric, Alphanumeric, Byte/UTF-8, or Kanji.', 'Enforce Min Quiet Zone: Ensure at least 4 module margin.'],
     },
     {
-      heading: '"Gevorderde Uitvoeropsies”',
-      paragraphs: [
-        '"Bykomende uitvoerinstellings:”',
-      ],
-      bullets: [
-        '"Lêernaam: Pasgemaakte lêernaam vir aflaaie.”',
-        '"GIF-paletgrootte: 2-256 kleure in GIF-uitvoer.”',
-        '"GIF-kwantiseerder: Mediaansnit, NeuQuant of Octree-kleurvermindering.”',
-        '"GIF-rastering: Af, Floyd-Steinberg of Georden.”',
-        '"GIF Deursigtige Kleur: Stel \'n kleur om deursigtig te wees.”',
-        '"SVG Ware Vektor: Gebruik paaie in plaas van ingebedde raster.”',
-        '"SVG-vormpresisie: Piksel- of presiese padweergawe.”',
-        '"SVG Inbed Raster Oorleg: Sluit oorleg as ingebedde beeld in.”',
-        '"Agtergrondoorskrywing: Forseer \'n spesifieke agtergrondkleur in uitvoer.”',
-      ],
+      heading: 'Advanced Output Options',
+      paragraphs: ['Additional export settings:'],
+      bullets: ['Filename: Custom filename for downloads.', 'GIF Palette Size: 2-256 colors in GIF output.', 'GIF Quantizer: Median Cut, NeuQuant, or Octree color reduction.', 'GIF Dithering: Off, Floyd-Steinberg, or Ordered.', 'GIF Transparent Color: Set a color to be transparent.', 'SVG True Vector: Use paths instead of embedded raster.', 'SVG Shape Precision: Pixel or Precise path rendering.', 'SVG Embed Raster Overlay: Include overlay as embedded image.', 'Background Override: Force a specific background color in output.'],
     },
     {
-      heading: '"Validasie-opsies”',
-      paragraphs: [
-        '"Invoerverwerkingsinstellings:”',
-      ],
-      bullets: [
-        '"Valideer invoer: Kontroleer inhoudformaat voor kodering.”',
-        '"Sny witspasies af: Verwyder voorste/agterste spasies.”',
-        '"Normaliseer Nuwe Lyne: Skakel alle lyneindes om na LF.”',
-        '"Maksimum Lengte Beskermer: Waarsku as inhoud QR-kapasiteit oorskry.”',
-      ],
+      heading: 'Validation Options',
+      paragraphs: ['Input processing settings:'],
+      bullets: ['Validate Input: Check content format before encoding.', 'Trim Whitespace: Remove leading/trailing spaces.', 'Normalize Newlines: Convert all line endings to LF.', 'Max Length Guard: Warn if content exceeds QR capacity.'],
     },
     {
-      heading: '"Professionele Kenmerke”',
-      paragraphs: [
-        '"Die Professionele vlak voeg watermerke, metadata, deelopsies, veiligheidsanalise, betaal-QR-kodes en ondernemingskenmerke by.”',
-      ],
+      heading: 'Professional Features',
+      paragraphs: ['The Professional level adds watermarks, metadata, sharing options, safety analysis, payment QR codes, and enterprise features.'],
     },
     {
-      heading: '"Watermerk”',
-      paragraphs: [
-        '"Voeg watermerke by jou QR-kodes:”',
-      ],
-      bullets: [
-        '"Soort: Teks-, Beeld- of Patroonwatermerk.”',
-        '"Posisie: Sentrum, Hoeke, Kante, Agter, of Stil Sone.”',
-        '"Ondeursigtigheid: Watermerkdeursigtigheid (0-100%).”',
-        '"Mengmodus: Normaal, Vermenigvuldig, Skerm of Oorleg-menging.”',
-      ],
+      heading: 'Watermark',
+      paragraphs: ['Add watermarks to your QR codes:'],
+      bullets: ['Kind: Text, Image, or Pattern watermark.', 'Position: Center, Corners, Edges, Behind, or Quiet Zone.', 'Opacity: Watermark transparency (0-100%).', 'Blend Mode: Normal, Multiply, Screen, or Overlay blending.'],
     },
     {
-      heading: '"Metadata”',
-      paragraphs: [
-        '"Voeg metadata in uitgevoerde lêers in:”',
-      ],
-      bullets: [
-        '"Titel, Outeur, Kopiereg, Lisensie, Beskrywingsvelde.”',
-        '"Skeppingstyd: Voeg generasietydstempel in.”',
-        '"Aangepaste sleutelwaarde: Voeg arbitrêre metadata-pare by.”',
-      ],
+      heading: 'Metadata',
+      paragraphs: ['Embed metadata in exported files:'],
+      bullets: ['Title, Author, Copyright, License, Description fields.', 'Creation Time: Embed generation timestamp.', 'Custom Key-Value: Add arbitrary metadata pairs.'],
     },
     {
-      heading: '"Deel”',
-      paragraphs: [
-        '"Deel jou QR-kode-konfigurasies:”',
-      ],
-      bullets: [
-        '"Direkte skakel: Genereer \'n deelbare URL met jou huidige instellings.”',
-        '"Inbed HTML: Kry inbedkode vir webwerwe.”',
-        '"Enkodeer Parameters: Sluit alle instellings in die deel-URL in.”',
-        '"Let wel: Oorlegbeelde van plaaslike lêers kan nie via URL gedeel word nie.”',
-      ],
+      heading: 'Sharing',
+      paragraphs: ['Share your QR code configurations:'],
+      bullets: ['Direct Link: Generate a shareable URL with your current settings.', 'Embed HTML: Get embed code for websites.', 'Encode Parameters: Include all settings in the share URL.', 'Note: Overlay images from local files cannot be shared via URL.'],
     },
     {
-      heading: '"Veiligheidsanalise”',
-      paragraphs: [
-        '"Maak seker dat QR-kodes skandeerbaar bly:”',
-      ],
-      bullets: [
-        '"Veiligheidsmodus: Af, Gebalanseerd of Streng skanderingsvereistes.”',
-        '"Min Modulegrootte: Minimum pixelgrootte per module.”',
-        '"Min Stil Sone: Minimum marge modules.”',
-        '"Sluitvinders/Tydsberekening/Belyning/Formaat/Weergawe: Beskerm spesifieke elemente.”',
-        '"Maksimum Oorlegintensiteit deur ECC: Outomatiese intensiteitslimiete gebaseer op foutkorreksievlak.”',
-      ],
+      heading: 'Safety Analysis',
+      paragraphs: ['Ensure QR codes remain scannable:'],
+      bullets: ['Safety Mode: Off, Balanced, or Strict scanning requirements.', 'Min Module Size: Minimum pixel size per module.', 'Min Quiet Zone: Minimum margin modules.', 'Lock Finders/Timing/Align/Format/Version: Protect specific elements.', 'Max Overlay Intensity by ECC: Automatic intensity limits based on error correction level.'],
     },
     {
-      heading: '"Inhoudsoorte (Professioneel)”',
-      paragraphs: [
-        '"Professionele vlak voeg betaling- en ondernemingsinhoudtipes by:”',
-      ],
-      bullets: [
-        '"EPC/SEPA (EU): Europese bankoorplasings-QR-kodes met IBAN, BIC, bedrag, verwysing.”',
-        '"UPI (Indië): Verenigde Betalingskoppelvlak met VPA, naam van begunstigde, bedrag.”',
-        '"PayNow (Singapoer): Singapoer vinnige betaling met UEN of selfoonnommer.”',
-        '"PromptPay (Thailand): Thaise nasionale betalingsstelsel.”',
-        '"PIX (Brasilië): Brasiliaanse kitsbetaling met PIX-sleutel.”',
-        '"Kripto: Bitcoin, Ethereum, Litecoin betaaladresse met opsionele bedrag.”',
-        '"Bemarkingsveldtogskakel: URL\'e met volledige UTM-parameter (bemarkingsetikette) dop.”',
-        '"Kort skakel: Vir gebruik met URL-verkorters vir dinamiese/opspoorbare QR-kodes.”',
-        '"GS1 Digitale Skakel: Produkidentifikasie met GTIN, reeksnommer, bondel, vervaldatum.”',
-        '"App-diep skakel: iOS/Android-app-diep skakels met pasgemaakte skemas.”',
-        '"Aangepaste formaat: Rou data sonder formatering of validering.”',
-      ],
+      heading: 'Content Types (Professional)',
+      paragraphs: ['Professional level adds payment and enterprise content types:'],
+      bullets: ['EPC/SEPA (EU): European bank transfer QR codes with IBAN, BIC, amount, reference.', 'UPI (India): Unified Payments Interface with VPA, payee name, amount.', 'PayNow (Singapore): Singapore fast payment with UEN or mobile number.', 'PromptPay (Thailand): Thai national payment system.', 'PIX (Brazil): Brazilian instant payment with PIX key.', 'Crypto: Bitcoin, Ethereum, Litecoin payment addresses with optional amount.', 'Marketing Campaign Link: URLs with full UTM parameter (Marketing Tags) tracking.', 'Short Link: For use with URL shorteners for dynamic/trackable QR codes.', 'GS1 Digital Link: Product identification with GTIN, serial, batch, expiry.', 'App Deep Link: iOS/Android app deep links with custom schemes.', 'Custom Format: Raw data with no formatting or validation.'],
     },
     {
-      heading: '"Taalrelevante Betalings in Gevorderde Modus”',
-      paragraphs: [
-        '"Wanneer Gevorderde modus gebruik word, wys ANQR outomaties betaalmetodes wat relevant is vir jou gekose taal. Byvoorbeeld, Viëtnamese gebruikers sien VietQR, Thaise gebruikers sien PromptPay, en Indiese gebruikers sien UPI en BharatQR. Globale betaalmetodes (kriptogeldeenheid, PayPal, Cash App) is beskikbaar vir alle tale. Professionele modus ontsluit alle betaalstandaarde ongeag die taal.”',
-      ],
+      heading: 'Language-Relevant Payments in Advanced Mode',
+      paragraphs: ['When using Advanced mode, ANQR automatically shows payment methods relevant to your selected language. For example, Vietnamese users see VietQR, Thai users see PromptPay, and Indian language users see UPI and BharatQR. Global payment methods (cryptocurrency, PayPal, Cash App) are available to all languages. Professional mode unlocks all payment standards regardless of language.'],
     },
     {
-      heading: '"Europese Betalingsstandaarde”',
-      bullets: [
-        '"EPC/SEPA (EU): Europese bankoordrag QR-kodes volgens die EPC QR-kodestandaard. Ondersteun IBAN, BIC (opsioneel vir binnelands), bedrag in EUR, en gestruktureerde of ongestruktureerde betalingsverwysings. Word gebruik regoor die SEPA-sone, insluitend EU-lande plus Switserland, Noorweë, Ysland, Liechtenstein, Monaco en San Marino.”',
-        '"Switserse QR-rekening: Switserse betalingsstandaard volgens SIX Implementeringsriglyne. Ondersteun CHF en EUR, QR-verwysing (QRR), krediteurverwysing (ISO 11649), gestruktureerde krediteur-/skuldenaaradresse en rekeninginligting. Vereis vir Switserse fakture sedert 2022.”',
-      ],
+      heading: 'European Payment Standards',
+      bullets: ['EPC/SEPA (EU): European bank transfer QR codes following the EPC QR Code Standard. Supports IBAN, BIC (optional for domestic), amount in EUR, and structured or unstructured payment references. Used across the SEPA zone including EU countries plus Switzerland, Norway, Iceland, Liechtenstein, Monaco, and San Marino.', 'Swiss QR-bill: Swiss payment standard following SIX Implementation Guidelines. Supports CHF and EUR, QR-Reference (QRR), Creditor Reference (ISO 11649), structured creditor/debtor addresses, and bill information. Required for Swiss invoices since 2022.'],
     },
     {
-      heading: '"Indiese Betalingsstandaarde”',
-      bullets: [
-        '"UPI (Indië): Verenigde Betalingskoppelvlak volgens NPCI Diep Skakelspesifikasie. Ondersteun VPA (Virtuele Betalingsadres), begunstigdenaam, bedrag in INR, transaksienota, verwysings-ID, handelaarkategoriekode en transaksiemodus.”',
-        '"BharatQR (Indië): Verenigde QR-standaard wat beide UPI- en kaartgebaseerde betalings ondersteun. Kombineer UPI VPA met kaart PAN vir maksimum versoenbaarheid. Sluit handelaarnaam, stad, MCC, BTW-besonderhede en faktuur-/verwysingsnommers in.”',
-      ],
+      heading: 'Indian Payment Standards',
+      bullets: ['UPI (India): Unified Payments Interface following NPCI Deep Linking Specification. Supports VPA (Virtual Payment Address), payee name, amount in INR, transaction note, reference ID, merchant category code, and transaction mode.', 'BharatQR (India): Unified QR standard supporting both UPI and card-based payments. Combines UPI VPA with card PAN for maximum compatibility. Includes merchant name, city, MCC, GST details, and invoice/reference numbers.'],
     },
     {
-      heading: '"Suidoos-Asiatiese Betalingsstandaarde”',
-      bullets: [
-        '"PayNow (Singapoer): Singapoerse vinnige betalingsstelsel wat EMVCo QR-spesifikasie met SGQR-profiel gebruik. Ondersteun UEN (besigheidsregistrasie), selfoonnommer of NRIC as volmag-identifiseerders. Sluit \'n wysigbaarheidsvlag en vervaldatum in.”',
-        '"PromptPay (Thailand): Thaise nasionale betalingsstelsel wat die Bank van Thailand se EMV-profiel volg. Ondersteun selfoonnommer, nasionale ID, belasting-ID, e-beursie-ID en rekeningbetaling met verskeie verwysingsvelde.”',
-        '"QRIS (Indonesië): Vinnige reaksiekode Indonesiese standaard. EMV-gebaseerde nasionale betalingsstandaard wat handelaar-ID, NMID (Nasionale Handelaar-ID), handelaarkriteria-klassifikasie en geriefsfooie (vas of persentasie) ondersteun.”',
-        '"DuitNow (Maleisië): Maleisiese kitsbetalingstelsel. Ondersteun verskeie volmagtipes, insluitend NRIC, selfoon, paspoort, weermag-ID en besigheidsregistrasienommers.”',
-        '"VietQR (Viëtnam): Viëtnamese interbankoordragstandaard. Vereis bank BIN (NAPAS-identifikasie) en rekeningnommer. Ondersteun verskeie dienskodes vir verskillende oordragtipes (QRPUSH, QRIBFTTA, QRIBFTTC).”',
-        '"QR Ph (Filippyne): Filippynse QR-betalingsstandaard vir InstaPay en PESONet. Gebruik rekeningnommers met handelaaridentifikasie vir P2M (persoon-tot-handelaar) transaksies.”',
-      ],
+      heading: 'Southeast Asian Payment Standards',
+      bullets: ['PayNow (Singapore): Singapore fast payment system using EMVCo QR specification with SGQR profile. Supports UEN (business registration), mobile number, or NRIC as proxy identifiers. Includes amount editability flag and expiry date.', 'PromptPay (Thailand): Thai national payment system following Bank of Thailand EMV profile. Supports mobile number, national ID, tax ID, e-wallet ID, and bill payment with multiple reference fields.', 'QRIS (Indonesia): Quick Response Code Indonesian Standard. EMV-based national payment standard supporting merchant ID, NMID (National Merchant ID), merchant criteria classification, and convenience fees (fixed or percentage).', 'DuitNow (Malaysia): Malaysian instant payment system. Supports multiple proxy types including NRIC, mobile, passport, army ID, and business registration numbers.', 'VietQR (Vietnam): Vietnamese interbank transfer standard. Requires bank BIN (NAPAS identification) and account number. Supports multiple service codes for different transfer types (QRPUSH, QRIBFTTA, QRIBFTTC).', 'QR Ph (Philippines): Philippine QR payment standard for InstaPay and PESONet. Uses account numbers with merchant identification for P2M (person-to-merchant) transactions.'],
     },
     {
-      heading: '"Oos-Asiatiese Betalingsstandaarde”',
-      bullets: [
-        '"TWQR (Taiwan): Taiwanese QR-betalingsstandaard. Ondersteun handelaar-ID, belasting-ID en TWD-bedrae.”',
-        '"HKQR/FPS (Hong Kong): Hong Kong Faster Payment System QR-kodes. Ondersteun FPS ID, selfoonnommer of e-pos as betalingsidentifiseerders. Bedrae in HKD.”',
-        '"JPQR (Japan): Japannese verenigde QR-kode-betalingsstandaard. Gebruik winkel-ID vir handelaaridentifikasie met JPY-bedrae.”',
-      ],
+      heading: 'East Asian Payment Standards',
+      bullets: ['TWQR (Taiwan): Taiwanese QR payment standard. Supports merchant ID, tax ID, and TWD amounts.', 'HKQR/FPS (Hong Kong): Hong Kong Faster Payment System QR codes. Supports FPS ID, mobile number, or email as payment identifiers. Amounts in HKD.', 'JPQR (Japan): Japanese unified QR code payment standard. Uses store ID for merchant identification with JPY amounts.'],
     },
     {
-      heading: '"Ander Streeksbetalingsstandaarde”',
-      bullets: [
-        '"PIX (Brasilië): Brasiliaanse Sentrale Bank se kitsbetalingstelsel volgens BR-kodespesifikasie. Ondersteun PIX-sleutels (CPF, CNPJ, e-pos, telefoon of ewekansige sleutel), handelaar se naam/stad, transaksie-ID en BRL-bedrae.”',
-        '"AusPayNet/NPP PayID (Australië): Australiese Nuwe Betalingsplatform PayID-stelsel. Ondersteun PayID-tipes (e-pos, selfoon, ABN, organisasie-ID) of tradisionele BSB + rekeningnommer. Handelaarnaam is opsioneel aangesien betalers die geregistreerde naam vanaf NPP-opslag sien.”',
-      ],
+      heading: 'Other Regional Payment Standards',
+      bullets: ['PIX (Brazil): Brazilian Central Bank instant payment system following BR Code specification. Supports PIX keys (CPF, CNPJ, email, phone, or random key), merchant name/city, transaction ID, and BRL amounts.', 'AusPayNet/NPP PayID (Australia): Australian New Payments Platform PayID system. Supports PayID types (email, mobile, ABN, organisation ID) or traditional BSB + account number. Merchant name is optional as payers see the registered name from NPP lookup.'],
     },
     {
-      heading: '"Kriptogeldeenheidbetalings”',
-      bullets: [
-        '"Bitcoin/Litecoin (BIP-21): Standaard kriptogeldeenheid-betalings-URI\'s met beursie-adres, opsionele bedrag en etiket. Versoenbaar met alle groot Bitcoin- en Litecoin-beursies.”',
-        '"Lightning Network (BOLT11): Lightning Network-betalingsfakture. Plak \'n BOLT11-geënkodeerde faktuurstring vir onmiddellike Bitcoin-betalings met minimale fooie.”',
-        '"Ethereum (EIP-681): Ethereum-transaksieversoek-URI\'s wat inheemse ETH-oordragte en ERC-20-tokenoordragte ondersteun. Sluit ketting-ID in vir multinetwerkondersteuning (Mainnet, Polygon, BSC, Arbitrum, Optimisme, Avalanche), gasparameters en kontrakfunksie-oproepe.”',
-      ],
+      heading: 'Cryptocurrency Payments',
+      bullets: ['Bitcoin/Litecoin (BIP-21): Standard cryptocurrency payment URIs with wallet address, optional amount, and label. Compatible with all major Bitcoin and Litecoin wallets.', 'Lightning Network (BOLT11): Lightning Network payment invoices. Paste a BOLT11 encoded invoice string for instant Bitcoin payments with minimal fees.', 'Ethereum (EIP-681): Ethereum transaction request URIs supporting native ETH transfers and ERC-20 token transfers. Includes chain ID for multi-network support (Mainnet, Polygon, BSC, Arbitrum, Optimism, Avalanche), gas parameters, and contract function calls.'],
     },
     {
-      heading: '"Betalingskakeldienste”',
-      bullets: [
-        '"PayPal.Me: PayPal-betalingskakels met gebruikersnaam en opsionele voorafgevulde bedrag. Ontvangers kan betaal via PayPal-saldo, kaarte of bankrekeninge.”',
-        '"Kontant-app: Kontant-app-betalingskakels met $cashtag met opsionele bedrag. Gewild in die Verenigde State vir eweknie-betalings.”',
-      ],
+      heading: 'Payment Link Services',
+      bullets: ['PayPal.Me: PayPal payment links with username and optional pre-filled amount. Recipients can pay via PayPal balance, cards, or bank accounts.', 'Cash App: Cash App payment links using $cashtag with optional amount. Popular in the United States for peer-to-peer payments.'],
     },
     {
-      heading: '"Generiese EMV QR”',
-      bullets: [
-        '"EMV Generies: Skep persoonlike EMV Handelaar-Aangebied Modus QR-kodes vir betalingsskemas wat nie spesifiek gelys is nie. Konfigureer handelaar se naam, stad, landkode (ISO 3166-1), geldeenheidkode (ISO 4217 numeries), MCC, fooitjie-/gerieflikheidsfooi-opsies en bykomende datavelde. Nuttig vir toetsing of persoonlike integrasies.”',
-      ],
+      heading: 'Generic EMV QR',
+      bullets: ['EMV Generic: Create custom EMV Merchant-Presented Mode QR codes for payment schemes not specifically listed. Configure merchant name, city, country code (ISO 3166-1), currency code (ISO 4217 numeric), MCC, tip/convenience fee options, and additional data fields. Useful for testing or custom integrations.'],
     },
     {
-      heading: '"Oorleg-mengmodusse (Professioneel)”',
-      paragraphs: [
-        '"Bykomende mengmodusse in Professionele vlak:”',
-      ],
-      bullets: [
-        '"Pikseleer: Gepikseleerde oorleg-effek.”',
-        '"Omlyn: Randopsporingsoorlegsel wat slegs kontoere wys.”',
-        '"Golf: Golwende vervormingseffek.”',
-        '"Subpixelgrootte: Veranderlike subpixelgrootte gebaseer op beeld.”',
-        '"Ware Dither: Gevorderde dithering met geordende matrikskeuse.”',
-        '"Ekstreem: Maksimum beeldsigbaarheid, kan skandeerbaarheid beïnvloed.”',
-      ],
+      heading: 'Overlay Blend Modes (Professional)',
+      paragraphs: ['Additional blend modes in Professional level:'],
+      bullets: ['Pixelate: Pixelated overlay effect.', 'Outline: Edge detection overlay showing only contours.', 'Wave: Wavy distortion effect.', 'Subpixel Size: Variable subpixel sizing based on image.', 'True Dither: Advanced dithering with ordered matrix selection.', 'Extreme: Maximum image visibility, may affect scannability.'],
     },
     {
-      heading: '"Beskermingsinstellings”',
-      paragraphs: [
-        '"Fynkorrelige beheer oor watter QR-elemente teen oorlegwysiging beskerm word:”',
-      ],
-      bullets: [
-        '"Behou tydsberekening: Hou tydspatrone onveranderd.”',
-        '"Behou Belyning: Hou belyningspatrone onveranderd.”',
-        '"Beskerm Formaatinligting: Beskerm formaatinligtingsmodules.”',
-        '"Beskerm weergawe-inligting: Beskerm weergawe-inligtingsmodules.”',
-      ],
+      heading: 'Protection Settings',
+      paragraphs: ['Fine-grained control over which QR elements are protected from overlay modification:'],
+      bullets: ['Preserve Timing: Keep timing patterns unmodified.', 'Preserve Alignment: Keep alignment patterns unmodified.', 'Protect Format Info: Shield format information modules.', 'Protect Version Info: Shield version information modules.'],
     },
     {
-      heading: '"ECC-Bewuste Modus”',
-      paragraphs: [
-        '"Verdeel intelligent die oorlegintensiteit gebaseer op foutkorreksiekapasiteit. Die stelsel analiseer watter modules gewysig kan word terwyl skandeerbaarheid behoue bly.”',
-      ],
-      bullets: [
-        '"Risikobegroting: Persentasie van foutkorreksiekapasiteit om te gebruik (0-100%).”',
-        '"Hoër begroting = meer sigbare oorlegsel maar meer riskante skandeerbaarheid.”',
-        '"Laer begroting = veiliger skandering maar minder sigbare oorlegsel.”',
-      ],
+      heading: 'ECC-Aware Mode',
+      paragraphs: ['Intelligently distributes overlay intensity based on error correction capacity. The system analyzes which modules can be modified while maintaining scannability.'],
+      bullets: ['Risk Budget: Percentage of error correction capacity to use (0-100%).', 'Higher budget = more visible overlay but riskier scannability.', 'Lower budget = safer scanning but less visible overlay.'],
     },
     {
-      heading: '"Professionele Leweropsies”',
-      paragraphs: [
-        '"Gevorderde weergawekontroles:”',
-      ],
-      bullets: [
-        '"Skerp rande: Gebruik gepikseleerde beeldweergawe vir skerp modulerande.”',
-        '"Pixel Snap: Vloer-, Ronde- of Plafon-pixelbelyning.”',
-        '"Kleurmodus per module: Solied, Volgens helderheid, Volgens posisie, Volgens oorlegsel, Volgens groep.”',
-        '"Kleurpalet: Definieer \'n persoonlike kleurpalet vir kleur per module.”',
-        '"Kontrasbeskerming: Verseker minimum kontrasverhouding tussen kleure.”',
-        '"Min Kontrasverhouding: WCAG-styl kontrasvereiste (1:1 tot 21:1).”',
-        '"Ekstra Grensmodules: Bykomende grens buite stil sone.”',
-      ],
+      heading: 'Professional Rendering Options',
+      paragraphs: ['Advanced rendering controls:'],
+      bullets: ['Crisp Edges: Use pixelated image rendering for sharp module edges.', 'Pixel Snap: Floor, Round, or Ceil pixel alignment.', 'Per-Module Color Mode: Solid, By Brightness, By Position, By Overlay, By Cluster.', 'Color Palette: Define custom color palette for per-module coloring.', 'Contrast Guard: Ensure minimum contrast ratio between colors.', 'Min Contrast Ratio: WCAG-style contrast requirement (1:1 to 21:1).', 'Extra Border Modules: Additional border beyond quiet zone.'],
     },
     {
-      heading: '"Professionele Uitvoeropsies”',
-      paragraphs: [
-        '"Ondernemingsuitvoerinstellings:”',
-      ],
-      bullets: [
-        '"DPI: Stel drukresolusie (72-600 DPI). 300 DPI word aanbeveel vir druk.”',
-        '"Sluit Stil Sone in: Wissel stil sone in uitvoerdimensies.”',
-        '"Uitvoer as Bykomend: Genereer PDF langs primêre formaat.”',
-      ],
+      heading: 'Professional Output Options',
+      paragraphs: ['Enterprise export settings:'],
+      bullets: ['DPI: Set print resolution (72-600 DPI). 300 DPI recommended for print.', 'Include Quiet Zone: Toggle quiet zone in output dimensions.', 'Export As Additional: Generate PDF alongside primary format.'],
     },
     {
-      heading: '"Animasie-instellings (Professioneel)”',
-      paragraphs: [
-        '"Bykomende professionele animasiekenmerke:”',
-      ],
-      bullets: [
-        '"Tydelelike Dither: Af, Blou Geraas, of Flikkerveilige per-raam dithering.”',
-        '"Patroon: Geen, Puls, Golf, Skandeerlyn, Skitter of Dryf-effekte.”',
-      ],
+      heading: 'Animation Settings (Professional)',
+      paragraphs: ['Additional professional animation features:'],
+      bullets: ['Temporal Dither: Off, Blue Noise, or Flicker Safe per-frame dithering.', 'Pattern: None, Pulse, Wave, Scanline, Shimmer, or Drift effects.'],
     },
     {
-      heading: '"API-verwysing”',
-      paragraphs: [
-        '"ANQR bied \'n bedienerkant-API vir die generering van QR-kodes via URL-parameters. Dit is ideaal vir die inbedding van QR-kodes in webwerwe, e-posse, dokumente of outomatiese werkvloeie sonder kliëntkant-JavaScript.”',
-        '"Basis-URL: https://anqr.link/api/qr”',
-      ],
+      heading: 'API Reference',
+      paragraphs: ['ANQR provides a server-side API for generating QR codes via URL parameters. This is ideal for embedding QR codes in websites, emails, documents, or automated workflows without client-side JavaScript.', 'Base URL: https://anqr.link/api/qr'],
     },
     {
-      heading: '"Basiese Parameters”',
-      paragraphs: [
-        '"Vereiste en algemene parameters (parametername word nie vertaal nie):”',
-      ],
-      bullets: [
-        '"data (vereis): Die inhoud wat in die QR-kode gekodeer moet word. URL-gekodeerde spesiale karakters.”',
-        '"grootte: Beeldgrootte in pixels (standaard: 400, maks: 2000). Word gebruik indien w/h nie gespesifiseer is nie.”',
-        '"w, h: Uitvoerbreedte en -hoogte in pixels. Oorskryf grootteparameter.”',
-        '"formaat: Uitvoerformaat — png, webp of gif (standaard: png).”',
-        '"ec: Foutkorreksievlak — L, M, Q of H (standaard: H).”',
-        '"fg: Voorgrondkleur as heksadesimum sonder # (standaard: 000000).”',
-        '"bg: Agtergrondkleur as heksadesimum sonder # (standaard: ffffff).”',
-        '"deursigtig: Stel op 1 vir deursigtige agtergrond.”',
-        '"marge: Stil sone in modules (standaard: 4).”',
-      ],
+      heading: 'Basic Parameters',
+      paragraphs: ['Required and common parameters (parameter names are not translated):'],
+      bullets: ['data (required): The content to encode in the QR code. URL-encode special characters.', 'size: Image size in pixels (default: 400, max: 2000). Used if w/h not specified.', 'w, h: Output width and height in pixels. Overrides size parameter.', 'format: Output format — png, webp, or gif (default: png).', 'ec: Error correction level — L, M, Q, or H (default: H).', 'fg: Foreground color as hex without # (default: 000000).', 'bg: Background color as hex without # (default: ffffff).', 'transparent: Set to 1 for transparent background.', 'margin: Quiet zone in modules (default: 4).'],
     },
     {
-      heading: '"Stylparameters”',
-      paragraphs: [
-        '"Module- en patroonstilering:”',
-      ],
-      bullets: [
-        '"styl: Modulestyl — vierkantig, afgerond, kolletjies, diamant, verbind.”',
-        '"vinder: Vinderpatroonstyl — vierkantig, afgerond, sirkel.”',
-        '"align: Belyningspatroonstyl — match_finder, vierkantig, afgerond, sirkel.”',
-        '"tydsberekening: Tydsberekeningspatroonstyl — match_module, solied, stippellyn.”',
-        '"radius: Hoekradiuspersentasie 0-100.”',
-        '"gaping: Module gaping persentasie 0-50.”',
-        '"gapMode: Gapmodus — geen, inset, streep, negatiewe_spasie.”',
-        '"oogBuite, oogBinne: Oogstyle — vierkantig, afgerond, sirkel.”',
-        '"eyeScale: Oogskaalpersentasie (standaard: 100).”',
-        '"grad: Gradiënttipe — geen, lineêr, radiaal, konies.”',
-        '"gradiënthoek: Gradiënthoek vir lineêre gradiënte.”',
-        '"gradiëntstops: Gradiëntstops as kleur1,pos1,kleur2,pos2,… (bv. ff0000,0,0000ff,1).”',
-      ],
+      heading: 'Styling Parameters',
+      paragraphs: ['Module and pattern styling:'],
+      bullets: ['style: Module style — square, rounded, dots, diamond, connected.', 'finder: Finder pattern style — square, rounded, circle.', 'align: Alignment pattern style — match_finder, square, rounded, circle.', 'timing: Timing pattern style — match_module, solid, dashed.', 'radius: Corner radius percentage 0-100.', 'gap: Module gap percentage 0-50.', 'gapMode: Gap mode — none, inset, stroke, negative_space.', 'eyeOuter, eyeInner: Eye styles — square, rounded, circle.', 'eyeScale: Eye scale percentage (default: 100).', 'grad: Gradient type — none, linear, radial, conic.', 'gradAngle: Gradient angle for linear gradients.', 'gradStops: Gradient stops as color1,pos1,color2,pos2,... (e.g., ff0000,0,0000ff,1).'],
     },
     {
-      heading: '"Oorlegparameters”',
-      paragraphs: [
-        '"Beeldoorleg-opsies (oorlegbeeld word van die bedienerkant afgehaal):”',
-      ],
-      bullets: [
-        '"img: URL om beeld oor te lê (moet publiek toeganklik wees).”',
-        '"modus: Oorlegmodus — middelpunt, halftoon, versnit, helderheid, mosaïek, geraas, blouruis, subpixel.”',
-        '"intensiteit: Oorlegintensiteit 0-100 (standaard: 100).”',
-        '"colorMode: Oorlegkleurmodus — kleur, grysskaal, swart-en-wit.”',
-        '"pasvorm: Hoe oorlegsel pas — bedek, bevat, rek.”',
-        '"rot: Oorvleuelende rotasie in grade.”',
-        '"flipX, flipY: Stel op 1 om oorlegsel om te draai.”',
-        '"keepFinders: Bewaar vinderpatrone (standaard: 1).”',
-        '"keepTiming, keepAlign: Stel op 1 om tydsberekening/belyningspatrone te bewaar.”',
-      ],
+      heading: 'Overlay Parameters',
+      paragraphs: ['Image overlay options (overlay image is fetched server-side):'],
+      bullets: ['img: URL to overlay image (must be publicly accessible).', 'mode: Overlay mode — center, halftone, blend, brightness, mosaic, dithered, blue-noise, subpixel.', 'intensity: Overlay intensity 0-100 (default: 100).', 'colorMode: Overlay color mode — color, grayscale, bw.', 'fit: How overlay fits — cover, contain, stretch.', 'rot: Overlay rotation in degrees.', 'flipX, flipY: Set to 1 to flip overlay.', 'keepFinders: Preserve finder patterns (default: 1).', 'keepTiming, keepAlign: Set to 1 to preserve timing/alignment patterns.'],
     },
     {
-      heading: '"Voorverwerkingsparameters”',
-      paragraphs: [
-        '"Beeldvoorverwerking toegepas op oorlegsel:”',
-      ],
-      bullets: [
-        '"helderheid: Aanpassing -100 tot 100 (standaard: 0).”',
-        '"kontras: Aanpassing -100 tot 100 (standaard: 0).”',
-        '"gamma: Waarde 0.1 tot 3 (standaard: 1).”',
-        '"versadiging: Aanpassing -100 tot 100 (standaard: 0).”',
-        '"kleurtoon: Kleurrotasie in grade.”',
-        '"vervaag: Vervaag in pixels.”',
-        '"skerp: Skerp hoeveelheid 0-100.”',
-        '"plakkaatmaak: Plakkaatmaakvlakke.”',
-        '"drempel: Binêre drempel 0-255.”',
-        '"rand: Randopsporing — af, sobel, slim.”',
-        '"omkeer: Stel op 1 om kleure om te keer.”',
-      ],
+      heading: 'Preprocessing Parameters',
+      paragraphs: ['Image preprocessing applied to overlay:'],
+      bullets: ['brightness: Adjustment -100 to 100 (default: 0).', 'contrast: Adjustment -100 to 100 (default: 0).', 'gamma: Value 0.1 to 3 (default: 1).', 'saturation: Adjustment -100 to 100 (default: 0).', 'hue: Hue rotation in degrees.', 'blur: Blur in pixels.', 'sharpen: Sharpen amount 0-100.', 'posterize: Posterize levels.', 'threshold: Binary threshold 0-255.', 'edge: Edge detection — off, sobel, canny.', 'invert: Set to 1 to invert colors.'],
     },
     {
-      heading: '"Watermerkparameters”',
-      paragraphs: [
-        '"Voeg watermerke by gegenereerde QR-kodes:”',
-      ],
-      bullets: [
-        '"wmEn: Stel op 1 om watermerk te aktiveer.”',
-        '"wmKind: Watermerktipe — teks, beeld, patroon.”',
-        '"wmText: Watermerk teks (URL-geënkodeerd).”',
-        '"wmImg: URL na watermerkbeeld.”',
-        '"wmPos: Posisie — middelpunt, hoeke, rande, agter, stil_sone.”',
-        '"wmOndeursigtigheid: Ondeursigtigheid 0-100 (standaard: 50).”',
-        '"wmBlend: Mengmodus — normaal, vermenigvuldig, skerm, oorleg.”',
-      ],
+      heading: 'Watermark Parameters',
+      paragraphs: ['Add watermarks to generated QR codes:'],
+      bullets: ['wmEn: Set to 1 to enable watermark.', 'wmKind: Watermark type — text, image, pattern.', 'wmText: Watermark text (URL-encoded).', 'wmImg: URL to watermark image.', 'wmPos: Position — center, corners, edges, behind, quiet_zone.', 'wmOpacity: Opacity 0-100 (default: 50).', 'wmBlend: Blend mode — normal, multiply, screen, overlay.'],
     },
     {
-      heading: '"Animasieparameters”',
-      paragraphs: [
-        '"Vir geanimeerde GIF-uitvoer (vereis formaat=gif):”',
-      ],
-      bullets: [
-        '"animPattern: Animasiepatroon — geen, puls, golf, skanderingslyn, glinstering, drywing, kleursiklus.”',
-        '"animFrames: Aantal rame 1-60 (standaard: 24).”',
-        '"animSpeed: Raamvertraging in millisekondes 10-1000 (standaard: 100).”',
-        '"animSeed: Willekeurige saad vir animasie.”',
-        '"verslapping: Animasieverslapping — lineêr, verligting_in, verligting_uit, verligting_in_uit, weiering.”',
-      ],
+      heading: 'Animation Parameters',
+      paragraphs: ['For animated GIF output (requires format=gif):'],
+      bullets: ['animPattern: Animation pattern — none, pulse, wave, scanline, shimmer, drift, color_cycle.', 'animFrames: Number of frames 1-60 (default: 24).', 'animSpeed: Frame delay in milliseconds 10-1000 (default: 100).', 'animSeed: Random seed for animation.', 'easing: Animation easing — linear, ease_in, ease_out, ease_in_out, bounce.'],
     },
     {
-      heading: '"Uitvoerparameters”',
-      paragraphs: [
-        '"Uitvoerformaatopsies:”',
-      ],
-      bullets: [
-        '"kwaliteit: WebP-kwaliteit 0-1 (standaard: 0.9).”',
-        '"webpQ: WebP-kwaliteit 0-100 (standaard: 90).”',
-        '"gifColors: GIF-paletgrootte 2-256 (standaard: 256).”',
-        '"dpi: Uitvoer-DPI vir PNG (standaard: 72).”',
-        '"metaTitel, metaOuteur, metaKopie, metaBeskrywing: PNG-metadatavelde.”',
-      ],
+      heading: 'Output Parameters',
+      paragraphs: ['Output format options:'],
+      bullets: ['quality: WebP quality 0-1 (default: 0.9).', 'webpQ: WebP quality 0-100 (default: 90).', 'gifColors: GIF palette size 2-256 (default: 256).', 'dpi: Output DPI for PNG (default: 72).', 'metaTitle, metaAuthor, metaCopy, metaDesc: PNG metadata fields.'],
     },
     {
-      heading: '"Voorbeeldgebruik”',
-      paragraphs: [
-        '"Basiese QR-kode:”',
-        '"https://anqr.link/api/qr?data=https://example.com”',
-        '"Gestileerde QR-kode met persoonlike kleure:”',
-        '"https://anqr.link/api/qr?data=Hello&size=300&fg=1e40af&bg=ffffff&style=rounded&radius=30”',
-        '"QR-kode met oorlegbeeld:”',
-        '"https://anqr.link/api/qr?data=https://example.com&ec=H&img=https://example.com/logo.png&mode=halftone&intensity=70”',
-        '"Geanimeerde GIF:”',
-        '"https://anqr.link/api/qr?data=Hello&format=gif&animPattern=pulse&animFrames=24&easing=ease_in_out”',
-      ],
+      heading: 'Example Usage',
+      paragraphs: ['Basic QR code:', 'https://anqr.link/api/qr?data=https://example.com', 'Styled QR code with custom colors:', 'https://anqr.link/api/qr?data=Hello&size=300&fg=1e40af&bg=ffffff&style=rounded&radius=30', 'QR code with overlay image:', 'https://anqr.link/api/qr?data=https://example.com&ec=H&img=https://example.com/logo.png&mode=halftone&intensity=70', 'Animated GIF:', 'https://anqr.link/api/qr?data=Hello&format=gif&animPattern=pulse&animFrames=24&easing=ease_in_out'],
     },
     {
-      heading: '"Inbedding van QR-kodes”',
-      paragraphs: [
-        '"In Professionele modus genereer die Deel-funksie inbedbare HTML en URL\'e. Hier is hoe inbedding werk:”',
-      ],
-      bullets: [
-        '"Deel skakel: Skep \'n URL na die ANQR-toepassing met al jou instellings geënkodeer as URL-parameters. Ontvangers kan die QR-kode bekyk en wysig.”',
-        '"Inbedbeeld: Genereer \'n etiket wat na die bediener-API wys. Die QR-kode word aan die bedienerkant weergegee en as \'n beeld bedien.”',
-        '"Inbed Markdown: Skep Markdown-beeldsintaksis vir dokumentasie en README-lêers.”',
-        '"Direkte API-URL: Die rou API-URL vir gebruik in toepassings, skrifte of ander integrasies.”',
-      ],
+      heading: 'Embedding QR Codes',
+      paragraphs: ['In Professional mode, the Share feature generates embeddable HTML and URLs. Here is how embedding works:'],
+      bullets: ['Share Link: Creates a URL to the ANQR app with all your settings encoded as URL parameters. Recipients can view and modify the QR code.', 'Embed Image: Generates an <img> tag pointing to the server API. The QR code is rendered server-side and served as an image.', 'Embed Markdown: Creates Markdown image syntax for documentation and README files.', 'Direct API URL: The raw API URL for use in applications, scripts, or other integrations.'],
     },
     {
-      heading: '"HTML-voorbeeld”',
-      paragraphs: [
-        '"Om \'n QR-kode in jou webwerf in te sluit:”',
-        '"<img src="https://anqr.link/api/qr?data=https://yoursite.com&size=200" alt="QR-kode" />”',
-        '"Vir responsiewe groottebepaling:”',
-        '"<img src="https://anqr.link/api/qr?data=https://yoursite.com&size=400" alt="QR-kode" style="maksimum-wydte: 100%; hoogte: outomaties;" />”',
-        '"Die bediener stoor antwoorde met lang kas-opskrifte, so herhaalde versoeke vir dieselfde URL is vinnig.”',
-      ],
+      heading: 'HTML Example',
+      paragraphs: ['To embed a QR code in your website:', '<img src="https://anqr.link/api/qr?data=https://yoursite.com&size=200" alt="QR Code" />', 'For responsive sizing:', '<img src="https://anqr.link/api/qr?data=https://yoursite.com&size=400" alt="QR Code" style="max-width: 100%; height: auto;" />', 'The server caches responses with long cache headers, so repeated requests for the same URL are fast.'],
     },
     {
-      heading: '"Deel URL-formaat”',
-      paragraphs: [
-        '"Wanneer jy op Deel in Professionele modus klik, kodeer ANQR jou huidige instellings in URL-parameters. Die formaat is:”',
-        '"https://anqr.link/?data=…&ec=H&style=rounded&….”',
-        '"Hierdie parameters weerspieël die API-parameters, sodat jy \'n deel-URL na \'n API-URL kan omskakel deur die basispad van / na /api/qr te verander en w/h-parameters aan te pas soos nodig.”',
-        '"Let wel: Oorlegbeelde wat vanaf plaaslike lêers opgelaai is, kan nie via URL gedeel word nie — slegs URL-gebaseerde oorlegsels (img-parameter) werk in gedeelde skakels en API-oproepe.”',
-      ],
+      heading: 'Share URL Format',
+      paragraphs: ['When you click Share in Professional mode, ANQR encodes your current settings into URL parameters. The format is:', 'https://anqr.link/?data=...&ec=H&style=rounded&....', 'These parameters mirror the API parameters, so you can convert a share URL to an API URL by changing the base path from / to /api/qr and adjusting w/h parameters as needed.', 'Note: Overlay images uploaded from local files cannot be shared via URL — only URL-based overlays (img parameter) work in shared links and API calls.'],
     },
     {
-      heading: '"Koerslimiete en Gebruik”',
-      paragraphs: [
-        '"Die API is gratis om te gebruik vir redelike volumes. Vir hoë-volume gebruik of kommersiële toepassings wat gewaarborgde bedryfstyd vereis, kontak ons asseblief.”',
-        '"API-antwoorde sluit aggressiewe kas-opskrifte in. Vir die beste werkverrigting, kas antwoorde aan jou kant of gebruik dieselfde URL konsekwent vir identiese QR-kodes.”',
-      ],
+      heading: 'Rate Limits and Usage',
+      paragraphs: ['The API is free to use for reasonable volumes. For high-volume usage or commercial applications requiring guaranteed uptime, please contact us.', 'API responses include aggressive caching headers. For best performance, cache responses on your end or use the same URL consistently for identical QR codes.'],
     },
     {
-      heading: '"Beste Praktyke”',
-      paragraphs: [
-        '"Volg hierdie riglyne vir betroubare QR-kodes:”',
-      ],
-      bullets: [
-        '"Toets altyd jou QR-kodes met verskeie skandeerder-apps voordat jy druk.”',
-        '"Gebruik Foutkorreksie H (Hoog) wanneer oorlegsels bygevoeg word.”',
-        '"Hou ten minste 4 modules stil sone (marge).”',
-        '"Verseker hoë kontras tussen voorgrond en agtergrond.”',
-        '"Vir drukwerk, gebruik ten minste 300 DPI en toets teen werklike drukgrootte.”',
-        '"Aktiveer Bewaar Soekerpatrone wanneer oorlegsels gebruik word.”',
-        '"Begin met laer oorlegintensiteit en verhoog dit geleidelik.”',
-        '"Vir buiteluggebruik, oorweeg groter modulegroottes en hoër foutkorreksie.”',
-      ],
+      heading: 'Best Practices',
+      paragraphs: ['Follow these guidelines for reliable QR codes:'],
+      bullets: ['Always test your QR codes with multiple scanner apps before printing.', 'Use Error Correction H (High) when adding overlays.', 'Keep at least 4 modules of quiet zone (margin).', 'Ensure high contrast between foreground and background.', 'For print, use at least 300 DPI and test at actual print size.', 'Enable Preserve Finder Patterns when using overlays.', 'Start with lower overlay intensity and increase gradually.', 'For outdoor use, consider larger module sizes and higher error correction.'],
     },
     {
-      heading: '"Probleemoplossing”',
-      paragraphs: [
-        '"Algemene probleme en oplossings:”',
-      ],
-      bullets: [
-        '"QR sal nie skandeer nie: Verminder oorlegintensiteit, verhoog foutkorreksie, kontroleer kontras.”',
-        '"Kode te groot: Verminder inhoudslengte, gebruik URL-verkorter, verlaag weergawe.”',
-        '"Vasige uitvoer: Vergroot modulegrootte, gebruik PNG in plaas van saamgeperste formate.”',
-        '"Kleure lyk verkeerd: Kontroleer kleurkontras, probeer grysskaal-oorlegmodus.”',
-        '"GIF animeer nie: Maak seker dat GIF-formaat-uitvoer gebruik word, kontroleer raamtelling.”',
-        '"Beeldoorleg laai nie: Kontroleer CORS-toestemmings op afgeleë beelde.”',
-      ],
+      heading: 'Troubleshooting',
+      paragraphs: ['Common issues and solutions:'],
+      bullets: ['QR won\'t scan: Reduce overlay intensity, increase error correction, check contrast.', 'Code too large: Reduce content length, use URL shortener, lower version.', 'Blurry output: Increase module size, use PNG instead of compressed formats.', 'Colors look wrong: Check color contrast, try grayscale overlay mode.', 'GIF not animating: Ensure using GIF format output, check frame count.', 'Image overlay not loading: Check CORS permissions on remote images.'],
     },
     {
-      heading: '"Sleutelbordkortpaaie”',
-      paragraphs: [
-        '"ANQR ondersteun standaard sleutelbordkortpaaie. Gebruik Ctrl/Cmd+S om uitvoer te aktiveer (wanneer op die voorskou gefokus is).”',
-      ],
+      heading: 'Keyboard Shortcuts',
+      paragraphs: ['ANQR supports standard keyboard shortcuts. Use Ctrl/Cmd+S to trigger export (when focused on the preview).'],
     },
     {
-      heading: '"Deel en Inbedding”',
-      paragraphs: [
-        '"In Professionele modus, klik die Deel-knoppie om \'n URL met jou huidige instellings te kopieer. Ontvangers kan hierdie URL oopmaak om jou presiese konfigurasie te sien. Let wel: Oorlegbeelde van plaaslike lêers kan nie via URL gedeel word nie.”',
-      ],
+      heading: 'Sharing & Embedding',
+      paragraphs: ['In Professional mode, click the Share button to copy a URL with your current settings. Recipients can open this URL to see your exact configuration. Note: Overlay images from local files cannot be shared via URL.'],
     },
   ],
 };

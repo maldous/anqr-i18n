@@ -1,147 +1,89 @@
-import type { PageDefinition } from '../types'
-import { LAST_UPDATED, CONTACT_EMAIL } from '../types'
+import type { PageDefinition } from '../types';
+import { LAST_UPDATED } from '../types';
 
 export const terms: PageDefinition = {
-  title: '"លក្ខខណ្ឌនៃសេវាកម្ម”',
-  description: '"តាមរយៈការចូលមើល ឬប្រើប្រាស់គេហទំព័រនេះ អ្នកយល់ព្រមគោរពតាមលក្ខខណ្ឌទាំងនេះ។”',
+  title: 'Terms of Service',
+  description: 'By accessing or using the site, you agree to be bound by these terms.',
   lastUpdated: LAST_UPDATED,
   sections: [
     {
-      heading: '"ការទទួលយកលក្ខខណ្ឌ”',
-      paragraphs: [
-        '"តាមរយៈការចូលប្រើ ឬប្រើប្រាស់ ANQR (anqr.link) អ្នកយល់ព្រមគោរពតាមលក្ខខណ្ឌនៃសេវាកម្មទាំងនេះ និងគោលការណ៍ឯកជនភាពរបស់យើង។ ប្រសិនបើអ្នកមិនយល់ព្រមតាមលក្ខខណ្ឌទាំងនេះទេ សូមកុំប្រើប្រាស់គេហទំព័រនេះ”។',
-        '"យើងអាចធ្វើបច្ចុប្បន្នភាពលក្ខខណ្ឌទាំងនេះជាប្រចាំ។ ការបន្តប្រើប្រាស់គេហទំព័របន្ទាប់ពីការផ្លាស់ប្តូរបង្កើតបានជាការទទួលយកលក្ខខណ្ឌថ្មី។”',
-      ],
+      heading: 'Acceptance of terms',
+      paragraphs: ['By accessing or using ANQR (anqr.link), you agree to be bound by these Terms of Service and our Privacy Policy. If you do not agree to these terms, do not use the site.', 'We may update these Terms from time to time. Continued use of the site after changes constitutes acceptance of the new terms.'],
     },
     {
-      heading: '"សិទ្ធិទទួលបាន”',
-      paragraphs: [
-        '"អ្នកត្រូវតែមានអាយុយ៉ាងតិច ១៣ ឆ្នាំដើម្បីប្រើប្រាស់ ANQR។ តាមរយៈការប្រើប្រាស់គេហទំព័រនេះ អ្នកបញ្ជាក់ថាអ្នកបំពេញតាមតម្រូវការអាយុនេះ។ ប្រសិនបើអ្នកមានអាយុក្រោម ១៨ ឆ្នាំ អ្នកបញ្ជាក់ថាអ្នកមានការអនុញ្ញាតពីឪពុកម្តាយ ឬអាណាព្យាបាលរបស់អ្នកក្នុងការប្រើប្រាស់គេហទំព័រនេះ”។',
-      ],
+      heading: 'Eligibility',
+      paragraphs: ['You must be at least 13 years of age to use ANQR. By using the site, you represent that you meet this age requirement. If you are under 18, you represent that you have your parent or guardian\'s permission to use the site.'],
     },
     {
-      heading: '«ការប្រើប្រាស់ដែលត្រូវបានអនុញ្ញាត»',
-      paragraphs: [
-        '"អ្នកអាចប្រើប្រាស់ ANQR សម្រាប់តែគោលបំណងស្របច្បាប់ប៉ុណ្ណោះ។ អ្នកទទួលខុសត្រូវទាំងស្រុងចំពោះខ្លឹមសារដែលអ្នកអ៊ិនកូដទៅជាលេខកូដ QR និងចំពោះរបៀបដែលអ្នកប្រើប្រាស់លេខកូដ QR ណាមួយដែលអ្នកបង្កើត។”',
-      ],
+      heading: 'Permitted use',
+      paragraphs: ['You may use ANQR for lawful purposes only. You are solely responsible for the content you encode into QR codes and for how you use any QR codes you generate.'],
     },
     {
-      heading: '«ការប្រព្រឹត្ត​ហាមឃាត់»',
-      paragraphs: [
-        '"អ្នកយល់ព្រមមិន៖”',
-      ],
-      bullets: [
-        '"ប្រើប្រាស់ ANQR ដើម្បីបង្កើតលេខកូដ QR ដែលជួយសម្រួលដល់ការបន្លំតាមអ៊ីនធឺណិត ការចែកចាយមេរោគ ការក្លែងបន្លំ ការបោកប្រាស់ ការយាយី ការបរិហារកេរ្តិ៍ ឬសកម្មភាពខុសច្បាប់ណាមួយ”។',
-        '"អ៊ិនកូដខ្លឹមសារដែលរំលោភលើសិទ្ធិបញ្ញា រំលោភលើភាពឯកជន ឬមានសម្ភារៈខុសច្បាប់”។',
-        '«ប៉ុនប៉ងរំខាន ផ្ទុកលើសទម្ងន់ ឬជ្រៀតជ្រែកដល់ប្រតិបត្តិការ ឬសុវត្ថិភាពនៃការដ្ឋាន»។',
-        '"វិស្វកម្មបញ្ច្រាស ឌិគ្រីប ឬព្យាយាមទាញយកកូដប្រភពចេញពីគេហទំព័រ។”',
-        '"ប្រើប្រាស់ឧបករណ៍ស្វ័យប្រវត្តិ (បូត ស្កែបភើរ) ដើម្បីចូលប្រើគេហទំព័រតាមរបៀបដែលធ្វើឱ្យខូចប្រសិទ្ធភាពសម្រាប់អ្នកប្រើប្រាស់ផ្សេងទៀត។”',
-        '"គេចវេះ ឬបិទមុខងារសុវត្ថិភាព ឬការគ្រប់គ្រងការចូលប្រើណាមួយ”។',
-        '«ក្លែងបន្លំជាបុគ្គល ឬអង្គភាពណាមួយ ឬបំភ្លៃការពិតអំពីសម្ព័ន្ធភាពរបស់អ្នក»។',
-      ],
+      heading: 'Prohibited conduct',
+      paragraphs: ['You agree not to:'],
+      bullets: ['Use ANQR to create QR codes that facilitate phishing, malware distribution, fraud, scams, harassment, defamation, or any illegal activity.', 'Encode content that infringes intellectual property rights, violates privacy, or contains illegal material.', 'Attempt to disrupt, overload, or interfere with the operation or security of the site.', 'Reverse engineer, decompile, or attempt to extract source code from the site.', 'Use automated tools (bots, scrapers) to access the site in a manner that degrades performance for other users.', 'Circumvent or disable any security or access control features.', 'Impersonate any person or entity or misrepresent your affiliation.'],
     },
     {
-      heading: '«កម្មសិទ្ធិបញ្ញា»',
-      paragraphs: [
-        '"អ្នករក្សាភាពជាម្ចាស់នៃខ្លឹមសារដែលអ្នកអ៊ិនកូដទៅជាលេខកូដ QR។ ANQR មិនអះអាងភាពជាម្ចាស់នៃទិន្នន័យរបស់អ្នកទេ។”',
-        '"ឈ្មោះ ឡូហ្គោ ការរចនាចំណុចប្រទាក់ និងលេខកូដមូលដ្ឋានរបស់ ANQR ត្រូវបានការពារដោយច្បាប់ស្តីពីការរក្សាសិទ្ធិ ពាណិជ្ជសញ្ញា និងច្បាប់កម្មសិទ្ធិបញ្ញាផ្សេងទៀត។ អ្នកមិនអាចចម្លង កែប្រែ ចែកចាយ ឬបង្កើតស្នាដៃនិស្សន្ទដោយគ្មានការអនុញ្ញាតពីយើងទេ”។',
-        '"QR Code® គឺជាពាណិជ្ជសញ្ញាដែលបានចុះបញ្ជីរបស់ DENSO WAVE INCORPORATED។ ANQR មិនមានទំនាក់ទំនងជាមួយ DENSO WAVE ទេ។”',
-      ],
+      heading: 'Intellectual property',
+      paragraphs: ['You retain ownership of the content you encode into QR codes. ANQR does not claim ownership of your data.', 'The ANQR name, logo, interface design, and underlying code are protected by copyright, trademark, and other intellectual property laws. You may not copy, modify, distribute, or create derivative works without our permission.', 'QR Code® is a registered trademark of DENSO WAVE INCORPORATED. ANQR is not affiliated with DENSO WAVE.'],
     },
     {
-      heading: '"អាជ្ញាប័ណ្ណ​មាតិកា​អ្នកប្រើប្រាស់”',
-      paragraphs: [
-        '"ដោយការប្រើប្រាស់ ANQR អ្នកមិនផ្តល់សិទ្ធិណាមួយដល់យើងចំពោះខ្លឹមសាររបស់អ្នកទេ។ នៅពេលប្រើប្រាស់ការបង្កើតក្នុងស្រុក (លំនាំដើម) ការបង្កើតលេខកូដ QR ទាំងអស់កើតឡើងនៅក្នុងកម្មវិធីរុករករបស់អ្នក ហើយយើងមិនចូលប្រើ រក្សាទុក ឬបញ្ជូនទិន្នន័យដែលបានអ៊ិនកូដរបស់អ្នកទេ។”',
-        'នៅពេលប្រើ API ផ្នែកម៉ាស៊ីនបម្រើ ខ្លឹមសាររបស់អ្នកត្រូវបានដំណើរការដើម្បីបង្កើតរូបភាព QR ប៉ុន្តែមិនត្រូវបានរក្សាទុក កត់ត្រា ឬប្រើប្រាស់សម្រាប់គោលបំណងផ្សេងទៀតក្រៅពីការបង្ហាញរូបភាពដែលបានស្នើសុំនោះទេ។',
-      ],
+      heading: 'User content license',
+      paragraphs: ['By using ANQR, you grant us no rights to your content. When using local generation (the default), all QR code generation happens in your browser and we do not access, store, or transmit your encoded data.', 'When using the server-side API, your content is processed to generate the QR image but is not stored, logged, or used for any other purpose beyond rendering the requested image.'],
     },
     {
-      heading: '"សេវាកម្ម និងការផ្សាយពាណិជ្ជកម្មរបស់ភាគីទីបី”',
-      paragraphs: [
-        '"គេហទំព័រនេះបង្ហាញការផ្សាយពាណិជ្ជកម្មតាមរយៈ Google AdSense ហើយអាចរួមបញ្ចូលតំណភ្ជាប់ទៅកាន់គេហទំព័រភាគីទីបី។ យើងមិនទទួលខុសត្រូវចំពោះខ្លឹមសារ សេវាកម្ម ឬការអនុវត្តឯកជនភាពរបស់ភាគីទីបីទេ។”',
-        '"អន្តរកម្មរបស់អ្នកជាមួយអ្នកផ្សាយពាណិជ្ជកម្ម និងភាគីទីបីគឺស្ថិតនៅចន្លោះអ្នក និងពួកគេតែប៉ុណ្ណោះ។ សូមមើលគោលការណ៍ឯកជនភាពរបស់យើងសម្រាប់ព័ត៌មានអំពីការអនុវត្តទិន្នន័យផ្សាយពាណិជ្ជកម្ម។”',
-      ],
+      heading: 'Third-party services and advertising',
+      paragraphs: ['The site displays advertisements through Google AdSense and may include links to third-party websites. We are not responsible for third-party content, services, or privacy practices.', 'Your interactions with advertisers and third parties are solely between you and them. See our Privacy Policy for information about advertising data practices.'],
     },
     {
-      heading: '«ការបដិសេធការធានា»',
-      paragraphs: [
-        '"ANQR ត្រូវបានផ្តល់ជូនដោយផ្អែកលើមូលដ្ឋាន "ដូចដែលមាន” និង "ដូចដែលមាន” ដោយគ្មានការធានាណាមួយឡើយ ទាំងជាក់ស្តែង ឬបង្កប់ន័យ រួមទាំងការធានាបង្កប់ន័យនៃភាពអាចធ្វើពាណិជ្ជកម្មបាន ភាពស័ក្តិសមសម្រាប់គោលបំណងជាក់លាក់ និងការមិនរំលោភបំពាន។”',
-        '"យើងមិនធានាថា៖ (ក) គេហទំព័រនេះនឹងមិនមានការរំខាន មានសុវត្ថិភាព ឬគ្មានកំហុស; (ខ) លេខកូដ QR នឹងស្កេននៅគ្រប់បរិស្ថាន លើឧបករណ៍ទាំងអស់ ឬជាមួយកម្មវិធីស្កេនទាំងអស់។ (គ) គេហទំព័រនឹងបំពេញតាមតម្រូវការរបស់អ្នក។”',
-        '"អ្នកគួរតែសាកល្បងលេខកូដ QR ជានិច្ចនៅក្នុងលក្ខខណ្ឌដែលពួកវានឹងត្រូវបានប្រើប្រាស់ (ទំហំបោះពុម្ព ពន្លឺ ប្រភេទអេក្រង់ ចម្ងាយ គុណភាពកាមេរ៉ា)។”',
-      ],
+      heading: 'Disclaimer of warranties',
+      paragraphs: ['ANQR IS PROVIDED ON AN "AS IS" AND "AS AVAILABLE" BASIS WITHOUT WARRANTIES OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, AND NON-INFRINGEMENT.', 'We do not warrant that: (a) the site will be uninterrupted, secure, or error-free; (b) QR codes will scan in all environments, on all devices, or with all scanner applications; (c) the site will meet your requirements.', 'You should always test QR codes in the conditions where they will be used (print size, lighting, screen type, distance, camera quality).'],
     },
     {
-      heading: '"ការកំណត់ការទទួលខុសត្រូវ”',
-      paragraphs: [
-        '"ដល់កម្រិតអតិបរមាដែលច្បាប់អនុញ្ញាត ANQR និងប្រតិបត្តិករ សាខា និងអ្នកផ្តល់អាជ្ញាប័ណ្ណរបស់ខ្លួននឹងមិនទទួលខុសត្រូវចំពោះការខូចខាតដោយផ្ទាល់ ដោយប្រយោល ចៃដន្យ ពិសេស ជាបន្តបន្ទាប់ ការដាក់ទណ្ឌកម្ម ឬជាឧទាហរណ៍ណាមួយឡើយ រួមទាំងការខូចខាតចំពោះការបាត់បង់ប្រាក់ចំណេញ ប្រាក់ចំណូល ទិន្នន័យ សុច្ឆន្ទៈ ការប្រើប្រាស់ ឬការខាតបង់អរូបីផ្សេងទៀត ដែលកើតឡើងពី ឬទាក់ទងនឹងការចូលប្រើ ឬការប្រើប្រាស់ (ឬអសមត្ថភាពក្នុងការចូលប្រើ ឬប្រើប្រាស់) សេវាកម្មរបស់អ្នក”។',
-        '"អ្នកយល់ និងយល់ព្រមយ៉ាងច្បាស់ថា ការប្រើប្រាស់សេវាកម្មរបស់អ្នកគឺជាហានិភ័យផ្ទាល់ខ្លួនរបស់អ្នក។ សេវាកម្មនេះត្រូវបានផ្តល់ជូនដោយឥតគិតថ្លៃ ហើយដូច្នេះ អ្នកយល់ព្រមថា ANQR និងប្រតិបត្តិកររបស់ខ្លួននឹងមិនទទួលខុសត្រូវចំពោះអ្នកអ្វីទាំងអស់ចំពោះការខូចខាត ឬការខាតបង់ណាមួយ។ ក្នុងករណីណាក៏ដោយ ការទទួលខុសត្រូវសរុបរបស់យើងនឹងមិនលើសពីសូន្យដុល្លារ ($0 AUD) ឡើយ។”',
-        '"អ្នកយល់ព្រមលើកលែង លះបង់ និងលើកលែងរាល់ការទាមទារ ការទាមទារ និងមូលហេតុនៃសកម្មភាពណាមួយប្រឆាំងនឹង ANQR និងប្រតិបត្តិកររបស់ខ្លួន ដែលកើតចេញពីការប្រើប្រាស់សេវាកម្មរបស់អ្នក”។',
-        '"ដែនសមត្ថកិច្ចមួយចំនួនមិនអនុញ្ញាតឱ្យមានការដកចេញនូវការធានា ឬការកំណត់ការទទួលខុសត្រូវមួយចំនួននោះទេ។ នៅក្នុងដែនសមត្ថកិច្ចបែបនេះ ការទទួលខុសត្រូវរបស់យើងនឹងត្រូវបានកំណត់ចំពោះវិសាលភាពអតិបរមាដែលអនុញ្ញាតដោយច្បាប់ជាធរមាន។”',
-      ],
+      heading: 'Limitation of liability',
+      paragraphs: ['TO THE MAXIMUM EXTENT PERMITTED BY LAW, ANQR AND ITS OPERATORS, AFFILIATES, AND LICENSORS SHALL NOT BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, CONSEQUENTIAL, PUNITIVE, OR EXEMPLARY DAMAGES, INCLUDING BUT NOT LIMITED TO DAMAGES FOR LOSS OF PROFITS, REVENUE, DATA, GOODWILL, USE, OR OTHER INTANGIBLE LOSSES, ARISING FROM OR RELATED TO YOUR ACCESS TO OR USE OF (OR INABILITY TO ACCESS OR USE) THE SERVICE.', 'YOU EXPRESSLY UNDERSTAND AND AGREE THAT YOUR USE OF THE SERVICE IS AT YOUR SOLE RISK. THE SERVICE IS PROVIDED FREE OF CHARGE, AND ACCORDINGLY, YOU AGREE THAT ANQR AND ITS OPERATORS SHALL HAVE NO LIABILITY TO YOU WHATSOEVER FOR ANY DAMAGES OR LOSSES. IN NO EVENT SHALL OUR TOTAL AGGREGATE LIABILITY EXCEED ZERO DOLLARS ($0 AUD).', 'YOU AGREE TO RELEASE, WAIVE, AND DISCHARGE ANY AND ALL CLAIMS, DEMANDS, AND CAUSES OF ACTION AGAINST ANQR AND ITS OPERATORS ARISING FROM YOUR USE OF THE SERVICE.', 'SOME JURISDICTIONS DO NOT ALLOW THE EXCLUSION OF CERTAIN WARRANTIES OR LIMITATIONS OF LIABILITY. IN SUCH JURISDICTIONS, OUR LIABILITY SHALL BE LIMITED TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW.'],
     },
     {
-      heading: '"សំណង”',
-      paragraphs: [
-        '"អ្នកយល់ព្រមធានា ការពារ និងមិនធ្វើឲ្យ ANQR ប្រតិបត្តិករ សាខា និងមន្ត្រី នាយក និយោជិត និងភ្នាក់ងាររបស់ខ្លួនមានបញ្ហា ពីការទាមទារ ការខូចខាត ការខាតបង់ ការទទួលខុសត្រូវ ការចំណាយ និងការចំណាយ (រួមទាំងថ្លៃសេវាផ្នែកច្បាប់) ដែលកើតឡើងពី៖ (ក) ការប្រើប្រាស់គេហទំព័ររបស់អ្នក; (ខ) ការរំលោភលើលក្ខខណ្ឌទាំងនេះរបស់អ្នក; (គ) ការរំលោភលើសិទ្ធិភាគីទីបីណាមួយរបស់អ្នក; (ឃ) ខ្លឹមសារណាមួយដែលអ្នកអ៊ិនកូដទៅជាលេខកូដ QR។”',
-      ],
+      heading: 'Indemnification',
+      paragraphs: ['You agree to indemnify, defend, and hold harmless ANQR, its operators, affiliates, and their respective officers, directors, employees, and agents from any claims, damages, losses, liabilities, costs, and expenses (including legal fees) arising from: (a) your use of the site; (b) your violation of these Terms; (c) your violation of any third-party rights; (d) any content you encode into QR codes.'],
     },
     {
-      heading: '«ការដោះស្រាយវិវាទ»',
-      paragraphs: [
-        '"ជម្លោះណាមួយដែលកើតចេញពីលក្ខខណ្ឌទាំងនេះ ឬការប្រើប្រាស់ ANQR របស់អ្នក នឹងត្រូវព្យាយាមដោះស្រាយជាមុនសិនតាមរយៈការចរចាក្រៅផ្លូវការដោយទាក់ទង ${CONTACT_EMAIL}”។',
-        '"ប្រសិនបើការដោះស្រាយក្រៅផ្លូវការបរាជ័យ វិវាទត្រូវដោះស្រាយតាមរយៈអាជ្ញាកណ្តាលដែលមានកាតព្វកិច្ចនៅរដ្ឋវិចតូរៀ ប្រទេសអូស្ត្រាលី លើកលែងតែភាគីណាមួយអាចស្វែងរកការសង្គ្រោះដោយដីកាបង្គាប់នៅក្នុងតុលាការចំពោះការរំលោភលើកម្មសិទ្ធិបញ្ញា”។',
-      ],
+      heading: 'Dispute resolution',
+      paragraphs: ['Any dispute arising from these Terms or your use of ANQR shall first be attempted to be resolved through informal negotiation by contacting ${CONTACT_EMAIL}.', 'If informal resolution fails, disputes shall be resolved through binding arbitration in Victoria, Australia, except that either party may seek injunctive relief in court for intellectual property violations.'],
     },
     {
-      heading: '«ការលះបង់បណ្តឹងសមូហភាព»',
-      paragraphs: [
-        '"តាមកម្រិតដែលច្បាប់អនុញ្ញាត អ្នកយល់ព្រមថាដំណើរការដោះស្រាយវិវាទណាមួយនឹងត្រូវធ្វើឡើងតែលើមូលដ្ឋានបុគ្គលប៉ុណ្ណោះ មិនមែនក្នុងសំណុំរឿងបណ្ដឹងរួម សំណុំរឿងបណ្ដឹងតំណាង ឬសំណុំរឿងបណ្ដឹងរួមនោះទេ”។',
-      ],
+      heading: 'Class action waiver',
+      paragraphs: ['TO THE EXTENT PERMITTED BY LAW, YOU AGREE THAT ANY DISPUTE RESOLUTION PROCEEDINGS WILL BE CONDUCTED ONLY ON AN INDIVIDUAL BASIS AND NOT IN A CLASS, CONSOLIDATED, OR REPRESENTATIVE ACTION.'],
     },
     {
-      heading: '«ច្បាប់គ្រប់គ្រង»',
-      paragraphs: [
-        '"លក្ខខណ្ឌទាំងនេះត្រូវបានគ្រប់គ្រងដោយច្បាប់នៃរដ្ឋ Victoria ប្រទេសអូស្ត្រាលី ដោយមិនគិតពីគោលការណ៍នៃជម្លោះច្បាប់ឡើយ។ អ្នកយល់ព្រមចំពោះយុត្តាធិការផ្តាច់មុខរបស់តុលាការដែលមានទីតាំងនៅរដ្ឋ Victoria ប្រទេសអូស្ត្រាលី។”',
-      ],
+      heading: 'Governing law',
+      paragraphs: ['These Terms are governed by the laws of Victoria, Australia, without regard to conflict of laws principles. You consent to the exclusive jurisdiction of the courts located in Victoria, Australia.'],
     },
     {
-      heading: '"ការផ្លាស់ប្តូរ និងភាពអាចរកបាន”',
-      paragraphs: [
-        '"យើងអាចកែប្រែ ផ្អាក ឬបញ្ឈប់គេហទំព័រ (ឬផ្នែកណាមួយរបស់វា) នៅពេលណាក៏បានដោយមិនចាំបាច់ជូនដំណឹង ឬទទួលខុសត្រូវ”។',
-        '"យើងអាចធ្វើបច្ចុប្បន្នភាពលក្ខខណ្ឌទាំងនេះនៅពេលណាក៏បាន។ កាលបរិច្ឆេទ "ធ្វើបច្ចុប្បន្នភាពចុងក្រោយ" បង្ហាញពីពេលដែលពួកវាត្រូវបានកែប្រែថ្មីៗបំផុត។ ការបន្តប្រើប្រាស់បន្ទាប់ពីការផ្លាស់ប្តូរបង្កើតបានជាការទទួលយក។”',
-      ],
+      heading: 'Changes and availability',
+      paragraphs: ['We may modify, suspend, or discontinue the site (or any part of it) at any time without notice or liability.', 'We may update these Terms at any time. The "Last updated" date indicates when they were most recently revised. Continued use after changes constitutes acceptance.'],
     },
     {
-      heading: '"ភាពអាចបំបែកបាន”',
-      paragraphs: [
-        '"ប្រសិនបើបទប្បញ្ញត្តិណាមួយនៃលក្ខខណ្ឌទាំងនេះត្រូវបានចាត់ទុកថាមិនត្រឹមត្រូវ ឬមិនអាចអនុវត្តបាន បទប្បញ្ញត្តិនោះនឹងត្រូវបានអនុវត្តក្នុងកម្រិតអតិបរមាដែលអាចអនុញ្ញាតបាន ហើយបទប្បញ្ញត្តិដែលនៅសល់នឹងនៅតែមានសុពលភាព និងមានប្រសិទ្ធភាពពេញលេញ”។',
-      ],
+      heading: 'Severability',
+      paragraphs: ['If any provision of these Terms is held invalid or unenforceable, that provision will be enforced to the maximum extent permissible, and the remaining provisions will remain in full force and effect.'],
     },
     {
-      heading: '«ការលះបង់»',
-      paragraphs: [
-        '"ការខកខានរបស់យើងក្នុងការអនុវត្តសិទ្ធិ ឬបទប្បញ្ញត្តិណាមួយនៃលក្ខខណ្ឌទាំងនេះ មិនត្រូវបានចាត់ទុកថាជាការលះបង់សិទ្ធិ ឬបទប្បញ្ញត្តិបែបនេះទេ”។',
-      ],
+      heading: 'Waiver',
+      paragraphs: ['Our failure to enforce any right or provision of these Terms shall not be deemed a waiver of such right or provision.'],
     },
     {
-      heading: '"កិច្ចព្រមព្រៀងទាំងមូល”',
-      paragraphs: [
-        '"លក្ខខណ្ឌទាំងនេះ រួមជាមួយនឹងគោលការណ៍ឯកជនភាពរបស់យើង បង្កើតបានជាកិច្ចព្រមព្រៀងទាំងមូលរវាងអ្នក និង ANQR ទាក់ទងនឹងការប្រើប្រាស់គេហទំព័ររបស់អ្នក ហើយជំនួសកិច្ចព្រមព្រៀងមុនៗណាមួយ”។',
-      ],
+      heading: 'Entire agreement',
+      paragraphs: ['These Terms, together with our Privacy Policy, constitute the entire agreement between you and ANQR regarding your use of the site and supersede any prior agreements.'],
     },
     {
-      heading: '«ហេតុការណ៍​មិន​អាច​គ្រប់គ្រង​បាន»',
-      paragraphs: [
-        '"យើងខ្ញុំមិនទទួលខុសត្រូវចំពោះការបរាជ័យ ឬការយឺតយ៉ាវណាមួយក្នុងការអនុវត្តដោយសារតែកាលៈទេសៈហួសពីការគ្រប់គ្រងសមហេតុផលរបស់យើង រួមទាំងគ្រោះមហន្តរាយធម្មជាតិ សង្គ្រាម ភេរវកម្ម កុប្បកម្ម សកម្មភាពរបស់រដ្ឋាភិបាល ឬការបរាជ័យនៃអ៊ីនធឺណិត/ហេដ្ឋារចនាសម្ព័ន្ធ”។',
-      ],
+      heading: 'Force majeure',
+      paragraphs: ['We shall not be liable for any failure or delay in performance due to circumstances beyond our reasonable control, including natural disasters, war, terrorism, riots, government actions, or internet/infrastructure failures.'],
     },
     {
-      heading: '"ទំនាក់ទំនង”',
-      paragraphs: [
-        '"សំណួរអំពីលក្ខខណ្ឌទាំងនេះអាចត្រូវបានផ្ញើទៅកាន់៖ ${CONTACT_EMAIL}”',
-      ],
+      heading: 'Contact',
+      paragraphs: ['Questions about these Terms can be sent to: ${CONTACT_EMAIL}'],
     },
   ],
-}
+};
 
 export default terms;

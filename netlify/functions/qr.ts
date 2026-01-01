@@ -1,12 +1,12 @@
 /**
  * Netlify Function: QR Code Image Generator
- * 
+ *
  * Generates QR code images server-side for embedding via <img> tags.
  * Uses the same QRGenerator as the main app with a Node.js canvas factory.
  * Supports PNG, WebP, GIF output with watermarks and metadata embedding.
- * 
+ *
  * Usage: GET /api/qr?data=https://example.com&size=200&fg=000000&bg=ffffff
- * 
+ *
  * Parameters:
  * - data: The content to encode (required)
  * - size: Image size in pixels (default: 400, max: 1024) - used if w/h not specified
@@ -28,7 +28,7 @@
  * - align: Alignment pattern style - match_finder/square/rounded/circle (default: match_finder)
  * - timing: Timing pattern style - match_module/solid/dashed (default: match_module)
  * - eyeOuter: Eye outer style - square/rounded/circle
- * - eyeInner: Eye inner style - square/rounded/circle  
+ * - eyeInner: Eye inner style - square/rounded/circle
  * - eyeScale: Eye scale percentage (default: 100)
  * - radius: Corner radius percentage 0-100 (default: 0)
  * - gap: Module gap percentage (default: 0)
@@ -107,69 +107,84 @@
  * - dpi: Output DPI for PNG (default: 72)
  */
 
-import { createCanvas, loadImage, type Canvas, type SKRSContext2D } from '@napi-rs/canvas'
-import gifenc from 'gifenc'
-const { GIFEncoder, quantize, applyPalette } = gifenc
-import { parseGIF, decompressFrames } from 'gifuct-js'
-// @ts-ignore - JS module
-import { QRGenerator } from "../../src/modules/qr-generator.js"
+import { type Canvas, createCanvas, loadImage, type SKRSContext2D } from '@napi-rs/canvas';
+import gifenc from 'gifenc';
+
+const { GIFEncoder, quantize, applyPalette } = gifenc;
+
+import { decompressFrames, parseGIF } from 'gifuct-js';
+// @ts-expect-error - JS module
+import { QRGenerator } from '../../src/modules/qr-generator.js';
 // Import shared utilities for server/client code reuse
 import {
-  hslToRgbTuple,
-  rgbToHslTuple,
-  createSeededRandom,
+  type AnimationEasing,
+  applyColorCyclePattern,
+  applyDriftPattern,
   applyEasing,
   applyPulsePattern,
-  applyWavePattern,
   applyScanlinePattern,
   applyShimmerPattern,
-  applyDriftPattern,
-  applyColorCyclePattern,
+  applyWavePattern,
+  createSeededRandom,
+  hslToRgbTuple,
+  rgbToHslTuple,
   type AnimationPattern as SharedAnimationPattern,
-  type AnimationEasing,
-} from '../../src/modules/shared/index'
+} from '../../src/modules/shared/index';
 
-type ECCLevel = 'L' | 'M' | 'Q' | 'H'
-type OutputFormat = 'png' | 'webp' | 'gif'
-type WatermarkKind = 'text' | 'image' | 'pattern'
-type WatermarkPosition = 'center' | 'corners' | 'edges' | 'behind' | 'quiet_zone'
-type WatermarkBlend = 'normal' | 'multiply' | 'screen' | 'overlay'
-type DitherKind = 'error_diffusion' | 'ordered_bayer' | 'ordered_clustered' | 'ordered_void_cluster' |
-  'blue_noise_threshold' | 'true_dither' | 'blue_noise' | 'white_noise' | 'gaussian_noise' |
-  'triangular_noise' | 'blue_noise_error_diffusion' | 'screened_blue_noise' | 'perceptual' |
-  'edge_aware' | 'adaptive_threshold' | 'temporal_blue_noise'
+type ECCLevel = 'L' | 'M' | 'Q' | 'H';
+type OutputFormat = 'png' | 'webp' | 'gif';
+type WatermarkKind = 'text' | 'image' | 'pattern';
+type WatermarkPosition = 'center' | 'corners' | 'edges' | 'behind' | 'quiet_zone';
+type WatermarkBlend = 'normal' | 'multiply' | 'screen' | 'overlay';
+type DitherKind =
+  | 'error_diffusion'
+  | 'ordered_bayer'
+  | 'ordered_clustered'
+  | 'ordered_void_cluster'
+  | 'blue_noise_threshold'
+  | 'true_dither'
+  | 'blue_noise'
+  | 'white_noise'
+  | 'gaussian_noise'
+  | 'triangular_noise'
+  | 'blue_noise_error_diffusion'
+  | 'screened_blue_noise'
+  | 'perceptual'
+  | 'edge_aware'
+  | 'adaptive_threshold'
+  | 'temporal_blue_noise';
 
 // ============================================
 // SERVER-SIDE OPTIMIZATIONS & SECURITY
 // ============================================
 
 // Maximum image size for server-side processing (prevents excessive CPU usage)
-const MAX_SERVER_IMAGE_SIZE = 2048
+const MAX_SERVER_IMAGE_SIZE = 2048;
 
 // Maximum data payload length (prevents abuse)
-const MAX_DATA_LENGTH = 4096
+const MAX_DATA_LENGTH = 4096;
 
 // Maximum overlay image size in bytes (5MB)
-const MAX_OVERLAY_BYTES = 5 * 1024 * 1024
+const MAX_OVERLAY_BYTES = 5 * 1024 * 1024;
 
 // Maximum decoded overlay pixel count (10 megapixels)
-const MAX_OVERLAY_PIXELS = 10 * 1024 * 1024
+const MAX_OVERLAY_PIXELS = 10 * 1024 * 1024;
 
 // Maximum GIF frames and duration
-const MAX_GIF_FRAMES = 60
-const MAX_GIF_DURATION_MS = 10000
+const MAX_GIF_FRAMES = 60;
+const MAX_GIF_DURATION_MS = 10000;
 
 // Fetch timeout in milliseconds
-const FETCH_TIMEOUT_MS = 10000
+const FETCH_TIMEOUT_MS = 10000;
 
 // Maximum redirects for image fetch
-const MAX_REDIRECTS = 3
+const MAX_REDIRECTS = 3;
 
 // Default dither algorithm for server-side when none specified (fast)
-const DEFAULT_SERVER_DITHER: DitherKind = 'ordered_bayer'
+const DEFAULT_SERVER_DITHER: DitherKind = 'ordered_bayer';
 
 // Default output format - align with client default (GIF) for consistency
-const DEFAULT_OUTPUT_FORMAT: OutputFormat = 'gif'
+const DEFAULT_OUTPUT_FORMAT: OutputFormat = 'gif';
 
 /**
  * Check if a URL points to a private/internal IP address (SSRF protection)
@@ -177,35 +192,39 @@ const DEFAULT_OUTPUT_FORMAT: OutputFormat = 'gif'
 function isPrivateOrReservedIP(hostname: string): boolean {
   // Check for localhost variants
   if (hostname === 'localhost' || hostname === '127.0.0.1' || hostname === '::1') {
-    return true
+    return true;
   }
-  
+
   // IPv4 private ranges
-  const ipv4Match = hostname.match(/^(\d+)\.(\d+)\.(\d+)\.(\d+)$/)
+  const ipv4Match = hostname.match(/^(\d+)\.(\d+)\.(\d+)\.(\d+)$/);
   if (ipv4Match) {
-    const [, a, b, c, d] = ipv4Match.map(Number)
+    const [, a, b, c, d] = ipv4Match.map(Number);
     // 10.0.0.0/8
-    if (a === 10) return true
+    if (a === 10) return true;
     // 172.16.0.0/12
-    if (a === 172 && b >= 16 && b <= 31) return true
+    if (a === 172 && b >= 16 && b <= 31) return true;
     // 192.168.0.0/16
-    if (a === 192 && b === 168) return true
+    if (a === 192 && b === 168) return true;
     // 169.254.0.0/16 (link-local)
-    if (a === 169 && b === 254) return true
+    if (a === 169 && b === 254) return true;
     // 127.0.0.0/8 (loopback)
-    if (a === 127) return true
+    if (a === 127) return true;
     // 0.0.0.0/8
-    if (a === 0) return true
+    if (a === 0) return true;
   }
-  
+
   // IPv6 private/reserved (simplified check)
-  if (hostname.startsWith('fe80:') || // link-local
-      hostname.startsWith('fc') || hostname.startsWith('fd') || // unique local
-      hostname === '::1') { // loopback
-    return true
+  if (
+    hostname.startsWith('fe80:') || // link-local
+    hostname.startsWith('fc') ||
+    hostname.startsWith('fd') || // unique local
+    hostname === '::1'
+  ) {
+    // loopback
+    return true;
   }
-  
-  return false
+
+  return false;
 }
 
 /**
@@ -213,12 +232,12 @@ function isPrivateOrReservedIP(hostname: string): boolean {
  */
 const nodeCanvasFactory = {
   createCanvas: async (width: number, height: number) => {
-    return createCanvas(width, height)
+    return createCanvas(width, height);
   },
   loadImage: async (src: string) => {
-    return loadImage(src)
-  }
-}
+    return loadImage(src);
+  },
+};
 
 // ============================================
 // WATERMARK FUNCTIONS (server-side adaptation)
@@ -234,21 +253,21 @@ function createTextWatermark(
   color: string = '#000000'
 ): Canvas {
   // First measure the text
-  const measureCanvas = createCanvas(1, 1)
-  const measureCtx = measureCanvas.getContext('2d')
-  measureCtx.font = `${fontSize}px ${fontFamily}`
-  const metrics = measureCtx.measureText(text)
-  const textHeight = fontSize * 1.2
+  const measureCanvas = createCanvas(1, 1);
+  const measureCtx = measureCanvas.getContext('2d');
+  measureCtx.font = `${fontSize}px ${fontFamily}`;
+  const metrics = measureCtx.measureText(text);
+  const textHeight = fontSize * 1.2;
 
-  const canvas = createCanvas(Math.ceil(metrics.width) + 10, Math.ceil(textHeight) + 10)
-  const ctx = canvas.getContext('2d')
+  const canvas = createCanvas(Math.ceil(metrics.width) + 10, Math.ceil(textHeight) + 10);
+  const ctx = canvas.getContext('2d');
 
-  ctx.font = `${fontSize}px ${fontFamily}`
-  ctx.fillStyle = color
-  ctx.textBaseline = 'middle'
-  ctx.fillText(text, 5, canvas.height / 2)
+  ctx.font = `${fontSize}px ${fontFamily}`;
+  ctx.fillStyle = color;
+  ctx.textBaseline = 'middle';
+  ctx.fillText(text, 5, canvas.height / 2);
 
-  return canvas
+  return canvas;
 }
 
 /**
@@ -262,15 +281,15 @@ function getWatermarkPositions(
   watermarkHeight: number,
   margin: number = 10
 ): Array<{ x: number; y: number }> {
-  const positions: Array<{ x: number; y: number }> = []
+  const positions: Array<{ x: number; y: number }> = [];
 
   switch (position) {
     case 'center':
       positions.push({
         x: (canvasWidth - watermarkWidth) / 2,
         y: (canvasHeight - watermarkHeight) / 2,
-      })
-      break
+      });
+      break;
 
     case 'corners':
       positions.push(
@@ -278,8 +297,8 @@ function getWatermarkPositions(
         { x: canvasWidth - watermarkWidth - margin, y: margin },
         { x: margin, y: canvasHeight - watermarkHeight - margin },
         { x: canvasWidth - watermarkWidth - margin, y: canvasHeight - watermarkHeight - margin }
-      )
-      break
+      );
+      break;
 
     case 'edges':
       positions.push(
@@ -287,24 +306,22 @@ function getWatermarkPositions(
         { x: (canvasWidth - watermarkWidth) / 2, y: canvasHeight - watermarkHeight - margin },
         { x: margin, y: (canvasHeight - watermarkHeight) / 2 },
         { x: canvasWidth - watermarkWidth - margin, y: (canvasHeight - watermarkHeight) / 2 }
-      )
-      break
+      );
+      break;
 
     case 'quiet_zone':
-      positions.push(
-        { x: margin / 2, y: canvasHeight - watermarkHeight - margin / 2 }
-      )
-      break
+      positions.push({ x: margin / 2, y: canvasHeight - watermarkHeight - margin / 2 });
+      break;
 
     case 'behind':
     default:
       positions.push({
         x: (canvasWidth - watermarkWidth) / 2,
         y: (canvasHeight - watermarkHeight) / 2,
-      })
+      });
   }
 
-  return positions
+  return positions;
 }
 
 /**
@@ -313,55 +330,52 @@ function getWatermarkPositions(
 function applyBlendMode(ctx: SKRSContext2D, blend: WatermarkBlend): void {
   switch (blend) {
     case 'multiply':
-      ctx.globalCompositeOperation = 'multiply'
-      break
+      ctx.globalCompositeOperation = 'multiply';
+      break;
     case 'screen':
-      ctx.globalCompositeOperation = 'screen'
-      break
+      ctx.globalCompositeOperation = 'screen';
+      break;
     case 'overlay':
-      ctx.globalCompositeOperation = 'overlay'
-      break
+      ctx.globalCompositeOperation = 'overlay';
+      break;
     case 'normal':
     default:
-      ctx.globalCompositeOperation = 'source-over'
-      break
+      ctx.globalCompositeOperation = 'source-over';
+      break;
   }
 }
 
 interface WatermarkOptions {
-  enabled: boolean
-  kind: WatermarkKind
-  text: string
-  imageCanvas?: Canvas | null
-  position: WatermarkPosition
-  opacity: number
-  blend: WatermarkBlend
+  enabled: boolean;
+  kind: WatermarkKind;
+  text: string;
+  imageCanvas?: Canvas | null;
+  position: WatermarkPosition;
+  opacity: number;
+  blend: WatermarkBlend;
 }
 
 /**
  * Apply watermark to a canvas (server-side)
  */
-function applyWatermarkServer(
-  source: Canvas,
-  options: WatermarkOptions
-): Canvas {
+function applyWatermarkServer(source: Canvas, options: WatermarkOptions): Canvas {
   if (!options.enabled || (options.kind === 'text' && !options.text)) {
-    return source
+    return source;
   }
 
-  const result = createCanvas(source.width, source.height)
-  const ctx = result.getContext('2d')
+  const result = createCanvas(source.width, source.height);
+  const ctx = result.getContext('2d');
 
   // For 'behind' position, draw watermark first
   if (options.position === 'behind') {
-    drawWatermarkLayerServer(ctx, options, source.width, source.height)
-    ctx.drawImage(source, 0, 0)
+    drawWatermarkLayerServer(ctx, options, source.width, source.height);
+    ctx.drawImage(source, 0, 0);
   } else {
-    ctx.drawImage(source, 0, 0)
-    drawWatermarkLayerServer(ctx, options, source.width, source.height)
+    ctx.drawImage(source, 0, 0);
+    drawWatermarkLayerServer(ctx, options, source.width, source.height);
   }
 
-  return result
+  return result;
 }
 
 /**
@@ -373,19 +387,19 @@ function drawWatermarkLayerServer(
   canvasWidth: number,
   canvasHeight: number
 ): void {
-  let watermarkCanvas: Canvas | null = null
+  let watermarkCanvas: Canvas | null = null;
 
   if (options.kind === 'text' && options.text) {
-    watermarkCanvas = createTextWatermark(options.text, 14, 'sans-serif', '#000000')
+    watermarkCanvas = createTextWatermark(options.text, 14, 'sans-serif', '#000000');
   } else if ((options.kind === 'image' || options.kind === 'pattern') && options.imageCanvas) {
-    watermarkCanvas = options.imageCanvas
+    watermarkCanvas = options.imageCanvas;
   }
 
-  if (!watermarkCanvas) return
+  if (!watermarkCanvas) return;
 
-  ctx.save()
-  applyBlendMode(ctx, options.blend)
-  ctx.globalAlpha = options.opacity / 100
+  ctx.save();
+  applyBlendMode(ctx, options.blend);
+  ctx.globalAlpha = options.opacity / 100;
 
   const positions = getWatermarkPositions(
     options.position,
@@ -394,13 +408,13 @@ function drawWatermarkLayerServer(
     watermarkCanvas.width,
     watermarkCanvas.height,
     10
-  )
+  );
 
   for (const pos of positions) {
-    ctx.drawImage(watermarkCanvas, pos.x, pos.y)
+    ctx.drawImage(watermarkCanvas, pos.x, pos.y);
   }
 
-  ctx.restore()
+  ctx.restore();
 }
 
 // ============================================
@@ -408,115 +422,115 @@ function drawWatermarkLayerServer(
 // ============================================
 
 interface PngMetadata {
-  title?: string
-  author?: string
-  description?: string
-  copyright?: string
-  creationTime?: string
-  software?: string
+  title?: string;
+  author?: string;
+  description?: string;
+  copyright?: string;
+  creationTime?: string;
+  software?: string;
 }
 
 /**
  * CRC32 calculation for PNG chunks
  */
 function calculateCrc32(data: Uint8Array): number {
-  let crc = 0xFFFFFFFF
-  
-  const table: number[] = []
+  let crc = 0xffffffff;
+
+  const table: number[] = [];
   for (let n = 0; n < 256; n++) {
-    let c = n
+    let c = n;
     for (let k = 0; k < 8; k++) {
-      c = (c & 1) ? (0xEDB88320 ^ (c >>> 1)) : (c >>> 1)
+      c = c & 1 ? 0xedb88320 ^ (c >>> 1) : c >>> 1;
     }
-    table[n] = c
+    table[n] = c;
   }
-  
+
   for (let i = 0; i < data.length; i++) {
-    crc = table[(crc ^ data[i]) & 0xFF] ^ (crc >>> 8)
+    crc = table[(crc ^ data[i]) & 0xff] ^ (crc >>> 8);
   }
-  
-  return (crc ^ 0xFFFFFFFF) >>> 0
+
+  return (crc ^ 0xffffffff) >>> 0;
 }
 
 /**
  * Create a PNG tEXt chunk for metadata
  */
 function createPngTextChunk(keyword: string, text: string): Uint8Array {
-  const keywordBytes = new TextEncoder().encode(keyword)
-  const textBytes = new TextEncoder().encode(text)
-  
-  const chunkData = new Uint8Array(keywordBytes.length + 1 + textBytes.length)
-  chunkData.set(keywordBytes, 0)
-  chunkData.set([0], keywordBytes.length)
-  chunkData.set(textBytes, keywordBytes.length + 1)
-  
-  const chunkType = new TextEncoder().encode('tEXt')
-  const chunk = new Uint8Array(4 + 4 + chunkData.length + 4)
-  
-  const dataView = new DataView(chunk.buffer)
-  dataView.setUint32(0, chunkData.length, false)
-  chunk.set(chunkType, 4)
-  chunk.set(chunkData, 8)
-  
-  const crcData = new Uint8Array(4 + chunkData.length)
-  crcData.set(chunkType, 0)
-  crcData.set(chunkData, 4)
-  const crc = calculateCrc32(crcData)
-  dataView.setUint32(8 + chunkData.length, crc, false)
-  
-  return chunk
+  const keywordBytes = new TextEncoder().encode(keyword);
+  const textBytes = new TextEncoder().encode(text);
+
+  const chunkData = new Uint8Array(keywordBytes.length + 1 + textBytes.length);
+  chunkData.set(keywordBytes, 0);
+  chunkData.set([0], keywordBytes.length);
+  chunkData.set(textBytes, keywordBytes.length + 1);
+
+  const chunkType = new TextEncoder().encode('tEXt');
+  const chunk = new Uint8Array(4 + 4 + chunkData.length + 4);
+
+  const dataView = new DataView(chunk.buffer);
+  dataView.setUint32(0, chunkData.length, false);
+  chunk.set(chunkType, 4);
+  chunk.set(chunkData, 8);
+
+  const crcData = new Uint8Array(4 + chunkData.length);
+  crcData.set(chunkType, 0);
+  crcData.set(chunkData, 4);
+  const crc = calculateCrc32(crcData);
+  dataView.setUint32(8 + chunkData.length, crc, false);
+
+  return chunk;
 }
 
 /**
  * Create PNG pHYs chunk for DPI
  */
 function createPngPhysChunk(dpi: number): Uint8Array {
-  const pixelsPerMeter = Math.round(dpi / 0.0254)
-  
-  const chunkData = new Uint8Array(9)
-  const chunkDataView = new DataView(chunkData.buffer)
-  chunkDataView.setUint32(0, pixelsPerMeter, false)
-  chunkDataView.setUint32(4, pixelsPerMeter, false)
-  chunkData[8] = 1
-  
-  const chunkType = new TextEncoder().encode('pHYs')
-  const chunk = new Uint8Array(4 + 4 + 9 + 4)
-  const chunkView = new DataView(chunk.buffer)
-  
-  chunkView.setUint32(0, 9, false)
-  chunk.set(chunkType, 4)
-  chunk.set(chunkData, 8)
-  
-  const crcData = new Uint8Array(4 + 9)
-  crcData.set(chunkType, 0)
-  crcData.set(chunkData, 4)
-  const crc = calculateCrc32(crcData)
-  chunkView.setUint32(17, crc, false)
-  
-  return chunk
+  const pixelsPerMeter = Math.round(dpi / 0.0254);
+
+  const chunkData = new Uint8Array(9);
+  const chunkDataView = new DataView(chunkData.buffer);
+  chunkDataView.setUint32(0, pixelsPerMeter, false);
+  chunkDataView.setUint32(4, pixelsPerMeter, false);
+  chunkData[8] = 1;
+
+  const chunkType = new TextEncoder().encode('pHYs');
+  const chunk = new Uint8Array(4 + 4 + 9 + 4);
+  const chunkView = new DataView(chunk.buffer);
+
+  chunkView.setUint32(0, 9, false);
+  chunk.set(chunkType, 4);
+  chunk.set(chunkData, 8);
+
+  const crcData = new Uint8Array(4 + 9);
+  crcData.set(chunkType, 0);
+  crcData.set(chunkData, 4);
+  const crc = calculateCrc32(crcData);
+  chunkView.setUint32(17, crc, false);
+
+  return chunk;
 }
 
 /**
  * Embed metadata and DPI into PNG buffer
  */
 function embedPngMetadataAndDpi(pngBuffer: Buffer, metadata?: PngMetadata, dpi?: number): Buffer {
-  const data = new Uint8Array(pngBuffer)
-  
+  const data = new Uint8Array(pngBuffer);
+
   // Verify PNG signature
-  const pngSignature = [137, 80, 78, 71, 13, 10, 26, 10]
+  const pngSignature = [137, 80, 78, 71, 13, 10, 26, 10];
   for (let i = 0; i < 8; i++) {
     if (data[i] !== pngSignature[i]) {
-      return pngBuffer
+      return pngBuffer;
     }
   }
-  
-  const chunks: Uint8Array[] = []
-  
+
+  const chunks: Uint8Array[] = [];
+
   // Add DPI chunk after IHDR (position 33)
   if (dpi && dpi > 0 && dpi !== 72) {
-    chunks.push(createPngPhysChunk(dpi))
+    chunks.push(createPngPhysChunk(dpi));
   }
-  
+
   // Add metadata chunks
   if (metadata) {
     const keywordMap: Record<string, string> = {
@@ -525,37 +539,37 @@ function embedPngMetadataAndDpi(pngBuffer: Buffer, metadata?: PngMetadata, dpi?:
       description: 'Description',
       copyright: 'Copyright',
       creationTime: 'Creation Time',
-      software: 'Software'
-    }
-    
+      software: 'Software',
+    };
+
     for (const [key, value] of Object.entries(metadata)) {
       if (value && typeof value === 'string') {
-        const keyword = keywordMap[key] || key
-        chunks.push(createPngTextChunk(keyword, value))
+        const keyword = keywordMap[key] || key;
+        chunks.push(createPngTextChunk(keyword, value));
       }
     }
   }
-  
+
   if (chunks.length === 0) {
-    return pngBuffer
+    return pngBuffer;
   }
-  
+
   // Insert chunks after IHDR (at position 33)
-  const ihdrEnd = 33
-  const totalChunksSize = chunks.reduce((sum, chunk) => sum + chunk.length, 0)
-  
-  const newPng = new Uint8Array(data.length + totalChunksSize)
-  newPng.set(data.slice(0, ihdrEnd), 0)
-  
-  let offset = ihdrEnd
+  const ihdrEnd = 33;
+  const totalChunksSize = chunks.reduce((sum, chunk) => sum + chunk.length, 0);
+
+  const newPng = new Uint8Array(data.length + totalChunksSize);
+  newPng.set(data.slice(0, ihdrEnd), 0);
+
+  let offset = ihdrEnd;
   for (const chunk of chunks) {
-    newPng.set(chunk, offset)
-    offset += chunk.length
+    newPng.set(chunk, offset);
+    offset += chunk.length;
   }
-  
-  newPng.set(data.slice(ihdrEnd), offset)
-  
-  return Buffer.from(newPng)
+
+  newPng.set(data.slice(ihdrEnd), offset);
+
+  return Buffer.from(newPng);
 }
 
 // ============================================
@@ -566,24 +580,24 @@ function embedPngMetadataAndDpi(pngBuffer: Buffer, metadata?: PngMetadata, dpi?:
  * Encode canvas as GIF (single frame)
  */
 function encodeGif(canvas: Canvas, colors: number = 256): Buffer {
-  const width = canvas.width
-  const height = canvas.height
-  const ctx = canvas.getContext('2d')
-  const imageData = ctx.getImageData(0, 0, width, height)
-  const { data } = imageData
-  
-  const gif = GIFEncoder()
-  const palette = quantize(data, Math.min(256, Math.max(2, colors)))
-  const index = applyPalette(data, palette)
-  
+  const width = canvas.width;
+  const height = canvas.height;
+  const ctx = canvas.getContext('2d');
+  const imageData = ctx.getImageData(0, 0, width, height);
+  const { data } = imageData;
+
+  const gif = GIFEncoder();
+  const palette = quantize(data, Math.min(256, Math.max(2, colors)));
+  const index = applyPalette(data, palette);
+
   gif.writeFrame(index, width, height, {
     palette,
     delay: 100,
     repeat: 0,
-  })
-  
-  gif.finish()
-  return Buffer.from(gif.bytes())
+  });
+
+  gif.finish();
+  return Buffer.from(gif.bytes());
 }
 
 /**
@@ -592,43 +606,47 @@ function encodeGif(canvas: Canvas, colors: number = 256): Buffer {
  * @param frameDelayMs Frame delay in milliseconds
  * @param colors Palette size 2-256
  */
-function encodeAnimatedGif(frames: Canvas[], frameDelayMs: number = 100, colors: number = 256): Buffer {
+function encodeAnimatedGif(
+  frames: Canvas[],
+  frameDelayMs: number = 100,
+  colors: number = 256
+): Buffer {
   if (frames.length === 0) {
-    throw new Error('No frames to encode')
+    throw new Error('No frames to encode');
   }
-  
-  const width = frames[0].width
-  const height = frames[0].height
-  const gif = GIFEncoder()
-  const paletteSize = Math.min(256, Math.max(2, colors))
-  
+
+  const width = frames[0].width;
+  const height = frames[0].height;
+  const gif = GIFEncoder();
+  const paletteSize = Math.min(256, Math.max(2, colors));
+
   // Convert milliseconds to centiseconds (gifenc uses 1/100th seconds)
   // Use minimum of 2 centiseconds (20ms) - browsers interpret <2cs as 10cs anyway
-  const delayCentiseconds = Math.max(2, Math.round(frameDelayMs / 10))
-  
+  const delayCentiseconds = Math.max(2, Math.round(frameDelayMs / 10));
+
   for (let i = 0; i < frames.length; i++) {
-    const frame = frames[i]
-    const ctx = frame.getContext('2d')
-    const imageData = ctx.getImageData(0, 0, width, height)
-    const { data } = imageData
-    
-    const palette = quantize(data, paletteSize)
-    const index = applyPalette(data, palette)
-    
+    const frame = frames[i];
+    const ctx = frame.getContext('2d');
+    const imageData = ctx.getImageData(0, 0, width, height);
+    const { data } = imageData;
+
+    const palette = quantize(data, paletteSize);
+    const index = applyPalette(data, palette);
+
     // Only set repeat on first frame
     const frameOptions: Record<string, unknown> = {
       palette,
       delay: delayCentiseconds,
-    }
+    };
     if (i === 0) {
-      frameOptions.repeat = 0 // 0 = loop forever
+      frameOptions.repeat = 0; // 0 = loop forever
     }
-    
-    gif.writeFrame(index, width, height, frameOptions)
+
+    gif.writeFrame(index, width, height, frameOptions);
   }
-  
-  gif.finish()
-  return Buffer.from(gif.bytes())
+
+  gif.finish();
+  return Buffer.from(gif.bytes());
 }
 
 // ============================================
@@ -648,51 +666,51 @@ function generatePatternFramesServer(
   easing: AnimationEasing = 'linear'
 ): Canvas[] {
   if (pattern === 'none') {
-    return [sourceCanvas]
+    return [sourceCanvas];
   }
 
-  const frames: Canvas[] = []
-  const width = sourceCanvas.width
-  const height = sourceCanvas.height
+  const frames: Canvas[] = [];
+  const width = sourceCanvas.width;
+  const height = sourceCanvas.height;
 
-  const sourceCtx = sourceCanvas.getContext('2d')
-  const sourceData = sourceCtx.getImageData(0, 0, width, height)
+  const sourceCtx = sourceCanvas.getContext('2d');
+  const sourceData = sourceCtx.getImageData(0, 0, width, height);
 
   for (let i = 0; i < frameCount; i++) {
-    const linearProgress = i / frameCount
-    const progress = applyEasing(linearProgress, easing)
-    const frame = createCanvas(width, height)
-    const ctx = frame.getContext('2d')
+    const linearProgress = i / frameCount;
+    const progress = applyEasing(linearProgress, easing);
+    const frame = createCanvas(width, height);
+    const ctx = frame.getContext('2d');
 
-    const frameData = ctx.createImageData(width, height)
-    frameData.data.set(sourceData.data)
+    const frameData = ctx.createImageData(width, height);
+    frameData.data.set(sourceData.data);
 
     switch (pattern) {
       case 'pulse':
-        applyPulsePattern(frameData.data, progress, seed)
-        break
+        applyPulsePattern(frameData.data, progress, seed);
+        break;
       case 'wave':
-        applyWavePattern(frameData.data, progress, width, height, seed)
-        break
+        applyWavePattern(frameData.data, progress, width, height, seed);
+        break;
       case 'scanline':
-        applyScanlinePattern(frameData.data, progress, width, height, seed)
-        break
+        applyScanlinePattern(frameData.data, progress, width, height, seed);
+        break;
       case 'shimmer':
-        applyShimmerPattern(frameData.data, progress, width, height, seed)
-        break
+        applyShimmerPattern(frameData.data, progress, width, height, seed);
+        break;
       case 'drift':
-        applyDriftPattern(frameData.data, progress, width, height, seed)
-        break
+        applyDriftPattern(frameData.data, progress, width, height, seed);
+        break;
       case 'color_cycle':
-        applyColorCyclePattern(frameData.data, progress, seed)
-        break
+        applyColorCyclePattern(frameData.data, progress, seed);
+        break;
     }
 
-    ctx.putImageData(frameData, 0, 0)
-    frames.push(frame)
+    ctx.putImageData(frameData, 0, 0);
+    frames.push(frame);
   }
 
-  return frames
+  return frames;
 }
 
 // All pattern functions, color conversion, and seeded random are now imported from shared module
@@ -702,19 +720,19 @@ function generatePatternFramesServer(
 // ============================================
 
 interface ServerAnimationFrame {
-  canvas: Canvas
-  delay: number // milliseconds
-  disposalType: number
+  canvas: Canvas;
+  delay: number; // milliseconds
+  disposalType: number;
 }
 
 /**
  * Detect if an ArrayBuffer contains a GIF
  */
 function isGifBuffer(buffer: ArrayBuffer): boolean {
-  const view = new DataView(buffer)
-  if (view.byteLength < 6) return false
-  const sig = String.fromCharCode(view.getUint8(0), view.getUint8(1), view.getUint8(2))
-  return sig === 'GIF'
+  const view = new DataView(buffer);
+  if (view.byteLength < 6) return false;
+  const sig = String.fromCharCode(view.getUint8(0), view.getUint8(1), view.getUint8(2));
+  return sig === 'GIF';
 }
 
 /**
@@ -722,57 +740,57 @@ function isGifBuffer(buffer: ArrayBuffer): boolean {
  * Adapted from src/modules/animation.ts for Node.js
  */
 function parseGifFramesServer(arrayBuffer: ArrayBuffer): ServerAnimationFrame[] {
-  const gif = parseGIF(arrayBuffer)
-  const frames = decompressFrames(gif, true)
+  const gif = parseGIF(arrayBuffer);
+  const frames = decompressFrames(gif, true);
 
   if (frames.length === 0) {
-    throw new Error('No frames found in GIF')
+    throw new Error('No frames found in GIF');
   }
 
-  const { width, height } = gif.lsd
+  const { width, height } = gif.lsd;
 
   // Create a persistent canvas for compositing frames
-  const compositeCanvas = createCanvas(width, height)
-  const compositeCtx = compositeCanvas.getContext('2d')
+  const compositeCanvas = createCanvas(width, height);
+  const compositeCtx = compositeCanvas.getContext('2d');
 
-  const animationFrames: ServerAnimationFrame[] = []
+  const animationFrames: ServerAnimationFrame[] = [];
 
   for (let i = 0; i < frames.length; i++) {
-    const frame = frames[i]
-    const { dims, patch, disposalType, delay } = frame
+    const frame = frames[i];
+    const { dims, patch, disposalType, delay } = frame;
 
     // Create ImageData from patch
-    const imageData = compositeCtx.createImageData(dims.width, dims.height)
-    imageData.data.set(new Uint8ClampedArray(patch))
+    const imageData = compositeCtx.createImageData(dims.width, dims.height);
+    imageData.data.set(new Uint8ClampedArray(patch));
 
     // Create temporary canvas for this frame's patch
-    const patchCanvas = createCanvas(dims.width, dims.height)
-    const patchCtx = patchCanvas.getContext('2d')
-    patchCtx.putImageData(imageData, 0, 0)
+    const patchCanvas = createCanvas(dims.width, dims.height);
+    const patchCtx = patchCanvas.getContext('2d');
+    patchCtx.putImageData(imageData, 0, 0);
 
     // Draw patch onto composite canvas
-    compositeCtx.drawImage(patchCanvas, dims.left, dims.top)
+    compositeCtx.drawImage(patchCanvas, dims.left, dims.top);
 
     // Create output canvas for this frame
-    const outputCanvas = createCanvas(width, height)
-    const outputCtx = outputCanvas.getContext('2d')
-    outputCtx.drawImage(compositeCanvas, 0, 0)
+    const outputCanvas = createCanvas(width, height);
+    const outputCtx = outputCanvas.getContext('2d');
+    outputCtx.drawImage(compositeCanvas, 0, 0);
 
     animationFrames.push({
       canvas: outputCanvas,
       delay: delay * 10, // GIF delay is in centiseconds, convert to ms
       disposalType,
-    })
+    });
 
     // Handle disposal
     if (disposalType === 2) {
       // Restore to background
-      compositeCtx.clearRect(dims.left, dims.top, dims.width, dims.height)
+      compositeCtx.clearRect(dims.left, dims.top, dims.width, dims.height);
     }
     // disposalType 0, 1, or 3: leave frame in place
   }
 
-  return animationFrames
+  return animationFrames;
 }
 
 /**
@@ -780,40 +798,40 @@ function parseGifFramesServer(arrayBuffer: ArrayBuffer): ServerAnimationFrame[] 
  */
 function encodeAnimatedGifWithDelays(frames: ServerAnimationFrame[], colors: number = 256): Buffer {
   if (frames.length === 0) {
-    throw new Error('No frames to encode')
+    throw new Error('No frames to encode');
   }
-  
-  const width = frames[0].canvas.width
-  const height = frames[0].canvas.height
-  const gif = GIFEncoder()
-  const paletteSize = Math.min(256, Math.max(2, colors))
-  
+
+  const width = frames[0].canvas.width;
+  const height = frames[0].canvas.height;
+  const gif = GIFEncoder();
+  const paletteSize = Math.min(256, Math.max(2, colors));
+
   for (let i = 0; i < frames.length; i++) {
-    const frame = frames[i]
-    const ctx = frame.canvas.getContext('2d')
-    const imageData = ctx.getImageData(0, 0, width, height)
-    const { data } = imageData
-    
-    const palette = quantize(data, paletteSize)
-    const index = applyPalette(data, palette)
-    
+    const frame = frames[i];
+    const ctx = frame.canvas.getContext('2d');
+    const imageData = ctx.getImageData(0, 0, width, height);
+    const { data } = imageData;
+
+    const palette = quantize(data, paletteSize);
+    const index = applyPalette(data, palette);
+
     // Convert milliseconds to centiseconds
     // Use minimum of 2 centiseconds (20ms) - browsers interpret <2cs as 10cs anyway
-    const delayCentiseconds = Math.max(2, Math.round(frame.delay / 10))
-    
+    const delayCentiseconds = Math.max(2, Math.round(frame.delay / 10));
+
     const frameOptions: Record<string, unknown> = {
       palette,
       delay: delayCentiseconds,
-    }
+    };
     if (i === 0) {
-      frameOptions.repeat = 0 // 0 = loop forever
+      frameOptions.repeat = 0; // 0 = loop forever
     }
-    
-    gif.writeFrame(index, width, height, frameOptions)
+
+    gif.writeFrame(index, width, height, frameOptions);
   }
-  
-  gif.finish()
-  return Buffer.from(gif.bytes())
+
+  gif.finish();
+  return Buffer.from(gif.bytes());
 }
 
 /**
@@ -822,24 +840,29 @@ function encodeAnimatedGifWithDelays(frames: ServerAnimationFrame[], colors: num
  * Example: ff0000,0,00ff00,0.5,0000ff,1
  */
 function parseGradientStops(stopsParam: string): Array<{ pos: number; color: string }> {
-  const parts = stopsParam.split(',')
-  const stops: Array<{ pos: number; color: string }> = []
-  
+  const parts = stopsParam.split(',');
+  const stops: Array<{ pos: number; color: string }> = [];
+
   for (let i = 0; i < parts.length - 1; i += 2) {
-    const color = `#${parts[i]}`
-    const pos = parseFloat(parts[i + 1])
+    const color = `#${parts[i]}`;
+    const pos = parseFloat(parts[i + 1]);
     if (!isNaN(pos)) {
-      stops.push({ color, pos })
+      stops.push({ color, pos });
     }
   }
-  
-  return stops.length > 0 ? stops : [{ color: '#000000', pos: 0 }, { color: '#000000', pos: 1 }]
+
+  return stops.length > 0
+    ? stops
+    : [
+        { color: '#000000', pos: 0 },
+        { color: '#000000', pos: 1 },
+      ];
 }
 
 interface FetchedImage {
-  canvas: Canvas
-  arrayBuffer: ArrayBuffer
-  isAnimatedGif: boolean
+  canvas: Canvas;
+  arrayBuffer: ArrayBuffer;
+  isAnimatedGif: boolean;
 }
 
 /**
@@ -849,94 +872,103 @@ interface FetchedImage {
 async function fetchImageWithBuffer(url: string): Promise<FetchedImage | null> {
   try {
     // Validate URL format
-    let parsedUrl: URL
+    let parsedUrl: URL;
     try {
-      parsedUrl = new URL(url)
+      parsedUrl = new URL(url);
       if (!['http:', 'https:'].includes(parsedUrl.protocol)) {
-        console.error(`Invalid URL protocol: ${parsedUrl.protocol}`)
-        return null
+        console.error(`Invalid URL protocol: ${parsedUrl.protocol}`);
+        return null;
       }
-      
+
       // SSRF protection: block private/internal IP addresses
       if (isPrivateOrReservedIP(parsedUrl.hostname)) {
-        console.error(`Blocked request to private/reserved IP: ${parsedUrl.hostname}`)
-        return null
+        console.error(`Blocked request to private/reserved IP: ${parsedUrl.hostname}`);
+        return null;
       }
     } catch {
-      console.error(`Invalid URL format: ${url}`)
-      return null
+      console.error(`Invalid URL format: ${url}`);
+      return null;
     }
 
     // Create AbortController for timeout
-    const controller = new AbortController()
-    const timeoutId = setTimeout(() => controller.abort(), FETCH_TIMEOUT_MS)
-    
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), FETCH_TIMEOUT_MS);
+
     const response = await fetch(url, {
       headers: {
         'User-Agent': 'ANQR-QR-Generator/1.0',
       },
       signal: controller.signal,
       redirect: 'follow',
-    })
-    
-    clearTimeout(timeoutId)
-    
+    });
+
+    clearTimeout(timeoutId);
+
     if (!response.ok) {
-      console.error(`Failed to fetch image: ${response.status} ${response.statusText}`)
-      return null
+      console.error(`Failed to fetch image: ${response.status} ${response.statusText}`);
+      return null;
     }
-    
+
     // Check Content-Type header for image types
-    const contentType = response.headers.get('Content-Type') || ''
-    const validImageTypes = ['image/png', 'image/jpeg', 'image/gif', 'image/webp', 'image/svg+xml', 'image/bmp']
-    const isImage = validImageTypes.some(type => contentType.toLowerCase().startsWith(type))
+    const contentType = response.headers.get('Content-Type') || '';
+    const validImageTypes = [
+      'image/png',
+      'image/jpeg',
+      'image/gif',
+      'image/webp',
+      'image/svg+xml',
+      'image/bmp',
+    ];
+    const isImage = validImageTypes.some((type) => contentType.toLowerCase().startsWith(type));
     if (!isImage && contentType && !contentType.startsWith('application/octet-stream')) {
-      console.error(`Invalid Content-Type for image: ${contentType}`)
-      return null
+      console.error(`Invalid Content-Type for image: ${contentType}`);
+      return null;
     }
-    
-    const arrayBuffer = await response.arrayBuffer()
-    
+
+    const arrayBuffer = await response.arrayBuffer();
+
     // Check overlay size limits
     if (arrayBuffer.byteLength > MAX_OVERLAY_BYTES) {
-      console.error(`Overlay image too large: ${arrayBuffer.byteLength} bytes (max: ${MAX_OVERLAY_BYTES})`)
-      return null
+      console.error(
+        `Overlay image too large: ${arrayBuffer.byteLength} bytes (max: ${MAX_OVERLAY_BYTES})`
+      );
+      return null;
     }
-    
-    const buffer = Buffer.from(arrayBuffer)
-    
+
+    const buffer = Buffer.from(arrayBuffer);
+
     // Check if it's a GIF with multiple frames
-    let isAnimatedGif = false
+    let isAnimatedGif = false;
     if (isGifBuffer(arrayBuffer)) {
       try {
-        const gif = parseGIF(arrayBuffer)
-        const frames = decompressFrames(gif, true)
-        isAnimatedGif = frames.length > 1
+        const gif = parseGIF(arrayBuffer);
+        const frames = decompressFrames(gif, true);
+        isAnimatedGif = frames.length > 1;
       } catch (e) {
-        console.warn('Failed to parse GIF for frame detection:', e)
+        console.warn('Failed to parse GIF for frame detection:', e);
       }
     }
-    
-    const img = await loadImage(buffer)
-    
+
+    const img = await loadImage(buffer);
+
     // Validate image dimensions
-    if (!img.width || !img.height || img.width <= 0 || img.height <= 0) {
-      console.error(`Invalid image dimensions: ${img.width}x${img.height}`)
-      return null
+    if (!(img.width && img.height) || img.width <= 0 || img.height <= 0) {
+      console.error(`Invalid image dimensions: ${img.width}x${img.height}`);
+      return null;
     }
-    
-    const canvas = createCanvas(img.width, img.height)
-    const ctx = canvas.getContext('2d')
-    ctx.drawImage(img, 0, 0)
-    
+
+    const canvas = createCanvas(img.width, img.height);
+    const ctx = canvas.getContext('2d');
+    ctx.drawImage(img, 0, 0);
+
     return {
       canvas,
       arrayBuffer,
       isAnimatedGif,
-    }
+    };
   } catch (error) {
-    console.error('Error fetching overlay image:', error)
-    return null
+    console.error('Error fetching overlay image:', error);
+    return null;
   }
 }
 
@@ -944,204 +976,255 @@ async function fetchImageWithBuffer(url: string): Promise<FetchedImage | null> {
  * Fetch an image from URL and load it into a canvas (legacy wrapper)
  */
 async function fetchImageAsCanvas(url: string): Promise<ReturnType<typeof createCanvas> | null> {
-  const result = await fetchImageWithBuffer(url)
-  return result?.canvas ?? null
+  const result = await fetchImageWithBuffer(url);
+  return result?.canvas ?? null;
 }
 
 export default async (request: Request) => {
-  const url = new URL(request.url)
-  const params = url.searchParams
-  
+  const url = new URL(request.url);
+  const params = url.searchParams;
+
   // Get required parameter
-  const data = params.get('data')
+  const data = params.get('data');
   if (!data) {
-    return new Response('Missing required "data" parameter', { status: 400 })
+    return new Response('Missing required "data" parameter', { status: 400 });
   }
-  
+
   // Validate data length (DoS protection)
   if (data.length > MAX_DATA_LENGTH) {
-    return new Response(`Data too long: ${data.length} characters (max: ${MAX_DATA_LENGTH})`, { status: 400 })
+    return new Response(`Data too long: ${data.length} characters (max: ${MAX_DATA_LENGTH})`, {
+      status: 400,
+    });
   }
-  
+
   // Parse all parameters with defaults
-  const sizeParam = parseInt(params.get('size') || '400', 10)
-  const widthParam = params.get('w') ? parseInt(params.get('w')!, 10) : null
-  const heightParam = params.get('h') ? parseInt(params.get('h')!, 10) : null
-  
+  const sizeParam = parseInt(params.get('size') || '400', 10);
+  const widthParam = params.get('w') ? parseInt(params.get('w')!, 10) : null;
+  const heightParam = params.get('h') ? parseInt(params.get('h')!, 10) : null;
+
   // Use w/h if provided, otherwise fall back to size
   // Cap at MAX_SERVER_IMAGE_SIZE for server-side performance
-  const outputWidth = Math.min(MAX_SERVER_IMAGE_SIZE, Math.max(50, widthParam ?? sizeParam))
-  const outputHeight = Math.min(MAX_SERVER_IMAGE_SIZE, Math.max(50, heightParam ?? sizeParam))
+  const outputWidth = Math.min(MAX_SERVER_IMAGE_SIZE, Math.max(50, widthParam ?? sizeParam));
+  const outputHeight = Math.min(MAX_SERVER_IMAGE_SIZE, Math.max(50, heightParam ?? sizeParam));
   // For QR generation, use the larger dimension to ensure quality
-  const size = Math.max(outputWidth, outputHeight)
-  const fg = params.get('fg') || '000000'
-  const bg = params.get('bg') || 'ffffff'
-  const ec = (params.get('ec')?.toUpperCase() || 'H') as ECCLevel
-  const margin = Math.min(20, Math.max(0, parseInt(params.get('margin') || '4', 10)))
-  const transparent = params.get('transparent') === '1'
-  const encodingMode = params.get('enc') || 'auto'
-  const version = params.get('v') ? parseInt(params.get('v')!, 10) : 0
-  const borderModulesExtra = Math.min(10, Math.max(0, parseInt(params.get('border') || '0', 10)))
-  const crispEdges = params.get('crisp') !== '0'
-  const pixelSnap = params.get('snap') || 'floor'
-  const perModuleColorMode = params.get('modColor') || 'solid'
-  const contrastGuard = params.get('cGuard') === '1'
-  const minContrastRatio = parseFloat(params.get('minContrast') || '4.5')
-  
+  const size = Math.max(outputWidth, outputHeight);
+  const fg = params.get('fg') || '000000';
+  const bg = params.get('bg') || 'ffffff';
+  const ec = (params.get('ec')?.toUpperCase() || 'H') as ECCLevel;
+  const margin = Math.min(20, Math.max(0, parseInt(params.get('margin') || '4', 10)));
+  const transparent = params.get('transparent') === '1';
+  const encodingMode = params.get('enc') || 'auto';
+  const version = params.get('v') ? parseInt(params.get('v')!, 10) : 0;
+  const borderModulesExtra = Math.min(10, Math.max(0, parseInt(params.get('border') || '0', 10)));
+  const crispEdges = params.get('crisp') !== '0';
+  const pixelSnap = params.get('snap') || 'floor';
+  const perModuleColorMode = params.get('modColor') || 'solid';
+  const contrastGuard = params.get('cGuard') === '1';
+  const minContrastRatio = parseFloat(params.get('minContrast') || '4.5');
+
   // Module styling
-  const moduleStyle = params.get('style') || 'square'
-  const finderStyle = params.get('finder') || 'square'
-  const eyeOuterStyle = params.get('eyeOuter') || finderStyle
-  const eyeInnerStyle = params.get('eyeInner') || finderStyle
-  const eyeScale = Math.min(150, Math.max(50, parseInt(params.get('eyeScale') || '100', 10)))
-  const cornerRadius = Math.min(100, Math.max(0, parseInt(params.get('radius') || '0', 10)))
-  const moduleGap = Math.min(50, Math.max(0, parseInt(params.get('gap') || '0', 10)))
-  const gapMode = params.get('gapMode') || 'none'
-  const dotRotationDeg = parseInt(params.get('dotRot') || '0', 10)
-  
+  const moduleStyle = params.get('style') || 'square';
+  const finderStyle = params.get('finder') || 'square';
+  const eyeOuterStyle = params.get('eyeOuter') || finderStyle;
+  const eyeInnerStyle = params.get('eyeInner') || finderStyle;
+  const eyeScale = Math.min(150, Math.max(50, parseInt(params.get('eyeScale') || '100', 10)));
+  const cornerRadius = Math.min(100, Math.max(0, parseInt(params.get('radius') || '0', 10)));
+  const moduleGap = Math.min(50, Math.max(0, parseInt(params.get('gap') || '0', 10)));
+  const gapMode = params.get('gapMode') || 'none';
+  const dotRotationDeg = parseInt(params.get('dotRot') || '0', 10);
+
   // Frame
-  const frameStyle = params.get('frame') || 'none'
-  const frameText = params.get('frameText') || ''
-  
+  const frameStyle = params.get('frame') || 'none';
+  const frameText = params.get('frameText') || '';
+
   // Gradient
-  const gradientType = params.get('grad') || 'none'
-  const gradientAngle = parseInt(params.get('gradAngle') || '0', 10)
-  const gradientStopsParam = params.get('gradStops')
-  const gradientStops = gradientStopsParam ? parseGradientStops(gradientStopsParam) : undefined
-  
+  const gradientType = params.get('grad') || 'none';
+  const gradientAngle = parseInt(params.get('gradAngle') || '0', 10);
+  const gradientStopsParam = params.get('gradStops');
+  const gradientStops = gradientStopsParam ? parseGradientStops(gradientStopsParam) : undefined;
+
   // Additional styling
-  const alignmentStyle = params.get('align') || 'match_finder'
-  const timingStyle = params.get('timing') || 'match_module'
-  
+  const alignmentStyle = params.get('align') || 'match_finder';
+  const timingStyle = params.get('timing') || 'match_module';
+
   // Protection settings
-  const preserveFinders = params.get('keepFinders') !== '0'
-  const preserveTiming = params.get('keepTiming') === '1'
-  const preserveAlignment = params.get('keepAlign') === '1'
-  const protectFormatInfo = params.get('protectFmt') === '1'
-  const protectVersionInfo = params.get('protectVer') === '1'
-  const eccAwareEnabled = params.get('eccAware') === '1'
-  const eccAwareRiskBudget = Math.min(100, Math.max(0, parseInt(params.get('eccRisk') || '50', 10)))
-  const eccAwareWeightMap = params.get('eccMap') || 'distance_to_finders'
-  
+  const preserveFinders = params.get('keepFinders') !== '0';
+  const preserveTiming = params.get('keepTiming') === '1';
+  const preserveAlignment = params.get('keepAlign') === '1';
+  const protectFormatInfo = params.get('protectFmt') === '1';
+  const protectVersionInfo = params.get('protectVer') === '1';
+  const eccAwareEnabled = params.get('eccAware') === '1';
+  const eccAwareRiskBudget = Math.min(
+    100,
+    Math.max(0, parseInt(params.get('eccRisk') || '50', 10))
+  );
+  const eccAwareWeightMap = params.get('eccMap') || 'distance_to_finders';
+
   // Overlay
-  const overlayUrl = params.get('img')
-  const overlayMode = params.get('mode') || undefined
-  const overlayIntensity = Math.min(100, Math.max(0, parseInt(params.get('intensity') || '100', 10)))
-  const colorMode = params.get('colorMode') || 'color'
-  const logoSize = Math.min(50, Math.max(5, parseInt(params.get('logoSize') || '25', 10)))
-  
+  const overlayUrl = params.get('img');
+  const overlayMode = params.get('mode') || undefined;
+  const overlayIntensity = Math.min(
+    100,
+    Math.max(0, parseInt(params.get('intensity') || '100', 10))
+  );
+  const colorMode = params.get('colorMode') || 'color';
+  const logoSize = Math.min(50, Math.max(5, parseInt(params.get('logoSize') || '25', 10)));
+
   // Overlay preprocessing
-  const overlayBrightness = Math.min(100, Math.max(-100, parseInt(params.get('brightness') || '0', 10)))
-  const overlayContrast = Math.min(100, Math.max(-100, parseInt(params.get('contrast') || '0', 10)))
-  const overlayGamma = Math.max(0.1, Math.min(3, parseFloat(params.get('gamma') || '1')))
-  const overlaySaturation = Math.min(100, Math.max(-100, parseInt(params.get('saturation') || '0', 10)))
-  const overlayHueRotate = parseInt(params.get('hue') || '0', 10)
-  const overlayInvert = params.get('invert') === '1'
-  const overlayBlur = Math.max(0, parseInt(params.get('blur') || '0', 10))
-  const overlaySharpen = Math.max(0, parseInt(params.get('sharpen') || '0', 10))
-  const overlayPosterize = Math.max(0, parseInt(params.get('posterize') || '0', 10))
-  const overlayThreshold = Math.min(255, Math.max(0, parseInt(params.get('threshold') || '128', 10)))
-  const overlayEdgeDetect = params.get('edge') || 'off'
-  const overlayFit = params.get('fit') || 'cover'
-  const overlayRotate = parseInt(params.get('rot') || '0', 10)
-  const overlayFlipX = params.get('flipX') === '1'
-  const overlayFlipY = params.get('flipY') === '1'
-  
+  const overlayBrightness = Math.min(
+    100,
+    Math.max(-100, parseInt(params.get('brightness') || '0', 10))
+  );
+  const overlayContrast = Math.min(
+    100,
+    Math.max(-100, parseInt(params.get('contrast') || '0', 10))
+  );
+  const overlayGamma = Math.max(0.1, Math.min(3, parseFloat(params.get('gamma') || '1')));
+  const overlaySaturation = Math.min(
+    100,
+    Math.max(-100, parseInt(params.get('saturation') || '0', 10))
+  );
+  const overlayHueRotate = parseInt(params.get('hue') || '0', 10);
+  const overlayInvert = params.get('invert') === '1';
+  const overlayBlur = Math.max(0, parseInt(params.get('blur') || '0', 10));
+  const overlaySharpen = Math.max(0, parseInt(params.get('sharpen') || '0', 10));
+  const overlayPosterize = Math.max(0, parseInt(params.get('posterize') || '0', 10));
+  const overlayThreshold = Math.min(
+    255,
+    Math.max(0, parseInt(params.get('threshold') || '128', 10))
+  );
+  const overlayEdgeDetect = params.get('edge') || 'off';
+  const overlayFit = params.get('fit') || 'cover';
+  const overlayRotate = parseInt(params.get('rot') || '0', 10);
+  const overlayFlipX = params.get('flipX') === '1';
+  const overlayFlipY = params.get('flipY') === '1';
+
   // Dithering options - use cheap default if not specified, otherwise honor user's choice
-  const ditherKindParam = params.get('ditherKind')
-  const ditherKind = (ditherKindParam || DEFAULT_SERVER_DITHER) as DitherKind
-  const diffusionKernel = params.get('diffusionKernel') || 'floyd_steinberg'
-  const ditherStrength = Math.min(100, Math.max(0, parseInt(params.get('ditherStrength') || '50', 10)))
-  const ditherSerpentine = params.get('serpentine') === '1'
-  const orderedMatrix = params.get('matrix') || 'bayer4'
-  const blueNoiseTileSize = parseInt(params.get('bnTile') || '64', 10)
-  const blueNoiseSeed = parseInt(params.get('bnSeed') || '0', 10)
-  const colorDither = params.get('colorDither') || 'none'
-  
+  const ditherKindParam = params.get('ditherKind');
+  const ditherKind = (ditherKindParam || DEFAULT_SERVER_DITHER) as DitherKind;
+  const diffusionKernel = params.get('diffusionKernel') || 'floyd_steinberg';
+  const ditherStrength = Math.min(
+    100,
+    Math.max(0, parseInt(params.get('ditherStrength') || '50', 10))
+  );
+  const ditherSerpentine = params.get('serpentine') === '1';
+  const orderedMatrix = params.get('matrix') || 'bayer4';
+  const blueNoiseTileSize = parseInt(params.get('bnTile') || '64', 10);
+  const blueNoiseSeed = parseInt(params.get('bnSeed') || '0', 10);
+  const colorDither = params.get('colorDither') || 'none';
+
   // Subpixel options
-  const subpixelGridSize = params.get('spGrid') || '3x3'
-  const subpixelCenterRule = params.get('spCenter') || 'strict'
-  const subpixelNeutralColor = params.get('spNeutral') ? `#${params.get('spNeutral')}` : '#808080'
-  const subpixelFinderOverride = params.get('spFinder') || 'solid'
-  
+  const subpixelGridSize = params.get('spGrid') || '3x3';
+  const subpixelCenterRule = params.get('spCenter') || 'strict';
+  const subpixelNeutralColor = params.get('spNeutral') ? `#${params.get('spNeutral')}` : '#808080';
+  const subpixelFinderOverride = params.get('spFinder') || 'solid';
+
   // Halftone options
-  const halftoneCell = params.get('htCell') || 'per_module'
-  const halftoneDotShape = params.get('htDot') || 'circle'
-  const brightnessCurve = params.get('htCurve') || 'linear'
-  const duotoneColor1 = params.get('duo1') ? `#${params.get('duo1')}` : '#000000'
-  const duotoneColor2 = params.get('duo2') ? `#${params.get('duo2')}` : '#ffffff'
-  
+  const halftoneCell = params.get('htCell') || 'per_module';
+  const halftoneDotShape = params.get('htDot') || 'circle';
+  const brightnessCurve = params.get('htCurve') || 'linear';
+  const duotoneColor1 = params.get('duo1') ? `#${params.get('duo1')}` : '#000000';
+  const duotoneColor2 = params.get('duo2') ? `#${params.get('duo2')}` : '#ffffff';
+
   // Render palette
-  const paletteParam = params.get('palette')
-  const palette = paletteParam ? paletteParam.split(',').map(c => c.startsWith('#') ? c : `#${c}`) : undefined
-  const paletteMode = params.get('paletteMode') || 'position'
-  
+  const paletteParam = params.get('palette');
+  const palette = paletteParam
+    ? paletteParam.split(',').map((c) => (c.startsWith('#') ? c : `#${c}`))
+    : undefined;
+  const paletteMode = params.get('paletteMode') || 'position';
+
   // Safety per-ECC limits (support both short and long param names)
-  const maxOverlayIntensityL = parseInt(params.get('maxIntL') || params.get('maxOverlayIntensityL') || '100', 10)
-  const maxOverlayIntensityM = parseInt(params.get('maxIntM') || params.get('maxOverlayIntensityM') || '100', 10)
-  const maxOverlayIntensityQ = parseInt(params.get('maxIntQ') || params.get('maxOverlayIntensityQ') || '100', 10)
-  const maxOverlayIntensityH = parseInt(params.get('maxIntH') || params.get('maxOverlayIntensityH') || '100', 10)
-  
+  const maxOverlayIntensityL = parseInt(
+    params.get('maxIntL') || params.get('maxOverlayIntensityL') || '100',
+    10
+  );
+  const maxOverlayIntensityM = parseInt(
+    params.get('maxIntM') || params.get('maxOverlayIntensityM') || '100',
+    10
+  );
+  const maxOverlayIntensityQ = parseInt(
+    params.get('maxIntQ') || params.get('maxOverlayIntensityQ') || '100',
+    10
+  );
+  const maxOverlayIntensityH = parseInt(
+    params.get('maxIntH') || params.get('maxOverlayIntensityH') || '100',
+    10
+  );
+
   // Output format (may be overridden if overlay is animated GIF)
   // Default to GIF to align with client default (was PNG, causing embed/share mismatch)
-  let outputFormat = (params.get('format') || DEFAULT_OUTPUT_FORMAT) as OutputFormat
-  const outputQuality = Math.max(0, Math.min(1, parseFloat(params.get('quality') || '0.9')))
-  const outputDpi = Math.max(1, Math.min(1200, parseInt(params.get('dpi') || '72', 10)))
-  
+  let outputFormat = (params.get('format') || DEFAULT_OUTPUT_FORMAT) as OutputFormat;
+  const outputQuality = Math.max(0, Math.min(1, parseFloat(params.get('quality') || '0.9')));
+  const outputDpi = Math.max(1, Math.min(1200, parseInt(params.get('dpi') || '72', 10)));
+
   // Watermark
-  const watermarkEnabled = params.get('wmEn') === '1'
-  const watermarkKind = (params.get('wmKind') || 'text') as WatermarkKind
-  const watermarkText = params.get('wmText') || ''
-  const watermarkImageUrl = params.get('wmImg') || undefined
-  const watermarkPosition = (params.get('wmPos') || 'center') as WatermarkPosition
-  const watermarkOpacity = Math.min(100, Math.max(0, parseInt(params.get('wmOpacity') || '50', 10)))
-  const watermarkBlend = (params.get('wmBlend') || 'normal') as WatermarkBlend
-  
+  const watermarkEnabled = params.get('wmEn') === '1';
+  const watermarkKind = (params.get('wmKind') || 'text') as WatermarkKind;
+  const watermarkText = params.get('wmText') || '';
+  const watermarkImageUrl = params.get('wmImg') || undefined;
+  const watermarkPosition = (params.get('wmPos') || 'center') as WatermarkPosition;
+  const watermarkOpacity = Math.min(
+    100,
+    Math.max(0, parseInt(params.get('wmOpacity') || '50', 10))
+  );
+  const watermarkBlend = (params.get('wmBlend') || 'normal') as WatermarkBlend;
+
   // Animation (for animated GIF output)
-  const animationPattern = (params.get('animPattern') || 'none') as AnimationPattern
+  const animationPattern = (params.get('animPattern') || 'none') as AnimationPattern;
   // Ensure frame count is at least 1 to prevent empty animation loops
-  const animationFramesRaw = parseInt(params.get('animFrames') || '24', 10)
-  const animationFrames = Math.min(60, Math.max(1, isNaN(animationFramesRaw) ? 24 : animationFramesRaw))
+  const animationFramesRaw = parseInt(params.get('animFrames') || '24', 10);
+  const animationFrames = Math.min(
+    60,
+    Math.max(1, isNaN(animationFramesRaw) ? 24 : animationFramesRaw)
+  );
   // Ensure speed is valid to prevent division issues
-  const animationSpeedRaw = parseInt(params.get('animSpeed') || '100', 10)
-  const animationSpeed = Math.min(1000, Math.max(10, isNaN(animationSpeedRaw) ? 100 : animationSpeedRaw))
-  const animationSeed = parseInt(params.get('animSeed') || '0', 10)
-  const animationEasing = params.get('easing') || 'linear'
-  
+  const animationSpeedRaw = parseInt(params.get('animSpeed') || '100', 10);
+  const animationSpeed = Math.min(
+    1000,
+    Math.max(10, isNaN(animationSpeedRaw) ? 100 : animationSpeedRaw)
+  );
+  const animationSeed = parseInt(params.get('animSeed') || '0', 10);
+  const animationEasing = params.get('easing') || 'linear';
+
   // Format-specific quality params
-  const webpQuality = Math.min(100, Math.max(0, parseInt(params.get('webpQ') || '90', 10)))
-  const gifColors = Math.min(256, Math.max(2, parseInt(params.get('gifColors') || '256', 10)))
-  
+  const webpQuality = Math.min(100, Math.max(0, parseInt(params.get('webpQ') || '90', 10)));
+  const gifColors = Math.min(256, Math.max(2, parseInt(params.get('gifColors') || '256', 10)));
+
   // Metadata
-  const metaTitle = params.get('metaTitle') || undefined
-  const metaAuthor = params.get('metaAuthor') || undefined
-  const metaCopyright = params.get('metaCopy') || undefined
-  const metaDescription = params.get('metaDesc') || undefined
-  
+  const metaTitle = params.get('metaTitle') || undefined;
+  const metaAuthor = params.get('metaAuthor') || undefined;
+  const metaCopyright = params.get('metaCopy') || undefined;
+  const metaDescription = params.get('metaDesc') || undefined;
+
   // Validate ECC level
   if (!['L', 'M', 'Q', 'H'].includes(ec)) {
-    return new Response('Invalid "ec" parameter. Use L, M, Q, or H', { status: 400 })
+    return new Response('Invalid "ec" parameter. Use L, M, Q, or H', { status: 400 });
   }
-  
+
   // Validate module style
-  const validModuleStyles = ['square', 'rounded', 'dots', 'diamond', 'connected']
+  const validModuleStyles = ['square', 'rounded', 'dots', 'diamond', 'connected'];
   if (!validModuleStyles.includes(moduleStyle)) {
-    return new Response(`Invalid "style" parameter. Use one of: ${validModuleStyles.join(', ')}`, { status: 400 })
+    return new Response(`Invalid "style" parameter. Use one of: ${validModuleStyles.join(', ')}`, {
+      status: 400,
+    });
   }
-  
+
   try {
     // Create QRGenerator with Node.js canvas factory
-    const qrGenerator = new QRGenerator(nodeCanvasFactory)
-    
+    const qrGenerator = new QRGenerator(nodeCanvasFactory);
+
     // Calculate module size based on desired output size
     // Estimate module count first (depends on content length and ECC)
-    const estimatedVersion = qrGenerator.calculateOptimalVersion(data, ec)
-    const estimatedModuleCount = estimatedVersion * 4 + 17
+    const estimatedVersion = qrGenerator.calculateOptimalVersion(data, ec);
+    const estimatedModuleCount = estimatedVersion * 4 + 17;
     // Use final margin (including borderModulesExtra) for module size calculation
     // to avoid sizing drift/crop issues
-    const totalMargin = margin + borderModulesExtra
-    const moduleSize = Math.max(1, Math.floor((size - totalMargin * 2) / (estimatedModuleCount + totalMargin * 2)))
-    
+    const totalMargin = margin + borderModulesExtra;
+    const moduleSize = Math.max(
+      1,
+      Math.floor((size - totalMargin * 2) / (estimatedModuleCount + totalMargin * 2))
+    );
+
     // Build config (same structure as client-side)
     const config = {
       content: data,
@@ -1220,11 +1303,14 @@ export default async (request: Request) => {
       // Palette
       palette,
       paletteMode,
-      gradient: gradientType !== 'none' ? {
-        type: gradientType,
-        angle: gradientAngle,
-        stops: gradientStops,
-      } : undefined,
+      gradient:
+        gradientType !== 'none'
+          ? {
+              type: gradientType,
+              angle: gradientAngle,
+              stops: gradientStops,
+            }
+          : undefined,
       // Per-ECC intensity limits
       maxOverlayIntensityByEcc: {
         L: maxOverlayIntensityL,
@@ -1232,36 +1318,40 @@ export default async (request: Request) => {
         Q: maxOverlayIntensityQ,
         H: maxOverlayIntensityH,
       },
-    }
-    
+    };
+
     // Load overlay image if URL provided
-    let overlayCanvas: Canvas | null = null
-    let overlayFrames: ServerAnimationFrame[] = []
-    let hasAnimatedOverlay = false
-    
+    let overlayCanvas: Canvas | null = null;
+    let overlayFrames: ServerAnimationFrame[] = [];
+    let hasAnimatedOverlay = false;
+
     if (overlayUrl && overlayMode) {
-      const fetchedImage = await fetchImageWithBuffer(overlayUrl)
+      const fetchedImage = await fetchImageWithBuffer(overlayUrl);
       if (fetchedImage) {
-        overlayCanvas = fetchedImage.canvas
-        
+        overlayCanvas = fetchedImage.canvas;
+
         // Auto-detect animated GIF overlay and switch output format to GIF
         if (fetchedImage.isAnimatedGif) {
-          outputFormat = 'gif'
-          hasAnimatedOverlay = true
-          overlayFrames = parseGifFramesServer(fetchedImage.arrayBuffer)
+          outputFormat = 'gif';
+          hasAnimatedOverlay = true;
+          overlayFrames = parseGifFramesServer(fetchedImage.arrayBuffer);
         }
       }
     }
-    
+
     // Generate QR code using the same method as client-side
-    let canvas = await qrGenerator.generate(config, overlayCanvas)
-    
+    let canvas = await qrGenerator.generate(config, overlayCanvas);
+
     // Load watermark image if URL provided
-    let watermarkImageCanvas: Canvas | null = null
-    if (watermarkEnabled && (watermarkKind === 'image' || watermarkKind === 'pattern') && watermarkImageUrl) {
-      watermarkImageCanvas = await fetchImageAsCanvas(watermarkImageUrl)
+    let watermarkImageCanvas: Canvas | null = null;
+    if (
+      watermarkEnabled &&
+      (watermarkKind === 'image' || watermarkKind === 'pattern') &&
+      watermarkImageUrl
+    ) {
+      watermarkImageCanvas = await fetchImageAsCanvas(watermarkImageUrl);
     }
-    
+
     // Apply watermark if enabled
     if (watermarkEnabled) {
       canvas = applyWatermarkServer(canvas, {
@@ -1272,47 +1362,50 @@ export default async (request: Request) => {
         position: watermarkPosition,
         opacity: watermarkOpacity,
         blend: watermarkBlend,
-      })
+      });
     }
-    
+
     // Scale to requested output dimensions
-    let outputCanvas = canvas
+    let outputCanvas = canvas;
     if (canvas.width !== outputWidth || canvas.height !== outputHeight) {
-      outputCanvas = createCanvas(outputWidth, outputHeight)
-      const ctx = outputCanvas.getContext('2d')
-      ctx.imageSmoothingEnabled = false
-      ctx.drawImage(canvas, 0, 0, outputWidth, outputHeight)
+      outputCanvas = createCanvas(outputWidth, outputHeight);
+      const ctx = outputCanvas.getContext('2d');
+      ctx.imageSmoothingEnabled = false;
+      ctx.drawImage(canvas, 0, 0, outputWidth, outputHeight);
     }
-    
+
     // Build metadata object
-    const metadata: PngMetadata | undefined = (metaTitle || metaAuthor || metaCopyright || metaDescription) ? {
-      title: metaTitle,
-      author: metaAuthor,
-      copyright: metaCopyright,
-      description: metaDescription,
-      creationTime: new Date().toISOString(),
-      software: 'ANQR - anqr.link',
-    } : undefined
-    
+    const metadata: PngMetadata | undefined =
+      metaTitle || metaAuthor || metaCopyright || metaDescription
+        ? {
+            title: metaTitle,
+            author: metaAuthor,
+            copyright: metaCopyright,
+            description: metaDescription,
+            creationTime: new Date().toISOString(),
+            software: 'ANQR - anqr.link',
+          }
+        : undefined;
+
     // Generate animation frames based on source
-    let animationFrameCanvases: Canvas[] = []
-    let animatedOverlayFrames: ServerAnimationFrame[] = []
-    
+    let animationFrameCanvases: Canvas[] = [];
+    const animatedOverlayFrames: ServerAnimationFrame[] = [];
+
     if (outputFormat === 'gif') {
       if (hasAnimatedOverlay && overlayFrames.length > 1) {
         // Animated GIF overlay - generate a QR frame for each overlay frame
         for (const overlayFrame of overlayFrames) {
-          const frameCanvas = await qrGenerator.generate(config, overlayFrame.canvas)
-          
+          const frameCanvas = await qrGenerator.generate(config, overlayFrame.canvas);
+
           // Scale to output size if needed
-          let scaledFrame = frameCanvas
+          let scaledFrame = frameCanvas;
           if (frameCanvas.width !== outputWidth || frameCanvas.height !== outputHeight) {
-            scaledFrame = createCanvas(outputWidth, outputHeight)
-            const ctx = scaledFrame.getContext('2d')
-            ctx.imageSmoothingEnabled = false
-            ctx.drawImage(frameCanvas, 0, 0, outputWidth, outputHeight)
+            scaledFrame = createCanvas(outputWidth, outputHeight);
+            const ctx = scaledFrame.getContext('2d');
+            ctx.imageSmoothingEnabled = false;
+            ctx.drawImage(frameCanvas, 0, 0, outputWidth, outputHeight);
           }
-          
+
           // Apply watermark if enabled
           if (watermarkEnabled) {
             scaledFrame = applyWatermarkServer(scaledFrame, {
@@ -1323,14 +1416,14 @@ export default async (request: Request) => {
               position: watermarkPosition,
               opacity: watermarkOpacity,
               blend: watermarkBlend,
-            })
+            });
           }
-          
+
           animatedOverlayFrames.push({
             canvas: scaledFrame,
             delay: overlayFrame.delay,
             disposalType: overlayFrame.disposalType,
-          })
+          });
         }
       } else if (animationPattern !== 'none') {
         // Pattern-based animation
@@ -1340,45 +1433,45 @@ export default async (request: Request) => {
           animationFrames,
           animationSeed,
           animationEasing as AnimationEasing
-        )
+        );
       }
     }
-    
+
     // Encode based on format
-    let outputBuffer: Buffer
-    let contentType: string
-    
+    let outputBuffer: Buffer;
+    let contentType: string;
+
     switch (outputFormat) {
       case 'gif':
         if (animatedOverlayFrames.length > 1) {
           // Animated GIF from overlay frames (preserves original frame delays)
-          outputBuffer = encodeAnimatedGifWithDelays(animatedOverlayFrames, gifColors)
+          outputBuffer = encodeAnimatedGifWithDelays(animatedOverlayFrames, gifColors);
         } else if (animationFrameCanvases.length > 1) {
           // Animated GIF with pattern
-          outputBuffer = encodeAnimatedGif(animationFrameCanvases, animationSpeed, gifColors)
+          outputBuffer = encodeAnimatedGif(animationFrameCanvases, animationSpeed, gifColors);
         } else {
           // Single frame GIF
-          outputBuffer = encodeGif(outputCanvas, gifColors)
+          outputBuffer = encodeGif(outputCanvas, gifColors);
         }
-        contentType = 'image/gif'
-        break
-        
+        contentType = 'image/gif';
+        break;
+
       case 'webp':
-        outputBuffer = outputCanvas.toBuffer('image/webp', webpQuality)
-        contentType = 'image/webp'
-        break
-        
+        outputBuffer = outputCanvas.toBuffer('image/webp', webpQuality);
+        contentType = 'image/webp';
+        break;
+
       case 'png':
       default:
-        outputBuffer = outputCanvas.toBuffer('image/png')
+        outputBuffer = outputCanvas.toBuffer('image/png');
         // Embed metadata and DPI into PNG
         if (metadata || outputDpi !== 72) {
-          outputBuffer = embedPngMetadataAndDpi(outputBuffer, metadata, outputDpi)
+          outputBuffer = embedPngMetadataAndDpi(outputBuffer, metadata, outputDpi);
         }
-        contentType = 'image/png'
-        break
+        contentType = 'image/png';
+        break;
     }
-    
+
     return new Response(new Uint8Array(outputBuffer), {
       status: 200,
       headers: {
@@ -1386,10 +1479,10 @@ export default async (request: Request) => {
         'Cache-Control': 'public, max-age=31536000, immutable',
         'Access-Control-Allow-Origin': '*',
       },
-    })
+    });
   } catch (error) {
-    const message = error instanceof Error ? error.message : 'Unknown error'
-    console.error('QR generation error:', error)
-    return new Response(`Error generating QR code: ${message}`, { status: 500 })
+    const message = error instanceof Error ? error.message : 'Unknown error';
+    console.error('QR generation error:', error);
+    return new Response(`Error generating QR code: ${message}`, { status: 500 });
   }
-}
+};

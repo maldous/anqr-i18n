@@ -1,60 +1,68 @@
-import { useQRStore, PayloadKind } from '@/store/qr-store'
-import { useTranslation } from 'react-i18next'
-import i18n from '@/i18n'
-import { Label } from '@/components/ui/label'
-import { Input } from '@/components/ui/input'
-import { Textarea } from '@/components/ui/textarea'
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue, SelectGroup, SelectLabel } from '@/components/ui/select'
-import { Switch } from '@/components/ui/switch'
-import { HighlightedLabel } from '@/lib/search-context'
-import { useState, useEffect } from 'react'
-import { 
-  generateEPCSepa, generateUPI, generatePayNow, generatePromptPay, generatePIX,
-  generateSwissQRBill, generateLightning, generateEthereumEIP681,
-  generateQRIS, generateDuitNow, generateBharatQR, generateVietQR,
-  generateQRPh, generateTWQR, generateHKQR, generateJPQR, generateAusPayNet,
-  generatePayPalMe, generateCashApp, generateEMVMPM
-} from '@/modules/payload-generators'
+import { useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
+import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
+import {
+  Select,
+  SelectContent,
+  SelectGroup,
+  SelectItem,
+  SelectLabel,
+  SelectTrigger,
+  SelectValue,
+} from '@/components/ui/select';
+import { Switch } from '@/components/ui/switch';
+import { Textarea } from '@/components/ui/textarea';
+import i18n from '@/i18n';
+import { HighlightedLabel } from '@/lib/search-context';
+import {
+  generateEPCSepa,
+  generatePayNow,
+  generatePIX,
+  generatePromptPay,
+  generateUPI,
+} from '@/modules/payload-generators';
+import { type PayloadKind, useQRStore } from '@/store/qr-store';
 
 // Global payment methods available to ALL languages in advanced tier
 const GLOBAL_PAYMENT_METHODS: PayloadKind[] = [
   'crypto',
-  'lightning', 
+  'lightning',
   'ethereum_eip681',
   'paypal_me',
   'cashapp',
-]
+];
 
 // Language-to-payment mapping for advanced tier
 // Maps language codes to arrays of region-specific payment methods
 const LANGUAGE_PAYMENT_MAP: Record<string, PayloadKind[]> = {
   // Vietnamese - VietQR
   vi: ['vietqr'],
-  
+
   // Thai - PromptPay
   th: ['promptpay'],
-  
+
   // Japanese - JPQR (Google Play: ja-JP)
   'ja-JP': ['jpqr'],
-  
+
   // Korean - global only (Google Play: ko-KR)
   'ko-KR': [],
-  
+
   // Chinese - includes mainland, Taiwan, HK (Google Play: zh-CN)
   'zh-CN': ['twqr', 'hkqr'],
-  
+
   // Indonesian - QRIS
   id: ['qris'],
-  
+
   // Malay (Malaysia, Singapore) - DuitNow, PayNow
   ms: ['duitnow', 'paynow'],
-  
+
   // Filipino (Philippines) - QR Ph (Google Play: fil)
   fil: ['qrph'],
-  
+
   // Portuguese (Brazil) - PIX (Google Play: pt-BR)
   'pt-BR': ['pix'],
-  
+
   // Indian languages - UPI, BharatQR (Google Play codes)
   'hi-IN': ['upi', 'bharatqr'],
   'bn-BD': ['upi', 'bharatqr'], // Bengali
@@ -66,9 +74,6 @@ const LANGUAGE_PAYMENT_MAP: Record<string, PayloadKind[]> = {
   pa: ['upi', 'bharatqr'], // Punjabi (Google Play: pa)
   'ta-IN': ['upi', 'bharatqr'],
 
-  
-
-  
   // European languages - EPC/SEPA, Swiss QR-bill (with Google Play codes)
   'de-DE': ['epc_sepa', 'swiss_qr_bill'],
   'fr-FR': ['epc_sepa', 'swiss_qr_bill'],
@@ -87,28 +92,28 @@ const LANGUAGE_PAYMENT_MAP: Record<string, PayloadKind[]> = {
   hr: ['epc_sepa'],
   bg: ['epc_sepa'],
   'el-GR': ['epc_sepa'],
-  
+
   // English - show internationally-relevant options only (not region-specific foreign standards)
   // Users who need regional standards like VietQR, QRIS, PromptPay etc should use their native language or professional tier
   'en-GB': ['epc_sepa', 'swiss_qr_bill', 'auspaynet'],
-  
+
   // Russian - global + SEPA for cross-border (using Google Play codes)
   'ru-RU': ['epc_sepa'],
-  
+
   // Arabic - global options
   ar: [],
-  
+
   // Southeast Asian (no specific QR standards in our list) - with Google Play codes
   'lo-LA': [], // Lao
   'my-MM': [], // Burmese
-  
+
   // South Asian - Nepali gets UPI (close ties with India)
   'ne-NP': ['upi', 'bharatqr'],
-  
+
   // South African languages - global only
   af: [],
   zu: [],
-}
+};
 
 /**
  * Get payment methods available for the current language in advanced tier
@@ -118,23 +123,40 @@ function getAvailablePayments(tier: string, currentLang: string): PayloadKind[] 
   // Professional tier gets ALL payment methods
   if (tier === 'professional') {
     return [
-      'epc_sepa', 'swiss_qr_bill', 'upi', 'paynow', 'promptpay', 'pix',
-      'qris', 'duitnow', 'bharatqr', 'vietqr', 'qrph', 'twqr', 'hkqr',
-      'jpqr', 'auspaynet', 'crypto', 'lightning', 'ethereum_eip681',
-      'paypal_me', 'cashapp', 'emv_generic'
-    ]
+      'epc_sepa',
+      'swiss_qr_bill',
+      'upi',
+      'paynow',
+      'promptpay',
+      'pix',
+      'qris',
+      'duitnow',
+      'bharatqr',
+      'vietqr',
+      'qrph',
+      'twqr',
+      'hkqr',
+      'jpqr',
+      'auspaynet',
+      'crypto',
+      'lightning',
+      'ethereum_eip681',
+      'paypal_me',
+      'cashapp',
+      'emv_generic',
+    ];
   }
-  
+
   // Advanced tier gets language-specific + global payments
   if (tier === 'advanced') {
-    const baseLang = currentLang.split('-')[0]
-    const langSpecific = LANGUAGE_PAYMENT_MAP[baseLang] || []
+    const baseLang = currentLang.split('-')[0];
+    const langSpecific = LANGUAGE_PAYMENT_MAP[baseLang] || [];
     // Combine language-specific with global, remove duplicates
-    return [...new Set([...langSpecific, ...GLOBAL_PAYMENT_METHODS])]
+    return [...new Set([...langSpecific, ...GLOBAL_PAYMENT_METHODS])];
   }
-  
+
   // Basic tier gets no payments
-  return []
+  return [];
 }
 
 // Payload category/item keys for translation
@@ -145,7 +167,7 @@ const PAYLOAD_CATEGORY_KEYS = [
     items: [
       { value: 'plain_text' as PayloadKind, labelKey: 'payload.plainText' },
       { value: 'url' as PayloadKind, labelKey: 'payload.url' },
-    ]
+    ],
   },
   {
     groupKey: 'payload.contact',
@@ -157,7 +179,7 @@ const PAYLOAD_CATEGORY_KEYS = [
       { value: 'vcard' as PayloadKind, labelKey: 'payload.vcard' },
       { value: 'mecard' as PayloadKind, labelKey: 'payload.mecard' },
       { value: 'bizcard' as PayloadKind, labelKey: 'payload.bizcard' },
-    ]
+    ],
   },
   {
     groupKey: 'payload.locationNetwork',
@@ -165,7 +187,7 @@ const PAYLOAD_CATEGORY_KEYS = [
     items: [
       { value: 'geo' as PayloadKind, labelKey: 'payload.geo' },
       { value: 'wifi' as PayloadKind, labelKey: 'payload.wifiNetwork' },
-    ]
+    ],
   },
   {
     groupKey: 'payload.calendar',
@@ -174,7 +196,7 @@ const PAYLOAD_CATEGORY_KEYS = [
       { value: 'event' as PayloadKind, labelKey: 'payload.event' },
       { value: 'event_rsvp' as PayloadKind, labelKey: 'payload.eventRsvp' },
       { value: 'calendar_subscription' as PayloadKind, labelKey: 'payload.calendarSubscription' },
-    ]
+    ],
   },
   {
     groupKey: 'payload.documentsMedia',
@@ -182,7 +204,7 @@ const PAYLOAD_CATEGORY_KEYS = [
     items: [
       { value: 'file_url' as PayloadKind, labelKey: 'payload.fileUrl' },
       { value: 'cloud_link' as PayloadKind, labelKey: 'payload.cloudLink' },
-    ]
+    ],
   },
   {
     groupKey: 'payload.socialMessaging',
@@ -190,7 +212,7 @@ const PAYLOAD_CATEGORY_KEYS = [
     items: [
       { value: 'social_profile' as PayloadKind, labelKey: 'payload.socialProfile' },
       { value: 'messaging_link' as PayloadKind, labelKey: 'payload.messagingLink' },
-    ]
+    ],
   },
   {
     groupKey: 'payload.payments',
@@ -217,7 +239,7 @@ const PAYLOAD_CATEGORY_KEYS = [
       { value: 'paypal_me' as PayloadKind, labelKey: 'payload.paypalMe' },
       { value: 'cashapp' as PayloadKind, labelKey: 'payload.cashapp' },
       { value: 'emv_generic' as PayloadKind, labelKey: 'payload.emvGeneric' },
-    ]
+    ],
   },
   {
     groupKey: 'payload.marketing',
@@ -225,7 +247,7 @@ const PAYLOAD_CATEGORY_KEYS = [
     items: [
       { value: 'utm_link' as PayloadKind, labelKey: 'payload.utmLink' },
       { value: 'short_link' as PayloadKind, labelKey: 'payload.shortLink' },
-    ]
+    ],
   },
   {
     groupKey: 'payload.enterprise',
@@ -234,160 +256,191 @@ const PAYLOAD_CATEGORY_KEYS = [
       { value: 'gs1_digital_link' as PayloadKind, labelKey: 'payload.gs1DigitalLink' },
       { value: 'app_link' as PayloadKind, labelKey: 'payload.appLink' },
       { value: 'custom' as PayloadKind, labelKey: 'payload.custom' },
-    ]
+    ],
   },
-]
+];
 
 // Payment form state types
 interface EPCSepaForm {
-  name: string
-  iban: string
-  bic: string
-  amount: string
-  reference: string
+  name: string;
+  iban: string;
+  bic: string;
+  amount: string;
+  reference: string;
 }
 
 interface UPIForm {
-  vpa: string
-  payeeName: string
-  amount: string
-  transactionNote: string
+  vpa: string;
+  payeeName: string;
+  amount: string;
+  transactionNote: string;
 }
 
 interface PayNowForm {
-  type: 'mobile' | 'uen'
-  value: string
-  amount: string
-  reference: string
+  type: 'mobile' | 'uen';
+  value: string;
+  amount: string;
+  reference: string;
 }
 
 interface PromptPayForm {
-  type: 'mobile' | 'id' | 'ewallet'
-  value: string
-  amount: string
+  type: 'mobile' | 'id' | 'ewallet';
+  value: string;
+  amount: string;
 }
 
 interface PIXForm {
-  key: string
-  name: string
-  city: string
-  amount: string
+  key: string;
+  name: string;
+  city: string;
+  amount: string;
 }
 
 // New payment form interfaces
 interface SwissQRBillForm {
-  creditorIBAN: string
-  creditorName: string
-  creditorCity: string
-  creditorCountry: string
-  referenceType: 'QRR' | 'SCOR' | 'NON'
-  reference: string
-  amount: string
-  currency: 'CHF' | 'EUR'
+  creditorIBAN: string;
+  creditorName: string;
+  creditorCity: string;
+  creditorCountry: string;
+  referenceType: 'QRR' | 'SCOR' | 'NON';
+  reference: string;
+  amount: string;
+  currency: 'CHF' | 'EUR';
 }
 
 interface LightningForm {
-  invoice: string
+  invoice: string;
 }
 
 interface EthereumForm {
-  targetAddress: string
-  chainId: string
-  value: string
-  gas: string
+  targetAddress: string;
+  chainId: string;
+  value: string;
+  gas: string;
 }
 
 interface QRISForm {
-  merchantId: string
-  merchantName: string
-  merchantCity: string
-  amount: string
+  merchantId: string;
+  merchantName: string;
+  merchantCity: string;
+  amount: string;
 }
 
 interface DuitNowForm {
-  proxyType: 'NRIC' | 'MOBILE' | 'PASSPORT' | 'ARMY' | 'BUSINESS' | 'OTHERS'
-  proxyValue: string
-  merchantName: string
-  amount: string
+  proxyType: 'NRIC' | 'MOBILE' | 'PASSPORT' | 'ARMY' | 'BUSINESS' | 'OTHERS';
+  proxyValue: string;
+  merchantName: string;
+  amount: string;
 }
 
 interface BharatQRForm {
-  merchantVPA: string
-  merchantName: string
-  merchantCity: string
-  amount: string
+  merchantVPA: string;
+  merchantName: string;
+  merchantCity: string;
+  amount: string;
 }
 
 interface VietQRForm {
-  bankBin: string
-  accountNumber: string
-  accountName: string
-  amount: string
+  bankBin: string;
+  accountNumber: string;
+  accountName: string;
+  amount: string;
 }
 
 interface QRPhForm {
-  accountNumber: string
-  merchantName: string
-  merchantCity: string
-  amount: string
+  accountNumber: string;
+  merchantName: string;
+  merchantCity: string;
+  amount: string;
 }
 
 interface TWQRForm {
-  merchantId: string
-  merchantName: string
-  amount: string
+  merchantId: string;
+  merchantName: string;
+  amount: string;
 }
 
 interface HKQRForm {
-  fpsId: string
-  merchantName: string
-  amount: string
+  fpsId: string;
+  merchantName: string;
+  amount: string;
 }
 
 interface JPQRForm {
-  storeId: string
-  merchantName: string
-  amount: string
+  storeId: string;
+  merchantName: string;
+  amount: string;
 }
 
 interface AusPayNetForm {
-  payId: string
-  payIdType: 'EMAIL' | 'MOBILE' | 'ABN' | 'ORG'
-  merchantName: string
-  amount: string
+  payId: string;
+  payIdType: 'EMAIL' | 'MOBILE' | 'ABN' | 'ORG';
+  merchantName: string;
+  amount: string;
 }
 
 interface PayPalMeForm {
-  username: string
-  amount: string
+  username: string;
+  amount: string;
 }
 
 interface CashAppForm {
-  cashtag: string
-  amount: string
+  cashtag: string;
+  amount: string;
 }
 
 interface EMVGenericForm {
-  merchantName: string
-  merchantCity: string
-  countryCode: string
-  currencyCode: string
-  amount: string
-  mcc: string
-  postalCode: string
-  tipIndicator: 'none' | 'prompt' | 'fixed' | 'percent'
-  tipAmount: string
-  tipPercent: string
-  reference: string
-  storeLabel: string
-  terminalLabel: string
+  merchantName: string;
+  merchantCity: string;
+  countryCode: string;
+  currencyCode: string;
+  amount: string;
+  mcc: string;
+  postalCode: string;
+  tipIndicator: 'none' | 'prompt' | 'fixed' | 'percent';
+  tipAmount: string;
+  tipPercent: string;
+  reference: string;
+  storeLabel: string;
+  terminalLabel: string;
 }
 
 export function PayloadSection() {
-  const { tier, payload, setPayloadKind, setPayloadText, setPayloadUrl, setPayloadTel, setPayloadEmail, setPayloadSms, setPayloadGeo, setPayloadWifi, setPayloadVCard, setPayloadMeCard, setPayloadEvent, setPayloadCrypto, setPayloadOtpAuth, setPayloadValidation,
-    setPayloadSwissQRBill, setPayloadLightning, setPayloadEthereum, setPayloadQRIS, setPayloadDuitNow, setPayloadBharatQR, setPayloadVietQR, setPayloadQRPh, setPayloadTWQR, setPayloadHKQR, setPayloadJPQR, setPayloadAusPayNet, setPayloadPayPalMe, setPayloadCashApp, setPayloadEMVGeneric } = useQRStore()
-  const { t } = useTranslation()
-  const [showStartupHighlight, setShowStartupHighlight] = useState(false)
+  const {
+    tier,
+    payload,
+    setPayloadKind,
+    setPayloadText,
+    setPayloadUrl,
+    setPayloadTel,
+    setPayloadEmail,
+    setPayloadSms,
+    setPayloadGeo,
+    setPayloadWifi,
+    setPayloadVCard,
+    setPayloadMeCard,
+    setPayloadEvent,
+    setPayloadCrypto,
+    setPayloadOtpAuth,
+    setPayloadValidation,
+    setPayloadSwissQRBill,
+    setPayloadLightning,
+    setPayloadEthereum,
+    setPayloadQRIS,
+    setPayloadDuitNow,
+    setPayloadBharatQR,
+    setPayloadVietQR,
+    setPayloadQRPh,
+    setPayloadTWQR,
+    setPayloadHKQR,
+    setPayloadJPQR,
+    setPayloadAusPayNet,
+    setPayloadPayPalMe,
+    setPayloadCashApp,
+    setPayloadEMVGeneric,
+  } = useQRStore();
+  const { t } = useTranslation();
+  const [showStartupHighlight, setShowStartupHighlight] = useState(false);
 
   // Payment form states
   const [epcSepaForm, setEpcSepaForm] = useState<EPCSepaForm>({
@@ -395,35 +448,35 @@ export function PayloadSection() {
     iban: '',
     bic: '',
     amount: '',
-    reference: ''
-  })
+    reference: '',
+  });
 
   const [upiForm, setUpiForm] = useState<UPIForm>({
     vpa: '',
     payeeName: '',
     amount: '',
-    transactionNote: ''
-  })
+    transactionNote: '',
+  });
 
   const [payNowForm, setPayNowForm] = useState<PayNowForm>({
     type: 'uen',
     value: '',
     amount: '',
-    reference: ''
-  })
+    reference: '',
+  });
 
   const [promptPayForm, setPromptPayForm] = useState<PromptPayForm>({
     type: 'mobile',
     value: '',
-    amount: ''
-  })
+    amount: '',
+  });
 
   const [pixForm, setPixForm] = useState<PIXForm>({
     key: '',
     name: '',
     city: '',
-    amount: ''
-  })
+    amount: '',
+  });
 
   // New payment form states
   const [swissQrBillForm, setSwissQrBillForm] = useState<SwissQRBillForm>({
@@ -434,89 +487,89 @@ export function PayloadSection() {
     referenceType: 'NON',
     reference: '',
     amount: '',
-    currency: 'CHF'
-  })
+    currency: 'CHF',
+  });
 
   const [lightningForm, setLightningForm] = useState<LightningForm>({
-    invoice: ''
-  })
+    invoice: '',
+  });
 
   const [ethereumForm, setEthereumForm] = useState<EthereumForm>({
     targetAddress: '',
     chainId: '1',
     value: '',
-    gas: ''
-  })
+    gas: '',
+  });
 
   const [qrisForm, setQrisForm] = useState<QRISForm>({
     merchantId: '',
     merchantName: '',
     merchantCity: '',
-    amount: ''
-  })
+    amount: '',
+  });
 
   const [duitnowForm, setDuitnowForm] = useState<DuitNowForm>({
     proxyType: 'MOBILE',
     proxyValue: '',
     merchantName: '',
-    amount: ''
-  })
+    amount: '',
+  });
 
   const [bharatqrForm, setBharatqrForm] = useState<BharatQRForm>({
     merchantVPA: '',
     merchantName: '',
     merchantCity: '',
-    amount: ''
-  })
+    amount: '',
+  });
 
   const [vietqrForm, setVietqrForm] = useState<VietQRForm>({
     bankBin: '',
     accountNumber: '',
     accountName: '',
-    amount: ''
-  })
+    amount: '',
+  });
 
   const [qrphForm, setQrphForm] = useState<QRPhForm>({
     accountNumber: '',
     merchantName: '',
     merchantCity: '',
-    amount: ''
-  })
+    amount: '',
+  });
 
   const [twqrForm, setTwqrForm] = useState<TWQRForm>({
     merchantId: '',
     merchantName: '',
-    amount: ''
-  })
+    amount: '',
+  });
 
   const [hkqrForm, setHkqrForm] = useState<HKQRForm>({
     fpsId: '',
     merchantName: '',
-    amount: ''
-  })
+    amount: '',
+  });
 
   const [jpqrForm, setJpqrForm] = useState<JPQRForm>({
     storeId: '',
     merchantName: '',
-    amount: ''
-  })
+    amount: '',
+  });
 
   const [auspaynetForm, setAuspaynetForm] = useState<AusPayNetForm>({
     payId: '',
     payIdType: 'EMAIL',
     merchantName: '',
-    amount: ''
-  })
+    amount: '',
+  });
 
   const [paypalMeForm, setPaypalMeForm] = useState<PayPalMeForm>({
     username: '',
-    amount: ''
-  })
+    amount: '',
+  });
 
   const [cashappForm, setCashappForm] = useState<CashAppForm>({
     cashtag: '',
-    amount: ''
-  })
+    amount: '',
+  });
 
   const [emvGenericForm, setEmvGenericForm] = useState<EMVGenericForm>({
     merchantName: '',
@@ -531,20 +584,20 @@ export function PayloadSection() {
     tipPercent: '',
     reference: '',
     storeLabel: '',
-    terminalLabel: ''
-  })
+    terminalLabel: '',
+  });
 
   // Show startup highlight only once on initial mount
   useEffect(() => {
-    const hasSeenHighlight = sessionStorage.getItem('anqr-seen-highlight')
+    const hasSeenHighlight = sessionStorage.getItem('anqr-seen-highlight');
     if (!hasSeenHighlight) {
-      setShowStartupHighlight(true)
-      sessionStorage.setItem('anqr-seen-highlight', 'true')
+      setShowStartupHighlight(true);
+      sessionStorage.setItem('anqr-seen-highlight', 'true');
       // Remove highlight after 3 seconds
-      const timer = setTimeout(() => setShowStartupHighlight(false), 3000)
-      return () => clearTimeout(timer)
+      const timer = setTimeout(() => setShowStartupHighlight(false), 3000);
+      return () => clearTimeout(timer);
     }
-  }, [])
+  }, []);
 
   // Generate EPC/SEPA payload when form changes
   useEffect(() => {
@@ -554,11 +607,11 @@ export function PayloadSection() {
         iban: epcSepaForm.iban,
         bic: epcSepaForm.bic || undefined,
         amount: epcSepaForm.amount ? parseFloat(epcSepaForm.amount) : undefined,
-        reference: epcSepaForm.reference || undefined
-      })
-      setPayloadText(generated)
+        reference: epcSepaForm.reference || undefined,
+      });
+      setPayloadText(generated);
     }
-  }, [payload.kind, epcSepaForm, setPayloadText])
+  }, [payload.kind, epcSepaForm, setPayloadText]);
 
   // Generate UPI payload when form changes
   useEffect(() => {
@@ -567,11 +620,11 @@ export function PayloadSection() {
         pa: upiForm.vpa,
         pn: upiForm.payeeName || undefined,
         am: upiForm.amount ? parseFloat(upiForm.amount) : undefined,
-        tn: upiForm.transactionNote || undefined
-      })
-      setPayloadText(generated)
+        tn: upiForm.transactionNote || undefined,
+      });
+      setPayloadText(generated);
     }
-  }, [payload.kind, upiForm, setPayloadText])
+  }, [payload.kind, upiForm, setPayloadText]);
 
   // Generate PayNow payload when form changes
   useEffect(() => {
@@ -581,11 +634,11 @@ export function PayloadSection() {
         value: payNowForm.value,
         amount: payNowForm.amount ? parseFloat(payNowForm.amount) : undefined,
         reference: payNowForm.reference || undefined,
-        editable: true
-      })
-      setPayloadText(generated)
+        editable: true,
+      });
+      setPayloadText(generated);
     }
-  }, [payload.kind, payNowForm, setPayloadText])
+  }, [payload.kind, payNowForm, setPayloadText]);
 
   // Generate PromptPay payload when form changes
   useEffect(() => {
@@ -593,11 +646,11 @@ export function PayloadSection() {
       const generated = generatePromptPay({
         type: promptPayForm.type,
         value: promptPayForm.value,
-        amount: promptPayForm.amount ? parseFloat(promptPayForm.amount) : undefined
-      })
-      setPayloadText(generated)
+        amount: promptPayForm.amount ? parseFloat(promptPayForm.amount) : undefined,
+      });
+      setPayloadText(generated);
     }
-  }, [payload.kind, promptPayForm, setPayloadText])
+  }, [payload.kind, promptPayForm, setPayloadText]);
 
   // Generate PIX payload when form changes
   useEffect(() => {
@@ -606,15 +659,15 @@ export function PayloadSection() {
         key: pixForm.key,
         name: pixForm.name || undefined,
         city: pixForm.city || undefined,
-        amount: pixForm.amount ? parseFloat(pixForm.amount) : undefined
-      })
-      setPayloadText(generated)
+        amount: pixForm.amount ? parseFloat(pixForm.amount) : undefined,
+      });
+      setPayloadText(generated);
     }
-  }, [payload.kind, pixForm, setPayloadText])
+  }, [payload.kind, pixForm, setPayloadText]);
 
   // Swiss QR-bill - update store helper so getPayloadText() works correctly
   useEffect(() => {
-    if (payload.kind !== 'swiss_qr_bill') return
+    if (payload.kind !== 'swiss_qr_bill') return;
     setPayloadSwissQRBill({
       creditorIBAN: swissQrBillForm.creditorIBAN,
       creditorAddressType: 'K',
@@ -624,145 +677,145 @@ export function PayloadSection() {
       amount: swissQrBillForm.amount ? parseFloat(swissQrBillForm.amount) : undefined,
       currency: swissQrBillForm.currency,
       referenceType: swissQrBillForm.referenceType,
-      reference: swissQrBillForm.reference || undefined
-    })
-  }, [payload.kind, swissQrBillForm, setPayloadSwissQRBill])
+      reference: swissQrBillForm.reference || undefined,
+    });
+  }, [payload.kind, swissQrBillForm, setPayloadSwissQRBill]);
 
   // Lightning - update store helper so getPayloadText() works correctly
   useEffect(() => {
-    if (payload.kind !== 'lightning') return
-    setPayloadLightning({ invoice: lightningForm.invoice })
-  }, [payload.kind, lightningForm, setPayloadLightning])
+    if (payload.kind !== 'lightning') return;
+    setPayloadLightning({ invoice: lightningForm.invoice });
+  }, [payload.kind, lightningForm, setPayloadLightning]);
 
   // Ethereum EIP-681 - update store helper so getPayloadText() works correctly
   useEffect(() => {
-    if (payload.kind !== 'ethereum_eip681') return
+    if (payload.kind !== 'ethereum_eip681') return;
     setPayloadEthereum({
       targetAddress: ethereumForm.targetAddress,
       chainId: ethereumForm.chainId ? parseInt(ethereumForm.chainId, 10) : undefined,
       value: ethereumForm.value || undefined,
-      gas: ethereumForm.gas ? parseInt(ethereumForm.gas, 10) : undefined
-    })
-  }, [payload.kind, ethereumForm, setPayloadEthereum])
+      gas: ethereumForm.gas ? parseInt(ethereumForm.gas, 10) : undefined,
+    });
+  }, [payload.kind, ethereumForm, setPayloadEthereum]);
 
   // QRIS - update store helper so getPayloadText() works correctly
   useEffect(() => {
-    if (payload.kind !== 'qris') return
+    if (payload.kind !== 'qris') return;
     setPayloadQRIS({
       merchantId: qrisForm.merchantId,
       merchantName: qrisForm.merchantName,
       merchantCity: qrisForm.merchantCity,
-      amount: qrisForm.amount ? parseFloat(qrisForm.amount) : undefined
-    })
-  }, [payload.kind, qrisForm, setPayloadQRIS])
+      amount: qrisForm.amount ? parseFloat(qrisForm.amount) : undefined,
+    });
+  }, [payload.kind, qrisForm, setPayloadQRIS]);
 
   // DuitNow - update store helper so getPayloadText() works correctly
   useEffect(() => {
-    if (payload.kind !== 'duitnow') return
+    if (payload.kind !== 'duitnow') return;
     setPayloadDuitNow({
       proxyType: duitnowForm.proxyType,
       proxyValue: duitnowForm.proxyValue,
       merchantName: duitnowForm.merchantName,
-      amount: duitnowForm.amount ? parseFloat(duitnowForm.amount) : undefined
-    })
-  }, [payload.kind, duitnowForm, setPayloadDuitNow])
+      amount: duitnowForm.amount ? parseFloat(duitnowForm.amount) : undefined,
+    });
+  }, [payload.kind, duitnowForm, setPayloadDuitNow]);
 
   // BharatQR - update store helper so getPayloadText() works correctly
   useEffect(() => {
-    if (payload.kind !== 'bharatqr') return
+    if (payload.kind !== 'bharatqr') return;
     setPayloadBharatQR({
       merchantVPA: bharatqrForm.merchantVPA || undefined,
       merchantName: bharatqrForm.merchantName,
       merchantCity: bharatqrForm.merchantCity,
-      amount: bharatqrForm.amount ? parseFloat(bharatqrForm.amount) : undefined
-    })
-  }, [payload.kind, bharatqrForm, setPayloadBharatQR])
+      amount: bharatqrForm.amount ? parseFloat(bharatqrForm.amount) : undefined,
+    });
+  }, [payload.kind, bharatqrForm, setPayloadBharatQR]);
 
   // VietQR - update store helper so getPayloadText() works correctly
   useEffect(() => {
-    if (payload.kind !== 'vietqr') return
+    if (payload.kind !== 'vietqr') return;
     setPayloadVietQR({
       bankBin: vietqrForm.bankBin,
       accountNumber: vietqrForm.accountNumber,
       accountName: vietqrForm.accountName || undefined,
-      amount: vietqrForm.amount ? parseFloat(vietqrForm.amount) : undefined
-    })
-  }, [payload.kind, vietqrForm, setPayloadVietQR])
+      amount: vietqrForm.amount ? parseFloat(vietqrForm.amount) : undefined,
+    });
+  }, [payload.kind, vietqrForm, setPayloadVietQR]);
 
   // QR Ph - update store helper so getPayloadText() works correctly
   useEffect(() => {
-    if (payload.kind !== 'qrph') return
+    if (payload.kind !== 'qrph') return;
     setPayloadQRPh({
       accountNumber: qrphForm.accountNumber,
       merchantName: qrphForm.merchantName,
       merchantCity: qrphForm.merchantCity,
-      amount: qrphForm.amount ? parseFloat(qrphForm.amount) : undefined
-    })
-  }, [payload.kind, qrphForm, setPayloadQRPh])
+      amount: qrphForm.amount ? parseFloat(qrphForm.amount) : undefined,
+    });
+  }, [payload.kind, qrphForm, setPayloadQRPh]);
 
   // TWQR - update store helper so getPayloadText() works correctly
   useEffect(() => {
-    if (payload.kind !== 'twqr') return
+    if (payload.kind !== 'twqr') return;
     setPayloadTWQR({
       merchantId: twqrForm.merchantId,
       merchantName: twqrForm.merchantName,
-      amount: twqrForm.amount ? parseFloat(twqrForm.amount) : undefined
-    })
-  }, [payload.kind, twqrForm, setPayloadTWQR])
+      amount: twqrForm.amount ? parseFloat(twqrForm.amount) : undefined,
+    });
+  }, [payload.kind, twqrForm, setPayloadTWQR]);
 
   // HKQR - update store helper so getPayloadText() works correctly
   useEffect(() => {
-    if (payload.kind !== 'hkqr') return
+    if (payload.kind !== 'hkqr') return;
     setPayloadHKQR({
       fpsId: hkqrForm.fpsId || undefined,
       merchantName: hkqrForm.merchantName,
-      amount: hkqrForm.amount ? parseFloat(hkqrForm.amount) : undefined
-    })
-  }, [payload.kind, hkqrForm, setPayloadHKQR])
+      amount: hkqrForm.amount ? parseFloat(hkqrForm.amount) : undefined,
+    });
+  }, [payload.kind, hkqrForm, setPayloadHKQR]);
 
   // JPQR - update store helper so getPayloadText() works correctly
   useEffect(() => {
-    if (payload.kind !== 'jpqr') return
+    if (payload.kind !== 'jpqr') return;
     setPayloadJPQR({
       storeId: jpqrForm.storeId,
       merchantName: jpqrForm.merchantName,
-      amount: jpqrForm.amount ? parseFloat(jpqrForm.amount) : undefined
-    })
-  }, [payload.kind, jpqrForm, setPayloadJPQR])
+      amount: jpqrForm.amount ? parseFloat(jpqrForm.amount) : undefined,
+    });
+  }, [payload.kind, jpqrForm, setPayloadJPQR]);
 
   // AusPayNet - update store helper so getPayloadText() works correctly
   useEffect(() => {
-    if (payload.kind !== 'auspaynet') return
+    if (payload.kind !== 'auspaynet') return;
     // Update the store's auspaynet helper object
     setPayloadAusPayNet({
       payId: auspaynetForm.payId || undefined,
       payIdType: auspaynetForm.payIdType,
       merchantName: auspaynetForm.merchantName,
-      amount: auspaynetForm.amount ? parseFloat(auspaynetForm.amount) : undefined
-    })
-  }, [payload.kind, auspaynetForm, setPayloadAusPayNet])
+      amount: auspaynetForm.amount ? parseFloat(auspaynetForm.amount) : undefined,
+    });
+  }, [payload.kind, auspaynetForm, setPayloadAusPayNet]);
 
   // PayPal.Me - update store helper so getPayloadText() works correctly
   useEffect(() => {
-    if (payload.kind !== 'paypal_me') return
+    if (payload.kind !== 'paypal_me') return;
     setPayloadPayPalMe({
       username: paypalMeForm.username,
-      amount: paypalMeForm.amount ? parseFloat(paypalMeForm.amount) : undefined
-    })
-  }, [payload.kind, paypalMeForm, setPayloadPayPalMe])
+      amount: paypalMeForm.amount ? parseFloat(paypalMeForm.amount) : undefined,
+    });
+  }, [payload.kind, paypalMeForm, setPayloadPayPalMe]);
 
   // Cash App - update store helper so getPayloadText() works correctly
   useEffect(() => {
-    if (payload.kind !== 'cashapp') return
+    if (payload.kind !== 'cashapp') return;
     setPayloadCashApp({
       cashtag: cashappForm.cashtag,
-      amount: cashappForm.amount ? parseFloat(cashappForm.amount) : undefined
-    })
-  }, [payload.kind, cashappForm, setPayloadCashApp])
+      amount: cashappForm.amount ? parseFloat(cashappForm.amount) : undefined,
+    });
+  }, [payload.kind, cashappForm, setPayloadCashApp]);
 
   // EMV Generic - update store helper so getPayloadText() works correctly
   useEffect(() => {
-    if (payload.kind !== 'emv_generic') return
+    if (payload.kind !== 'emv_generic') return;
     setPayloadEMVGeneric({
       merchantName: emvGenericForm.merchantName,
       merchantCity: emvGenericForm.merchantCity,
@@ -776,46 +829,53 @@ export function PayloadSection() {
       tipPercent: emvGenericForm.tipPercent ? parseFloat(emvGenericForm.tipPercent) : undefined,
       reference: emvGenericForm.reference || undefined,
       storeLabel: emvGenericForm.storeLabel || undefined,
-      terminalLabel: emvGenericForm.terminalLabel || undefined
-    })
-  }, [payload.kind, emvGenericForm, setPayloadEMVGeneric])
+      terminalLabel: emvGenericForm.terminalLabel || undefined,
+    });
+  }, [payload.kind, emvGenericForm, setPayloadEMVGeneric]);
 
   return (
     <div className="space-y-4">
       {/* Payload Type Selector */}
       <div className="space-y-2">
-        <Label><HighlightedLabel>{t('payload.contentType')}</HighlightedLabel></Label>
+        <Label>
+          <HighlightedLabel>{t('payload.contentType')}</HighlightedLabel>
+        </Label>
         <Select value={payload.kind} onValueChange={(v) => setPayloadKind(v as PayloadKind)}>
           <SelectTrigger className="w-full" title={t('hints.selectContentType')}>
             <SelectValue />
           </SelectTrigger>
           <SelectContent className="max-h-[400px]">
-            {PAYLOAD_CATEGORY_KEYS.filter(cat => {
-              if (cat.tier === 'basic') return true
-              if (cat.tier === 'advanced') return tier === 'advanced' || tier === 'professional'
-              if (cat.tier === 'professional') return tier === 'professional'
-              return false
-            }).map(cat => {
+            {PAYLOAD_CATEGORY_KEYS.filter((cat) => {
+              if (cat.tier === 'basic') return true;
+              if (cat.tier === 'advanced') return tier === 'advanced' || tier === 'professional';
+              if (cat.tier === 'professional') return tier === 'professional';
+              return false;
+            }).map((cat) => {
               // Get available payment methods for current language/tier
-              const currentLang = i18n.language || 'en'
-              const availablePayments = getAvailablePayments(tier, currentLang)
-              
+              const currentLang = i18n.language || 'en';
+              const availablePayments = getAvailablePayments(tier, currentLang);
+
               // Filter items for the payments category based on language
-              const filteredItems = cat.groupKey === 'payload.payments'
-                ? cat.items.filter(item => availablePayments.includes(item.value))
-                : cat.items
-              
+              const filteredItems =
+                cat.groupKey === 'payload.payments'
+                  ? cat.items.filter((item) => availablePayments.includes(item.value))
+                  : cat.items;
+
               // Don't render empty categories
-              if (filteredItems.length === 0) return null
-              
+              if (filteredItems.length === 0) return null;
+
               return (
                 <SelectGroup key={cat.groupKey}>
-                  <SelectLabel className="text-xs font-semibold text-muted-foreground px-2 py-1.5 bg-muted/50">{t(cat.groupKey)}</SelectLabel>
-                  {filteredItems.map(item => (
-                    <SelectItem key={item.value} value={item.value}>{t(item.labelKey)}</SelectItem>
+                  <SelectLabel className="text-xs font-semibold text-muted-foreground px-2 py-1.5 bg-muted/50">
+                    {t(cat.groupKey)}
+                  </SelectLabel>
+                  {filteredItems.map((item) => (
+                    <SelectItem key={item.value} value={item.value}>
+                      {t(item.labelKey)}
+                    </SelectItem>
                   ))}
                 </SelectGroup>
-              )
+              );
             })}
           </SelectContent>
         </Select>
@@ -824,17 +884,23 @@ export function PayloadSection() {
       {/* Plain Text Input */}
       {payload.kind === 'plain_text' && (
         <div className={`space-y-2 ${showStartupHighlight ? 'p-1 -m-1' : ''}`}>
-          <Label><HighlightedLabel>{t('payload.text')}</HighlightedLabel></Label>
-          <Textarea 
-            value={payload.text} 
+          <Label>
+            <HighlightedLabel>{t('payload.text')}</HighlightedLabel>
+          </Label>
+          <Textarea
+            value={payload.text}
             onChange={(e) => {
-              setPayloadText(e.target.value)
-              setShowStartupHighlight(false)
+              setPayloadText(e.target.value);
+              setShowStartupHighlight(false);
             }}
             onFocus={() => setShowStartupHighlight(false)}
             placeholder={t('placeholders.enterText')}
             rows={4}
-            className={showStartupHighlight ? 'ring-4 ring-primary/50 ring-offset-2 ring-offset-background animate-pulse' : ''}
+            className={
+              showStartupHighlight
+                ? 'ring-4 ring-primary/50 ring-offset-2 ring-offset-background animate-pulse'
+                : ''
+            }
             autoFocus={showStartupHighlight}
             title={t('hints.enterTextContent')}
           />
@@ -845,10 +911,12 @@ export function PayloadSection() {
       {payload.kind === 'url' && (
         <div className="space-y-4">
           <div className="space-y-2">
-            <Label><HighlightedLabel>{t('payload.url')}</HighlightedLabel></Label>
-            <Input 
+            <Label>
+              <HighlightedLabel>{t('payload.url')}</HighlightedLabel>
+            </Label>
+            <Input
               type="url"
-              value={payload.url.href} 
+              value={payload.url.href}
               onChange={(e) => setPayloadUrl({ href: e.target.value })}
               placeholder="https://anqr.link"
               title={t('hints.enterUrlContent')}
@@ -857,28 +925,32 @@ export function PayloadSection() {
           {(tier === 'advanced' || tier === 'professional') && (
             <>
               <div className="flex items-center justify-between">
-                <Label><HighlightedLabel>{t('payload.forceHttps')}</HighlightedLabel></Label>
-                <Switch 
+                <Label>
+                  <HighlightedLabel>{t('payload.forceHttps')}</HighlightedLabel>
+                </Label>
+                <Switch
                   checked={payload.url.forceHttps}
                   onCheckedChange={(checked) => setPayloadUrl({ forceHttps: checked })}
                   title={t('hints.forceHttps')}
                 />
               </div>
               <div className="space-y-2">
-                <Label className="text-muted-foreground text-xs"><HighlightedLabel>{t('payload.marketingTags')}</HighlightedLabel></Label>
-                <Input 
+                <Label className="text-muted-foreground text-xs">
+                  <HighlightedLabel>{t('payload.marketingTags')}</HighlightedLabel>
+                </Label>
+                <Input
                   placeholder="utm_source"
                   value={payload.url.utmSource || ''}
                   onChange={(e) => setPayloadUrl({ utmSource: e.target.value })}
                   title={t('hints.utmSource')}
                 />
-                <Input 
+                <Input
                   placeholder="utm_medium"
                   value={payload.url.utmMedium || ''}
                   onChange={(e) => setPayloadUrl({ utmMedium: e.target.value })}
                   title={t('hints.utmMedium')}
                 />
-                <Input 
+                <Input
                   placeholder="utm_campaign"
                   value={payload.url.utmCampaign || ''}
                   onChange={(e) => setPayloadUrl({ utmCampaign: e.target.value })}
@@ -893,10 +965,12 @@ export function PayloadSection() {
       {/* Phone Number */}
       {payload.kind === 'tel' && (
         <div className="space-y-2">
-          <Label><HighlightedLabel>{t('payload.phone')}</HighlightedLabel></Label>
-          <Input 
+          <Label>
+            <HighlightedLabel>{t('payload.phone')}</HighlightedLabel>
+          </Label>
+          <Input
             type="tel"
-            value={payload.tel.number} 
+            value={payload.tel.number}
             onChange={(e) => setPayloadTel({ number: e.target.value })}
             placeholder="+1234567890"
           />
@@ -907,26 +981,32 @@ export function PayloadSection() {
       {payload.kind === 'email' && (
         <div className="space-y-4">
           <div className="space-y-2">
-            <Label><HighlightedLabel>{t('payload.email')}</HighlightedLabel></Label>
-            <Input 
+            <Label>
+              <HighlightedLabel>{t('payload.email')}</HighlightedLabel>
+            </Label>
+            <Input
               type="email"
-              value={payload.email.to} 
+              value={payload.email.to}
               onChange={(e) => setPayloadEmail({ to: e.target.value })}
               placeholder="name@anqr.link"
             />
           </div>
           <div className="space-y-2">
-            <Label><HighlightedLabel>{t('payload.subject')}</HighlightedLabel></Label>
-            <Input 
-              value={payload.email.subject || ''} 
+            <Label>
+              <HighlightedLabel>{t('payload.subject')}</HighlightedLabel>
+            </Label>
+            <Input
+              value={payload.email.subject || ''}
               onChange={(e) => setPayloadEmail({ subject: e.target.value })}
               placeholder={t('placeholders.emailSubject')}
             />
           </div>
           <div className="space-y-2">
-            <Label><HighlightedLabel>{t('payload.body')}</HighlightedLabel></Label>
-            <Textarea 
-              value={payload.email.body || ''} 
+            <Label>
+              <HighlightedLabel>{t('payload.body')}</HighlightedLabel>
+            </Label>
+            <Textarea
+              value={payload.email.body || ''}
               onChange={(e) => setPayloadEmail({ body: e.target.value })}
               placeholder={t('placeholders.emailBody')}
               rows={3}
@@ -939,18 +1019,22 @@ export function PayloadSection() {
       {payload.kind === 'sms' && (
         <div className="space-y-4">
           <div className="space-y-2">
-            <Label><HighlightedLabel>{t('payload.tel')}</HighlightedLabel></Label>
-            <Input 
+            <Label>
+              <HighlightedLabel>{t('payload.tel')}</HighlightedLabel>
+            </Label>
+            <Input
               type="tel"
-              value={payload.sms.number} 
+              value={payload.sms.number}
               onChange={(e) => setPayloadSms({ number: e.target.value })}
               placeholder="+1234567890"
             />
           </div>
           <div className="space-y-2">
-            <Label><HighlightedLabel>{t('payload.messageOptional')}</HighlightedLabel></Label>
-            <Textarea 
-              value={payload.sms.body || ''} 
+            <Label>
+              <HighlightedLabel>{t('payload.messageOptional')}</HighlightedLabel>
+            </Label>
+            <Textarea
+              value={payload.sms.body || ''}
               onChange={(e) => setPayloadSms({ body: e.target.value })}
               placeholder={t('placeholders.prefilledMessage')}
               rows={3}
@@ -964,30 +1048,36 @@ export function PayloadSection() {
         <div className="space-y-4">
           <div className="grid grid-cols-2 gap-2">
             <div className="space-y-2">
-              <Label><HighlightedLabel>{t('payload.latitude')}</HighlightedLabel></Label>
-              <Input 
+              <Label>
+                <HighlightedLabel>{t('payload.latitude')}</HighlightedLabel>
+              </Label>
+              <Input
                 type="number"
                 step="any"
-                value={payload.geo.lat} 
+                value={payload.geo.lat}
                 onChange={(e) => setPayloadGeo({ lat: parseFloat(e.target.value) || 0 })}
                 placeholder="0.0"
               />
             </div>
             <div className="space-y-2">
-              <Label><HighlightedLabel>{t('payload.longitude')}</HighlightedLabel></Label>
-              <Input 
+              <Label>
+                <HighlightedLabel>{t('payload.longitude')}</HighlightedLabel>
+              </Label>
+              <Input
                 type="number"
                 step="any"
-                value={payload.geo.lon} 
+                value={payload.geo.lon}
                 onChange={(e) => setPayloadGeo({ lon: parseFloat(e.target.value) || 0 })}
                 placeholder="0.0"
               />
             </div>
           </div>
           <div className="space-y-2">
-            <Label><HighlightedLabel>{t('payload.searchQuery')}</HighlightedLabel></Label>
-            <Input 
-              value={payload.geo.query || ''} 
+            <Label>
+              <HighlightedLabel>{t('payload.searchQuery')}</HighlightedLabel>
+            </Label>
+            <Input
+              value={payload.geo.query || ''}
               onChange={(e) => setPayloadGeo({ query: e.target.value })}
               placeholder={t('placeholders.placeNameOrAddress')}
             />
@@ -999,16 +1089,23 @@ export function PayloadSection() {
       {payload.kind === 'wifi' && (
         <div className="space-y-4">
           <div className="space-y-2">
-            <Label><HighlightedLabel>{t('payload.ssid')}</HighlightedLabel></Label>
-            <Input 
-              value={payload.wifi.ssid} 
+            <Label>
+              <HighlightedLabel>{t('payload.ssid')}</HighlightedLabel>
+            </Label>
+            <Input
+              value={payload.wifi.ssid}
               onChange={(e) => setPayloadWifi({ ssid: e.target.value })}
               placeholder="MyWiFiNetwork"
             />
           </div>
           <div className="space-y-2">
-            <Label><HighlightedLabel>{t('payload.securityType')}</HighlightedLabel></Label>
-            <Select value={payload.wifi.auth} onValueChange={(v) => setPayloadWifi({ auth: v as typeof payload.wifi.auth })}>
+            <Label>
+              <HighlightedLabel>{t('payload.securityType')}</HighlightedLabel>
+            </Label>
+            <Select
+              value={payload.wifi.auth}
+              onValueChange={(v) => setPayloadWifi({ auth: v as typeof payload.wifi.auth })}
+            >
               <SelectTrigger>
                 <SelectValue />
               </SelectTrigger>
@@ -1023,18 +1120,22 @@ export function PayloadSection() {
           </div>
           {payload.wifi.auth !== 'nopass' && (
             <div className="space-y-2">
-              <Label><HighlightedLabel>{t('payload.password')}</HighlightedLabel></Label>
-              <Input 
+              <Label>
+                <HighlightedLabel>{t('payload.password')}</HighlightedLabel>
+              </Label>
+              <Input
                 type="password"
-                value={payload.wifi.password || ''} 
+                value={payload.wifi.password || ''}
                 onChange={(e) => setPayloadWifi({ password: e.target.value })}
                 placeholder={t('placeholders.networkPassword')}
               />
             </div>
           )}
           <div className="flex items-center justify-between">
-            <Label><HighlightedLabel>{t('payload.hidden')}</HighlightedLabel></Label>
-            <Switch 
+            <Label>
+              <HighlightedLabel>{t('payload.hidden')}</HighlightedLabel>
+            </Label>
+            <Switch
               checked={payload.wifi.hidden}
               onCheckedChange={(checked) => setPayloadWifi({ hidden: checked })}
             />
@@ -1046,52 +1147,64 @@ export function PayloadSection() {
       {payload.kind === 'vcard' && (
         <div className="space-y-4">
           <div className="space-y-2">
-            <Label><HighlightedLabel>{t('payload.fullName')}</HighlightedLabel></Label>
-            <Input 
-              value={payload.vcard.fn || ''} 
+            <Label>
+              <HighlightedLabel>{t('payload.fullName')}</HighlightedLabel>
+            </Label>
+            <Input
+              value={payload.vcard.fn || ''}
               onChange={(e) => setPayloadVCard({ fn: e.target.value })}
               placeholder="John Doe"
             />
           </div>
           <div className="space-y-2">
-            <Label><HighlightedLabel>{t('payload.organization')}</HighlightedLabel></Label>
-            <Input 
-              value={payload.vcard.org || ''} 
+            <Label>
+              <HighlightedLabel>{t('payload.organization')}</HighlightedLabel>
+            </Label>
+            <Input
+              value={payload.vcard.org || ''}
               onChange={(e) => setPayloadVCard({ org: e.target.value })}
               placeholder="Company Inc."
             />
           </div>
           <div className="space-y-2">
-            <Label><HighlightedLabel>{t('payload.title')}</HighlightedLabel></Label>
-            <Input 
-              value={payload.vcard.title || ''} 
+            <Label>
+              <HighlightedLabel>{t('payload.title')}</HighlightedLabel>
+            </Label>
+            <Input
+              value={payload.vcard.title || ''}
               onChange={(e) => setPayloadVCard({ title: e.target.value })}
               placeholder="Software Engineer"
             />
           </div>
           <div className="space-y-2">
-            <Label><HighlightedLabel>{t('payload.phone')}</HighlightedLabel></Label>
-            <Input 
+            <Label>
+              <HighlightedLabel>{t('payload.phone')}</HighlightedLabel>
+            </Label>
+            <Input
               type="tel"
-              value={payload.vcard.tel?.[0] || ''} 
+              value={payload.vcard.tel?.[0] || ''}
               onChange={(e) => setPayloadVCard({ tel: [e.target.value] })}
               placeholder="+1234567890"
             />
           </div>
           <div className="space-y-2">
-            <Label><HighlightedLabel>{t('payload.email')}</HighlightedLabel></Label>
-            <Input 
+            <Label>
+              <HighlightedLabel>{t('payload.email')}</HighlightedLabel>
+            </Label>
+            <Input
               type="email"
-              value={payload.vcard.email?.[0] || ''} 
+              value={payload.vcard.email?.[0] || ''}
               onChange={(e) => setPayloadVCard({ email: [e.target.value] })}
               placeholder="name@anqr.link"
             />
           </div>
           <div className="space-y-2">
-            <Label><HighlightedLabel>{t('payload.website')}</HighlightedLabel></Label>
-            <Input 
+            <Label>
+              <HighlightedLabel>{t('payload.website')}</HighlightedLabel>
+            </Label>
+            <Input
               type="url"
-              value={payload.vcard.url || ''} 
+              value={payload.vcard.url || ''}
               onChange={(e) => setPayloadVCard({ url: e.target.value })}
               placeholder="https://anqr.link"
             />
@@ -1103,60 +1216,74 @@ export function PayloadSection() {
       {payload.kind === 'mecard' && (
         <div className="space-y-4">
           <div className="space-y-2">
-            <Label><HighlightedLabel>{t('payload.name')}</HighlightedLabel></Label>
-            <Input 
-              value={payload.mecard.n || ''} 
+            <Label>
+              <HighlightedLabel>{t('payload.name')}</HighlightedLabel>
+            </Label>
+            <Input
+              value={payload.mecard.n || ''}
               onChange={(e) => setPayloadMeCard({ n: e.target.value })}
               placeholder="Doe,John"
             />
           </div>
           <div className="space-y-2">
-            <Label><HighlightedLabel>{t('payload.nickname')}</HighlightedLabel></Label>
-            <Input 
-              value={payload.mecard.nickname || ''} 
+            <Label>
+              <HighlightedLabel>{t('payload.nickname')}</HighlightedLabel>
+            </Label>
+            <Input
+              value={payload.mecard.nickname || ''}
               onChange={(e) => setPayloadMeCard({ nickname: e.target.value })}
               placeholder="Johnny"
             />
           </div>
           <div className="space-y-2">
-            <Label><HighlightedLabel>{t('payload.phone')}</HighlightedLabel></Label>
-            <Input 
+            <Label>
+              <HighlightedLabel>{t('payload.phone')}</HighlightedLabel>
+            </Label>
+            <Input
               type="tel"
-              value={payload.mecard.tel || ''} 
+              value={payload.mecard.tel || ''}
               onChange={(e) => setPayloadMeCard({ tel: e.target.value })}
               placeholder="+1234567890"
             />
           </div>
           <div className="space-y-2">
-            <Label><HighlightedLabel>{t('payload.email')}</HighlightedLabel></Label>
-            <Input 
+            <Label>
+              <HighlightedLabel>{t('payload.email')}</HighlightedLabel>
+            </Label>
+            <Input
               type="email"
-              value={payload.mecard.email || ''} 
+              value={payload.mecard.email || ''}
               onChange={(e) => setPayloadMeCard({ email: e.target.value })}
               placeholder="name@anqr.link"
             />
           </div>
           <div className="space-y-2">
-            <Label><HighlightedLabel>{t('payload.organization')}</HighlightedLabel></Label>
-            <Input 
-              value={payload.mecard.org || ''} 
+            <Label>
+              <HighlightedLabel>{t('payload.organization')}</HighlightedLabel>
+            </Label>
+            <Input
+              value={payload.mecard.org || ''}
               onChange={(e) => setPayloadMeCard({ org: e.target.value })}
               placeholder="Company Inc."
             />
           </div>
           <div className="space-y-2">
-            <Label><HighlightedLabel>{t('payload.address')}</HighlightedLabel></Label>
-            <Input 
-              value={payload.mecard.adr || ''} 
+            <Label>
+              <HighlightedLabel>{t('payload.address')}</HighlightedLabel>
+            </Label>
+            <Input
+              value={payload.mecard.adr || ''}
               onChange={(e) => setPayloadMeCard({ adr: e.target.value })}
               placeholder="123 Main St, City"
             />
           </div>
           <div className="space-y-2">
-            <Label><HighlightedLabel>{t('payload.birthday')}</HighlightedLabel></Label>
-            <Input 
+            <Label>
+              <HighlightedLabel>{t('payload.birthday')}</HighlightedLabel>
+            </Label>
+            <Input
               type="date"
-              value={payload.mecard.bday || ''} 
+              value={payload.mecard.bday || ''}
               onChange={(e) => setPayloadMeCard({ bday: e.target.value })}
             />
           </div>
@@ -1167,30 +1294,32 @@ export function PayloadSection() {
       {payload.kind === 'bizcard' && (
         <div className="space-y-4">
           <div className="space-y-2">
-            <Label><HighlightedLabel>{t('payload.firstName')}</HighlightedLabel></Label>
-            <Input 
-              value={payload.text} 
+            <Label>
+              <HighlightedLabel>{t('payload.firstName')}</HighlightedLabel>
+            </Label>
+            <Input
+              value={payload.text}
               onChange={(e) => setPayloadText(e.target.value)}
               placeholder="John"
             />
           </div>
           <div className="space-y-2">
-            <Label><HighlightedLabel>{t('payload.lastName')}</HighlightedLabel></Label>
-            <Input 
-              placeholder="Doe"
-            />
+            <Label>
+              <HighlightedLabel>{t('payload.lastName')}</HighlightedLabel>
+            </Label>
+            <Input placeholder="Doe" />
           </div>
           <div className="space-y-2">
-            <Label><HighlightedLabel>{t('payload.company')}</HighlightedLabel></Label>
-            <Input 
-              placeholder="Company Inc."
-            />
+            <Label>
+              <HighlightedLabel>{t('payload.company')}</HighlightedLabel>
+            </Label>
+            <Input placeholder="Company Inc." />
           </div>
           <div className="space-y-2">
-            <Label><HighlightedLabel>{t('payload.title')}</HighlightedLabel></Label>
-            <Input 
-              placeholder="Manager"
-            />
+            <Label>
+              <HighlightedLabel>{t('payload.title')}</HighlightedLabel>
+            </Label>
+            <Input placeholder="Manager" />
           </div>
           <p className="text-xs text-muted-foreground">{t('hints.bizcardLegacy')}</p>
         </div>
@@ -1200,18 +1329,20 @@ export function PayloadSection() {
       {(payload.kind as string) === 'bluetooth' && (
         <div className="space-y-4">
           <div className="space-y-2">
-            <Label><HighlightedLabel>{t('payload.deviceAddress')}</HighlightedLabel></Label>
-            <Input 
-              value={payload.text} 
+            <Label>
+              <HighlightedLabel>{t('payload.deviceAddress')}</HighlightedLabel>
+            </Label>
+            <Input
+              value={payload.text}
               onChange={(e) => setPayloadText(e.target.value)}
               placeholder="00:11:22:33:44:55"
             />
           </div>
           <div className="space-y-2">
-            <Label><HighlightedLabel>{t('payload.deviceName')}</HighlightedLabel></Label>
-            <Input 
-              placeholder="My Bluetooth Device"
-            />
+            <Label>
+              <HighlightedLabel>{t('payload.deviceName')}</HighlightedLabel>
+            </Label>
+            <Input placeholder="My Bluetooth Device" />
           </div>
           <p className="text-xs text-muted-foreground">{t('hints.bluetoothNote')}</p>
         </div>
@@ -1221,25 +1352,31 @@ export function PayloadSection() {
       {payload.kind === 'event' && (
         <div className="space-y-4">
           <div className="space-y-2">
-            <Label><HighlightedLabel>{t('payload.summary')}</HighlightedLabel></Label>
-            <Input 
-              value={payload.event.summary || ''} 
+            <Label>
+              <HighlightedLabel>{t('payload.summary')}</HighlightedLabel>
+            </Label>
+            <Input
+              value={payload.event.summary || ''}
               onChange={(e) => setPayloadEvent({ summary: e.target.value })}
               placeholder="Meeting"
             />
           </div>
           <div className="space-y-2">
-            <Label><HighlightedLabel>{t('payload.location')}</HighlightedLabel></Label>
-            <Input 
-              value={payload.event.location || ''} 
+            <Label>
+              <HighlightedLabel>{t('payload.location')}</HighlightedLabel>
+            </Label>
+            <Input
+              value={payload.event.location || ''}
               onChange={(e) => setPayloadEvent({ location: e.target.value })}
               placeholder="Conference Room A"
             />
           </div>
           <div className="space-y-2">
-            <Label><HighlightedLabel>{t('payload.description')}</HighlightedLabel></Label>
-            <Textarea 
-              value={payload.event.description || ''} 
+            <Label>
+              <HighlightedLabel>{t('payload.description')}</HighlightedLabel>
+            </Label>
+            <Textarea
+              value={payload.event.description || ''}
               onChange={(e) => setPayloadEvent({ description: e.target.value })}
               placeholder={t('placeholders.eventDetails')}
               rows={2}
@@ -1247,18 +1384,22 @@ export function PayloadSection() {
           </div>
           <div className="grid grid-cols-2 gap-2">
             <div className="space-y-2">
-              <Label><HighlightedLabel>{t('payload.start')}</HighlightedLabel></Label>
-              <Input 
+              <Label>
+                <HighlightedLabel>{t('payload.start')}</HighlightedLabel>
+              </Label>
+              <Input
                 type="datetime-local"
-                value={payload.event.start || ''} 
+                value={payload.event.start || ''}
                 onChange={(e) => setPayloadEvent({ start: e.target.value })}
               />
             </div>
             <div className="space-y-2">
-              <Label><HighlightedLabel>{t('payload.end')}</HighlightedLabel></Label>
-              <Input 
+              <Label>
+                <HighlightedLabel>{t('payload.end')}</HighlightedLabel>
+              </Label>
+              <Input
                 type="datetime-local"
-                value={payload.event.end || ''} 
+                value={payload.event.end || ''}
                 onChange={(e) => setPayloadEvent({ end: e.target.value })}
               />
             </div>
@@ -1270,19 +1411,21 @@ export function PayloadSection() {
       {payload.kind === 'event_rsvp' && (
         <div className="space-y-4">
           <div className="space-y-2">
-            <Label><HighlightedLabel>{t('payload.rsvpUrl')}</HighlightedLabel></Label>
-            <Input 
+            <Label>
+              <HighlightedLabel>{t('payload.rsvpUrl')}</HighlightedLabel>
+            </Label>
+            <Input
               type="url"
-              value={payload.text} 
+              value={payload.text}
               onChange={(e) => setPayloadText(e.target.value)}
               placeholder="https://anqr.link/rsvp/event123"
             />
           </div>
           <div className="space-y-2">
-            <Label><HighlightedLabel>{t('payload.eventName')}</HighlightedLabel></Label>
-            <Input 
-              placeholder="Annual Conference 2024"
-            />
+            <Label>
+              <HighlightedLabel>{t('payload.eventName')}</HighlightedLabel>
+            </Label>
+            <Input placeholder="Annual Conference 2024" />
           </div>
           <p className="text-xs text-muted-foreground">{t('hints.rsvpNote')}</p>
         </div>
@@ -1292,19 +1435,21 @@ export function PayloadSection() {
       {payload.kind === 'calendar_subscription' && (
         <div className="space-y-4">
           <div className="space-y-2">
-            <Label><HighlightedLabel>{t('payload.calendarUrl')}</HighlightedLabel></Label>
-            <Input 
+            <Label>
+              <HighlightedLabel>{t('payload.calendarUrl')}</HighlightedLabel>
+            </Label>
+            <Input
               type="url"
-              value={payload.text} 
+              value={payload.text}
               onChange={(e) => setPayloadText(e.target.value)}
               placeholder="webcal://anqr.link/calendar.ics"
             />
           </div>
           <div className="space-y-2">
-            <Label><HighlightedLabel>{t('payload.calendarName')}</HighlightedLabel></Label>
-            <Input 
-              placeholder="Team Schedule"
-            />
+            <Label>
+              <HighlightedLabel>{t('payload.calendarName')}</HighlightedLabel>
+            </Label>
+            <Input placeholder="Team Schedule" />
           </div>
           <p className="text-xs text-muted-foreground">{t('hints.calendarNote')}</p>
         </div>
@@ -1314,16 +1459,20 @@ export function PayloadSection() {
       {payload.kind === 'file_url' && (
         <div className="space-y-4">
           <div className="space-y-2">
-            <Label><HighlightedLabel>{t('payload.url')}</HighlightedLabel></Label>
-            <Input 
+            <Label>
+              <HighlightedLabel>{t('payload.url')}</HighlightedLabel>
+            </Label>
+            <Input
               type="url"
-              value={payload.text} 
+              value={payload.text}
               onChange={(e) => setPayloadText(e.target.value)}
               placeholder="https://anqr.link/document.pdf"
             />
           </div>
           <div className="space-y-2">
-            <Label><HighlightedLabel>{t('payload.fileType')}</HighlightedLabel></Label>
+            <Label>
+              <HighlightedLabel>{t('payload.fileType')}</HighlightedLabel>
+            </Label>
             <Select defaultValue="pdf">
               <SelectTrigger>
                 <SelectValue />
@@ -1345,16 +1494,20 @@ export function PayloadSection() {
       {payload.kind === 'cloud_link' && (
         <div className="space-y-4">
           <div className="space-y-2">
-            <Label><HighlightedLabel>{t('payload.url')}</HighlightedLabel></Label>
-            <Input 
+            <Label>
+              <HighlightedLabel>{t('payload.url')}</HighlightedLabel>
+            </Label>
+            <Input
               type="url"
-              value={payload.text} 
+              value={payload.text}
               onChange={(e) => setPayloadText(e.target.value)}
               placeholder="https://drive.google.com/file/..."
             />
           </div>
           <div className="space-y-2">
-            <Label><HighlightedLabel>{t('payload.service')}</HighlightedLabel></Label>
+            <Label>
+              <HighlightedLabel>{t('payload.service')}</HighlightedLabel>
+            </Label>
             <Select defaultValue="gdrive">
               <SelectTrigger>
                 <SelectValue />
@@ -1376,7 +1529,9 @@ export function PayloadSection() {
       {payload.kind === 'social_profile' && (
         <div className="space-y-4">
           <div className="space-y-2">
-            <Label><HighlightedLabel>{t('payload.platform')}</HighlightedLabel></Label>
+            <Label>
+              <HighlightedLabel>{t('payload.platform')}</HighlightedLabel>
+            </Label>
             <Select defaultValue="linkedin">
               <SelectTrigger>
                 <SelectValue />
@@ -1394,10 +1549,12 @@ export function PayloadSection() {
             </Select>
           </div>
           <div className="space-y-2">
-            <Label><HighlightedLabel>{t('payload.profileUrl')}</HighlightedLabel></Label>
-            <Input 
+            <Label>
+              <HighlightedLabel>{t('payload.profileUrl')}</HighlightedLabel>
+            </Label>
+            <Input
               type="url"
-              value={payload.text} 
+              value={payload.text}
               onChange={(e) => setPayloadText(e.target.value)}
               placeholder="https://linkedin.com/in/username"
             />
@@ -1409,7 +1566,9 @@ export function PayloadSection() {
       {payload.kind === 'messaging_link' && (
         <div className="space-y-4">
           <div className="space-y-2">
-            <Label><HighlightedLabel>{t('payload.platform')}</HighlightedLabel></Label>
+            <Label>
+              <HighlightedLabel>{t('payload.platform')}</HighlightedLabel>
+            </Label>
             <Select defaultValue="whatsapp">
               <SelectTrigger>
                 <SelectValue />
@@ -1426,19 +1585,20 @@ export function PayloadSection() {
             </Select>
           </div>
           <div className="space-y-2">
-            <Label><HighlightedLabel>{t('payload.phoneUsername')}</HighlightedLabel></Label>
-            <Input 
-              value={payload.text} 
+            <Label>
+              <HighlightedLabel>{t('payload.phoneUsername')}</HighlightedLabel>
+            </Label>
+            <Input
+              value={payload.text}
               onChange={(e) => setPayloadText(e.target.value)}
               placeholder="+1234567890 or @username"
             />
           </div>
           <div className="space-y-2">
-            <Label><HighlightedLabel>{t('payload.prefilledMessage')}</HighlightedLabel></Label>
-            <Textarea 
-              placeholder="Hello! I scanned your QR code..."
-              rows={2}
-            />
+            <Label>
+              <HighlightedLabel>{t('payload.prefilledMessage')}</HighlightedLabel>
+            </Label>
+            <Textarea placeholder="Hello! I scanned your QR code..." rows={2} />
           </div>
         </div>
       )}
@@ -1447,8 +1607,13 @@ export function PayloadSection() {
       {payload.kind === 'crypto' && (
         <div className="space-y-4">
           <div className="space-y-2">
-            <Label><HighlightedLabel>{t('payload.cryptocurrency')}</HighlightedLabel></Label>
-            <Select value={payload.crypto.type} onValueChange={(v) => setPayloadCrypto({ type: v })}>
+            <Label>
+              <HighlightedLabel>{t('payload.cryptocurrency')}</HighlightedLabel>
+            </Label>
+            <Select
+              value={payload.crypto.type}
+              onValueChange={(v) => setPayloadCrypto({ type: v })}
+            >
               <SelectTrigger>
                 <SelectValue />
               </SelectTrigger>
@@ -1460,27 +1625,35 @@ export function PayloadSection() {
             </Select>
           </div>
           <div className="space-y-2">
-            <Label><HighlightedLabel>{t('payload.walletAddress')}</HighlightedLabel></Label>
-            <Input 
-              value={payload.crypto.address} 
+            <Label>
+              <HighlightedLabel>{t('payload.walletAddress')}</HighlightedLabel>
+            </Label>
+            <Input
+              value={payload.crypto.address}
               onChange={(e) => setPayloadCrypto({ address: e.target.value })}
               placeholder="Wallet address"
             />
           </div>
           <div className="space-y-2">
-            <Label><HighlightedLabel>{t('payload.amount')}</HighlightedLabel></Label>
-            <Input 
+            <Label>
+              <HighlightedLabel>{t('payload.amount')}</HighlightedLabel>
+            </Label>
+            <Input
               type="number"
               step="any"
-              value={payload.crypto.amount || ''} 
-              onChange={(e) => setPayloadCrypto({ amount: parseFloat(e.target.value) || undefined })}
+              value={payload.crypto.amount || ''}
+              onChange={(e) =>
+                setPayloadCrypto({ amount: parseFloat(e.target.value) || undefined })
+              }
               placeholder="0.001"
             />
           </div>
           <div className="space-y-2">
-            <Label><HighlightedLabel>{t('payload.label')}</HighlightedLabel></Label>
-            <Input 
-              value={payload.crypto.label || ''} 
+            <Label>
+              <HighlightedLabel>{t('payload.label')}</HighlightedLabel>
+            </Label>
+            <Input
+              value={payload.crypto.label || ''}
               onChange={(e) => setPayloadCrypto({ label: e.target.value })}
               placeholder={t('placeholders.paymentFor')}
             />
@@ -1492,44 +1665,54 @@ export function PayloadSection() {
       {payload.kind === 'epc_sepa' && (
         <div className="space-y-4">
           <div className="space-y-2">
-            <Label><HighlightedLabel>{t('payload.beneficiaryName')}</HighlightedLabel></Label>
-            <Input 
-              value={epcSepaForm.name} 
-              onChange={(e) => setEpcSepaForm(prev => ({ ...prev, name: e.target.value }))}
+            <Label>
+              <HighlightedLabel>{t('payload.beneficiaryName')}</HighlightedLabel>
+            </Label>
+            <Input
+              value={epcSepaForm.name}
+              onChange={(e) => setEpcSepaForm((prev) => ({ ...prev, name: e.target.value }))}
               placeholder="Company Ltd."
             />
           </div>
           <div className="space-y-2">
-            <Label><HighlightedLabel>{t('payload.iban')}</HighlightedLabel></Label>
-            <Input 
+            <Label>
+              <HighlightedLabel>{t('payload.iban')}</HighlightedLabel>
+            </Label>
+            <Input
               value={epcSepaForm.iban}
-              onChange={(e) => setEpcSepaForm(prev => ({ ...prev, iban: e.target.value }))}
+              onChange={(e) => setEpcSepaForm((prev) => ({ ...prev, iban: e.target.value }))}
               placeholder="DE89370400440532013000"
             />
           </div>
           <div className="space-y-2">
-            <Label><HighlightedLabel>{t('payload.bicSwift')}</HighlightedLabel></Label>
-            <Input 
+            <Label>
+              <HighlightedLabel>{t('payload.bicSwift')}</HighlightedLabel>
+            </Label>
+            <Input
               value={epcSepaForm.bic}
-              onChange={(e) => setEpcSepaForm(prev => ({ ...prev, bic: e.target.value }))}
+              onChange={(e) => setEpcSepaForm((prev) => ({ ...prev, bic: e.target.value }))}
               placeholder="COBADEFFXXX"
             />
           </div>
           <div className="space-y-2">
-            <Label><HighlightedLabel>{t('payload.amountEur')}</HighlightedLabel></Label>
-            <Input 
+            <Label>
+              <HighlightedLabel>{t('payload.amountEur')}</HighlightedLabel>
+            </Label>
+            <Input
               type="number"
               step="0.01"
               value={epcSepaForm.amount}
-              onChange={(e) => setEpcSepaForm(prev => ({ ...prev, amount: e.target.value }))}
+              onChange={(e) => setEpcSepaForm((prev) => ({ ...prev, amount: e.target.value }))}
               placeholder="100.00"
             />
           </div>
           <div className="space-y-2">
-            <Label><HighlightedLabel>{t('payload.reference')}</HighlightedLabel></Label>
-            <Input 
+            <Label>
+              <HighlightedLabel>{t('payload.reference')}</HighlightedLabel>
+            </Label>
+            <Input
               value={epcSepaForm.reference}
-              onChange={(e) => setEpcSepaForm(prev => ({ ...prev, reference: e.target.value }))}
+              onChange={(e) => setEpcSepaForm((prev) => ({ ...prev, reference: e.target.value }))}
               placeholder="Invoice 12345"
             />
           </div>
@@ -1541,36 +1724,44 @@ export function PayloadSection() {
       {payload.kind === 'upi' && (
         <div className="space-y-4">
           <div className="space-y-2">
-            <Label><HighlightedLabel>{t('payload.upiId')}</HighlightedLabel></Label>
-            <Input 
-              value={upiForm.vpa} 
-              onChange={(e) => setUpiForm(prev => ({ ...prev, vpa: e.target.value }))}
+            <Label>
+              <HighlightedLabel>{t('payload.upiId')}</HighlightedLabel>
+            </Label>
+            <Input
+              value={upiForm.vpa}
+              onChange={(e) => setUpiForm((prev) => ({ ...prev, vpa: e.target.value }))}
               placeholder="name@upi"
             />
           </div>
           <div className="space-y-2">
-            <Label><HighlightedLabel>{t('payload.payeeName')}</HighlightedLabel></Label>
-            <Input 
+            <Label>
+              <HighlightedLabel>{t('payload.payeeName')}</HighlightedLabel>
+            </Label>
+            <Input
               value={upiForm.payeeName}
-              onChange={(e) => setUpiForm(prev => ({ ...prev, payeeName: e.target.value }))}
+              onChange={(e) => setUpiForm((prev) => ({ ...prev, payeeName: e.target.value }))}
               placeholder="John Doe"
             />
           </div>
           <div className="space-y-2">
-            <Label><HighlightedLabel>{t('payload.amountInr')}</HighlightedLabel></Label>
-            <Input 
+            <Label>
+              <HighlightedLabel>{t('payload.amountInr')}</HighlightedLabel>
+            </Label>
+            <Input
               type="number"
               step="0.01"
               value={upiForm.amount}
-              onChange={(e) => setUpiForm(prev => ({ ...prev, amount: e.target.value }))}
+              onChange={(e) => setUpiForm((prev) => ({ ...prev, amount: e.target.value }))}
               placeholder="500.00"
             />
           </div>
           <div className="space-y-2">
-            <Label><HighlightedLabel>{t('payload.transactionNote')}</HighlightedLabel></Label>
-            <Input 
+            <Label>
+              <HighlightedLabel>{t('payload.transactionNote')}</HighlightedLabel>
+            </Label>
+            <Input
               value={upiForm.transactionNote}
-              onChange={(e) => setUpiForm(prev => ({ ...prev, transactionNote: e.target.value }))}
+              onChange={(e) => setUpiForm((prev) => ({ ...prev, transactionNote: e.target.value }))}
               placeholder="Payment for order"
             />
           </div>
@@ -1582,10 +1773,14 @@ export function PayloadSection() {
       {payload.kind === 'paynow' && (
         <div className="space-y-4">
           <div className="space-y-2">
-            <Label><HighlightedLabel>{t('payload.proxyType')}</HighlightedLabel></Label>
-            <Select 
-              value={payNowForm.type} 
-              onValueChange={(v) => setPayNowForm(prev => ({ ...prev, type: v as 'mobile' | 'uen' }))}
+            <Label>
+              <HighlightedLabel>{t('payload.proxyType')}</HighlightedLabel>
+            </Label>
+            <Select
+              value={payNowForm.type}
+              onValueChange={(v) =>
+                setPayNowForm((prev) => ({ ...prev, type: v as 'mobile' | 'uen' }))
+              }
             >
               <SelectTrigger>
                 <SelectValue />
@@ -1597,28 +1792,34 @@ export function PayloadSection() {
             </Select>
           </div>
           <div className="space-y-2">
-            <Label><HighlightedLabel>{t('payload.uenMobile')}</HighlightedLabel></Label>
-            <Input 
-              value={payNowForm.value} 
-              onChange={(e) => setPayNowForm(prev => ({ ...prev, value: e.target.value }))}
+            <Label>
+              <HighlightedLabel>{t('payload.uenMobile')}</HighlightedLabel>
+            </Label>
+            <Input
+              value={payNowForm.value}
+              onChange={(e) => setPayNowForm((prev) => ({ ...prev, value: e.target.value }))}
               placeholder="201234567X or +65..."
             />
           </div>
           <div className="space-y-2">
-            <Label><HighlightedLabel>{t('payload.amountSgd')}</HighlightedLabel></Label>
-            <Input 
+            <Label>
+              <HighlightedLabel>{t('payload.amountSgd')}</HighlightedLabel>
+            </Label>
+            <Input
               type="number"
               step="0.01"
               value={payNowForm.amount}
-              onChange={(e) => setPayNowForm(prev => ({ ...prev, amount: e.target.value }))}
+              onChange={(e) => setPayNowForm((prev) => ({ ...prev, amount: e.target.value }))}
               placeholder="50.00"
             />
           </div>
           <div className="space-y-2">
-            <Label><HighlightedLabel>{t('payload.referenceOptional')}</HighlightedLabel></Label>
-            <Input 
+            <Label>
+              <HighlightedLabel>{t('payload.referenceOptional')}</HighlightedLabel>
+            </Label>
+            <Input
               value={payNowForm.reference}
-              onChange={(e) => setPayNowForm(prev => ({ ...prev, reference: e.target.value }))}
+              onChange={(e) => setPayNowForm((prev) => ({ ...prev, reference: e.target.value }))}
               placeholder="Invoice 123"
             />
           </div>
@@ -1630,10 +1831,14 @@ export function PayloadSection() {
       {payload.kind === 'promptpay' && (
         <div className="space-y-4">
           <div className="space-y-2">
-            <Label><HighlightedLabel>{t('payload.idType')}</HighlightedLabel></Label>
-            <Select 
-              value={promptPayForm.type} 
-              onValueChange={(v) => setPromptPayForm(prev => ({ ...prev, type: v as 'mobile' | 'id' | 'ewallet' }))}
+            <Label>
+              <HighlightedLabel>{t('payload.idType')}</HighlightedLabel>
+            </Label>
+            <Select
+              value={promptPayForm.type}
+              onValueChange={(v) =>
+                setPromptPayForm((prev) => ({ ...prev, type: v as 'mobile' | 'id' | 'ewallet' }))
+              }
             >
               <SelectTrigger>
                 <SelectValue />
@@ -1646,20 +1851,24 @@ export function PayloadSection() {
             </Select>
           </div>
           <div className="space-y-2">
-            <Label><HighlightedLabel>{t('payload.promptPayId')}</HighlightedLabel></Label>
-            <Input 
-              value={promptPayForm.value} 
-              onChange={(e) => setPromptPayForm(prev => ({ ...prev, value: e.target.value }))}
+            <Label>
+              <HighlightedLabel>{t('payload.promptPayId')}</HighlightedLabel>
+            </Label>
+            <Input
+              value={promptPayForm.value}
+              onChange={(e) => setPromptPayForm((prev) => ({ ...prev, value: e.target.value }))}
               placeholder="0812345678"
             />
           </div>
           <div className="space-y-2">
-            <Label><HighlightedLabel>{t('payload.amountThb')}</HighlightedLabel></Label>
-            <Input 
+            <Label>
+              <HighlightedLabel>{t('payload.amountThb')}</HighlightedLabel>
+            </Label>
+            <Input
               type="number"
               step="0.01"
               value={promptPayForm.amount}
-              onChange={(e) => setPromptPayForm(prev => ({ ...prev, amount: e.target.value }))}
+              onChange={(e) => setPromptPayForm((prev) => ({ ...prev, amount: e.target.value }))}
               placeholder="100.00"
             />
           </div>
@@ -1671,36 +1880,44 @@ export function PayloadSection() {
       {payload.kind === 'pix' && (
         <div className="space-y-4">
           <div className="space-y-2">
-            <Label><HighlightedLabel>{t('payload.pixKey')}</HighlightedLabel></Label>
-            <Input 
-              value={pixForm.key} 
-              onChange={(e) => setPixForm(prev => ({ ...prev, key: e.target.value }))}
+            <Label>
+              <HighlightedLabel>{t('payload.pixKey')}</HighlightedLabel>
+            </Label>
+            <Input
+              value={pixForm.key}
+              onChange={(e) => setPixForm((prev) => ({ ...prev, key: e.target.value }))}
               placeholder="CPF, CNPJ, Email, Phone, or Random Key"
             />
           </div>
           <div className="space-y-2">
-            <Label><HighlightedLabel>{t('payload.merchantName')}</HighlightedLabel></Label>
-            <Input 
+            <Label>
+              <HighlightedLabel>{t('payload.merchantName')}</HighlightedLabel>
+            </Label>
+            <Input
               value={pixForm.name}
-              onChange={(e) => setPixForm(prev => ({ ...prev, name: e.target.value }))}
+              onChange={(e) => setPixForm((prev) => ({ ...prev, name: e.target.value }))}
               placeholder="João Silva"
             />
           </div>
           <div className="space-y-2">
-            <Label><HighlightedLabel>{t('payload.cityOptional')}</HighlightedLabel></Label>
-            <Input 
+            <Label>
+              <HighlightedLabel>{t('payload.cityOptional')}</HighlightedLabel>
+            </Label>
+            <Input
               value={pixForm.city}
-              onChange={(e) => setPixForm(prev => ({ ...prev, city: e.target.value }))}
+              onChange={(e) => setPixForm((prev) => ({ ...prev, city: e.target.value }))}
               placeholder="São Paulo"
             />
           </div>
           <div className="space-y-2">
-            <Label><HighlightedLabel>{t('payload.amountBrl')}</HighlightedLabel></Label>
-            <Input 
+            <Label>
+              <HighlightedLabel>{t('payload.amountBrl')}</HighlightedLabel>
+            </Label>
+            <Input
               type="number"
               step="0.01"
               value={pixForm.amount}
-              onChange={(e) => setPixForm(prev => ({ ...prev, amount: e.target.value }))}
+              onChange={(e) => setPixForm((prev) => ({ ...prev, amount: e.target.value }))}
               placeholder="100.00"
             />
           </div>
@@ -1716,7 +1933,9 @@ export function PayloadSection() {
             <Input
               placeholder="CH93 0076 2011 6238 5295 7"
               value={swissQrBillForm.creditorIBAN}
-              onChange={(e) => setSwissQrBillForm({ ...swissQrBillForm, creditorIBAN: e.target.value })}
+              onChange={(e) =>
+                setSwissQrBillForm({ ...swissQrBillForm, creditorIBAN: e.target.value })
+              }
             />
           </div>
           <div className="space-y-2">
@@ -1724,22 +1943,35 @@ export function PayloadSection() {
             <Input
               placeholder={t('placeholders.fullName')}
               value={swissQrBillForm.creditorName}
-              onChange={(e) => setSwissQrBillForm({ ...swissQrBillForm, creditorName: e.target.value })}
+              onChange={(e) =>
+                setSwissQrBillForm({ ...swissQrBillForm, creditorName: e.target.value })
+              }
             />
           </div>
           <div className="grid grid-cols-2 gap-2">
             <div className="space-y-2">
-              <Label>{t('payload.city')} {t('common.optional')}</Label>
+              <Label>
+                {t('payload.city')} {t('common.optional')}
+              </Label>
               <Input
                 placeholder={t('placeholders.zurich')}
                 value={swissQrBillForm.creditorCity}
-                onChange={(e) => setSwissQrBillForm({ ...swissQrBillForm, creditorCity: e.target.value })}
+                onChange={(e) =>
+                  setSwissQrBillForm({ ...swissQrBillForm, creditorCity: e.target.value })
+                }
               />
             </div>
             <div className="space-y-2">
               <Label>{t('payload.country')}</Label>
-              <Select value={swissQrBillForm.creditorCountry} onValueChange={(v) => setSwissQrBillForm({ ...swissQrBillForm, creditorCountry: v })}>
-                <SelectTrigger><SelectValue /></SelectTrigger>
+              <Select
+                value={swissQrBillForm.creditorCountry}
+                onValueChange={(v) =>
+                  setSwissQrBillForm({ ...swissQrBillForm, creditorCountry: v })
+                }
+              >
+                <SelectTrigger>
+                  <SelectValue />
+                </SelectTrigger>
                 <SelectContent>
                   <SelectItem value="CH">{t('placeholders.switzerland')}</SelectItem>
                   <SelectItem value="LI">{t('placeholders.liechtenstein')}</SelectItem>
@@ -1749,7 +1981,9 @@ export function PayloadSection() {
           </div>
           <div className="grid grid-cols-2 gap-2">
             <div className="space-y-2">
-              <Label>{t('payload.amount')} {t('common.optional')}</Label>
+              <Label>
+                {t('payload.amount')} {t('common.optional')}
+              </Label>
               <Input
                 type="number"
                 placeholder="0.00"
@@ -1759,8 +1993,15 @@ export function PayloadSection() {
             </div>
             <div className="space-y-2">
               <Label>{t('placeholders.currency')}</Label>
-              <Select value={swissQrBillForm.currency} onValueChange={(v: 'CHF' | 'EUR') => setSwissQrBillForm({ ...swissQrBillForm, currency: v })}>
-                <SelectTrigger><SelectValue /></SelectTrigger>
+              <Select
+                value={swissQrBillForm.currency}
+                onValueChange={(v: 'CHF' | 'EUR') =>
+                  setSwissQrBillForm({ ...swissQrBillForm, currency: v })
+                }
+              >
+                <SelectTrigger>
+                  <SelectValue />
+                </SelectTrigger>
                 <SelectContent>
                   <SelectItem value="CHF">CHF</SelectItem>
                   <SelectItem value="EUR">EUR</SelectItem>
@@ -1771,8 +2012,15 @@ export function PayloadSection() {
           <div className="grid grid-cols-2 gap-2">
             <div className="space-y-2">
               <Label>{t('placeholders.referenceType')}</Label>
-              <Select value={swissQrBillForm.referenceType} onValueChange={(v: 'QRR' | 'SCOR' | 'NON') => setSwissQrBillForm({ ...swissQrBillForm, referenceType: v })}>
-                <SelectTrigger><SelectValue /></SelectTrigger>
+              <Select
+                value={swissQrBillForm.referenceType}
+                onValueChange={(v: 'QRR' | 'SCOR' | 'NON') =>
+                  setSwissQrBillForm({ ...swissQrBillForm, referenceType: v })
+                }
+              >
+                <SelectTrigger>
+                  <SelectValue />
+                </SelectTrigger>
                 <SelectContent>
                   <SelectItem value="QRR">{t('placeholders.qrReference')}</SelectItem>
                   <SelectItem value="SCOR">{t('placeholders.creditorRefIso')}</SelectItem>
@@ -1781,11 +2029,15 @@ export function PayloadSection() {
               </Select>
             </div>
             <div className="space-y-2">
-              <Label>{t('payload.reference')} {t('common.optional')}</Label>
+              <Label>
+                {t('payload.reference')} {t('common.optional')}
+              </Label>
               <Input
                 placeholder={t('placeholders.invoiceReference')}
                 value={swissQrBillForm.reference}
-                onChange={(e) => setSwissQrBillForm({ ...swissQrBillForm, reference: e.target.value })}
+                onChange={(e) =>
+                  setSwissQrBillForm({ ...swissQrBillForm, reference: e.target.value })
+                }
               />
             </div>
           </div>
@@ -1824,8 +2076,13 @@ export function PayloadSection() {
           <div className="grid grid-cols-2 gap-2">
             <div className="space-y-2">
               <Label>{t('placeholders.chainId')}</Label>
-              <Select value={ethereumForm.chainId} onValueChange={(v) => setEthereumForm({ ...ethereumForm, chainId: v })}>
-                <SelectTrigger><SelectValue /></SelectTrigger>
+              <Select
+                value={ethereumForm.chainId}
+                onValueChange={(v) => setEthereumForm({ ...ethereumForm, chainId: v })}
+              >
+                <SelectTrigger>
+                  <SelectValue />
+                </SelectTrigger>
                 <SelectContent>
                   <SelectItem value="1">{t('placeholders.ethMainnet')}</SelectItem>
                   <SelectItem value="137">{t('placeholders.polygon')}</SelectItem>
@@ -1837,7 +2094,9 @@ export function PayloadSection() {
               </Select>
             </div>
             <div className="space-y-2">
-              <Label>{t('placeholders.valueWei')} {t('common.optional')}</Label>
+              <Label>
+                {t('placeholders.valueWei')} {t('common.optional')}
+              </Label>
               <Input
                 placeholder={t('placeholders.weiPlaceholder')}
                 value={ethereumForm.value}
@@ -1846,7 +2105,9 @@ export function PayloadSection() {
             </div>
           </div>
           <div className="space-y-2">
-            <Label>{t('placeholders.gasLimitOptional')} {t('common.optional')}</Label>
+            <Label>
+              {t('placeholders.gasLimitOptional')} {t('common.optional')}
+            </Label>
             <Input
               type="number"
               placeholder={t('placeholders.gasPlaceholder')}
@@ -1879,7 +2140,9 @@ export function PayloadSection() {
           </div>
           <div className="grid grid-cols-2 gap-2">
             <div className="space-y-2">
-              <Label>{t('payload.city')} {t('common.optional')}</Label>
+              <Label>
+                {t('payload.city')} {t('common.optional')}
+              </Label>
               <Input
                 placeholder={t('placeholders.jakartaPlaceholder')}
                 value={qrisForm.merchantCity}
@@ -1887,7 +2150,9 @@ export function PayloadSection() {
               />
             </div>
             <div className="space-y-2">
-              <Label>{t('payload.amount')} (IDR) {t('common.optional')}</Label>
+              <Label>
+                {t('payload.amount')} (IDR) {t('common.optional')}
+              </Label>
               <Input
                 type="number"
                 placeholder={t('placeholders.idrAmountPlaceholder')}
@@ -1905,8 +2170,15 @@ export function PayloadSection() {
         <div className="space-y-4">
           <div className="space-y-2">
             <Label>{t('payload.proxyType')}</Label>
-            <Select value={duitnowForm.proxyType} onValueChange={(v: DuitNowForm['proxyType']) => setDuitnowForm({ ...duitnowForm, proxyType: v })}>
-              <SelectTrigger><SelectValue /></SelectTrigger>
+            <Select
+              value={duitnowForm.proxyType}
+              onValueChange={(v: DuitNowForm['proxyType']) =>
+                setDuitnowForm({ ...duitnowForm, proxyType: v })
+              }
+            >
+              <SelectTrigger>
+                <SelectValue />
+              </SelectTrigger>
               <SelectContent>
                 <SelectItem value="MOBILE">{t('placeholders.mobileNumber')}</SelectItem>
                 <SelectItem value="NRIC">{t('placeholders.nric')}</SelectItem>
@@ -1934,7 +2206,9 @@ export function PayloadSection() {
             />
           </div>
           <div className="space-y-2">
-            <Label>{t('payload.amount')} (MYR) {t('common.optional')}</Label>
+            <Label>
+              {t('payload.amount')} (MYR) {t('common.optional')}
+            </Label>
             <Input
               type="number"
               placeholder="0.00"
@@ -1950,7 +2224,9 @@ export function PayloadSection() {
       {payload.kind === 'bharatqr' && (
         <div className="space-y-4">
           <div className="space-y-2">
-            <Label>{t('payload.upiId')} {t('common.optional')}</Label>
+            <Label>
+              {t('payload.upiId')} {t('common.optional')}
+            </Label>
             <Input
               placeholder={t('placeholders.upiId')}
               value={bharatqrForm.merchantVPA}
@@ -1967,7 +2243,9 @@ export function PayloadSection() {
           </div>
           <div className="grid grid-cols-2 gap-2">
             <div className="space-y-2">
-              <Label>{t('payload.city')} {t('common.optional')}</Label>
+              <Label>
+                {t('payload.city')} {t('common.optional')}
+              </Label>
               <Input
                 placeholder={t('placeholders.mumbaiPlaceholder')}
                 value={bharatqrForm.merchantCity}
@@ -2009,7 +2287,9 @@ export function PayloadSection() {
             />
           </div>
           <div className="space-y-2">
-            <Label>{t('payload.accountName')} {t('common.optional')}</Label>
+            <Label>
+              {t('payload.accountName')} {t('common.optional')}
+            </Label>
             <Input
               placeholder={t('placeholders.vietnameseName')}
               value={vietqrForm.accountName}
@@ -2017,7 +2297,9 @@ export function PayloadSection() {
             />
           </div>
           <div className="space-y-2">
-            <Label>{t('payload.amount')} (VND) {t('common.optional')}</Label>
+            <Label>
+              {t('payload.amount')} (VND) {t('common.optional')}
+            </Label>
             <Input
               type="number"
               placeholder={t('placeholders.vndAmountPlaceholder')}
@@ -2049,7 +2331,9 @@ export function PayloadSection() {
           </div>
           <div className="grid grid-cols-2 gap-2">
             <div className="space-y-2">
-              <Label>{t('payload.city')} {t('common.optional')}</Label>
+              <Label>
+                {t('payload.city')} {t('common.optional')}
+              </Label>
               <Input
                 placeholder={t('placeholders.manilaPlaceholder')}
                 value={qrphForm.merchantCity}
@@ -2057,7 +2341,9 @@ export function PayloadSection() {
               />
             </div>
             <div className="space-y-2">
-              <Label>{t('payload.amount')} (PHP) {t('common.optional')}</Label>
+              <Label>
+                {t('payload.amount')} (PHP) {t('common.optional')}
+              </Label>
               <Input
                 type="number"
                 placeholder="0.00"
@@ -2090,7 +2376,9 @@ export function PayloadSection() {
             />
           </div>
           <div className="space-y-2">
-            <Label>{t('payload.amount')} (TWD) {t('common.optional')}</Label>
+            <Label>
+              {t('payload.amount')} (TWD) {t('common.optional')}
+            </Label>
             <Input
               type="number"
               placeholder="0"
@@ -2106,7 +2394,9 @@ export function PayloadSection() {
       {payload.kind === 'hkqr' && (
         <div className="space-y-4">
           <div className="space-y-2">
-            <Label>{t('placeholders.fpsId')} {t('common.optional')}</Label>
+            <Label>
+              {t('placeholders.fpsId')} {t('common.optional')}
+            </Label>
             <Input
               placeholder="1234567890"
               value={hkqrForm.fpsId}
@@ -2115,7 +2405,9 @@ export function PayloadSection() {
             <p className="text-xs text-muted-foreground">{t('placeholders.fpsHint')}</p>
           </div>
           <div className="space-y-2">
-            <Label>{t('payload.merchantName')} {t('common.optional')}</Label>
+            <Label>
+              {t('payload.merchantName')} {t('common.optional')}
+            </Label>
             <Input
               placeholder={t('placeholders.fullName')}
               value={hkqrForm.merchantName}
@@ -2123,7 +2415,9 @@ export function PayloadSection() {
             />
           </div>
           <div className="space-y-2">
-            <Label>{t('payload.amount')} (HKD) {t('common.optional')}</Label>
+            <Label>
+              {t('payload.amount')} (HKD) {t('common.optional')}
+            </Label>
             <Input
               type="number"
               placeholder="0.00"
@@ -2154,7 +2448,9 @@ export function PayloadSection() {
             />
           </div>
           <div className="space-y-2">
-            <Label>{t('payload.amount')} (JPY) {t('common.optional')}</Label>
+            <Label>
+              {t('payload.amount')} (JPY) {t('common.optional')}
+            </Label>
             <Input
               type="number"
               placeholder="0"
@@ -2171,8 +2467,15 @@ export function PayloadSection() {
         <div className="space-y-4">
           <div className="space-y-2">
             <Label>{t('placeholders.payIdType')}</Label>
-            <Select value={auspaynetForm.payIdType} onValueChange={(v: AusPayNetForm['payIdType']) => setAuspaynetForm({ ...auspaynetForm, payIdType: v })}>
-              <SelectTrigger><SelectValue /></SelectTrigger>
+            <Select
+              value={auspaynetForm.payIdType}
+              onValueChange={(v: AusPayNetForm['payIdType']) =>
+                setAuspaynetForm({ ...auspaynetForm, payIdType: v })
+              }
+            >
+              <SelectTrigger>
+                <SelectValue />
+              </SelectTrigger>
               <SelectContent>
                 <SelectItem value="EMAIL">{t('placeholders.emailOption')}</SelectItem>
                 <SelectItem value="MOBILE">{t('placeholders.mobileOption')}</SelectItem>
@@ -2184,13 +2487,21 @@ export function PayloadSection() {
           <div className="space-y-2">
             <Label>{t('placeholders.payId')}</Label>
             <Input
-              placeholder={auspaynetForm.payIdType === 'EMAIL' ? t('placeholders.emailExample') : auspaynetForm.payIdType === 'MOBILE' ? '+61400123456' : '12345678901'}
+              placeholder={
+                auspaynetForm.payIdType === 'EMAIL'
+                  ? t('placeholders.emailExample')
+                  : auspaynetForm.payIdType === 'MOBILE'
+                    ? '+61400123456'
+                    : '12345678901'
+              }
               value={auspaynetForm.payId}
               onChange={(e) => setAuspaynetForm({ ...auspaynetForm, payId: e.target.value })}
             />
           </div>
           <div className="space-y-2">
-            <Label>{t('payload.merchantName')} {t('common.optional')}</Label>
+            <Label>
+              {t('payload.merchantName')} {t('common.optional')}
+            </Label>
             <Input
               placeholder={t('placeholders.fullName')}
               value={auspaynetForm.merchantName}
@@ -2198,7 +2509,9 @@ export function PayloadSection() {
             />
           </div>
           <div className="space-y-2">
-            <Label>{t('payload.amount')} (AUD) {t('common.optional')}</Label>
+            <Label>
+              {t('payload.amount')} (AUD) {t('common.optional')}
+            </Label>
             <Input
               type="number"
               placeholder="0.00"
@@ -2223,7 +2536,9 @@ export function PayloadSection() {
             <p className="text-xs text-muted-foreground">{t('placeholders.paypalMeHint')}</p>
           </div>
           <div className="space-y-2">
-            <Label>{t('payload.amount')} {t('common.optional')}</Label>
+            <Label>
+              {t('payload.amount')} {t('common.optional')}
+            </Label>
             <Input
               type="number"
               placeholder="0.00"
@@ -2240,18 +2555,24 @@ export function PayloadSection() {
           <div className="space-y-2">
             <Label>{t('placeholders.cashtag')}</Label>
             <div className="relative">
-              <span className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground">$</span>
+              <span className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground">
+                $
+              </span>
               <Input
                 placeholder={t('placeholders.yourname')}
                 className="pl-7"
                 value={cashappForm.cashtag}
-                onChange={(e) => setCashappForm({ ...cashappForm, cashtag: e.target.value.replace(/^\$/, '') })}
+                onChange={(e) =>
+                  setCashappForm({ ...cashappForm, cashtag: e.target.value.replace(/^\$/, '') })
+                }
               />
             </div>
             <p className="text-xs text-muted-foreground">{t('placeholders.cashappHint')}</p>
           </div>
           <div className="space-y-2">
-            <Label>{t('payload.amount')} {t('common.optional')}</Label>
+            <Label>
+              {t('payload.amount')} {t('common.optional')}
+            </Label>
             <Input
               type="number"
               placeholder="0.00"
@@ -2270,15 +2591,21 @@ export function PayloadSection() {
             <Input
               placeholder={t('placeholders.fullName')}
               value={emvGenericForm.merchantName}
-              onChange={(e) => setEmvGenericForm({ ...emvGenericForm, merchantName: e.target.value })}
+              onChange={(e) =>
+                setEmvGenericForm({ ...emvGenericForm, merchantName: e.target.value })
+              }
             />
           </div>
           <div className="space-y-2">
-            <Label>{t('payload.city')} {t('common.optional')}</Label>
+            <Label>
+              {t('payload.city')} {t('common.optional')}
+            </Label>
             <Input
               placeholder="Singapore"
               value={emvGenericForm.merchantCity}
-              onChange={(e) => setEmvGenericForm({ ...emvGenericForm, merchantCity: e.target.value })}
+              onChange={(e) =>
+                setEmvGenericForm({ ...emvGenericForm, merchantCity: e.target.value })
+              }
             />
           </div>
           <div className="grid grid-cols-2 gap-2">
@@ -2288,7 +2615,12 @@ export function PayloadSection() {
                 placeholder="SG"
                 maxLength={2}
                 value={emvGenericForm.countryCode}
-                onChange={(e) => setEmvGenericForm({ ...emvGenericForm, countryCode: e.target.value.toUpperCase() })}
+                onChange={(e) =>
+                  setEmvGenericForm({
+                    ...emvGenericForm,
+                    countryCode: e.target.value.toUpperCase(),
+                  })
+                }
               />
               <p className="text-xs text-muted-foreground">{t('placeholders.isoCountryHint')}</p>
             </div>
@@ -2298,14 +2630,18 @@ export function PayloadSection() {
                 placeholder="702"
                 maxLength={3}
                 value={emvGenericForm.currencyCode}
-                onChange={(e) => setEmvGenericForm({ ...emvGenericForm, currencyCode: e.target.value })}
+                onChange={(e) =>
+                  setEmvGenericForm({ ...emvGenericForm, currencyCode: e.target.value })
+                }
               />
               <p className="text-xs text-muted-foreground">{t('placeholders.isoCurrencyHint')}</p>
             </div>
           </div>
           <div className="grid grid-cols-2 gap-2">
             <div className="space-y-2">
-              <Label>{t('payload.amount')} {t('common.optional')}</Label>
+              <Label>
+                {t('payload.amount')} {t('common.optional')}
+              </Label>
               <Input
                 type="number"
                 placeholder="0.00"
@@ -2314,7 +2650,9 @@ export function PayloadSection() {
               />
             </div>
             <div className="space-y-2">
-              <Label>{t('placeholders.mcc')} {t('common.optional')}</Label>
+              <Label>
+                {t('placeholders.mcc')} {t('common.optional')}
+              </Label>
               <Input
                 placeholder="5411"
                 maxLength={4}
@@ -2325,8 +2663,15 @@ export function PayloadSection() {
           </div>
           <div className="space-y-2">
             <Label>{t('placeholders.tipConvenienceFee')}</Label>
-            <Select value={emvGenericForm.tipIndicator} onValueChange={(v: EMVGenericForm['tipIndicator']) => setEmvGenericForm({ ...emvGenericForm, tipIndicator: v })}>
-              <SelectTrigger><SelectValue /></SelectTrigger>
+            <Select
+              value={emvGenericForm.tipIndicator}
+              onValueChange={(v: EMVGenericForm['tipIndicator']) =>
+                setEmvGenericForm({ ...emvGenericForm, tipIndicator: v })
+              }
+            >
+              <SelectTrigger>
+                <SelectValue />
+              </SelectTrigger>
               <SelectContent>
                 <SelectItem value="none">{t('common.none')}</SelectItem>
                 <SelectItem value="prompt">{t('placeholders.promptUser')}</SelectItem>
@@ -2342,7 +2687,9 @@ export function PayloadSection() {
                 type="number"
                 placeholder="0.00"
                 value={emvGenericForm.tipAmount}
-                onChange={(e) => setEmvGenericForm({ ...emvGenericForm, tipAmount: e.target.value })}
+                onChange={(e) =>
+                  setEmvGenericForm({ ...emvGenericForm, tipAmount: e.target.value })
+                }
               />
             </div>
           )}
@@ -2353,12 +2700,16 @@ export function PayloadSection() {
                 type="number"
                 placeholder="10"
                 value={emvGenericForm.tipPercent}
-                onChange={(e) => setEmvGenericForm({ ...emvGenericForm, tipPercent: e.target.value })}
+                onChange={(e) =>
+                  setEmvGenericForm({ ...emvGenericForm, tipPercent: e.target.value })
+                }
               />
             </div>
           )}
           <div className="space-y-2">
-            <Label>{t('payload.reference')} {t('common.optional')}</Label>
+            <Label>
+              {t('payload.reference')} {t('common.optional')}
+            </Label>
             <Input
               placeholder={t('placeholders.invoiceReference')}
               value={emvGenericForm.reference}
@@ -2373,8 +2724,13 @@ export function PayloadSection() {
       {(payload.kind as string) === '_removed_otpauth' && (
         <div className="space-y-4">
           <div className="space-y-2">
-            <Label><HighlightedLabel>{t('payload.otpType')}</HighlightedLabel></Label>
-            <Select value={payload.otpauth.type || 'totp'} onValueChange={(v) => setPayloadOtpAuth({ type: v as 'totp' | 'hotp' })}>
+            <Label>
+              <HighlightedLabel>{t('payload.otpType')}</HighlightedLabel>
+            </Label>
+            <Select
+              value={payload.otpauth.type || 'totp'}
+              onValueChange={(v) => setPayloadOtpAuth({ type: v as 'totp' | 'hotp' })}
+            >
               <SelectTrigger>
                 <SelectValue />
               </SelectTrigger>
@@ -2385,32 +2741,43 @@ export function PayloadSection() {
             </Select>
           </div>
           <div className="space-y-2">
-            <Label><HighlightedLabel>{t('payload.issuer')}</HighlightedLabel></Label>
-            <Input 
-              value={payload.otpauth.issuer || ''} 
+            <Label>
+              <HighlightedLabel>{t('payload.issuer')}</HighlightedLabel>
+            </Label>
+            <Input
+              value={payload.otpauth.issuer || ''}
               onChange={(e) => setPayloadOtpAuth({ issuer: e.target.value })}
               placeholder="MyApp"
             />
           </div>
           <div className="space-y-2">
-            <Label><HighlightedLabel>{t('payload.accountName')}</HighlightedLabel></Label>
-            <Input 
-              value={payload.otpauth.account || ''} 
+            <Label>
+              <HighlightedLabel>{t('payload.accountName')}</HighlightedLabel>
+            </Label>
+            <Input
+              value={payload.otpauth.account || ''}
               onChange={(e) => setPayloadOtpAuth({ account: e.target.value })}
               placeholder="user@anqr.link"
             />
           </div>
           <div className="space-y-2">
-            <Label><HighlightedLabel>{t('payload.secretBase32')}</HighlightedLabel></Label>
-            <Input 
-              value={payload.otpauth.secret || ''} 
+            <Label>
+              <HighlightedLabel>{t('payload.secretBase32')}</HighlightedLabel>
+            </Label>
+            <Input
+              value={payload.otpauth.secret || ''}
               onChange={(e) => setPayloadOtpAuth({ secret: e.target.value })}
               placeholder="JBSWY3DPEHPK3PXP"
             />
           </div>
           <div className="space-y-2">
-            <Label><HighlightedLabel>{t('payload.algorithm')}</HighlightedLabel></Label>
-            <Select value={payload.otpauth.algorithm || 'SHA1'} onValueChange={(v) => setPayloadOtpAuth({ algorithm: v })}>
+            <Label>
+              <HighlightedLabel>{t('payload.algorithm')}</HighlightedLabel>
+            </Label>
+            <Select
+              value={payload.otpauth.algorithm || 'SHA1'}
+              onValueChange={(v) => setPayloadOtpAuth({ algorithm: v })}
+            >
               <SelectTrigger>
                 <SelectValue />
               </SelectTrigger>
@@ -2423,25 +2790,35 @@ export function PayloadSection() {
           </div>
           <div className="grid grid-cols-2 gap-2">
             <div className="space-y-2">
-              <Label><HighlightedLabel>{t('payload.digits')}</HighlightedLabel></Label>
-              <Input 
+              <Label>
+                <HighlightedLabel>{t('payload.digits')}</HighlightedLabel>
+              </Label>
+              <Input
                 type="number"
-                value={payload.otpauth.digits || 6} 
-                onChange={(e) => setPayloadOtpAuth({ digits: parseInt(e.target.value) || 6 })}
+                value={payload.otpauth.digits || 6}
+                onChange={(e) => setPayloadOtpAuth({ digits: parseInt(e.target.value, 10) || 6 })}
                 min={6}
                 max={8}
               />
             </div>
             <div className="space-y-2">
-              <Label><HighlightedLabel>{payload.otpauth.type === 'hotp' ? t('payload.counter') : t('payload.periodSec')}</HighlightedLabel></Label>
-              <Input 
+              <Label>
+                <HighlightedLabel>
+                  {payload.otpauth.type === 'hotp' ? t('payload.counter') : t('payload.periodSec')}
+                </HighlightedLabel>
+              </Label>
+              <Input
                 type="number"
-                value={payload.otpauth.type === 'hotp' ? (payload.otpauth.counter || 0) : (payload.otpauth.period || 30)} 
+                value={
+                  payload.otpauth.type === 'hotp'
+                    ? payload.otpauth.counter || 0
+                    : payload.otpauth.period || 30
+                }
                 onChange={(e) => {
                   if (payload.otpauth.type === 'hotp') {
-                    setPayloadOtpAuth({ counter: parseInt(e.target.value) || 0 })
+                    setPayloadOtpAuth({ counter: parseInt(e.target.value, 10) || 0 });
                   } else {
-                    setPayloadOtpAuth({ period: parseInt(e.target.value) || 30 })
+                    setPayloadOtpAuth({ period: parseInt(e.target.value, 10) || 30 });
                   }
                 }}
               />
@@ -2454,10 +2831,12 @@ export function PayloadSection() {
       {payload.kind === 'short_link' && (
         <div className="space-y-4">
           <div className="space-y-2">
-            <Label><HighlightedLabel>{t('payload.shortUrl')}</HighlightedLabel></Label>
-            <Input 
+            <Label>
+              <HighlightedLabel>{t('payload.shortUrl')}</HighlightedLabel>
+            </Label>
+            <Input
               type="url"
-              value={payload.text} 
+              value={payload.text}
               onChange={(e) => setPayloadText(e.target.value)}
               placeholder="https://bit.ly/xxxxx"
             />
@@ -2470,50 +2849,62 @@ export function PayloadSection() {
       {payload.kind === 'utm_link' && (
         <div className="space-y-4">
           <div className="space-y-2">
-            <Label><HighlightedLabel>{t('payload.baseUrl')}</HighlightedLabel></Label>
-            <Input 
+            <Label>
+              <HighlightedLabel>{t('payload.baseUrl')}</HighlightedLabel>
+            </Label>
+            <Input
               type="url"
-              value={payload.url.href} 
+              value={payload.url.href}
               onChange={(e) => setPayloadUrl({ href: e.target.value })}
               placeholder="https://anqr.link/landing"
             />
           </div>
           <div className="space-y-2">
-            <Label><HighlightedLabel>{t('payload.campaignSource')}</HighlightedLabel></Label>
-            <Input 
-              value={payload.url.utmSource || ''} 
+            <Label>
+              <HighlightedLabel>{t('payload.campaignSource')}</HighlightedLabel>
+            </Label>
+            <Input
+              value={payload.url.utmSource || ''}
               onChange={(e) => setPayloadUrl({ utmSource: e.target.value })}
               placeholder="qr_code"
             />
           </div>
           <div className="space-y-2">
-            <Label><HighlightedLabel>{t('payload.campaignMedium')}</HighlightedLabel></Label>
-            <Input 
-              value={payload.url.utmMedium || ''} 
+            <Label>
+              <HighlightedLabel>{t('payload.campaignMedium')}</HighlightedLabel>
+            </Label>
+            <Input
+              value={payload.url.utmMedium || ''}
               onChange={(e) => setPayloadUrl({ utmMedium: e.target.value })}
               placeholder="print"
             />
           </div>
           <div className="space-y-2">
-            <Label><HighlightedLabel>{t('payload.campaignName')}</HighlightedLabel></Label>
-            <Input 
-              value={payload.url.utmCampaign || ''} 
+            <Label>
+              <HighlightedLabel>{t('payload.campaignName')}</HighlightedLabel>
+            </Label>
+            <Input
+              value={payload.url.utmCampaign || ''}
               onChange={(e) => setPayloadUrl({ utmCampaign: e.target.value })}
               placeholder="summer_sale_2024"
             />
           </div>
           <div className="space-y-2">
-            <Label><HighlightedLabel>{t('payload.campaignTerm')}</HighlightedLabel></Label>
-            <Input 
-              value={payload.url.utmTerm || ''} 
+            <Label>
+              <HighlightedLabel>{t('payload.campaignTerm')}</HighlightedLabel>
+            </Label>
+            <Input
+              value={payload.url.utmTerm || ''}
               onChange={(e) => setPayloadUrl({ utmTerm: e.target.value })}
               placeholder="keyword"
             />
           </div>
           <div className="space-y-2">
-            <Label><HighlightedLabel>{t('payload.campaignContent')}</HighlightedLabel></Label>
-            <Input 
-              value={payload.url.utmContent || ''} 
+            <Label>
+              <HighlightedLabel>{t('payload.campaignContent')}</HighlightedLabel>
+            </Label>
+            <Input
+              value={payload.url.utmContent || ''}
               onChange={(e) => setPayloadUrl({ utmContent: e.target.value })}
               placeholder="banner_ad"
             />
@@ -2525,7 +2916,9 @@ export function PayloadSection() {
       {payload.kind === 'app_link' && (
         <div className="space-y-4">
           <div className="space-y-2">
-            <Label><HighlightedLabel>{t('payload.platform')}</HighlightedLabel></Label>
+            <Label>
+              <HighlightedLabel>{t('payload.platform')}</HighlightedLabel>
+            </Label>
             <Select defaultValue="universal">
               <SelectTrigger>
                 <SelectValue />
@@ -2539,19 +2932,20 @@ export function PayloadSection() {
             </Select>
           </div>
           <div className="space-y-2">
-            <Label><HighlightedLabel>{t('payload.deepLinkUrl')}</HighlightedLabel></Label>
-            <Input 
-              value={payload.text} 
+            <Label>
+              <HighlightedLabel>{t('payload.deepLinkUrl')}</HighlightedLabel>
+            </Label>
+            <Input
+              value={payload.text}
               onChange={(e) => setPayloadText(e.target.value)}
               placeholder="myapp://path/to/content"
             />
           </div>
           <div className="space-y-2">
-            <Label><HighlightedLabel>{t('payload.fallbackUrl')}</HighlightedLabel></Label>
-            <Input 
-              type="url"
-              placeholder="https://anqr.link/app"
-            />
+            <Label>
+              <HighlightedLabel>{t('payload.fallbackUrl')}</HighlightedLabel>
+            </Label>
+            <Input type="url" placeholder="https://anqr.link/app" />
           </div>
           <p className="text-xs text-muted-foreground">{t('hints.appLinkNote')}</p>
         </div>
@@ -2561,37 +2955,38 @@ export function PayloadSection() {
       {payload.kind === 'gs1_digital_link' && (
         <div className="space-y-4">
           <div className="space-y-2">
-            <Label><HighlightedLabel>{t('payload.gtin')}</HighlightedLabel></Label>
-            <Input 
-              value={payload.text} 
+            <Label>
+              <HighlightedLabel>{t('payload.gtin')}</HighlightedLabel>
+            </Label>
+            <Input
+              value={payload.text}
               onChange={(e) => setPayloadText(e.target.value)}
               placeholder="01234567890128"
             />
           </div>
           <div className="space-y-2">
-            <Label><HighlightedLabel>{t('payload.serialNumber')}</HighlightedLabel></Label>
-            <Input 
-              placeholder="ABC123"
-            />
+            <Label>
+              <HighlightedLabel>{t('payload.serialNumber')}</HighlightedLabel>
+            </Label>
+            <Input placeholder="ABC123" />
           </div>
           <div className="space-y-2">
-            <Label><HighlightedLabel>{t('payload.batchLot')}</HighlightedLabel></Label>
-            <Input 
-              placeholder="LOT123"
-            />
+            <Label>
+              <HighlightedLabel>{t('payload.batchLot')}</HighlightedLabel>
+            </Label>
+            <Input placeholder="LOT123" />
           </div>
           <div className="space-y-2">
-            <Label><HighlightedLabel>{t('payload.expiryDate')}</HighlightedLabel></Label>
-            <Input 
-              type="date"
-            />
+            <Label>
+              <HighlightedLabel>{t('payload.expiryDate')}</HighlightedLabel>
+            </Label>
+            <Input type="date" />
           </div>
           <div className="space-y-2">
-            <Label><HighlightedLabel>{t('payload.resolverDomain')}</HighlightedLabel></Label>
-            <Input 
-              placeholder="id.gs1.org"
-              defaultValue="id.gs1.org"
-            />
+            <Label>
+              <HighlightedLabel>{t('payload.resolverDomain')}</HighlightedLabel>
+            </Label>
+            <Input placeholder="id.gs1.org" defaultValue="id.gs1.org" />
           </div>
           <p className="text-xs text-muted-foreground">{t('hints.gs1Note')}</p>
         </div>
@@ -2601,15 +2996,19 @@ export function PayloadSection() {
       {(payload.kind as string) === '_removed_inventory' && (
         <div className="space-y-4">
           <div className="space-y-2">
-            <Label><HighlightedLabel>{t('payload.assetItemId')}</HighlightedLabel></Label>
-            <Input 
-              value={payload.text} 
+            <Label>
+              <HighlightedLabel>{t('payload.assetItemId')}</HighlightedLabel>
+            </Label>
+            <Input
+              value={payload.text}
               onChange={(e) => setPayloadText(e.target.value)}
               placeholder="ASSET-001234"
             />
           </div>
           <div className="space-y-2">
-            <Label><HighlightedLabel>{t('payload.assetType')}</HighlightedLabel></Label>
+            <Label>
+              <HighlightedLabel>{t('payload.assetType')}</HighlightedLabel>
+            </Label>
             <Select defaultValue="equipment">
               <SelectTrigger>
                 <SelectValue />
@@ -2625,23 +3024,22 @@ export function PayloadSection() {
             </Select>
           </div>
           <div className="space-y-2">
-            <Label><HighlightedLabel>{t('payload.location')}</HighlightedLabel></Label>
-            <Input 
-              placeholder="Building A, Room 101"
-            />
+            <Label>
+              <HighlightedLabel>{t('payload.location')}</HighlightedLabel>
+            </Label>
+            <Input placeholder="Building A, Room 101" />
           </div>
           <div className="space-y-2">
-            <Label><HighlightedLabel>{t('payload.description')}</HighlightedLabel></Label>
-            <Input 
-              placeholder="Dell Laptop 15-inch"
-            />
+            <Label>
+              <HighlightedLabel>{t('payload.description')}</HighlightedLabel>
+            </Label>
+            <Input placeholder="Dell Laptop 15-inch" />
           </div>
           <div className="space-y-2">
-            <Label><HighlightedLabel>{t('payload.lookupUrl')}</HighlightedLabel></Label>
-            <Input 
-              type="url"
-              placeholder="https://inventory.anqr.link/asset/"
-            />
+            <Label>
+              <HighlightedLabel>{t('payload.lookupUrl')}</HighlightedLabel>
+            </Label>
+            <Input type="url" placeholder="https://inventory.anqr.link/asset/" />
           </div>
         </div>
       )}
@@ -2650,57 +3048,58 @@ export function PayloadSection() {
       {(payload.kind as string) === '_removed_ticketing' && (
         <div className="space-y-4">
           <div className="space-y-2">
-            <Label><HighlightedLabel>{t('payload.ticketId')}</HighlightedLabel></Label>
-            <Input 
-              value={payload.text} 
+            <Label>
+              <HighlightedLabel>{t('payload.ticketId')}</HighlightedLabel>
+            </Label>
+            <Input
+              value={payload.text}
               onChange={(e) => setPayloadText(e.target.value)}
               placeholder="TKT-2024-001234"
             />
           </div>
           <div className="space-y-2">
-            <Label><HighlightedLabel>{t('payload.eventName')}</HighlightedLabel></Label>
-            <Input 
-              placeholder="Concert 2024"
-            />
+            <Label>
+              <HighlightedLabel>{t('payload.eventName')}</HighlightedLabel>
+            </Label>
+            <Input placeholder="Concert 2024" />
           </div>
           <div className="space-y-2">
-            <Label><HighlightedLabel>{t('payload.venue')}</HighlightedLabel></Label>
-            <Input 
-              placeholder="Stadium Arena"
-            />
+            <Label>
+              <HighlightedLabel>{t('payload.venue')}</HighlightedLabel>
+            </Label>
+            <Input placeholder="Stadium Arena" />
           </div>
           <div className="space-y-2">
-            <Label><HighlightedLabel>{t('payload.dateTime')}</HighlightedLabel></Label>
-            <Input 
-              type="datetime-local"
-            />
+            <Label>
+              <HighlightedLabel>{t('payload.dateTime')}</HighlightedLabel>
+            </Label>
+            <Input type="datetime-local" />
           </div>
           <div className="grid grid-cols-2 gap-2">
             <div className="space-y-2">
-              <Label><HighlightedLabel>{t('payload.sectionZone')}</HighlightedLabel></Label>
-              <Input 
-                placeholder="Section A"
-              />
+              <Label>
+                <HighlightedLabel>{t('payload.sectionZone')}</HighlightedLabel>
+              </Label>
+              <Input placeholder="Section A" />
             </div>
             <div className="space-y-2">
-              <Label><HighlightedLabel>{t('payload.seat')}</HighlightedLabel></Label>
-              <Input 
-                placeholder="Row 5, Seat 12"
-              />
+              <Label>
+                <HighlightedLabel>{t('payload.seat')}</HighlightedLabel>
+              </Label>
+              <Input placeholder="Row 5, Seat 12" />
             </div>
           </div>
           <div className="space-y-2">
-            <Label><HighlightedLabel>{t('payload.attendeeName')}</HighlightedLabel></Label>
-            <Input 
-              placeholder="John Doe"
-            />
+            <Label>
+              <HighlightedLabel>{t('payload.attendeeName')}</HighlightedLabel>
+            </Label>
+            <Input placeholder="John Doe" />
           </div>
           <div className="space-y-2">
-            <Label><HighlightedLabel>{t('payload.validationUrl')}</HighlightedLabel></Label>
-            <Input 
-              type="url"
-              placeholder="https://tickets.anqr.link/validate/"
-            />
+            <Label>
+              <HighlightedLabel>{t('payload.validationUrl')}</HighlightedLabel>
+            </Label>
+            <Input type="url" placeholder="https://tickets.anqr.link/validate/" />
           </div>
         </div>
       )}
@@ -2709,9 +3108,11 @@ export function PayloadSection() {
       {payload.kind === 'custom' && (
         <div className="space-y-4">
           <div className="space-y-2">
-            <Label><HighlightedLabel>{t('payload.rawData')}</HighlightedLabel></Label>
-            <Textarea 
-              value={payload.text} 
+            <Label>
+              <HighlightedLabel>{t('payload.rawData')}</HighlightedLabel>
+            </Label>
+            <Textarea
+              value={payload.text}
               onChange={(e) => setPayloadText(e.target.value)}
               placeholder={t('placeholders.rawQrData')}
               rows={6}
@@ -2725,34 +3126,44 @@ export function PayloadSection() {
       {/* Validation Options (Advanced+) */}
       {(tier === 'advanced' || tier === 'professional') && (
         <div className="space-y-2 pt-4 border-t">
-          <Label className="text-muted-foreground text-xs"><HighlightedLabel>{t('payload.validationOptions')}</HighlightedLabel></Label>
+          <Label className="text-muted-foreground text-xs">
+            <HighlightedLabel>{t('payload.validationOptions')}</HighlightedLabel>
+          </Label>
           <div className="flex items-center justify-between">
-            <Label className="text-sm"><HighlightedLabel>{t('payload.validateInput')}</HighlightedLabel></Label>
-            <Switch 
+            <Label className="text-sm">
+              <HighlightedLabel>{t('payload.validateInput')}</HighlightedLabel>
+            </Label>
+            <Switch
               checked={payload.validate}
               onCheckedChange={(checked) => setPayloadValidation({ validate: checked })}
               title={t('hints.validateInput')}
             />
           </div>
           <div className="flex items-center justify-between">
-            <Label className="text-sm"><HighlightedLabel>{t('payload.trimWhitespace')}</HighlightedLabel></Label>
-            <Switch 
+            <Label className="text-sm">
+              <HighlightedLabel>{t('payload.trimWhitespace')}</HighlightedLabel>
+            </Label>
+            <Switch
               checked={payload.trim}
               onCheckedChange={(checked) => setPayloadValidation({ trim: checked })}
               title={t('hints.trimWhitespace')}
             />
           </div>
           <div className="flex items-center justify-between">
-            <Label className="text-sm"><HighlightedLabel>{t('payload.normalizeNewlines')}</HighlightedLabel></Label>
-            <Switch 
+            <Label className="text-sm">
+              <HighlightedLabel>{t('payload.normalizeNewlines')}</HighlightedLabel>
+            </Label>
+            <Switch
               checked={payload.normalizeNewlines}
               onCheckedChange={(checked) => setPayloadValidation({ normalizeNewlines: checked })}
               title={t('hints.normalizeNewlines')}
             />
           </div>
           <div className="flex items-center justify-between">
-            <Label className="text-sm"><HighlightedLabel>{t('payload.maxLengthGuard')}</HighlightedLabel></Label>
-            <Switch 
+            <Label className="text-sm">
+              <HighlightedLabel>{t('payload.maxLengthGuard')}</HighlightedLabel>
+            </Label>
+            <Switch
               checked={payload.maxLenGuard}
               onCheckedChange={(checked) => setPayloadValidation({ maxLenGuard: checked })}
               title={t('hints.maxLengthGuard')}
@@ -2761,5 +3172,5 @@ export function PayloadSection() {
         </div>
       )}
     </div>
-  )
+  );
 }

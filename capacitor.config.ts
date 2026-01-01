@@ -5,20 +5,20 @@ const config: CapacitorConfig = {
   appName: 'ANQR',
   webDir: 'dist',
   server: {
-    androidScheme: 'https'
+    androidScheme: 'https',
   },
   android: {
     allowMixedContent: false,
     buildOptions: {
       keystorePath: 'android/app/release-key.keystore',
-      keystoreAlias: 'anqr'
-    }
+      keystoreAlias: 'anqr',
+    },
   },
   plugins: {
     SplashScreen: {
       launchShowDuration: 2000,
       backgroundColor: '#0f172a',
-      showSpinner: false
+      showSpinner: false,
     },
     AdMob: {
       // AdMob App ID for Android
@@ -29,8 +29,8 @@ const config: CapacitorConfig = {
       // iosAppId: 'ca-app-pub-3940256099942544~1458002511', // Test App ID
       // Enable test mode during development
       initializeForTesting: false,
-    }
-  }
+    },
+  },
 };
 
 export default config;

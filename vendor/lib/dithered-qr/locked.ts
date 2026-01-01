@@ -1,11 +1,11 @@
 import {
-  getRotation,
-  getReflection,
-  getScale,
+  getLockAlignmentPatterns,
   getLockPositioningBlocks,
   getLockTimingLines,
-  getLockAlignmentPatterns,
-} from "./form.ts";
+  getReflection,
+  getRotation,
+  getScale,
+} from './form.ts';
 
 export default function isLocked(l: number, x: number, y: number) {
   l /= getScale();

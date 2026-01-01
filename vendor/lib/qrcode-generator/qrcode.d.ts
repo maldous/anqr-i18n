@@ -58,18 +58,15 @@ type TypeNumber =
   | 39
   | 40;
 
-type ErrorCorrectionLevel = "L" | "M" | "Q" | "H";
+type ErrorCorrectionLevel = 'L' | 'M' | 'Q' | 'H';
 
-type Mode = "Numeric" | "Alphanumeric" | "Byte" /* Default */ | "Kanji";
+type Mode = 'Numeric' | 'Alphanumeric' | 'Byte' /* Default */ | 'Kanji';
 
 interface QRCodeFactory {
   (typeNumber: TypeNumber, errorCorrectionLevel: ErrorCorrectionLevel): QRCode;
   stringToBytes(s: string): number[];
   stringToBytesFuncs: { [encoding: string]: (s: string) => number[] };
-  createStringToBytes(
-    unicodeData: string,
-    numChars: number,
-  ): (s: string) => number[];
+  createStringToBytes(unicodeData: string, numChars: number): (s: string) => number[];
 }
 
 interface QRCode {
@@ -79,11 +76,7 @@ interface QRCode {
   isDark(row: number, col: number): boolean;
   createImgTag(cellSize?: number, margin?: number): string;
   createSvgTag(cellSize?: number, margin?: number): string;
-  createSvgTag(opts?: {
-    cellSize?: number;
-    margin?: number;
-    scalable?: boolean;
-  }): string;
+  createSvgTag(opts?: { cellSize?: number; margin?: number; scalable?: boolean }): string;
   createDataURL(cellSize?: number, margin?: number): string;
   createTableTag(cellSize?: number, margin?: number): string;
   createASCII(cellSize?: number, margin?: number): string;
@@ -92,6 +85,6 @@ interface QRCode {
 
 declare var qrcode: QRCodeFactory;
 
-declare module "qrcode-generator" {
+declare module 'qrcode-generator' {
   export = qrcode;
 }

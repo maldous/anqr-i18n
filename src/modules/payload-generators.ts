@@ -6,19 +6,17 @@
  */
 
 import type {
-  VCardHelper,
-  MeCardHelper,
-  EventHelper,
-  WifiHelper,
-  EmailHelper,
-  SmsHelper,
-  GeoHelper,
   CryptoHelper,
-  UrlHelper,
+  EmailHelper,
+  EventHelper,
+  GeoHelper,
+  MeCardHelper,
+  SmsHelper,
   TelHelper,
-  VCardVersion,
-  WifiAuth,
-} from '../store/qr-store'
+  UrlHelper,
+  VCardHelper,
+  WifiHelper,
+} from '../store/qr-store';
 
 // ============================================
 // EMV QR CODE CONSTANTS (EMVCo MPM Specification)
@@ -54,21 +52,21 @@ export const EMV_TAGS = {
   MERCHANT_INFO_LANGUAGE: '64',
   // 65-79: Reserved for EMVCo
   // 80-99: Unreserved templates
-} as const
+} as const;
 
 /** Point of Initiation Method values */
 export const POI_METHOD = {
-  STATIC: '11',   // Static QR, can be used multiple times
-  DYNAMIC: '12',  // Dynamic QR, one-time use
-} as const
+  STATIC: '11', // Static QR, can be used multiple times
+  DYNAMIC: '12', // Dynamic QR, one-time use
+} as const;
 
 /** Tip/Convenience Indicator values */
 export const TIP_INDICATOR = {
   NOT_SUPPORTED: '00',
-  PROMPT_MOBILE: '01',  // Mobile app should prompt
-  FIXED_VALUE: '02',    // Fixed convenience fee
-  PERCENTAGE: '03',     // Percentage-based fee
-} as const
+  PROMPT_MOBILE: '01', // Mobile app should prompt
+  FIXED_VALUE: '02', // Fixed convenience fee
+  PERCENTAGE: '03', // Percentage-based fee
+} as const;
 
 /** Additional Data Field Template subtags */
 export const ADDITIONAL_DATA_TAGS = {
@@ -83,13 +81,13 @@ export const ADDITIONAL_DATA_TAGS = {
   ADDITIONAL_CONSUMER_DATA: '09',
   // 10-49: RFU (Reserved for Future Use)
   // 50-99: Payment system specific templates
-} as const
+} as const;
 
 /** Merchant Account Information subtags */
 export const MAI_SUBTAGS = {
-  GLOBALLY_UNIQUE_ID: '00',  // GUI - reverse domain or AID
+  GLOBALLY_UNIQUE_ID: '00', // GUI - reverse domain or AID
   // 01-99: Payment network specific
-} as const
+} as const;
 
 /** ISO 4217 Currency Codes (numeric) */
 export const ISO_CURRENCY = {
@@ -109,7 +107,7 @@ export const ISO_CURRENCY = {
   TWD: '901',
   USD: '840',
   VND: '704',
-} as const
+} as const;
 
 /** National Payment Scheme GUIs (Globally Unique Identifiers) */
 export const PAYMENT_SCHEME_GUI = {
@@ -140,78 +138,78 @@ export const PAYMENT_SCHEME_GUI = {
   JPQR: 'JP.OR.JPQR',
   // Australia AusPayNet
   AUSPAYNET: 'AU.COM.NPPA',
-} as const
+} as const;
 
 // ============================================
 // INTERFACES
 // ============================================
 
 export interface EPCSepaParams {
-  name: string
-  iban: string
-  bic?: string
-  amount?: number
-  reference?: string
-  text?: string
+  name: string;
+  iban: string;
+  bic?: string;
+  amount?: number;
+  reference?: string;
+  text?: string;
 }
 
 export interface UPIParams {
-  pa: string // payee VPA (Virtual Payment Address)
-  pn?: string // payee name
-  am?: number // amount
-  cu?: string // currency (default INR)
-  tn?: string // transaction note
-  tr?: string // transaction reference ID
-  mc?: string // merchant category code (MCC)
-  tid?: string // terminal ID
-  url?: string // URL for additional info
-  mode?: '00' | '01' | '02' | '03' | '04' | '05' | '06' // transaction mode
-  purpose?: string // purpose code
-  orgid?: string // organization ID
-  sign?: string // digital signature
+  pa: string; // payee VPA (Virtual Payment Address)
+  pn?: string; // payee name
+  am?: number; // amount
+  cu?: string; // currency (default INR)
+  tn?: string; // transaction note
+  tr?: string; // transaction reference ID
+  mc?: string; // merchant category code (MCC)
+  tid?: string; // terminal ID
+  url?: string; // URL for additional info
+  mode?: '00' | '01' | '02' | '03' | '04' | '05' | '06'; // transaction mode
+  purpose?: string; // purpose code
+  orgid?: string; // organization ID
+  sign?: string; // digital signature
 }
 
 export interface PayNowParams {
-  type: 'mobile' | 'uen' | 'nric'
-  value: string
-  amount?: number
-  reference?: string
-  editable: boolean
-  expiryDate?: string // YYYYMMDD format
-  merchantName?: string
-  merchantCity?: string
+  type: 'mobile' | 'uen' | 'nric';
+  value: string;
+  amount?: number;
+  reference?: string;
+  editable: boolean;
+  expiryDate?: string; // YYYYMMDD format
+  merchantName?: string;
+  merchantCity?: string;
 }
 
 export interface PromptPayParams {
-  type: 'mobile' | 'id' | 'ewallet' | 'billpay'
-  value: string
-  amount?: number
-  merchantName?: string
-  merchantCity?: string
-  ref1?: string  // Reference 1 (Bill reference)
-  ref2?: string  // Reference 2
-  ref3?: string  // Reference 3 (Terminal ID)
-  mcc?: string   // Merchant Category Code
-  countryCode?: string
+  type: 'mobile' | 'id' | 'ewallet' | 'billpay';
+  value: string;
+  amount?: number;
+  merchantName?: string;
+  merchantCity?: string;
+  ref1?: string; // Reference 1 (Bill reference)
+  ref2?: string; // Reference 2
+  ref3?: string; // Reference 3 (Terminal ID)
+  mcc?: string; // Merchant Category Code
+  countryCode?: string;
 }
 
 export interface PIXParams {
-  key: string
-  name?: string
-  city?: string
-  amount?: number
-  txid?: string
-  description?: string
-  postalCode?: string
-  url?: string // URL for additional info or dynamic PIX
+  key: string;
+  name?: string;
+  city?: string;
+  amount?: number;
+  txid?: string;
+  description?: string;
+  postalCode?: string;
+  url?: string; // URL for additional info or dynamic PIX
 }
 
 export interface GS1DigitalLinkParams {
-  gtin: string
-  baseUrl?: string
-  lot?: string
-  ser?: string
-  expiry?: string
+  gtin: string;
+  baseUrl?: string;
+  lot?: string;
+  ser?: string;
+  expiry?: string;
 }
 
 // ============================================
@@ -221,239 +219,239 @@ export interface GS1DigitalLinkParams {
 /** Swiss QR-bill parameters (ISO 20022) */
 export interface SwissQRBillParams {
   // Header
-  version?: '0200' | '0201' // Version: 0200 = 2.0, 0201 = 2.1
-  coding?: 1 // UTF-8
+  version?: '0200' | '0201'; // Version: 0200 = 2.0, 0201 = 2.1
+  coding?: 1; // UTF-8
   // Creditor info
-  creditorIBAN: string
-  creditorAddressType: 'S' | 'K' // S=Structured, K=Combined
-  creditorName: string
-  creditorStreet?: string
-  creditorBuildingNumber?: string
-  creditorPostalCode?: string
-  creditorCity?: string
-  creditorCountry: string // 2-letter ISO
+  creditorIBAN: string;
+  creditorAddressType: 'S' | 'K'; // S=Structured, K=Combined
+  creditorName: string;
+  creditorStreet?: string;
+  creditorBuildingNumber?: string;
+  creditorPostalCode?: string;
+  creditorCity?: string;
+  creditorCountry: string; // 2-letter ISO
   // Ultimate creditor (optional)
-  ultimateCreditorAddressType?: 'S' | 'K'
-  ultimateCreditorName?: string
-  ultimateCreditorStreet?: string
-  ultimateCreditorBuildingNumber?: string
-  ultimateCreditorPostalCode?: string
-  ultimateCreditorCity?: string
-  ultimateCreditorCountry?: string
+  ultimateCreditorAddressType?: 'S' | 'K';
+  ultimateCreditorName?: string;
+  ultimateCreditorStreet?: string;
+  ultimateCreditorBuildingNumber?: string;
+  ultimateCreditorPostalCode?: string;
+  ultimateCreditorCity?: string;
+  ultimateCreditorCountry?: string;
   // Payment info
-  amount?: number
-  currency: 'CHF' | 'EUR'
+  amount?: number;
+  currency: 'CHF' | 'EUR';
   // Ultimate debtor (optional, payer info)
-  ultimateDebtorAddressType?: 'S' | 'K'
-  ultimateDebtorName?: string
-  ultimateDebtorStreet?: string
-  ultimateDebtorBuildingNumber?: string
-  ultimateDebtorPostalCode?: string
-  ultimateDebtorCity?: string
-  ultimateDebtorCountry?: string
+  ultimateDebtorAddressType?: 'S' | 'K';
+  ultimateDebtorName?: string;
+  ultimateDebtorStreet?: string;
+  ultimateDebtorBuildingNumber?: string;
+  ultimateDebtorPostalCode?: string;
+  ultimateDebtorCity?: string;
+  ultimateDebtorCountry?: string;
   // Reference
-  referenceType: 'QRR' | 'SCOR' | 'NON' // QR-Reference, Creditor Reference (ISO 11649), None
-  reference?: string
+  referenceType: 'QRR' | 'SCOR' | 'NON'; // QR-Reference, Creditor Reference (ISO 11649), None
+  reference?: string;
   // Additional info
-  unstructuredMessage?: string
-  trailer?: 'EPD' // End Payment Data
-  billInformation?: string // Structured bill info (Swico)
-  alternativeProcedure1?: string
-  alternativeProcedure2?: string
+  unstructuredMessage?: string;
+  trailer?: 'EPD'; // End Payment Data
+  billInformation?: string; // Structured bill info (Swico)
+  alternativeProcedure1?: string;
+  alternativeProcedure2?: string;
 }
 
 /** Lightning Network BOLT11 invoice parameters */
 export interface LightningParams {
-  invoice: string // BOLT11 encoded invoice string
+  invoice: string; // BOLT11 encoded invoice string
 }
 
 /** Ethereum EIP-681 transaction request parameters */
 export interface EthereumEIP681Params {
-  targetAddress: string
-  chainId?: number // 1 = mainnet, 3 = ropsten, etc.
-  functionName?: string // for contract calls
-  value?: string // amount in wei (use string for big numbers)
-  gas?: number
-  gasLimit?: number
-  gasPrice?: string // in wei
+  targetAddress: string;
+  chainId?: number; // 1 = mainnet, 3 = ropsten, etc.
+  functionName?: string; // for contract calls
+  value?: string; // amount in wei (use string for big numbers)
+  gas?: number;
+  gasLimit?: number;
+  gasPrice?: string; // in wei
   // ERC-20 token transfer parameters
-  tokenAddress?: string // contract address for ERC-20
-  tokenValue?: string // amount in token's smallest unit
+  tokenAddress?: string; // contract address for ERC-20
+  tokenValue?: string; // amount in token's smallest unit
   // Arbitrary function parameters
-  functionParams?: Record<string, string>
+  functionParams?: Record<string, string>;
 }
 
 /** Generic EMV MPM QR parameters */
 export interface EMVMPMParams {
   // Required fields
-  merchantName: string
-  merchantCity: string
-  countryCode: string // ISO 3166-1 alpha-2
-  currencyCode: string // ISO 4217 numeric (e.g., '702' for SGD)
+  merchantName: string;
+  merchantCity: string;
+  countryCode: string; // ISO 3166-1 alpha-2
+  currencyCode: string; // ISO 4217 numeric (e.g., '702' for SGD)
   // Optional amount
-  amount?: number
+  amount?: number;
   // Point of initiation
-  isStatic?: boolean // true = static (reusable), false = dynamic (one-time)
+  isStatic?: boolean; // true = static (reusable), false = dynamic (one-time)
   // Merchant info
-  mcc?: string // Merchant Category Code (4 digits)
-  postalCode?: string
+  mcc?: string; // Merchant Category Code (4 digits)
+  postalCode?: string;
   // Tip/Convenience
-  tipIndicator?: '01' | '02' | '03' // prompt, fixed, percentage
-  tipFixed?: number
-  tipPercentage?: number
+  tipIndicator?: '01' | '02' | '03'; // prompt, fixed, percentage
+  tipFixed?: number;
+  tipPercentage?: number;
   // Additional data
-  billNumber?: string
-  mobileNumber?: string
-  storeLabel?: string
-  loyaltyNumber?: string
-  referenceLabel?: string
-  customerLabel?: string
-  terminalLabel?: string
-  purposeOfTransaction?: string
+  billNumber?: string;
+  mobileNumber?: string;
+  storeLabel?: string;
+  loyaltyNumber?: string;
+  referenceLabel?: string;
+  customerLabel?: string;
+  terminalLabel?: string;
+  purposeOfTransaction?: string;
   // Merchant account templates (26-51)
-  merchantAccounts?: EMVMerchantAccount[]
+  merchantAccounts?: EMVMerchantAccount[];
 }
 
 export interface EMVMerchantAccount {
-  tag: number // 26-51
-  gui: string // Globally Unique Identifier
-  data: Array<{ tag: string; value: string }>
+  tag: number; // 26-51
+  gui: string; // Globally Unique Identifier
+  data: Array<{ tag: string; value: string }>;
 }
 
 /** QRIS (Indonesia) specific parameters */
 export interface QRISParams {
-  merchantPAN?: string // Primary Account Number
-  merchantID: string
-  merchantCriteria?: '00' | '01' | '02' | '03' // UMI classification
-  merchantName: string
-  merchantCity: string
-  postalCode?: string
-  amount?: number
-  feeType?: 'FIXED' | 'PERCENT'
-  feeAmount?: number
-  terminalLabel?: string
+  merchantPAN?: string; // Primary Account Number
+  merchantID: string;
+  merchantCriteria?: '00' | '01' | '02' | '03'; // UMI classification
+  merchantName: string;
+  merchantCity: string;
+  postalCode?: string;
+  amount?: number;
+  feeType?: 'FIXED' | 'PERCENT';
+  feeAmount?: number;
+  terminalLabel?: string;
   // NMID - National Merchant ID
-  nmid?: string
+  nmid?: string;
 }
 
 /** DuitNow (Malaysia) specific parameters */
 export interface DuitNowParams {
-  proxyType: 'NRIC' | 'MOBILE' | 'PASSPORT' | 'ARMY' | 'BUSINESS' | 'OTHERS'
-  proxyValue: string
-  merchantName: string
-  merchantCity?: string
-  amount?: number
-  reference?: string
+  proxyType: 'NRIC' | 'MOBILE' | 'PASSPORT' | 'ARMY' | 'BUSINESS' | 'OTHERS';
+  proxyValue: string;
+  merchantName: string;
+  merchantCity?: string;
+  amount?: number;
+  reference?: string;
 }
 
 /** BharatQR (India) specific parameters */
 export interface BharatQRParams {
-  merchantVPA?: string // UPI VPA
-  merchantPAN?: string // PAN for card-based
-  merchantID?: string
-  merchantName: string
-  merchantCity: string
-  mcc?: string
-  amount?: number
-  gstDetails?: string // GST breakdown
-  invoiceNumber?: string
-  referenceNumber?: string
-  terminalId?: string
+  merchantVPA?: string; // UPI VPA
+  merchantPAN?: string; // PAN for card-based
+  merchantID?: string;
+  merchantName: string;
+  merchantCity: string;
+  mcc?: string;
+  amount?: number;
+  gstDetails?: string; // GST breakdown
+  invoiceNumber?: string;
+  referenceNumber?: string;
+  terminalId?: string;
 }
 
 /** VietQR specific parameters */
 export interface VietQRParams {
-  bankBin: string // Bank identification (NAPAS BIN)
-  accountNumber: string
-  accountName?: string
-  amount?: number
-  description?: string
-  serviceCode?: 'QRPUSH' | 'QRIBFTTA' | 'QRIBFTTC' // Transfer types
+  bankBin: string; // Bank identification (NAPAS BIN)
+  accountNumber: string;
+  accountName?: string;
+  amount?: number;
+  description?: string;
+  serviceCode?: 'QRPUSH' | 'QRIBFTTA' | 'QRIBFTTC'; // Transfer types
 }
 
 /** QR Ph (Philippines) specific parameters */
 export interface QRPhParams {
-  accountNumber: string
-  merchantName: string
-  merchantCity: string
-  amount?: number
-  reference?: string
+  accountNumber: string;
+  merchantName: string;
+  merchantCity: string;
+  amount?: number;
+  reference?: string;
 }
 
 /** TWQR (Taiwan) specific parameters */
 export interface TWQRParams {
-  merchantId: string
-  merchantName: string
-  merchantCity?: string
-  amount?: number
-  taxId?: string
+  merchantId: string;
+  merchantName: string;
+  merchantCity?: string;
+  amount?: number;
+  taxId?: string;
 }
 
 /** HKQR (Hong Kong) specific parameters */
 export interface HKQRParams {
-  fpsId?: string // FPS ID
-  mobileNumber?: string
-  email?: string
-  merchantName: string
-  merchantCity?: string
-  amount?: number
-  reference?: string
+  fpsId?: string; // FPS ID
+  mobileNumber?: string;
+  email?: string;
+  merchantName: string;
+  merchantCity?: string;
+  amount?: number;
+  reference?: string;
 }
 
 /** JPQR (Japan) specific parameters */
 export interface JPQRParams {
-  storeId: string
-  merchantName: string
-  merchantCity?: string
-  amount?: number
+  storeId: string;
+  merchantName: string;
+  merchantCity?: string;
+  amount?: number;
 }
 
 /** AusPayNet/NPP (Australia) specific parameters */
 // Per NPP QR Code Standard: Need either PayID OR BSB+AccountNumber for routing
 // MerchantName is OPTIONAL - payer sees registered name from NPP lookup during payment
 export interface AusPayNetParams {
-  payId?: string
-  payIdType?: 'EMAIL' | 'MOBILE' | 'ABN' | 'ORG'
-  bsb?: string
-  accountNumber?: string
-  merchantName?: string  // Optional - NPP lookup shows registered name to payer
-  merchantCity?: string
-  amount?: number
-  reference?: string
+  payId?: string;
+  payIdType?: 'EMAIL' | 'MOBILE' | 'ABN' | 'ORG';
+  bsb?: string;
+  accountNumber?: string;
+  merchantName?: string; // Optional - NPP lookup shows registered name to payer
+  merchantCity?: string;
+  amount?: number;
+  reference?: string;
 }
 
 /** PayPal.Me link parameters */
 export interface PayPalMeParams {
-  username: string
-  amount?: number
-  currencyCode?: string // ISO 4217 alpha (USD, EUR, etc.)
+  username: string;
+  amount?: number;
+  currencyCode?: string; // ISO 4217 alpha (USD, EUR, etc.)
 }
 
 /** Cash App ($cashtag) link parameters */
 export interface CashAppParams {
-  cashtag: string // without the $
-  amount?: number
+  cashtag: string; // without the $
+  amount?: number;
 }
 
 export interface BizCardParams {
-  firstName?: string
-  lastName?: string
-  title?: string
-  company?: string
-  phone?: string
-  email?: string
-  address?: string
+  firstName?: string;
+  lastName?: string;
+  title?: string;
+  company?: string;
+  phone?: string;
+  email?: string;
+  address?: string;
 }
 
 export interface OTPAuthParams {
-  type: 'totp' | 'hotp'
-  issuer?: string
-  account?: string
-  secret: string
-  algorithm?: 'SHA1' | 'SHA256' | 'SHA512'
-  digits?: number
-  period?: number
-  counter?: number
+  type: 'totp' | 'hotp';
+  issuer?: string;
+  account?: string;
+  secret: string;
+  algorithm?: 'SHA1' | 'SHA256' | 'SHA512';
+  digits?: number;
+  period?: number;
+  counter?: number;
 }
 
 // ============================================
@@ -466,25 +464,25 @@ function escapeValue(value: string): string {
     .replace(/\\/g, '\\\\')
     .replace(/;/g, '\\;')
     .replace(/,/g, '\\,')
-    .replace(/\n/g, '\\n')
+    .replace(/\n/g, '\\n');
 }
 
 /** Format date for iCalendar (YYYYMMDD or YYYYMMDDTHHmmss) */
 function formatICalDate(dateStr: string, includeTime = true): string {
-  const date = new Date(dateStr)
-  if (isNaN(date.getTime())) return dateStr
-  
-  const year = date.getFullYear()
-  const month = String(date.getMonth() + 1).padStart(2, '0')
-  const day = String(date.getDate()).padStart(2, '0')
-  
-  if (!includeTime) return `${year}${month}${day}`
-  
-  const hours = String(date.getHours()).padStart(2, '0')
-  const minutes = String(date.getMinutes()).padStart(2, '0')
-  const seconds = String(date.getSeconds()).padStart(2, '0')
-  
-  return `${year}${month}${day}T${hours}${minutes}${seconds}`
+  const date = new Date(dateStr);
+  if (Number.isNaN(date.getTime())) return dateStr;
+
+  const year = date.getFullYear();
+  const month = String(date.getMonth() + 1).padStart(2, '0');
+  const day = String(date.getDate()).padStart(2, '0');
+
+  if (!includeTime) return `${year}${month}${day}`;
+
+  const hours = String(date.getHours()).padStart(2, '0');
+  const minutes = String(date.getMinutes()).padStart(2, '0');
+  const seconds = String(date.getSeconds()).padStart(2, '0');
+
+  return `${year}${month}${day}T${hours}${minutes}${seconds}`;
 }
 
 /**
@@ -492,19 +490,19 @@ function formatICalDate(dateStr: string, includeTime = true): string {
  * Used by EMVCo QR codes, PIX, SGQR, PromptPay, etc.
  */
 export function crc16CCITT(str: string): string {
-  let crc = 0xFFFF
+  let crc = 0xffff;
   for (let i = 0; i < str.length; i++) {
-    crc ^= str.charCodeAt(i) << 8
+    crc ^= str.charCodeAt(i) << 8;
     for (let j = 0; j < 8; j++) {
       if (crc & 0x8000) {
-        crc = (crc << 1) ^ 0x1021
+        crc = (crc << 1) ^ 0x1021;
       } else {
-        crc <<= 1
+        crc <<= 1;
       }
     }
-    crc &= 0xFFFF
+    crc &= 0xffff;
   }
-  return crc.toString(16).toUpperCase().padStart(4, '0')
+  return crc.toString(16).toUpperCase().padStart(4, '0');
 }
 
 // ============================================
@@ -516,17 +514,17 @@ export function crc16CCITT(str: string): string {
  * Implements EMVCo QR Code Specification with full TLV support
  */
 export class EMVQRBuilder {
-  private fields: Map<string, string> = new Map()
+  private fields: Map<string, string> = new Map();
 
   /**
    * Encode a TLV (Tag-Length-Value) field
    * Tag: 2 digits, Length: 2 digits, Value: variable
    */
   static encodeTLV(tag: string, value: string): string {
-    if (!value || value.length === 0) return ''
-    const paddedTag = tag.padStart(2, '0')
-    const length = value.length.toString().padStart(2, '0')
-    return `${paddedTag}${length}${value}`
+    if (!value || value.length === 0) return '';
+    const paddedTag = tag.padStart(2, '0');
+    const length = value.length.toString().padStart(2, '0');
+    return `${paddedTag}${length}${value}`;
   }
 
   /**
@@ -534,132 +532,172 @@ export class EMVQRBuilder {
    */
   static buildTemplate(fields: Array<{ tag: string; value: string }>): string {
     return fields
-      .filter(f => f.value && f.value.length > 0)
-      .map(f => EMVQRBuilder.encodeTLV(f.tag, f.value))
-      .join('')
+      .filter((f) => f.value && f.value.length > 0)
+      .map((f) => EMVQRBuilder.encodeTLV(f.tag, f.value))
+      .join('');
   }
 
   /** Set payload format indicator (always "01" per spec) */
   setPayloadFormatIndicator(): this {
-    this.fields.set(EMV_TAGS.PAYLOAD_FORMAT_INDICATOR, '01')
-    return this
+    this.fields.set(EMV_TAGS.PAYLOAD_FORMAT_INDICATOR, '01');
+    return this;
   }
 
   /** Set point of initiation (static or dynamic) */
   setPointOfInitiation(isStatic: boolean): this {
-    this.fields.set(EMV_TAGS.POINT_OF_INITIATION, isStatic ? POI_METHOD.STATIC : POI_METHOD.DYNAMIC)
-    return this
+    this.fields.set(
+      EMV_TAGS.POINT_OF_INITIATION,
+      isStatic ? POI_METHOD.STATIC : POI_METHOD.DYNAMIC
+    );
+    return this;
   }
 
   /** Add a merchant account information template (tags 26-51) */
-  addMerchantAccountInfo(tag: number, gui: string, additionalData: Array<{ tag: string; value: string }> = []): this {
+  addMerchantAccountInfo(
+    tag: number,
+    gui: string,
+    additionalData: Array<{ tag: string; value: string }> = []
+  ): this {
     if (tag < 26 || tag > 51) {
-      throw new Error('Merchant account info tag must be 26-51')
+      throw new Error('Merchant account info tag must be 26-51');
     }
-    const templateFields = [
-      { tag: MAI_SUBTAGS.GLOBALLY_UNIQUE_ID, value: gui },
-      ...additionalData
-    ]
-    const templateValue = EMVQRBuilder.buildTemplate(templateFields)
-    this.fields.set(tag.toString().padStart(2, '0'), templateValue)
-    return this
+    const templateFields = [{ tag: MAI_SUBTAGS.GLOBALLY_UNIQUE_ID, value: gui }, ...additionalData];
+    const templateValue = EMVQRBuilder.buildTemplate(templateFields);
+    this.fields.set(tag.toString().padStart(2, '0'), templateValue);
+    return this;
   }
 
   /** Set Merchant Category Code (MCC) */
   setMCC(mcc: string): this {
     if (mcc && mcc.length === 4) {
-      this.fields.set(EMV_TAGS.MERCHANT_CATEGORY_CODE, mcc)
+      this.fields.set(EMV_TAGS.MERCHANT_CATEGORY_CODE, mcc);
     }
-    return this
+    return this;
   }
 
   /** Set transaction currency (ISO 4217 numeric) */
   setTransactionCurrency(currencyCode: string): this {
-    this.fields.set(EMV_TAGS.TRANSACTION_CURRENCY, currencyCode.padStart(3, '0'))
-    return this
+    this.fields.set(EMV_TAGS.TRANSACTION_CURRENCY, currencyCode.padStart(3, '0'));
+    return this;
   }
 
   /** Set transaction amount */
   setTransactionAmount(amount: number): this {
     if (amount > 0) {
-      this.fields.set(EMV_TAGS.TRANSACTION_AMOUNT, amount.toFixed(2))
+      this.fields.set(EMV_TAGS.TRANSACTION_AMOUNT, amount.toFixed(2));
     }
-    return this
+    return this;
   }
 
   /** Set tip/convenience indicator and value */
   setTipIndicator(indicator: '01' | '02' | '03', value?: number): this {
-    this.fields.set(EMV_TAGS.TIP_INDICATOR, indicator)
+    this.fields.set(EMV_TAGS.TIP_INDICATOR, indicator);
     if (indicator === '02' && value !== undefined) {
-      this.fields.set(EMV_TAGS.TIP_FIXED, value.toFixed(2))
+      this.fields.set(EMV_TAGS.TIP_FIXED, value.toFixed(2));
     } else if (indicator === '03' && value !== undefined) {
-      this.fields.set(EMV_TAGS.TIP_PERCENTAGE, value.toString())
+      this.fields.set(EMV_TAGS.TIP_PERCENTAGE, value.toString());
     }
-    return this
+    return this;
   }
 
   /** Set country code (ISO 3166-1 alpha-2) */
   setCountryCode(countryCode: string): this {
-    this.fields.set(EMV_TAGS.COUNTRY_CODE, countryCode.toUpperCase().substring(0, 2))
-    return this
+    this.fields.set(EMV_TAGS.COUNTRY_CODE, countryCode.toUpperCase().substring(0, 2));
+    return this;
   }
 
   /** Set merchant name (max 25 chars per spec) */
   setMerchantName(name: string): this {
-    this.fields.set(EMV_TAGS.MERCHANT_NAME, name.substring(0, 25))
-    return this
+    this.fields.set(EMV_TAGS.MERCHANT_NAME, name.substring(0, 25));
+    return this;
   }
 
   /** Set merchant city (max 15 chars per spec) */
   setMerchantCity(city: string): this {
-    this.fields.set(EMV_TAGS.MERCHANT_CITY, city.substring(0, 15))
-    return this
+    this.fields.set(EMV_TAGS.MERCHANT_CITY, city.substring(0, 15));
+    return this;
   }
 
   /** Set postal code */
   setPostalCode(postalCode: string): this {
     if (postalCode) {
-      this.fields.set(EMV_TAGS.POSTAL_CODE, postalCode.substring(0, 10))
+      this.fields.set(EMV_TAGS.POSTAL_CODE, postalCode.substring(0, 10));
     }
-    return this
+    return this;
   }
 
   /** Add additional data field template (tag 62) */
   setAdditionalData(data: {
-    billNumber?: string
-    mobileNumber?: string
-    storeLabel?: string
-    loyaltyNumber?: string
-    referenceLabel?: string
-    customerLabel?: string
-    terminalLabel?: string
-    purposeOfTransaction?: string
-    additionalConsumerData?: string
+    billNumber?: string;
+    mobileNumber?: string;
+    storeLabel?: string;
+    loyaltyNumber?: string;
+    referenceLabel?: string;
+    customerLabel?: string;
+    terminalLabel?: string;
+    purposeOfTransaction?: string;
+    additionalConsumerData?: string;
   }): this {
-    const templateFields: Array<{ tag: string; value: string }> = []
-    if (data.billNumber) templateFields.push({ tag: ADDITIONAL_DATA_TAGS.BILL_NUMBER, value: data.billNumber.substring(0, 25) })
-    if (data.mobileNumber) templateFields.push({ tag: ADDITIONAL_DATA_TAGS.MOBILE_NUMBER, value: data.mobileNumber.substring(0, 25) })
-    if (data.storeLabel) templateFields.push({ tag: ADDITIONAL_DATA_TAGS.STORE_LABEL, value: data.storeLabel.substring(0, 25) })
-    if (data.loyaltyNumber) templateFields.push({ tag: ADDITIONAL_DATA_TAGS.LOYALTY_NUMBER, value: data.loyaltyNumber.substring(0, 25) })
-    if (data.referenceLabel) templateFields.push({ tag: ADDITIONAL_DATA_TAGS.REFERENCE_LABEL, value: data.referenceLabel.substring(0, 25) })
-    if (data.customerLabel) templateFields.push({ tag: ADDITIONAL_DATA_TAGS.CUSTOMER_LABEL, value: data.customerLabel.substring(0, 25) })
-    if (data.terminalLabel) templateFields.push({ tag: ADDITIONAL_DATA_TAGS.TERMINAL_LABEL, value: data.terminalLabel.substring(0, 25) })
-    if (data.purposeOfTransaction) templateFields.push({ tag: ADDITIONAL_DATA_TAGS.PURPOSE_OF_TRANSACTION, value: data.purposeOfTransaction.substring(0, 25) })
-    if (data.additionalConsumerData) templateFields.push({ tag: ADDITIONAL_DATA_TAGS.ADDITIONAL_CONSUMER_DATA, value: data.additionalConsumerData.substring(0, 3) })
-    
+    const templateFields: Array<{ tag: string; value: string }> = [];
+    if (data.billNumber)
+      templateFields.push({
+        tag: ADDITIONAL_DATA_TAGS.BILL_NUMBER,
+        value: data.billNumber.substring(0, 25),
+      });
+    if (data.mobileNumber)
+      templateFields.push({
+        tag: ADDITIONAL_DATA_TAGS.MOBILE_NUMBER,
+        value: data.mobileNumber.substring(0, 25),
+      });
+    if (data.storeLabel)
+      templateFields.push({
+        tag: ADDITIONAL_DATA_TAGS.STORE_LABEL,
+        value: data.storeLabel.substring(0, 25),
+      });
+    if (data.loyaltyNumber)
+      templateFields.push({
+        tag: ADDITIONAL_DATA_TAGS.LOYALTY_NUMBER,
+        value: data.loyaltyNumber.substring(0, 25),
+      });
+    if (data.referenceLabel)
+      templateFields.push({
+        tag: ADDITIONAL_DATA_TAGS.REFERENCE_LABEL,
+        value: data.referenceLabel.substring(0, 25),
+      });
+    if (data.customerLabel)
+      templateFields.push({
+        tag: ADDITIONAL_DATA_TAGS.CUSTOMER_LABEL,
+        value: data.customerLabel.substring(0, 25),
+      });
+    if (data.terminalLabel)
+      templateFields.push({
+        tag: ADDITIONAL_DATA_TAGS.TERMINAL_LABEL,
+        value: data.terminalLabel.substring(0, 25),
+      });
+    if (data.purposeOfTransaction)
+      templateFields.push({
+        tag: ADDITIONAL_DATA_TAGS.PURPOSE_OF_TRANSACTION,
+        value: data.purposeOfTransaction.substring(0, 25),
+      });
+    if (data.additionalConsumerData)
+      templateFields.push({
+        tag: ADDITIONAL_DATA_TAGS.ADDITIONAL_CONSUMER_DATA,
+        value: data.additionalConsumerData.substring(0, 3),
+      });
+
     if (templateFields.length > 0) {
-      const templateValue = EMVQRBuilder.buildTemplate(templateFields)
-      this.fields.set(EMV_TAGS.ADDITIONAL_DATA, templateValue)
+      const templateValue = EMVQRBuilder.buildTemplate(templateFields);
+      this.fields.set(EMV_TAGS.ADDITIONAL_DATA, templateValue);
     }
-    return this
+    return this;
   }
 
   /** Set a raw field by tag */
   setField(tag: string, value: string): this {
     if (value && value.length > 0) {
-      this.fields.set(tag.padStart(2, '0'), value)
+      this.fields.set(tag.padStart(2, '0'), value);
     }
-    return this
+    return this;
   }
 
   /**
@@ -668,28 +706,30 @@ export class EMVQRBuilder {
    */
   build(): string {
     // Sort fields by tag number (ascending)
-    const sortedTags = Array.from(this.fields.keys()).sort((a, b) => parseInt(a) - parseInt(b))
-    
+    const sortedTags = Array.from(this.fields.keys()).sort(
+      (a, b) => parseInt(a, 10) - parseInt(b, 10)
+    );
+
     // Build payload without CRC
-    let payload = ''
+    let payload = '';
     for (const tag of sortedTags) {
-      const value = this.fields.get(tag)!
-      payload += EMVQRBuilder.encodeTLV(tag, value)
+      const value = this.fields.get(tag)!;
+      payload += EMVQRBuilder.encodeTLV(tag, value);
     }
-    
+
     // Add CRC placeholder (tag 63, length 04)
-    payload += '6304'
-    
+    payload += '6304';
+
     // Calculate and append CRC
-    const crc = crc16CCITT(payload)
-    payload += crc
-    
-    return payload
+    const crc = crc16CCITT(payload);
+    payload += crc;
+
+    return payload;
   }
 
   /** Create a new builder instance */
   static create(): EMVQRBuilder {
-    return new EMVQRBuilder()
+    return new EMVQRBuilder();
   }
 }
 
@@ -697,29 +737,30 @@ export class EMVQRBuilder {
  * Parse an EMV QR code string into its component TLV fields
  */
 export function parseEMVQR(payload: string): Map<string, string> {
-  const fields = new Map<string, string>()
-  let pos = 0
-  
-  while (pos < payload.length - 4) { // -4 for CRC
-    const tag = payload.substring(pos, pos + 2)
-    const length = parseInt(payload.substring(pos + 2, pos + 4), 10)
-    const value = payload.substring(pos + 4, pos + 4 + length)
-    fields.set(tag, value)
-    pos += 4 + length
+  const fields = new Map<string, string>();
+  let pos = 0;
+
+  while (pos < payload.length - 4) {
+    // -4 for CRC
+    const tag = payload.substring(pos, pos + 2);
+    const length = parseInt(payload.substring(pos + 2, pos + 4), 10);
+    const value = payload.substring(pos + 4, pos + 4 + length);
+    fields.set(tag, value);
+    pos += 4 + length;
   }
-  
-  return fields
+
+  return fields;
 }
 
 /**
  * Validate an EMV QR code CRC
  */
 export function validateEMVQRCRC(payload: string): boolean {
-  if (payload.length < 8) return false
-  const withoutCRC = payload.substring(0, payload.length - 4)
-  const providedCRC = payload.substring(payload.length - 4)
-  const calculatedCRC = crc16CCITT(withoutCRC + '6304')
-  return providedCRC.toUpperCase() === calculatedCRC
+  if (payload.length < 8) return false;
+  const withoutCRC = payload.substring(0, payload.length - 4);
+  const providedCRC = payload.substring(payload.length - 4);
+  const calculatedCRC = crc16CCITT(`${withoutCRC}6304`);
+  return providedCRC.toUpperCase() === calculatedCRC;
 }
 
 // ============================================
@@ -728,63 +769,63 @@ export function validateEMVQRCRC(payload: string): boolean {
 
 /** Generate URL payload with optional UTM parameters */
 export function generateUrl(params: UrlHelper): string {
-  let url = params.href
-  
+  let url = params.href;
+
   if (params.forceHttps && url.startsWith('http://')) {
-    url = url.replace('http://', 'https://')
+    url = url.replace('http://', 'https://');
   }
-  
-  const utmParams = new URLSearchParams()
-  if (params.utmSource) utmParams.set('utm_source', params.utmSource)
-  if (params.utmMedium) utmParams.set('utm_medium', params.utmMedium)
-  if (params.utmCampaign) utmParams.set('utm_campaign', params.utmCampaign)
-  if (params.utmTerm) utmParams.set('utm_term', params.utmTerm)
-  if (params.utmContent) utmParams.set('utm_content', params.utmContent)
-  
-  const paramStr = utmParams.toString()
+
+  const utmParams = new URLSearchParams();
+  if (params.utmSource) utmParams.set('utm_source', params.utmSource);
+  if (params.utmMedium) utmParams.set('utm_medium', params.utmMedium);
+  if (params.utmCampaign) utmParams.set('utm_campaign', params.utmCampaign);
+  if (params.utmTerm) utmParams.set('utm_term', params.utmTerm);
+  if (params.utmContent) utmParams.set('utm_content', params.utmContent);
+
+  const paramStr = utmParams.toString();
   if (paramStr) {
-    url += url.includes('?') ? '&' : '?'
-    url += paramStr
+    url += url.includes('?') ? '&' : '?';
+    url += paramStr;
   }
-  
-  return url
+
+  return url;
 }
 
 /** Generate telephone URI */
 export function generateTel(params: TelHelper): string {
-  return `tel:${params.number.replace(/\s+/g, '')}`
+  return `tel:${params.number.replace(/\s+/g, '')}`;
 }
 
 /** Generate email (mailto) URI */
 export function generateEmail(params: EmailHelper): string {
-  let mailto = `mailto:${params.to}`
-  const queryParams = new URLSearchParams()
-  
-  if (params.subject) queryParams.set('subject', params.subject)
-  if (params.body) queryParams.set('body', params.body)
-  
-  const paramStr = queryParams.toString()
-  if (paramStr) mailto += `?${paramStr}`
-  
-  return mailto
+  let mailto = `mailto:${params.to}`;
+  const queryParams = new URLSearchParams();
+
+  if (params.subject) queryParams.set('subject', params.subject);
+  if (params.body) queryParams.set('body', params.body);
+
+  const paramStr = queryParams.toString();
+  if (paramStr) mailto += `?${paramStr}`;
+
+  return mailto;
 }
 
 /** Generate SMS URI */
 export function generateSms(params: SmsHelper): string {
-  let sms = `sms:${params.number}`
+  let sms = `sms:${params.number}`;
   if (params.body) {
-    sms += `?body=${encodeURIComponent(params.body)}`
+    sms += `?body=${encodeURIComponent(params.body)}`;
   }
-  return sms
+  return sms;
 }
 
 /** Generate Geo URI */
 export function generateGeo(params: GeoHelper): string {
-  let geo = `geo:${params.lat},${params.lon}`
+  let geo = `geo:${params.lat},${params.lon}`;
   if (params.query) {
-    geo += `?q=${encodeURIComponent(params.query)}`
+    geo += `?q=${encodeURIComponent(params.query)}`;
   }
-  return geo
+  return geo;
 }
 
 // ============================================
@@ -793,27 +834,27 @@ export function generateGeo(params: GeoHelper): string {
 
 /** Generate WiFi configuration string */
 export function generateWifi(params: WifiHelper): string {
-  const escape = (s: string) => s.replace(/[\\";,:]/g, '\\$&')
-  
-  let wifi = 'WIFI:'
-  wifi += `T:${params.auth};`
-  wifi += `S:${escape(params.ssid)};`
-  
+  const escape = (s: string) => s.replace(/[\\";,:]/g, '\\$&');
+
+  let wifi = 'WIFI:';
+  wifi += `T:${params.auth};`;
+  wifi += `S:${escape(params.ssid)};`;
+
   if (params.password && params.auth !== 'nopass') {
-    wifi += `P:${escape(params.password)};`
+    wifi += `P:${escape(params.password)};`;
   }
-  
+
   if (params.hidden) {
-    wifi += 'H:true;'
+    wifi += 'H:true;';
   }
-  
+
   // EAP parameters for enterprise WiFi
-  if (params.eapIdentity) wifi += `I:${escape(params.eapIdentity)};`
-  if (params.eapAnonymous) wifi += `A:${escape(params.eapAnonymous)};`
-  if (params.eapPhase2) wifi += `PH2:${params.eapPhase2};`
-  
-  wifi += ';'
-  return wifi
+  if (params.eapIdentity) wifi += `I:${escape(params.eapIdentity)};`;
+  if (params.eapAnonymous) wifi += `A:${escape(params.eapAnonymous)};`;
+  if (params.eapPhase2) wifi += `PH2:${params.eapPhase2};`;
+
+  wifi += ';';
+  return wifi;
 }
 
 // ============================================
@@ -822,112 +863,112 @@ export function generateWifi(params: WifiHelper): string {
 
 /** Generate vCard string (2.1, 3.0, or 4.0) */
 export function generateVCard(params: VCardHelper): string {
-  const lines: string[] = []
-  
-  lines.push('BEGIN:VCARD')
-  lines.push(`VERSION:${params.version}`)
-  
+  const lines: string[] = [];
+
+  lines.push('BEGIN:VCARD');
+  lines.push(`VERSION:${params.version}`);
+
   // Full name (required)
   if (params.fn) {
-    lines.push(`FN:${escapeValue(params.fn)}`)
+    lines.push(`FN:${escapeValue(params.fn)}`);
   }
-  
+
   // Structured name
   if (params.n) {
-    lines.push(`N:${escapeValue(params.n)}`)
+    lines.push(`N:${escapeValue(params.n)}`);
   } else if (params.fn) {
     // Generate N from FN if not provided
-    const parts = params.fn.split(' ')
+    const parts = params.fn.split(' ');
     if (parts.length >= 2) {
-      const lastName = parts.pop() || ''
-      const firstName = parts.join(' ')
-      lines.push(`N:${escapeValue(lastName)};${escapeValue(firstName)};;;`)
+      const lastName = parts.pop() || '';
+      const firstName = parts.join(' ');
+      lines.push(`N:${escapeValue(lastName)};${escapeValue(firstName)};;;`);
     } else {
-      lines.push(`N:${escapeValue(params.fn)};;;;`)
+      lines.push(`N:${escapeValue(params.fn)};;;;`);
     }
   }
-  
+
   // Organization
   if (params.org) {
-    lines.push(`ORG:${escapeValue(params.org)}`)
+    lines.push(`ORG:${escapeValue(params.org)}`);
   }
-  
+
   // Title
   if (params.title) {
-    lines.push(`TITLE:${escapeValue(params.title)}`)
+    lines.push(`TITLE:${escapeValue(params.title)}`);
   }
-  
+
   // Role
   if (params.role) {
-    lines.push(`ROLE:${escapeValue(params.role)}`)
+    lines.push(`ROLE:${escapeValue(params.role)}`);
   }
-  
+
   // Phone numbers
   if (params.tel) {
     for (const tel of params.tel) {
       if (params.version === '4.0') {
-        lines.push(`TEL;TYPE=voice:${tel}`)
+        lines.push(`TEL;TYPE=voice:${tel}`);
       } else {
-        lines.push(`TEL:${tel}`)
+        lines.push(`TEL:${tel}`);
       }
     }
   }
-  
+
   // Email addresses
   if (params.email) {
     for (const email of params.email) {
       if (params.version === '4.0') {
-        lines.push(`EMAIL:${email}`)
+        lines.push(`EMAIL:${email}`);
       } else {
-        lines.push(`EMAIL;TYPE=INTERNET:${email}`)
+        lines.push(`EMAIL;TYPE=INTERNET:${email}`);
       }
     }
   }
-  
+
   // URL
   if (params.url) {
-    lines.push(`URL:${params.url}`)
+    lines.push(`URL:${params.url}`);
   }
-  
+
   // Addresses
   if (params.adr) {
     for (const adr of params.adr) {
-      lines.push(`ADR:${escapeValue(adr)}`)
+      lines.push(`ADR:${escapeValue(adr)}`);
     }
   }
-  
+
   // Birthday
   if (params.bday) {
-    lines.push(`BDAY:${params.bday}`)
+    lines.push(`BDAY:${params.bday}`);
   }
-  
+
   // Photo URL
   if (params.photo) {
     if (params.version === '4.0') {
-      lines.push(`PHOTO:${params.photo}`)
+      lines.push(`PHOTO:${params.photo}`);
     } else {
-      lines.push(`PHOTO;VALUE=URI:${params.photo}`)
+      lines.push(`PHOTO;VALUE=URI:${params.photo}`);
     }
   }
-  
+
   // Note
   if (params.note) {
-    lines.push(`NOTE:${escapeValue(params.note)}`)
+    lines.push(`NOTE:${escapeValue(params.note)}`);
   }
-  
+
   // Instant messaging
   if (params.impp) {
-    lines.push(`IMPP:${params.impp}`)
+    lines.push(`IMPP:${params.impp}`);
   }
-  
+
   // UID
   if (params.uid) {
-    lines.push(`UID:${params.uid}`)
+    lines.push(`UID:${params.uid}`);
   }
-  
-  lines.push('END:VCARD')
-  
-  return lines.join('\n')
+
+  lines.push('END:VCARD');
+
+  return lines.join('\n');
 }
 
 // ============================================
@@ -936,22 +977,22 @@ export function generateVCard(params: VCardHelper): string {
 
 /** Generate MeCard string (Japanese format, more compact than vCard) */
 export function generateMeCard(params: MeCardHelper): string {
-  const escape = (s: string) => s.replace(/[\\";,:]/g, '\\$&')
-  
-  let mecard = 'MECARD:'
-  
-  if (params.n) mecard += `N:${escape(params.n)};`
-  if (params.nickname) mecard += `NICKNAME:${escape(params.nickname)};`
-  if (params.org) mecard += `ORG:${escape(params.org)};`
-  if (params.tel) mecard += `TEL:${params.tel};`
-  if (params.email) mecard += `EMAIL:${params.email};`
-  if (params.url) mecard += `URL:${params.url};`
-  if (params.adr) mecard += `ADR:${escape(params.adr)};`
-  if (params.bday) mecard += `BDAY:${params.bday.replace(/-/g, '')};`
-  if (params.note) mecard += `NOTE:${escape(params.note)};`
-  
-  mecard += ';'
-  return mecard
+  const escape = (s: string) => s.replace(/[\\";,:]/g, '\\$&');
+
+  let mecard = 'MECARD:';
+
+  if (params.n) mecard += `N:${escape(params.n)};`;
+  if (params.nickname) mecard += `NICKNAME:${escape(params.nickname)};`;
+  if (params.org) mecard += `ORG:${escape(params.org)};`;
+  if (params.tel) mecard += `TEL:${params.tel};`;
+  if (params.email) mecard += `EMAIL:${params.email};`;
+  if (params.url) mecard += `URL:${params.url};`;
+  if (params.adr) mecard += `ADR:${escape(params.adr)};`;
+  if (params.bday) mecard += `BDAY:${params.bday.replace(/-/g, '')};`;
+  if (params.note) mecard += `NOTE:${escape(params.note)};`;
+
+  mecard += ';';
+  return mecard;
 }
 
 // ============================================
@@ -960,18 +1001,18 @@ export function generateMeCard(params: MeCardHelper): string {
 
 /** Generate BizCard format (older format, simple) */
 export function generateBizCard(params: BizCardParams): string {
-  const lines: string[] = ['BIZCARD:']
-  
-  if (params.firstName) lines.push(`N:${params.firstName}`)
-  if (params.lastName) lines.push(`X:${params.lastName}`)
-  if (params.title) lines.push(`T:${params.title}`)
-  if (params.company) lines.push(`C:${params.company}`)
-  if (params.phone) lines.push(`B:${params.phone}`)
-  if (params.email) lines.push(`E:${params.email}`)
-  if (params.address) lines.push(`A:${params.address}`)
-  
-  lines.push(';')
-  return lines.join(';')
+  const lines: string[] = ['BIZCARD:'];
+
+  if (params.firstName) lines.push(`N:${params.firstName}`);
+  if (params.lastName) lines.push(`X:${params.lastName}`);
+  if (params.title) lines.push(`T:${params.title}`);
+  if (params.company) lines.push(`C:${params.company}`);
+  if (params.phone) lines.push(`B:${params.phone}`);
+  if (params.email) lines.push(`E:${params.email}`);
+  if (params.address) lines.push(`A:${params.address}`);
+
+  lines.push(';');
+  return lines.join(';');
 }
 
 // ============================================
@@ -980,75 +1021,75 @@ export function generateBizCard(params: BizCardParams): string {
 
 /** Generate iCalendar VEVENT string */
 export function generateEvent(params: EventHelper): string {
-  const lines: string[] = []
-  
-  lines.push('BEGIN:VCALENDAR')
-  lines.push('VERSION:2.0')
-  lines.push('PRODID:-//ANQR//QR Code Generator//EN')
-  lines.push('BEGIN:VEVENT')
-  
+  const lines: string[] = [];
+
+  lines.push('BEGIN:VCALENDAR');
+  lines.push('VERSION:2.0');
+  lines.push('PRODID:-//ANQR//QR Code Generator//EN');
+  lines.push('BEGIN:VEVENT');
+
   // Generate UID
-  const uid = `${Date.now()}-${Math.random().toString(36).substr(2, 9)}@anqr`
-  lines.push(`UID:${uid}`)
-  
+  const uid = `${Date.now()}-${Math.random().toString(36).substr(2, 9)}@anqr`;
+  lines.push(`UID:${uid}`);
+
   // Timestamp
-  lines.push(`DTSTAMP:${formatICalDate(new Date().toISOString())}`)
-  
+  lines.push(`DTSTAMP:${formatICalDate(new Date().toISOString())}`);
+
   // Start time
   if (params.start) {
-    const startStr = formatICalDate(params.start)
+    const startStr = formatICalDate(params.start);
     if (params.tz) {
-      lines.push(`DTSTART;TZID=${params.tz}:${startStr}`)
+      lines.push(`DTSTART;TZID=${params.tz}:${startStr}`);
     } else {
-      lines.push(`DTSTART:${startStr}`)
+      lines.push(`DTSTART:${startStr}`);
     }
   }
-  
+
   // End time
   if (params.end) {
-    const endStr = formatICalDate(params.end)
+    const endStr = formatICalDate(params.end);
     if (params.tz) {
-      lines.push(`DTEND;TZID=${params.tz}:${endStr}`)
+      lines.push(`DTEND;TZID=${params.tz}:${endStr}`);
     } else {
-      lines.push(`DTEND:${endStr}`)
+      lines.push(`DTEND:${endStr}`);
     }
   }
-  
+
   // Summary (title)
   if (params.summary) {
-    lines.push(`SUMMARY:${escapeValue(params.summary)}`)
+    lines.push(`SUMMARY:${escapeValue(params.summary)}`);
   }
-  
+
   // Description
   if (params.description) {
-    lines.push(`DESCRIPTION:${escapeValue(params.description)}`)
+    lines.push(`DESCRIPTION:${escapeValue(params.description)}`);
   }
-  
+
   // Location
   if (params.location) {
-    lines.push(`LOCATION:${escapeValue(params.location)}`)
+    lines.push(`LOCATION:${escapeValue(params.location)}`);
   }
-  
+
   // Recurrence rule
   if (params.rrule) {
-    lines.push(`RRULE:${params.rrule}`)
+    lines.push(`RRULE:${params.rrule}`);
   }
-  
-  lines.push('END:VEVENT')
-  lines.push('END:VCALENDAR')
-  
-  return lines.join('\n')
+
+  lines.push('END:VEVENT');
+  lines.push('END:VCALENDAR');
+
+  return lines.join('\n');
 }
 
 /** Generate calendar subscription URL (webcal://) */
 export function generateCalendarSubscription(url: string): string {
   if (url.startsWith('http://')) {
-    return url.replace('http://', 'webcal://')
+    return url.replace('http://', 'webcal://');
   }
   if (url.startsWith('https://')) {
-    return url.replace('https://', 'webcal://')
+    return url.replace('https://', 'webcal://');
   }
-  return `webcal://${url}`
+  return `webcal://${url}`;
 }
 
 // ============================================
@@ -1061,30 +1102,30 @@ export function generateCalendarSubscription(url: string): string {
  * Used across SEPA zone (EU + CH, NO, IS, LI, MC, SM)
  */
 export function generateEPCSepa(params: EPCSepaParams): string {
-  const lines: string[] = []
-  
-  lines.push('BCD')           // Service tag
-  lines.push('002')           // Version (002 = 2.0)
-  lines.push('1')             // Character set (1 = UTF-8)
-  lines.push('SCT')           // Identification code (SEPA Credit Transfer)
-  lines.push(params.bic || '') // BIC (optional for domestic)
-  lines.push(params.name.substring(0, 70)) // Beneficiary name (max 70)
-  lines.push(params.iban.replace(/\s/g, '').toUpperCase()) // IBAN
-  
+  const lines: string[] = [];
+
+  lines.push('BCD'); // Service tag
+  lines.push('002'); // Version (002 = 2.0)
+  lines.push('1'); // Character set (1 = UTF-8)
+  lines.push('SCT'); // Identification code (SEPA Credit Transfer)
+  lines.push(params.bic || ''); // BIC (optional for domestic)
+  lines.push(params.name.substring(0, 70)); // Beneficiary name (max 70)
+  lines.push(params.iban.replace(/\s/g, '').toUpperCase()); // IBAN
+
   // Amount (EUR format with currency prefix)
   if (params.amount !== undefined && params.amount > 0) {
-    lines.push(`EUR${params.amount.toFixed(2)}`)
+    lines.push(`EUR${params.amount.toFixed(2)}`);
   } else {
-    lines.push('')
+    lines.push('');
   }
-  
-  lines.push('')              // Purpose code (AT-44, optional)
+
+  lines.push(''); // Purpose code (AT-44, optional)
   // Reference: either structured (RF..) or unstructured
-  lines.push(params.reference?.substring(0, 35) || '') // Structured reference (max 35)
-  lines.push(params.text?.substring(0, 140) || '')     // Unstructured remittance info (max 140)
-  lines.push('')              // Beneficiary to originator info (optional)
-  
-  return lines.join('\n')
+  lines.push(params.reference?.substring(0, 35) || ''); // Structured reference (max 35)
+  lines.push(params.text?.substring(0, 140) || ''); // Unstructured remittance info (max 140)
+  lines.push(''); // Beneficiary to originator info (optional)
+
+  return lines.join('\n');
 }
 
 /**
@@ -1092,26 +1133,26 @@ export function generateEPCSepa(params: EPCSepaParams): string {
  * Follows NPCI UPI Deep Linking Specification
  */
 export function generateUPI(params: UPIParams): string {
-  const queryParams = new URLSearchParams()
-  
+  const queryParams = new URLSearchParams();
+
   // Required: Payee VPA
-  queryParams.set('pa', params.pa)
-  
+  queryParams.set('pa', params.pa);
+
   // Optional fields per NPCI spec
-  if (params.pn) queryParams.set('pn', params.pn)
-  if (params.am !== undefined && params.am > 0) queryParams.set('am', params.am.toFixed(2))
-  queryParams.set('cu', params.cu || 'INR')
-  if (params.tn) queryParams.set('tn', params.tn.substring(0, 50))
-  if (params.tr) queryParams.set('tr', params.tr.substring(0, 35))
-  if (params.mc) queryParams.set('mc', params.mc)
-  if (params.tid) queryParams.set('tid', params.tid)
-  if (params.url) queryParams.set('url', params.url)
-  if (params.mode) queryParams.set('mode', params.mode)
-  if (params.purpose) queryParams.set('purpose', params.purpose)
-  if (params.orgid) queryParams.set('orgid', params.orgid)
-  if (params.sign) queryParams.set('sign', params.sign)
-  
-  return `upi://pay?${queryParams.toString()}`
+  if (params.pn) queryParams.set('pn', params.pn);
+  if (params.am !== undefined && params.am > 0) queryParams.set('am', params.am.toFixed(2));
+  queryParams.set('cu', params.cu || 'INR');
+  if (params.tn) queryParams.set('tn', params.tn.substring(0, 50));
+  if (params.tr) queryParams.set('tr', params.tr.substring(0, 35));
+  if (params.mc) queryParams.set('mc', params.mc);
+  if (params.tid) queryParams.set('tid', params.tid);
+  if (params.url) queryParams.set('url', params.url);
+  if (params.mode) queryParams.set('mode', params.mode);
+  if (params.purpose) queryParams.set('purpose', params.purpose);
+  if (params.orgid) queryParams.set('orgid', params.orgid);
+  if (params.sign) queryParams.set('sign', params.sign);
+
+  return `upi://pay?${queryParams.toString()}`;
 }
 
 /**
@@ -1121,51 +1162,51 @@ export function generateUPI(params: UPIParams): string {
 export function generatePayNow(params: PayNowParams): string {
   const builder = EMVQRBuilder.create()
     .setPayloadFormatIndicator()
-    .setPointOfInitiation(!params.amount) // Static if no amount, dynamic if amount specified
-  
+    .setPointOfInitiation(!params.amount); // Static if no amount, dynamic if amount specified
+
   // PayNow proxy type mapping
   const proxyTypeCode = {
     mobile: '0',
     uen: '2',
-    nric: '1'
-  }[params.type]
-  
+    nric: '1',
+  }[params.type];
+
   // Build merchant account info (tag 26 for SGQR/PayNow)
   const maiData: Array<{ tag: string; value: string }> = [
     { tag: '01', value: proxyTypeCode },
     { tag: '02', value: params.value },
-    { tag: '03', value: params.editable ? '1' : '0' } // Amount editable flag
-  ]
+    { tag: '03', value: params.editable ? '1' : '0' }, // Amount editable flag
+  ];
   if (params.expiryDate) {
-    maiData.push({ tag: '04', value: params.expiryDate })
+    maiData.push({ tag: '04', value: params.expiryDate });
   }
-  
-  builder.addMerchantAccountInfo(26, PAYMENT_SCHEME_GUI.PAYNOW, maiData)
-  
+
+  builder.addMerchantAccountInfo(26, PAYMENT_SCHEME_GUI.PAYNOW, maiData);
+
   // Transaction currency (702 = SGD)
-  builder.setTransactionCurrency(ISO_CURRENCY.SGD)
-  
+  builder.setTransactionCurrency(ISO_CURRENCY.SGD);
+
   // Transaction amount
   if (params.amount !== undefined && params.amount > 0) {
-    builder.setTransactionAmount(params.amount)
+    builder.setTransactionAmount(params.amount);
   }
-  
-  builder.setCountryCode('SG')
-  
+
+  builder.setCountryCode('SG');
+
   // Merchant name and city
   if (params.merchantName) {
-    builder.setMerchantName(params.merchantName)
+    builder.setMerchantName(params.merchantName);
   }
   if (params.merchantCity) {
-    builder.setMerchantCity(params.merchantCity)
+    builder.setMerchantCity(params.merchantCity);
   }
-  
+
   // Reference in additional data
   if (params.reference) {
-    builder.setAdditionalData({ referenceLabel: params.reference })
+    builder.setAdditionalData({ referenceLabel: params.reference });
   }
-  
-  return builder.build()
+
+  return builder.build();
 }
 
 /**
@@ -1175,67 +1216,65 @@ export function generatePayNow(params: PayNowParams): string {
 export function generatePromptPay(params: PromptPayParams): string {
   const builder = EMVQRBuilder.create()
     .setPayloadFormatIndicator()
-    .setPointOfInitiation(!params.amount)
-  
+    .setPointOfInitiation(!params.amount);
+
   // PromptPay AID based on type
   const aidMap = {
     mobile: PAYMENT_SCHEME_GUI.PROMPTPAY_MOBILE,
     id: PAYMENT_SCHEME_GUI.PROMPTPAY_TAX_ID,
     ewallet: PAYMENT_SCHEME_GUI.PROMPTPAY_EWALLET,
-    billpay: PAYMENT_SCHEME_GUI.PROMPTPAY_BILLPAY
-  }
-  const aid = aidMap[params.type]
-  
+    billpay: PAYMENT_SCHEME_GUI.PROMPTPAY_BILLPAY,
+  };
+  const aid = aidMap[params.type];
+
   // Format mobile number with country code
-  let formattedValue = params.value.replace(/[\s-]/g, '')
+  let formattedValue = params.value.replace(/[\s-]/g, '');
   if (params.type === 'mobile' && formattedValue.startsWith('0')) {
-    formattedValue = '66' + formattedValue.substring(1)
+    formattedValue = `66${formattedValue.substring(1)}`;
   }
-  
+
   // Build merchant account info
-  const maiData: Array<{ tag: string; value: string }> = [
-    { tag: '01', value: formattedValue }
-  ]
-  
+  const maiData: Array<{ tag: string; value: string }> = [{ tag: '01', value: formattedValue }];
+
   // Add bill payment references if applicable
   if (params.type === 'billpay') {
-    if (params.ref1) maiData.push({ tag: '02', value: params.ref1 })
-    if (params.ref2) maiData.push({ tag: '03', value: params.ref2 })
+    if (params.ref1) maiData.push({ tag: '02', value: params.ref1 });
+    if (params.ref2) maiData.push({ tag: '03', value: params.ref2 });
   }
-  
-  builder.addMerchantAccountInfo(29, aid, maiData)
-  
+
+  builder.addMerchantAccountInfo(29, aid, maiData);
+
   // Additional PromptPay template (tag 30) for bill payment
   if (params.type === 'billpay' && params.ref3) {
     builder.addMerchantAccountInfo(30, PAYMENT_SCHEME_GUI.PROMPTPAY_BILLPAY, [
-      { tag: '01', value: params.ref3 }
-    ])
+      { tag: '01', value: params.ref3 },
+    ]);
   }
-  
+
   // MCC
   if (params.mcc) {
-    builder.setMCC(params.mcc)
+    builder.setMCC(params.mcc);
   }
-  
+
   // Transaction currency (764 = THB)
-  builder.setTransactionCurrency(ISO_CURRENCY.THB)
-  
+  builder.setTransactionCurrency(ISO_CURRENCY.THB);
+
   // Transaction amount
   if (params.amount !== undefined && params.amount > 0) {
-    builder.setTransactionAmount(params.amount)
+    builder.setTransactionAmount(params.amount);
   }
-  
-  builder.setCountryCode(params.countryCode || 'TH')
-  
+
+  builder.setCountryCode(params.countryCode || 'TH');
+
   // Merchant name and city
   if (params.merchantName) {
-    builder.setMerchantName(params.merchantName)
+    builder.setMerchantName(params.merchantName);
   }
   if (params.merchantCity) {
-    builder.setMerchantCity(params.merchantCity)
+    builder.setMerchantCity(params.merchantCity);
   }
-  
-  return builder.build()
+
+  return builder.build();
 }
 
 /**
@@ -1245,51 +1284,49 @@ export function generatePromptPay(params: PromptPayParams): string {
 export function generatePIX(params: PIXParams): string {
   const builder = EMVQRBuilder.create()
     .setPayloadFormatIndicator()
-    .setPointOfInitiation(!params.amount) // Static if no amount
-  
+    .setPointOfInitiation(!params.amount); // Static if no amount
+
   // PIX merchant account info
-  const maiData: Array<{ tag: string; value: string }> = [
-    { tag: '01', value: params.key }
-  ]
+  const maiData: Array<{ tag: string; value: string }> = [{ tag: '01', value: params.key }];
   if (params.description) {
-    maiData.push({ tag: '02', value: params.description.substring(0, 72) })
+    maiData.push({ tag: '02', value: params.description.substring(0, 72) });
   }
   if (params.url) {
-    maiData.push({ tag: '25', value: params.url })
+    maiData.push({ tag: '25', value: params.url });
   }
-  
-  builder.addMerchantAccountInfo(26, PAYMENT_SCHEME_GUI.PIX, maiData)
-  
+
+  builder.addMerchantAccountInfo(26, PAYMENT_SCHEME_GUI.PIX, maiData);
+
   // Default MCC for PIX (0000 = not applicable)
-  builder.setMCC('0000')
-  
+  builder.setMCC('0000');
+
   // Transaction currency (986 = BRL)
-  builder.setTransactionCurrency(ISO_CURRENCY.BRL)
-  
+  builder.setTransactionCurrency(ISO_CURRENCY.BRL);
+
   // Transaction amount
   if (params.amount !== undefined && params.amount > 0) {
-    builder.setTransactionAmount(params.amount)
+    builder.setTransactionAmount(params.amount);
   }
-  
-  builder.setCountryCode('BR')
-  
+
+  builder.setCountryCode('BR');
+
   // Merchant name and city (required for PIX)
   if (params.name) {
-    builder.setMerchantName(params.name)
+    builder.setMerchantName(params.name);
   }
   if (params.city) {
-    builder.setMerchantCity(params.city)
+    builder.setMerchantCity(params.city);
   }
   if (params.postalCode) {
-    builder.setPostalCode(params.postalCode)
+    builder.setPostalCode(params.postalCode);
   }
-  
+
   // Transaction ID in additional data
   if (params.txid) {
-    builder.setAdditionalData({ referenceLabel: params.txid })
+    builder.setAdditionalData({ referenceLabel: params.txid });
   }
-  
-  return builder.build()
+
+  return builder.build();
 }
 
 /**
@@ -1298,90 +1335,90 @@ export function generatePIX(params: PIXParams): string {
  * Line-based format (not TLV)
  */
 export function generateSwissQRBill(params: SwissQRBillParams): string {
-  const lines: string[] = []
-  
+  const lines: string[] = [];
+
   // Header
-  lines.push('SPC')                          // QR Type
-  lines.push(params.version || '0200')       // Version
-  lines.push('1')                            // Coding (1 = UTF-8)
-  
+  lines.push('SPC'); // QR Type
+  lines.push(params.version || '0200'); // Version
+  lines.push('1'); // Coding (1 = UTF-8)
+
   // Creditor information
-  lines.push(params.creditorIBAN.replace(/\s/g, '').toUpperCase())
-  lines.push(params.creditorAddressType)
-  lines.push(params.creditorName.substring(0, 70))
-  
+  lines.push(params.creditorIBAN.replace(/\s/g, '').toUpperCase());
+  lines.push(params.creditorAddressType);
+  lines.push(params.creditorName.substring(0, 70));
+
   if (params.creditorAddressType === 'S') {
-    lines.push(params.creditorStreet?.substring(0, 70) || '')
-    lines.push(params.creditorBuildingNumber?.substring(0, 16) || '')
-    lines.push(params.creditorPostalCode?.substring(0, 16) || '')
-    lines.push(params.creditorCity?.substring(0, 35) || '')
+    lines.push(params.creditorStreet?.substring(0, 70) || '');
+    lines.push(params.creditorBuildingNumber?.substring(0, 16) || '');
+    lines.push(params.creditorPostalCode?.substring(0, 16) || '');
+    lines.push(params.creditorCity?.substring(0, 35) || '');
   } else {
     // Combined address (K)
-    lines.push(params.creditorStreet?.substring(0, 70) || '') // Address line 1
-    lines.push(params.creditorCity?.substring(0, 70) || '')   // Address line 2
-    lines.push('')
-    lines.push('')
+    lines.push(params.creditorStreet?.substring(0, 70) || ''); // Address line 1
+    lines.push(params.creditorCity?.substring(0, 70) || ''); // Address line 2
+    lines.push('');
+    lines.push('');
   }
-  lines.push(params.creditorCountry.toUpperCase())
-  
+  lines.push(params.creditorCountry.toUpperCase());
+
   // Ultimate Creditor (optional - usually empty)
-  lines.push(params.ultimateCreditorAddressType || '')
-  lines.push(params.ultimateCreditorName?.substring(0, 70) || '')
+  lines.push(params.ultimateCreditorAddressType || '');
+  lines.push(params.ultimateCreditorName?.substring(0, 70) || '');
   if (params.ultimateCreditorAddressType === 'S') {
-    lines.push(params.ultimateCreditorStreet?.substring(0, 70) || '')
-    lines.push(params.ultimateCreditorBuildingNumber?.substring(0, 16) || '')
-    lines.push(params.ultimateCreditorPostalCode?.substring(0, 16) || '')
-    lines.push(params.ultimateCreditorCity?.substring(0, 35) || '')
+    lines.push(params.ultimateCreditorStreet?.substring(0, 70) || '');
+    lines.push(params.ultimateCreditorBuildingNumber?.substring(0, 16) || '');
+    lines.push(params.ultimateCreditorPostalCode?.substring(0, 16) || '');
+    lines.push(params.ultimateCreditorCity?.substring(0, 35) || '');
   } else {
-    lines.push(params.ultimateCreditorStreet?.substring(0, 70) || '')
-    lines.push(params.ultimateCreditorCity?.substring(0, 70) || '')
-    lines.push('')
-    lines.push('')
+    lines.push(params.ultimateCreditorStreet?.substring(0, 70) || '');
+    lines.push(params.ultimateCreditorCity?.substring(0, 70) || '');
+    lines.push('');
+    lines.push('');
   }
-  lines.push(params.ultimateCreditorCountry?.toUpperCase() || '')
-  
+  lines.push(params.ultimateCreditorCountry?.toUpperCase() || '');
+
   // Payment amount
   if (params.amount !== undefined && params.amount > 0) {
-    lines.push(params.amount.toFixed(2))
+    lines.push(params.amount.toFixed(2));
   } else {
-    lines.push('')
+    lines.push('');
   }
-  lines.push(params.currency)
-  
+  lines.push(params.currency);
+
   // Ultimate Debtor (payer - optional)
-  lines.push(params.ultimateDebtorAddressType || '')
-  lines.push(params.ultimateDebtorName?.substring(0, 70) || '')
+  lines.push(params.ultimateDebtorAddressType || '');
+  lines.push(params.ultimateDebtorName?.substring(0, 70) || '');
   if (params.ultimateDebtorAddressType === 'S') {
-    lines.push(params.ultimateDebtorStreet?.substring(0, 70) || '')
-    lines.push(params.ultimateDebtorBuildingNumber?.substring(0, 16) || '')
-    lines.push(params.ultimateDebtorPostalCode?.substring(0, 16) || '')
-    lines.push(params.ultimateDebtorCity?.substring(0, 35) || '')
+    lines.push(params.ultimateDebtorStreet?.substring(0, 70) || '');
+    lines.push(params.ultimateDebtorBuildingNumber?.substring(0, 16) || '');
+    lines.push(params.ultimateDebtorPostalCode?.substring(0, 16) || '');
+    lines.push(params.ultimateDebtorCity?.substring(0, 35) || '');
   } else {
-    lines.push(params.ultimateDebtorStreet?.substring(0, 70) || '')
-    lines.push(params.ultimateDebtorCity?.substring(0, 70) || '')
-    lines.push('')
-    lines.push('')
+    lines.push(params.ultimateDebtorStreet?.substring(0, 70) || '');
+    lines.push(params.ultimateDebtorCity?.substring(0, 70) || '');
+    lines.push('');
+    lines.push('');
   }
-  lines.push(params.ultimateDebtorCountry?.toUpperCase() || '')
-  
+  lines.push(params.ultimateDebtorCountry?.toUpperCase() || '');
+
   // Reference
-  lines.push(params.referenceType)
-  lines.push(params.reference?.substring(0, 27) || '')
-  
+  lines.push(params.referenceType);
+  lines.push(params.reference?.substring(0, 27) || '');
+
   // Additional information
-  lines.push(params.unstructuredMessage?.substring(0, 140) || '')
-  lines.push(params.trailer || 'EPD')
-  lines.push(params.billInformation?.substring(0, 140) || '')
-  
+  lines.push(params.unstructuredMessage?.substring(0, 140) || '');
+  lines.push(params.trailer || 'EPD');
+  lines.push(params.billInformation?.substring(0, 140) || '');
+
   // Alternative procedures
   if (params.alternativeProcedure1) {
-    lines.push(params.alternativeProcedure1.substring(0, 100))
+    lines.push(params.alternativeProcedure1.substring(0, 100));
   }
   if (params.alternativeProcedure2) {
-    lines.push(params.alternativeProcedure2.substring(0, 100))
+    lines.push(params.alternativeProcedure2.substring(0, 100));
   }
-  
-  return lines.join('\n')
+
+  return lines.join('\n');
 }
 
 /**
@@ -1389,8 +1426,8 @@ export function generateSwissQRBill(params: SwissQRBillParams): string {
  */
 export function generateLightning(params: LightningParams): string {
   // BOLT11 invoice is already encoded, just prepend protocol
-  const invoice = params.invoice.toLowerCase().replace(/^lightning:/i, '')
-  return `lightning:${invoice}`
+  const invoice = params.invoice.toLowerCase().replace(/^lightning:/i, '');
+  return `lightning:${invoice}`;
 }
 
 /**
@@ -1398,103 +1435,103 @@ export function generateLightning(params: LightningParams): string {
  * Format: ethereum:target_address[@chain_id][/function_name]?[parameters]
  */
 export function generateEthereumEIP681(params: EthereumEIP681Params): string {
-  let uri = 'ethereum:'
-  
+  let uri = 'ethereum:';
+
   // For ERC-20 token transfers, use the token contract address
   if (params.tokenAddress) {
-    uri += params.tokenAddress
+    uri += params.tokenAddress;
     // Add chain_id if specified
     if (params.chainId && params.chainId !== 1) {
-      uri += `@${params.chainId}`
+      uri += `@${params.chainId}`;
     }
     // ERC-20 transfer function
-    uri += '/transfer'
-    
-    const queryParams = new URLSearchParams()
-    queryParams.set('address', params.targetAddress)
+    uri += '/transfer';
+
+    const queryParams = new URLSearchParams();
+    queryParams.set('address', params.targetAddress);
     if (params.tokenValue) {
-      queryParams.set('uint256', params.tokenValue)
+      queryParams.set('uint256', params.tokenValue);
     }
-    if (params.gas) queryParams.set('gas', params.gas.toString())
-    if (params.gasLimit) queryParams.set('gasLimit', params.gasLimit.toString())
-    if (params.gasPrice) queryParams.set('gasPrice', params.gasPrice)
-    
-    uri += `?${queryParams.toString()}`
+    if (params.gas) queryParams.set('gas', params.gas.toString());
+    if (params.gasLimit) queryParams.set('gasLimit', params.gasLimit.toString());
+    if (params.gasPrice) queryParams.set('gasPrice', params.gasPrice);
+
+    uri += `?${queryParams.toString()}`;
   } else {
     // Native ETH transfer
-    uri += params.targetAddress
-    
+    uri += params.targetAddress;
+
     // Add chain_id if not mainnet
     if (params.chainId && params.chainId !== 1) {
-      uri += `@${params.chainId}`
+      uri += `@${params.chainId}`;
     }
-    
+
     // Add function name if specified (for contract calls)
     if (params.functionName) {
-      uri += `/${params.functionName}`
+      uri += `/${params.functionName}`;
     }
-    
-    const queryParams = new URLSearchParams()
-    if (params.value) queryParams.set('value', params.value)
-    if (params.gas) queryParams.set('gas', params.gas.toString())
-    if (params.gasLimit) queryParams.set('gasLimit', params.gasLimit.toString())
-    if (params.gasPrice) queryParams.set('gasPrice', params.gasPrice)
-    
+
+    const queryParams = new URLSearchParams();
+    if (params.value) queryParams.set('value', params.value);
+    if (params.gas) queryParams.set('gas', params.gas.toString());
+    if (params.gasLimit) queryParams.set('gasLimit', params.gasLimit.toString());
+    if (params.gasPrice) queryParams.set('gasPrice', params.gasPrice);
+
     // Add arbitrary function parameters
     if (params.functionParams) {
       for (const [key, value] of Object.entries(params.functionParams)) {
-        queryParams.set(key, value)
+        queryParams.set(key, value);
       }
     }
-    
-    const paramStr = queryParams.toString()
+
+    const paramStr = queryParams.toString();
     if (paramStr) {
-      uri += `?${paramStr}`
+      uri += `?${paramStr}`;
     }
   }
-  
-  return uri
+
+  return uri;
 }
 
 /**
  * Generate cryptocurrency payment URI (BIP-21 for Bitcoin, etc.)
  */
 export function generateCrypto(params: CryptoHelper): string {
-  const scheme = params.type.toLowerCase()
-  let uri = `${scheme}:${params.address}`
-  
-  const queryParams = new URLSearchParams()
+  const scheme = params.type.toLowerCase();
+  let uri = `${scheme}:${params.address}`;
+
+  const queryParams = new URLSearchParams();
   if (params.amount !== undefined && params.amount > 0) {
-    queryParams.set('amount', params.amount.toString())
+    queryParams.set('amount', params.amount.toString());
   }
   if (params.label) {
-    queryParams.set('label', params.label)
+    queryParams.set('label', params.label);
   }
   // BIP-21 also supports message parameter
   // queryParams.set('message', '...') if needed
-  
-  const paramStr = queryParams.toString()
+
+  const paramStr = queryParams.toString();
   if (paramStr) {
-    uri += `?${paramStr}`
+    uri += `?${paramStr}`;
   }
-  
-  return uri
+
+  return uri;
 }
 
 /**
  * Generate PayPal.Me payment link
  */
 export function generatePayPalMe(params: PayPalMeParams): string {
-  let url = `https://paypal.me/${params.username}`
-  
+  let url = `https://paypal.me/${params.username}`;
+
   if (params.amount !== undefined && params.amount > 0) {
-    url += `/${params.amount.toFixed(2)}`
+    url += `/${params.amount.toFixed(2)}`;
     if (params.currencyCode) {
-      url += params.currencyCode.toUpperCase()
+      url += params.currencyCode.toUpperCase();
     }
   }
-  
-  return url
+
+  return url;
 }
 
 /**
@@ -1502,14 +1539,14 @@ export function generatePayPalMe(params: PayPalMeParams): string {
  */
 export function generateCashApp(params: CashAppParams): string {
   // Remove $ if present
-  const cashtag = params.cashtag.replace(/^\$/, '')
-  let url = `https://cash.app/$${cashtag}`
-  
+  const cashtag = params.cashtag.replace(/^\$/, '');
+  let url = `https://cash.app/$${cashtag}`;
+
   if (params.amount !== undefined && params.amount > 0) {
-    url += `/${params.amount.toFixed(2)}`
+    url += `/${params.amount.toFixed(2)}`;
   }
-  
-  return url
+
+  return url;
 }
 
 // ============================================
@@ -1523,54 +1560,52 @@ export function generateCashApp(params: CashAppParams): string {
 export function generateQRIS(params: QRISParams): string {
   const builder = EMVQRBuilder.create()
     .setPayloadFormatIndicator()
-    .setPointOfInitiation(!params.amount)
-  
+    .setPointOfInitiation(!params.amount);
+
   // QRIS merchant account (tag 26)
-  const maiData: Array<{ tag: string; value: string }> = [
-    { tag: '01', value: params.merchantID }
-  ]
+  const maiData: Array<{ tag: string; value: string }> = [{ tag: '01', value: params.merchantID }];
   if (params.merchantCriteria) {
-    maiData.push({ tag: '02', value: params.merchantCriteria })
+    maiData.push({ tag: '02', value: params.merchantCriteria });
   }
   if (params.nmid) {
-    maiData.push({ tag: '03', value: params.nmid })
+    maiData.push({ tag: '03', value: params.nmid });
   }
-  
-  builder.addMerchantAccountInfo(26, PAYMENT_SCHEME_GUI.QRIS, maiData)
-  
+
+  builder.addMerchantAccountInfo(26, PAYMENT_SCHEME_GUI.QRIS, maiData);
+
   // Additional QRIS template (tag 51) for cross-border
   if (params.merchantPAN) {
     builder.addMerchantAccountInfo(51, 'ID.CO.QRIS.WWW', [
-      { tag: '01', value: params.merchantPAN }
-    ])
+      { tag: '01', value: params.merchantPAN },
+    ]);
   }
-  
-  builder.setTransactionCurrency(ISO_CURRENCY.IDR)
-  
+
+  builder.setTransactionCurrency(ISO_CURRENCY.IDR);
+
   if (params.amount !== undefined && params.amount > 0) {
-    builder.setTransactionAmount(params.amount)
+    builder.setTransactionAmount(params.amount);
   }
-  
+
   // Fee/Tip indicator
   if (params.feeType === 'FIXED' && params.feeAmount) {
-    builder.setTipIndicator('02', params.feeAmount)
+    builder.setTipIndicator('02', params.feeAmount);
   } else if (params.feeType === 'PERCENT' && params.feeAmount) {
-    builder.setTipIndicator('03', params.feeAmount)
+    builder.setTipIndicator('03', params.feeAmount);
   }
-  
-  builder.setCountryCode('ID')
-  builder.setMerchantName(params.merchantName)
-  builder.setMerchantCity(params.merchantCity)
-  
+
+  builder.setCountryCode('ID');
+  builder.setMerchantName(params.merchantName);
+  builder.setMerchantCity(params.merchantCity);
+
   if (params.postalCode) {
-    builder.setPostalCode(params.postalCode)
+    builder.setPostalCode(params.postalCode);
   }
-  
+
   if (params.terminalLabel) {
-    builder.setAdditionalData({ terminalLabel: params.terminalLabel })
+    builder.setAdditionalData({ terminalLabel: params.terminalLabel });
   }
-  
-  return builder.build()
+
+  return builder.build();
 }
 
 /**
@@ -1579,8 +1614,8 @@ export function generateQRIS(params: QRISParams): string {
 export function generateDuitNow(params: DuitNowParams): string {
   const builder = EMVQRBuilder.create()
     .setPayloadFormatIndicator()
-    .setPointOfInitiation(!params.amount)
-  
+    .setPointOfInitiation(!params.amount);
+
   // Proxy type mapping
   const proxyTypeMap: Record<string, string> = {
     NRIC: '01',
@@ -1588,34 +1623,34 @@ export function generateDuitNow(params: DuitNowParams): string {
     PASSPORT: '03',
     ARMY: '04',
     BUSINESS: '05',
-    OTHERS: '99'
-  }
-  
+    OTHERS: '99',
+  };
+
   const maiData: Array<{ tag: string; value: string }> = [
     { tag: '01', value: proxyTypeMap[params.proxyType] },
-    { tag: '02', value: params.proxyValue }
-  ]
-  
-  builder.addMerchantAccountInfo(26, PAYMENT_SCHEME_GUI.DUITNOW, maiData)
-  
-  builder.setTransactionCurrency(ISO_CURRENCY.MYR)
-  
+    { tag: '02', value: params.proxyValue },
+  ];
+
+  builder.addMerchantAccountInfo(26, PAYMENT_SCHEME_GUI.DUITNOW, maiData);
+
+  builder.setTransactionCurrency(ISO_CURRENCY.MYR);
+
   if (params.amount !== undefined && params.amount > 0) {
-    builder.setTransactionAmount(params.amount)
+    builder.setTransactionAmount(params.amount);
   }
-  
-  builder.setCountryCode('MY')
-  builder.setMerchantName(params.merchantName)
-  
+
+  builder.setCountryCode('MY');
+  builder.setMerchantName(params.merchantName);
+
   if (params.merchantCity) {
-    builder.setMerchantCity(params.merchantCity)
+    builder.setMerchantCity(params.merchantCity);
   }
-  
+
   if (params.reference) {
-    builder.setAdditionalData({ referenceLabel: params.reference })
+    builder.setAdditionalData({ referenceLabel: params.reference });
   }
-  
-  return builder.build()
+
+  return builder.build();
 }
 
 /**
@@ -1625,46 +1660,46 @@ export function generateDuitNow(params: DuitNowParams): string {
 export function generateBharatQR(params: BharatQRParams): string {
   const builder = EMVQRBuilder.create()
     .setPayloadFormatIndicator()
-    .setPointOfInitiation(!params.amount)
-  
+    .setPointOfInitiation(!params.amount);
+
   // BharatQR merchant account (can include both UPI VPA and card PAN)
-  const maiData: Array<{ tag: string; value: string }> = []
-  
+  const maiData: Array<{ tag: string; value: string }> = [];
+
   if (params.merchantVPA) {
-    maiData.push({ tag: '01', value: params.merchantVPA })
+    maiData.push({ tag: '01', value: params.merchantVPA });
   }
   if (params.merchantPAN) {
-    maiData.push({ tag: '02', value: params.merchantPAN })
+    maiData.push({ tag: '02', value: params.merchantPAN });
   }
   if (params.merchantID) {
-    maiData.push({ tag: '03', value: params.merchantID })
+    maiData.push({ tag: '03', value: params.merchantID });
   }
-  
-  builder.addMerchantAccountInfo(26, PAYMENT_SCHEME_GUI.BHARATQR, maiData)
-  
+
+  builder.addMerchantAccountInfo(26, PAYMENT_SCHEME_GUI.BHARATQR, maiData);
+
   if (params.mcc) {
-    builder.setMCC(params.mcc)
+    builder.setMCC(params.mcc);
   }
-  
-  builder.setTransactionCurrency(ISO_CURRENCY.INR)
-  
+
+  builder.setTransactionCurrency(ISO_CURRENCY.INR);
+
   if (params.amount !== undefined && params.amount > 0) {
-    builder.setTransactionAmount(params.amount)
+    builder.setTransactionAmount(params.amount);
   }
-  
-  builder.setCountryCode('IN')
-  builder.setMerchantName(params.merchantName)
-  builder.setMerchantCity(params.merchantCity)
-  
+
+  builder.setCountryCode('IN');
+  builder.setMerchantName(params.merchantName);
+  builder.setMerchantCity(params.merchantCity);
+
   // Additional data for BharatQR
-  const additionalData: Record<string, string> = {}
-  if (params.referenceNumber) additionalData.referenceLabel = params.referenceNumber
-  if (params.terminalId) additionalData.terminalLabel = params.terminalId
+  const additionalData: Record<string, string> = {};
+  if (params.referenceNumber) additionalData.referenceLabel = params.referenceNumber;
+  if (params.terminalId) additionalData.terminalLabel = params.terminalId;
   if (Object.keys(additionalData).length > 0) {
-    builder.setAdditionalData(additionalData)
+    builder.setAdditionalData(additionalData);
   }
-  
-  return builder.build()
+
+  return builder.build();
 }
 
 /**
@@ -1673,36 +1708,36 @@ export function generateBharatQR(params: BharatQRParams): string {
 export function generateVietQR(params: VietQRParams): string {
   const builder = EMVQRBuilder.create()
     .setPayloadFormatIndicator()
-    .setPointOfInitiation(!params.amount)
-  
+    .setPointOfInitiation(!params.amount);
+
   // VietQR uses bank BIN + account structure
   const maiData: Array<{ tag: string; value: string }> = [
     { tag: '01', value: params.bankBin },
-    { tag: '02', value: params.accountNumber }
-  ]
+    { tag: '02', value: params.accountNumber },
+  ];
   if (params.serviceCode) {
-    maiData.push({ tag: '03', value: params.serviceCode })
+    maiData.push({ tag: '03', value: params.serviceCode });
   }
-  
-  builder.addMerchantAccountInfo(38, PAYMENT_SCHEME_GUI.VIETQR, maiData)
-  
-  builder.setTransactionCurrency(ISO_CURRENCY.VND)
-  
+
+  builder.addMerchantAccountInfo(38, PAYMENT_SCHEME_GUI.VIETQR, maiData);
+
+  builder.setTransactionCurrency(ISO_CURRENCY.VND);
+
   if (params.amount !== undefined && params.amount > 0) {
-    builder.setTransactionAmount(params.amount)
+    builder.setTransactionAmount(params.amount);
   }
-  
-  builder.setCountryCode('VN')
-  
+
+  builder.setCountryCode('VN');
+
   if (params.accountName) {
-    builder.setMerchantName(params.accountName)
+    builder.setMerchantName(params.accountName);
   }
-  
+
   if (params.description) {
-    builder.setAdditionalData({ purposeOfTransaction: params.description })
+    builder.setAdditionalData({ purposeOfTransaction: params.description });
   }
-  
-  return builder.build()
+
+  return builder.build();
 }
 
 /**
@@ -1711,27 +1746,27 @@ export function generateVietQR(params: VietQRParams): string {
 export function generateQRPh(params: QRPhParams): string {
   const builder = EMVQRBuilder.create()
     .setPayloadFormatIndicator()
-    .setPointOfInitiation(!params.amount)
-  
+    .setPointOfInitiation(!params.amount);
+
   builder.addMerchantAccountInfo(26, PAYMENT_SCHEME_GUI.QRPH, [
-    { tag: '01', value: params.accountNumber }
-  ])
-  
-  builder.setTransactionCurrency(ISO_CURRENCY.PHP)
-  
+    { tag: '01', value: params.accountNumber },
+  ]);
+
+  builder.setTransactionCurrency(ISO_CURRENCY.PHP);
+
   if (params.amount !== undefined && params.amount > 0) {
-    builder.setTransactionAmount(params.amount)
+    builder.setTransactionAmount(params.amount);
   }
-  
-  builder.setCountryCode('PH')
-  builder.setMerchantName(params.merchantName)
-  builder.setMerchantCity(params.merchantCity)
-  
+
+  builder.setCountryCode('PH');
+  builder.setMerchantName(params.merchantName);
+  builder.setMerchantCity(params.merchantCity);
+
   if (params.reference) {
-    builder.setAdditionalData({ referenceLabel: params.reference })
+    builder.setAdditionalData({ referenceLabel: params.reference });
   }
-  
-  return builder.build()
+
+  return builder.build();
 }
 
 /**
@@ -1740,31 +1775,29 @@ export function generateQRPh(params: QRPhParams): string {
 export function generateTWQR(params: TWQRParams): string {
   const builder = EMVQRBuilder.create()
     .setPayloadFormatIndicator()
-    .setPointOfInitiation(!params.amount)
-  
-  const maiData: Array<{ tag: string; value: string }> = [
-    { tag: '01', value: params.merchantId }
-  ]
+    .setPointOfInitiation(!params.amount);
+
+  const maiData: Array<{ tag: string; value: string }> = [{ tag: '01', value: params.merchantId }];
   if (params.taxId) {
-    maiData.push({ tag: '02', value: params.taxId })
+    maiData.push({ tag: '02', value: params.taxId });
   }
-  
-  builder.addMerchantAccountInfo(26, PAYMENT_SCHEME_GUI.TWQR, maiData)
-  
-  builder.setTransactionCurrency(ISO_CURRENCY.TWD)
-  
+
+  builder.addMerchantAccountInfo(26, PAYMENT_SCHEME_GUI.TWQR, maiData);
+
+  builder.setTransactionCurrency(ISO_CURRENCY.TWD);
+
   if (params.amount !== undefined && params.amount > 0) {
-    builder.setTransactionAmount(params.amount)
+    builder.setTransactionAmount(params.amount);
   }
-  
-  builder.setCountryCode('TW')
-  builder.setMerchantName(params.merchantName)
-  
+
+  builder.setCountryCode('TW');
+  builder.setMerchantName(params.merchantName);
+
   if (params.merchantCity) {
-    builder.setMerchantCity(params.merchantCity)
+    builder.setMerchantCity(params.merchantCity);
   }
-  
-  return builder.build()
+
+  return builder.build();
 }
 
 /**
@@ -1773,40 +1806,40 @@ export function generateTWQR(params: TWQRParams): string {
 export function generateHKQR(params: HKQRParams): string {
   const builder = EMVQRBuilder.create()
     .setPayloadFormatIndicator()
-    .setPointOfInitiation(!params.amount)
-  
+    .setPointOfInitiation(!params.amount);
+
   // FPS supports multiple proxy types
-  const maiData: Array<{ tag: string; value: string }> = []
+  const maiData: Array<{ tag: string; value: string }> = [];
   if (params.fpsId) {
-    maiData.push({ tag: '01', value: params.fpsId })
+    maiData.push({ tag: '01', value: params.fpsId });
   }
   if (params.mobileNumber) {
-    maiData.push({ tag: '02', value: params.mobileNumber })
+    maiData.push({ tag: '02', value: params.mobileNumber });
   }
   if (params.email) {
-    maiData.push({ tag: '03', value: params.email })
+    maiData.push({ tag: '03', value: params.email });
   }
-  
-  builder.addMerchantAccountInfo(26, PAYMENT_SCHEME_GUI.HKFPS, maiData)
-  
-  builder.setTransactionCurrency(ISO_CURRENCY.HKD)
-  
+
+  builder.addMerchantAccountInfo(26, PAYMENT_SCHEME_GUI.HKFPS, maiData);
+
+  builder.setTransactionCurrency(ISO_CURRENCY.HKD);
+
   if (params.amount !== undefined && params.amount > 0) {
-    builder.setTransactionAmount(params.amount)
+    builder.setTransactionAmount(params.amount);
   }
-  
-  builder.setCountryCode('HK')
-  builder.setMerchantName(params.merchantName)
-  
+
+  builder.setCountryCode('HK');
+  builder.setMerchantName(params.merchantName);
+
   if (params.merchantCity) {
-    builder.setMerchantCity(params.merchantCity)
+    builder.setMerchantCity(params.merchantCity);
   }
-  
+
   if (params.reference) {
-    builder.setAdditionalData({ referenceLabel: params.reference })
+    builder.setAdditionalData({ referenceLabel: params.reference });
   }
-  
-  return builder.build()
+
+  return builder.build();
 }
 
 /**
@@ -1815,26 +1848,26 @@ export function generateHKQR(params: HKQRParams): string {
 export function generateJPQR(params: JPQRParams): string {
   const builder = EMVQRBuilder.create()
     .setPayloadFormatIndicator()
-    .setPointOfInitiation(!params.amount)
-  
+    .setPointOfInitiation(!params.amount);
+
   builder.addMerchantAccountInfo(26, PAYMENT_SCHEME_GUI.JPQR, [
-    { tag: '01', value: params.storeId }
-  ])
-  
-  builder.setTransactionCurrency(ISO_CURRENCY.JPY)
-  
+    { tag: '01', value: params.storeId },
+  ]);
+
+  builder.setTransactionCurrency(ISO_CURRENCY.JPY);
+
   if (params.amount !== undefined && params.amount > 0) {
-    builder.setTransactionAmount(params.amount)
+    builder.setTransactionAmount(params.amount);
   }
-  
-  builder.setCountryCode('JP')
-  builder.setMerchantName(params.merchantName)
-  
+
+  builder.setCountryCode('JP');
+  builder.setMerchantName(params.merchantName);
+
   if (params.merchantCity) {
-    builder.setMerchantCity(params.merchantCity)
+    builder.setMerchantCity(params.merchantCity);
   }
-  
-  return builder.build()
+
+  return builder.build();
 }
 
 /**
@@ -1845,46 +1878,46 @@ export function generateJPQR(params: JPQRParams): string {
 export function generateAusPayNet(params: AusPayNetParams): string {
   const builder = EMVQRBuilder.create()
     .setPayloadFormatIndicator()
-    .setPointOfInitiation(!params.amount)
-  
-  const maiData: Array<{ tag: string; value: string }> = []
-  
+    .setPointOfInitiation(!params.amount);
+
+  const maiData: Array<{ tag: string; value: string }> = [];
+
   // PayID with type
   if (params.payId && params.payIdType) {
-    maiData.push({ tag: '01', value: params.payIdType })
-    maiData.push({ tag: '02', value: params.payId })
+    maiData.push({ tag: '01', value: params.payIdType });
+    maiData.push({ tag: '02', value: params.payId });
   }
-  
+
   // Traditional BSB + Account
   if (params.bsb && params.accountNumber) {
-    maiData.push({ tag: '03', value: params.bsb })
-    maiData.push({ tag: '04', value: params.accountNumber })
+    maiData.push({ tag: '03', value: params.bsb });
+    maiData.push({ tag: '04', value: params.accountNumber });
   }
-  
-  builder.addMerchantAccountInfo(26, PAYMENT_SCHEME_GUI.AUSPAYNET, maiData)
-  
-  builder.setTransactionCurrency(ISO_CURRENCY.AUD)
-  
+
+  builder.addMerchantAccountInfo(26, PAYMENT_SCHEME_GUI.AUSPAYNET, maiData);
+
+  builder.setTransactionCurrency(ISO_CURRENCY.AUD);
+
   if (params.amount !== undefined && params.amount > 0) {
-    builder.setTransactionAmount(params.amount)
+    builder.setTransactionAmount(params.amount);
   }
-  
-  builder.setCountryCode('AU')
-  
+
+  builder.setCountryCode('AU');
+
   // MerchantName is optional - if provided, include it; otherwise NPP lookup shows registered name
   if (params.merchantName) {
-    builder.setMerchantName(params.merchantName)
+    builder.setMerchantName(params.merchantName);
   }
-  
+
   if (params.merchantCity) {
-    builder.setMerchantCity(params.merchantCity)
+    builder.setMerchantCity(params.merchantCity);
   }
-  
+
   if (params.reference) {
-    builder.setAdditionalData({ referenceLabel: params.reference })
+    builder.setAdditionalData({ referenceLabel: params.reference });
   }
-  
-  return builder.build()
+
+  return builder.build();
 }
 
 /**
@@ -1894,55 +1927,60 @@ export function generateAusPayNet(params: AusPayNetParams): string {
 export function generateEMVMPM(params: EMVMPMParams): string {
   const builder = EMVQRBuilder.create()
     .setPayloadFormatIndicator()
-    .setPointOfInitiation(params.isStatic ?? true)
-  
+    .setPointOfInitiation(params.isStatic ?? true);
+
   // Add merchant accounts
   if (params.merchantAccounts) {
     for (const account of params.merchantAccounts) {
-      builder.addMerchantAccountInfo(account.tag, account.gui, account.data)
+      builder.addMerchantAccountInfo(account.tag, account.gui, account.data);
     }
   }
-  
+
   if (params.mcc) {
-    builder.setMCC(params.mcc)
+    builder.setMCC(params.mcc);
   }
-  
-  builder.setTransactionCurrency(params.currencyCode)
-  
+
+  builder.setTransactionCurrency(params.currencyCode);
+
   if (params.amount !== undefined && params.amount > 0) {
-    builder.setTransactionAmount(params.amount)
+    builder.setTransactionAmount(params.amount);
   }
-  
+
   if (params.tipIndicator) {
-    const tipValue = params.tipIndicator === '02' ? params.tipFixed : 
-                     params.tipIndicator === '03' ? params.tipPercentage : undefined
-    builder.setTipIndicator(params.tipIndicator, tipValue)
+    const tipValue =
+      params.tipIndicator === '02'
+        ? params.tipFixed
+        : params.tipIndicator === '03'
+          ? params.tipPercentage
+          : undefined;
+    builder.setTipIndicator(params.tipIndicator, tipValue);
   }
-  
-  builder.setCountryCode(params.countryCode)
-  builder.setMerchantName(params.merchantName)
-  builder.setMerchantCity(params.merchantCity)
-  
+
+  builder.setCountryCode(params.countryCode);
+  builder.setMerchantName(params.merchantName);
+  builder.setMerchantCity(params.merchantCity);
+
   if (params.postalCode) {
-    builder.setPostalCode(params.postalCode)
+    builder.setPostalCode(params.postalCode);
   }
-  
+
   // Additional data
-  const additionalData: Record<string, string> = {}
-  if (params.billNumber) additionalData.billNumber = params.billNumber
-  if (params.mobileNumber) additionalData.mobileNumber = params.mobileNumber
-  if (params.storeLabel) additionalData.storeLabel = params.storeLabel
-  if (params.loyaltyNumber) additionalData.loyaltyNumber = params.loyaltyNumber
-  if (params.referenceLabel) additionalData.referenceLabel = params.referenceLabel
-  if (params.customerLabel) additionalData.customerLabel = params.customerLabel
-  if (params.terminalLabel) additionalData.terminalLabel = params.terminalLabel
-  if (params.purposeOfTransaction) additionalData.purposeOfTransaction = params.purposeOfTransaction
-  
+  const additionalData: Record<string, string> = {};
+  if (params.billNumber) additionalData.billNumber = params.billNumber;
+  if (params.mobileNumber) additionalData.mobileNumber = params.mobileNumber;
+  if (params.storeLabel) additionalData.storeLabel = params.storeLabel;
+  if (params.loyaltyNumber) additionalData.loyaltyNumber = params.loyaltyNumber;
+  if (params.referenceLabel) additionalData.referenceLabel = params.referenceLabel;
+  if (params.customerLabel) additionalData.customerLabel = params.customerLabel;
+  if (params.terminalLabel) additionalData.terminalLabel = params.terminalLabel;
+  if (params.purposeOfTransaction)
+    additionalData.purposeOfTransaction = params.purposeOfTransaction;
+
   if (Object.keys(additionalData).length > 0) {
-    builder.setAdditionalData(additionalData)
+    builder.setAdditionalData(additionalData);
   }
-  
-  return builder.build()
+
+  return builder.build();
 }
 
 // ============================================
@@ -1951,48 +1989,49 @@ export function generateEMVMPM(params: EMVMPMParams): string {
 
 /** Generate GS1 Digital Link URI */
 export function generateGS1DigitalLink(params: GS1DigitalLinkParams): string {
-  const baseUrl = params.baseUrl || 'https://id.gs1.org'
-  let uri = `${baseUrl}/01/${params.gtin}`
-  
-  const pathSegments: string[] = []
-  if (params.lot) pathSegments.push(`10/${params.lot}`)
-  if (params.ser) pathSegments.push(`21/${params.ser}`)
-  if (params.expiry) pathSegments.push(`17/${params.expiry}`)
-  
+  const baseUrl = params.baseUrl || 'https://id.gs1.org';
+  let uri = `${baseUrl}/01/${params.gtin}`;
+
+  const pathSegments: string[] = [];
+  if (params.lot) pathSegments.push(`10/${params.lot}`);
+  if (params.ser) pathSegments.push(`21/${params.ser}`);
+  if (params.expiry) pathSegments.push(`17/${params.expiry}`);
+
   if (pathSegments.length > 0) {
-    uri += '/' + pathSegments.join('/')
+    uri += `/${pathSegments.join('/')}`;
   }
-  
-  return uri
+
+  return uri;
 }
 
 /** Generate OTPAuth URI (TOTP/HOTP) */
 export function generateOTPAuth(params: OTPAuthParams): string {
-  const type = params.type || 'totp'
-  const label = params.issuer && params.account 
-    ? `${encodeURIComponent(params.issuer)}:${encodeURIComponent(params.account)}`
-    : encodeURIComponent(params.account || 'user')
-  
-  let uri = `otpauth://${type}/${label}`
-  
-  const queryParams = new URLSearchParams()
-  queryParams.set('secret', params.secret)
-  
-  if (params.issuer) queryParams.set('issuer', params.issuer)
+  const type = params.type || 'totp';
+  const label =
+    params.issuer && params.account
+      ? `${encodeURIComponent(params.issuer)}:${encodeURIComponent(params.account)}`
+      : encodeURIComponent(params.account || 'user');
+
+  const uri = `otpauth://${type}/${label}`;
+
+  const queryParams = new URLSearchParams();
+  queryParams.set('secret', params.secret);
+
+  if (params.issuer) queryParams.set('issuer', params.issuer);
   if (params.algorithm && params.algorithm !== 'SHA1') {
-    queryParams.set('algorithm', params.algorithm)
+    queryParams.set('algorithm', params.algorithm);
   }
   if (params.digits && params.digits !== 6) {
-    queryParams.set('digits', params.digits.toString())
+    queryParams.set('digits', params.digits.toString());
   }
   if (type === 'totp' && params.period && params.period !== 30) {
-    queryParams.set('period', params.period.toString())
+    queryParams.set('period', params.period.toString());
   }
   if (type === 'hotp' && params.counter !== undefined) {
-    queryParams.set('counter', params.counter.toString())
+    queryParams.set('counter', params.counter.toString());
   }
-  
-  return `${uri}?${queryParams.toString()}`
+
+  return `${uri}?${queryParams.toString()}`;
 }
 
 // ============================================
@@ -2000,10 +2039,7 @@ export function generateOTPAuth(params: OTPAuthParams): string {
 // ============================================
 
 /** Generate social profile deep link */
-export function generateSocialProfile(
-  platform: string,
-  username: string
-): string {
+export function generateSocialProfile(platform: string, username: string): string {
   const platformLinks: Record<string, (u: string) => string> = {
     twitter: (u) => `https://twitter.com/${u}`,
     x: (u) => `https://x.com/${u}`,
@@ -2018,14 +2054,14 @@ export function generateSocialProfile(
     reddit: (u) => `https://reddit.com/u/${u}`,
     discord: (u) => `https://discord.gg/${u}`,
     twitch: (u) => `https://twitch.tv/${u}`,
-  }
-  
-  const generator = platformLinks[platform.toLowerCase()]
+  };
+
+  const generator = platformLinks[platform.toLowerCase()];
   if (generator) {
-    return generator(username)
+    return generator(username);
   }
-  
-  return `https://${platform}.com/${username}`
+
+  return `https://${platform}.com/${username}`;
 }
 
 /** Generate messaging app deep link */
@@ -2036,25 +2072,25 @@ export function generateMessagingLink(
 ): string {
   switch (platform.toLowerCase()) {
     case 'whatsapp': {
-      let url = `https://wa.me/${identifier.replace(/[^0-9]/g, '')}`
-      if (message) url += `?text=${encodeURIComponent(message)}`
-      return url
+      let url = `https://wa.me/${identifier.replace(/[^0-9]/g, '')}`;
+      if (message) url += `?text=${encodeURIComponent(message)}`;
+      return url;
     }
     case 'telegram': {
-      let url = `https://t.me/${identifier}`
-      if (message) url += `?text=${encodeURIComponent(message)}`
-      return url
+      let url = `https://t.me/${identifier}`;
+      if (message) url += `?text=${encodeURIComponent(message)}`;
+      return url;
     }
     case 'signal':
-      return `https://signal.me/#p/${identifier}`
+      return `https://signal.me/#p/${identifier}`;
     case 'viber':
-      return `viber://chat?number=${identifier.replace(/[^0-9]/g, '')}`
+      return `viber://chat?number=${identifier.replace(/[^0-9]/g, '')}`;
     case 'line':
-      return `https://line.me/ti/p/${identifier}`
+      return `https://line.me/ti/p/${identifier}`;
     case 'skype':
-      return `skype:${identifier}?chat`
+      return `skype:${identifier}?chat`;
     default:
-      return identifier
+      return identifier;
   }
 }
 
@@ -2062,31 +2098,31 @@ export function generateMessagingLink(
 export function generateAppDeepLink(
   platform: 'android' | 'ios' | 'universal',
   params: {
-    scheme?: string
-    host?: string
-    path?: string
-    package?: string
-    fallbackUrl?: string
+    scheme?: string;
+    host?: string;
+    path?: string;
+    package?: string;
+    fallbackUrl?: string;
   }
 ): string {
   if (platform === 'android' && params.package) {
     // Android intent URL
-    let intent = `intent://${params.host || ''}${params.path || ''}#Intent;`
-    if (params.scheme) intent += `scheme=${params.scheme};`
-    intent += `package=${params.package};`
+    let intent = `intent://${params.host || ''}${params.path || ''}#Intent;`;
+    if (params.scheme) intent += `scheme=${params.scheme};`;
+    intent += `package=${params.package};`;
     if (params.fallbackUrl) {
-      intent += `S.browser_fallback_url=${encodeURIComponent(params.fallbackUrl)};`
+      intent += `S.browser_fallback_url=${encodeURIComponent(params.fallbackUrl)};`;
     }
-    intent += 'end'
-    return intent
+    intent += 'end';
+    return intent;
   }
-  
+
   // iOS/Universal link
   if (params.scheme) {
-    return `${params.scheme}://${params.host || ''}${params.path || ''}`
+    return `${params.scheme}://${params.host || ''}${params.path || ''}`;
   }
-  
-  return `https://${params.host || ''}${params.path || ''}`
+
+  return `https://${params.host || ''}${params.path || ''}`;
 }
 
 // ============================================
@@ -2101,20 +2137,20 @@ export const PayloadGenerators = {
   sms: generateSms,
   geo: generateGeo,
   wifi: generateWifi,
-  
+
   // Contact
   vcard: generateVCard,
   mecard: generateMeCard,
   bizcard: generateBizCard,
-  
+
   // Calendar
   event: generateEvent,
   calendarSubscription: generateCalendarSubscription,
-  
+
   // Payments - EU/International
   epcSepa: generateEPCSepa,
   swissQRBill: generateSwissQRBill,
-  
+
   // Payments - Asia-Pacific
   upi: generateUPI,
   bharatqr: generateBharatQR,
@@ -2129,27 +2165,27 @@ export const PayloadGenerators = {
   hkqr: generateHKQR,
   jpqr: generateJPQR,
   auspaynet: generateAusPayNet,
-  
+
   // Payments - Crypto
   crypto: generateCrypto,
   lightning: generateLightning,
   ethereumEIP681: generateEthereumEIP681,
-  
+
   // Payments - Links
   paypalme: generatePayPalMe,
   cashapp: generateCashApp,
-  
+
   // Generic EMV
   emvmpm: generateEMVMPM,
-  
+
   // Enterprise
   gs1DigitalLink: generateGS1DigitalLink,
   otpauth: generateOTPAuth,
-  
+
   // Social/Messaging
   socialProfile: generateSocialProfile,
   messagingLink: generateMessagingLink,
   appDeepLink: generateAppDeepLink,
-}
+};
 
-export default PayloadGenerators
+export default PayloadGenerators;

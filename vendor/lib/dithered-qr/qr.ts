@@ -1,15 +1,15 @@
-import encodeQR from "qr";
-import showError from "./errors.ts";
+import encodeQR from 'qr';
+import showError from './errors.ts';
 import {
-  getRotation,
+  getEcc,
+  getInverted,
+  getMask,
   getReflection,
+  getRotation,
   getScale,
   getText,
-  getEcc,
   getVersion,
-  getMask,
-  getInverted,
-} from "./form.ts";
+} from './form.ts';
 
 export default function makeQR() {
   const text = getText();
@@ -24,10 +24,10 @@ export default function makeQR() {
   let qr: boolean[][];
   try {
     try {
-      qr = encodeQR(text, "raw", options);
+      qr = encodeQR(text, 'raw', options);
     } catch (e) {
-      if (e.message == "Capacity overflow" && options.version! < 40)
-        qr = encodeQR(text, "raw", { ...options, version: undefined });
+      if (e.message == 'Capacity overflow' && options.version! < 40)
+        qr = encodeQR(text, 'raw', { ...options, version: undefined });
       else throw e;
     }
   } catch (e) {

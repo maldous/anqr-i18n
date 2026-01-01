@@ -1,5 +1,5 @@
-import isLocked, { isData } from "./locked.ts";
-import { getScale } from "./form.ts";
+import { getScale } from './form.ts';
+import isLocked, { isData } from './locked.ts';
 
 export function diffuseDataPoints(imageData: number[][], qr: boolean[][]) {
   const scale = getScale();
@@ -54,6 +54,6 @@ export function diffuseFreePoints(imageData: number[][]) {
       if (d) imageData[y + 1][x + 1] += error / total;
     }
   function canChange(x: number, y: number) {
-    return !isLocked(imageData.length, x, y) && !isData(x, y);
+    return !(isLocked(imageData.length, x, y) || isData(x, y));
   }
 }

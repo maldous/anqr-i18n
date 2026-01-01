@@ -1,147 +1,89 @@
-import type { PageDefinition } from '../types'
-import { LAST_UPDATED, CONTACT_EMAIL } from '../types'
+import type { PageDefinition } from '../types';
+import { LAST_UPDATED } from '../types';
 
 export const terms: PageDefinition = {
-  title: '"ເງື່ອນໄຂການໃຫ້ບໍລິການ”',
-  description: '"ໂດຍການເຂົ້າເຖິງ ຫຼື ການນຳໃຊ້ເວັບໄຊທ໌ນີ້, ທ່ານຕົກລົງທີ່ຈະຜູກມັດໂດຍເງື່ອນໄຂເຫຼົ່ານີ້.”',
+  title: 'Terms of Service',
+  description: 'By accessing or using the site, you agree to be bound by these terms.',
   lastUpdated: LAST_UPDATED,
   sections: [
     {
-      heading: '"ການຍອມຮັບເງື່ອນໄຂ”',
-      paragraphs: [
-        '"ໂດຍການເຂົ້າເຖິງ ຫຼື ການນຳໃຊ້ ANQR (anqr.link), ທ່ານຕົກລົງທີ່ຈະຜູກມັດໂດຍເງື່ອນໄຂການໃຫ້ບໍລິການເຫຼົ່ານີ້ ແລະ ນະໂຍບາຍຄວາມເປັນສ່ວນຕົວຂອງພວກເຮົາ. ຖ້າທ່ານບໍ່ເຫັນດີກັບເງື່ອນໄຂເຫຼົ່ານີ້, ຢ່າໃຊ້ເວັບໄຊທ໌ນີ້.”',
-        '"ພວກເຮົາອາດຈະອັບເດດເງື່ອນໄຂເຫຼົ່ານີ້ເປັນບາງຄັ້ງຄາວ. ການນຳໃຊ້ເວັບໄຊທ໌ຢ່າງຕໍ່ເນື່ອງຫຼັງຈາກການປ່ຽນແປງຖືວ່າເປັນການຍອມຮັບເງື່ອນໄຂໃໝ່.”',
-      ],
+      heading: 'Acceptance of terms',
+      paragraphs: ['By accessing or using ANQR (anqr.link), you agree to be bound by these Terms of Service and our Privacy Policy. If you do not agree to these terms, do not use the site.', 'We may update these Terms from time to time. Continued use of the site after changes constitutes acceptance of the new terms.'],
     },
     {
-      heading: '"ເງື່ອນໄຂການມີສິດໄດ້ຮັບ”',
-      paragraphs: [
-        '"ທ່ານຕ້ອງມີອາຍຸຢ່າງໜ້ອຍ 13 ປີເພື່ອໃຊ້ ANQR. ໂດຍການນຳໃຊ້ເວັບໄຊທ໌ນີ້, ທ່ານຢືນຢັນວ່າທ່ານຕອບສະໜອງຂໍ້ກຳນົດດ້ານອາຍຸນີ້. ຖ້າທ່ານອາຍຸຕ່ຳກວ່າ 18 ປີ, ທ່ານຢືນຢັນວ່າທ່ານໄດ້ຮັບອະນຸຍາດຈາກພໍ່ແມ່ ຫຼື ຜູ້ປົກຄອງໃຫ້ໃຊ້ເວັບໄຊທ໌ນີ້.”',
-      ],
+      heading: 'Eligibility',
+      paragraphs: ['You must be at least 13 years of age to use ANQR. By using the site, you represent that you meet this age requirement. If you are under 18, you represent that you have your parent or guardian\'s permission to use the site.'],
     },
     {
-      heading: '"ການນຳໃຊ້ທີ່ໄດ້ຮັບອະນຸຍາດ”',
-      paragraphs: [
-        '"ທ່ານອາດຈະໃຊ້ ANQR ສຳລັບຈຸດປະສົງທີ່ຖືກຕ້ອງຕາມກົດໝາຍເທົ່ານັ້ນ. ທ່ານຮັບຜິດຊອບແຕ່ພຽງຜູ້ດຽວຕໍ່ເນື້ອຫາທີ່ທ່ານເຂົ້າລະຫັດເປັນລະຫັດ QR ແລະ ສຳລັບວິທີທີ່ທ່ານໃຊ້ລະຫັດ QR ໃດໆທີ່ທ່ານສ້າງຂຶ້ນ.”',
-      ],
+      heading: 'Permitted use',
+      paragraphs: ['You may use ANQR for lawful purposes only. You are solely responsible for the content you encode into QR codes and for how you use any QR codes you generate.'],
     },
     {
-      heading: '"ການປະພຶດທີ່ຕ້ອງຫ້າມ”',
-      paragraphs: [
-        '"ທ່ານຕົກລົງທີ່ຈະບໍ່:”',
-      ],
-      bullets: [
-        '"ໃຊ້ ANQR ເພື່ອສ້າງລະຫັດ QR ທີ່ອຳນວຍຄວາມສະດວກໃຫ້ແກ່ການຫຼອກລວງທາງອິນເຕີເນັດ, ການແຈກຢາຍມັລແວ, ການສໍ້ໂກງ, ການຫຼອກລວງ, ການລົບກວນ, ການໝິ່ນປະໝາດ, ຫຼື ກິດຈະກຳທີ່ຜິດກົດໝາຍໃດໆ.”',
-        '"ເຂົ້າລະຫັດເນື້ອຫາທີ່ລະເມີດສິດທິຊັບສິນທາງປັນຍາ, ລະເມີດຄວາມເປັນສ່ວນຕົວ, ຫຼື ມີເນື້ອໃນທີ່ຜິດກົດໝາຍ.”',
-        '"ພະຍາຍາມລົບກວນ, ບັນຈຸສິ່ງຂອງເກີນ, ຫຼື ແຊກແຊງການດຳເນີນງານ ຫຼື ຄວາມປອດໄພຂອງສະຖານທີ່.”',
-        '"ວິສະວະກຳຍ້ອນກັບ, ແຍກສ່ວນ, ຫຼື ພະຍາຍາມສະກັດລະຫັດແຫຼ່ງຈາກເວັບໄຊທ໌.”',
-        '"ໃຊ້ເຄື່ອງມືອັດຕະໂນມັດ (ບອທ໌, ເຄື່ອງຂູດ) ເພື່ອເຂົ້າເຖິງເວັບໄຊທ໌ໃນລັກສະນະທີ່ເຮັດໃຫ້ປະສິດທິພາບຂອງຜູ້ໃຊ້ອື່ນໆຫຼຸດລົງ.”',
-        '"ຫຼີກລ່ຽງ ຫຼື ປິດໃຊ້ງານຄຸນສົມບັດຄວາມປອດໄພ ຫຼື ການຄວບຄຸມການເຂົ້າເຖິງໃດໆ.”',
-        '"ປອມຕົວເປັນບຸກຄົນ ຫຼື ໜ່ວຍງານໃດໆ ຫຼື ບິດເບືອນຄວາມສຳພັນຂອງທ່ານ.”',
-      ],
+      heading: 'Prohibited conduct',
+      paragraphs: ['You agree not to:'],
+      bullets: ['Use ANQR to create QR codes that facilitate phishing, malware distribution, fraud, scams, harassment, defamation, or any illegal activity.', 'Encode content that infringes intellectual property rights, violates privacy, or contains illegal material.', 'Attempt to disrupt, overload, or interfere with the operation or security of the site.', 'Reverse engineer, decompile, or attempt to extract source code from the site.', 'Use automated tools (bots, scrapers) to access the site in a manner that degrades performance for other users.', 'Circumvent or disable any security or access control features.', 'Impersonate any person or entity or misrepresent your affiliation.'],
     },
     {
-      heading: '"ຊັບສິນທາງປັນຍາ”',
-      paragraphs: [
-        '"ທ່ານຍັງຄົງເປັນເຈົ້າຂອງເນື້ອຫາທີ່ທ່ານເຂົ້າລະຫັດເປັນລະຫັດ QR. ANQR ບໍ່ໄດ້ອ້າງສິດເປັນເຈົ້າຂອງຂໍ້ມູນຂອງທ່ານ.”',
-        '"ຊື່, ໂລໂກ້, ການອອກແບບອິນເຕີເຟດ ແລະ ລະຫັດພື້ນຖານຂອງ ANQR ແມ່ນໄດ້ຮັບການປົກປ້ອງໂດຍກົດໝາຍລິຂະສິດ, ເຄື່ອງໝາຍການຄ້າ ແລະ ກົດໝາຍຊັບສິນທາງປັນຍາອື່ນໆ. ທ່ານບໍ່ສາມາດຄັດລອກ, ດັດແປງ, ແຈກຢາຍ ຫຼື ສ້າງຜົນງານອະນຸພັນໂດຍບໍ່ໄດ້ຮັບອະນຸຍາດຈາກພວກເຮົາ.”',
-        '"ລະຫັດ QR® ເປັນເຄື່ອງໝາຍການຄ້າທີ່ຈົດທະບຽນຂອງ DENSO WAVE INCORPORATED. ANQR ບໍ່ມີສ່ວນກ່ຽວຂ້ອງກັບ DENSO WAVE.”',
-      ],
+      heading: 'Intellectual property',
+      paragraphs: ['You retain ownership of the content you encode into QR codes. ANQR does not claim ownership of your data.', 'The ANQR name, logo, interface design, and underlying code are protected by copyright, trademark, and other intellectual property laws. You may not copy, modify, distribute, or create derivative works without our permission.', 'QR Code® is a registered trademark of DENSO WAVE INCORPORATED. ANQR is not affiliated with DENSO WAVE.'],
     },
     {
-      heading: '"ໃບອະນຸຍາດເນື້ອຫາຜູ້ໃຊ້”',
-      paragraphs: [
-        '"ໂດຍການນຳໃຊ້ ANQR, ທ່ານບໍ່ໄດ້ໃຫ້ສິດພວກເຮົາໃດໆຕໍ່ເນື້ອຫາຂອງທ່ານ. ເມື່ອໃຊ້ການສ້າງລະຫັດທ້ອງຖິ່ນ (ຄ່າເລີ່ມຕົ້ນ), ການສ້າງລະຫັດ QR ທັງໝົດຈະເກີດຂຶ້ນໃນໂປຣແກຣມທ່ອງເວັບຂອງທ່ານ ແລະ ພວກເຮົາບໍ່ເຂົ້າເຖິງ, ເກັບຮັກສາ ຫຼື ສົ່ງຕໍ່ຂໍ້ມູນທີ່ເຂົ້າລະຫັດຂອງທ່ານ.”',
-        'ເມື່ອໃຊ້ API ຝ່າຍເຊີບເວີ, ເນື້ອຫາຂອງທ່ານຈະຖືກປະມວນຜົນເພື່ອສ້າງຮູບພາບ QR ແຕ່ຈະບໍ່ຖືກເກັບໄວ້, ບັນທຶກ, ຫຼື ນຳໃຊ້ເພື່ອຈຸດປະສົງອື່ນນອກເໜືອຈາກການສະແດງຮູບພາບທີ່ຮ້ອງຂໍ.',
-      ],
+      heading: 'User content license',
+      paragraphs: ['By using ANQR, you grant us no rights to your content. When using local generation (the default), all QR code generation happens in your browser and we do not access, store, or transmit your encoded data.', 'When using the server-side API, your content is processed to generate the QR image but is not stored, logged, or used for any other purpose beyond rendering the requested image.'],
     },
     {
-      heading: '"ການບໍລິການ ແລະ ການໂຄສະນາຂອງພາກສ່ວນທີສາມ”',
-      paragraphs: [
-        '"ເວັບໄຊທ໌ສະແດງໂຄສະນາຜ່ານ Google AdSense ແລະອາດຈະປະກອບມີລິ້ງໄປຫາເວັບໄຊທ໌ພາກສ່ວນທີສາມ. ພວກເຮົາບໍ່ຮັບຜິດຊອບຕໍ່ເນື້ອຫາ, ການບໍລິການ ຫຼື ການປະຕິບັດຄວາມເປັນສ່ວນຕົວຂອງພາກສ່ວນທີສາມ.”',
-        '"ການພົວພັນຂອງທ່ານກັບຜູ້ໂຄສະນາ ແລະ ພາກສ່ວນທີສາມແມ່ນລະຫວ່າງທ່ານ ແລະ ພວກເຂົາເທົ່ານັ້ນ. ເບິ່ງນະໂຍບາຍຄວາມເປັນສ່ວນຕົວຂອງພວກເຮົາສຳລັບຂໍ້ມູນກ່ຽວກັບການປະຕິບັດຂໍ້ມູນການໂຄສະນາ.”',
-      ],
+      heading: 'Third-party services and advertising',
+      paragraphs: ['The site displays advertisements through Google AdSense and may include links to third-party websites. We are not responsible for third-party content, services, or privacy practices.', 'Your interactions with advertisers and third parties are solely between you and them. See our Privacy Policy for information about advertising data practices.'],
     },
     {
-      heading: '"ຂໍ້ປະຕິເສດຄວາມຮັບຜິດຊອບ”',
-      paragraphs: [
-        '"ANQR ແມ່ນສະໜອງໃຫ້ຕາມພື້ນຖານ "ຕາມສະພາບທີ່ເປັນ” ແລະ "ຕາມທີ່ມີຢູ່” ໂດຍບໍ່ມີການຮັບປະກັນໃດໆ, ທັງໂດຍກົງ ຫຼື ໂດຍທາງອ້ອມ, ລວມທັງແຕ່ບໍ່ຈຳກັດພຽງແຕ່ການຮັບປະກັນໂດຍທາງອ້ອມກ່ຽວກັບຄວາມສາມາດໃນການຄ້າຂາຍ, ຄວາມເໝາະສົມສຳລັບຈຸດປະສົງສະເພາະ, ແລະ ການບໍ່ລະເມີດ.”',
-        '"ພວກເຮົາບໍ່ຮັບປະກັນວ່າ: (ກ) ເວັບໄຊທ໌ຈະບໍ່ມີການລົບກວນ, ປອດໄພ, ຫຼື ບໍ່ມີຂໍ້ຜິດພາດ; (ຂ) ລະຫັດ QR ຈະສະແກນໃນທຸກສະພາບແວດລ້ອມ, ໃນທຸກອຸປະກອນ, ຫຼື ດ້ວຍແອັບພລິເຄຊັນສະແກນທັງໝົດ; (ຄ) ເວັບໄຊທ໌ຈະຕອບສະໜອງຄວາມຕ້ອງການຂອງທ່ານ.”',
-        '"ທ່ານຄວນທົດສອບລະຫັດ QR ສະເໝີໃນສະພາບການທີ່ຈະນຳໃຊ້ (ຂະໜາດການພິມ, ແສງ, ປະເພດໜ້າຈໍ, ໄລຍະຫ່າງ, ຄຸນນະພາບກ້ອງຖ່າຍຮູບ).”',
-      ],
+      heading: 'Disclaimer of warranties',
+      paragraphs: ['ANQR IS PROVIDED ON AN "AS IS" AND "AS AVAILABLE" BASIS WITHOUT WARRANTIES OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, AND NON-INFRINGEMENT.', 'We do not warrant that: (a) the site will be uninterrupted, secure, or error-free; (b) QR codes will scan in all environments, on all devices, or with all scanner applications; (c) the site will meet your requirements.', 'You should always test QR codes in the conditions where they will be used (print size, lighting, screen type, distance, camera quality).'],
     },
     {
-      heading: '"ຂໍ້ຈຳກັດຄວາມຮັບຜິດຊອບ”',
-      paragraphs: [
-        '"ຕາມຂອບເຂດສູງສຸດທີ່ກົດໝາຍອະນຸຍາດ, ANQR ແລະ ຜູ້ປະກອບການ, ບໍລິສັດໃນເຄືອ, ແລະ ຜູ້ອະນຸຍາດຂອງມັນຈະບໍ່ຮັບຜິດຊອບຕໍ່ຄວາມເສຍຫາຍໂດຍກົງ, ໂດຍທາງອ້ອມ, ໂດຍບັງເອີນ, ພິເສດ, ຜົນສະທ້ອນ, ການລົງໂທດ, ຫຼື ຕົວຢ່າງ, ລວມທັງແຕ່ບໍ່ຈຳກັດພຽງແຕ່ຄວາມເສຍຫາຍສຳລັບການສູນເສຍກຳໄລ, ລາຍຮັບ, ຂໍ້ມູນ, ຄວາມປາຖະໜາດີ, ການນຳໃຊ້, ຫຼື ການສູນເສຍທີ່ບໍ່ມີຕົວຕົນອື່ນໆ, ທີ່ເກີດຂຶ້ນຈາກ ຫຼື ກ່ຽວຂ້ອງກັບການເຂົ້າເຖິງ ຫຼື ການນຳໃຊ້ (ຫຼື ການບໍ່ສາມາດເຂົ້າເຖິງ ຫຼື ນຳໃຊ້) ການບໍລິການຂອງທ່ານ.”',
-        '"ທ່ານເຂົ້າໃຈ ແລະ ຕົກລົງເຫັນດີຢ່າງຈະແຈ້ງວ່າການໃຊ້ບໍລິການຂອງທ່ານແມ່ນຄວາມສ່ຽງຂອງທ່ານແຕ່ພຽງຜູ້ດຽວ. ການບໍລິການດັ່ງກ່າວແມ່ນໃຫ້ບໍລິການໂດຍບໍ່ເສຍຄ່າ, ແລະ ດັ່ງນັ້ນ, ທ່ານຕົກລົງເຫັນດີວ່າ ANQR ແລະ ຜູ້ປະກອບການຂອງມັນຈະບໍ່ຮັບຜິດຊອບຕໍ່ທ່ານໃດໆຕໍ່ຄວາມເສຍຫາຍ ຫຼື ການສູນເສຍໃດໆ. ບໍ່ວ່າກໍລະນີໃດກໍຕາມ, ຄວາມຮັບຜິດຊອບລວມທັງໝົດຂອງພວກເຮົາຈະບໍ່ເກີນສູນໂດລາ ($0 AUD).”',
-        '"ທ່ານຕົກລົງທີ່ຈະປ່ອຍ, ຍົກເວັ້ນ, ແລະ ຍົກເລີກການຮຽກຮ້ອງ, ຄວາມຕ້ອງການ, ແລະ ສາເຫດຂອງການກະທຳໃດໆ ແລະ ທັງໝົດຕໍ່ ANQR ແລະ ຜູ້ປະກອບການຂອງມັນ ທີ່ເກີດຂຶ້ນຈາກການນຳໃຊ້ການບໍລິການຂອງທ່ານ.”',
-        '"ບາງເຂດອຳນາດບໍ່ອະນຸຍາດໃຫ້ມີການຍົກເວັ້ນການຮັບປະກັນ ຫຼື ຂໍ້ຈຳກັດຄວາມຮັບຜິດຊອບບາງຢ່າງ. ໃນເຂດອຳນາດດັ່ງກ່າວ, ຄວາມຮັບຜິດຊອບຂອງພວກເຮົາຈະຖືກຈຳກັດໃນຂອບເຂດສູງສຸດທີ່ກົດໝາຍທີ່ກ່ຽວຂ້ອງອະນຸຍາດ.”',
-      ],
+      heading: 'Limitation of liability',
+      paragraphs: ['TO THE MAXIMUM EXTENT PERMITTED BY LAW, ANQR AND ITS OPERATORS, AFFILIATES, AND LICENSORS SHALL NOT BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, CONSEQUENTIAL, PUNITIVE, OR EXEMPLARY DAMAGES, INCLUDING BUT NOT LIMITED TO DAMAGES FOR LOSS OF PROFITS, REVENUE, DATA, GOODWILL, USE, OR OTHER INTANGIBLE LOSSES, ARISING FROM OR RELATED TO YOUR ACCESS TO OR USE OF (OR INABILITY TO ACCESS OR USE) THE SERVICE.', 'YOU EXPRESSLY UNDERSTAND AND AGREE THAT YOUR USE OF THE SERVICE IS AT YOUR SOLE RISK. THE SERVICE IS PROVIDED FREE OF CHARGE, AND ACCORDINGLY, YOU AGREE THAT ANQR AND ITS OPERATORS SHALL HAVE NO LIABILITY TO YOU WHATSOEVER FOR ANY DAMAGES OR LOSSES. IN NO EVENT SHALL OUR TOTAL AGGREGATE LIABILITY EXCEED ZERO DOLLARS ($0 AUD).', 'YOU AGREE TO RELEASE, WAIVE, AND DISCHARGE ANY AND ALL CLAIMS, DEMANDS, AND CAUSES OF ACTION AGAINST ANQR AND ITS OPERATORS ARISING FROM YOUR USE OF THE SERVICE.', 'SOME JURISDICTIONS DO NOT ALLOW THE EXCLUSION OF CERTAIN WARRANTIES OR LIMITATIONS OF LIABILITY. IN SUCH JURISDICTIONS, OUR LIABILITY SHALL BE LIMITED TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW.'],
     },
     {
-      heading: '"ການຊົດເຊີຍ”',
-      paragraphs: [
-        '"ທ່ານຕົກລົງທີ່ຈະຊົດເຊີຍ, ປົກປ້ອງ, ແລະ ບໍ່ເຮັດໃຫ້ ANQR, ຜູ້ປະກອບການ, ບໍລິສັດໃນເຄືອ, ແລະ ເຈົ້າໜ້າທີ່, ຜູ້ອຳນວຍການ, ພະນັກງານ ແລະ ຕົວແທນຂອງເຂົາເຈົ້າເສຍຫາຍຈາກການຮຽກຮ້ອງ, ຄວາມເສຍຫາຍ, ການສູນເສຍ, ໜີ້ສິນ, ຄ່າໃຊ້ຈ່າຍ ແລະ ຄ່າໃຊ້ຈ່າຍຕ່າງໆ (ລວມທັງຄ່າທຳນຽມທາງກົດໝາຍ) ທີ່ເກີດຂຶ້ນຈາກ: (ກ) ການນຳໃຊ້ເວັບໄຊທ໌ຂອງທ່ານ; (ຂ) ການລະເມີດເງື່ອນໄຂເຫຼົ່ານີ້ຂອງທ່ານ; (ຄ) ການລະເມີດສິດທິຂອງພາກສ່ວນທີສາມໃດໆຂອງທ່ານ; (ງ) ເນື້ອຫາໃດໆທີ່ທ່ານເຂົ້າລະຫັດເປັນລະຫັດ QR.”',
-      ],
+      heading: 'Indemnification',
+      paragraphs: ['You agree to indemnify, defend, and hold harmless ANQR, its operators, affiliates, and their respective officers, directors, employees, and agents from any claims, damages, losses, liabilities, costs, and expenses (including legal fees) arising from: (a) your use of the site; (b) your violation of these Terms; (c) your violation of any third-party rights; (d) any content you encode into QR codes.'],
     },
     {
-      heading: '"ການແກ້ໄຂຂໍ້ຂັດແຍ່ງ”',
-      paragraphs: [
-        '"ຂໍ້ຂັດແຍ່ງໃດໆທີ່ເກີດຂຶ້ນຈາກເງື່ອນໄຂເຫຼົ່ານີ້ ຫຼື ການນຳໃຊ້ ANQR ຂອງທ່ານ ຈະຕ້ອງພະຍາຍາມແກ້ໄຂຜ່ານການເຈລະຈາຢ່າງບໍ່ເປັນທາງການກ່ອນ ໂດຍການຕິດຕໍ່ ${CONTACT_EMAIL}.”',
-        '"ຖ້າການແກ້ໄຂຢ່າງບໍ່ເປັນທາງການລົ້ມເຫຼວ, ຂໍ້ຂັດແຍ່ງຈະຖືກແກ້ໄຂຜ່ານການຕັດສິນຊີ້ຂາດທີ່ມີຜົນບັງຄັບໃຊ້ໃນລັດວິກຕໍເຣຍ, ປະເທດອົດສະຕາລີ, ຍົກເວັ້ນແຕ່ວ່າຝ່າຍໃດຝ່າຍໜຶ່ງອາດຈະຊອກຫາການບັນເທົາທຸກໂດຍຄຳສັ່ງຫ້າມໃນສານສຳລັບການລະເມີດຊັບສິນທາງປັນຍາ.”',
-      ],
+      heading: 'Dispute resolution',
+      paragraphs: ['Any dispute arising from these Terms or your use of ANQR shall first be attempted to be resolved through informal negotiation by contacting ${CONTACT_EMAIL}.', 'If informal resolution fails, disputes shall be resolved through binding arbitration in Victoria, Australia, except that either party may seek injunctive relief in court for intellectual property violations.'],
     },
     {
-      heading: '"ການຍົກເວັ້ນການດຳເນີນຄະດີແບບລວມໝູ່”',
-      paragraphs: [
-        '"ຕາມຂອບເຂດທີ່ກົດໝາຍອະນຸຍາດ, ທ່ານຕົກລົງເຫັນດີວ່າການດຳເນີນຄະດີແກ້ໄຂຂໍ້ຂັດແຍ່ງໃດໆຈະຖືກດຳເນີນເປັນສ່ວນບຸກຄົນເທົ່ານັ້ນ ແລະ ບໍ່ແມ່ນການດຳເນີນຄະດີແບບກຸ່ມ, ແບບລວມໝູ່, ຫຼື ແບບເປັນຕົວແທນ.”',
-      ],
+      heading: 'Class action waiver',
+      paragraphs: ['TO THE EXTENT PERMITTED BY LAW, YOU AGREE THAT ANY DISPUTE RESOLUTION PROCEEDINGS WILL BE CONDUCTED ONLY ON AN INDIVIDUAL BASIS AND NOT IN A CLASS, CONSOLIDATED, OR REPRESENTATIVE ACTION.'],
     },
     {
-      heading: '"ກົດໝາຍທີ່ໃຊ້ບັງຄັບ”',
-      paragraphs: [
-        '"ເງື່ອນໄຂເຫຼົ່ານີ້ແມ່ນຢູ່ພາຍໃຕ້ກົດໝາຍຂອງລັດ Victoria, ປະເທດອົດສະຕາລີ, ໂດຍບໍ່ຄຳນຶງເຖິງຫຼັກການຂັດແຍ້ງກັນຂອງກົດໝາຍ. ທ່ານຍິນຍອມຕໍ່ອຳນາດຕັດສິນສະເພາະຂອງສານທີ່ຕັ້ງຢູ່ໃນລັດ Victoria, ປະເທດອົດສະຕາລີ.”',
-      ],
+      heading: 'Governing law',
+      paragraphs: ['These Terms are governed by the laws of Victoria, Australia, without regard to conflict of laws principles. You consent to the exclusive jurisdiction of the courts located in Victoria, Australia.'],
     },
     {
-      heading: '"ການປ່ຽນແປງ ແລະ ຄວາມພ້ອມ”',
-      paragraphs: [
-        '"ພວກເຮົາອາດຈະດັດແປງ, ໂຈະ ຫຼື ຢຸດຕິການໃຊ້ງານເວັບໄຊທ໌ (ຫຼື ສ່ວນໃດສ່ວນໜຶ່ງຂອງມັນ) ໄດ້ທຸກເວລາໂດຍບໍ່ຕ້ອງແຈ້ງໃຫ້ຊາບ ຫຼື ຮັບຜິດຊອບ.”',
-        '"ພວກເຮົາອາດຈະອັບເດດເງື່ອນໄຂເຫຼົ່ານີ້ໄດ້ທຸກເວລາ. ວັນທີ "ອັບເດດຫຼ້າສຸດ" ຊີ້ບອກເຖິງເວລາທີ່ພວກມັນໄດ້ຖືກປັບປຸງໃໝ່ລ່າສຸດ. ການນຳໃຊ້ຢ່າງຕໍ່ເນື່ອງຫຼັງຈາກການປ່ຽນແປງຖືວ່າເປັນການຍອມຮັບ.”',
-      ],
+      heading: 'Changes and availability',
+      paragraphs: ['We may modify, suspend, or discontinue the site (or any part of it) at any time without notice or liability.', 'We may update these Terms at any time. The "Last updated" date indicates when they were most recently revised. Continued use after changes constitutes acceptance.'],
     },
     {
-      heading: '"ຄວາມສາມາດໃນການແຍກອອກໄດ້”',
-      paragraphs: [
-        '"ຖ້າຂໍ້ກຳນົດໃດໆຂອງຂໍ້ກຳນົດເຫຼົ່ານີ້ຖືກຖືວ່າບໍ່ຖືກຕ້ອງ ຫຼື ບໍ່ສາມາດບັງຄັບໃຊ້ໄດ້, ຂໍ້ກຳນົດດັ່ງກ່າວຈະຖືກບັງຄັບໃຊ້ໃນຂອບເຂດສູງສຸດທີ່ອະນຸຍາດ, ແລະ ຂໍ້ກຳນົດທີ່ເຫຼືອຈະຍັງຄົງມີຜົນບັງຄັບໃຊ້ຢ່າງເຕັມທີ່.”',
-      ],
+      heading: 'Severability',
+      paragraphs: ['If any provision of these Terms is held invalid or unenforceable, that provision will be enforced to the maximum extent permissible, and the remaining provisions will remain in full force and effect.'],
     },
     {
-      heading: '"ການຍົກເວັ້ນ”',
-      paragraphs: [
-        '"ຄວາມລົ້ມເຫຼວຂອງພວກເຮົາໃນການບັງຄັບໃຊ້ສິດ ຫຼື ຂໍ້ກຳນົດໃດໆຂອງເງື່ອນໄຂເຫຼົ່ານີ້ຈະບໍ່ຖືກຖືວ່າເປັນການສະລະສິດ ຫຼື ຂໍ້ກຳນົດດັ່ງກ່າວ.”',
-      ],
+      heading: 'Waiver',
+      paragraphs: ['Our failure to enforce any right or provision of these Terms shall not be deemed a waiver of such right or provision.'],
     },
     {
-      heading: '"ສັນຍາທັງໝົດ”',
-      paragraphs: [
-        '"ເງື່ອນໄຂເຫຼົ່ານີ້, ພ້ອມກັບນະໂຍບາຍຄວາມເປັນສ່ວນຕົວຂອງພວກເຮົາ, ປະກອບເປັນຂໍ້ຕົກລົງທັງໝົດລະຫວ່າງທ່ານ ແລະ ANQR ກ່ຽວກັບການນຳໃຊ້ເວັບໄຊທ໌ຂອງທ່ານ ແລະ ນຳໃຊ້ແທນຂໍ້ຕົກລົງກ່ອນໜ້ານີ້.”',
-      ],
+      heading: 'Entire agreement',
+      paragraphs: ['These Terms, together with our Privacy Policy, constitute the entire agreement between you and ANQR regarding your use of the site and supersede any prior agreements.'],
     },
     {
-      heading: '"ເຫດສຸດວິໄສ”',
-      paragraphs: [
-        '"ພວກເຮົາຈະບໍ່ຮັບຜິດຊອບຕໍ່ຄວາມລົ້ມເຫຼວ ຫຼື ການຊັກຊ້າໃນການປະຕິບັດວຽກງານຍ້ອນສະຖານະການທີ່ຢູ່ນອກເໜືອການຄວບຄຸມທີ່ສົມເຫດສົມຜົນຂອງພວກເຮົາ, ລວມທັງໄພພິບັດທາງທຳມະຊາດ, ສົງຄາມ, ການກໍ່ການຮ້າຍ, ການຈະລາຈົນ, ການກະທຳຂອງລັດຖະບານ, ຫຼື ຄວາມລົ້ມເຫຼວຂອງອິນເຕີເນັດ/ພື້ນຖານໂຄງລ່າງ.”',
-      ],
+      heading: 'Force majeure',
+      paragraphs: ['We shall not be liable for any failure or delay in performance due to circumstances beyond our reasonable control, including natural disasters, war, terrorism, riots, government actions, or internet/infrastructure failures.'],
     },
     {
-      heading: '"ຕິດຕໍ່”',
-      paragraphs: [
-        '"ຄຳຖາມກ່ຽວກັບເງື່ອນໄຂເຫຼົ່ານີ້ສາມາດສົ່ງໄປທີ່: ${CONTACT_EMAIL}”',
-      ],
+      heading: 'Contact',
+      paragraphs: ['Questions about these Terms can be sent to: ${CONTACT_EMAIL}'],
     },
   ],
-}
+};
 
 export default terms;

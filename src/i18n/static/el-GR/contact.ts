@@ -1,68 +1,39 @@
-import type { PageDefinition } from '../types'
-import { LAST_UPDATED, CONTACT_EMAIL } from '../types'
+import type { PageDefinition } from '../types';
+import { LAST_UPDATED } from '../types';
 
 export const contact: PageDefinition = {
-  title: '«Επικοινωνήστε μαζί μας»',
-  description: '«Χαιρετίζουμε σχόλια, αναφορές σφαλμάτων, αιτήματα για λειτουργίες και γενικές ερωτήσεις.»',
+  title: 'Contact Us',
+  description: 'We welcome feedback, bug reports, feature requests, and general enquiries.',
   lastUpdated: LAST_UPDATED,
   sections: [
     {
-      heading: '«Πώς να επικοινωνήσετε μαζί μας»',
-      paragraphs: [
-        '«Προσφέρουμε διάφορους τρόπους επικοινωνίας μαζί μας ανάλογα με τις ανάγκες σας. Διαβάζουμε κάθε μήνυμα, αν και οι χρόνοι απόκρισης ενδέχεται να διαφέρουν ανάλογα με τον όγκο και τον τύπο του ερωτήματος.»',
-      ],
+      heading: 'How to reach us',
+      paragraphs: ['We offer several ways to contact us depending on your needs. We read every message, though response times may vary based on volume and enquiry type.'],
     },
     {
-      heading: '«Ηλεκτρονικό ταχυδρομείο»',
-      paragraphs: [
-        '«Για όλα τα ερωτήματα: ${CONTACT_EMAIL}»',
-        '«Αυτός είναι ο πιο αξιόπιστος τρόπος επικοινωνίας μαζί μας και συνιστάται για λεπτομερείς ερωτήσεις, επαγγελματικά ερωτήματα ή οποιεσδήποτε άλλες ερωτήσεις.»',
-      ],
+      heading: 'Email',
+      paragraphs: ['For all enquiries: ${CONTACT_EMAIL}', 'This is the most reliable way to reach us and is recommended for detailed questions, business enquiries, or any other enquiries.'],
     },
     {
-      heading: '«Είδη ερωτημάτων»',
-      bullets: [
-        '«Γενικές ερωτήσεις: Ερωτήσεις σχετικά με τον τρόπο χρήσης του ANQR, επεξηγήσεις λειτουργιών ή γενικά σχόλια.»',
-        '«Αναφορές σφαλμάτων: Παρακαλούμε συμπεριλάβετε το πρόγραμμα περιήγησής σας, το λειτουργικό σύστημα, τα βήματα αναπαραγωγής και τυχόν μηνύματα σφάλματος που βλέπετε.»',
-        '«Αιτήματα για νέα χαρακτηριστικά: Προτάσεις για νέα χαρακτηριστικά ή βελτιώσεις. Εξετάζουμε όλα τα αιτήματα, αν και δεν μπορούμε να υποσχεθούμε την εφαρμογή τους.»',
-        '«Επιχειρηματικά ερωτήματα: Ευκαιρίες συνεργασίας, ερωτήσεις σχετικά με άδειες χρήσης ή ερωτήσεις σχετικά με εμπορική χρήση».',
-        '«Αιτήματα απορρήτου: Αιτήματα άσκησης των δικαιωμάτων απορρήτου σας βάσει του GDPR, του CCPA ή άλλων νόμων περί απορρήτου (βλ. Πολιτική Απορρήτου).»',
-        '«DMCA/Πνευματικά δικαιώματα: Ανατρέξτε στην ενότητα DMCA παρακάτω για τις απαιτήσεις ειδοποίησης κατάργησης.»',
-      ],
+      heading: 'Types of enquiries',
+      bullets: ['General questions: Questions about how to use ANQR, feature explanations, or general feedback.', 'Bug reports: Please include your browser, operating system, steps to reproduce, and any error messages you see.', 'Feature requests: Suggestions for new features or improvements. We consider all requests though we cannot promise implementation.', 'Business enquiries: Partnership opportunities, licensing questions, or commercial use enquiries.', 'Privacy requests: Requests to exercise your privacy rights under GDPR, CCPA, or other privacy laws (see Privacy Policy).', 'DMCA/Copyright: See the DMCA section below for takedown notice requirements.'],
     },
     {
-      heading: '«Χρόνοι απόκρισης»',
-      paragraphs: [
-        '«Στόχος μας είναι να απαντάμε σε ερωτήματα εντός 5-7 εργάσιμων ημερών. Τα αιτήματα που σχετίζονται με το απόρρητο θα διεκπεραιώνονται εντός 30 ημερών, όπως απαιτείται από το νόμο.»',
-        '«Κατά τη διάρκεια περιόδων αιχμής, οι χρόνοι απόκρισης ενδέχεται να είναι μεγαλύτεροι. Για επείγοντα θέματα, παρακαλούμε να αναφέρετε «ΕΠΕΙΓΟΝ» στη γραμμή θέματος.»',
-      ],
+      heading: 'Response times',
+      paragraphs: ['We aim to respond to enquiries within 5-7 business days. Privacy-related requests will be addressed within 30 days as required by law.', 'During busy periods, response times may be longer. For urgent matters, please indicate "URGENT" in your subject line.'],
     },
     {
-      heading: '«Πριν επικοινωνήσετε μαζί μας»',
-      paragraphs: [
-        '«Ελέγξτε τη σελίδα τεκμηρίωσης για απαντήσεις σε συνήθεις ερωτήσεις σχετικά με τον τρόπο χρήσης των λειτουργιών ANQR. Πολλές ερωτήσεις σχετικά με τη δημιουργία κωδικού QR, το στυλ και τις επιλογές εξαγωγής καλύπτονται εκεί.»',
-      ],
+      heading: 'Before contacting us',
+      paragraphs: ['Please check our Documentation page for answers to common questions about how to use ANQR features. Many questions about QR code generation, styling, and export options are covered there.'],
     },
     {
-      heading: '«Ειδοποιήσεις περί πνευματικών δικαιωμάτων DMCA»',
-      paragraphs: [
-        '«Εάν πιστεύετε ότι το περιεχόμενο που είναι διαθέσιμο στο ANQR παραβιάζει τα πνευματικά σας δικαιώματα, μπορείτε να υποβάλετε ειδοποίηση κατάργησης βάσει του Νόμου περί Πνευματικών Δικαιωμάτων στην Ψηφιακή Χιλιετία (DMCA). Για να είναι έγκυρη, η ειδοποίησή σας πρέπει να περιλαμβάνει:»',
-      ],
-      bullets: [
-        '«Φυσική ή ηλεκτρονική υπογραφή του κατόχου των πνευματικών δικαιωμάτων ή του εξουσιοδοτημένου αντιπροσώπου».',
-        '«Προσδιορισμός του έργου που προστατεύεται από πνευματικά δικαιώματα και το οποίο φέρεται να έχει παραβιαστεί».',
-        '«Ταυτοποίηση του υλικού που φέρεται να παραβιάζει πνευματικά δικαιώματα, με επαρκείς πληροφορίες για τον εντοπισμό του».',
-        '«Τα στοιχεία επικοινωνίας σας (διεύθυνση, αριθμός τηλεφώνου και διεύθυνση ηλεκτρονικού ταχυδρομείου).»',
-        '«Δήλωση ότι έχετε καλή τη πίστει την πεποίθηση ότι η χρήση του υλικού δεν έχει εξουσιοδοτηθεί από τον κάτοχο των πνευματικών δικαιωμάτων.»',
-        '«Δήλωση, υπό την ποινή της ψευδορκίας, ότι οι πληροφορίες στην ειδοποίησή σας είναι ακριβείς και ότι είστε ο κάτοχος των πνευματικών δικαιωμάτων ή εξουσιοδοτημένος να ενεργείτε εκ μέρους του.»',
-      ],
+      heading: 'DMCA Copyright Notices',
+      paragraphs: ['If you believe that content available on ANQR infringes your copyright, you may submit a Digital Millennium Copyright Act (DMCA) takedown notice. To be valid, your notice must include:'],
+      bullets: ['A physical or electronic signature of the copyright owner or authorised agent.', 'Identification of the copyrighted work claimed to have been infringed.', 'Identification of the material that is claimed to be infringing, with information sufficient to locate it.', 'Your contact information (address, telephone number, and email address).', 'A statement that you have a good faith belief that use of the material is not authorised by the copyright owner.', 'A statement, under penalty of perjury, that the information in your notice is accurate and that you are the copyright owner or authorised to act on their behalf.'],
     },
     {
-      heading: '«Επικοινωνία DMCA»',
-      paragraphs: [
-        '«Αποστολή ειδοποιήσεων DMCA στη διεύθυνση: ${CONTACT_EMAIL}»',
-        '«Παρακαλούμε συμπεριλάβετε την ένδειξη «Ειδοποίηση DMCA» στη γραμμή θέματος. Θα απαντήσουμε σε έγκυρες ειδοποιήσεις σύμφωνα με την ισχύουσα νομοθεσία. Σημειώστε ότι το ANQR δημιουργεί κωδικούς QR τοπικά στις συσκευές των χρηστών και δεν φιλοξενεί περιεχόμενο που δημιουργείται από τους χρήστες.»',
-      ],
+      heading: 'DMCA Contact',
+      paragraphs: ['Send DMCA notices to: ${CONTACT_EMAIL}', 'Please include "DMCA Notice" in the subject line. We will respond to valid notices in accordance with applicable law. Note that ANQR generates QR codes locally on users devices and does not host user-generated content.'],
     },
   ],
 };

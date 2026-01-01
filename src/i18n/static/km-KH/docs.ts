@@ -2,840 +2,381 @@ import type { PageDefinition } from '../types';
 import { LAST_UPDATED } from '../types';
 
 export const docs: PageDefinition = {
-  title: '"មគ្គុទ្ទេសក៍អ្នកប្រើប្រាស់ ANQR”',
-  description: '"ការណែនាំពេញលេញអំពីការប្រើប្រាស់ ANQR សម្រាប់បង្កើតលេខកូដ QR”។',
+  title: 'ANQR User Guide',
+  description: 'Complete guide to using ANQR for creating QR codes.',
   lastUpdated: LAST_UPDATED,
   sections: [
     {
-      heading: '«ការចាប់ផ្តើម»',
-      paragraphs: [
-        '"ANQR គឺជាកម្មវិធីបង្កើតលេខកូដ QR ដែលមានវិធីសាស្រ្តផ្តោតលើអតិថិជនជាមុន។ តាមលំនាំដើម លេខកូដ QR ត្រូវបានបង្កើតនៅក្នុងកម្មវិធីរុករករបស់អ្នក — មិនត្រូវការគណនីទេ ហើយទិន្នន័យរបស់អ្នកនៅតែជាឯកជន។ សម្រាប់ការបង្កប់ប្រកបដោយវិជ្ជាជីវៈ អ្នកក៏អាចប្រើ API ផ្នែកម៉ាស៊ីនមេបានដែរ។”',
-        '"ចំណុចប្រទាក់មានកម្រិតចំណុចប្រទាក់បី៖ មូលដ្ឋាន កម្រិតខ្ពស់ និងវិជ្ជាជីវៈ។ ជ្រើសរើសកម្រិតរបស់អ្នកដោយប្រើផ្ទាំងនៅក្នុងបឋមកថា។ កម្រិតនីមួយៗដោះសោលក្ខណៈពិសេសបន្ថែម ខណៈពេលដែលរក្សាចំណុចប្រទាក់ឱ្យផ្តោតលើអ្វីដែលអ្នកត្រូវការ។”',
-      ],
+      heading: 'Getting Started',
+      paragraphs: ['ANQR is a QR code generator with a client-first approach. By default, QR codes are generated locally in your browser — no account required and your data stays private. For professional embedding, you can also use the server-side API.', 'The interface has three interface levels: Basic, Advanced, and Professional. Select your level using the tabs in the header. Each level unlocks additional features while keeping the interface focused on what you need.'],
+      bullets: ['Basic: Simple QR code creation with plain text/URL content and image overlay.', 'Advanced: QR encoding options, rendering styles, animation, output formats, extended content types, and overlay customization.', 'Professional: Watermarks, metadata, sharing, safety analysis, payment QR codes, and enterprise features.'],
+    },
+    {
+      heading: 'Quick Start',
+      paragraphs: ['To create your first QR code:'],
+      bullets: ['1. Select a content type (URL, text, WiFi, etc.) from the Content Type dropdown.', '2. Enter your data in the provided fields.', '3. Optionally customize colors, styles, and add an overlay image.', '4. Click Export to download your QR code as PNG, GIF, WebP, or SVG.'],
+    },
+    {
+      heading: 'Basic Features',
+      paragraphs: ['The Basic level provides a streamlined interface for creating QR codes with payload content and image overlays. This is the simplest way to get started.'],
+    },
+    {
+      heading: 'Content Types (Basic)',
+      paragraphs: ['Plain Text: Encode any text up to the QR code capacity limit. Ideal for short messages, codes, or identifiers.', 'URL: Encode web addresses. The QR code will open the URL when scanned. Supports http:// and https:// protocols.'],
+    },
+    {
+      heading: 'Image Overlay (Basic)',
+      paragraphs: ['Upload an image (JPG, PNG, GIF, WebP) to blend with your QR code. Basic overlay features include:'],
+      bullets: ['Upload from file: Select an image from your device.', 'Load from URL: Enter an image URL (must allow CORS).', 'Center Logo: Places image in the center, relying on error correction.', 'Blend: Simple alpha blending of image with QR pattern.', 'Intensity: Controls how strongly the overlay affects the QR code (0-100%).', 'Color Mode: Full Color, Grayscale, or Black & White.', 'Preserve Finder Patterns: Keeps corner patterns unmodified for reliable scanning.'],
+    },
+    {
+      heading: 'Advanced Features',
+      paragraphs: ['The Advanced level unlocks QR encoding options, rendering styles, animation, output formats, extended content types, and advanced overlay customization.'],
+    },
+    {
+      heading: 'QR Encoding Settings',
+      paragraphs: ['Version: QR codes come in versions 1-40, with higher versions holding more data but being larger. Set to 0 (Auto) to let ANQR choose the smallest version that fits your content.', 'Error Correction: Determines how much damage a QR code can sustain while remaining scannable.'],
+      bullets: ['L (Low): 7% error correction - smallest size, least redundancy.', 'M (Medium): 15% error correction - balanced option.', 'Q (Quartile): 25% error correction - good for printed codes.', 'H (High): 30% error correction - best for codes with overlays or in harsh conditions.'],
+    },
+    {
+      heading: 'Quiet Zone (Margin)',
+      paragraphs: ['The quiet zone is the white space around the QR code. Scanners need this margin to detect where the code starts. The standard recommends at least 4 modules. Reducing below 4 may cause scanning issues.'],
+    },
+    {
+      heading: 'Module Style',
+      paragraphs: ['Modules are the individual squares that make up a QR code. ANQR offers five styles:'],
+      bullets: ['Square: Classic QR appearance with sharp corners.', 'Rounded: Softened corners for a friendlier look.', 'Dots: Circular modules for a modern aesthetic.', 'Diamond: 45° rotated squares for a distinctive pattern.', 'Connected: Modules merge when adjacent, creating organic shapes.'],
+    },
+    {
+      heading: 'Finder Pattern Style',
+      paragraphs: ['Finder patterns are the three large squares in QR corners that help scanners orient the code. Available styles:'],
+      bullets: ['Square: Standard square corners.', 'Rounded: Softened corners matching rounded module style.', 'Circle: Circular finder patterns for dot-style codes.'],
+    },
+    {
+      heading: 'Alignment & Timing Patterns',
+      paragraphs: ['Alignment patterns appear in larger QR codes (version 2+) to help correct distortion. Timing patterns are the alternating lines connecting finder patterns.'],
+      bullets: ['Alignment Style: Match Finder, Square, Rounded, or Circle.', 'Timing Style: Match Module, Solid, or Dashed.'],
+    },
+    {
+      heading: 'Colors',
+      paragraphs: ['Foreground: The color of the QR modules. Black (#000000) is standard but any dark color works.', 'Background: The background color. White (#ffffff) is standard. Ensure sufficient contrast with the foreground.', 'Transparent Background: Remove the background entirely for use on colored surfaces. Ensure the surface provides adequate contrast.'],
+    },
+    {
+      heading: 'Module Size & Gap',
+      paragraphs: ['Module Size: Controls how large each module is rendered in pixels. Larger values create bigger, easier-to-scan codes.', 'Module Gap: Adds space between modules as a percentage. Small gaps (5-15%) can improve scannability in some conditions but excessive gaps reduce reliability.'],
+    },
+    {
+      heading: 'Output Settings',
+      paragraphs: ['Format: Choose your export format based on use case.'],
+      bullets: ['PNG: Lossless raster format, ideal for most uses. Best for print and digital.', 'WebP: Modern format with smaller file sizes. Good for web use.', 'GIF: Required for animated QR codes. Supports transparency.', 'SVG: Vector format that scales infinitely. Best for large print or when you need to edit the code.'],
+    },
+    {
+      heading: 'Output Dimensions',
+      paragraphs: ['Width/Height: Set the output size in pixels. For print, calculate based on DPI (e.g., 300 DPI at 1 inch = 300px). Larger sizes scan more reliably at distance.'],
+    },
+    {
+      heading: 'Animation Settings (Advanced)',
+      paragraphs: ['Control animated QR code behavior:'],
+      bullets: ['Speed: Animation frame rate in milliseconds.', 'Loop: Continuous or single-play animation.', 'Bounce: Ping-pong animation direction.', 'Start Frame: Begin animation from specific frame.', 'Max Frames: Limit total frames in animation.', 'Frame Step: Skip frames for faster animation.', 'Interpolation: None, Crossfade, or Morph between frames.'],
+    },
+    {
+      heading: 'Content Types (Advanced)',
+      paragraphs: ['Advanced level unlocks additional payload formats:'],
       bullets: [
-        '"មូលដ្ឋាន៖ ការបង្កើតលេខកូដ QR សាមញ្ញជាមួយខ្លឹមសារអត្ថបទ/URL ធម្មតា និងការលាបរូបភាពពីលើ។”',
-        '"កម្រិតខ្ពស់៖ ជម្រើសអ៊ិនកូដ QR រចនាប័ទ្មបង្ហាញ ចលនា ទម្រង់លទ្ធផល ប្រភេទមាតិកាដែលបានពង្រីក និងការប្ដូរតាមបំណងសម្រាប់ការដាក់ពីលើ។”',
-        '"វិជ្ជាជីវៈ៖ សញ្ញាសម្គាល់ទឹក ទិន្នន័យមេតា ការចែករំលែក ការវិភាគសុវត្ថិភាព លេខកូដ QR ទូទាត់ និងលក្ខណៈពិសេសរបស់សហគ្រាស”។',
+        'Phone Number (tel:): Creates a callable phone link.',
+        'Email (mailto:): Opens email client with optional subject and body.',
+        'SMS: Pre-filled text message to a phone number.',
+        'vCard: Full contact card with name, organization, phone, email, address.',
+        'MeCard: Compact contact format popular in Japan.',
+        'BizCard: Legacy business card format.',
+        'Geo Location: GPS coordinates that open in maps.',
+        'WiFi: Network credentials for automatic connection (SSID, password, security type).',
+        'Calendar Event: iCalendar format with title, location, date/time.',
+        'Event RSVP: Link to event registration page.',
+        'Calendar Subscribe: Subscribe to an ICS/WebCal feed.',
+        'File/Document URL: Direct link to downloadable files.',
+        'Cloud Storage Link: Links to Google Drive, Dropbox, OneDrive, etc.',
+        'Social Profile: Links to LinkedIn, Twitter, Instagram, etc.',
+        'Messaging Link: WhatsApp, Telegram, Signal deep links.',
       ],
     },
     {
-      heading: 'ការចាប់ផ្តើមរហ័ស',
-      paragraphs: [
-        '"ដើម្បីបង្កើតលេខកូដ QR ដំបូងរបស់អ្នក៖”',
-      ],
+      heading: 'Advanced Overlay Features',
+      paragraphs: ['Additional overlay capabilities:'],
+      bullets: ['Crop: Enable cropping to select a square region of your image.', 'Halftone: Classic print-style dot pattern based on image brightness.', 'Dithered: Error-diffusion dithering for detailed reproduction.'],
+    },
+    {
+      heading: 'Overlay Blend Modes (Advanced)',
+      paragraphs: ['Additional blend modes in Advanced level:'],
+      bullets: ['Subpixel: Divides each module into subpixels for higher detail.', 'Blue Noise: Uses blue noise dithering for artifact-free patterns.', 'Mosaic: Tile-based effect preserving image structure.', 'Gap Fill: Places image in gaps between modules.', 'Brightness: Varies module size based on image brightness.', 'Duotone: Maps image to two colors for striking contrast.'],
+    },
+    {
+      heading: 'Overlay Intensity',
+      paragraphs: ['Controls how strongly the overlay affects the QR code (0-100%). Higher values show more image detail but may reduce scannability. Start around 70% and adjust based on testing.'],
+    },
+    {
+      heading: 'Color Mode',
+      paragraphs: ['How the overlay image is processed:'],
+      bullets: ['Full Color: Preserves original image colors.', 'Grayscale: Converts to black and white tones.', 'Black & White: High contrast binary conversion.'],
+    },
+    {
+      heading: 'Preserve Finder Patterns',
+      paragraphs: ['When enabled, keeps the three corner finder patterns unmodified by the overlay. Strongly recommended for reliable scanning.'],
+    },
+    {
+      heading: 'Image Preprocessing',
+      paragraphs: ['Apply filters to your overlay image before blending. These adjustments can improve how the image appears in the final QR code.'],
+      bullets: ['Brightness (-100 to +100): Lighten or darken the image.', 'Contrast (-100 to +100): Increase or decrease tonal range.', 'Gamma (0.2 to 3.0): Non-linear brightness adjustment. Values below 1 lighten midtones, above 1 darken them.', 'Saturation (-100 to +100): Color intensity. -100 is grayscale, +100 is oversaturated.', 'Hue Rotate (0-360°): Shift all colors around the color wheel.', 'Blur (0-20px): Soften image details.', 'Sharpen (0-100%): Enhance edges and details.', 'Posterize (0-16 levels): Reduce color levels for a poster effect.', 'Threshold (0-255): Convert to binary black/white at cutoff point.', 'Edge Detection: Sobel or Canny algorithms to show only edges.', 'Invert: Reverse all colors.'],
+    },
+    {
+      heading: 'Fit Mode',
+      paragraphs: ['How the overlay image fits the QR code area:'],
+      bullets: ['Cover: Image fills entire area, cropping if needed.', 'Contain: Entire image visible, may have margins.', 'Stretch: Image distorts to fill exactly.'],
+    },
+    {
+      heading: 'Transform Options',
+      paragraphs: ['Rotation: Rotate overlay in 90° increments.', 'Flip X/Y: Mirror the image horizontally or vertically.'],
+    },
+    {
+      heading: 'Dithering Algorithms',
+      paragraphs: ['Dithering converts continuous-tone images to patterns that QR codes can represent. Available when using Dithered, Blue Noise, or True Dither blend modes.'],
       bullets: [
-        '"១. ជ្រើសរើសប្រភេទមាតិកា (URL, អត្ថបទ, WiFi ។ល។) ពីម៉ឺនុយទម្លាក់ចុះប្រភេទមាតិកា។”',
-        '"២. បញ្ចូលទិន្នន័យរបស់អ្នកនៅក្នុងវាលដែលបានផ្តល់ជូន។”',
-        '"៣. ប្ដូរតាមបំណងពណ៌ រចនាប័ទ្ម និងបន្ថែមរូបភាពពីលើជាជម្រើស។”',
-        '"៤. ចុច នាំចេញ ដើម្បីទាញយកលេខកូដ QR របស់អ្នកជា PNG, GIF, WebP ឬ SVG។”',
+        'Error Diffusion: Classic Floyd-Steinberg style. Spreads quantization error to neighboring pixels.',
+        'Ordered (Bayer): Uses a threshold matrix for regular patterns.',
+        'Clustered Dot: Simulates halftone printing.',
+        'Void & Cluster: Optimized ordered dithering.',
+        'Blue Noise: Visually pleasant random-looking pattern.',
+        'Blue Noise Threshold: Threshold dithering with blue noise texture.',
+        'White Noise: Random threshold dithering.',
+        'Gaussian/Triangular Noise: Noise with different distributions.',
+        'Blue Noise + Error Diffusion: Hybrid combining both techniques.',
+        'Screened Blue Noise: Screen-like blue noise pattern.',
+        'Perceptual: Luminance-weighted for better visual results.',
+        'Edge-Aware: Preserves image edges during dithering.',
+        'Adaptive Threshold: Locally-adaptive thresholding.',
+        'Temporal Blue Noise: For animated GIFs, varies pattern per frame.',
       ],
     },
     {
-      heading: '"លក្ខណៈពិសេសជាមូលដ្ឋាន”',
-      paragraphs: [
-        '"កម្រិតមូលដ្ឋានផ្តល់នូវចំណុចប្រទាក់ដ៏សាមញ្ញមួយសម្រាប់បង្កើតលេខកូដ QR ជាមួយនឹងខ្លឹមសារនៃបន្ទុក និងការត្រួតលើរូបភាព។ នេះគឺជាវិធីងាយស្រួលបំផុតដើម្បីចាប់ផ្តើម។”',
-      ],
-    },
-    {
-      heading: '"ប្រភេទមាតិកា (មូលដ្ឋាន)”',
-      paragraphs: [
-        '"អត្ថបទធម្មតា៖ អ៊ិនកូដអត្ថបទណាមួយរហូតដល់ដែនកំណត់សមត្ថភាពកូដ QR។ ល្អសម្រាប់សារខ្លីៗ កូដ ឬឧបករណ៍កំណត់អត្តសញ្ញាណ។”',
-        '"URL៖ អ៊ិនកូដអាសយដ្ឋានគេហទំព័រ។ លេខកូដ QR នឹងបើក URL នៅពេលស្កេន។ គាំទ្រពិធីការ http:// និង https://។”',
-      ],
-    },
-    {
-      heading: '"ការ​ដាក់​រូបភាព​ពីលើ (មូលដ្ឋាន)”',
-      paragraphs: [
-        '"ផ្ទុកឡើងរូបភាព (JPG, PNG, GIF, WebP) ដើម្បីលាយជាមួយលេខកូដ QR របស់អ្នក។ លក្ខណៈពិសេសជាមូលដ្ឋាននៃការដាក់ស្រទាប់រួមមាន៖”',
-      ],
-      bullets: [
-        '"ផ្ទុកឡើងពីឯកសារ៖ ជ្រើសរើសរូបភាពពីឧបករណ៍របស់អ្នក។”',
-        '"ផ្ទុកពី URL៖ បញ្ចូល URL រូបភាព (ត្រូវតែអនុញ្ញាត CORS)។”',
-        '"ឡូហ្គោ​កណ្តាល៖ ដាក់​រូបភាព​នៅ​កណ្តាល ដោយ​ពឹងផ្អែក​លើ​ការ​កែ​កំហុស។”',
-        '"លាយបញ្ចូលគ្នា៖ ការលាយបញ្ចូលគ្នាអាល់ហ្វាសាមញ្ញនៃរូបភាពជាមួយលំនាំ QR”។',
-        '"អាំងតង់ស៊ីតេ៖ គ្រប់គ្រងថាតើការត្រួតលើគ្នាប៉ះពាល់ដល់កូដ QR ខ្លាំងប៉ុណ្ណា (០-១០០%)។”',
-        '"របៀបពណ៌៖ ពណ៌ពេញ មាត្រដ្ឋានប្រផេះ ឬខ្មៅ និងស។”',
-        '"រក្សាលំនាំឧបករណ៍ស្វែងរក៖ រក្សាលំនាំជ្រុងឱ្យនៅដដែលសម្រាប់ការស្កេនដែលអាចទុកចិត្តបាន។”',
-      ],
-    },
-    {
-      heading: '"លក្ខណៈពិសេសកម្រិតខ្ពស់”',
-      paragraphs: [
-        '"កម្រិត​ខ្ពស់​ដោះសោ​ជម្រើស​អ៊ិនកូដ QR រចនាប័ទ្ម​បង្ហាញ ចលនា ទម្រង់​លទ្ធផល ប្រភេទ​មាតិកា​បន្ថែម និង​ការ​ប្ដូរ​តាម​បំណង​ស្រទាប់​បន្ថែម​កម្រិត​ខ្ពស់។”',
-      ],
-    },
-    {
-      heading: '"ការកំណត់ការអ៊ិនកូដ QR”',
-      paragraphs: [
-        '"កំណែ៖ លេខកូដ QR មានចាប់ពីកំណែ 1-40 ដោយកំណែខ្ពស់ជាងនេះផ្ទុកទិន្នន័យបានច្រើនជាង ប៉ុន្តែធំជាង។ កំណត់ទៅ 0 (ស្វ័យប្រវត្តិ) ដើម្បីអនុញ្ញាតឱ្យ ANQR ជ្រើសរើសកំណែតូចបំផុតដែលសមនឹងខ្លឹមសាររបស់អ្នក។”',
-        '"ការកែកំហុស៖ កំណត់ថាតើកូដ QR អាចរងការខូចខាតបានប៉ុន្មាន ខណៈពេលដែលនៅតែអាចស្កេនបាន”។',
-      ],
-      bullets: [
-        '"L (ទាប)៖ ការកែកំហុស ៧% - ទំហំតូចបំផុត ភាពលើសលប់តិចបំផុត។”',
-        '"M (មធ្យម)៖ ការកែកំហុស ១៥% - ជម្រើសមានតុល្យភាព។”',
-        '"Q (ក្វាទីល): ការកែកំហុស ២៥% - ល្អសម្រាប់លេខកូដដែលបានបោះពុម្ព។”',
-        '"H (ខ្ពស់)៖ ការកែកំហុស ៣០% - ល្អបំផុតសម្រាប់លេខកូដដែលមានការត្រួតលើគ្នា ឬក្នុងស្ថានភាពលំបាក។”',
-      ],
-    },
-    {
-      heading: '"តំបន់ស្ងាត់ (រឹម)”',
-      paragraphs: [
-        '"តំបន់ស្ងាត់គឺជាចន្លោះពណ៌សជុំវិញលេខកូដ QR។ ម៉ាស៊ីនស្កេនត្រូវការរឹមនេះដើម្បីរកឃើញកន្លែងដែលលេខកូដចាប់ផ្តើម។ ស្តង់ដារណែនាំយ៉ាងហោចណាស់ម៉ូឌុលចំនួន ៤។ ការកាត់បន្ថយក្រោម ៤ អាចបណ្តាលឱ្យមានបញ្ហាក្នុងការស្កេន។”',
-      ],
-    },
-    {
-      heading: '"រចនាប័ទ្មម៉ូឌុល”',
-      paragraphs: [
-        '"ម៉ូឌុលគឺជាការ៉េនីមួយៗដែលបង្កើតជាលេខកូដ QR។ ANQR ផ្តល់ជូននូវរចនាប័ទ្មចំនួនប្រាំ៖”',
-      ],
-      bullets: [
-        '"ការ៉េ៖ រូបរាង QR បុរាណជាមួយនឹងជ្រុងមុតស្រួច។”',
-        '"មូល៖ ជ្រុង​ទន់​សម្រាប់​រូបរាង​ដែល​រួសរាយ​រាក់ទាក់។”',
-        '"ចំណុច៖ ម៉ូឌុលរាងជារង្វង់សម្រាប់សោភ័ណភាពទំនើប”។',
-        '"ពេជ្រ៖ ការ៉េបង្វិល ៤៥° សម្រាប់លំនាំប្លែក។”',
-        '"ភ្ជាប់​គ្នា៖ ម៉ូឌុល​បញ្ចូល​គ្នា​នៅពេល​នៅ​ជាប់​គ្នា បង្កើត​ជា​រាង​សរីរាង្គ”។',
-      ],
-    },
-    {
-      heading: '"រចនាប័ទ្មលំនាំឧបករណ៍ស្វែងរក”',
-      paragraphs: [
-        '"លំនាំ​ឧបករណ៍​ស្វែងរក​គឺជា​ការ៉េ​ធំៗ​បី​នៅ​ជ្រុង QR ដែល​ជួយ​ម៉ាស៊ីន​ស្កេន​តម្រង់​ទិស​កូដ។ រចនាប័ទ្ម​ដែល​មាន៖”',
-      ],
-      bullets: [
-        '"ការ៉េ៖ ជ្រុងការ៉េស្តង់ដារ។”',
-        '"មូល៖ ជ្រុង​ទន់​ដែល​ត្រូវ​នឹង​រចនាប័ទ្ម​ម៉ូឌុល​មូល។”',
-        '"រង្វង់៖ លំនាំ​ឧបករណ៍​ស្វែងរក​រង្វង់​សម្រាប់​កូដ​រចនាប័ទ្ម​ចំណុច”។',
-      ],
-    },
-    {
-      heading: '"លំនាំ​តម្រឹម និង​ពេលវេលា”',
-      paragraphs: [
-        '"លំនាំតម្រឹមលេចឡើងក្នុងលេខកូដ QR ធំៗ (កំណែ 2+) ដើម្បីជួយកែតម្រូវការបង្ខូចទ្រង់ទ្រាយ។ លំនាំកំណត់ពេលវេលាគឺជាបន្ទាត់ឆ្លាស់គ្នាដែលភ្ជាប់លំនាំឧបករណ៍ស្វែងរក។”',
-      ],
-      bullets: [
-        '"រចនាប័ទ្ម​តម្រឹម៖ ឧបករណ៍​ស្វែងរក​ការ​ផ្គូផ្គង ការ៉េ មូល ឬ រង្វង់។”',
-        '"រចនាប័ទ្មកំណត់ពេលវេលា៖ ម៉ូឌុលផ្គូផ្គង រឹង ឬចំណុចដាច់ៗ”។',
-      ],
-    },
-    {
-      heading: '«ពណ៌»',
-      paragraphs: [
-        '"ផ្ទៃ​ខាងមុខ៖ ពណ៌​នៃ​ម៉ូឌុល QR។ ពណ៌​ខ្មៅ (#០០០០០០) គឺជា​ពណ៌​ស្តង់ដារ ប៉ុន្តែ​ពណ៌​ងងឹត​ណាមួយ​ក៏​ដំណើរការ​បាន​ដែរ។”',
-        '"ផ្ទៃខាងក្រោយ៖ ពណ៌ផ្ទៃខាងក្រោយ។ ពណ៌ស (#ffffff) គឺជាស្តង់ដារ។ ត្រូវប្រាកដថាមានភាពផ្ទុយគ្នាគ្រប់គ្រាន់ជាមួយផ្ទៃខាងមុខ។”',
-        '"ផ្ទៃខាងក្រោយថ្លា៖ លុបផ្ទៃខាងក្រោយចេញទាំងស្រុងសម្រាប់ប្រើលើផ្ទៃពណ៌។ ត្រូវប្រាកដថាផ្ទៃផ្តល់នូវកម្រិតពណ៌គ្រប់គ្រាន់។”',
-      ],
-    },
-    {
-      heading: '"ទំហំ និងគម្លាតម៉ូឌុល”',
-      paragraphs: [
-        '"ទំហំម៉ូឌុល៖ គ្រប់គ្រងទំហំដែលម៉ូឌុលនីមួយៗត្រូវបានបង្ហាញជាភីកសែល។ តម្លៃធំជាងបង្កើតលេខកូដធំជាង និងងាយស្រួលស្កេនជាង។”',
-        '"គម្លាតម៉ូឌុល៖ បន្ថែមចន្លោះរវាងម៉ូឌុលជាភាគរយ។ ចន្លោះតូចៗ (5-15%) អាចធ្វើអោយប្រសើរឡើងនូវសមត្ថភាពស្កេនក្នុងលក្ខខណ្ឌមួយចំនួន ប៉ុន្តែចន្លោះច្រើនពេកកាត់បន្ថយភាពជឿជាក់។”',
-      ],
-    },
-    {
-      heading: '"ការកំណត់លទ្ធផល”',
-      paragraphs: [
-        '"ទម្រង់៖ ជ្រើសរើសទម្រង់នាំចេញរបស់អ្នកដោយផ្អែកលើករណីប្រើប្រាស់។”',
-      ],
-      bullets: [
-        '"PNG៖ ទម្រង់​រ៉ាស្ទើរ​ដែល​មិន​បាត់បង់​គុណភាព ល្អ​បំផុត​សម្រាប់​ការប្រើប្រាស់​ភាគច្រើន។ ល្អ​បំផុត​សម្រាប់​ការបោះពុម្ព និង​ឌីជីថល។”',
-        '"WebP: ទម្រង់ទំនើបដែលមានទំហំឯកសារតូចជាង។ ល្អសម្រាប់ការប្រើប្រាស់គេហទំព័រ។”',
-        '"GIF៖ តម្រូវ​ឲ្យ​មាន​សម្រាប់​កូដ QR ដែល​មាន​ចលនា។ គាំទ្រ​តម្លាភាព។”',
-        '"SVG: ទម្រង់វ៉ិចទ័រដែលមានមាត្រដ្ឋានគ្មានកំណត់។ ល្អបំផុតសម្រាប់ការបោះពុម្ពធំៗ ឬនៅពេលដែលអ្នកត្រូវការកែសម្រួលកូដ។”',
-      ],
-    },
-    {
-      heading: '"វិមាត្រទិន្នផល”',
-      paragraphs: [
-        '"ទទឹង/កម្ពស់៖ កំណត់ទំហំទិន្នផលជាភីកសែល។ សម្រាប់ការបោះពុម្ព សូមគណនាដោយផ្អែកលើ DPI (ឧទាហរណ៍ 300 DPI នៅ 1 អ៊ីញ = 300px)។ ទំហំធំជាងស្កេនកាន់តែអាចទុកចិត្តបាននៅចម្ងាយ។”',
-      ],
-    },
-    {
-      heading: '"ការកំណត់ចលនា (កម្រិតខ្ពស់)”',
-      paragraphs: [
-        '"គ្រប់គ្រងឥរិយាបថកូដ QR ដែលមានចលនា៖”',
-      ],
-      bullets: [
-        '"ល្បឿន៖ អត្រាស៊ុមចលនាគិតជាមិល្លីវិនាទី។”',
-        '"រង្វិលជុំ៖ ចលនាបន្ត ឬលេងម្តង។”',
-        '"លោត៖ ទិសដៅ​ចលនា​ប៉េងប៉ុង”។',
-        '"ចាប់ផ្តើមស៊ុម៖ ចាប់ផ្តើមចលនាពីស៊ុមជាក់លាក់។”',
-        '"ស៊ុមអតិបរមា៖ កំណត់ស៊ុមសរុបក្នុងចលនា។”',
-        '"ជំហាន​ស៊ុម៖ រំលង​ស៊ុម​សម្រាប់​ចលនា​លឿន​ជាង​មុន”',
-        '"ការ​បញ្ចូល​គ្នា៖ គ្មាន ការ​បំបែក​រូបភាព ឬ​ការ​ប្រែ​រូបរាង​រវាង​ស៊ុម។”',
-      ],
-    },
-    {
-      heading: '"ប្រភេទ​មាតិកា (កម្រិត​ខ្ពស់)”',
-      paragraphs: [
-        '"កម្រិត​ខ្ពស់​ដោះសោ​ទម្រង់​បន្ទុក​បន្ថែម៖”',
-      ],
-      bullets: [
-        '"លេខទូរស័ព្ទ (tel:): បង្កើតតំណភ្ជាប់ទូរស័ព្ទដែលអាចហៅបាន។”',
-        '"អ៊ីមែល (mailto:)៖ បើក​កម្មវិធី​អ៊ីមែល​ដែល​មាន​ប្រធានបទ និង​តួ​អត្ថបទ​ជា​ជម្រើស។”',
-        '"សារ SMS៖ សារ​ដែល​បាន​បំពេញ​រួច​ទៅ​កាន់​លេខ​ទូរស័ព្ទ។”',
-        '"vCard៖ កាតទំនាក់ទំនងពេញលេញដែលមានឈ្មោះ អង្គការ ទូរស័ព្ទ អ៊ីមែល អាសយដ្ឋាន។”',
-        '"MeCard៖ ទម្រង់ទំនាក់ទំនងបង្រួមដ៏ពេញនិយមនៅក្នុងប្រទេសជប៉ុន។”',
-        '"BizCard៖ ទម្រង់​កាត​អាជីវកម្ម​ចាស់”។',
-        '"ទីតាំងភូមិសាស្ត្រ៖ កូអរដោនេ GPS ដែលបើកនៅក្នុងផែនទី។”',
-        '"វ៉ាយហ្វាយ៖ ព័ត៌មានសម្ងាត់បណ្តាញសម្រាប់ការតភ្ជាប់ដោយស្វ័យប្រវត្តិ (SSID ពាក្យសម្ងាត់ ប្រភេទសុវត្ថិភាព)។”',
-        '"ព្រឹត្តិការណ៍​ប្រតិទិន៖ ទម្រង់ iCalendar ជាមួយ​ចំណងជើង ទីតាំង កាលបរិច្ឆេទ/ពេលវេលា។”',
-        '"RSVP ព្រឹត្តិការណ៍៖ តំណភ្ជាប់ទៅកាន់ទំព័រចុះឈ្មោះព្រឹត្តិការណ៍។”',
-        '"ជាវ​ប្រតិទិន៖ ជាវ​មតិ​ព័ត៌មាន ICS/WebCal។”',
-        '"URL ឯកសារ/ឯកសារ៖ តំណភ្ជាប់ដោយផ្ទាល់ទៅកាន់ឯកសារដែលអាចទាញយកបាន។”',
-        '"តំណភ្ជាប់ទៅកាន់ Google Drive, Dropbox, OneDrive ជាដើម។”',
-        '"ប្រវត្តិរូបសង្គម៖ តំណភ្ជាប់ទៅកាន់ LinkedIn, Twitter, Instagram ជាដើម។”',
-        '"តំណភ្ជាប់សារ៖ WhatsApp, Telegram, តំណភ្ជាប់ស៊ីហ្គែន”។',
-      ],
-    },
-    {
-      heading: '"លក្ខណៈពិសេស​នៃ​ការ​ត្រួត​ពិនិត្យ​កម្រិត​ខ្ពស់”',
-      paragraphs: [
-        '"សមត្ថភាព​បន្ថែម​លើ​ការ​ត្រួត​ពិនិត្យ៖”',
-      ],
-      bullets: [
-        '"ច្រឹប៖ បើក​ការ​ច្រឹប​ដើម្បី​ជ្រើសរើស​តំបន់​ការ៉េ​នៃ​រូបភាព​របស់​អ្នក។”',
-        '"ហាលថូន៖ លំនាំចំណុចបែបបោះពុម្ពបុរាណដោយផ្អែកលើពន្លឺរូបភាព។”',
-        '"ឌីធើរ៖ ការឌីធើរ​កំហុស​ក្នុង​ការ​សាយភាយ​សម្រាប់​ការ​បង្កើត​ឡើង​វិញ​លម្អិត។”',
-      ],
-    },
-    {
-      heading: '"របៀបលាយបញ្ចូលគ្នាលើស្រទាប់ (កម្រិតខ្ពស់)”',
-      paragraphs: [
-        '"របៀបលាយបញ្ចូលគ្នាបន្ថែមក្នុងកម្រិតកម្រិតខ្ពស់៖”',
-      ],
-      bullets: [
-        '"ភីកសែលរង៖ បែងចែកម៉ូឌុលនីមួយៗទៅជាភីកសែលរងសម្រាប់ព័ត៌មានលម្អិតខ្ពស់ជាង។”',
-        '"សំឡេង​រំខាន​ពណ៌​ខៀវ៖ ប្រើ​ការ​ធ្វើ​ឲ្យ​សំឡេង​រំខាន​ពណ៌​ខៀវ​ញ័រ​សម្រាប់​លំនាំ​ដែល​គ្មាន​វត្ថុបុរាណ។”',
-        '"ម៉ូសាអ៊ីក៖ ឥទ្ធិពល​ដែល​ផ្អែក​លើ​ក្រឡា​ក្បឿង​ដែល​រក្សា​រចនាសម្ព័ន្ធ​រូបភាព”។',
-        '"បំពេញ​ចន្លោះ៖ ដាក់​រូបភាព​ក្នុង​ចន្លោះ​រវាង​ម៉ូឌុល។”',
-        '"ពន្លឺ៖ ទំហំម៉ូឌុលប្រែប្រួលអាស្រ័យលើពន្លឺរូបភាព។”',
-        '"ឌូអូតូន៖ ផ្គូផ្គងរូបភាពទៅពណ៌ពីរសម្រាប់ភាពផ្ទុយគ្នាដ៏លេចធ្លោ។”',
-      ],
-    },
-    {
-      heading: '"អាំងតង់ស៊ីតេ​នៃ​ការ​ត្រួត​គ្នា”',
-      paragraphs: [
-        '"គ្រប់គ្រង​ពី​កម្រិត​នៃ​ឥទ្ធិពល​ខ្លាំង​នៃ​ការ​ដាក់​លើ​កូដ QR (០-១០០%)។ តម្លៃ​ខ្ពស់​បង្ហាញ​ព័ត៌មាន​លម្អិត​រូបភាព​ច្រើន​ជាង​មុន ប៉ុន្តែ​អាច​កាត់​បន្ថយ​សមត្ថភាព​ស្កេន។ ចាប់​ផ្ដើម​ប្រហែល ៧០% ហើយ​កែ​តម្រូវ​ដោយ​ផ្អែក​លើ​ការ​ធ្វើ​តេស្ត។”',
-      ],
-    },
-    {
-      heading: '"របៀបពណ៌”',
-      paragraphs: [
-        '"របៀបដែលរូបភាពត្រួតលើគ្នាត្រូវបានដំណើរការ៖”',
-      ],
-      bullets: [
-        '"ពណ៌ពេញ៖ រក្សាពណ៌រូបភាពដើម។”',
-        '"មាត្រដ្ឋាន​ប្រផេះ៖ បម្លែង​ទៅ​ជា​សម្លេង​ខ្មៅ និង​ស។”',
-        '"ខ្មៅ និងស៖ ការបម្លែងប្រព័ន្ធគោលពីរដែលមានកម្រិតពណ៌ខ្ពស់”។',
-      ],
-    },
-    {
-      heading: '"រក្សា​លំនាំ​ឧបករណ៍​ស្វែងរក”',
-      paragraphs: [
-        '"នៅពេលបើកដំណើរការ វានឹងរក្សាលំនាំស្វែងរកជ្រុងទាំងបីមិនឱ្យកែប្រែដោយស្រទាប់ខាងលើ។ ត្រូវបានណែនាំយ៉ាងខ្លាំងសម្រាប់ការស្កេនដែលអាចទុកចិត្តបាន។”',
-      ],
-    },
-    {
-      heading: '"ការកែច្នៃរូបភាពជាមុន”',
-      paragraphs: [
-        '"អនុវត្តតម្រងទៅលើរូបភាពដែលគ្របពីលើរបស់អ្នកមុនពេលលាយបញ្ចូលគ្នា។ ការកែតម្រូវទាំងនេះអាចធ្វើអោយប្រសើរឡើងនូវរបៀបដែលរូបភាពលេចឡើងនៅក្នុងលេខកូដ QR ចុងក្រោយ។”',
-      ],
-      bullets: [
-        '"ពន្លឺ (-100 ដល់ +100): ធ្វើឱ្យរូបភាពស្រាល ឬងងឹត។”',
-        '"កម្រិតពណ៌ (-100 ដល់ +100): បង្កើន ឬបន្ថយជួរសម្លេង។”',
-        '"ហ្គាម៉ា (០,២ ដល់ ៣,០)៖ ការកែតម្រូវពន្លឺមិនមែនលីនេអ៊ែរ។ តម្លៃក្រោម ១ ធ្វើឱ្យពណ៌កណ្តាលស្រាល ហើយតម្លៃលើសពី ១ ធ្វើឱ្យពណ៌កណ្តាលងងឹត។”',
-        '"តិត្ថិភាព (-១០០ ដល់ +១០០)៖ អាំងតង់ស៊ីតេពណ៌។ -១០០ គឺជាមាត្រដ្ឋានប្រផេះ +១០០ គឺជាតិត្ថិភាពលើសកម្រិត។”',
-        '"បង្វិល​ពណ៌​ពណ៌ (0-360°): ប្តូរ​ពណ៌​ទាំងអស់​ជុំវិញ​កង់​ពណ៌។”',
-        '"ព្រិលៗ (០-២០ ភីកសែល)៖ ធ្វើឱ្យព័ត៌មានលម្អិតនៃរូបភាពទន់។”',
-        '"ធ្វើឱ្យច្បាស់ (០-១០០%)៖ បង្កើនគែម និងព័ត៌មានលម្អិត។”',
-        '"ធ្វើ​ឲ្យ​រូបភាព​មាន​ពណ៌​ចម្រុះ (កម្រិត 0-16)៖ បន្ថយ​កម្រិត​ពណ៌​សម្រាប់​បែបផែន​រូបភាព​បែបផែន។”',
-        '"កម្រិត​កំណត់ (០-២៥៥)៖ បម្លែង​ទៅជា​ស/ខ្មៅ​គោលពីរ​នៅ​ចំណុច​កាត់ផ្តាច់។”',
-        '"ការរកឃើញគែម៖ ក្បួនដោះស្រាយ Sobel ឬ Canny ដើម្បីបង្ហាញតែគែមប៉ុណ្ណោះ។”',
-        '"បញ្ច្រាស៖ បញ្ច្រាសពណ៌ទាំងអស់។”',
-      ],
-    },
-    {
-      heading: '"របៀបសម”',
-      paragraphs: [
-        '"របៀបដែលរូបភាព​ដែល​ដាក់​ពីលើ​សម​នឹង​តំបន់​កូដ QR៖”',
-      ],
-      bullets: [
-        '"គម្រប៖ រូបភាពបំពេញផ្ទៃទាំងមូល ច្រឹបប្រសិនបើចាំបាច់។”',
-        '"មាន៖ រូបភាពទាំងមូលអាចមើលឃើញ អាចមានរឹម។”',
-        '"លាតសន្ធឹង៖ រូបភាពបង្ខូចទ្រង់ទ្រាយដើម្បីបំពេញឱ្យបានពេញលេញ។”',
-      ],
-    },
-    {
-      heading: '"ជម្រើស​ផ្លាស់ប្ដូរ”',
-      paragraphs: [
-        '"ការបង្វិល៖ បង្វិល​ស្រទាប់​លើ​ក្នុង​កម្រិត ៩០°”។',
-        '"ត្រឡប់​អ័ក្ស X/Y៖ ឆ្លុះ​រូបភាព​ផ្ដេក ឬ​បញ្ឈរ។”',
-      ],
-    },
-    {
-      heading: '"ក្បួនដោះស្រាយការច្របូកច្របល់”',
-      paragraphs: [
-        '"ការ​ប្ដូរ​ពណ៌​ទៅជា​លំនាំ​ដែល​កូដ QR អាច​តំណាង​បាន។ មាន​នៅពេល​ប្រើ​របៀប​លាយ​ពណ៌ Dithered, Blue Noise ឬ True Dither។”',
-      ],
-      bullets: [
-        '"ការសាយភាយកំហុស៖ រចនាប័ទ្មបុរាណរបស់ Floyd-Steinberg។ រាលដាលកំហុសបរិមាណទៅភីកសែលជិតខាង។”',
-        '"រៀបរយ (បាយ័រ)៖ ប្រើម៉ាទ្រីសកម្រិតសម្រាប់លំនាំធម្មតា។”',
-        '"ចំណុច​ចង្កោម៖ ក្លែង​ធ្វើ​ការ​បោះពុម្ព​ពាក់កណ្តាល​ពណ៌។”',
-        '"ភាពទទេ និងចង្កោម៖ ការបង្វែរលំដាប់លំដោយដែលបានធ្វើឱ្យប្រសើរឡើង។”',
-        '"សំឡេងពណ៌ខៀវ៖ លំនាំដែលមើលទៅចៃដន្យ និងរីករាយ។”',
-        '"កម្រិតសំឡេងរំខានពណ៌ខៀវ៖ កម្រិតសំឡេងរំខានញ័រជាមួយនឹងវាយនភាពសំឡេងរំខានពណ៌ខៀវ។”',
-        '"សំឡេងពណ៌ស៖ ការញ័រកម្រិតចៃដន្យ។”',
-        '"សំឡេងរំខានហ្គោសៀន/ត្រីកោណ៖ សំឡេងរំខានដែលមានការចែកចាយខុសៗគ្នា។”',
-        '"សំឡេងរំខានពណ៌ខៀវ + ការសាយភាយកំហុស៖ ការរួមបញ្ចូលគ្នារវាងបច្ចេកទេសទាំងពីរ។”',
-        '"សំឡេងពណ៌ខៀវដែលត្រូវបានបិទបាំង៖ លំនាំសំឡេងពណ៌ខៀវដូចអេក្រង់។”',
-        '"ការយល់ឃើញ៖ ថ្លឹងថ្លែងពន្លឺសម្រាប់លទ្ធផលមើលឃើញកាន់តែប្រសើរ”។',
-        '"យល់ដឹងពីគែម៖ រក្សាគែមរូបភាពអំឡុងពេលធ្វើឲ្យស្រអាប់”។',
-        '"កម្រិត​សម្រប​ខ្លួន៖ កម្រិត​សម្រប​ខ្លួន​ក្នុង​តំបន់”។',
-        '"សំឡេងពណ៌ខៀវបណ្ដោះអាសន្ន៖ សម្រាប់ GIF ដែលមានចលនា លំនាំខុសៗគ្នាក្នុងមួយហ្វ្រេម។”',
-      ],
-    },
-    {
-      heading: '"គ្រាប់​សាយភាយ”',
-      paragraphs: [
-        '"នៅពេលប្រើការចែកចាយកំហុសដោយ dithering សូមជ្រើសរើសរបៀបដែលកំហុសត្រូវបានចែកចាយ៖”',
-      ],
-      bullets: [
-        '"Floyd-Steinberg៖ ការសាយភាយ​បែប​បុរាណ​រវាង​អ្នកជិតខាង ៤ នាក់។ ជម្រើស​ទូទៅ​ល្អ។”',
-        '"ចាវីស-ជូឌីស-នីនគី៖ អ្នកជិតខាង ១២ នាក់ រលូនជាង ប៉ុន្តែយឺតជាង។”',
-        '"Stucki៖ ស្រដៀង​គ្នា​នឹង JJN ដែល​មាន​ទម្ងន់​ខុស​គ្នា។”',
-        '"Burkes៖ ធ្វើឱ្យ JJN សាមញ្ញ លឿនជាងមុន។”',
-        '"សៀរ៉ា៖ ក្រុមគ្រួសារនៃគ្រាប់ធញ្ញជាតិដែលមានតុល្យភាពរវាងគុណភាព និងល្បឿន”។',
-        '"អាតគីនសុន៖ ការសាយភាយពន្លឺ រក្សាព័ត៌មានលម្អិត ប៉ុន្តែអាចមានសភាពគ្រើមៗ។”',
-      ],
+      heading: 'Diffusion Kernels',
+      paragraphs: ['When using Error Diffusion dithering, choose how error is distributed:'],
+      bullets: ['Floyd-Steinberg: Classic 4-neighbor diffusion. Good general choice.', 'Jarvis-Judice-Ninke: 12-neighbor, smoother but slower.', 'Stucki: Similar to JJN with different weights.', 'Burkes: Simplified JJN, faster.', 'Sierra: Family of kernels balancing quality and speed.', 'Atkinson: Light diffusion, preserves detail but can be grainy.'],
     },
     {
-      heading: '«កម្លាំង​ច្របូកច្របល់»',
-      paragraphs: [
-        '"គ្រប់គ្រង​ចំនួន​នៃ​ការ​អនុវត្ត​ការ​ធ្វើ​ឲ្យ​ស្រអាប់ (០-១០០%)។ តម្លៃ​ទាប​រក្សា​លំនាំ​ដើម​បាន​ច្រើន តម្លៃ​ខ្ពស់​បង្ហាញ​ព័ត៌មាន​លម្អិត​រូបភាព​បាន​ច្រើន”។',
-      ],
+      heading: 'Dither Strength',
+      paragraphs: ['Controls how much dithering is applied (0-100%). Lower values preserve more of the original pattern, higher values show more image detail.'],
     },
     {
-      heading: '"ការកំណត់​ភីកសែល​រង”',
-      paragraphs: [
-        '"ពេលប្រើរបៀបលាយបញ្ចូលគ្នា Subpixel៖”',
-      ],
-      bullets: [
-        '"ទំហំក្រឡាចត្រង្គ៖ ភីកសែលរង 2×2, 3×3 ឬ 4×4 ក្នុងមួយម៉ូឌុល។ កាន់តែខ្ពស់ = ព័ត៌មានលម្អិតកាន់តែច្រើន។”',
-        '"ច្បាប់កណ្តាល៖ តឹងរ៉ឹងតម្រូវឱ្យភីកសែលរងកណ្តាលត្រូវគ្នានឹងម៉ូឌុល។ កណ្តាល Halftone អនុញ្ញាតឱ្យមានការប្រែប្រួល។”',
-        '"ពណ៌អព្យាក្រឹត៖ ពណ៌ដែលប្រើសម្រាប់ភីកសែលរងដែលមិនទាន់កំណត់។”',
-        '"ការ​ជំនួស​ឧបករណ៍​ស្វែងរក៖ របៀប​ដែល​លំនាំ​ឧបករណ៍​ស្វែងរក​ត្រូវ​បាន​បង្ហាញ (រឹង ឬ​មាន​រចនាប័ទ្ម)។”',
-      ],
+      heading: 'Subpixel Settings',
+      paragraphs: ['When using Subpixel blend mode:'],
+      bullets: ['Grid Size: 2×2, 3×3, or 4×4 subpixels per module. Higher = more detail.', 'Center Rule: Strict requires center subpixel to match module. Halftone Center allows variation.', 'Neutral Color: Color used for undetermined subpixels.', 'Finder Override: How finder patterns are rendered (Solid or Stylized).'],
     },
     {
-      heading: '"ការកំណត់​ពាក់កណ្តាល​សម្លេង”',
-      paragraphs: [
-        '"ពេលប្រើរបៀបលាយ Halftone៖”',
-      ],
-      bullets: [
-        '"ទំហំក្រឡា៖ ក្នុងមួយម៉ូឌុល ឬក្រឡាចត្រង្គ N×N”។',
-        '"រាងចំណុច៖ រង្វង់ ការ៉េ ឬបន្ទាត់។”',
-        '"ខ្សែកោងពន្លឺ៖ លីនេអ៊ែរ ខ្សែកោងរាងអក្សរ S ឬហ្គាម៉ា។”',
-      ],
+      heading: 'Halftone Settings',
+      paragraphs: ['When using Halftone blend mode:'],
+      bullets: ['Cell Size: Per Module or N×N grid.', 'Dot Shape: Circle, Square, or Line.', 'Brightness Curve: Linear, S-Curve, or Gamma.'],
     },
     {
-      heading: '"ពណ៌​ឌុយ​តូន”',
-      paragraphs: [
-        '"នៅពេលប្រើរបៀបលាយបញ្ចូលគ្នា Duotone សូមកំណត់ពណ៌ស្រមោល (តំបន់ងងឹត) និងពណ៌បន្លិច (តំបន់ភ្លឺ)។”',
-      ],
+      heading: 'Duotone Colors',
+      paragraphs: ['When using Duotone blend mode, set the Shadow color (dark areas) and Highlight color (bright areas).'],
     },
     {
-      heading: '"ការកំណត់ចលនា GIF”',
-      paragraphs: [
-        '"ពេលប្រើការលាប GIF ដែលមានចលនា៖”',
-      ],
-      bullets: [
-        '"ប្រើ​ការ​ពន្យារ​ពេល​ស៊ុម៖ គោរព​ពេលវេលា GIF ដើម។”',
-        '"FPS អតិបរមា៖ កំណត់អត្រាស៊ុម (១-៦០ fps)។”',
-        '"ការដោះស្រាយការចោលសំរាម៖ គោរព ឬធ្វើឱ្យវិធីសាស្រ្តចោលសំរាមមានលក្ខណៈសាមញ្ញ”។',
-      ],
+      heading: 'GIF Animation Settings',
+      paragraphs: ['When using animated GIF overlays:'],
+      bullets: ['Use Frame Delays: Respect original GIF timing.', 'Max FPS: Limit frame rate (1-60 fps).', 'Disposal Handling: Respect or Simplify frame disposal methods.'],
     },
     {
-      heading: '"ជម្រើសបង្ហាញកម្រិតខ្ពស់”',
-      paragraphs: [
-        '"ការគ្រប់គ្រងការបង្ហាញបន្ថែម៖”',
-      ],
-      bullets: [
-        '"របៀប​គម្លាត៖ គ្មាន ការបញ្ចូល បន្ទាត់​កោង ឬ​រចនាប័ទ្ម​គម្លាត​អវិជ្ជមាន។”',
-        '"កាំជ្រុង៖ ភាគរយជ្រុងមូលសម្រាប់ម៉ូឌុល។”',
-        '"ជម្រាល៖ គ្មាន លីនេអ៊ែរ រ៉ាឌីយ៉ាល់ ឬ ជម្រាលរាងកោណលើម៉ូឌុល។”',
-        '"រចនាប័ទ្មខាងក្រៅ/ខាងក្នុងភ្នែក៖ រចនាប័ទ្មឯករាជ្យសម្រាប់ចិញ្ចៀនលំនាំឧបករណ៍ស្វែងរក។”',
-        '"ការបង្វិលចំណុច៖ បង្វិលម៉ូឌុលពេជ្រ/ចំណុច”។',
-        '"មាត្រដ្ឋានភ្នែក៖ ការកែតម្រូវទំហំសម្រាប់លំនាំឧបករណ៍ស្វែងរក។”',
-        '"រចនាប័ទ្មស៊ុម៖ បន្ថែមស៊ុមតុបតែង (ស៊ុមមូល ស្ទីគ័រ ស្លាក)។”',
-        '"អត្ថបទ​ស៊ុម៖ បន្ថែម​អត្ថបទ​ដូចជា "ស្កេន​ខ្ញុំ!" ទៅ​ក្នុង​ស៊ុម។”',
-      ],
+      heading: 'Advanced Rendering Options',
+      paragraphs: ['Additional rendering controls:'],
+      bullets: ['Gap Mode: None, Inset, Stroke, or Negative Space gap styling.', 'Corner Radius: Rounded corners percentage for modules.', 'Gradient: None, Linear, Radial, or Conic gradient on modules.', 'Eye Outer/Inner Style: Independent styling for finder pattern rings.', 'Dot Rotation: Rotate diamond/dot modules.', 'Eye Scale: Size adjustment for finder patterns.', 'Frame Style: Add decorative frames (Rounded Frame, Sticker, Tag).', 'Frame Text: Add text like "Scan Me!" to frames.'],
     },
     {
-      heading: '"ការអ៊ិនកូដ QR កម្រិតខ្ពស់”',
-      paragraphs: [
-        '"កែសម្រួល​ការអ៊ិនកូដ QR ឲ្យ​បាន​ល្អិតល្អន់៖”',
-      ],
-      bullets: [
-        '"របៀបអ៊ិនកូដ៖ ស្វ័យប្រវត្តិ លេខ អក្សរក្រមលេខ បៃ/UTF-8 ឬ កាន់ជី។”',
-        '"អនុវត្តតំបន់ស្ងាត់អប្បបរមា៖ ធានាយ៉ាងហោចណាស់ 4 រឹមម៉ូឌុល។”',
-      ],
+      heading: 'Advanced QR Encoding',
+      paragraphs: ['Fine-tune QR encoding:'],
+      bullets: ['Encoding Mode: Auto, Numeric, Alphanumeric, Byte/UTF-8, or Kanji.', 'Enforce Min Quiet Zone: Ensure at least 4 module margin.'],
     },
     {
-      heading: '"ជម្រើស​ទិន្នផល​កម្រិត​ខ្ពស់”',
-      paragraphs: [
-        '"ការកំណត់នាំចេញបន្ថែម៖”',
-      ],
-      bullets: [
-        '"ឈ្មោះឯកសារ៖ ឈ្មោះឯកសារផ្ទាល់ខ្លួនសម្រាប់ការទាញយក។”',
-        '"ទំហំ​ក្ដារលាយ GIF៖ ២-២៥៦ ពណ៌​ក្នុង​លទ្ធផល GIF។”',
-        '"ឧបករណ៍​បង្កើន​បរិមាណ GIF៖ ការ​កាត់​បន្ថយ​ពណ៌​មេឌីយ៉ាន, NeuQuant ឬ Octree។”',
-        '"ការញ័រ GIF៖ បិទ Floyd-Steinberg ឬ​ត្រូវ​បាន​បញ្ជា។”',
-        '"ពណ៌ថ្លា GIF៖ កំណត់ពណ៌ឱ្យថ្លា។”',
-        '"វ៉ិចទ័រពិត SVG៖ ប្រើផ្លូវជំនួសឱ្យរ៉ាស្ទ័រដែលបានបង្កប់។”',
-        '"ភាពជាក់លាក់នៃរូបរាង SVG៖ ការបង្ហាញភីកសែល ឬផ្លូវជាក់លាក់។”',
-        '"SVG Embed Raster Overlay៖ រួមបញ្ចូល​ការ​ Overlay ជា​រូបភាព​ដែល​បាន​បង្កប់។”',
-        '"ការ​បដិសេធ​ផ្ទៃ​ខាង​ក្រោយ៖ បង្ខំ​ពណ៌​ផ្ទៃ​ខាង​ក្រោយ​ជាក់លាក់​មួយ​នៅ​ក្នុង​លទ្ធផល។”',
-      ],
+      heading: 'Advanced Output Options',
+      paragraphs: ['Additional export settings:'],
+      bullets: ['Filename: Custom filename for downloads.', 'GIF Palette Size: 2-256 colors in GIF output.', 'GIF Quantizer: Median Cut, NeuQuant, or Octree color reduction.', 'GIF Dithering: Off, Floyd-Steinberg, or Ordered.', 'GIF Transparent Color: Set a color to be transparent.', 'SVG True Vector: Use paths instead of embedded raster.', 'SVG Shape Precision: Pixel or Precise path rendering.', 'SVG Embed Raster Overlay: Include overlay as embedded image.', 'Background Override: Force a specific background color in output.'],
     },
     {
-      heading: '"ជម្រើស​ផ្ទៀងផ្ទាត់”',
-      paragraphs: [
-        '"ការកំណត់ដំណើរការបញ្ចូល៖”',
-      ],
-      bullets: [
-        '"ផ្ទៀងផ្ទាត់​ការ​បញ្ចូល៖ ពិនិត្យ​ទ្រង់ទ្រាយ​មាតិកា​មុន​ពេល​អ៊ិនកូដ។”',
-        '"កាត់​បន្ថយ​ចន្លោះ​ទទេ៖ លុប​ចន្លោះ​ខាង​មុខ/ខាង​ក្រោយ។”',
-        '"ធ្វើឱ្យបន្ទាត់ថ្មីមានលក្ខណៈធម្មតា៖ បម្លែងចុងបញ្ចប់នៃបន្ទាត់ទាំងអស់ទៅជា LF។”',
-        '"ការ​ការពារ​ប្រវែង​អតិបរមា៖ ព្រមាន​ប្រសិនបើ​ខ្លឹមសារ​លើស​សមត្ថភាព QR”។',
-      ],
+      heading: 'Validation Options',
+      paragraphs: ['Input processing settings:'],
+      bullets: ['Validate Input: Check content format before encoding.', 'Trim Whitespace: Remove leading/trailing spaces.', 'Normalize Newlines: Convert all line endings to LF.', 'Max Length Guard: Warn if content exceeds QR capacity.'],
     },
     {
-      heading: '"លក្ខណៈពិសេសវិជ្ជាជីវៈ”',
-      paragraphs: [
-        '"កម្រិត​វិជ្ជាជីវៈ​បន្ថែម​រូប​សញ្ញា​សម្គាល់​ទឹក ទិន្នន័យ​មេតា ជម្រើស​ចែករំលែក ការវិភាគ​សុវត្ថិភាព កូដ QR ទូទាត់ និង​មុខងារ​សហគ្រាស”។',
-      ],
+      heading: 'Professional Features',
+      paragraphs: ['The Professional level adds watermarks, metadata, sharing options, safety analysis, payment QR codes, and enterprise features.'],
     },
     {
-      heading: '"សញ្ញាទឹក”',
-      paragraphs: [
-        '"បន្ថែម​រូប​សម្គាល់​ទឹក​ទៅ​កាន់​កូដ QR របស់​អ្នក៖”',
-      ],
-      bullets: [
-        '"ប្រភេទ៖ អក្សរ រូបភាព ឬរូបសញ្ញាសម្គាល់លំនាំ”',
-        '"ទីតាំង៖ កណ្តាល ជ្រុង គែម នៅពីក្រោយ ឬតំបន់ស្ងាត់។”',
-        '"ភាពស្រអាប់៖ តម្លាភាពនៃរូបសញ្ញាទឹក (០-១០០%)”។',
-        '"របៀបលាយបញ្ចូលគ្នា៖ ធម្មតា គុណ អេក្រង់ ឬលាយបញ្ចូលគ្នាពីលើ។”',
-      ],
+      heading: 'Watermark',
+      paragraphs: ['Add watermarks to your QR codes:'],
+      bullets: ['Kind: Text, Image, or Pattern watermark.', 'Position: Center, Corners, Edges, Behind, or Quiet Zone.', 'Opacity: Watermark transparency (0-100%).', 'Blend Mode: Normal, Multiply, Screen, or Overlay blending.'],
     },
     {
-      heading: '"ទិន្នន័យមេតា”',
-      paragraphs: [
-        '"បង្កប់​ទិន្នន័យ​មេតា​ក្នុង​ឯកសារ​ដែល​បាន​នាំចេញ៖”',
-      ],
-      bullets: [
-        '"វាលចំណងជើង, អ្នកនិពន្ធ, ការរក្សាសិទ្ធិ, អាជ្ញាប័ណ្ណ, ការពិពណ៌នា។”',
-        '"ពេលវេលាបង្កើត៖ បង្កប់ត្រាពេលវេលាបង្កើត។”',
-        '"តម្លៃ​សោ​ផ្ទាល់ខ្លួន៖ បន្ថែម​គូ​ទិន្នន័យ​មេតា​តាម​អំពើចិត្ត។”',
-      ],
+      heading: 'Metadata',
+      paragraphs: ['Embed metadata in exported files:'],
+      bullets: ['Title, Author, Copyright, License, Description fields.', 'Creation Time: Embed generation timestamp.', 'Custom Key-Value: Add arbitrary metadata pairs.'],
     },
     {
-      heading: '«ការចែករំលែក»',
-      paragraphs: [
-        '"ចែករំលែកការកំណត់រចនាសម្ព័ន្ធលេខកូដ QR របស់អ្នក៖”',
-      ],
-      bullets: [
-        '"តំណភ្ជាប់ផ្ទាល់៖ បង្កើត URL ដែលអាចចែករំលែកបានជាមួយនឹងការកំណត់បច្ចុប្បន្នរបស់អ្នក។”',
-        '"បង្កប់ HTML៖ ទទួលបានកូដបង្កប់សម្រាប់គេហទំព័រ។”',
-        '"ប៉ារ៉ាម៉ែត្រ​អ៊ិនកូដ៖ រួមបញ្ចូល​ការកំណត់​ទាំងអស់​នៅក្នុង URL ចែករំលែក។”',
-        '"ចំណាំ៖ រូបភាព​ដែល​ដាក់​ពីលើ​ពី​ឯកសារ​ក្នុង​មូលដ្ឋាន​មិន​អាច​ចែករំលែក​តាមរយៈ URL បាន​ទេ។”',
-      ],
+      heading: 'Sharing',
+      paragraphs: ['Share your QR code configurations:'],
+      bullets: ['Direct Link: Generate a shareable URL with your current settings.', 'Embed HTML: Get embed code for websites.', 'Encode Parameters: Include all settings in the share URL.', 'Note: Overlay images from local files cannot be shared via URL.'],
     },
     {
-      heading: '"ការវិភាគសុវត្ថិភាព”',
-      paragraphs: [
-        '"ធានាថាលេខកូដ QR នៅតែអាចស្កេនបាន៖”',
-      ],
-      bullets: [
-        '"របៀបសុវត្ថិភាព៖ តម្រូវការស្កេនបិទ មានតុល្យភាព ឬតឹងរ៉ឹង”។',
-        '"ទំហំម៉ូឌុលអប្បបរមា៖ ទំហំភីកសែលអប្បបរមាក្នុងមួយម៉ូឌុល។”',
-        '"តំបន់ស្ងាត់អប្បបរមា៖ ម៉ូឌុលរឹមអប្បបរមា”។',
-        '"ចាក់សោឧបករណ៍ស្វែងរក/កំណត់ពេលវេលា/តម្រឹម/ធ្វើទ្រង់ទ្រាយ/កំណែ៖ ការពារធាតុជាក់លាក់។”',
-        '"អាំងតង់ស៊ីតេ​អតិបរមា​នៃ​ការ​លាប​លើ​ដោយ ECC៖ ដែនកំណត់​អាំងតង់ស៊ីតេ​ស្វ័យប្រវត្តិ​ផ្អែក​លើ​កម្រិត​កែ​កំហុស”។',
-      ],
+      heading: 'Safety Analysis',
+      paragraphs: ['Ensure QR codes remain scannable:'],
+      bullets: ['Safety Mode: Off, Balanced, or Strict scanning requirements.', 'Min Module Size: Minimum pixel size per module.', 'Min Quiet Zone: Minimum margin modules.', 'Lock Finders/Timing/Align/Format/Version: Protect specific elements.', 'Max Overlay Intensity by ECC: Automatic intensity limits based on error correction level.'],
     },
     {
-      heading: '"ប្រភេទមាតិកា (វិជ្ជាជីវៈ)”',
-      paragraphs: [
-        '"កម្រិតវិជ្ជាជីវៈបន្ថែមប្រភេទមាតិកាទូទាត់ និងសហគ្រាស៖”',
-      ],
-      bullets: [
-        '"EPC/SEPA (EU): លេខកូដ QR សម្រាប់ផ្ទេរប្រាក់តាមធនាគារអឺរ៉ុប ដែលមាន IBAN, BIC, ចំនួនទឹកប្រាក់, ឯកសារយោង”។',
-        '"UPI (ឥណ្ឌា)៖ ចំណុចប្រទាក់ទូទាត់បង្រួបបង្រួមជាមួយ VPA ឈ្មោះអ្នកទទួលប្រាក់ និងចំនួនទឹកប្រាក់។”',
-        '"PayNow (សិង្ហបុរី)៖ ការទូទាត់រហ័សនៅប្រទេសសិង្ហបុរីជាមួយ UEN ឬលេខទូរស័ព្ទចល័ត។”',
-        '"PromptPay (ប្រទេសថៃ)៖ ប្រព័ន្ធទូទាត់ជាតិថៃ”។',
-        '"PIX (ប្រេស៊ីល)៖ ការទូទាត់ប្រាក់ភ្លាមៗរបស់ប្រេស៊ីលជាមួយសោ PIX។”',
-        '"រូបិយប័ណ្ណគ្រីបតូ៖ អាសយដ្ឋានទូទាត់ Bitcoin, Ethereum, Litecoin ជាមួយនឹងចំនួនទឹកប្រាក់ស្រេចចិត្ត។”',
-        '"តំណភ្ជាប់យុទ្ធនាការទីផ្សារ៖ URL ដែលមានការតាមដានប៉ារ៉ាម៉ែត្រ UTM ពេញលេញ (ស្លាកទីផ្សារ)។”',
-        '"តំណភ្ជាប់ខ្លី៖ សម្រាប់ប្រើជាមួយកម្មវិធីបង្រួម URL សម្រាប់លេខកូដ QR ថាមវន្ត/អាចតាមដានបាន។”',
-        '"តំណភ្ជាប់ឌីជីថល GS1៖ ការកំណត់អត្តសញ្ញាណផលិតផលជាមួយ GTIN ស៊េរី បាច់ ថ្ងៃផុតកំណត់”។',
-        '"តំណភ្ជាប់ជ្រៅសម្រាប់កម្មវិធី៖ តំណភ្ជាប់ជ្រៅសម្រាប់កម្មវិធី iOS/Android ជាមួយនឹងគ្រោងការណ៍ផ្ទាល់ខ្លួន។”',
-        '"ទម្រង់​ផ្ទាល់ខ្លួន៖ ទិន្នន័យ​ឆៅ​ដោយ​គ្មាន​ការ​ធ្វើ​ទ្រង់ទ្រាយ ឬ​ការ​ផ្ទៀងផ្ទាត់។”',
-      ],
+      heading: 'Content Types (Professional)',
+      paragraphs: ['Professional level adds payment and enterprise content types:'],
+      bullets: ['EPC/SEPA (EU): European bank transfer QR codes with IBAN, BIC, amount, reference.', 'UPI (India): Unified Payments Interface with VPA, payee name, amount.', 'PayNow (Singapore): Singapore fast payment with UEN or mobile number.', 'PromptPay (Thailand): Thai national payment system.', 'PIX (Brazil): Brazilian instant payment with PIX key.', 'Crypto: Bitcoin, Ethereum, Litecoin payment addresses with optional amount.', 'Marketing Campaign Link: URLs with full UTM parameter (Marketing Tags) tracking.', 'Short Link: For use with URL shorteners for dynamic/trackable QR codes.', 'GS1 Digital Link: Product identification with GTIN, serial, batch, expiry.', 'App Deep Link: iOS/Android app deep links with custom schemes.', 'Custom Format: Raw data with no formatting or validation.'],
     },
     {
-      heading: '"ការទូទាត់ពាក់ព័ន្ធនឹងភាសាក្នុងរបៀបកម្រិតខ្ពស់”',
-      paragraphs: [
-        '"នៅពេលប្រើរបៀបកម្រិតខ្ពស់ ANQR បង្ហាញវិធីសាស្ត្រទូទាត់ដែលពាក់ព័ន្ធនឹងភាសាដែលអ្នកបានជ្រើសរើសដោយស្វ័យប្រវត្តិ។ ឧទាហរណ៍ អ្នកប្រើប្រាស់វៀតណាមឃើញ VietQR អ្នកប្រើប្រាស់ថៃឃើញ PromptPay និងអ្នកប្រើប្រាស់ភាសាឥណ្ឌាឃើញ UPI និង BharatQR។ វិធីសាស្ត្រទូទាត់សកល (រូបិយប័ណ្ណឌីជីថល PayPal កម្មវិធីសាច់ប្រាក់) អាចប្រើបានគ្រប់ភាសា។ របៀបវិជ្ជាជីវៈដោះសោស្តង់ដារទូទាត់ទាំងអស់ដោយមិនគិតពីភាសា។”',
-      ],
+      heading: 'Language-Relevant Payments in Advanced Mode',
+      paragraphs: ['When using Advanced mode, ANQR automatically shows payment methods relevant to your selected language. For example, Vietnamese users see VietQR, Thai users see PromptPay, and Indian language users see UPI and BharatQR. Global payment methods (cryptocurrency, PayPal, Cash App) are available to all languages. Professional mode unlocks all payment standards regardless of language.'],
     },
     {
-      heading: '"ស្តង់ដារទូទាត់អឺរ៉ុប”',
-      bullets: [
-        '"EPC/SEPA (EU): លេខកូដ QR ផ្ទេរប្រាក់តាមធនាគារអឺរ៉ុប ដោយអនុវត្តតាមស្តង់ដារលេខកូដ QR របស់ EPC។ គាំទ្រ IBAN, BIC (ស្រេចចិត្តសម្រាប់ក្នុងស្រុក) ចំនួនទឹកប្រាក់ជា EUR និងឯកសារយោងការទូទាត់ដែលមានរចនាសម្ព័ន្ធ ឬមិនមានរចនាសម្ព័ន្ធ។ ប្រើប្រាស់នៅទូទាំងតំបន់ SEPA រួមទាំងប្រទេស EU បូករួមទាំងប្រទេសស្វីស ន័រវែស អ៊ីស្លង់ លីចថេនស្តាញ ម៉ូណាកូ និងសាន់ម៉ារីណូ។”',
-        '"វិក្កយបត្រ QR ស្វីស៖ ស្តង់ដារទូទាត់របស់ស្វីស ដោយអនុវត្តតាមគោលការណ៍ណែនាំអនុវត្ត SIX។ គាំទ្រ CHF និង EUR, QR-Reference (QRR), Creditor Reference (ISO 11649), អាសយដ្ឋានម្ចាស់បំណុល/កូនបំណុលដែលមានរចនាសម្ព័ន្ធ និងព័ត៌មានវិក្កយបត្រ។ តម្រូវសម្រាប់វិក្កយបត្រស្វីសចាប់តាំងពីឆ្នាំ ២០២២។”',
-      ],
+      heading: 'European Payment Standards',
+      bullets: ['EPC/SEPA (EU): European bank transfer QR codes following the EPC QR Code Standard. Supports IBAN, BIC (optional for domestic), amount in EUR, and structured or unstructured payment references. Used across the SEPA zone including EU countries plus Switzerland, Norway, Iceland, Liechtenstein, Monaco, and San Marino.', 'Swiss QR-bill: Swiss payment standard following SIX Implementation Guidelines. Supports CHF and EUR, QR-Reference (QRR), Creditor Reference (ISO 11649), structured creditor/debtor addresses, and bill information. Required for Swiss invoices since 2022.'],
     },
     {
-      heading: '"ស្តង់ដារទូទាត់របស់ឥណ្ឌា”',
-      bullets: [
-        '"UPI (ឥណ្ឌា)៖ ចំណុចប្រទាក់ទូទាត់បង្រួបបង្រួមដោយអនុវត្តតាមការបញ្ជាក់ NPCI Deep Linking។ គាំទ្រ VPA (អាសយដ្ឋានទូទាត់និម្មិត) ឈ្មោះអ្នកទទួលប្រាក់ ចំនួនទឹកប្រាក់ជា INR កំណត់ចំណាំប្រតិបត្តិការ លេខសម្គាល់ឯកសារយោង លេខកូដប្រភេទអាជីវករ និងរបៀបប្រតិបត្តិការ។”',
-        '"BharatQR (ឥណ្ឌា)៖ ស្តង់ដារ QR បង្រួបបង្រួមដែលគាំទ្រទាំងការទូទាត់តាម UPI និងកាត។ ផ្សំ UPI VPA ជាមួយ PAN កាតសម្រាប់ភាពឆបគ្នាអតិបរមា។ រួមបញ្ចូលឈ្មោះអាជីវករ ទីក្រុង MCC ព័ត៌មានលម្អិតអំពី GST និងលេខវិក្កយបត្រ/លេខយោង។”',
-      ],
+      heading: 'Indian Payment Standards',
+      bullets: ['UPI (India): Unified Payments Interface following NPCI Deep Linking Specification. Supports VPA (Virtual Payment Address), payee name, amount in INR, transaction note, reference ID, merchant category code, and transaction mode.', 'BharatQR (India): Unified QR standard supporting both UPI and card-based payments. Combines UPI VPA with card PAN for maximum compatibility. Includes merchant name, city, MCC, GST details, and invoice/reference numbers.'],
     },
     {
-      heading: '"ស្តង់ដារទូទាត់ប្រាក់អាស៊ីអាគ្នេយ៍”',
-      bullets: [
-        '"PayNow (សិង្ហបុរី)៖ ប្រព័ន្ធទូទាត់រហ័សសិង្ហបុរីដោយប្រើការបញ្ជាក់ EMVCo QR ជាមួយទម្រង់ SGQR។ គាំទ្រ UEN (ការចុះបញ្ជីអាជីវកម្ម) លេខទូរស័ព្ទចល័ត ឬ NRIC ជាឧបករណ៍កំណត់អត្តសញ្ញាណប្រូកស៊ី។ រួមបញ្ចូលទង់ជាតិសម្រាប់កែសម្រួលចំនួនទឹកប្រាក់ និងកាលបរិច្ឆេទផុតកំណត់។”',
-        '"PromptPay (ប្រទេសថៃ)៖ ប្រព័ន្ធទូទាត់ប្រាក់ជាតិថៃ ដោយអនុវត្តតាមទម្រង់ EMV របស់ធនាគារថៃ។ គាំទ្រលេខទូរស័ព្ទចល័ត អត្តសញ្ញាណប័ណ្ណ អត្តសញ្ញាណពន្ធ អត្តសញ្ញាណកាបូបអេឡិចត្រូនិច និងការទូទាត់វិក្កយបត្រជាមួយវាលយោងច្រើន។”',
-        '"QRIS (ឥណ្ឌូនេស៊ី): លេខកូដឆ្លើយតបរហ័ស ស្តង់ដារឥណ្ឌូនេស៊ី។ ស្តង់ដារទូទាត់ជាតិដែលមានមូលដ្ឋានលើ EMV ដែលគាំទ្រអត្តសញ្ញាណអ្នកលក់ លេខសម្គាល់អ្នកលក់ជាតិ (NMID) ការចាត់ថ្នាក់លក្ខណៈវិនិច្ឆ័យអ្នកលក់ និងថ្លៃសេវាងាយស្រួល (ថេរ ឬភាគរយ)។”',
-        '"DuitNow (ម៉ាឡេស៊ី)៖ ប្រព័ន្ធទូទាត់ប្រាក់ភ្លាមៗរបស់ម៉ាឡេស៊ី។ គាំទ្រប្រភេទប្រូកស៊ីច្រើនប្រភេទ រួមទាំង NRIC ទូរស័ព្ទចល័ត លិខិតឆ្លងដែន អត្តសញ្ញាណប័ណ្ណកងទ័ព និងលេខចុះបញ្ជីអាជីវកម្ម។”',
-        '"VietQR (វៀតណាម)៖ ស្តង់ដារផ្ទេរប្រាក់អន្តរធនាគារវៀតណាម។ តម្រូវឱ្យមាន BIN ធនាគារ (អត្តសញ្ញាណ NAPAS) និងលេខគណនី។ គាំទ្រលេខកូដសេវាកម្មច្រើនសម្រាប់ប្រភេទផ្ទេរផ្សេងៗគ្នា (QRPUSH, QRIBFTTA, QRIBFTTC)។”',
-        '"QR Ph (ហ្វីលីពីន)៖ ស្តង់ដារទូទាត់ប្រាក់ QR របស់ហ្វីលីពីនសម្រាប់ InstaPay និង PESONet។ ប្រើប្រាស់លេខគណនីដែលមានអត្តសញ្ញាណអាជីវករសម្រាប់ប្រតិបត្តិការ P2M (បុគ្គលទៅអាជីវករ)។”',
-      ],
+      heading: 'Southeast Asian Payment Standards',
+      bullets: ['PayNow (Singapore): Singapore fast payment system using EMVCo QR specification with SGQR profile. Supports UEN (business registration), mobile number, or NRIC as proxy identifiers. Includes amount editability flag and expiry date.', 'PromptPay (Thailand): Thai national payment system following Bank of Thailand EMV profile. Supports mobile number, national ID, tax ID, e-wallet ID, and bill payment with multiple reference fields.', 'QRIS (Indonesia): Quick Response Code Indonesian Standard. EMV-based national payment standard supporting merchant ID, NMID (National Merchant ID), merchant criteria classification, and convenience fees (fixed or percentage).', 'DuitNow (Malaysia): Malaysian instant payment system. Supports multiple proxy types including NRIC, mobile, passport, army ID, and business registration numbers.', 'VietQR (Vietnam): Vietnamese interbank transfer standard. Requires bank BIN (NAPAS identification) and account number. Supports multiple service codes for different transfer types (QRPUSH, QRIBFTTA, QRIBFTTC).', 'QR Ph (Philippines): Philippine QR payment standard for InstaPay and PESONet. Uses account numbers with merchant identification for P2M (person-to-merchant) transactions.'],
     },
     {
-      heading: '"ស្តង់ដារទូទាត់អាស៊ីបូព៌ា”',
-      bullets: [
-        '"TWQR (តៃវ៉ាន់)៖ ស្តង់ដារទូទាត់ប្រាក់ QR របស់តៃវ៉ាន់។ គាំទ្រអត្តសញ្ញាណអ្នកលក់ អត្តសញ្ញាណពន្ធ និងចំនួនទឹកប្រាក់ TWD។”',
-        '"HKQR/FPS (ហុងកុង)៖ លេខកូដ QR ប្រព័ន្ធទូទាត់លឿនជាងមុនរបស់ហុងកុង។ គាំទ្រ FPS ID លេខទូរស័ព្ទចល័ត ឬអ៊ីមែលជាឧបករណ៍កំណត់អត្តសញ្ញាណការទូទាត់។ ចំនួនទឹកប្រាក់ជា HKD។”',
-        '"JPQR (ជប៉ុន)៖ ស្តង់ដារទូទាត់លេខកូដ QR បង្រួបបង្រួមរបស់ជប៉ុន។ ប្រើប្រាស់លេខសម្គាល់ហាងសម្រាប់ការកំណត់អត្តសញ្ញាណអ្នកលក់ជាមួយនឹងចំនួនទឹកប្រាក់ JPY។”',
-      ],
+      heading: 'East Asian Payment Standards',
+      bullets: ['TWQR (Taiwan): Taiwanese QR payment standard. Supports merchant ID, tax ID, and TWD amounts.', 'HKQR/FPS (Hong Kong): Hong Kong Faster Payment System QR codes. Supports FPS ID, mobile number, or email as payment identifiers. Amounts in HKD.', 'JPQR (Japan): Japanese unified QR code payment standard. Uses store ID for merchant identification with JPY amounts.'],
     },
     {
-      heading: '"ស្តង់ដារទូទាត់ក្នុងតំបន់ផ្សេងទៀត”',
-      bullets: [
-        '"PIX (ប្រេស៊ីល)៖ ប្រព័ន្ធទូទាត់ប្រាក់ភ្លាមៗរបស់ធនាគារកណ្តាលប្រេស៊ីល ដោយអនុវត្តតាមការបញ្ជាក់លេខកូដ BR។ គាំទ្រសោ PIX (CPF, CNPJ, អ៊ីមែល, ទូរស័ព្ទ ឬសោចៃដន្យ) ឈ្មោះ/ទីក្រុងអាជីវករ លេខសម្គាល់ប្រតិបត្តិការ និងចំនួនទឹកប្រាក់ BRL។”',
-        '"AusPayNet/NPP PayID (អូស្ត្រាលី)៖ ប្រព័ន្ធ PayID វេទិកាទូទាត់ថ្មីរបស់អូស្ត្រាលី។ គាំទ្រប្រភេទ PayID (អ៊ីមែល ទូរស័ព្ទចល័ត ABN លេខសម្គាល់អង្គការ) ឬលេខគណនី BSB + បែបប្រពៃណី។ ឈ្មោះអាជីវករគឺស្រេចចិត្ត ព្រោះអ្នកបង់ប្រាក់ឃើញឈ្មោះដែលបានចុះឈ្មោះពីការស្វែងរក NPP។”',
-      ],
+      heading: 'Other Regional Payment Standards',
+      bullets: ['PIX (Brazil): Brazilian Central Bank instant payment system following BR Code specification. Supports PIX keys (CPF, CNPJ, email, phone, or random key), merchant name/city, transaction ID, and BRL amounts.', 'AusPayNet/NPP PayID (Australia): Australian New Payments Platform PayID system. Supports PayID types (email, mobile, ABN, organisation ID) or traditional BSB + account number. Merchant name is optional as payers see the registered name from NPP lookup.'],
     },
     {
-      heading: '"ការទូទាត់ប្រាក់ឌីជីថល”',
-      bullets: [
-        '"Bitcoin/Litecoin (BIP-21): URI ទូទាត់ប្រាក់ឌីជីថលស្តង់ដារជាមួយអាសយដ្ឋានកាបូប ចំនួនទឹកប្រាក់ស្រេចចិត្ត និងស្លាក។ ឆបគ្នាជាមួយកាបូប Bitcoin និង Litecoin សំខាន់ៗទាំងអស់។”',
-        '"Lightning Network (BOLT11): វិក្កយបត្រទូទាត់ Lightning Network។ បិទភ្ជាប់ខ្សែអក្សរវិក្កយបត្រដែលបានអ៊ិនកូដ BOLT11 សម្រាប់ការទូទាត់ Bitcoin ភ្លាមៗជាមួយនឹងថ្លៃសេវាតិចតួចបំផុត។”',
-        '"Ethereum (EIP-681): URI សំណើប្រតិបត្តិការ Ethereum ដែលគាំទ្រការផ្ទេរ ETH ដើម និងការផ្ទេរសញ្ញាសម្ងាត់ ERC-20។ រួមបញ្ចូលលេខសម្គាល់ខ្សែសង្វាក់សម្រាប់ការគាំទ្របណ្តាញច្រើន (Mainnet, Polygon, BSC, Arbitrum, Optimism, Avalanche) ប៉ារ៉ាម៉ែត្រឧស្ម័ន និងការហៅមុខងារកិច្ចសន្យា។”',
-      ],
+      heading: 'Cryptocurrency Payments',
+      bullets: ['Bitcoin/Litecoin (BIP-21): Standard cryptocurrency payment URIs with wallet address, optional amount, and label. Compatible with all major Bitcoin and Litecoin wallets.', 'Lightning Network (BOLT11): Lightning Network payment invoices. Paste a BOLT11 encoded invoice string for instant Bitcoin payments with minimal fees.', 'Ethereum (EIP-681): Ethereum transaction request URIs supporting native ETH transfers and ERC-20 token transfers. Includes chain ID for multi-network support (Mainnet, Polygon, BSC, Arbitrum, Optimism, Avalanche), gas parameters, and contract function calls.'],
     },
     {
-      heading: '"សេវាកម្មភ្ជាប់ការទូទាត់”',
-      bullets: [
-        '"PayPal.Me៖ តំណភ្ជាប់ទូទាត់ PayPal ជាមួយឈ្មោះអ្នកប្រើប្រាស់ និងចំនួនទឹកប្រាក់ដែលបានបំពេញជាមុនជាជម្រើស។ អ្នកទទួលអាចបង់ប្រាក់តាមរយៈសមតុល្យ PayPal កាត ឬគណនីធនាគារ។”',
-        '"កម្មវិធី Cash៖ តំណភ្ជាប់ទូទាត់ប្រាក់កម្មវិធី Cash ដោយប្រើ $cashtag ជាមួយនឹងចំនួនទឹកប្រាក់ស្រេចចិត្ត។ ពេញនិយមនៅសហរដ្ឋអាមេរិកសម្រាប់ការទូទាត់ប្រាក់តាមប្រព័ន្ធ peer-to-peer។”',
-      ],
+      heading: 'Payment Link Services',
+      bullets: ['PayPal.Me: PayPal payment links with username and optional pre-filled amount. Recipients can pay via PayPal balance, cards, or bank accounts.', 'Cash App: Cash App payment links using $cashtag with optional amount. Popular in the United States for peer-to-peer payments.'],
     },
     {
-      heading: '"QR EMV ទូទៅ”',
-      bullets: [
-        '"EMV ទូទៅ៖ បង្កើតលេខកូដ QR របៀបបង្ហាញដោយអ្នកលក់ EMV ផ្ទាល់ខ្លួនសម្រាប់គម្រោងទូទាត់ដែលមិនបានរាយបញ្ជីជាក់លាក់។ កំណត់រចនាសម្ព័ន្ធឈ្មោះអ្នកលក់ ទីក្រុង លេខកូដប្រទេស (ISO 3166-1) លេខកូដរូបិយប័ណ្ណ (លេខ ISO 4217) MCC ជម្រើសថ្លៃទឹកតែ/ភាពងាយស្រួល និងវាលទិន្នន័យបន្ថែម។ មានប្រយោជន៍សម្រាប់ការសាកល្បង ឬការរួមបញ្ចូលផ្ទាល់ខ្លួន។”',
-      ],
+      heading: 'Generic EMV QR',
+      bullets: ['EMV Generic: Create custom EMV Merchant-Presented Mode QR codes for payment schemes not specifically listed. Configure merchant name, city, country code (ISO 3166-1), currency code (ISO 4217 numeric), MCC, tip/convenience fee options, and additional data fields. Useful for testing or custom integrations.'],
     },
     {
-      heading: '"របៀបលាយបញ្ចូលគ្នាលើស្រទាប់ (វិជ្ជាជីវៈ)”',
-      paragraphs: [
-        '"របៀបលាយបញ្ចូលគ្នាបន្ថែមក្នុងកម្រិតវិជ្ជាជីវៈ៖”',
-      ],
-      bullets: [
-        '"ភីកសែល៖ បែបផែន​ការ​លាប​ពីលើ​ភីកសែល។”',
-        '"គ្រោង៖ ការត្រួតលើគ្នានៃការរកឃើញគែមដែលបង្ហាញតែវណ្ឌវង្កប៉ុណ្ណោះ។”',
-        '"រលក៖ ឥទ្ធិពលបង្ខូចទ្រង់ទ្រាយរលក។”',
-        '"ទំហំ​ភីកសែល​រង៖ ទំហំ​ភីកសែល​រង​អថេរ​ផ្អែក​លើ​រូបភាព”',
-        '"ការ​ធ្វើ​ឲ្យ​ច្របូកច្របល់​ពិត៖ ការ​ធ្វើ​ឲ្យ​ច្របូកច្របល់​កម្រិត​ខ្ពស់​ជាមួយ​នឹង​ការ​ជ្រើសរើស​ម៉ាទ្រីស​ដែល​មាន​លំដាប់។”',
-        '"ខ្លាំង៖ ភាពមើលឃើញរូបភាពអតិបរមា អាចប៉ះពាល់ដល់សមត្ថភាពស្កេន។”',
-      ],
+      heading: 'Overlay Blend Modes (Professional)',
+      paragraphs: ['Additional blend modes in Professional level:'],
+      bullets: ['Pixelate: Pixelated overlay effect.', 'Outline: Edge detection overlay showing only contours.', 'Wave: Wavy distortion effect.', 'Subpixel Size: Variable subpixel sizing based on image.', 'True Dither: Advanced dithering with ordered matrix selection.', 'Extreme: Maximum image visibility, may affect scannability.'],
     },
     {
-      heading: '"ការកំណត់ការការពារ”',
-      paragraphs: [
-        '"ការគ្រប់គ្រងដ៏ល្អិតល្អន់លើធាតុ QR ណាដែលត្រូវបានការពារពីការកែប្រែការត្រួតលើគ្នា៖”',
-      ],
-      bullets: [
-        '"រក្សាពេលវេលា៖ រក្សាលំនាំពេលវេលាឱ្យនៅដដែល។”',
-        '"រក្សា​ការ​តម្រឹម៖ រក្សា​លំនាំ​តម្រឹម​មិន​កែប្រែ។”',
-        '"ការពារព័ត៌មានទម្រង់៖ ម៉ូឌុលព័ត៌មានទម្រង់ការពារ។”',
-        '"ការពារព័ត៌មានកំណែ៖ ម៉ូឌុលព័ត៌មានកំណែការពារ”។',
-      ],
+      heading: 'Protection Settings',
+      paragraphs: ['Fine-grained control over which QR elements are protected from overlay modification:'],
+      bullets: ['Preserve Timing: Keep timing patterns unmodified.', 'Preserve Alignment: Keep alignment patterns unmodified.', 'Protect Format Info: Shield format information modules.', 'Protect Version Info: Shield version information modules.'],
     },
     {
-      heading: '"របៀបយល់ដឹងអំពី ECC”',
-      paragraphs: [
-        '"ចែកចាយអាំងតង់ស៊ីតេនៃការត្រួតលើគ្នាដោយឆ្លាតវៃដោយផ្អែកលើសមត្ថភាពកែកំហុស។ ប្រព័ន្ធវិភាគថាតើម៉ូឌុលណាដែលអាចត្រូវបានកែប្រែ ខណៈពេលដែលរក្សាបាននូវសមត្ថភាពស្កេន។”',
-      ],
-      bullets: [
-        '"ថវិកាហានិភ័យ៖ ភាគរយនៃសមត្ថភាពកែកំហុសដែលត្រូវប្រើប្រាស់ (០-១០០%)”។',
-        '"ថវិកាខ្ពស់ជាង = ការត្រួតលើគ្នាដែលអាចមើលឃើញកាន់តែច្បាស់ ប៉ុន្តែអាចស្កេនបានកាន់តែមានហានិភ័យ”។',
-        '"ថវិកាទាបជាង = ការស្កេនមានសុវត្ថិភាពជាងមុន ប៉ុន្តែការត្រួតលើគ្នាមិនសូវមើលឃើញ”។',
-      ],
+      heading: 'ECC-Aware Mode',
+      paragraphs: ['Intelligently distributes overlay intensity based on error correction capacity. The system analyzes which modules can be modified while maintaining scannability.'],
+      bullets: ['Risk Budget: Percentage of error correction capacity to use (0-100%).', 'Higher budget = more visible overlay but riskier scannability.', 'Lower budget = safer scanning but less visible overlay.'],
     },
     {
-      heading: '"ជម្រើស​បង្ហាញ​រូបភាព​ប្រកបដោយ​វិជ្ជាជីវៈ”',
-      paragraphs: [
-        '"ការគ្រប់គ្រងការបង្ហាញកម្រិតខ្ពស់៖”',
-      ],
-      bullets: [
-        '"គែម​ច្បាស់៖ ប្រើ​ការ​បង្ហាញ​រូបភាព​ភីកសែល​សម្រាប់​គែម​ម៉ូឌុល​ច្បាស់។”',
-        '"ការ​តម្រឹម​ភីកសែល៖ ការ​តម្រឹម​ភីកសែល​លើ​កម្រាល មូល ឬ​ពិដាន”។',
-        '"របៀបពណ៌ក្នុងមួយម៉ូឌុល៖ រឹង តាមពន្លឺ តាមទីតាំង តាមការដាក់ពីលើ តាមចង្កោម។”',
-        '"ក្ដារលាយពណ៌៖ កំណត់ក្ដារលាយពណ៌ផ្ទាល់ខ្លួនសម្រាប់ការដាក់ពណ៌ក្នុងមួយម៉ូឌុល។”',
-        '"ការការពារកម្រិតពណ៌ផ្ទុយគ្នា៖ ធានាបាននូវសមាមាត្រកម្រិតពណ៌ផ្ទុយគ្នាអប្បបរមារវាងពណ៌”។',
-        '"សមាមាត្រកម្រិតពណ៌អប្បបរមា៖ តម្រូវការកម្រិតពណ៌បែប WCAG (១:១ ដល់ ២១:១)”។',
-        '"ម៉ូឌុលព្រំដែនបន្ថែម៖ ព្រំដែនបន្ថែមហួសពីតំបន់ស្ងាត់”។',
-      ],
+      heading: 'Professional Rendering Options',
+      paragraphs: ['Advanced rendering controls:'],
+      bullets: ['Crisp Edges: Use pixelated image rendering for sharp module edges.', 'Pixel Snap: Floor, Round, or Ceil pixel alignment.', 'Per-Module Color Mode: Solid, By Brightness, By Position, By Overlay, By Cluster.', 'Color Palette: Define custom color palette for per-module coloring.', 'Contrast Guard: Ensure minimum contrast ratio between colors.', 'Min Contrast Ratio: WCAG-style contrast requirement (1:1 to 21:1).', 'Extra Border Modules: Additional border beyond quiet zone.'],
     },
     {
-      heading: '"ជម្រើសទិន្នផលវិជ្ជាជីវៈ”',
-      paragraphs: [
-        '"ការកំណត់ការនាំចេញរបស់សហគ្រាស៖”',
-      ],
-      bullets: [
-        '"DPI៖ កំណត់គុណភាពបង្ហាញការបោះពុម្ព (៧២-៦០០ DPI)។ ៣០០ DPI ត្រូវបានណែនាំសម្រាប់ការបោះពុម្ព។”',
-        '"រួមបញ្ចូលតំបន់ស្ងាត់៖ បិទ/បើកតំបន់ស្ងាត់នៅក្នុងវិមាត្រទិន្នផល។”',
-        '"នាំចេញជាទម្រង់បន្ថែម៖ បង្កើត PDF រួមជាមួយទម្រង់ចម្បង។”',
-      ],
+      heading: 'Professional Output Options',
+      paragraphs: ['Enterprise export settings:'],
+      bullets: ['DPI: Set print resolution (72-600 DPI). 300 DPI recommended for print.', 'Include Quiet Zone: Toggle quiet zone in output dimensions.', 'Export As Additional: Generate PDF alongside primary format.'],
     },
     {
-      heading: '"ការកំណត់ចលនា (វិជ្ជាជីវៈ)”',
-      paragraphs: [
-        '"លក្ខណៈពិសេសបន្ថែមនៃចលនាអាជីព៖”',
-      ],
-      bullets: [
-        '"ការ​ធ្វើ​ឲ្យ​ស្រអាប់​តាម​ពេលវេលា៖ បិទ សំឡេង​រំខាន​ពណ៌​ខៀវ ឬ​ការ​ធ្វើ​ឲ្យ​ស្រអាប់​ក្នុង​មួយ​ហ្វ្រេម​ដោយ​សុវត្ថិភាព”',
-        '"លំនាំ៖ គ្មាន បែបផែនជីពចរ រលក បន្ទាត់ស្កេន ពន្លឺចែងចាំង ឬ រសាត់”។',
-      ],
+      heading: 'Animation Settings (Professional)',
+      paragraphs: ['Additional professional animation features:'],
+      bullets: ['Temporal Dither: Off, Blue Noise, or Flicker Safe per-frame dithering.', 'Pattern: None, Pulse, Wave, Scanline, Shimmer, or Drift effects.'],
     },
     {
-      heading: '"ឯកសារយោង API”',
-      paragraphs: [
-        '"ANQR ផ្តល់នូវ API ផ្នែកម៉ាស៊ីនបម្រើសម្រាប់បង្កើតលេខកូដ QR តាមរយៈប៉ារ៉ាម៉ែត្រ URL។ នេះគឺល្អសម្រាប់ការបង្កប់លេខកូដ QR នៅលើគេហទំព័រ អ៊ីមែល ឯកសារ ឬលំហូរការងារដោយស្វ័យប្រវត្តិដោយមិនចាំបាច់ប្រើ JavaScript ផ្នែកម៉ាស៊ីនភ្ញៀវ។”',
-        '"អាសយដ្ឋាន​មូលដ្ឋាន៖ https://anqr.link/api/qr”',
-      ],
+      heading: 'API Reference',
+      paragraphs: ['ANQR provides a server-side API for generating QR codes via URL parameters. This is ideal for embedding QR codes in websites, emails, documents, or automated workflows without client-side JavaScript.', 'Base URL: https://anqr.link/api/qr'],
     },
     {
-      heading: '"ប៉ារ៉ាម៉ែត្រមូលដ្ឋាន”',
-      paragraphs: [
-        '"ប៉ារ៉ាម៉ែត្រដែលត្រូវការ និងទូទៅ (ឈ្មោះប៉ារ៉ាម៉ែត្រមិនត្រូវបានបកប្រែទេ)៖”',
-      ],
-      bullets: [
-        '"ទិន្នន័យ (តម្រូវឲ្យមាន)៖ ខ្លឹមសារដែលត្រូវអ៊ិនកូដនៅក្នុងលេខកូដ QR។ តួអក្សរពិសេសដែលត្រូវអ៊ិនកូដ URL។”',
-        '"ទំហំ៖ ទំហំរូបភាពជាភីកសែល (លំនាំដើម៖ ៤០០ អតិបរមា៖ ២០០០)។ ប្រើប្រសិនបើមិនបានបញ្ជាក់ w/h។”',
-        '"w, h: ទទឹង និងកម្ពស់ទិន្នផលជាភីកសែល។ ជំនួសប៉ារ៉ាម៉ែត្រទំហំ។”',
-        'ទម្រង់៖ ទម្រង់លទ្ធផល — png, webp ឬ gif (លំនាំដើម៖ png)',
-        '"ec: កម្រិត​កែ​កំហុស — L, M, Q, ឬ H (លំនាំដើម៖ H)។”',
-        '"fg: ពណ៌​ផ្ទៃ​ខាងមុខ​ជា​ hex ដោយ​គ្មាន # (លំនាំដើម៖ 000000)។”',
-        '"bg: ពណ៌ផ្ទៃខាងក្រោយជា hex ដោយគ្មាន # (លំនាំដើម៖ ffffff)។”',
-        '"ថ្លា៖ កំណត់​ទៅ 1 សម្រាប់​ផ្ទៃ​ខាង​ក្រោយ​ថ្លា។”',
-        '"រឹម៖ តំបន់ស្ងាត់នៅក្នុងម៉ូឌុល (លំនាំដើម៖ ៤)។”',
-      ],
+      heading: 'Basic Parameters',
+      paragraphs: ['Required and common parameters (parameter names are not translated):'],
+      bullets: ['data (required): The content to encode in the QR code. URL-encode special characters.', 'size: Image size in pixels (default: 400, max: 2000). Used if w/h not specified.', 'w, h: Output width and height in pixels. Overrides size parameter.', 'format: Output format — png, webp, or gif (default: png).', 'ec: Error correction level — L, M, Q, or H (default: H).', 'fg: Foreground color as hex without # (default: 000000).', 'bg: Background color as hex without # (default: ffffff).', 'transparent: Set to 1 for transparent background.', 'margin: Quiet zone in modules (default: 4).'],
     },
     {
-      heading: '"ប៉ារ៉ាម៉ែត្រ​រចនាប័ទ្ម”',
-      paragraphs: [
-        '"រចនាប័ទ្មម៉ូឌុល និងលំនាំ៖”',
-      ],
-      bullets: [
-        '"រចនាប័ទ្ម៖ រចនាប័ទ្មម៉ូឌុល — ការ៉េ មូល ចំណុច ពេជ្រ ភ្ជាប់។”',
-        '"ឧបករណ៍ស្វែងរក៖ រចនាប័ទ្មលំនាំឧបករណ៍ស្វែងរក — ការ៉េ មូល រង្វង់។”',
-        '"តម្រឹម៖ រចនាប័ទ្មលំនាំតម្រឹម — ឧបករណ៍ស្វែងរកចំណុចត្រូវគ្នា, ការ៉េ, មូល, រង្វង់។”',
-        '"ការកំណត់ពេលវេលា៖ រចនាប័ទ្មលំនាំការកំណត់ពេលវេលា — ម៉ូឌុលផ្គូផ្គង, រឹង, ចំណុចដាច់ៗ។”',
-        '"កាំ៖ ភាគរយ​កាំ​ជ្រុង 0-100”។',
-        '"គម្លាត៖ ភាគរយគម្លាតម៉ូឌុល 0-50”។',
-        '"gapMode: របៀប Gap — គ្មាន, ការបញ្ចូល, បន្ទាត់ដាច់, ចន្លោះអវិជ្ជមាន។”',
-        '"eyeOuter, eyeInner៖ រចនាប័ទ្ម​ភ្នែក — ការ៉េ មូល រង្វង់។”',
-        '"eyeScale៖ ភាគរយនៃមាត្រដ្ឋានភ្នែក (លំនាំដើម៖ 100)។”',
-        '"grad: ប្រភេទជម្រាល — គ្មាន លីនេអ៊ែរ រ៉ាឌីកាល់ សាជី។”',
-        '"gradAngle: មុំជម្រាលសម្រាប់ជម្រាលលីនេអ៊ែរ។”',
-        '"gradStops: ឈប់​ជម្រាល​ជា color1,pos1,color2,pos2,… (ឧ. ff0000,0,0000ff,1).”',
-      ],
+      heading: 'Styling Parameters',
+      paragraphs: ['Module and pattern styling:'],
+      bullets: ['style: Module style — square, rounded, dots, diamond, connected.', 'finder: Finder pattern style — square, rounded, circle.', 'align: Alignment pattern style — match_finder, square, rounded, circle.', 'timing: Timing pattern style — match_module, solid, dashed.', 'radius: Corner radius percentage 0-100.', 'gap: Module gap percentage 0-50.', 'gapMode: Gap mode — none, inset, stroke, negative_space.', 'eyeOuter, eyeInner: Eye styles — square, rounded, circle.', 'eyeScale: Eye scale percentage (default: 100).', 'grad: Gradient type — none, linear, radial, conic.', 'gradAngle: Gradient angle for linear gradients.', 'gradStops: Gradient stops as color1,pos1,color2,pos2,... (e.g., ff0000,0,0000ff,1).'],
     },
     {
-      heading: '"ប៉ារ៉ាម៉ែត្រ​ត្រួត​គ្នា”',
-      paragraphs: [
-        '"ជម្រើស​ការ​ដាក់​រូបភាព​ពីលើ (រូបភាព​ពីលើ​ត្រូវ​បាន​ទាញ​យក​នៅ​ខាង​ម៉ាស៊ីន​បម្រើ)៖”',
-      ],
-      bullets: [
-        '"img: URL ដើម្បី​ដាក់​រូបភាព​ពីលើ (ត្រូវតែ​អាច​ចូល​មើល​បាន​ជា​សាធារណៈ)។”',
-        '"របៀប៖ របៀប Overlay — កណ្តាល, halftone, លាយ, ពន្លឺ, mosaic, dithered, blue-noise, subpixel”',
-        '"អាំងតង់ស៊ីតេ៖ អាំងតង់ស៊ីតេ​នៃ​ការ​លាប​ពីលើ ០-១០០ (លំនាំដើម៖ ១០០)។”',
-        '"របៀបពណ៌៖ របៀបពណ៌ត្រួតលើគ្នា — ពណ៌, មាត្រដ្ឋានប្រផេះ, bw”',
-        '"សម៖ របៀបដែលស្រទាប់ខាងក្រៅសម — គ្រប, ផ្ទុក, លាតសន្ធឹង”។',
-        '"រលួយ៖ ការបង្វិល​ស្រទាប់​ជា​ដឺក្រេ។”',
-        '"flipX, flipY៖ កំណត់​ទៅ 1 ដើម្បី​ត្រឡប់​ត្រួត​គ្នា។”',
-        'keepFinders: រក្សា​លំនាំ​ឧបករណ៍​ស្វែងរក (លំនាំដើម៖ 1)។',
-        '"keepTiming, keepAlign: កំណត់​ទៅ 1 ដើម្បី​រក្សា​លំនាំ​កំណត់​ពេលវេលា/តម្រឹម។”',
-      ],
+      heading: 'Overlay Parameters',
+      paragraphs: ['Image overlay options (overlay image is fetched server-side):'],
+      bullets: ['img: URL to overlay image (must be publicly accessible).', 'mode: Overlay mode — center, halftone, blend, brightness, mosaic, dithered, blue-noise, subpixel.', 'intensity: Overlay intensity 0-100 (default: 100).', 'colorMode: Overlay color mode — color, grayscale, bw.', 'fit: How overlay fits — cover, contain, stretch.', 'rot: Overlay rotation in degrees.', 'flipX, flipY: Set to 1 to flip overlay.', 'keepFinders: Preserve finder patterns (default: 1).', 'keepTiming, keepAlign: Set to 1 to preserve timing/alignment patterns.'],
     },
     {
-      heading: '"ប៉ារ៉ាម៉ែត្រ​ដំណើរការ​ជាមុន”',
-      paragraphs: [
-        '"ការ​ដំណើរការ​រូបភាព​ជាមុន​បាន​អនុវត្ត​ទៅ​លើ​ការ​ត្រួត​គ្នា៖”',
-      ],
-      bullets: [
-        'ពន្លឺ៖ ការកែតម្រូវ -100 ដល់ 100 (លំនាំដើម៖ 0)។',
-        '"កម្រិតពណ៌៖ ការកែតម្រូវ -100 ដល់ 100 (លំនាំដើម៖ 0)។”',
-        '"ហ្គាម៉ា៖ តម្លៃ 0.1 ដល់ 3 (លំនាំដើម៖ 1)។”',
-        '"តិត្ថិភាព៖ ការកែតម្រូវ -100 ដល់ 100 (លំនាំដើម៖ 0)។”',
-        '"ពណ៌៖ ការបង្វិលពណ៌ជាដឺក្រេ។”',
-        '"ព្រិលៗ៖ ព្រិលៗ​ជា​ភីកសែល”។',
-        '"ធ្វើឱ្យច្បាស់៖ ធ្វើឱ្យច្បាស់ចំនួន 0-100”',
-        '"ធ្វើ​ឲ្យ​រូបភាព​ភ្លឺ​ថ្លា៖ កម្រិត​ធ្វើ​ឲ្យ​រូបភាព​ភ្លឺ​ថ្លា”។',
-        '"កម្រិត​កំណត់៖ កម្រិត​កំណត់​គោលពីរ 0-255”។',
-        '"គែម៖ ការរកឃើញគែម — បិទ, ស្រអាប់, ឆ្លាតវៃ។”',
-        '"បញ្ច្រាស៖ កំណត់​ទៅ 1 ដើម្បី​បញ្ច្រាស​ពណ៌។”',
-      ],
+      heading: 'Preprocessing Parameters',
+      paragraphs: ['Image preprocessing applied to overlay:'],
+      bullets: ['brightness: Adjustment -100 to 100 (default: 0).', 'contrast: Adjustment -100 to 100 (default: 0).', 'gamma: Value 0.1 to 3 (default: 1).', 'saturation: Adjustment -100 to 100 (default: 0).', 'hue: Hue rotation in degrees.', 'blur: Blur in pixels.', 'sharpen: Sharpen amount 0-100.', 'posterize: Posterize levels.', 'threshold: Binary threshold 0-255.', 'edge: Edge detection — off, sobel, canny.', 'invert: Set to 1 to invert colors.'],
     },
     {
-      heading: '"ប៉ារ៉ាម៉ែត្រ​រូប​ទឹក”',
-      paragraphs: [
-        '"បន្ថែម​រូប​សម្គាល់​ទឹក​ទៅ​កាន់​កូដ QR ដែល​បាន​បង្កើត៖”',
-      ],
-      bullets: [
-        '"wmEn: កំណត់​ទៅ 1 ដើម្បី​អនុញ្ញាត​ឲ្យ​មាន​រូប​សញ្ញា​ទឹក។”',
-        '"wmKind: ប្រភេទ Watermark — អក្សរ រូបភាព លំនាំ។”',
-        '"wmText៖ អត្ថបទ Watermark (URL-encoded)។”',
-        '"wmImg: URL ទៅកាន់រូបភាព watermark”',
-        '"wmPos: ទីតាំង — កណ្តាល, ជ្រុង, គែម, នៅពីក្រោយ, តំបន់ស្ងាត់។”',
-        '"wmOpacity៖ ភាពស្រអាប់ ០-១០០ (លំនាំដើម៖ ៥០)។”',
-        '"wmBlend: របៀបលាយបញ្ចូលគ្នា — ធម្មតា, គុណ, អេក្រង់, លាបពីលើ។”',
-      ],
+      heading: 'Watermark Parameters',
+      paragraphs: ['Add watermarks to generated QR codes:'],
+      bullets: ['wmEn: Set to 1 to enable watermark.', 'wmKind: Watermark type — text, image, pattern.', 'wmText: Watermark text (URL-encoded).', 'wmImg: URL to watermark image.', 'wmPos: Position — center, corners, edges, behind, quiet_zone.', 'wmOpacity: Opacity 0-100 (default: 50).', 'wmBlend: Blend mode — normal, multiply, screen, overlay.'],
     },
     {
-      heading: '"ប៉ារ៉ាម៉ែត្រចលនា”',
-      paragraphs: [
-        '"សម្រាប់​លទ្ធផល GIF មាន​ចលនា (តម្រូវ​ឱ្យ​មាន format=gif):”',
-      ],
-      bullets: [
-        '"លំនាំ​គំនូរជីវចល៖ លំនាំ​គំនូរជីវចល — គ្មាន, ជីពចរ, រលក, បន្ទាត់​ស្កេន, ពន្លឺចែងចាំង, រសាត់, វដ្ត​ពណ៌។”',
-        '"ស៊ុម​គំនូរជីវចល៖ ចំនួន​ស៊ុម 1-60 (លំនាំដើម៖ 24)។”',
-        '"ល្បឿន​ចលនា៖ ការ​ពន្យារ​ស៊ុម​ជា​មិល្លីវិនាទី ១០-១០០០ (លំនាំដើម៖ ១០០)។”',
-        '"animSeed៖ គ្រាប់ពូជចៃដន្យសម្រាប់ចលនា។”',
-        '"ការ​សម្រួល៖ ការ​សម្រួល​ចលនា — លីនេអ៊ែរ, ease_in, ease_out, ease_in_out, bounce”',
-      ],
+      heading: 'Animation Parameters',
+      paragraphs: ['For animated GIF output (requires format=gif):'],
+      bullets: ['animPattern: Animation pattern — none, pulse, wave, scanline, shimmer, drift, color_cycle.', 'animFrames: Number of frames 1-60 (default: 24).', 'animSpeed: Frame delay in milliseconds 10-1000 (default: 100).', 'animSeed: Random seed for animation.', 'easing: Animation easing — linear, ease_in, ease_out, ease_in_out, bounce.'],
     },
     {
-      heading: '"ប៉ារ៉ាម៉ែត្រ​លទ្ធផល”',
-      paragraphs: [
-        '"ជម្រើស​ទ្រង់ទ្រាយ​លទ្ធផល៖”',
-      ],
-      bullets: [
-        '"គុណភាព៖ គុណភាព WebP 0-1 (លំនាំដើម៖ 0.9)”',
-        '"webpQ៖ គុណភាព WebP ០-១០០ (លំនាំដើម៖ ៩០)។”',
-        '"ពណ៌ gif៖ ទំហំក្ដារលាយ GIF ២-២៥៦ (លំនាំដើម៖ ២៥៦)។”',
-        '"dpi៖ DPI លទ្ធផលសម្រាប់ PNG (លំនាំដើម៖ 72)។”',
-        '"ចំណងជើងមេតា, អ្នកនិពន្ធមេតា, ចម្លងមេតា, ទាញយកមេតា៖ វាលមេតាតា PNG”',
-      ],
+      heading: 'Output Parameters',
+      paragraphs: ['Output format options:'],
+      bullets: ['quality: WebP quality 0-1 (default: 0.9).', 'webpQ: WebP quality 0-100 (default: 90).', 'gifColors: GIF palette size 2-256 (default: 256).', 'dpi: Output DPI for PNG (default: 72).', 'metaTitle, metaAuthor, metaCopy, metaDesc: PNG metadata fields.'],
     },
     {
-      heading: '"ឧទាហរណ៍នៃការប្រើប្រាស់”',
-      paragraphs: [
-        '"លេខកូដ QR មូលដ្ឋាន៖”',
-        '"https://anqr.link/api/qr?data=https://example.com”',
-        '"កូដ QR ដែលមានរចនាប័ទ្មជាមួយពណ៌ផ្ទាល់ខ្លួន៖”',
-        '"https://anqr.link/api/qr?data=Hello&size=300&fg=1e40af&bg=ffffff&style=rounded&radius=30”',
-        '"កូដ QR ជាមួយរូបភាពពីលើ៖”',
-        '"https://anqr.link/api/qr?data=https://example.com&ec=H&img=https://example.com/logo.png&mode=halftone&intensity=70”',
-        '"រូបភាព GIF មានចលនា៖”',
-        '"https://anqr.link/api/qr?data=Hello&format=gif&animPattern=pulse&animFrames=24&easing=ease_in_out”',
-      ],
+      heading: 'Example Usage',
+      paragraphs: ['Basic QR code:', 'https://anqr.link/api/qr?data=https://example.com', 'Styled QR code with custom colors:', 'https://anqr.link/api/qr?data=Hello&size=300&fg=1e40af&bg=ffffff&style=rounded&radius=30', 'QR code with overlay image:', 'https://anqr.link/api/qr?data=https://example.com&ec=H&img=https://example.com/logo.png&mode=halftone&intensity=70', 'Animated GIF:', 'https://anqr.link/api/qr?data=Hello&format=gif&animPattern=pulse&animFrames=24&easing=ease_in_out'],
     },
     {
-      heading: '"ការបង្កប់លេខកូដ QR”',
-      paragraphs: [
-        '"នៅក្នុងរបៀបវិជ្ជាជីវៈ មុខងារចែករំលែកបង្កើត HTML និង URL ដែលអាចបង្កប់បាន។ នេះជារបៀបដែលការបង្កប់ដំណើរការ៖”',
-      ],
-      bullets: [
-        '"ចែករំលែកតំណភ្ជាប់៖ បង្កើត URL ទៅកាន់កម្មវិធី ANQR ជាមួយនឹងការកំណត់ទាំងអស់របស់អ្នកដែលបានអ៊ិនកូដជាប៉ារ៉ាម៉ែត្រ URL។ អ្នកទទួលអាចមើល និងកែប្រែលេខកូដ QR។”',
-        '"បង្កប់រូបភាព៖ បង្កើតស្លាកដែលចង្អុលទៅ API ម៉ាស៊ីនមេ។ លេខកូដ QR ត្រូវបានបង្ហាញនៅផ្នែកម៉ាស៊ីនមេ ហើយបម្រើជារូបភាព។”',
-        '"បង្កប់ Markdown៖ បង្កើតវាក្យសម្ព័ន្ធរូបភាព Markdown សម្រាប់ឯកសារ និងឯកសារ README។”',
-        '"URL API ផ្ទាល់៖ URL API ឆៅសម្រាប់ប្រើប្រាស់ក្នុងកម្មវិធី ស្គ្រីប ឬការរួមបញ្ចូលផ្សេងទៀត។”',
-      ],
+      heading: 'Embedding QR Codes',
+      paragraphs: ['In Professional mode, the Share feature generates embeddable HTML and URLs. Here is how embedding works:'],
+      bullets: ['Share Link: Creates a URL to the ANQR app with all your settings encoded as URL parameters. Recipients can view and modify the QR code.', 'Embed Image: Generates an <img> tag pointing to the server API. The QR code is rendered server-side and served as an image.', 'Embed Markdown: Creates Markdown image syntax for documentation and README files.', 'Direct API URL: The raw API URL for use in applications, scripts, or other integrations.'],
     },
     {
-      heading: '"ឧទាហរណ៍ HTML”',
-      paragraphs: [
-        '"ដើម្បីបង្កប់លេខកូដ QR នៅលើគេហទំព័ររបស់អ្នក៖”',
-        '"<img src="https://anqr.link/api/qr?data=https://yoursite.com&size=200" alt="កូដ QR" />”',
-        '"សម្រាប់​ការ​កំណត់​ទំហំ​ដែល​ឆ្លើយតប​បាន៖”',
-        '"<img src="https://anqr.link/api/qr?data=https://yoursite.com&size=400" alt="លេខកូដ QR" style="max-width: 100%; height: auto;" />”',
-        '"ម៉ាស៊ីនបម្រើ​រក្សាទុក​ការឆ្លើយតប​ជាមួយ​បឋមកថា​ឃ្លាំងសម្ងាត់​វែងៗ ដូច្នេះ​សំណើ​ម្តងហើយម្តងទៀត​សម្រាប់ URL ដូចគ្នា​គឺលឿន។”',
-      ],
+      heading: 'HTML Example',
+      paragraphs: ['To embed a QR code in your website:', '<img src="https://anqr.link/api/qr?data=https://yoursite.com&size=200" alt="QR Code" />', 'For responsive sizing:', '<img src="https://anqr.link/api/qr?data=https://yoursite.com&size=400" alt="QR Code" style="max-width: 100%; height: auto;" />', 'The server caches responses with long cache headers, so repeated requests for the same URL are fast.'],
     },
     {
-      heading: '"ចែករំលែកទម្រង់ URL”',
-      paragraphs: [
-        '"នៅពេលអ្នកចុចចែករំលែកក្នុងរបៀបវិជ្ជាជីវៈ ANQR នឹងអ៊ិនកូដការកំណត់បច្ចុប្បន្នរបស់អ្នកទៅជាប៉ារ៉ាម៉ែត្រ URL។ ទម្រង់គឺ៖”',
-        '"https://anqr.link/?data=…&ec=H&style=rounded&….”',
-        'ប៉ារ៉ាម៉ែត្រទាំងនេះឆ្លុះបញ្ចាំងពីប៉ារ៉ាម៉ែត្រ API ដូច្នេះអ្នកអាចបំលែង URL ចែករំលែកទៅជា URL API ដោយការផ្លាស់ប្តូរផ្លូវមូលដ្ឋានពី / ទៅ /api/qr និងកែតម្រូវប៉ារ៉ាម៉ែត្រ w/h តាមតម្រូវការ។',
-        '"ចំណាំ៖ រូបភាព​ដែល​បាន​ផ្ទុក​ឡើង​ពី​ឯកសារ​មូលដ្ឋាន​មិន​អាច​ចែករំលែក​តាមរយៈ URL បាន​ទេ — មាន​តែ​ការ​ដាក់​លើ URL (ប៉ារ៉ាម៉ែត្រ img) ប៉ុណ្ណោះ​ដែល​ដំណើរការ​ក្នុង​តំណ​ដែល​បាន​ចែករំលែក និង​ការ​ហៅ API។”',
-      ],
+      heading: 'Share URL Format',
+      paragraphs: ['When you click Share in Professional mode, ANQR encodes your current settings into URL parameters. The format is:', 'https://anqr.link/?data=...&ec=H&style=rounded&....', 'These parameters mirror the API parameters, so you can convert a share URL to an API URL by changing the base path from / to /api/qr and adjusting w/h parameters as needed.', 'Note: Overlay images uploaded from local files cannot be shared via URL — only URL-based overlays (img parameter) work in shared links and API calls.'],
     },
     {
-      heading: '"ដែនកំណត់អត្រា និងការប្រើប្រាស់”',
-      paragraphs: [
-        '"API គឺឥតគិតថ្លៃក្នុងការប្រើប្រាស់សម្រាប់បរិមាណសមរម្យ។ សម្រាប់ការប្រើប្រាស់បរិមាណច្រើន ឬកម្មវិធីពាណិជ្ជកម្មដែលត្រូវការពេលវេលាដំណើរការដែលមានការធានា សូមទាក់ទងមកយើងខ្ញុំ។”',
-        '"ការឆ្លើយតប API រួមមានបឋមកថា caching ដ៏ខ្លាំងក្លា។ ដើម្បីទទួលបានដំណើរការល្អបំផុត សូមដាក់ការឆ្លើយតប cache នៅខាងអ្នក ឬប្រើ URL ដូចគ្នាជាប់លាប់សម្រាប់លេខកូដ QR ដូចគ្នា។”',
-      ],
+      heading: 'Rate Limits and Usage',
+      paragraphs: ['The API is free to use for reasonable volumes. For high-volume usage or commercial applications requiring guaranteed uptime, please contact us.', 'API responses include aggressive caching headers. For best performance, cache responses on your end or use the same URL consistently for identical QR codes.'],
     },
     {
-      heading: '"ការអនុវត្តល្អបំផុត”',
-      paragraphs: [
-        '"អនុវត្តតាមគោលការណ៍ណែនាំទាំងនេះសម្រាប់លេខកូដ QR ដែលអាចទុកចិត្តបាន៖”',
-      ],
-      bullets: [
-        '"តែងតែសាកល្បងលេខកូដ QR របស់អ្នកជាមួយកម្មវិធីស្កេនច្រើនមុនពេលបោះពុម្ព។”',
-        '"ប្រើការកែកំហុស H (ខ្ពស់) នៅពេលបន្ថែមការត្រួតលើគ្នា។”',
-        '"រក្សាយ៉ាងហោចណាស់ ៤ ម៉ូឌុលនៃតំបន់ស្ងាត់ (រឹម)”។',
-        '"ធានា​បាន​នូវ​ភាព​ផ្ទុយ​គ្នា​ខ្ពស់​រវាង​ផ្ទៃ​ខាង​មុខ និង​ផ្ទៃ​ខាង​ក្រោយ។”',
-        '"សម្រាប់ការបោះពុម្ព សូមប្រើយ៉ាងហោចណាស់ ៣០០ DPI ហើយសាកល្បងលើទំហំបោះពុម្ពពិតប្រាកដ។”',
-        '"បើកដំណើរការរក្សាលំនាំឧបករណ៍ស្វែងរកនៅពេលប្រើការត្រួតលើគ្នា។”',
-        '"ចាប់ផ្តើមជាមួយនឹងអាំងតង់ស៊ីតេនៃការលាបពណ៌ទាប ហើយបង្កើនបន្តិចម្តងៗ។”',
-        '"សម្រាប់ការប្រើប្រាស់ក្រៅផ្ទះ សូមពិចារណាទំហំម៉ូឌុលធំជាង និងការកែកំហុសខ្ពស់ជាង។”',
-      ],
+      heading: 'Best Practices',
+      paragraphs: ['Follow these guidelines for reliable QR codes:'],
+      bullets: ['Always test your QR codes with multiple scanner apps before printing.', 'Use Error Correction H (High) when adding overlays.', 'Keep at least 4 modules of quiet zone (margin).', 'Ensure high contrast between foreground and background.', 'For print, use at least 300 DPI and test at actual print size.', 'Enable Preserve Finder Patterns when using overlays.', 'Start with lower overlay intensity and increase gradually.', 'For outdoor use, consider larger module sizes and higher error correction.'],
     },
     {
-      heading: '"ការដោះស្រាយបញ្ហា”',
-      paragraphs: [
-        '"បញ្ហា និងដំណោះស្រាយទូទៅ៖”',
-      ],
-      bullets: [
-        '"QR មិន​អាច​ស្កេន​បាន​ទេ៖ កាត់បន្ថយ​អាំងតង់ស៊ីតេ​នៃ​ការ​ត្រួត​គ្នា បង្កើន​ការ​កែ​កំហុស ពិនិត្យ​មើល​កម្រិត​ពណ៌។”',
-        '"កូដធំពេក៖ កាត់បន្ថយប្រវែងខ្លឹមសារ ប្រើកម្មវិធីបង្រួម URL កំណែទាបជាង។”',
-        '"លទ្ធផល​មិន​ច្បាស់៖ បង្កើន​ទំហំ​ម៉ូឌុល ប្រើ PNG ជំនួស​ឲ្យ​ទម្រង់​ដែល​បាន​បង្ហាប់។”',
-        '"ពណ៌មើលទៅខុស៖ ពិនិត្យមើលកម្រិតពណ៌ សាកល្បងរបៀបលាបពណ៌ពណ៌ប្រផេះ។”',
-        '"GIF មិនមានចលនាទេ៖ ត្រូវប្រាកដថាប្រើលទ្ធផលទម្រង់ GIF ពិនិត្យមើលចំនួនស៊ុម។”',
-        '"ការ​ដាក់​រូបភាព​ពីលើ​មិន​អាច​ផ្ទុក​បាន៖ ពិនិត្យ​មើល​ការ​អនុញ្ញាត CORS លើ​រូបភាព​ពីចម្ងាយ។”',
-      ],
+      heading: 'Troubleshooting',
+      paragraphs: ['Common issues and solutions:'],
+      bullets: ['QR won\'t scan: Reduce overlay intensity, increase error correction, check contrast.', 'Code too large: Reduce content length, use URL shortener, lower version.', 'Blurry output: Increase module size, use PNG instead of compressed formats.', 'Colors look wrong: Check color contrast, try grayscale overlay mode.', 'GIF not animating: Ensure using GIF format output, check frame count.', 'Image overlay not loading: Check CORS permissions on remote images.'],
     },
     {
-      heading: '"ផ្លូវកាត់ក្តារចុច”',
-      paragraphs: [
-        'ANQR គាំទ្រផ្លូវកាត់ក្តារចុចស្តង់ដារ។ ប្រើ Ctrl/Cmd+S ដើម្បីបង្កឱ្យមានការនាំចេញ (នៅពេលផ្តោតលើការមើលជាមុន)។',
-      ],
+      heading: 'Keyboard Shortcuts',
+      paragraphs: ['ANQR supports standard keyboard shortcuts. Use Ctrl/Cmd+S to trigger export (when focused on the preview).'],
     },
     {
-      heading: '"ការចែករំលែក និងការបង្កប់”',
-      paragraphs: [
-        '"នៅក្នុងរបៀបវិជ្ជាជីវៈ សូមចុចប៊ូតុងចែករំលែកដើម្បីចម្លង URL ជាមួយការកំណត់បច្ចុប្បន្នរបស់អ្នក។ អ្នកទទួលអាចបើក URL នេះដើម្បីមើលការកំណត់រចនាសម្ព័ន្ធពិតប្រាកដរបស់អ្នក។ ចំណាំ៖ រូបភាពដែលដាក់ពីលើពីឯកសារក្នុងស្រុកមិនអាចចែករំលែកតាមរយៈ URL បានទេ។”',
-      ],
+      heading: 'Sharing & Embedding',
+      paragraphs: ['In Professional mode, click the Share button to copy a URL with your current settings. Recipients can open this URL to see your exact configuration. Note: Overlay images from local files cannot be shared via URL.'],
     },
   ],
 };
