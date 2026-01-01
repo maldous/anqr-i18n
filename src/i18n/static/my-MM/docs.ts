@@ -2,840 +2,381 @@ import type { PageDefinition } from '../types';
 import { LAST_UPDATED } from '../types';
 
 export const docs: PageDefinition = {
-  title: '"ANQR အသုံးပြုသူလမ်းညွှန်”',
-  description: '"QR ကုဒ်များဖန်တီးရန် ANQR ကိုအသုံးပြုနည်းလမ်းညွှန်အပြည့်အစုံ။”',
+  title: 'ANQR User Guide',
+  description: 'Complete guide to using ANQR for creating QR codes.',
   lastUpdated: LAST_UPDATED,
   sections: [
     {
-      heading: '"စတင်ခြင်း”',
-      paragraphs: [
-        '"ANQR သည် client-first approach ပါရှိသော QR code generator တစ်ခုဖြစ်သည်။ default အားဖြင့် QR code များကို သင့် browser တွင် ဒေသတွင်းတွင် generate လုပ်ပါသည် — အကောင့်မလိုအပ်ဘဲ သင့်ဒေတာသည် လျှို့ဝှက်ထားရှိပါသည်။ professional embedding အတွက် server-side API ကိုလည်း အသုံးပြုနိုင်ပါသည်။”',
-        '"အင်တာဖေ့စ်တွင် အင်တာဖေ့စ်အဆင့်သုံးဆင့်ရှိသည်- အခြေခံ၊ အဆင့်မြင့် နှင့် ပရော်ဖက်ရှင်နယ်။ ခေါင်းစီးရှိ တက်ဘ်များကို အသုံးပြု၍ သင်၏အဆင့်ကို ရွေးချယ်ပါ။ အင်တာဖေ့စ်ကို သင်လိုအပ်သည့်အရာပေါ်တွင် အာရုံစိုက်ထားစဉ် အဆင့်တစ်ခုစီသည် အပိုဆောင်းအင်္ဂါရပ်များကို ဖွင့်ပေးသည်။”',
-      ],
+      heading: 'Getting Started',
+      paragraphs: ['ANQR is a QR code generator with a client-first approach. By default, QR codes are generated locally in your browser — no account required and your data stays private. For professional embedding, you can also use the server-side API.', 'The interface has three interface levels: Basic, Advanced, and Professional. Select your level using the tabs in the header. Each level unlocks additional features while keeping the interface focused on what you need.'],
+      bullets: ['Basic: Simple QR code creation with plain text/URL content and image overlay.', 'Advanced: QR encoding options, rendering styles, animation, output formats, extended content types, and overlay customization.', 'Professional: Watermarks, metadata, sharing, safety analysis, payment QR codes, and enterprise features.'],
+    },
+    {
+      heading: 'Quick Start',
+      paragraphs: ['To create your first QR code:'],
+      bullets: ['1. Select a content type (URL, text, WiFi, etc.) from the Content Type dropdown.', '2. Enter your data in the provided fields.', '3. Optionally customize colors, styles, and add an overlay image.', '4. Click Export to download your QR code as PNG, GIF, WebP, or SVG.'],
+    },
+    {
+      heading: 'Basic Features',
+      paragraphs: ['The Basic level provides a streamlined interface for creating QR codes with payload content and image overlays. This is the simplest way to get started.'],
+    },
+    {
+      heading: 'Content Types (Basic)',
+      paragraphs: ['Plain Text: Encode any text up to the QR code capacity limit. Ideal for short messages, codes, or identifiers.', 'URL: Encode web addresses. The QR code will open the URL when scanned. Supports http:// and https:// protocols.'],
+    },
+    {
+      heading: 'Image Overlay (Basic)',
+      paragraphs: ['Upload an image (JPG, PNG, GIF, WebP) to blend with your QR code. Basic overlay features include:'],
+      bullets: ['Upload from file: Select an image from your device.', 'Load from URL: Enter an image URL (must allow CORS).', 'Center Logo: Places image in the center, relying on error correction.', 'Blend: Simple alpha blending of image with QR pattern.', 'Intensity: Controls how strongly the overlay affects the QR code (0-100%).', 'Color Mode: Full Color, Grayscale, or Black & White.', 'Preserve Finder Patterns: Keeps corner patterns unmodified for reliable scanning.'],
+    },
+    {
+      heading: 'Advanced Features',
+      paragraphs: ['The Advanced level unlocks QR encoding options, rendering styles, animation, output formats, extended content types, and advanced overlay customization.'],
+    },
+    {
+      heading: 'QR Encoding Settings',
+      paragraphs: ['Version: QR codes come in versions 1-40, with higher versions holding more data but being larger. Set to 0 (Auto) to let ANQR choose the smallest version that fits your content.', 'Error Correction: Determines how much damage a QR code can sustain while remaining scannable.'],
+      bullets: ['L (Low): 7% error correction - smallest size, least redundancy.', 'M (Medium): 15% error correction - balanced option.', 'Q (Quartile): 25% error correction - good for printed codes.', 'H (High): 30% error correction - best for codes with overlays or in harsh conditions.'],
+    },
+    {
+      heading: 'Quiet Zone (Margin)',
+      paragraphs: ['The quiet zone is the white space around the QR code. Scanners need this margin to detect where the code starts. The standard recommends at least 4 modules. Reducing below 4 may cause scanning issues.'],
+    },
+    {
+      heading: 'Module Style',
+      paragraphs: ['Modules are the individual squares that make up a QR code. ANQR offers five styles:'],
+      bullets: ['Square: Classic QR appearance with sharp corners.', 'Rounded: Softened corners for a friendlier look.', 'Dots: Circular modules for a modern aesthetic.', 'Diamond: 45° rotated squares for a distinctive pattern.', 'Connected: Modules merge when adjacent, creating organic shapes.'],
+    },
+    {
+      heading: 'Finder Pattern Style',
+      paragraphs: ['Finder patterns are the three large squares in QR corners that help scanners orient the code. Available styles:'],
+      bullets: ['Square: Standard square corners.', 'Rounded: Softened corners matching rounded module style.', 'Circle: Circular finder patterns for dot-style codes.'],
+    },
+    {
+      heading: 'Alignment & Timing Patterns',
+      paragraphs: ['Alignment patterns appear in larger QR codes (version 2+) to help correct distortion. Timing patterns are the alternating lines connecting finder patterns.'],
+      bullets: ['Alignment Style: Match Finder, Square, Rounded, or Circle.', 'Timing Style: Match Module, Solid, or Dashed.'],
+    },
+    {
+      heading: 'Colors',
+      paragraphs: ['Foreground: The color of the QR modules. Black (#000000) is standard but any dark color works.', 'Background: The background color. White (#ffffff) is standard. Ensure sufficient contrast with the foreground.', 'Transparent Background: Remove the background entirely for use on colored surfaces. Ensure the surface provides adequate contrast.'],
+    },
+    {
+      heading: 'Module Size & Gap',
+      paragraphs: ['Module Size: Controls how large each module is rendered in pixels. Larger values create bigger, easier-to-scan codes.', 'Module Gap: Adds space between modules as a percentage. Small gaps (5-15%) can improve scannability in some conditions but excessive gaps reduce reliability.'],
+    },
+    {
+      heading: 'Output Settings',
+      paragraphs: ['Format: Choose your export format based on use case.'],
+      bullets: ['PNG: Lossless raster format, ideal for most uses. Best for print and digital.', 'WebP: Modern format with smaller file sizes. Good for web use.', 'GIF: Required for animated QR codes. Supports transparency.', 'SVG: Vector format that scales infinitely. Best for large print or when you need to edit the code.'],
+    },
+    {
+      heading: 'Output Dimensions',
+      paragraphs: ['Width/Height: Set the output size in pixels. For print, calculate based on DPI (e.g., 300 DPI at 1 inch = 300px). Larger sizes scan more reliably at distance.'],
+    },
+    {
+      heading: 'Animation Settings (Advanced)',
+      paragraphs: ['Control animated QR code behavior:'],
+      bullets: ['Speed: Animation frame rate in milliseconds.', 'Loop: Continuous or single-play animation.', 'Bounce: Ping-pong animation direction.', 'Start Frame: Begin animation from specific frame.', 'Max Frames: Limit total frames in animation.', 'Frame Step: Skip frames for faster animation.', 'Interpolation: None, Crossfade, or Morph between frames.'],
+    },
+    {
+      heading: 'Content Types (Advanced)',
+      paragraphs: ['Advanced level unlocks additional payload formats:'],
       bullets: [
-        '"အခြေခံ- ရိုးရိုးစာသား/URL အကြောင်းအရာနှင့် ရုပ်ပုံထပ်ဆင့်ထားသော ရိုးရှင်းသော QR ကုဒ်ဖန်တီးမှု။”',
-        '"အဆင့်မြင့်- QR encoding ရွေးချယ်မှုများ၊ rendering style များ၊ animation၊ output format များ၊ extended content type များနှင့် overlay customization”',
-        '"ပရော်ဖက်ရှင်နယ်- ရေစာများ၊ မက်တာဒေတာ၊ မျှဝေခြင်း၊ ဘေးကင်းရေး ခွဲခြမ်းစိတ်ဖြာခြင်း၊ ငွေပေးချေမှု QR ကုဒ်များနှင့် စီးပွားရေးလုပ်ငန်း အင်္ဂါရပ်များ။”',
+        'Phone Number (tel:): Creates a callable phone link.',
+        'Email (mailto:): Opens email client with optional subject and body.',
+        'SMS: Pre-filled text message to a phone number.',
+        'vCard: Full contact card with name, organization, phone, email, address.',
+        'MeCard: Compact contact format popular in Japan.',
+        'BizCard: Legacy business card format.',
+        'Geo Location: GPS coordinates that open in maps.',
+        'WiFi: Network credentials for automatic connection (SSID, password, security type).',
+        'Calendar Event: iCalendar format with title, location, date/time.',
+        'Event RSVP: Link to event registration page.',
+        'Calendar Subscribe: Subscribe to an ICS/WebCal feed.',
+        'File/Document URL: Direct link to downloadable files.',
+        'Cloud Storage Link: Links to Google Drive, Dropbox, OneDrive, etc.',
+        'Social Profile: Links to LinkedIn, Twitter, Instagram, etc.',
+        'Messaging Link: WhatsApp, Telegram, Signal deep links.',
       ],
     },
     {
-      heading: '"အမြန်စတင်ခြင်း”',
-      paragraphs: [
-        '"သင့်ရဲ့ ပထမဆုံး QR ကုဒ်ကို ဖန်တီးဖို့-”',
-      ],
+      heading: 'Advanced Overlay Features',
+      paragraphs: ['Additional overlay capabilities:'],
+      bullets: ['Crop: Enable cropping to select a square region of your image.', 'Halftone: Classic print-style dot pattern based on image brightness.', 'Dithered: Error-diffusion dithering for detailed reproduction.'],
+    },
+    {
+      heading: 'Overlay Blend Modes (Advanced)',
+      paragraphs: ['Additional blend modes in Advanced level:'],
+      bullets: ['Subpixel: Divides each module into subpixels for higher detail.', 'Blue Noise: Uses blue noise dithering for artifact-free patterns.', 'Mosaic: Tile-based effect preserving image structure.', 'Gap Fill: Places image in gaps between modules.', 'Brightness: Varies module size based on image brightness.', 'Duotone: Maps image to two colors for striking contrast.'],
+    },
+    {
+      heading: 'Overlay Intensity',
+      paragraphs: ['Controls how strongly the overlay affects the QR code (0-100%). Higher values show more image detail but may reduce scannability. Start around 70% and adjust based on testing.'],
+    },
+    {
+      heading: 'Color Mode',
+      paragraphs: ['How the overlay image is processed:'],
+      bullets: ['Full Color: Preserves original image colors.', 'Grayscale: Converts to black and white tones.', 'Black & White: High contrast binary conversion.'],
+    },
+    {
+      heading: 'Preserve Finder Patterns',
+      paragraphs: ['When enabled, keeps the three corner finder patterns unmodified by the overlay. Strongly recommended for reliable scanning.'],
+    },
+    {
+      heading: 'Image Preprocessing',
+      paragraphs: ['Apply filters to your overlay image before blending. These adjustments can improve how the image appears in the final QR code.'],
+      bullets: ['Brightness (-100 to +100): Lighten or darken the image.', 'Contrast (-100 to +100): Increase or decrease tonal range.', 'Gamma (0.2 to 3.0): Non-linear brightness adjustment. Values below 1 lighten midtones, above 1 darken them.', 'Saturation (-100 to +100): Color intensity. -100 is grayscale, +100 is oversaturated.', 'Hue Rotate (0-360°): Shift all colors around the color wheel.', 'Blur (0-20px): Soften image details.', 'Sharpen (0-100%): Enhance edges and details.', 'Posterize (0-16 levels): Reduce color levels for a poster effect.', 'Threshold (0-255): Convert to binary black/white at cutoff point.', 'Edge Detection: Sobel or Canny algorithms to show only edges.', 'Invert: Reverse all colors.'],
+    },
+    {
+      heading: 'Fit Mode',
+      paragraphs: ['How the overlay image fits the QR code area:'],
+      bullets: ['Cover: Image fills entire area, cropping if needed.', 'Contain: Entire image visible, may have margins.', 'Stretch: Image distorts to fill exactly.'],
+    },
+    {
+      heading: 'Transform Options',
+      paragraphs: ['Rotation: Rotate overlay in 90° increments.', 'Flip X/Y: Mirror the image horizontally or vertically.'],
+    },
+    {
+      heading: 'Dithering Algorithms',
+      paragraphs: ['Dithering converts continuous-tone images to patterns that QR codes can represent. Available when using Dithered, Blue Noise, or True Dither blend modes.'],
       bullets: [
-        '"၁။ အကြောင်းအရာအမျိုးအစား dropdown မှ အကြောင်းအရာအမျိုးအစား (URL၊ စာသား၊ WiFi စသည်) ကို ရွေးချယ်ပါ။”',
-        '"၂။ ပေးထားသော အကွက်များတွင် သင့်ဒေတာကို ရိုက်ထည့်ပါ။”',
-        '"၃။ ရွေးချယ်နိုင်သော အရောင်များ၊ စတိုင်များကို စိတ်ကြိုက်ပြင်ဆင်ပြီး ထပ်ဆင့်ပုံတစ်ပုံထည့်ပါ။”',
-        '"၄။ သင့် QR ကုဒ်ကို PNG၊ GIF၊ WebP သို့မဟုတ် SVG အဖြစ် ဒေါင်းလုဒ်လုပ်ရန် Export ကိုနှိပ်ပါ။”',
+        'Error Diffusion: Classic Floyd-Steinberg style. Spreads quantization error to neighboring pixels.',
+        'Ordered (Bayer): Uses a threshold matrix for regular patterns.',
+        'Clustered Dot: Simulates halftone printing.',
+        'Void & Cluster: Optimized ordered dithering.',
+        'Blue Noise: Visually pleasant random-looking pattern.',
+        'Blue Noise Threshold: Threshold dithering with blue noise texture.',
+        'White Noise: Random threshold dithering.',
+        'Gaussian/Triangular Noise: Noise with different distributions.',
+        'Blue Noise + Error Diffusion: Hybrid combining both techniques.',
+        'Screened Blue Noise: Screen-like blue noise pattern.',
+        'Perceptual: Luminance-weighted for better visual results.',
+        'Edge-Aware: Preserves image edges during dithering.',
+        'Adaptive Threshold: Locally-adaptive thresholding.',
+        'Temporal Blue Noise: For animated GIFs, varies pattern per frame.',
       ],
     },
     {
-      heading: '"အခြေခံအင်္ဂါရပ်များ”',
-      paragraphs: [
-        '"အခြေခံအဆင့်သည် payload အကြောင်းအရာနှင့် ရုပ်ပုံထပ်ဆင့်များဖြင့် QR ကုဒ်များဖန်တီးရန်အတွက် ချောမွေ့သော interface ကို ပေးစွမ်းသည်။ ဤသည်မှာ စတင်ရန် အရိုးရှင်းဆုံးနည်းလမ်းဖြစ်သည်။”',
-      ],
-    },
-    {
-      heading: '"အကြောင်းအရာအမျိုးအစားများ (အခြေခံ)”',
-      paragraphs: [
-        '"ရိုးရိုးစာသား- QR ကုဒ်စွမ်းရည်ကန့်သတ်ချက်အထိ မည်သည့်စာသားကိုမဆို ကုဒ်လုပ်ပါ။ တိုတောင်းသောမက်ဆေ့ချ်များ၊ ကုဒ်များ သို့မဟုတ် သတ်မှတ်ပေးသည့်အရာများအတွက် အသင့်တော်ဆုံးဖြစ်သည်။”',
-        '"URL: ဝဘ်လိပ်စာများကို encode လုပ်ပါ။ QR ကုဒ်သည် scan ဖတ်သောအခါ URL ကိုဖွင့်ပေးလိမ့်မည်။ http:// နှင့် https:// protocol များကို ပံ့ပိုးပေးသည်။”',
-      ],
-    },
-    {
-      heading: '"ပုံထပ်ဆင့် (အခြေခံ)”',
-      paragraphs: [
-        '"သင့် QR ကုဒ်နှင့် ရောနှောရန် ပုံတစ်ပုံ (JPG၊ PNG၊ GIF၊ WebP) ကို အပ်လုဒ်လုပ်ပါ။ အခြေခံ ထပ်ဆင့်အင်္ဂါရပ်များတွင် အောက်ပါတို့ ပါဝင်သည်-”',
-      ],
-      bullets: [
-        '"ဖိုင်မှ အပ်လုဒ်လုပ်ခြင်း- သင့်စက်မှ ပုံတစ်ပုံကို ရွေးချယ်ပါ။”',
-        '"URL မှ တင်ခြင်း- ရုပ်ပုံ URL တစ်ခု ရိုက်ထည့်ပါ (CORS ကို ခွင့်ပြုရမည်)။”',
-        '"အလယ်လိုဂို- အမှားပြင်ဆင်ခြင်းအပေါ် အခြေခံ၍ ပုံကို အလယ်ဗဟိုတွင် ထားရှိသည်။”',
-        '"ရောစပ်ခြင်း- QR ပုံစံဖြင့် ရုပ်ပုံ၏ ရိုးရှင်းသော အယ်လ်ဖာ ရောစပ်ခြင်း။”',
-        '"ပြင်းထန်မှု- အပေါ်ယံလွှာသည် QR ကုဒ် (၀-၁၀၀%) ကို မည်မျှပြင်းထန်စွာ သက်ရောက်မှုရှိသည်ကို ထိန်းချုပ်သည်။”',
-        '"အရောင်မုဒ်- အရောင်အပြည့်၊ မီးခိုးရောင် သို့မဟုတ် အဖြူအမည်း။”',
-        '"Finder ပုံစံများကို ထိန်းသိမ်းပါ- ယုံကြည်စိတ်ချရသော စကင်ဖတ်စစ်ဆေးမှုအတွက် ထောင့်ပုံစံများကို မပြုပြင်ဘဲ သိမ်းဆည်းထားပါ။”',
-      ],
-    },
-    {
-      heading: '"အဆင့်မြင့် အင်္ဂါရပ်များ”',
-      paragraphs: [
-        '"အဆင့်မြင့်အဆင့်သည် QR encoding ရွေးချယ်မှုများ၊ rendering style များ၊ animation၊ output format များ၊ extended content type များနှင့် advanced overlay customization တို့ကို လော့ခ်ဖွင့်ပေးသည်။”',
-      ],
-    },
-    {
-      heading: '"QR ကုဒ်သွင်းခြင်း ဆက်တင်များ”',
-      paragraphs: [
-        '"ဗားရှင်း- QR ကုဒ်များသည် ဗားရှင်း ၁ မှ ၄၀ အထိ ထွက်ပေါ်လာပြီး ဗားရှင်းမြင့်များသည် ဒေတာပိုမိုသိမ်းဆည်းထားသော်လည်း ပိုကြီးသည်။ ANQR သည် သင့်အကြောင်းအရာနှင့် ကိုက်ညီသော အသေးငယ်ဆုံးဗားရှင်းကို ရွေးချယ်နိုင်စေရန် ၀ (အလိုအလျောက်) သို့ သတ်မှတ်ပါ။”',
-        '"အမှားပြင်ဆင်ခြင်း- စကင်ဖတ်နိုင်နေစဉ် QR ကုဒ်တစ်ခုသည် မည်မျှပျက်စီးစေနိုင်သည်ကို ဆုံးဖြတ်သည်။”',
-      ],
-      bullets: [
-        '"L (နိမ့်): ၇% အမှားပြင်ဆင်ခြင်း - အသေးဆုံးအရွယ်အစား၊ အနည်းဆုံး ထပ်ဆင့်မှု။”',
-        '"M (အလတ်စား): ၁၅% အမှားပြင်ဆင်ခြင်း - ဟန်ချက်ညီသော ရွေးချယ်မှု။”',
-        '"Q (Quartile): ၂၅% အမှားပြင်ဆင်ချက် - ပုံနှိပ်ထားသော ကုဒ်များအတွက် ကောင်းမွန်သည်။”',
-        '"H (မြင့်မားသော): ၃၀% အမှားပြင်ဆင်ခြင်း - အလွှာများပါသော သို့မဟုတ် ကြမ်းတမ်းသောအခြေအနေများတွင် ကုဒ်များအတွက် အကောင်းဆုံးဖြစ်သည်။”',
-      ],
-    },
-    {
-      heading: '"တိတ်ဆိတ်ဇုန် (အနားသတ်)”',
-      paragraphs: [
-        '"တိတ်ဆိတ်ဇုန်သည် QR ကုဒ်ပတ်လည်ရှိ အဖြူရောင်နေရာဖြစ်သည်။ စကင်နာများသည် ကုဒ်စတင်သည့်နေရာကို ထောက်လှမ်းရန် ဤအနားသတ်ကို လိုအပ်သည်။ စံနှုန်းသည် အနည်းဆုံး မော်ဂျူး ၄ ခုကို အကြံပြုထားသည်။ ၄ အောက် လျှော့ချခြင်းသည် စကင်ဖတ်ခြင်းပြဿနာများ ဖြစ်စေနိုင်သည်။”',
-      ],
-    },
-    {
-      heading: '"မော်ဂျူးပုံစံ”',
-      paragraphs: [
-        '"မော်ဂျူးများသည် QR ကုဒ်တစ်ခုကို ဖွဲ့စည်းထားသော သီးခြားစတုရန်းများဖြစ်သည်။ ANQR သည် ပုံစံငါးမျိုး ပေးဆောင်သည်-”',
-      ],
-      bullets: [
-        '"စတုရန်း- ထောင့်ချွန်များပါရှိသော ဂန္ထဝင် QR အသွင်အပြင်။”',
-        '"ဝိုင်းစက်ခြင်း- ပိုမိုဖော်ရွေသောအသွင်အပြင်အတွက် ထောင့်များကို ပျော့ပျောင်းစေသည်။”',
-        '"အစက်များ- ခေတ်မီအလှအပအတွက် စက်ဝိုင်းပုံ မော်ဂျူးများ။”',
-        '"စိန်- ထူးခြားသောပုံစံအတွက် ၄၅° လှည့်ထားသော စတုရန်းများ။”',
-        '"ချိတ်ဆက်ထားသည်- မော်ဂျူးများသည် ကပ်လျက်တွင် ပေါင်းစည်းပြီး အော်ဂဲနစ်ပုံသဏ္ဍာန်များကို ဖန်တီးသည်။”',
-      ],
-    },
-    {
-      heading: '"ရှာဖွေကိရိယာ ပုံစံပုံစံ”',
-      paragraphs: [
-        '"Finder ပုံစံများသည် QR ထောင့်များရှိ စတုရန်းကြီးသုံးခုဖြစ်ပြီး စကင်နာများအား ကုဒ်ကို လမ်းညွှန်ရန် ကူညီပေးသည်။ ရရှိနိုင်သော ပုံစံများ-”',
-      ],
-      bullets: [
-        '"စတုရန်း- စံစတုရန်းထောင့်များ။”',
-        '"လုံးဝိုင်းထားသည်- လုံးဝိုင်းမော်ဂျူးပုံစံနှင့် ကိုက်ညီသော ပျော့ပျောင်းသောထောင့်များ။”',
-        '"စက်ဝိုင်း- dot-style ကုဒ်များအတွက် စက်ဝိုင်းရှာဖွေကိရိယာ ပုံစံများ။”',
-      ],
-    },
-    {
-      heading: '"ချိန်ညှိမှုနှင့် အချိန်ကိုက်ပုံစံများ”',
-      paragraphs: [
-        '"ပုံပျက်ခြင်းကို ပြုပြင်ရန်အတွက် ချိန်ညှိမှုပုံစံများသည် ပိုကြီးသော QR ကုဒ်များ (ဗားရှင်း ၂+) တွင် ပေါ်လာသည်။ အချိန်ကိုက်ပုံစံများသည် ရှာဖွေသည့်ပုံစံများကို ချိတ်ဆက်ပေးသည့် အလှည့်ကျမျဉ်းများဖြစ်သည်။”',
-      ],
-      bullets: [
-        '"ချိန်ညှိမှုပုံစံ- ကိုက်ညီမှုရှာဖွေစက်၊ စတုရန်း၊ အဝိုင်း သို့မဟုတ် စက်ဝိုင်း။”',
-        '"အချိန်ကိုက်ပုံစံ- မော်ဂျူး၊ ခိုင်မာသော သို့မဟုတ် အစက်ချထားသည့် ကိုက်ညီမှု။”',
-      ],
-    },
-    {
-      heading: '"အရောင်များ”',
-      paragraphs: [
-        '"အရှေ့မျက်နှာပြင်- QR မော်ဂျူးများ၏ အရောင်။ အနက်ရောင် (#၀၀၀၀၀၀) သည် စံသတ်မှတ်ချက်ဖြစ်သော်လည်း မည်သည့်မှောင်သောအရောင်မဆို အလုပ်လုပ်ပါသည်။”',
-        '"နောက်ခံ- နောက်ခံအရောင်။ အဖြူရောင် (#ffffff) သည် စံသတ်မှတ်ချက်ဖြစ်သည်။ ရှေ့မျက်နှာပြင်နှင့် လုံလောက်သော ဆန့်ကျင်ဘက်အရောင်ကို သေချာပါစေ။”',
-        '"နောက်ခံဖောက်ထွင်းမြင်ရခြင်း- အရောင်မျက်နှာပြင်များတွင် အသုံးပြုရန် နောက်ခံကို လုံးဝဖယ်ရှားပါ။ မျက်နှာပြင်သည် လုံလောက်သော ဆန့်ကျင်ဘက်အရောင်ကို ပေးစွမ်းနိုင်ကြောင်း သေချာပါစေ။”',
-      ],
-    },
-    {
-      heading: '"မော်ဂျူး အရွယ်အစားနှင့် ကွာဟချက်”',
-      paragraphs: [
-        '"မော်ဂျူးအရွယ်အစား- မော်ဂျူးတစ်ခုစီကို ပစ်ဇယ်ဖြင့် မည်မျှကြီးမားစွာ ဖော်ပြသည်ကို ထိန်းချုပ်ပေးသည်။ တန်ဖိုးကြီးများသည် ပိုကြီးပြီး စကင်ဖတ်ရန် ပိုမိုလွယ်ကူသော ကုဒ်များကို ဖန်တီးပေးသည်။”',
-        '"မော်ဂျူးကွာဟချက်- မော်ဂျူးများအကြား နေရာလွတ်ကို ရာခိုင်နှုန်းအဖြစ် ထည့်ပါ။ သေးငယ်သော ကွာဟချက်များ (၅-၁၅%) သည် အခြေအနေအချို့တွင် စကင်ဖတ်နိုင်မှုကို တိုးတက်စေနိုင်သော်လည်း ကွာဟချက်များလွန်းခြင်းသည် ယုံကြည်စိတ်ချရမှုကို လျော့ကျစေသည်။”',
-      ],
-    },
-    {
-      heading: '"အထွက်ဆက်တင်များ”',
-      paragraphs: [
-        '"ဖော်မတ်- အသုံးပြုမှုအခြေအနေအပေါ် အခြေခံ၍ သင်၏တင်ပို့မှုဖော်မတ်ကို ရွေးချယ်ပါ။”',
-      ],
-      bullets: [
-        '"PNG: Lossless raster format၊ အသုံးပြုမှုအများစုအတွက် အသင့်တော်ဆုံး။ ပုံနှိပ်ခြင်းနှင့် ဒစ်ဂျစ်တယ်အတွက် အကောင်းဆုံး။”',
-        '"WebP: ဖိုင်အရွယ်အစားသေးငယ်သော ခေတ်မီဖော်မတ်။ ဝဘ်အသုံးပြုရန် ကောင်းမွန်ပါသည်။”',
-        '"GIF: သက်ဝင်လှုပ်ရှားနေသော QR ကုဒ်များအတွက် လိုအပ်သည်။ ပွင့်လင်းမြင်သာမှုကို ပံ့ပိုးပေးသည်။”',
-        '"SVG: အဆုံးမရှိ စကေးချိန်ညှိနိုင်သော Vector ဖော်မတ်။ စာလုံးကြီးကြီးဖြင့် ပုံနှိပ်ရန် သို့မဟုတ် ကုဒ်ကို တည်းဖြတ်ရန် လိုအပ်သည့်အခါအတွက် အကောင်းဆုံးဖြစ်သည်။”',
-      ],
-    },
-    {
-      heading: '"အထွက်အတိုင်းအတာများ”',
-      paragraphs: [
-        '"အနံ/အမြင့်- အထွက်အရွယ်အစားကို ပစ်ဇယ်ဖြင့် သတ်မှတ်ပါ။ ပုံနှိပ်ရန်အတွက် DPI (ဥပမာ၊ ၁ လက်မ = ၃၀၀ ပစ်ဇယ်တွင် 300 DPI) ကို အခြေခံ၍ တွက်ချက်ပါ။ ပိုကြီးသော အရွယ်အစားများသည် အကွာအဝေးတွင် ပိုမိုယုံကြည်စိတ်ချစွာ စကင်ဖတ်နိုင်သည်။”',
-      ],
-    },
-    {
-      heading: '"ကာတွန်းဆက်တင်များ (အဆင့်မြင့်)”',
-      paragraphs: [
-        '"ကာတွန်း QR ကုဒ် အပြုအမူကို ထိန်းချုပ်ပါ-”',
-      ],
-      bullets: [
-        '"အမြန်နှုန်း- မီလီစက္ကန့်ဖြင့် အန်နီမေးရှင်း ဖရိမ်နှုန်း။”',
-        '"ထပ်ခါတလဲလဲလုပ်ဆောင်ခြင်း- စဉ်ဆက်မပြတ် သို့မဟုတ် တစ်ကြိမ်တည်းဖွင့်သည့် အန်နီမေးရှင်း။”',
-        '"Bounce: ပင်းပေါင် အန်နီမေးရှင်း လမ်းညွှန်။”',
-        '"ဖရိမ်စတင်ခြင်း- သတ်မှတ်ထားသော ဖရိမ်မှ အန်နီမေးရှင်းစတင်ပါ။”',
-        '"အများဆုံးဖရိမ်များ- အန်နီမေးရှင်းတွင် စုစုပေါင်းဖရိမ်များကို ကန့်သတ်ပါ။”',
-        '"ဘောင်အဆင့်- ပိုမိုမြန်ဆန်သော အန်နီမေးရှင်းအတွက် ဘောင်များကို ကျော်ပါ။”',
-        '"Interpolation: None, Crossfade, သို့မဟုတ် frame များအကြား Morph။”',
-      ],
-    },
-    {
-      heading: '"အကြောင်းအရာအမျိုးအစားများ (အဆင့်မြင့်)”',
-      paragraphs: [
-        '"အဆင့်မြင့်အဆင့်သည် နောက်ထပ် payload format များကို လော့ခ်ဖွင့်ပေးသည်-”',
-      ],
-      bullets: [
-        '"ဖုန်းနံပါတ် (တယ်လီဖုန်း): ခေါ်ဆိုနိုင်သော ဖုန်းလင့်ခ်တစ်ခု ဖန်တီးပေးသည်။”',
-        '"အီးမေးလ် (mailto:): ရွေးချယ်နိုင်သော ခေါင်းစဉ်နှင့် ကိုယ်ထည်ဖြင့် အီးမေးလ်ဂလိုင်းကို ဖွင့်သည်။”',
-        '"SMS: ဖုန်းနံပါတ်သို့ ကြိုတင်ဖြည့်ထားသော စာတိုပေးပို့ခြင်း။”',
-        '"vCard: အမည်၊ အဖွဲ့အစည်း၊ ဖုန်းနံပါတ်၊ အီးမေးလ်၊ လိပ်စာပါရှိသော အဆက်အသွယ်ကတ်အပြည့်အစုံ။”',
-        '"MeCard: ဂျပန်နိုင်ငံတွင် ရေပန်းစားသော ကျစ်လစ်သော ဆက်သွယ်ရေးပုံစံ။”',
-        '"BizCard: အမွေအနှစ် စီးပွားရေးကတ် ဖော်မတ်။”',
-        '"ပထဝီတည်နေရာ- မြေပုံများတွင်ဖွင့်သော GPS ကိုဩဒိနိတ်များ။”',
-        '"WiFi: အလိုအလျောက်ချိတ်ဆက်မှုအတွက် ကွန်ရက်အထောက်အထားများ (SSID၊ စကားဝှက်၊ လုံခြုံရေးအမျိုးအစား)။”',
-        '"ပြက္ခဒိန်အစီအစဉ်- ခေါင်းစဉ်၊ တည်နေရာ၊ ရက်စွဲ/အချိန်ပါရှိသော iCalendar ဖော်မတ်။”',
-        '"ပွဲ RSVP: ပွဲမှတ်ပုံတင်ခြင်းစာမျက်နှာသို့ လင့်ခ်။”',
-        '"ပြက္ခဒိန် စာရင်းသွင်းခြင်း- ICS/WebCal feed သို့ စာရင်းသွင်းပါ။”',
-        '"ဖိုင်/စာရွက်စာတမ်း URL: ဒေါင်းလုဒ်လုပ်နိုင်သောဖိုင်များသို့ တိုက်ရိုက်လင့်ခ်။”',
-        '"Cloud Storage Link: Google Drive၊ Dropbox၊ OneDrive စသည်ဖြင့် လင့်ခ်များ”',
-        '"လူမှုရေးပရိုဖိုင်- LinkedIn၊ Twitter၊ Instagram စသည်တို့သို့ လင့်ခ်များ”',
-        '"မက်ဆေ့ချ်ပို့ရန်လင့်ခ်- WhatsApp၊ Telegram၊ Signal deep link များ။”',
-      ],
-    },
-    {
-      heading: '"အဆင့်မြင့် အပေါ်ယံလွှာ အင်္ဂါရပ်များ”',
-      paragraphs: [
-        '"အပိုထပ်ဆောင်းထပ်ဆင့်စွမ်းရည်များ”',
-      ],
-      bullets: [
-        '"ဖြတ်ယူခြင်း- သင့်ပုံ၏ စတုရန်းဧရိယာကို ရွေးချယ်ရန် ဖြတ်ယူခြင်းကို ဖွင့်ပါ။”',
-        '"Halftone: ရုပ်ပုံတောက်ပမှုကို အခြေခံသည့် ဂန္ထဝင်ပုံနှိပ်ပုံစံ အစက်ပုံစံ။”',
-        '"Dithered: အသေးစိတ်ပြန်လည်ထုတ်လုပ်ရန်အတွက် အမှားအယွင်းပျံ့နှံ့မှု dithering။”',
-      ],
-    },
-    {
-      heading: '"Overlay Blend Modes (အဆင့်မြင့်)”',
-      paragraphs: [
-        '"အဆင့်မြင့်အဆင့်တွင် နောက်ထပ် ရောစပ်မုဒ်များ”',
-      ],
-      bullets: [
-        '"ဆပ်ပစ်ဇယ်- ပိုမိုအသေးစိတ်ကျစေရန် မော်ဂျူးတစ်ခုစီကို ဆပ်ပစ်ဇယ်များအဖြစ် ပိုင်းခြားပေးသည်။”',
-        '"အပြာရောင်ဆူညံသံ- ရှေးဟောင်းပစ္စည်းကင်းစင်သော ပုံစံများအတွက် အပြာရောင်ဆူညံသံ တုန်ခါမှုကို အသုံးပြုသည်။”',
-        '"မိုးဇေး- ရုပ်ပုံဖွဲ့စည်းပုံကို ထိန်းသိမ်းပေးသည့် ကြွေပြားအခြေခံ အာနိသင်။”',
-        '"ကွက်လပ်ဖြည့်ခြင်း- မော်ဂျူးများကြားရှိ ကွက်လပ်များတွင် ရုပ်ပုံကို ထည့်သွင်းသည်။”',
-        '"တောက်ပမှု- ရုပ်ပုံတောက်ပမှုပေါ် မူတည်၍ မော်ဂျူးအရွယ်အစား ကွဲပြားသည်။”',
-        '"Duotone: သိသာထင်ရှားသော ဆန့်ကျင်ဘက်ဖြစ်စေရန်အတွက် ပုံကို အရောင်နှစ်ရောင်သို့ မြေပုံဆွဲပေးသည်။”',
-      ],
-    },
-    {
-      heading: '"အပေါ်ယံအလွှာ ပြင်းထန်မှု”',
-      paragraphs: [
-        '"ထပ်ဆင့်လွှာသည် QR ကုဒ် (၀-၁၀၀%) ကို မည်မျှပြင်းထန်စွာ သက်ရောက်မှုရှိသည်ကို ထိန်းချုပ်သည်။ မြင့်မားသောတန်ဖိုးများသည် ရုပ်ပုံအသေးစိတ်အချက်အလက်များကို ပိုမိုပြသသော်လည်း စကင်ဖတ်နိုင်မှုကို လျော့ကျစေနိုင်သည်။ ၇၀% ခန့်မှစတင်၍ စမ်းသပ်မှုအပေါ် အခြေခံ၍ ချိန်ညှိပါ။”',
-      ],
-    },
-    {
-      heading: '"အရောင်မုဒ်”',
-      paragraphs: [
-        '"ထပ်နေသော ပုံကို မည်သို့ စီမံဆောင်ရွက်သည်-”',
-      ],
-      bullets: [
-        '"အရောင်အပြည့်- မူရင်းရုပ်ပုံအရောင်များကို ထိန်းသိမ်းပေးသည်။”',
-        '"မီးခိုးရောင်- အဖြူအမည်းအရောင်များအဖြစ် ပြောင်းလဲသည်။”',
-        '"အဖြူအမည်း- ဆန့်ကျင်ဘက်အရောင်မြင့်မားသော ဒွိစုံပြောင်းလဲမှု။”',
-      ],
-    },
-    {
-      heading: '"ရှာဖွေကိရိယာပုံစံများကို ထိန်းသိမ်းပါ”',
-      paragraphs: [
-        '"ဖွင့်ထားသည့်အခါ၊ ထောင့်သုံးခုရှာဖွေသည့်ပုံစံများကို အပေါ်ယံလွှာဖြင့် မပြုပြင်ထားပါ။ ယုံကြည်စိတ်ချရသော စကင်ဖတ်မှုအတွက် အထူးအကြံပြုလိုပါသည်။”',
-      ],
-    },
-    {
-      heading: '"ရုပ်ပုံကြိုတင်ပြင်ဆင်ခြင်း”',
-      paragraphs: [
-        '"ရောစပ်ခြင်းမပြုမီ သင်၏ overlay image တွင် filter များထည့်ပါ။ ဤချိန်ညှိမှုများသည် image သည် နောက်ဆုံး QR ကုဒ်တွင် မည်သို့ပေါ်လာသည်ကို တိုးတက်ကောင်းမွန်စေနိုင်သည်။”',
-      ],
-      bullets: [
-        '"တောက်ပမှု (-၁၀၀ မှ +၁၀၀): ပုံကို လင်းစေ သို့မဟုတ် မှောင်စေပါ။”',
-        '"ဆန့်ကျင်ဘက်အရောင် (-၁၀၀ မှ +၁၀၀): တန်ချိန်အပိုင်းအခြားကို တိုးပါ သို့မဟုတ် လျော့ပါ။”',
-        '"ဂါမာ (၀.၂ မှ ၃.၀): မျဉ်းမတော်သော တောက်ပမှု ချိန်ညှိမှု။ ၁ အောက်ရှိ တန်ဖိုးများသည် အလယ်အလတ်အရောင်များကို လင်းစေပြီး ၁ အထက်ရှိ တန်ဖိုးများသည် ၎င်းတို့ကို မှောင်စေသည်။”',
-        '"ပြည့်ဝမှု (-၁၀၀ မှ +၁၀၀): အရောင်ပြင်းအား။ -၁၀၀ သည် မီးခိုးရောင်ဖြစ်ပြီး +၁၀၀ သည် ပြည့်ဝမှုလွန်ကဲသည်။”',
-        '"Hue Rotate (0-360°): အရောင်ဘီးတစ်ဝိုက်ရှိ အရောင်အားလုံးကို ရွှေ့ပါ။”',
-        '"မှုန်ဝါးစေခြင်း (၀-၂၀ ပစ်ဇယ်): ရုပ်ပုံအသေးစိတ်အချက်အလက်များကို ပျော့ပျောင်းစေပါ။”',
-        '"ထက်မြက်စေခြင်း (၀-၁၀၀%): အနားသတ်များနှင့် အသေးစိတ်အချက်အလက်များကို မြှင့်တင်ပါ။”',
-        '"ပိုစတာပြုလုပ်ခြင်း (အဆင့် ၀-၁၆): ပိုစတာအာနိသင်အတွက် အရောင်အဆင့်များကို လျှော့ချပါ။”',
-        '"Threshold (၀-၂၅၅): ဖြတ်တောက်သည့်အမှတ်တွင် ဒွိစုံအနက်ရောင်/အဖြူရောင်သို့ ပြောင်းပါ။”',
-        '"အနားသတ်ထောက်လှမ်းခြင်း- အနားသတ်များကိုသာပြသရန် Sobel သို့မဟုတ် Canny အယ်လဂိုရီသမ်များ။”',
-        '"ပြောင်းပြန်လှန်ပါ- အရောင်အားလုံးကို ပြောင်းပြန်လှန်ပါ။”',
-      ],
-    },
-    {
-      heading: '"ကြံ့ခိုင်မှုမုဒ်”',
-      paragraphs: [
-        '"ထပ်နေသောပုံသည် QR ကုဒ်ဧရိယာနှင့် မည်သို့ကိုက်ညီသနည်း-”',
-      ],
-      bullets: [
-        '"အဖုံး- ရုပ်ပုံသည် ဧရိယာတစ်ခုလုံးကို ဖြည့်ပြီး လိုအပ်ပါက ဖြတ်တောက်သည်။”',
-        '"ပါဝင်သည်- ရုပ်ပုံတစ်ခုလုံး မြင်နိုင်သည်၊ အနားသတ်များ ရှိနိုင်သည်။”',
-        '"ဆန့်ထုတ်ခြင်း- ရုပ်ပုံသည် တိကျစွာဖြည့်ရန် ပုံပျက်သွားသည်။”',
-      ],
-    },
-    {
-      heading: '"အသွင်ပြောင်း ရွေးချယ်စရာများ”',
-      paragraphs: [
-        '"လည်ပတ်မှု- အပေါ်ယံလွှာကို ၉၀° တိုးပြီး လှည့်ပါ။”',
-        '"X/Y ကိုလှန်ပါ- ပုံကို အလျားလိုက် သို့မဟုတ် ဒေါင်လိုက် မှန်ပြောင်းပြန်လှန်ပါ။”',
-      ],
-    },
-    {
-      heading: '"Dithering Algorithms”',
-      paragraphs: [
-        '"Dithering သည် continuous-tone ရုပ်ပုံများကို QR ကုဒ်များကိုယ်စားပြုနိုင်သော ပုံစံများအဖြစ်သို့ ပြောင်းလဲပေးသည်။ Dithered၊ Blue Noise သို့မဟုတ် True Dither blend mode များကိုအသုံးပြုသည့်အခါ ရရှိနိုင်ပါသည်။”',
-      ],
-      bullets: [
-        '"အမှားပျံ့နှံ့မှု- ဂန္ထဝင် Floyd-Steinberg ပုံစံ။ ကွမ်တဇေးရှင်းအမှားကို အိမ်နီးချင်း pixel များထံ ပျံ့နှံ့စေသည်။”',
-        '"အစီအစဥ်တကျ (Bayer): ပုံမှန်ပုံစံများအတွက် ကန့်သတ်ချက်မက်ထရစ်ကို အသုံးပြုသည်။”',
-        '"Clustered Dot: halftone printing ကို တုပသည်။”',
-        '"Void & Cluster: အကောင်းဆုံးဖြစ်အောင် စီစဉ်ပြီး dithering လုပ်ထားသည်။”',
-        '"အပြာရောင်ဆူညံသံ- အမြင်အာရုံအားဖြင့် နှစ်လိုဖွယ်ကောင်းသော ကျပန်းပုံစံ။”',
-        '"အပြာရောင်ဆူညံသံ ကန့်သတ်ချက်- အပြာရောင်ဆူညံသံအသွင်အပြင်ဖြင့် ယိမ်းနွဲ့နေသော ကန့်သတ်ချက်။”',
-        '"အဖြူရောင်ဆူညံသံ- ကျပန်း ကန့်သတ်ချက်မှ မှုန်ဝါးခြင်း။”',
-        '"Gaussian/Triangular Noise: မတူညီသော ဖြန့်ဖြူးမှုများပါရှိသော Noise။”',
-        '"အပြာရောင်ဆူညံသံ + အမှားပျံ့နှံ့မှု- နည်းစနစ်နှစ်ခုလုံးကို ပေါင်းစပ်ထားသော ရောနှောမှု။”',
-        '"စစ်ထုတ်ထားသော အပြာရောင်ဆူညံသံ- မျက်နှာပြင်ကဲ့သို့ အပြာရောင်ဆူညံသံပုံစံ။”',
-        '"အာရုံခံနိုင်စွမ်း- ပိုမိုကောင်းမွန်သော အမြင်အာရုံရလဒ်များအတွက် တောက်ပမှုအလေးချိန်။”',
-        '"အနားသတ်သတိပြုခြင်း- မှုန်ဝါးစေသည့်အချိန်တွင် ရုပ်ပုံအနားသတ်များကို ထိန်းသိမ်းပေးသည်။”',
-        '"လိုက်လျောညီထွေဖြစ်စေသော ကန့်သတ်ချက်- ဒေသအလိုက် လိုက်လျောညီထွေဖြစ်စေသော ကန့်သတ်ချက်။”',
-        '"ယာယီအပြာရောင်ဆူညံသံ- အန်နီမေးရှင်း GIF များအတွက်၊ ဖရိမ်တစ်ခုစီတွင် ပုံစံကွဲပြားသည်။”',
-      ],
-    },
-    {
-      heading: '"ပျံ့နှံ့မှုအစေ့များ”',
-      paragraphs: [
-        '"Error Diffusion dithering ကိုအသုံးပြုသည့်အခါ အမှားမည်သို့ဖြန့်ဝေမည်ကို ရွေးချယ်ပါ-”',
-      ],
-      bullets: [
-        '"Floyd-Steinberg: ဂန္ထဝင် ၄-အိမ်နီးချင်း ပျံ့နှံ့မှု။ ကောင်းမွန်သော အထွေထွေရွေးချယ်မှု။”',
-        '"ဂျာဗစ်-ဂျူဒီးစ်-နင်ကီ: ၁၂-အိမ်နီးချင်း၊ ချောမွေ့သော်လည်း နှေးကွေးသည်။”',
-        '"Stucki: အလေးချိန်အမျိုးမျိုးရှိသော JJN နှင့်ဆင်တူသည်။”',
-        '"Burkes: JJN ကို ရိုးရှင်းအောင်ပြုလုပ်ခြင်း၊ ပိုမိုမြန်ဆန်စေခြင်း။”',
-        '"Sierra: အရည်အသွေးနှင့် အမြန်နှုန်းကို ဟန်ချက်ညီစေသော အစေ့များ၏ မိသားစု။”',
-        '"Atkinson: အလင်းပျံ့နှံ့မှု၊ အသေးစိတ်အချက်အလက်များကို ထိန်းသိမ်းပေးသော်လည်း အမှုန်အမွှားများ ဖြစ်နိုင်သည်။”',
-      ],
+      heading: 'Diffusion Kernels',
+      paragraphs: ['When using Error Diffusion dithering, choose how error is distributed:'],
+      bullets: ['Floyd-Steinberg: Classic 4-neighbor diffusion. Good general choice.', 'Jarvis-Judice-Ninke: 12-neighbor, smoother but slower.', 'Stucki: Similar to JJN with different weights.', 'Burkes: Simplified JJN, faster.', 'Sierra: Family of kernels balancing quality and speed.', 'Atkinson: Light diffusion, preserves detail but can be grainy.'],
     },
     {
-      heading: '"ကွဲပြားသော အစွမ်းသတ္တိ”',
-      paragraphs: [
-        '"dithering မည်မျှအသုံးပြုသည်ကို ထိန်းချုပ်သည် (၀-၁၀၀%)။ တန်ဖိုးနိမ့်များသည် မူရင်းပုံစံကို ပိုမိုထိန်းသိမ်းထားပြီး တန်ဖိုးမြင့်များသည် ရုပ်ပုံအသေးစိတ်ကို ပိုမိုပြသသည်။”',
-      ],
+      heading: 'Dither Strength',
+      paragraphs: ['Controls how much dithering is applied (0-100%). Lower values preserve more of the original pattern, higher values show more image detail.'],
     },
     {
-      heading: '"ဆပ်ပစ်ဇယ်ဆက်တင်များ”',
-      paragraphs: [
-        '"Subpixel blend mode ကိုအသုံးပြုသည့်အခါ-”',
-      ],
-      bullets: [
-        '"ဇယားကွက်အရွယ်အစား- မော်ဂျူးတစ်ခုလျှင် ၂×၂၊ ၃×၃ သို့မဟုတ် ၄×၄ ဆပ်ပစ်ဇယ်များ။ မြင့်လေ = အသေးစိတ်ပို၍ရလေဖြစ်သည်။”',
-        '"ဗဟိုစည်းမျဉ်း- တင်းကျပ်မှုသည် မော်ဂျူးနှင့် ကိုက်ညီစေရန် ဗဟိုဆပ်ပစ်ဇယ်ကို လိုအပ်သည်။ Halftone Center သည် ပြောင်းလဲမှုများကို ခွင့်ပြုသည်။”',
-        '"ကြားနေအရောင်- မဆုံးဖြတ်ရသေးသော ဆပ်ပစ်ဇယ်များအတွက် အသုံးပြုသောအရောင်။”',
-        '"Finder Override: finder ပုံစံများကို မည်သို့ပုံဖော်သည် (Solid သို့မဟုတ် Stylized)။”',
-      ],
+      heading: 'Subpixel Settings',
+      paragraphs: ['When using Subpixel blend mode:'],
+      bullets: ['Grid Size: 2×2, 3×3, or 4×4 subpixels per module. Higher = more detail.', 'Center Rule: Strict requires center subpixel to match module. Halftone Center allows variation.', 'Neutral Color: Color used for undetermined subpixels.', 'Finder Override: How finder patterns are rendered (Solid or Stylized).'],
     },
     {
-      heading: '"တစ်ဝက်တလေ ဆက်တင်များ”',
-      paragraphs: [
-        '"Halftone blend mode ကိုအသုံးပြုသည့်အခါ-”',
-      ],
-      bullets: [
-        '"ဆဲလ်အရွယ်အစား- မော်ဂျူးတစ်ခုလျှင် သို့မဟုတ် N×N ဇယားကွက်။”',
-        '"အစက်ပုံသဏ္ဍာန်- စက်ဝိုင်း၊ စတုရန်း သို့မဟုတ် မျဉ်း။”',
-        '"တောက်ပမှုမျဉ်းကွေး- လိုင်း၊ S-မျဉ်းကွေး သို့မဟုတ် ဂါမာ။”',
-      ],
+      heading: 'Halftone Settings',
+      paragraphs: ['When using Halftone blend mode:'],
+      bullets: ['Cell Size: Per Module or N×N grid.', 'Dot Shape: Circle, Square, or Line.', 'Brightness Curve: Linear, S-Curve, or Gamma.'],
     },
     {
-      heading: '"ဒူအိုတွန်အရောင်များ”',
-      paragraphs: [
-        '"Duotone blend mode ကိုအသုံးပြုသည့်အခါ Shadow color (မှောင်သောနေရာများ) နှင့် Highlight color (တောက်ပသောနေရာများ) ကိုသတ်မှတ်ပါ။”',
-      ],
+      heading: 'Duotone Colors',
+      paragraphs: ['When using Duotone blend mode, set the Shadow color (dark areas) and Highlight color (bright areas).'],
     },
     {
-      heading: '"GIF ကာတွန်းဆက်တင်များ”',
-      paragraphs: [
-        '"ကာတွန်း GIF ထပ်ဆင့်များကို အသုံးပြုသည့်အခါ-”',
-      ],
-      bullets: [
-        '"Frame Delays ကို အသုံးပြုပါ- မူရင်း GIF အချိန်ကိုက်မှုကို လေးစားပါ။”',
-        '"အမြင့်ဆုံး FPS: ဖရိမ်နှုန်းကို ကန့်သတ်ပါ (၁-၆၀ fps)။”',
-        '"စွန့်ပစ်ပစ္စည်းကိုင်တွယ်ခြင်း- စွန့်ပစ်ခြင်းဆိုင်ရာ နည်းလမ်းများကို လေးစားလိုက်နာပါ သို့မဟုတ် ရိုးရှင်းအောင်ပြုလုပ်ပါ။”',
-      ],
+      heading: 'GIF Animation Settings',
+      paragraphs: ['When using animated GIF overlays:'],
+      bullets: ['Use Frame Delays: Respect original GIF timing.', 'Max FPS: Limit frame rate (1-60 fps).', 'Disposal Handling: Respect or Simplify frame disposal methods.'],
     },
     {
-      heading: '"အဆင့်မြင့် Rendering ရွေးချယ်စရာများ”',
-      paragraphs: [
-        '"နောက်ထပ် rendering controls:”',
-      ],
-      bullets: [
-        '"Gap Mode: None, Inset, Stroke, သို့မဟုတ် Negative Space gap styling”',
-        '"ထောင့်အချင်းဝက်- မော်ဂျူးများအတွက် လုံးဝန်းသောထောင့်များ ရာခိုင်နှုန်း။”',
-        '"မော်ဂျူးများပေါ်တွင် ရောင်ပြန်ဟပ်မှု- မရှိ၊ မျဉ်းဖြောင့်၊ ရေဒီယယ် သို့မဟုတ် ကွန်နစ်ရောင်ပြန်ဟပ်မှု။”',
-        '"မျက်လုံး အပြင်/အတွင်း ပုံစံ- ရှာဖွေကိရိယာ ပုံစံကွင်းများအတွက် သီးခြားပုံစံ။”',
-        '"အစက်လှည့်ခြင်း- စိန်/အစက် မော်ဂျူးများကို လှည့်ပါ။”',
-        '"မျက်လုံးစကေး- ရှာဖွေကိရိယာပုံစံများအတွက် အရွယ်အစားချိန်ညှိမှု။”',
-        '"ဘောင်ပုံစံ- အလှဆင်ဘောင်များထည့်ပါ (အဝိုင်းဘောင်၊ စတစ်ကာ၊ တဂ်)။”',
-        '"ဘောင်စာသား- "Scan Me!" ကဲ့သို့သော စာသားကို ဘောင်များထဲသို့ ထည့်ပါ။”',
-      ],
+      heading: 'Advanced Rendering Options',
+      paragraphs: ['Additional rendering controls:'],
+      bullets: ['Gap Mode: None, Inset, Stroke, or Negative Space gap styling.', 'Corner Radius: Rounded corners percentage for modules.', 'Gradient: None, Linear, Radial, or Conic gradient on modules.', 'Eye Outer/Inner Style: Independent styling for finder pattern rings.', 'Dot Rotation: Rotate diamond/dot modules.', 'Eye Scale: Size adjustment for finder patterns.', 'Frame Style: Add decorative frames (Rounded Frame, Sticker, Tag).', 'Frame Text: Add text like "Scan Me!" to frames.'],
     },
     {
-      heading: '"အဆင့်မြင့် QR ကုဒ်သွင်းခြင်း”',
-      paragraphs: [
-        '"QR ကုဒ်ကုဒ်ကို အသေးစိတ်ချိန်ညှိပါ-”',
-      ],
-      bullets: [
-        '"ကုဒ်သွင်းမုဒ်- အလိုအလျောက်၊ ဂဏန်း၊ အက္ခရာနှင့်ဂဏန်း၊ Byte/UTF-8 သို့မဟုတ် Kanji။”',
-        '"အနည်းဆုံး တိတ်ဆိတ်သောဇုန်ကို ပြဋ္ဌာန်းပါ- အနည်းဆုံး မော်ဂျူးအနားသတ် ၄ ခု သေချာပါစေ။”',
-      ],
+      heading: 'Advanced QR Encoding',
+      paragraphs: ['Fine-tune QR encoding:'],
+      bullets: ['Encoding Mode: Auto, Numeric, Alphanumeric, Byte/UTF-8, or Kanji.', 'Enforce Min Quiet Zone: Ensure at least 4 module margin.'],
     },
     {
-      heading: '"အဆင့်မြင့် အထွက် ရွေးချယ်စရာများ”',
-      paragraphs: [
-        '"နောက်ထပ် ပို့ကုန်ဆက်တင်များ”',
-      ],
-      bullets: [
-        '"ဖိုင်အမည်- ဒေါင်းလုဒ်များအတွက် စိတ်ကြိုက်ဖိုင်အမည်”',
-        '"GIF ပါလက်အရွယ်အစား- GIF အထွက်တွင် အရောင် ၂-၂၅၆ ရောင်။”',
-        '"GIF Quantizer: Median Cut၊ NeuQuant သို့မဟုတ် Octree အရောင်လျှော့ချခြင်း။”',
-        '"GIF တုန်ခါခြင်း- ပိတ်ထားသည်၊ Floyd-Steinberg သို့မဟုတ် အမိန့်ပေးထားသည်။”',
-        '"GIF ဖောက်ထွင်းမြင်ရသောအရောင်- အရောင်တစ်ခုကို ဖောက်ထွင်းမြင်ရအောင် သတ်မှတ်ပါ။”',
-        '"SVG True Vector: embedded raster အစား path များကိုသုံးပါ။”',
-        '"SVG ပုံသဏ္ဍာန် တိကျမှု- ပစ်ဇယ် သို့မဟုတ် တိကျသော လမ်းကြောင်း ပုံဖော်ခြင်း။”',
-        '"SVG Embed Raster Overlay: embedded image အဖြစ် overlay ကိုထည့်သွင်းပါ။”',
-        '"နောက်ခံ အစားထိုးခြင်း- အထွက်တွင် သတ်မှတ်ထားသော နောက်ခံအရောင်ကို အတင်းအကျပ်ပြုလုပ်ခြင်း။”',
-      ],
+      heading: 'Advanced Output Options',
+      paragraphs: ['Additional export settings:'],
+      bullets: ['Filename: Custom filename for downloads.', 'GIF Palette Size: 2-256 colors in GIF output.', 'GIF Quantizer: Median Cut, NeuQuant, or Octree color reduction.', 'GIF Dithering: Off, Floyd-Steinberg, or Ordered.', 'GIF Transparent Color: Set a color to be transparent.', 'SVG True Vector: Use paths instead of embedded raster.', 'SVG Shape Precision: Pixel or Precise path rendering.', 'SVG Embed Raster Overlay: Include overlay as embedded image.', 'Background Override: Force a specific background color in output.'],
     },
     {
-      heading: '"အတည်ပြုချက် ရွေးချယ်စရာများ”',
-      paragraphs: [
-        '"ထည့်သွင်းမှု စီမံဆောင်ရွက်မှု ဆက်တင်များ”',
-      ],
-      bullets: [
-        '"ထည့်သွင်းမှုကို အတည်ပြုပါ- ကုဒ်ဝှက်ခြင်းမပြုမီ အကြောင်းအရာဖော်မတ်ကို စစ်ဆေးပါ။”',
-        '"အဖြူရောင်နေရာလွတ်များကို ဖြတ်တောက်ပါ- ရှေ့/နောက် ကွက်လပ်များကို ဖယ်ရှားပါ။”',
-        '"စာကြောင်းအသစ်များကို ပုံမှန်ဖြစ်အောင်ပြုလုပ်ပါ- စာကြောင်းအဆုံးသတ်အားလုံးကို LF သို့ပြောင်းပါ။”',
-        '"အမြင့်ဆုံးအရှည်အကာအရံ- အကြောင်းအရာသည် QR ပမာဏထက်ကျော်လွန်ပါက သတိပေးပါ။”',
-      ],
+      heading: 'Validation Options',
+      paragraphs: ['Input processing settings:'],
+      bullets: ['Validate Input: Check content format before encoding.', 'Trim Whitespace: Remove leading/trailing spaces.', 'Normalize Newlines: Convert all line endings to LF.', 'Max Length Guard: Warn if content exceeds QR capacity.'],
     },
     {
-      heading: '"ပရော်ဖက်ရှင်နယ် အင်္ဂါရပ်များ”',
-      paragraphs: [
-        '"ပရော်ဖက်ရှင်နယ်အဆင့်တွင် ရေစာများ၊ မက်တာဒေတာ၊ မျှဝေခြင်းရွေးချယ်စရာများ၊ ဘေးကင်းရေးခွဲခြမ်းစိတ်ဖြာမှု၊ ငွေပေးချေမှု QR ကုဒ်များနှင့် စီးပွားရေးလုပ်ငန်းအင်္ဂါရပ်များကို ထည့်သွင်းထားသည်။”',
-      ],
+      heading: 'Professional Features',
+      paragraphs: ['The Professional level adds watermarks, metadata, sharing options, safety analysis, payment QR codes, and enterprise features.'],
     },
     {
-      heading: '"ရေစာ”',
-      paragraphs: [
-        '"သင့် QR ကုဒ်များတွင် ရေစာများထည့်ပါ-”',
-      ],
-      bullets: [
-        '"အမျိုးအစား- စာသား၊ ရုပ်ပုံ သို့မဟုတ် ပုံစံ ရေစာ။”',
-        '"နေရာ- အလယ်ဗဟို၊ ထောင့်များ၊ အနားစွန်းများ၊ နောက်ကွယ် သို့မဟုတ် တိတ်ဆိတ်သောဇုန်။”',
-        '"အလင်းပိတ်မှု- ရေစာ ပွင့်လင်းမြင်သာမှု (၀-၁၀၀%)။”',
-        '"ရောစပ်မုဒ်- ပုံမှန်၊ များပြားခြင်း၊ မျက်နှာပြင် သို့မဟုတ် အပေါ်ယံ ရောစပ်ခြင်း။”',
-      ],
+      heading: 'Watermark',
+      paragraphs: ['Add watermarks to your QR codes:'],
+      bullets: ['Kind: Text, Image, or Pattern watermark.', 'Position: Center, Corners, Edges, Behind, or Quiet Zone.', 'Opacity: Watermark transparency (0-100%).', 'Blend Mode: Normal, Multiply, Screen, or Overlay blending.'],
     },
     {
-      heading: '"မက်တာဒေတာ”',
-      paragraphs: [
-        '"တင်ပို့ထားသောဖိုင်များတွင် မက်တာဒေတာထည့်သွင်းပါ-”',
-      ],
-      bullets: [
-        '"ခေါင်းစဉ်၊ စာရေးသူ၊ မူပိုင်ခွင့်၊ လိုင်စင်၊ ဖော်ပြချက် အကွက်များ။”',
-        '"ဖန်တီးမှုအချိန်- မျိုးဆက်အချိန်တံဆိပ်ကို ထည့်သွင်းပါ။”',
-        '"စိတ်ကြိုက် သော့-တန်ဖိုး- မည်သည့်မက်တာဒေတာအတွဲများကိုမဆို ထည့်ပါ။”',
-      ],
+      heading: 'Metadata',
+      paragraphs: ['Embed metadata in exported files:'],
+      bullets: ['Title, Author, Copyright, License, Description fields.', 'Creation Time: Embed generation timestamp.', 'Custom Key-Value: Add arbitrary metadata pairs.'],
     },
     {
-      heading: '"မျှဝေခြင်း”',
-      paragraphs: [
-        '"သင့် QR ကုဒ် ပြင်ဆင်မှုများကို မျှဝေပါ-”',
-      ],
-      bullets: [
-        '"တိုက်ရိုက်လင့်ခ်- သင်၏လက်ရှိဆက်တင်များဖြင့် မျှဝေနိုင်သော URL တစ်ခုကို ဖန်တီးပါ။”',
-        '"Embed HTML: ဝဘ်ဆိုက်များအတွက် embed code ရယူပါ။”',
-        '"ကန့်သတ်ချက်များကို ကုဒ်သွင်းပါ- မျှဝေ URL တွင် ဆက်တင်အားလုံးကို ထည့်သွင်းပါ။”',
-        '"မှတ်ချက်- ဒေသတွင်းဖိုင်များမှ ထပ်ဆင့်ထားသော ပုံများကို URL မှတစ်ဆင့် မျှဝေ၍မရပါ။”',
-      ],
+      heading: 'Sharing',
+      paragraphs: ['Share your QR code configurations:'],
+      bullets: ['Direct Link: Generate a shareable URL with your current settings.', 'Embed HTML: Get embed code for websites.', 'Encode Parameters: Include all settings in the share URL.', 'Note: Overlay images from local files cannot be shared via URL.'],
     },
     {
-      heading: '"ဘေးကင်းရေး ခွဲခြမ်းစိတ်ဖြာခြင်း”',
-      paragraphs: [
-        '"QR ကုဒ်များကို စကင်ဖတ်နိုင်စေရန် သေချာစေပါ-”',
-      ],
-      bullets: [
-        '"ဘေးကင်းရေးမုဒ်- ပိတ်ထားခြင်း၊ ဟန်ချက်ညီခြင်း သို့မဟုတ် တင်းကျပ်သော စကင်န်ဖတ်ခြင်း လိုအပ်ချက်များ။”',
-        '"အနည်းဆုံး မော်ဂျူးအရွယ်အစား- မော်ဂျူးတစ်ခုလျှင် အနည်းဆုံး ပစ်ဇယ်အရွယ်အစား။”',
-        '"အနည်းဆုံး တိတ်ဆိတ်ဇုန်- အနည်းဆုံး အနားသတ် မော်ဂျူးများ။”',
-        '"Lock Finders/Timing/Align/Format/Version: သတ်မှတ်ထားသော element များကို ကာကွယ်ပါ။”',
-        '"ECC မှ အမြင့်ဆုံး အပေါ်ယံအလွှာ ပြင်းထန်မှု- အမှားပြင်ဆင်ချက်အဆင့်အပေါ် အခြေခံ၍ အလိုအလျောက် ပြင်းထန်မှု ကန့်သတ်ချက်များ။”',
-      ],
+      heading: 'Safety Analysis',
+      paragraphs: ['Ensure QR codes remain scannable:'],
+      bullets: ['Safety Mode: Off, Balanced, or Strict scanning requirements.', 'Min Module Size: Minimum pixel size per module.', 'Min Quiet Zone: Minimum margin modules.', 'Lock Finders/Timing/Align/Format/Version: Protect specific elements.', 'Max Overlay Intensity by ECC: Automatic intensity limits based on error correction level.'],
     },
     {
-      heading: '"အကြောင်းအရာအမျိုးအစားများ (ပရော်ဖက်ရှင်နယ်)”',
-      paragraphs: [
-        '"ပရော်ဖက်ရှင်နယ်အဆင့်က ငွေပေးချေမှုနှင့် လုပ်ငန်းအကြောင်းအရာအမျိုးအစားများကို ထည့်သွင်းပေးသည်-”',
-      ],
-      bullets: [
-        '"EPC/SEPA (EU): IBAN၊ BIC၊ ပမာဏ၊ ရည်ညွှန်းချက်ပါရှိသော ဥရောပဘဏ်ငွေလွှဲ QR ကုဒ်များ။”',
-        '"UPI (အိန္ဒိယ): VPA၊ ငွေလက်ခံသူအမည်၊ ပမာဏတို့ပါဝင်သည့် ပေါင်းစည်းငွေပေးချေမှု အင်တာဖေ့စ်။”',
-        '"PayNow (စင်ကာပူ): UEN သို့မဟုတ် မိုဘိုင်းနံပါတ်ဖြင့် စင်ကာပူတွင် မြန်ဆန်စွာ ငွေပေးချေမှု။”',
-        '"PromptPay (ထိုင်းနိုင်ငံ): ထိုင်းနိုင်ငံ၏ အမျိုးသားငွေပေးချေမှုစနစ်။”',
-        '"PIX (ဘရာဇီး): PIX သော့ဖြင့် ဘရာဇီးလ် လက်ငင်းငွေပေးချေမှု။”',
-        '"Crypto: ရွေးချယ်နိုင်သောပမာဏပါရှိသော Bitcoin၊ Ethereum၊ Litecoin ငွေပေးချေမှုလိပ်စာများ။”',
-        '"စျေးကွက်ရှာဖွေရေး ကမ်ပိန်းလင့်ခ်- UTM ပါရာမီတာ (စျေးကွက်ရှာဖွေရေး တဂ်များ) ခြေရာခံခြင်းအပြည့်အစုံပါရှိသော URL များ။”',
-        '"အတိုလင့်ခ်- dynamic/trackable QR ကုဒ်များအတွက် URL အတိုကောက်ကိရိယာများနှင့်အတူအသုံးပြုရန်။”',
-        '"GS1 ဒစ်ဂျစ်တယ်လင့်ခ်- GTIN၊ စီးရီး၊ အသုတ်၊ သက်တမ်းကုန်ဆုံးချိန်တို့ဖြင့် ထုတ်ကုန်ခွဲခြားသတ်မှတ်ခြင်း။”',
-        '"အက်ပ်နက်ရှိုင်းသောလင့်ခ်- စိတ်ကြိုက်ပုံစံများဖြင့် iOS/Android အက်ပ်နက်ရှိုင်းသောလင့်ခ်များ။”',
-        '"စိတ်ကြိုက်ဖော်မတ်- ဖော်မတ်လုပ်ခြင်း သို့မဟုတ် အတည်ပြုခြင်းမပါဝင်သော ကုန်ကြမ်းဒေတာ။”',
-      ],
+      heading: 'Content Types (Professional)',
+      paragraphs: ['Professional level adds payment and enterprise content types:'],
+      bullets: ['EPC/SEPA (EU): European bank transfer QR codes with IBAN, BIC, amount, reference.', 'UPI (India): Unified Payments Interface with VPA, payee name, amount.', 'PayNow (Singapore): Singapore fast payment with UEN or mobile number.', 'PromptPay (Thailand): Thai national payment system.', 'PIX (Brazil): Brazilian instant payment with PIX key.', 'Crypto: Bitcoin, Ethereum, Litecoin payment addresses with optional amount.', 'Marketing Campaign Link: URLs with full UTM parameter (Marketing Tags) tracking.', 'Short Link: For use with URL shorteners for dynamic/trackable QR codes.', 'GS1 Digital Link: Product identification with GTIN, serial, batch, expiry.', 'App Deep Link: iOS/Android app deep links with custom schemes.', 'Custom Format: Raw data with no formatting or validation.'],
     },
     {
-      heading: '"ဘာသာစကားနှင့်သက်ဆိုင်သော ငွေပေးချေမှုများကို အဆင့်မြင့်မုဒ်တွင် ပြုလုပ်ခြင်း”',
-      paragraphs: [
-        '"အဆင့်မြင့်မုဒ်ကိုအသုံးပြုသည့်အခါ ANQR သည် သင်ရွေးချယ်ထားသောဘာသာစကားနှင့်သက်ဆိုင်သည့် ငွေပေးချေမှုနည်းလမ်းများကို အလိုအလျောက်ပြသသည်။ ဥပမာအားဖြင့်၊ ဗီယက်နမ်အသုံးပြုသူများသည် VietQR ကိုမြင်တွေ့ရပြီး ထိုင်းအသုံးပြုသူများသည် PromptPay ကိုမြင်တွေ့ရပြီး အိန္ဒိယဘာသာစကားအသုံးပြုသူများသည် UPI နှင့် BharatQR ကိုမြင်တွေ့ရသည်။ ကမ္ဘာလုံးဆိုင်ရာငွေပေးချေမှုနည်းလမ်းများ (cryptocurrency၊ PayPal၊ Cash App) ကို ဘာသာစကားအားလုံးအတွက် ရရှိနိုင်ပါသည်။ ပရော်ဖက်ရှင်နယ်မုဒ်သည် ဘာသာစကားမခွဲခြားဘဲ ငွေပေးချေမှုစံနှုန်းအားလုံးကို လော့ခ်ဖွင့်ပေးသည်။”',
-      ],
+      heading: 'Language-Relevant Payments in Advanced Mode',
+      paragraphs: ['When using Advanced mode, ANQR automatically shows payment methods relevant to your selected language. For example, Vietnamese users see VietQR, Thai users see PromptPay, and Indian language users see UPI and BharatQR. Global payment methods (cryptocurrency, PayPal, Cash App) are available to all languages. Professional mode unlocks all payment standards regardless of language.'],
     },
     {
-      heading: '"ဥရောပငွေပေးချေမှုစံနှုန်းများ”',
-      bullets: [
-        '"EPC/SEPA (EU): EPC QR Code စံနှုန်းကို လိုက်နာသော ဥရောပဘဏ်ငွေလွှဲ QR ကုဒ်များ။ IBAN၊ BIC (ပြည်တွင်းအတွက် ရွေးချယ်နိုင်သည်)၊ EUR ဖြင့် ပမာဏနှင့် ဖွဲ့စည်းတည်ဆောက်ထားသော သို့မဟုတ် ဖွဲ့စည်းတည်ဆောက်မထားသော ငွေပေးချေမှု ရည်ညွှန်းချက်များကို ပံ့ပိုးပေးသည်။ EU နိုင်ငံများနှင့် ဆွစ်ဇာလန်၊ နော်ဝေး၊ အိုက်စလန်၊ လစ်ချင်စတိန်း၊ မိုနာကိုနှင့် ဆန်မာရီနို အပါအဝင် SEPA ဇုန်တစ်လျှောက်တွင် အသုံးပြုသည်။”',
-        '"ဆွစ် QR-ဘီလ်- SIX အကောင်အထည်ဖော်မှုလမ်းညွှန်ချက်များကို လိုက်နာသည့် ဆွစ်ငွေပေးချေမှုစံနှုန်း။ CHF နှင့် EUR၊ QR-ရည်ညွှန်းချက် (QRR)၊ ငွေချေးသူရည်ညွှန်းချက် (ISO 11649)၊ ဖွဲ့စည်းတည်ဆောက်ထားသော ငွေချေးသူ/အကြွေးရှင်လိပ်စာများနှင့် ဘီလ်အချက်အလက်များကို ပံ့ပိုးပေးသည်။ ၂၀၂၂ ခုနှစ်မှစ၍ ဆွစ်ငွေတောင်းခံလွှာများအတွက် လိုအပ်ပါသည်။”',
-      ],
+      heading: 'European Payment Standards',
+      bullets: ['EPC/SEPA (EU): European bank transfer QR codes following the EPC QR Code Standard. Supports IBAN, BIC (optional for domestic), amount in EUR, and structured or unstructured payment references. Used across the SEPA zone including EU countries plus Switzerland, Norway, Iceland, Liechtenstein, Monaco, and San Marino.', 'Swiss QR-bill: Swiss payment standard following SIX Implementation Guidelines. Supports CHF and EUR, QR-Reference (QRR), Creditor Reference (ISO 11649), structured creditor/debtor addresses, and bill information. Required for Swiss invoices since 2022.'],
     },
     {
-      heading: '"အိန္ဒိယငွေပေးချေမှုစံနှုန်းများ”',
-      bullets: [
-        '"UPI (အိန္ဒိယ): NPCI Deep Linking သတ်မှတ်ချက်ကို လိုက်နာသော ပေါင်းစည်းငွေပေးချေမှု အင်တာဖေ့စ်။ VPA (Virtual Payment Address)၊ ငွေလက်ခံသူအမည်၊ INR ဖြင့် ပမာဏ၊ ငွေပေးငွေယူမှတ်စု၊ ရည်ညွှန်း ID၊ ကုန်သည်အမျိုးအစားကုဒ်နှင့် ငွေပေးငွေယူမုဒ်ကို ပံ့ပိုးပေးသည်။”',
-        '"BharatQR (အိန္ဒိယ): UPI နှင့် ကတ်အခြေပြု ငွေပေးချေမှု နှစ်မျိုးလုံးကို ပံ့ပိုးပေးသည့် ပေါင်းစည်းထားသော QR စံနှုန်း။ အများဆုံး တွဲဖက်အသုံးပြုနိုင်စေရန်အတွက် UPI VPA ကို ကတ် PAN နှင့် ပေါင်းစပ်ထားသည်။ ကုန်သည်အမည်၊ မြို့၊ MCC၊ GST အသေးစိတ်အချက်အလက်များနှင့် ငွေတောင်းခံလွှာ/ရည်ညွှန်းနံပါတ်များ ပါဝင်သည်။”',
-      ],
+      heading: 'Indian Payment Standards',
+      bullets: ['UPI (India): Unified Payments Interface following NPCI Deep Linking Specification. Supports VPA (Virtual Payment Address), payee name, amount in INR, transaction note, reference ID, merchant category code, and transaction mode.', 'BharatQR (India): Unified QR standard supporting both UPI and card-based payments. Combines UPI VPA with card PAN for maximum compatibility. Includes merchant name, city, MCC, GST details, and invoice/reference numbers.'],
     },
     {
-      heading: '"အရှေ့တောင်အာရှ ငွေပေးချေမှုစံနှုန်းများ”',
-      bullets: [
-        '"PayNow (စင်ကာပူ): SGQR ပရိုဖိုင်ပါရှိသော EMVCo QR သတ်မှတ်ချက်ကို အသုံးပြုသည့် စင်ကာပူ အမြန်ငွေပေးချေမှုစနစ်။ UEN (စီးပွားရေးမှတ်ပုံတင်ခြင်း)၊ မိုဘိုင်းနံပါတ် သို့မဟုတ် NRIC ကို proxy identifier များအဖြစ် ပံ့ပိုးပေးသည်။ ပမာဏ တည်းဖြတ်နိုင်မှုအလံနှင့် သက်တမ်းကုန်ဆုံးရက် ပါဝင်သည်။”',
-        '"PromptPay (ထိုင်းနိုင်ငံ): ထိုင်းဘဏ် EMV ပရိုဖိုင်ကို လိုက်နာသော ထိုင်းနိုင်ငံ၏ ငွေပေးချေမှုစနစ်။ မိုဘိုင်းနံပါတ်၊ အမျိုးသားမှတ်ပုံတင်၊ အခွန်မှတ်ပုံတင်၊ e-wallet ID နှင့် ရည်ညွှန်းကွက်လပ်များစွာဖြင့် ဘေလ်ပေးချေမှုကို ပံ့ပိုးပေးသည်။”',
-        '"QRIS (အင်ဒိုနီးရှား): အင်ဒိုနီးရှားစံနှုန်းဖြင့် အမြန်တုံ့ပြန်သည့်ကုဒ်။ ကုန်သည် ID၊ NMID (အမျိုးသားကုန်သည် ID)၊ ကုန်သည်စံနှုန်းခွဲခြားမှုနှင့် အဆင်ပြေမှုအခကြေးငွေများ (ပုံသေ သို့မဟုတ် ရာခိုင်နှုန်း) ကို ပံ့ပိုးပေးသည့် EMV-အခြေခံ အမျိုးသားငွေပေးချေမှုစံနှုန်း။”',
-        '"DuitNow (မလေးရှား): မလေးရှား လက်ငင်းငွေပေးချေမှုစနစ်။ NRIC၊ မိုဘိုင်း၊ နိုင်ငံကူးလက်မှတ်၊ စစ်တပ် ID နှင့် စီးပွားရေးမှတ်ပုံတင်နံပါတ်များ အပါအဝင် proxy အမျိုးအစားများစွာကို ပံ့ပိုးပေးသည်။”',
-        '"VietQR (ဗီယက်နမ်): ဗီယက်နမ်ဘဏ်အချင်းချင်းငွေလွှဲစံနှုန်း။ ဘဏ် BIN (NAPAS မှတ်ပုံတင်ခြင်း) နှင့် အကောင့်နံပါတ် လိုအပ်သည်။ မတူညီသောငွေလွှဲအမျိုးအစားများ (QRPUSH၊ QRIBFTTA၊ QRIBFTTC) အတွက် ဝန်ဆောင်မှုကုဒ်များစွာကို ပံ့ပိုးပေးသည်။”',
-        '"QR Ph (ဖိလစ်ပိုင်): InstaPay နှင့် PESONet အတွက် ဖိလစ်ပိုင် QR ငွေပေးချေမှုစံနှုန်း။ P2M (လူမှကုန်သည်သို့) ငွေပေးငွေယူများအတွက် ကုန်သည်မှတ်ပုံတင်ပါသော အကောင့်နံပါတ်များကို အသုံးပြုသည်။”',
-      ],
+      heading: 'Southeast Asian Payment Standards',
+      bullets: ['PayNow (Singapore): Singapore fast payment system using EMVCo QR specification with SGQR profile. Supports UEN (business registration), mobile number, or NRIC as proxy identifiers. Includes amount editability flag and expiry date.', 'PromptPay (Thailand): Thai national payment system following Bank of Thailand EMV profile. Supports mobile number, national ID, tax ID, e-wallet ID, and bill payment with multiple reference fields.', 'QRIS (Indonesia): Quick Response Code Indonesian Standard. EMV-based national payment standard supporting merchant ID, NMID (National Merchant ID), merchant criteria classification, and convenience fees (fixed or percentage).', 'DuitNow (Malaysia): Malaysian instant payment system. Supports multiple proxy types including NRIC, mobile, passport, army ID, and business registration numbers.', 'VietQR (Vietnam): Vietnamese interbank transfer standard. Requires bank BIN (NAPAS identification) and account number. Supports multiple service codes for different transfer types (QRPUSH, QRIBFTTA, QRIBFTTC).', 'QR Ph (Philippines): Philippine QR payment standard for InstaPay and PESONet. Uses account numbers with merchant identification for P2M (person-to-merchant) transactions.'],
     },
     {
-      heading: '"အရှေ့အာရှငွေပေးချေမှုစံနှုန်းများ”',
-      bullets: [
-        '"TWQR (ထိုင်ဝမ်): ထိုင်ဝမ် QR ငွေပေးချေမှုစံနှုန်း။ ကုန်သည် ID၊ အခွန် ID နှင့် TWD ပမာဏများကို ပံ့ပိုးပေးသည်။”',
-        '"HKQR/FPS (ဟောင်ကောင်): ဟောင်ကောင် ပိုမိုမြန်ဆန်သော ငွေပေးချေမှုစနစ် QR ကုဒ်များ။ FPS ID၊ မိုဘိုင်းနံပါတ် သို့မဟုတ် အီးမေးလ်ကို ငွေပေးချေမှု အမှတ်အသားများအဖြစ် ပံ့ပိုးပေးသည်။ HKD ဖြင့် ပမာဏများ။”',
-        '"JPQR (ဂျပန်): ဂျပန်ပေါင်းစည်းထားသော QR ကုဒ်ငွေပေးချေမှုစံနှုန်း။ JPY ပမာဏများဖြင့် ကုန်သည်ခွဲခြားသတ်မှတ်ရန်အတွက် စတိုးဆိုင် ID ကို အသုံးပြုသည်။”',
-      ],
+      heading: 'East Asian Payment Standards',
+      bullets: ['TWQR (Taiwan): Taiwanese QR payment standard. Supports merchant ID, tax ID, and TWD amounts.', 'HKQR/FPS (Hong Kong): Hong Kong Faster Payment System QR codes. Supports FPS ID, mobile number, or email as payment identifiers. Amounts in HKD.', 'JPQR (Japan): Japanese unified QR code payment standard. Uses store ID for merchant identification with JPY amounts.'],
     },
     {
-      heading: '"အခြားဒေသတွင်းငွေပေးချေမှုစံနှုန်းများ”',
-      bullets: [
-        '"PIX (ဘရာဇီး): BR ကုဒ်သတ်မှတ်ချက်ကို လိုက်နာသည့် ဘရာဇီးဗဟိုဘဏ်၏ လက်ငင်းငွေပေးချေမှုစနစ်။ PIX သော့များ (CPF၊ CNPJ၊ အီးမေးလ်၊ ဖုန်း သို့မဟုတ် ကျပန်းသော့)၊ ကုန်သည်အမည်/မြို့၊ ငွေပေးငွေယူ ID နှင့် BRL ပမာဏများကို ပံ့ပိုးပေးသည်။”',
-        '"AusPayNet/NPP PayID (သြစတြေးလျ): သြစတြေးလျ ငွေပေးချေမှုပလက်ဖောင်းအသစ် PayID စနစ်။ PayID အမျိုးအစားများ (အီးမေးလ်၊ မိုဘိုင်း၊ ABN၊ အဖွဲ့အစည်း ID) သို့မဟုတ် ရိုးရာ BSB + အကောင့်နံပါတ်ကို ပံ့ပိုးပေးသည်။ ငွေပေးချေသူများသည် NPP ရှာဖွေမှုမှ မှတ်ပုံတင်ထားသောအမည်ကို မြင်တွေ့ရသောကြောင့် ကုန်သည်အမည်ကို ရွေးချယ်နိုင်သည်။”',
-      ],
+      heading: 'Other Regional Payment Standards',
+      bullets: ['PIX (Brazil): Brazilian Central Bank instant payment system following BR Code specification. Supports PIX keys (CPF, CNPJ, email, phone, or random key), merchant name/city, transaction ID, and BRL amounts.', 'AusPayNet/NPP PayID (Australia): Australian New Payments Platform PayID system. Supports PayID types (email, mobile, ABN, organisation ID) or traditional BSB + account number. Merchant name is optional as payers see the registered name from NPP lookup.'],
     },
     {
-      heading: '"ဒစ်ဂျစ်တယ်ငွေကြေး ငွေပေးချေမှုများ”',
-      bullets: [
-        '"Bitcoin/Litecoin (BIP-21): ပိုက်ဆံအိတ်လိပ်စာ၊ ရွေးချယ်နိုင်သောပမာဏနှင့် အညွှန်းပါရှိသော စံ cryptocurrency ငွေပေးချေမှု URI များ။ အဓိက Bitcoin နှင့် Litecoin ပိုက်ဆံအိတ်အားလုံးနှင့် တွဲဖက်အသုံးပြုနိုင်သည်။”',
-        '"Lightning Network (BOLT11): Lightning Network ငွေပေးချေမှုပြေစာများ။ အနည်းဆုံးအခကြေးငွေဖြင့် ချက်ချင်း Bitcoin ငွေပေးချေမှုများအတွက် BOLT11 ကုဒ်ဝှက်ထားသော ပြေစာစာကြောင်းကို ကူးထည့်ပါ။”',
-        '"Ethereum (EIP-၆၈၁): မူရင်း ETH လွှဲပြောင်းမှုများနှင့် ERC-20 တိုကင်လွှဲပြောင်းမှုများကို ပံ့ပိုးပေးသည့် Ethereum ငွေပေးငွေယူ တောင်းဆိုမှု URI များ။ multi-network ပံ့ပိုးမှု (Mainnet၊ Polygon၊ BSC၊ Arbitrum၊ Optimism၊ Avalanche)၊ gas parameters များနှင့် contract function calls များအတွက် chain ID ပါဝင်သည်။”',
-      ],
+      heading: 'Cryptocurrency Payments',
+      bullets: ['Bitcoin/Litecoin (BIP-21): Standard cryptocurrency payment URIs with wallet address, optional amount, and label. Compatible with all major Bitcoin and Litecoin wallets.', 'Lightning Network (BOLT11): Lightning Network payment invoices. Paste a BOLT11 encoded invoice string for instant Bitcoin payments with minimal fees.', 'Ethereum (EIP-681): Ethereum transaction request URIs supporting native ETH transfers and ERC-20 token transfers. Includes chain ID for multi-network support (Mainnet, Polygon, BSC, Arbitrum, Optimism, Avalanche), gas parameters, and contract function calls.'],
     },
     {
-      heading: '"ငွေပေးချေမှုလင့်ခ်ဝန်ဆောင်မှုများ”',
-      bullets: [
-        '"PayPal.Me: အသုံးပြုသူအမည်နှင့် ရွေးချယ်နိုင်သော ကြိုတင်ဖြည့်ထားသော ပမာဏပါသည့် PayPal ငွေပေးချေမှုလင့်ခ်များ။ လက်ခံသူများသည် PayPal လက်ကျန်ငွေ၊ ကတ်များ သို့မဟုတ် ဘဏ်အကောင့်များမှတစ်ဆင့် ငွေပေးချေနိုင်သည်။”',
-        '"ငွေသားအက်ပ်- ရွေးချယ်နိုင်သောပမာဏဖြင့် $cashtag ကို အသုံးပြု၍ ငွေသားအက်ပ်ငွေပေးချေမှုလင့်ခ်များ။ အမေရိကန်ပြည်ထောင်စုတွင် peer-to-peer ငွေပေးချေမှုများအတွက် ရေပန်းစားသည်။”',
-      ],
+      heading: 'Payment Link Services',
+      bullets: ['PayPal.Me: PayPal payment links with username and optional pre-filled amount. Recipients can pay via PayPal balance, cards, or bank accounts.', 'Cash App: Cash App payment links using $cashtag with optional amount. Popular in the United States for peer-to-peer payments.'],
     },
     {
-      heading: '"ယေဘုယျ EMV QR”',
-      bullets: [
-        '"EMV Generic: ငွေပေးချေမှုပုံစံများအတွက် သီးသန့်ဖော်ပြထားခြင်းမရှိသော စိတ်ကြိုက် EMV Merchant-Presented Mode QR ကုဒ်များကို ဖန်တီးပါ။ ကုန်သည်အမည်၊ မြို့၊ နိုင်ငံကုဒ် (ISO 3166-1)၊ ငွေကြေးကုဒ် (ISO 4217 ဂဏန်း)၊ MCC၊ တစ်ပ်/အဆင်ပြေကြေး ရွေးချယ်မှုများနှင့် အပိုဒေတာအကွက်များကို ပြင်ဆင်သတ်မှတ်ပါ။ စမ်းသပ်ခြင်း သို့မဟုတ် စိတ်ကြိုက်ပေါင်းစပ်မှုများအတွက် အသုံးဝင်ပါသည်။”',
-      ],
+      heading: 'Generic EMV QR',
+      bullets: ['EMV Generic: Create custom EMV Merchant-Presented Mode QR codes for payment schemes not specifically listed. Configure merchant name, city, country code (ISO 3166-1), currency code (ISO 4217 numeric), MCC, tip/convenience fee options, and additional data fields. Useful for testing or custom integrations.'],
     },
     {
-      heading: '"Overlay Blend Modes (Professional)”',
-      paragraphs: [
-        '"ပရော်ဖက်ရှင်နယ်အဆင့်တွင် နောက်ထပ် ရောစပ်မုဒ်များ”',
-      ],
-      bullets: [
-        '"ပစ်ဇယ်လိတ်- ပစ်ဇယ်ပုံပေါ်လွင်စေသော အာနိသင်။”',
-        '"အပြင်အဆင်- မျဉ်းကွေးများကိုသာပြသသည့် အနားထောက်လှမ်းခြင်း အလွှာ။”',
-        '"လှိုင်း- လှိုင်းတွန့်ပုံပျက်ခြင်း အာနိသင်။”',
-        '"ဆပ်ပစ်ဇယ် အရွယ်အစား- ရုပ်ပုံအပေါ် အခြေခံ၍ ပြောင်းလဲနိုင်သော ဆပ်ပစ်ဇယ် အရွယ်အစား။”',
-        '"တကယ့် Dither: အစီအစဉ်တကျ matrix ရွေးချယ်မှုဖြင့် အဆင့်မြင့် dithering။”',
-        '"အလွန်အမင်း- ရုပ်ပုံမြင်သာမှုအမြင့်ဆုံး၊ စကင်ဖတ်နိုင်မှုကို ထိခိုက်နိုင်သည်။”',
-      ],
+      heading: 'Overlay Blend Modes (Professional)',
+      paragraphs: ['Additional blend modes in Professional level:'],
+      bullets: ['Pixelate: Pixelated overlay effect.', 'Outline: Edge detection overlay showing only contours.', 'Wave: Wavy distortion effect.', 'Subpixel Size: Variable subpixel sizing based on image.', 'True Dither: Advanced dithering with ordered matrix selection.', 'Extreme: Maximum image visibility, may affect scannability.'],
     },
     {
-      heading: '"ကာကွယ်မှုဆက်တင်များ”',
-      paragraphs: [
-        '"မည်သည့် QR အစိတ်အပိုင်းများကို အပေါ်ယံပြုပြင်မွမ်းမံမှုမှ ကာကွယ်ထားသည်ကို အသေးစိတ်ထိန်းချုပ်မှု-”',
-      ],
-      bullets: [
-        '"အချိန်ကိုက်ခြင်းကို ထိန်းသိမ်းပါ- အချိန်ကိုက်ပုံစံများကို မပြုပြင်ထားပါ။”',
-        '"ချိန်ညှိမှုကို ထိန်းသိမ်းပါ- ချိန်ညှိမှုပုံစံများကို မပြုပြင်ဘဲထားပါ။”',
-        '"ဖော်မတ်အချက်အလက်ကို ကာကွယ်ပါ- ဒိုင်းလ်ဖော်မတ်အချက်အလက် မော်ဂျူးများ။”',
-        '"ဗားရှင်းအချက်အလက်ကို ကာကွယ်ပါ- ဒိုင်းလွှားဗားရှင်းအချက်အလက် မော်ဂျူးများ။”',
-      ],
+      heading: 'Protection Settings',
+      paragraphs: ['Fine-grained control over which QR elements are protected from overlay modification:'],
+      bullets: ['Preserve Timing: Keep timing patterns unmodified.', 'Preserve Alignment: Keep alignment patterns unmodified.', 'Protect Format Info: Shield format information modules.', 'Protect Version Info: Shield version information modules.'],
     },
     {
-      heading: '"ECC-Aware မုဒ်”',
-      paragraphs: [
-        '"အမှားပြင်ဆင်နိုင်စွမ်းအပေါ် အခြေခံ၍ အလွှာ၏ ပြင်းထန်မှုကို ဉာဏ်ရည်ထက်မြက်စွာ ဖြန့်ဝေပေးသည်။ စနစ်သည် စကင်ဖတ်နိုင်စွမ်းကို ထိန်းသိမ်းထားစဉ်တွင် မည်သည့်မော်ဂျူးများကို ပြုပြင်နိုင်သည်ကို ခွဲခြမ်းစိတ်ဖြာသည်။”',
-      ],
-      bullets: [
-        '"အန္တရာယ်ဘတ်ဂျက်- အသုံးပြုရန် အမှားပြင်ဆင်နိုင်စွမ်း၏ ရာခိုင်နှုန်း (၀-၁၀၀%)။”',
-        '"ဘတ်ဂျက်မြင့်မားခြင်း = ပိုမိုမြင်သာသော ထပ်ဆင့်ပြသမှုဖြစ်သော်လည်း ပိုမိုအန္တရာယ်များသော စကင်ဖတ်စစ်ဆေးမှု။”',
-        '"ဘတ်ဂျက်နည်း = စကင်ဖတ်ခြင်း ပိုလုံခြုံသော်လည်း အပေါ်ယံလွှာကို မြင်သာမှု နည်းပါးသည်။”',
-      ],
+      heading: 'ECC-Aware Mode',
+      paragraphs: ['Intelligently distributes overlay intensity based on error correction capacity. The system analyzes which modules can be modified while maintaining scannability.'],
+      bullets: ['Risk Budget: Percentage of error correction capacity to use (0-100%).', 'Higher budget = more visible overlay but riskier scannability.', 'Lower budget = safer scanning but less visible overlay.'],
     },
     {
-      heading: '"ပရော်ဖက်ရှင်နယ် ပုံဖော်ခြင်း ရွေးချယ်စရာများ”',
-      paragraphs: [
-        '"အဆင့်မြင့် rendering controls:”',
-      ],
-      bullets: [
-        '"ကြည်လင်ပြတ်သားသော အနားသတ်များ- ထက်မြက်သော မော်ဂျူးအနားသတ်များအတွက် ပစ်ဇယ်ပုံပုံဖော်ခြင်းကို အသုံးပြုပါ။”',
-        '"ပစ်ဇယ်စကက်- ကြမ်းပြင်၊ အဝိုင်း သို့မဟုတ် မျက်နှာကြက် ပစ်ဇယ်ချိန်ညှိမှု။”',
-        '"မော်ဂျူးတစ်ခုလျှင် အရောင်မုဒ်- အစိုင်အခဲ၊ တောက်ပမှုအလိုက်၊ အနေအထားအလိုက်၊ အပေါ်ယံလွှာအလိုက်၊ အစုအဖွဲ့အလိုက်။”',
-        '"အရောင်ပြား- မော်ဂျူးတစ်ခုစီအတွက် စိတ်ကြိုက်အရောင်ပြားကို သတ်မှတ်ပါ။”',
-        '"ဆန့်ကျင်ဘက်အကာအရံ- အရောင်များအကြား အနည်းဆုံး ဆန့်ကျင်ဘက်အချိုးကို သေချာစေပါ။”',
-        '"အနည်းဆုံး ဆန့်ကျင်ဘက်အချိုး- WCAG ပုံစံ ဆန့်ကျင်ဘက်လိုအပ်ချက် (၁:၁ မှ ၂၁:၁)။”',
-        '"အပိုနယ်နိမိတ်မော်ဂျူးများ- တိတ်ဆိတ်ဇုန်ထက်ကျော်လွန်၍ အပိုနယ်နိမိတ်။”',
-      ],
+      heading: 'Professional Rendering Options',
+      paragraphs: ['Advanced rendering controls:'],
+      bullets: ['Crisp Edges: Use pixelated image rendering for sharp module edges.', 'Pixel Snap: Floor, Round, or Ceil pixel alignment.', 'Per-Module Color Mode: Solid, By Brightness, By Position, By Overlay, By Cluster.', 'Color Palette: Define custom color palette for per-module coloring.', 'Contrast Guard: Ensure minimum contrast ratio between colors.', 'Min Contrast Ratio: WCAG-style contrast requirement (1:1 to 21:1).', 'Extra Border Modules: Additional border beyond quiet zone.'],
     },
     {
-      heading: '"ပရော်ဖက်ရှင်နယ် အထွက်ရွေးချယ်မှုများ”',
-      paragraphs: [
-        '"လုပ်ငန်းတင်ပို့မှုဆက်တင်များ”',
-      ],
-      bullets: [
-        '"DPI: ပရင့်ထုတ်ရန် ရုပ်ထွက်အရည်အသွေး (၇၂-၆၀၀ DPI) သတ်မှတ်ပါ။ ပရင့်ထုတ်ရန်အတွက် ၃၀၀ DPI ကို အကြံပြုထားသည်။”',
-        '"တိတ်ဆိတ်ဇုန်ပါဝင်ပါ- အထွက်အတိုင်းအတာများတွင် တိတ်ဆိတ်ဇုန်ကို ပြောင်းပါ။”',
-        '"နောက်ထပ်အဖြစ် ထုတ်ယူပါ- မူလဖော်မတ်နှင့်အတူ PDF ကို ထုတ်လုပ်ပါ။”',
-      ],
+      heading: 'Professional Output Options',
+      paragraphs: ['Enterprise export settings:'],
+      bullets: ['DPI: Set print resolution (72-600 DPI). 300 DPI recommended for print.', 'Include Quiet Zone: Toggle quiet zone in output dimensions.', 'Export As Additional: Generate PDF alongside primary format.'],
     },
     {
-      heading: '"ကာတွန်းဆက်တင်များ (ပရော်ဖက်ရှင်နယ်)”',
-      paragraphs: [
-        '"နောက်ထပ် ပရော်ဖက်ရှင်နယ် ကာတွန်း အင်္ဂါရပ်များ”',
-      ],
-      bullets: [
-        '"Temporal Dither: ပိတ်ထားခြင်း၊ အပြာရောင်ဆူညံသံ သို့မဟုတ် တုန်ခါခြင်း ဘေးကင်းသော frame တစ်ခုလျှင် dithering။”',
-        '"ပုံစံ- မရှိ၊ ပဲ့တင်ထပ်ခြင်း၊ လှိုင်း၊ စကင်လိုင်း၊ ရှမ်မာ သို့မဟုတ် ရွေ့လျားမှု အကျိုးသက်ရောက်မှုများ။”',
-      ],
+      heading: 'Animation Settings (Professional)',
+      paragraphs: ['Additional professional animation features:'],
+      bullets: ['Temporal Dither: Off, Blue Noise, or Flicker Safe per-frame dithering.', 'Pattern: None, Pulse, Wave, Scanline, Shimmer, or Drift effects.'],
     },
     {
-      heading: '"API ကိုးကားချက်”',
-      paragraphs: [
-        '"ANQR သည် URL parameters များမှတစ်ဆင့် QR ကုဒ်များထုတ်လုပ်ရန်အတွက် server-side API ကိုပေးသည်။ ၎င်းသည် client-side JavaScript မပါဘဲ ဝဘ်ဆိုက်များ၊ အီးမေးလ်များ၊ စာရွက်စာတမ်းများ သို့မဟုတ် အလိုအလျောက် workflows များတွင် QR ကုဒ်များကို ထည့်သွင်းရန်အတွက် အကောင်းဆုံးဖြစ်သည်။”',
-        '"အခြေခံ URL: https://anqr.link/api/qr”',
-      ],
+      heading: 'API Reference',
+      paragraphs: ['ANQR provides a server-side API for generating QR codes via URL parameters. This is ideal for embedding QR codes in websites, emails, documents, or automated workflows without client-side JavaScript.', 'Base URL: https://anqr.link/api/qr'],
     },
     {
-      heading: '"အခြေခံ ကန့်သတ်ချက်များ”',
-      paragraphs: [
-        '"လိုအပ်သော နှင့် အဖြစ်များသော ကန့်သတ်ချက်များ (ကန့်သတ်ချက်အမည်များကို ဘာသာပြန်ဆိုခြင်းမရှိပါ):”',
-      ],
-      bullets: [
-        '"ဒေတာ (လိုအပ်သည်): QR ကုဒ်တွင် encode လုပ်ရမည့် အကြောင်းအရာ။ URL-encode လုပ်ရန် အထူးစာလုံးများ။”',
-        '"အရွယ်အစား- ပစ်ဇယ်ဖြင့် ရုပ်ပုံအရွယ်အစား (ပုံသေ- ၄၀၀၊ အများဆုံး- ၂၀၀၀)။ w/h ကို မသတ်မှတ်ပါက အသုံးပြုသည်။”',
-        '"w, h: ပစ်ဇယ်ဖြင့် အထွက်အကျယ်နှင့် အမြင့်။ အရွယ်အစား ကန့်သတ်ချက်ကို အစားထိုးသည်။”',
-        '"ဖော်မတ်- အထွက်ဖော်မတ် — png၊ webp၊ သို့မဟုတ် gif (ပုံသေ- png)။”',
-        '"ec: အမှားပြင်ဆင်ခြင်းအဆင့် — L၊ M၊ Q သို့မဟုတ် H (ပုံသေ- H)။”',
-        '"fg: # မပါဘဲ hex ဖြင့် ရှေ့မျက်နှာပြင်အရောင် (ပုံသေ: 000000)။”',
-        '"bg: # မပါဘဲ hex အဖြစ် နောက်ခံအရောင် (ပုံသေ: ffffff)။”',
-        '"ဖောက်ထွင်းမြင်ရခြင်း- နောက်ခံဖောက်ထွင်းမြင်ရခြင်းအတွက် ၁ သို့ သတ်မှတ်ပါ။”',
-        '"အနားသတ်- မော်ဂျူးများတွင် တိတ်ဆိတ်သောဇုန် (ပုံသေ- 4)။”',
-      ],
+      heading: 'Basic Parameters',
+      paragraphs: ['Required and common parameters (parameter names are not translated):'],
+      bullets: ['data (required): The content to encode in the QR code. URL-encode special characters.', 'size: Image size in pixels (default: 400, max: 2000). Used if w/h not specified.', 'w, h: Output width and height in pixels. Overrides size parameter.', 'format: Output format — png, webp, or gif (default: png).', 'ec: Error correction level — L, M, Q, or H (default: H).', 'fg: Foreground color as hex without # (default: 000000).', 'bg: Background color as hex without # (default: ffffff).', 'transparent: Set to 1 for transparent background.', 'margin: Quiet zone in modules (default: 4).'],
     },
     {
-      heading: '"စတိုင်လ် ကန့်သတ်ချက်များ”',
-      paragraphs: [
-        '"မော်ဂျူးနှင့် ပုံစံ စတိုင်လ်”',
-      ],
-      bullets: [
-        '"ပုံစံ- မော်ဂျူးပုံစံ — စတုရန်း၊ လုံးဝန်းသော၊ အစက်များ၊ စိန်၊ ချိတ်ဆက်ထားသည်။”',
-        '"ရှာဖွေစက်: ရှာဖွေစက်ပုံစံ — စတုရန်း၊ လုံးဝန်း၊ စက်ဝိုင်း။”',
-        '"align: ချိန်ညှိမှုပုံစံ — match_finder၊ စတုရန်း၊ လုံးဝန်းသော၊ စက်ဝိုင်း။”',
-        '"အချိန်ကိုက်ခြင်း- အချိန်ကိုက်ပုံစံ — match_module၊ solid၊ dashed။”',
-        '"အချင်းဝက်- ထောင့်အချင်းဝက် ရာခိုင်နှုန်း ၀-၁၀၀။”',
-        '"ကွာဟချက်- မော်ဂျူးကွာဟချက်ရာခိုင်နှုန်း ၀-၅၀။”',
-        '"gapMode: Gap mode — none, inset, stroke, negative_space.”',
-        '"eyeOuter, eyeInner: မျက်လုံးပုံစံများ — စတုရန်း၊ လုံးဝန်း၊ စက်ဝိုင်း။”',
-        '"eyeScale: မျက်လုံးစကေး ရာခိုင်နှုန်း (ပုံသေ: 100)။”',
-        '"grad: Gradient အမျိုးအစား — မရှိ၊ linear၊ radial၊ conic”',
-        '"gradAngle: မျဉ်းဖြောင့် gradient များအတွက် gradient ထောင့်။”',
-        '"gradStops: gradient သည် color1,pos1,color2,pos2,… (ဥပမာ၊ ff0000,0,0000ff,1) အဖြစ် ရပ်တန့်သည်။”',
-      ],
+      heading: 'Styling Parameters',
+      paragraphs: ['Module and pattern styling:'],
+      bullets: ['style: Module style — square, rounded, dots, diamond, connected.', 'finder: Finder pattern style — square, rounded, circle.', 'align: Alignment pattern style — match_finder, square, rounded, circle.', 'timing: Timing pattern style — match_module, solid, dashed.', 'radius: Corner radius percentage 0-100.', 'gap: Module gap percentage 0-50.', 'gapMode: Gap mode — none, inset, stroke, negative_space.', 'eyeOuter, eyeInner: Eye styles — square, rounded, circle.', 'eyeScale: Eye scale percentage (default: 100).', 'grad: Gradient type — none, linear, radial, conic.', 'gradAngle: Gradient angle for linear gradients.', 'gradStops: Gradient stops as color1,pos1,color2,pos2,... (e.g., ff0000,0,0000ff,1).'],
     },
     {
-      heading: '"အပေါ်ယံ ကန့်သတ်ချက်များ”',
-      paragraphs: [
-        '"ပုံထပ်ဆင့်ရွေးချယ်မှုများ (ထပ်ဆင့်ပုံကို ဆာဗာဘက်မှ ရယူထားသည်):”',
-      ],
-      bullets: [
-        '"img: ပုံကို ထပ်ဆင့်ရန် URL (အများသူငှာ ဝင်ရောက်ကြည့်ရှုနိုင်ရမည်)။”',
-        '"မုဒ်- အပေါ်ယံမုဒ် — အလယ်၊ တစ်ဝက်အရောင်၊ ရောစပ်၊ တောက်ပမှု၊ mosaic၊ dithered၊ blue-noise၊ subpixel”',
-        '"ပြင်းထန်မှု- အပေါ်ယံလွှာပြင်းထန်မှု ၀-၁၀၀ (ပုံသေ- ၁၀၀)။”',
-        '"colorMode: Overlay အရောင်မုဒ် — အရောင်၊ မီးခိုးရောင်၊ bw။”',
-        '"အံဝင်ခွင်ကျဖြစ်မှု- အပေါ်ယံလွှာ မည်သို့အံဝင်ခွင်ကျဖြစ်သနည်း — ဖုံးအုပ်သည်၊ ထိန်းထားသည်၊ ဆန့်ထုတ်သည်။”',
-        '"ပုပ်ခြင်း- ဒီဂရီဖြင့် အပေါ်ယံလွှာလှည့်ခြင်း။”',
-        '"flipX၊ flipY: flip overlay အတွက် ၁ သို့ သတ်မှတ်ပါ။”',
-        '"keepFinders: ရှာဖွေကိရိယာပုံစံများကို ထိန်းသိမ်းပါ (ပုံသေ: 1)။”',
-        '"keepTiming၊ keepAlign: အချိန်ကိုက်/ချိန်ညှိမှုပုံစံများကို ထိန်းသိမ်းရန် ၁ သို့ သတ်မှတ်ပါ။”',
-      ],
+      heading: 'Overlay Parameters',
+      paragraphs: ['Image overlay options (overlay image is fetched server-side):'],
+      bullets: ['img: URL to overlay image (must be publicly accessible).', 'mode: Overlay mode — center, halftone, blend, brightness, mosaic, dithered, blue-noise, subpixel.', 'intensity: Overlay intensity 0-100 (default: 100).', 'colorMode: Overlay color mode — color, grayscale, bw.', 'fit: How overlay fits — cover, contain, stretch.', 'rot: Overlay rotation in degrees.', 'flipX, flipY: Set to 1 to flip overlay.', 'keepFinders: Preserve finder patterns (default: 1).', 'keepTiming, keepAlign: Set to 1 to preserve timing/alignment patterns.'],
     },
     {
-      heading: '"ကြိုတင်လုပ်ဆောင်ခြင်း ကန့်သတ်ချက်များ”',
-      paragraphs: [
-        '"ပုံကြိုတင်ပြင်ဆင်ခြင်းကို အပေါ်ယံလွှာတွင် အသုံးပြုထားသည်-”',
-      ],
-      bullets: [
-        '"တောက်ပမှု- ချိန်ညှိမှု -၁၀၀ မှ ၁၀၀ (ပုံသေ- ၀)။”',
-        '"ဆန့်ကျင်ဘက်အရောင်- ချိန်ညှိမှု -၁၀၀ မှ ၁၀၀ (ပုံသေ- ၀)။”',
-        '"ဂါမာ: တန်ဖိုး ၀.၁ မှ ၃ (ပုံသေ: ၁)”',
-        '"ပြည့်ဝမှု- ချိန်ညှိမှု -၁၀၀ မှ ၁၀၀ (ပုံသေ- ၀)။”',
-        '"အရောင်- ဒီဂရီဖြင့် အရောင်လှည့်ခြင်း။”',
-        '"မှုန်ဝါးခြင်း- ပစ်ဇယ်များဖြင့် မှုန်ဝါးခြင်း။”',
-        '"ထက်စေခြင်း- ၀-၁၀၀ အထိ ထက်စေခြင်း။”',
-        '"ပိုစတာပြုလုပ်ခြင်း- ပိုစတာပြုလုပ်ခြင်း အဆင့်များ။”',
-        '"ကန့်သတ်ချက်- ဒွိစုံကန့်သတ်ချက် ၀-၂၅၅။”',
-        '"အနား- အနားထောက်လှမ်းခြင်း — ပိတ်၊ မှိန်၊ လိမ္မာပါးနပ်။”',
-        '"ပြောင်းပြန်လှန်ပါ- အရောင်ပြောင်းပြန်လှန်ရန် ၁ သို့ သတ်မှတ်ပါ။”',
-      ],
+      heading: 'Preprocessing Parameters',
+      paragraphs: ['Image preprocessing applied to overlay:'],
+      bullets: ['brightness: Adjustment -100 to 100 (default: 0).', 'contrast: Adjustment -100 to 100 (default: 0).', 'gamma: Value 0.1 to 3 (default: 1).', 'saturation: Adjustment -100 to 100 (default: 0).', 'hue: Hue rotation in degrees.', 'blur: Blur in pixels.', 'sharpen: Sharpen amount 0-100.', 'posterize: Posterize levels.', 'threshold: Binary threshold 0-255.', 'edge: Edge detection — off, sobel, canny.', 'invert: Set to 1 to invert colors.'],
     },
     {
-      heading: '"ရေစာ ကန့်သတ်ချက်များ”',
-      paragraphs: [
-        '"ထုတ်လုပ်ထားသော QR ကုဒ်များသို့ ရေစာများထည့်ပါ-”',
-      ],
-      bullets: [
-        '"wmEn: ရေစာအမှတ်အသားကိုဖွင့်ရန် ၁ သို့သတ်မှတ်ပါ။”',
-        '"wmKind: ရေစာအမျိုးအစား — စာသား၊ ရုပ်ပုံ၊ ပုံစံ။”',
-        '"wmText: ရေစာစာသား (URL-ကုဒ်ဝှက်ထားသည်)။”',
-        '"wmImg: ရေစာပုံသို့ URL။”',
-        '"wmPos: အနေအထား — အလယ်၊ ထောင့်များ၊ အနားများ၊ နောက်၊ တိတ်ဆိတ်သော_ဇုန်။”',
-        '"wmOpacity: အလင်းပိတ်မှု ၀-၁၀၀ (ပုံသေ: ၅၀)။”',
-        '"wmBlend: Blend မုဒ် — ပုံမှန်၊ မြှောက်ခြင်း၊ မျက်နှာပြင်၊ အပေါ်ယံလွှာ။”',
-      ],
+      heading: 'Watermark Parameters',
+      paragraphs: ['Add watermarks to generated QR codes:'],
+      bullets: ['wmEn: Set to 1 to enable watermark.', 'wmKind: Watermark type — text, image, pattern.', 'wmText: Watermark text (URL-encoded).', 'wmImg: URL to watermark image.', 'wmPos: Position — center, corners, edges, behind, quiet_zone.', 'wmOpacity: Opacity 0-100 (default: 50).', 'wmBlend: Blend mode — normal, multiply, screen, overlay.'],
     },
     {
-      heading: '"ကာတွန်း ကန့်သတ်ချက်များ”',
-      paragraphs: [
-        '"ကာတွန်း GIF အထွက်အတွက် (ဖော်မတ်=gif လိုအပ်သည်):”',
-      ],
-      bullets: [
-        '"animPattern: အန်နီမေးရှင်းပုံစံ — none, pulse, wave, scanline, shimmer, drift, color_cycle”',
-        '"animFrames: ဖရိမ်အရေအတွက် ၁-၆၀ (ပုံသေ: ၂၄)။”',
-        '"animSpeed: မီလီစက္ကန့်အတွင်း Frame delay ၁၀-၁၀၀၀ (ပုံသေ: ၁၀၀)။”',
-        '"animSeed: အန်နီမေးရှင်းအတွက် ကျပန်း seed။”',
-        '"easing: Animation easing — linear, ease_in, ease_out, ease_in_out, bounce”',
-      ],
+      heading: 'Animation Parameters',
+      paragraphs: ['For animated GIF output (requires format=gif):'],
+      bullets: ['animPattern: Animation pattern — none, pulse, wave, scanline, shimmer, drift, color_cycle.', 'animFrames: Number of frames 1-60 (default: 24).', 'animSpeed: Frame delay in milliseconds 10-1000 (default: 100).', 'animSeed: Random seed for animation.', 'easing: Animation easing — linear, ease_in, ease_out, ease_in_out, bounce.'],
     },
     {
-      heading: '"အထွက် ကန့်သတ်ချက်များ”',
-      paragraphs: [
-        '"အထွက်ဖော်မတ် ရွေးချယ်စရာများ-”',
-      ],
-      bullets: [
-        '"အရည်အသွေး- WebP အရည်အသွေး ၀-၁ (ပုံသေ- ၀.၉)”',
-        '"webpQ: WebP အရည်အသွေး ၀-၁၀၀ (ပုံသေ- ၉၀)။”',
-        '"gifColors: GIF palette အရွယ်အစား ၂-၂၅၆ (ပုံသေ: ၂၅၆)။”',
-        '"dpi: PNG အတွက် အထွက် DPI (ပုံသေ: 72)။”',
-        '"metaTitle၊ metaAuthor၊ metaCopy၊ metaDesc: PNG metadata fields.”',
-      ],
+      heading: 'Output Parameters',
+      paragraphs: ['Output format options:'],
+      bullets: ['quality: WebP quality 0-1 (default: 0.9).', 'webpQ: WebP quality 0-100 (default: 90).', 'gifColors: GIF palette size 2-256 (default: 256).', 'dpi: Output DPI for PNG (default: 72).', 'metaTitle, metaAuthor, metaCopy, metaDesc: PNG metadata fields.'],
     },
     {
-      heading: '"ဥပမာအသုံးပြုမှု”',
-      paragraphs: [
-        '"အခြေခံ QR ကုဒ်-”',
-        '"https://anqr.link/api/qr?data=https://example.com”',
-        '"စိတ်ကြိုက်အရောင်များဖြင့် ပုံစံချထားသော QR ကုဒ်-”',
-        '"https://anqr.link/api/qr?data=Hello&size=300&fg=1e40af&bg=ffffff&style=rounded&radius=30”',
-        '"ထပ်ဆင့်ပုံပါ QR ကုဒ်-”',
-        '"https://anqr.link/api/qr?data=https://example.com&ec=H&img=https://example.com/logo.png&mode=halftone&intensity=70”',
-        '"ကာတွန်း GIF:”',
-        '"https://anqr.link/api/qr?data=Hello&format=gif&animPattern=pulse&animFrames=24&easing=ease_in_out”',
-      ],
+      heading: 'Example Usage',
+      paragraphs: ['Basic QR code:', 'https://anqr.link/api/qr?data=https://example.com', 'Styled QR code with custom colors:', 'https://anqr.link/api/qr?data=Hello&size=300&fg=1e40af&bg=ffffff&style=rounded&radius=30', 'QR code with overlay image:', 'https://anqr.link/api/qr?data=https://example.com&ec=H&img=https://example.com/logo.png&mode=halftone&intensity=70', 'Animated GIF:', 'https://anqr.link/api/qr?data=Hello&format=gif&animPattern=pulse&animFrames=24&easing=ease_in_out'],
     },
     {
-      heading: '"QR ကုဒ်များ ထည့်သွင်းခြင်း”',
-      paragraphs: [
-        '"Professional mode မှာ Share feature က embed လုပ်လို့ရတဲ့ HTML နဲ့ URL တွေကို ထုတ်ပေးပါတယ်။ embed လုပ်ပုံက ဒီလိုပါ။”',
-      ],
-      bullets: [
-        '"လင့်ခ်မျှဝေပါ- URL ကန့်သတ်ချက်များအဖြစ် ကုဒ်ဝှက်ထားသော သင်၏ဆက်တင်များအားလုံးဖြင့် ANQR အက်ပ်သို့ URL တစ်ခု ဖန်တီးပေးသည်။ လက်ခံသူများသည် QR ကုဒ်ကို ကြည့်ရှုပြီး ပြင်ဆင်နိုင်သည်။”',
-        '"ပုံထည့်သွင်းခြင်း- ဆာဗာ API သို့ ညွှန်ပြသည့် tag တစ်ခုကို ထုတ်လုပ်ပေးသည်။ QR ကုဒ်ကို ဆာဗာဘက်တွင် ဖော်ပြပြီး ပုံတစ်ပုံအဖြစ် အသုံးပြုသည်။”',
-        '"Embed Markdown: စာရွက်စာတမ်းများနှင့် README ဖိုင်များအတွက် Markdown image syntax ကို ဖန်တီးသည်။”',
-        '"တိုက်ရိုက် API URL: အပလီကေးရှင်းများ၊ script များ သို့မဟုတ် အခြားပေါင်းစပ်မှုများတွင် အသုံးပြုရန်အတွက် raw API URL။”',
-      ],
+      heading: 'Embedding QR Codes',
+      paragraphs: ['In Professional mode, the Share feature generates embeddable HTML and URLs. Here is how embedding works:'],
+      bullets: ['Share Link: Creates a URL to the ANQR app with all your settings encoded as URL parameters. Recipients can view and modify the QR code.', 'Embed Image: Generates an <img> tag pointing to the server API. The QR code is rendered server-side and served as an image.', 'Embed Markdown: Creates Markdown image syntax for documentation and README files.', 'Direct API URL: The raw API URL for use in applications, scripts, or other integrations.'],
     },
     {
-      heading: '"HTML ဥပမာ”',
-      paragraphs: [
-        '"သင့်ဝက်ဘ်ဆိုက်တွင် QR ကုဒ်ထည့်သွင်းရန်-”',
-        '"<img src="https://anqr.link/api/qr?data=https://yoursite.com&size=200" alt="QR ကုဒ်" />”',
-        '"တုံ့ပြန်မှုရှိသော အရွယ်အစားအတွက်”',
-        '"<img src="https://anqr.link/api/qr?data=https://yoursite.com&size=400" alt="QR ကုဒ်" style="max-width: 100%; height: auto;" />”',
-        '"ဆာဗာသည် ရှည်လျားသော ကက်ရှ် ခေါင်းစီးများဖြင့် တုံ့ပြန်မှုများကို သိမ်းဆည်းထားသောကြောင့် တူညီသော URL အတွက် ထပ်ခါတလဲလဲ တောင်းဆိုမှုများသည် မြန်ဆန်ပါသည်။”',
-      ],
+      heading: 'HTML Example',
+      paragraphs: ['To embed a QR code in your website:', '<img src="https://anqr.link/api/qr?data=https://yoursite.com&size=200" alt="QR Code" />', 'For responsive sizing:', '<img src="https://anqr.link/api/qr?data=https://yoursite.com&size=400" alt="QR Code" style="max-width: 100%; height: auto;" />', 'The server caches responses with long cache headers, so repeated requests for the same URL are fast.'],
     },
     {
-      heading: '"မျှဝေရန် URL ဖော်မတ်”',
-      paragraphs: [
-        '"Professional mode မှာ Share ကို နှိပ်လိုက်တဲ့အခါ ANQR က သင့်ရဲ့ လက်ရှိ setting တွေကို URL parameter တွေအဖြစ် encode လုပ်ပါတယ်။ format က -”',
-        '"https://anqr.link/?data=…&ec=H&style=rounded&….”',
-        '"ဤ parameter များသည် API parameter များကို ထင်ဟပ်စေသောကြောင့်၊ သင်သည် base path ကို / မှ /api/qr သို့ ပြောင်းလဲခြင်းနှင့် လိုအပ်သလို w/h parameter များကို ချိန်ညှိခြင်းဖြင့် share URL ကို API URL သို့ ပြောင်းလဲနိုင်သည်။”',
-        '"မှတ်ချက်- ဒေသတွင်းဖိုင်များမှ အပ်လုဒ်လုပ်ထားသော ထပ်ဆင့်ပုံများကို URL မှတစ်ဆင့် မျှဝေ၍မရပါ — URL-based ထပ်ဆင့်များ (img parameter) သာ shared link များနှင့် API call များတွင် အလုပ်လုပ်ပါသည်။”',
-      ],
+      heading: 'Share URL Format',
+      paragraphs: ['When you click Share in Professional mode, ANQR encodes your current settings into URL parameters. The format is:', 'https://anqr.link/?data=...&ec=H&style=rounded&....', 'These parameters mirror the API parameters, so you can convert a share URL to an API URL by changing the base path from / to /api/qr and adjusting w/h parameters as needed.', 'Note: Overlay images uploaded from local files cannot be shared via URL — only URL-based overlays (img parameter) work in shared links and API calls.'],
     },
     {
-      heading: '"နှုန်းထားကန့်သတ်ချက်များနှင့် အသုံးပြုမှု”',
-      paragraphs: [
-        '"API ကို သင့်တင့်သော ပမာဏများအတွက် အခမဲ့အသုံးပြုနိုင်ပါသည်။ ပမာဏများများအသုံးပြုမှု သို့မဟုတ် အာမခံချက်ရှိသော uptime လိုအပ်သော စီးပွားဖြစ်အသုံးချမှုများအတွက် ကျွန်ုပ်တို့ထံ ဆက်သွယ်ပါ။”',
-        '"API တုံ့ပြန်မှုများတွင် ရန်လိုသော caching headers များ ပါဝင်သည်။ အကောင်းဆုံးစွမ်းဆောင်ရည်အတွက် သင့်ဘက်မှ cache responses များကို အသုံးပြုပါ သို့မဟုတ် တူညီသော QR ကုဒ်များအတွက် URL တစ်ခုတည်းကို တသမတ်တည်း အသုံးပြုပါ။”',
-      ],
+      heading: 'Rate Limits and Usage',
+      paragraphs: ['The API is free to use for reasonable volumes. For high-volume usage or commercial applications requiring guaranteed uptime, please contact us.', 'API responses include aggressive caching headers. For best performance, cache responses on your end or use the same URL consistently for identical QR codes.'],
     },
     {
-      heading: '"အကောင်းဆုံးလုပ်ဆောင်မှုများ”',
-      paragraphs: [
-        '"ယုံကြည်စိတ်ချရသော QR ကုဒ်များအတွက် ဤလမ်းညွှန်ချက်များကို လိုက်နာပါ-”',
-      ],
-      bullets: [
-        '"ပုံနှိပ်ခြင်းမပြုမီ သင့် QR ကုဒ်များကို စကင်နာအက်ပ်များစွာဖြင့် အမြဲတမ်းစမ်းသပ်ပါ။”',
-        '"ထပ်ဆင့်များထည့်သည့်အခါ အမှားပြင်ဆင်ခြင်း H (မြင့်မားသော) ကိုသုံးပါ။”',
-        '"တိတ်ဆိတ်သောဇုန် (အနားသတ်) အနည်းဆုံး မော်ဂျူး ၄ ခုကို သိမ်းဆည်းထားပါ။”',
-        '"ရှေ့မျက်နှာပြင်နှင့် နောက်ခံကြားတွင် မြင့်မားသော ဆန့်ကျင်ဘက်အရောင်ကို သေချာစေပါ။”',
-        '"ပုံနှိပ်ရန်အတွက် အနည်းဆုံး 300 DPI ကို အသုံးပြုပြီး တကယ့်ပုံနှိပ်အရွယ်အစားတွင် စမ်းသပ်ပါ။”',
-        '"ထပ်ဆင့်များကိုအသုံးပြုသည့်အခါ Finder Patterns များကို ထိန်းသိမ်းခြင်းကို ဖွင့်ပါ။”',
-        '"အပေါ်ယံအလွှာ ပြင်းထန်မှု လျှော့ချခြင်းဖြင့် စတင်ပြီး တဖြည်းဖြည်း တိုးမြှင့်ပါ။”',
-        '"ပြင်ပအသုံးပြုမှုအတွက်၊ မော်ဂျူးအရွယ်အစားကြီးများနှင့် အမှားပြင်ဆင်မှုပိုမိုမြင့်မားခြင်းကို ထည့်သွင်းစဉ်းစားပါ။”',
-      ],
+      heading: 'Best Practices',
+      paragraphs: ['Follow these guidelines for reliable QR codes:'],
+      bullets: ['Always test your QR codes with multiple scanner apps before printing.', 'Use Error Correction H (High) when adding overlays.', 'Keep at least 4 modules of quiet zone (margin).', 'Ensure high contrast between foreground and background.', 'For print, use at least 300 DPI and test at actual print size.', 'Enable Preserve Finder Patterns when using overlays.', 'Start with lower overlay intensity and increase gradually.', 'For outdoor use, consider larger module sizes and higher error correction.'],
     },
     {
-      heading: '"ပြဿနာရှာဖွေဖြေရှင်းခြင်း”',
-      paragraphs: [
-        '"အဖြစ်များသော ပြဿနာများ နှင့် ဖြေရှင်းချက်များ”',
-      ],
-      bullets: [
-        '"QR ကို စကင်ဖတ်၍မရပါ- အပေါ်ယံအရောင် ပြင်းထန်မှုကို လျှော့ချပါ၊ အမှားပြင်ဆင်ချက်ကို တိုးမြှင့်ပါ၊ ဆန့်ကျင်ဘက်အရောင်ကို စစ်ဆေးပါ။”',
-        '"ကုဒ်ကြီးလွန်းသည်- အကြောင်းအရာအရှည်ကို လျှော့ချပါ၊ URL အတိုချုံ့ကိရိယာကို အသုံးပြုပါ၊ ဗားရှင်းကို နိမ့်အောင်ထားပါ။”',
-        '"မှုန်ဝါးသော အထွက်- မော်ဂျူးအရွယ်အစားကို တိုးမြှင့်ပါ၊ ချုံ့ထားသော ဖော်မတ်များအစား PNG ကို အသုံးပြုပါ။”',
-        '"အရောင်များ မှားယွင်းနေပုံရသည်- အရောင် ဆန့်ကျင်ဘက်ကို စစ်ဆေးပါ၊ မီးခိုးရောင် အလွှာပုံစံကို စမ်းကြည့်ပါ။”',
-        '"GIF သည် အသက်ဝင်ခြင်းမရှိပါ- GIF ဖော်မတ်အထွက်ကို အသုံးပြုထားကြောင်း သေချာစေပြီး ဖရိမ်အရေအတွက်ကို စစ်ဆေးပါ။”',
-        '"ပုံအလွှာတင်၍မရပါ- အဝေးထိန်းပုံများတွင် CORS ခွင့်ပြုချက်များကို စစ်ဆေးပါ။”',
-      ],
+      heading: 'Troubleshooting',
+      paragraphs: ['Common issues and solutions:'],
+      bullets: ['QR won\'t scan: Reduce overlay intensity, increase error correction, check contrast.', 'Code too large: Reduce content length, use URL shortener, lower version.', 'Blurry output: Increase module size, use PNG instead of compressed formats.', 'Colors look wrong: Check color contrast, try grayscale overlay mode.', 'GIF not animating: Ensure using GIF format output, check frame count.', 'Image overlay not loading: Check CORS permissions on remote images.'],
     },
     {
-      heading: '"ကီးဘုတ်အတိုကောက်များ”',
-      paragraphs: [
-        '"ANQR သည် စံကီးဘုတ်အတိုကောက်များကို ပံ့ပိုးပေးသည်။ Ctrl/Cmd+S ကို အသုံးပြု၍ (preview ကို အာရုံစိုက်ထားသည့်အခါ) export ကို စတင်ပါ။”',
-      ],
+      heading: 'Keyboard Shortcuts',
+      paragraphs: ['ANQR supports standard keyboard shortcuts. Use Ctrl/Cmd+S to trigger export (when focused on the preview).'],
     },
     {
-      heading: '"မျှဝေခြင်းနှင့် ထည့်သွင်းခြင်း”',
-      paragraphs: [
-        '"Professional မုဒ်တွင်၊ သင်၏လက်ရှိဆက်တင်များပါသည့် URL ကိုကူးယူရန် Share ခလုတ်ကို နှိပ်ပါ။ လက်ခံသူများသည် သင်၏တိကျသောဖွဲ့စည်းပုံကိုကြည့်ရှုရန် ဤ URL ကိုဖွင့်နိုင်သည်။ မှတ်ချက်- ဒေသတွင်းဖိုင်များမှ ထပ်နေသောပုံများကို URL မှတစ်ဆင့်မျှဝေ၍မရပါ။”',
-      ],
+      heading: 'Sharing & Embedding',
+      paragraphs: ['In Professional mode, click the Share button to copy a URL with your current settings. Recipients can open this URL to see your exact configuration. Note: Overlay images from local files cannot be shared via URL.'],
     },
   ],
 };

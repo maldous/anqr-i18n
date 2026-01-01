@@ -8,18 +8,18 @@
  * - Blue noise provides better visual quality than ordered dithering
  */
 
-import qrcode from "../../vendor/lib/qrcode-generator/qrcode.mjs";
+import qrcode from '../../vendor/lib/qrcode-generator/qrcode.mjs';
 
 // Error correction level mapping
-const ECC_MAP: Record<string, "L" | "M" | "Q" | "H"> = {
-  L: "L",
-  M: "M",
-  Q: "Q",
-  H: "H",
-  low: "L",
-  medium: "M",
-  quartile: "Q",
-  high: "H",
+const ECC_MAP: Record<string, 'L' | 'M' | 'Q' | 'H'> = {
+  L: 'L',
+  M: 'M',
+  Q: 'Q',
+  H: 'H',
+  low: 'L',
+  medium: 'M',
+  quartile: 'Q',
+  high: 'H',
 };
 
 // Alignment pattern positions by version
@@ -72,7 +72,7 @@ const ALIGNMENT_POSITIONS: (number[] | null)[] = [
 const BLUE_NOISE_TILE_SIZE = 64;
 const BLUE_NOISE_64: number[] = generateBlueNoiseTile();
 
-export type ColorMode = "color" | "grayscale" | "bw";
+export type ColorMode = 'color' | 'grayscale' | 'bw';
 
 /**
  * Canvas factory interface for environment-agnostic canvas creation.
@@ -153,12 +153,7 @@ function sampleBlueNoise(x: number, y: number): number {
  * Check if a position is a locked structural element (finder patterns, timing, alignment)
  * Copied from generate.ts to ensure identical behavior
  */
-function isLocked(
-  moduleCount: number,
-  x: number,
-  y: number,
-  scale: number,
-): boolean {
+function isLocked(moduleCount: number, x: number, y: number, scale: number): boolean {
   const l = moduleCount / scale;
   const sx = Math.floor(x / scale);
   const sy = Math.floor(y / scale);
@@ -222,10 +217,10 @@ function isData(x: number, y: number, scale: number): boolean {
 async function loadImageDataRGB(
   canvas: HTMLCanvasElement,
   size: number,
-  canvasFactory: CanvasFactory = defaultBrowserCanvasFactory,
+  canvasFactory: CanvasFactory = defaultBrowserCanvasFactory
 ): Promise<{ r: number; g: number; b: number }[][]> {
   const tempCanvas = await canvasFactory.createCanvas(size, size);
-  const ctx = tempCanvas.getContext("2d")!;
+  const ctx = tempCanvas.getContext('2d')!;
 
   ctx.drawImage(canvas, 0, 0, size, size);
   const imgData = ctx.getImageData(0, 0, size, size);
@@ -257,9 +252,7 @@ function rgbToGray(r: number, g: number, b: number): number {
 /**
  * Convert RGB image data to grayscale
  */
-function convertToGrayscale(
-  imageData: { r: number; g: number; b: number }[][],
-): void {
+function convertToGrayscale(imageData: { r: number; g: number; b: number }[][]): void {
   for (let y = 0; y < imageData.length; y++) {
     for (let x = 0; x < imageData[y].length; x++) {
       const { r, g, b } = imageData[y][x];
@@ -277,7 +270,7 @@ function blueNoiseDitherFreePoints(
   imageData: { r: number; g: number; b: number }[][],
   moduleCount: number,
   scale: number,
-  colorMode: ColorMode,
+  colorMode: ColorMode
 ): void {
   const size = imageData.length;
 
@@ -290,12 +283,12 @@ function blueNoiseDitherFreePoints(
       const pixel = imageData[y][x];
       const threshold = sampleBlueNoise(x, y);
 
-      if (colorMode === "bw") {
+      if (colorMode === 'bw') {
         // Black & white: quantize to 0 or 1 using blue noise threshold
         const gray = rgbToGray(pixel.r, pixel.g, pixel.b);
         const newVal = gray > threshold ? 1 : 0;
         imageData[y][x] = { r: newVal, g: newVal, b: newVal };
-      } else if (colorMode === "grayscale") {
+      } else if (colorMode === 'grayscale') {
         // Grayscale: quantize using blue noise for each level decision
         const gray = rgbToGray(pixel.r, pixel.g, pixel.b);
         // 4 levels: 0, 0.33, 0.67, 1
@@ -338,7 +331,7 @@ function blueNoiseDitherFreePoints(
  * @returns Object containing boolean matrix and RGB color data for each pixel
  */
 export async function generateBlueNoiseDithered(
-  options: BlueNoiseOptions,
+  options: BlueNoiseOptions
 ): Promise<BlueNoiseResult> {
   const {
     text,
@@ -347,12 +340,12 @@ export async function generateBlueNoiseDithered(
     scale,
     overlayCanvas,
     overlayIntensity = 50,
-    colorMode = "color",
+    colorMode = 'color',
     canvasFactory = defaultBrowserCanvasFactory,
   } = options;
 
   // Map error correction level
-  const eccLevel = ECC_MAP[ecc] || "Q";
+  const eccLevel = ECC_MAP[ecc] || 'Q';
 
   // Generate base QR code using vendor library
   const typeNumber = version || 0;
@@ -392,7 +385,7 @@ export async function generateBlueNoiseDithered(
   const intensity = overlayIntensity / 100;
 
   // Convert to grayscale first if needed
-  if (colorMode === "grayscale" || colorMode === "bw") {
+  if (colorMode === 'grayscale' || colorMode === 'bw') {
     convertToGrayscale(imageData);
   }
 

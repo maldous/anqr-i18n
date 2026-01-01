@@ -4,20 +4,20 @@
  */
 
 export type PageSection = {
-  heading: string
-  paragraphs?: string[]
-  bullets?: string[]
-}
+  heading: string;
+  paragraphs?: string[];
+  bullets?: string[];
+};
 
 export type PageDefinition = {
-  title: string
-  description: string
-  lastUpdated?: string
-  sections: PageSection[]
-}
+  title: string;
+  description: string;
+  lastUpdated?: string;
+  sections: PageSection[];
+};
 
-export type StaticPageType = 'about' | 'docs' | 'privacy' | 'terms' | 'contact'
+export type StaticPageType = 'about' | 'docs' | 'privacy' | 'terms' | 'contact';
 
 // Shared constants
-export const LAST_UPDATED = '1 January 2026'
-export const CONTACT_EMAIL = 'email@anqr.link'
+export const LAST_UPDATED = '1 January 2026';
+export const CONTACT_EMAIL = 'email@anqr.link';

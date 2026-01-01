@@ -1,34 +1,64 @@
-import { useQRStore, ModuleStyle, FinderStyle, GapMode, GradientType, FrameStyle, AlignmentStyle, TimingStyle } from '@/store/qr-store'
-import { useTranslation } from 'react-i18next'
-import { Label } from '@/components/ui/label'
-import { Input } from '@/components/ui/input'
-import { Slider } from '@/components/ui/slider'
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
-import { Switch } from '@/components/ui/switch'
-import { Button } from '@/components/ui/button'
-import { Plus, X } from 'lucide-react'
-import { useState } from 'react'
-import { HighlightedLabel } from '@/lib/search-context'
+import { Plus, X } from 'lucide-react';
+import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from '@/components/ui/select';
+import { Slider } from '@/components/ui/slider';
+import { Switch } from '@/components/ui/switch';
+import { HighlightedLabel } from '@/lib/search-context';
+import {
+  type AlignmentStyle,
+  type FinderStyle,
+  type FrameStyle,
+  type GapMode,
+  type GradientType,
+  type ModuleStyle,
+  type TimingStyle,
+  useQRStore,
+} from '@/store/qr-store';
 
 export function RenderSection() {
-  const { 
-    tier, render, 
-    setRenderModulePx, setRenderModuleGap, setRenderModuleStyle, setRenderFinderStyle,
-    setRenderFgColor, setRenderBgColor, setRenderBgTransparent, setRenderGapMode,
-    setRenderCornerRadius, setRenderFrameStyle, setRenderFrameText, setRenderGradient,
-    setRenderAlignmentStyle, setRenderTimingStyle
-  } = useQRStore()
-  const { t } = useTranslation()
-  
-  const [newPaletteColor, setNewPaletteColor] = useState('#000000')
+  const {
+    tier,
+    render,
+    setRenderModulePx,
+    setRenderModuleGap,
+    setRenderModuleStyle,
+    setRenderFinderStyle,
+    setRenderFgColor,
+    setRenderBgColor,
+    setRenderBgTransparent,
+    setRenderGapMode,
+    setRenderCornerRadius,
+    setRenderFrameStyle,
+    setRenderFrameText,
+    setRenderGradient,
+    setRenderAlignmentStyle,
+    setRenderTimingStyle,
+  } = useQRStore();
+  const { t } = useTranslation();
+
+  const [newPaletteColor, setNewPaletteColor] = useState('#000000');
 
   return (
     <div className="space-y-4">
       {/* Module Size */}
       <div className="space-y-2">
         <div className="flex items-center justify-between">
-          <Label><HighlightedLabel>{t('qr.moduleSize')}</HighlightedLabel></Label>
-          <span className="text-sm text-muted-foreground">{t('qr.nPx', { count: render.modulePx })}</span>
+          <Label>
+            <HighlightedLabel>{t('qr.moduleSize')}</HighlightedLabel>
+          </Label>
+          <span className="text-sm text-muted-foreground">
+            {t('qr.nPx', { count: render.modulePx })}
+          </span>
         </div>
         <Slider
           value={[render.modulePx]}
@@ -43,8 +73,12 @@ export function RenderSection() {
       {/* Module Gap */}
       <div className="space-y-2">
         <div className="flex items-center justify-between">
-          <Label><HighlightedLabel>{t('render.moduleGap')}</HighlightedLabel></Label>
-          <span className="text-sm text-muted-foreground">{t('qr.nPercent', { count: render.moduleGapPercent })}</span>
+          <Label>
+            <HighlightedLabel>{t('render.moduleGap')}</HighlightedLabel>
+          </Label>
+          <span className="text-sm text-muted-foreground">
+            {t('qr.nPercent', { count: render.moduleGapPercent })}
+          </span>
         </div>
         <Slider
           value={[render.moduleGapPercent]}
@@ -58,8 +92,13 @@ export function RenderSection() {
 
       {/* Module Style */}
       <div className="space-y-2">
-        <Label><HighlightedLabel>{t('render.shape')}</HighlightedLabel></Label>
-        <Select value={render.moduleStyle} onValueChange={(v) => setRenderModuleStyle(v as ModuleStyle)}>
+        <Label>
+          <HighlightedLabel>{t('render.shape')}</HighlightedLabel>
+        </Label>
+        <Select
+          value={render.moduleStyle}
+          onValueChange={(v) => setRenderModuleStyle(v as ModuleStyle)}
+        >
           <SelectTrigger title={t('hints.moduleStyle')}>
             <SelectValue />
           </SelectTrigger>
@@ -75,8 +114,13 @@ export function RenderSection() {
 
       {/* Finder Style */}
       <div className="space-y-2">
-        <Label><HighlightedLabel>{t('render.finderStyle')}</HighlightedLabel></Label>
-        <Select value={render.finderStyle} onValueChange={(v) => setRenderFinderStyle(v as FinderStyle)}>
+        <Label>
+          <HighlightedLabel>{t('render.finderStyle')}</HighlightedLabel>
+        </Label>
+        <Select
+          value={render.finderStyle}
+          onValueChange={(v) => setRenderFinderStyle(v as FinderStyle)}
+        >
           <SelectTrigger title={t('hints.finderStyle')}>
             <SelectValue />
           </SelectTrigger>
@@ -90,8 +134,13 @@ export function RenderSection() {
 
       {/* Alignment Pattern Style */}
       <div className="space-y-2">
-        <Label><HighlightedLabel>{t('render.alignmentStyle')}</HighlightedLabel></Label>
-        <Select value={render.alignmentStyle} onValueChange={(v) => setRenderAlignmentStyle(v as AlignmentStyle)}>
+        <Label>
+          <HighlightedLabel>{t('render.alignmentStyle')}</HighlightedLabel>
+        </Label>
+        <Select
+          value={render.alignmentStyle}
+          onValueChange={(v) => setRenderAlignmentStyle(v as AlignmentStyle)}
+        >
           <SelectTrigger title={t('hints.alignmentStyle')}>
             <SelectValue />
           </SelectTrigger>
@@ -106,8 +155,13 @@ export function RenderSection() {
 
       {/* Timing Pattern Style */}
       <div className="space-y-2">
-        <Label><HighlightedLabel>{t('render.timingStyle')}</HighlightedLabel></Label>
-        <Select value={render.timingStyle} onValueChange={(v) => setRenderTimingStyle(v as TimingStyle)}>
+        <Label>
+          <HighlightedLabel>{t('render.timingStyle')}</HighlightedLabel>
+        </Label>
+        <Select
+          value={render.timingStyle}
+          onValueChange={(v) => setRenderTimingStyle(v as TimingStyle)}
+        >
           <SelectTrigger title={t('hints.timingStyle')}>
             <SelectValue />
           </SelectTrigger>
@@ -121,10 +175,14 @@ export function RenderSection() {
 
       {/* Colors */}
       <div className="space-y-2">
-        <Label><HighlightedLabel>{t('render.gradientColors')}</HighlightedLabel></Label>
+        <Label>
+          <HighlightedLabel>{t('render.gradientColors')}</HighlightedLabel>
+        </Label>
         <div className="grid grid-cols-2 gap-2">
           <div className="space-y-1">
-            <Label className="text-xs text-muted-foreground"><HighlightedLabel>{t('render.foreground')}</HighlightedLabel></Label>
+            <Label className="text-xs text-muted-foreground">
+              <HighlightedLabel>{t('render.foreground')}</HighlightedLabel>
+            </Label>
             <div className="flex gap-2">
               <Input
                 type="color"
@@ -143,7 +201,9 @@ export function RenderSection() {
             </div>
           </div>
           <div className="space-y-1">
-            <Label className="text-xs text-muted-foreground"><HighlightedLabel>{t('render.background')}</HighlightedLabel></Label>
+            <Label className="text-xs text-muted-foreground">
+              <HighlightedLabel>{t('render.background')}</HighlightedLabel>
+            </Label>
             <div className="flex gap-2">
               <Input
                 type="color"
@@ -166,8 +226,10 @@ export function RenderSection() {
 
       {/* Transparent Background */}
       <div className="flex items-center justify-between">
-        <Label><HighlightedLabel>{t('render.transparentBg')}</HighlightedLabel></Label>
-        <Switch 
+        <Label>
+          <HighlightedLabel>{t('render.transparentBg')}</HighlightedLabel>
+        </Label>
+        <Switch
           checked={render.bgTransparent}
           onCheckedChange={setRenderBgTransparent}
           title={t('hints.transparentBg')}
@@ -179,7 +241,9 @@ export function RenderSection() {
         <>
           {/* Gap Mode */}
           <div className="space-y-2">
-            <Label><HighlightedLabel>{t('render.gapMode')}</HighlightedLabel></Label>
+            <Label>
+              <HighlightedLabel>{t('render.gapMode')}</HighlightedLabel>
+            </Label>
             <Select value={render.gapMode} onValueChange={(v) => setRenderGapMode(v as GapMode)}>
               <SelectTrigger title={t('hints.gapMode')}>
                 <SelectValue />
@@ -196,8 +260,12 @@ export function RenderSection() {
           {/* Corner Radius */}
           <div className="space-y-2">
             <div className="flex items-center justify-between">
-              <Label><HighlightedLabel>{t('render.cornerRadius')}</HighlightedLabel></Label>
-              <span className="text-sm text-muted-foreground">{t('qr.nPercent', { count: render.cornerRadius })}</span>
+              <Label>
+                <HighlightedLabel>{t('render.cornerRadius')}</HighlightedLabel>
+              </Label>
+              <span className="text-sm text-muted-foreground">
+                {t('qr.nPercent', { count: render.cornerRadius })}
+              </span>
             </div>
             <Slider
               value={[render.cornerRadius]}
@@ -211,8 +279,13 @@ export function RenderSection() {
 
           {/* Gradient */}
           <div className="space-y-2">
-            <Label><HighlightedLabel>{t('render.gradient')}</HighlightedLabel></Label>
-            <Select value={render.gradient.type} onValueChange={(v) => setRenderGradient({ type: v as GradientType })}>
+            <Label>
+              <HighlightedLabel>{t('render.gradient')}</HighlightedLabel>
+            </Label>
+            <Select
+              value={render.gradient.type}
+              onValueChange={(v) => setRenderGradient({ type: v as GradientType })}
+            >
               <SelectTrigger title={t('hints.gradient')}>
                 <SelectValue />
               </SelectTrigger>
@@ -227,10 +300,16 @@ export function RenderSection() {
 
           {/* Eye Styles */}
           <div className="space-y-2">
-            <Label><HighlightedLabel>{t('render.eyeOuterStyle')}</HighlightedLabel></Label>
-            <Select 
-              value={render.eyeOuterStyle} 
-              onValueChange={(v) => useQRStore.setState((s) => ({ render: { ...s.render, eyeOuterStyle: v as FinderStyle } }))}
+            <Label>
+              <HighlightedLabel>{t('render.eyeOuterStyle')}</HighlightedLabel>
+            </Label>
+            <Select
+              value={render.eyeOuterStyle}
+              onValueChange={(v) =>
+                useQRStore.setState((s) => ({
+                  render: { ...s.render, eyeOuterStyle: v as FinderStyle },
+                }))
+              }
             >
               <SelectTrigger title={t('hints.eyeOuterStyle')}>
                 <SelectValue />
@@ -244,10 +323,16 @@ export function RenderSection() {
           </div>
 
           <div className="space-y-2">
-            <Label><HighlightedLabel>{t('render.eyeInnerStyle')}</HighlightedLabel></Label>
-            <Select 
-              value={render.eyeInnerStyle} 
-              onValueChange={(v) => useQRStore.setState((s) => ({ render: { ...s.render, eyeInnerStyle: v as FinderStyle } }))}
+            <Label>
+              <HighlightedLabel>{t('render.eyeInnerStyle')}</HighlightedLabel>
+            </Label>
+            <Select
+              value={render.eyeInnerStyle}
+              onValueChange={(v) =>
+                useQRStore.setState((s) => ({
+                  render: { ...s.render, eyeInnerStyle: v as FinderStyle },
+                }))
+              }
             >
               <SelectTrigger title={t('hints.eyeInnerStyle')}>
                 <SelectValue />
@@ -262,8 +347,13 @@ export function RenderSection() {
 
           {/* Frame */}
           <div className="space-y-2">
-            <Label><HighlightedLabel>{t('render.frameStyle')}</HighlightedLabel></Label>
-            <Select value={render.frameStyle} onValueChange={(v) => setRenderFrameStyle(v as FrameStyle)}>
+            <Label>
+              <HighlightedLabel>{t('render.frameStyle')}</HighlightedLabel>
+            </Label>
+            <Select
+              value={render.frameStyle}
+              onValueChange={(v) => setRenderFrameStyle(v as FrameStyle)}
+            >
               <SelectTrigger title={t('hints.frameStyle')}>
                 <SelectValue />
               </SelectTrigger>
@@ -278,8 +368,10 @@ export function RenderSection() {
 
           {render.frameStyle !== 'none' && (
             <div className="space-y-2">
-              <Label><HighlightedLabel>{t('render.frameText')}</HighlightedLabel></Label>
-              <Input 
+              <Label>
+                <HighlightedLabel>{t('render.frameText')}</HighlightedLabel>
+              </Label>
+              <Input
                 value={render.frameText}
                 onChange={(e) => setRenderFrameText(e.target.value)}
                 placeholder={t('accessibility.scanMePlaceholder')}
@@ -291,12 +383,18 @@ export function RenderSection() {
           {/* Dot Rotation */}
           <div className="space-y-2">
             <div className="flex items-center justify-between">
-              <Label><HighlightedLabel>{t('render.dotRotation')}</HighlightedLabel></Label>
-              <span className="text-sm text-muted-foreground">{t('qr.nDegrees', { count: render.dotRotationDeg })}</span>
+              <Label>
+                <HighlightedLabel>{t('render.dotRotation')}</HighlightedLabel>
+              </Label>
+              <span className="text-sm text-muted-foreground">
+                {t('qr.nDegrees', { count: render.dotRotationDeg })}
+              </span>
             </div>
             <Slider
               value={[render.dotRotationDeg]}
-              onValueChange={([v]) => useQRStore.setState((s) => ({ render: { ...s.render, dotRotationDeg: v } }))}
+              onValueChange={([v]) =>
+                useQRStore.setState((s) => ({ render: { ...s.render, dotRotationDeg: v } }))
+              }
               min={0}
               max={360}
               step={15}
@@ -307,12 +405,18 @@ export function RenderSection() {
           {/* Eye Scale */}
           <div className="space-y-2">
             <div className="flex items-center justify-between">
-              <Label><HighlightedLabel>{t('render.eyeScale')}</HighlightedLabel></Label>
-              <span className="text-sm text-muted-foreground">{t('qr.nPercent', { count: render.eyeScale })}</span>
+              <Label>
+                <HighlightedLabel>{t('render.eyeScale')}</HighlightedLabel>
+              </Label>
+              <span className="text-sm text-muted-foreground">
+                {t('qr.nPercent', { count: render.eyeScale })}
+              </span>
             </div>
             <Slider
               value={[render.eyeScale]}
-              onValueChange={([v]) => useQRStore.setState((s) => ({ render: { ...s.render, eyeScale: v } }))}
+              onValueChange={([v]) =>
+                useQRStore.setState((s) => ({ render: { ...s.render, eyeScale: v } }))
+              }
               min={50}
               max={150}
               step={5}
@@ -328,10 +432,14 @@ export function RenderSection() {
           {/* Crisp Edges */}
           <div className="space-y-2 pt-2 border-t">
             <div className="flex items-center justify-between">
-              <Label><HighlightedLabel>{t('render.crispEdges')}</HighlightedLabel></Label>
-              <Switch 
+              <Label>
+                <HighlightedLabel>{t('render.crispEdges')}</HighlightedLabel>
+              </Label>
+              <Switch
                 checked={render.crispEdges}
-                onCheckedChange={(checked) => useQRStore.setState((s) => ({ render: { ...s.render, crispEdges: checked } }))}
+                onCheckedChange={(checked) =>
+                  useQRStore.setState((s) => ({ render: { ...s.render, crispEdges: checked } }))
+                }
                 title={t('hints.crispEdges')}
               />
             </div>
@@ -340,10 +448,16 @@ export function RenderSection() {
 
           {/* Pixel Snap */}
           <div className="space-y-2">
-            <Label><HighlightedLabel>{t('render.pixelSnap')}</HighlightedLabel></Label>
-            <Select 
-              value={render.pixelSnap} 
-              onValueChange={(v) => useQRStore.setState((s) => ({ render: { ...s.render, pixelSnap: v as 'floor' | 'round' | 'ceil' } }))}
+            <Label>
+              <HighlightedLabel>{t('render.pixelSnap')}</HighlightedLabel>
+            </Label>
+            <Select
+              value={render.pixelSnap}
+              onValueChange={(v) =>
+                useQRStore.setState((s) => ({
+                  render: { ...s.render, pixelSnap: v as 'floor' | 'round' | 'ceil' },
+                }))
+              }
             >
               <SelectTrigger title={t('hints.pixelSnap')}>
                 <SelectValue />
@@ -358,10 +472,19 @@ export function RenderSection() {
 
           {/* Per-Module Color Mode */}
           <div className="space-y-2">
-            <Label><HighlightedLabel>{t('render.perModuleColorMode')}</HighlightedLabel></Label>
-            <Select 
-              value={render.perModuleColorMode} 
-              onValueChange={(v) => useQRStore.setState((s) => ({ render: { ...s.render, perModuleColorMode: v as typeof render.perModuleColorMode } }))}
+            <Label>
+              <HighlightedLabel>{t('render.perModuleColorMode')}</HighlightedLabel>
+            </Label>
+            <Select
+              value={render.perModuleColorMode}
+              onValueChange={(v) =>
+                useQRStore.setState((s) => ({
+                  render: {
+                    ...s.render,
+                    perModuleColorMode: v as typeof render.perModuleColorMode,
+                  },
+                }))
+              }
             >
               <SelectTrigger title={t('hints.perModuleColor')}>
                 <SelectValue />
@@ -378,23 +501,27 @@ export function RenderSection() {
 
           {/* Color Palette */}
           <div className="space-y-2">
-            <Label><HighlightedLabel>{t('render.colorPalette')}</HighlightedLabel></Label>
+            <Label>
+              <HighlightedLabel>{t('render.colorPalette')}</HighlightedLabel>
+            </Label>
             <div className="flex flex-wrap gap-2">
               {render.palette.map((color, index) => (
                 <div key={index} className="flex items-center gap-1">
-                  <div 
+                  <div
                     className="w-6 h-6 rounded border cursor-pointer"
                     style={{ backgroundColor: color }}
                     onClick={() => {
-                      const input = document.createElement('input')
-                      input.type = 'color'
-                      input.value = color
+                      const input = document.createElement('input');
+                      input.type = 'color';
+                      input.value = color;
                       input.onchange = (e) => {
-                        const newPalette = [...render.palette]
-                        newPalette[index] = (e.target as HTMLInputElement).value
-                        useQRStore.setState((s) => ({ render: { ...s.render, palette: newPalette } }))
-                      }
-                      input.click()
+                        const newPalette = [...render.palette];
+                        newPalette[index] = (e.target as HTMLInputElement).value;
+                        useQRStore.setState((s) => ({
+                          render: { ...s.render, palette: newPalette },
+                        }));
+                      };
+                      input.click();
                     }}
                   />
                   <Button
@@ -402,8 +529,10 @@ export function RenderSection() {
                     size="icon"
                     className="h-6 w-6"
                     onClick={() => {
-                      const newPalette = render.palette.filter((_, i) => i !== index)
-                      useQRStore.setState((s) => ({ render: { ...s.render, palette: newPalette } }))
+                      const newPalette = render.palette.filter((_, i) => i !== index);
+                      useQRStore.setState((s) => ({
+                        render: { ...s.render, palette: newPalette },
+                      }));
                     }}
                   >
                     <X className="h-3 w-3" />
@@ -422,7 +551,9 @@ export function RenderSection() {
                 variant="outline"
                 size="sm"
                 onClick={() => {
-                  useQRStore.setState((s) => ({ render: { ...s.render, palette: [...s.render.palette, newPaletteColor] } }))
+                  useQRStore.setState((s) => ({
+                    render: { ...s.render, palette: [...s.render.palette, newPaletteColor] },
+                  }));
                 }}
               >
                 <Plus className="h-4 w-4 mr-1" /> {t('render.addColor')}
@@ -433,10 +564,16 @@ export function RenderSection() {
           {/* Palette Mode - only show when palette has colors */}
           {render.palette.length > 0 && (
             <div className="space-y-2">
-              <Label><HighlightedLabel>{t('render.paletteMode')}</HighlightedLabel></Label>
-              <Select 
-                value={render.paletteMode} 
-                onValueChange={(v) => useQRStore.setState((s) => ({ render: { ...s.render, paletteMode: v as typeof render.paletteMode } }))}
+              <Label>
+                <HighlightedLabel>{t('render.paletteMode')}</HighlightedLabel>
+              </Label>
+              <Select
+                value={render.paletteMode}
+                onValueChange={(v) =>
+                  useQRStore.setState((s) => ({
+                    render: { ...s.render, paletteMode: v as typeof render.paletteMode },
+                  }))
+                }
               >
                 <SelectTrigger title={t('hints.paletteMode')}>
                   <SelectValue />
@@ -456,10 +593,14 @@ export function RenderSection() {
 
           {/* Contrast Guard */}
           <div className="flex items-center justify-between">
-            <Label><HighlightedLabel>{t('render.contrastGuard')}</HighlightedLabel></Label>
-            <Switch 
+            <Label>
+              <HighlightedLabel>{t('render.contrastGuard')}</HighlightedLabel>
+            </Label>
+            <Switch
               checked={render.contrastGuard}
-              onCheckedChange={(checked) => useQRStore.setState((s) => ({ render: { ...s.render, contrastGuard: checked } }))}
+              onCheckedChange={(checked) =>
+                useQRStore.setState((s) => ({ render: { ...s.render, contrastGuard: checked } }))
+              }
               title={t('hints.contrastGuard')}
             />
           </div>
@@ -467,12 +608,18 @@ export function RenderSection() {
           {render.contrastGuard && (
             <div className="space-y-2">
               <div className="flex items-center justify-between">
-                <Label><HighlightedLabel>{t('render.minContrastRatio')}</HighlightedLabel></Label>
-                <span className="text-sm text-muted-foreground">{t('qr.contrastRatio', { count: render.minContrastRatio })}</span>
+                <Label>
+                  <HighlightedLabel>{t('render.minContrastRatio')}</HighlightedLabel>
+                </Label>
+                <span className="text-sm text-muted-foreground">
+                  {t('qr.contrastRatio', { count: render.minContrastRatio })}
+                </span>
               </div>
               <Slider
                 value={[render.minContrastRatio]}
-                onValueChange={([v]) => useQRStore.setState((s) => ({ render: { ...s.render, minContrastRatio: v } }))}
+                onValueChange={([v]) =>
+                  useQRStore.setState((s) => ({ render: { ...s.render, minContrastRatio: v } }))
+                }
                 min={1}
                 max={21}
                 step={0.5}
@@ -483,5 +630,5 @@ export function RenderSection() {
         </>
       )}
     </div>
-  )
+  );
 }

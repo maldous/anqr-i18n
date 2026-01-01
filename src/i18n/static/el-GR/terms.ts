@@ -1,147 +1,89 @@
-import type { PageDefinition } from '../types'
-import { LAST_UPDATED, CONTACT_EMAIL } from '../types'
+import type { PageDefinition } from '../types';
+import { LAST_UPDATED } from '../types';
 
 export const terms: PageDefinition = {
-  title: '«Όροι Παροχής Υπηρεσιών»',
-  description: '«Με την πρόσβαση ή τη χρήση του ιστότοπου, συμφωνείτε να δεσμεύεστε από αυτούς τους όρους.»',
+  title: 'Terms of Service',
+  description: 'By accessing or using the site, you agree to be bound by these terms.',
   lastUpdated: LAST_UPDATED,
   sections: [
     {
-      heading: '«Αποδοχή όρων»',
-      paragraphs: [
-        '«Με την πρόσβαση ή τη χρήση του ANQR (anqr.link), συμφωνείτε να δεσμεύεστε από αυτούς τους Όρους Παροχής Υπηρεσιών και την Πολιτική Απορρήτου μας. Εάν δεν συμφωνείτε με αυτούς τους όρους, μην χρησιμοποιήσετε τον ιστότοπο.»',
-        '«Ενδέχεται να ενημερώνουμε τους παρόντες Όρους κατά καιρούς. Η συνεχής χρήση του ιστότοπου μετά τις αλλαγές συνιστά αποδοχή των νέων όρων.»',
-      ],
+      heading: 'Acceptance of terms',
+      paragraphs: ['By accessing or using ANQR (anqr.link), you agree to be bound by these Terms of Service and our Privacy Policy. If you do not agree to these terms, do not use the site.', 'We may update these Terms from time to time. Continued use of the site after changes constitutes acceptance of the new terms.'],
     },
     {
-      heading: '«Επιλεξιμότητα»',
-      paragraphs: [
-        '«Πρέπει να είστε τουλάχιστον 13 ετών για να χρησιμοποιήσετε το ANQR. Χρησιμοποιώντας τον ιστότοπο, δηλώνετε ότι πληροίτε αυτήν την ηλικιακή απαίτηση. Εάν είστε κάτω των 18 ετών, δηλώνετε ότι έχετε την άδεια του γονέα ή του κηδεμόνα σας για να χρησιμοποιήσετε τον ιστότοπο.»',
-      ],
+      heading: 'Eligibility',
+      paragraphs: ['You must be at least 13 years of age to use ANQR. By using the site, you represent that you meet this age requirement. If you are under 18, you represent that you have your parent or guardian\'s permission to use the site.'],
     },
     {
-      heading: '«Επιτρεπόμενη χρήση»',
-      paragraphs: [
-        '«Μπορείτε να χρησιμοποιείτε το ANQR μόνο για νόμιμους σκοπούς. Είστε αποκλειστικά υπεύθυνοι για το περιεχόμενο που κωδικοποιείτε σε κωδικούς QR και για τον τρόπο με τον οποίο χρησιμοποιείτε τυχόν κωδικούς QR που δημιουργείτε.»',
-      ],
+      heading: 'Permitted use',
+      paragraphs: ['You may use ANQR for lawful purposes only. You are solely responsible for the content you encode into QR codes and for how you use any QR codes you generate.'],
     },
     {
-      heading: '«Απαγορευμένη συμπεριφορά»',
-      paragraphs: [
-        '«Συμφωνείτε να μην:»',
-      ],
-      bullets: [
-        '«Χρησιμοποιήστε το ANQR για να δημιουργήσετε κωδικούς QR που διευκολύνουν το ηλεκτρονικό ψάρεμα (phishing), τη διανομή κακόβουλου λογισμικού, την απάτη, τις απάτες, την παρενόχληση, τη δυσφήμιση ή οποιαδήποτε παράνομη δραστηριότητα».',
-        '«Κωδικοποίηση περιεχομένου που παραβιάζει δικαιώματα πνευματικής ιδιοκτησίας, παραβιάζει το απόρρητο ή περιέχει παράνομο υλικό».',
-        '«Προσπάθεια διακοπής, υπερφόρτωσης ή παρέμβασης στη λειτουργία ή την ασφάλεια του ιστότοπου».',
-        '«Αντίστροφη μηχανική, αποσυμπίληση ή προσπάθεια εξαγωγής πηγαίου κώδικα από τον ιστότοπο».',
-        '«Χρήση αυτοματοποιημένων εργαλείων (bots, scrapers) για πρόσβαση στον ιστότοπο με τρόπο που υποβαθμίζει την απόδοση για άλλους χρήστες».',
-        '«Παράκαμψη ή απενεργοποίηση οποιωνδήποτε λειτουργιών ασφαλείας ή ελέγχου πρόσβασης».',
-        '«Μην υποδύεστε οποιοδήποτε φυσικό ή νομικό πρόσωπο ή μην παρουσιάζετε με ψευδή τρόπο την σχέση σας με αυτό».',
-      ],
+      heading: 'Prohibited conduct',
+      paragraphs: ['You agree not to:'],
+      bullets: ['Use ANQR to create QR codes that facilitate phishing, malware distribution, fraud, scams, harassment, defamation, or any illegal activity.', 'Encode content that infringes intellectual property rights, violates privacy, or contains illegal material.', 'Attempt to disrupt, overload, or interfere with the operation or security of the site.', 'Reverse engineer, decompile, or attempt to extract source code from the site.', 'Use automated tools (bots, scrapers) to access the site in a manner that degrades performance for other users.', 'Circumvent or disable any security or access control features.', 'Impersonate any person or entity or misrepresent your affiliation.'],
     },
     {
-      heading: '«Πνευματική ιδιοκτησία»',
-      paragraphs: [
-        '«Διατηρείτε την κυριότητα του περιεχομένου που κωδικοποιείτε σε κωδικούς QR. Η ANQR δεν διεκδικεί την κυριότητα των δεδομένων σας.»',
-        '«Το όνομα, το λογότυπο, ο σχεδιασμός της διεπαφής και ο υποκείμενος κώδικας της ANQR προστατεύονται από νόμους περί πνευματικών δικαιωμάτων, εμπορικών σημάτων και άλλων νόμων περί πνευματικής ιδιοκτησίας. Απαγορεύεται η αντιγραφή, τροποποίηση, διανομή ή δημιουργία παράγωγων έργων χωρίς την άδειά μας.»',
-        '«Το QR Code® είναι σήμα κατατεθέν της DENSO WAVE INCORPORATED. Η ANQR δεν συνδέεται με την DENSO WAVE.»',
-      ],
+      heading: 'Intellectual property',
+      paragraphs: ['You retain ownership of the content you encode into QR codes. ANQR does not claim ownership of your data.', 'The ANQR name, logo, interface design, and underlying code are protected by copyright, trademark, and other intellectual property laws. You may not copy, modify, distribute, or create derivative works without our permission.', 'QR Code® is a registered trademark of DENSO WAVE INCORPORATED. ANQR is not affiliated with DENSO WAVE.'],
     },
     {
-      heading: '«Άδεια χρήσης περιεχομένου χρήστη»',
-      paragraphs: [
-        '«Χρησιμοποιώντας το ANQR, δεν μας παραχωρείτε κανένα δικαίωμα στο περιεχόμενό σας. Όταν χρησιμοποιείτε την τοπική δημιουργία (η προεπιλογή), όλη η δημιουργία κωδικών QR γίνεται στο πρόγραμμα περιήγησής σας και δεν έχουμε πρόσβαση, δεν αποθηκεύουμε ούτε μεταδίδουμε τα κωδικοποιημένα δεδομένα σας.»',
-        '«Όταν χρησιμοποιείτε το API από την πλευρά του διακομιστή, το περιεχόμενό σας υποβάλλεται σε επεξεργασία για τη δημιουργία της εικόνας QR, αλλά δεν αποθηκεύεται, δεν καταγράφεται ή δεν χρησιμοποιείται για κανέναν άλλο σκοπό πέρα από την απόδοση της ζητούμενης εικόνας.»',
-      ],
+      heading: 'User content license',
+      paragraphs: ['By using ANQR, you grant us no rights to your content. When using local generation (the default), all QR code generation happens in your browser and we do not access, store, or transmit your encoded data.', 'When using the server-side API, your content is processed to generate the QR image but is not stored, logged, or used for any other purpose beyond rendering the requested image.'],
     },
     {
-      heading: '«Υπηρεσίες και διαφήμιση τρίτων»',
-      paragraphs: [
-        '«Ο ιστότοπος προβάλλει διαφημίσεις μέσω του Google AdSense και ενδέχεται να περιλαμβάνει συνδέσμους προς ιστότοπους τρίτων. Δεν φέρουμε ευθύνη για το περιεχόμενο, τις υπηρεσίες ή τις πρακτικές απορρήτου τρίτων.»',
-        '«Οι αλληλεπιδράσεις σας με διαφημιζόμενους και τρίτους γίνονται αποκλειστικά μεταξύ εσάς και αυτών. Ανατρέξτε στην Πολιτική Απορρήτου μας για πληροφορίες σχετικά με τις πρακτικές δεδομένων διαφήμισης.»',
-      ],
+      heading: 'Third-party services and advertising',
+      paragraphs: ['The site displays advertisements through Google AdSense and may include links to third-party websites. We are not responsible for third-party content, services, or privacy practices.', 'Your interactions with advertisers and third parties are solely between you and them. See our Privacy Policy for information about advertising data practices.'],
     },
     {
-      heading: '«Αποποίηση εγγύησης»',
-      paragraphs: [
-        '«Η ANQR ΠΑΡΕΧΕΤΑΙ «ΩΣ ΕΧΕΙ» ΚΑΙ «ΟΠΩΣ ΔΙΑΤΙΘΕΤΑΙ» ΧΩΡΙΣ ΕΓΓΥΗΣΕΙΣ ΚΑΝΕΝΟΣ ΕΙΔΟΥΣ, ΡΗΤΕΣ Ή ΣΙΩΠΗΡΕΣ, ΣΥΜΠΕΡΙΛΑΜΒΑΝΟΜΕΝΩΝ ΕΝΔΕΙΚΤΙΚΑ ΤΩΝ ΣΙΩΠΗΡΩΝ ΕΓΓΥΗΣΕΩΝ ΕΜΠΟΡΕΥΣΙΜΟΤΗΤΑΣ, ΚΑΤΑΛΛΗΛΟΤΗΤΑΣ ΓΙΑ ΣΥΓΚΕΚΡΙΜΕΝΟ ΣΚΟΠΟ ΚΑΙ ΜΗ ΠΑΡΑΒΙΑΣΗΣ.»',
-        '«Δεν εγγυόμαστε ότι: (α) ο ιστότοπος θα λειτουργεί αδιάλειπτα, θα είναι ασφαλής ή χωρίς σφάλματα· (β) οι κωδικοί QR θα σαρώνονται σε όλα τα περιβάλλοντα, σε όλες τις συσκευές ή με όλες τις εφαρμογές σάρωσης· (γ) ο ιστότοπος θα πληροί τις απαιτήσεις σας.»',
-        '«Πρέπει πάντα να δοκιμάζετε τους κωδικούς QR στις συνθήκες υπό τις οποίες θα χρησιμοποιηθούν (μέγεθος εκτύπωσης, φωτισμός, τύπος οθόνης, απόσταση, ποιότητα κάμερας).»',
-      ],
+      heading: 'Disclaimer of warranties',
+      paragraphs: ['ANQR IS PROVIDED ON AN "AS IS" AND "AS AVAILABLE" BASIS WITHOUT WARRANTIES OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, AND NON-INFRINGEMENT.', 'We do not warrant that: (a) the site will be uninterrupted, secure, or error-free; (b) QR codes will scan in all environments, on all devices, or with all scanner applications; (c) the site will meet your requirements.', 'You should always test QR codes in the conditions where they will be used (print size, lighting, screen type, distance, camera quality).'],
     },
     {
-      heading: '«Περιορισμός ευθύνης»',
-      paragraphs: [
-        '«ΣΤΟ ΜΕΓΙΣΤΟ ΒΑΘΜΟ ΠΟΥ ΕΠΙΤΡΕΠΕΤΑΙ ΑΠΟ ΤΟ ΝΟΜΟ, Η ANQR ΚΑΙ ΟΙ ΔΙΑΧΕΙΡΙΣΤΕΣ, ΟΙ ΣΥΝΔΕΔΕΜΕΝΕΣ ΕΤΑΙΡΕΙΕΣ ΚΑΙ ΟΙ ΑΔΕΙΟΠΑΡΟΧΟΙ ΤΗΣ ΔΕΝ ΘΑ ΦΕΡΟΥΝ ΕΥΘΥΝΗ ΓΙΑ ΟΠΟΙΑΔΗΠΟΤΕ ΑΜΕΣΗ, ΕΜΜΕΣΗ, ΤΥΧΑΙΑ, ΕΙΔΙΚΗ, ΕΠΑΚΟΛΟΥΘΗ, ΠΟΙΝΙΚΗ Ή ΠΑΡΑΔΕΙΓΜΑΤΙΚΗ ΖΗΜΙΑ, ΣΥΜΠΕΡΙΛΑΜΒΑΝΟΜΕΝΩΝ ΕΝΔΕΙΚΤΙΚΑ ΣΕ ΖΗΜΙΕΣ ΓΙΑ ΑΠΩΛΕΙΑ ΚΕΡΔΩΝ, ΕΣΟΔΩΝ, ΔΕΔΟΜΕΝΩΝ, ΥΠΕΡΟΧΗΣ ΘΕΛΗΣΗΣ, ΧΡΗΣΗΣ Ή ΑΛΛΩΝ ΑΥΛΩΝ ΖΗΜΙΩΝ, ΠΟΥ ΠΡΟΚΥΠΤΟΥΝ ΑΠΟ Ή ΣΧΕΤΙΖΟΝΤΑΙ ΜΕ ΤΗΝ ΠΡΟΣΒΑΣΗ ΣΑΣ Ή ΤΗ ΧΡΗΣΗ (Ή ΤΗΝ ΑΔΥΝΑΜΙΑ ΠΡΟΣΒΑΣΗΣ Ή ΧΡΗΣΗΣ) ΤΗΣ ΥΠΗΡΕΣΙΑΣ».',
-        '«ΚΑΤΑΝΟΕΙΤΕ ΡΗΤΑ ΚΑΙ ΣΥΜΦΩΝΕΙΤΕ ΟΤΙ Η ΧΡΗΣΗ ΤΗΣ ΥΠΗΡΕΣΙΑΣ ΓΙΝΕΤΑΙ ΜΕ ΑΠΟΚΛΕΙΣΤΙΚΗ ΣΑΣ ΕΥΘΥΝΗ. Η ΥΠΗΡΕΣΙΑ ΠΑΡΕΧΕΤΑΙ ΔΩΡΕΑΝ ΚΑΙ, ΣΥΝΕΠΩΣ, ΣΥΜΦΩΝΕΙΤΕ ΟΤΙ Η ANQR ΚΑΙ ΟΙ ΧΕΙΡΙΣΤΕΣ ΤΗΣ ΔΕΝ ΘΑ ΦΕΡΟΥΝ ΚΑΜΙΑ ΕΥΘΥΝΗ ΑΠΕΝΑΝΤΙ ΣΑΣ ΓΙΑ ΟΠΟΙΑΔΗΠΟΤΕ ΖΗΜΙΑ Ή ΑΠΩΛΕΙΑ. ΣΕ ΚΑΜΙΑ ΠΕΡΙΠΤΩΣΗ Η ΣΥΝΟΛΙΚΗ ΣΥΝΟΛΙΚΗ ΜΑΣ ΕΥΘΥΝΗ ΔΕΝ ΘΑ ΥΠΕΡΒΑΙΝΕΙ ΤΟ ΜΗΔΕΝ ΔΟΛΛΑΡΙΟ (0 AUD).»',
-        '«ΣΥΜΦΩΝΕΙΤΕ ΝΑ ΑΠΟΠΟΙΗΣΕΤΕ, ΝΑ ΠΑΡΑΙΤΕΙΤΕ ΚΑΙ ΝΑ ΑΠΑΛΛΑΓΕΤΕ ΟΠΟΙΕΣΔΗΠΟΤΕ ΚΑΙ ΟΛΕΣ ΤΙΣ ΑΠΑΙΤΗΣΕΙΣ, ΑΠΑΙΤΗΣΕΙΣ ΚΑΙ ΑΙΤΙΕΣ ΑΓΩΓΗΣ ΕΝΑΝΤΙΟΝ ΤΗΣ ANQR ΚΑΙ ΤΩΝ ΧΕΙΡΙΣΤΩΝ ΤΗΣ ΠΟΥ ΠΡΟΚΥΠΤΟΥΝ ΑΠΟ ΤΗ ΧΡΗΣΗ ΤΗΣ ΥΠΗΡΕΣΙΑΣ ΑΠΟ ΕΣΑΣ.»',
-        '«ΟΡΙΣΜΕΝΕΣ ΔΙΚΑΙΟΔΟΣΙΕΣ ΔΕΝ ΕΠΙΤΡΕΠΟΥΝ ΤΟΝ ΑΠΟΚΛΕΙΣΜΟ ΟΡΙΣΜΕΝΩΝ ΕΓΓΥΗΣΕΩΝ Ή ΤΟΥΣ ΠΕΡΙΟΡΙΣΜΟΥΣ ΕΥΘΥΝΗΣ. ΣΕ ΑΥΤΕΣ ΤΙΣ ΔΙΚΑΙΟΔΟΣΙΕΣ, Η ΕΥΘΥΝΗ ΜΑΣ ΘΑ ΠΕΡΙΟΡΙΣΤΕΙ ΣΤΟ ΜΕΓΙΣΤΟ ΒΑΘΜΟ ΠΟΥ ΕΠΙΤΡΕΠΕΤΑΙ ΑΠΟ ΤΗΝ ΕΦΑΡΜΟΣΤΕΑ ΝΟΜΟΘΕΣΙΑ.»',
-      ],
+      heading: 'Limitation of liability',
+      paragraphs: ['TO THE MAXIMUM EXTENT PERMITTED BY LAW, ANQR AND ITS OPERATORS, AFFILIATES, AND LICENSORS SHALL NOT BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, CONSEQUENTIAL, PUNITIVE, OR EXEMPLARY DAMAGES, INCLUDING BUT NOT LIMITED TO DAMAGES FOR LOSS OF PROFITS, REVENUE, DATA, GOODWILL, USE, OR OTHER INTANGIBLE LOSSES, ARISING FROM OR RELATED TO YOUR ACCESS TO OR USE OF (OR INABILITY TO ACCESS OR USE) THE SERVICE.', 'YOU EXPRESSLY UNDERSTAND AND AGREE THAT YOUR USE OF THE SERVICE IS AT YOUR SOLE RISK. THE SERVICE IS PROVIDED FREE OF CHARGE, AND ACCORDINGLY, YOU AGREE THAT ANQR AND ITS OPERATORS SHALL HAVE NO LIABILITY TO YOU WHATSOEVER FOR ANY DAMAGES OR LOSSES. IN NO EVENT SHALL OUR TOTAL AGGREGATE LIABILITY EXCEED ZERO DOLLARS ($0 AUD).', 'YOU AGREE TO RELEASE, WAIVE, AND DISCHARGE ANY AND ALL CLAIMS, DEMANDS, AND CAUSES OF ACTION AGAINST ANQR AND ITS OPERATORS ARISING FROM YOUR USE OF THE SERVICE.', 'SOME JURISDICTIONS DO NOT ALLOW THE EXCLUSION OF CERTAIN WARRANTIES OR LIMITATIONS OF LIABILITY. IN SUCH JURISDICTIONS, OUR LIABILITY SHALL BE LIMITED TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW.'],
     },
     {
-      heading: '«Αποζημίωση»',
-      paragraphs: [
-        '«Συμφωνείτε να αποζημιώσετε, να υπερασπιστείτε και να απαλλάξετε την ANQR, τους χειριστές, τις θυγατρικές της και τα αντίστοιχα στελέχη, διευθυντές, υπαλλήλους και αντιπροσώπους τους από οποιεσδήποτε αξιώσεις, ζημίες, απώλειες, υποχρεώσεις, έξοδα και δαπάνες (συμπεριλαμβανομένων των νομικών εξόδων) που προκύπτουν από: (α) τη χρήση του ιστότοπου από εσάς· (β) την παραβίαση των παρόντων Όρων από εσάς· (γ) την παραβίαση οποιωνδήποτε δικαιωμάτων τρίτων από εσάς· (δ) οποιοδήποτε περιεχόμενο κωδικοποιείτε σε κωδικούς QR.»',
-      ],
+      heading: 'Indemnification',
+      paragraphs: ['You agree to indemnify, defend, and hold harmless ANQR, its operators, affiliates, and their respective officers, directors, employees, and agents from any claims, damages, losses, liabilities, costs, and expenses (including legal fees) arising from: (a) your use of the site; (b) your violation of these Terms; (c) your violation of any third-party rights; (d) any content you encode into QR codes.'],
     },
     {
-      heading: '«Επίλυση Διαφορών»',
-      paragraphs: [
-        '«Οποιαδήποτε διαφορά προκύψει από τους παρόντες Όρους ή τη χρήση του ANQR από εσάς θα επιχειρηθεί πρώτα να επιλυθεί μέσω άτυπης διαπραγμάτευσης επικοινωνώντας με την ${CONTACT_EMAIL}.»',
-        '«Εάν η άτυπη επίλυση αποτύχει, οι διαφορές θα επιλύονται μέσω δεσμευτικής διαιτησίας στη Βικτώρια της Αυστραλίας, με την εξαίρεση ότι οποιοδήποτε από τα μέρη μπορεί να ζητήσει ασφαλιστικά μέτρα στο δικαστήριο για παραβιάσεις δικαιωμάτων πνευματικής ιδιοκτησίας.»',
-      ],
+      heading: 'Dispute resolution',
+      paragraphs: ['Any dispute arising from these Terms or your use of ANQR shall first be attempted to be resolved through informal negotiation by contacting ${CONTACT_EMAIL}.', 'If informal resolution fails, disputes shall be resolved through binding arbitration in Victoria, Australia, except that either party may seek injunctive relief in court for intellectual property violations.'],
     },
     {
-      heading: '«Αποποίηση ομαδικής αγωγής»',
-      paragraphs: [
-        '«ΣΤΟ ΒΑΘΜΟ ΠΟΥ ΕΠΙΤΡΕΠΕΤΑΙ ΑΠΟ ΤΟ ΝΟΜΟ, ΣΥΜΦΩΝΕΙΤΕ ΟΤΙ ΟΠΟΙΑΔΗΠΟΤΕ ΔΙΑΔΙΚΑΣΙΑ ΕΠΙΛΥΣΗΣ ΔΙΑΦΟΡΩΝ ΘΑ ΔΙΕΞΑΓΕΤΑΙ ΜΟΝΟ ΣΕ ΑΤΟΜΙΚΗ ΒΑΣΗ ΚΑΙ ΟΧΙ ΣΕ ΟΜΑΔΙΚΗ, ΣΥΓΚΕΝΤΡΩΤΙΚΗ Ή ΑΝΤΙΠΡΟΣΩΠΕΥΤΙΚΗ ΑΓΩΓΗ.»',
-      ],
+      heading: 'Class action waiver',
+      paragraphs: ['TO THE EXTENT PERMITTED BY LAW, YOU AGREE THAT ANY DISPUTE RESOLUTION PROCEEDINGS WILL BE CONDUCTED ONLY ON AN INDIVIDUAL BASIS AND NOT IN A CLASS, CONSOLIDATED, OR REPRESENTATIVE ACTION.'],
     },
     {
-      heading: '«Εφαρμοστέο δίκαιο»',
-      paragraphs: [
-        '«Οι παρόντες Όροι διέπονται από τους νόμους της Βικτώριας, Αυστραλία, ανεξάρτητα από τις αρχές σύγκρουσης νόμων. Συναινείτε στην αποκλειστική δικαιοδοσία των δικαστηρίων που βρίσκονται στη Βικτώρια, Αυστραλία.»',
-      ],
+      heading: 'Governing law',
+      paragraphs: ['These Terms are governed by the laws of Victoria, Australia, without regard to conflict of laws principles. You consent to the exclusive jurisdiction of the courts located in Victoria, Australia.'],
     },
     {
-      heading: '«Αλλαγές και διαθεσιμότητα»',
-      paragraphs: [
-        '«Ενδέχεται να τροποποιήσουμε, να αναστείλουμε ή να διακόψουμε την λειτουργία του ιστότοπου (ή οποιουδήποτε μέρους του) ανά πάσα στιγμή χωρίς προειδοποίηση ή ευθύνη.»',
-        '«Ενδέχεται να ενημερώσουμε τους παρόντες Όρους ανά πάσα στιγμή. Η ημερομηνία «Τελευταία ενημέρωση» υποδεικνύει πότε αναθεωρήθηκαν πιο πρόσφατα. Η συνεχιζόμενη χρήση μετά τις αλλαγές συνιστά αποδοχή.»',
-      ],
+      heading: 'Changes and availability',
+      paragraphs: ['We may modify, suspend, or discontinue the site (or any part of it) at any time without notice or liability.', 'We may update these Terms at any time. The "Last updated" date indicates when they were most recently revised. Continued use after changes constitutes acceptance.'],
     },
     {
-      heading: '«Διαχωρισιμότητα»',
-      paragraphs: [
-        '«Εάν οποιαδήποτε διάταξη των παρόντων Όρων κριθεί άκυρη ή μη εκτελεστή, η εν λόγω διάταξη θα εφαρμοστεί στο μέγιστο επιτρεπόμενο βαθμό και οι υπόλοιπες διατάξεις θα παραμείνουν σε πλήρη ισχύ και εφαρμογή.»',
-      ],
+      heading: 'Severability',
+      paragraphs: ['If any provision of these Terms is held invalid or unenforceable, that provision will be enforced to the maximum extent permissible, and the remaining provisions will remain in full force and effect.'],
     },
     {
-      heading: '«Απαλλαγή»',
-      paragraphs: [
-        '«Η μη επιβολή οποιουδήποτε δικαιώματος ή διάταξης των παρόντων Όρων από εμάς δεν θα θεωρείται παραίτηση από το εν λόγω δικαίωμα ή διάταξη.»',
-      ],
+      heading: 'Waiver',
+      paragraphs: ['Our failure to enforce any right or provision of these Terms shall not be deemed a waiver of such right or provision.'],
     },
     {
-      heading: '«Ολόκληρη η συμφωνία»',
-      paragraphs: [
-        '«Οι παρόντες Όροι, μαζί με την Πολιτική Απορρήτου μας, αποτελούν την πλήρη συμφωνία μεταξύ εσάς και της ANQR σχετικά με τη χρήση του ιστότοπου από εσάς και αντικαθιστούν τυχόν προηγούμενες συμφωνίες.»',
-      ],
+      heading: 'Entire agreement',
+      paragraphs: ['These Terms, together with our Privacy Policy, constitute the entire agreement between you and ANQR regarding your use of the site and supersede any prior agreements.'],
     },
     {
-      heading: '«Ανωτέρα βία»',
-      paragraphs: [
-        '«Δεν φέρουμε καμία ευθύνη για τυχόν αποτυχία ή καθυστέρηση στην εκτέλεση λόγω περιστάσεων πέραν του εύλογου ελέγχου μας, συμπεριλαμβανομένων φυσικών καταστροφών, πολέμου, τρομοκρατίας, ταραχών, κυβερνητικών ενεργειών ή βλαβών στο διαδίκτυο/υποδομών».',
-      ],
+      heading: 'Force majeure',
+      paragraphs: ['We shall not be liable for any failure or delay in performance due to circumstances beyond our reasonable control, including natural disasters, war, terrorism, riots, government actions, or internet/infrastructure failures.'],
     },
     {
-      heading: '«Επικοινωνία»',
-      paragraphs: [
-        '«Ερωτήσεις σχετικά με αυτούς τους Όρους μπορούν να σταλούν στη διεύθυνση: ${CONTACT_EMAIL}»',
-      ],
+      heading: 'Contact',
+      paragraphs: ['Questions about these Terms can be sent to: ${CONTACT_EMAIL}'],
     },
   ],
-}
+};
 
 export default terms;

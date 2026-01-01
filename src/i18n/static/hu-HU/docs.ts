@@ -2,840 +2,381 @@ import type { PageDefinition } from '../types';
 import { LAST_UPDATED } from '../types';
 
 export const docs: PageDefinition = {
-  title: 'oldal "ANQR felhasználói útmutató”',
-  description: '"Teljes körű útmutató az ANQR QR-kódok létrehozásához való használatához.”',
+  title: 'ANQR User Guide',
+  description: 'Complete guide to using ANQR for creating QR codes.',
   lastUpdated: LAST_UPDATED,
   sections: [
     {
-      heading: '"Első lépések”',
-      paragraphs: [
-        '"Az ANQR egy kliensközpontú QR-kód generátor. Alapértelmezés szerint a QR-kódok lokálisan, a böngésződben generálódnak – nincs szükség fiókra, és az adataid bizalmasak maradnak. Professzionális beágyazáshoz a szerveroldali API-t is használhatod.”',
-        '"A kezelőfelületnek három szintje van: Alap, Haladó és Professzionális. Válassza ki a szintet a fejlécben található fülek segítségével. Minden szint további funkciókat old fel, miközben a kezelőfelület a szükséges információkra összpontosít.”',
-      ],
+      heading: 'Getting Started',
+      paragraphs: ['ANQR is a QR code generator with a client-first approach. By default, QR codes are generated locally in your browser — no account required and your data stays private. For professional embedding, you can also use the server-side API.', 'The interface has three interface levels: Basic, Advanced, and Professional. Select your level using the tabs in the header. Each level unlocks additional features while keeping the interface focused on what you need.'],
+      bullets: ['Basic: Simple QR code creation with plain text/URL content and image overlay.', 'Advanced: QR encoding options, rendering styles, animation, output formats, extended content types, and overlay customization.', 'Professional: Watermarks, metadata, sharing, safety analysis, payment QR codes, and enterprise features.'],
+    },
+    {
+      heading: 'Quick Start',
+      paragraphs: ['To create your first QR code:'],
+      bullets: ['1. Select a content type (URL, text, WiFi, etc.) from the Content Type dropdown.', '2. Enter your data in the provided fields.', '3. Optionally customize colors, styles, and add an overlay image.', '4. Click Export to download your QR code as PNG, GIF, WebP, or SVG.'],
+    },
+    {
+      heading: 'Basic Features',
+      paragraphs: ['The Basic level provides a streamlined interface for creating QR codes with payload content and image overlays. This is the simplest way to get started.'],
+    },
+    {
+      heading: 'Content Types (Basic)',
+      paragraphs: ['Plain Text: Encode any text up to the QR code capacity limit. Ideal for short messages, codes, or identifiers.', 'URL: Encode web addresses. The QR code will open the URL when scanned. Supports http:// and https:// protocols.'],
+    },
+    {
+      heading: 'Image Overlay (Basic)',
+      paragraphs: ['Upload an image (JPG, PNG, GIF, WebP) to blend with your QR code. Basic overlay features include:'],
+      bullets: ['Upload from file: Select an image from your device.', 'Load from URL: Enter an image URL (must allow CORS).', 'Center Logo: Places image in the center, relying on error correction.', 'Blend: Simple alpha blending of image with QR pattern.', 'Intensity: Controls how strongly the overlay affects the QR code (0-100%).', 'Color Mode: Full Color, Grayscale, or Black & White.', 'Preserve Finder Patterns: Keeps corner patterns unmodified for reliable scanning.'],
+    },
+    {
+      heading: 'Advanced Features',
+      paragraphs: ['The Advanced level unlocks QR encoding options, rendering styles, animation, output formats, extended content types, and advanced overlay customization.'],
+    },
+    {
+      heading: 'QR Encoding Settings',
+      paragraphs: ['Version: QR codes come in versions 1-40, with higher versions holding more data but being larger. Set to 0 (Auto) to let ANQR choose the smallest version that fits your content.', 'Error Correction: Determines how much damage a QR code can sustain while remaining scannable.'],
+      bullets: ['L (Low): 7% error correction - smallest size, least redundancy.', 'M (Medium): 15% error correction - balanced option.', 'Q (Quartile): 25% error correction - good for printed codes.', 'H (High): 30% error correction - best for codes with overlays or in harsh conditions.'],
+    },
+    {
+      heading: 'Quiet Zone (Margin)',
+      paragraphs: ['The quiet zone is the white space around the QR code. Scanners need this margin to detect where the code starts. The standard recommends at least 4 modules. Reducing below 4 may cause scanning issues.'],
+    },
+    {
+      heading: 'Module Style',
+      paragraphs: ['Modules are the individual squares that make up a QR code. ANQR offers five styles:'],
+      bullets: ['Square: Classic QR appearance with sharp corners.', 'Rounded: Softened corners for a friendlier look.', 'Dots: Circular modules for a modern aesthetic.', 'Diamond: 45° rotated squares for a distinctive pattern.', 'Connected: Modules merge when adjacent, creating organic shapes.'],
+    },
+    {
+      heading: 'Finder Pattern Style',
+      paragraphs: ['Finder patterns are the three large squares in QR corners that help scanners orient the code. Available styles:'],
+      bullets: ['Square: Standard square corners.', 'Rounded: Softened corners matching rounded module style.', 'Circle: Circular finder patterns for dot-style codes.'],
+    },
+    {
+      heading: 'Alignment & Timing Patterns',
+      paragraphs: ['Alignment patterns appear in larger QR codes (version 2+) to help correct distortion. Timing patterns are the alternating lines connecting finder patterns.'],
+      bullets: ['Alignment Style: Match Finder, Square, Rounded, or Circle.', 'Timing Style: Match Module, Solid, or Dashed.'],
+    },
+    {
+      heading: 'Colors',
+      paragraphs: ['Foreground: The color of the QR modules. Black (#000000) is standard but any dark color works.', 'Background: The background color. White (#ffffff) is standard. Ensure sufficient contrast with the foreground.', 'Transparent Background: Remove the background entirely for use on colored surfaces. Ensure the surface provides adequate contrast.'],
+    },
+    {
+      heading: 'Module Size & Gap',
+      paragraphs: ['Module Size: Controls how large each module is rendered in pixels. Larger values create bigger, easier-to-scan codes.', 'Module Gap: Adds space between modules as a percentage. Small gaps (5-15%) can improve scannability in some conditions but excessive gaps reduce reliability.'],
+    },
+    {
+      heading: 'Output Settings',
+      paragraphs: ['Format: Choose your export format based on use case.'],
+      bullets: ['PNG: Lossless raster format, ideal for most uses. Best for print and digital.', 'WebP: Modern format with smaller file sizes. Good for web use.', 'GIF: Required for animated QR codes. Supports transparency.', 'SVG: Vector format that scales infinitely. Best for large print or when you need to edit the code.'],
+    },
+    {
+      heading: 'Output Dimensions',
+      paragraphs: ['Width/Height: Set the output size in pixels. For print, calculate based on DPI (e.g., 300 DPI at 1 inch = 300px). Larger sizes scan more reliably at distance.'],
+    },
+    {
+      heading: 'Animation Settings (Advanced)',
+      paragraphs: ['Control animated QR code behavior:'],
+      bullets: ['Speed: Animation frame rate in milliseconds.', 'Loop: Continuous or single-play animation.', 'Bounce: Ping-pong animation direction.', 'Start Frame: Begin animation from specific frame.', 'Max Frames: Limit total frames in animation.', 'Frame Step: Skip frames for faster animation.', 'Interpolation: None, Crossfade, or Morph between frames.'],
+    },
+    {
+      heading: 'Content Types (Advanced)',
+      paragraphs: ['Advanced level unlocks additional payload formats:'],
       bullets: [
-        '"Alapvető: Egyszerű QR-kód létrehozása sima szöveges/URL-tartalmú és képátfedvényes QR-kóddal.”',
-        '"Speciális: QR-kódolási beállítások, renderelési stílusok, animáció, kimeneti formátumok, bővített tartalomtípusok és az átfedés testreszabása.”',
-        '"Professzionális: Vízjelek, metaadatok, megosztás, biztonsági elemzés, fizetési QR-kódok és vállalati funkciók.”',
+        'Phone Number (tel:): Creates a callable phone link.',
+        'Email (mailto:): Opens email client with optional subject and body.',
+        'SMS: Pre-filled text message to a phone number.',
+        'vCard: Full contact card with name, organization, phone, email, address.',
+        'MeCard: Compact contact format popular in Japan.',
+        'BizCard: Legacy business card format.',
+        'Geo Location: GPS coordinates that open in maps.',
+        'WiFi: Network credentials for automatic connection (SSID, password, security type).',
+        'Calendar Event: iCalendar format with title, location, date/time.',
+        'Event RSVP: Link to event registration page.',
+        'Calendar Subscribe: Subscribe to an ICS/WebCal feed.',
+        'File/Document URL: Direct link to downloadable files.',
+        'Cloud Storage Link: Links to Google Drive, Dropbox, OneDrive, etc.',
+        'Social Profile: Links to LinkedIn, Twitter, Instagram, etc.',
+        'Messaging Link: WhatsApp, Telegram, Signal deep links.',
       ],
     },
     {
-      heading: '"Gyorsindítás”',
-      paragraphs: [
-        '"Az első QR-kód létrehozásához:”',
-      ],
+      heading: 'Advanced Overlay Features',
+      paragraphs: ['Additional overlay capabilities:'],
+      bullets: ['Crop: Enable cropping to select a square region of your image.', 'Halftone: Classic print-style dot pattern based on image brightness.', 'Dithered: Error-diffusion dithering for detailed reproduction.'],
+    },
+    {
+      heading: 'Overlay Blend Modes (Advanced)',
+      paragraphs: ['Additional blend modes in Advanced level:'],
+      bullets: ['Subpixel: Divides each module into subpixels for higher detail.', 'Blue Noise: Uses blue noise dithering for artifact-free patterns.', 'Mosaic: Tile-based effect preserving image structure.', 'Gap Fill: Places image in gaps between modules.', 'Brightness: Varies module size based on image brightness.', 'Duotone: Maps image to two colors for striking contrast.'],
+    },
+    {
+      heading: 'Overlay Intensity',
+      paragraphs: ['Controls how strongly the overlay affects the QR code (0-100%). Higher values show more image detail but may reduce scannability. Start around 70% and adjust based on testing.'],
+    },
+    {
+      heading: 'Color Mode',
+      paragraphs: ['How the overlay image is processed:'],
+      bullets: ['Full Color: Preserves original image colors.', 'Grayscale: Converts to black and white tones.', 'Black & White: High contrast binary conversion.'],
+    },
+    {
+      heading: 'Preserve Finder Patterns',
+      paragraphs: ['When enabled, keeps the three corner finder patterns unmodified by the overlay. Strongly recommended for reliable scanning.'],
+    },
+    {
+      heading: 'Image Preprocessing',
+      paragraphs: ['Apply filters to your overlay image before blending. These adjustments can improve how the image appears in the final QR code.'],
+      bullets: ['Brightness (-100 to +100): Lighten or darken the image.', 'Contrast (-100 to +100): Increase or decrease tonal range.', 'Gamma (0.2 to 3.0): Non-linear brightness adjustment. Values below 1 lighten midtones, above 1 darken them.', 'Saturation (-100 to +100): Color intensity. -100 is grayscale, +100 is oversaturated.', 'Hue Rotate (0-360°): Shift all colors around the color wheel.', 'Blur (0-20px): Soften image details.', 'Sharpen (0-100%): Enhance edges and details.', 'Posterize (0-16 levels): Reduce color levels for a poster effect.', 'Threshold (0-255): Convert to binary black/white at cutoff point.', 'Edge Detection: Sobel or Canny algorithms to show only edges.', 'Invert: Reverse all colors.'],
+    },
+    {
+      heading: 'Fit Mode',
+      paragraphs: ['How the overlay image fits the QR code area:'],
+      bullets: ['Cover: Image fills entire area, cropping if needed.', 'Contain: Entire image visible, may have margins.', 'Stretch: Image distorts to fill exactly.'],
+    },
+    {
+      heading: 'Transform Options',
+      paragraphs: ['Rotation: Rotate overlay in 90° increments.', 'Flip X/Y: Mirror the image horizontally or vertically.'],
+    },
+    {
+      heading: 'Dithering Algorithms',
+      paragraphs: ['Dithering converts continuous-tone images to patterns that QR codes can represent. Available when using Dithered, Blue Noise, or True Dither blend modes.'],
       bullets: [
-        '"1. Válasszon ki egy tartalomtípust (URL, szöveg, WiFi stb.) a Tartalomtípus legördülő menüből.”',
-        '"2. Írja be adatait a megadott mezőkbe.”',
-        '"3. Opcionálisan testreszabhatja a színeket és stílusokat, valamint hozzáadhat egy átfedő képet.”',
-        '"4. Kattintson az Exportálás gombra a QR-kód PNG, GIF, WebP vagy SVG formátumban történő letöltéséhez.”',
+        'Error Diffusion: Classic Floyd-Steinberg style. Spreads quantization error to neighboring pixels.',
+        'Ordered (Bayer): Uses a threshold matrix for regular patterns.',
+        'Clustered Dot: Simulates halftone printing.',
+        'Void & Cluster: Optimized ordered dithering.',
+        'Blue Noise: Visually pleasant random-looking pattern.',
+        'Blue Noise Threshold: Threshold dithering with blue noise texture.',
+        'White Noise: Random threshold dithering.',
+        'Gaussian/Triangular Noise: Noise with different distributions.',
+        'Blue Noise + Error Diffusion: Hybrid combining both techniques.',
+        'Screened Blue Noise: Screen-like blue noise pattern.',
+        'Perceptual: Luminance-weighted for better visual results.',
+        'Edge-Aware: Preserves image edges during dithering.',
+        'Adaptive Threshold: Locally-adaptive thresholding.',
+        'Temporal Blue Noise: For animated GIFs, varies pattern per frame.',
       ],
     },
     {
-      heading: '"Alapvető funkciók”',
-      paragraphs: [
-        '"Az Alapszint leegyszerűsített felületet biztosít QR-kódok létrehozásához hasznos adatokkal és képátfedvényekkel. Ez a legegyszerűbb módja a kezdésnek.”',
-      ],
-    },
-    {
-      heading: '"Tartalomtípusok (alap)”',
-      paragraphs: [
-        '"Egyszerű szöveg: Bármilyen szöveg kódolása a QR-kód kapacitáskorlátjáig. Ideális rövid üzenetekhez, kódokhoz vagy azonosítókhoz.”',
-        '"URL: Webcímek kódolása. A QR-kód beolvasáskor megnyitja az URL-t. Támogatja a http:// és https:// protokollokat.”',
-      ],
-    },
-    {
-      heading: '"Képátfedés (alap)”',
-      paragraphs: [
-        '"Tölts fel egy képet (JPG, PNG, GIF, WebP), hogy az összeolvadjon a QR-kódoddal. Az alapvető átfedési funkciók a következők:”',
-      ],
-      bullets: [
-        '"Feltöltés fájlból: Válasszon ki egy képet az eszközéről.”',
-        '"Betöltés URL-címről: Adjon meg egy kép URL-címét (engedélyeznie kell a CORS-t).”',
-        '"Középre helyezett logó: A képet középre helyezi, a hibajavításra támaszkodva.”',
-        '"Keverés: Kép egyszerű alfa-keverése QR-mintával.”',
-        '"Intenzitás: Azt szabályozza, hogy a réteg milyen erősen befolyásolja a QR-kódot (0–100%).”',
-        '"Színes mód: Teljes szín, szürkeárnyalatos vagy fekete-fehér.”',
-        '"Kereső minták megőrzése: A sarokmintákat módosítatlanul tartja a megbízható szkennelés érdekében.”',
-      ],
-    },
-    {
-      heading: '"Speciális funkciók”',
-      paragraphs: [
-        '"A haladó szint feloldja a QR-kódolási lehetőségeket, a renderelési stílusokat, az animációt, a kimeneti formátumokat, a kibővített tartalomtípusokat és a speciális átfedések testreszabását.”',
-      ],
-    },
-    {
-      heading: '"QR kódolási beállítások”',
-      paragraphs: [
-        '"Verzió: A QR-kódok 1-40-es verziókban kaphatók, a magasabb verziók több adatot tartalmaznak, de nagyobbak. Állítsa 0-ra (Automatikus), hogy az ANQR a tartalomhoz illő legkisebb verziót válassza.”',
-        '"Hibajavítás: Meghatározza, hogy egy QR-kód mennyi sérülést szenvedhet el, miközben beolvasható marad.”',
-      ],
-      bullets: [
-        '"L (Alacsony): 7%-os hibajavítás – legkisebb méret, legkisebb redundancia.”',
-        '"M (Közepes): 15%-os hibajavítás – kiegyensúlyozott opció.”',
-        '"Q (kvartilis): 25%-os hibajavítás – nyomtatott kódokhoz jó.”',
-        '"H (Magas): 30%-os hibajavítás – legjobban átfedéseket tartalmazó kódokhoz vagy zord körülményekhez.”',
-      ],
-    },
-    {
-      heading: '"Csendes zóna (Margó)”',
-      paragraphs: [
-        '"A csendes zóna a QR-kód körüli üres terület. A szkennereknek erre a margóra van szükségük ahhoz, hogy érzékeljék a kód kezdetét. A szabvány legalább 4 modult ajánl. 4 alá csökkentve szkennelési problémákat okozhat.”',
-      ],
-    },
-    {
-      heading: '"Modulstílus”',
-      paragraphs: [
-        '"A modulok az egyes négyzetek, amelyekből egy QR-kód áll. Az ANQR öt stílust kínál:”',
-      ],
-      bullets: [
-        '"Négyzet: Klasszikus QR-megjelenés éles sarkokkal.”',
-        '"Lekerekített: Lágyított sarkok a barátságosabb megjelenésért.”',
-        '"Pontok: Kör alakú modulok a modern esztétikáért.”',
-        '"Gyémánt: 45°-ban elforgatott négyzetek a jellegzetes minta érdekében.”',
-        '"Összekapcsolódó: A modulok egymás mellé helyezve egyesülnek, organikus formákat hozva létre.”',
-      ],
-    },
-    {
-      heading: '"Keresőminta stílus”',
-      paragraphs: [
-        '"A keresőmintázatok a QR-sarkokban található három nagy négyzet, amelyek segítenek a szkennereknek a kód eligazodásában. Elérhető stílusok:”',
-      ],
-      bullets: [
-        '"Négyzet: Szabványos derékszögű sarkok.”',
-        '"Lekerekített: Lágyított sarkok, amelyek illeszkednek a lekerekített modul stílusához.”',
-        '"Kör: Kör alakú keresőminták pontstílusú kódokhoz.”',
-      ],
-    },
-    {
-      heading: '"Igazítási és időzítési minták”',
-      paragraphs: [
-        '"Az igazítási minták a nagyobb QR-kódokon (2-es verzió+) jelennek meg a torzítás korrigálása érdekében. Az időzítési minták a keresőmintákat összekötő váltakozó vonalak.”',
-      ],
-      bullets: [
-        '"Igazítási stílus: Egyezéskereső, Négyzet, Lekerekített vagy Kör.”',
-        '"Időzítési stílus: Modulhoz illesztés, folytonos vagy szaggatott.”',
-      ],
-    },
-    {
-      heading: '"Színek”',
-      paragraphs: [
-        '"Előtér: A QR-modulok színe. A fekete (#000000) az alapértelmezett, de bármilyen sötét szín működik.”',
-        '"Háttér: A háttérszín. A fehér (#ffffff) az alapértelmezett. Biztosítson megfelelő kontrasztot az előtérrel.”',
-        '"Átlátszó háttér: Színes felületeken való használat esetén a hátteret teljesen el kell távolítani. Győződjön meg arról, hogy a felület megfelelő kontrasztot biztosít.”',
-      ],
-    },
-    {
-      heading: '"Modulméret és rés”',
-      paragraphs: [
-        '"Modulméret: Azt szabályozza, hogy az egyes modulok pixelekben megjelenített méretet jelenítsenek meg. Nagyobb értékek nagyobb, könnyebben beolvasható kódokat hoznak létre.”',
-        '"Modulrés: Százalékosan növeli a modulok közötti távolságot. A kis rések (5-15%) bizonyos körülmények között javíthatják a szkennelést, de a túlzott rések csökkentik a megbízhatóságot.”',
-      ],
-    },
-    {
-      heading: '"Kimeneti beállítások”',
-      paragraphs: [
-        '"Formátum: Válassza ki az exportálási formátumot a felhasználási eset alapján.”',
-      ],
-      bullets: [
-        '"PNG: Veszteségmentes raszteres formátum, a legtöbb felhasználásra ideális. Nyomtatáshoz és digitális nyomtatáshoz a legmegfelelőbb.”',
-        '"WebP: Modern formátum kisebb fájlméretekkel. Jó webes használatra.”',
-        '"GIF: Animált QR-kódokhoz szükséges. Átlátszóságot biztosít.”',
-        '"SVG: Végtelenül skálázható vektorformátum. Nagyméretű nyomtatáshoz vagy a kód szerkesztéséhez a legmegfelelőbb.”',
-      ],
-    },
-    {
-      heading: '"Kimeneti méretek”',
-      paragraphs: [
-        '"Szélesség/Magasság: Állítsa be a kimeneti méretet pixelben. Nyomtatáshoz DPI alapján számoljon (pl. 300 DPI 1 hüvelyknél = 300 képpont). A nagyobb méretek megbízhatóbban szkennelnek távolról.”',
-      ],
-    },
-    {
-      heading: '"Animációs beállítások (Speciális)”',
-      paragraphs: [
-        '"Animált QR-kód viselkedésének szabályozása:”',
-      ],
-      bullets: [
-        '"Sebesség: Animáció képkockasebessége milliszekundumban.”',
-        '"Hosszú lejátszás: Folyamatos vagy egyszeri lejátszású animáció.”',
-        '"Bounce: Pingpong animációs irány.”',
-        '"Kezdő képkocka: Animáció indítása adott képkockától.”',
-        '"Max képkockák: Az animációban lévő képkockák teljes számának korlátozása.”',
-        '"Képkocka lépésköz: Képkockák átugrása a gyorsabb animáció érdekében.”',
-        '"Interpoláció: Nincs, Áttűnés vagy Morfolás a képkockák között.”',
-      ],
-    },
-    {
-      heading: '"Tartalomtípusok (haladó)”',
-      paragraphs: [
-        '"A haladó szint további hasznos adatformátumokat old fel:”',
-      ],
-      bullets: [
-        '"Telefonszám (tel:): Hívható telefonkapcsolatot hoz létre.”',
-        '"Email (mailto:): Megnyitja az e-mail klienst opcionális tárggyal és szövegtörzzsel.”',
-        '"SMS: Előre kitöltött szöveges üzenet telefonszámra.”',
-        '"vCard: Teljes névjegykártya névvel, szervezettel, telefonszámmal, e-mail címmel és címmel.”',
-        '"MeCard: Kompakt névjegykártya-formátum, népszerű Japánban.”',
-        '"BizCard: Régi névjegykártya-formátum.”',
-        '"Földrajzi helymeghatározás: GPS-koordináták, amelyek megnyílnak a térképen.”',
-        '"WiFi: Hálózati hitelesítő adatok az automatikus csatlakozáshoz (SSID, jelszó, biztonsági típus).”',
-        '"Naptári esemény: iCalendar formátum címmel, helyszínnel, dátummal/idővel.”',
-        '"Esemény részvételi szándékának visszajelzése: Link az esemény regisztrációs oldalára.”',
-        '"Naptár feliratkozás: ICS/WebCal hírcsatornára feliratkozás.”',
-        '"Fájl/dokumentum URL: Közvetlen hivatkozás a letölthető fájlokhoz.”',
-        '"Felhőtárhely-link: Linkek a Google Drive-hoz, Dropboxhoz, OneDrive-hoz stb.”',
-        '"Közösségi profil: LinkedIn, Twitter, Instagram stb. linkek.”',
-        '"Üzenetküldő link: WhatsApp, Telegram, Signal mélyhivatkozások.”',
-      ],
-    },
-    {
-      heading: '"Speciális átfedési funkciók”',
-      paragraphs: [
-        '"További átfedési lehetőségek:”',
-      ],
-      bullets: [
-        '"Vágás: Engedélyezze a vágást a kép négyzet alakú területének kijelöléséhez.”',
-        '"Féltónus: Klasszikus nyomtatási stílusú pontminta a kép fényereje alapján.”',
-        '"Dithered: Hibaszórásos dithering a részletes reprodukció érdekében.”',
-      ],
-    },
-    {
-      heading: '"Átfedés keverési módok (haladó)”',
-      paragraphs: [
-        '"További keverési módok haladó szinten:”',
-      ],
-      bullets: [
-        '"Alpixel: Minden modult alpixelekre oszt a nagyobb részletesség érdekében.”',
-        '"Kék zaj: Kék zaj ditheringet használ a műtermékektől mentes mintázatok érdekében.”',
-        '"Mozaik: Csempe alapú effektus, amely megőrzi a képszerkezetet.”',
-        '"Rés kitöltése: Képet helyez a modulok közötti résekbe.”',
-        '"Fényerő: A kép fényerejétől függően változtatja a modul méretét.”',
-        '"Duotone: A képet két színre képezi le a feltűnő kontraszt érdekében.”',
-      ],
-    },
-    {
-      heading: '"Átfedés intenzitása”',
-      paragraphs: [
-        '"Azt szabályozza, hogy a QR-kódot milyen erősen befolyásolja az átfedés (0-100%). A magasabb értékek több képrészletet mutatnak, de csökkenthetik a szkennelhetőséget. Kezdje 70% körül, és a tesztelés alapján állítsa be.”',
-      ],
-    },
-    {
-      heading: '"Színmód”',
-      paragraphs: [
-        '"Hogyan dolgozza fel a fedvényképet:”',
-      ],
-      bullets: [
-        '"Teljes szín: Megőrzi az eredeti képszíneket.”',
-        '"Szürkeárnyalatos: Fekete-fehér tónusokká alakít.”',
-        '"Fekete-fehér: Nagy kontrasztú bináris konverzió.”',
-      ],
-    },
-    {
-      heading: '"Kereső minták megőrzése”',
-      paragraphs: [
-        '"Engedélyezés esetén a három sarokkereső mintázatot nem módosítja az átfedés. A megbízható szkennelés érdekében erősen ajánlott.”',
-      ],
-    },
-    {
-      heading: '"Kép előfeldolgozás”',
-      paragraphs: [
-        '"Alkalmazzon szűrőket az átfedő képre a keverés előtt. Ezek a beállítások javíthatják a kép megjelenését a végső QR-kódban.”',
-      ],
-      bullets: [
-        '"Fényerő (-100 és +100 között): A kép világosítása vagy sötétítése.”',
-        '"Kontraszt (-100 és +100 között): Növeli vagy csökkenti a tónustartományt.”',
-        '"Gamma (0,2–3,0): Nemlineáris fényerő-beállítás. Az 1 alatti értékek világosítják a középtónusokat, az 1 felettiek sötétítik azokat.”',
-        '"Telítettség (-100 és +100 között): Színintenzitás. A -100 a szürkeárnyalatos, a +100 a túltelített.”',
-        '"Színárnyalat forgatása (0-360°): Az összes szín eltolása a színkörön.”',
-        '"Elmosás (0-20 képpont): Képrészletek lágyítása.”',
-        '"Élesítés (0-100%): Élesítés és részletek kiemelése.”',
-        '"Poszterizálás (0-16 szint): Csökkentse a színszinteket poszterhatás eléréséhez.”',
-        '"Küszöbérték (0-255): Bináris fekete/fehérre konvertálás a határértéknél.”',
-        '"Élészlelés: Sobel vagy Canny algoritmusok csak az élek megjelenítéséhez.”',
-        '"Invertálás: Minden szín megfordítása.”',
-      ],
-    },
-    {
-      heading: '"Fitt mód”',
-      paragraphs: [
-        '"Hogyan illeszkedik a ráhelyezett kép a QR-kód területére:”',
-      ],
-      bullets: [
-        '"Borító: A kép kitölti a teljes területet, szükség esetén levágva.”',
-        '"Tartalmaz: A teljes kép látható, margókkal.”',
-        '"Nyújtás: A kép torzul, hogy pontosan kitöltse.”',
-      ],
-    },
-    {
-      heading: '"Átalakítási beállítások”',
-      paragraphs: [
-        '"Forgatás: Az átfedés forgatása 90°-os lépésekben.”',
-        '"X/Y tükrözés: A kép tükrözése vízszintesen vagy függőlegesen.”',
-      ],
-    },
-    {
-      heading: '"Dithering algoritmusok”',
-      paragraphs: [
-        '"A színárnyalatos képek QR-kódokkal ábrázolható mintázatokká alakíthatók. Színárnyalatos, kék zaj vagy valódi színárnyalatos keverési módok használatakor érhető el.”',
-      ],
-      bullets: [
-        '"Hibadiffúzió: Klasszikus Floyd-Steinberg stílus. A kvantálási hibát kiterjeszti a szomszédos pixelekre.”',
-        '"Rendezett (Bayer): Küszöbmátrixot használ a szabályos mintákhoz.”',
-        '"Fürtözött pont: Féltónusú nyomtatást szimulál.”',
-        '"Üres és klaszteres: Optimalizált rendezett dithering.”',
-        '"Kék zaj: Vizuálisan kellemes, véletlenszerű kinézetű minta.”',
-        '"Kék zaj küszöbérték: Küszöbérték-dithering kék zaj textúrával.”',
-        '"Fehér zaj: Véletlenszerű küszöbérték-dithering.”',
-        '"Gauss-/háromszögzaj: Különböző eloszlású zaj.”',
-        '"Kék zaj + hibaszórás: Hibrid, amely mindkét technikát ötvözi.”',
-        '"Szűrt kék zaj: képernyőszerű kék zajminta.”',
-        '"Perceptuális: Fényerősség-súlyozás a jobb vizuális eredmények érdekében.”',
-        '"Élfigyelő: Megőrzi a képszéleket a dithering során.”',
-        '"Adaptív küszöbérték: Lokálisan adaptív küszöbérték-meghatározás.”',
-        '"Időbeli kék zaj: Animált GIF-ek esetén képkockánként változik a minta.”',
-      ],
-    },
-    {
-      heading: '"Diffúziós kernelek”',
-      paragraphs: [
-        '"Hibaszórásos árnyalás használatakor válassza ki a hiba elosztásának módját:”',
-      ],
-      bullets: [
-        '"Floyd-Steinberg: Klasszikus 4-szomszédos diffúzió. Jó általános választás.”',
-        '"Jarvis-Judice-Ninke: 12 szomszédos, simább, de lassabb.”',
-        '"Stucki: Hasonló a JJN-hez, csak más súlyokkal.”',
-        '"Burkes: Egyszerűsített JJN, gyorsabb.”',
-        '"Sierra: A minőséget és a sebességet egyensúlyba hozó kernelcsalád.”',
-        '"Atkinson: Fényszórás, megőrzi a részleteket, de szemcsés lehet.”',
-      ],
+      heading: 'Diffusion Kernels',
+      paragraphs: ['When using Error Diffusion dithering, choose how error is distributed:'],
+      bullets: ['Floyd-Steinberg: Classic 4-neighbor diffusion. Good general choice.', 'Jarvis-Judice-Ninke: 12-neighbor, smoother but slower.', 'Stucki: Similar to JJN with different weights.', 'Burkes: Simplified JJN, faster.', 'Sierra: Family of kernels balancing quality and speed.', 'Atkinson: Light diffusion, preserves detail but can be grainy.'],
     },
     {
-      heading: '"Támadó erő”',
-      paragraphs: [
-        '"A dithering mértékét szabályozza (0–100%). Az alacsonyabb értékek jobban megőrzik az eredeti mintázatot, a magasabb értékek több képrészletet jelenítenek meg.”',
-      ],
+      heading: 'Dither Strength',
+      paragraphs: ['Controls how much dithering is applied (0-100%). Lower values preserve more of the original pattern, higher values show more image detail.'],
     },
     {
-      heading: '"Alpixel beállítások”',
-      paragraphs: [
-        '"Szubpixel keverési mód használatakor:”',
-      ],
-      bullets: [
-        '"Rácsméret: 2×2, 3×3 vagy 4×4 alpixel modulonként. Nagyobb = részletesebb.”',
-        '"Középponti szabály: A szigorú beállítás megköveteli a középső alképpontnak, hogy egyezzen a modullal. A félárnyalatos középpont variációkat tesz lehetővé.”',
-        '"Semleges szín: Meghatározatlan alpixelekhez használt szín.”',
-        '"Kereső felülbírálása: Hogyan jelennek meg a kereső mintái (tömör vagy stilizált).”',
-      ],
+      heading: 'Subpixel Settings',
+      paragraphs: ['When using Subpixel blend mode:'],
+      bullets: ['Grid Size: 2×2, 3×3, or 4×4 subpixels per module. Higher = more detail.', 'Center Rule: Strict requires center subpixel to match module. Halftone Center allows variation.', 'Neutral Color: Color used for undetermined subpixels.', 'Finder Override: How finder patterns are rendered (Solid or Stylized).'],
     },
     {
-      heading: '"Féltónus beállítások”',
-      paragraphs: [
-        '"Féltónusú keverési mód használata esetén:”',
-      ],
-      bullets: [
-        '"Cellaméret: Modulonként vagy N×N rácsonként.”',
-        '"Pont alakja: kör, négyzet vagy vonal.”',
-        '"Fényerőgörbe: lineáris, S-görbe vagy gamma.”',
-      ],
+      heading: 'Halftone Settings',
+      paragraphs: ['When using Halftone blend mode:'],
+      bullets: ['Cell Size: Per Module or N×N grid.', 'Dot Shape: Circle, Square, or Line.', 'Brightness Curve: Linear, S-Curve, or Gamma.'],
     },
     {
-      heading: '"Kétszínű színek”',
-      paragraphs: [
-        '"Kéttónusú keverési mód használatakor állítsa be az Árnyék színét (sötét területek) és a Kiemelés színét (világos területek).”',
-      ],
+      heading: 'Duotone Colors',
+      paragraphs: ['When using Duotone blend mode, set the Shadow color (dark areas) and Highlight color (bright areas).'],
     },
     {
-      heading: '"GIF animációs beállítások”',
-      paragraphs: [
-        '"Animált GIF-átfedések használata esetén:”',
-      ],
-      bullets: [
-        '"Képkockák késleltetésének használata: Az eredeti GIF időzítésének tiszteletben tartása.”',
-        '"Max FPS: Képkockasebesség korlátozása (1-60 fps).”',
-        '"Szemétkezelés: A keretek megsemmisítési módszereinek tiszteletben tartása vagy egyszerűsítése.”',
-      ],
+      heading: 'GIF Animation Settings',
+      paragraphs: ['When using animated GIF overlays:'],
+      bullets: ['Use Frame Delays: Respect original GIF timing.', 'Max FPS: Limit frame rate (1-60 fps).', 'Disposal Handling: Respect or Simplify frame disposal methods.'],
     },
     {
-      heading: '"Speciális renderelési beállítások”',
-      paragraphs: [
-        '"További renderelési vezérlők:”',
-      ],
-      bullets: [
-        '"Hézag mód: Nincs, Beszúrás, Ecsetvonás vagy Negatív térköz hézagstílus.”',
-        '"Sarokrádiusz: Lekerekített sarkok százalékos aránya moduloknál.”',
-        '"Színátmenet: Nincs, Lineáris, Radiális vagy Kúpos színátmenet a modulokon.”',
-        '"Szem külső/belső stílusa: Független stílus a keresőmintás gyűrűkhöz.”',
-        '"Pontforgatás: Gyémánt/pont modulok forgatása.”',
-        '"Szemméret: Méretbeállítás a kereső mintázataihoz.”',
-        '"Keretstílus: Díszítő keretek hozzáadása (lekerekített keret, matrica, címke).”',
-        '"Keret szövege: Adjon hozzá olyan szöveget a keretekhez, mint a "Szkennelj be!”.”',
-      ],
+      heading: 'Advanced Rendering Options',
+      paragraphs: ['Additional rendering controls:'],
+      bullets: ['Gap Mode: None, Inset, Stroke, or Negative Space gap styling.', 'Corner Radius: Rounded corners percentage for modules.', 'Gradient: None, Linear, Radial, or Conic gradient on modules.', 'Eye Outer/Inner Style: Independent styling for finder pattern rings.', 'Dot Rotation: Rotate diamond/dot modules.', 'Eye Scale: Size adjustment for finder patterns.', 'Frame Style: Add decorative frames (Rounded Frame, Sticker, Tag).', 'Frame Text: Add text like "Scan Me!" to frames.'],
     },
     {
-      heading: '"Speciális QR-kódolás”',
-      paragraphs: [
-        '"QR-kódolás finomhangolása:”',
-      ],
-      bullets: [
-        '"Kódolási mód: Automatikus, Numerikus, Alfanumerikus, Bájtos/UTF-8 vagy Kanji.”',
-        '"Minimális csendes zóna érvényesítése: Legalább 4 modulnyi margó biztosítása.”',
-      ],
+      heading: 'Advanced QR Encoding',
+      paragraphs: ['Fine-tune QR encoding:'],
+      bullets: ['Encoding Mode: Auto, Numeric, Alphanumeric, Byte/UTF-8, or Kanji.', 'Enforce Min Quiet Zone: Ensure at least 4 module margin.'],
     },
     {
-      heading: '"Speciális kimeneti beállítások”',
-      paragraphs: [
-        '"További exportbeállítások:”',
-      ],
-      bullets: [
-        '"Fájlnév: Egyéni fájlnév a letöltésekhez.”',
-        '"GIF paletta mérete: 2–256 szín a GIF kimenetben.”',
-        '"GIF kvantáló: Medián vágás, NeuQuant vagy Octree színcsökkentés.”',
-        '"GIF-féle színkülönbség: Ki, Floyd-Steinberg, vagy elrendelt.”',
-        '"GIF átlátszó színe: Állítson be egy színt átlátszóra.”',
-        '"SVG True Vector: Útvonalak használata beágyazott raszter helyett.”',
-        '"SVG alakzat pontossága: Pixel vagy precíz útvonal renderelés.”',
-        '"SVG beágyazott raszteres átfedés: Átfedés beágyazott képként való beillesztése.”',
-        '"Háttér felülírása: Adott háttérszín kikényszerítése a kimenetben.”',
-      ],
+      heading: 'Advanced Output Options',
+      paragraphs: ['Additional export settings:'],
+      bullets: ['Filename: Custom filename for downloads.', 'GIF Palette Size: 2-256 colors in GIF output.', 'GIF Quantizer: Median Cut, NeuQuant, or Octree color reduction.', 'GIF Dithering: Off, Floyd-Steinberg, or Ordered.', 'GIF Transparent Color: Set a color to be transparent.', 'SVG True Vector: Use paths instead of embedded raster.', 'SVG Shape Precision: Pixel or Precise path rendering.', 'SVG Embed Raster Overlay: Include overlay as embedded image.', 'Background Override: Force a specific background color in output.'],
     },
     {
-      heading: '"Érvényesítési beállítások”',
-      paragraphs: [
-        '"Beviteli feldolgozási beállítások:”',
-      ],
-      bullets: [
-        '"Bevitel érvényesítése: Tartalomformátum ellenőrzése kódolás előtt.”',
-        '"Térközök vágása: Eltávolítja a kezdő/záró szóközöket.”',
-        '"Sortörések normalizálása: Minden sorvég konvertálása LF-re.”',
-        '"Maximális hosszvédelem: Figyelmeztetés, ha a tartalom meghaladja a QR-kód kapacitását.”',
-      ],
+      heading: 'Validation Options',
+      paragraphs: ['Input processing settings:'],
+      bullets: ['Validate Input: Check content format before encoding.', 'Trim Whitespace: Remove leading/trailing spaces.', 'Normalize Newlines: Convert all line endings to LF.', 'Max Length Guard: Warn if content exceeds QR capacity.'],
     },
     {
-      heading: '"Szakmai jellemzők”',
-      paragraphs: [
-        '"A Professzionális szint vízjeleket, metaadatokat, megosztási lehetőségeket, biztonsági elemzést, fizetési QR-kódokat és vállalati funkciókat ad hozzá.”',
-      ],
+      heading: 'Professional Features',
+      paragraphs: ['The Professional level adds watermarks, metadata, sharing options, safety analysis, payment QR codes, and enterprise features.'],
     },
     {
-      heading: '"Vízjel”',
-      paragraphs: [
-        '"Vízjelek hozzáadása QR-kódokhoz:”',
-      ],
-      bullets: [
-        '"Fajta: Szöveg, kép vagy minta vízjel.”',
-        '"Pozíció: Középen, Sarkokban, Széleken, Mögött vagy Csendes zónában.”',
-        '"Átlátszóság: Vízjel átlátszósága (0-100%).”',
-        '"Keverési mód: Normál, Szorzás, Képernyő vagy Átfedés keverés.”',
-      ],
+      heading: 'Watermark',
+      paragraphs: ['Add watermarks to your QR codes:'],
+      bullets: ['Kind: Text, Image, or Pattern watermark.', 'Position: Center, Corners, Edges, Behind, or Quiet Zone.', 'Opacity: Watermark transparency (0-100%).', 'Blend Mode: Normal, Multiply, Screen, or Overlay blending.'],
     },
     {
-      heading: '"Metaadatok”',
-      paragraphs: [
-        '"Metaadatok beágyazása az exportált fájlokba:”',
-      ],
-      bullets: [
-        '"Cím, Szerző, Szerzői jog, Licenc, Leírás mezők.”',
-        '"Létrehozási idő: Generációs időbélyeg beágyazása.”',
-        '"Egyéni kulcs-érték: Tetszőleges metaadatpárok hozzáadása.”',
-      ],
+      heading: 'Metadata',
+      paragraphs: ['Embed metadata in exported files:'],
+      bullets: ['Title, Author, Copyright, License, Description fields.', 'Creation Time: Embed generation timestamp.', 'Custom Key-Value: Add arbitrary metadata pairs.'],
     },
     {
-      heading: '"Megosztás”',
-      paragraphs: [
-        '"QR-kód konfigurációk megosztása:”',
-      ],
-      bullets: [
-        '"Közvetlen hivatkozás: Megosztható URL létrehozása a jelenlegi beállításokkal.”',
-        '"HTML beágyazása: Beágyazási kód beszerzése webhelyekhez.”',
-        '"Kódolási paraméterek: Az összes beállítás belefoglalása a megosztási URL-be.”',
-        '"Megjegyzés: A helyi fájlokból származó átfedő képek nem oszthatók meg URL-címen keresztül.”',
-      ],
+      heading: 'Sharing',
+      paragraphs: ['Share your QR code configurations:'],
+      bullets: ['Direct Link: Generate a shareable URL with your current settings.', 'Embed HTML: Get embed code for websites.', 'Encode Parameters: Include all settings in the share URL.', 'Note: Overlay images from local files cannot be shared via URL.'],
     },
     {
-      heading: '"Biztonsági elemzés”',
-      paragraphs: [
-        '"Győződjön meg arról, hogy a QR-kódok továbbra is beolvashatók:”',
-      ],
-      bullets: [
-        '"Biztonságos mód: Kikapcsolva, Kiegyensúlyozott vagy Szigorú szkennelési követelmények.”',
-        '"Min. modulméret: Minimális pixelméret modulonként.”',
-        '"Minimális csendes zóna: Minimális margójú modulok.”',
-        '"Zárkeresők/Időzítés/Igazítás/Formátum/Verzió: Meghatározott elemek védelme.”',
-        '"Maximális átfedési intenzitás ECC szerint: Automatikus intenzitáskorlátok a hibajavítási szint alapján.”',
-      ],
+      heading: 'Safety Analysis',
+      paragraphs: ['Ensure QR codes remain scannable:'],
+      bullets: ['Safety Mode: Off, Balanced, or Strict scanning requirements.', 'Min Module Size: Minimum pixel size per module.', 'Min Quiet Zone: Minimum margin modules.', 'Lock Finders/Timing/Align/Format/Version: Protect specific elements.', 'Max Overlay Intensity by ECC: Automatic intensity limits based on error correction level.'],
     },
     {
-      heading: '"Tartalomtípusok (professzionális)”',
-      paragraphs: [
-        '"A professzionális szint fizetési és vállalati tartalomtípusokat ad hozzá:”',
-      ],
-      bullets: [
-        '"EPC/SEPA (EU): Európai banki átutalások QR-kódjai IBAN-nal, BIC-kel, összeggel, hivatkozással.”',
-        '"UPI (India): Egységes fizetési felület VPA-val, kedvezményezett neve, összeg.”',
-        '"PayNow (Szingapúr): Gyorsfizetés Szingapúrban UEN-nel vagy mobilszámmal.”',
-        '"PromptPay (Thaiföld): Thaiföldi nemzeti fizetési rendszer.”',
-        '"PIX (Brazília): Brazil azonnali fizetés PIX kulccsal.”',
-        '"Kripto: Bitcoin, Ethereum, Litecoin fizetési címek opcionális összeggel.”',
-        '"Marketingkampány link: URL-ek teljes UTM paraméter (marketingcímkék) követéssel.”',
-        '"Rövid link: URL-rövidítőkkel használható dinamikus/nyomon követhető QR-kódokhoz.”',
-        '"GS1 digitális kapcsolat: Termékazonosítás GTIN, sorozatszám, tételszám és lejárat alapján.”',
-        '"Alkalmazás mélylinkje: iOS/Android alkalmazások mélylinkjei egyéni sémákkal.”',
-        '"Egyéni formátum: Nyers adatok formázás és érvényesítés nélkül.”',
-      ],
+      heading: 'Content Types (Professional)',
+      paragraphs: ['Professional level adds payment and enterprise content types:'],
+      bullets: ['EPC/SEPA (EU): European bank transfer QR codes with IBAN, BIC, amount, reference.', 'UPI (India): Unified Payments Interface with VPA, payee name, amount.', 'PayNow (Singapore): Singapore fast payment with UEN or mobile number.', 'PromptPay (Thailand): Thai national payment system.', 'PIX (Brazil): Brazilian instant payment with PIX key.', 'Crypto: Bitcoin, Ethereum, Litecoin payment addresses with optional amount.', 'Marketing Campaign Link: URLs with full UTM parameter (Marketing Tags) tracking.', 'Short Link: For use with URL shorteners for dynamic/trackable QR codes.', 'GS1 Digital Link: Product identification with GTIN, serial, batch, expiry.', 'App Deep Link: iOS/Android app deep links with custom schemes.', 'Custom Format: Raw data with no formatting or validation.'],
     },
     {
-      heading: '"Nyelvfüggő fizetések speciális módban”',
-      paragraphs: [
-        '"Speciális mód használatakor az ANQR automatikusan megjeleníti a kiválasztott nyelvhez kapcsolódó fizetési módokat. Például a vietnami felhasználók a VietQR-t, a thai felhasználók a PromptPay-t, az indiai nyelvet használók pedig az UPI-t és a BharatQR-t látják. A globális fizetési módok (kriptovaluta, PayPal, Cash App) minden nyelven elérhetők. A professzionális mód nyelvtől függetlenül minden fizetési szabványt felold.”',
-      ],
+      heading: 'Language-Relevant Payments in Advanced Mode',
+      paragraphs: ['When using Advanced mode, ANQR automatically shows payment methods relevant to your selected language. For example, Vietnamese users see VietQR, Thai users see PromptPay, and Indian language users see UPI and BharatQR. Global payment methods (cryptocurrency, PayPal, Cash App) are available to all languages. Professional mode unlocks all payment standards regardless of language.'],
     },
     {
-      heading: '"Európai Fizetési Szabványok”',
-      bullets: [
-        '"EPC/SEPA (EU): Európai banki átutalások QR-kódjai az EPC QR-kód szabvány szerint. Támogatja az IBAN-t, a BIC-t (belföldi átutalások esetén opcionális), az EUR-ban megadott összeget, valamint a strukturált vagy strukturálatlan fizetési hivatkozásokat. A SEPA zónában használatos, beleértve az EU-országokat, valamint Svájcot, Norvégiát, Izlandot, Liechtensteint, Monacót és San Marinót.”',
-        '"Svájci QR-számla: Svájci fizetési szabvány a SIX implementációs irányelvek alapján. Támogatja a CHF és EUR pénznemeket, a QR-referenciát (QRR), a hitelezői referenciát (ISO 11649), a strukturált hitelező/adós címeket és a számlainformációkat. 2022 óta kötelező a svájci számlákhoz.”',
-      ],
+      heading: 'European Payment Standards',
+      bullets: ['EPC/SEPA (EU): European bank transfer QR codes following the EPC QR Code Standard. Supports IBAN, BIC (optional for domestic), amount in EUR, and structured or unstructured payment references. Used across the SEPA zone including EU countries plus Switzerland, Norway, Iceland, Liechtenstein, Monaco, and San Marino.', 'Swiss QR-bill: Swiss payment standard following SIX Implementation Guidelines. Supports CHF and EUR, QR-Reference (QRR), Creditor Reference (ISO 11649), structured creditor/debtor addresses, and bill information. Required for Swiss invoices since 2022.'],
     },
     {
-      heading: '"Indiai fizetési szabványok”',
-      bullets: [
-        '"UPI (India): Egységes fizetési felület az NPCI mélylinkelési specifikációját követve. Támogatja a VPA-t (virtuális fizetési cím), a kedvezményezett nevét, az INR-ben megadott összeget, a tranzakciós megjegyzést, a referenciaazonosítót, a kereskedő kategóriakódját és a tranzakciós módot.”',
-        '"BharatQR (India): Egységes QR-szabvány, amely támogatja mind az UPI, mind a kártyaalapú fizetéseket. Az UPI VPA-t a kártya PAN-jával kombinálja a maximális kompatibilitás érdekében. Tartalmazza a kereskedő nevét, városát, MCC-jét, GST-adatait, valamint a számla-/hivatkozási számokat.”',
-      ],
+      heading: 'Indian Payment Standards',
+      bullets: ['UPI (India): Unified Payments Interface following NPCI Deep Linking Specification. Supports VPA (Virtual Payment Address), payee name, amount in INR, transaction note, reference ID, merchant category code, and transaction mode.', 'BharatQR (India): Unified QR standard supporting both UPI and card-based payments. Combines UPI VPA with card PAN for maximum compatibility. Includes merchant name, city, MCC, GST details, and invoice/reference numbers.'],
     },
     {
-      heading: '"Délkelet-ázsiai fizetési szabványok”',
-      bullets: [
-        '"PayNow (Szingapúr): Szingapúri gyorsfizetési rendszer, amely az EMVCo QR specifikációt és az SGQR profilt használja. Támogatja az UEN-t (cégbejegyzés), a mobilszámot vagy az NRIC-t proxy azonosítóként. Tartalmazza az összeg szerkeszthetőségét és a lejárati dátumot.”',
-        '"PromptPay (Thaiföld): Thaiföldi nemzeti fizetési rendszer, amely a Bank of Thailand EMV profilját követi. Támogatja a mobilszámot, a személyi igazolványt, az adóazonosítót, az e-pénztárca azonosítót és a számlafizetést több referenciamezővel.”',
-        '"QRIS (Indonézia): Indonéz gyors válaszkód szabvány. EMV-alapú nemzeti fizetési szabvány, amely támogatja a kereskedőazonosítót, az NMID-t (nemzeti kereskedőazonosító), a kereskedői kritériumok besorolását és a kényelmi díjakat (fix vagy százalékos).”',
-        '"DuitNow (Malajzia): Maláj azonnali fizetési rendszer. Több proxy típust támogat, beleértve az országos adószámot, a mobilszámot, az útlevelet, a katonai igazolványt és a cégjegyzékszámot.”',
-        '"VietQR (Vietnam): Vietnámi bankközi átutalási szabvány. Banki BIN-t (NAPAS azonosító) és számlaszámot igényel. Több szolgáltatáskódot támogat a különböző átutalási típusokhoz (QRPUSH, QRIBFTTA, QRIBFTTC).”',
-        '"QR Ph (Fülöp-szigetek): Fülöp-szigeteki QR-fizetési szabvány az InstaPay és a PESONet számára. Kereskedőazonosítóval ellátott számlaszámokat használ a P2M (személy-kereskedő) tranzakciókhoz.”',
-      ],
+      heading: 'Southeast Asian Payment Standards',
+      bullets: ['PayNow (Singapore): Singapore fast payment system using EMVCo QR specification with SGQR profile. Supports UEN (business registration), mobile number, or NRIC as proxy identifiers. Includes amount editability flag and expiry date.', 'PromptPay (Thailand): Thai national payment system following Bank of Thailand EMV profile. Supports mobile number, national ID, tax ID, e-wallet ID, and bill payment with multiple reference fields.', 'QRIS (Indonesia): Quick Response Code Indonesian Standard. EMV-based national payment standard supporting merchant ID, NMID (National Merchant ID), merchant criteria classification, and convenience fees (fixed or percentage).', 'DuitNow (Malaysia): Malaysian instant payment system. Supports multiple proxy types including NRIC, mobile, passport, army ID, and business registration numbers.', 'VietQR (Vietnam): Vietnamese interbank transfer standard. Requires bank BIN (NAPAS identification) and account number. Supports multiple service codes for different transfer types (QRPUSH, QRIBFTTA, QRIBFTTC).', 'QR Ph (Philippines): Philippine QR payment standard for InstaPay and PESONet. Uses account numbers with merchant identification for P2M (person-to-merchant) transactions.'],
     },
     {
-      heading: '"Kelet-ázsiai fizetési szabványok”',
-      bullets: [
-        '"TWQR (Tajvan): Tajvani QR-fizetési szabvány. Támogatja a kereskedőazonosítót, az adóazonosítót és a TWD összegeket.”',
-        '"HKQR/FPS (Hongkong): Hong Kong Faster Payment System QR-kódok. Fizetési azonosítóként támogatja az FPS azonosítót, a mobilszámot vagy az e-mail címet. Az összegek HKD-ben vannak megadva.”',
-        '"JPQR (Japán): Egységes japán QR-kódos fizetési szabvány. Az üzlet azonosítóját használja a kereskedő azonosítására JPY összegek esetén.”',
-      ],
+      heading: 'East Asian Payment Standards',
+      bullets: ['TWQR (Taiwan): Taiwanese QR payment standard. Supports merchant ID, tax ID, and TWD amounts.', 'HKQR/FPS (Hong Kong): Hong Kong Faster Payment System QR codes. Supports FPS ID, mobile number, or email as payment identifiers. Amounts in HKD.', 'JPQR (Japan): Japanese unified QR code payment standard. Uses store ID for merchant identification with JPY amounts.'],
     },
     {
-      heading: '"Egyéb regionális fizetési szabványok”',
-      bullets: [
-        '"PIX (Brazília): A brazil központi bank azonnali fizetési rendszere a BR Code specifikációját követi. Támogatja a PIX kulcsokat (CPF, CNPJ, e-mail, telefonszám vagy véletlenszerű kulcs), a kereskedő nevét/városát, a tranzakcióazonosítót és a BRL összegeket.”',
-        '"AusPayNet/NPP PayID (Ausztrália): Az ausztrál új fizetési platform PayID rendszere. Támogatja a PayID típusokat (e-mail, mobil, ABN, szervezeti azonosító) vagy a hagyományos BSB + számlaszámot. A kereskedő neve opcionális, mivel a fizetők a regisztrált nevet látják az NPP kereséséből.”',
-      ],
+      heading: 'Other Regional Payment Standards',
+      bullets: ['PIX (Brazil): Brazilian Central Bank instant payment system following BR Code specification. Supports PIX keys (CPF, CNPJ, email, phone, or random key), merchant name/city, transaction ID, and BRL amounts.', 'AusPayNet/NPP PayID (Australia): Australian New Payments Platform PayID system. Supports PayID types (email, mobile, ABN, organisation ID) or traditional BSB + account number. Merchant name is optional as payers see the registered name from NPP lookup.'],
     },
     {
-      heading: '"Kriptovaluta fizetések”',
-      bullets: [
-        '"Bitcoin/Litecoin (BIP-21): Standard kriptovaluta fizetési URI-k tárcacímmel, opcionális összeggel és címkével. Kompatibilis az összes főbb Bitcoin és Litecoin tárcával.”',
-        '"Lightning Network (BOLT11): Lightning Network fizetési számlák. Illesszen be egy BOLT11 kódolású számla karakterláncot azonnali Bitcoin fizetésekhez minimális díjakkal.”',
-        '"Ethereum (EIP-681): Ethereum tranzakciókérés URI-k, amelyek támogatják a natív ETH átutalásokat és az ERC-20 token átutalásokat. Tartalmazza a láncazonosítót a többhálózatos támogatáshoz (Mainnet, Polygon, BSC, Arbitrum, Optimism, Avalanche), gázparamétereket és szerződéses függvényhívásokat.”',
-      ],
+      heading: 'Cryptocurrency Payments',
+      bullets: ['Bitcoin/Litecoin (BIP-21): Standard cryptocurrency payment URIs with wallet address, optional amount, and label. Compatible with all major Bitcoin and Litecoin wallets.', 'Lightning Network (BOLT11): Lightning Network payment invoices. Paste a BOLT11 encoded invoice string for instant Bitcoin payments with minimal fees.', 'Ethereum (EIP-681): Ethereum transaction request URIs supporting native ETH transfers and ERC-20 token transfers. Includes chain ID for multi-network support (Mainnet, Polygon, BSC, Arbitrum, Optimism, Avalanche), gas parameters, and contract function calls.'],
     },
     {
-      heading: '"Fizetési linkszolgáltatások”',
-      bullets: [
-        '"PayPal.Me: PayPal fizetési linkek felhasználónévvel és opcionálisan előre kitöltött összeggel. A címzettek PayPal-egyenlegükkel, kártyájukkal vagy bankszámlájukkal fizethetnek.”',
-        '"Cash App: Cash App fizetési linkek $cashtag használatával, opcionális összeggel. Népszerű az Egyesült Államokban peer-to-peer fizetésekhez.”',
-      ],
+      heading: 'Payment Link Services',
+      bullets: ['PayPal.Me: PayPal payment links with username and optional pre-filled amount. Recipients can pay via PayPal balance, cards, or bank accounts.', 'Cash App: Cash App payment links using $cashtag with optional amount. Popular in the United States for peer-to-peer payments.'],
     },
     {
-      heading: '"Általános EMV QR”',
-      bullets: [
-        '"EMV Generic: Egyéni EMV Merchant-Presented Mode QR-kódok létrehozása a konkrétan fel nem sorolt fizetési sémákhoz. Konfigurálja a kereskedő nevét, városát, országkódját (ISO 3166-1), pénznemkódját (ISO 4217 numerikus), MCC-jét, borravaló/kényelmi díj opcióit és további adatmezőket. Hasznos teszteléshez vagy egyéni integrációkhoz.”',
-      ],
+      heading: 'Generic EMV QR',
+      bullets: ['EMV Generic: Create custom EMV Merchant-Presented Mode QR codes for payment schemes not specifically listed. Configure merchant name, city, country code (ISO 3166-1), currency code (ISO 4217 numeric), MCC, tip/convenience fee options, and additional data fields. Useful for testing or custom integrations.'],
     },
     {
-      heading: '"Átfedéses keverési módok (Professzionális)”',
-      paragraphs: [
-        '"További keverési módok professzionális szinten:”',
-      ],
-      bullets: [
-        '"Pixelate: Pixeles átfedő effektus.”',
-        '"Körvonal: Az élérzékelési átfedés csak a kontúrokat mutatja.”',
-        '"Hullám: Hullámos torzítási effektus.”',
-        '"Alpixelméret: Változó alpixelméret a kép alapján.”',
-        '"Valódi árnyalás: Speciális árnyalás rendezett mátrixkiválasztással.”',
-        '"Extrém: Maximális képláthatóság, befolyásolhatja a szkennelhetőséget.”',
-      ],
+      heading: 'Overlay Blend Modes (Professional)',
+      paragraphs: ['Additional blend modes in Professional level:'],
+      bullets: ['Pixelate: Pixelated overlay effect.', 'Outline: Edge detection overlay showing only contours.', 'Wave: Wavy distortion effect.', 'Subpixel Size: Variable subpixel sizing based on image.', 'True Dither: Advanced dithering with ordered matrix selection.', 'Extreme: Maximum image visibility, may affect scannability.'],
     },
     {
-      heading: '"Védelmi beállítások”',
-      paragraphs: [
-        '"Finomhangolt szabályozás a QR-kódok módosításától védett elemek felett:”',
-      ],
-      bullets: [
-        '"Időzítés megőrzése: Az időzítési minták módosítás nélküli megőrzése.”',
-        '"Igazítás megőrzése: Az igazítási minták módosítás nélküli megőrzése.”',
-        '"Védelmi formátum információk: Védett formátum információs modulok.”',
-        '"Védelmi verzióinformációk: Védett verzióinformációs modulok.”',
-      ],
+      heading: 'Protection Settings',
+      paragraphs: ['Fine-grained control over which QR elements are protected from overlay modification:'],
+      bullets: ['Preserve Timing: Keep timing patterns unmodified.', 'Preserve Alignment: Keep alignment patterns unmodified.', 'Protect Format Info: Shield format information modules.', 'Protect Version Info: Shield version information modules.'],
     },
     {
-      heading: '"ECC-tudatos mód”',
-      paragraphs: [
-        '"Intelligensen osztja el az átfedési intenzitást a hibajavító kapacitás alapján. A rendszer elemzi, hogy mely modulok módosíthatók a szkennelhetőség megőrzése mellett.”',
-      ],
-      bullets: [
-        '"Kockázati költségvetés: A felhasználható hibajavító kapacitás százalékos aránya (0–100%).”',
-        '"Nagyobb költségvetés = láthatóbb réteg, de kockázatosabb áttekinthetőség.”',
-        '"Alacsonyabb költségvetés = biztonságosabb szkennelés, de kevésbé látható réteg.”',
-      ],
+      heading: 'ECC-Aware Mode',
+      paragraphs: ['Intelligently distributes overlay intensity based on error correction capacity. The system analyzes which modules can be modified while maintaining scannability.'],
+      bullets: ['Risk Budget: Percentage of error correction capacity to use (0-100%).', 'Higher budget = more visible overlay but riskier scannability.', 'Lower budget = safer scanning but less visible overlay.'],
     },
     {
-      heading: '"Professzionális renderelési beállítások”',
-      paragraphs: [
-        '"Speciális renderelési vezérlők:”',
-      ],
-      bullets: [
-        '"Éles élek: Pixelezett képmegjelenítés használata éles modulélekhez.”',
-        '"Pixel illesztés: Padló, Kerek vagy Plafon pixel igazítása.”',
-        '"Modulonkénti színmód: Egyszínű, Fényerő szerint, Pozíció szerint, Átfedés szerint, Klaszter szerint.”',
-        '"Színpaletta: Egyéni színpaletta meghatározása modulonkénti színezéshez.”',
-        '"Kontrasztvédelem: Biztosítsa a színek közötti minimális kontrasztarányt.”',
-        '"Minimális kontrasztarány: WCAG-stílusú kontrasztkövetelmény (1:1-től 21:1-ig).”',
-        '"Extra határmodulok: További határ a csendes zónán túl.”',
-      ],
+      heading: 'Professional Rendering Options',
+      paragraphs: ['Advanced rendering controls:'],
+      bullets: ['Crisp Edges: Use pixelated image rendering for sharp module edges.', 'Pixel Snap: Floor, Round, or Ceil pixel alignment.', 'Per-Module Color Mode: Solid, By Brightness, By Position, By Overlay, By Cluster.', 'Color Palette: Define custom color palette for per-module coloring.', 'Contrast Guard: Ensure minimum contrast ratio between colors.', 'Min Contrast Ratio: WCAG-style contrast requirement (1:1 to 21:1).', 'Extra Border Modules: Additional border beyond quiet zone.'],
     },
     {
-      heading: '"Professzionális kimeneti beállítások”',
-      paragraphs: [
-        '"Vállalati exportbeállítások:”',
-      ],
-      bullets: [
-        '"DPI: Állítsa be a nyomtatási felbontást (72–600 DPI). Nyomtatáshoz 300 DPI ajánlott.”',
-        '"Csendes zóna beillesztése: Csendes zóna be-/kikapcsolása a kimeneti méretekben.”',
-        '"Exportálás további formátumként: PDF létrehozása az elsődleges formátum mellett.”',
-      ],
+      heading: 'Professional Output Options',
+      paragraphs: ['Enterprise export settings:'],
+      bullets: ['DPI: Set print resolution (72-600 DPI). 300 DPI recommended for print.', 'Include Quiet Zone: Toggle quiet zone in output dimensions.', 'Export As Additional: Generate PDF alongside primary format.'],
     },
     {
-      heading: '"Animációs beállítások (Professzionális)”',
-      paragraphs: [
-        '"További professzionális animációs funkciók:”',
-      ],
-      bullets: [
-        '"Időbeli dither: Ki, Kékzaj vagy Villogásmentes képkockánkénti dithering.”',
-        '"Minta: Nincs, Pulzálás, Hullám, Pásztázó vonal, Csillámlás vagy Sodródás effektek.”',
-      ],
+      heading: 'Animation Settings (Professional)',
+      paragraphs: ['Additional professional animation features:'],
+      bullets: ['Temporal Dither: Off, Blue Noise, or Flicker Safe per-frame dithering.', 'Pattern: None, Pulse, Wave, Scanline, Shimmer, or Drift effects.'],
     },
     {
-      heading: '"API-referencia”',
-      paragraphs: [
-        '"Az ANQR szerveroldali API-t biztosít QR-kódok URL-paramétereken keresztüli generálásához. Ez ideális QR-kódok weboldalakba, e-mailekbe, dokumentumokba vagy automatizált munkafolyamatokba való beágyazásához kliensoldali JavaScript nélkül.”',
-        '"Alap URL: https://anqr.link/api/qr”',
-      ],
+      heading: 'API Reference',
+      paragraphs: ['ANQR provides a server-side API for generating QR codes via URL parameters. This is ideal for embedding QR codes in websites, emails, documents, or automated workflows without client-side JavaScript.', 'Base URL: https://anqr.link/api/qr'],
     },
     {
-      heading: '"Alapvető paraméterek”',
-      paragraphs: [
-        '"Kötelező és gyakori paraméterek (a paraméternevek nincsenek lefordítva):”',
-      ],
-      bullets: [
-        '"adatok (kötelező): A QR-kódban kódolandó tartalom. URL-kódolású speciális karakterek.”',
-        '"méret: Kép mérete pixelben (alapértelmezett: 400, max: 2000). Akkor használatos, ha a szélesség/magasság nincs megadva.”',
-        '"sz, h: Kimeneti szélesség és magasság pixelben. Felülírja a méretparamétert.”',
-        '"formátum: Kimeneti formátum — png, webp vagy gif (alapértelmezett: png).”',
-        '"ec: Hibajavítási szint — L, M, Q vagy H (alapértelmezett: H).”',
-        '"fg: Előtérszín hexadecimális számként # nélkül (alapértelmezett: 000000).”',
-        '"bg: Háttérszín hexadecimálisan, # nélkül (alapértelmezett: ffffff).”',
-        '"átlátszó: Állítsd 1-re az átlátszó háttérhez.”',
-        '"margin: Csendes zóna a modulokban (alapértelmezett: 4).”',
-      ],
+      heading: 'Basic Parameters',
+      paragraphs: ['Required and common parameters (parameter names are not translated):'],
+      bullets: ['data (required): The content to encode in the QR code. URL-encode special characters.', 'size: Image size in pixels (default: 400, max: 2000). Used if w/h not specified.', 'w, h: Output width and height in pixels. Overrides size parameter.', 'format: Output format — png, webp, or gif (default: png).', 'ec: Error correction level — L, M, Q, or H (default: H).', 'fg: Foreground color as hex without # (default: 000000).', 'bg: Background color as hex without # (default: ffffff).', 'transparent: Set to 1 for transparent background.', 'margin: Quiet zone in modules (default: 4).'],
     },
     {
-      heading: '"Stílusparaméterek”',
-      paragraphs: [
-        '"Modul- és mintaformázás:”',
-      ],
-      bullets: [
-        '"stílus: Modulstílus – négyzet, lekerekített, pontok, rombusz, összekötött.”',
-        '"finder: Finder minta stílusa – négyzet, lekerekített, kör.”',
-        '"align: Igazítási minta stílusa — match_finder, négyzet, lekerekített, kör.”',
-        '"timing: Időzítési minta stílusa — match_module, tömör, szaggatott.”',
-        '"radius: Saroksugár százalékos értéke 0–100.”',
-        '"rés: Modulrés százalékos értéke 0–50.”',
-        '"gapMode: Résmód — nincs, beszúrt, körvonal, negatív_tér.”',
-        '"eyeOuter, eyeInner: Szemstílusok – négyzet, lekerekített, kör.”',
-        '"eyeScale: Szemméret százalékos értéke (alapértelmezett: 100).”',
-        '"grad: Gradiens típusa – nincs, lineáris, radiális, kúpos.”',
-        '"gradAngle: Lineáris színátmenetek színátmenet szöge.”',
-        '"gradStops: A színátmenet megáll a következőképpen: color1,pos1,color2,pos2,… (pl. ff0000,0,0000ff,1).”',
-      ],
+      heading: 'Styling Parameters',
+      paragraphs: ['Module and pattern styling:'],
+      bullets: ['style: Module style — square, rounded, dots, diamond, connected.', 'finder: Finder pattern style — square, rounded, circle.', 'align: Alignment pattern style — match_finder, square, rounded, circle.', 'timing: Timing pattern style — match_module, solid, dashed.', 'radius: Corner radius percentage 0-100.', 'gap: Module gap percentage 0-50.', 'gapMode: Gap mode — none, inset, stroke, negative_space.', 'eyeOuter, eyeInner: Eye styles — square, rounded, circle.', 'eyeScale: Eye scale percentage (default: 100).', 'grad: Gradient type — none, linear, radial, conic.', 'gradAngle: Gradient angle for linear gradients.', 'gradStops: Gradient stops as color1,pos1,color2,pos2,... (e.g., ff0000,0,0000ff,1).'],
     },
     {
-      heading: '"Átfedési paraméterek”',
-      paragraphs: [
-        '"Képátfedés beállításai (az átfedés képét a szerveroldal tölti le):”',
-      ],
-      bullets: [
-        '"img: URL a kép átfedéséhez (nyilvánosan elérhetőnek kell lennie).”',
-        '"mód: Átfedés mód — középre, félárnyékra, keverésre, fényerőre, mozaikra, ditherre, kékzajra, alpixelre.”',
-        '"intenzitás: Átfedés intenzitása 0-100 (alapértelmezett: 100).”',
-        '"colorMode: Átfedés színmódja — színes, szürkeárnyalatos, fekete-fehér.”',
-        '"illeszkedés: Hogyan illeszkedik a fedvény – lefed, tartalmaz, nyújt.”',
-        '"rot: Átfedés forgatása fokban.”',
-        '"flipX, flipY: 1-re állítva tükrözi az átfedést.”',
-        '"keepFinders: Keresőminták megőrzése (alapértelmezett: 1).”',
-        '"keepTiming, keepAlign: Állítsa 1-re az időzítési/igazítási minták megőrzéséhez.”',
-      ],
+      heading: 'Overlay Parameters',
+      paragraphs: ['Image overlay options (overlay image is fetched server-side):'],
+      bullets: ['img: URL to overlay image (must be publicly accessible).', 'mode: Overlay mode — center, halftone, blend, brightness, mosaic, dithered, blue-noise, subpixel.', 'intensity: Overlay intensity 0-100 (default: 100).', 'colorMode: Overlay color mode — color, grayscale, bw.', 'fit: How overlay fits — cover, contain, stretch.', 'rot: Overlay rotation in degrees.', 'flipX, flipY: Set to 1 to flip overlay.', 'keepFinders: Preserve finder patterns (default: 1).', 'keepTiming, keepAlign: Set to 1 to preserve timing/alignment patterns.'],
     },
     {
-      heading: '"Előfeldolgozási paraméterek”',
-      paragraphs: [
-        '"Kép előfeldolgozás alkalmazva az átfedésre:”',
-      ],
-      bullets: [
-        '"fényerő: Beállítás -100 és 100 között (alapértelmezett: 0).”',
-        '"kontraszt: Beállítás -100-tól 100-ig (alapértelmezett: 0).”',
-        '"gamma: Érték 0,1 és 3 között (alapértelmezett: 1).”',
-        '"telítettség: Beállítás -100-tól 100-ig (alapértelmezett: 0).”',
-        '"árnyalat: Színárnyalat-forgatás fokban.”',
-        '"elmosás: Elmosás képpontokban.”',
-        '"élesítés: Élesítés mértéke 0-100.”',
-        '"poszterizálás: Szintek poszterizálása.”',
-        '"küszöbérték: Bináris küszöbérték 0–255.”',
-        '"él: Élészlelés — ki, sobel, ravasz.”',
-        '"invertálás: Állítsa 1-re a színek invertálásához.”',
-      ],
+      heading: 'Preprocessing Parameters',
+      paragraphs: ['Image preprocessing applied to overlay:'],
+      bullets: ['brightness: Adjustment -100 to 100 (default: 0).', 'contrast: Adjustment -100 to 100 (default: 0).', 'gamma: Value 0.1 to 3 (default: 1).', 'saturation: Adjustment -100 to 100 (default: 0).', 'hue: Hue rotation in degrees.', 'blur: Blur in pixels.', 'sharpen: Sharpen amount 0-100.', 'posterize: Posterize levels.', 'threshold: Binary threshold 0-255.', 'edge: Edge detection — off, sobel, canny.', 'invert: Set to 1 to invert colors.'],
     },
     {
-      heading: '"Vízjel paraméterek”',
-      paragraphs: [
-        '"Vízjelek hozzáadása a létrehozott QR-kódokhoz:”',
-      ],
-      bullets: [
-        '"wmEn: 1-re állítva engedélyezheti a vízjelet.”',
-        '"wmKind: Vízjel típusa — szöveg, kép, minta.”',
-        '"wmText: Vízjel szövege (URL-kódolású).”',
-        '"wmImg: Vízjelkép URL-címe.”',
-        '"wmPos: Pozíció — középen, sarkok, élek, mögött, csendes_zóna.”',
-        '"wmOpacity: Opacitás 0-100 (alapértelmezett: 50).”',
-        '"wmBlend: Keverési mód — normál, szorzó, képernyő, átfedés.”',
-      ],
+      heading: 'Watermark Parameters',
+      paragraphs: ['Add watermarks to generated QR codes:'],
+      bullets: ['wmEn: Set to 1 to enable watermark.', 'wmKind: Watermark type — text, image, pattern.', 'wmText: Watermark text (URL-encoded).', 'wmImg: URL to watermark image.', 'wmPos: Position — center, corners, edges, behind, quiet_zone.', 'wmOpacity: Opacity 0-100 (default: 50).', 'wmBlend: Blend mode — normal, multiply, screen, overlay.'],
     },
     {
-      heading: '"Animációs paraméterek”',
-      paragraphs: [
-        '"Animált GIF kimenethez (format=gif szükséges):”',
-      ],
-      bullets: [
-        '"animPattern: Animációs minta — nincs, pulzus, hullám, pásztázási vonal, csillogás, sodródás, színciklus.”',
-        '"animKeretek: Képkockák száma 1-60 (alapértelmezett: 24).”',
-        '"animSpeed: Képkocka késleltetés milliszekundumban 10-1000 (alapértelmezett: 100).”',
-        '"animSeed: Véletlenszerű vetőmag az animációhoz.”',
-        '"easing: Animáció easing — lineáris, easy_in, easy_out, easy_in_out, pattogás.”',
-      ],
+      heading: 'Animation Parameters',
+      paragraphs: ['For animated GIF output (requires format=gif):'],
+      bullets: ['animPattern: Animation pattern — none, pulse, wave, scanline, shimmer, drift, color_cycle.', 'animFrames: Number of frames 1-60 (default: 24).', 'animSpeed: Frame delay in milliseconds 10-1000 (default: 100).', 'animSeed: Random seed for animation.', 'easing: Animation easing — linear, ease_in, ease_out, ease_in_out, bounce.'],
     },
     {
-      heading: '"Kimeneti paraméterek”',
-      paragraphs: [
-        '"Kimeneti formátum beállításai:”',
-      ],
-      bullets: [
-        '"minőség: WebP minőség 0-1 (alapértelmezett: 0,9).”',
-        '"webpQ: WebP minőség 0-100 (alapértelmezett: 90).”',
-        '"gifColors: GIF paletta mérete 2-256 (alapértelmezett: 256).”',
-        '"dpi: PNG kimeneti DPI-je (alapértelmezett: 72).”',
-        '"metaTitle, metaAuthor, metaCopy, metaDesc: PNG metaadatmezők.”',
-      ],
+      heading: 'Output Parameters',
+      paragraphs: ['Output format options:'],
+      bullets: ['quality: WebP quality 0-1 (default: 0.9).', 'webpQ: WebP quality 0-100 (default: 90).', 'gifColors: GIF palette size 2-256 (default: 256).', 'dpi: Output DPI for PNG (default: 72).', 'metaTitle, metaAuthor, metaCopy, metaDesc: PNG metadata fields.'],
     },
     {
-      heading: '"Példahasználat”',
-      paragraphs: [
-        '"Alap QR-kód:”',
-        '"https://anqr.link/api/qr?data=https://example.com”',
-        '"Stílusos QR-kód egyéni színekkel:”',
-        '"https://anqr.link/api/qr?data=Hello&size=300&fg=1e40af&bg=ffffff&style=rounded&radius=30”',
-        '"QR-kód ráfedésképpel:”',
-        '"https://anqr.link/api/qr?data=https://example.com&ec=H&img=https://example.com/logo.png&mode=halftone&intensity=70”',
-        '"Animált GIF:”',
-        '"https://anqr.link/api/qr?data=Hello&format=gif&animPattern=pulse&animFrames=24&easing=ease_in_out”',
-      ],
+      heading: 'Example Usage',
+      paragraphs: ['Basic QR code:', 'https://anqr.link/api/qr?data=https://example.com', 'Styled QR code with custom colors:', 'https://anqr.link/api/qr?data=Hello&size=300&fg=1e40af&bg=ffffff&style=rounded&radius=30', 'QR code with overlay image:', 'https://anqr.link/api/qr?data=https://example.com&ec=H&img=https://example.com/logo.png&mode=halftone&intensity=70', 'Animated GIF:', 'https://anqr.link/api/qr?data=Hello&format=gif&animPattern=pulse&animFrames=24&easing=ease_in_out'],
     },
     {
-      heading: '"QR-kódok beágyazása”',
-      paragraphs: [
-        '"Professzionális módban a Megosztás funkció beágyazható HTML-t és URL-eket generál. A beágyazás a következőképpen működik:”',
-      ],
-      bullets: [
-        '"Link megosztása: Létrehoz egy URL-t az ANQR alkalmazáshoz, amelyben az összes beállítás URL-paraméterként van kódolva. A címzettek megtekinthetik és módosíthatják a QR-kódot.”',
-        '"Kép beágyazása: Létrehoz egy címkét, amely a szerver API-jára mutat. A QR-kód szerveroldalon jelenik meg, és képként szolgál.”',
-        '"Markdown beágyazása: Markdown képszintaxist hoz létre a dokumentációhoz és a README fájlokhoz.”',
-        '"Közvetlen API URL: A nyers API URL alkalmazásokban, szkriptekben vagy más integrációkban való használatra.”',
-      ],
+      heading: 'Embedding QR Codes',
+      paragraphs: ['In Professional mode, the Share feature generates embeddable HTML and URLs. Here is how embedding works:'],
+      bullets: ['Share Link: Creates a URL to the ANQR app with all your settings encoded as URL parameters. Recipients can view and modify the QR code.', 'Embed Image: Generates an <img> tag pointing to the server API. The QR code is rendered server-side and served as an image.', 'Embed Markdown: Creates Markdown image syntax for documentation and README files.', 'Direct API URL: The raw API URL for use in applications, scripts, or other integrations.'],
     },
     {
-      heading: '"HTML példa”',
-      paragraphs: [
-        '"QR-kód beágyazása a webhelyére:”',
-        '"<img src="https://anqr.link/api/qr?data=https://yoursite.com&size=200" alt="QR kód" />”',
-        '"Reszponzív méretezés esetén:”',
-        '"<img src="https://anqr.link/api/qr?data=https://yoursite.com&size=400" alt="QR Code" style="max-width: 100%; height: auto;" />”',
-        '"A szerver hosszú gyorsítótár-fejlécekkel gyorsítja fel a válaszokat, így az ugyanazon URL-címre vonatkozó ismételt kérések gyorsak.”',
-      ],
+      heading: 'HTML Example',
+      paragraphs: ['To embed a QR code in your website:', '<img src="https://anqr.link/api/qr?data=https://yoursite.com&size=200" alt="QR Code" />', 'For responsive sizing:', '<img src="https://anqr.link/api/qr?data=https://yoursite.com&size=400" alt="QR Code" style="max-width: 100%; height: auto;" />', 'The server caches responses with long cache headers, so repeated requests for the same URL are fast.'],
     },
     {
-      heading: '"URL megosztási formátuma”',
-      paragraphs: [
-        '"Amikor a Megosztás gombra kattint Professzionális módban, az ANQR URL-paraméterekké kódolja az aktuális beállításait. A formátum a következő:”',
-        '"https://anqr.link/?data=…&ec=H&style=rounded&….”',
-        '"Ezek a paraméterek tükrözik az API paramétereket, így egy megosztott URL-t API URL-lé konvertálhat az alap elérési út /-ról /api/qr-re módosításával, és a w/h paraméterek szükség szerinti módosításával.”',
-        '"Megjegyzés: A helyi fájlokból feltöltött átfedő képek nem oszthatók meg URL-en keresztül – csak az URL-alapú átfedések (img paraméter) működnek megosztott hivatkozásokban és API-hívásokban.”',
-      ],
+      heading: 'Share URL Format',
+      paragraphs: ['When you click Share in Professional mode, ANQR encodes your current settings into URL parameters. The format is:', 'https://anqr.link/?data=...&ec=H&style=rounded&....', 'These parameters mirror the API parameters, so you can convert a share URL to an API URL by changing the base path from / to /api/qr and adjusting w/h parameters as needed.', 'Note: Overlay images uploaded from local files cannot be shared via URL — only URL-based overlays (img parameter) work in shared links and API calls.'],
     },
     {
-      heading: '"Díjkorlátok és használat”',
-      paragraphs: [
-        '"Az API ésszerű mennyiség esetén ingyenesen használható. Nagy volumenű használat vagy garantált üzemidőt igénylő kereskedelmi alkalmazások esetén kérjük, vegye fel velünk a kapcsolatot.”',
-        '"Az API-válaszok agresszív gyorsítótárazási fejléceket tartalmaznak. A legjobb teljesítmény érdekében gyorsítótárazza a válaszokat a saját oldalán, vagy használja következetesen ugyanazt az URL-címet azonos QR-kódokhoz.”',
-      ],
+      heading: 'Rate Limits and Usage',
+      paragraphs: ['The API is free to use for reasonable volumes. For high-volume usage or commercial applications requiring guaranteed uptime, please contact us.', 'API responses include aggressive caching headers. For best performance, cache responses on your end or use the same URL consistently for identical QR codes.'],
     },
     {
-      heading: '"Bevált gyakorlatok”',
-      paragraphs: [
-        '"A megbízható QR-kódokért kövesse az alábbi irányelveket:”',
-      ],
-      bullets: [
-        '"Nyomtatás előtt mindig teszteld a QR-kódokat több szkenneralkalmazással.”',
-        '"Átfedések hozzáadásakor használja a H (Magas) hibajavítást.”',
-        '"Legalább 4 modulnyi csendes zónát (margót) kell tartani.”',
-        '"Biztosítson nagy kontrasztot az előtér és a háttér között.”',
-        '"Nyomtatáshoz legalább 300 DPI felbontást használjon, és a tényleges nyomtatási méretben tesztelje.”',
-        '"Keresőminták megőrzésének engedélyezése átfedések használatakor.”',
-        '"Kezdje alacsonyabb fedési intenzitással, és fokozatosan növelje.”',
-        '"Kültéri használat esetén nagyobb modulméreteket és magasabb hibajavítást kell figyelembe venni.”',
-      ],
+      heading: 'Best Practices',
+      paragraphs: ['Follow these guidelines for reliable QR codes:'],
+      bullets: ['Always test your QR codes with multiple scanner apps before printing.', 'Use Error Correction H (High) when adding overlays.', 'Keep at least 4 modules of quiet zone (margin).', 'Ensure high contrast between foreground and background.', 'For print, use at least 300 DPI and test at actual print size.', 'Enable Preserve Finder Patterns when using overlays.', 'Start with lower overlay intensity and increase gradually.', 'For outdoor use, consider larger module sizes and higher error correction.'],
     },
     {
-      heading: '"Hibaelhárítás”',
-      paragraphs: [
-        '"Gyakori problémák és megoldások:”',
-      ],
-      bullets: [
-        '"A QR-kód nem olvassa be: Csökkentse az átfedés intenzitását, növelje a hibajavítást, ellenőrizze a kontrasztot.”',
-        '"A kód túl nagy: Csökkentsd a tartalom hosszát, használj URL-rövidítőt, régebbi verziót.”',
-        '"Elmosódott kimenet: Növelje a modul méretét, használjon PNG-t tömörített formátumok helyett.”',
-        '"A színek rosszul néznek ki: Ellenőrizze a színkontrasztot, próbálja ki a szürkeárnyalatos átfedési módot.”',
-        '"A GIF nem animál: GIF formátumú kimenetet használ, ellenőrizze a képkockaszámot.”',
-        '"A képátfedés nem töltődik be: Ellenőrizze a CORS-engedélyeket a távoli képeken.”',
-      ],
+      heading: 'Troubleshooting',
+      paragraphs: ['Common issues and solutions:'],
+      bullets: ['QR won\'t scan: Reduce overlay intensity, increase error correction, check contrast.', 'Code too large: Reduce content length, use URL shortener, lower version.', 'Blurry output: Increase module size, use PNG instead of compressed formats.', 'Colors look wrong: Check color contrast, try grayscale overlay mode.', 'GIF not animating: Ensure using GIF format output, check frame count.', 'Image overlay not loading: Check CORS permissions on remote images.'],
     },
     {
-      heading: '"Billentyűparancsok”',
-      paragraphs: [
-        '"Az ANQR támogatja a szabványos billentyűparancsokat. Használja a Ctrl/Cmd+S billentyűkombinációt az exportálás elindításához (amikor az előnézeten van a fókusz).”',
-      ],
+      heading: 'Keyboard Shortcuts',
+      paragraphs: ['ANQR supports standard keyboard shortcuts. Use Ctrl/Cmd+S to trigger export (when focused on the preview).'],
     },
     {
-      heading: '"Megosztás és beágyazás”',
-      paragraphs: [
-        '"Professzionális módban kattintson a Megosztás gombra egy URL-cím másolásához az aktuális beállításokkal. A címzettek megnyithatják ezt az URL-címet a pontos konfiguráció megtekintéséhez. Megjegyzés: A helyi fájlokból származó átfedő képek nem oszthatók meg URL-címen keresztül.”',
-      ],
+      heading: 'Sharing & Embedding',
+      paragraphs: ['In Professional mode, click the Share button to copy a URL with your current settings. Recipients can open this URL to see your exact configuration. Note: Overlay images from local files cannot be shared via URL.'],
     },
   ],
 };

@@ -1,152 +1,82 @@
-import type { PageDefinition } from '../types'
-import { LAST_UPDATED, CONTACT_EMAIL } from '../types'
+import type { PageDefinition } from '../types';
+import { LAST_UPDATED } from '../types';
 
 export const privacy: PageDefinition = {
-  title: '"Privatlivspolitik”',
-  description: '"Oplysninger som ANQR indsamler, hvordan de bruges, og dine rettigheder i henhold til gældende privatlivslovgivning.”',
+  title: 'Privacy Policy',
+  description: 'Information ANQR collects, how it is used, and your rights under applicable privacy laws.',
   lastUpdated: LAST_UPDATED,
   sections: [
     {
-      heading: '"Resumé”',
-      paragraphs: [
-        '"ANQR er en QR-kodegenerator med en klientfokuseret tilgang. Vi kræver ikke, at du opretter en konto. Som standard genereres QR-koder lokalt i din browser – vi har ikke adgang til det indhold, du koder.”',
-        'Til professionel brug leverer ANQR en server-side API, der genererer QR-koder fra URL-parametre. Når du bruger API\'en, behandles dit QR-indhold på vores servere for at gengive billedet, men det gemmes eller logges ikke.',
-        '"Vi bruger Google AdSense til annoncering og kan bruge analysetjenester. Disse tjenester indsamler oplysninger via cookies og lignende teknologier. Denne politik forklarer, hvilke data der indsamles, hvordan de bruges, og dine rettigheder.”',
-      ],
+      heading: 'Summary',
+      paragraphs: ['ANQR is a QR code generator with a client-first approach. We do not require you to create an account. By default, QR codes are generated locally in your browser — we do not have access to the content you encode.', 'For professional use, ANQR provides a server-side API that generates QR codes from URL parameters. When using the API, your QR content is processed on our servers to render the image, but is not stored or logged.', 'We use Google AdSense for advertising and may use analytics services. These services collect information through cookies and similar technologies. This policy explains what data is collected, how it is used, and your rights.'],
     },
     {
-      heading: '"Oplysninger vi indsamler”',
-      bullets: [
-        '"Oplysninger, du giver: Hvis du kontakter os via e-mail eller vores kontaktformular, indsamler vi dit navn, din e-mailadresse og dit beskedindhold.”',
-        '"Automatisk indsamlede oplysninger: Vores hostingudbyder (Netlify), reklamepartnere og analysetjenester kan indsamle: IP-adresse, browsertype og -version, operativsystem, enhedstype, henvisende URL, besøgte sider, tid på webstedet og omtrentlig geografisk placering.”',
-        '"Tredjepartscookies: Vores reklamepartnere (Google AdSense) bruger cookies og lignende teknologier til at vise og måle annoncer. ANQR sætter ikke selv nogen førstepartscookies.”',
-      ],
+      heading: 'Information we collect',
+      bullets: ['Information you provide: If you contact us via email or our contact form, we collect your name, email address, and message content.', 'Automatically collected information: Our hosting provider (Netlify), advertising partners, and analytics services may collect: IP address, browser type and version, operating system, device type, referring URL, pages visited, time on site, and approximate geographic location.', 'Third-party cookies: Our advertising partners (Google AdSense) use cookies and similar technologies to serve and measure advertisements. ANQR itself does not set any first-party cookies.'],
     },
     {
-      heading: '"Cookies og tredjepartsteknologier”',
-      paragraphs: [
-        '"ANQR sætter ingen førstepartscookies. Dine præferencer (f.eks. mørk tilstand) gemmes lokalt på din enhed, som ikke overføres til nogen server.”',
-        'Vores reklamepartnere (Google AdSense) og hostingudbyder kan dog bruge cookies og lignende sporingsteknologier:',
-      ],
-      bullets: [
-        '"Annoncecookies (tredjepart): Indstillet af Google AdSense og annonceringspartnere for at vise relevante annoncer, måle annoncers effektivitet og forstå brugerinteresser. Disse cookies kan spore din aktivitet på tværs af forskellige websteder.”',
-        '"Analytiske cookies (tredjepart): Kan bruges af vores hostingudbyder eller analysetjenester til at indsamle anonymiserede brugsdata.”',
-      ],
+      heading: 'Cookies and third-party technologies',
+      paragraphs: ['ANQR does not set any first-party cookies. Your preferences (such as dark mode) are stored locally on your device, which is not transmitted to any server.', 'However, our advertising partners (Google AdSense) and hosting provider may use cookies and similar tracking technologies:'],
+      bullets: ['Advertising cookies (third-party): Set by Google AdSense and advertising partners to serve relevant ads, measure ad performance, and understand user interests. These cookies may track your activity across different websites.', 'Analytics cookies (third-party): May be used by our hosting provider or analytics services to collect anonymised usage data.'],
     },
     {
-      heading: '"Google AdSense og annoncering”',
-      paragraphs: [
-        '"Vi viser annoncer via Google AdSense. Google og dets partnere bruger cookies til at vise annoncer baseret på din browserhistorik på dette websted og andre websteder (interessebaseret annoncering).”',
-        '"Lær hvordan Google bruger dine oplysninger: https://policies.google.com/technologies/partner-sites”',
-        '"Administrer annoncetilpasning: https://adssettings.google.com”',
-        '"Framelding via Network Advertising Initiative: https://optout.networkadvertising.org”',
-        '"Framelding via Digital Advertising Alliance: https://optout.aboutads.info”',
-      ],
+      heading: 'Google AdSense and advertising',
+      paragraphs: ['We display advertisements through Google AdSense. Google and its partners use cookies to serve ads based on your browsing history on this site and other websites (interest-based advertising).', 'Learn how Google uses your information: https://policies.google.com/technologies/partner-sites', 'Manage ad personalisation: https://adssettings.google.com', 'Opt out via Network Advertising Initiative: https://optout.networkadvertising.org', 'Opt out via Digital Advertising Alliance: https://optout.aboutads.info'],
     },
     {
-      heading: '"Sådan bruger vi information”',
-      bullets: [
-        '"For at besvare dine forespørgsler og yde support.”',
-        '"At vise relevante annoncer gennem vores reklamepartnere.”',
-        '"For at analysere brugen af webstedet og forbedre vores tjenester.”',
-        '"At opdage, forebygge og håndtere svindel, misbrug og sikkerhedsproblemer.”',
-        '"For at overholde juridiske forpligtelser.”',
-      ],
+      heading: 'How we use information',
+      bullets: ['To respond to your enquiries and provide support.', 'To display relevant advertisements through our advertising partners.', 'To analyse site usage and improve our services.', 'To detect, prevent, and address fraud, abuse, and security issues.', 'To comply with legal obligations.'],
     },
     {
-      heading: '"Tredjepartstjenester”',
-      bullets: [
-        '"Google AdSense: Modtager data for at vise og måle annoncer.”',
-        '"Analytikudbydere: Modtag anonymiserede brugsdata.”',
-        '"Netlify (hosting): Behandler anmodninger og kan logge IP-adresser.”',
-        '"Vi sælger ikke dine personlige oplysninger. Deling af data med reklamepartnere kan dog betragtes som et "salg" i henhold til CCPA (se nedenfor).”',
-      ],
+      heading: 'Third-party services',
+      bullets: ['Google AdSense: Receives data to serve and measure advertisements.', 'Analytics providers: Receive anonymised usage data.', 'Netlify (hosting): Processes requests and may log IP addresses.', 'We do not sell your personal information. However, sharing data with advertising partners may be considered a "sale" under CCPA (see below).'],
     },
     {
-      heading: '"Dataopbevaring”',
-      bullets: [
-        '"Kontaktindsendelser: Op til 2 år.”',
-        '"Serverlogfiler: Op til 30 dage (hostingudbyder).”',
-        '"Analysedata: Op til 26 måneder (anonymiseret).”',
-        '"Annoncecookies: Typisk 13 måneder (varierer afhængigt af partner).”',
-      ],
+      heading: 'Data retention',
+      bullets: ['Contact submissions: Up to 2 years.', 'Server logs: Up to 30 days (hosting provider).', 'Analytics data: Up to 26 months (anonymised).', 'Advertising cookies: Typically 13 months (varies by partner).'],
     },
     {
-      heading: '"Dine rettigheder i henhold til GDPR (EØS-brugere)”',
-      paragraphs: [
-        '"Hvis du befinder dig i Det Europæiske Økonomiske Samarbejdsområde, har du følgende rettigheder i henhold til den generelle forordning om databeskyttelse:”',
-      ],
-      bullets: [
-        '"Ret til indsigt: Anmod om en kopi af de personoplysninger, vi har om dig.”',
-        '"Ret til berigtigelse: Anmodning om berigtigelse af ukorrekte oplysninger.”',
-        '"Ret til sletning: Anmod om sletning af dine data ("retten til at blive glemt”).”',
-        '"Ret til at begrænse behandling: Anmod om begrænsninger i, hvordan vi bruger dine data.”',
-        '"Ret til dataportabilitet: Anmod om dine data i et portabelt format.”',
-        '"Ret til indsigelse: Indsigelse mod behandling, herunder til direkte markedsføring.”',
-        '"Ret til at trække samtykke tilbage: Tilbagekaldelse af samtykke når som helst, hvor behandling er baseret på samtykke.”',
-        '"Ret til at indgive en klage: Indgiv en klage til din databeskyttelsesmyndighed.”',
-      ],
+      heading: 'Your rights under GDPR (EEA users)',
+      paragraphs: ['If you are in the European Economic Area, you have the following rights under the General Data Protection Regulation:'],
+      bullets: ['Right of access: Request a copy of personal data we hold about you.', 'Right to rectification: Request correction of inaccurate data.', 'Right to erasure: Request deletion of your data ("right to be forgotten").', 'Right to restrict processing: Request limits on how we use your data.', 'Right to data portability: Request your data in a portable format.', 'Right to object: Object to processing, including for direct marketing.', 'Right to withdraw consent: Withdraw consent at any time where processing is consent-based.', 'Right to lodge a complaint: File a complaint with your data protection authority.'],
     },
     {
-      heading: '"GDPR-retsgrundlag”',
-      paragraphs: [
-        '"Vi behandler data på følgende grundlag: (a) Samtykke – til personligt tilpasset annoncering (administreret af vores annonceringspartnere); (b) Legitime interesser – til analyser, sikkerhed og forbedring; (c) Kontrakt – til at besvare forespørgsler.”',
-        '"For at udøve dine rettigheder, kontakt ${CONTACT_EMAIL}. Vi svarer inden for 30 dage.”',
-      ],
+      heading: 'GDPR legal basis',
+      paragraphs: ['We process data on these bases: (a) Consent — for personalised advertising (managed by our advertising partners); (b) Legitimate interests — for analytics, security, and improvement; (c) Contract — to respond to enquiries.', 'To exercise your rights, contact ${CONTACT_EMAIL}. We respond within 30 days.'],
     },
     {
-      heading: '"Dine rettigheder i henhold til CCPA (brugere i Californien)”',
-      bullets: [
-        '"Ret til at vide: Anmod om oplysninger om indsamlede data, kilder, formål og tredjeparter.”',
-        '"Ret til sletning: Anmod om sletning af dine personlige oplysninger.”',
-        '"Ret til at framelde sig: Fravælg "salg" af personlige oplysninger (deling med annoncepartnere kan være berettiget).”',
-        '"Ret til ikke-diskrimination: Vi vil ikke diskriminere for at udøve dine rettigheder.”',
-      ],
+      heading: 'Your rights under CCPA (California users)',
+      bullets: ['Right to know: Request information about data collected, sources, purposes, and third parties.', 'Right to delete: Request deletion of your personal information.', 'Right to opt-out: Opt out of the "sale" of personal information (sharing with ad partners may qualify).', 'Right to non-discrimination: We will not discriminate for exercising your rights.'],
     },
     {
-      heading: '"CCPA-kategorier indsamlet”',
-      paragraphs: [
-        '"Kategorier: Identifikatorer (IP-adresse, enheds-ID), internetaktivitet (browsing, annonceinteraktioner), geoplacering (omtrentlig), inferenser (interesser fra browsing).”',
-        '"For at udøve rettigheder eller framelde dig: ${CONTACT_EMAIL} eller juster cookieindstillinger.”',
-      ],
+      heading: 'CCPA categories collected',
+      paragraphs: ['Categories: Identifiers (IP address, device ID), Internet activity (browsing, ad interactions), Geolocation (approximate), Inferences (interests from browsing).', 'To exercise rights or opt out: ${CONTACT_EMAIL} or adjust cookie settings.'],
     },
     {
-      heading: '"Internationale overførsler”',
-      paragraphs: [
-        '"Dine oplysninger kan blive overført til lande med andre databeskyttelseslove, herunder USA. Vi bruger passende sikkerhedsforanstaltninger såsom standardkontraktbestemmelser.”',
-      ],
+      heading: 'International transfers',
+      paragraphs: ['Your information may be transferred to countries with different data protection laws, including the United States. We use appropriate safeguards such as Standard Contractual Clauses.'],
     },
     {
-      heading: '"Børns privatliv”',
-      paragraphs: [
-        '"ANQR er ikke rettet mod børn under 13 år (eller 16 år i EØS). Vi indsamler ikke bevidst data fra børn. Kontakt ${CONTACT_EMAIL}, hvis du mener, at et barn har givet oplysninger.”',
-      ],
+      heading: 'Children\'s privacy',
+      paragraphs: ['ANQR is not directed at children under 13 (or 16 in the EEA). We do not knowingly collect data from children. Contact ${CONTACT_EMAIL} if you believe a child has provided information.'],
     },
     {
-      heading: '"Sikkerhed”',
-      paragraphs: [
-        '"Vi bruger passende tekniske og organisatoriske foranstaltninger til at beskytte data, herunder HTTPS-kryptering. Ingen internettransmission er dog 100 % sikker.”',
-      ],
+      heading: 'Security',
+      paragraphs: ['We use appropriate technical and organisational measures to protect data, including HTTPS encryption. However, no internet transmission is 100% secure.'],
     },
     {
-      heading: '"Spor ikke”',
-      paragraphs: [
-        '"Vi respekterer Do Not Track-browsersignaler, hvor det er muligt, selvom reklamepartnere muligvis ikke reagerer på DNT.”',
-      ],
+      heading: 'Do Not Track',
+      paragraphs: ['We honour Do Not Track browser signals where feasible, though advertising partners may not respond to DNT.'],
     },
     {
-      heading: '"Ændringer i denne politik”',
-      paragraphs: [
-        '"Vi kan opdatere denne politik med jævne mellemrum. Datoen "Sidst opdateret" angiver den seneste revision. Væsentlige ændringer kan meddeles via et banner på webstedet.”',
-      ],
+      heading: 'Changes to this policy',
+      paragraphs: ['We may update this policy periodically. The "Last updated" date indicates the most recent revision. Significant changes may be communicated via a site banner.'],
     },
     {
-      heading: '"Kontakt os”',
-      paragraphs: [
-        '"Hvis du har spørgsmål om privatlivets fred eller ønsker at udøve dine rettigheder: ${CONTACT_EMAIL} eller brug vores kontaktside. Vi besvarer anmodninger om privatliv inden for 30 dage.”',
-      ],
+      heading: 'Contact us',
+      paragraphs: ['For privacy questions or to exercise your rights: ${CONTACT_EMAIL} or use our Contact page. We respond to privacy requests within 30 days.'],
     },
   ],
-}
+};
 
 export default privacy;

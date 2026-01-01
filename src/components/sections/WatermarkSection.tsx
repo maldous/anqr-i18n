@@ -1,44 +1,61 @@
-import { useQRStore } from '@/store/qr-store'
-import { useTranslation } from 'react-i18next'
-import { Label } from '@/components/ui/label'
-import { Input } from '@/components/ui/input'
-import { Slider } from '@/components/ui/slider'
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
-import { Switch } from '@/components/ui/switch'
-import { Button } from '@/components/ui/button'
-import { Upload, X } from 'lucide-react'
-import { useRef } from 'react'
-import { HighlightedLabel } from '@/lib/search-context'
+import { Upload, X } from 'lucide-react';
+import { useRef } from 'react';
+import { useTranslation } from 'react-i18next';
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from '@/components/ui/select';
+import { Slider } from '@/components/ui/slider';
+import { Switch } from '@/components/ui/switch';
+import { HighlightedLabel } from '@/lib/search-context';
+import { useQRStore } from '@/store/qr-store';
 
 export function WatermarkSection() {
-  const { watermark, setWatermarkEnabled, setWatermarkKind, setWatermarkText, setWatermarkPosition, setWatermarkOpacity } = useQRStore()
-  const { t } = useTranslation()
-  const fileInputRef = useRef<HTMLInputElement>(null)
+  const {
+    watermark,
+    setWatermarkEnabled,
+    setWatermarkKind,
+    setWatermarkText,
+    setWatermarkPosition,
+    setWatermarkOpacity,
+  } = useQRStore();
+  const { t } = useTranslation();
+  const fileInputRef = useRef<HTMLInputElement>(null);
 
   const handleFileSelect = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0]
+    const file = e.target.files?.[0];
     if (file) {
-      useQRStore.setState((s) => ({ watermark: { ...s.watermark, image: file } }))
+      useQRStore.setState((s) => ({ watermark: { ...s.watermark, image: file } }));
     }
-  }
+  };
 
   return (
     <div className="space-y-4">
       {/* Enable */}
       <div className="flex items-center justify-between">
-        <Label><HighlightedLabel>{t('watermark.enabled')}</HighlightedLabel></Label>
-        <Switch 
-          checked={watermark.enabled}
-          onCheckedChange={setWatermarkEnabled}
-        />
+        <Label>
+          <HighlightedLabel>{t('watermark.enabled')}</HighlightedLabel>
+        </Label>
+        <Switch checked={watermark.enabled} onCheckedChange={setWatermarkEnabled} />
       </div>
 
       {watermark.enabled && (
         <>
           {/* Kind */}
           <div className="space-y-2">
-            <Label><HighlightedLabel>{t('watermark.type')}</HighlightedLabel></Label>
-            <Select value={watermark.kind} onValueChange={(v) => setWatermarkKind(v as typeof watermark.kind)}>
+            <Label>
+              <HighlightedLabel>{t('watermark.type')}</HighlightedLabel>
+            </Label>
+            <Select
+              value={watermark.kind}
+              onValueChange={(v) => setWatermarkKind(v as typeof watermark.kind)}
+            >
               <SelectTrigger>
                 <SelectValue />
               </SelectTrigger>
@@ -53,8 +70,10 @@ export function WatermarkSection() {
           {/* Text */}
           {watermark.kind === 'text' && (
             <div className="space-y-2">
-              <Label><HighlightedLabel>{t('watermark.text')}</HighlightedLabel></Label>
-              <Input 
+              <Label>
+                <HighlightedLabel>{t('watermark.text')}</HighlightedLabel>
+              </Label>
+              <Input
                 value={watermark.text}
                 onChange={(e) => setWatermarkText(e.target.value)}
                 placeholder={t('watermark.textPlaceholder')}
@@ -65,10 +84,12 @@ export function WatermarkSection() {
           {/* Image Upload - for image and pattern types (pattern uses image as tile source) */}
           {(watermark.kind === 'image' || watermark.kind === 'pattern') && (
             <div className="space-y-2">
-              <Label><HighlightedLabel>{t('watermark.image')}</HighlightedLabel></Label>
-              <input 
+              <Label>
+                <HighlightedLabel>{t('watermark.image')}</HighlightedLabel>
+              </Label>
+              <input
                 ref={fileInputRef}
-                type="file" 
+                type="file"
                 accept="image/*"
                 onChange={handleFileSelect}
                 className="hidden"
@@ -76,18 +97,20 @@ export function WatermarkSection() {
               {watermark.image ? (
                 <div className="flex items-center gap-2 p-2 border rounded-md bg-muted/50">
                   <span className="flex-1 text-sm truncate">{watermark.image.name}</span>
-                  <Button 
-                    variant="ghost" 
-                    size="icon" 
+                  <Button
+                    variant="ghost"
+                    size="icon"
                     className="h-6 w-6"
-                    onClick={() => useQRStore.setState((s) => ({ watermark: { ...s.watermark, image: null } }))}
+                    onClick={() =>
+                      useQRStore.setState((s) => ({ watermark: { ...s.watermark, image: null } }))
+                    }
                   >
                     <X className="h-4 w-4" />
                   </Button>
                 </div>
               ) : (
-                <Button 
-                  variant="outline" 
+                <Button
+                  variant="outline"
                   className="w-full"
                   onClick={() => fileInputRef.current?.click()}
                 >
@@ -100,8 +123,13 @@ export function WatermarkSection() {
 
           {/* Position */}
           <div className="space-y-2">
-            <Label><HighlightedLabel>{t('watermark.position')}</HighlightedLabel></Label>
-            <Select value={watermark.position} onValueChange={(v) => setWatermarkPosition(v as typeof watermark.position)}>
+            <Label>
+              <HighlightedLabel>{t('watermark.position')}</HighlightedLabel>
+            </Label>
+            <Select
+              value={watermark.position}
+              onValueChange={(v) => setWatermarkPosition(v as typeof watermark.position)}
+            >
               <SelectTrigger>
                 <SelectValue />
               </SelectTrigger>
@@ -118,8 +146,12 @@ export function WatermarkSection() {
           {/* Opacity */}
           <div className="space-y-2">
             <div className="flex items-center justify-between">
-              <Label><HighlightedLabel>{t('watermark.opacity')}</HighlightedLabel></Label>
-              <span className="text-sm text-muted-foreground">{t('qr.nPercent', { count: watermark.opacity })}</span>
+              <Label>
+                <HighlightedLabel>{t('watermark.opacity')}</HighlightedLabel>
+              </Label>
+              <span className="text-sm text-muted-foreground">
+                {t('qr.nPercent', { count: watermark.opacity })}
+              </span>
             </div>
             <Slider
               value={[watermark.opacity]}
@@ -132,10 +164,16 @@ export function WatermarkSection() {
 
           {/* Blend Mode */}
           <div className="space-y-2">
-            <Label><HighlightedLabel>{t('watermark.blendMode')}</HighlightedLabel></Label>
-            <Select 
-              value={watermark.blend} 
-              onValueChange={(v) => useQRStore.setState((s) => ({ watermark: { ...s.watermark, blend: v as typeof watermark.blend } }))}
+            <Label>
+              <HighlightedLabel>{t('watermark.blendMode')}</HighlightedLabel>
+            </Label>
+            <Select
+              value={watermark.blend}
+              onValueChange={(v) =>
+                useQRStore.setState((s) => ({
+                  watermark: { ...s.watermark, blend: v as typeof watermark.blend },
+                }))
+              }
             >
               <SelectTrigger>
                 <SelectValue />
@@ -151,5 +189,5 @@ export function WatermarkSection() {
         </>
       )}
     </div>
-  )
+  );
 }

@@ -9,217 +9,217 @@
 
 export interface ShareConfig {
   // Content
-  data: string
-  
+  data: string;
+
   // Language
-  lang?: string
-  
+  lang?: string;
+
   // QR settings
-  ec?: string
-  version?: number
-  size?: number
-  margin?: number
-  encodingMode?: string
-  borderModulesExtra?: number
-  quietZoneMinEnforce?: boolean
-  
+  ec?: string;
+  version?: number;
+  size?: number;
+  margin?: number;
+  encodingMode?: string;
+  borderModulesExtra?: number;
+  quietZoneMinEnforce?: boolean;
+
   // Colors
-  fg?: string
-  bg?: string
-  transparent?: boolean
-  
+  fg?: string;
+  bg?: string;
+  transparent?: boolean;
+
   // Styles
-  style?: string
-  finder?: string
-  alignmentStyle?: string
-  timingStyle?: string
-  
+  style?: string;
+  finder?: string;
+  alignmentStyle?: string;
+  timingStyle?: string;
+
   // Render settings
-  moduleGap?: number
-  gapMode?: string
-  cornerRadius?: number
-  gradientType?: string
-  gradientAngle?: number
-  gradientStops?: Array<{ color: string; pos: number }>
-  subpixelMode?: boolean
-  subpixelGrid?: number
-  eyeOuterStyle?: string
-  eyeInnerStyle?: string
-  eyeScale?: number
-  frameStyle?: string
-  frameText?: string
-  dotRotation?: number
-  crispEdges?: boolean
-  pixelSnap?: string
-  perModuleColorMode?: string
-  contrastGuard?: boolean
-  minContrastRatio?: number
-  
+  moduleGap?: number;
+  gapMode?: string;
+  cornerRadius?: number;
+  gradientType?: string;
+  gradientAngle?: number;
+  gradientStops?: Array<{ color: string; pos: number }>;
+  subpixelMode?: boolean;
+  subpixelGrid?: number;
+  eyeOuterStyle?: string;
+  eyeInnerStyle?: string;
+  eyeScale?: number;
+  frameStyle?: string;
+  frameText?: string;
+  dotRotation?: number;
+  crispEdges?: boolean;
+  pixelSnap?: string;
+  perModuleColorMode?: string;
+  contrastGuard?: boolean;
+  minContrastRatio?: number;
+
   // Overlay
-  mode?: string
-  intensity?: number
-  logoSize?: number
-  overlayUrl?: string  // URL source for overlay image
-  overlayType?: string  // static, gif, apng, webp_anim, video
-  overlayFramePick?: string  // all, every_n, max_frames, duration_limit
-  cropEnabled?: boolean
-  cropX?: number
-  cropY?: number
-  cropSize?: number
-  fit?: string
-  rotate?: number
-  flipX?: boolean
-  flipY?: boolean
-  gifUseFrameDelays?: boolean
-  gifMaxFps?: number
-  gifDisposalHandling?: string
-  preserveFinders?: boolean
-  preserveTiming?: boolean
-  preserveAlignment?: boolean
-  protectFormatInfo?: boolean
-  protectVersionInfo?: boolean
-  eccAwareEnabled?: boolean
-  eccAwareRiskBudget?: number
-  eccAwareWeightMap?: string
-  
+  mode?: string;
+  intensity?: number;
+  logoSize?: number;
+  overlayUrl?: string; // URL source for overlay image
+  overlayType?: string; // static, gif, apng, webp_anim, video
+  overlayFramePick?: string; // all, every_n, max_frames, duration_limit
+  cropEnabled?: boolean;
+  cropX?: number;
+  cropY?: number;
+  cropSize?: number;
+  fit?: string;
+  rotate?: number;
+  flipX?: boolean;
+  flipY?: boolean;
+  gifUseFrameDelays?: boolean;
+  gifMaxFps?: number;
+  gifDisposalHandling?: string;
+  preserveFinders?: boolean;
+  preserveTiming?: boolean;
+  preserveAlignment?: boolean;
+  protectFormatInfo?: boolean;
+  protectVersionInfo?: boolean;
+  eccAwareEnabled?: boolean;
+  eccAwareRiskBudget?: number;
+  eccAwareWeightMap?: string;
+
   // Overlay preprocessing
-  colorMode?: string
-  brightness?: number
-  contrast?: number
-  gamma?: number
-  saturation?: number
-  hue?: number
-  blur?: number
-  sharpen?: number
-  posterize?: number
-  threshold?: number
-  edge?: string
-  invert?: boolean
-  
+  colorMode?: string;
+  brightness?: number;
+  contrast?: number;
+  gamma?: number;
+  saturation?: number;
+  hue?: number;
+  blur?: number;
+  sharpen?: number;
+  posterize?: number;
+  threshold?: number;
+  edge?: string;
+  invert?: boolean;
+
   // Dithering
-  ditherKind?: string
-  diffusionKernel?: string
-  ditherStrength?: number
-  ditherSerpentine?: boolean
-  orderedMatrix?: string
-  blueNoiseTileSize?: number
-  blueNoiseSeed?: number
-  colorDither?: string
-  
+  ditherKind?: string;
+  diffusionKernel?: string;
+  ditherStrength?: number;
+  ditherSerpentine?: boolean;
+  orderedMatrix?: string;
+  blueNoiseTileSize?: number;
+  blueNoiseSeed?: number;
+  colorDither?: string;
+
   // Subpixel
-  subpixelGridSize?: string
-  subpixelCenterRule?: string
-  subpixelNeutralColor?: string
-  subpixelFinderOverride?: string
-  
+  subpixelGridSize?: string;
+  subpixelCenterRule?: string;
+  subpixelNeutralColor?: string;
+  subpixelFinderOverride?: string;
+
   // Halftone
-  halftoneCell?: string
-  halftoneDotShape?: string
-  brightnessCurve?: string
-  duotoneColor1?: string
-  duotoneColor2?: string
-  
+  halftoneCell?: string;
+  halftoneDotShape?: string;
+  brightnessCurve?: string;
+  duotoneColor1?: string;
+  duotoneColor2?: string;
+
   // Animation
-  speed?: number
-  loop?: boolean
-  reverse?: boolean
-  bounce?: boolean
-  easing?: string
-  startFrame?: number
-  maxFrames?: number
-  frameStep?: number
-  interpolate?: string
-  temporalDither?: string
-  pattern?: string
-  moduleJitter?: number
-  colorCycle?: boolean
-  seed?: number
-  
+  speed?: number;
+  loop?: boolean;
+  reverse?: boolean;
+  bounce?: boolean;
+  easing?: string;
+  startFrame?: number;
+  maxFrames?: number;
+  frameStep?: number;
+  interpolate?: string;
+  temporalDither?: string;
+  pattern?: string;
+  moduleJitter?: number;
+  colorCycle?: boolean;
+  seed?: number;
+
   // Output
-  width?: number
-  height?: number
-  format?: string
-  quality?: number
-  jpegQuality?: number
-  webpQuality?: number
-  gifColors?: number
-  filename?: string
-  gifPaletteSize?: number
-  gifQuantizer?: string
-  gifDither?: string
-  gifDisposal?: string
-  gifTransparentColor?: string
-  svgTrueVector?: boolean
-  svgShapePrecision?: string
-  svgEmbedRasterOverlay?: boolean
-  dpi?: number
-  includeQuietZone?: boolean
-  bgOverride?: string
-  formatExtra?: string
+  width?: number;
+  height?: number;
+  format?: string;
+  quality?: number;
+  jpegQuality?: number;
+  webpQuality?: number;
+  gifColors?: number;
+  filename?: string;
+  gifPaletteSize?: number;
+  gifQuantizer?: string;
+  gifDither?: string;
+  gifDisposal?: string;
+  gifTransparentColor?: string;
+  svgTrueVector?: boolean;
+  svgShapePrecision?: string;
+  svgEmbedRasterOverlay?: boolean;
+  dpi?: number;
+  includeQuietZone?: boolean;
+  bgOverride?: string;
+  formatExtra?: string;
 
   // Safety
-  safetyMode?: string
-  safetyMinModulePx?: number
-  safetyMinQuietZone?: number
-  lockFinders?: boolean
-  lockTiming?: boolean
-  lockAlign?: boolean
-  lockFormat?: boolean
-  lockVersion?: boolean
+  safetyMode?: string;
+  safetyMinModulePx?: number;
+  safetyMinQuietZone?: number;
+  lockFinders?: boolean;
+  lockTiming?: boolean;
+  lockAlign?: boolean;
+  lockFormat?: boolean;
+  lockVersion?: boolean;
 
   // QA
-  qaContrastCheck?: boolean
-  qaSimulateBlur?: number
-  qaSimulateNoise?: number
-  qaSimulateRotation?: number
-  qaShowHeatmap?: boolean
+  qaContrastCheck?: boolean;
+  qaSimulateBlur?: number;
+  qaSimulateNoise?: number;
+  qaSimulateRotation?: number;
+  qaShowHeatmap?: boolean;
 
   // Auto-tuning
-  autoPickVersion?: boolean
-  autoPickEcc?: boolean
-  autoReduceIntensity?: boolean
+  autoPickVersion?: boolean;
+  autoPickEcc?: boolean;
+  autoReduceIntensity?: boolean;
 
   // Watermark
-  watermarkEnabled?: boolean
-  watermarkKind?: string
-  watermarkText?: string
-  watermarkImageUrl?: string  // URL for image/pattern watermark
-  watermarkPosition?: string
-  watermarkOpacity?: number
-  watermarkBlend?: string
-  
+  watermarkEnabled?: boolean;
+  watermarkKind?: string;
+  watermarkText?: string;
+  watermarkImageUrl?: string; // URL for image/pattern watermark
+  watermarkPosition?: string;
+  watermarkOpacity?: number;
+  watermarkBlend?: string;
+
   // Animation (for animated GIF via server)
-  animationPattern?: string  // none/pulse/wave/scanline/shimmer/drift/color_cycle
-  animationFrames?: number
-  animationSpeed?: number
-  animationSeed?: number
+  animationPattern?: string; // none/pulse/wave/scanline/shimmer/drift/color_cycle
+  animationFrames?: number;
+  animationSpeed?: number;
+  animationSeed?: number;
 
   // Render palette
-  palette?: string  // JSON encoded or comma-separated hex colors
-  paletteMode?: string  // position, brightness, diagonal, radial, random, row, column
-  
+  palette?: string; // JSON encoded or comma-separated hex colors
+  paletteMode?: string; // position, brightness, diagonal, radial, random, row, column
+
   // Safety per-ECC limits
-  maxOverlayIntensityL?: number
-  maxOverlayIntensityM?: number
-  maxOverlayIntensityQ?: number
-  maxOverlayIntensityH?: number
-  
+  maxOverlayIntensityL?: number;
+  maxOverlayIntensityM?: number;
+  maxOverlayIntensityQ?: number;
+  maxOverlayIntensityH?: number;
+
   // Metadata
-  metaTitle?: string
-  metaAuthor?: string
-  metaCopyright?: string
-  metaLicense?: string
-  metaDescription?: string
-  metaCreationTime?: boolean
-  metaCustomKv?: string  // JSON encoded
+  metaTitle?: string;
+  metaAuthor?: string;
+  metaCopyright?: string;
+  metaLicense?: string;
+  metaDescription?: string;
+  metaCreationTime?: boolean;
+  metaCustomKv?: string; // JSON encoded
 }
 
 export interface EmbedOptions {
-  width: number
-  height: number
-  responsive: boolean
-  showBorder: boolean
-  includeLink: boolean
+  width: number;
+  height: number;
+  responsive: boolean;
+  showBorder: boolean;
+  includeLink: boolean;
 }
 
 // ============================================
@@ -230,7 +230,7 @@ export interface EmbedOptions {
  * Parse URL parameters into a config object
  */
 export function parseUrlParams(): Partial<ShareConfig> {
-  const params = new URLSearchParams(window.location.search)
+  const params = new URLSearchParams(window.location.search);
 
   return {
     data: params.get('data') || undefined,
@@ -258,14 +258,22 @@ export function parseUrlParams(): Partial<ShareConfig> {
     cornerRadius: params.get('radius') ? parseInt(params.get('radius')!, 10) : undefined,
     gradientType: params.get('grad') || undefined,
     // Gradient stops/angle - parse from URL
-    ...(params.get('gradStops') ? {
-      gradientStops: params.get('gradStops')!.split(',').reduce((acc, part, i, arr) => {
-        if (i % 2 === 0 && arr[i + 1]) {
-          acc.push({ color: `#${part}`, pos: parseFloat(arr[i + 1]) })
+    ...(params.get('gradStops')
+      ? {
+          gradientStops: params
+            .get('gradStops')!
+            .split(',')
+            .reduce(
+              (acc, part, i, arr) => {
+                if (i % 2 === 0 && arr[i + 1]) {
+                  acc.push({ color: `#${part}`, pos: parseFloat(arr[i + 1]) });
+                }
+                return acc;
+              },
+              [] as Array<{ color: string; pos: number }>
+            ),
         }
-        return acc
-      }, [] as Array<{ color: string; pos: number }>)
-    } : {}),
+      : {}),
     ...(params.get('gradAngle') ? { gradientAngle: parseInt(params.get('gradAngle')!, 10) } : {}),
     eyeOuterStyle: params.get('eyeOuter') || undefined,
     eyeInnerStyle: params.get('eyeInner') || undefined,
@@ -277,7 +285,9 @@ export function parseUrlParams(): Partial<ShareConfig> {
     pixelSnap: params.get('snap') || undefined,
     perModuleColorMode: params.get('modColor') || undefined,
     contrastGuard: params.get('cGuard') === '1',
-    minContrastRatio: params.get('minContrast') ? parseFloat(params.get('minContrast')!) : undefined,
+    minContrastRatio: params.get('minContrast')
+      ? parseFloat(params.get('minContrast')!)
+      : undefined,
     // Overlay
     mode: params.get('mode') || undefined,
     intensity: params.get('intensity') ? parseInt(params.get('intensity')!, 10) : undefined,
@@ -323,7 +333,9 @@ export function parseUrlParams(): Partial<ShareConfig> {
     // Dithering
     ditherKind: params.get('ditherKind') || undefined,
     diffusionKernel: params.get('diffusionKernel') || undefined,
-    ditherStrength: params.get('ditherStrength') ? parseInt(params.get('ditherStrength')!, 10) : undefined,
+    ditherStrength: params.get('ditherStrength')
+      ? parseInt(params.get('ditherStrength')!, 10)
+      : undefined,
     ditherSerpentine: params.get('serpentine') === '1',
     orderedMatrix: params.get('matrix') || undefined,
     blueNoiseTileSize: params.get('bnTile') ? parseInt(params.get('bnTile')!, 10) : undefined,
@@ -379,7 +391,9 @@ export function parseUrlParams(): Partial<ShareConfig> {
     // Safety
     safetyMode: params.get('safeMode') || undefined,
     safetyMinModulePx: params.get('safeMinPx') ? parseInt(params.get('safeMinPx')!, 10) : undefined,
-    safetyMinQuietZone: params.get('safeMinQz') ? parseInt(params.get('safeMinQz')!, 10) : undefined,
+    safetyMinQuietZone: params.get('safeMinQz')
+      ? parseInt(params.get('safeMinQz')!, 10)
+      : undefined,
     lockFinders: params.has('lockF') ? params.get('lockF') === '1' : undefined,
     lockTiming: params.has('lockT') ? params.get('lockT') === '1' : undefined,
     lockAlign: params.has('lockA') ? params.get('lockA') === '1' : undefined,
@@ -406,7 +420,7 @@ export function parseUrlParams(): Partial<ShareConfig> {
     watermarkOpacity: params.get('wmOpacity') ? parseInt(params.get('wmOpacity')!, 10) : undefined,
     watermarkBlend: params.get('wmBlend') || undefined,
     watermarkImageUrl: params.get('wmImg') || undefined,
-    
+
     // Animation
     animationPattern: params.get('animPattern') || undefined,
     animationFrames: params.get('animFrames') ? parseInt(params.get('animFrames')!, 10) : undefined,
@@ -415,586 +429,592 @@ export function parseUrlParams(): Partial<ShareConfig> {
 
     // Metadata
     metaTitle: params.get('metaTitle') ? decodeURIComponent(params.get('metaTitle')!) : undefined,
-    metaAuthor: params.get('metaAuthor') ? decodeURIComponent(params.get('metaAuthor')!) : undefined,
+    metaAuthor: params.get('metaAuthor')
+      ? decodeURIComponent(params.get('metaAuthor')!)
+      : undefined,
     metaCopyright: params.get('metaCopy') ? decodeURIComponent(params.get('metaCopy')!) : undefined,
     metaLicense: params.get('metaLic') ? decodeURIComponent(params.get('metaLic')!) : undefined,
-    metaDescription: params.get('metaDesc') ? decodeURIComponent(params.get('metaDesc')!) : undefined,
+    metaDescription: params.get('metaDesc')
+      ? decodeURIComponent(params.get('metaDesc')!)
+      : undefined,
     metaCreationTime: params.get('metaTime') === '1',
     metaCustomKv: params.get('metaKv') ? decodeURIComponent(params.get('metaKv')!) : undefined,
-    
+
     // Render palette
     palette: params.get('palette') ? decodeURIComponent(params.get('palette')!) : undefined,
     paletteMode: params.get('paletteMode') || undefined,
-    
+
     // Safety per-ECC limits
     maxOverlayIntensityL: params.get('maxIntL') ? parseInt(params.get('maxIntL')!, 10) : undefined,
     maxOverlayIntensityM: params.get('maxIntM') ? parseInt(params.get('maxIntM')!, 10) : undefined,
     maxOverlayIntensityQ: params.get('maxIntQ') ? parseInt(params.get('maxIntQ')!, 10) : undefined,
     maxOverlayIntensityH: params.get('maxIntH') ? parseInt(params.get('maxIntH')!, 10) : undefined,
-  }
+  };
 }
 
 /**
  * Build URL parameters from a config object
  */
 export function buildUrlParams(config: Partial<ShareConfig>): string {
-  const params = new URLSearchParams()
+  const params = new URLSearchParams();
 
   // Required
   if (config.data) {
-    params.set('data', config.data)
+    params.set('data', config.data);
   }
 
   // Language
   if (config.lang && config.lang !== 'en') {
-    params.set('lang', config.lang)
+    params.set('lang', config.lang);
   }
 
   // QR settings
   if (config.ec && config.ec !== 'H') {
-    params.set('ec', config.ec)
+    params.set('ec', config.ec);
   }
   if (config.version && config.version !== 0) {
-    params.set('v', config.version.toString())
+    params.set('v', config.version.toString());
   }
   if (config.size && config.size !== 20) {
-    params.set('size', config.size.toString())
+    params.set('size', config.size.toString());
   }
   if (config.margin !== undefined && config.margin !== 4) {
-    params.set('margin', config.margin.toString())
+    params.set('margin', config.margin.toString());
   }
   if (config.encodingMode && config.encodingMode !== 'auto') {
-    params.set('enc', config.encodingMode)
+    params.set('enc', config.encodingMode);
   }
   if (config.borderModulesExtra && config.borderModulesExtra !== 0) {
-    params.set('border', config.borderModulesExtra.toString())
+    params.set('border', config.borderModulesExtra.toString());
   }
   if (config.quietZoneMinEnforce === false) {
-    params.set('qzEnforce', '0')
+    params.set('qzEnforce', '0');
   }
 
   // Colors
   if (config.fg && config.fg !== '#000000') {
-    params.set('fg', config.fg.replace('#', ''))
+    params.set('fg', config.fg.replace('#', ''));
   }
   if (config.bg && config.bg !== '#ffffff') {
-    params.set('bg', config.bg.replace('#', ''))
+    params.set('bg', config.bg.replace('#', ''));
   }
   if (config.transparent) {
-    params.set('transparent', '1')
+    params.set('transparent', '1');
   }
 
   // Styles
   if (config.style && config.style !== 'square') {
-    params.set('style', config.style)
+    params.set('style', config.style);
   }
   if (config.finder && config.finder !== 'square') {
-    params.set('finder', config.finder)
+    params.set('finder', config.finder);
   }
   if (config.alignmentStyle && config.alignmentStyle !== 'match_finder') {
-    params.set('align', config.alignmentStyle)
+    params.set('align', config.alignmentStyle);
   }
   if (config.timingStyle && config.timingStyle !== 'match_module') {
-    params.set('timing', config.timingStyle)
+    params.set('timing', config.timingStyle);
   }
 
   // Render settings
   if (config.moduleGap !== undefined && config.moduleGap !== 0) {
-    params.set('gap', config.moduleGap.toString())
+    params.set('gap', config.moduleGap.toString());
   }
   if (config.gapMode && config.gapMode !== 'none') {
-    params.set('gapMode', config.gapMode)
+    params.set('gapMode', config.gapMode);
   }
   if (config.cornerRadius !== undefined && config.cornerRadius !== 0) {
-    params.set('radius', config.cornerRadius.toString())
+    params.set('radius', config.cornerRadius.toString());
   }
   if (config.gradientType && config.gradientType !== 'none') {
-    params.set('grad', config.gradientType)
+    params.set('grad', config.gradientType);
     // Also encode gradient stops and angle
     if (config.gradientStops && config.gradientStops.length > 0) {
-      const stopsStr = config.gradientStops.map(s => `${s.color.replace('#', '')},${s.pos}`).join(',')
-      params.set('gradStops', stopsStr)
+      const stopsStr = config.gradientStops
+        .map((s) => `${s.color.replace('#', '')},${s.pos}`)
+        .join(',');
+      params.set('gradStops', stopsStr);
     }
     if (config.gradientAngle !== undefined && config.gradientAngle !== 0) {
-      params.set('gradAngle', config.gradientAngle.toString())
+      params.set('gradAngle', config.gradientAngle.toString());
     }
   }
   if (config.eyeOuterStyle && config.eyeOuterStyle !== 'square') {
-    params.set('eyeOuter', config.eyeOuterStyle)
+    params.set('eyeOuter', config.eyeOuterStyle);
   }
   if (config.eyeInnerStyle && config.eyeInnerStyle !== 'square') {
-    params.set('eyeInner', config.eyeInnerStyle)
+    params.set('eyeInner', config.eyeInnerStyle);
   }
   if (config.eyeScale !== undefined && config.eyeScale !== 100) {
-    params.set('eyeScale', config.eyeScale.toString())
+    params.set('eyeScale', config.eyeScale.toString());
   }
   if (config.frameStyle && config.frameStyle !== 'none') {
-    params.set('frame', config.frameStyle)
+    params.set('frame', config.frameStyle);
   }
   if (config.frameText) {
-    params.set('frameText', encodeURIComponent(config.frameText))
+    params.set('frameText', encodeURIComponent(config.frameText));
   }
   if (config.dotRotation !== undefined && config.dotRotation !== 0) {
-    params.set('dotRot', config.dotRotation.toString())
+    params.set('dotRot', config.dotRotation.toString());
   }
   if (config.crispEdges === false) {
-    params.set('crisp', '0')
+    params.set('crisp', '0');
   }
   if (config.pixelSnap && config.pixelSnap !== 'floor') {
-    params.set('snap', config.pixelSnap)
+    params.set('snap', config.pixelSnap);
   }
   if (config.perModuleColorMode && config.perModuleColorMode !== 'solid') {
-    params.set('modColor', config.perModuleColorMode)
+    params.set('modColor', config.perModuleColorMode);
   }
   if (config.contrastGuard) {
-    params.set('cGuard', '1')
+    params.set('cGuard', '1');
   }
   if (config.minContrastRatio !== undefined && config.minContrastRatio !== 4.5) {
-    params.set('minContrast', config.minContrastRatio.toString())
+    params.set('minContrast', config.minContrastRatio.toString());
   }
   if (config.subpixelMode) {
-    params.set('subpixel', '1')
+    params.set('subpixel', '1');
   }
   if (config.subpixelGrid !== undefined && config.subpixelGrid !== 3) {
-    params.set('spGridNum', config.subpixelGrid.toString())
+    params.set('spGridNum', config.subpixelGrid.toString());
   }
 
   // Overlay
   if (config.mode && config.mode !== 'dithered') {
-    params.set('mode', config.mode)
+    params.set('mode', config.mode);
   }
   if (config.intensity !== undefined && config.intensity !== 100) {
-    params.set('intensity', config.intensity.toString())
+    params.set('intensity', config.intensity.toString());
   }
   if (config.logoSize !== undefined && config.logoSize !== 25) {
-    params.set('logoSize', config.logoSize.toString())
+    params.set('logoSize', config.logoSize.toString());
   }
   if (config.overlayUrl) {
-    params.set('img', config.overlayUrl)
+    params.set('img', config.overlayUrl);
   }
   if (config.overlayType && config.overlayType !== 'static') {
-    params.set('ovType', config.overlayType)
+    params.set('ovType', config.overlayType);
   }
   if (config.overlayFramePick && config.overlayFramePick !== 'all') {
-    params.set('ovFramePick', config.overlayFramePick)
+    params.set('ovFramePick', config.overlayFramePick);
   }
   if (config.cropEnabled) {
-    params.set('cropEn', '1')
+    params.set('cropEn', '1');
   }
   if (config.cropX !== undefined && config.cropX !== 0.5) {
-    params.set('cropX', config.cropX.toString())
+    params.set('cropX', config.cropX.toString());
   }
   if (config.cropY !== undefined && config.cropY !== 0.5) {
-    params.set('cropY', config.cropY.toString())
+    params.set('cropY', config.cropY.toString());
   }
   if (config.cropSize !== undefined && config.cropSize !== 1) {
-    params.set('cropSize', config.cropSize.toString())
+    params.set('cropSize', config.cropSize.toString());
   }
   if (config.gifUseFrameDelays === false) {
-    params.set('gifDelays', '0')
+    params.set('gifDelays', '0');
   }
   if (config.gifMaxFps !== undefined && config.gifMaxFps !== 30) {
-    params.set('gifMaxFps', config.gifMaxFps.toString())
+    params.set('gifMaxFps', config.gifMaxFps.toString());
   }
   if (config.gifDisposalHandling && config.gifDisposalHandling !== 'respect') {
-    params.set('gifDispH', config.gifDisposalHandling)
+    params.set('gifDispH', config.gifDisposalHandling);
   }
   if (config.fit && config.fit !== 'cover') {
-    params.set('fit', config.fit)
+    params.set('fit', config.fit);
   }
   if (config.rotate !== undefined && config.rotate !== 0) {
-    params.set('rot', config.rotate.toString())
+    params.set('rot', config.rotate.toString());
   }
   if (config.flipX) {
-    params.set('flipX', '1')
+    params.set('flipX', '1');
   }
   if (config.flipY) {
-    params.set('flipY', '1')
+    params.set('flipY', '1');
   }
   if (config.preserveFinders === false) {
-    params.set('keepFinders', '0')
+    params.set('keepFinders', '0');
   }
   if (config.preserveTiming) {
-    params.set('keepTiming', '1')
+    params.set('keepTiming', '1');
   }
   if (config.preserveAlignment) {
-    params.set('keepAlign', '1')
+    params.set('keepAlign', '1');
   }
   if (config.protectFormatInfo) {
-    params.set('protectFmt', '1')
+    params.set('protectFmt', '1');
   }
   if (config.protectVersionInfo) {
-    params.set('protectVer', '1')
+    params.set('protectVer', '1');
   }
   if (config.eccAwareEnabled) {
-    params.set('eccAware', '1')
+    params.set('eccAware', '1');
   }
   if (config.eccAwareRiskBudget !== undefined && config.eccAwareRiskBudget !== 50) {
-    params.set('eccRisk', config.eccAwareRiskBudget.toString())
+    params.set('eccRisk', config.eccAwareRiskBudget.toString());
   }
   if (config.eccAwareWeightMap && config.eccAwareWeightMap !== 'distance_to_finders') {
-    params.set('eccMap', config.eccAwareWeightMap)
+    params.set('eccMap', config.eccAwareWeightMap);
   }
 
   // Overlay preprocessing
   if (config.colorMode && config.colorMode !== 'color') {
-    params.set('colorMode', config.colorMode)
+    params.set('colorMode', config.colorMode);
   }
   if (config.brightness !== undefined && config.brightness !== 0) {
-    params.set('brightness', config.brightness.toString())
+    params.set('brightness', config.brightness.toString());
   }
   if (config.contrast !== undefined && config.contrast !== 0) {
-    params.set('contrast', config.contrast.toString())
+    params.set('contrast', config.contrast.toString());
   }
   if (config.gamma !== undefined && config.gamma !== 1) {
-    params.set('gamma', config.gamma.toString())
+    params.set('gamma', config.gamma.toString());
   }
   if (config.saturation !== undefined && config.saturation !== 0) {
-    params.set('saturation', config.saturation.toString())
+    params.set('saturation', config.saturation.toString());
   }
   if (config.hue !== undefined && config.hue !== 0) {
-    params.set('hue', config.hue.toString())
+    params.set('hue', config.hue.toString());
   }
   if (config.blur !== undefined && config.blur !== 0) {
-    params.set('blur', config.blur.toString())
+    params.set('blur', config.blur.toString());
   }
   if (config.sharpen !== undefined && config.sharpen !== 0) {
-    params.set('sharpen', config.sharpen.toString())
+    params.set('sharpen', config.sharpen.toString());
   }
   if (config.posterize !== undefined && config.posterize !== 0) {
-    params.set('posterize', config.posterize.toString())
+    params.set('posterize', config.posterize.toString());
   }
   if (config.threshold !== undefined && config.threshold !== 128) {
-    params.set('threshold', config.threshold.toString())
+    params.set('threshold', config.threshold.toString());
   }
   if (config.edge && config.edge !== 'off') {
-    params.set('edge', config.edge)
+    params.set('edge', config.edge);
   }
   if (config.invert) {
-    params.set('invert', '1')
+    params.set('invert', '1');
   }
 
   // Dithering
   if (config.ditherKind && config.ditherKind !== 'error_diffusion') {
-    params.set('ditherKind', config.ditherKind)
+    params.set('ditherKind', config.ditherKind);
   }
   if (config.diffusionKernel && config.diffusionKernel !== 'floyd_steinberg') {
-    params.set('diffusionKernel', config.diffusionKernel)
+    params.set('diffusionKernel', config.diffusionKernel);
   }
   if (config.ditherStrength !== undefined && config.ditherStrength !== 50) {
-    params.set('ditherStrength', config.ditherStrength.toString())
+    params.set('ditherStrength', config.ditherStrength.toString());
   }
   if (config.ditherSerpentine) {
-    params.set('serpentine', '1')
+    params.set('serpentine', '1');
   }
   if (config.orderedMatrix && config.orderedMatrix !== 'bayer4') {
-    params.set('matrix', config.orderedMatrix)
+    params.set('matrix', config.orderedMatrix);
   }
   if (config.blueNoiseTileSize !== undefined && config.blueNoiseTileSize !== 64) {
-    params.set('bnTile', config.blueNoiseTileSize.toString())
+    params.set('bnTile', config.blueNoiseTileSize.toString());
   }
   if (config.blueNoiseSeed !== undefined && config.blueNoiseSeed !== 0) {
-    params.set('bnSeed', config.blueNoiseSeed.toString())
+    params.set('bnSeed', config.blueNoiseSeed.toString());
   }
   if (config.colorDither && config.colorDither !== 'none') {
-    params.set('colorDither', config.colorDither)
+    params.set('colorDither', config.colorDither);
   }
 
   // Subpixel
   if (config.subpixelGridSize && config.subpixelGridSize !== '3x3') {
-    params.set('spGrid', config.subpixelGridSize)
+    params.set('spGrid', config.subpixelGridSize);
   }
   if (config.subpixelCenterRule && config.subpixelCenterRule !== 'strict') {
-    params.set('spCenter', config.subpixelCenterRule)
+    params.set('spCenter', config.subpixelCenterRule);
   }
   if (config.subpixelNeutralColor && config.subpixelNeutralColor !== '#808080') {
-    params.set('spNeutral', config.subpixelNeutralColor.replace('#', ''))
+    params.set('spNeutral', config.subpixelNeutralColor.replace('#', ''));
   }
   if (config.subpixelFinderOverride && config.subpixelFinderOverride !== 'solid') {
-    params.set('spFinder', config.subpixelFinderOverride)
+    params.set('spFinder', config.subpixelFinderOverride);
   }
 
   // Halftone
   if (config.halftoneCell && config.halftoneCell !== 'per_module') {
-    params.set('htCell', config.halftoneCell)
+    params.set('htCell', config.halftoneCell);
   }
   if (config.halftoneDotShape && config.halftoneDotShape !== 'circle') {
-    params.set('htDot', config.halftoneDotShape)
+    params.set('htDot', config.halftoneDotShape);
   }
   if (config.brightnessCurve && config.brightnessCurve !== 'linear') {
-    params.set('htCurve', config.brightnessCurve)
+    params.set('htCurve', config.brightnessCurve);
   }
   if (config.duotoneColor1 && config.duotoneColor1 !== '#000000') {
-    params.set('duo1', config.duotoneColor1.replace('#', ''))
+    params.set('duo1', config.duotoneColor1.replace('#', ''));
   }
   if (config.duotoneColor2 && config.duotoneColor2 !== '#ffffff') {
-    params.set('duo2', config.duotoneColor2.replace('#', ''))
+    params.set('duo2', config.duotoneColor2.replace('#', ''));
   }
 
   // Animation
   if (config.speed !== undefined && config.speed !== 100) {
-    params.set('speed', config.speed.toString())
+    params.set('speed', config.speed.toString());
   }
   if (config.loop === false) {
-    params.set('loop', '0')
+    params.set('loop', '0');
   }
   if (config.reverse) {
-    params.set('reverse', '1')
+    params.set('reverse', '1');
   }
   if (config.bounce) {
-    params.set('bounce', '1')
+    params.set('bounce', '1');
   }
   if (config.startFrame !== undefined && config.startFrame !== 0) {
-    params.set('startF', config.startFrame.toString())
+    params.set('startF', config.startFrame.toString());
   }
   if (config.maxFrames !== undefined && config.maxFrames !== 0) {
-    params.set('maxF', config.maxFrames.toString())
+    params.set('maxF', config.maxFrames.toString());
   }
   if (config.frameStep !== undefined && config.frameStep !== 1) {
-    params.set('stepF', config.frameStep.toString())
+    params.set('stepF', config.frameStep.toString());
   }
   if (config.interpolate && config.interpolate !== 'none') {
-    params.set('interp', config.interpolate)
+    params.set('interp', config.interpolate);
   }
   if (config.temporalDither && config.temporalDither !== 'off') {
-    params.set('tempDither', config.temporalDither)
+    params.set('tempDither', config.temporalDither);
   }
   // Note: 'pattern' refers to animation pattern (pulse/wave/etc), NOT module style pattern
   // Using 'animPattern' param name which matches the animation pattern concept
   if (config.pattern && config.pattern !== 'none') {
-    params.set('animPattern', config.pattern)
+    params.set('animPattern', config.pattern);
   }
   if (config.moduleJitter !== undefined && config.moduleJitter !== 0) {
-    params.set('jitter', config.moduleJitter.toString())
+    params.set('jitter', config.moduleJitter.toString());
   }
   if (config.colorCycle) {
-    params.set('colorCycle', '1')
+    params.set('colorCycle', '1');
   }
   if (config.seed !== undefined && config.seed !== 0) {
-    params.set('seed', config.seed.toString())
+    params.set('seed', config.seed.toString());
   }
   if (config.easing && config.easing !== 'linear') {
-    params.set('easing', config.easing)
+    params.set('easing', config.easing);
   }
 
   // Output
   if (config.width && config.width !== 400) {
-    params.set('w', config.width.toString())
+    params.set('w', config.width.toString());
   }
   if (config.height && config.height !== 400) {
-    params.set('h', config.height.toString())
+    params.set('h', config.height.toString());
   }
   if (config.format && config.format !== 'gif') {
-    params.set('format', config.format)
+    params.set('format', config.format);
   }
   if (config.quality !== undefined && config.quality !== 0.9) {
-    params.set('quality', config.quality.toString())
+    params.set('quality', config.quality.toString());
   }
   if (config.jpegQuality !== undefined && config.jpegQuality !== 92) {
-    params.set('jpegQ', config.jpegQuality.toString())
+    params.set('jpegQ', config.jpegQuality.toString());
   }
   if (config.webpQuality !== undefined && config.webpQuality !== 90) {
-    params.set('webpQ', config.webpQuality.toString())
+    params.set('webpQ', config.webpQuality.toString());
   }
   if (config.gifColors !== undefined && config.gifColors !== 256) {
-    params.set('gifColors', config.gifColors.toString())
+    params.set('gifColors', config.gifColors.toString());
   }
   if (config.filename && config.filename !== 'anqr-qrcode') {
-    params.set('fname', encodeURIComponent(config.filename))
+    params.set('fname', encodeURIComponent(config.filename));
   }
   if (config.gifPaletteSize !== undefined && config.gifPaletteSize !== 256) {
-    params.set('gifPal', config.gifPaletteSize.toString())
+    params.set('gifPal', config.gifPaletteSize.toString());
   }
   if (config.gifQuantizer && config.gifQuantizer !== 'median_cut') {
-    params.set('gifQuant', config.gifQuantizer)
+    params.set('gifQuant', config.gifQuantizer);
   }
   if (config.gifDither && config.gifDither !== 'floyd') {
-    params.set('gifDith', config.gifDither)
+    params.set('gifDith', config.gifDither);
   }
   if (config.gifDisposal && config.gifDisposal !== 'restore_background') {
-    params.set('gifDisp', config.gifDisposal)
+    params.set('gifDisp', config.gifDisposal);
   }
   if (config.svgTrueVector) {
-    params.set('svgVec', '1')
+    params.set('svgVec', '1');
   }
   if (config.dpi !== undefined && config.dpi !== 72) {
-    params.set('dpi', config.dpi.toString())
+    params.set('dpi', config.dpi.toString());
   }
   if (config.includeQuietZone === false) {
-    params.set('inclQz', '0')
+    params.set('inclQz', '0');
   }
   if (config.bgOverride && config.bgOverride !== '') {
-    params.set('bgOver', config.bgOverride.replace('#', ''))
+    params.set('bgOver', config.bgOverride.replace('#', ''));
   }
   if (config.gifTransparentColor && config.gifTransparentColor !== '') {
-    params.set('gifTrans', config.gifTransparentColor.replace('#', ''))
+    params.set('gifTrans', config.gifTransparentColor.replace('#', ''));
   }
   if (config.svgShapePrecision && config.svgShapePrecision !== 'pixel') {
-    params.set('svgPrec', config.svgShapePrecision)
+    params.set('svgPrec', config.svgShapePrecision);
   }
   if (config.svgEmbedRasterOverlay === false) {
-    params.set('svgEmbed', '0')
+    params.set('svgEmbed', '0');
   }
   if (config.formatExtra && config.formatExtra !== 'none') {
-    params.set('fmtExtra', config.formatExtra)
+    params.set('fmtExtra', config.formatExtra);
   }
 
   // Auto-render flag
   // Safety
   if (config.safetyMode && config.safetyMode !== 'off') {
-    params.set('safeMode', config.safetyMode)
+    params.set('safeMode', config.safetyMode);
   }
   if (config.safetyMinModulePx !== undefined && config.safetyMinModulePx !== 2) {
-    params.set('safeMinPx', config.safetyMinModulePx.toString())
+    params.set('safeMinPx', config.safetyMinModulePx.toString());
   }
   if (config.safetyMinQuietZone !== undefined && config.safetyMinQuietZone !== 4) {
-    params.set('safeMinQz', config.safetyMinQuietZone.toString())
+    params.set('safeMinQz', config.safetyMinQuietZone.toString());
   }
   if (config.lockFinders === false) {
-    params.set('lockF', '0')
+    params.set('lockF', '0');
   }
   if (config.lockTiming === false) {
-    params.set('lockT', '0')
+    params.set('lockT', '0');
   }
   if (config.lockAlign === false) {
-    params.set('lockA', '0')
+    params.set('lockA', '0');
   }
   if (config.lockFormat === false) {
-    params.set('lockFmt', '0')
+    params.set('lockFmt', '0');
   }
   if (config.lockVersion === false) {
-    params.set('lockV', '0')
+    params.set('lockV', '0');
   }
 
   // QA
   if (config.qaContrastCheck) {
-    params.set('qaContrast', '1')
+    params.set('qaContrast', '1');
   }
   if (config.qaSimulateBlur && config.qaSimulateBlur !== 0) {
-    params.set('qaBlur', config.qaSimulateBlur.toString())
+    params.set('qaBlur', config.qaSimulateBlur.toString());
   }
   if (config.qaSimulateNoise && config.qaSimulateNoise !== 0) {
-    params.set('qaNoise', config.qaSimulateNoise.toString())
+    params.set('qaNoise', config.qaSimulateNoise.toString());
   }
   if (config.qaSimulateRotation && config.qaSimulateRotation !== 0) {
-    params.set('qaRot', config.qaSimulateRotation.toString())
+    params.set('qaRot', config.qaSimulateRotation.toString());
   }
   if (config.qaShowHeatmap) {
-    params.set('qaHeatmap', '1')
+    params.set('qaHeatmap', '1');
   }
 
   // Auto-tuning
   if (config.autoPickVersion === false) {
-    params.set('autoVer', '0')
+    params.set('autoVer', '0');
   }
   if (config.autoPickEcc) {
-    params.set('autoEcc', '1')
+    params.set('autoEcc', '1');
   }
   if (config.autoReduceIntensity) {
-    params.set('autoReduce', '1')
+    params.set('autoReduce', '1');
   }
 
   // Watermark
   if (config.watermarkEnabled) {
-    params.set('wmEn', '1')
+    params.set('wmEn', '1');
   }
   if (config.watermarkKind && config.watermarkKind !== 'text') {
-    params.set('wmKind', config.watermarkKind)
+    params.set('wmKind', config.watermarkKind);
   }
   if (config.watermarkText) {
-    params.set('wmText', encodeURIComponent(config.watermarkText))
+    params.set('wmText', encodeURIComponent(config.watermarkText));
   }
   if (config.watermarkPosition && config.watermarkPosition !== 'center') {
-    params.set('wmPos', config.watermarkPosition)
+    params.set('wmPos', config.watermarkPosition);
   }
   if (config.watermarkOpacity !== undefined && config.watermarkOpacity !== 50) {
-    params.set('wmOpacity', config.watermarkOpacity.toString())
+    params.set('wmOpacity', config.watermarkOpacity.toString());
   }
   if (config.watermarkBlend && config.watermarkBlend !== 'normal') {
-    params.set('wmBlend', config.watermarkBlend)
+    params.set('wmBlend', config.watermarkBlend);
   }
   if (config.watermarkImageUrl) {
-    params.set('wmImg', config.watermarkImageUrl)
+    params.set('wmImg', config.watermarkImageUrl);
   }
 
   // Animation (for animated GIF via server)
   if (config.animationPattern && config.animationPattern !== 'none') {
-    params.set('animPattern', config.animationPattern)
+    params.set('animPattern', config.animationPattern);
   }
   if (config.animationFrames !== undefined && config.animationFrames !== 24) {
-    params.set('animFrames', config.animationFrames.toString())
+    params.set('animFrames', config.animationFrames.toString());
   }
   if (config.animationSpeed !== undefined && config.animationSpeed !== 100) {
-    params.set('animSpeed', config.animationSpeed.toString())
+    params.set('animSpeed', config.animationSpeed.toString());
   }
   if (config.animationSeed !== undefined && config.animationSeed !== 0) {
-    params.set('animSeed', config.animationSeed.toString())
+    params.set('animSeed', config.animationSeed.toString());
   }
 
   // Metadata
   if (config.metaTitle) {
-    params.set('metaTitle', encodeURIComponent(config.metaTitle))
+    params.set('metaTitle', encodeURIComponent(config.metaTitle));
   }
   if (config.metaAuthor) {
-    params.set('metaAuthor', encodeURIComponent(config.metaAuthor))
+    params.set('metaAuthor', encodeURIComponent(config.metaAuthor));
   }
   if (config.metaCopyright) {
-    params.set('metaCopy', encodeURIComponent(config.metaCopyright))
+    params.set('metaCopy', encodeURIComponent(config.metaCopyright));
   }
   if (config.metaLicense) {
-    params.set('metaLic', encodeURIComponent(config.metaLicense))
+    params.set('metaLic', encodeURIComponent(config.metaLicense));
   }
   if (config.metaDescription) {
-    params.set('metaDesc', encodeURIComponent(config.metaDescription))
+    params.set('metaDesc', encodeURIComponent(config.metaDescription));
   }
   if (config.metaCreationTime) {
-    params.set('metaTime', '1')
+    params.set('metaTime', '1');
   }
   if (config.metaCustomKv) {
-    params.set('metaKv', encodeURIComponent(config.metaCustomKv))
+    params.set('metaKv', encodeURIComponent(config.metaCustomKv));
   }
 
   // Render palette
   if (config.palette) {
-    params.set('palette', encodeURIComponent(config.palette))
+    params.set('palette', encodeURIComponent(config.palette));
   }
   if (config.paletteMode && config.paletteMode !== 'position') {
-    params.set('paletteMode', config.paletteMode)
+    params.set('paletteMode', config.paletteMode);
   }
 
   // Safety per-ECC limits
   if (config.maxOverlayIntensityL !== undefined && config.maxOverlayIntensityL !== 100) {
-    params.set('maxIntL', config.maxOverlayIntensityL.toString())
+    params.set('maxIntL', config.maxOverlayIntensityL.toString());
   }
   if (config.maxOverlayIntensityM !== undefined && config.maxOverlayIntensityM !== 100) {
-    params.set('maxIntM', config.maxOverlayIntensityM.toString())
+    params.set('maxIntM', config.maxOverlayIntensityM.toString());
   }
   if (config.maxOverlayIntensityQ !== undefined && config.maxOverlayIntensityQ !== 100) {
-    params.set('maxIntQ', config.maxOverlayIntensityQ.toString())
+    params.set('maxIntQ', config.maxOverlayIntensityQ.toString());
   }
   if (config.maxOverlayIntensityH !== undefined && config.maxOverlayIntensityH !== 100) {
-    params.set('maxIntH', config.maxOverlayIntensityH.toString())
+    params.set('maxIntH', config.maxOverlayIntensityH.toString());
   }
 
-  return params.toString()
+  return params.toString();
 }
 
 /**
  * Update the browser URL without reloading
  */
 export function updateBrowserUrl(config: Partial<ShareConfig>): void {
-  const params = buildUrlParams(config)
-  const newUrl = window.location.pathname + (params ? '?' + params : '')
-  window.history.replaceState({}, '', newUrl)
+  const params = buildUrlParams(config);
+  const newUrl = window.location.pathname + (params ? `?${params}` : '');
+  window.history.replaceState({}, '', newUrl);
 }
 
 /**
  * Get the full shareable URL
  */
 export function getShareableUrl(config: Partial<ShareConfig>, baseUrl?: string): string {
-  const base = baseUrl || window.location.origin + window.location.pathname
-  const params = buildUrlParams(config)
-  return params ? `${base}?${params}` : base
+  const base = baseUrl || window.location.origin + window.location.pathname;
+  const params = buildUrlParams(config);
+  return params ? `${base}?${params}` : base;
 }
 
 // ============================================
@@ -1016,24 +1036,29 @@ export function generateImageEmbed(
     responsive: options.responsive ?? false,
     showBorder: options.showBorder ?? false,
     includeLink: options.includeLink ?? false,
-  }
+  };
 
   // Convert shareable URL to image API URL with proper dimensions
-  const imageUrl = convertToImageApiUrl(shareableUrl, opts.width, opts.width !== opts.height ? opts.width : undefined, opts.width !== opts.height ? opts.height : undefined)
+  const imageUrl = convertToImageApiUrl(
+    shareableUrl,
+    opts.width,
+    opts.width !== opts.height ? opts.width : undefined,
+    opts.width !== opts.height ? opts.height : undefined
+  );
 
   const style = opts.responsive
     ? 'max-width: 100%; height: auto;'
-    : `width: ${opts.width}px; height: ${opts.height}px;`
-  
-  const border = opts.showBorder ? ' border: 1px solid #ccc;' : ''
+    : `width: ${opts.width}px; height: ${opts.height}px;`;
 
-  const imgTag = `<img src="${imageUrl}" alt="${alt}" style="${style}${border}" />`
+  const border = opts.showBorder ? ' border: 1px solid #ccc;' : '';
+
+  const imgTag = `<img src="${imageUrl}" alt="${alt}" style="${style}${border}" />`;
 
   if (opts.includeLink) {
-    return `<a href="${shareableUrl}" target="_blank">${imgTag}</a>`
+    return `<a href="${shareableUrl}" target="_blank">${imgTag}</a>`;
   }
 
-  return imgTag
+  return imgTag;
 }
 
 /**
@@ -1045,127 +1070,203 @@ export function generateImageEmbed(
  * @param height - Optional explicit height (overrides size)
  */
 export function convertToImageApiUrl(
-  shareableUrl: string, 
+  shareableUrl: string,
   size: number = 200,
   width?: number,
   height?: number
 ): string {
   try {
-    const url = new URL(shareableUrl)
-    const params = url.searchParams
-    
+    const url = new URL(shareableUrl);
+    const params = url.searchParams;
+
     // Build image API URL with supported parameters
-    const imageParams = new URLSearchParams()
-    
+    const imageParams = new URLSearchParams();
+
     // Required: data
-    const data = params.get('data')
+    const data = params.get('data');
     if (data) {
-      imageParams.set('data', data)
+      imageParams.set('data', data);
     }
-    
+
     // Output dimensions: use explicit params > URL params > size argument
-    const urlWidth = params.get('w')
-    const urlHeight = params.get('h')
-    const finalWidth = width ?? (urlWidth ? parseInt(urlWidth, 10) : null)
-    const finalHeight = height ?? (urlHeight ? parseInt(urlHeight, 10) : null)
-    
+    const urlWidth = params.get('w');
+    const urlHeight = params.get('h');
+    const finalWidth = width ?? (urlWidth ? parseInt(urlWidth, 10) : null);
+    const finalHeight = height ?? (urlHeight ? parseInt(urlHeight, 10) : null);
+
     // If either w or h is specified, use w/h params; otherwise use size
     if (finalWidth || finalHeight) {
       // Use w/h - default missing dimension to the other or to size
-      imageParams.set('w', (finalWidth ?? finalHeight ?? size).toString())
-      imageParams.set('h', (finalHeight ?? finalWidth ?? size).toString())
+      imageParams.set('w', (finalWidth ?? finalHeight ?? size).toString());
+      imageParams.set('h', (finalHeight ?? finalWidth ?? size).toString());
     } else {
-      imageParams.set('size', size.toString())
+      imageParams.set('size', size.toString());
     }
-    
+
     // All parameters supported by /api/qr that can be passed through directly
     // Note: w/h are handled separately above, not included here to avoid duplicates
     const passThroughParams = [
       // Colors
-      'fg', 'bg', 'transparent',
+      'fg',
+      'bg',
+      'transparent',
       // QR settings
-      'ec', 'margin', 'enc', 'v', 'border',
+      'ec',
+      'margin',
+      'enc',
+      'v',
+      'border',
       // Rendering options
-      'crisp', 'snap', 'modColor', 'cGuard', 'minContrast',
+      'crisp',
+      'snap',
+      'modColor',
+      'cGuard',
+      'minContrast',
       // Module styling
-      'style', 'finder', 'align', 'timing', 'eyeOuter', 'eyeInner', 'eyeScale',
+      'style',
+      'finder',
+      'align',
+      'timing',
+      'eyeOuter',
+      'eyeInner',
+      'eyeScale',
       // Rendering
-      'radius', 'gap', 'gapMode', 'dotRot',
+      'radius',
+      'gap',
+      'gapMode',
+      'dotRot',
       // Frame
-      'frame', 'frameText',
+      'frame',
+      'frameText',
       // Gradient
-      'grad', 'gradAngle', 'gradStops',
+      'grad',
+      'gradAngle',
+      'gradStops',
       // Overlay
-      'img', 'mode', 'intensity', 'colorMode', 'logoSize',
+      'img',
+      'mode',
+      'intensity',
+      'colorMode',
+      'logoSize',
       // Protection settings
-      'keepFinders', 'keepTiming', 'keepAlign', 'protectFmt', 'protectVer',
+      'keepFinders',
+      'keepTiming',
+      'keepAlign',
+      'protectFmt',
+      'protectVer',
       // ECC-aware
-      'eccAware', 'eccRisk', 'eccMap',
+      'eccAware',
+      'eccRisk',
+      'eccMap',
       // Overlay preprocessing
-      'brightness', 'contrast', 'gamma', 'saturation', 'hue', 'invert',
-      'blur', 'sharpen', 'posterize', 'threshold', 'edge',
-      'fit', 'rot', 'flipX', 'flipY',
+      'brightness',
+      'contrast',
+      'gamma',
+      'saturation',
+      'hue',
+      'invert',
+      'blur',
+      'sharpen',
+      'posterize',
+      'threshold',
+      'edge',
+      'fit',
+      'rot',
+      'flipX',
+      'flipY',
       // Dithering
-      'ditherKind', 'diffusionKernel', 'ditherStrength', 'serpentine',
-      'matrix', 'bnTile', 'bnSeed', 'colorDither',
+      'ditherKind',
+      'diffusionKernel',
+      'ditherStrength',
+      'serpentine',
+      'matrix',
+      'bnTile',
+      'bnSeed',
+      'colorDither',
       // Subpixel
-      'spGrid', 'spCenter', 'spNeutral', 'spFinder',
+      'spGrid',
+      'spCenter',
+      'spNeutral',
+      'spFinder',
       // Halftone
-      'htCell', 'htDot', 'htCurve', 'duo1', 'duo2',
+      'htCell',
+      'htDot',
+      'htCurve',
+      'duo1',
+      'duo2',
       // Palette
-      'palette', 'paletteMode',
+      'palette',
+      'paletteMode',
       // Safety per-ECC limits
-      'maxIntL', 'maxIntM', 'maxIntQ', 'maxIntH',
+      'maxIntL',
+      'maxIntM',
+      'maxIntQ',
+      'maxIntH',
       // Output format
-      'format', 'quality', 'dpi',
+      'format',
+      'quality',
+      'dpi',
       // Watermark
-      'wmEn', 'wmKind', 'wmText', 'wmPos', 'wmOpacity', 'wmBlend',
+      'wmEn',
+      'wmKind',
+      'wmText',
+      'wmPos',
+      'wmOpacity',
+      'wmBlend',
       // Metadata
-      'metaTitle', 'metaAuthor', 'metaCopy', 'metaDesc',
+      'metaTitle',
+      'metaAuthor',
+      'metaCopy',
+      'metaDesc',
       // Animation (for animated GIF)
-      'animPattern', 'animFrames', 'animSpeed', 'animSeed',
+      'animPattern',
+      'animFrames',
+      'animSpeed',
+      'animSeed',
       // Watermark image URL
       'wmImg',
       // Additional params
-      'subpixel', 'spGridNum', 'jpegQ', 'webpQ', 'gifColors', 'easing',
-    ]
-    
+      'subpixel',
+      'spGridNum',
+      'jpegQ',
+      'webpQ',
+      'gifColors',
+      'easing',
+    ];
+
     for (const key of passThroughParams) {
-      const val = params.get(key)
+      const val = params.get(key);
       if (val) {
-        imageParams.set(key, val)
+        imageParams.set(key, val);
       }
     }
-    
-    return `${url.origin}/api/qr?${imageParams.toString()}`
+
+    return `${url.origin}/api/qr?${imageParams.toString()}`;
   } catch {
     // Fallback: use the data parameter with default origin
-    return `https://anqr.link/api/qr?data=${encodeURIComponent(shareableUrl)}&size=${size}`
+    return `https://anqr.link/api/qr?data=${encodeURIComponent(shareableUrl)}&size=${size}`;
   }
 }
 
 /**
  * Generate iframe embed code
  */
-export function generateIframeEmbed(
-  url: string,
-  options: Partial<EmbedOptions> = {}
-): string {
+export function generateIframeEmbed(url: string, options: Partial<EmbedOptions> = {}): string {
   const opts: EmbedOptions = {
     width: options.width ?? 300,
     height: options.height ?? 300,
     responsive: options.responsive ?? false,
     showBorder: options.showBorder ?? false,
     includeLink: options.includeLink ?? false,
-  }
+  };
 
   const style = opts.responsive
     ? 'width: 100%; aspect-ratio: 1;'
-    : `width: ${opts.width}px; height: ${opts.height}px;`
-  
-  const border = opts.showBorder ? ' border: 1px solid #ccc;' : ' border: none;'
+    : `width: ${opts.width}px; height: ${opts.height}px;`;
 
-  return `<iframe src="${url}" style="${style}${border}" loading="lazy" title="QR Code"></iframe>`
+  const border = opts.showBorder ? ' border: 1px solid #ccc;' : ' border: none;';
+
+  return `<iframe src="${url}" style="${style}${border}" loading="lazy" title="QR Code"></iframe>`;
 }
 
 /**
@@ -1179,21 +1280,18 @@ export function generateMarkdownEmbed(
   width?: number,
   height?: number
 ): string {
-  const imageUrl = convertToImageApiUrl(shareableUrl, size, width, height)
-  return `![${alt}](${imageUrl})`
+  const imageUrl = convertToImageApiUrl(shareableUrl, size, width, height);
+  return `![${alt}](${imageUrl})`;
 }
 
 /**
  * Generate BBCode embed
  */
-export function generateBBCodeEmbed(
-  imageUrl: string,
-  linkUrl?: string
-): string {
+export function generateBBCodeEmbed(imageUrl: string, linkUrl?: string): string {
   if (linkUrl) {
-    return `[url=${linkUrl}][img]${imageUrl}[/img][/url]`
+    return `[url=${linkUrl}][img]${imageUrl}[/img][/url]`;
   }
-  return `[img]${imageUrl}[/img]`
+  return `[img]${imageUrl}[/img]`;
 }
 
 // ============================================
@@ -1207,8 +1305,8 @@ export function getSocialShareUrls(
   url: string,
   title: string = 'Check out this QR code!'
 ): Record<string, string> {
-  const encodedUrl = encodeURIComponent(url)
-  const encodedTitle = encodeURIComponent(title)
+  const encodedUrl = encodeURIComponent(url);
+  const encodedTitle = encodeURIComponent(title);
 
   return {
     twitter: `https://twitter.com/intent/tweet?url=${encodedUrl}&text=${encodedTitle}`,
@@ -1218,7 +1316,7 @@ export function getSocialShareUrls(
     email: `mailto:?subject=${encodedTitle}&body=${encodedUrl}`,
     whatsapp: `https://wa.me/?text=${encodedTitle}%20${encodedUrl}`,
     telegram: `https://t.me/share/url?url=${encodedUrl}&text=${encodedTitle}`,
-  }
+  };
 }
 
 /**
@@ -1226,24 +1324,24 @@ export function getSocialShareUrls(
  */
 export async function copyToClipboard(text: string): Promise<boolean> {
   try {
-    await navigator.clipboard.writeText(text)
-    return true
-  } catch (err) {
+    await navigator.clipboard.writeText(text);
+    return true;
+  } catch (_err) {
     // Fallback for older browsers
-    const textarea = document.createElement('textarea')
-    textarea.value = text
-    textarea.style.position = 'fixed'
-    textarea.style.opacity = '0'
-    document.body.appendChild(textarea)
-    textarea.select()
-    
+    const textarea = document.createElement('textarea');
+    textarea.value = text;
+    textarea.style.position = 'fixed';
+    textarea.style.opacity = '0';
+    document.body.appendChild(textarea);
+    textarea.select();
+
     try {
-      document.execCommand('copy')
-      return true
-    } catch (e) {
-      return false
+      document.execCommand('copy');
+      return true;
+    } catch (_e) {
+      return false;
     } finally {
-      document.body.removeChild(textarea)
+      document.body.removeChild(textarea);
     }
   }
 }
@@ -1254,17 +1352,15 @@ export async function copyToClipboard(text: string): Promise<boolean> {
 export async function copyImageToClipboard(canvas: HTMLCanvasElement): Promise<boolean> {
   try {
     const blob = await new Promise<Blob | null>((resolve) => {
-      canvas.toBlob(resolve, 'image/png')
-    })
+      canvas.toBlob(resolve, 'image/png');
+    });
 
-    if (!blob) return false
+    if (!blob) return false;
 
-    await navigator.clipboard.write([
-      new ClipboardItem({ 'image/png': blob })
-    ])
-    return true
-  } catch (err) {
-    return false
+    await navigator.clipboard.write([new ClipboardItem({ 'image/png': blob })]);
+    return true;
+  } catch (_err) {
+    return false;
   }
 }
 
@@ -1280,8 +1376,9 @@ export function canvasToDataUrl(
   format: 'png' | 'jpeg' | 'webp' = 'png',
   quality: number = 0.9
 ): string {
-  const mimeType = format === 'jpeg' ? 'image/jpeg' : format === 'webp' ? 'image/webp' : 'image/png'
-  return canvas.toDataURL(mimeType, quality)
+  const mimeType =
+    format === 'jpeg' ? 'image/jpeg' : format === 'webp' ? 'image/webp' : 'image/png';
+  return canvas.toDataURL(mimeType, quality);
 }
 
 /**
@@ -1292,22 +1389,23 @@ export function canvasToBlob(
   format: 'png' | 'jpeg' | 'webp' = 'png',
   quality: number = 0.9
 ): Promise<Blob | null> {
-  const mimeType = format === 'jpeg' ? 'image/jpeg' : format === 'webp' ? 'image/webp' : 'image/png'
-  return new Promise((resolve) => canvas.toBlob(resolve, mimeType, quality))
+  const mimeType =
+    format === 'jpeg' ? 'image/jpeg' : format === 'webp' ? 'image/webp' : 'image/png';
+  return new Promise((resolve) => canvas.toBlob(resolve, mimeType, quality));
 }
 
 /**
  * Create a download link for a blob
  */
 export function downloadBlob(blob: Blob, filename: string): void {
-  const url = URL.createObjectURL(blob)
-  const a = document.createElement('a')
-  a.href = url
-  a.download = filename
-  document.body.appendChild(a)
-  a.click()
-  document.body.removeChild(a)
-  URL.revokeObjectURL(url)
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = filename;
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  URL.revokeObjectURL(url);
 }
 
 // ============================================
@@ -1324,18 +1422,18 @@ export function estimateQRSize(text: string, ecc: 'L' | 'M' | 'Q' | 'H' = 'Q'): 
     M: [14, 26, 42, 62, 84, 106, 122, 152, 180, 213, 251, 287, 331, 362, 412],
     Q: [11, 20, 32, 46, 60, 74, 86, 108, 130, 151, 177, 203, 241, 258, 292],
     H: [7, 14, 24, 34, 44, 58, 64, 84, 98, 119, 137, 155, 177, 194, 220],
-  }
+  };
 
-  const caps = capacities[ecc]
-  const len = text.length
+  const caps = capacities[ecc];
+  const len = text.length;
 
   for (let v = 0; v < caps.length; v++) {
     if (caps[v] >= len) {
-      return v + 1
+      return v + 1;
     }
   }
 
-  return 40 // Maximum version
+  return 40; // Maximum version
 }
 
 // ============================================
@@ -1348,23 +1446,23 @@ export const ShareUtils = {
   buildUrlParams,
   updateBrowserUrl,
   getShareableUrl,
-  
+
   // Embed codes
   generateImageEmbed,
   generateIframeEmbed,
   generateMarkdownEmbed,
   generateBBCodeEmbed,
-  
+
   // Social
   getSocialShareUrls,
   copyToClipboard,
   copyImageToClipboard,
-  
+
   // Data
   canvasToDataUrl,
   canvasToBlob,
   downloadBlob,
   estimateQRSize,
-}
+};
 
-export default ShareUtils
+export default ShareUtils;

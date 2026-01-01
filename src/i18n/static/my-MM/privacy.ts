@@ -1,152 +1,82 @@
-import type { PageDefinition } from '../types'
-import { LAST_UPDATED, CONTACT_EMAIL } from '../types'
+import type { PageDefinition } from '../types';
+import { LAST_UPDATED } from '../types';
 
 export const privacy: PageDefinition = {
-  title: '"လျှို့ဝှက်ရေးမူဝါဒ”',
-  description: '"ANQR မှ စုဆောင်းသော အချက်အလက်၊ ၎င်းကို မည်သို့အသုံးပြုပုံနှင့် သက်ဆိုင်ရာ ကိုယ်ရေးကိုယ်တာဆိုင်ရာ ဥပဒေများအောက်တွင် သင်၏ အခွင့်အရေးများ။”',
+  title: 'Privacy Policy',
+  description: 'Information ANQR collects, how it is used, and your rights under applicable privacy laws.',
   lastUpdated: LAST_UPDATED,
   sections: [
     {
-      heading: '"အကျဉ်းချုပ်”',
-      paragraphs: [
-        '"ANQR သည် client-first approach ပါရှိသော QR code generator တစ်ခုဖြစ်သည်။ ကျွန်ုပ်တို့သည် သင့်အား အကောင့်တစ်ခု ဖန်တီးရန် မလိုအပ်ပါ။ default အားဖြင့် QR code များကို သင့် browser တွင် ဒေသတွင်းတွင် ထုတ်လုပ်ပေးသည် — သင် encode လုပ်ထားသော အကြောင်းအရာကို ကျွန်ုပ်တို့ ဝင်ရောက်ကြည့်ရှုခွင့် မရှိပါ။”',
-        '"ပရော်ဖက်ရှင်နယ်အသုံးပြုမှုအတွက်၊ ANQR သည် URL ကန့်သတ်ချက်များမှ QR ကုဒ်များကိုထုတ်ပေးသည့် server-side API ကိုပေးသည်။ API ကိုအသုံးပြုသည့်အခါ၊ သင့် QR အကြောင်းအရာကို ကျွန်ုပ်တို့၏ဆာဗာများတွင် ရုပ်ပုံကိုဖော်ပြရန် လုပ်ဆောင်သော်လည်း သိမ်းဆည်းထားခြင်း သို့မဟုတ် မှတ်တမ်းတင်ထားခြင်းမရှိပါ။”',
-        '"ကျွန်ုပ်တို့သည် ကြော်ငြာအတွက် Google AdSense ကို အသုံးပြုပြီး ခွဲခြမ်းစိတ်ဖြာမှုဝန်ဆောင်မှုများကို အသုံးပြုနိုင်ပါသည်။ ဤဝန်ဆောင်မှုများသည် ကွတ်ကီးများနှင့် အလားတူနည်းပညာများမှတစ်ဆင့် အချက်အလက်များကို စုဆောင်းပါသည်။ ဤမူဝါဒသည် မည်သည့်ဒေတာကို စုဆောင်းသည်၊ ၎င်းကို မည်သို့အသုံးပြုသည်နှင့် သင့်အခွင့်အရေးများကို ရှင်းပြပါသည်။”',
-      ],
+      heading: 'Summary',
+      paragraphs: ['ANQR is a QR code generator with a client-first approach. We do not require you to create an account. By default, QR codes are generated locally in your browser — we do not have access to the content you encode.', 'For professional use, ANQR provides a server-side API that generates QR codes from URL parameters. When using the API, your QR content is processed on our servers to render the image, but is not stored or logged.', 'We use Google AdSense for advertising and may use analytics services. These services collect information through cookies and similar technologies. This policy explains what data is collected, how it is used, and your rights.'],
     },
     {
-      heading: '"ကျွန်ုပ်တို့စုဆောင်းသော သတင်းအချက်အလက်”',
-      bullets: [
-        '"သင်ပေးသော အချက်အလက်- အီးမေးလ် သို့မဟုတ် ကျွန်ုပ်တို့၏ ဆက်သွယ်ရန်ပုံစံမှတစ်ဆင့် ကျွန်ုပ်တို့ထံ ဆက်သွယ်ပါက၊ ကျွန်ုပ်တို့သည် သင့်အမည်၊ အီးမေးလ်လိပ်စာနှင့် မက်ဆေ့ချ်အကြောင်းအရာများကို စုဆောင်းပါသည်။”',
-        '"အလိုအလျောက်စုဆောင်းထားသော အချက်အလက်များ- ကျွန်ုပ်တို့၏ hosting provider (Netlify)၊ ကြော်ငြာလုပ်ဖော်ကိုင်ဖက်များနှင့် analytics ဝန်ဆောင်မှုများသည် IP address၊ browser အမျိုးအစားနှင့် version၊ operating system၊ device အမျိုးအစား၊ referring URL၊ ဝင်ရောက်ကြည့်ရှုသော စာမျက်နှာများ၊ site ပေါ်ရှိအချိန်နှင့် ခန့်မှန်းခြေ ပထဝီဝင်တည်နေရာများကို စုဆောင်းနိုင်ပါသည်။”',
-        '"ပြင်ပကွတ်ကီးများ- ကျွန်ုပ်တို့၏ ကြော်ငြာလုပ်ဖော်ကိုင်ဖက်များ (Google AdSense) သည် ကြော်ငြာများကို ဝန်ဆောင်မှုပေးရန်နှင့် တိုင်းတာရန်အတွက် ကွတ်ကီးများနှင့် အလားတူနည်းပညာများကို အသုံးပြုပါသည်။ ANQR ကိုယ်တိုင်က မည်သည့်ပထမပါတီကွတ်ကီးကိုမျှ မသတ်မှတ်ပါ။”',
-      ],
+      heading: 'Information we collect',
+      bullets: ['Information you provide: If you contact us via email or our contact form, we collect your name, email address, and message content.', 'Automatically collected information: Our hosting provider (Netlify), advertising partners, and analytics services may collect: IP address, browser type and version, operating system, device type, referring URL, pages visited, time on site, and approximate geographic location.', 'Third-party cookies: Our advertising partners (Google AdSense) use cookies and similar technologies to serve and measure advertisements. ANQR itself does not set any first-party cookies.'],
     },
     {
-      heading: '"ကွတ်ကီးများနှင့် ပြင်ပကုမ္ပဏီများ၏ နည်းပညာများ”',
-      paragraphs: [
-        '"ANQR သည် မည်သည့် first-party cookies များကိုမျှ မသတ်မှတ်ပါ။ သင်၏ ဦးစားပေးမှုများ (ဥပမာ dark mode) ကို သင်၏ device ပေါ်တွင် သိမ်းဆည်းထားပြီး မည်သည့် server သို့မျှ မပို့ပါ။”',
-        '"သို့သော်၊ ကျွန်ုပ်တို့၏ ကြော်ငြာလုပ်ဖော်ကိုင်ဖက်များ (Google AdSense) နှင့် hosting provider သည် cookies နှင့် အလားတူ tracking နည်းပညာများကို အသုံးပြုနိုင်သည်-”',
-      ],
-      bullets: [
-        '"ကြော်ငြာကွတ်ကီးများ (ပြင်ပအဖွဲ့အစည်း): Google AdSense နှင့် ကြော်ငြာမိတ်ဖက်များမှ သက်ဆိုင်ရာကြော်ငြာများကို ပြသရန်၊ ကြော်ငြာစွမ်းဆောင်ရည်ကို တိုင်းတာရန်နှင့် အသုံးပြုသူစိတ်ဝင်စားမှုများကို နားလည်ရန် သတ်မှတ်ထားသည်။ ဤကွတ်ကီးများသည် မတူညီသောဝဘ်ဆိုက်များတစ်လျှောက် သင့်လုပ်ဆောင်ချက်ကို ခြေရာခံနိုင်သည်။”',
-        '"ခွဲခြမ်းစိတ်ဖြာမှု ကွတ်ကီးများ (ပြင်ပအဖွဲ့အစည်း): ကျွန်ုပ်တို့၏ hosting provider သို့မဟုတ် analytics ဝန်ဆောင်မှုများမှ အမည်မဖော်လိုသော အသုံးပြုမှုဒေတာများကို စုဆောင်းရန် အသုံးပြုနိုင်ပါသည်။”',
-      ],
+      heading: 'Cookies and third-party technologies',
+      paragraphs: ['ANQR does not set any first-party cookies. Your preferences (such as dark mode) are stored locally on your device, which is not transmitted to any server.', 'However, our advertising partners (Google AdSense) and hosting provider may use cookies and similar tracking technologies:'],
+      bullets: ['Advertising cookies (third-party): Set by Google AdSense and advertising partners to serve relevant ads, measure ad performance, and understand user interests. These cookies may track your activity across different websites.', 'Analytics cookies (third-party): May be used by our hosting provider or analytics services to collect anonymised usage data.'],
     },
     {
-      heading: '"Google AdSense နှင့် ကြော်ငြာများ”',
-      paragraphs: [
-        '"ကျွန်ုပ်တို့သည် Google AdSense မှတစ်ဆင့် ကြော်ငြာများကို ပြသပါသည်။ Google နှင့် ၎င်း၏လုပ်ဖော်ကိုင်ဖက်များသည် ဤဆိုက်နှင့် အခြားဝဘ်ဆိုက်များရှိ သင်၏ကြည့်ရှုမှုမှတ်တမ်းအပေါ် အခြေခံ၍ ကြော်ငြာများကို ပြသရန် ကွတ်ကီးများကို အသုံးပြုသည် (စိတ်ဝင်စားမှုအခြေခံ ကြော်ငြာများ)။”',
-        '"Google က သင့်အချက်အလက်တွေကို ဘယ်လိုအသုံးပြုလဲဆိုတာ လေ့လာပါ- https://policies.google.com/technologies/partner-sites”',
-        '"ကြော်ငြာ စိတ်ကြိုက်ပြင်ဆင်ခြင်းကို စီမံခန့်ခွဲပါ- https://adssettings.google.com”',
-        '"Network Advertising Initiative မှတစ်ဆင့် ထွက်ရန် ရွေးချယ်ပါ- https://optout.networkadvertising.org”',
-        '"ဒစ်ဂျစ်တယ်ကြော်ငြာမဟာမိတ်အဖွဲ့မှတစ်ဆင့် ထွက်ရန်ရွေးချယ်ပါ- https://optout.aboutads.info”',
-      ],
+      heading: 'Google AdSense and advertising',
+      paragraphs: ['We display advertisements through Google AdSense. Google and its partners use cookies to serve ads based on your browsing history on this site and other websites (interest-based advertising).', 'Learn how Google uses your information: https://policies.google.com/technologies/partner-sites', 'Manage ad personalisation: https://adssettings.google.com', 'Opt out via Network Advertising Initiative: https://optout.networkadvertising.org', 'Opt out via Digital Advertising Alliance: https://optout.aboutads.info'],
     },
     {
-      heading: '"ကျွန်ုပ်တို့ အချက်အလက်များကို မည်သို့အသုံးပြုသည်”',
-      bullets: [
-        '"သင့်မေးမြန်းချက်များကို ဖြေကြားရန်နှင့် ပံ့ပိုးမှုပေးရန်။”',
-        '"ကျွန်ုပ်တို့၏ ကြော်ငြာမိတ်ဖက်များမှတစ်ဆင့် သက်ဆိုင်ရာကြော်ငြာများကို ပြသရန်။”',
-        '"ဆိုက်အသုံးပြုမှုကို ခွဲခြမ်းစိတ်ဖြာပြီး ကျွန်ုပ်တို့၏ဝန်ဆောင်မှုများကို တိုးတက်ကောင်းမွန်စေရန်။”',
-        '"လိမ်လည်မှု၊ အလွဲသုံးစားမှုနှင့် လုံခြုံရေးဆိုင်ရာ ပြဿနာများကို ထောက်လှမ်းရန်၊ ကာကွယ်ရန်နှင့် ကိုင်တွယ်ဖြေရှင်းရန်။”',
-        '"ဥပဒေရေးရာ တာဝန်ဝတ္တရားများကို လိုက်နာရန်”',
-      ],
+      heading: 'How we use information',
+      bullets: ['To respond to your enquiries and provide support.', 'To display relevant advertisements through our advertising partners.', 'To analyse site usage and improve our services.', 'To detect, prevent, and address fraud, abuse, and security issues.', 'To comply with legal obligations.'],
     },
     {
-      heading: '"ပြင်ပဝန်ဆောင်မှုများ”',
-      bullets: [
-        '"Google AdSense: ကြော်ငြာများကို ဝန်ဆောင်မှုပေးရန်နှင့် တိုင်းတာရန်အတွက် ဒေတာများကို လက်ခံရယူသည်။”',
-        '"ခွဲခြမ်းစိတ်ဖြာမှု ဝန်ဆောင်မှုပေးသူများ- အမည်မဖော်လိုသော အသုံးပြုမှုဒေတာကို ရယူပါ။”',
-        '"Netlify (hosting): တောင်းဆိုမှုများကို လုပ်ဆောင်ပြီး IP လိပ်စာများကို မှတ်တမ်းတင်နိုင်သည်။”',
-        '"ကျွန်ုပ်တို့သည် သင့်ကိုယ်ရေးကိုယ်တာအချက်အလက်များကို မရောင်းပါ။ သို့သော်၊ ကြော်ငြာလုပ်ဖော်ကိုင်ဖက်များနှင့် ဒေတာမျှဝေခြင်းကို CCPA အရ "ရောင်းချမှု" အဖြစ် သတ်မှတ်နိုင်သည် (အောက်တွင်ကြည့်ပါ)။”',
-      ],
+      heading: 'Third-party services',
+      bullets: ['Google AdSense: Receives data to serve and measure advertisements.', 'Analytics providers: Receive anonymised usage data.', 'Netlify (hosting): Processes requests and may log IP addresses.', 'We do not sell your personal information. However, sharing data with advertising partners may be considered a "sale" under CCPA (see below).'],
     },
     {
-      heading: '"ဒေတာထိန်းသိမ်းခြင်း”',
-      bullets: [
-        '"ဆက်သွယ်ရန် တင်သွင်းချက်များ- ၂ နှစ်အထိ။”',
-        '"ဆာဗာမှတ်တမ်းများ- ရက်ပေါင်း ၃၀ အထိ (hosting provider)။”',
-        '"ခွဲခြမ်းစိတ်ဖြာမှုဒေတာ- ၂၆ လအထိ (အမည်မဖော်လို)။”',
-        '"ကြော်ငြာကွတ်ကီးများ- ပုံမှန်အားဖြင့် ၁၃ လ (လုပ်ဖော်ကိုင်ဖက်အလိုက် ကွဲပြားသည်)။”',
-      ],
+      heading: 'Data retention',
+      bullets: ['Contact submissions: Up to 2 years.', 'Server logs: Up to 30 days (hosting provider).', 'Analytics data: Up to 26 months (anonymised).', 'Advertising cookies: Typically 13 months (varies by partner).'],
     },
     {
-      heading: '"GDPR (EEA အသုံးပြုသူများ) အရ သင့်အခွင့်အရေးများ”',
-      paragraphs: [
-        '"သင်သည် ဥရောပစီးပွားရေးဇုန်တွင် ရှိနေပါက အထွေထွေဒေတာကာကွယ်ရေးစည်းမျဉ်းအရ အောက်ပါအခွင့်အရေးများရှိသည်-”',
-      ],
-      bullets: [
-        '"ဝင်ရောက်ခွင့်- ကျွန်ုပ်တို့တွင်ရှိသော သင့်အကြောင်း ကိုယ်ရေးကိုယ်တာအချက်အလက်များ၏ မိတ္တူကို တောင်းဆိုပါ။”',
-        '"ပြင်ဆင်ခွင့်- မမှန်ကန်သောဒေတာကို ပြင်ဆင်ရန် တောင်းဆိုခြင်း။”',
-        '"ဖျက်ပစ်ပိုင်ခွင့်- သင့်ဒေတာကို ဖျက်ပစ်ရန် တောင်းဆိုခြင်း ("မေ့ပျောက်ပိုင်ခွင့်”)။”',
-        '"လုပ်ဆောင်မှုကို ကန့်သတ်ပိုင်ခွင့်- သင့်ဒေတာကို ကျွန်ုပ်တို့ မည်သို့အသုံးပြုသည်ကို ကန့်သတ်ချက်များ တောင်းဆိုပါ။”',
-        '"ဒေတာ ရွှေ့ပြောင်းနိုင်မှု အခွင့်အရေး- သင့်ဒေတာကို သယ်ဆောင်ရလွယ်ကူသော ဖော်မတ်ဖြင့် တောင်းဆိုပါ။”',
-        '"ကန့်ကွက်ပိုင်ခွင့်- တိုက်ရိုက်စျေးကွက်ရှာဖွေရေးအပါအဝင် လုပ်ဆောင်မှုကို ကန့်ကွက်သည်။”',
-        '"သဘောတူညီချက်ကို ရုပ်သိမ်းပိုင်ခွင့်- သဘောတူညီချက်ကို အခြေခံသည့် လုပ်ငန်းစဉ်ဖြစ်ပါက မည်သည့်အချိန်တွင်မဆို သဘောတူညီချက်ကို ရုပ်သိမ်းနိုင်သည်။”',
-        '"တိုင်ကြားချက်တင်သွင်းခွင့်- သင့်ဒေတာကာကွယ်ရေးအာဏာပိုင်ထံ တိုင်ကြားချက်တင်သွင်းပါ။”',
-      ],
+      heading: 'Your rights under GDPR (EEA users)',
+      paragraphs: ['If you are in the European Economic Area, you have the following rights under the General Data Protection Regulation:'],
+      bullets: ['Right of access: Request a copy of personal data we hold about you.', 'Right to rectification: Request correction of inaccurate data.', 'Right to erasure: Request deletion of your data ("right to be forgotten").', 'Right to restrict processing: Request limits on how we use your data.', 'Right to data portability: Request your data in a portable format.', 'Right to object: Object to processing, including for direct marketing.', 'Right to withdraw consent: Withdraw consent at any time where processing is consent-based.', 'Right to lodge a complaint: File a complaint with your data protection authority.'],
     },
     {
-      heading: '"GDPR ဥပဒေရေးရာအခြေခံ”',
-      paragraphs: [
-        '"ကျွန်ုပ်တို့သည် အောက်ပါအခြေခံများဖြင့် ဒေတာများကို စီမံဆောင်ရွက်ပါသည်- (က) ပုဂ္ဂိုလ်ရေးသီးသန့် ကြော်ငြာအတွက် သဘောတူညီချက် — (ကျွန်ုပ်တို့၏ ကြော်ငြာလုပ်ဖော်ကိုင်ဖက်များမှ စီမံခန့်ခွဲသည်)၊ (ခ) ခွဲခြမ်းစိတ်ဖြာမှု၊ လုံခြုံရေးနှင့် တိုးတက်မှုအတွက် တရားဝင်အကျိုးစီးပွားများ၊ (ဂ) စာချုပ် — မေးမြန်းချက်များကို တုံ့ပြန်ရန်။”',
-        '"သင့်အခွင့်အရေးများကို ကျင့်သုံးရန် ${CONTACT_EMAIL} သို့ ဆက်သွယ်ပါ။ ကျွန်ုပ်တို့သည် ရက် ၃၀ အတွင်း အကြောင်းပြန်ပါမည်။”',
-      ],
+      heading: 'GDPR legal basis',
+      paragraphs: ['We process data on these bases: (a) Consent — for personalised advertising (managed by our advertising partners); (b) Legitimate interests — for analytics, security, and improvement; (c) Contract — to respond to enquiries.', 'To exercise your rights, contact ${CONTACT_EMAIL}. We respond within 30 days.'],
     },
     {
-      heading: '"CCPA (ကယ်လီဖိုးနီးယားအသုံးပြုသူများ) အရ သင့်အခွင့်အရေးများ”',
-      bullets: [
-        '"သိရှိခွင့်- စုဆောင်းထားသော အချက်အလက်၊ အရင်းအမြစ်များ၊ ရည်ရွယ်ချက်များနှင့် ပြင်ပအဖွဲ့အစည်းများအကြောင်း အချက်အလက်များကို တောင်းဆိုခြင်း။”',
-        '"ဖျက်ပစ်ပိုင်ခွင့်- သင့်ကိုယ်ရေးကိုယ်တာအချက်အလက်များကို ဖျက်ပစ်ရန် တောင်းဆိုခြင်း။”',
-        '"ရွေးချယ်ခွင့်- ကိုယ်ရေးကိုယ်တာအချက်အလက်များ "ရောင်းချခြင်း" မှ ရွေးချယ်ခြင်း (ကြော်ငြာလုပ်ဖော်ကိုင်ဖက်များနှင့် မျှဝေခြင်းသည် အရည်အချင်းပြည့်မီနိုင်သည်)။”',
-        '"ခွဲခြားဆက်ဆံမှုမရှိခြင်းဆိုင်ရာအခွင့်အရေး- သင့်အခွင့်အရေးများကို ကျင့်သုံးသည့်အတွက် ကျွန်ုပ်တို့သည် ခွဲခြားဆက်ဆံမည်မဟုတ်ပါ။”',
-      ],
+      heading: 'Your rights under CCPA (California users)',
+      bullets: ['Right to know: Request information about data collected, sources, purposes, and third parties.', 'Right to delete: Request deletion of your personal information.', 'Right to opt-out: Opt out of the "sale" of personal information (sharing with ad partners may qualify).', 'Right to non-discrimination: We will not discriminate for exercising your rights.'],
     },
     {
-      heading: '"စုဆောင်းထားသော CCPA အမျိုးအစားများ”',
-      paragraphs: [
-        '"အမျိုးအစားများ- အမှတ်အသားများ (IP လိပ်စာ၊ စက်ပစ္စည်း ID)၊ အင်တာနက်လှုပ်ရှားမှု (ကြည့်ရှုခြင်း၊ ကြော်ငြာ အပြန်အလှန် ဆက်သွယ်မှု)၊ ပထဝီတည်နေရာ (ခန့်မှန်းခြေ)၊ ကောက်ချက်များ (ကြည့်ရှုခြင်းမှ စိတ်ဝင်စားမှုများ)။”',
-        '"အခွင့်အရေးများကို ကျင့်သုံးရန် သို့မဟုတ် ထွက်ခွာရန်- ${CONTACT_EMAIL} သို့မဟုတ် ကွတ်ကီးဆက်တင်များကို ချိန်ညှိရန်။”',
-      ],
+      heading: 'CCPA categories collected',
+      paragraphs: ['Categories: Identifiers (IP address, device ID), Internet activity (browsing, ad interactions), Geolocation (approximate), Inferences (interests from browsing).', 'To exercise rights or opt out: ${CONTACT_EMAIL} or adjust cookie settings.'],
     },
     {
-      heading: '"နိုင်ငံတကာငွေလွှဲမှုများ”',
-      paragraphs: [
-        '"သင့်အချက်အလက်များကို အမေရိကန်ပြည်ထောင်စု အပါအဝင် ကွဲပြားသော ဒေတာကာကွယ်ရေးဥပဒေများရှိသည့် နိုင်ငံများသို့ လွှဲပြောင်းပေးနိုင်ပါသည်။ ကျွန်ုပ်တို့သည် Standard Contractual Clauses ကဲ့သို့သော သင့်လျော်သော ကာကွယ်မှုများကို အသုံးပြုပါသည်။”',
-      ],
+      heading: 'International transfers',
+      paragraphs: ['Your information may be transferred to countries with different data protection laws, including the United States. We use appropriate safeguards such as Standard Contractual Clauses.'],
     },
     {
-      heading: '"ကလေးများ၏ ကိုယ်ရေးကိုယ်တာ လွတ်လပ်ခွင့်”',
-      paragraphs: [
-        '"ANQR သည် အသက် ၁၃ နှစ်အောက် (သို့မဟုတ် EEA ရှိ ၁၆ နှစ်) ကလေးများအတွက် ရည်ရွယ်ခြင်းမဟုတ်ပါ။ ကျွန်ုပ်တို့သည် ကလေးများထံမှ အချက်အလက်များကို တမင်တကာ မစုဆောင်းပါ။ ကလေးတစ်ဦးမှ အချက်အလက်များ ပေးအပ်ထားသည်ဟု သင်ယုံကြည်ပါက ${CONTACT_EMAIL} သို့ ဆက်သွယ်ပါ။”',
-      ],
+      heading: 'Children\'s privacy',
+      paragraphs: ['ANQR is not directed at children under 13 (or 16 in the EEA). We do not knowingly collect data from children. Contact ${CONTACT_EMAIL} if you believe a child has provided information.'],
     },
     {
-      heading: '"လုံခြုံရေး”',
-      paragraphs: [
-        '"ကျွန်ုပ်တို့သည် HTTPS ကုဒ်ဝှက်ခြင်းအပါအဝင် ဒေတာများကို ကာကွယ်ရန်အတွက် သင့်လျော်သော နည်းပညာနှင့် အဖွဲ့အစည်းဆိုင်ရာ အစီအမံများကို အသုံးပြုပါသည်။ သို့သော် အင်တာနက်ထုတ်လွှင့်မှုတိုင်းသည် ၁၀၀% လုံခြုံသည်ဟု မရှိပါ။”',
-      ],
+      heading: 'Security',
+      paragraphs: ['We use appropriate technical and organisational measures to protect data, including HTTPS encryption. However, no internet transmission is 100% secure.'],
     },
     {
-      heading: '"ခြေရာမခံရ”',
-      paragraphs: [
-        '"ကြော်ငြာလုပ်ဖော်ကိုင်ဖက်များသည် DNT ကို တုံ့ပြန်မည်မဟုတ်သော်လည်း၊ ဖြစ်နိုင်သည့်နေရာတွင် Do Not Track browser အချက်ပြမှုများကို ကျွန်ုပ်တို့ လေးစားလိုက်နာပါသည်။”',
-      ],
+      heading: 'Do Not Track',
+      paragraphs: ['We honour Do Not Track browser signals where feasible, though advertising partners may not respond to DNT.'],
     },
     {
-      heading: '"ဤမူဝါဒအပေါ် ပြောင်းလဲမှုများ”',
-      paragraphs: [
-        '"ကျွန်ုပ်တို့သည် ဤမူဝါဒကို အခါအားလျော်စွာ အပ်ဒိတ်လုပ်နိုင်ပါသည်။ "နောက်ဆုံးအပ်ဒိတ်လုပ်ထားသော" ရက်စွဲသည် အனைத்துဆုံးပြင်ဆင်မှုကို ညွှန်ပြသည်။ သိသာထင်ရှားသော ပြောင်းလဲမှုများကို ဆိုက်ဘန်နာမှတစ်ဆင့် အသိပေးနိုင်ပါသည်။”',
-      ],
+      heading: 'Changes to this policy',
+      paragraphs: ['We may update this policy periodically. The "Last updated" date indicates the most recent revision. Significant changes may be communicated via a site banner.'],
     },
     {
-      heading: '"ကျွန်ုပ်တို့ကို ဆက်သွယ်ပါ”',
-      paragraphs: [
-        '"လျှို့ဝှက်ရေးဆိုင်ရာ မေးခွန်းများ သို့မဟုတ် သင့်အခွင့်အရေးများကို ကျင့်သုံးရန်အတွက်- ${CONTACT_EMAIL} သို့မဟုတ် ကျွန်ုပ်တို့၏ ဆက်သွယ်ရန် စာမျက်နှာကို အသုံးပြုပါ။ ကျွန်ုပ်တို့သည် လျှို့ဝှက်ရေးဆိုင်ရာ တောင်းဆိုချက်များကို ရက် ၃၀ အတွင်း တုံ့ပြန်ပါသည်။”',
-      ],
+      heading: 'Contact us',
+      paragraphs: ['For privacy questions or to exercise your rights: ${CONTACT_EMAIL} or use our Contact page. We respond to privacy requests within 30 days.'],
     },
   ],
-}
+};
 
 export default privacy;

@@ -25,17 +25,17 @@ export class CropHandler {
 
   init() {
     // Create crop overlay structure
-    this.overlay = document.createElement("div");
-    this.overlay.className = "crop-overlay";
-    this.overlay.style.display = "none";
+    this.overlay = document.createElement('div');
+    this.overlay.className = 'crop-overlay';
+    this.overlay.style.display = 'none';
 
-    this.cropBox = document.createElement("div");
-    this.cropBox.className = "crop-box";
+    this.cropBox = document.createElement('div');
+    this.cropBox.className = 'crop-box';
 
     // Create resize handles for corners
-    const handles = ["nw", "ne", "sw", "se"];
+    const handles = ['nw', 'ne', 'sw', 'se'];
     handles.forEach((pos) => {
-      const handle = document.createElement("div");
+      const handle = document.createElement('div');
       handle.className = `crop-handle crop-handle-${pos}`;
       handle.dataset.handle = pos;
       this.cropBox.appendChild(handle);
@@ -50,32 +50,32 @@ export class CropHandler {
 
   bindEvents() {
     // Mouse events for crop box dragging
-    this.cropBox.addEventListener("mousedown", (e) => this.onMouseDown(e));
-    document.addEventListener("mousemove", (e) => this.onMouseMove(e));
-    document.addEventListener("mouseup", () => this.onMouseUp());
+    this.cropBox.addEventListener('mousedown', (e) => this.onMouseDown(e));
+    document.addEventListener('mousemove', (e) => this.onMouseMove(e));
+    document.addEventListener('mouseup', () => this.onMouseUp());
 
     // Touch events for mobile
-    this.cropBox.addEventListener("touchstart", (e) => this.onTouchStart(e));
-    document.addEventListener("touchmove", (e) => this.onTouchMove(e));
-    document.addEventListener("touchend", () => this.onMouseUp());
+    this.cropBox.addEventListener('touchstart', (e) => this.onTouchStart(e));
+    document.addEventListener('touchmove', (e) => this.onTouchMove(e));
+    document.addEventListener('touchend', () => this.onMouseUp());
 
     // Handle resize
-    this.cropBox.querySelectorAll(".crop-handle").forEach((handle) => {
-      handle.addEventListener("mousedown", (e) => this.onResizeStart(e));
-      handle.addEventListener("touchstart", (e) => this.onResizeTouchStart(e));
+    this.cropBox.querySelectorAll('.crop-handle').forEach((handle) => {
+      handle.addEventListener('mousedown', (e) => this.onResizeStart(e));
+      handle.addEventListener('touchstart', (e) => this.onResizeTouchStart(e));
     });
   }
 
   show(imageElement) {
     this.imageElement = imageElement;
-    this.overlay.style.display = "block";
+    this.overlay.style.display = 'block';
 
     // Initialize crop box to cover maximum square area centered
     this.initializeCropBox();
   }
 
   hide() {
-    this.overlay.style.display = "none";
+    this.overlay.style.display = 'none';
     this.imageElement = null;
   }
 
@@ -110,7 +110,7 @@ export class CropHandler {
   }
 
   onMouseDown(e) {
-    if (e.target.classList.contains("crop-handle")) return;
+    if (e.target.classList.contains('crop-handle')) return;
 
     e.preventDefault();
     this.isDragging = true;
@@ -118,11 +118,11 @@ export class CropHandler {
     this.startY = e.clientY;
     this.startLeft = this.cropBox.offsetLeft;
     this.startTop = this.cropBox.offsetTop;
-    this.cropBox.classList.add("dragging");
+    this.cropBox.classList.add('dragging');
   }
 
   onTouchStart(e) {
-    if (e.target.classList.contains("crop-handle")) return;
+    if (e.target.classList.contains('crop-handle')) return;
 
     const touch = e.touches[0];
     this.isDragging = true;
@@ -130,7 +130,7 @@ export class CropHandler {
     this.startY = touch.clientY;
     this.startLeft = this.cropBox.offsetLeft;
     this.startTop = this.cropBox.offsetTop;
-    this.cropBox.classList.add("dragging");
+    this.cropBox.classList.add('dragging');
   }
 
   onMouseMove(e) {
@@ -142,7 +142,7 @@ export class CropHandler {
   }
 
   onTouchMove(e) {
-    if (!this.isDragging && !this.isResizing) return;
+    if (!(this.isDragging || this.isResizing)) return;
 
     const touch = e.touches[0];
     if (this.isDragging) {
@@ -183,7 +183,7 @@ export class CropHandler {
     this.startLeft = this.cropBox.offsetLeft;
     this.startTop = this.cropBox.offsetTop;
     this.startSize = this.cropBox.offsetWidth;
-    this.cropBox.classList.add("resizing");
+    this.cropBox.classList.add('resizing');
   }
 
   onResizeTouchStart(e) {
@@ -197,7 +197,7 @@ export class CropHandler {
     this.startLeft = this.cropBox.offsetLeft;
     this.startTop = this.cropBox.offsetTop;
     this.startSize = this.cropBox.offsetWidth;
-    this.cropBox.classList.add("resizing");
+    this.cropBox.classList.add('resizing');
   }
 
   handleResize(clientX, clientY) {
@@ -210,26 +210,23 @@ export class CropHandler {
 
     // Calculate new size based on which handle is being dragged
     switch (this.resizeHandle) {
-      case "se":
+      case 'se':
         newSize = Math.max(minSize, this.startSize + Math.max(deltaX, deltaY));
         newLeft = this.startLeft;
         newTop = this.startTop;
         break;
-      case "sw":
+      case 'sw':
         newSize = Math.max(minSize, this.startSize + Math.max(-deltaX, deltaY));
         newLeft = this.startLeft + this.startSize - newSize;
         newTop = this.startTop;
         break;
-      case "ne":
+      case 'ne':
         newSize = Math.max(minSize, this.startSize + Math.max(deltaX, -deltaY));
         newLeft = this.startLeft;
         newTop = this.startTop + this.startSize - newSize;
         break;
-      case "nw":
-        newSize = Math.max(
-          minSize,
-          this.startSize + Math.max(-deltaX, -deltaY),
-        );
+      case 'nw':
+        newSize = Math.max(minSize, this.startSize + Math.max(-deltaX, -deltaY));
         newLeft = this.startLeft + this.startSize - newSize;
         newTop = this.startTop + this.startSize - newSize;
         break;
@@ -240,7 +237,7 @@ export class CropHandler {
       bounds.right - newLeft,
       bounds.bottom - newTop,
       newLeft - bounds.left + newSize,
-      newTop - bounds.top + newSize,
+      newTop - bounds.top + newSize
     );
 
     if (newSize > maxSize) {
@@ -272,7 +269,7 @@ export class CropHandler {
       this.isDragging = false;
       this.isResizing = false;
       this.resizeHandle = null;
-      this.cropBox.classList.remove("dragging", "resizing");
+      this.cropBox.classList.remove('dragging', 'resizing');
 
       // Fire change callback
       if (this.onChange) {
@@ -328,7 +325,7 @@ export class CropHandler {
   }
 
   destroy() {
-    if (this.overlay && this.overlay.parentNode) {
+    if (this.overlay?.parentNode) {
       this.overlay.parentNode.removeChild(this.overlay);
     }
   }

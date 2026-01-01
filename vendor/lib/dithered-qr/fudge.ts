@@ -1,5 +1,5 @@
-import { getFudgePixels } from "./form";
-import isLocked, { isData } from "./locked";
+import { getFudgePixels } from './form';
+import isLocked, { isData } from './locked';
 
 export default function fudgeQrData(imageData: number[][], qr: boolean[][]) {
   const f = getFudgePixels();

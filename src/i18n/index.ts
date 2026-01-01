@@ -1,18 +1,18 @@
 /**
  * i18n Configuration
- * 
+ *
  * Internationalization setup using react-i18next
  * Uses Google Play language codes for compatibility
- * 
+ *
  * OPTIMIZATION: Only English is bundled. Other locales are lazy-loaded on demand.
  */
 
-import i18n from 'i18next'
-import { initReactI18next } from 'react-i18next'
-import LanguageDetector from 'i18next-browser-languagedetector'
+import i18n from 'i18next';
+import LanguageDetector from 'i18next-browser-languagedetector';
+import { initReactI18next } from 'react-i18next';
 
 // Only import English - other locales are lazy-loaded
-import en from './locales/en-GB.json'
+import en from './locales/en-GB.json';
 
 // Language metadata for the selector - using Google Play language codes
 // Authoritative list from src/i18n/locales/txt/play.txt
@@ -62,45 +62,46 @@ export const languages = [
   { code: 'ro', name: 'Romanian', nativeName: 'Română', flag: '🇷🇴', rtl: false },
   { code: 'sv-SE', name: 'Swedish', nativeName: 'Svenska', flag: '🇸🇪', rtl: false },
   { code: 'zu', name: 'Zulu', nativeName: 'isiZulu', flag: '🇿🇦', rtl: false },
-] as const
+] as const;
 
 /**
  * Check if a language code is RTL
  */
 export function isRtlLanguage(langCode: string): boolean {
   // Check exact match first, then base language
-  const lang = languages.find(l => l.code === langCode) || 
-               languages.find(l => l.code === langCode.split('-')[0])
-  return lang?.rtl ?? false
+  const lang =
+    languages.find((l) => l.code === langCode) ||
+    languages.find((l) => l.code === langCode.split('-')[0]);
+  return lang?.rtl ?? false;
 }
 
-export type LanguageCode = typeof languages[number]['code']
+export type LanguageCode = (typeof languages)[number]['code'];
 
 // Initial resources - only English bundled, others lazy-loaded
 const resources: Record<string, { translation: Record<string, unknown> }> = {
   'en-GB': { translation: en },
-}
+};
 
 // List of supported language codes for detection
-const supportedLngs: string[] = languages.map(l => l.code)
+const supportedLngs: string[] = languages.map((l) => l.code);
 
 // Track which locales have been loaded
-const loadedLocales = new Set<string>(['en-GB'])
+const loadedLocales = new Set<string>(['en-GB']);
 
 /**
  * Lazy load a locale on demand
  * This significantly reduces initial bundle size by ~1.5MB
  */
 export async function loadLocale(lang: string): Promise<void> {
-  if (loadedLocales.has(lang)) return
-  
+  if (loadedLocales.has(lang)) return;
+
   try {
     // Dynamic import - Vite will code-split these
-    const localeModule = await import(`./locales/${lang}.json`)
-    i18n.addResourceBundle(lang, 'translation', localeModule.default, true, true)
-    loadedLocales.add(lang)
+    const localeModule = await import(`./locales/${lang}.json`);
+    i18n.addResourceBundle(lang, 'translation', localeModule.default, true, true);
+    loadedLocales.add(lang);
   } catch (error) {
-    console.error(`Failed to load locale: ${lang}`, error)
+    console.error(`Failed to load locale: ${lang}`, error);
     // Fall back to English if locale fails to load
   }
 }
@@ -115,11 +116,11 @@ i18n
     // Don't strip region codes - we need them for Google Play compatibility
     load: 'currentOnly',
     debug: false, // Disable debug logging in all environments
-    
+
     interpolation: {
       escapeValue: false, // React already escapes values
     },
-    
+
     detection: {
       // Check localStorage first (user's previous choice), then browser language
       order: ['localStorage', 'navigator', 'htmlTag'],
@@ -128,69 +129,79 @@ i18n
       // Map browser language codes to our supported codes
       convertDetectedLanguage: (lng: string) => {
         // Direct match
-        if (supportedLngs.includes(lng)) return lng
-        
+        if (supportedLngs.includes(lng)) return lng;
+
         // Map common browser codes to our Google Play codes
         const browserToGooglePlay: Record<string, string> = {
-          'en': 'en-GB', 'en-US': 'en-GB', 'en-AU': 'en-GB',
-          'hi': 'hi-IN',
-          'zh': 'zh-CN', 'zh-TW': 'zh-CN', 'zh-HK': 'zh-CN',
-          'ta': 'ta-IN',
-          'pt': 'pt-BR', 'pt-PT': 'pt-BR',
-          'tl': 'fil',
-          'ja': 'ja-JP',
-          'ko': 'ko-KR',
-          'es': 'es-ES', 'es-MX': 'es-ES', 'es-AR': 'es-ES',
-          'ru': 'ru-RU',
-          'te': 'te-IN',
-          'mr': 'mr-IN',
-          'bn': 'bn-BD', 'bn-IN': 'bn-BD',
-          'kn': 'kn-IN',
-          'ml': 'ml-IN',
+          en: 'en-GB',
+          'en-US': 'en-GB',
+          'en-AU': 'en-GB',
+          hi: 'hi-IN',
+          zh: 'zh-CN',
+          'zh-TW': 'zh-CN',
+          'zh-HK': 'zh-CN',
+          ta: 'ta-IN',
+          pt: 'pt-BR',
+          'pt-PT': 'pt-BR',
+          tl: 'fil',
+          ja: 'ja-JP',
+          ko: 'ko-KR',
+          es: 'es-ES',
+          'es-MX': 'es-ES',
+          'es-AR': 'es-ES',
+          ru: 'ru-RU',
+          te: 'te-IN',
+          mr: 'mr-IN',
+          bn: 'bn-BD',
+          'bn-IN': 'bn-BD',
+          kn: 'kn-IN',
+          ml: 'ml-IN',
           // Regional mappings
-          'cs': 'cs-CZ',
-          'da': 'da-DK',
-          'de': 'de-DE',
-          'el': 'el-GR',
-          'fi': 'fi-FI',
-          'fr': 'fr-FR',
-          'hu': 'hu-HU',
-          'it': 'it-IT',
-          'km': 'km-KH',
-          'lo': 'lo-LA',
-          'my': 'my-MM',
-          'ne': 'ne-NP',
-          'nl': 'nl-NL',
-          'no': 'no-NO', 'nb': 'no-NO', 'nn': 'no-NO',
-          'pl': 'pl-PL',
-          'sv': 'sv-SE',
-        }
-        
-        if (browserToGooglePlay[lng]) return browserToGooglePlay[lng]
-        
+          cs: 'cs-CZ',
+          da: 'da-DK',
+          de: 'de-DE',
+          el: 'el-GR',
+          fi: 'fi-FI',
+          fr: 'fr-FR',
+          hu: 'hu-HU',
+          it: 'it-IT',
+          km: 'km-KH',
+          lo: 'lo-LA',
+          my: 'my-MM',
+          ne: 'ne-NP',
+          nl: 'nl-NL',
+          no: 'no-NO',
+          nb: 'no-NO',
+          nn: 'no-NO',
+          pl: 'pl-PL',
+          sv: 'sv-SE',
+        };
+
+        if (browserToGooglePlay[lng]) return browserToGooglePlay[lng];
+
         // Try base language match
-        const baseLang = lng.split('-')[0]
-        if (browserToGooglePlay[baseLang]) return browserToGooglePlay[baseLang]
-        
+        const baseLang = lng.split('-')[0];
+        if (browserToGooglePlay[baseLang]) return browserToGooglePlay[baseLang];
+
         // Check if base language is directly supported
-        if (supportedLngs.includes(baseLang)) return baseLang
-        
-        return 'en-GB'
+        if (supportedLngs.includes(baseLang)) return baseLang;
+
+        return 'en-GB';
       },
     },
-  })
+  });
 
 // Listen for language changes and lazy-load locales
 i18n.on('languageChanged', async (lng) => {
   if (!loadedLocales.has(lng)) {
-    await loadLocale(lng)
+    await loadLocale(lng);
   }
-})
+});
 
 // Pre-load detected language if not English
-const detectedLang = i18n.language
+const detectedLang = i18n.language;
 if (detectedLang && detectedLang !== 'en-GB' && !loadedLocales.has(detectedLang)) {
-  loadLocale(detectedLang)
+  loadLocale(detectedLang);
 }
 
-export default i18n
+export default i18n;

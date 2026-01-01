@@ -7,31 +7,31 @@
 // TYPES
 // ============================================
 
-export type WatermarkKind = 'text' | 'image' | 'pattern'
-export type WatermarkPosition = 'center' | 'corners' | 'edges' | 'behind' | 'quiet_zone'
-export type WatermarkBlend = 'normal' | 'multiply' | 'screen' | 'overlay'
+export type WatermarkKind = 'text' | 'image' | 'pattern';
+export type WatermarkPosition = 'center' | 'corners' | 'edges' | 'behind' | 'quiet_zone';
+export type WatermarkBlend = 'normal' | 'multiply' | 'screen' | 'overlay';
 
 export interface WatermarkOptions {
-  enabled: boolean
-  kind: WatermarkKind
-  text: string
-  image: HTMLImageElement | HTMLCanvasElement | null
-  position: WatermarkPosition
-  opacity: number // 0-100
-  blend: WatermarkBlend
-  fontSize?: number
-  fontFamily?: string
-  color?: string
-  scale?: number
-  rotation?: number
-  repeat?: boolean
-  margin?: number
+  enabled: boolean;
+  kind: WatermarkKind;
+  text: string;
+  image: HTMLImageElement | HTMLCanvasElement | null;
+  position: WatermarkPosition;
+  opacity: number; // 0-100
+  blend: WatermarkBlend;
+  fontSize?: number;
+  fontFamily?: string;
+  color?: string;
+  scale?: number;
+  rotation?: number;
+  repeat?: boolean;
+  margin?: number;
 }
 
 export interface WatermarkResult {
-  canvas: HTMLCanvasElement
-  width: number
-  height: number
+  canvas: HTMLCanvasElement;
+  width: number;
+  height: number;
 }
 
 // ============================================
@@ -47,22 +47,22 @@ export function createTextWatermark(
   fontFamily: string = 'sans-serif',
   color: string = '#000000'
 ): HTMLCanvasElement {
-  const canvas = document.createElement('canvas')
-  const ctx = canvas.getContext('2d')!
+  const canvas = document.createElement('canvas');
+  const ctx = canvas.getContext('2d')!;
 
-  ctx.font = `${fontSize}px ${fontFamily}`
-  const metrics = ctx.measureText(text)
-  const textHeight = fontSize * 1.2
+  ctx.font = `${fontSize}px ${fontFamily}`;
+  const metrics = ctx.measureText(text);
+  const textHeight = fontSize * 1.2;
 
-  canvas.width = Math.ceil(metrics.width) + 10
-  canvas.height = Math.ceil(textHeight) + 10
+  canvas.width = Math.ceil(metrics.width) + 10;
+  canvas.height = Math.ceil(textHeight) + 10;
 
-  ctx.font = `${fontSize}px ${fontFamily}`
-  ctx.fillStyle = color
-  ctx.textBaseline = 'middle'
-  ctx.fillText(text, 5, canvas.height / 2)
+  ctx.font = `${fontSize}px ${fontFamily}`;
+  ctx.fillStyle = color;
+  ctx.textBaseline = 'middle';
+  ctx.fillText(text, 5, canvas.height / 2);
 
-  return canvas
+  return canvas;
 }
 
 // ============================================
@@ -80,29 +80,29 @@ export function createPatternWatermark(
   rotation: number = 0,
   spacing: number = 20
 ): HTMLCanvasElement {
-  const canvas = document.createElement('canvas')
-  canvas.width = targetWidth
-  canvas.height = targetHeight
-  const ctx = canvas.getContext('2d')!
+  const canvas = document.createElement('canvas');
+  canvas.width = targetWidth;
+  canvas.height = targetHeight;
+  const ctx = canvas.getContext('2d')!;
 
-  const sourceWidth = source instanceof HTMLImageElement ? source.naturalWidth : source.width
-  const sourceHeight = source instanceof HTMLImageElement ? source.naturalHeight : source.height
-  const scaledWidth = sourceWidth * scale
-  const scaledHeight = sourceHeight * scale
+  const sourceWidth = source instanceof HTMLImageElement ? source.naturalWidth : source.width;
+  const sourceHeight = source instanceof HTMLImageElement ? source.naturalHeight : source.height;
+  const scaledWidth = sourceWidth * scale;
+  const scaledHeight = sourceHeight * scale;
 
-  const angleRad = (rotation * Math.PI) / 180
+  const angleRad = (rotation * Math.PI) / 180;
 
   for (let y = -scaledHeight; y < targetHeight + scaledHeight; y += scaledHeight + spacing) {
     for (let x = -scaledWidth; x < targetWidth + scaledWidth; x += scaledWidth + spacing) {
-      ctx.save()
-      ctx.translate(x + scaledWidth / 2, y + scaledHeight / 2)
-      ctx.rotate(angleRad)
-      ctx.drawImage(source, -scaledWidth / 2, -scaledHeight / 2, scaledWidth, scaledHeight)
-      ctx.restore()
+      ctx.save();
+      ctx.translate(x + scaledWidth / 2, y + scaledHeight / 2);
+      ctx.rotate(angleRad);
+      ctx.drawImage(source, -scaledWidth / 2, -scaledHeight / 2, scaledWidth, scaledHeight);
+      ctx.restore();
     }
   }
 
-  return canvas
+  return canvas;
 }
 
 // ============================================
@@ -120,15 +120,15 @@ export function getWatermarkPositions(
   watermarkHeight: number,
   margin: number = 10
 ): Array<{ x: number; y: number }> {
-  const positions: Array<{ x: number; y: number }> = []
+  const positions: Array<{ x: number; y: number }> = [];
 
   switch (position) {
     case 'center':
       positions.push({
         x: (canvasWidth - watermarkWidth) / 2,
         y: (canvasHeight - watermarkHeight) / 2,
-      })
-      break
+      });
+      break;
 
     case 'corners':
       positions.push(
@@ -136,8 +136,8 @@ export function getWatermarkPositions(
         { x: canvasWidth - watermarkWidth - margin, y: margin },
         { x: margin, y: canvasHeight - watermarkHeight - margin },
         { x: canvasWidth - watermarkWidth - margin, y: canvasHeight - watermarkHeight - margin }
-      )
-      break
+      );
+      break;
 
     case 'edges':
       positions.push(
@@ -145,32 +145,30 @@ export function getWatermarkPositions(
         { x: (canvasWidth - watermarkWidth) / 2, y: canvasHeight - watermarkHeight - margin },
         { x: margin, y: (canvasHeight - watermarkHeight) / 2 },
         { x: canvasWidth - watermarkWidth - margin, y: (canvasHeight - watermarkHeight) / 2 }
-      )
-      break
+      );
+      break;
 
     case 'quiet_zone':
       // Place in the quiet zone area (margin area around QR)
-      positions.push(
-        { x: margin / 2, y: canvasHeight - watermarkHeight - margin / 2 }
-      )
-      break
+      positions.push({ x: margin / 2, y: canvasHeight - watermarkHeight - margin / 2 });
+      break;
 
     case 'behind':
       // For behind mode, we return center - the actual rendering will handle layering
       positions.push({
         x: (canvasWidth - watermarkWidth) / 2,
         y: (canvasHeight - watermarkHeight) / 2,
-      })
-      break
+      });
+      break;
 
     default:
       positions.push({
         x: (canvasWidth - watermarkWidth) / 2,
         y: (canvasHeight - watermarkHeight) / 2,
-      })
+      });
   }
 
-  return positions
+  return positions;
 }
 
 // ============================================
@@ -180,24 +178,20 @@ export function getWatermarkPositions(
 /**
  * Apply blend mode to context
  */
-export function applyBlendMode(
-  ctx: CanvasRenderingContext2D,
-  blend: WatermarkBlend
-): void {
+export function applyBlendMode(ctx: CanvasRenderingContext2D, blend: WatermarkBlend): void {
   switch (blend) {
     case 'multiply':
-      ctx.globalCompositeOperation = 'multiply'
-      break
+      ctx.globalCompositeOperation = 'multiply';
+      break;
     case 'screen':
-      ctx.globalCompositeOperation = 'screen'
-      break
+      ctx.globalCompositeOperation = 'screen';
+      break;
     case 'overlay':
-      ctx.globalCompositeOperation = 'overlay'
-      break
-    case 'normal':
+      ctx.globalCompositeOperation = 'overlay';
+      break;
     default:
-      ctx.globalCompositeOperation = 'source-over'
-      break
+      ctx.globalCompositeOperation = 'source-over';
+      break;
   }
 }
 
@@ -227,28 +221,28 @@ export function applyWatermark(
     rotation: options.rotation ?? 0,
     repeat: options.repeat ?? false,
     margin: options.margin ?? 10,
-  }
+  };
 
   if (!opts.enabled) {
-    return { canvas: source, width: source.width, height: source.height }
+    return { canvas: source, width: source.width, height: source.height };
   }
 
-  const result = document.createElement('canvas')
-  result.width = source.width
-  result.height = source.height
-  const ctx = result.getContext('2d')!
+  const result = document.createElement('canvas');
+  result.width = source.width;
+  result.height = source.height;
+  const ctx = result.getContext('2d')!;
 
   // For 'behind' position, draw watermark first
   if (opts.position === 'behind') {
-    drawWatermarkLayer(ctx, opts, source.width, source.height)
-    ctx.drawImage(source, 0, 0)
+    drawWatermarkLayer(ctx, opts, source.width, source.height);
+    ctx.drawImage(source, 0, 0);
   } else {
     // Draw source first, then watermark on top
-    ctx.drawImage(source, 0, 0)
-    drawWatermarkLayer(ctx, opts, source.width, source.height)
+    ctx.drawImage(source, 0, 0);
+    drawWatermarkLayer(ctx, opts, source.width, source.height);
   }
 
-  return { canvas: result, width: result.width, height: result.height }
+  return { canvas: result, width: result.width, height: result.height };
 }
 
 /**
@@ -260,7 +254,7 @@ function drawWatermarkLayer(
   canvasWidth: number,
   canvasHeight: number
 ): void {
-  let watermarkCanvas: HTMLCanvasElement | null = null
+  let watermarkCanvas: HTMLCanvasElement | null = null;
 
   switch (options.kind) {
     case 'text':
@@ -270,26 +264,28 @@ function drawWatermarkLayer(
           options.fontSize,
           options.fontFamily,
           options.color
-        )
+        );
       }
-      break
+      break;
 
     case 'image':
       if (options.image) {
-        watermarkCanvas = document.createElement('canvas')
-        const sourceWidth = options.image instanceof HTMLImageElement 
-          ? options.image.naturalWidth 
-          : options.image.width
-        const sourceHeight = options.image instanceof HTMLImageElement 
-          ? options.image.naturalHeight 
-          : options.image.height
-        
-        watermarkCanvas.width = sourceWidth * (options.scale || 1)
-        watermarkCanvas.height = sourceHeight * (options.scale || 1)
-        const wCtx = watermarkCanvas.getContext('2d')!
-        wCtx.drawImage(options.image, 0, 0, watermarkCanvas.width, watermarkCanvas.height)
+        watermarkCanvas = document.createElement('canvas');
+        const sourceWidth =
+          options.image instanceof HTMLImageElement
+            ? options.image.naturalWidth
+            : options.image.width;
+        const sourceHeight =
+          options.image instanceof HTMLImageElement
+            ? options.image.naturalHeight
+            : options.image.height;
+
+        watermarkCanvas.width = sourceWidth * (options.scale || 1);
+        watermarkCanvas.height = sourceHeight * (options.scale || 1);
+        const wCtx = watermarkCanvas.getContext('2d')!;
+        wCtx.drawImage(options.image, 0, 0, watermarkCanvas.width, watermarkCanvas.height);
       }
-      break
+      break;
 
     case 'pattern':
       if (options.image) {
@@ -300,21 +296,21 @@ function drawWatermarkLayer(
           options.scale,
           options.rotation,
           options.margin
-        )
+        );
       }
-      break
+      break;
   }
 
-  if (!watermarkCanvas) return
+  if (!watermarkCanvas) return;
 
   // Apply blend mode and opacity
-  ctx.save()
-  applyBlendMode(ctx, options.blend)
-  ctx.globalAlpha = options.opacity / 100
+  ctx.save();
+  applyBlendMode(ctx, options.blend);
+  ctx.globalAlpha = options.opacity / 100;
 
   if (options.kind === 'pattern') {
     // Pattern covers the entire canvas
-    ctx.drawImage(watermarkCanvas, 0, 0)
+    ctx.drawImage(watermarkCanvas, 0, 0);
   } else if (options.repeat) {
     // Repeat watermark across canvas
     const pattern = createPatternWatermark(
@@ -324,8 +320,8 @@ function drawWatermarkLayer(
       1,
       options.rotation || -30,
       50
-    )
-    ctx.drawImage(pattern, 0, 0)
+    );
+    ctx.drawImage(pattern, 0, 0);
   } else {
     // Draw at calculated positions
     const positions = getWatermarkPositions(
@@ -335,22 +331,22 @@ function drawWatermarkLayer(
       watermarkCanvas.width,
       watermarkCanvas.height,
       options.margin
-    )
+    );
 
     for (const pos of positions) {
       if (options.rotation) {
-        ctx.save()
-        ctx.translate(pos.x + watermarkCanvas.width / 2, pos.y + watermarkCanvas.height / 2)
-        ctx.rotate((options.rotation * Math.PI) / 180)
-        ctx.drawImage(watermarkCanvas, -watermarkCanvas.width / 2, -watermarkCanvas.height / 2)
-        ctx.restore()
+        ctx.save();
+        ctx.translate(pos.x + watermarkCanvas.width / 2, pos.y + watermarkCanvas.height / 2);
+        ctx.rotate((options.rotation * Math.PI) / 180);
+        ctx.drawImage(watermarkCanvas, -watermarkCanvas.width / 2, -watermarkCanvas.height / 2);
+        ctx.restore();
       } else {
-        ctx.drawImage(watermarkCanvas, pos.x, pos.y)
+        ctx.drawImage(watermarkCanvas, pos.x, pos.y);
       }
     }
   }
 
-  ctx.restore()
+  ctx.restore();
 }
 
 // ============================================
@@ -367,25 +363,25 @@ export function applyCenterLogo(
   padding: number = 4,
   backgroundColor: string = '#ffffff'
 ): WatermarkResult {
-  const result = document.createElement('canvas')
-  result.width = source.width
-  result.height = source.height
-  const ctx = result.getContext('2d')!
+  const result = document.createElement('canvas');
+  result.width = source.width;
+  result.height = source.height;
+  const ctx = result.getContext('2d')!;
 
-  ctx.drawImage(source, 0, 0)
+  ctx.drawImage(source, 0, 0);
 
-  const logoSize = source.width * (sizePercent / 100)
-  const x = (source.width - logoSize) / 2
-  const y = (source.height - logoSize) / 2
+  const logoSize = source.width * (sizePercent / 100);
+  const x = (source.width - logoSize) / 2;
+  const y = (source.height - logoSize) / 2;
 
   // Draw background
-  ctx.fillStyle = backgroundColor
-  ctx.fillRect(x - padding, y - padding, logoSize + padding * 2, logoSize + padding * 2)
+  ctx.fillStyle = backgroundColor;
+  ctx.fillRect(x - padding, y - padding, logoSize + padding * 2, logoSize + padding * 2);
 
   // Draw logo
-  ctx.drawImage(logo, x, y, logoSize, logoSize)
+  ctx.drawImage(logo, x, y, logoSize, logoSize);
 
-  return { canvas: result, width: result.width, height: result.height }
+  return { canvas: result, width: result.width, height: result.height };
 }
 
 // ============================================
@@ -399,6 +395,6 @@ export const Watermark = {
   applyBlendMode,
   applyWatermark,
   applyCenterLogo,
-}
+};
 
-export default Watermark
+export default Watermark;

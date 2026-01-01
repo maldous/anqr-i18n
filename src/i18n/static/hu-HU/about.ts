@@ -1,70 +1,42 @@
-import type { PageDefinition } from '../types'
-import { LAST_UPDATED, CONTACT_EMAIL } from '../types'
+import type { PageDefinition } from '../types';
+import { CONTACT_EMAIL, LAST_UPDATED } from '../types';
 
 export const about: PageDefinition = {
-  title: '"Az ANQR-ről”',
-  description: '"Az ANQR egy ingyenes QR-kód generátor kliensközpontú megközelítéssel – generáljon QR-kódokat helyben, vagy használja az API-nkat a beágyazáshoz.”',
+  title: 'About ANQR',
+  description: 'ANQR is a free QR code generator with a client-first approach — generate QR codes locally or use our API for embedding.',
   lastUpdated: LAST_UPDATED,
   sections: [
     {
-      heading: '"Mi az ANQR?”',
-      paragraphs: [
-        '"Az ANQR (ejtsd: "horgony”) egy ingyenes QR-kód generátor, amely beolvasható kódokat hoz létre URL-ekhez, szövegekhez, Wi-Fi hitelesítő adatokhoz, névjegykártyákhoz, naptári eseményekhez és egyebekhez.”',
-        '"Magánszemélyek, kisvállalkozások, marketingesek és fejlesztők számára készült, akik regisztráció nélkül szeretnének hatékony QR-kód eszközöket. Az ügyfélközpontú kialakítás azt jelenti, hogy a QR-kódok alapértelmezés szerint helyben, a böngészőben generálódnak, opcionális szerver API-val a professzionális beágyazás és integráció érdekében.”',
-      ],
+      heading: 'What is ANQR?',
+      paragraphs: ['ANQR (pronounced "anchor") is a free QR code generator that creates scannable codes for URLs, text, Wi-Fi credentials, contact cards, calendar events, and more.', 'It is built for individuals, small businesses, marketers, and developers who want powerful QR tools without signing up. The client-first design means QR codes are generated locally in your browser by default, with an optional server API for professional embedding and integration.'],
     },
     {
-      heading: '"Főbb jellemzők”',
-      bullets: [
-        '"QR-kódok generálása azonnal a böngészőben – fiók nélkül.”',
-        '"Szabja testre a színeket, a modulstílusokat, a keresőmintákat, és adjon hozzá képátfedéseket.”',
-        '"Exportálás több formátumban: PNG, SVG, WebP és animált GIF.”',
-        '"Speciális vezérlők a hibajavítási szinthez, a QR-kód verziójához, a kódolási módhoz és a maszk kiválasztásához.”',
-        '"Szkennelési biztonsági útmutatás és élő előnézet a kódok olvashatóságának megőrzéséhez nyomtatásban és a képernyőn.”',
-        '"Szerveroldali API professzionális beágyazáshoz teljes paraméter-támogatással.”',
-        '"Betöltés után offline is működik – ez egy statikus webalkalmazás, amelyet bárhol futtathatsz.”',
-      ],
+      heading: 'Key features',
+      bullets: ['Generate QR codes instantly in your browser — no account required.', 'Customise colours, module styles, finder patterns, and add image overlays.', 'Export in multiple formats: PNG, SVG, WebP, and animated GIF.', 'Advanced controls for error correction level, QR version, encoding mode, and mask selection.', 'Scan-safety guidance and live preview to help keep codes readable in print and on screens.', 'Server-side API for professional embedding with full parameter support.', 'Works offline once loaded — it is a static web app you can run anywhere.'],
     },
     {
-      heading: '"Hogyan működik az ANQR”',
-      paragraphs: [
-        '"Az ANQR a böngészőben fut, és a bemenetet egy szabványos QR-mátrixba kódolja Reed–Solomon hibajavítással, majd a kiválasztott formátumban megjeleníti.”',
-        '"Alapértelmezés szerint a generálás helyben, a böngészőben történik. Professzionális használatra a szerveroldali API-t is használhatja QR-kódok generálására URL-paramétereken keresztül – tökéletes webhelyekbe, e-mailekbe vagy automatizált munkafolyamatokba való beágyazáshoz.”',
-        '"Átfedések vagy animációk hozzáadásakor az ANQR egyensúlyt teremt a stílus és a szkennelés megbízhatósága között, így az eredmény szkennelhető marad.”',
-        '"Az ANQR statikus kódokra összpontosít (az adatok a QR-kódon belül vannak). Ha dinamikus kódra van szükséged (szerkeszthető cél), akkor kódolhatod a saját átirányítási URL-edet vagy rövid linkedet.”',
-      ],
+      heading: 'How ANQR works',
+      paragraphs: ['ANQR runs in your browser and encodes your input into a standard QR matrix with Reed–Solomon error correction, then renders it to the format you choose.', 'By default, generation happens locally in your browser. For professional use, you can also use the server-side API to generate QR codes via URL parameters — perfect for embedding in websites, emails, or automated workflows.', 'When you add overlays or animations, ANQR balances styling with scan reliability so the result remains scannable.', 'ANQR focuses on static codes (the data is inside the QR). If you need a dynamic code (editable destination), you can encode your own redirect URL or short link.'],
     },
     {
-      heading: '"Ki üzemelteti az ANQR-t?”',
-      paragraphs: [
-        '"Az ANQR független webes eszközként működik. Kérdések, támogatás vagy üzleti megkeresések esetén kérjük, használja a Kapcsolatfelvétel oldalt vagy írjon e-mailt.”' + CONTACT_EMAIL + '".”',
-      ],
+      heading: 'Who operates ANQR?',
+      paragraphs: [`18${CONTACT_EMAIL}19`],
     },
     {
-      heading: '"Reklám és hogyan maradhatunk szabadok”',
-      paragraphs: [
-        '"Az ANQR ingyenesen használható, és hirdetések támogatják. Hirdetéseket jeleníthetünk meg a Google AdSense-en és/vagy más hirdetési partnereken keresztül.”',
-        '"A hirdetésszolgáltatók sütiket vagy hasonló technológiákat használhatnak a hirdetések személyre szabására az Ön érdeklődési köre és böngészési tevékenysége alapján. A hirdetési beállításokat az eszközbeállításaiban és a Google hirdetésbeállításain keresztül kezelheti, további információkat pedig az Adatvédelmi irányelveinkben talál.”',
-        '"Nem áruljuk a QR-kódokba kódolt tartalmat. A hirdetések segítenek fedezni a projekt működtetésének és fejlesztésének költségeit.”',
-      ],
+      heading: 'Advertising and how we stay free',
+      paragraphs: ['ANQR is free to use and is supported by advertising. We may show ads via Google AdSense and/or other advertising partners.', 'Ad providers may use cookies or similar technologies to personalise ads based on your interests and browsing activity. You can manage ad preferences in your device settings and through Google ad settings, and learn more in our Privacy Policy.', 'We do not sell the content you encode into QR codes. Ads help cover the cost of running and improving the project.'],
     },
     {
-      heading: '"Nyílt szabványok”',
-      paragraphs: [
-        '"Az ANQR az ISO/IEC 18004 szabvány alapján generál QR-kódokat, és széles körű kompatibilitást céloz a szkennerek, kamerák és nyomtatási munkafolyamatok között.”',
-      ],
+      heading: 'Open standards',
+      paragraphs: ['ANQR generates QR codes based on the ISO/IEC 18004 standard and aims for broad compatibility across scanners, cameras, and print workflows.'],
     },
     {
-      heading: '"Védjegyre vonatkozó közlemény”',
-      paragraphs: [
-        '"A QR Code® a DENSO WAVE INCORPORATED bejegyzett védjegye. Az ANQR nem áll kapcsolatban a DENSO WAVE INCORPORATED-del, nem támogatja és nem szponzorálja azt.”',
-      ],
+      heading: 'Trademark notice',
+      paragraphs: ['QR Code® is a registered trademark of DENSO WAVE INCORPORATED. ANQR is not affiliated with, endorsed by, or sponsored by DENSO WAVE INCORPORATED.'],
     },
     {
-      heading: '"Visszajelzések és hozzájárulások”',
-      paragraphs: [
-        '"Szívesen fogadjuk a visszajelzéseket, hibajelentéseket és funkciójavaslatokat. Kérjük, vegye fel velünk a kapcsolatot e-mailben vagy a kapcsolatfelvételi oldalon keresztül – minden üzenetet elolvasunk, bár a válaszadási idők eltérőek lehetnek.”',
-      ],
+      heading: 'Feedback and contributions',
+      paragraphs: ['We welcome feedback, bug reports, and feature suggestions. Please get in touch via email or the contact page — we read every message, though response times may vary.'],
     },
   ],
 };

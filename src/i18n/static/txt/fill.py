@@ -26,10 +26,21 @@ ID_LINE_RE = re.compile(r"^\s*(\d+)\s*(?:\t|\s{2,}|,)\s*(.+?)\s*$")
 ID_ONLY_RE = re.compile(r"^\d+$")
 
 
+def normalize_quotes(s: str) -> str:
+    """Normalize curly/smart quotes to straight quotes."""
+    # Left and right double quotes -> straight double quote
+    s = s.replace("\u201c", '"').replace("\u201d", '"')
+    # Left and right single quotes -> straight single quote
+    s = s.replace("\u2018", "'").replace("\u2019", "'")
+    return s
+
+
 def parse_translation_rhs(rhs: str, *, path: str, line_no: int) -> str:
     rhs = rhs.strip()
     if rhs == "":
         return ""
+    # Normalize smart/curly quotes to straight quotes before processing
+    rhs = normalize_quotes(rhs)
     try:
         if rhs.startswith('"') and rhs.endswith('"'):
             return json.loads(rhs)  # JSON string

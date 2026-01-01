@@ -2,840 +2,381 @@ import type { PageDefinition } from '../types';
 import { LAST_UPDATED } from '../types';
 
 export const docs: PageDefinition = {
-  title: '"ANQR användarhandbok”',
-  description: '”Komplett guide till att använda ANQR för att skapa QR-koder.”',
+  title: 'ANQR User Guide',
+  description: 'Complete guide to using ANQR for creating QR codes.',
   lastUpdated: LAST_UPDATED,
   sections: [
     {
-      heading: '"Komma igång”',
-      paragraphs: [
-        '”ANQR är en QR-kodgenerator med ett klientfokuserat tillvägagångssätt. Som standard genereras QR-koder lokalt i din webbläsare – inget konto krävs och dina data förblir privata. För professionell inbäddning kan du också använda serversidans API.”',
-        '”Gränssnittet har tre gränssnittsnivåer: Grundläggande, Avancerad och Professionell. Välj din nivå med hjälp av flikarna i rubriken. Varje nivå låser upp ytterligare funktioner samtidigt som gränssnittet fokuserar på vad du behöver.”',
-      ],
+      heading: 'Getting Started',
+      paragraphs: ['ANQR is a QR code generator with a client-first approach. By default, QR codes are generated locally in your browser — no account required and your data stays private. For professional embedding, you can also use the server-side API.', 'The interface has three interface levels: Basic, Advanced, and Professional. Select your level using the tabs in the header. Each level unlocks additional features while keeping the interface focused on what you need.'],
+      bullets: ['Basic: Simple QR code creation with plain text/URL content and image overlay.', 'Advanced: QR encoding options, rendering styles, animation, output formats, extended content types, and overlay customization.', 'Professional: Watermarks, metadata, sharing, safety analysis, payment QR codes, and enterprise features.'],
+    },
+    {
+      heading: 'Quick Start',
+      paragraphs: ['To create your first QR code:'],
+      bullets: ['1. Select a content type (URL, text, WiFi, etc.) from the Content Type dropdown.', '2. Enter your data in the provided fields.', '3. Optionally customize colors, styles, and add an overlay image.', '4. Click Export to download your QR code as PNG, GIF, WebP, or SVG.'],
+    },
+    {
+      heading: 'Basic Features',
+      paragraphs: ['The Basic level provides a streamlined interface for creating QR codes with payload content and image overlays. This is the simplest way to get started.'],
+    },
+    {
+      heading: 'Content Types (Basic)',
+      paragraphs: ['Plain Text: Encode any text up to the QR code capacity limit. Ideal for short messages, codes, or identifiers.', 'URL: Encode web addresses. The QR code will open the URL when scanned. Supports http:// and https:// protocols.'],
+    },
+    {
+      heading: 'Image Overlay (Basic)',
+      paragraphs: ['Upload an image (JPG, PNG, GIF, WebP) to blend with your QR code. Basic overlay features include:'],
+      bullets: ['Upload from file: Select an image from your device.', 'Load from URL: Enter an image URL (must allow CORS).', 'Center Logo: Places image in the center, relying on error correction.', 'Blend: Simple alpha blending of image with QR pattern.', 'Intensity: Controls how strongly the overlay affects the QR code (0-100%).', 'Color Mode: Full Color, Grayscale, or Black & White.', 'Preserve Finder Patterns: Keeps corner patterns unmodified for reliable scanning.'],
+    },
+    {
+      heading: 'Advanced Features',
+      paragraphs: ['The Advanced level unlocks QR encoding options, rendering styles, animation, output formats, extended content types, and advanced overlay customization.'],
+    },
+    {
+      heading: 'QR Encoding Settings',
+      paragraphs: ['Version: QR codes come in versions 1-40, with higher versions holding more data but being larger. Set to 0 (Auto) to let ANQR choose the smallest version that fits your content.', 'Error Correction: Determines how much damage a QR code can sustain while remaining scannable.'],
+      bullets: ['L (Low): 7% error correction - smallest size, least redundancy.', 'M (Medium): 15% error correction - balanced option.', 'Q (Quartile): 25% error correction - good for printed codes.', 'H (High): 30% error correction - best for codes with overlays or in harsh conditions.'],
+    },
+    {
+      heading: 'Quiet Zone (Margin)',
+      paragraphs: ['The quiet zone is the white space around the QR code. Scanners need this margin to detect where the code starts. The standard recommends at least 4 modules. Reducing below 4 may cause scanning issues.'],
+    },
+    {
+      heading: 'Module Style',
+      paragraphs: ['Modules are the individual squares that make up a QR code. ANQR offers five styles:'],
+      bullets: ['Square: Classic QR appearance with sharp corners.', 'Rounded: Softened corners for a friendlier look.', 'Dots: Circular modules for a modern aesthetic.', 'Diamond: 45° rotated squares for a distinctive pattern.', 'Connected: Modules merge when adjacent, creating organic shapes.'],
+    },
+    {
+      heading: 'Finder Pattern Style',
+      paragraphs: ['Finder patterns are the three large squares in QR corners that help scanners orient the code. Available styles:'],
+      bullets: ['Square: Standard square corners.', 'Rounded: Softened corners matching rounded module style.', 'Circle: Circular finder patterns for dot-style codes.'],
+    },
+    {
+      heading: 'Alignment & Timing Patterns',
+      paragraphs: ['Alignment patterns appear in larger QR codes (version 2+) to help correct distortion. Timing patterns are the alternating lines connecting finder patterns.'],
+      bullets: ['Alignment Style: Match Finder, Square, Rounded, or Circle.', 'Timing Style: Match Module, Solid, or Dashed.'],
+    },
+    {
+      heading: 'Colors',
+      paragraphs: ['Foreground: The color of the QR modules. Black (#000000) is standard but any dark color works.', 'Background: The background color. White (#ffffff) is standard. Ensure sufficient contrast with the foreground.', 'Transparent Background: Remove the background entirely for use on colored surfaces. Ensure the surface provides adequate contrast.'],
+    },
+    {
+      heading: 'Module Size & Gap',
+      paragraphs: ['Module Size: Controls how large each module is rendered in pixels. Larger values create bigger, easier-to-scan codes.', 'Module Gap: Adds space between modules as a percentage. Small gaps (5-15%) can improve scannability in some conditions but excessive gaps reduce reliability.'],
+    },
+    {
+      heading: 'Output Settings',
+      paragraphs: ['Format: Choose your export format based on use case.'],
+      bullets: ['PNG: Lossless raster format, ideal for most uses. Best for print and digital.', 'WebP: Modern format with smaller file sizes. Good for web use.', 'GIF: Required for animated QR codes. Supports transparency.', 'SVG: Vector format that scales infinitely. Best for large print or when you need to edit the code.'],
+    },
+    {
+      heading: 'Output Dimensions',
+      paragraphs: ['Width/Height: Set the output size in pixels. For print, calculate based on DPI (e.g., 300 DPI at 1 inch = 300px). Larger sizes scan more reliably at distance.'],
+    },
+    {
+      heading: 'Animation Settings (Advanced)',
+      paragraphs: ['Control animated QR code behavior:'],
+      bullets: ['Speed: Animation frame rate in milliseconds.', 'Loop: Continuous or single-play animation.', 'Bounce: Ping-pong animation direction.', 'Start Frame: Begin animation from specific frame.', 'Max Frames: Limit total frames in animation.', 'Frame Step: Skip frames for faster animation.', 'Interpolation: None, Crossfade, or Morph between frames.'],
+    },
+    {
+      heading: 'Content Types (Advanced)',
+      paragraphs: ['Advanced level unlocks additional payload formats:'],
       bullets: [
-        '”Grundläggande: Enkel QR-kodskapning med vanlig text/URL-innehåll och bildöverlagring.”',
-        '”Avancerat: QR-kodningsalternativ, renderingsstilar, animering, utdataformat, utökade innehållstyper och anpassning av överlägg.”',
-        '”Professionellt: Vattenstämplar, metadata, delning, säkerhetsanalys, QR-koder för betalning och företagsfunktioner.”',
+        'Phone Number (tel:): Creates a callable phone link.',
+        'Email (mailto:): Opens email client with optional subject and body.',
+        'SMS: Pre-filled text message to a phone number.',
+        'vCard: Full contact card with name, organization, phone, email, address.',
+        'MeCard: Compact contact format popular in Japan.',
+        'BizCard: Legacy business card format.',
+        'Geo Location: GPS coordinates that open in maps.',
+        'WiFi: Network credentials for automatic connection (SSID, password, security type).',
+        'Calendar Event: iCalendar format with title, location, date/time.',
+        'Event RSVP: Link to event registration page.',
+        'Calendar Subscribe: Subscribe to an ICS/WebCal feed.',
+        'File/Document URL: Direct link to downloadable files.',
+        'Cloud Storage Link: Links to Google Drive, Dropbox, OneDrive, etc.',
+        'Social Profile: Links to LinkedIn, Twitter, Instagram, etc.',
+        'Messaging Link: WhatsApp, Telegram, Signal deep links.',
       ],
     },
     {
-      heading: '"Snabbstart”',
-      paragraphs: [
-        '”Så här skapar du din första QR-kod:”',
-      ],
+      heading: 'Advanced Overlay Features',
+      paragraphs: ['Additional overlay capabilities:'],
+      bullets: ['Crop: Enable cropping to select a square region of your image.', 'Halftone: Classic print-style dot pattern based on image brightness.', 'Dithered: Error-diffusion dithering for detailed reproduction.'],
+    },
+    {
+      heading: 'Overlay Blend Modes (Advanced)',
+      paragraphs: ['Additional blend modes in Advanced level:'],
+      bullets: ['Subpixel: Divides each module into subpixels for higher detail.', 'Blue Noise: Uses blue noise dithering for artifact-free patterns.', 'Mosaic: Tile-based effect preserving image structure.', 'Gap Fill: Places image in gaps between modules.', 'Brightness: Varies module size based on image brightness.', 'Duotone: Maps image to two colors for striking contrast.'],
+    },
+    {
+      heading: 'Overlay Intensity',
+      paragraphs: ['Controls how strongly the overlay affects the QR code (0-100%). Higher values show more image detail but may reduce scannability. Start around 70% and adjust based on testing.'],
+    },
+    {
+      heading: 'Color Mode',
+      paragraphs: ['How the overlay image is processed:'],
+      bullets: ['Full Color: Preserves original image colors.', 'Grayscale: Converts to black and white tones.', 'Black & White: High contrast binary conversion.'],
+    },
+    {
+      heading: 'Preserve Finder Patterns',
+      paragraphs: ['When enabled, keeps the three corner finder patterns unmodified by the overlay. Strongly recommended for reliable scanning.'],
+    },
+    {
+      heading: 'Image Preprocessing',
+      paragraphs: ['Apply filters to your overlay image before blending. These adjustments can improve how the image appears in the final QR code.'],
+      bullets: ['Brightness (-100 to +100): Lighten or darken the image.', 'Contrast (-100 to +100): Increase or decrease tonal range.', 'Gamma (0.2 to 3.0): Non-linear brightness adjustment. Values below 1 lighten midtones, above 1 darken them.', 'Saturation (-100 to +100): Color intensity. -100 is grayscale, +100 is oversaturated.', 'Hue Rotate (0-360°): Shift all colors around the color wheel.', 'Blur (0-20px): Soften image details.', 'Sharpen (0-100%): Enhance edges and details.', 'Posterize (0-16 levels): Reduce color levels for a poster effect.', 'Threshold (0-255): Convert to binary black/white at cutoff point.', 'Edge Detection: Sobel or Canny algorithms to show only edges.', 'Invert: Reverse all colors.'],
+    },
+    {
+      heading: 'Fit Mode',
+      paragraphs: ['How the overlay image fits the QR code area:'],
+      bullets: ['Cover: Image fills entire area, cropping if needed.', 'Contain: Entire image visible, may have margins.', 'Stretch: Image distorts to fill exactly.'],
+    },
+    {
+      heading: 'Transform Options',
+      paragraphs: ['Rotation: Rotate overlay in 90° increments.', 'Flip X/Y: Mirror the image horizontally or vertically.'],
+    },
+    {
+      heading: 'Dithering Algorithms',
+      paragraphs: ['Dithering converts continuous-tone images to patterns that QR codes can represent. Available when using Dithered, Blue Noise, or True Dither blend modes.'],
       bullets: [
-        '"1. Välj en innehållstyp (URL, text, WiFi, etc.) från rullgardinsmenyn Innehållstyp.”',
-        '"2. Ange dina uppgifter i de angivna fälten.”',
-        '"3. Anpassa färger och stilar, och lägg till en överläggsbild.',
-        '"4. Klicka på Exportera för att ladda ner din QR-kod som PNG, GIF, WebP eller SVG.”',
+        'Error Diffusion: Classic Floyd-Steinberg style. Spreads quantization error to neighboring pixels.',
+        'Ordered (Bayer): Uses a threshold matrix for regular patterns.',
+        'Clustered Dot: Simulates halftone printing.',
+        'Void & Cluster: Optimized ordered dithering.',
+        'Blue Noise: Visually pleasant random-looking pattern.',
+        'Blue Noise Threshold: Threshold dithering with blue noise texture.',
+        'White Noise: Random threshold dithering.',
+        'Gaussian/Triangular Noise: Noise with different distributions.',
+        'Blue Noise + Error Diffusion: Hybrid combining both techniques.',
+        'Screened Blue Noise: Screen-like blue noise pattern.',
+        'Perceptual: Luminance-weighted for better visual results.',
+        'Edge-Aware: Preserves image edges during dithering.',
+        'Adaptive Threshold: Locally-adaptive thresholding.',
+        'Temporal Blue Noise: For animated GIFs, varies pattern per frame.',
       ],
     },
     {
-      heading: '"Grundläggande funktioner”',
-      paragraphs: [
-        '”Grundnivån erbjuder ett strömlinjeformat gränssnitt för att skapa QR-koder med nyttolastinnehåll och bildöverlagringar. Detta är det enklaste sättet att komma igång.”',
-      ],
-    },
-    {
-      heading: '"Innehållstyper (grundläggande)”',
-      paragraphs: [
-        '”Vanlig text: Koda valfri text upp till QR-kodens kapacitetsgräns. Perfekt för korta meddelanden, koder eller identifierare.”',
-        '”URL: Koda webbadresser. QR-koden öppnar URL:en när den skannas. Stöder protokollen http:// och https://.”',
-      ],
-    },
-    {
-      heading: '"Bildöverlagring (grundläggande)”',
-      paragraphs: [
-        '”Ladda upp en bild (JPG, PNG, GIF, WebP) som ska blandas med din QR-kod. Grundläggande överlagringsfunktioner inkluderar:”',
-      ],
-      bullets: [
-        '"Ladda upp från fil: Välj en bild från din enhet.”',
-        '"Ladda från URL: Ange en bild-URL (måste tillåta CORS).”',
-        '”Centerlogotyp: Placerar bilden i mitten, beroende på felkorrigering.”',
-        '"Blandning: Enkel alfablandning av bild med QR-mönster.”',
-        '”Intensitet: Styr hur starkt överlagringen påverkar QR-koden (0–100 %).”',
-        '"Färgläge: Fullfärg, gråskala eller svartvitt.”',
-        '"Bevara sökarmönster: Håller hörnmönster oförändrade för tillförlitlig skanning.”',
-      ],
-    },
-    {
-      heading: '"Avancerade funktioner”',
-      paragraphs: [
-        '”Den avancerade nivån låser upp QR-kodningsalternativ, renderingsstilar, animering, utdataformat, utökade innehållstyper och avancerad anpassning av överlägg.”',
-      ],
-    },
-    {
-      heading: '"Inställningar för QR-kodning”',
-      paragraphs: [
-        '”Version: QR-koder finns i versionerna 1–40, där högre versioner innehåller mer data men är större. Ställ in på 0 (Auto) för att låta ANQR välja den minsta versionen som passar ditt innehåll.”',
-        '”Felkorrigering: Bestämmer hur mycket skada en QR-kod kan åstadkomma samtidigt som den är skanningsbar.”',
-      ],
-      bullets: [
-        '"L (Låg): 7 % felkorrigering – minsta storlek, minst redundans.”',
-        '"M (Medium): 15 % felkorrigering – balanserat alternativ.”',
-        '"Q (kvartil): 25 % felkorrigering – bra för utskrivna koder.”',
-        '"H (Hög): 30 % felkorrigering – bäst för koder med överlagringar eller under svåra förhållanden.”',
-      ],
-    },
-    {
-      heading: '"Tyst zon (marginal)”',
-      paragraphs: [
-        '”Den tysta zonen är det vita utrymmet runt QR-koden. Skannrar behöver denna marginal för att upptäcka var koden börjar. Standarden rekommenderar minst 4 moduler. Att minska till under 4 kan orsaka skanningsproblem.”',
-      ],
-    },
-    {
-      heading: '"Modulstil”',
-      paragraphs: [
-        '”Moduler är de individuella rutor som utgör en QR-kod. ANQR erbjuder fem stilar:”',
-      ],
-      bullets: [
-        '”Kvadrat: Klassiskt QR-utseende med skarpa hörn.”',
-        '”Avrundad: Mjukare hörn för ett vänligare utseende.”',
-        '”Prickar: Cirkulära moduler för en modern estetik.”',
-        '”Diamant: 45° roterade rutor för ett distinkt mönster.”',
-        '”Anslutna: Moduler sammanfogas när de ligger intill varandra och skapar organiska former.”',
-      ],
-    },
-    {
-      heading: '"Finder-mönsterstil”',
-      paragraphs: [
-        '”Findermönster är de tre stora rutorna i QR-hörnen som hjälper skannrar att orientera koden. Tillgängliga stilar:”',
-      ],
-      bullets: [
-        '"Kvadratisk: Standard fyrkantiga hörn.”',
-        '”Avrundad: Mjuka hörn som matchar rundad modulstil.”',
-        '"Cirkel: Cirkulära sökmönster för punktformade koder.”',
-      ],
-    },
-    {
-      heading: '"Justering och tidsmönster”',
-      paragraphs: [
-        '”Justeringsmönster visas i större QR-koder (version 2+) för att korrigera distorsion. Tidsmönster är de alternerande linjerna som förbinder sökarmönster.”',
-      ],
-      bullets: [
-        '"Justeringsstil: Matchningssökare, Kvadratisk, Rundad eller Cirkel.”',
-        '"Tidstil: Matchningsmodul, Heldragen eller Streckad.”',
-      ],
-    },
-    {
-      heading: '"Färger”',
-      paragraphs: [
-        '”Förgrund: Färgen på QR-modulerna. Svart (#000000) är standard men vilken mörk färg som helst fungerar.”',
-        '”Bakgrund: Bakgrundsfärgen. Vit (#ffffff) är standard. Se till att kontrasten är tillräcklig mot förgrunden.”',
-        '”Transparent bakgrund: Ta bort bakgrunden helt för användning på färgade ytor. Se till att ytan ger tillräcklig kontrast.”',
-      ],
-    },
-    {
-      heading: '"Modulstorlek och mellanrum”',
-      paragraphs: [
-        '"Modulstorlek: Styr hur stor varje modul renderas i pixlar. Större värden skapar större och lättare att skanna koder.”',
-        '”Modulmellanrum: Lägger till mellanrum mellan moduler som en procentandel. Små mellanrum (5–15 %) kan förbättra skanningsbarheten under vissa förhållanden, men alltför stora mellanrum minskar tillförlitligheten.”',
-      ],
-    },
-    {
-      heading: '"Utmatningsinställningar”',
-      paragraphs: [
-        '"Format: Välj ditt exportformat baserat på användningsfall.”',
-      ],
-      bullets: [
-        '”PNG: Förlustfritt rasterformat, perfekt för de flesta användningsområden. Bäst för tryck och digitalt.”',
-        '”WebP: Modernt format med mindre filstorlekar. Bra för webbanvändning.”',
-        '"GIF: Krävs för animerade QR-koder. Stöder transparens.”',
-        '”SVG: Vektorformat som skalar oändligt. Bäst för stor stil eller när du behöver redigera koden.”',
-      ],
-    },
-    {
-      heading: '"Utmatningsdimensioner”',
-      paragraphs: [
-        '”Bredd/Höjd: Ställ in utskriftsstorleken i pixlar. För utskrift, beräkna baserat på DPI (t.ex. 300 DPI vid 1 tum = 300px). Större storlekar skannar mer tillförlitligt på avstånd.”',
-      ],
-    },
-    {
-      heading: '"Animationsinställningar (Avancerade)”',
-      paragraphs: [
-        '"Styra animerad QR-kods beteende:”',
-      ],
-      bullets: [
-        '"Hastighet: Animeringens bildhastighet i millisekunder.”',
-        '"Loop: Kontinuerlig eller enkelspelande animation.”',
-        '"Studsa: Regi av pingis-animation.”',
-        '"Starta bildruta: Börja animeringen från en specifik bildruta.”',
-        '"Max antal bildrutor: Begränsa totalt antal bildrutor i animeringen.”',
-        '"Bildrutesteg: Hoppa över bildrutor för snabbare animering.”',
-        '"Interpolering: Ingen, Crossfade eller Morph mellan bildrutor.”',
-      ],
-    },
-    {
-      heading: '"Innehållstyper (Avancerade)”',
-      paragraphs: [
-        '"Avancerad nivå låser upp ytterligare nyttolastformat:”',
-      ],
-      bullets: [
-        '"Telefonnummer (tel:): Skapar en anropbar telefonlänk.”',
-        '"E-post (mailto:): Öppnar e-postklienten med valfritt ämne och brödtext.”',
-        '"SMS: Förifyllt textmeddelande till ett telefonnummer.”',
-        '”vCard: Fullständigt kontaktkort med namn, organisation, telefon, e-postadress, adress.”',
-        '"MeCard: Kompakt kontaktformat populärt i Japan.”',
-        '"BizCard: Äldre visitkortsformat.”',
-        '"Geografisk plats: GPS-koordinater som öppnas i kartor.”',
-        '"WiFi: Nätverksuppgifter för automatisk anslutning (SSID, lösenord, säkerhetstyp).”',
-        '"Kalenderhändelse: iCalendar-format med titel, plats, datum/tid.”',
-        '"OSA för evenemang: Länk till sidan för evenemangsregistrering.”',
-        '”Kalenderprenumeration: Prenumerera på ett ICS/WebCal-flöde.”',
-        '"Fil-/dokument-URL: Direktlänk till nedladdningsbara filer.”',
-        '”Länk till molnlagring: Länkar till Google Drive, Dropbox, OneDrive, etc.”',
-        '”Social profil: Länkar till LinkedIn, Twitter, Instagram etc.”',
-        '"Meddelandenlänk: WhatsApp, Telegram, Signal djuplänkar.”',
-      ],
-    },
-    {
-      heading: '"Avancerade överläggsfunktioner”',
-      paragraphs: [
-        '"Ytterligare överlagringsfunktioner:”',
-      ],
-      bullets: [
-        '"Beskär: Aktivera beskärning för att välja ett kvadratiskt område av din bild.”',
-        '"Halvton: Klassiskt punktmönster i tryckstil baserat på bildens ljusstyrka.”',
-        '"Rattrad: Feldiffusionsrattring för detaljerad reproduktion.”',
-      ],
-    },
-    {
-      heading: '"Överläggsblandningslägen (avancerat)”',
-      paragraphs: [
-        '"Ytterligare blandningslägen på avancerad nivå:”',
-      ],
-      bullets: [
-        '"Subpixel: Delar upp varje modul i subpixlar för högre detaljrikedom.”',
-        '"Blått brus: Använder blått brus-dithering för artefaktfria mönster.”',
-        '"Mosaik: Kakelbaserad effekt som bevarar bildstrukturen.”',
-        '"Fyll mellanrum: Placerar bilden i mellanrummen mellan modulerna.”',
-        '"Ljusstyrka: Varierar modulstorleken baserat på bildens ljusstyrka.”',
-        '"Duotone: Omvandlar bilden till två färger för slående kontrast.”',
-      ],
-    },
-    {
-      heading: '"Överlagringsintensitet”',
-      paragraphs: [
-        '”Styrer hur starkt överlagringen påverkar QR-koden (0–100 %). Högre värden visar mer bilddetaljer men kan minska skanningsbarheten. Börja runt 70 % och justera baserat på tester.”',
-      ],
-    },
-    {
-      heading: '"Färgläge”',
-      paragraphs: [
-        '"Hur överlagringsbilden bearbetas:”',
-      ],
-      bullets: [
-        '"Fullfärg: Bevarar bildens ursprungliga färger.”',
-        '"Gråskala: Konverterar till svarta och vita toner.”',
-        '"Svartvitt: Konvertering av binär bild med hög kontrast.”',
-      ],
-    },
-    {
-      heading: '"Bevara sökarmönster”',
-      paragraphs: [
-        '”När den är aktiverad behålls de tre hörnmönstren oförändrade av överlägget. Rekommenderas starkt för tillförlitlig skanning.”',
-      ],
-    },
-    {
-      heading: '"Bildförbehandling”',
-      paragraphs: [
-        '”Tillämpa filter på din överlagringsbild innan du blandar. Dessa justeringar kan förbättra hur bilden visas i den slutliga QR-koden.”',
-      ],
-      bullets: [
-        '"Ljusstyrka (-100 till +100): Gör bilden ljusare eller mörkare.”',
-        '"Kontrast (-100 till +100): Öka eller minska tonomfånget.”',
-        '"Gamma (0,2 till 3,0): Icke-linjär ljusstyrkejustering. Värden under 1 ljusar upp mellantoner, över 1 mörkar upp dem.”',
-        '"Mättnad (-100 till +100): Färgintensitet. -100 är gråskala, +100 är övermättad.”',
-        '"Rotera nyans (0–360°): Flytta alla färger runt färghjulet.”',
-        '"Oskärpa (0–20px): Mjuka upp bilddetaljer.”',
-        '"Skärpa (0–100 %): Förbättra kanter och detaljer.”',
-        '"Posterisering (0–16 nivåer): Minska färgnivåerna för en postereffekt.”',
-        '"Tröskelvärde (0–255): Konvertera till binärt svart/vitt vid gränspunkten.”',
-        '"Kantdetektering: Sobel- eller Canny-algoritmer för att endast visa kanter.”',
-        '"Invertera: Vänd alla färger.”',
-      ],
-    },
-    {
-      heading: '"Anpassningsläge”',
-      paragraphs: [
-        '"Hur överläggsbilden passar in i QR-kodsområdet:”',
-      ],
-      bullets: [
-        '”Omslag: Bilden fyller hela området, beskärs vid behov.”',
-        '”Innehåller: Hela bilden är synlig, kan ha marginaler.”',
-        '"Stretch: Bilden förvrängs för att fylla exakt.”',
-      ],
-    },
-    {
-      heading: '"Transformeringsalternativ”',
-      paragraphs: [
-        '"Rotation: Rotera överlägget i steg om 90°.”',
-        '"Vänd X/Y: Spegla bilden horisontellt eller vertikalt.”',
-      ],
-    },
-    {
-      heading: '"Rasteralgoritmer”',
-      paragraphs: [
-        '”Rasterning konverterar bilder med kontinuerlig ton till mönster som QR-koder kan representera. Tillgängligt när blandningslägena Rasterning, Blått brus eller Sann Rasterning används.”',
-      ],
-      bullets: [
-        '"Feldiffusion: Klassisk Floyd-Steinberg-stil. Spridar kvantiseringsfelet till angränsande pixlar.”',
-        '"Orderad (Bayer): Använder en tröskelmatris för regelbundna mönster.”',
-        '"Klustrad punkt: Simulerar rasterutskrift.”',
-        '"Void & Cluster: Optimerad ordnad dithering.”',
-        '”Blått brus: Visuellt behagligt slumpmässigt utseende mönster.”',
-        '"Tröskelvärde för blått brus: Tröskelvärdesdissering med blått brustextur.”',
-        '"Vitt brus: Slumpmässig tröskeldithering.”',
-        '"Gaussiskt/Triangulärt brus: Brus med olika fördelningar.”',
-        '"Blått brus + feldiffusion: Hybrid som kombinerar båda teknikerna.”',
-        '"Skärmad blå brus: Skärmliknande blått brusmönster.”',
-        '”Perceptuell: Luminansviktad för bättre visuella resultat.”',
-        '"Kantmedveten: Bevarar bildens kanter under dithering.”',
-        '"Adaptiv tröskel: Lokalt adaptiv tröskelvärde.”',
-        '"Tillfälligt blått brus: För animerade GIF-bilder varierar mönstret per bildruta.”',
-      ],
-    },
-    {
-      heading: '"Diffusionskärnor”',
-      paragraphs: [
-        '"Välj hur felet fördelas när du använder feldiffusionsdithering:”',
-      ],
-      bullets: [
-        '"Floyd-Steinberg: Klassisk 4-granndiffusion. Bra generellt val.”',
-        '”Jarvis-Judice-Ninke: 12-grannare, smidigare men långsammare.”',
-        '”Stucki: Liknar JJN med olika vikter.”',
-        '"Burkes: Förenklad JJN, snabbare.”',
-        '"Sierra: Kärnfamilj som balanserar kvalitet och hastighet.”',
-        '"Atkinson: Ljusdiffusion, bevarar detaljer men kan vara kornig.”',
-      ],
+      heading: 'Diffusion Kernels',
+      paragraphs: ['When using Error Diffusion dithering, choose how error is distributed:'],
+      bullets: ['Floyd-Steinberg: Classic 4-neighbor diffusion. Good general choice.', 'Jarvis-Judice-Ninke: 12-neighbor, smoother but slower.', 'Stucki: Similar to JJN with different weights.', 'Burkes: Simplified JJN, faster.', 'Sierra: Family of kernels balancing quality and speed.', 'Atkinson: Light diffusion, preserves detail but can be grainy.'],
     },
     {
-      heading: '"Vibrationsstyrka”',
-      paragraphs: [
-        '"Styr hur mycket dithering som tillämpas (0–100 %). Lägre värden bevarar mer av det ursprungliga mönstret, högre värden visar mer bilddetaljer.”',
-      ],
+      heading: 'Dither Strength',
+      paragraphs: ['Controls how much dithering is applied (0-100%). Lower values preserve more of the original pattern, higher values show more image detail.'],
     },
     {
-      heading: '"Inställningar för delpixlar”',
-      paragraphs: [
-        '"När blandningsläget för delpixlar används:”',
-      ],
-      bullets: [
-        '"Rutnätsstorlek: 2×2, 3×3 eller 4×4 delpixlar per modul. Högre = mer detaljer.”',
-        '"Mittregel: Strikt kräver att mittenunderpixeln matchar modulen. Halvtonsmitten tillåter variation.”',
-        '"Neutral färg: Färg som används för obestämda delpixlar.”',
-        '"Finder Override: Hur sökarmönster återges (heldragna eller stiliserade).”',
-      ],
+      heading: 'Subpixel Settings',
+      paragraphs: ['When using Subpixel blend mode:'],
+      bullets: ['Grid Size: 2×2, 3×3, or 4×4 subpixels per module. Higher = more detail.', 'Center Rule: Strict requires center subpixel to match module. Halftone Center allows variation.', 'Neutral Color: Color used for undetermined subpixels.', 'Finder Override: How finder patterns are rendered (Solid or Stylized).'],
     },
     {
-      heading: '"Rasterinställningar”',
-      paragraphs: [
-        '"När du använder blandningsläget för rastertoner:”',
-      ],
-      bullets: [
-        '"Cellstorlek: Per modul eller N×N-rutnät.”',
-        '"Punktform: Cirkel, Kvadrat eller Linje.”',
-        '"Ljusstyrka: Linjär, S-kurva eller Gamma.”',
-      ],
+      heading: 'Halftone Settings',
+      paragraphs: ['When using Halftone blend mode:'],
+      bullets: ['Cell Size: Per Module or N×N grid.', 'Dot Shape: Circle, Square, or Line.', 'Brightness Curve: Linear, S-Curve, or Gamma.'],
     },
     {
-      heading: '"Duotonfärger”',
-      paragraphs: [
-        '"När du använder blandningsläget Duotone, ställ in skuggfärgen (mörka områden) och högdagerfärgen (ljusa områden).”',
-      ],
+      heading: 'Duotone Colors',
+      paragraphs: ['When using Duotone blend mode, set the Shadow color (dark areas) and Highlight color (bright areas).'],
     },
     {
-      heading: '"Inställningar för GIF-animering”',
-      paragraphs: [
-        '"När man använder animerade GIF-överlägg:”',
-      ],
-      bullets: [
-        '"Använd bildfördröjningar: Respektera original GIF-timing.”',
-        '"Max FPS: Begränsa bildfrekvens (1–60 fps).”',
-        '”Avfallshantering: Respektera eller förenkla metoderna för avfallshantering av ramar.”',
-      ],
+      heading: 'GIF Animation Settings',
+      paragraphs: ['When using animated GIF overlays:'],
+      bullets: ['Use Frame Delays: Respect original GIF timing.', 'Max FPS: Limit frame rate (1-60 fps).', 'Disposal Handling: Respect or Simplify frame disposal methods.'],
     },
     {
-      heading: '"Avancerade renderingsalternativ”',
-      paragraphs: [
-        '"Ytterligare renderingskontroller:”',
-      ],
-      bullets: [
-        '"Mellanrumsläge: Ingen, Infälld, Linje eller Negativt mellanrum för mellanrumsstil.”',
-        '"Hörnradie: Procentandel avrundade hörn för moduler.”',
-        '"Gradient: Ingen, linjär, radiell eller konisk gradient på moduler.”',
-        '”Öga yttre/inre stil: Oberoende stil för ringar med sökmönster.”',
-        '"Punktrotation: Rotera diamant-/punktmoduler.”',
-        '"Ögonskala: Storleksjustering för sökmönster.”',
-        '"Ramstil: Lägg till dekorativa ramar (rundad ram, klistermärke, etikett).”',
-        '"Ramtext: Lägg till text som ”Skanna mig!” i ramar.”',
-      ],
+      heading: 'Advanced Rendering Options',
+      paragraphs: ['Additional rendering controls:'],
+      bullets: ['Gap Mode: None, Inset, Stroke, or Negative Space gap styling.', 'Corner Radius: Rounded corners percentage for modules.', 'Gradient: None, Linear, Radial, or Conic gradient on modules.', 'Eye Outer/Inner Style: Independent styling for finder pattern rings.', 'Dot Rotation: Rotate diamond/dot modules.', 'Eye Scale: Size adjustment for finder patterns.', 'Frame Style: Add decorative frames (Rounded Frame, Sticker, Tag).', 'Frame Text: Add text like "Scan Me!" to frames.'],
     },
     {
-      heading: '"Avancerad QR-kodning”',
-      paragraphs: [
-        '"Finjustera QR-kodning:”',
-      ],
-      bullets: [
-        '"Kodningsläge: Auto, Numerisk, Alfanumerisk, Byte/UTF-8 eller Kanji.”',
-        '"Tillämpa minsta tysta zon: Säkerställ minst 4 modulers marginal.”',
-      ],
+      heading: 'Advanced QR Encoding',
+      paragraphs: ['Fine-tune QR encoding:'],
+      bullets: ['Encoding Mode: Auto, Numeric, Alphanumeric, Byte/UTF-8, or Kanji.', 'Enforce Min Quiet Zone: Ensure at least 4 module margin.'],
     },
     {
-      heading: '"Avancerade utmatningsalternativ”',
-      paragraphs: [
-        '"Ytterligare exportinställningar:”',
-      ],
-      bullets: [
-        '"Filnamn: Anpassat filnamn för nedladdningar.”',
-        '"GIF-palettstorlek: 2–256 färger i GIF-utdata.”',
-        '"GIF-kvantiserare: Median Cut, NeuQuant eller Octree-färgreducering.”',
-        '"GIF-rastrering: Av, Floyd-Steinberg eller Ordnad.”',
-        '"GIF Transparent färg: Ställ in en färg som ska vara transparent.”',
-        '"SVG True Vector: Använd sökvägar istället för inbäddat raster.”',
-        '"SVG-formprecision: Pixel- eller exakt banåtergivning.”',
-        '"SVG-bädda in rasteröverlägg: Inkludera överlägg som inbäddad bild.”',
-        '"Bakgrundsåsidosättning: Tvinga fram en specifik bakgrundsfärg i utdata.”',
-      ],
+      heading: 'Advanced Output Options',
+      paragraphs: ['Additional export settings:'],
+      bullets: ['Filename: Custom filename for downloads.', 'GIF Palette Size: 2-256 colors in GIF output.', 'GIF Quantizer: Median Cut, NeuQuant, or Octree color reduction.', 'GIF Dithering: Off, Floyd-Steinberg, or Ordered.', 'GIF Transparent Color: Set a color to be transparent.', 'SVG True Vector: Use paths instead of embedded raster.', 'SVG Shape Precision: Pixel or Precise path rendering.', 'SVG Embed Raster Overlay: Include overlay as embedded image.', 'Background Override: Force a specific background color in output.'],
     },
     {
-      heading: '"Valideringsalternativ”',
-      paragraphs: [
-        '"Inställningar för inmatningsbehandling:”',
-      ],
-      bullets: [
-        '"Validera inmatning: Kontrollera innehållsformatet före kodning.”',
-        '"Trim mellanslag: Ta bort inledande/efterföljande mellanslag.”',
-        '"Normalisera radbrytningar: Konvertera alla radslut till LF.”',
-        '"Maxlängdsskydd: Varna om innehållet överskrider QR-kapaciteten.”',
-      ],
+      heading: 'Validation Options',
+      paragraphs: ['Input processing settings:'],
+      bullets: ['Validate Input: Check content format before encoding.', 'Trim Whitespace: Remove leading/trailing spaces.', 'Normalize Newlines: Convert all line endings to LF.', 'Max Length Guard: Warn if content exceeds QR capacity.'],
     },
     {
-      heading: '"Professionella funktioner”',
-      paragraphs: [
-        '”Professionell nivå lägger till vattenstämplar, metadata, delningsalternativ, säkerhetsanalys, QR-koder för betalning och företagsfunktioner.”',
-      ],
+      heading: 'Professional Features',
+      paragraphs: ['The Professional level adds watermarks, metadata, sharing options, safety analysis, payment QR codes, and enterprise features.'],
     },
     {
-      heading: '"Vattenstämpel”',
-      paragraphs: [
-        '"Lägg till vattenstämplar i dina QR-koder:”',
-      ],
-      bullets: [
-        '"Typ: Text-, bild- eller mönstervattenmärke.”',
-        '"Position: Centrum, Hörn, Kanter, Bakom eller Tyst Zon.”',
-        '"Opacitet: Vattenstämpelns genomskinlighet (0–100 %).”',
-        '"Blandningsläge: Normal, Multiplicera, Skärm eller Överlagringsblandning.”',
-      ],
+      heading: 'Watermark',
+      paragraphs: ['Add watermarks to your QR codes:'],
+      bullets: ['Kind: Text, Image, or Pattern watermark.', 'Position: Center, Corners, Edges, Behind, or Quiet Zone.', 'Opacity: Watermark transparency (0-100%).', 'Blend Mode: Normal, Multiply, Screen, or Overlay blending.'],
     },
     {
-      heading: '"Metadata”',
-      paragraphs: [
-        '"Bädda in metadata i exporterade filer:”',
-      ],
-      bullets: [
-        '"Fält för titel, författare, upphovsrätt, licens och beskrivning.”',
-        '"Skapningstid: Bädda in genereringstidsstämpel.”',
-        '"Anpassad nyckel-värde: Lägg till godtyckliga metadatapar.”',
-      ],
+      heading: 'Metadata',
+      paragraphs: ['Embed metadata in exported files:'],
+      bullets: ['Title, Author, Copyright, License, Description fields.', 'Creation Time: Embed generation timestamp.', 'Custom Key-Value: Add arbitrary metadata pairs.'],
     },
     {
-      heading: '"Delning”',
-      paragraphs: [
-        '"Dela dina QR-kodkonfigurationer:”',
-      ],
-      bullets: [
-        '"Direktlänk: Generera en delbar URL med dina nuvarande inställningar.”',
-        '"Bädda in HTML: Hämta inbäddningskod för webbplatser.”',
-        '"Kodningsparametrar: Inkludera alla inställningar i delnings-URL:en.”',
-        '"Obs! Överlagringsbilder från lokala filer kan inte delas via URL.”',
-      ],
+      heading: 'Sharing',
+      paragraphs: ['Share your QR code configurations:'],
+      bullets: ['Direct Link: Generate a shareable URL with your current settings.', 'Embed HTML: Get embed code for websites.', 'Encode Parameters: Include all settings in the share URL.', 'Note: Overlay images from local files cannot be shared via URL.'],
     },
     {
-      heading: '"Säkerhetsanalys”',
-      paragraphs: [
-        '"Se till att QR-koder förblir skannade:”',
-      ],
-      bullets: [
-        '"Säkerhetsläge: Av, Balanserad eller Strikta skanningskrav.”',
-        '"Minsta modulstorlek: Minsta pixelstorlek per modul.”',
-        '"Minsta tysta zon: Moduler med minsta marginal.”',
-        '"Låssökare/Timing/Justera/Format/Version: Skydda specifika element.”',
-        '"Max överlagringsintensitet med ECC: Automatiska intensitetsgränser baserade på felkorrigeringsnivå.”',
-      ],
+      heading: 'Safety Analysis',
+      paragraphs: ['Ensure QR codes remain scannable:'],
+      bullets: ['Safety Mode: Off, Balanced, or Strict scanning requirements.', 'Min Module Size: Minimum pixel size per module.', 'Min Quiet Zone: Minimum margin modules.', 'Lock Finders/Timing/Align/Format/Version: Protect specific elements.', 'Max Overlay Intensity by ECC: Automatic intensity limits based on error correction level.'],
     },
     {
-      heading: '"Innehållstyper (Professionella)”',
-      paragraphs: [
-        '”Professionell nivå lägger till betalnings- och företagsinnehållstyper:”',
-      ],
-      bullets: [
-        '”EPC/SEPA (EU): QR-koder för europeiska banköverföringar med IBAN, BIC, belopp, referens.”',
-        '"UPI (Indien): Enhetligt betalningsgränssnitt med VPA, betalningsmottagarens namn, belopp.”',
-        '"PayNow (Singapore): Snabb betalning i Singapore med UEN eller mobilnummer.”',
-        '"PromptPay (Thailand): Thailändskt nationellt betalningssystem.”',
-        '"PIX (Brasilien): Brasiliansk omedelbar betalning med PIX-nyckel.”',
-        '"Krypto: Bitcoin, Ethereum, Litecoin betalningsadresser med valfritt belopp.”',
-        '”Länk till marknadsföringskampanj: URL:er med fullständig spårning av UTM-parametrar (marknadsföringstaggar).”',
-        '”Kort länk: För användning med URL-förkortare för dynamiska/spårbara QR-koder.”',
-        '"GS1 Digital Link: Produktidentifiering med GTIN, serienummer, batchnummer, utgångsdatum.”',
-        '”Appdjuplänk: Djuplänkar till iOS/Android-appar med anpassade scheman.”',
-        '"Anpassat format: Rådata utan formatering eller validering.”',
-      ],
+      heading: 'Content Types (Professional)',
+      paragraphs: ['Professional level adds payment and enterprise content types:'],
+      bullets: ['EPC/SEPA (EU): European bank transfer QR codes with IBAN, BIC, amount, reference.', 'UPI (India): Unified Payments Interface with VPA, payee name, amount.', 'PayNow (Singapore): Singapore fast payment with UEN or mobile number.', 'PromptPay (Thailand): Thai national payment system.', 'PIX (Brazil): Brazilian instant payment with PIX key.', 'Crypto: Bitcoin, Ethereum, Litecoin payment addresses with optional amount.', 'Marketing Campaign Link: URLs with full UTM parameter (Marketing Tags) tracking.', 'Short Link: For use with URL shorteners for dynamic/trackable QR codes.', 'GS1 Digital Link: Product identification with GTIN, serial, batch, expiry.', 'App Deep Link: iOS/Android app deep links with custom schemes.', 'Custom Format: Raw data with no formatting or validation.'],
     },
     {
-      heading: '"Språkrelaterade betalningar i avancerat läge”',
-      paragraphs: [
-        '”När du använder avancerat läge visar ANQR automatiskt betalningsmetoder som är relevanta för ditt valda språk. Till exempel ser vietnamesiska användare VietQR, thailändska användare PromptPay och indisktalande användare ser UPI och BharatQR. Globala betalningsmetoder (kryptovaluta, PayPal, Cash App) är tillgängliga för alla språk. Professionellt läge låser upp alla betalningsstandarder oavsett språk.”',
-      ],
+      heading: 'Language-Relevant Payments in Advanced Mode',
+      paragraphs: ['When using Advanced mode, ANQR automatically shows payment methods relevant to your selected language. For example, Vietnamese users see VietQR, Thai users see PromptPay, and Indian language users see UPI and BharatQR. Global payment methods (cryptocurrency, PayPal, Cash App) are available to all languages. Professional mode unlocks all payment standards regardless of language.'],
     },
     {
-      heading: '"Europeiska betalningsstandarder”',
-      bullets: [
-        '”EPC/SEPA (EU): Europeiska banköverförings-QR-koder enligt EPC QR-kodstandarden. Stöder IBAN, BIC (valfritt för inrikes), belopp i EUR och strukturerade eller ostrukturerade betalningsreferenser. Används i hela SEPA-zonen inklusive EU-länder plus Schweiz, Norge, Island, Liechtenstein, Monaco och San Marino.”',
-        '”Schweizisk QR-faktura: Schweizisk betalningsstandard enligt SIX Implementation Guidelines. Stöder CHF och EUR, QR-referens (QRR), fordringsreferens (ISO 11649), strukturerade fordringsägares/gäldenärers adresser och fakturainformation. Krävs för schweiziska fakturor sedan 2022.”',
-      ],
+      heading: 'European Payment Standards',
+      bullets: ['EPC/SEPA (EU): European bank transfer QR codes following the EPC QR Code Standard. Supports IBAN, BIC (optional for domestic), amount in EUR, and structured or unstructured payment references. Used across the SEPA zone including EU countries plus Switzerland, Norway, Iceland, Liechtenstein, Monaco, and San Marino.', 'Swiss QR-bill: Swiss payment standard following SIX Implementation Guidelines. Supports CHF and EUR, QR-Reference (QRR), Creditor Reference (ISO 11649), structured creditor/debtor addresses, and bill information. Required for Swiss invoices since 2022.'],
     },
     {
-      heading: '"Indiska betalningsstandarder”',
-      bullets: [
-        '”UPI (Indien): Enhetligt betalningsgränssnitt enligt NPCI:s djuplänkningsspecifikation. Stöder VPA (virtuell betalningsadress), betalningsmottagarens namn, belopp i INR, transaktionsnota, referens-ID, handlarens kategorikod och transaktionsläge.”',
-        '”BharatQR (Indien): Enhetlig QR-standard som stöder både UPI- och kortbaserade betalningar. Kombinerar UPI VPA med kort PAN för maximal kompatibilitet. Inkluderar handlarens namn, stad, MCC, GST-uppgifter och faktura-/referensnummer.”',
-      ],
+      heading: 'Indian Payment Standards',
+      bullets: ['UPI (India): Unified Payments Interface following NPCI Deep Linking Specification. Supports VPA (Virtual Payment Address), payee name, amount in INR, transaction note, reference ID, merchant category code, and transaction mode.', 'BharatQR (India): Unified QR standard supporting both UPI and card-based payments. Combines UPI VPA with card PAN for maximum compatibility. Includes merchant name, city, MCC, GST details, and invoice/reference numbers.'],
     },
     {
-      heading: '"Sydostasiatiska betalningsstandarder”',
-      bullets: [
-        '”PayNow (Singapore): Singapores snabbbetalningssystem som använder EMVCo QR-specifikation med SGQR-profil. Stöder UEN (företagsregistrering), mobilnummer eller NRIC som proxy-identifierare. Inkluderar flagga för redigerbarhet av belopp och utgångsdatum.”',
-        '”PromptPay (Thailand): Thailändskt nationellt betalningssystem som följer Bank of Thailands EMV-profil. Stöder mobilnummer, nationellt ID, skatte-ID, e-plånboks-ID och fakturabetalning med flera referensfält.”',
-        '”QRIS (Indonesien): Indonesisk standard för snabbsvar. EMV-baserad nationell betalningsstandard som stöder handlar-ID, NMID (nationellt handlar-ID), klassificering av handlarkriterier och bekvämlighetsavgifter (fasta eller procentuella).”',
-        '"DuitNow (Malaysia): Malaysiskt system för omedelbara betalningar. Stöder flera proxytyper inklusive NRIC, mobilnummer, pass, armé-ID och företagsregistreringsnummer.”',
-        '"VietQR (Vietnam): Vietnamesisk standard för interbanköverföringar. Kräver bankens BIN (NAPAS-identifiering) och kontonummer. Stöder flera servicekoder för olika överföringstyper (QRPUSH, QRIBFTTA, QRIBFTTC).”',
-        '"QR Ph (Filippinerna): Filippinsk QR-betalningsstandard för InstaPay och PESONet. Använder kontonummer med handlaridentifiering för P2M-transaktioner (person-till-handlare).”',
-      ],
+      heading: 'Southeast Asian Payment Standards',
+      bullets: ['PayNow (Singapore): Singapore fast payment system using EMVCo QR specification with SGQR profile. Supports UEN (business registration), mobile number, or NRIC as proxy identifiers. Includes amount editability flag and expiry date.', 'PromptPay (Thailand): Thai national payment system following Bank of Thailand EMV profile. Supports mobile number, national ID, tax ID, e-wallet ID, and bill payment with multiple reference fields.', 'QRIS (Indonesia): Quick Response Code Indonesian Standard. EMV-based national payment standard supporting merchant ID, NMID (National Merchant ID), merchant criteria classification, and convenience fees (fixed or percentage).', 'DuitNow (Malaysia): Malaysian instant payment system. Supports multiple proxy types including NRIC, mobile, passport, army ID, and business registration numbers.', 'VietQR (Vietnam): Vietnamese interbank transfer standard. Requires bank BIN (NAPAS identification) and account number. Supports multiple service codes for different transfer types (QRPUSH, QRIBFTTA, QRIBFTTC).', 'QR Ph (Philippines): Philippine QR payment standard for InstaPay and PESONet. Uses account numbers with merchant identification for P2M (person-to-merchant) transactions.'],
     },
     {
-      heading: '"Östasiatiska betalningsstandarder”',
-      bullets: [
-        '”TWQR (Taiwan): Taiwanesisk QR-betalningsstandard. Stöder handlar-ID, skatte-ID och TWD-belopp.”',
-        '"HKQR/FPS (Hongkong): Hongkongs snabbare betalningssystem QR-koder. Stöder FPS-ID, mobilnummer eller e-postadress som betalningsidentifierare. Belopp i HKD.”',
-        '"JPQR (Japan): Japansk enhetlig QR-kodsbetalningsstandard. Använder butiks-ID för handlaridentifiering med JPY-belopp.”',
-      ],
+      heading: 'East Asian Payment Standards',
+      bullets: ['TWQR (Taiwan): Taiwanese QR payment standard. Supports merchant ID, tax ID, and TWD amounts.', 'HKQR/FPS (Hong Kong): Hong Kong Faster Payment System QR codes. Supports FPS ID, mobile number, or email as payment identifiers. Amounts in HKD.', 'JPQR (Japan): Japanese unified QR code payment standard. Uses store ID for merchant identification with JPY amounts.'],
     },
     {
-      heading: '"Andra regionala betalningsstandarder”',
-      bullets: [
-        '”PIX (Brasilien): Brasiliansk centralbanks system för omedelbara betalningar enligt BR-kodspecifikationen. Stöder PIX-nycklar (CPF, CNPJ, e-post, telefon eller slumpmässig nyckel), handlarens namn/ort, transaktions-ID och BRL-belopp.”',
-        '”AusPayNet/NPP PayID (Australien): Australiens nya betalningsplattform PayID-system. Stöder PayID-typer (e-post, mobil, ABN, organisations-ID) eller traditionell BSB + kontonummer. Handlarens namn är valfritt eftersom betalare ser det registrerade namnet från NPP-sökning.”',
-      ],
+      heading: 'Other Regional Payment Standards',
+      bullets: ['PIX (Brazil): Brazilian Central Bank instant payment system following BR Code specification. Supports PIX keys (CPF, CNPJ, email, phone, or random key), merchant name/city, transaction ID, and BRL amounts.', 'AusPayNet/NPP PayID (Australia): Australian New Payments Platform PayID system. Supports PayID types (email, mobile, ABN, organisation ID) or traditional BSB + account number. Merchant name is optional as payers see the registered name from NPP lookup.'],
     },
     {
-      heading: '"Betalningar med kryptovaluta”',
-      bullets: [
-        '"Bitcoin/Litecoin (BIP-21): Standardbetalnings-URI:er för kryptovaluta med plånboksadress, valfritt belopp och etikett. Kompatibel med alla större Bitcoin- och Litecoin-plånböcker.”',
-        '"Lightning Network (BOLT11): Betalningsfakturor för Lightning Network. Klistra in en BOLT11-kodad fakturasträng för omedelbara Bitcoin-betalningar med minimala avgifter.”',
-        '"Ethereum (EIP-681): URI:er för Ethereum-transaktionsbegäran som stöder nativa ETH-överföringar och ERC-20-tokenöverföringar. Inkluderar kedje-ID för stöd för flera nätverk (Mainnet, Polygon, BSC, Arbitrum, Optimism, Avalanche), gasparametrar och kontraktsfunktionsanrop.”',
-      ],
+      heading: 'Cryptocurrency Payments',
+      bullets: ['Bitcoin/Litecoin (BIP-21): Standard cryptocurrency payment URIs with wallet address, optional amount, and label. Compatible with all major Bitcoin and Litecoin wallets.', 'Lightning Network (BOLT11): Lightning Network payment invoices. Paste a BOLT11 encoded invoice string for instant Bitcoin payments with minimal fees.', 'Ethereum (EIP-681): Ethereum transaction request URIs supporting native ETH transfers and ERC-20 token transfers. Includes chain ID for multi-network support (Mainnet, Polygon, BSC, Arbitrum, Optimism, Avalanche), gas parameters, and contract function calls.'],
     },
     {
-      heading: '"Betalningslänkstjänster”',
-      bullets: [
-        '"PayPal.Me: PayPal-betalningslänkar med användarnamn och valfritt förifyllt belopp. Mottagare kan betala via PayPal-saldo, kort eller bankkonton.”',
-        '”Cash App: Betalningslänkar till Cash App med $cashtag och valfritt belopp. Populär i USA för peer-to-peer-betalningar.”',
-      ],
+      heading: 'Payment Link Services',
+      bullets: ['PayPal.Me: PayPal payment links with username and optional pre-filled amount. Recipients can pay via PayPal balance, cards, or bank accounts.', 'Cash App: Cash App payment links using $cashtag with optional amount. Popular in the United States for peer-to-peer payments.'],
     },
     {
-      heading: '"Generisk EMV QR”',
-      bullets: [
-        '"EMV Generic: Skapa anpassade EMV Merchant-Presented Mode QR-koder för betalningssystem som inte specifikt listas. Konfigurera handlarens namn, stad, landskod (ISO 3166-1), valutakod (ISO 4217 numerisk), MCC, alternativ för dricks/bekvämlighetsavgift och ytterligare datafält. Användbart för testning eller anpassade integrationer.”',
-      ],
+      heading: 'Generic EMV QR',
+      bullets: ['EMV Generic: Create custom EMV Merchant-Presented Mode QR codes for payment schemes not specifically listed. Configure merchant name, city, country code (ISO 3166-1), currency code (ISO 4217 numeric), MCC, tip/convenience fee options, and additional data fields. Useful for testing or custom integrations.'],
     },
     {
-      heading: '"Överläggande blandningslägen (professionellt)”',
-      paragraphs: [
-        '"Ytterligare blandningslägen på professionell nivå:”',
-      ],
-      bullets: [
-        '"Pixelering: Pixelerad överlagringseffekt.”',
-        '"Kontur: Kantdetekteringsöverlagring som endast visar konturer.”',
-        '"Våg: Vågig distorsionseffekt.”',
-        '"Subpixelstorlek: Variabel subpixelstorlek baserad på bilden.”',
-        '"Sann dither: Avancerad dithering med ordnad matrisval.”',
-        '”Extrem: Maximal bildsynlighet, kan påverka skanningsbarheten.”',
-      ],
+      heading: 'Overlay Blend Modes (Professional)',
+      paragraphs: ['Additional blend modes in Professional level:'],
+      bullets: ['Pixelate: Pixelated overlay effect.', 'Outline: Edge detection overlay showing only contours.', 'Wave: Wavy distortion effect.', 'Subpixel Size: Variable subpixel sizing based on image.', 'True Dither: Advanced dithering with ordered matrix selection.', 'Extreme: Maximum image visibility, may affect scannability.'],
     },
     {
-      heading: '"Skyddsinställningar”',
-      paragraphs: [
-        '"Finkornig kontroll över vilka QR-element som är skyddade från överlagringsmodifiering:”',
-      ],
-      bullets: [
-        '"Bevara timing: Håll tidsmönstren oförändrade.”',
-        '"Bevara justering: Behåll justeringsmönstren oförändrade.”',
-        '"Skydda formatinformation: Skyddar formatinformationsmoduler.”',
-        '"Skydda versionsinformation: Informationsmoduler för sköldversion.”',
-      ],
+      heading: 'Protection Settings',
+      paragraphs: ['Fine-grained control over which QR elements are protected from overlay modification:'],
+      bullets: ['Preserve Timing: Keep timing patterns unmodified.', 'Preserve Alignment: Keep alignment patterns unmodified.', 'Protect Format Info: Shield format information modules.', 'Protect Version Info: Shield version information modules.'],
     },
     {
-      heading: '"ECC-medvetet läge”',
-      paragraphs: [
-        '”Distribuerar intelligent överlagringsintensitet baserat på felkorrigeringskapacitet. Systemet analyserar vilka moduler som kan modifieras samtidigt som skanningsbarheten bibehålls.”',
-      ],
-      bullets: [
-        '”Riskbudget: Procentuell felkorrigeringskapacitet att använda (0–100 %).”',
-        '”Högre budget = mer synligt överlägg men mer riskfylld skanningsbarhet.”',
-        '”Lägre budget = säkrare skanning men mindre synligt överlägg.”',
-      ],
+      heading: 'ECC-Aware Mode',
+      paragraphs: ['Intelligently distributes overlay intensity based on error correction capacity. The system analyzes which modules can be modified while maintaining scannability.'],
+      bullets: ['Risk Budget: Percentage of error correction capacity to use (0-100%).', 'Higher budget = more visible overlay but riskier scannability.', 'Lower budget = safer scanning but less visible overlay.'],
     },
     {
-      heading: '"Professionella renderingsalternativ”',
-      paragraphs: [
-        '"Avancerade renderingskontroller:”',
-      ],
-      bullets: [
-        '"Skarpa kanter: Använd pixelerad bildrendering för skarpa modulkanter.”',
-        '"Pixel Snap: Pixeljustering för golv, runda eller tak.”',
-        '"Färgläge per modul: Helfärg, Efter ljusstyrka, Efter position, Efter överlagring, Efter kluster.”',
-        '"Färgpalett: Definiera en anpassad färgpalett för färgsättning per modul.”',
-        '"Kontrastskydd: Säkerställ minsta möjliga kontrastförhållande mellan färgerna.”',
-        '”Minsta kontrastförhållande: Kontrastkrav i WCAG-stil (1:1 till 21:1).”',
-        '"Extra gränsmoduler: Ytterligare gräns bortom tyst zon.”',
-      ],
+      heading: 'Professional Rendering Options',
+      paragraphs: ['Advanced rendering controls:'],
+      bullets: ['Crisp Edges: Use pixelated image rendering for sharp module edges.', 'Pixel Snap: Floor, Round, or Ceil pixel alignment.', 'Per-Module Color Mode: Solid, By Brightness, By Position, By Overlay, By Cluster.', 'Color Palette: Define custom color palette for per-module coloring.', 'Contrast Guard: Ensure minimum contrast ratio between colors.', 'Min Contrast Ratio: WCAG-style contrast requirement (1:1 to 21:1).', 'Extra Border Modules: Additional border beyond quiet zone.'],
     },
     {
-      heading: '"Professionella utdataalternativ”',
-      paragraphs: [
-        '"Inställningar för företagsexport:”',
-      ],
-      bullets: [
-        '"DPI: Ställ in utskriftsupplösning (72–600 DPI). 300 DPI rekommenderas för utskrift.”',
-        '"Inkludera tyst zon: Växla tyst zon i utdatadimensioner.”',
-        '"Exportera som ytterligare: Generera PDF tillsammans med primärformatet.”',
-      ],
+      heading: 'Professional Output Options',
+      paragraphs: ['Enterprise export settings:'],
+      bullets: ['DPI: Set print resolution (72-600 DPI). 300 DPI recommended for print.', 'Include Quiet Zone: Toggle quiet zone in output dimensions.', 'Export As Additional: Generate PDF alongside primary format.'],
     },
     {
-      heading: '"Animationsinställningar (Professionella)”',
-      paragraphs: [
-        '"Ytterligare professionella animationsfunktioner:”',
-      ],
-      bullets: [
-        '"Temporär dithering: Av, Blått brus eller Flimmersäkra dithering per bildruta.”',
-        '"Mönster: Ingen, Puls, Våg, Skanningslinje, Skimmer eller Drift-effekter.”',
-      ],
+      heading: 'Animation Settings (Professional)',
+      paragraphs: ['Additional professional animation features:'],
+      bullets: ['Temporal Dither: Off, Blue Noise, or Flicker Safe per-frame dithering.', 'Pattern: None, Pulse, Wave, Scanline, Shimmer, or Drift effects.'],
     },
     {
-      heading: '"API-referens”',
-      paragraphs: [
-        '”ANQR tillhandahåller ett serversides-API för att generera QR-koder via URL-parametrar. Detta är idealiskt för att bädda in QR-koder i webbplatser, e-postmeddelanden, dokument eller automatiserade arbetsflöden utan JavaScript på klientsidan.”',
-        '"Bas-URL: https://anqr.link/api/qr”',
-      ],
+      heading: 'API Reference',
+      paragraphs: ['ANQR provides a server-side API for generating QR codes via URL parameters. This is ideal for embedding QR codes in websites, emails, documents, or automated workflows without client-side JavaScript.', 'Base URL: https://anqr.link/api/qr'],
     },
     {
-      heading: '"Grundläggande parametrar”',
-      paragraphs: [
-        '"Obligatoriska och vanliga parametrar (parameternamn översätts inte):”',
-      ],
-      bullets: [
-        '"data (obligatorisk): Innehållet som ska kodas i QR-koden. URL-kodning av specialtecken.”',
-        '"storlek: Bildstorlek i pixlar (standard: 400, max: 2000). Används om w/h inte har angetts.”',
-        'b, h: Utdatabredd och höjd i pixlar. Åsidosätter storleksparametern.',
-        '"format: Utdataformat — png, webp eller gif (standard: png).”',
-        '"ec: Felkorrigeringsnivå — L, M, Q eller H (standard: H).”',
-        '"fg: Förgrundsfärg som hexagon utan # (standard: 000000).”',
-        '"bg: Bakgrundsfärg som hexagon utan # (standard: ffffff).”',
-        '"transparent: Ställ in på 1 för transparent bakgrund.”',
-        '"marginal: Tyst zon i moduler (standard: 4).”',
-      ],
+      heading: 'Basic Parameters',
+      paragraphs: ['Required and common parameters (parameter names are not translated):'],
+      bullets: ['data (required): The content to encode in the QR code. URL-encode special characters.', 'size: Image size in pixels (default: 400, max: 2000). Used if w/h not specified.', 'w, h: Output width and height in pixels. Overrides size parameter.', 'format: Output format — png, webp, or gif (default: png).', 'ec: Error correction level — L, M, Q, or H (default: H).', 'fg: Foreground color as hex without # (default: 000000).', 'bg: Background color as hex without # (default: ffffff).', 'transparent: Set to 1 for transparent background.', 'margin: Quiet zone in modules (default: 4).'],
     },
     {
-      heading: '"Stilparametrar”',
-      paragraphs: [
-        '"Modul- och mönsterstyling:”',
-      ],
-      bullets: [
-        '”stil: Modulstil — fyrkantig, rundad, prickig, diamantformad, sammankopplad.”',
-        '”sökare: Sökarens mönsterstil — fyrkantig, rundad, cirkel.”',
-        '"align: Justeringsmönsterstil — match_finder, fyrkantig, rundad, cirkel.”',
-        '"timing: Timingmönsterstil — match_module, heldragen, streckad.”',
-        '"radie: Hörnradieprocent 0-100.”',
-        '"gap: Modulgap i procent 0–50.”',
-        '"gapMode: Gap-läge — inget, infälld ruta, linje, negativt_mellanrum.”',
-        '”ögaYttre, ögaInre: Ögonstilar — fyrkantiga, rundade, cirkelformade.”',
-        '"eyeScale: Ögonskalans procentandel (standard: 100).”',
-        '"gradient: Gradienttyp — ingen, linjär, radiell, konisk.”',
-        '"gradAngle: Gradientvinkel för linjära gradienter.”',
-        '"gradStops: Gradientstopp som color1,pos1,color2,pos2,… (t.ex. ff0000,0,0000ff,1).”',
-      ],
+      heading: 'Styling Parameters',
+      paragraphs: ['Module and pattern styling:'],
+      bullets: ['style: Module style — square, rounded, dots, diamond, connected.', 'finder: Finder pattern style — square, rounded, circle.', 'align: Alignment pattern style — match_finder, square, rounded, circle.', 'timing: Timing pattern style — match_module, solid, dashed.', 'radius: Corner radius percentage 0-100.', 'gap: Module gap percentage 0-50.', 'gapMode: Gap mode — none, inset, stroke, negative_space.', 'eyeOuter, eyeInner: Eye styles — square, rounded, circle.', 'eyeScale: Eye scale percentage (default: 100).', 'grad: Gradient type — none, linear, radial, conic.', 'gradAngle: Gradient angle for linear gradients.', 'gradStops: Gradient stops as color1,pos1,color2,pos2,... (e.g., ff0000,0,0000ff,1).'],
     },
     {
-      heading: '"Överlagringsparametrar”',
-      paragraphs: [
-        '"Alternativ för bildöverlagring (bildöverlagring hämtas på serversidan):”',
-      ],
-      bullets: [
-        '"img: URL för att lägga över bilden (måste vara offentligt tillgänglig).”',
-        '"läge: Överlagringsläge — center, halvton, blandning, ljusstyrka, mosaik, ditherad, blått brus, delpixel.”',
-        '"intensitet: Överlagringsintensitet 0–100 (standard: 100).”',
-        '"colorMode: Överlagringsfärgläge — färg, gråskala, svartvitt.”',
-        '”passform: Hur överlägget passar – täcker, innesluter, töjer ut.”',
-        '"rotera: Överlagringsrotation i grader.”',
-        '"flipX, flipY: Ställ in på 1 för att vända överlagring.”',
-        '"keepFinders: Bevara sökmönster (standard: 1).”',
-        '"keepTiming, keepAlign: Ställ in på 1 för att bevara timing-/justeringsmönster.”',
-      ],
+      heading: 'Overlay Parameters',
+      paragraphs: ['Image overlay options (overlay image is fetched server-side):'],
+      bullets: ['img: URL to overlay image (must be publicly accessible).', 'mode: Overlay mode — center, halftone, blend, brightness, mosaic, dithered, blue-noise, subpixel.', 'intensity: Overlay intensity 0-100 (default: 100).', 'colorMode: Overlay color mode — color, grayscale, bw.', 'fit: How overlay fits — cover, contain, stretch.', 'rot: Overlay rotation in degrees.', 'flipX, flipY: Set to 1 to flip overlay.', 'keepFinders: Preserve finder patterns (default: 1).', 'keepTiming, keepAlign: Set to 1 to preserve timing/alignment patterns.'],
     },
     {
-      heading: '"Förbehandlingsparametrar”',
-      paragraphs: [
-        '"Bildförbehandling tillämpad på överlagring:”',
-      ],
-      bullets: [
-        '"ljusstyrka: Justering -100 till 100 (standard: 0).”',
-        '"kontrast: Justering -100 till 100 (standard: 0).”',
-        '"gamma: Värde 0,1 till 3 (standard: 1).”',
-        '"mättnad: Justering -100 till 100 (standard: 0).”',
-        '"nyans: Nyansrotation i grader.”',
-        '"oskärpa: Oskärpa i pixlar.”',
-        '"skärpa: Skärpningsmängd 0-100.”',
-        '"posterize: Posterize-nivåer.”',
-        '"tröskelvärde: Binärt tröskelvärde 0–255.”',
-        '"kant: Kantdetektering — av, sobel, listig.”',
-        '"invertera: Ställ in på 1 för att invertera färger.”',
-      ],
+      heading: 'Preprocessing Parameters',
+      paragraphs: ['Image preprocessing applied to overlay:'],
+      bullets: ['brightness: Adjustment -100 to 100 (default: 0).', 'contrast: Adjustment -100 to 100 (default: 0).', 'gamma: Value 0.1 to 3 (default: 1).', 'saturation: Adjustment -100 to 100 (default: 0).', 'hue: Hue rotation in degrees.', 'blur: Blur in pixels.', 'sharpen: Sharpen amount 0-100.', 'posterize: Posterize levels.', 'threshold: Binary threshold 0-255.', 'edge: Edge detection — off, sobel, canny.', 'invert: Set to 1 to invert colors.'],
     },
     {
-      heading: '"Vattenstämpelparametrar”',
-      paragraphs: [
-        '"Lägg till vattenstämplar till genererade QR-koder:”',
-      ],
-      bullets: [
-        '"wmEn: Ställ in på 1 för att aktivera vattenstämpel.”',
-        '"wmKind: Vattenstämpeltyp — text, bild, mönster.”',
-        '"wmText: Vattenstämpeltext (URL-kodad).”',
-        '"wmImg: URL till vattenstämpelbild.”',
-        '"wmPos: Position — mitten, hörn, kanter, bakom, tyst_zon.”',
-        '"wmOpacitet: Opacitet 0–100 (standard: 50).”',
-        '"wmBlend: Blandningsläge — normal, multiplicera, skärm, överlagring.”',
-      ],
+      heading: 'Watermark Parameters',
+      paragraphs: ['Add watermarks to generated QR codes:'],
+      bullets: ['wmEn: Set to 1 to enable watermark.', 'wmKind: Watermark type — text, image, pattern.', 'wmText: Watermark text (URL-encoded).', 'wmImg: URL to watermark image.', 'wmPos: Position — center, corners, edges, behind, quiet_zone.', 'wmOpacity: Opacity 0-100 (default: 50).', 'wmBlend: Blend mode — normal, multiply, screen, overlay.'],
     },
     {
-      heading: '"Animationsparametrar”',
-      paragraphs: [
-        '"För animerad GIF-utdata (kräver format=gif):”',
-      ],
-      bullets: [
-        '"animPattern: Animeringsmönster — inget, puls, våg, skanningslinje, skimmer, drift, färgcykel.”',
-        '"animFrames: Antal bildrutor 1–60 (standard: 24).”',
-        '"animSpeed: Bildfördröjning i millisekunder 10–1000 (standard: 100).”',
-        '"animSeed: Slumpmässigt frö för animering.”',
-        '"lättnad: Animationslättnad — linjär, lättnad_in, lättnad_ut, lättnad_in_ut, studs.”',
-      ],
+      heading: 'Animation Parameters',
+      paragraphs: ['For animated GIF output (requires format=gif):'],
+      bullets: ['animPattern: Animation pattern — none, pulse, wave, scanline, shimmer, drift, color_cycle.', 'animFrames: Number of frames 1-60 (default: 24).', 'animSpeed: Frame delay in milliseconds 10-1000 (default: 100).', 'animSeed: Random seed for animation.', 'easing: Animation easing — linear, ease_in, ease_out, ease_in_out, bounce.'],
     },
     {
-      heading: '"Utmatningsparametrar”',
-      paragraphs: [
-        '"Alternativ för utdataformat:”',
-      ],
-      bullets: [
-        '"kvalitet: WebP-kvalitet 0-1 (standard: 0,9).”',
-        '"webpQ: WebP-kvalitet 0–100 (standard: 90).”',
-        '"gifColors: GIF-palettstorlek 2–256 (standard: 256).”',
-        '"dpi: Utdata-DPI för PNG (standard: 72).”',
-        '"metaTitel, metaFörfattare, metaKopia, metaBeskrivning: PNG-metadatafält.”',
-      ],
+      heading: 'Output Parameters',
+      paragraphs: ['Output format options:'],
+      bullets: ['quality: WebP quality 0-1 (default: 0.9).', 'webpQ: WebP quality 0-100 (default: 90).', 'gifColors: GIF palette size 2-256 (default: 256).', 'dpi: Output DPI for PNG (default: 72).', 'metaTitle, metaAuthor, metaCopy, metaDesc: PNG metadata fields.'],
     },
     {
-      heading: '"Exempel på användning”',
-      paragraphs: [
-        '"Grundläggande QR-kod:”',
-        '"https://anqr.link/api/qr?data=https://example.com”',
-        '"Stiliserad QR-kod med anpassade färger:”',
-        '"https://anqr.link/api/qr?data=Hello&size=300&fg=1e40af&bg=ffffff&style=rounded&radius=30”',
-        '"QR-kod med överlagringsbild:”',
-        '"https://anqr.link/api/qr?data=https://example.com&ec=H&img=https://example.com/logo.png&mode=halftone&intensity=70”',
-        '"Animerad GIF:”',
-        '"https://anqr.link/api/qr?data=Hello&format=gif&animPattern=pulse&animFrames=24&easing=ease_in_out”',
-      ],
+      heading: 'Example Usage',
+      paragraphs: ['Basic QR code:', 'https://anqr.link/api/qr?data=https://example.com', 'Styled QR code with custom colors:', 'https://anqr.link/api/qr?data=Hello&size=300&fg=1e40af&bg=ffffff&style=rounded&radius=30', 'QR code with overlay image:', 'https://anqr.link/api/qr?data=https://example.com&ec=H&img=https://example.com/logo.png&mode=halftone&intensity=70', 'Animated GIF:', 'https://anqr.link/api/qr?data=Hello&format=gif&animPattern=pulse&animFrames=24&easing=ease_in_out'],
     },
     {
-      heading: '"Bädda in QR-koder”',
-      paragraphs: [
-        '”I professionellt läge genererar delningsfunktionen inbäddningsbar HTML och URL:er. Så här fungerar inbäddning:”',
-      ],
-      bullets: [
-        '”Dela länk: Skapar en URL till ANQR-appen med alla dina inställningar kodade som URL-parametrar. Mottagare kan visa och ändra QR-koden.”',
-        '"Bädda in bild: Genererar en tagg som pekar mot serverns API. QR-koden renderas på serversidan och visas som en bild.”',
-        '"Bädda in Markdown: Skapar Markdown-bildsyntax för dokumentation och README-filer.”',
-        '”Direkt API-URL: Den råa API-URL:en för användning i applikationer, skript eller andra integrationer.”',
-      ],
+      heading: 'Embedding QR Codes',
+      paragraphs: ['In Professional mode, the Share feature generates embeddable HTML and URLs. Here is how embedding works:'],
+      bullets: ['Share Link: Creates a URL to the ANQR app with all your settings encoded as URL parameters. Recipients can view and modify the QR code.', 'Embed Image: Generates an <img> tag pointing to the server API. The QR code is rendered server-side and served as an image.', 'Embed Markdown: Creates Markdown image syntax for documentation and README files.', 'Direct API URL: The raw API URL for use in applications, scripts, or other integrations.'],
     },
     {
-      heading: '"HTML-exempel”',
-      paragraphs: [
-        '"Så här bäddar du in en QR-kod på din webbplats:”',
-        '"<img src="https://anqr.link/api/qr?data=https://yoursite.com&size=200" alt="QR-kod" />”',
-        '"För responsiv storleksanpassning:”',
-        '"<img src="https://anqr.link/api/qr?data=https://yoursite.com&size=400" alt="QR-kod" style="max-width: 100%; height: auto;" />”',
-        '”Servern cachar svar med långa cache-rubriker, så upprepade förfrågningar för samma URL är snabba.”',
-      ],
+      heading: 'HTML Example',
+      paragraphs: ['To embed a QR code in your website:', '<img src="https://anqr.link/api/qr?data=https://yoursite.com&size=200" alt="QR Code" />', 'For responsive sizing:', '<img src="https://anqr.link/api/qr?data=https://yoursite.com&size=400" alt="QR Code" style="max-width: 100%; height: auto;" />', 'The server caches responses with long cache headers, so repeated requests for the same URL are fast.'],
     },
     {
-      heading: '"Dela URL-format”',
-      paragraphs: [
-        '”När du klickar på Dela i professionellt läge kodar ANQR dina aktuella inställningar till URL-parametrar. Formatet är:”',
-        '"https://anqr.link/?data=…&ec=H&style=rounded&….”',
-        '”Dessa parametrar speglar API-parametrarna, så du kan konvertera en delnings-URL till en API-URL genom att ändra bassökvägen från / till /api/qr och justera w/h-parametrar efter behov.”',
-        '”Obs! Överlagringsbilder som laddats upp från lokala filer kan inte delas via URL – endast URL-baserade överlagringar (img-parameter) fungerar i delade länkar och API-anrop.”',
-      ],
+      heading: 'Share URL Format',
+      paragraphs: ['When you click Share in Professional mode, ANQR encodes your current settings into URL parameters. The format is:', 'https://anqr.link/?data=...&ec=H&style=rounded&....', 'These parameters mirror the API parameters, so you can convert a share URL to an API URL by changing the base path from / to /api/qr and adjusting w/h parameters as needed.', 'Note: Overlay images uploaded from local files cannot be shared via URL — only URL-based overlays (img parameter) work in shared links and API calls.'],
     },
     {
-      heading: '"Taxagränser och användning”',
-      paragraphs: [
-        '”API:et är gratis att använda för rimliga volymer. För användning i hög volym eller kommersiella applikationer som kräver garanterad drifttid, vänligen kontakta oss.”',
-        '”API-svar inkluderar aggressiva cachningsrubriker. För bästa prestanda, cacha svaren från din sida eller använd samma URL konsekvent för identiska QR-koder.”',
-      ],
+      heading: 'Rate Limits and Usage',
+      paragraphs: ['The API is free to use for reasonable volumes. For high-volume usage or commercial applications requiring guaranteed uptime, please contact us.', 'API responses include aggressive caching headers. For best performance, cache responses on your end or use the same URL consistently for identical QR codes.'],
     },
     {
-      heading: '"Bästa praxis”',
-      paragraphs: [
-        '”Följ dessa riktlinjer för pålitliga QR-koder:”',
-      ],
-      bullets: [
-        '”Testa alltid dina QR-koder med flera skannerappar innan du skriver ut.”',
-        '"Använd felkorrigering H (Hög) när du lägger till överlägg.”',
-        '”Behåll minst 4 moduler tyst zon (marginal).”',
-        '”Säkerställ hög kontrast mellan förgrund och bakgrund.”',
-        '”Använd minst 300 DPI för utskrift och testa i faktisk utskriftsstorlek.”',
-        '"Aktivera Bevara Findermönster när överlägg används.”',
-        '”Börja med lägre överlagringsintensitet och öka gradvis.”',
-        '”För utomhusbruk, överväg större modulstorlekar och högre felkorrigering.”',
-      ],
+      heading: 'Best Practices',
+      paragraphs: ['Follow these guidelines for reliable QR codes:'],
+      bullets: ['Always test your QR codes with multiple scanner apps before printing.', 'Use Error Correction H (High) when adding overlays.', 'Keep at least 4 modules of quiet zone (margin).', 'Ensure high contrast between foreground and background.', 'For print, use at least 300 DPI and test at actual print size.', 'Enable Preserve Finder Patterns when using overlays.', 'Start with lower overlay intensity and increase gradually.', 'For outdoor use, consider larger module sizes and higher error correction.'],
     },
     {
-      heading: '"Felsökning”',
-      paragraphs: [
-        '"Vanliga problem och lösningar:”',
-      ],
-      bullets: [
-        '”QR skannar inte: Minska överlagringens intensitet, öka felkorrigeringen, kontrollera kontrasten.”',
-        '”Koden är för lång: Minska innehållslängden, använd URL-förkortare, lägre version.”',
-        '"Suddig utdata: Öka modulstorleken, använd PNG istället för komprimerade format.”',
-        '”Färgerna ser fel ut: Kontrollera färgkontrasten, prova gråskaleöverlagringsläge.”',
-        '"GIF animeras inte: Se till att GIF-formatet används, kontrollera antalet bildrutor.”',
-        '"Bildöverlagring laddas inte: Kontrollera CORS-behörigheter på fjärrbilder.”',
-      ],
+      heading: 'Troubleshooting',
+      paragraphs: ['Common issues and solutions:'],
+      bullets: ['QR won\'t scan: Reduce overlay intensity, increase error correction, check contrast.', 'Code too large: Reduce content length, use URL shortener, lower version.', 'Blurry output: Increase module size, use PNG instead of compressed formats.', 'Colors look wrong: Check color contrast, try grayscale overlay mode.', 'GIF not animating: Ensure using GIF format output, check frame count.', 'Image overlay not loading: Check CORS permissions on remote images.'],
     },
     {
-      heading: '"Tangentbordsgenvägar”',
-      paragraphs: [
-        '"ANQR stöder vanliga kortkommandon. Använd Ctrl/Cmd+S för att utlösa export (när fokus är på förhandsgranskningen).”',
-      ],
+      heading: 'Keyboard Shortcuts',
+      paragraphs: ['ANQR supports standard keyboard shortcuts. Use Ctrl/Cmd+S to trigger export (when focused on the preview).'],
     },
     {
-      heading: '"Delning och inbäddning”',
-      paragraphs: [
-        '”I professionellt läge klickar du på knappen Dela för att kopiera en URL med dina aktuella inställningar. Mottagare kan öppna denna URL för att se din exakta konfiguration. Obs! Överlagringsbilder från lokala filer kan inte delas via URL.”',
-      ],
+      heading: 'Sharing & Embedding',
+      paragraphs: ['In Professional mode, click the Share button to copy a URL with your current settings. Recipients can open this URL to see your exact configuration. Note: Overlay images from local files cannot be shared via URL.'],
     },
   ],
 };
