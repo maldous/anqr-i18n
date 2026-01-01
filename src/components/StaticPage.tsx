@@ -76,10 +76,10 @@ function buildDocsToc(sections: PageSection[], t: (key: string) => string): TocG
   const getGroupIndex = (sectionIndex: number): number => {
     if (sectionIndex <= 1) return 0   // Getting Started: sections 0-1
     if (sectionIndex <= 4) return 1   // Basic Features: sections 2-4
-    if (sectionIndex <= 35) return 2  // Advanced Features: sections 5-35
-    if (sectionIndex <= 47) return 3  // Pro Features: sections 36-47
-    if (sectionIndex <= 63) return 4  // API Reference: sections 48-63
-    return 5                          // Other (Best Practices+): sections 64+
+    if (sectionIndex <= 40) return 2  // Advanced Features: sections 5-40
+    if (sectionIndex <= 56) return 3  // Pro Features: sections 41-56 (includes payment docs 42-50)
+    if (sectionIndex <= 69) return 4  // API Reference: sections 57-69
+    return 5                          // Other (Best Practices+): sections 70+
   }
   
   sections.forEach((section, index) => {
