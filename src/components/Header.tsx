@@ -319,7 +319,7 @@ export function Header({ onToggleSidebar, onExport, sidebarOpen = false, showGal
 
   return (
     <>
-    <header className={`border-b bg-card shadow-md sticky top-0 z-50 transition-all duration-300 ${sidebarOpen && isEditor ? 'lg:ms-96' : ''}`} style={{ paddingTop: 'max(var(--sat, 0px), env(safe-area-inset-top, 0px))' }}>
+    <header className={`border-b bg-card shadow-md fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${sidebarOpen && isEditor ? 'lg:ms-96' : ''}`} style={{ paddingTop: 'max(var(--sat, 0px), env(safe-area-inset-top, 0px))' }}>
       <div className="px-2 sm:px-4 flex items-center justify-between h-[52px] overflow-x-auto scrollbar-hide">
         <div className="flex items-center gap-2 sm:gap-4 lg:gap-6">
           {/* Settings toggle - only in editor mode, placeholder space on other pages */}

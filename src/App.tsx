@@ -441,7 +441,7 @@ function App() {
           onGalleryFilterChange={setGalleryFilter}
           onNavigate={navigateTo}
         />
-        <div className="flex-1 flex flex-col md:flex-row overflow-hidden relative">
+        <div className="flex-1 flex flex-col md:flex-row overflow-hidden relative" style={{ marginTop: 'calc(52px + max(var(--sat, 0px), env(safe-area-inset-top, 0px)))' }}>
           {/* Mobile layout: Sidebar and Preview in column, both visible */}
           {/* Desktop/Tablet: Sidebar is fixed, Preview takes remaining space */}
           
