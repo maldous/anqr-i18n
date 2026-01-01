@@ -417,7 +417,7 @@
         "title": "फ्लोयड-स्टेनबर्ग"
       },
       "dither-kernel-jarvis-judice-ninke": {
-        "description": "त्रुटि प्रसार\"",
+        "description": "त्रुटि प्रसार",
         "title": "जार्विस-जुडिस-निन्के"
       },
       "dither-kernel-sierra": {
@@ -425,7 +425,7 @@
         "title": "सिएरा"
       },
       "dither-kernel-stucki": {
-        "description": "त्रुटि प्रसार\"",
+        "description": "त्रुटि प्रसार",
         "title": "स्टकी"
       },
       "dither-ordered-bayer": {
@@ -930,7 +930,7 @@
     "qrisNote": "राष्ट्रिय भुक्तानीको लागि द्रुत प्रतिक्रिया इन्डोनेसियाली मानक",
     "duitnowNote": "मलेशिया पेनेट भुक्तानीको लागि DuitNow QR",
     "bharatqrNote": "भारतमा एकीकृत कार्ड र UPI भुक्तानीको लागि BharatQR",
-    "vietqrNote": "NAPAS बैंक स्थानान्तरणको लागि VietQR\"",
+    "vietqrNote": "NAPAS बैंक स्थानान्तरणको लागि VietQR",
     "qrphNote": "फिलिपिन्सको InstaPay/PESONet भुक्तानीको लागि QR Ph",
     "twqrNote": "ताइवान वित्तीय संस्था भुक्तानीको लागि TWQR",
     "hkqrNote": "हङकङ द्रुत भुक्तानी प्रणालीको लागि HKQR",
@@ -1458,7 +1458,7 @@
     "github": "गिटहब",
     "googleDrive": "गुगल ड्राइभ",
     "gs1DigitalLink": "GS1 डिजिटल लिङ्क",
-    "gtin": "(ग्लोबल ट्रेड आईटम नम्बर)\"",
+    "gtin": "(ग्लोबल ट्रेड आईटम नम्बर)",
     "hidden": "लुकेको सञ्जाल",
     "homePhone": "घरको फोन",
     "iban": "IBAN",
@@ -1681,7 +1681,7 @@
     "targetAddress": "लक्ष्य ठेगाना",
     "chainId": "चेन आईडी",
     "chainIdHint": "१ = मेननेट, १३७ = बहुभुज, आदि।",
-    "valueWei": "(wei)\"",
+    "valueWei": "(wei)",
     "valueWeiHint": "वेईमा मात्रा (सबैभन्दा सानो एकाइ)",
     "gasLimit": "ग्यास सीमा",
     "gasPriceWei": "ग्यास मूल्य (wei)",
@@ -1719,7 +1719,7 @@
     "serviceCodeField": "सेवा कोड",
     "serviceCodePush": "क्यूआर पुश",
     "serviceCodeFtta": "अन्तरबैंक स्थानान्तरण (२४/७)",
-    "serviceCodeFttc": "Transfer (Citad)\"",
+    "serviceCodeFttc": "Transfer (Citad)",
     "qrph": "क्यूआर पीएच (फिलिपिन्स)",
     "qrphNote": "फिलिपिन्सको राष्ट्रिय QR भुक्तानी मानक",
     "twqr": "TWQR (ताइवान)",
@@ -1748,7 +1748,7 @@
     "emvGeneric": "EMV QR (जेनेरिक)",
     "emvGenericNote": "कस्टम भुक्तानी योजनाहरूको लागि सामान्य EMVCo QR कोड",
     "countryCodeField": "देश कोड",
-    "countryCodeHint": "3166-1 alpha-2 (जस्तै, SG, TH, ID)\"",
+    "countryCodeHint": "3166-1 alpha-2 (जस्तै, SG, TH, ID)",
     "currencyCodeField": "मुद्रा कोड",
     "currencyCodeHint": "ISO ४२१७ संख्यात्मक (जस्तै, SGD को लागि ७०२)",
     "staticQr": "स्थिर QR",

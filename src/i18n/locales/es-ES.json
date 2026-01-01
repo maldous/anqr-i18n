@@ -880,7 +880,7 @@
     "enterTextContent": "Ingrese el contenido del texto a codificar en el código QR",
     "enterUrlContent": "Introduzca la URL a codificar en el código QR",
     "epcSepaNote": "Código QR del Consejo Europeo de Pagos para transferencias SEPA",
-    "errorCorrection": "\"Nivel de corrección de errores: cuanto mayor sea el nivel, mayor será la resistencia al daño, pero el código QR será más grande\".",
+    "errorCorrection": "Nivel de corrección de errores: cuanto mayor sea el nivel, mayor será la resistencia al daño, pero el código QR será más grande.",
     "extraBorder": "Módulos fronterizos adicionales más allá de la zona tranquila (0-10)",
     "eyeInnerStyle": "Estilo del cuadrado interior de los patrones de búsqueda",
     "eyeOuterStyle": "Estilo del anillo exterior de los patrones de búsqueda",

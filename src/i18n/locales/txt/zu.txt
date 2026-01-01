@@ -1248,29 +1248,29 @@
 1248	"isiGreki"
 1249	"IsiFinnish"
 1250	"isiFulentshi"
-1251	IsiHausa
+1251	"IsiHausa"
 1252	"IsiCroatia"
 1253	"isiHungary"
 1254	"isi-Igbo"
 1255	"isiNtaliyane"
-1256	isiKhmer
+1256	"isiKhmer"
 1257	"Izinsiza ezingu"
 1258	"IsiLao"
 1259	"isiBurma"
-1260	isiNepali
+1260	"isiNepali"
 1261	"isiDashi"
 1262	"IsiNorway"
 1263	"Odia"
 1264	"IsiPolish"
 1265	"IsiPashto"
-1266	Uthando
+1266	"Uthando"
 1267	"isiRomania"
-1268	IsiSindhi
-1269	isiSwati
+1268	"IsiSindhi"
+1269	"isiSwati"
 1270	"IsiSuthu saseNingizimu"
 1271	"IsiSwidi"
-1272	IsiTswana
-1273	isiTsonga
+1272	"IsiTswana"
+1273	"isiTsonga"
 1274	"isiVenda"
 1275	"isiXhosa"
 1276	"IsiYoruba"

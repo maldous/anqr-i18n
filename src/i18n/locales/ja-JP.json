@@ -1041,7 +1041,7 @@
     "nModules": "{{count}}モジュール",
     "nMs": "{{count}}ミリ秒",
     "nPercent": "{{count}}%",
-    "nPx": "“{{count}}ピクセル”",
+    "nPx": "{{count}}ピクセル",
     "numericOnly": "数字のみ",
     "quartile": "Q - 四分位数（25％）",
     "version": "バージョン"
