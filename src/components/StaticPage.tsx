@@ -113,11 +113,13 @@ function DocsTableOfContents({
   
   // On desktop, respect isOpen prop. On mobile, always render (has its own mobileOpen state)
   // We check window width via CSS classes, so we render both but hide with lg:hidden / hidden lg:block
-  const [expandedGroups, setExpandedGroups] = useState<Set<string>>(() => new Set(groups.map(g => g.title)))
+  const [expandedGroups, setExpandedGroups] = useState<Set<string>>(() => 
+    new Set(groups.length > 0 ? [groups[0].title] : [])
+  )
 
   // Reset expanded groups when groups change (e.g., language change)
   useEffect(() => {
-    setExpandedGroups(new Set(groups.map(g => g.title)))
+    setExpandedGroups(new Set(groups.length > 0 ? [groups[0].title] : []))
   }, [groups])
 
   const toggleGroup = (title: string) => {

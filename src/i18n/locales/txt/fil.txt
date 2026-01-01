@@ -1,1025 +1,1025 @@
 1	"Asul na Ingay"
-2	“Talon (Ping-Pong)”
+2	"Talon (Ping-Pong)"
 3	"Siklo ng Kulay"
 4	"Pagkupas na may Krus"
 5	"Pag-anod"
-6	“Paganahin ang Animasyon”
-7	“Bawat {{count}} frame(s)”
-8	“I-export ang Lahat ng Frame”
+6	"Paganahin ang Animasyon"
+7	"Bawat {{count}} frame(s)"
+8	"I-export ang Lahat ng Frame"
 9	"Pagkupas"
-10	“Ligtas sa Pagkislap”
-11	“Hakbang ng Frame”
-12	“Interpolasyon”
-13	“Paulit-ulit na Animasyon”
-14	na “Pinakamataas na mga Frame”
-15	“Modyul na Pag-alog”
-16	“⚠️ Maaaring makaapekto sa kakayahang i-scan”
-17	“Morph”
-18	“Wala”
-19	“Sarado”
-20	“Nabuo na Pattern”
-21	“Pulse”
-22	“Random na Binhi”
-23	“Paikutin”
-24	“I-scanline”
-25	“Kumikinang”
-26	“Papasok”
-27	“Bilis ng Frame”
-28	“Simulang Balangkas”
-29	“Temporal na Pagkalito”
-30	“Alon”
-31	“Ingles”
-32	“Hindi”
-33	“Intsik”
-34	“Malay”
-35	“Tamil”
-36	“Thai”
-37	“Portuges”
-38	“Indonesyo”
-39	“Vietnamese”
-40	“Tagalog”
-41	“Hapones”
-42	“Koreano”
-43	“Espanyol”
-44	“Arabo”
+10	"Ligtas sa Pagkislap"
+11	"Hakbang ng Frame"
+12	"Interpolasyon"
+13	"Paulit-ulit na Animasyon"
+14	"na Pinakamataas na mga Frame"
+15	"Modyul na Pag-alog"
+16	"⚠️ Maaaring makaapekto sa kakayahang i-scan"
+17	"Morph"
+18	"Wala"
+19	"Sarado"
+20	"Nabuo na Pattern"
+21	"Pulse"
+22	"Random na Binhi"
+23	"Paikutin"
+24	"I-scanline"
+25	"Kumikinang"
+26	"Papasok"
+27	"Bilis ng Frame"
+28	"Simulang Balangkas"
+29	"Temporal na Pagkalito"
+30	"Alon"
+31	"Ingles"
+32	"Hindi"
+33	"Intsik"
+34	"Malay"
+35	"Tamil"
+36	"Thai"
+37	"Portuges"
+38	"Indonesyo"
+39	"Vietnamese"
+40	"Tagalog"
+41	"Hapones"
+42	"Koreano"
+43	"Espanyol"
+44	"Arabo"
 45	"Ruso"
-46	“Telugu”
-47	“Marathi”
-48	“Bengali”
-49	“Gujarati”
-50	“Kannada”
-51	“Malayalam”
-52	“Punjabi”
-53	“ANQR”
-54	“Tagabuo ng QR Code”
-55	“Lahat ng karapatan ay nakalaan”
-56	“Mag-apply”
-57	“Pabalik”
-58	“Kanselahin”
-59	“Isara”
-60	“Kinopya!”
-61	“Kopyahin”
-62	“© ANQR”
-63	“Burahin”
-64	“May Kapansanan”
-65	“I-download”
-66	“Pag-edit”
-67	“Pinagana”
-68	“Error”
-69	“Salain”
+46	"Telugu"
+47	"Marathi"
+48	"Bengali"
+49	"Gujarati"
+50	"Kannada"
+51	"Malayalam"
+52	"Punjabi"
+53	"ANQR"
+54	"Tagabuo ng QR Code"
+55	"Lahat ng karapatan ay nakalaan"
+56	"Mag-apply"
+57	"Pabalik"
+58	"Kanselahin"
+59	"Isara"
+60	"Kinopya!"
+61	"Kopyahin"
+62	"© ANQR"
+63	"Burahin"
+64	"May Kapansanan"
+65	"I-download"
+66	"Pag-edit"
+67	"Pinagana"
+68	"Error"
+69	"Salain"
 70	"Mas kaunti"
-71	“Naglo-load…”
-72	“Higit Pa”
-73	“Susunod”
-74	“Hindi”
-75	“Sige”
-76	“Bukas”
-77	“Nakaraan”
-78	“I-reset”
-79	“Iligtas”
-80	“Paghahanap”
-81	“Piliin”
-82	“Magpakita ng Mas Kaunting”
-83	“Magpakita Pa”
-84	“Pagbukud-bukurin”
-85	“Tagumpay”
-86	“Pag-upload”
-87	“Tingnan Lahat”
-88	“Oo”
-89	“Nabigong i-save ang file: {{error}}”
-90	“Na-save sa mga Dokumento: {{filename}}”
-91	“© ANQR {{taon}}”
-92	“Lahat”
-93	“Animasyon”
-94	na “Mga Blend Mode”
-95	“Pagbagsak”
-96	na “Mga Mode ng Kulay”
-97	“Mga Kulay”
-98	“Mga Uri ng Nilalaman”
-99	“Pag-aalinlangan”
-100	“Pag-encode”
-101	“Palawakin”
-102	“Pagpatong ng Imahe”
-103	“Asul na hangganan ng ingay na may animation”
-104	“Animated na Asul na Ingay”
-105	“Animated na asul na ingay sa 100%”
-106	“Asul na Ingay 100%”
-107	“Animated na asul na ingay sa 50%”
-108	“Asul na Ingay 50%”
-109	“Animated na asul na ingay sa 75%”
-110	“Asul na Ingay 75%”
-111	“Liwanag na may animation”
-112	“Animated na Liwanag”
-113	“Itim at Puti na animated na overlay”
-114	“Animated na Itim at Puti”
-115	“May kulay na animated na overlay”
-116	“Kulay na May Animasyon”
-117	“Grayscale animated overlay”
-118	“Animated na Grayscale”
-119	“Pagsasabog ng error gamit ang animation”
-120	“Animated na Nalilito”
-121	“Duotone na may animation”
-122	“Animated na Duotone”
-123	“Mga tuldok na may kalahating tono na may animasyon”
-124	“Animated na Halftone”
-125	“Mosaic na may animation”
-126	“Animated na Mosaic”
-127	“Dithered overlay na may klasikong palette”
-128	“Klasikong Timpla”
-129	“Dithered overlay na may paleta ng kagubatan”
-130	“Timpla ng Kagubatan”
-131	“Dithered overlay na may navy palette”
-132	“Hinalong Asul na Dagat”
-133	“Dithered overlay na may paleta ng alak”
-134	“Timpla ng Alak”
-135	“Asul na Ingay sa Itim at Puti”
-136	“Asul na Ingay na Itim at Madilim”
-137	“Asul na Ingay sa Kulay”
-138	“Kulay ng Asul na Ingay”
-139	“Nagkahalong Kulay”
-140	“Kulay na Naguguluhan”
-141	“Nalilito sa Grayscale”
-142	“Naguguluhang Grayscale”
-143	“Halftone sa Itim at Puti”
-144	“Halftone na Itim at Maputi”
-145	“Halftone in Color”
-146	“Kulay ng Halftone”
-147	“#e85d04 sa #ffe8d6”
-148	“Korales”
-149	“Korales na may mga tuldok na modyul”
-150	“Mga Tuldok na Korales”
-151	“#9d0208 sa #ffccd5”
-152	“Pulang-pula”
-153	“#1b4332 sa #d8f3dc”
-154	“Kagubatan”
-155	“Kagubatan na may mga modyul na tuldok”
-156	“Mga Tuldok sa Kagubatan”
-157	“#7f5539 sa #ffe8cc”
-158	“Ginto”
-159	“#ffffff sa #000000”
-160	“Baliktad”
-161	“#1a1a2e sa #eef1ff”
-162	“Hatinggabi”
-163	“Hatinggabi na may mga tuldok na modyul”
-164	“Mga Tuldok sa Hatinggabi”
-165	“#001d3d sa #a2d2ff”
-166	“Hukbong Dagat”
-167	“#023e8a sa #caf0f8”
-168	“Karagatan”
-169	“Karagatan na may mga modyul na tuldok”
-170	“Mga Tuldok sa Karagatan”
-171	“#4a0080 sa #f5e6ff”
-172	“Maharlika”
-173	“Maharlikang may mga tuldok na modyul”
-174	“Mga Maharlikang Tuldok”
-175	“#343a40 sa #e9ecef”
-176	“Slate”
-177	“#bf0603 sa #fff3b0”
-178	“Paglubog ng Araw”
-179	“Paglubog ng araw na may mga tuldok na modyul”
-180	“Mga Tuldok sa Paglubog ng Araw”
-181	“#006d77 sa #e0f4f5”
-182	“Teal”
-183	“Animated na halftone na may mga tuldok na modyul”
-184	“Mga Animated na Tuldok + Halftone”
-185	“Animated na asul na ingay na may bilugan”
-186	“Animated na Bilugan + Asul na Ingay”
-187	“Pixelated overlay na may mga konektadong module”
-188	“Konektado + Pixelate Teal”
-189	“Mga konektadong modyul na may mga square finder”
-190	“Konektado + Parisukat”
-191	“Mga konektadong modyul na may epekto ng alon”
-192	“Konektado + Karagatang Alon”
-193	“Mga modyul na diamante na may asul na ingay”
-194	“Diamante + Asul na Ingay na Asul”
-195	“Epektong duotone na may mga modyul na diyamante”
-196	“Diamante + Duotone na Pulang-pula”
-197	“Mga modyul na diamante na may mga bilugan na tagahanap”
-198	“Diamante + Bilog”
-199	“Mga modyul ng tuldok na may mga tagahanap ng bilog”
-200	“Mga Tuldok + Bilog”
-201	“Pinakamataas na kakayahang makita gamit ang mga tuldok”
-202	“Mga Tuldok + Matinding Kagubatan”
-203	“Mga tuldok na modyul na may halftone overlay”
-204	“Mga Tuldok + Halftone na Ginto”
-205	“Pagtukoy ng gilid gamit ang mga tuldok na modyul”
-206	“Mga Tuldok + Balangkas na Talaan”
-207	“Klasikong nalilito na may bilugan na istilo”
-208	“Bilog + Dithered Royal”
-209	“Mga bilugan na modyul na may mosaic overlay”
-210	“Bilog + Mosaic na Paglubog ng Araw”
-211	“Mga bilugan na modyul na may mga bilugan na tagahanap”
-212	“Bilugan + Bilugan”
-213	“Mataas na detalyeng pag-render ng subpixel”
-214	“Bilog + Subpixel na Koral”
-215	“Mailto link na may mga kulay korales”
-216	“Email Address”
-217	“kaganapan sa iCal kasama ang bilugan na maharlika”
-218	“Kaganapan sa Kalendaryo”
-219	“Mga coordinate ng mapa na may konektadong ginto”
-220	“Lokasyon sa Heograpiya”
-221	“Paunang napunong SMS na may diyamanteng teal”
-222	“Mensaheng SMS”
-223	“Contact card na may bilog na kulay abo”
-224	“Pakikipag-ugnayan sa vCard”
-225	“Pag-configure ng WiFi na may mga tuldok na kulay forest green”
-226	“WiFi Network”
-227	“Adaptive threshold”
-228	“Mapag-angkop”
-229	“Asul na hangganan ng ingay”
-230	“Hybrid na asul na ingay”
-231	“Asul na Ingay + Error”
-232	“Estilo nina Floyd at Steinberg”
-233	“Pagkalat ng Error”
-234	“Pagkalat ng error sa Atkinson”
-235	“Atkinson”
-236	“Pagkalat ng error sa Burkes”
-237	“Burkes”
-238	“Pagsasabog ng error nina Floyd at Steinberg”
-239	“Floyd-Steinberg”
+71	"Naglo-load…"
+72	"Higit Pa"
+73	"Susunod"
+74	"Hindi"
+75	"Sige"
+76	"Bukas"
+77	"Nakaraan"
+78	"I-reset"
+79	"Iligtas"
+80	"Paghahanap"
+81	"Piliin"
+82	"Magpakita ng Mas Kaunting"
+83	"Magpakita Pa"
+84	"Pagbukud-bukurin"
+85	"Tagumpay"
+86	"Pag-upload"
+87	"Tingnan Lahat"
+88	"Oo"
+89	"Nabigong i-save ang file: {{error}}"
+90	"Na-save sa mga Dokumento: {{filename}}"
+91	"© ANQR {{taon}}"
+92	"Lahat"
+93	"Animasyon"
+94	"na Mga Blend Mode"
+95	"Pagbagsak"
+96	"na Mga Mode ng Kulay"
+97	"Mga Kulay"
+98	"Mga Uri ng Nilalaman"
+99	"Pag-aalinlangan"
+100	"Pag-encode"
+101	"Palawakin"
+102	"Pagpatong ng Imahe"
+103	"Asul na hangganan ng ingay na may animation"
+104	"Animated na Asul na Ingay"
+105	"Animated na asul na ingay sa 100%"
+106	"Asul na Ingay 100%"
+107	"Animated na asul na ingay sa 50%"
+108	"Asul na Ingay 50%"
+109	"Animated na asul na ingay sa 75%"
+110	"Asul na Ingay 75%"
+111	"Liwanag na may animation"
+112	"Animated na Liwanag"
+113	"Itim at Puti na animated na overlay"
+114	"Animated na Itim at Puti"
+115	"May kulay na animated na overlay"
+116	"Kulay na May Animasyon"
+117	"Grayscale animated overlay"
+118	"Animated na Grayscale"
+119	"Pagsasabog ng error gamit ang animation"
+120	"Animated na Nalilito"
+121	"Duotone na may animation"
+122	"Animated na Duotone"
+123	"Mga tuldok na may kalahating tono na may animasyon"
+124	"Animated na Halftone"
+125	"Mosaic na may animation"
+126	"Animated na Mosaic"
+127	"Dithered overlay na may klasikong palette"
+128	"Klasikong Timpla"
+129	"Dithered overlay na may paleta ng kagubatan"
+130	"Timpla ng Kagubatan"
+131	"Dithered overlay na may navy palette"
+132	"Hinalong Asul na Dagat"
+133	"Dithered overlay na may paleta ng alak"
+134	"Timpla ng Alak"
+135	"Asul na Ingay sa Itim at Puti"
+136	"Asul na Ingay na Itim at Madilim"
+137	"Asul na Ingay sa Kulay"
+138	"Kulay ng Asul na Ingay"
+139	"Nagkahalong Kulay"
+140	"Kulay na Naguguluhan"
+141	"Nalilito sa Grayscale"
+142	"Naguguluhang Grayscale"
+143	"Halftone sa Itim at Puti"
+144	"Halftone na Itim at Maputi"
+145	"Halftone in Color"
+146	"Kulay ng Halftone"
+147	"#e85d04 sa #ffe8d6"
+148	"Korales"
+149	"Korales na may mga tuldok na modyul"
+150	"Mga Tuldok na Korales"
+151	"#9d0208 sa #ffccd5"
+152	"Pulang-pula"
+153	"#1b4332 sa #d8f3dc"
+154	"Kagubatan"
+155	"Kagubatan na may mga modyul na tuldok"
+156	"Mga Tuldok sa Kagubatan"
+157	"#7f5539 sa #ffe8cc"
+158	"Ginto"
+159	"#ffffff sa #000000"
+160	"Baliktad"
+161	"#1a1a2e sa #eef1ff"
+162	"Hatinggabi"
+163	"Hatinggabi na may mga tuldok na modyul"
+164	"Mga Tuldok sa Hatinggabi"
+165	"#001d3d sa #a2d2ff"
+166	"Hukbong Dagat"
+167	"#023e8a sa #caf0f8"
+168	"Karagatan"
+169	"Karagatan na may mga modyul na tuldok"
+170	"Mga Tuldok sa Karagatan"
+171	"#4a0080 sa #f5e6ff"
+172	"Maharlika"
+173	"Maharlikang may mga tuldok na modyul"
+174	"Mga Maharlikang Tuldok"
+175	"#343a40 sa #e9ecef"
+176	"Slate"
+177	"#bf0603 sa #fff3b0"
+178	"Paglubog ng Araw"
+179	"Paglubog ng araw na may mga tuldok na modyul"
+180	"Mga Tuldok sa Paglubog ng Araw"
+181	"#006d77 sa #e0f4f5"
+182	"Teal"
+183	"Animated na halftone na may mga tuldok na modyul"
+184	"Mga Animated na Tuldok + Halftone"
+185	"Animated na asul na ingay na may bilugan"
+186	"Animated na Bilugan + Asul na Ingay"
+187	"Pixelated overlay na may mga konektadong module"
+188	"Konektado + Pixelate Teal"
+189	"Mga konektadong modyul na may mga square finder"
+190	"Konektado + Parisukat"
+191	"Mga konektadong modyul na may epekto ng alon"
+192	"Konektado + Karagatang Alon"
+193	"Mga modyul na diamante na may asul na ingay"
+194	"Diamante + Asul na Ingay na Asul"
+195	"Epektong duotone na may mga modyul na diyamante"
+196	"Diamante + Duotone na Pulang-pula"
+197	"Mga modyul na diamante na may mga bilugan na tagahanap"
+198	"Diamante + Bilog"
+199	"Mga modyul ng tuldok na may mga tagahanap ng bilog"
+200	"Mga Tuldok + Bilog"
+201	"Pinakamataas na kakayahang makita gamit ang mga tuldok"
+202	"Mga Tuldok + Matinding Kagubatan"
+203	"Mga tuldok na modyul na may halftone overlay"
+204	"Mga Tuldok + Halftone na Ginto"
+205	"Pagtukoy ng gilid gamit ang mga tuldok na modyul"
+206	"Mga Tuldok + Balangkas na Talaan"
+207	"Klasikong nalilito na may bilugan na istilo"
+208	"Bilog + Dithered Royal"
+209	"Mga bilugan na modyul na may mosaic overlay"
+210	"Bilog + Mosaic na Paglubog ng Araw"
+211	"Mga bilugan na modyul na may mga bilugan na tagahanap"
+212	"Bilugan + Bilugan"
+213	"Mataas na detalyeng pag-render ng subpixel"
+214	"Bilog + Subpixel na Koral"
+215	"Mailto link na may mga kulay korales"
+216	"Email Address"
+217	"kaganapan sa iCal kasama ang bilugan na maharlika"
+218	"Kaganapan sa Kalendaryo"
+219	"Mga coordinate ng mapa na may konektadong ginto"
+220	"Lokasyon sa Heograpiya"
+221	"Paunang napunong SMS na may diyamanteng teal"
+222	"Mensaheng SMS"
+223	"Contact card na may bilog na kulay abo"
+224	"Pakikipag-ugnayan sa vCard"
+225	"Pag-configure ng WiFi na may mga tuldok na kulay forest green"
+226	"WiFi Network"
+227	"Adaptive threshold"
+228	"Mapag-angkop"
+229	"Asul na hangganan ng ingay"
+230	"Hybrid na asul na ingay"
+231	"Asul na Ingay + Error"
+232	"Estilo nina Floyd at Steinberg"
+233	"Pagkalat ng Error"
+234	"Pagkalat ng error sa Atkinson"
+235	"Atkinson"
+236	"Pagkalat ng error sa Burkes"
+237	"Burkes"
+238	"Pagsasabog ng error nina Floyd at Steinberg"
+239	"Floyd-Steinberg"
 240	"Jarvis-Judice-Ninke error diffusion"
-241	“Jarvis-Judice-Ninke”
-242	“Pagkalat ng error sa Sierra”
-243	“Sierra”
+241	"Jarvis-Judice-Ninke"
+242	"Pagkalat ng error sa Sierra"
+243	"Sierra"
 244	"Stucki error diffusion"
-245	“Stucki”
-246	“Pag-dither ng matris ng Bayer”
-247	“Inorder na Bayer”
-248	“May timbang na liwanag”
-249	“Persepsyonal”
-250	“Lakas ng dither sa 100%”
-251	“Lakas 100%”
-252	“Lakas ng dither sa 20%”
-253	“Lakas 20%”
-254	“Lakas ng dither sa 40%”
-255	“Lakas 40%”
-256	“Lakas ng dither sa 60%”
-257	“Lakas 60%”
-258	“Lakas ng dither sa 80%”
-259	“Lakas 80%”
-260	“Random na limitasyon ng ingay”
-261	“Puting Ingay”
-262	“30% na pagwawasto ng error”
-263	“ECC High”
-264	“7% na pagwawasto ng error”
-265	“Mababang ECC”
-266	“15% na pagwawasto ng error”
-267	“ECC Medium”
-268	“25% na pagwawasto ng error”
-269	“ECC Quartile”
-270	“Awtomatikong pagpili ng bersyon”
-271	“Awtomatikong Bersyon”
-272	“Bersyon 12 QR code”
-273	“Bersyon 12”
-274	“Pinakamahusay para sa mga overlay (walang center eye)”
-275	“Bersyon 6”
-276	“Bersyon 6 na may mataas na pagwawasto ng error”
-277	“V6 + ECC Mataas”
-278	“Bersyon 6 na may mababang pagwawasto ng error”
-279	“V6 + Mababang ECC”
-280	“Bersyon 9 na QR code”
-281	“Bersyon 9”
-282	“Bersyon 9 na may mataas na pagwawasto ng error”
-283	“V9 + ECC Mataas”
-284	“Bersyon 9 na may mababang pagwawasto ng error”
-285	“V9 + Mababang ECC”
-286	“Patern ng paghahanap ng bilog”
-287	“Mga Tagahanap ng Bilog”
-288	“Patern ng bilugan na tagahanap”
-289	“Mga Bilog na Tagahanap”
-290	“Patern ng paghahanap ng parisukat”
-291	“Mga Tagahanap ng Kwadrado”
-292	“Halftone na may klasikong paleta”
-293	“Klasikong Halftone”
-294	“Halftone na may paleta ng kagubatan”
-295	“Halftone ng Kagubatan”
-296	“Halftone na may kulay abo”
-297	“Halftone ng Hukbong Dagat”
-298	“Halftone na may paleta ng alak”
-299	“Halftone ng Alak”
-300	“Paghahalo ng kulay”
-301	“Blend Mode”
-302	“Pag-dither ng threshold ng asul na ingay”
-303	“Mga modyul na nakabatay sa liwanag”
-304	“Liwanag”
-305	“Pagprosesong itim at puti”
-306	“Itim at Puti”
-307	“Pagproseso ng kulay”
-308	“Kulay”
-309	“Pagproseso ng Grayscale”
-310	“Grayscale”
-311	“Error sa diffusion dithering”
-312	“Nalilito”
-313	“Nabalisa sa 100% intensidad”
-314	“Nabalisa nang 100%”
-315	“Nabaligtad sa 50% na intensidad”
-316	“Nabaligtad na 50%”
-317	“Nabaligtad sa 75% na intensidad”
-318	“Nabaligtad na 75%”
-319	“Pagmamapa ng kulay na may dalawang tono”
-320	“Duotone”
-321	“Pinakamataas na kakayahang makita ang imahe”
-322	“Labis”
-323	“Mga klasikong tuldok na halftone”
-324	“Halftone”
-325	“Epekto ng mosaic tile”
-326	“Mosaiko”
-327	“Overlay ng pagtukoy sa gilid”
-328	“Balangkas”
-329	“Epekto ng pixelated overlay”
-330	“Pixelate”
-331	“Mataas na detalyeng pag-render ng subpixel”
-332	“Subpiksel”
-333	“Epekto ng kulot na pagbaluktot”
-334	“Mosaic na may klasikong paleta”
-335	“Klasikong Mosaiko”
-336	“Mosaic na may paleta ng kagubatan”
-337	“Mosaic ng Kagubatan”
-338	“Mosaic na may kulay abo”
-339	“Mosaic ng Hukbong Dagat”
-340	“Mosaic na may paleta ng alak”
-341	“Mosaic ng Alak”
-342	“Karaniwang QR code”
-343	“Klasiko”
-344	“Kaunting pagwawasto ng error”
-345	“Mababa ang ECC (7%)”
-346	“Katamtamang-mataas na pagwawasto ng error”
-347	“ECC Quartile (25%)”
-348	“Malaki na may maraming pagkakahanay”
-349	“Mas malaki nang walang gitnang mata”
-350	“Mas malaki pa na may gitnang mata”
-351	“1px gaussian blur”
-352	“Palabo 1px”
-353	“2px gaussian blur”
-354	“Palabo 2px”
-355	“4px gaussian blur”
-356	“Palabo 4px”
-357	“Isinaayos ang liwanag, mas madilim”
-358	“Liwanag -25”
-359	“Liwanag -50”
-360	“Isinaayos ang liwanag at mas maliwanag”
-361	“Liwanag +25”
-362	“Liwanag +50”
-363	“Mababang contrast”
-364	“Kontras -50”
-365	“Mataas na contrast”
-366	“Kontras +100”
-367	“Kontras +50”
-368	“Mahusay na pagtukoy sa gilid”
-369	“Matalino sa Gilid”
-370	“Sobel edge detection”
-371	“Edge Sobel”
-372	“Pagwawasto ng gamma 0.5”
-373	“Gamma 0.5”
-374	“Pagwawasto ng gamma 1.5”
-375	“Gamma 1.5”
-376	“Pagwawasto ng gamma 2.0”
-377	“Gamma 2.0”
-378	“Pag-ikot ng kulay 90 digri”
-379	“Kulay +90°”
-380	“Baliktad na mga kulay”
-381	“2 antas ng kulay”
-382	“Posterize 2”
-383	“4 na antas ng kulay”
-384	“Posterize 4”
-385	“8 antas ng kulay”
-386	“Posterize 8”
-387	“Desaturated”
-388	“Saturasyon -100”
-389	“Nabawasang saturation”
-390	“Saturasyon -50”
-391	“Labis na Saturated”
-392	“Saturasyon +100”
-393	“Saturasyon +50”
-394	“100% pagpapatalas”
-395	“Talasan nang 100%”
-396	“25% pagpapatalas”
-397	“Patalasin ang 25%”
-398	“50% pagpapatalas”
-399	“Patalasin ang 50%”
-400	“Binary threshold sa 128”
-401	“Hangganan 128”
-402	“Binary threshold sa 192”
-403	“Hangganan 192”
-404	“Binary threshold sa 64”
-405	“Hangganan 64”
-406	“Istilo ng konektadong modyul”
-407	“Mga Konektadong Modulo”
-408	“Estilo ng modyul na diyamante”
-409	“Mga Module ng Diamante”
-410	“Estilo ng modyul na may mga tuldok”
-411	“Mga Modyul ng Tuldok”
-412	“Estilo ng bilugan na modyul”
-413	“Mga Bilog na Modulo”
-414	“Istilo ng parisukat na modyul”
-415	“Mga Modyul na Kwadrado”
-416	“Payak”
-417	“Mga Kumbinasyon ng Lakas”
-418	“Paunang Pagproseso”
-419	“Mga animated na GIF overlay na may iba't ibang blend mode”
-420	“Mga Animated na Overlay”
-421	“Iba't ibang paghahalo ng kulay gamit ang mga overlay ng imahe”
-422	“Pagproseso ng kulay, grayscale, at itim at puti”
-423	“Pagproseso ng Kulay”
-424	“Mga scheme ng kulay at mga paleta na may temang”
-425	“Mga Kulay at Tema”
-426	“Iba't ibang format ng payload - vCard, WiFi, Email, SMS, Geo, Calendar”
-427	“Iba't ibang pamamaraan ng dithering at mga kernel ng error diffusion”
-428	“Mga Algoritmo ng Dithering”
-429	“Iba't ibang bersyon ng QR at mga antas ng pagwawasto ng error”
-430	“Pag-encode ng QR”
-431	“Mga static na overlay ng imahe na may iba't ibang blend mode”
-432	“Mga Overlay ng Larawan”
-433	“Mga karaniwang QR code na walang overlay - iba't ibang bersyon at pagwawasto ng error”
-434	“Mga Simpleng QR Code”
-435	“Mga kapansin-pansing kumbinasyon ng maraming tampok na nagpapakita ng mga kakayahan ng ANQR”
-436	“Liwanag, contrast, gamma, blur, patalasin, pag-posterize, pag-detect ng gilid”
-437	“Pagproseso ng Imahe”
-438	“Iba't ibang biswal na istilo para sa mga modyul at mga pattern ng tagahanap”
-439	“Mga Estilo ng Module at Finder”
-440	“Ipakita Lahat”
-441	“Mga Estilo”
-442	“Magsaliksik ng mga halimbawa ng mga QR code na ginawa gamit ang ANQR”
-443	“Galerya ng QR Code”
-444	“Subukan ito”
-445	“Kopyahin ang Link”
-446	“Lumipat sa dark mode”
-447	“I-export”
-448	“Lumipat sa light mode”
-449	“Mga setting ng paghahanap…”
-450	“Ibahagi”
-451	“Estilo ng mga pattern ng pagkakahanay (ginagamit sa mas malalaking QR code)”
-452	“Nagbubukas ng partikular na nilalaman sa loob ng isang mobile app”
-453	“Awtomatikong pagtukoy (nangangailangan ng v{{version}}+ para sa kasalukuyang nilalaman)”
-454	“0 = Awtomatikong, min v{{version}} para sa kasalukuyang nilalaman”
-455	“Hexagonal na kodigo ng kulay ng background”
-456	“Legacy format - isaalang-alang ang paggamit ng vCard”
-457	“Paalala: Ang pagpapares ng Bluetooth sa pamamagitan ng QR ay partikular sa vendor at maaaring hindi gumana sa lahat ng device”
-458	“Maglaro ng animation nang pasulong at paatras (ping-pong)”
-459	“Mag-subscribe sa isang nakabahaging feed ng kalendaryo”
-460	“Siguraduhin ang pinakamababang contrast ratio sa pagitan ng foreground at background”
-461	“Porsyento ng radius ng sulok para sa mga bilugan na modyul (0-100%)”
-462	“Gumamit ng pixelated rendering para sa matutulis na gilid ng module”
-463	“Maglagay ng hilaw na datos sa anumang format. Walang ilalapat na pagpapatunay o pag-format.”
-464	“I-rotate ang mga module na istilong tuldok (0-360 degrees)”
-465	“Mode ng pag-encode ng datos - Awtomatikong pinipili ang pinakaepektibong mode”
-466	“Ipatupad ang minimum na 4 na module na tahimik na sona para sa mas mahusay na pagiging maaasahan ng pag-scan”
-467	“Ilagay ang nilalaman ng teksto na ie-encode sa QR code”
-468	“Ilagay ang URL na iko-encode sa QR code”
-469	“QR code ng European Payment Council para sa mga paglilipat ng kredito ng SEPA”
-470	“Antas ng pagwawasto ng error - mas mataas = mas lumalaban sa pinsala ngunit mas malaking QR code”
-471	“Mga karagdagang modyul ng hangganan na lampas sa tahimik na sona (0-10)”
-472	“Estilo ng panloob na parisukat ng mga pattern ng tagahanap”
-473	“Estilo ng panlabas na singsing ng mga pattern ng tagahanap”
-474	“Mga pattern ng tagahanap ng iskala kaugnay ng kanilang default na laki (50-150%)”
-475	“Hexagonal na kodigo ng kulay sa harapan”
-476	“Estilo ng mga pattern ng tagahanap ng sulok”
-477	“Awtomatikong i-convert ang mga HTTP URL sa HTTPS”
-478	“Magdagdag ng pandekorasyon na frame sa paligid ng QR code”
-479	“Teksto na ipapakita sa frame”
-480	“Paano ipinapakita ang mga puwang sa pagitan ng mga modyul”
-481	“Maglagay ng gradient effect sa QR code”
-482	“GS1 Digital Link para sa pagkakakilanlan at pagsubaybay ng produkto”
-483	“Mas mataas = mas mataas na resistensya sa pinsala, mas malaking QR”
-484	“Patuloy na pag-uulit ng animation”
-485	“Pigilan ang pag-encode ng nilalaman na lumalagpas sa kapasidad ng QR code”
-486	“Minimum na contrast ratio na ipatutupad (1-21, ang WCAG AA ay nangangailangan ng 4.5:1)”
-487	“Agwat sa pagitan ng mga modyul bilang porsyento (0-30%)”
-488	“Laki ng bawat QR code module sa pixels (2-20px)”
-489	“Estilo biswal ng mga modyul ng QR code”
-490	“I-convert ang iba't ibang format ng bagong linya patungo sa isang karaniwang format”
-491	“Piliin ang format ng output file para sa pag-export”
-492	“Mabilis na sistema ng pagbabayad sa Singapore”
-493	“Paano magtalaga ng mga kulay sa mga indibidwal na modyul”
-494	“I-click para pumili ng kulay ng background”
-495	“I-click para pumili ng kulay ng harapan”
-496	“Sistema ng agarang pagbabayad sa Brazil”
-497	“Paano i-snap ang mga posisyon ng module sa mga hangganan ng pixel”
-498	“Pambansang sistema ng e-payment sa Thailand”
-499	“Bersyon ng QR code (0=awtomatikong, 1-40 ay nagpapataas ng laki at kapasidad)”
-500	“Margin ng tahimik na sona sa paligid ng QR code (0-10 modules, inirerekomenda: 4+)”
-501	“Link sa isang online na RSVP form o pahina ng pagpaparehistro ng kaganapan”
-502	“Mode ng pagsusuri sa kaligtasan - kung paano mahigpit na suriin ang kakayahang mabasa ng QR code”
-503	“Piliin ang uri ng nilalaman na ie-encode sa QR code”
-504	“Gumamit ng serbisyo ng pagpapaikli ng URL para sa mga dynamic/trackable na QR code”
-505	“Estilo ng mga padron ng tiyempo (mga pahalang at patayong linya)”
-506	“Gawing transparent ang background sa halip na gumamit ng kulay ng background”
-507	“Alisin ang mga puting espasyo sa unahan at kasunod”
-508	“Pinag-isang Interface ng Pagbabayad para sa India”
-509	“Parameter ng kampanya ng UTM para sa pagsubaybay sa kampanya”
-510	“Parameter ng UTM medium para sa pagsubaybay sa kampanya”
-511	“Parameter ng pinagmulan ng UTM para sa pagsubaybay sa kampanya”
-512	“Patunayan ang input data bago ang pag-encode”
-513	“⚠️ Masyadong mababa ang bersyon! Kinakailangan ang minimum na v{{version}}”
-514	“Wika”
-515	“Pumili ng Wika”
-516	“Magdagdag ng Pasadyang Patlang”
-517	“May-akda”
-518	“Pangalan ng May-akda”
-519	“Karapatang-ari”
-520	“© 2024 Pangalan ng Kumpanya”
-521	“Pasadyang Metadata”
-522	“Paglalarawan”
-523	“Paglalarawan ng QR code na ito…”
-524	“Isama ang Oras ng Paglikha”
-525	“Susi”
-526	“Mga Keyword”
-527	“Lisensya”
-528	“CC-BY-4.0”
-529	“Pamagat”
-530	“Pamagat ng QR Code”
-531	“Halaga”
-532	“Tungkol sa”
-533	“Makipag-ugnayan”
-534	“Gabay”
-535	“Galerya”
-536	“Generator”
-537	“Pagkapribado”
-538	“Mga Tuntunin”
-539	“Pag-override sa Background”
-540	“Iwanang blangko para sa default”
-541	“DPI (Pag-print)”
-542	“I-embed ang Raster Overlay”
-543	“I-export Bilang (Karagdagang)”
-544	“Pangalan ng File”
-545	“Format”
-546	“GIF”
-547	“Mga Setting ng GIF”
-548	“Taas”
-549	“Isama ang Tahimik na Sona”
-550	“Panggitnang Hiwa”
-551	“NeuQuant”
-552	“Oktree”
-553	“Inorder”
-554	“Laki ng Output”
-555	“Laki ng Paleta”
-556	“PDF”
-557	“Pixel”
-558	“PNG”
-559	“Tumpak”
-560	“Kalidad”
-561	“Tagapagkuwantidor”
-562	“Katumpakan ng Hugis”
-563	“SVG”
-564	“Mga Setting ng SVG”
-565	“Kulay na Transparent”
-566	“#ffffff o walang laman”
-567	“Tunay na Vektor”
-568	“Gumamit ng mga path sa halip na naka-embed na raster”
-569	“WebP”
-570	“Lapad”
-571	“Adaptive Threshold”
-572	“Bayer 2×2”
-573	“Bayer 4×4”
-574	“Bayer 8×8”
-575	“Timpla”
-576	“Asul na Ingay + Pagkalat ng Error”
-577	“Blue Noise Threshold”
-578	“Malabo”
-579	“Kurba ng Liwanag”
-580	“Laki ng Selula”
-581	“Logo ng Sentro”
-582	“Sentrong Panuntunan”
-583	“Kumpol-kumpol na Tuldok”
-584	“Pagkakagulo ng Kulay”
-585	“Mode ng Kulay”
-586	“Maglaman”
-587	“Pagkaiba”
-588	“Paalala: Dapat payagan ng larawan ang mga kahilingan sa cross-origin (CORS)”
-589	“Pabalat”
-590	“I-crop ang Larawan”
-591	“Laki ng Pananim”
-592	“Diffusion Kernel”
-593	“Pamamahala ng Pagtatapon”
-594	“Pagkagulo”
-595	“Mga Setting ng Dither”
-596	“Lakas ng Pagkalito”
-597	“Hugis ng Tuldok”
-598	“Mga Kulay na Duotone”
-599	“Mode na May Kamalayan sa ECC”
-600	“Pagtukoy sa Gilid”
-601	“May Kamalayan sa Gilid”
-602	“Paganahin ang Pag-crop”
-603	“Pag-override ng Finder”
-604	“Mode ng Pagkasyahin”
-605	“I-flip X”
-606	“I-flip Y”
-607	“Mula sa URL”
-608	“Buong Kulay”
-609	“Gamma”
-610	“Pagpuno ng Puwang”
-611	“Ingay ni Gaussian”
-612	“Laki ng Grid”
-613	“Sentro ng Halftone”
-614	“Mga Setting ng Halftone”
-615	“Tampok”
-616	“Pag-ikot ng Hue”
-617	“Imahe / GIF / WebP”
-618	“URL ng Larawan”
-619	“Intensity”
-620	“Baliktarin ang Larawan”
-621	“Linya”
-622	“Karga”
-623	“Na-load mula sa URL”
-624	“Pinakamataas na FPS”
-625	“Kulay na Neutral”
-626	“Walang file”
-627	“N×N Grid”
-628	“Inorder (Bayer)”
-629	“Nakaayos na Matris”
-630	“Orihinal”
-631	“Bawat Channel”
-632	“Bawat Modyul”
-633	“Perseptwal (Luminance)”
-634	“Mga Antas ng Posterize”
-635	“Panatilihin ang Pagkakahanay”
-636	“Panatilihin ang mga Pattern ng Finder”
-637	“Panatilihin ang Panahon”
-638	“Protektahan ang Impormasyon sa Format”
-639	“Protektahan ang Impormasyon sa Bersyon”
-640	“Proteksyon”
-641	“Alisin”
-642	“Paggalang”
-643	“Badyet sa Panganib”
-644	“Pag-ikot”
-645	“S-Curve”
-646	“Saturasyon”
-647	“Naka-screen na Asul na Ingay”
-648	“Binhi”
-649	“Pumili ng Larawan”
-650	“Sepia”
-651	“Pag-scan na Parang Serpentine”
-652	“Anino”
-653	“Patalasin”
-654	“Sierra-2”
-655	“Sierra-Lite”
-656	“Pasimplehin”
-657	“Pag-unat”
-658	“Mahigpit”
-659	“Istilado”
-660	“Mga Setting ng Subpixel”
-661	“Sukat ng Subpixel”
-662	“Temporal na Asul na Ingay”
-663	“Hangganan”
-664	“Laki ng Tile”
-665	“Tatsulok na Ingay”
-666	“Tunay na Pagkalito”
-667	“Gamitin ang mga Pagkaantala sa Frame”
-668	“Walang Kakayahan at Kumpol”
-669	“Pangalan ng Account”
-670	“Tirahan”
-671	“Algoritmo”
-672	“Pang-araw na Kaganapan”
-673	“Halaga (opsyonal)”
-674	“Halaga (BRL, opsyonal)”
-675	“Halaga (EUR)”
-676	“Halaga (INR, opsyonal)”
-677	“Halaga (SGD, opsyonal)”
-678	“Halaga (THB, opsyonal)”
-679	“Layunin ng Android”
-680	“Malalim na Link ng App (Android/iOS)”
-681	“Tag ng Ari-arian/Imbentaryo”
-682	“ID ng Ari-arian/Aytem”
-683	“Uri ng Ari-arian”
-684	“Pangalan ng Dadalo”
-685	“Audio”
-686	“Base URL”
-687	“Batch/Lote (opsyonal)”
-688	“Pangalan ng Benepisyaryo”
-689	“BIC/SWIFT (opsyonal)”
-690	“Kaarawan”
-691	“Bitcoin”
-692	“BizCard (Pamana)”
-693	“Bluetooth”
-694	“Katawan ng Mensahe”
-695	“Katawan (opsyonal)”
-696	“Kahon”
-697	“Kalendaryo”
-698	“Pangalan ng Kalendaryo”
-699	“Mag-subscribe sa Kalendaryo”
-700	“URL ng Kalendaryo (ICS/WebCal)”
-701	“Nilalaman ng Kampanya (opsyonal)”
-702	“Medium ng Kampanya”
-703	“Pangalan ng Kampanya”
-704	“Pinagmulan ng Kampanya”
-705	“Termino ng Kampanya (opsyonal)”
-706	“Lungsod”
-707	“Lungsod (opsyonal)”
-708	“Link sa Pag-iimbak ng Cloud”
-709	“Kumpanya”
-710	“Uri ng Nilalaman”
-711	“Ubod”
-712	“Bansa”
-713	“Crypto (BTC, ETH, atbp.)”
-714	“Cryptocurrency”
-715	“Pasadyang Format”
-716	“Pasadyang Iskema”
-717	“Petsa at Oras”
-718	“URL ng Malalim na Link”
-719	“Address ng Device (MAC)”
-720	“Pangalan ng Aparato (opsyonal)”
-721	“Mga Digit”
-722	“Mga Dokumento at Media”
-723	“Dropbox”
-724	“Email”
-725	“Pag-encrypt”
-726	“Wakas”
-727	“Petsa ng Pagtatapos”
-728	“Enterprise”
-729	“EPC / SEPA (EU)”
-730	“Kagamitan”
-731	“Ethereum”
-732	“Kaganapan sa iCalendar”
-733	“Pangalan ng Kaganapan”
-734	“Link sa RSVP ng Kaganapan”
-735	“Tiket sa Kaganapan”
-736	“Petsa ng Pagtatapos (opsyonal)”
-737	“Facebook”
-738	“URL ng Pagbabalik-tanaw (opsyonal)”
-739	“Fax”
-740	“Uri ng File”
-741	“URL ng File / Dokumento”
-742	“Unang Pangalan”
-743	“Pilitin ang HTTPS”
-744	“Buong Pangalan”
-745	“Muwebles”
-746	“GitHub”
-747	“Google Drive”
-748	“GS1 Digital Link”
-749	“GTIN (Global Trade Item Number)”
-750	“Nakatagong Network”
-751	“Telepono sa Bahay”
-752	“IBAN”
-753	“Uri ng ID”
-754	“Imahe”
-755	“Instagram”
-756	“Imbentaryo ng Aytem”
-757	“iOS Universal”
-758	“Tagapag-isyu”
-759	“Ari-ariang IT”
-760	“Tatak (opsyonal)”
-761	“Apelyido”
-762	“Latitud”
-763	“Uri ng Link”
-764	“LinkedIn”
-765	“Litecoin”
-766	“Lokasyon”
-767	“Lokasyon at Network”
-768	“Longitud”
-769	“URL ng Paghahanap (opsyonal)”
-770	“Pagmemerkado”
-771	“Mga Tag sa Marketing”
-772	“Pinakamataas na Haba ng Proteksyon”
-773	“Kontak sa MeCard”
-774	“Pangalan ng Mangangalakal (opsyonal)”
-775	“Mensahe”
-776	“Mensahe (opsyonal)”
-777	“WhatsApp / Telegram / Signal”
-778	“Sugo”
-779	“Numero ng Mobile”
-780	“Teleponong Selpon”
-781	“Pangalan”
-782	“Pambansang ID / ID sa Buwis”
-783	“Palayaw”
-784	“Gawing Normal ang mga Bagong Linya”
-785	“Tala”
-786	“OneDrive”
-787	“Buksan (Walang Password)”
-788	“Organisasyon”
-789	“Iba Pa”
-790	“OTP Authenticator”
-791	“Uri”
-792	“Password”
-793	“Pangalan ng Tatanggap”
-794	“Mga Pagbabayad (Bukas na mga Espesipikasyon)”
-795	“Magbayad Ngayon (Singapore)”
-796	“Telepono”
-797	“Telepono/Pangalan ng Gumagamit”
-798	“PIX (Brazil)”
-799	“Susi ng PIX”
-800	“Plain Text”
-801	“Plataporma”
-802	“Paunang Napunang Mensahe (opsyonal)”
-803	“URL ng Profile”
-804	“PromptPay ID”
-805	“PromptPay (Thailand)”
-806	“Uri ng Proxy”
-807	“Hilaw na Datos”
-808	“Tatanggap”
-809	“Sanggunian”
-810	“Sanggunian (opsyonal)”
-811	“Domain ng Tagalutas”
-812	“RSVP URL”
-813	“Paghahanap (opsyonal)”
-814	“Uupuan”
-815	“Lihim (Base32)”
-816	“Seksyon/Sona”
-817	“Uri ng Seguridad”
-818	“Serial Number (opsyonal)”
-819	“Serbisyo”
-820	“Pag-redirect ng Maikling Link”
-821	“Maikling URL”
-822	“Senyas”
-823	“SMS”
-824	“SMS/MMS”
-825	“Sosyal at Pagmemensahe”
-826	“Profile sa Lipunan”
-827	“Pangalan ng Network (SSID)”
-828	“Simulan”
-829	“Petsa ng Pagsisimula”
-830	“Estado/Lalawigan”
-831	“Kalye”
-832	“Paksa”
-833	“Paksa (opsyonal)”
-834	“Pamagat ng Kaganapan”
-835	“Numero ng Telepono”
-836	“Telegrama”
-837	“Nilalaman ng Teksto”
-838	“ID ng Tiket”
-839	“TikTok”
-840	“Tala ng Transaksyon (opsyonal)”
-841	“Putlatin ang Puting Espasyo”
-842	“UEN/Numero ng Mobile”
-843	“Pangkalahatang Ugnayan”
-844	“UPI (India)”
-845	“UPI ID (VPA)”
-846	“URL”
-847	“utm_campaign”
-848	“utm_content”
-849	“Link ng Kampanya ng UTM”
-850	“utm_medium”
-851	“utm_source”
-852	“utm_term”
-853	“Patunayan ang Input”
-854	“Mga Opsyon sa Pagpapatunay”
-855	“URL ng Pagpapatunay (opsyonal)”
-856	“Sasakyan”
-857	“Lugar”
-858	“Viber”
-859	“Bidyo”
-860	“Website”
-861	“WhatsApp”
-862	“Wi-Fi”
-863	“Dokumento ng Salita”
-864	“Telepono sa Trabaho”
-865	“YouTube”
-866	“ZIP/Postal Code”
-867	“Preview ng QR Code - I-click ang I-export para i-download”
-868	“Paggaya”
-869	“Aktibo ang simulasyon sa kapaligiran - Ipinapakita ng preview kung paano maaaring lumitaw ang QR code sa ilalim ng iba't ibang mga kondisyon”
-870	“Karagdagang hangganan lampas sa tahimik na sona”
-871	“Alpanumeriko”
-872	“Awto”
-873	“Awtomatiko (minimum: {{bersyon}})”
-874	“Awtomatiko (Pinakamainam)”
-875	“Byte / UTF-8”
-876	“{{count}}:1”
-877	“Mode ng Pag-encode”
-878	“Ipatupad ang Min Quiet Zone”
-879	“Siguraduhin na ≥4 na margin ng modyul”
-880	“Pagwawasto ng Mali”
-881	“Mga Karagdagang Module ng Hangganan”
-882	“H - Mataas (30%)”
-883	“Kanji”
-884	“L - Mababa (7%)”
-885	“Tahimik na Sona (Margin)”
-886	“Patern ng Maskara”
-887	“M - Katamtaman (15%)”
-888	“Laki ng Modyul”
-889	“{{count}}°”
-890	“{{count}} na mga modyul”
-891	“{{count}}ms”
-892	“{{count}}%”
-893	“{{count}}px”
-894	“Numero Lamang”
-895	“Q - Quartile (25%)”
-896	“Bersyon”
-897	“Magdagdag ng Kulay”
-898	“Estilo ng Pattern ng Pag-align”
-899	“Kaligiran”
-900	“Sa Liwanag”
-901	“Ayon sa Kumpol”
-902	“Sa Pamamagitan ng Pag-overlay”
-903	“Ayon sa Posisyon”
-904	“Kisame”
-905	“Bilog”
-906	“Paleta ng Kulay”
-907	“Koniko”
-908	“Konektado”
-909	“Bantay na Pangkontra”
-910	“Radius ng Sulok”
-911	“Malutong na mga Gilid”
-912	“Gumamit ng image-rendering: pixelated para sa matutulis na gilid”
-913	“Naputol”
-914	“Diamante”
-915	“Pag-ikot ng Tuldok”
-916	“Mga Tuldok”
-917	“Estilo ng Panloob na Mata”
-918	“Estilo ng Panlabas na Mata”
-919	“Timbangan ng Mata”
-920	“Estilo ng Pattern ng Finder”
-921	“Sahig”
-922	“Paharap na Lugar”
-923	“Estilo ng Frame”
-924	“Teksto ng Frame”
-925	“Modyul ng Pagitan”
-926	“Gradient”
-927	“Anggulong Gradient”
-928	“Uri ng Gradient”
-929	“Nakasingit”
-930	“Linyar”
-931	“Tagahanap ng Tugma”
-932	“Modyul ng Pagtutugma”
-933	“Minimum na Ratio ng Kontras”
-934	“Modyul na Puwang”
-935	“Negatibong Espasyo”
-936	“Mode ng Kulay Bawat Module”
-937	“Pixel Snap”
-938	“Radyal”
-939	“Bilog”
-940	“Bilugan”
-941	“Bilog na Balangkas”
-942	“Estilo ng Modyul”
-943	“Matalas”
-944	“Makinis”
-945	“Matibay”
-946	“Plarikula”
-947	“Mga Parisukat”
-948	“Sticker”
-949	“Stroke”
-950	“Estilo”
-951	“Tag”
-952	“Estilo ng Pattern ng Pagtatakda ng Oras”
-953	“Malinaw na Background”
-954	“Pagsusuri ng Kaligtasan”
-955	“Awtomatikong Pumili ng ECC”
-956	“Bersyon ng Awtomatikong Pagpili”
-957	“Awtomatikong Bawasan ang Intensity”
-958	“Awtomatikong Pag-tune”
-959	“Balanse”
-960	“Ratio ng Kontras”
-961	“Pagsusuri ng Kontras”
-962	“Napakahusay”
-963	“Patas”
-964	“Mabuti”
-965	“Pag-align ng Lock”
-966	“Mga Panghanap ng Lock”
-967	“Impormasyon sa Format ng Lock”
-968	“Pag-ooras ng Lock”
-969	“Impormasyon sa Bersyon ng Lock”
-970	“Minimum na Laki ng Modyul”
-971	“Minimum na Tahimik na Sona”
-972	“Kawawa”
-973	“Mga Kandadong Proteksyon”
-974	“Pagsusuri ng Kalidad”
-975	“Tahimik na Sona”
-976	“Modong Pangkaligtasan”
-977	“Iskor ng Kakayahang I-scan”
-978	“Ipakita ang Heatmap”
-979	“Gayahin ang Palabuin”
-980	“Gayahin ang Ingay”
-981	“Gayahin ang Pag-ikot”
-982	“Hanggang sa ma-scan”
-983	“Metadata”
-984	“Output”
-985	“Pagpatong / Imahe”
-986	“Payload / Datos”
-987	“Pag-render”
-988	“Tatak ng Tubig”
-989	“Direktang Link”
-990	“Bumuo ng maibabahaging URL”
-991	“I-embed ang HTML”
-992	“Bumuo ng embed code”
-993	“I-encode ang Lahat ng Parameter”
-994	“Isama ang lahat ng setting sa URL”
-995	“Pagbaba ng Marka”
-996	“Mabilis na Pagbabahagi”
-997	“X/Twitter”
-998	“Advanced”
-999	“Pangunahin”
+245	"Stucki"
+246	"Pag-dither ng matris ng Bayer"
+247	"Inorder na Bayer"
+248	"May timbang na liwanag"
+249	"Persepsyonal"
+250	"Lakas ng dither sa 100%"
+251	"Lakas 100%"
+252	"Lakas ng dither sa 20%"
+253	"Lakas 20%"
+254	"Lakas ng dither sa 40%"
+255	"Lakas 40%"
+256	"Lakas ng dither sa 60%"
+257	"Lakas 60%"
+258	"Lakas ng dither sa 80%"
+259	"Lakas 80%"
+260	"Random na limitasyon ng ingay"
+261	"Puting Ingay"
+262	"30% na pagwawasto ng error"
+263	"ECC High"
+264	"7% na pagwawasto ng error"
+265	"Mababang ECC"
+266	"15% na pagwawasto ng error"
+267	"ECC Medium"
+268	"25% na pagwawasto ng error"
+269	"ECC Quartile"
+270	"Awtomatikong pagpili ng bersyon"
+271	"Awtomatikong Bersyon"
+272	"Bersyon 12 QR code"
+273	"Bersyon 12"
+274	"Pinakamahusay para sa mga overlay (walang center eye)"
+275	"Bersyon 6"
+276	"Bersyon 6 na may mataas na pagwawasto ng error"
+277	"V6 + ECC Mataas"
+278	"Bersyon 6 na may mababang pagwawasto ng error"
+279	"V6 + Mababang ECC"
+280	"Bersyon 9 na QR code"
+281	"Bersyon 9"
+282	"Bersyon 9 na may mataas na pagwawasto ng error"
+283	"V9 + ECC Mataas"
+284	"Bersyon 9 na may mababang pagwawasto ng error"
+285	"V9 + Mababang ECC"
+286	"Patern ng paghahanap ng bilog"
+287	"Mga Tagahanap ng Bilog"
+288	"Patern ng bilugan na tagahanap"
+289	"Mga Bilog na Tagahanap"
+290	"Patern ng paghahanap ng parisukat"
+291	"Mga Tagahanap ng Kwadrado"
+292	"Halftone na may klasikong paleta"
+293	"Klasikong Halftone"
+294	"Halftone na may paleta ng kagubatan"
+295	"Halftone ng Kagubatan"
+296	"Halftone na may kulay abo"
+297	"Halftone ng Hukbong Dagat"
+298	"Halftone na may paleta ng alak"
+299	"Halftone ng Alak"
+300	"Paghahalo ng kulay"
+301	"Blend Mode"
+302	"Pag-dither ng threshold ng asul na ingay"
+303	"Mga modyul na nakabatay sa liwanag"
+304	"Liwanag"
+305	"Pagprosesong itim at puti"
+306	"Itim at Puti"
+307	"Pagproseso ng kulay"
+308	"Kulay"
+309	"Pagproseso ng Grayscale"
+310	"Grayscale"
+311	"Error sa diffusion dithering"
+312	"Nalilito"
+313	"Nabalisa sa 100% intensidad"
+314	"Nabalisa nang 100%"
+315	"Nabaligtad sa 50% na intensidad"
+316	"Nabaligtad na 50%"
+317	"Nabaligtad sa 75% na intensidad"
+318	"Nabaligtad na 75%"
+319	"Pagmamapa ng kulay na may dalawang tono"
+320	"Duotone"
+321	"Pinakamataas na kakayahang makita ang imahe"
+322	"Labis"
+323	"Mga klasikong tuldok na halftone"
+324	"Halftone"
+325	"Epekto ng mosaic tile"
+326	"Mosaiko"
+327	"Overlay ng pagtukoy sa gilid"
+328	"Balangkas"
+329	"Epekto ng pixelated overlay"
+330	"Pixelate"
+331	"Mataas na detalyeng pag-render ng subpixel"
+332	"Subpiksel"
+333	"Epekto ng kulot na pagbaluktot"
+334	"Mosaic na may klasikong paleta"
+335	"Klasikong Mosaiko"
+336	"Mosaic na may paleta ng kagubatan"
+337	"Mosaic ng Kagubatan"
+338	"Mosaic na may kulay abo"
+339	"Mosaic ng Hukbong Dagat"
+340	"Mosaic na may paleta ng alak"
+341	"Mosaic ng Alak"
+342	"Karaniwang QR code"
+343	"Klasiko"
+344	"Kaunting pagwawasto ng error"
+345	"Mababa ang ECC (7%)"
+346	"Katamtamang-mataas na pagwawasto ng error"
+347	"ECC Quartile (25%)"
+348	"Malaki na may maraming pagkakahanay"
+349	"Mas malaki nang walang gitnang mata"
+350	"Mas malaki pa na may gitnang mata"
+351	"1px gaussian blur"
+352	"Palabo 1px"
+353	"2px gaussian blur"
+354	"Palabo 2px"
+355	"4px gaussian blur"
+356	"Palabo 4px"
+357	"Isinaayos ang liwanag, mas madilim"
+358	"Liwanag -25"
+359	"Liwanag -50"
+360	"Isinaayos ang liwanag at mas maliwanag"
+361	"Liwanag +25"
+362	"Liwanag +50"
+363	"Mababang contrast"
+364	"Kontras -50"
+365	"Mataas na contrast"
+366	"Kontras +100"
+367	"Kontras +50"
+368	"Mahusay na pagtukoy sa gilid"
+369	"Matalino sa Gilid"
+370	"Sobel edge detection"
+371	"Edge Sobel"
+372	"Pagwawasto ng gamma 0.5"
+373	"Gamma 0.5"
+374	"Pagwawasto ng gamma 1.5"
+375	"Gamma 1.5"
+376	"Pagwawasto ng gamma 2.0"
+377	"Gamma 2.0"
+378	"Pag-ikot ng kulay 90 digri"
+379	"Kulay +90°"
+380	"Baliktad na mga kulay"
+381	"2 antas ng kulay"
+382	"Posterize 2"
+383	"4 na antas ng kulay"
+384	"Posterize 4"
+385	"8 antas ng kulay"
+386	"Posterize 8"
+387	"Desaturated"
+388	"Saturasyon -100"
+389	"Nabawasang saturation"
+390	"Saturasyon -50"
+391	"Labis na Saturated"
+392	"Saturasyon +100"
+393	"Saturasyon +50"
+394	"100% pagpapatalas"
+395	"Talasan nang 100%"
+396	"25% pagpapatalas"
+397	"Patalasin ang 25%"
+398	"50% pagpapatalas"
+399	"Patalasin ang 50%"
+400	"Binary threshold sa 128"
+401	"Hangganan 128"
+402	"Binary threshold sa 192"
+403	"Hangganan 192"
+404	"Binary threshold sa 64"
+405	"Hangganan 64"
+406	"Istilo ng konektadong modyul"
+407	"Mga Konektadong Modulo"
+408	"Estilo ng modyul na diyamante"
+409	"Mga Module ng Diamante"
+410	"Estilo ng modyul na may mga tuldok"
+411	"Mga Modyul ng Tuldok"
+412	"Estilo ng bilugan na modyul"
+413	"Mga Bilog na Modulo"
+414	"Istilo ng parisukat na modyul"
+415	"Mga Modyul na Kwadrado"
+416	"Payak"
+417	"Mga Kumbinasyon ng Lakas"
+418	"Paunang Pagproseso"
+419	"Mga animated na GIF overlay na may iba't ibang blend mode"
+420	"Mga Animated na Overlay"
+421	"Iba't ibang paghahalo ng kulay gamit ang mga overlay ng imahe"
+422	"Pagproseso ng kulay, grayscale, at itim at puti"
+423	"Pagproseso ng Kulay"
+424	"Mga scheme ng kulay at mga paleta na may temang"
+425	"Mga Kulay at Tema"
+426	"Iba't ibang format ng payload - vCard, WiFi, Email, SMS, Geo, Calendar"
+427	"Iba't ibang pamamaraan ng dithering at mga kernel ng error diffusion"
+428	"Mga Algoritmo ng Dithering"
+429	"Iba't ibang bersyon ng QR at mga antas ng pagwawasto ng error"
+430	"Pag-encode ng QR"
+431	"Mga static na overlay ng imahe na may iba't ibang blend mode"
+432	"Mga Overlay ng Larawan"
+433	"Mga karaniwang QR code na walang overlay - iba't ibang bersyon at pagwawasto ng error"
+434	"Mga Simpleng QR Code"
+435	"Mga kapansin-pansing kumbinasyon ng maraming tampok na nagpapakita ng mga kakayahan ng ANQR"
+436	"Liwanag, contrast, gamma, blur, patalasin, pag-posterize, pag-detect ng gilid"
+437	"Pagproseso ng Imahe"
+438	"Iba't ibang biswal na istilo para sa mga modyul at mga pattern ng tagahanap"
+439	"Mga Estilo ng Module at Finder"
+440	"Ipakita Lahat"
+441	"Mga Estilo"
+442	"Magsaliksik ng mga halimbawa ng mga QR code na ginawa gamit ang ANQR"
+443	"Galerya ng QR Code"
+444	"Subukan ito"
+445	"Kopyahin ang Link"
+446	"Lumipat sa dark mode"
+447	"I-export"
+448	"Lumipat sa light mode"
+449	"Mga setting ng paghahanap…"
+450	"Ibahagi"
+451	"Estilo ng mga pattern ng pagkakahanay (ginagamit sa mas malalaking QR code)"
+452	"Nagbubukas ng partikular na nilalaman sa loob ng isang mobile app"
+453	"Awtomatikong pagtukoy (nangangailangan ng v{{version}}+ para sa kasalukuyang nilalaman)"
+454	"0 = Awtomatikong, min v{{version}} para sa kasalukuyang nilalaman"
+455	"Hexagonal na kodigo ng kulay ng background"
+456	"Legacy format - isaalang-alang ang paggamit ng vCard"
+457	"Paalala: Ang pagpapares ng Bluetooth sa pamamagitan ng QR ay partikular sa vendor at maaaring hindi gumana sa lahat ng device"
+458	"Maglaro ng animation nang pasulong at paatras (ping-pong)"
+459	"Mag-subscribe sa isang nakabahaging feed ng kalendaryo"
+460	"Siguraduhin ang pinakamababang contrast ratio sa pagitan ng foreground at background"
+461	"Porsyento ng radius ng sulok para sa mga bilugan na modyul (0-100%)"
+462	"Gumamit ng pixelated rendering para sa matutulis na gilid ng module"
+463	"Maglagay ng hilaw na datos sa anumang format. Walang ilalapat na pagpapatunay o pag-format."
+464	"I-rotate ang mga module na istilong tuldok (0-360 degrees)"
+465	"Mode ng pag-encode ng datos - Awtomatikong pinipili ang pinakaepektibong mode"
+466	"Ipatupad ang minimum na 4 na module na tahimik na sona para sa mas mahusay na pagiging maaasahan ng pag-scan"
+467	"Ilagay ang nilalaman ng teksto na ie-encode sa QR code"
+468	"Ilagay ang URL na iko-encode sa QR code"
+469	"QR code ng European Payment Council para sa mga paglilipat ng kredito ng SEPA"
+470	"Antas ng pagwawasto ng error - mas mataas = mas lumalaban sa pinsala ngunit mas malaking QR code"
+471	"Mga karagdagang modyul ng hangganan na lampas sa tahimik na sona (0-10)"
+472	"Estilo ng panloob na parisukat ng mga pattern ng tagahanap"
+473	"Estilo ng panlabas na singsing ng mga pattern ng tagahanap"
+474	"Mga pattern ng tagahanap ng iskala kaugnay ng kanilang default na laki (50-150%)"
+475	"Hexagonal na kodigo ng kulay sa harapan"
+476	"Estilo ng mga pattern ng tagahanap ng sulok"
+477	"Awtomatikong i-convert ang mga HTTP URL sa HTTPS"
+478	"Magdagdag ng pandekorasyon na frame sa paligid ng QR code"
+479	"Teksto na ipapakita sa frame"
+480	"Paano ipinapakita ang mga puwang sa pagitan ng mga modyul"
+481	"Maglagay ng gradient effect sa QR code"
+482	"GS1 Digital Link para sa pagkakakilanlan at pagsubaybay ng produkto"
+483	"Mas mataas = mas mataas na resistensya sa pinsala, mas malaking QR"
+484	"Patuloy na pag-uulit ng animation"
+485	"Pigilan ang pag-encode ng nilalaman na lumalagpas sa kapasidad ng QR code"
+486	"Minimum na contrast ratio na ipatutupad (1-21, ang WCAG AA ay nangangailangan ng 4.5:1)"
+487	"Agwat sa pagitan ng mga modyul bilang porsyento (0-30%)"
+488	"Laki ng bawat QR code module sa pixels (2-20px)"
+489	"Estilo biswal ng mga modyul ng QR code"
+490	"I-convert ang iba't ibang format ng bagong linya patungo sa isang karaniwang format"
+491	"Piliin ang format ng output file para sa pag-export"
+492	"Mabilis na sistema ng pagbabayad sa Singapore"
+493	"Paano magtalaga ng mga kulay sa mga indibidwal na modyul"
+494	"I-click para pumili ng kulay ng background"
+495	"I-click para pumili ng kulay ng harapan"
+496	"Sistema ng agarang pagbabayad sa Brazil"
+497	"Paano i-snap ang mga posisyon ng module sa mga hangganan ng pixel"
+498	"Pambansang sistema ng e-payment sa Thailand"
+499	"Bersyon ng QR code (0=awtomatikong, 1-40 ay nagpapataas ng laki at kapasidad)"
+500	"Margin ng tahimik na sona sa paligid ng QR code (0-10 modules, inirerekomenda: 4+)"
+501	"Link sa isang online na RSVP form o pahina ng pagpaparehistro ng kaganapan"
+502	"Mode ng pagsusuri sa kaligtasan - kung paano mahigpit na suriin ang kakayahang mabasa ng QR code"
+503	"Piliin ang uri ng nilalaman na ie-encode sa QR code"
+504	"Gumamit ng serbisyo ng pagpapaikli ng URL para sa mga dynamic/trackable na QR code"
+505	"Estilo ng mga padron ng tiyempo (mga pahalang at patayong linya)"
+506	"Gawing transparent ang background sa halip na gumamit ng kulay ng background"
+507	"Alisin ang mga puting espasyo sa unahan at kasunod"
+508	"Pinag-isang Interface ng Pagbabayad para sa India"
+509	"Parameter ng kampanya ng UTM para sa pagsubaybay sa kampanya"
+510	"Parameter ng UTM medium para sa pagsubaybay sa kampanya"
+511	"Parameter ng pinagmulan ng UTM para sa pagsubaybay sa kampanya"
+512	"Patunayan ang input data bago ang pag-encode"
+513	"⚠️ Masyadong mababa ang bersyon! Kinakailangan ang minimum na v{{version}}"
+514	"Wika"
+515	"Pumili ng Wika"
+516	"Magdagdag ng Pasadyang Patlang"
+517	"May-akda"
+518	"Pangalan ng May-akda"
+519	"Karapatang-ari"
+520	"© 2024 Pangalan ng Kumpanya"
+521	"Pasadyang Metadata"
+522	"Paglalarawan"
+523	"Paglalarawan ng QR code na ito…"
+524	"Isama ang Oras ng Paglikha"
+525	"Susi"
+526	"Mga Keyword"
+527	"Lisensya"
+528	"CC-BY-4.0"
+529	"Pamagat"
+530	"Pamagat ng QR Code"
+531	"Halaga"
+532	"Tungkol sa"
+533	"Makipag-ugnayan"
+534	"Gabay"
+535	"Galerya"
+536	"Generator"
+537	"Pagkapribado"
+538	"Mga Tuntunin"
+539	"Pag-override sa Background"
+540	"Iwanang blangko para sa default"
+541	"DPI (Pag-print)"
+542	"I-embed ang Raster Overlay"
+543	"I-export Bilang (Karagdagang)"
+544	"Pangalan ng File"
+545	"Format"
+546	"GIF"
+547	"Mga Setting ng GIF"
+548	"Taas"
+549	"Isama ang Tahimik na Sona"
+550	"Panggitnang Hiwa"
+551	"NeuQuant"
+552	"Oktree"
+553	"Inorder"
+554	"Laki ng Output"
+555	"Laki ng Paleta"
+556	"PDF"
+557	"Pixel"
+558	"PNG"
+559	"Tumpak"
+560	"Kalidad"
+561	"Tagapagkuwantidor"
+562	"Katumpakan ng Hugis"
+563	"SVG"
+564	"Mga Setting ng SVG"
+565	"Kulay na Transparent"
+566	"#ffffff o walang laman"
+567	"Tunay na Vektor"
+568	"Gumamit ng mga path sa halip na naka-embed na raster"
+569	"WebP"
+570	"Lapad"
+571	"Adaptive Threshold"
+572	"Bayer 2×2"
+573	"Bayer 4×4"
+574	"Bayer 8×8"
+575	"Timpla"
+576	"Asul na Ingay + Pagkalat ng Error"
+577	"Blue Noise Threshold"
+578	"Malabo"
+579	"Kurba ng Liwanag"
+580	"Laki ng Selula"
+581	"Logo ng Sentro"
+582	"Sentrong Panuntunan"
+583	"Kumpol-kumpol na Tuldok"
+584	"Pagkakagulo ng Kulay"
+585	"Mode ng Kulay"
+586	"Maglaman"
+587	"Pagkaiba"
+588	"Paalala: Dapat payagan ng larawan ang mga kahilingan sa cross-origin (CORS)"
+589	"Pabalat"
+590	"I-crop ang Larawan"
+591	"Laki ng Pananim"
+592	"Diffusion Kernel"
+593	"Pamamahala ng Pagtatapon"
+594	"Pagkagulo"
+595	"Mga Setting ng Dither"
+596	"Lakas ng Pagkalito"
+597	"Hugis ng Tuldok"
+598	"Mga Kulay na Duotone"
+599	"Mode na May Kamalayan sa ECC"
+600	"Pagtukoy sa Gilid"
+601	"May Kamalayan sa Gilid"
+602	"Paganahin ang Pag-crop"
+603	"Pag-override ng Finder"
+604	"Mode ng Pagkasyahin"
+605	"I-flip X"
+606	"I-flip Y"
+607	"Mula sa URL"
+608	"Buong Kulay"
+609	"Gamma"
+610	"Pagpuno ng Puwang"
+611	"Ingay ni Gaussian"
+612	"Laki ng Grid"
+613	"Sentro ng Halftone"
+614	"Mga Setting ng Halftone"
+615	"Tampok"
+616	"Pag-ikot ng Hue"
+617	"Imahe / GIF / WebP"
+618	"URL ng Larawan"
+619	"Intensity"
+620	"Baliktarin ang Larawan"
+621	"Linya"
+622	"Karga"
+623	"Na-load mula sa URL"
+624	"Pinakamataas na FPS"
+625	"Kulay na Neutral"
+626	"Walang file"
+627	"N×N Grid"
+628	"Inorder (Bayer)"
+629	"Nakaayos na Matris"
+630	"Orihinal"
+631	"Bawat Channel"
+632	"Bawat Modyul"
+633	"Perseptwal (Luminance)"
+634	"Mga Antas ng Posterize"
+635	"Panatilihin ang Pagkakahanay"
+636	"Panatilihin ang mga Pattern ng Finder"
+637	"Panatilihin ang Panahon"
+638	"Protektahan ang Impormasyon sa Format"
+639	"Protektahan ang Impormasyon sa Bersyon"
+640	"Proteksyon"
+641	"Alisin"
+642	"Paggalang"
+643	"Badyet sa Panganib"
+644	"Pag-ikot"
+645	"S-Curve"
+646	"Saturasyon"
+647	"Naka-screen na Asul na Ingay"
+648	"Binhi"
+649	"Pumili ng Larawan"
+650	"Sepia"
+651	"Pag-scan na Parang Serpentine"
+652	"Anino"
+653	"Patalasin"
+654	"Sierra-2"
+655	"Sierra-Lite"
+656	"Pasimplehin"
+657	"Pag-unat"
+658	"Mahigpit"
+659	"Istilado"
+660	"Mga Setting ng Subpixel"
+661	"Sukat ng Subpixel"
+662	"Temporal na Asul na Ingay"
+663	"Hangganan"
+664	"Laki ng Tile"
+665	"Tatsulok na Ingay"
+666	"Tunay na Pagkalito"
+667	"Gamitin ang mga Pagkaantala sa Frame"
+668	"Walang Kakayahan at Kumpol"
+669	"Pangalan ng Account"
+670	"Tirahan"
+671	"Algoritmo"
+672	"Pang-araw na Kaganapan"
+673	"Halaga (opsyonal)"
+674	"Halaga (BRL, opsyonal)"
+675	"Halaga (EUR)"
+676	"Halaga (INR, opsyonal)"
+677	"Halaga (SGD, opsyonal)"
+678	"Halaga (THB, opsyonal)"
+679	"Layunin ng Android"
+680	"Malalim na Link ng App (Android/iOS)"
+681	"Tag ng Ari-arian/Imbentaryo"
+682	"ID ng Ari-arian/Aytem"
+683	"Uri ng Ari-arian"
+684	"Pangalan ng Dadalo"
+685	"Audio"
+686	"Base URL"
+687	"Batch/Lote (opsyonal)"
+688	"Pangalan ng Benepisyaryo"
+689	"BIC/SWIFT (opsyonal)"
+690	"Kaarawan"
+691	"Bitcoin"
+692	"BizCard (Pamana)"
+693	"Bluetooth"
+694	"Katawan ng Mensahe"
+695	"Katawan (opsyonal)"
+696	"Kahon"
+697	"Kalendaryo"
+698	"Pangalan ng Kalendaryo"
+699	"Mag-subscribe sa Kalendaryo"
+700	"URL ng Kalendaryo (ICS/WebCal)"
+701	"Nilalaman ng Kampanya (opsyonal)"
+702	"Medium ng Kampanya"
+703	"Pangalan ng Kampanya"
+704	"Pinagmulan ng Kampanya"
+705	"Termino ng Kampanya (opsyonal)"
+706	"Lungsod"
+707	"Lungsod (opsyonal)"
+708	"Link sa Pag-iimbak ng Cloud"
+709	"Kumpanya"
+710	"Uri ng Nilalaman"
+711	"Ubod"
+712	"Bansa"
+713	"Crypto (BTC, ETH, atbp.)"
+714	"Cryptocurrency"
+715	"Pasadyang Format"
+716	"Pasadyang Iskema"
+717	"Petsa at Oras"
+718	"URL ng Malalim na Link"
+719	"Address ng Device (MAC)"
+720	"Pangalan ng Aparato (opsyonal)"
+721	"Mga Digit"
+722	"Mga Dokumento at Media"
+723	"Dropbox"
+724	"Email"
+725	"Pag-encrypt"
+726	"Wakas"
+727	"Petsa ng Pagtatapos"
+728	"Enterprise"
+729	"EPC / SEPA (EU)"
+730	"Kagamitan"
+731	"Ethereum"
+732	"Kaganapan sa iCalendar"
+733	"Pangalan ng Kaganapan"
+734	"Link sa RSVP ng Kaganapan"
+735	"Tiket sa Kaganapan"
+736	"Petsa ng Pagtatapos (opsyonal)"
+737	"Facebook"
+738	"URL ng Pagbabalik-tanaw (opsyonal)"
+739	"Fax"
+740	"Uri ng File"
+741	"URL ng File / Dokumento"
+742	"Unang Pangalan"
+743	"Pilitin ang HTTPS"
+744	"Buong Pangalan"
+745	"Muwebles"
+746	"GitHub"
+747	"Google Drive"
+748	"GS1 Digital Link"
+749	"GTIN (Global Trade Item Number)"
+750	"Nakatagong Network"
+751	"Telepono sa Bahay"
+752	"IBAN"
+753	"Uri ng ID"
+754	"Imahe"
+755	"Instagram"
+756	"Imbentaryo ng Aytem"
+757	"iOS Universal"
+758	"Tagapag-isyu"
+759	"Ari-ariang IT"
+760	"Tatak (opsyonal)"
+761	"Apelyido"
+762	"Latitud"
+763	"Uri ng Link"
+764	"LinkedIn"
+765	"Litecoin"
+766	"Lokasyon"
+767	"Lokasyon at Network"
+768	"Longitud"
+769	"URL ng Paghahanap (opsyonal)"
+770	"Pagmemerkado"
+771	"Mga Tag sa Marketing"
+772	"Pinakamataas na Haba ng Proteksyon"
+773	"Kontak sa MeCard"
+774	"Pangalan ng Mangangalakal (opsyonal)"
+775	"Mensahe"
+776	"Mensahe (opsyonal)"
+777	"WhatsApp / Telegram / Signal"
+778	"Sugo"
+779	"Numero ng Mobile"
+780	"Teleponong Selpon"
+781	"Pangalan"
+782	"Pambansang ID / ID sa Buwis"
+783	"Palayaw"
+784	"Gawing Normal ang mga Bagong Linya"
+785	"Tala"
+786	"OneDrive"
+787	"Buksan (Walang Password)"
+788	"Organisasyon"
+789	"Iba Pa"
+790	"OTP Authenticator"
+791	"Uri"
+792	"Password"
+793	"Pangalan ng Tatanggap"
+794	"Mga Pagbabayad (Bukas na mga Espesipikasyon)"
+795	"Magbayad Ngayon (Singapore)"
+796	"Telepono"
+797	"Telepono/Pangalan ng Gumagamit"
+798	"PIX (Brazil)"
+799	"Susi ng PIX"
+800	"Plain Text"
+801	"Plataporma"
+802	"Paunang Napunang Mensahe (opsyonal)"
+803	"URL ng Profile"
+804	"PromptPay ID"
+805	"PromptPay (Thailand)"
+806	"Uri ng Proxy"
+807	"Hilaw na Datos"
+808	"Tatanggap"
+809	"Sanggunian"
+810	"Sanggunian (opsyonal)"
+811	"Domain ng Tagalutas"
+812	"RSVP URL"
+813	"Paghahanap (opsyonal)"
+814	"Uupuan"
+815	"Lihim (Base32)"
+816	"Seksyon/Sona"
+817	"Uri ng Seguridad"
+818	"Serial Number (opsyonal)"
+819	"Serbisyo"
+820	"Pag-redirect ng Maikling Link"
+821	"Maikling URL"
+822	"Senyas"
+823	"SMS"
+824	"SMS/MMS"
+825	"Sosyal at Pagmemensahe"
+826	"Profile sa Lipunan"
+827	"Pangalan ng Network (SSID)"
+828	"Simulan"
+829	"Petsa ng Pagsisimula"
+830	"Estado/Lalawigan"
+831	"Kalye"
+832	"Paksa"
+833	"Paksa (opsyonal)"
+834	"Pamagat ng Kaganapan"
+835	"Numero ng Telepono"
+836	"Telegrama"
+837	"Nilalaman ng Teksto"
+838	"ID ng Tiket"
+839	"TikTok"
+840	"Tala ng Transaksyon (opsyonal)"
+841	"Putlatin ang Puting Espasyo"
+842	"UEN/Numero ng Mobile"
+843	"Pangkalahatang Ugnayan"
+844	"UPI (India)"
+845	"UPI ID (VPA)"
+846	"URL"
+847	"utm_campaign"
+848	"utm_content"
+849	"Link ng Kampanya ng UTM"
+850	"utm_medium"
+851	"utm_source"
+852	"utm_term"
+853	"Patunayan ang Input"
+854	"Mga Opsyon sa Pagpapatunay"
+855	"URL ng Pagpapatunay (opsyonal)"
+856	"Sasakyan"
+857	"Lugar"
+858	"Viber"
+859	"Bidyo"
+860	"Website"
+861	"WhatsApp"
+862	"Wi-Fi"
+863	"Dokumento ng Salita"
+864	"Telepono sa Trabaho"
+865	"YouTube"
+866	"ZIP/Postal Code"
+867	"Preview ng QR Code - I-click ang I-export para i-download"
+868	"Paggaya"
+869	"Aktibo ang simulasyon sa kapaligiran - Ipinapakita ng preview kung paano maaaring lumitaw ang QR code sa ilalim ng iba't ibang mga kondisyon"
+870	"Karagdagang hangganan lampas sa tahimik na sona"
+871	"Alpanumeriko"
+872	"Awto"
+873	"Awtomatiko (minimum: {{bersyon}})"
+874	"Awtomatiko (Pinakamainam)"
+875	"Byte / UTF-8"
+876	"{{count}}:1"
+877	"Mode ng Pag-encode"
+878	"Ipatupad ang Min Quiet Zone"
+879	"Siguraduhin na ≥4 na margin ng modyul"
+880	"Pagwawasto ng Mali"
+881	"Mga Karagdagang Module ng Hangganan"
+882	"H - Mataas (30%)"
+883	"Kanji"
+884	"L - Mababa (7%)"
+885	"Tahimik na Sona (Margin)"
+886	"Patern ng Maskara"
+887	"M - Katamtaman (15%)"
+888	"Laki ng Modyul"
+889	"{{count}}°"
+890	"{{count}} na mga modyul"
+891	"{{count}}ms"
+892	"{{count}}%"
+893	"{{count}}px"
+894	"Numero Lamang"
+895	"Q - Quartile (25%)"
+896	"Bersyon"
+897	"Magdagdag ng Kulay"
+898	"Estilo ng Pattern ng Pag-align"
+899	"Kaligiran"
+900	"Sa Liwanag"
+901	"Ayon sa Kumpol"
+902	"Sa Pamamagitan ng Pag-overlay"
+903	"Ayon sa Posisyon"
+904	"Kisame"
+905	"Bilog"
+906	"Paleta ng Kulay"
+907	"Koniko"
+908	"Konektado"
+909	"Bantay na Pangkontra"
+910	"Radius ng Sulok"
+911	"Malutong na mga Gilid"
+912	"Gumamit ng image-rendering: pixelated para sa matutulis na gilid"
+913	"Naputol"
+914	"Diamante"
+915	"Pag-ikot ng Tuldok"
+916	"Mga Tuldok"
+917	"Estilo ng Panloob na Mata"
+918	"Estilo ng Panlabas na Mata"
+919	"Timbangan ng Mata"
+920	"Estilo ng Pattern ng Finder"
+921	"Sahig"
+922	"Paharap na Lugar"
+923	"Estilo ng Frame"
+924	"Teksto ng Frame"
+925	"Modyul ng Pagitan"
+926	"Gradient"
+927	"Anggulong Gradient"
+928	"Uri ng Gradient"
+929	"Nakasingit"
+930	"Linyar"
+931	"Tagahanap ng Tugma"
+932	"Modyul ng Pagtutugma"
+933	"Minimum na Ratio ng Kontras"
+934	"Modyul na Puwang"
+935	"Negatibong Espasyo"
+936	"Mode ng Kulay Bawat Module"
+937	"Pixel Snap"
+938	"Radyal"
+939	"Bilog"
+940	"Bilugan"
+941	"Bilog na Balangkas"
+942	"Estilo ng Modyul"
+943	"Matalas"
+944	"Makinis"
+945	"Matibay"
+946	"Plarikula"
+947	"Mga Parisukat"
+948	"Sticker"
+949	"Stroke"
+950	"Estilo"
+951	"Tag"
+952	"Estilo ng Pattern ng Pagtatakda ng Oras"
+953	"Malinaw na Background"
+954	"Pagsusuri ng Kaligtasan"
+955	"Awtomatikong Pumili ng ECC"
+956	"Bersyon ng Awtomatikong Pagpili"
+957	"Awtomatikong Bawasan ang Intensity"
+958	"Awtomatikong Pag-tune"
+959	"Balanse"
+960	"Ratio ng Kontras"
+961	"Pagsusuri ng Kontras"
+962	"Napakahusay"
+963	"Patas"
+964	"Mabuti"
+965	"Pag-align ng Lock"
+966	"Mga Panghanap ng Lock"
+967	"Impormasyon sa Format ng Lock"
+968	"Pag-ooras ng Lock"
+969	"Impormasyon sa Bersyon ng Lock"
+970	"Minimum na Laki ng Modyul"
+971	"Minimum na Tahimik na Sona"
+972	"Kawawa"
+973	"Mga Kandadong Proteksyon"
+974	"Pagsusuri ng Kalidad"
+975	"Tahimik na Sona"
+976	"Modong Pangkaligtasan"
+977	"Iskor ng Kakayahang I-scan"
+978	"Ipakita ang Heatmap"
+979	"Gayahin ang Palabuin"
+980	"Gayahin ang Ingay"
+981	"Gayahin ang Pag-ikot"
+982	"Hanggang sa ma-scan"
+983	"Metadata"
+984	"Output"
+985	"Pagpatong / Imahe"
+986	"Payload / Datos"
+987	"Pag-render"
+988	"Tatak ng Tubig"
+989	"Direktang Link"
+990	"Bumuo ng maibabahaging URL"
+991	"I-embed ang HTML"
+992	"Bumuo ng embed code"
+993	"I-encode ang Lahat ng Parameter"
+994	"Isama ang lahat ng setting sa URL"
+995	"Pagbaba ng Marka"
+996	"Mabilis na Pagbabahagi"
+997	"X/Twitter"
+998	"Advanced"
+999	"Pangunahin"
 1000	"Pro"
-1001	“Panoorin ang ad para ma-unlock ang mga Propesyonal na feature sa loob ng 24 oras”
-1002	“Sa Likod ng QR”
-1003	“Ibabang Kaliwa”
-1004	“Ibabang Kanan”
-1005	“Sentro”
-1006	“Mga Sulok”
-1007	“Mga Gilid”
-1008	“Paganahin ang Watermark”
-1009	“Kulay ng Font”
-1010	“Laki ng Font”
-1011	“Magparami”
-1012	“Normal”
-1013	“Kadiliman”
-1014	“Patong”
-1015	“Patern”
-1016	“Posisyon”
-1017	“Iskrin”
-1018	“Teksto”
-1019	“© Pangalan ng Kumpanya”
-1020	“Kaliwang Itaas”
-1021	“Kanang Itaas”
-1022	“Mag-upload ng Larawan”
+1001	"Panoorin ang ad para ma-unlock ang mga Propesyonal na feature sa loob ng 24 oras"
+1002	"Sa Likod ng QR"
+1003	"Ibabang Kaliwa"
+1004	"Ibabang Kanan"
+1005	"Sentro"
+1006	"Mga Sulok"
+1007	"Mga Gilid"
+1008	"Paganahin ang Watermark"
+1009	"Kulay ng Font"
+1010	"Laki ng Font"
+1011	"Magparami"
+1012	"Normal"
+1013	"Kadiliman"
+1014	"Patong"
+1015	"Patern"
+1016	"Posisyon"
+1017	"Iskrin"
+1018	"Teksto"
+1019	"© Pangalan ng Kumpanya"
+1020	"Kaliwang Itaas"
+1021	"Kanang Itaas"
+1022	"Mag-upload ng Larawan"
 1023	"I-toggle ang panel ng mga setting"
 1024	"Lahat ng Kategorya"
 1025	"Kopyahin ang link ng pagbabahagi sa clipboard"

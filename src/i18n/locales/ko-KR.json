@@ -133,7 +133,7 @@
     "blendModes": "블렌드 모드",
     "collapse": "붕괴",
     "colorModes": "색상 모드",
-    "colors": "색상",
+    "colors": " 색상",
     "contentTypes": "콘텐츠 유형",
     "dithering": "디더링",
     "encoding": "인코딩",
@@ -1048,7 +1048,7 @@
   },
   "render": {
     "none": "없음",
-    "gradientColors": "색상",
+    "gradientColors": " 색상",
     "classic": "클래식",
     "addColor": "색상 추가",
     "alignmentStyle": "정렬 패턴 스타일",

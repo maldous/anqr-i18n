@@ -417,7 +417,7 @@
         "title": "ဖလွိုက်-စတိန်းဘာ့ဂ်"
       },
       "dither-kernel-jarvis-judice-ninke": {
-        "description": "အမှားပျံ့နှံ့မှု\"",
+        "description": "အမှားပျံ့နှံ့မှု",
         "title": "ဂျာဗစ်-ဂျူဒစ်-နင်ကီ"
       },
       "dither-kernel-sierra": {
@@ -425,7 +425,7 @@
         "title": "ဆီယာရာ"
       },
       "dither-kernel-stucki": {
-        "description": "အမှားပျံ့နှံ့မှု\"",
+        "description": "အမှားပျံ့နှံ့မှု",
         "title": "စတက်ကီ"
       },
       "dither-ordered-bayer": {
@@ -930,7 +930,7 @@
     "qrisNote": "အမျိုးသားငွေပေးချေမှုများအတွက် အမြန်တုံ့ပြန်မှု အင်ဒိုနီးရှားစံနှုန်း",
     "duitnowNote": "မလေးရှား PayNet ငွေပေးချေမှုများအတွက် DuitNow QR",
     "bharatqrNote": "အိန္ဒိယတွင် ပေါင်းစည်းထားသော ကတ်နှင့် UPI ငွေပေးချေမှုများအတွက် BharatQR",
-    "vietqrNote": "NAPAS ဘဏ်ငွေလွှဲများအတွက် VietQR\"",
+    "vietqrNote": "NAPAS ဘဏ်ငွေလွှဲများအတွက် VietQR",
     "qrphNote": "ဖိလစ်ပိုင် InstaPay/PESONet ငွေပေးချေမှုများအတွက် QR Ph",
     "twqrNote": "ထိုင်ဝမ်ငွေကြေးအဖွဲ့အစည်းငွေပေးချေမှုများအတွက် TWQR",
     "hkqrNote": "ဟောင်ကောင် ပိုမိုမြန်ဆန်သော ငွေပေးချေမှုစနစ်အတွက် HKQR",
@@ -1458,7 +1458,7 @@
     "github": "ဂစ်ဟက်ဘ်",
     "googleDrive": "ဂူဂယ်ဒရိုက်",
     "gs1DigitalLink": "GS1 ဒစ်ဂျစ်တယ်လင့်ခ်",
-    "gtin": "(ကမ္ဘာလုံးဆိုင်ရာ ကုန်သွယ်မှုပစ္စည်းနံပါတ်)\"",
+    "gtin": "(ကမ္ဘာလုံးဆိုင်ရာ ကုန်သွယ်မှုပစ္စည်းနံပါတ်)",
     "hidden": "ဝှက်ထားသောကွန်ရက်",
     "homePhone": "အိမ်ဖုန်း",
     "iban": "အိုင်ဘန်",
@@ -1681,7 +1681,7 @@
     "targetAddress": "ပစ်မှတ်လိပ်စာ",
     "chainId": "ကွင်းဆက် ID",
     "chainIdHint": "၁ = Mainnet၊ ၁၃၇ = Polygon၊ စသည်ဖြင့်",
-    "valueWei": "(ဝေ)\"၊",
+    "valueWei": "(ဝေ)၊",
     "valueWeiHint": "wei (အသေးဆုံးယူနစ်) ဖြင့် ပမာဏ",
     "gasLimit": "ဓာတ်ငွေ့ကန့်သတ်ချက်",
     "gasPriceWei": "ဓာတ်ငွေ့ဈေးနှုန်း (wei)",
@@ -1719,7 +1719,7 @@
     "serviceCodeField": "ဝန်ဆောင်မှုကုဒ်",
     "serviceCodePush": "QR တွန်းပို့ခြင်း",
     "serviceCodeFtta": "ဘဏ်အချင်းချင်း ငွေလွှဲခြင်း (၂၄/၇)",
-    "serviceCodeFttc": "ငွေလွှဲခြင်း (Citad)\"",
+    "serviceCodeFttc": "ငွေလွှဲခြင်း (Citad)",
     "qrph": "QR Ph (ဖိလစ်ပိုင်)",
     "qrphNote": "ဖိလစ်ပိုင်နိုင်ငံ အမျိုးသား QR ငွေပေးချေမှုစံနှုန်း",
     "twqr": "TWQR (ထိုင်ဝမ်)",
@@ -1748,7 +1748,7 @@
     "emvGeneric": "EMV QR (ယေဘုယျ)",
     "emvGenericNote": "စိတ်ကြိုက်ငွေပေးချေမှုအစီအစဉ်များအတွက် အထွေထွေ EMVCo QR ကုဒ်",
     "countryCodeField": "နိုင်ငံကုဒ်",
-    "countryCodeHint": "3166-1 alpha-2 (ဥပမာ၊ SG၊ TH၊ ID)\"",
+    "countryCodeHint": "3166-1 alpha-2 (ဥပမာ၊ SG၊ TH၊ ID)",
     "currencyCodeField": "ငွေကြေးကုဒ်",
     "currencyCodeHint": "ISO ၄၂၁၇ ဂဏန်း (ဥပမာ၊ SGD အတွက် ၇၀၂)",
     "staticQr": "တည်ငြိမ်သော QR",

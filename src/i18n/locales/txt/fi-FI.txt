@@ -52,7 +52,7 @@
 52	"Punjabilainen"
 53	"ANQR"
 54	"QR-koodigeneraattori"
-55	Kaikki oikeudet pidätetään
+55	"Kaikki oikeudet pidätetään"
 56	"Hae"
 57	"Takaisin"
 58	"Peruuta"
@@ -220,7 +220,7 @@
 220	"Maantieteellinen sijainti"
 221	"Esitäytetty tekstiviesti timantinsinisellä"
 222	"Tekstiviesti"
-223	"Pyöreä, laivastonsininen" -tyyppinen yhteyskortti
+223	"Pyöreä, laivastonsininen -tyyppinen yhteyskortti"
 224	"vCard-yhteystieto"
 225	"WiFi-kokoonpano, jossa on metsänvihreät pisteet"
 226	"Wi-Fi-verkko"
@@ -1248,29 +1248,29 @@
 1248	"kreikkalainen"
 1249	"Suomalainen"
 1250	"ranskalainen"
-1251	Hausa
+1251	"Hausa"
 1252	"kroatialainen"
 1253	"unkarilainen"
 1254	"Igbo"
 1255	"italialainen"
-1256	khmeriä
-1257	Palvelut
+1256	"khmeriä"
+1257	"Palvelut"
 1258	"Lao"
 1259	"burmalainen"
-1260	Nepalin
+1260	"Nepalin"
 1261	"hollantilainen"
 1262	"norjalainen"
 1263	"Odia"
 1264	"puolalainen"
 1265	"paštu"
-1266	Romanssi
+1266	"Romanssi"
 1267	"romanialainen"
-1268	sindhi
-1269	Swati
+1268	"sindhi"
+1269	"Swati"
 1270	"Eteläsotho"
 1271	"ruotsalainen"
-1272	Tswana
-1273	Tsonga
+1272	"Tswana"
+1273	"Tsonga"
 1274	"Venda"
 1275	"Xhosa"
 1276	"Joruba"

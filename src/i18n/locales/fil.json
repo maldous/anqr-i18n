@@ -1,59 +1,59 @@
 {
   "animation": {
     "blueNoise": "Asul na Ingay",
-    "bounce": "“Talon (Ping-Pong)”",
+    "bounce": "Talon (Ping-Pong)",
     "colorCycle": "Siklo ng Kulay",
     "crossfade": "Pagkupas na may Krus",
     "drift": "Pag-anod",
-    "enabled": "“Paganahin ang Animasyon”",
-    "everyNFrames": "“Bawat {{count}} frame(s)”",
-    "exportAllFrames": "“I-export ang Lahat ng Frame”",
+    "enabled": "Paganahin ang Animasyon",
+    "everyNFrames": "Bawat {{count}} frame(s)",
+    "exportAllFrames": "I-export ang Lahat ng Frame",
     "fadeIn": "Pagkupas",
-    "flickerSafe": "“Ligtas sa Pagkislap”",
-    "frameStep": "“Hakbang ng Frame”",
-    "interpolation": "“Interpolasyon”",
-    "loop": "“Paulit-ulit na Animasyon”",
-    "maxFrames": "na “Pinakamataas na mga Frame”",
-    "moduleJitter": "“Modyul na Pag-alog”",
-    "moduleJitterWarning": "“⚠️ Maaaring makaapekto sa kakayahang i-scan”",
-    "morph": "“Morph”",
-    "none": "“Wala”",
-    "off": "“Sarado”",
-    "pattern": "“Nabuo na Pattern”",
-    "pulse": "“Pulse”",
-    "randomSeed": "“Random na Binhi”",
-    "rotate": "“Paikutin”",
-    "scanline": "“I-scanline”",
-    "shimmer": "“Kumikinang”",
-    "slideIn": "“Papasok”",
-    "speed": "“Bilis ng Frame”",
-    "startFrame": "“Simulang Balangkas”",
-    "temporalDither": "“Temporal na Pagkalito”",
-    "wave": "“Alon”"
+    "flickerSafe": "Ligtas sa Pagkislap",
+    "frameStep": "Hakbang ng Frame",
+    "interpolation": "Interpolasyon",
+    "loop": "Paulit-ulit na Animasyon",
+    "maxFrames": "na Pinakamataas na mga Frame",
+    "moduleJitter": "Modyul na Pag-alog",
+    "moduleJitterWarning": "⚠️ Maaaring makaapekto sa kakayahang i-scan",
+    "morph": "Morph",
+    "none": "Wala",
+    "off": "Sarado",
+    "pattern": "Nabuo na Pattern",
+    "pulse": "Pulse",
+    "randomSeed": "Random na Binhi",
+    "rotate": "Paikutin",
+    "scanline": "I-scanline",
+    "shimmer": "Kumikinang",
+    "slideIn": "Papasok",
+    "speed": "Bilis ng Frame",
+    "startFrame": "Simulang Balangkas",
+    "temporalDither": "Temporal na Pagkalito",
+    "wave": "Alon"
   },
   "languages": {
-    "en-GB": "“Ingles”",
-    "hi-IN": "“Hindi”",
-    "zh-CN": "“Intsik”",
-    "ms": "“Malay”",
-    "ta-IN": "“Tamil”",
-    "th": "“Thai”",
-    "pt-BR": "“Portuges”",
-    "id": "“Indonesyo”",
-    "vi": "“Vietnamese”",
-    "fil": "“Tagalog”",
-    "ja-JP": "“Hapones”",
-    "ko-KR": "“Koreano”",
-    "es-ES": "“Espanyol”",
-    "ar": "“Arabo”",
+    "en-GB": "Ingles",
+    "hi-IN": "Hindi",
+    "zh-CN": "Intsik",
+    "ms": "Malay",
+    "ta-IN": "Tamil",
+    "th": "Thai",
+    "pt-BR": "Portuges",
+    "id": "Indonesyo",
+    "vi": "Vietnamese",
+    "fil": "Tagalog",
+    "ja-JP": "Hapones",
+    "ko-KR": "Koreano",
+    "es-ES": "Espanyol",
+    "ar": "Arabo",
     "ru-RU": "Ruso",
-    "te-IN": "“Telugu”",
-    "mr-IN": "“Marathi”",
-    "bn-BD": "“Bengali”",
-    "gu": "“Gujarati”",
-    "kn-IN": "“Kannada”",
-    "ml-IN": "“Malayalam”",
-    "pa": "“Punjabi”",
+    "te-IN": "Telugu",
+    "mr-IN": "Marathi",
+    "bn-BD": "Bengali",
+    "gu": "Gujarati",
+    "kn-IN": "Kannada",
+    "ml-IN": "Malayalam",
+    "pa": "Punjabi",
     "af": "Afrikaans",
     "bg": "Bulgarian",
     "cs-CZ": "Czech",
@@ -78,852 +78,852 @@
     "zu": "Zulu"
   },
   "app": {
-    "name": "“ANQR”",
-    "tagline": "“Tagabuo ng QR Code”"
+    "name": "ANQR",
+    "tagline": "Tagabuo ng QR Code"
   },
   "common": {
-    "none": "“Wala”",
-    "off": "“Sarado”",
+    "none": "Wala",
+    "off": "Sarado",
     "optional": "(opsyonal)",
     "required": "(kinakailangan)",
-    "allRightsReserved": "“Lahat ng karapatan ay nakalaan”",
-    "apply": "“Mag-apply”",
-    "back": "“Pabalik”",
-    "cancel": "“Kanselahin”",
-    "close": "“Isara”",
-    "copied": "“Kinopya!”",
-    "copy": "“Kopyahin”",
-    "copyright": "“© ANQR”",
-    "delete": "“Burahin”",
-    "disabled": "“May Kapansanan”",
-    "download": "“I-download”",
-    "edit": "“Pag-edit”",
-    "enabled": "“Pinagana”",
-    "error": "“Error”",
-    "filter": "“Salain”",
+    "allRightsReserved": "Lahat ng karapatan ay nakalaan",
+    "apply": "Mag-apply",
+    "back": "Pabalik",
+    "cancel": "Kanselahin",
+    "close": "Isara",
+    "copied": "Kinopya!",
+    "copy": "Kopyahin",
+    "copyright": "© ANQR",
+    "delete": "Burahin",
+    "disabled": "May Kapansanan",
+    "download": "I-download",
+    "edit": "Pag-edit",
+    "enabled": "Pinagana",
+    "error": "Error",
+    "filter": "Salain",
     "less": "Mas kaunti",
-    "loading": "“Naglo-load…”",
-    "more": "“Higit Pa”",
-    "next": "“Susunod”",
-    "no": "“Hindi”",
-    "ok": "“Sige”",
-    "on": "“Bukas”",
-    "previous": "“Nakaraan”",
-    "reset": "“I-reset”",
-    "save": "“Iligtas”",
-    "search": "“Paghahanap”",
-    "select": "“Piliin”",
-    "showLess": "“Magpakita ng Mas Kaunting”",
-    "showMore": "“Magpakita Pa”",
-    "sort": "“Pagbukud-bukurin”",
-    "success": "“Tagumpay”",
-    "upload": "“Pag-upload”",
-    "viewAll": "“Tingnan Lahat”",
-    "yes": "“Oo”"
+    "loading": "Naglo-load…",
+    "more": "Higit Pa",
+    "next": "Susunod",
+    "no": "Hindi",
+    "ok": "Sige",
+    "on": "Bukas",
+    "previous": "Nakaraan",
+    "reset": "I-reset",
+    "save": "Iligtas",
+    "search": "Paghahanap",
+    "select": "Piliin",
+    "showLess": "Magpakita ng Mas Kaunting",
+    "showMore": "Magpakita Pa",
+    "sort": "Pagbukud-bukurin",
+    "success": "Tagumpay",
+    "upload": "Pag-upload",
+    "viewAll": "Tingnan Lahat",
+    "yes": "Oo"
   },
-  "fileSaveFailed": "“Nabigong i-save ang file: {{error}}”",
-  "fileSaved": "“Na-save sa mga Dokumento: {{filename}}”",
+  "fileSaveFailed": "Nabigong i-save ang file: {{error}}",
+  "fileSaved": "Na-save sa mga Dokumento: {{filename}}",
   "footer": {
-    "copyright": "“© ANQR {{taon}}”"
+    "copyright": "© ANQR {{taon}}"
   },
   "gallery": {
-    "filter": "“Salain”",
-    "all": "“Lahat”",
-    "animationOverlay": "“Animasyon”",
-    "blendModes": "na “Mga Blend Mode”",
-    "collapse": "“Pagbagsak”",
-    "colorModes": "na “Mga Mode ng Kulay”",
-    "colors": "“Mga Kulay”",
-    "contentTypes": "“Mga Uri ng Nilalaman”",
-    "dithering": "“Pag-aalinlangan”",
-    "encoding": "“Pag-encode”",
-    "expand": "“Palawakin”",
-    "imageOverlay": "“Pagpatong ng Imahe”",
+    "filter": "Salain",
+    "all": "Lahat",
+    "animationOverlay": "Animasyon",
+    "blendModes": "na Mga Blend Mode",
+    "collapse": "Pagbagsak",
+    "colorModes": "na Mga Mode ng Kulay",
+    "colors": "Mga Kulay",
+    "contentTypes": "Mga Uri ng Nilalaman",
+    "dithering": "Pag-aalinlangan",
+    "encoding": "Pag-encode",
+    "expand": "Palawakin",
+    "imageOverlay": "Pagpatong ng Imahe",
     "items": {
       "anim-blue-noise": {
-        "description": "“Asul na hangganan ng ingay na may animation”",
-        "title": "“Animated na Asul na Ingay”"
+        "description": "Asul na hangganan ng ingay na may animation",
+        "title": "Animated na Asul na Ingay"
       },
       "anim-blue-noise-i100": {
-        "description": "“Animated na asul na ingay sa 100%”",
-        "title": "“Asul na Ingay 100%”"
+        "description": "Animated na asul na ingay sa 100%",
+        "title": "Asul na Ingay 100%"
       },
       "anim-blue-noise-i50": {
-        "description": "“Animated na asul na ingay sa 50%”",
-        "title": "“Asul na Ingay 50%”"
+        "description": "Animated na asul na ingay sa 50%",
+        "title": "Asul na Ingay 50%"
       },
       "anim-blue-noise-i75": {
-        "description": "“Animated na asul na ingay sa 75%”",
-        "title": "“Asul na Ingay 75%”"
+        "description": "Animated na asul na ingay sa 75%",
+        "title": "Asul na Ingay 75%"
       },
       "anim-brightness": {
-        "description": "“Liwanag na may animation”",
-        "title": "“Animated na Liwanag”"
+        "description": "Liwanag na may animation",
+        "title": "Animated na Liwanag"
       },
       "anim-colormode-bw": {
-        "description": "“Itim at Puti na animated na overlay”",
-        "title": "“Animated na Itim at Puti”"
+        "description": "Itim at Puti na animated na overlay",
+        "title": "Animated na Itim at Puti"
       },
       "anim-colormode-color": {
-        "description": "“May kulay na animated na overlay”",
-        "title": "“Kulay na May Animasyon”"
+        "description": "May kulay na animated na overlay",
+        "title": "Kulay na May Animasyon"
       },
       "anim-colormode-grayscale": {
-        "description": "“Grayscale animated overlay”",
-        "title": "“Animated na Grayscale”"
+        "description": "Grayscale animated overlay",
+        "title": "Animated na Grayscale"
       },
       "anim-dithered": {
-        "description": "“Pagsasabog ng error gamit ang animation”",
-        "title": "“Animated na Nalilito”"
+        "description": "Pagsasabog ng error gamit ang animation",
+        "title": "Animated na Nalilito"
       },
       "anim-duotone": {
-        "description": "“Duotone na may animation”",
-        "title": "“Animated na Duotone”"
+        "description": "Duotone na may animation",
+        "title": "Animated na Duotone"
       },
       "anim-halftone": {
-        "description": "“Mga tuldok na may kalahating tono na may animasyon”",
-        "title": "“Animated na Halftone”"
+        "description": "Mga tuldok na may kalahating tono na may animasyon",
+        "title": "Animated na Halftone"
       },
       "anim-mosaic": {
-        "description": "“Mosaic na may animation”",
-        "title": "“Animated na Mosaic”"
+        "description": "Mosaic na may animation",
+        "title": "Animated na Mosaic"
       },
       "blend-classic": {
-        "description": "“Dithered overlay na may klasikong palette”",
-        "title": "“Klasikong Timpla”"
+        "description": "Dithered overlay na may klasikong palette",
+        "title": "Klasikong Timpla"
       },
       "blend-forest": {
-        "description": "“Dithered overlay na may paleta ng kagubatan”",
-        "title": "“Timpla ng Kagubatan”"
+        "description": "Dithered overlay na may paleta ng kagubatan",
+        "title": "Timpla ng Kagubatan"
       },
       "blend-navy": {
-        "description": "“Dithered overlay na may navy palette”",
-        "title": "“Hinalong Asul na Dagat”"
+        "description": "Dithered overlay na may navy palette",
+        "title": "Hinalong Asul na Dagat"
       },
       "blend-wine": {
-        "description": "“Dithered overlay na may paleta ng alak”",
-        "title": "“Timpla ng Alak”"
+        "description": "Dithered overlay na may paleta ng alak",
+        "title": "Timpla ng Alak"
       },
       "cmode-blue-noise-bw": {
-        "description": "“Asul na Ingay sa Itim at Puti”",
-        "title": "“Asul na Ingay na Itim at Madilim”"
+        "description": "Asul na Ingay sa Itim at Puti",
+        "title": "Asul na Ingay na Itim at Madilim"
       },
       "cmode-blue-noise-color": {
-        "description": "“Asul na Ingay sa Kulay”",
-        "title": "“Kulay ng Asul na Ingay”"
+        "description": "Asul na Ingay sa Kulay",
+        "title": "Kulay ng Asul na Ingay"
       },
       "cmode-dithered-color": {
-        "description": "“Nagkahalong Kulay”",
-        "title": "“Kulay na Naguguluhan”"
+        "description": "Nagkahalong Kulay",
+        "title": "Kulay na Naguguluhan"
       },
       "cmode-dithered-grayscale": {
-        "description": "“Nalilito sa Grayscale”",
-        "title": "“Naguguluhang Grayscale”"
+        "description": "Nalilito sa Grayscale",
+        "title": "Naguguluhang Grayscale"
       },
       "cmode-halftone-bw": {
-        "description": "“Halftone sa Itim at Puti”",
-        "title": "“Halftone na Itim at Maputi”"
+        "description": "Halftone sa Itim at Puti",
+        "title": "Halftone na Itim at Maputi"
       },
       "cmode-halftone-color": {
-        "description": "“Halftone in Color”",
-        "title": "“Kulay ng Halftone”"
+        "description": "Halftone in Color",
+        "title": "Kulay ng Halftone"
       },
       "color-coral": {
-        "description": "“#e85d04 sa #ffe8d6”",
-        "title": "“Korales”"
+        "description": "#e85d04 sa #ffe8d6",
+        "title": "Korales"
       },
       "color-coral-dots": {
-        "description": "“Korales na may mga tuldok na modyul”",
-        "title": "“Mga Tuldok na Korales”"
+        "description": "Korales na may mga tuldok na modyul",
+        "title": "Mga Tuldok na Korales"
       },
       "color-crimson": {
-        "description": "“#9d0208 sa #ffccd5”",
-        "title": "“Pulang-pula”"
+        "description": "#9d0208 sa #ffccd5",
+        "title": "Pulang-pula"
       },
       "color-forest": {
-        "description": "“#1b4332 sa #d8f3dc”",
-        "title": "“Kagubatan”"
+        "description": "#1b4332 sa #d8f3dc",
+        "title": "Kagubatan"
       },
       "color-forest-dots": {
-        "description": "“Kagubatan na may mga modyul na tuldok”",
-        "title": "“Mga Tuldok sa Kagubatan”"
+        "description": "Kagubatan na may mga modyul na tuldok",
+        "title": "Mga Tuldok sa Kagubatan"
       },
       "color-gold": {
-        "description": "“#7f5539 sa #ffe8cc”",
-        "title": "“Ginto”"
+        "description": "#7f5539 sa #ffe8cc",
+        "title": "Ginto"
       },
       "color-inverted": {
-        "description": "“#ffffff sa #000000”",
-        "title": "“Baliktad”"
+        "description": "#ffffff sa #000000",
+        "title": "Baliktad"
       },
       "color-midnight": {
-        "description": "“#1a1a2e sa #eef1ff”",
-        "title": "“Hatinggabi”"
+        "description": "#1a1a2e sa #eef1ff",
+        "title": "Hatinggabi"
       },
       "color-midnight-dots": {
-        "description": "“Hatinggabi na may mga tuldok na modyul”",
-        "title": "“Mga Tuldok sa Hatinggabi”"
+        "description": "Hatinggabi na may mga tuldok na modyul",
+        "title": "Mga Tuldok sa Hatinggabi"
       },
       "color-navy": {
-        "description": "“#001d3d sa #a2d2ff”",
-        "title": "“Hukbong Dagat”"
+        "description": "#001d3d sa #a2d2ff",
+        "title": "Hukbong Dagat"
       },
       "color-ocean": {
-        "description": "“#023e8a sa #caf0f8”",
-        "title": "“Karagatan”"
+        "description": "#023e8a sa #caf0f8",
+        "title": "Karagatan"
       },
       "color-ocean-dots": {
-        "description": "“Karagatan na may mga modyul na tuldok”",
-        "title": "“Mga Tuldok sa Karagatan”"
+        "description": "Karagatan na may mga modyul na tuldok",
+        "title": "Mga Tuldok sa Karagatan"
       },
       "color-royal": {
-        "description": "“#4a0080 sa #f5e6ff”",
-        "title": "“Maharlika”"
+        "description": "#4a0080 sa #f5e6ff",
+        "title": "Maharlika"
       },
       "color-royal-dots": {
-        "description": "“Maharlikang may mga tuldok na modyul”",
-        "title": "“Mga Maharlikang Tuldok”"
+        "description": "Maharlikang may mga tuldok na modyul",
+        "title": "Mga Maharlikang Tuldok"
       },
       "color-slate": {
-        "description": "“#343a40 sa #e9ecef”",
-        "title": "“Slate”"
+        "description": "#343a40 sa #e9ecef",
+        "title": "Slate"
       },
       "color-sunset": {
-        "description": "“#bf0603 sa #fff3b0”",
-        "title": "“Paglubog ng Araw”"
+        "description": "#bf0603 sa #fff3b0",
+        "title": "Paglubog ng Araw"
       },
       "color-sunset-dots": {
-        "description": "“Paglubog ng araw na may mga tuldok na modyul”",
-        "title": "“Mga Tuldok sa Paglubog ng Araw”"
+        "description": "Paglubog ng araw na may mga tuldok na modyul",
+        "title": "Mga Tuldok sa Paglubog ng Araw"
       },
       "color-teal": {
-        "description": "“#006d77 sa #e0f4f5”",
-        "title": "“Teal”"
+        "description": "#006d77 sa #e0f4f5",
+        "title": "Teal"
       },
       "combo-anim-dots-halftone": {
-        "description": "“Animated na halftone na may mga tuldok na modyul”",
-        "title": "“Mga Animated na Tuldok + Halftone”"
+        "description": "Animated na halftone na may mga tuldok na modyul",
+        "title": "Mga Animated na Tuldok + Halftone"
       },
       "combo-anim-rounded-blue-noise": {
-        "description": "“Animated na asul na ingay na may bilugan”",
-        "title": "“Animated na Bilugan + Asul na Ingay”"
+        "description": "Animated na asul na ingay na may bilugan",
+        "title": "Animated na Bilugan + Asul na Ingay"
       },
       "combo-connected-pixelate-teal": {
-        "description": "“Pixelated overlay na may mga konektadong module”",
-        "title": "“Konektado + Pixelate Teal”"
+        "description": "Pixelated overlay na may mga konektadong module",
+        "title": "Konektado + Pixelate Teal"
       },
       "combo-connected-square": {
-        "description": "“Mga konektadong modyul na may mga square finder”",
-        "title": "“Konektado + Parisukat”"
+        "description": "Mga konektadong modyul na may mga square finder",
+        "title": "Konektado + Parisukat"
       },
       "combo-connected-wave-ocean": {
-        "description": "“Mga konektadong modyul na may epekto ng alon”",
-        "title": "“Konektado + Karagatang Alon”"
+        "description": "Mga konektadong modyul na may epekto ng alon",
+        "title": "Konektado + Karagatang Alon"
       },
       "combo-diamond-blue-noise-navy": {
-        "description": "“Mga modyul na diamante na may asul na ingay”",
-        "title": "“Diamante + Asul na Ingay na Asul”"
+        "description": "Mga modyul na diamante na may asul na ingay",
+        "title": "Diamante + Asul na Ingay na Asul"
       },
       "combo-diamond-duotone-crimson": {
-        "description": "“Epektong duotone na may mga modyul na diyamante”",
-        "title": "“Diamante + Duotone na Pulang-pula”"
+        "description": "Epektong duotone na may mga modyul na diyamante",
+        "title": "Diamante + Duotone na Pulang-pula"
       },
       "combo-diamond-rounded": {
-        "description": "“Mga modyul na diamante na may mga bilugan na tagahanap”",
-        "title": "“Diamante + Bilog”"
+        "description": "Mga modyul na diamante na may mga bilugan na tagahanap",
+        "title": "Diamante + Bilog"
       },
       "combo-dots-circle": {
-        "description": "“Mga modyul ng tuldok na may mga tagahanap ng bilog”",
-        "title": "“Mga Tuldok + Bilog”"
+        "description": "Mga modyul ng tuldok na may mga tagahanap ng bilog",
+        "title": "Mga Tuldok + Bilog"
       },
       "combo-dots-extreme-forest": {
-        "description": "“Pinakamataas na kakayahang makita gamit ang mga tuldok”",
-        "title": "“Mga Tuldok + Matinding Kagubatan”"
+        "description": "Pinakamataas na kakayahang makita gamit ang mga tuldok",
+        "title": "Mga Tuldok + Matinding Kagubatan"
       },
       "combo-dots-halftone-gold": {
-        "description": "“Mga tuldok na modyul na may halftone overlay”",
-        "title": "“Mga Tuldok + Halftone na Ginto”"
+        "description": "Mga tuldok na modyul na may halftone overlay",
+        "title": "Mga Tuldok + Halftone na Ginto"
       },
       "combo-dots-outline-slate": {
-        "description": "“Pagtukoy ng gilid gamit ang mga tuldok na modyul”",
-        "title": "“Mga Tuldok + Balangkas na Talaan”"
+        "description": "Pagtukoy ng gilid gamit ang mga tuldok na modyul",
+        "title": "Mga Tuldok + Balangkas na Talaan"
       },
       "combo-rounded-dithered-royal": {
-        "description": "“Klasikong nalilito na may bilugan na istilo”",
-        "title": "“Bilog + Dithered Royal”"
+        "description": "Klasikong nalilito na may bilugan na istilo",
+        "title": "Bilog + Dithered Royal"
       },
       "combo-rounded-mosaic-sunset": {
-        "description": "“Mga bilugan na modyul na may mosaic overlay”",
-        "title": "“Bilog + Mosaic na Paglubog ng Araw”"
+        "description": "Mga bilugan na modyul na may mosaic overlay",
+        "title": "Bilog + Mosaic na Paglubog ng Araw"
       },
       "combo-rounded-rounded": {
-        "description": "“Mga bilugan na modyul na may mga bilugan na tagahanap”",
-        "title": "“Bilugan + Bilugan”"
+        "description": "Mga bilugan na modyul na may mga bilugan na tagahanap",
+        "title": "Bilugan + Bilugan"
       },
       "combo-rounded-subpixel-coral": {
-        "description": "“Mataas na detalyeng pag-render ng subpixel”",
-        "title": "“Bilog + Subpixel na Koral”"
+        "description": "Mataas na detalyeng pag-render ng subpixel",
+        "title": "Bilog + Subpixel na Koral"
       },
       "content-email": {
-        "description": "“Mailto link na may mga kulay korales”",
-        "title": "“Email Address”"
+        "description": "Mailto link na may mga kulay korales",
+        "title": "Email Address"
       },
       "content-event": {
-        "description": "“kaganapan sa iCal kasama ang bilugan na maharlika”",
-        "title": "“Kaganapan sa Kalendaryo”"
+        "description": "kaganapan sa iCal kasama ang bilugan na maharlika",
+        "title": "Kaganapan sa Kalendaryo"
       },
       "content-geo": {
-        "description": "“Mga coordinate ng mapa na may konektadong ginto”",
-        "title": "“Lokasyon sa Heograpiya”"
+        "description": "Mga coordinate ng mapa na may konektadong ginto",
+        "title": "Lokasyon sa Heograpiya"
       },
       "content-sms": {
-        "description": "“Paunang napunong SMS na may diyamanteng teal”",
-        "title": "“Mensaheng SMS”"
+        "description": "Paunang napunong SMS na may diyamanteng teal",
+        "title": "Mensaheng SMS"
       },
       "content-vcard": {
-        "description": "“Contact card na may bilog na kulay abo”",
-        "title": "“Pakikipag-ugnayan sa vCard”"
+        "description": "Contact card na may bilog na kulay abo",
+        "title": "Pakikipag-ugnayan sa vCard"
       },
       "content-wifi": {
-        "description": "“Pag-configure ng WiFi na may mga tuldok na kulay forest green”",
-        "title": "“WiFi Network”"
+        "description": "Pag-configure ng WiFi na may mga tuldok na kulay forest green",
+        "title": "WiFi Network"
       },
       "dither-adaptive-threshold": {
-        "description": "“Adaptive threshold”",
-        "title": "“Mapag-angkop”"
+        "description": "Adaptive threshold",
+        "title": "Mapag-angkop"
       },
       "dither-blue-noise": {
         "title": "Asul na Ingay",
-        "description": "“Asul na hangganan ng ingay”"
+        "description": "Asul na hangganan ng ingay"
       },
       "dither-blue-noise-error-diffusion": {
-        "description": "“Hybrid na asul na ingay”",
-        "title": "“Asul na Ingay + Error”"
+        "description": "Hybrid na asul na ingay",
+        "title": "Asul na Ingay + Error"
       },
       "dither-error-diffusion": {
-        "description": "“Estilo nina Floyd at Steinberg”",
-        "title": "“Pagkalat ng Error”"
+        "description": "Estilo nina Floyd at Steinberg",
+        "title": "Pagkalat ng Error"
       },
       "dither-kernel-atkinson": {
-        "description": "“Pagkalat ng error sa Atkinson”",
-        "title": "“Atkinson”"
+        "description": "Pagkalat ng error sa Atkinson",
+        "title": "Atkinson"
       },
       "dither-kernel-burkes": {
-        "description": "“Pagkalat ng error sa Burkes”",
-        "title": "“Burkes”"
+        "description": "Pagkalat ng error sa Burkes",
+        "title": "Burkes"
       },
       "dither-kernel-floyd-steinberg": {
-        "description": "“Pagsasabog ng error nina Floyd at Steinberg”",
-        "title": "“Floyd-Steinberg”"
+        "description": "Pagsasabog ng error nina Floyd at Steinberg",
+        "title": "Floyd-Steinberg"
       },
       "dither-kernel-jarvis-judice-ninke": {
         "description": "Jarvis-Judice-Ninke error diffusion",
-        "title": "“Jarvis-Judice-Ninke”"
+        "title": "Jarvis-Judice-Ninke"
       },
       "dither-kernel-sierra": {
-        "description": "“Pagkalat ng error sa Sierra”",
-        "title": "“Sierra”"
+        "description": "Pagkalat ng error sa Sierra",
+        "title": "Sierra"
       },
       "dither-kernel-stucki": {
         "description": "Stucki error diffusion",
-        "title": "“Stucki”"
+        "title": "Stucki"
       },
       "dither-ordered-bayer": {
-        "description": "“Pag-dither ng matris ng Bayer”",
-        "title": "“Inorder na Bayer”"
+        "description": "Pag-dither ng matris ng Bayer",
+        "title": "Inorder na Bayer"
       },
       "dither-perceptual": {
-        "description": "“May timbang na liwanag”",
-        "title": "“Persepsyonal”"
+        "description": "May timbang na liwanag",
+        "title": "Persepsyonal"
       },
       "dither-strength-100": {
-        "description": "“Lakas ng dither sa 100%”",
-        "title": "“Lakas 100%”"
+        "description": "Lakas ng dither sa 100%",
+        "title": "Lakas 100%"
       },
       "dither-strength-20": {
-        "description": "“Lakas ng dither sa 20%”",
-        "title": "“Lakas 20%”"
+        "description": "Lakas ng dither sa 20%",
+        "title": "Lakas 20%"
       },
       "dither-strength-40": {
-        "description": "“Lakas ng dither sa 40%”",
-        "title": "“Lakas 40%”"
+        "description": "Lakas ng dither sa 40%",
+        "title": "Lakas 40%"
       },
       "dither-strength-60": {
-        "description": "“Lakas ng dither sa 60%”",
-        "title": "“Lakas 60%”"
+        "description": "Lakas ng dither sa 60%",
+        "title": "Lakas 60%"
       },
       "dither-strength-80": {
-        "description": "“Lakas ng dither sa 80%”",
-        "title": "“Lakas 80%”"
+        "description": "Lakas ng dither sa 80%",
+        "title": "Lakas 80%"
       },
       "dither-white-noise": {
-        "description": "“Random na limitasyon ng ingay”",
-        "title": "“Puting Ingay”"
+        "description": "Random na limitasyon ng ingay",
+        "title": "Puting Ingay"
       },
       "enc-ecc-h": {
-        "description": "“30% na pagwawasto ng error”",
-        "title": "“ECC High”"
+        "description": "30% na pagwawasto ng error",
+        "title": "ECC High"
       },
       "enc-ecc-l": {
-        "description": "“7% na pagwawasto ng error”",
-        "title": "“Mababang ECC”"
+        "description": "7% na pagwawasto ng error",
+        "title": "Mababang ECC"
       },
       "enc-ecc-m": {
-        "description": "“15% na pagwawasto ng error”",
-        "title": "“ECC Medium”"
+        "description": "15% na pagwawasto ng error",
+        "title": "ECC Medium"
       },
       "enc-ecc-q": {
-        "description": "“25% na pagwawasto ng error”",
-        "title": "“ECC Quartile”"
+        "description": "25% na pagwawasto ng error",
+        "title": "ECC Quartile"
       },
       "enc-v0": {
-        "description": "“Awtomatikong pagpili ng bersyon”",
-        "title": "“Awtomatikong Bersyon”"
+        "description": "Awtomatikong pagpili ng bersyon",
+        "title": "Awtomatikong Bersyon"
       },
       "enc-v12": {
-        "description": "“Bersyon 12 QR code”",
-        "title": "“Bersyon 12”"
+        "description": "Bersyon 12 QR code",
+        "title": "Bersyon 12"
       },
       "enc-v6": {
-        "description": "“Pinakamahusay para sa mga overlay (walang center eye)”",
-        "title": "“Bersyon 6”"
+        "description": "Pinakamahusay para sa mga overlay (walang center eye)",
+        "title": "Bersyon 6"
       },
       "enc-v6-h": {
-        "description": "“Bersyon 6 na may mataas na pagwawasto ng error”",
-        "title": "“V6 + ECC Mataas”"
+        "description": "Bersyon 6 na may mataas na pagwawasto ng error",
+        "title": "V6 + ECC Mataas"
       },
       "enc-v6-l": {
-        "description": "“Bersyon 6 na may mababang pagwawasto ng error”",
-        "title": "“V6 + Mababang ECC”"
+        "description": "Bersyon 6 na may mababang pagwawasto ng error",
+        "title": "V6 + Mababang ECC"
       },
       "enc-v9": {
-        "description": "“Bersyon 9 na QR code”",
-        "title": "“Bersyon 9”"
+        "description": "Bersyon 9 na QR code",
+        "title": "Bersyon 9"
       },
       "enc-v9-h": {
-        "description": "“Bersyon 9 na may mataas na pagwawasto ng error”",
-        "title": "“V9 + ECC Mataas”"
+        "description": "Bersyon 9 na may mataas na pagwawasto ng error",
+        "title": "V9 + ECC Mataas"
       },
       "enc-v9-l": {
-        "description": "“Bersyon 9 na may mababang pagwawasto ng error”",
-        "title": "“V9 + Mababang ECC”"
+        "description": "Bersyon 9 na may mababang pagwawasto ng error",
+        "title": "V9 + Mababang ECC"
       },
       "finder-circle": {
-        "description": "“Patern ng paghahanap ng bilog”",
-        "title": "“Mga Tagahanap ng Bilog”"
+        "description": "Patern ng paghahanap ng bilog",
+        "title": "Mga Tagahanap ng Bilog"
       },
       "finder-rounded": {
-        "description": "“Patern ng bilugan na tagahanap”",
-        "title": "“Mga Bilog na Tagahanap”"
+        "description": "Patern ng bilugan na tagahanap",
+        "title": "Mga Bilog na Tagahanap"
       },
       "finder-square": {
-        "description": "“Patern ng paghahanap ng parisukat”",
-        "title": "“Mga Tagahanap ng Kwadrado”"
+        "description": "Patern ng paghahanap ng parisukat",
+        "title": "Mga Tagahanap ng Kwadrado"
       },
       "halftone-classic": {
-        "description": "“Halftone na may klasikong paleta”",
-        "title": "“Klasikong Halftone”"
+        "description": "Halftone na may klasikong paleta",
+        "title": "Klasikong Halftone"
       },
       "halftone-forest": {
-        "description": "“Halftone na may paleta ng kagubatan”",
-        "title": "“Halftone ng Kagubatan”"
+        "description": "Halftone na may paleta ng kagubatan",
+        "title": "Halftone ng Kagubatan"
       },
       "halftone-navy": {
-        "description": "“Halftone na may kulay abo”",
-        "title": "“Halftone ng Hukbong Dagat”"
+        "description": "Halftone na may kulay abo",
+        "title": "Halftone ng Hukbong Dagat"
       },
       "halftone-wine": {
-        "description": "“Halftone na may paleta ng alak”",
-        "title": "“Halftone ng Alak”"
+        "description": "Halftone na may paleta ng alak",
+        "title": "Halftone ng Alak"
       },
       "img-blend": {
-        "description": "“Paghahalo ng kulay”",
-        "title": "“Blend Mode”"
+        "description": "Paghahalo ng kulay",
+        "title": "Blend Mode"
       },
       "img-blue-noise": {
         "title": "Asul na Ingay",
-        "description": "“Pag-dither ng threshold ng asul na ingay”"
+        "description": "Pag-dither ng threshold ng asul na ingay"
       },
       "img-brightness": {
-        "description": "“Mga modyul na nakabatay sa liwanag”",
-        "title": "“Liwanag”"
+        "description": "Mga modyul na nakabatay sa liwanag",
+        "title": "Liwanag"
       },
       "img-colormode-bw": {
-        "description": "“Pagprosesong itim at puti”",
-        "title": "“Itim at Puti”"
+        "description": "Pagprosesong itim at puti",
+        "title": "Itim at Puti"
       },
       "img-colormode-color": {
-        "description": "“Pagproseso ng kulay”",
-        "title": "“Kulay”"
+        "description": "Pagproseso ng kulay",
+        "title": "Kulay"
       },
       "img-colormode-grayscale": {
-        "description": "“Pagproseso ng Grayscale”",
-        "title": "“Grayscale”"
+        "description": "Pagproseso ng Grayscale",
+        "title": "Grayscale"
       },
       "img-dithered": {
-        "description": "“Error sa diffusion dithering”",
-        "title": "“Nalilito”"
+        "description": "Error sa diffusion dithering",
+        "title": "Nalilito"
       },
       "img-dithered-i100": {
-        "description": "“Nabalisa sa 100% intensidad”",
-        "title": "“Nabalisa nang 100%”"
+        "description": "Nabalisa sa 100% intensidad",
+        "title": "Nabalisa nang 100%"
       },
       "img-dithered-i50": {
-        "description": "“Nabaligtad sa 50% na intensidad”",
-        "title": "“Nabaligtad na 50%”"
+        "description": "Nabaligtad sa 50% na intensidad",
+        "title": "Nabaligtad na 50%"
       },
       "img-dithered-i75": {
-        "description": "“Nabaligtad sa 75% na intensidad”",
-        "title": "“Nabaligtad na 75%”"
+        "description": "Nabaligtad sa 75% na intensidad",
+        "title": "Nabaligtad na 75%"
       },
       "img-duotone": {
-        "description": "“Pagmamapa ng kulay na may dalawang tono”",
-        "title": "“Duotone”"
+        "description": "Pagmamapa ng kulay na may dalawang tono",
+        "title": "Duotone"
       },
       "img-extreme": {
-        "description": "“Pinakamataas na kakayahang makita ang imahe”",
-        "title": "“Labis”"
+        "description": "Pinakamataas na kakayahang makita ang imahe",
+        "title": "Labis"
       },
       "img-halftone": {
-        "description": "“Mga klasikong tuldok na halftone”",
-        "title": "“Halftone”"
+        "description": "Mga klasikong tuldok na halftone",
+        "title": "Halftone"
       },
       "img-mosaic": {
-        "description": "“Epekto ng mosaic tile”",
-        "title": "“Mosaiko”"
+        "description": "Epekto ng mosaic tile",
+        "title": "Mosaiko"
       },
       "img-outline": {
-        "description": "“Overlay ng pagtukoy sa gilid”",
-        "title": "“Balangkas”"
+        "description": "Overlay ng pagtukoy sa gilid",
+        "title": "Balangkas"
       },
       "img-pixelate": {
-        "description": "“Epekto ng pixelated overlay”",
-        "title": "“Pixelate”"
+        "description": "Epekto ng pixelated overlay",
+        "title": "Pixelate"
       },
       "img-subpixel": {
-        "description": "“Mataas na detalyeng pag-render ng subpixel”",
-        "title": "“Subpiksel”"
+        "description": "Mataas na detalyeng pag-render ng subpixel",
+        "title": "Subpiksel"
       },
       "img-wave": {
-        "title": "“Alon”",
-        "description": "“Epekto ng kulot na pagbaluktot”"
+        "title": "Alon",
+        "description": "Epekto ng kulot na pagbaluktot"
       },
       "mosaic-classic": {
-        "description": "“Mosaic na may klasikong paleta”",
-        "title": "“Klasikong Mosaiko”"
+        "description": "Mosaic na may klasikong paleta",
+        "title": "Klasikong Mosaiko"
       },
       "mosaic-forest": {
-        "description": "“Mosaic na may paleta ng kagubatan”",
-        "title": "“Mosaic ng Kagubatan”"
+        "description": "Mosaic na may paleta ng kagubatan",
+        "title": "Mosaic ng Kagubatan"
       },
       "mosaic-navy": {
-        "description": "“Mosaic na may kulay abo”",
-        "title": "“Mosaic ng Hukbong Dagat”"
+        "description": "Mosaic na may kulay abo",
+        "title": "Mosaic ng Hukbong Dagat"
       },
       "mosaic-wine": {
-        "description": "“Mosaic na may paleta ng alak”",
-        "title": "“Mosaic ng Alak”"
+        "description": "Mosaic na may paleta ng alak",
+        "title": "Mosaic ng Alak"
       },
       "plain-basic": {
-        "description": "“Karaniwang QR code”",
-        "title": "“Klasiko”"
+        "description": "Karaniwang QR code",
+        "title": "Klasiko"
       },
       "plain-ecc-l": {
-        "description": "“Kaunting pagwawasto ng error”",
-        "title": "“Mababa ang ECC (7%)”"
+        "description": "Kaunting pagwawasto ng error",
+        "title": "Mababa ang ECC (7%)"
       },
       "plain-ecc-q": {
-        "description": "“Katamtamang-mataas na pagwawasto ng error”",
-        "title": "“ECC Quartile (25%)”"
+        "description": "Katamtamang-mataas na pagwawasto ng error",
+        "title": "ECC Quartile (25%)"
       },
       "plain-v12": {
-        "title": "“Bersyon 12”",
-        "description": "“Malaki na may maraming pagkakahanay”"
+        "title": "Bersyon 12",
+        "description": "Malaki na may maraming pagkakahanay"
       },
       "plain-v6": {
-        "title": "“Bersyon 6”",
-        "description": "“Mas malaki nang walang gitnang mata”"
+        "title": "Bersyon 6",
+        "description": "Mas malaki nang walang gitnang mata"
       },
       "plain-v9": {
-        "title": "“Bersyon 9”",
-        "description": "“Mas malaki pa na may gitnang mata”"
+        "title": "Bersyon 9",
+        "description": "Mas malaki pa na may gitnang mata"
       },
       "prep-blur-1": {
-        "description": "“1px gaussian blur”",
-        "title": "“Palabo 1px”"
+        "description": "1px gaussian blur",
+        "title": "Palabo 1px"
       },
       "prep-blur-2": {
-        "description": "“2px gaussian blur”",
-        "title": "“Palabo 2px”"
+        "description": "2px gaussian blur",
+        "title": "Palabo 2px"
       },
       "prep-blur-4": {
-        "description": "“4px gaussian blur”",
-        "title": "“Palabo 4px”"
+        "description": "4px gaussian blur",
+        "title": "Palabo 4px"
       },
       "prep-brightness-n25": {
-        "description": "“Isinaayos ang liwanag, mas madilim”",
-        "title": "“Liwanag -25”"
+        "description": "Isinaayos ang liwanag, mas madilim",
+        "title": "Liwanag -25"
       },
       "prep-brightness-n50": {
-        "description": "“Isinaayos ang liwanag, mas madilim”",
-        "title": "“Liwanag -50”"
+        "description": "Isinaayos ang liwanag, mas madilim",
+        "title": "Liwanag -50"
       },
       "prep-brightness-p25": {
-        "description": "“Isinaayos ang liwanag at mas maliwanag”",
-        "title": "“Liwanag +25”"
+        "description": "Isinaayos ang liwanag at mas maliwanag",
+        "title": "Liwanag +25"
       },
       "prep-brightness-p50": {
-        "description": "“Isinaayos ang liwanag at mas maliwanag”",
-        "title": "“Liwanag +50”"
+        "description": "Isinaayos ang liwanag at mas maliwanag",
+        "title": "Liwanag +50"
       },
       "prep-contrast-n50": {
-        "description": "“Mababang contrast”",
-        "title": "“Kontras -50”"
+        "description": "Mababang contrast",
+        "title": "Kontras -50"
       },
       "prep-contrast-p100": {
-        "description": "“Mataas na contrast”",
-        "title": "“Kontras +100”"
+        "description": "Mataas na contrast",
+        "title": "Kontras +100"
       },
       "prep-contrast-p50": {
-        "description": "“Mataas na contrast”",
-        "title": "“Kontras +50”"
+        "description": "Mataas na contrast",
+        "title": "Kontras +50"
       },
       "prep-edge-canny": {
-        "description": "“Mahusay na pagtukoy sa gilid”",
-        "title": "“Matalino sa Gilid”"
+        "description": "Mahusay na pagtukoy sa gilid",
+        "title": "Matalino sa Gilid"
       },
       "prep-edge-sobel": {
-        "description": "“Sobel edge detection”",
-        "title": "“Edge Sobel”"
+        "description": "Sobel edge detection",
+        "title": "Edge Sobel"
       },
       "prep-gamma-05": {
-        "description": "“Pagwawasto ng gamma 0.5”",
-        "title": "“Gamma 0.5”"
+        "description": "Pagwawasto ng gamma 0.5",
+        "title": "Gamma 0.5"
       },
       "prep-gamma-15": {
-        "description": "“Pagwawasto ng gamma 1.5”",
-        "title": "“Gamma 1.5”"
+        "description": "Pagwawasto ng gamma 1.5",
+        "title": "Gamma 1.5"
       },
       "prep-gamma-20": {
-        "description": "“Pagwawasto ng gamma 2.0”",
-        "title": "“Gamma 2.0”"
+        "description": "Pagwawasto ng gamma 2.0",
+        "title": "Gamma 2.0"
       },
       "prep-hue-90": {
-        "description": "“Pag-ikot ng kulay 90 digri”",
-        "title": "“Kulay +90°”"
+        "description": "Pag-ikot ng kulay 90 digri",
+        "title": "Kulay +90°"
       },
       "prep-invert": {
-        "title": "“Baliktad”",
-        "description": "“Baliktad na mga kulay”"
+        "title": "Baliktad",
+        "description": "Baliktad na mga kulay"
       },
       "prep-posterize-2": {
-        "description": "“2 antas ng kulay”",
-        "title": "“Posterize 2”"
+        "description": "2 antas ng kulay",
+        "title": "Posterize 2"
       },
       "prep-posterize-4": {
-        "description": "“4 na antas ng kulay”",
-        "title": "“Posterize 4”"
+        "description": "4 na antas ng kulay",
+        "title": "Posterize 4"
       },
       "prep-posterize-8": {
-        "description": "“8 antas ng kulay”",
-        "title": "“Posterize 8”"
+        "description": "8 antas ng kulay",
+        "title": "Posterize 8"
       },
       "prep-saturation-n100": {
-        "description": "“Desaturated”",
-        "title": "“Saturasyon -100”"
+        "description": "Desaturated",
+        "title": "Saturasyon -100"
       },
       "prep-saturation-n50": {
-        "description": "“Nabawasang saturation”",
-        "title": "“Saturasyon -50”"
+        "description": "Nabawasang saturation",
+        "title": "Saturasyon -50"
       },
       "prep-saturation-p100": {
-        "description": "“Labis na Saturated”",
-        "title": "“Saturasyon +100”"
+        "description": "Labis na Saturated",
+        "title": "Saturasyon +100"
       },
       "prep-saturation-p50": {
-        "description": "“Labis na Saturated”",
-        "title": "“Saturasyon +50”"
+        "description": "Labis na Saturated",
+        "title": "Saturasyon +50"
       },
       "prep-sharpen-100": {
-        "description": "“100% pagpapatalas”",
-        "title": "“Talasan nang 100%”"
+        "description": "100% pagpapatalas",
+        "title": "Talasan nang 100%"
       },
       "prep-sharpen-25": {
-        "description": "“25% pagpapatalas”",
-        "title": "“Patalasin ang 25%”"
+        "description": "25% pagpapatalas",
+        "title": "Patalasin ang 25%"
       },
       "prep-sharpen-50": {
-        "description": "“50% pagpapatalas”",
-        "title": "“Patalasin ang 50%”"
+        "description": "50% pagpapatalas",
+        "title": "Patalasin ang 50%"
       },
       "prep-threshold-128": {
-        "description": "“Binary threshold sa 128”",
-        "title": "“Hangganan 128”"
+        "description": "Binary threshold sa 128",
+        "title": "Hangganan 128"
       },
       "prep-threshold-192": {
-        "description": "“Binary threshold sa 192”",
-        "title": "“Hangganan 192”"
+        "description": "Binary threshold sa 192",
+        "title": "Hangganan 192"
       },
       "prep-threshold-64": {
-        "description": "“Binary threshold sa 64”",
-        "title": "“Hangganan 64”"
+        "description": "Binary threshold sa 64",
+        "title": "Hangganan 64"
       },
       "style-connected": {
-        "description": "“Istilo ng konektadong modyul”",
-        "title": "“Mga Konektadong Modulo”"
+        "description": "Istilo ng konektadong modyul",
+        "title": "Mga Konektadong Modulo"
       },
       "style-diamond": {
-        "description": "“Estilo ng modyul na diyamante”",
-        "title": "“Mga Module ng Diamante”"
+        "description": "Estilo ng modyul na diyamante",
+        "title": "Mga Module ng Diamante"
       },
       "style-dots": {
-        "description": "“Estilo ng modyul na may mga tuldok”",
-        "title": "“Mga Modyul ng Tuldok”"
+        "description": "Estilo ng modyul na may mga tuldok",
+        "title": "Mga Modyul ng Tuldok"
       },
       "style-rounded": {
-        "description": "“Estilo ng bilugan na modyul”",
-        "title": "“Mga Bilog na Modulo”"
+        "description": "Estilo ng bilugan na modyul",
+        "title": "Mga Bilog na Modulo"
       },
       "style-square": {
-        "description": "“Istilo ng parisukat na modyul”",
-        "title": "“Mga Modyul na Kwadrado”"
+        "description": "Istilo ng parisukat na modyul",
+        "title": "Mga Modyul na Kwadrado"
       }
     },
-    "plain": "“Payak”",
-    "powerCombos": "“Mga Kumbinasyon ng Lakas”",
-    "preprocessing": "“Paunang Pagproseso”",
+    "plain": "Payak",
+    "powerCombos": "Mga Kumbinasyon ng Lakas",
+    "preprocessing": "Paunang Pagproseso",
     "sections": {
       "animation-overlay": {
-        "description": "“Mga animated na GIF overlay na may iba't ibang blend mode”",
-        "title": "“Mga Animated na Overlay”"
+        "description": "Mga animated na GIF overlay na may iba't ibang blend mode",
+        "title": "Mga Animated na Overlay"
       },
       "blend-modes": {
-        "title": "na “Mga Blend Mode”",
-        "description": "“Iba't ibang paghahalo ng kulay gamit ang mga overlay ng imahe”"
+        "title": "na Mga Blend Mode",
+        "description": "Iba't ibang paghahalo ng kulay gamit ang mga overlay ng imahe"
       },
       "color-modes": {
-        "description": "“Pagproseso ng kulay, grayscale, at itim at puti”",
-        "title": "“Pagproseso ng Kulay”"
+        "description": "Pagproseso ng kulay, grayscale, at itim at puti",
+        "title": "Pagproseso ng Kulay"
       },
       "colors": {
-        "description": "“Mga scheme ng kulay at mga paleta na may temang”",
-        "title": "“Mga Kulay at Tema”"
+        "description": "Mga scheme ng kulay at mga paleta na may temang",
+        "title": "Mga Kulay at Tema"
       },
       "content-types": {
-        "title": "“Mga Uri ng Nilalaman”",
-        "description": "“Iba't ibang format ng payload - vCard, WiFi, Email, SMS, Geo, Calendar”"
+        "title": "Mga Uri ng Nilalaman",
+        "description": "Iba't ibang format ng payload - vCard, WiFi, Email, SMS, Geo, Calendar"
       },
       "dithering": {
-        "description": "“Iba't ibang pamamaraan ng dithering at mga kernel ng error diffusion”",
-        "title": "“Mga Algoritmo ng Dithering”"
+        "description": "Iba't ibang pamamaraan ng dithering at mga kernel ng error diffusion",
+        "title": "Mga Algoritmo ng Dithering"
       },
       "encoding": {
-        "description": "“Iba't ibang bersyon ng QR at mga antas ng pagwawasto ng error”",
-        "title": "“Pag-encode ng QR”"
+        "description": "Iba't ibang bersyon ng QR at mga antas ng pagwawasto ng error",
+        "title": "Pag-encode ng QR"
       },
       "image-overlay": {
-        "description": "“Mga static na overlay ng imahe na may iba't ibang blend mode”",
-        "title": "“Mga Overlay ng Larawan”"
+        "description": "Mga static na overlay ng imahe na may iba't ibang blend mode",
+        "title": "Mga Overlay ng Larawan"
       },
       "plain": {
-        "description": "“Mga karaniwang QR code na walang overlay - iba't ibang bersyon at pagwawasto ng error”",
-        "title": "“Mga Simpleng QR Code”"
+        "description": "Mga karaniwang QR code na walang overlay - iba't ibang bersyon at pagwawasto ng error",
+        "title": "Mga Simpleng QR Code"
       },
       "power-combos": {
-        "title": "“Mga Kumbinasyon ng Lakas”",
-        "description": "“Mga kapansin-pansing kumbinasyon ng maraming tampok na nagpapakita ng mga kakayahan ng ANQR”"
+        "title": "Mga Kumbinasyon ng Lakas",
+        "description": "Mga kapansin-pansing kumbinasyon ng maraming tampok na nagpapakita ng mga kakayahan ng ANQR"
       },
       "preprocessing": {
-        "description": "“Liwanag, contrast, gamma, blur, patalasin, pag-posterize, pag-detect ng gilid”",
-        "title": "“Pagproseso ng Imahe”"
+        "description": "Liwanag, contrast, gamma, blur, patalasin, pag-posterize, pag-detect ng gilid",
+        "title": "Pagproseso ng Imahe"
       },
       "styles": {
-        "description": "“Iba't ibang biswal na istilo para sa mga modyul at mga pattern ng tagahanap”",
-        "title": "“Mga Estilo ng Module at Finder”"
+        "description": "Iba't ibang biswal na istilo para sa mga modyul at mga pattern ng tagahanap",
+        "title": "Mga Estilo ng Module at Finder"
       }
     },
-    "showAll": "“Ipakita Lahat”",
-    "styles": "“Mga Estilo”",
-    "subtitle": "“Magsaliksik ng mga halimbawa ng mga QR code na ginawa gamit ang ANQR”",
-    "title": "“Galerya ng QR Code”",
-    "tryThis": "“Subukan ito”"
+    "showAll": "Ipakita Lahat",
+    "styles": "Mga Estilo",
+    "subtitle": "Magsaliksik ng mga halimbawa ng mga QR code na ginawa gamit ang ANQR",
+    "title": "Galerya ng QR Code",
+    "tryThis": "Subukan ito"
   },
   "header": {
-    "close": "“Isara”",
-    "copied": "“Kinopya!”",
-    "reset": "“I-reset”",
-    "copyLink": "“Kopyahin ang Link”",
-    "darkMode": "“Lumipat sa dark mode”",
-    "export": "“I-export”",
-    "lightMode": "“Lumipat sa light mode”",
-    "searchSettings": "“Mga setting ng paghahanap…”",
-    "share": "“Ibahagi”"
+    "close": "Isara",
+    "copied": "Kinopya!",
+    "reset": "I-reset",
+    "copyLink": "Kopyahin ang Link",
+    "darkMode": "Lumipat sa dark mode",
+    "export": "I-export",
+    "lightMode": "Lumipat sa light mode",
+    "searchSettings": "Mga setting ng paghahanap…",
+    "share": "Ibahagi"
   },
   "hints": {
-    "moduleJitterWarning": "“⚠️ Maaaring makaapekto sa kakayahang i-scan”",
-    "alignmentStyle": "“Estilo ng mga pattern ng pagkakahanay (ginagamit sa mas malalaking QR code)”",
-    "appLinkNote": "“Nagbubukas ng partikular na nilalaman sa loob ng isang mobile app”",
-    "autoDetect": "“Awtomatikong pagtukoy (nangangailangan ng v{{version}}+ para sa kasalukuyang nilalaman)”",
-    "autoMinVersion": "“0 = Awtomatikong, min v{{version}} para sa kasalukuyang nilalaman”",
-    "bgColorHex": "“Hexagonal na kodigo ng kulay ng background”",
-    "bizcardLegacy": "“Legacy format - isaalang-alang ang paggamit ng vCard”",
-    "bluetoothNote": "“Paalala: Ang pagpapares ng Bluetooth sa pamamagitan ng QR ay partikular sa vendor at maaaring hindi gumana sa lahat ng device”",
-    "bounceAnimation": "“Maglaro ng animation nang pasulong at paatras (ping-pong)”",
-    "calendarNote": "“Mag-subscribe sa isang nakabahaging feed ng kalendaryo”",
-    "contrastGuard": "“Siguraduhin ang pinakamababang contrast ratio sa pagitan ng foreground at background”",
-    "cornerRadius": "“Porsyento ng radius ng sulok para sa mga bilugan na modyul (0-100%)”",
-    "crispEdges": "“Gumamit ng pixelated rendering para sa matutulis na gilid ng module”",
-    "customNote": "“Maglagay ng hilaw na datos sa anumang format. Walang ilalapat na pagpapatunay o pag-format.”",
-    "dotRotation": "“I-rotate ang mga module na istilong tuldok (0-360 degrees)”",
-    "encodingMode": "“Mode ng pag-encode ng datos - Awtomatikong pinipili ang pinakaepektibong mode”",
-    "enforceMinQuietZone": "“Ipatupad ang minimum na 4 na module na tahimik na sona para sa mas mahusay na pagiging maaasahan ng pag-scan”",
-    "enterTextContent": "“Ilagay ang nilalaman ng teksto na ie-encode sa QR code”",
-    "enterUrlContent": "“Ilagay ang URL na iko-encode sa QR code”",
-    "epcSepaNote": "“QR code ng European Payment Council para sa mga paglilipat ng kredito ng SEPA”",
-    "errorCorrection": "“Antas ng pagwawasto ng error - mas mataas = mas lumalaban sa pinsala ngunit mas malaking QR code”",
-    "extraBorder": "“Mga karagdagang modyul ng hangganan na lampas sa tahimik na sona (0-10)”",
-    "eyeInnerStyle": "“Estilo ng panloob na parisukat ng mga pattern ng tagahanap”",
-    "eyeOuterStyle": "“Estilo ng panlabas na singsing ng mga pattern ng tagahanap”",
-    "eyeScale": "“Mga pattern ng tagahanap ng iskala kaugnay ng kanilang default na laki (50-150%)”",
-    "fgColorHex": "“Hexagonal na kodigo ng kulay sa harapan”",
-    "finderStyle": "“Estilo ng mga pattern ng tagahanap ng sulok”",
-    "forceHttps": "“Awtomatikong i-convert ang mga HTTP URL sa HTTPS”",
-    "frameStyle": "“Magdagdag ng pandekorasyon na frame sa paligid ng QR code”",
-    "frameText": "“Teksto na ipapakita sa frame”",
-    "gapMode": "“Paano ipinapakita ang mga puwang sa pagitan ng mga modyul”",
-    "gradient": "“Maglagay ng gradient effect sa QR code”",
-    "gs1Note": "“GS1 Digital Link para sa pagkakakilanlan at pagsubaybay ng produkto”",
-    "higherEccLargerQr": "“Mas mataas = mas mataas na resistensya sa pinsala, mas malaking QR”",
-    "loopAnimation": "“Patuloy na pag-uulit ng animation”",
-    "maxLengthGuard": "“Pigilan ang pag-encode ng nilalaman na lumalagpas sa kapasidad ng QR code”",
-    "minContrastRatio": "“Minimum na contrast ratio na ipatutupad (1-21, ang WCAG AA ay nangangailangan ng 4.5:1)”",
-    "moduleGap": "“Agwat sa pagitan ng mga modyul bilang porsyento (0-30%)”",
-    "moduleSize": "“Laki ng bawat QR code module sa pixels (2-20px)”",
-    "moduleStyle": "“Estilo biswal ng mga modyul ng QR code”",
-    "normalizeNewlines": "“I-convert ang iba't ibang format ng bagong linya patungo sa isang karaniwang format”",
-    "outputFormat": "“Piliin ang format ng output file para sa pag-export”",
-    "paynowNote": "“Mabilis na sistema ng pagbabayad sa Singapore”",
-    "perModuleColor": "“Paano magtalaga ng mga kulay sa mga indibidwal na modyul”",
-    "pickBgColor": "“I-click para pumili ng kulay ng background”",
-    "pickFgColor": "“I-click para pumili ng kulay ng harapan”",
-    "pixNote": "“Sistema ng agarang pagbabayad sa Brazil”",
-    "pixelSnap": "“Paano i-snap ang mga posisyon ng module sa mga hangganan ng pixel”",
-    "promptpayNote": "“Pambansang sistema ng e-payment sa Thailand”",
-    "qrVersion": "“Bersyon ng QR code (0=awtomatikong, 1-40 ay nagpapataas ng laki at kapasidad)”",
-    "quietZone": "“Margin ng tahimik na sona sa paligid ng QR code (0-10 modules, inirerekomenda: 4+)”",
-    "rsvpNote": "“Link sa isang online na RSVP form o pahina ng pagpaparehistro ng kaganapan”",
-    "safetyMode": "“Mode ng pagsusuri sa kaligtasan - kung paano mahigpit na suriin ang kakayahang mabasa ng QR code”",
-    "selectContentType": "“Piliin ang uri ng nilalaman na ie-encode sa QR code”",
-    "shortLinkNote": "“Gumamit ng serbisyo ng pagpapaikli ng URL para sa mga dynamic/trackable na QR code”",
-    "timingStyle": "“Estilo ng mga padron ng tiyempo (mga pahalang at patayong linya)”",
-    "transparentBg": "“Gawing transparent ang background sa halip na gumamit ng kulay ng background”",
-    "trimWhitespace": "“Alisin ang mga puting espasyo sa unahan at kasunod”",
-    "upiNote": "“Pinag-isang Interface ng Pagbabayad para sa India”",
-    "utmCampaign": "“Parameter ng kampanya ng UTM para sa pagsubaybay sa kampanya”",
-    "utmMedium": "“Parameter ng UTM medium para sa pagsubaybay sa kampanya”",
-    "utmSource": "“Parameter ng pinagmulan ng UTM para sa pagsubaybay sa kampanya”",
-    "validateInput": "“Patunayan ang input data bago ang pag-encode”",
-    "versionTooLow": "“⚠️ Masyadong mababa ang bersyon! Kinakailangan ang minimum na v{{version}}”",
+    "moduleJitterWarning": "⚠️ Maaaring makaapekto sa kakayahang i-scan",
+    "alignmentStyle": "Estilo ng mga pattern ng pagkakahanay (ginagamit sa mas malalaking QR code)",
+    "appLinkNote": "Nagbubukas ng partikular na nilalaman sa loob ng isang mobile app",
+    "autoDetect": "Awtomatikong pagtukoy (nangangailangan ng v{{version}}+ para sa kasalukuyang nilalaman)",
+    "autoMinVersion": "0 = Awtomatikong, min v{{version}} para sa kasalukuyang nilalaman",
+    "bgColorHex": "Hexagonal na kodigo ng kulay ng background",
+    "bizcardLegacy": "Legacy format - isaalang-alang ang paggamit ng vCard",
+    "bluetoothNote": "Paalala: Ang pagpapares ng Bluetooth sa pamamagitan ng QR ay partikular sa vendor at maaaring hindi gumana sa lahat ng device",
+    "bounceAnimation": "Maglaro ng animation nang pasulong at paatras (ping-pong)",
+    "calendarNote": "Mag-subscribe sa isang nakabahaging feed ng kalendaryo",
+    "contrastGuard": "Siguraduhin ang pinakamababang contrast ratio sa pagitan ng foreground at background",
+    "cornerRadius": "Porsyento ng radius ng sulok para sa mga bilugan na modyul (0-100%)",
+    "crispEdges": "Gumamit ng pixelated rendering para sa matutulis na gilid ng module",
+    "customNote": "Maglagay ng hilaw na datos sa anumang format. Walang ilalapat na pagpapatunay o pag-format.",
+    "dotRotation": "I-rotate ang mga module na istilong tuldok (0-360 degrees)",
+    "encodingMode": "Mode ng pag-encode ng datos - Awtomatikong pinipili ang pinakaepektibong mode",
+    "enforceMinQuietZone": "Ipatupad ang minimum na 4 na module na tahimik na sona para sa mas mahusay na pagiging maaasahan ng pag-scan",
+    "enterTextContent": "Ilagay ang nilalaman ng teksto na ie-encode sa QR code",
+    "enterUrlContent": "Ilagay ang URL na iko-encode sa QR code",
+    "epcSepaNote": "QR code ng European Payment Council para sa mga paglilipat ng kredito ng SEPA",
+    "errorCorrection": "Antas ng pagwawasto ng error - mas mataas = mas lumalaban sa pinsala ngunit mas malaking QR code",
+    "extraBorder": "Mga karagdagang modyul ng hangganan na lampas sa tahimik na sona (0-10)",
+    "eyeInnerStyle": "Estilo ng panloob na parisukat ng mga pattern ng tagahanap",
+    "eyeOuterStyle": "Estilo ng panlabas na singsing ng mga pattern ng tagahanap",
+    "eyeScale": "Mga pattern ng tagahanap ng iskala kaugnay ng kanilang default na laki (50-150%)",
+    "fgColorHex": "Hexagonal na kodigo ng kulay sa harapan",
+    "finderStyle": "Estilo ng mga pattern ng tagahanap ng sulok",
+    "forceHttps": "Awtomatikong i-convert ang mga HTTP URL sa HTTPS",
+    "frameStyle": "Magdagdag ng pandekorasyon na frame sa paligid ng QR code",
+    "frameText": "Teksto na ipapakita sa frame",
+    "gapMode": "Paano ipinapakita ang mga puwang sa pagitan ng mga modyul",
+    "gradient": "Maglagay ng gradient effect sa QR code",
+    "gs1Note": "GS1 Digital Link para sa pagkakakilanlan at pagsubaybay ng produkto",
+    "higherEccLargerQr": "Mas mataas = mas mataas na resistensya sa pinsala, mas malaking QR",
+    "loopAnimation": "Patuloy na pag-uulit ng animation",
+    "maxLengthGuard": "Pigilan ang pag-encode ng nilalaman na lumalagpas sa kapasidad ng QR code",
+    "minContrastRatio": "Minimum na contrast ratio na ipatutupad (1-21, ang WCAG AA ay nangangailangan ng 4.5:1)",
+    "moduleGap": "Agwat sa pagitan ng mga modyul bilang porsyento (0-30%)",
+    "moduleSize": "Laki ng bawat QR code module sa pixels (2-20px)",
+    "moduleStyle": "Estilo biswal ng mga modyul ng QR code",
+    "normalizeNewlines": "I-convert ang iba't ibang format ng bagong linya patungo sa isang karaniwang format",
+    "outputFormat": "Piliin ang format ng output file para sa pag-export",
+    "paynowNote": "Mabilis na sistema ng pagbabayad sa Singapore",
+    "perModuleColor": "Paano magtalaga ng mga kulay sa mga indibidwal na modyul",
+    "pickBgColor": "I-click para pumili ng kulay ng background",
+    "pickFgColor": "I-click para pumili ng kulay ng harapan",
+    "pixNote": "Sistema ng agarang pagbabayad sa Brazil",
+    "pixelSnap": "Paano i-snap ang mga posisyon ng module sa mga hangganan ng pixel",
+    "promptpayNote": "Pambansang sistema ng e-payment sa Thailand",
+    "qrVersion": "Bersyon ng QR code (0=awtomatikong, 1-40 ay nagpapataas ng laki at kapasidad)",
+    "quietZone": "Margin ng tahimik na sona sa paligid ng QR code (0-10 modules, inirerekomenda: 4+)",
+    "rsvpNote": "Link sa isang online na RSVP form o pahina ng pagpaparehistro ng kaganapan",
+    "safetyMode": "Mode ng pagsusuri sa kaligtasan - kung paano mahigpit na suriin ang kakayahang mabasa ng QR code",
+    "selectContentType": "Piliin ang uri ng nilalaman na ie-encode sa QR code",
+    "shortLinkNote": "Gumamit ng serbisyo ng pagpapaikli ng URL para sa mga dynamic/trackable na QR code",
+    "timingStyle": "Estilo ng mga padron ng tiyempo (mga pahalang at patayong linya)",
+    "transparentBg": "Gawing transparent ang background sa halip na gumamit ng kulay ng background",
+    "trimWhitespace": "Alisin ang mga puting espasyo sa unahan at kasunod",
+    "upiNote": "Pinag-isang Interface ng Pagbabayad para sa India",
+    "utmCampaign": "Parameter ng kampanya ng UTM para sa pagsubaybay sa kampanya",
+    "utmMedium": "Parameter ng UTM medium para sa pagsubaybay sa kampanya",
+    "utmSource": "Parameter ng pinagmulan ng UTM para sa pagsubaybay sa kampanya",
+    "validateInput": "Patunayan ang input data bago ang pag-encode",
+    "versionTooLow": "⚠️ Masyadong mababa ang bersyon! Kinakailangan ang minimum na v{{version}}",
     "swissQrBillNote": "Format ng Swiss QR-bill para sa mga pagbabayad sa CH/LI ayon sa mga alituntunin ng SIX",
     "lightningNote": "Lightning Network BOLT11 invoice para sa mga pagbabayad ng Bitcoin",
     "ethereumNote": "Format ng kahilingan ng transaksyon sa Ethereum EIP-681",
@@ -941,265 +941,265 @@
     "emvGenericNote": "Generic na format ng EMVCo MPM QR code"
   },
   "language": {
-    "current": "“Wika”",
-    "select": "“Pumili ng Wika”"
+    "current": "Wika",
+    "select": "Pumili ng Wika"
   },
   "metadata": {
-    "addCustomField": "“Magdagdag ng Pasadyang Patlang”",
-    "author": "“May-akda”",
-    "authorPlaceholder": "“Pangalan ng May-akda”",
-    "copyright": "“Karapatang-ari”",
-    "copyrightPlaceholder": "“© 2024 Pangalan ng Kumpanya”",
-    "customMetadata": "“Pasadyang Metadata”",
-    "description": "“Paglalarawan”",
-    "descriptionPlaceholder": "“Paglalarawan ng QR code na ito…”",
-    "includeCreationTime": "“Isama ang Oras ng Paglikha”",
-    "key": "“Susi”",
-    "keyPlaceholder": "“Susi”",
-    "keywords": "“Mga Keyword”",
-    "license": "“Lisensya”",
-    "licensePlaceholder": "“CC-BY-4.0”",
-    "title": "“Pamagat”",
-    "titlePlaceholder": "“Pamagat ng QR Code”",
-    "value": "“Halaga”",
-    "valuePlaceholder": "“Halaga”"
+    "addCustomField": "Magdagdag ng Pasadyang Patlang",
+    "author": "May-akda",
+    "authorPlaceholder": "Pangalan ng May-akda",
+    "copyright": "Karapatang-ari",
+    "copyrightPlaceholder": "© 2024 Pangalan ng Kumpanya",
+    "customMetadata": "Pasadyang Metadata",
+    "description": "Paglalarawan",
+    "descriptionPlaceholder": "Paglalarawan ng QR code na ito…",
+    "includeCreationTime": "Isama ang Oras ng Paglikha",
+    "key": "Susi",
+    "keyPlaceholder": "Susi",
+    "keywords": "Mga Keyword",
+    "license": "Lisensya",
+    "licensePlaceholder": "CC-BY-4.0",
+    "title": "Pamagat",
+    "titlePlaceholder": "Pamagat ng QR Code",
+    "value": "Halaga",
+    "valuePlaceholder": "Halaga"
   },
   "nav": {
-    "about": "“Tungkol sa”",
-    "contact": "“Makipag-ugnayan”",
-    "docs": "“Gabay”",
-    "guide": "“Gabay”",
-    "gallery": "“Galerya”",
-    "generator": "“Generator”",
-    "privacy": "“Pagkapribado”",
-    "terms": "“Mga Tuntunin”"
+    "about": "Tungkol sa",
+    "contact": "Makipag-ugnayan",
+    "docs": "Gabay",
+    "guide": "Gabay",
+    "gallery": "Galerya",
+    "generator": "Generator",
+    "privacy": "Pagkapribado",
+    "terms": "Mga Tuntunin"
   },
   "output": {
-    "none": "“Wala”",
-    "off": "“Sarado”",
-    "dithering": "“Pag-aalinlangan”",
-    "floydSteinberg": "“Floyd-Steinberg”",
-    "backgroundOverride": "“Pag-override sa Background”",
-    "backgroundOverridePlaceholder": "“Iwanang blangko para sa default”",
-    "dpi": "“DPI (Pag-print)”",
-    "embedRasterOverlay": "“I-embed ang Raster Overlay”",
-    "exportAsAdditional": "“I-export Bilang (Karagdagang)”",
-    "filename": "“Pangalan ng File”",
-    "format": "“Format”",
-    "gif": "“GIF”",
-    "gifSettings": "“Mga Setting ng GIF”",
-    "height": "“Taas”",
-    "includeQuietZone": "“Isama ang Tahimik na Sona”",
-    "medianCut": "“Panggitnang Hiwa”",
-    "neuquant": "“NeuQuant”",
-    "octree": "“Oktree”",
-    "ordered": "“Inorder”",
-    "outputSize": "“Laki ng Output”",
-    "paletteSize": "“Laki ng Paleta”",
-    "pdf": "“PDF”",
-    "pixel": "“Pixel”",
-    "png": "“PNG”",
-    "precise": "“Tumpak”",
-    "quality": "“Kalidad”",
-    "quantizer": "“Tagapagkuwantidor”",
-    "shapePrecision": "“Katumpakan ng Hugis”",
-    "svg": "“SVG”",
-    "svgSettings": "“Mga Setting ng SVG”",
-    "transparentColor": "“Kulay na Transparent”",
-    "transparentColorPlaceholder": "“#ffffff o walang laman”",
-    "trueVector": "“Tunay na Vektor”",
-    "trueVectorDesc": "“Gumamit ng mga path sa halip na naka-embed na raster”",
-    "webp": "“WebP”",
-    "width": "“Lapad”"
+    "none": "Wala",
+    "off": "Sarado",
+    "dithering": "Pag-aalinlangan",
+    "floydSteinberg": "Floyd-Steinberg",
+    "backgroundOverride": "Pag-override sa Background",
+    "backgroundOverridePlaceholder": "Iwanang blangko para sa default",
+    "dpi": "DPI (Pag-print)",
+    "embedRasterOverlay": "I-embed ang Raster Overlay",
+    "exportAsAdditional": "I-export Bilang (Karagdagang)",
+    "filename": "Pangalan ng File",
+    "format": "Format",
+    "gif": "GIF",
+    "gifSettings": "Mga Setting ng GIF",
+    "height": "Taas",
+    "includeQuietZone": "Isama ang Tahimik na Sona",
+    "medianCut": "Panggitnang Hiwa",
+    "neuquant": "NeuQuant",
+    "octree": "Oktree",
+    "ordered": "Inorder",
+    "outputSize": "Laki ng Output",
+    "paletteSize": "Laki ng Paleta",
+    "pdf": "PDF",
+    "pixel": "Pixel",
+    "png": "PNG",
+    "precise": "Tumpak",
+    "quality": "Kalidad",
+    "quantizer": "Tagapagkuwantidor",
+    "shapePrecision": "Katumpakan ng Hugis",
+    "svg": "SVG",
+    "svgSettings": "Mga Setting ng SVG",
+    "transparentColor": "Kulay na Transparent",
+    "transparentColorPlaceholder": "#ffffff o walang laman",
+    "trueVector": "Tunay na Vektor",
+    "trueVectorDesc": "Gumamit ng mga path sa halip na naka-embed na raster",
+    "webp": "WebP",
+    "width": "Lapad"
   },
   "preview": {
-    "qrCodePreview": "“Preview ng QR Code - I-click ang I-export para i-download”",
-    "simulating": "“Paggaya”",
-    "simulationActive": "“Aktibo ang simulasyon sa kapaligiran - Ipinapakita ng preview kung paano maaaring lumitaw ang QR code sa ilalim ng iba't ibang mga kondisyon”"
+    "qrCodePreview": "Preview ng QR Code - I-click ang I-export para i-download",
+    "simulating": "Paggaya",
+    "simulationActive": "Aktibo ang simulasyon sa kapaligiran - Ipinapakita ng preview kung paano maaaring lumitaw ang QR code sa ilalim ng iba't ibang mga kondisyon"
   },
   "qr": {
-    "additionalBorder": "“Karagdagang hangganan lampas sa tahimik na sona”",
-    "alphanumeric": "“Alpanumeriko”",
-    "auto": "“Awto”",
-    "autoMin": "“Awtomatiko (minimum: {{bersyon}})”",
-    "autoOptimal": "“Awtomatiko (Pinakamainam)”",
-    "byteUtf8": "“Byte / UTF-8”",
-    "contrastRatio": "“{{count}}:1”",
-    "encodingMode": "“Mode ng Pag-encode”",
-    "enforceMinQuietZone": "“Ipatupad ang Min Quiet Zone”",
-    "enforceMinQuietZoneDesc": "“Siguraduhin na ≥4 na margin ng modyul”",
-    "errorCorrection": "“Pagwawasto ng Mali”",
-    "extraBorderModules": "“Mga Karagdagang Module ng Hangganan”",
-    "high": "“H - Mataas (30%)”",
-    "kanji": "“Kanji”",
-    "low": "“L - Mababa (7%)”",
-    "margin": "“Tahimik na Sona (Margin)”",
-    "mask": "“Patern ng Maskara”",
-    "medium": "“M - Katamtaman (15%)”",
-    "moduleSize": "“Laki ng Modyul”",
-    "nDegrees": "“{{count}}°”",
-    "nModules": "“{{count}} na mga modyul”",
-    "nMs": "“{{count}}ms”",
-    "nPercent": "“{{count}}%”",
-    "nPx": "“{{count}}px”",
-    "numericOnly": "“Numero Lamang”",
-    "quartile": "“Q - Quartile (25%)”",
-    "version": "“Bersyon”"
+    "additionalBorder": "Karagdagang hangganan lampas sa tahimik na sona",
+    "alphanumeric": "Alpanumeriko",
+    "auto": "Awto",
+    "autoMin": "Awtomatiko (minimum: {{bersyon}})",
+    "autoOptimal": "Awtomatiko (Pinakamainam)",
+    "byteUtf8": "Byte / UTF-8",
+    "contrastRatio": "{{count}}:1",
+    "encodingMode": "Mode ng Pag-encode",
+    "enforceMinQuietZone": "Ipatupad ang Min Quiet Zone",
+    "enforceMinQuietZoneDesc": "Siguraduhin na ≥4 na margin ng modyul",
+    "errorCorrection": "Pagwawasto ng Mali",
+    "extraBorderModules": "Mga Karagdagang Module ng Hangganan",
+    "high": "H - Mataas (30%)",
+    "kanji": "Kanji",
+    "low": "L - Mababa (7%)",
+    "margin": "Tahimik na Sona (Margin)",
+    "mask": "Patern ng Maskara",
+    "medium": "M - Katamtaman (15%)",
+    "moduleSize": "Laki ng Modyul",
+    "nDegrees": "{{count}}°",
+    "nModules": "{{count}} na mga modyul",
+    "nMs": "{{count}}ms",
+    "nPercent": "{{count}}%",
+    "nPx": "{{count}}px",
+    "numericOnly": "Numero Lamang",
+    "quartile": "Q - Quartile (25%)",
+    "version": "Bersyon"
   },
   "render": {
-    "none": "“Wala”",
-    "gradientColors": "“Mga Kulay”",
-    "classic": "“Klasiko”",
-    "addColor": "“Magdagdag ng Kulay”",
-    "alignmentStyle": "“Estilo ng Pattern ng Pag-align”",
-    "background": "“Kaligiran”",
-    "byBrightness": "“Sa Liwanag”",
-    "byCluster": "“Ayon sa Kumpol”",
-    "byOverlay": "“Sa Pamamagitan ng Pag-overlay”",
-    "byPosition": "“Ayon sa Posisyon”",
-    "ceil": "“Kisame”",
-    "circle": "“Bilog”",
-    "colorPalette": "“Paleta ng Kulay”",
-    "conic": "“Koniko”",
-    "connected": "“Konektado”",
-    "contrastGuard": "“Bantay na Pangkontra”",
-    "cornerRadius": "“Radius ng Sulok”",
-    "crispEdges": "“Malutong na mga Gilid”",
-    "crispEdgesDesc": "“Gumamit ng image-rendering: pixelated para sa matutulis na gilid”",
-    "dashed": "“Naputol”",
-    "diamond": "“Diamante”",
-    "dotRotation": "“Pag-ikot ng Tuldok”",
-    "dots": "“Mga Tuldok”",
-    "eyeInnerStyle": "“Estilo ng Panloob na Mata”",
-    "eyeOuterStyle": "“Estilo ng Panlabas na Mata”",
-    "eyeScale": "“Timbangan ng Mata”",
-    "finderStyle": "“Estilo ng Pattern ng Finder”",
-    "floor": "“Sahig”",
-    "foreground": "“Paharap na Lugar”",
-    "frameStyle": "“Estilo ng Frame”",
-    "frameText": "“Teksto ng Frame”",
-    "gapMode": "“Modyul ng Pagitan”",
-    "gradient": "“Gradient”",
-    "gradientAngle": "“Anggulong Gradient”",
-    "gradientType": "“Uri ng Gradient”",
-    "inset": "“Nakasingit”",
-    "linear": "“Linyar”",
-    "matchFinder": "“Tagahanap ng Tugma”",
-    "matchModule": "“Modyul ng Pagtutugma”",
-    "minContrastRatio": "“Minimum na Ratio ng Kontras”",
-    "moduleGap": "“Modyul na Puwang”",
-    "negativeSpace": "“Negatibong Espasyo”",
-    "perModuleColorMode": "“Mode ng Kulay Bawat Module”",
-    "pixelSnap": "“Pixel Snap”",
-    "radial": "“Radyal”",
-    "round": "“Bilog”",
-    "rounded": "“Bilugan”",
-    "roundedFrame": "“Bilog na Balangkas”",
-    "shape": "“Estilo ng Modyul”",
-    "sharp": "“Matalas”",
-    "smooth": "“Makinis”",
-    "solid": "“Matibay”",
-    "square": "“Plarikula”",
-    "squares": "“Mga Parisukat”",
-    "sticker": "“Sticker”",
-    "stroke": "“Stroke”",
-    "style": "“Estilo”",
-    "tag": "“Tag”",
-    "timingStyle": "“Estilo ng Pattern ng Pagtatakda ng Oras”",
-    "transparentBg": "“Malinaw na Background”"
+    "none": "Wala",
+    "gradientColors": "Mga Kulay",
+    "classic": "Klasiko",
+    "addColor": "Magdagdag ng Kulay",
+    "alignmentStyle": "Estilo ng Pattern ng Pag-align",
+    "background": "Kaligiran",
+    "byBrightness": "Sa Liwanag",
+    "byCluster": "Ayon sa Kumpol",
+    "byOverlay": "Sa Pamamagitan ng Pag-overlay",
+    "byPosition": "Ayon sa Posisyon",
+    "ceil": "Kisame",
+    "circle": "Bilog",
+    "colorPalette": "Paleta ng Kulay",
+    "conic": "Koniko",
+    "connected": "Konektado",
+    "contrastGuard": "Bantay na Pangkontra",
+    "cornerRadius": "Radius ng Sulok",
+    "crispEdges": "Malutong na mga Gilid",
+    "crispEdgesDesc": "Gumamit ng image-rendering: pixelated para sa matutulis na gilid",
+    "dashed": "Naputol",
+    "diamond": "Diamante",
+    "dotRotation": "Pag-ikot ng Tuldok",
+    "dots": "Mga Tuldok",
+    "eyeInnerStyle": "Estilo ng Panloob na Mata",
+    "eyeOuterStyle": "Estilo ng Panlabas na Mata",
+    "eyeScale": "Timbangan ng Mata",
+    "finderStyle": "Estilo ng Pattern ng Finder",
+    "floor": "Sahig",
+    "foreground": "Paharap na Lugar",
+    "frameStyle": "Estilo ng Frame",
+    "frameText": "Teksto ng Frame",
+    "gapMode": "Modyul ng Pagitan",
+    "gradient": "Gradient",
+    "gradientAngle": "Anggulong Gradient",
+    "gradientType": "Uri ng Gradient",
+    "inset": "Nakasingit",
+    "linear": "Linyar",
+    "matchFinder": "Tagahanap ng Tugma",
+    "matchModule": "Modyul ng Pagtutugma",
+    "minContrastRatio": "Minimum na Ratio ng Kontras",
+    "moduleGap": "Modyul na Puwang",
+    "negativeSpace": "Negatibong Espasyo",
+    "perModuleColorMode": "Mode ng Kulay Bawat Module",
+    "pixelSnap": "Pixel Snap",
+    "radial": "Radyal",
+    "round": "Bilog",
+    "rounded": "Bilugan",
+    "roundedFrame": "Bilog na Balangkas",
+    "shape": "Estilo ng Modyul",
+    "sharp": "Matalas",
+    "smooth": "Makinis",
+    "solid": "Matibay",
+    "square": "Plarikula",
+    "squares": "Mga Parisukat",
+    "sticker": "Sticker",
+    "stroke": "Stroke",
+    "style": "Estilo",
+    "tag": "Tag",
+    "timingStyle": "Estilo ng Pattern ng Pagtatakda ng Oras",
+    "transparentBg": "Malinaw na Background"
   },
   "safety": {
-    "off": "“Sarado”",
-    "strict": "“Mahigpit”",
-    "analysis": "“Pagsusuri ng Kaligtasan”",
-    "autoPickEcc": "“Awtomatikong Pumili ng ECC”",
-    "autoPickVersion": "“Bersyon ng Awtomatikong Pagpili”",
-    "autoReduceIntensity": "“Awtomatikong Bawasan ang Intensity”",
-    "autoTuning": "“Awtomatikong Pag-tune”",
-    "balanced": "“Balanse”",
-    "contrast": "“Ratio ng Kontras”",
-    "contrastRatio": "“Ratio ng Kontras”",
-    "contrastCheck": "“Pagsusuri ng Kontras”",
-    "excellent": "“Napakahusay”",
-    "fair": "“Patas”",
-    "good": "“Mabuti”",
-    "lockAlignment": "“Pag-align ng Lock”",
-    "lockFinders": "“Mga Panghanap ng Lock”",
-    "lockFormat": "“Impormasyon sa Format ng Lock”",
-    "lockTiming": "“Pag-ooras ng Lock”",
-    "lockVersion": "“Impormasyon sa Bersyon ng Lock”",
-    "minModuleSize": "“Minimum na Laki ng Modyul”",
-    "minQuietZone": "“Minimum na Tahimik na Sona”",
-    "poor": "“Kawawa”",
-    "protectionLocks": "“Mga Kandadong Proteksyon”",
-    "qualityAnalysis": "“Pagsusuri ng Kalidad”",
-    "quietZone": "“Tahimik na Sona”",
-    "safetyMode": "“Modong Pangkaligtasan”",
-    "scanability": "“Iskor ng Kakayahang I-scan”",
-    "showHeatmap": "“Ipakita ang Heatmap”",
-    "simulateBlur": "“Gayahin ang Palabuin”",
-    "simulateNoise": "“Gayahin ang Ingay”",
-    "simulateRotation": "“Gayahin ang Pag-ikot”",
-    "untilScannable": "“Hanggang sa ma-scan”"
+    "off": "Sarado",
+    "strict": "Mahigpit",
+    "analysis": "Pagsusuri ng Kaligtasan",
+    "autoPickEcc": "Awtomatikong Pumili ng ECC",
+    "autoPickVersion": "Bersyon ng Awtomatikong Pagpili",
+    "autoReduceIntensity": "Awtomatikong Bawasan ang Intensity",
+    "autoTuning": "Awtomatikong Pag-tune",
+    "balanced": "Balanse",
+    "contrast": "Ratio ng Kontras",
+    "contrastRatio": "Ratio ng Kontras",
+    "contrastCheck": "Pagsusuri ng Kontras",
+    "excellent": "Napakahusay",
+    "fair": "Patas",
+    "good": "Mabuti",
+    "lockAlignment": "Pag-align ng Lock",
+    "lockFinders": "Mga Panghanap ng Lock",
+    "lockFormat": "Impormasyon sa Format ng Lock",
+    "lockTiming": "Pag-ooras ng Lock",
+    "lockVersion": "Impormasyon sa Bersyon ng Lock",
+    "minModuleSize": "Minimum na Laki ng Modyul",
+    "minQuietZone": "Minimum na Tahimik na Sona",
+    "poor": "Kawawa",
+    "protectionLocks": "Mga Kandadong Proteksyon",
+    "qualityAnalysis": "Pagsusuri ng Kalidad",
+    "quietZone": "Tahimik na Sona",
+    "safetyMode": "Modong Pangkaligtasan",
+    "scanability": "Iskor ng Kakayahang I-scan",
+    "showHeatmap": "Ipakita ang Heatmap",
+    "simulateBlur": "Gayahin ang Palabuin",
+    "simulateNoise": "Gayahin ang Ingay",
+    "simulateRotation": "Gayahin ang Pag-ikot",
+    "untilScannable": "Hanggang sa ma-scan"
   },
   "sections": {
-    "animation": "“Animasyon”",
-    "qrEncoding": "“Pag-encode ng QR”",
-    "share": "“Ibahagi”",
-    "safety": "“Pagsusuri ng Kaligtasan”",
-    "metadata": "“Metadata”",
-    "output": "“Output”",
-    "overlay": "“Pagpatong / Imahe”",
-    "payload": "“Payload / Datos”",
-    "rendering": "“Pag-render”",
-    "watermark": "“Tatak ng Tubig”"
+    "animation": "Animasyon",
+    "qrEncoding": "Pag-encode ng QR",
+    "share": "Ibahagi",
+    "safety": "Pagsusuri ng Kaligtasan",
+    "metadata": "Metadata",
+    "output": "Output",
+    "overlay": "Pagpatong / Imahe",
+    "payload": "Payload / Datos",
+    "rendering": "Pag-render",
+    "watermark": "Tatak ng Tubig"
   },
   "share": {
-    "copied": "“Kinopya!”",
-    "copyLink": "“Kopyahin ang Link”",
-    "whatsapp": "“WhatsApp”",
-    "directLink": "“Direktang Link”",
-    "directLinkDesc": "“Bumuo ng maibabahaging URL”",
-    "embedHtml": "“I-embed ang HTML”",
-    "embedHtmlDesc": "“Bumuo ng embed code”",
-    "encodeAllParams": "“I-encode ang Lahat ng Parameter”",
-    "encodeAllParamsDesc": "“Isama ang lahat ng setting sa URL”",
-    "markdown": "“Pagbaba ng Marka”",
-    "quickShare": "“Mabilis na Pagbabahagi”",
-    "twitter": "“X/Twitter”"
+    "copied": "Kinopya!",
+    "copyLink": "Kopyahin ang Link",
+    "whatsapp": "WhatsApp",
+    "directLink": "Direktang Link",
+    "directLinkDesc": "Bumuo ng maibabahaging URL",
+    "embedHtml": "I-embed ang HTML",
+    "embedHtmlDesc": "Bumuo ng embed code",
+    "encodeAllParams": "I-encode ang Lahat ng Parameter",
+    "encodeAllParamsDesc": "Isama ang lahat ng setting sa URL",
+    "markdown": "Pagbaba ng Marka",
+    "quickShare": "Mabilis na Pagbabahagi",
+    "twitter": "X/Twitter"
   },
   "tiers": {
-    "advanced": "“Advanced”",
-    "basic": "“Pangunahin”",
+    "advanced": "Advanced",
+    "basic": "Pangunahin",
     "professional": "Pro",
-    "watchAdForPro": "“Panoorin ang ad para ma-unlock ang mga Propesyonal na feature sa loob ng 24 oras”"
+    "watchAdForPro": "Panoorin ang ad para ma-unlock ang mga Propesyonal na feature sa loob ng 24 oras"
   },
   "watermark": {
-    "blendMode": "“Blend Mode”",
-    "image": "“Imahe”",
-    "type": "“Uri”",
-    "quietZone": "“Tahimik na Sona”",
-    "behindQr": "“Sa Likod ng QR”",
-    "bottomLeft": "“Ibabang Kaliwa”",
-    "bottomRight": "“Ibabang Kanan”",
-    "center": "“Sentro”",
-    "corners": "“Mga Sulok”",
-    "edges": "“Mga Gilid”",
-    "enabled": "“Paganahin ang Watermark”",
-    "fontColor": "“Kulay ng Font”",
-    "fontSize": "“Laki ng Font”",
-    "multiply": "“Magparami”",
-    "normal": "“Normal”",
-    "opacity": "“Kadiliman”",
-    "overlay": "“Patong”",
-    "pattern": "“Patern”",
-    "position": "“Posisyon”",
-    "screen": "“Iskrin”",
-    "text": "“Teksto”",
-    "textPlaceholder": "“© Pangalan ng Kumpanya”",
-    "topLeft": "“Kaliwang Itaas”",
-    "topRight": "“Kanang Itaas”",
-    "uploadImage": "“Mag-upload ng Larawan”"
+    "blendMode": "Blend Mode",
+    "image": "Imahe",
+    "type": "Uri",
+    "quietZone": "Tahimik na Sona",
+    "behindQr": "Sa Likod ng QR",
+    "bottomLeft": "Ibabang Kaliwa",
+    "bottomRight": "Ibabang Kanan",
+    "center": "Sentro",
+    "corners": "Mga Sulok",
+    "edges": "Mga Gilid",
+    "enabled": "Paganahin ang Watermark",
+    "fontColor": "Kulay ng Font",
+    "fontSize": "Laki ng Font",
+    "multiply": "Magparami",
+    "normal": "Normal",
+    "opacity": "Kadiliman",
+    "overlay": "Patong",
+    "pattern": "Patern",
+    "position": "Posisyon",
+    "screen": "Iskrin",
+    "text": "Teksto",
+    "textPlaceholder": "© Pangalan ng Kumpanya",
+    "topLeft": "Kaliwang Itaas",
+    "topRight": "Kanang Itaas",
+    "uploadImage": "Mag-upload ng Larawan"
   },
   "accessibility": {
     "toggleSettings": "I-toggle ang panel ng mga setting",
@@ -1227,355 +1227,355 @@
   "overlay": {
     "blueNoise": "Asul na Ingay",
     "blueNoiseMode": "Asul na Ingay",
-    "none": "“Wala”",
-    "wave": "“Alon”",
-    "waveMode": "“Alon”",
-    "upload": "“Pag-upload”",
-    "errorDiffusion": "“Pagkalat ng Error”",
-    "atkinson": "“Atkinson”",
-    "burkes": "“Burkes”",
-    "floydSteinberg": "“Floyd-Steinberg”",
-    "jarvisJudiceNinke": "“Jarvis-Judice-Ninke”",
-    "sierra": "“Sierra”",
-    "stucki": "“Stucki”",
-    "whiteNoise": "“Puting Ingay”",
-    "mode": "“Blend Mode”",
-    "brightness": "“Liwanag”",
-    "brightnessMode": "“Liwanag”",
-    "bw": "“Itim at Puti”",
-    "grayscale": "“Grayscale”",
-    "dithered": "“Nalilito”",
-    "ditheredMode": "“Nalilito”",
-    "duotone": "“Duotone”",
-    "duotoneMode": "“Duotone”",
-    "extreme": "“Labis”",
-    "extremeMode": "“Labis”",
-    "halftone": "“Halftone”",
-    "halftoneMode": "“Halftone”",
-    "mosaic": "“Mosaiko”",
-    "mosaicMode": "“Mosaiko”",
-    "outline": "“Balangkas”",
-    "outlineMode": "“Balangkas”",
-    "pixelate": "“Pixelate”",
-    "pixelateMode": "“Pixelate”",
-    "subpixel": "“Subpiksel”",
-    "subpixelMode": "“Subpiksel”",
-    "gifSettings": "“Mga Setting ng GIF”",
-    "adaptiveThreshold": "“Adaptive Threshold”",
-    "bayer2": "“Bayer 2×2”",
-    "bayer4": "“Bayer 4×4”",
-    "bayer8": "“Bayer 8×8”",
-    "blend": "“Timpla”",
-    "blendMode": "“Timpla”",
-    "blueNoiseErrorDiffusion": "“Asul na Ingay + Pagkalat ng Error”",
-    "blueNoiseThreshold": "“Blue Noise Threshold”",
-    "blur": "“Malabo”",
-    "brightnessCurve": "“Kurba ng Liwanag”",
-    "cellSize": "“Laki ng Selula”",
-    "centerLogo": "“Logo ng Sentro”",
-    "centerRule": "“Sentrong Panuntunan”",
-    "clusteredDot": "“Kumpol-kumpol na Tuldok”",
-    "colorDither": "“Pagkakagulo ng Kulay”",
-    "colorMode": "“Mode ng Kulay”",
-    "contain": "“Maglaman”",
-    "contrast": "“Pagkaiba”",
-    "corsNote": "“Paalala: Dapat payagan ng larawan ang mga kahilingan sa cross-origin (CORS)”",
-    "cover": "“Pabalat”",
-    "cropImage": "“I-crop ang Larawan”",
-    "cropSize": "“Laki ng Pananim”",
-    "diffusionKernel": "“Diffusion Kernel”",
-    "disposalHandling": "“Pamamahala ng Pagtatapon”",
-    "dither": "“Pagkagulo”",
-    "ditherSettings": "“Mga Setting ng Dither”",
-    "ditherStrength": "“Lakas ng Pagkalito”",
-    "dotShape": "“Hugis ng Tuldok”",
-    "duotoneColors": "“Mga Kulay na Duotone”",
-    "eccAwareMode": "“Mode na May Kamalayan sa ECC”",
-    "edge": "“Pagtukoy sa Gilid”",
-    "edgeAware": "“May Kamalayan sa Gilid”",
-    "enableCrop": "“Paganahin ang Pag-crop”",
-    "finderOverride": "“Pag-override ng Finder”",
-    "fitMode": "“Mode ng Pagkasyahin”",
-    "flipX": "“I-flip X”",
-    "flipY": "“I-flip Y”",
-    "fromUrl": "“Mula sa URL”",
-    "fullColor": "“Buong Kulay”",
-    "gamma": "“Gamma”",
-    "gapFillMode": "“Pagpuno ng Puwang”",
-    "gapfill": "“Pagpuno ng Puwang”",
-    "gaussianNoise": "“Ingay ni Gaussian”",
-    "gridSize": "“Laki ng Grid”",
-    "halftoneCenter": "“Sentro ng Halftone”",
-    "halftoneSettings": "“Mga Setting ng Halftone”",
-    "highlight": "“Tampok”",
-    "hueRotate": "“Pag-ikot ng Hue”",
-    "imageGifWebp": "“Imahe / GIF / WebP”",
-    "imageUrl": "“URL ng Larawan”",
-    "intensity": "“Intensity”",
-    "invert": "“Baliktarin ang Larawan”",
-    "line": "“Linya”",
-    "load": "“Karga”",
-    "loadedFromUrl": "“Na-load mula sa URL”",
-    "maxFps": "“Pinakamataas na FPS”",
-    "neutralColor": "“Kulay na Neutral”",
-    "noFile": "“Walang file”",
-    "nxnGrid": "“N×N Grid”",
-    "orderedBayer": "“Inorder (Bayer)”",
-    "orderedMatrix": "“Nakaayos na Matris”",
-    "original": "“Orihinal”",
-    "perChannel": "“Bawat Channel”",
-    "perModule": "“Bawat Modyul”",
-    "perceptual": "“Perseptwal (Luminance)”",
-    "posterizeLevels": "“Mga Antas ng Posterize”",
-    "preserveAlignment": "“Panatilihin ang Pagkakahanay”",
-    "preserveFinders": "“Panatilihin ang mga Pattern ng Finder”",
-    "preserveTiming": "“Panatilihin ang Panahon”",
-    "protectFormat": "“Protektahan ang Impormasyon sa Format”",
-    "protectFormatInfo": "“Protektahan ang Impormasyon sa Format”",
-    "protectVersion": "“Protektahan ang Impormasyon sa Bersyon”",
-    "protectVersionInfo": "“Protektahan ang Impormasyon sa Bersyon”",
-    "protection": "“Proteksyon”",
-    "removeImage": "“Alisin”",
-    "respect": "“Paggalang”",
-    "riskBudget": "“Badyet sa Panganib”",
-    "rotation": "“Pag-ikot”",
-    "sCurve": "“S-Curve”",
-    "saturation": "“Saturasyon”",
-    "screenedBlueNoise": "“Naka-screen na Asul na Ingay”",
-    "seed": "“Binhi”",
-    "selectImage": "“Pumili ng Larawan”",
-    "sepia": "“Sepia”",
-    "serpentineScanning": "“Pag-scan na Parang Serpentine”",
-    "shadow": "“Anino”",
-    "sharpen": "“Patalasin”",
-    "sierra2": "“Sierra-2”",
-    "sierraLite": "“Sierra-Lite”",
-    "simplify": "“Pasimplehin”",
-    "stretch": "“Pag-unat”",
-    "strict": "“Mahigpit”",
-    "stylized": "“Istilado”",
-    "subpixelSettings": "“Mga Setting ng Subpixel”",
-    "subpixelSize": "“Sukat ng Subpixel”",
-    "subpixelSizeMode": "“Sukat ng Subpixel”",
-    "temporalBlueNoise": "“Temporal na Asul na Ingay”",
-    "threshold": "“Hangganan”",
-    "tileSize": "“Laki ng Tile”",
-    "triangularNoise": "“Tatsulok na Ingay”",
-    "trueDither": "“Tunay na Pagkalito”",
-    "trueDitherMode": "“Tunay na Pagkalito”",
-    "useFrameDelays": "“Gamitin ang mga Pagkaantala sa Frame”",
-    "voidCluster": "“Walang Kakayahan at Kumpol”",
+    "none": "Wala",
+    "wave": "Alon",
+    "waveMode": "Alon",
+    "upload": "Pag-upload",
+    "errorDiffusion": "Pagkalat ng Error",
+    "atkinson": "Atkinson",
+    "burkes": "Burkes",
+    "floydSteinberg": "Floyd-Steinberg",
+    "jarvisJudiceNinke": "Jarvis-Judice-Ninke",
+    "sierra": "Sierra",
+    "stucki": "Stucki",
+    "whiteNoise": "Puting Ingay",
+    "mode": "Blend Mode",
+    "brightness": "Liwanag",
+    "brightnessMode": "Liwanag",
+    "bw": "Itim at Puti",
+    "grayscale": "Grayscale",
+    "dithered": "Nalilito",
+    "ditheredMode": "Nalilito",
+    "duotone": "Duotone",
+    "duotoneMode": "Duotone",
+    "extreme": "Labis",
+    "extremeMode": "Labis",
+    "halftone": "Halftone",
+    "halftoneMode": "Halftone",
+    "mosaic": "Mosaiko",
+    "mosaicMode": "Mosaiko",
+    "outline": "Balangkas",
+    "outlineMode": "Balangkas",
+    "pixelate": "Pixelate",
+    "pixelateMode": "Pixelate",
+    "subpixel": "Subpiksel",
+    "subpixelMode": "Subpiksel",
+    "gifSettings": "Mga Setting ng GIF",
+    "adaptiveThreshold": "Adaptive Threshold",
+    "bayer2": "Bayer 2×2",
+    "bayer4": "Bayer 4×4",
+    "bayer8": "Bayer 8×8",
+    "blend": "Timpla",
+    "blendMode": "Timpla",
+    "blueNoiseErrorDiffusion": "Asul na Ingay + Pagkalat ng Error",
+    "blueNoiseThreshold": "Blue Noise Threshold",
+    "blur": "Malabo",
+    "brightnessCurve": "Kurba ng Liwanag",
+    "cellSize": "Laki ng Selula",
+    "centerLogo": "Logo ng Sentro",
+    "centerRule": "Sentrong Panuntunan",
+    "clusteredDot": "Kumpol-kumpol na Tuldok",
+    "colorDither": "Pagkakagulo ng Kulay",
+    "colorMode": "Mode ng Kulay",
+    "contain": "Maglaman",
+    "contrast": "Pagkaiba",
+    "corsNote": "Paalala: Dapat payagan ng larawan ang mga kahilingan sa cross-origin (CORS)",
+    "cover": "Pabalat",
+    "cropImage": "I-crop ang Larawan",
+    "cropSize": "Laki ng Pananim",
+    "diffusionKernel": "Diffusion Kernel",
+    "disposalHandling": "Pamamahala ng Pagtatapon",
+    "dither": "Pagkagulo",
+    "ditherSettings": "Mga Setting ng Dither",
+    "ditherStrength": "Lakas ng Pagkalito",
+    "dotShape": "Hugis ng Tuldok",
+    "duotoneColors": "Mga Kulay na Duotone",
+    "eccAwareMode": "Mode na May Kamalayan sa ECC",
+    "edge": "Pagtukoy sa Gilid",
+    "edgeAware": "May Kamalayan sa Gilid",
+    "enableCrop": "Paganahin ang Pag-crop",
+    "finderOverride": "Pag-override ng Finder",
+    "fitMode": "Mode ng Pagkasyahin",
+    "flipX": "I-flip X",
+    "flipY": "I-flip Y",
+    "fromUrl": "Mula sa URL",
+    "fullColor": "Buong Kulay",
+    "gamma": "Gamma",
+    "gapFillMode": "Pagpuno ng Puwang",
+    "gapfill": "Pagpuno ng Puwang",
+    "gaussianNoise": "Ingay ni Gaussian",
+    "gridSize": "Laki ng Grid",
+    "halftoneCenter": "Sentro ng Halftone",
+    "halftoneSettings": "Mga Setting ng Halftone",
+    "highlight": "Tampok",
+    "hueRotate": "Pag-ikot ng Hue",
+    "imageGifWebp": "Imahe / GIF / WebP",
+    "imageUrl": "URL ng Larawan",
+    "intensity": "Intensity",
+    "invert": "Baliktarin ang Larawan",
+    "line": "Linya",
+    "load": "Karga",
+    "loadedFromUrl": "Na-load mula sa URL",
+    "maxFps": "Pinakamataas na FPS",
+    "neutralColor": "Kulay na Neutral",
+    "noFile": "Walang file",
+    "nxnGrid": "N×N Grid",
+    "orderedBayer": "Inorder (Bayer)",
+    "orderedMatrix": "Nakaayos na Matris",
+    "original": "Orihinal",
+    "perChannel": "Bawat Channel",
+    "perModule": "Bawat Modyul",
+    "perceptual": "Perseptwal (Luminance)",
+    "posterizeLevels": "Mga Antas ng Posterize",
+    "preserveAlignment": "Panatilihin ang Pagkakahanay",
+    "preserveFinders": "Panatilihin ang mga Pattern ng Finder",
+    "preserveTiming": "Panatilihin ang Panahon",
+    "protectFormat": "Protektahan ang Impormasyon sa Format",
+    "protectFormatInfo": "Protektahan ang Impormasyon sa Format",
+    "protectVersion": "Protektahan ang Impormasyon sa Bersyon",
+    "protectVersionInfo": "Protektahan ang Impormasyon sa Bersyon",
+    "protection": "Proteksyon",
+    "removeImage": "Alisin",
+    "respect": "Paggalang",
+    "riskBudget": "Badyet sa Panganib",
+    "rotation": "Pag-ikot",
+    "sCurve": "S-Curve",
+    "saturation": "Saturasyon",
+    "screenedBlueNoise": "Naka-screen na Asul na Ingay",
+    "seed": "Binhi",
+    "selectImage": "Pumili ng Larawan",
+    "sepia": "Sepia",
+    "serpentineScanning": "Pag-scan na Parang Serpentine",
+    "shadow": "Anino",
+    "sharpen": "Patalasin",
+    "sierra2": "Sierra-2",
+    "sierraLite": "Sierra-Lite",
+    "simplify": "Pasimplehin",
+    "stretch": "Pag-unat",
+    "strict": "Mahigpit",
+    "stylized": "Istilado",
+    "subpixelSettings": "Mga Setting ng Subpixel",
+    "subpixelSize": "Sukat ng Subpixel",
+    "subpixelSizeMode": "Sukat ng Subpixel",
+    "temporalBlueNoise": "Temporal na Asul na Ingay",
+    "threshold": "Hangganan",
+    "tileSize": "Laki ng Tile",
+    "triangularNoise": "Tatsulok na Ingay",
+    "trueDither": "Tunay na Pagkalito",
+    "trueDitherMode": "Tunay na Pagkalito",
+    "useFrameDelays": "Gamitin ang mga Pagkaantala sa Frame",
+    "voidCluster": "Walang Kakayahan at Kumpol",
     "pleaseEnterUrl": "Mangyaring maglagay ng URL",
     "preview": "Preview"
   },
   "payload": {
-    "emailAddress": "“Email Address”",
-    "vevent": "“Kaganapan sa Kalendaryo”",
-    "geo": "“Lokasyon sa Heograpiya”",
-    "vcard": "“Pakikipag-ugnayan sa vCard”",
-    "wifiNetwork": "“WiFi Network”",
-    "description": "“Paglalarawan”",
-    "title": "“Pamagat”",
-    "contact": "“Makipag-ugnayan”",
-    "accountName": "“Pangalan ng Account”",
-    "address": "“Tirahan”",
-    "walletAddress": "“Tirahan”",
-    "algorithm": "“Algoritmo”",
-    "allDay": "“Pang-araw na Kaganapan”",
-    "amount": "“Halaga (opsyonal)”",
-    "amountBrl": "“Halaga (BRL, opsyonal)”",
-    "amountEur": "“Halaga (EUR)”",
-    "amountInr": "“Halaga (INR, opsyonal)”",
-    "amountSgd": "“Halaga (SGD, opsyonal)”",
-    "amountThb": "“Halaga (THB, opsyonal)”",
-    "androidIntent": "“Layunin ng Android”",
-    "appLink": "“Malalim na Link ng App (Android/iOS)”",
-    "assetInventory": "“Tag ng Ari-arian/Imbentaryo”",
-    "assetItemId": "“ID ng Ari-arian/Aytem”",
-    "assetType": "“Uri ng Ari-arian”",
-    "attendeeName": "“Pangalan ng Dadalo”",
-    "audio": "“Audio”",
-    "baseUrl": "“Base URL”",
-    "batchLot": "“Batch/Lote (opsyonal)”",
-    "beneficiaryName": "“Pangalan ng Benepisyaryo”",
-    "bicSwift": "“BIC/SWIFT (opsyonal)”",
-    "birthday": "“Kaarawan”",
-    "bitcoin": "“Bitcoin”",
-    "bizcard": "“BizCard (Pamana)”",
-    "bluetooth": "“Bluetooth”",
-    "body": "“Katawan ng Mensahe”",
-    "bodyOptional": "“Katawan (opsyonal)”",
-    "box": "“Kahon”",
-    "calendar": "“Kalendaryo”",
-    "calendarName": "“Pangalan ng Kalendaryo”",
-    "calendarSubscription": "“Mag-subscribe sa Kalendaryo”",
-    "calendarUrl": "“URL ng Kalendaryo (ICS/WebCal)”",
-    "campaignContent": "“Nilalaman ng Kampanya (opsyonal)”",
-    "campaignMedium": "“Medium ng Kampanya”",
-    "campaignName": "“Pangalan ng Kampanya”",
-    "campaignSource": "“Pinagmulan ng Kampanya”",
-    "campaignTerm": "“Termino ng Kampanya (opsyonal)”",
-    "city": "“Lungsod”",
-    "cityOptional": "“Lungsod (opsyonal)”",
-    "cloudLink": "“Link sa Pag-iimbak ng Cloud”",
-    "company": "“Kumpanya”",
-    "contentType": "“Uri ng Nilalaman”",
-    "core": "“Ubod”",
-    "country": "“Bansa”",
-    "crypto": "“Crypto (BTC, ETH, atbp.)”",
-    "cryptocurrency": "“Cryptocurrency”",
-    "custom": "“Pasadyang Format”",
-    "customScheme": "“Pasadyang Iskema”",
-    "dateTime": "“Petsa at Oras”",
-    "deepLinkUrl": "“URL ng Malalim na Link”",
-    "deviceAddress": "“Address ng Device (MAC)”",
-    "deviceName": "“Pangalan ng Aparato (opsyonal)”",
-    "digits": "“Mga Digit”",
-    "documentsMedia": "“Mga Dokumento at Media”",
-    "dropbox": "“Dropbox”",
-    "email": "“Email”",
-    "encryption": "“Pag-encrypt”",
-    "end": "“Wakas”",
-    "endDate": "“Petsa ng Pagtatapos”",
-    "enterprise": "“Enterprise”",
-    "epcSepa": "“EPC / SEPA (EU)”",
-    "equipment": "“Kagamitan”",
-    "ethereum": "“Ethereum”",
-    "event": "“Kaganapan sa iCalendar”",
-    "eventName": "“Pangalan ng Kaganapan”",
-    "eventRsvp": "“Link sa RSVP ng Kaganapan”",
-    "eventTicket": "“Tiket sa Kaganapan”",
-    "expiryDate": "“Petsa ng Pagtatapos (opsyonal)”",
-    "facebook": "“Facebook”",
-    "fallbackUrl": "“URL ng Pagbabalik-tanaw (opsyonal)”",
-    "fax": "“Fax”",
-    "fileType": "“Uri ng File”",
-    "fileUrl": "“URL ng File / Dokumento”",
-    "firstName": "“Unang Pangalan”",
-    "forceHttps": "“Pilitin ang HTTPS”",
-    "fullName": "“Buong Pangalan”",
-    "furniture": "“Muwebles”",
-    "github": "“GitHub”",
-    "googleDrive": "“Google Drive”",
-    "gs1DigitalLink": "“GS1 Digital Link”",
-    "gtin": "“GTIN (Global Trade Item Number)”",
-    "hidden": "“Nakatagong Network”",
-    "homePhone": "“Telepono sa Bahay”",
-    "iban": "“IBAN”",
-    "idType": "“Uri ng ID”",
-    "image": "“Imahe”",
-    "instagram": "“Instagram”",
-    "inventoryItem": "“Imbentaryo ng Aytem”",
-    "iosUniversal": "“iOS Universal”",
-    "issuer": "“Tagapag-isyu”",
-    "itAsset": "“Ari-ariang IT”",
-    "label": "“Tatak (opsyonal)”",
-    "lastName": "“Apelyido”",
-    "latitude": "“Latitud”",
-    "linkType": "“Uri ng Link”",
-    "linkedin": "“LinkedIn”",
-    "litecoin": "“Litecoin”",
-    "location": "“Lokasyon”",
-    "locationNetwork": "“Lokasyon at Network”",
-    "longitude": "“Longitud”",
-    "lookupUrl": "“URL ng Paghahanap (opsyonal)”",
-    "marketing": "“Pagmemerkado”",
-    "marketingTags": "“Mga Tag sa Marketing”",
-    "maxLengthGuard": "“Pinakamataas na Haba ng Proteksyon”",
-    "mecard": "“Kontak sa MeCard”",
-    "merchantName": "“Pangalan ng Mangangalakal (opsyonal)”",
-    "message": "“Mensahe”",
-    "messageOptional": "“Mensahe (opsyonal)”",
-    "messagingLink": "“WhatsApp / Telegram / Signal”",
-    "messenger": "“Sugo”",
-    "mobileNumber": "“Numero ng Mobile”",
-    "mobilePhone": "“Teleponong Selpon”",
-    "name": "“Pangalan”",
-    "nationalIdTaxId": "“Pambansang ID / ID sa Buwis”",
-    "nickname": "“Palayaw”",
-    "normalizeNewlines": "“Gawing Normal ang mga Bagong Linya”",
-    "note": "“Tala”",
-    "oneDrive": "“OneDrive”",
-    "openNoPassword": "“Buksan (Walang Password)”",
-    "organization": "“Organisasyon”",
-    "other": "“Iba Pa”",
-    "otpAuth": "“OTP Authenticator”",
-    "otpType": "“Uri”",
-    "password": "“Password”",
-    "payeeName": "“Pangalan ng Tatanggap”",
-    "payments": "“Mga Pagbabayad (Bukas na mga Espesipikasyon)”",
-    "paynow": "“Magbayad Ngayon (Singapore)”",
-    "phone": "“Telepono”",
-    "phoneUsername": "“Telepono/Pangalan ng Gumagamit”",
-    "pix": "“PIX (Brazil)”",
-    "pixKey": "“Susi ng PIX”",
-    "plainText": "“Plain Text”",
-    "platform": "“Plataporma”",
-    "prefilledMessage": "“Paunang Napunang Mensahe (opsyonal)”",
-    "profileUrl": "“URL ng Profile”",
-    "promptPayId": "“PromptPay ID”",
-    "promptpay": "“PromptPay (Thailand)”",
-    "proxyType": "“Uri ng Proxy”",
-    "rawData": "“Hilaw na Datos”",
-    "recipient": "“Tatanggap”",
-    "reference": "“Sanggunian”",
-    "referenceOptional": "“Sanggunian (opsyonal)”",
-    "resolverDomain": "“Domain ng Tagalutas”",
-    "rsvpUrl": "“RSVP URL”",
-    "searchQuery": "“Paghahanap (opsyonal)”",
-    "seat": "“Uupuan”",
-    "secretBase32": "“Lihim (Base32)”",
-    "sectionZone": "“Seksyon/Sona”",
-    "securityType": "“Uri ng Seguridad”",
-    "serialNumber": "“Serial Number (opsyonal)”",
-    "service": "“Serbisyo”",
-    "shortLink": "“Pag-redirect ng Maikling Link”",
-    "shortUrl": "“Maikling URL”",
-    "signal": "“Senyas”",
-    "sms": "“SMS”",
-    "smsMms": "“SMS/MMS”",
-    "socialMessaging": "“Sosyal at Pagmemensahe”",
-    "socialProfile": "“Profile sa Lipunan”",
-    "ssid": "“Pangalan ng Network (SSID)”",
-    "start": "“Simulan”",
-    "startDate": "“Petsa ng Pagsisimula”",
-    "state": "“Estado/Lalawigan”",
-    "street": "“Kalye”",
-    "subject": "“Paksa”",
-    "subjectOptional": "“Paksa (opsyonal)”",
-    "summary": "“Pamagat ng Kaganapan”",
-    "tel": "“Numero ng Telepono”",
-    "telegram": "“Telegrama”",
-    "text": "“Nilalaman ng Teksto”",
-    "ticketId": "“ID ng Tiket”",
-    "tiktok": "“TikTok”",
-    "transactionNote": "“Tala ng Transaksyon (opsyonal)”",
-    "trimWhitespace": "“Putlatin ang Puting Espasyo”",
-    "uenMobile": "“UEN/Numero ng Mobile”",
-    "universalLink": "“Pangkalahatang Ugnayan”",
-    "upi": "“UPI (India)”",
-    "upiId": "“UPI ID (VPA)”",
-    "url": "“URL”",
-    "utmCampaign": "“utm_campaign”",
-    "utmContent": "“utm_content”",
-    "utmLink": "“Link ng Kampanya ng UTM”",
-    "utmMedium": "“utm_medium”",
-    "utmSource": "“utm_source”",
-    "utmTerm": "“utm_term”",
-    "validateInput": "“Patunayan ang Input”",
-    "validationOptions": "“Mga Opsyon sa Pagpapatunay”",
-    "validationUrl": "“URL ng Pagpapatunay (opsyonal)”",
-    "vehicle": "“Sasakyan”",
-    "venue": "“Lugar”",
-    "viber": "“Viber”",
-    "video": "“Bidyo”",
-    "website": "“Website”",
-    "whatsapp": "“WhatsApp”",
-    "wifi": "“Wi-Fi”",
-    "wordDocument": "“Dokumento ng Salita”",
-    "workPhone": "“Telepono sa Trabaho”",
-    "youtube": "“YouTube”",
-    "zip": "“ZIP/Postal Code”",
+    "emailAddress": "Email Address",
+    "vevent": "Kaganapan sa Kalendaryo",
+    "geo": "Lokasyon sa Heograpiya",
+    "vcard": "Pakikipag-ugnayan sa vCard",
+    "wifiNetwork": "WiFi Network",
+    "description": "Paglalarawan",
+    "title": "Pamagat",
+    "contact": "Makipag-ugnayan",
+    "accountName": "Pangalan ng Account",
+    "address": "Tirahan",
+    "walletAddress": "Tirahan",
+    "algorithm": "Algoritmo",
+    "allDay": "Pang-araw na Kaganapan",
+    "amount": "Halaga (opsyonal)",
+    "amountBrl": "Halaga (BRL, opsyonal)",
+    "amountEur": "Halaga (EUR)",
+    "amountInr": "Halaga (INR, opsyonal)",
+    "amountSgd": "Halaga (SGD, opsyonal)",
+    "amountThb": "Halaga (THB, opsyonal)",
+    "androidIntent": "Layunin ng Android",
+    "appLink": "Malalim na Link ng App (Android/iOS)",
+    "assetInventory": "Tag ng Ari-arian/Imbentaryo",
+    "assetItemId": "ID ng Ari-arian/Aytem",
+    "assetType": "Uri ng Ari-arian",
+    "attendeeName": "Pangalan ng Dadalo",
+    "audio": "Audio",
+    "baseUrl": "Base URL",
+    "batchLot": "Batch/Lote (opsyonal)",
+    "beneficiaryName": "Pangalan ng Benepisyaryo",
+    "bicSwift": "BIC/SWIFT (opsyonal)",
+    "birthday": "Kaarawan",
+    "bitcoin": "Bitcoin",
+    "bizcard": "BizCard (Pamana)",
+    "bluetooth": "Bluetooth",
+    "body": "Katawan ng Mensahe",
+    "bodyOptional": "Katawan (opsyonal)",
+    "box": "Kahon",
+    "calendar": "Kalendaryo",
+    "calendarName": "Pangalan ng Kalendaryo",
+    "calendarSubscription": "Mag-subscribe sa Kalendaryo",
+    "calendarUrl": "URL ng Kalendaryo (ICS/WebCal)",
+    "campaignContent": "Nilalaman ng Kampanya (opsyonal)",
+    "campaignMedium": "Medium ng Kampanya",
+    "campaignName": "Pangalan ng Kampanya",
+    "campaignSource": "Pinagmulan ng Kampanya",
+    "campaignTerm": "Termino ng Kampanya (opsyonal)",
+    "city": "Lungsod",
+    "cityOptional": "Lungsod (opsyonal)",
+    "cloudLink": "Link sa Pag-iimbak ng Cloud",
+    "company": "Kumpanya",
+    "contentType": "Uri ng Nilalaman",
+    "core": "Ubod",
+    "country": "Bansa",
+    "crypto": "Crypto (BTC, ETH, atbp.)",
+    "cryptocurrency": "Cryptocurrency",
+    "custom": "Pasadyang Format",
+    "customScheme": "Pasadyang Iskema",
+    "dateTime": "Petsa at Oras",
+    "deepLinkUrl": "URL ng Malalim na Link",
+    "deviceAddress": "Address ng Device (MAC)",
+    "deviceName": "Pangalan ng Aparato (opsyonal)",
+    "digits": "Mga Digit",
+    "documentsMedia": "Mga Dokumento at Media",
+    "dropbox": "Dropbox",
+    "email": "Email",
+    "encryption": "Pag-encrypt",
+    "end": "Wakas",
+    "endDate": "Petsa ng Pagtatapos",
+    "enterprise": "Enterprise",
+    "epcSepa": "EPC / SEPA (EU)",
+    "equipment": "Kagamitan",
+    "ethereum": "Ethereum",
+    "event": "Kaganapan sa iCalendar",
+    "eventName": "Pangalan ng Kaganapan",
+    "eventRsvp": "Link sa RSVP ng Kaganapan",
+    "eventTicket": "Tiket sa Kaganapan",
+    "expiryDate": "Petsa ng Pagtatapos (opsyonal)",
+    "facebook": "Facebook",
+    "fallbackUrl": "URL ng Pagbabalik-tanaw (opsyonal)",
+    "fax": "Fax",
+    "fileType": "Uri ng File",
+    "fileUrl": "URL ng File / Dokumento",
+    "firstName": "Unang Pangalan",
+    "forceHttps": "Pilitin ang HTTPS",
+    "fullName": "Buong Pangalan",
+    "furniture": "Muwebles",
+    "github": "GitHub",
+    "googleDrive": "Google Drive",
+    "gs1DigitalLink": "GS1 Digital Link",
+    "gtin": "GTIN (Global Trade Item Number)",
+    "hidden": "Nakatagong Network",
+    "homePhone": "Telepono sa Bahay",
+    "iban": "IBAN",
+    "idType": "Uri ng ID",
+    "image": "Imahe",
+    "instagram": "Instagram",
+    "inventoryItem": "Imbentaryo ng Aytem",
+    "iosUniversal": "iOS Universal",
+    "issuer": "Tagapag-isyu",
+    "itAsset": "Ari-ariang IT",
+    "label": "Tatak (opsyonal)",
+    "lastName": "Apelyido",
+    "latitude": "Latitud",
+    "linkType": "Uri ng Link",
+    "linkedin": "LinkedIn",
+    "litecoin": "Litecoin",
+    "location": "Lokasyon",
+    "locationNetwork": "Lokasyon at Network",
+    "longitude": "Longitud",
+    "lookupUrl": "URL ng Paghahanap (opsyonal)",
+    "marketing": "Pagmemerkado",
+    "marketingTags": "Mga Tag sa Marketing",
+    "maxLengthGuard": "Pinakamataas na Haba ng Proteksyon",
+    "mecard": "Kontak sa MeCard",
+    "merchantName": "Pangalan ng Mangangalakal (opsyonal)",
+    "message": "Mensahe",
+    "messageOptional": "Mensahe (opsyonal)",
+    "messagingLink": "WhatsApp / Telegram / Signal",
+    "messenger": "Sugo",
+    "mobileNumber": "Numero ng Mobile",
+    "mobilePhone": "Teleponong Selpon",
+    "name": "Pangalan",
+    "nationalIdTaxId": "Pambansang ID / ID sa Buwis",
+    "nickname": "Palayaw",
+    "normalizeNewlines": "Gawing Normal ang mga Bagong Linya",
+    "note": "Tala",
+    "oneDrive": "OneDrive",
+    "openNoPassword": "Buksan (Walang Password)",
+    "organization": "Organisasyon",
+    "other": "Iba Pa",
+    "otpAuth": "OTP Authenticator",
+    "otpType": "Uri",
+    "password": "Password",
+    "payeeName": "Pangalan ng Tatanggap",
+    "payments": "Mga Pagbabayad (Bukas na mga Espesipikasyon)",
+    "paynow": "Magbayad Ngayon (Singapore)",
+    "phone": "Telepono",
+    "phoneUsername": "Telepono/Pangalan ng Gumagamit",
+    "pix": "PIX (Brazil)",
+    "pixKey": "Susi ng PIX",
+    "plainText": "Plain Text",
+    "platform": "Plataporma",
+    "prefilledMessage": "Paunang Napunang Mensahe (opsyonal)",
+    "profileUrl": "URL ng Profile",
+    "promptPayId": "PromptPay ID",
+    "promptpay": "PromptPay (Thailand)",
+    "proxyType": "Uri ng Proxy",
+    "rawData": "Hilaw na Datos",
+    "recipient": "Tatanggap",
+    "reference": "Sanggunian",
+    "referenceOptional": "Sanggunian (opsyonal)",
+    "resolverDomain": "Domain ng Tagalutas",
+    "rsvpUrl": "RSVP URL",
+    "searchQuery": "Paghahanap (opsyonal)",
+    "seat": "Uupuan",
+    "secretBase32": "Lihim (Base32)",
+    "sectionZone": "Seksyon/Sona",
+    "securityType": "Uri ng Seguridad",
+    "serialNumber": "Serial Number (opsyonal)",
+    "service": "Serbisyo",
+    "shortLink": "Pag-redirect ng Maikling Link",
+    "shortUrl": "Maikling URL",
+    "signal": "Senyas",
+    "sms": "SMS",
+    "smsMms": "SMS/MMS",
+    "socialMessaging": "Sosyal at Pagmemensahe",
+    "socialProfile": "Profile sa Lipunan",
+    "ssid": "Pangalan ng Network (SSID)",
+    "start": "Simulan",
+    "startDate": "Petsa ng Pagsisimula",
+    "state": "Estado/Lalawigan",
+    "street": "Kalye",
+    "subject": "Paksa",
+    "subjectOptional": "Paksa (opsyonal)",
+    "summary": "Pamagat ng Kaganapan",
+    "tel": "Numero ng Telepono",
+    "telegram": "Telegrama",
+    "text": "Nilalaman ng Teksto",
+    "ticketId": "ID ng Tiket",
+    "tiktok": "TikTok",
+    "transactionNote": "Tala ng Transaksyon (opsyonal)",
+    "trimWhitespace": "Putlatin ang Puting Espasyo",
+    "uenMobile": "UEN/Numero ng Mobile",
+    "universalLink": "Pangkalahatang Ugnayan",
+    "upi": "UPI (India)",
+    "upiId": "UPI ID (VPA)",
+    "url": "URL",
+    "utmCampaign": "utm_campaign",
+    "utmContent": "utm_content",
+    "utmLink": "Link ng Kampanya ng UTM",
+    "utmMedium": "utm_medium",
+    "utmSource": "utm_source",
+    "utmTerm": "utm_term",
+    "validateInput": "Patunayan ang Input",
+    "validationOptions": "Mga Opsyon sa Pagpapatunay",
+    "validationUrl": "URL ng Pagpapatunay (opsyonal)",
+    "vehicle": "Sasakyan",
+    "venue": "Lugar",
+    "viber": "Viber",
+    "video": "Bidyo",
+    "website": "Website",
+    "whatsapp": "WhatsApp",
+    "wifi": "Wi-Fi",
+    "wordDocument": "Dokumento ng Salita",
+    "workPhone": "Telepono sa Trabaho",
+    "youtube": "YouTube",
+    "zip": "ZIP/Postal Code",
     "pdfDocument": "Dokumentong PDF",
     "uenBusiness": "UEN (Negosyo)",
     "ewalletId": "ID ng E-Wallet",
