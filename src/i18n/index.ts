@@ -59,7 +59,6 @@ export const languages = [
   { code: 'nl-NL', name: 'Dutch', nativeName: 'Nederlands', flag: '🇳🇱', rtl: false },
   { code: 'no-NO', name: 'Norwegian', nativeName: 'Norsk', flag: '🇳🇴', rtl: false },
   { code: 'pl-PL', name: 'Polish', nativeName: 'Polski', flag: '🇵🇱', rtl: false },
-  { code: 'rm', name: 'Romansh', nativeName: 'Rumantsch', flag: '🇨🇭', rtl: false },
   { code: 'ro', name: 'Romanian', nativeName: 'Română', flag: '🇷🇴', rtl: false },
   { code: 'sv-SE', name: 'Swedish', nativeName: 'Svenska', flag: '🇸🇪', rtl: false },
   { code: 'zu', name: 'Zulu', nativeName: 'isiZulu', flag: '🇿🇦', rtl: false },
