@@ -1669,7 +1669,7 @@ export class QRGenerator {
 
     // Use the new generateBlueNoiseDithered function that follows
     // the same pattern as generateDitheredMatrix (preserves QR data points)
-    const blueNoiseResult = generateBlueNoiseDithered({
+    const blueNoiseResult = await generateBlueNoiseDithered({
       text: config.content,
       ecc: config.errorCorrection,
       version: config.typeNumber || 0,
@@ -1677,6 +1677,7 @@ export class QRGenerator {
       overlayCanvas,
       overlayIntensity: config.overlayIntensity,
       colorMode: config.colorMode || "color",
+      canvasFactory: this._canvasFactory,
     });
 
     const { matrix: dithered, colors } = blueNoiseResult;

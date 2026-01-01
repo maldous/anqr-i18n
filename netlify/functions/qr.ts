@@ -995,8 +995,8 @@ export default async (request: Request) => {
   const maxOverlayIntensityQ = parseInt(params.get('maxIntQ') || params.get('maxOverlayIntensityQ') || '100', 10)
   const maxOverlayIntensityH = parseInt(params.get('maxIntH') || params.get('maxOverlayIntensityH') || '100', 10)
   
-  // Output format
-  const outputFormat = (params.get('format') || 'png') as OutputFormat
+  // Output format (may be overridden if overlay is animated GIF)
+  let outputFormat = (params.get('format') || 'png') as OutputFormat
   const outputQuality = Math.max(0, Math.min(1, parseFloat(params.get('quality') || '0.9')))
   const outputDpi = Math.max(1, Math.min(1200, parseInt(params.get('dpi') || '72', 10)))
   
@@ -1153,8 +1153,9 @@ export default async (request: Request) => {
       if (fetchedImage) {
         overlayCanvas = fetchedImage.canvas
         
-        // Check if it's an animated GIF and we're outputting GIF format
-        if (fetchedImage.isAnimatedGif && outputFormat === 'gif') {
+        // Auto-detect animated GIF overlay and switch output format to GIF
+        if (fetchedImage.isAnimatedGif) {
+          outputFormat = 'gif'
           hasAnimatedOverlay = true
           overlayFrames = parseGifFramesServer(fetchedImage.arrayBuffer)
         }

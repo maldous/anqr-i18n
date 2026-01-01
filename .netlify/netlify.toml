@@ -34,6 +34,18 @@ node_bundler = "esbuild"
 from = "/api/qr"
 to = "/.netlify/functions/qr"
 status = 200.0
+force = true
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/api/qr"
+to = "/.netlify/functions/qr"
+status = 200.0
 force = false
 
 [redirects.query]

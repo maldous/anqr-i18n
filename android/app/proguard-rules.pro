@@ -19,6 +19,10 @@
 -keep class link.anqr.app.** { *; }
 -dontwarn com.getcapacitor.**
 
+# Capacitor Community Plugins (including AdMob)
+-keep class com.getcapacitor.community.** { *; }
+-dontwarn com.getcapacitor.community.**
+
 # ============================================
 # Google Mobile Ads (AdMob)
 # ============================================

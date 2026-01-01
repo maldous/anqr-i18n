@@ -74,6 +74,26 @@ const BLUE_NOISE_64: number[] = generateBlueNoiseTile();
 
 export type ColorMode = "color" | "grayscale" | "bw";
 
+/**
+ * Canvas factory interface for environment-agnostic canvas creation.
+ * Allows blue-noise dithering to work in both browser and Node.js.
+ */
+export interface CanvasFactory {
+  createCanvas: (width: number, height: number) => Promise<HTMLCanvasElement | any>;
+}
+
+/**
+ * Default browser canvas factory using DOM APIs
+ */
+export const defaultBrowserCanvasFactory: CanvasFactory = {
+  createCanvas: (width: number, height: number) => {
+    const canvas = document.createElement('canvas');
+    canvas.width = width;
+    canvas.height = height;
+    return Promise.resolve(canvas);
+  },
+};
+
 export interface BlueNoiseOptions {
   text: string;
   ecc: string;
@@ -82,6 +102,7 @@ export interface BlueNoiseOptions {
   overlayCanvas?: HTMLCanvasElement;
   overlayIntensity?: number;
   colorMode?: ColorMode;
+  canvasFactory?: CanvasFactory;
 }
 
 export interface RGB {
@@ -196,14 +217,14 @@ function isData(x: number, y: number, scale: number): boolean {
 
 /**
  * Load image data from canvas as RGB values (0-1 range)
+ * Async to support both browser and server-side canvas factories
  */
-function loadImageDataRGB(
+async function loadImageDataRGB(
   canvas: HTMLCanvasElement,
   size: number,
-): { r: number; g: number; b: number }[][] {
-  const tempCanvas = document.createElement("canvas");
-  tempCanvas.width = size;
-  tempCanvas.height = size;
+  canvasFactory: CanvasFactory = defaultBrowserCanvasFactory,
+): Promise<{ r: number; g: number; b: number }[][]> {
+  const tempCanvas = await canvasFactory.createCanvas(size, size);
   const ctx = tempCanvas.getContext("2d")!;
 
   ctx.drawImage(canvas, 0, 0, size, size);
@@ -316,9 +337,9 @@ function blueNoiseDitherFreePoints(
  * @param options - Generation options
  * @returns Object containing boolean matrix and RGB color data for each pixel
  */
-export function generateBlueNoiseDithered(
+export async function generateBlueNoiseDithered(
   options: BlueNoiseOptions,
-): BlueNoiseResult {
+): Promise<BlueNoiseResult> {
   const {
     text,
     ecc,
@@ -327,6 +348,7 @@ export function generateBlueNoiseDithered(
     overlayCanvas,
     overlayIntensity = 50,
     colorMode = "color",
+    canvasFactory = defaultBrowserCanvasFactory,
   } = options;
 
   // Map error correction level
@@ -366,7 +388,7 @@ export function generateBlueNoiseDithered(
   }
 
   // Load and process overlay image as RGB
-  const imageData = loadImageDataRGB(overlayCanvas, scaledSize);
+  const imageData = await loadImageDataRGB(overlayCanvas, scaledSize, canvasFactory);
   const intensity = overlayIntensity / 100;
 
   // Convert to grayscale first if needed
