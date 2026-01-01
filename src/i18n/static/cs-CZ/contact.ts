@@ -2,66 +2,66 @@ import type { PageDefinition } from '../types'
 import { LAST_UPDATED, CONTACT_EMAIL } from '../types'
 
 export const contact: PageDefinition = {
-  title: 'Contact Us',
-  description: 'We welcome feedback, bug reports, feature requests, and general enquiries.',
+  title: 'Kontaktujte nás',
+  description: 'Vítáme zpětnou vazbu, hlášení chyb, požadavky na nové funkce a obecné dotazy.',
   lastUpdated: LAST_UPDATED,
   sections: [
     {
-      heading: 'How to reach us',
+      heading: 'Jak se k nám dostat',
       paragraphs: [
-        'We offer several ways to contact us depending on your needs. We read every message, though response times may vary based on volume and enquiry type.',
+        'V závislosti na vašich potřebách nabízíme několik způsobů, jak nás kontaktovat. Čteme každou zprávu, i když doba odezvy se může lišit v závislosti na objemu a typu dotazu.',
       ],
     },
     {
-      heading: 'Email',
+      heading: 'E-mail',
       paragraphs: [
-        'For all enquiries: ${CONTACT_EMAIL}',
-        'This is the most reliable way to reach us and is recommended for detailed questions, business enquiries, or any other enquiries.',
+        'Všechny dotazy: ${CONTACT_EMAIL}',
+        'Toto je nejspolehlivější způsob, jak nás kontaktovat, a doporučujeme ho pro podrobné dotazy, obchodní dotazy nebo jakékoli jiné dotazy.',
       ],
     },
     {
-      heading: 'Types of enquiries',
+      heading: 'Typy dotazů',
       bullets: [
-        'General questions: Questions about how to use ANQR, feature explanations, or general feedback.',
-        'Bug reports: Please include your browser, operating system, steps to reproduce, and any error messages you see.',
-        'Feature requests: Suggestions for new features or improvements. We consider all requests though we cannot promise implementation.',
-        'Business enquiries: Partnership opportunities, licensing questions, or commercial use enquiries.',
-        'Privacy requests: Requests to exercise your privacy rights under GDPR, CCPA, or other privacy laws (see Privacy Policy).',
-        'DMCA/Copyright: See the DMCA section below for takedown notice requirements.',
+        'Obecné otázky: Otázky ohledně používání ANQR, vysvětlení funkcí nebo obecná zpětná vazba.',
+        'Hlášení chyb: Uveďte prosím váš prohlížeč, operační systém, kroky k reprodukci a všechny chybové zprávy, které se vám zobrazují.',
+        'Požadavky na nové funkce: Návrhy na nové funkce nebo vylepšení. Všechny požadavky zvažujeme, i když nemůžeme slíbit jejich implementaci.',
+        'Obchodní dotazy: Možnosti partnerství, dotazy ohledně licencí nebo dotazy ohledně komerčního využití.',
+        'Žádosti o ochranu soukromí: Žádosti o uplatnění vašich práv na ochranu soukromí podle GDPR, CCPA nebo jiných zákonů o ochraně soukromí (viz Zásady ochrany osobních údajů).',
+        'DMCA/Autorská práva: Požadavky na oznámení o odstranění obsahu naleznete v části DMCA níže.',
       ],
     },
     {
-      heading: 'Response times',
+      heading: 'Doby odezvy',
       paragraphs: [
-        'We aim to respond to enquiries within 5-7 business days. Privacy-related requests will be addressed within 30 days as required by law.',
-        'During busy periods, response times may be longer. For urgent matters, please indicate "URGENT" in your subject line.',
+        'Snažíme se reagovat na dotazy do 5–7 pracovních dnů. Žádosti týkající se ochrany osobních údajů budou vyřízeny do 30 dnů, jak to vyžaduje zákon.',
+        'Během vytížených období může být doba odezvy delší. V případě naléhavých záležitostí uveďte prosím do předmětu zprávy URGENT.',
       ],
     },
     {
-      heading: 'Before contacting us',
+      heading: 'Než nás kontaktujete',
       paragraphs: [
-        'Please check our Documentation page for answers to common questions about how to use ANQR features. Many questions about QR code generation, styling, and export options are covered there.',
+        'Prosím, podívejte se na naši stránku s dokumentací, kde najdete odpovědi na časté otázky týkající se používání funkcí ANQR. Najdete tam mnoho otázek týkajících se generování, stylování a možností exportu QR kódů.',
       ],
     },
     {
-      heading: 'DMCA Copyright Notices',
+      heading: 'Oznámení o autorských právech DMCA',
       paragraphs: [
-        'If you believe that content available on ANQR infringes your copyright, you may submit a Digital Millennium Copyright Act (DMCA) takedown notice. To be valid, your notice must include:',
+        'Pokud se domníváte, že obsah dostupný na ANQR porušuje vaše autorská práva, můžete podat oznámení o odstranění obsahu podle zákona Digital Millennium Copyright Act (DMCA). Aby bylo vaše oznámení platné, musí obsahovat:',
       ],
       bullets: [
-        'A physical or electronic signature of the copyright owner or authorised agent.',
-        'Identification of the copyrighted work claimed to have been infringed.',
-        'Identification of the material that is claimed to be infringing, with information sufficient to locate it.',
-        'Your contact information (address, telephone number, and email address).',
-        'A statement that you have a good faith belief that use of the material is not authorised by the copyright owner.',
-        'A statement, under penalty of perjury, that the information in your notice is accurate and that you are the copyright owner or authorised to act on their behalf.',
+        'Fyzický nebo elektronický podpis vlastníka autorských práv nebo jeho oprávněného zástupce.',
+        'Identifikace díla chráněného autorským právem, u kterého bylo údajně porušeno jeho autorské právo.',
+        'Identifikace materiálu, o kterém se tvrdí, že porušuje autorská práva, s informacemi dostatečnými k jeho nalezení.',
+        'Vaše kontaktní informace (adresa, telefonní číslo a e-mailová adresa).',
+        'Prohlášení, že se v dobré víře domníváte, že použití materiálu není autorizováno vlastníkem autorských práv.',
+        'Prohlášení pod trestem křivé přísahy, že informace ve vašem oznámení jsou přesné a že jste vlastníkem autorských práv nebo jste oprávněni jednat jeho jménem.',
       ],
     },
     {
-      heading: 'DMCA Contact',
+      heading: 'Kontakt DMCA',
       paragraphs: [
-        'Send DMCA notices to: ${CONTACT_EMAIL}',
-        'Please include "DMCA Notice" in the subject line. We will respond to valid notices in accordance with applicable law. Note that ANQR generates QR codes locally on users devices and does not host user-generated content.',
+        'Zasílejte oznámení DMCA na adresu: ${CONTACT_EMAIL}',
+        'Do předmětu uveďte Oznámení DMCA. Na platná oznámení budeme reagovat v souladu s platnými zákony. Upozorňujeme, že ANQR generuje QR kódy lokálně na zařízeních uživatelů a nehostuje obsah generovaný uživateli.',
       ],
     },
   ],

@@ -2,143 +2,143 @@ import type { PageDefinition } from '../types'
 import { LAST_UPDATED, CONTACT_EMAIL } from '../types'
 
 export const terms: PageDefinition = {
-  title: 'Terms of Service',
-  description: 'By accessing or using the site, you agree to be bound by these terms.',
+  title: '"ဝန်ဆောင်မှုဆိုင်ရာ စည်းကမ်းချက်များ”',
+  description: '"ဆိုက်ကို ဝင်ရောက်ခြင်း သို့မဟုတ် အသုံးပြုခြင်းဖြင့် ဤစည်းကမ်းချက်များကို လိုက်နာရန် သင်သဘောတူပါသည်။”',
   lastUpdated: LAST_UPDATED,
   sections: [
     {
-      heading: 'Acceptance of terms',
+      heading: '"စည်းကမ်းချက်များကို လက်ခံခြင်း”',
       paragraphs: [
-        'By accessing or using ANQR (anqr.link), you agree to be bound by these Terms of Service and our Privacy Policy. If you do not agree to these terms, do not use the site.',
-        'We may update these Terms from time to time. Continued use of the site after changes constitutes acceptance of the new terms.',
+        '"ANQR (anqr.link) ကို ဝင်ရောက်ကြည့်ရှုခြင်း သို့မဟုတ် အသုံးပြုခြင်းဖြင့်၊ ဤဝန်ဆောင်မှုစည်းမျဉ်းများနှင့် ကျွန်ုပ်တို့၏ ကိုယ်ရေးကိုယ်တာမူဝါဒကို လိုက်နာရန် သင်သဘောတူပါသည်။ ဤစည်းကမ်းချက်များကို သင်သဘောမတူပါက ဆိုက်ကို မသုံးပါနှင့်။”',
+        '"ကျွန်ုပ်တို့သည် ဤစည်းကမ်းချက်များကို အခါအားလျော်စွာ အပ်ဒိတ်လုပ်နိုင်ပါသည်။ ပြောင်းလဲမှုများပြုလုပ်ပြီးနောက် ဆိုက်ကို ဆက်လက်အသုံးပြုခြင်းသည် စည်းကမ်းချက်အသစ်များကို လက်ခံခြင်းဖြစ်ပါသည်။”',
       ],
     },
     {
-      heading: 'Eligibility',
+      heading: '"အရည်အချင်းပြည့်မီမှု”',
       paragraphs: [
-        'You must be at least 13 years of age to use ANQR. By using the site, you represent that you meet this age requirement. If you are under 18, you represent that you have your parent or guardian\'s permission to use the site.',
+        '"ANQR ကိုအသုံးပြုရန် အနည်းဆုံး အသက် ၁၃ နှစ်ရှိရမည်။ ဆိုက်ကိုအသုံးပြုခြင်းဖြင့် သင်သည် ဤအသက်လိုအပ်ချက်နှင့် ကိုက်ညီကြောင်း ကိုယ်စားပြုပါသည်။ သင်သည် အသက် ၁၈ နှစ်အောက်ဖြစ်ပါက ဆိုက်ကိုအသုံးပြုရန် သင့်မိဘ သို့မဟုတ် အုပ်ထိန်းသူ၏ခွင့်ပြုချက်ရရှိထားကြောင်း ကိုယ်စားပြုပါသည်။”',
       ],
     },
     {
-      heading: 'Permitted use',
+      heading: '"ခွင့်ပြုထားသော အသုံးပြုခွင့်”',
       paragraphs: [
-        'You may use ANQR for lawful purposes only. You are solely responsible for the content you encode into QR codes and for how you use any QR codes you generate.',
+        '"သင်သည် ANQR ကို တရားဝင်ရည်ရွယ်ချက်များအတွက်သာ အသုံးပြုနိုင်သည်။ QR ကုဒ်များအဖြစ် သင် encode လုပ်ထားသော အကြောင်းအရာနှင့် သင်ထုတ်လုပ်သော မည်သည့် QR ကုဒ်များကိုမဆို မည်သို့အသုံးပြုသည်အတွက် သင်တစ်ဦးတည်းသာ တာဝန်ရှိပါသည်။”',
       ],
     },
     {
-      heading: 'Prohibited conduct',
+      heading: '"တားမြစ်ထားသော အပြုအမူ”',
       paragraphs: [
-        'You agree not to:',
+        '"သင်က မလုပ်ဖို့ သဘောတူတယ်”',
       ],
       bullets: [
-        'Use ANQR to create QR codes that facilitate phishing, malware distribution, fraud, scams, harassment, defamation, or any illegal activity.',
-        'Encode content that infringes intellectual property rights, violates privacy, or contains illegal material.',
-        'Attempt to disrupt, overload, or interfere with the operation or security of the site.',
-        'Reverse engineer, decompile, or attempt to extract source code from the site.',
-        'Use automated tools (bots, scrapers) to access the site in a manner that degrades performance for other users.',
-        'Circumvent or disable any security or access control features.',
-        'Impersonate any person or entity or misrepresent your affiliation.',
+        '"phishing၊ malware ဖြန့်ဖြူးမှု၊ လိမ်လည်မှု၊ လိမ်လည်မှုများ၊ နှောင့်ယှက်မှု၊ အသရေဖျက်မှု သို့မဟုတ် မည်သည့်တရားမဝင်လုပ်ဆောင်မှုကိုမဆို အထောက်အကူပြုသည့် QR ကုဒ်များဖန်တီးရန် ANQR ကို အသုံးပြုပါ။”',
+        '"ဉာဏပစ္စည်းမူပိုင်ခွင့်များကို ချိုးဖောက်သော၊ လျှို့ဝှက်ရေးကို ချိုးဖောက်သော သို့မဟုတ် တရားမဝင်ပစ္စည်းများပါဝင်သည့် အကြောင်းအရာကို ကုဒ်ဝှက်ခြင်း။”',
+        '"နေရာ၏ လုပ်ငန်းလည်ပတ်မှု သို့မဟုတ် လုံခြုံရေးကို နှောင့်ယှက်ရန်၊ အလွန်အကျွံ ဝန်ပိစေရန် သို့မဟုတ် ဝင်ရောက်စွက်ဖက်ရန် ကြိုးပမ်းမှု”',
+        '"ဆိုက်မှ source code ကို ပြောင်းပြန်အင်ဂျင်နီယာလုပ်ခြင်း၊ decompile လုပ်ခြင်း သို့မဟုတ် ထုတ်ယူရန်ကြိုးစားခြင်း။”',
+        '"အခြားအသုံးပြုသူများအတွက် စွမ်းဆောင်ရည်ကို ကျဆင်းစေသည့် နည်းလမ်းဖြင့် ဆိုက်သို့ ဝင်ရောက်ရန် အလိုအလျောက်ကိရိယာများ (bot များ၊ scrapers) ကို အသုံးပြုပါ။”',
+        '"လုံခြုံရေး သို့မဟုတ် ဝင်ရောက်ခွင့်ထိန်းချုပ်မှု အင်္ဂါရပ်များကို ရှောင်ကွင်းပါ သို့မဟုတ် ပိတ်ပါ။”',
+        '"မည်သည့်ပုဂ္ဂိုလ် သို့မဟုတ် အဖွဲ့အစည်းကိုမျှ အယောင်ဆောင်ခြင်း သို့မဟုတ် သင်၏ဆက်နွယ်မှုကို မှားယွင်းစွာဖော်ပြခြင်း။”',
       ],
     },
     {
-      heading: 'Intellectual property',
+      heading: '"ဉာဏပစ္စည်းဆိုင်ရာပိုင်ဆိုင်မှု”',
       paragraphs: [
-        'You retain ownership of the content you encode into QR codes. ANQR does not claim ownership of your data.',
-        'The ANQR name, logo, interface design, and underlying code are protected by copyright, trademark, and other intellectual property laws. You may not copy, modify, distribute, or create derivative works without our permission.',
-        'QR Code® is a registered trademark of DENSO WAVE INCORPORATED. ANQR is not affiliated with DENSO WAVE.',
+        '"QR ကုဒ်များအဖြစ် သင် encode လုပ်ထားသော အကြောင်းအရာ၏ ပိုင်ဆိုင်မှုကို သင်ထိန်းသိမ်းထားသည်။ ANQR သည် သင့်ဒေတာ၏ ပိုင်ဆိုင်မှုကို မတောင်းဆိုပါ။”',
+        '"ANQR အမည်၊ လိုဂို၊ အင်တာဖေ့စ်ဒီဇိုင်းနှင့် အခြေခံကုဒ်များကို မူပိုင်ခွင့်၊ ကုန်အမှတ်တံဆိပ်နှင့် အခြားဉာဏပစ္စည်းဆိုင်ရာပိုင်ဆိုင်မှုဥပဒေများဖြင့် ကာကွယ်ထားသည်။ ကျွန်ုပ်တို့၏ခွင့်ပြုချက်မရှိဘဲ သင်သည် မိတ္တူကူးခြင်း၊ ပြုပြင်ခြင်း၊ ဖြန့်ဝေခြင်း သို့မဟုတ် ဆင်းသက်လာသောလက်ရာများကို ဖန်တီးခြင်းမပြုရ။”',
+        '"QR Code® သည် DENSO WAVE INCORPORATED ၏ မှတ်ပုံတင်ထားသော ကုန်အမှတ်တံဆိပ်တစ်ခုဖြစ်သည်။ ANQR သည် DENSO WAVE နှင့် မသက်ဆိုင်ပါ။”',
       ],
     },
     {
-      heading: 'User content license',
+      heading: '"အသုံးပြုသူအကြောင်းအရာလိုင်စင်”',
       paragraphs: [
-        'By using ANQR, you grant us no rights to your content. When using local generation (the default), all QR code generation happens in your browser and we do not access, store, or transmit your encoded data.',
-        'When using the server-side API, your content is processed to generate the QR image but is not stored, logged, or used for any other purpose beyond rendering the requested image.',
+        '"ANQR ကိုအသုံးပြုခြင်းအားဖြင့်၊ သင့်အကြောင်းအရာအတွက် ကျွန်ုပ်တို့အား မည်သည့်အခွင့်အရေးမျှ မပေးပါ။ ဒေသတွင်းထုတ်လုပ်မှု (ပုံသေ) ကိုအသုံးပြုသည့်အခါ၊ QR ကုဒ်ထုတ်လုပ်မှုအားလုံးသည် သင့်ဘရောက်ဆာတွင် ဖြစ်ပေါ်ပြီး ကျွန်ုပ်တို့သည် သင်၏ကုဒ်ဝှက်ထားသောဒေတာကို ဝင်ရောက်ကြည့်ရှုခြင်း၊ သိမ်းဆည်းခြင်း သို့မဟုတ် ပေးပို့ခြင်းမပြုပါ။”',
+        '"ဆာဗာဘက် API ကိုအသုံးပြုသည့်အခါ သင့်အကြောင်းအရာကို QR ရုပ်ပုံထုတ်လုပ်ရန် လုပ်ဆောင်သော်လည်း တောင်းဆိုထားသော ရုပ်ပုံကို ပြသခြင်းမှလွဲ၍ အခြားရည်ရွယ်ချက်အတွက် သိမ်းဆည်းခြင်း၊ မှတ်တမ်းတင်ခြင်း သို့မဟုတ် အသုံးမပြုပါ။”',
       ],
     },
     {
-      heading: 'Third-party services and advertising',
+      heading: '"ပြင်ပဝန်ဆောင်မှုများနှင့် ကြော်ငြာများ”',
       paragraphs: [
-        'The site displays advertisements through Google AdSense and may include links to third-party websites. We are not responsible for third-party content, services, or privacy practices.',
-        'Your interactions with advertisers and third parties are solely between you and them. See our Privacy Policy for information about advertising data practices.',
+        '"ဆိုက်သည် Google AdSense မှတစ်ဆင့် ကြော်ငြာများကို ပြသပြီး ပြင်ပဝဘ်ဆိုက်များသို့ လင့်ခ်များ ပါဝင်နိုင်သည်။ ပြင်ပအကြောင်းအရာ၊ ဝန်ဆောင်မှု သို့မဟုတ် ကိုယ်ရေးကိုယ်တာလုပ်ဆောင်မှုများအတွက် ကျွန်ုပ်တို့ တာဝန်မရှိပါ။”',
+        '"ကြော်ငြာရှင်များနှင့် ပြင်ပအဖွဲ့အစည်းများနှင့် သင်၏ အပြန်အလှန်ဆက်သွယ်မှုများသည် သင်နှင့် ၎င်းတို့အကြားတွင်သာ ရှိသည်။ ကြော်ငြာဒေတာလုပ်ဆောင်မှုများအကြောင်း အချက်အလက်များအတွက် ကျွန်ုပ်တို့၏ ကိုယ်ရေးကိုယ်တာမူဝါဒကို ကြည့်ပါ။”',
       ],
     },
     {
-      heading: 'Disclaimer of warranties',
+      heading: '"အာမခံချက်များ၏ ငြင်းဆိုချက်”',
       paragraphs: [
-        'ANQR IS PROVIDED ON AN "AS IS" AND "AS AVAILABLE" BASIS WITHOUT WARRANTIES OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, AND NON-INFRINGEMENT.',
-        'We do not warrant that: (a) the site will be uninterrupted, secure, or error-free; (b) QR codes will scan in all environments, on all devices, or with all scanner applications; (c) the site will meet your requirements.',
-        'You should always test QR codes in the conditions where they will be used (print size, lighting, screen type, distance, camera quality).',
+        '"ANQR ကို မည်သည့်အာမခံချက်မျှမပါဘဲ "ရှိရင်းစွဲအတိုင်း" နှင့် "ရရှိနိုင်သည့်အတိုင်း" အခြေခံဖြင့် ပေးအပ်ထားပြီး၊ ကုန်သွယ်မှုပြုလုပ်နိုင်ခြင်း၊ သီးခြားရည်ရွယ်ချက်အတွက် သင့်လျော်ခြင်းနှင့် ချိုးဖောက်မှုမရှိကြောင်း သွယ်ဝိုက်သောအာမခံချက်များ အပါအဝင် သို့သော် ၎င်းတို့နှင့်သာ ကန့်သတ်မထားပါ။”',
+        '"ကျွန်ုပ်တို့ အာမမခံပါ- (က) ဆိုက်သည် အနှောင့်အယှက်ကင်းရှင်းပြီး လုံခြုံစိတ်ချရသည် သို့မဟုတ် အမှားအယွင်းကင်းရှင်းမည်၊ (ခ) QR ကုဒ်များသည် ပတ်ဝန်းကျင်အားလုံး၊ စက်ပစ္စည်းအားလုံးတွင် သို့မဟုတ် စကင်နာအပလီကေးရှင်းအားလုံးဖြင့် စကင်ဖတ်မည်၊ (ဂ) ဆိုက်သည် သင့်လိုအပ်ချက်များကို ဖြည့်ဆည်းပေးမည်ဖြစ်သည်။”',
+        '"QR ကုဒ်များကို အသုံးပြုမည့် အခြေအနေများတွင် (ပုံနှိပ်အရွယ်အစား၊ အလင်းရောင်၊ မျက်နှာပြင်အမျိုးအစား၊ အကွာအဝေး၊ ကင်မရာအရည်အသွေး) အမြဲစမ်းသပ်သင့်သည်။”',
       ],
     },
     {
-      heading: 'Limitation of liability',
+      heading: '"တာဝန်ယူမှုကန့်သတ်ချက်”',
       paragraphs: [
-        'TO THE MAXIMUM EXTENT PERMITTED BY LAW, ANQR AND ITS OPERATORS, AFFILIATES, AND LICENSORS SHALL NOT BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, CONSEQUENTIAL, PUNITIVE, OR EXEMPLARY DAMAGES, INCLUDING BUT NOT LIMITED TO DAMAGES FOR LOSS OF PROFITS, REVENUE, DATA, GOODWILL, USE, OR OTHER INTANGIBLE LOSSES, ARISING FROM OR RELATED TO YOUR ACCESS TO OR USE OF (OR INABILITY TO ACCESS OR USE) THE SERVICE.',
-        'YOU EXPRESSLY UNDERSTAND AND AGREE THAT YOUR USE OF THE SERVICE IS AT YOUR SOLE RISK. THE SERVICE IS PROVIDED FREE OF CHARGE, AND ACCORDINGLY, YOU AGREE THAT ANQR AND ITS OPERATORS SHALL HAVE NO LIABILITY TO YOU WHATSOEVER FOR ANY DAMAGES OR LOSSES. IN NO EVENT SHALL OUR TOTAL AGGREGATE LIABILITY EXCEED ZERO DOLLARS ($0 AUD).',
-        'YOU AGREE TO RELEASE, WAIVE, AND DISCHARGE ANY AND ALL CLAIMS, DEMANDS, AND CAUSES OF ACTION AGAINST ANQR AND ITS OPERATORS ARISING FROM YOUR USE OF THE SERVICE.',
-        'SOME JURISDICTIONS DO NOT ALLOW THE EXCLUSION OF CERTAIN WARRANTIES OR LIMITATIONS OF LIABILITY. IN SUCH JURISDICTIONS, OUR LIABILITY SHALL BE LIMITED TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW.',
+        '"ဥပဒေအရ ခွင့်ပြုထားသည့် အများဆုံးအတိုင်းအတာအထိ၊ ANQR နှင့် ၎င်း၏ အော်ပရေတာများ၊ တွဲဖက်ကုမ္ပဏီများနှင့် လိုင်စင်ရရှိသူများသည် ဝန်ဆောင်မှုကို သင်ဝင်ရောက်အသုံးပြုခြင်း (သို့မဟုတ် ဝင်ရောက်အသုံးပြုခြင်း သို့မဟုတ် အသုံးမပြုနိုင်ခြင်း) မှ ပေါ်ပေါက်လာသော သို့မဟုတ် ဆက်စပ်၍ ဖြစ်ပေါ်လာသော အမြတ်အစွန်း၊ ဝင်ငွေ၊ ဒေတာ၊ ကောင်းမွန်သောဆန္ဒ၊ အသုံးပြုမှု သို့မဟုတ် အခြားမမြင်နိုင်သော ဆုံးရှုံးမှုများအတွက် မည်သည့်တိုက်ရိုက်၊ သွယ်ဝိုက်၊ မတော်တဆ၊ အထူး၊ နောက်ဆက်တွဲ၊ ပြစ်ဒဏ် သို့မဟုတ် စံပြပျက်စီးဆုံးရှုံးမှုများအတွက်မျှ တာဝန်ရှိမည်မဟုတ်ပါ။”',
+        '"ဝန်ဆောင်မှုကို သင်အသုံးပြုခြင်းသည် သင့်တစ်ဦးတည်း၏ တာဝန်ဖြစ်ကြောင်း သင်ရှင်းလင်းစွာ နားလည်ပြီး သဘောတူပါသည်။ ဝန်ဆောင်မှုကို အခမဲ့ ပေးအပ်ထားပြီး၊ ထို့ကြောင့် ANQR နှင့် ၎င်း၏ အော်ပရေတာများသည် မည်သည့်ပျက်စီးဆုံးရှုံးမှုအတွက်မျှ သင့်အပေါ် တာဝန်မရှိကြောင်း သင်သဘောတူပါသည်။ မည်သည့်အခြေအနေမျိုးတွင်မဆို ကျွန်ုပ်တို့၏ စုစုပေါင်းတာဝန်ယူမှုသည် သုညဒေါ်လာ ($0 AUD) ထက် မပိုစေရ။”',
+        '"သင်သည် ဝန်ဆောင်မှုကို သင်အသုံးပြုခြင်းမှ ပေါ်ပေါက်လာသော ANQR နှင့် ၎င်း၏အော်ပရေတာများအပေါ် မည်သည့်တောင်းဆိုမှုများ၊ တောင်းဆိုမှုများနှင့် တရားစွဲဆိုမှုအကြောင်းရင်းများကိုမဆို လွှတ်ပေးရန်၊ စွန့်လွှတ်ရန်နှင့် ပယ်ဖျက်ရန် သဘောတူပါသည်။”',
+        '"အချို့သော တရားစီရင်ပိုင်ခွင့်များသည် အချို့သော အာမခံချက်များ သို့မဟုတ် တာဝန်ယူမှု ကန့်သတ်ချက်များကို ချန်လှပ်ထားခြင်းကို ခွင့်မပြုပါ။ ထိုကဲ့သို့သော တရားစီရင်ပိုင်ခွင့်များတွင်၊ ကျွန်ုပ်တို့၏ တာဝန်ယူမှုကို သက်ဆိုင်ရာဥပဒေအရ ခွင့်ပြုထားသော အမြင့်ဆုံးအတိုင်းအတာအထိ ကန့်သတ်ထားရမည်။”',
       ],
     },
     {
-      heading: 'Indemnification',
+      heading: '"လျော်ကြေးပေးခြင်း”',
       paragraphs: [
-        'You agree to indemnify, defend, and hold harmless ANQR, its operators, affiliates, and their respective officers, directors, employees, and agents from any claims, damages, losses, liabilities, costs, and expenses (including legal fees) arising from: (a) your use of the site; (b) your violation of these Terms; (c) your violation of any third-party rights; (d) any content you encode into QR codes.',
+        '"သင်သည် ANQR၊ ၎င်း၏အော်ပရေတာများ၊ တွဲဖက်ကုမ္ပဏီများနှင့် ၎င်းတို့၏ သက်ဆိုင်ရာအရာရှိများ၊ ဒါရိုက်တာများ၊ ဝန်ထမ်းများနှင့် အေးဂျင့်များအား အောက်ပါတို့မှ ပေါ်ပေါက်လာသော မည်သည့်တောင်းဆိုမှုများ၊ ပျက်စီးဆုံးရှုံးမှုများ၊ ဆုံးရှုံးမှုများ၊ တာဝန်ယူမှုများ၊ ကုန်ကျစရိတ်များနှင့် အသုံးစရိတ်များ (ဥပဒေကြေးများအပါအဝင်) မှ လျော်ကြေးပေးရန်၊ ကာကွယ်ရန်နှင့် အန္တရာယ်ကင်းစေရန် သဘောတူပါသည်- (က) ဆိုက်ကို သင်အသုံးပြုခြင်း၊ (ခ) ဤစည်းကမ်းချက်များကို သင်ချိုးဖောက်ခြင်း၊ (ဂ) ပြင်ပအဖွဲ့အစည်း၏ အခွင့်အရေးများကို သင်ချိုးဖောက်ခြင်း၊ (ဃ) QR ကုဒ်များအဖြစ် သင်ကုဒ်သွင်းထားသော မည်သည့်အကြောင်းအရာကိုမဆို။”',
       ],
     },
     {
-      heading: 'Dispute resolution',
+      heading: '"အငြင်းပွားမှုဖြေရှင်းခြင်း”',
       paragraphs: [
-        'Any dispute arising from these Terms or your use of ANQR shall first be attempted to be resolved through informal negotiation by contacting ${CONTACT_EMAIL}.',
-        'If informal resolution fails, disputes shall be resolved through binding arbitration in Victoria, Australia, except that either party may seek injunctive relief in court for intellectual property violations.',
+        '"ဤစည်းကမ်းချက်များ သို့မဟုတ် သင် ANQR အသုံးပြုမှုကြောင့် ပေါ်ပေါက်လာသော မည်သည့်အငြင်းပွားမှုကိုမဆို ${CONTACT_EMAIL} သို့ ဆက်သွယ်ခြင်းဖြင့် အလွတ်သဘောညှိနှိုင်းမှုဖြင့် ဦးစွာဖြေရှင်းရန် ကြိုးစားရမည်။”',
+        '"တရားဝင်မဟုတ်သော ဖြေရှင်းချက် မအောင်မြင်ပါက၊ အငြင်းပွားမှုများကို ဩစတြေးလျနိုင်ငံ၊ ဗစ်တိုးရီးယားပြည်နယ်တွင် စည်းနှောင်ထားသော ခုံသမာဓိဖြင့် ဖြေရှင်းရမည်၊ သို့သော် မည်သည့်ပါတီမဆို ဉာဏပစ္စည်းဆိုင်ရာ မူပိုင်ခွင့်ချိုးဖောက်မှုများအတွက် တရားရုံးတွင် တားမြစ်မိန့်တောင်းခံနိုင်သည်။”',
       ],
     },
     {
-      heading: 'Class action waiver',
+      heading: '"အုပ်စုလိုက်တရားစွဲဆိုမှု စွန့်လွှတ်ခြင်း”',
       paragraphs: [
-        'TO THE EXTENT PERMITTED BY LAW, YOU AGREE THAT ANY DISPUTE RESOLUTION PROCEEDINGS WILL BE CONDUCTED ONLY ON AN INDIVIDUAL BASIS AND NOT IN A CLASS, CONSOLIDATED, OR REPRESENTATIVE ACTION.',
+        '"ဥပဒေအရ ခွင့်ပြုထားသည့်အတိုင်းအတာအထိ၊ မည်သည့်အငြင်းပွားမှုဖြေရှင်းရေးလုပ်ငန်းစဉ်များကိုမဆို တစ်ဦးချင်းအခြေခံဖြင့်သာ ဆောင်ရွက်မည်ဖြစ်ပြီး အုပ်စုလိုက်၊ ပေါင်းစည်းထားသော သို့မဟုတ် ကိုယ်စားပြုတရားစွဲဆိုမှုဖြင့် မဆောင်ရွက်ကြောင်း သင်သဘောတူပါသည်။”',
       ],
     },
     {
-      heading: 'Governing law',
+      heading: '"အုပ်ချုပ်သောဥပဒေ”',
       paragraphs: [
-        'These Terms are governed by the laws of Victoria, Australia, without regard to conflict of laws principles. You consent to the exclusive jurisdiction of the courts located in Victoria, Australia.',
+        '"ဤစည်းကမ်းချက်များကို ဥပဒေပဋိပက္ခမူများနှင့် မသက်ဆိုင်ဘဲ ဩစတြေးလျနိုင်ငံ၊ ဗစ်တိုးရီးယားပြည်နယ်၏ ဥပဒေများဖြင့် အုပ်ချုပ်သည်။ ဩစတြေးလျနိုင်ငံ၊ ဗစ်တိုးရီးယားတွင် တည်ရှိသော တရားရုံးများ၏ သီးသန့်တရားစီရင်ပိုင်ခွင့်ကို သင်သဘောတူသည်။”',
       ],
     },
     {
-      heading: 'Changes and availability',
+      heading: '"ပြောင်းလဲမှုများနှင့် ရရှိနိုင်မှု”',
       paragraphs: [
-        'We may modify, suspend, or discontinue the site (or any part of it) at any time without notice or liability.',
-        'We may update these Terms at any time. The "Last updated" date indicates when they were most recently revised. Continued use after changes constitutes acceptance.',
+        '"ကျွန်ုပ်တို့သည် အသိပေးခြင်း သို့မဟုတ် တာဝန်ယူမှုမရှိဘဲ ဆိုက် (သို့မဟုတ် ၎င်း၏ မည်သည့်အစိတ်အပိုင်းကိုမဆို) ကို အချိန်မရွေး ပြင်ဆင်ခြင်း၊ ဆိုင်းငံ့ခြင်း သို့မဟုတ် ရပ်ဆိုင်းခြင်း ပြုလုပ်နိုင်သည်။”',
+        '"ဤစည်းကမ်းချက်များကို ကျွန်ုပ်တို့ အချိန်မရွေး အပ်ဒိတ်လုပ်နိုင်ပါသည်။ "နောက်ဆုံးအပ်ဒိတ်လုပ်သည့်" ရက်စွဲသည် ၎င်းတို့ကို မကြာသေးမီက ပြင်ဆင်ခဲ့သည့်အချိန်ကို ညွှန်ပြသည်။ ပြောင်းလဲမှုများပြီးနောက် ဆက်လက်အသုံးပြုခြင်းသည် လက်ခံခြင်းအဖြစ် သတ်မှတ်သည်။”',
       ],
     },
     {
-      heading: 'Severability',
+      heading: '"ခွဲထုတ်နိုင်မှု”',
       paragraphs: [
-        'If any provision of these Terms is held invalid or unenforceable, that provision will be enforced to the maximum extent permissible, and the remaining provisions will remain in full force and effect.',
+        '"ဤစည်းကမ်းချက်များ၏ ပြဋ္ဌာန်းချက်တစ်စုံတစ်ရာသည် မမှန်ကန်ပါက သို့မဟုတ် အကျိုးသက်ရောက်မှုမရှိပါက၊ ထိုပြဋ္ဌာန်းချက်ကို ခွင့်ပြုနိုင်သော အများဆုံးအတိုင်းအတာအထိ အကျိုးသက်ရောက်စေမည်ဖြစ်ပြီး၊ ကျန်ရှိသော ပြဋ္ဌာန်းချက်များသည် အပြည့်အဝ အကျိုးသက်ရောက်မှုရှိနေမည်ဖြစ်သည်။”',
       ],
     },
     {
-      heading: 'Waiver',
+      heading: '"စွန့်လွှတ်ခြင်း”',
       paragraphs: [
-        'Our failure to enforce any right or provision of these Terms shall not be deemed a waiver of such right or provision.',
+        '"ဤစည်းကမ်းချက်များ၏ မည်သည့်အခွင့်အရေး သို့မဟုတ် ပြဋ္ဌာန်းချက်ကိုမျှ ကျွန်ုပ်တို့ အကောင်အထည်ဖော်ရန် ပျက်ကွက်ခြင်းကို ထိုအခွင့်အရေး သို့မဟုတ် ပြဋ္ဌာန်းချက်ကို စွန့်လွှတ်ခြင်းဟု မယူဆရ။”',
       ],
     },
     {
-      heading: 'Entire agreement',
+      heading: '"သဘောတူညီချက်တစ်ခုလုံး”',
       paragraphs: [
-        'These Terms, together with our Privacy Policy, constitute the entire agreement between you and ANQR regarding your use of the site and supersede any prior agreements.',
+        '"ဤစည်းကမ်းချက်များသည် ကျွန်ုပ်တို့၏ ကိုယ်ရေးကိုယ်တာမူဝါဒနှင့်အတူ သင်နှင့် ANQR အကြား ဆိုက်အသုံးပြုမှုနှင့်ပတ်သက်၍ သဘောတူညီချက်တစ်ခုလုံးဖြစ်ပြီး ယခင်သဘောတူညီချက်များကို အစားထိုးပါသည်။”',
       ],
     },
     {
-      heading: 'Force majeure',
+      heading: '"မမျှော်လင့်ဘဲ ဖြစ်ပေါ်လာခြင်း”',
       paragraphs: [
-        'We shall not be liable for any failure or delay in performance due to circumstances beyond our reasonable control, including natural disasters, war, terrorism, riots, government actions, or internet/infrastructure failures.',
+        '"သဘာဝဘေးအန္တရာယ်များ၊ စစ်ပွဲ၊ အကြမ်းဖက်မှု၊ အဓိကရုဏ်းများ၊ အစိုးရလုပ်ဆောင်ချက်များ သို့မဟုတ် အင်တာနက်/အခြေခံအဆောက်အအုံ ပျက်ကွက်မှုများ အပါအဝင် ကျွန်ုပ်တို့၏ ကျိုးကြောင်းဆီလျော်သော ထိန်းချုပ်မှုထက်ကျော်လွန်သော အခြေအနေများကြောင့် စွမ်းဆောင်ရည် ပျက်ကွက်ခြင်း သို့မဟုတ် နှောင့်နှေးခြင်းအတွက် ကျွန်ုပ်တို့တွင် တာဝန်မရှိပါ။”',
       ],
     },
     {
-      heading: 'Contact',
+      heading: '"ဆက်သွယ်ရန်”',
       paragraphs: [
-        'Questions about these Terms can be sent to: ${CONTACT_EMAIL}',
+        '"ဤစည်းကမ်းချက်များနှင့်ပတ်သက်၍ မေးခွန်းများကို ${CONTACT_EMAIL} သို့ ပေးပို့နိုင်ပါသည်”',
       ],
     },
   ],

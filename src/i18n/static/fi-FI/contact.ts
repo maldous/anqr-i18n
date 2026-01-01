@@ -2,66 +2,66 @@ import type { PageDefinition } from '../types'
 import { LAST_UPDATED, CONTACT_EMAIL } from '../types'
 
 export const contact: PageDefinition = {
-  title: 'Contact Us',
-  description: 'We welcome feedback, bug reports, feature requests, and general enquiries.',
+  title: 'Ota yhteyttä',
+  description: '”Otamme mielellämme vastaan palautetta, virheilmoituksia, ominaisuuspyyntöjä ja yleisiä tiedusteluja.”',
   lastUpdated: LAST_UPDATED,
   sections: [
     {
-      heading: 'How to reach us',
+      heading: 'Näin meihin pääsee',
       paragraphs: [
-        'We offer several ways to contact us depending on your needs. We read every message, though response times may vary based on volume and enquiry type.',
+        '”Tarjoamme useita tapoja ottaa meihin yhteyttä tarpeidesi mukaan. Luemme jokaisen viestin, vaikka vastausajat voivat vaihdella viestimäärän ja kyselytyypin mukaan.”',
       ],
     },
     {
-      heading: 'Email',
+      heading: '"Sähköposti”',
       paragraphs: [
-        'For all enquiries: ${CONTACT_EMAIL}',
-        'This is the most reliable way to reach us and is recommended for detailed questions, business enquiries, or any other enquiries.',
+        '”Kaikki tiedustelut: ${CONTACT_EMAIL}”',
+        '”Tämä on luotettavin tapa tavoittaa meidät, ja sitä suositellaan yksityiskohtaisiin kysymyksiin, liiketoimintatiedusteluihin tai muihin tiedusteluihin.”',
       ],
     },
     {
-      heading: 'Types of enquiries',
+      heading: '”Tiedustelutyypit”',
       bullets: [
-        'General questions: Questions about how to use ANQR, feature explanations, or general feedback.',
-        'Bug reports: Please include your browser, operating system, steps to reproduce, and any error messages you see.',
-        'Feature requests: Suggestions for new features or improvements. We consider all requests though we cannot promise implementation.',
-        'Business enquiries: Partnership opportunities, licensing questions, or commercial use enquiries.',
-        'Privacy requests: Requests to exercise your privacy rights under GDPR, CCPA, or other privacy laws (see Privacy Policy).',
-        'DMCA/Copyright: See the DMCA section below for takedown notice requirements.',
+        '”Yleisiä kysymyksiä: Kysymyksiä ANQR:n käytöstä, ominaisuuksien selityksistä tai yleisestä palautteesta.”',
+        '”Virheilmoitukset: Liitä mukaan selaimesi, käyttöjärjestelmäsi, virheen toistamisen vaiheet ja kaikki näkemäsi virheilmoitukset.”',
+        '”Ominaisuuspyynnöt: Ehdotuksia uusiksi ominaisuuksiksi tai parannuksiksi. Harkitsemme kaikkia pyyntöjä, vaikka emme voi luvata toteutusta.”',
+        '”Liiketoimintaan liittyvät tiedustelut: Yhteistyömahdollisuudet, lisensointikysymykset tai kaupalliseen käyttöön liittyvät tiedustelut.”',
+        '”Tietosuojapyynnöt: Pyynnöt käyttää yksityisyyden suojaan liittyviä oikeuksiasi GDPR:n, CCPA:n tai muiden tietosuojalakien nojalla (katso tietosuojakäytäntö).”',
+        '”DMCA/Tekijänoikeus: Katso poistoilmoitusta koskevat vaatimukset alta DMCA-osiosta.”',
       ],
     },
     {
-      heading: 'Response times',
+      heading: '”Vastausajat”',
       paragraphs: [
-        'We aim to respond to enquiries within 5-7 business days. Privacy-related requests will be addressed within 30 days as required by law.',
-        'During busy periods, response times may be longer. For urgent matters, please indicate "URGENT" in your subject line.',
+        '”Pyrimme vastaamaan tiedusteluihin 5–7 arkipäivän kuluessa. Tietosuojaan liittyviin pyyntöihin vastataan lain edellyttämällä tavalla 30 päivän kuluessa.”',
+        '”Ruhka-aikoina vastausajat voivat olla pidempiä. Kiireellisissä asioissa merkitkää otsikkoriville ”KIIREELLINEN”.”',
       ],
     },
     {
-      heading: 'Before contacting us',
+      heading: 'Ennen kuin otat meihin yhteyttä',
       paragraphs: [
-        'Please check our Documentation page for answers to common questions about how to use ANQR features. Many questions about QR code generation, styling, and export options are covered there.',
+        '”Katso dokumentaatiosivultamme vastauksia yleisiin kysymyksiin ANQR-ominaisuuksien käytöstä. Siellä käsitellään monia QR-koodien luomiseen, muotoiluun ja vientivaihtoehtoihin liittyviä kysymyksiä.”',
       ],
     },
     {
-      heading: 'DMCA Copyright Notices',
+      heading: '”DMCA-tekijänoikeusilmoitukset”',
       paragraphs: [
-        'If you believe that content available on ANQR infringes your copyright, you may submit a Digital Millennium Copyright Act (DMCA) takedown notice. To be valid, your notice must include:',
+        '”Jos uskot, että ANQR:ssä saatavilla oleva sisältö loukkaa tekijänoikeuksiasi, voit lähettää Digital Millennium Copyright Act (DMCA) -poistoilmoituksen. Jotta ilmoituksesi olisi pätevä, sen on sisällettävä:”',
       ],
       bullets: [
-        'A physical or electronic signature of the copyright owner or authorised agent.',
-        'Identification of the copyrighted work claimed to have been infringed.',
-        'Identification of the material that is claimed to be infringing, with information sufficient to locate it.',
-        'Your contact information (address, telephone number, and email address).',
-        'A statement that you have a good faith belief that use of the material is not authorised by the copyright owner.',
-        'A statement, under penalty of perjury, that the information in your notice is accurate and that you are the copyright owner or authorised to act on their behalf.',
+        '”Tekijänoikeuden haltijan tai valtuutetun edustajan fyysinen tai sähköinen allekirjoitus.”',
+        '”Tekijänoikeuksilla suojatun teoksen, jonka väitetään loukatun, tunnistetiedot.”',
+        '”Tekijänoikeuksia loukkaavaksi väitetyn materiaalin yksilöinti ja riittävät tiedot sen paikantamiseksi.”',
+        '”Yhteystietosi (osoite, puhelinnumero ja sähköpostiosoite).”',
+        '”Lausunto, jossa vilpittömästi uskot, että tekijänoikeuden haltija ei ole antanut lupaa materiaalin käyttöön.”',
+        '”Lausunto väärän valaehtoisen rangaistuksen uhalla siitä, että ilmoituksessasi annetut tiedot ovat oikein ja että olet tekijänoikeuden haltija tai sinulla on valtuudet toimia hänen puolestaan.”',
       ],
     },
     {
-      heading: 'DMCA Contact',
+      heading: '”DMCA-yhteystiedot”',
       paragraphs: [
-        'Send DMCA notices to: ${CONTACT_EMAIL}',
-        'Please include "DMCA Notice" in the subject line. We will respond to valid notices in accordance with applicable law. Note that ANQR generates QR codes locally on users devices and does not host user-generated content.',
+        '”Lähetä DMCA-ilmoitukset osoitteeseen: ${CONTACT_EMAIL}”',
+        '”Kirjoita otsikkoriville ”DMCA-ilmoitus”. Vastaamme päteviin ilmoituksiin sovellettavan lain mukaisesti. Huomaa, että ANQR luo QR-koodeja paikallisesti käyttäjien laitteille eikä ylläpidä käyttäjien luomaa sisältöä.”',
       ],
     },
   ],

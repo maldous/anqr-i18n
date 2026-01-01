@@ -2,143 +2,143 @@ import type { PageDefinition } from '../types'
 import { LAST_UPDATED, CONTACT_EMAIL } from '../types'
 
 export const terms: PageDefinition = {
-  title: 'Terms of Service',
-  description: 'By accessing or using the site, you agree to be bound by these terms.',
+  title: '"Szolgáltatási feltételek”',
+  description: '"A webhely elérésével vagy használatával Ön elfogadja ezeket a feltételeket.”',
   lastUpdated: LAST_UPDATED,
   sections: [
     {
-      heading: 'Acceptance of terms',
+      heading: '"Feltételek elfogadása”',
       paragraphs: [
-        'By accessing or using ANQR (anqr.link), you agree to be bound by these Terms of Service and our Privacy Policy. If you do not agree to these terms, do not use the site.',
-        'We may update these Terms from time to time. Continued use of the site after changes constitutes acceptance of the new terms.',
+        '"Az ANQR (anqr.link) elérésével vagy használatával Ön elfogadja a jelen Szolgáltatási Feltételeket és az Adatvédelmi Szabályzatunkat. Ha nem ért egyet ezekkel a feltételekkel, ne használja az oldalt.”',
+        '"Időről időre frissíthetjük ezeket a Feltételeket. A webhely további használata a változtatások után az új feltételek elfogadását jelenti.”',
       ],
     },
     {
-      heading: 'Eligibility',
+      heading: '"Jogosultság”',
       paragraphs: [
-        'You must be at least 13 years of age to use ANQR. By using the site, you represent that you meet this age requirement. If you are under 18, you represent that you have your parent or guardian\'s permission to use the site.',
+        '"Az ANQR használatához legalább 13 évesnek kell lennie. A webhely használatával Ön kijelenti, hogy megfelel ennek a korhatár-követelménynek. Ha 18 év alatti, akkor Ön kijelenti, hogy rendelkezik szülője vagy gyámja engedélyével a webhely használatához.”',
       ],
     },
     {
-      heading: 'Permitted use',
+      heading: '"Engedélyezett használat”',
       paragraphs: [
-        'You may use ANQR for lawful purposes only. You are solely responsible for the content you encode into QR codes and for how you use any QR codes you generate.',
+        '"Az ANQR-t kizárólag jogszerű célokra használhatja. Kizárólag Ön felelős a QR-kódokba kódolt tartalomért és azért, hogyan használja fel az Ön által generált QR-kódokat.”',
       ],
     },
     {
-      heading: 'Prohibited conduct',
+      heading: '"Tiltott magatartás”',
       paragraphs: [
-        'You agree not to:',
+        '"Ön beleegyezik, hogy nem:”',
       ],
       bullets: [
-        'Use ANQR to create QR codes that facilitate phishing, malware distribution, fraud, scams, harassment, defamation, or any illegal activity.',
-        'Encode content that infringes intellectual property rights, violates privacy, or contains illegal material.',
-        'Attempt to disrupt, overload, or interfere with the operation or security of the site.',
-        'Reverse engineer, decompile, or attempt to extract source code from the site.',
-        'Use automated tools (bots, scrapers) to access the site in a manner that degrades performance for other users.',
-        'Circumvent or disable any security or access control features.',
-        'Impersonate any person or entity or misrepresent your affiliation.',
+        '"Használjon ANQR-t QR-kódok létrehozására, amelyek megkönnyítik az adathalászatot, a rosszindulatú programok terjesztését, a csalást, az átveréseket, a zaklatást, a rágalmazást vagy bármilyen illegális tevékenységet.”',
+        '"Olyan tartalom kódolása, amely sérti a szellemi tulajdonjogokat, megsérti a magánéletet, vagy illegális anyagot tartalmaz.”',
+        '"A webhely működésének vagy biztonságának megzavarására, túlterhelésére vagy akadályozására tett kísérlet.”',
+        '"Visszafejtse, dekompilálja vagy próbálja meg kinyerni a forráskódot az oldalról.”',
+        '"Automatizált eszközök (botok, adatkaparók) használata az oldal olyan módon történő eléréséhez, amely rontja a teljesítményt más felhasználók számára.”',
+        '"Bármely biztonsági vagy hozzáférés-vezérlési funkció megkerülése vagy letiltása.”',
+        '"Bármely személy vagy szervezet személyazonosságának kiadásával, illetve a hovatartozásod félrevezető feltüntetésével.”',
       ],
     },
     {
-      heading: 'Intellectual property',
+      heading: '"Szellemi tulajdon”',
       paragraphs: [
-        'You retain ownership of the content you encode into QR codes. ANQR does not claim ownership of your data.',
-        'The ANQR name, logo, interface design, and underlying code are protected by copyright, trademark, and other intellectual property laws. You may not copy, modify, distribute, or create derivative works without our permission.',
-        'QR Code® is a registered trademark of DENSO WAVE INCORPORATED. ANQR is not affiliated with DENSO WAVE.',
+        '"Megtartod a QR-kódokba kódolt tartalom tulajdonjogát. Az ANQR nem tart igényt az adataid tulajdonjogára.”',
+        '"Az ANQR név, logó, felületkialakítás és az alapul szolgáló kód szerzői jogi, védjegy- és egyéb szellemi tulajdonjogi törvények védelme alatt áll. Engedélyünk nélkül tilos másolni, módosítani, terjeszteni vagy származékos műveket létrehozni.”',
+        '"A QR Code® a DENSO WAVE INCORPORATED bejegyzett védjegye. Az ANQR nem áll kapcsolatban a DENSO WAVE-vel.”',
       ],
     },
     {
-      heading: 'User content license',
+      heading: '"Felhasználói tartalomlicenc”',
       paragraphs: [
-        'By using ANQR, you grant us no rights to your content. When using local generation (the default), all QR code generation happens in your browser and we do not access, store, or transmit your encoded data.',
-        'When using the server-side API, your content is processed to generate the QR image but is not stored, logged, or used for any other purpose beyond rendering the requested image.',
+        '"Az ANQR használatával semmilyen jogot nem ad nekünk a tartalmához. Helyi generálás (alapértelmezett) használata esetén minden QR-kód generálása a böngészőjében történik, és mi nem férünk hozzá, nem tároljuk és nem továbbítjuk a kódolt adatait.”',
+        '"A szerveroldali API használatakor a tartalom feldolgozásra kerül a QR-kép létrehozásához, de nem tárolódik, nem naplózódik és nem kerül felhasználásra a kért kép megjelenítésén túl semmilyen más célra.”',
       ],
     },
     {
-      heading: 'Third-party services and advertising',
+      heading: '"Harmadik féltől származó szolgáltatások és hirdetések”',
       paragraphs: [
-        'The site displays advertisements through Google AdSense and may include links to third-party websites. We are not responsible for third-party content, services, or privacy practices.',
-        'Your interactions with advertisers and third parties are solely between you and them. See our Privacy Policy for information about advertising data practices.',
+        '"A webhely hirdetéseket jelenít meg a Google AdSense-en keresztül, és tartalmazhat harmadik fél webhelyeire mutató linkeket. Nem vállalunk felelősséget a harmadik féltől származó tartalmakért, szolgáltatásokért vagy adatvédelmi gyakorlatokért.”',
+        '"A hirdetőkkel és harmadik felekkel folytatott interakciói kizárólag Ön és közöttük történnek. A hirdetési adatokkal kapcsolatos gyakorlattal kapcsolatos információkért tekintse meg Adatvédelmi irányelveinket.”',
       ],
     },
     {
-      heading: 'Disclaimer of warranties',
+      heading: '"Jótállás kizárása”',
       paragraphs: [
-        'ANQR IS PROVIDED ON AN "AS IS" AND "AS AVAILABLE" BASIS WITHOUT WARRANTIES OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, AND NON-INFRINGEMENT.',
-        'We do not warrant that: (a) the site will be uninterrupted, secure, or error-free; (b) QR codes will scan in all environments, on all devices, or with all scanner applications; (c) the site will meet your requirements.',
-        'You should always test QR codes in the conditions where they will be used (print size, lighting, screen type, distance, camera quality).',
+        '"AZ ANQR-t "JELENLEGI ÁLLAPOTBAN” ÉS "ELÉRHETŐSÉG SZERINT” BIZTOSÍTJUK, BÁRMILYEN KIFEJEZETT VAGY VÉLELMEZETT GARANCIA NÉLKÜL, BELEÉRTVE, DE NEM KIZÁRÓLAGOSAN AZ ELADHATÓSÁGRA, EGY ADOTT CÉLRA VALÓ ALKALMASSÁGRA ÉS A JOGTISZTELETRE VONATKOZÓ VÉLELMEZETT GARANCIÁKAT.”',
+        '"Nem garantáljuk, hogy: (a) az oldal megszakítás nélküli, biztonságos vagy hibamentes lesz; (b) a QR-kódok minden környezetben, minden eszközön vagy minden szkenneralkalmazással beolvashatók; (c) az oldal megfelel az Ön igényeinek.”',
+        '"A QR-kódokat mindig a használati körülmények között kell tesztelni (nyomtatási méret, megvilágítás, képernyő típusa, távolság, kamera minősége).”',
       ],
     },
     {
-      heading: 'Limitation of liability',
+      heading: '"Felelősség korlátozása”',
       paragraphs: [
-        'TO THE MAXIMUM EXTENT PERMITTED BY LAW, ANQR AND ITS OPERATORS, AFFILIATES, AND LICENSORS SHALL NOT BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, CONSEQUENTIAL, PUNITIVE, OR EXEMPLARY DAMAGES, INCLUDING BUT NOT LIMITED TO DAMAGES FOR LOSS OF PROFITS, REVENUE, DATA, GOODWILL, USE, OR OTHER INTANGIBLE LOSSES, ARISING FROM OR RELATED TO YOUR ACCESS TO OR USE OF (OR INABILITY TO ACCESS OR USE) THE SERVICE.',
-        'YOU EXPRESSLY UNDERSTAND AND AGREE THAT YOUR USE OF THE SERVICE IS AT YOUR SOLE RISK. THE SERVICE IS PROVIDED FREE OF CHARGE, AND ACCORDINGLY, YOU AGREE THAT ANQR AND ITS OPERATORS SHALL HAVE NO LIABILITY TO YOU WHATSOEVER FOR ANY DAMAGES OR LOSSES. IN NO EVENT SHALL OUR TOTAL AGGREGATE LIABILITY EXCEED ZERO DOLLARS ($0 AUD).',
-        'YOU AGREE TO RELEASE, WAIVE, AND DISCHARGE ANY AND ALL CLAIMS, DEMANDS, AND CAUSES OF ACTION AGAINST ANQR AND ITS OPERATORS ARISING FROM YOUR USE OF THE SERVICE.',
-        'SOME JURISDICTIONS DO NOT ALLOW THE EXCLUSION OF CERTAIN WARRANTIES OR LIMITATIONS OF LIABILITY. IN SUCH JURISDICTIONS, OUR LIABILITY SHALL BE LIMITED TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW.',
+        '"A TÖRVÉNY ÁLTAL MEGENGEDETT LEGNAGYOBB MÉRTÉKBEN AZ ANQR ÉS ÜZEMELTETŐI, LEÁNYVÁLLALATAI ÉS LICENCADÓI NEM FELELŐSEK SEMMILYEN KÖZVETLEN, KÖZVETETT, VÉLETLENSZERŰ, KÜLÖNLEGES, KÖVETKEZMÉNYES, BÜNTETŐJOGI VAGY PÉLDÁS KÁRÉRT, BELEÉRTVE, DE NEM KORLÁTOZÓDVA AZ ELMARADT HASZONÉRT, BEVÉTELÉRT, ADATOKÉRT, JÓHÍRÉRT, HASZNÁLATÉRT VAGY EGYÉB IMMATERIALIS VESZTESÉGEKÉRT, AMELYEK A SZOLGÁLTATÁSHOZ VALÓ HOZZÁFÉRÉSÉBŐL VAGY HASZNÁLATÁBÓL (ILLETVE A HOZZÁFÉRÉS VAGY HASZNÁLAT KÉPTELENSÉGÉBŐL) EREDNEK VAGY AZZAL KAPCSOLATOSAK.”',
+        '"ÖN KIFEJEZETTEN TUDOMÁSUL VESZI ÉS ELFOGADJA, HOGY A SZOLGÁLTATÁS HASZNÁLATA KIZÁRÓLAG SAJÁT FELELŐSSÉGÉRE TÖRTÉNIK. A SZOLGÁLTATÁST INGYENESEN BIZTOSÍTJUK, ÉS ENNEK MEGFELELŐEN ÖN ELFOGADJA, HOGY AZ ANQR ÉS ÜZEMELTETŐI SEMMILYEN FELELŐSSÉGET NEM TUDNAK ÖNNEL FELÉ SEMMILYEN KÁRÉRT VAGY VESZTESÉGÉRT. TELJES ÖSSZES FELELŐSSÉGÜNK SEMMILYEN ESETBEN SEM HALADHATJA MEG A NULLA DOLLÁRT (0 AUD).”',
+        '"ÖN BELEEGYEZIK HOGY ELUTASÍT, LEMOND ÉS ELHÁZOL MINDEN IGÉNYT, KÖVETELÉST ÉS KERESETI OKOT AZ ANQR-REL ÉS ÜZEMELTETŐIVEL SZEMBEN, A SZOLGÁLTATÁS HASZNÁLATÁBÓL EREDŐ.”',
+        '"NÉHÁNY JOGHATÓSÁG NEM ENGEDÉLYEZI BIZONYOS SZAVATOSSÁGOK VAGY A FELELŐSSÉG KORLÁTOZÁSÁT. ILYEN JOGHATÓSÁGOKBAN FELELŐSSÉGÜNK AZ HATÁLYOS JOGSZABÁLYOK ÁLTAL MEGENGEDETT MÉRTÉKRE KORLÁTOZÓDIK.”',
       ],
     },
     {
-      heading: 'Indemnification',
+      heading: '"Kártalanítás”',
       paragraphs: [
-        'You agree to indemnify, defend, and hold harmless ANQR, its operators, affiliates, and their respective officers, directors, employees, and agents from any claims, damages, losses, liabilities, costs, and expenses (including legal fees) arising from: (a) your use of the site; (b) your violation of these Terms; (c) your violation of any third-party rights; (d) any content you encode into QR codes.',
+        '"Ön beleegyezik, hogy kártalanítja, megvédi és vétlennek nyilvánítja az ANQR-t, annak üzemeltetőit, leányvállalatait és azok tisztviselőit, igazgatóit, alkalmazottait és ügynökeit minden olyan követeléssel, kárral, veszteséggel, felelősséggel, költséggel és kiadással (beleértve a jogi díjakat is) szemben, amelyek a következőkből erednek: (a) a webhely Ön általi használata; (b) a jelen Feltételek megsértése; (c) harmadik felek jogainak megsértése; (d) a QR-kódokba kódolt tartalom.”',
       ],
     },
     {
-      heading: 'Dispute resolution',
+      heading: '"Vitarendezés”',
       paragraphs: [
-        'Any dispute arising from these Terms or your use of ANQR shall first be attempted to be resolved through informal negotiation by contacting ${CONTACT_EMAIL}.',
-        'If informal resolution fails, disputes shall be resolved through binding arbitration in Victoria, Australia, except that either party may seek injunctive relief in court for intellectual property violations.',
+        '"A jelen Feltételekből vagy az ANQR használatából eredő bármilyen vitát elsősorban informális tárgyalások útján kell megkísérelni rendezni a ${CONTACT_EMAIL} címen.”',
+        '"Amennyiben az informális rendezés sikertelen, a vitákat kötelező érvényű választottbírósági eljárás útján kell rendezni Victoriában, Ausztráliában, azzal a kivétellel, hogy bármelyik fél bírósághoz fordulhat a szellemi tulajdonjogok megsértése miatti tiltó intézkedés iránti kérelemmel.”',
       ],
     },
     {
-      heading: 'Class action waiver',
+      heading: '"Csoportos keresetről való lemondás”',
       paragraphs: [
-        'TO THE EXTENT PERMITTED BY LAW, YOU AGREE THAT ANY DISPUTE RESOLUTION PROCEEDINGS WILL BE CONDUCTED ONLY ON AN INDIVIDUAL BASIS AND NOT IN A CLASS, CONSOLIDATED, OR REPRESENTATIVE ACTION.',
+        '"A TÖRVÉNY ÁLTAL MEGENGEDETT MÉRTÉKBEN ÖN ELFOGADJA, HOGY BÁRMELY VITARENDEZÉSI ELJÁRÁS CSAK EGYÉNI ALAPON KERÜL LEFOLYÁSRA, ÉS NEM CSOPORTOS, ÖSSZEVONT VAGY KÉPVISELETI KERESETKÉNT.”',
       ],
     },
     {
-      heading: 'Governing law',
+      heading: '"Irányadó jog”',
       paragraphs: [
-        'These Terms are governed by the laws of Victoria, Australia, without regard to conflict of laws principles. You consent to the exclusive jurisdiction of the courts located in Victoria, Australia.',
+        '"A jelen Feltételekre Victoria állam törvényei az irányadók, tekintet nélkül a kollíziós jogi elvekre. Ön elfogadja a Victoria államban található bíróságok kizárólagos joghatóságát.”',
       ],
     },
     {
-      heading: 'Changes and availability',
+      heading: '"Változások és elérhetőség”',
       paragraphs: [
-        'We may modify, suspend, or discontinue the site (or any part of it) at any time without notice or liability.',
-        'We may update these Terms at any time. The "Last updated" date indicates when they were most recently revised. Continued use after changes constitutes acceptance.',
+        '"Bármikor, előzetes értesítés és felelősségvállalás nélkül módosíthatjuk, felfüggeszthetjük vagy megszüntethetjük az oldalt (vagy annak bármely részét).”',
+        '"Ezeket a Feltételeket bármikor frissíthetjük. Az "Utolsó frissítés” dátuma a legutóbbi felülvizsgálat időpontját jelzi. A változtatások utáni további használat a Feltételek elfogadását jelenti.”',
       ],
     },
     {
-      heading: 'Severability',
+      heading: '"Elválaszthatóság”',
       paragraphs: [
-        'If any provision of these Terms is held invalid or unenforceable, that provision will be enforced to the maximum extent permissible, and the remaining provisions will remain in full force and effect.',
+        '"Amennyiben a jelen Feltételek bármely rendelkezése érvénytelennek vagy végrehajthatatlannak minősül, az adott rendelkezést a megengedett legnagyobb mértékben végre kell hajtani, a fennmaradó rendelkezések pedig teljes mértékben hatályban maradnak.”',
       ],
     },
     {
-      heading: 'Waiver',
+      heading: '"Lemondás”',
       paragraphs: [
-        'Our failure to enforce any right or provision of these Terms shall not be deemed a waiver of such right or provision.',
+        '"A jelen Feltételek bármely jogának vagy rendelkezésének érvényesítésének elmulasztása nem tekinthető az adott jogról vagy rendelkezésről való lemondásnak.”',
       ],
     },
     {
-      heading: 'Entire agreement',
+      heading: '"Teljes megállapodás”',
       paragraphs: [
-        'These Terms, together with our Privacy Policy, constitute the entire agreement between you and ANQR regarding your use of the site and supersede any prior agreements.',
+        '"Ezek a Feltételek, valamint az Adatvédelmi Szabályzatunk alkotják az Ön és az ANQR között létrejött teljes megállapodást a webhely Ön általi használatával kapcsolatban, és felülírnak minden korábbi megállapodást.”',
       ],
     },
     {
-      heading: 'Force majeure',
+      heading: '"Vis maior”',
       paragraphs: [
-        'We shall not be liable for any failure or delay in performance due to circumstances beyond our reasonable control, including natural disasters, war, terrorism, riots, government actions, or internet/infrastructure failures.',
+        '"Nem vállalunk felelősséget a teljesítésben bekövetkezett semmilyen hibáért vagy késedelemért, amely az ésszerű ellenőrzésünkön kívül eső körülményekből ered, beleértve a természeti katasztrófákat, háborút, terrorizmust, zavargásokat, kormányzati intézkedéseket vagy az internet/infrastruktúra hibáit.”',
       ],
     },
     {
-      heading: 'Contact',
+      heading: '"Kapcsolat”',
       paragraphs: [
-        'Questions about these Terms can be sent to: ${CONTACT_EMAIL}',
+        '"A Feltételekkel kapcsolatos kérdéseket a következő címre küldheti: ${CONTACT_EMAIL}”',
       ],
     },
   ],
