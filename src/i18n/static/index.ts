@@ -2,203 +2,181 @@
  * Static page content loader
  * Returns page content based on current language with English fallback
  * Uses Google Play language codes for compatibility
- * Authoritative list from src/i18n/locales/txt/play.txt
+ * 
+ * OPTIMIZATION: Only English is bundled. Other languages are lazy-loaded on demand.
  */
 
 import type { PageDefinition, StaticPageType } from './types'
-
-// Google Play required languages
-import * as enGB from './en-GB'
-import * as ar from './ar'
-import * as bnBD from './bn-BD'
-import * as esES from './es-ES'
-import * as gu from './gu'
-import * as hiIN from './hi-IN'
-import * as id from './id'
-import * as jaJP from './ja-JP'
-import * as knIN from './kn-IN'
-import * as koKR from './ko-KR'
-import * as mlIN from './ml-IN'
-import * as mrIN from './mr-IN'
-import * as ms from './ms'
-import * as pa from './pa'
-import * as ptBR from './pt-BR'
-import * as ruRU from './ru-RU'
-import * as taIN from './ta-IN'
-import * as teIN from './te-IN'
-import * as th from './th'
-import * as fil from './fil'
-import * as vi from './vi'
-import * as zhCN from './zh-CN'
-
-// Additional languages (with Google Play regional codes)
-import * as af from './af'
-import * as bg from './bg'
-import * as csCZ from './cs-CZ'
-import * as daDK from './da-DK'
-import * as deDE from './de-DE'
-import * as elGR from './el-GR'
-import * as fiFI from './fi-FI'
-import * as frFR from './fr-FR'
-import * as hr from './hr'
-import * as huHU from './hu-HU'
-import * as itIT from './it-IT'
-import * as kmKH from './km-KH'
-import * as loLA from './lo-LA'
-import * as myMM from './my-MM'
-import * as neNP from './ne-NP'
-import * as nlNL from './nl-NL'
-import * as noNO from './no-NO'
-import * as plPL from './pl-PL'
-import * as ro from './ro'
-import * as svSE from './sv-SE'
-import * as zu from './zu'
 
 // Re-export types for convenience
 export type { PageDefinition, PageSection, StaticPageType } from './types'
 export { LAST_UPDATED, CONTACT_EMAIL } from './types'
 
-const contentByLanguage: Record<string, Record<StaticPageType, PageDefinition>> = {
-  // Google Play required languages
-  'en-GB': enGB,
-  ar,
-  'bn-BD': bnBD,
-  'es-ES': esES,
-  gu,
-  'hi-IN': hiIN,
-  id,
-  'ja-JP': jaJP,
-  'kn-IN': knIN,
-  'ko-KR': koKR,
-  'ml-IN': mlIN,
-  'mr-IN': mrIN,
-  ms,
-  pa,
-  'pt-BR': ptBR,
-  'ru-RU': ruRU,
-  'ta-IN': taIN,
-  'te-IN': teIN,
-  th,
-  fil,
-  vi,
-  'zh-CN': zhCN,
-  // Additional languages (with Google Play regional codes)
-  af,
-  bg,
-  'cs-CZ': csCZ,
-  'da-DK': daDK,
-  'de-DE': deDE,
-  'el-GR': elGR,
-  'fi-FI': fiFI,
-  'fr-FR': frFR,
-  hr,
-  'hu-HU': huHU,
-  'it-IT': itIT,
-  'km-KH': kmKH,
-  'lo-LA': loLA,
-  'my-MM': myMM,
-  'ne-NP': neNP,
-  'nl-NL': nlNL,
-  'no-NO': noNO,
-  'pl-PL': plPL,
-  ro,
-  'sv-SE': svSE,
-  zu,
+// Only import English - other languages are lazy-loaded
+import * as enGB from './en-GB'
+
+// Cache for loaded static content
+const contentCache = new Map<string, Record<StaticPageType, PageDefinition>>()
+
+// Pre-populate cache with English
+contentCache.set('en-GB', enGB as unknown as Record<StaticPageType, PageDefinition>)
+
+// Use import.meta.glob for Vite to properly analyze and code-split
+// Each language folder gets its own chunk
+const staticModules = import.meta.glob<Record<StaticPageType, PageDefinition>>('./**/index.ts', {
+  import: '*',
+  eager: false,
+})
+
+// Map common browser codes to our Google Play codes
+const browserToGooglePlay: Record<string, string> = {
+  'en': 'en-GB', 'en-US': 'en-GB', 'en-AU': 'en-GB',
+  'hi': 'hi-IN',
+  'zh': 'zh-CN', 'zh-TW': 'zh-CN', 'zh-HK': 'zh-CN',
+  'ta': 'ta-IN',
+  'pt': 'pt-BR', 'pt-PT': 'pt-BR',
+  'tl': 'fil',
+  'ja': 'ja-JP',
+  'ko': 'ko-KR',
+  'es': 'es-ES', 'es-MX': 'es-ES',
+  'ru': 'ru-RU',
+  'te': 'te-IN',
+  'mr': 'mr-IN',
+  'bn': 'bn-BD', 'bn-IN': 'bn-BD',
+  'kn': 'kn-IN',
+  'ml': 'ml-IN',
+  // Regional mappings
+  'cs': 'cs-CZ',
+  'da': 'da-DK',
+  'de': 'de-DE',
+  'el': 'el-GR',
+  'fi': 'fi-FI',
+  'fr': 'fr-FR',
+  'hu': 'hu-HU',
+  'it': 'it-IT',
+  'km': 'km-KH',
+  'lo': 'lo-LA',
+  'my': 'my-MM',
+  'ne': 'ne-NP',
+  'nl': 'nl-NL',
+  'no': 'no-NO', 'nb': 'no-NO', 'nn': 'no-NO',
+  'pl': 'pl-PL',
+  'sv': 'sv-SE',
+}
+
+// List of supported language codes
+const supportedLanguages = new Set([
+  'en-GB', 'ar', 'bn-BD', 'es-ES', 'gu', 'hi-IN', 'id', 'ja-JP',
+  'kn-IN', 'ko-KR', 'ml-IN', 'mr-IN', 'ms', 'pa', 'pt-BR', 'ru-RU',
+  'ta-IN', 'te-IN', 'th', 'fil', 'vi', 'zh-CN',
+  'af', 'bg', 'cs-CZ', 'da-DK', 'de-DE', 'el-GR', 'fi-FI', 'fr-FR',
+  'hr', 'hu-HU', 'it-IT', 'km-KH', 'lo-LA', 'my-MM', 'ne-NP', 'nl-NL',
+  'no-NO', 'pl-PL', 'ro', 'sv-SE', 'zu'
+])
+
+/**
+ * Resolve a language code to a supported language code
+ */
+function resolveLanguageCode(language: string): string {
+  // Direct match
+  if (supportedLanguages.has(language)) return language
+  
+  // Try mapped code
+  const mappedCode = browserToGooglePlay[language]
+  if (mappedCode && supportedLanguages.has(mappedCode)) return mappedCode
+  
+  // Try base language mapping
+  const baseLanguage = language.split('-')[0]
+  const mappedBase = browserToGooglePlay[baseLanguage]
+  if (mappedBase && supportedLanguages.has(mappedBase)) return mappedBase
+  
+  // Try base language direct match
+  if (supportedLanguages.has(baseLanguage)) return baseLanguage
+  
+  // Fallback to English
+  return 'en-GB'
 }
 
 /**
- * Get static page content for a given language and page type
+ * Lazy load static content for a language
+ * Vite will code-split these into separate chunks
+ */
+async function loadLanguageContent(lang: string): Promise<Record<StaticPageType, PageDefinition>> {
+  // Check cache first
+  if (contentCache.has(lang)) {
+    return contentCache.get(lang)!
+  }
+  
+  try {
+    // Use the glob-imported modules for proper Vite code-splitting
+    const modulePath = `./${lang}/index.ts`
+    const loader = staticModules[modulePath]
+    
+    if (!loader) {
+      console.warn(`No static content module found for: ${lang}`)
+      return contentCache.get('en-GB')!
+    }
+    
+    const content = await loader()
+    contentCache.set(lang, content)
+    return content
+  } catch (error) {
+    console.error(`Failed to load static content for: ${lang}`, error)
+    // Fall back to English
+    return contentCache.get('en-GB')!
+  }
+}
+
+/**
+ * Get static page content for a given language and page type (async)
  * Falls back to English if translation not available
+ */
+export async function getStaticContentAsync(
+  language: string,
+  page: StaticPageType
+): Promise<PageDefinition> {
+  const resolvedLang = resolveLanguageCode(language)
+  const content = await loadLanguageContent(resolvedLang)
+  return content[page] || contentCache.get('en-GB')![page]
+}
+
+/**
+ * Get static page content synchronously (only works for cached/English content)
+ * Use getStaticContentAsync for full language support
+ * @deprecated Use getStaticContentAsync instead for proper lazy loading
  */
 export function getStaticContent(
   language: string,
   page: StaticPageType
 ): PageDefinition {
-  // Try exact language match first
-  if (contentByLanguage[language]?.[page]) {
-    return contentByLanguage[language][page]
-  }
-
-  // Map common browser codes to our Google Play codes
-  const browserToGooglePlay: Record<string, string> = {
-    'en': 'en-GB', 'en-US': 'en-GB', 'en-AU': 'en-GB',
-    'hi': 'hi-IN',
-    'zh': 'zh-CN', 'zh-TW': 'zh-CN', 'zh-HK': 'zh-CN',
-    'ta': 'ta-IN',
-    'pt': 'pt-BR', 'pt-PT': 'pt-BR',
-    'tl': 'fil',
-    'ja': 'ja-JP',
-    'ko': 'ko-KR',
-    'es': 'es-ES', 'es-MX': 'es-ES',
-    'ru': 'ru-RU',
-    'te': 'te-IN',
-    'mr': 'mr-IN',
-    'bn': 'bn-BD', 'bn-IN': 'bn-BD',
-    'kn': 'kn-IN',
-    'ml': 'ml-IN',
-    // Regional mappings
-    'cs': 'cs-CZ',
-    'da': 'da-DK',
-    'de': 'de-DE',
-    'el': 'el-GR',
-    'fi': 'fi-FI',
-    'fr': 'fr-FR',
-    'hu': 'hu-HU',
-    'it': 'it-IT',
-    'km': 'km-KH',
-    'lo': 'lo-LA',
-    'my': 'my-MM',
-    'ne': 'ne-NP',
-    'nl': 'nl-NL',
-    'no': 'no-NO', 'nb': 'no-NO', 'nn': 'no-NO',
-    'pl': 'pl-PL',
-    'sv': 'sv-SE',
+  const resolvedLang = resolveLanguageCode(language)
+  
+  // Return cached content if available
+  if (contentCache.has(resolvedLang)) {
+    return contentCache.get(resolvedLang)![page]
   }
   
-  // Try mapped code
-  const mappedCode = browserToGooglePlay[language]
-  if (mappedCode && contentByLanguage[mappedCode]?.[page]) {
-    return contentByLanguage[mappedCode][page]
-  }
-
-  // Try base language mapping
-  const baseLanguage = language.split('-')[0]
-  const mappedBase = browserToGooglePlay[baseLanguage]
-  if (mappedBase && contentByLanguage[mappedBase]?.[page]) {
-    return contentByLanguage[mappedBase][page]
-  }
+  // Trigger async load for next time (fire and forget)
+  loadLanguageContent(resolvedLang)
   
-  // Try base language direct match
-  if (contentByLanguage[baseLanguage]?.[page]) {
-    return contentByLanguage[baseLanguage][page]
-  }
+  // Return English as fallback for immediate render
+  return contentCache.get('en-GB')![page]
+}
 
-  // Fallback to English
-  return contentByLanguage['en-GB'][page]
+/**
+ * Preload static content for a language (call this when language changes)
+ */
+export async function preloadStaticContent(language: string): Promise<void> {
+  const resolvedLang = resolveLanguageCode(language)
+  if (!contentCache.has(resolvedLang)) {
+    await loadLanguageContent(resolvedLang)
+  }
 }
 
 /**
  * Check if a language has translations available
  */
 export function hasStaticTranslation(language: string): boolean {
-  if (language in contentByLanguage) return true
-  
-  const baseLanguage = language.split('-')[0]
-  
-  // Check mapped codes
-  const browserToGooglePlay: Record<string, string> = {
-    'en': 'en-GB', 'hi': 'hi-IN', 'zh': 'zh-CN', 'ta': 'ta-IN',
-    'pt': 'pt-BR', 'tl': 'fil', 'ja': 'ja-JP', 'ko': 'ko-KR',
-    'es': 'es-ES', 'ru': 'ru-RU', 'te': 'te-IN', 'mr': 'mr-IN',
-    'bn': 'bn-BD', 'kn': 'kn-IN', 'ml': 'ml-IN',
-    'cs': 'cs-CZ', 'da': 'da-DK', 'de': 'de-DE', 'el': 'el-GR', 'fi': 'fi-FI',
-    'fr': 'fr-FR', 'hu': 'hu-HU', 'it': 'it-IT', 'km': 'km-KH', 'lo': 'lo-LA',
-    'my': 'my-MM', 'ne': 'ne-NP', 'nl': 'nl-NL', 'no': 'no-NO', 'pl': 'pl-PL',
-    'sv': 'sv-SE',
-  }
-  
-  if (browserToGooglePlay[language] && browserToGooglePlay[language] in contentByLanguage) return true
-  if (browserToGooglePlay[baseLanguage] && browserToGooglePlay[baseLanguage] in contentByLanguage) return true
-  
-  return baseLanguage in contentByLanguage
+  const resolvedLang = resolveLanguageCode(language)
+  return supportedLanguages.has(resolvedLang)
 }

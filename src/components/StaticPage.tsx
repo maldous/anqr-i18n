@@ -6,11 +6,11 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { AdUnit } from '@/components/AdUnit'
 import { Button } from '@/components/ui/button'
-import { ChevronDown, ChevronUp, List, X, Menu, Mail } from 'lucide-react'
+import { ChevronDown, ChevronUp, List, X, Menu, Mail, Loader2 } from 'lucide-react'
 
 import { useTranslation } from 'react-i18next'
 import type { PageDefinition, PageSection } from '@/i18n/static'
-import { getStaticContent, LAST_UPDATED, CONTACT_EMAIL } from '@/i18n/static'
+import { getStaticContentAsync, LAST_UPDATED, CONTACT_EMAIL } from '@/i18n/static'
 
 export type StaticPageType = 'about' | 'docs' | 'privacy' | 'terms' | 'contact'
 
@@ -91,12 +91,6 @@ function buildDocsToc(sections: PageSection[], t: (key: string) => string): TocG
   })
   
   return groups.filter(g => g.items.length > 0)
-}
-
-function usePageTitle(page: StaticPageType, title: string) {
-  useEffect(() => {
-    document.title = `${title} | ANQR`
-  }, [page, title])
 }
 
 // Table of Contents component for docs page
@@ -282,11 +276,33 @@ function ContactEmailLink() {
 
 export function StaticPage({ page }: StaticPageProps) {
   const { t, i18n } = useTranslation()
-  const def = getStaticContent(i18n.language, page)
-  usePageTitle(page, def.title)
+  const [def, setDef] = useState<PageDefinition | null>(null)
+  const [isLoading, setIsLoading] = useState(true)
+  
+  // Load content when language or page changes
+  useEffect(() => {
+    let cancelled = false
+    setIsLoading(true)
+    
+    getStaticContentAsync(i18n.language, page).then((content) => {
+      if (!cancelled) {
+        setDef(content)
+        setIsLoading(false)
+      }
+    })
+    
+    return () => { cancelled = true }
+  }, [i18n.language, page])
+  
+  // Update page title when content loads
+  useEffect(() => {
+    if (def) {
+      document.title = `${def.title} | ANQR`
+    }
+  }, [def])
   
   const isDocsPage = page === 'docs'
-  const tocGroups = useMemo(() => isDocsPage ? buildDocsToc(def.sections, t) : [], [isDocsPage, def.sections, t])
+  const tocGroups = useMemo(() => isDocsPage && def ? buildDocsToc(def.sections, t) : [], [isDocsPage, def, t])
   const [activeSlug, setActiveSlug] = useState('')
   const contentRef = useRef<HTMLDivElement>(null)
   const sectionRefs = useRef<Map<string, HTMLElement>>(new Map())
@@ -294,7 +310,7 @@ export function StaticPage({ page }: StaticPageProps) {
   // Clear section refs when language/content changes to prevent stale refs accumulating
   useEffect(() => {
     sectionRefs.current.clear()
-  }, [i18n.language, def.sections])
+  }, [i18n.language, def])
 
   // Track active section with IntersectionObserver
   useEffect(() => {
@@ -363,6 +379,18 @@ export function StaticPage({ page }: StaticPageProps) {
   const [isDocsSidebarOpen, setIsDocsSidebarOpen] = useState(false)
 
   // Note: Click outside to close is disabled - user must click X button to close sidebar
+
+  // Loading state
+  if (isLoading || !def) {
+    return (
+      <main className="min-h-[200px] flex-1 flex items-center justify-center bg-background">
+        <div className="flex flex-col items-center gap-3 text-muted-foreground">
+          <Loader2 className="h-8 w-8 animate-spin" />
+          <span className="text-sm">{t('loading')}</span>
+        </div>
+      </main>
+    )
+  }
 
   // For docs page, use a different layout with ToC
   if (isDocsPage) {
