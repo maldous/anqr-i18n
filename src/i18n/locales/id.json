@@ -1,1166 +1,1166 @@
 {
   "animation": {
-    "blueNoise": "“Kebisingan Biru”",
-    "bounce": "“Pantul (Ping-Pong)”",
-    "colorCycle": "“Siklus Warna”",
-    "crossfade": "“Crossfade”",
-    "drift": "“Melaju”",
-    "enabled": "“Aktifkan Animasi”",
-    "everyNFrames": "“Setiap {{count}} frame”",
-    "exportAllFrames": "“Ekspor Semua Bingkai”",
-    "fadeIn": "“Fade In”",
-    "flickerSafe": "“Aman dari Kedip”",
-    "frameStep": "“Langkah Kerangka”",
-    "interpolation": "“Interpolasi”",
-    "loop": "“Animasi Perulangan”",
-    "maxFrames": "“Bingkai Maksimum”",
-    "moduleJitter": "“Jitter Modul”",
-    "moduleJitterWarning": "“⚠️ Dapat memengaruhi kemampuan pemindaian”",
-    "morph": "“Morf”",
-    "none": "“Tidak ada”",
-    "off": "“Mati”",
-    "pattern": "“Pola yang Dihasilkan”",
-    "pulse": "“Denyut Nadi”",
-    "randomSeed": "“Benih Acak”",
-    "rotate": "“Putar”",
-    "scanline": "“Scanline”",
-    "shimmer": "“Kilauan”",
-    "slideIn": "“Geser Masuk”",
-    "speed": "“Kecepatan Bingkai”",
-    "startFrame": "“Bingkai Awal”",
-    "temporalDither": "“Dither Temporal”",
-    "wave": "“Gelombang”"
+    "blueNoise": "Kebisingan Biru",
+    "bounce": "Pantul (Ping-Pong)",
+    "colorCycle": "Siklus Warna",
+    "crossfade": "Crossfade",
+    "drift": "Melaju",
+    "enabled": "Aktifkan Animasi",
+    "everyNFrames": "Setiap {{count}} frame",
+    "exportAllFrames": "Ekspor Semua Bingkai",
+    "fadeIn": "Fade In",
+    "flickerSafe": "Aman dari Kedip",
+    "frameStep": "Langkah Kerangka",
+    "interpolation": "Interpolasi",
+    "loop": "Animasi Perulangan",
+    "maxFrames": "Bingkai Maksimum",
+    "moduleJitter": "Jitter Modul",
+    "moduleJitterWarning": "⚠️ Dapat memengaruhi kemampuan pemindaian",
+    "morph": "Morf",
+    "none": "Tidak ada",
+    "off": "Mati",
+    "pattern": "Pola yang Dihasilkan",
+    "pulse": "Denyut Nadi",
+    "randomSeed": "Benih Acak",
+    "rotate": "Putar",
+    "scanline": "Scanline",
+    "shimmer": "Kilauan",
+    "slideIn": "Geser Masuk",
+    "speed": "Kecepatan Bingkai",
+    "startFrame": "Bingkai Awal",
+    "temporalDither": "Dither Temporal",
+    "wave": "Gelombang"
   },
   "languages": {
-    "en": "“Bahasa Inggris”",
-    "hi": "“Hindi”",
-    "zh": "“Tiongkok”",
-    "ms": "“Melayu”",
-    "ta": "“Tamil”",
-    "th": "“Thailand”",
-    "pt": "“Portugis”",
-    "id": "“Indonesia”",
-    "vi": "“Vietnam”",
-    "tl": "“Tagalog”",
-    "ja": "“Jepang”",
-    "ko": "“Korea”",
-    "es": "“Spanyol”",
-    "ar": "“Arab”",
-    "ru": "“Rusia”",
-    "te": "“Telugu”",
-    "mr": "“Marathi”",
-    "bn": "“Bengali”",
-    "gu": "“Gujarati”",
-    "kn": "“Kannada”",
-    "ml": "“Bahasa Malayalam”",
-    "pa": "“Punjabi”"
+    "en": "Bahasa Inggris",
+    "hi": "Hindi",
+    "zh": "Tiongkok",
+    "ms": "Melayu",
+    "ta": "Tamil",
+    "th": "Thailand",
+    "pt": "Portugis",
+    "id": "Indonesia",
+    "vi": "Vietnam",
+    "tl": "Tagalog",
+    "ja": "Jepang",
+    "ko": "Korea",
+    "es": "Spanyol",
+    "ar": "Arab",
+    "ru": "Rusia",
+    "te": "Telugu",
+    "mr": "Marathi",
+    "bn": "Bengali",
+    "gu": "Gujarati",
+    "kn": "Kannada",
+    "ml": "Bahasa Malayalam",
+    "pa": "Punjabi"
   },
   "app": {
-    "name": "“ANQR”",
-    "tagline": "“Generator Kode QR”"
+    "name": "ANQR",
+    "tagline": "Generator Kode QR"
   },
   "common": {
-    "none": "“Tidak ada”",
-    "off": "“Mati”",
-    "allRightsReserved": "“Seluruh hak dilindungi undang-undang”",
-    "apply": "“Terapkan”",
-    "back": "“Kembali”",
-    "cancel": "“Batalkan”",
-    "close": "“Tutup”",
-    "copied": "“Disalin!”",
-    "copy": "“Salinan”",
-    "copyright": "“© ANQR”",
-    "delete": "“Hapus”",
-    "disabled": "“Penyandang Disabilitas”",
-    "download": "“Unduh”",
-    "edit": "“Edit”",
-    "enabled": "“Diaktifkan”",
-    "error": "“Kesalahan”",
-    "filter": "“Filter”",
-    "less": "“Kurang”",
-    "loading": "“Memuat…”",
-    "more": "“Selengkapnya”",
-    "next": "“Selanjutnya”",
-    "no": "“Tidak”",
-    "ok": "“Oke”",
-    "on": "“Aktif”",
-    "previous": "“Sebelumnya”",
-    "reset": "“Reset”",
-    "save": "“Simpan”",
-    "search": "“Cari”",
-    "select": "“Pilih”",
-    "showLess": "“Tampilkan Lebih Sedikit”",
-    "showMore": "“Tampilkan Lebih Banyak”",
-    "sort": "“Urutkan”",
-    "success": "“Kesuksesan”",
-    "upload": "“Unggah”",
-    "viewAll": "“Lihat Semua”",
-    "yes": "“Ya”"
+    "none": "Tidak ada",
+    "off": "Mati",
+    "allRightsReserved": "Seluruh hak dilindungi undang-undang",
+    "apply": "Terapkan",
+    "back": "Kembali",
+    "cancel": "Batalkan",
+    "close": "Tutup",
+    "copied": "Disalin!",
+    "copy": "Salinan",
+    "copyright": "© ANQR",
+    "delete": "Hapus",
+    "disabled": "Penyandang Disabilitas",
+    "download": "Unduh",
+    "edit": "Edit",
+    "enabled": "Diaktifkan",
+    "error": "Kesalahan",
+    "filter": "Filter",
+    "less": "Kurang",
+    "loading": "Memuat…",
+    "more": "Selengkapnya",
+    "next": "Selanjutnya",
+    "no": "Tidak",
+    "ok": "Oke",
+    "on": "Aktif",
+    "previous": "Sebelumnya",
+    "reset": "Reset",
+    "save": "Simpan",
+    "search": "Cari",
+    "select": "Pilih",
+    "showLess": "Tampilkan Lebih Sedikit",
+    "showMore": "Tampilkan Lebih Banyak",
+    "sort": "Urutkan",
+    "success": "Kesuksesan",
+    "upload": "Unggah",
+    "viewAll": "Lihat Semua",
+    "yes": "Ya"
   },
-  "fileSaveFailed": "“Gagal menyimpan file: {{error}}”",
-  "fileSaved": "“Disimpan ke Dokumen: {{filename}}”",
+  "fileSaveFailed": "Gagal menyimpan file: {{error}}",
+  "fileSaved": "Disimpan ke Dokumen: {{filename}}",
   "footer": {
-    "copyright": "“© ANQR {{tahun}}”"
+    "copyright": "© ANQR {{tahun}}"
   },
   "gallery": {
-    "filter": "“Filter”",
-    "all": "“Semua”",
-    "animationOverlay": "“Animasi”",
-    "blendModes": "“Mode Pencampuran”",
-    "collapse": "“Runtuh”",
-    "colorModes": "“Mode Warna”",
-    "colors": "“Warna”",
-    "contentTypes": "“Jenis Konten”",
-    "dithering": "“Keraguan”",
-    "encoding": "“Pengkodean”",
-    "expand": "“Perluasan”",
-    "imageOverlay": "“Tampilan Gambar”",
+    "filter": "Filter",
+    "all": "Semua",
+    "animationOverlay": "Animasi",
+    "blendModes": "Mode Pencampuran",
+    "collapse": "Runtuh",
+    "colorModes": "Mode Warna",
+    "colors": "Warna",
+    "contentTypes": "Jenis Konten",
+    "dithering": "Keraguan",
+    "encoding": "Pengkodean",
+    "expand": "Perluasan",
+    "imageOverlay": "Tampilan Gambar",
     "items": {
       "anim-blue-noise": {
-        "description": "“Ambang batas derau biru dengan animasi”",
-        "title": "“Kebisingan Biru Animasi”"
+        "description": "Ambang batas derau biru dengan animasi",
+        "title": "Kebisingan Biru Animasi"
       },
       "anim-blue-noise-i100": {
-        "description": "“Kebisingan biru animasi pada 100%”",
-        "title": "“Blue Noise 100%”"
+        "description": "Kebisingan biru animasi pada 100%",
+        "title": "Blue Noise 100%"
       },
       "anim-blue-noise-i50": {
-        "description": "“Deretan derau biru animasi pada 50%”",
-        "title": "“Blue Noise 50%”"
+        "description": "Deretan derau biru animasi pada 50%",
+        "title": "Blue Noise 50%"
       },
       "anim-blue-noise-i75": {
-        "description": "“Derau biru animasi pada 75%”",
-        "title": "“Blue Noise 75%”"
+        "description": "Derau biru animasi pada 75%",
+        "title": "Blue Noise 75%"
       },
       "anim-brightness": {
-        "description": "“Kecerahan dengan animasi”",
-        "title": "“Kecerahan Animasi”"
+        "description": "Kecerahan dengan animasi",
+        "title": "Kecerahan Animasi"
       },
       "anim-colormode-bw": {
-        "description": "“Lapisan animasi hitam putih”",
-        "title": "“Animasi Hitam Putih”"
+        "description": "Lapisan animasi hitam putih",
+        "title": "Animasi Hitam Putih"
       },
       "anim-colormode-color": {
-        "description": "“Lapisan animasi warna”",
-        "title": "“Warna Animasi”"
+        "description": "Lapisan animasi warna",
+        "title": "Warna Animasi"
       },
       "anim-colormode-grayscale": {
-        "description": "“Lapisan animasi skala abu-abu”",
-        "title": "“Animasi Skala Abu-abu”"
+        "description": "Lapisan animasi skala abu-abu",
+        "title": "Animasi Skala Abu-abu"
       },
       "anim-dithered": {
-        "description": "“Penyebaran kesalahan dengan animasi”",
-        "title": "“Animasi Dithered”"
+        "description": "Penyebaran kesalahan dengan animasi",
+        "title": "Animasi Dithered"
       },
       "anim-duotone": {
-        "description": "“Duoton dengan animasi”",
-        "title": "“Duotone Animasi”"
+        "description": "Duoton dengan animasi",
+        "title": "Duotone Animasi"
       },
       "anim-halftone": {
-        "description": "“Titik halftone dengan animasi”",
-        "title": "“Halftone Animasi”"
+        "description": "Titik halftone dengan animasi",
+        "title": "Halftone Animasi"
       },
       "anim-mosaic": {
-        "description": "“Mosaik dengan animasi”",
-        "title": "“Mosaik Animasi”"
+        "description": "Mosaik dengan animasi",
+        "title": "Mosaik Animasi"
       },
       "blend-classic": {
-        "description": "“Lapisan dithered dengan palet klasik”",
-        "title": "“Campuran Klasik”"
+        "description": "Lapisan dithered dengan palet klasik",
+        "title": "Campuran Klasik"
       },
       "blend-forest": {
-        "description": "“Lapisan dithered dengan palet warna hutan”",
-        "title": "“Campuran Hutan”"
+        "description": "Lapisan dithered dengan palet warna hutan",
+        "title": "Campuran Hutan"
       },
       "blend-navy": {
-        "description": "“Lapisan dithered dengan palet warna biru tua”",
-        "title": "“Campuran Angkatan Laut”"
+        "description": "Lapisan dithered dengan palet warna biru tua",
+        "title": "Campuran Angkatan Laut"
       },
       "blend-wine": {
-        "description": "“Lapisan dithered dengan palet warna anggur”",
-        "title": "“Campuran Anggur”"
+        "description": "Lapisan dithered dengan palet warna anggur",
+        "title": "Campuran Anggur"
       },
       "cmode-blue-noise-bw": {
-        "description": "“Blue Noise in B&W”",
-        "title": "“Blue Noise B&W”"
+        "description": "Blue Noise in B&W",
+        "title": "Blue Noise B&W"
       },
       "cmode-blue-noise-color": {
-        "description": "“Derau Biru dalam Warna”",
-        "title": "“Warna Derau Biru”"
+        "description": "Derau Biru dalam Warna",
+        "title": "Warna Derau Biru"
       },
       "cmode-dithered-color": {
-        "description": "“Berwarna Terbata-bata”",
-        "title": "“Warna Dither”"
+        "description": "Berwarna Terbata-bata",
+        "title": "Warna Dither"
       },
       "cmode-dithered-grayscale": {
-        "description": "“Dithered dalam Skala Abu-abu”",
-        "title": "“Skala Abu-abu yang Di-dither”"
+        "description": "Dithered dalam Skala Abu-abu",
+        "title": "Skala Abu-abu yang Di-dither"
       },
       "cmode-halftone-bw": {
-        "description": "“Halftone dalam Hitam Putih”",
-        "title": "“Halftone Hitam Putih”"
+        "description": "Halftone dalam Hitam Putih",
+        "title": "Halftone Hitam Putih"
       },
       "cmode-halftone-color": {
-        "description": "“Halftone dalam Warna”",
-        "title": "“Warna Halftone”"
+        "description": "Halftone dalam Warna",
+        "title": "Warna Halftone"
       },
       "color-coral": {
-        "description": "“#e85d04 pada #ffe8d6”",
-        "title": "“Karang”"
+        "description": "#e85d04 pada #ffe8d6",
+        "title": "Karang"
       },
       "color-coral-dots": {
-        "description": "“Karang dengan modul titik”",
-        "title": "“Titik Karang”"
+        "description": "Karang dengan modul titik",
+        "title": "Titik Karang"
       },
       "color-crimson": {
-        "description": "“#9d0208 pada #ffccd5”",
-        "title": "“Merah Tua”"
+        "description": "#9d0208 pada #ffccd5",
+        "title": "Merah Tua"
       },
       "color-forest": {
-        "description": "“#1b4332 pada #d8f3dc”",
-        "title": "“Hutan”"
+        "description": "#1b4332 pada #d8f3dc",
+        "title": "Hutan"
       },
       "color-forest-dots": {
-        "description": "“Hutan dengan modul titik”",
-        "title": "“Titik Hutan”"
+        "description": "Hutan dengan modul titik",
+        "title": "Titik Hutan"
       },
       "color-gold": {
-        "description": "“#7f5539 di #ffe8cc”",
-        "title": "“Emas”"
+        "description": "#7f5539 di #ffe8cc",
+        "title": "Emas"
       },
       "color-inverted": {
-        "description": "“#ffffff di #000000”",
-        "title": "“Terbalik”"
+        "description": "#ffffff di #000000",
+        "title": "Terbalik"
       },
       "color-midnight": {
-        "description": "“#1a1a2e di #eef1ff”",
-        "title": "“Tengah Malam”"
+        "description": "#1a1a2e di #eef1ff",
+        "title": "Tengah Malam"
       },
       "color-midnight-dots": {
-        "description": "“Tengah malam dengan modul titik”",
-        "title": "“Titik Tengah Malam”"
+        "description": "Tengah malam dengan modul titik",
+        "title": "Titik Tengah Malam"
       },
       "color-navy": {
-        "description": "“#001d3d pada #a2d2ff”",
-        "title": "“Angkatan Laut”"
+        "description": "#001d3d pada #a2d2ff",
+        "title": "Angkatan Laut"
       },
       "color-ocean": {
-        "description": "“#023e8a di #caf0f8”",
-        "title": "“Samudra”"
+        "description": "#023e8a di #caf0f8",
+        "title": "Samudra"
       },
       "color-ocean-dots": {
-        "description": "“Samudra dengan modul titik”",
-        "title": "“Titik Laut”"
+        "description": "Samudra dengan modul titik",
+        "title": "Titik Laut"
       },
       "color-royal": {
-        "description": "“#4a0080 pada #f5e6ff”",
-        "title": "“Kerajaan”"
+        "description": "#4a0080 pada #f5e6ff",
+        "title": "Kerajaan"
       },
       "color-royal-dots": {
-        "description": "“Royal dengan modul titik”",
-        "title": "“Titik Kerajaan”"
+        "description": "Royal dengan modul titik",
+        "title": "Titik Kerajaan"
       },
       "color-slate": {
-        "description": "“#343a40 pada #e9ecef”",
-        "title": "“Batu Tulis”"
+        "description": "#343a40 pada #e9ecef",
+        "title": "Batu Tulis"
       },
       "color-sunset": {
-        "description": "“#bf0603 di #fff3b0”",
-        "title": "“Matahari Terbenam”"
+        "description": "#bf0603 di #fff3b0",
+        "title": "Matahari Terbenam"
       },
       "color-sunset-dots": {
-        "description": "“Matahari terbenam dengan modul titik”",
-        "title": "“Titik Matahari Terbenam”"
+        "description": "Matahari terbenam dengan modul titik",
+        "title": "Titik Matahari Terbenam"
       },
       "color-teal": {
-        "description": "“#006d77 pada #e0f4f5”",
-        "title": "“Biru kehijauan”"
+        "description": "#006d77 pada #e0f4f5",
+        "title": "Biru kehijauan"
       },
       "combo-anim-dots-halftone": {
-        "description": "“Halftone animasi dengan modul titik”",
-        "title": "“Titik Animasi + Halftone”"
+        "description": "Halftone animasi dengan modul titik",
+        "title": "Titik Animasi + Halftone"
       },
       "combo-anim-rounded-blue-noise": {
-        "description": "“Animasi noise biru dengan bentuk bulat”",
-        "title": "“Animasi Bulat + Derau Biru”"
+        "description": "Animasi noise biru dengan bentuk bulat",
+        "title": "Animasi Bulat + Derau Biru"
       },
       "combo-connected-pixelate-teal": {
-        "description": "“Lapisan berpiksel dengan modul terhubung”",
-        "title": "“Terhubung + Pikselasi Biru Kehijauan”"
+        "description": "Lapisan berpiksel dengan modul terhubung",
+        "title": "Terhubung + Pikselasi Biru Kehijauan"
       },
       "combo-connected-square": {
-        "description": "“Modul terhubung dengan pencari persegi”",
-        "title": "“Terhubung + Persegi”"
+        "description": "Modul terhubung dengan pencari persegi",
+        "title": "Terhubung + Persegi"
       },
       "combo-connected-wave-ocean": {
-        "description": "“Modul terhubung dengan efek gelombang”",
-        "title": "“Terhubung + Gelombang Laut”"
+        "description": "Modul terhubung dengan efek gelombang",
+        "title": "Terhubung + Gelombang Laut"
       },
       "combo-diamond-blue-noise-navy": {
-        "description": "“Modul berlian dengan derau biru”",
-        "title": "“Diamond + Blue Noise Navy”"
+        "description": "Modul berlian dengan derau biru",
+        "title": "Diamond + Blue Noise Navy"
       },
       "combo-diamond-duotone-crimson": {
-        "description": "“Efek duotone dengan modul berlian”",
-        "title": "“Diamond + Duotone Crimson”"
+        "description": "Efek duotone dengan modul berlian",
+        "title": "Diamond + Duotone Crimson"
       },
       "combo-diamond-rounded": {
-        "description": "“Modul berlian dengan pencari bulat”",
-        "title": "“Berlian + Bulat”"
+        "description": "Modul berlian dengan pencari bulat",
+        "title": "Berlian + Bulat"
       },
       "combo-dots-circle": {
-        "description": "“Modul titik dengan pencari lingkaran”",
-        "title": "“Titik + Lingkaran”"
+        "description": "Modul titik dengan pencari lingkaran",
+        "title": "Titik + Lingkaran"
       },
       "combo-dots-extreme-forest": {
-        "description": "“Visibilitas maksimum dengan titik-titik”",
-        "title": "“Titik + Hutan Ekstrem”"
+        "description": "Visibilitas maksimum dengan titik-titik",
+        "title": "Titik + Hutan Ekstrem"
       },
       "combo-dots-halftone-gold": {
-        "description": "“Modul titik dengan lapisan halftone”",
-        "title": "“Titik + Emas Halftone”"
+        "description": "Modul titik dengan lapisan halftone",
+        "title": "Titik + Emas Halftone"
       },
       "combo-dots-outline-slate": {
-        "description": "“Deteksi tepi dengan modul titik”",
-        "title": "“Titik + Garis Luar Papan Tulis”"
+        "description": "Deteksi tepi dengan modul titik",
+        "title": "Titik + Garis Luar Papan Tulis"
       },
       "combo-rounded-dithered-royal": {
-        "description": "“Gaya klasik dengan efek dithering dan pembulatan”",
-        "title": "“Royal yang Dibulatkan + Dithered”"
+        "description": "Gaya klasik dengan efek dithering dan pembulatan",
+        "title": "Royal yang Dibulatkan + Dithered"
       },
       "combo-rounded-mosaic-sunset": {
-        "description": "“Modul membulat dengan lapisan mosaik”",
-        "title": "“Bulat + Matahari Terbenam Mosaik”"
+        "description": "Modul membulat dengan lapisan mosaik",
+        "title": "Bulat + Matahari Terbenam Mosaik"
       },
       "combo-rounded-rounded": {
-        "description": "“Modul membulat dengan pencari yang membulat”",
-        "title": "“Dibulatkan + Dibulatkan”"
+        "description": "Modul membulat dengan pencari yang membulat",
+        "title": "Dibulatkan + Dibulatkan"
       },
       "combo-rounded-subpixel-coral": {
-        "description": "“Rendering subpiksel detail tinggi”",
-        "title": "“Karang Bulat + Subpiksel”"
+        "description": "Rendering subpiksel detail tinggi",
+        "title": "Karang Bulat + Subpiksel"
       },
       "content-email": {
-        "description": "“Tautan Mailto dengan warna karang”",
-        "title": "“Alamat Email”"
+        "description": "Tautan Mailto dengan warna karang",
+        "title": "Alamat Email"
       },
       "content-event": {
-        "description": "“Acara iCal dengan royal bulat”",
-        "title": "“Acara Kalender”"
+        "description": "Acara iCal dengan royal bulat",
+        "title": "Acara Kalender"
       },
       "content-geo": {
-        "description": "“Koordinat peta dengan emas yang terhubung”",
-        "title": "“Lokasi Geografis”"
+        "description": "Koordinat peta dengan emas yang terhubung",
+        "title": "Lokasi Geografis"
       },
       "content-sms": {
-        "description": "“SMS yang sudah diisi dengan warna biru kehijauan berlian”",
-        "title": "“Pesan SMS”"
+        "description": "SMS yang sudah diisi dengan warna biru kehijauan berlian",
+        "title": "Pesan SMS"
       },
       "content-vcard": {
-        "description": "“Kartu kontak dengan gaya biru tua membulat”",
-        "title": "“Kontak vCard”"
+        "description": "Kartu kontak dengan gaya biru tua membulat",
+        "title": "Kontak vCard"
       },
       "content-wifi": {
-        "description": "“Konfigurasi WiFi dengan titik-titik hijau hutan”",
-        "title": "“Jaringan WiFi”"
+        "description": "Konfigurasi WiFi dengan titik-titik hijau hutan",
+        "title": "Jaringan WiFi"
       },
       "dither-adaptive-threshold": {
-        "description": "“Ambang batas adaptif”",
-        "title": "“Adaptif”"
+        "description": "Ambang batas adaptif",
+        "title": "Adaptif"
       },
       "dither-blue-noise": {
-        "title": "“Kebisingan Biru”",
-        "description": "“Ambang batas kebisingan biru”"
+        "title": "Kebisingan Biru",
+        "description": "Ambang batas kebisingan biru"
       },
       "dither-blue-noise-error-diffusion": {
-        "description": "“Kebisingan biru hibrida”",
-        "title": "“Blue Noise + Error”"
+        "description": "Kebisingan biru hibrida",
+        "title": "Blue Noise + Error"
       },
       "dither-error-diffusion": {
-        "description": "“Gaya Floyd-Steinberg”",
-        "title": "“Penyebaran Kesalahan”"
+        "description": "Gaya Floyd-Steinberg",
+        "title": "Penyebaran Kesalahan"
       },
       "dither-kernel-atkinson": {
-        "description": "“Difusi kesalahan Atkinson”",
-        "title": "“Atkinson”"
+        "description": "Difusi kesalahan Atkinson",
+        "title": "Atkinson"
       },
       "dither-kernel-burkes": {
-        "description": "“Penyebaran kesalahan Burkes”",
-        "title": "“Burkes”"
+        "description": "Penyebaran kesalahan Burkes",
+        "title": "Burkes"
       },
       "dither-kernel-floyd-steinberg": {
-        "description": "“Penyebaran kesalahan Floyd-Steinberg”",
-        "title": "“Floyd-Steinberg”"
+        "description": "Penyebaran kesalahan Floyd-Steinberg",
+        "title": "Floyd-Steinberg"
       },
       "dither-kernel-jarvis-judice-ninke": {
-        "description": "“Difusi kesalahan Jarvis-Judice-Ninke”",
-        "title": "“Jarvis-Judice-Ninke”"
+        "description": "Difusi kesalahan Jarvis-Judice-Ninke",
+        "title": "Jarvis-Judice-Ninke"
       },
       "dither-kernel-sierra": {
-        "description": "“Penyebaran kesalahan Sierra”",
-        "title": "“Sierra”"
+        "description": "Penyebaran kesalahan Sierra",
+        "title": "Sierra"
       },
       "dither-kernel-stucki": {
-        "description": "“Difusi kesalahan terjebak”",
-        "title": "“Stucki”"
+        "description": "Difusi kesalahan terjebak",
+        "title": "Stucki"
       },
       "dither-ordered-bayer": {
-        "description": "“Dithering matriks Bayer”",
-        "title": "“Bayer memesan”"
+        "description": "Dithering matriks Bayer",
+        "title": "Bayer memesan"
       },
       "dither-perceptual": {
-        "description": "“Berbobot Luminansi”",
-        "title": "“Persepsi”"
+        "description": "Berbobot Luminansi",
+        "title": "Persepsi"
       },
       "dither-strength-100": {
-        "description": "“Kekuatan Dither pada 100%”",
-        "title": "“Kekuatan 100%”"
+        "description": "Kekuatan Dither pada 100%",
+        "title": "Kekuatan 100%"
       },
       "dither-strength-20": {
-        "description": "“Kekuatan Dither pada 20%”",
-        "title": "“Kekuatan 20%”"
+        "description": "Kekuatan Dither pada 20%",
+        "title": "Kekuatan 20%"
       },
       "dither-strength-40": {
-        "description": "“Kekuatan Dither pada 40%”",
-        "title": "“Kekuatan 40%”"
+        "description": "Kekuatan Dither pada 40%",
+        "title": "Kekuatan 40%"
       },
       "dither-strength-60": {
-        "description": "“Kekuatan Dither pada 60%”",
-        "title": "“Kekuatan 60%”"
+        "description": "Kekuatan Dither pada 60%",
+        "title": "Kekuatan 60%"
       },
       "dither-strength-80": {
-        "description": "“Kekuatan Dither pada 80%”",
-        "title": "“Kekuatan 80%”"
+        "description": "Kekuatan Dither pada 80%",
+        "title": "Kekuatan 80%"
       },
       "dither-white-noise": {
-        "description": "“Ambang batas kebisingan acak”",
-        "title": "“Kebisingan Putih”"
+        "description": "Ambang batas kebisingan acak",
+        "title": "Kebisingan Putih"
       },
       "enc-ecc-h": {
-        "description": "“Koreksi kesalahan 30%”",
-        "title": "“ECC High”"
+        "description": "Koreksi kesalahan 30%",
+        "title": "ECC High"
       },
       "enc-ecc-l": {
-        "description": "“Koreksi kesalahan 7%”",
-        "title": "“ECC Rendah”"
+        "description": "Koreksi kesalahan 7%",
+        "title": "ECC Rendah"
       },
       "enc-ecc-m": {
-        "description": "“Koreksi kesalahan 15%”",
-        "title": "“ECC Sedang”"
+        "description": "Koreksi kesalahan 15%",
+        "title": "ECC Sedang"
       },
       "enc-ecc-q": {
-        "description": "“Koreksi kesalahan 25%”",
-        "title": "“Kuartil ECC”"
+        "description": "Koreksi kesalahan 25%",
+        "title": "Kuartil ECC"
       },
       "enc-v0": {
-        "description": "“Pemilihan versi otomatis”",
-        "title": "“Versi Otomatis”"
+        "description": "Pemilihan versi otomatis",
+        "title": "Versi Otomatis"
       },
       "enc-v12": {
-        "description": "“Kode QR Versi 12”",
-        "title": "“Versi 12”"
+        "description": "Kode QR Versi 12",
+        "title": "Versi 12"
       },
       "enc-v6": {
-        "description": "“Terbaik untuk overlay (tanpa mata di tengah)”",
-        "title": "“Versi 6”"
+        "description": "Terbaik untuk overlay (tanpa mata di tengah)",
+        "title": "Versi 6"
       },
       "enc-v6-h": {
-        "description": "“Versi 6 dengan koreksi kesalahan tinggi”",
-        "title": "“V6 + ECC Tinggi”"
+        "description": "Versi 6 dengan koreksi kesalahan tinggi",
+        "title": "V6 + ECC Tinggi"
       },
       "enc-v6-l": {
-        "description": "“Versi 6 dengan koreksi kesalahan rendah”",
-        "title": "“V6 + ECC Rendah”"
+        "description": "Versi 6 dengan koreksi kesalahan rendah",
+        "title": "V6 + ECC Rendah"
       },
       "enc-v9": {
-        "description": "“Kode QR Versi 9”",
-        "title": "“Versi 9”"
+        "description": "Kode QR Versi 9",
+        "title": "Versi 9"
       },
       "enc-v9-h": {
-        "description": "“Versi 9 dengan koreksi kesalahan tinggi”",
-        "title": "“V9 + ECC Tinggi”"
+        "description": "Versi 9 dengan koreksi kesalahan tinggi",
+        "title": "V9 + ECC Tinggi"
       },
       "enc-v9-l": {
-        "description": "“Versi 9 dengan koreksi kesalahan rendah”",
-        "title": "“V9 + ECC Rendah”"
+        "description": "Versi 9 dengan koreksi kesalahan rendah",
+        "title": "V9 + ECC Rendah"
       },
       "finder-circle": {
-        "description": "“Pola pencari lingkaran”",
-        "title": "“Pencari Lingkaran”"
+        "description": "Pola pencari lingkaran",
+        "title": "Pencari Lingkaran"
       },
       "finder-rounded": {
-        "description": "“Pola pencari bulat”",
-        "title": "“Pencari Bulat”"
+        "description": "Pola pencari bulat",
+        "title": "Pencari Bulat"
       },
       "finder-square": {
-        "description": "“Pola pencari persegi”",
-        "title": "“Pencari Persegi”"
+        "description": "Pola pencari persegi",
+        "title": "Pencari Persegi"
       },
       "halftone-classic": {
-        "description": "“Halftone dengan palet klasik”",
-        "title": "“Halftone Klasik”"
+        "description": "Halftone dengan palet klasik",
+        "title": "Halftone Klasik"
       },
       "halftone-forest": {
-        "description": "“Halftone dengan palet warna hutan”",
-        "title": "“Halftone Hutan”"
+        "description": "Halftone dengan palet warna hutan",
+        "title": "Halftone Hutan"
       },
       "halftone-navy": {
-        "description": "“Halftone dengan palet warna navy”",
-        "title": "“Halftone Biru Tua”"
+        "description": "Halftone dengan palet warna navy",
+        "title": "Halftone Biru Tua"
       },
       "halftone-wine": {
-        "description": "“Halftone dengan palet warna anggur”",
-        "title": "“Warna Setengah Nada Anggur”"
+        "description": "Halftone dengan palet warna anggur",
+        "title": "Warna Setengah Nada Anggur"
       },
       "img-blend": {
-        "description": "“Lapisan campuran warna”",
-        "title": "“Mode Campuran”"
+        "description": "Lapisan campuran warna",
+        "title": "Mode Campuran"
       },
       "img-blue-noise": {
-        "title": "“Kebisingan Biru”",
-        "description": "“Pengacakan ambang batas derau biru”"
+        "title": "Kebisingan Biru",
+        "description": "Pengacakan ambang batas derau biru"
       },
       "img-brightness": {
-        "description": "“Modul berbasis kecerahan”",
-        "title": "“Kecerahan”"
+        "description": "Modul berbasis kecerahan",
+        "title": "Kecerahan"
       },
       "img-colormode-bw": {
-        "description": "“Pengolahan hitam putih”",
-        "title": "“Hitam & Putih”"
+        "description": "Pengolahan hitam putih",
+        "title": "Hitam & Putih"
       },
       "img-colormode-color": {
-        "description": "“Pengolahan warna”",
-        "title": "“Warna”"
+        "description": "Pengolahan warna",
+        "title": "Warna"
       },
       "img-colormode-grayscale": {
-        "description": "“Pemrosesan skala abu-abu”",
-        "title": "“Skala Abu-abu”"
+        "description": "Pemrosesan skala abu-abu",
+        "title": "Skala Abu-abu"
       },
       "img-dithered": {
-        "description": "“Pengacakan difusi kesalahan”",
-        "title": "“Bimbang”"
+        "description": "Pengacakan difusi kesalahan",
+        "title": "Bimbang"
       },
       "img-dithered-i100": {
-        "description": "“Diragukan pada intensitas 100%”",
-        "title": "“Ragu-ragu 100%”"
+        "description": "Diragukan pada intensitas 100%",
+        "title": "Ragu-ragu 100%"
       },
       "img-dithered-i50": {
-        "description": "“Ditarik-tarik pada intensitas 50%”",
-        "title": "“Ragu-ragu 50%”"
+        "description": "Ditarik-tarik pada intensitas 50%",
+        "title": "Ragu-ragu 50%"
       },
       "img-dithered-i75": {
-        "description": "“Diragukan pada intensitas 75%”",
-        "title": "“Ragu-ragu 75%”"
+        "description": "Diragukan pada intensitas 75%",
+        "title": "Ragu-ragu 75%"
       },
       "img-duotone": {
-        "description": "“Pemetaan warna dua nada”",
-        "title": "“Duotone”"
+        "description": "Pemetaan warna dua nada",
+        "title": "Duotone"
       },
       "img-extreme": {
-        "description": "“Visibilitas gambar maksimum”",
-        "title": "“Ekstrem”"
+        "description": "Visibilitas gambar maksimum",
+        "title": "Ekstrem"
       },
       "img-halftone": {
-        "description": "“Titik halftone klasik”",
-        "title": "“Halftone”"
+        "description": "Titik halftone klasik",
+        "title": "Halftone"
       },
       "img-mosaic": {
-        "description": "“Efek ubin mosaik”",
-        "title": "“Mosaik”"
+        "description": "Efek ubin mosaik",
+        "title": "Mosaik"
       },
       "img-outline": {
-        "description": "“Lapisan deteksi tepi”",
-        "title": "“Garis Besar”"
+        "description": "Lapisan deteksi tepi",
+        "title": "Garis Besar"
       },
       "img-pixelate": {
-        "description": "“Efek overlay berpiksel”",
-        "title": "“Pixelate”"
+        "description": "Efek overlay berpiksel",
+        "title": "Pixelate"
       },
       "img-subpixel": {
-        "description": "“Rendering subpiksel detail tinggi”",
-        "title": "“Subpiksel”"
+        "description": "Rendering subpiksel detail tinggi",
+        "title": "Subpiksel"
       },
       "img-wave": {
-        "title": "“Gelombang”",
-        "description": "“Efek distorsi bergelombang”"
+        "title": "Gelombang",
+        "description": "Efek distorsi bergelombang"
       },
       "mosaic-classic": {
-        "description": "“Mosaik dengan palet klasik”",
-        "title": "“Mosaik Klasik”"
+        "description": "Mosaik dengan palet klasik",
+        "title": "Mosaik Klasik"
       },
       "mosaic-forest": {
-        "description": "“Mosaik dengan palet warna hutan”",
-        "title": "“Mosaik Hutan”"
+        "description": "Mosaik dengan palet warna hutan",
+        "title": "Mosaik Hutan"
       },
       "mosaic-navy": {
-        "description": "“Mosaik dengan palet warna biru tua”",
-        "title": "“Mosaik Angkatan Laut”"
+        "description": "Mosaik dengan palet warna biru tua",
+        "title": "Mosaik Angkatan Laut"
       },
       "mosaic-wine": {
-        "description": "“Mosaik dengan palet warna anggur”",
-        "title": "“Mosaik Anggur”"
+        "description": "Mosaik dengan palet warna anggur",
+        "title": "Mosaik Anggur"
       },
       "plain-basic": {
-        "description": "“Kode QR standar”",
-        "title": "“Klasik”"
+        "description": "Kode QR standar",
+        "title": "Klasik"
       },
       "plain-ecc-l": {
-        "description": "“Koreksi kesalahan minimal”",
-        "title": "“ECC Rendah (7%)”"
+        "description": "Koreksi kesalahan minimal",
+        "title": "ECC Rendah (7%)"
       },
       "plain-ecc-q": {
-        "description": "“Koreksi kesalahan tingkat menengah-tinggi”",
-        "title": "“Kuartil ECC (25%)”"
+        "description": "Koreksi kesalahan tingkat menengah-tinggi",
+        "title": "Kuartil ECC (25%)"
       },
       "plain-v12": {
-        "title": "“Versi 12”",
-        "description": "“Besar dengan banyak penyelarasan”"
+        "title": "Versi 12",
+        "description": "Besar dengan banyak penyelarasan"
       },
       "plain-v6": {
-        "title": "“Versi 6”",
-        "description": "“Lebih besar tanpa mata di tengah”"
+        "title": "Versi 6",
+        "description": "Lebih besar tanpa mata di tengah"
       },
       "plain-v9": {
-        "title": "“Versi 9”",
-        "description": "“Lebih besar lagi dengan mata di tengah”"
+        "title": "Versi 9",
+        "description": "Lebih besar lagi dengan mata di tengah"
       },
       "prep-blur-1": {
-        "description": "“1px gaussian blur”",
-        "title": "“Buram 1px”"
+        "description": "1px gaussian blur",
+        "title": "Buram 1px"
       },
       "prep-blur-2": {
-        "description": "“blur gaussian 2px”",
-        "title": "“Buram 2px”"
+        "description": "blur gaussian 2px",
+        "title": "Buram 2px"
       },
       "prep-blur-4": {
-        "description": "“4px gaussian blur”",
-        "title": "“Buram 4px”"
+        "description": "4px gaussian blur",
+        "title": "Buram 4px"
       },
       "prep-brightness-n25": {
-        "description": "“Kecerahan disesuaikan menjadi lebih gelap”",
-        "title": "“Kecerahan -25”"
+        "description": "Kecerahan disesuaikan menjadi lebih gelap",
+        "title": "Kecerahan -25"
       },
       "prep-brightness-n50": {
-        "description": "“Kecerahan disesuaikan menjadi lebih gelap”",
-        "title": "“Kecerahan -50”"
+        "description": "Kecerahan disesuaikan menjadi lebih gelap",
+        "title": "Kecerahan -50"
       },
       "prep-brightness-p25": {
-        "description": "“Kecerahan disesuaikan menjadi lebih terang”",
-        "title": "“Kecerahan +25”"
+        "description": "Kecerahan disesuaikan menjadi lebih terang",
+        "title": "Kecerahan +25"
       },
       "prep-brightness-p50": {
-        "description": "“Kecerahan disesuaikan menjadi lebih terang”",
-        "title": "“Kecerahan +50”"
+        "description": "Kecerahan disesuaikan menjadi lebih terang",
+        "title": "Kecerahan +50"
       },
       "prep-contrast-n50": {
-        "description": "“Kontras rendah”",
-        "title": "“Kontras -50”"
+        "description": "Kontras rendah",
+        "title": "Kontras -50"
       },
       "prep-contrast-p100": {
-        "description": "“Kontras tinggi”",
-        "title": "“Kontras +100”"
+        "description": "Kontras tinggi",
+        "title": "Kontras +100"
       },
       "prep-contrast-p50": {
-        "description": "“Kontras tinggi”",
-        "title": "“Kontras +50”"
+        "description": "Kontras tinggi",
+        "title": "Kontras +50"
       },
       "prep-edge-canny": {
-        "description": "“Deteksi tepi Canny”",
-        "title": "“Kecerdasan Tepi”"
+        "description": "Deteksi tepi Canny",
+        "title": "Kecerdasan Tepi"
       },
       "prep-edge-sobel": {
-        "description": "“Deteksi tepi Sobel”",
-        "title": "“Edge Sobel”"
+        "description": "Deteksi tepi Sobel",
+        "title": "Edge Sobel"
       },
       "prep-gamma-05": {
-        "description": "“Koreksi Gamma 0,5”",
-        "title": "“Gamma 0,5”"
+        "description": "Koreksi Gamma 0,5",
+        "title": "Gamma 0,5"
       },
       "prep-gamma-15": {
-        "description": "“Koreksi Gamma 1.5”",
-        "title": "“Gamma 1.5”"
+        "description": "Koreksi Gamma 1.5",
+        "title": "Gamma 1.5"
       },
       "prep-gamma-20": {
-        "description": "“Koreksi Gamma 2.0”",
-        "title": "“Gamma 2.0”"
+        "description": "Koreksi Gamma 2.0",
+        "title": "Gamma 2.0"
       },
       "prep-hue-90": {
-        "description": "“Rotasi Hue 90 derajat”",
-        "title": "“Hue +90°”"
+        "description": "Rotasi Hue 90 derajat",
+        "title": "Hue +90°"
       },
       "prep-invert": {
-        "title": "“Terbalik”",
-        "description": "“Warna terbalik”"
+        "title": "Terbalik",
+        "description": "Warna terbalik"
       },
       "prep-posterize-2": {
-        "description": "“2 tingkat warna”",
-        "title": "“Posterisasi 2”"
+        "description": "2 tingkat warna",
+        "title": "Posterisasi 2"
       },
       "prep-posterize-4": {
-        "description": "“4 tingkat warna”",
-        "title": "“Posterisasi 4”"
+        "description": "4 tingkat warna",
+        "title": "Posterisasi 4"
       },
       "prep-posterize-8": {
-        "description": "“8 tingkat warna”",
-        "title": "“Posterisasi 8”"
+        "description": "8 tingkat warna",
+        "title": "Posterisasi 8"
       },
       "prep-saturation-n100": {
-        "description": "“Tidak Jenuh”",
-        "title": "“Saturasi -100”"
+        "description": "Tidak Jenuh",
+        "title": "Saturasi -100"
       },
       "prep-saturation-n50": {
-        "description": "“Pengurangan saturasi”",
-        "title": "“Saturasi -50”"
+        "description": "Pengurangan saturasi",
+        "title": "Saturasi -50"
       },
       "prep-saturation-p100": {
-        "description": "“Terlalu Jenuh”",
-        "title": "“Saturasi +100”"
+        "description": "Terlalu Jenuh",
+        "title": "Saturasi +100"
       },
       "prep-saturation-p50": {
-        "description": "“Terlalu Jenuh”",
-        "title": "“Saturasi +50”"
+        "description": "Terlalu Jenuh",
+        "title": "Saturasi +50"
       },
       "prep-sharpen-100": {
-        "description": "“Pengasahan 100%”",
-        "title": "“Pertajam 100%”"
+        "description": "Pengasahan 100%",
+        "title": "Pertajam 100%"
       },
       "prep-sharpen-25": {
-        "description": "“Pengasahan 25%”",
-        "title": "“Pertajam 25%”"
+        "description": "Pengasahan 25%",
+        "title": "Pertajam 25%"
       },
       "prep-sharpen-50": {
-        "description": "“Pengasahan 50%”",
-        "title": "“Pertajam 50%”"
+        "description": "Pengasahan 50%",
+        "title": "Pertajam 50%"
       },
       "prep-threshold-128": {
-        "description": "“Ambang batas biner pada 128”",
-        "title": "“Ambang Batas 128”"
+        "description": "Ambang batas biner pada 128",
+        "title": "Ambang Batas 128"
       },
       "prep-threshold-192": {
-        "description": "“Ambang batas biner pada 192”",
-        "title": "“Ambang Batas 192”"
+        "description": "Ambang batas biner pada 192",
+        "title": "Ambang Batas 192"
       },
       "prep-threshold-64": {
-        "description": "“Ambang batas biner pada 64”",
-        "title": "“Ambang Batas 64”"
+        "description": "Ambang batas biner pada 64",
+        "title": "Ambang Batas 64"
       },
       "style-connected": {
-        "description": "“Gaya modul terhubung”",
-        "title": "“Modul Terhubung”"
+        "description": "Gaya modul terhubung",
+        "title": "Modul Terhubung"
       },
       "style-diamond": {
-        "description": "“Gaya modul berlian”",
-        "title": "“Modul Berlian”"
+        "description": "Gaya modul berlian",
+        "title": "Modul Berlian"
       },
       "style-dots": {
-        "description": "“Gaya modul titik”",
-        "title": "“Modul Titik”"
+        "description": "Gaya modul titik",
+        "title": "Modul Titik"
       },
       "style-rounded": {
-        "description": "“Gaya modul membulat”",
-        "title": "“Modul Bulat”"
+        "description": "Gaya modul membulat",
+        "title": "Modul Bulat"
       },
       "style-square": {
-        "description": "“Gaya modul persegi”",
-        "title": "“Modul Persegi”"
+        "description": "Gaya modul persegi",
+        "title": "Modul Persegi"
       }
     },
-    "plain": "“Polos”",
-    "powerCombos": "“Kombo Kuat”",
-    "preprocessing": "“Praproses”",
+    "plain": "Polos",
+    "powerCombos": "Kombo Kuat",
+    "preprocessing": "Praproses",
     "sections": {
       "animation-overlay": {
-        "description": "“Lapisan GIF animasi dengan berbagai mode pencampuran”",
-        "title": "“Lapisan Animasi”"
+        "description": "Lapisan GIF animasi dengan berbagai mode pencampuran",
+        "title": "Lapisan Animasi"
       },
       "blend-modes": {
-        "title": "“Mode Pencampuran”",
-        "description": "“Perpaduan warna berbeda dengan overlay gambar”"
+        "title": "Mode Pencampuran",
+        "description": "Perpaduan warna berbeda dengan overlay gambar"
       },
       "color-modes": {
-        "description": "“Pemrosesan warna, skala abu-abu, dan hitam putih”",
-        "title": "“Pengolahan Warna”"
+        "description": "Pemrosesan warna, skala abu-abu, dan hitam putih",
+        "title": "Pengolahan Warna"
       },
       "colors": {
-        "description": "“Skema warna dan palet tematik”",
-        "title": "“Warna & Tema”"
+        "description": "Skema warna dan palet tematik",
+        "title": "Warna & Tema"
       },
       "content-types": {
-        "title": "“Jenis Konten”",
-        "description": "“Berbagai format muatan data - vCard, WiFi, Email, SMS, Geo, Kalender”"
+        "title": "Jenis Konten",
+        "description": "Berbagai format muatan data - vCard, WiFi, Email, SMS, Geo, Kalender"
       },
       "dithering": {
-        "description": "“Metode dithering yang berbeda dan kernel difusi kesalahan”",
-        "title": "“Algoritma Dithering”"
+        "description": "Metode dithering yang berbeda dan kernel difusi kesalahan",
+        "title": "Algoritma Dithering"
       },
       "encoding": {
-        "description": "“Berbagai versi QR dan tingkat koreksi kesalahan”",
-        "title": "“Pengkodean QR”"
+        "description": "Berbagai versi QR dan tingkat koreksi kesalahan",
+        "title": "Pengkodean QR"
       },
       "image-overlay": {
-        "description": "“Lapisan gambar statis dengan mode pencampuran yang berbeda”",
-        "title": "“Tumpang Tindih Gambar”"
+        "description": "Lapisan gambar statis dengan mode pencampuran yang berbeda",
+        "title": "Tumpang Tindih Gambar"
       },
       "plain": {
-        "description": "“Kode QR standar tanpa overlay - berbagai versi dan koreksi kesalahan”",
-        "title": "“Kode QR Biasa”"
+        "description": "Kode QR standar tanpa overlay - berbagai versi dan koreksi kesalahan",
+        "title": "Kode QR Biasa"
       },
       "power-combos": {
-        "title": "“Kombo Kuat”",
-        "description": "“Kombinasi multi-fitur yang mencolok yang menampilkan kemampuan ANQR”"
+        "title": "Kombo Kuat",
+        "description": "Kombinasi multi-fitur yang mencolok yang menampilkan kemampuan ANQR"
       },
       "preprocessing": {
-        "description": "“Kecerahan, kontras, gamma, keburaman, penajaman, posterisasi, deteksi tepi”",
-        "title": "“Praproses Gambar”"
+        "description": "Kecerahan, kontras, gamma, keburaman, penajaman, posterisasi, deteksi tepi",
+        "title": "Praproses Gambar"
       },
       "styles": {
-        "description": "“Gaya visual berbeda untuk modul dan pola pencari”",
-        "title": "“Gaya Modul & Pencari”"
+        "description": "Gaya visual berbeda untuk modul dan pola pencari",
+        "title": "Gaya Modul & Pencari"
       }
     },
-    "showAll": "“Tampilkan Semua”",
-    "styles": "“Gaya”",
-    "subtitle": "“Jelajahi contoh kode QR yang dibuat dengan ANQR”",
-    "title": "“Galeri Kode QR”",
-    "tryThis": "“Cobalah ini”"
+    "showAll": "Tampilkan Semua",
+    "styles": "Gaya",
+    "subtitle": "Jelajahi contoh kode QR yang dibuat dengan ANQR",
+    "title": "Galeri Kode QR",
+    "tryThis": "Cobalah ini"
   },
   "header": {
-    "close": "“Tutup”",
-    "copied": "“Disalin!”",
-    "reset": "“Reset”",
-    "copyLink": "“Salin Tautan”",
-    "darkMode": "“Beralih ke mode gelap”",
-    "export": "“Ekspor”",
-    "lightMode": "“Beralih ke mode terang”",
-    "searchSettings": "“Pengaturan pencarian…”",
-    "share": "“Bagikan”"
+    "close": "Tutup",
+    "copied": "Disalin!",
+    "reset": "Reset",
+    "copyLink": "Salin Tautan",
+    "darkMode": "Beralih ke mode gelap",
+    "export": "Ekspor",
+    "lightMode": "Beralih ke mode terang",
+    "searchSettings": "Pengaturan pencarian…",
+    "share": "Bagikan"
   },
   "hints": {
-    "moduleJitterWarning": "“⚠️ Dapat memengaruhi kemampuan pemindaian”",
-    "alignmentStyle": "“Gaya pola penyelarasan (digunakan dalam kode QR yang lebih besar)”",
-    "appLinkNote": "“Membuka konten tertentu di dalam aplikasi seluler”",
-    "autoDetect": "“Deteksi otomatis (membutuhkan v{{version}}+ untuk konten saat ini)”",
-    "autoMinVersion": "“0 = Otomatis, min v{{version}} untuk konten saat ini”",
-    "bgColorHex": "“Kode heksadesimal warna latar belakang”",
-    "bizcardLegacy": "“Format lama - pertimbangkan untuk menggunakan vCard sebagai gantinya”",
-    "bluetoothNote": "“Catatan: Pemasangan Bluetooth melalui QR bersifat spesifik vendor dan mungkin tidak berfungsi pada semua perangkat”",
-    "bounceAnimation": "“Putar animasi maju lalu mundur (ping-pong)”",
-    "calendarNote": "“Berlangganan umpan kalender bersama”",
-    "contrastGuard": "“Pastikan rasio kontras minimum antara latar depan dan latar belakang”",
-    "cornerRadius": "“Persentase radius sudut untuk modul bulat (0-100%)”",
-    "crispEdges": "“Gunakan rendering piksel untuk tepi modul yang tajam”",
-    "customNote": "“Masukkan data mentah dalam format apa pun. Tidak ada validasi atau pemformatan yang akan diterapkan.”",
-    "dotRotation": "“Putar modul gaya titik (0-360 derajat)”",
-    "encodingMode": "“Mode pengkodean data - Secara otomatis memilih mode yang paling efisien”",
-    "enforceMinQuietZone": "“Terapkan zona tenang minimal 4 modul untuk keandalan pemindaian yang lebih baik”",
-    "enterTextContent": "“Masukkan isi teks yang akan dikodekan ke dalam kode QR”",
-    "enterUrlContent": "“Masukkan URL yang akan dienkode dalam kode QR”",
-    "epcSepaNote": "“Kode QR Dewan Pembayaran Eropa untuk transfer kredit SEPA”",
-    "errorCorrection": "“Tingkat koreksi kesalahan - lebih tinggi = lebih tahan terhadap kerusakan tetapi kode QR lebih besar”",
-    "extraBorder": "“Modul perbatasan tambahan di luar zona tenang (0-10)”",
-    "eyeInnerStyle": "“Gaya persegi bagian dalam pola pencari”",
-    "eyeOuterStyle": "“Gaya cincin luar pola pencari”",
-    "eyeScale": "“Pola pencari skala relatif terhadap ukuran defaultnya (50-150%)”",
-    "fgColorHex": "“Kode heksadesimal warna latar depan”",
-    "finderStyle": "“Gaya pola pencari sudut”",
-    "forceHttps": "“Konversi URL HTTP ke HTTPS secara otomatis”",
-    "frameStyle": "“Tambahkan bingkai dekoratif di sekitar kode QR”",
-    "frameText": "“Teks yang akan ditampilkan pada bingkai”",
-    "gapMode": "“Bagaimana celah antar modul ditampilkan”",
-    "gradient": "“Terapkan efek gradien pada kode QR”",
-    "gs1Note": "“GS1 Digital Link untuk identifikasi dan ketertelusuran produk”",
-    "higherEccLargerQr": "“Semakin tinggi = semakin besar ketahanan terhadap kerusakan, QR semakin besar”",
-    "loopAnimation": "“Animasi berulang terus menerus”",
-    "maxLengthGuard": "“Mencegah pengkodean konten yang melebihi kapasitas kode QR”",
-    "minContrastRatio": "“Rasio kontras minimum yang harus diberlakukan (1-21, WCAG AA mensyaratkan 4,5:1)”",
-    "moduleGap": "“Selisih antar modul dalam persentase (0-30%)”",
-    "moduleSize": "“Ukuran setiap modul kode QR dalam piksel (2-20px)”",
-    "moduleStyle": "“Gaya visual modul kode QR”",
-    "normalizeNewlines": "“Mengonversi berbagai format baris baru ke format standar”",
-    "outputFormat": "“Pilih format file output untuk ekspor”",
-    "paynowNote": "“Sistem pembayaran cepat Singapura”",
-    "perModuleColor": "“Cara menetapkan warna pada masing-masing modul”",
-    "pickBgColor": "“Klik untuk memilih warna latar belakang”",
-    "pickFgColor": "“Klik untuk memilih warna latar depan”",
-    "pixNote": "“Sistem pembayaran instan Brasil”",
-    "pixelSnap": "“Cara menempelkan posisi modul ke batas piksel”",
-    "promptpayNote": "“Sistem pembayaran elektronik nasional Thailand”",
-    "qrVersion": "“Versi kode QR (0=otomatis, 1-40 meningkatkan ukuran dan kapasitas)”",
-    "quietZone": "“Margin zona tenang di sekitar kode QR (0-10 modul, disarankan: 4+)”",
-    "rsvpNote": "“Tautan ke formulir RSVP online atau halaman pendaftaran acara”",
-    "safetyMode": "“Mode analisis keamanan - bagaimana cara memeriksa keterbacaan kode QR secara ketat”",
-    "selectContentType": "“Pilih jenis konten yang akan dikodekan dalam kode QR”",
-    "shortLinkNote": "“Gunakan layanan pemendek URL untuk kode QR dinamis/yang dapat dilacak”",
-    "timingStyle": "“Gaya pola pengaturan waktu (garis horizontal dan vertikal)”",
-    "transparentBg": "“Buat latar belakang transparan alih-alih menggunakan warna latar belakang”",
-    "trimWhitespace": "“Hapus spasi di awal dan akhir”",
-    "upiNote": "“Antarmuka Pembayaran Terpadu untuk India”",
-    "utmCampaign": "“Parameter kampanye UTM untuk pelacakan kampanye”",
-    "utmMedium": "“Parameter menengah UTM untuk pelacakan kampanye”",
-    "utmSource": "“Parameter sumber UTM untuk pelacakan kampanye”",
-    "validateInput": "“Validasi data masukan sebelum pengkodean”",
-    "versionTooLow": "“⚠️ Versi terlalu rendah! Versi minimum v{{version}} diperlukan”"
+    "moduleJitterWarning": "⚠️ Dapat memengaruhi kemampuan pemindaian",
+    "alignmentStyle": "Gaya pola penyelarasan (digunakan dalam kode QR yang lebih besar)",
+    "appLinkNote": "Membuka konten tertentu di dalam aplikasi seluler",
+    "autoDetect": "Deteksi otomatis (membutuhkan v{{version}}+ untuk konten saat ini)",
+    "autoMinVersion": "0 = Otomatis, min v{{version}} untuk konten saat ini",
+    "bgColorHex": "Kode heksadesimal warna latar belakang",
+    "bizcardLegacy": "Format lama - pertimbangkan untuk menggunakan vCard sebagai gantinya",
+    "bluetoothNote": "Catatan: Pemasangan Bluetooth melalui QR bersifat spesifik vendor dan mungkin tidak berfungsi pada semua perangkat",
+    "bounceAnimation": "Putar animasi maju lalu mundur (ping-pong)",
+    "calendarNote": "Berlangganan umpan kalender bersama",
+    "contrastGuard": "Pastikan rasio kontras minimum antara latar depan dan latar belakang",
+    "cornerRadius": "Persentase radius sudut untuk modul bulat (0-100%)",
+    "crispEdges": "Gunakan rendering piksel untuk tepi modul yang tajam",
+    "customNote": "Masukkan data mentah dalam format apa pun. Tidak ada validasi atau pemformatan yang akan diterapkan.",
+    "dotRotation": "Putar modul gaya titik (0-360 derajat)",
+    "encodingMode": "Mode pengkodean data - Secara otomatis memilih mode yang paling efisien",
+    "enforceMinQuietZone": "Terapkan zona tenang minimal 4 modul untuk keandalan pemindaian yang lebih baik",
+    "enterTextContent": "Masukkan isi teks yang akan dikodekan ke dalam kode QR",
+    "enterUrlContent": "Masukkan URL yang akan dienkode dalam kode QR",
+    "epcSepaNote": "Kode QR Dewan Pembayaran Eropa untuk transfer kredit SEPA",
+    "errorCorrection": "Tingkat koreksi kesalahan - lebih tinggi = lebih tahan terhadap kerusakan tetapi kode QR lebih besar",
+    "extraBorder": "Modul perbatasan tambahan di luar zona tenang (0-10)",
+    "eyeInnerStyle": "Gaya persegi bagian dalam pola pencari",
+    "eyeOuterStyle": "Gaya cincin luar pola pencari",
+    "eyeScale": "Pola pencari skala relatif terhadap ukuran defaultnya (50-150%)",
+    "fgColorHex": "Kode heksadesimal warna latar depan",
+    "finderStyle": "Gaya pola pencari sudut",
+    "forceHttps": "Konversi URL HTTP ke HTTPS secara otomatis",
+    "frameStyle": "Tambahkan bingkai dekoratif di sekitar kode QR",
+    "frameText": "Teks yang akan ditampilkan pada bingkai",
+    "gapMode": "Bagaimana celah antar modul ditampilkan",
+    "gradient": "Terapkan efek gradien pada kode QR",
+    "gs1Note": "GS1 Digital Link untuk identifikasi dan ketertelusuran produk",
+    "higherEccLargerQr": "Semakin tinggi = semakin besar ketahanan terhadap kerusakan, QR semakin besar",
+    "loopAnimation": "Animasi berulang terus menerus",
+    "maxLengthGuard": "Mencegah pengkodean konten yang melebihi kapasitas kode QR",
+    "minContrastRatio": "Rasio kontras minimum yang harus diberlakukan (1-21, WCAG AA mensyaratkan 4,5:1)",
+    "moduleGap": "Selisih antar modul dalam persentase (0-30%)",
+    "moduleSize": "Ukuran setiap modul kode QR dalam piksel (2-20px)",
+    "moduleStyle": "Gaya visual modul kode QR",
+    "normalizeNewlines": "Mengonversi berbagai format baris baru ke format standar",
+    "outputFormat": "Pilih format file output untuk ekspor",
+    "paynowNote": "Sistem pembayaran cepat Singapura",
+    "perModuleColor": "Cara menetapkan warna pada masing-masing modul",
+    "pickBgColor": "Klik untuk memilih warna latar belakang",
+    "pickFgColor": "Klik untuk memilih warna latar depan",
+    "pixNote": "Sistem pembayaran instan Brasil",
+    "pixelSnap": "Cara menempelkan posisi modul ke batas piksel",
+    "promptpayNote": "Sistem pembayaran elektronik nasional Thailand",
+    "qrVersion": "Versi kode QR (0=otomatis, 1-40 meningkatkan ukuran dan kapasitas)",
+    "quietZone": "Margin zona tenang di sekitar kode QR (0-10 modul, disarankan: 4+)",
+    "rsvpNote": "Tautan ke formulir RSVP online atau halaman pendaftaran acara",
+    "safetyMode": "Mode analisis keamanan - bagaimana cara memeriksa keterbacaan kode QR secara ketat",
+    "selectContentType": "Pilih jenis konten yang akan dikodekan dalam kode QR",
+    "shortLinkNote": "Gunakan layanan pemendek URL untuk kode QR dinamis/yang dapat dilacak",
+    "timingStyle": "Gaya pola pengaturan waktu (garis horizontal dan vertikal)",
+    "transparentBg": "Buat latar belakang transparan alih-alih menggunakan warna latar belakang",
+    "trimWhitespace": "Hapus spasi di awal dan akhir",
+    "upiNote": "Antarmuka Pembayaran Terpadu untuk India",
+    "utmCampaign": "Parameter kampanye UTM untuk pelacakan kampanye",
+    "utmMedium": "Parameter menengah UTM untuk pelacakan kampanye",
+    "utmSource": "Parameter sumber UTM untuk pelacakan kampanye",
+    "validateInput": "Validasi data masukan sebelum pengkodean",
+    "versionTooLow": "⚠️ Versi terlalu rendah! Versi minimum v{{version}} diperlukan"
   },
   "language": {
-    "current": "“Bahasa”",
-    "select": "“Pilih Bahasa”"
+    "current": "Bahasa",
+    "select": "Pilih Bahasa"
   },
   "metadata": {
-    "addCustomField": "“Tambahkan Bidang Kustom”",
-    "author": "“Penulis”",
-    "authorPlaceholder": "“Nama penulis”",
-    "copyright": "“Hak Cipta”",
-    "copyrightPlaceholder": "“© 2024 Nama Perusahaan”",
-    "customMetadata": "“Metadata Kustom”",
-    "description": "“Deskripsi”",
-    "descriptionPlaceholder": "“Deskripsi kode QR ini…”",
-    "includeCreationTime": "“Sertakan Waktu Penciptaan”",
-    "key": "“Kunci”",
-    "keyPlaceholder": "“Kunci”",
-    "keywords": "“Kata Kunci”",
-    "license": "“Lisensi”",
-    "licensePlaceholder": "“CC-BY-4.0”",
-    "title": "“Judul”",
-    "titlePlaceholder": "“Judul Kode QR”",
-    "value": "“Nilai”",
-    "valuePlaceholder": "“Nilai”"
+    "addCustomField": "Tambahkan Bidang Kustom",
+    "author": "Penulis",
+    "authorPlaceholder": "Nama penulis",
+    "copyright": "Hak Cipta",
+    "copyrightPlaceholder": "© 2024 Nama Perusahaan",
+    "customMetadata": "Metadata Kustom",
+    "description": "Deskripsi",
+    "descriptionPlaceholder": "Deskripsi kode QR ini…",
+    "includeCreationTime": "Sertakan Waktu Penciptaan",
+    "key": "Kunci",
+    "keyPlaceholder": "Kunci",
+    "keywords": "Kata Kunci",
+    "license": "Lisensi",
+    "licensePlaceholder": "CC-BY-4.0",
+    "title": "Judul",
+    "titlePlaceholder": "Judul Kode QR",
+    "value": "Nilai",
+    "valuePlaceholder": "Nilai"
   },
   "nav": {
-    "about": "“Tentang”",
-    "contact": "“Kontak”",
-    "docs": "“Panduan”",
-    "guide": "“Panduan”",
-    "gallery": "“Galeri”",
-    "generator": "“Generator”",
-    "privacy": "“Privasi”",
-    "terms": "“Ketentuan”"
+    "about": "Tentang",
+    "contact": "Kontak",
+    "docs": "Panduan",
+    "guide": "Panduan",
+    "gallery": "Galeri",
+    "generator": "Generator",
+    "privacy": "Privasi",
+    "terms": "Ketentuan"
   },
   "output": {
-    "none": "“Tidak ada”",
-    "off": "“Mati”",
-    "dithering": "“Keraguan”",
-    "floydSteinberg": "“Floyd-Steinberg”",
-    "backgroundOverride": "“Penggantian Latar Belakang”",
-    "backgroundOverridePlaceholder": "“Biarkan kosong untuk nilai default”",
-    "dpi": "“DPI (Cetak)”",
-    "embedRasterOverlay": "“Sematkan Hamparan Raster”",
-    "exportAsAdditional": "“Ekspor Sebagai (Tambahan)”",
-    "filename": "“Nama berkas”",
-    "format": "“Format”",
-    "gif": "“GIF”",
-    "gifSettings": "“Pengaturan GIF”",
-    "height": "“Tinggi”",
-    "includeQuietZone": "“Sertakan Zona Tenang”",
-    "medianCut": "“Potongan Median”",
-    "neuquant": "“NeuQuant”",
-    "octree": "“Octree”",
-    "ordered": "“Diperintahkan”",
-    "outputSize": "“Ukuran Keluaran”",
-    "paletteSize": "“Ukuran Palet”",
-    "pdf": "“PDF”",
-    "pixel": "“Pixel”",
-    "png": "“PNG”",
-    "precise": "“Tepat”",
-    "quality": "“Kualitas”",
-    "quantizer": "“Kuantisasi”",
-    "shapePrecision": "“Presisi Bentuk”",
-    "svg": "“SVG”",
-    "svgSettings": "“Pengaturan SVG”",
-    "transparentColor": "“Warna Transparan”",
-    "transparentColorPlaceholder": "“#ffffff atau kosong”",
-    "trueVector": "“Vektor Sejati”",
-    "trueVectorDesc": "“Gunakan jalur alih-alih raster yang disematkan”",
-    "webp": "“WebP”",
-    "width": "“Lebar”"
+    "none": "Tidak ada",
+    "off": "Mati",
+    "dithering": "Keraguan",
+    "floydSteinberg": "Floyd-Steinberg",
+    "backgroundOverride": "Penggantian Latar Belakang",
+    "backgroundOverridePlaceholder": "Biarkan kosong untuk nilai default",
+    "dpi": "DPI (Cetak)",
+    "embedRasterOverlay": "Sematkan Hamparan Raster",
+    "exportAsAdditional": "Ekspor Sebagai (Tambahan)",
+    "filename": "Nama berkas",
+    "format": "Format",
+    "gif": "GIF",
+    "gifSettings": "Pengaturan GIF",
+    "height": "Tinggi",
+    "includeQuietZone": "Sertakan Zona Tenang",
+    "medianCut": "Potongan Median",
+    "neuquant": "NeuQuant",
+    "octree": "Octree",
+    "ordered": "Diperintahkan",
+    "outputSize": "Ukuran Keluaran",
+    "paletteSize": "Ukuran Palet",
+    "pdf": "PDF",
+    "pixel": "Pixel",
+    "png": "PNG",
+    "precise": "Tepat",
+    "quality": "Kualitas",
+    "quantizer": "Kuantisasi",
+    "shapePrecision": "Presisi Bentuk",
+    "svg": "SVG",
+    "svgSettings": "Pengaturan SVG",
+    "transparentColor": "Warna Transparan",
+    "transparentColorPlaceholder": "#ffffff atau kosong",
+    "trueVector": "Vektor Sejati",
+    "trueVectorDesc": "Gunakan jalur alih-alih raster yang disematkan",
+    "webp": "WebP",
+    "width": "Lebar"
   },
   "preview": {
-    "qrCodePreview": "“Pratinjau Kode QR - Klik Ekspor untuk mengunduh”",
-    "simulating": "“Mensimulasikan”",
-    "simulationActive": "“Simulasi lingkungan aktif - Pratinjau menunjukkan bagaimana kode QR dapat muncul dalam kondisi berbeda”"
+    "qrCodePreview": "Pratinjau Kode QR - Klik Ekspor untuk mengunduh",
+    "simulating": "Mensimulasikan",
+    "simulationActive": "Simulasi lingkungan aktif - Pratinjau menunjukkan bagaimana kode QR dapat muncul dalam kondisi berbeda"
   },
   "qr": {
-    "additionalBorder": "“Perbatasan tambahan di luar zona tenang”",
-    "alphanumeric": "“Alfanumerik”",
-    "auto": "“Otomatis”",
-    "autoMin": "“Otomatis (min: {{versi}})”",
-    "autoOptimal": "“Otomatis (Optimal)”",
-    "byteUtf8": "“Byte / UTF-8”",
-    "contrastRatio": "“{{count}}:1”",
-    "encodingMode": "“Mode Pengkodean”",
-    "enforceMinQuietZone": "“Menerapkan Zona Tenang Minimum”",
-    "enforceMinQuietZoneDesc": "“Pastikan margin modul ≥4”",
-    "errorCorrection": "“Koreksi Kesalahan”",
-    "extraBorderModules": "“Modul Perbatasan Tambahan”",
-    "high": "“H - Tinggi (30%)”",
-    "kanji": "“Kanji”",
-    "low": "“L - Rendah (7%)”",
-    "margin": "“Zona Tenang (Margin)”",
-    "mask": "“Pola Masker”",
-    "medium": "“M - Sedang (15%)”",
-    "moduleSize": "“Ukuran Modul”",
-    "nDegrees": "“{{count}}°”",
-    "nModules": "“{{count}} modul”",
-    "nMs": "“{{count}}ms”",
-    "nPercent": "“{{count}}%”",
-    "nPx": "“{{count}}px”",
-    "numericOnly": "“Hanya Angka”",
-    "quartile": "“Q - Kuartil (25%)”",
-    "version": "“Versi”"
+    "additionalBorder": "Perbatasan tambahan di luar zona tenang",
+    "alphanumeric": "Alfanumerik",
+    "auto": "Otomatis",
+    "autoMin": "Otomatis (min: {{versi}})",
+    "autoOptimal": "Otomatis (Optimal)",
+    "byteUtf8": "Byte / UTF-8",
+    "contrastRatio": "{{count}}:1",
+    "encodingMode": "Mode Pengkodean",
+    "enforceMinQuietZone": "Menerapkan Zona Tenang Minimum",
+    "enforceMinQuietZoneDesc": "Pastikan margin modul ≥4",
+    "errorCorrection": "Koreksi Kesalahan",
+    "extraBorderModules": "Modul Perbatasan Tambahan",
+    "high": "H - Tinggi (30%)",
+    "kanji": "Kanji",
+    "low": "L - Rendah (7%)",
+    "margin": "Zona Tenang (Margin)",
+    "mask": "Pola Masker",
+    "medium": "M - Sedang (15%)",
+    "moduleSize": "Ukuran Modul",
+    "nDegrees": "{{count}}°",
+    "nModules": "{{count}} modul",
+    "nMs": "{{count}}ms",
+    "nPercent": "{{count}}%",
+    "nPx": "{{count}}px",
+    "numericOnly": "Hanya Angka",
+    "quartile": "Q - Kuartil (25%)",
+    "version": "Versi"
   },
   "render": {
-    "none": "“Tidak ada”",
-    "gradientColors": "“Warna”",
-    "classic": "“Klasik”",
-    "addColor": "“Tambahkan Warna”",
-    "alignmentStyle": "“Gaya Pola Penyelarasan”",
-    "background": "“Latar Belakang”",
-    "byBrightness": "“Dengan Kecerahan”",
-    "byCluster": "“Berdasarkan Klaster”",
-    "byOverlay": "“Dengan Overlay”",
-    "byPosition": "“Berdasarkan Posisi”",
-    "ceil": "“Langit-langit”",
-    "circle": "“Lingkaran”",
-    "colorPalette": "“Palet Warna”",
-    "conic": "“Kerucut”",
-    "connected": "“Terhubung”",
-    "contrastGuard": "“Pelindung Kontras”",
-    "cornerRadius": "“Radius Sudut”",
-    "crispEdges": "“Tepi yang Tajam”",
-    "crispEdgesDesc": "“Gunakan rendering gambar: pikselasi untuk tepi yang tajam”",
-    "dashed": "“Diputus-putus”",
-    "diamond": "“Berlian”",
-    "dotRotation": "“Rotasi Titik”",
-    "dots": "“Titik”",
-    "eyeInnerStyle": "“Gaya Batin Mata”",
-    "eyeOuterStyle": "“Gaya Luar Mata”",
-    "eyeScale": "“Skala Mata”",
-    "finderStyle": "“Gaya Pola Pencari”",
-    "floor": "“Lantai”",
-    "foreground": "“Latar Depan”",
-    "frameStyle": "“Gaya Bingkai”",
-    "frameText": "“Teks Bingkai”",
-    "gapMode": "“Mode Jeda”",
-    "gradient": "“Gradien”",
-    "gradientAngle": "“Sudut Gradien”",
-    "gradientType": "“Tipe Gradien”",
-    "inset": "“Sisipan”",
-    "linear": "“Linear”",
-    "matchFinder": "“Pencari Jodoh”",
-    "matchModule": "“Modul Pencocokan”",
-    "minContrastRatio": "“Rasio Kontras Minimum”",
-    "moduleGap": "“Kesenjangan Modul”",
-    "negativeSpace": "“Ruang Negatif”",
-    "perModuleColorMode": "“Mode Warna Per-Modul”",
-    "pixelSnap": "“Jepretan Piksel”",
-    "radial": "“Radial”",
-    "round": "“Bulat”",
-    "rounded": "“Dibulatkan”",
-    "roundedFrame": "“Bingkai Bulat”",
-    "shape": "“Gaya Modul”",
-    "sharp": "“Tajam”",
-    "smooth": "“Halus”",
-    "solid": "“Padat”",
-    "square": "“Kotak”",
-    "squares": "“Kotak”",
-    "sticker": "“Stiker”",
-    "stroke": "“Stroke”",
-    "style": "“Gaya”",
-    "tag": "“Tag”",
-    "timingStyle": "“Gaya Pola Pengaturan Waktu”",
-    "transparentBg": "“Latar Belakang Transparan”"
+    "none": "Tidak ada",
+    "gradientColors": "Warna",
+    "classic": "Klasik",
+    "addColor": "Tambahkan Warna",
+    "alignmentStyle": "Gaya Pola Penyelarasan",
+    "background": "Latar Belakang",
+    "byBrightness": "Dengan Kecerahan",
+    "byCluster": "Berdasarkan Klaster",
+    "byOverlay": "Dengan Overlay",
+    "byPosition": "Berdasarkan Posisi",
+    "ceil": "Langit-langit",
+    "circle": "Lingkaran",
+    "colorPalette": "Palet Warna",
+    "conic": "Kerucut",
+    "connected": "Terhubung",
+    "contrastGuard": "Pelindung Kontras",
+    "cornerRadius": "Radius Sudut",
+    "crispEdges": "Tepi yang Tajam",
+    "crispEdgesDesc": "Gunakan rendering gambar: pikselasi untuk tepi yang tajam",
+    "dashed": "Diputus-putus",
+    "diamond": "Berlian",
+    "dotRotation": "Rotasi Titik",
+    "dots": "Titik",
+    "eyeInnerStyle": "Gaya Batin Mata",
+    "eyeOuterStyle": "Gaya Luar Mata",
+    "eyeScale": "Skala Mata",
+    "finderStyle": "Gaya Pola Pencari",
+    "floor": "Lantai",
+    "foreground": "Latar Depan",
+    "frameStyle": "Gaya Bingkai",
+    "frameText": "Teks Bingkai",
+    "gapMode": "Mode Jeda",
+    "gradient": "Gradien",
+    "gradientAngle": "Sudut Gradien",
+    "gradientType": "Tipe Gradien",
+    "inset": "Sisipan",
+    "linear": "Linear",
+    "matchFinder": "Pencari Jodoh",
+    "matchModule": "Modul Pencocokan",
+    "minContrastRatio": "Rasio Kontras Minimum",
+    "moduleGap": "Kesenjangan Modul",
+    "negativeSpace": "Ruang Negatif",
+    "perModuleColorMode": "Mode Warna Per-Modul",
+    "pixelSnap": "Jepretan Piksel",
+    "radial": "Radial",
+    "round": "Bulat",
+    "rounded": "Dibulatkan",
+    "roundedFrame": "Bingkai Bulat",
+    "shape": "Gaya Modul",
+    "sharp": "Tajam",
+    "smooth": "Halus",
+    "solid": "Padat",
+    "square": "Kotak",
+    "squares": "Kotak",
+    "sticker": "Stiker",
+    "stroke": "Stroke",
+    "style": "Gaya",
+    "tag": "Tag",
+    "timingStyle": "Gaya Pola Pengaturan Waktu",
+    "transparentBg": "Latar Belakang Transparan"
   },
   "safety": {
-    "off": "“Mati”",
-    "strict": "“Ketat”",
-    "analysis": "“Analisis Keselamatan”",
-    "autoPickEcc": "“ECC Pilihan Otomatis”",
-    "autoPickVersion": "“Versi Pilihan Otomatis”",
-    "autoReduceIntensity": "“Pengurangan Intensitas Otomatis”",
-    "autoTuning": "“Penyetelan Otomatis”",
-    "balanced": "“Seimbang”",
-    "contrast": "“Rasio Kontras”",
-    "contrastRatio": "“Rasio Kontras”",
-    "contrastCheck": "“Pemeriksaan Kontras”",
-    "excellent": "“Sangat Baik”",
-    "fair": "“Cukup Baik”",
-    "good": "“Baik”",
-    "lockAlignment": "“Penyelarasan Kunci”",
-    "lockFinders": "“Pencari Kunci”",
-    "lockFormat": "“Informasi Format Kunci”",
-    "lockTiming": "“Pengaturan Waktu Penguncian”",
-    "lockVersion": "“Informasi Versi Kunci”",
-    "minModuleSize": "“Ukuran Modul Minimum”",
-    "minQuietZone": "“Zona Tenang Minimum”",
-    "poor": "“Miskin”",
-    "protectionLocks": "“Kunci Pengaman”",
-    "qualityAnalysis": "“Analisis Kualitas”",
-    "quietZone": "“Zona Tenang”",
-    "safetyMode": "“Mode Keamanan”",
-    "scanability": "“Skor Kemudahan Pemindaian”",
-    "showHeatmap": "“Tampilkan Peta Panas”",
-    "simulateBlur": "“Simulasikan Efek Buram”",
-    "simulateNoise": "“Simulasi Kebisingan”",
-    "simulateRotation": "“Simulasi Rotasi”",
-    "untilScannable": "“Sampai dapat dipindai”"
+    "off": "Mati",
+    "strict": "Ketat",
+    "analysis": "Analisis Keselamatan",
+    "autoPickEcc": "ECC Pilihan Otomatis",
+    "autoPickVersion": "Versi Pilihan Otomatis",
+    "autoReduceIntensity": "Pengurangan Intensitas Otomatis",
+    "autoTuning": "Penyetelan Otomatis",
+    "balanced": "Seimbang",
+    "contrast": "Rasio Kontras",
+    "contrastRatio": "Rasio Kontras",
+    "contrastCheck": "Pemeriksaan Kontras",
+    "excellent": "Sangat Baik",
+    "fair": "Cukup Baik",
+    "good": "Baik",
+    "lockAlignment": "Penyelarasan Kunci",
+    "lockFinders": "Pencari Kunci",
+    "lockFormat": "Informasi Format Kunci",
+    "lockTiming": "Pengaturan Waktu Penguncian",
+    "lockVersion": "Informasi Versi Kunci",
+    "minModuleSize": "Ukuran Modul Minimum",
+    "minQuietZone": "Zona Tenang Minimum",
+    "poor": "Miskin",
+    "protectionLocks": "Kunci Pengaman",
+    "qualityAnalysis": "Analisis Kualitas",
+    "quietZone": "Zona Tenang",
+    "safetyMode": "Mode Keamanan",
+    "scanability": "Skor Kemudahan Pemindaian",
+    "showHeatmap": "Tampilkan Peta Panas",
+    "simulateBlur": "Simulasikan Efek Buram",
+    "simulateNoise": "Simulasi Kebisingan",
+    "simulateRotation": "Simulasi Rotasi",
+    "untilScannable": "Sampai dapat dipindai"
   },
   "sections": {
-    "animation": "“Animasi”",
-    "qrEncoding": "“Pengkodean QR”",
-    "share": "“Bagikan”",
-    "safety": "“Analisis Keselamatan”",
-    "metadata": "“Metadata”",
-    "output": "“Keluaran”",
-    "overlay": "“Lapisan / Gambar”",
-    "payload": "“Muatan / Data”",
-    "rendering": "“Rendering”",
-    "watermark": "“Tanda Air”"
+    "animation": "Animasi",
+    "qrEncoding": "Pengkodean QR",
+    "share": "Bagikan",
+    "safety": "Analisis Keselamatan",
+    "metadata": "Metadata",
+    "output": "Keluaran",
+    "overlay": "Lapisan / Gambar",
+    "payload": "Muatan / Data",
+    "rendering": "Rendering",
+    "watermark": "Tanda Air"
   },
   "share": {
-    "copied": "“Disalin!”",
-    "copyLink": "“Salin Tautan”",
-    "whatsapp": "“WhatsApp”",
-    "directLink": "“Tautan Langsung”",
-    "directLinkDesc": "“Hasilkan URL yang dapat dibagikan”",
-    "embedHtml": "“Sematkan HTML”",
-    "embedHtmlDesc": "“Hasilkan kode sematan”",
-    "encodeAllParams": "“Encode Semua Parameter”",
-    "encodeAllParamsDesc": "“Sertakan semua pengaturan dalam URL”",
-    "markdown": "“Diskon”",
-    "quickShare": "“Berbagi Cepat”",
-    "twitter": "“X/Twitter”"
+    "copied": "Disalin!",
+    "copyLink": "Salin Tautan",
+    "whatsapp": "WhatsApp",
+    "directLink": "Tautan Langsung",
+    "directLinkDesc": "Hasilkan URL yang dapat dibagikan",
+    "embedHtml": "Sematkan HTML",
+    "embedHtmlDesc": "Hasilkan kode sematan",
+    "encodeAllParams": "Encode Semua Parameter",
+    "encodeAllParamsDesc": "Sertakan semua pengaturan dalam URL",
+    "markdown": "Diskon",
+    "quickShare": "Berbagi Cepat",
+    "twitter": "X/Twitter"
   },
   "tiers": {
-    "advanced": "“Lanjutan”",
-    "basic": "“Dasar”",
-    "professional": "“Pro”",
-    "watchAdForPro": "“Tonton iklan untuk membuka fitur Profesional selama 24 jam”"
+    "advanced": "Lanjutan",
+    "basic": "Dasar",
+    "professional": "Pro",
+    "watchAdForPro": "Tonton iklan untuk membuka fitur Profesional selama 24 jam"
   },
   "watermark": {
-    "blendMode": "“Mode Campuran”",
-    "image": "“Gambar”",
-    "type": "“Tipe”",
-    "quietZone": "“Zona Tenang”",
-    "behindQr": "“Di Balik QR”",
-    "bottomLeft": "“Kiri Bawah”",
-    "bottomRight": "“Kanan Bawah”",
-    "center": "“Pusat”",
-    "corners": "“Titik”",
-    "edges": "“Tepi”",
-    "enabled": "“Aktifkan Tanda Air”",
-    "fontColor": "“Warna Huruf”",
-    "fontSize": "“Ukuran Huruf”",
-    "multiply": "“Perkalian”",
-    "normal": "“Normal”",
-    "opacity": "“Opasitas”",
-    "overlay": "“Lapisan”",
-    "pattern": "“Pola”",
-    "position": "“Posisi”",
-    "screen": "“Layar”",
-    "text": "“Teks”",
-    "textPlaceholder": "“© Nama Perusahaan”",
-    "topLeft": "“Kiri Atas”",
-    "topRight": "“Kanan Atas”",
-    "uploadImage": "“Unggah Gambar”"
+    "blendMode": "Mode Campuran",
+    "image": "Gambar",
+    "type": "Tipe",
+    "quietZone": "Zona Tenang",
+    "behindQr": "Di Balik QR",
+    "bottomLeft": "Kiri Bawah",
+    "bottomRight": "Kanan Bawah",
+    "center": "Pusat",
+    "corners": "Titik",
+    "edges": "Tepi",
+    "enabled": "Aktifkan Tanda Air",
+    "fontColor": "Warna Huruf",
+    "fontSize": "Ukuran Huruf",
+    "multiply": "Perkalian",
+    "normal": "Normal",
+    "opacity": "Opasitas",
+    "overlay": "Lapisan",
+    "pattern": "Pola",
+    "position": "Posisi",
+    "screen": "Layar",
+    "text": "Teks",
+    "textPlaceholder": "© Nama Perusahaan",
+    "topLeft": "Kiri Atas",
+    "topRight": "Kanan Atas",
+    "uploadImage": "Unggah Gambar"
   },
   "accessibility": {
     "toggleSettings": "Beralih panel pengaturan",
@@ -1186,357 +1186,357 @@
     "emailUsDesc": "Punya pertanyaan, saran, atau butuh bantuan? Kirim email kepada kami dan kami akan membalas Anda."
   },
   "overlay": {
-    "blueNoise": "“Kebisingan Biru”",
-    "blueNoiseMode": "“Kebisingan Biru”",
-    "none": "“Tidak ada”",
-    "wave": "“Gelombang”",
-    "waveMode": "“Gelombang”",
-    "upload": "“Unggah”",
-    "errorDiffusion": "“Penyebaran Kesalahan”",
-    "atkinson": "“Atkinson”",
-    "burkes": "“Burkes”",
-    "floydSteinberg": "“Floyd-Steinberg”",
-    "jarvisJudiceNinke": "“Jarvis-Judice-Ninke”",
-    "sierra": "“Sierra”",
-    "stucki": "“Stucki”",
-    "whiteNoise": "“Kebisingan Putih”",
-    "mode": "“Mode Campuran”",
-    "brightness": "“Kecerahan”",
-    "brightnessMode": "“Kecerahan”",
-    "bw": "“Hitam & Putih”",
-    "grayscale": "“Skala Abu-abu”",
-    "dithered": "“Bimbang”",
-    "ditheredMode": "“Bimbang”",
-    "duotone": "“Duotone”",
-    "duotoneMode": "“Duotone”",
-    "extreme": "“Ekstrem”",
-    "extremeMode": "“Ekstrem”",
-    "halftone": "“Halftone”",
-    "halftoneMode": "“Halftone”",
-    "mosaic": "“Mosaik”",
-    "mosaicMode": "“Mosaik”",
-    "outline": "“Garis Besar”",
-    "outlineMode": "“Garis Besar”",
-    "pixelate": "“Pixelate”",
-    "pixelateMode": "“Pixelate”",
-    "subpixel": "“Subpiksel”",
-    "subpixelMode": "“Subpiksel”",
-    "gifSettings": "“Pengaturan GIF”",
-    "adaptiveThreshold": "“Ambang Batas Adaptif”",
-    "bayer2": "“Bayer 2×2”",
-    "bayer4": "“Bayer 4×4”",
-    "bayer8": "“Bayer 8×8”",
-    "blend": "“Campuran”",
-    "blendMode": "“Campuran”",
-    "blueNoiseErrorDiffusion": "“Derau Biru + Difusi Kesalahan”",
-    "blueNoiseThreshold": "“Ambang Batas Kebisingan Biru”",
-    "blur": "“Kabur”",
-    "brightnessCurve": "“Kurva Kecerahan”",
-    "cellSize": "“Ukuran Sel”",
-    "centerLogo": "“Logo Tengah”",
-    "centerRule": "“Aturan Tengah”",
-    "clusteredDot": "“Titik Berkelompok”",
-    "colorDither": "“Dither Warna”",
-    "colorMode": "“Mode Warna”",
-    "contain": "“Berisi”",
-    "contrast": "“Kontras”",
-    "corsNote": "“Catatan: Gambar harus mengizinkan permintaan lintas asal (CORS)”",
-    "cover": "“Sampul”",
-    "cropImage": "“Potong Gambar”",
-    "cropSize": "“Ukuran Tanaman”",
-    "diffusionKernel": "“Inti Difusi”",
-    "disposalHandling": "“Penanganan Pembuangan”",
-    "dither": "“Dither”",
-    "ditherSettings": "“Pengaturan Dither”",
-    "ditherStrength": "“Kekuatan Dither”",
-    "dotShape": "“Bentuk Titik”",
-    "duotoneColors": "“Warna Duotone”",
-    "eccAwareMode": "“Mode Sadar ECC”",
-    "edge": "“Deteksi Tepi”",
-    "edgeAware": "“Sadar Tepi”",
-    "enableCrop": "“Aktifkan Tanaman”",
-    "finderOverride": "“Penggantian Finder”",
-    "fitMode": "“Mode Kebugaran”",
-    "flipX": "“Flip X”",
-    "flipY": "“Balik Y”",
-    "fromUrl": "“Dari URL”",
-    "fullColor": "“Berwarna Penuh”",
-    "gamma": "“Gamma”",
-    "gapFillMode": "“Isi Celah”",
-    "gapfill": "“Isi Celah”",
-    "gaussianNoise": "“Kebisingan Gaussian”",
-    "gridSize": "“Ukuran Grid”",
-    "halftoneCenter": "“Pusat Halftone”",
-    "halftoneSettings": "“Pengaturan Halftone”",
-    "highlight": "“Sorotan”",
-    "hueRotate": "“Putar Warna”",
-    "imageGifWebp": "“Gambar / GIF / WebP”",
-    "imageUrl": "“URL Gambar”",
-    "intensity": "“Intensitas”",
-    "invert": "“Balikkan Gambar”",
-    "line": "“Garis”",
-    "load": "“Muat”",
-    "loadedFromUrl": "“Dimuat dari URL”",
-    "maxFps": "“FPS Maksimum”",
-    "neutralColor": "“Warna Netral”",
-    "noFile": "“Tidak ada berkas”",
-    "nxnGrid": "“Kisi N×N”",
-    "orderedBayer": "“Dipesan (Bayer)”",
-    "orderedMatrix": "“Matriks Terurut”",
-    "original": "“Asli”",
-    "perChannel": "“Per Saluran”",
-    "perModule": "“Per Modul”",
-    "perceptual": "“Persepsi (Luminansi)”",
-    "posterizeLevels": "“Level Posterisasi”",
-    "preserveAlignment": "“Pertahankan Keselarasan”",
-    "preserveFinders": "“Pertahankan Pola Pencari”",
-    "preserveTiming": "“Jaga Waktu”",
-    "protectFormat": "“Lindungi Informasi Format”",
-    "protectFormatInfo": "“Lindungi Informasi Format”",
-    "protectVersion": "“Lindungi Informasi Versi”",
-    "protectVersionInfo": "“Lindungi Informasi Versi”",
-    "protection": "“Perlindungan”",
-    "removeImage": "“Hapus”",
-    "respect": "“Rasa Hormat”",
-    "riskBudget": "“Anggaran Risiko”",
-    "rotation": "“Rotasi”",
-    "sCurve": "“Kurva S”",
-    "saturation": "“Kejenuhan”",
-    "screenedBlueNoise": "“Derau Biru yang Disaring”",
-    "seed": "“Benih”",
-    "selectImage": "“Pilih Gambar”",
-    "sepia": "“Sepia”",
-    "serpentineScanning": "“Pemindaian Serpentine”",
-    "shadow": "“Bayangan”",
-    "sharpen": "“Mengasah”",
-    "sierra2": "“Sierra-2”",
-    "sierraLite": "“Sierra-Lite”",
-    "simplify": "“Sederhanakan”",
-    "stretch": "“Peregangan”",
-    "strict": "“Ketat”",
-    "stylized": "“Bergaya”",
-    "subpixelSettings": "“Pengaturan Subpiksel”",
-    "subpixelSize": "“Ukuran Subpiksel”",
-    "subpixelSizeMode": "“Ukuran Subpiksel”",
-    "temporalBlueNoise": "“Kebisingan Biru Temporal”",
-    "threshold": "“Ambang Batas”",
-    "tileSize": "“Ukuran Ubin”",
-    "triangularNoise": "“Kebisingan Segitiga”",
-    "trueDither": "“Dither Sejati”",
-    "trueDitherMode": "“Dither Sejati”",
-    "useFrameDelays": "“Gunakan Penundaan Bingkai”",
-    "voidCluster": "“Void & Cluster”",
+    "blueNoise": "Kebisingan Biru",
+    "blueNoiseMode": "Kebisingan Biru",
+    "none": "Tidak ada",
+    "wave": "Gelombang",
+    "waveMode": "Gelombang",
+    "upload": "Unggah",
+    "errorDiffusion": "Penyebaran Kesalahan",
+    "atkinson": "Atkinson",
+    "burkes": "Burkes",
+    "floydSteinberg": "Floyd-Steinberg",
+    "jarvisJudiceNinke": "Jarvis-Judice-Ninke",
+    "sierra": "Sierra",
+    "stucki": "Stucki",
+    "whiteNoise": "Kebisingan Putih",
+    "mode": "Mode Campuran",
+    "brightness": "Kecerahan",
+    "brightnessMode": "Kecerahan",
+    "bw": "Hitam & Putih",
+    "grayscale": "Skala Abu-abu",
+    "dithered": "Bimbang",
+    "ditheredMode": "Bimbang",
+    "duotone": "Duotone",
+    "duotoneMode": "Duotone",
+    "extreme": "Ekstrem",
+    "extremeMode": "Ekstrem",
+    "halftone": "Halftone",
+    "halftoneMode": "Halftone",
+    "mosaic": "Mosaik",
+    "mosaicMode": "Mosaik",
+    "outline": "Garis Besar",
+    "outlineMode": "Garis Besar",
+    "pixelate": "Pixelate",
+    "pixelateMode": "Pixelate",
+    "subpixel": "Subpiksel",
+    "subpixelMode": "Subpiksel",
+    "gifSettings": "Pengaturan GIF",
+    "adaptiveThreshold": "Ambang Batas Adaptif",
+    "bayer2": "Bayer 2×2",
+    "bayer4": "Bayer 4×4",
+    "bayer8": "Bayer 8×8",
+    "blend": "Campuran",
+    "blendMode": "Campuran",
+    "blueNoiseErrorDiffusion": "Derau Biru + Difusi Kesalahan",
+    "blueNoiseThreshold": "Ambang Batas Kebisingan Biru",
+    "blur": "Kabur",
+    "brightnessCurve": "Kurva Kecerahan",
+    "cellSize": "Ukuran Sel",
+    "centerLogo": "Logo Tengah",
+    "centerRule": "Aturan Tengah",
+    "clusteredDot": "Titik Berkelompok",
+    "colorDither": "Dither Warna",
+    "colorMode": "Mode Warna",
+    "contain": "Berisi",
+    "contrast": "Kontras",
+    "corsNote": "Catatan: Gambar harus mengizinkan permintaan lintas asal (CORS)",
+    "cover": "Sampul",
+    "cropImage": "Potong Gambar",
+    "cropSize": "Ukuran Tanaman",
+    "diffusionKernel": "Inti Difusi",
+    "disposalHandling": "Penanganan Pembuangan",
+    "dither": "Dither",
+    "ditherSettings": "Pengaturan Dither",
+    "ditherStrength": "Kekuatan Dither",
+    "dotShape": "Bentuk Titik",
+    "duotoneColors": "Warna Duotone",
+    "eccAwareMode": "Mode Sadar ECC",
+    "edge": "Deteksi Tepi",
+    "edgeAware": "Sadar Tepi",
+    "enableCrop": "Aktifkan Tanaman",
+    "finderOverride": "Penggantian Finder",
+    "fitMode": "Mode Kebugaran",
+    "flipX": "Flip X",
+    "flipY": "Balik Y",
+    "fromUrl": "Dari URL",
+    "fullColor": "Berwarna Penuh",
+    "gamma": "Gamma",
+    "gapFillMode": "Isi Celah",
+    "gapfill": "Isi Celah",
+    "gaussianNoise": "Kebisingan Gaussian",
+    "gridSize": "Ukuran Grid",
+    "halftoneCenter": "Pusat Halftone",
+    "halftoneSettings": "Pengaturan Halftone",
+    "highlight": "Sorotan",
+    "hueRotate": "Putar Warna",
+    "imageGifWebp": "Gambar / GIF / WebP",
+    "imageUrl": "URL Gambar",
+    "intensity": "Intensitas",
+    "invert": "Balikkan Gambar",
+    "line": "Garis",
+    "load": "Muat",
+    "loadedFromUrl": "Dimuat dari URL",
+    "maxFps": "FPS Maksimum",
+    "neutralColor": "Warna Netral",
+    "noFile": "Tidak ada berkas",
+    "nxnGrid": "Kisi N×N",
+    "orderedBayer": "Dipesan (Bayer)",
+    "orderedMatrix": "Matriks Terurut",
+    "original": "Asli",
+    "perChannel": "Per Saluran",
+    "perModule": "Per Modul",
+    "perceptual": "Persepsi (Luminansi)",
+    "posterizeLevels": "Level Posterisasi",
+    "preserveAlignment": "Pertahankan Keselarasan",
+    "preserveFinders": "Pertahankan Pola Pencari",
+    "preserveTiming": "Jaga Waktu",
+    "protectFormat": "Lindungi Informasi Format",
+    "protectFormatInfo": "Lindungi Informasi Format",
+    "protectVersion": "Lindungi Informasi Versi",
+    "protectVersionInfo": "Lindungi Informasi Versi",
+    "protection": "Perlindungan",
+    "removeImage": "Hapus",
+    "respect": "Rasa Hormat",
+    "riskBudget": "Anggaran Risiko",
+    "rotation": "Rotasi",
+    "sCurve": "Kurva S",
+    "saturation": "Kejenuhan",
+    "screenedBlueNoise": "Derau Biru yang Disaring",
+    "seed": "Benih",
+    "selectImage": "Pilih Gambar",
+    "sepia": "Sepia",
+    "serpentineScanning": "Pemindaian Serpentine",
+    "shadow": "Bayangan",
+    "sharpen": "Mengasah",
+    "sierra2": "Sierra-2",
+    "sierraLite": "Sierra-Lite",
+    "simplify": "Sederhanakan",
+    "stretch": "Peregangan",
+    "strict": "Ketat",
+    "stylized": "Bergaya",
+    "subpixelSettings": "Pengaturan Subpiksel",
+    "subpixelSize": "Ukuran Subpiksel",
+    "subpixelSizeMode": "Ukuran Subpiksel",
+    "temporalBlueNoise": "Kebisingan Biru Temporal",
+    "threshold": "Ambang Batas",
+    "tileSize": "Ukuran Ubin",
+    "triangularNoise": "Kebisingan Segitiga",
+    "trueDither": "Dither Sejati",
+    "trueDitherMode": "Dither Sejati",
+    "useFrameDelays": "Gunakan Penundaan Bingkai",
+    "voidCluster": "Void & Cluster",
     "pleaseEnterUrl": "Silakan masukkan URL",
     "preview": "Pratinjau"
   },
   "payload": {
-    "emailAddress": "“Alamat Email”",
-    "vevent": "“Acara Kalender”",
-    "geo": "“Lokasi Geografis”",
-    "vcard": "“Kontak vCard”",
-    "wifiNetwork": "“Jaringan WiFi”",
-    "description": "“Deskripsi”",
-    "title": "“Judul”",
-    "contact": "“Kontak”",
-    "accountName": "“Nama Akun”",
-    "address": "“Alamat”",
-    "walletAddress": "“Alamat”",
-    "algorithm": "“Algoritma”",
-    "allDay": "“Acara Sepanjang Hari”",
-    "amount": "“Jumlah (opsional)”",
-    "amountBrl": "“Jumlah (BRL, opsional)”",
-    "amountEur": "“Jumlah (EUR)”",
-    "amountInr": "“Jumlah (INR, opsional)”",
-    "amountSgd": "“Jumlah (SGD, opsional)”",
-    "amountThb": "“Jumlah (THB, opsional)”",
-    "androidIntent": "“Intent Android”",
-    "appLink": "“Tautan Dalam Aplikasi (Android/iOS)”",
-    "assetInventory": "“Label Aset/Inventaris”",
-    "assetItemId": "“ID Aset/Barang”",
-    "assetType": "“Jenis Aset”",
-    "attendeeName": "“Nama Peserta”",
-    "audio": "“Audio”",
-    "baseUrl": "“URL Dasar”",
-    "batchLot": "“Batch/Lot (opsional)”",
-    "beneficiaryName": "“Nama Penerima Manfaat”",
-    "bicSwift": "“BIC/SWIFT (opsional)”",
-    "birthday": "“Ulang Tahun”",
-    "bitcoin": "“Bitcoin”",
-    "bizcard": "“Kartu Bisnis (Lama)”",
-    "bluetooth": "“Bluetooth”",
-    "body": "“Isi Pesan”",
-    "bodyOptional": "“Tubuh (opsional)”",
-    "box": "“Kotak”",
-    "calendar": "“Kalender”",
-    "calendarName": "“Nama Kalender”",
-    "calendarSubscription": "“Berlangganan Kalender”",
-    "calendarUrl": "“URL Kalender (ICS/WebCal)”",
-    "campaignContent": "“Konten Kampanye (opsional)”",
-    "campaignMedium": "“Kampanye Sedang”",
-    "campaignName": "“Nama Kampanye”",
-    "campaignSource": "“Sumber Kampanye”",
-    "campaignTerm": "“Masa Kampanye (opsional)”",
-    "city": "“Kota”",
-    "cityOptional": "“Kota (opsional)”",
-    "cloudLink": "“Tautan Penyimpanan Cloud”",
-    "company": "“Perusahaan”",
-    "contentType": "“Jenis Konten”",
-    "core": "“Inti”",
-    "country": "“Negara”",
-    "crypto": "“Kripto (BTC, ETH, dll.)”",
-    "cryptocurrency": "“Mata Uang Kripto”",
-    "custom": "“Format Kustom”",
-    "customScheme": "“Skema Khusus”",
-    "dateTime": "“Tanggal & Waktu”",
-    "deepLinkUrl": "“URL Deep Link”",
-    "deviceAddress": "“Alamat Perangkat (MAC)”",
-    "deviceName": "“Nama Perangkat (opsional)”",
-    "digits": "“Angka”",
-    "documentsMedia": "“Dokumen & Media”",
-    "dropbox": "“Dropbox”",
-    "email": "“Email”",
-    "encryption": "“Enkripsi”",
-    "end": "“Selesai”",
-    "endDate": "“Tanggal Akhir”",
-    "enterprise": "“Perusahaan”",
-    "epcSepa": "“EPC / SEPA (EU)”",
-    "equipment": "“Peralatan”",
-    "ethereum": "“Ethereum”",
-    "event": "“Acara iCalendar”",
-    "eventName": "“Nama Acara”",
-    "eventRsvp": "“Tautan RSVP Acara”",
-    "eventTicket": "“Tiket Acara”",
-    "expiryDate": "“Tanggal Kedaluwarsa (opsional)”",
-    "facebook": "“Facebook”",
-    "fallbackUrl": "“URL Cadangan (opsional)”",
-    "fax": "“Faks”",
-    "fileType": "“Jenis File”",
-    "fileUrl": "“URL File / Dokumen”",
-    "firstName": "“Nama Depan”",
-    "forceHttps": "“Paksa HTTPS”",
-    "fullName": "“Nama Lengkap”",
-    "furniture": "“Perabot”",
-    "github": "“GitHub”",
-    "googleDrive": "“Google Drive”",
-    "gs1DigitalLink": "“GS1 Digital Link”",
-    "gtin": "“GTIN (Nomor Barang Perdagangan Global)”",
-    "hidden": "“Jaringan Tersembunyi”",
-    "homePhone": "“Telepon Rumah”",
-    "iban": "“IBAN”",
-    "idType": "“Jenis ID”",
-    "image": "“Gambar”",
-    "instagram": "“Instagram”",
-    "inventoryItem": "“Barang Inventaris”",
-    "iosUniversal": "“iOS Universal”",
-    "issuer": "“Penerbit”",
-    "itAsset": "“Aset TI”",
-    "label": "“Label (opsional)”",
-    "lastName": "“Nama Belakang”",
-    "latitude": "“Garis Lintang”",
-    "linkType": "“Jenis Tautan”",
-    "linkedin": "“LinkedIn”",
-    "litecoin": "“Litecoin”",
-    "location": "“Lokasi”",
-    "locationNetwork": "“Lokasi & Jaringan”",
-    "longitude": "“Garis Bujur”",
-    "lookupUrl": "“URL Pencarian (opsional)”",
-    "marketing": "“Pemasaran”",
-    "marketingTags": "“Label Pemasaran”",
-    "maxLengthGuard": "“Pelindung Panjang Maksimum”",
-    "mecard": "“Kontak MeCard”",
-    "merchantName": "“Nama Pedagang (opsional)”",
-    "message": "“Pesan”",
-    "messageOptional": "“Pesan (opsional)”",
-    "messagingLink": "“WhatsApp / Telegram / Signal”",
-    "messenger": "“Pembawa Pesan”",
-    "mobileNumber": "“Nomor Ponsel”",
-    "mobilePhone": "“Telepon Seluler”",
-    "name": "“Nama”",
-    "nationalIdTaxId": "“KTP/Nomor Identifikasi Pajak”",
-    "nickname": "“Nama Panggilan”",
-    "normalizeNewlines": "“Normalisasi Baris Baru”",
-    "note": "“Catatan”",
-    "oneDrive": "“OneDrive”",
-    "openNoPassword": "“Buka (Tanpa Kata Sandi)”",
-    "organization": "“Organisasi”",
-    "other": "“Lainnya”",
-    "otpAuth": "“Authenticator OTP”",
-    "otpType": "“Tipe”",
-    "password": "“Kata Sandi”",
-    "payeeName": "“Nama Penerima Pembayaran”",
-    "payments": "“Pembayaran (Spesifikasi Terbuka)”",
-    "paynow": "“PayNow (Singapura)”",
-    "phone": "“Telepon”",
-    "phoneUsername": "“Telepon/Nama Pengguna”",
-    "pix": "“PIX (Brasil)”",
-    "pixKey": "“Kunci PIX”",
-    "plainText": "“Teks Biasa”",
-    "platform": "“Platform”",
-    "prefilledMessage": "“Pesan yang sudah terisi (opsional)”",
-    "profileUrl": "“URL Profil”",
-    "promptPayId": "“ID PromptPay”",
-    "promptpay": "“PromptPay (Thailand)”",
-    "proxyType": "“Jenis Proksi”",
-    "rawData": "“Data Mentah”",
-    "recipient": "“Penerima”",
-    "reference": "“Referensi”",
-    "referenceOptional": "“Referensi (opsional)”",
-    "resolverDomain": "“Domain Penyelesai”",
-    "rsvpUrl": "“URL RSVP”",
-    "searchQuery": "“Permintaan Pencarian (opsional)”",
-    "seat": "“Kursi”",
-    "secretBase32": "“Rahasia (Basis 32)”",
-    "sectionZone": "“Bagian/Zona”",
-    "securityType": "“Jenis Keamanan”",
-    "serialNumber": "“Nomor Seri (opsional)”",
-    "service": "“Layanan”",
-    "shortLink": "“Pengalihan Tautan Pendek”",
-    "shortUrl": "“URL Pendek”",
-    "signal": "“Sinyal”",
-    "sms": "“SMS”",
-    "smsMms": "“SMS / MMS”",
-    "socialMessaging": "“Media Sosial & Pesan”",
-    "socialProfile": "“Profil Sosial”",
-    "ssid": "“Nama Jaringan (SSID)”",
-    "start": "“Mulai”",
-    "startDate": "“Tanggal Mulai”",
-    "state": "“Negara Bagian/Provinsi”",
-    "street": "“Jalan”",
-    "subject": "“Subjek”",
-    "subjectOptional": "“Subjek (opsional)”",
-    "summary": "“Judul Acara”",
-    "tel": "“Nomor Telepon”",
-    "telegram": "“Telegram”",
-    "text": "“Isi Teks”",
-    "ticketId": "“ID Tiket”",
-    "tiktok": "“TikTok”",
-    "transactionNote": "“Catatan Transaksi (opsional)”",
-    "trimWhitespace": "“Hapus Spasi Kosong”",
-    "uenMobile": "“UEN/Nomor Ponsel”",
-    "universalLink": "“Tautan Universal”",
-    "upi": "“UPI (India)”",
-    "upiId": "“ID UPI (VPA)”",
-    "url": "“URL”",
-    "utmCampaign": "“utm_campaign”",
-    "utmContent": "“utm_content”",
-    "utmLink": "“Tautan Kampanye UTM”",
-    "utmMedium": "“utm_medium”",
-    "utmSource": "“utm_source”",
-    "utmTerm": "“utm_term”",
-    "validateInput": "“Validasi Masukan”",
-    "validationOptions": "“Opsi Validasi”",
-    "validationUrl": "“URL Validasi (opsional)”",
-    "vehicle": "“Kendaraan”",
-    "venue": "“Tempat”",
-    "viber": "“Viber”",
-    "video": "“Video”",
-    "website": "“Situs web”",
-    "whatsapp": "“WhatsApp”",
-    "wifi": "“WiFi”",
-    "wordDocument": "“Dokumen Word”",
-    "workPhone": "“Telepon Kantor”",
-    "youtube": "“YouTube”",
-    "zip": "“Kode Pos”",
+    "emailAddress": "Alamat Email",
+    "vevent": "Acara Kalender",
+    "geo": "Lokasi Geografis",
+    "vcard": "Kontak vCard",
+    "wifiNetwork": "Jaringan WiFi",
+    "description": "Deskripsi",
+    "title": "Judul",
+    "contact": "Kontak",
+    "accountName": "Nama Akun",
+    "address": "Alamat",
+    "walletAddress": "Alamat",
+    "algorithm": "Algoritma",
+    "allDay": "Acara Sepanjang Hari",
+    "amount": "Jumlah (opsional)",
+    "amountBrl": "Jumlah (BRL, opsional)",
+    "amountEur": "Jumlah (EUR)",
+    "amountInr": "Jumlah (INR, opsional)",
+    "amountSgd": "Jumlah (SGD, opsional)",
+    "amountThb": "Jumlah (THB, opsional)",
+    "androidIntent": "Intent Android",
+    "appLink": "Tautan Dalam Aplikasi (Android/iOS)",
+    "assetInventory": "Label Aset/Inventaris",
+    "assetItemId": "ID Aset/Barang",
+    "assetType": "Jenis Aset",
+    "attendeeName": "Nama Peserta",
+    "audio": "Audio",
+    "baseUrl": "URL Dasar",
+    "batchLot": "Batch/Lot (opsional)",
+    "beneficiaryName": "Nama Penerima Manfaat",
+    "bicSwift": "BIC/SWIFT (opsional)",
+    "birthday": "Ulang Tahun",
+    "bitcoin": "Bitcoin",
+    "bizcard": "Kartu Bisnis (Lama)",
+    "bluetooth": "Bluetooth",
+    "body": "Isi Pesan",
+    "bodyOptional": "Tubuh (opsional)",
+    "box": "Kotak",
+    "calendar": "Kalender",
+    "calendarName": "Nama Kalender",
+    "calendarSubscription": "Berlangganan Kalender",
+    "calendarUrl": "URL Kalender (ICS/WebCal)",
+    "campaignContent": "Konten Kampanye (opsional)",
+    "campaignMedium": "Kampanye Sedang",
+    "campaignName": "Nama Kampanye",
+    "campaignSource": "Sumber Kampanye",
+    "campaignTerm": "Masa Kampanye (opsional)",
+    "city": "Kota",
+    "cityOptional": "Kota (opsional)",
+    "cloudLink": "Tautan Penyimpanan Cloud",
+    "company": "Perusahaan",
+    "contentType": "Jenis Konten",
+    "core": "Inti",
+    "country": "Negara",
+    "crypto": "Kripto (BTC, ETH, dll.)",
+    "cryptocurrency": "Mata Uang Kripto",
+    "custom": "Format Kustom",
+    "customScheme": "Skema Khusus",
+    "dateTime": "Tanggal & Waktu",
+    "deepLinkUrl": "URL Deep Link",
+    "deviceAddress": "Alamat Perangkat (MAC)",
+    "deviceName": "Nama Perangkat (opsional)",
+    "digits": "Angka",
+    "documentsMedia": "Dokumen & Media",
+    "dropbox": "Dropbox",
+    "email": "Email",
+    "encryption": "Enkripsi",
+    "end": "Selesai",
+    "endDate": "Tanggal Akhir",
+    "enterprise": "Perusahaan",
+    "epcSepa": "EPC / SEPA (EU)",
+    "equipment": "Peralatan",
+    "ethereum": "Ethereum",
+    "event": "Acara iCalendar",
+    "eventName": "Nama Acara",
+    "eventRsvp": "Tautan RSVP Acara",
+    "eventTicket": "Tiket Acara",
+    "expiryDate": "Tanggal Kedaluwarsa (opsional)",
+    "facebook": "Facebook",
+    "fallbackUrl": "URL Cadangan (opsional)",
+    "fax": "Faks",
+    "fileType": "Jenis File",
+    "fileUrl": "URL File / Dokumen",
+    "firstName": "Nama Depan",
+    "forceHttps": "Paksa HTTPS",
+    "fullName": "Nama Lengkap",
+    "furniture": "Perabot",
+    "github": "GitHub",
+    "googleDrive": "Google Drive",
+    "gs1DigitalLink": "GS1 Digital Link",
+    "gtin": "GTIN (Nomor Barang Perdagangan Global)",
+    "hidden": "Jaringan Tersembunyi",
+    "homePhone": "Telepon Rumah",
+    "iban": "IBAN",
+    "idType": "Jenis ID",
+    "image": "Gambar",
+    "instagram": "Instagram",
+    "inventoryItem": "Barang Inventaris",
+    "iosUniversal": "iOS Universal",
+    "issuer": "Penerbit",
+    "itAsset": "Aset TI",
+    "label": "Label (opsional)",
+    "lastName": "Nama Belakang",
+    "latitude": "Garis Lintang",
+    "linkType": "Jenis Tautan",
+    "linkedin": "LinkedIn",
+    "litecoin": "Litecoin",
+    "location": "Lokasi",
+    "locationNetwork": "Lokasi & Jaringan",
+    "longitude": "Garis Bujur",
+    "lookupUrl": "URL Pencarian (opsional)",
+    "marketing": "Pemasaran",
+    "marketingTags": "Label Pemasaran",
+    "maxLengthGuard": "Pelindung Panjang Maksimum",
+    "mecard": "Kontak MeCard",
+    "merchantName": "Nama Pedagang (opsional)",
+    "message": "Pesan",
+    "messageOptional": "Pesan (opsional)",
+    "messagingLink": "WhatsApp / Telegram / Signal",
+    "messenger": "Pembawa Pesan",
+    "mobileNumber": "Nomor Ponsel",
+    "mobilePhone": "Telepon Seluler",
+    "name": "Nama",
+    "nationalIdTaxId": "KTP/Nomor Identifikasi Pajak",
+    "nickname": "Nama Panggilan",
+    "normalizeNewlines": "Normalisasi Baris Baru",
+    "note": "Catatan",
+    "oneDrive": "OneDrive",
+    "openNoPassword": "Buka (Tanpa Kata Sandi)",
+    "organization": "Organisasi",
+    "other": "Lainnya",
+    "otpAuth": "Authenticator OTP",
+    "otpType": "Tipe",
+    "password": "Kata Sandi",
+    "payeeName": "Nama Penerima Pembayaran",
+    "payments": "Pembayaran (Spesifikasi Terbuka)",
+    "paynow": "PayNow (Singapura)",
+    "phone": "Telepon",
+    "phoneUsername": "Telepon/Nama Pengguna",
+    "pix": "PIX (Brasil)",
+    "pixKey": "Kunci PIX",
+    "plainText": "Teks Biasa",
+    "platform": "Platform",
+    "prefilledMessage": "Pesan yang sudah terisi (opsional)",
+    "profileUrl": "URL Profil",
+    "promptPayId": "ID PromptPay",
+    "promptpay": "PromptPay (Thailand)",
+    "proxyType": "Jenis Proksi",
+    "rawData": "Data Mentah",
+    "recipient": "Penerima",
+    "reference": "Referensi",
+    "referenceOptional": "Referensi (opsional)",
+    "resolverDomain": "Domain Penyelesai",
+    "rsvpUrl": "URL RSVP",
+    "searchQuery": "Permintaan Pencarian (opsional)",
+    "seat": "Kursi",
+    "secretBase32": "Rahasia (Basis 32)",
+    "sectionZone": "Bagian/Zona",
+    "securityType": "Jenis Keamanan",
+    "serialNumber": "Nomor Seri (opsional)",
+    "service": "Layanan",
+    "shortLink": "Pengalihan Tautan Pendek",
+    "shortUrl": "URL Pendek",
+    "signal": "Sinyal",
+    "sms": "SMS",
+    "smsMms": "SMS / MMS",
+    "socialMessaging": "Media Sosial & Pesan",
+    "socialProfile": "Profil Sosial",
+    "ssid": "Nama Jaringan (SSID)",
+    "start": "Mulai",
+    "startDate": "Tanggal Mulai",
+    "state": "Negara Bagian/Provinsi",
+    "street": "Jalan",
+    "subject": "Subjek",
+    "subjectOptional": "Subjek (opsional)",
+    "summary": "Judul Acara",
+    "tel": "Nomor Telepon",
+    "telegram": "Telegram",
+    "text": "Isi Teks",
+    "ticketId": "ID Tiket",
+    "tiktok": "TikTok",
+    "transactionNote": "Catatan Transaksi (opsional)",
+    "trimWhitespace": "Hapus Spasi Kosong",
+    "uenMobile": "UEN/Nomor Ponsel",
+    "universalLink": "Tautan Universal",
+    "upi": "UPI (India)",
+    "upiId": "ID UPI (VPA)",
+    "url": "URL",
+    "utmCampaign": "utm_campaign",
+    "utmContent": "utm_content",
+    "utmLink": "Tautan Kampanye UTM",
+    "utmMedium": "utm_medium",
+    "utmSource": "utm_source",
+    "utmTerm": "utm_term",
+    "validateInput": "Validasi Masukan",
+    "validationOptions": "Opsi Validasi",
+    "validationUrl": "URL Validasi (opsional)",
+    "vehicle": "Kendaraan",
+    "venue": "Tempat",
+    "viber": "Viber",
+    "video": "Video",
+    "website": "Situs web",
+    "whatsapp": "WhatsApp",
+    "wifi": "WiFi",
+    "wordDocument": "Dokumen Word",
+    "workPhone": "Telepon Kantor",
+    "youtube": "YouTube",
+    "zip": "Kode Pos",
     "pdfDocument": "Dokumen PDF",
     "uenBusiness": "UEN (Bisnis)",
     "ewalletId": "ID E-Wallet",

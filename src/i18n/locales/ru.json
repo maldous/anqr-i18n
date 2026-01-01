@@ -69,7 +69,7 @@
     "close": "Закрыть",
     "copied": "Скопировано!",
     "copy": "Копия",
-    "copyright": "“© ANQR”",
+    "copyright": "© ANQR",
     "delete": "Удалить",
     "disabled": "Инвалид",
     "download": "Скачать",
@@ -100,7 +100,7 @@
   "fileSaveFailed": "Не удалось сохранить файл: {{error}}",
   "fileSaved": "Сохранено в Документы: {{filename}}",
   "footer": {
-    "copyright": "“© ANQR {{year}}”"
+    "copyright": "© ANQR {{year}}"
   },
   "gallery": {
     "filter": "Фильтр",
@@ -205,7 +205,7 @@
         "title": "Полутоновый цвет"
       },
       "color-coral": {
-        "description": "“#e85d04 on #ffe8d6”",
+        "description": "#e85d04 on #ffe8d6",
         "title": "Коралл"
       },
       "color-coral-dots": {
@@ -213,11 +213,11 @@
         "title": "коралловых точек"
       },
       "color-crimson": {
-        "description": "“#9d0208 on #ffccd5”",
+        "description": "#9d0208 on #ffccd5",
         "title": "Багровый"
       },
       "color-forest": {
-        "description": "“#1b4332 on #d8f3dc”",
+        "description": "#1b4332 on #d8f3dc",
         "title": "Лес"
       },
       "color-forest-dots": {
@@ -225,15 +225,15 @@
         "title": "Лесные точки"
       },
       "color-gold": {
-        "description": "“#7f5539 on #ffe8cc”",
+        "description": "#7f5539 on #ffe8cc",
         "title": "Золото"
       },
       "color-inverted": {
-        "description": "“#ffffff on #000000”",
+        "description": "#ffffff on #000000",
         "title": "Перевернутый"
       },
       "color-midnight": {
-        "description": "“#1a1a2e on #eef1ff”",
+        "description": "#1a1a2e on #eef1ff",
         "title": "Полночь"
       },
       "color-midnight-dots": {
@@ -241,11 +241,11 @@
         "title": "Полуночные точки"
       },
       "color-navy": {
-        "description": "“#001d3d on #a2d2ff”",
+        "description": "#001d3d on #a2d2ff",
         "title": "Военно-морской флот"
       },
       "color-ocean": {
-        "description": "“#023e8a on #caf0f8”",
+        "description": "#023e8a on #caf0f8",
         "title": "Океан"
       },
       "color-ocean-dots": {
@@ -253,7 +253,7 @@
         "title": "Океанических точек"
       },
       "color-royal": {
-        "description": "“#4a0080 on #f5e6ff”",
+        "description": "#4a0080 on #f5e6ff",
         "title": "Королевский"
       },
       "color-royal-dots": {
@@ -261,11 +261,11 @@
         "title": "Королевские точки"
       },
       "color-slate": {
-        "description": "“#343a40 on #e9ecef”",
+        "description": "#343a40 on #e9ecef",
         "title": "Сланец"
       },
       "color-sunset": {
-        "description": "“#bf0603 on #fff3b0”",
+        "description": "#bf0603 on #fff3b0",
         "title": "Закат"
       },
       "color-sunset-dots": {
@@ -273,7 +273,7 @@
         "title": "Закатных точек"
       },
       "color-teal": {
-        "description": "“#006d77 on #e0f4f5”",
+        "description": "#006d77 on #e0f4f5",
         "title": "Бирюзовый"
       },
       "combo-anim-dots-halftone": {
@@ -466,11 +466,11 @@
       },
       "enc-v6-h": {
         "description": "Версия 6 с высокой степенью коррекции ошибок",
-        "title": "“V6 + ECC High”"
+        "title": "V6 + ECC High"
       },
       "enc-v6-l": {
         "description": "Версия 6 с низким уровнем коррекции ошибок",
-        "title": "“V6 + ECC Low”"
+        "title": "V6 + ECC Low"
       },
       "enc-v9": {
         "description": "QR-код версии 9",
@@ -478,11 +478,11 @@
       },
       "enc-v9-h": {
         "description": "Версия 9 с высокой степенью коррекции ошибок",
-        "title": "“V9 + ECC High”"
+        "title": "V9 + ECC High"
       },
       "enc-v9-l": {
         "description": "Версия 9 с низким уровнем коррекции ошибок",
-        "title": "“V9 + ECC Low”"
+        "title": "V9 + ECC Low"
       },
       "finder-circle": {
         "description": "Шаблон поиска круга",
@@ -840,7 +840,7 @@
     "alignmentStyle": "Стиль шаблонов выравнивания (используемых в больших QR-кодах)",
     "appLinkNote": "Открывает определенный контент в мобильном приложении",
     "autoDetect": "Автоматическое определение (требуется v{{version}}+ для текущего содержимого)",
-    "autoMinVersion": "“0 = Авто, минимальная версия для текущего контента”",
+    "autoMinVersion": "0 = Авто, минимальная версия для текущего контента",
     "bgColorHex": "Шестнадцатеричный код цвета фона",
     "bizcardLegacy": "Устаревший формат — рассмотрите возможность использования vCard вместо него",
     "bluetoothNote": "Примечание: сопряжение по Bluetooth через QR-код зависит от производителя и может не работать на всех устройствах",
@@ -919,7 +919,7 @@
     "keyPlaceholder": "Ключ",
     "keywords": "Ключевые слова",
     "license": "Лицензия",
-    "licensePlaceholder": "“CC-BY-4.0”",
+    "licensePlaceholder": "CC-BY-4.0",
     "title": "Название",
     "titlePlaceholder": "QR-код заголовка",
     "value": "Ценность",
@@ -964,7 +964,7 @@
     "quality": "Качество",
     "quantizer": "Квантизатор",
     "shapePrecision": "Точность формы",
-    "svg": "“SVG”",
+    "svg": "SVG",
     "svgSettings": "Настройки SVG",
     "transparentColor": "Прозрачный цвет",
     "transparentColorPlaceholder": "#ffffff или пусто",
@@ -982,10 +982,10 @@
     "additionalBorder": "Дополнительная граница за пределами тихой зоны",
     "alphanumeric": "Буквенно-цифровой",
     "auto": "Авто",
-    "autoMin": "“Авто (мин: {{версия}})”",
+    "autoMin": "Авто (мин: {{версия}})",
     "autoOptimal": "Авто (Оптимальный)",
     "byteUtf8": "байт / UTF-8",
-    "contrastRatio": "“{{count}}:1”",
+    "contrastRatio": "{{count}}:1",
     "encodingMode": "Режим кодирования",
     "enforceMinQuietZone": "Обеспечить соблюдение минимальной зоны тишины",
     "enforceMinQuietZoneDesc": "Обеспечить запас прочности ≥4 модуля",
@@ -998,11 +998,11 @@
     "mask": "Шаблон маски",
     "medium": "M - Средний (15%)",
     "moduleSize": "Размер модуля",
-    "nDegrees": "“{{count}}°”",
+    "nDegrees": "{{count}}°",
     "nModules": "{{count}} модулей",
-    "nMs": "“{{count}}ms”",
-    "nPercent": "“{{count}}%”",
-    "nPx": "“{{count}}px”",
+    "nMs": "{{count}}ms",
+    "nPercent": "{{count}}%",
+    "nPx": "{{count}}px",
     "numericOnly": "Только числовые значения",
     "quartile": "Q — Квартиль (25%)",
     "version": "Версия"
@@ -1127,7 +1127,7 @@
     "encodeAllParamsDesc": "Включить все настройки в URL",
     "markdown": "Скидка",
     "quickShare": "Быстрая публикация",
-    "twitter": "“X/Twitter”"
+    "twitter": "X/Twitter"
   },
   "tiers": {
     "advanced": "Продвинутый",
@@ -1416,7 +1416,7 @@
     "forceHttps": "Принудительное использование HTTPS",
     "fullName": "Полное имя",
     "furniture": "Мебель",
-    "github": "“GitHub”",
+    "github": "GitHub",
     "googleDrive": "Google Drive",
     "gs1DigitalLink": "GS1 Digital Link",
     "gtin": "GTIN (глобальный номер предмета торговли)",
@@ -1447,7 +1447,7 @@
     "merchantName": "Название продавца (необязательно)",
     "message": "Сообщение",
     "messageOptional": "Сообщение (необязательно)",
-    "messagingLink": "“WhatsApp / Telegram / Signal”",
+    "messagingLink": "WhatsApp / Telegram / Signal",
     "messenger": "Посланник",
     "mobileNumber": "Номер мобильного телефона",
     "mobilePhone": "Мобильный телефон",
@@ -1474,7 +1474,7 @@
     "platform": "Платформа",
     "prefilledMessage": "Предварительно заполненное сообщение (необязательно)",
     "profileUrl": "URL профиля",
-    "promptPayId": "“PromptPay ID”",
+    "promptPayId": "PromptPay ID",
     "promptpay": "PromptPay (Таиланд)",
     "proxyType": "Тип прокси",
     "rawData": "Исходные данные",
@@ -1482,7 +1482,7 @@
     "reference": "Ссылка",
     "referenceOptional": "Ссылка (необязательно)",
     "resolverDomain": "Домен разрешения имен",
-    "rsvpUrl": "“RSVP URL”",
+    "rsvpUrl": "RSVP URL",
     "searchQuery": "Поисковый запрос (необязательно)",
     "seat": "Место",
     "secretBase32": "Секрет (Base32)",
@@ -1494,7 +1494,7 @@
     "shortUrl": "Короткий URL",
     "signal": "Сигнал",
     "sms": "SMS",
-    "smsMms": "“SMS / MMS”",
+    "smsMms": "SMS / MMS",
     "socialMessaging": "Социальные сети и мессенджеры",
     "socialProfile": "Социальный профиль",
     "ssid": "Имя сети (SSID)",
@@ -1516,13 +1516,13 @@
     "universalLink": "Универсальная связь",
     "upi": "UPI (Индия)",
     "upiId": "UPI ID (VPA)",
-    "url": "“URL”",
-    "utmCampaign": "“utm_campaign”",
-    "utmContent": "“utm_content”",
+    "url": "URL",
+    "utmCampaign": "utm_campaign",
+    "utmContent": "utm_content",
     "utmLink": "Ссылка на кампанию UTM",
-    "utmMedium": "“utm_medium”",
-    "utmSource": "“utm_source”",
-    "utmTerm": "“utm_term”",
+    "utmMedium": "utm_medium",
+    "utmSource": "utm_source",
+    "utmTerm": "utm_term",
     "validateInput": "Проверка входных данных",
     "validationOptions": "Варианты проверки",
     "validationUrl": "URL-адрес проверки (необязательно)",
