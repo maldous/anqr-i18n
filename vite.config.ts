@@ -127,6 +127,8 @@ export default defineConfig({
         ]
       },
       workbox: {
+        // Increase max file size to cache (default is 2MB, we set 3MB as safeguard)
+        maximumFileSizeToCacheInBytes: 3 * 1024 * 1024,
         // Cache strategies
         runtimeCaching: [
           {
@@ -341,21 +343,24 @@ export default defineConfig({
           if (id.includes('/data/gallery-items')) {
             return 'app-gallery-data'
           }
-          // Locale JSON files - split by language
+          // Locale JSON files - split by language (match patterns like en-GB.json, ar.json, etc.)
           if (id.includes('/locales/') && id.endsWith('.json')) {
-            const match = id.match(/locales\/([a-z]{2})\.json/)
+            const match = id.match(/locales\/([a-zA-Z-]+)\.json/)
             if (match) {
+              const langCode = match[1].toLowerCase()
               // Keep English in main bundle, lazy load others
-              if (match[1] === 'en') return 'locale-en'
-              return `locale-${match[1]}`
+              if (langCode === 'en-gb') return 'locale-en'
+              return `locale-${langCode}`
             }
           }
-          // Static page content - split by language
-          if (id.includes('/static/') && !id.includes('/txt/')) {
-            const match = id.match(/static\/([a-z]{2})\//)  
+          // Static page content - split by language (match patterns like en-GB/, ar/, bn-BD/, etc.)
+          if (id.includes('/static/') && !id.includes('/txt/') && !id.includes('/types')) {
+            const match = id.match(/static\/([a-zA-Z-]+)\//)  
             if (match) {
-              if (match[1] === 'en') return 'static-en'
-              return `static-${match[1]}`
+              const langCode = match[1].toLowerCase()
+              // Keep English in main bundle, lazy load others
+              if (langCode === 'en-gb') return 'static-en'
+              return `static-${langCode}`
             }
           }
         },
