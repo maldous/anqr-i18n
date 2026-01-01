@@ -442,9 +442,9 @@ export async function exportGif(
     // Apply palette to get indexed pixel data
     const index = applyPalette(data, palette)
 
-    // Write frame with delay (gifenc uses milliseconds directly)
-    // Use a minimum of 100ms for compatibility with most image viewers
-    const delayMs = Math.max(100, frameDelay)
+    // Convert milliseconds to centiseconds (gifenc uses 1/100th seconds, like the GIF spec)
+    // Use a minimum of 2 centiseconds (20ms) - browsers interpret <2cs as 10cs anyway
+    const delayCentiseconds = Math.max(2, Math.round(frameDelay / 10))
     
     // Map disposal string to gifenc disposal code
     const disposalMap: Record<string, number> = {
@@ -457,7 +457,7 @@ export async function exportGif(
     
     gif.writeFrame(index, width, height, {
       palette,
-      delay: delayMs,
+      delay: delayCentiseconds,
       disposal,
       ...(isFirstFrame && { repeat }),
     })

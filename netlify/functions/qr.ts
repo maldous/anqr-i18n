@@ -544,7 +544,8 @@ function encodeAnimatedGif(frames: Canvas[], frameDelayMs: number = 100, colors:
   const paletteSize = Math.min(256, Math.max(2, colors))
   
   // Convert milliseconds to centiseconds (gifenc uses 1/100th seconds)
-  const delayCentiseconds = Math.max(1, Math.round(frameDelayMs / 10))
+  // Use minimum of 2 centiseconds (20ms) - browsers interpret <2cs as 10cs anyway
+  const delayCentiseconds = Math.max(2, Math.round(frameDelayMs / 10))
   
   for (let i = 0; i < frames.length; i++) {
     const frame = frames[i]
@@ -738,7 +739,8 @@ function encodeAnimatedGifWithDelays(frames: ServerAnimationFrame[], colors: num
     const index = applyPalette(data, palette)
     
     // Convert milliseconds to centiseconds
-    const delayCentiseconds = Math.max(1, Math.round(frame.delay / 10))
+    // Use minimum of 2 centiseconds (20ms) - browsers interpret <2cs as 10cs anyway
+    const delayCentiseconds = Math.max(2, Math.round(frame.delay / 10))
     
     const frameOptions: Record<string, unknown> = {
       palette,
