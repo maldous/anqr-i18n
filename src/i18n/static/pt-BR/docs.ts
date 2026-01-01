@@ -484,6 +484,73 @@ export const docs: PageDefinition = {
       ],
     },
     {
+      heading: 'Pagamentos Relevantes por Idioma no Modo Avançado',
+      paragraphs: [
+        'Ao usar o modo Avançado, o ANQR exibe automaticamente os métodos de pagamento relevantes para o idioma selecionado. Por exemplo, usuários vietnamitas veem VietQR, usuários tailandeses veem PromptPay e usuários de idiomas indianos veem UPI e BharatQR. Métodos de pagamento globais (criptomoedas, PayPal, Cash App) estão disponíveis para todos os idiomas. O modo Profissional desbloqueia todos os padrões de pagamento independentemente do idioma.',
+      ],
+    },
+    {
+      heading: 'Padrões de Pagamento Europeus',
+      bullets: [
+        'EPC/SEPA (UE): Códigos QR de transferência bancária europeia seguindo o Padrão de Código QR EPC. Suporta IBAN, BIC (opcional para transferências domésticas), valor em EUR e referências de pagamento estruturadas ou não estruturadas. Usado em toda a zona SEPA, incluindo países da UE, além de Suíça, Noruega, Islândia, Liechtenstein, Mônaco e San Marino.',
+        'Swiss QR-bill: Padrão de pagamento suíço seguindo as Diretrizes de Implementação SIX. Suporta CHF e EUR, QR-Reference (QRR), Referência do Credor (ISO 11649), endereços estruturados de credor/devedor e informações de cobrança. Obrigatório para faturas suíças desde 2022.',
+      ],
+    },
+    {
+      heading: 'Padrões de Pagamento Indianos',
+      bullets: [
+        'UPI (Índia): Interface Unificada de Pagamentos seguindo a Especificação de Deep Linking do NPCI. Suporta VPA (Endereço de Pagamento Virtual), nome do beneficiário, valor em INR, nota da transação, ID de referência, código de categoria do comerciante e modo de transação.',
+        'BharatQR (Índia): Padrão QR unificado que suporta pagamentos via UPI e cartão. Combina VPA do UPI com PAN do cartão para máxima compatibilidade. Inclui nome do comerciante, cidade, MCC, detalhes de GST e números de fatura/referência.',
+      ],
+    },
+    {
+      heading: 'Padrões de Pagamento do Sudeste Asiático',
+      bullets: [
+        'PayNow (Singapura): Sistema de pagamento rápido de Singapura usando a especificação QR EMVCo com perfil SGQR. Suporta UEN (registro comercial), número de celular ou NRIC como identificadores proxy. Inclui flag de editabilidade de valor e data de expiração.',
+        'PromptPay (Tailândia): Sistema nacional de pagamentos tailandês seguindo o perfil EMV do Banco da Tailândia. Suporta número de celular, ID nacional, ID fiscal, ID de carteira eletrônica e pagamento de contas com múltiplos campos de referência.',
+        'QRIS (Indonésia): Padrão Indonésio de Código de Resposta Rápida. Padrão nacional de pagamento baseado em EMV que suporta ID do comerciante, NMID (ID Nacional do Comerciante), classificação de critérios do comerciante e taxas de conveniência (fixas ou percentuais).',
+        'DuitNow (Malásia): Sistema de pagamento instantâneo da Malásia. Suporta múltiplos tipos de proxy, incluindo NRIC, celular, passaporte, ID militar e números de registro comercial.',
+        'VietQR (Vietnã): Padrão vietnamita de transferência interbancária. Requer BIN do banco (identificação NAPAS) e número da conta. Suporta múltiplos códigos de serviço para diferentes tipos de transferência (QRPUSH, QRIBFTTA, QRIBFTTC).',
+        'QR Ph (Filipinas): Padrão de pagamento QR das Filipinas para InstaPay e PESONet. Usa números de conta com identificação do comerciante para transações P2M (pessoa para comerciante).',
+      ],
+    },
+    {
+      heading: 'Padrões de Pagamento do Leste Asiático',
+      bullets: [
+        'TWQR (Taiwan): Padrão taiwanês de pagamento QR. Suporta ID do comerciante, ID fiscal e valores em TWD.',
+        'HKQR/FPS (Hong Kong): Códigos QR do Sistema de Pagamento Rápido de Hong Kong. Suporta ID FPS, número de celular ou e-mail como identificadores de pagamento. Valores em HKD.',
+        'JPQR (Japão): Padrão japonês unificado de pagamento por código QR. Usa ID da loja para identificação do comerciante com valores em JPY.',
+      ],
+    },
+    {
+      heading: 'Outros Padrões Regionais de Pagamento',
+      bullets: [
+        'PIX (Brasil): Sistema de pagamento instantâneo do Banco Central do Brasil seguindo a especificação BR Code. Suporta chaves PIX (CPF, CNPJ, e-mail, telefone ou chave aleatória), nome/cidade do comerciante, ID da transação e valores em BRL.',
+        'AusPayNet/NPP PayID (Austrália): Sistema PayID da Nova Plataforma de Pagamentos da Austrália. Suporta tipos de PayID (e-mail, celular, ABN, ID da organização) ou BSB + número de conta tradicional. O nome do comerciante é opcional, pois os pagadores veem o nome registrado na consulta NPP.',
+      ],
+    },
+    {
+      heading: 'Pagamentos com Criptomoedas',
+      bullets: [
+        'Bitcoin/Litecoin (BIP-21): URIs de pagamento de criptomoedas padrão com endereço da carteira, valor opcional e rótulo. Compatível com todas as principais carteiras de Bitcoin e Litecoin.',
+        'Lightning Network (BOLT11): Faturas de pagamento da Lightning Network. Cole uma string de fatura codificada em BOLT11 para pagamentos instantâneos de Bitcoin com taxas mínimas.',
+        'Ethereum (EIP-681): URIs de solicitação de transação Ethereum que suportam transferências nativas de ETH e transferências de tokens ERC-20. Inclui ID da cadeia para suporte multi-rede (Mainnet, Polygon, BSC, Arbitrum, Optimism, Avalanche), parâmetros de gas e chamadas de funções de contrato.',
+      ],
+    },
+    {
+      heading: 'Serviços de Link de Pagamento',
+      bullets: [
+        'PayPal.Me: Links de pagamento PayPal com nome de usuário e valor pré-preenchido opcional. Os destinatários podem pagar via saldo PayPal, cartões ou contas bancárias.',
+        'Cash App: Links de pagamento do Cash App usando $cashtag com valor opcional. Popular nos Estados Unidos para pagamentos entre pessoas.',
+      ],
+    },
+    {
+      heading: 'QR EMV Genérico',
+      bullets: [
+        'EMV Genérico: Crie códigos QR personalizados no Modo de Apresentação pelo Comerciante EMV para esquemas de pagamento não listados especificamente. Configure nome do comerciante, cidade, código do país (ISO 3166-1), código da moeda (ISO 4217 numérico), MCC, opções de gorjeta/taxa de conveniência e campos de dados adicionais. Útil para testes ou integrações personalizadas.',
+      ],
+    },
+    {
       heading: 'Modos de mesclagem de sobreposição (Profissional)',
       paragraphs: [
         'Modos de mesclagem adicionais no nível Profissional:',
@@ -564,7 +631,7 @@ export const docs: PageDefinition = {
       ],
     },
     {
-      heading: 'Parâmetros Básicos',
+      heading: 'Parâmetros Básicos"',
       paragraphs: [
         'Parâmetros obrigatórios e comuns (os nomes dos parâmetros não são traduzidos):',
       ],
@@ -581,7 +648,7 @@ export const docs: PageDefinition = {
       ],
     },
     {
-      heading: 'Parâmetros de Estilo',
+      heading: 'Parâmetros de Estilo"',
       paragraphs: [
         'Estilo de módulos e padrões:',
       ],
@@ -601,7 +668,7 @@ export const docs: PageDefinition = {
       ],
     },
     {
-      heading: 'Parâmetros de Sobreposição',
+      heading: 'Parâmetros de Sobreposição"',
       paragraphs: [
         'Opções de sobreposição de imagem (a imagem de sobreposição é buscada do lado do servidor):',
       ],
@@ -618,7 +685,7 @@ export const docs: PageDefinition = {
       ],
     },
     {
-      heading: 'Parâmetros de Pré-processamento',
+      heading: 'Parâmetros de Pré-processamento"',
       paragraphs: [
         'Pré-processamento de imagem aplicado à sobreposição:',
       ],
@@ -637,7 +704,7 @@ export const docs: PageDefinition = {
       ],
     },
     {
-      heading: 'Parâmetros de Marca d\'água',
+      heading: 'Parâmetros de Marca d\'água"',
       paragraphs: [
         'Adicione marcas d\'água aos códigos QR gerados:',
       ],
@@ -652,7 +719,7 @@ export const docs: PageDefinition = {
       ],
     },
     {
-      heading: 'Parâmetros de Animação',
+      heading: 'Parâmetros de Animação"',
       paragraphs: [
         'Para saída de GIF animado (requer format=gif):',
       ],
@@ -665,7 +732,7 @@ export const docs: PageDefinition = {
       ],
     },
     {
-      heading: 'Parâmetros de Saída',
+      heading: 'Parâmetros de Saída"',
       paragraphs: [
         'Opções de formato de saída:',
       ],
@@ -678,7 +745,7 @@ export const docs: PageDefinition = {
       ],
     },
     {
-      heading: 'Exemplo de Uso',
+      heading: 'Exemplo de Uso"',
       paragraphs: [
         'Código QR básico:',
         'https://anqr.link/api/qr?data=https://example.com',
@@ -722,7 +789,7 @@ export const docs: PageDefinition = {
       ],
     },
     {
-      heading: 'Limites de Taxa e Uso',
+      heading: 'Limites de Taxa e Uso"',
       paragraphs: [
         'A API é gratuita para uso em volumes razoáveis. Para uso de alto volume ou aplicações comerciais que exigem tempo de atividade garantido, entre em contato conosco.',
         'As respostas da API incluem cabeçalhos de cache agressivos. Para melhor desempenho, armazene as respostas em cache do seu lado ou use a mesma URL consistentemente para códigos QR idênticos.',

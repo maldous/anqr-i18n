@@ -484,6 +484,73 @@ export const docs: PageDefinition = {
       ],
     },
     {
+      heading: 'Pembayaran Relevan Bahasa dalam Mode Lanjutan',
+      paragraphs: [
+        'Saat menggunakan mode Lanjutan, ANQR secara otomatis menampilkan metode pembayaran yang relevan dengan bahasa yang Anda pilih. Misalnya, pengguna Vietnam melihat VietQR, pengguna Thailand melihat PromptPay, dan pengguna bahasa India melihat UPI dan BharatQR. Metode pembayaran global (cryptocurrency, PayPal, Cash App) tersedia untuk semua bahasa. Mode Profesional membuka semua standar pembayaran tanpa memandang bahasa.',
+      ],
+    },
+    {
+      heading: 'Standar Pembayaran Eropa',
+      bullets: [
+        'EPC/SEPA (EU): Kode QR transfer bank Eropa mengikuti Standar Kode QR EPC. Mendukung IBAN, BIC (opsional untuk domestik), jumlah dalam EUR, dan referensi pembayaran terstruktur atau tidak terstruktur. Digunakan di seluruh zona SEPA termasuk negara-negara EU ditambah Swiss, Norwegia, Islandia, Liechtenstein, Monako, dan San Marino.',
+        'Swiss QR-bill: Standar pembayaran Swiss mengikuti Pedoman Implementasi SIX. Mendukung CHF dan EUR, QR-Reference (QRR), Creditor Reference (ISO 11649), alamat kreditur/debitur terstruktur, dan informasi tagihan. Diperlukan untuk faktur Swiss sejak 2022.',
+      ],
+    },
+    {
+      heading: 'Standar Pembayaran India',
+      bullets: [
+        'UPI (India): Unified Payments Interface mengikuti Spesifikasi Deep Linking NPCI. Mendukung VPA (Virtual Payment Address), nama penerima pembayaran, jumlah dalam INR, catatan transaksi, ID referensi, kode kategori pedagang, dan mode transaksi.',
+        'BharatQR (India): Standar QR terpadu yang mendukung pembayaran berbasis UPI dan kartu. Menggabungkan VPA UPI dengan PAN kartu untuk kompatibilitas maksimum. Mencakup nama pedagang, kota, MCC, detail GST, dan nomor faktur/referensi.',
+      ],
+    },
+    {
+      heading: 'Standar Pembayaran Asia Tenggara',
+      bullets: [
+        'PayNow (Singapura): Sistem pembayaran cepat Singapura menggunakan spesifikasi QR EMVCo dengan profil SGQR. Mendukung UEN (registrasi bisnis), nomor ponsel, atau NRIC sebagai pengenal proxy. Mencakup flag editabilitas jumlah dan tanggal kedaluwarsa.',
+        'PromptPay (Thailand): Sistem pembayaran nasional Thailand mengikuti profil EMV Bank of Thailand. Mendukung nomor ponsel, ID nasional, ID pajak, ID e-wallet, dan pembayaran tagihan dengan beberapa field referensi.',
+        'QRIS (Indonesia): Quick Response Code Indonesian Standard. Standar pembayaran nasional berbasis EMV yang mendukung ID pedagang, NMID (National Merchant ID), klasifikasi kriteria pedagang, dan biaya kemudahan (tetap atau persentase).',
+        'DuitNow (Malaysia): Sistem pembayaran instan Malaysia. Mendukung beberapa jenis proxy termasuk NRIC, ponsel, paspor, ID tentara, dan nomor registrasi bisnis.',
+        'VietQR (Vietnam): Standar transfer antarbank Vietnam. Memerlukan BIN bank (identifikasi NAPAS) dan nomor rekening. Mendukung beberapa kode layanan untuk jenis transfer yang berbeda (QRPUSH, QRIBFTTA, QRIBFTTC).',
+        'QR Ph (Filipina): Standar pembayaran QR Filipina untuk InstaPay dan PESONet. Menggunakan nomor rekening dengan identifikasi pedagang untuk transaksi P2M (person-to-merchant).',
+      ],
+    },
+    {
+      heading: 'Standar Pembayaran Asia Timur',
+      bullets: [
+        'TWQR (Taiwan): Standar pembayaran QR Taiwan. Mendukung ID pedagang, ID pajak, dan jumlah TWD.',
+        'HKQR/FPS (Hong Kong): Kode QR Faster Payment System Hong Kong. Mendukung FPS ID, nomor ponsel, atau email sebagai pengenal pembayaran. Jumlah dalam HKD.',
+        'JPQR (Jepang): Standar pembayaran kode QR terpadu Jepang. Menggunakan ID toko untuk identifikasi pedagang dengan jumlah JPY.',
+      ],
+    },
+    {
+      heading: 'Standar Pembayaran Regional Lainnya',
+      bullets: [
+        'PIX (Brasil): Sistem pembayaran instan Bank Sentral Brasil mengikuti spesifikasi BR Code. Mendukung kunci PIX (CPF, CNPJ, email, telepon, atau kunci acak), nama/kota pedagang, ID transaksi, dan jumlah BRL.',
+        'AusPayNet/NPP PayID (Australia): Sistem PayID New Payments Platform Australia. Mendukung jenis PayID (email, ponsel, ABN, ID organisasi) atau BSB + nomor rekening tradisional. Nama pedagang bersifat opsional karena pembayar melihat nama terdaftar dari pencarian NPP.',
+      ],
+    },
+    {
+      heading: 'Pembayaran Cryptocurrency',
+      bullets: [
+        'Bitcoin/Litecoin (BIP-21): URI pembayaran cryptocurrency standar dengan alamat dompet, jumlah opsional, dan label. Kompatibel dengan semua dompet Bitcoin dan Litecoin utama.',
+        'Lightning Network (BOLT11): Faktur pembayaran Lightning Network. Tempel string faktur yang dikodekan BOLT11 untuk pembayaran Bitcoin instan dengan biaya minimal.',
+        'Ethereum (EIP-681): URI permintaan transaksi Ethereum yang mendukung transfer ETH native dan transfer token ERC-20. Mencakup chain ID untuk dukungan multi-jaringan (Mainnet, Polygon, BSC, Arbitrum, Optimism, Avalanche), parameter gas, dan panggilan fungsi kontrak.',
+      ],
+    },
+    {
+      heading: 'Layanan Tautan Pembayaran',
+      bullets: [
+        'PayPal.Me: Tautan pembayaran PayPal dengan nama pengguna dan jumlah yang sudah diisi opsional. Penerima dapat membayar melalui saldo PayPal, kartu, atau rekening bank.',
+        'Cash App: Tautan pembayaran Cash App menggunakan $cashtag dengan jumlah opsional. Populer di Amerika Serikat untuk pembayaran peer-to-peer.',
+      ],
+    },
+    {
+      heading: 'QR EMV Generik',
+      bullets: [
+        'EMV Generic: Buat kode QR EMV Merchant-Presented Mode kustom untuk skema pembayaran yang tidak tercantum secara khusus. Konfigurasikan nama pedagang, kota, kode negara (ISO 3166-1), kode mata uang (numerik ISO 4217), MCC, opsi tip/biaya kemudahan, dan field data tambahan. Berguna untuk pengujian atau integrasi kustom.',
+      ],
+    },
+    {
       heading: 'Mode Pencampuran Overlay (Profesional)',
       paragraphs: [
         'Mode pencampuran tambahan di tingkat Profesional:',
@@ -564,7 +631,7 @@ export const docs: PageDefinition = {
       ],
     },
     {
-      heading: 'Parameter Dasar',
+      heading: 'Parameter Dasar"',
       paragraphs: [
         'Parameter yang diperlukan dan umum (nama parameter tidak diterjemahkan):',
       ],
@@ -581,7 +648,7 @@ export const docs: PageDefinition = {
       ],
     },
     {
-      heading: 'Parameter Styling',
+      heading: 'Parameter Styling"',
       paragraphs: [
         'Styling modul dan pola:',
       ],
@@ -601,7 +668,7 @@ export const docs: PageDefinition = {
       ],
     },
     {
-      heading: 'Parameter Overlay',
+      heading: 'Parameter Overlay"',
       paragraphs: [
         'Opsi overlay gambar (gambar overlay diambil dari sisi server):',
       ],
@@ -618,7 +685,7 @@ export const docs: PageDefinition = {
       ],
     },
     {
-      heading: 'Parameter Preprocessing',
+      heading: 'Parameter Preprocessing"',
       paragraphs: [
         'Preprocessing gambar yang diterapkan ke overlay:',
       ],
@@ -637,7 +704,7 @@ export const docs: PageDefinition = {
       ],
     },
     {
-      heading: 'Parameter Watermark',
+      heading: 'Parameter Watermark"',
       paragraphs: [
         'Tambahkan watermark ke kode QR yang dihasilkan:',
       ],
@@ -652,7 +719,7 @@ export const docs: PageDefinition = {
       ],
     },
     {
-      heading: 'Parameter Animasi',
+      heading: 'Parameter Animasi"',
       paragraphs: [
         'Untuk output GIF animasi (memerlukan format=gif):',
       ],
@@ -665,7 +732,7 @@ export const docs: PageDefinition = {
       ],
     },
     {
-      heading: 'Parameter Output',
+      heading: 'Parameter Output"',
       paragraphs: [
         'Opsi format output:',
       ],
@@ -678,7 +745,7 @@ export const docs: PageDefinition = {
       ],
     },
     {
-      heading: 'Contoh Penggunaan',
+      heading: 'Contoh Penggunaan"',
       paragraphs: [
         'Kode QR dasar:',
         'https://anqr.link/api/qr?data=https://example.com',
@@ -722,7 +789,7 @@ export const docs: PageDefinition = {
       ],
     },
     {
-      heading: 'Batas Rate dan Penggunaan',
+      heading: 'Batas Rate dan Penggunaan"',
       paragraphs: [
         'API gratis untuk digunakan untuk volume yang wajar. Untuk penggunaan volume tinggi atau aplikasi komersial yang memerlukan uptime terjamin, silakan hubungi kami.',
         'Respons API menyertakan header caching yang agresif. Untuk performa terbaik, cache respons di sisi Anda atau gunakan URL yang sama secara konsisten untuk kode QR yang identik.',
