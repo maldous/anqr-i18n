@@ -1,5 +1,6 @@
 import { useQRStore, PayloadKind } from '@/store/qr-store'
 import { useTranslation } from 'react-i18next'
+import i18n from '@/i18n'
 import { Label } from '@/components/ui/label'
 import { Input } from '@/components/ui/input'
 import { Textarea } from '@/components/ui/textarea'
@@ -7,7 +8,135 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue, SelectGr
 import { Switch } from '@/components/ui/switch'
 import { HighlightedLabel } from '@/lib/search-context'
 import { useState, useEffect } from 'react'
-import { generateEPCSepa, generateUPI, generatePayNow, generatePromptPay, generatePIX } from '@/modules/payload-generators'
+import { 
+  generateEPCSepa, generateUPI, generatePayNow, generatePromptPay, generatePIX,
+  generateSwissQRBill, generateLightning, generateEthereumEIP681,
+  generateQRIS, generateDuitNow, generateBharatQR, generateVietQR,
+  generateQRPh, generateTWQR, generateHKQR, generateJPQR, generateAusPayNet,
+  generatePayPalMe, generateCashApp, generateEMVMPM
+} from '@/modules/payload-generators'
+
+// Global payment methods available to ALL languages in advanced tier
+const GLOBAL_PAYMENT_METHODS: PayloadKind[] = [
+  'crypto',
+  'lightning', 
+  'ethereum_eip681',
+  'paypal_me',
+  'cashapp',
+]
+
+// Language-to-payment mapping for advanced tier
+// Maps language codes to arrays of region-specific payment methods
+const LANGUAGE_PAYMENT_MAP: Record<string, PayloadKind[]> = {
+  // Vietnamese - VietQR
+  vi: ['vietqr'],
+  
+  // Thai - PromptPay
+  th: ['promptpay'],
+  
+  // Japanese - JPQR (Google Play: ja-JP)
+  'ja-JP': ['jpqr'],
+  
+  // Korean - global only (Google Play: ko-KR)
+  'ko-KR': [],
+  
+  // Chinese - includes mainland, Taiwan, HK (Google Play: zh-CN)
+  'zh-CN': ['twqr', 'hkqr'],
+  
+  // Indonesian - QRIS
+  id: ['qris'],
+  
+  // Malay (Malaysia, Singapore) - DuitNow, PayNow
+  ms: ['duitnow', 'paynow'],
+  
+  // Filipino (Philippines) - QR Ph (Google Play: fil)
+  fil: ['qrph'],
+  
+  // Portuguese (Brazil) - PIX (Google Play: pt-BR)
+  'pt-BR': ['pix'],
+  
+  // Indian languages - UPI, BharatQR (Google Play codes)
+  'hi-IN': ['upi', 'bharatqr'],
+  'bn-BD': ['upi', 'bharatqr'], // Bengali
+  'te-IN': ['upi', 'bharatqr'],
+  'mr-IN': ['upi', 'bharatqr'],
+  gu: ['upi', 'bharatqr'],
+  'kn-IN': ['upi', 'bharatqr'],
+  'ml-IN': ['upi', 'bharatqr'],
+  pa: ['upi', 'bharatqr'], // Punjabi (Google Play: pa)
+  'ta-IN': ['upi', 'bharatqr'],
+  as: ['upi', 'bharatqr'],
+
+  
+  // Nepali - UPI (close ties with India)
+  'ne-NP': ['upi', 'bharatqr'],
+  
+  // European languages - EPC/SEPA, Swiss QR-bill (with Google Play codes)
+  de: ['epc_sepa', 'swiss_qr_bill'],
+  'fr-FR': ['epc_sepa', 'swiss_qr_bill'],
+  'it-IT': ['epc_sepa', 'swiss_qr_bill'],
+  'es-ES': ['epc_sepa'], // Spanish (Google Play: es-ES)
+  'nl-NL': ['epc_sepa'],
+  'pl-PL': ['epc_sepa'],
+  cs: ['epc_sepa'],
+  da: ['epc_sepa'],
+  'fi-FI': ['epc_sepa'],
+  'sv-SE': ['epc_sepa'],
+  'no-NO': ['epc_sepa'],
+  ro: ['epc_sepa'],
+  'hu-HU': ['epc_sepa'],
+  hr: ['epc_sepa'],
+  bg: ['epc_sepa'],
+  'el-GR': ['epc_sepa'],
+  rm: ['epc_sepa', 'swiss_qr_bill'], // Romansh (Switzerland)
+  
+  // English - show internationally-relevant options only (not region-specific foreign standards)
+  // Users who need regional standards like VietQR, QRIS, PromptPay etc should use their native language or professional tier
+  'en-GB': ['epc_sepa', 'swiss_qr_bill', 'auspaynet'],
+  
+  // Russian - global + SEPA for cross-border (using Google Play codes)
+  'ru-RU': ['epc_sepa'],
+  
+  // Arabic - global options
+  ar: [],
+  
+  // Southeast Asian (no specific QR standards in our list) - with Google Play codes
+  'km-KH': [], // Khmer
+  'lo-LA': [], // Lao
+  'my-MM': [], // Burmese
+  
+  // South African languages - global only
+  af: [],
+  zu: [],
+  tn: [],
+}
+
+/**
+ * Get payment methods available for the current language in advanced tier
+ * Returns all payments for professional tier, filtered payments for advanced tier
+ */
+function getAvailablePayments(tier: string, currentLang: string): PayloadKind[] {
+  // Professional tier gets ALL payment methods
+  if (tier === 'professional') {
+    return [
+      'epc_sepa', 'swiss_qr_bill', 'upi', 'paynow', 'promptpay', 'pix',
+      'qris', 'duitnow', 'bharatqr', 'vietqr', 'qrph', 'twqr', 'hkqr',
+      'jpqr', 'auspaynet', 'crypto', 'lightning', 'ethereum_eip681',
+      'paypal_me', 'cashapp', 'emv_generic'
+    ]
+  }
+  
+  // Advanced tier gets language-specific + global payments
+  if (tier === 'advanced') {
+    const baseLang = currentLang.split('-')[0]
+    const langSpecific = LANGUAGE_PAYMENT_MAP[baseLang] || []
+    // Combine language-specific with global, remove duplicates
+    return [...new Set([...langSpecific, ...GLOBAL_PAYMENT_METHODS])]
+  }
+  
+  // Basic tier gets no payments
+  return []
+}
 
 // Payload category/item keys for translation
 const PAYLOAD_CATEGORY_KEYS = [
@@ -66,14 +195,29 @@ const PAYLOAD_CATEGORY_KEYS = [
   },
   {
     groupKey: 'payload.payments',
-    tier: 'professional' as const,
+    tier: 'advanced' as const, // Show in advanced tier with language filtering, all in professional
     items: [
       { value: 'epc_sepa' as PayloadKind, labelKey: 'payload.epcSepa' },
+      { value: 'swiss_qr_bill' as PayloadKind, labelKey: 'payload.swissQrBill' },
       { value: 'upi' as PayloadKind, labelKey: 'payload.upi' },
       { value: 'paynow' as PayloadKind, labelKey: 'payload.paynow' },
       { value: 'promptpay' as PayloadKind, labelKey: 'payload.promptpay' },
       { value: 'pix' as PayloadKind, labelKey: 'payload.pix' },
+      { value: 'qris' as PayloadKind, labelKey: 'payload.qris' },
+      { value: 'duitnow' as PayloadKind, labelKey: 'payload.duitnow' },
+      { value: 'bharatqr' as PayloadKind, labelKey: 'payload.bharatqr' },
+      { value: 'vietqr' as PayloadKind, labelKey: 'payload.vietqr' },
+      { value: 'qrph' as PayloadKind, labelKey: 'payload.qrph' },
+      { value: 'twqr' as PayloadKind, labelKey: 'payload.twqr' },
+      { value: 'hkqr' as PayloadKind, labelKey: 'payload.hkqr' },
+      { value: 'jpqr' as PayloadKind, labelKey: 'payload.jpqr' },
+      { value: 'auspaynet' as PayloadKind, labelKey: 'payload.auspaynet' },
       { value: 'crypto' as PayloadKind, labelKey: 'payload.crypto' },
+      { value: 'lightning' as PayloadKind, labelKey: 'payload.lightning' },
+      { value: 'ethereum_eip681' as PayloadKind, labelKey: 'payload.ethereumEip681' },
+      { value: 'paypal_me' as PayloadKind, labelKey: 'payload.paypalMe' },
+      { value: 'cashapp' as PayloadKind, labelKey: 'payload.cashapp' },
+      { value: 'emv_generic' as PayloadKind, labelKey: 'payload.emvGeneric' },
     ]
   },
   {
@@ -131,8 +275,118 @@ interface PIXForm {
   amount: string
 }
 
+// New payment form interfaces
+interface SwissQRBillForm {
+  creditorIBAN: string
+  creditorName: string
+  creditorCity: string
+  creditorCountry: string
+  referenceType: 'QRR' | 'SCOR' | 'NON'
+  reference: string
+  amount: string
+  currency: 'CHF' | 'EUR'
+}
+
+interface LightningForm {
+  invoice: string
+}
+
+interface EthereumForm {
+  targetAddress: string
+  chainId: string
+  value: string
+  gas: string
+}
+
+interface QRISForm {
+  merchantId: string
+  merchantName: string
+  merchantCity: string
+  amount: string
+}
+
+interface DuitNowForm {
+  proxyType: 'NRIC' | 'MOBILE' | 'PASSPORT' | 'ARMY' | 'BUSINESS' | 'OTHERS'
+  proxyValue: string
+  merchantName: string
+  amount: string
+}
+
+interface BharatQRForm {
+  merchantVPA: string
+  merchantName: string
+  merchantCity: string
+  amount: string
+}
+
+interface VietQRForm {
+  bankBin: string
+  accountNumber: string
+  accountName: string
+  amount: string
+}
+
+interface QRPhForm {
+  accountNumber: string
+  merchantName: string
+  merchantCity: string
+  amount: string
+}
+
+interface TWQRForm {
+  merchantId: string
+  merchantName: string
+  amount: string
+}
+
+interface HKQRForm {
+  fpsId: string
+  merchantName: string
+  amount: string
+}
+
+interface JPQRForm {
+  storeId: string
+  merchantName: string
+  amount: string
+}
+
+interface AusPayNetForm {
+  payId: string
+  payIdType: 'EMAIL' | 'MOBILE' | 'ABN' | 'ORG'
+  merchantName: string
+  amount: string
+}
+
+interface PayPalMeForm {
+  username: string
+  amount: string
+}
+
+interface CashAppForm {
+  cashtag: string
+  amount: string
+}
+
+interface EMVGenericForm {
+  merchantName: string
+  merchantCity: string
+  countryCode: string
+  currencyCode: string
+  amount: string
+  mcc: string
+  postalCode: string
+  tipIndicator: 'none' | 'prompt' | 'fixed' | 'percent'
+  tipAmount: string
+  tipPercent: string
+  reference: string
+  storeLabel: string
+  terminalLabel: string
+}
+
 export function PayloadSection() {
-  const { tier, payload, setPayloadKind, setPayloadText, setPayloadUrl, setPayloadTel, setPayloadEmail, setPayloadSms, setPayloadGeo, setPayloadWifi, setPayloadVCard, setPayloadMeCard, setPayloadEvent, setPayloadCrypto, setPayloadOtpAuth, setPayloadValidation } = useQRStore()
+  const { tier, payload, setPayloadKind, setPayloadText, setPayloadUrl, setPayloadTel, setPayloadEmail, setPayloadSms, setPayloadGeo, setPayloadWifi, setPayloadVCard, setPayloadMeCard, setPayloadEvent, setPayloadCrypto, setPayloadOtpAuth, setPayloadValidation,
+    setPayloadSwissQRBill, setPayloadLightning, setPayloadEthereum, setPayloadQRIS, setPayloadDuitNow, setPayloadBharatQR, setPayloadVietQR, setPayloadQRPh, setPayloadTWQR, setPayloadHKQR, setPayloadJPQR, setPayloadAusPayNet, setPayloadPayPalMe, setPayloadCashApp, setPayloadEMVGeneric } = useQRStore()
   const { t } = useTranslation()
   const [showStartupHighlight, setShowStartupHighlight] = useState(false)
 
@@ -170,6 +424,115 @@ export function PayloadSection() {
     name: '',
     city: '',
     amount: ''
+  })
+
+  // New payment form states
+  const [swissQrBillForm, setSwissQrBillForm] = useState<SwissQRBillForm>({
+    creditorIBAN: '',
+    creditorName: '',
+    creditorCity: '',
+    creditorCountry: 'CH',
+    referenceType: 'NON',
+    reference: '',
+    amount: '',
+    currency: 'CHF'
+  })
+
+  const [lightningForm, setLightningForm] = useState<LightningForm>({
+    invoice: ''
+  })
+
+  const [ethereumForm, setEthereumForm] = useState<EthereumForm>({
+    targetAddress: '',
+    chainId: '1',
+    value: '',
+    gas: ''
+  })
+
+  const [qrisForm, setQrisForm] = useState<QRISForm>({
+    merchantId: '',
+    merchantName: '',
+    merchantCity: '',
+    amount: ''
+  })
+
+  const [duitnowForm, setDuitnowForm] = useState<DuitNowForm>({
+    proxyType: 'MOBILE',
+    proxyValue: '',
+    merchantName: '',
+    amount: ''
+  })
+
+  const [bharatqrForm, setBharatqrForm] = useState<BharatQRForm>({
+    merchantVPA: '',
+    merchantName: '',
+    merchantCity: '',
+    amount: ''
+  })
+
+  const [vietqrForm, setVietqrForm] = useState<VietQRForm>({
+    bankBin: '',
+    accountNumber: '',
+    accountName: '',
+    amount: ''
+  })
+
+  const [qrphForm, setQrphForm] = useState<QRPhForm>({
+    accountNumber: '',
+    merchantName: '',
+    merchantCity: '',
+    amount: ''
+  })
+
+  const [twqrForm, setTwqrForm] = useState<TWQRForm>({
+    merchantId: '',
+    merchantName: '',
+    amount: ''
+  })
+
+  const [hkqrForm, setHkqrForm] = useState<HKQRForm>({
+    fpsId: '',
+    merchantName: '',
+    amount: ''
+  })
+
+  const [jpqrForm, setJpqrForm] = useState<JPQRForm>({
+    storeId: '',
+    merchantName: '',
+    amount: ''
+  })
+
+  const [auspaynetForm, setAuspaynetForm] = useState<AusPayNetForm>({
+    payId: '',
+    payIdType: 'EMAIL',
+    merchantName: '',
+    amount: ''
+  })
+
+  const [paypalMeForm, setPaypalMeForm] = useState<PayPalMeForm>({
+    username: '',
+    amount: ''
+  })
+
+  const [cashappForm, setCashappForm] = useState<CashAppForm>({
+    cashtag: '',
+    amount: ''
+  })
+
+  const [emvGenericForm, setEmvGenericForm] = useState<EMVGenericForm>({
+    merchantName: '',
+    merchantCity: '',
+    countryCode: '',
+    currencyCode: '',
+    amount: '',
+    mcc: '',
+    postalCode: '',
+    tipIndicator: 'none',
+    tipAmount: '',
+    tipPercent: '',
+    reference: '',
+    storeLabel: '',
+    terminalLabel: ''
   })
 
   // Show startup highlight only once on initial mount
@@ -250,7 +613,173 @@ export function PayloadSection() {
     }
   }, [payload.kind, pixForm, setPayloadText])
 
+  // Swiss QR-bill - update store helper so getPayloadText() works correctly
+  useEffect(() => {
+    if (payload.kind !== 'swiss_qr_bill') return
+    setPayloadSwissQRBill({
+      creditorIBAN: swissQrBillForm.creditorIBAN,
+      creditorAddressType: 'K',
+      creditorName: swissQrBillForm.creditorName,
+      creditorCity: swissQrBillForm.creditorCity || undefined,
+      creditorCountry: swissQrBillForm.creditorCountry,
+      amount: swissQrBillForm.amount ? parseFloat(swissQrBillForm.amount) : undefined,
+      currency: swissQrBillForm.currency,
+      referenceType: swissQrBillForm.referenceType,
+      reference: swissQrBillForm.reference || undefined
+    })
+  }, [payload.kind, swissQrBillForm, setPayloadSwissQRBill])
 
+  // Lightning - update store helper so getPayloadText() works correctly
+  useEffect(() => {
+    if (payload.kind !== 'lightning') return
+    setPayloadLightning({ invoice: lightningForm.invoice })
+  }, [payload.kind, lightningForm, setPayloadLightning])
+
+  // Ethereum EIP-681 - update store helper so getPayloadText() works correctly
+  useEffect(() => {
+    if (payload.kind !== 'ethereum_eip681') return
+    setPayloadEthereum({
+      targetAddress: ethereumForm.targetAddress,
+      chainId: ethereumForm.chainId ? parseInt(ethereumForm.chainId, 10) : undefined,
+      value: ethereumForm.value || undefined,
+      gas: ethereumForm.gas ? parseInt(ethereumForm.gas, 10) : undefined
+    })
+  }, [payload.kind, ethereumForm, setPayloadEthereum])
+
+  // QRIS - update store helper so getPayloadText() works correctly
+  useEffect(() => {
+    if (payload.kind !== 'qris') return
+    setPayloadQRIS({
+      merchantId: qrisForm.merchantId,
+      merchantName: qrisForm.merchantName,
+      merchantCity: qrisForm.merchantCity,
+      amount: qrisForm.amount ? parseFloat(qrisForm.amount) : undefined
+    })
+  }, [payload.kind, qrisForm, setPayloadQRIS])
+
+  // DuitNow - update store helper so getPayloadText() works correctly
+  useEffect(() => {
+    if (payload.kind !== 'duitnow') return
+    setPayloadDuitNow({
+      proxyType: duitnowForm.proxyType,
+      proxyValue: duitnowForm.proxyValue,
+      merchantName: duitnowForm.merchantName,
+      amount: duitnowForm.amount ? parseFloat(duitnowForm.amount) : undefined
+    })
+  }, [payload.kind, duitnowForm, setPayloadDuitNow])
+
+  // BharatQR - update store helper so getPayloadText() works correctly
+  useEffect(() => {
+    if (payload.kind !== 'bharatqr') return
+    setPayloadBharatQR({
+      merchantVPA: bharatqrForm.merchantVPA || undefined,
+      merchantName: bharatqrForm.merchantName,
+      merchantCity: bharatqrForm.merchantCity,
+      amount: bharatqrForm.amount ? parseFloat(bharatqrForm.amount) : undefined
+    })
+  }, [payload.kind, bharatqrForm, setPayloadBharatQR])
+
+  // VietQR - update store helper so getPayloadText() works correctly
+  useEffect(() => {
+    if (payload.kind !== 'vietqr') return
+    setPayloadVietQR({
+      bankBin: vietqrForm.bankBin,
+      accountNumber: vietqrForm.accountNumber,
+      accountName: vietqrForm.accountName || undefined,
+      amount: vietqrForm.amount ? parseFloat(vietqrForm.amount) : undefined
+    })
+  }, [payload.kind, vietqrForm, setPayloadVietQR])
+
+  // QR Ph - update store helper so getPayloadText() works correctly
+  useEffect(() => {
+    if (payload.kind !== 'qrph') return
+    setPayloadQRPh({
+      accountNumber: qrphForm.accountNumber,
+      merchantName: qrphForm.merchantName,
+      merchantCity: qrphForm.merchantCity,
+      amount: qrphForm.amount ? parseFloat(qrphForm.amount) : undefined
+    })
+  }, [payload.kind, qrphForm, setPayloadQRPh])
+
+  // TWQR - update store helper so getPayloadText() works correctly
+  useEffect(() => {
+    if (payload.kind !== 'twqr') return
+    setPayloadTWQR({
+      merchantId: twqrForm.merchantId,
+      merchantName: twqrForm.merchantName,
+      amount: twqrForm.amount ? parseFloat(twqrForm.amount) : undefined
+    })
+  }, [payload.kind, twqrForm, setPayloadTWQR])
+
+  // HKQR - update store helper so getPayloadText() works correctly
+  useEffect(() => {
+    if (payload.kind !== 'hkqr') return
+    setPayloadHKQR({
+      fpsId: hkqrForm.fpsId || undefined,
+      merchantName: hkqrForm.merchantName,
+      amount: hkqrForm.amount ? parseFloat(hkqrForm.amount) : undefined
+    })
+  }, [payload.kind, hkqrForm, setPayloadHKQR])
+
+  // JPQR - update store helper so getPayloadText() works correctly
+  useEffect(() => {
+    if (payload.kind !== 'jpqr') return
+    setPayloadJPQR({
+      storeId: jpqrForm.storeId,
+      merchantName: jpqrForm.merchantName,
+      amount: jpqrForm.amount ? parseFloat(jpqrForm.amount) : undefined
+    })
+  }, [payload.kind, jpqrForm, setPayloadJPQR])
+
+  // AusPayNet - update store helper so getPayloadText() works correctly
+  useEffect(() => {
+    if (payload.kind !== 'auspaynet') return
+    // Update the store's auspaynet helper object
+    setPayloadAusPayNet({
+      payId: auspaynetForm.payId || undefined,
+      payIdType: auspaynetForm.payIdType,
+      merchantName: auspaynetForm.merchantName,
+      amount: auspaynetForm.amount ? parseFloat(auspaynetForm.amount) : undefined
+    })
+  }, [payload.kind, auspaynetForm, setPayloadAusPayNet])
+
+  // PayPal.Me - update store helper so getPayloadText() works correctly
+  useEffect(() => {
+    if (payload.kind !== 'paypal_me') return
+    setPayloadPayPalMe({
+      username: paypalMeForm.username,
+      amount: paypalMeForm.amount ? parseFloat(paypalMeForm.amount) : undefined
+    })
+  }, [payload.kind, paypalMeForm, setPayloadPayPalMe])
+
+  // Cash App - update store helper so getPayloadText() works correctly
+  useEffect(() => {
+    if (payload.kind !== 'cashapp') return
+    setPayloadCashApp({
+      cashtag: cashappForm.cashtag,
+      amount: cashappForm.amount ? parseFloat(cashappForm.amount) : undefined
+    })
+  }, [payload.kind, cashappForm, setPayloadCashApp])
+
+  // EMV Generic - update store helper so getPayloadText() works correctly
+  useEffect(() => {
+    if (payload.kind !== 'emv_generic') return
+    setPayloadEMVGeneric({
+      merchantName: emvGenericForm.merchantName,
+      merchantCity: emvGenericForm.merchantCity,
+      countryCode: emvGenericForm.countryCode,
+      currencyCode: emvGenericForm.currencyCode,
+      amount: emvGenericForm.amount ? parseFloat(emvGenericForm.amount) : undefined,
+      mcc: emvGenericForm.mcc || undefined,
+      postalCode: emvGenericForm.postalCode || undefined,
+      tipIndicator: emvGenericForm.tipIndicator as 'none' | 'prompt' | 'fixed' | 'percent',
+      tipAmount: emvGenericForm.tipAmount ? parseFloat(emvGenericForm.tipAmount) : undefined,
+      tipPercent: emvGenericForm.tipPercent ? parseFloat(emvGenericForm.tipPercent) : undefined,
+      reference: emvGenericForm.reference || undefined,
+      storeLabel: emvGenericForm.storeLabel || undefined,
+      terminalLabel: emvGenericForm.terminalLabel || undefined
+    })
+  }, [payload.kind, emvGenericForm, setPayloadEMVGeneric])
 
   return (
     <div className="space-y-4">
@@ -267,14 +796,28 @@ export function PayloadSection() {
               if (cat.tier === 'advanced') return tier === 'advanced' || tier === 'professional'
               if (cat.tier === 'professional') return tier === 'professional'
               return false
-            }).map(cat => (
-              <SelectGroup key={cat.groupKey}>
-                <SelectLabel className="text-xs font-semibold text-muted-foreground px-2 py-1.5 bg-muted/50">{t(cat.groupKey)}</SelectLabel>
-                {cat.items.map(item => (
-                  <SelectItem key={item.value} value={item.value}>{t(item.labelKey)}</SelectItem>
-                ))}
-              </SelectGroup>
-            ))}
+            }).map(cat => {
+              // Get available payment methods for current language/tier
+              const currentLang = i18n.language || 'en'
+              const availablePayments = getAvailablePayments(tier, currentLang)
+              
+              // Filter items for the payments category based on language
+              const filteredItems = cat.groupKey === 'payload.payments'
+                ? cat.items.filter(item => availablePayments.includes(item.value))
+                : cat.items
+              
+              // Don't render empty categories
+              if (filteredItems.length === 0) return null
+              
+              return (
+                <SelectGroup key={cat.groupKey}>
+                  <SelectLabel className="text-xs font-semibold text-muted-foreground px-2 py-1.5 bg-muted/50">{t(cat.groupKey)}</SelectLabel>
+                  {filteredItems.map(item => (
+                    <SelectItem key={item.value} value={item.value}>{t(item.labelKey)}</SelectItem>
+                  ))}
+                </SelectGroup>
+              )
+            })}
           </SelectContent>
         </Select>
       </div>
@@ -1166,7 +1709,666 @@ export function PayloadSection() {
         </div>
       )}
 
+      {/* Swiss QR-bill */}
+      {payload.kind === 'swiss_qr_bill' && (
+        <div className="space-y-4">
+          <div className="space-y-2">
+            <Label>{t('payload.iban')}</Label>
+            <Input
+              placeholder="CH93 0076 2011 6238 5295 7"
+              value={swissQrBillForm.creditorIBAN}
+              onChange={(e) => setSwissQrBillForm({ ...swissQrBillForm, creditorIBAN: e.target.value })}
+            />
+          </div>
+          <div className="space-y-2">
+            <Label>{t('payload.beneficiaryName')}</Label>
+            <Input
+              placeholder={t('placeholders.fullName')}
+              value={swissQrBillForm.creditorName}
+              onChange={(e) => setSwissQrBillForm({ ...swissQrBillForm, creditorName: e.target.value })}
+            />
+          </div>
+          <div className="grid grid-cols-2 gap-2">
+            <div className="space-y-2">
+              <Label>{t('payload.city')} {t('common.optional')}</Label>
+              <Input
+                placeholder={t('placeholders.zurich')}
+                value={swissQrBillForm.creditorCity}
+                onChange={(e) => setSwissQrBillForm({ ...swissQrBillForm, creditorCity: e.target.value })}
+              />
+            </div>
+            <div className="space-y-2">
+              <Label>{t('payload.country')}</Label>
+              <Select value={swissQrBillForm.creditorCountry} onValueChange={(v) => setSwissQrBillForm({ ...swissQrBillForm, creditorCountry: v })}>
+                <SelectTrigger><SelectValue /></SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="CH">{t('placeholders.switzerland')}</SelectItem>
+                  <SelectItem value="LI">{t('placeholders.liechtenstein')}</SelectItem>
+                </SelectContent>
+              </Select>
+            </div>
+          </div>
+          <div className="grid grid-cols-2 gap-2">
+            <div className="space-y-2">
+              <Label>{t('payload.amount')} {t('common.optional')}</Label>
+              <Input
+                type="number"
+                placeholder="0.00"
+                value={swissQrBillForm.amount}
+                onChange={(e) => setSwissQrBillForm({ ...swissQrBillForm, amount: e.target.value })}
+              />
+            </div>
+            <div className="space-y-2">
+              <Label>{t('placeholders.currency')}</Label>
+              <Select value={swissQrBillForm.currency} onValueChange={(v: 'CHF' | 'EUR') => setSwissQrBillForm({ ...swissQrBillForm, currency: v })}>
+                <SelectTrigger><SelectValue /></SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="CHF">CHF</SelectItem>
+                  <SelectItem value="EUR">EUR</SelectItem>
+                </SelectContent>
+              </Select>
+            </div>
+          </div>
+          <div className="grid grid-cols-2 gap-2">
+            <div className="space-y-2">
+              <Label>{t('placeholders.referenceType')}</Label>
+              <Select value={swissQrBillForm.referenceType} onValueChange={(v: 'QRR' | 'SCOR' | 'NON') => setSwissQrBillForm({ ...swissQrBillForm, referenceType: v })}>
+                <SelectTrigger><SelectValue /></SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="QRR">{t('placeholders.qrReference')}</SelectItem>
+                  <SelectItem value="SCOR">{t('placeholders.creditorRefIso')}</SelectItem>
+                  <SelectItem value="NON">{t('common.none')}</SelectItem>
+                </SelectContent>
+              </Select>
+            </div>
+            <div className="space-y-2">
+              <Label>{t('payload.reference')} {t('common.optional')}</Label>
+              <Input
+                placeholder={t('placeholders.invoiceReference')}
+                value={swissQrBillForm.reference}
+                onChange={(e) => setSwissQrBillForm({ ...swissQrBillForm, reference: e.target.value })}
+              />
+            </div>
+          </div>
+          <p className="text-xs text-muted-foreground">{t('placeholders.swissQrBillHint')}</p>
+        </div>
+      )}
 
+      {/* Lightning */}
+      {payload.kind === 'lightning' && (
+        <div className="space-y-4">
+          <div className="space-y-2">
+            <Label>{t('placeholders.bolt11Invoice')}</Label>
+            <Textarea
+              placeholder={t('placeholders.lnbcPlaceholder')}
+              className="font-mono text-xs h-24"
+              value={lightningForm.invoice}
+              onChange={(e) => setLightningForm({ invoice: e.target.value })}
+            />
+            <p className="text-xs text-muted-foreground">{t('placeholders.bolt11Hint')}</p>
+          </div>
+        </div>
+      )}
+
+      {/* Ethereum EIP-681 */}
+      {payload.kind === 'ethereum_eip681' && (
+        <div className="space-y-4">
+          <div className="space-y-2">
+            <Label>{t('payload.walletAddress')}</Label>
+            <Input
+              placeholder={t('placeholders.ethAddressPlaceholder')}
+              className="font-mono"
+              value={ethereumForm.targetAddress}
+              onChange={(e) => setEthereumForm({ ...ethereumForm, targetAddress: e.target.value })}
+            />
+          </div>
+          <div className="grid grid-cols-2 gap-2">
+            <div className="space-y-2">
+              <Label>{t('placeholders.chainId')}</Label>
+              <Select value={ethereumForm.chainId} onValueChange={(v) => setEthereumForm({ ...ethereumForm, chainId: v })}>
+                <SelectTrigger><SelectValue /></SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="1">{t('placeholders.ethMainnet')}</SelectItem>
+                  <SelectItem value="137">{t('placeholders.polygon')}</SelectItem>
+                  <SelectItem value="56">{t('placeholders.bsc')}</SelectItem>
+                  <SelectItem value="43114">{t('placeholders.avalanche')}</SelectItem>
+                  <SelectItem value="42161">{t('placeholders.arbitrum')}</SelectItem>
+                  <SelectItem value="10">{t('placeholders.optimism')}</SelectItem>
+                </SelectContent>
+              </Select>
+            </div>
+            <div className="space-y-2">
+              <Label>{t('placeholders.valueWei')} {t('common.optional')}</Label>
+              <Input
+                placeholder={t('placeholders.weiPlaceholder')}
+                value={ethereumForm.value}
+                onChange={(e) => setEthereumForm({ ...ethereumForm, value: e.target.value })}
+              />
+            </div>
+          </div>
+          <div className="space-y-2">
+            <Label>{t('placeholders.gasLimitOptional')} {t('common.optional')}</Label>
+            <Input
+              type="number"
+              placeholder={t('placeholders.gasPlaceholder')}
+              value={ethereumForm.gas}
+              onChange={(e) => setEthereumForm({ ...ethereumForm, gas: e.target.value })}
+            />
+          </div>
+          <p className="text-xs text-muted-foreground">{t('placeholders.eip681Hint')}</p>
+        </div>
+      )}
+
+      {/* QRIS */}
+      {payload.kind === 'qris' && (
+        <div className="space-y-4">
+          <div className="space-y-2">
+            <Label>{t('placeholders.merchantId')}</Label>
+            <Input
+              placeholder={t('placeholders.qrisMerchantIdPlaceholder')}
+              value={qrisForm.merchantId}
+              onChange={(e) => setQrisForm({ ...qrisForm, merchantId: e.target.value })}
+            />
+          </div>
+          <div className="space-y-2">
+            <Label>{t('payload.merchantName')}</Label>
+            <Input
+              placeholder={t('placeholders.tokoPlaceholder')}
+              value={qrisForm.merchantName}
+              onChange={(e) => setQrisForm({ ...qrisForm, merchantName: e.target.value })}
+            />
+          </div>
+          <div className="grid grid-cols-2 gap-2">
+            <div className="space-y-2">
+              <Label>{t('payload.city')} {t('common.optional')}</Label>
+              <Input
+                placeholder={t('placeholders.jakartaPlaceholder')}
+                value={qrisForm.merchantCity}
+                onChange={(e) => setQrisForm({ ...qrisForm, merchantCity: e.target.value })}
+              />
+            </div>
+            <div className="space-y-2">
+              <Label>{t('payload.amount')} (IDR) {t('common.optional')}</Label>
+              <Input
+                type="number"
+                placeholder={t('placeholders.idrAmountPlaceholder')}
+                value={qrisForm.amount}
+                onChange={(e) => setQrisForm({ ...qrisForm, amount: e.target.value })}
+              />
+            </div>
+          </div>
+          <p className="text-xs text-muted-foreground">{t('placeholders.qrisHint')}</p>
+        </div>
+      )}
+
+      {/* DuitNow */}
+      {payload.kind === 'duitnow' && (
+        <div className="space-y-4">
+          <div className="space-y-2">
+            <Label>{t('payload.proxyType')}</Label>
+            <Select value={duitnowForm.proxyType} onValueChange={(v: DuitNowForm['proxyType']) => setDuitnowForm({ ...duitnowForm, proxyType: v })}>
+              <SelectTrigger><SelectValue /></SelectTrigger>
+              <SelectContent>
+                <SelectItem value="MOBILE">{t('placeholders.mobileNumber')}</SelectItem>
+                <SelectItem value="NRIC">{t('placeholders.nric')}</SelectItem>
+                <SelectItem value="PASSPORT">{t('placeholders.passport')}</SelectItem>
+                <SelectItem value="ARMY">{t('placeholders.armyId')}</SelectItem>
+                <SelectItem value="BUSINESS">{t('placeholders.businessRegistration')}</SelectItem>
+                <SelectItem value="OTHERS">{t('placeholders.others')}</SelectItem>
+              </SelectContent>
+            </Select>
+          </div>
+          <div className="space-y-2">
+            <Label>{t('placeholders.proxyValue')}</Label>
+            <Input
+              placeholder={t('placeholders.myPhonePlaceholder')}
+              value={duitnowForm.proxyValue}
+              onChange={(e) => setDuitnowForm({ ...duitnowForm, proxyValue: e.target.value })}
+            />
+          </div>
+          <div className="space-y-2">
+            <Label>{t('payload.merchantName')}</Label>
+            <Input
+              placeholder={t('placeholders.fullName')}
+              value={duitnowForm.merchantName}
+              onChange={(e) => setDuitnowForm({ ...duitnowForm, merchantName: e.target.value })}
+            />
+          </div>
+          <div className="space-y-2">
+            <Label>{t('payload.amount')} (MYR) {t('common.optional')}</Label>
+            <Input
+              type="number"
+              placeholder="0.00"
+              value={duitnowForm.amount}
+              onChange={(e) => setDuitnowForm({ ...duitnowForm, amount: e.target.value })}
+            />
+          </div>
+          <p className="text-xs text-muted-foreground">{t('placeholders.duitnowHint')}</p>
+        </div>
+      )}
+
+      {/* BharatQR */}
+      {payload.kind === 'bharatqr' && (
+        <div className="space-y-4">
+          <div className="space-y-2">
+            <Label>{t('payload.upiId')} {t('common.optional')}</Label>
+            <Input
+              placeholder={t('placeholders.upiId')}
+              value={bharatqrForm.merchantVPA}
+              onChange={(e) => setBharatqrForm({ ...bharatqrForm, merchantVPA: e.target.value })}
+            />
+          </div>
+          <div className="space-y-2">
+            <Label>{t('payload.merchantName')}</Label>
+            <Input
+              placeholder={t('placeholders.fullName')}
+              value={bharatqrForm.merchantName}
+              onChange={(e) => setBharatqrForm({ ...bharatqrForm, merchantName: e.target.value })}
+            />
+          </div>
+          <div className="grid grid-cols-2 gap-2">
+            <div className="space-y-2">
+              <Label>{t('payload.city')} {t('common.optional')}</Label>
+              <Input
+                placeholder={t('placeholders.mumbaiPlaceholder')}
+                value={bharatqrForm.merchantCity}
+                onChange={(e) => setBharatqrForm({ ...bharatqrForm, merchantCity: e.target.value })}
+              />
+            </div>
+            <div className="space-y-2">
+              <Label>{t('payload.amountInr')}</Label>
+              <Input
+                type="number"
+                placeholder="0.00"
+                value={bharatqrForm.amount}
+                onChange={(e) => setBharatqrForm({ ...bharatqrForm, amount: e.target.value })}
+              />
+            </div>
+          </div>
+          <p className="text-xs text-muted-foreground">{t('placeholders.bharatqrHint')}</p>
+        </div>
+      )}
+
+      {/* VietQR */}
+      {payload.kind === 'vietqr' && (
+        <div className="space-y-4">
+          <div className="space-y-2">
+            <Label>{t('placeholders.bankBin')}</Label>
+            <Input
+              placeholder={t('placeholders.bankBinPlaceholder')}
+              value={vietqrForm.bankBin}
+              onChange={(e) => setVietqrForm({ ...vietqrForm, bankBin: e.target.value })}
+            />
+            <p className="text-xs text-muted-foreground">{t('placeholders.napasHint')}</p>
+          </div>
+          <div className="space-y-2">
+            <Label>{t('placeholders.accountNumber')}</Label>
+            <Input
+              placeholder={t('placeholders.accountNumberPlaceholder')}
+              value={vietqrForm.accountNumber}
+              onChange={(e) => setVietqrForm({ ...vietqrForm, accountNumber: e.target.value })}
+            />
+          </div>
+          <div className="space-y-2">
+            <Label>{t('payload.accountName')} {t('common.optional')}</Label>
+            <Input
+              placeholder={t('placeholders.vietnameseName')}
+              value={vietqrForm.accountName}
+              onChange={(e) => setVietqrForm({ ...vietqrForm, accountName: e.target.value })}
+            />
+          </div>
+          <div className="space-y-2">
+            <Label>{t('payload.amount')} (VND) {t('common.optional')}</Label>
+            <Input
+              type="number"
+              placeholder={t('placeholders.vndAmountPlaceholder')}
+              value={vietqrForm.amount}
+              onChange={(e) => setVietqrForm({ ...vietqrForm, amount: e.target.value })}
+            />
+          </div>
+        </div>
+      )}
+
+      {/* QR Ph */}
+      {payload.kind === 'qrph' && (
+        <div className="space-y-4">
+          <div className="space-y-2">
+            <Label>{t('placeholders.accountNumber')}</Label>
+            <Input
+              placeholder={t('placeholders.accountNumberPlaceholder')}
+              value={qrphForm.accountNumber}
+              onChange={(e) => setQrphForm({ ...qrphForm, accountNumber: e.target.value })}
+            />
+          </div>
+          <div className="space-y-2">
+            <Label>{t('payload.merchantName')}</Label>
+            <Input
+              placeholder={t('placeholders.filipinoName')}
+              value={qrphForm.merchantName}
+              onChange={(e) => setQrphForm({ ...qrphForm, merchantName: e.target.value })}
+            />
+          </div>
+          <div className="grid grid-cols-2 gap-2">
+            <div className="space-y-2">
+              <Label>{t('payload.city')} {t('common.optional')}</Label>
+              <Input
+                placeholder={t('placeholders.manilaPlaceholder')}
+                value={qrphForm.merchantCity}
+                onChange={(e) => setQrphForm({ ...qrphForm, merchantCity: e.target.value })}
+              />
+            </div>
+            <div className="space-y-2">
+              <Label>{t('payload.amount')} (PHP) {t('common.optional')}</Label>
+              <Input
+                type="number"
+                placeholder="0.00"
+                value={qrphForm.amount}
+                onChange={(e) => setQrphForm({ ...qrphForm, amount: e.target.value })}
+              />
+            </div>
+          </div>
+          <p className="text-xs text-muted-foreground">{t('placeholders.qrphHint')}</p>
+        </div>
+      )}
+
+      {/* TWQR */}
+      {payload.kind === 'twqr' && (
+        <div className="space-y-4">
+          <div className="space-y-2">
+            <Label>{t('placeholders.merchantId')}</Label>
+            <Input
+              placeholder={t('placeholders.twMerchantIdPlaceholder')}
+              value={twqrForm.merchantId}
+              onChange={(e) => setTwqrForm({ ...twqrForm, merchantId: e.target.value })}
+            />
+          </div>
+          <div className="space-y-2">
+            <Label>{t('payload.merchantName')}</Label>
+            <Input
+              placeholder={t('placeholders.twMerchantNamePlaceholder')}
+              value={twqrForm.merchantName}
+              onChange={(e) => setTwqrForm({ ...twqrForm, merchantName: e.target.value })}
+            />
+          </div>
+          <div className="space-y-2">
+            <Label>{t('payload.amount')} (TWD) {t('common.optional')}</Label>
+            <Input
+              type="number"
+              placeholder="0"
+              value={twqrForm.amount}
+              onChange={(e) => setTwqrForm({ ...twqrForm, amount: e.target.value })}
+            />
+          </div>
+          <p className="text-xs text-muted-foreground">{t('placeholders.twqrHint')}</p>
+        </div>
+      )}
+
+      {/* HKQR */}
+      {payload.kind === 'hkqr' && (
+        <div className="space-y-4">
+          <div className="space-y-2">
+            <Label>{t('placeholders.fpsId')} {t('common.optional')}</Label>
+            <Input
+              placeholder="1234567890"
+              value={hkqrForm.fpsId}
+              onChange={(e) => setHkqrForm({ ...hkqrForm, fpsId: e.target.value })}
+            />
+            <p className="text-xs text-muted-foreground">{t('placeholders.fpsHint')}</p>
+          </div>
+          <div className="space-y-2">
+            <Label>{t('payload.merchantName')} {t('common.optional')}</Label>
+            <Input
+              placeholder={t('placeholders.fullName')}
+              value={hkqrForm.merchantName}
+              onChange={(e) => setHkqrForm({ ...hkqrForm, merchantName: e.target.value })}
+            />
+          </div>
+          <div className="space-y-2">
+            <Label>{t('payload.amount')} (HKD) {t('common.optional')}</Label>
+            <Input
+              type="number"
+              placeholder="0.00"
+              value={hkqrForm.amount}
+              onChange={(e) => setHkqrForm({ ...hkqrForm, amount: e.target.value })}
+            />
+          </div>
+        </div>
+      )}
+
+      {/* JPQR */}
+      {payload.kind === 'jpqr' && (
+        <div className="space-y-4">
+          <div className="space-y-2">
+            <Label>{t('placeholders.storeId')}</Label>
+            <Input
+              placeholder={t('placeholders.jpStoreIdPlaceholder')}
+              value={jpqrForm.storeId}
+              onChange={(e) => setJpqrForm({ ...jpqrForm, storeId: e.target.value })}
+            />
+          </div>
+          <div className="space-y-2">
+            <Label>{t('payload.merchantName')}</Label>
+            <Input
+              placeholder={t('placeholders.jpMerchantNamePlaceholder')}
+              value={jpqrForm.merchantName}
+              onChange={(e) => setJpqrForm({ ...jpqrForm, merchantName: e.target.value })}
+            />
+          </div>
+          <div className="space-y-2">
+            <Label>{t('payload.amount')} (JPY) {t('common.optional')}</Label>
+            <Input
+              type="number"
+              placeholder="0"
+              value={jpqrForm.amount}
+              onChange={(e) => setJpqrForm({ ...jpqrForm, amount: e.target.value })}
+            />
+          </div>
+          <p className="text-xs text-muted-foreground">{t('placeholders.jpqrHint')}</p>
+        </div>
+      )}
+
+      {/* AusPayNet */}
+      {payload.kind === 'auspaynet' && (
+        <div className="space-y-4">
+          <div className="space-y-2">
+            <Label>{t('placeholders.payIdType')}</Label>
+            <Select value={auspaynetForm.payIdType} onValueChange={(v: AusPayNetForm['payIdType']) => setAuspaynetForm({ ...auspaynetForm, payIdType: v })}>
+              <SelectTrigger><SelectValue /></SelectTrigger>
+              <SelectContent>
+                <SelectItem value="EMAIL">{t('placeholders.emailOption')}</SelectItem>
+                <SelectItem value="MOBILE">{t('placeholders.mobileOption')}</SelectItem>
+                <SelectItem value="ABN">{t('placeholders.abn')}</SelectItem>
+                <SelectItem value="ORG">{t('placeholders.organizationId')}</SelectItem>
+              </SelectContent>
+            </Select>
+          </div>
+          <div className="space-y-2">
+            <Label>{t('placeholders.payId')}</Label>
+            <Input
+              placeholder={auspaynetForm.payIdType === 'EMAIL' ? t('placeholders.emailExample') : auspaynetForm.payIdType === 'MOBILE' ? '+61400123456' : '12345678901'}
+              value={auspaynetForm.payId}
+              onChange={(e) => setAuspaynetForm({ ...auspaynetForm, payId: e.target.value })}
+            />
+          </div>
+          <div className="space-y-2">
+            <Label>{t('payload.merchantName')} {t('common.optional')}</Label>
+            <Input
+              placeholder={t('placeholders.fullName')}
+              value={auspaynetForm.merchantName}
+              onChange={(e) => setAuspaynetForm({ ...auspaynetForm, merchantName: e.target.value })}
+            />
+          </div>
+          <div className="space-y-2">
+            <Label>{t('payload.amount')} (AUD) {t('common.optional')}</Label>
+            <Input
+              type="number"
+              placeholder="0.00"
+              value={auspaynetForm.amount}
+              onChange={(e) => setAuspaynetForm({ ...auspaynetForm, amount: e.target.value })}
+            />
+          </div>
+          <p className="text-xs text-muted-foreground">{t('placeholders.auspaynetHint')}</p>
+        </div>
+      )}
+
+      {/* PayPal.Me */}
+      {payload.kind === 'paypal_me' && (
+        <div className="space-y-4">
+          <div className="space-y-2">
+            <Label>{t('placeholders.paypalMeUsername')}</Label>
+            <Input
+              placeholder={t('placeholders.yourname')}
+              value={paypalMeForm.username}
+              onChange={(e) => setPaypalMeForm({ ...paypalMeForm, username: e.target.value })}
+            />
+            <p className="text-xs text-muted-foreground">{t('placeholders.paypalMeHint')}</p>
+          </div>
+          <div className="space-y-2">
+            <Label>{t('payload.amount')} {t('common.optional')}</Label>
+            <Input
+              type="number"
+              placeholder="0.00"
+              value={paypalMeForm.amount}
+              onChange={(e) => setPaypalMeForm({ ...paypalMeForm, amount: e.target.value })}
+            />
+          </div>
+        </div>
+      )}
+
+      {/* Cash App */}
+      {payload.kind === 'cashapp' && (
+        <div className="space-y-4">
+          <div className="space-y-2">
+            <Label>{t('placeholders.cashtag')}</Label>
+            <div className="relative">
+              <span className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground">$</span>
+              <Input
+                placeholder={t('placeholders.yourname')}
+                className="pl-7"
+                value={cashappForm.cashtag}
+                onChange={(e) => setCashappForm({ ...cashappForm, cashtag: e.target.value.replace(/^\$/, '') })}
+              />
+            </div>
+            <p className="text-xs text-muted-foreground">{t('placeholders.cashappHint')}</p>
+          </div>
+          <div className="space-y-2">
+            <Label>{t('payload.amount')} {t('common.optional')}</Label>
+            <Input
+              type="number"
+              placeholder="0.00"
+              value={cashappForm.amount}
+              onChange={(e) => setCashappForm({ ...cashappForm, amount: e.target.value })}
+            />
+          </div>
+        </div>
+      )}
+
+      {/* EMV Generic */}
+      {payload.kind === 'emv_generic' && (
+        <div className="space-y-4">
+          <div className="space-y-2">
+            <Label>{t('payload.merchantName')}</Label>
+            <Input
+              placeholder={t('placeholders.fullName')}
+              value={emvGenericForm.merchantName}
+              onChange={(e) => setEmvGenericForm({ ...emvGenericForm, merchantName: e.target.value })}
+            />
+          </div>
+          <div className="space-y-2">
+            <Label>{t('payload.city')} {t('common.optional')}</Label>
+            <Input
+              placeholder="Singapore"
+              value={emvGenericForm.merchantCity}
+              onChange={(e) => setEmvGenericForm({ ...emvGenericForm, merchantCity: e.target.value })}
+            />
+          </div>
+          <div className="grid grid-cols-2 gap-2">
+            <div className="space-y-2">
+              <Label>{t('placeholders.countryCode')}</Label>
+              <Input
+                placeholder="SG"
+                maxLength={2}
+                value={emvGenericForm.countryCode}
+                onChange={(e) => setEmvGenericForm({ ...emvGenericForm, countryCode: e.target.value.toUpperCase() })}
+              />
+              <p className="text-xs text-muted-foreground">{t('placeholders.isoCountryHint')}</p>
+            </div>
+            <div className="space-y-2">
+              <Label>{t('placeholders.currencyCode')}</Label>
+              <Input
+                placeholder="702"
+                maxLength={3}
+                value={emvGenericForm.currencyCode}
+                onChange={(e) => setEmvGenericForm({ ...emvGenericForm, currencyCode: e.target.value })}
+              />
+              <p className="text-xs text-muted-foreground">{t('placeholders.isoCurrencyHint')}</p>
+            </div>
+          </div>
+          <div className="grid grid-cols-2 gap-2">
+            <div className="space-y-2">
+              <Label>{t('payload.amount')} {t('common.optional')}</Label>
+              <Input
+                type="number"
+                placeholder="0.00"
+                value={emvGenericForm.amount}
+                onChange={(e) => setEmvGenericForm({ ...emvGenericForm, amount: e.target.value })}
+              />
+            </div>
+            <div className="space-y-2">
+              <Label>{t('placeholders.mcc')} {t('common.optional')}</Label>
+              <Input
+                placeholder="5411"
+                maxLength={4}
+                value={emvGenericForm.mcc}
+                onChange={(e) => setEmvGenericForm({ ...emvGenericForm, mcc: e.target.value })}
+              />
+            </div>
+          </div>
+          <div className="space-y-2">
+            <Label>{t('placeholders.tipConvenienceFee')}</Label>
+            <Select value={emvGenericForm.tipIndicator} onValueChange={(v: EMVGenericForm['tipIndicator']) => setEmvGenericForm({ ...emvGenericForm, tipIndicator: v })}>
+              <SelectTrigger><SelectValue /></SelectTrigger>
+              <SelectContent>
+                <SelectItem value="none">{t('common.none')}</SelectItem>
+                <SelectItem value="prompt">{t('placeholders.promptUser')}</SelectItem>
+                <SelectItem value="fixed">{t('placeholders.fixedAmount')}</SelectItem>
+                <SelectItem value="percent">{t('placeholders.percentageOption')}</SelectItem>
+              </SelectContent>
+            </Select>
+          </div>
+          {emvGenericForm.tipIndicator === 'fixed' && (
+            <div className="space-y-2">
+              <Label>{t('placeholders.tipAmount')}</Label>
+              <Input
+                type="number"
+                placeholder="0.00"
+                value={emvGenericForm.tipAmount}
+                onChange={(e) => setEmvGenericForm({ ...emvGenericForm, tipAmount: e.target.value })}
+              />
+            </div>
+          )}
+          {emvGenericForm.tipIndicator === 'percent' && (
+            <div className="space-y-2">
+              <Label>{t('placeholders.tipPercentage')}</Label>
+              <Input
+                type="number"
+                placeholder="10"
+                value={emvGenericForm.tipPercent}
+                onChange={(e) => setEmvGenericForm({ ...emvGenericForm, tipPercent: e.target.value })}
+              />
+            </div>
+          )}
+          <div className="space-y-2">
+            <Label>{t('payload.reference')} {t('common.optional')}</Label>
+            <Input
+              placeholder={t('placeholders.invoiceReference')}
+              value={emvGenericForm.reference}
+              onChange={(e) => setEmvGenericForm({ ...emvGenericForm, reference: e.target.value })}
+            />
+          </div>
+          <p className="text-xs text-muted-foreground">{t('placeholders.emvGenericHint')}</p>
+        </div>
+      )}
 
       {/* OTP Authenticator */}
       {(payload.kind as string) === '_removed_otpauth' && (

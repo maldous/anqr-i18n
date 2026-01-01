@@ -29,7 +29,11 @@ export function Preview({ sidebarOpen = true }: PreviewProps) {
   const [heatmapActive, setHeatmapActive] = useState(false)
   const heatmapCanvasRef = useRef<HTMLCanvasElement>(null)
   const noiseCanvasRef = useRef<HTMLCanvasElement>(null)
-  const { render, safety, qa } = useQRStore()
+  
+  // Use individual selectors to avoid re-renders when unrelated state changes
+  const render = useQRStore((s) => s.render)
+  const safety = useQRStore((s) => s.safety)
+  const qa = useQRStore((s) => s.qa)
   
   // Reset showWarnings when safetyWarnings change
   useEffect(() => {

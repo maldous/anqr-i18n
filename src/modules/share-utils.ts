@@ -759,6 +759,8 @@ export function buildUrlParams(config: Partial<ShareConfig>): string {
   if (config.temporalDither && config.temporalDither !== 'off') {
     params.set('tempDither', config.temporalDither)
   }
+  // Note: 'pattern' refers to animation pattern (pulse/wave/etc), NOT module style pattern
+  // Using 'animPattern' param name which matches the animation pattern concept
   if (config.pattern && config.pattern !== 'none') {
     params.set('animPattern', config.pattern)
   }

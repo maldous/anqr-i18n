@@ -3,8 +3,8 @@
  * Handles image loading, cropping, filter application, and blend modes
  * 
  * Optimizations:
- * - Uses Web Worker for CPU-heavy dithering on large images (>256x256)
  * - Caches processed overlay data for repeated access
+ * - Mobile detection for automatic performance tuning
  */
 
 import type { ColorMode, FitMode, OverlayMode, CropRegion, DitherKind, DiffusionKernel, OrderedMatrix } from '../store/qr-store'
@@ -96,13 +96,22 @@ export interface ProcessedOverlay {
 
 /**
  * Load an image from a File object
+ * Properly revokes object URL after load to prevent memory leaks
  */
 export function loadImageFromFile(file: File): Promise<HTMLImageElement> {
   return new Promise((resolve, reject) => {
     const img = new Image()
-    img.onload = () => resolve(img)
-    img.onerror = reject
-    img.src = URL.createObjectURL(file)
+    const objectUrl = URL.createObjectURL(file)
+    
+    img.onload = () => {
+      URL.revokeObjectURL(objectUrl) // Prevent memory leak
+      resolve(img)
+    }
+    img.onerror = (e) => {
+      URL.revokeObjectURL(objectUrl) // Prevent memory leak on error too
+      reject(e)
+    }
+    img.src = objectUrl
   })
 }
 

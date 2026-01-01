@@ -43,20 +43,11 @@ function App() {
   const [galleryFilter, setGalleryFilter] = useState<GalleryCategory | 'all'>('all')
   const bannerHeight = useBannerHeight()
   const { download, isExporting } = useQRGenerator()
-  const { setOverlayUrl, setOverlayFile, setOverlayEnabled, setOverlayMode, setOverlayIntensity,
-          setPayloadText, setPayloadKind, setPayloadUrl, setTier, setQrEcc, setQrVersion, setRenderModulePx, setQrQuietZone,
-          setRenderFgColor, setRenderBgColor, setRenderBgTransparent, setRenderModuleStyle, setRenderFinderStyle,
-          setOverlayColorMode, setOverlayBrightness, setOverlayContrast, setOverlayGamma,
-          setOverlayInvert, setOverlayDitherKind, setOverlayDiffusionKernel, setOverlayDitherStrength,
-          setOverlaySaturation, setOverlayHueRotate, setOverlayBlur, setOverlaySharpen,
-          setOverlayPosterize, setOverlayThreshold, setOverlayEdgeDetect,
-          setAnimationSpeedMs, setAnimationLoop, setAnimationBounce,
-          setQrEncodingMode, setRenderModuleGap, setRenderGapMode, setRenderCornerRadius,
-          setRenderFrameStyle, setRenderFrameText, setRenderGradient, setRenderAlignmentStyle, setRenderTimingStyle,
-          setOverlayFit, setOverlayRotate, setOverlayFlip, setOverlayPreserveFinders, setOverlayPreserveTiming, setOverlayPreserveAlignment,
-          setAnimationStartFrame, setAnimationMaxFrames, setAnimationFrameStep,
-          setOutputFormat, setOutputWidth, setOutputHeight, setOutputQuality, setOutputFilename,
-          setOutputGifPaletteSize, setOutputGifQuantizer, setOutputSvgTrueVector } = useQRStore()
+  
+  // NOTE: We use useQRStore.getState() for setters in the URL params effect below
+  // instead of subscribing to the store here. This prevents App from re-rendering
+  // on every store change. Setters are stable references so getState() is safe.
+  // See issue #15 in tbd.txt for details on this optimization.
 
   const navigateTo = useCallback((page: PageView) => {
     const nextPath = page === 'editor' ? '/' : `/${page}`
@@ -112,6 +103,10 @@ function App() {
     if (getPageFromLocation() !== 'editor') return
     const params = parseUrlParams()
     
+    // Get store setters via getState() to avoid subscribing App to the entire store
+    // This is safe because setters are stable references that don't change
+    const store = useQRStore.getState()
+    
     // Apply language from URL params if present
     if (params.lang) {
       i18n.changeLanguage(params.lang)
@@ -139,64 +134,46 @@ function App() {
     
     // Set the tier first so UI shows correct options
     if (requiredTier !== 'basic') {
-      setTier(requiredTier)
+      store.setTier(requiredTier)
     }
     
     // Apply URL parameters to store
+    // IMPORTANT: When loading from shared URLs, treat data as authoritative.
+    // Set kind to 'plain_text' so getPayloadText() returns the exact data,
+    // rather than trying to rebuild from structured fields which would be empty.
+    // This ensures shared WiFi/vCard/etc URLs produce the correct QR code.
     if (params.data) {
       const data = params.data
       
-      // Detect payload type from data and set appropriate kind
-      if (data.startsWith('mailto:')) {
-        setPayloadKind('email')
-        setPayloadText(data)
-      } else if (data.startsWith('tel:')) {
-        setPayloadKind('tel')
-        setPayloadText(data)
-      } else if (data.startsWith('sms:')) {
-        setPayloadKind('sms')
-        setPayloadText(data)
-      } else if (data.startsWith('geo:')) {
-        setPayloadKind('geo')
-        setPayloadText(data)
-      } else if (data.startsWith('WIFI:')) {
-        setPayloadKind('wifi')
-        setPayloadText(data)
-      } else if (data.startsWith('BEGIN:VCARD')) {
-        setPayloadKind('vcard')
-        setPayloadText(data)
-      } else if (data.startsWith('BEGIN:VEVENT')) {
-        setPayloadKind('event')
-        setPayloadText(data)
-      } else if (data.startsWith('MECARD:')) {
-        setPayloadKind('mecard')
-        setPayloadText(data)
-      } else if (data.startsWith('http://') || data.startsWith('https://')) {
-        setPayloadKind('url')
-        setPayloadUrl({ href: data })
-        setPayloadText(data)
+      // For URL payloads, also populate the url helper for UI convenience
+      if (data.startsWith('http://') || data.startsWith('https://')) {
+        store.setPayloadKind('url')
+        store.setPayloadUrl({ href: data })
+        store.setPayloadText(data)
       } else {
-        // Plain text or custom format
-        setPayloadKind('plain_text')
-        setPayloadText(data)
+        // For all other payload types (WiFi, vCard, etc.), use plain_text kind
+        // This ensures the raw data is used directly without trying to rebuild
+        // from structured fields which aren't populated from the URL
+        store.setPayloadKind('plain_text')
+        store.setPayloadText(data)
       }
     }
     
-    if (params.ec) setQrEcc(params.ec as 'L' | 'M' | 'Q' | 'H')
-    if (params.version) setQrVersion(params.version)
-    if (params.size) setRenderModulePx(params.size)
-    if (params.margin !== undefined) setQrQuietZone(params.margin)
-    if (params.fg) setRenderFgColor(params.fg)
-    if (params.bg) setRenderBgColor(params.bg)
-    if (params.transparent) setRenderBgTransparent(true)
-    if (params.style) setRenderModuleStyle(params.style as 'square' | 'rounded' | 'dots' | 'diamond' | 'connected')
-    if (params.finder) setRenderFinderStyle(params.finder as 'square' | 'rounded' | 'circle')
-    if (params.alignmentStyle) setRenderAlignmentStyle(params.alignmentStyle as 'match_finder' | 'square' | 'rounded' | 'circle')
-    if (params.timingStyle) setRenderTimingStyle(params.timingStyle as 'match_module' | 'solid' | 'dashed')
+    if (params.ec) store.setQrEcc(params.ec as 'L' | 'M' | 'Q' | 'H')
+    if (params.version) store.setQrVersion(params.version)
+    if (params.size) store.setRenderModulePx(params.size)
+    if (params.margin !== undefined) store.setQrQuietZone(params.margin)
+    if (params.fg) store.setRenderFgColor(params.fg)
+    if (params.bg) store.setRenderBgColor(params.bg)
+    if (params.transparent) store.setRenderBgTransparent(true)
+    if (params.style) store.setRenderModuleStyle(params.style as 'square' | 'rounded' | 'dots' | 'diamond' | 'connected')
+    if (params.finder) store.setRenderFinderStyle(params.finder as 'square' | 'rounded' | 'circle')
+    if (params.alignmentStyle) store.setRenderAlignmentStyle(params.alignmentStyle as 'match_finder' | 'square' | 'rounded' | 'circle')
+    if (params.timingStyle) store.setRenderTimingStyle(params.timingStyle as 'match_module' | 'solid' | 'dashed')
     // Render settings
-    if (params.moduleGap !== undefined) setRenderModuleGap(params.moduleGap)
-    if (params.gapMode) setRenderGapMode(params.gapMode as 'none' | 'inset' | 'stroke' | 'negative_space')
-    if (params.cornerRadius !== undefined) setRenderCornerRadius(params.cornerRadius)
+    if (params.moduleGap !== undefined) store.setRenderModuleGap(params.moduleGap)
+    if (params.gapMode) store.setRenderGapMode(params.gapMode as 'none' | 'inset' | 'stroke' | 'negative_space')
+    if (params.cornerRadius !== undefined) store.setRenderCornerRadius(params.cornerRadius)
     if (params.gradientType) {
       const gradientUpdate: { type: 'none' | 'linear' | 'radial' | 'conic'; stops?: Array<{ pos: number; color: string }>; angle?: number } = { 
         type: params.gradientType as 'none' | 'linear' | 'radial' | 'conic' 
@@ -209,13 +186,13 @@ function App() {
         // Actually, the gradient object doesn't have an angle field in the store type, so we need to handle this
         // Looking at the store, gradient has: type and stops. Angle is typically encoded in the gradient creation
       }
-      setRenderGradient(gradientUpdate)
+      store.setRenderGradient(gradientUpdate)
     }
     if (params.eyeOuterStyle) useQRStore.setState((s) => ({ render: { ...s.render, eyeOuterStyle: params.eyeOuterStyle as 'square' | 'rounded' | 'circle' } }))
     if (params.eyeInnerStyle) useQRStore.setState((s) => ({ render: { ...s.render, eyeInnerStyle: params.eyeInnerStyle as 'square' | 'rounded' | 'circle' } }))
     if (params.eyeScale !== undefined) useQRStore.setState((s) => ({ render: { ...s.render, eyeScale: params.eyeScale } }))
-    if (params.frameStyle) setRenderFrameStyle(params.frameStyle as 'none' | 'rounded_frame' | 'sticker' | 'tag')
-    if (params.frameText) setRenderFrameText(params.frameText)
+    if (params.frameStyle) store.setRenderFrameStyle(params.frameStyle as 'none' | 'rounded_frame' | 'sticker' | 'tag')
+    if (params.frameText) store.setRenderFrameText(params.frameText)
     if (params.dotRotation !== undefined) useQRStore.setState((s) => ({ render: { ...s.render, dotRotationDeg: params.dotRotation } }))
     if (params.crispEdges === false) useQRStore.setState((s) => ({ render: { ...s.render, crispEdges: false } }))
     if (params.pixelSnap) useQRStore.setState((s) => ({ render: { ...s.render, pixelSnap: params.pixelSnap as 'floor' | 'round' | 'ceil' } }))
@@ -223,15 +200,15 @@ function App() {
     if (params.contrastGuard) useQRStore.setState((s) => ({ render: { ...s.render, contrastGuard: true } }))
     if (params.minContrastRatio !== undefined) useQRStore.setState((s) => ({ render: { ...s.render, minContrastRatio: params.minContrastRatio } }))
     // Overlay
-    if (params.mode) setOverlayMode(params.mode as any)
-    if (params.intensity !== undefined) setOverlayIntensity(params.intensity)
-    if (params.fit) setOverlayFit(params.fit as 'cover' | 'contain' | 'stretch')
-    if (params.rotate !== undefined) setOverlayRotate(params.rotate)
-    if (params.flipX) setOverlayFlip({ x: true })
-    if (params.flipY) setOverlayFlip({ y: true })
-    if (params.preserveFinders === false) setOverlayPreserveFinders(false)
-    if (params.preserveTiming) setOverlayPreserveTiming(true)
-    if (params.preserveAlignment) setOverlayPreserveAlignment(true)
+    if (params.mode) store.setOverlayMode(params.mode as any)
+    if (params.intensity !== undefined) store.setOverlayIntensity(params.intensity)
+    if (params.fit) store.setOverlayFit(params.fit as 'cover' | 'contain' | 'stretch')
+    if (params.rotate !== undefined) store.setOverlayRotate(params.rotate)
+    if (params.flipX) store.setOverlayFlip({ x: true })
+    if (params.flipY) store.setOverlayFlip({ y: true })
+    if (params.preserveFinders === false) store.setOverlayPreserveFinders(false)
+    if (params.preserveTiming) store.setOverlayPreserveTiming(true)
+    if (params.preserveAlignment) store.setOverlayPreserveAlignment(true)
     if (params.protectFormatInfo) useQRStore.setState((s) => ({ overlay: { ...s.overlay, protectFormatInfo: true } }))
     if (params.protectVersionInfo) useQRStore.setState((s) => ({ overlay: { ...s.overlay, protectVersionInfo: true } }))
     if (params.eccAwareEnabled) useQRStore.setState((s) => ({ overlay: { ...s.overlay, eccAwareEnabled: true } }))
@@ -261,23 +238,23 @@ function App() {
     if (params.gifDisposalHandling) useQRStore.setState((s) => ({ overlay: { ...s.overlay, gifDisposalHandling: params.gifDisposalHandling as any } }))
     
     // Apply preprocessing params
-    if (params.colorMode) setOverlayColorMode(params.colorMode as 'color' | 'grayscale' | 'bw')
-    if (params.brightness !== undefined) setOverlayBrightness(params.brightness)
-    if (params.contrast !== undefined) setOverlayContrast(params.contrast)
-    if (params.gamma !== undefined) setOverlayGamma(params.gamma)
-    if (params.saturation !== undefined) setOverlaySaturation(params.saturation)
-    if (params.hue !== undefined) setOverlayHueRotate(params.hue)
-    if (params.blur !== undefined) setOverlayBlur(params.blur)
-    if (params.sharpen !== undefined) setOverlaySharpen(params.sharpen)
-    if (params.posterize !== undefined) setOverlayPosterize(params.posterize)
-    if (params.threshold !== undefined) setOverlayThreshold(params.threshold)
-    if (params.edge) setOverlayEdgeDetect(params.edge as 'off' | 'sobel' | 'canny')
-    if (params.invert) setOverlayInvert(params.invert)
+    if (params.colorMode) store.setOverlayColorMode(params.colorMode as 'color' | 'grayscale' | 'bw')
+    if (params.brightness !== undefined) store.setOverlayBrightness(params.brightness)
+    if (params.contrast !== undefined) store.setOverlayContrast(params.contrast)
+    if (params.gamma !== undefined) store.setOverlayGamma(params.gamma)
+    if (params.saturation !== undefined) store.setOverlaySaturation(params.saturation)
+    if (params.hue !== undefined) store.setOverlayHueRotate(params.hue)
+    if (params.blur !== undefined) store.setOverlayBlur(params.blur)
+    if (params.sharpen !== undefined) store.setOverlaySharpen(params.sharpen)
+    if (params.posterize !== undefined) store.setOverlayPosterize(params.posterize)
+    if (params.threshold !== undefined) store.setOverlayThreshold(params.threshold)
+    if (params.edge) store.setOverlayEdgeDetect(params.edge as 'off' | 'sobel' | 'canny')
+    if (params.invert) store.setOverlayInvert(params.invert)
     
     // Apply dithering params
-    if (params.ditherKind) setOverlayDitherKind(params.ditherKind as any)
-    if (params.diffusionKernel) setOverlayDiffusionKernel(params.diffusionKernel as any)
-    if (params.ditherStrength !== undefined) setOverlayDitherStrength(params.ditherStrength)
+    if (params.ditherKind) store.setOverlayDitherKind(params.ditherKind as any)
+    if (params.diffusionKernel) store.setOverlayDiffusionKernel(params.diffusionKernel as any)
+    if (params.ditherStrength !== undefined) store.setOverlayDitherStrength(params.ditherStrength)
     if (params.ditherSerpentine) useQRStore.setState((s) => ({ overlay: { ...s.overlay, ditherSerpentine: true } }))
     if (params.orderedMatrix) useQRStore.setState((s) => ({ overlay: { ...s.overlay, orderedMatrix: params.orderedMatrix as any } }))
     if (params.blueNoiseTileSize !== undefined) useQRStore.setState((s) => ({ overlay: { ...s.overlay, blueNoiseTileSize: params.blueNoiseTileSize } }))
@@ -298,12 +275,12 @@ function App() {
     if (params.duotoneColor2) useQRStore.setState((s) => ({ overlay: { ...s.overlay, duotoneColors: [s.overlay.duotoneColors[0], params.duotoneColor2!] } }))
     
     // Animation params
-    if (params.speed !== undefined) setAnimationSpeedMs(params.speed)
-    if (params.loop === false) setAnimationLoop(false)
-    if (params.reverse) setAnimationBounce(true)
-    if (params.startFrame !== undefined) setAnimationStartFrame(params.startFrame)
-    if (params.maxFrames !== undefined) setAnimationMaxFrames(params.maxFrames)
-    if (params.frameStep !== undefined) setAnimationFrameStep(params.frameStep)
+    if (params.speed !== undefined) store.setAnimationSpeedMs(params.speed)
+    if (params.loop === false) store.setAnimationLoop(false)
+    if (params.reverse) store.setAnimationBounce(true)
+    if (params.startFrame !== undefined) store.setAnimationStartFrame(params.startFrame)
+    if (params.maxFrames !== undefined) store.setAnimationMaxFrames(params.maxFrames)
+    if (params.frameStep !== undefined) store.setAnimationFrameStep(params.frameStep)
     if (params.interpolate) useQRStore.setState((s) => ({ animation: { ...s.animation, interpolate: params.interpolate as any } }))
     if (params.temporalDither) useQRStore.setState((s) => ({ animation: { ...s.animation, temporalDither: params.temporalDither as any } }))
     if (params.pattern) useQRStore.setState((s) => ({ animation: { ...s.animation, pattern: params.pattern as any } }))
@@ -312,15 +289,15 @@ function App() {
     if (params.seed !== undefined) useQRStore.setState((s) => ({ animation: { ...s.animation, seed: params.seed } }))
     
     // Output params
-    if (params.format) setOutputFormat(params.format as 'png' | 'webp' | 'gif' | 'svg')
-    if (params.width !== undefined) setOutputWidth(params.width)
-    if (params.height !== undefined) setOutputHeight(params.height)
-    if (params.quality !== undefined) setOutputQuality(params.quality)
-    if (params.filename) setOutputFilename(params.filename)
-    if (params.gifPaletteSize !== undefined) setOutputGifPaletteSize(params.gifPaletteSize)
-    if (params.gifQuantizer) setOutputGifQuantizer(params.gifQuantizer as 'median_cut' | 'neuquant' | 'octree')
+    if (params.format) store.setOutputFormat(params.format as 'png' | 'webp' | 'gif' | 'svg')
+    if (params.width !== undefined) store.setOutputWidth(params.width)
+    if (params.height !== undefined) store.setOutputHeight(params.height)
+    if (params.quality !== undefined) store.setOutputQuality(params.quality)
+    if (params.filename) store.setOutputFilename(params.filename)
+    if (params.gifPaletteSize !== undefined) store.setOutputGifPaletteSize(params.gifPaletteSize)
+    if (params.gifQuantizer) store.setOutputGifQuantizer(params.gifQuantizer as 'median_cut' | 'neuquant' | 'octree')
     if (params.gifDither) useQRStore.setState((s) => ({ output: { ...s.output, gifDither: params.gifDither as any } }))
-    if (params.svgTrueVector) setOutputSvgTrueVector(true)
+    if (params.svgTrueVector) store.setOutputSvgTrueVector(true)
     if (params.dpi !== undefined) useQRStore.setState((s) => ({ output: { ...s.output, dpi: params.dpi } }))
     if (params.includeQuietZone === false) useQRStore.setState((s) => ({ output: { ...s.output, includeQuietZone: false } }))
     if (params.bgOverride) useQRStore.setState((s) => ({ output: { ...s.output, bgOverride: params.bgOverride } }))
@@ -330,13 +307,13 @@ function App() {
     if (params.formatExtra) useQRStore.setState((s) => ({ output: { ...s.output, formatExtra: params.formatExtra as any } }))
     
     // QR encoding params
-    if (params.encodingMode) setQrEncodingMode(params.encodingMode as 'auto' | 'numeric' | 'alphanumeric' | 'byte' | 'kanji')
+    if (params.encodingMode) store.setQrEncodingMode(params.encodingMode as 'auto' | 'numeric' | 'alphanumeric' | 'byte' | 'kanji')
     if (params.borderModulesExtra !== undefined) useQRStore.setState((s) => ({ qr: { ...s.qr, borderModulesExtra: params.borderModulesExtra } }))
     if (params.quietZoneMinEnforce === false) useQRStore.setState((s) => ({ qr: { ...s.qr, quietZoneMinEnforce: false } }))
     
     // Load overlay from URL if provided
     if (params.overlayUrl) {
-      loadOverlayFromUrl(params.overlayUrl)
+      loadOverlayFromUrl(params.overlayUrl, store)
     }
     
     // Safety params
@@ -417,7 +394,8 @@ function App() {
   }, [])
 
   // Load overlay image from URL
-  const loadOverlayFromUrl = async (url: string) => {
+  // Takes store reference to avoid subscribing component to store changes
+  const loadOverlayFromUrl = async (url: string, store: ReturnType<typeof useQRStore.getState>) => {
     // Validate that it's a proper URL
     try {
       const parsed = new URL(url)
@@ -439,9 +417,9 @@ function App() {
       const filename = url.split('/').pop()?.split('?')[0] || 'image'
       const file = new File([blob], filename, { type: blob.type })
       
-      setOverlayUrl(url)
-      setOverlayFile(file)
-      setOverlayEnabled(true)
+      store.setOverlayUrl(url)
+      store.setOverlayFile(file)
+      store.setOverlayEnabled(true)
       console.log('Overlay loaded successfully from URL')
     } catch (err) {
       console.error('Failed to load overlay from URL:', err)

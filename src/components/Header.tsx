@@ -44,7 +44,25 @@ interface HeaderProps {
 }
 
 export function Header({ onToggleSidebar, onExport, sidebarOpen = false, showGallery = false, activePage, galleryFilter = 'all', onGalleryFilterChange, onNavigate }: HeaderProps) {
-  const { tier, setTier, getPayloadText, qr, render, overlay, animation, output, safety, qa, auto, watermark, metadata, activatePremiumAccess, checkPremiumAccess } = useQRStore()
+  // Use individual selectors to avoid re-renders when unrelated state changes
+  // State slices - these change and would cause re-renders if subscribed to whole store
+  const tier = useQRStore((s) => s.tier)
+  const qr = useQRStore((s) => s.qr)
+  const render = useQRStore((s) => s.render)
+  const overlay = useQRStore((s) => s.overlay)
+  const animation = useQRStore((s) => s.animation)
+  const output = useQRStore((s) => s.output)
+  const safety = useQRStore((s) => s.safety)
+  const qa = useQRStore((s) => s.qa)
+  const auto = useQRStore((s) => s.auto)
+  const watermark = useQRStore((s) => s.watermark)
+  const metadata = useQRStore((s) => s.metadata)
+  
+  // Stable function references - these don't change so grouping is fine
+  const setTier = useQRStore((s) => s.setTier)
+  const getPayloadText = useQRStore((s) => s.getPayloadText)
+  const activatePremiumAccess = useQRStore((s) => s.activatePremiumAccess)
+  const checkPremiumAccess = useQRStore((s) => s.checkPremiumAccess)
   const { t, i18n } = useTranslation()
   const [darkMode, setDarkMode] = useState(false)
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
@@ -502,7 +520,7 @@ export function Header({ onToggleSidebar, onExport, sidebarOpen = false, showGal
                         {lang.nativeName}
                         {/* Show English name for current language if not English, otherwise show translated name for other languages */}
                         {(lang.code === i18n.language || i18n.language.startsWith(lang.code))
-                          ? (lang.code !== 'en' ? ` (${lang.name})` : '')
+                          ? (lang.code !== 'en-GB' ? ` (${lang.name})` : '')
                           : ` (${t(`languages.${lang.code}`)})`
                         }
                       </span>

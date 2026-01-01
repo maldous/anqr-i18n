@@ -425,7 +425,10 @@ interface SidebarProps {
 }
 
 export function Sidebar({ isOpen, onClose }: SidebarProps) {
-  const { tier, searchQuery, setSearchQuery } = useQRStore()
+  // Use individual selectors to avoid re-renders when unrelated state changes
+  const tier = useQRStore((s) => s.tier)
+  const searchQuery = useQRStore((s) => s.searchQuery)
+  const setSearchQuery = useQRStore((s) => s.setSearchQuery)
   const { t, i18n } = useTranslation()
   const [openSections, setOpenSections] = useState<string[]>(['payload'])
   
