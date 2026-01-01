@@ -484,6 +484,73 @@ export const docs: PageDefinition = {
       ],
     },
     {
+      heading: '고급 모드의 언어별 결제 수단',
+      paragraphs: [
+        '고급 모드를 사용할 때 ANQR은 선택한 언어와 관련된 결제 수단을 자동으로 표시합니다. 예를 들어, 베트남어 사용자에게는 VietQR이, 태국어 사용자에게는 PromptPay가, 인도 언어 사용자에게는 UPI와 BharatQR이 표시됩니다. 글로벌 결제 수단(암호화폐, PayPal, Cash App)은 모든 언어에서 사용할 수 있습니다. 전문가 모드에서는 언어에 관계없이 모든 결제 표준을 사용할 수 있습니다.',
+      ],
+    },
+    {
+      heading: '유럽 결제 표준',
+      bullets: [
+        'EPC/SEPA (EU): EPC QR 코드 표준을 따르는 유럽 은행 송금 QR 코드. IBAN, BIC(국내 거래 시 선택 사항), EUR 금액, 정형 또는 비정형 결제 참조를 지원합니다. EU 국가와 스위스, 노르웨이, 아이슬란드, 리히텐슈타인, 모나코, 산마리노를 포함한 SEPA 지역 전역에서 사용됩니다.',
+        'Swiss QR-bill: SIX 구현 지침을 따르는 스위스 결제 표준. CHF 및 EUR, QR-Reference (QRR), Creditor Reference (ISO 11649), 정형 채권자/채무자 주소, 청구서 정보를 지원합니다. 2022년부터 스위스 송장에 필수입니다.',
+      ],
+    },
+    {
+      heading: '인도 결제 표준',
+      bullets: [
+        'UPI (India): NPCI 딥 링킹 사양을 따르는 통합 결제 인터페이스. VPA(가상 결제 주소), 수취인 이름, INR 금액, 거래 메모, 참조 ID, 가맹점 카테고리 코드, 거래 모드를 지원합니다.',
+        'BharatQR (India): UPI와 카드 기반 결제를 모두 지원하는 통합 QR 표준. 최대 호환성을 위해 UPI VPA와 카드 PAN을 결합합니다. 가맹점 이름, 도시, MCC, GST 세부 정보, 송장/참조 번호를 포함합니다.',
+      ],
+    },
+    {
+      heading: '동남아시아 결제 표준',
+      bullets: [
+        'PayNow (Singapore): SGQR 프로필이 적용된 EMVCo QR 사양을 사용하는 싱가포르 빠른 결제 시스템. UEN(사업자 등록), 휴대폰 번호 또는 NRIC를 프록시 식별자로 지원합니다. 금액 편집 가능 플래그와 만료일을 포함합니다.',
+        'PromptPay (Thailand): 태국 중앙은행 EMV 프로필을 따르는 태국 국가 결제 시스템. 휴대폰 번호, 주민등록번호, 세금 ID, 전자지갑 ID, 여러 참조 필드가 있는 청구서 결제를 지원합니다.',
+        'QRIS (Indonesia): Quick Response Code Indonesian Standard. 가맹점 ID, NMID(국가 가맹점 ID), 가맹점 기준 분류, 편의 수수료(고정 또는 백분율)를 지원하는 EMV 기반 국가 결제 표준.',
+        'DuitNow (Malaysia): 말레이시아 즉시 결제 시스템. NRIC, 휴대폰, 여권, 군 ID, 사업자 등록 번호를 포함한 여러 프록시 유형을 지원합니다.',
+        'VietQR (Vietnam): 베트남 은행 간 송금 표준. 은행 BIN(NAPAS 식별)과 계좌 번호가 필요합니다. 다양한 송금 유형(QRPUSH, QRIBFTTA, QRIBFTTC)에 대한 여러 서비스 코드를 지원합니다.',
+        'QR Ph (Philippines): InstaPay 및 PESONet용 필리핀 QR 결제 표준. P2M(개인 대 가맹점) 거래를 위해 가맹점 식별과 함께 계좌 번호를 사용합니다.',
+      ],
+    },
+    {
+      heading: '동아시아 결제 표준',
+      bullets: [
+        'TWQR (Taiwan): 대만 QR 결제 표준. 가맹점 ID, 세금 ID, TWD 금액을 지원합니다.',
+        'HKQR/FPS (Hong Kong): 홍콩 빠른 결제 시스템 QR 코드. FPS ID, 휴대폰 번호 또는 이메일을 결제 식별자로 지원합니다. 금액은 HKD입니다.',
+        'JPQR (Japan): 일본 통합 QR 코드 결제 표준. JPY 금액과 함께 가맹점 식별을 위한 매장 ID를 사용합니다.',
+      ],
+    },
+    {
+      heading: '기타 지역 결제 표준',
+      bullets: [
+        'PIX (Brazil): BR Code 사양을 따르는 브라질 중앙은행 즉시 결제 시스템. PIX 키(CPF, CNPJ, 이메일, 전화번호 또는 무작위 키), 가맹점 이름/도시, 거래 ID, BRL 금액을 지원합니다.',
+        'AusPayNet/NPP PayID (Australia): 호주 신규 결제 플랫폼 PayID 시스템. PayID 유형(이메일, 휴대폰, ABN, 조직 ID) 또는 기존 BSB + 계좌 번호를 지원합니다. 가맹점 이름은 선택 사항이며 결제자는 NPP 조회에서 등록된 이름을 확인합니다.',
+      ],
+    },
+    {
+      heading: '암호화폐 결제',
+      bullets: [
+        'Bitcoin/Litecoin (BIP-21): 지갑 주소, 선택적 금액, 레이블이 포함된 표준 암호화폐 결제 URI. 모든 주요 Bitcoin 및 Litecoin 지갑과 호환됩니다.',
+        'Lightning Network (BOLT11): Lightning Network 결제 송장. 최소 수수료로 즉시 Bitcoin 결제를 위해 BOLT11 인코딩 송장 문자열을 붙여넣으세요.',
+        'Ethereum (EIP-681): 네이티브 ETH 전송 및 ERC-20 토큰 전송을 지원하는 Ethereum 거래 요청 URI. 멀티 네트워크 지원(Mainnet, Polygon, BSC, Arbitrum, Optimism, Avalanche)을 위한 체인 ID, 가스 파라미터, 컨트랙트 함수 호출을 포함합니다.',
+      ],
+    },
+    {
+      heading: '결제 링크 서비스',
+      bullets: [
+        'PayPal.Me: 사용자 이름과 선택적 사전 입력 금액이 포함된 PayPal 결제 링크. 수신자는 PayPal 잔액, 카드 또는 은행 계좌로 결제할 수 있습니다.',
+        'Cash App: 선택적 금액과 함께 $cashtag를 사용하는 Cash App 결제 링크. 미국에서 P2P 결제에 널리 사용됩니다.',
+      ],
+    },
+    {
+      heading: '일반 EMV QR',
+      bullets: [
+        'EMV Generic: 목록에 없는 결제 체계를 위한 맞춤형 EMV 가맹점 제시 모드 QR 코드를 생성합니다. 가맹점 이름, 도시, 국가 코드(ISO 3166-1), 통화 코드(ISO 4217 숫자), MCC, 팁/편의 수수료 옵션, 추가 데이터 필드를 구성합니다. 테스트 또는 맞춤형 통합에 유용합니다.',
+      ],
+    },
+    {
       heading: '블렌드 모드(전문가용)',
       paragraphs: [
         '수준의 추가 블렌딩 모드:',
@@ -564,7 +631,7 @@ export const docs: PageDefinition = {
       ],
     },
     {
-      heading: '기본 파라미터',
+      heading: '기본 파라미터"',
       paragraphs: [
         '필수 및 일반 파라미터(파라미터 이름은 번역되지 않습니다):',
       ],
@@ -581,7 +648,7 @@ export const docs: PageDefinition = {
       ],
     },
     {
-      heading: '스타일링 파라미터',
+      heading: '스타일링 파라미터"',
       paragraphs: [
         '모듈 및 패턴 스타일링:',
       ],
@@ -601,7 +668,7 @@ export const docs: PageDefinition = {
       ],
     },
     {
-      heading: '오버레이 파라미터',
+      heading: '오버레이 파라미터"',
       paragraphs: [
         '이미지 오버레이 옵션(오버레이 이미지는 서버 측에서 가져옵니다):',
       ],
@@ -618,7 +685,7 @@ export const docs: PageDefinition = {
       ],
     },
     {
-      heading: '전처리 파라미터',
+      heading: '전처리 파라미터"',
       paragraphs: [
         '오버레이에 적용되는 이미지 전처리:',
       ],
@@ -637,7 +704,7 @@ export const docs: PageDefinition = {
       ],
     },
     {
-      heading: '워터마크 파라미터',
+      heading: '워터마크 파라미터"',
       paragraphs: [
         '생성된 QR 코드에 워터마크 추가:',
       ],
@@ -652,7 +719,7 @@ export const docs: PageDefinition = {
       ],
     },
     {
-      heading: '애니메이션 파라미터',
+      heading: '애니메이션 파라미터"',
       paragraphs: [
         '애니메이션 GIF 출력용(format=gif 필요):',
       ],
@@ -665,7 +732,7 @@ export const docs: PageDefinition = {
       ],
     },
     {
-      heading: '출력 파라미터',
+      heading: '출력 파라미터"',
       paragraphs: [
         '출력 형식 옵션:',
       ],
@@ -678,7 +745,7 @@ export const docs: PageDefinition = {
       ],
     },
     {
-      heading: '사용 예시',
+      heading: '사용 예시"',
       paragraphs: [
         '기본 QR 코드:',
         'https://anqr.link/api/qr?data=https://example.com',
@@ -722,7 +789,7 @@ export const docs: PageDefinition = {
       ],
     },
     {
-      heading: '사용량 제한',
+      heading: '사용량 제한"',
       paragraphs: [
         'API는 합리적인 볼륨에 대해 무료로 사용할 수 있습니다. 대용량 사용 또는 보장된 가동 시간이 필요한 상업용 애플리케이션의 경우 문의해 주세요.',
         'API 응답에는 적극적인 캐싱 헤더가 포함됩니다. 최상의 성능을 위해 응답을 캐시하거나 동일한 QR 코드에 대해 일관되게 동일한 URL을 사용하세요.',

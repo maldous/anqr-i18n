@@ -484,6 +484,73 @@ export const docs: PageDefinition = {
       ],
     },
     {
+      heading: 'アドバンスモードでの言語関連決済',
+      paragraphs: [
+        'アドバンスモードを使用すると、ANQR は選択した言語に関連する決済方法を自動的に表示します。例えば、ベトナム語ユーザーには VietQR、タイ語ユーザーには PromptPay、インド言語ユーザーには UPI と BharatQR が表示されます。グローバルな決済方法（暗号通貨、PayPal、Cash App）はすべての言語で利用可能です。プロフェッショナルモードでは、言語に関係なくすべての決済規格が利用可能になります。',
+      ],
+    },
+    {
+      heading: '欧州決済規格',
+      bullets: [
+        'EPC/SEPA（EU）：EPC QR コード規格に準拠した欧州銀行振込 QR コード。IBAN、BIC（国内向けはオプション）、EUR 金額、構造化または非構造化の支払参照に対応。EU 諸国に加え、スイス、ノルウェー、アイスランド、リヒテンシュタイン、モナコ、サンマリノを含む SEPA ゾーン全体で使用されています。',
+        'Swiss QR-bill：SIX 実装ガイドラインに準拠したスイスの決済規格。CHF と EUR、QR-Reference（QRR）、Creditor Reference（ISO 11649）、構造化された債権者/債務者の住所、請求書情報に対応。2022 年以降、スイスの請求書に必須となっています。',
+      ],
+    },
+    {
+      heading: 'インド決済規格',
+      bullets: [
+        'UPI（インド）：NPCI ディープリンク仕様に準拠した統合決済インターフェース。VPA（仮想決済アドレス）、受取人名、INR 金額、取引メモ、参照 ID、加盟店カテゴリコード、取引モードに対応。',
+        'BharatQR（インド）：UPI とカードベースの決済の両方に対応した統合 QR 規格。最大限の互換性のために UPI VPA とカード PAN を組み合わせています。加盟店名、都市、MCC、GST 詳細、請求書/参照番号を含みます。',
+      ],
+    },
+    {
+      heading: '東南アジア決済規格',
+      bullets: [
+        'PayNow（シンガポール）：SGQR プロファイルを使用した EMVCo QR 仕様に基づくシンガポールの高速決済システム。UEN（事業登録番号）、携帯電話番号、または NRIC をプロキシ識別子として対応。金額編集可能フラグと有効期限を含みます。',
+        'PromptPay（タイ）：タイ中央銀行の EMV プロファイルに準拠したタイの国家決済システム。携帯電話番号、国民 ID、税 ID、電子ウォレット ID、複数の参照フィールドを使用した請求書支払いに対応。',
+        'QRIS（インドネシア）：Quick Response Code Indonesian Standard。加盟店 ID、NMID（国家加盟店 ID）、加盟店基準分類、手数料（固定または割合）に対応した EMV ベースの国家決済規格。',
+        'DuitNow（マレーシア）：マレーシアの即時決済システム。NRIC、携帯電話、パスポート、軍 ID、事業登録番号など、複数のプロキシタイプに対応。',
+        'VietQR（ベトナム）：ベトナムの銀行間送金規格。銀行 BIN（NAPAS 識別）と口座番号が必要。異なる送金タイプ（QRPUSH、QRIBFTTA、QRIBFTTC）用の複数のサービスコードに対応。',
+        'QR Ph（フィリピン）：InstaPay と PESONet 用のフィリピン QR 決済規格。P2M（個人から加盟店）取引用に加盟店識別付きの口座番号を使用。',
+      ],
+    },
+    {
+      heading: '東アジア決済規格',
+      bullets: [
+        'TWQR（台湾）：台湾の QR 決済規格。加盟店 ID、税 ID、TWD 金額に対応。',
+        'HKQR/FPS（香港）：香港の高速決済システム QR コード。FPS ID、携帯電話番号、またはメールを決済識別子として対応。金額は HKD。',
+        'JPQR（日本）：日本の統一 QR コード決済規格。JPY 金額での加盟店識別に店舗 ID を使用。',
+      ],
+    },
+    {
+      heading: 'その他の地域決済規格',
+      bullets: [
+        'PIX（ブラジル）：BR Code 仕様に準拠したブラジル中央銀行の即時決済システム。PIX キー（CPF、CNPJ、メール、電話、またはランダムキー）、加盟店名/都市、取引 ID、BRL 金額に対応。',
+        'AusPayNet/NPP PayID（オーストラリア）：オーストラリアの新決済プラットフォーム PayID システム。PayID タイプ（メール、携帯電話、ABN、組織 ID）または従来の BSB + 口座番号に対応。加盟店名はオプションで、支払者は NPP ルックアップから登録名を確認できます。',
+      ],
+    },
+    {
+      heading: '暗号通貨決済',
+      bullets: [
+        'Bitcoin/Litecoin（BIP-21）：ウォレットアドレス、オプションの金額、ラベルを含む標準的な暗号通貨決済 URI。すべての主要な Bitcoin および Litecoin ウォレットと互換性があります。',
+        'Lightning Network（BOLT11）：Lightning Network 決済インボイス。最小手数料で即時 Bitcoin 決済を行うために BOLT11 エンコードされたインボイス文字列を貼り付けてください。',
+        'Ethereum（EIP-681）：ネイティブ ETH 送金と ERC-20 トークン送金に対応した Ethereum 取引リクエスト URI。マルチネットワーク対応（Mainnet、Polygon、BSC、Arbitrum、Optimism、Avalanche）のチェーン ID、ガスパラメータ、コントラクト関数呼び出しを含みます。',
+      ],
+    },
+    {
+      heading: '決済リンクサービス',
+      bullets: [
+        'PayPal.Me：ユーザー名とオプションの事前入力金額を含む PayPal 決済リンク。受取人は PayPal 残高、カード、または銀行口座で支払うことができます。',
+        'Cash App：オプションの金額を含む $cashtag を使用した Cash App 決済リンク。米国でのピアツーピア決済に人気です。',
+      ],
+    },
+    {
+      heading: '汎用 EMV QR',
+      bullets: [
+        'EMV Generic：特に記載されていない決済スキーム用のカスタム EMV 加盟店提示モード QR コードを作成します。加盟店名、都市、国コード（ISO 3166-1）、通貨コード（ISO 4217 数値）、MCC、チップ/手数料オプション、追加データフィールドを設定できます。テストやカスタム統合に便利です。',
+      ],
+    },
+    {
       heading: 'オーバーレイブレンドモード（プロフェッショナル）',
       paragraphs: [
         'プロフェッショナルレベルの追加のブレンドモード：',
@@ -564,7 +631,7 @@ export const docs: PageDefinition = {
       ],
     },
     {
-      heading: '基本パラメータ',
+      heading: '基本パラメータ"',
       paragraphs: [
         '必須および一般的なパラメータ（パラメータ名は翻訳されません）:',
       ],
@@ -581,7 +648,7 @@ export const docs: PageDefinition = {
       ],
     },
     {
-      heading: 'スタイリングパラメータ',
+      heading: 'スタイリングパラメータ"',
       paragraphs: [
         'モジュールとパターンのスタイリング:',
       ],
@@ -601,7 +668,7 @@ export const docs: PageDefinition = {
       ],
     },
     {
-      heading: 'オーバーレイパラメータ',
+      heading: 'オーバーレイパラメータ"',
       paragraphs: [
         '画像オーバーレイオプション（オーバーレイ画像はサーバーサイドで取得されます）:',
       ],
@@ -618,7 +685,7 @@ export const docs: PageDefinition = {
       ],
     },
     {
-      heading: '前処理パラメータ',
+      heading: '前処理パラメータ"',
       paragraphs: [
         'オーバーレイに適用される画像前処理:',
       ],
@@ -637,7 +704,7 @@ export const docs: PageDefinition = {
       ],
     },
     {
-      heading: '透かしパラメータ',
+      heading: '透かしパラメータ"',
       paragraphs: [
         '生成された QR コードに透かしを追加:',
       ],
@@ -652,7 +719,7 @@ export const docs: PageDefinition = {
       ],
     },
     {
-      heading: 'アニメーションパラメータ',
+      heading: 'アニメーションパラメータ"',
       paragraphs: [
         'アニメーション GIF 出力用（format=gif が必要）:',
       ],
@@ -665,7 +732,7 @@ export const docs: PageDefinition = {
       ],
     },
     {
-      heading: '出力パラメータ',
+      heading: '出力パラメータ"',
       paragraphs: [
         '出力形式オプション:',
       ],
@@ -678,7 +745,7 @@ export const docs: PageDefinition = {
       ],
     },
     {
-      heading: '使用例',
+      heading: '使用例"',
       paragraphs: [
         '基本的な QR コード:',
         'https://anqr.link/api/qr?data=https://example.com',
@@ -722,7 +789,7 @@ export const docs: PageDefinition = {
       ],
     },
     {
-      heading: 'レート制限と使用量',
+      heading: 'レート制限と使用量"',
       paragraphs: [
         'API は適切な量であれば無料でご利用いただけます。大量使用または稼働時間保証が必要な商用アプリケーションについては、お問い合わせください。',
         'API 応答には積極的なキャッシュヘッダーが含まれています。最高のパフォーマンスを得るには、応答をお客様側でキャッシュするか、同一の QR コードに対して同じ URL を一貫して使用してください。',

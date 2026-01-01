@@ -484,6 +484,73 @@ export const docs: PageDefinition = {
       ],
     },
     {
+      heading: 'Thanh toán theo ngôn ngữ trong Chế độ Nâng cao',
+      paragraphs: [
+        'Khi sử dụng chế độ Nâng cao, ANQR tự động hiển thị các phương thức thanh toán phù hợp với ngôn ngữ bạn đã chọn. Ví dụ: người dùng Việt Nam thấy VietQR, người dùng Thái Lan thấy PromptPay và người dùng ngôn ngữ Ấn Độ thấy UPI và BharatQR. Các phương thức thanh toán toàn cầu (tiền điện tử, PayPal, Cash App) có sẵn cho tất cả ngôn ngữ. Chế độ Chuyên nghiệp mở khóa tất cả các tiêu chuẩn thanh toán bất kể ngôn ngữ.',
+      ],
+    },
+    {
+      heading: 'Tiêu chuẩn thanh toán Châu Âu',
+      bullets: [
+        'EPC/SEPA (EU): Mã QR chuyển khoản ngân hàng Châu Âu theo Tiêu chuẩn Mã QR EPC. Hỗ trợ IBAN, BIC (tùy chọn cho giao dịch nội địa), số tiền bằng EUR và tham chiếu thanh toán có cấu trúc hoặc không có cấu trúc. Được sử dụng trên toàn khu vực SEPA bao gồm các quốc gia EU cùng với Thụy Sĩ, Na Uy, Iceland, Liechtenstein, Monaco và San Marino.',
+        'Swiss QR-bill: Tiêu chuẩn thanh toán Thụy Sĩ theo Hướng dẫn Triển khai SIX. Hỗ trợ CHF và EUR, QR-Reference (QRR), Creditor Reference (ISO 11649), địa chỉ chủ nợ/con nợ có cấu trúc và thông tin hóa đơn. Bắt buộc đối với hóa đơn Thụy Sĩ từ năm 2022.',
+      ],
+    },
+    {
+      heading: 'Tiêu chuẩn thanh toán Ấn Độ',
+      bullets: [
+        'UPI (Ấn Độ): Giao diện Thanh toán Hợp nhất theo Đặc tả Liên kết Sâu NPCI. Hỗ trợ VPA (Địa chỉ Thanh toán Ảo), tên người nhận, số tiền bằng INR, ghi chú giao dịch, ID tham chiếu, mã danh mục thương nhân và chế độ giao dịch.',
+        'BharatQR (Ấn Độ): Tiêu chuẩn QR hợp nhất hỗ trợ cả thanh toán UPI và thanh toán dựa trên thẻ. Kết hợp VPA UPI với PAN thẻ để có khả năng tương thích tối đa. Bao gồm tên thương nhân, thành phố, MCC, chi tiết GST và số hóa đơn/tham chiếu.',
+      ],
+    },
+    {
+      heading: 'Tiêu chuẩn thanh toán Đông Nam Á',
+      bullets: [
+        'PayNow (Singapore): Hệ thống thanh toán nhanh Singapore sử dụng đặc tả EMVCo QR với hồ sơ SGQR. Hỗ trợ UEN (đăng ký kinh doanh), số điện thoại di động hoặc NRIC làm định danh proxy. Bao gồm cờ khả năng chỉnh sửa số tiền và ngày hết hạn.',
+        'PromptPay (Thái Lan): Hệ thống thanh toán quốc gia Thái Lan theo hồ sơ EMV của Ngân hàng Thái Lan. Hỗ trợ số điện thoại di động, ID quốc gia, mã số thuế, ID ví điện tử và thanh toán hóa đơn với nhiều trường tham chiếu.',
+        'QRIS (Indonesia): Tiêu chuẩn Mã Phản hồi Nhanh Indonesia. Tiêu chuẩn thanh toán quốc gia dựa trên EMV hỗ trợ ID thương nhân, NMID (ID Thương nhân Quốc gia), phân loại tiêu chí thương nhân và phí tiện lợi (cố định hoặc phần trăm).',
+        'DuitNow (Malaysia): Hệ thống thanh toán tức thì Malaysia. Hỗ trợ nhiều loại proxy bao gồm NRIC, di động, hộ chiếu, ID quân đội và số đăng ký kinh doanh.',
+        'VietQR (Việt Nam): Tiêu chuẩn chuyển khoản liên ngân hàng Việt Nam. Yêu cầu BIN ngân hàng (định danh NAPAS) và số tài khoản. Hỗ trợ nhiều mã dịch vụ cho các loại chuyển khoản khác nhau (QRPUSH, QRIBFTTA, QRIBFTTC).',
+        'QR Ph (Philippines): Tiêu chuẩn thanh toán QR Philippines cho InstaPay và PESONet. Sử dụng số tài khoản với định danh thương nhân cho các giao dịch P2M (cá nhân đến thương nhân).',
+      ],
+    },
+    {
+      heading: 'Tiêu chuẩn thanh toán Đông Á',
+      bullets: [
+        'TWQR (Đài Loan): Tiêu chuẩn thanh toán QR Đài Loan. Hỗ trợ ID thương nhân, mã số thuế và số tiền bằng TWD.',
+        'HKQR/FPS (Hồng Kông): Mã QR Hệ thống Thanh toán Nhanh Hồng Kông. Hỗ trợ FPS ID, số điện thoại di động hoặc email làm định danh thanh toán. Số tiền bằng HKD.',
+        'JPQR (Nhật Bản): Tiêu chuẩn thanh toán mã QR hợp nhất Nhật Bản. Sử dụng ID cửa hàng để định danh thương nhân với số tiền bằng JPY.',
+      ],
+    },
+    {
+      heading: 'Các tiêu chuẩn thanh toán khu vực khác',
+      bullets: [
+        'PIX (Brazil): Hệ thống thanh toán tức thì của Ngân hàng Trung ương Brazil theo đặc tả BR Code. Hỗ trợ khóa PIX (CPF, CNPJ, email, điện thoại hoặc khóa ngẫu nhiên), tên/thành phố thương nhân, ID giao dịch và số tiền bằng BRL.',
+        'AusPayNet/NPP PayID (Úc): Hệ thống PayID Nền tảng Thanh toán Mới của Úc. Hỗ trợ các loại PayID (email, di động, ABN, ID tổ chức) hoặc BSB + số tài khoản truyền thống. Tên thương nhân là tùy chọn vì người thanh toán thấy tên đã đăng ký từ tra cứu NPP.',
+      ],
+    },
+    {
+      heading: 'Thanh toán tiền điện tử',
+      bullets: [
+        'Bitcoin/Litecoin (BIP-21): URI thanh toán tiền điện tử tiêu chuẩn với địa chỉ ví, số tiền tùy chọn và nhãn. Tương thích với tất cả các ví Bitcoin và Litecoin chính.',
+        'Lightning Network (BOLT11): Hóa đơn thanh toán Lightning Network. Dán chuỗi hóa đơn được mã hóa BOLT11 để thanh toán Bitcoin tức thì với phí tối thiểu.',
+        'Ethereum (EIP-681): URI yêu cầu giao dịch Ethereum hỗ trợ chuyển ETH gốc và chuyển token ERC-20. Bao gồm chain ID cho hỗ trợ đa mạng (Mainnet, Polygon, BSC, Arbitrum, Optimism, Avalanche), tham số gas và lệnh gọi hàm hợp đồng.',
+      ],
+    },
+    {
+      heading: 'Dịch vụ liên kết thanh toán',
+      bullets: [
+        'PayPal.Me: Liên kết thanh toán PayPal với tên người dùng và số tiền điền sẵn tùy chọn. Người nhận có thể thanh toán qua số dư PayPal, thẻ hoặc tài khoản ngân hàng.',
+        'Cash App: Liên kết thanh toán Cash App sử dụng $cashtag với số tiền tùy chọn. Phổ biến tại Hoa Kỳ cho thanh toán ngang hàng.',
+      ],
+    },
+    {
+      heading: 'EMV QR chung',
+      bullets: [
+        'EMV Generic: Tạo mã QR Chế độ Thương nhân Trình bày EMV tùy chỉnh cho các phương thức thanh toán không được liệt kê cụ thể. Cấu hình tên thương nhân, thành phố, mã quốc gia (ISO 3166-1), mã tiền tệ (ISO 4217 số), MCC, tùy chọn tiền boa/phí tiện lợi và các trường dữ liệu bổ sung. Hữu ích cho việc kiểm tra hoặc tích hợp tùy chỉnh.',
+      ],
+    },
+    {
       heading: 'độ hòa trộn lớp phủ (Chuyên nghiệp)',
       paragraphs: [
         'chế độ hòa trộn bổ sung ở cấp độ Chuyên nghiệp:',
@@ -564,7 +631,7 @@ export const docs: PageDefinition = {
       ],
     },
     {
-      heading: 'Tham số cơ bản',
+      heading: 'Tham số cơ bản"',
       paragraphs: [
         'Các tham số bắt buộc và phổ biến (tên tham số không được dịch):',
       ],
@@ -581,7 +648,7 @@ export const docs: PageDefinition = {
       ],
     },
     {
-      heading: 'Tham số định kiểu',
+      heading: 'Tham số định kiểu"',
       paragraphs: [
         'Định kiểu mô-đun và mẫu:',
       ],
@@ -601,7 +668,7 @@ export const docs: PageDefinition = {
       ],
     },
     {
-      heading: 'Tham số lớp phủ',
+      heading: 'Tham số lớp phủ"',
       paragraphs: [
         'Tùy chọn lớp phủ hình ảnh (hình ảnh lớp phủ được tải từ phía máy chủ):',
       ],
@@ -618,7 +685,7 @@ export const docs: PageDefinition = {
       ],
     },
     {
-      heading: 'Tham số tiền xử lý',
+      heading: 'Tham số tiền xử lý"',
       paragraphs: [
         'Tiền xử lý hình ảnh áp dụng cho lớp phủ:',
       ],
@@ -637,7 +704,7 @@ export const docs: PageDefinition = {
       ],
     },
     {
-      heading: 'Tham số hình mờ',
+      heading: 'Tham số hình mờ"',
       paragraphs: [
         'Thêm hình mờ vào mã QR đã tạo:',
       ],
@@ -652,7 +719,7 @@ export const docs: PageDefinition = {
       ],
     },
     {
-      heading: 'Tham số hoạt ảnh',
+      heading: 'Tham số hoạt ảnh"',
       paragraphs: [
         'Cho đầu ra GIF động (yêu cầu format=gif):',
       ],
@@ -665,7 +732,7 @@ export const docs: PageDefinition = {
       ],
     },
     {
-      heading: 'Tham số đầu ra',
+      heading: 'Tham số đầu ra"',
       paragraphs: [
         'Tùy chọn định dạng đầu ra:',
       ],
@@ -678,7 +745,7 @@ export const docs: PageDefinition = {
       ],
     },
     {
-      heading: 'Ví dụ sử dụng',
+      heading: 'Ví dụ sử dụng"',
       paragraphs: [
         'Mã QR cơ bản:',
         'https://anqr.link/api/qr?data=https://example.com',
@@ -722,7 +789,7 @@ export const docs: PageDefinition = {
       ],
     },
     {
-      heading: 'Giới hạn tốc độ và sử dụng',
+      heading: 'Giới hạn tốc độ và sử dụng"',
       paragraphs: [
         'API miễn phí sử dụng cho khối lượng hợp lý. Đối với việc sử dụng khối lượng lớn hoặc ứng dụng thương mại yêu cầu thời gian hoạt động được đảm bảo, vui lòng liên hệ với chúng tôi.',
         'Phản hồi API bao gồm header cache mạnh. Để có hiệu suất tốt nhất, hãy cache phản hồi ở phía bạn hoặc sử dụng cùng một URL nhất quán cho các mã QR giống hệt nhau.',

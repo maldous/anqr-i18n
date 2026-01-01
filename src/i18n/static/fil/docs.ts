@@ -484,6 +484,73 @@ export const docs: PageDefinition = {
       ],
     },
     {
+      heading: 'Mga Pagbabayad na May Kaugnayan sa Wika sa Advanced Mode',
+      paragraphs: [
+        'Kapag ginagamit ang Advanced mode, awtomatikong ipinapakita ng ANQR ang mga paraan ng pagbabayad na may kaugnayan sa iyong napiling wika. Halimbawa, ang mga Vietnamese user ay nakakakita ng VietQR, ang mga Thai user ay nakakakita ng PromptPay, at ang mga Indian language user ay nakakakita ng UPI at BharatQR. Ang mga pandaigdigang paraan ng pagbabayad (cryptocurrency, PayPal, Cash App) ay magagamit sa lahat ng wika. Binubuksan ng Professional mode ang lahat ng pamantayan sa pagbabayad anuman ang wika.',
+      ],
+    },
+    {
+      heading: 'Mga Pamantayan sa Pagbabayad sa Europa',
+      bullets: [
+        'EPC/SEPA (EU): Mga QR code para sa bank transfer sa Europa na sumusunod sa EPC QR Code Standard. Sinusuportahan ang IBAN, BIC (opsyonal para sa domestic), halaga sa EUR, at mga structured o unstructured na reference sa pagbabayad. Ginagamit sa buong SEPA zone kabilang ang mga bansa ng EU kasama ang Switzerland, Norway, Iceland, Liechtenstein, Monaco, at San Marino.',
+        'Swiss QR-bill: Pamantayan sa pagbabayad ng Switzerland na sumusunod sa SIX Implementation Guidelines. Sinusuportahan ang CHF at EUR, QR-Reference (QRR), Creditor Reference (ISO 11649), mga structured na address ng creditor/debtor, at impormasyon sa bill. Kinakailangan para sa mga invoice sa Switzerland mula 2022.',
+      ],
+    },
+    {
+      heading: 'Mga Pamantayan sa Pagbabayad sa India',
+      bullets: [
+        'UPI (India): Unified Payments Interface na sumusunod sa NPCI Deep Linking Specification. Sinusuportahan ang VPA (Virtual Payment Address), pangalan ng tatanggap, halaga sa INR, tala ng transaksyon, reference ID, merchant category code, at mode ng transaksyon.',
+        'BharatQR (India): Pinag-isang pamantayan ng QR na sumusuporta sa parehong UPI at card-based na pagbabayad. Pinagsasama ang UPI VPA sa card PAN para sa pinakamataas na compatibility. Kasama ang pangalan ng merchant, lungsod, MCC, mga detalye ng GST, at mga numero ng invoice/reference.',
+      ],
+    },
+    {
+      heading: 'Mga Pamantayan sa Pagbabayad sa Timog-silangang Asya',
+      bullets: [
+        'PayNow (Singapore): Sistema ng mabilis na pagbabayad sa Singapore gamit ang EMVCo QR specification na may SGQR profile. Sinusuportahan ang UEN (business registration), numero ng mobile, o NRIC bilang mga proxy identifier. Kasama ang flag ng editability ng halaga at petsa ng expiry.',
+        'PromptPay (Thailand): Pambansang sistema ng pagbabayad ng Thailand na sumusunod sa Bank of Thailand EMV profile. Sinusuportahan ang numero ng mobile, national ID, tax ID, e-wallet ID, at pagbabayad ng bill na may maraming reference field.',
+        'QRIS (Indonesia): Quick Response Code Indonesian Standard. Pamantayan sa pambansang pagbabayad na nakabatay sa EMV na sumusuporta sa merchant ID, NMID (National Merchant ID), klasipikasyon ng merchant criteria, at mga convenience fee (fixed o percentage).',
+        'DuitNow (Malaysia): Sistema ng instant na pagbabayad sa Malaysia. Sinusuportahan ang maraming uri ng proxy kabilang ang NRIC, mobile, passport, army ID, at mga numero ng business registration.',
+        'VietQR (Vietnam): Pamantayan ng Vietnamese interbank transfer. Nangangailangan ng bank BIN (NAPAS identification) at numero ng account. Sinusuportahan ang maraming service code para sa iba\'t ibang uri ng transfer (QRPUSH, QRIBFTTA, QRIBFTTC).',
+        'QR Ph (Philippines): Pamantayan ng QR payment sa Pilipinas para sa InstaPay at PESONet. Gumagamit ng mga numero ng account na may merchant identification para sa mga P2M (person-to-merchant) na transaksyon.',
+      ],
+    },
+    {
+      heading: 'Mga Pamantayan sa Pagbabayad sa Silangang Asya',
+      bullets: [
+        'TWQR (Taiwan): Pamantayan ng QR payment sa Taiwan. Sinusuportahan ang merchant ID, tax ID, at mga halaga sa TWD.',
+        'HKQR/FPS (Hong Kong): Mga QR code ng Hong Kong Faster Payment System. Sinusuportahan ang FPS ID, numero ng mobile, o email bilang mga payment identifier. Mga halaga sa HKD.',
+        'JPQR (Japan): Pinag-isang pamantayan ng QR code payment sa Japan. Gumagamit ng store ID para sa merchant identification na may mga halaga sa JPY.',
+      ],
+    },
+    {
+      heading: 'Iba Pang Mga Pamantayan sa Pagbabayad sa Rehiyon',
+      bullets: [
+        'PIX (Brazil): Sistema ng instant na pagbabayad ng Brazilian Central Bank na sumusunod sa BR Code specification. Sinusuportahan ang mga PIX key (CPF, CNPJ, email, phone, o random key), pangalan/lungsod ng merchant, transaction ID, at mga halaga sa BRL.',
+        'AusPayNet/NPP PayID (Australia): Sistema ng PayID ng Australian New Payments Platform. Sinusuportahan ang mga uri ng PayID (email, mobile, ABN, organisation ID) o tradisyonal na BSB + numero ng account. Opsyonal ang pangalan ng merchant dahil nakikita ng mga nagbabayad ang nakarehistrong pangalan mula sa NPP lookup.',
+      ],
+    },
+    {
+      heading: 'Mga Pagbabayad sa Cryptocurrency',
+      bullets: [
+        'Bitcoin/Litecoin (BIP-21): Mga karaniwang URI ng pagbabayad sa cryptocurrency na may wallet address, opsyonal na halaga, at label. Compatible sa lahat ng pangunahing Bitcoin at Litecoin wallet.',
+        'Lightning Network (BOLT11): Mga invoice ng pagbabayad sa Lightning Network. Mag-paste ng BOLT11 encoded invoice string para sa instant na pagbabayad ng Bitcoin na may minimal na bayarin.',
+        'Ethereum (EIP-681): Mga URI ng transaction request sa Ethereum na sumusuporta sa native ETH transfer at ERC-20 token transfer. Kasama ang chain ID para sa multi-network support (Mainnet, Polygon, BSC, Arbitrum, Optimism, Avalanche), mga parameter ng gas, at mga contract function call.',
+      ],
+    },
+    {
+      heading: 'Mga Serbisyo ng Payment Link',
+      bullets: [
+        'PayPal.Me: Mga PayPal payment link na may username at opsyonal na pre-filled na halaga. Maaaring magbayad ang mga tatanggap sa pamamagitan ng PayPal balance, mga card, o mga bank account.',
+        'Cash App: Mga Cash App payment link gamit ang $cashtag na may opsyonal na halaga. Sikat sa Estados Unidos para sa peer-to-peer na pagbabayad.',
+      ],
+    },
+    {
+      heading: 'Generic EMV QR',
+      bullets: [
+        'EMV Generic: Gumawa ng mga custom na EMV Merchant-Presented Mode QR code para sa mga scheme ng pagbabayad na hindi partikular na nakalista. I-configure ang pangalan ng merchant, lungsod, country code (ISO 3166-1), currency code (ISO 4217 numeric), MCC, mga opsyon sa tip/convenience fee, at mga karagdagang field ng data. Kapaki-pakinabang para sa pagsubok o custom na integration.',
+      ],
+    },
+    {
       heading: 'Mga Blend Mode ng Overlay (Propesyonal)',
       paragraphs: [
         'Mga karagdagang blend mode sa antas na Propesyonal:',
@@ -564,7 +631,7 @@ export const docs: PageDefinition = {
       ],
     },
     {
-      heading: 'Mga Pangunahing Parameter',
+      heading: 'Mga Pangunahing Parameter"',
       paragraphs: [
         'Mga kinakailangan at karaniwang parameter (hindi isinasalin ang mga pangalan ng parameter):',
       ],
@@ -581,7 +648,7 @@ export const docs: PageDefinition = {
       ],
     },
     {
-      heading: 'Mga Parameter ng Istilo',
+      heading: 'Mga Parameter ng Istilo"',
       paragraphs: [
         'Pag-istilo ng module at pattern:',
       ],
@@ -601,7 +668,7 @@ export const docs: PageDefinition = {
       ],
     },
     {
-      heading: 'Mga Parameter ng Overlay',
+      heading: 'Mga Parameter ng Overlay"',
       paragraphs: [
         'Mga opsyon ng image overlay (kinukuha ang overlay image sa server-side):',
       ],
@@ -618,7 +685,7 @@ export const docs: PageDefinition = {
       ],
     },
     {
-      heading: 'Mga Parameter ng Preprocessing',
+      heading: 'Mga Parameter ng Preprocessing"',
       paragraphs: [
         'Image preprocessing na inilalapat sa overlay:',
       ],
@@ -637,7 +704,7 @@ export const docs: PageDefinition = {
       ],
     },
     {
-      heading: 'Mga Parameter ng Watermark',
+      heading: 'Mga Parameter ng Watermark"',
       paragraphs: [
         'Magdagdag ng mga watermark sa mga nabuong QR code:',
       ],
@@ -652,7 +719,7 @@ export const docs: PageDefinition = {
       ],
     },
     {
-      heading: 'Mga Parameter ng Animation',
+      heading: 'Mga Parameter ng Animation"',
       paragraphs: [
         'Para sa animated GIF output (nangangailangan ng format=gif):',
       ],
@@ -665,7 +732,7 @@ export const docs: PageDefinition = {
       ],
     },
     {
-      heading: 'Mga Parameter ng Output',
+      heading: 'Mga Parameter ng Output"',
       paragraphs: [
         'Mga opsyon ng format ng output:',
       ],
@@ -678,7 +745,7 @@ export const docs: PageDefinition = {
       ],
     },
     {
-      heading: 'Halimbawa ng Paggamit',
+      heading: 'Halimbawa ng Paggamit"',
       paragraphs: [
         'Pangunahing QR code:',
         'https://anqr.link/api/qr?data=https://example.com',
@@ -722,7 +789,7 @@ export const docs: PageDefinition = {
       ],
     },
     {
-      heading: 'Mga Rate Limit at Paggamit',
+      heading: 'Mga Rate Limit at Paggamit"',
       paragraphs: [
         'Ang API ay libreng gamitin para sa mga makatwirang dami. Para sa mataas na dami ng paggamit o mga komersyal na application na nangangailangan ng garantisadong uptime, mangyaring makipag-ugnayan sa amin.',
         'Kasama sa mga API response ang agresibong caching header. Para sa pinakamahusay na pagganap, mag-cache ng mga response sa iyong panig o gumamit ng parehong URL nang tuluy-tuloy para sa magkaparehong mga QR code.',
