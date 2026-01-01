@@ -2,66 +2,66 @@ import type { PageDefinition } from '../types'
 import { LAST_UPDATED, CONTACT_EMAIL } from '../types'
 
 export const contact: PageDefinition = {
-  title: 'Contact Us',
-  description: 'We welcome feedback, bug reports, feature requests, and general enquiries.',
+  title: 'हामीलाई सम्पर्क गर्नुहोस्',
+  description: 'हामी प्रतिक्रिया, बग रिपोर्ट, सुविधा अनुरोध, र सामान्य सोधपुछको स्वागत गर्दछौं।',
   lastUpdated: LAST_UPDATED,
   sections: [
     {
-      heading: 'How to reach us',
+      heading: '"हामीलाई कसरी सम्पर्क गर्ने”',
       paragraphs: [
-        'We offer several ways to contact us depending on your needs. We read every message, though response times may vary based on volume and enquiry type.',
+        'हामी तपाईंको आवश्यकता अनुसार हामीलाई सम्पर्क गर्ने धेरै तरिकाहरू प्रदान गर्दछौं। हामी प्रत्येक सन्देश पढ्छौं, यद्यपि प्रतिक्रिया समय मात्रा र सोधपुछको प्रकारको आधारमा फरक हुन सक्छ।',
       ],
     },
     {
-      heading: 'Email',
+      heading: '"इमेल”',
       paragraphs: [
-        'For all enquiries: ${CONTACT_EMAIL}',
-        'This is the most reliable way to reach us and is recommended for detailed questions, business enquiries, or any other enquiries.',
+        '"सबै सोधपुछका लागि: ${CONTACT_EMAIL}”',
+        'यो हामीसम्म पुग्ने सबैभन्दा भरपर्दो तरिका हो र विस्तृत प्रश्नहरू, व्यावसायिक सोधपुछहरू, वा अन्य कुनै पनि सोधपुछको लागि सिफारिस गरिन्छ।',
       ],
     },
     {
-      heading: 'Types of enquiries',
+      heading: '"जिज्ञासाका प्रकारहरू”',
       bullets: [
-        'General questions: Questions about how to use ANQR, feature explanations, or general feedback.',
-        'Bug reports: Please include your browser, operating system, steps to reproduce, and any error messages you see.',
-        'Feature requests: Suggestions for new features or improvements. We consider all requests though we cannot promise implementation.',
-        'Business enquiries: Partnership opportunities, licensing questions, or commercial use enquiries.',
-        'Privacy requests: Requests to exercise your privacy rights under GDPR, CCPA, or other privacy laws (see Privacy Policy).',
-        'DMCA/Copyright: See the DMCA section below for takedown notice requirements.',
+        'सामान्य प्रश्नहरू: ANQR कसरी प्रयोग गर्ने भन्ने बारे प्रश्नहरू, सुविधा व्याख्याहरू, वा सामान्य प्रतिक्रिया।',
+        '"बग रिपोर्टहरू: कृपया तपाईंको ब्राउजर, अपरेटिङ सिस्टम, पुन: उत्पादन गर्ने चरणहरू, र तपाईंले देख्नुहुने कुनै पनि त्रुटि सन्देशहरू समावेश गर्नुहोस्।”',
+        '"सुविधा अनुरोधहरू: नयाँ सुविधाहरू वा सुधारहरूको लागि सुझावहरू। हामी सबै अनुरोधहरूलाई विचार गर्छौं यद्यपि हामी कार्यान्वयनको वाचा गर्न सक्दैनौं।”',
+        'व्यापारिक सोधपुछ: साझेदारी अवसरहरू, इजाजतपत्र प्रश्नहरू, वा व्यावसायिक प्रयोग सोधपुछ।',
+        '"गोपनीयता अनुरोधहरू: GDPR, CCPA, वा अन्य गोपनीयता कानूनहरू अन्तर्गत तपाईंको गोपनीयता अधिकार प्रयोग गर्न अनुरोधहरू (गोपनीयता नीति हेर्नुहोस्)।”',
+        '"DMCA/प्रतिलिपि अधिकार: हटाउने सूचना आवश्यकताहरूको लागि तलको DMCA खण्ड हेर्नुहोस्।”',
       ],
     },
     {
-      heading: 'Response times',
+      heading: '"प्रतिक्रिया समय”',
       paragraphs: [
-        'We aim to respond to enquiries within 5-7 business days. Privacy-related requests will be addressed within 30 days as required by law.',
-        'During busy periods, response times may be longer. For urgent matters, please indicate "URGENT" in your subject line.',
+        'हामी ५-७ कार्य दिन भित्र सोधपुछको जवाफ दिने लक्ष्य राख्छौं। गोपनीयता-सम्बन्धित अनुरोधहरूलाई कानूनद्वारा आवश्यक पर्ने ३० दिन भित्र सम्बोधन गरिनेछ।',
+        'व्यस्त अवधिहरूमा, प्रतिक्रिया समय लामो हुन सक्छ। जरुरी मामिलाहरूको लागि, कृपया आफ्नो विषय पङ्क्तिमा तत्काल संकेत गर्नुहोस्।',
       ],
     },
     {
-      heading: 'Before contacting us',
+      heading: '"हामीलाई सम्पर्क गर्नु अघि”',
       paragraphs: [
-        'Please check our Documentation page for answers to common questions about how to use ANQR features. Many questions about QR code generation, styling, and export options are covered there.',
+        'ANQR सुविधाहरू कसरी प्रयोग गर्ने भन्ने बारे सामान्य प्रश्नहरूको उत्तरको लागि कृपया हाम्रो कागजात पृष्ठ जाँच गर्नुहोस्। QR कोड उत्पादन, शैली, र निर्यात विकल्पहरूको बारेमा धेरै प्रश्नहरू त्यहाँ समेटिएका छन्।',
       ],
     },
     {
-      heading: 'DMCA Copyright Notices',
+      heading: '"DMCA प्रतिलिपि अधिकार सूचनाहरू”',
       paragraphs: [
-        'If you believe that content available on ANQR infringes your copyright, you may submit a Digital Millennium Copyright Act (DMCA) takedown notice. To be valid, your notice must include:',
+        '"यदि तपाईंलाई लाग्छ कि ANQR मा उपलब्ध सामग्रीले तपाईंको प्रतिलिपि अधिकार उल्लङ्घन गर्छ भने, तपाईंले डिजिटल मिलेनियम प्रतिलिपि अधिकार ऐन (DMCA) हटाउने सूचना पेश गर्न सक्नुहुन्छ। मान्य हुनको लागि, तपाईंको सूचनामा निम्न समावेश हुनुपर्छ:”',
       ],
       bullets: [
-        'A physical or electronic signature of the copyright owner or authorised agent.',
-        'Identification of the copyrighted work claimed to have been infringed.',
-        'Identification of the material that is claimed to be infringing, with information sufficient to locate it.',
-        'Your contact information (address, telephone number, and email address).',
-        'A statement that you have a good faith belief that use of the material is not authorised by the copyright owner.',
-        'A statement, under penalty of perjury, that the information in your notice is accurate and that you are the copyright owner or authorised to act on their behalf.',
+        'प्रतिलिपि अधिकार मालिक वा अधिकृत एजेन्टको भौतिक वा इलेक्ट्रोनिक हस्ताक्षर।',
+        '"उल्लंघन भएको दाबी गरिएको प्रतिलिपि अधिकार प्राप्त कामको पहिचान।”',
+        'उल्लङ्घनकारी भएको दाबी गरिएको सामग्रीको पहिचान, त्यसलाई पत्ता लगाउन पर्याप्त जानकारी सहित।',
+        'तपाईंको सम्पर्क जानकारी (ठेगाना, टेलिफोन नम्बर, र इमेल ठेगाना)।',
+        'प्रतिलिपि अधिकार मालिकद्वारा सामग्रीको प्रयोग अधिकृत छैन भन्ने कुरामा तपाईंको पूर्ण विश्वास छ भन्ने कथन।',
+        'झूटो बयानको दण्ड अन्तर्गत एउटा कथन, तपाईंको सूचनामा भएको जानकारी सही छ र तपाईं प्रतिलिपि अधिकार मालिक हुनुहुन्छ वा उनीहरूको तर्फबाट कार्य गर्न अधिकृत हुनुहुन्छ।',
       ],
     },
     {
-      heading: 'DMCA Contact',
+      heading: '"DMCA सम्पर्क”',
       paragraphs: [
-        'Send DMCA notices to: ${CONTACT_EMAIL}',
-        'Please include "DMCA Notice" in the subject line. We will respond to valid notices in accordance with applicable law. Note that ANQR generates QR codes locally on users devices and does not host user-generated content.',
+        '"DMCA सूचनाहरू पठाउनुहोस्: ${CONTACT_EMAIL}”',
+        '"कृपया विषय पङ्क्तिमा "DMCA सूचना" समावेश गर्नुहोस्। हामी लागू कानून अनुसार मान्य सूचनाहरूको जवाफ दिनेछौं। ध्यान दिनुहोस् कि ANQR ले प्रयोगकर्ता उपकरणहरूमा स्थानीय रूपमा QR कोडहरू उत्पन्न गर्दछ र प्रयोगकर्ता-उत्पन्न सामग्री होस्ट गर्दैन।”',
       ],
     },
   ],

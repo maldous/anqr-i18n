@@ -2,148 +2,148 @@ import type { PageDefinition } from '../types'
 import { LAST_UPDATED, CONTACT_EMAIL } from '../types'
 
 export const privacy: PageDefinition = {
-  title: 'Privacy Policy',
-  description: 'Information ANQR collects, how it is used, and your rights under applicable privacy laws.',
+  title: '”Tietosuojakäytäntö”',
+  description: '”ANQR:n keräämät tiedot, niiden käyttötapa ja oikeutesi sovellettavien tietosuojalakien nojalla.”',
   lastUpdated: LAST_UPDATED,
   sections: [
     {
-      heading: 'Summary',
+      heading: '”Yhteenveto”',
       paragraphs: [
-        'ANQR is a QR code generator with a client-first approach. We do not require you to create an account. By default, QR codes are generated locally in your browser — we do not have access to the content you encode.',
-        'For professional use, ANQR provides a server-side API that generates QR codes from URL parameters. When using the API, your QR content is processed on our servers to render the image, but is not stored or logged.',
-        'We use Google AdSense for advertising and may use analytics services. These services collect information through cookies and similar technologies. This policy explains what data is collected, how it is used, and your rights.',
+        '”ANQR on QR-koodigeneraattori, joka on asiakaslähtöinen. Emme vaadi sinua luomaan tiliä. Oletusarvoisesti QR-koodit luodaan paikallisesti selaimessasi – meillä ei ole pääsyä koodaamaasi sisältöön.”',
+        '”ANQR tarjoaa ammattikäyttöön palvelinpuolen API:n, joka luo QR-koodeja URL-parametreista. API:a käytettäessä QR-sisältösi käsitellään palvelimillamme kuvan renderöimiseksi, mutta sitä ei tallenneta tai kirjata.”',
+        '”Käytämme Google AdSenseä mainontaan ja saatamme käyttää analytiikkapalveluita. Nämä palvelut keräävät tietoja evästeiden ja vastaavien tekniikoiden avulla. Tässä käytännössä selitetään, mitä tietoja kerätään, miten niitä käytetään ja mitkä ovat oikeutesi.”',
       ],
     },
     {
-      heading: 'Information we collect',
+      heading: '”Keräämämme tiedot”',
       bullets: [
-        'Information you provide: If you contact us via email or our contact form, we collect your name, email address, and message content.',
-        'Automatically collected information: Our hosting provider (Netlify), advertising partners, and analytics services may collect: IP address, browser type and version, operating system, device type, referring URL, pages visited, time on site, and approximate geographic location.',
-        'Third-party cookies: Our advertising partners (Google AdSense) use cookies and similar technologies to serve and measure advertisements. ANQR itself does not set any first-party cookies.',
+        '”Antamasi tiedot: Jos otat meihin yhteyttä sähköpostitse tai yhteydenottolomakkeemme kautta, keräämme nimesi, sähköpostiosoitteesi ja viestisi sisällön.”',
+        '”Automaattisesti kerätyt tiedot: Hosting-palveluntarjoajamme (Netlify), mainoskumppanimme ja analytiikkapalvelut voivat kerätä seuraavia tietoja: IP-osoite, selaintyyppi ja -versio, käyttöjärjestelmä, laitetyyppi, viittaava URL-osoite, vieraillut sivut, sivustolla vietetty aika ja likimääräinen maantieteellinen sijainti.”',
+        '”Kolmannen osapuolen evästeet: Mainoskumppanimme (Google AdSense) käyttävät evästeitä ja vastaavia tekniikoita mainosten näyttämiseen ja mittaamiseen. ANQR itse ei aseta ensimmäisen osapuolen evästeitä.”',
       ],
     },
     {
-      heading: 'Cookies and third-party technologies',
+      heading: '”Evästeet ja kolmannen osapuolen teknologiat”',
       paragraphs: [
-        'ANQR does not set any first-party cookies. Your preferences (such as dark mode) are stored locally on your device, which is not transmitted to any server.',
-        'However, our advertising partners (Google AdSense) and hosting provider may use cookies and similar tracking technologies:',
-      ],
-      bullets: [
-        'Advertising cookies (third-party): Set by Google AdSense and advertising partners to serve relevant ads, measure ad performance, and understand user interests. These cookies may track your activity across different websites.',
-        'Analytics cookies (third-party): May be used by our hosting provider or analytics services to collect anonymised usage data.',
-      ],
-    },
-    {
-      heading: 'Google AdSense and advertising',
-      paragraphs: [
-        'We display advertisements through Google AdSense. Google and its partners use cookies to serve ads based on your browsing history on this site and other websites (interest-based advertising).',
-        'Learn how Google uses your information: https://policies.google.com/technologies/partner-sites',
-        'Manage ad personalisation: https://adssettings.google.com',
-        'Opt out via Network Advertising Initiative: https://optout.networkadvertising.org',
-        'Opt out via Digital Advertising Alliance: https://optout.aboutads.info',
-      ],
-    },
-    {
-      heading: 'How we use information',
-      bullets: [
-        'To respond to your enquiries and provide support.',
-        'To display relevant advertisements through our advertising partners.',
-        'To analyse site usage and improve our services.',
-        'To detect, prevent, and address fraud, abuse, and security issues.',
-        'To comply with legal obligations.',
-      ],
-    },
-    {
-      heading: 'Third-party services',
-      bullets: [
-        'Google AdSense: Receives data to serve and measure advertisements.',
-        'Analytics providers: Receive anonymised usage data.',
-        'Netlify (hosting): Processes requests and may log IP addresses.',
-        'We do not sell your personal information. However, sharing data with advertising partners may be considered a "sale" under CCPA (see below).',
-      ],
-    },
-    {
-      heading: 'Data retention',
-      bullets: [
-        'Contact submissions: Up to 2 years.',
-        'Server logs: Up to 30 days (hosting provider).',
-        'Analytics data: Up to 26 months (anonymised).',
-        'Advertising cookies: Typically 13 months (varies by partner).',
-      ],
-    },
-    {
-      heading: 'Your rights under GDPR (EEA users)',
-      paragraphs: [
-        'If you are in the European Economic Area, you have the following rights under the General Data Protection Regulation:',
+        '”ANQR ei aseta ensimmäisen osapuolen evästeitä. Asetuksesi (kuten pimeä tila) tallennetaan paikallisesti laitteellesi, eikä niitä lähetetä millekään palvelimelle.”',
+        '”Mainoskumppanimme (Google AdSense) ja hosting-palveluntarjoajamme voivat kuitenkin käyttää evästeitä ja vastaavia seurantatekniikoita:”',
       ],
       bullets: [
-        'Right of access: Request a copy of personal data we hold about you.',
-        'Right to rectification: Request correction of inaccurate data.',
-        'Right to erasure: Request deletion of your data ("right to be forgotten").',
-        'Right to restrict processing: Request limits on how we use your data.',
-        'Right to data portability: Request your data in a portable format.',
-        'Right to object: Object to processing, including for direct marketing.',
-        'Right to withdraw consent: Withdraw consent at any time where processing is consent-based.',
-        'Right to lodge a complaint: File a complaint with your data protection authority.',
+        '”Mainosevästeet (kolmannen osapuolen): Google AdSensen ja mainoskumppaneiden asettamat evästeet, joiden avulla voidaan näyttää osuvia mainoksia, mitata mainosten tehokkuutta ja ymmärtää käyttäjien kiinnostuksen kohteita. Nämä evästeet voivat seurata toimintaasi eri verkkosivustoilla.”',
+        '”Analytiikkaevästeet (kolmannen osapuolen): Palveluntarjoajamme tai analytiikkapalvelumme voivat käyttää näitä evästeitä anonymisoitujen käyttötietojen keräämiseen.”',
       ],
     },
     {
-      heading: 'GDPR legal basis',
+      heading: '"Google AdSense ja mainonta”',
       paragraphs: [
-        'We process data on these bases: (a) Consent — for personalised advertising (managed by our advertising partners); (b) Legitimate interests — for analytics, security, and improvement; (c) Contract — to respond to enquiries.',
-        'To exercise your rights, contact ${CONTACT_EMAIL}. We respond within 30 days.',
+        '”Näytämme mainoksia Google AdSensen kautta. Google ja sen kumppanit käyttävät evästeitä näyttääkseen mainoksia, jotka perustuvat selaushistoriaasi tällä sivustolla ja muilla verkkosivustoilla (kiinnostuksen kohteisiin perustuva mainonta).”',
+        '”Lue, miten Google käyttää tietojasi: https://policies.google.com/technologies/partner-sites”',
+        '”Hallinnoi mainosten personointia: https://adssettings.google.com”',
+        '”Kieltäydy mainostuksesta Network Advertising Initiativen kautta: https://optout.networkadvertising.org”',
+        '”Kieltäydy Digital Advertising Alliancen kautta: https://optout.aboutads.info”',
       ],
     },
     {
-      heading: 'Your rights under CCPA (California users)',
+      heading: '”Kuinka käytämme tietoja”',
       bullets: [
-        'Right to know: Request information about data collected, sources, purposes, and third parties.',
-        'Right to delete: Request deletion of your personal information.',
-        'Right to opt-out: Opt out of the "sale" of personal information (sharing with ad partners may qualify).',
-        'Right to non-discrimination: We will not discriminate for exercising your rights.',
+        '”Vastataksemme tiedusteluihisi ja tarjotaksemme tukea.”',
+        '”Näyttääksemme relevantteja mainoksia mainoskumppaneidemme kautta.”',
+        '”Sivuston käytön analysoimiseksi ja palvelujemme parantamiseksi.”',
+        '”Petosten, väärinkäytösten ja turvallisuusongelmien havaitsemiseksi, ehkäisemiseksi ja ratkaisemiseksi.”',
+        '”Lakisääteisten velvoitteiden noudattamiseksi.”',
       ],
     },
     {
-      heading: 'CCPA categories collected',
-      paragraphs: [
-        'Categories: Identifiers (IP address, device ID), Internet activity (browsing, ad interactions), Geolocation (approximate), Inferences (interests from browsing).',
-        'To exercise rights or opt out: ${CONTACT_EMAIL} or adjust cookie settings.',
+      heading: '”Kolmannen osapuolen palvelut”',
+      bullets: [
+        '”Google AdSense: Vastaanottaa tietoja mainosten näyttämistä ja mittaamista varten.”',
+        '”Analytiikkapalvelujen tarjoajat: Vastaanota anonymisoitua käyttödataa.”',
+        '”Netlify (hosting): Käsittelee pyyntöjä ja saattaa kirjata IP-osoitteita.”',
+        '”Emme myy henkilötietojasi. Tietojen jakamista mainoskumppaneiden kanssa voidaan kuitenkin pitää CCPA:n mukaisena myyntinä (katso alla).”',
       ],
     },
     {
-      heading: 'International transfers',
-      paragraphs: [
-        'Your information may be transferred to countries with different data protection laws, including the United States. We use appropriate safeguards such as Standard Contractual Clauses.',
+      heading: '”Tietojen säilytys”',
+      bullets: [
+        '”Yhteystietojen lähettäminen: Jopa 2 vuotta.”',
+        '”Palvelinlokit: Enintään 30 päivää (hosting-palveluntarjoaja).”',
+        '”Analytiikkatiedot: Jopa 26 kuukautta (anonymisoitu).”',
+        '”Mainosevästeet: Tyypillisesti 13 kuukautta (vaihtelee kumppanin mukaan).”',
       ],
     },
     {
-      heading: 'Children\'s privacy',
+      heading: '”Oikeutesi GDPR:n nojalla (ETA-alueen käyttäjät)”',
       paragraphs: [
-        'ANQR is not directed at children under 13 (or 16 in the EEA). We do not knowingly collect data from children. Contact ${CONTACT_EMAIL} if you believe a child has provided information.',
+        '”Jos olet Euroopan talousalueella, sinulla on seuraavat oikeudet yleisen tietosuoja-asetuksen nojalla:”',
+      ],
+      bullets: [
+        '”Oikeus tutustua tietoihin: Pyydä kopio hallussamme olevista sinua koskevista henkilötiedoista.”',
+        '”Oikeus oikaisuun: Pyytää virheellisten tietojen korjaamista.”',
+        '”Oikeus tietojen poistamiseen: Pyytää tietojesi poistamista (”oikeus tulla unohdetuksi”).”',
+        '”Oikeus rajoittaa käsittelyä: Pyytää rajoituksia tietojesi käyttöön.”',
+        '”Oikeus tietojen siirrettävyyteen: Pyydä tietojasi siirrettävässä muodossa.”',
+        '”Vastustamisoikeus: Vastustaa käsittelyä, mukaan lukien suoramarkkinointia.”',
+        '”Oikeus peruuttaa suostumus: Peruuttaa suostumus milloin tahansa, jos käsittely perustuu suostumukseen.”',
+        '”Oikeus tehdä valitus: Tee valitus tietosuojaviranomaiselle.”',
       ],
     },
     {
-      heading: 'Security',
+      heading: '”GDPR:n oikeusperusta”',
       paragraphs: [
-        'We use appropriate technical and organisational measures to protect data, including HTTPS encryption. However, no internet transmission is 100% secure.',
+        '”Käsittelemme tietoja seuraavin perustein: (a) Suostumus – personoitua mainontaa varten (mainontakumppaniemme hallinnoimia); (b) Oikeutetut edut – analytiikkaa, turvallisuutta ja parantamista varten; (c) Sopimus – tiedusteluihin vastaamiseksi.”',
+        '”Käyttääksesi oikeuksiasi, ota yhteyttä osoitteeseen ${CONTACT_EMAIL}. Vastaamme 30 päivän kuluessa.”',
       ],
     },
     {
-      heading: 'Do Not Track',
-      paragraphs: [
-        'We honour Do Not Track browser signals where feasible, though advertising partners may not respond to DNT.',
+      heading: '”CCPA:n mukaiset oikeutesi (Kalifornian käyttäjät)”',
+      bullets: [
+        '”Oikeus tietää: Pyytää tietoja kerätyistä tiedoista, lähteistä, tarkoituksista ja kolmansista osapuolista.”',
+        '”Oikeus poistaa henkilötietojasi: Pyytää henkilötietojesi poistamista.”',
+        '”Oikeus kieltäytyä: Kieltäytyä henkilötietojen ”myynnistä” (jakaminen mainoskumppaneiden kanssa voi olla oikeutettua tähän).”',
+        '”Oikeus syrjimättömyyteen: Emme syrji ketään oikeuksien käyttämisen perusteella.”',
       ],
     },
     {
-      heading: 'Changes to this policy',
+      heading: '”Kerätyt CCPA-luokat”',
       paragraphs: [
-        'We may update this policy periodically. The "Last updated" date indicates the most recent revision. Significant changes may be communicated via a site banner.',
+        '”Kategoriat: Tunnisteet (IP-osoite, laitetunnus), Internet-toiminta (selaaminen, mainosten vuorovaikutus), Maantieteellinen sijainti (likimääräinen), Päätelmät (selailusta johtuvat kiinnostuksen kohteet).”',
+        '”Oikeuksien käyttämiseksi tai kieltäytymiseksi: ${CONTACT_EMAIL} tai evästeasetusten muuttamiseen.”',
       ],
     },
     {
-      heading: 'Contact us',
+      heading: '”Kansainväliset siirrot”',
       paragraphs: [
-        'For privacy questions or to exercise your rights: ${CONTACT_EMAIL} or use our Contact page. We respond to privacy requests within 30 days.',
+        '”Tietojasi voidaan siirtää maihin, joissa on erilaiset tietosuojalait, mukaan lukien Yhdysvallat. Käytämme asianmukaisia suojatoimia, kuten vakiosopimuslausekkeita.”',
+      ],
+    },
+    {
+      heading: '”Lasten yksityisyys”',
+      paragraphs: [
+        '”ANQR ei ole suunnattu alle 13-vuotiaille lapsille (tai alle 16-vuotiaille ETA-alueella). Emme tietoisesti kerää tietoja lapsilta. Ota yhteyttä osoitteeseen ${CONTACT_EMAIL}, jos uskot lapsen antaneen tietoja.”',
+      ],
+    },
+    {
+      heading: '"Turvallisuus”',
+      paragraphs: [
+        '”Käytämme asianmukaisia teknisiä ja organisatorisia toimenpiteitä tietojen suojaamiseksi, mukaan lukien HTTPS-salausta. Mikään internet-siirto ei kuitenkaan ole 100 % turvallinen.”',
+      ],
+    },
+    {
+      heading: '"Älä seuraa”',
+      paragraphs: [
+        '”Kunnioitamme Do Not Track -selainsignaaleja mahdollisuuksien mukaan, vaikka mainoskumppanit eivät välttämättä vastaa DNT:hen.”',
+      ],
+    },
+    {
+      heading: '”Muutokset tähän käytäntöön”',
+      paragraphs: [
+        '”Saatamme päivittää tätä käytäntöä ajoittain. ”Viimeksi päivitetty” -päivämäärä osoittaa viimeisimmän version. Merkittävistä muutoksista voidaan ilmoittaa sivuston bannerin kautta.”',
+      ],
+    },
+    {
+      heading: 'Ota yhteyttä',
+      paragraphs: [
+        '”Tietosuojaan liittyvissä kysymyksissä tai oikeuksiesi käyttämiseksi: ${CONTACT_EMAIL} tai käytä yhteydenottosivuamme. Vastaamme tietosuojapyyntöihin 30 päivän kuluessa.”',
       ],
     },
   ],

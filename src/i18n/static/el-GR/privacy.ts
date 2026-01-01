@@ -2,148 +2,148 @@ import type { PageDefinition } from '../types'
 import { LAST_UPDATED, CONTACT_EMAIL } from '../types'
 
 export const privacy: PageDefinition = {
-  title: 'Privacy Policy',
-  description: 'Information ANQR collects, how it is used, and your rights under applicable privacy laws.',
+  title: '«Πολιτική Απορρήτου»',
+  description: '«Πληροφορίες που συλλέγει η ANQR, πώς χρησιμοποιούνται και τα δικαιώματά σας σύμφωνα με τους ισχύοντες νόμους περί απορρήτου».',
   lastUpdated: LAST_UPDATED,
   sections: [
     {
-      heading: 'Summary',
+      heading: '«Σύνοψη»',
       paragraphs: [
-        'ANQR is a QR code generator with a client-first approach. We do not require you to create an account. By default, QR codes are generated locally in your browser — we do not have access to the content you encode.',
-        'For professional use, ANQR provides a server-side API that generates QR codes from URL parameters. When using the API, your QR content is processed on our servers to render the image, but is not stored or logged.',
-        'We use Google AdSense for advertising and may use analytics services. These services collect information through cookies and similar technologies. This policy explains what data is collected, how it is used, and your rights.',
+        '«Το ANQR είναι μια γεννήτρια κωδικών QR με προσέγγιση που δίνει προτεραιότητα στον πελάτη. Δεν απαιτούμε να δημιουργήσετε λογαριασμό. Από προεπιλογή, οι κωδικοί QR δημιουργούνται τοπικά στο πρόγραμμα περιήγησής σας — δεν έχουμε πρόσβαση στο περιεχόμενο που κωδικοποιείτε.»',
+        '«Για επαγγελματική χρήση, το ANQR παρέχει ένα API από την πλευρά του διακομιστή που δημιουργεί κωδικούς QR από παραμέτρους URL. Όταν χρησιμοποιείτε το API, το περιεχόμενο QR σας υποβάλλεται σε επεξεργασία στους διακομιστές μας για την απόδοση της εικόνας, αλλά δεν αποθηκεύεται ούτε καταγράφεται.»',
+        '«Χρησιμοποιούμε το Google AdSense για διαφήμιση και ενδέχεται να χρησιμοποιούμε υπηρεσίες ανάλυσης. Αυτές οι υπηρεσίες συλλέγουν πληροφορίες μέσω cookies και παρόμοιων τεχνολογιών. Αυτή η πολιτική εξηγεί ποια δεδομένα συλλέγονται, πώς χρησιμοποιούνται και τα δικαιώματά σας.»',
       ],
     },
     {
-      heading: 'Information we collect',
+      heading: '«Πληροφορίες που συλλέγουμε»',
       bullets: [
-        'Information you provide: If you contact us via email or our contact form, we collect your name, email address, and message content.',
-        'Automatically collected information: Our hosting provider (Netlify), advertising partners, and analytics services may collect: IP address, browser type and version, operating system, device type, referring URL, pages visited, time on site, and approximate geographic location.',
-        'Third-party cookies: Our advertising partners (Google AdSense) use cookies and similar technologies to serve and measure advertisements. ANQR itself does not set any first-party cookies.',
+        '«Πληροφορίες που παρέχετε: Εάν επικοινωνήσετε μαζί μας μέσω email ή της φόρμας επικοινωνίας μας, συλλέγουμε το όνομά σας, τη διεύθυνση email σας και το περιεχόμενο του μηνύματός σας.»',
+        '«Αυτόματα συλλεγόμενες πληροφορίες: Ο πάροχος φιλοξενίας μας (Netlify), οι διαφημιστικοί συνεργάτες και οι υπηρεσίες ανάλυσης ενδέχεται να συλλέγουν: διεύθυνση IP, τύπο και έκδοση προγράμματος περιήγησης, λειτουργικό σύστημα, τύπο συσκευής, διεύθυνση URL παραπομπής, σελίδες που επισκέφθηκαν, χρόνο στον ιστότοπο και κατά προσέγγιση γεωγραφική θέση.»',
+        '«Cookies τρίτων: Οι διαφημιστικοί μας συνεργάτες (Google AdSense) χρησιμοποιούν cookies και παρόμοιες τεχνολογίες για την προβολή και τη μέτρηση διαφημίσεων. Η ίδια η ANQR δεν ορίζει cookies πρώτου μέρους.»',
       ],
     },
     {
-      heading: 'Cookies and third-party technologies',
+      heading: '«Cookies και τεχνολογίες τρίτων»',
       paragraphs: [
-        'ANQR does not set any first-party cookies. Your preferences (such as dark mode) are stored locally on your device, which is not transmitted to any server.',
-        'However, our advertising partners (Google AdSense) and hosting provider may use cookies and similar tracking technologies:',
-      ],
-      bullets: [
-        'Advertising cookies (third-party): Set by Google AdSense and advertising partners to serve relevant ads, measure ad performance, and understand user interests. These cookies may track your activity across different websites.',
-        'Analytics cookies (third-party): May be used by our hosting provider or analytics services to collect anonymised usage data.',
-      ],
-    },
-    {
-      heading: 'Google AdSense and advertising',
-      paragraphs: [
-        'We display advertisements through Google AdSense. Google and its partners use cookies to serve ads based on your browsing history on this site and other websites (interest-based advertising).',
-        'Learn how Google uses your information: https://policies.google.com/technologies/partner-sites',
-        'Manage ad personalisation: https://adssettings.google.com',
-        'Opt out via Network Advertising Initiative: https://optout.networkadvertising.org',
-        'Opt out via Digital Advertising Alliance: https://optout.aboutads.info',
-      ],
-    },
-    {
-      heading: 'How we use information',
-      bullets: [
-        'To respond to your enquiries and provide support.',
-        'To display relevant advertisements through our advertising partners.',
-        'To analyse site usage and improve our services.',
-        'To detect, prevent, and address fraud, abuse, and security issues.',
-        'To comply with legal obligations.',
-      ],
-    },
-    {
-      heading: 'Third-party services',
-      bullets: [
-        'Google AdSense: Receives data to serve and measure advertisements.',
-        'Analytics providers: Receive anonymised usage data.',
-        'Netlify (hosting): Processes requests and may log IP addresses.',
-        'We do not sell your personal information. However, sharing data with advertising partners may be considered a "sale" under CCPA (see below).',
-      ],
-    },
-    {
-      heading: 'Data retention',
-      bullets: [
-        'Contact submissions: Up to 2 years.',
-        'Server logs: Up to 30 days (hosting provider).',
-        'Analytics data: Up to 26 months (anonymised).',
-        'Advertising cookies: Typically 13 months (varies by partner).',
-      ],
-    },
-    {
-      heading: 'Your rights under GDPR (EEA users)',
-      paragraphs: [
-        'If you are in the European Economic Area, you have the following rights under the General Data Protection Regulation:',
+        '«Το ANQR δεν ορίζει cookies πρώτου μέρους. Οι προτιμήσεις σας (όπως η σκοτεινή λειτουργία) αποθηκεύονται τοπικά στη συσκευή σας και δεν μεταδίδονται σε κανέναν διακομιστή.»',
+        '«Ωστόσο, οι διαφημιστικοί μας συνεργάτες (Google AdSense) και ο πάροχος φιλοξενίας ενδέχεται να χρησιμοποιούν cookies και παρόμοιες τεχνολογίες παρακολούθησης:»',
       ],
       bullets: [
-        'Right of access: Request a copy of personal data we hold about you.',
-        'Right to rectification: Request correction of inaccurate data.',
-        'Right to erasure: Request deletion of your data ("right to be forgotten").',
-        'Right to restrict processing: Request limits on how we use your data.',
-        'Right to data portability: Request your data in a portable format.',
-        'Right to object: Object to processing, including for direct marketing.',
-        'Right to withdraw consent: Withdraw consent at any time where processing is consent-based.',
-        'Right to lodge a complaint: File a complaint with your data protection authority.',
+        '«Διαφημιστικά cookies (τρίτων): Ορίζονται από το Google AdSense και τους διαφημιστικούς συνεργάτες για την προβολή σχετικών διαφημίσεων, τη μέτρηση της απόδοσης των διαφημίσεων και την κατανόηση των ενδιαφερόντων των χρηστών. Αυτά τα cookies ενδέχεται να παρακολουθούν τη δραστηριότητά σας σε διαφορετικούς ιστότοπους.»',
+        '«Cookies ανάλυσης (τρίτων): Ενδέχεται να χρησιμοποιηθούν από τον πάροχο φιλοξενίας μας ή τις υπηρεσίες ανάλυσης για τη συλλογή ανώνυμων δεδομένων χρήσης.»',
       ],
     },
     {
-      heading: 'GDPR legal basis',
+      heading: '«Google AdSense και διαφήμιση»',
       paragraphs: [
-        'We process data on these bases: (a) Consent — for personalised advertising (managed by our advertising partners); (b) Legitimate interests — for analytics, security, and improvement; (c) Contract — to respond to enquiries.',
-        'To exercise your rights, contact ${CONTACT_EMAIL}. We respond within 30 days.',
+        '«Προβάλλουμε διαφημίσεις μέσω του Google AdSense. Η Google και οι συνεργάτες της χρησιμοποιούν cookies για την προβολή διαφημίσεων με βάση το ιστορικό περιήγησής σας σε αυτόν τον ιστότοπο και σε άλλους ιστότοπους (διαφήμιση βάσει ενδιαφέροντος).»',
+        '«Μάθετε πώς η Google χρησιμοποιεί τις πληροφορίες σας: https://policies.google.com/technologies/partner-sites»',
+        '«Διαχείριση εξατομίκευσης διαφημίσεων: https://adssettings.google.com»',
+        '«Εξαίρεση μέσω της Πρωτοβουλίας Διαφήμισης Δικτύου: https://optout.networkadvertising.org»',
+        '«Εξαίρεση μέσω της Digital Advertising Alliance: https://optout.aboutads.info»',
       ],
     },
     {
-      heading: 'Your rights under CCPA (California users)',
+      heading: '«Πώς χρησιμοποιούμε τις πληροφορίες»',
       bullets: [
-        'Right to know: Request information about data collected, sources, purposes, and third parties.',
-        'Right to delete: Request deletion of your personal information.',
-        'Right to opt-out: Opt out of the "sale" of personal information (sharing with ad partners may qualify).',
-        'Right to non-discrimination: We will not discriminate for exercising your rights.',
+        '«Για να απαντήσουμε στα ερωτήματά σας και να σας παρέχουμε υποστήριξη.»',
+        '«Για την προβολή σχετικών διαφημίσεων μέσω των διαφημιστικών συνεργατών μας».',
+        '«Για να αναλύσουμε τη χρήση του ιστότοπου και να βελτιώσουμε τις υπηρεσίες μας».',
+        '«Για την ανίχνευση, την πρόληψη και την αντιμετώπιση απάτης, κατάχρησης και ζητημάτων ασφάλειας».',
+        '«Για συμμόρφωση με τις νομικές υποχρεώσεις».',
       ],
     },
     {
-      heading: 'CCPA categories collected',
-      paragraphs: [
-        'Categories: Identifiers (IP address, device ID), Internet activity (browsing, ad interactions), Geolocation (approximate), Inferences (interests from browsing).',
-        'To exercise rights or opt out: ${CONTACT_EMAIL} or adjust cookie settings.',
+      heading: '«Υπηρεσίες τρίτων»',
+      bullets: [
+        '«Google AdSense: Λαμβάνει δεδομένα για την προβολή και τη μέτρηση διαφημίσεων».',
+        '«Πάροχοι αναλυτικών στοιχείων: Λήψη ανώνυμων δεδομένων χρήσης».',
+        '«Netlify (φιλοξενία): Επεξεργάζεται αιτήματα και ενδέχεται να καταγράφει διευθύνσεις IP.»',
+        '«Δεν πωλούμε τα προσωπικά σας στοιχεία. Ωστόσο, η κοινοποίηση δεδομένων σε διαφημιστικούς συνεργάτες μπορεί να θεωρηθεί «πώληση» βάσει του CCPA (βλ. παρακάτω).»',
       ],
     },
     {
-      heading: 'International transfers',
-      paragraphs: [
-        'Your information may be transferred to countries with different data protection laws, including the United States. We use appropriate safeguards such as Standard Contractual Clauses.',
+      heading: '«Διατήρηση δεδομένων»',
+      bullets: [
+        '«Υποβολές επαφών: Έως 2 έτη».',
+        '«Αρχεία καταγραφής διακομιστή: Έως 30 ημέρες (πάροχος φιλοξενίας).»',
+        '«Δεδομένα ανάλυσης: Έως 26 μήνες (ανώνυμα).»',
+        '«Διαφημιστικά cookies: Συνήθως 13 μήνες (ποικίλλει ανάλογα με τον συνεργάτη).»',
       ],
     },
     {
-      heading: 'Children\'s privacy',
+      heading: '«Τα δικαιώματά σας βάσει του ΓΚΠΔ (Χρήστες ΕΟΧ)»',
       paragraphs: [
-        'ANQR is not directed at children under 13 (or 16 in the EEA). We do not knowingly collect data from children. Contact ${CONTACT_EMAIL} if you believe a child has provided information.',
+        '«Εάν βρίσκεστε στον Ευρωπαϊκό Οικονομικό Χώρο, έχετε τα ακόλουθα δικαιώματα βάσει του Γενικού Κανονισμού για την Προστασία Δεδομένων:»',
+      ],
+      bullets: [
+        '«Δικαίωμα πρόσβασης: Ζητήστε αντίγραφο των προσωπικών δεδομένων που διατηρούμε για εσάς».',
+        '«Δικαίωμα διόρθωσης: Αίτημα διόρθωσης ανακριβών δεδομένων».',
+        '«Δικαίωμα διαγραφής: Αίτημα διαγραφής των δεδομένων σας («δικαίωμα στη λήθη»).»',
+        '«Δικαίωμα περιορισμού της επεξεργασίας: Αίτημα περιορισμού στον τρόπο με τον οποίο χρησιμοποιούμε τα δεδομένα σας».',
+        '«Δικαίωμα στη φορητότητα των δεδομένων: Ζητήστε τα δεδομένα σας σε φορητή μορφή».',
+        '«Δικαίωμα ένστασης: Ένσταση στην επεξεργασία, συμπεριλαμβανομένης της άμεσης εμπορικής προώθησης».',
+        '«Δικαίωμα ανάκλησης της συγκατάθεσης: Ανάκληση της συγκατάθεσης ανά πάσα στιγμή όταν η επεξεργασία βασίζεται στη συγκατάθεση».',
+        '«Δικαίωμα υποβολής καταγγελίας: Υποβάλετε καταγγελία στην αρχή προστασίας δεδομένων σας.»',
       ],
     },
     {
-      heading: 'Security',
+      heading: '«Νομική βάση του ΓΚΠΔ»',
       paragraphs: [
-        'We use appropriate technical and organisational measures to protect data, including HTTPS encryption. However, no internet transmission is 100% secure.',
+        '«Επεξεργαζόμαστε δεδομένα με βάση τα εξής: (α) Συγκατάθεση — για εξατομικευμένη διαφήμιση (διαχειριζόμενη από τους διαφημιστικούς μας συνεργάτες)· (β) Έννομα συμφέροντα — για ανάλυση, ασφάλεια και βελτίωση· (γ) Σύμβαση — για απάντηση σε ερωτήματα.»',
+        '«Για να ασκήσετε τα δικαιώματά σας, επικοινωνήστε με τον/την ${CONTACT_EMAIL}. Θα απαντήσουμε εντός 30 ημερών.»',
       ],
     },
     {
-      heading: 'Do Not Track',
-      paragraphs: [
-        'We honour Do Not Track browser signals where feasible, though advertising partners may not respond to DNT.',
+      heading: '«Τα δικαιώματά σας βάσει του CCPA (Χρήστες Καλιφόρνιας)»',
+      bullets: [
+        '«Δικαίωμα γνώσης: Αίτημα πληροφοριών σχετικά με τα δεδομένα που συλλέγονται, τις πηγές, τους σκοπούς και τα τρίτα μέρη».',
+        '«Δικαίωμα διαγραφής: Αίτημα διαγραφής των προσωπικών σας πληροφοριών».',
+        '«Δικαίωμα εξαίρεσης: Εξαίρεση από την «πώληση» προσωπικών πληροφοριών (η κοινοποίηση σε διαφημιστικούς συνεργάτες ενδέχεται να πληροί τις προϋποθέσεις).»',
+        '«Δικαίωμα στη μη διάκριση: Δεν θα κάνουμε διακρίσεις για την άσκηση των δικαιωμάτων σας».',
       ],
     },
     {
-      heading: 'Changes to this policy',
+      heading: '«Κατηγορίες CCPA που συλλέχθηκαν»',
       paragraphs: [
-        'We may update this policy periodically. The "Last updated" date indicates the most recent revision. Significant changes may be communicated via a site banner.',
+        '«Κατηγορίες: Αναγνωριστικά (διεύθυνση IP, αναγνωριστικό συσκευής), δραστηριότητα στο Διαδίκτυο (περιήγηση, αλληλεπιδράσεις με διαφημίσεις), γεωγραφική τοποθεσία (κατά προσέγγιση), συμπεράσματα (ενδιαφέροντα από την περιήγηση).»',
+        '«Για να ασκήσετε δικαιώματα ή να εξαιρεθείτε: ${CONTACT_EMAIL} ή να προσαρμόσετε τις ρυθμίσεις των cookie.»',
       ],
     },
     {
-      heading: 'Contact us',
+      heading: '«Διεθνείς μεταφορές»',
       paragraphs: [
-        'For privacy questions or to exercise your rights: ${CONTACT_EMAIL} or use our Contact page. We respond to privacy requests within 30 days.',
+        '«Οι πληροφορίες σας ενδέχεται να μεταφερθούν σε χώρες με διαφορετικούς νόμους περί προστασίας δεδομένων, συμπεριλαμβανομένων των Ηνωμένων Πολιτειών. Χρησιμοποιούμε κατάλληλες διασφαλίσεις, όπως Τυποποιημένες Συμβατικές Ρήτρες.»',
+      ],
+    },
+    {
+      heading: '«Ιδιωτικότητα παιδιών»',
+      paragraphs: [
+        '«Το ANQR δεν απευθύνεται σε παιδιά κάτω των 13 ετών (ή 16 ετών στον ΕΟΧ). Δεν συλλέγουμε εν γνώσει μας δεδομένα από παιδιά. Επικοινωνήστε με την ${CONTACT_EMAIL} εάν πιστεύετε ότι ένα παιδί έχει παράσχει πληροφορίες.»',
+      ],
+    },
+    {
+      heading: '«Ασφάλεια»',
+      paragraphs: [
+        '«Χρησιμοποιούμε κατάλληλα τεχνικά και οργανωτικά μέτρα για την προστασία των δεδομένων, συμπεριλαμβανομένης της κρυπτογράφησης HTTPS. Ωστόσο, καμία μετάδοση μέσω διαδικτύου δεν είναι 100% ασφαλής.»',
+      ],
+    },
+    {
+      heading: '«Μην παρακολουθείτε»',
+      paragraphs: [
+        '«Σεβόμαστε τα σήματα του προγράμματος περιήγησης που επιτρέπονται με την επιφύλαξη της απαγόρευσης παρακολούθησης (DNT) όπου είναι εφικτό, αν και οι διαφημιστικοί συνεργάτες ενδέχεται να μην ανταποκρίνονται στην DNT.»',
+      ],
+    },
+    {
+      heading: '«Αλλαγές σε αυτήν την πολιτική»',
+      paragraphs: [
+        '«Ενδέχεται να ενημερώνουμε αυτήν την πολιτική περιοδικά. Η ημερομηνία «Τελευταία ενημέρωση» υποδεικνύει την πιο πρόσφατη αναθεώρηση. Σημαντικές αλλαγές ενδέχεται να κοινοποιηθούν μέσω ενός banner ιστότοπου.»',
+      ],
+    },
+    {
+      heading: '«Επικοινωνήστε μαζί μας»',
+      paragraphs: [
+        '«Για ερωτήσεις σχετικά με το απόρρητο ή για να ασκήσετε τα δικαιώματά σας: ${CONTACT_EMAIL} ή χρησιμοποιήστε τη σελίδα επικοινωνίας μας. Απαντάμε σε αιτήματα απορρήτου εντός 30 ημερών.»',
       ],
     },
   ],

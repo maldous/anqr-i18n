@@ -2,68 +2,68 @@ import type { PageDefinition } from '../types'
 import { LAST_UPDATED, CONTACT_EMAIL } from '../types'
 
 export const about: PageDefinition = {
-  title: 'About ANQR',
-  description: 'ANQR is a free QR code generator with a client-first approach — generate QR codes locally or use our API for embedding.',
+  title: 'Относно ANQR',
+  description: 'ANQR е безплатен генератор на QR кодове с подход, ориентиран към клиента — генерирайте QR кодове локално или използвайте нашия API за вграждане.',
   lastUpdated: LAST_UPDATED,
   sections: [
     {
-      heading: 'What is ANQR?',
+      heading: 'Какво е ANQR?',
       paragraphs: [
-        'ANQR (pronounced "anchor") is a free QR code generator that creates scannable codes for URLs, text, Wi-Fi credentials, contact cards, calendar events, and more.',
-        'It is built for individuals, small businesses, marketers, and developers who want powerful QR tools without signing up. The client-first design means QR codes are generated locally in your browser by default, with an optional server API for professional embedding and integration.',
+        'ANQR (произнася се анкър) е безплатен генератор на QR кодове, който създава сканируеми кодове за URL адреси, текст, Wi-Fi идентификационни данни, карти за контакт, събития в календара и други.',
+        'Създаден е за физически лица, малки фирми, маркетолози и разработчици, които искат мощни QR инструменти, без да се регистрират. Дизайнът, ориентиран към клиента, означава, че QR кодовете се генерират локално във вашия браузър по подразбиране, с опционален сървърен API за професионално вграждане и интеграция.',
       ],
     },
     {
-      heading: 'Key features',
+      heading: 'Основни характеристики',
       bullets: [
-        'Generate QR codes instantly in your browser — no account required.',
-        'Customise colours, module styles, finder patterns, and add image overlays.',
-        'Export in multiple formats: PNG, SVG, WebP, and animated GIF.',
-        'Advanced controls for error correction level, QR version, encoding mode, and mask selection.',
-        'Scan-safety guidance and live preview to help keep codes readable in print and on screens.',
-        'Server-side API for professional embedding with full parameter support.',
-        'Works offline once loaded — it is a static web app you can run anywhere.',
+        'Генерирайте QR кодове мигновено в браузъра си — не е необходим акаунт.',
+        'Персонализирайте цветове, стилове на модули, шаблони за търсене и добавете наслагвания на изображения.',
+        'Експортиране в множество формати: PNG, SVG, WebP и анимиран GIF.',
+        'Разширени контроли за ниво на корекция на грешки, QR версия, режим на кодиране и избор на маска.',
+        'Указания за безопасно сканиране и преглед на живо, които спомагат за запазването на четливостта на кодовете при печат и на екрани.',
+        'API от страна на сървъра за професионално вграждане с пълна поддръжка на параметри.',
+        'Работи офлайн след зареждане — това е статично уеб приложение, което можете да стартирате навсякъде.',
       ],
     },
     {
-      heading: 'How ANQR works',
+      heading: 'Как работи ANQR',
       paragraphs: [
-        'ANQR runs in your browser and encodes your input into a standard QR matrix with Reed–Solomon error correction, then renders it to the format you choose.',
-        'By default, generation happens locally in your browser. For professional use, you can also use the server-side API to generate QR codes via URL parameters — perfect for embedding in websites, emails, or automated workflows.',
-        'When you add overlays or animations, ANQR balances styling with scan reliability so the result remains scannable.',
-        'ANQR focuses on static codes (the data is inside the QR). If you need a dynamic code (editable destination), you can encode your own redirect URL or short link.',
+        'ANQR работи във вашия браузър и кодира въведения от вас код в стандартна QR матрица с корекция на грешките на Рийд-Соломон, след което го рендира във формат, който сте избрали.',
+        'По подразбиране генерирането се извършва локално във вашия браузър. За професионална употреба можете също да използвате API от страна на сървъра, за да генерирате QR кодове чрез URL параметри – идеално за вграждане в уебсайтове, имейли или автоматизирани работни процеси.',
+        'Когато добавяте наслагвания или анимации, ANQR балансира стилизирането с надеждността на сканирането, така че резултатът да остане сканируем.',
+        'ANQR се фокусира върху статични кодове (данните са вътре в QR кода). Ако имате нужда от динамичен код (редактируема дестинация), можете да кодирате свой собствен URL адрес за пренасочване или кратка връзка.',
       ],
     },
     {
-      heading: 'Who operates ANQR?',
+      heading: 'Кой управлява ANQR?',
       paragraphs: [
-        'ANQR is operated as an independent web tool. For questions, support, or business enquiries, please use the Contact page or email ' + CONTACT_EMAIL + '.',
+        'ANQR се управлява като независим уеб инструмент. За въпроси, поддръжка или бизнес запитвания, моля, използвайте страницата за контакти или имейла' + CONTACT_EMAIL + '.',
       ],
     },
     {
-      heading: 'Advertising and how we stay free',
+      heading: 'Рекламата и как да останем свободни',
       paragraphs: [
-        'ANQR is free to use and is supported by advertising. We may show ads via Google AdSense and/or other advertising partners.',
-        'Ad providers may use cookies or similar technologies to personalise ads based on your interests and browsing activity. You can manage ad preferences in your device settings and through Google ad settings, and learn more in our Privacy Policy.',
-        'We do not sell the content you encode into QR codes. Ads help cover the cost of running and improving the project.',
+        'ANQR е безплатен за използване и се поддържа от реклами. Възможно е да показваме реклами чрез Google AdSense и/или други рекламни партньори.',
+        'Доставчиците на реклами могат да използват бисквитки или подобни технологии, за да персонализират рекламите въз основа на вашите интереси и активност при сърфиране. Можете да управлявате предпочитанията си за реклами в настройките на устройството си и чрез настройките за реклами на Google, както и да научите повече в нашата Политика за поверителност.',
+        'Ние не продаваме съдържанието, което кодирате в QR кодове. Рекламите помагат за покриване на разходите за управление и подобряване на проекта.',
       ],
     },
     {
-      heading: 'Open standards',
+      heading: 'Отворени стандарти',
       paragraphs: [
-        'ANQR generates QR codes based on the ISO/IEC 18004 standard and aims for broad compatibility across scanners, cameras, and print workflows.',
+        'ANQR генерира QR кодове въз основа на стандарта ISO/IEC 18004 и се стреми към широка съвместимост между скенери, камери и работни процеси за печат.',
       ],
     },
     {
-      heading: 'Trademark notice',
+      heading: 'Известие за търговска марка',
       paragraphs: [
-        'QR Code® is a registered trademark of DENSO WAVE INCORPORATED. ANQR is not affiliated with, endorsed by, or sponsored by DENSO WAVE INCORPORATED.',
+        'QR Code® е регистрирана търговска марка на DENSO WAVE INCORPORATED. ANQR не е свързана, одобрена или спонсорирана от DENSO WAVE INCORPORATED.',
       ],
     },
     {
-      heading: 'Feedback and contributions',
+      heading: 'Обратна връзка и приноси',
       paragraphs: [
-        'We welcome feedback, bug reports, and feature suggestions. Please get in touch via email or the contact page — we read every message, though response times may vary.',
+        'Приветстваме обратна връзка, съобщения за грешки и предложения за функции. Моля, свържете се с нас по имейл или през страницата за контакти — ние четем всяко съобщение, въпреки че времето за отговор може да варира.',
       ],
     },
   ],

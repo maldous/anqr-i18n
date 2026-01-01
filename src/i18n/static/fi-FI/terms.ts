@@ -2,143 +2,143 @@ import type { PageDefinition } from '../types'
 import { LAST_UPDATED, CONTACT_EMAIL } from '../types'
 
 export const terms: PageDefinition = {
-  title: 'Terms of Service',
-  description: 'By accessing or using the site, you agree to be bound by these terms.',
+  title: '”Käyttöehdot”',
+  description: '”Käyttämällä sivustoa hyväksyt nämä ehdot.”',
   lastUpdated: LAST_UPDATED,
   sections: [
     {
-      heading: 'Acceptance of terms',
+      heading: '”Ehtojen hyväksyminen”',
       paragraphs: [
-        'By accessing or using ANQR (anqr.link), you agree to be bound by these Terms of Service and our Privacy Policy. If you do not agree to these terms, do not use the site.',
-        'We may update these Terms from time to time. Continued use of the site after changes constitutes acceptance of the new terms.',
+        '”Käyttämällä ANQR:ää (anqr.link) hyväksyt nämä käyttöehdot ja tietosuojakäytäntömme. Jos et hyväksy näitä ehtoja, älä käytä sivustoa.”',
+        '”Saatamme päivittää näitä ehtoja aika ajoin. Sivuston käytön jatkaminen muutosten jälkeen merkitsee uusien ehtojen hyväksymistä.”',
       ],
     },
     {
-      heading: 'Eligibility',
+      heading: '”Kelpoisuus”',
       paragraphs: [
-        'You must be at least 13 years of age to use ANQR. By using the site, you represent that you meet this age requirement. If you are under 18, you represent that you have your parent or guardian\'s permission to use the site.',
+        '”Sinun on oltava vähintään 13-vuotias käyttääksesi ANQR:ää. Käyttämällä sivustoa vakuutat, että täytät tämän ikävaatimuksen. Jos olet alle 18-vuotias, vakuutat, että sinulla on vanhempasi tai huoltajasi lupa käyttää sivustoa.”',
       ],
     },
     {
-      heading: 'Permitted use',
+      heading: '”Sallittu käyttö”',
       paragraphs: [
-        'You may use ANQR for lawful purposes only. You are solely responsible for the content you encode into QR codes and for how you use any QR codes you generate.',
+        '”Saat käyttää ANQR-koodeja vain laillisiin tarkoituksiin. Olet yksin vastuussa QR-koodeihin koodaamastasi sisällöstä ja siitä, miten käytät luomiasi QR-koodeja.”',
       ],
     },
     {
-      heading: 'Prohibited conduct',
+      heading: '”Kielletty käytös”',
       paragraphs: [
-        'You agree not to:',
+        '”Sitoudut olemaan tekemättä seuraavaa:”',
       ],
       bullets: [
-        'Use ANQR to create QR codes that facilitate phishing, malware distribution, fraud, scams, harassment, defamation, or any illegal activity.',
-        'Encode content that infringes intellectual property rights, violates privacy, or contains illegal material.',
-        'Attempt to disrupt, overload, or interfere with the operation or security of the site.',
-        'Reverse engineer, decompile, or attempt to extract source code from the site.',
-        'Use automated tools (bots, scrapers) to access the site in a manner that degrades performance for other users.',
-        'Circumvent or disable any security or access control features.',
-        'Impersonate any person or entity or misrepresent your affiliation.',
+        '”Käytä ANQR:ää luodaksesi QR-koodeja, jotka helpottavat tietojenkalastelua, haittaohjelmien levittämistä, petoksia, huijauksia, häirintää, kunnianloukkausta tai muuta laitonta toimintaa.”',
+        '”Koodaa sisältöä, joka loukkaa immateriaalioikeuksia, yksityisyyttä tai sisältää laitonta materiaalia.”',
+        'Yrittää häiritä, ylikuormittaa tai häiritä sivuston toimintaa tai turvallisuutta.',
+        'Palauttaa lähdekoodia, purkaa sitä tai yrittää purkaa sitä sivustolta.',
+        '”Käytä automatisoituja työkaluja (botteja, kaavimia) sivuston käyttämiseen tavalla, joka heikentää suorituskykyä muilta käyttäjiltä.”',
+        '”Kierrä tai poista käytöstä kaikki turvallisuus- tai käyttöoikeuksien hallintaominaisuudet.”',
+        'Esiytyä toiseksi henkilöksi tai yhteisöksi tai esittää väärin yhteyksiäsi.',
       ],
     },
     {
-      heading: 'Intellectual property',
+      heading: '”Immateriaalioikeudet”',
       paragraphs: [
-        'You retain ownership of the content you encode into QR codes. ANQR does not claim ownership of your data.',
-        'The ANQR name, logo, interface design, and underlying code are protected by copyright, trademark, and other intellectual property laws. You may not copy, modify, distribute, or create derivative works without our permission.',
-        'QR Code® is a registered trademark of DENSO WAVE INCORPORATED. ANQR is not affiliated with DENSO WAVE.',
+        '”Säilytät QR-koodeihin koodaamasi sisällön omistusoikeuden. ANQR ei vaadi tietojesi omistusoikeutta.”',
+        '”ANQR-nimi, logo, käyttöliittymäsuunnittelu ja pohjana oleva koodi ovat tekijänoikeus-, tavaramerkki- ja muiden immateriaalioikeuslakien suojaamia. Et saa kopioida, muokata, levittää tai luoda johdannaisteoksia ilman lupaamme.”',
+        '”QR Code® on DENSO WAVE INCORPORATEDin rekisteröity tavaramerkki. ANQR ei ole sidoksissa DENSO WAVEen.”',
       ],
     },
     {
-      heading: 'User content license',
+      heading: '”Käyttäjäsisällön lisenssi”',
       paragraphs: [
-        'By using ANQR, you grant us no rights to your content. When using local generation (the default), all QR code generation happens in your browser and we do not access, store, or transmit your encoded data.',
-        'When using the server-side API, your content is processed to generate the QR image but is not stored, logged, or used for any other purpose beyond rendering the requested image.',
+        '”Käyttämällä ANQR:ää et anna meille mitään oikeuksia sisältöösi. Paikallista luontia käytettäessä (oletusarvo) kaikki QR-koodien luonti tapahtuu selaimessasi, emmekä käytä, tallenna tai lähetä koodattuja tietojasi.”',
+        '”Palvelinpuolen API:a käytettäessä sisältöäsi käsitellään QR-kuvan luomiseksi, mutta sitä ei tallenneta, kirjata tai käytetä mihinkään muuhun tarkoitukseen kuin pyydetyn kuvan renderöintiin.”',
       ],
     },
     {
-      heading: 'Third-party services and advertising',
+      heading: '”Kolmannen osapuolen palvelut ja mainonta”',
       paragraphs: [
-        'The site displays advertisements through Google AdSense and may include links to third-party websites. We are not responsible for third-party content, services, or privacy practices.',
-        'Your interactions with advertisers and third parties are solely between you and them. See our Privacy Policy for information about advertising data practices.',
+        '”Sivusto näyttää mainoksia Google AdSensen kautta ja saattaa sisältää linkkejä kolmansien osapuolten verkkosivustoille. Emme ole vastuussa kolmansien osapuolten sisällöstä, palveluista tai tietosuojakäytännöistä.”',
+        '”Vuorovaikutuksesi mainostajien ja kolmansien osapuolten kanssa on yksinomaan sinun ja heidän välistä. Tietosuojakäytännössämme on lisätietoja mainostietojen käsittelystä.”',
       ],
     },
     {
-      heading: 'Disclaimer of warranties',
+      heading: '”Takuiden vastuuvapauslauseke”',
       paragraphs: [
-        'ANQR IS PROVIDED ON AN "AS IS" AND "AS AVAILABLE" BASIS WITHOUT WARRANTIES OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, AND NON-INFRINGEMENT.',
-        'We do not warrant that: (a) the site will be uninterrupted, secure, or error-free; (b) QR codes will scan in all environments, on all devices, or with all scanner applications; (c) the site will meet your requirements.',
-        'You should always test QR codes in the conditions where they will be used (print size, lighting, screen type, distance, camera quality).',
+        '”ANQR TARJOTAAN SELLAISENAAN JA SAATAVUUDEN MUKAAN ILMAN MINKÄÄNLAISIA NIMENOMAISIA TAI OLETETTUJA TAKUITA, MUKAAN LUKIEN, MUTTA EI RAJOITTUEN, OLETETUT TAKUUT MYYNTIKELPOISUUDESTA, SOPIVUUDESTA TIETTYYN TARKOITUKSEEN JA OIKEUKSIEN LOUKKAAMATTOMUUDESTA.”',
+        '”Emme takaa, että: (a) sivusto toimii keskeytyksettä, turvallisesti tai virheettömästi; (b) QR-koodit skannataan kaikissa ympäristöissä, kaikilla laitteilla tai kaikilla skannerisovelluksilla; (c) sivusto täyttää vaatimuksesi.”',
+        '”QR-koodit tulisi aina testata niissä olosuhteissa, joissa niitä käytetään (tulostuskoko, valaistus, näytön tyyppi, etäisyys, kameran laatu).”',
       ],
     },
     {
-      heading: 'Limitation of liability',
+      heading: '”Vastuunrajoitus”',
       paragraphs: [
-        'TO THE MAXIMUM EXTENT PERMITTED BY LAW, ANQR AND ITS OPERATORS, AFFILIATES, AND LICENSORS SHALL NOT BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, CONSEQUENTIAL, PUNITIVE, OR EXEMPLARY DAMAGES, INCLUDING BUT NOT LIMITED TO DAMAGES FOR LOSS OF PROFITS, REVENUE, DATA, GOODWILL, USE, OR OTHER INTANGIBLE LOSSES, ARISING FROM OR RELATED TO YOUR ACCESS TO OR USE OF (OR INABILITY TO ACCESS OR USE) THE SERVICE.',
-        'YOU EXPRESSLY UNDERSTAND AND AGREE THAT YOUR USE OF THE SERVICE IS AT YOUR SOLE RISK. THE SERVICE IS PROVIDED FREE OF CHARGE, AND ACCORDINGLY, YOU AGREE THAT ANQR AND ITS OPERATORS SHALL HAVE NO LIABILITY TO YOU WHATSOEVER FOR ANY DAMAGES OR LOSSES. IN NO EVENT SHALL OUR TOTAL AGGREGATE LIABILITY EXCEED ZERO DOLLARS ($0 AUD).',
-        'YOU AGREE TO RELEASE, WAIVE, AND DISCHARGE ANY AND ALL CLAIMS, DEMANDS, AND CAUSES OF ACTION AGAINST ANQR AND ITS OPERATORS ARISING FROM YOUR USE OF THE SERVICE.',
-        'SOME JURISDICTIONS DO NOT ALLOW THE EXCLUSION OF CERTAIN WARRANTIES OR LIMITATIONS OF LIABILITY. IN SUCH JURISDICTIONS, OUR LIABILITY SHALL BE LIMITED TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW.',
+        '”LAIN SALLIMISSA RAJOISSA ANQR JA SEN YLLÄPITÄJÄT, TYTYRYHTIÖT JA LISENSINANTAJAT EIVÄT OLE VASTUUSSA MISTÄÄN SUORISTA, VÄLILLISISTÄ, SATUNNAISISTA, ERITYISISTÄ, VÄLILLISISTÄ, RANGAISTUSLUONTOISISTA TAI RANGAISTUSLUONTOISISTA VAHINGOISTA, MUKAAN LUKIEN, MUTTA EI RAJOITTUEN NIITÄ, VAHINGOT VOITON, TULOJEN, TIETOJEN, GOODWILLIN, KÄYTÖN TAI MUIDEN AINEETTOMIEN MENETYKSISTÄ, JOTKA JOHTUVAT PALVELUN KÄYTÖSTÄ TAI KÄYTTÖKELVOTTOMUUDESTA TAI LIITTYVÄT SIIHEN.”',
+        '”YMMÄRRÄT JA HYVÄKSYT NIMENOMAISESTI, ETTÄ KÄYTÄT PALVELUTTA OMALLA VASTUULLASI. PALVELU TARJOTAAN ILMAISEKSI, JA NIIDEN MUKAAN HYVÄKSYT, ETTÄ ANQR JA SEN YLLÄPITÄJÄT EIVÄT OLE MISSÄÄN VASTUUSSA SINULLE MISTÄÄN VAHINGOISTA TAI MENETYKSISTÄ. KOKONAISVASTUUMME EI MISSÄÄN TAPAUKSESSA YLITÄ NOLLA DOLLARIA (0 AUD).”',
+        '”SITOUDUT VAPAUTTAMAAN JA LUOVUMAAN KAIKISTA VAATIMUKSISTA, KANTEISTA JA SYYISTÄ ANQR:ÄÄ JA SEN YLLÄPITÄJIÄ VASTAAN, JOTKA JOHTUVAT PALVELUN KÄYTÖSTÄSI.”',
+        '”JOILLAKIN LAINKÄYTTÖALUEILLA TIETTYJEN TAKUIDEN TAI VASTUUNRAJOITUSTEN POISSULKEMINEN EI OLE SALLITTU. TÄLLAISISSA LAINKÄYTTÖALUEILLA VASTUUMME RAJOITTUU SOVELLETTAVAN LAIN SALLIMISSA ENIMMÄISMÄÄRÄSSÄ.”',
       ],
     },
     {
-      heading: 'Indemnification',
+      heading: '”Vahingonkorvaus”',
       paragraphs: [
-        'You agree to indemnify, defend, and hold harmless ANQR, its operators, affiliates, and their respective officers, directors, employees, and agents from any claims, damages, losses, liabilities, costs, and expenses (including legal fees) arising from: (a) your use of the site; (b) your violation of these Terms; (c) your violation of any third-party rights; (d) any content you encode into QR codes.',
+        '”Sitoudut korvaamaan ANQR:lle, sen ylläpitäjille, tytäryhtiöille ja heidän toimihenkilöilleen, johtajilleen, työntekijöilleen ja edustajille kaikki vaatimukset, vahingot, tappiot, vastuut, kustannukset ja kulut (mukaan lukien oikeudenkäyntikulut), jotka johtuvat: (a) sivuston käytöstäsi; (b) näiden ehtojen rikkomisestasi; (c) kolmansien osapuolten oikeuksien rikkomisestasi; (d) kaikesta QR-koodeihin koodaamastasi sisällöstä.”',
       ],
     },
     {
-      heading: 'Dispute resolution',
+      heading: '”Riitojenratkaisu”',
       paragraphs: [
-        'Any dispute arising from these Terms or your use of ANQR shall first be attempted to be resolved through informal negotiation by contacting ${CONTACT_EMAIL}.',
-        'If informal resolution fails, disputes shall be resolved through binding arbitration in Victoria, Australia, except that either party may seek injunctive relief in court for intellectual property violations.',
+        '”Näistä ehdoista tai ANQR:n käytöstäsi johtuvat riidat yritetään ensisijaisesti ratkaista epävirallisilla neuvotteluilla ottamalla yhteyttä osoitteeseen ${CONTACT_EMAIL}.”',
+        '”Jos epävirallinen sovintoratkaisu epäonnistuu, riidat ratkaistaan sitovalla välimiesmenettelyllä Victoriassa, Australiassa, paitsi että kumpi tahansa osapuoli voi hakea tuomioistuimelta kieltomääräystä immateriaalioikeusloukkausten johdosta.”',
       ],
     },
     {
-      heading: 'Class action waiver',
+      heading: '”Ryhmäkanteesta luopuminen”',
       paragraphs: [
-        'TO THE EXTENT PERMITTED BY LAW, YOU AGREE THAT ANY DISPUTE RESOLUTION PROCEEDINGS WILL BE CONDUCTED ONLY ON AN INDIVIDUAL BASIS AND NOT IN A CLASS, CONSOLIDATED, OR REPRESENTATIVE ACTION.',
+        '”LAIN SALLIMISSA RAJOISSA HYVÄKSYTTE, ETTÄ RIITOJEN RATKAISUMENETTELYJÄ KÄYTETÄÄN VAIN YKSILÖTASOLLA EIKÄ RYHMÄKANTEINA, YHDISTETTYNÄ KANTENA TAI EDUSTAJAKANTENA.”',
       ],
     },
     {
-      heading: 'Governing law',
+      heading: '”Sovellettava laki”',
       paragraphs: [
-        'These Terms are governed by the laws of Victoria, Australia, without regard to conflict of laws principles. You consent to the exclusive jurisdiction of the courts located in Victoria, Australia.',
+        '”Näihin ehtoihin sovelletaan Victorian, Australian, lakia lainvalintasäännöistä riippumatta. Hyväksyt Victorian, Australian, tuomioistuinten yksinomaisen toimivallan.”',
       ],
     },
     {
-      heading: 'Changes and availability',
+      heading: '”Muutokset ja saatavuus”',
       paragraphs: [
-        'We may modify, suspend, or discontinue the site (or any part of it) at any time without notice or liability.',
-        'We may update these Terms at any time. The "Last updated" date indicates when they were most recently revised. Continued use after changes constitutes acceptance.',
+        '”Voimme muokata, keskeyttää tai lopettaa sivuston (tai minkä tahansa sen osan) milloin tahansa ilman erillistä ilmoitusta tai vastuuta.”',
+        '”Voimme päivittää näitä ehtoja milloin tahansa. ”Viimeksi päivitetty” -päivämäärä osoittaa, milloin niitä on viimeksi tarkistettu. Käytön jatkaminen muutosten jälkeen katsotaan niiden hyväksymiseksi.”',
       ],
     },
     {
-      heading: 'Severability',
+      heading: '”Erittävyys”',
       paragraphs: [
-        'If any provision of these Terms is held invalid or unenforceable, that provision will be enforced to the maximum extent permissible, and the remaining provisions will remain in full force and effect.',
+        '”Jos jokin näiden ehtojen määräys katsotaan pätemättömäksi tai täytäntöönpanokelvottomaksi, kyseistä määräystä sovelletaan sallitussa enimmäislaajuudessa, ja muut määräykset pysyvät täysin voimassa.”',
       ],
     },
     {
-      heading: 'Waiver',
+      heading: '”Luopuminen”',
       paragraphs: [
-        'Our failure to enforce any right or provision of these Terms shall not be deemed a waiver of such right or provision.',
+        '”Se, ettemme pane täytäntöön mitään näiden ehtojen mukaista oikeutta tai määräystä, ei katsota kyseisestä oikeudesta tai määräyksestä luopumiseksi.”',
       ],
     },
     {
-      heading: 'Entire agreement',
+      heading: '”Kokonaissopimus”',
       paragraphs: [
-        'These Terms, together with our Privacy Policy, constitute the entire agreement between you and ANQR regarding your use of the site and supersede any prior agreements.',
+        '”Nämä ehdot yhdessä tietosuojakäytäntömme kanssa muodostavat sinun ja ANQR:n välisen koko sopimuksen sivuston käytöstäsi ja korvaavat kaikki aiemmat sopimukset.”',
       ],
     },
     {
-      heading: 'Force majeure',
+      heading: '”Ylivoimainen este”',
       paragraphs: [
-        'We shall not be liable for any failure or delay in performance due to circumstances beyond our reasonable control, including natural disasters, war, terrorism, riots, government actions, or internet/infrastructure failures.',
+        '”Emme ole vastuussa mistään suorituskyvyn epäonnistumisesta tai viivästyksestä, joka johtuu kohtuullisen hallintamme ulkopuolella olevista olosuhteista, mukaan lukien luonnonkatastrofit, sota, terrorismi, mellakat, hallituksen toimet tai internet-/infrastruktuurihäiriöt.”',
       ],
     },
     {
-      heading: 'Contact',
+      heading: '"Yhteystiedot”',
       paragraphs: [
-        'Questions about these Terms can be sent to: ${CONTACT_EMAIL}',
+        '”Kysymykset näistä ehdoista voi lähettää osoitteeseen: ${CONTACT_EMAIL}”',
       ],
     },
   ],

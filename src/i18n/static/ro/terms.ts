@@ -2,143 +2,143 @@ import type { PageDefinition } from '../types'
 import { LAST_UPDATED, CONTACT_EMAIL } from '../types'
 
 export const terms: PageDefinition = {
-  title: 'Terms of Service',
-  description: 'By accessing or using the site, you agree to be bound by these terms.',
+  title: '"Termeni și condiții”',
+  description: '"Prin accesarea sau utilizarea site-ului, sunteți de acord să respectați acești termeni.”',
   lastUpdated: LAST_UPDATED,
   sections: [
     {
-      heading: 'Acceptance of terms',
+      heading: '"Acceptarea termenilor”',
       paragraphs: [
-        'By accessing or using ANQR (anqr.link), you agree to be bound by these Terms of Service and our Privacy Policy. If you do not agree to these terms, do not use the site.',
-        'We may update these Terms from time to time. Continued use of the site after changes constitutes acceptance of the new terms.',
+        '"Prin accesarea sau utilizarea ANQR (anqr.link), sunteți de acord să respectați acești Termeni și condiții și Politica noastră de confidențialitate. Dacă nu sunteți de acord cu acești termeni, nu utilizați site-ul.”',
+        '"Putem actualiza acești Termeni din când în când. Utilizarea în continuare a site-ului după modificări constituie acceptarea noilor termeni.”',
       ],
     },
     {
-      heading: 'Eligibility',
+      heading: '"Eligibilitate”',
       paragraphs: [
-        'You must be at least 13 years of age to use ANQR. By using the site, you represent that you meet this age requirement. If you are under 18, you represent that you have your parent or guardian\'s permission to use the site.',
+        '"Trebuie să aveți cel puțin 13 ani pentru a utiliza ANQR. Prin utilizarea site-ului, declarați că îndepliniți această cerință de vârstă. Dacă aveți sub 18 ani, declarați că aveți permisiunea părintelui sau tutorelui dumneavoastră de a utiliza site-ul.”',
       ],
     },
     {
-      heading: 'Permitted use',
+      heading: '"Utilizare permisă”',
       paragraphs: [
-        'You may use ANQR for lawful purposes only. You are solely responsible for the content you encode into QR codes and for how you use any QR codes you generate.',
+        '"Puteți utiliza ANQR numai în scopuri legale. Sunteți singurul responsabil pentru conținutul pe care îl codificați în coduri QR și pentru modul în care utilizați orice coduri QR pe care le generați.”',
       ],
     },
     {
-      heading: 'Prohibited conduct',
+      heading: '"Conduită interzisă”',
       paragraphs: [
-        'You agree not to:',
+        '"Sunteți de acord să nu:”',
       ],
       bullets: [
-        'Use ANQR to create QR codes that facilitate phishing, malware distribution, fraud, scams, harassment, defamation, or any illegal activity.',
-        'Encode content that infringes intellectual property rights, violates privacy, or contains illegal material.',
-        'Attempt to disrupt, overload, or interfere with the operation or security of the site.',
-        'Reverse engineer, decompile, or attempt to extract source code from the site.',
-        'Use automated tools (bots, scrapers) to access the site in a manner that degrades performance for other users.',
-        'Circumvent or disable any security or access control features.',
-        'Impersonate any person or entity or misrepresent your affiliation.',
+        '"Utilizați ANQR pentru a crea coduri QR care facilitează phishing-ul, distribuirea de programe malware, frauda, escrocheriile, hărțuirea, defăimarea sau orice activitate ilegală.”',
+        '"Codificați conținutul care încalcă drepturile de proprietate intelectuală, violează confidențialitatea sau conține materiale ilegale.”',
+        '"Încercarea de a perturba, supraîncărca sau interfera cu funcționarea sau securitatea amplasamentului.”',
+        '"Efectuați inginerie inversă, decompilați sau încercați să extrageți codul sursă de pe site.”',
+        '"Folosiți instrumente automate (boți, scrapere) pentru a accesa site-ul într-un mod care degradează performanța pentru alți utilizatori.”',
+        '"A ocoli sau a dezactiva orice funcții de securitate sau de control al accesului.”',
+        '"A uzurpa identitatea oricărei persoane sau entități sau a prezenta în mod eronat afilierea dumneavoastră.”',
       ],
     },
     {
-      heading: 'Intellectual property',
+      heading: '"Proprietate intelectuală”',
       paragraphs: [
-        'You retain ownership of the content you encode into QR codes. ANQR does not claim ownership of your data.',
-        'The ANQR name, logo, interface design, and underlying code are protected by copyright, trademark, and other intellectual property laws. You may not copy, modify, distribute, or create derivative works without our permission.',
-        'QR Code® is a registered trademark of DENSO WAVE INCORPORATED. ANQR is not affiliated with DENSO WAVE.',
+        '"Vă păstrați dreptul de proprietate asupra conținutului pe care îl codificați în coduri QR. ANQR nu revendică dreptul de proprietate asupra datelor dumneavoastră.”',
+        '"Numele, sigla, designul interfeței și codul subiacent ANQR sunt protejate de drepturi de autor, mărci comerciale și alte legi privind proprietatea intelectuală. Nu aveți dreptul să copiați, să modificați, să distribuiți sau să creați lucrări derivate fără permisiunea noastră.”',
+        '"QR Code® este o marcă înregistrată a DENSO WAVE INCORPORATED. ANQR nu este afiliată cu DENSO WAVE.”',
       ],
     },
     {
-      heading: 'User content license',
+      heading: '"Licență pentru conținutul utilizatorului”',
       paragraphs: [
-        'By using ANQR, you grant us no rights to your content. When using local generation (the default), all QR code generation happens in your browser and we do not access, store, or transmit your encoded data.',
-        'When using the server-side API, your content is processed to generate the QR image but is not stored, logged, or used for any other purpose beyond rendering the requested image.',
+        '"Prin utilizarea ANQR, nu ne acordați niciun drept asupra conținutului dvs. Când utilizați generarea locală (implicită), toate coduri QR generate au loc în browserul dvs. și nu accesăm, stocăm și nu transmitem datele dvs. codificate.”',
+        '"Când utilizați API-ul pe server, conținutul dvs. este procesat pentru a genera imaginea QR, dar nu este stocat, înregistrat sau utilizat în niciun alt scop în afară de redarea imaginii solicitate.”',
       ],
     },
     {
-      heading: 'Third-party services and advertising',
+      heading: '"Servicii și publicitate ale unor terți”',
       paragraphs: [
-        'The site displays advertisements through Google AdSense and may include links to third-party websites. We are not responsible for third-party content, services, or privacy practices.',
-        'Your interactions with advertisers and third parties are solely between you and them. See our Privacy Policy for information about advertising data practices.',
+        '"Site-ul afișează reclame prin Google AdSense și poate include linkuri către site-uri web terțe. Nu suntem responsabili pentru conținutul, serviciile sau practicile de confidențialitate ale terților.”',
+        '"Interacțiunile dumneavoastră cu agenții de publicitate și terții sunt exclusiv între dumneavoastră și aceștia. Consultați Politica noastră de confidențialitate pentru informații despre practicile privind datele publicitare.”',
       ],
     },
     {
-      heading: 'Disclaimer of warranties',
+      heading: '"Excluderea garanțiilor”',
       paragraphs: [
-        'ANQR IS PROVIDED ON AN "AS IS" AND "AS AVAILABLE" BASIS WITHOUT WARRANTIES OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, AND NON-INFRINGEMENT.',
-        'We do not warrant that: (a) the site will be uninterrupted, secure, or error-free; (b) QR codes will scan in all environments, on all devices, or with all scanner applications; (c) the site will meet your requirements.',
-        'You should always test QR codes in the conditions where they will be used (print size, lighting, screen type, distance, camera quality).',
+        '"ANQR ESTE FURNIZAT «CA ATARE» ȘI «AȘA CUM ESTE DISPONIBIL», FĂRĂ NICIO GARANȚIE DE NICIUN FEL, EXPRESĂ SAU IMPLICITĂ, INCLUSIV, DAR FĂRĂ A SE LIMITA LA, GARANȚIILE IMPLICITE DE VANDABILITATE, ADECVARE PENTRU UN ANUMIT SCOP ȘI NEÎNCĂLCARE A DREPTURILOR DE AUTOR.”',
+        '"Nu garantăm că: (a) site-ul va fi neîntrerupt, sigur sau fără erori; (b) codurile QR se vor scana în toate mediile, pe toate dispozitivele sau cu toate aplicațiile de scanare; (c) site-ul va îndeplini cerințele dumneavoastră.”',
+        '"Ar trebui să testați întotdeauna codurile QR în condițiile în care vor fi utilizate (dimensiunea imprimării, iluminarea, tipul ecranului, distanța, calitatea camerei).”',
       ],
     },
     {
-      heading: 'Limitation of liability',
+      heading: '"Limitarea răspunderii”',
       paragraphs: [
-        'TO THE MAXIMUM EXTENT PERMITTED BY LAW, ANQR AND ITS OPERATORS, AFFILIATES, AND LICENSORS SHALL NOT BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, CONSEQUENTIAL, PUNITIVE, OR EXEMPLARY DAMAGES, INCLUDING BUT NOT LIMITED TO DAMAGES FOR LOSS OF PROFITS, REVENUE, DATA, GOODWILL, USE, OR OTHER INTANGIBLE LOSSES, ARISING FROM OR RELATED TO YOUR ACCESS TO OR USE OF (OR INABILITY TO ACCESS OR USE) THE SERVICE.',
-        'YOU EXPRESSLY UNDERSTAND AND AGREE THAT YOUR USE OF THE SERVICE IS AT YOUR SOLE RISK. THE SERVICE IS PROVIDED FREE OF CHARGE, AND ACCORDINGLY, YOU AGREE THAT ANQR AND ITS OPERATORS SHALL HAVE NO LIABILITY TO YOU WHATSOEVER FOR ANY DAMAGES OR LOSSES. IN NO EVENT SHALL OUR TOTAL AGGREGATE LIABILITY EXCEED ZERO DOLLARS ($0 AUD).',
-        'YOU AGREE TO RELEASE, WAIVE, AND DISCHARGE ANY AND ALL CLAIMS, DEMANDS, AND CAUSES OF ACTION AGAINST ANQR AND ITS OPERATORS ARISING FROM YOUR USE OF THE SERVICE.',
-        'SOME JURISDICTIONS DO NOT ALLOW THE EXCLUSION OF CERTAIN WARRANTIES OR LIMITATIONS OF LIABILITY. IN SUCH JURISDICTIONS, OUR LIABILITY SHALL BE LIMITED TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW.',
+        '"ÎN MĂSURA MAXIMĂ PERMISĂ DE LEGE, ANQR ȘI OPERATORII, AFILIAȚII ȘI LICENȚIATORII SĂI NU VOR FI RĂSPUNDERI PENTRU NICIO DAUNĂ DIRECTĂ, INDIRECTĂ, INCIDENTALĂ, SPECIALĂ, CONSECUTIVĂ, PUNITIVĂ SAU EXEMPLARĂ, INCLUSIV, DAR FĂRĂ A SE LIMITA LA, DAUNE PENTRU PIERDEREA DE PROFITURI, VENITURI, DATE, GOODFIND, UTILIZARE SAU ALTE PIERDERI INTANGIBILE, CARE DECURG DIN SAU SUNT LEGATE DE ACCESUL SAU UTILIZAREA (SAU INCAPACITATEA DE A ACCESA SAU UTILIZA) SERVICIUL.”',
+        '"ÎNȚELEGEȚI ȘI SUNTEȚI DE ACORD ÎN MOD EXPRES CĂ UTILIZAREA SERVICIULUI SE FACE PE RISCUL DUMNEAVOASTRĂ EXCLUSIV. SERVICIUL ESTE FURNIZAT GRATUIT ȘI, ÎN CONSECINȚĂ, SUNTEȚI DE ACORD CĂ ANQR ȘI OPERATORII SĂI NU VOR AVEA NICIO RĂSPUNDERE FAȚĂ DE DUMNEAVOASTRĂ PENTRU ORICE DAUNE SAU PIERDERI. ÎN NICIO SITUAȚIE, RĂSPUNDEREA NOASTRĂ TOTALĂ AGREGATĂ NU VA DEPĂȘI ZERO DOLARI (0 AUD).”',
+        '"SUNTEȚI DE ACORD SĂ RENUNȚAȚI LA, SĂ RENUNCAȚI ȘI SĂ RENUNCAȚI LA ORICE PRETENȚII, SOLICITĂRI ȘI CAUZE DE AȘTEPTARE ÎMPOTRIVA ANQR ȘI A OPERATORILOR SĂI CARE DECURG DIN UTILIZAREA SERVICIULUI DE CĂTRE DVS..”',
+        '"UNELE JURISDICȚII NU PERMIT EXCLUDEREA ANUMITOR GARANȚII SAU LIMITĂRI ALE RĂSPUNDERII. ÎN ASTFEL DE JURISDICȚII, RĂSPUNDEREA NOASTRĂ VA FI LIMITATĂ LA MĂSURA MAXIMĂ PERMISĂ DE LEGISLAȚIA APLICABILĂ.”',
       ],
     },
     {
-      heading: 'Indemnification',
+      heading: '"Despăgubire”',
       paragraphs: [
-        'You agree to indemnify, defend, and hold harmless ANQR, its operators, affiliates, and their respective officers, directors, employees, and agents from any claims, damages, losses, liabilities, costs, and expenses (including legal fees) arising from: (a) your use of the site; (b) your violation of these Terms; (c) your violation of any third-party rights; (d) any content you encode into QR codes.',
+        '"Sunteți de acord să despăgubiți, să apărați și să exonerați de răspundere ANQR, operatorii, afiliații săi și respectivii lor funcționari, directori, angajați și agenți de orice pretenții, daune, pierderi, răspunderi, costuri și cheltuieli (inclusiv onorariile avocaților) care decurg din: (a) utilizarea de către dvs. a site-ului; (b) încălcarea de către dvs. a acestor Termeni; (c) încălcarea de către dvs. a oricăror drepturi ale terților; (d) orice conținut pe care îl codificați în coduri QR.”',
       ],
     },
     {
-      heading: 'Dispute resolution',
+      heading: '"Rezolvarea litigiilor”',
       paragraphs: [
-        'Any dispute arising from these Terms or your use of ANQR shall first be attempted to be resolved through informal negotiation by contacting ${CONTACT_EMAIL}.',
-        'If informal resolution fails, disputes shall be resolved through binding arbitration in Victoria, Australia, except that either party may seek injunctive relief in court for intellectual property violations.',
+        '"Orice litigiu care decurge din acești Termeni sau din utilizarea ANQR de către dvs. va fi mai întâi încercat să fie rezolvat prin negociere informală, contactând ${CONTACT_EMAIL}.”',
+        '"Dacă soluționarea informală eșuează, litigiile vor fi soluționate prin arbitraj obligatoriu în Victoria, Australia, cu excepția cazului în care oricare dintre părți poate solicita măsuri injunctive în instanță pentru încălcări ale proprietății intelectuale.”',
       ],
     },
     {
-      heading: 'Class action waiver',
+      heading: '"Renunțarea la acțiunea colectivă”',
       paragraphs: [
-        'TO THE EXTENT PERMITTED BY LAW, YOU AGREE THAT ANY DISPUTE RESOLUTION PROCEEDINGS WILL BE CONDUCTED ONLY ON AN INDIVIDUAL BASIS AND NOT IN A CLASS, CONSOLIDATED, OR REPRESENTATIVE ACTION.',
+        '"ÎN MĂSURA PERMISĂ DE LEGE, SUNTEȚI DE ACORD CĂ ORICE PROCEDURĂ DE SOLUȚIONARE A LITIGIULUI VA FI DESFĂȘURATĂ DOAR PE BAZĂ INDIVIDUALĂ ȘI NU ÎNTR-UN LITIG COLECTIV, CONSOLIDAT SAU REPREZENTATIV.”',
       ],
     },
     {
-      heading: 'Governing law',
+      heading: '"Legea aplicabilă”',
       paragraphs: [
-        'These Terms are governed by the laws of Victoria, Australia, without regard to conflict of laws principles. You consent to the exclusive jurisdiction of the courts located in Victoria, Australia.',
+        '"Acești Termeni sunt guvernați de legile statului Victoria, Australia, fără a ține cont de principiile conflictului de legi. Sunteți de acord cu jurisdicția exclusivă a instanțelor situate în Victoria, Australia.”',
       ],
     },
     {
-      heading: 'Changes and availability',
+      heading: '"Modificări și disponibilitate”',
       paragraphs: [
-        'We may modify, suspend, or discontinue the site (or any part of it) at any time without notice or liability.',
-        'We may update these Terms at any time. The "Last updated" date indicates when they were most recently revised. Continued use after changes constitutes acceptance.',
+        '"Putem modifica, suspenda sau întrerupe site-ul (sau orice parte a acestuia) în orice moment, fără notificare prealabilă și fără a ne asuma nicio răspundere.”',
+        '"Putem actualiza acești Termeni în orice moment. Data «Ultimei actualizări» indică momentul în care au fost revizuiți cel mai recent. Utilizarea în continuare după modificări constituie acceptare.”',
       ],
     },
     {
-      heading: 'Severability',
+      heading: '"Separabilitate”',
       paragraphs: [
-        'If any provision of these Terms is held invalid or unenforceable, that provision will be enforced to the maximum extent permissible, and the remaining provisions will remain in full force and effect.',
+        '"Dacă vreo prevedere a acestor Termeni este considerată invalidă sau inaplicabilă, acea prevedere va fi aplicată în măsura maximă permisă, iar celelalte prevederi vor rămâne în vigoare și vor produce efecte depline.”',
       ],
     },
     {
-      heading: 'Waiver',
+      heading: '"Renunțare”',
       paragraphs: [
-        'Our failure to enforce any right or provision of these Terms shall not be deemed a waiver of such right or provision.',
+        '"Neexercitarea de către noi a oricărui drept sau a oricărui prevedere a acestor Termeni nu va fi considerată o renunțare la respectivul drept sau la respectiva prevedere.”',
       ],
     },
     {
-      heading: 'Entire agreement',
+      heading: '"Întregul acord”',
       paragraphs: [
-        'These Terms, together with our Privacy Policy, constitute the entire agreement between you and ANQR regarding your use of the site and supersede any prior agreements.',
+        '"Acești Termeni, împreună cu Politica noastră de confidențialitate, constituie întregul acord dintre dumneavoastră și ANQR cu privire la utilizarea site-ului și înlocuiesc orice acorduri anterioare.”',
       ],
     },
     {
-      heading: 'Force majeure',
+      heading: '"Forță majoră”',
       paragraphs: [
-        'We shall not be liable for any failure or delay in performance due to circumstances beyond our reasonable control, including natural disasters, war, terrorism, riots, government actions, or internet/infrastructure failures.',
+        '"Nu vom fi răspunzători pentru nicio neîndeplinire a obligațiilor sau întârziere în executare din cauza unor circumstanțe care nu țin de controlul nostru rezonabil, inclusiv dezastre naturale, război, terorism, revolte, acțiuni guvernamentale sau defecțiuni ale internetului/infrastructurii.”',
       ],
     },
     {
-      heading: 'Contact',
+      heading: '"Contact”',
       paragraphs: [
-        'Questions about these Terms can be sent to: ${CONTACT_EMAIL}',
+        '"Întrebări despre acești Termeni pot fi trimise la: ${CONTACT_EMAIL}”',
       ],
     },
   ],

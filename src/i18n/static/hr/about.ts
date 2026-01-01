@@ -2,68 +2,68 @@ import type { PageDefinition } from '../types'
 import { LAST_UPDATED, CONTACT_EMAIL } from '../types'
 
 export const about: PageDefinition = {
-  title: 'About ANQR',
-  description: 'ANQR is a free QR code generator with a client-first approach — generate QR codes locally or use our API for embedding.',
+  title: 'O ANQR-u',
+  description: 'ANQR je besplatni generator QR kodova s pristupom koji je prvi na klijentu — generirajte QR kodove lokalno ili koristite naš API za ugradnju.',
   lastUpdated: LAST_UPDATED,
   sections: [
     {
-      heading: 'What is ANQR?',
+      heading: 'Što je ANQR?',
       paragraphs: [
-        'ANQR (pronounced "anchor") is a free QR code generator that creates scannable codes for URLs, text, Wi-Fi credentials, contact cards, calendar events, and more.',
-        'It is built for individuals, small businesses, marketers, and developers who want powerful QR tools without signing up. The client-first design means QR codes are generated locally in your browser by default, with an optional server API for professional embedding and integration.',
+        'ANQR (izgovara se sidro) je besplatni generator QR kodova koji stvara kodove za skeniranje za URL-ove, tekst, Wi-Fi vjerodajnice, kartice kontakata, događaje u kalendaru i još mnogo toga.',
+        'Namijenjen je pojedincima, malim poduzećima, marketinškim stručnjacima i programerima koji žele moćne QR alate bez registracije. Dizajn usmjeren na klijenta znači da se QR kodovi generiraju lokalno u vašem pregledniku prema zadanim postavkama, s opcionalnim poslužiteljskim API-jem za profesionalno ugrađivanje i integraciju.',
       ],
     },
     {
-      heading: 'Key features',
+      heading: 'Ključne značajke',
       bullets: [
-        'Generate QR codes instantly in your browser — no account required.',
-        'Customise colours, module styles, finder patterns, and add image overlays.',
-        'Export in multiple formats: PNG, SVG, WebP, and animated GIF.',
-        'Advanced controls for error correction level, QR version, encoding mode, and mask selection.',
-        'Scan-safety guidance and live preview to help keep codes readable in print and on screens.',
-        'Server-side API for professional embedding with full parameter support.',
-        'Works offline once loaded — it is a static web app you can run anywhere.',
+        'Generirajte QR kodove odmah u svom pregledniku — nije potreban račun.',
+        'Prilagodite boje, stilove modula, uzorke tražilice i dodajte slojeve slika.',
+        'Izvoz u više formata: PNG, SVG, WebP i animirani GIF.',
+        'Napredne kontrole za razinu ispravljanja pogrešaka, QR verziju, način kodiranja i odabir maske.',
+        'Smjernice za sigurno skeniranje i pregled uživo kako bi kodovi bili čitljivi u ispisu i na zaslonima.',
+        'API na strani poslužitelja za profesionalno ugrađivanje s potpunom podrškom za parametre.',
+        'Radi izvan mreže nakon učitavanja — to je statična web aplikacija koju možete pokrenuti bilo gdje.',
       ],
     },
     {
-      heading: 'How ANQR works',
+      heading: 'Kako ANQR funkcionira',
       paragraphs: [
-        'ANQR runs in your browser and encodes your input into a standard QR matrix with Reed–Solomon error correction, then renders it to the format you choose.',
-        'By default, generation happens locally in your browser. For professional use, you can also use the server-side API to generate QR codes via URL parameters — perfect for embedding in websites, emails, or automated workflows.',
-        'When you add overlays or animations, ANQR balances styling with scan reliability so the result remains scannable.',
-        'ANQR focuses on static codes (the data is inside the QR). If you need a dynamic code (editable destination), you can encode your own redirect URL or short link.',
+        'ANQR se pokreće u vašem pregledniku i kodira vaš unos u standardnu QR matricu s Reed-Solomonovom korekcijom pogrešaka, a zatim ga prikazuje u formatu koji odaberete.',
+        'Prema zadanim postavkama, generiranje se događa lokalno u vašem pregledniku. Za profesionalnu upotrebu možete koristiti i API na strani poslužitelja za generiranje QR kodova putem URL parametara - savršeno za ugradnju u web stranice, e-poštu ili automatizirane tijekove rada.',
+        'Kada dodajete slojeve ili animacije, ANQR uravnotežuje stiliziranje s pouzdanošću skeniranja tako da rezultat ostaje skeniran.',
+        'ANQR se fokusira na statičke kodove (podaci su unutar QR-a). Ako vam je potreban dinamički kod (odredište koje se može uređivati), možete kodirati vlastiti URL za preusmjeravanje ili kratku poveznicu.',
       ],
     },
     {
-      heading: 'Who operates ANQR?',
+      heading: 'Tko upravlja ANQR-om?',
       paragraphs: [
-        'ANQR is operated as an independent web tool. For questions, support, or business enquiries, please use the Contact page or email ' + CONTACT_EMAIL + '.',
+        'ANQR se koristi kao neovisni web alat. Za pitanja, podršku ili poslovne upite, molimo koristite stranicu za kontakt ili e-poštu.' + CONTACT_EMAIL + '.”',
       ],
     },
     {
-      heading: 'Advertising and how we stay free',
+      heading: 'Oglašavanje i kako ostajemo slobodni',
       paragraphs: [
-        'ANQR is free to use and is supported by advertising. We may show ads via Google AdSense and/or other advertising partners.',
-        'Ad providers may use cookies or similar technologies to personalise ads based on your interests and browsing activity. You can manage ad preferences in your device settings and through Google ad settings, and learn more in our Privacy Policy.',
-        'We do not sell the content you encode into QR codes. Ads help cover the cost of running and improving the project.',
+        'ANQR je besplatan za korištenje i financira se oglašavanjem. Možemo prikazivati oglase putem Google AdSensea i/ili drugih oglašivačkih partnera.',
+        'Pružatelji usluga oglasa mogu koristiti kolačiće ili slične tehnologije za personalizaciju oglasa na temelju vaših interesa i aktivnosti pregledavanja. Postavkama oglasa možete upravljati u postavkama uređaja i putem postavki Google oglasa, a više informacija možete pronaći u našim Pravilima o privatnosti.',
+        'Ne prodajemo sadržaj koji kodirate u QR kodove. Oglasi pomažu u pokrivanju troškova vođenja i poboljšanja projekta.',
       ],
     },
     {
-      heading: 'Open standards',
+      heading: 'Otvoreni standardi',
       paragraphs: [
-        'ANQR generates QR codes based on the ISO/IEC 18004 standard and aims for broad compatibility across scanners, cameras, and print workflows.',
+        'ANQR generira QR kodove na temelju standarda ISO/IEC 18004 i teži širokoj kompatibilnosti među skenerima, kamerama i tijekovima rada ispisa.',
       ],
     },
     {
-      heading: 'Trademark notice',
+      heading: 'Obavijest o zaštitnom znaku',
       paragraphs: [
-        'QR Code® is a registered trademark of DENSO WAVE INCORPORATED. ANQR is not affiliated with, endorsed by, or sponsored by DENSO WAVE INCORPORATED.',
+        'QR Code® je registrirani zaštitni znak tvrtke DENSO WAVE INCORPORATED. ANQR nije povezan s tvrtkom DENSO WAVE INCORPORATED, nije je podržava ili sponzorira.',
       ],
     },
     {
-      heading: 'Feedback and contributions',
+      heading: 'Povratne informacije i doprinosi',
       paragraphs: [
-        'We welcome feedback, bug reports, and feature suggestions. Please get in touch via email or the contact page — we read every message, though response times may vary.',
+        'Pozdravljamo povratne informacije, izvješća o greškama i prijedloge za nove značajke. Molimo vas da nas kontaktirate putem e-pošte ili stranice za kontakt — čitamo svaku poruku, iako se vrijeme odgovora može razlikovati.',
       ],
     },
   ],
