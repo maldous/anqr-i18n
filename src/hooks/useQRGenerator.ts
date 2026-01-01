@@ -836,6 +836,8 @@ export function useQRGenerator(): UseQRGeneratorResult {
   }, [gifCompositor, gifFrames, effectiveFrameIndices])
 
   // Expose state to window for external tools (gallery generator)
+  // NOTE: We intentionally DON'T store animationFrames directly to avoid pinning
+  // large canvases in memory. External tools should use getAnimationFrames() getter.
   useEffect(() => {
     // Get original frame delays from parsed GIF frames
     const frameDelays = effectiveFrames.map(f => f.delay || 100)
@@ -845,9 +847,18 @@ export function useQRGenerator(): UseQRGeneratorResult {
       isAnimationReady: isAnimationCacheReady && animationFrames.length > 1,
       animationFrameCount: animationFrames.length,
       currentFrame,
-      animationFrames,
+      // Use getter function instead of direct reference to allow GC when not actively used
+      get animationFrames() { return animationFrames },
       animationSpeedMs: animation.speedMs,
       frameDelays, // Original delays from source GIF
+    }
+    
+    // Cleanup: remove reference when component unmounts or deps change
+    return () => {
+      if (window.__ANQR_STATE__) {
+        // Clear the reference to allow GC
+        window.__ANQR_STATE__ = undefined
+      }
     }
   }, [isLoading, isAnimationCacheReady, animationFrames, currentFrame, animation.speedMs, effectiveFrames])
 

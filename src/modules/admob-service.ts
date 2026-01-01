@@ -90,10 +90,15 @@ const rewardedLoadedState: Record<RewardedType, boolean> = {
 }
 
 // Track which interstitial/rewarded is currently being prepared
+// Note: Each ad type tracks its own loaded state independently via the maps above
 let currentlyPreparingInterstitial: InterstitialType | null = null
 let currentlyShowingInterstitial: InterstitialType | null = null
 let interstitialDismissResolver: ((ok: boolean) => void) | null = null
 let currentlyPreparingRewarded: RewardedType | null = null
+
+// Track the actual ad ID that was prepared (for matching loaded events)
+let lastPreparedInterstitialType: InterstitialType | null = null
+let lastPreparedRewardedType: RewardedType | null = null
 
 // Generation counter for showing ads every N generations
 let generationCount = 0
@@ -184,17 +189,20 @@ function setupAdMobListeners() {
   })
 
   // Interstitial ad listeners
+  // Use lastPreparedInterstitialType instead of currentlyPreparingInterstitial
+  // because the Loaded event fires asynchronously and currentlyPreparingInterstitial
+  // may have changed by then (causing state desync)
   AdMob.addListener(InterstitialAdPluginEvents.Loaded, () => {
     console.log('AdMob: Interstitial ad loaded')
-    if (currentlyPreparingInterstitial) {
-      interstitialLoadedState[currentlyPreparingInterstitial] = true
+    if (lastPreparedInterstitialType) {
+      interstitialLoadedState[lastPreparedInterstitialType] = true
     }
   })
 
   AdMob.addListener(InterstitialAdPluginEvents.FailedToLoad, (error) => {
     console.error('AdMob: Interstitial ad failed to load:', error)
-    if (currentlyPreparingInterstitial) {
-      interstitialLoadedState[currentlyPreparingInterstitial] = false
+    if (lastPreparedInterstitialType) {
+      interstitialLoadedState[lastPreparedInterstitialType] = false
     }
   })
 
@@ -227,17 +235,19 @@ function setupAdMobListeners() {
   })
 
   // Rewarded Interstitial ad listeners
+  // Use lastPreparedRewardedType instead of currentlyPreparingRewarded
+  // to avoid state desync when Loaded event fires asynchronously
   AdMob.addListener(RewardInterstitialAdPluginEvents.Loaded, () => {
     console.log('AdMob: Rewarded Interstitial ad loaded')
-    if (currentlyPreparingRewarded) {
-      rewardedLoadedState[currentlyPreparingRewarded] = true
+    if (lastPreparedRewardedType) {
+      rewardedLoadedState[lastPreparedRewardedType] = true
     }
   })
 
   AdMob.addListener(RewardInterstitialAdPluginEvents.FailedToLoad, (error) => {
     console.error('AdMob: Rewarded Interstitial ad failed to load:', error)
-    if (currentlyPreparingRewarded) {
-      rewardedLoadedState[currentlyPreparingRewarded] = false
+    if (lastPreparedRewardedType) {
+      rewardedLoadedState[lastPreparedRewardedType] = false
     }
   })
 
@@ -386,6 +396,7 @@ export async function prepareInterstitial(type: InterstitialType = 'export'): Pr
 
   try {
     currentlyPreparingInterstitial = type
+    lastPreparedInterstitialType = type // Track for async loaded event
     const prodAdId = PROD_INTERSTITIAL_IDS[type]
     
     const options: AdOptions = {
@@ -516,6 +527,7 @@ export async function prepareRewardedAd(type: RewardedType): Promise<boolean> {
 
   try {
     currentlyPreparingRewarded = type
+    lastPreparedRewardedType = type // Track for async loaded event
     const prodAdId = PROD_REWARDED_IDS[type]
     
     const options: RewardInterstitialAdOptions = {

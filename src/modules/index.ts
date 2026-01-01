@@ -20,12 +20,8 @@ export {
 // ============================================
 // RENDERING (RenderSection)
 // ============================================
-export { Renderer, default as RendererDefault } from './renderer'
-export type { RenderOptions, RenderResult } from './renderer'
-export { 
-  renderQR, renderQRWithColors, renderSubpixelQR,
-  drawModule, drawFinderModule, roundRect, getModuleColor 
-} from './renderer'
+// NOTE: renderer.ts was removed as dead code - QRGenerator in qr-generator.js handles all rendering
+// For QR rendering, use: import { QRGenerator } from './qr-generator'
 
 // Color utilities (canonical source for color types)
 export { ColorUtils, default as ColorUtilsDefault } from './color-utils'

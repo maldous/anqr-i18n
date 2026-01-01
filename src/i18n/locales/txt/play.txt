@@ -1,0 +1,492 @@
+<en-GB>
+ANQR is a QR code generator that supports images and animations.
+
+The interface has three interface levels: Basic, Advanced, and Professional.
+
+Select your level using the tabs in the header. Each level unlocks additional features while keeping the interface focused on what you need.
+
+Google group here: https://groups.google.com/g/anqr-app
+
+ANQR web link here: https://anqr.link
+</en-GB>
+
+<ar>
+ANQR هو مُولِّد لرموز QR يدعم الصور والرسوم المتحركة.
+
+تتضمن الواجهة ثلاثة مستويات: أساسي، متقدم، واحترافي.
+
+اختر مستواك باستخدام علامات التبويب في رأس الصفحة. يفتح كل مستوى ميزات إضافية مع الحفاظ على تركيز الواجهة على ما تحتاجه.
+
+مجموعة Google هنا: https://groups.google.com/g/anqr-app
+
+رابط ANQR على الويب هنا: https://anqr.link
+</ar>
+
+<bn-BD>
+
+ANQR একটি QR কোড জেনারেটর, যা ছবি এবং অ্যানিমেশন সমর্থন করে।
+
+ইন্টারফেসে তিনটি স্তর আছে: বেসিক, অ্যাডভান্সড, এবং প্রফেশনাল।
+
+হেডারের ট্যাবগুলো ব্যবহার করে আপনার স্তর নির্বাচন করুন। প্রতিটি স্তর অতিরিক্ত ফিচার আনলক করে, তবে আপনার প্রয়োজন অনুযায়ী ইন্টারফেসকে ফোকাসড রাখে।
+
+Google group এখানে: https://groups.google.com/g/anqr-app
+
+ANQR ওয়েব লিংক এখানে: https://anqr.link
+</bn-BD>
+
+<es-ES>
+ANQR es un generador de códigos QR que admite imágenes y animaciones.
+
+La interfaz tiene tres niveles: Básico, Avanzado y Profesional.
+
+Selecciona tu nivel usando las pestañas del encabezado. Cada nivel desbloquea funciones adicionales, manteniendo la interfaz enfocada en lo que necesitas.
+
+Grupo de Google aquí: https://groups.google.com/g/anqr-app
+
+Enlace web de ANQR aquí: https://anqr.link
+</es-ES>
+
+<gu>
+ANQR એક QR કોડ જનરેટર છે જે છબીઓ અને એનિમેશનને સપોર્ટ કરે છે.
+
+ઇન્ટરફેસમાં ત્રણ સ્તર છે: Basic, Advanced, અને Professional.
+
+હેડરમાં આવેલા ટૅબ્સનો ઉપયોગ કરીને તમારું સ્તર પસંદ કરો. દરેક સ્તર વધારાના ફીચર્સ અનલૉક કરે છે અને સાથે સાથે ઇન્ટરફેસને તમારી જરૂરિયાત પર કેન્દ્રિત રાખે છે.
+
+Google group અહીં: https://groups.google.com/g/anqr-app
+
+ANQR વેબ લિંક અહીં: https://anqr.link
+</gu>
+
+<hi-IN>
+ANQR एक QR कोड जनरेटर है जो छवियों और एनिमेशन को सपोर्ट करता है।
+
+इंटरफ़ेस के तीन स्तर हैं: Basic, Advanced और Professional।
+
+हेडर में मौजूद टैब्स का उपयोग करके अपना स्तर चुनें। हर स्तर अतिरिक्त फ़ीचर अनलॉक करता है और इंटरफ़ेस को आपकी ज़रूरत पर केंद्रित रखता है।
+
+Google group यहाँ: https://groups.google.com/g/anqr-app
+
+ANQR वेब लिंक यहाँ: https://anqr.link
+</hi-IN>
+
+<id>
+ANQR adalah pembuat kode QR yang mendukung gambar dan animasi.
+
+Antarmuka memiliki tiga tingkat: Basic, Advanced, dan Professional.
+
+Pilih tingkat Anda menggunakan tab di bagian header. Setiap tingkat membuka fitur tambahan sambil menjaga antarmuka tetap fokus pada yang Anda butuhkan.
+
+Grup Google di sini: https://groups.google.com/g/anqr-app
+
+Tautan web ANQR di sini: https://anqr.link
+</id>
+
+<ja-JP>
+ANQR は画像とアニメーションに対応した QR コード生成ツールです。
+
+インターフェースは 3 つのレベル（Basic / Advanced / Professional）があります。
+
+ヘッダーのタブでレベルを選択してください。各レベルで追加機能が解放され、必要なものに集中できるように設計されています。
+
+Google グループはこちら: https://groups.google.com/g/anqr-app
+
+ANQR の Web リンクはこちら: https://anqr.link
+</ja-JP>
+
+<kn-IN>
+ANQR ಚಿತ್ರಗಳು ಮತ್ತು ಅನಿಮೇಶನ್‌ಗಳನ್ನು ಬೆಂಬಲಿಸುವ QR ಕೋಡ್ ಜನರೇಟರ್ ಆಗಿದೆ.
+
+ಇಂಟರ್ಫೇಸ್‌ನಲ್ಲಿ ಮೂರು ಮಟ್ಟಗಳಿವೆ: Basic, Advanced, ಮತ್ತು Professional.
+
+ಹೆಡರ್‌ನ ಟ್ಯಾಬ್‌ಗಳನ್ನು ಬಳಸಿ ನಿಮ್ಮ ಮಟ್ಟವನ್ನು ಆಯ್ಕೆ ಮಾಡಿ. ಪ್ರತಿ ಮಟ್ಟವು ಹೆಚ್ಚುವರಿ ವೈಶಿಷ್ಟ್ಯಗಳನ್ನು ಅನ್ಲಾಕ್ ಮಾಡುತ್ತದೆ ಮತ್ತು ಇಂಟರ್ಫೇಸ್ ಅನ್ನು ನಿಮಗೆ ಬೇಕಾದುದರ ಮೇಲೆಯೇ ಕೇಂದ್ರೀಕರಿಸುತ್ತದೆ.
+
+Google group ಇಲ್ಲಿ: https://groups.google.com/g/anqr-app
+
+ANQR ವೆಬ್ ಲಿಂಕ್ ಇಲ್ಲಿ: https://anqr.link
+</kn-IN>
+
+<ko-KR>
+ANQR은 이미지와 애니메이션을 지원하는 QR 코드 생성기입니다.
+
+인터페이스에는 세 가지 수준이 있습니다: Basic, Advanced, Professional.
+
+헤더의 탭을 사용해 수준을 선택하세요. 각 수준은 추가 기능을 해제하면서도 인터페이스가 필요한 것에 집중하도록 유지합니다.
+
+Google 그룹: https://groups.google.com/g/anqr-app
+
+ANQR 웹 링크: https://anqr.link
+</ko-KR>
+
+<ml-IN>
+ANQR ചിത്രങ്ങളും ആനിമേഷനും പിന്തുണക്കുന്ന ഒരു QR കോഡ് ജനറേറ്ററാണ്.
+
+ഇന്റർഫേസിന് മൂന്ന് നിലകളുണ്ട്: Basic, Advanced, Professional.
+
+ഹെഡറിലുള്ള ടാബുകൾ ഉപയോഗിച്ച് നിങ്ങളുടെ നില തിരഞ്ഞെടുക്കുക. ഓരോ നിലയും അധിക ഫീച്ചറുകൾ അൺലോക്ക് ചെയ്യുമ്പോഴും ഇന്റർഫേസ് നിങ്ങൾക്ക് ആവശ്യമായ കാര്യങ്ങളിൽ ശ്രദ്ധ കേന്ദ്രീകരിച്ചിരിക്കും.
+
+Google group ഇവിടെ: https://groups.google.com/g/anqr-app
+
+ANQR വെബ് ലിങ്ക് ഇവിടെ: https://anqr.link
+</ml-IN>
+
+<mr-IN>
+ANQR हा प्रतिमा आणि अॅनिमेशनला समर्थन देणारा QR कोड जनरेटर आहे.
+
+इंटरफेसमध्ये तीन स्तर आहेत: Basic, Advanced आणि Professional.
+
+हेडरमधील टॅब वापरून तुमचा स्तर निवडा. प्रत्येक स्तर अतिरिक्त वैशिष्ट्ये अनलॉक करतो आणि इंटरफेस तुमच्या गरजांवर केंद्रित ठेवतो.
+
+Google group येथे: https://groups.google.com/g/anqr-app
+
+ANQR वेब लिंक येथे: https://anqr.link
+</mr-IN>
+
+<ms>
+ANQR ialah penjana kod QR yang menyokong imej dan animasi.
+
+Antara muka mempunyai tiga tahap: Basic, Advanced, dan Professional.
+
+Pilih tahap anda menggunakan tab di bahagian pengepala. Setiap tahap membuka ciri tambahan sambil mengekalkan antara muka fokus pada apa yang anda perlukan.
+
+Kumpulan Google di sini: https://groups.google.com/g/anqr-app
+
+Pautan web ANQR di sini: https://anqr.link
+</ms>
+
+<pa>
+ANQR ਇੱਕ QR ਕੋਡ ਜਨਰੇਟਰ ਹੈ ਜੋ ਤਸਵੀਰਾਂ ਅਤੇ ਐਨੀਮੇਸ਼ਨ ਨੂੰ ਸਮਰਥਨ ਕਰਦਾ ਹੈ।
+
+ਇੰਟਰਫੇਸ ਦੇ ਤਿੰਨ ਪੱਧਰ ਹਨ: Basic, Advanced ਅਤੇ Professional।
+
+ਹੈੱਡਰ ਵਿੱਚ ਟੈਬਾਂ ਦੀ ਵਰਤੋਂ ਕਰਕੇ ਆਪਣਾ ਪੱਧਰ ਚੁਣੋ। ਹਰ ਪੱਧਰ ਵਾਧੂ ਫੀਚਰ ਖੋਲ੍ਹਦਾ ਹੈ ਅਤੇ ਇੰਟਰਫੇਸ ਨੂੰ ਤੁਹਾਡੀ ਲੋੜ ‘ਤੇ ਕੇਂਦ੍ਰਿਤ ਰੱਖਦਾ ਹੈ।
+
+Google group ਇੱਥੇ: https://groups.google.com/g/anqr-app
+
+ANQR ਵੈੱਬ ਲਿੰਕ ਇੱਥੇ: https://anqr.link
+</pa>
+
+<pt-BR>
+ANQR é um gerador de códigos QR que suporta imagens e animações.
+
+A interface tem três níveis: Basic, Advanced e Professional.
+
+Selecione o seu nível usando as abas no cabeçalho. Cada nível desbloqueia recursos adicionais, mantendo a interface focada no que você precisa.
+
+Grupo do Google aqui: https://groups.google.com/g/anqr-app
+
+Link web do ANQR aqui: https://anqr.link
+</pt-BR>
+
+<ru-RU>
+ANQR — генератор QR-кодов с поддержкой изображений и анимации.
+
+Интерфейс имеет три уровня: Basic, Advanced и Professional.
+
+Выберите свой уровень с помощью вкладок в заголовке. Каждый уровень открывает дополнительные функции, сохраняя интерфейс сфокусированным на том, что вам нужно.
+
+Группа Google здесь: https://groups.google.com/g/anqr-app
+
+Веб-ссылка ANQR здесь: https://anqr.link
+</ru-RU>
+
+<ta-IN>
+ANQR என்பது படங்களும் அனிமேஷன்களும் ஆதரிக்கும் QR குறியீடு உருவாக்கி.
+
+இடைமுகத்தில் மூன்று நிலைகள் உள்ளன: Basic, Advanced, மற்றும் Professional.
+
+தலைப்புப் பகுதியில் உள்ள தாவல்கள் மூலம் உங்கள் நிலையைத் தேர்வு செய்யுங்கள். ஒவ்வொரு நிலையும் கூடுதல் அம்சங்களை திறக்கும்; அதே நேரத்தில், உங்கள் தேவையில் இடைமுகம் கவனம் செலுத்தும்படி வைத்திருக்கும்.
+
+Google group இங்கே: https://groups.google.com/g/anqr-app
+
+ANQR வலை இணைப்பு இங்கே: https://anqr.link
+</ta-IN>
+
+<te-IN>
+ANQR చిత్రాలు మరియు అనిమేషన్‌లకు మద్దతిచ్చే QR కోడ్ జనరేటర్.
+
+ఇంటర్‌ఫేస్‌లో మూడు స్థాయిలు ఉన్నాయి: Basic, Advanced, మరియు Professional.
+
+హెడర్‌లోని ట్యాబ్‌లను ఉపయోగించి మీ స్థాయిని ఎంచుకోండి. ప్రతి స్థాయి అదనపు ఫీచర్లను అన్‌లాక్ చేస్తుంది, అలాగే ఇంటర్‌ఫేస్‌ను మీకు అవసరమైనదానిపై కేంద్రీకృతంగా ఉంచుతుంది.
+
+Google group ఇక్కడ: https://groups.google.com/g/anqr-app
+
+ANQR వెబ్ లింక్ ఇక్కడ: https://anqr.link
+</te-IN>
+
+<th>
+ANQR คือเครื่องมือสร้างคิวอาร์โค้ดที่รองรับรูปภาพและแอนิเมชัน
+
+อินเทอร์เฟซมี 3 ระดับ: Basic, Advanced และ Professional
+
+เลือกระดับของคุณได้จากแท็บที่ส่วนหัว แต่ละระดับจะปลดล็อกฟีเจอร์เพิ่มเติม โดยยังคงทำให้อินเทอร์เฟซโฟกัสกับสิ่งที่คุณต้องการ
+
+กลุ่ม Google ที่นี่: https://groups.google.com/g/anqr-app
+
+ลิงก์เว็บ ANQR ที่นี่: https://anqr.link
+</th>
+
+<fil>
+Ang ANQR ay isang QR code generator na sumusuporta sa mga larawan at animasyon.
+
+May tatlong antas ang interface: Basic, Advanced, at Professional.
+
+Piliin ang iyong antas gamit ang mga tab sa header. Bawat antas ay nagbubukas ng karagdagang mga feature habang nananatiling nakatuon ang interface sa kung ano ang kailangan mo.
+
+Google group dito: https://groups.google.com/g/anqr-app
+
+ANQR web link dito: https://anqr.link
+</fil>
+
+<vi>
+ANQR là công cụ tạo mã QR hỗ trợ hình ảnh và hoạt ảnh.
+
+Giao diện có ba cấp độ: Basic, Advanced và Professional.
+
+Chọn cấp độ của bạn bằng các thẻ ở phần đầu trang. Mỗi cấp độ mở khóa thêm tính năng, đồng thời giữ giao diện tập trung vào những gì bạn cần.
+
+Nhóm Google tại đây: https://groups.google.com/g/anqr-app
+
+Liên kết web ANQR tại đây: https://anqr.link
+</vi>
+
+<zh-CN>
+ANQR 是一款支持图片和动画的二维码生成器。
+
+界面有三个级别：Basic、Advanced 和 Professional。
+
+通过顶部的标签选择你的级别。每个级别都会解锁更多功能，同时让界面始终聚焦于你需要的内容。
+
+Google 群组在这里: https://groups.google.com/g/anqr-app
+
+ANQR 网页链接在这里: https://anqr.link
+</zh-CN>
+
+<af>
+ANQR is a QR code generator that supports images and animations.
+
+The interface has three interface levels: Basic, Advanced, and Professional.
+
+Select your level using the tabs in the header. Each level unlocks additional features while keeping the interface focused on what you need.
+
+Google group here: https://groups.google.com/g/anqr-app
+
+ANQR web link here: https://anqr.link
+</af>
+
+<bg>
+ANQR is a QR code generator that supports images and animations.
+
+The interface has three interface levels: Basic, Advanced, and Professional.
+
+Select your level using the tabs in the header. Each level unlocks additional features while keeping the interface focused on what you need.
+
+Google group here: https://groups.google.com/g/anqr-app
+
+ANQR web link here: https://anqr.link
+</bg>
+
+<cs-CZ>
+ANQR is a QR code generator that supports images and animations.
+
+The interface has three interface levels: Basic, Advanced, and Professional.
+
+Select your level using the tabs in the header. Each level unlocks additional features while keeping the interface focused on what you need.
+
+Google group here: https://groups.google.com/g/anqr-app
+
+ANQR web link here: https://anqr.link
+</cs-CZ>
+
+<da-DK>
+ANQR is a QR code generator that supports images and animations.
+
+The interface has three interface levels: Basic, Advanced, and Professional.
+
+Select your level using the tabs in the header. Each level unlocks additional features while keeping the interface focused on what you need.
+
+Google group here: https://groups.google.com/g/anqr-app
+
+ANQR web link here: https://anqr.link
+</da-DK>
+
+<el-GR>
+ANQR is a QR code generator that supports images and animations.
+
+The interface has three interface levels: Basic, Advanced, and Professional.
+
+Select your level using the tabs in the header. Each level unlocks additional features while keeping the interface focused on what you need.
+
+Google group here: https://groups.google.com/g/anqr-app
+
+ANQR web link here: https://anqr.link
+</el-GR>
+
+<fi-FI>
+ANQR is a QR code generator that supports images and animations.
+
+The interface has three interface levels: Basic, Advanced, and Professional.
+
+Select your level using the tabs in the header. Each level unlocks additional features while keeping the interface focused on what you need.
+
+Google group here: https://groups.google.com/g/anqr-app
+
+ANQR web link here: https://anqr.link
+</fi-FI>
+
+<fr-FR>
+ANQR is a QR code generator that supports images and animations.
+
+The interface has three interface levels: Basic, Advanced, and Professional.
+
+Select your level using the tabs in the header. Each level unlocks additional features while keeping the interface focused on what you need.
+
+Google group here: https://groups.google.com/g/anqr-app
+
+ANQR web link here: https://anqr.link
+</fr-FR>
+
+<hr>
+ANQR is a QR code generator that supports images and animations.
+
+The interface has three interface levels: Basic, Advanced, and Professional.
+
+Select your level using the tabs in the header. Each level unlocks additional features while keeping the interface focused on what you need.
+
+Google group here: https://groups.google.com/g/anqr-app
+
+ANQR web link here: https://anqr.link
+</hr>
+
+<hu-HU>
+ANQR is a QR code generator that supports images and animations.
+
+The interface has three interface levels: Basic, Advanced, and Professional.
+
+Select your level using the tabs in the header. Each level unlocks additional features while keeping the interface focused on what you need.
+
+Google group here: https://groups.google.com/g/anqr-app
+
+ANQR web link here: https://anqr.link
+</hu-HU>
+
+<it-IT>
+ANQR is a QR code generator that supports images and animations.
+
+The interface has three interface levels: Basic, Advanced, and Professional.
+
+Select your level using the tabs in the header. Each level unlocks additional features while keeping the interface focused on what you need.
+
+Google group here: https://groups.google.com/g/anqr-app
+
+ANQR web link here: https://anqr.link
+</it-IT>
+
+<lo-LA>
+ANQR is a QR code generator that supports images and animations.
+
+The interface has three interface levels: Basic, Advanced, and Professional.
+
+Select your level using the tabs in the header. Each level unlocks additional features while keeping the interface focused on what you need.
+
+Google group here: https://groups.google.com/g/anqr-app
+
+ANQR web link here: https://anqr.link
+</lo-LA>
+
+<my-MM>
+ANQR is a QR code generator that supports images and animations.
+
+The interface has three interface levels: Basic, Advanced, and Professional.
+
+Select your level using the tabs in the header. Each level unlocks additional features while keeping the interface focused on what you need.
+
+Google group here: https://groups.google.com/g/anqr-app
+
+ANQR web link here: https://anqr.link
+</my-MM>
+
+<nl-NL>
+ANQR is a QR code generator that supports images and animations.
+
+The interface has three interface levels: Basic, Advanced, and Professional.
+
+Select your level using the tabs in the header. Each level unlocks additional features while keeping the interface focused on what you need.
+
+Google group here: https://groups.google.com/g/anqr-app
+
+ANQR web link here: https://anqr.link
+</nl-NL>
+
+<no-NO>
+ANQR is a QR code generator that supports images and animations.
+
+The interface has three interface levels: Basic, Advanced, and Professional.
+
+Select your level using the tabs in the header. Each level unlocks additional features while keeping the interface focused on what you need.
+
+Google group here: https://groups.google.com/g/anqr-app
+
+ANQR web link here: https://anqr.link
+</no-NO>
+
+<pl-PL>
+ANQR is a QR code generator that supports images and animations.
+
+The interface has three interface levels: Basic, Advanced, and Professional.
+
+Select your level using the tabs in the header. Each level unlocks additional features while keeping the interface focused on what you need.
+
+Google group here: https://groups.google.com/g/anqr-app
+
+ANQR web link here: https://anqr.link
+</pl-PL>
+
+<rm>
+ANQR is a QR code generator that supports images and animations.
+
+The interface has three interface levels: Basic, Advanced, and Professional.
+
+Select your level using the tabs in the header. Each level unlocks additional features while keeping the interface focused on what you need.
+
+Google group here: https://groups.google.com/g/anqr-app
+
+ANQR web link here: https://anqr.link
+</rm>
+
+<ro>
+ANQR is a QR code generator that supports images and animations.
+
+The interface has three interface levels: Basic, Advanced, and Professional.
+
+Select your level using the tabs in the header. Each level unlocks additional features while keeping the interface focused on what you need.
+
+Google group here: https://groups.google.com/g/anqr-app
+
+ANQR web link here: https://anqr.link
+</ro>
+
+<sv-SE>
+ANQR is a QR code generator that supports images and animations.
+
+The interface has three interface levels: Basic, Advanced, and Professional.
+
+Select your level using the tabs in the header. Each level unlocks additional features while keeping the interface focused on what you need.
+
+Google group here: https://groups.google.com/g/anqr-app
+
+ANQR web link here: https://anqr.link
+</sv-SE>
+
+<zu>
+ANQR is a QR code generator that supports images and animations.
+
+The interface has three interface levels: Basic, Advanced, and Professional.
+
+Select your level using the tabs in the header. Each level unlocks additional features while keeping the interface focused on what you need.
+
+Google group here: https://groups.google.com/g/anqr-app
+
+ANQR web link here: https://anqr.link
+</zu>

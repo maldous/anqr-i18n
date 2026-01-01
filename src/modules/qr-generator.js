@@ -945,6 +945,11 @@ export class QRGenerator {
     const eccAware = config.eccAwareEnabled === true;
     let totalModifiedCount = 0;
 
+    // Create a seeded PRNG for deterministic output
+    // Seed from content hash + config to ensure same settings = same output
+    const seed = config.seed ?? this._hashString(config.content || '');
+    const seededRandom = this._createSeededRandom(seed);
+
     // Create modifiable pattern - start with original QR
     const modifiedPattern = [];
 
@@ -988,8 +993,8 @@ export class QRGenerator {
             totalModifiedCount++;
           }
 
-          // Apply with intensity blend
-          if (intensity >= 1 || Math.random() < intensity) {
+          // Apply with intensity blend using seeded PRNG for determinism
+          if (intensity >= 1 || seededRandom() < intensity) {
             modifiedPattern[row][col] = desiredDark;
           }
         }
@@ -1034,6 +1039,76 @@ export class QRGenerator {
     }
 
     return modifiedPattern;
+  }
+
+  /**
+   * Create a simple seeded PRNG (mulberry32)
+   * Returns a function that generates deterministic pseudo-random numbers [0, 1)
+   * @private
+   */
+  _createSeededRandom(seed) {
+    let state = seed >>> 0; // Ensure unsigned 32-bit integer
+    return function() {
+      state = (state + 0x6D2B79F5) >>> 0;
+      let t = state;
+      t = Math.imul(t ^ (t >>> 15), t | 1);
+      t ^= t + Math.imul(t ^ (t >>> 7), t | 61);
+      return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+    };
+  }
+
+  /**
+   * Simple string hash function (djb2)
+   * @private
+   */
+  _hashString(str) {
+    let hash = 5381;
+    for (let i = 0; i < str.length; i++) {
+      hash = ((hash << 5) + hash) + str.charCodeAt(i);
+      hash = hash >>> 0; // Keep as unsigned 32-bit
+    }
+    return hash;
+  }
+
+  /**
+   * Hash canvas content for cache key disambiguation
+   * Samples pixels to create a fast content-based hash
+   * @private
+   */
+  async _hashCanvasContent(canvas) {
+    try {
+      const ctx = canvas.getContext('2d');
+      const width = canvas.width;
+      const height = canvas.height;
+      
+      // Get full image data once (much faster than N² getImageData calls)
+      const imageData = ctx.getImageData(0, 0, width, height);
+      const data = imageData.data;
+      
+      // Sample a small grid of pixels for speed (8x8 = 64 samples)
+      const sampleSize = 8;
+      const stepX = Math.max(1, Math.floor(width / sampleSize));
+      const stepY = Math.max(1, Math.floor(height / sampleSize));
+      
+      let hash = 5381;
+      
+      for (let y = 0; y < height; y += stepY) {
+        for (let x = 0; x < width; x += stepX) {
+          // Calculate pixel index in the flat data array (RGBA = 4 bytes per pixel)
+          const idx = (y * width + x) * 4;
+          // Combine RGB values into hash (skip alpha)
+          hash = ((hash << 5) + hash) + data[idx];
+          hash = ((hash << 5) + hash) + data[idx + 1];
+          hash = ((hash << 5) + hash) + data[idx + 2];
+          hash = hash >>> 0;
+        }
+      }
+      
+      return hash.toString(16);
+    } catch (e) {
+      // Fallback to dimensions-only if getImageData fails
+      return `${canvas.width}x${canvas.height}`;
+    }
   }
 
   /**
@@ -1409,9 +1484,11 @@ export class QRGenerator {
    * @private
    */
   async _getOverlayData(overlayCanvas, moduleCount, colorMode = "color", invertImage = false, frameIndex = 0, config = {}) {
-    // Create cache key based on canvas identity and parameters
+    // Create cache key based on canvas identity, content hash, and parameters
     // Include frameIndex to ensure different animation frames aren't cached together
-    const canvasKey = `${overlayCanvas.width}x${overlayCanvas.height}`;
+    // Use content hash to disambiguate different images with same dimensions
+    const contentHash = await this._hashCanvasContent(overlayCanvas);
+    const canvasKey = `${overlayCanvas.width}x${overlayCanvas.height}:${contentHash}`;
     const preprocessKey = `${config.overlayBrightness || 0}:${config.overlayContrast || 0}:${config.overlayGamma || 1}:${config.overlaySaturation || 0}:${config.overlayHueRotate || 0}:${invertImage}`;
     const cacheKey = `${canvasKey}:${moduleCount}:${colorMode}:${preprocessKey}:${frameIndex}`;
     
@@ -2744,6 +2821,7 @@ export class QRGenerator {
 
   /**
    * Check if modifying a module is safe given ECC-aware constraints
+   * Uses deterministic decision based on position hash for reproducibility
    * @private
    */
   _isEccSafeToModify(row, col, moduleCount, version, config, modifiedCount, totalDataModules) {
@@ -2758,7 +2836,12 @@ export class QRGenerator {
     
     const weight = this._getEccWeight(row, col, moduleCount, version, config.eccAwareWeightMap || 'distance_to_finders');
     
+    // Use deterministic decision based on position hash for reproducibility
+    // This replaces Math.random() to ensure same settings = same output
+    const positionHash = ((row * 31 + col) * 17 + (config.seed || 0)) % 1000;
+    const deterministicValue = positionHash / 1000;
+    
     // Higher weight modules are less likely to be modified
-    return Math.random() > weight * 0.5;
+    return deterministicValue > weight * 0.5;
   }
 }

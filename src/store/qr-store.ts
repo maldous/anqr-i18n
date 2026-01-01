@@ -1,4 +1,21 @@
 import { create } from 'zustand'
+import {
+  generateSwissQRBill,
+  generateLightning,
+  generateEthereumEIP681,
+  generateQRIS,
+  generateDuitNow,
+  generateBharatQR,
+  generateVietQR,
+  generateQRPh,
+  generateTWQR,
+  generateHKQR,
+  generateJPQR,
+  generateAusPayNet,
+  generatePayPalMe,
+  generateCashApp,
+  generateEMVMPM,
+} from '@/modules/payload-generators'
 
 // Tier levels
 export type Tier = 'basic' | 'advanced' | 'professional'
@@ -25,6 +42,14 @@ export type PayloadKind =
   | 'social_profile' | 'messaging_link'
   // Payments (open specs only)
   | 'epc_sepa' | 'upi' | 'paynow' | 'promptpay' | 'pix' | 'crypto'
+  // Additional payment standards
+  | 'swiss_qr_bill' | 'lightning' | 'ethereum_eip681'
+  // EMV-based national payment schemes
+  | 'qris' | 'duitnow' | 'bharatqr' | 'vietqr' | 'qrph' | 'twqr' | 'hkqr' | 'jpqr' | 'auspaynet'
+  // Payment link services
+  | 'paypal_me' | 'cashapp'
+  // Generic EMV
+  | 'emv_generic'
   // Industrial/Enterprise
   | 'gs1_digital_link'
   // Marketing/Dynamic
@@ -212,6 +237,175 @@ export interface OtpAuthHelper {
   type?: 'totp' | 'hotp'
 }
 
+// Swiss QR-bill helper (SIX payment standard)
+export interface SwissQRBillHelper {
+  creditorIBAN: string
+  creditorName: string
+  creditorAddressType: 'S' | 'K'  // S=Structured, K=Combined
+  creditorStreet?: string
+  creditorBuildingNumber?: string
+  creditorPostalCode?: string
+  creditorCity?: string
+  creditorCountry: string
+  amount?: number
+  currency: 'CHF' | 'EUR'
+  referenceType: 'QRR' | 'SCOR' | 'NON'
+  reference?: string
+  unstructuredMessage?: string
+  billInformation?: string
+}
+
+// Lightning Network helper (BOLT11)
+export interface LightningHelper {
+  invoice: string  // BOLT11 encoded invoice string
+}
+
+// Ethereum EIP-681 helper
+export interface EthereumHelper {
+  targetAddress: string
+  chainId?: number  // 1=Mainnet, 137=Polygon, etc.
+  value?: string    // Amount in wei
+  gas?: number
+  gasLimit?: number
+  gasPrice?: string
+  tokenAddress?: string  // For ERC-20 transfers
+  tokenValue?: string    // For ERC-20 transfers (amount in token's smallest unit)
+  functionName?: string  // For contract calls
+}
+
+// QRIS (Indonesia) helper
+export interface QRISHelper {
+  merchantId: string
+  nmid?: string  // National Merchant ID
+  merchantCriteria?: '00' | '01' | '02' | '03'  // UMI classification
+  merchantName: string
+  merchantCity: string
+  postalCode?: string
+  amount?: number
+  feeType?: 'FIXED' | 'PERCENT'
+  feeAmount?: number
+  terminalLabel?: string
+}
+
+// DuitNow (Malaysia) helper
+export interface DuitNowHelper {
+  proxyType: 'NRIC' | 'MOBILE' | 'PASSPORT' | 'ARMY' | 'BUSINESS' | 'OTHERS'
+  proxyValue: string
+  merchantName: string
+  merchantCity?: string
+  amount?: number
+  reference?: string
+}
+
+// BharatQR (India) helper
+export interface BharatQRHelper {
+  merchantVPA?: string
+  merchantPAN?: string
+  merchantID?: string
+  merchantName: string
+  merchantCity: string
+  mcc?: string
+  amount?: number
+  gstDetails?: string
+  invoiceNumber?: string
+  referenceNumber?: string
+  terminalId?: string
+}
+
+// VietQR (Vietnam) helper
+export interface VietQRHelper {
+  bankBin: string
+  accountNumber: string
+  accountName?: string
+  serviceCode?: 'QRPUSH' | 'QRIBFTTA' | 'QRIBFTTC'
+  amount?: number
+  description?: string
+}
+
+// QR Ph (Philippines) helper
+export interface QRPhHelper {
+  accountNumber: string
+  merchantName: string
+  merchantCity: string
+  amount?: number
+  reference?: string
+}
+
+// TWQR (Taiwan) helper
+export interface TWQRHelper {
+  merchantId: string
+  merchantName: string
+  merchantCity?: string
+  taxId?: string
+  amount?: number
+}
+
+// HKQR (Hong Kong) helper
+export interface HKQRHelper {
+  fpsId: string
+  merchantName: string
+  merchantCity: string
+  amount?: number
+  reference?: string
+}
+
+// JPQR (Japan) helper
+export interface JPQRHelper {
+  storeId: string
+  merchantName: string
+  merchantCity?: string
+  amount?: number
+}
+
+// AusPayNet (Australia) helper
+// Per NPP spec: Need either PayID OR BSB+AccountNumber for routing
+// MerchantName is OPTIONAL - payer sees registered name from NPP lookup
+export interface AusPayNetHelper {
+  payId?: string
+  payIdType?: 'EMAIL' | 'MOBILE' | 'ABN' | 'ORG'
+  bsb?: string
+  accountNumber?: string
+  merchantName?: string  // Optional - NPP lookup shows registered name to payer
+  merchantCity?: string
+  amount?: number
+  reference?: string
+}
+
+// PayPal.Me helper
+export interface PayPalMeHelper {
+  username: string
+  amount?: number
+  currencyCode?: string
+}
+
+// Cash App helper
+export interface CashAppHelper {
+  cashtag: string
+  amount?: number
+}
+
+// Generic EMV QR helper
+export interface EMVGenericHelper {
+  merchantId: string
+  merchantName: string
+  merchantCity: string
+  countryCode: string
+  currencyCode: string
+  amount?: number
+  isStatic?: boolean
+  tipIndicator?: 'none' | 'prompt' | 'fixed' | 'percent'
+  tipAmount?: number
+  tipPercent?: number
+  storeLabel?: string
+  customerLabel?: string
+  terminalLabel?: string
+  loyaltyNumber?: string
+  reference?: string
+  purposeOfTransaction?: string
+  postalCode?: string
+  mcc?: string
+}
+
 // Main QR Store State
 export interface QRState {
   // UI tier
@@ -240,6 +434,22 @@ export interface QRState {
     event: EventHelper
     crypto: CryptoHelper
     otpauth: OtpAuthHelper
+    // Payment helpers
+    swissQRBill: SwissQRBillHelper
+    lightning: LightningHelper
+    ethereum: EthereumHelper
+    qris: QRISHelper
+    duitnow: DuitNowHelper
+    bharatqr: BharatQRHelper
+    vietqr: VietQRHelper
+    qrph: QRPhHelper
+    twqr: TWQRHelper
+    hkqr: HKQRHelper
+    jpqr: JPQRHelper
+    auspaynet: AusPayNetHelper
+    paypalMe: PayPalMeHelper
+    cashapp: CashAppHelper
+    emvGeneric: EMVGenericHelper
     // Validation
     validate: boolean
     normalizeNewlines: boolean
@@ -259,6 +469,22 @@ export interface QRState {
   setPayloadEvent: (event: Partial<EventHelper>) => void
   setPayloadCrypto: (crypto: Partial<CryptoHelper>) => void
   setPayloadOtpAuth: (otpauth: Partial<OtpAuthHelper>) => void
+  // Payment setters
+  setPayloadSwissQRBill: (swissQRBill: Partial<SwissQRBillHelper>) => void
+  setPayloadLightning: (lightning: Partial<LightningHelper>) => void
+  setPayloadEthereum: (ethereum: Partial<EthereumHelper>) => void
+  setPayloadQRIS: (qris: Partial<QRISHelper>) => void
+  setPayloadDuitNow: (duitnow: Partial<DuitNowHelper>) => void
+  setPayloadBharatQR: (bharatqr: Partial<BharatQRHelper>) => void
+  setPayloadVietQR: (vietqr: Partial<VietQRHelper>) => void
+  setPayloadQRPh: (qrph: Partial<QRPhHelper>) => void
+  setPayloadTWQR: (twqr: Partial<TWQRHelper>) => void
+  setPayloadHKQR: (hkqr: Partial<HKQRHelper>) => void
+  setPayloadJPQR: (jpqr: Partial<JPQRHelper>) => void
+  setPayloadAusPayNet: (auspaynet: Partial<AusPayNetHelper>) => void
+  setPayloadPayPalMe: (paypalMe: Partial<PayPalMeHelper>) => void
+  setPayloadCashApp: (cashapp: Partial<CashAppHelper>) => void
+  setPayloadEMVGeneric: (emvGeneric: Partial<EMVGenericHelper>) => void
   setPayloadValidation: (opts: { validate?: boolean; normalizeNewlines?: boolean; trim?: boolean; maxLenGuard?: boolean }) => void
 
   // === QR ENCODING ===
@@ -610,6 +836,22 @@ export const useQRStore = create<QRState>((set, get) => ({
     event: {},
     crypto: { type: 'bitcoin', address: '' },
     otpauth: { type: 'totp' },
+    // Payment helpers defaults
+    swissQRBill: { creditorIBAN: '', creditorName: '', creditorAddressType: 'S', creditorCountry: 'CH', currency: 'CHF', referenceType: 'NON' },
+    lightning: { invoice: '' },
+    ethereum: { targetAddress: '' },
+    qris: { merchantId: '', merchantName: '', merchantCity: '' },
+    duitnow: { proxyType: 'MOBILE', proxyValue: '', merchantName: '' },
+    bharatqr: { merchantName: '', merchantCity: '' },
+    vietqr: { bankBin: '', accountNumber: '' },
+    qrph: { accountNumber: '', merchantName: '', merchantCity: '' },
+    twqr: { merchantId: '', merchantName: '', merchantCity: '' },
+    hkqr: { fpsId: '', merchantName: '', merchantCity: '' },
+    jpqr: { storeId: '', merchantName: '' },
+    auspaynet: { merchantName: '' },
+    paypalMe: { username: '' },
+    cashapp: { cashtag: '' },
+    emvGeneric: { merchantId: '', merchantName: '', merchantCity: '', countryCode: '', currencyCode: '' },
     validate: false,
     normalizeNewlines: false,
     trim: true,
@@ -628,6 +870,22 @@ export const useQRStore = create<QRState>((set, get) => ({
   setPayloadEvent: (event) => set((s) => ({ payload: { ...s.payload, event: { ...s.payload.event, ...event } } })),
   setPayloadCrypto: (crypto) => set((s) => ({ payload: { ...s.payload, crypto: { ...s.payload.crypto, ...crypto } } })),
   setPayloadOtpAuth: (otpauth) => set((s) => ({ payload: { ...s.payload, otpauth: { ...s.payload.otpauth, ...otpauth } } })),
+  // Payment setters
+  setPayloadSwissQRBill: (swissQRBill) => set((s) => ({ payload: { ...s.payload, swissQRBill: { ...s.payload.swissQRBill, ...swissQRBill } } })),
+  setPayloadLightning: (lightning) => set((s) => ({ payload: { ...s.payload, lightning: { ...s.payload.lightning, ...lightning } } })),
+  setPayloadEthereum: (ethereum) => set((s) => ({ payload: { ...s.payload, ethereum: { ...s.payload.ethereum, ...ethereum } } })),
+  setPayloadQRIS: (qris) => set((s) => ({ payload: { ...s.payload, qris: { ...s.payload.qris, ...qris } } })),
+  setPayloadDuitNow: (duitnow) => set((s) => ({ payload: { ...s.payload, duitnow: { ...s.payload.duitnow, ...duitnow } } })),
+  setPayloadBharatQR: (bharatqr) => set((s) => ({ payload: { ...s.payload, bharatqr: { ...s.payload.bharatqr, ...bharatqr } } })),
+  setPayloadVietQR: (vietqr) => set((s) => ({ payload: { ...s.payload, vietqr: { ...s.payload.vietqr, ...vietqr } } })),
+  setPayloadQRPh: (qrph) => set((s) => ({ payload: { ...s.payload, qrph: { ...s.payload.qrph, ...qrph } } })),
+  setPayloadTWQR: (twqr) => set((s) => ({ payload: { ...s.payload, twqr: { ...s.payload.twqr, ...twqr } } })),
+  setPayloadHKQR: (hkqr) => set((s) => ({ payload: { ...s.payload, hkqr: { ...s.payload.hkqr, ...hkqr } } })),
+  setPayloadJPQR: (jpqr) => set((s) => ({ payload: { ...s.payload, jpqr: { ...s.payload.jpqr, ...jpqr } } })),
+  setPayloadAusPayNet: (auspaynet) => set((s) => ({ payload: { ...s.payload, auspaynet: { ...s.payload.auspaynet, ...auspaynet } } })),
+  setPayloadPayPalMe: (paypalMe) => set((s) => ({ payload: { ...s.payload, paypalMe: { ...s.payload.paypalMe, ...paypalMe } } })),
+  setPayloadCashApp: (cashapp) => set((s) => ({ payload: { ...s.payload, cashapp: { ...s.payload.cashapp, ...cashapp } } })),
+  setPayloadEMVGeneric: (emvGeneric) => set((s) => ({ payload: { ...s.payload, emvGeneric: { ...s.payload.emvGeneric, ...emvGeneric } } })),
   setPayloadValidation: (opts) => set((s) => ({ payload: { ...s.payload, ...opts } })),
 
   // QR defaults
@@ -1181,6 +1439,232 @@ export const useQRStore = create<QRState>((set, get) => ({
       case 'short_link':
         // Short link - return as-is
         return payload.text
+
+      case 'swiss_qr_bill': {
+        const sqb = payload.swissQRBill
+        if (!sqb.creditorIBAN || !sqb.creditorName) return ''
+        return generateSwissQRBill({
+          creditorIBAN: sqb.creditorIBAN,
+          creditorName: sqb.creditorName,
+          creditorAddressType: sqb.creditorAddressType,
+          creditorStreet: sqb.creditorStreet,
+          creditorBuildingNumber: sqb.creditorBuildingNumber,
+          creditorPostalCode: sqb.creditorPostalCode,
+          creditorCity: sqb.creditorCity,
+          creditorCountry: sqb.creditorCountry,
+          amount: sqb.amount,
+          currency: sqb.currency,
+          referenceType: sqb.referenceType,
+          reference: sqb.reference,
+          unstructuredMessage: sqb.unstructuredMessage,
+          billInformation: sqb.billInformation,
+        })
+      }
+
+      case 'lightning': {
+        const ln = payload.lightning
+        if (!ln.invoice) return ''
+        return generateLightning({ invoice: ln.invoice })
+      }
+
+      case 'ethereum_eip681': {
+        const eth = payload.ethereum
+        if (!eth.targetAddress) return ''
+        return generateEthereumEIP681({
+          targetAddress: eth.targetAddress,
+          chainId: eth.chainId,
+          value: eth.value,
+          gas: eth.gas,
+          gasLimit: eth.gasLimit,
+          gasPrice: eth.gasPrice,
+          tokenAddress: eth.tokenAddress,
+          tokenValue: eth.tokenValue,
+          functionName: eth.functionName,
+        })
+      }
+
+      case 'qris': {
+        const q = payload.qris
+        // EMV spec requires merchantName (tag 59), merchantId for QRIS
+        // Allow generation for preview - generator provides defaults
+        return generateQRIS({
+          merchantID: q.merchantId,
+          nmid: q.nmid,
+          merchantCriteria: q.merchantCriteria,
+          merchantName: q.merchantName,
+          merchantCity: q.merchantCity,
+          postalCode: q.postalCode,
+          amount: q.amount,
+          feeType: q.feeType,
+          feeAmount: q.feeAmount,
+          terminalLabel: q.terminalLabel,
+        })
+      }
+
+      case 'duitnow': {
+        const d = payload.duitnow
+        // ProxyValue is the payment identifier (required for routing)
+        // MerchantName is required by EMV spec (tag 59)
+        // Allow generation for preview
+        return generateDuitNow({
+          proxyType: d.proxyType,
+          proxyValue: d.proxyValue,
+          merchantName: d.merchantName,
+          merchantCity: d.merchantCity,
+          amount: d.amount,
+          reference: d.reference,
+        })
+      }
+
+      case 'bharatqr': {
+        const b = payload.bharatqr
+        // MerchantName is required by EMV spec (tag 59)
+        // VPA is optional (can use other payment networks)
+        // Allow generation for preview
+        return generateBharatQR({
+          merchantVPA: b.merchantVPA,
+          merchantPAN: b.merchantPAN,
+          merchantID: b.merchantID,
+          merchantName: b.merchantName,
+          merchantCity: b.merchantCity,
+          mcc: b.mcc,
+          amount: b.amount,
+          gstDetails: b.gstDetails,
+          invoiceNumber: b.invoiceNumber,
+          referenceNumber: b.referenceNumber,
+          terminalId: b.terminalId,
+        })
+      }
+
+      case 'vietqr': {
+        const v = payload.vietqr
+        // BankBin and accountNumber are required for VietQR routing
+        // Allow generation for preview
+        return generateVietQR({
+          bankBin: v.bankBin,
+          accountNumber: v.accountNumber,
+          accountName: v.accountName,
+          serviceCode: v.serviceCode,
+          amount: v.amount,
+          description: v.description,
+        })
+      }
+
+      case 'qrph': {
+        const p = payload.qrph
+        if (!p.accountNumber || !p.merchantName) return ''
+        return generateQRPh({
+          accountNumber: p.accountNumber,
+          merchantName: p.merchantName,
+          merchantCity: p.merchantCity,
+          amount: p.amount,
+          reference: p.reference,
+        })
+      }
+
+      case 'twqr': {
+        const t = payload.twqr
+        // MerchantId and merchantName required by TWQR spec
+        // Allow generation for preview
+        return generateTWQR({
+          merchantId: t.merchantId,
+          merchantName: t.merchantName,
+          merchantCity: t.merchantCity,
+          taxId: t.taxId,
+          amount: t.amount,
+        })
+      }
+
+      case 'hkqr': {
+        const h = payload.hkqr
+        if (!h.fpsId || !h.merchantName) return ''
+        return generateHKQR({
+          fpsId: h.fpsId,
+          merchantName: h.merchantName,
+          merchantCity: h.merchantCity,
+          amount: h.amount,
+          reference: h.reference,
+        })
+      }
+
+      case 'jpqr': {
+        const j = payload.jpqr
+        // StoreId and merchantName required by JPQR spec
+        // Allow generation for preview
+        return generateJPQR({
+          storeId: j.storeId,
+          merchantName: j.merchantName,
+          merchantCity: j.merchantCity,
+          amount: j.amount,
+        })
+      }
+
+      case 'auspaynet': {
+        const a = payload.auspaynet
+        // NPP PayID spec: Need either PayID OR BSB+AccountNumber for routing
+        // MerchantName is OPTIONAL - payer sees registered name from NPP lookup
+        // Amount is OPTIONAL - can be entered by payer
+        return generateAusPayNet({
+          payId: a.payId,
+          payIdType: a.payIdType,
+          bsb: a.bsb,
+          accountNumber: a.accountNumber,
+          merchantName: a.merchantName,
+          merchantCity: a.merchantCity,
+          amount: a.amount,
+          reference: a.reference,
+        })
+      }
+
+      case 'paypal_me': {
+        const pp = payload.paypalMe
+        if (!pp.username) return ''
+        return generatePayPalMe({
+          username: pp.username,
+          amount: pp.amount,
+          currencyCode: pp.currencyCode,
+        })
+      }
+
+      case 'cashapp': {
+        const ca = payload.cashapp
+        if (!ca.cashtag) return ''
+        return generateCashApp({
+          cashtag: ca.cashtag,
+          amount: ca.amount,
+        })
+      }
+
+      case 'emv_generic': {
+        const emv = payload.emvGeneric
+        if (!emv.merchantName || !emv.countryCode || !emv.currencyCode) return ''
+        // Map our helper interface to EMVMPMParams
+        const tipIndicatorMap: Record<string, '01' | '02' | '03' | undefined> = {
+          'prompt': '01',
+          'fixed': '02',
+          'percent': '03',
+          'none': undefined
+        }
+        return generateEMVMPM({
+          merchantName: emv.merchantName,
+          merchantCity: emv.merchantCity,
+          countryCode: emv.countryCode,
+          currencyCode: emv.currencyCode,
+          amount: emv.amount,
+          isStatic: emv.isStatic,
+          tipIndicator: emv.tipIndicator ? tipIndicatorMap[emv.tipIndicator] : undefined,
+          tipFixed: emv.tipAmount,
+          tipPercentage: emv.tipPercent,
+          storeLabel: emv.storeLabel,
+          customerLabel: emv.customerLabel,
+          terminalLabel: emv.terminalLabel,
+          loyaltyNumber: emv.loyaltyNumber,
+          referenceLabel: emv.reference,
+          purposeOfTransaction: emv.purposeOfTransaction,
+          postalCode: emv.postalCode,
+          mcc: emv.mcc,
+        })
+      }
 
       case 'custom':
         return applyTransforms(payload.text)

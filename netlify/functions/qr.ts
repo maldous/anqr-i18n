@@ -140,14 +140,73 @@ type DitherKind = 'error_diffusion' | 'ordered_bayer' | 'ordered_clustered' | 'o
   'edge_aware' | 'adaptive_threshold' | 'temporal_blue_noise'
 
 // ============================================
-// SERVER-SIDE OPTIMIZATIONS
+// SERVER-SIDE OPTIMIZATIONS & SECURITY
 // ============================================
 
 // Maximum image size for server-side processing (prevents excessive CPU usage)
-const MAX_SERVER_IMAGE_SIZE = 1024
+const MAX_SERVER_IMAGE_SIZE = 2048
+
+// Maximum data payload length (prevents abuse)
+const MAX_DATA_LENGTH = 4096
+
+// Maximum overlay image size in bytes (5MB)
+const MAX_OVERLAY_BYTES = 5 * 1024 * 1024
+
+// Maximum decoded overlay pixel count (10 megapixels)
+const MAX_OVERLAY_PIXELS = 10 * 1024 * 1024
+
+// Maximum GIF frames and duration
+const MAX_GIF_FRAMES = 60
+const MAX_GIF_DURATION_MS = 10000
+
+// Fetch timeout in milliseconds
+const FETCH_TIMEOUT_MS = 10000
+
+// Maximum redirects for image fetch
+const MAX_REDIRECTS = 3
 
 // Default dither algorithm for server-side when none specified (fast)
 const DEFAULT_SERVER_DITHER: DitherKind = 'ordered_bayer'
+
+// Default output format - align with client default (GIF) for consistency
+const DEFAULT_OUTPUT_FORMAT: OutputFormat = 'gif'
+
+/**
+ * Check if a URL points to a private/internal IP address (SSRF protection)
+ */
+function isPrivateOrReservedIP(hostname: string): boolean {
+  // Check for localhost variants
+  if (hostname === 'localhost' || hostname === '127.0.0.1' || hostname === '::1') {
+    return true
+  }
+  
+  // IPv4 private ranges
+  const ipv4Match = hostname.match(/^(\d+)\.(\d+)\.(\d+)\.(\d+)$/)
+  if (ipv4Match) {
+    const [, a, b, c, d] = ipv4Match.map(Number)
+    // 10.0.0.0/8
+    if (a === 10) return true
+    // 172.16.0.0/12
+    if (a === 172 && b >= 16 && b <= 31) return true
+    // 192.168.0.0/16
+    if (a === 192 && b === 168) return true
+    // 169.254.0.0/16 (link-local)
+    if (a === 169 && b === 254) return true
+    // 127.0.0.0/8 (loopback)
+    if (a === 127) return true
+    // 0.0.0.0/8
+    if (a === 0) return true
+  }
+  
+  // IPv6 private/reserved (simplified check)
+  if (hostname.startsWith('fe80:') || // link-local
+      hostname.startsWith('fc') || hostname.startsWith('fd') || // unique local
+      hostname === '::1') { // loopback
+    return true
+  }
+  
+  return false
+}
 
 /**
  * Node.js canvas factory using @napi-rs/canvas
@@ -797,16 +856,30 @@ async function fetchImageWithBuffer(url: string): Promise<FetchedImage | null> {
         console.error(`Invalid URL protocol: ${parsedUrl.protocol}`)
         return null
       }
+      
+      // SSRF protection: block private/internal IP addresses
+      if (isPrivateOrReservedIP(parsedUrl.hostname)) {
+        console.error(`Blocked request to private/reserved IP: ${parsedUrl.hostname}`)
+        return null
+      }
     } catch {
       console.error(`Invalid URL format: ${url}`)
       return null
     }
 
+    // Create AbortController for timeout
+    const controller = new AbortController()
+    const timeoutId = setTimeout(() => controller.abort(), FETCH_TIMEOUT_MS)
+    
     const response = await fetch(url, {
       headers: {
         'User-Agent': 'ANQR-QR-Generator/1.0',
       },
+      signal: controller.signal,
+      redirect: 'follow',
     })
+    
+    clearTimeout(timeoutId)
     
     if (!response.ok) {
       console.error(`Failed to fetch image: ${response.status} ${response.statusText}`)
@@ -823,6 +896,13 @@ async function fetchImageWithBuffer(url: string): Promise<FetchedImage | null> {
     }
     
     const arrayBuffer = await response.arrayBuffer()
+    
+    // Check overlay size limits
+    if (arrayBuffer.byteLength > MAX_OVERLAY_BYTES) {
+      console.error(`Overlay image too large: ${arrayBuffer.byteLength} bytes (max: ${MAX_OVERLAY_BYTES})`)
+      return null
+    }
+    
     const buffer = Buffer.from(arrayBuffer)
     
     // Check if it's a GIF with multiple frames
@@ -878,6 +958,11 @@ export default async (request: Request) => {
     return new Response('Missing required "data" parameter', { status: 400 })
   }
   
+  // Validate data length (DoS protection)
+  if (data.length > MAX_DATA_LENGTH) {
+    return new Response(`Data too long: ${data.length} characters (max: ${MAX_DATA_LENGTH})`, { status: 400 })
+  }
+  
   // Parse all parameters with defaults
   const sizeParam = parseInt(params.get('size') || '400', 10)
   const widthParam = params.get('w') ? parseInt(params.get('w')!, 10) : null
@@ -916,7 +1001,7 @@ export default async (request: Request) => {
   
   // Frame
   const frameStyle = params.get('frame') || 'none'
-  const frameText = params.get('frameText') ? decodeURIComponent(params.get('frameText')!) : ''
+  const frameText = params.get('frameText') || ''
   
   // Gradient
   const gradientType = params.get('grad') || 'none'
@@ -988,7 +1073,7 @@ export default async (request: Request) => {
   
   // Render palette
   const paletteParam = params.get('palette')
-  const palette = paletteParam ? decodeURIComponent(paletteParam).split(',').map(c => c.startsWith('#') ? c : `#${c}`) : undefined
+  const palette = paletteParam ? paletteParam.split(',').map(c => c.startsWith('#') ? c : `#${c}`) : undefined
   const paletteMode = params.get('paletteMode') || 'position'
   
   // Safety per-ECC limits (support both short and long param names)
@@ -998,14 +1083,15 @@ export default async (request: Request) => {
   const maxOverlayIntensityH = parseInt(params.get('maxIntH') || params.get('maxOverlayIntensityH') || '100', 10)
   
   // Output format (may be overridden if overlay is animated GIF)
-  let outputFormat = (params.get('format') || 'png') as OutputFormat
+  // Default to GIF to align with client default (was PNG, causing embed/share mismatch)
+  let outputFormat = (params.get('format') || DEFAULT_OUTPUT_FORMAT) as OutputFormat
   const outputQuality = Math.max(0, Math.min(1, parseFloat(params.get('quality') || '0.9')))
   const outputDpi = Math.max(1, Math.min(1200, parseInt(params.get('dpi') || '72', 10)))
   
   // Watermark
   const watermarkEnabled = params.get('wmEn') === '1'
   const watermarkKind = (params.get('wmKind') || 'text') as WatermarkKind
-  const watermarkText = params.get('wmText') ? decodeURIComponent(params.get('wmText')!) : ''
+  const watermarkText = params.get('wmText') || ''
   const watermarkImageUrl = params.get('wmImg') || undefined
   const watermarkPosition = (params.get('wmPos') || 'center') as WatermarkPosition
   const watermarkOpacity = Math.min(100, Math.max(0, parseInt(params.get('wmOpacity') || '50', 10)))
@@ -1027,10 +1113,10 @@ export default async (request: Request) => {
   const gifColors = Math.min(256, Math.max(2, parseInt(params.get('gifColors') || '256', 10)))
   
   // Metadata
-  const metaTitle = params.get('metaTitle') ? decodeURIComponent(params.get('metaTitle')!) : undefined
-  const metaAuthor = params.get('metaAuthor') ? decodeURIComponent(params.get('metaAuthor')!) : undefined
-  const metaCopyright = params.get('metaCopy') ? decodeURIComponent(params.get('metaCopy')!) : undefined
-  const metaDescription = params.get('metaDesc') ? decodeURIComponent(params.get('metaDesc')!) : undefined
+  const metaTitle = params.get('metaTitle') || undefined
+  const metaAuthor = params.get('metaAuthor') || undefined
+  const metaCopyright = params.get('metaCopy') || undefined
+  const metaDescription = params.get('metaDesc') || undefined
   
   // Validate ECC level
   if (!['L', 'M', 'Q', 'H'].includes(ec)) {
@@ -1049,13 +1135,16 @@ export default async (request: Request) => {
     
     // Calculate module size based on desired output size
     // Estimate module count first (depends on content length and ECC)
-    const estimatedVersion = qrGenerator.calculateOptimalVersion(decodeURIComponent(data), ec)
+    const estimatedVersion = qrGenerator.calculateOptimalVersion(data, ec)
     const estimatedModuleCount = estimatedVersion * 4 + 17
-    const moduleSize = Math.max(1, Math.floor((size - margin * 2) / (estimatedModuleCount + margin * 2)))
+    // Use final margin (including borderModulesExtra) for module size calculation
+    // to avoid sizing drift/crop issues
+    const totalMargin = margin + borderModulesExtra
+    const moduleSize = Math.max(1, Math.floor((size - totalMargin * 2) / (estimatedModuleCount + totalMargin * 2)))
     
     // Build config (same structure as client-side)
     const config = {
-      content: decodeURIComponent(data),
+      content: data,
       typeNumber: version, // 0 = auto-detect
       errorCorrection: ec,
       encodingMode,
