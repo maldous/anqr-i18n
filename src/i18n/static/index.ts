@@ -2,41 +2,41 @@
  * Static page content loader
  * Returns page content based on current language with English fallback
  * Uses Google Play language codes for compatibility
+ * Authoritative list from src/i18n/locales/txt/play.txt
  */
 
 import type { PageDefinition, StaticPageType } from './types'
 
 // Google Play required languages
 import * as enGB from './en-GB'
-import * as hiIN from './hi-IN'
-import * as zhCN from './zh-CN'
-import * as ms from './ms'
-import * as taIN from './ta-IN'
-import * as th from './th'
-import * as ptBR from './pt-BR'
-import * as id from './id'
-import * as vi from './vi'
-import * as fil from './fil'
-import * as jaJP from './ja-JP'
-import * as koKR from './ko-KR'
-import * as esES from './es-ES'
 import * as ar from './ar'
-import * as ruRU from './ru-RU'
-import * as teIN from './te-IN'
-import * as mrIN from './mr-IN'
 import * as bnBD from './bn-BD'
+import * as esES from './es-ES'
 import * as gu from './gu'
+import * as hiIN from './hi-IN'
+import * as id from './id'
+import * as jaJP from './ja-JP'
 import * as knIN from './kn-IN'
+import * as koKR from './ko-KR'
 import * as mlIN from './ml-IN'
+import * as mrIN from './mr-IN'
+import * as ms from './ms'
 import * as pa from './pa'
+import * as ptBR from './pt-BR'
+import * as ruRU from './ru-RU'
+import * as taIN from './ta-IN'
+import * as teIN from './te-IN'
+import * as th from './th'
+import * as fil from './fil'
+import * as vi from './vi'
+import * as zhCN from './zh-CN'
 
 // Additional languages (with Google Play regional codes)
 import * as af from './af'
-import * as as_ from './as'  // 'as' is reserved keyword
 import * as bg from './bg'
-import * as cs from './cs'
-import * as da from './da'
-import * as de from './de'
+import * as csCZ from './cs-CZ'
+import * as daDK from './da-DK'
+import * as deDE from './de-DE'
 import * as elGR from './el-GR'
 import * as fiFI from './fi-FI'
 import * as frFR from './fr-FR'
@@ -53,7 +53,6 @@ import * as plPL from './pl-PL'
 import * as rm from './rm'
 import * as ro from './ro'
 import * as svSE from './sv-SE'
-import * as tn from './tn'
 import * as zu from './zu'
 
 // Re-export types for convenience
@@ -63,34 +62,33 @@ export { LAST_UPDATED, CONTACT_EMAIL } from './types'
 const contentByLanguage: Record<string, Record<StaticPageType, PageDefinition>> = {
   // Google Play required languages
   'en-GB': enGB,
-  'hi-IN': hiIN,
-  'zh-CN': zhCN,
-  ms,
-  'ta-IN': taIN,
-  th,
-  'pt-BR': ptBR,
-  id,
-  vi,
-  fil,
-  'ja-JP': jaJP,
-  'ko-KR': koKR,
-  'es-ES': esES,
   ar,
-  'ru-RU': ruRU,
-  'te-IN': teIN,
-  'mr-IN': mrIN,
   'bn-BD': bnBD,
+  'es-ES': esES,
   gu,
+  'hi-IN': hiIN,
+  id,
+  'ja-JP': jaJP,
   'kn-IN': knIN,
+  'ko-KR': koKR,
   'ml-IN': mlIN,
+  'mr-IN': mrIN,
+  ms,
   pa,
+  'pt-BR': ptBR,
+  'ru-RU': ruRU,
+  'ta-IN': taIN,
+  'te-IN': teIN,
+  th,
+  fil,
+  vi,
+  'zh-CN': zhCN,
   // Additional languages (with Google Play regional codes)
   af,
-  as: as_,
   bg,
-  cs,
-  da,
-  de,
+  'cs-CZ': csCZ,
+  'da-DK': daDK,
+  'de-DE': deDE,
   'el-GR': elGR,
   'fi-FI': fiFI,
   'fr-FR': frFR,
@@ -107,7 +105,6 @@ const contentByLanguage: Record<string, Record<StaticPageType, PageDefinition>> 
   rm,
   ro,
   'sv-SE': svSE,
-  tn,
   zu,
 }
 
@@ -142,6 +139,9 @@ export function getStaticContent(
     'kn': 'kn-IN',
     'ml': 'ml-IN',
     // Regional mappings
+    'cs': 'cs-CZ',
+    'da': 'da-DK',
+    'de': 'de-DE',
     'el': 'el-GR',
     'fi': 'fi-FI',
     'fr': 'fr-FR',
@@ -193,9 +193,9 @@ export function hasStaticTranslation(language: string): boolean {
     'pt': 'pt-BR', 'tl': 'fil', 'ja': 'ja-JP', 'ko': 'ko-KR',
     'es': 'es-ES', 'ru': 'ru-RU', 'te': 'te-IN', 'mr': 'mr-IN',
     'bn': 'bn-BD', 'kn': 'kn-IN', 'ml': 'ml-IN',
-    'el': 'el-GR', 'fi': 'fi-FI', 'fr': 'fr-FR', 'hu': 'hu-HU',
-    'it': 'it-IT', 'km': 'km-KH', 'lo': 'lo-LA', 'my': 'my-MM',
-    'ne': 'ne-NP', 'nl': 'nl-NL', 'no': 'no-NO', 'pl': 'pl-PL',
+    'cs': 'cs-CZ', 'da': 'da-DK', 'de': 'de-DE', 'el': 'el-GR', 'fi': 'fi-FI',
+    'fr': 'fr-FR', 'hu': 'hu-HU', 'it': 'it-IT', 'km': 'km-KH', 'lo': 'lo-LA',
+    'my': 'my-MM', 'ne': 'ne-NP', 'nl': 'nl-NL', 'no': 'no-NO', 'pl': 'pl-PL',
     'sv': 'sv-SE',
   }
   

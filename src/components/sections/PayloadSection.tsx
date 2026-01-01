@@ -65,21 +65,20 @@ const LANGUAGE_PAYMENT_MAP: Record<string, PayloadKind[]> = {
   'ml-IN': ['upi', 'bharatqr'],
   pa: ['upi', 'bharatqr'], // Punjabi (Google Play: pa)
   'ta-IN': ['upi', 'bharatqr'],
-  as: ['upi', 'bharatqr'],
 
   
-  // Nepali - UPI (close ties with India)
-  'ne-NP': ['upi', 'bharatqr'],
+
   
   // European languages - EPC/SEPA, Swiss QR-bill (with Google Play codes)
-  de: ['epc_sepa', 'swiss_qr_bill'],
+  'de-DE': ['epc_sepa', 'swiss_qr_bill'],
   'fr-FR': ['epc_sepa', 'swiss_qr_bill'],
   'it-IT': ['epc_sepa', 'swiss_qr_bill'],
   'es-ES': ['epc_sepa'], // Spanish (Google Play: es-ES)
   'nl-NL': ['epc_sepa'],
   'pl-PL': ['epc_sepa'],
-  cs: ['epc_sepa'],
-  da: ['epc_sepa'],
+  'cs-CZ': ['epc_sepa'],
+  'da-DK': ['epc_sepa'],
+  'km-KH': [], // Khmer (Cambodia)
   'fi-FI': ['epc_sepa'],
   'sv-SE': ['epc_sepa'],
   'no-NO': ['epc_sepa'],
@@ -101,14 +100,15 @@ const LANGUAGE_PAYMENT_MAP: Record<string, PayloadKind[]> = {
   ar: [],
   
   // Southeast Asian (no specific QR standards in our list) - with Google Play codes
-  'km-KH': [], // Khmer
   'lo-LA': [], // Lao
   'my-MM': [], // Burmese
+  
+  // South Asian - Nepali gets UPI (close ties with India)
+  'ne-NP': ['upi', 'bharatqr'],
   
   // South African languages - global only
   af: [],
   zu: [],
-  tn: [],
 }
 
 /**
