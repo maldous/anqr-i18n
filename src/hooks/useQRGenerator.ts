@@ -22,10 +22,6 @@ import { getEffectiveDitherKind, STORE_DEFAULT_DITHER } from '@/modules/overlay-
 // Singleton QR generator instance
 const qrGenerator = new QRGenerator()
 
-// Performance cap: limit to 24 frames max in auto mode to prevent very long render times
-// 24 frames at 100ms = 2.4 second animation, which is sufficient for most use cases
-const MAX_AUTO_FRAMES = 24
-
 // Target FPS for preview mode (source GIFs above this will be decimated)
 const PREVIEW_TARGET_FPS = 15
 
@@ -178,6 +174,9 @@ export function useQRGenerator(): UseQRGeneratorResult {
   
   // Store raw overlay canvas before preprocessing
   const [rawOverlayCanvas, setRawOverlayCanvas] = useState<HTMLCanvasElement | null>(null)
+  
+  // Track when we're loading/parsing an overlay file (prevents busy overlay flickering)
+  const [isLoadingOverlay, setIsLoadingOverlay] = useState(false)
   
   // Validation state
   const [validation, setValidation] = useState<ValidationResult | null>(null)
@@ -598,8 +597,13 @@ export function useQRGenerator(): UseQRGeneratorResult {
       setGifFrames([])
       setGifCompositor(null)
       setCurrentFrame(0)
+      setIsLoadingOverlay(false)
       return
     }
+
+    // Set loading state immediately when starting to load overlay
+    // This prevents busy overlay flickering between QR render and animation cache build
+    setIsLoadingOverlay(true)
 
     // Check for GIF format (use compositor for optimal decoding)
     const isGif = 
@@ -626,6 +630,7 @@ export function useQRGenerator(): UseQRGeneratorResult {
           compositor.reset()
           compositor.apply(0)
           setRawOverlayCanvas(compositor.canvas)
+          // Note: Don't clear isLoadingOverlay here - wait for animation cache to be ready
         } catch (err) {
           console.error('Failed to create GIF compositor:', err)
           setGifCompositor(null)
@@ -634,8 +639,12 @@ export function useQRGenerator(): UseQRGeneratorResult {
             .then((canvas) => {
               setRawOverlayCanvas(canvas)
               setGifFrames([{ canvas, delay: 100, disposalType: 0 }])
+              setIsLoadingOverlay(false)
             })
-            .catch(() => setRawOverlayCanvas(null))
+            .catch(() => {
+              setRawOverlayCanvas(null)
+              setIsLoadingOverlay(false)
+            })
         }
       }
       reader.readAsArrayBuffer(overlay.file)
@@ -652,14 +661,22 @@ export function useQRGenerator(): UseQRGeneratorResult {
           if (frames.length > 0) {
             setRawOverlayCanvas(frames[0].canvas)
           }
+          // Note: Don't clear isLoadingOverlay here for multi-frame - wait for animation cache
+          if (frames.length <= 1) {
+            setIsLoadingOverlay(false)
+          }
         } catch (err) {
           console.error('Failed to parse animated WebP:', err)
           loadFileAsCanvas(overlay.file!)
             .then((canvas) => {
               setRawOverlayCanvas(canvas)
               setGifFrames([{ canvas, delay: 100, disposalType: 0 }])
+              setIsLoadingOverlay(false)
             })
-            .catch(() => setRawOverlayCanvas(null))
+            .catch(() => {
+              setRawOverlayCanvas(null)
+              setIsLoadingOverlay(false)
+            })
         }
       }
       reader.readAsArrayBuffer(overlay.file)
@@ -668,10 +685,14 @@ export function useQRGenerator(): UseQRGeneratorResult {
       setGifFrames([])
       setGifCompositor(null)
       loadFileAsCanvas(overlay.file)
-        .then((canvas) => setRawOverlayCanvas(canvas))
+        .then((canvas) => {
+          setRawOverlayCanvas(canvas)
+          setIsLoadingOverlay(false)
+        })
         .catch((err) => {
           console.error('Failed to load overlay:', err)
           setRawOverlayCanvas(null)
+          setIsLoadingOverlay(false)
         })
     }
   }, [overlay.file])
@@ -780,7 +801,7 @@ export function useQRGenerator(): UseQRGeneratorResult {
     const startIdx = Math.min(animation.startFrame, totalFrames - 1)
     const maxCount = animation.maxFrames > 0 
       ? animation.maxFrames 
-      : Math.min(totalFrames, MAX_AUTO_FRAMES)
+      : totalFrames  // Use all frames when maxFrames is 0 (no limit)
     const step = Math.max(1, animation.frameStep)
     
     // First pass: apply startFrame and frameStep
@@ -1430,6 +1451,7 @@ export function useQRGenerator(): UseQRGeneratorResult {
       setAnimationFrames(frames)
       setIsAnimationCacheReady(true)
       setIsLoading(false)
+      setIsLoadingOverlay(false)  // Clear overlay loading state when animation cache is ready
       
       // Set the first frame as current canvas
       if (frames.length > 0) {
@@ -1464,9 +1486,11 @@ export function useQRGenerator(): UseQRGeneratorResult {
     animation.moduleJitterPx > 0
   
   // Show preparing state when:
-  // 1. We have multi-frame GIF content and cache isn't ready, OR
-  // 2. We have animation effects enabled (on static image or no overlay) and cache isn't ready
+  // 1. We're loading an overlay file (GIF parsing, etc.), OR
+  // 2. We have multi-frame GIF content and cache isn't ready, OR
+  // 3. We have animation effects enabled (on static image or no overlay) and cache isn't ready
   const isPreparingAnimation = 
+    isLoadingOverlay ||
     (!isAnimationCacheReady && hasMultiFrameContent) ||
     (!isAnimationCacheReady && hasAnimationEffectsEnabled && animationFrames.length === 0 && isLoading)
   
