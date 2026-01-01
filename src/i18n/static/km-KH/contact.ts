@@ -2,38 +2,38 @@ import type { PageDefinition } from '../types';
 import { LAST_UPDATED } from '../types';
 
 export const contact: PageDefinition = {
-  title: 'Contact Us',
-  description: 'We welcome feedback, bug reports, feature requests, and general enquiries.',
+  title: 'ទាក់ទងមកយើងខ្ញុំ',
+  description: 'យើងខ្ញុំសូមស្វាគមន៍ចំពោះមតិយោបល់ របាយការណ៍កំហុស សំណើសុំមុខងារ និងការសាកសួរទូទៅ។',
   lastUpdated: LAST_UPDATED,
   sections: [
     {
-      heading: 'How to reach us',
-      paragraphs: ['We offer several ways to contact us depending on your needs. We read every message, though response times may vary based on volume and enquiry type.'],
+      heading: 'របៀបទាក់ទងមកយើងខ្ញុំ',
+      paragraphs: ['យើងខ្ញុំផ្តល់ជូននូវវិធីជាច្រើនដើម្បីទាក់ទងមកយើងខ្ញុំអាស្រ័យលើតម្រូវការរបស់អ្នក។ យើងខ្ញុំអានសារនីមួយៗ ទោះបីជាពេលវេលាឆ្លើយតបអាចប្រែប្រួលអាស្រ័យលើបរិមាណ និងប្រភេទនៃការសាកសួរក៏ដោយ។'],
     },
     {
-      heading: 'Email',
-      paragraphs: ['For all enquiries: ${CONTACT_EMAIL}', 'This is the most reliable way to reach us and is recommended for detailed questions, business enquiries, or any other enquiries.'],
+      heading: 'អ៊ីមែល',
+      paragraphs: ['សម្រាប់ការសាកសួរទាំងអស់៖ ${CONTACT_EMAIL}', 'នេះគឺជាមធ្យោបាយដែលអាចទុកចិត្តបំផុតដើម្បីទាក់ទងមកយើង ហើយត្រូវបានណែនាំសម្រាប់សំណួរលម្អិត ការសាកសួរអាជីវកម្ម ឬការសាកសួរផ្សេងៗទៀត។'],
     },
     {
-      heading: 'Types of enquiries',
-      bullets: ['General questions: Questions about how to use ANQR, feature explanations, or general feedback.', 'Bug reports: Please include your browser, operating system, steps to reproduce, and any error messages you see.', 'Feature requests: Suggestions for new features or improvements. We consider all requests though we cannot promise implementation.', 'Business enquiries: Partnership opportunities, licensing questions, or commercial use enquiries.', 'Privacy requests: Requests to exercise your privacy rights under GDPR, CCPA, or other privacy laws (see Privacy Policy).', 'DMCA/Copyright: See the DMCA section below for takedown notice requirements.'],
+      heading: 'ប្រភេទនៃការសាកសួរ',
+      bullets: ['សំណួរទូទៅ៖ សំណួរអំពីរបៀបប្រើប្រាស់ ANQR ការពន្យល់អំពីលក្ខណៈពិសេស ឬមតិកែលម្អទូទៅ។', 'របាយការណ៍​កំហុស៖ សូម​រួម​បញ្ចូល​កម្មវិធី​រុករក​របស់​អ្នក ប្រព័ន្ធ​ប្រតិបត្តិការ ជំហាន​ដើម្បី​បង្កើត​ឡើង​វិញ និង​សារ​កំហុស​ណាមួយ​ដែល​អ្នក​ឃើញ។', 'សំណើ​សុំ​មុខងារ៖ ការផ្តល់យោបល់សម្រាប់មុខងារថ្មីៗ ឬការកែលម្អ។ យើងពិចារណាលើសំណើទាំងអស់ ទោះបីជាយើងមិនអាចសន្យានឹងការអនុវត្តក៏ដោយ។', 'ការសាកសួរអំពីអាជីវកម្ម៖ ឱកាសភាពជាដៃគូ សំណួរអំពីអាជ្ញាប័ណ្ណ ឬការសាកសួរអំពីការប្រើប្រាស់ពាណិជ្ជកម្ម។', 'សំណើសុំសិទ្ធិឯកជនភាព៖ សំណើសុំអនុវត្តសិទ្ធិឯកជនភាពរបស់អ្នកក្រោម GDPR, CCPA ឬច្បាប់ឯកជនភាពផ្សេងទៀត (សូមមើលគោលការណ៍ឯកជនភាព)។', 'DMCA/ការរក្សាសិទ្ធិ៖ សូមមើលផ្នែក DMCA ខាងក្រោមសម្រាប់តម្រូវការជូនដំណឹងអំពីការដកចេញ។'],
     },
     {
-      heading: 'Response times',
-      paragraphs: ['We aim to respond to enquiries within 5-7 business days. Privacy-related requests will be addressed within 30 days as required by law.', 'During busy periods, response times may be longer. For urgent matters, please indicate "URGENT" in your subject line.'],
+      heading: 'ពេលវេលាឆ្លើយតប',
+      paragraphs: ['យើងខ្ញុំមានគោលបំណងឆ្លើយតបទៅនឹងសំណួរក្នុងរយៈពេល ៥-៧ ថ្ងៃធ្វើការ។ សំណើទាក់ទងនឹងភាពឯកជននឹងត្រូវបានដោះស្រាយក្នុងរយៈពេល ៣០ ថ្ងៃ ដូចដែលច្បាប់តម្រូវ។', 'ក្នុងអំឡុងពេលមមាញឹក ពេលវេលាឆ្លើយតបអាចយូរជាងនេះ។ ចំពោះបញ្ហាបន្ទាន់ សូមចង្អុលបង្ហាញពាក្យថា បន្ទាន់ នៅក្នុងប្រធានបទរបស់អ្នក។'],
     },
     {
-      heading: 'Before contacting us',
-      paragraphs: ['Please check our Documentation page for answers to common questions about how to use ANQR features. Many questions about QR code generation, styling, and export options are covered there.'],
+      heading: 'មុនពេលទាក់ទងមកយើងខ្ញុំ',
+      paragraphs: ['សូមពិនិត្យមើលទំព័រឯកសាររបស់យើងសម្រាប់ចម្លើយចំពោះសំណួរទូទៅអំពីរបៀបប្រើមុខងារ ANQR។ សំណួរជាច្រើនអំពីការបង្កើតលេខកូដ QR រចនាប័ទ្ម និងជម្រើសនាំចេញត្រូវបានគ្របដណ្តប់នៅទីនោះ។'],
     },
     {
-      heading: 'DMCA Copyright Notices',
-      paragraphs: ['If you believe that content available on ANQR infringes your copyright, you may submit a Digital Millennium Copyright Act (DMCA) takedown notice. To be valid, your notice must include:'],
-      bullets: ['A physical or electronic signature of the copyright owner or authorised agent.', 'Identification of the copyrighted work claimed to have been infringed.', 'Identification of the material that is claimed to be infringing, with information sufficient to locate it.', 'Your contact information (address, telephone number, and email address).', 'A statement that you have a good faith belief that use of the material is not authorised by the copyright owner.', 'A statement, under penalty of perjury, that the information in your notice is accurate and that you are the copyright owner or authorised to act on their behalf.'],
+      heading: 'DMCA',
+      paragraphs: ['ANQR រំលោភលើការរក្សាសិទ្ធិរបស់អ្នក អ្នកអាចដាក់ស្នើសេចក្តីជូនដំណឹងអំពីការដកចេញនៃច្បាប់រក្សាសិទ្ធិសហស្សវត្សរ៍ឌីជីថល (DMCA)។ ដើម្បីឱ្យមានសុពលភាព សេចក្តីជូនដំណឹងរបស់អ្នកត្រូវតែរួមបញ្ចូល៖'],
+      bullets: ['ឬហត្ថលេខាអេឡិចត្រូនិករបស់ម្ចាស់កម្មសិទ្ធិបញ្ញា ឬភ្នាក់ងារដែលមានការអនុញ្ញាត។', 'ការកំណត់អត្តសញ្ញាណស្នាដៃដែលមានការរក្សាសិទ្ធិដែលត្រូវបានអះអាងថាត្រូវបានរំលោភបំពាន។', 'ដោយមានព័ត៌មានគ្រប់គ្រាន់ដើម្បីកំណត់ទីតាំងវា។', 'ព័ត៌មានទំនាក់ទំនងរបស់អ្នក (អាសយដ្ឋាន លេខទូរស័ព្ទ និងអាសយដ្ឋានអ៊ីមែល)។', 'សេចក្តីថ្លែងការណ៍មួយដែលបង្ហាញថាអ្នកមានជំនឿដោយសុច្ឆន្ទៈថាការប្រើប្រាស់សម្ភារៈនេះមិនត្រូវបានអនុញ្ញាតដោយម្ចាស់កម្មសិទ្ធិបញ្ញាទេ។', 'ក្រោមការផ្តន្ទាទោសនៃការស្បថមិនពិត ថាព័ត៌មាននៅក្នុងការជូនដំណឹងរបស់អ្នកគឺត្រឹមត្រូវ ហើយថាអ្នកជាម្ចាស់កម្មសិទ្ធិបញ្ញា ឬមានសិទ្ធិធ្វើសកម្មភាពក្នុងនាមពួកគេ។'],
     },
     {
-      heading: 'DMCA Contact',
-      paragraphs: ['Send DMCA notices to: ${CONTACT_EMAIL}', 'Please include "DMCA Notice" in the subject line. We will respond to valid notices in accordance with applicable law. Note that ANQR generates QR codes locally on users devices and does not host user-generated content.'],
+      heading: 'DMCA',
+      paragraphs: ['ផ្ញើការជូនដំណឹង DMCA ទៅកាន់៖ ${CONTACT_EMAIL}', 'សូមបញ្ចូល ការជូនដំណឹង DMCA នៅក្នុងប្រធានបទ។ យើងនឹងឆ្លើយតបទៅនឹងការជូនដំណឹងដែលមានសុពលភាពស្របតាមច្បាប់ជាធរមាន។ សូមចំណាំថា ANQR បង្កើតលេខកូដ QR នៅក្នុងមូលដ្ឋាននៅលើឧបករណ៍របស់អ្នកប្រើប្រាស់ ហើយមិនបង្ហោះខ្លឹមសារដែលបង្កើតដោយអ្នកប្រើប្រាស់ទេ។'],
     },
   ],
 };

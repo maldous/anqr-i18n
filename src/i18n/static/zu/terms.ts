@@ -2,86 +2,86 @@ import type { PageDefinition } from '../types';
 import { LAST_UPDATED } from '../types';
 
 export const terms: PageDefinition = {
-  title: 'Terms of Service',
-  description: 'By accessing or using the site, you agree to be bound by these terms.',
+  title: 'Imigomo Yesevisi',
+  description: 'Ngokungena noma ukusebenzisa isayithi, uyavuma ukuboshwa yile migomo.',
   lastUpdated: LAST_UPDATED,
   sections: [
     {
-      heading: 'Acceptance of terms',
-      paragraphs: ['By accessing or using ANQR (anqr.link), you agree to be bound by these Terms of Service and our Privacy Policy. If you do not agree to these terms, do not use the site.', 'We may update these Terms from time to time. Continued use of the site after changes constitutes acceptance of the new terms.'],
+      heading: 'Ukwamukelwa kwemigomo',
+      paragraphs: ['Ngokufinyelela noma ukusebenzisa i-ANQR (anqr.link), uyavuma ukuboshwa yile Migomo Yesevisi kanye neNqubomgomo yethu Yobumfihlo. Uma ungavumelani nale migomo, ungayisebenzisi isayithi.', 'Singase sibuyekeze le Migomo ngezikhathi ezithile. Ukuqhubeka nokusebenzisa isayithi ngemva kwezinguquko kusho ukwamukelwa kwemigomo emisha.'],
     },
     {
-      heading: 'Eligibility',
-      paragraphs: ['You must be at least 13 years of age to use ANQR. By using the site, you represent that you meet this age requirement. If you are under 18, you represent that you have your parent or guardian\'s permission to use the site.'],
+      heading: 'Ukufaneleka',
+      paragraphs: ['Kumelwe okungenani ube neminyaka eyi-13 ubudala ukuze usebenzise i-ANQR. Ngokusebenzisa isayithi, umelela ukuthi uyahlangabezana nale mfuneko yobudala. Uma ungaphansi kweminyaka eyi-18, umelela ukuthi unemvume yomzali noma umnakekeli wakho yokusebenzisa isayithi.'],
     },
     {
-      heading: 'Permitted use',
-      paragraphs: ['You may use ANQR for lawful purposes only. You are solely responsible for the content you encode into QR codes and for how you use any QR codes you generate.'],
+      heading: 'Ukusetshenziswa okuvunyelwe',
+      paragraphs: ['Ungasebenzisa i-ANQR ngezinjongo ezisemthethweni kuphela. Unomthwalo wemfanelo kuphela ngokuqukethwe okufakile kumakhodi e-QR nokuthi usebenzisa kanjani noma yimaphi amakhodi e-QR owakhiqizayo.'],
     },
     {
-      heading: 'Prohibited conduct',
-      paragraphs: ['You agree not to:'],
-      bullets: ['Use ANQR to create QR codes that facilitate phishing, malware distribution, fraud, scams, harassment, defamation, or any illegal activity.', 'Encode content that infringes intellectual property rights, violates privacy, or contains illegal material.', 'Attempt to disrupt, overload, or interfere with the operation or security of the site.', 'Reverse engineer, decompile, or attempt to extract source code from the site.', 'Use automated tools (bots, scrapers) to access the site in a manner that degrades performance for other users.', 'Circumvent or disable any security or access control features.', 'Impersonate any person or entity or misrepresent your affiliation.'],
+      heading: 'Ukuziphatha okungavunyelwe',
+      paragraphs: ['Uyavuma ukuthi ungavumi:'],
+      bullets: ['Sebenzisa i-ANQR ukudala amakhodi e-QR azosiza ubugebengu bokweba imininingwane ebucayi, ukusatshalaliswa kwe-malware, ukukhwabanisa, ukukhwabanisa, ukuhlukunyezwa, ukuhlanjalazwa, noma yimuphi umsebenzi ongekho emthethweni.', 'Faka ikhodi yokuqukethwe okwephula amalungelo empahla yobuhlakani, okwephula ubumfihlo, noma okuqukethe izinto ezingekho emthethweni.', 'Ukuzama ukuphazamisa, ukulayisha ngokweqile, noma ukuphazamisa ukusebenza noma ukuphepha kwesayithi.', 'Unjiniyela obuyela emuva, hlukanisa, noma uzame ukukhipha ikhodi yomthombo kusayithi.', 'Sebenzisa amathuluzi azenzakalelayo (ama-bot, ama-scrapers) ukuze ufinyelele isayithi ngendlela ehlisa ukusebenza kwabanye abasebenzisi.', 'Vala noma khubaza noma yiziphi izici zokuphepha noma zokulawula ukufinyelela.', 'Lingisa noma yimuphi umuntu noma inhlangano noma umelene nobudlelwano bakho.'],
     },
     {
-      heading: 'Intellectual property',
-      paragraphs: ['You retain ownership of the content you encode into QR codes. ANQR does not claim ownership of your data.', 'The ANQR name, logo, interface design, and underlying code are protected by copyright, trademark, and other intellectual property laws. You may not copy, modify, distribute, or create derivative works without our permission.', 'QR Code® is a registered trademark of DENSO WAVE INCORPORATED. ANQR is not affiliated with DENSO WAVE.'],
+      heading: 'Impahla yobuhlakani',
+      paragraphs: ['Ugcina ubunikazi bokuqukethwe okufake kumakhodi e-QR. I-ANQR ayisho ukuthi ubunikazi bedatha yakho.', 'Igama le-ANQR, ilogo, ukwakheka kwesixhumi esibonakalayo, kanye nekhodi eyisisekelo zivikelwe yi-copyright, uphawu lokuhweba, kanye neminye imithetho yempahla yobuhlakani. Awuvunyelwe ukukopisha, ukuguqula, ukusabalalisa, noma ukudala imisebenzi esuselwe kuyo ngaphandle kwemvume yethu.', 'I-QR Code® wuphawu lokuhweba olubhalisiwe lwe-DENSO WAVE INCORPORATED. I-ANQR ayihlobene ne-DENSO WAVE.'],
     },
     {
-      heading: 'User content license',
-      paragraphs: ['By using ANQR, you grant us no rights to your content. When using local generation (the default), all QR code generation happens in your browser and we do not access, store, or transmit your encoded data.', 'When using the server-side API, your content is processed to generate the QR image but is not stored, logged, or used for any other purpose beyond rendering the requested image.'],
+      heading: 'Ilayisensi yokuqukethwe komsebenzisi',
+      paragraphs: ['Ngokusebenzisa i-ANQR, awusiniki amalungelo okuqukethwe kwakho. Uma usebenzisa ukwenziwa kwendawo (okuzenzakalelayo), konke ukwenziwa kwekhodi ye-QR kwenzeka kusiphequluli sakho futhi asifinyeleli, asigcini, noma asidluliseli idatha yakho efakiwe.', 'Uma usebenzisa i-API eseceleni kweseva, okuqukethwe kwakho kuyacutshungulwa ukuze kukhiqizwe isithombe se-QR kodwa akugciniwe, akulogwa, noma kusetshenziswe nganoma iyiphi enye injongo ngaphandle kokwenza isithombe esiceliwe.'],
     },
     {
-      heading: 'Third-party services and advertising',
-      paragraphs: ['The site displays advertisements through Google AdSense and may include links to third-party websites. We are not responsible for third-party content, services, or privacy practices.', 'Your interactions with advertisers and third parties are solely between you and them. See our Privacy Policy for information about advertising data practices.'],
+      heading: 'Izinsizakalo zeqembu lesithathu kanye nokukhangisa',
+      paragraphs: ['Isayithi libonisa izikhangiso nge-Google AdSense futhi lingafaka izixhumanisi eziya kumawebhusayithi ezinkampani zangaphandle. Asinabo uxanduva ngokuqukethwe kwezinkampani zangaphandle, izinsizakalo, noma imikhuba yobumfihlo.', 'Ukuxhumana kwakho nabakhangisi kanye nabantu besithathu kuphakathi kwakho nabo kuphela. Bheka Inqubomgomo yethu Yobumfihlo ukuthola ulwazi mayelana nemikhuba yedatha yokukhangisa.'],
     },
     {
-      heading: 'Disclaimer of warranties',
-      paragraphs: ['ANQR IS PROVIDED ON AN "AS IS" AND "AS AVAILABLE" BASIS WITHOUT WARRANTIES OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, AND NON-INFRINGEMENT.', 'We do not warrant that: (a) the site will be uninterrupted, secure, or error-free; (b) QR codes will scan in all environments, on all devices, or with all scanner applications; (c) the site will meet your requirements.', 'You should always test QR codes in the conditions where they will be used (print size, lighting, screen type, distance, camera quality).'],
+      heading: 'Isixwayiso sewaranti',
+      paragraphs: ['I-ANQR IHLINZEKWA NGESISEKELO ESITHI NJENGOKO INJALO NESITHI NGOKUTHOLAKALAYO NGAPHANDLE KWEZIQINISEKISO ZANOMA YILUPHI UHLOBO, EZICACILE NOMA EZINGASISIYO, KUBANDAKANYA KODWA AKUPHELELWE KWIZIQINISEKISO EZINGASISIYO ZOKUTHENGISWA, UKUFANELEKA KWENHLOSO ETHILE, NOKUNGAPHUKI KWENHLOSO.', 'Asiqinisekisi ukuthi: (a) isayithi lizohlala lingaphazanyiswa, liphephile, noma lingenamaphutha; (b) amakhodi e-QR azoskena kuzo zonke izindawo, kuwo wonke amadivayisi, noma ngazo zonke izinhlelo zokusebenza zesikena; (c) isayithi lizohlangabezana nezidingo zakho.', 'Kufanele uhlale uhlola amakhodi e-QR ezimweni lapho azosetshenziswa khona (usayizi wokuphrinta, ukukhanya, uhlobo lwesikrini, ibanga, ikhwalithi yekhamera).'],
     },
     {
-      heading: 'Limitation of liability',
-      paragraphs: ['TO THE MAXIMUM EXTENT PERMITTED BY LAW, ANQR AND ITS OPERATORS, AFFILIATES, AND LICENSORS SHALL NOT BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, CONSEQUENTIAL, PUNITIVE, OR EXEMPLARY DAMAGES, INCLUDING BUT NOT LIMITED TO DAMAGES FOR LOSS OF PROFITS, REVENUE, DATA, GOODWILL, USE, OR OTHER INTANGIBLE LOSSES, ARISING FROM OR RELATED TO YOUR ACCESS TO OR USE OF (OR INABILITY TO ACCESS OR USE) THE SERVICE.', 'YOU EXPRESSLY UNDERSTAND AND AGREE THAT YOUR USE OF THE SERVICE IS AT YOUR SOLE RISK. THE SERVICE IS PROVIDED FREE OF CHARGE, AND ACCORDINGLY, YOU AGREE THAT ANQR AND ITS OPERATORS SHALL HAVE NO LIABILITY TO YOU WHATSOEVER FOR ANY DAMAGES OR LOSSES. IN NO EVENT SHALL OUR TOTAL AGGREGATE LIABILITY EXCEED ZERO DOLLARS ($0 AUD).', 'YOU AGREE TO RELEASE, WAIVE, AND DISCHARGE ANY AND ALL CLAIMS, DEMANDS, AND CAUSES OF ACTION AGAINST ANQR AND ITS OPERATORS ARISING FROM YOUR USE OF THE SERVICE.', 'SOME JURISDICTIONS DO NOT ALLOW THE EXCLUSION OF CERTAIN WARRANTIES OR LIMITATIONS OF LIABILITY. IN SUCH JURISDICTIONS, OUR LIABILITY SHALL BE LIMITED TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW.'],
+      heading: 'Umkhawulo wesibopho',
+      paragraphs: ['NGOKUZE KUBE YIZINGA ELIPHEZULU ELIVUMELWE NGUMTHETHO, I-ANQR NABASEBENZI BAYO, ABAXHUMANA NAYO, NABANIKEZELI BAMALAYISENSI NGEKE BABE NESIBOPHO SANOMONAKALO OQONDILE, ONGAQONDILE, ONGAQONDILE, OKHETHEKILE, OLANDELANA NAWO, OJWAYISAYO, NOMA OYISIBONELO, KUBANDAKANYA KODWA AKUPHELELWE KUMONAKALO WOKULAHLEKELWA KWENZUZO, IMALI ENGENILE, IDATHA, INHLANHLA, UKUSETSHENZISWA, NOMA OKUNYE UKULAHLEKELWA OKUNGAPHATHEKI, OKUVELA KUNOMA OKUHLOBENE NOKUFINYELELA KWAKHO KUNOMA UKUSETSHENZISWA (NOMA UKUNGAKWAZI UKUFINYELELA NOMA UKUSETSHENZISWA) KWENSIZA.', 'UYAQONDA FUTHI UYAVUMA NGOKUQONDILE UKUTHI UKUSEBENZISA KWAKHO LE NKONZO KUSENGOZINI YAKHO WEDWA. LE NKONZO INIKELWA MAHHALA, FUTHI NGOKUFANELE, UYAVUMA UKUTHI I-ANQR NABASEBENZI BAYO AKUKHO SIBOPHO KUWE NOMA YILUPHI UMONO NOMA UKULAHLEKELWA. AKUKHO NTO OKUFANELE ISIBOPHO SETHU ESIPHELELE SIZODLULELA AMADOLA AYIZIRO ($0 AUD).', 'UYAVUMA UKUKHULULA, UKUKHIPHA, NOKWEHLISA IZINTO ZONKE EZIMANGALWENI, IZIMFUNO, NEZIMBANGELA ZESINYATHELO ESIPHAMBENE NE-ANQR NABASEBENZI BAYO ESIVELA EKUSENZISENI KWAKHO INSIZA.', 'AMANYE AMAKHOSI OKULAWULA AKAVUMELI UKUKHISHWA KWEZIQINISEKISO EZITHILE NOMA IMIKHAWULO YESIBOPHO. KULEZO ZOKULAWULA, ISIBOPHO SETHU SIZOKHAWULISWA NGESIKHATHI ESIPHEZULU ESIVUMELWE NGUMTHETHO OSEBENZAYO.'],
     },
     {
-      heading: 'Indemnification',
-      paragraphs: ['You agree to indemnify, defend, and hold harmless ANQR, its operators, affiliates, and their respective officers, directors, employees, and agents from any claims, damages, losses, liabilities, costs, and expenses (including legal fees) arising from: (a) your use of the site; (b) your violation of these Terms; (c) your violation of any third-party rights; (d) any content you encode into QR codes.'],
+      heading: 'Isinxephezelo',
+      paragraphs: ['Uyavuma ukuvikela, ukuvikela, nokugcina i-ANQR, abaqhubi bayo, abasebenzisana nabo, kanye nezikhulu zabo, abaqondisi, abasebenzi, kanye nama-ejenti angenacala kunoma yiziphi izimangalo, umonakalo, ukulahlekelwa, izikweletu, izindleko, kanye nezindleko (kufaka phakathi izimali zomthetho) ezivela ku: (a) ukusebenzisa kwakho isayithi; (b) ukwephulwa kwakho kwale Migomo; (c) ukwephulwa kwakho kwanoma yimaphi amalungelo eqembu lesithathu; (d) noma yikuphi okuqukethwe okufake kumakhodi e-QR.'],
     },
     {
-      heading: 'Dispute resolution',
-      paragraphs: ['Any dispute arising from these Terms or your use of ANQR shall first be attempted to be resolved through informal negotiation by contacting ${CONTACT_EMAIL}.', 'If informal resolution fails, disputes shall be resolved through binding arbitration in Victoria, Australia, except that either party may seek injunctive relief in court for intellectual property violations.'],
+      heading: 'Ukuxazulula Izingxabano',
+      paragraphs: ['Noma iyiphi ingxabano evela kule Migomo noma ukusebenzisa kwakho i-ANQR kufanele kuqala izame ukuxazululwa ngokuxoxisana okungakahleleki ngokuxhumana no-${CONTACT_EMAIL}.', 'Uma isixazululo esingakahleleki sihluleka, izingxabano zizoxazululwa ngokulamula okubophezelayo eVictoria, e-Australia, ngaphandle kokuthi noma yiliphi iqembu lingafuna usizo enkantolo ngenxa yokwephulwa kwempahla yobuhlakani.'],
     },
     {
-      heading: 'Class action waiver',
-      paragraphs: ['TO THE EXTENT PERMITTED BY LAW, YOU AGREE THAT ANY DISPUTE RESOLUTION PROCEEDINGS WILL BE CONDUCTED ONLY ON AN INDIVIDUAL BASIS AND NOT IN A CLASS, CONSOLIDATED, OR REPRESENTATIVE ACTION.'],
+      heading: 'Ukungavunyelwa kwesenzo sekilasi',
+      paragraphs: ['NGOKUVUMELEKILE NGOMTHETHO, UYAVUMA UKUTHI NOMA YILUPHI ULWAZI LOKUXOXA IZINGXABANO LEZIZOQHUTSHWA KUPHELA NGOMUNTU NGAMUNYE HHAYI NGESINYATHELO SEKLASI, ESIHLANGANISIWE, NOMA SOKUMELA.'],
     },
     {
-      heading: 'Governing law',
-      paragraphs: ['These Terms are governed by the laws of Victoria, Australia, without regard to conflict of laws principles. You consent to the exclusive jurisdiction of the courts located in Victoria, Australia.'],
+      heading: 'Umthetho Obusayo',
+      paragraphs: ['Le Migomo ilawulwa yimithetho yaseVictoria, e-Australia, ngaphandle kokubheka izimiso zokungqubuzana kwemithetho. Uyavuma ukuthi izinkantolo eziseVictoria, e-Australia zinegunya elikhethekile.'],
     },
     {
-      heading: 'Changes and availability',
-      paragraphs: ['We may modify, suspend, or discontinue the site (or any part of it) at any time without notice or liability.', 'We may update these Terms at any time. The "Last updated" date indicates when they were most recently revised. Continued use after changes constitutes acceptance.'],
+      heading: 'Izinguquko nokutholakala',
+      paragraphs: ['Singashintsha, simise okwesikhashana, noma simise isayithi (noma ingxenye yalo) nganoma yisiphi isikhathi ngaphandle kwesaziso noma icala.', 'Singabuyekeza le Migomo nganoma yisiphi isikhathi. Usuku Lokubuyekezwa Kokugcina lubonisa ukuthi yabuyekezwa nini muva nje. Ukusetshenziswa okuqhubekayo ngemva kwezinguquko kusho ukwamukelwa.'],
     },
     {
-      heading: 'Severability',
-      paragraphs: ['If any provision of these Terms is held invalid or unenforceable, that provision will be enforced to the maximum extent permissible, and the remaining provisions will remain in full force and effect.'],
+      heading: 'Ukuhlukaniswa',
+      paragraphs: ['Uma noma yimuphi umbandela wale Migomo uthathwa njengongasebenzi noma ongenakusebenza, lowo mbandela uzosebenza ngezinga eliphezulu elivunyelwe, futhi umbandela osele uzohlala usebenza ngokugcwele.'],
     },
     {
-      heading: 'Waiver',
-      paragraphs: ['Our failure to enforce any right or provision of these Terms shall not be deemed a waiver of such right or provision.'],
+      heading: 'Ukungahoxiswa',
+      paragraphs: ['Ukwehluleka kwethu ukuphoqelela noma yiliphi ilungelo noma ilungiselelo lale Migomo ngeke kubhekwe njengokungahoxiswa kwalelo lungelo noma ilungiselelo.'],
     },
     {
-      heading: 'Entire agreement',
-      paragraphs: ['These Terms, together with our Privacy Policy, constitute the entire agreement between you and ANQR regarding your use of the site and supersede any prior agreements.'],
+      heading: 'Isivumelwano esiphelele',
+      paragraphs: ['Le Migomo, kanye neNqubomgomo yethu Yobumfihlo, yakha isivumelwano sonke phakathi kwakho ne-ANQR maqondana nokusebenzisa kwakho isayithi futhi ithatha indawo yanoma yiziphi izivumelwano zangaphambilini.'],
     },
     {
-      heading: 'Force majeure',
-      paragraphs: ['We shall not be liable for any failure or delay in performance due to circumstances beyond our reasonable control, including natural disasters, war, terrorism, riots, government actions, or internet/infrastructure failures.'],
+      heading: 'I-Force Majeure',
+      paragraphs: ['Ngeke sibe nesibopho nganoma yikuphi ukwehluleka noma ukubambezeleka kokusebenza ngenxa yezimo ezingaphezu kwamandla ethu, okuhlanganisa izinhlekelele zemvelo, impi, ubuphekula, izibhelu, izenzo zikahulumeni, noma ukwehluleka kwe-inthanethi/ingqalasizinda.'],
     },
     {
-      heading: 'Contact',
-      paragraphs: ['Questions about these Terms can be sent to: ${CONTACT_EMAIL}'],
+      heading: 'Ukuxhumana',
+      paragraphs: ['Imibuzo mayelana nale Migomo ingathunyelwa ku: ${CONTACT_EMAIL}'],
     },
   ],
 };

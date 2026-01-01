@@ -2,79 +2,79 @@ import type { PageDefinition } from '../types';
 import { LAST_UPDATED } from '../types';
 
 export const privacy: PageDefinition = {
-  title: 'Privacy Policy',
-  description: 'Information ANQR collects, how it is used, and your rights under applicable privacy laws.',
+  title: 'Политика за поверителност',
+  description: 'Информацията, която ANQR събира, как се използва и вашите права съгласно приложимите закони за поверителност.',
   lastUpdated: LAST_UPDATED,
   sections: [
     {
-      heading: 'Summary',
-      paragraphs: ['ANQR is a QR code generator with a client-first approach. We do not require you to create an account. By default, QR codes are generated locally in your browser — we do not have access to the content you encode.', 'For professional use, ANQR provides a server-side API that generates QR codes from URL parameters. When using the API, your QR content is processed on our servers to render the image, but is not stored or logged.', 'We use Google AdSense for advertising and may use analytics services. These services collect information through cookies and similar technologies. This policy explains what data is collected, how it is used, and your rights.'],
+      heading: 'Резюме',
+      paragraphs: ['ANQR е генератор на QR кодове с подход, ориентиран към клиента. Не изискваме от вас да създавате акаунт. По подразбиране QR кодовете се генерират локално във вашия браузър — ние нямаме достъп до съдържанието, което кодирате.', 'За професионална употреба, ANQR предоставя API от страна на сървъра, който генерира QR кодове от URL параметри. Когато използвате API, вашето QR съдържание се обработва на нашите сървъри, за да се изобрази изображението, но не се съхранява или регистрира.', 'Използваме Google AdSense за реклама и може да използваме аналитични услуги. Тези услуги събират информация чрез бисквитки и подобни технологии. Тази политика обяснява какви данни се събират, как се използват и какви са вашите права.'],
     },
     {
-      heading: 'Information we collect',
-      bullets: ['Information you provide: If you contact us via email or our contact form, we collect your name, email address, and message content.', 'Automatically collected information: Our hosting provider (Netlify), advertising partners, and analytics services may collect: IP address, browser type and version, operating system, device type, referring URL, pages visited, time on site, and approximate geographic location.', 'Third-party cookies: Our advertising partners (Google AdSense) use cookies and similar technologies to serve and measure advertisements. ANQR itself does not set any first-party cookies.'],
+      heading: 'Информация, която събираме',
+      bullets: ['Информация, която предоставяте: Ако се свържете с нас по имейл или чрез нашата форма за контакт, ние събираме вашето име, имейл адрес и съдържание на съобщението.', 'Автоматично събрана информация: Нашият доставчик на хостинг услуги (Netlify), рекламните партньори и аналитичните услуги могат да събират: IP адрес, тип и версия на браузъра, операционна система, тип устройство, препращащ URL адрес, посетени страници, време, прекарано на сайта, и приблизително географско местоположение.', 'Бисквитки на трети страни: Нашите рекламни партньори (Google AdSense) използват бисквитки и подобни технологии за показване и измерване на реклами. Самият ANQR не задава никакви бисквитки на първа страна.'],
     },
     {
-      heading: 'Cookies and third-party technologies',
-      paragraphs: ['ANQR does not set any first-party cookies. Your preferences (such as dark mode) are stored locally on your device, which is not transmitted to any server.', 'However, our advertising partners (Google AdSense) and hosting provider may use cookies and similar tracking technologies:'],
-      bullets: ['Advertising cookies (third-party): Set by Google AdSense and advertising partners to serve relevant ads, measure ad performance, and understand user interests. These cookies may track your activity across different websites.', 'Analytics cookies (third-party): May be used by our hosting provider or analytics services to collect anonymised usage data.'],
+      heading: 'Бисквитки и технологии на трети страни',
+      paragraphs: ['ANQR не задава никакви бисквитки на първа страна. Вашите предпочитания (като например тъмен режим) се съхраняват локално на вашето устройство и не се предават на никой сървър.', 'Нашите рекламни партньори (Google AdSense) и доставчикът на хостинг услуги обаче могат да използват бисквитки и подобни технологии за проследяване:'],
+      bullets: ['Рекламни бисквитки (на трети страни): Задават се от Google AdSense и рекламни партньори, за да показват подходящи реклами, да измерват ефективността на рекламите и да разбират интересите на потребителите. Тези бисквитки могат да проследяват активността ви в различни уебсайтове.', 'Анализни бисквитки (на трети страни): Могат да се използват от нашия доставчик на хостинг услуги или аналитични услуги за събиране на анонимизирани данни за употреба.'],
     },
     {
-      heading: 'Google AdSense and advertising',
-      paragraphs: ['We display advertisements through Google AdSense. Google and its partners use cookies to serve ads based on your browsing history on this site and other websites (interest-based advertising).', 'Learn how Google uses your information: https://policies.google.com/technologies/partner-sites', 'Manage ad personalisation: https://adssettings.google.com', 'Opt out via Network Advertising Initiative: https://optout.networkadvertising.org', 'Opt out via Digital Advertising Alliance: https://optout.aboutads.info'],
+      heading: 'Google AdSense и реклама',
+      paragraphs: ['Показваме реклами чрез Google AdSense. Google и неговите партньори използват бисквитки, за да показват реклами въз основа на историята ви на сърфиране на този сайт и други уебсайтове (реклама, базирана на интереси).', 'Научете как Google използва вашата информация: https://policies.google.com/technologies/partner-sites', 'Управление на персонализирането на рекламите: https://adssettings.google.com', 'Отказ чрез Инициативата за мрежова реклама: https://optout.networkadvertising.org', 'Отказ чрез Digital Advertising Alliance: https://optout.aboutads.info'],
     },
     {
-      heading: 'How we use information',
-      bullets: ['To respond to your enquiries and provide support.', 'To display relevant advertisements through our advertising partners.', 'To analyse site usage and improve our services.', 'To detect, prevent, and address fraud, abuse, and security issues.', 'To comply with legal obligations.'],
+      heading: 'Как използваме информацията',
+      bullets: ['За да отговорим на вашите запитвания и да ви предоставим подкрепа.', 'За да показваме подходящи реклами чрез нашите рекламни партньори.', 'За да анализираме използването на сайта и да подобрим услугите си.', 'За откриване, предотвратяване и справяне с измами, злоупотреби и проблеми със сигурността.', 'За да се спазват законовите задължения.'],
     },
     {
-      heading: 'Third-party services',
-      bullets: ['Google AdSense: Receives data to serve and measure advertisements.', 'Analytics providers: Receive anonymised usage data.', 'Netlify (hosting): Processes requests and may log IP addresses.', 'We do not sell your personal information. However, sharing data with advertising partners may be considered a "sale" under CCPA (see below).'],
+      heading: 'Услуги на трети страни',
+      bullets: ['Google AdSense: Получава данни за показване и измерване на реклами.', 'Доставчици на анализи: Получаване на анонимизирани данни за употреба.', 'Netlify (хостинг): Обработва заявки и може да регистрира IP адреси.', 'Ние не продаваме вашата лична информация. Споделянето на данни с рекламни партньори обаче може да се счита за продажба съгласно CCPA (вижте по-долу).'],
     },
     {
-      heading: 'Data retention',
-      bullets: ['Contact submissions: Up to 2 years.', 'Server logs: Up to 30 days (hosting provider).', 'Analytics data: Up to 26 months (anonymised).', 'Advertising cookies: Typically 13 months (varies by partner).'],
+      heading: 'Съхранение на данни',
+      bullets: ['Подаване на контакти: До 2 години.', 'Сървърни лог файлове: До 30 дни (хостинг доставчик).', 'Аналитични данни: До 26 месеца (анонимизирани).', 'Рекламни бисквитки: Обикновено 13 месеца (варира в зависимост от партньора).'],
     },
     {
-      heading: 'Your rights under GDPR (EEA users)',
-      paragraphs: ['If you are in the European Economic Area, you have the following rights under the General Data Protection Regulation:'],
-      bullets: ['Right of access: Request a copy of personal data we hold about you.', 'Right to rectification: Request correction of inaccurate data.', 'Right to erasure: Request deletion of your data ("right to be forgotten").', 'Right to restrict processing: Request limits on how we use your data.', 'Right to data portability: Request your data in a portable format.', 'Right to object: Object to processing, including for direct marketing.', 'Right to withdraw consent: Withdraw consent at any time where processing is consent-based.', 'Right to lodge a complaint: File a complaint with your data protection authority.'],
+      heading: 'Вашите права съгласно GDPR (потребители от ЕИП)',
+      paragraphs: ['Ако се намирате в Европейското икономическо пространство, имате следните права съгласно Общия регламент относно защитата на данните:'],
+      bullets: ['Право на достъп: Поискайте копие от личните данни, които съхраняваме за вас.', 'Право на коригиране: Искане за коригиране на неточни данни.', 'Право на изтриване: Искате изтриване на вашите данни (право да бъдете забравени).', 'Право на ограничаване на обработката: Искане за ограничения върху начина, по който използваме вашите данни.', 'Право на преносимост на данните: Заявете данните си в преносим формат.', 'Право на възражение: Възразяване срещу обработването, включително за директен маркетинг.', 'Право на оттегляне на съгласие: Оттеглете съгласието си по всяко време, когато обработването се основава на съгласие.', 'Право на подаване на жалба: Подайте жалба до вашия орган за защита на данните.'],
     },
     {
-      heading: 'GDPR legal basis',
-      paragraphs: ['We process data on these bases: (a) Consent — for personalised advertising (managed by our advertising partners); (b) Legitimate interests — for analytics, security, and improvement; (c) Contract — to respond to enquiries.', 'To exercise your rights, contact ${CONTACT_EMAIL}. We respond within 30 days.'],
+      heading: 'Правно основание на GDPR',
+      paragraphs: ['Обработваме данни на следните основания: (а) Съгласие — за персонализирана реклама (управлявана от нашите рекламни партньори); (б) Законни интереси — за анализи, сигурност и подобрения; (в) Договор — за отговаряне на запитвания.', 'За да упражните правата си, свържете се с ${CONTACT_EMAIL}. Отговаряме в рамките на 30 дни.'],
     },
     {
-      heading: 'Your rights under CCPA (California users)',
-      bullets: ['Right to know: Request information about data collected, sources, purposes, and third parties.', 'Right to delete: Request deletion of your personal information.', 'Right to opt-out: Opt out of the "sale" of personal information (sharing with ad partners may qualify).', 'Right to non-discrimination: We will not discriminate for exercising your rights.'],
+      heading: 'Вашите права съгласно CCPA (потребители в Калифорния)',
+      bullets: ['Право на информация: Искане на информация за събраните данни, източници, цели и трети страни.', 'Право на изтриване: Искане за изтриване на личната ви информация.', 'Право на отказ: Отказ от продажба на лична информация (споделянето с рекламни партньори може да отговаря на условията).', 'Право на недискриминация: Няма да дискриминираме за упражняване на вашите права.'],
     },
     {
-      heading: 'CCPA categories collected',
-      paragraphs: ['Categories: Identifiers (IP address, device ID), Internet activity (browsing, ad interactions), Geolocation (approximate), Inferences (interests from browsing).', 'To exercise rights or opt out: ${CONTACT_EMAIL} or adjust cookie settings.'],
+      heading: 'Събрани категории по CCPA',
+      paragraphs: ['Категории: Идентификатори (IP адрес, идентификатор на устройство), интернет активност (сърфиране, взаимодействия с реклами), геолокация (приблизителна), изводи (интереси от сърфиране).', 'За да упражните права или да се откажете: ${CONTACT_EMAIL} или да коригирате настройките на бисквитките.'],
     },
     {
-      heading: 'International transfers',
-      paragraphs: ['Your information may be transferred to countries with different data protection laws, including the United States. We use appropriate safeguards such as Standard Contractual Clauses.'],
+      heading: 'Международни преводи',
+      paragraphs: ['Вашата информация може да бъде прехвърлена в държави с различни закони за защита на данните, включително Съединените щати. Използваме подходящи предпазни мерки, като например стандартни договорни клаузи.'],
     },
     {
-      heading: 'Children\'s privacy',
-      paragraphs: ['ANQR is not directed at children under 13 (or 16 in the EEA). We do not knowingly collect data from children. Contact ${CONTACT_EMAIL} if you believe a child has provided information.'],
+      heading: 'Личност на децата',
+      paragraphs: ['ANQR не е насочен към деца под 13 години (или 16 години в ЕИП). Ние съзнателно не събираме данни от деца. Свържете се с ${CONTACT_EMAIL}, ако смятате, че дете е предоставило информация.'],
     },
     {
-      heading: 'Security',
-      paragraphs: ['We use appropriate technical and organisational measures to protect data, including HTTPS encryption. However, no internet transmission is 100% secure.'],
+      heading: 'Сигурност',
+      paragraphs: ['Използваме подходящи технически и организационни мерки за защита на данните, включително HTTPS криптиране. Въпреки това, никое интернет предаване не е 100% сигурно.'],
     },
     {
-      heading: 'Do Not Track',
-      paragraphs: ['We honour Do Not Track browser signals where feasible, though advertising partners may not respond to DNT.'],
+      heading: 'Не проследявай',
+      paragraphs: ['Уважаваме сигналите на браузъра Не проследявай, когато е възможно, въпреки че рекламните партньори може да не реагират на DNT.'],
     },
     {
-      heading: 'Changes to this policy',
-      paragraphs: ['We may update this policy periodically. The "Last updated" date indicates the most recent revision. Significant changes may be communicated via a site banner.'],
+      heading: 'Промени в тази политика',
+      paragraphs: ['Можем да актуализираме тази политика периодично. Датата Последна актуализация показва най-скорошната редакция. Съществени промени могат да бъдат съобщени чрез банер на сайта.'],
     },
     {
-      heading: 'Contact us',
-      paragraphs: ['For privacy questions or to exercise your rights: ${CONTACT_EMAIL} or use our Contact page. We respond to privacy requests within 30 days.'],
+      heading: 'Свържете се с нас',
+      paragraphs: ['За въпроси относно поверителността или за да упражните правата си: ${CONTACT_EMAIL} или използвайте нашата страница за контакти. Отговаряме на заявките за поверителност в рамките на 30 дни.'],
     },
   ],
 };

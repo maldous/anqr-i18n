@@ -2,41 +2,41 @@ import type { PageDefinition } from '../types';
 import { CONTACT_EMAIL, LAST_UPDATED } from '../types';
 
 export const about: PageDefinition = {
-  title: 'About ANQR',
-  description: 'ANQR is a free QR code generator with a client-first approach — generate QR codes locally or use our API for embedding.',
+  title: '«Om ANQR»',
+  description: '«ANQR er en gratis QR-kodegenerator med en klientfokusert tilnærming – generer QR-koder lokalt eller bruk API-et vårt for innebygging.»',
   lastUpdated: LAST_UPDATED,
   sections: [
     {
-      heading: 'What is ANQR?',
-      paragraphs: ['ANQR (pronounced "anchor") is a free QR code generator that creates scannable codes for URLs, text, Wi-Fi credentials, contact cards, calendar events, and more.', 'It is built for individuals, small businesses, marketers, and developers who want powerful QR tools without signing up. The client-first design means QR codes are generated locally in your browser by default, with an optional server API for professional embedding and integration.'],
+      heading: '«Hva er ANQR?»',
+      paragraphs: ['«ANQR (uttales «anker») er en gratis QR-kodegenerator som lager skannbare koder for URL-er, tekst, Wi-Fi-legitimasjon, kontaktkort, kalenderhendelser og mer.»', '«Den er bygget for enkeltpersoner, små bedrifter, markedsførere og utviklere som ønsker kraftige QR-verktøy uten å registrere seg. Klientfokusert design betyr at QR-koder genereres lokalt i nettleseren din som standard, med et valgfritt server-API for profesjonell innebygging og integrering.»'],
     },
     {
-      heading: 'Key features',
-      bullets: ['Generate QR codes instantly in your browser — no account required.', 'Customise colours, module styles, finder patterns, and add image overlays.', 'Export in multiple formats: PNG, SVG, WebP, and animated GIF.', 'Advanced controls for error correction level, QR version, encoding mode, and mask selection.', 'Scan-safety guidance and live preview to help keep codes readable in print and on screens.', 'Server-side API for professional embedding with full parameter support.', 'Works offline once loaded — it is a static web app you can run anywhere.'],
+      heading: '«Nøkkelfunksjoner»',
+      bullets: ['«Generer QR-koder umiddelbart i nettleseren din – ingen konto kreves.»', '«Tilpass farger, modulstiler, søkermønstre og legg til bildeoverlegg.»', '«Eksporter i flere formater: PNG, SVG, WebP og animert GIF.»', '«Avanserte kontroller for feilkorrigeringsnivå, QR-versjon, kodingsmodus og maskevalg.»', '«Veiledning for skannesikkerhet og forhåndsvisning i sanntid for å holde koder lesbare i trykt format og på skjermer.»', '«Serverside-API for profesjonell innebygging med full parameterstøtte.»', '«Fungerer offline når den er lastet inn – det er en statisk webapp du kan kjøre hvor som helst.»'],
     },
     {
-      heading: 'How ANQR works',
-      paragraphs: ['ANQR runs in your browser and encodes your input into a standard QR matrix with Reed–Solomon error correction, then renders it to the format you choose.', 'By default, generation happens locally in your browser. For professional use, you can also use the server-side API to generate QR codes via URL parameters — perfect for embedding in websites, emails, or automated workflows.', 'When you add overlays or animations, ANQR balances styling with scan reliability so the result remains scannable.', 'ANQR focuses on static codes (the data is inside the QR). If you need a dynamic code (editable destination), you can encode your own redirect URL or short link.'],
+      heading: '«Hvordan ANQR fungerer»',
+      paragraphs: ['«ANQR kjører i nettleseren din og koder inndataene dine inn i en standard QR-matrise med Reed-Solomon-feilkorreksjon, og gjengir dem deretter til formatet du velger.»', '«Som standard skjer genereringen lokalt i nettleseren din. For profesjonell bruk kan du også bruke server-side API-et til å generere QR-koder via URL-parametere – perfekt for innebygging i nettsteder, e-poster eller automatiserte arbeidsflyter.»', '«Når du legger til overlegg eller animasjoner, balanserer ANQR stil med skanningspålitelighet, slik at resultatet forblir skannbart.»', '«ANQR fokuserer på statiske koder (dataene er inne i QR-koden). Hvis du trenger en dynamisk kode (redigerbar destinasjon), kan du kode din egen omdirigerings-URL eller korte lenke.»'],
     },
     {
-      heading: 'Who operates ANQR?',
+      heading: '«Hvem driver ANQR?»',
       paragraphs: [`18${CONTACT_EMAIL}19`],
     },
     {
-      heading: 'Advertising and how we stay free',
-      paragraphs: ['ANQR is free to use and is supported by advertising. We may show ads via Google AdSense and/or other advertising partners.', 'Ad providers may use cookies or similar technologies to personalise ads based on your interests and browsing activity. You can manage ad preferences in your device settings and through Google ad settings, and learn more in our Privacy Policy.', 'We do not sell the content you encode into QR codes. Ads help cover the cost of running and improving the project.'],
+      heading: '«Reklame og hvordan vi holder oss frie»',
+      paragraphs: ['«ANQR er gratis å bruke og støttes av reklame. Vi kan vise annonser via Google AdSense og/eller andre reklamepartnere.»', '«Annonseleverandører kan bruke informasjonskapsler eller lignende teknologier for å tilpasse annonser basert på dine interesser og nettleseraktivitet. Du kan administrere annonsepreferanser i enhetsinnstillingene dine og gjennom Googles annonseinnstillinger, og du kan finne ut mer i personvernerklæringen vår.»', '«Vi selger ikke innholdet du koder inn i QR-koder. Annonser bidrar til å dekke kostnadene ved å drive og forbedre prosjektet.»'],
     },
     {
-      heading: 'Open standards',
-      paragraphs: ['ANQR generates QR codes based on the ISO/IEC 18004 standard and aims for broad compatibility across scanners, cameras, and print workflows.'],
+      heading: '«Åpne standarder»',
+      paragraphs: ['«ANQR genererer QR-koder basert på ISO/IEC 18004-standarden og tar sikte på bred kompatibilitet på tvers av skannere, kameraer og utskriftsarbeidsflyter.»'],
     },
     {
-      heading: 'Trademark notice',
-      paragraphs: ['QR Code® is a registered trademark of DENSO WAVE INCORPORATED. ANQR is not affiliated with, endorsed by, or sponsored by DENSO WAVE INCORPORATED.'],
+      heading: '«Varemerkevarsel»',
+      paragraphs: ['«QR Code® er et registrert varemerke for DENSO WAVE INCORPORATED. ANQR er ikke tilknyttet, godkjent av eller sponset av DENSO WAVE INCORPORATED.»'],
     },
     {
-      heading: 'Feedback and contributions',
-      paragraphs: ['We welcome feedback, bug reports, and feature suggestions. Please get in touch via email or the contact page — we read every message, though response times may vary.'],
+      heading: '«Tilbakemeldinger og bidrag»',
+      paragraphs: ['«Vi tar gjerne imot tilbakemeldinger, feilrapporter og forslag til funksjoner. Ta kontakt via e-post eller kontaktsiden – vi leser alle meldinger, men responstidene kan variere.»'],
     },
   ],
 };

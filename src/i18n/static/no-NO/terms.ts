@@ -2,86 +2,86 @@ import type { PageDefinition } from '../types';
 import { LAST_UPDATED } from '../types';
 
 export const terms: PageDefinition = {
-  title: 'Terms of Service',
-  description: 'By accessing or using the site, you agree to be bound by these terms.',
+  title: '«Bruksvilkår»',
+  description: '«Ved å gå inn på eller bruke nettstedet, godtar du å være bundet av disse vilkårene.»',
   lastUpdated: LAST_UPDATED,
   sections: [
     {
-      heading: 'Acceptance of terms',
-      paragraphs: ['By accessing or using ANQR (anqr.link), you agree to be bound by these Terms of Service and our Privacy Policy. If you do not agree to these terms, do not use the site.', 'We may update these Terms from time to time. Continued use of the site after changes constitutes acceptance of the new terms.'],
+      heading: '«Godkjenning av vilkår»',
+      paragraphs: ['«Ved å gå inn på eller bruke ANQR (anqr.link), godtar du å være bundet av disse tjenestevilkårene og vår personvernerklæring. Hvis du ikke godtar disse vilkårene, må du ikke bruke nettstedet.»', '«Vi kan oppdatere disse vilkårene fra tid til annen. Fortsatt bruk av nettstedet etter endringer utgjør aksept av de nye vilkårene.»'],
     },
     {
-      heading: 'Eligibility',
-      paragraphs: ['You must be at least 13 years of age to use ANQR. By using the site, you represent that you meet this age requirement. If you are under 18, you represent that you have your parent or guardian\'s permission to use the site.'],
+      heading: '«Kvalifisering»',
+      paragraphs: ['«Du må være minst 13 år for å bruke ANQR. Ved å bruke nettstedet bekrefter du at du oppfyller dette alderskravet. Hvis du er under 18 år, bekrefter du at du har tillatelse fra foreldre eller verge til å bruke nettstedet.»'],
     },
     {
-      heading: 'Permitted use',
-      paragraphs: ['You may use ANQR for lawful purposes only. You are solely responsible for the content you encode into QR codes and for how you use any QR codes you generate.'],
+      heading: '«Tillatt bruk»',
+      paragraphs: ['«Du kan kun bruke ANQR til lovlige formål. Du er eneansvarlig for innholdet du koder inn i QR-koder og for hvordan du bruker eventuelle QR-koder du genererer.»'],
     },
     {
-      heading: 'Prohibited conduct',
-      paragraphs: ['You agree not to:'],
-      bullets: ['Use ANQR to create QR codes that facilitate phishing, malware distribution, fraud, scams, harassment, defamation, or any illegal activity.', 'Encode content that infringes intellectual property rights, violates privacy, or contains illegal material.', 'Attempt to disrupt, overload, or interfere with the operation or security of the site.', 'Reverse engineer, decompile, or attempt to extract source code from the site.', 'Use automated tools (bots, scrapers) to access the site in a manner that degrades performance for other users.', 'Circumvent or disable any security or access control features.', 'Impersonate any person or entity or misrepresent your affiliation.'],
+      heading: '«Forbudt oppførsel»',
+      paragraphs: ['«Du samtykker i å ikke:»'],
+      bullets: ['«Bruk ANQR til å lage QR-koder som legger til rette for phishing, distribusjon av skadelig programvare, svindel, trakassering, ærekrenkelse eller annen ulovlig aktivitet.»', '«Kod innhold som krenker immaterielle rettigheter, krenker personvernet eller inneholder ulovlig materiale.»', '«Forsøk på å forstyrre, overbelaste eller forstyrre driften eller sikkerheten til nettstedet.»', '«Utfør omvendt utvikling, dekompilering eller forsøk å trekke ut kildekode fra nettstedet.»', '«Bruk automatiserte verktøy (boter, skrapere) for å få tilgang til nettstedet på en måte som forringer ytelsen for andre brukere.»', '«Omgå eller deaktiver sikkerhets- eller tilgangskontrollfunksjoner.»', '«Utgi deg for å være en annen person eller enhet, eller feilaktig fremstille din tilknytning.»'],
     },
     {
-      heading: 'Intellectual property',
-      paragraphs: ['You retain ownership of the content you encode into QR codes. ANQR does not claim ownership of your data.', 'The ANQR name, logo, interface design, and underlying code are protected by copyright, trademark, and other intellectual property laws. You may not copy, modify, distribute, or create derivative works without our permission.', 'QR Code® is a registered trademark of DENSO WAVE INCORPORATED. ANQR is not affiliated with DENSO WAVE.'],
+      heading: '«Immateriell eiendom»',
+      paragraphs: ['«Du beholder eierskapet til innholdet du koder inn i QR-koder. ANQR gjør ikke krav på eierskap til dataene dine.»', '«ANQR-navnet, logoen, grensesnittdesignet og den underliggende koden er beskyttet av opphavsrett, varemerker og andre lover om immaterielle rettigheter. Du kan ikke kopiere, endre, distribuere eller lage avledede verk uten vår tillatelse.»', '«QR Code® er et registrert varemerke for DENSO WAVE INCORPORATED. ANQR er ikke tilknyttet DENSO WAVE.»'],
     },
     {
-      heading: 'User content license',
-      paragraphs: ['By using ANQR, you grant us no rights to your content. When using local generation (the default), all QR code generation happens in your browser and we do not access, store, or transmit your encoded data.', 'When using the server-side API, your content is processed to generate the QR image but is not stored, logged, or used for any other purpose beyond rendering the requested image.'],
+      heading: '«Lisens for brukerinnhold»',
+      paragraphs: ['«Ved å bruke ANQR gir du oss ingen rettigheter til innholdet ditt. Når du bruker lokal generering (standard), skjer all QR-kodegenerering i nettleseren din, og vi får ikke tilgang til, lagrer eller overfører dine kodede data.»', '«Når du bruker server-side API-et, behandles innholdet ditt for å generere QR-bildet, men det lagres, logges eller brukes ikke til noe annet formål enn å gjengi det forespurte bildet.»'],
     },
     {
-      heading: 'Third-party services and advertising',
-      paragraphs: ['The site displays advertisements through Google AdSense and may include links to third-party websites. We are not responsible for third-party content, services, or privacy practices.', 'Your interactions with advertisers and third parties are solely between you and them. See our Privacy Policy for information about advertising data practices.'],
+      heading: '«Tredjepartstjenester og reklame»',
+      paragraphs: ['«Nettstedet viser annonser via Google AdSense og kan inneholde lenker til tredjepartsnettsteder. Vi er ikke ansvarlige for tredjeparts innhold, tjenester eller personvernpraksis.»', '«Din samhandling med annonsører og tredjeparter skjer utelukkende mellom deg og dem. Se vår personvernerklæring for informasjon om praksis for annonseringsdata.»'],
     },
     {
-      heading: 'Disclaimer of warranties',
-      paragraphs: ['ANQR IS PROVIDED ON AN "AS IS" AND "AS AVAILABLE" BASIS WITHOUT WARRANTIES OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, AND NON-INFRINGEMENT.', 'We do not warrant that: (a) the site will be uninterrupted, secure, or error-free; (b) QR codes will scan in all environments, on all devices, or with all scanner applications; (c) the site will meet your requirements.', 'You should always test QR codes in the conditions where they will be used (print size, lighting, screen type, distance, camera quality).'],
+      heading: '«Ansvarsfraskrivelse for garantier»',
+      paragraphs: ['«ANQR TILBYS «SOM DEN ER» OG «SOM TILGJENGELIG» UTEN GARANTIER AV NOE SLAG, VERKEN DIREKTE ELLER INDIREKTE, INKLUDERT, MEN IKKE BEGRENSET TIL, INDIREKTE GARANTIER OM SALGBARHET, EGNETHET FOR ET SÆRSKILT FORMÅL OG IKKE-KRENKELSE.»', '«Vi garanterer ikke at: (a) nettstedet vil være uavbrutt, sikkert eller feilfritt; (b) QR-koder vil skannes i alle miljøer, på alle enheter eller med alle skannerapplikasjoner; (c) nettstedet vil oppfylle dine krav.»', '«Du bør alltid teste QR-koder under de forholdene der de skal brukes (utskriftsstørrelse, belysning, skjermtype, avstand, kamerakvalitet).»'],
     },
     {
-      heading: 'Limitation of liability',
-      paragraphs: ['TO THE MAXIMUM EXTENT PERMITTED BY LAW, ANQR AND ITS OPERATORS, AFFILIATES, AND LICENSORS SHALL NOT BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, CONSEQUENTIAL, PUNITIVE, OR EXEMPLARY DAMAGES, INCLUDING BUT NOT LIMITED TO DAMAGES FOR LOSS OF PROFITS, REVENUE, DATA, GOODWILL, USE, OR OTHER INTANGIBLE LOSSES, ARISING FROM OR RELATED TO YOUR ACCESS TO OR USE OF (OR INABILITY TO ACCESS OR USE) THE SERVICE.', 'YOU EXPRESSLY UNDERSTAND AND AGREE THAT YOUR USE OF THE SERVICE IS AT YOUR SOLE RISK. THE SERVICE IS PROVIDED FREE OF CHARGE, AND ACCORDINGLY, YOU AGREE THAT ANQR AND ITS OPERATORS SHALL HAVE NO LIABILITY TO YOU WHATSOEVER FOR ANY DAMAGES OR LOSSES. IN NO EVENT SHALL OUR TOTAL AGGREGATE LIABILITY EXCEED ZERO DOLLARS ($0 AUD).', 'YOU AGREE TO RELEASE, WAIVE, AND DISCHARGE ANY AND ALL CLAIMS, DEMANDS, AND CAUSES OF ACTION AGAINST ANQR AND ITS OPERATORS ARISING FROM YOUR USE OF THE SERVICE.', 'SOME JURISDICTIONS DO NOT ALLOW THE EXCLUSION OF CERTAIN WARRANTIES OR LIMITATIONS OF LIABILITY. IN SUCH JURISDICTIONS, OUR LIABILITY SHALL BE LIMITED TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW.'],
+      heading: '«Ansvarsbegrensning»',
+      paragraphs: ['«I DEN GRAD LOVEN TILLATER DET, SKAL ANQR OG DENS OPERATØRER, TILKNYTTEDE SELSKAPER OG LISENSGIVERE IKKE VÆRE ANSVARLIGE FOR NOEN DIREKTE, INDIREKTE, TILFELDIGE, SPESIELLE, FØLGESKADER, STRAFFERETTERSTATNING ELLER EKSEMPLARISKE SKADER, INKLUDERT, MEN IKKE BEGRENSET TIL, SKADER FOR TAP AV FORTJENESTE, INNTEKTER, DATA, GOODWILL, BRUK ELLER ANDRE IMMATERIELLE TAP, SOM OPPSTÅR FRA ELLER ER RELATERT TIL DIN TILGANG TIL ELLER BRUK AV (ELLER MANGLENDE EVNE TIL Å FÅ TILGANG TIL ELLER BRUKE) TJENESTEN.»', '«DU FORSTÅR OG SAMTYKKER UTTRYKKELIG I AT DIN BRUK AV TJENESTEN SKJER PÅ EGEN RISIKO. TJENESTEN TILBYS GRATIS, OG FØLGELIG SAMTYKKER DU I AT ANQR OG DENS OPERATØRER IKKE HAR ERSTATNINGSANSVAR OVERFOR DEG FOR SKADER ELLER TAP. VÅRT TOTALE ERSTATNINGSANSVAR SKAL UNDER INGEN OMSTENDIGHETER OVERSKRIDE NULL DOLLAR ($0 AUD).»', '«DU SAMTYKKER I Å FRASKRIVE, GI AVKAST PÅ OG FRASKRIVE ALLE KRAV, EFTERLYSNINGER OG SØKSMÅL MOT ANQR OG DENS OPERATØRER SOM OPPSTÅR FRA DIN BRUK AV TJENESTEN.»', '«NOEN JURISDIKSJONER TILLATER IKKE UTELUKKELSE AV VISSE GARANTIER ELLER ANSVARSBEGRENSNINGER. I SLIKE JURISDIKSJONER SKAL VÅRT ANSVAR VÆRE BEGRENSET TIL DEN GRAD GJELDENDE LOV TILLATER DET.»'],
     },
     {
-      heading: 'Indemnification',
-      paragraphs: ['You agree to indemnify, defend, and hold harmless ANQR, its operators, affiliates, and their respective officers, directors, employees, and agents from any claims, damages, losses, liabilities, costs, and expenses (including legal fees) arising from: (a) your use of the site; (b) your violation of these Terms; (c) your violation of any third-party rights; (d) any content you encode into QR codes.'],
+      heading: '«Erstatning»',
+      paragraphs: ['«Du samtykker i å holde ANQR, dets operatører, tilknyttede selskaper og deres respektive ledere, direktører, ansatte og agenter skadesløse fra ethvert krav, skade, tap, ansvar, kostnader og utgifter (inkludert advokatsalærer) som følge av: (a) din bruk av nettstedet; (b) ditt brudd på disse vilkårene; (c) ditt brudd på tredjeparts rettigheter; (d) ethvert innhold du koder inn i QR-koder.»'],
     },
     {
-      heading: 'Dispute resolution',
-      paragraphs: ['Any dispute arising from these Terms or your use of ANQR shall first be attempted to be resolved through informal negotiation by contacting ${CONTACT_EMAIL}.', 'If informal resolution fails, disputes shall be resolved through binding arbitration in Victoria, Australia, except that either party may seek injunctive relief in court for intellectual property violations.'],
+      heading: '«Tvisteløsning»',
+      paragraphs: ['«Enhver tvist som oppstår fra disse vilkårene eller din bruk av ANQR skal først forsøkes løst gjennom uformell forhandling ved å kontakte ${CONTACT_EMAIL}.»', '«Hvis uformell løsning mislykkes, skal tvister løses gjennom bindende voldgift i Victoria, Australia, med unntak av at begge parter kan søke forføyning i retten for brudd på immaterielle rettigheter.»'],
     },
     {
-      heading: 'Class action waiver',
-      paragraphs: ['TO THE EXTENT PERMITTED BY LAW, YOU AGREE THAT ANY DISPUTE RESOLUTION PROCEEDINGS WILL BE CONDUCTED ONLY ON AN INDIVIDUAL BASIS AND NOT IN A CLASS, CONSOLIDATED, OR REPRESENTATIVE ACTION.'],
+      heading: '«Fraskrivelse av gruppesøksmål»',
+      paragraphs: ['«I DEN GRAD LOVEN TILLATER DET, SAMTYKKER DU I AT ENHVER TVISTELØSNINGSPROSEDURE KUN SKAL GJENNOMFØRES PÅ INDIVIDUELL BASIS OG IKKE I ET GRUPPESØKSMÅL, SAMLET SØKSMÅL ELLER REPRESENTATIVT SØKSMÅL.»'],
     },
     {
-      heading: 'Governing law',
-      paragraphs: ['These Terms are governed by the laws of Victoria, Australia, without regard to conflict of laws principles. You consent to the exclusive jurisdiction of the courts located in Victoria, Australia.'],
+      heading: '«Gjeldende lov»',
+      paragraphs: ['«Disse vilkårene er underlagt lovene i Victoria, Australia, uten hensyn til prinsipper om lovkonflikt. Du samtykker i den eksklusive jurisdiksjonen til domstolene i Victoria, Australia.»'],
     },
     {
-      heading: 'Changes and availability',
-      paragraphs: ['We may modify, suspend, or discontinue the site (or any part of it) at any time without notice or liability.', 'We may update these Terms at any time. The "Last updated" date indicates when they were most recently revised. Continued use after changes constitutes acceptance.'],
+      heading: '«Endringer og tilgjengelighet»',
+      paragraphs: ['«Vi kan endre, suspendere eller avvikle nettstedet (eller deler av det) når som helst uten varsel eller ansvar.»', '«Vi kan oppdatere disse vilkårene når som helst. Datoen «Sist oppdatert» angir når de sist ble revidert. Fortsatt bruk etter endringer utgjør aksept.»'],
     },
     {
-      heading: 'Severability',
-      paragraphs: ['If any provision of these Terms is held invalid or unenforceable, that provision will be enforced to the maximum extent permissible, and the remaining provisions will remain in full force and effect.'],
+      heading: '«Avskillelighet»',
+      paragraphs: ['«Hvis noen bestemmelse i disse vilkårene kjennes ugyldig eller ikke kan håndheves, skal denne bestemmelsen håndheves i den grad det er tillatt, og de gjenværende bestemmelsene skal forbli i full kraft og virkning.»'],
     },
     {
-      heading: 'Waiver',
-      paragraphs: ['Our failure to enforce any right or provision of these Terms shall not be deemed a waiver of such right or provision.'],
+      heading: '«Fraskrivelse»',
+      paragraphs: ['«Hvis vi ikke håndhever noen rettighet eller bestemmelse i disse vilkårene, skal det ikke anses som en fraskrivelse av slik rettighet eller bestemmelse.»'],
     },
     {
-      heading: 'Entire agreement',
-      paragraphs: ['These Terms, together with our Privacy Policy, constitute the entire agreement between you and ANQR regarding your use of the site and supersede any prior agreements.'],
+      heading: '«Hele avtalen»',
+      paragraphs: ['«Disse vilkårene, sammen med vår personvernerklæring, utgjør hele avtalen mellom deg og ANQR angående din bruk av nettstedet, og erstatter alle tidligere avtaler.»'],
     },
     {
-      heading: 'Force majeure',
-      paragraphs: ['We shall not be liable for any failure or delay in performance due to circumstances beyond our reasonable control, including natural disasters, war, terrorism, riots, government actions, or internet/infrastructure failures.'],
+      heading: '«Force majeure»',
+      paragraphs: ['«Vi er ikke ansvarlige for feil eller forsinkelser i ytelsen som følge av omstendigheter utenfor vår rimelige kontroll, inkludert naturkatastrofer, krig, terrorisme, opptøyer, myndighetstiltak eller feil med internett/infrastruktur.»'],
     },
     {
-      heading: 'Contact',
-      paragraphs: ['Questions about these Terms can be sent to: ${CONTACT_EMAIL}'],
+      heading: '«Kontakt»',
+      paragraphs: ['«Spørsmål om disse vilkårene kan sendes til: ${CONTACT_EMAIL}»'],
     },
   ],
 };

@@ -2,79 +2,79 @@ import type { PageDefinition } from '../types';
 import { LAST_UPDATED } from '../types';
 
 export const privacy: PageDefinition = {
-  title: 'Privacy Policy',
-  description: 'Information ANQR collects, how it is used, and your rights under applicable privacy laws.',
+  title: 'ນະໂຍບາຍຄວາມເປັນສ່ວນຕົວ',
+  description: 'ຂໍ້ມູນທີ່ ANQR ເກັບກຳ, ວິທີການນຳໃຊ້ ແລະ ສິດທິຂອງທ່ານພາຍໃຕ້ກົດໝາຍວ່າດ້ວຍຄວາມເປັນສ່ວນຕົວທີ່ກ່ຽວຂ້ອງ.',
   lastUpdated: LAST_UPDATED,
   sections: [
     {
-      heading: 'Summary',
-      paragraphs: ['ANQR is a QR code generator with a client-first approach. We do not require you to create an account. By default, QR codes are generated locally in your browser — we do not have access to the content you encode.', 'For professional use, ANQR provides a server-side API that generates QR codes from URL parameters. When using the API, your QR content is processed on our servers to render the image, but is not stored or logged.', 'We use Google AdSense for advertising and may use analytics services. These services collect information through cookies and similar technologies. This policy explains what data is collected, how it is used, and your rights.'],
+      heading: 'ສະຫຼຸບ',
+      paragraphs: ['ANQR ເປັນໂປຣແກຣມສ້າງລະຫັດ QR ທີ່ມີວິທີການທີ່ເນັ້ນລູກຄ້າເປັນອັນດັບໜຶ່ງ. ພວກເຮົາບໍ່ຕ້ອງການໃຫ້ທ່ານສ້າງບັນຊີ. ໂດຍຄ່າເລີ່ມຕົ້ນ, ລະຫັດ QR ຈະຖືກສ້າງຂຶ້ນໃນທ້ອງຖິ່ນໃນໂປຣແກຣມທ່ອງເວັບຂອງທ່ານ — ພວກເຮົາບໍ່ສາມາດເຂົ້າເຖິງເນື້ອຫາທີ່ທ່ານເຂົ້າລະຫັດໄດ້.', 'ສຳລັບການນຳໃຊ້ແບບມືອາຊີບ, ANQR ໃຫ້ API ດ້ານເຊີບເວີທີ່ສ້າງລະຫັດ QR ຈາກພາລາມິເຕີ URL. ເມື່ອໃຊ້ API, ເນື້ອຫາ QR ຂອງທ່ານຈະຖືກປະມວນຜົນຢູ່ໃນເຊີບເວີຂອງພວກເຮົາເພື່ອສະແດງຮູບພາບ, ແຕ່ບໍ່ໄດ້ຖືກເກັບໄວ້ ຫຼື ບັນທຶກໄວ້.', 'ພວກເຮົາໃຊ້ Google AdSense ສຳລັບການໂຄສະນາ ແລະ ອາດຈະໃຊ້ບໍລິການວິເຄາະ. ການບໍລິການເຫຼົ່ານີ້ເກັບກຳຂໍ້ມູນຜ່ານຄຸກກີ້ ແລະ ເທັກໂນໂລຢີທີ່ຄ້າຍຄືກັນ. ນະໂຍບາຍນີ້ອະທິບາຍວ່າຂໍ້ມູນໃດຖືກເກັບກຳ, ວິທີການນຳໃຊ້ ແລະ ສິດທິຂອງທ່ານ.'],
     },
     {
-      heading: 'Information we collect',
-      bullets: ['Information you provide: If you contact us via email or our contact form, we collect your name, email address, and message content.', 'Automatically collected information: Our hosting provider (Netlify), advertising partners, and analytics services may collect: IP address, browser type and version, operating system, device type, referring URL, pages visited, time on site, and approximate geographic location.', 'Third-party cookies: Our advertising partners (Google AdSense) use cookies and similar technologies to serve and measure advertisements. ANQR itself does not set any first-party cookies.'],
+      heading: 'ຂໍ້ມູນທີ່ພວກເຮົາເກັບກຳ',
+      bullets: ['ຂໍ້ມູນທີ່ທ່ານໃຫ້: ຖ້າທ່ານຕິດຕໍ່ພວກເຮົາຜ່ານທາງອີເມວ ຫຼື ແບບຟອມຕິດຕໍ່ຂອງພວກເຮົາ, ພວກເຮົາຈະເກັບກຳຊື່, ທີ່ຢູ່ອີເມວ ແລະ ເນື້ອໃນຂໍ້ຄວາມຂອງທ່ານ.', 'ຂໍ້ມູນທີ່ເກັບກຳໂດຍອັດຕະໂນມັດ: ຜູ້ໃຫ້ບໍລິການໂຮດຕິ້ງຂອງພວກເຮົາ (Netlify), ຄູ່ຮ່ວມໂຄສະນາ, ແລະ ການບໍລິການວິເຄາະອາດຈະເກັບກຳ: ທີ່ຢູ່ IP, ປະເພດ ແລະ ເວີຊັນຂອງບຣາວເຊີ, ລະບົບປະຕິບັດການ, ປະເພດອຸປະກອນ, URL ອ້າງອີງ, ໜ້າເວັບທີ່ເຂົ້າເບິ່ງ, ເວລາຢູ່ໃນເວັບໄຊທ໌, ແລະ ສະຖານທີ່ທາງພູມສາດປະມານ.', 'ຄຸກກີ້ພາກສ່ວນທີສາມ: ຄູ່ຮ່ວມໂຄສະນາຂອງພວກເຮົາ (Google AdSense) ໃຊ້ຄຸກກີ້ ແລະ ເທັກໂນໂລຢີທີ່ຄ້າຍຄືກັນເພື່ອໃຫ້ບໍລິການ ແລະ ວັດແທກການໂຄສະນາ. ANQR ເອງບໍ່ໄດ້ຕັ້ງຄ່າຄຸກກີ້ພາກສ່ວນທີສາມໃດໆ.'],
     },
     {
-      heading: 'Cookies and third-party technologies',
-      paragraphs: ['ANQR does not set any first-party cookies. Your preferences (such as dark mode) are stored locally on your device, which is not transmitted to any server.', 'However, our advertising partners (Google AdSense) and hosting provider may use cookies and similar tracking technologies:'],
-      bullets: ['Advertising cookies (third-party): Set by Google AdSense and advertising partners to serve relevant ads, measure ad performance, and understand user interests. These cookies may track your activity across different websites.', 'Analytics cookies (third-party): May be used by our hosting provider or analytics services to collect anonymised usage data.'],
+      heading: 'ຄຸກກີ້ ແລະ ເຕັກໂນໂລຊີພາກສ່ວນທີສາມ',
+      paragraphs: ['ANQR ບໍ່ໄດ້ຕັ້ງຄ່າຄຸກກີ້ຂອງພາກສ່ວນທີໜຶ່ງໃດໆ. ຄວາມມັກຂອງທ່ານ (ເຊັ່ນ: ໂໝດມືດ) ຈະຖືກເກັບໄວ້ໃນອຸປະກອນຂອງທ່ານ, ເຊິ່ງຈະບໍ່ຖືກສົ່ງໄປຫາເຊີບເວີໃດໆ.', 'ຢ່າງໃດກໍຕາມ, ຄູ່ຮ່ວມໂຄສະນາຂອງພວກເຮົາ (Google AdSense) ແລະ ຜູ້ໃຫ້ບໍລິການໂຮດຕິ້ງອາດຈະໃຊ້ຄຸກກີ້ ແລະ ເທັກໂນໂລຢີການຕິດຕາມທີ່ຄ້າຍຄືກັນ:'],
+      bullets: ['ຄຸກກີ້ໂຄສະນາ (ພາກສ່ວນທີສາມ): ຕັ້ງຄ່າໂດຍ Google AdSense ແລະຄູ່ຮ່ວມງານໂຄສະນາເພື່ອໃຫ້ບໍລິການໂຄສະນາທີ່ກ່ຽວຂ້ອງ, ວັດແທກປະສິດທິພາບຂອງໂຄສະນາ, ແລະເຂົ້າໃຈຄວາມສົນໃຈຂອງຜູ້ໃຊ້. ຄຸກກີ້ເຫຼົ່ານີ້ອາດຈະຕິດຕາມກິດຈະກຳຂອງທ່ານໃນເວັບໄຊທ໌ຕ່າງໆ.', 'ຄຸກກີ້ການວິເຄາະ (ພາກສ່ວນທີສາມ): ຜູ້ໃຫ້ບໍລິການໂຮດຕິ້ງ ຫຼື ບໍລິການວິເຄາະຂອງພວກເຮົາອາດຈະຖືກນຳໃຊ້ເພື່ອເກັບກຳຂໍ້ມູນການນຳໃຊ້ທີ່ບໍ່ລະບຸຊື່.'],
     },
     {
-      heading: 'Google AdSense and advertising',
-      paragraphs: ['We display advertisements through Google AdSense. Google and its partners use cookies to serve ads based on your browsing history on this site and other websites (interest-based advertising).', 'Learn how Google uses your information: https://policies.google.com/technologies/partner-sites', 'Manage ad personalisation: https://adssettings.google.com', 'Opt out via Network Advertising Initiative: https://optout.networkadvertising.org', 'Opt out via Digital Advertising Alliance: https://optout.aboutads.info'],
+      heading: 'Google AdSense ແລະ ການໂຄສະນາ',
+      paragraphs: ['ພວກເຮົາສະແດງໂຄສະນາຜ່ານ Google AdSense. Google ແລະຄູ່ຮ່ວມງານຂອງມັນໃຊ້ຄຸກກີເພື່ອສະແດງໂຄສະນາໂດຍອີງໃສ່ປະຫວັດການທ່ອງເວັບຂອງທ່ານໃນເວັບໄຊທ໌ນີ້ ແລະເວັບໄຊທ໌ອື່ນໆ (ການໂຄສະນາໂດຍອີງໃສ່ຄວາມສົນໃຈ).', 'ຮຽນຮູ້ວິທີທີ່ Google ໃຊ້ຂໍ້ມູນຂອງທ່ານ: https://policies.google.com/technologies/partner-sites', 'ຈັດການການປັບແຕ່ງໂຄສະນາເປັນສ່ວນຕົວ: https://adssettings.google.com', 'ເລືອກອອກຜ່ານ Network Advertising Initiative: https://optout.networkadvertising.org', 'ເລືອກອອກຜ່ານ Digital Advertising Alliance: https://optout.aboutads.info'],
     },
     {
-      heading: 'How we use information',
-      bullets: ['To respond to your enquiries and provide support.', 'To display relevant advertisements through our advertising partners.', 'To analyse site usage and improve our services.', 'To detect, prevent, and address fraud, abuse, and security issues.', 'To comply with legal obligations.'],
+      heading: 'ວິທີທີ່ພວກເຮົານຳໃຊ້ຂໍ້ມູນ',
+      bullets: ['ເພື່ອຕອບຄຳຖາມຂອງທ່ານ ແລະ ໃຫ້ການສະໜັບສະໜູນ.', 'ເພື່ອສະແດງໂຄສະນາທີ່ກ່ຽວຂ້ອງຜ່ານຄູ່ຮ່ວມງານໂຄສະນາຂອງພວກເຮົາ.', 'ເພື່ອວິເຄາະການນຳໃຊ້ເວັບໄຊທ໌ ແລະ ປັບປຸງການບໍລິການຂອງພວກເຮົາ.', 'ເພື່ອກວດຫາ, ປ້ອງກັນ ແລະ ແກ້ໄຂບັນຫາການສໍ້ໂກງ, ການລ່ວງລະເມີດ ແລະ ບັນຫາຄວາມປອດໄພ.', 'ເພື່ອປະຕິບັດຕາມພັນທະທາງກົດໝາຍ.'],
     },
     {
-      heading: 'Third-party services',
-      bullets: ['Google AdSense: Receives data to serve and measure advertisements.', 'Analytics providers: Receive anonymised usage data.', 'Netlify (hosting): Processes requests and may log IP addresses.', 'We do not sell your personal information. However, sharing data with advertising partners may be considered a "sale" under CCPA (see below).'],
+      heading: 'ການບໍລິການພາກສ່ວນທີສາມ',
+      bullets: ['Google AdSense: ຮັບຂໍ້ມູນເພື່ອຮັບໃຊ້ ແລະ ວັດແທກການໂຄສະນາ.', 'ຜູ້ໃຫ້ບໍລິການວິເຄາະ: ຮັບຂໍ້ມູນການນຳໃຊ້ທີ່ບໍ່ລະບຸຊື່.', 'Netlify (ໂຮດຕິ້ງ): ປະມວນຜົນຄຳຮ້ອງຂໍ ແລະ ອາດຈະບັນທຶກທີ່ຢູ່ IP.', 'ພວກເຮົາບໍ່ຂາຍຂໍ້ມູນສ່ວນຕົວຂອງທ່ານ. ເຖິງຢ່າງໃດກໍ່ຕາມ, ການແບ່ງປັນຂໍ້ມູນກັບຄູ່ຮ່ວມໂຄສະນາອາດຈະຖືກພິຈາລະນາວ່າເປັນ ການຂາຍ ພາຍໃຕ້ CCPA (ເບິ່ງຂ້າງລຸ່ມນີ້).'],
     },
     {
-      heading: 'Data retention',
-      bullets: ['Contact submissions: Up to 2 years.', 'Server logs: Up to 30 days (hosting provider).', 'Analytics data: Up to 26 months (anonymised).', 'Advertising cookies: Typically 13 months (varies by partner).'],
+      heading: 'ການເກັບຮັກສາຂໍ້ມູນ',
+      bullets: ['ການສົ່ງເອກະສານຕິດຕໍ່: ສູງສຸດ 2 ປີ.', 'ບັນທຶກຂອງເຊີບເວີ: ສູງສຸດ 30 ມື້ (ຜູ້ໃຫ້ບໍລິການໂຮດຕິ້ງ).', 'ຂໍ້ມູນການວິເຄາະ: ສູງສຸດ 26 ເດືອນ (ບໍ່ລະບຸຊື່).', 'ຄຸກກີ້ໂຄສະນາ: ໂດຍປົກກະຕິແລ້ວ 13 ເດືອນ (ແຕກຕ່າງກັນໄປຕາມຄູ່ຮ່ວມງານ).'],
     },
     {
-      heading: 'Your rights under GDPR (EEA users)',
-      paragraphs: ['If you are in the European Economic Area, you have the following rights under the General Data Protection Regulation:'],
-      bullets: ['Right of access: Request a copy of personal data we hold about you.', 'Right to rectification: Request correction of inaccurate data.', 'Right to erasure: Request deletion of your data ("right to be forgotten").', 'Right to restrict processing: Request limits on how we use your data.', 'Right to data portability: Request your data in a portable format.', 'Right to object: Object to processing, including for direct marketing.', 'Right to withdraw consent: Withdraw consent at any time where processing is consent-based.', 'Right to lodge a complaint: File a complaint with your data protection authority.'],
+      heading: 'ສິດທິຂອງທ່ານພາຍໃຕ້ GDPR (ຜູ້ໃຊ້ EEA)',
+      paragraphs: ['ຖ້າທ່ານຢູ່ໃນເຂດເສດຖະກິດເອີຣົບ, ທ່ານມີສິດທິຕໍ່ໄປນີ້ພາຍໃຕ້ລະບຽບການປົກປ້ອງຂໍ້ມູນທົ່ວໄປ:'],
+      bullets: ['ສິດໃນການເຂົ້າເຖິງ: ຮ້ອງຂໍສຳເນົາຂໍ້ມູນສ່ວນຕົວທີ່ພວກເຮົາມີກ່ຽວກັບທ່ານ.', 'ສິດໃນການແກ້ໄຂ: ຮ້ອງຂໍໃຫ້ມີການແກ້ໄຂຂໍ້ມູນທີ່ບໍ່ຖືກຕ້ອງ.', 'ສິດໃນການລຶບ: ຮ້ອງຂໍການລຶບຂໍ້ມູນຂອງທ່ານ (ສິດທີ່ຈະຖືກລືມ).', 'ສິດໃນການຈຳກັດການປະມວນຜົນ: ຮ້ອງຂໍຂໍ້ຈຳກັດກ່ຽວກັບວິທີທີ່ພວກເຮົານຳໃຊ້ຂໍ້ມູນຂອງທ່ານ.', 'ສິດໃນການຍ້າຍຂໍ້ມູນ: ຮ້ອງຂໍຂໍ້ມູນຂອງທ່ານໃນຮູບແບບທີ່ສາມາດພົກພາໄດ້.', 'ສິດໃນການຄັດຄ້ານ: ຄັດຄ້ານການປະມວນຜົນ, ລວມທັງການຕະຫຼາດໂດຍກົງ.', 'ສິດໃນການຖອນຄືນການຍິນຍອມ: ຖອນຄືນການຍິນຍອມໄດ້ທຸກເວລາທີ່ການປະມວນຜົນແມ່ນອີງໃສ່ການຍິນຍອມ.', 'ສິດໃນການຍື່ນຄຳຮ້ອງທຸກ: ຍື່ນຄຳຮ້ອງທຸກຕໍ່ໜ່ວຍງານປົກປ້ອງຂໍ້ມູນຂອງທ່ານ.'],
     },
     {
-      heading: 'GDPR legal basis',
-      paragraphs: ['We process data on these bases: (a) Consent — for personalised advertising (managed by our advertising partners); (b) Legitimate interests — for analytics, security, and improvement; (c) Contract — to respond to enquiries.', 'To exercise your rights, contact ${CONTACT_EMAIL}. We respond within 30 days.'],
+      heading: 'ພື້ນຖານທາງກົດໝາຍ GDPR',
+      paragraphs: ['ພວກເຮົາປະມວນຜົນຂໍ້ມູນໂດຍອີງໃສ່ພື້ນຖານເຫຼົ່ານີ້: (ກ) ການຍິນຍອມ — ສຳລັບການໂຄສະນາສ່ວນບຸກຄົນ (ຈັດການໂດຍຄູ່ຮ່ວມງານໂຄສະນາຂອງພວກເຮົາ); (ຂ) ຜົນປະໂຫຍດທີ່ຖືກຕ້ອງຕາມກົດໝາຍ — ສຳລັບການວິເຄາະ, ຄວາມປອດໄພ ແລະ ການປັບປຸງ; (ຄ) ສັນຍາ — ເພື່ອຕອບສະໜອງຕໍ່ການສອບຖາມ.', 'ເພື່ອໃຊ້ສິດຂອງທ່ານ, ຕິດຕໍ່ ${CONTACT_EMAIL}. ພວກເຮົາຈະຕອບກັບພາຍໃນ 30 ມື້.'],
     },
     {
-      heading: 'Your rights under CCPA (California users)',
-      bullets: ['Right to know: Request information about data collected, sources, purposes, and third parties.', 'Right to delete: Request deletion of your personal information.', 'Right to opt-out: Opt out of the "sale" of personal information (sharing with ad partners may qualify).', 'Right to non-discrimination: We will not discriminate for exercising your rights.'],
+      heading: 'ສິດທິຂອງທ່ານພາຍໃຕ້ CCPA (ຜູ້ໃຊ້ໃນລັດຄາລິຟໍເນຍ)',
+      bullets: ['ສິດທີ່ຈະຮູ້: ຮ້ອງຂໍຂໍ້ມູນກ່ຽວກັບຂໍ້ມູນທີ່ເກັບກຳ, ແຫຼ່ງຂໍ້ມູນ, ຈຸດປະສົງ ແລະ ພາກສ່ວນທີສາມ.', 'ສິດໃນການລຶບ: ຮ້ອງຂໍໃຫ້ລຶບຂໍ້ມູນສ່ວນຕົວຂອງທ່ານ.', 'ສິດໃນການເລືອກທີ່ຈະບໍ່ເຂົ້າຮ່ວມ: ເລືອກທີ່ຈະບໍ່ເຂົ້າຮ່ວມ ການຂາຍ ຂໍ້ມູນສ່ວນຕົວ (ການແບ່ງປັນກັບຄູ່ຮ່ວມໂຄສະນາອາດຈະມີສິດໄດ້ຮັບ).', 'ສິດທີ່ຈະບໍ່ຖືກຈຳແນກ: ພວກເຮົາຈະບໍ່ຈຳແນກຍ້ອນການໃຊ້ສິດຂອງທ່ານ.'],
     },
     {
-      heading: 'CCPA categories collected',
-      paragraphs: ['Categories: Identifiers (IP address, device ID), Internet activity (browsing, ad interactions), Geolocation (approximate), Inferences (interests from browsing).', 'To exercise rights or opt out: ${CONTACT_EMAIL} or adjust cookie settings.'],
+      heading: 'ໝວດໝູ່ CCPA ທີ່ເກັບກຳ',
+      paragraphs: ['ໝວດໝູ່: ຕົວລະບຸ (ທີ່ຢູ່ IP, ID ອຸປະກອນ), ກິດຈະກຳອິນເຕີເນັດ (ການທ່ອງເວັບ, ການໂຕ້ຕອບໂຄສະນາ), ສະຖານທີ່ພູມສາດ (ປະມານ), ການອະນຸມານ (ຄວາມສົນໃຈຈາກການທ່ອງເວັບ).', 'ເພື່ອໃຊ້ສິດ ຫຼື ເລືອກທີ່ຈະບໍ່ໃຊ້: ${CONTACT_EMAIL} ຫຼື ປັບການຕັ້ງຄ່າຄຸກກີ.'],
     },
     {
-      heading: 'International transfers',
-      paragraphs: ['Your information may be transferred to countries with different data protection laws, including the United States. We use appropriate safeguards such as Standard Contractual Clauses.'],
+      heading: 'ການໂອນເງິນລະຫວ່າງປະເທດ',
+      paragraphs: ['ຂໍ້ມູນຂອງທ່ານອາດຈະຖືກໂອນໄປຍັງປະເທດທີ່ມີກົດໝາຍວ່າດ້ວຍການປົກປ້ອງຂໍ້ມູນທີ່ແຕກຕ່າງກັນ, ລວມທັງສະຫະລັດອາເມລິກາ. ພວກເຮົາໃຊ້ມາດຕະການປ້ອງກັນທີ່ເໝາະສົມເຊັ່ນ: ຂໍ້ກຳນົດສັນຍາມາດຕະຖານ.'],
     },
     {
-      heading: 'Children\'s privacy',
-      paragraphs: ['ANQR is not directed at children under 13 (or 16 in the EEA). We do not knowingly collect data from children. Contact ${CONTACT_EMAIL} if you believe a child has provided information.'],
+      heading: 'ຄວາມເປັນສ່ວນຕົວຂອງເດັກ',
+      paragraphs: ['ANQR ບໍ່ໄດ້ແນໃສ່ເດັກອາຍຸຕ່ຳກວ່າ 13 ປີ (ຫຼື 16 ປີໃນ EEA). ພວກເຮົາບໍ່ໄດ້ເກັບກຳຂໍ້ມູນຈາກເດັກໂດຍເຈດຕະນາ. ຕິດຕໍ່ ${CONTACT_EMAIL} ຖ້າທ່ານເຊື່ອວ່າເດັກໄດ້ໃຫ້ຂໍ້ມູນ.'],
     },
     {
-      heading: 'Security',
-      paragraphs: ['We use appropriate technical and organisational measures to protect data, including HTTPS encryption. However, no internet transmission is 100% secure.'],
+      heading: 'ຄວາມປອດໄພ',
+      paragraphs: ['ພວກເຮົາໃຊ້ມາດຕະການດ້ານວິຊາການ ແລະ ການຈັດຕັ້ງທີ່ເໝາະສົມເພື່ອປົກປ້ອງຂໍ້ມູນ, ລວມທັງການເຂົ້າລະຫັດ HTTPS. ເຖິງຢ່າງໃດກໍ່ຕາມ, ບໍ່ມີການສົ່ງຂໍ້ມູນທາງອິນເຕີເນັດໃດທີ່ປອດໄພ 100%.'],
     },
     {
-      heading: 'Do Not Track',
-      paragraphs: ['We honour Do Not Track browser signals where feasible, though advertising partners may not respond to DNT.'],
+      heading: 'ຢ່າຕິດຕາມ',
+      paragraphs: ['ພວກເຮົາໃຫ້ກຽດສັນຍານຂອງໂປຣແກຣມທ່ອງເວັບ Do Not Track ເທົ່າທີ່ເປັນໄປໄດ້, ເຖິງແມ່ນວ່າຄູ່ຮ່ວມງານໂຄສະນາອາດຈະບໍ່ຕອບສະໜອງຕໍ່ DNT.'],
     },
     {
-      heading: 'Changes to this policy',
-      paragraphs: ['We may update this policy periodically. The "Last updated" date indicates the most recent revision. Significant changes may be communicated via a site banner.'],
+      heading: 'ການປ່ຽນແປງນະໂຍບາຍນີ້',
+      paragraphs: ['ພວກເຮົາອາດຈະອັບເດດນະໂຍບາຍນີ້ເປັນໄລຍະໆ. ວັນທີ ອັບເດດຫຼ້າສຸດ ໝາຍເຖິງການແກ້ໄຂຫຼ້າສຸດ. ການປ່ຽນແປງທີ່ສຳຄັນອາດຈະຖືກສື່ສານຜ່ານປ້າຍໂຄສະນາເວັບໄຊທ໌.'],
     },
     {
-      heading: 'Contact us',
-      paragraphs: ['For privacy questions or to exercise your rights: ${CONTACT_EMAIL} or use our Contact page. We respond to privacy requests within 30 days.'],
+      heading: 'ຕິດຕໍ່ພວກເຮົາ',
+      paragraphs: ['ສຳລັບຄຳຖາມກ່ຽວກັບຄວາມເປັນສ່ວນຕົວ ຫຼື ເພື່ອໃຊ້ສິດຂອງທ່ານ: ${CONTACT_EMAIL} ຫຼື ໃຊ້ໜ້າຕິດຕໍ່ຂອງພວກເຮົາ. ພວກເຮົາຕອບສະໜອງຕໍ່ການຮ້ອງຂໍຄວາມເປັນສ່ວນຕົວພາຍໃນ 30 ມື້.'],
     },
   ],
 };

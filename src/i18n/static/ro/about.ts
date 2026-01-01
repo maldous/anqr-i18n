@@ -2,41 +2,41 @@ import type { PageDefinition } from '../types';
 import { CONTACT_EMAIL, LAST_UPDATED } from '../types';
 
 export const about: PageDefinition = {
-  title: 'About ANQR',
-  description: 'ANQR is a free QR code generator with a client-first approach — generate QR codes locally or use our API for embedding.',
+  title: 'Despre ANQR',
+  description: 'ANQR este un generator de coduri QR gratuit cu o abordare axată pe client — generați coduri QR local sau utilizați API-ul nostru pentru încorporare.',
   lastUpdated: LAST_UPDATED,
   sections: [
     {
-      heading: 'What is ANQR?',
-      paragraphs: ['ANQR (pronounced "anchor") is a free QR code generator that creates scannable codes for URLs, text, Wi-Fi credentials, contact cards, calendar events, and more.', 'It is built for individuals, small businesses, marketers, and developers who want powerful QR tools without signing up. The client-first design means QR codes are generated locally in your browser by default, with an optional server API for professional embedding and integration.'],
+      heading: 'Ce este ANQR?',
+      paragraphs: ['ANQR (pronunțat «ancoră») este un generator gratuit de coduri QR care creează coduri scanabile pentru adrese URL, text, acreditări Wi-Fi, cărți de vizită, evenimente din calendar și multe altele.', 'Este conceput pentru persoane fizice, întreprinderi mici, specialiști în marketing și dezvoltatori care doresc instrumente QR puternice fără a se înregistra. Designul axat pe client înseamnă că codurile QR sunt generate local în browser în mod implicit, cu o API de server opțională pentru încorporare și integrare profesională.'],
     },
     {
-      heading: 'Key features',
-      bullets: ['Generate QR codes instantly in your browser — no account required.', 'Customise colours, module styles, finder patterns, and add image overlays.', 'Export in multiple formats: PNG, SVG, WebP, and animated GIF.', 'Advanced controls for error correction level, QR version, encoding mode, and mask selection.', 'Scan-safety guidance and live preview to help keep codes readable in print and on screens.', 'Server-side API for professional embedding with full parameter support.', 'Works offline once loaded — it is a static web app you can run anywhere.'],
+      heading: 'Caracteristici cheie',
+      bullets: ['Generează coduri QR instantaneu în browserul tău — nu este necesar un cont.', 'Personalizați culorile, stilurile modulelor, modelele de căutare și adăugați suprapuneri de imagini.', 'Exportați în mai multe formate: PNG, SVG, WebP și GIF animat.', 'Controale avansate pentru nivelul de corecție a erorilor, versiunea codului QR, modul de codificare și selectarea măștii.', 'Îndrumări privind siguranța scanării și previzualizare live pentru a menține codurile lizibile atât în format tipărit, cât și pe ecran.', 'API pe server pentru integrare profesională cu suport complet pentru parametri.', 'Funcționează offline odată încărcat — este o aplicație web statică pe care o puteți rula oriunde.'],
     },
     {
-      heading: 'How ANQR works',
-      paragraphs: ['ANQR runs in your browser and encodes your input into a standard QR matrix with Reed–Solomon error correction, then renders it to the format you choose.', 'By default, generation happens locally in your browser. For professional use, you can also use the server-side API to generate QR codes via URL parameters — perfect for embedding in websites, emails, or automated workflows.', 'When you add overlays or animations, ANQR balances styling with scan reliability so the result remains scannable.', 'ANQR focuses on static codes (the data is inside the QR). If you need a dynamic code (editable destination), you can encode your own redirect URL or short link.'],
+      heading: 'Cum funcționează ANQR',
+      paragraphs: ['ANQR rulează în browserul dvs. și codifică datele introduse într-o matrice QR standard cu corecție de erori Reed-Solomon, apoi o redă în formatul ales.', 'În mod implicit, generarea se face local în browser. Pentru uz profesional, puteți utiliza și API-ul server-side pentru a genera coduri QR prin parametri URL — perfecte pentru încorporarea în site-uri web, e-mailuri sau fluxuri de lucru automate.', 'Atunci când adăugați suprapuneri sau animații, ANQR echilibrează stilizarea cu fiabilitatea scanării, astfel încât rezultatul să rămână scanabil.', 'ANQR se concentrează pe coduri statice (datele se află în interiorul codului QR). Dacă aveți nevoie de un cod dinamic (destinație editabilă), puteți codifica propria adresă URL de redirecționare sau link scurt.'],
     },
     {
-      heading: 'Who operates ANQR?',
+      heading: 'Cine operează ANQR?',
       paragraphs: [`18${CONTACT_EMAIL}19`],
     },
     {
-      heading: 'Advertising and how we stay free',
-      paragraphs: ['ANQR is free to use and is supported by advertising. We may show ads via Google AdSense and/or other advertising partners.', 'Ad providers may use cookies or similar technologies to personalise ads based on your interests and browsing activity. You can manage ad preferences in your device settings and through Google ad settings, and learn more in our Privacy Policy.', 'We do not sell the content you encode into QR codes. Ads help cover the cost of running and improving the project.'],
+      heading: 'Publicitatea și cum rămânem liberi',
+      paragraphs: ['ANQR este gratuit și este susținut de publicitate. Este posibil să afișăm reclame prin Google AdSense și/sau alți parteneri de publicitate.', 'Furnizorii de reclame pot utiliza module cookie sau tehnologii similare pentru a personaliza reclamele în funcție de interesele și activitatea dvs. de navigare. Puteți gestiona preferințele privind reclamele în setările dispozitivului și prin intermediul setărilor pentru reclame Google și puteți afla mai multe în Politica noastră de confidențialitate.', 'Nu vindem conținutul pe care îl codificați în coduri QR. Reclamele ajută la acoperirea costurilor de derulare și îmbunătățire a proiectului.'],
     },
     {
-      heading: 'Open standards',
-      paragraphs: ['ANQR generates QR codes based on the ISO/IEC 18004 standard and aims for broad compatibility across scanners, cameras, and print workflows.'],
+      heading: 'Standarde deschise',
+      paragraphs: ['ANQR generează coduri QR pe baza standardului ISO/IEC 18004 și vizează o compatibilitate largă între scanere, camere și fluxuri de lucru de imprimare.'],
     },
     {
-      heading: 'Trademark notice',
-      paragraphs: ['QR Code® is a registered trademark of DENSO WAVE INCORPORATED. ANQR is not affiliated with, endorsed by, or sponsored by DENSO WAVE INCORPORATED.'],
+      heading: 'Notificare privind marca înregistrată',
+      paragraphs: ['QR Code® este o marcă înregistrată a DENSO WAVE INCORPORATED. ANQR nu este afiliat cu, aprobat de sau sponsorizat de DENSO WAVE INCORPORATED.'],
     },
     {
-      heading: 'Feedback and contributions',
-      paragraphs: ['We welcome feedback, bug reports, and feature suggestions. Please get in touch via email or the contact page — we read every message, though response times may vary.'],
+      heading: 'Feedback și contribuții',
+      paragraphs: ['Așteptăm cu nerăbdare feedback, raportări de erori și sugestii de funcții. Vă rugăm să ne contactați prin e-mail sau prin pagina de contact — citim fiecare mesaj, deși timpii de răspuns pot varia.'],
     },
   ],
 };
