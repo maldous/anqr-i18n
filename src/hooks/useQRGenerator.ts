@@ -19,7 +19,7 @@ import {
   generatePatternFrames,
   interpolateFrames,
 } from '@/modules/animation-patterns';
-import { downloadGif, downloadImage, downloadSvg } from '@/modules/exporter';
+import { downloadGif, downloadImage, downloadSvg, downloadVectorSvg } from '@/modules/exporter';
 import { getEffectiveDitherKind, STORE_DEFAULT_DITHER } from '@/modules/overlay-processor';
 import { QRGenerator } from '@/modules/qr-generator';
 // Note: applyFilters is no longer used here - color adjustments are done at moduleCount
@@ -196,6 +196,9 @@ export function useQRGenerator(): UseQRGeneratorResult {
   // Validation state
   const [validation, setValidation] = useState<ValidationResult | null>(null);
   const [isValidating, setIsValidating] = useState(false);
+
+  // QR matrix for vector SVG export
+  const [qrMatrix, setQrMatrix] = useState<boolean[][] | null>(null);
 
   // Store generated frames for GIF export and playback cache
   const [animationFrames, setAnimationFrames] = useState<HTMLCanvasElement[]>([]);
@@ -401,11 +404,10 @@ export function useQRGenerator(): UseQRGeneratorResult {
       overlayPosterize: overlay.posterizeLevels,
       overlayThreshold: overlay.threshold,
       overlayEdgeDetect: overlay.edgeDetect,
-      overlayRotate: overlay.rotateDeg,
-      overlayFlipX: overlay.flipX,
-      overlayFlipY: overlay.flipY,
-      overlayCrop: overlay.cropEnabled ? overlay.cropRegion : undefined,
-      overlayFit: overlay.fit,
+      // NOTE: Geometric transforms (rotate, flip, crop, fit) are applied in
+      // applyGeometricTransforms() BEFORE passing to qr-generator.
+      // We intentionally do NOT pass these values to avoid double-application.
+      // overlayRotate, overlayFlipX, overlayFlipY, overlayCrop, overlayFit are omitted.
 
       // Dither options - on mobile, use cheap default unless user explicitly changed it
       ditherKind: getEffectiveDitherKind(
@@ -557,6 +559,12 @@ export function useQRGenerator(): UseQRGeneratorResult {
    * Apply only geometric transforms (crop, fit, rotate, flip) to a canvas.
    * Color adjustments (brightness, contrast, etc.) are now done at moduleCount
    * resolution inside qr-generator.js for 10-50x speedup.
+   *
+   * NOTE: This is called from the hook BEFORE passing to qr-generator.
+   * qr-generator.js has its own _applyGeometricTransforms but it checks
+   * _hasGeometricTransforms() which looks at config.overlayRotate/overlayFlipX/overlayFlipY.
+   * Since we apply transforms here and don't pass those config values to the generator,
+   * the generator will NOT double-apply transforms.
    */
   const applyGeometricTransforms = useCallback(
     (sourceCanvas: HTMLCanvasElement): HTMLCanvasElement => {
@@ -833,6 +841,12 @@ export function useQRGenerator(): UseQRGeneratorResult {
 
       setCanvas(result);
 
+      // Capture the QR matrix for vector SVG export
+      const matrixData = qrGenerator.getLastMatrix();
+      if (matrixData) {
+        setQrMatrix(matrixData.matrix);
+      }
+
       // Copy to display canvas if ref exists
       if (canvasRef.current && result) {
         const ctx = canvasRef.current.getContext('2d');
@@ -1055,6 +1069,9 @@ export function useQRGenerator(): UseQRGeneratorResult {
 
   // Update overlay canvas when current frame changes (for animation preview)
   // Uses compositor for GIFs (optimal), legacy frames for WebP
+  // OPTIMIZATION: Track last rendered frame to avoid O(n²) replay from frame 0
+  const lastRenderedFrameRef = useRef<number>(-1);
+
   useEffect(() => {
     // If we have cached animation frames, skip - we'll draw from cache
     if (isAnimationCacheReady && animationFrames.length > 0) {
@@ -1066,12 +1083,27 @@ export function useQRGenerator(): UseQRGeneratorResult {
 
     if (gifCompositor) {
       // Use compositor for GIF - apply frame patch to canvas
-      // Note: We need to replay frames from start for proper disposal handling
-      gifCompositor.reset();
-      for (let i = 0; i <= frameIdx; i++) {
-        if (i > 0) gifCompositor.dispose(i - 1);
-        gifCompositor.apply(i);
+      // OPTIMIZATION: Only replay from lastRenderedFrame instead of always from 0
+      // This reduces O(n²) to O(n) for sequential playback
+      const lastRendered = lastRenderedFrameRef.current;
+
+      if (lastRendered < 0 || frameIdx < lastRendered) {
+        // Need to reset and replay from start (seeking backward or first frame)
+        gifCompositor.reset();
+        for (let i = 0; i <= frameIdx; i++) {
+          if (i > 0) gifCompositor.dispose(i - 1);
+          gifCompositor.apply(i);
+        }
+      } else if (frameIdx > lastRendered) {
+        // Playing forward - only apply frames from lastRendered+1 to frameIdx
+        for (let i = lastRendered + 1; i <= frameIdx; i++) {
+          if (i > 0) gifCompositor.dispose(i - 1);
+          gifCompositor.apply(i);
+        }
       }
+      // If frameIdx === lastRendered, no work needed
+
+      lastRenderedFrameRef.current = frameIdx;
       // Trigger re-render with updated compositor canvas
       setRawOverlayCanvas(gifCompositor.canvas);
     } else if (gifFrames[frameIdx]) {
@@ -1086,6 +1118,11 @@ export function useQRGenerator(): UseQRGeneratorResult {
     isAnimationCacheReady,
     animationFrames.length,
   ]);
+
+  // Reset the frame tracking when compositor changes (new GIF loaded)
+  useEffect(() => {
+    lastRenderedFrameRef.current = -1;
+  }, [gifCompositor]);
 
   // Display cached animation frames during playback (fast path - no re-encoding)
   useEffect(() => {
@@ -1183,7 +1220,57 @@ export function useQRGenerator(): UseQRGeneratorResult {
           : undefined;
 
       if (output.format === 'svg') {
-        await downloadSvg(exportCanvas, exportConfig);
+        // Use true vector SVG export if enabled and matrix is available
+        if (output.svgTrueVector) {
+          if (!qrMatrix) {
+            console.warn(
+              'Vector SVG export requested but QR matrix is unavailable. ' +
+                'Falling back to raster SVG. This can happen with special render modes.'
+            );
+            await downloadSvg(exportCanvas, exportConfig);
+            return;
+          }
+          // Calculate module size to match desired output dimensions
+          const moduleCount = qrMatrix.length;
+          // Use the same margin calculation as generate() in qr-generator.js
+          // config.margin = safetyAdjustedConfig.quietZone + qr.borderModulesExtra
+          const totalMargin = qr.quietZoneModules + qr.borderModulesExtra;
+          // SVG viewBox size = (moduleCount + 2*margin) * moduleSize
+          const svgModuleSize = Math.floor(output.widthPx / (moduleCount + totalMargin * 2)) || 10;
+
+          // True vector SVG - uses styled path elements
+          downloadVectorSvg(qrMatrix, {
+            moduleSize: svgModuleSize,
+            margin: totalMargin,
+            fgColor: render.fgColor,
+            bgColor: render.bgTransparent ? 'transparent' : render.bgColor,
+            filename: output.filename,
+            // Pass styling options for vector SVG
+            moduleStyle: render.moduleStyle,
+            cornerRadius: render.cornerRadius,
+            finderStyle: render.finderStyle,
+            eyeOuterStyle: render.eyeOuterStyle,
+            eyeInnerStyle: render.eyeInnerStyle,
+            alignmentStyle: render.alignmentStyle,
+            timingStyle: render.timingStyle,
+            gradient: render.gradient,
+            // Pass metadata for SVG embedding
+            metadata:
+              metadata.title || metadata.author || metadata.copyright || metadata.description
+                ? {
+                    title: metadata.title || undefined,
+                    author: metadata.author || undefined,
+                    copyright: metadata.copyright || undefined,
+                    description: metadata.description || undefined,
+                    creationTime: metadata.creationTime || false,
+                    software: 'ANQR - anqr.link',
+                  }
+                : undefined,
+          });
+        } else {
+          // Raster SVG (embedded PNG) - preserves all styling including dithering
+          await downloadSvg(exportCanvas, exportConfig);
+        }
       } else if (output.format === 'gif' && animationFrames.length > 1) {
         // Scale animation frames to output dimensions
         // Use canvas pool for temporary scaled frames to reduce GC pressure
@@ -1245,6 +1332,20 @@ export function useQRGenerator(): UseQRGeneratorResult {
     canvas,
     output,
     render.crispEdges,
+    render.fgColor,
+    render.bgColor,
+    render.bgTransparent,
+    render.moduleStyle,
+    render.cornerRadius,
+    render.finderStyle,
+    render.eyeOuterStyle,
+    render.eyeInnerStyle,
+    render.alignmentStyle,
+    render.timingStyle,
+    render.gradient,
+    qr.quietZoneModules,
+    qr.borderModulesExtra,
+    qrMatrix,
     animationFrames,
     animation.speedMs,
     animation.loop,

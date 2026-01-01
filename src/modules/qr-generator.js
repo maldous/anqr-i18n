@@ -124,6 +124,41 @@ export class QRGenerator {
   constructor(canvasFactory = null) {
     this.qrcode = qrcode;
     this._canvasFactory = canvasFactory || defaultBrowserCanvasFactory;
+    /** @type {boolean[][] | null} */
+    this._lastMatrix = null;
+    /** @type {number} */
+    this._lastModuleCount = 0;
+  }
+
+  /**
+   * Get the QR matrix from the last generate() call
+   * Returns a 2D boolean array where true = dark module, false = light module
+   * @returns {{ matrix: boolean[][], moduleCount: number } | null}
+   */
+  getLastMatrix() {
+    if (!this._lastMatrix) return null;
+    return {
+      matrix: this._lastMatrix,
+      moduleCount: this._lastModuleCount,
+    };
+  }
+
+  /**
+   * Store the QR matrix for vector SVG export
+   * Reusable helper to avoid code duplication across render methods
+   * @param {object} qr - The QR code object with isDark() method
+   * @param {number} moduleCount - Number of modules in the QR code
+   */
+  _storeMatrix(qr, moduleCount) {
+    const matrix = [];
+    for (let row = 0; row < moduleCount; row++) {
+      matrix[row] = [];
+      for (let col = 0; col < moduleCount; col++) {
+        matrix[row][col] = qr.isDark(row, col);
+      }
+    }
+    this._lastMatrix = matrix;
+    this._lastModuleCount = moduleCount;
   }
 
   /**
@@ -693,6 +728,9 @@ export class QRGenerator {
 
     // Draw frame if configured
     this.drawFrame(ctx, size, moduleSize, margin, config);
+
+    // Store the QR matrix for vector SVG export
+    this._storeMatrix(qr, moduleCount);
 
     return canvas;
   }
@@ -1740,6 +1778,20 @@ export class QRGenerator {
       }
     }
 
+    // Store the QR matrix for vector SVG export (special render mode)
+    // For dithered mode, we need to derive moduleCount from the scaled matrix
+    const derivedModuleCount = Math.round(scaledCount / scale);
+    // Create a synthetic qr-like object for _storeMatrix that reads from the dithered result
+    const syntheticQr = {
+      isDark: (row, col) => {
+        // Sample center of the 3x3 subpixel block for each module
+        const subRow = row * scale + Math.floor(scale / 2);
+        const subCol = col * scale + Math.floor(scale / 2);
+        return dithered[subRow]?.[subCol] ?? false;
+      },
+    };
+    this._storeMatrix(syntheticQr, derivedModuleCount);
+
     return canvas;
   }
 
@@ -1816,6 +1868,20 @@ export class QRGenerator {
         }
       }
     }
+
+    // Store the QR matrix for vector SVG export (special render mode)
+    // For blue-noise mode, we need to derive moduleCount from the scaled matrix
+    const derivedModuleCount = Math.round(scaledCount / scale);
+    // Create a synthetic qr-like object for _storeMatrix that reads from the dithered result
+    const syntheticQr = {
+      isDark: (row, col) => {
+        // Sample center of the 3x3 subpixel block for each module
+        const subRow = row * scale + Math.floor(scale / 2);
+        const subCol = col * scale + Math.floor(scale / 2);
+        return dithered[subRow]?.[subCol] ?? false;
+      },
+    };
+    this._storeMatrix(syntheticQr, derivedModuleCount);
 
     return canvas;
   }
@@ -1938,6 +2004,9 @@ export class QRGenerator {
       }
     }
 
+    // Store the QR matrix for vector SVG export (special render mode)
+    this._storeMatrix(qr, moduleCount);
+
     return canvas;
   }
 
@@ -2051,6 +2120,10 @@ export class QRGenerator {
     }
 
     // Merge dithered image with QR matrix
+    // Use seeded PRNG for deterministic output (same settings = same output)
+    // Seed based on scale to ensure reproducibility
+    const seededRandom = this._createSeededRandom(scale * 12345);
+
     for (let y = 0; y < scaledSize; y++) {
       for (let x = 0; x < scaledSize; x++) {
         if (isLocked(scaledSize, x, y, scale)) continue;
@@ -2058,7 +2131,8 @@ export class QRGenerator {
 
         const pixel = imageData[y][x];
         const brightness = pixel.r * 0.299 + pixel.g * 0.587 + pixel.b * 0.114;
-        const useImage = Math.random() < intensity;
+        // Use seeded PRNG instead of Math.random() for deterministic output
+        const useImage = seededRandom() < intensity;
 
         if (useImage) {
           matrix[y][x] = brightness < 0.5;

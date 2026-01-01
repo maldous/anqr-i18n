@@ -486,6 +486,15 @@ function formatICalDate(dateStr: string, includeTime = true): string {
 }
 
 /**
+ * Calculate UTF-8 byte length of a string
+ * IMPORTANT: EMV TLV length fields must use UTF-8 byte length, not JS string length
+ * JS .length counts UTF-16 code units, not bytes, which breaks for non-ASCII chars
+ */
+export function utf8ByteLength(str: string): number {
+  return new TextEncoder().encode(str).length;
+}
+
+/**
  * Calculate CRC16-CCITT (polynomial 0x1021, init 0xFFFF)
  * Used by EMVCo QR codes, PIX, SGQR, PromptPay, etc.
  */
@@ -518,12 +527,15 @@ export class EMVQRBuilder {
 
   /**
    * Encode a TLV (Tag-Length-Value) field
-   * Tag: 2 digits, Length: 2 digits, Value: variable
+   * Tag: 2 digits, Length: 2 digits (UTF-8 byte length), Value: variable
+   * IMPORTANT: Per EMVCo spec, length is in bytes, not characters
    */
   static encodeTLV(tag: string, value: string): string {
     if (!value || value.length === 0) return '';
     const paddedTag = tag.padStart(2, '0');
-    const length = value.length.toString().padStart(2, '0');
+    // Use UTF-8 byte length for EMV compliance (not JS string length)
+    const byteLength = utf8ByteLength(value);
+    const length = byteLength.toString().padStart(2, '0');
     return `${paddedTag}${length}${value}`;
   }
 
