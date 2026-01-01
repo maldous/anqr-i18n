@@ -87,7 +87,6 @@ const LANGUAGE_PAYMENT_MAP: Record<string, PayloadKind[]> = {
   hr: ['epc_sepa'],
   bg: ['epc_sepa'],
   'el-GR': ['epc_sepa'],
-  rm: ['epc_sepa', 'swiss_qr_bill'], // Romansh (Switzerland)
   
   // English - show internationally-relevant options only (not region-specific foreign standards)
   // Users who need regional standards like VietQR, QRIS, PromptPay etc should use their native language or professional tier

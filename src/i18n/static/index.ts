@@ -50,7 +50,6 @@ import * as neNP from './ne-NP'
 import * as nlNL from './nl-NL'
 import * as noNO from './no-NO'
 import * as plPL from './pl-PL'
-import * as rm from './rm'
 import * as ro from './ro'
 import * as svSE from './sv-SE'
 import * as zu from './zu'
@@ -102,7 +101,6 @@ const contentByLanguage: Record<string, Record<StaticPageType, PageDefinition>> 
   'nl-NL': nlNL,
   'no-NO': noNO,
   'pl-PL': plPL,
-  rm,
   ro,
   'sv-SE': svSE,
   zu,

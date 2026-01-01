@@ -1,1105 +1,1397 @@
-1	"Blue Noise"
-2	"Bounce (Ping-Pong)"
-3	"Color Cycle"
-4	"Crossfade"
-5	"Drift"
-6	"Enable Animation"
-7	"Every {{count}} frame(s)"
-8	"Export All Frames"
-9	"Fade In"
-10	"Flicker Safe"
-11	"Frame Step"
-12	"Interpolation"
-13	"Loop Animation"
-14	"Max Frames"
-15	"Module Jitter"
-16	"⚠️ May affect scannability"
-17	"Morph"
-18	"None"
-19	"Off"
-20	"Generated Pattern"
-21	"Pulse"
-22	"Random Seed"
-23	"Rotate"
-24	"Scanline"
-25	"Shimmer"
-26	"Slide In"
-27	"Frame Speed"
-28	"Start Frame"
-29	"Temporal Dither"
-30	"Wave"
-31	"English"
-32	"Hindi"
-33	"Chinese"
-34	"Malay"
-35	"Tamil"
-36	"Thai"
-37	"Portuguese"
-38	"Indonesian"
-39	"Vietnamese"
-40	"Tagalog"
-41	"Japanese"
-42	"Korean"
-43	"Spanish"
-44	"Arabic"
-45	"Russian"
-46	"Telugu"
-47	"Marathi"
-48	"Bengali"
-49	"Gujarati"
-50	"Kannada"
-51	"Malayalam"
-52	"Punjabi"
-53	"ANQR"
-54	"QR Code Generator"
-55	"All rights reserved"
-56	"Apply"
-57	"Back"
-58	"Cancel"
-59	"Close"
-60	"Copied!"
-61	"Copy"
-62	"© ANQR"
-63	"Delete"
-64	"Disabled"
-65	"Download"
-66	"Edit"
-67	"Enabled"
-68	"Error"
-69	"Filter"
-70	"Less"
-71	"Loading..."
-72	"More"
-73	"Next"
-74	"No"
-75	"OK"
-76	"On"
-77	"Previous"
-78	"Reset"
-79	"Save"
-80	"Search"
-81	"Select"
-82	"Show Less"
-83	"Show More"
-84	"Sort"
-85	"Success"
-86	"Upload"
-87	"View All"
-88	"Yes"
-89	"Failed to save file: {{error}}"
-90	"Saved to Documents: {{filename}}"
-91	"© ANQR {{year}}"
-92	"All"
-93	"Animation"
-94	"Blend Modes"
-95	"Collapse"
-96	"Color Modes"
-97	"Colors"
-98	"Content Types"
-99	"Dithering"
-100	"Encoding"
-101	"Expand"
-102	"Image Overlay"
-103	"Blue noise threshold with animation"
-104	"Animated Blue Noise"
-105	"Animated blue noise at 100%"
-106	"Blue Noise 100%"
-107	"Animated blue noise at 50%"
-108	"Blue Noise 50%"
-109	"Animated blue noise at 75%"
-110	"Blue Noise 75%"
-111	"Brightness with animation"
-112	"Animated Brightness"
-113	"B&W animated overlay"
-114	"Animated B&W"
-115	"Color animated overlay"
-116	"Animated Color"
-117	"Grayscale animated overlay"
-118	"Animated Grayscale"
-119	"Error diffusion with animation"
-120	"Animated Dithered"
-121	"Duotone with animation"
-122	"Animated Duotone"
-123	"Halftone dots with animation"
-124	"Animated Halftone"
-125	"Mosaic with animation"
-126	"Animated Mosaic"
-127	"Dithered overlay with classic palette"
-128	"Classic Blend"
-129	"Dithered overlay with forest palette"
-130	"Forest Blend"
-131	"Dithered overlay with navy palette"
-132	"Navy Blend"
-133	"Dithered overlay with wine palette"
-134	"Wine Blend"
-135	"Blue Noise in B&W"
-136	"Blue Noise B&W"
-137	"Blue Noise in Color"
-138	"Blue Noise Color"
-139	"Dithered in Color"
-140	"Dithered Color"
-141	"Dithered in Grayscale"
-142	"Dithered Grayscale"
-143	"Halftone in B&W"
-144	"Halftone B&W"
-145	"Halftone in Color"
-146	"Halftone Color"
-147	"#e85d04 on #ffe8d6"
-148	"Coral"
-149	"Coral with dot modules"
-150	"Coral Dots"
-151	"#9d0208 on #ffccd5"
-152	"Crimson"
-153	"#1b4332 on #d8f3dc"
-154	"Forest"
-155	"Forest with dot modules"
-156	"Forest Dots"
-157	"#7f5539 on #ffe8cc"
-158	"Gold"
-159	"#ffffff on #000000"
-160	"Inverted"
-161	"#1a1a2e on #eef1ff"
-162	"Midnight"
-163	"Midnight with dot modules"
-164	"Midnight Dots"
-165	"#001d3d on #a2d2ff"
-166	"Navy"
-167	"#023e8a on #caf0f8"
-168	"Ocean"
-169	"Ocean with dot modules"
-170	"Ocean Dots"
-171	"#4a0080 on #f5e6ff"
-172	"Royal"
-173	"Royal with dot modules"
-174	"Royal Dots"
-175	"#343a40 on #e9ecef"
-176	"Slate"
-177	"#bf0603 on #fff3b0"
-178	"Sunset"
-179	"Sunset with dot modules"
-180	"Sunset Dots"
-181	"#006d77 on #e0f4f5"
-182	"Teal"
-183	"Animated halftone with dot modules"
-184	"Animated Dots + Halftone"
-185	"Animated blue noise with rounded"
-186	"Animated Rounded + Blue Noise"
-187	"Pixelated overlay with connected modules"
-188	"Connected + Pixelate Teal"
-189	"Connected modules with square finders"
-190	"Connected + Square"
-191	"Connected modules with wave effect"
-192	"Connected + Wave Ocean"
-193	"Diamond modules with blue noise"
-194	"Diamond + Blue Noise Navy"
-195	"Duotone effect with diamond modules"
-196	"Diamond + Duotone Crimson"
-197	"Diamond modules with rounded finders"
-198	"Diamond + Rounded"
-199	"Dots modules with circle finders"
-200	"Dots + Circle"
-201	"Maximum visibility with dots"
-202	"Dots + Extreme Forest"
-203	"Dot modules with halftone overlay"
-204	"Dots + Halftone Gold"
-205	"Edge detection with dot modules"
-206	"Dots + Outline Slate"
-207	"Classic dithered with rounded style"
-208	"Rounded + Dithered Royal"
-209	"Rounded modules with mosaic overlay"
-210	"Rounded + Mosaic Sunset"
-211	"Rounded modules with rounded finders"
-212	"Rounded + Rounded"
-213	"High-detail subpixel rendering"
-214	"Rounded + Subpixel Coral"
-215	"Mailto link with coral colors"
-216	"Email Address"
-217	"iCal event with rounded royal"
-218	"Calendar Event"
-219	"Map coords with connected gold"
-220	"Geo Location"
-221	"Pre-filled SMS with diamond teal"
-222	"SMS Message"
-223	"Contact card with rounded navy style"
-224	"vCard Contact"
-225	"WiFi config with dots forest green"
-226	"WiFi Network"
-227	"Adaptive threshold"
-228	"Adaptive"
-229	"Blue noise threshold"
-230	"Hybrid blue noise"
-231	"Blue Noise + Error"
-232	"Floyd-Steinberg style"
-233	"Error Diffusion"
-234	"Atkinson error diffusion"
-235	"Atkinson"
-236	"Burkes error diffusion"
-237	"Burkes"
-238	"Floyd-Steinberg error diffusion"
-239	"Floyd-Steinberg"
-240	"Jarvis-Judice-Ninke error diffusion"
-241	"Jarvis-Judice-Ninke"
-242	"Sierra error diffusion"
-243	"Sierra"
-244	"Stucki error diffusion"
-245	"Stucki"
-246	"Bayer matrix dithering"
-247	"Ordered Bayer"
-248	"Luminance-weighted"
-249	"Perceptual"
-250	"Dither strength at 100%"
-251	"Strength 100%"
-252	"Dither strength at 20%"
-253	"Strength 20%"
-254	"Dither strength at 40%"
-255	"Strength 40%"
-256	"Dither strength at 60%"
-257	"Strength 60%"
-258	"Dither strength at 80%"
-259	"Strength 80%"
-260	"Random noise threshold"
-261	"White Noise"
-262	"30% error correction"
-263	"ECC High"
-264	"7% error correction"
-265	"ECC Low"
-266	"15% error correction"
-267	"ECC Medium"
-268	"25% error correction"
-269	"ECC Quartile"
-270	"Automatic version selection"
-271	"Auto Version"
-272	"Version 12 QR code"
-273	"Version 12"
-274	"Best for overlays (no center eye)"
-275	"Version 6"
-276	"Version 6 with high error correction"
-277	"V6 + ECC High"
-278	"Version 6 with low error correction"
-279	"V6 + ECC Low"
-280	"Version 9 QR code"
-281	"Version 9"
-282	"Version 9 with high error correction"
-283	"V9 + ECC High"
-284	"Version 9 with low error correction"
-285	"V9 + ECC Low"
-286	"Circle finder pattern"
-287	"Circle Finders"
-288	"Rounded finder pattern"
-289	"Rounded Finders"
-290	"Square finder pattern"
-291	"Square Finders"
-292	"Halftone with classic palette"
-293	"Classic Halftone"
-294	"Halftone with forest palette"
-295	"Forest Halftone"
-296	"Halftone with navy palette"
-297	"Navy Halftone"
-298	"Halftone with wine palette"
-299	"Wine Halftone"
-300	"Color blend overlay"
-301	"Blend Mode"
-302	"Blue noise threshold dithering"
-303	"Brightness-based modules"
-304	"Brightness"
-305	"Black & white processing"
-306	"Black & White"
-307	"Color processing"
-308	"Color"
-309	"Grayscale processing"
-310	"Grayscale"
-311	"Error diffusion dithering"
-312	"Dithered"
-313	"Dithered at 100% intensity"
-314	"Dithered 100%"
-315	"Dithered at 50% intensity"
-316	"Dithered 50%"
-317	"Dithered at 75% intensity"
-318	"Dithered 75%"
-319	"Two-tone color mapping"
-320	"Duotone"
-321	"Maximum image visibility"
-322	"Extreme"
-323	"Classic halftone dots"
-324	"Halftone"
-325	"Mosaic tile effect"
-326	"Mosaic"
-327	"Edge detection overlay"
-328	"Outline"
-329	"Pixelated overlay effect"
-330	"Pixelate"
-331	"High detail subpixel rendering"
-332	"Subpixel"
-333	"Wavy distortion effect"
-334	"Mosaic with classic palette"
-335	"Classic Mosaic"
-336	"Mosaic with forest palette"
-337	"Forest Mosaic"
-338	"Mosaic with navy palette"
-339	"Navy Mosaic"
-340	"Mosaic with wine palette"
-341	"Wine Mosaic"
-342	"Standard QR code"
-343	"Classic"
-344	"Minimal error correction"
-345	"ECC Low (7%)"
-346	"Medium-high error correction"
-347	"ECC Quartile (25%)"
-348	"Large with multiple alignment"
-349	"Larger without center eye"
-350	"Even larger with center eye"
-351	"1px gaussian blur"
-352	"Blur 1px"
-353	"2px gaussian blur"
-354	"Blur 2px"
-355	"4px gaussian blur"
-356	"Blur 4px"
-357	"Brightness adjusted darker"
-358	"Brightness -25"
-359	"Brightness -50"
-360	"Brightness adjusted brighter"
-361	"Brightness +25"
-362	"Brightness +50"
-363	"Low contrast"
-364	"Contrast -50"
-365	"High contrast"
-366	"Contrast +100"
-367	"Contrast +50"
-368	"Canny edge detection"
-369	"Edge Canny"
-370	"Sobel edge detection"
-371	"Edge Sobel"
-372	"Gamma correction 0.5"
-373	"Gamma 0.5"
-374	"Gamma correction 1.5"
-375	"Gamma 1.5"
-376	"Gamma correction 2.0"
-377	"Gamma 2.0"
-378	"Hue rotation 90 degrees"
-379	"Hue +90°"
-380	"Inverted colors"
-381	"2 color levels"
-382	"Posterize 2"
-383	"4 color levels"
-384	"Posterize 4"
-385	"8 color levels"
-386	"Posterize 8"
-387	"Desaturated"
-388	"Saturation -100"
-389	"Reduced saturation"
-390	"Saturation -50"
-391	"Oversaturated"
-392	"Saturation +100"
-393	"Saturation +50"
-394	"100% sharpening"
-395	"Sharpen 100%"
-396	"25% sharpening"
-397	"Sharpen 25%"
-398	"50% sharpening"
-399	"Sharpen 50%"
-400	"Binary threshold at 128"
-401	"Threshold 128"
-402	"Binary threshold at 192"
-403	"Threshold 192"
-404	"Binary threshold at 64"
-405	"Threshold 64"
-406	"Connected module style"
-407	"Connected Modules"
-408	"Diamond module style"
-409	"Diamond Modules"
-410	"Dots module style"
-411	"Dots Modules"
-412	"Rounded module style"
-413	"Rounded Modules"
-414	"Square module style"
-415	"Square Modules"
-416	"Plain"
-417	"Power Combos"
-418	"Preprocessing"
-419	"Animated GIF overlays with different blend modes"
-420	"Animated Overlays"
-421	"Different color blending with image overlays"
-422	"Color, grayscale, and black & white processing"
-423	"Color Processing"
-424	"Color schemes and themed palettes"
-425	"Colors & Themes"
-426	"Different payload formats - vCard, WiFi, Email, SMS, Geo, Calendar"
-427	"Different dithering methods and error diffusion kernels"
-428	"Dithering Algorithms"
-429	"Different QR versions and error correction levels"
-430	"QR Encoding"
-431	"Static image overlays with different blend modes"
-432	"Image Overlays"
-433	"Standard QR codes without overlay - different versions and error correction"
-434	"Plain QR Codes"
-435	"Striking multi-feature combinations showcasing ANQR capabilities"
-436	"Brightness, contrast, gamma, blur, sharpen, posterize, edge detection"
-437	"Image Preprocessing"
-438	"Different visual styles for modules and finder patterns"
-439	"Module & Finder Styles"
-440	"Show All"
-441	"Styles"
-442	"Explore examples of QR codes created with ANQR"
-443	"QR Code Gallery"
-444	"Try this"
-445	"Copy Link"
-446	"Switch to dark mode"
-447	"Export"
-448	"Switch to light mode"
-449	"Search settings..."
-450	"Share"
-451	"Style of alignment patterns (used in larger QR codes)"
-452	"Opens specific content within a mobile app"
-453	"Auto-detect (requires v{{version}}+ for current content)"
-454	"0 = Auto, min v{{version}} for current content"
-455	"Background color hex code"
-456	"Legacy format - consider using vCard instead"
-457	"Note: Bluetooth pairing via QR is vendor-specific and may not work on all devices"
-458	"Play animation forward then backward (ping-pong)"
-459	"Subscribe to a shared calendar feed"
-460	"Ensure minimum contrast ratio between foreground and background"
-461	"Corner radius percentage for rounded modules (0-100%)"
-462	"Use pixelated rendering for sharp module edges"
-463	"Enter raw data in any format. No validation or formatting will be applied."
-464	"Rotate dot-style modules (0-360 degrees)"
-465	"Data encoding mode - Auto selects the most efficient mode"
-466	"Enforce minimum 4 module quiet zone for better scanning reliability"
-467	"Enter the text content to encode in the QR code"
-468	"Enter the URL to encode in the QR code"
-469	"European Payment Council QR code for SEPA credit transfers"
-470	"Error correction level - higher = more damage resistance but larger QR code"
-471	"Additional border modules beyond the quiet zone (0-10)"
-472	"Style of the inner square of finder patterns"
-473	"Style of the outer ring of finder patterns"
-474	"Scale finder patterns relative to their default size (50-150%)"
-475	"Foreground color hex code"
-476	"Style of the corner finder patterns"
-477	"Convert HTTP URLs to HTTPS automatically"
-478	"Add a decorative frame around the QR code"
-479	"Text to display on the frame"
-480	"How gaps between modules are rendered"
-481	"Apply a gradient effect to the QR code"
-482	"GS1 Digital Link for product identification and traceability"
-483	"Higher = more damage resistance, larger QR"
-484	"Loop animation continuously"
-485	"Prevent encoding content that exceeds QR code capacity"
-486	"Minimum contrast ratio to enforce (1-21, WCAG AA requires 4.5:1)"
-487	"Gap between modules as percentage (0-30%)"
-488	"Size of each QR code module in pixels (2-20px)"
-489	"Visual style of QR code modules"
-490	"Convert different newline formats to a standard format"
-491	"Select the output file format for export"
-492	"Singapore fast payment system"
-493	"How to assign colors to individual modules"
-494	"Click to pick background color"
-495	"Click to pick foreground color"
-496	"Brazilian instant payment system"
-497	"How to snap module positions to pixel boundaries"
-498	"Thailand national e-payment system"
-499	"QR code version (0=auto, 1-40 increases size and capacity)"
-500	"Quiet zone margin around QR code (0-10 modules, recommended: 4+)"
-501	"Link to an online RSVP form or event registration page"
-502	"Safety analysis mode - how strictly to check QR code readability"
-503	"Select the type of content to encode in the QR code"
-504	"Use a URL shortener service for dynamic/trackable QR codes"
-505	"Style of timing patterns (horizontal and vertical lines)"
-506	"Make the background transparent instead of using background color"
-507	"Remove leading and trailing whitespace"
-508	"Unified Payments Interface for India"
-509	"UTM campaign parameter for campaign tracking"
-510	"UTM medium parameter for campaign tracking"
-511	"UTM source parameter for campaign tracking"
-512	"Validate input data before encoding"
-513	"⚠️ Version too low! Minimum v{{version}} required"
-514	"Language"
-515	"Select Language"
-516	"Add Custom Field"
-517	"Author"
-518	"Author name"
-519	"Copyright"
-520	"© 2024 Company Name"
-521	"Custom Metadata"
-522	"Description"
-523	"Description of this QR code..."
-524	"Include Creation Time"
-525	"Key"
-526	"Keywords"
-527	"License"
-528	"CC-BY-4.0"
-529	"Title"
-530	"QR Code Title"
-531	"Value"
-532	"About"
-533	"Contact"
-534	"Guide"
-535	"Gallery"
-536	"Generator"
-537	"Privacy"
-538	"Terms"
-539	"Background Override"
-540	"Leave empty for default"
-541	"DPI (Print)"
-542	"Embed Raster Overlay"
-543	"Export As (Additional)"
-544	"Filename"
-545	"Format"
-546	"GIF"
-547	"GIF Settings"
-548	"Height"
-549	"Include Quiet Zone"
-550	"Median Cut"
-551	"NeuQuant"
-552	"Octree"
-553	"Ordered"
-554	"Output Size"
-555	"Palette Size"
-556	"PDF"
-557	"Pixel"
-558	"PNG"
-559	"Precise"
-560	"Quality"
-561	"Quantizer"
-562	"Shape Precision"
-563	"SVG"
-564	"SVG Settings"
-565	"Transparent Color"
-566	"#ffffff or empty"
-567	"True Vector"
-568	"Use paths instead of embedded raster"
-569	"WebP"
-570	"Width"
-571	"Adaptive Threshold"
-572	"Bayer 2×2"
-573	"Bayer 4×4"
-574	"Bayer 8×8"
-575	"Blend"
-576	"Blue Noise + Error Diffusion"
-577	"Blue Noise Threshold"
-578	"Blur"
-579	"Brightness Curve"
-580	"Cell Size"
-581	"Center Logo"
-582	"Center Rule"
-583	"Clustered Dot"
-584	"Color Dither"
-585	"Color Mode"
-586	"Contain"
-587	"Contrast"
-588	"Note: Image must allow cross-origin requests (CORS)"
-589	"Cover"
-590	"Crop Image"
-591	"Crop Size"
-592	"Diffusion Kernel"
-593	"Disposal Handling"
-594	"Dither"
-595	"Dither Settings"
-596	"Dither Strength"
-597	"Dot Shape"
-598	"Duotone Colors"
-599	"ECC-Aware Mode"
-600	"Edge Detection"
-601	"Edge-Aware"
-602	"Enable Crop"
-603	"Finder Override"
-604	"Fit Mode"
-605	"Flip X"
-606	"Flip Y"
-607	"From URL"
-608	"Full Color"
-609	"Gamma"
-610	"Gap Fill"
-611	"Gaussian Noise"
-612	"Grid Size"
-613	"Halftone Center"
-614	"Halftone Settings"
-615	"Highlight"
-616	"Hue Rotate"
-617	"Image / GIF / WebP"
-618	"Image URL"
-619	"Intensity"
-620	"Invert Image"
-621	"Line"
-622	"Load"
-623	"Loaded from URL"
-624	"Max FPS"
-625	"Neutral Color"
-626	"No file"
-627	"N×N Grid"
-628	"Ordered (Bayer)"
-629	"Ordered Matrix"
-630	"Original"
-631	"Per Channel"
-632	"Per Module"
-633	"Perceptual (Luminance)"
-634	"Posterize Levels"
-635	"Preserve Alignment"
-636	"Preserve Finder Patterns"
-637	"Preserve Timing"
-638	"Protect Format Info"
-639	"Protect Version Info"
-640	"Protection"
-641	"Remove"
-642	"Respect"
-643	"Risk Budget"
-644	"Rotation"
-645	"S-Curve"
-646	"Saturation"
-647	"Screened Blue Noise"
-648	"Seed"
-649	"Select Image"
-650	"Sepia"
-651	"Serpentine Scanning"
-652	"Shadow"
-653	"Sharpen"
-654	"Sierra-2"
-655	"Sierra-Lite"
-656	"Simplify"
-657	"Stretch"
-658	"Strict"
-659	"Stylized"
-660	"Subpixel Settings"
-661	"Subpixel Size"
-662	"Temporal Blue Noise"
-663	"Threshold"
-664	"Tile Size"
-665	"Triangular Noise"
-666	"True Dither"
-667	"Use Frame Delays"
-668	"Void & Cluster"
-669	"Account Name"
-670	"Address"
-671	"Algorithm"
-672	"All Day Event"
-673	"Amount (optional)"
-674	"Amount (BRL, optional)"
-675	"Amount (EUR)"
-676	"Amount (INR, optional)"
-677	"Amount (SGD, optional)"
-678	"Amount (THB, optional)"
-679	"Android Intent"
-680	"App Deep Link (Android/iOS)"
-681	"Asset/Inventory Tag"
-682	"Asset/Item ID"
-683	"Asset Type"
-684	"Attendee Name"
-685	"Audio"
-686	"Base URL"
-687	"Batch/Lot (optional)"
-688	"Beneficiary Name"
-689	"BIC/SWIFT (optional)"
-690	"Birthday"
-691	"Bitcoin"
-692	"BizCard (Legacy)"
-693	"Bluetooth"
-694	"Message Body"
-695	"Body (optional)"
-696	"Box"
-697	"Calendar"
-698	"Calendar Name"
-699	"Calendar Subscribe"
-700	"Calendar URL (ICS/WebCal)"
-701	"Campaign Content (optional)"
-702	"Campaign Medium"
-703	"Campaign Name"
-704	"Campaign Source"
-705	"Campaign Term (optional)"
-706	"City"
-707	"City (optional)"
-708	"Cloud Storage Link"
-709	"Company"
-710	"Content Type"
-711	"Core"
-712	"Country"
-713	"Crypto (BTC, ETH, etc.)"
-714	"Cryptocurrency"
-715	"Custom Format"
-716	"Custom Scheme"
-717	"Date & Time"
-718	"Deep Link URL"
-719	"Device Address (MAC)"
-720	"Device Name (optional)"
-721	"Digits"
-722	"Documents & Media"
-723	"Dropbox"
-724	"Email"
-725	"Encryption"
-726	"End"
-727	"End Date"
-728	"Enterprise"
-729	"EPC / SEPA (EU)"
-730	"Equipment"
-731	"Ethereum"
-732	"iCalendar Event"
-733	"Event Name"
-734	"Event RSVP Link"
-735	"Event Ticket"
-736	"Expiry Date (optional)"
-737	"Facebook"
-738	"Fallback URL (optional)"
-739	"Fax"
-740	"File Type"
-741	"File / Document URL"
-742	"First Name"
-743	"Force HTTPS"
-744	"Full Name"
-745	"Furniture"
-746	"GitHub"
-747	"Google Drive"
-748	"GS1 Digital Link"
-749	"GTIN (Global Trade Item Number)"
-750	"Hidden Network"
-751	"Home Phone"
-752	"IBAN"
-753	"ID Type"
-754	"Image"
-755	"Instagram"
-756	"Inventory Item"
-757	"iOS Universal"
-758	"Issuer"
-759	"IT Asset"
-760	"Label (optional)"
-761	"Last Name"
-762	"Latitude"
-763	"Link Type"
-764	"LinkedIn"
-765	"Litecoin"
-766	"Location"
-767	"Location & Network"
-768	"Longitude"
-769	"Lookup URL (optional)"
-770	"Marketing"
-771	"Marketing Tags"
-772	"Max Length Guard"
-773	"MeCard Contact"
-774	"Merchant Name (optional)"
-775	"Message"
-776	"Message (optional)"
-777	"WhatsApp / Telegram / Signal"
-778	"Messenger"
-779	"Mobile Number"
-780	"Mobile Phone"
-781	"Name"
-782	"National ID / Tax ID"
-783	"Nickname"
-784	"Normalize Newlines"
-785	"Note"
-786	"OneDrive"
-787	"Open (No Password)"
-788	"Organization"
-789	"Other"
-790	"OTP Authenticator"
-791	"Type"
-792	"Password"
-793	"Payee Name"
-794	"Payments (Open Specs)"
-795	"PayNow (Singapore)"
-796	"Phone"
-797	"Phone/Username"
-798	"PIX (Brazil)"
-799	"PIX Key"
-800	"Plain Text"
-801	"Platform"
-802	"Pre-filled Message (optional)"
-803	"Profile URL"
-804	"PromptPay ID"
-805	"PromptPay (Thailand)"
-806	"Proxy Type"
-807	"Raw Data"
-808	"Recipient"
-809	"Reference"
-810	"Reference (optional)"
-811	"Resolver Domain"
-812	"RSVP URL"
-813	"Search Query (optional)"
-814	"Seat"
-815	"Secret (Base32)"
-816	"Section/Zone"
-817	"Security Type"
-818	"Serial Number (optional)"
-819	"Service"
-820	"Short Link Redirect"
-821	"Short URL"
-822	"Signal"
-823	"SMS"
-824	"SMS / MMS"
-825	"Social & Messaging"
-826	"Social Profile"
-827	"Network Name (SSID)"
-828	"Start"
-829	"Start Date"
-830	"State/Province"
-831	"Street"
-832	"Subject"
-833	"Subject (optional)"
-834	"Event Title"
-835	"Phone Number"
-836	"Telegram"
-837	"Text Content"
-838	"Ticket ID"
-839	"TikTok"
-840	"Transaction Note (optional)"
-841	"Trim Whitespace"
-842	"UEN/Mobile Number"
-843	"Universal Link"
-844	"UPI (India)"
-845	"UPI ID (VPA)"
-846	"URL"
-847	"utm_campaign"
-848	"utm_content"
-849	"UTM Campaign Link"
-850	"utm_medium"
-851	"utm_source"
-852	"utm_term"
-853	"Validate Input"
-854	"Validation Options"
-855	"Validation URL (optional)"
-856	"Vehicle"
-857	"Venue"
-858	"Viber"
-859	"Video"
-860	"Website"
-861	"WhatsApp"
-862	"WiFi"
-863	"Word Document"
-864	"Work Phone"
-865	"YouTube"
-866	"ZIP/Postal Code"
-867	"QR Code Preview - Click Export to download"
-868	"Simulating"
-869	"Environmental simulation active - Preview shows how QR code may appear under different conditions"
-870	"Additional border beyond quiet zone"
-871	"Alphanumeric"
-872	"Auto"
-873	"Auto (min: {{version}})"
-874	"Auto (Optimal)"
-875	"Byte / UTF-8"
-876	"{{count}}:1"
-877	"Encoding Mode"
-878	"Enforce Min Quiet Zone"
-879	"Ensure ≥4 module margin"
-880	"Error Correction"
-881	"Extra Border Modules"
-882	"H - High (30%)"
-883	"Kanji"
-884	"L - Low (7%)"
-885	"Quiet Zone (Margin)"
-886	"Mask Pattern"
-887	"M - Medium (15%)"
-888	"Module Size"
-889	"{{count}}°"
-890	"{{count}} modules"
-891	"{{count}}ms"
-892	"{{count}}%"
-893	"{{count}}px"
-894	"Numeric Only"
-895	"Q - Quartile (25%)"
-896	"Version"
-897	"Add Color"
-898	"Alignment Pattern Style"
-899	"Background"
-900	"By Brightness"
-901	"By Cluster"
-902	"By Overlay"
-903	"By Position"
-904	"Ceil"
-905	"Circle"
-906	"Color Palette"
-907	"Conic"
-908	"Connected"
-909	"Contrast Guard"
-910	"Corner Radius"
-911	"Crisp Edges"
-912	"Use image-rendering: pixelated for sharp edges"
-913	"Dashed"
-914	"Diamond"
-915	"Dot Rotation"
-916	"Dots"
-917	"Eye Inner Style"
-918	"Eye Outer Style"
-919	"Eye Scale"
-920	"Finder Pattern Style"
-921	"Floor"
-922	"Foreground"
-923	"Frame Style"
-924	"Frame Text"
-925	"Gap Mode"
-926	"Gradient"
-927	"Gradient Angle"
-928	"Gradient Type"
-929	"Inset"
-930	"Linear"
-931	"Match Finder"
-932	"Match Module"
-933	"Min Contrast Ratio"
-934	"Module Gap"
-935	"Negative Space"
-936	"Per-Module Color Mode"
-937	"Pixel Snap"
-938	"Radial"
-939	"Round"
-940	"Rounded"
-941	"Rounded Frame"
-942	"Module Style"
-943	"Sharp"
-944	"Smooth"
-945	"Solid"
-946	"Square"
-947	"Squares"
-948	"Sticker"
-949	"Stroke"
-950	"Style"
-951	"Tag"
-952	"Timing Pattern Style"
-953	"Transparent Background"
-954	"Safety Analysis"
-955	"Auto-Pick ECC"
-956	"Auto-Pick Version"
-957	"Auto-Reduce Intensity"
-958	"Auto-Tuning"
-959	"Balanced"
-960	"Contrast Ratio"
-961	"Contrast Check"
-962	"Excellent"
-963	"Fair"
-964	"Good"
-965	"Lock Alignment"
-966	"Lock Finders"
-967	"Lock Format Info"
-968	"Lock Timing"
-969	"Lock Version Info"
-970	"Min Module Size"
-971	"Min Quiet Zone"
-972	"Poor"
-973	"Protection Locks"
-974	"Quality Analysis"
-975	"Quiet Zone"
-976	"Safety Mode"
-977	"Scanability Score"
-978	"Show Heatmap"
-979	"Simulate Blur"
-980	"Simulate Noise"
-981	"Simulate Rotation"
-982	"Until scannable"
-983	"Metadata"
-984	"Output"
-985	"Overlay / Image"
-986	"Payload / Data"
-987	"Rendering"
-988	"Watermark"
-989	"Direct Link"
-990	"Generate shareable URL"
-991	"Embed HTML"
-992	"Generate embed code"
-993	"Encode All Parameters"
-994	"Include all settings in URL"
-995	"Markdown"
-996	"Quick Share"
-997	"X/Twitter"
-998	"Advanced"
-999	"Basic"
-1000	"Pro"
-1001	"Watch ad to unlock Professional features for 24 hours"
-1002	"Behind QR"
-1003	"Bottom Left"
-1004	"Bottom Right"
-1005	"Center"
-1006	"Corners"
-1007	"Edges"
-1008	"Enable Watermark"
-1009	"Font Color"
-1010	"Font Size"
-1011	"Multiply"
-1012	"Normal"
-1013	"Opacity"
-1014	"Overlay"
-1015	"Pattern"
-1016	"Position"
-1017	"Screen"
-1018	"Text"
-1019	"© Company Name"
-1020	"Top Left"
-1021	"Top Right"
-1022	"Upload Image"
-1023	"Toggle settings panel"
-1024	"All Categories"
-1025	"Copy shareable link to clipboard"
-1026	"Export QR code to file"
-1027	"Open navigation menu"
-1028	"Open documentation sidebar"
-1029	"Close sidebar"
-1030	"Image unavailable"
-1031	"Message sent"
-1032	"Last Updated"
-1033	"Scan Me!"
-1034	"Enter text to encode..."
-1035	"Email subject"
-1036	"Email body"
-1037	"Pre-filled message"
-1038	"Place name or address"
-1039	"Network password"
-1040	"Event details..."
-1041	"Payment for..."
-1042	"Enter raw QR code data..."
-1043	"Your name"
-1044	"What can we help with?"
-1045	"Tell us what you are trying to do, and include any error messages if relevant."
-1046	"Message sent"
-1047	"Thanks - we received your message. If you do not hear back, email us at"
-1048	"We could not submit the form. Please email"
-1049	"Send message"
-1050	"Sending..."
-1051	"By sending a message, you agree that we can use your details to respond. See the Privacy Policy."
-1052	"Email Us"
-1053	"Have a question, suggestion, or need help? Send us an email and we'll get back to you."
-1054	"Please enter a URL"
-1055	"Preview"
-1056	"PDF Document"
-1057	"UEN (Business)"
-1058	"E-Wallet ID"
-1059	"TOTP (Time-based)"
-1060	"HOTP (Counter-based)"
-1061	"iOS URL Scheme"
-1062	"X (Twitter)"
-1063	"Counter"
-1064	"Period (sec)"
-1065	"utm_source"
-1066	"utm_medium"
-1067	"utm_campaign"
-1068	"+1234567890"
-1069	"name@anqr.link"
-1070	"0.0"
-1071	"MyWiFiNetwork"
-1072	"John Doe"
-1073	"John"
-1074	"Doe"
-1075	"Johnny"
-1076	"Company Inc."
-1077	"Software Engineer"
-1078	"Doe,John"
-1079	"123 Main St, City"
-1080	"My Bluetooth Device"
-1081	"Meeting"
-1082	"Conference Room A"
-1083	"Annual Conference 2024"
-1084	"Team Schedule"
-1085	"+1234567890 or @username"
-1086	"Hello! I scanned your QR code..."
-1087	"Wallet address"
-1088	"Invoice 12345"
-1089	"name@upi"
-1090	"Payment for order"
-1091	"João Silva"
-1092	"São Paulo"
-1093	"CPF, CNPJ, Email, Phone, or Random Key"
-1094	"MyApp"
-1095	"user@anqr.link"
-1096	"ABC123"
-1097	"LOT123"
-1098	"id.gs1.org"
-1099	"Building A, Room 101"
-1100	"Dell Laptop 15-inch"
-1101	"TKT-2024-001234"
-1102	"Concert 2024"
-1103	"Stadium Arena"
-1104	"Section A"
-1105	"Row 5, Seat 12"
+1	« Bruit bleu »
+2	« Rebondir (Ping-Pong) »
+3	« Cycle des couleurs »
+4	« Fondu enchaîné »
+5	« Dérive »
+6	« Activer l'animation »
+7	« Chaque {{count}} image(s) »
+8	« Exporter toutes les images »
+9	« Fondu enchaîné »
+10	« Sécurité anti-scintillement »
+11	« Étape du cadre »
+12	« Interpolation »
+13	« Animation en boucle »
+14	« Images maximales »
+15	« Module Jitter »
+16	« ⚠️ Peut affecter la lisibilité »
+17	« Morph »
+18	« Aucun »
+19	« Désactivé »
+20	« Modèle généré »
+21	« Pulse »
+22	« Graine aléatoire »
+23	« Rotation »
+24	« Scanline »
+25	« Scintillant »
+26	« Glisser »
+27	« Vitesse d'affichage »
+28	« Cadre de départ »
+29	« Dithering temporel »
+30	« Vague »
+31	« Anglais »
+32	« Hindi »
+33	« Chinois »
+34	« Malais »
+35	« Tamil »
+36	« Thaï »
+37	« Portugais »
+38	« Indonésien »
+39	« vietnamiens »
+40	« Philippins »
+41	« Japonais »
+42	« Coréen »
+43	« Espagnol »
+44	« Arabe »
+45	« Russe »
+46	« Telugu »
+47	« Marathi »
+48	« Bengali »
+49	« Gujarati »
+50	« Kannada »
+51	« Malayalam »
+52	« Punjabi »
+53	« ANQR »
+54	« Générateur de code QR »
+55	« Tous droits réservés »
+56	« Appliquer »
+57	« Retour »
+58	« Annuler »
+59	« Fermer »
+60	« Copié ! »
+61	« Copie »
+62	« © ANQR »
+63	« Supprimer »
+64	« Handicapés »
+65	« Télécharger »
+66	« Modifier »
+67	« Activé »
+68	« Erreur »
+69	« Filtre »
+70	« Moins »
+71	« Chargement... »
+72	« Plus »
+73	« Suivant »
+74	« Non »
+75	« OK »
+76	« Marche »
+77	« Précédent »
+78	« Réinitialiser »
+79	« Sauvegarder »
+80	« Recherche »
+81	« Sélectionnez »
+82	« Afficher moins »
+83	« Afficher plus »
+84	« Trier »
+85	« Succès »
+86	« Télécharger »
+87	« Tout afficher »
+88	« Oui »
+89	« Échec de l'enregistrement du fichier : {{error}} »
+90	« Enregistré dans Documents : {{filename}} »
+91	« © ANQR {{année}} »
+92	« Tous »
+93	« Animation »
+94	« Modes de mélange »
+95	« Effondrement »
+96	« Modes de couleur »
+97	« Couleurs »
+98	« Types de contenu »
+99	« Hésitation »
+100	« Encodage »
+101	« Développer »
+102	« Superposition d'image »
+103	« Seuil de bruit bleu avec animation »
+104	« Bruit bleu animé »
+105	« Bruit bleu animé à 100 % »
+106	« Bruit bleu 100 % »
+107	« Bruit bleu animé à 50 % »
+108	« Bruit bleu 50 % »
+109	« Bruit bleu animé à 75 % »
+110	« Bruit bleu 75 % »
+111	« Lumière et animation »
+112	« Luminosité animée »
+113	« Superposition animée en noir et blanc »
+114	« Animation en noir et blanc »
+115	« Superposition animée couleur »
+116	« Couleur animée »
+117	« Superposition animée en niveaux de gris »
+118	« Niveaux de gris animés »
+119	« Diffusion des erreurs avec animation »
+120	« Animated Dithered »
+121	« Duotone avec animation »
+122	« Duotone animé »
+123	« Points de demi-teintes avec animation »
+124	« Demi-teintes animées »
+125	« Mosaïque animée »
+126	« Mosaïque animée »
+127	« Superposition tramée avec palette classique »
+128	« Mélange classique »
+129	« Superposition tramée avec palette de couleurs forestières »
+130	« Mélange forestier »
+131	« Superposition tramée avec palette marine »
+132	« Mélange marine »
+133	« Superposition tramée avec palette de vins »
+134	« Assemblage de vins »
+135	« Bruit bleu en noir et blanc »
+136	« Bruit bleu N&B »
+137	« Bruit bleu en couleur »
+138	« Couleur du bruit bleu »
+139	« Couleurs altérées »
+140	« Couleur tramée »
+141	« Tramé en niveaux de gris »
+142	« Niveaux de gris tramés »
+143	« Demi-teintes en noir et blanc »
+144	« Demi-teintes N&B »
+145	« Demi-teintes en couleur »
+146	« Couleur demi-teinte »
+147	« #e85d04 sur #ffe8d6 »
+148	« Corail »
+149	« Corail avec modules à points »
+150	« Points de corail »
+151	« #9d0208 sur #ffccd5 »
+152	« Cramoisi »
+153	« #1b4332 sur #d8f3dc »
+154	« Forêt »
+155	« Forêt avec modules de points »
+156	« Points de la forêt »
+157	« #7f5539 sur #ffe8cc »
+158	« Or »
+159	« #ffffff sur #000000 »
+160	« Inversé »
+161	« #1a1a2e sur #eef1ff »
+162	« Minuit »
+163	« Minuit avec modules de points »
+164	« Points de minuit »
+165	« #001d3d sur #a2d2ff »
+166	« Marine »
+167	« #023e8a sur #caf0f8 »
+168	« Océan »
+169	« Océan avec modules de points »
+170	« Points océaniques »
+171	« #4a0080 sur #f5e6ff »
+172	« Royal »
+173	« Royal avec modules à points »
+174	« Dos royaux »
+175	« #343a40 sur #e9ecef »
+176	« Ardoise »
+177	« #bf0603 sur #fff3b0 »
+178	« Coucher de soleil »
+179	« Coucher de soleil avec modules de points »
+180	« Points du coucher de soleil »
+181	« #006d77 sur #e0f4f5 »
+182	« Turquoise »
+183	« Demi-teinte animée avec modules de points »
+184	« Points animés + Demi-teintes »
+185	« Bruit bleu animé avec des sons arrondis »
+186	« Bruit bleu animé arrondi »
+187	« Superposition pixélisée avec modules connectés »
+188	« Connecté + Pixellisé Turquoise »
+189	« Modules connectés avec détecteurs d'équerres »
+190	« Connecté + Carré »
+191	« Modules connectés avec effet de vague »
+192	« Connecté + Océan des vagues »
+193	« Modules diamant à bruit bleu »
+194	« Diamant + Bleu Marine Bruit »
+195	« Effet bicolore avec modules diamant »
+196	« Diamant + Duotone Cramoisi »
+197	« Modules diamant avec viseurs arrondis »
+198	« Diamant + Arrondi »
+199	« Modules de points avec détecteurs de cercles »
+200	« Points + Cercle »
+201	« Visibilité maximale avec des points »
+202	« Points + Forêt extrême »
+203	« Modules de points avec superposition de demi-teintes »
+204	« Points + Or en demi-teintes »
+205	« Détection de contours avec modules de points »
+206	« Ardoise à points et contours »
+207	« Classique tramé avec un style arrondi »
+208	« Royal arrondi et étiré »
+209	« Modules arrondis avec superposition de mosaïque »
+210	« Coucher de soleil arrondi et mosaïque »
+211	« Modules arrondis avec viseurs arrondis »
+212	« Arrondi + Arrondi »
+213	« Rendu subpixel haute définition »
+214	« Corail arrondi + subpixel »
+215	« Lien Mailto aux couleurs corail »
+216	« Adresse e-mail »
+217	« Événement iCal avec un roi arrondi »
+218	« Événement du calendrier »
+219	« Coordonnées de la carte avec de l'or connecté »
+220	« Géolocalisation »
+221	« SMS prérempli avec diamant sarcelle »
+222	« Message SMS »
+223	« Carte de contact au style marine arrondi »
+224	« Contact vCard »
+225	« Configuration WiFi avec des points vert forêt »
+226	« Réseau Wi-Fi »
+227	« Seuil adaptatif »
+228	« Adaptatif »
+229	« Seuil de bruit bleu »
+230	« Bruit bleu hybride »
+231	« Bruit bleu + Erreur »
+232	« style Floyd-Steinberg »
+233	« Diffusion des erreurs »
+234	« Diffusion de l'erreur d'Atkinson »
+235	« Atkinson »
+236	« Diffusion de l'erreur de Burke »
+237	« Burkes »
+238	« Diffusion de l'erreur de Floyd-Steinberg »
+239	« Floyd-Steinberg »
+240	« Diffusion des erreurs Jarvis-Judice-Ninke »
+241	« Jarvis-Judice-Ninke »
+242	« Diffusion d'erreur de Sierra »
+243	« Sierra »
+244	« Diffusion d'erreur bloquée »
+245	«Stucki»
+246	« Dithering de la matrice de Bayer »
+247	« Commandé Bayer »
+248	« Pondération par la luminance »
+249	« Perceptuel »
+250	« Force de dither à 100 % »
+251	« Force 100 % »
+252	« Force du dither à 20 % »
+253	« Force 20 % »
+254	« Force du dither à 40 % »
+255	« Force 40 % »
+256	« Force du dither à 60 % »
+257	« Force 60 % »
+258	« Force du dither à 80 % »
+259	« Force 80 % »
+260	« Seuil de bruit aléatoire »
+261	« Bruit blanc »
+262	« Correction d'erreur à 30 % »
+263	« ECC High »
+264	« correction d'erreur à 7 % »
+265	« ECC Faible »
+266	« Correction d'erreur de 15 % »
+267	« ECC Moyen »
+268	« Correction d'erreur à 25 % »
+269	« Quartile ECC »
+270	« Sélection automatique de la version »
+271	« Version automatique »
+272	« Code QR Version 12 »
+273	« Version 12 »
+274	« Idéal pour les superpositions (sans œil central) »
+275	« Version 6 »
+276	« Version 6 avec correction d'erreurs élevée »
+277	« V6 + ECC High »
+278	« Version 6 avec correction d'erreurs réduite »
+279	« V6 + ECC Low »
+280	« Code QR Version 9 »
+281	« Version 9 »
+282	« Version 9 avec correction d'erreurs élevée »
+283	« V9 + ECC High »
+284	« Version 9 avec correction d'erreurs réduite »
+285	« V9 + ECC Low »
+286	« Modèle de chercheur de cercle »
+287	« Chercheurs de cercles »
+288	« Modèle de chercheur arrondi »
+289	« Viseurs arrondis »
+290	« Modèle de recherche d'équerre »
+291	« Chercheurs d'équerres »
+292	« Demi-teintes avec palette classique »
+293	« Demi-teintes classiques »
+294	« Demi-teintes avec palette forestière »
+295	« Demi-teintes de forêt »
+296	« Demi-teintes avec palette marine »
+297	« Demi-teinte marine »
+298	« Demi-teintes avec palette de vins »
+299	« Demi-teinte vin »
+300	« Superposition de mélange de couleurs »
+301	« Mode Mélange »
+302	« Dithering du seuil de bruit bleu »
+303	« Modules basés sur la luminosité »
+304	« Lumière »
+305	« Traitement noir et blanc »
+306	« Noir et Blanc »
+307	« Traitement des couleurs »
+308	« Couleur »
+309	« Traitement en niveaux de gris »
+310	« Niveaux de gris »
+311	« Dithering par diffusion d'erreur »
+312	« Hésité »
+313	« Hésitant à 100 % d'intensité »
+314	« Hésité à 100 % »
+315	« Hésitant à 50 % d'intensité »
+316	« Hésitant à 50 % »
+317	« Hésitant à 75 % d'intensité »
+318	« Hésité à 75 % »
+319	« Cartographie des couleurs bicolores »
+320	« Duotone »
+321	« Visibilité maximale de l'image »
+322	« Extrême »
+323	« Points de demi-teintes classiques »
+324	« Demi-teintes »
+325	« Effet mosaïque »
+326	« Mosaïque »
+327	« Superposition de détection des contours »
+328	« Contour »
+329	« Effet de superposition pixellisée »
+330	« Pixellate »
+331	« Rendu subpixel haute définition »
+332	« Sous-pixel »
+333	« Effet de distorsion ondulée »
+334	« Mosaïque à palette classique »
+335	« Mosaïque classique »
+336	« Mosaïque à palette forestière »
+337	« Mosaïque forestière »
+338	« Mosaïque à palette marine »
+339	« Mosaïque de la Marine »
+340	« Mosaïque à palette de vins »
+341	« Mosaïque de vins »
+342	« Code QR standard »
+343	« Classique »
+344	« Correction d'erreur minimale »
+345	« ECC Faible (7 %) »
+346	« Correction d'erreur moyenne à élevée »
+347	« Quartile ECC (25 %) »
+348	« Grand avec alignement multiple »
+349	« Plus grand sans œil central »
+350	« Encore plus grand avec un œil central »
+351	« flou gaussien de 1 px »
+352	« Flou 1px »
+353	« Flou gaussien 2px »
+354	« Flou 2px »
+355	« flou gaussien de 4 px »
+356	« Flou 4px »
+357	« Luminosité ajustée en assombrissement »
+358	« Luminosité -25 »
+359	« Luminosité -50 »
+360	« Luminosité ajustée pour être plus lumineuse »
+361	« Luminosité +25 »
+362	« Luminosité +50 »
+363	« Faible contraste »
+364	« Contraste -50 »
+365	« Contraste élevé »
+366	« Contraste +100 »
+367	« Contraste +50 »
+368	« Détection de contours Canny »
+369	« Edge Canny »
+370	« Détection de contours de Sobel »
+371	« Edge Sobel »
+372	« Correction gamma 0,5 »
+373	« Gamma 0,5 »
+374	« Correction gamma 1,5 »
+375	« Gamma 1,5 »
+376	« Correction gamma 2.0 »
+377	« Gamma 2.0 »
+378	« Rotation de teinte de 90 degrés »
+379	« Teinte +90° »
+380	« Couleurs inversées »
+381	« 2 niveaux de couleur »
+382	« Posterize 2 »
+383	« 4 niveaux de couleur »
+384	« Posterize 4 »
+385	« 8 niveaux de couleur »
+386	« Posterize 8 »
+387	« Désaturé »
+388	« Saturation -100 »
+389	« Saturation réduite »
+390	« Saturation -50 »
+391	« Sursaturé »
+392	« Saturation +100 »
+393	« Saturation +50 »
+394	« Affûtage à 100 % »
+395	« Affûtage à 100 % »
+396	« Affûtage à 25 % »
+397	« Affûter 25 % »
+398	« Affûtage à 50 % »
+399	« Affûter 50 % »
+400	« Seuil binaire à 128 »
+401	« Seuil 128 »
+402	« Seuil binaire à 192 »
+403	« Seuil 192 »
+404	« Seuil binaire à 64 »
+405	« Seuil 64 »
+406	« Style de module connecté »
+407	« Modules connectés »
+408	« Module de style diamant »
+409	« Modules Diamant »
+410	« Module de style Dots »
+411	« Modules Dots »
+412	« Style de module arrondi »
+413	« Modules arrondis »
+414	« Module carré »
+415	« Modules carrés »
+416	« Simple »
+417	« Combinaisons puissantes »
+418	« Prétraitement »
+419	« Superpositions GIF animées avec différents modes de fusion »
+420	« Superpositions animées »
+421	« Mélange de couleurs différent avec superpositions d'images »
+422	« Traitement couleur, niveaux de gris et noir et blanc »
+423	« Traitement des couleurs »
+424	« Schémas de couleurs et palettes thématiques »
+425	« Couleurs et thèmes »
+426	« Différents formats de charge utile - vCard, WiFi, Email, SMS, Géo, Calendrier »
+427	« Différentes méthodes de tramage et noyaux de diffusion d'erreur »
+428	« Algorithmes de tramage »
+429	« Différentes versions de QR et niveaux de correction d'erreur »
+430	« Encodage QR »
+431	« Superpositions d'images statiques avec différents modes de fusion »
+432	« Superpositions d'images »
+433	« Codes QR standard sans superposition - différentes versions et correction d'erreurs »
+434	« Codes QR simples »
+435	« Des combinaisons multifonctionnelles saisissantes mettant en valeur les capacités d'ANQR »
+436	« Luminosité, contraste, gamma, flou, netteté, postérisation, détection des contours »
+437	« Prétraitement d'image »
+438	« Différents styles visuels pour les modules et les modèles de recherche »
+439	« Styles de modules et de recherche »
+440	« Tout afficher »
+441	« Styles »
+442	« Explorez des exemples de codes QR créés avec ANQR »
+443	« Galerie de codes QR »
+444	« Essayez ceci »
+445	« Copier le lien »
+446	« Passer en mode sombre »
+447	« Exportation »
+448	« Passer en mode clair »
+449	« Paramètres de recherche... »
+450	« Partager »
+451	« Style de motifs d'alignement (utilisés dans les codes QR plus grands) »
+452	« Ouvre un contenu spécifique dans une application mobile »
+453	« Détection automatique (nécessite v{{version}}+ pour le contenu actuel) »
+454	« 0 = Auto, v{{version}} minimum pour le contenu actuel »
+455	« Code hexadécimal de la couleur d'arrière-plan »
+456	« Format hérité - envisagez d'utiliser une vCard à la place »
+457	« Remarque : le jumelage Bluetooth via QR est spécifique au fournisseur et peut ne pas fonctionner sur tous les appareils »
+458	« Jouer l'animation en avant puis en arrière (ping-pong) »
+459	« S'abonner à un flux de calendrier partagé »
+460	« Assurer un rapport de contraste minimal entre le premier plan et l'arrière-plan »
+461	« Pourcentage de rayon d'angle pour les modules arrondis (0-100%) »
+462	« Utilisez un rendu pixélisé pour obtenir des contours de modules nets »
+463	« Saisissez les données brutes dans n'importe quel format. Aucune validation ni mise en forme ne sera appliquée. »
+464	« Rotation des modules de type point (0-360 degrés) »
+465	« Mode d'encodage des données - Sélection automatique du mode le plus efficace »
+466	« Imposer une zone silencieuse d'au moins 4 modules pour une meilleure fiabilité de numérisation »
+467	« Saisissez le texte à encoder dans le code QR »
+468	« Saisissez l'URL à encoder dans le code QR »
+469	« Code QR du Conseil européen des paiements pour les virements SEPA »
+470	« Niveau de correction d'erreur - plus élevé = plus grande résistance aux dommages mais code QR plus grand »
+471	« Modules de bordure supplémentaires au-delà de la zone silencieuse (0-10) »
+472	« Style du carré intérieur des motifs de recherche »
+473	« Style de l'anneau extérieur des gabarits de recherche »
+474	« Motifs de recherche d'échelle par rapport à leur taille par défaut (50-150 %) »
+475	« Code hexadécimal de la couleur de premier plan »
+476	« Style des modèles de repérage des coins »
+477	« Convertir automatiquement les URL HTTP en HTTPS »
+478	« Ajouter un cadre décoratif autour du code QR »
+479	« Texte à afficher sur le cadre »
+480	« Comment les espaces entre les modules sont rendus »
+481	« Appliquer un effet de dégradé au code QR »
+482	« GS1 Digital Link pour l'identification et la traçabilité des produits »
+483	« Plus élevé = plus de résistance aux dommages, QR plus grand »
+484	« Animation en boucle continue »
+485	« Empêcher l'encodage de contenu dépassant la capacité du code QR »
+486	« Rapport de contraste minimal à appliquer (1-21, WCAG AA exige 4,5:1) »
+487	« Écart entre les modules en pourcentage (0-30 %) »
+488	« Taille de chaque module de code QR en pixels (2-20px) »
+489	« Style visuel des modules de code QR »
+490	« Convertir différents formats de nouvelle ligne en un format standard »
+491	« Sélectionnez le format du fichier de sortie pour l'exportation »
+492	« Système de paiement rapide de Singapour »
+493	« Comment attribuer des couleurs aux modules individuels »
+494	« Cliquez pour choisir la couleur de fond »
+495	« Cliquez pour choisir la couleur de premier plan »
+496	« Système de paiement instantané brésilien »
+497	« Comment aligner les positions des modules sur les limites des pixels »
+498	« Système national de paiement électronique de Thaïlande »
+499	« Version du code QR (0=auto, 1-40 augmente la taille et la capacité) »
+500	« Marge de zone silencieuse autour du code QR (0-10 modules, recommandé : 4+) »
+501	« Lien vers un formulaire de confirmation de présence en ligne ou une page d'inscription à un événement »
+502	« Mode d'analyse de sécurité -- comment vérifier rigoureusement la lisibilité du code QR »
+503	« Sélectionnez le type de contenu à encoder dans le code QR »
+504	« Utilisez un service de raccourcissement d'URL pour les codes QR dynamiques/traçables »
+505	« Style des motifs de synchronisation (lignes horizontales et verticales) »
+506	« Rendre l'arrière-plan transparent au lieu d'utiliser une couleur d'arrière-plan »
+507	« Supprimer les espaces blancs en début et en fin de texte »
+508	« Interface de paiement unifiée pour l'Inde »
+509	« Paramètre UTM de campagne pour le suivi des campagnes »
+510	« Paramètre UTM moyen pour le suivi des campagnes »
+511	« Paramètre source UTM pour le suivi des campagnes »
+512	« Valider les données d'entrée avant l'encodage »
+513	« ⚠️ Version trop ancienne ! Version minimale requise : v{{version}} »
+514	« Langage »
+515	« Sélectionnez la langue »
+516	« Ajouter un champ personnalisé »
+517	« Auteur »
+518	« Nom de l'auteur »
+519	« Droit d'auteur »
+520	« © 2024 Nom de l'entreprise »
+521	« Métadonnées personnalisées »
+522	« Description »
+523	« Description de ce code QR... »
+524	« Inclure le temps de la création »
+525	« Clé »
+526	« Mots-clés »
+527	« Licence »
+528	« CC-BY-4.0 »
+529	« Titre »
+530	« Titre du code QR »
+531	« Valeur »
+532	« À propos »
+533	« Contact »
+534	« Guide »
+535	« Galerie »
+536	« Générateur »
+537	« Confidentialité »
+538	« Termes »
+539	« Remplacement de l'arrière-plan »
+540	« Laisser vide pour la valeur par défaut »
+541	« DPI (Impression) »
+542	« Superposition raster intégrée »
+543	« Exporter en tant que (supplémentaire) »
+544	« Nom de fichier »
+545	« Format »
+546	« GIF »
+547	« Paramètres GIF »
+548	« Hauteur »
+549	« Inclure une zone de silence »
+550	« Coupe médiane »
+551	« NeuQuant »
+552	« Octree »
+553	« Ordonné »
+554	« Taille de sortie »
+555	« Format palette »
+556	« PDF »
+557	« Pixel »
+558	« PNG »
+559	« Précis »
+560	« Qualité »
+561	« Quantificateur »
+562	« Précision de la forme »
+563	« SVG »
+564	« Paramètres SVG »
+565	« Couleur transparente »
+566	« #ffffff ou vide »
+567	« Véritable vecteur »
+568	« Utilisez des chemins au lieu de rasters incorporés »
+569	« WebP »
+570	« Largeur »
+571	« Seuil adaptatif »
+572	« Bayer 2×2 »
+573	« Bayer 4×4 »
+574	« Bayer 8×8 »
+575	« Mélange »
+576	« Bruit bleu + Diffusion d'erreur »
+577	« Seuil de bruit bleu »
+578	« Flou »
+579	« Courbe de luminosité »
+580	« Taille de cellule »
+581	« Logo central »
+582	« Règle du centre »
+583	« Point groupé »
+584	« Dithering de couleur »
+585	« Mode couleur »
+586	« Contenir »
+587	« Contraste »
+588	« Remarque : L'image doit autoriser les requêtes inter-origines (CORS) »
+589	« Couverture »
+590	« Image recadrée »
+591	« Taille de la récolte »
+592	« Noyau de diffusion »
+593	« Gestion des déchets »
+594	« Dither »
+595	« Paramètres de tramage »
+596	« Force de l'hésitation »
+597	« Forme de point »
+598	« Couleurs bicolores »
+599	« Mode compatible ECC »
+600	« Détection des contours »
+601	« Conscient des bords »
+602	« Activer la culture »
+603	« Priorité au chercheur »
+604	« Mode Fit »
+605	« Flip X »
+606	« Flip Y »
+607	« À partir de l'URL »
+608	« Couleurs vives »
+609	« Gamma »
+610	« Comblement des lacunes »
+611	« Bruit gaussien »
+612	« Taille de la grille »
+613	« Centre de demi-teintes »
+614	« Réglages de demi-teintes »
+615	« Surligner »
+616	« Rotation de la teinte »
+617	« Image / GIF / WebP »
+618	« URL de l'image »
+619	« Intensité »
+620	« Inverser l'image »
+621	« Ligne »
+622	« Charge »
+623	« Chargé depuis l'URL »
+624	« FPS max »
+625	« Couleur neutre »
+626	« Aucun fichier »
+627	« Grille N×N »
+628	« Commandé (Bayer) »
+629	« Matrice ordonnée »
+630	« Original »
+631	« Par canal »
+632	« Par module »
+633	« Perceptuel (Luminosité) »
+634	« Niveaux d'affichage »
+635	« Préserver l'alignement »
+636	« Préserver les motifs de recherche »
+637	« Préserver le timing »
+638	« Protéger les informations de format »
+639	« Protéger les informations de version »
+640	« Protection »
+641	« Supprimer »
+642	« Respect »
+643	« Budget de risque »
+644	« Rotation »
+645	« Courbe en S »
+646	« Saturation »
+647	« Bruit bleu filtré »
+648	« Graine »
+649	« Sélectionner une image »
+650	« Sépia »
+651	« Balayage serpentin »
+652	« Ombre »
+653	« Aiguiser »
+654	« Sierra-2 »
+655	« Sierra-Lite »
+656	« Simplifier »
+657	« Étirement »
+658	« Strict »
+659	« Stylisé »
+660	« Paramètres de sous-pixel »
+661	« Taille du sous-pixel »
+662	« Bruit bleu temporel »
+663	« Seuil »
+664	« Taille des carreaux »
+665	« Bruit triangulaire »
+666	« Véritable Dither »
+667	« Utiliser des délais d'images »
+668	« Vide et Amas »
+669	« Nom du compte »
+670	« Adresse »
+671	« Algorithme »
+672	« Événement d'une journée »
+673	« Montant »
+674	« Montant (BRL) »
+675	« Montant (EUR) »
+676	« Montant (INR) »
+677	« Montant (SGD) »
+678	« Montant (THB) »
+679	« Intention Android »
+680	« Lien profond vers l'application (Android/iOS) »
+681	« Étiquette d'actif/d'inventaire »
+682	« ID de l'actif/de l'article »
+683	« Type d'actif »
+684	« Nom du participant »
+685	« Audio »
+686	« URL de base »
+687	« Lot »
+688	« Nom du bénéficiaire »
+689	« BIC/SWIFT »
+690	« Anniversaire »
+691	« Bitcoin »
+692	« BizCard (Legacy) »
+693	« Bluetooth »
+694	« Corps du message »
+695	« Corps »
+696	« Boîte »
+697	« Calendrier »
+698	« Nom du calendrier »
+699	« S'abonner au calendrier »
+700	« URL du calendrier (ICS/WebCal) »
+701	« Contenu de la campagne »
+702	« Support de campagne »
+703	« Nom de la campagne »
+704	« Source de campagne »
+705	« Durée de la campagne »
+706	« Ville »
+707	« Ville »
+708	« Lien de stockage cloud »
+709	« Société »
+710	« Type de contenu »
+711	« Core »
+712	« Pays »
+713	« Crypto (BTC, ETH, etc.) »
+714	« Cryptomonnaie »
+715	« Format personnalisé »
+716	« Programme personnalisé »
+717	« Date et heure »
+718	« URL de lien profond »
+719	« Adresse du périphérique (MAC) »
+720	« Nom du périphérique »
+721	« Chiffres »
+722	« Documents et médias »
+723	« Dropbox »
+724	« Courriel »
+725	« Chiffrement »
+726	« Fin »
+727	« Date de fin »
+728	« Enterprise »
+729	« EPC / SEPA (UE) »
+730	« Équipement »
+731	« Ethereum »
+732	« Événement iCalendar »
+733	« Nom de l'événement »
+734	« Lien d'inscription à l'événement »
+735	« Billet d'événement »
+736	« Date d'expiration »
+737	« Facebook »
+738	« URL de secours »
+739	« Fax »
+740	« Type de fichier »
+741	« URL du fichier/document »
+742	« Prénom »
+743	« Forcer HTTPS »
+744	« Nom complet »
+745	« Meubles »
+746	« GitHub »
+747	« Google Drive »
+748	« Liaison numérique GS1 »
+749	« GTIN (numéro d'article commercial mondial) »
+750	« Réseau caché »
+751	« Téléphone fixe »
+752	« IBAN »
+753	« Type d'identification »
+754	« Image »
+755	« Instagram »
+756	« Article d'inventaire »
+757	« iOS universel »
+758	« Émetteur »
+759	« Actif informatique »
+760	« Étiquette »
+761	« Nom de famille »
+762	« Latitude »
+763	« Type de lien »
+764	« LinkedIn »
+765	« Litecoin »
+766	« Emplacement »
+767	« Emplacement et réseau »
+768	« Longitude »
+769	« Rechercher une URL »
+770	« Marketing »
+771	« Étiquettes marketing »
+772	« Protection de longueur maximale »
+773	« MeCard Contact »
+774	« Nom du commerçant »
+775	« Message »
+776	« Message »
+777	« WhatsApp / Telegram / Signal »
+778	« Messager »
+779	« Numéro de téléphone portable »
+780	« Téléphone portable »
+781	« Nom »
+782	« Numéro d'identification national / Numéro d'identification fiscale »
+783	« Surnom »
+784	« Normaliser les sauts de ligne »
+785	« Note »
+786	« OneDrive »
+787	« Ouvrir (sans mot de passe) »
+788	« Organisation »
+789	« Autres »
+790	« Authentificateur OTP »
+791	« Type »
+792	« Mot de passe »
+793	« Nom du bénéficiaire »
+794	« Paiements (Spécifications ouvertes) »
+795	« PayNow (Singapour) »
+796	« Téléphone »
+797	« Téléphone/Nom d'utilisateur »
+798	« PIX (Brésil) »
+799	« Clé PIX »
+800	« Texte brut »
+801	« Plateforme »
+802	« Message prérempli »
+803	« URL du profil »
+804	« Identifiant PromptPay »
+805	« PromptPay (Thaïlande) »
+806	« Type de proxy »
+807	« Données brutes »
+808	« Destinataire »
+809	« Référence »
+810	« Référence »
+811	« Domaine de résolution »
+812	« URL RSVP »
+813	« Requête de recherche »
+814	« Siège »
+815	« Secret (Base32) »
+816	« Section/Zone »
+817	« Type de sécurité »
+818	« Numéro de série »
+819	« Service »
+820	« Redirection de lien court »
+821	« URL courte »
+822	« Signal »
+823	« SMS »
+824	« SMS / MMS »
+825	« Social et messagerie »
+826	« Profil social »
+827	« Nom du réseau (SSID) »
+828	« Départ »
+829	« Date de début »
+830	« État/Province »
+831	« Rue »
+832	« Sujet »
+833	« Sujet »
+834	« Titre de l'événement »
+835	« Numéro de téléphone »
+836	« Télégramme »
+837	« Contenu textuel »
+838	« Identifiant du billet »
+839	« TikTok »
+840	« Note de transaction »
+841	« Supprimer les espaces blancs »
+842	« Numéro UEN/Numéro de téléphone mobile »
+843	« Lien universel »
+844	« UPI (Inde) »
+845	« Identifiant UPI (VPA) »
+846	« URL »
+847	« utm_campaign »
+848	« utm_content »
+849	« Lien de campagne UTM »
+850	« utm_medium »
+851	« utm_source »
+852	« utm_term »
+853	« Valider l'entrée »
+854	« Options de validation »
+855	« URL de validation »
+856	« Véhicule »
+857	« Lieu »
+858	« Viber »
+859	« Vidéo »
+860	« Site Web »
+861	« WhatsApp »
+862	« WiFi »
+863	« Document Word »
+864	« Téléphone professionnel »
+865	« YouTube »
+866	« Code postal »
+867	« Aperçu du code QR - Cliquez sur Exporter pour télécharger »
+868	« Simulation »
+869	« Simulation environnementale active - L'aperçu montre à quoi peut ressembler un code QR dans différentes conditions »
+870	« Frontière supplémentaire au-delà de la zone de silence »
+871	« Alphanumérique »
+872	« Auto »
+873	« Auto (min : {{version}}) »
+874	« Auto (Optimal) »
+875	« Octet / UTF-8 »
+876	« {{count}}:1 »
+877	« Mode d'encodage »
+878	« Faire respecter la zone de silence minimale »
+879	« Assurer une marge de module ≥ 4 »
+880	« Correction d'erreurs »
+881	« Modules de bordure supplémentaires »
+882	« H - Élevé (30 %) »
+883	« Kanji »
+884	« L - Faible (7 %) »
+885	« Zone calme (marge) »
+886	« Modèle de masque »
+887	« M - Moyen (15 %) »
+888	« Taille du module »
+889	« {{count}}° »
+890	« {{count}} modules »
+891	« {{count}}ms »
+892	« {{count}}% »
+893	« {{count}}px »
+894	« Numérique seulement »
+895	« Q - Quartile (25%) »
+896	« Version »
+897	« Ajouter de la couleur »
+898	« Style de motif d'alignement »
+899	« Contexte »
+900	« Par la luminosité »
+901	« Par cluster »
+902	« Par superposition »
+903	« Par position »
+904	« Plafond »
+905	« Cercle »
+906	« Palette de couleurs »
+907	« Conique »
+908	« Connecté »
+909	« Protection contre le contraste »
+910	« Rayon de courbure »
+911	« Bords nets »
+912	« Utiliser le rendu d'image : pixellisé pour des contours nets »
+913	« Dashed »
+914	« Diamant »
+915	« Rotation des points »
+916	« Points »
+917	« Style intérieur des yeux »
+918	« Style extérieur de l'œil »
+919	« Échelle oculaire »
+920	« Style de motif Finder »
+921	« Étage »
+922	« Premier plan »
+923	« Style de cadre »
+924	« Texte du cadre »
+925	« Mode d'intervalle »
+926	« Gradient »
+927	« Angle de gradient »
+928	« Type dégradé »
+929	« Encadré »
+930	« Linéaire »
+931	« Match Finder »
+932	« Module d'appariement »
+933	« Rapport de contraste minimal »
+934	« Écart de module »
+935	« Espace négatif »
+936	« Mode couleur par module »
+937	« Pixel Snap »
+938	« Radial »
+939	« Rond »
+940	« Arrondi »
+941	« Cadre arrondi »
+942	« Style modulaire »
+943	« Sharp »
+944	« Doux »
+945	« Solide »
+946	« Carré »
+947	« Carrés »
+948	« Autocollant »
+949	« AVC »
+950	« Style »
+951	« Étiquette »
+952	« Style de motif de synchronisation »
+953	« Fond transparent »
+954	« Analyse de sécurité »
+955	« Sélection automatique ECC »
+956	« Version à sélection automatique »
+957	« Réduction automatique de l'intensité »
+958	« Réglage automatique »
+959	« Équilibré »
+960	« Rapport de contraste »
+961	« Contrôle du contraste »
+962	« Excellent »
+963	« Fair »
+964	« Bon »
+965	« Alignement des serrures »
+966	« Détecteurs de serrures »
+967	« Informations sur le format de verrouillage »
+968	« Verrouillage du timing »
+969	« Informations sur la version verrouillée »
+970	« Taille minimale du module »
+971	« Zone de silence minimum »
+972	« Pauvres »
+973	« Serrures de protection »
+974	« Analyse de la qualité »
+975	« Zone de calme »
+976	« Mode de sécurité »
+977	« Score de lisibilité »
+978	« Afficher la carte thermique »
+979	« Simuler le flou »
+980	« Simuler le bruit »
+981	« Simuler la rotation »
+982	« Jusqu'à ce que scannable »
+983	« Métadonnées »
+984	« Sortie »
+985	« Superposition / Image »
+986	« Charge utile / Données »
+987	« Rendu »
+988	« Filigrane »
+989	« Lien direct »
+990	« Générer une URL partageable »
+991	« Intégrer du HTML »
+992	« Générer le code d'intégration »
+993	« Encoder tous les paramètres »
+994	« Inclure tous les paramètres dans l'URL »
+995	« Marque réduite »
+996	« Partage rapide »
+997	« X/Twitter »
+998	« Avancé »
+999	« Basique »
+1000	« Pro »
+1001	« Regardez cette publicité pour débloquer les fonctionnalités professionnelles pendant 24 heures »
+1002	« Derrière le QR »
+1003	« En bas à gauche »
+1004	« En bas à droite »
+1005	« Centre »
+1006	« Coins »
+1007	« Bords »
+1008	« Activer le filigrane »
+1009	« Couleur de police »
+1010	« Taille de la police »
+1011	« Multiplier »
+1012	« Normal »
+1013	« Opacité »
+1014	« Superposition »
+1015	« Motif »
+1016	« Position »
+1017	« Écran »
+1018	« Texte »
+1019	« © Nom de l'entreprise »
+1020	« Haut gauche »
+1021	« Haut droit »
+1022	« Télécharger une image »
+1023	« Afficher/Masquer le panneau des paramètres »
+1024	« Toutes les catégories »
+1025	« Copier le lien partageable dans le presse-papiers »
+1026	« Exporter le code QR vers un fichier »
+1027	« Ouvrir le menu de navigation »
+1028	« Barre latérale de documentation ouverte »
+1029	« Fermer la barre latérale »
+1030	« Image indisponible »
+1031	« Message envoyé »
+1032	« Dernière mise à jour »
+1033	« Scannez-moi ! »
+1034	« Saisissez le texte à encoder... »
+1035	« Objet du courriel »
+1036	« Corps du courriel »
+1037	« Message prérempli »
+1038	« Nom ou adresse du lieu »
+1039	« Mot de passe réseau »
+1040	« Détails de l'événement... »
+1041	« Paiement pour... »
+1042	« Saisir les données brutes du code QR... »
+1043	« Votre nom »
+1044	« Comment pouvons-nous vous aider ? »
+1045	« Dites-nous ce que vous essayez de faire et incluez les messages d'erreur s'ils sont pertinents. »
+1046	« Message envoyé »
+1047	« Merci, nous avons bien reçu votre message. Si vous ne recevez pas de réponse, veuillez nous envoyer un courriel à »
+1048	« Nous n'avons pas pu soumettre le formulaire. Veuillez nous contacter par courriel. »
+1049	« Envoyer un message »
+1050	« Envoi... »
+1051	« En envoyant un message, vous acceptez que nous utilisions vos données pour vous répondre. Consultez la Politique de confidentialité. »
+1052	« Envoyez-nous un courriel »
+1053	« Vous avez une question, une suggestion ou besoin d'aide ? Envoyez-nous un courriel et nous vous répondrons. »
+1054	« Veuillez saisir une URL »
+1055	« Aperçu »
+1056	« Document PDF »
+1057	« UEN (Entreprise) »
+1058	« Identifiant de portefeuille électronique »
+1059	« TOTP (basé sur le temps) »
+1060	« HOTP (à base de compteurs) »
+1061	« Schéma d'URL iOS »
+1062	« X (Twitter) »
+1063	« Compteur »
+1064	« Période (sec) »
+1065	« utm_source »
+1066	« utm_medium »
+1067	« utm_campaign »
+1068	« +1234567890 »
+1069	« nom@anqr.link »
+1070	« 0,0 »
+1071	« Mon réseau Wi-Fi »
+1072	« John Doe »
+1073	« Jean »
+1074	« Biche »
+1075	« Johnny »
+1076	« Company Inc. »
+1077	« Ingénieur logiciel »
+1078	« Doe, John »
+1079	« 123, rue Principale, Ville »
+1080	« Mon appareil Bluetooth »
+1081	« Réunion »
+1082	« Salle de conférence A »
+1083	« Conférence annuelle 2024 »
+1084	« Calendrier de l'équipe »
+1085	« +1234567890 ou @nom_utilisateur »
+1086	« Bonjour ! J'ai scanné votre code QR... »
+1087	« Adresse du portefeuille »
+1088	« Facture 12345 »
+1089	« nom@upi »
+1090	« Paiement de la commande »
+1091	« João Silva »
+1092	« São Paulo »
+1093	« CPF, CNPJ, Courriel, Téléphone ou Clé aléatoire »
+1094	« MyApp »
+1095	« utilisateur@anqr.link »
+1096	« ABC123 »
+1097	« LOT123 »
+1098	« id.gs1.org »
+1099	« Bâtiment A, Salle 101 »
+1100	« Ordinateur portable Dell 15 pouces »
+1101	« TKT-2024-001234 »
+1102	« Concert 2024 »
+1103	« Stade Arène »
+1104	« Section A »
+1105	« Rangée 5, Siège 12 »
+1106	« Billet QR suisse (CH/LI) »
+1107	« Facture QR suisse pour la facturation en Suisse et au Liechtenstein »
+1108	« IBAN du créancier »
+1109	« Nom du créancier »
+1110	« Type d'adresse »
+1111	« Structuré »
+1112	« Combiné »
+1113	« Rue »
+1114	« Numéro de bâtiment »
+1115	« Code postal »
+1116	« Pays créancier »
+1117	« Type de référence »
+1118	« Référence QR »
+1119	« Référence du créancier (ISO 11649) »
+1120	« Aucune référence »
+1121	« Message non structuré »
+1122	« Informations sur la facture (Swico) »
+1123	« Facture éclair »
+1124	« Paiement Bitcoin Lightning Network (BOLT11) »
+1125	« Facture BOLT11 »
+1126	« Collez votre facture encodée BOLT11 »
+1127	« Ethereum (EIP-681) »
+1128	« Requête de transaction Ethereum avec paramètres de chaîne et de gaz »
+1129	« Adresse cible »
+1130	« Identifiant de chaîne »
+1131	« 1 = Réseau principal, 137 = Polygone, etc. »
+1132	"Valeur (wei)"
+1133	« Montant en wei (plus petite unité) »
+1134	« Limite de gaz »
+1135	« Prix du gaz (wei) »
+1136	« Adresse du contrat de jeton »
+1137	« Pour les transferts de jetons ERC-20 »
+1138	« Montant symbolique »
+1139	« QRIS (Indonésie) »
+1140	« Code de réponse rapide indonésien standard »
+1141	« Identifiant du commerçant »
+1142	« Identifiant national du commerçant (NMID) »
+1143	« Critères marchands »
+1144	« Régulier »
+1145	« Petit commerçant »
+1146	« Micro-marchand »
+1147	« DuitNow (Malaisie) »
+1148	« Système national malaisien de paiement par QR code »
+1149	« Type de proxy »
+1150	« NRIC »
+1151	« Passeport »
+1152	« Carte d'identité de l'armée »
+1153	« Enregistrement d'entreprise »
+1154	« Valeur de substitution »
+1155	« BharatQR (Inde) »
+1156	« QR code unifié pour les paiements par carte et UPI en Inde »
+1157	« Marchand VPA »
+1158	« PAN Marchand »
+1159	« Détails de la TPS »
+1160	« Numéro de facture »
+1161	« VietQR (Vietnam) »
+1162	« Norme nationale vietnamienne de paiement par QR code »
+1163	« BIN bancaire »
+1164	« Numéro d'identification bancaire NAPAS »
+1165	« Numéro de compte »
+1166	« Nom du compte »
+1167	« Code de service »
+1168	« QR Push »
+1169	« Virement interbancaire (24/7) »
+1170	« Virement Interbancaire (Citad) »
+1171	« QR Ph (Philippines) »
+1172	« Norme nationale philippine de paiement par QR code »
+1173	« TWQR (Taïwan) »
+1174	« Norme nationale taïwanaise de paiement par QR code »
+1175	« Numéro d'identification fiscale »
+1176	« HKQR (Hong Kong) »
+1177	« QR du système de paiement rapide de Hong Kong »
+1178	« ID FPS »
+1179	« JPQR (Japon) »
+1180	« Norme nationale japonaise de paiement par QR code »
+1181	« ID du magasin »
+1182	« AusPayNet (Australie) »
+1183	« Nouvelle plateforme de paiements australienne PayID »
+1184	« PayID »
+1185	« Type d'identifiant de paiement »
+1186	« BSB »
+1187	« ABN »
+1188	« ID de l'organisation »
+1189	« PayPal.Me »
+1190	« Lien de paiement personnel PayPal »
+1191	« Nom d'utilisateur PayPal »
+1192	« Cash App »
+1193	« Lien de paiement Cash App $cashtag »
+1194	« $cashtag »
+1195	« Votre nom d'utilisateur Cash App (sans $) »
+1196	« EMV QR (générique) »
+1197	« Code QR EMVCo générique pour les systèmes de paiement personnalisés »
+1198	« Code pays »
+1199	« ISO 3166-1 alpha-2 (par exemple, SG, TH, ID) »
+1200	« Code monétaire »
+1201	« Numérique ISO 4217 (par exemple, 702 pour le SGD) »
+1202	« QR statique »
+1203	« Code QR réutilisable (pas de montant fixe) »
+1204	« Indicateur de pourboire/frais »
+1205	« Invite à donner un pourboire »
+1206	« Frais fixes »
+1207	« Frais en pourcentage »
+1208	« Montant des frais »
+1209	« Pourcentage de frais »
+1210	« Étiquette du magasin »
+1211	« Numéro de fidélité »
+1212	« Étiquette client »
+1213	« Étiquette du terminal »
+1214	« Objet de l'opération »
+1215	« Montant modifiable »
+1216	« Autoriser le payeur à modifier le montant »
+1217	« Date d'expiration »
+1218	« Format AAAAMMJJ »
+1219	« Référence du projet de loi 1 »
+1220	« Référence du projet de loi 2 »
+1221	« Référence de facture 3 / ID du terminal »
+1222	« Description »
+1223	« ID de transaction »
+1224	« Type de frais/pourboire »
+1225	« Fixe »
+1226	« Pourcentage »
+1227	« Format de facture QR suisse pour les paiements CH/LI selon les directives SIX »
+1228	« Facture Lightning Network BOLT11 pour les paiements en Bitcoin »
+1229	« Format de requête de transaction Ethereum EIP-681 »
+1230	« Norme indonésienne de réponse rapide pour les paiements nationaux »
+1231	« QR DuitNow pour les paiements PayNet en Malaisie »
+1232	« BharatQR pour les paiements unifiés par carte et UPI en Inde »
+1233	« VietQR pour les virements bancaires NAPAS au Vietnam »
+1234	« QR Ph pour les paiements InstaPay/PESONet aux Philippines »
+1235	« TWQR pour les paiements des institutions financières taïwanaises »
+1236	« HKQR pour le système de paiement plus rapide de Hong Kong »
+1237	« JPQR pour les paiements QR unifiés au Japon »
+1238	« AusPayNet pour les paiements PayID des NPP australiens »
+1239	« Lien de paiement partageable PayPal.Me »
+1240	« Lien de paiement Cash App $cashtag »
+1241	« Format de code QR générique EMVCo MPM »
+1242	« Afrikaans »
+1243	« Assamais »
+1244	« Bulgare »
+1245	« Tchèque »
+1246	« Danois »
+1247	« Allemand »
+1248	« Grec »
+1249	« Finlandais »
+1250	« Français »
+1251	Haoussa
+1252	« Croate »
+1253	« Hongrois »
+1254	« Igbo »
+1255	« Italien »
+1256	Khmer
+1257	commodités
+1258	"Lao"
+1259	« Birman »
+1260	Népalais
+1261	« Hollandais »
+1262	« Norvégien »
+1263	« Odia »
+1264	« Polonais »
+1265	"Pachto"
+1266	Romance
+1267	« Roumain »
+1268	Sindhi
+1269	Swati
+1270	« Sotho du Sud »
+1271	« Suédois »
+1272	Tswana
+1273	Tsonga
+1274	« Venda »
+1275	« Xhosa »
+1276	« Yoruba »
+1277	« Zulu »
+1278	« Ndebele du Sud »
+1279	« Monnaie »
+1280	« Type de référence »
+1281	« Facture BOLT11 »
+1282	« ID de chaîne »
+1283	"Valeur (wei)"
+1284	« Limite de gaz (optionnelle) »
+1285	« Identifiant du commerçant »
+1286	« Valeur de substitution »
+1287	« BIN bancaire »
+1288	« Numéro de compte »
+1289	« ID FPS »
+1290	« ID du magasin »
+1291	« Type d'identifiant de paiement »
+1292	« PayID »
+1293	« Nom d'utilisateur PayPal.Me »
+1294	« $Cashtag »
+1295	« Code pays »
+1296	« Code monétaire »
+1297	« MCC »
+1298	« Pourboire/Frais de service »
+1299	« Montant du pourboire »
+1300	« Pourcentage de pourboire »
+1301	« Suisse »
+1302	« Liechtenstein »
+1303	« Référence QR »
+1304	« Référence du créancier (ISO 11649) »
+1305	« Numéro de portable »
+1306	« NRIC »
+1307	« Passeport »
+1308	« Carte d'identité de l'armée »
+1309	« Enregistrement d'entreprise »
+1310	« Autres »
+1311	« Courriel »
+1312	« Mobile »
+1313	« ABN »
+1314	« ID de l'organisation »
+1315	« Utilisateur prompt »
+1316	« Montant fixe »
+1317	« Pourcentage »
+1318	« Réseau principal Ethereum (1) »
+1319	« Polygone (137) »
+1320	« BSC (56) »
+1321	« Avalanche (43114) »
+1322	« Arbitrum (42161) »
+1323	« Optimisme (10) »
+1324	« Norme suisse de paiement par QR code (SIX) »
+1325	« Coller une facture BOLT11 Lightning »
+1326	« URI de requête de transaction EIP-681 »
+1327	« Code de réponse rapide indonésien standard »
+1328	« Système de paiement instantané de Malaisie »
+1329	« QR unifié pour les paiements UPI et par carte en Inde »
+1330	« Numéro d'identification bancaire NAPAS »
+1331	« Norme de paiement QR des Philippines »
+1332	« Norme de paiement QR de Taïwan »
+1333	« Identifiant du système de paiement plus rapide »
+1334	« Norme japonaise unifiée de paiement par QR code »
+1335	« Paiement NPP Australie PayID »
+1336	« Crée un lien paypal.me/votre_nom »
+1337	« Crée un lien cash.app/$votre_nom »
+1338	« QR code générique EMVCo présenté par le commerçant »
+1339	« ISO 3166-1 alpha-2 »
+1340	« Numérique ISO 4217 »
+1341	« WPA/WPA2 »
+1342	« iCloud »
+1343	« LIGNE »
+1344	« UEN (Commerce) »
+1345	« Identifiant de portefeuille électronique »
+1346	« Montant (IDR) »
+1347	« Montant (MYR) »
+1348	« Montant (VND) »
+1349	« Montant (PHP) »
+1350	« Montant (TWD) »
+1351	« Montant (HKD) »
+1352	« Montant (JPY) »
+1353	« Montant (AUD) »
+1354	« votre nom »
+1355	« Zurich »
+1356	« lnbc1... »
+1357	« 0x... »
+1358	« 10000000000000000000 »
+1359	« 21000 »
+1360	« ID1234567890123 »
+1361	« Ma boutique »
+1362	« Jakarta »
+1363	« +60123456789 »
+1364	« Mumbai »
+1365	« 970415 »
+1366	« 1234567890 »
+1367	« NGUYEN VAN A »
+1368	« 100 000 »
+1369	« Juan Dela Cruz »
+1370	« Manille »
+1371	« TW1234567890 »
+1372	« Nom du magasin »
+1373	« JP1234567890 »
+1374	"Nom du magasin"
+1375	« +61400123456 »
+1376	« 12345678901 »
+1377	« 50 000 »
+1378	« Actif informatique »
+1379	« X (Twitter) »
+1380	« Document PDF »
+1381	« Billet QR suisse (CH/LI) »
+1382	« Éclair (Bitcoin) »
+1383	« Ethereum (EIP-681) »
+1384	« QRIS (Indonésie) »
+1385	« DuitNow (Malaisie) »
+1386	« BharatQR (Inde) »
+1387	« VietQR (Vietnam) »
+1388	« QR Ph (Philippines) »
+1389	« TWQR (Taïwan) »
+1390	« HKQR (Hong Kong) »
+1391	« JPQR (Japon) »
+1392	« AusPayNet (Australie) »
+1393	« PayPal.Me »
+1394	« Cash App »
+1395	« EMV QR (générique) »
+1396	« (facultatif) »
+1397	« (obligatoire) »
