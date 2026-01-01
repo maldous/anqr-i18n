@@ -42,7 +42,7 @@ export function ShareSection() {
       // QR settings
       ec: qr.ecc,
       version: qr.version !== 0 ? qr.version : undefined,
-      size: render.modulePx !== 20 ? render.modulePx : undefined,
+      modulePx: render.modulePx !== 20 ? render.modulePx : undefined,
       margin: qr.quietZoneModules !== 4 ? qr.quietZoneModules : undefined,
       encodingMode: qr.encodingMode !== 'auto' ? qr.encodingMode : undefined,
       borderModulesExtra: qr.borderModulesExtra !== 0 ? qr.borderModulesExtra : undefined,

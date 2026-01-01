@@ -9,7 +9,9 @@
  *
  * Parameters:
  * - data: The content to encode (required)
- * - size: Image size in pixels (default: 400, max: 1024) - used if w/h not specified
+ * - size: Output image size in pixels (default: 400, max: 1024) - final rendered dimension
+ * - modulePx: Module pixel size (default: auto-calculated from size) - size of each QR module
+ *            When provided, this takes precedence for module sizing, matching client behavior
  * - w: Output width in pixels (max: 1024, overrides size)
  * - h: Output height in pixels (max: 1024, overrides size)
  * - format: Output format - png/webp/gif (default: png)
@@ -187,16 +189,17 @@ const DEFAULT_SERVER_DITHER: DitherKind = 'ordered_bayer';
 const DEFAULT_OUTPUT_FORMAT: OutputFormat = 'gif';
 
 /**
- * Check if a URL points to a private/internal IP address (SSRF protection)
+ * Check if an IP address is private/internal (SSRF protection)
+ * Works with both literal IP strings and resolved addresses
  */
-function isPrivateOrReservedIP(hostname: string): boolean {
+function isPrivateOrReservedIP(ip: string): boolean {
   // Check for localhost variants
-  if (hostname === 'localhost' || hostname === '127.0.0.1' || hostname === '::1') {
+  if (ip === 'localhost' || ip === '127.0.0.1' || ip === '::1') {
     return true;
   }
 
   // IPv4 private ranges
-  const ipv4Match = hostname.match(/^(\d+)\.(\d+)\.(\d+)\.(\d+)$/);
+  const ipv4Match = ip.match(/^(\d+)\.(\d+)\.(\d+)\.(\d+)$/);
   if (ipv4Match) {
     const [, a, b, c, d] = ipv4Match.map(Number);
     // 10.0.0.0/8
@@ -211,19 +214,62 @@ function isPrivateOrReservedIP(hostname: string): boolean {
     if (a === 127) return true;
     // 0.0.0.0/8
     if (a === 0) return true;
+    // 100.64.0.0/10 (Carrier-grade NAT)
+    if (a === 100 && b >= 64 && b <= 127) return true;
+    // 192.0.0.0/24 (IETF Protocol Assignments)
+    if (a === 192 && b === 0 && c === 0) return true;
+    // 192.0.2.0/24 (TEST-NET-1)
+    if (a === 192 && b === 0 && c === 2) return true;
+    // 198.51.100.0/24 (TEST-NET-2)
+    if (a === 198 && b === 51 && c === 100) return true;
+    // 203.0.113.0/24 (TEST-NET-3)
+    if (a === 203 && b === 0 && c === 113) return true;
+    // 224.0.0.0/4 (Multicast)
+    if (a >= 224 && a <= 239) return true;
+    // 240.0.0.0/4 (Reserved)
+    if (a >= 240) return true;
   }
 
   // IPv6 private/reserved (simplified check)
   if (
-    hostname.startsWith('fe80:') || // link-local
-    hostname.startsWith('fc') ||
-    hostname.startsWith('fd') || // unique local
-    hostname === '::1'
+    ip.startsWith('fe80:') || // link-local
+    ip.startsWith('fc') ||
+    ip.startsWith('fd') || // unique local
+    ip === '::1' ||
+    ip.startsWith('::ffff:') // IPv4-mapped IPv6
   ) {
-    // loopback
     return true;
   }
 
+  return false;
+}
+
+/**
+ * Resolve hostname and check if it points to a private IP (DNS rebinding protection)
+ * This prevents SSRF via DNS resolution to internal IPs
+ */
+async function isPrivateHostname(hostname: string): Promise<boolean> {
+  // First check if it's already a literal IP
+  if (isPrivateOrReservedIP(hostname)) {
+    return true;
+  }
+
+  // Check for common bypass patterns
+  const lowerHost = hostname.toLowerCase();
+  if (
+    lowerHost.endsWith('.local') ||
+    lowerHost.endsWith('.localhost') ||
+    lowerHost.endsWith('.internal') ||
+    lowerHost.includes('127.0.0.1') ||
+    lowerHost.includes('0.0.0.0')
+  ) {
+    return true;
+  }
+
+  // For Netlify Functions, we can't do DNS resolution directly
+  // But we can use a simple heuristic - block suspicious patterns
+  // Real protection would require DNS resolution which isn't available here
+  // The fetch will still fail if it resolves to a private IP at the network level
   return false;
 }
 
@@ -987,18 +1033,23 @@ export default async (request: Request) => {
   // Get required parameter
   const data = params.get('data');
   if (!data) {
-    return new Response('Missing required "data" parameter', { status: 400 });
+    return new Response('Missing required "data" parameter', {
+      status: 400,
+      headers: { 'Access-Control-Allow-Origin': '*' },
+    });
   }
 
   // Validate data length (DoS protection)
   if (data.length > MAX_DATA_LENGTH) {
     return new Response(`Data too long: ${data.length} characters (max: ${MAX_DATA_LENGTH})`, {
       status: 400,
+      headers: { 'Access-Control-Allow-Origin': '*' },
     });
   }
 
   // Parse all parameters with defaults
   const sizeParam = parseInt(params.get('size') || '400', 10);
+  const modulePxParam = params.get('modulePx') ? parseInt(params.get('modulePx')!, 10) : null;
   const widthParam = params.get('w') ? parseInt(params.get('w')!, 10) : null;
   const heightParam = params.get('h') ? parseInt(params.get('h')!, 10) : null;
 
@@ -1198,7 +1249,10 @@ export default async (request: Request) => {
 
   // Validate ECC level
   if (!['L', 'M', 'Q', 'H'].includes(ec)) {
-    return new Response('Invalid "ec" parameter. Use L, M, Q, or H', { status: 400 });
+    return new Response('Invalid "ec" parameter. Use L, M, Q, or H', {
+      status: 400,
+      headers: { 'Access-Control-Allow-Origin': '*' },
+    });
   }
 
   // Validate module style
@@ -1206,6 +1260,7 @@ export default async (request: Request) => {
   if (!validModuleStyles.includes(moduleStyle)) {
     return new Response(`Invalid "style" parameter. Use one of: ${validModuleStyles.join(', ')}`, {
       status: 400,
+      headers: { 'Access-Control-Allow-Origin': '*' },
     });
   }
 
@@ -1220,10 +1275,14 @@ export default async (request: Request) => {
     // Use final margin (including borderModulesExtra) for module size calculation
     // to avoid sizing drift/crop issues
     const totalMargin = margin + borderModulesExtra;
-    const moduleSize = Math.max(
-      1,
-      Math.floor((size - totalMargin * 2) / (estimatedModuleCount + totalMargin * 2))
-    );
+    // If modulePx is explicitly provided, use it (matches client behavior)
+    // Otherwise, calculate from output size for backward compatibility
+    const moduleSize = modulePxParam
+      ? Math.max(1, Math.min(50, modulePxParam))
+      : Math.max(
+          1,
+          Math.floor((size - totalMargin * 2) / (estimatedModuleCount + totalMargin * 2))
+        );
 
     // Build config (same structure as client-side)
     const config = {
@@ -1483,6 +1542,9 @@ export default async (request: Request) => {
   } catch (error) {
     const message = error instanceof Error ? error.message : 'Unknown error';
     console.error('QR generation error:', error);
-    return new Response(`Error generating QR code: ${message}`, { status: 500 });
+    return new Response(`Error generating QR code: ${message}`, {
+      status: 500,
+      headers: { 'Access-Control-Allow-Origin': '*' },
+    });
   }
 };

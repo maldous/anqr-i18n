@@ -415,6 +415,7 @@ export async function downloadImage(
 
 /**
  * Export animation frames as GIF
+ * OPTIMIZED: Reuses scaling canvas and reduces per-frame allocations
  */
 export async function exportGif(
   frames: HTMLCanvasElement[],
@@ -447,28 +448,44 @@ export async function exportGif(
   const gif = GIFEncoder();
   let isFirstFrame = true;
 
+  // OPTIMIZATION: Reuse a single scaling canvas for all frames
+  // This avoids O(n) canvas creation overhead
+  const scaledCanvas = document.createElement('canvas');
+  scaledCanvas.width = width;
+  scaledCanvas.height = height;
+  const scaledCtx = scaledCanvas.getContext('2d')!;
+
+  // Pre-compute disposal code once (not per-frame)
+  const disposalMap: Record<string, number> = {
+    none: 0,
+    keep: 1,
+    restore_bg: 2,
+    restore_previous: 3,
+  };
+  const disposal = disposalMap[opts.gifDisposal] ?? 2;
+
+  // Check if we need to apply background
+  const hasBgOverride = opts.bgOverride?.trim();
+
   for (let i = 0; i < frames.length; i++) {
     const frame = frames[i];
     // Use per-frame delay if provided, otherwise use default
     const frameDelay = frameDelays?.[i] ? frameDelays[i] : defaultDelay;
 
-    // Scale frame to output dimensions
-    const scaled = document.createElement('canvas');
-    scaled.width = width;
-    scaled.height = height;
-    const ctx = scaled.getContext('2d')!;
+    // Clear and reuse the scaling canvas
+    scaledCtx.clearRect(0, 0, width, height);
 
     // Apply background override if specified
-    if (opts.bgOverride?.trim()) {
-      ctx.fillStyle = opts.bgOverride;
-      ctx.fillRect(0, 0, width, height);
+    if (hasBgOverride) {
+      scaledCtx.fillStyle = opts.bgOverride;
+      scaledCtx.fillRect(0, 0, width, height);
     }
 
-    ctx.imageSmoothingEnabled = false;
-    ctx.drawImage(frame, 0, 0, width, height);
+    scaledCtx.imageSmoothingEnabled = false;
+    scaledCtx.drawImage(frame, 0, 0, width, height);
 
     // Get RGBA pixel data
-    const imageData = ctx.getImageData(0, 0, width, height);
+    const imageData = scaledCtx.getImageData(0, 0, width, height);
     const { data } = imageData;
 
     // Quantize to 256 colors using gifenc's built-in quantizer
@@ -480,15 +497,6 @@ export async function exportGif(
     // Convert milliseconds to centiseconds (gifenc uses 1/100th seconds, like the GIF spec)
     // Use a minimum of 2 centiseconds (20ms) - browsers interpret <2cs as 10cs anyway
     const delayCentiseconds = Math.max(2, Math.round(frameDelay / 10));
-
-    // Map disposal string to gifenc disposal code
-    const disposalMap: Record<string, number> = {
-      none: 0,
-      keep: 1,
-      restore_bg: 2,
-      restore_previous: 3,
-    };
-    const disposal = disposalMap[opts.gifDisposal] ?? 2;
 
     gif.writeFrame(index, width, height, {
       palette,
@@ -593,61 +601,530 @@ ${metadata}  <image width="${opts.outputWidth}" height="${opts.outputHeight}" xl
 }
 
 /**
- * Export QR matrix as true vector SVG
+ * Module style types for vector SVG
+ */
+export type VectorModuleStyle = 'square' | 'rounded' | 'dots' | 'diamond' | 'connected';
+export type VectorFinderStyle = 'square' | 'rounded' | 'circle';
+export type VectorAlignmentStyle = 'match_finder' | 'square' | 'rounded' | 'circle';
+export type VectorTimingStyle = 'match_module' | 'solid' | 'dashed';
+interface VectorGradient {
+  type: 'none' | 'linear' | 'radial' | 'conic';
+  stops: Array<{ pos: number; color: string }>;
+  angle?: number;
+}
+
+/**
+ * Configuration for styled vector SVG export
+ */
+export interface VectorSvgConfig {
+  moduleSize?: number;
+  margin?: number;
+  fgColor?: string;
+  bgColor?: string;
+  filename?: string;
+  moduleStyle?: VectorModuleStyle;
+  cornerRadius?: number;
+  finderStyle?: VectorFinderStyle;
+  eyeOuterStyle?: VectorFinderStyle;
+  eyeInnerStyle?: VectorFinderStyle;
+  alignmentStyle?: VectorAlignmentStyle;
+  timingStyle?: VectorTimingStyle;
+  gradient?: VectorGradient;
+  /** Metadata to embed in the SVG */
+  metadata?: {
+    title?: string;
+    author?: string;
+    copyright?: string;
+    description?: string;
+    creationTime?: boolean;
+    software?: string;
+  };
+}
+
+/**
+ * Helper: Check if a position is part of a finder pattern
+ */
+function isFinderPattern(row: number, col: number, moduleCount: number): boolean {
+  if (row < 7 && col < 7) return true;
+  if (row < 7 && col >= moduleCount - 7) return true;
+  if (row >= moduleCount - 7 && col < 7) return true;
+  return false;
+}
+
+/**
+ * Helper: Check if a position is part of a timing pattern
+ */
+function isTimingPattern(row: number, col: number, moduleCount: number): boolean {
+  // Horizontal timing pattern (row 6, between finders)
+  if (row === 6 && col >= 8 && col < moduleCount - 8) return true;
+  // Vertical timing pattern (col 6, between finders)
+  if (col === 6 && row >= 8 && row < moduleCount - 8) return true;
+  return false;
+}
+
+/**
+ * Helper: Get alignment pattern positions for a given QR version
+ */
+function getAlignmentPositions(moduleCount: number): Array<{ row: number; col: number }> {
+  // Version is derived from moduleCount: version = (moduleCount - 17) / 4
+  const version = Math.round((moduleCount - 17) / 4);
+  if (version < 2) return [];
+
+  const table: Record<number, number[]> = {
+    2: [6, 18],
+    3: [6, 22],
+    4: [6, 26],
+    5: [6, 30],
+    6: [6, 34],
+    7: [6, 22, 38],
+    8: [6, 24, 42],
+    9: [6, 26, 46],
+    10: [6, 28, 50],
+    11: [6, 30, 54],
+    12: [6, 32, 58],
+    13: [6, 34, 62],
+    14: [6, 26, 46, 66],
+    15: [6, 26, 48, 70],
+    16: [6, 26, 50, 74],
+    17: [6, 30, 54, 78],
+    18: [6, 30, 56, 82],
+    19: [6, 30, 58, 86],
+    20: [6, 34, 62, 90],
+    21: [6, 28, 50, 72, 94],
+    22: [6, 26, 50, 74, 98],
+    23: [6, 30, 54, 78, 102],
+    24: [6, 28, 54, 80, 106],
+    25: [6, 32, 58, 84, 110],
+    26: [6, 30, 58, 86, 114],
+    27: [6, 34, 62, 90, 118],
+    28: [6, 26, 50, 74, 98, 122],
+    29: [6, 30, 54, 78, 102, 126],
+    30: [6, 26, 52, 78, 104, 130],
+    31: [6, 30, 56, 82, 108, 134],
+    32: [6, 34, 60, 86, 112, 138],
+    33: [6, 30, 58, 86, 114, 142],
+    34: [6, 34, 62, 90, 118, 146],
+    35: [6, 30, 54, 78, 102, 126, 150],
+    36: [6, 24, 50, 76, 102, 128, 154],
+    37: [6, 28, 54, 80, 106, 132, 158],
+    38: [6, 32, 58, 84, 110, 136, 162],
+    39: [6, 26, 54, 82, 110, 138, 166],
+    40: [6, 30, 58, 86, 114, 142, 170],
+  };
+
+  const coords = table[version] || [6];
+  const positions: Array<{ row: number; col: number }> = [];
+
+  for (const r of coords) {
+    for (const c of coords) {
+      // Skip positions that overlap with finder patterns
+      if (r < 8 && c < 8) continue;
+      if (r < 8 && c > moduleCount - 9) continue;
+      if (r > moduleCount - 9 && c < 8) continue;
+      positions.push({ row: r, col: c });
+    }
+  }
+
+  return positions;
+}
+
+/**
+ * Helper: Check if a position is part of an alignment pattern
+ */
+function isAlignmentPattern(row: number, col: number, moduleCount: number): boolean {
+  const positions = getAlignmentPositions(moduleCount);
+  for (const pos of positions) {
+    if (Math.abs(row - pos.row) <= 2 && Math.abs(col - pos.col) <= 2) {
+      return true;
+    }
+  }
+  return false;
+}
+
+/**
+ * Generate SVG path for a single module with styling
+ */
+function generateModulePath(
+  x: number,
+  y: number,
+  size: number,
+  style: VectorModuleStyle,
+  cornerRadius: number
+): string {
+  const r = (cornerRadius / 100) * (size / 2);
+
+  switch (style) {
+    case 'rounded': {
+      if (r <= 0) return `M${x},${y}h${size}v${size}h${-size}Z`;
+      return (
+        `M${x + r},${y}` +
+        `h${size - 2 * r}` +
+        `a${r},${r} 0 0 1 ${r},${r}` +
+        `v${size - 2 * r}` +
+        `a${r},${r} 0 0 1 ${-r},${r}` +
+        `h${-(size - 2 * r)}` +
+        `a${r},${r} 0 0 1 ${-r},${-r}` +
+        `v${-(size - 2 * r)}` +
+        `a${r},${r} 0 0 1 ${r},${-r}Z`
+      );
+    }
+    case 'dots': {
+      const cx = x + size / 2;
+      const cy = y + size / 2;
+      const radius = (size / 2) * 0.85;
+      return (
+        `M${cx - radius},${cy}` +
+        `a${radius},${radius} 0 1 0 ${radius * 2},0` +
+        `a${radius},${radius} 0 1 0 ${-radius * 2},0Z`
+      );
+    }
+    case 'diamond': {
+      const half = size / 2;
+      return `M${x + half},${y}l${half},${half}l${-half},${half}l${-half},${-half}Z`;
+    }
+    case 'connected': {
+      // Connected style: full-size square with no gaps (for connected look)
+      // No overlap needed - we use shape-rendering="crispEdges" on the SVG instead
+      return `M${x},${y}h${size}v${size}h${-size}Z`;
+    }
+    default:
+      return `M${x},${y}h${size}v${size}h${-size}Z`;
+  }
+}
+
+/**
+ * Generate SVG for finder pattern with styling
+ */
+function generateFinderSvg(
+  startX: number,
+  startY: number,
+  moduleSize: number,
+  outerStyle: VectorFinderStyle,
+  innerStyle: VectorFinderStyle,
+  fillColor: string
+): string {
+  const outerSize = 7 * moduleSize;
+  const middleSize = 5 * moduleSize;
+  const innerSize = 3 * moduleSize;
+  const middleOffset = moduleSize;
+  const innerOffset = 2 * moduleSize;
+
+  let paths = '';
+
+  // Outer ring with cutout
+  if (outerStyle === 'circle') {
+    const cx = startX + outerSize / 2;
+    const cy = startY + outerSize / 2;
+    const outerR = outerSize / 2;
+    const innerR = middleSize / 2;
+    paths += `<path d="M${cx - outerR},${cy}a${outerR},${outerR} 0 1 0 ${outerR * 2},0a${outerR},${outerR} 0 1 0 ${-outerR * 2},0Z M${cx - innerR},${cy}a${innerR},${innerR} 0 1 1 ${innerR * 2},0a${innerR},${innerR} 0 1 1 ${-innerR * 2},0Z" fill="${fillColor}" fill-rule="evenodd"/>`;
+  } else if (outerStyle === 'rounded') {
+    const r = moduleSize;
+    const ir = moduleSize * 0.5;
+    const mx = startX + middleOffset;
+    const my = startY + middleOffset;
+    paths += `<path d="M${startX + r},${startY}h${outerSize - 2 * r}a${r},${r} 0 0 1 ${r},${r}v${outerSize - 2 * r}a${r},${r} 0 0 1 ${-r},${r}h${-(outerSize - 2 * r)}a${r},${r} 0 0 1 ${-r},${-r}v${-(outerSize - 2 * r)}a${r},${r} 0 0 1 ${r},${-r}Z M${mx + ir},${my}h${middleSize - 2 * ir}a${ir},${ir} 0 0 1 ${ir},${ir}v${middleSize - 2 * ir}a${ir},${ir} 0 0 1 ${-ir},${ir}h${-(middleSize - 2 * ir)}a${ir},${ir} 0 0 1 ${-ir},${-ir}v${-(middleSize - 2 * ir)}a${ir},${ir} 0 0 1 ${ir},${-ir}Z" fill="${fillColor}" fill-rule="evenodd"/>`;
+  } else {
+    paths += `<path d="M${startX},${startY}h${outerSize}v${outerSize}h${-outerSize}Z M${startX + middleOffset},${startY + middleOffset}h${middleSize}v${middleSize}h${-middleSize}Z" fill="${fillColor}" fill-rule="evenodd"/>`;
+  }
+
+  // Inner center (3x3)
+  const ix = startX + innerOffset;
+  const iy = startY + innerOffset;
+  if (innerStyle === 'circle') {
+    const cx = ix + innerSize / 2;
+    const cy = iy + innerSize / 2;
+    paths += `<circle cx="${cx}" cy="${cy}" r="${innerSize / 2}" fill="${fillColor}"/>`;
+  } else if (innerStyle === 'rounded') {
+    const r = moduleSize * 0.5;
+    paths += `<path d="M${ix + r},${iy}h${innerSize - 2 * r}a${r},${r} 0 0 1 ${r},${r}v${innerSize - 2 * r}a${r},${r} 0 0 1 ${-r},${r}h${-(innerSize - 2 * r)}a${r},${r} 0 0 1 ${-r},${-r}v${-(innerSize - 2 * r)}a${r},${r} 0 0 1 ${r},${-r}Z" fill="${fillColor}"/>`;
+  } else {
+    paths += `<rect x="${ix}" y="${iy}" width="${innerSize}" height="${innerSize}" fill="${fillColor}"/>`;
+  }
+
+  return paths;
+}
+
+/**
+ * Generate SVG for alignment pattern with styling (5x5 modules)
+ * Structure: outer ring (5x5 dark), middle ring (3x3 light cutout), center dot (1x1 dark)
+ */
+function generateAlignmentSvg(
+  centerX: number,
+  centerY: number,
+  moduleSize: number,
+  style: VectorAlignmentStyle,
+  finderStyle: VectorFinderStyle,
+  fillColor: string
+): string {
+  // Use finder style if 'match_finder' is specified
+  const effectiveStyle: VectorFinderStyle =
+    style === 'match_finder' ? finderStyle : (style as VectorFinderStyle);
+
+  const outerSize = 5 * moduleSize;
+  const middleSize = 3 * moduleSize;
+  const innerSize = 1 * moduleSize;
+
+  const startX = centerX - outerSize / 2;
+  const startY = centerY - outerSize / 2;
+  const middleOffset = moduleSize;
+  const innerOffset = 2 * moduleSize;
+
+  let paths = '';
+
+  // Outer ring with middle cutout
+  if (effectiveStyle === 'circle') {
+    const outerR = outerSize / 2;
+    const middleR = middleSize / 2;
+    paths += `<path d="M${centerX - outerR},${centerY}a${outerR},${outerR} 0 1 0 ${outerR * 2},0a${outerR},${outerR} 0 1 0 ${-outerR * 2},0Z M${centerX - middleR},${centerY}a${middleR},${middleR} 0 1 1 ${middleR * 2},0a${middleR},${middleR} 0 1 1 ${-middleR * 2},0Z" fill="${fillColor}" fill-rule="evenodd"/>`;
+  } else if (effectiveStyle === 'rounded') {
+    const r = moduleSize * 0.5;
+    const ir = moduleSize * 0.3;
+    const mx = startX + middleOffset;
+    const my = startY + middleOffset;
+    paths += `<path d="M${startX + r},${startY}h${outerSize - 2 * r}a${r},${r} 0 0 1 ${r},${r}v${outerSize - 2 * r}a${r},${r} 0 0 1 ${-r},${r}h${-(outerSize - 2 * r)}a${r},${r} 0 0 1 ${-r},${-r}v${-(outerSize - 2 * r)}a${r},${r} 0 0 1 ${r},${-r}Z M${mx + ir},${my}h${middleSize - 2 * ir}a${ir},${ir} 0 0 1 ${ir},${ir}v${middleSize - 2 * ir}a${ir},${ir} 0 0 1 ${-ir},${ir}h${-(middleSize - 2 * ir)}a${ir},${ir} 0 0 1 ${-ir},${-ir}v${-(middleSize - 2 * ir)}a${ir},${ir} 0 0 1 ${ir},${-ir}Z" fill="${fillColor}" fill-rule="evenodd"/>`;
+  } else {
+    // Square style
+    paths += `<path d="M${startX},${startY}h${outerSize}v${outerSize}h${-outerSize}Z M${startX + middleOffset},${startY + middleOffset}h${middleSize}v${middleSize}h${-middleSize}Z" fill="${fillColor}" fill-rule="evenodd"/>`;
+  }
+
+  // Center dot (1x1)
+  const ix = startX + innerOffset;
+  const iy = startY + innerOffset;
+  if (effectiveStyle === 'circle') {
+    paths += `<circle cx="${centerX}" cy="${centerY}" r="${innerSize / 2}" fill="${fillColor}"/>`;
+  } else if (effectiveStyle === 'rounded') {
+    const r = moduleSize * 0.2;
+    paths += `<path d="M${ix + r},${iy}h${innerSize - 2 * r}a${r},${r} 0 0 1 ${r},${r}v${innerSize - 2 * r}a${r},${r} 0 0 1 ${-r},${r}h${-(innerSize - 2 * r)}a${r},${r} 0 0 1 ${-r},${-r}v${-(innerSize - 2 * r)}a${r},${r} 0 0 1 ${r},${-r}Z" fill="${fillColor}"/>`;
+  } else {
+    paths += `<rect x="${ix}" y="${iy}" width="${innerSize}" height="${innerSize}" fill="${fillColor}"/>`;
+  }
+
+  return paths;
+}
+
+/**
+ * Generate SVG path for timing pattern modules
+ */
+function generateTimingModulePath(
+  x: number,
+  y: number,
+  size: number,
+  timingStyle: VectorTimingStyle,
+  moduleStyle: VectorModuleStyle,
+  cornerRadius: number
+): string {
+  // Use module style if 'match_module' is specified
+  if (timingStyle === 'match_module') {
+    return generateModulePath(x, y, size, moduleStyle, cornerRadius);
+  }
+
+  // 'solid' - full size square
+  if (timingStyle === 'solid') {
+    return `M${x},${y}h${size}v${size}h${-size}Z`;
+  }
+
+  // 'dashed' - smaller centered rectangle for dashed look
+  const dashSize = size * 0.7;
+  const offset = (size - dashSize) / 2;
+  return `M${x + offset},${y + offset}h${dashSize}v${dashSize}h${-dashSize}Z`;
+}
+
+/**
+ * Generate gradient definition for SVG
+ */
+function generateGradientDef(gradient: VectorGradient, id: string): string {
+  if (gradient.type === 'none' || !gradient.stops?.length) return '';
+
+  const stops = gradient.stops
+    .map((s) => `<stop offset="${s.pos * 100}%" stop-color="${s.color}"/>`)
+    .join('');
+
+  switch (gradient.type) {
+    case 'linear': {
+      const angle = gradient.angle ?? 0;
+      const rad = (angle * Math.PI) / 180;
+      const x1 = 50 - Math.cos(rad) * 50;
+      const y1 = 50 - Math.sin(rad) * 50;
+      const x2 = 50 + Math.cos(rad) * 50;
+      const y2 = 50 + Math.sin(rad) * 50;
+      return `<linearGradient id="${id}" x1="${x1}%" y1="${y1}%" x2="${x2}%" y2="${y2}%">${stops}</linearGradient>`;
+    }
+    case 'radial':
+    case 'conic':
+      return `<radialGradient id="${id}" cx="50%" cy="50%" r="70%">${stops}</radialGradient>`;
+    default:
+      return '';
+  }
+}
+
+/**
+ * Export QR matrix as true vector SVG with full styling support
+ * Creates resolution-independent vector paths for each module
  */
 export function exportVectorSvg(
   matrix: boolean[][],
-  config: {
-    moduleSize?: number;
-    margin?: number;
-    fgColor?: string;
-    bgColor?: string;
-    width?: number;
-    height?: number;
-    filename?: string;
-  } = {}
+  config: VectorSvgConfig = {}
 ): ExportResult {
   const moduleCount = matrix.length;
   const moduleSize = config.moduleSize ?? 10;
   const margin = config.margin ?? 4;
   const fgColor = config.fgColor ?? '#000000';
   const bgColor = config.bgColor ?? '#ffffff';
+  const filename = config.filename ?? 'anqr-qrcode';
+  const moduleStyle = config.moduleStyle ?? 'square';
+  const cornerRadius = config.cornerRadius ?? 0;
+  const finderStyle = config.finderStyle ?? 'square';
+  const eyeOuterStyle = config.eyeOuterStyle ?? finderStyle;
+  const eyeInnerStyle = config.eyeInnerStyle ?? finderStyle;
+  const alignmentStyle = config.alignmentStyle ?? 'match_finder';
+  const timingStyle = config.timingStyle ?? 'match_module';
+  const gradient = config.gradient;
 
-  const size = moduleCount * moduleSize + margin * 2 * moduleSize;
-  const width = config.width ?? size;
-  const height = config.height ?? size;
+  // Calculate SVG dimensions
+  const size = (moduleCount + margin * 2) * moduleSize;
+  const marginPx = margin * moduleSize;
 
-  let paths = '';
+  // Determine fill color (may be gradient reference)
+  const hasGradient =
+    gradient && gradient.type !== 'none' && gradient.stops && gradient.stops.length > 0;
+  const gradientId = 'qr-gradient';
+  const fillColor = hasGradient ? `url(#${gradientId})` : fgColor;
 
+  // Build SVG content
+  let defs = '';
+  if (hasGradient) {
+    defs = `<defs>${generateGradientDef(gradient!, gradientId)}</defs>`;
+  }
+
+  // Generate finder patterns separately for proper styling
+  let finderPaths = '';
+  const finderPositions = [
+    { row: 0, col: 0 }, // Top-left
+    { row: 0, col: moduleCount - 7 }, // Top-right
+    { row: moduleCount - 7, col: 0 }, // Bottom-left
+  ];
+
+  for (const pos of finderPositions) {
+    const x = marginPx + pos.col * moduleSize;
+    const y = marginPx + pos.row * moduleSize;
+    finderPaths += generateFinderSvg(x, y, moduleSize, eyeOuterStyle, eyeInnerStyle, fillColor);
+  }
+
+  // Generate alignment patterns (for version 2+ QR codes)
+  let alignmentPaths = '';
+  const alignmentPositions = getAlignmentPositions(moduleCount);
+  for (const pos of alignmentPositions) {
+    const centerX = marginPx + pos.col * moduleSize + moduleSize / 2;
+    const centerY = marginPx + pos.row * moduleSize + moduleSize / 2;
+    alignmentPaths += generateAlignmentSvg(
+      centerX,
+      centerY,
+      moduleSize,
+      alignmentStyle,
+      finderStyle,
+      fillColor
+    );
+  }
+
+  // Generate timing patterns (row 6 and column 6)
+  let timingPathData = '';
+  // Horizontal timing pattern (row 6, cols 8 to moduleCount-8)
+  for (let col = 8; col < moduleCount - 8; col++) {
+    if (matrix[6][col]) {
+      const x = marginPx + col * moduleSize;
+      const y = marginPx + 6 * moduleSize;
+      timingPathData +=
+        generateTimingModulePath(x, y, moduleSize, timingStyle, moduleStyle, cornerRadius) + ' ';
+    }
+  }
+  // Vertical timing pattern (col 6, rows 8 to moduleCount-8)
+  for (let row = 8; row < moduleCount - 8; row++) {
+    if (matrix[row][6]) {
+      const x = marginPx + 6 * moduleSize;
+      const y = marginPx + row * moduleSize;
+      timingPathData +=
+        generateTimingModulePath(x, y, moduleSize, timingStyle, moduleStyle, cornerRadius) + ' ';
+    }
+  }
+
+  // Build path for data modules (excluding finder, alignment, and timing patterns)
+  let dataPathData = '';
   for (let row = 0; row < moduleCount; row++) {
     for (let col = 0; col < moduleCount; col++) {
+      // Skip finder pattern areas (handled separately)
+      if (isFinderPattern(row, col, moduleCount)) continue;
+      // Skip alignment pattern areas (handled separately)
+      if (isAlignmentPattern(row, col, moduleCount)) continue;
+      // Skip timing pattern areas (handled separately)
+      if (isTimingPattern(row, col, moduleCount)) continue;
+
       if (matrix[row][col]) {
-        const x = (col + margin) * moduleSize;
-        const y = (row + margin) * moduleSize;
-        paths += `M${x},${y}h${moduleSize}v${moduleSize}h-${moduleSize}z `;
+        const x = marginPx + col * moduleSize;
+        const y = marginPx + row * moduleSize;
+        dataPathData += generateModulePath(x, y, moduleSize, moduleStyle, cornerRadius) + ' ';
       }
     }
   }
 
+  // Build metadata elements
+  let metadataContent = '';
+  if (config.metadata) {
+    const m = config.metadata;
+    if (m.title) {
+      metadataContent += `  <title>${escapeXml(m.title)}</title>\n`;
+    }
+    if (m.description) {
+      metadataContent += `  <desc>${escapeXml(m.description)}</desc>\n`;
+    }
+    // Build Dublin Core / RDF metadata block for author, copyright, etc.
+    const dcElements: string[] = [];
+    if (m.author) {
+      dcElements.push(`        <dc:creator>${escapeXml(m.author)}</dc:creator>`);
+    }
+    if (m.copyright) {
+      dcElements.push(`        <dc:rights>${escapeXml(m.copyright)}</dc:rights>`);
+    }
+    if (m.creationTime) {
+      dcElements.push(`        <dc:date>${new Date().toISOString()}</dc:date>`);
+    }
+    if (m.software) {
+      dcElements.push(`        <dc:source>${escapeXml(m.software)}</dc:source>`);
+    }
+    if (dcElements.length > 0) {
+      metadataContent += `  <metadata>
+    <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+             xmlns:dc="http://purl.org/dc/elements/1.1/">
+      <rdf:Description>
+${dcElements.join('\n')}
+      </rdf:Description>
+    </rdf:RDF>
+  </metadata>\n`;
+    }
+  }
+
+  // Create SVG content
+  // Use shape-rendering="crispEdges" to prevent anti-aliasing gaps between adjacent modules
   const svg = `<?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" 
-     width="${width}" height="${height}"
-     viewBox="0 0 ${size} ${size}">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${size} ${size}" width="${size}" height="${size}" shape-rendering="crispEdges">
+${metadataContent}  ${defs}
   <rect width="100%" height="100%" fill="${bgColor}"/>
-  <path d="${paths.trim()}" fill="${fgColor}"/>
+  ${finderPaths}
+  ${alignmentPaths}
+  <path d="${timingPathData.trim()}" fill="${fillColor}"/>
+  <path d="${dataPathData.trim()}" fill="${fillColor}"/>
 </svg>`;
 
   const blob = new Blob([svg], { type: 'image/svg+xml' });
-  const filename = `${config.filename ?? 'anqr-qrcode'}.svg`;
   const url = URL.createObjectURL(blob);
 
   return {
     blob,
     url,
-    filename,
+    filename: `${filename}.svg`,
     format: 'svg',
-    width,
-    height,
+    width: size,
+    height: size,
   };
 }
 
@@ -659,6 +1136,18 @@ export async function downloadSvg(
   config: Partial<ExportConfig> = {}
 ): Promise<void> {
   const result = await exportSvg(canvas, config);
+  downloadUrl(result.url, result.filename, result.blob);
+  // Don't revoke URL immediately on native - file save is async
+  if (!Capacitor.isNativePlatform()) {
+    URL.revokeObjectURL(result.url);
+  }
+}
+
+/**
+ * Download QR matrix as true vector SVG with full styling support
+ */
+export function downloadVectorSvg(matrix: boolean[][], config: VectorSvgConfig = {}): void {
+  const result = exportVectorSvg(matrix, config);
   downloadUrl(result.url, result.filename, result.blob);
   // Don't revoke URL immediately on native - file save is async
   if (!Capacitor.isNativePlatform()) {
@@ -797,6 +1286,7 @@ export const ExporterModule = {
   exportSvg,
   exportVectorSvg,
   downloadSvg,
+  downloadVectorSvg,
 
   // Utilities
   downloadUrl,
