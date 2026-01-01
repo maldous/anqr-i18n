@@ -220,3 +220,7 @@ android: build android\:bump android\:release
 	@echo "2. Create/select your app"
 	@echo "3. Upload the AAB file"
 	@echo "============================================"
+
+zip:
+	@rm -f anqr.zip
+	@git archive --format=zip --prefix=anqr/ HEAD -o anqr.zip

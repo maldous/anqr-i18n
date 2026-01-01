@@ -1,1 +1,18 @@
+# images / media
+public/gallery/**        export-ignore
+public/icons/**          export-ignore
+public/*.png             export-ignore
+public/*.jpg             export-ignore
+public/*.gif             export-ignore
+
+# translations / generated text
+src/i18n/locales/**      export-ignore
+src/i18n/static/**       export-ignore
+
+# android resources (huge, not logic)
+android/app/src/main/res/** export-ignore
+
+# build / infra noise
+.netlify/**              export-ignore
+.netlify/functions-serve/** export-ignore
 .netlify/functions/qr.zip export-ignore
