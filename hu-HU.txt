@@ -1248,16 +1248,16 @@
 1248	"görög"
 1249	"finn"
 1250	"francia"
-1251	hausza
+1251	"hausza"
 1252	"horvát"
 1253	"magyar"
 1254	"igbó"
 1255	"olasz"
-1256	khmer
-1257	Szolgáltatások
+1256	"khmer"
+1257	"Szolgáltatások"
 1258	"Lao"
 1259	"burmai"
-1260	nepáli
+1260	"nepáli"
 1261	"holland"
 1262	"norvég"
 1263	"Odia"
@@ -1265,12 +1265,12 @@
 1265	"pastu"
 1266	"románc"
 1267	"román"
-1268	szindhi
-1269	szváti
+1268	"szindhi"
+1269	"szváti"
 1270	"Déli szotó"
 1271	"svéd"
-1272	Tswana
-1273	Tsonga
+1272	"Tswana"
+1273	"Tsonga"
 1274	"Venda"
 1275	"Xhosza"
 1276	"joruba"

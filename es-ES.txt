@@ -467,7 +467,7 @@
 467	"Ingrese el contenido del texto a codificar en el código QR"
 468	"Introduzca la URL a codificar en el código QR"
 469	"Código QR del Consejo Europeo de Pagos para transferencias SEPA"
-470	"Nivel de corrección de errores: cuanto mayor sea el nivel, mayor será la resistencia al daño, pero el código QR será más grande".
+470	"Nivel de corrección de errores: cuanto mayor sea el nivel, mayor será la resistencia al daño, pero el código QR será más grande."
 471	"Módulos fronterizos adicionales más allá de la zona tranquila (0-10)"
 472	"Estilo del cuadrado interior de los patrones de búsqueda"
 473	"Estilo del anillo exterior de los patrones de búsqueda"

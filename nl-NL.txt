@@ -538,7 +538,7 @@
 538	"Voorwaarden"
 539	"Achtergrondoverschrijving"
 540	"Laat leeg voor standaardwaarde"
-541	DPI (afdrukken)
+541	"DPI (afdrukken)"
 542	"Rasteroverlay insluiten"
 543	"Exporteren als (aanvullend)"
 544	"Bestandsnaam"
@@ -1248,29 +1248,29 @@
 1248	"Grieks"
 1249	"Fins"
 1250	"Frans"
-1251	Hausa
+1251	"Hausa"
 1252	"Kroatisch"
 1253	"Hongaars"
 1254	"Igbo"
 1255	"Italiaans"
-1256	Khmer
-1257	Voorzieningen
+1256	"Khmer"
+1257	"Voorzieningen"
 1258	"Lao"
 1259	"Birmaans"
-1260	Nepalees
+1260	"Nepalees"
 1261	"Nederlands"
 1262	"Noors"
 1263	"Odia"
 1264	"Pools"
 1265	"Pashto"
-1266	Romantiek
+1266	"Romantiek"
 1267	"Roemeens"
-1268	Sindhi
-1269	Swati
+1268	"Sindhi"
+1269	"Swati"
 1270	"Zuid-Sotho"
 1271	"Zweeds"
-1272	Tswana
-1273	Tsonga
+1272	"Tswana"
+1273	"Tsonga"
 1274	"Venda"
 1275	"Xhosa"
 1276	"Yoruba"
