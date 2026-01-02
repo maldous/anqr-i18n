@@ -29,7 +29,8 @@
     "speed": "Frame Speed",
     "startFrame": "Start Frame",
     "temporalDither": "Temporal Dither",
-    "wave": "Wave"
+    "wave": "Wave",
+    "auto": "Auto"
   },
   "languages": {
     "en-GB": "English",
@@ -861,6 +862,8 @@
   },
   "hints": {
     "moduleJitterWarning": "⚠️ May affect scannability",
+    "maxFramesAuto": "0 = Auto (uses source frames, max 50 for performance)",
+    "paletteMode": "How colors from the palette are assigned to modules",
     "alignmentStyle": "Style of alignment patterns (used in larger QR codes)",
     "appLinkNote": "Opens specific content within a mobile app",
     "autoDetect": "Auto-detect (requires v{{version}}+ for current content)",
@@ -975,6 +978,7 @@
     "terms": "Terms"
   },
   "output": {
+    "animatedWebp": "Animated WebP",
     "none": "None",
     "off": "Off",
     "dithering": "Dithering",
@@ -1050,6 +1054,14 @@
     "none": "None",
     "gradientColors": "Colors",
     "classic": "Classic",
+    "paletteMode": "Palette Mode",
+    "paletteModePosition": "By Position",
+    "paletteModeBrightness": "By Brightness",
+    "paletteModeDiagonal": "Diagonal",
+    "paletteModeRadial": "Radial",
+    "paletteModeRandom": "Random",
+    "paletteModeRow": "By Row",
+    "paletteModeColumn": "By Column",
     "addColor": "Add Color",
     "alignmentStyle": "Alignment Pattern Style",
     "background": "Background",
@@ -1140,7 +1152,16 @@
     "simulateBlur": "Simulate Blur",
     "simulateNoise": "Simulate Noise",
     "simulateRotation": "Simulate Rotation",
-    "untilScannable": "Until scannable"
+    "untilScannable": "Until scannable",
+    "eccAwareMode": "ECC-Aware Mode",
+    "eccAwareEnabled": "Enable ECC-Aware",
+    "eccAwareDesc": "Intelligently preserve critical QR regions",
+    "eccAwareRiskBudget": "Risk Budget",
+    "eccAwareRiskBudgetDesc": "Higher values allow more overlay coverage",
+    "eccAwareWeightMap": "Weight Map",
+    "eccMapDistanceToFinders": "Distance to Finders",
+    "eccMapBlockHeatmap": "Block Heatmap",
+    "eccMapEmpiricalScan": "Empirical Scan Heatmap"
   },
   "sections": {
     "animation": "Animation",
@@ -1293,6 +1314,8 @@
     "eccAwareMode": "ECC-Aware Mode",
     "edge": "Edge Detection",
     "edgeAware": "Edge-Aware",
+    "sobel": "Sobel",
+    "canny": "Canny",
     "enableCrop": "Enable Crop",
     "finderOverride": "Finder Override",
     "fitMode": "Fit Mode",

@@ -29,7 +29,8 @@
     "speed": "27",
     "startFrame": "28",
     "temporalDither": "29",
-    "wave": "30"
+    "wave": "30",
+    "auto": "872"
   },
   "languages": {
     "en-GB": "31",
@@ -938,7 +939,9 @@
     "auspaynetNote": "1238",
     "paypalMeNote": "1239",
     "cashAppNote": "1240",
-    "emvGenericNote": "1241"
+    "emvGenericNote": "1241",
+    "maxFramesAuto": "1415",
+    "paletteMode": "1416"
   },
   "language": {
     "current": "514",
@@ -1010,7 +1013,8 @@
     "trueVector": "567",
     "trueVectorDesc": "568",
     "webp": "569",
-    "width": "570"
+    "width": "570",
+    "animatedWebp": "1398"
   },
   "preview": {
     "qrCodePreview": "867",
@@ -1106,7 +1110,15 @@
     "style": "950",
     "tag": "951",
     "timingStyle": "952",
-    "transparentBg": "953"
+    "transparentBg": "953",
+    "paletteMode": "1399",
+    "paletteModePosition": "1400",
+    "paletteModeBrightness": "1401",
+    "paletteModeDiagonal": "1402",
+    "paletteModeRadial": "1403",
+    "paletteModeRandom": "1404",
+    "paletteModeRow": "1405",
+    "paletteModeColumn": "1406"
   },
   "safety": {
     "off": "19",
@@ -1140,7 +1152,15 @@
     "simulateBlur": "979",
     "simulateNoise": "980",
     "simulateRotation": "981",
-    "untilScannable": "982"
+    "untilScannable": "982",
+    "eccAwareEnabled": "1407",
+    "eccAwareDesc": "1408",
+    "eccAwareRiskBudget": "1409",
+    "eccAwareRiskBudgetDesc": "1410",
+    "eccAwareWeightMap": "1411",
+    "eccMapDistanceToFinders": "1412",
+    "eccMapBlockHeatmap": "1413",
+    "eccMapEmpiricalScan": "1414"
   },
   "sections": {
     "animation": "93",
@@ -1366,7 +1386,9 @@
     "useFrameDelays": "667",
     "voidCluster": "668",
     "pleaseEnterUrl": "1054",
-    "preview": "1055"
+    "preview": "1055",
+    "sobel": "1417",
+    "canny": "1418"
   },
   "payload": {
     "emailAddress": "216",
