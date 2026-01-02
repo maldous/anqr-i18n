@@ -1251,6 +1251,8 @@ export default async (request: Request) => {
   const watermarkBlend = (params.get('wmBlend') || 'normal') as WatermarkBlend;
 
   // Animation (for animated GIF output)
+  // NOTE: Animation params are parsed but only pattern/frames/speed/seed are currently used server-side
+  // colorCycle, temporalDither, interpolate, moduleJitter require full client-side rendering
   const animationPattern = (params.get('animPattern') || 'none') as AnimationPattern;
   // Ensure frame count is at least 1 to prevent empty animation loops
   const animationFramesRaw = parseInt(params.get('animFrames') || '24', 10);
@@ -1407,6 +1409,14 @@ export default async (request: Request) => {
         Q: maxOverlayIntensityQ,
         H: maxOverlayIntensityH,
       },
+      // Animation settings (pattern-based animation is supported server-side)
+      // Note: colorCycle, temporalDither, interpolate, moduleJitter are client-only
+      animationPattern,
+      animationFrames,
+      animationSpeed,
+      animationSeed,
+      moduleJitterPx: 0, // Not supported server-side (requires per-frame QR generation)
+      colorCycle: false, // Not supported server-side (requires post-processing)
     };
 
     // Load overlay image if URL provided

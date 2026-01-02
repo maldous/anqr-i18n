@@ -269,7 +269,9 @@ export class QRGenerator {
     }
 
     const moduleSize = config.moduleSize;
-    const margin = config.margin;
+    // Apply quiet zone minimum enforcement if enabled (QR spec recommends 4 modules)
+    const quietZoneMin = config.quietZoneMinEnforce !== false ? 4 : 0;
+    const margin = Math.max(config.margin, quietZoneMin);
     const frameExtra =
       config.frameStyle && config.frameStyle !== 'none' && config.frameText ? moduleSize * 4 : 0;
     const size = moduleCount * moduleSize + margin * 2 * moduleSize + frameExtra;
