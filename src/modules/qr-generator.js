@@ -1604,7 +1604,7 @@ export class QRGenerator {
     const needsConvolutionFilters =
       blur_radius > 0 || sharpen_amt > 0 || edge_detect === 'sobel' || edge_detect === 'canny';
 
-    if (!needsPerPixelPreprocess && !needsConvolutionFilters) return imageData;
+    if (!(needsPerPixelPreprocess || needsConvolutionFilters)) return imageData;
 
     // First pass: per-pixel adjustments
     if (needsPerPixelPreprocess) {
@@ -2098,7 +2098,7 @@ export class QRGenerator {
             const centerRule = config.subpixelCenterRule || 'strict';
             const centerIdx = Math.floor(subpixelSize / 2);
             const isCenter = subRow === centerIdx && subCol === centerIdx;
-            
+
             if (isCenter) {
               // Use halftone center if configured OR if center rule is halftone_center
               const useHalftone = useHalftoneCenter || centerRule === 'halftone_center';
@@ -2137,7 +2137,9 @@ export class QRGenerator {
                 // No overlay - show based on QR pattern with reduced contrast
                 // Use neutral color as base for non-overlay pixels
                 const neutralColor = config.subpixelNeutralColor || '#808080';
-                ctx.fillStyle = isDark ? this._darkenColor(neutralColor, 0.5) : this._lightenColor(neutralColor, 0.5);
+                ctx.fillStyle = isDark
+                  ? this._darkenColor(neutralColor, 0.5)
+                  : this._lightenColor(neutralColor, 0.5);
               }
               ctx.fillRect(subX, subY, pixelSize, pixelSize);
             }
@@ -2170,9 +2172,15 @@ export class QRGenerator {
    */
   _lightenColor(color, factor) {
     const hex = color.replace('#', '');
-    const r = Math.round(parseInt(hex.substr(0, 2), 16) + (255 - parseInt(hex.substr(0, 2), 16)) * factor);
-    const g = Math.round(parseInt(hex.substr(2, 2), 16) + (255 - parseInt(hex.substr(2, 2), 16)) * factor);
-    const b = Math.round(parseInt(hex.substr(4, 2), 16) + (255 - parseInt(hex.substr(4, 2), 16)) * factor);
+    const r = Math.round(
+      parseInt(hex.substr(0, 2), 16) + (255 - parseInt(hex.substr(0, 2), 16)) * factor
+    );
+    const g = Math.round(
+      parseInt(hex.substr(2, 2), 16) + (255 - parseInt(hex.substr(2, 2), 16)) * factor
+    );
+    const b = Math.round(
+      parseInt(hex.substr(4, 2), 16) + (255 - parseInt(hex.substr(4, 2), 16)) * factor
+    );
     return `rgb(${r},${g},${b})`;
   }
 
@@ -2336,7 +2344,19 @@ export class QRGenerator {
           const error = gray - newVal;
 
           imageData[y][x] = { r: newVal, g: newVal, b: newVal };
-          this.distributeError(imageData, x, y, scaledSize, scale, error, error, error, leftToRight, fsKernel, ditherStrength);
+          this.distributeError(
+            imageData,
+            x,
+            y,
+            scaledSize,
+            scale,
+            error,
+            error,
+            error,
+            leftToRight,
+            fsKernel,
+            ditherStrength
+          );
         } else if (colorMode === 'grayscale') {
           const gray = pixel.r;
           const levels = 4;
@@ -2448,7 +2468,19 @@ export class QRGenerator {
    * Distribute error to neighboring pixels using the specified diffusion kernel
    * Supports serpentine scanning with leftToRight parameter and dither strength
    */
-  distributeError(imageData, x, y, size, scale, errorR, errorG, errorB, leftToRight = true, kernel = null, strength = 1.0) {
+  distributeError(
+    imageData,
+    x,
+    y,
+    size,
+    scale,
+    errorR,
+    errorG,
+    errorB,
+    leftToRight = true,
+    kernel = null,
+    strength = 1.0
+  ) {
     const canChange = (px, py) => {
       if (px < 0 || py < 0 || px >= size || py >= size) return false;
       return !(isLocked(size, px, py, scale) || isData(px, py, scale));

@@ -809,7 +809,7 @@ export function screenedBlueNoiseDither(
       // Combine screen pattern with blue noise
       const screenVal = screenPattern[y % screenSize][x % screenSize];
       const blueNoiseVal = sampleBlueNoise(x, y, tile, tileSize);
-      const combinedThreshold = (screenVal * 0.6 + blueNoiseVal * 0.4);
+      const combinedThreshold = screenVal * 0.6 + blueNoiseVal * 0.4;
       const adjustedThreshold = 0.5 + (combinedThreshold - 0.5) * strengthFactor;
 
       const isDark = gray < adjustedThreshold;
@@ -840,8 +840,8 @@ export function perceptualDither(
   const step = 1 / (levels - 1);
 
   // Perceptual gamma correction (sRGB to linear)
-  const toLinear = (v: number) => v <= 0.04045 ? v / 12.92 : Math.pow((v + 0.055) / 1.055, 2.4);
-  const toSRGB = (v: number) => v <= 0.0031308 ? v * 12.92 : 1.055 * Math.pow(v, 1 / 2.4) - 0.055;
+  const toLinear = (v: number) => (v <= 0.04045 ? v / 12.92 : ((v + 0.055) / 1.055) ** 2.4);
+  const toSRGB = (v: number) => (v <= 0.0031308 ? v * 12.92 : 1.055 * v ** (1 / 2.4) - 0.055);
 
   // Convert to perceptual space
   const pixels: { r: number; g: number; b: number }[][] = [];
@@ -938,13 +938,20 @@ export function edgeAwareDither(
       };
 
       const gx =
-        -getGray(x - 1, y - 1) + getGray(x + 1, y - 1) +
-        -2 * getGray(x - 1, y) + 2 * getGray(x + 1, y) +
-        -getGray(x - 1, y + 1) + getGray(x + 1, y + 1);
+        -getGray(x - 1, y - 1) +
+        getGray(x + 1, y - 1) +
+        -2 * getGray(x - 1, y) +
+        2 * getGray(x + 1, y) +
+        -getGray(x - 1, y + 1) +
+        getGray(x + 1, y + 1);
 
       const gy =
-        -getGray(x - 1, y - 1) - 2 * getGray(x, y - 1) - getGray(x + 1, y - 1) +
-        getGray(x - 1, y + 1) + 2 * getGray(x, y + 1) + getGray(x + 1, y + 1);
+        -getGray(x - 1, y - 1) -
+        2 * getGray(x, y - 1) -
+        getGray(x + 1, y - 1) +
+        getGray(x - 1, y + 1) +
+        2 * getGray(x, y + 1) +
+        getGray(x + 1, y + 1);
 
       edgeMap[y][x] = Math.min(1, Math.sqrt(gx * gx + gy * gy));
     }
@@ -1076,8 +1083,9 @@ export function adaptiveThresholdDither(
       const y1 = y - halfBlock;
       const x2 = x + halfBlock;
       const y2 = y + halfBlock;
-      const area = (Math.min(x2, width - 1) - Math.max(x1, 0) + 1) *
-                   (Math.min(y2, height - 1) - Math.max(y1, 0) + 1);
+      const area =
+        (Math.min(x2, width - 1) - Math.max(x1, 0) + 1) *
+        (Math.min(y2, height - 1) - Math.max(y1, 0) + 1);
       const localMean = getSum(x1, y1, x2, y2) / area;
 
       // Adaptive threshold with bias towards the local mean
@@ -1304,13 +1312,7 @@ export function applyDither(imageData: ImageData, options: DitherOptions): Dithe
 
     case 'adaptive_threshold':
       // Adaptive threshold dithering - local threshold adaptation
-      return adaptiveThresholdDither(
-        floatData,
-        width,
-        height,
-        options.strength,
-        options.colorMode
-      );
+      return adaptiveThresholdDither(floatData, width, height, options.strength, options.colorMode);
 
     case 'temporal_blue_noise':
       // Temporal blue noise - for static images, use frame 0
@@ -1323,9 +1325,6 @@ export function applyDither(imageData: ImageData, options: DitherOptions): Dithe
         options.blueNoiseSeed,
         options.colorMode
       );
-
-    case 'true_dither':
-    case 'error_diffusion':
     default:
       return errorDiffusion(
         floatData,
