@@ -214,7 +214,7 @@ export class QRGenerator {
    * UNIFIED PIXEL DECISION MATRIX
    * Generates pixel-level decisions for ALL overlay modes.
    * Returns a unified format that the render loop can use consistently.
-   * 
+   *
    * @returns {Object} { matrix: boolean[][], colors: RGB[][], scale: number, overlayData: brightness[][] }
    */
   async generatePixelDecisionMatrix(qr, config, overlayCanvas, moduleCount) {
@@ -308,7 +308,14 @@ export class QRGenerator {
       case 'subpixel-size': {
         // Generate NxN grid where center=QR data, surrounding=image
         const useHalftoneCenter = overlayMode === 'subpixel-size';
-        return await this.generateSubpixelMatrix(qr, config, overlayCanvas, moduleCount, scale, useHalftoneCenter);
+        return await this.generateSubpixelMatrix(
+          qr,
+          config,
+          overlayCanvas,
+          moduleCount,
+          scale,
+          useHalftoneCenter
+        );
       }
 
       case 'dither':
@@ -331,15 +338,29 @@ export class QRGenerator {
 
         if (useAdvancedDither) {
           try {
-            const advResult = await this.applyAdvancedDither(overlayCanvas, moduleCount, effectiveConfig);
+            const advResult = await this.applyAdvancedDither(
+              overlayCanvas,
+              moduleCount,
+              effectiveConfig
+            );
             ditherPattern = advResult.matrix;
             ditherColors = advResult.colors;
           } catch (e) {
             console.warn('Advanced dithering failed, falling back to true dither:', e);
-            ditherPattern = this.applyTrueDither(qr, overlayData, effectiveConfig, overlayMode === 'extreme');
+            ditherPattern = this.applyTrueDither(
+              qr,
+              overlayData,
+              effectiveConfig,
+              overlayMode === 'extreme'
+            );
           }
         } else {
-          ditherPattern = this.applyTrueDither(qr, overlayData, effectiveConfig, overlayMode === 'extreme');
+          ditherPattern = this.applyTrueDither(
+            qr,
+            overlayData,
+            effectiveConfig,
+            overlayMode === 'extreme'
+          );
         }
         // Convert to unified format
         const matrix = ditherPattern || [];
@@ -356,7 +377,9 @@ export class QRGenerator {
               const parsed = parseColor(c);
               normalizedColors[y][x] = parsed;
             } else {
-              normalizedColors[y][x] = matrix[y]?.[x] ? { r: 0, g: 0, b: 0 } : { r: 255, g: 255, b: 255 };
+              normalizedColors[y][x] = matrix[y]?.[x]
+                ? { r: 0, g: 0, b: 0 }
+                : { r: 255, g: 255, b: 255 };
             }
           }
         }
@@ -419,7 +442,7 @@ export class QRGenerator {
     }
 
     const overlayMode = config.overlayMode;
-    
+
     // Get base overlay data (brightness + colors) - used by all modes
     const overlayData = await this.getOverlayData(
       overlayCanvas,
@@ -453,15 +476,29 @@ export class QRGenerator {
 
       if (useAdvancedDither) {
         try {
-          const advResult = await this.applyAdvancedDither(overlayCanvas, moduleCount, effectiveConfig);
+          const advResult = await this.applyAdvancedDither(
+            overlayCanvas,
+            moduleCount,
+            effectiveConfig
+          );
           ditherPattern = advResult.matrix;
           ditherColors = advResult.colors;
         } catch (e) {
           console.warn('Advanced dithering failed, falling back to true dither:', e);
-          ditherPattern = this.applyTrueDither(qr, overlayData, effectiveConfig, overlayMode === 'extreme');
+          ditherPattern = this.applyTrueDither(
+            qr,
+            overlayData,
+            effectiveConfig,
+            overlayMode === 'extreme'
+          );
         }
       } else {
-        ditherPattern = this.applyTrueDither(qr, overlayData, effectiveConfig, overlayMode === 'extreme');
+        ditherPattern = this.applyTrueDither(
+          qr,
+          overlayData,
+          effectiveConfig,
+          overlayMode === 'extreme'
+        );
       }
     }
 
@@ -473,8 +510,6 @@ export class QRGenerator {
     };
   }
 
-
-
   /**
    * UNIFIED SCALED QR GENERATION
    * Handles ALL scaled overlay modes (dithered, blue-noise, subpixel, subpixel-size)
@@ -482,7 +517,12 @@ export class QRGenerator {
    */
   async generateScaledQR(qr, config, overlayCanvas, moduleCount, scale) {
     // Get pixel decision matrix (unified for all scaled modes)
-    const pixelData = await this.generatePixelDecisionMatrix(qr, config, overlayCanvas, moduleCount);
+    const pixelData = await this.generatePixelDecisionMatrix(
+      qr,
+      config,
+      overlayCanvas,
+      moduleCount
+    );
     const { matrix, colors } = pixelData;
     const scaledSize = matrix.length;
 
@@ -495,8 +535,10 @@ export class QRGenerator {
     const effectiveModuleSize = subPixelSize * scale;
 
     // UNIFIED: Apply frame settings
-    const frameExtra = config.frameStyle && config.frameStyle !== 'none' && config.frameText
-      ? effectiveModuleSize * 4 : 0;
+    const frameExtra =
+      config.frameStyle && config.frameStyle !== 'none' && config.frameText
+        ? effectiveModuleSize * 4
+        : 0;
     const marginPx = marginModules * effectiveModuleSize;
     const size = scaledSize * subPixelSize + marginPx * 2 + frameExtra;
 
@@ -524,7 +566,7 @@ export class QRGenerator {
         const color = colors[y]?.[x];
 
         // Skip light pixels unless doing color rendering
-        if (!isDark && !useColorRendering) continue;
+        if (!(isDark || useColorRendering)) continue;
 
         const dx = marginPx + x * subPixelSize;
         const dy = marginPx + y * subPixelSize;
@@ -578,7 +620,14 @@ export class QRGenerator {
         // Convert to pixel center position
         const centerX = marginPx + (pos.col + 0.5) * effectiveModuleSize;
         const centerY = marginPx + (pos.row + 0.5) * effectiveModuleSize;
-        this.drawAlignmentPattern(ctx, centerX, centerY, effectiveModuleSize, alignmentStyle, config);
+        this.drawAlignmentPattern(
+          ctx,
+          centerX,
+          centerY,
+          effectiveModuleSize,
+          alignmentStyle,
+          config
+        );
       }
     }
 
@@ -603,7 +652,14 @@ export class QRGenerator {
    * Each module becomes NxN pixels where center=QR data, surrounding=image.
    * @private
    */
-  async generateSubpixelMatrix(qr, config, overlayCanvas, moduleCount, scale, useHalftoneCenter = false) {
+  async generateSubpixelMatrix(
+    qr,
+    config,
+    overlayCanvas,
+    moduleCount,
+    scale,
+    useHalftoneCenter = false
+  ) {
     const scaledSize = moduleCount * scale;
     const matrix = [];
     const colors = [];
@@ -649,9 +705,7 @@ export class QRGenerator {
             // For finder patterns with solid override, fill entire block
             if (isFinder && finderOverride === 'solid') {
               matrix[y][x] = isDark;
-              colors[y][x] = isDark 
-                ? parseColor(config.fgColor) 
-                : parseColor(config.bgColor);
+              colors[y][x] = isDark ? parseColor(config.fgColor) : parseColor(config.bgColor);
               continue;
             }
 
@@ -670,15 +724,15 @@ export class QRGenerator {
                 matrix[y][x] = true;
                 // Store a flag in color for halftone rendering
                 colors[y][x] = {
-                  r: 0, g: 0, b: 0,
+                  r: 0,
+                  g: 0,
+                  b: 0,
                   halftone: true,
                   sizeRatio,
                 };
               } else {
                 matrix[y][x] = isDark;
-                colors[y][x] = isDark 
-                  ? parseColor(config.fgColor) 
-                  : parseColor(config.bgColor);
+                colors[y][x] = isDark ? parseColor(config.fgColor) : parseColor(config.bgColor);
               }
             } else {
               // SURROUNDING pixels - show overlay image
@@ -691,7 +745,7 @@ export class QRGenerator {
                   parsed = overlayColor;
                 }
                 if (intensity >= 1) {
-                  matrix[y][x] = (parsed.r * 0.299 + parsed.g * 0.587 + parsed.b * 0.114) < 128;
+                  matrix[y][x] = parsed.r * 0.299 + parsed.g * 0.587 + parsed.b * 0.114 < 128;
                   colors[y][x] = parsed;
                 } else {
                   // Blend with neutral
@@ -700,7 +754,7 @@ export class QRGenerator {
                     g: Math.round(neutralParsed.g + (parsed.g - neutralParsed.g) * intensity),
                     b: Math.round(neutralParsed.b + (parsed.b - neutralParsed.b) * intensity),
                   };
-                  matrix[y][x] = (blended.r * 0.299 + blended.g * 0.587 + blended.b * 0.114) < 128;
+                  matrix[y][x] = blended.r * 0.299 + blended.g * 0.587 + blended.b * 0.114 < 128;
                   colors[y][x] = blended;
                 }
               } else {
@@ -761,16 +815,16 @@ export class QRGenerator {
     // STAGE 1: QR MATRIX GENERATION
     // All overlay modes now go through the same QR generation path
     // =======================================================================
-    
+
     // For dithered/blue-noise modes that use 3x scale, we need special handling
     // but they will STILL use the main render loop for styling
-    const useSubpixelDithering = 
-      (config.overlayMode === 'dithered' || config.overlayMode === 'blue-noise') && 
+    const _useSubpixelDithering =
+      (config.overlayMode === 'dithered' || config.overlayMode === 'blue-noise') &&
       processedOverlayCanvas;
-    
+
     // For subpixel modes, use special NxN grid rendering
-    const useSubpixelGrid = 
-      (config.overlayMode === 'subpixel' || config.overlayMode === 'subpixel-size') && 
+    const _useSubpixelGrid =
+      (config.overlayMode === 'subpixel' || config.overlayMode === 'subpixel-size') &&
       processedOverlayCanvas;
 
     // Build cache key for QR matrix reuse (avoids expensive qr.make() on every frame)
@@ -820,8 +874,12 @@ export class QRGenerator {
     // =======================================================================
     // STAGE 2: OVERLAY PROCESSING (unified for all standard modes)
     // =======================================================================
-    const { ditherPattern, overlayData, effectiveIntensity } = 
-      await this.prepareUnifiedOverlayData(qr, { ...config, typeNumber }, processedOverlayCanvas, moduleCount);
+    const { ditherPattern, overlayData, effectiveIntensity } = await this.prepareUnifiedOverlayData(
+      qr,
+      { ...config, typeNumber },
+      processedOverlayCanvas,
+      moduleCount
+    );
 
     // =======================================================================
     // STAGE 3: UNIFIED RENDERING (all settings apply to ALL modes)
