@@ -29,7 +29,8 @@
     "speed": "Billedhastighed",
     "startFrame": "Startramme",
     "temporalDither": "Temporal Dither",
-    "wave": "Bølge"
+    "wave": "Bølge",
+    "auto": "Auto"
   },
   "languages": {
     "en-GB": "Engelsk",
@@ -938,7 +939,9 @@
     "auspaynetNote": "AusPayNet til australske NPP PayID-betalinger",
     "paypalMeNote": "Deleligt PayPal.Me betalingslink",
     "cashAppNote": "Cash App $cashtag betalingslink",
-    "emvGenericNote": "Generisk EMVCo MPM QR-kodeformat"
+    "emvGenericNote": "Generisk EMVCo MPM QR-kodeformat",
+    "maxFramesAuto": "0 = Auto (bruger kildebilleder, maks 50 for ydeevne)",
+    "paletteMode": "Hvordan farver fra paletten tildeles moduler"
   },
   "language": {
     "current": "Sprog",
@@ -1010,7 +1013,8 @@
     "trueVector": "Sand vektor",
     "trueVectorDesc": "Brug stier i stedet for indlejret raster",
     "webp": "WebP",
-    "width": "Bredde"
+    "width": "Bredde",
+    "animatedWebp": "Animeret WebP"
   },
   "preview": {
     "qrCodePreview": "Forhåndsvisning af QR-kode - Klik på Eksporter for at downloade",
@@ -1106,7 +1110,15 @@
     "style": "Stil",
     "tag": "Etiket",
     "timingStyle": "Timingmønsterstil",
-    "transparentBg": "Gennemsigtig baggrund"
+    "transparentBg": "Gennemsigtig baggrund",
+    "paletteMode": "Palettilstand",
+    "paletteModePosition": "Efter position",
+    "paletteModeBrightness": "Efter lysstyrke",
+    "paletteModeDiagonal": "Diagonal",
+    "paletteModeRadial": "Radial",
+    "paletteModeRandom": "Tilfældig",
+    "paletteModeRow": "Efter række",
+    "paletteModeColumn": "Efter kolonne"
   },
   "safety": {
     "off": "Slukket",
@@ -1140,7 +1152,15 @@
     "simulateBlur": "Simuler sløring",
     "simulateNoise": "Simuler støj",
     "simulateRotation": "Simuler rotation",
-    "untilScannable": "Indtil scanning"
+    "untilScannable": "Indtil scanning",
+    "eccAwareEnabled": "Aktiver ECC-bevidst",
+    "eccAwareDesc": "Bevar kritiske QR-områder intelligent",
+    "eccAwareRiskBudget": "Risikobudget",
+    "eccAwareRiskBudgetDesc": "Højere værdier tillader mere overlejringsdækning",
+    "eccAwareWeightMap": "Vægtkort",
+    "eccMapDistanceToFinders": "Afstand til findere",
+    "eccMapBlockHeatmap": "Blokvarmekort",
+    "eccMapEmpiricalScan": "Empirisk scanningsvarmekort"
   },
   "sections": {
     "animation": "Animation",
@@ -1366,7 +1386,9 @@
     "useFrameDelays": "Brug billedforsinkelser",
     "voidCluster": "Torum og klynge",
     "pleaseEnterUrl": "Indtast venligst en URL",
-    "preview": "Forhåndsvisning"
+    "preview": "Forhåndsvisning",
+    "sobel": "Sobel",
+    "canny": "Canny"
   },
   "payload": {
     "emailAddress": "E-mailadresse",

@@ -29,7 +29,8 @@
     "speed": "Tốc độ khung hình",
     "startFrame": "Khung bắt đầu",
     "temporalDither": "Sự dao động thời gian",
-    "wave": "Sóng"
+    "wave": "Sóng",
+    "auto": "Tự động"
   },
   "languages": {
     "en-GB": "Tiếng Anh",
@@ -938,7 +939,9 @@
     "auspaynetNote": "AusPayNet cho thanh toán PayID NPP Úc",
     "paypalMeNote": "Liên kết thanh toán PayPal.Me có thể chia sẻ",
     "cashAppNote": "Liên kết thanh toán $cashtag Cash App",
-    "emvGenericNote": "Định dạng mã QR EMVCo MPM chung"
+    "emvGenericNote": "Định dạng mã QR EMVCo MPM chung",
+    "maxFramesAuto": "0 = Tự động (sử dụng khung nguồn, tối đa 50 để đảm bảo hiệu suất)",
+    "paletteMode": "Cách màu từ bảng màu được gán cho các module"
   },
   "language": {
     "current": "Ngôn ngữ",
@@ -1010,7 +1013,8 @@
     "trueVector": "Vectơ thực",
     "trueVectorDesc": "Sử dụng đường dẫn thay vì ảnh raster nhúng",
     "webp": "WebP",
-    "width": "Chiều rộng"
+    "width": "Chiều rộng",
+    "animatedWebp": "WebP động"
   },
   "preview": {
     "qrCodePreview": "Xem trước mã QR - Nhấp vào Xuất để tải xuống",
@@ -1106,7 +1110,15 @@
     "style": "Phong cách",
     "tag": "Thẻ",
     "timingStyle": "Kiểu mẫu thời gian",
-    "transparentBg": "Nền trong suốt"
+    "transparentBg": "Nền trong suốt",
+    "paletteMode": "Chế độ bảng màu",
+    "paletteModePosition": "Theo vị trí",
+    "paletteModeBrightness": "Theo độ sáng",
+    "paletteModeDiagonal": "Đường chéo",
+    "paletteModeRadial": "Tỏa tròn",
+    "paletteModeRandom": "Ngẫu nhiên",
+    "paletteModeRow": "Theo hàng",
+    "paletteModeColumn": "Theo cột"
   },
   "safety": {
     "off": "Tắt",
@@ -1140,7 +1152,15 @@
     "simulateBlur": "Mô phỏng hiệu ứng làm mờ",
     "simulateNoise": "Mô phỏng tiếng ồn",
     "simulateRotation": "Mô phỏng chuyển động quay",
-    "untilScannable": "Cho đến khi có thể quét được"
+    "untilScannable": "Cho đến khi có thể quét được",
+    "eccAwareEnabled": "Bật ECC-Aware",
+    "eccAwareDesc": "Bảo vệ thông minh các vùng QR quan trọng",
+    "eccAwareRiskBudget": "Ngân sách rủi ro",
+    "eccAwareRiskBudgetDesc": "Giá trị cao hơn cho phép phủ overlay nhiều hơn",
+    "eccAwareWeightMap": "Bản đồ trọng số",
+    "eccMapDistanceToFinders": "Khoảng cách đến Finders",
+    "eccMapBlockHeatmap": "Bản đồ nhiệt khối",
+    "eccMapEmpiricalScan": "Bản đồ nhiệt quét thực nghiệm"
   },
   "sections": {
     "animation": "Hoạt hình",
@@ -1366,7 +1386,9 @@
     "useFrameDelays": "Sử dụng độ trễ khung hình",
     "voidCluster": "Khoảng trống & Cụm",
     "pleaseEnterUrl": "Vui lòng nhập URL",
-    "preview": "Xem trước"
+    "preview": "Xem trước",
+    "sobel": "Sobel",
+    "canny": "Canny"
   },
   "payload": {
     "emailAddress": "Địa chỉ email",

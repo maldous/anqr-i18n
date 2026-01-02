@@ -29,7 +29,8 @@
     "speed": "સ્પીડ",
     "startFrame": "ફ્રેમ",
     "temporalDither": "ડિથર",
-    "wave": "તરંગ"
+    "wave": "તરંગ",
+    "auto": "ઓટો"
   },
   "languages": {
     "en-GB": "અંગ્રેજી",
@@ -938,7 +939,9 @@
     "auspaynetNote": "ઓસ્ટ્રેલિયન NPP PayID ચુકવણી માટે AusPayNet",
     "paypalMeNote": "PayPal.Me શેર કરી શકાય તેવી ચુકવણી લિંક",
     "cashAppNote": "Cash App $cashtag ચુકવણી લિંક",
-    "emvGenericNote": "સામાન્ય EMVCo MPM QR કોડ ફોર્મેટ"
+    "emvGenericNote": "સામાન્ય EMVCo MPM QR કોડ ફોર્મેટ",
+    "maxFramesAuto": "0 = ઓટો (સ્ત્રોત ફ્રેમ્સનો ઉપયોગ કરે છે, પ્રદર્શન માટે મહત્તમ 50)",
+    "paletteMode": "પેલેટમાંથી રંગો મોડ્યુલ્સને કેવી રીતે સોંપવામાં આવે છે"
   },
   "language": {
     "current": "ભાષા",
@@ -1010,7 +1013,8 @@
     "trueVector": "સાચો વેક્ટર",
     "trueVectorDesc": "રાસ્ટરને બદલે પાથનો ઉપયોગ કરો",
     "webp": "વેબપી",
-    "width": "પહોળાઈ"
+    "width": "પહોળાઈ",
+    "animatedWebp": "એનિમેટેડ WebP"
   },
   "preview": {
     "qrCodePreview": "કોડ પ્રીવ્યૂ - ડાઉનલોડ કરવા માટે નિકાસ પર ક્લિક કરો",
@@ -1106,7 +1110,15 @@
     "style": "શૈલી",
     "tag": "ટેગ",
     "timingStyle": "પેટર્ન સ્ટાઇલ",
-    "transparentBg": "પારદર્શક પૃષ્ઠભૂમિ"
+    "transparentBg": "પારદર્શક પૃષ્ઠભૂમિ",
+    "paletteMode": "પેલેટ મોડ",
+    "paletteModePosition": "સ્થિતિ અનુસાર",
+    "paletteModeBrightness": "તેજસ્વીતા અનુસાર",
+    "paletteModeDiagonal": "ત્રાંસા",
+    "paletteModeRadial": "રેડિયલ",
+    "paletteModeRandom": "રેન્ડમ",
+    "paletteModeRow": "પંક્તિ અનુસાર",
+    "paletteModeColumn": "કોલમ અનુસાર"
   },
   "safety": {
     "off": "બંધ",
@@ -1140,7 +1152,15 @@
     "simulateBlur": "અનુકરણ કરો",
     "simulateNoise": "અનુકરણ કરો",
     "simulateRotation": "અનુકરણ કરો",
-    "untilScannable": "સ્કેન થાય ત્યાં સુધી"
+    "untilScannable": "સ્કેન થાય ત્યાં સુધી",
+    "eccAwareEnabled": "ECC-જાગૃત સક્ષમ કરો",
+    "eccAwareDesc": "મહત્વપૂર્ણ QR પ્રદેશોને બુદ્ધિપૂર્વક સાચવો",
+    "eccAwareRiskBudget": "જોખમ બજેટ",
+    "eccAwareRiskBudgetDesc": "ઉચ્ચ મૂલ્યો વધુ ઓવરલે કવરેજની મંજૂરી આપે છે",
+    "eccAwareWeightMap": "વજન નકશો",
+    "eccMapDistanceToFinders": "ફાઇન્ડર્સ સુધીનું અંતર",
+    "eccMapBlockHeatmap": "બ્લોક હીટમેપ",
+    "eccMapEmpiricalScan": "અનુભવાત્મક સ્કેન હીટમેપ"
   },
   "sections": {
     "animation": "એનિમેશન",
@@ -1366,7 +1386,9 @@
     "useFrameDelays": "ફ્રેમ વિલંબનો ઉપયોગ કરો",
     "voidCluster": "રદબાતલ અને ક્લસ્ટર",
     "pleaseEnterUrl": "કૃપા કરીને URL દાખલ કરો",
-    "preview": "પૂર્વાવલોકન"
+    "preview": "પૂર્વાવલોકન",
+    "sobel": "Sobel",
+    "canny": "Canny"
   },
   "payload": {
     "emailAddress": "સરનામું",

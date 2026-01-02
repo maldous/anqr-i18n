@@ -29,7 +29,8 @@
     "speed": "Brzina kadrova",
     "startFrame": "Početni okvir",
     "temporalDither": "Vremensko kolebanje",
-    "wave": "Val"
+    "wave": "Val",
+    "auto": "Automatski"
   },
   "languages": {
     "en-GB": "Engleski",
@@ -938,7 +939,9 @@
     "auspaynetNote": "AusPayNet za australska NPP PayID plaćanja",
     "paypalMeNote": "PayPal.Me poveznica za plaćanje koju je moguće dijeliti",
     "cashAppNote": "Poveznica za plaćanje putem aplikacije Cash $cashtag",
-    "emvGenericNote": "Generički EMVCo MPM QR kod formata"
+    "emvGenericNote": "Generički EMVCo MPM QR kod formata",
+    "maxFramesAuto": "0 = Auto (koristi izvorne okvire, maks 50 za performanse)",
+    "paletteMode": "Kako se boje iz palete dodjeljuju modulima"
   },
   "language": {
     "current": "Jezik",
@@ -1010,7 +1013,8 @@
     "trueVector": "Pravi vektor",
     "trueVectorDesc": "Koristite putanje umjesto ugrađenog rastera",
     "webp": "WebP",
-    "width": "Širina"
+    "width": "Širina",
+    "animatedWebp": "Animirani WebP"
   },
   "preview": {
     "qrCodePreview": "Pregled QR koda - Kliknite Izvoz za preuzimanje",
@@ -1106,7 +1110,15 @@
     "style": "Stil",
     "tag": "Oznaka",
     "timingStyle": "Stil vremenskog uzorka",
-    "transparentBg": "Prozirna pozadina"
+    "transparentBg": "Prozirna pozadina",
+    "paletteMode": "Način palete",
+    "paletteModePosition": "Po položaju",
+    "paletteModeBrightness": "Po svjetlini",
+    "paletteModeDiagonal": "Dijagonalno",
+    "paletteModeRadial": "Radijalno",
+    "paletteModeRandom": "Nasumično",
+    "paletteModeRow": "Po retku",
+    "paletteModeColumn": "Po stupcu"
   },
   "safety": {
     "off": "Isključeno",
@@ -1140,7 +1152,15 @@
     "simulateBlur": "Simuliraj zamućenje",
     "simulateNoise": "Simuliraj buku",
     "simulateRotation": "Simuliraj rotaciju",
-    "untilScannable": "Dok se ne može skenirati"
+    "untilScannable": "Dok se ne može skenirati",
+    "eccAwareEnabled": "Omogući ECC-Aware",
+    "eccAwareDesc": "Inteligentno očuvaj kritična QR područja",
+    "eccAwareRiskBudget": "Proračun rizika",
+    "eccAwareRiskBudgetDesc": "Veće vrijednosti dopuštaju veću pokrivenost preklapanjem",
+    "eccAwareWeightMap": "Karta težina",
+    "eccMapDistanceToFinders": "Udaljenost do tražilica",
+    "eccMapBlockHeatmap": "Toplinska karta blokova",
+    "eccMapEmpiricalScan": "Empirijska toplinska karta skeniranja"
   },
   "sections": {
     "animation": "Animacija",
@@ -1366,7 +1386,9 @@
     "useFrameDelays": "Koristite kašnjenja okvira",
     "voidCluster": "Praznina i skup",
     "pleaseEnterUrl": "Molimo unesite URL",
-    "preview": "Pregled"
+    "preview": "Pregled",
+    "sobel": "Sobel",
+    "canny": "Canny"
   },
   "payload": {
     "emailAddress": "Adresa e-pošte",

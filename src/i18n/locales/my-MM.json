@@ -29,7 +29,8 @@
     "speed": "ဖရိမ်အမြန်နှုန်း",
     "startFrame": "စတင်ဘောင်",
     "temporalDither": "တဒင်္ဂ ရောထွေးမှု",
-    "wave": "လှိုင်း"
+    "wave": "လှိုင်း",
+    "auto": "အော်တို"
   },
   "languages": {
     "en-GB": "အင်္ဂလိပ်",
@@ -938,7 +939,9 @@
     "auspaynetNote": "သြစတြေးလျ NPP PayID ငွေပေးချေမှုများအတွက် AusPayNet",
     "paypalMeNote": "PayPal.Me မျှဝေနိုင်သော ငွေပေးချေမှုလင့်ခ်",
     "cashAppNote": "ငွေသားအက်ပ် $cashtag ငွေပေးချေမှုလင့်ခ်",
-    "emvGenericNote": "ယေဘုယျ EMVCo MPM QR ကုဒ် ဖော်မတ်"
+    "emvGenericNote": "ယေဘုယျ EMVCo MPM QR ကုဒ် ဖော်မတ်",
+    "maxFramesAuto": "0 = အော်တို (ရင်းမြစ်ဖရိမ်များအသုံးပြုသည်၊ စွမ်းဆောင်ရည်အတွက် အများဆုံး 50)",
+    "paletteMode": "palette မှ အရောင်များကို modules သို့ မည်သို့သတ်မှတ်သနည်း"
   },
   "language": {
     "current": "ဘာသာစကား",
@@ -1010,7 +1013,8 @@
     "trueVector": "တကယ့် ဗက်တာ",
     "trueVectorDesc": "ထည့်သွင်းထားသော raster အစား လမ်းကြောင်းများကို အသုံးပြုပါ",
     "webp": "ဝက်ဘ်ပီ",
-    "width": "အကျယ်"
+    "width": "အကျယ်",
+    "animatedWebp": "လှုပ်ရှားသော WebP"
   },
   "preview": {
     "qrCodePreview": "QR ကုဒ် အစမ်းကြည့်ရှုခြင်း - ဒေါင်းလုဒ်လုပ်ရန် တင်ပို့ရန် နှိပ်ပါ",
@@ -1106,7 +1110,15 @@
     "style": "စတိုင်",
     "tag": "တဂ်",
     "timingStyle": "အချိန်ကိုက် ပုံစံပုံစံ",
-    "transparentBg": "နောက်ခံဖောက်ထွင်းမြင်ရခြင်း"
+    "transparentBg": "နောက်ခံဖောက်ထွင်းမြင်ရခြင်း",
+    "paletteMode": "ပဲလက်မုဒ်",
+    "paletteModePosition": "တည်နေရာအလိုက်",
+    "paletteModeBrightness": "တောက်ပမှုအလိုက်",
+    "paletteModeDiagonal": "ထောင့်ဖြတ်",
+    "paletteModeRadial": "ရေဒီယယ်",
+    "paletteModeRandom": "ကျပန်း",
+    "paletteModeRow": "အတန်းအလိုက်",
+    "paletteModeColumn": "ကော်လံအလိုက်"
   },
   "safety": {
     "off": "ပိတ်ထားသည်",
@@ -1140,7 +1152,15 @@
     "simulateBlur": "မှုန်ဝါးမှုကို တုပပါ",
     "simulateNoise": "ဆူညံသံကို တုပပါ",
     "simulateRotation": "လည်ပတ်မှုကို တုပပါ",
-    "untilScannable": "စကင်ဖတ်နိုင်သည်အထိ"
+    "untilScannable": "စကင်ဖတ်နိုင်သည်အထိ",
+    "eccAwareEnabled": "ECC-Aware ဖွင့်ရန်",
+    "eccAwareDesc": "အရေးကြီးသော QR ဒေသများကို ဉာဏ်ရည်ဉာဏ်သွေးဖြင့် ထိန်းသိမ်းပါ",
+    "eccAwareRiskBudget": "အန္တရာယ်ဘတ်ဂျက်",
+    "eccAwareRiskBudgetDesc": "တန်ဖိုးမြင့်လျှင် overlay coverage ပိုများစေသည်",
+    "eccAwareWeightMap": "အလေးချိန်မြေပုံ",
+    "eccMapDistanceToFinders": "Finders သို့ အကွာအဝေး",
+    "eccMapBlockHeatmap": "ဘလော့ အပူမြေပုံ",
+    "eccMapEmpiricalScan": "စမ်းသပ်စကင်န် အပူမြေပုံ"
   },
   "sections": {
     "animation": "အန်နီမေးရှင်း",
@@ -1366,7 +1386,9 @@
     "useFrameDelays": "Frame Delays များကို အသုံးပြုပါ",
     "voidCluster": "ဗလာနှင့် အစုအဝေး",
     "pleaseEnterUrl": "ကျေးဇူးပြု၍ URL တစ်ခု ရိုက်ထည့်ပါ",
-    "preview": "အကြိုကြည့်ရှုခြင်း"
+    "preview": "အကြိုကြည့်ရှုခြင်း",
+    "sobel": "Sobel",
+    "canny": "Canny"
   },
   "payload": {
     "emailAddress": "အီးမေးလ်လိပ်စာ",

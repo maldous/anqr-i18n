@@ -29,7 +29,8 @@
     "speed": "ຄວາມໄວຂອງເຟຣມ",
     "startFrame": "ເຟຣມເລີ່ມຕົ້ນ",
     "temporalDither": "ການປ່ຽນແປງຊົ່ວຄາວ",
-    "wave": "ຄື້ນ"
+    "wave": "ຄື້ນ",
+    "auto": "ລົດຍົນ"
   },
   "languages": {
     "en-GB": "ພາສາອັງກິດ",
@@ -938,7 +939,9 @@
     "auspaynetNote": "AusPayNet ສຳລັບການຈ່າຍເງິນ PayID ຂອງ NPP ຂອງອົດສະຕຣາລີ",
     "paypalMeNote": "ລິ້ງການຈ່າຍເງິນທີ່ສາມາດແບ່ງປັນໄດ້ຂອງ PayPal.Me",
     "cashAppNote": "ລິ້ງການຈ່າຍເງິນ $cashtag ສຳລັບແອັບເງິນສົດ",
-    "emvGenericNote": "ຮູບແບບລະຫັດ QR EMVCo MPM ທົ່ວໄປ"
+    "emvGenericNote": "ຮູບແບບລະຫັດ QR EMVCo MPM ທົ່ວໄປ",
+    "maxFramesAuto": "0 = ອັດຕະໂນມັດ (ໃຊ້ເຟຣມແຫຼ່ງ, ສູງສຸດ 50 ສຳລັບປະສິດທິພາບ)",
+    "paletteMode": "ສີຈາກ palette ຖືກມອບໝາຍໃຫ້ modules ແນວໃດ"
   },
   "language": {
     "current": "ພາສາ",
@@ -1010,7 +1013,8 @@
     "trueVector": "ເວັກເຕີແທ້",
     "trueVectorDesc": "ໃຊ້ເສັ້ນທາງແທນການໃຊ້ແຣສເຕີທີ່ຝັງຢູ່",
     "webp": "ເວັບພີ",
-    "width": "ຄວາມກວ້າງ"
+    "width": "ຄວາມກວ້າງ",
+    "animatedWebp": "WebP ເຄື່ອນໄຫວ"
   },
   "preview": {
     "qrCodePreview": "ຕົວຢ່າງລະຫັດ QR - ຄລິກສົ່ງອອກເພື່ອດາວໂຫຼດ",
@@ -1106,7 +1110,15 @@
     "style": "ແບບ",
     "tag": "ແທັກ",
     "timingStyle": "ຮູບແບບການກຳນົດເວລາ",
-    "transparentBg": "ພື້ນຫຼັງໂປ່ງໃສ"
+    "transparentBg": "ພື້ນຫຼັງໂປ່ງໃສ",
+    "paletteMode": "ໂໝດສີ",
+    "paletteModePosition": "ຕາມຕຳແໜ່ງ",
+    "paletteModeBrightness": "ຕາມຄວາມສະຫວ່າງ",
+    "paletteModeDiagonal": "ທະແຍງມຸມ",
+    "paletteModeRadial": "ລັດສະໝີ",
+    "paletteModeRandom": "ສຸ່ມ",
+    "paletteModeRow": "ຕາມແຖວ",
+    "paletteModeColumn": "ຕາມຖັນ"
   },
   "safety": {
     "off": "ປິດ",
@@ -1140,7 +1152,15 @@
     "simulateBlur": "ຈຳລອງຄວາມມົວ",
     "simulateNoise": "ຈຳລອງສຽງລົບກວນ",
     "simulateRotation": "ຈຳລອງການໝຸນ",
-    "untilScannable": "ຈົນກວ່າຈະສາມາດສະແກນໄດ້"
+    "untilScannable": "ຈົນກວ່າຈະສາມາດສະແກນໄດ້",
+    "eccAwareEnabled": "ເປີດໃຊ້ ECC-Aware",
+    "eccAwareDesc": "ຮັກສາພື້ນທີ່ QR ທີ່ສຳຄັນຢ່າງສະຫຼາດ",
+    "eccAwareRiskBudget": "ງົບປະມານຄວາມສ່ຽງ",
+    "eccAwareRiskBudgetDesc": "ຄ່າສູງກວ່າອະນຸຍາດໃຫ້ມີການຄຸ້ມຄອງ overlay ຫຼາຍຂຶ້ນ",
+    "eccAwareWeightMap": "ແຜນທີ່ນ້ຳໜັກ",
+    "eccMapDistanceToFinders": "ໄລຍະຫ່າງຫາ Finders",
+    "eccMapBlockHeatmap": "ແຜນທີ່ຄວາມຮ້ອນບລັອກ",
+    "eccMapEmpiricalScan": "ແຜນທີ່ຄວາມຮ້ອນສະແກນທົດລອງ"
   },
   "sections": {
     "animation": "ພາບເຄື່ອນໄຫວ",
@@ -1366,7 +1386,9 @@
     "useFrameDelays": "ໃຊ້ການຊັກຊ້າເຟຣມ",
     "voidCluster": "ຄວາມວ່າງເປົ່າ ແລະ ກຸ່ມ",
     "pleaseEnterUrl": "ກະລຸນາໃສ່ URL",
-    "preview": "ຕົວຢ່າງ"
+    "preview": "ຕົວຢ່າງ",
+    "sobel": "Sobel",
+    "canny": "Canny"
   },
   "payload": {
     "emailAddress": "ທີ່ຢູ່ອີເມວ",

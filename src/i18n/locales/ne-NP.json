@@ -29,7 +29,8 @@
     "speed": "फ्रेम गति",
     "startFrame": "सुरुवात फ्रेम",
     "temporalDither": "टेम्पोरल डाइथर",
-    "wave": "लहर"
+    "wave": "लहर",
+    "auto": "स्वचालित"
   },
   "languages": {
     "en-GB": "अंग्रेजी",
@@ -938,7 +939,9 @@
     "auspaynetNote": "अस्ट्रेलियाली NPP PayID भुक्तानीहरूको लागि AusPayNet",
     "paypalMeNote": "PayPal.Me सेयर गर्न मिल्ने भुक्तानी लिङ्क",
     "cashAppNote": "क्यास एप $क्यासट्याग भुक्तानी लिङ्क",
-    "emvGenericNote": "जेनेरिक EMVCo MPM QR कोड ढाँचा"
+    "emvGenericNote": "जेनेरिक EMVCo MPM QR कोड ढाँचा",
+    "maxFramesAuto": "0 = स्वत: (स्रोत फ्रेमहरू प्रयोग गर्दछ, प्रदर्शनको लागि अधिकतम 50)",
+    "paletteMode": "प्यालेटबाट रङहरू मोड्युलहरूमा कसरी तोकिन्छन्"
   },
   "language": {
     "current": "भाषा",
@@ -1010,7 +1013,8 @@
     "trueVector": "साँचो भेक्टर",
     "trueVectorDesc": "एम्बेडेड रास्टरको सट्टा मार्गहरू प्रयोग गर्नुहोस्",
     "webp": "वेबपी",
-    "width": "चौडाइ"
+    "width": "चौडाइ",
+    "animatedWebp": "एनिमेटेड WebP"
   },
   "preview": {
     "qrCodePreview": "QR कोड पूर्वावलोकन - डाउनलोड गर्न निर्यातमा क्लिक गर्नुहोस्",
@@ -1106,7 +1110,15 @@
     "style": "शैली",
     "tag": "ट्याग",
     "timingStyle": "समय ढाँचा शैली",
-    "transparentBg": "पारदर्शी पृष्ठभूमि"
+    "transparentBg": "पारदर्शी पृष्ठभूमि",
+    "paletteMode": "प्यालेट मोड",
+    "paletteModePosition": "स्थिति अनुसार",
+    "paletteModeBrightness": "चमक अनुसार",
+    "paletteModeDiagonal": "विकर्ण",
+    "paletteModeRadial": "रेडियल",
+    "paletteModeRandom": "अनियमित",
+    "paletteModeRow": "पङ्क्ति अनुसार",
+    "paletteModeColumn": "स्तम्भ अनुसार"
   },
   "safety": {
     "off": "बन्द",
@@ -1140,7 +1152,15 @@
     "simulateBlur": "धब्बाको नक्कल गर्नुहोस्",
     "simulateNoise": "नाउजको नक्कल गर्नुहोस्",
     "simulateRotation": "परिक्रमण अनुकरण गर्नुहोस्",
-    "untilScannable": "स्क्यान गर्न नसकिनेसम्म"
+    "untilScannable": "स्क्यान गर्न नसकिनेसम्म",
+    "eccAwareEnabled": "ECC-जागरूक सक्षम गर्नुहोस्",
+    "eccAwareDesc": "महत्वपूर्ण QR क्षेत्रहरू बुद्धिमानीपूर्वक सुरक्षित गर्नुहोस्",
+    "eccAwareRiskBudget": "जोखिम बजेट",
+    "eccAwareRiskBudgetDesc": "उच्च मानहरूले थप ओभरले कभरेज अनुमति दिन्छन्",
+    "eccAwareWeightMap": "तौल नक्सा",
+    "eccMapDistanceToFinders": "फाइन्डरहरूसम्मको दूरी",
+    "eccMapBlockHeatmap": "ब्लक हिटम्याप",
+    "eccMapEmpiricalScan": "अनुभवजन्य स्क्यान हिटम्याप"
   },
   "sections": {
     "animation": "एनिमेसन",
@@ -1366,7 +1386,9 @@
     "useFrameDelays": "फ्रेम ढिलाइ प्रयोग गर्नुहोस्",
     "voidCluster": "शून्यता र समूह",
     "pleaseEnterUrl": "कृपया URL प्रविष्ट गर्नुहोस्",
-    "preview": "पूर्वावलोकन"
+    "preview": "पूर्वावलोकन",
+    "sobel": "Sobel",
+    "canny": "Canny"
   },
   "payload": {
     "emailAddress": "इमेल ठेगाना",

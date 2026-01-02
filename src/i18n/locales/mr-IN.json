@@ -29,7 +29,8 @@
     "speed": "फ्रेम",
     "startFrame": "प्रारंभ",
     "temporalDither": "टेम्पोरल",
-    "wave": "लाट"
+    "wave": "लाट",
+    "auto": "ऑटो"
   },
   "languages": {
     "en-GB": "इंग्रजी",
@@ -938,7 +939,9 @@
     "auspaynetNote": "ऑस्ट्रेलियन NPP PayID पेमेंटसाठी AusPayNet",
     "paypalMeNote": "PayPal.Me शेअर करण्यायोग्य पेमेंट लिंक",
     "cashAppNote": "Cash App $cashtag पेमेंट लिंक",
-    "emvGenericNote": "जेनेरिक EMVCo MPM QR कोड स्वरूप"
+    "emvGenericNote": "जेनेरिक EMVCo MPM QR कोड स्वरूप",
+    "maxFramesAuto": "0 = ऑटो (स्रोत फ्रेम वापरते, कार्यक्षमतेसाठी कमाल 50)",
+    "paletteMode": "पॅलेटमधील रंग मॉड्यूल्सना कसे नियुक्त केले जातात"
   },
   "language": {
     "current": "भाषा",
@@ -1010,7 +1013,8 @@
     "trueVector": "खरा",
     "trueVectorDesc": "एम्बेडेड",
     "webp": "वेबपी",
-    "width": "रुंदी"
+    "width": "रुंदी",
+    "animatedWebp": "अॅनिमेटेड WebP"
   },
   "preview": {
     "qrCodePreview": "क्यूआर",
@@ -1106,7 +1110,15 @@
     "style": "शैली",
     "tag": "टॅग",
     "timingStyle": "टाइमिंग",
-    "transparentBg": "पारदर्शक"
+    "transparentBg": "पारदर्शक",
+    "paletteMode": "पॅलेट मोड",
+    "paletteModePosition": "स्थानानुसार",
+    "paletteModeBrightness": "तेजस्वितेनुसार",
+    "paletteModeDiagonal": "कर्णरेषीय",
+    "paletteModeRadial": "रेडियल",
+    "paletteModeRandom": "यादृच्छिक",
+    "paletteModeRow": "ओळीनुसार",
+    "paletteModeColumn": "स्तंभानुसार"
   },
   "safety": {
     "off": "बंद",
@@ -1140,7 +1152,15 @@
     "simulateBlur": "अस्पष्टतेचे",
     "simulateNoise": "नॉइज",
     "simulateRotation": "रोटेशनचे",
-    "untilScannable": "स्कॅन"
+    "untilScannable": "स्कॅन",
+    "eccAwareEnabled": "ECC-जागरूक सक्षम करा",
+    "eccAwareDesc": "महत्त्वाचे QR क्षेत्र बुद्धिमानपणे संरक्षित करा",
+    "eccAwareRiskBudget": "जोखीम बजेट",
+    "eccAwareRiskBudgetDesc": "उच्च मूल्ये अधिक ओव्हरले कव्हरेजला अनुमती देतात",
+    "eccAwareWeightMap": "वजन नकाशा",
+    "eccMapDistanceToFinders": "फाइंडर्सपर्यंतचे अंतर",
+    "eccMapBlockHeatmap": "ब्लॉक हीटमॅप",
+    "eccMapEmpiricalScan": "अनुभवजन्य स्कॅन हीटमॅप"
   },
   "sections": {
     "animation": "अ‍ॅनिमेशन",
@@ -1366,7 +1386,9 @@
     "useFrameDelays": "फ्रेम",
     "voidCluster": "शून्यता",
     "pleaseEnterUrl": "कृपया URL प्रविष्ट करा",
-    "preview": "पूर्वावलोकन"
+    "preview": "पूर्वावलोकन",
+    "sobel": "Sobel",
+    "canny": "Canny"
   },
   "payload": {
     "emailAddress": "ईमेल",

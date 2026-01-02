@@ -29,7 +29,8 @@
     "speed": "फ़्रेम गति",
     "startFrame": "आरंभ फ़्रेम",
     "temporalDither": "टेम्पोरल डिथर",
-    "wave": "वेव"
+    "wave": "वेव",
+    "auto": "ऑटो"
   },
   "languages": {
     "en-GB": "अंग्रेज़ी",
@@ -938,7 +939,9 @@
     "auspaynetNote": "ऑस्ट्रेलियाई NPP PayID भुगतान के लिए AusPayNet",
     "paypalMeNote": "PayPal.Me साझा करने योग्य भुगतान लिंक",
     "cashAppNote": "Cash App $cashtag भुगतान लिंक",
-    "emvGenericNote": "सामान्य EMVCo MPM QR कोड प्रारूप"
+    "emvGenericNote": "सामान्य EMVCo MPM QR कोड प्रारूप",
+    "maxFramesAuto": "0 = ऑटो (स्रोत फ्रेम का उपयोग करता है, प्रदर्शन के लिए अधिकतम 50)",
+    "paletteMode": "पैलेट से रंग मॉड्यूल को कैसे असाइन किए जाते हैं"
   },
   "language": {
     "current": "भाषा",
@@ -1010,7 +1013,8 @@
     "trueVector": "वास्तविक वेक्टर",
     "trueVectorDesc": "एम्बेडेड रास्टर की बजाय पाथ्स का उपयोग करें",
     "webp": "WebP",
-    "width": "चौड़ाई"
+    "width": "चौड़ाई",
+    "animatedWebp": "एनिमेटेड WebP"
   },
   "preview": {
     "qrCodePreview": "QR कोड प्रीव्यू - डाउनलोड करने के लिए एक्सपोर्ट पर क्लिक करें",
@@ -1106,7 +1110,15 @@
     "style": "शैली",
     "tag": "टैग",
     "timingStyle": "टाइमिंग पैटर्न शैली",
-    "transparentBg": "पारदर्शी पृष्ठभूमि"
+    "transparentBg": "पारदर्शी पृष्ठभूमि",
+    "paletteMode": "पैलेट मोड",
+    "paletteModePosition": "स्थिति के अनुसार",
+    "paletteModeBrightness": "चमक के अनुसार",
+    "paletteModeDiagonal": "विकर्ण",
+    "paletteModeRadial": "रेडियल",
+    "paletteModeRandom": "रैंडम",
+    "paletteModeRow": "पंक्ति के अनुसार",
+    "paletteModeColumn": "कॉलम के अनुसार"
   },
   "safety": {
     "off": "बंद",
@@ -1140,7 +1152,15 @@
     "simulateBlur": "धुंधलापन सिमुलेट करें",
     "simulateNoise": "शोर सिमुलेट करें",
     "simulateRotation": "घुमाव सिमुलेट करें",
-    "untilScannable": "स्कैन होने योग्य होने तक"
+    "untilScannable": "स्कैन होने योग्य होने तक",
+    "eccAwareEnabled": "ECC-जागरूक सक्षम करें",
+    "eccAwareDesc": "महत्वपूर्ण QR क्षेत्रों को बुद्धिमानी से संरक्षित करें",
+    "eccAwareRiskBudget": "जोखिम बजट",
+    "eccAwareRiskBudgetDesc": "उच्च मान अधिक ओवरले कवरेज की अनुमति देते हैं",
+    "eccAwareWeightMap": "वेट मैप",
+    "eccMapDistanceToFinders": "फाइंडर्स से दूरी",
+    "eccMapBlockHeatmap": "ब्लॉक हीटमैप",
+    "eccMapEmpiricalScan": "अनुभवजन्य स्कैन हीटमैप"
   },
   "sections": {
     "animation": "एनीमेशन",
@@ -1366,7 +1386,9 @@
     "useFrameDelays": "फ़्रेम डिले का उपयोग करें",
     "voidCluster": "वॉइड और क्लस्टर",
     "pleaseEnterUrl": "कृपया एक URL दर्ज करें",
-    "preview": "पूर्वावलोकन"
+    "preview": "पूर्वावलोकन",
+    "sobel": "Sobel",
+    "canny": "Canny"
   },
   "payload": {
     "emailAddress": "ईमेल पता",

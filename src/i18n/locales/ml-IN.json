@@ -29,7 +29,8 @@
     "speed": "ഫ്രെയിം വേഗത",
     "startFrame": "സ്റ്റാർട്ട് ഫ്രെയിം",
     "temporalDither": "ടെമ്പറൽ ഡിതർ",
-    "wave": "തരംഗം"
+    "wave": "തരംഗം",
+    "auto": "ഓട്ടോ"
   },
   "languages": {
     "en-GB": "ഇംഗ്ലീഷ്",
@@ -938,7 +939,9 @@
     "auspaynetNote": "ഓസ്ട്രേലിയൻ NPP PayID പേയ്‌മെന്റുകൾക്കുള്ള AusPayNet",
     "paypalMeNote": "PayPal.Me പങ്കിടാവുന്ന പേയ്‌മെന്റ് ലിങ്ക്",
     "cashAppNote": "Cash App $cashtag പേയ്‌മെന്റ് ലിങ്ക്",
-    "emvGenericNote": "ജനറിക് EMVCo MPM QR കോഡ് ഫോർമാറ്റ്"
+    "emvGenericNote": "ജനറിക് EMVCo MPM QR കോഡ് ഫോർമാറ്റ്",
+    "maxFramesAuto": "0 = ഓട്ടോ (സോഴ്സ് ഫ്രെയിമുകൾ ഉപയോഗിക്കുന്നു, പ്രകടനത്തിന് പരമാവധി 50)",
+    "paletteMode": "പാലറ്റിൽ നിന്നുള്ള നിറങ്ങൾ മൊഡ്യൂളുകൾക്ക് എങ്ങനെ അസൈൻ ചെയ്യുന്നു"
   },
   "language": {
     "current": "ഭാഷ",
@@ -1010,7 +1013,8 @@
     "trueVector": "ട്രൂ വെക്റ്റർ",
     "trueVectorDesc": "എംബഡഡ് റാസ്റ്ററിന് പകരം പാതകൾ ഉപയോഗിക്കുക",
     "webp": "വെബ്‌പി",
-    "width": "വീതി"
+    "width": "വീതി",
+    "animatedWebp": "ആനിമേറ്റഡ് WebP"
   },
   "preview": {
     "qrCodePreview": "QR കോഡ് പ്രിവ്യൂ - ഡൗൺലോഡ് ചെയ്യാൻ എക്സ്പോർട്ട് ക്ലിക്ക് ചെയ്യുക",
@@ -1106,7 +1110,15 @@
     "style": "സ്റ്റൈൽ",
     "tag": "ടാഗ്",
     "timingStyle": "സമയ പാറ്റേൺ ശൈലി",
-    "transparentBg": "സുതാര്യമായ പശ്ചാത്തലം"
+    "transparentBg": "സുതാര്യമായ പശ്ചാത്തലം",
+    "paletteMode": "പാലറ്റ് മോഡ്",
+    "paletteModePosition": "സ്ഥാനം അനുസരിച്ച്",
+    "paletteModeBrightness": "തെളിച്ചം അനുസരിച്ച്",
+    "paletteModeDiagonal": "ഡയഗണൽ",
+    "paletteModeRadial": "റേഡിയൽ",
+    "paletteModeRandom": "റാൻഡം",
+    "paletteModeRow": "വരി അനുസരിച്ച്",
+    "paletteModeColumn": "കോളം അനുസരിച്ച്"
   },
   "safety": {
     "off": "ഓഫ്",
@@ -1140,7 +1152,15 @@
     "simulateBlur": "മങ്ങൽ അനുകരിക്കുക",
     "simulateNoise": "ശബ്ദം അനുകരിക്കുക",
     "simulateRotation": "ഭ്രമണം അനുകരിക്കുക",
-    "untilScannable": "സ്കാൻ ചെയ്യാൻ കഴിയുന്നതുവരെ"
+    "untilScannable": "സ്കാൻ ചെയ്യാൻ കഴിയുന്നതുവരെ",
+    "eccAwareEnabled": "ECC-Aware പ്രവർത്തനക്ഷമമാക്കുക",
+    "eccAwareDesc": "നിർണായക QR മേഖലകൾ ബുദ്ധിപരമായി സംരക്ഷിക്കുക",
+    "eccAwareRiskBudget": "റിസ്ക് ബജറ്റ്",
+    "eccAwareRiskBudgetDesc": "ഉയർന്ന മൂല്യങ്ങൾ കൂടുതൽ ഓവർലേ കവറേജ് അനുവദിക്കുന്നു",
+    "eccAwareWeightMap": "വെയ്റ്റ് മാപ്പ്",
+    "eccMapDistanceToFinders": "ഫൈൻഡറുകളിലേക്കുള്ള ദൂരം",
+    "eccMapBlockHeatmap": "ബ്ലോക്ക് ഹീറ്റ്മാപ്പ്",
+    "eccMapEmpiricalScan": "എംപിരിക്കൽ സ്കാൻ ഹീറ്റ്മാപ്പ്"
   },
   "sections": {
     "animation": "ആനിമേഷൻ",
@@ -1366,7 +1386,9 @@
     "useFrameDelays": "ഫ്രെയിം കാലതാമസം ഉപയോഗിക്കുക",
     "voidCluster": "ശൂന്യവും ക്ലസ്റ്ററും",
     "pleaseEnterUrl": "ദയവായി ഒരു URL നൽകുക",
-    "preview": "പ്രിവ്യൂ"
+    "preview": "പ്രിവ്യൂ",
+    "sobel": "Sobel",
+    "canny": "Canny"
   },
   "payload": {
     "emailAddress": "ഇമെയിൽ വിലാസം",

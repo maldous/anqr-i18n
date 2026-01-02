@@ -29,7 +29,8 @@
     "speed": "Kuvanopeus",
     "startFrame": "Aloituskehys",
     "temporalDither": "Ajallinen epäröinti",
-    "wave": "Aalto"
+    "wave": "Aalto",
+    "auto": "Automaattinen"
   },
   "languages": {
     "en-GB": "Englanti",
@@ -938,7 +939,9 @@
     "auspaynetNote": "AusPayNet Australian NPP PayID -maksuille",
     "paypalMeNote": "Jaettava PayPal.Me-maksulinkki",
     "cashAppNote": "Cash App $cashtag -maksulinkki",
-    "emvGenericNote": "Yleinen EMVCo MPM QR-koodin muoto"
+    "emvGenericNote": "Yleinen EMVCo MPM QR-koodin muoto",
+    "maxFramesAuto": "0 = Automaattinen (käyttää lähdekuvia, maks 50 suorituskyvylle)",
+    "paletteMode": "Miten paletin värit määritetään moduuleille"
   },
   "language": {
     "current": "Kieli",
@@ -1010,7 +1013,8 @@
     "trueVector": "Todellinen vektori",
     "trueVectorDesc": "Käytä polkuja upotetun rasterin sijaan",
     "webp": "WebP",
-    "width": "Leveys"
+    "width": "Leveys",
+    "animatedWebp": "Animoitu WebP"
   },
   "preview": {
     "qrCodePreview": "QR-koodin esikatselu - Lataa napsauttamalla Vie",
@@ -1106,7 +1110,15 @@
     "style": "Tyyli",
     "tag": "Tag",
     "timingStyle": "Ajoituskuvion tyyli",
-    "transparentBg": "Läpinäkyvä tausta"
+    "transparentBg": "Läpinäkyvä tausta",
+    "paletteMode": "Palettitila",
+    "paletteModePosition": "Sijainnin mukaan",
+    "paletteModeBrightness": "Kirkkauden mukaan",
+    "paletteModeDiagonal": "Diagonaali",
+    "paletteModeRadial": "Säteittäinen",
+    "paletteModeRandom": "Satunnainen",
+    "paletteModeRow": "Rivin mukaan",
+    "paletteModeColumn": "Sarakkeen mukaan"
   },
   "safety": {
     "off": "Pois päältä",
@@ -1140,7 +1152,15 @@
     "simulateBlur": "Simuloi sumennusta",
     "simulateNoise": "Simuloi kohinaa",
     "simulateRotation": "Simuloi pyörimistä",
-    "untilScannable": "Kunnes skannattavissa"
+    "untilScannable": "Kunnes skannattavissa",
+    "eccAwareEnabled": "Ota ECC-tietoisuus käyttöön",
+    "eccAwareDesc": "Säilytä kriittiset QR-alueet älykkäästi",
+    "eccAwareRiskBudget": "Riskibudjetti",
+    "eccAwareRiskBudgetDesc": "Korkeammat arvot sallivat enemmän peittokuvaa",
+    "eccAwareWeightMap": "Painokartta",
+    "eccMapDistanceToFinders": "Etäisyys etsijöihin",
+    "eccMapBlockHeatmap": "Lohkolämpökartta",
+    "eccMapEmpiricalScan": "Empiirinen skannauslämpökartta"
   },
   "sections": {
     "animation": "Animaatio",
@@ -1366,7 +1386,9 @@
     "useFrameDelays": "Käytä kehysviiveitä",
     "voidCluster": "Tyhjiö ja klusteri",
     "pleaseEnterUrl": "Anna URL-osoite",
-    "preview": "Esikatselu"
+    "preview": "Esikatselu",
+    "sobel": "Sobel",
+    "canny": "Canny"
   },
   "payload": {
     "emailAddress": "Sähköpostiosoite",

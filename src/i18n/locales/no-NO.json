@@ -29,7 +29,8 @@
     "speed": "Bildehastighet",
     "startFrame": "Startramme",
     "temporalDither": "Temporal Dither",
-    "wave": "Bølge"
+    "wave": "Bølge",
+    "auto": "Auto"
   },
   "languages": {
     "en-GB": "Engelsk",
@@ -938,7 +939,9 @@
     "auspaynetNote": "AusPayNet for australske NPP PayID-betalinger",
     "paypalMeNote": "Delbar PayPal.Me-betalingslenke",
     "cashAppNote": "Betalingslenke for Cash App $cashtag",
-    "emvGenericNote": "Generisk EMVCo MPM QR-kodeformat"
+    "emvGenericNote": "Generisk EMVCo MPM QR-kodeformat",
+    "maxFramesAuto": "0 = Auto (bruker kilderammer, maks 50 for ytelse)",
+    "paletteMode": "Hvordan farger fra paletten tildeles moduler"
   },
   "language": {
     "current": "Språk",
@@ -1010,7 +1013,8 @@
     "trueVector": "Sann vektor",
     "trueVectorDesc": "Bruk stier i stedet for innebygd raster",
     "webp": "WebP",
-    "width": "Bredde"
+    "width": "Bredde",
+    "animatedWebp": "Animert WebP"
   },
   "preview": {
     "qrCodePreview": "Forhåndsvisning av QR-kode -- klikk på Eksporter for å laste ned",
@@ -1106,7 +1110,15 @@
     "style": "Stil",
     "tag": "Etikett",
     "timingStyle": "Tidsmønsterstil",
-    "transparentBg": "Gjennomsiktig bakgrunn"
+    "transparentBg": "Gjennomsiktig bakgrunn",
+    "paletteMode": "Palettmodus",
+    "paletteModePosition": "Etter posisjon",
+    "paletteModeBrightness": "Etter lysstyrke",
+    "paletteModeDiagonal": "Diagonal",
+    "paletteModeRadial": "Radial",
+    "paletteModeRandom": "Tilfeldig",
+    "paletteModeRow": "Etter rad",
+    "paletteModeColumn": "Etter kolonne"
   },
   "safety": {
     "off": "Av",
@@ -1140,7 +1152,15 @@
     "simulateBlur": "Simuler uskarphet",
     "simulateNoise": "Simuler støy",
     "simulateRotation": "Simuler rotasjon",
-    "untilScannable": "Inntil skanning mulig"
+    "untilScannable": "Inntil skanning mulig",
+    "eccAwareEnabled": "Aktiver ECC-bevisst",
+    "eccAwareDesc": "Bevar kritiske QR-områder intelligent",
+    "eccAwareRiskBudget": "Risikobudsjett",
+    "eccAwareRiskBudgetDesc": "Høyere verdier tillater mer overleggsdekning",
+    "eccAwareWeightMap": "Vektkart",
+    "eccMapDistanceToFinders": "Avstand til finner",
+    "eccMapBlockHeatmap": "Blokk varmekart",
+    "eccMapEmpiricalScan": "Empirisk skannevarmekart"
   },
   "sections": {
     "animation": "Animasjon",
@@ -1366,7 +1386,9 @@
     "useFrameDelays": "Bruk bildeforsinkelser",
     "voidCluster": "Tomrom og klynge",
     "pleaseEnterUrl": "Skriv inn en URL",
-    "preview": "Forhåndsvisning"
+    "preview": "Forhåndsvisning",
+    "sobel": "Sobel",
+    "canny": "Canny"
   },
   "payload": {
     "emailAddress": "E-postadresse",

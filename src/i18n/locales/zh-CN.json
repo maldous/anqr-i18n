@@ -29,7 +29,8 @@
     "speed": "帧速度",
     "startFrame": "起始帧",
     "temporalDither": "时间抖动",
-    "wave": "波浪"
+    "wave": "波浪",
+    "auto": "自动"
   },
   "languages": {
     "en-GB": "英语",
@@ -938,7 +939,9 @@
     "auspaynetNote": "用于澳大利亚 NPP PayID 支付的 AusPayNet",
     "paypalMeNote": "PayPal.Me 可分享支付链接",
     "cashAppNote": "Cash App $cashtag 支付链接",
-    "emvGenericNote": "通用 EMVCo MPM QR 码格式"
+    "emvGenericNote": "通用 EMVCo MPM QR 码格式",
+    "maxFramesAuto": "0 = 自动（使用源帧，为保证性能最大 50）",
+    "paletteMode": "调色板中的颜色如何分配给模块"
   },
   "language": {
     "current": "语言",
@@ -1010,7 +1013,8 @@
     "trueVector": "真矢量",
     "trueVectorDesc": "使用路径而非嵌入的光栅图",
     "webp": "WebP",
-    "width": "宽度"
+    "width": "宽度",
+    "animatedWebp": "动画 WebP"
   },
   "preview": {
     "qrCodePreview": "二维码预览 - 点击导出以下载",
@@ -1106,7 +1110,15 @@
     "style": "样式",
     "tag": "标签",
     "timingStyle": "时序图案样式",
-    "transparentBg": "透明背景"
+    "transparentBg": "透明背景",
+    "paletteMode": "调色板模式",
+    "paletteModePosition": "按位置",
+    "paletteModeBrightness": "按亮度",
+    "paletteModeDiagonal": "对角线",
+    "paletteModeRadial": "径向",
+    "paletteModeRandom": "随机",
+    "paletteModeRow": "按行",
+    "paletteModeColumn": "按列"
   },
   "safety": {
     "off": "关闭",
@@ -1140,7 +1152,15 @@
     "simulateBlur": "模拟模糊",
     "simulateNoise": "模拟噪声",
     "simulateRotation": "模拟旋转",
-    "untilScannable": "直到可扫描"
+    "untilScannable": "直到可扫描",
+    "eccAwareEnabled": "启用 ECC 感知",
+    "eccAwareDesc": "智能保护关键 QR 区域",
+    "eccAwareRiskBudget": "风险预算",
+    "eccAwareRiskBudgetDesc": "较高值允许更多叠加覆盖",
+    "eccAwareWeightMap": "权重图",
+    "eccMapDistanceToFinders": "到定位器的距离",
+    "eccMapBlockHeatmap": "块热力图",
+    "eccMapEmpiricalScan": "经验扫描热力图"
   },
   "sections": {
     "animation": "动画",
@@ -1366,7 +1386,9 @@
     "useFrameDelays": "使用帧延迟",
     "voidCluster": "空洞与簇",
     "pleaseEnterUrl": "请输入 URL",
-    "preview": "预览"
+    "preview": "预览",
+    "sobel": "Sobel",
+    "canny": "Canny"
   },
   "payload": {
     "emailAddress": "电子邮件地址",

@@ -29,7 +29,8 @@
     "speed": "Kelajuan Bingkai",
     "startFrame": "Bingkai Mula",
     "temporalDither": "Dither Temporal",
-    "wave": "Gelombang"
+    "wave": "Gelombang",
+    "auto": "Automatik"
   },
   "languages": {
     "en-GB": "Inggeris",
@@ -938,7 +939,9 @@
     "auspaynetNote": "AusPayNet untuk pembayaran PayID NPP Australia",
     "paypalMeNote": "Pautan pembayaran PayPal.Me yang boleh dikongsi",
     "cashAppNote": "Pautan pembayaran $cashtag Cash App",
-    "emvGenericNote": "Format kod QR MPM EMVCo generik"
+    "emvGenericNote": "Format kod QR MPM EMVCo generik",
+    "maxFramesAuto": "0 = Auto (menggunakan bingkai sumber, maks 50 untuk prestasi)",
+    "paletteMode": "Bagaimana warna dari palet ditetapkan kepada modul"
   },
   "language": {
     "current": "Bahasa",
@@ -1010,7 +1013,8 @@
     "trueVector": "Vektor Tulen",
     "trueVectorDesc": "Gunakan laluan dan bukannya raster terbenam",
     "webp": "WebP",
-    "width": "Lebar"
+    "width": "Lebar",
+    "animatedWebp": "WebP Animasi"
   },
   "preview": {
     "qrCodePreview": "Pratonton Kod QR - Klik Eksport untuk memuat turun",
@@ -1106,7 +1110,15 @@
     "style": "Gaya",
     "tag": "Tag",
     "timingStyle": "Gaya Corak Pemasa",
-    "transparentBg": "Latar Belakang Lutsinar"
+    "transparentBg": "Latar Belakang Lutsinar",
+    "paletteMode": "Mod Palet",
+    "paletteModePosition": "Mengikut Kedudukan",
+    "paletteModeBrightness": "Mengikut Kecerahan",
+    "paletteModeDiagonal": "Pepenjuru",
+    "paletteModeRadial": "Jejarian",
+    "paletteModeRandom": "Rawak",
+    "paletteModeRow": "Mengikut Baris",
+    "paletteModeColumn": "Mengikut Lajur"
   },
   "safety": {
     "off": "Mati",
@@ -1140,7 +1152,15 @@
     "simulateBlur": "Simulasikan Kabur",
     "simulateNoise": "Simulasikan Hingar",
     "simulateRotation": "Simulasikan Putaran",
-    "untilScannable": "Sehingga boleh diimbas"
+    "untilScannable": "Sehingga boleh diimbas",
+    "eccAwareEnabled": "Dayakan ECC-Aware",
+    "eccAwareDesc": "Lindungi kawasan QR kritikal secara pintar",
+    "eccAwareRiskBudget": "Bajet Risiko",
+    "eccAwareRiskBudgetDesc": "Nilai lebih tinggi membenarkan liputan tindih lebih banyak",
+    "eccAwareWeightMap": "Peta Berat",
+    "eccMapDistanceToFinders": "Jarak ke Pencari",
+    "eccMapBlockHeatmap": "Peta Haba Blok",
+    "eccMapEmpiricalScan": "Peta Haba Imbasan Empirikal"
   },
   "sections": {
     "animation": "Animasi",
@@ -1366,7 +1386,9 @@
     "useFrameDelays": "Gunakan Kelewatan Bingkai",
     "voidCluster": "Void & Kluster",
     "pleaseEnterUrl": "Sila masukkan URL",
-    "preview": "Pratonton"
+    "preview": "Pratonton",
+    "sobel": "Sobel",
+    "canny": "Canny"
   },
   "payload": {
     "emailAddress": "Alamat E-mel",

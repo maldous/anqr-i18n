@@ -29,7 +29,8 @@
     "speed": "프레임 속도",
     "startFrame": "시작 프레임",
     "temporalDither": "시간적 디더링",
-    "wave": "웨이브"
+    "wave": "웨이브",
+    "auto": "자동"
   },
   "languages": {
     "en-GB": "영어",
@@ -938,7 +939,9 @@
     "auspaynetNote": "ಆಸ್ಟ್ರೇಲಿಯನ್ NPP PayID ಪಾವತಿಗಳಿಗಾಗಿ AusPayNet",
     "paypalMeNote": "PayPal.Me ಹಂಚಿಕೊಳ್ಳಬಹುದಾದ ಪಾವತಿ ಲಿಂಕ್",
     "cashAppNote": "Cash App $cashtag ಪಾವತಿ ಲಿಂಕ್",
-    "emvGenericNote": "ಜೆನೆರಿಕ್ EMVCo MPM QR ಕೋಡ್ ಸ್ವರೂಪ"
+    "emvGenericNote": "ಜೆನೆರಿಕ್ EMVCo MPM QR ಕೋಡ್ ಸ್ವರೂಪ",
+    "maxFramesAuto": "0 = ಆಟೋ (ಮೂಲ ಫ್ರೇಮ್‌ಗಳನ್ನು ಬಳಸುತ್ತದೆ, ಕಾರ್ಯಕ್ಷಮತೆಗೆ ಗರಿಷ್ಠ 50)",
+    "paletteMode": "ಪ್ಯಾಲೆಟ್‌ನಿಂದ ಬಣ್ಣಗಳನ್ನು ಮಾಡ್ಯೂಲ್‌ಗಳಿಗೆ ಹೇಗೆ ನಿಯೋಜಿಸಲಾಗುತ್ತದೆ"
   },
   "language": {
     "current": "언어",
@@ -1010,7 +1013,8 @@
     "trueVector": "트루 벡터",
     "trueVectorDesc": "내장 래스터 대신 경로를 사용하세요",
     "webp": "웹P",
-    "width": "폭"
+    "width": "폭",
+    "animatedWebp": "ಅನಿಮೇಟೆಡ್ WebP"
   },
   "preview": {
     "qrCodePreview": "QR 코드 미리보기 - 다운로드하려면 내보내기를 클릭하세요",
@@ -1106,7 +1110,15 @@
     "style": "스타일",
     "tag": "태그",
     "timingStyle": "타이밍 패턴 스타일",
-    "transparentBg": "투명 배경"
+    "transparentBg": "투명 배경",
+    "paletteMode": "ಪ್ಯಾಲೆಟ್ ಮೋಡ್",
+    "paletteModePosition": "ಸ್ಥಾನದ ಪ್ರಕಾರ",
+    "paletteModeBrightness": "ಹೊಳಪಿನ ಪ್ರಕಾರ",
+    "paletteModeDiagonal": "ಕರ್ಣೀಯ",
+    "paletteModeRadial": "ರೇಡಿಯಲ್",
+    "paletteModeRandom": "ಯಾದೃಚ್ಛಿಕ",
+    "paletteModeRow": "ಸಾಲಿನ ಪ್ರಕಾರ",
+    "paletteModeColumn": "ಕಾಲಮ್ ಪ್ರಕಾರ"
   },
   "safety": {
     "off": "꺼짐",
@@ -1140,7 +1152,15 @@
     "simulateBlur": "흐림 효과 시뮬레이션",
     "simulateNoise": "소음 시뮬레이션",
     "simulateRotation": "회전 시뮬레이션",
-    "untilScannable": "스캔 가능해질 때까지"
+    "untilScannable": "스캔 가능해질 때까지",
+    "eccAwareEnabled": "ECC-ಅವೇರ್ ಸಕ್ರಿಯಗೊಳಿಸಿ",
+    "eccAwareDesc": "ನಿರ್ಣಾಯಕ QR ಪ್ರದೇಶಗಳನ್ನು ಬುದ್ಧಿವಂತಿಕೆಯಿಂದ ಸಂರಕ್ಷಿಸಿ",
+    "eccAwareRiskBudget": "ಅಪಾಯ ಬಜೆಟ್",
+    "eccAwareRiskBudgetDesc": "ಹೆಚ್ಚಿನ ಮೌಲ್ಯಗಳು ಹೆಚ್ಚಿನ ಓವರ್‌ಲೇ ಕವರೇಜ್ ಅನುಮತಿಸುತ್ತವೆ",
+    "eccAwareWeightMap": "ತೂಕ ನಕ್ಷೆ",
+    "eccMapDistanceToFinders": "ಫೈಂಡರ್‌ಗಳಿಗೆ ದೂರ",
+    "eccMapBlockHeatmap": "ಬ್ಲಾಕ್ ಹೀಟ್‌ಮ್ಯಾಪ್",
+    "eccMapEmpiricalScan": "ಅನುಭವಾತ್ಮಕ ಸ್ಕ್ಯಾನ್ ಹೀಟ್‌ಮ್ಯಾಪ್"
   },
   "sections": {
     "animation": "애니메이션",
@@ -1366,7 +1386,9 @@
     "useFrameDelays": "프레임 지연 사용",
     "voidCluster": "공허와 군집",
     "pleaseEnterUrl": "ದಯವಿಟ್ಟು URL ನಮೂದಿಸಿ",
-    "preview": "ಪೂರ್ವವೀಕ್ಷಣೆ"
+    "preview": "ಪೂರ್ವವೀಕ್ಷಣೆ",
+    "sobel": "Sobel",
+    "canny": "Canny"
   },
   "payload": {
     "emailAddress": "이메일 주소",

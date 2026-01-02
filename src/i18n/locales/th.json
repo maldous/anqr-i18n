@@ -29,7 +29,8 @@
     "speed": "ความเร็วเฟรม",
     "startFrame": "เฟรมเริ่มต้น",
     "temporalDither": "ดิเธอร์ตามเวลา",
-    "wave": "คลื่น"
+    "wave": "คลื่น",
+    "auto": "อัตโนมัติ"
   },
   "languages": {
     "en-GB": "อังกฤษ",
@@ -938,7 +939,9 @@
     "auspaynetNote": "AusPayNet สำหรับการชำระเงิน PayID NPP ออสเตรเลีย",
     "paypalMeNote": "ลิงก์ชำระเงิน PayPal.Me ที่แชร์ได้",
     "cashAppNote": "ลิงก์ชำระเงิน Cash App $cashtag",
-    "emvGenericNote": "รูปแบบคิวอาร์โค้ด EMVCo MPM ทั่วไป"
+    "emvGenericNote": "รูปแบบคิวอาร์โค้ด EMVCo MPM ทั่วไป",
+    "maxFramesAuto": "0 = อัตโนมัติ (ใช้เฟรมต้นทาง สูงสุด 50 เพื่อประสิทธิภาพ)",
+    "paletteMode": "วิธีกำหนดสีจากจานสีให้กับโมดูล"
   },
   "language": {
     "current": "ภาษา",
@@ -1010,7 +1013,8 @@
     "trueVector": "เวกเตอร์แท้",
     "trueVectorDesc": "ใช้เส้นทางแทนการฝังแรสเตอร์",
     "webp": "WebP",
-    "width": "ความกว้าง"
+    "width": "ความกว้าง",
+    "animatedWebp": "WebP แบบเคลื่อนไหว"
   },
   "preview": {
     "qrCodePreview": "ตัวอย่างคิวอาร์โค้ด - คลิก ส่งออก เพื่อดาวน์โหลด",
@@ -1106,7 +1110,15 @@
     "style": "สไตล์",
     "tag": "แท็ก",
     "timingStyle": "สไตล์ลายจังหวะ",
-    "transparentBg": "พื้นหลังโปร่งใส"
+    "transparentBg": "พื้นหลังโปร่งใส",
+    "paletteMode": "โหมดจานสี",
+    "paletteModePosition": "ตามตำแหน่ง",
+    "paletteModeBrightness": "ตามความสว่าง",
+    "paletteModeDiagonal": "แนวทแยง",
+    "paletteModeRadial": "แบบรัศมี",
+    "paletteModeRandom": "สุ่ม",
+    "paletteModeRow": "ตามแถว",
+    "paletteModeColumn": "ตามคอลัมน์"
   },
   "safety": {
     "off": "ปิด",
@@ -1140,7 +1152,15 @@
     "simulateBlur": "จำลองความเบลอ",
     "simulateNoise": "จำลองสัญญาณรบกวน",
     "simulateRotation": "จำลองการหมุน",
-    "untilScannable": "จนกว่าสแกนได้"
+    "untilScannable": "จนกว่าสแกนได้",
+    "eccAwareEnabled": "เปิดใช้งาน ECC-Aware",
+    "eccAwareDesc": "รักษาพื้นที่ QR ที่สำคัญอย่างชาญฉลาด",
+    "eccAwareRiskBudget": "งบประมาณความเสี่ยง",
+    "eccAwareRiskBudgetDesc": "ค่าที่สูงกว่าอนุญาตให้ครอบคลุม overlay มากขึ้น",
+    "eccAwareWeightMap": "แผนที่น้ำหนัก",
+    "eccMapDistanceToFinders": "ระยะห่างถึง Finders",
+    "eccMapBlockHeatmap": "แผนที่ความร้อนบล็อก",
+    "eccMapEmpiricalScan": "แผนที่ความร้อนการสแกนเชิงประจักษ์"
   },
   "sections": {
     "animation": "แอนิเมชัน",
@@ -1366,7 +1386,9 @@
     "useFrameDelays": "ใช้การหน่วงเฟรม",
     "voidCluster": "ช่องว่างและคลัสเตอร์",
     "pleaseEnterUrl": "กรุณากรอก URL",
-    "preview": "ดูตัวอย่าง"
+    "preview": "ดูตัวอย่าง",
+    "sobel": "Sobel",
+    "canny": "Canny"
   },
   "payload": {
     "emailAddress": "ที่อยู่อีเมล",

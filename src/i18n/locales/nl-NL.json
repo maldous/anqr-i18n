@@ -29,7 +29,8 @@
     "speed": "Beeldsnelheid",
     "startFrame": "Startframe",
     "temporalDither": "Temporele dithering",
-    "wave": "Golf"
+    "wave": "Golf",
+    "auto": "Auto"
   },
   "languages": {
     "en-GB": "Engels",
@@ -938,7 +939,9 @@
     "auspaynetNote": "AusPayNet voor Australische NPP PayID-betalingen",
     "paypalMeNote": "Deelbare betaallink van PayPal.Me",
     "cashAppNote": "Cash App $cashtag betaallink",
-    "emvGenericNote": "Generiek EMVCo MPM QR-codeformaat"
+    "emvGenericNote": "Generiek EMVCo MPM QR-codeformaat",
+    "maxFramesAuto": "0 = Auto (gebruikt bronframes, max 50 voor prestaties)",
+    "paletteMode": "Hoe kleuren uit het palet aan modules worden toegewezen"
   },
   "language": {
     "current": "Taal",
@@ -1010,7 +1013,8 @@
     "trueVector": "Ware Vector",
     "trueVectorDesc": "Gebruik paden in plaats van ingesloten rasterafbeeldingen",
     "webp": "WebP",
-    "width": "Breedte"
+    "width": "Breedte",
+    "animatedWebp": "Geanimeerde WebP"
   },
   "preview": {
     "qrCodePreview": "QR-codevoorbeeld - Klik op Exporteren om te downloaden",
@@ -1106,7 +1110,15 @@
     "style": "Stijl",
     "tag": "Label",
     "timingStyle": "Timingpatroonstijl",
-    "transparentBg": "Transparante achtergrond"
+    "transparentBg": "Transparante achtergrond",
+    "paletteMode": "Paletmodus",
+    "paletteModePosition": "Op positie",
+    "paletteModeBrightness": "Op helderheid",
+    "paletteModeDiagonal": "Diagonaal",
+    "paletteModeRadial": "Radiaal",
+    "paletteModeRandom": "Willekeurig",
+    "paletteModeRow": "Op rij",
+    "paletteModeColumn": "Op kolom"
   },
   "safety": {
     "off": "Uit",
@@ -1140,7 +1152,15 @@
     "simulateBlur": "Simuleer vervaging",
     "simulateNoise": "Geluid simuleren",
     "simulateRotation": "Simuleer rotatie",
-    "untilScannable": "Totdat het scanbaar is"
+    "untilScannable": "Totdat het scanbaar is",
+    "eccAwareEnabled": "ECC-bewust inschakelen",
+    "eccAwareDesc": "Behoud kritieke QR-regio's intelligent",
+    "eccAwareRiskBudget": "Risicobudget",
+    "eccAwareRiskBudgetDesc": "Hogere waarden staan meer overlaydekking toe",
+    "eccAwareWeightMap": "Gewichtskaart",
+    "eccMapDistanceToFinders": "Afstand tot zoekers",
+    "eccMapBlockHeatmap": "Blok heatmap",
+    "eccMapEmpiricalScan": "Empirische scan heatmap"
   },
   "sections": {
     "animation": "Animatie",
@@ -1366,7 +1386,9 @@
     "useFrameDelays": "Gebruik framevertragingen",
     "voidCluster": "Leegte & Cluster",
     "pleaseEnterUrl": "Voer een URL in",
-    "preview": "Voorbeeldweergave"
+    "preview": "Voorbeeldweergave",
+    "sobel": "Sobel",
+    "canny": "Canny"
   },
   "payload": {
     "emailAddress": "E-mailadres",

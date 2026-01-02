@@ -29,7 +29,8 @@
     "speed": "フレーム速度",
     "startFrame": "開始フレーム",
     "temporalDither": "時間的ディザー",
-    "wave": "ウェーブ"
+    "wave": "ウェーブ",
+    "auto": "オート"
   },
   "languages": {
     "en-GB": "英語",
@@ -938,7 +939,9 @@
     "auspaynetNote": "オーストラリアNPP PayID決済用AusPayNet",
     "paypalMeNote": "PayPal.Me共有可能決済リンク",
     "cashAppNote": "Cash App $cashtag決済リンク",
-    "emvGenericNote": "汎用EMVCo MPM QRコード形式"
+    "emvGenericNote": "汎用EMVCo MPM QRコード形式",
+    "maxFramesAuto": "0 = 自動（ソースフレームを使用、パフォーマンス用に最大50）",
+    "paletteMode": "パレットの色がモジュールにどのように割り当てられるか"
   },
   "language": {
     "current": "言語",
@@ -1010,7 +1013,8 @@
     "trueVector": "真のベクトル",
     "trueVectorDesc": "埋め込みラスターの代わりにパスを使用する",
     "webp": "WebP",
-    "width": "幅"
+    "width": "幅",
+    "animatedWebp": "アニメーションWebP"
   },
   "preview": {
     "qrCodePreview": "QRコードプレビュー - ダウンロードするにはエクスポートをクリックしてください",
@@ -1106,7 +1110,15 @@
     "style": "スタイル",
     "tag": "タグ",
     "timingStyle": "タイミングパターンスタイル",
-    "transparentBg": "透明な背景"
+    "transparentBg": "透明な背景",
+    "paletteMode": "パレットモード",
+    "paletteModePosition": "位置別",
+    "paletteModeBrightness": "明るさ別",
+    "paletteModeDiagonal": "対角線",
+    "paletteModeRadial": "放射状",
+    "paletteModeRandom": "ランダム",
+    "paletteModeRow": "行別",
+    "paletteModeColumn": "列別"
   },
   "safety": {
     "off": "オフ",
@@ -1140,7 +1152,15 @@
     "simulateBlur": "ぼかしをシミュレート",
     "simulateNoise": "ノイズをシミュレートする",
     "simulateRotation": "回転をシミュレートする",
-    "untilScannable": "スキャンできるようになるまで"
+    "untilScannable": "スキャンできるようになるまで",
+    "eccAwareEnabled": "ECC対応を有効化",
+    "eccAwareDesc": "重要なQR領域をインテリジェントに保護",
+    "eccAwareRiskBudget": "リスク予算",
+    "eccAwareRiskBudgetDesc": "値が高いほどオーバーレイカバレッジが増加",
+    "eccAwareWeightMap": "重みマップ",
+    "eccMapDistanceToFinders": "ファインダーまでの距離",
+    "eccMapBlockHeatmap": "ブロックヒートマップ",
+    "eccMapEmpiricalScan": "経験的スキャンヒートマップ"
   },
   "sections": {
     "animation": "アニメーション",
@@ -1366,7 +1386,9 @@
     "useFrameDelays": "フレーム遅延を使用する",
     "voidCluster": "ボイド＆クラスター",
     "pleaseEnterUrl": "URLを入力してください",
-    "preview": "プレビュー"
+    "preview": "プレビュー",
+    "sobel": "Sobel",
+    "canny": "Canny"
   },
   "payload": {
     "emailAddress": "メールアドレス",

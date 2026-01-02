@@ -29,7 +29,8 @@
     "speed": "Скорост на кадрите",
     "startFrame": "Стартов кадър",
     "temporalDither": "Времево колебание",
-    "wave": "Вълна"
+    "wave": "Вълна",
+    "auto": "Авто"
   },
   "languages": {
     "en-GB": "Английски",
@@ -938,7 +939,9 @@
     "auspaynetNote": "AusPayNet за плащания с PayID на австралийската НПП",
     "paypalMeNote": "Споделяем линк за плащане чрез PayPal.Me",
     "cashAppNote": "Линк за плащане с приложението Cash $cashtag",
-    "emvGenericNote": "Общ формат на QR код за EMVCo MPM"
+    "emvGenericNote": "Общ формат на QR код за EMVCo MPM",
+    "maxFramesAuto": "0 = Автоматично (използва изходни кадри, макс 50 за производителност)",
+    "paletteMode": "Как цветовете от палитрата се присвояват на модулите"
   },
   "language": {
     "current": "Език",
@@ -1010,7 +1013,8 @@
     "trueVector": "Истински вектор",
     "trueVectorDesc": "Използвайте пътища вместо вграден растер",
     "webp": "WebP",
-    "width": "Ширина"
+    "width": "Ширина",
+    "animatedWebp": "Анимиран WebP"
   },
   "preview": {
     "qrCodePreview": "Преглед на QR код - Кликнете върху Експортиране, за да изтеглите",
@@ -1106,7 +1110,15 @@
     "style": "Стил",
     "tag": "Етикет",
     "timingStyle": "Стил на шаблон за синхронизация",
-    "transparentBg": "Прозрачен фон"
+    "transparentBg": "Прозрачен фон",
+    "paletteMode": "Режим на палитра",
+    "paletteModePosition": "По позиция",
+    "paletteModeBrightness": "По яркост",
+    "paletteModeDiagonal": "Диагонал",
+    "paletteModeRadial": "Радиален",
+    "paletteModeRandom": "Случаен",
+    "paletteModeRow": "По ред",
+    "paletteModeColumn": "По колона"
   },
   "safety": {
     "off": "Изключено",
@@ -1140,7 +1152,15 @@
     "simulateBlur": "Симулиране на размазване",
     "simulateNoise": "Симулиране на шум",
     "simulateRotation": "Симулиране на въртене",
-    "untilScannable": "Докато не стане възможно сканиране"
+    "untilScannable": "Докато не стане възможно сканиране",
+    "eccAwareEnabled": "Активиране на ECC-Aware",
+    "eccAwareDesc": "Интелигентно запазване на критични QR региони",
+    "eccAwareRiskBudget": "Бюджет за риск",
+    "eccAwareRiskBudgetDesc": "По-високите стойности позволяват повече покритие на наслагване",
+    "eccAwareWeightMap": "Карта на теглата",
+    "eccMapDistanceToFinders": "Разстояние до търсачите",
+    "eccMapBlockHeatmap": "Блокова топлинна карта",
+    "eccMapEmpiricalScan": "Емпирична топлинна карта на сканиране"
   },
   "sections": {
     "animation": "Анимация",
@@ -1366,7 +1386,9 @@
     "useFrameDelays": "Използване на закъснения на кадрите",
     "voidCluster": "Празнота и клъстер",
     "pleaseEnterUrl": "Моля, въведете URL адрес",
-    "preview": "Преглед"
+    "preview": "Преглед",
+    "sobel": "Sobel",
+    "canny": "Canny"
   },
   "payload": {
     "emailAddress": "Имейл адрес",

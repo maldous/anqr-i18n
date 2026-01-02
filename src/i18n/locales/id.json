@@ -29,7 +29,8 @@
     "speed": "Kecepatan Bingkai",
     "startFrame": "Bingkai Awal",
     "temporalDither": "Dither Temporal",
-    "wave": "Gelombang"
+    "wave": "Gelombang",
+    "auto": "Otomatis"
   },
   "languages": {
     "en-GB": "Bahasa Inggris",
@@ -938,7 +939,9 @@
     "auspaynetNote": "AusPayNet untuk pembayaran PayID NPP Australia",
     "paypalMeNote": "Tautan pembayaran PayPal.Me yang dapat dibagikan",
     "cashAppNote": "Tautan pembayaran $cashtag Cash App",
-    "emvGenericNote": "Format kode QR MPM EMVCo generik"
+    "emvGenericNote": "Format kode QR MPM EMVCo generik",
+    "maxFramesAuto": "0 = Otomatis (menggunakan frame sumber, maks 50 untuk performa)",
+    "paletteMode": "Cara warna dari palet ditetapkan ke modul"
   },
   "language": {
     "current": "Bahasa",
@@ -1010,7 +1013,8 @@
     "trueVector": "Vektor Sejati",
     "trueVectorDesc": "Gunakan jalur alih-alih raster yang disematkan",
     "webp": "WebP",
-    "width": "Lebar"
+    "width": "Lebar",
+    "animatedWebp": "WebP Animasi"
   },
   "preview": {
     "qrCodePreview": "Pratinjau Kode QR - Klik Ekspor untuk mengunduh",
@@ -1106,7 +1110,15 @@
     "style": "Gaya",
     "tag": "Tag",
     "timingStyle": "Gaya Pola Pengaturan Waktu",
-    "transparentBg": "Latar Belakang Transparan"
+    "transparentBg": "Latar Belakang Transparan",
+    "paletteMode": "Mode Palet",
+    "paletteModePosition": "Berdasarkan Posisi",
+    "paletteModeBrightness": "Berdasarkan Kecerahan",
+    "paletteModeDiagonal": "Diagonal",
+    "paletteModeRadial": "Radial",
+    "paletteModeRandom": "Acak",
+    "paletteModeRow": "Berdasarkan Baris",
+    "paletteModeColumn": "Berdasarkan Kolom"
   },
   "safety": {
     "off": "Mati",
@@ -1140,7 +1152,15 @@
     "simulateBlur": "Simulasikan Efek Buram",
     "simulateNoise": "Simulasi Kebisingan",
     "simulateRotation": "Simulasi Rotasi",
-    "untilScannable": "Sampai dapat dipindai"
+    "untilScannable": "Sampai dapat dipindai",
+    "eccAwareEnabled": "Aktifkan ECC-Aware",
+    "eccAwareDesc": "Menjaga wilayah QR kritis secara cerdas",
+    "eccAwareRiskBudget": "Anggaran Risiko",
+    "eccAwareRiskBudgetDesc": "Nilai lebih tinggi memungkinkan cakupan overlay lebih banyak",
+    "eccAwareWeightMap": "Peta Bobot",
+    "eccMapDistanceToFinders": "Jarak ke Finder",
+    "eccMapBlockHeatmap": "Peta Panas Blok",
+    "eccMapEmpiricalScan": "Peta Panas Pemindaian Empiris"
   },
   "sections": {
     "animation": "Animasi",
@@ -1366,7 +1386,9 @@
     "useFrameDelays": "Gunakan Penundaan Bingkai",
     "voidCluster": "Void & Cluster",
     "pleaseEnterUrl": "Silakan masukkan URL",
-    "preview": "Pratinjau"
+    "preview": "Pratinjau",
+    "sobel": "Sobel",
+    "canny": "Canny"
   },
   "payload": {
     "emailAddress": "Alamat Email",

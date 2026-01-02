@@ -29,7 +29,8 @@
     "speed": "Isivinini Sohlaka",
     "startFrame": "Uhlaka Lokuqala",
     "temporalDither": "Ukudla Kwesikhashana",
-    "wave": "Igagasi"
+    "wave": "Igagasi",
+    "auto": "Okuzenzakalelayo"
   },
   "languages": {
     "en-GB": "IsiNgisi",
@@ -938,7 +939,9 @@
     "auspaynetNote": "I-AusPayNet yezinkokhelo ze-NPP PayID zase-Australia",
     "paypalMeNote": "Isixhumanisi sokukhokha esingabiwa se-PayPal.Me",
     "cashAppNote": "Isixhumanisi sokukhokha se-Cash App $cashtag",
-    "emvGenericNote": "Ifomethi yekhodi ye-QR ye-EMVCo MPM ejwayelekile"
+    "emvGenericNote": "Ifomethi yekhodi ye-QR ye-EMVCo MPM ejwayelekile",
+    "maxFramesAuto": "0 = Okuzenzakalelayo (isebenzisa amafureyimu omthombo, okungu-50 kakhulu ukuze kusebenze kahle)",
+    "paletteMode": "Imibala evela ku-palette yabiwa kanjani kumamojuli"
   },
   "language": {
     "current": "Ulimi",
@@ -1010,7 +1013,8 @@
     "trueVector": "I-Vector Yeqiniso",
     "trueVectorDesc": "Sebenzisa izindlela esikhundleni se-raster efakiwe",
     "webp": "I-WebP",
-    "width": "Ububanzi"
+    "width": "Ububanzi",
+    "animatedWebp": "I-WebP Ephilayo"
   },
   "preview": {
     "qrCodePreview": "Ukubuka Kuqala Kwekhodi Ye-QR - Chofoza okuthi Thumela ukuze ulande",
@@ -1106,7 +1110,15 @@
     "style": "Isitayela",
     "tag": "Ithegi",
     "timingStyle": "Isitayela Sephethini Yesikhathi",
-    "transparentBg": "Isizinda Esicacile"
+    "transparentBg": "Isizinda Esicacile",
+    "paletteMode": "Imodi ye-Palette",
+    "paletteModePosition": "Ngesikhundla",
+    "paletteModeBrightness": "Ngokukhanya",
+    "paletteModeDiagonal": "Ngonxantathu",
+    "paletteModeRadial": "Ngokwendilinga",
+    "paletteModeRandom": "Ngokungahleliwe",
+    "paletteModeRow": "Ngomugqa",
+    "paletteModeColumn": "Ngekholomu"
   },
   "safety": {
     "off": "Kuvaliwe",
@@ -1140,7 +1152,15 @@
     "simulateBlur": "Lingisa i-Blur",
     "simulateNoise": "Lingisa Umsindo",
     "simulateRotation": "Lingisa Ukujikeleza",
-    "untilScannable": "Kuze kube yilapho kuskenwa"
+    "untilScannable": "Kuze kube yilapho kuskenwa",
+    "eccAwareEnabled": "Vumela i-ECC-Aware",
+    "eccAwareDesc": "Gcina ngokuhlakanipha izindawo ze-QR ezibalulekile",
+    "eccAwareRiskBudget": "Isabelo Sengozi",
+    "eccAwareRiskBudgetDesc": "Amanani aphezulu avumela ukumboza okuningi kwe-overlay",
+    "eccAwareWeightMap": "Imephu Yesisindo",
+    "eccMapDistanceToFinders": "Ibanga kuya ku-Finders",
+    "eccMapBlockHeatmap": "I-Block Heatmap",
+    "eccMapEmpiricalScan": "I-Empirical Scan Heatmap"
   },
   "sections": {
     "animation": "Izithombe Ezinyakazayo",
@@ -1366,7 +1386,9 @@
     "useFrameDelays": "Sebenzisa Ukulibaziseka Kohlaka",
     "voidCluster": "Ize kanye neQembu",
     "pleaseEnterUrl": "Sicela ufake i-URL",
-    "preview": "Ukubuka Kuqala"
+    "preview": "Ukubuka Kuqala",
+    "sobel": "Sobel",
+    "canny": "Canny"
   },
   "payload": {
     "emailAddress": "Ikheli Le-imeyili",

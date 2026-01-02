@@ -29,7 +29,8 @@
     "speed": "Bildgeschwindigkeit",
     "startFrame": "Startbild",
     "temporalDither": "Zeitliches Zittern",
-    "wave": "Welle"
+    "wave": "Welle",
+    "auto": "Auto"
   },
   "languages": {
     "en-GB": "Englisch",
@@ -938,7 +939,9 @@
     "auspaynetNote": "AusPayNet für australische NPP PayID-Zahlungen",
     "paypalMeNote": "Teilbarer PayPal.Me-Zahlungslink",
     "cashAppNote": "Cash App $cashtag-Zahlungslink",
-    "emvGenericNote": "Generisches EMVCo MPM QR-Code-Format"
+    "emvGenericNote": "Generisches EMVCo MPM QR-Code-Format",
+    "maxFramesAuto": "0 = Auto (verwendet Quellbilder, max 50 für Leistung)",
+    "paletteMode": "Wie Farben aus der Palette den Modulen zugewiesen werden"
   },
   "language": {
     "current": "Sprache",
@@ -1010,7 +1013,8 @@
     "trueVector": "Echter Vektor",
     "trueVectorDesc": "Verwenden Sie Pfade anstelle von eingebetteten Rasterdaten",
     "webp": "WebP",
-    "width": "Breite"
+    "width": "Breite",
+    "animatedWebp": "Animiertes WebP"
   },
   "preview": {
     "qrCodePreview": "QR-Code-Vorschau -- Klicken Sie auf Exportieren, um den Code herunterzuladen",
@@ -1106,7 +1110,15 @@
     "style": "Stil",
     "tag": "Tag",
     "timingStyle": "Timing-Musterstil",
-    "transparentBg": "Transparenter Hintergrund"
+    "transparentBg": "Transparenter Hintergrund",
+    "paletteMode": "Palettenmodus",
+    "paletteModePosition": "Nach Position",
+    "paletteModeBrightness": "Nach Helligkeit",
+    "paletteModeDiagonal": "Diagonal",
+    "paletteModeRadial": "Radial",
+    "paletteModeRandom": "Zufällig",
+    "paletteModeRow": "Nach Zeile",
+    "paletteModeColumn": "Nach Spalte"
   },
   "safety": {
     "off": "Aus",
@@ -1140,7 +1152,15 @@
     "simulateBlur": "Unschärfe simulieren",
     "simulateNoise": "Rauschen simulieren",
     "simulateRotation": "Rotation simulieren",
-    "untilScannable": "Bis lesbar"
+    "untilScannable": "Bis lesbar",
+    "eccAwareEnabled": "ECC-Bewusst aktivieren",
+    "eccAwareDesc": "Kritische QR-Bereiche intelligent erhalten",
+    "eccAwareRiskBudget": "Risikobudget",
+    "eccAwareRiskBudgetDesc": "Höhere Werte erlauben mehr Overlay-Abdeckung",
+    "eccAwareWeightMap": "Gewichtskarte",
+    "eccMapDistanceToFinders": "Abstand zu Findern",
+    "eccMapBlockHeatmap": "Block-Heatmap",
+    "eccMapEmpiricalScan": "Empirische Scan-Heatmap"
   },
   "sections": {
     "animation": "Animation",
@@ -1366,7 +1386,9 @@
     "useFrameDelays": "Frame-Verzögerungen verwenden",
     "voidCluster": "Leere & Cluster",
     "pleaseEnterUrl": "Bitte geben Sie eine URL ein",
-    "preview": "Vorschau"
+    "preview": "Vorschau",
+    "sobel": "Sobel",
+    "canny": "Canny"
   },
   "payload": {
     "emailAddress": "E-Mail-Adresse",
