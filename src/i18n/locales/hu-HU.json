@@ -29,7 +29,8 @@
     "speed": "Képkockasebesség",
     "startFrame": "Kezdő képkocka",
     "temporalDither": "Időbeli tétovázás",
-    "wave": "Hullám"
+    "wave": "Hullám",
+    "auto": "Automatikus"
   },
   "languages": {
     "en-GB": "Angol",
@@ -938,7 +939,9 @@
     "auspaynetNote": "AusPayNet az ausztrál NPP PayID fizetésekhez",
     "paypalMeNote": "Megosztható PayPal.Me fizetési link",
     "cashAppNote": "Cash App $cashtag fizetési link",
-    "emvGenericNote": "Általános EMVCo MPM QR-kód formátum"
+    "emvGenericNote": "Általános EMVCo MPM QR-kód formátum",
+    "maxFramesAuto": "0 = Auto (forrásképkockákat használ, max 50 a teljesítményhez)",
+    "paletteMode": "Hogyan rendelődnek a paletta színei a modulokhoz"
   },
   "language": {
     "current": "Nyelv",
@@ -1010,7 +1013,8 @@
     "trueVector": "Igazi vektor",
     "trueVectorDesc": "Görbék használata beágyazott raszter helyett",
     "webp": "WebP",
-    "width": "Szélesség"
+    "width": "Szélesség",
+    "animatedWebp": "Animált WebP"
   },
   "preview": {
     "qrCodePreview": "QR-kód előnézete - Kattintson az Exportálás gombra a letöltéshez",
@@ -1106,7 +1110,15 @@
     "style": "Stílus",
     "tag": "Címke",
     "timingStyle": "Időzítési minta stílusa",
-    "transparentBg": "Átlátszó háttér"
+    "transparentBg": "Átlátszó háttér",
+    "paletteMode": "Paletta mód",
+    "paletteModePosition": "Pozíció szerint",
+    "paletteModeBrightness": "Fényerő szerint",
+    "paletteModeDiagonal": "Átlós",
+    "paletteModeRadial": "Sugárirányú",
+    "paletteModeRandom": "Véletlenszerű",
+    "paletteModeRow": "Sor szerint",
+    "paletteModeColumn": "Oszlop szerint"
   },
   "safety": {
     "off": "Ki",
@@ -1140,7 +1152,15 @@
     "simulateBlur": "Elmosódás szimulációja",
     "simulateNoise": "Zaj szimulációja",
     "simulateRotation": "Forgatás szimulációja",
-    "untilScannable": "Amíg beolvasható nem lesz"
+    "untilScannable": "Amíg beolvasható nem lesz",
+    "eccAwareEnabled": "ECC-tudatos engedélyezése",
+    "eccAwareDesc": "Kritikus QR régiók intelligens megőrzése",
+    "eccAwareRiskBudget": "Kockázati költségvetés",
+    "eccAwareRiskBudgetDesc": "Magasabb értékek nagyobb átfedési lefedettséget engedélyeznek",
+    "eccAwareWeightMap": "Súlytérkép",
+    "eccMapDistanceToFinders": "Távolság a keresőktől",
+    "eccMapBlockHeatmap": "Blokk hőtérkép",
+    "eccMapEmpiricalScan": "Empirikus szkennelési hőtérkép"
   },
   "sections": {
     "animation": "Animáció",
@@ -1366,7 +1386,9 @@
     "useFrameDelays": "Képkockák késleltetésének használata",
     "voidCluster": "Üresség és klaszter",
     "pleaseEnterUrl": "Kérjük, adjon meg egy URL-címet",
-    "preview": "Előnézet"
+    "preview": "Előnézet",
+    "sobel": "Sobel",
+    "canny": "Canny"
   },
   "payload": {
     "emailAddress": "E-mail cím",

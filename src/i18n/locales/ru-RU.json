@@ -29,7 +29,8 @@
     "speed": "Скорость кадра",
     "startFrame": "Стартовый кадр",
     "temporalDither": "Временное сглаживание",
-    "wave": "Волна"
+    "wave": "Волна",
+    "auto": "Авто"
   },
   "languages": {
     "en-GB": "Английский",
@@ -938,7 +939,9 @@
     "auspaynetNote": "AusPayNet для платежей PayID через NPP Австралии",
     "paypalMeNote": "Общая ссылка для платежей PayPal.Me",
     "cashAppNote": "Ссылка для платежей Cash App $cashtag",
-    "emvGenericNote": "Универсальный формат QR-кода EMVCo MPM"
+    "emvGenericNote": "Универсальный формат QR-кода EMVCo MPM",
+    "maxFramesAuto": "0 = Авто (использует исходные кадры, макс 50 для производительности)",
+    "paletteMode": "Как цвета из палитры назначаются модулям"
   },
   "language": {
     "current": "Язык",
@@ -1010,7 +1013,8 @@
     "trueVector": "Истинный вектор",
     "trueVectorDesc": "Используйте пути вместо встроенного растра",
     "webp": "WebP",
-    "width": "Ширина"
+    "width": "Ширина",
+    "animatedWebp": "Анимированный WebP"
   },
   "preview": {
     "qrCodePreview": "Предварительный просмотр QR-кода — нажмите Экспорт для загрузки",
@@ -1106,7 +1110,15 @@
     "style": "Стиль",
     "tag": "Тег",
     "timingStyle": "Стиль временного шаблона",
-    "transparentBg": "Прозрачный фон"
+    "transparentBg": "Прозрачный фон",
+    "paletteMode": "Режим палитры",
+    "paletteModePosition": "По позиции",
+    "paletteModeBrightness": "По яркости",
+    "paletteModeDiagonal": "По диагонали",
+    "paletteModeRadial": "Радиальный",
+    "paletteModeRandom": "Случайный",
+    "paletteModeRow": "По строке",
+    "paletteModeColumn": "По столбцу"
   },
   "safety": {
     "off": "Выкл.",
@@ -1140,7 +1152,15 @@
     "simulateBlur": "Имитация размытия",
     "simulateNoise": "Имитация шума",
     "simulateRotation": "Имитация вращения",
-    "untilScannable": "До возможности сканирования"
+    "untilScannable": "До возможности сканирования",
+    "eccAwareEnabled": "Включить ECC-Aware",
+    "eccAwareDesc": "Интеллектуальное сохранение критических областей QR",
+    "eccAwareRiskBudget": "Бюджет риска",
+    "eccAwareRiskBudgetDesc": "Более высокие значения позволяют большее покрытие наложения",
+    "eccAwareWeightMap": "Карта весов",
+    "eccMapDistanceToFinders": "Расстояние до искателей",
+    "eccMapBlockHeatmap": "Тепловая карта блоков",
+    "eccMapEmpiricalScan": "Эмпирическая тепловая карта сканирования"
   },
   "sections": {
     "animation": "Анимация",
@@ -1366,7 +1386,9 @@
     "useFrameDelays": "Использовать задержки кадров",
     "voidCluster": "Пустота и скопление",
     "pleaseEnterUrl": "Пожалуйста, введите URL",
-    "preview": "Предпросмотр"
+    "preview": "Предпросмотр",
+    "sobel": "Sobel",
+    "canny": "Canny"
   },
   "payload": {
     "emailAddress": "Адрес электронной почты",

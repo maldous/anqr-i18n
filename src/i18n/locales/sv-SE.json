@@ -29,7 +29,8 @@
     "speed": "Bildhastighet",
     "startFrame": "Startbild",
     "temporalDither": "Tidlig dither",
-    "wave": "Våg"
+    "wave": "Våg",
+    "auto": "Auto"
   },
   "languages": {
     "en-GB": "Engelska",
@@ -938,7 +939,9 @@
     "auspaynetNote": "AusPayNet för australiska NPP PayID-betalningar",
     "paypalMeNote": "Delbar PayPal.Me-betalningslänk",
     "cashAppNote": "Betalningslänk för Cash App $cashtag",
-    "emvGenericNote": "Generiskt EMVCo MPM QR-kodformat"
+    "emvGenericNote": "Generiskt EMVCo MPM QR-kodformat",
+    "maxFramesAuto": "0 = Auto (använder källramar, max 50 för prestanda)",
+    "paletteMode": "Hur färger från paletten tilldelas moduler"
   },
   "language": {
     "current": "Språk",
@@ -1010,7 +1013,8 @@
     "trueVector": "Sann vektor",
     "trueVectorDesc": "Använd sökvägar istället för inbäddat raster",
     "webp": "WebP",
-    "width": "Bredd"
+    "width": "Bredd",
+    "animatedWebp": "Animerad WebP"
   },
   "preview": {
     "qrCodePreview": "Förhandsgranskning av QR-kod -- Klicka på Exportera för att ladda ner",
@@ -1106,7 +1110,15 @@
     "style": "Stil",
     "tag": "Etikett",
     "timingStyle": "Tidsmönsterstil",
-    "transparentBg": "Transparent bakgrund"
+    "transparentBg": "Transparent bakgrund",
+    "paletteMode": "Palettläge",
+    "paletteModePosition": "Efter position",
+    "paletteModeBrightness": "Efter ljusstyrka",
+    "paletteModeDiagonal": "Diagonal",
+    "paletteModeRadial": "Radiell",
+    "paletteModeRandom": "Slumpmässig",
+    "paletteModeRow": "Efter rad",
+    "paletteModeColumn": "Efter kolumn"
   },
   "safety": {
     "off": "Av",
@@ -1140,7 +1152,15 @@
     "simulateBlur": "Simulera oskärpa",
     "simulateNoise": "Simulera brus",
     "simulateRotation": "Simulera rotation",
-    "untilScannable": "Tills skanningsbar"
+    "untilScannable": "Tills skanningsbar",
+    "eccAwareEnabled": "Aktivera ECC-medveten",
+    "eccAwareDesc": "Bevara kritiska QR-regioner intelligent",
+    "eccAwareRiskBudget": "Riskbudget",
+    "eccAwareRiskBudgetDesc": "Högre värden tillåter mer överlagringstäckning",
+    "eccAwareWeightMap": "Viktkarta",
+    "eccMapDistanceToFinders": "Avstånd till sökare",
+    "eccMapBlockHeatmap": "Block värmekarta",
+    "eccMapEmpiricalScan": "Empirisk skanningsvärmekarta"
   },
   "sections": {
     "animation": "Animation",
@@ -1366,7 +1386,9 @@
     "useFrameDelays": "Använd bildfördröjningar",
     "voidCluster": "Torrhet och kluster",
     "pleaseEnterUrl": "Ange en URL",
-    "preview": "Förhandsvisning"
+    "preview": "Förhandsvisning",
+    "sobel": "Sobel",
+    "canny": "Canny"
   },
   "payload": {
     "emailAddress": "E-postadress",

@@ -29,7 +29,8 @@
     "speed": "프레임 속도",
     "startFrame": "시작 프레임",
     "temporalDither": "시간적 디더링",
-    "wave": "웨이브"
+    "wave": "웨이브",
+    "auto": "자동"
   },
   "languages": {
     "en-GB": "영어",
@@ -938,7 +939,9 @@
     "auspaynetNote": "호주 NPP PayID 결제용 AusPayNet",
     "paypalMeNote": "PayPal.Me 공유 가능한 결제 링크",
     "cashAppNote": "Cash App $cashtag 결제 링크",
-    "emvGenericNote": "일반 EMVCo MPM QR 코드 형식"
+    "emvGenericNote": "일반 EMVCo MPM QR 코드 형식",
+    "maxFramesAuto": "0 = 자동 (소스 프레임 사용, 성능을 위해 최대 50)",
+    "paletteMode": "팔레트의 색상이 모듈에 할당되는 방식"
   },
   "language": {
     "current": "언어",
@@ -1010,7 +1013,8 @@
     "trueVector": "트루 벡터",
     "trueVectorDesc": "내장 래스터 대신 경로를 사용하세요",
     "webp": "웹P",
-    "width": "폭"
+    "width": "폭",
+    "animatedWebp": "애니메이션 WebP"
   },
   "preview": {
     "qrCodePreview": "QR 코드 미리보기 - 다운로드하려면 내보내기를 클릭하세요",
@@ -1106,7 +1110,15 @@
     "style": "스타일",
     "tag": "태그",
     "timingStyle": "타이밍 패턴 스타일",
-    "transparentBg": "투명 배경"
+    "transparentBg": "투명 배경",
+    "paletteMode": "팔레트 모드",
+    "paletteModePosition": "위치별",
+    "paletteModeBrightness": "밝기별",
+    "paletteModeDiagonal": "대각선",
+    "paletteModeRadial": "방사형",
+    "paletteModeRandom": "무작위",
+    "paletteModeRow": "행별",
+    "paletteModeColumn": "열별"
   },
   "safety": {
     "off": "꺼짐",
@@ -1140,7 +1152,15 @@
     "simulateBlur": "흐림 효과 시뮬레이션",
     "simulateNoise": "소음 시뮬레이션",
     "simulateRotation": "회전 시뮬레이션",
-    "untilScannable": "스캔 가능해질 때까지"
+    "untilScannable": "스캔 가능해질 때까지",
+    "eccAwareEnabled": "ECC 인식 활성화",
+    "eccAwareDesc": "중요한 QR 영역을 지능적으로 보존",
+    "eccAwareRiskBudget": "위험 예산",
+    "eccAwareRiskBudgetDesc": "높은 값은 더 많은 오버레이 커버리지 허용",
+    "eccAwareWeightMap": "가중치 맵",
+    "eccMapDistanceToFinders": "파인더까지의 거리",
+    "eccMapBlockHeatmap": "블록 히트맵",
+    "eccMapEmpiricalScan": "경험적 스캔 히트맵"
   },
   "sections": {
     "animation": "애니메이션",
@@ -1366,7 +1386,9 @@
     "useFrameDelays": "프레임 지연 사용",
     "voidCluster": "공허와 군집",
     "pleaseEnterUrl": "URL을 입력해 주세요",
-    "preview": "미리보기"
+    "preview": "미리보기",
+    "sobel": "Sobel",
+    "canny": "Canny"
   },
   "payload": {
     "emailAddress": "이메일 주소",

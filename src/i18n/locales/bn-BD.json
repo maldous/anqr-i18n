@@ -29,7 +29,8 @@
     "speed": "ফ্রেম স্পিড",
     "startFrame": "শুরু ফ্রেম",
     "temporalDither": "টেম্পোরাল ডিদার",
-    "wave": "তরঙ্গ"
+    "wave": "তরঙ্গ",
+    "auto": "অটো"
   },
   "languages": {
     "en-GB": "ইংরেজি",
@@ -938,7 +939,9 @@
     "auspaynetNote": "অস্ট্রেলিয়ান NPP PayID পেমেন্টের জন্য AusPayNet",
     "paypalMeNote": "PayPal.Me শেয়ারযোগ্য পেমেন্ট লিঙ্ক",
     "cashAppNote": "Cash App $cashtag পেমেন্ট লিঙ্ক",
-    "emvGenericNote": "জেনেরিক EMVCo MPM QR কোড ফরম্যাট"
+    "emvGenericNote": "জেনেরিক EMVCo MPM QR কোড ফরম্যাট",
+    "maxFramesAuto": "0 = স্বয়ংক্রিয় (সোর্স ফ্রেম ব্যবহার করে, কর্মক্ষমতার জন্য সর্বোচ্চ 50)",
+    "paletteMode": "প্যালেট থেকে মডিউলগুলিতে রঙ কীভাবে বরাদ্দ করা হয়"
   },
   "language": {
     "current": "ভাষা",
@@ -1010,7 +1013,8 @@
     "trueVector": "সত্য ভেক্টর",
     "trueVectorDesc": "রাস্টারের পরিবর্তে পাথ ব্যবহার করুন",
     "webp": "ওয়েবপি",
-    "width": "প্রস্থ"
+    "width": "প্রস্থ",
+    "animatedWebp": "অ্যানিমেটেড WebP"
   },
   "preview": {
     "qrCodePreview": "কোড প্রিভিউ - ডাউনলোড করতে এক্সপোর্টে ক্লিক করুন",
@@ -1106,7 +1110,15 @@
     "style": "স্টাইল",
     "tag": "ট্যাগ",
     "timingStyle": "টাইমিং প্যাটার্ন স্টাইল",
-    "transparentBg": "স্বচ্ছ পটভূমি"
+    "transparentBg": "স্বচ্ছ পটভূমি",
+    "paletteMode": "প্যালেট মোড",
+    "paletteModePosition": "অবস্থান অনুসারে",
+    "paletteModeBrightness": "উজ্জ্বলতা অনুসারে",
+    "paletteModeDiagonal": "তির্যক",
+    "paletteModeRadial": "রেডিয়াল",
+    "paletteModeRandom": "এলোমেলো",
+    "paletteModeRow": "সারি অনুসারে",
+    "paletteModeColumn": "কলাম অনুসারে"
   },
   "safety": {
     "off": "বন্ধ",
@@ -1140,7 +1152,15 @@
     "simulateBlur": "অস্পষ্টতা অনুকরণ করুন",
     "simulateNoise": "সিমুলেট করুন",
     "simulateRotation": "অনুকরণ করুন",
-    "untilScannable": "স্ক্যান করা না হওয়া পর্যন্ত"
+    "untilScannable": "স্ক্যান করা না হওয়া পর্যন্ত",
+    "eccAwareEnabled": "ECC-সচেতন সক্রিয় করুন",
+    "eccAwareDesc": "বুদ্ধিমত্তার সাথে গুরুত্বপূর্ণ QR অঞ্চল সংরক্ষণ করুন",
+    "eccAwareRiskBudget": "ঝুঁকি বাজেট",
+    "eccAwareRiskBudgetDesc": "উচ্চ মান আরও ওভারলে কভারেজ অনুমতি দেয়",
+    "eccAwareWeightMap": "ওজন মানচিত্র",
+    "eccMapDistanceToFinders": "ফাইন্ডারদের দূরত্ব",
+    "eccMapBlockHeatmap": "ব্লক হিটম্যাপ",
+    "eccMapEmpiricalScan": "অভিজ্ঞতামূলক স্ক্যান হিটম্যাপ"
   },
   "sections": {
     "animation": "অ্যানিমেশন",
@@ -1366,7 +1386,9 @@
     "useFrameDelays": "বিলম্ব ব্যবহার করুন",
     "voidCluster": "শূন্যতা এবং ক্লাস্টার",
     "pleaseEnterUrl": "অনুগ্রহ করে একটি URL লিখুন",
-    "preview": "প্রিভিউ"
+    "preview": "প্রিভিউ",
+    "sobel": "Sobel",
+    "canny": "Canny"
   },
   "payload": {
     "emailAddress": "ইমেল ঠিকানা",

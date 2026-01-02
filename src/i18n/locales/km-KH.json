@@ -29,7 +29,8 @@
     "speed": "ល្បឿន​ស៊ុម",
     "startFrame": "ស៊ុមចាប់ផ្តើម",
     "temporalDither": "ភាពច្របូកច្របល់​ខាង​ពេលវេលា",
-    "wave": "រលក"
+    "wave": "រលក",
+    "auto": "ស្វ័យប្រវត្តិ"
   },
   "languages": {
     "en-GB": "ភាសាអង់គ្លេស",
@@ -938,7 +939,9 @@
     "auspaynetNote": "AusPayNet សម្រាប់ការទូទាត់ប្រាក់ PayID របស់ NPP អូស្ត្រាលី",
     "paypalMeNote": "តំណភ្ជាប់ទូទាត់ដែលអាចចែករំលែកបានរបស់ PayPal.Me",
     "cashAppNote": "តំណភ្ជាប់ទូទាត់ប្រាក់ $cashtag សម្រាប់កម្មវិធីសាច់ប្រាក់",
-    "emvGenericNote": "ទម្រង់​កូដ QR ទូទៅ EMVCo MPM"
+    "emvGenericNote": "ទម្រង់​កូដ QR ទូទៅ EMVCo MPM",
+    "maxFramesAuto": "0 = ស្វ័យប្រវត្តិ (ប្រើស៊ុមប្រភព អតិបរមា 50 សម្រាប់ដំណើរការ)",
+    "paletteMode": "របៀបពណ៌ពីក្ដារពណ៌ត្រូវបានកំណត់ទៅម៉ូឌុល"
   },
   "language": {
     "current": "ភាសា",
@@ -1010,7 +1013,8 @@
     "trueVector": "វ៉ិចទ័រពិត",
     "trueVectorDesc": "ប្រើផ្លូវជំនួសឱ្យរ៉ាស្ទ័រដែលបានបង្កប់",
     "webp": "គេហទំព័រភី",
-    "width": "៥៧០"
+    "width": "៥៧០",
+    "animatedWebp": "WebP ចលនា"
   },
   "preview": {
     "qrCodePreview": "ការមើលជាមុននៃលេខកូដ QR - ចុចនាំចេញដើម្បីទាញយក",
@@ -1106,7 +1110,15 @@
     "style": "រចនាប័ទ្ម",
     "tag": "ស្លាក",
     "timingStyle": "រចនាប័ទ្មលំនាំកំណត់ពេលវេលា",
-    "transparentBg": "ផ្ទៃខាងក្រោយថ្លា"
+    "transparentBg": "ផ្ទៃខាងក្រោយថ្លា",
+    "paletteMode": "របៀបក្ដារពណ៌",
+    "paletteModePosition": "តាមទីតាំង",
+    "paletteModeBrightness": "តាមពន្លឺ",
+    "paletteModeDiagonal": "អង្កត់ទ្រូង",
+    "paletteModeRadial": "រ៉ាឌីអាល់",
+    "paletteModeRandom": "ចៃដន្យ",
+    "paletteModeRow": "តាមជួរដេក",
+    "paletteModeColumn": "តាមជួរឈរ"
   },
   "safety": {
     "off": "បិទ",
@@ -1140,7 +1152,15 @@
     "simulateBlur": "ធ្វើត្រាប់តាមភាពព្រិលៗ",
     "simulateNoise": "ក្លែងធ្វើសំឡេងរំខាន",
     "simulateRotation": "ក្លែងធ្វើ​ការបង្វិល",
-    "untilScannable": "រហូតដល់អាចស្កេនបាន"
+    "untilScannable": "រហូតដល់អាចស្កេនបាន",
+    "eccAwareEnabled": "បើក ECC-Aware",
+    "eccAwareDesc": "រក្សាតំបន់ QR សំខាន់ៗដោយឆ្លាតវៃ",
+    "eccAwareRiskBudget": "ថវិកាហានិភ័យ",
+    "eccAwareRiskBudgetDesc": "តម្លៃខ្ពស់អនុញ្ញាតឱ្យមានការគ្របដណ្តប់ overlay ច្រើនជាង",
+    "eccAwareWeightMap": "ផែនទីទម្ងន់",
+    "eccMapDistanceToFinders": "ចម្ងាយទៅ Finders",
+    "eccMapBlockHeatmap": "ផែនទីកម្ដៅប្លុក",
+    "eccMapEmpiricalScan": "ផែនទីកម្ដៅស្កេនពិសោធន៍"
   },
   "sections": {
     "animation": "ចលនា",
@@ -1366,7 +1386,9 @@
     "useFrameDelays": "ប្រើការពន្យារពេលស៊ុម",
     "voidCluster": "ភាពទទេ និងចង្កោម",
     "pleaseEnterUrl": "សូមបញ្ចូល URL",
-    "preview": "ការមើលជាមុន"
+    "preview": "ការមើលជាមុន",
+    "sobel": "Sobel",
+    "canny": "Canny"
   },
   "payload": {
     "emailAddress": "អាសយដ្ឋានអ៊ីមែល",

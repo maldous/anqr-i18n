@@ -29,7 +29,8 @@
     "speed": "Viteză cadre",
     "startFrame": "Cadru de început",
     "temporalDither": "Temporalitate temporală",
-    "wave": "Val"
+    "wave": "Val",
+    "auto": "Automat"
   },
   "languages": {
     "en-GB": "Engleză",
@@ -938,7 +939,9 @@
     "auspaynetNote": "AusPayNet pentru plățile NPP PayID din Australia",
     "paypalMeNote": "Link de plată partajabil PayPal.Me",
     "cashAppNote": "Link de plată Cash App $cashtag",
-    "emvGenericNote": "Format generic de cod QR EMVCo MPM"
+    "emvGenericNote": "Format generic de cod QR EMVCo MPM",
+    "maxFramesAuto": "0 = Auto (folosește cadrele sursă, max 50 pentru performanță)",
+    "paletteMode": "Cum sunt atribuite culorile din paletă modulelor"
   },
   "language": {
     "current": "Limbaj",
@@ -1010,7 +1013,8 @@
     "trueVector": "Vector adevărat",
     "trueVectorDesc": "Utilizați căi în loc de raster încorporat",
     "webp": "WebP",
-    "width": "Lățime"
+    "width": "Lățime",
+    "animatedWebp": "WebP animat"
   },
   "preview": {
     "qrCodePreview": "Previzualizare cod QR - Faceți clic pe Export pentru a descărca",
@@ -1106,7 +1110,15 @@
     "style": "Stil",
     "tag": "Etichetă",
     "timingStyle": "Stil model de sincronizare",
-    "transparentBg": "Fundal transparent"
+    "transparentBg": "Fundal transparent",
+    "paletteMode": "Mod paletă",
+    "paletteModePosition": "După poziție",
+    "paletteModeBrightness": "După luminozitate",
+    "paletteModeDiagonal": "Diagonal",
+    "paletteModeRadial": "Radial",
+    "paletteModeRandom": "Aleatoriu",
+    "paletteModeRow": "După rând",
+    "paletteModeColumn": "După coloană"
   },
   "safety": {
     "off": "Oprit",
@@ -1140,7 +1152,15 @@
     "simulateBlur": "Simulează estomparea",
     "simulateNoise": "Simulează zgomotul",
     "simulateRotation": "Simulare rotație",
-    "untilScannable": "Până la scanare"
+    "untilScannable": "Până la scanare",
+    "eccAwareEnabled": "Activare ECC-Aware",
+    "eccAwareDesc": "Păstrează inteligent regiunile QR critice",
+    "eccAwareRiskBudget": "Buget de risc",
+    "eccAwareRiskBudgetDesc": "Valorile mai mari permit o acoperire mai mare a suprapunerii",
+    "eccAwareWeightMap": "Hartă de greutăți",
+    "eccMapDistanceToFinders": "Distanța până la căutători",
+    "eccMapBlockHeatmap": "Hartă termică blocuri",
+    "eccMapEmpiricalScan": "Hartă termică scanare empirică"
   },
   "sections": {
     "animation": "Animație",
@@ -1366,7 +1386,9 @@
     "useFrameDelays": "Utilizați întârzierile cadrelor",
     "voidCluster": "Vid și Cluster",
     "pleaseEnterUrl": "Vă rugăm să introduceți o adresă URL",
-    "preview": "Previzualizare"
+    "preview": "Previzualizare",
+    "sobel": "Sobel",
+    "canny": "Canny"
   },
   "payload": {
     "emailAddress": "Adresă de e-mail",

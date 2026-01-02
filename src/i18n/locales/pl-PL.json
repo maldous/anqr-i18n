@@ -29,7 +29,8 @@
     "speed": "Prędkość klatek",
     "startFrame": "Klatka startowa",
     "temporalDither": "Dither czasowy",
-    "wave": "Fala"
+    "wave": "Fala",
+    "auto": "Auto"
   },
   "languages": {
     "en-GB": "angielski",
@@ -938,7 +939,9 @@
     "auspaynetNote": "AusPayNet dla australijskich płatności NPP PayID",
     "paypalMeNote": "Udostępniany link do płatności PayPal.Me",
     "cashAppNote": "Link do płatności Cash App $cashtag",
-    "emvGenericNote": "Ogólny format kodu QR EMVCo MPM"
+    "emvGenericNote": "Ogólny format kodu QR EMVCo MPM",
+    "maxFramesAuto": "0 = Auto (używa ramek źródłowych, maks 50 dla wydajności)",
+    "paletteMode": "Jak kolory z palety są przypisywane do modułów"
   },
   "language": {
     "current": "Język",
@@ -1010,7 +1013,8 @@
     "trueVector": "Prawdziwy wektor",
     "trueVectorDesc": "Używaj ścieżek zamiast osadzonego rastra",
     "webp": "WebP",
-    "width": "Szerokość"
+    "width": "Szerokość",
+    "animatedWebp": "Animowany WebP"
   },
   "preview": {
     "qrCodePreview": "Podgląd kodu QR -- kliknij Eksportuj, aby pobrać",
@@ -1106,7 +1110,15 @@
     "style": "Styl",
     "tag": "Etykieta",
     "timingStyle": "Styl wzorca czasowego",
-    "transparentBg": "Przezroczyste tło"
+    "transparentBg": "Przezroczyste tło",
+    "paletteMode": "Tryb palety",
+    "paletteModePosition": "Według pozycji",
+    "paletteModeBrightness": "Według jasności",
+    "paletteModeDiagonal": "Po przekątnej",
+    "paletteModeRadial": "Promieniowy",
+    "paletteModeRandom": "Losowy",
+    "paletteModeRow": "Według wiersza",
+    "paletteModeColumn": "Według kolumny"
   },
   "safety": {
     "off": "Wyłączone",
@@ -1140,7 +1152,15 @@
     "simulateBlur": "Symuluj rozmycie",
     "simulateNoise": "Symuluj hałas",
     "simulateRotation": "Symuluj obrót",
-    "untilScannable": "Do momentu zeskanowania"
+    "untilScannable": "Do momentu zeskanowania",
+    "eccAwareEnabled": "Włącz ECC-Aware",
+    "eccAwareDesc": "Inteligentnie zachowaj krytyczne regiony QR",
+    "eccAwareRiskBudget": "Budżet ryzyka",
+    "eccAwareRiskBudgetDesc": "Wyższe wartości pozwalają na większe pokrycie nakładki",
+    "eccAwareWeightMap": "Mapa wag",
+    "eccMapDistanceToFinders": "Odległość do wyszukiwaczy",
+    "eccMapBlockHeatmap": "Mapa cieplna bloków",
+    "eccMapEmpiricalScan": "Empiryczna mapa cieplna skanowania"
   },
   "sections": {
     "animation": "Animacja",
@@ -1366,7 +1386,9 @@
     "useFrameDelays": "Użyj opóźnień ramek",
     "voidCluster": "Pustka i Klaster",
     "pleaseEnterUrl": "Proszę podać adres URL",
-    "preview": "Podgląd"
+    "preview": "Podgląd",
+    "sobel": "Sobel",
+    "canny": "Canny"
   },
   "payload": {
     "emailAddress": "Adres e-mail",

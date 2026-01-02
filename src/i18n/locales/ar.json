@@ -29,7 +29,8 @@
     "speed": "سرعة الإطار",
     "startFrame": "إطار البداية",
     "temporalDither": "التردد الزمني",
-    "wave": "موجة"
+    "wave": "موجة",
+    "auto": "تلقائي"
   },
   "languages": {
     "en-GB": "الإنجليزية",
@@ -938,7 +939,9 @@
     "auspaynetNote": "AusPayNet لمدفوعات PayID عبر NPP الأسترالية",
     "paypalMeNote": "رابط دفع PayPal.Me قابل للمشاركة",
     "cashAppNote": "رابط دفع Cash App $cashtag",
-    "emvGenericNote": "تنسيق رمز QR EMVCo MPM العام"
+    "emvGenericNote": "تنسيق رمز QR EMVCo MPM العام",
+    "maxFramesAuto": "0 = تلقائي (يستخدم إطارات المصدر، بحد أقصى 50 للأداء)",
+    "paletteMode": "كيفية تعيين الألوان من لوحة الألوان للوحدات"
   },
   "language": {
     "current": "اللغة",
@@ -1010,7 +1013,8 @@
     "trueVector": "المتجه الحقيقي",
     "trueVectorDesc": "استخدم المسارات بدلاً من الصور النقطية المضمنة",
     "webp": "WebP",
-    "width": "العرض"
+    "width": "العرض",
+    "animatedWebp": "WebP متحرك"
   },
   "preview": {
     "qrCodePreview": "معاينة رمز الاستجابة السريعة - انقر فوق تصدير للتنزيل",
@@ -1106,7 +1110,15 @@
     "style": "ستايل",
     "tag": "الوسم",
     "timingStyle": "نمط نمط التوقيت",
-    "transparentBg": "خلفية شفافة"
+    "transparentBg": "خلفية شفافة",
+    "paletteMode": "وضع لوحة الألوان",
+    "paletteModePosition": "حسب الموقع",
+    "paletteModeBrightness": "حسب السطوع",
+    "paletteModeDiagonal": "قطري",
+    "paletteModeRadial": "شعاعي",
+    "paletteModeRandom": "عشوائي",
+    "paletteModeRow": "حسب الصف",
+    "paletteModeColumn": "حسب العمود"
   },
   "safety": {
     "off": "إيقاف",
@@ -1140,7 +1152,15 @@
     "simulateBlur": "محاكاة التمويه",
     "simulateNoise": "محاكاة الضوضاء",
     "simulateRotation": "محاكاة الدوران",
-    "untilScannable": "حتى يصبح قابلاً للمسح الضوئي"
+    "untilScannable": "حتى يصبح قابلاً للمسح الضوئي",
+    "eccAwareEnabled": "تمكين الوعي بـ ECC",
+    "eccAwareDesc": "الحفاظ الذكي على مناطق QR الحرجة",
+    "eccAwareRiskBudget": "ميزانية المخاطر",
+    "eccAwareRiskBudgetDesc": "القيم الأعلى تسمح بتغطية أكبر للطبقة",
+    "eccAwareWeightMap": "خريطة الأوزان",
+    "eccMapDistanceToFinders": "المسافة إلى المحددات",
+    "eccMapBlockHeatmap": "خريطة حرارة الكتل",
+    "eccMapEmpiricalScan": "خريطة حرارة المسح التجريبي"
   },
   "sections": {
     "animation": "الرسوم المتحركة",
@@ -1366,7 +1386,9 @@
     "useFrameDelays": "استخدام تأخيرات الإطارات",
     "voidCluster": "الفراغ والتكتل",
     "pleaseEnterUrl": "يرجى إدخال عنوان URL",
-    "preview": "معاينة"
+    "preview": "معاينة",
+    "sobel": "Sobel",
+    "canny": "Canny"
   },
   "payload": {
     "emailAddress": "عنوان البريد الإلكتروني",

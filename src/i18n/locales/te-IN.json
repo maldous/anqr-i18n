@@ -29,7 +29,8 @@
     "speed": "ఫ్రేమ్ స్పీడ్",
     "startFrame": "ప్రారంభ ఫ్రేమ్",
     "temporalDither": "తాత్కాలిక డిథర్",
-    "wave": "అల"
+    "wave": "అల",
+    "auto": "ఆటో"
   },
   "languages": {
     "en-GB": "ఇంగ్లీష్",
@@ -938,7 +939,9 @@
     "auspaynetNote": "ఆస్ట్రేలియన్ NPP PayID చెల్లింపుల కోసం AusPayNet",
     "paypalMeNote": "PayPal.Me షేర్ చేయగల చెల్లింపు లింక్",
     "cashAppNote": "Cash App $cashtag చెల్లింపు లింక్",
-    "emvGenericNote": "జెనరిక్ EMVCo MPM QR కోడ్ ఫార్మాట్"
+    "emvGenericNote": "జెనరిక్ EMVCo MPM QR కోడ్ ఫార్మాట్",
+    "maxFramesAuto": "0 = ఆటో (సోర్స్ ఫ్రేమ్‌లను ఉపయోగిస్తుంది, పనితీరు కోసం గరిష్టంగా 50)",
+    "paletteMode": "పాలెట్ నుండి రంగులు మాడ్యూల్‌లకు ఎలా కేటాయించబడతాయి"
   },
   "language": {
     "current": "భాష",
@@ -1010,7 +1013,8 @@
     "trueVector": "నిజమైన వెక్టర్",
     "trueVectorDesc": "ఎంబెడెడ్ రాస్టర్‌కు బదులుగా పాత్‌లను ఉపయోగించండి",
     "webp": "వెబ్‌పి",
-    "width": "వెడల్పు"
+    "width": "వెడల్పు",
+    "animatedWebp": "యానిమేటెడ్ WebP"
   },
   "preview": {
     "qrCodePreview": "QR కోడ్ ప్రివ్యూ - డౌన్‌లోడ్ చేయడానికి ఎగుమతిపై క్లిక్ చేయండి",
@@ -1106,7 +1110,15 @@
     "style": "శైలి",
     "tag": "ట్యాగ్",
     "timingStyle": "సమయ సరళి శైలి",
-    "transparentBg": "పారదర్శక నేపథ్యం"
+    "transparentBg": "పారదర్శక నేపథ్యం",
+    "paletteMode": "పాలెట్ మోడ్",
+    "paletteModePosition": "స్థానం ప్రకారం",
+    "paletteModeBrightness": "ప్రకాశం ప్రకారం",
+    "paletteModeDiagonal": "వికర్ణ",
+    "paletteModeRadial": "రేడియల్",
+    "paletteModeRandom": "యాదృచ్ఛిక",
+    "paletteModeRow": "వరుస ప్రకారం",
+    "paletteModeColumn": "నిలువు వరుస ప్రకారం"
   },
   "safety": {
     "off": "ఆఫ్",
@@ -1140,7 +1152,15 @@
     "simulateBlur": "బ్లర్‌ను అనుకరించండి",
     "simulateNoise": "శబ్దాన్ని అనుకరించు",
     "simulateRotation": "భ్రమణాన్ని అనుకరించండి",
-    "untilScannable": "స్కాన్ చేయగలిగే వరకు"
+    "untilScannable": "స్కాన్ చేయగలిగే వరకు",
+    "eccAwareEnabled": "ECC-అవేర్ ప్రారంభించు",
+    "eccAwareDesc": "క్లిష్టమైన QR ప్రాంతాలను తెలివిగా భద్రపరచండి",
+    "eccAwareRiskBudget": "రిస్క్ బడ్జెట్",
+    "eccAwareRiskBudgetDesc": "అధిక విలువలు ఎక్కువ ఓవర్‌లే కవరేజీని అనుమతిస్తాయి",
+    "eccAwareWeightMap": "వెయిట్ మ్యాప్",
+    "eccMapDistanceToFinders": "ఫైండర్లకు దూరం",
+    "eccMapBlockHeatmap": "బ్లాక్ హీట్‌మ్యాప్",
+    "eccMapEmpiricalScan": "అనుభావిక స్కాన్ హీట్‌మ్యాప్"
   },
   "sections": {
     "animation": "యానిమేషన్",
@@ -1366,7 +1386,9 @@
     "useFrameDelays": "ఫ్రేమ్ జాప్యాలను ఉపయోగించండి",
     "voidCluster": "శూన్యం & క్లస్టర్",
     "pleaseEnterUrl": "దయచేసి URL నమోదు చేయండి",
-    "preview": "ప్రివ్యూ"
+    "preview": "ప్రివ్యూ",
+    "sobel": "Sobel",
+    "canny": "Canny"
   },
   "payload": {
     "emailAddress": "ఇమెయిల్ చిరునామా",

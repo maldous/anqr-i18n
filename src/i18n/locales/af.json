@@ -29,7 +29,8 @@
     "speed": "Raamspoed",
     "startFrame": "Beginraam",
     "temporalDither": "Tydele Wyk",
-    "wave": "Golf"
+    "wave": "Golf",
+    "auto": "Automaties"
   },
   "languages": {
     "en-GB": "Engels",
@@ -938,7 +939,9 @@
     "auspaynetNote": "AusPayNet vir Australiese NPP PayID-betalings",
     "paypalMeNote": "PayPal.Me deelbare betaalskakel",
     "cashAppNote": "Kontant-app $cashtag-betalingskakel",
-    "emvGenericNote": "Generiese EMVCo MPM QR-kodeformaat"
+    "emvGenericNote": "Generiese EMVCo MPM QR-kodeformaat",
+    "maxFramesAuto": "0 = Outomaties (gebruik bronrame, maks 50 vir prestasie)",
+    "paletteMode": "Hoe kleure van die palet aan modules toegewys word"
   },
   "language": {
     "current": "Taal",
@@ -1010,7 +1013,8 @@
     "trueVector": "Ware Vektor",
     "trueVectorDesc": "Gebruik paaie in plaas van ingebedde raster",
     "webp": "WebP",
-    "width": "Breedte"
+    "width": "Breedte",
+    "animatedWebp": "Geanimeerde WebP"
   },
   "preview": {
     "qrCodePreview": "QR-kodevoorskou - Klik Uitvoer om af te laai",
@@ -1106,7 +1110,15 @@
     "style": "Styl",
     "tag": "Etiket",
     "timingStyle": "Tydspatroonstyl",
-    "transparentBg": "Deursigtige Agtergrond"
+    "transparentBg": "Deursigtige Agtergrond",
+    "paletteMode": "Paletmodus",
+    "paletteModePosition": "Volgens Posisie",
+    "paletteModeBrightness": "Volgens Helderheid",
+    "paletteModeDiagonal": "Diagonaal",
+    "paletteModeRadial": "Radiaal",
+    "paletteModeRandom": "Willekeurig",
+    "paletteModeRow": "Volgens Ry",
+    "paletteModeColumn": "Volgens Kolom"
   },
   "safety": {
     "off": "Af",
@@ -1140,7 +1152,15 @@
     "simulateBlur": "Simuleer Vervaag",
     "simulateNoise": "Simuleer geraas",
     "simulateRotation": "Simuleer Rotasie",
-    "untilScannable": "Tot skandeerbaar"
+    "untilScannable": "Tot skandeerbaar",
+    "eccAwareEnabled": "Aktiveer ECC-Bewus",
+    "eccAwareDesc": "Behou kritieke QR-streke intelligent",
+    "eccAwareRiskBudget": "Risikobegroting",
+    "eccAwareRiskBudgetDesc": "Hoër waardes laat meer oorleg-dekking toe",
+    "eccAwareWeightMap": "Gewigkaart",
+    "eccMapDistanceToFinders": "Afstand na Vinders",
+    "eccMapBlockHeatmap": "Blokhittekaart",
+    "eccMapEmpiricalScan": "Empiriese Skandeer-hittekaart"
   },
   "sections": {
     "animation": "Animasie",
@@ -1366,7 +1386,9 @@
     "useFrameDelays": "Gebruik Raamvertragings",
     "voidCluster": "Leegte & Tros",
     "pleaseEnterUrl": "Voer asseblief 'n URL in",
-    "preview": "Voorskou"
+    "preview": "Voorskou",
+    "sobel": "Sobel",
+    "canny": "Canny"
   },
   "payload": {
     "emailAddress": "E-posadres",

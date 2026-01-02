@@ -29,7 +29,8 @@
     "speed": "Rychlost snímkování",
     "startFrame": "Spuštění snímku",
     "temporalDither": "Časové kolísání",
-    "wave": "Vlna"
+    "wave": "Vlna",
+    "auto": "Auto"
   },
   "languages": {
     "en-GB": "Angličtina",
@@ -938,7 +939,9 @@
     "auspaynetNote": "AusPayNet pro platby přes australské NPP PayID",
     "paypalMeNote": "Odkaz na sdílení platby přes PayPal.Me",
     "cashAppNote": "Odkaz na platbu v aplikaci Cash App s kódem $cashtag",
-    "emvGenericNote": "Obecný formát QR kódu EMVCo MPM"
+    "emvGenericNote": "Obecný formát QR kódu EMVCo MPM",
+    "maxFramesAuto": "0 = Automaticky (používá zdrojové snímky, max 50 pro výkon)",
+    "paletteMode": "Jak jsou barvy z palety přiřazeny modulům"
   },
   "language": {
     "current": "Jazyk",
@@ -1010,7 +1013,8 @@
     "trueVector": "Pravý vektor",
     "trueVectorDesc": "Používejte cesty místo vloženého rastru",
     "webp": "WebP",
-    "width": "Šířka"
+    "width": "Šířka",
+    "animatedWebp": "Animovaný WebP"
   },
   "preview": {
     "qrCodePreview": "Náhled QR kódu -- Kliknutím na Exportovat stáhnete",
@@ -1106,7 +1110,15 @@
     "style": "Styl",
     "tag": "Štítek",
     "timingStyle": "Styl časového vzoru",
-    "transparentBg": "Průhledné pozadí"
+    "transparentBg": "Průhledné pozadí",
+    "paletteMode": "Režim palety",
+    "paletteModePosition": "Podle pozice",
+    "paletteModeBrightness": "Podle jasu",
+    "paletteModeDiagonal": "Diagonální",
+    "paletteModeRadial": "Radiální",
+    "paletteModeRandom": "Náhodný",
+    "paletteModeRow": "Podle řádku",
+    "paletteModeColumn": "Podle sloupce"
   },
   "safety": {
     "off": "Vypnuto",
@@ -1140,7 +1152,15 @@
     "simulateBlur": "Simulace rozmazání",
     "simulateNoise": "Simulace šumu",
     "simulateRotation": "Simulace rotace",
-    "untilScannable": "Dokud nebude možné skenovat"
+    "untilScannable": "Dokud nebude možné skenovat",
+    "eccAwareEnabled": "Povolit ECC-Aware",
+    "eccAwareDesc": "Inteligentně zachovat kritické QR oblasti",
+    "eccAwareRiskBudget": "Rozpočet rizika",
+    "eccAwareRiskBudgetDesc": "Vyšší hodnoty umožňují větší pokrytí překrytí",
+    "eccAwareWeightMap": "Mapa vah",
+    "eccMapDistanceToFinders": "Vzdálenost k vyhledávačům",
+    "eccMapBlockHeatmap": "Bloková tepelná mapa",
+    "eccMapEmpiricalScan": "Empirická tepelná mapa skenování"
   },
   "sections": {
     "animation": "Animace",
@@ -1366,7 +1386,9 @@
     "useFrameDelays": "Používejte zpoždění rámců",
     "voidCluster": "Prázdnota a shluk",
     "pleaseEnterUrl": "Zadejte prosím URL adresu",
-    "preview": "Náhled"
+    "preview": "Náhled",
+    "sobel": "Sobel",
+    "canny": "Canny"
   },
   "payload": {
     "emailAddress": "E-mailová adresa",

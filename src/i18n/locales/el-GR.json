@@ -29,7 +29,8 @@
     "speed": "Ταχύτητα καρέ",
     "startFrame": "Πλαίσιο έναρξης",
     "temporalDither": "Χρονική Αστάθεια",
-    "wave": "Κύμα"
+    "wave": "Κύμα",
+    "auto": "Αυτόματο"
   },
   "languages": {
     "en-GB": "Αγγλικά",
@@ -938,7 +939,9 @@
     "auspaynetNote": "AusPayNet για πληρωμές μέσω PayID του Αυστραλιανού NPP",
     "paypalMeNote": "Σύνδεσμος πληρωμής με δυνατότητα κοινής χρήσης μέσω PayPal.Me",
     "cashAppNote": "Σύνδεσμος πληρωμής με Cash App $cashtag",
-    "emvGenericNote": "Γενική μορφή κωδικού QR MPM EMVCo"
+    "emvGenericNote": "Γενική μορφή κωδικού QR MPM EMVCo",
+    "maxFramesAuto": "0 = Αυτόματο (χρησιμοποιεί πλαίσια πηγής, μέγιστο 50 για απόδοση)",
+    "paletteMode": "Πώς τα χρώματα από την παλέτα αντιστοιχούν στις μονάδες"
   },
   "language": {
     "current": "Γλώσσα",
@@ -1010,7 +1013,8 @@
     "trueVector": "Αληθινό Διάνυσμα",
     "trueVectorDesc": "Χρήση διαδρομών αντί για ενσωματωμένο raster",
     "webp": "Ιστός",
-    "width": "Πλάτος"
+    "width": "Πλάτος",
+    "animatedWebp": "Κινούμενο WebP"
   },
   "preview": {
     "qrCodePreview": "Προεπισκόπηση κωδικού QR - Κάντε κλικ στην επιλογή Εξαγωγή για λήψη",
@@ -1106,7 +1110,15 @@
     "style": "Στυλ",
     "tag": "Ετικέτα",
     "timingStyle": "Στυλ μοτίβου χρονισμού",
-    "transparentBg": "Διαφανές φόντο"
+    "transparentBg": "Διαφανές φόντο",
+    "paletteMode": "Λειτουργία παλέτας",
+    "paletteModePosition": "Κατά θέση",
+    "paletteModeBrightness": "Κατά φωτεινότητα",
+    "paletteModeDiagonal": "Διαγώνια",
+    "paletteModeRadial": "Ακτινωτά",
+    "paletteModeRandom": "Τυχαία",
+    "paletteModeRow": "Κατά σειρά",
+    "paletteModeColumn": "Κατά στήλη"
   },
   "safety": {
     "off": "Απενεργοποίηση",
@@ -1140,7 +1152,15 @@
     "simulateBlur": "Προσομοίωση θολώματος",
     "simulateNoise": "Προσομοίωση θορύβου",
     "simulateRotation": "Προσομοίωση Περιστροφής",
-    "untilScannable": "Μέχρι να είναι δυνατή η σάρωση"
+    "untilScannable": "Μέχρι να είναι δυνατή η σάρωση",
+    "eccAwareEnabled": "Ενεργοποίηση ECC-Aware",
+    "eccAwareDesc": "Έξυπνη διατήρηση κρίσιμων περιοχών QR",
+    "eccAwareRiskBudget": "Προϋπολογισμός κινδύνου",
+    "eccAwareRiskBudgetDesc": "Υψηλότερες τιμές επιτρέπουν μεγαλύτερη κάλυψη επικάλυψης",
+    "eccAwareWeightMap": "Χάρτης βαρών",
+    "eccMapDistanceToFinders": "Απόσταση από τους εντοπιστές",
+    "eccMapBlockHeatmap": "Θερμικός χάρτης μπλοκ",
+    "eccMapEmpiricalScan": "Εμπειρικός θερμικός χάρτης σάρωσης"
   },
   "sections": {
     "animation": "Κινούμενα Σχέδια",
@@ -1366,7 +1386,9 @@
     "useFrameDelays": "Χρήση καθυστερήσεων καρέ",
     "voidCluster": "Κενό & Σμήνος",
     "pleaseEnterUrl": "Παρακαλώ εισάγετε μια διεύθυνση URL",
-    "preview": "Προεπισκόπηση"
+    "preview": "Προεπισκόπηση",
+    "sobel": "Sobel",
+    "canny": "Canny"
   },
   "payload": {
     "emailAddress": "Διεύθυνση ηλεκτρονικού ταχυδρομείου",

@@ -862,8 +862,6 @@
   },
   "hints": {
     "moduleJitterWarning": "⚠️ May affect scannability",
-    "maxFramesAuto": "0 = Auto (uses source frames, max 50 for performance)",
-    "paletteMode": "How colors from the palette are assigned to modules",
     "alignmentStyle": "Style of alignment patterns (used in larger QR codes)",
     "appLinkNote": "Opens specific content within a mobile app",
     "autoDetect": "Auto-detect (requires v{{version}}+ for current content)",
@@ -941,7 +939,9 @@
     "auspaynetNote": "AusPayNet for Australian NPP PayID payments",
     "paypalMeNote": "PayPal.Me shareable payment link",
     "cashAppNote": "Cash App $cashtag payment link",
-    "emvGenericNote": "Generic EMVCo MPM QR code format"
+    "emvGenericNote": "Generic EMVCo MPM QR code format",
+    "maxFramesAuto": "0 = Auto (uses source frames, max 50 for performance)",
+    "paletteMode": "How colors from the palette are assigned to modules"
   },
   "language": {
     "current": "Language",
@@ -978,7 +978,6 @@
     "terms": "Terms"
   },
   "output": {
-    "animatedWebp": "Animated WebP",
     "none": "None",
     "off": "Off",
     "dithering": "Dithering",
@@ -1014,7 +1013,8 @@
     "trueVector": "True Vector",
     "trueVectorDesc": "Use paths instead of embedded raster",
     "webp": "WebP",
-    "width": "Width"
+    "width": "Width",
+    "animatedWebp": "Animated WebP"
   },
   "preview": {
     "qrCodePreview": "QR Code Preview - Click Export to download",
@@ -1054,14 +1054,6 @@
     "none": "None",
     "gradientColors": "Colors",
     "classic": "Classic",
-    "paletteMode": "Palette Mode",
-    "paletteModePosition": "By Position",
-    "paletteModeBrightness": "By Brightness",
-    "paletteModeDiagonal": "Diagonal",
-    "paletteModeRadial": "Radial",
-    "paletteModeRandom": "Random",
-    "paletteModeRow": "By Row",
-    "paletteModeColumn": "By Column",
     "addColor": "Add Color",
     "alignmentStyle": "Alignment Pattern Style",
     "background": "Background",
@@ -1118,7 +1110,15 @@
     "style": "Style",
     "tag": "Tag",
     "timingStyle": "Timing Pattern Style",
-    "transparentBg": "Transparent Background"
+    "transparentBg": "Transparent Background",
+    "paletteMode": "Palette Mode",
+    "paletteModePosition": "By Position",
+    "paletteModeBrightness": "By Brightness",
+    "paletteModeDiagonal": "Diagonal",
+    "paletteModeRadial": "Radial",
+    "paletteModeRandom": "Random",
+    "paletteModeRow": "By Row",
+    "paletteModeColumn": "By Column"
   },
   "safety": {
     "off": "Off",
@@ -1153,7 +1153,6 @@
     "simulateNoise": "Simulate Noise",
     "simulateRotation": "Simulate Rotation",
     "untilScannable": "Until scannable",
-    "eccAwareMode": "ECC-Aware Mode",
     "eccAwareEnabled": "Enable ECC-Aware",
     "eccAwareDesc": "Intelligently preserve critical QR regions",
     "eccAwareRiskBudget": "Risk Budget",
@@ -1314,8 +1313,6 @@
     "eccAwareMode": "ECC-Aware Mode",
     "edge": "Edge Detection",
     "edgeAware": "Edge-Aware",
-    "sobel": "Sobel",
-    "canny": "Canny",
     "enableCrop": "Enable Crop",
     "finderOverride": "Finder Override",
     "fitMode": "Fit Mode",
@@ -1389,7 +1386,9 @@
     "useFrameDelays": "Use Frame Delays",
     "voidCluster": "Void & Cluster",
     "pleaseEnterUrl": "Please enter a URL",
-    "preview": "Preview"
+    "preview": "Preview",
+    "sobel": "Sobel",
+    "canny": "Canny"
   },
   "payload": {
     "emailAddress": "Email Address",

@@ -29,7 +29,8 @@
     "speed": "ਫ੍ਰੇਮ ਸਪੀਡ",
     "startFrame": "ਸ਼ੁਰੂਆਤੀ ਫਰੇਮ",
     "temporalDither": "ਟੈਂਪੋਰਲ ਡਿਥਰ",
-    "wave": "ਲਹਿਰ"
+    "wave": "ਲਹਿਰ",
+    "auto": "ਆਟੋ"
   },
   "languages": {
     "en-GB": "ਅੰਗਰੇਜ਼ੀ",
@@ -938,7 +939,9 @@
     "auspaynetNote": "ਆਸਟ੍ਰੇਲੀਅਨ NPP PayID ਭੁਗਤਾਨਾਂ ਲਈ AusPayNet",
     "paypalMeNote": "PayPal.Me ਸਾਂਝਾ ਕਰਨ ਯੋਗ ਭੁਗਤਾਨ ਲਿੰਕ",
     "cashAppNote": "Cash App $cashtag ਭੁਗਤਾਨ ਲਿੰਕ",
-    "emvGenericNote": "ਜੈਨਰਿਕ EMVCo MPM QR ਕੋਡ ਫਾਰਮੈਟ"
+    "emvGenericNote": "ਜੈਨਰਿਕ EMVCo MPM QR ਕੋਡ ਫਾਰਮੈਟ",
+    "maxFramesAuto": "0 = ਆਟੋ (ਸਰੋਤ ਫਰੇਮ ਵਰਤਦਾ ਹੈ, ਪ੍ਰਦਰਸ਼ਨ ਲਈ ਵੱਧ ਤੋਂ ਵੱਧ 50)",
+    "paletteMode": "ਪੈਲੇਟ ਤੋਂ ਰੰਗ ਮੋਡਿਊਲਾਂ ਨੂੰ ਕਿਵੇਂ ਨਿਰਧਾਰਤ ਕੀਤੇ ਜਾਂਦੇ ਹਨ"
   },
   "language": {
     "current": "ਭਾਸ਼ਾ",
@@ -1010,7 +1013,8 @@
     "trueVector": "ਸੱਚਾ ਵੈਕਟਰ",
     "trueVectorDesc": "ਏਮਬੈਡਡ ਰਾਸਟਰ ਦੀ ਬਜਾਏ ਪਾਥ ਵਰਤੋ",
     "webp": "ਵੈੱਬਪੀ",
-    "width": "ਚੌੜਾਈ"
+    "width": "ਚੌੜਾਈ",
+    "animatedWebp": "ਐਨੀਮੇਟਿਡ WebP"
   },
   "preview": {
     "qrCodePreview": "QR ਕੋਡ ਪ੍ਰੀਵਿਊ - ਡਾਊਨਲੋਡ ਕਰਨ ਲਈ ਐਕਸਪੋਰਟ 'ਤੇ ਕਲਿੱਕ ਕਰੋ",
@@ -1106,7 +1110,15 @@
     "style": "ਸਟਾਈਲ",
     "tag": "ਟੈਗ",
     "timingStyle": "ਟਾਈਮਿੰਗ ਪੈਟਰਨ ਸਟਾਈਲ",
-    "transparentBg": "ਪਾਰਦਰਸ਼ੀ ਪਿਛੋਕੜ"
+    "transparentBg": "ਪਾਰਦਰਸ਼ੀ ਪਿਛੋਕੜ",
+    "paletteMode": "ਪੈਲੇਟ ਮੋਡ",
+    "paletteModePosition": "ਸਥਿਤੀ ਅਨੁਸਾਰ",
+    "paletteModeBrightness": "ਚਮਕ ਅਨੁਸਾਰ",
+    "paletteModeDiagonal": "ਵਿਕਰਣ",
+    "paletteModeRadial": "ਰੇਡੀਅਲ",
+    "paletteModeRandom": "ਬੇਤਰਤੀਬ",
+    "paletteModeRow": "ਕਤਾਰ ਅਨੁਸਾਰ",
+    "paletteModeColumn": "ਕਾਲਮ ਅਨੁਸਾਰ"
   },
   "safety": {
     "off": "ਬੰਦ",
@@ -1140,7 +1152,15 @@
     "simulateBlur": "ਧੁੰਦਲਾਪਣ ਸਿਮੂਲੇਟ ਕਰੋ",
     "simulateNoise": "ਸ਼ੋਰ ਦੀ ਨਕਲ ਕਰੋ",
     "simulateRotation": "ਰੋਟੇਸ਼ਨ ਦੀ ਨਕਲ ਕਰੋ",
-    "untilScannable": "ਸਕੈਨ ਹੋਣ ਤੱਕ"
+    "untilScannable": "ਸਕੈਨ ਹੋਣ ਤੱਕ",
+    "eccAwareEnabled": "ECC-ਜਾਗਰੂਕ ਸਮਰੱਥ ਕਰੋ",
+    "eccAwareDesc": "ਮਹੱਤਵਪੂਰਨ QR ਖੇਤਰਾਂ ਨੂੰ ਸਮਝਦਾਰੀ ਨਾਲ ਸੁਰੱਖਿਅਤ ਕਰੋ",
+    "eccAwareRiskBudget": "ਜੋਖਮ ਬਜਟ",
+    "eccAwareRiskBudgetDesc": "ਉੱਚ ਮੁੱਲ ਵਧੇਰੇ ਓਵਰਲੇ ਕਵਰੇਜ ਦੀ ਆਗਿਆ ਦਿੰਦੇ ਹਨ",
+    "eccAwareWeightMap": "ਵਜ਼ਨ ਨਕਸ਼ਾ",
+    "eccMapDistanceToFinders": "ਫਾਈਂਡਰਾਂ ਤੱਕ ਦੂਰੀ",
+    "eccMapBlockHeatmap": "ਬਲਾਕ ਹੀਟਮੈਪ",
+    "eccMapEmpiricalScan": "ਅਨੁਭਵੀ ਸਕੈਨ ਹੀਟਮੈਪ"
   },
   "sections": {
     "animation": "ਐਨੀਮੇਸ਼ਨ",
@@ -1366,7 +1386,9 @@
     "useFrameDelays": "ਫ੍ਰੇਮ ਦੇਰੀ ਦੀ ਵਰਤੋਂ ਕਰੋ",
     "voidCluster": "ਖਾਲੀ ਅਤੇ ਸਮੂਹ",
     "pleaseEnterUrl": "ਕਿਰਪਾ ਕਰਕੇ URL ਦਾਖਲ ਕਰੋ",
-    "preview": "ਪੂਰਵਦਰਸ਼ਨ"
+    "preview": "ਪੂਰਵਦਰਸ਼ਨ",
+    "sobel": "Sobel",
+    "canny": "Canny"
   },
   "payload": {
     "emailAddress": "ਈਮੇਲ ਪਤਾ",

@@ -29,7 +29,8 @@
     "speed": "Velocidad de fotogramas",
     "startFrame": "Cuadro de inicio",
     "temporalDither": "Trabalenguas temporal",
-    "wave": "Ola"
+    "wave": "Ola",
+    "auto": "Automático"
   },
   "languages": {
     "en-GB": "Inglés",
@@ -938,7 +939,9 @@
     "auspaynetNote": "AusPayNet para pagos PayID NPP de Australia",
     "paypalMeNote": "Enlace de pago compartible PayPal.Me",
     "cashAppNote": "Enlace de pago $cashtag de Cash App",
-    "emvGenericNote": "Formato de código QR EMVCo MPM genérico"
+    "emvGenericNote": "Formato de código QR EMVCo MPM genérico",
+    "maxFramesAuto": "0 = Auto (usa fotogramas fuente, máx 50 para rendimiento)",
+    "paletteMode": "Cómo se asignan los colores de la paleta a los módulos"
   },
   "language": {
     "current": "Lenguaje",
@@ -1010,7 +1013,8 @@
     "trueVector": "Vector verdadero",
     "trueVectorDesc": "Utilizar rutas en lugar de ráster incrustado",
     "webp": "WebP",
-    "width": "Ancho"
+    "width": "Ancho",
+    "animatedWebp": "WebP animado"
   },
   "preview": {
     "qrCodePreview": "Vista previa del código QR: haga clic en Exportar para descargar",
@@ -1106,7 +1110,15 @@
     "style": "Estilo",
     "tag": "Etiqueta",
     "timingStyle": "Estilo de patrón de sincronización",
-    "transparentBg": "Fondo transparente"
+    "transparentBg": "Fondo transparente",
+    "paletteMode": "Modo de paleta",
+    "paletteModePosition": "Por posición",
+    "paletteModeBrightness": "Por brillo",
+    "paletteModeDiagonal": "Diagonal",
+    "paletteModeRadial": "Radial",
+    "paletteModeRandom": "Aleatorio",
+    "paletteModeRow": "Por fila",
+    "paletteModeColumn": "Por columna"
   },
   "safety": {
     "off": "Apagado",
@@ -1140,7 +1152,15 @@
     "simulateBlur": "Simular desenfoque",
     "simulateNoise": "Simular ruido",
     "simulateRotation": "Simular rotación",
-    "untilScannable": "Hasta escaneable"
+    "untilScannable": "Hasta escaneable",
+    "eccAwareEnabled": "Habilitar ECC-Aware",
+    "eccAwareDesc": "Preservar inteligentemente regiones críticas del QR",
+    "eccAwareRiskBudget": "Presupuesto de riesgo",
+    "eccAwareRiskBudgetDesc": "Valores más altos permiten mayor cobertura de superposición",
+    "eccAwareWeightMap": "Mapa de pesos",
+    "eccMapDistanceToFinders": "Distancia a los buscadores",
+    "eccMapBlockHeatmap": "Mapa de calor de bloques",
+    "eccMapEmpiricalScan": "Mapa de calor de escaneo empírico"
   },
   "sections": {
     "animation": "Animación",
@@ -1366,7 +1386,9 @@
     "useFrameDelays": "Usar retrasos de fotogramas",
     "voidCluster": "Vacío y Cúmulo",
     "pleaseEnterUrl": "Por favor ingresa una URL",
-    "preview": "Vista previa"
+    "preview": "Vista previa",
+    "sobel": "Sobel",
+    "canny": "Canny"
   },
   "payload": {
     "emailAddress": "Dirección de correo electrónico",

@@ -29,7 +29,8 @@
     "speed": "Bilis ng Frame",
     "startFrame": "Simulang Balangkas",
     "temporalDither": "Temporal na Pagkalito",
-    "wave": "Alon"
+    "wave": "Alon",
+    "auto": "Awto"
   },
   "languages": {
     "en-GB": "Ingles",
@@ -938,7 +939,9 @@
     "auspaynetNote": "AusPayNet para sa mga pagbabayad ng Australian NPP PayID",
     "paypalMeNote": "Maibabahaging link ng pagbabayad sa PayPal.Me",
     "cashAppNote": "Link ng pagbabayad sa Cash App $cashtag",
-    "emvGenericNote": "Generic na format ng EMVCo MPM QR code"
+    "emvGenericNote": "Generic na format ng EMVCo MPM QR code",
+    "maxFramesAuto": "0 = Auto (gumagamit ng source frames, max 50 para sa performance)",
+    "paletteMode": "Paano ang mga kulay mula sa palette ay itinatalaga sa mga module"
   },
   "language": {
     "current": "Wika",
@@ -1010,7 +1013,8 @@
     "trueVector": "Tunay na Vektor",
     "trueVectorDesc": "Gumamit ng mga path sa halip na naka-embed na raster",
     "webp": "WebP",
-    "width": "Lapad"
+    "width": "Lapad",
+    "animatedWebp": "Animated WebP"
   },
   "preview": {
     "qrCodePreview": "Preview ng QR Code - I-click ang I-export para i-download",
@@ -1106,7 +1110,15 @@
     "style": "Estilo",
     "tag": "Tag",
     "timingStyle": "Estilo ng Pattern ng Pagtatakda ng Oras",
-    "transparentBg": "Malinaw na Background"
+    "transparentBg": "Malinaw na Background",
+    "paletteMode": "Palette Mode",
+    "paletteModePosition": "Ayon sa Posisyon",
+    "paletteModeBrightness": "Ayon sa Liwanag",
+    "paletteModeDiagonal": "Dayagonal",
+    "paletteModeRadial": "Radyal",
+    "paletteModeRandom": "Random",
+    "paletteModeRow": "Ayon sa Hanay",
+    "paletteModeColumn": "Ayon sa Kolum"
   },
   "safety": {
     "off": "Sarado",
@@ -1140,7 +1152,15 @@
     "simulateBlur": "Gayahin ang Palabuin",
     "simulateNoise": "Gayahin ang Ingay",
     "simulateRotation": "Gayahin ang Pag-ikot",
-    "untilScannable": "Hanggang sa ma-scan"
+    "untilScannable": "Hanggang sa ma-scan",
+    "eccAwareEnabled": "I-enable ang ECC-Aware",
+    "eccAwareDesc": "Matalinong panatilihin ang kritikal na mga rehiyon ng QR",
+    "eccAwareRiskBudget": "Budget ng Panganib",
+    "eccAwareRiskBudgetDesc": "Ang mas mataas na halaga ay nagpapahintulot ng mas maraming overlay coverage",
+    "eccAwareWeightMap": "Mapa ng Timbang",
+    "eccMapDistanceToFinders": "Distansya sa mga Finder",
+    "eccMapBlockHeatmap": "Block Heatmap",
+    "eccMapEmpiricalScan": "Empirical Scan Heatmap"
   },
   "sections": {
     "animation": "Animasyon",
@@ -1366,7 +1386,9 @@
     "useFrameDelays": "Gamitin ang mga Pagkaantala sa Frame",
     "voidCluster": "Walang Kakayahan at Kumpol",
     "pleaseEnterUrl": "Mangyaring maglagay ng URL",
-    "preview": "Preview"
+    "preview": "Preview",
+    "sobel": "Sobel",
+    "canny": "Canny"
   },
   "payload": {
     "emailAddress": "Email Address",

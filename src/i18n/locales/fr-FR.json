@@ -29,7 +29,8 @@
     "speed": " Vitesse d'affichage ",
     "startFrame": " Cadre de départ ",
     "temporalDither": " Dithering temporel ",
-    "wave": " Vague "
+    "wave": " Vague ",
+    "auto": " Auto "
   },
   "languages": {
     "en-GB": " Anglais ",
@@ -938,7 +939,9 @@
     "auspaynetNote": " AusPayNet pour les paiements PayID des NPP australiens ",
     "paypalMeNote": " Lien de paiement partageable PayPal.Me ",
     "cashAppNote": " Lien de paiement Cash App $cashtag ",
-    "emvGenericNote": " Format de code QR générique EMVCo MPM "
+    "emvGenericNote": " Format de code QR générique EMVCo MPM ",
+    "maxFramesAuto": "0 = Auto (utilise les images source, max 50 pour les performances)",
+    "paletteMode": "Comment les couleurs de la palette sont attribuées aux modules"
   },
   "language": {
     "current": " Langage ",
@@ -1010,7 +1013,8 @@
     "trueVector": " Véritable vecteur ",
     "trueVectorDesc": " Utilisez des chemins au lieu de rasters incorporés ",
     "webp": " WebP ",
-    "width": " Largeur "
+    "width": " Largeur ",
+    "animatedWebp": "WebP animé"
   },
   "preview": {
     "qrCodePreview": " Aperçu du code QR - Cliquez sur Exporter pour télécharger ",
@@ -1106,7 +1110,15 @@
     "style": " Style ",
     "tag": " Étiquette ",
     "timingStyle": " Style de motif de synchronisation ",
-    "transparentBg": " Fond transparent "
+    "transparentBg": " Fond transparent ",
+    "paletteMode": "Mode palette",
+    "paletteModePosition": "Par position",
+    "paletteModeBrightness": "Par luminosité",
+    "paletteModeDiagonal": "Diagonal",
+    "paletteModeRadial": "Radial",
+    "paletteModeRandom": "Aléatoire",
+    "paletteModeRow": "Par ligne",
+    "paletteModeColumn": "Par colonne"
   },
   "safety": {
     "off": " Désactivé ",
@@ -1140,7 +1152,15 @@
     "simulateBlur": " Simuler le flou ",
     "simulateNoise": " Simuler le bruit ",
     "simulateRotation": " Simuler la rotation ",
-    "untilScannable": " Jusqu'à ce que scannable "
+    "untilScannable": " Jusqu'à ce que scannable ",
+    "eccAwareEnabled": "Activer ECC-Aware",
+    "eccAwareDesc": "Préserver intelligemment les régions QR critiques",
+    "eccAwareRiskBudget": "Budget de risque",
+    "eccAwareRiskBudgetDesc": "Des valeurs plus élevées permettent une couverture de superposition plus importante",
+    "eccAwareWeightMap": "Carte des poids",
+    "eccMapDistanceToFinders": "Distance aux chercheurs",
+    "eccMapBlockHeatmap": "Carte thermique des blocs",
+    "eccMapEmpiricalScan": "Carte thermique de scan empirique"
   },
   "sections": {
     "animation": " Animation ",
@@ -1366,7 +1386,9 @@
     "useFrameDelays": " Utiliser des délais d'images ",
     "voidCluster": " Vide et Amas ",
     "pleaseEnterUrl": " Veuillez saisir une URL ",
-    "preview": " Aperçu "
+    "preview": " Aperçu ",
+    "sobel": "Sobel",
+    "canny": "Canny"
   },
   "payload": {
     "emailAddress": " Adresse e-mail ",

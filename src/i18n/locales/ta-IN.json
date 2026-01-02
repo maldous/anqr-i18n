@@ -29,7 +29,8 @@
     "speed": "ஃப்ரேம் வேகம்",
     "startFrame": "தொடக்க ஃப்ரேம்",
     "temporalDither": "கால சார்ந்த டிதர்",
-    "wave": "அலை"
+    "wave": "அலை",
+    "auto": "தானாக"
   },
   "languages": {
     "en-GB": "ஆங்கிலம்",
@@ -938,7 +939,9 @@
     "auspaynetNote": "ஆஸ்திரேலிய NPP PayID கட்டணங்களுக்கான AusPayNet",
     "paypalMeNote": "PayPal.Me பகிரக்கூடிய கட்டண இணைப்பு",
     "cashAppNote": "Cash App $cashtag கட்டண இணைப்பு",
-    "emvGenericNote": "பொதுவான EMVCo MPM QR குறியீடு வடிவம்"
+    "emvGenericNote": "பொதுவான EMVCo MPM QR குறியீடு வடிவம்",
+    "maxFramesAuto": "0 = தானியங்கி (மூல பிரேம்களைப் பயன்படுத்துகிறது, செயல்திறனுக்கு அதிகபட்சம் 50)",
+    "paletteMode": "தட்டில் இருந்து நிறங்கள் தொகுதிகளுக்கு எவ்வாறு ஒதுக்கப்படுகின்றன"
   },
   "language": {
     "current": "மொழி",
@@ -1010,7 +1013,8 @@
     "trueVector": "உண்மையான வெக்டர்",
     "trueVectorDesc": "உட்பொதிக்கப்பட்ட ராஸ்டருக்கு பதிலாக பாதைகளைப் பயன்படுத்தவும்",
     "webp": "WebP",
-    "width": "அகலம்"
+    "width": "அகலம்",
+    "animatedWebp": "அனிமேட்டட் WebP"
   },
   "preview": {
     "qrCodePreview": "QR குறியீடு முன்னோட்டம் - பதிவிறக்க Export ஐ கிளிக் செய்யவும்",
@@ -1106,7 +1110,15 @@
     "style": "பாணி",
     "tag": "குறிச்சொல்",
     "timingStyle": "டைமிங் மாதிரி பாணி",
-    "transparentBg": "வெளிப்படையான பின்னணி"
+    "transparentBg": "வெளிப்படையான பின்னணி",
+    "paletteMode": "தட்டு முறை",
+    "paletteModePosition": "நிலை வாரியாக",
+    "paletteModeBrightness": "பிரகாசம் வாரியாக",
+    "paletteModeDiagonal": "மூலைவிட்டம்",
+    "paletteModeRadial": "ரேடியல்",
+    "paletteModeRandom": "சீரற்ற",
+    "paletteModeRow": "வரிசை வாரியாக",
+    "paletteModeColumn": "நெடுவரிசை வாரியாக"
   },
   "safety": {
     "off": "ஆஃப்",
@@ -1140,7 +1152,15 @@
     "simulateBlur": "மங்கலாக்கத்தை ஒத்திருப்பு",
     "simulateNoise": "நோய்ஸை ஒத்திருப்பு",
     "simulateRotation": "சுழற்சியை ஒத்திருப்பு",
-    "untilScannable": "ஸ்கேன் செய்யக்கூடிய வரை"
+    "untilScannable": "ஸ்கேன் செய்யக்கூடிய வரை",
+    "eccAwareEnabled": "ECC-விழிப்புணர்வை இயக்கு",
+    "eccAwareDesc": "முக்கியமான QR பகுதிகளை புத்திசாலித்தனமாக பாதுகாக்கவும்",
+    "eccAwareRiskBudget": "ஆபத்து பட்ஜெட்",
+    "eccAwareRiskBudgetDesc": "அதிக மதிப்புகள் அதிக மேலடுக்கு கவரேஜை அனுமதிக்கின்றன",
+    "eccAwareWeightMap": "எடை வரைபடம்",
+    "eccMapDistanceToFinders": "கண்டுபிடிப்பாளர்களுக்கான தூரம்",
+    "eccMapBlockHeatmap": "தொகுதி வெப்ப வரைபடம்",
+    "eccMapEmpiricalScan": "அனுபவ ஸ்கேன் வெப்ப வரைபடம்"
   },
   "sections": {
     "animation": "அனிமேஷன்",
@@ -1366,7 +1386,9 @@
     "useFrameDelays": "ஃப்ரேம் தாமதங்களை பயன்படுத்து",
     "voidCluster": "வெற்று & குழுமம்",
     "pleaseEnterUrl": "தயவுசெய்து URL உள்ளிடவும்",
-    "preview": "முன்னோட்டம்"
+    "preview": "முன்னோட்டம்",
+    "sobel": "Sobel",
+    "canny": "Canny"
   },
   "payload": {
     "emailAddress": "மின்னஞ்சல் முகவரி",
