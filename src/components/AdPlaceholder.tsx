@@ -8,7 +8,7 @@ import { useEffect, useRef } from 'react';
 // Type declaration for Google AdSense
 declare global {
   interface Window {
-    adsbygoogle?: { push: (params: Record<string, unknown>) => void }[];
+    adsbygoogle?: Record<string, unknown>[];
   }
 }
 
