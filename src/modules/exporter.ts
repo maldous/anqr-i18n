@@ -415,7 +415,8 @@ export async function downloadImage(
 
 /**
  * Export animation frames as GIF
- * OPTIMIZED: Reuses scaling canvas and reduces per-frame allocations
+ * OPTIMIZED: Uses global palette strategy for consistent colors across frames
+ * and respects gifPaletteSize configuration
  */
 export async function exportGif(
   frames: HTMLCanvasElement[],
@@ -444,9 +445,14 @@ export async function exportGif(
   const defaultDelay = opts.animationSpeed;
   const repeat = opts.loopAnimation ? 0 : -1; // 0 = loop forever, -1 = no loop
 
+  // Get palette size from config (default 256, clamped to valid range 2-256)
+  const paletteSize = Math.max(
+    2,
+    Math.min(256, (config as { gifPaletteSize?: number }).gifPaletteSize ?? 256)
+  );
+
   // Create GIF encoder
   const gif = GIFEncoder();
-  let isFirstFrame = true;
 
   // OPTIMIZATION: Reuse a single scaling canvas for all frames
   // This avoids O(n) canvas creation overhead
@@ -467,6 +473,44 @@ export async function exportGif(
   // Check if we need to apply background
   const hasBgOverride = opts.bgOverride?.trim();
 
+  // GLOBAL PALETTE STRATEGY: Build palette from first frame (or sample multiple frames for longer animations)
+  // This ensures consistent colors across all frames and is much faster than per-frame quantization
+  let globalPalette: number[][] | null = null;
+
+  if (frames.length > 0) {
+    // For animations with many frames, sample a few representative frames to build palette
+    const framesToSample =
+      frames.length > 10 ? [0, Math.floor(frames.length / 2), frames.length - 1] : [0];
+
+    // Pre-calculate total size needed for sampled pixels
+    const pixelsPerFrame = width * height * 4; // RGBA
+    const totalPixels = framesToSample.length * pixelsPerFrame;
+    const sampledPixels = new Uint8ClampedArray(totalPixels);
+    let offset = 0;
+
+    for (const frameIdx of framesToSample) {
+      const frame = frames[frameIdx];
+      if (!frame) continue;
+
+      scaledCtx.clearRect(0, 0, width, height);
+      if (hasBgOverride) {
+        scaledCtx.fillStyle = opts.bgOverride;
+        scaledCtx.fillRect(0, 0, width, height);
+      }
+      scaledCtx.imageSmoothingEnabled = false;
+      scaledCtx.drawImage(frame, 0, 0, width, height);
+
+      const imageData = scaledCtx.getImageData(0, 0, width, height);
+      // Copy pixels directly into the pre-allocated buffer
+      sampledPixels.set(imageData.data, offset);
+      offset += imageData.data.length;
+    }
+
+    // Build global palette from sampled pixels (quantize accepts Uint8ClampedArray)
+    globalPalette = quantize(sampledPixels, paletteSize);
+  }
+
+  // Encode each frame using the global palette
   for (let i = 0; i < frames.length; i++) {
     const frame = frames[i];
     // Use per-frame delay if provided, otherwise use default
@@ -488,8 +532,8 @@ export async function exportGif(
     const imageData = scaledCtx.getImageData(0, 0, width, height);
     const { data } = imageData;
 
-    // Quantize to 256 colors using gifenc's built-in quantizer
-    const palette = quantize(data, 256);
+    // Use global palette (or fall back to per-frame for single frames)
+    const palette = globalPalette || quantize(data, paletteSize);
 
     // Apply palette to get indexed pixel data
     const index = applyPalette(data, palette);
@@ -502,9 +546,8 @@ export async function exportGif(
       palette,
       delay: delayCentiseconds,
       disposal,
-      ...(isFirstFrame && { repeat }),
+      ...(i === 0 && { repeat }),
     });
-    isFirstFrame = false;
   }
 
   // Finish encoding

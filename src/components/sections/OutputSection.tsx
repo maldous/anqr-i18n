@@ -43,7 +43,7 @@ export function OutputSection() {
             <SelectItem value="png">PNG</SelectItem>
             <SelectItem value="webp">WebP</SelectItem>
             <SelectItem value="gif">GIF</SelectItem>
-            <SelectItem value="svg">SVG</SelectItem>
+            <SelectItem value="svg">SVG (Bitmap)</SelectItem>
           </SelectContent>
         </Select>
       </div>

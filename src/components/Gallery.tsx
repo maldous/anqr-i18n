@@ -3,8 +3,23 @@
  * Hero-style gallery showcasing ANQR features organized by category
  */
 
-import * as LucideIcons from 'lucide-react';
-import { ChevronDown, ChevronUp, Grid3x3 } from 'lucide-react';
+import {
+  ChevronDown,
+  ChevronUp,
+  Contrast,
+  FileText,
+  Film,
+  Grid3x3,
+  Image,
+  Layers,
+  type LucideIcon,
+  Palette,
+  QrCode,
+  Settings2,
+  Shapes,
+  Sliders,
+  Sparkles,
+} from 'lucide-react';
 import { useEffect, useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { AdUnit } from '@/components/AdUnit';
@@ -18,11 +33,25 @@ import {
 } from '@/data/gallery-items';
 import { showInterstitial } from '@/modules/admob-service';
 
-// Dynamic icon component
+// Icon registry for gallery sections - only import icons actually used in gallery-items.ts
+const iconRegistry: Record<string, LucideIcon> = {
+  QrCode,
+  FileText,
+  Shapes,
+  Palette,
+  Image,
+  Film,
+  Layers,
+  Contrast,
+  Sliders,
+  Settings2,
+  Grid3x3,
+  Sparkles,
+};
+
+// Dynamic icon component using registry instead of namespace import
 function DynamicIcon({ name, className }: { name: string; className?: string }) {
-  const Icon = (
-    LucideIcons as unknown as Record<string, React.ComponentType<{ className?: string }>>
-  )[name];
+  const Icon = iconRegistry[name];
   return Icon ? <Icon className={className} /> : null;
 }
 

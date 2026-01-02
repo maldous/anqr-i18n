@@ -52,6 +52,10 @@ class MemoCache {
 const versionCache = new MemoCache(50); // For calculateOptimalVersion
 const alignmentCache = new MemoCache(50); // For getAlignmentPositions
 const overlayDataCache = new MemoCache(20); // For overlay data
+const qrMatrixCache = new MemoCache(30); // For QR matrix (content+ecc+version+encodingMode)
+
+// WeakMap for canvas hash caching (avoids re-hashing same canvas)
+const canvasHashCache = new WeakMap();
 
 /**
  * Clear all QR generator caches
@@ -61,6 +65,8 @@ export function clearQRCaches() {
   versionCache.clear();
   alignmentCache.clear();
   overlayDataCache.clear();
+  qrMatrixCache.clear();
+  // Note: canvasHashCache is a WeakMap, no need to clear - GC handles it
 }
 
 /**
@@ -212,11 +218,41 @@ export class QRGenerator {
       return await this.generateBlueNoiseQR({ ...config, typeNumber }, processedOverlayCanvas);
     }
 
-    const qr = this.qrcode(typeNumber, config.errorCorrection);
-    qr.addData(config.content);
-    qr.make();
+    // Build cache key for QR matrix reuse (avoids expensive qr.make() on every frame)
+    const encodingMode = config.encodingMode || 'auto';
+    const qrCacheKey = `${config.content}:${config.errorCorrection}:${typeNumber}:${encodingMode}`;
 
-    const moduleCount = qr.getModuleCount();
+    // Check cache for existing QR matrix
+    let qr;
+    let moduleCount;
+    const cachedQr = qrMatrixCache.get(qrCacheKey);
+
+    if (cachedQr) {
+      // Reuse cached QR object
+      qr = cachedQr.qr;
+      moduleCount = cachedQr.moduleCount;
+    } else {
+      // Build new QR matrix
+      qr = this.qrcode(typeNumber, config.errorCorrection);
+
+      // Map encoding mode to qrcode-generator mode parameter
+      // The library accepts: 'Numeric', 'Alphanumeric', 'Byte', 'Kanji' or undefined for auto
+      const modeMap = {
+        numeric: 'Numeric',
+        alphanumeric: 'Alphanumeric',
+        byte: 'Byte',
+        kanji: 'Kanji',
+        auto: undefined, // Let library auto-detect
+      };
+      const libraryMode = modeMap[encodingMode] || undefined;
+
+      qr.addData(config.content, libraryMode);
+      qr.make();
+      moduleCount = qr.getModuleCount();
+
+      // Cache the result
+      qrMatrixCache.set(qrCacheKey, { qr, moduleCount });
+    }
 
     // For subpixel modes, use special 3x3 rendering
     // Dithered QR Codes (error diffusion) style rendering
@@ -737,7 +773,9 @@ export class QRGenerator {
 
   calculateOptimalVersion(content, errorCorrection) {
     // Check cache first (memoization for repeated calls)
-    const cacheKey = `${content.length}:${errorCorrection}`;
+    // Use UTF-8 byte length for correct sizing of multibyte content
+    const byteLength = new TextEncoder().encode(content).length;
+    const cacheKey = `${byteLength}:${errorCorrection}`;
     const cached = versionCache.get(cacheKey);
     if (cached !== undefined) {
       return cached;
@@ -1097,39 +1135,57 @@ export class QRGenerator {
 
   /**
    * Hash canvas content for cache key disambiguation
-   * Samples pixels to create a fast content-based hash
+   * Uses a downscaled 32x32 canvas for speed (avoids full-resolution getImageData)
+   * Results are cached in a WeakMap to avoid re-hashing the same canvas
    * @private
    */
   async _hashCanvasContent(canvas) {
-    try {
-      const ctx = canvas.getContext('2d');
-      const width = canvas.width;
-      const height = canvas.height;
+    // Check WeakMap cache first (avoids re-hashing same canvas instance)
+    const cachedHash = canvasHashCache.get(canvas);
+    if (cachedHash !== undefined) {
+      return cachedHash;
+    }
 
-      // Get full image data once (much faster than N² getImageData calls)
-      const imageData = ctx.getImageData(0, 0, width, height);
+    try {
+      // Downscale to a tiny 32x32 canvas for fast hashing
+      // This is 10-50x faster than hashing full resolution on large overlays
+      const hashSize = 32;
+      // Use DOM API directly for browser (faster, avoids async overhead)
+      // Falls back to canvas factory for server-side
+      const hashCanvas =
+        typeof document !== 'undefined'
+          ? (() => {
+              const c = document.createElement('canvas');
+              c.width = hashSize;
+              c.height = hashSize;
+              return c;
+            })()
+          : await this._createCanvas(hashSize, hashSize);
+      const hashCtx = hashCanvas.getContext('2d');
+
+      // Draw downscaled version
+      hashCtx.drawImage(canvas, 0, 0, hashSize, hashSize);
+
+      // Get pixel data from the small canvas
+      const imageData = hashCtx.getImageData(0, 0, hashSize, hashSize);
       const data = imageData.data;
 
-      // Sample a small grid of pixels for speed (8x8 = 64 samples)
-      const sampleSize = 8;
-      const stepX = Math.max(1, Math.floor(width / sampleSize));
-      const stepY = Math.max(1, Math.floor(height / sampleSize));
-
+      // Hash all pixels in the small canvas (32x32 = 1024 pixels = 4096 bytes)
       let hash = 5381;
-
-      for (let y = 0; y < height; y += stepY) {
-        for (let x = 0; x < width; x += stepX) {
-          // Calculate pixel index in the flat data array (RGBA = 4 bytes per pixel)
-          const idx = (y * width + x) * 4;
-          // Combine RGB values into hash (skip alpha)
-          hash = (hash << 5) + hash + data[idx];
-          hash = (hash << 5) + hash + data[idx + 1];
-          hash = (hash << 5) + hash + data[idx + 2];
-          hash = hash >>> 0;
-        }
+      for (let i = 0; i < data.length; i += 4) {
+        // Combine RGB values into hash (skip alpha for consistency)
+        hash = (hash << 5) + hash + data[i];
+        hash = (hash << 5) + hash + data[i + 1];
+        hash = (hash << 5) + hash + data[i + 2];
+        hash = hash >>> 0;
       }
 
-      return hash.toString(16);
+      const hashStr = hash.toString(16);
+
+      // Cache the result in WeakMap (auto-cleanup when canvas is GC'd)
+      canvasHashCache.set(canvas, hashStr);
+
+      return hashStr;
     } catch (_e) {
       // Fallback to dimensions-only if getImageData fails
       return `${canvas.width}x${canvas.height}`;
