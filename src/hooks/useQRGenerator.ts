@@ -1209,7 +1209,7 @@ export function useQRGenerator(): UseQRGeneratorResult {
               copyright: metadata.copyright || undefined,
               description: metadata.description || undefined,
               creationTime: metadata.creationTime ? new Date().toISOString() : undefined,
-              software: 'ANQR - anqr.link',
+              software: 'ANQR - https://anqr.link',
             }
           : undefined;
 
@@ -1257,7 +1257,7 @@ export function useQRGenerator(): UseQRGeneratorResult {
                     copyright: metadata.copyright || undefined,
                     description: metadata.description || undefined,
                     creationTime: metadata.creationTime,
-                    software: 'ANQR - anqr.link',
+                    software: 'ANQR - https://anqr.link',
                   }
                 : undefined,
           });

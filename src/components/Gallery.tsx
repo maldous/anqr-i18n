@@ -3,6 +3,7 @@
  * Hero-style gallery showcasing ANQR features organized by category
  */
 
+import type { LucideIcon } from 'lucide-react';
 import {
   ChevronDown,
   ChevronUp,
@@ -12,7 +13,6 @@ import {
   Grid3x3,
   Image,
   Layers,
-  type LucideIcon,
   Palette,
   QrCode,
   Settings2,
