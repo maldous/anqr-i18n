@@ -680,6 +680,422 @@ export function triangularNoiseDither(
 }
 
 // ============================================
+// ADVANCED DITHERING ALGORITHMS
+// ============================================
+
+/** Blue noise modulated error diffusion - combines error diffusion with blue noise threshold modulation */
+export function blueNoiseErrorDiffusion(
+  imageData: Float32Array[],
+  width: number,
+  height: number,
+  kernelName: DiffusionKernel = 'floyd_steinberg',
+  serpentine: boolean = true,
+  levels: number = 2,
+  strength: number = 100,
+  colorMode: ColorMode = 'bw',
+  tileSize: number = 64,
+  seed: number = 0
+): DitherResult {
+  const kernel = DIFFUSION_KERNELS[kernelName];
+  const strengthFactor = strength / 100;
+  const step = 1 / (levels - 1);
+  const tile = generateBlueNoiseTile(tileSize, seed);
+
+  // Make a copy for error accumulation
+  const pixels: { r: number; g: number; b: number }[][] = [];
+  for (let y = 0; y < height; y++) {
+    const row: { r: number; g: number; b: number }[] = [];
+    for (let x = 0; x < width; x++) {
+      const idx = x * 3;
+      row.push({
+        r: imageData[y][idx],
+        g: imageData[y][idx + 1],
+        b: imageData[y][idx + 2],
+      });
+    }
+    pixels.push(row);
+  }
+
+  const resultMatrix: boolean[][] = [];
+  const resultColors: RGB[][] = [];
+
+  for (let y = 0; y < height; y++) {
+    resultMatrix.push(new Array(width).fill(false));
+    resultColors.push(new Array(width).fill({ r: 255, g: 255, b: 255 }));
+  }
+
+  for (let y = 0; y < height; y++) {
+    const leftToRight = serpentine ? y % 2 === 0 : true;
+    const startX = leftToRight ? 0 : width - 1;
+    const endX = leftToRight ? width : -1;
+    const deltaX = leftToRight ? 1 : -1;
+
+    for (let x = startX; x !== endX; x += deltaX) {
+      const pixel = pixels[y][x];
+      // Add blue noise modulation to threshold
+      const blueNoiseVal = sampleBlueNoise(x, y, tile, tileSize);
+      const thresholdMod = (blueNoiseVal - 0.5) * 0.3 * strengthFactor;
+
+      if (colorMode === 'bw') {
+        const gray = rgbToGray(pixel.r, pixel.g, pixel.b);
+        const threshold = 0.5 + thresholdMod;
+        const newVal = gray > threshold ? 1 : 0;
+        const error = (gray - newVal) * strengthFactor;
+
+        resultMatrix[y][x] = newVal === 0;
+        resultColors[y][x] = { r: newVal * 255, g: newVal * 255, b: newVal * 255 };
+        distributeError(pixels, x, y, width, height, error, error, error, kernel, leftToRight);
+      } else {
+        const newR = Math.round(pixel.r / step) * step;
+        const newG = Math.round(pixel.g / step) * step;
+        const newB = Math.round(pixel.b / step) * step;
+        const errorR = (pixel.r - newR) * strengthFactor;
+        const errorG = (pixel.g - newG) * strengthFactor;
+        const errorB = (pixel.b - newB) * strengthFactor;
+
+        const brightness = rgbToGray(newR, newG, newB);
+        resultMatrix[y][x] = brightness < 0.5;
+        resultColors[y][x] = {
+          r: Math.round(clamp01(newR) * 255),
+          g: Math.round(clamp01(newG) * 255),
+          b: Math.round(clamp01(newB) * 255),
+        };
+        distributeError(pixels, x, y, width, height, errorR, errorG, errorB, kernel, leftToRight);
+      }
+    }
+  }
+
+  return { matrix: resultMatrix, colors: resultColors };
+}
+
+/** Screened blue noise - combines halftone screening with blue noise */
+export function screenedBlueNoiseDither(
+  imageData: Float32Array[],
+  width: number,
+  height: number,
+  tileSize: number = 64,
+  seed: number = 0,
+  levels: number = 2,
+  strength: number = 100,
+  _colorMode: ColorMode = 'bw'
+): DitherResult {
+  const tile = generateBlueNoiseTile(tileSize, seed);
+  const strengthFactor = strength / 100;
+  const _step = 1 / (levels - 1);
+
+  const resultMatrix: boolean[][] = [];
+  const resultColors: RGB[][] = [];
+
+  // Create a screen pattern
+  const screenSize = 4;
+  const screenPattern = [
+    [0.1, 0.5, 0.2, 0.6],
+    [0.7, 0.3, 0.8, 0.4],
+    [0.2, 0.6, 0.1, 0.5],
+    [0.8, 0.4, 0.7, 0.3],
+  ];
+
+  for (let y = 0; y < height; y++) {
+    const matrixRow: boolean[] = [];
+    const colorRow: RGB[] = [];
+
+    for (let x = 0; x < width; x++) {
+      const idx = x * 3;
+      const r = imageData[y][idx];
+      const g = imageData[y][idx + 1];
+      const b = imageData[y][idx + 2];
+      const gray = rgbToGray(r, g, b);
+
+      // Combine screen pattern with blue noise
+      const screenVal = screenPattern[y % screenSize][x % screenSize];
+      const blueNoiseVal = sampleBlueNoise(x, y, tile, tileSize);
+      const combinedThreshold = (screenVal * 0.6 + blueNoiseVal * 0.4);
+      const adjustedThreshold = 0.5 + (combinedThreshold - 0.5) * strengthFactor;
+
+      const isDark = gray < adjustedThreshold;
+      matrixRow.push(isDark);
+      colorRow.push(isDark ? { r: 0, g: 0, b: 0 } : { r: 255, g: 255, b: 255 });
+    }
+
+    resultMatrix.push(matrixRow);
+    resultColors.push(colorRow);
+  }
+
+  return { matrix: resultMatrix, colors: resultColors };
+}
+
+/** Perceptual dithering - uses perceptual luminance weighting */
+export function perceptualDither(
+  imageData: Float32Array[],
+  width: number,
+  height: number,
+  kernelName: DiffusionKernel = 'floyd_steinberg',
+  serpentine: boolean = true,
+  levels: number = 2,
+  strength: number = 100,
+  colorMode: ColorMode = 'bw'
+): DitherResult {
+  const kernel = DIFFUSION_KERNELS[kernelName];
+  const strengthFactor = strength / 100;
+  const step = 1 / (levels - 1);
+
+  // Perceptual gamma correction (sRGB to linear)
+  const toLinear = (v: number) => v <= 0.04045 ? v / 12.92 : Math.pow((v + 0.055) / 1.055, 2.4);
+  const toSRGB = (v: number) => v <= 0.0031308 ? v * 12.92 : 1.055 * Math.pow(v, 1 / 2.4) - 0.055;
+
+  // Convert to perceptual space
+  const pixels: { r: number; g: number; b: number }[][] = [];
+  for (let y = 0; y < height; y++) {
+    const row: { r: number; g: number; b: number }[] = [];
+    for (let x = 0; x < width; x++) {
+      const idx = x * 3;
+      row.push({
+        r: toLinear(imageData[y][idx]),
+        g: toLinear(imageData[y][idx + 1]),
+        b: toLinear(imageData[y][idx + 2]),
+      });
+    }
+    pixels.push(row);
+  }
+
+  const resultMatrix: boolean[][] = [];
+  const resultColors: RGB[][] = [];
+
+  for (let y = 0; y < height; y++) {
+    resultMatrix.push(new Array(width).fill(false));
+    resultColors.push(new Array(width).fill({ r: 255, g: 255, b: 255 }));
+  }
+
+  for (let y = 0; y < height; y++) {
+    const leftToRight = serpentine ? y % 2 === 0 : true;
+    const startX = leftToRight ? 0 : width - 1;
+    const endX = leftToRight ? width : -1;
+    const deltaX = leftToRight ? 1 : -1;
+
+    for (let x = startX; x !== endX; x += deltaX) {
+      const pixel = pixels[y][x];
+
+      if (colorMode === 'bw') {
+        // Perceptual luminance (Rec. 709)
+        const gray = pixel.r * 0.2126 + pixel.g * 0.7152 + pixel.b * 0.0722;
+        const newVal = gray > 0.5 ? 1 : 0;
+        const error = (gray - newVal) * strengthFactor;
+
+        resultMatrix[y][x] = newVal === 0;
+        const outVal = Math.round(toSRGB(newVal) * 255);
+        resultColors[y][x] = { r: outVal, g: outVal, b: outVal };
+        distributeError(pixels, x, y, width, height, error, error, error, kernel, leftToRight);
+      } else {
+        const newR = Math.round(pixel.r / step) * step;
+        const newG = Math.round(pixel.g / step) * step;
+        const newB = Math.round(pixel.b / step) * step;
+        const errorR = (pixel.r - newR) * strengthFactor;
+        const errorG = (pixel.g - newG) * strengthFactor;
+        const errorB = (pixel.b - newB) * strengthFactor;
+
+        const brightness = newR * 0.2126 + newG * 0.7152 + newB * 0.0722;
+        resultMatrix[y][x] = brightness < 0.5;
+        resultColors[y][x] = {
+          r: Math.round(clamp01(toSRGB(newR)) * 255),
+          g: Math.round(clamp01(toSRGB(newG)) * 255),
+          b: Math.round(clamp01(toSRGB(newB)) * 255),
+        };
+        distributeError(pixels, x, y, width, height, errorR, errorG, errorB, kernel, leftToRight);
+      }
+    }
+  }
+
+  return { matrix: resultMatrix, colors: resultColors };
+}
+
+/** Edge-aware dithering - reduces error diffusion across edges */
+export function edgeAwareDither(
+  imageData: Float32Array[],
+  width: number,
+  height: number,
+  kernelName: DiffusionKernel = 'floyd_steinberg',
+  serpentine: boolean = true,
+  levels: number = 2,
+  strength: number = 100,
+  colorMode: ColorMode = 'bw'
+): DitherResult {
+  const kernel = DIFFUSION_KERNELS[kernelName];
+  const strengthFactor = strength / 100;
+  const step = 1 / (levels - 1);
+
+  // First pass: compute edge map using Sobel
+  const edgeMap: number[][] = [];
+  for (let y = 0; y < height; y++) {
+    edgeMap.push(new Array(width).fill(0));
+  }
+
+  for (let y = 1; y < height - 1; y++) {
+    for (let x = 1; x < width - 1; x++) {
+      // Sobel operator
+      const getGray = (px: number, py: number) => {
+        const idx = px * 3;
+        return rgbToGray(imageData[py][idx], imageData[py][idx + 1], imageData[py][idx + 2]);
+      };
+
+      const gx =
+        -getGray(x - 1, y - 1) + getGray(x + 1, y - 1) +
+        -2 * getGray(x - 1, y) + 2 * getGray(x + 1, y) +
+        -getGray(x - 1, y + 1) + getGray(x + 1, y + 1);
+
+      const gy =
+        -getGray(x - 1, y - 1) - 2 * getGray(x, y - 1) - getGray(x + 1, y - 1) +
+        getGray(x - 1, y + 1) + 2 * getGray(x, y + 1) + getGray(x + 1, y + 1);
+
+      edgeMap[y][x] = Math.min(1, Math.sqrt(gx * gx + gy * gy));
+    }
+  }
+
+  // Copy pixels for error accumulation
+  const pixels: { r: number; g: number; b: number }[][] = [];
+  for (let y = 0; y < height; y++) {
+    const row: { r: number; g: number; b: number }[] = [];
+    for (let x = 0; x < width; x++) {
+      const idx = x * 3;
+      row.push({
+        r: imageData[y][idx],
+        g: imageData[y][idx + 1],
+        b: imageData[y][idx + 2],
+      });
+    }
+    pixels.push(row);
+  }
+
+  const resultMatrix: boolean[][] = [];
+  const resultColors: RGB[][] = [];
+
+  for (let y = 0; y < height; y++) {
+    resultMatrix.push(new Array(width).fill(false));
+    resultColors.push(new Array(width).fill({ r: 255, g: 255, b: 255 }));
+  }
+
+  // Second pass: dither with edge-aware error diffusion
+  for (let y = 0; y < height; y++) {
+    const leftToRight = serpentine ? y % 2 === 0 : true;
+    const startX = leftToRight ? 0 : width - 1;
+    const endX = leftToRight ? width : -1;
+    const deltaX = leftToRight ? 1 : -1;
+
+    for (let x = startX; x !== endX; x += deltaX) {
+      const pixel = pixels[y][x];
+      // Reduce error diffusion at edges
+      const edgeFactor = 1 - edgeMap[y][x] * 0.8;
+
+      if (colorMode === 'bw') {
+        const gray = rgbToGray(pixel.r, pixel.g, pixel.b);
+        const newVal = gray > 0.5 ? 1 : 0;
+        const error = (gray - newVal) * strengthFactor * edgeFactor;
+
+        resultMatrix[y][x] = newVal === 0;
+        resultColors[y][x] = { r: newVal * 255, g: newVal * 255, b: newVal * 255 };
+        distributeError(pixels, x, y, width, height, error, error, error, kernel, leftToRight);
+      } else {
+        const newR = Math.round(pixel.r / step) * step;
+        const newG = Math.round(pixel.g / step) * step;
+        const newB = Math.round(pixel.b / step) * step;
+        const errorR = (pixel.r - newR) * strengthFactor * edgeFactor;
+        const errorG = (pixel.g - newG) * strengthFactor * edgeFactor;
+        const errorB = (pixel.b - newB) * strengthFactor * edgeFactor;
+
+        const brightness = rgbToGray(newR, newG, newB);
+        resultMatrix[y][x] = brightness < 0.5;
+        resultColors[y][x] = {
+          r: Math.round(clamp01(newR) * 255),
+          g: Math.round(clamp01(newG) * 255),
+          b: Math.round(clamp01(newB) * 255),
+        };
+        distributeError(pixels, x, y, width, height, errorR, errorG, errorB, kernel, leftToRight);
+      }
+    }
+  }
+
+  return { matrix: resultMatrix, colors: resultColors };
+}
+
+/** Adaptive threshold dithering - uses local mean for threshold */
+export function adaptiveThresholdDither(
+  imageData: Float32Array[],
+  width: number,
+  height: number,
+  strength: number = 100,
+  _colorMode: ColorMode = 'bw'
+): DitherResult {
+  const strengthFactor = strength / 100;
+  const blockSize = 8; // Size of local neighborhood
+
+  const resultMatrix: boolean[][] = [];
+  const resultColors: RGB[][] = [];
+
+  // Compute integral image for fast local mean computation
+  const integral: number[][] = [];
+  for (let y = 0; y < height; y++) {
+    integral.push(new Array(width).fill(0));
+  }
+
+  for (let y = 0; y < height; y++) {
+    let rowSum = 0;
+    for (let x = 0; x < width; x++) {
+      const idx = x * 3;
+      const gray = rgbToGray(imageData[y][idx], imageData[y][idx + 1], imageData[y][idx + 2]);
+      rowSum += gray;
+      integral[y][x] = rowSum + (y > 0 ? integral[y - 1][x] : 0);
+    }
+  }
+
+  // Get sum in rectangle using integral image
+  const getSum = (x1: number, y1: number, x2: number, y2: number): number => {
+    x1 = Math.max(0, x1);
+    y1 = Math.max(0, y1);
+    x2 = Math.min(width - 1, x2);
+    y2 = Math.min(height - 1, y2);
+    const a = y1 > 0 && x1 > 0 ? integral[y1 - 1][x1 - 1] : 0;
+    const b = y1 > 0 ? integral[y1 - 1][x2] : 0;
+    const c = x1 > 0 ? integral[y2][x1 - 1] : 0;
+    const d = integral[y2][x2];
+    return d - b - c + a;
+  };
+
+  for (let y = 0; y < height; y++) {
+    const matrixRow: boolean[] = [];
+    const colorRow: RGB[] = [];
+
+    for (let x = 0; x < width; x++) {
+      const idx = x * 3;
+      const r = imageData[y][idx];
+      const g = imageData[y][idx + 1];
+      const b = imageData[y][idx + 2];
+      const gray = rgbToGray(r, g, b);
+
+      // Compute local mean
+      const halfBlock = Math.floor(blockSize / 2);
+      const x1 = x - halfBlock;
+      const y1 = y - halfBlock;
+      const x2 = x + halfBlock;
+      const y2 = y + halfBlock;
+      const area = (Math.min(x2, width - 1) - Math.max(x1, 0) + 1) *
+                   (Math.min(y2, height - 1) - Math.max(y1, 0) + 1);
+      const localMean = getSum(x1, y1, x2, y2) / area;
+
+      // Adaptive threshold with bias towards the local mean
+      const threshold = localMean * (1 - 0.2 * strengthFactor);
+      const isDark = gray < threshold;
+
+      matrixRow.push(isDark);
+      colorRow.push(isDark ? { r: 0, g: 0, b: 0 } : { r: 255, g: 255, b: 255 });
+    }
+
+    resultMatrix.push(matrixRow);
+    resultColors.push(colorRow);
+  }
+
+  return { matrix: resultMatrix, colors: resultColors };
+}
+
+// ============================================
 // TEMPORAL DITHERING (FOR ANIMATION)
 // ============================================
 
@@ -831,6 +1247,85 @@ export function applyDither(imageData: ImageData, options: DitherOptions): Dithe
         options.strength,
         options.colorMode
       );
+
+    case 'blue_noise_error_diffusion':
+      // Blue noise modulated error diffusion - add blue noise to threshold
+      return blueNoiseErrorDiffusion(
+        floatData,
+        width,
+        height,
+        options.diffusionKernel,
+        options.serpentine,
+        options.levels,
+        options.strength,
+        options.colorMode,
+        options.blueNoiseTileSize,
+        options.blueNoiseSeed
+      );
+
+    case 'screened_blue_noise':
+      // Screened blue noise - combines ordered and blue noise
+      return screenedBlueNoiseDither(
+        floatData,
+        width,
+        height,
+        options.blueNoiseTileSize,
+        options.blueNoiseSeed,
+        options.levels,
+        options.strength,
+        options.colorMode
+      );
+
+    case 'perceptual':
+      // Perceptual dithering - uses perceptual color space
+      return perceptualDither(
+        floatData,
+        width,
+        height,
+        options.diffusionKernel,
+        options.serpentine,
+        options.levels,
+        options.strength,
+        options.colorMode
+      );
+
+    case 'edge_aware':
+      // Edge-aware dithering - preserves edges
+      return edgeAwareDither(
+        floatData,
+        width,
+        height,
+        options.diffusionKernel,
+        options.serpentine,
+        options.levels,
+        options.strength,
+        options.colorMode
+      );
+
+    case 'adaptive_threshold':
+      // Adaptive threshold dithering - local threshold adaptation
+      return adaptiveThresholdDither(
+        floatData,
+        width,
+        height,
+        options.strength,
+        options.colorMode
+      );
+
+    case 'temporal_blue_noise':
+      // Temporal blue noise - for static images, use frame 0
+      return temporalBlueNoiseDither(
+        floatData,
+        width,
+        height,
+        0, // frameIndex
+        options.blueNoiseTileSize,
+        options.blueNoiseSeed,
+        options.colorMode
+      );
+
+    case 'true_dither':
+    case 'error_diffusion':
     default:
       return errorDiffusion(
         floatData,
@@ -860,6 +1355,13 @@ export const DitherAlgorithms = {
   // Blue noise
   blueNoiseDither,
   temporalBlueNoiseDither,
+  blueNoiseErrorDiffusion,
+  screenedBlueNoiseDither,
+
+  // Advanced algorithms
+  perceptualDither,
+  edgeAwareDither,
+  adaptiveThresholdDither,
 
   // Random noise
   whiteNoiseDither,

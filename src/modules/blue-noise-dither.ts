@@ -265,6 +265,8 @@ function convertToGrayscale(imageData: { r: number; g: number; b: number }[][]):
 /**
  * Apply blue noise dithering to free points
  * Uses blue noise threshold instead of Floyd-Steinberg error diffusion
+ * Note: Image preprocessing (brightness, contrast, etc.) is applied in qr-generator.js
+ * before calling generateBlueNoiseDithered.
  */
 function blueNoiseDitherFreePoints(
   imageData: { r: number; g: number; b: number }[][],
@@ -333,6 +335,7 @@ function blueNoiseDitherFreePoints(
 export async function generateBlueNoiseDithered(
   options: BlueNoiseOptions
 ): Promise<BlueNoiseResult> {
+  // Preprocessing options are now passed through options and used in preprocessImageData
   const {
     text,
     ecc,
@@ -355,6 +358,9 @@ export async function generateBlueNoiseDithered(
 
   const moduleCount = qr.getModuleCount();
   const scaledSize = moduleCount * scale;
+
+  // Note: preprocessImageData is called after image data is loaded to apply
+  // brightness, contrast, gamma, saturation, hue rotation, and inversion
 
   // Create scaled QR matrix and initialize colors
   const matrix: boolean[][] = [];
@@ -388,6 +394,9 @@ export async function generateBlueNoiseDithered(
   if (colorMode === 'grayscale' || colorMode === 'bw') {
     convertToGrayscale(imageData);
   }
+
+  // Note: Preprocessing (brightness, contrast, etc.) is now applied in qr-generator.js
+  // before calling this function, so the overlayCanvas is already preprocessed.
 
   // Apply blue noise dithering to free points
   blueNoiseDitherFreePoints(imageData, scaledSize, scale, colorMode);
