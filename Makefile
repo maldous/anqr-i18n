@@ -106,7 +106,7 @@ clean:
 
 # Fix all: format, lint with auto-fix, and organize imports
 fix:
-	npx @biomejs/biome check --write --unsafe .
+	npx @biomejs/biome check src netlify --write --unsafe
 
 # Lint only (no formatting)
 lint:

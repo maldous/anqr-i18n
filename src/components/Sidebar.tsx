@@ -1127,8 +1127,16 @@ export function Sidebar({ isOpen, onClose }: SidebarProps) {
       {/* Backdrop for tablet only (md to lg) - mobile uses split view, no backdrop needed */}
       {isOpen && (
         <div
+          role="button"
+          tabIndex={0}
           className="fixed inset-0 bg-black/50 z-30 hidden md:block lg:hidden"
           onClick={onClose}
+          onKeyDown={(e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+              e.preventDefault();
+              onClose();
+            }
+          }}
         />
       )}
 
@@ -1163,6 +1171,7 @@ export function Sidebar({ isOpen, onClose }: SidebarProps) {
             />
             {searchQuery && (
               <button
+                type="button"
                 className="h-4 w-4 flex-shrink-0 text-muted-foreground hover:text-foreground"
                 onClick={() => setSearchQuery('')}
                 title={t('common.reset')}
@@ -1171,6 +1180,7 @@ export function Sidebar({ isOpen, onClose }: SidebarProps) {
               </button>
             )}
             <button
+              type="button"
               className="h-4 w-4 flex-shrink-0 text-muted-foreground hover:text-foreground ml-auto"
               onClick={handleReset}
               title={t('common.reset')}
@@ -1178,6 +1188,7 @@ export function Sidebar({ isOpen, onClose }: SidebarProps) {
               <RotateCcw className="h-4 w-4" />
             </button>
             <button
+              type="button"
               className="h-4 w-4 flex-shrink-0 text-muted-foreground hover:text-foreground"
               onClick={onClose}
               title={t('common.close')}

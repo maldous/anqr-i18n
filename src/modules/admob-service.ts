@@ -184,7 +184,9 @@ function setupAdMobListeners() {
     // Update banner height and notify subscribers
     if (size?.height) {
       currentBannerHeight = size.height;
-      bannerHeightCallbacks.forEach((cb) => cb(currentBannerHeight));
+      for (const cb of bannerHeightCallbacks) {
+        cb(currentBannerHeight);
+      }
     }
   });
 
@@ -214,9 +216,9 @@ function setupAdMobListeners() {
     console.log('AdMob: Interstitial ad dismissed');
 
     // The plugin only keeps a single interstitial instance; after dismissal it must be prepared again.
-    Object.keys(interstitialLoadedState).forEach((key) => {
+    for (const key of Object.keys(interstitialLoadedState)) {
       interstitialLoadedState[key as InterstitialType] = false;
-    });
+    }
 
     _currentlyShowingInterstitial = null;
     if (interstitialDismissResolver) {
@@ -258,9 +260,9 @@ function setupAdMobListeners() {
   AdMob.addListener(RewardInterstitialAdPluginEvents.Dismissed, () => {
     console.log('AdMob: Rewarded Interstitial ad dismissed');
     // Reset loaded state
-    Object.keys(rewardedLoadedState).forEach((key) => {
+    for (const key of Object.keys(rewardedLoadedState)) {
       rewardedLoadedState[key as RewardedType] = false;
-    });
+    }
   });
 
   AdMob.addListener(RewardInterstitialAdPluginEvents.FailedToShow, (error) => {

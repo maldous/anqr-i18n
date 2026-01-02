@@ -5,6 +5,13 @@
 
 import { useEffect, useRef } from 'react';
 
+// Type declaration for Google AdSense
+declare global {
+  interface Window {
+    adsbygoogle?: { push: (params: Record<string, unknown>) => void }[];
+  }
+}
+
 // AdSense Publisher ID
 const AD_CLIENT = 'ca-pub-2270701384951162';
 
@@ -51,8 +58,8 @@ export function AdSense({
 
       try {
         // Push ad to AdSense
-        if (typeof window !== 'undefined' && (window as any).adsbygoogle) {
-          (window as any).adsbygoogle.push({});
+        if (typeof window !== 'undefined' && window.adsbygoogle) {
+          window.adsbygoogle.push({});
           isLoaded.current = true;
         }
       } catch (_e) {

@@ -119,6 +119,7 @@ function GallerySectionComponent({
     <div className="mb-8">
       {/* Section header */}
       <button
+        type="button"
         onClick={onToggle}
         className="w-full flex items-center justify-between gap-4 mb-4 group"
         title={isExpanded ? t('gallery.collapse') : t('gallery.expand')}
@@ -183,6 +184,7 @@ function MobileJumpButton({
 }) {
   return (
     <button
+      type="button"
       onClick={onClick}
       className={`flex-shrink-0 flex items-center justify-center w-7 h-7 rounded-full transition-colors ${
         isActive
@@ -198,7 +200,7 @@ function MobileJumpButton({
 
 // Main Gallery component
 export function Gallery({ filter }: GalleryProps) {
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
   const [expandedSections, setExpandedSections] = useState<Set<GalleryCategory>>(
     new Set(gallerySections.map((s) => s.id))
   );
@@ -257,6 +259,7 @@ export function Gallery({ filter }: GalleryProps) {
         <div className="lg:hidden sticky top-0 z-40 bg-background border-b px-1 py-1.5">
           <div className="flex gap-1 overflow-x-auto scrollbar-hide justify-between">
             <button
+              type="button"
               onClick={() => setMobileFilter('all')}
               className={`flex-shrink-0 flex items-center justify-center w-7 h-7 rounded-full transition-colors ${
                 mobileFilter === 'all'

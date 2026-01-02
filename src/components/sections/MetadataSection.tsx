@@ -1,4 +1,5 @@
 import { Plus, X } from 'lucide-react';
+import { useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -8,9 +9,23 @@ import { Textarea } from '@/components/ui/textarea';
 import { HighlightedLabel } from '@/lib/search-context';
 import { useQRStore } from '@/store/qr-store';
 
+// Counter for generating unique IDs for custom key-value pairs
+let kvIdCounter = 0;
+
 export function MetadataSection() {
   const { metadata, setMetadata } = useQRStore();
   const { t } = useTranslation();
+
+  // Store stable IDs for each kv item
+  const kvIdsRef = useRef<Map<number, string>>(new Map());
+
+  // Ensure each kv item has a stable ID
+  const getKvId = (index: number): string => {
+    if (!kvIdsRef.current.has(index)) {
+      kvIdsRef.current.set(index, `kv-${++kvIdCounter}`);
+    }
+    return kvIdsRef.current.get(index) as string;
+  };
 
   const addCustomKv = () => {
     setMetadata({ customKv: [...metadata.customKv, { k: '', v: '' }] });
@@ -106,7 +121,7 @@ export function MetadataSection() {
           <HighlightedLabel>{t('metadata.customMetadata')}</HighlightedLabel>
         </Label>
         {metadata.customKv.map((kv, index) => (
-          <div key={index} className="flex gap-2">
+          <div key={getKvId(index)} className="flex gap-2">
             <Input
               value={kv.k}
               onChange={(e) => updateCustomKv(index, 'k', e.target.value)}
