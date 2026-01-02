@@ -1570,58 +1570,42 @@ export class QRGenerator {
   }
 
   /**
-   * Get overlay data - async version using canvas factory
-   * OPTIMIZED: Preprocessing is now done at moduleCount resolution (not full res)
-   * This is 10-50x faster than preprocessing at full resolution.
+   * Apply preprocessing (brightness, contrast, gamma, saturation, hue rotation, invert,
+   * posterize, threshold, blur, sharpen, edge detection) to ImageData.
+   * This is a shared helper used by all overlay data loading methods.
    * @private
    */
-  async _getOverlayData(
-    overlayCanvas,
-    moduleCount,
-    colorMode = 'color',
-    invertImage = false,
-    frameIndex = 0,
-    config = {}
-  ) {
-    // Create cache key based on canvas identity, content hash, and parameters
-    // Include frameIndex to ensure different animation frames aren't cached together
-    // Use content hash to disambiguate different images with same dimensions
-    const contentHash = await this._hashCanvasContent(overlayCanvas);
-    const canvasKey = `${overlayCanvas.width}x${overlayCanvas.height}:${contentHash}`;
-    const preprocessKey = `${config.overlayBrightness || 0}:${config.overlayContrast || 0}:${config.overlayGamma || 1}:${config.overlaySaturation || 0}:${config.overlayHueRotate || 0}:${invertImage}`;
-    const cacheKey = `${canvasKey}:${moduleCount}:${colorMode}:${preprocessKey}:${frameIndex}`;
-
-    // Check if we have this exact configuration cached
-    const cached = overlayDataCache.get(cacheKey);
-    if (cached !== undefined) {
-      return cached;
-    }
-
-    const tempCanvas = await this._createCanvas(moduleCount, moduleCount);
-    const ctx = tempCanvas.getContext('2d');
-
-    // STEP 1: Downscale to moduleCount FIRST (this is the key optimization)
-    ctx.drawImage(overlayCanvas, 0, 0, moduleCount, moduleCount);
-
-    // STEP 2: Apply preprocessing on the SMALL image (O(moduleCount^2) instead of O(overlay_width*height))
-    const imageData = ctx.getImageData(0, 0, moduleCount, moduleCount);
+  _preprocessImageData(imageData, config, invertImage = false) {
     const data = imageData.data;
 
-    // Apply per-pixel preprocessing at moduleCount resolution
     const brightness_adj = config.overlayBrightness || 0;
     const contrast_adj = config.overlayContrast || 0;
     const gamma_adj = config.overlayGamma || 1;
     const saturation_adj = config.overlaySaturation || 0;
     const hueRotate_adj = config.overlayHueRotate || 0;
-    const needsPreprocess =
+    const posterize_levels = config.overlayPosterize || 0;
+    const threshold_val = config.overlayThreshold;
+    const blur_radius = config.overlayBlur || 0;
+    const sharpen_amt = config.overlaySharpen || 0;
+    const edge_detect = config.overlayEdgeDetect || 'off';
+
+    const needsPerPixelPreprocess =
       brightness_adj !== 0 ||
       contrast_adj !== 0 ||
       gamma_adj !== 1 ||
       saturation_adj !== 0 ||
       hueRotate_adj !== 0 ||
+      posterize_levels >= 2 ||
+      (threshold_val !== undefined && threshold_val !== 128 && edge_detect === 'off') ||
       invertImage;
 
-    if (needsPreprocess) {
+    const needsConvolutionFilters =
+      blur_radius > 0 || sharpen_amt > 0 || edge_detect === 'sobel' || edge_detect === 'canny';
+
+    if (!needsPerPixelPreprocess && !needsConvolutionFilters) return imageData;
+
+    // First pass: per-pixel adjustments
+    if (needsPerPixelPreprocess) {
       for (let i = 0; i < data.length; i += 4) {
         let r = data[i];
         let g = data[i + 1];
@@ -1682,6 +1666,24 @@ export class QRGenerator {
           b = Math.max(0, Math.min(255, newB));
         }
 
+        // Posterize (need at least 2 levels to avoid division by zero)
+        if (posterize_levels >= 2) {
+          const levels = posterize_levels;
+          const step = 255 / (levels - 1);
+          r = Math.round(Math.round(r / step) * step);
+          g = Math.round(Math.round(g / step) * step);
+          b = Math.round(Math.round(b / step) * step);
+        }
+
+        // Threshold (only if edge detection is off)
+        if (threshold_val !== undefined && threshold_val !== 128 && edge_detect === 'off') {
+          const gray = r * 0.299 + g * 0.587 + b * 0.114;
+          const bw = gray > threshold_val ? 255 : 0;
+          r = bw;
+          g = bw;
+          b = bw;
+        }
+
         // Invert
         if (invertImage) {
           r = 255 - r;
@@ -1694,6 +1696,65 @@ export class QRGenerator {
         data[i + 2] = Math.round(b);
       }
     }
+
+    // Second pass: convolution filters (blur, sharpen, edge detection)
+    if (needsConvolutionFilters) {
+      if (blur_radius > 0) {
+        this._applyBoxBlur(imageData, Math.min(blur_radius, 5));
+      }
+
+      if (sharpen_amt > 0) {
+        this._applySharpen(imageData, sharpen_amt / 100);
+      }
+
+      if (edge_detect === 'sobel') {
+        this._applySobelEdge(imageData);
+      } else if (edge_detect === 'canny') {
+        this._applyCannyEdge(imageData);
+      }
+    }
+
+    return imageData;
+  }
+
+  /**
+   * Get overlay data - async version using canvas factory
+   * OPTIMIZED: Preprocessing is now done at moduleCount resolution (not full res)
+   * This is 10-50x faster than preprocessing at full resolution.
+   * @private
+   */
+  async _getOverlayData(
+    overlayCanvas,
+    moduleCount,
+    colorMode = 'color',
+    invertImage = false,
+    frameIndex = 0,
+    config = {}
+  ) {
+    // Create cache key based on canvas identity, content hash, and parameters
+    // Include frameIndex to ensure different animation frames aren't cached together
+    // Use content hash to disambiguate different images with same dimensions
+    const contentHash = await this._hashCanvasContent(overlayCanvas);
+    const canvasKey = `${overlayCanvas.width}x${overlayCanvas.height}:${contentHash}`;
+    const preprocessKey = `${config.overlayBrightness || 0}:${config.overlayContrast || 0}:${config.overlayGamma || 1}:${config.overlaySaturation || 0}:${config.overlayHueRotate || 0}:${invertImage}:${config.overlayBlur || 0}:${config.overlaySharpen || 0}:${config.overlayPosterize || 0}:${config.overlayThreshold ?? 128}:${config.overlayEdgeDetect || 'off'}`;
+    const cacheKey = `${canvasKey}:${moduleCount}:${colorMode}:${preprocessKey}:${frameIndex}`;
+
+    // Check if we have this exact configuration cached
+    const cached = overlayDataCache.get(cacheKey);
+    if (cached !== undefined) {
+      return cached;
+    }
+
+    const tempCanvas = await this._createCanvas(moduleCount, moduleCount);
+    const ctx = tempCanvas.getContext('2d');
+
+    // STEP 1: Downscale to moduleCount FIRST (this is the key optimization)
+    ctx.drawImage(overlayCanvas, 0, 0, moduleCount, moduleCount);
+
+    // STEP 2: Apply preprocessing on the SMALL image (O(moduleCount^2) instead of O(overlay_width*height))
+    const imageData = ctx.getImageData(0, 0, moduleCount, moduleCount);
+    this._preprocessImageData(imageData, config, invertImage);
+    const data = imageData.data;
 
     // STEP 3: Extract brightness and color maps
     const brightness = [];
@@ -1767,14 +1828,16 @@ export class QRGenerator {
 
     const { matrix: baseMatrix, moduleCount: scaledSize } = qrResult;
 
-    // Apply dithering with overlay
+    // Apply dithering with overlay (including preprocessing)
     const ditheredResult = await this._applyDitherToMatrix(
       baseMatrix,
       scaledSize,
       scale,
       overlayCanvas,
       config.overlayIntensity,
-      config.colorMode || 'color'
+      config.colorMode || 'color',
+      config.ditherSerpentine !== false, // use config serpentine setting
+      config // pass config for preprocessing, dither settings, etc.
     );
 
     const { matrix: dithered, colors } = ditheredResult;
@@ -1864,6 +1927,14 @@ export class QRGenerator {
   async generateBlueNoiseQR(config, overlayCanvas) {
     const scale = 3;
 
+    // Preprocess overlay canvas for blue noise mode
+    // Note: We do this at full resolution then pass to generateBlueNoiseDithered
+    // which will downscale. This uses the full preprocessing pipeline.
+    let processedOverlay = overlayCanvas;
+    if (overlayCanvas && this._hasPreprocessingOptions(config)) {
+      processedOverlay = await this._preprocessOverlay(overlayCanvas, config);
+    }
+
     // Use the new generateBlueNoiseDithered function that follows
     // the same pattern as generateDitheredMatrix (preserves QR data points)
     const blueNoiseResult = await generateBlueNoiseDithered({
@@ -1871,7 +1942,7 @@ export class QRGenerator {
       ecc: config.errorCorrection,
       version: config.typeNumber || 0,
       scale,
-      overlayCanvas,
+      overlayCanvas: processedOverlay, // Use preprocessed canvas
       overlayIntensity: config.overlayIntensity,
       colorMode: config.colorMode || 'color',
       canvasFactory: this._canvasFactory,
@@ -1973,11 +2044,12 @@ export class QRGenerator {
       ctx.fillRect(0, 0, size, size);
     }
 
-    // Get overlay data at 3x resolution to match subpixel grid
+    // Get overlay data at 3x resolution to match subpixel grid (with preprocessing)
     const overlayData = await this._getSubpixelOverlayData(
       overlayCanvas,
       moduleCount * subpixelSize,
-      config.colorMode || 'color'
+      config.colorMode || 'color',
+      config // pass config for preprocessing
     );
     // Also get per-module brightness for halftone center
     const moduleBrightness = await this._getOverlayData(
@@ -1999,8 +2071,10 @@ export class QRGenerator {
         const baseX = marginPixels + col * subpixelSize * pixelSize;
         const baseY = marginPixels + row * subpixelSize * pixelSize;
 
-        // For finder patterns, draw solid 3x3 (no subpixel effect) for better scanning
-        if (isFinder) {
+        // For finder patterns, check if we should use subpixel effect or solid
+        const finderOverride = config.subpixelFinderOverride || 'solid';
+        if (isFinder && finderOverride === 'solid') {
+          // Solid finder patterns for better scanning
           ctx.fillStyle = isDark ? config.fgColor : config.bgColor;
           ctx.fillRect(baseX, baseY, subpixelSize * pixelSize, subpixelSize * pixelSize);
           continue;
@@ -2017,9 +2091,16 @@ export class QRGenerator {
             const overlayCol = col * subpixelSize + subCol;
             const overlayColor = overlayData.colors?.[overlayRow]?.[overlayCol];
 
-            // CENTER pixel (1,1) - MUST show QR data for scannability
-            if (subRow === 1 && subCol === 1) {
-              if (useHalftoneCenter && isDark) {
+            // CENTER pixel - MUST show QR data for scannability
+            // Determine center based on grid size and center rule
+            const centerRule = config.subpixelCenterRule || 'strict';
+            const centerIdx = Math.floor(subpixelSize / 2);
+            const isCenter = subRow === centerIdx && subCol === centerIdx;
+            
+            if (isCenter) {
+              // Use halftone center if configured OR if center rule is halftone_center
+              const useHalftone = useHalftoneCenter || centerRule === 'halftone_center';
+              if (useHalftone && isDark) {
                 // Halftone center: vary size based on image brightness
                 const brightness = moduleBrightness[row]?.[col] ?? 0.5;
                 const minSize = 0.4;
@@ -2039,19 +2120,22 @@ export class QRGenerator {
                 ctx.fillRect(subX, subY, pixelSize, pixelSize);
               }
             } else {
-              // SURROUNDING 8 pixels - DIRECTLY show overlay image (no blending!)
+              // SURROUNDING pixels - DIRECTLY show overlay image (no blending!)
               // These pixels are FREE - they don't affect QR scanning at all
+              const neutralColor = config.subpixelNeutralColor || '#808080';
               if (overlayColor && intensity > 0) {
                 // At full intensity, show pure image color
-                // At partial intensity, blend with neutral gray for visibility control
+                // At partial intensity, blend with neutral color for visibility control
                 if (intensity >= 1) {
                   ctx.fillStyle = overlayColor;
                 } else {
-                  ctx.fillStyle = blendColors('#808080', overlayColor, intensity);
+                  ctx.fillStyle = blendColors(neutralColor, overlayColor, intensity);
                 }
               } else {
                 // No overlay - show based on QR pattern with reduced contrast
-                ctx.fillStyle = isDark ? '#404040' : '#c0c0c0';
+                // Use neutral color as base for non-overlay pixels
+                const neutralColor = config.subpixelNeutralColor || '#808080';
+                ctx.fillStyle = isDark ? this._darkenColor(neutralColor, 0.5) : this._lightenColor(neutralColor, 0.5);
               }
               ctx.fillRect(subX, subY, pixelSize, pixelSize);
             }
@@ -2067,12 +2151,126 @@ export class QRGenerator {
   }
 
   /**
+   * Darken a color by a factor (0-1)
+   * @private
+   */
+  _darkenColor(color, factor) {
+    const hex = color.replace('#', '');
+    const r = Math.round(parseInt(hex.substr(0, 2), 16) * (1 - factor));
+    const g = Math.round(parseInt(hex.substr(2, 2), 16) * (1 - factor));
+    const b = Math.round(parseInt(hex.substr(4, 2), 16) * (1 - factor));
+    return `rgb(${r},${g},${b})`;
+  }
+
+  /**
+   * Lighten a color by a factor (0-1)
+   * @private
+   */
+  _lightenColor(color, factor) {
+    const hex = color.replace('#', '');
+    const r = Math.round(parseInt(hex.substr(0, 2), 16) + (255 - parseInt(hex.substr(0, 2), 16)) * factor);
+    const g = Math.round(parseInt(hex.substr(2, 2), 16) + (255 - parseInt(hex.substr(2, 2), 16)) * factor);
+    const b = Math.round(parseInt(hex.substr(4, 2), 16) + (255 - parseInt(hex.substr(4, 2), 16)) * factor);
+    return `rgb(${r},${g},${b})`;
+  }
+
+  /**
    * Apply dithering to a QR matrix with overlay image
    * Uses Floyd-Steinberg error diffusion for free points
    * Supports serpentine scanning for better quality
    */
   /**
+   * Diffusion kernel definitions for error diffusion dithering.
+   * Each kernel defines offsets (dx, dy) and weights for error distribution.
+   * @private
+   */
+  _getDiffusionKernel(kernelName) {
+    const kernels = {
+      floyd_steinberg: [
+        { dx: 1, dy: 0, w: 7 / 16 },
+        { dx: -1, dy: 1, w: 3 / 16 },
+        { dx: 0, dy: 1, w: 5 / 16 },
+        { dx: 1, dy: 1, w: 1 / 16 },
+      ],
+      jarvis_judice_ninke: [
+        { dx: 1, dy: 0, w: 7 / 48 },
+        { dx: 2, dy: 0, w: 5 / 48 },
+        { dx: -2, dy: 1, w: 3 / 48 },
+        { dx: -1, dy: 1, w: 5 / 48 },
+        { dx: 0, dy: 1, w: 7 / 48 },
+        { dx: 1, dy: 1, w: 5 / 48 },
+        { dx: 2, dy: 1, w: 3 / 48 },
+        { dx: -2, dy: 2, w: 1 / 48 },
+        { dx: -1, dy: 2, w: 3 / 48 },
+        { dx: 0, dy: 2, w: 5 / 48 },
+        { dx: 1, dy: 2, w: 3 / 48 },
+        { dx: 2, dy: 2, w: 1 / 48 },
+      ],
+      stucki: [
+        { dx: 1, dy: 0, w: 8 / 42 },
+        { dx: 2, dy: 0, w: 4 / 42 },
+        { dx: -2, dy: 1, w: 2 / 42 },
+        { dx: -1, dy: 1, w: 4 / 42 },
+        { dx: 0, dy: 1, w: 8 / 42 },
+        { dx: 1, dy: 1, w: 4 / 42 },
+        { dx: 2, dy: 1, w: 2 / 42 },
+        { dx: -2, dy: 2, w: 1 / 42 },
+        { dx: -1, dy: 2, w: 2 / 42 },
+        { dx: 0, dy: 2, w: 4 / 42 },
+        { dx: 1, dy: 2, w: 2 / 42 },
+        { dx: 2, dy: 2, w: 1 / 42 },
+      ],
+      burkes: [
+        { dx: 1, dy: 0, w: 8 / 32 },
+        { dx: 2, dy: 0, w: 4 / 32 },
+        { dx: -2, dy: 1, w: 2 / 32 },
+        { dx: -1, dy: 1, w: 4 / 32 },
+        { dx: 0, dy: 1, w: 8 / 32 },
+        { dx: 1, dy: 1, w: 4 / 32 },
+        { dx: 2, dy: 1, w: 2 / 32 },
+      ],
+      sierra: [
+        { dx: 1, dy: 0, w: 5 / 32 },
+        { dx: 2, dy: 0, w: 3 / 32 },
+        { dx: -2, dy: 1, w: 2 / 32 },
+        { dx: -1, dy: 1, w: 4 / 32 },
+        { dx: 0, dy: 1, w: 5 / 32 },
+        { dx: 1, dy: 1, w: 4 / 32 },
+        { dx: 2, dy: 1, w: 2 / 32 },
+        { dx: -1, dy: 2, w: 2 / 32 },
+        { dx: 0, dy: 2, w: 3 / 32 },
+        { dx: 1, dy: 2, w: 2 / 32 },
+      ],
+      sierra_2: [
+        { dx: 1, dy: 0, w: 4 / 16 },
+        { dx: 2, dy: 0, w: 3 / 16 },
+        { dx: -2, dy: 1, w: 1 / 16 },
+        { dx: -1, dy: 1, w: 2 / 16 },
+        { dx: 0, dy: 1, w: 3 / 16 },
+        { dx: 1, dy: 1, w: 2 / 16 },
+        { dx: 2, dy: 1, w: 1 / 16 },
+      ],
+      sierra_lite: [
+        { dx: 1, dy: 0, w: 2 / 4 },
+        { dx: -1, dy: 1, w: 1 / 4 },
+        { dx: 0, dy: 1, w: 1 / 4 },
+      ],
+      atkinson: [
+        { dx: 1, dy: 0, w: 1 / 8 },
+        { dx: 2, dy: 0, w: 1 / 8 },
+        { dx: -1, dy: 1, w: 1 / 8 },
+        { dx: 0, dy: 1, w: 1 / 8 },
+        { dx: 1, dy: 1, w: 1 / 8 },
+        { dx: 0, dy: 2, w: 1 / 8 },
+      ],
+    };
+
+    return kernels[kernelName] || kernels.floyd_steinberg;
+  }
+
+  /**
    * Apply dithering to QR matrix - async version using canvas factory
+   * Supports multiple diffusion kernels, serpentine scanning, and dither strength.
    * @private
    */
   async _applyDitherToMatrix(
@@ -2082,7 +2280,8 @@ export class QRGenerator {
     overlayCanvas,
     overlayIntensity,
     colorMode,
-    serpentine = false
+    serpentine = false,
+    config = {}
   ) {
     // Initialize output
     const matrix = baseMatrix.map((row) => [...row]);
@@ -2094,8 +2293,13 @@ export class QRGenerator {
       return { matrix, colors };
     }
 
-    // Load overlay image data
-    const imageData = await this._loadImageDataRGB(overlayCanvas, scaledSize);
+    // Get dither settings from config
+    const ditherStrength = (config.ditherStrength ?? 100) / 100; // 0-1 scale
+    const diffusionKernel = config.diffusionKernel || 'floyd_steinberg';
+    const fsKernel = this._getDiffusionKernel(diffusionKernel);
+
+    // Load overlay image data with preprocessing
+    const imageData = await this._loadImageDataRGB(overlayCanvas, scaledSize, config);
     const intensity = overlayIntensity / 100;
 
     // Convert to grayscale if needed
@@ -2130,7 +2334,7 @@ export class QRGenerator {
           const error = gray - newVal;
 
           imageData[y][x] = { r: newVal, g: newVal, b: newVal };
-          this.distributeError(imageData, x, y, scaledSize, scale, error, error, error);
+          this.distributeError(imageData, x, y, scaledSize, scale, error, error, error, leftToRight, fsKernel, ditherStrength);
         } else if (colorMode === 'grayscale') {
           const gray = pixel.r;
           const levels = 4;
@@ -2147,7 +2351,9 @@ export class QRGenerator {
             error,
             error,
             error,
-            leftToRight
+            leftToRight,
+            fsKernel,
+            ditherStrength
           );
         } else {
           const levels = 4;
@@ -2169,7 +2375,9 @@ export class QRGenerator {
             errorR,
             errorG,
             errorB,
-            leftToRight
+            leftToRight,
+            fsKernel,
+            ditherStrength
           );
         }
       }
@@ -2206,13 +2414,17 @@ export class QRGenerator {
 
   /**
    * Load image data from canvas as RGB values (0-1 range)
+   * Now supports preprocessing via config parameter
    * @private
    */
-  async _loadImageDataRGB(canvas, size) {
+  async _loadImageDataRGB(canvas, size, config = {}) {
     const tempCanvas = await this._createCanvas(size, size);
     const ctx = tempCanvas.getContext('2d');
     ctx.drawImage(canvas, 0, 0, size, size);
     const imgData = ctx.getImageData(0, 0, size, size);
+
+    // Apply preprocessing if config is provided
+    this._preprocessImageData(imgData, config, config.invertImage);
 
     const output = [];
     for (let y = 0; y < size; y++) {
@@ -2231,60 +2443,59 @@ export class QRGenerator {
   }
 
   /**
-   * Distribute error to neighboring pixels (Floyd-Steinberg)
-   * Supports serpentine scanning with leftToRight parameter
+   * Distribute error to neighboring pixels using the specified diffusion kernel
+   * Supports serpentine scanning with leftToRight parameter and dither strength
    */
-  distributeError(imageData, x, y, size, scale, errorR, errorG, errorB, leftToRight = true) {
+  distributeError(imageData, x, y, size, scale, errorR, errorG, errorB, leftToRight = true, kernel = null, strength = 1.0) {
     const canChange = (px, py) => {
       if (px < 0 || py < 0 || px >= size || py >= size) return false;
       return !(isLocked(size, px, py, scale) || isData(px, py, scale));
     };
 
-    // Adjust direction based on scan direction
-    const nextX = leftToRight ? x + 1 : x - 1;
-    const prevX = leftToRight ? x - 1 : x + 1;
+    // Apply strength to errors
+    const scaledErrorR = errorR * strength;
+    const scaledErrorG = errorG * strength;
+    const scaledErrorB = errorB * strength;
 
-    const a = canChange(nextX, y);
-    const b = canChange(prevX, y + 1);
-    const c = canChange(x, y + 1);
-    const d = canChange(nextX, y + 1);
+    // Use provided kernel or default Floyd-Steinberg
+    const diffusionKernel = kernel || [
+      { dx: 1, dy: 0, w: 7 / 16 },
+      { dx: -1, dy: 1, w: 3 / 16 },
+      { dx: 0, dy: 1, w: 5 / 16 },
+      { dx: 1, dy: 1, w: 1 / 16 },
+    ];
 
-    const total = (a ? 7 : 0) + (b ? 3 : 0) + (c ? 5 : 0) + (d ? 1 : 0);
-    if (total === 0) return;
+    // Distribute error using the kernel
+    for (const { dx, dy, w } of diffusionKernel) {
+      // Flip x direction for serpentine scanning on reverse passes
+      const effectiveDx = leftToRight ? dx : -dx;
+      const nx = x + effectiveDx;
+      const ny = y + dy;
 
-    if (a) {
-      imageData[y][nextX].r += (errorR * 7) / total;
-      imageData[y][nextX].g += (errorG * 7) / total;
-      imageData[y][nextX].b += (errorB * 7) / total;
-    }
-    if (b) {
-      imageData[y + 1][prevX].r += (errorR * 3) / total;
-      imageData[y + 1][prevX].g += (errorG * 3) / total;
-      imageData[y + 1][prevX].b += (errorB * 3) / total;
-    }
-    if (c) {
-      imageData[y + 1][x].r += (errorR * 5) / total;
-      imageData[y + 1][x].g += (errorG * 5) / total;
-      imageData[y + 1][x].b += (errorB * 5) / total;
-    }
-    if (d) {
-      imageData[y + 1][nextX].r += errorR / total;
-      imageData[y + 1][nextX].g += errorG / total;
-      imageData[y + 1][nextX].b += errorB / total;
+      if (canChange(nx, ny)) {
+        imageData[ny][nx].r += scaledErrorR * w;
+        imageData[ny][nx].g += scaledErrorG * w;
+        imageData[ny][nx].b += scaledErrorB * w;
+      }
     }
   }
 
   /**
    * Get subpixel overlay data - async version using canvas factory
+   * Now supports preprocessing via config parameter
    * @private
    */
-  async _getSubpixelOverlayData(overlayCanvas, subpixelCount, colorMode = 'color') {
+  async _getSubpixelOverlayData(overlayCanvas, subpixelCount, colorMode = 'color', config = {}) {
     const tempCanvas = await this._createCanvas(subpixelCount, subpixelCount);
     const ctx = tempCanvas.getContext('2d');
 
     ctx.drawImage(overlayCanvas, 0, 0, subpixelCount, subpixelCount);
 
     const imageData = ctx.getImageData(0, 0, subpixelCount, subpixelCount);
+
+    // Apply preprocessing if config is provided
+    this._preprocessImageData(imageData, config, config.invertImage);
+
     const data = imageData.data;
 
     const brightness = [];
@@ -2627,6 +2838,149 @@ export class QRGenerator {
         data[outIdx] = Math.max(0, Math.min(255, Math.round(r)));
         data[outIdx + 1] = Math.max(0, Math.min(255, Math.round(g)));
         data[outIdx + 2] = Math.max(0, Math.min(255, Math.round(b)));
+      }
+    }
+  }
+
+  /**
+   * Apply Canny edge detection (simplified implementation)
+   * Uses Gaussian blur -> Sobel gradient -> Non-maximum suppression -> Hysteresis thresholding
+   * @private
+   */
+  _applyCannyEdge(imageData) {
+    const data = imageData.data;
+    const width = imageData.width;
+    const height = imageData.height;
+
+    // Step 1: Convert to grayscale
+    const gray = new Float32Array(width * height);
+    for (let i = 0; i < width * height; i++) {
+      const idx = i * 4;
+      gray[i] = data[idx] * 0.299 + data[idx + 1] * 0.587 + data[idx + 2] * 0.114;
+    }
+
+    // Step 2: Apply Gaussian blur (3x3 kernel)
+    const blurred = new Float32Array(width * height);
+    const gaussKernel = [1, 2, 1, 2, 4, 2, 1, 2, 1];
+    const gaussSum = 16;
+
+    for (let y = 1; y < height - 1; y++) {
+      for (let x = 1; x < width - 1; x++) {
+        let sum = 0;
+        let ki = 0;
+        for (let ky = -1; ky <= 1; ky++) {
+          for (let kx = -1; kx <= 1; kx++) {
+            sum += gray[(y + ky) * width + (x + kx)] * gaussKernel[ki++];
+          }
+        }
+        blurred[y * width + x] = sum / gaussSum;
+      }
+    }
+
+    // Step 3: Sobel gradient (magnitude and direction)
+    const sobelX = [-1, 0, 1, -2, 0, 2, -1, 0, 1];
+    const sobelY = [-1, -2, -1, 0, 0, 0, 1, 2, 1];
+    const magnitude = new Float32Array(width * height);
+    const direction = new Float32Array(width * height);
+
+    for (let y = 1; y < height - 1; y++) {
+      for (let x = 1; x < width - 1; x++) {
+        let gx = 0,
+          gy = 0;
+        let ki = 0;
+        for (let ky = -1; ky <= 1; ky++) {
+          for (let kx = -1; kx <= 1; kx++) {
+            const val = blurred[(y + ky) * width + (x + kx)];
+            gx += val * sobelX[ki];
+            gy += val * sobelY[ki];
+            ki++;
+          }
+        }
+        const idx = y * width + x;
+        magnitude[idx] = Math.sqrt(gx * gx + gy * gy);
+        direction[idx] = Math.atan2(gy, gx);
+      }
+    }
+
+    // Step 4: Non-maximum suppression
+    const suppressed = new Float32Array(width * height);
+    for (let y = 1; y < height - 1; y++) {
+      for (let x = 1; x < width - 1; x++) {
+        const idx = y * width + x;
+        const angle = direction[idx];
+        const mag = magnitude[idx];
+
+        // Quantize angle to 4 directions (0, 45, 90, 135 degrees)
+        let q = 0,
+          r = 0;
+        const absAngle = Math.abs(angle);
+
+        if (absAngle < Math.PI / 8 || absAngle > (7 * Math.PI) / 8) {
+          // Horizontal edge (compare left/right)
+          q = magnitude[idx - 1];
+          r = magnitude[idx + 1];
+        } else if (absAngle >= Math.PI / 8 && absAngle < (3 * Math.PI) / 8) {
+          // Diagonal edge (compare top-right/bottom-left)
+          if (angle > 0) {
+            q = magnitude[(y - 1) * width + (x + 1)];
+            r = magnitude[(y + 1) * width + (x - 1)];
+          } else {
+            q = magnitude[(y - 1) * width + (x - 1)];
+            r = magnitude[(y + 1) * width + (x + 1)];
+          }
+        } else if (absAngle >= (3 * Math.PI) / 8 && absAngle < (5 * Math.PI) / 8) {
+          // Vertical edge (compare top/bottom)
+          q = magnitude[(y - 1) * width + x];
+          r = magnitude[(y + 1) * width + x];
+        } else {
+          // Diagonal edge (compare top-left/bottom-right)
+          if (angle > 0) {
+            q = magnitude[(y - 1) * width + (x - 1)];
+            r = magnitude[(y + 1) * width + (x + 1)];
+          } else {
+            q = magnitude[(y - 1) * width + (x + 1)];
+            r = magnitude[(y + 1) * width + (x - 1)];
+          }
+        }
+
+        // Keep only local maxima
+        suppressed[idx] = mag >= q && mag >= r ? mag : 0;
+      }
+    }
+
+    // Step 5: Double threshold and hysteresis
+    const highThreshold = 50;
+    const lowThreshold = 20;
+
+    for (let y = 0; y < height; y++) {
+      for (let x = 0; x < width; x++) {
+        const idx = y * width + x;
+        const val = suppressed[idx];
+        let output = 0;
+
+        if (val >= highThreshold) {
+          output = 255; // Strong edge
+        } else if (val >= lowThreshold) {
+          // Weak edge - check if connected to strong edge
+          let hasStrongNeighbor = false;
+          for (let ky = -1; ky <= 1 && !hasStrongNeighbor; ky++) {
+            for (let kx = -1; kx <= 1 && !hasStrongNeighbor; kx++) {
+              const ny = y + ky;
+              const nx = x + kx;
+              if (ny >= 0 && ny < height && nx >= 0 && nx < width) {
+                if (suppressed[ny * width + nx] >= highThreshold) {
+                  hasStrongNeighbor = true;
+                }
+              }
+            }
+          }
+          output = hasStrongNeighbor ? 255 : 0;
+        }
+
+        const outIdx = idx * 4;
+        data[outIdx] = output;
+        data[outIdx + 1] = output;
+        data[outIdx + 2] = output;
       }
     }
   }
