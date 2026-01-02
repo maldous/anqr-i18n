@@ -962,10 +962,7 @@ function generateGradientDef(gradient: VectorGradient, id: string): string {
  * Export QR matrix as true vector SVG with full styling support
  * Creates resolution-independent vector paths for each module
  */
-export function exportVectorSvg(
-  matrix: boolean[][],
-  config: VectorSvgConfig = {}
-): ExportResult {
+export function exportVectorSvg(matrix: boolean[][], config: VectorSvgConfig = {}): ExportResult {
   const moduleCount = matrix.length;
   const moduleSize = config.moduleSize ?? 10;
   const margin = config.margin ?? 4;
@@ -1034,8 +1031,7 @@ export function exportVectorSvg(
     if (matrix[6][col]) {
       const x = marginPx + col * moduleSize;
       const y = marginPx + 6 * moduleSize;
-      timingPathData +=
-        generateTimingModulePath(x, y, moduleSize, timingStyle, moduleStyle, cornerRadius) + ' ';
+      timingPathData += `${generateTimingModulePath(x, y, moduleSize, timingStyle, moduleStyle, cornerRadius)} `;
     }
   }
   // Vertical timing pattern (col 6, rows 8 to moduleCount-8)
@@ -1043,8 +1039,7 @@ export function exportVectorSvg(
     if (matrix[row][6]) {
       const x = marginPx + 6 * moduleSize;
       const y = marginPx + row * moduleSize;
-      timingPathData +=
-        generateTimingModulePath(x, y, moduleSize, timingStyle, moduleStyle, cornerRadius) + ' ';
+      timingPathData += `${generateTimingModulePath(x, y, moduleSize, timingStyle, moduleStyle, cornerRadius)} `;
     }
   }
 
@@ -1062,7 +1057,7 @@ export function exportVectorSvg(
       if (matrix[row][col]) {
         const x = marginPx + col * moduleSize;
         const y = marginPx + row * moduleSize;
-        dataPathData += generateModulePath(x, y, moduleSize, moduleStyle, cornerRadius) + ' ';
+        dataPathData += `${generateModulePath(x, y, moduleSize, moduleStyle, cornerRadius)} `;
       }
     }
   }

@@ -23,7 +23,7 @@ export default function isLocked(l: number, x: number, y: number) {
   if (x < 7 && y > l - 8) return getLockPositioningBlocks();
   if (x > l - 8 && y < 7) return getLockPositioningBlocks();
   // timing lines
-  if (x == 6 || y == 6) return getLockTimingLines();
+  if (x === 6 || y === 6) return getLockTimingLines();
   // do we have extra blocks
   const blocks = getBlocks(l);
   if (!blocks.length) return false;
@@ -33,9 +33,9 @@ export default function isLocked(l: number, x: number, y: number) {
   // are we in one
   if (xBlock == null || yBlock == null) return false;
   // is it one we care about
-  if (xBlock == 0 && yBlock == 0) return false;
-  if (xBlock == 0 && yBlock == blocks.length - 1) return false;
-  if (xBlock == blocks.length - 1 && yBlock == 0) return false;
+  if (xBlock === 0 && yBlock === 0) return false;
+  if (xBlock === 0 && yBlock === blocks.length - 1) return false;
+  if (xBlock === blocks.length - 1 && yBlock === 0) return false;
   return getLockAlignmentPatterns();
 }
 
@@ -53,11 +53,11 @@ export function isData(x: number, y: number) {
   const m = ~~(scale / 2);
   const xs = x % scale,
     ys = y % scale;
-  if (xs == m && ys == m) return true;
+  if (xs === m && ys === m) return true;
   if (scale & 1) return false;
-  if (xs == m && ys == m - 1) return true;
-  if (xs == m - 1 && ys == m) return true;
-  if (xs == m - 1 && ys == m - 1) return true;
+  if (xs === m && ys === m - 1) return true;
+  if (xs === m - 1 && ys === m) return true;
+  if (xs === m - 1 && ys === m - 1) return true;
   return false;
 }
 
@@ -70,7 +70,7 @@ function qrVersion(l: number) {
   return (l - 17) / 4;
 }
 
-function qrSize(version: number) {
+function _qrSize(version: number) {
   return version * 4 + 17;
 }
 

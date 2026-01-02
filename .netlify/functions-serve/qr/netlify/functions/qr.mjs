@@ -1,10 +1,10 @@
-import { createRequire as ___nfyCreateRequire } from 'module';
-import { dirname as ___nfyPathDirname } from 'path';
-import { fileURLToPath as ___nfyFileURLToPath } from 'url';
+import { createRequire as ___nfyCreateRequire } from 'node:module';
+import { dirname as ___nfyPathDirname } from 'node:path';
+import { fileURLToPath as ___nfyFileURLToPath } from 'node:url';
 
 const __filename = ___nfyFileURLToPath(import.meta.url);
 const __dirname = ___nfyPathDirname(___nfyFileURLToPath(import.meta.url));
-const require = ___nfyCreateRequire(import.meta.url);
+const _require = ___nfyCreateRequire(import.meta.url);
 
 // netlify/functions/qr.ts
 import { createCanvas, loadImage } from '@napi-rs/canvas';
@@ -54,8 +54,8 @@ var qrcode = (typeNumber, errorCorrectionLevel) => {
       for (let c = -1; c <= 7; c += 1) {
         if (col + c <= -1 || _moduleCount <= col + c) continue;
         if (
-          (0 <= r && r <= 6 && (c == 0 || c == 6)) ||
-          (0 <= c && c <= 6 && (r == 0 || r == 6)) ||
+          (0 <= r && r <= 6 && (c === 0 || c === 6)) ||
+          (0 <= c && c <= 6 && (r === 0 || r === 6)) ||
           (2 <= r && r <= 4 && 2 <= c && c <= 4)
         ) {
           _modules[row + r][col + c] = true;
@@ -71,7 +71,7 @@ var qrcode = (typeNumber, errorCorrectionLevel) => {
     for (let i = 0; i < 8; i += 1) {
       makeImpl(true, i);
       const lostPoint = QRUtil.getLostPoint(_this);
-      if (i == 0 || minLostPoint > lostPoint) {
+      if (i === 0 || minLostPoint > lostPoint) {
         minLostPoint = lostPoint;
         pattern = i;
       }
@@ -83,13 +83,13 @@ var qrcode = (typeNumber, errorCorrectionLevel) => {
       if (_modules[r][6] != null) {
         continue;
       }
-      _modules[r][6] = r % 2 == 0;
+      _modules[r][6] = r % 2 === 0;
     }
     for (let c = 8; c < _moduleCount - 8; c += 1) {
       if (_modules[6][c] != null) {
         continue;
       }
-      _modules[6][c] = c % 2 == 0;
+      _modules[6][c] = c % 2 === 0;
     }
   };
   const setupPositionAdjustPattern = () => {
@@ -103,7 +103,7 @@ var qrcode = (typeNumber, errorCorrectionLevel) => {
         }
         for (let r = -2; r <= 2; r += 1) {
           for (let c = -2; c <= 2; c += 1) {
-            if (r == -2 || r == 2 || c == -2 || c == 2 || (r == 0 && c == 0)) {
+            if (r === -2 || r === 2 || c === -2 || c === 2 || (r === 0 && c === 0)) {
               _modules[row + r][col + c] = true;
             } else {
               _modules[row + r][col + c] = false;
@@ -116,11 +116,11 @@ var qrcode = (typeNumber, errorCorrectionLevel) => {
   const setupTypeNumber = (test) => {
     const bits = QRUtil.getBCHTypeNumber(_typeNumber);
     for (let i = 0; i < 18; i += 1) {
-      const mod = !test && ((bits >> i) & 1) == 1;
+      const mod = !test && ((bits >> i) & 1) === 1;
       _modules[Math.floor(i / 3)][(i % 3) + _moduleCount - 8 - 3] = mod;
     }
     for (let i = 0; i < 18; i += 1) {
-      const mod = !test && ((bits >> i) & 1) == 1;
+      const mod = !test && ((bits >> i) & 1) === 1;
       _modules[(i % 3) + _moduleCount - 8 - 3][Math.floor(i / 3)] = mod;
     }
   };
@@ -128,7 +128,7 @@ var qrcode = (typeNumber, errorCorrectionLevel) => {
     const data = (_errorCorrectionLevel << 3) | maskPattern;
     const bits = QRUtil.getBCHTypeInfo(data);
     for (let i = 0; i < 15; i += 1) {
-      const mod = !test && ((bits >> i) & 1) == 1;
+      const mod = !test && ((bits >> i) & 1) === 1;
       if (i < 6) {
         _modules[i][8] = mod;
       } else if (i < 8) {
@@ -138,7 +138,7 @@ var qrcode = (typeNumber, errorCorrectionLevel) => {
       }
     }
     for (let i = 0; i < 15; i += 1) {
-      const mod = !test && ((bits >> i) & 1) == 1;
+      const mod = !test && ((bits >> i) & 1) === 1;
       if (i < 8) {
         _modules[8][_moduleCount - i - 1] = mod;
       } else if (i < 9) {
@@ -156,13 +156,13 @@ var qrcode = (typeNumber, errorCorrectionLevel) => {
     let byteIndex = 0;
     const maskFunc = QRUtil.getMaskFunction(maskPattern);
     for (let col = _moduleCount - 1; col > 0; col -= 2) {
-      if (col == 6) col -= 1;
+      if (col === 6) col -= 1;
       while (true) {
         for (let c = 0; c < 2; c += 1) {
           if (_modules[row][col - c] == null) {
             let dark = false;
             if (byteIndex < data.length) {
-              dark = ((data[byteIndex] >>> bitIndex) & 1) == 1;
+              dark = ((data[byteIndex] >>> bitIndex) & 1) === 1;
             }
             const mask = maskFunc(row, col - c);
             if (mask) {
@@ -170,7 +170,7 @@ var qrcode = (typeNumber, errorCorrectionLevel) => {
             }
             _modules[row][col - c] = dark;
             bitIndex -= 1;
-            if (bitIndex == -1) {
+            if (bitIndex === -1) {
               byteIndex += 1;
               bitIndex = 7;
             }
@@ -248,12 +248,12 @@ var qrcode = (typeNumber, errorCorrectionLevel) => {
       totalDataCount += rsBlocks[i].dataCount;
     }
     if (buffer.getLengthInBits() > totalDataCount * 8) {
-      throw 'code length overflow. (' + buffer.getLengthInBits() + '>' + totalDataCount * 8 + ')';
+      throw `code length overflow. (${buffer.getLengthInBits()}>${totalDataCount * 8})`;
     }
     if (buffer.getLengthInBits() + 4 <= totalDataCount * 8) {
       buffer.put(0, 4);
     }
-    while (buffer.getLengthInBits() % 8 != 0) {
+    while (buffer.getLengthInBits() % 8 !== 0) {
       buffer.putBit(false);
     }
     while (true) {
@@ -285,14 +285,14 @@ var qrcode = (typeNumber, errorCorrectionLevel) => {
         newData = qrKanji(data);
         break;
       default:
-        throw 'mode:' + mode;
+        throw `mode:${mode}`;
     }
     _dataList.push(newData);
     _dataCache = null;
   };
   _this.isDark = (row, col) => {
     if (row < 0 || _moduleCount <= row || col < 0 || _moduleCount <= col) {
-      throw row + ',' + col;
+      throw `${row},${col}`;
     }
     return _modules[row][col];
   };
@@ -323,12 +323,12 @@ var qrcode = (typeNumber, errorCorrectionLevel) => {
   };
   _this.createTableTag = (cellSize, margin) => {
     cellSize = cellSize || 2;
-    margin = typeof margin == 'undefined' ? cellSize * 4 : margin;
+    margin = typeof margin === 'undefined' ? cellSize * 4 : margin;
     let qrHtml = '';
     qrHtml += '<table style="';
     qrHtml += ' border-width: 0px; border-style: none;';
     qrHtml += ' border-collapse: collapse;';
-    qrHtml += ' padding: 0px; margin: ' + margin + 'px;';
+    qrHtml += ` padding: 0px; margin: ${margin}px;`;
     qrHtml += '">';
     qrHtml += '<tbody>';
     for (let r = 0; r < _this.getModuleCount(); r += 1) {
@@ -338,8 +338,8 @@ var qrcode = (typeNumber, errorCorrectionLevel) => {
         qrHtml += ' border-width: 0px; border-style: none;';
         qrHtml += ' border-collapse: collapse;';
         qrHtml += ' padding: 0px; margin: 0px;';
-        qrHtml += ' width: ' + cellSize + 'px;';
-        qrHtml += ' height: ' + cellSize + 'px;';
+        qrHtml += ` width: ${cellSize}px;`;
+        qrHtml += ` height: ${cellSize}px;`;
         qrHtml += ' background-color: ';
         qrHtml += _this.isDark(r, c) ? '#000000' : '#ffffff';
         qrHtml += ';';
@@ -353,7 +353,7 @@ var qrcode = (typeNumber, errorCorrectionLevel) => {
   };
   _this.createSvgTag = function (cellSize, margin, alt, title) {
     let opts = {};
-    if (typeof arguments[0] == 'object') {
+    if (typeof arguments[0] === 'object') {
       opts = arguments[0];
       cellSize = opts.cellSize;
       margin = opts.margin;
@@ -361,7 +361,7 @@ var qrcode = (typeNumber, errorCorrectionLevel) => {
       title = opts.title;
     }
     cellSize = cellSize || 2;
-    margin = typeof margin == 'undefined' ? cellSize * 4 : margin;
+    margin = typeof margin === 'undefined' ? cellSize * 4 : margin;
     alt = typeof alt === 'string' ? { text: alt } : alt || {};
     alt.text = alt.text || null;
     alt.id = alt.text ? alt.id || 'qrcode-description' : null;
@@ -375,21 +375,21 @@ var qrcode = (typeNumber, errorCorrectionLevel) => {
       mr,
       qrSvg = '',
       rect;
-    rect = 'l' + cellSize + ',0 0,' + cellSize + ' -' + cellSize + ',0 0,-' + cellSize + 'z ';
+    rect = `l${cellSize},0 0,${cellSize} -${cellSize},0 0,-${cellSize}z `;
     qrSvg += '<svg version="1.1" xmlns="http://www.w3.org/2000/svg"';
-    qrSvg += !opts.scalable ? ' width="' + size + 'px" height="' + size + 'px"' : '';
-    qrSvg += ' viewBox="0 0 ' + size + ' ' + size + '" ';
+    qrSvg += !opts.scalable ? ` width="${size}px" height="${size}px"` : '';
+    qrSvg += ` viewBox="0 0 ${size} ${size}" `;
     qrSvg += ' preserveAspectRatio="xMinYMin meet"';
     qrSvg +=
       title.text || alt.text
-        ? ' role="img" aria-labelledby="' + escapeXml([title.id, alt.id].join(' ').trim()) + '"'
+        ? ` role="img" aria-labelledby="${escapeXml([title.id, alt.id].join(' ').trim())}"`
         : '';
     qrSvg += '>';
     qrSvg += title.text
-      ? '<title id="' + escapeXml(title.id) + '">' + escapeXml(title.text) + '</title>'
+      ? `<title id="${escapeXml(title.id)}">${escapeXml(title.text)}</title>`
       : '';
     qrSvg += alt.text
-      ? '<description id="' + escapeXml(alt.id) + '">' + escapeXml(alt.text) + '</description>'
+      ? `<description id="${escapeXml(alt.id)}">${escapeXml(alt.text)}</description>`
       : '';
     qrSvg += '<rect width="100%" height="100%" fill="white" cx="0" cy="0"/>';
     qrSvg += '<path d="';
@@ -398,7 +398,7 @@ var qrcode = (typeNumber, errorCorrectionLevel) => {
       for (c = 0; c < _this.getModuleCount(); c += 1) {
         if (_this.isDark(r, c)) {
           mc = c * cellSize + margin;
-          qrSvg += 'M' + mc + ',' + mr + rect;
+          qrSvg += `M${mc},${mr}${rect}`;
         }
       }
     }
@@ -408,7 +408,7 @@ var qrcode = (typeNumber, errorCorrectionLevel) => {
   };
   _this.createDataURL = (cellSize, margin) => {
     cellSize = cellSize || 2;
-    margin = typeof margin == 'undefined' ? cellSize * 4 : margin;
+    margin = typeof margin === 'undefined' ? cellSize * 4 : margin;
     const size = _this.getModuleCount() * cellSize + margin * 2;
     const min = margin;
     const max = size - margin;
@@ -424,7 +424,7 @@ var qrcode = (typeNumber, errorCorrectionLevel) => {
   };
   _this.createImgTag = (cellSize, margin, alt) => {
     cellSize = cellSize || 2;
-    margin = typeof margin == 'undefined' ? cellSize * 4 : margin;
+    margin = typeof margin === 'undefined' ? cellSize * 4 : margin;
     const size = _this.getModuleCount() * cellSize + margin * 2;
     let img = '';
     img += '<img';
@@ -471,7 +471,7 @@ var qrcode = (typeNumber, errorCorrectionLevel) => {
   };
   const _createHalfASCII = (margin) => {
     const cellSize = 1;
-    margin = typeof margin == 'undefined' ? cellSize * 2 : margin;
+    margin = typeof margin === 'undefined' ? cellSize * 2 : margin;
     const size = _this.getModuleCount() * cellSize + margin * 2;
     const min = margin;
     const max = size - margin;
@@ -529,7 +529,7 @@ var qrcode = (typeNumber, errorCorrectionLevel) => {
       return _createHalfASCII(margin);
     }
     cellSize -= 1;
-    margin = typeof margin == 'undefined' ? cellSize * 2 : margin;
+    margin = typeof margin === 'undefined' ? cellSize * 2 : margin;
     const size = _this.getModuleCount() * cellSize + margin * 2;
     const min = margin;
     const max = size - margin;
@@ -555,7 +555,7 @@ var qrcode = (typeNumber, errorCorrectionLevel) => {
         line += p ? white : black;
       }
       for (r = 0; r < cellSize; r += 1) {
-        ascii += line + '\n';
+        ascii += `${line}\n`;
       }
     }
     return ascii.substring(0, ascii.length - 1);
@@ -585,14 +585,14 @@ qrcode.createStringToBytes = (unicodeData, numChars) => {
     const bin = base64DecodeInputStream(unicodeData);
     const read = () => {
       const b = bin.read();
-      if (b == -1) throw 'eof';
+      if (b === -1) throw 'eof';
       return b;
     };
     let count = 0;
     const unicodeMap2 = {};
     while (true) {
       const b0 = bin.read();
-      if (b0 == -1) break;
+      if (b0 === -1) break;
       const b1 = read();
       const b2 = read();
       const b3 = read();
@@ -601,8 +601,8 @@ qrcode.createStringToBytes = (unicodeData, numChars) => {
       unicodeMap2[k] = v;
       count += 1;
     }
-    if (count != numChars) {
-      throw count + ' != ' + numChars;
+    if (count !== numChars) {
+      throw `${count} != ${numChars}`;
     }
     return unicodeMap2;
   })();
@@ -615,8 +615,8 @@ qrcode.createStringToBytes = (unicodeData, numChars) => {
         bytes.push(c);
       } else {
         const b = unicodeMap[s.charAt(i)];
-        if (typeof b == 'number') {
-          if ((b & 255) == b) {
+        if (typeof b === 'number') {
+          if ((b & 255) === b) {
             bytes.push(b);
           } else {
             bytes.push(b >>> 8);
@@ -702,7 +702,7 @@ var QRUtil = (() => {
   const _this = {};
   const getBCHDigit = (data) => {
     let digit = 0;
-    while (data != 0) {
+    while (data !== 0) {
       digit += 1;
       data >>>= 1;
     }
@@ -726,23 +726,23 @@ var QRUtil = (() => {
   _this.getMaskFunction = (maskPattern) => {
     switch (maskPattern) {
       case QRMaskPattern.PATTERN000:
-        return (i, j) => (i + j) % 2 == 0;
+        return (i, j) => (i + j) % 2 === 0;
       case QRMaskPattern.PATTERN001:
-        return (i, j) => i % 2 == 0;
+        return (i, _j) => i % 2 === 0;
       case QRMaskPattern.PATTERN010:
-        return (i, j) => j % 3 == 0;
+        return (_i, j) => j % 3 === 0;
       case QRMaskPattern.PATTERN011:
-        return (i, j) => (i + j) % 3 == 0;
+        return (i, j) => (i + j) % 3 === 0;
       case QRMaskPattern.PATTERN100:
-        return (i, j) => (Math.floor(i / 2) + Math.floor(j / 3)) % 2 == 0;
+        return (i, j) => (Math.floor(i / 2) + Math.floor(j / 3)) % 2 === 0;
       case QRMaskPattern.PATTERN101:
-        return (i, j) => ((i * j) % 2) + ((i * j) % 3) == 0;
+        return (i, j) => ((i * j) % 2) + ((i * j) % 3) === 0;
       case QRMaskPattern.PATTERN110:
-        return (i, j) => (((i * j) % 2) + ((i * j) % 3)) % 2 == 0;
+        return (i, j) => (((i * j) % 2) + ((i * j) % 3)) % 2 === 0;
       case QRMaskPattern.PATTERN111:
-        return (i, j) => (((i * j) % 3) + ((i + j) % 2)) % 2 == 0;
+        return (i, j) => (((i * j) % 3) + ((i + j) % 2)) % 2 === 0;
       default:
-        throw 'bad maskPattern:' + maskPattern;
+        throw `bad maskPattern:${maskPattern}`;
     }
   };
   _this.getErrorCorrectPolynomial = (errorCorrectLength) => {
@@ -764,7 +764,7 @@ var QRUtil = (() => {
         case QRMode.MODE_KANJI:
           return 8;
         default:
-          throw 'mode:' + mode;
+          throw `mode:${mode}`;
       }
     } else if (type < 27) {
       switch (mode) {
@@ -777,7 +777,7 @@ var QRUtil = (() => {
         case QRMode.MODE_KANJI:
           return 10;
         default:
-          throw 'mode:' + mode;
+          throw `mode:${mode}`;
       }
     } else if (type < 41) {
       switch (mode) {
@@ -790,10 +790,10 @@ var QRUtil = (() => {
         case QRMode.MODE_KANJI:
           return 12;
         default:
-          throw 'mode:' + mode;
+          throw `mode:${mode}`;
       }
     } else {
-      throw 'type:' + type;
+      throw `type:${type}`;
     }
   };
   _this.getLostPoint = (qrcode2) => {
@@ -811,10 +811,10 @@ var QRUtil = (() => {
             if (col + c < 0 || moduleCount <= col + c) {
               continue;
             }
-            if (r == 0 && c == 0) {
+            if (r === 0 && c === 0) {
               continue;
             }
-            if (dark == qrcode2.isDark(row + r, col + c)) {
+            if (dark === qrcode2.isDark(row + r, col + c)) {
               sameCount += 1;
             }
           }
@@ -831,7 +831,7 @@ var QRUtil = (() => {
         if (qrcode2.isDark(row + 1, col)) count += 1;
         if (qrcode2.isDark(row, col + 1)) count += 1;
         if (qrcode2.isDark(row + 1, col + 1)) count += 1;
-        if (count == 0 || count == 4) {
+        if (count === 0 || count === 4) {
           lostPoint += 3;
         }
       }
@@ -895,7 +895,7 @@ var QRMath = (() => {
   const _this = {};
   _this.glog = (n) => {
     if (n < 1) {
-      throw 'glog(' + n + ')';
+      throw `glog(${n})`;
     }
     return LOG_TABLE[n];
   };
@@ -911,12 +911,12 @@ var QRMath = (() => {
   return _this;
 })();
 var qrPolynomial = (num, shift) => {
-  if (typeof num.length == 'undefined') {
-    throw num.length + '/' + shift;
+  if (typeof num.length === 'undefined') {
+    throw `${num.length}/${shift}`;
   }
   const _num = (() => {
     let offset = 0;
-    while (offset < num.length && num[offset] == 0) {
+    while (offset < num.length && num[offset] === 0) {
       offset += 1;
     }
     const _num2 = new Array(num.length - offset + shift);
@@ -1183,10 +1183,8 @@ var QRRSBlock = (() => {
   };
   _this.getRSBlocks = (typeNumber, errorCorrectionLevel) => {
     const rsBlock = getRsBlockTable(typeNumber, errorCorrectionLevel);
-    if (typeof rsBlock == 'undefined') {
-      throw (
-        'bad rs block @ typeNumber:' + typeNumber + '/errorCorrectionLevel:' + errorCorrectionLevel
-      );
+    if (typeof rsBlock === 'undefined') {
+      throw `bad rs block @ typeNumber:${typeNumber}/errorCorrectionLevel:${errorCorrectionLevel}`;
     }
     const length = rsBlock.length / 3;
     const list = [];
@@ -1209,11 +1207,11 @@ var qrBitBuffer = () => {
   _this.getBuffer = () => _buffer;
   _this.getAt = (index) => {
     const bufIndex = Math.floor(index / 8);
-    return ((_buffer[bufIndex] >>> (7 - (index % 8))) & 1) == 1;
+    return ((_buffer[bufIndex] >>> (7 - (index % 8))) & 1) === 1;
   };
   _this.put = (num, length) => {
     for (let i = 0; i < length; i += 1) {
-      _this.putBit(((num >>> (length - i - 1)) & 1) == 1);
+      _this.putBit(((num >>> (length - i - 1)) & 1) === 1);
     }
   };
   _this.getLengthInBits = () => _length;
@@ -1234,7 +1232,7 @@ var qrNumber = (data) => {
   const _data = data;
   const _this = {};
   _this.getMode = () => _mode;
-  _this.getLength = (buffer) => _data.length;
+  _this.getLength = (_buffer) => _data.length;
   _this.write = (buffer) => {
     const data2 = _data;
     let i = 0;
@@ -1243,9 +1241,9 @@ var qrNumber = (data) => {
       i += 3;
     }
     if (i < data2.length) {
-      if (data2.length - i == 1) {
+      if (data2.length - i === 1) {
         buffer.put(strToNum(data2.substring(i, i + 1)), 4);
-      } else if (data2.length - i == 2) {
+      } else if (data2.length - i === 2) {
         buffer.put(strToNum(data2.substring(i, i + 2)), 7);
       }
     }
@@ -1261,7 +1259,7 @@ var qrNumber = (data) => {
     if ('0' <= c && c <= '9') {
       return c.charCodeAt(0) - '0'.charCodeAt(0);
     }
-    throw 'illegal char :' + c;
+    throw `illegal char :${c}`;
   };
   return _this;
 };
@@ -1270,7 +1268,7 @@ var qrAlphaNum = (data) => {
   const _data = data;
   const _this = {};
   _this.getMode = () => _mode;
-  _this.getLength = (buffer) => _data.length;
+  _this.getLength = (_buffer) => _data.length;
   _this.write = (buffer) => {
     const s = _data;
     let i = 0;
@@ -1308,7 +1306,7 @@ var qrAlphaNum = (data) => {
         case ':':
           return 44;
         default:
-          throw 'illegal char :' + c;
+          throw `illegal char :${c}`;
       }
     }
   };
@@ -1320,7 +1318,7 @@ var qr8BitByte = (data) => {
   const _bytes = qrcode.stringToBytes(data);
   const _this = {};
   _this.getMode = () => _mode;
-  _this.getLength = (buffer) => _bytes.length;
+  _this.getLength = (_buffer) => _bytes.length;
   _this.write = (buffer) => {
     for (let i = 0; i < _bytes.length; i += 1) {
       buffer.put(_bytes[i], 8);
@@ -1334,14 +1332,14 @@ var qrKanji = (data) => {
   const stringToBytes2 = qrcode.stringToBytes;
   !((c, code) => {
     const test = stringToBytes2(c);
-    if (test.length != 2 || ((test[0] << 8) | test[1]) != code) {
+    if (test.length !== 2 || ((test[0] << 8) | test[1]) !== code) {
       throw 'sjis not supported.';
     }
   })('\u53CB', 38726);
   const _bytes = stringToBytes2(data);
   const _this = {};
   _this.getMode = () => _mode;
-  _this.getLength = (buffer) => ~~(_bytes.length / 2);
+  _this.getLength = (_buffer) => ~~(_bytes.length / 2);
   _this.write = (buffer) => {
     const data2 = _bytes;
     let i = 0;
@@ -1352,14 +1350,14 @@ var qrKanji = (data) => {
       } else if (57408 <= c && c <= 60351) {
         c -= 49472;
       } else {
-        throw 'illegal char at ' + (i + 1) + '/' + c;
+        throw `illegal char at ${i + 1}/${c}`;
       }
       c = ((c >>> 8) & 255) * 192 + (c & 255);
       buffer.put(c, 13);
       i += 2;
     }
     if (i < data2.length) {
-      throw 'illegal char at ' + (i + 1);
+      throw `illegal char at ${i + 1}`;
     }
   };
   return _this;
@@ -1412,19 +1410,19 @@ var base64EncodeOutputStream = () => {
   };
   const encode = (n) => {
     if (n < 0) {
-      throw 'n:' + n;
+      throw `n:${n}`;
     } else if (n < 26) {
       return 65 + n;
     } else if (n < 52) {
       return 97 + (n - 26);
     } else if (n < 62) {
       return 48 + (n - 52);
-    } else if (n == 62) {
+    } else if (n === 62) {
       return 43;
-    } else if (n == 63) {
+    } else if (n === 63) {
       return 47;
     } else {
-      throw 'n:' + n;
+      throw `n:${n}`;
     }
   };
   _this.writeByte = (n) => {
@@ -1442,7 +1440,7 @@ var base64EncodeOutputStream = () => {
       _buffer = 0;
       _buflen = 0;
     }
-    if (_length % 3 != 0) {
+    if (_length % 3 !== 0) {
       const padlen = 3 - (_length % 3);
       for (let i = 0; i < padlen; i += 1) {
         _base64 += '=';
@@ -1461,14 +1459,14 @@ var base64DecodeInputStream = (str) => {
   _this.read = () => {
     while (_buflen < 8) {
       if (_pos >= _str.length) {
-        if (_buflen == 0) {
+        if (_buflen === 0) {
           return -1;
         }
-        throw 'unexpected end of file./' + _buflen;
+        throw `unexpected end of file./${_buflen}`;
       }
       const c = _str.charAt(_pos);
       _pos += 1;
-      if (c == '=') {
+      if (c === '=') {
         _buflen = 0;
         return -1;
       } else if (c.match(/^\s$/)) {
@@ -1488,12 +1486,12 @@ var base64DecodeInputStream = (str) => {
       return c - 97 + 26;
     } else if (48 <= c && c <= 57) {
       return c - 48 + 52;
-    } else if (c == 43) {
+    } else if (c === 43) {
       return 62;
-    } else if (c == 47) {
+    } else if (c === 47) {
       return 63;
     } else {
-      throw 'c:' + c;
+      throw `c:${c}`;
     }
   };
   return _this;
@@ -1545,7 +1543,7 @@ var gifImage = (width, height) => {
     let _bitBuffer = 0;
     const _this2 = {};
     _this2.write = (data, length) => {
-      if (data >>> length != 0) {
+      if (data >>> length !== 0) {
         throw 'length over';
       }
       while (_bitLength + length >= 8) {
@@ -1589,7 +1587,7 @@ var gifImage = (width, height) => {
       } else {
         bitOut.write(table.indexOf(s), bitLength);
         if (table.size() < 4095) {
-          if (table.size() == 1 << bitLength) {
+          if (table.size() === 1 << bitLength) {
             bitLength += 1;
           }
           table.add(s + c);
@@ -1608,14 +1606,14 @@ var gifImage = (width, height) => {
     const _this2 = {};
     _this2.add = (key) => {
       if (_this2.contains(key)) {
-        throw 'dup key:' + key;
+        throw `dup key:${key}`;
       }
       _map[key] = _size;
       _size += 1;
     };
     _this2.size = () => _size;
     _this2.indexOf = (key) => _map[key];
-    _this2.contains = (key) => typeof _map[key] != 'undefined';
+    _this2.contains = (key) => typeof _map[key] !== 'undefined';
     return _this2;
   };
   return _this;
@@ -1635,10 +1633,10 @@ var createDataURL = (width, height, getPixel) => {
     base64.writeByte(bytes[i]);
   }
   base64.flush();
-  return 'data:image/gif;base64,' + base64;
+  return `data:image/gif;base64,${base64}`;
 };
 var qrcode_default = qrcode;
-var stringToBytes = qrcode.stringToBytes;
+var _stringToBytes = qrcode.stringToBytes;
 
 // src/modules/blue-noise-dither.ts
 var ECC_MAP = {
@@ -2058,9 +2056,9 @@ function parseRgbString(str) {
   const match = str.match(/rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*([\d.]+))?\)/);
   if (match) {
     return {
-      r: parseInt(match[1]),
-      g: parseInt(match[2]),
-      b: parseInt(match[3]),
+      r: parseInt(match[1], 10),
+      g: parseInt(match[2], 10),
+      b: parseInt(match[3], 10),
       a: match[4] !== void 0 ? parseFloat(match[4]) : 1,
     };
   }
@@ -2070,7 +2068,7 @@ function parseHslString(str) {
   const match = str.match(/hsla?\((\d+),\s*([\d.]+)%?,\s*([\d.]+)%?(?:,\s*([\d.]+))?\)/);
   if (match) {
     return {
-      h: parseInt(match[1]),
+      h: parseInt(match[1], 10),
       s: parseFloat(match[2]),
       l: parseFloat(match[3]),
       a: match[4] !== void 0 ? parseFloat(match[4]) : 1,
@@ -2447,7 +2445,7 @@ function blueNoiseDither(
 ) {
   const tile = generateBlueNoiseTile2(tileSize, seed);
   const strengthFactor = strength / 100;
-  const step = 1 / (levels - 1);
+  const _step = 1 / (levels - 1);
   const resultMatrix = [];
   const resultColors = [];
   for (let y = 0; y < height; y++) {
@@ -2503,7 +2501,7 @@ function blueNoiseDither(
   }
   return { matrix: resultMatrix, colors: resultColors };
 }
-function whiteNoiseDither(imageData, width, height, seed = 0, strength = 100, colorMode = 'bw') {
+function whiteNoiseDither(imageData, width, height, seed = 0, strength = 100, _colorMode = 'bw') {
   const rng = createRNG(seed);
   const strengthFactor = strength / 100;
   const resultMatrix = [];
@@ -2528,7 +2526,14 @@ function whiteNoiseDither(imageData, width, height, seed = 0, strength = 100, co
   }
   return { matrix: resultMatrix, colors: resultColors };
 }
-function gaussianNoiseDither(imageData, width, height, seed = 0, strength = 100, colorMode = 'bw') {
+function gaussianNoiseDither(
+  imageData,
+  width,
+  height,
+  seed = 0,
+  strength = 100,
+  _colorMode = 'bw'
+) {
   const rng = createRNG(seed);
   const strengthFactor = strength / 100;
   const gaussianRandom = () => {
@@ -2564,7 +2569,7 @@ function triangularNoiseDither(
   height,
   seed = 0,
   strength = 100,
-  colorMode = 'bw'
+  _colorMode = 'bw'
 ) {
   const rng = createRNG(seed);
   const strengthFactor = strength / 100;
@@ -2679,8 +2684,6 @@ function applyDither(imageData, options) {
         options.strength,
         options.colorMode
       );
-    case 'error_diffusion':
-    case 'true_dither':
     default:
       return errorDiffusion(
         floatData,
@@ -2723,7 +2726,7 @@ var defaultBrowserCanvasFactory = {
       const img = new Image();
       img.crossOrigin = 'anonymous';
       img.onload = () => resolve(img);
-      img.onerror = (e) => reject(new Error(`Failed to load image: ${src}`));
+      img.onerror = (_e) => reject(new Error(`Failed to load image: ${src}`));
       img.src = src;
     });
   },
@@ -3189,7 +3192,7 @@ var QRGenerator = class {
         1219, 1273,
       ],
     };
-    const caps = capacities[errorCorrection] || capacities['Q'];
+    const caps = capacities[errorCorrection] || capacities.Q;
     const len = content.length;
     for (let v = 0; v < caps.length; v++) {
       if (caps[v] >= len) {
@@ -3462,7 +3465,6 @@ var QRGenerator = class {
           ctx.fillRect(x, y, size, size);
         }
         break;
-      case 'square':
       default:
         if (actualRadius > 0) {
           this.roundRect(ctx, x + padding, y + padding, innerSize, innerSize, actualRadius);
@@ -3493,7 +3495,6 @@ var QRGenerator = class {
         ctx.arc(x + size / 2, y + size / 2, size / 2, 0, Math.PI * 2);
         ctx.fill();
         break;
-      case 'square':
       default:
         if (actualRadius > 0) {
           this.roundRect(ctx, x, y, size, size, actualRadius);
@@ -3728,7 +3729,7 @@ var QRGenerator = class {
    * Get overlay data - async version using canvas factory
    * @private
    */
-  async _getOverlayData(overlayCanvas, moduleCount, colorMode = 'color', invertImage = false) {
+  async _getOverlayData(overlayCanvas, moduleCount, colorMode = 'color', _invertImage = false) {
     const tempCanvas = await this._createCanvas(moduleCount, moduleCount);
     const ctx = tempCanvas.getContext('2d');
     ctx.drawImage(overlayCanvas, 0, 0, moduleCount, moduleCount);
@@ -3797,7 +3798,7 @@ var QRGenerator = class {
     );
     const { matrix: dithered, colors } = ditheredResult;
     const scaledCount = dithered.length;
-    const derivedModuleCount = Math.round(scaledCount / scale);
+    const _derivedModuleCount = Math.round(scaledCount / scale);
     const marginModules = Math.max(5, config.margin);
     const subPixelSize = Math.max(1, Math.round(config.moduleSize / scale));
     const effectiveModuleSize = subPixelSize * scale;
@@ -3898,7 +3899,7 @@ var QRGenerator = class {
    */
   async generateSubpixelQR(qr, config, overlayCanvas, moduleCount, useHalftoneCenter = false) {
     const gridSizeStr = config.subpixelGridSize || '3x3';
-    const subpixelSize = parseInt(gridSizeStr.charAt(0)) || 3;
+    const subpixelSize = parseInt(gridSizeStr.charAt(0), 10) || 3;
     const margin = config.margin;
     const pixelSize = config.moduleSize / subpixelSize;
     const canvasModules = moduleCount * subpixelSize;
@@ -4521,7 +4522,7 @@ var QRGenerator = class {
         factor *= 0.85;
       }
       return '#000000';
-    } catch (e) {
+    } catch (_e) {
       return moduleColor;
     }
   }
@@ -4585,7 +4586,6 @@ var QRGenerator = class {
         const idx = Math.floor((col / moduleCount) * palette.length) % palette.length;
         return palette[idx];
       }
-      case 'position':
       default: {
         const linearPos = row * moduleCount + col;
         const idx = linearPos % palette.length;
@@ -4598,7 +4598,7 @@ var QRGenerator = class {
    * @private
    */
   _drawHalftoneModule(ctx, x, y, size, brightness, config) {
-    const htCell = config.halftoneCell || 'per_module';
+    const _htCell = config.halftoneCell || 'per_module';
     const htDot = config.halftoneDotShape || 'circle';
     const htCurve = config.brightnessCurve || 'linear';
     let adjustedBrightness = brightness;
@@ -4653,7 +4653,7 @@ var QRGenerator = class {
    * Higher weight = more important to preserve
    * @private
    */
-  _getEccWeight(row, col, moduleCount, version, weightMap) {
+  _getEccWeight(row, col, moduleCount, _version, weightMap) {
     switch (weightMap) {
       case 'distance_to_finders': {
         const distTL = Math.sqrt(row * row + col * col);
@@ -4759,7 +4759,6 @@ function getWatermarkPositions(
     case 'quiet_zone':
       positions.push({ x: margin / 2, y: canvasHeight - watermarkHeight - margin / 2 });
       break;
-    case 'behind':
     default:
       positions.push({
         x: (canvasWidth - watermarkWidth) / 2,
@@ -4779,7 +4778,6 @@ function applyBlendMode(ctx, blend) {
     case 'overlay':
       ctx.globalCompositeOperation = 'overlay';
       break;
-    case 'normal':
     default:
       ctx.globalCompositeOperation = 'source-over';
       break;
@@ -4981,7 +4979,6 @@ function applyEasing(progress, easing) {
       } else {
         return 1 - (-2 * progress + 2) ** 4 / 2;
       }
-    case 'linear':
     default:
       return progress;
   }
@@ -5266,7 +5263,7 @@ function parseGradientStops(stopsParam) {
   for (let i = 0; i < parts.length - 1; i += 2) {
     const color = `#${parts[i]}`;
     const pos = parseFloat(parts[i + 1]);
-    if (!isNaN(pos)) {
+    if (!Number.isNaN(pos)) {
       stops.push({ color, pos });
     }
   }
@@ -5480,7 +5477,7 @@ var qr_default = async (request) => {
     10
   );
   const outputFormat = params.get('format') || 'png';
-  const outputQuality = Math.max(0, Math.min(1, parseFloat(params.get('quality') || '0.9')));
+  const _outputQuality = Math.max(0, Math.min(1, parseFloat(params.get('quality') || '0.9')));
   const outputDpi = Math.max(1, Math.min(1200, parseInt(params.get('dpi') || '72', 10)));
   const watermarkEnabled = params.get('wmEn') === '1';
   const watermarkKind = params.get('wmKind') || 'text';
@@ -5496,12 +5493,12 @@ var qr_default = async (request) => {
   const animationFramesRaw = parseInt(params.get('animFrames') || '24', 10);
   const animationFrames = Math.min(
     60,
-    Math.max(1, isNaN(animationFramesRaw) ? 24 : animationFramesRaw)
+    Math.max(1, Number.isNaN(animationFramesRaw) ? 24 : animationFramesRaw)
   );
   const animationSpeedRaw = parseInt(params.get('animSpeed') || '100', 10);
   const animationSpeed = Math.min(
     1e3,
-    Math.max(10, isNaN(animationSpeedRaw) ? 100 : animationSpeedRaw)
+    Math.max(10, Number.isNaN(animationSpeedRaw) ? 100 : animationSpeedRaw)
   );
   const animationSeed = parseInt(params.get('animSeed') || '0', 10);
   const animationEasing = params.get('easing') || 'linear';
@@ -5736,7 +5733,6 @@ var qr_default = async (request) => {
         outputBuffer = outputCanvas.toBuffer('image/webp', webpQuality);
         contentType = 'image/webp';
         break;
-      case 'png':
       default:
         outputBuffer = outputCanvas.toBuffer('image/png');
         if (metadata || outputDpi !== 72) {

@@ -9,10 +9,10 @@ import {
 const input = document.getElementById('upload') as HTMLInputElement;
 
 export default function loadImage(l: number) {
-  if (input.files!.length != 1) throw new Error('Upload a file');
-  return new Promise<number[][]>((resolve, reject) => {
+  if (input.files!.length !== 1) throw new Error('Upload a file');
+  return new Promise<number[][]>((resolve, _reject) => {
     const img = new Image();
-    img.addEventListener('load', (e) => {
+    img.addEventListener('load', (_e) => {
       const canvas = document.createElement('canvas');
       canvas.width = l;
       canvas.height = l;

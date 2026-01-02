@@ -511,12 +511,6 @@ export function useQRGenerator(): UseQRGeneratorResult {
     overlay.posterizeLevels,
     overlay.threshold,
     overlay.edgeDetect,
-    overlay.rotateDeg,
-    overlay.flipX,
-    overlay.flipY,
-    overlay.cropEnabled,
-    overlay.cropRegion,
-    overlay.fit,
     overlay.ditherKind,
     overlay.ditherStrength,
     overlay.ditherSerpentine,
@@ -1122,7 +1116,7 @@ export function useQRGenerator(): UseQRGeneratorResult {
   // Reset the frame tracking when compositor changes (new GIF loaded)
   useEffect(() => {
     lastRenderedFrameRef.current = -1;
-  }, [gifCompositor]);
+  }, []);
 
   // Display cached animation frames during playback (fast path - no re-encoding)
   useEffect(() => {
@@ -1262,7 +1256,7 @@ export function useQRGenerator(): UseQRGeneratorResult {
                     author: metadata.author || undefined,
                     copyright: metadata.copyright || undefined,
                     description: metadata.description || undefined,
-                    creationTime: metadata.creationTime || false,
+                    creationTime: metadata.creationTime,
                     software: 'ANQR - anqr.link',
                   }
                 : undefined,

@@ -127,10 +127,6 @@ import {
   applyScanlinePattern,
   applyShimmerPattern,
   applyWavePattern,
-  createSeededRandom,
-  hslToRgbTuple,
-  rgbToHslTuple,
-  type AnimationPattern as SharedAnimationPattern,
 } from '../../src/modules/shared/index';
 
 type ECCLevel = 'L' | 'M' | 'Q' | 'H';
@@ -170,17 +166,17 @@ const MAX_DATA_LENGTH = 4096;
 const MAX_OVERLAY_BYTES = 5 * 1024 * 1024;
 
 // Maximum decoded overlay pixel count (10 megapixels)
-const MAX_OVERLAY_PIXELS = 10 * 1024 * 1024;
+const _MAX_OVERLAY_PIXELS = 10 * 1024 * 1024;
 
 // Maximum GIF frames and duration
-const MAX_GIF_FRAMES = 60;
-const MAX_GIF_DURATION_MS = 10000;
+const _MAX_GIF_FRAMES = 60;
+const _MAX_GIF_DURATION_MS = 10000;
 
 // Fetch timeout in milliseconds
 const FETCH_TIMEOUT_MS = 10000;
 
 // Maximum redirects for image fetch
-const MAX_REDIRECTS = 3;
+const _MAX_REDIRECTS = 3;
 
 // Default dither algorithm for server-side when none specified (fast)
 const DEFAULT_SERVER_DITHER: DitherKind = 'ordered_bayer';
@@ -201,7 +197,7 @@ function isPrivateOrReservedIP(ip: string): boolean {
   // IPv4 private ranges
   const ipv4Match = ip.match(/^(\d+)\.(\d+)\.(\d+)\.(\d+)$/);
   if (ipv4Match) {
-    const [, a, b, c, d] = ipv4Match.map(Number);
+    const [, a, b, c, _d] = ipv4Match.map(Number);
     // 10.0.0.0/8
     if (a === 10) return true;
     // 172.16.0.0/12
@@ -248,7 +244,7 @@ function isPrivateOrReservedIP(ip: string): boolean {
  * Resolve hostname and check if it points to a private IP (DNS rebinding protection)
  * This prevents SSRF via DNS resolution to internal IPs
  */
-async function isPrivateHostname(hostname: string): Promise<boolean> {
+async function _isPrivateHostname(hostname: string): Promise<boolean> {
   // First check if it's already a literal IP
   if (isPrivateOrReservedIP(hostname)) {
     return true;
@@ -358,8 +354,6 @@ function getWatermarkPositions(
     case 'quiet_zone':
       positions.push({ x: margin / 2, y: canvasHeight - watermarkHeight - margin / 2 });
       break;
-
-    case 'behind':
     default:
       positions.push({
         x: (canvasWidth - watermarkWidth) / 2,
@@ -384,7 +378,6 @@ function applyBlendMode(ctx: SKRSContext2D, blend: WatermarkBlend): void {
     case 'overlay':
       ctx.globalCompositeOperation = 'overlay';
       break;
-    case 'normal':
     default:
       ctx.globalCompositeOperation = 'source-over';
       break;
@@ -892,7 +885,7 @@ function parseGradientStops(stopsParam: string): Array<{ pos: number; color: str
   for (let i = 0; i < parts.length - 1; i += 2) {
     const color = `#${parts[i]}`;
     const pos = parseFloat(parts[i + 1]);
-    if (!isNaN(pos)) {
+    if (!Number.isNaN(pos)) {
       stops.push({ color, pos });
     }
   }
@@ -1205,7 +1198,7 @@ export default async (request: Request) => {
   // Output format (may be overridden if overlay is animated GIF)
   // Default to GIF to align with client default (was PNG, causing embed/share mismatch)
   let outputFormat = (params.get('format') || DEFAULT_OUTPUT_FORMAT) as OutputFormat;
-  const outputQuality = Math.max(0, Math.min(1, parseFloat(params.get('quality') || '0.9')));
+  const _outputQuality = Math.max(0, Math.min(1, parseFloat(params.get('quality') || '0.9')));
   const outputDpi = Math.max(1, Math.min(1200, parseInt(params.get('dpi') || '72', 10)));
 
   // Watermark
@@ -1226,13 +1219,13 @@ export default async (request: Request) => {
   const animationFramesRaw = parseInt(params.get('animFrames') || '24', 10);
   const animationFrames = Math.min(
     60,
-    Math.max(1, isNaN(animationFramesRaw) ? 24 : animationFramesRaw)
+    Math.max(1, Number.isNaN(animationFramesRaw) ? 24 : animationFramesRaw)
   );
   // Ensure speed is valid to prevent division issues
   const animationSpeedRaw = parseInt(params.get('animSpeed') || '100', 10);
   const animationSpeed = Math.min(
     1000,
-    Math.max(10, isNaN(animationSpeedRaw) ? 100 : animationSpeedRaw)
+    Math.max(10, Number.isNaN(animationSpeedRaw) ? 100 : animationSpeedRaw)
   );
   const animationSeed = parseInt(params.get('animSeed') || '0', 10);
   const animationEasing = params.get('easing') || 'linear';
@@ -1519,8 +1512,6 @@ export default async (request: Request) => {
         outputBuffer = outputCanvas.toBuffer('image/webp', webpQuality);
         contentType = 'image/webp';
         break;
-
-      case 'png':
       default:
         outputBuffer = outputCanvas.toBuffer('image/png');
         // Embed metadata and DPI into PNG

@@ -1,5 +1,3 @@
-import encodeQR from 'qr';
-
 // import decodeQR from "qr/decode";
 
 import { diffuseDataPoints, diffuseFreePoints } from './diffuse.ts';
