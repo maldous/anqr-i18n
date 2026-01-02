@@ -205,7 +205,9 @@ export function useQRGenerator(): UseQRGeneratorResult {
   const [isAnimationCacheReady, setIsAnimationCacheReady] = useState(false);
 
   // Get all relevant state from store
-  const _payload = useQRStore((s) => s.payload);
+  // Subscribe to payload to trigger re-renders when payload changes
+  // This is critical - without this dependency, config won't update when payload changes
+  const payload = useQRStore((s) => s.payload);
   const qr = useQRStore((s) => s.qr);
   const render = useQRStore((s) => s.render);
   const overlay = useQRStore((s) => s.overlay);
@@ -340,8 +342,12 @@ export function useQRGenerator(): UseQRGeneratorResult {
   ]);
 
   // Build comprehensive config object for QRGenerator
-  // Note: We depend on `payload` to trigger re-renders when payload changes
+  // CRITICAL: We must depend on `payload` to trigger re-renders when payload changes
+  // getPayloadText is a stable function reference - it doesn't change when payload changes
   const config = useMemo(() => {
+    // Force dependency on payload by accessing it (even if getPayloadText reads it internally)
+    const _payloadDep = payload;
+    void _payloadDep; // Suppress unused variable warning
     const content = getPayloadText();
 
     return {
@@ -461,6 +467,7 @@ export function useQRGenerator(): UseQRGeneratorResult {
     };
   }, [
     getPayloadText,
+    payload, // CRITICAL: Must depend on payload to trigger updates when content changes
     safetyAdjustedConfig,
     // QR encoding
     qr.version,
