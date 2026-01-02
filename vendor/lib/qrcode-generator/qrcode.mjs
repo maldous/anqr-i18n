@@ -76,8 +76,8 @@ export const qrcode = (typeNumber, errorCorrectionLevel) => {
         if (col + c <= -1 || _moduleCount <= col + c) continue;
 
         if (
-          (0 <= r && r <= 6 && (c == 0 || c == 6)) ||
-          (0 <= c && c <= 6 && (r == 0 || r == 6)) ||
+          (0 <= r && r <= 6 && (c === 0 || c === 6)) ||
+          (0 <= c && c <= 6 && (r === 0 || r === 6)) ||
           (2 <= r && r <= 4 && 2 <= c && c <= 4)
         ) {
           _modules[row + r][col + c] = true;
@@ -97,7 +97,7 @@ export const qrcode = (typeNumber, errorCorrectionLevel) => {
 
       const lostPoint = QRUtil.getLostPoint(_this);
 
-      if (i == 0 || minLostPoint > lostPoint) {
+      if (i === 0 || minLostPoint > lostPoint) {
         minLostPoint = lostPoint;
         pattern = i;
       }
@@ -111,14 +111,14 @@ export const qrcode = (typeNumber, errorCorrectionLevel) => {
       if (_modules[r][6] != null) {
         continue;
       }
-      _modules[r][6] = r % 2 == 0;
+      _modules[r][6] = r % 2 === 0;
     }
 
     for (let c = 8; c < _moduleCount - 8; c += 1) {
       if (_modules[6][c] != null) {
         continue;
       }
-      _modules[6][c] = c % 2 == 0;
+      _modules[6][c] = c % 2 === 0;
     }
   };
 
@@ -136,7 +136,7 @@ export const qrcode = (typeNumber, errorCorrectionLevel) => {
 
         for (let r = -2; r <= 2; r += 1) {
           for (let c = -2; c <= 2; c += 1) {
-            if (r == -2 || r == 2 || c == -2 || c == 2 || (r == 0 && c == 0)) {
+            if (r === -2 || r === 2 || c === -2 || c === 2 || (r === 0 && c === 0)) {
               _modules[row + r][col + c] = true;
             } else {
               _modules[row + r][col + c] = false;
@@ -151,12 +151,12 @@ export const qrcode = (typeNumber, errorCorrectionLevel) => {
     const bits = QRUtil.getBCHTypeNumber(_typeNumber);
 
     for (let i = 0; i < 18; i += 1) {
-      const mod = !test && ((bits >> i) & 1) == 1;
+      const mod = !test && ((bits >> i) & 1) === 1;
       _modules[Math.floor(i / 3)][(i % 3) + _moduleCount - 8 - 3] = mod;
     }
 
     for (let i = 0; i < 18; i += 1) {
-      const mod = !test && ((bits >> i) & 1) == 1;
+      const mod = !test && ((bits >> i) & 1) === 1;
       _modules[(i % 3) + _moduleCount - 8 - 3][Math.floor(i / 3)] = mod;
     }
   };
@@ -167,7 +167,7 @@ export const qrcode = (typeNumber, errorCorrectionLevel) => {
 
     // vertical
     for (let i = 0; i < 15; i += 1) {
-      const mod = !test && ((bits >> i) & 1) == 1;
+      const mod = !test && ((bits >> i) & 1) === 1;
 
       if (i < 6) {
         _modules[i][8] = mod;
@@ -180,7 +180,7 @@ export const qrcode = (typeNumber, errorCorrectionLevel) => {
 
     // horizontal
     for (let i = 0; i < 15; i += 1) {
-      const mod = !test && ((bits >> i) & 1) == 1;
+      const mod = !test && ((bits >> i) & 1) === 1;
 
       if (i < 8) {
         _modules[8][_moduleCount - i - 1] = mod;
@@ -203,7 +203,7 @@ export const qrcode = (typeNumber, errorCorrectionLevel) => {
     const maskFunc = QRUtil.getMaskFunction(maskPattern);
 
     for (let col = _moduleCount - 1; col > 0; col -= 2) {
-      if (col == 6) col -= 1;
+      if (col === 6) col -= 1;
 
       while (true) {
         for (let c = 0; c < 2; c += 1) {
@@ -211,7 +211,7 @@ export const qrcode = (typeNumber, errorCorrectionLevel) => {
             let dark = false;
 
             if (byteIndex < data.length) {
-              dark = ((data[byteIndex] >>> bitIndex) & 1) == 1;
+              dark = ((data[byteIndex] >>> bitIndex) & 1) === 1;
             }
 
             const mask = maskFunc(row, col - c);
@@ -223,7 +223,7 @@ export const qrcode = (typeNumber, errorCorrectionLevel) => {
             _modules[row][col - c] = dark;
             bitIndex -= 1;
 
-            if (bitIndex == -1) {
+            if (bitIndex === -1) {
               byteIndex += 1;
               bitIndex = 7;
             }
@@ -323,7 +323,7 @@ export const qrcode = (typeNumber, errorCorrectionLevel) => {
     }
 
     if (buffer.getLengthInBits() > totalDataCount * 8) {
-      throw 'code length overflow. (' + buffer.getLengthInBits() + '>' + totalDataCount * 8 + ')';
+      throw `code length overflow. (${buffer.getLengthInBits()}>${totalDataCount * 8})`;
     }
 
     // end code
@@ -332,7 +332,7 @@ export const qrcode = (typeNumber, errorCorrectionLevel) => {
     }
 
     // padding
-    while (buffer.getLengthInBits() % 8 != 0) {
+    while (buffer.getLengthInBits() % 8 !== 0) {
       buffer.putBit(false);
     }
 
@@ -371,7 +371,7 @@ export const qrcode = (typeNumber, errorCorrectionLevel) => {
         newData = qrKanji(data);
         break;
       default:
-        throw 'mode:' + mode;
+        throw `mode:${mode}`;
     }
 
     _dataList.push(newData);
@@ -380,7 +380,7 @@ export const qrcode = (typeNumber, errorCorrectionLevel) => {
 
   _this.isDark = (row, col) => {
     if (row < 0 || _moduleCount <= row || col < 0 || _moduleCount <= col) {
-      throw row + ',' + col;
+      throw `${row},${col}`;
     }
     return _modules[row][col];
   };
@@ -420,14 +420,14 @@ export const qrcode = (typeNumber, errorCorrectionLevel) => {
 
   _this.createTableTag = (cellSize, margin) => {
     cellSize = cellSize || 2;
-    margin = typeof margin == 'undefined' ? cellSize * 4 : margin;
+    margin = typeof margin === 'undefined' ? cellSize * 4 : margin;
 
     let qrHtml = '';
 
     qrHtml += '<table style="';
     qrHtml += ' border-width: 0px; border-style: none;';
     qrHtml += ' border-collapse: collapse;';
-    qrHtml += ' padding: 0px; margin: ' + margin + 'px;';
+    qrHtml += ` padding: 0px; margin: ${margin}px;`;
     qrHtml += '">';
     qrHtml += '<tbody>';
 
@@ -439,8 +439,8 @@ export const qrcode = (typeNumber, errorCorrectionLevel) => {
         qrHtml += ' border-width: 0px; border-style: none;';
         qrHtml += ' border-collapse: collapse;';
         qrHtml += ' padding: 0px; margin: 0px;';
-        qrHtml += ' width: ' + cellSize + 'px;';
-        qrHtml += ' height: ' + cellSize + 'px;';
+        qrHtml += ` width: ${cellSize}px;`;
+        qrHtml += ` height: ${cellSize}px;`;
         qrHtml += ' background-color: ';
         qrHtml += _this.isDark(r, c) ? '#000000' : '#ffffff';
         qrHtml += ';';
@@ -458,7 +458,7 @@ export const qrcode = (typeNumber, errorCorrectionLevel) => {
 
   _this.createSvgTag = function (cellSize, margin, alt, title) {
     let opts = {};
-    if (typeof arguments[0] == 'object') {
+    if (typeof arguments[0] === 'object') {
       // Called by options.
       opts = arguments[0];
       // overwrite cellSize and margin.
@@ -469,7 +469,7 @@ export const qrcode = (typeNumber, errorCorrectionLevel) => {
     }
 
     cellSize = cellSize || 2;
-    margin = typeof margin == 'undefined' ? cellSize * 4 : margin;
+    margin = typeof margin === 'undefined' ? cellSize * 4 : margin;
 
     // Compose alt property surrogate
     alt = typeof alt === 'string' ? { text: alt } : alt || {};
@@ -489,22 +489,22 @@ export const qrcode = (typeNumber, errorCorrectionLevel) => {
       qrSvg = '',
       rect;
 
-    rect = 'l' + cellSize + ',0 0,' + cellSize + ' -' + cellSize + ',0 0,-' + cellSize + 'z ';
+    rect = `l${cellSize},0 0,${cellSize} -${cellSize},0 0,-${cellSize}z `;
 
     qrSvg += '<svg version="1.1" xmlns="http://www.w3.org/2000/svg"';
-    qrSvg += !opts.scalable ? ' width="' + size + 'px" height="' + size + 'px"' : '';
-    qrSvg += ' viewBox="0 0 ' + size + ' ' + size + '" ';
+    qrSvg += !opts.scalable ? ` width="${size}px" height="${size}px"` : '';
+    qrSvg += ` viewBox="0 0 ${size} ${size}" `;
     qrSvg += ' preserveAspectRatio="xMinYMin meet"';
     qrSvg +=
       title.text || alt.text
-        ? ' role="img" aria-labelledby="' + escapeXml([title.id, alt.id].join(' ').trim()) + '"'
+        ? ` role="img" aria-labelledby="${escapeXml([title.id, alt.id].join(' ').trim())}"`
         : '';
     qrSvg += '>';
     qrSvg += title.text
-      ? '<title id="' + escapeXml(title.id) + '">' + escapeXml(title.text) + '</title>'
+      ? `<title id="${escapeXml(title.id)}">${escapeXml(title.text)}</title>`
       : '';
     qrSvg += alt.text
-      ? '<description id="' + escapeXml(alt.id) + '">' + escapeXml(alt.text) + '</description>'
+      ? `<description id="${escapeXml(alt.id)}">${escapeXml(alt.text)}</description>`
       : '';
     qrSvg += '<rect width="100%" height="100%" fill="white" cx="0" cy="0"/>';
     qrSvg += '<path d="';
@@ -514,7 +514,7 @@ export const qrcode = (typeNumber, errorCorrectionLevel) => {
       for (c = 0; c < _this.getModuleCount(); c += 1) {
         if (_this.isDark(r, c)) {
           mc = c * cellSize + margin;
-          qrSvg += 'M' + mc + ',' + mr + rect;
+          qrSvg += `M${mc},${mr}${rect}`;
         }
       }
     }
@@ -527,7 +527,7 @@ export const qrcode = (typeNumber, errorCorrectionLevel) => {
 
   _this.createDataURL = (cellSize, margin) => {
     cellSize = cellSize || 2;
-    margin = typeof margin == 'undefined' ? cellSize * 4 : margin;
+    margin = typeof margin === 'undefined' ? cellSize * 4 : margin;
 
     const size = _this.getModuleCount() * cellSize + margin * 2;
     const min = margin;
@@ -546,7 +546,7 @@ export const qrcode = (typeNumber, errorCorrectionLevel) => {
 
   _this.createImgTag = (cellSize, margin, alt) => {
     cellSize = cellSize || 2;
-    margin = typeof margin == 'undefined' ? cellSize * 4 : margin;
+    margin = typeof margin === 'undefined' ? cellSize * 4 : margin;
 
     const size = _this.getModuleCount() * cellSize + margin * 2;
 
@@ -598,7 +598,7 @@ export const qrcode = (typeNumber, errorCorrectionLevel) => {
 
   const _createHalfASCII = (margin) => {
     const cellSize = 1;
-    margin = typeof margin == 'undefined' ? cellSize * 2 : margin;
+    margin = typeof margin === 'undefined' ? cellSize * 2 : margin;
 
     const size = _this.getModuleCount() * cellSize + margin * 2;
     const min = margin;
@@ -671,7 +671,7 @@ export const qrcode = (typeNumber, errorCorrectionLevel) => {
     }
 
     cellSize -= 1;
-    margin = typeof margin == 'undefined' ? cellSize * 2 : margin;
+    margin = typeof margin === 'undefined' ? cellSize * 2 : margin;
 
     const size = _this.getModuleCount() * cellSize + margin * 2;
     const min = margin;
@@ -705,7 +705,7 @@ export const qrcode = (typeNumber, errorCorrectionLevel) => {
       }
 
       for (r = 0; r < cellSize; r += 1) {
-        ascii += line + '\n';
+        ascii += `${line}\n`;
       }
     }
 
@@ -755,7 +755,7 @@ qrcode.createStringToBytes = (unicodeData, numChars) => {
     const bin = base64DecodeInputStream(unicodeData);
     const read = () => {
       const b = bin.read();
-      if (b == -1) throw 'eof';
+      if (b === -1) throw 'eof';
       return b;
     };
 
@@ -763,7 +763,7 @@ qrcode.createStringToBytes = (unicodeData, numChars) => {
     const unicodeMap = {};
     while (true) {
       const b0 = bin.read();
-      if (b0 == -1) break;
+      if (b0 === -1) break;
       const b1 = read();
       const b2 = read();
       const b3 = read();
@@ -772,8 +772,8 @@ qrcode.createStringToBytes = (unicodeData, numChars) => {
       unicodeMap[k] = v;
       count += 1;
     }
-    if (count != numChars) {
-      throw count + ' != ' + numChars;
+    if (count !== numChars) {
+      throw `${count} != ${numChars}`;
     }
 
     return unicodeMap;
@@ -789,8 +789,8 @@ qrcode.createStringToBytes = (unicodeData, numChars) => {
         bytes.push(c);
       } else {
         const b = unicodeMap[s.charAt(i)];
-        if (typeof b == 'number') {
-          if ((b & 0xff) == b) {
+        if (typeof b === 'number') {
+          if ((b & 0xff) === b) {
             // 1byte
             bytes.push(b);
           } else {
@@ -900,7 +900,7 @@ const QRUtil = (() => {
 
   const getBCHDigit = (data) => {
     let digit = 0;
-    while (data != 0) {
+    while (data !== 0) {
       digit += 1;
       data >>>= 1;
     }
@@ -928,24 +928,24 @@ const QRUtil = (() => {
   _this.getMaskFunction = (maskPattern) => {
     switch (maskPattern) {
       case QRMaskPattern.PATTERN000:
-        return (i, j) => (i + j) % 2 == 0;
+        return (i, j) => (i + j) % 2 === 0;
       case QRMaskPattern.PATTERN001:
-        return (i, j) => i % 2 == 0;
+        return (i, _j) => i % 2 === 0;
       case QRMaskPattern.PATTERN010:
-        return (i, j) => j % 3 == 0;
+        return (_i, j) => j % 3 === 0;
       case QRMaskPattern.PATTERN011:
-        return (i, j) => (i + j) % 3 == 0;
+        return (i, j) => (i + j) % 3 === 0;
       case QRMaskPattern.PATTERN100:
-        return (i, j) => (Math.floor(i / 2) + Math.floor(j / 3)) % 2 == 0;
+        return (i, j) => (Math.floor(i / 2) + Math.floor(j / 3)) % 2 === 0;
       case QRMaskPattern.PATTERN101:
-        return (i, j) => ((i * j) % 2) + ((i * j) % 3) == 0;
+        return (i, j) => ((i * j) % 2) + ((i * j) % 3) === 0;
       case QRMaskPattern.PATTERN110:
-        return (i, j) => (((i * j) % 2) + ((i * j) % 3)) % 2 == 0;
+        return (i, j) => (((i * j) % 2) + ((i * j) % 3)) % 2 === 0;
       case QRMaskPattern.PATTERN111:
-        return (i, j) => (((i * j) % 3) + ((i + j) % 2)) % 2 == 0;
+        return (i, j) => (((i * j) % 3) + ((i + j) % 2)) % 2 === 0;
 
       default:
-        throw 'bad maskPattern:' + maskPattern;
+        throw `bad maskPattern:${maskPattern}`;
     }
   };
 
@@ -971,7 +971,7 @@ const QRUtil = (() => {
         case QRMode.MODE_KANJI:
           return 8;
         default:
-          throw 'mode:' + mode;
+          throw `mode:${mode}`;
       }
     } else if (type < 27) {
       // 10 - 26
@@ -986,7 +986,7 @@ const QRUtil = (() => {
         case QRMode.MODE_KANJI:
           return 10;
         default:
-          throw 'mode:' + mode;
+          throw `mode:${mode}`;
       }
     } else if (type < 41) {
       // 27 - 40
@@ -1001,10 +1001,10 @@ const QRUtil = (() => {
         case QRMode.MODE_KANJI:
           return 12;
         default:
-          throw 'mode:' + mode;
+          throw `mode:${mode}`;
       }
     } else {
-      throw 'type:' + type;
+      throw `type:${type}`;
     }
   };
 
@@ -1030,11 +1030,11 @@ const QRUtil = (() => {
               continue;
             }
 
-            if (r == 0 && c == 0) {
+            if (r === 0 && c === 0) {
               continue;
             }
 
-            if (dark == qrcode.isDark(row + r, col + c)) {
+            if (dark === qrcode.isDark(row + r, col + c)) {
               sameCount += 1;
             }
           }
@@ -1055,7 +1055,7 @@ const QRUtil = (() => {
         if (qrcode.isDark(row + 1, col)) count += 1;
         if (qrcode.isDark(row, col + 1)) count += 1;
         if (qrcode.isDark(row + 1, col + 1)) count += 1;
-        if (count == 0 || count == 4) {
+        if (count === 0 || count === 4) {
           lostPoint += 3;
         }
       }
@@ -1139,7 +1139,7 @@ const QRMath = (() => {
 
   _this.glog = (n) => {
     if (n < 1) {
-      throw 'glog(' + n + ')';
+      throw `glog(${n})`;
     }
 
     return LOG_TABLE[n];
@@ -1165,13 +1165,13 @@ const QRMath = (() => {
 //---------------------------------------------------------------------
 
 const qrPolynomial = (num, shift) => {
-  if (typeof num.length == 'undefined') {
-    throw num.length + '/' + shift;
+  if (typeof num.length === 'undefined') {
+    throw `${num.length}/${shift}`;
   }
 
   const _num = (() => {
     let offset = 0;
-    while (offset < num.length && num[offset] == 0) {
+    while (offset < num.length && num[offset] === 0) {
       offset += 1;
     }
     const _num = new Array(num.length - offset + shift);
@@ -1501,10 +1501,8 @@ const QRRSBlock = (() => {
   _this.getRSBlocks = (typeNumber, errorCorrectionLevel) => {
     const rsBlock = getRsBlockTable(typeNumber, errorCorrectionLevel);
 
-    if (typeof rsBlock == 'undefined') {
-      throw (
-        'bad rs block @ typeNumber:' + typeNumber + '/errorCorrectionLevel:' + errorCorrectionLevel
-      );
+    if (typeof rsBlock === 'undefined') {
+      throw `bad rs block @ typeNumber:${typeNumber}/errorCorrectionLevel:${errorCorrectionLevel}`;
     }
 
     const length = rsBlock.length / 3;
@@ -1541,12 +1539,12 @@ const qrBitBuffer = () => {
 
   _this.getAt = (index) => {
     const bufIndex = Math.floor(index / 8);
-    return ((_buffer[bufIndex] >>> (7 - (index % 8))) & 1) == 1;
+    return ((_buffer[bufIndex] >>> (7 - (index % 8))) & 1) === 1;
   };
 
   _this.put = (num, length) => {
     for (let i = 0; i < length; i += 1) {
-      _this.putBit(((num >>> (length - i - 1)) & 1) == 1);
+      _this.putBit(((num >>> (length - i - 1)) & 1) === 1);
     }
   };
 
@@ -1580,7 +1578,7 @@ const qrNumber = (data) => {
 
   _this.getMode = () => _mode;
 
-  _this.getLength = (buffer) => _data.length;
+  _this.getLength = (_buffer) => _data.length;
 
   _this.write = (buffer) => {
     const data = _data;
@@ -1593,9 +1591,9 @@ const qrNumber = (data) => {
     }
 
     if (i < data.length) {
-      if (data.length - i == 1) {
+      if (data.length - i === 1) {
         buffer.put(strToNum(data.substring(i, i + 1)), 4);
-      } else if (data.length - i == 2) {
+      } else if (data.length - i === 2) {
         buffer.put(strToNum(data.substring(i, i + 2)), 7);
       }
     }
@@ -1613,7 +1611,7 @@ const qrNumber = (data) => {
     if ('0' <= c && c <= '9') {
       return c.charCodeAt(0) - '0'.charCodeAt(0);
     }
-    throw 'illegal char :' + c;
+    throw `illegal char :${c}`;
   };
 
   return _this;
@@ -1631,7 +1629,7 @@ const qrAlphaNum = (data) => {
 
   _this.getMode = () => _mode;
 
-  _this.getLength = (buffer) => _data.length;
+  _this.getLength = (_buffer) => _data.length;
 
   _this.write = (buffer) => {
     const s = _data;
@@ -1674,7 +1672,7 @@ const qrAlphaNum = (data) => {
         case ':':
           return 44;
         default:
-          throw 'illegal char :' + c;
+          throw `illegal char :${c}`;
       }
     }
   };
@@ -1695,7 +1693,7 @@ const qr8BitByte = (data) => {
 
   _this.getMode = () => _mode;
 
-  _this.getLength = (buffer) => _bytes.length;
+  _this.getLength = (_buffer) => _bytes.length;
 
   _this.write = (buffer) => {
     for (let i = 0; i < _bytes.length; i += 1) {
@@ -1718,7 +1716,7 @@ const qrKanji = (data) => {
   !((c, code) => {
     // self test for sjis support.
     const test = stringToBytes(c);
-    if (test.length != 2 || ((test[0] << 8) | test[1]) != code) {
+    if (test.length !== 2 || ((test[0] << 8) | test[1]) !== code) {
       throw 'sjis not supported.';
     }
   })('\u53cb', 0x9746);
@@ -1729,7 +1727,7 @@ const qrKanji = (data) => {
 
   _this.getMode = () => _mode;
 
-  _this.getLength = (buffer) => ~~(_bytes.length / 2);
+  _this.getLength = (_buffer) => ~~(_bytes.length / 2);
 
   _this.write = (buffer) => {
     const data = _bytes;
@@ -1744,7 +1742,7 @@ const qrKanji = (data) => {
       } else if (0xe040 <= c && c <= 0xebbf) {
         c -= 0xc140;
       } else {
-        throw 'illegal char at ' + (i + 1) + '/' + c;
+        throw `illegal char at ${i + 1}/${c}`;
       }
 
       c = ((c >>> 8) & 0xff) * 0xc0 + (c & 0xff);
@@ -1755,7 +1753,7 @@ const qrKanji = (data) => {
     }
 
     if (i < data.length) {
-      throw 'illegal char at ' + (i + 1);
+      throw `illegal char at ${i + 1}`;
     }
   };
 
@@ -1834,19 +1832,19 @@ const base64EncodeOutputStream = () => {
 
   const encode = (n) => {
     if (n < 0) {
-      throw 'n:' + n;
+      throw `n:${n}`;
     } else if (n < 26) {
       return 0x41 + n;
     } else if (n < 52) {
       return 0x61 + (n - 26);
     } else if (n < 62) {
       return 0x30 + (n - 52);
-    } else if (n == 62) {
+    } else if (n === 62) {
       return 0x2b;
-    } else if (n == 63) {
+    } else if (n === 63) {
       return 0x2f;
     } else {
-      throw 'n:' + n;
+      throw `n:${n}`;
     }
   };
 
@@ -1868,7 +1866,7 @@ const base64EncodeOutputStream = () => {
       _buflen = 0;
     }
 
-    if (_length % 3 != 0) {
+    if (_length % 3 !== 0) {
       // padding
       const padlen = 3 - (_length % 3);
       for (let i = 0; i < padlen; i += 1) {
@@ -1897,16 +1895,16 @@ const base64DecodeInputStream = (str) => {
   _this.read = () => {
     while (_buflen < 8) {
       if (_pos >= _str.length) {
-        if (_buflen == 0) {
+        if (_buflen === 0) {
           return -1;
         }
-        throw 'unexpected end of file./' + _buflen;
+        throw `unexpected end of file./${_buflen}`;
       }
 
       const c = _str.charAt(_pos);
       _pos += 1;
 
-      if (c == '=') {
+      if (c === '=') {
         _buflen = 0;
         return -1;
       } else if (c.match(/^\s$/)) {
@@ -1930,12 +1928,12 @@ const base64DecodeInputStream = (str) => {
       return c - 0x61 + 26;
     } else if (0x30 <= c && c <= 0x39) {
       return c - 0x30 + 52;
-    } else if (c == 0x2b) {
+    } else if (c === 0x2b) {
       return 62;
-    } else if (c == 0x2f) {
+    } else if (c === 0x2f) {
       return 63;
     } else {
-      throw 'c:' + c;
+      throw `c:${c}`;
     }
   };
 
@@ -2032,7 +2030,7 @@ const gifImage = (width, height) => {
     const _this = {};
 
     _this.write = (data, length) => {
-      if (data >>> length != 0) {
+      if (data >>> length !== 0) {
         throw 'length over';
       }
 
@@ -2092,7 +2090,7 @@ const gifImage = (width, height) => {
         bitOut.write(table.indexOf(s), bitLength);
 
         if (table.size() < 0xfff) {
-          if (table.size() == 1 << bitLength) {
+          if (table.size() === 1 << bitLength) {
             bitLength += 1;
           }
 
@@ -2121,7 +2119,7 @@ const gifImage = (width, height) => {
 
     _this.add = (key) => {
       if (_this.contains(key)) {
-        throw 'dup key:' + key;
+        throw `dup key:${key}`;
       }
       _map[key] = _size;
       _size += 1;
@@ -2131,7 +2129,7 @@ const gifImage = (width, height) => {
 
     _this.indexOf = (key) => _map[key];
 
-    _this.contains = (key) => typeof _map[key] != 'undefined';
+    _this.contains = (key) => typeof _map[key] !== 'undefined';
 
     return _this;
   };
@@ -2157,7 +2155,7 @@ const createDataURL = (width, height, getPixel) => {
   }
   base64.flush();
 
-  return 'data:image/gif;base64,' + base64;
+  return `data:image/gif;base64,${base64}`;
 };
 
 export default qrcode;

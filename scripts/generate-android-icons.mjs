@@ -7,11 +7,11 @@
  * Android icon sizes for adaptive icons and legacy icons.
  */
 
-import { mkdir, writeFile } from 'fs/promises';
-import { dirname, join } from 'path';
+import { mkdir } from 'node:fs/promises';
+import { dirname, join } from 'node:path';
+import { fileURLToPath } from 'node:url';
 import puppeteer from 'puppeteer';
 import sharp from 'sharp';
-import { fileURLToPath } from 'url';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const projectRoot = join(__dirname, '..');

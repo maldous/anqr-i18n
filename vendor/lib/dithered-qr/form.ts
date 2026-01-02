@@ -15,7 +15,7 @@ function select(id: string) {
 }
 
 export function getRotation() {
-  return parseInt(select('rotation').value) || 0;
+  return parseInt(select('rotation').value, 10) || 0;
 }
 
 export function getReflection() {
@@ -23,7 +23,7 @@ export function getReflection() {
 }
 
 export function getScale() {
-  return parseInt(input('scale').value) || 3;
+  return parseInt(input('scale').value, 10) || 3;
 }
 
 export function getText() {
@@ -35,11 +35,11 @@ export function getEcc() {
 }
 
 export function getVersion() {
-  return parseInt(input('version').value) || undefined;
+  return parseInt(input('version').value, 10) || undefined;
 }
 
 export function getMask() {
-  return parseInt(select('mask').value) || undefined;
+  return parseInt(select('mask').value, 10) || undefined;
 }
 
 export function getInverted() {

@@ -26,7 +26,7 @@ export default function makeQR() {
     try {
       qr = encodeQR(text, 'raw', options);
     } catch (e) {
-      if (e.message == 'Capacity overflow' && options.version! < 40)
+      if (e.message === 'Capacity overflow' && options.version! < 40)
         qr = encodeQR(text, 'raw', { ...options, version: undefined });
       else throw e;
     }

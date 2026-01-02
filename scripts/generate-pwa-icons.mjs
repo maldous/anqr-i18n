@@ -6,11 +6,11 @@
  * Creates all required PWA icon sizes for web manifest
  */
 
-import { mkdir } from 'fs/promises';
-import { dirname, join } from 'path';
+import { mkdir } from 'node:fs/promises';
+import { dirname, join } from 'node:path';
+import { fileURLToPath } from 'node:url';
 import puppeteer from 'puppeteer';
 import sharp from 'sharp';
-import { fileURLToPath } from 'url';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const projectRoot = join(__dirname, '..');

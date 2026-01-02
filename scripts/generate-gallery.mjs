@@ -13,10 +13,10 @@
  * - Dev server running on port 5173
  */
 
-import fs from 'fs/promises';
-import path from 'path';
+import fs from 'node:fs/promises';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
 import puppeteer from 'puppeteer';
-import { fileURLToPath } from 'url';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const PROJECT_ROOT = path.resolve(__dirname, '..');
@@ -1053,7 +1053,7 @@ async function captureQR(page, item) {
     // Capture frames and original frame delays from the pre-rendered animation cache
     const captureResult = await page.evaluate((size) => {
       const state = window.__ANQR_STATE__;
-      if (!(state && state.animationFrames) || state.animationFrames.length === 0) {
+      if (!state?.animationFrames || state.animationFrames.length === 0) {
         return null;
       }
 
@@ -1089,7 +1089,7 @@ async function captureQR(page, item) {
       };
     }, IMAGE_SIZE);
 
-    if (!(captureResult && captureResult.frames) || captureResult.frames.length === 0) {
+    if (!captureResult?.frames || captureResult.frames.length === 0) {
       throw new Error('Could not capture animation frames from cache');
     }
 
@@ -1297,7 +1297,7 @@ async function main() {
   const successful = results.filter((r) => r.success).length;
   const failed = results.filter((r) => !r.success);
 
-  console.log('\n' + '='.repeat(50));
+  console.log(`\n${'='.repeat(50)}`);
   console.log(`Successfully captured: ${successful}/${itemsToProcess.length}`);
   console.log(`Total time: ${totalTime}s`);
 

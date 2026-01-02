@@ -1,6 +1,6 @@
+import fs from 'node:fs';
+import path from 'node:path';
 import react from '@vitejs/plugin-react';
-import fs from 'fs';
-import path from 'path';
 import { defineConfig } from 'vite';
 import compression from 'vite-plugin-compression';
 import { VitePWA } from 'vite-plugin-pwa';
@@ -17,7 +17,7 @@ function serveGalleryFiles() {
     configureServer(server) {
       server.middlewares.use((req, res, next) => {
         // Check if request is for a gallery file
-        if (req.url && req.url.startsWith('/gallery/')) {
+        if (req.url?.startsWith('/gallery/')) {
           const filePath = path.join(__dirname, 'public', req.url);
 
           // Check if file exists
