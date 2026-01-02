@@ -1201,16 +1201,15 @@ export function downloadUrl(url: string, filename: string, blob?: Blob): void {
   // On native platforms, use Filesystem API
   if (Capacitor.isNativePlatform() && blob) {
     saveFileNative(filename, blob); // Fire and forget
-    return;
+  } else {
+    // On web, use standard download approach
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = filename;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
   }
-
-  // On web, use standard download approach
-  const a = document.createElement('a');
-  a.href = url;
-  a.download = filename;
-  document.body.appendChild(a);
-  a.click();
-  document.body.removeChild(a);
 }
 
 /**
@@ -1260,7 +1259,7 @@ export class Exporter {
   }
 
   downloadUrl(url: string, filename: string): void {
-    return downloadUrl(url, filename);
+    downloadUrl(url, filename);
   }
 }
 

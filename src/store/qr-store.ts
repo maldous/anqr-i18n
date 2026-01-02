@@ -1390,10 +1390,22 @@ export const useQRStore = create<QRState>((set, get) => ({
         if (v.n) vcard += `N:${v.n}\n`;
         if (v.org) vcard += `ORG:${v.org}\n`;
         if (v.title) vcard += `TITLE:${v.title}\n`;
-        v.tel?.forEach((t) => (vcard += `TEL:${t}\n`));
-        v.email?.forEach((e) => (vcard += `EMAIL:${e}\n`));
+        if (v.tel) {
+          for (const t of v.tel) {
+            vcard += `TEL:${t}\n`;
+          }
+        }
+        if (v.email) {
+          for (const e of v.email) {
+            vcard += `EMAIL:${e}\n`;
+          }
+        }
         if (v.url) vcard += `URL:${v.url}\n`;
-        v.adr?.forEach((a) => (vcard += `ADR:${a}\n`));
+        if (v.adr) {
+          for (const a of v.adr) {
+            vcard += `ADR:${a}\n`;
+          }
+        }
         if (v.note) vcard += `NOTE:${v.note}\n`;
         if (v.bday) vcard += `BDAY:${v.bday}\n`;
         vcard += 'END:VCARD';

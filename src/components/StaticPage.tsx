@@ -38,7 +38,7 @@ function renderTextWithLinks(text: string): React.ReactNode {
     if (part.match(urlRegex)) {
       return (
         <a
-          key={index}
+          key={`${part}-${index}`}
           href={part}
           target="_blank"
           rel="noopener noreferrer"
@@ -48,7 +48,7 @@ function renderTextWithLinks(text: string): React.ReactNode {
         </a>
       );
     }
-    return part;
+    return <span key={`text-${index}`}>{part}</span>;
   });
 }
 
@@ -147,6 +147,7 @@ function DocsTableOfContents({
       {groups.map((group) => (
         <div key={group.title} className="mb-3">
           <button
+            type="button"
             onClick={() => toggleGroup(group.title)}
             className="flex items-center justify-between w-full text-left font-semibold text-foreground hover:text-primary py-1.5 px-2 rounded transition-colors"
           >
@@ -162,6 +163,7 @@ function DocsTableOfContents({
               {group.items.map((item) => (
                 <li key={item.id}>
                   <button
+                    type="button"
                     onClick={() => handleItemClick(item.id)}
                     className={`block w-full text-left py-1 pl-3 pr-2 text-xs leading-snug transition-colors rounded-r ${
                       activeSlug === item.id
@@ -187,6 +189,7 @@ function DocsTableOfContents({
         {/* Toggle button fixed at top */}
         {!mobileOpen && (
           <button
+            type="button"
             onClick={() => setMobileOpen(true)}
             className="fixed z-50 p-2.5 rounded-lg bg-primary text-primary-foreground shadow-lg hover:bg-primary/90 transition-colors"
             style={{
@@ -201,7 +204,18 @@ function DocsTableOfContents({
 
         {/* Backdrop */}
         {mobileOpen && (
-          <div className="fixed inset-0 z-40 bg-black/50" onClick={() => setMobileOpen(false)} />
+          <div
+            role="button"
+            tabIndex={0}
+            className="fixed inset-0 z-40 bg-black/50"
+            onClick={() => setMobileOpen(false)}
+            onKeyDown={(e) => {
+              if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                setMobileOpen(false);
+              }
+            }}
+          />
         )}
 
         {/* Sidebar drawer */}
@@ -216,6 +230,7 @@ function DocsTableOfContents({
               ANQR
             </h3>
             <button
+              type="button"
               onClick={() => setMobileOpen(false)}
               className="p-1 rounded hover:bg-muted transition-colors text-muted-foreground hover:text-foreground"
               title={t('accessibility.closeSidebar')}
@@ -240,6 +255,7 @@ function DocsTableOfContents({
               ANQR
             </h3>
             <button
+              type="button"
               onClick={onClose}
               className="p-1 rounded hover:bg-muted transition-colors text-muted-foreground hover:text-foreground"
               title={t('accessibility.closeSidebar')}
@@ -339,7 +355,9 @@ export function StaticPage({ page }: StaticPageProps) {
     );
 
     // Observe all section headings
-    sectionRefs.current.forEach((el) => observer.observe(el));
+    sectionRefs.current.forEach((el) => {
+      observer.observe(el);
+    });
 
     return () => observer.disconnect();
   }, [isDocsPage]);
@@ -408,6 +426,7 @@ export function StaticPage({ page }: StaticPageProps) {
         {!isDocsSidebarOpen && (
           <div className="hidden lg:block relative">
             <button
+              type="button"
               onClick={(e) => {
                 e.stopPropagation();
                 setIsDocsSidebarOpen(true);

@@ -56,7 +56,12 @@ function ErrorFallbackUI({ error, onRetry }: { error: Error | null; onRetry: () 
             <RefreshCw className="h-4 w-4 mr-2" />
             {t('error.retry', 'Try Again')}
           </Button>
-          <Button onClick={() => (window.location.href = '/')} variant="outline">
+          <Button
+            onClick={() => {
+              window.location.href = '/';
+            }}
+            variant="outline"
+          >
             {t('error.goHome', 'Go to Home')}
           </Button>
         </div>

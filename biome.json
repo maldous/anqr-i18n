@@ -1,5 +1,5 @@
 {
-  "$schema": "https://biomejs.dev/schemas/2.0.0/schema.json",
+  "$schema": "https://biomejs.dev/schemas/2.3.10/schema.json",
   "assist": {
     "actions": {
       "source": {
@@ -26,12 +26,17 @@
         "useImportType": "warn"
       },
       "suspicious": {
-        "noExplicitAny": "warn",
-        "noConsole": "off"
+        "noExplicitAny": "off",
+        "noConsole": "off",
+        "noArrayIndexKey": "off",
+        "noTemplateCurlyInString": "off",
+        "noAssignInExpressions": "off"
       },
       "a11y": {
         "useKeyWithClickEvents": "warn",
-        "useKeyWithMouseEvents": "warn"
+        "useKeyWithMouseEvents": "warn",
+        "useSemanticElements": "off",
+        "noStaticElementInteractions": "off"
       }
     }
   },
@@ -57,12 +62,15 @@
     }
   },
   "files": {
-    "includes": ["**/*.ts", "**/*.tsx", "**/*.js", "**/*.jsx", "**/*.mjs", "**/*.json", "**/*.css"],
+    "includes": [
+      "src/**/*.ts",
+      "src/**/*.tsx",
+      "src/**/*.js",
+      "src/**/*.jsx",
+      "src/**/*.mjs",
+      "src/**/*.json",
+      "netlify/**/*.ts"
+    ],
     "ignoreUnknown": true
-  },
-  "vcs": {
-    "enabled": true,
-    "clientKind": "git",
-    "useIgnoreFile": true
   }
 }

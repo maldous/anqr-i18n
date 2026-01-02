@@ -243,6 +243,7 @@ export function Preview({ sidebarOpen = true }: PreviewProps) {
                   </div>
                   {qa.showHeatmap && (
                     <button
+                      type="button"
                       onClick={() => setHeatmapActive(!heatmapActive)}
                       className={`text-xs font-medium px-2 py-1 rounded-md shadow-sm flex items-center gap-1 transition-colors ${
                         heatmapActive
@@ -266,12 +267,13 @@ export function Preview({ sidebarOpen = true }: PreviewProps) {
                       <div className="flex-1">
                         <p className="text-xs font-medium text-amber-800">{t('sections.safety')}</p>
                         <ul className="text-xs text-amber-700 mt-1 space-y-0.5">
-                          {safetyWarnings.map((warning, i) => (
-                            <li key={i}>• {warning}</li>
+                          {safetyWarnings.map((warning) => (
+                            <li key={warning}>• {warning}</li>
                           ))}
                         </ul>
                       </div>
                       <button
+                        type="button"
                         onClick={() => setShowWarnings(false)}
                         className="text-amber-600 hover:text-amber-800 text-xs"
                         title={t('common.close')}

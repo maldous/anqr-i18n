@@ -422,6 +422,7 @@ export function Header({
             {/* Settings toggle - only in editor mode, placeholder space on other pages */}
             {isEditor ? (
               <button
+                type="button"
                 onClick={onToggleSidebar}
                 className="flex items-center justify-center w-8 h-8 hover:opacity-80 cursor-pointer"
                 title={t('accessibility.toggleSettings')}
@@ -435,6 +436,7 @@ export function Header({
 
             {/* ANQR logo/title - always navigates to generator */}
             <button
+              type="button"
               onClick={() => {
                 closeMobileMenu();
                 onNavigate?.('editor');
@@ -477,6 +479,7 @@ export function Header({
             {isGallery && (
               <div className="hidden lg:flex items-center gap-1">
                 <button
+                  type="button"
                   onClick={() => onGalleryFilterChange?.('all')}
                   className={`p-2 rounded-md transition-colors ${
                     galleryFilter === 'all'
@@ -489,6 +492,7 @@ export function Header({
                 </button>
                 {gallerySections.map((section) => (
                   <button
+                    type="button"
                     key={section.id}
                     onClick={() => onGalleryFilterChange?.(section.id)}
                     className={`p-2 rounded-md transition-colors ${
@@ -612,7 +616,13 @@ export function Header({
               </Button>
               {(langMenuOpen || isLangMenuClosing) && (
                 <>
-                  <div className="fixed inset-0 z-[60]" onClick={closeLangMenu} />
+                  <div
+                    className="fixed inset-0 z-[60]"
+                    onClick={closeLangMenu}
+                    onKeyDown={(e) => {
+                      if (e.key === 'Escape') closeLangMenu();
+                    }}
+                  />
                   <div
                     className={`fixed w-72 bg-card border rounded-lg shadow-lg z-[70] py-1 max-h-[50vh] overflow-y-auto origin-top ${
                       isLangMenuClosing
@@ -650,6 +660,7 @@ export function Header({
                       })
                       .map((lang) => (
                         <button
+                          type="button"
                           key={lang.code}
                           onClick={() => changeLanguage(lang.code)}
                           className={`w-full px-3 py-2 text-left text-sm hover:bg-muted flex items-center gap-2 ${i18n.language === lang.code || i18n.language.startsWith(lang.code) ? 'bg-muted' : ''}`}

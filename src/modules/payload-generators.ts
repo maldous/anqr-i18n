@@ -846,14 +846,14 @@ export function generateGeo(params: GeoHelper): string {
 
 /** Generate WiFi configuration string */
 export function generateWifi(params: WifiHelper): string {
-  const escape = (s: string) => s.replace(/[\\";,:]/g, '\\$&');
+  const escapeWifi = (s: string) => s.replace(/[\\";,:]/g, '\\$&');
 
   let wifi = 'WIFI:';
   wifi += `T:${params.auth};`;
-  wifi += `S:${escape(params.ssid)};`;
+  wifi += `S:${escapeWifi(params.ssid)};`;
 
   if (params.password && params.auth !== 'nopass') {
-    wifi += `P:${escape(params.password)};`;
+    wifi += `P:${escapeWifi(params.password)};`;
   }
 
   if (params.hidden) {
@@ -861,8 +861,8 @@ export function generateWifi(params: WifiHelper): string {
   }
 
   // EAP parameters for enterprise WiFi
-  if (params.eapIdentity) wifi += `I:${escape(params.eapIdentity)};`;
-  if (params.eapAnonymous) wifi += `A:${escape(params.eapAnonymous)};`;
+  if (params.eapIdentity) wifi += `I:${escapeWifi(params.eapIdentity)};`;
+  if (params.eapAnonymous) wifi += `A:${escapeWifi(params.eapAnonymous)};`;
   if (params.eapPhase2) wifi += `PH2:${params.eapPhase2};`;
 
   wifi += ';';
@@ -989,19 +989,19 @@ export function generateVCard(params: VCardHelper): string {
 
 /** Generate MeCard string (Japanese format, more compact than vCard) */
 export function generateMeCard(params: MeCardHelper): string {
-  const escape = (s: string) => s.replace(/[\\";,:]/g, '\\$&');
+  const escapeMeCard = (s: string) => s.replace(/[\\";,:]/g, '\\$&');
 
   let mecard = 'MECARD:';
 
-  if (params.n) mecard += `N:${escape(params.n)};`;
-  if (params.nickname) mecard += `NICKNAME:${escape(params.nickname)};`;
-  if (params.org) mecard += `ORG:${escape(params.org)};`;
+  if (params.n) mecard += `N:${escapeMeCard(params.n)};`;
+  if (params.nickname) mecard += `NICKNAME:${escapeMeCard(params.nickname)};`;
+  if (params.org) mecard += `ORG:${escapeMeCard(params.org)};`;
   if (params.tel) mecard += `TEL:${params.tel};`;
   if (params.email) mecard += `EMAIL:${params.email};`;
   if (params.url) mecard += `URL:${params.url};`;
-  if (params.adr) mecard += `ADR:${escape(params.adr)};`;
+  if (params.adr) mecard += `ADR:${escapeMeCard(params.adr)};`;
   if (params.bday) mecard += `BDAY:${params.bday.replace(/-/g, '')};`;
-  if (params.note) mecard += `NOTE:${escape(params.note)};`;
+  if (params.note) mecard += `NOTE:${escapeMeCard(params.note)};`;
 
   mecard += ';';
   return mecard;

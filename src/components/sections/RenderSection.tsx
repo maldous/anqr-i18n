@@ -523,6 +523,24 @@ export function RenderSection() {
                       };
                       input.click();
                     }}
+                    onKeyDown={(e) => {
+                      if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        const input = document.createElement('input');
+                        input.type = 'color';
+                        input.value = color;
+                        input.onchange = (ev) => {
+                          const newPalette = [...render.palette];
+                          newPalette[index] = (ev.target as HTMLInputElement).value;
+                          useQRStore.setState((s) => ({
+                            render: { ...s.render, palette: newPalette },
+                          }));
+                        };
+                        input.click();
+                      }
+                    }}
+                    role="button"
+                    tabIndex={0}
                   />
                   <Button
                     variant="ghost"
