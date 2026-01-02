@@ -44,7 +44,7 @@
  * - cGuard: Contrast guard 0/1 (default: 0)
  * - minContrast: Minimum contrast ratio (default: 4.5)
  * - img: URL to overlay image (fetched server-side)
- * - mode: Overlay mode - center/halftone/blend/brightness/mosaic/dithered/blue-noise/subpixel
+ * - mode: Overlay mode - center/halftone/blend/brightness/mosaic/dithered/blue-noise/subpixel (default: dithered when img is provided)
  * - intensity: Overlay intensity 0-100 (default: 100)
  * - colorMode: Overlay color mode - color/grayscale/bw
  * - transparent: Set to 1 for transparent background
@@ -1141,7 +1141,9 @@ export default async (request: Request) => {
 
   // Overlay
   const overlayUrl = params.get('img');
-  const overlayMode = params.get('mode') || undefined;
+  // Default to 'dithered' mode when overlay URL is provided but mode is not specified
+  // This matches the client-side default in qr-store.ts
+  const overlayMode = params.get('mode') || (overlayUrl ? 'dithered' : undefined);
   const overlayIntensity = Math.min(
     100,
     Math.max(0, parseInt(params.get('intensity') || '100', 10))

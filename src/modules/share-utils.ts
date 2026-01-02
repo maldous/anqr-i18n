@@ -587,7 +587,12 @@ export function buildUrlParams(config: Partial<ShareConfig>): string {
   }
 
   // Overlay
-  if (config.mode && config.mode !== 'dithered') {
+  // Always include mode when overlayUrl is present (server requires it to process overlay)
+  // Otherwise, only include if it differs from the default
+  if (config.overlayUrl) {
+    // When overlay URL is present, always include mode (default to 'dithered')
+    params.set('mode', config.mode || 'dithered');
+  } else if (config.mode && config.mode !== 'dithered') {
     params.set('mode', config.mode);
   }
   if (config.intensity !== undefined && config.intensity !== 100) {
@@ -1145,6 +1150,12 @@ export function convertToImageApiUrl(
       'enc',
       'v',
       'border',
+      'modulePx',
+      // Safety per-ECC limits
+      'maxIntL',
+      'maxIntM',
+      'maxIntQ',
+      'maxIntH',
       // Rendering options
       'crisp',
       'snap',
@@ -1226,11 +1237,6 @@ export function convertToImageApiUrl(
       // Palette
       'palette',
       'paletteMode',
-      // Safety per-ECC limits
-      'maxIntL',
-      'maxIntM',
-      'maxIntQ',
-      'maxIntH',
       // Output format
       'format',
       'quality',
