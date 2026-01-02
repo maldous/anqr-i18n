@@ -129,7 +129,7 @@ export class QRGenerator {
    */
   constructor(canvasFactory = null) {
     this.qrcode = qrcode;
-    this._canvasFactory = canvasFactory || defaultBrowserCanvasFactory;
+    this.canvasFactory = canvasFactory || defaultBrowserCanvasFactory;
     /** @type {boolean[][] | null} */
     this._lastMatrix = null;
     /** @type {number} */
@@ -155,7 +155,7 @@ export class QRGenerator {
    * @param {object} qr - The QR code object with isDark() method
    * @param {number} moduleCount - Number of modules in the QR code
    */
-  _storeMatrix(qr, moduleCount) {
+  storeMatrix(qr, moduleCount) {
     const matrix = [];
     for (let row = 0; row < moduleCount; row++) {
       matrix[row] = [];
@@ -173,14 +173,569 @@ export class QRGenerator {
    * @param {number} height
    * @returns {Promise<HTMLCanvasElement|object>}
    */
-  async _createCanvas(width, height) {
-    return this._canvasFactory.createCanvas(width, height);
+  async createCanvas(width, height) {
+    return this.canvasFactory.createCanvas(width, height);
   }
 
   async loadLibrary() {
     // Library is imported synchronously via ES module
     // This method is kept for backwards compatibility
     return Promise.resolve();
+  }
+
+  // ============================================
+  // UNIFIED PIPELINE HELPERS
+  // ============================================
+
+  /**
+   * Get the scale factor for a given overlay mode.
+   * - Standard modes: scale=1 (module-level rendering)
+   * - Dithered/Blue-noise modes: scale=3 (subpixel dithering)
+   * - Subpixel modes: scale=2,3,4 (configurable grid)
+   * @private
+   */
+  getScaleFactor(overlayMode, config) {
+    switch (overlayMode) {
+      case 'dithered':
+      case 'blue-noise':
+        return 3; // Fixed 3x scale for error diffusion modes
+      case 'subpixel':
+      case 'subpixel-size': {
+        // Configurable NxN grid
+        const gridSizeStr = config?.subpixelGridSize || '3x3';
+        return parseInt(gridSizeStr.charAt(0), 10) || 3;
+      }
+      default:
+        return 1; // Module-level rendering
+    }
+  }
+
+  /**
+   * UNIFIED PIXEL DECISION MATRIX
+   * Generates pixel-level decisions for ALL overlay modes.
+   * Returns a unified format that the render loop can use consistently.
+   * 
+   * @returns {Object} { matrix: boolean[][], colors: RGB[][], scale: number, overlayData: brightness[][] }
+   */
+  async generatePixelDecisionMatrix(qr, config, overlayCanvas, moduleCount) {
+    const overlayMode = config.overlayMode;
+    const scale = this.getScaleFactor(overlayMode, config);
+    const scaledSize = moduleCount * scale;
+
+    // Apply per-ECC intensity limits
+    let effectiveIntensity = config.overlayIntensity ?? 100;
+    if (config.maxOverlayIntensityByEcc) {
+      const eccLimit = config.maxOverlayIntensityByEcc[config.errorCorrection];
+      if (eccLimit !== undefined && eccLimit < effectiveIntensity) {
+        effectiveIntensity = eccLimit;
+      }
+    }
+    const effectiveConfig = { ...config, overlayIntensity: effectiveIntensity };
+
+    // No overlay - return base QR matrix at requested scale
+    if (!overlayCanvas) {
+      const matrix = [];
+      const colors = [];
+      for (let y = 0; y < scaledSize; y++) {
+        matrix[y] = [];
+        colors[y] = [];
+        for (let x = 0; x < scaledSize; x++) {
+          const moduleRow = Math.floor(y / scale);
+          const moduleCol = Math.floor(x / scale);
+          const isDark = qr.isDark(moduleRow, moduleCol);
+          matrix[y][x] = isDark;
+          colors[y][x] = isDark ? { r: 0, g: 0, b: 0 } : { r: 255, g: 255, b: 255 };
+        }
+      }
+      return { matrix, colors, scale, overlayData: null, effectiveIntensity };
+    }
+
+    // Route to mode-specific pixel generation
+    switch (overlayMode) {
+      case 'dithered': {
+        // Use error diffusion dithering at 3x scale
+        const qrResult = generateQR({
+          text: config.content,
+          ecc: config.errorCorrection,
+          version: config.typeNumber || 0,
+          scale,
+        });
+        const ditheredResult = await this.applyDitherToMatrix(
+          qrResult.matrix,
+          qrResult.moduleCount,
+          scale,
+          overlayCanvas,
+          effectiveIntensity,
+          config.colorMode || 'color',
+          config.ditherSerpentine !== false,
+          effectiveConfig
+        );
+        return {
+          matrix: ditheredResult.matrix,
+          colors: ditheredResult.colors,
+          scale,
+          overlayData: null,
+          effectiveIntensity,
+        };
+      }
+
+      case 'blue-noise': {
+        // Use blue noise dithering at 3x scale
+        let processedOverlay = overlayCanvas;
+        if (this.hasPreprocessingOptions(config)) {
+          processedOverlay = await this.preprocessOverlay(overlayCanvas, config);
+        }
+        const blueNoiseResult = await generateBlueNoiseDithered({
+          text: config.content,
+          ecc: config.errorCorrection,
+          version: config.typeNumber || 0,
+          scale,
+          overlayCanvas: processedOverlay,
+          overlayIntensity: effectiveIntensity,
+          colorMode: config.colorMode || 'color',
+          canvasFactory: this.canvasFactory,
+        });
+        return {
+          matrix: blueNoiseResult.matrix,
+          colors: blueNoiseResult.colors,
+          scale,
+          overlayData: null,
+          effectiveIntensity,
+        };
+      }
+
+      case 'subpixel':
+      case 'subpixel-size': {
+        // Generate NxN grid where center=QR data, surrounding=image
+        const useHalftoneCenter = overlayMode === 'subpixel-size';
+        return await this.generateSubpixelMatrix(qr, config, overlayCanvas, moduleCount, scale, useHalftoneCenter);
+      }
+
+      case 'dither':
+      case 'extreme': {
+        // True dither at 1x scale - modifies module dark/light state
+        const overlayData = await this.getOverlayData(
+          overlayCanvas,
+          moduleCount,
+          config.colorMode || 'color',
+          config.invertImage,
+          config.frameIndex || 0,
+          effectiveConfig
+        );
+        let ditherPattern = null;
+        let ditherColors = null;
+        const useAdvancedDither =
+          config.ditherKind &&
+          config.ditherKind !== 'true_dither' &&
+          config.ditherKind !== 'error_diffusion';
+
+        if (useAdvancedDither) {
+          try {
+            const advResult = await this.applyAdvancedDither(overlayCanvas, moduleCount, effectiveConfig);
+            ditherPattern = advResult.matrix;
+            ditherColors = advResult.colors;
+          } catch (e) {
+            console.warn('Advanced dithering failed, falling back to true dither:', e);
+            ditherPattern = this.applyTrueDither(qr, overlayData, effectiveConfig, overlayMode === 'extreme');
+          }
+        } else {
+          ditherPattern = this.applyTrueDither(qr, overlayData, effectiveConfig, overlayMode === 'extreme');
+        }
+        // Convert to unified format
+        const matrix = ditherPattern || [];
+        const colors = ditherColors || overlayData.colors || [];
+        // Ensure colors is in RGB object format
+        const normalizedColors = [];
+        for (let y = 0; y < moduleCount; y++) {
+          normalizedColors[y] = [];
+          for (let x = 0; x < moduleCount; x++) {
+            const c = colors[y]?.[x];
+            if (c && typeof c === 'object' && 'r' in c) {
+              normalizedColors[y][x] = c;
+            } else if (c && typeof c === 'string') {
+              const parsed = parseColor(c);
+              normalizedColors[y][x] = parsed;
+            } else {
+              normalizedColors[y][x] = matrix[y]?.[x] ? { r: 0, g: 0, b: 0 } : { r: 255, g: 255, b: 255 };
+            }
+          }
+        }
+        return {
+          matrix,
+          colors: normalizedColors,
+          scale: 1,
+          overlayData,
+          effectiveIntensity,
+        };
+      }
+
+      default: {
+        // Standard modes (blend, halftone, center, etc.) - 1x scale
+        // Return base QR matrix with overlay data for per-module effects
+        const overlayData = await this.getOverlayData(
+          overlayCanvas,
+          moduleCount,
+          config.colorMode || 'color',
+          config.invertImage,
+          config.frameIndex || 0,
+          effectiveConfig
+        );
+        const matrix = [];
+        const colors = [];
+        for (let y = 0; y < moduleCount; y++) {
+          matrix[y] = [];
+          colors[y] = [];
+          for (let x = 0; x < moduleCount; x++) {
+            const isDark = qr.isDark(y, x);
+            matrix[y][x] = isDark;
+            const c = overlayData.colors?.[y]?.[x];
+            if (c && typeof c === 'string') {
+              const parsed = parseColor(c);
+              colors[y][x] = parsed;
+            } else {
+              colors[y][x] = isDark ? { r: 0, g: 0, b: 0 } : { r: 255, g: 255, b: 255 };
+            }
+          }
+        }
+        return {
+          matrix,
+          colors,
+          scale: 1,
+          overlayData,
+          effectiveIntensity,
+        };
+      }
+    }
+  }
+
+  /**
+   * UNIFIED OVERLAY PROCESSING
+   * Prepares overlay data for ANY overlay mode, returning a unified format
+   * that the main render loop can use consistently.
+   */
+  async prepareUnifiedOverlayData(qr, config, overlayCanvas, moduleCount) {
+    if (!overlayCanvas) {
+      return { ditherPattern: null, colors: null, overlayData: null, effectiveIntensity: 100 };
+    }
+
+    const overlayMode = config.overlayMode;
+    
+    // Get base overlay data (brightness + colors) - used by all modes
+    const overlayData = await this.getOverlayData(
+      overlayCanvas,
+      moduleCount,
+      config.colorMode || 'color',
+      config.invertImage,
+      config.frameIndex || 0,
+      config
+    );
+
+    // Apply per-ECC intensity limits
+    let effectiveIntensity = config.overlayIntensity ?? 100;
+    if (config.maxOverlayIntensityByEcc) {
+      const eccLimit = config.maxOverlayIntensityByEcc[config.errorCorrection];
+      if (eccLimit !== undefined && eccLimit < effectiveIntensity) {
+        effectiveIntensity = eccLimit;
+      }
+    }
+    const effectiveConfig = { ...config, overlayIntensity: effectiveIntensity };
+
+    // For modes that modify module dark/light state, generate dither pattern
+    let ditherPattern = null;
+    let ditherColors = null;
+
+    if (overlayMode === 'dither' || overlayMode === 'extreme') {
+      // Check if advanced dithering params are specified
+      const useAdvancedDither =
+        config.ditherKind &&
+        config.ditherKind !== 'true_dither' &&
+        config.ditherKind !== 'error_diffusion';
+
+      if (useAdvancedDither) {
+        try {
+          const advResult = await this.applyAdvancedDither(overlayCanvas, moduleCount, effectiveConfig);
+          ditherPattern = advResult.matrix;
+          ditherColors = advResult.colors;
+        } catch (e) {
+          console.warn('Advanced dithering failed, falling back to true dither:', e);
+          ditherPattern = this.applyTrueDither(qr, overlayData, effectiveConfig, overlayMode === 'extreme');
+        }
+      } else {
+        ditherPattern = this.applyTrueDither(qr, overlayData, effectiveConfig, overlayMode === 'extreme');
+      }
+    }
+
+    return {
+      ditherPattern,
+      colors: ditherColors || overlayData.colors,
+      overlayData,
+      effectiveIntensity,
+    };
+  }
+
+
+
+  /**
+   * UNIFIED SCALED QR GENERATION
+   * Handles ALL scaled overlay modes (dithered, blue-noise, subpixel, subpixel-size)
+   * through a single code path with ALL settings applied uniformly.
+   */
+  async generateScaledQR(qr, config, overlayCanvas, moduleCount, scale) {
+    // Get pixel decision matrix (unified for all scaled modes)
+    const pixelData = await this.generatePixelDecisionMatrix(qr, config, overlayCanvas, moduleCount);
+    const { matrix, colors } = pixelData;
+    const scaledSize = matrix.length;
+
+    // UNIFIED: Apply quietZoneMinEnforce setting
+    const quietZoneMin = config.quietZoneMinEnforce !== false ? 4 : 0;
+    const marginModules = Math.max(quietZoneMin, config.margin);
+
+    // Calculate pixel size
+    const subPixelSize = Math.max(1, Math.round(config.moduleSize / scale));
+    const effectiveModuleSize = subPixelSize * scale;
+
+    // UNIFIED: Apply frame settings
+    const frameExtra = config.frameStyle && config.frameStyle !== 'none' && config.frameText
+      ? effectiveModuleSize * 4 : 0;
+    const marginPx = marginModules * effectiveModuleSize;
+    const size = scaledSize * subPixelSize + marginPx * 2 + frameExtra;
+
+    const canvas = await this.createCanvas(size, size);
+    const ctx = canvas.getContext('2d');
+    ctx.imageSmoothingEnabled = false;
+
+    // Draw background
+    if (!config.transparentBg) {
+      ctx.fillStyle = config.bgColor;
+      ctx.fillRect(0, 0, size, size);
+    }
+
+    // UNIFIED: Create gradient fill if configured
+    const gradientFill = this.createGradientFill(ctx, config, size);
+    const useGradient = config.gradient && config.gradient.type !== 'none';
+
+    // Determine color rendering mode
+    const useColorRendering = overlayCanvas && config.colorMode !== 'bw';
+
+    // Render all pixels
+    for (let y = 0; y < scaledSize; y++) {
+      for (let x = 0; x < scaledSize; x++) {
+        const isDark = matrix[y]?.[x];
+        const color = colors[y]?.[x];
+
+        // Skip light pixels unless doing color rendering
+        if (!isDark && !useColorRendering) continue;
+
+        const dx = marginPx + x * subPixelSize;
+        const dy = marginPx + y * subPixelSize;
+
+        if (useColorRendering && color) {
+          // Check for halftone rendering flag
+          if (color.halftone && isDark) {
+            // Draw halftone dot
+            ctx.fillStyle = config.bgColor;
+            ctx.fillRect(dx, dy, subPixelSize, subPixelSize);
+            ctx.fillStyle = useGradient ? gradientFill : config.fgColor;
+            const dotSize = subPixelSize * (color.sizeRatio || 1);
+            const offset = (subPixelSize - dotSize) / 2;
+            ctx.fillRect(dx + offset, dy + offset, dotSize, dotSize);
+          } else {
+            // Use the actual color from pixel data
+            ctx.fillStyle = `rgb(${color.r},${color.g},${color.b})`;
+            ctx.fillRect(dx, dy, subPixelSize, subPixelSize);
+          }
+        } else if (isDark) {
+          // B&W mode: use foreground color (with optional gradient)
+          ctx.fillStyle = useGradient ? gradientFill : config.fgColor;
+          ctx.fillRect(dx, dy, subPixelSize, subPixelSize);
+        }
+      }
+    }
+
+    // UNIFIED: Draw styled finder patterns on top of pixel rendering
+    // This ensures finder patterns have proper styling regardless of overlay mode
+    const finderPositions = [
+      { row: 0, col: 0 }, // Top-left
+      { row: 0, col: moduleCount - 7 }, // Top-right
+      { row: moduleCount - 7, col: 0 }, // Bottom-left
+    ];
+
+    for (const pos of finderPositions) {
+      // Position is in module coordinates, convert to pixels
+      const x = marginPx + pos.col * effectiveModuleSize;
+      const y = marginPx + pos.row * effectiveModuleSize;
+      this.drawFinderPatternComplete(ctx, x, y, effectiveModuleSize, config);
+    }
+
+    // UNIFIED: Draw styled alignment patterns (for version 2+)
+    // Note: moduleCount is the base QR module count (not scaled)
+    const version = config.typeNumber || Math.ceil((moduleCount - 17) / 4);
+    if (version >= 2) {
+      const alignPositions = this.getAlignmentPositions(version, moduleCount);
+      const alignmentStyle = config.alignmentStyle || 'match_finder';
+      for (const pos of alignPositions) {
+        // pos.row/col is the CENTER module of the alignment pattern
+        // Convert to pixel center position
+        const centerX = marginPx + (pos.col + 0.5) * effectiveModuleSize;
+        const centerY = marginPx + (pos.row + 0.5) * effectiveModuleSize;
+        this.drawAlignmentPattern(ctx, centerX, centerY, effectiveModuleSize, alignmentStyle, config);
+      }
+    }
+
+    // UNIFIED: Draw frame if configured
+    this.drawFrame(ctx, size, effectiveModuleSize, marginModules, config);
+
+    // Store the QR matrix for vector SVG export
+    const syntheticQr = {
+      isDark: (row, col) => {
+        const subRow = row * scale + Math.floor(scale / 2);
+        const subCol = col * scale + Math.floor(scale / 2);
+        return matrix[subRow]?.[subCol] ?? false;
+      },
+    };
+    this.storeMatrix(syntheticQr, moduleCount);
+
+    return canvas;
+  }
+
+  /**
+   * Generate subpixel matrix for subpixel/subpixel-size modes.
+   * Each module becomes NxN pixels where center=QR data, surrounding=image.
+   * @private
+   */
+  async generateSubpixelMatrix(qr, config, overlayCanvas, moduleCount, scale, useHalftoneCenter = false) {
+    const scaledSize = moduleCount * scale;
+    const matrix = [];
+    const colors = [];
+
+    // Get overlay data at scaled resolution
+    const overlayData = await this.getSubpixelOverlayData(
+      overlayCanvas,
+      scaledSize,
+      config.colorMode || 'color',
+      config
+    );
+    // Also get per-module brightness for halftone center
+    const moduleBrightness = await this.getOverlayData(
+      overlayCanvas,
+      moduleCount,
+      'color',
+      false,
+      config.frameIndex || 0
+    );
+
+    const intensity = (config.overlayIntensity ?? 100) / 100;
+    const centerIdx = Math.floor(scale / 2);
+    const centerRule = config.subpixelCenterRule || 'strict';
+    const finderOverride = config.subpixelFinderOverride || 'solid';
+    const neutralColor = config.subpixelNeutralColor || '#808080';
+    const neutralParsed = parseColor(neutralColor);
+
+    for (let moduleRow = 0; moduleRow < moduleCount; moduleRow++) {
+      for (let moduleCol = 0; moduleCol < moduleCount; moduleCol++) {
+        const isDark = qr.isDark(moduleRow, moduleCol);
+        const isFinder = this.isFinderPattern(moduleRow, moduleCol, moduleCount);
+
+        for (let subRow = 0; subRow < scale; subRow++) {
+          for (let subCol = 0; subCol < scale; subCol++) {
+            const y = moduleRow * scale + subRow;
+            const x = moduleCol * scale + subCol;
+
+            if (!matrix[y]) {
+              matrix[y] = [];
+              colors[y] = [];
+            }
+
+            // For finder patterns with solid override, fill entire block
+            if (isFinder && finderOverride === 'solid') {
+              matrix[y][x] = isDark;
+              colors[y][x] = isDark 
+                ? parseColor(config.fgColor) 
+                : parseColor(config.bgColor);
+              continue;
+            }
+
+            const isCenter = subRow === centerIdx && subCol === centerIdx;
+
+            if (isCenter) {
+              // CENTER pixel - MUST show QR data for scannability
+              const useHalftone = useHalftoneCenter || centerRule === 'halftone_center';
+              if (useHalftone && isDark) {
+                // Halftone center uses brightness to vary appearance
+                const brightness = moduleBrightness[moduleRow]?.[moduleCol] ?? 0.5;
+                const minSize = 0.4;
+                const maxSize = 1.0;
+                const sizeRatio = minSize + (1 - brightness) * (maxSize - minSize) * intensity;
+                // For the matrix, we still mark it as dark
+                matrix[y][x] = true;
+                // Store a flag in color for halftone rendering
+                colors[y][x] = {
+                  r: 0, g: 0, b: 0,
+                  halftone: true,
+                  sizeRatio,
+                };
+              } else {
+                matrix[y][x] = isDark;
+                colors[y][x] = isDark 
+                  ? parseColor(config.fgColor) 
+                  : parseColor(config.bgColor);
+              }
+            } else {
+              // SURROUNDING pixels - show overlay image
+              const overlayColor = overlayData.colors?.[y]?.[x];
+              if (overlayColor && intensity > 0) {
+                let parsed;
+                if (typeof overlayColor === 'string') {
+                  parsed = parseColor(overlayColor);
+                } else {
+                  parsed = overlayColor;
+                }
+                if (intensity >= 1) {
+                  matrix[y][x] = (parsed.r * 0.299 + parsed.g * 0.587 + parsed.b * 0.114) < 128;
+                  colors[y][x] = parsed;
+                } else {
+                  // Blend with neutral
+                  const blended = {
+                    r: Math.round(neutralParsed.r + (parsed.r - neutralParsed.r) * intensity),
+                    g: Math.round(neutralParsed.g + (parsed.g - neutralParsed.g) * intensity),
+                    b: Math.round(neutralParsed.b + (parsed.b - neutralParsed.b) * intensity),
+                  };
+                  matrix[y][x] = (blended.r * 0.299 + blended.g * 0.587 + blended.b * 0.114) < 128;
+                  colors[y][x] = blended;
+                }
+              } else {
+                // No overlay - show based on QR pattern with reduced contrast
+                if (isDark) {
+                  const darkened = {
+                    r: Math.round(neutralParsed.r * 0.5),
+                    g: Math.round(neutralParsed.g * 0.5),
+                    b: Math.round(neutralParsed.b * 0.5),
+                  };
+                  matrix[y][x] = true;
+                  colors[y][x] = darkened;
+                } else {
+                  const lightened = {
+                    r: Math.round(255 - (255 - neutralParsed.r) * 0.5),
+                    g: Math.round(255 - (255 - neutralParsed.g) * 0.5),
+                    b: Math.round(255 - (255 - neutralParsed.b) * 0.5),
+                  };
+                  matrix[y][x] = false;
+                  colors[y][x] = lightened;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+
+    return {
+      matrix,
+      colors,
+      scale,
+      overlayData: moduleBrightness,
+      effectiveIntensity: intensity * 100,
+    };
   }
 
   async generate(config, overlayCanvas = null) {
@@ -198,25 +753,25 @@ export class QRGenerator {
     // This provides 10-50x speedup. Skip full-res preprocessing entirely.
     // Only geometric transforms (rotation, flip) are done at full res if needed.
     let processedOverlayCanvas = overlayCanvas;
-    if (overlayCanvas && this._hasGeometricTransforms(config)) {
-      processedOverlayCanvas = await this._applyGeometricTransforms(overlayCanvas, config);
+    if (overlayCanvas && this.hasGeometricTransforms(config)) {
+      processedOverlayCanvas = await this.applyGeometricTransforms(overlayCanvas, config);
     }
 
-    // Dithered mode uses the `qr` encoder directly (and has its own
-    // overflow handling). Skip qrcode-generator entirely to avoid
-    // `code length overflow` when a manual version is too small.
-    if (config.overlayMode === 'dithered' && processedOverlayCanvas) {
-      return await this.generateDitheredSubpixelQR(
-        null,
-        { ...config, typeNumber },
-        processedOverlayCanvas
-      );
-    }
-
-    // Blue-noise mode generates animated frames with temporal dithering
-    if (config.overlayMode === 'blue-noise' && processedOverlayCanvas) {
-      return await this.generateBlueNoiseQR({ ...config, typeNumber }, processedOverlayCanvas);
-    }
+    // =======================================================================
+    // STAGE 1: QR MATRIX GENERATION
+    // All overlay modes now go through the same QR generation path
+    // =======================================================================
+    
+    // For dithered/blue-noise modes that use 3x scale, we need special handling
+    // but they will STILL use the main render loop for styling
+    const useSubpixelDithering = 
+      (config.overlayMode === 'dithered' || config.overlayMode === 'blue-noise') && 
+      processedOverlayCanvas;
+    
+    // For subpixel modes, use special NxN grid rendering
+    const useSubpixelGrid = 
+      (config.overlayMode === 'subpixel' || config.overlayMode === 'subpixel-size') && 
+      processedOverlayCanvas;
 
     // Build cache key for QR matrix reuse (avoids expensive qr.make() on every frame)
     const encodingMode = config.encodingMode || 'auto';
@@ -236,13 +791,12 @@ export class QRGenerator {
       qr = this.qrcode(typeNumber, config.errorCorrection);
 
       // Map encoding mode to qrcode-generator mode parameter
-      // The library accepts: 'Numeric', 'Alphanumeric', 'Byte', 'Kanji' or undefined for auto
       const modeMap = {
         numeric: 'Numeric',
         alphanumeric: 'Alphanumeric',
         byte: 'Byte',
         kanji: 'Kanji',
-        auto: undefined, // Let library auto-detect
+        auto: undefined,
       };
       const libraryMode = modeMap[encodingMode] || undefined;
 
@@ -254,20 +808,24 @@ export class QRGenerator {
       qrMatrixCache.set(qrCacheKey, { qr, moduleCount });
     }
 
-    // For subpixel modes, use special 3x3 rendering
-    // Dithered QR Codes (error diffusion) style rendering
-    // Inspired by the idea of using error diffusion to compensate for fixed QR data modules.
-    if (config.overlayMode === 'dithered' && overlayCanvas) {
-      return await this.generateDitheredSubpixelQR(qr, config, overlayCanvas, moduleCount);
+    // =======================================================================
+    // UNIFIED SCALED RENDERING (dithered, blue-noise, subpixel modes)
+    // All scaled modes now go through the unified pipeline
+    // =======================================================================
+    const scale = this.getScaleFactor(config.overlayMode, config);
+    if (scale > 1 && processedOverlayCanvas) {
+      return await this.generateScaledQR(qr, config, processedOverlayCanvas, moduleCount, scale);
     }
 
-    if (config.overlayMode === 'subpixel' && processedOverlayCanvas) {
-      return await this.generateSubpixelQR(qr, config, processedOverlayCanvas, moduleCount, false);
-    }
-    if (config.overlayMode === 'subpixel-size' && processedOverlayCanvas) {
-      return await this.generateSubpixelQR(qr, config, processedOverlayCanvas, moduleCount, true);
-    }
+    // =======================================================================
+    // STAGE 2: OVERLAY PROCESSING (unified for all standard modes)
+    // =======================================================================
+    const { ditherPattern, overlayData, effectiveIntensity } = 
+      await this.prepareUnifiedOverlayData(qr, { ...config, typeNumber }, processedOverlayCanvas, moduleCount);
 
+    // =======================================================================
+    // STAGE 3: UNIFIED RENDERING (all settings apply to ALL modes)
+    // =======================================================================
     const moduleSize = config.moduleSize;
     // Apply quiet zone minimum enforcement if enabled (QR spec recommends 4 modules)
     const quietZoneMin = config.quietZoneMinEnforce !== false ? 4 : 0;
@@ -276,7 +834,7 @@ export class QRGenerator {
       config.frameStyle && config.frameStyle !== 'none' && config.frameText ? moduleSize * 4 : 0;
     const size = moduleCount * moduleSize + margin * 2 * moduleSize + frameExtra;
 
-    const canvas = await this._createCanvas(size, size);
+    const canvas = await this.createCanvas(size, size);
     const ctx = canvas.getContext('2d');
 
     // Keep edges crisp (critical for QR scanning)
@@ -288,77 +846,8 @@ export class QRGenerator {
       ctx.fillRect(0, 0, size, size);
     }
 
-    // Get overlay image data if provided
-    // NOTE: Preprocessing (brightness/contrast/etc) is now done INSIDE _getOverlayData
-    // at moduleCount resolution for 10-50x speedup
-    let overlayData = null;
-    if (processedOverlayCanvas) {
-      overlayData = await this._getOverlayData(
-        processedOverlayCanvas,
-        moduleCount,
-        config.colorMode || 'color',
-        config.invertImage,
-        config.frameIndex || 0,
-        config // Pass full config for preprocessing
-      );
-    }
-
-    // Apply per-ECC intensity limits if configured - used for ALL overlay modes
-    let effectiveIntensity = config.overlayIntensity ?? 100;
-    if (config.maxOverlayIntensityByEcc) {
-      const eccLimits = config.maxOverlayIntensityByEcc;
-      const eccLimit = eccLimits[config.errorCorrection];
-      if (eccLimit !== undefined && eccLimit < effectiveIntensity) {
-        effectiveIntensity = eccLimit;
-      }
-    }
-    // Also check individual per-ECC params (maxOverlayIntensityL, maxOverlayIntensityM, etc.)
-    const eccIntensityKey = `maxOverlayIntensity${config.errorCorrection}`;
-    if (config[eccIntensityKey] !== undefined && config[eccIntensityKey] < effectiveIntensity) {
-      effectiveIntensity = config[eccIntensityKey];
-    }
-    // Create a modified config with effective intensity for all processing
-    const effectiveConfig = { ...config, overlayIntensity: effectiveIntensity };
-
-    // For true dither mode, we modify which modules are on/off
-    let ditherPattern = null;
-    let advancedDitherResult = null;
-
-    if ((config.overlayMode === 'dither' || config.overlayMode === 'extreme') && overlayData) {
-      // Check if advanced dithering params are specified
-      const useAdvancedDither =
-        config.ditherKind &&
-        config.ditherKind !== 'true_dither' &&
-        config.ditherKind !== 'error_diffusion';
-
-      if (useAdvancedDither && overlayCanvas) {
-        // Use advanced dithering from dither-algorithms module
-        try {
-          advancedDitherResult = await this.applyAdvancedDither(
-            overlayCanvas,
-            moduleCount,
-            effectiveConfig
-          );
-          ditherPattern = advancedDitherResult.matrix;
-        } catch (e) {
-          console.warn('Advanced dithering failed, falling back to true dither:', e);
-          ditherPattern = this.applyTrueDither(
-            qr,
-            overlayData,
-            effectiveConfig,
-            config.overlayMode === 'extreme'
-          );
-        }
-      } else {
-        // Use built-in true dither with configured diffusion kernel and serpentine
-        ditherPattern = this.applyTrueDither(
-          qr,
-          overlayData,
-          effectiveConfig,
-          config.overlayMode === 'extreme'
-        );
-      }
-    }
+    // NOTE: Overlay data is now prepared in prepareUnifiedOverlayData above
+    // effectiveIntensity, ditherPattern, overlayColors, and overlayData are already available
 
     // Get version for alignment pattern detection
     const version = config.typeNumber || Math.ceil((moduleCount - 17) / 4);
@@ -643,7 +1132,7 @@ export class QRGenerator {
             config.perModuleColorMode !== 'solid' &&
             overlayData
           ) {
-            finalModuleColor = this._applyPerModuleColor(
+            finalModuleColor = this.applyPerModuleColor(
               config.perModuleColorMode,
               moduleColor,
               overlayData,
@@ -657,7 +1146,7 @@ export class QRGenerator {
           // Apply palette coloring if palette is provided
           const paletteBrightness = overlayData?.[row]?.[col] ?? 0.5;
           if (isDark && config.palette && config.palette.length > 0) {
-            finalModuleColor = this._applyPaletteColor(
+            finalModuleColor = this.applyPaletteColor(
               row,
               col,
               moduleCount,
@@ -669,7 +1158,7 @@ export class QRGenerator {
 
           // Apply contrast guard if enabled
           if (isDark && config.contrastGuard && config.minContrastRatio) {
-            finalModuleColor = this._ensureContrast(
+            finalModuleColor = this.ensureContrast(
               finalModuleColor,
               config.bgColor,
               config.minContrastRatio
@@ -743,7 +1232,7 @@ export class QRGenerator {
             );
           } else if (useHalftoneRendering && isDark) {
             // Use advanced halftone rendering with htDot/htCurve params
-            this._drawHalftoneModule(ctx, drawX, drawY, adjustedSize, halftoneBrightness, config);
+            this.drawHalftoneModule(ctx, drawX, drawY, adjustedSize, halftoneBrightness, config);
           } else if (isTiming) {
             // Draw timing pattern module with timing style
             this.drawTimingModule(ctx, drawX, drawY, adjustedSize, timingStyle, config);
@@ -768,7 +1257,7 @@ export class QRGenerator {
     this.drawFrame(ctx, size, moduleSize, margin, config);
 
     // Store the QR matrix for vector SVG export
-    this._storeMatrix(qr, moduleCount);
+    this.storeMatrix(qr, moduleCount);
 
     return canvas;
   }
@@ -1002,8 +1491,8 @@ export class QRGenerator {
 
     // Create a seeded PRNG for deterministic output
     // Seed from content hash + config to ensure same settings = same output
-    const seed = config.seed ?? this._hashString(config.content || '');
-    const seededRandom = this._createSeededRandom(seed);
+    const seed = config.seed ?? this.hashString(config.content || '');
+    const seededRandom = this.createSeededRandom(seed);
 
     // Create modifiable pattern - start with original QR
     const modifiedPattern = [];
@@ -1043,7 +1532,7 @@ export class QRGenerator {
           // ECC-aware check
           if (eccAware && desiredDark !== modifiedPattern[row][col]) {
             if (
-              !this._isEccSafeToModify(
+              !this.isEccSafeToModify(
                 row,
                 col,
                 moduleCount,
@@ -1111,7 +1600,7 @@ export class QRGenerator {
    * Returns a function that generates deterministic pseudo-random numbers [0, 1)
    * @private
    */
-  _createSeededRandom(seed) {
+  createSeededRandom(seed) {
     let state = seed >>> 0; // Ensure unsigned 32-bit integer
     return () => {
       state = (state + 0x6d2b79f5) >>> 0;
@@ -1126,7 +1615,7 @@ export class QRGenerator {
    * Simple string hash function (djb2)
    * @private
    */
-  _hashString(str) {
+  hashString(str) {
     let hash = 5381;
     for (let i = 0; i < str.length; i++) {
       hash = (hash << 5) + hash + str.charCodeAt(i);
@@ -1141,7 +1630,7 @@ export class QRGenerator {
    * Results are cached in a WeakMap to avoid re-hashing the same canvas
    * @private
    */
-  async _hashCanvasContent(canvas) {
+  async hashCanvasContent(canvas) {
     // Check WeakMap cache first (avoids re-hashing same canvas instance)
     const cachedHash = canvasHashCache.get(canvas);
     if (cachedHash !== undefined) {
@@ -1162,7 +1651,7 @@ export class QRGenerator {
               c.height = hashSize;
               return c;
             })()
-          : await this._createCanvas(hashSize, hashSize);
+          : await this.createCanvas(hashSize, hashSize);
       const hashCtx = hashCanvas.getContext('2d');
 
       // Draw downscaled version
@@ -1577,7 +2066,7 @@ export class QRGenerator {
    * This is a shared helper used by all overlay data loading methods.
    * @private
    */
-  _preprocessImageData(imageData, config, invertImage = false) {
+  preprocessImageData(imageData, config, invertImage = false) {
     const data = imageData.data;
 
     const brightness_adj = config.overlayBrightness || 0;
@@ -1702,17 +2191,17 @@ export class QRGenerator {
     // Second pass: convolution filters (blur, sharpen, edge detection)
     if (needsConvolutionFilters) {
       if (blur_radius > 0) {
-        this._applyBoxBlur(imageData, Math.min(blur_radius, 5));
+        this.applyBoxBlur(imageData, Math.min(blur_radius, 5));
       }
 
       if (sharpen_amt > 0) {
-        this._applySharpen(imageData, sharpen_amt / 100);
+        this.applySharpen(imageData, sharpen_amt / 100);
       }
 
       if (edge_detect === 'sobel') {
-        this._applySobelEdge(imageData);
+        this.applySobelEdge(imageData);
       } else if (edge_detect === 'canny') {
-        this._applyCannyEdge(imageData);
+        this.applyCannyEdge(imageData);
       }
     }
 
@@ -1725,7 +2214,7 @@ export class QRGenerator {
    * This is 10-50x faster than preprocessing at full resolution.
    * @private
    */
-  async _getOverlayData(
+  async getOverlayData(
     overlayCanvas,
     moduleCount,
     colorMode = 'color',
@@ -1736,7 +2225,7 @@ export class QRGenerator {
     // Create cache key based on canvas identity, content hash, and parameters
     // Include frameIndex to ensure different animation frames aren't cached together
     // Use content hash to disambiguate different images with same dimensions
-    const contentHash = await this._hashCanvasContent(overlayCanvas);
+    const contentHash = await this.hashCanvasContent(overlayCanvas);
     const canvasKey = `${overlayCanvas.width}x${overlayCanvas.height}:${contentHash}`;
     const preprocessKey = `${config.overlayBrightness || 0}:${config.overlayContrast || 0}:${config.overlayGamma || 1}:${config.overlaySaturation || 0}:${config.overlayHueRotate || 0}:${invertImage}:${config.overlayBlur || 0}:${config.overlaySharpen || 0}:${config.overlayPosterize || 0}:${config.overlayThreshold ?? 128}:${config.overlayEdgeDetect || 'off'}`;
     const cacheKey = `${canvasKey}:${moduleCount}:${colorMode}:${preprocessKey}:${frameIndex}`;
@@ -1747,7 +2236,7 @@ export class QRGenerator {
       return cached;
     }
 
-    const tempCanvas = await this._createCanvas(moduleCount, moduleCount);
+    const tempCanvas = await this.createCanvas(moduleCount, moduleCount);
     const ctx = tempCanvas.getContext('2d');
 
     // STEP 1: Downscale to moduleCount FIRST (this is the key optimization)
@@ -1755,7 +2244,7 @@ export class QRGenerator {
 
     // STEP 2: Apply preprocessing on the SMALL image (O(moduleCount^2) instead of O(overlay_width*height))
     const imageData = ctx.getImageData(0, 0, moduleCount, moduleCount);
-    this._preprocessImageData(imageData, config, invertImage);
+    this.preprocessImageData(imageData, config, invertImage);
     const data = imageData.data;
 
     // STEP 3: Extract brightness and color maps
@@ -1808,357 +2297,10 @@ export class QRGenerator {
   }
 
   /**
-   * Generate a "dithered QR code" style render based on the TypeScript reference
-   * implementation from https://codeberg.org/andrew-t/dithered-qr-codes.
-   *
-   * Notes:
-   * - We render a 3x (subpixel) grid per QR module.
-   * - Locked areas (finders, timing lines, alignments) are preserved.
-   * - Free pixels are set from the image via error diffusion.
-   * - Supports color, grayscale, and B&W modes for higher fidelity.
-   */
-  async generateDitheredSubpixelQR(_qr, config, overlayCanvas) {
-    const scale = 3;
-
-    // Generate QR matrix using qr-core
-    const qrResult = generateQR({
-      text: config.content,
-      ecc: config.errorCorrection,
-      version: config.typeNumber || 0,
-      scale,
-    });
-
-    const { matrix: baseMatrix, moduleCount: scaledSize } = qrResult;
-
-    // Apply dithering with overlay (including preprocessing)
-    const ditheredResult = await this._applyDitherToMatrix(
-      baseMatrix,
-      scaledSize,
-      scale,
-      overlayCanvas,
-      config.overlayIntensity,
-      config.colorMode || 'color',
-      config.ditherSerpentine !== false, // use config serpentine setting
-      config // pass config for preprocessing, dither settings, etc.
-    );
-
-    const { matrix: dithered, colors } = ditheredResult;
-
-    // Safety: if the QR library picked a different version than our current `qr`
-    // instance, use the matrix size to drive rendering.
-    const scaledCount = dithered.length;
-    const _derivedModuleCount = Math.round(scaledCount / scale);
-    const marginModules = Math.max(5, config.margin);
-    // For scannability: keep an integer subpixel size (avoid fractional canvas coords)
-    // and ensure a full quiet zone (>= 4 modules; we use 5 here, matching the reference).
-    const subPixelSize = Math.max(1, Math.round(config.moduleSize / scale));
-    const effectiveModuleSize = subPixelSize * scale;
-    const marginPx = marginModules * effectiveModuleSize;
-    const size = scaledCount * subPixelSize + marginPx * 2;
-    const pixelSize = subPixelSize;
-
-    const canvas = await this._createCanvas(size, size);
-    const ctx = canvas.getContext('2d');
-
-    // Keep edges crisp (critical for QR scanning)
-    ctx.imageSmoothingEnabled = false;
-
-    if (!config.transparentBg) {
-      ctx.fillStyle = config.bgColor;
-      ctx.fillRect(0, 0, size, size);
-    }
-
-    // Determine if we should use color rendering
-    const useColorRendering = overlayCanvas && config.colorMode !== 'bw';
-
-    for (let y = 0; y < scaledCount; y++) {
-      for (let x = 0; x < scaledCount; x++) {
-        const isDark = dithered[y][x];
-        const color = colors[y][x];
-
-        // Skip white/light pixels in the background (they're already the bg color)
-        // unless we're doing color rendering with non-black/white colors
-        if (!(isDark || useColorRendering)) continue;
-
-        const dx = marginPx + x * pixelSize;
-        const dy = marginPx + y * pixelSize;
-
-        if (useColorRendering) {
-          // Use the actual color from the dithered result
-          // For dark pixels: use the color (which may be a dark shade)
-          // For light pixels: use the color (which may be a light shade)
-          ctx.fillStyle = `rgb(${color.r},${color.g},${color.b})`;
-          ctx.fillRect(dx, dy, pixelSize, pixelSize);
-        } else {
-          // B&W mode or no overlay: use simple foreground color
-          if (isDark) {
-            ctx.fillStyle = config.fgColor;
-            ctx.fillRect(dx, dy, pixelSize, pixelSize);
-          }
-        }
-      }
-    }
-
-    // Store the QR matrix for vector SVG export (special render mode)
-    // For dithered mode, we need to derive moduleCount from the scaled matrix
-    const derivedModuleCount = Math.round(scaledCount / scale);
-    // Create a synthetic qr-like object for _storeMatrix that reads from the dithered result
-    const syntheticQr = {
-      isDark: (row, col) => {
-        // Sample center of the 3x3 subpixel block for each module
-        const subRow = row * scale + Math.floor(scale / 2);
-        const subCol = col * scale + Math.floor(scale / 2);
-        return dithered[subRow]?.[subCol] ?? false;
-      },
-    };
-    this._storeMatrix(syntheticQr, derivedModuleCount);
-
-    return canvas;
-  }
-
-  /**
-   * Generate QR with blue-noise dithering
-   * Returns a single canvas (consistent with other blend modes)
-   *
-   * Features:
-   * - Blue-noise dithering for high-quality image representation
-   * - Data points preserved for QR scannability (same approach as error diffusion)
-   * - Only free points are dithered using blue noise threshold
-   * - Intensity slider controls blend between QR and image
-   */
-  async generateBlueNoiseQR(config, overlayCanvas) {
-    const scale = 3;
-
-    // Preprocess overlay canvas for blue noise mode
-    // Note: We do this at full resolution then pass to generateBlueNoiseDithered
-    // which will downscale. This uses the full preprocessing pipeline.
-    let processedOverlay = overlayCanvas;
-    if (overlayCanvas && this._hasPreprocessingOptions(config)) {
-      processedOverlay = await this._preprocessOverlay(overlayCanvas, config);
-    }
-
-    // Use the new generateBlueNoiseDithered function that follows
-    // the same pattern as generateDitheredMatrix (preserves QR data points)
-    const blueNoiseResult = await generateBlueNoiseDithered({
-      text: config.content,
-      ecc: config.errorCorrection,
-      version: config.typeNumber || 0,
-      scale,
-      overlayCanvas: processedOverlay, // Use preprocessed canvas
-      overlayIntensity: config.overlayIntensity,
-      colorMode: config.colorMode || 'color',
-      canvasFactory: this._canvasFactory,
-    });
-
-    const { matrix: dithered, colors } = blueNoiseResult;
-
-    const scaledCount = dithered.length;
-    const marginModules = Math.max(5, config.margin);
-    const subPixelSize = Math.max(1, Math.round(config.moduleSize / scale));
-    const effectiveModuleSize = subPixelSize * scale;
-    const marginPx = marginModules * effectiveModuleSize;
-    const size = scaledCount * subPixelSize + marginPx * 2;
-    const pixelSize = subPixelSize;
-
-    // Render to a single canvas
-    const canvas = await this._createCanvas(size, size);
-    const ctx = canvas.getContext('2d');
-
-    ctx.imageSmoothingEnabled = false;
-
-    if (!config.transparentBg) {
-      ctx.fillStyle = config.bgColor;
-      ctx.fillRect(0, 0, size, size);
-    }
-
-    const useColorRendering = overlayCanvas && config.colorMode !== 'bw';
-
-    for (let y = 0; y < scaledCount; y++) {
-      for (let x = 0; x < scaledCount; x++) {
-        const isDark = dithered[y][x];
-        const color = colors[y][x];
-
-        // Skip white/light pixels unless doing color rendering
-        if (!(isDark || useColorRendering)) continue;
-
-        const dx = marginPx + x * pixelSize;
-        const dy = marginPx + y * pixelSize;
-
-        if (useColorRendering) {
-          // Use the actual color from the dithered result
-          ctx.fillStyle = `rgb(${color.r},${color.g},${color.b})`;
-          ctx.fillRect(dx, dy, pixelSize, pixelSize);
-        } else {
-          // B&W mode or no overlay: use simple foreground color
-          if (isDark) {
-            ctx.fillStyle = config.fgColor;
-            ctx.fillRect(dx, dy, pixelSize, pixelSize);
-          }
-        }
-      }
-    }
-
-    // Store the QR matrix for vector SVG export (special render mode)
-    // For blue-noise mode, we need to derive moduleCount from the scaled matrix
-    const derivedModuleCount = Math.round(scaledCount / scale);
-    // Create a synthetic qr-like object for _storeMatrix that reads from the dithered result
-    const syntheticQr = {
-      isDark: (row, col) => {
-        // Sample center of the 3x3 subpixel block for each module
-        const subRow = row * scale + Math.floor(scale / 2);
-        const subCol = col * scale + Math.floor(scale / 2);
-        return dithered[subRow]?.[subCol] ?? false;
-      },
-    };
-    this._storeMatrix(syntheticQr, derivedModuleCount);
-
-    return canvas;
-  }
-
-  /**
-   * Generate QR with qrmove-style 3x3 subpixel rendering
-   * Each QR module becomes a 3x3 grid:
-   * - CENTER pixel (1,1) = QR data (must stay correct for scanning)
-   * - 8 SURROUNDING pixels = freely show overlay image
-   * This allows ~89% of pixels to show the image while maintaining 100% scannability
-   */
-  async generateSubpixelQR(qr, config, overlayCanvas, moduleCount, useHalftoneCenter = false) {
-    // Get subpixel grid size from config (2x2, 3x3, or 4x4)
-    const gridSizeStr = config.subpixelGridSize || '3x3';
-    const subpixelSize = parseInt(gridSizeStr.charAt(0), 10) || 3; // Each module is NxN subpixels
-    const margin = config.margin;
-    const pixelSize = config.moduleSize / subpixelSize; // Size of each subpixel
-
-    // Canvas dimensions: 3x modules + margins
-    const canvasModules = moduleCount * subpixelSize;
-    const marginPixels = margin * config.moduleSize;
-    const size = canvasModules * pixelSize + marginPixels * 2;
-
-    const canvas = await this._createCanvas(size, size);
-    const ctx = canvas.getContext('2d');
-
-    // Keep edges crisp (critical for QR scanning)
-    ctx.imageSmoothingEnabled = false;
-
-    // Draw background
-    if (!config.transparentBg) {
-      ctx.fillStyle = config.bgColor;
-      ctx.fillRect(0, 0, size, size);
-    }
-
-    // Get overlay data at 3x resolution to match subpixel grid (with preprocessing)
-    const overlayData = await this._getSubpixelOverlayData(
-      overlayCanvas,
-      moduleCount * subpixelSize,
-      config.colorMode || 'color',
-      config // pass config for preprocessing
-    );
-    // Also get per-module brightness for halftone center
-    const moduleBrightness = await this._getOverlayData(
-      overlayCanvas,
-      moduleCount,
-      'color',
-      false,
-      config.frameIndex || 0
-    );
-    const intensity = config.overlayIntensity / 100;
-
-    // Draw each QR module as a 3x3 subpixel grid
-    for (let row = 0; row < moduleCount; row++) {
-      for (let col = 0; col < moduleCount; col++) {
-        const isDark = qr.isDark(row, col);
-        const isFinder = this.isFinderPattern(row, col, moduleCount);
-
-        // Base position for this module's 3x3 grid
-        const baseX = marginPixels + col * subpixelSize * pixelSize;
-        const baseY = marginPixels + row * subpixelSize * pixelSize;
-
-        // For finder patterns, check if we should use subpixel effect or solid
-        const finderOverride = config.subpixelFinderOverride || 'solid';
-        if (isFinder && finderOverride === 'solid') {
-          // Solid finder patterns for better scanning
-          ctx.fillStyle = isDark ? config.fgColor : config.bgColor;
-          ctx.fillRect(baseX, baseY, subpixelSize * pixelSize, subpixelSize * pixelSize);
-          continue;
-        }
-
-        // Draw 3x3 subpixel grid for this module
-        for (let subRow = 0; subRow < subpixelSize; subRow++) {
-          for (let subCol = 0; subCol < subpixelSize; subCol++) {
-            const subX = baseX + subCol * pixelSize;
-            const subY = baseY + subRow * pixelSize;
-
-            // Get overlay data for this subpixel
-            const overlayRow = row * subpixelSize + subRow;
-            const overlayCol = col * subpixelSize + subCol;
-            const overlayColor = overlayData.colors?.[overlayRow]?.[overlayCol];
-
-            // CENTER pixel - MUST show QR data for scannability
-            // Determine center based on grid size and center rule
-            const centerRule = config.subpixelCenterRule || 'strict';
-            const centerIdx = Math.floor(subpixelSize / 2);
-            const isCenter = subRow === centerIdx && subCol === centerIdx;
-
-            if (isCenter) {
-              // Use halftone center if configured OR if center rule is halftone_center
-              const useHalftone = useHalftoneCenter || centerRule === 'halftone_center';
-              if (useHalftone && isDark) {
-                // Halftone center: vary size based on image brightness
-                const brightness = moduleBrightness[row]?.[col] ?? 0.5;
-                const minSize = 0.4;
-                const maxSize = 1.0;
-                const sizeRatio = minSize + (1 - brightness) * (maxSize - minSize) * intensity;
-                const centerSize = pixelSize * sizeRatio;
-                const offset = (pixelSize - centerSize) / 2;
-
-                // Draw background first
-                ctx.fillStyle = config.bgColor;
-                ctx.fillRect(subX, subY, pixelSize, pixelSize);
-                // Then draw sized center
-                ctx.fillStyle = config.fgColor;
-                ctx.fillRect(subX + offset, subY + offset, centerSize, centerSize);
-              } else {
-                ctx.fillStyle = isDark ? config.fgColor : config.bgColor;
-                ctx.fillRect(subX, subY, pixelSize, pixelSize);
-              }
-            } else {
-              // SURROUNDING pixels - DIRECTLY show overlay image (no blending!)
-              // These pixels are FREE - they don't affect QR scanning at all
-              const neutralColor = config.subpixelNeutralColor || '#808080';
-              if (overlayColor && intensity > 0) {
-                // At full intensity, show pure image color
-                // At partial intensity, blend with neutral color for visibility control
-                if (intensity >= 1) {
-                  ctx.fillStyle = overlayColor;
-                } else {
-                  ctx.fillStyle = blendColors(neutralColor, overlayColor, intensity);
-                }
-              } else {
-                // No overlay - show based on QR pattern with reduced contrast
-                // Use neutral color as base for non-overlay pixels
-                const neutralColor = config.subpixelNeutralColor || '#808080';
-                ctx.fillStyle = isDark
-                  ? this._darkenColor(neutralColor, 0.5)
-                  : this._lightenColor(neutralColor, 0.5);
-              }
-              ctx.fillRect(subX, subY, pixelSize, pixelSize);
-            }
-          }
-        }
-      }
-    }
-
-    // Store the QR matrix for vector SVG export (special render mode)
-    this._storeMatrix(qr, moduleCount);
-
-    return canvas;
-  }
-
-  /**
    * Darken a color by a factor (0-1)
    * @private
    */
-  _darkenColor(color, factor) {
+  darkenColor(color, factor) {
     const hex = color.replace('#', '');
     const r = Math.round(parseInt(hex.substr(0, 2), 16) * (1 - factor));
     const g = Math.round(parseInt(hex.substr(2, 2), 16) * (1 - factor));
@@ -2170,7 +2312,7 @@ export class QRGenerator {
    * Lighten a color by a factor (0-1)
    * @private
    */
-  _lightenColor(color, factor) {
+  lightenColor(color, factor) {
     const hex = color.replace('#', '');
     const r = Math.round(
       parseInt(hex.substr(0, 2), 16) + (255 - parseInt(hex.substr(0, 2), 16)) * factor
@@ -2194,7 +2336,7 @@ export class QRGenerator {
    * Each kernel defines offsets (dx, dy) and weights for error distribution.
    * @private
    */
-  _getDiffusionKernel(kernelName) {
+  getDiffusionKernel(kernelName) {
     const kernels = {
       floyd_steinberg: [
         { dx: 1, dy: 0, w: 7 / 16 },
@@ -2283,7 +2425,7 @@ export class QRGenerator {
    * Supports multiple diffusion kernels, serpentine scanning, and dither strength.
    * @private
    */
-  async _applyDitherToMatrix(
+  async applyDitherToMatrix(
     baseMatrix,
     scaledSize,
     scale,
@@ -2306,10 +2448,10 @@ export class QRGenerator {
     // Get dither settings from config
     const ditherStrength = (config.ditherStrength ?? 100) / 100; // 0-1 scale
     const diffusionKernel = config.diffusionKernel || 'floyd_steinberg';
-    const fsKernel = this._getDiffusionKernel(diffusionKernel);
+    const fsKernel = this.getDiffusionKernel(diffusionKernel);
 
     // Load overlay image data with preprocessing
-    const imageData = await this._loadImageDataRGB(overlayCanvas, scaledSize, config);
+    const imageData = await this.loadImageDataRGB(overlayCanvas, scaledSize, config);
     const intensity = overlayIntensity / 100;
 
     // Convert to grayscale if needed
@@ -2408,7 +2550,7 @@ export class QRGenerator {
     // Merge dithered image with QR matrix
     // Use seeded PRNG for deterministic output (same settings = same output)
     // Seed based on scale to ensure reproducibility
-    const seededRandom = this._createSeededRandom(scale * 12345);
+    const seededRandom = this.createSeededRandom(scale * 12345);
 
     for (let y = 0; y < scaledSize; y++) {
       for (let x = 0; x < scaledSize; x++) {
@@ -2439,14 +2581,14 @@ export class QRGenerator {
    * Now supports preprocessing via config parameter
    * @private
    */
-  async _loadImageDataRGB(canvas, size, config = {}) {
-    const tempCanvas = await this._createCanvas(size, size);
+  async loadImageDataRGB(canvas, size, config = {}) {
+    const tempCanvas = await this.createCanvas(size, size);
     const ctx = tempCanvas.getContext('2d');
     ctx.drawImage(canvas, 0, 0, size, size);
     const imgData = ctx.getImageData(0, 0, size, size);
 
     // Apply preprocessing if config is provided
-    this._preprocessImageData(imgData, config, config.invertImage);
+    this.preprocessImageData(imgData, config, config.invertImage);
 
     const output = [];
     for (let y = 0; y < size; y++) {
@@ -2519,8 +2661,8 @@ export class QRGenerator {
    * Now supports preprocessing via config parameter
    * @private
    */
-  async _getSubpixelOverlayData(overlayCanvas, subpixelCount, colorMode = 'color', config = {}) {
-    const tempCanvas = await this._createCanvas(subpixelCount, subpixelCount);
+  async getSubpixelOverlayData(overlayCanvas, subpixelCount, colorMode = 'color', config = {}) {
+    const tempCanvas = await this.createCanvas(subpixelCount, subpixelCount);
     const ctx = tempCanvas.getContext('2d');
 
     ctx.drawImage(overlayCanvas, 0, 0, subpixelCount, subpixelCount);
@@ -2528,7 +2670,7 @@ export class QRGenerator {
     const imageData = ctx.getImageData(0, 0, subpixelCount, subpixelCount);
 
     // Apply preprocessing if config is provided
-    this._preprocessImageData(imageData, config, config.invertImage);
+    this.preprocessImageData(imageData, config, config.invertImage);
 
     const data = imageData.data;
 
@@ -2568,7 +2710,7 @@ export class QRGenerator {
    * @private
    * @deprecated Color adjustments are now done at moduleCount resolution in _getOverlayData
    */
-  _hasPreprocessingOptions(config) {
+  hasPreprocessingOptions(config) {
     return (
       (config.overlayBrightness && config.overlayBrightness !== 0) ||
       (config.overlayContrast && config.overlayContrast !== 0) ||
@@ -2592,7 +2734,7 @@ export class QRGenerator {
    * These must be done before downscaling as they affect spatial layout
    * @private
    */
-  _hasGeometricTransforms(config) {
+  hasGeometricTransforms(config) {
     return (
       config.overlayFlipX ||
       config.overlayFlipY ||
@@ -2605,11 +2747,11 @@ export class QRGenerator {
    * Color adjustments are done at moduleCount resolution in _getOverlayData
    * @private
    */
-  async _applyGeometricTransforms(overlayCanvas, config) {
+  async applyGeometricTransforms(overlayCanvas, config) {
     const width = overlayCanvas.width;
     const height = overlayCanvas.height;
 
-    const processedCanvas = await this._createCanvas(width, height);
+    const processedCanvas = await this.createCanvas(width, height);
     const ctx = processedCanvas.getContext('2d');
 
     ctx.save();
@@ -2637,12 +2779,12 @@ export class QRGenerator {
    * Preprocess overlay canvas with filters and transforms
    * @private
    */
-  async _preprocessOverlay(overlayCanvas, config) {
+  async preprocessOverlay(overlayCanvas, config) {
     const width = overlayCanvas.width;
     const height = overlayCanvas.height;
 
     // Create a new canvas for processing
-    const processedCanvas = await this._createCanvas(width, height);
+    const processedCanvas = await this.createCanvas(width, height);
     const ctx = processedCanvas.getContext('2d');
 
     // Apply geometric transforms first
@@ -2691,7 +2833,7 @@ export class QRGenerator {
     }
 
     // Apply filters manually (self-contained implementation)
-    this._applyFiltersManual(imageData, filterOptions);
+    this.applyFiltersManual(imageData, filterOptions);
 
     // Put processed image data back
     ctx.putImageData(imageData, 0, 0);
@@ -2703,7 +2845,7 @@ export class QRGenerator {
    * Manual filter application - self-contained implementation
    * @private
    */
-  _applyFiltersManual(imageData, options) {
+  applyFiltersManual(imageData, options) {
     const data = imageData.data;
 
     // First pass: per-pixel adjustments
@@ -2790,16 +2932,16 @@ export class QRGenerator {
 
     // Second pass: convolution filters (blur, sharpen)
     if (options.blur && options.blur > 0) {
-      this._applyBoxBlur(imageData, Math.min(options.blur, 5));
+      this.applyBoxBlur(imageData, Math.min(options.blur, 5));
     }
 
     if (options.sharpen && options.sharpen > 0) {
-      this._applySharpen(imageData, options.sharpen / 100);
+      this.applySharpen(imageData, options.sharpen / 100);
     }
 
     // Edge detection
     if (options.edgeDetect === 'sobel') {
-      this._applySobelEdge(imageData);
+      this.applySobelEdge(imageData);
     }
   }
 
@@ -2807,7 +2949,7 @@ export class QRGenerator {
    * Apply box blur
    * @private
    */
-  _applyBoxBlur(imageData, radius) {
+  applyBoxBlur(imageData, radius) {
     const data = imageData.data;
     const width = imageData.width;
     const height = imageData.height;
@@ -2842,7 +2984,7 @@ export class QRGenerator {
    * Apply sharpen filter
    * @private
    */
-  _applySharpen(imageData, amount) {
+  applySharpen(imageData, amount) {
     const data = imageData.data;
     const width = imageData.width;
     const height = imageData.height;
@@ -2881,7 +3023,7 @@ export class QRGenerator {
    * Uses Gaussian blur -> Sobel gradient -> Non-maximum suppression -> Hysteresis thresholding
    * @private
    */
-  _applyCannyEdge(imageData) {
+  applyCannyEdge(imageData) {
     const data = imageData.data;
     const width = imageData.width;
     const height = imageData.height;
@@ -3023,7 +3165,7 @@ export class QRGenerator {
    * Apply Sobel edge detection
    * @private
    */
-  _applySobelEdge(imageData) {
+  applySobelEdge(imageData) {
     const data = imageData.data;
     const width = imageData.width;
     const height = imageData.height;
@@ -3067,7 +3209,7 @@ export class QRGenerator {
    * Apply per-module color mode
    * @private
    */
-  _applyPerModuleColor(mode, baseColor, overlayData, row, col, moduleCount, config) {
+  applyPerModuleColor(mode, baseColor, overlayData, row, col, moduleCount, config) {
     const brightness = overlayData[row]?.[col] ?? 0.5;
     const overlayColor = overlayData.colors?.[row]?.[col];
     const intensity = (config.overlayIntensity || 100) / 100;
@@ -3150,7 +3292,7 @@ export class QRGenerator {
    * Ensure module color has sufficient contrast with background
    * @private
    */
-  _ensureContrast(moduleColor, bgColor, minRatio) {
+  ensureContrast(moduleColor, bgColor, minRatio) {
     try {
       const ratio = getContrastRatio(moduleColor, bgColor);
       if (ratio >= minRatio) {
@@ -3189,7 +3331,7 @@ export class QRGenerator {
    */
   async applyAdvancedDither(overlayCanvas, moduleCount, config) {
     // Get overlay as ImageData at module resolution using canvas factory
-    const tempCanvas = await this._createCanvas(moduleCount, moduleCount);
+    const tempCanvas = await this.createCanvas(moduleCount, moduleCount);
     const ctx = tempCanvas.getContext('2d');
     ctx.drawImage(overlayCanvas, 0, 0, moduleCount, moduleCount);
     const imageData = ctx.getImageData(0, 0, moduleCount, moduleCount);
@@ -3216,7 +3358,7 @@ export class QRGenerator {
    * Apply palette color to a module based on position/brightness
    * @private
    */
-  _applyPaletteColor(row, col, moduleCount, brightness, palette, config) {
+  applyPaletteColor(row, col, moduleCount, brightness, palette, config) {
     if (!palette || palette.length === 0) return config.fgColor;
 
     const paletteMode = config.paletteMode || 'position';
@@ -3270,7 +3412,7 @@ export class QRGenerator {
    * Apply halftone rendering to a module
    * @private
    */
-  _drawHalftoneModule(ctx, x, y, size, brightness, config) {
+  drawHalftoneModule(ctx, x, y, size, brightness, config) {
     const _htCell = config.halftoneCell || 'per_module';
     const htDot = config.halftoneDotShape || 'circle';
     const htCurve = config.brightnessCurve || 'linear';
@@ -3338,7 +3480,7 @@ export class QRGenerator {
    * Higher weight = more important to preserve
    * @private
    */
-  _getEccWeight(row, col, moduleCount, _version, weightMap) {
+  getEccWeight(row, col, moduleCount, _version, weightMap) {
     switch (weightMap) {
       case 'distance_to_finders': {
         // Closer to finders = more important
@@ -3376,7 +3518,7 @@ export class QRGenerator {
    * Uses deterministic decision based on position hash for reproducibility
    * @private
    */
-  _isEccSafeToModify(row, col, moduleCount, version, config, modifiedCount, totalDataModules) {
+  isEccSafeToModify(row, col, moduleCount, version, config, modifiedCount, totalDataModules) {
     if (!config.eccAwareEnabled) return true;
 
     const riskBudget = (config.eccAwareRiskBudget || 50) / 100;
@@ -3386,7 +3528,7 @@ export class QRGenerator {
 
     if (modifiedCount >= allowedModifications) return false;
 
-    const weight = this._getEccWeight(
+    const weight = this.getEccWeight(
       row,
       col,
       moduleCount,
