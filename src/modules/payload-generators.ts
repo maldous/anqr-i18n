@@ -497,11 +497,14 @@ export function utf8ByteLength(str: string): number {
 /**
  * Calculate CRC16-CCITT (polynomial 0x1021, init 0xFFFF)
  * Used by EMVCo QR codes, PIX, SGQR, PromptPay, etc.
+ * IMPORTANT: Per EMVCo spec, CRC must be computed over UTF-8 bytes, not UTF-16 code units
  */
 export function crc16CCITT(str: string): string {
+  // Convert string to UTF-8 bytes for correct CRC calculation
+  const bytes = new TextEncoder().encode(str);
   let crc = 0xffff;
-  for (let i = 0; i < str.length; i++) {
-    crc ^= str.charCodeAt(i) << 8;
+  for (let i = 0; i < bytes.length; i++) {
+    crc ^= bytes[i] << 8;
     for (let j = 0; j < 8; j++) {
       if (crc & 0x8000) {
         crc = (crc << 1) ^ 0x1021;
@@ -529,12 +532,20 @@ export class EMVQRBuilder {
    * Encode a TLV (Tag-Length-Value) field
    * Tag: 2 digits, Length: 2 digits (UTF-8 byte length), Value: variable
    * IMPORTANT: Per EMVCo spec, length is in bytes, not characters
+   * @throws Error if value exceeds 99 bytes (EMV TLV length limit)
    */
   static encodeTLV(tag: string, value: string): string {
     if (!value || value.length === 0) return '';
     const paddedTag = tag.padStart(2, '0');
     // Use UTF-8 byte length for EMV compliance (not JS string length)
     const byteLength = utf8ByteLength(value);
+    // EMV TLV lengths are 2 digits, max 99 bytes
+    if (byteLength > 99) {
+      throw new Error(
+        `EMV TLV value for tag ${paddedTag} exceeds 99 bytes (${byteLength} bytes). ` +
+          `Please shorten the value.`
+      );
+    }
     const length = byteLength.toString().padStart(2, '0');
     return `${paddedTag}${length}${value}`;
   }
@@ -593,10 +604,29 @@ export class EMVQRBuilder {
     return this;
   }
 
-  /** Set transaction amount */
-  setTransactionAmount(amount: number): this {
+  /** Set transaction amount
+   * @param amount - The transaction amount
+   * @param currencyCode - Optional ISO 4217 numeric currency code for proper decimal handling
+   */
+  setTransactionAmount(amount: number, currencyCode?: string): this {
     if (amount > 0) {
-      this.fields.set(EMV_TAGS.TRANSACTION_AMOUNT, amount.toFixed(2));
+      // ISO 4217 currencies with 0 decimal places (minor unit exponent = 0)
+      const zeroDecimalCurrencies = new Set([
+        '392', // JPY - Japanese Yen
+        '410', // KRW - Korean Won
+        '704', // VND - Vietnamese Dong
+        '348', // HUF - Hungarian Forint
+        '352', // ISK - Icelandic Króna
+        '901', // TWD - Taiwan Dollar (often treated as 0 decimals)
+        '360', // IDR - Indonesian Rupiah (no coins in circulation)
+      ]);
+
+      // Format based on currency's minor unit exponent
+      const formattedAmount = zeroDecimalCurrencies.has(currencyCode || '')
+        ? Math.round(amount).toString()
+        : amount.toFixed(2);
+
+      this.fields.set(EMV_TAGS.TRANSACTION_AMOUNT, formattedAmount);
     }
     return this;
   }
@@ -747,16 +777,27 @@ export class EMVQRBuilder {
 
 /**
  * Parse an EMV QR code string into its component TLV fields
+ * IMPORTANT: Uses UTF-8 byte offsets for correct parsing of non-ASCII content
  */
 export function parseEMVQR(payload: string): Map<string, string> {
   const fields = new Map<string, string>();
+  // Convert to UTF-8 bytes for correct byte-based parsing
+  const bytes = new TextEncoder().encode(payload);
+  const decoder = new TextDecoder();
   let pos = 0;
 
-  while (pos < payload.length - 4) {
+  while (pos < bytes.length - 4) {
     // -4 for CRC
-    const tag = payload.substring(pos, pos + 2);
-    const length = parseInt(payload.substring(pos + 2, pos + 4), 10);
-    const value = payload.substring(pos + 4, pos + 4 + length);
+    // Tag is 2 ASCII characters (2 bytes) - use subarray for performance (no copy)
+    const tag = decoder.decode(bytes.subarray(pos, pos + 2));
+    // Length is 2 ASCII digits (2 bytes)
+    const lengthStr = decoder.decode(bytes.subarray(pos + 2, pos + 4));
+    const length = parseInt(lengthStr, 10);
+    if (Number.isNaN(length) || length < 0) {
+      break; // Invalid length, stop parsing
+    }
+    // Value is `length` bytes
+    const value = decoder.decode(bytes.subarray(pos + 4, pos + 4 + length));
     fields.set(tag, value);
     pos += 4 + length;
   }
@@ -1595,7 +1636,7 @@ export function generateQRIS(params: QRISParams): string {
   builder.setTransactionCurrency(ISO_CURRENCY.IDR);
 
   if (params.amount !== undefined && params.amount > 0) {
-    builder.setTransactionAmount(params.amount);
+    builder.setTransactionAmount(params.amount, ISO_CURRENCY.IDR);
   }
 
   // Fee/Tip indicator
@@ -1736,7 +1777,7 @@ export function generateVietQR(params: VietQRParams): string {
   builder.setTransactionCurrency(ISO_CURRENCY.VND);
 
   if (params.amount !== undefined && params.amount > 0) {
-    builder.setTransactionAmount(params.amount);
+    builder.setTransactionAmount(params.amount, ISO_CURRENCY.VND);
   }
 
   builder.setCountryCode('VN');
@@ -1799,7 +1840,7 @@ export function generateTWQR(params: TWQRParams): string {
   builder.setTransactionCurrency(ISO_CURRENCY.TWD);
 
   if (params.amount !== undefined && params.amount > 0) {
-    builder.setTransactionAmount(params.amount);
+    builder.setTransactionAmount(params.amount, ISO_CURRENCY.TWD);
   }
 
   builder.setCountryCode('TW');
@@ -1869,7 +1910,7 @@ export function generateJPQR(params: JPQRParams): string {
   builder.setTransactionCurrency(ISO_CURRENCY.JPY);
 
   if (params.amount !== undefined && params.amount > 0) {
-    builder.setTransactionAmount(params.amount);
+    builder.setTransactionAmount(params.amount, ISO_CURRENCY.JPY);
   }
 
   builder.setCountryCode('JP');
@@ -1955,7 +1996,7 @@ export function generateEMVMPM(params: EMVMPMParams): string {
   builder.setTransactionCurrency(params.currencyCode);
 
   if (params.amount !== undefined && params.amount > 0) {
-    builder.setTransactionAmount(params.amount);
+    builder.setTransactionAmount(params.amount, params.currencyCode);
   }
 
   if (params.tipIndicator) {

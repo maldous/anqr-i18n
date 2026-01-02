@@ -93,9 +93,8 @@ const LANGUAGE_PAYMENT_MAP: Record<string, PayloadKind[]> = {
   bg: ['epc_sepa'],
   'el-GR': ['epc_sepa'],
 
-  // English - show internationally-relevant options only (not region-specific foreign standards)
-  // Users who need regional standards like VietQR, QRIS, PromptPay etc should use their native language or professional tier
-  'en-GB': ['epc_sepa', 'swiss_qr_bill', 'auspaynet'],
+  // English - payment types from English-speaking countries (UK, Australia, etc.)
+  'en-GB': ['epc_sepa', 'auspaynet'],
 
   // Russian - global + SEPA for cross-border (using Google Play codes)
   'ru-RU': ['epc_sepa'],
@@ -149,8 +148,9 @@ function getAvailablePayments(tier: string, currentLang: string): PayloadKind[] 
 
   // Advanced tier gets language-specific + global payments
   if (tier === 'advanced') {
+    // Try full language code first (e.g., 'ja-JP'), then fall back to base language (e.g., 'ja')
     const baseLang = currentLang.split('-')[0];
-    const langSpecific = LANGUAGE_PAYMENT_MAP[baseLang] || [];
+    const langSpecific = LANGUAGE_PAYMENT_MAP[currentLang] || LANGUAGE_PAYMENT_MAP[baseLang] || [];
     // Combine language-specific with global, remove duplicates
     return [...new Set([...langSpecific, ...GLOBAL_PAYMENT_METHODS])];
   }

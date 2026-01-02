@@ -4,6 +4,17 @@
  */
 
 // ============================================
+// CONSTANTS
+// ============================================
+
+/**
+ * Maximum recommended share URL length.
+ * URLs longer than this may fail in SMS, some social apps, and QR scanners.
+ * Browser limits are typically 2048-8192 chars, but many channels are stricter.
+ */
+export const MAX_SHARE_URL_LENGTH = 2000;
+
+// ============================================
 // TYPES
 // ============================================
 
@@ -279,7 +290,7 @@ export function parseUrlParams(): Partial<ShareConfig> {
     eyeInnerStyle: params.get('eyeInner') || undefined,
     eyeScale: params.get('eyeScale') ? parseInt(params.get('eyeScale')!, 10) : undefined,
     frameStyle: params.get('frame') || undefined,
-    frameText: params.get('frameText') ? decodeURIComponent(params.get('frameText')!) : undefined,
+    frameText: params.get('frameText') || undefined,
     dotRotation: params.get('dotRot') ? parseInt(params.get('dotRot')!, 10) : undefined,
     crispEdges: params.get('crisp') === '1',
     pixelSnap: params.get('snap') || undefined,
@@ -375,7 +386,7 @@ export function parseUrlParams(): Partial<ShareConfig> {
     jpegQuality: params.get('jpegQ') ? parseInt(params.get('jpegQ')!, 10) : undefined,
     webpQuality: params.get('webpQ') ? parseInt(params.get('webpQ')!, 10) : undefined,
     gifColors: params.get('gifColors') ? parseInt(params.get('gifColors')!, 10) : undefined,
-    filename: params.get('fname') ? decodeURIComponent(params.get('fname')!) : undefined,
+    filename: params.get('fname') || undefined,
     gifPaletteSize: params.get('gifPal') ? parseInt(params.get('gifPal')!, 10) : undefined,
     gifQuantizer: params.get('gifQuant') || undefined,
     gifDither: params.get('gifDith') || undefined,
@@ -415,7 +426,7 @@ export function parseUrlParams(): Partial<ShareConfig> {
     // Watermark
     watermarkEnabled: params.get('wmEn') === '1',
     watermarkKind: params.get('wmKind') || undefined,
-    watermarkText: params.get('wmText') ? decodeURIComponent(params.get('wmText')!) : undefined,
+    watermarkText: params.get('wmText') || undefined,
     watermarkPosition: params.get('wmPos') || undefined,
     watermarkOpacity: params.get('wmOpacity') ? parseInt(params.get('wmOpacity')!, 10) : undefined,
     watermarkBlend: params.get('wmBlend') || undefined,
@@ -428,20 +439,16 @@ export function parseUrlParams(): Partial<ShareConfig> {
     animationSeed: params.get('animSeed') ? parseInt(params.get('animSeed')!, 10) : undefined,
 
     // Metadata
-    metaTitle: params.get('metaTitle') ? decodeURIComponent(params.get('metaTitle')!) : undefined,
-    metaAuthor: params.get('metaAuthor')
-      ? decodeURIComponent(params.get('metaAuthor')!)
-      : undefined,
-    metaCopyright: params.get('metaCopy') ? decodeURIComponent(params.get('metaCopy')!) : undefined,
-    metaLicense: params.get('metaLic') ? decodeURIComponent(params.get('metaLic')!) : undefined,
-    metaDescription: params.get('metaDesc')
-      ? decodeURIComponent(params.get('metaDesc')!)
-      : undefined,
+    metaTitle: params.get('metaTitle') || undefined,
+    metaAuthor: params.get('metaAuthor') || undefined,
+    metaCopyright: params.get('metaCopy') || undefined,
+    metaLicense: params.get('metaLic') || undefined,
+    metaDescription: params.get('metaDesc') || undefined,
     metaCreationTime: params.get('metaTime') === '1',
-    metaCustomKv: params.get('metaKv') ? decodeURIComponent(params.get('metaKv')!) : undefined,
+    metaCustomKv: params.get('metaKv') || undefined,
 
     // Render palette
-    palette: params.get('palette') ? decodeURIComponent(params.get('palette')!) : undefined,
+    palette: params.get('palette') || undefined,
     paletteMode: params.get('paletteMode') || undefined,
 
     // Safety per-ECC limits
@@ -552,7 +559,7 @@ export function buildUrlParams(config: Partial<ShareConfig>): string {
     params.set('frame', config.frameStyle);
   }
   if (config.frameText) {
-    params.set('frameText', encodeURIComponent(config.frameText));
+    params.set('frameText', config.frameText);
   }
   if (config.dotRotation !== undefined && config.dotRotation !== 0) {
     params.set('dotRot', config.dotRotation.toString());
@@ -820,7 +827,7 @@ export function buildUrlParams(config: Partial<ShareConfig>): string {
     params.set('gifColors', config.gifColors.toString());
   }
   if (config.filename && config.filename !== 'anqr-qrcode') {
-    params.set('fname', encodeURIComponent(config.filename));
+    params.set('fname', config.filename);
   }
   if (config.gifPaletteSize !== undefined && config.gifPaletteSize !== 256) {
     params.set('gifPal', config.gifPaletteSize.toString());
@@ -922,7 +929,7 @@ export function buildUrlParams(config: Partial<ShareConfig>): string {
     params.set('wmKind', config.watermarkKind);
   }
   if (config.watermarkText) {
-    params.set('wmText', encodeURIComponent(config.watermarkText));
+    params.set('wmText', config.watermarkText);
   }
   if (config.watermarkPosition && config.watermarkPosition !== 'center') {
     params.set('wmPos', config.watermarkPosition);
@@ -953,30 +960,30 @@ export function buildUrlParams(config: Partial<ShareConfig>): string {
 
   // Metadata
   if (config.metaTitle) {
-    params.set('metaTitle', encodeURIComponent(config.metaTitle));
+    params.set('metaTitle', config.metaTitle);
   }
   if (config.metaAuthor) {
-    params.set('metaAuthor', encodeURIComponent(config.metaAuthor));
+    params.set('metaAuthor', config.metaAuthor);
   }
   if (config.metaCopyright) {
-    params.set('metaCopy', encodeURIComponent(config.metaCopyright));
+    params.set('metaCopy', config.metaCopyright);
   }
   if (config.metaLicense) {
-    params.set('metaLic', encodeURIComponent(config.metaLicense));
+    params.set('metaLic', config.metaLicense);
   }
   if (config.metaDescription) {
-    params.set('metaDesc', encodeURIComponent(config.metaDescription));
+    params.set('metaDesc', config.metaDescription);
   }
   if (config.metaCreationTime) {
     params.set('metaTime', '1');
   }
   if (config.metaCustomKv) {
-    params.set('metaKv', encodeURIComponent(config.metaCustomKv));
+    params.set('metaKv', config.metaCustomKv);
   }
 
   // Render palette
   if (config.palette) {
-    params.set('palette', encodeURIComponent(config.palette));
+    params.set('palette', config.palette);
   }
   if (config.paletteMode && config.paletteMode !== 'position') {
     params.set('paletteMode', config.paletteMode);
@@ -1015,6 +1022,21 @@ export function getShareableUrl(config: Partial<ShareConfig>, baseUrl?: string):
   const base = baseUrl || window.location.origin + window.location.pathname;
   const params = buildUrlParams(config);
   return params ? `${base}?${params}` : base;
+}
+
+/**
+ * Check if a share URL exceeds recommended length limits.
+ * Returns warning message if too long, null otherwise.
+ */
+export function checkShareUrlLength(url: string): string | null {
+  if (url.length > MAX_SHARE_URL_LENGTH) {
+    return (
+      `Share URL is ${url.length} characters (recommended max: ${MAX_SHARE_URL_LENGTH}). ` +
+      'Very long URLs may fail in SMS, some social apps, and QR scanners. ' +
+      'Consider using fewer custom settings or a URL shortener.'
+    );
+  }
+  return null;
 }
 
 // ============================================
@@ -1101,6 +1123,13 @@ export function convertToImageApiUrl(
       imageParams.set('h', (finalHeight ?? finalWidth ?? size).toString());
     } else {
       imageParams.set('size', size.toString());
+    }
+
+    // Map client 'size' (module pixels) to server 'modulePx' for consistent sizing
+    // This ensures the server uses the same module size as the client preview
+    const clientSize = params.get('size');
+    if (clientSize) {
+      imageParams.set('modulePx', clientSize);
     }
 
     // All parameters supported by /api/qr that can be passed through directly
@@ -1446,6 +1475,7 @@ export const ShareUtils = {
   buildUrlParams,
   updateBrowserUrl,
   getShareableUrl,
+  checkShareUrlLength,
 
   // Embed codes
   generateImageEmbed,
