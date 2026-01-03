@@ -1,6 +1,6 @@
 /**
  * Type declarations for the ImageDecoder WebCodecs API
- * https://developer.mozilla.org/en-US/docs/Web/API/ImageDecoder
+ * https://developer.mozilla.org/en-US/guide/Web/API/ImageDecoder
  */
 
 interface ImageDecoderInit {

@@ -970,7 +970,7 @@
   "nav": {
     "about": "について",
     "contact": "コンタクト",
-    "docs": "ガイド",
+    "guide": "ガイド",
     "guide": "ガイド",
     "gallery": "ギャラリー",
     "generator": "ジェネレーター",
@@ -1227,7 +1227,7 @@
     "copyShareLink": "共有リンクをクリップボードにコピー",
     "exportQrCode": "QRコードをファイルにエクスポート",
     "openNavMenu": "ナビゲーションメニューを開く",
-    "openDocsSidebar": "ドキュメントサイドバーを開く",
+    "openGuideSidebar": "ドキュメントサイドバーを開く",
     "closeSidebar": "サイドバーを閉じる",
     "imageUnavailable": "画像が利用できません",
     "messageSent": "メッセージが送信されました",

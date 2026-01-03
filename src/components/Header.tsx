@@ -33,7 +33,8 @@ type HeaderPage = 'editor' | 'gallery' | StaticPageType;
 const NAV_LINKS: Array<{ href: string; labelKey: string; page: HeaderPage }> = [
   { href: '/', labelKey: 'nav.generator', page: 'editor' },
   { href: '/gallery', labelKey: 'nav.gallery', page: 'gallery' },
-  { href: '/docs', labelKey: 'nav.guide', page: 'docs' },
+  { href: '/guide', labelKey: 'nav.guide', page: 'guide' },
+  { href: '/learn', labelKey: 'nav.learn', page: 'learn' },
   { href: '/about', labelKey: 'nav.about', page: 'about' },
   { href: '/privacy', labelKey: 'nav.privacy', page: 'privacy' },
   { href: '/terms', labelKey: 'nav.terms', page: 'terms' },

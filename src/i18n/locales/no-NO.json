@@ -970,7 +970,7 @@
   "nav": {
     "about": "Om",
     "contact": "Kontakt",
-    "docs": "Guide",
+    "guide": "Guide",
     "guide": "Guide",
     "gallery": "Galleri",
     "generator": "Generator",
@@ -1227,7 +1227,7 @@
     "copyShareLink": "Kopier delbar lenke til utklippstavlen",
     "exportQrCode": "Eksporter QR-kode til fil",
     "openNavMenu": "Åpne navigasjonsmenyen",
-    "openDocsSidebar": "Åpne sidefeltet for dokumentasjon",
+    "openGuideSidebar": "Åpne sidefeltet for dokumentasjon",
     "closeSidebar": "Lukk sidefeltet",
     "imageUnavailable": "Bilde utilgjengelig",
     "messageSent": "Melding sendt",

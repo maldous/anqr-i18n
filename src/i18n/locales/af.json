@@ -970,7 +970,7 @@
   "nav": {
     "about": "Oor",
     "contact": "Kontak",
-    "docs": "Gids",
+    "guide": "Gids",
     "guide": "Gids",
     "gallery": "Galery",
     "generator": "Kraafkragopwekker",
@@ -1227,7 +1227,7 @@
     "copyShareLink": "Kopieer deelbare skakel na knipbord",
     "exportQrCode": "Voer QR-kode na lêer uit",
     "openNavMenu": "Maak navigasie-kieslys oop",
-    "openDocsSidebar": "Maak dokumentasie-sybalk oop",
+    "openGuideSidebar": "Maak dokumentasie-sybalk oop",
     "closeSidebar": "Maak sybalk toe",
     "imageUnavailable": "Beeld nie beskikbaar nie",
     "messageSent": "Boodskap gestuur",

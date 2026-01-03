@@ -970,7 +970,7 @@
   "nav": {
     "about": "حول",
     "contact": "للتواصل",
-    "docs": "دليل",
+    "guide": "دليل",
     "guide": "دليل",
     "gallery": "معرض",
     "generator": "مولد",
@@ -1227,7 +1227,7 @@
     "copyShareLink": "نسخ رابط المشاركة إلى الحافظة",
     "exportQrCode": "تصدير رمز QR إلى ملف",
     "openNavMenu": "فتح قائمة التنقل",
-    "openDocsSidebar": "فتح الشريط الجانبي للوثائق",
+    "openGuideSidebar": "فتح الشريط الجانبي للوثائق",
     "closeSidebar": "إغلاق الشريط الجانبي",
     "imageUnavailable": "الصورة غير متوفرة",
     "messageSent": "تم إرسال الرسالة",

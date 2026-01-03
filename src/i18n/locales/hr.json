@@ -970,7 +970,7 @@
   "nav": {
     "about": "O nama",
     "contact": "Kontakt",
-    "docs": "Vodič",
+    "guide": "Vodič",
     "guide": "Vodič",
     "gallery": "Galerija",
     "generator": "Generator",
@@ -1227,7 +1227,7 @@
     "copyShareLink": "Kopiraj poveznicu za dijeljenje u međuspremnik",
     "exportQrCode": "Izvoz QR koda u datoteku",
     "openNavMenu": "Otvori navigacijski izbornik",
-    "openDocsSidebar": "Otvori bočnu traku dokumentacije",
+    "openGuideSidebar": "Otvori bočnu traku dokumentacije",
     "closeSidebar": "Zatvori bočnu traku",
     "imageUnavailable": "Slika nije dostupna",
     "messageSent": "Poruka poslana",

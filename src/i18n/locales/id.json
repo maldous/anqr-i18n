@@ -970,7 +970,7 @@
   "nav": {
     "about": "Tentang",
     "contact": "Kontak",
-    "docs": "Panduan",
+    "guide": "Panduan",
     "guide": "Panduan",
     "gallery": "Galeri",
     "generator": "Generator",
@@ -1227,7 +1227,7 @@
     "copyShareLink": "Salin tautan berbagi ke clipboard",
     "exportQrCode": "Ekspor kode QR ke file",
     "openNavMenu": "Buka menu navigasi",
-    "openDocsSidebar": "Buka sidebar dokumentasi",
+    "openGuideSidebar": "Buka sidebar dokumentasi",
     "closeSidebar": "Tutup sidebar",
     "imageUnavailable": "Gambar tidak tersedia",
     "messageSent": "Pesan terkirim",

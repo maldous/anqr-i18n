@@ -11,7 +11,7 @@ import { createCanvas, loadImage } from '@napi-rs/canvas';
 import gifenc from 'gifenc';
 import { decompressFrames, parseGIF } from 'gifuct-js';
 
-// vendor/lib/qrcode-generator/qrcode.mjs
+// qrcode.mjs
 var qrcode = (typeNumber, errorCorrectionLevel) => {
   const PAD0 = 236;
   const PAD1 = 17;

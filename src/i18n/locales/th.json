@@ -970,7 +970,7 @@
   "nav": {
     "about": "เกี่ยวกับ",
     "contact": "ติดต่อ",
-    "docs": "คู่มือ",
+    "guide": "คู่มือ",
     "guide": "คู่มือ",
     "gallery": "แกลเลอรี",
     "generator": "ตัวสร้าง",
@@ -1227,7 +1227,7 @@
     "copyShareLink": "คัดลอกลิงก์แชร์ไปยังคลิปบอร์ด",
     "exportQrCode": "ส่งออกคิวอาร์โค้ดเป็นไฟล์",
     "openNavMenu": "เปิดเมนูนำทาง",
-    "openDocsSidebar": "เปิดแถบด้านข้างเอกสาร",
+    "openGuideSidebar": "เปิดแถบด้านข้างเอกสาร",
     "closeSidebar": "ปิดแถบด้านข้าง",
     "imageUnavailable": "ไม่มีรูปภาพ",
     "messageSent": "ส่งข้อความแล้ว",

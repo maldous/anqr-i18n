@@ -970,7 +970,7 @@
   "nav": {
     "about": "Rólunk",
     "contact": "Kapcsolat",
-    "docs": "Útmutató",
+    "guide": "Útmutató",
     "guide": "Útmutató",
     "gallery": "Galéria",
     "generator": "Generátor",
@@ -1227,7 +1227,7 @@
     "copyShareLink": "Megosztható link másolása a vágólapra",
     "exportQrCode": "QR-kód exportálása fájlba",
     "openNavMenu": "Navigációs menü megnyitása",
-    "openDocsSidebar": "Dokumentáció oldalsáv megnyitása",
+    "openGuideSidebar": "Dokumentáció oldalsáv megnyitása",
     "closeSidebar": "Oldalsáv bezárása",
     "imageUnavailable": "A kép nem érhető el",
     "messageSent": "Üzenet elküldve",

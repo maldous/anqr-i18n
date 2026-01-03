@@ -970,7 +970,7 @@
   "nav": {
     "about": "소개",
     "contact": "연락처",
-    "docs": "가이드",
+    "guide": "가이드",
     "guide": "가이드",
     "gallery": "갤러리",
     "generator": "발전기",
@@ -1227,7 +1227,7 @@
     "copyShareLink": "공유 링크를 클립보드에 복사",
     "exportQrCode": "QR 코드를 파일로 내보내기",
     "openNavMenu": "탐색 메뉴 열기",
-    "openDocsSidebar": "문서 사이드바 열기",
+    "openGuideSidebar": "문서 사이드바 열기",
     "closeSidebar": "사이드바 닫기",
     "imageUnavailable": "이미지를 사용할 수 없음",
     "messageSent": "메시지가 전송됨",

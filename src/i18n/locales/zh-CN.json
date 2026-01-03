@@ -970,7 +970,7 @@
   "nav": {
     "about": "关于",
     "contact": "联系",
-    "docs": "指南",
+    "guide": "指南",
     "guide": "指南",
     "gallery": "图库",
     "generator": "生成器",
@@ -1227,7 +1227,7 @@
     "copyShareLink": "复制分享链接到剪贴板",
     "exportQrCode": "将二维码导出为文件",
     "openNavMenu": "打开导航菜单",
-    "openDocsSidebar": "打开文档侧边栏",
+    "openGuideSidebar": "打开文档侧边栏",
     "closeSidebar": "关闭侧边栏",
     "imageUnavailable": "图片不可用",
     "messageSent": "消息已发送",

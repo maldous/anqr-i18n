@@ -970,7 +970,7 @@
   "nav": {
     "about": "Giới thiệu",
     "contact": "Liên hệ",
-    "docs": "Hướng dẫn",
+    "guide": "Hướng dẫn",
     "guide": "Hướng dẫn",
     "gallery": "Phòng trưng bày",
     "generator": "Máy phát điện",
@@ -1227,7 +1227,7 @@
     "copyShareLink": "Sao chép liên kết chia sẻ vào bộ nhớ tạm",
     "exportQrCode": "Xuất mã QR ra tệp",
     "openNavMenu": "Mở menu điều hướng",
-    "openDocsSidebar": "Mở thanh bên tài liệu",
+    "openGuideSidebar": "Mở thanh bên tài liệu",
     "closeSidebar": "Đóng thanh bên",
     "imageUnavailable": "Không có hình ảnh",
     "messageSent": "Đã gửi tin nhắn",

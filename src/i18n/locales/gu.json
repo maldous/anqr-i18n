@@ -970,7 +970,7 @@
   "nav": {
     "about": "વિશે",
     "contact": "સંપર્ક",
-    "docs": "માર્ગદર્શિકા",
+    "guide": "માર્ગદર્શિકા",
     "guide": "માર્ગદર્શિકા",
     "gallery": "ગેલેરી",
     "generator": "જનરેટર",
@@ -1227,7 +1227,7 @@
     "copyShareLink": "શેર કરી શકાય તેવી લિંક ક્લિપબોર્ડ પર કૉપિ કરો",
     "exportQrCode": "QR કોડ ફાઇલમાં નિકાસ કરો",
     "openNavMenu": "નેવિગેશન મેનૂ ખોલો",
-    "openDocsSidebar": "દસ્તાવેજીકરણ સાઇડબાર ખોલો",
+    "openGuideSidebar": "દસ્તાવેજીકરણ સાઇડબાર ખોલો",
     "closeSidebar": "સાઇડબાર બંધ કરો",
     "imageUnavailable": "છબી ઉપલબ્ધ નથી",
     "messageSent": "સંદેશ મોકલાયો",

@@ -1024,7 +1024,25 @@ export function updateBrowserUrl(config: Partial<ShareConfig>): void {
  * Get the full shareable URL
  */
 export function getShareableUrl(config: Partial<ShareConfig>, baseUrl?: string): string {
-  const base = baseUrl || window.location.origin + window.location.pathname;
+  if (baseUrl) {
+    const params = buildUrlParams(config);
+    return params ? `${baseUrl}?${params}` : baseUrl;
+  }
+
+  const { hostname, origin, pathname, protocol } = window.location;
+  const lowerHost = hostname.toLowerCase();
+
+  const isLocalhost =
+    lowerHost === 'localhost' ||
+    lowerHost === '127.0.0.1' ||
+    lowerHost === '::1' ||
+    lowerHost.endsWith('.localhost');
+
+  // In dev (localhost) or Capacitor WebView, use the canonical public domain
+  const base = isLocalhost || protocol === 'capacitor:'
+    ? `https://anqr.link${pathname}`
+    : origin + pathname;
+
   const params = buildUrlParams(config);
   return params ? `${base}?${params}` : base;
 }
