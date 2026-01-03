@@ -337,9 +337,9 @@ export default defineConfig({
           if (id.includes('node_modules/lucide-react')) {
             return 'vendor-icons';
           }
-          // QR code generation vendor library
-          if (id.includes('vendor/lib/qrcode-generator') || id.includes('vendor/lib/dithered-qr')) {
-            return 'vendor-qr-lib';
+          // QR code generation library (now in src/modules)
+          if (id.includes('/modules/qrcode.mjs')) {
+            return 'app-qr-lib';
           }
           // App modules - split heavy processing
           if (id.includes('/modules/exporter') || id.includes('/modules/animation')) {
