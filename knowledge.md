@@ -33,7 +33,7 @@ flowchart TD
   F --> K[src/modules/qr-scanner.ts]
   F --> L[src/modules/safety-analyzer.ts]
   G --> M[src/modules/qr-core.ts]
-  M --> N[vendor/lib/qrcode-generator/qrcode.mjs]
+  M --> N[src/modules/qrcode.mjs]
   G --> O[src/modules/dither-algorithms.ts]
   G --> P[src/modules/blue-noise-dither.ts]
   G --> Q[src/modules/color-utils.ts]
@@ -73,7 +73,7 @@ flowchart TD
   S[netlify/functions/qr.ts] --> G[src/modules/qr-generator.js]
   S --> SH[src/modules/shared/index.ts]
   G --> M[src/modules/qr-core.ts]
-  M --> N[vendor/lib/qrcode-generator/qrcode.mjs]
+  M --> N[src/modules/qrcode.mjs]
 ```
 
 Important implication: **URL parameter compatibility** is enforced in two places:
@@ -439,7 +439,7 @@ Sidebar
 
 ### `src/components/StaticPage.tsx`
 StaticPage
-About, Privacy, Terms, Contact, and Docs pages.
+About, Privacy, Terms, Contact, and Guide pages.
 **Exports**
 ```
 StaticPage
@@ -1034,7 +1034,7 @@ defaultBrowserCanvasFactory
 generateBlueNoiseDithered
 ```
 **Imports (internal)**
-- vendor/lib/qrcode-generator/qrcode.mjs
+- src/modules/qrcode.mjs
 **Used by (internal)**
 - src/modules/qr-generator.js
 
@@ -1425,7 +1425,7 @@ generatePromptPay
 ### `src/modules/qr-core.ts`
 QR Core Module
 Provides QR code generation, encoding, and structural element detection
-Wraps vendor/lib/qrcode-generator with TypeScript types
+Wraps qrcode.mjs with TypeScript types
 **Exports**
 ```
 ECCLevel
@@ -1450,7 +1450,7 @@ isStructuralModule
 isTimingPattern
 ```
 **Imports (internal)**
-- vendor/lib/qrcode-generator/qrcode.mjs
+- src/modules/qrcode.mjs
 **Used by (internal)**
 - src/components/sections/QREncodingSection.tsx
 - src/modules/qr-generator.js
@@ -1468,7 +1468,7 @@ defaultBrowserCanvasFactory
 - src/modules/color-utils.ts
 - src/modules/dither-algorithms.ts
 - src/modules/qr-core.ts
-- vendor/lib/qrcode-generator/qrcode.mjs
+- src/modules/qrcode.mjs
 **Used by (internal)**
 - netlify/functions/qr.ts
 - src/hooks/useQRGenerator.ts
@@ -1741,165 +1741,7 @@ _(none)_
 - Not imported by other app code (may be unused, experimental, or referenced dynamically).
 - Type declarations only.
 
-### `vendor/lib/dithered-qr/browser.ts`
-import decodeQR from "qr/decode";
-**Imports (internal)**
-- vendor/lib/dithered-qr/diffuse.ts
-- vendor/lib/dithered-qr/draw.ts
-- vendor/lib/dithered-qr/errors.ts
-- vendor/lib/dithered-qr/form.ts
-- vendor/lib/dithered-qr/fudge.ts
-- vendor/lib/dithered-qr/image.ts
-- vendor/lib/dithered-qr/locked.ts
-- vendor/lib/dithered-qr/qr.ts
-**Used by (internal)**
-_(none)_
-
-### `vendor/lib/dithered-qr/diffuse.ts`
-**Exports**
-```
-diffuseDataPoints
-diffuseFreePoints
-```
-**Imports (internal)**
-- vendor/lib/dithered-qr/form.ts
-- vendor/lib/dithered-qr/locked.ts
-**Used by (internal)**
-- vendor/lib/dithered-qr/browser.ts
-
-### `vendor/lib/dithered-qr/draw.ts`
-**Exports**
-```
-default
-```
-**Imports (internal)**
-- vendor/lib/dithered-qr/form.ts
-- vendor/lib/dithered-qr/locked.ts
-**Used by (internal)**
-- vendor/lib/dithered-qr/browser.ts
-
-### `vendor/lib/dithered-qr/errors.ts`
-**Exports**
-```
-clearError
-default
-```
-**Imports (internal)**
-_(none)_
-**Used by (internal)**
-- vendor/lib/dithered-qr/browser.ts
-- vendor/lib/dithered-qr/qr.ts
-
-### `vendor/lib/dithered-qr/form.ts`
-**Exports**
-```
-getBrightness
-getContrast
-getDiffuseDataPoints
-getDiffuseFreePoints
-getEcc
-getFudgePixels
-getGamma
-getHideFreePoints
-getIncludeImage
-getInverted
-getLockAlignmentPatterns
-getLockPositioningBlocks
-getLockTimingLines
-getMask
-getMaxBrightness
-getMinBrightness
-getReflection
-getRotation
-getScale
-getText
-getVersion
-```
-**Imports (internal)**
-_(none)_
-**Used by (internal)**
-- vendor/lib/dithered-qr/browser.ts
-- vendor/lib/dithered-qr/diffuse.ts
-- vendor/lib/dithered-qr/draw.ts
-- vendor/lib/dithered-qr/fudge.ts
-- vendor/lib/dithered-qr/image.ts
-- vendor/lib/dithered-qr/locked.ts
-- vendor/lib/dithered-qr/qr.ts
-
-### `vendor/lib/dithered-qr/fudge.ts`
-**Exports**
-```
-default
-```
-**Imports (internal)**
-- vendor/lib/dithered-qr/form.ts
-- vendor/lib/dithered-qr/locked.ts
-**Used by (internal)**
-- vendor/lib/dithered-qr/browser.ts
-
-### `vendor/lib/dithered-qr/image.ts`
-**Exports**
-```
-default
-```
-**Imports (internal)**
-- vendor/lib/dithered-qr/form.ts
-**Used by (internal)**
-- vendor/lib/dithered-qr/browser.ts
-
-### `vendor/lib/dithered-qr/locked.ts`
-**Exports**
-```
-default
-isData
-```
-**Imports (internal)**
-- vendor/lib/dithered-qr/form.ts
-**Used by (internal)**
-- vendor/lib/dithered-qr/browser.ts
-- vendor/lib/dithered-qr/diffuse.ts
-- vendor/lib/dithered-qr/draw.ts
-- vendor/lib/dithered-qr/fudge.ts
-
-### `vendor/lib/dithered-qr/qr.ts`
-**Exports**
-```
-default
-```
-**Imports (internal)**
-- vendor/lib/dithered-qr/errors.ts
-- vendor/lib/dithered-qr/form.ts
-**Used by (internal)**
-- vendor/lib/dithered-qr/browser.ts
-
-### `vendor/lib/qrcode-generator/qrcode.d.ts`
----------------------------------------------------------------------
-QR Code Generator for JavaScript - TypeScript Declaration File
-Copyright (c) 2016 Kazuhiko Arase
-URL: http://www.d-project.com
-Licensed under the MIT license:
-http://www.opensource.org/licenses/mit-license.php
-**Imports (internal)**
-_(none)_
-**Used by (internal)**
-_(none)_
-**Notes**
-- Type declarations only.
-
-### `vendor/lib/qrcode-generator/qrcode.js`
----------------------------------------------------------------------
-QR Code Generator for JavaScript
-Copyright (c) 2009 Kazuhiko Arase
-URL: http://www.d-project.com
-Licensed under the MIT license:
-http://www.opensource.org/licenses/mit-license.php
-**Imports (internal)**
-_(none)_
-**Used by (internal)**
-_(none)_
-
-### `vendor/lib/qrcode-generator/qrcode.mjs`
----------------------------------------------------------------------
+### `src/modules/qrcode.mjs`
 QR Code Generator for JavaScript
 Copyright (c) 2009 Kazuhiko Arase
 URL: http://www.d-project.com
