@@ -1,18 +1,54 @@
-# images / media
-public/gallery/**        export-ignore
-public/icons/**          export-ignore
-public/*.png             export-ignore
-public/*.jpg             export-ignore
-public/*.gif             export-ignore
+# -----------------------------------------------------------------------------
+# Line endings / normalization
+# -----------------------------------------------------------------------------
+* text=auto eol=lf
 
-# translations / generated text
-src/i18n/locales/**      export-ignore
-src/i18n/static/**       export-ignore
+# -----------------------------------------------------------------------------
+# git archive: exclude bulky/generated/non-essential stuff from exported zips
+# -----------------------------------------------------------------------------
 
-# android resources (huge, not logic)
-android/app/src/main/res/** export-ignore
+# Netlify noise
+/.netlify export-ignore
+/.netlify/** export-ignore
+/netlify/functions-serve export-ignore
+/netlify/functions-serve/** export-ignore
+/netlify/functions/qr.zip export-ignore
 
-# build / infra noise
-.netlify/**              export-ignore
-.netlify/functions-serve/** export-ignore
-.netlify/functions/qr.zip export-ignore
+# Web media (keep manifest/robots/sitemap/_redirects etc.)
+/public/gallery export-ignore
+/public/gallery/** export-ignore
+/public/icons export-ignore
+/public/icons/** export-ignore
+/public/**/*.png export-ignore
+/public/**/*.jpg export-ignore
+/public/**/*.jpeg export-ignore
+/public/**/*.gif export-ignore
+/public/**/*.webp export-ignore
+/public/**/*.ico export-ignore
+/public/**/*.mp4 export-ignore
+/public/**/*.mov export-ignore
+
+# Translations / generated text
+/src/i18n/locales export-ignore
+/src/i18n/locales/** export-ignore
+/src/i18n/static export-ignore
+/src/i18n/static/** export-ignore
+
+# Android: generated/binary/large
+/android/app/src/main/res export-ignore
+/android/app/src/main/res/** export-ignore
+/android/**/build export-ignore
+/android/**/build/** export-ignore
+/android/.gradle export-ignore
+/android/.gradle/** export-ignore
+/android/gradle/wrapper/gradle-wrapper.jar export-ignore
+
+# Sensitive
+/android/app/release-key.keystore export-ignore
+
+# Vendor binary assets
+/vendor/lib/blue-noise/*.png export-ignore
+
+# Lockfiles (optional)
+/package-lock.json export-ignore
+
