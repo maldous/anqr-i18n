@@ -244,3 +244,6 @@ android: build android\:bump android\:release
 zip:
 	@rm -f anqr.zip
 	@git archive --format=zip --prefix=anqr/ HEAD -o anqr.zip
+
+dep:
+	@npx depcruise src --output-type dot | dot -Tpng > deps.png
