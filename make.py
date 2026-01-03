@@ -3,7 +3,7 @@
 make_template_ts.py (VALUES ONLY, MULTI-FILE, TS page templates)
 
 Input:
-  - about.ts contact.ts docs.ts privacy.ts terms.ts (or any *.ts you pass)
+  - about.ts contact.ts guide.ts privacy.ts terms.ts (or any *.ts you pass)
 
 Creates:
   - xlate.txt                 : global <id>\t"<json-escaped original string>"
