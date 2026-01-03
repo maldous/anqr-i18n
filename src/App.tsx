@@ -23,11 +23,13 @@ function getPageFromLocation(): PageView {
 
   // Prefer clean paths when present.
   if (path === '/gallery') return 'gallery';
+  if (path === '/guide') return 'guide';
+  if (path === '/guide') return 'guide';
+  if (path === '/learn') return 'learn';
   if (path === '/about') return 'about';
   if (path === '/privacy') return 'privacy';
   if (path === '/terms') return 'terms';
   if (path === '/contact') return 'contact';
-  if (path === '/docs') return 'docs';
 
   // Backward-compatible hash routes.
   if (hash === 'gallery') return 'gallery';
@@ -36,7 +38,7 @@ function getPageFromLocation(): PageView {
     hash === 'privacy' ||
     hash === 'terms' ||
     hash === 'contact' ||
-    hash === 'docs'
+    hash === 'guide'
   )
     return hash as StaticPageType;
 
@@ -90,7 +92,7 @@ function App() {
 
   // Convenience booleans for view states
   const showGallery = currentPage === 'gallery';
-  const showStaticPage = ['about', 'privacy', 'terms', 'contact', 'docs'].includes(currentPage);
+  const showStaticPage = ['about', 'privacy', 'terms', 'contact', 'guide'].includes(currentPage);
   const showEditor = currentPage === 'editor';
 
   // Update document title and RTL direction when language changes
@@ -724,11 +726,11 @@ function App() {
           <div className="px-4 lg:mx-[160px] text-center flex items-center justify-center min-h-[24px]">
             <p className="text-[10px] sm:text-xs text-muted-foreground" dir="auto">
               <a
-                href="/docs"
+                href="/guide"
                 className="hover:underline"
                 onClick={(e) => {
                   e.preventDefault();
-                  navigateTo('docs');
+                  navigateTo('guide');
                 }}
               >
                 {t('nav.guide')}

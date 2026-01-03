@@ -970,7 +970,7 @@
   "nav": {
     "about": "Over ons",
     "contact": "Contact",
-    "docs": "Gids",
+    "guide": "Gids",
     "guide": "Gids",
     "gallery": "Galerij",
     "generator": "Generator",
@@ -1227,7 +1227,7 @@
     "copyShareLink": "Deelbare link naar het klembord kopiëren",
     "exportQrCode": "QR-code exporteren naar bestand",
     "openNavMenu": "Navigatiemenu openen",
-    "openDocsSidebar": "Open de documentatiezijbalk",
+    "openGuideSidebar": "Open de documentatiezijbalk",
     "closeSidebar": "Zijbalk sluiten",
     "imageUnavailable": "Afbeelding niet beschikbaar",
     "messageSent": "Bericht verzonden",

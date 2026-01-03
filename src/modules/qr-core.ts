@@ -1,10 +1,9 @@
 /**
  * QR Core Module
  * Provides QR code generation, encoding, and structural element detection
- * Wraps vendor/lib/qrcode-generator with TypeScript types
  */
 
-import qrcode from '../../vendor/lib/qrcode-generator/qrcode.mjs';
+import qrcode from './qrcode.mjs';
 
 // ============================================
 // TYPES

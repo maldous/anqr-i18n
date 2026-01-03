@@ -6,11 +6,15 @@ Usage:
   ./fill_ts.py en.txt
 
 Reads (in current dir):
-  - template-*.ts : TS templates where translatable string literals were replaced by id string literals
+  - template-*.ts : TS templates where translatable string literals were replaced by id string literals.
+                    This is generic and works for any static page template, including existing pages
+                    (about, contact, guide, privacy, terms) and new ones such as learn.ts and guide.ts
+                    (driven from template-learn.ts / template-guide.ts).
   - <arg1>        : lines like: <id><TAB><translated string as JSON string OR raw text>
 
 Writes:
-  - filled-*.ts   : ids replaced with translated strings, preserving original quote style (', ", `).
+  - <stem>.ts     : for each template-<stem>.ts, emits <stem>.ts with ids replaced by translated
+                    strings, preserving the original quote style (', ", `).
 """
 
 from __future__ import annotations
@@ -240,6 +244,11 @@ def main(argv: List[str]) -> int:
     translations_path = argv[1]
     id2txt = load_translations(translations_path)
 
+    # Derive language code from the translations file name (e.g. 'en-GB' from 'en-GB.txt')
+    lang_code = Path(translations_path).stem
+    out_dir = Path("..") / lang_code
+    out_dir.mkdir(parents=True, exist_ok=True)
+
     templates = sorted(Path(".").glob("template-*.ts"))
     if not templates:
         raise SystemExit("No template-*.ts files found in the current directory.")
@@ -268,10 +277,11 @@ def main(argv: List[str]) -> int:
         for a, b, rep in sorted(repls, key=lambda t: t[0], reverse=True):
             out_txt = out_txt[:a] + rep + out_txt[b:]
 
-        out_path = tp.with_name(tp.name.replace("template-", "", 1))
+        # Write filled TS files into the language directory one level up (../<lang>/)
+        out_path = out_dir / tp.name.replace("template-", "", 1)
         out_path.write_text(out_txt, encoding="utf-8")
 
-    print(f"Wrote {len(templates)} files: *.ts")
+    print(f"Wrote {len(templates)} files to {out_dir}")
     return 0
 
 

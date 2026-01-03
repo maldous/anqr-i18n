@@ -970,7 +970,7 @@
   "nav": {
     "about": "परिचय",
     "contact": "संपर्क",
-    "docs": "मार्गदर्शिका",
+    "guide": "मार्गदर्शिका",
     "guide": "मार्गदर्शिका",
     "gallery": "गैलरी",
     "generator": "जनरेटर",
@@ -1227,7 +1227,7 @@
     "copyShareLink": "साझा करने योग्य लिंक क्लिपबोर्ड पर कॉपी करें",
     "exportQrCode": "QR कोड फ़ाइल में निर्यात करें",
     "openNavMenu": "नेविगेशन मेनू खोलें",
-    "openDocsSidebar": "दस्तावेज़ साइडबार खोलें",
+    "openGuideSidebar": "दस्तावेज़ साइडबार खोलें",
     "closeSidebar": "साइडबार बंद करें",
     "imageUnavailable": "छवि उपलब्ध नहीं",
     "messageSent": "संदेश भेजा गया",

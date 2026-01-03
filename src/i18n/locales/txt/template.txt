@@ -970,7 +970,7 @@
   "nav": {
     "about": "532",
     "contact": "533",
-    "docs": "534",
+    "guide": "534",
     "guide": "534",
     "gallery": "535",
     "generator": "536",
@@ -1227,7 +1227,7 @@
     "copyShareLink": "1025",
     "exportQrCode": "1026",
     "openNavMenu": "1027",
-    "openDocsSidebar": "1028",
+    "openGuideSidebar": "1028",
     "closeSidebar": "1029",
     "imageUnavailable": "1030",
     "messageSent": "1031",

@@ -970,7 +970,7 @@
   "nav": {
     "about": "Tungkol sa",
     "contact": "Makipag-ugnayan",
-    "docs": "Gabay",
+    "guide": "Gabay",
     "guide": "Gabay",
     "gallery": "Galerya",
     "generator": "Generator",
@@ -1227,7 +1227,7 @@
     "copyShareLink": "Kopyahin ang link ng pagbabahagi sa clipboard",
     "exportQrCode": "I-export ang QR code sa file",
     "openNavMenu": "Buksan ang navigation menu",
-    "openDocsSidebar": "Buksan ang documentation sidebar",
+    "openGuideSidebar": "Buksan ang documentation sidebar",
     "closeSidebar": "Isara ang sidebar",
     "imageUnavailable": "Hindi available ang larawan",
     "messageSent": "Naipadala ang mensahe",

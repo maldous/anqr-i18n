@@ -970,7 +970,7 @@
   "nav": {
     "about": "O nás",
     "contact": "Kontakt",
-    "docs": "Průvodce",
+    "guide": "Průvodce",
     "guide": "Průvodce",
     "gallery": "Galerie",
     "generator": "Generátor",
@@ -1227,7 +1227,7 @@
     "copyShareLink": "Zkopírovat odkaz ke sdílení do schránky",
     "exportQrCode": "Exportovat QR kód do souboru",
     "openNavMenu": "Otevřít navigační menu",
-    "openDocsSidebar": "Otevřít postranní panel dokumentace",
+    "openGuideSidebar": "Otevřít postranní panel dokumentace",
     "closeSidebar": "Zavřít postranní panel",
     "imageUnavailable": "Obrázek není k dispozici",
     "messageSent": "Zpráva odeslána",

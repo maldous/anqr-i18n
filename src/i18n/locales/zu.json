@@ -970,7 +970,7 @@
   "nav": {
     "about": "Mayelana",
     "contact": "Ukuxhumana",
-    "docs": "Umhlahlandlela",
+    "guide": "Umhlahlandlela",
     "guide": "Umhlahlandlela",
     "gallery": "Igalari",
     "generator": "Umkhiqizi",
@@ -1227,7 +1227,7 @@
     "copyShareLink": "Kopisha isixhumanisi esingabiwa ebhodini lokunamathisela",
     "exportQrCode": "Thumela ikhodi ye-QR kufayela",
     "openNavMenu": "Vula imenyu yokuzulazula",
-    "openDocsSidebar": "Vula ibha eseceleni yamadokhumenti",
+    "openGuideSidebar": "Vula ibha eseceleni yamadokhumenti",
     "closeSidebar": "Vala ibha eseceleni",
     "imageUnavailable": "Isithombe asitholakali",
     "messageSent": "Umyalezo uthunyelwe",

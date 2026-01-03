@@ -970,7 +970,7 @@
   "nav": {
     "about": "소개",
     "contact": "연락처",
-    "docs": "가이드",
+    "guide": "가이드",
     "guide": "가이드",
     "gallery": "갤러리",
     "generator": "발전기",
@@ -1227,7 +1227,7 @@
     "copyShareLink": "ಹಂಚಿಕೊಳ್ಳಬಹುದಾದ ಲಿಂಕ್ ಅನ್ನು ಕ್ಲಿಪ್‌ಬೋರ್ಡ್‌ಗೆ ನಕಲಿಸಿ",
     "exportQrCode": "QR ಕೋಡ್ ಅನ್ನು ಫೈಲ್‌ಗೆ ರಫ್ತು ಮಾಡಿ",
     "openNavMenu": "ನ್ಯಾವಿಗೇಶನ್ ಮೆನು ತೆರೆಯಿರಿ",
-    "openDocsSidebar": "ಡಾಕ್ಯುಮೆಂಟೇಶನ್ ಸೈಡ್‌ಬಾರ್ ತೆರೆಯಿರಿ",
+    "openGuideSidebar": "ಡಾಕ್ಯುಮೆಂಟೇಶನ್ ಸೈಡ್‌ಬಾರ್ ತೆರೆಯಿರಿ",
     "closeSidebar": "ಸೈಡ್‌ಬಾರ್ ಮುಚ್ಚಿ",
     "imageUnavailable": "ಚಿತ್ರ ಲಭ್ಯವಿಲ್ಲ",
     "messageSent": "ಸಂದೇಶ ಕಳುಹಿಸಲಾಗಿದೆ",

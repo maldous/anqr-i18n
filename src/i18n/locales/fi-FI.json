@@ -970,7 +970,7 @@
   "nav": {
     "about": "Tietoja",
     "contact": "Yhteystiedot",
-    "docs": "Opas",
+    "guide": "Opas",
     "guide": "Opas",
     "gallery": "Galleria",
     "generator": "Generaattori",
@@ -1227,7 +1227,7 @@
     "copyShareLink": "Kopioi jaettava linkki leikepöydälle",
     "exportQrCode": "Vie QR-koodi tiedostoon",
     "openNavMenu": "Avaa navigointivalikko",
-    "openDocsSidebar": "Avaa dokumentaation sivupalkki",
+    "openGuideSidebar": "Avaa dokumentaation sivupalkki",
     "closeSidebar": "Sulje sivupalkki",
     "imageUnavailable": "Kuva ei ole saatavilla",
     "messageSent": "Viesti lähetetty",

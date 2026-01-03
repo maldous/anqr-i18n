@@ -970,7 +970,7 @@
   "nav": {
     "about": "Informazioni",
     "contact": "Contatto",
-    "docs": "Guida",
+    "guide": "Guida",
     "guide": "Guida",
     "gallery": "Galleria",
     "generator": "Generatore",
@@ -1227,7 +1227,7 @@
     "copyShareLink": "Copia il collegamento condivisibile negli appunti",
     "exportQrCode": "Esporta codice QR nel file",
     "openNavMenu": "Apri menu di navigazione",
-    "openDocsSidebar": "Apri la barra laterale della documentazione",
+    "openGuideSidebar": "Apri la barra laterale della documentazione",
     "closeSidebar": "Chiudi barra laterale",
     "imageUnavailable": "Immagine non disponibile",
     "messageSent": "Messaggio inviato",

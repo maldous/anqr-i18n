@@ -1,6 +1,6 @@
 /**
  * StaticPage
- * About, Privacy, Terms, Contact, and Docs pages.
+ * About, Privacy, Terms, Contact, and Guide pages.
  */
 
 import { ChevronDown, ChevronUp, List, Loader2, Mail, Menu, X } from 'lucide-react';
@@ -11,7 +11,7 @@ import { Button } from '@/components/ui/button';
 import type { PageDefinition, PageSection } from '@/i18n/static';
 import { CONTACT_EMAIL, getStaticContentAsync, LAST_UPDATED } from '@/i18n/static';
 
-export type StaticPageType = 'about' | 'docs' | 'privacy' | 'terms' | 'contact';
+export type StaticPageType = 'about' | 'guide' | 'learn' | 'privacy' | 'terms' | 'contact';
 
 interface StaticPageProps {
   page: StaticPageType;
@@ -52,15 +52,15 @@ function renderTextWithLinks(text: string): React.ReactNode {
   });
 }
 
-// ToC group structure for docs
+// ToC group structure for guide
 type TocGroup = {
   title: string;
   items: { id: string; title: string }[];
 };
 
-// Group docs sections into logical categories
+// Group guide sections into logical categories
 // titleKey is used for i18n translation lookup
-function buildDocsToc(sections: PageSection[], t: (key: string) => string): TocGroup[] {
+function buildGuideToc(sections: PageSection[], t: (key: string) => string): TocGroup[] {
   const groups: TocGroup[] = [
     { title: t('nav.guide'), items: [] },
     { title: t('tiers.basic'), items: [] },
@@ -76,7 +76,7 @@ function buildDocsToc(sections: PageSection[], t: (key: string) => string): TocG
     if (sectionIndex <= 1) return 0; // Getting Started: sections 0-1
     if (sectionIndex <= 4) return 1; // Basic Features: sections 2-4
     if (sectionIndex <= 40) return 2; // Advanced Features: sections 5-40
-    if (sectionIndex <= 56) return 3; // Pro Features: sections 41-56 (includes payment docs 42-50)
+    if (sectionIndex <= 56) return 3; // Pro Features: sections 41-56 (includes payment guide 42-50)
     if (sectionIndex <= 69) return 4; // API Reference: sections 57-69
     return 5; // Other (Best Practices+): sections 70+
   };
@@ -92,8 +92,8 @@ function buildDocsToc(sections: PageSection[], t: (key: string) => string): TocG
   return groups.filter((g) => g.items.length > 0);
 }
 
-// Table of Contents component for docs page
-function DocsTableOfContents({
+// Table of Contents component for guide page
+function GuideTableOfContents({
   groups,
   activeSlug,
   onNavigate,
@@ -196,7 +196,7 @@ function DocsTableOfContents({
               top: 'calc(60px + env(safe-area-inset-top, 0px) + 12px)',
               left: '12px',
             }}
-            title={t('accessibility.openDocsSidebar')}
+            title={t('accessibility.openGuideSidebar')}
           >
             <List className="h-5 w-5" />
           </button>
@@ -244,7 +244,7 @@ function DocsTableOfContents({
 
       {/* Desktop ToC - sticky sidebar with slide animation */}
       <aside
-        className={`hidden lg:block flex-shrink-0 border-r bg-background docs-sidebar transition-all duration-300 ease-in-out overflow-hidden ${
+        className={`hidden lg:block flex-shrink-0 border-r bg-background guide-sidebar transition-all duration-300 ease-in-out overflow-hidden ${
           isOpen ? 'w-64' : 'w-0 border-r-0'
         }`}
       >
@@ -317,10 +317,10 @@ export function StaticPage({ page }: StaticPageProps) {
     }
   }, [def]);
 
-  const isDocsPage = page === 'docs';
+  const isGuidePage = page === 'guide';
   const tocGroups = useMemo(
-    () => (isDocsPage && def ? buildDocsToc(def.sections, t) : []),
-    [isDocsPage, def, t]
+    () => (isGuidePage && def ? buildGuideToc(def.sections, t) : []),
+    [isGuidePage, def, t]
   );
   const [activeSlug, setActiveSlug] = useState('');
   const contentRef = useRef<HTMLDivElement>(null);
@@ -333,7 +333,7 @@ export function StaticPage({ page }: StaticPageProps) {
 
   // Track active section with IntersectionObserver
   useEffect(() => {
-    if (!isDocsPage) return;
+    if (!isGuidePage) return;
 
     const observer = new IntersectionObserver(
       (entries) => {
@@ -360,7 +360,7 @@ export function StaticPage({ page }: StaticPageProps) {
     });
 
     return () => observer.disconnect();
-  }, [isDocsPage]);
+  }, [isGuidePage]);
 
   // Navigate to section with smooth scroll
   const navigateToSection = useCallback((slug: string) => {
@@ -377,7 +377,7 @@ export function StaticPage({ page }: StaticPageProps) {
 
   // Handle initial hash on mount
   useEffect(() => {
-    if (!isDocsPage) return;
+    if (!isGuidePage) return;
     const hash = window.location.hash.slice(1);
     if (hash) {
       // Delay to ensure refs are populated
@@ -385,7 +385,7 @@ export function StaticPage({ page }: StaticPageProps) {
     } else if (tocGroups.length > 0 && tocGroups[0].items.length > 0) {
       setActiveSlug(tocGroups[0].items[0].id);
     }
-  }, [isDocsPage, tocGroups, navigateToSection]);
+  }, [isGuidePage, tocGroups, navigateToSection]);
 
   // Register section ref
   const registerSectionRef = useCallback((slug: string, el: HTMLElement | null) => {
@@ -396,8 +396,8 @@ export function StaticPage({ page }: StaticPageProps) {
     }
   }, []);
 
-  // State for docs sidebar visibility - starts collapsed
-  const [isDocsSidebarOpen, setIsDocsSidebarOpen] = useState(false);
+  // State for guide sidebar visibility - starts collapsed
+  const [isGuideSidebarOpen, setIsGuideSidebarOpen] = useState(false);
 
   // Note: Click outside to close is disabled - user must click X button to close sidebar
 
@@ -413,26 +413,26 @@ export function StaticPage({ page }: StaticPageProps) {
     );
   }
 
-  // For docs page, use a different layout with ToC
-  if (isDocsPage) {
+  // For guide page, use a different layout with ToC
+  if (isGuidePage) {
     return (
       <main className="min-h-[200px] flex-1 flex bg-background overflow-hidden transition-all duration-300">
-        {/* Left ad column - hidden on docs to make room for ToC */}
+        {/* Left ad column - hidden on guide to make room for ToC */}
         <div className="hidden xl:flex flex-col items-center justify-center w-[180px] min-h-[600px] bg-background flex-shrink-0 pl-3 pr-2">
           <AdUnit slot="static-left" width={160} height={600} format="vertical" />
         </div>
 
         {/* Toggle button when sidebar is closed - positioned in main content area */}
-        {!isDocsSidebarOpen && (
+        {!isGuideSidebarOpen && (
           <div className="hidden lg:block relative">
             <button
               type="button"
               onClick={(e) => {
                 e.stopPropagation();
-                setIsDocsSidebarOpen(true);
+                setIsGuideSidebarOpen(true);
               }}
-              className="docs-sidebar-toggle absolute left-4 top-4 z-40 p-2 rounded-lg bg-card border shadow-md hover:bg-muted transition-colors"
-              title={t('accessibility.openDocsSidebar')}
+              className="guide-sidebar-toggle absolute left-4 top-4 z-40 p-2 rounded-lg bg-card border shadow-md hover:bg-muted transition-colors"
+              title={t('accessibility.openGuideSidebar')}
             >
               <Menu className="h-5 w-5" />
             </button>
@@ -440,12 +440,12 @@ export function StaticPage({ page }: StaticPageProps) {
         )}
 
         {/* Table of Contents */}
-        <DocsTableOfContents
+        <GuideTableOfContents
           groups={tocGroups}
           activeSlug={activeSlug}
           onNavigate={navigateToSection}
-          onClose={() => setIsDocsSidebarOpen(false)}
-          isOpen={isDocsSidebarOpen}
+          onClose={() => setIsGuideSidebarOpen(false)}
+          isOpen={isGuideSidebarOpen}
           t={t}
         />
 
@@ -466,7 +466,7 @@ export function StaticPage({ page }: StaticPageProps) {
           {/* Horizontal ad below header */}
           <div className="max-w-7xl mx-auto px-4 py-4">
             <div className="flex justify-center">
-              <AdUnit slot="docs-top" width={728} height={90} format="horizontal" />
+              <AdUnit slot="guide-top" width={728} height={90} format="horizontal" />
             </div>
           </div>
 
@@ -520,7 +520,7 @@ export function StaticPage({ page }: StaticPageProps) {
 
             {/* Bottom horizontal ad */}
             <div className="mt-8 flex justify-center">
-              <AdUnit slot="docs-bottom" width={728} height={90} format="horizontal" />
+              <AdUnit slot="guide-bottom" width={728} height={90} format="horizontal" />
             </div>
 
             <div className="mt-8 pt-4 border-t border-border text-center">
@@ -539,7 +539,7 @@ export function StaticPage({ page }: StaticPageProps) {
     );
   }
 
-  // Standard layout for non-docs pages
+  // Standard layout for non-guide pages
   return (
     <main className="min-h-[200px] flex-1 flex bg-background overflow-hidden transition-all duration-300">
       {/* Left ad column */}

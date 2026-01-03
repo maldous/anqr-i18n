@@ -970,7 +970,7 @@
   "nav": {
     "about": "Despre",
     "contact": "Contact",
-    "docs": "Ghid",
+    "guide": "Ghid",
     "guide": "Ghid",
     "gallery": "Galerie",
     "generator": "Generator",
@@ -1227,7 +1227,7 @@
     "copyShareLink": "Copiați linkul partajabil în clipboard",
     "exportQrCode": "Exportă cod QR în fișier",
     "openNavMenu": "Deschide meniul de navigare",
-    "openDocsSidebar": "Deschide bara laterală a documentației",
+    "openGuideSidebar": "Deschide bara laterală a documentației",
     "closeSidebar": "Închide bara laterală",
     "imageUnavailable": "Imagine indisponibilă",
     "messageSent": "Mesaj trimis",

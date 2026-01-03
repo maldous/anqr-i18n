@@ -1,4 +1,4 @@
-import qrcode from '../../vendor/lib/qrcode-generator/qrcode.mjs';
+import qrcode from './qrcode.mjs';
 
 import { generateBlueNoiseDithered } from './blue-noise-dither.ts';
 import { blendColors, parseColor } from './color-utils.ts';

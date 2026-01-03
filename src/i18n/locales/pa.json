@@ -970,7 +970,7 @@
   "nav": {
     "about": "ਬਾਰੇ",
     "contact": "ਸੰਪਰਕ",
-    "docs": "ਗਾਈਡ",
+    "guide": "ਗਾਈਡ",
     "guide": "ਗਾਈਡ",
     "gallery": "ਗੈਲਰੀ",
     "generator": "ਜਨਰੇਟਰ",
@@ -1227,7 +1227,7 @@
     "copyShareLink": "ਸਾਂਝਾ ਕਰਨ ਯੋਗ ਲਿੰਕ ਕਲਿੱਪਬੋਰਡ ਤੇ ਕਾਪੀ ਕਰੋ",
     "exportQrCode": "QR ਕੋਡ ਫਾਈਲ ਵਿੱਚ ਨਿਰਯਾਤ ਕਰੋ",
     "openNavMenu": "ਨੈਵੀਗੇਸ਼ਨ ਮੀਨੂ ਖੋਲ੍ਹੋ",
-    "openDocsSidebar": "ਦਸਤਾਵੇਜ਼ ਸਾਈਡਬਾਰ ਖੋਲ੍ਹੋ",
+    "openGuideSidebar": "ਦਸਤਾਵੇਜ਼ ਸਾਈਡਬਾਰ ਖੋਲ੍ਹੋ",
     "closeSidebar": "ਸਾਈਡਬਾਰ ਬੰਦ ਕਰੋ",
     "imageUnavailable": "ਚਿੱਤਰ ਉਪਲਬਧ ਨਹੀਂ",
     "messageSent": "ਸੁਨੇਹਾ ਭੇਜਿਆ ਗਿਆ",
