@@ -1,7 +1,7 @@
 import type { PageDefinition } from '../types';
 import { LAST_UPDATED } from '../types';
 
-export const docs: PageDefinition = {
+export const guide: PageDefinition = {
   title: '62',
   description: '63',
   lastUpdated: LAST_UPDATED,
@@ -381,4 +381,4 @@ export const docs: PageDefinition = {
   ],
 };
 
-export default docs;
+export default guide;
