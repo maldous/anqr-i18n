@@ -83,6 +83,7 @@
     "tagline": "二维码生成器"
   },
   "common": {
+    "learnMore": "了解更多",
     "none": "无",
     "off": "关闭",
     "optional": "（可选）",
@@ -971,11 +972,13 @@
     "about": "关于",
     "contact": "联系",
     "guide": "指南",
-    "guide": "指南",
+    "learn": "学习",
+    "examples": "示例",
     "gallery": "图库",
     "generator": "生成器",
     "privacy": "隐私",
-    "terms": "条款"
+    "terms": "条款",
+    "related": "相关"
   },
   "output": {
     "none": "无",

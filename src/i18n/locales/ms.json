@@ -83,6 +83,7 @@
     "tagline": "Penjana Kod QR"
   },
   "common": {
+    "learnMore": "Ketahui lebih lanjut",
     "none": "Tiada",
     "off": "Mati",
     "optional": "(pilihan)",
@@ -971,11 +972,13 @@
     "about": "Tentang",
     "contact": "Hubungi",
     "guide": "Panduan",
-    "guide": "Panduan",
+    "learn": "Belajar",
+    "examples": "Contoh",
     "gallery": "Galeri",
     "generator": "Penjana",
     "privacy": "Privasi",
-    "terms": "Terma"
+    "terms": "Terma",
+    "related": "Berkaitan"
   },
   "output": {
     "none": "Tiada",

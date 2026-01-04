@@ -83,6 +83,7 @@
     "tagline": "QR-codegenerator"
   },
   "common": {
+    "learnMore": "Meer informatie",
     "none": "Geen",
     "off": "Uit",
     "optional": "(optioneel)",
@@ -971,11 +972,13 @@
     "about": "Over ons",
     "contact": "Contact",
     "guide": "Gids",
-    "guide": "Gids",
+    "learn": "Leren",
+    "examples": "Voorbeelden",
     "gallery": "Galerij",
     "generator": "Generator",
     "privacy": "Privacy",
-    "terms": "Voorwaarden"
+    "terms": "Voorwaarden",
+    "related": "Gerelateerd"
   },
   "output": {
     "none": "Geen",

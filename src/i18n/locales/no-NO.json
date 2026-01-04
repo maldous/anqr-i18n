@@ -83,6 +83,7 @@
     "tagline": "QR-kodegenerator"
   },
   "common": {
+    "learnMore": "Lær mer",
     "none": "Ingen",
     "off": "Av",
     "optional": "(valgfritt)",
@@ -971,11 +972,13 @@
     "about": "Om",
     "contact": "Kontakt",
     "guide": "Guide",
-    "guide": "Guide",
+    "learn": "Lær",
+    "examples": "Eksempler",
     "gallery": "Galleri",
     "generator": "Generator",
     "privacy": "Personvern",
-    "terms": "Vilkår"
+    "terms": "Vilkår",
+    "related": "Relatert"
   },
   "output": {
     "none": "Ingen",

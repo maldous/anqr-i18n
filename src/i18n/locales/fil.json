@@ -83,6 +83,7 @@
     "tagline": "Tagabuo ng QR Code"
   },
   "common": {
+    "learnMore": "Matuto pa",
     "none": "Wala",
     "off": "Sarado",
     "optional": "(opsyonal)",
@@ -971,11 +972,13 @@
     "about": "Tungkol sa",
     "contact": "Makipag-ugnayan",
     "guide": "Gabay",
-    "guide": "Gabay",
+    "learn": "Matuto",
+    "examples": "Mga Halimbawa",
     "gallery": "Galerya",
     "generator": "Generator",
     "privacy": "Pagkapribado",
-    "terms": "Mga Tuntunin"
+    "terms": "Mga Tuntunin",
+    "related": "Kaugnay"
   },
   "output": {
     "none": "Wala",

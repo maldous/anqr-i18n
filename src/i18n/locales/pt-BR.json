@@ -83,6 +83,7 @@
     "tagline": "Gerador de códigos QR"
   },
   "common": {
+    "learnMore": "Saiba mais",
     "none": "Nenhum",
     "off": "Desligado",
     "optional": "(opcional)",
@@ -971,11 +972,13 @@
     "about": "Sobre",
     "contact": "Contato",
     "guide": "Guia",
-    "guide": "Guia",
+    "learn": "Aprender",
+    "examples": "Exemplos",
     "gallery": "Galeria",
     "generator": "Gerador",
     "privacy": "Privacidade",
-    "terms": "Termos"
+    "terms": "Termos",
+    "related": "Relacionado"
   },
   "output": {
     "none": "Nenhum",

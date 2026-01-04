@@ -83,6 +83,7 @@
     "tagline": "QRコードジェネレーター"
   },
   "common": {
+    "learnMore": "詳細を見る",
     "none": "なし",
     "off": "オフ",
     "optional": "（オプション）",
@@ -971,11 +972,13 @@
     "about": "について",
     "contact": "コンタクト",
     "guide": "ガイド",
-    "guide": "ガイド",
+    "learn": "学ぶ",
+    "examples": "例",
     "gallery": "ギャラリー",
     "generator": "ジェネレーター",
     "privacy": "プライバシー",
-    "terms": "条件"
+    "terms": "条件",
+    "related": "関連"
   },
   "output": {
     "none": "なし",

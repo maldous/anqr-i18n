@@ -83,6 +83,7 @@
     "tagline": "QR ਕੋਡ ਜਨਰੇਟਰ"
   },
   "common": {
+    "learnMore": "ਹੋਰ ਜਾਣੋ",
     "none": "ਕੋਈ ਨਹੀਂ",
     "off": "ਬੰਦ",
     "optional": "(ਵਿਕਲਪਿਕ)",
@@ -971,11 +972,13 @@
     "about": "ਬਾਰੇ",
     "contact": "ਸੰਪਰਕ",
     "guide": "ਗਾਈਡ",
-    "guide": "ਗਾਈਡ",
+    "learn": "ਸਿੱਖੋ",
+    "examples": "ਉਦਾਹਰਨਾਂ",
     "gallery": "ਗੈਲਰੀ",
     "generator": "ਜਨਰੇਟਰ",
     "privacy": "ਗੋਪਨੀਯਤਾ",
-    "terms": "ਸ਼ਰਤਾਂ"
+    "terms": "ਸ਼ਰਤਾਂ",
+    "related": "ਸੰਬੰਧਿਤ"
   },
   "output": {
     "none": "ਕੋਈ ਨਹੀਂ",

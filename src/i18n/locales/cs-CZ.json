@@ -83,6 +83,7 @@
     "tagline": "Generátor QR kódů"
   },
   "common": {
+    "learnMore": "Zjistit více",
     "none": "Žádné",
     "off": "Vypnuto",
     "optional": "(volitelné)",
@@ -971,11 +972,13 @@
     "about": "O nás",
     "contact": "Kontakt",
     "guide": "Průvodce",
-    "guide": "Průvodce",
+    "learn": "Naučit se",
+    "examples": "Příklady",
     "gallery": "Galerie",
     "generator": "Generátor",
     "privacy": "Soukromí",
-    "terms": "Podmínky"
+    "terms": "Podmínky",
+    "related": "Související"
   },
   "output": {
     "none": "Žádné",

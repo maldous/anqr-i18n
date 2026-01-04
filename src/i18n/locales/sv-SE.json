@@ -83,6 +83,7 @@
     "tagline": "QR-kodgenerator"
   },
   "common": {
+    "learnMore": "Läs mer",
     "none": "Ingen",
     "off": "Av",
     "optional": "(valfritt)",
@@ -971,11 +972,13 @@
     "about": "Om",
     "contact": "Kontakt",
     "guide": "Guide",
-    "guide": "Guide",
+    "learn": "Lär dig",
+    "examples": "Exempel",
     "gallery": "Galleri",
     "generator": "Generator",
     "privacy": "Integritet",
-    "terms": "Villkor"
+    "terms": "Villkor",
+    "related": "Relaterat"
   },
   "output": {
     "none": "Ingen",

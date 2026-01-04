@@ -83,6 +83,7 @@
     "tagline": "مولد رمز الاستجابة السريعة"
   },
   "common": {
+    "learnMore": "اعرف المزيد",
     "none": "لا شيء",
     "off": "إيقاف",
     "optional": "(اختياري)",
@@ -971,11 +972,13 @@
     "about": "حول",
     "contact": "للتواصل",
     "guide": "دليل",
-    "guide": "دليل",
+    "learn": "تعلم",
+    "examples": "أمثلة",
     "gallery": "معرض",
     "generator": "مولد",
     "privacy": "الخصوصية",
-    "terms": "الشروط"
+    "terms": "الشروط",
+    "related": "ذات صلة"
   },
   "output": {
     "none": "لا شيء",

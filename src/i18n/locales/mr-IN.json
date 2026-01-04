@@ -83,6 +83,7 @@
     "tagline": "क्यूआर"
   },
   "common": {
+    "learnMore": "अधिक जाणून घ्या",
     "none": "काहीही",
     "off": "बंद",
     "optional": "(पर्यायी)",
@@ -971,11 +972,13 @@
     "about": "बद्दल",
     "contact": "संपर्क",
     "guide": "मार्गदर्शक",
-    "guide": "मार्गदर्शक",
+    "learn": "शिका",
+    "examples": "उदाहरणे",
     "gallery": "गॅलरी",
     "generator": "जनरेटर",
     "privacy": "गोपनीयता",
-    "terms": "अटी"
+    "terms": "अटी",
+    "related": "संबंधित"
   },
   "output": {
     "none": "काहीही",

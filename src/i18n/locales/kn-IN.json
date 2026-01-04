@@ -83,6 +83,7 @@
     "tagline": "QR 코드 생성기"
   },
   "common": {
+    "learnMore": "ಇನ್ನಷ್ಟು ತಿಳಿಯಿರಿ",
     "none": "없음",
     "off": "꺼짐",
     "optional": "(ಐಚ್ಛಿಕ)",
@@ -971,11 +972,13 @@
     "about": "소개",
     "contact": "연락처",
     "guide": "가이드",
-    "guide": "가이드",
+    "learn": "ಕಲಿಯಿರಿ",
+    "examples": "ಉದಾಹರಣೆಗಳು",
     "gallery": "갤러리",
     "generator": "발전기",
     "privacy": "개인정보 보호",
-    "terms": "용어"
+    "terms": "용어",
+    "related": "ಸಂಬಂಧಿತ"
   },
   "output": {
     "none": "없음",

@@ -83,6 +83,7 @@
     "tagline": "Generatore di codici QR"
   },
   "common": {
+    "learnMore": "Scopri di più",
     "none": "Nessuno",
     "off": "Off",
     "optional": "(facoltativo)",
@@ -971,11 +972,13 @@
     "about": "Informazioni",
     "contact": "Contatto",
     "guide": "Guida",
-    "guide": "Guida",
+    "learn": "Impara",
+    "examples": "Esempi",
     "gallery": "Galleria",
     "generator": "Generatore",
     "privacy": "Privacy",
-    "terms": "Termini"
+    "terms": "Termini",
+    "related": "Correlati"
   },
   "output": {
     "none": "Nessuno",

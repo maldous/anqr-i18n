@@ -83,6 +83,7 @@
     "tagline": "QR-Code-Generator"
   },
   "common": {
+    "learnMore": "Mehr erfahren",
     "none": "Keine",
     "off": "Aus",
     "optional": "(optional)",
@@ -971,11 +972,13 @@
     "about": "Über uns",
     "contact": "Kontakt",
     "guide": "Leitfaden",
-    "guide": "Leitfaden",
+    "learn": "Lernen",
+    "examples": "Beispiele",
     "gallery": "Galerie",
     "generator": "Generator",
     "privacy": "Datenschutz",
-    "terms": "Bedingungen"
+    "terms": "Bedingungen",
+    "related": "Verwandt"
   },
   "output": {
     "none": "Keine",

@@ -59,5 +59,5 @@ export type StaticPageType =
   | 'contact';
 
 // Shared constants
-export const LAST_UPDATED = '1 January 2026';
+export const LAST_UPDATED = '4 January 2026';
 export const CONTACT_EMAIL = 'email@anqr.link';

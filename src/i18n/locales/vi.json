@@ -83,6 +83,7 @@
     "tagline": "Máy tạo mã QR"
   },
   "common": {
+    "learnMore": "Tìm hiểu thêm",
     "none": "Không có",
     "off": "Tắt",
     "optional": "(tùy chọn)",
@@ -971,11 +972,13 @@
     "about": "Giới thiệu",
     "contact": "Liên hệ",
     "guide": "Hướng dẫn",
-    "guide": "Hướng dẫn",
+    "learn": "Học",
+    "examples": "Ví dụ",
     "gallery": "Phòng trưng bày",
     "generator": "Máy phát điện",
     "privacy": "Quyền riêng tư",
-    "terms": "Điều khoản"
+    "terms": "Điều khoản",
+    "related": "Liên quan"
   },
   "output": {
     "none": "Không có",

@@ -83,6 +83,7 @@
     "tagline": "QR કોડ જનરેટર"
   },
   "common": {
+    "learnMore": "વધુ જાણો",
     "none": "કોઈ નહીં",
     "off": "બંધ",
     "optional": "(વૈકલ્પિક)",
@@ -971,11 +972,13 @@
     "about": "વિશે",
     "contact": "સંપર્ક",
     "guide": "માર્ગદર્શિકા",
-    "guide": "માર્ગદર્શિકા",
+    "learn": "શીખો",
+    "examples": "ઉદાહરણો",
     "gallery": "ગેલેરી",
     "generator": "જનરેટર",
     "privacy": "ગોપનીયતા",
-    "terms": "શરતો"
+    "terms": "શરતો",
+    "related": "સંબંધિત"
   },
   "output": {
     "none": "કોઈ નહીં",
