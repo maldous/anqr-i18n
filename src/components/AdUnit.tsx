@@ -26,6 +26,10 @@ type SlotName =
   | 'static-right'
   | 'guide-top'
   | 'guide-bottom'
+  | 'learn-top'
+  | 'learn-bottom'
+  | 'examples-top'
+  | 'examples-bottom'
   | 'about-top'
   | 'about-bottom'
   | 'privacy-top'
@@ -70,6 +74,10 @@ const SLOT_IDS: Partial<Record<SlotName, string>> = {
   'static-right': import.meta.env.VITE_ADSENSE_SLOT_STATIC_RIGHT,
   'guide-top': import.meta.env.VITE_ADSENSE_SLOT_DOCS_TOP,
   'guide-bottom': import.meta.env.VITE_ADSENSE_SLOT_DOCS_BOTTOM,
+  'learn-top': import.meta.env.VITE_ADSENSE_SLOT_DOCS_TOP,
+  'learn-bottom': import.meta.env.VITE_ADSENSE_SLOT_DOCS_BOTTOM,
+  'examples-top': import.meta.env.VITE_ADSENSE_SLOT_DOCS_TOP,
+  'examples-bottom': import.meta.env.VITE_ADSENSE_SLOT_DOCS_BOTTOM,
   'about-top': import.meta.env.VITE_ADSENSE_SLOT_ABOUT_TOP,
   'about-bottom': import.meta.env.VITE_ADSENSE_SLOT_ABOUT_BOTTOM,
   'privacy-top': import.meta.env.VITE_ADSENSE_SLOT_PRIVACY_TOP,

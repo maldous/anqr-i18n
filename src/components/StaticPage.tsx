@@ -11,7 +11,7 @@ import { Button } from '@/components/ui/button';
 import type { PageDefinition, PageSection } from '@/i18n/static';
 import { CONTACT_EMAIL, getStaticContentAsync, LAST_UPDATED } from '@/i18n/static';
 
-export type StaticPageType = 'about' | 'guide' | 'learn' | 'privacy' | 'terms' | 'contact';
+export type StaticPageType = 'about' | 'guide' | 'learn' | 'examples' | 'privacy' | 'terms' | 'contact';
 
 interface StaticPageProps {
   page: StaticPageType;

@@ -24,8 +24,8 @@ function getPageFromLocation(): PageView {
   // Prefer clean paths when present.
   if (path === '/gallery') return 'gallery';
   if (path === '/guide') return 'guide';
-  if (path === '/guide') return 'guide';
   if (path === '/learn') return 'learn';
+  if (path === '/examples') return 'examples';
   if (path === '/about') return 'about';
   if (path === '/privacy') return 'privacy';
   if (path === '/terms') return 'terms';
@@ -92,7 +92,7 @@ function App() {
 
   // Convenience booleans for view states
   const showGallery = currentPage === 'gallery';
-  const showStaticPage = ['about', 'privacy', 'terms', 'contact', 'guide'].includes(currentPage);
+  const showStaticPage = ['about', 'privacy', 'terms', 'contact', 'guide', 'learn', 'examples'].includes(currentPage);
   const showEditor = currentPage === 'editor';
 
   // Update document title and RTL direction when language changes
