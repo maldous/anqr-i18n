@@ -13,14 +13,10 @@ type SlotName =
   // Main app ads
   | 'left-skyscraper'
   | 'right-skyscraper'
-  | 'preview-mobile-top'
-  | 'preview-mobile-bottom'
   | 'sidebar-bottom'
   // Gallery page ads
   | 'gallery-left'
   | 'gallery-right'
-  | 'gallery-top'
-  | 'gallery-bottom'
   // Static page ads
   | 'static-left'
   | 'static-right'
@@ -61,23 +57,19 @@ const SLOT_IDS: Partial<Record<SlotName, string>> = {
   // Main app ads
   'left-skyscraper': import.meta.env.VITE_ADSENSE_SLOT_LEFT_SKYSCRAPER,
   'right-skyscraper': import.meta.env.VITE_ADSENSE_SLOT_RIGHT_SKYSCRAPER,
-  'preview-mobile-top': import.meta.env.VITE_ADSENSE_SLOT_PREVIEW_MOBILE_TOP,
-  'preview-mobile-bottom': import.meta.env.VITE_ADSENSE_SLOT_PREVIEW_MOBILE_BOTTOM,
   'sidebar-bottom': import.meta.env.VITE_ADSENSE_SLOT_SIDEBAR_BOTTOM,
   // Gallery page ads
   'gallery-left': import.meta.env.VITE_ADSENSE_SLOT_GALLERY_LEFT,
   'gallery-right': import.meta.env.VITE_ADSENSE_SLOT_GALLERY_RIGHT,
-  'gallery-top': import.meta.env.VITE_ADSENSE_SLOT_GALLERY_TOP,
-  'gallery-bottom': import.meta.env.VITE_ADSENSE_SLOT_GALLERY_BOTTOM,
   // Static page ads
   'static-left': import.meta.env.VITE_ADSENSE_SLOT_STATIC_LEFT,
   'static-right': import.meta.env.VITE_ADSENSE_SLOT_STATIC_RIGHT,
-  'guide-top': import.meta.env.VITE_ADSENSE_SLOT_DOCS_TOP,
-  'guide-bottom': import.meta.env.VITE_ADSENSE_SLOT_DOCS_BOTTOM,
-  'learn-top': import.meta.env.VITE_ADSENSE_SLOT_DOCS_TOP,
-  'learn-bottom': import.meta.env.VITE_ADSENSE_SLOT_DOCS_BOTTOM,
-  'examples-top': import.meta.env.VITE_ADSENSE_SLOT_DOCS_TOP,
-  'examples-bottom': import.meta.env.VITE_ADSENSE_SLOT_DOCS_BOTTOM,
+  'guide-top': import.meta.env.VITE_ADSENSE_SLOT_GUIDE_TOP,
+  'guide-bottom': import.meta.env.VITE_ADSENSE_SLOT_GUIDE_BOTTOM,
+  'learn-top': import.meta.env.VITE_ADSENSE_SLOT_LEARN_TOP,
+  'learn-bottom': import.meta.env.VITE_ADSENSE_SLOT_LEARN_BOTTOM,
+  'examples-top': import.meta.env.VITE_ADSENSE_SLOT_EXAMPLES_TOP,
+  'examples-bottom': import.meta.env.VITE_ADSENSE_SLOT_EXAMPLES_BOTTOM,
   'about-top': import.meta.env.VITE_ADSENSE_SLOT_ABOUT_TOP,
   'about-bottom': import.meta.env.VITE_ADSENSE_SLOT_ABOUT_BOTTOM,
   'privacy-top': import.meta.env.VITE_ADSENSE_SLOT_PRIVACY_TOP,
