@@ -1416,3 +1416,7 @@
 1416	"Jak jsou barvy z palety přiřazeny modulům"
 1417	"Sobel"
 1418	"Canny"
+1419   "Naučit se"
+1420   "Příklady"
+1421   "Související"
+1422   "Zjistit více"

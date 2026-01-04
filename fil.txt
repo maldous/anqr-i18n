@@ -1416,3 +1416,7 @@
 1416	"Paano ang mga kulay mula sa palette ay itinatalaga sa mga module"
 1417	"Sobel"
 1418	"Canny"
+1419   "Matuto"
+1420   "Mga Halimbawa"
+1421   "Kaugnay"
+1422   "Matuto pa"

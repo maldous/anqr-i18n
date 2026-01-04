@@ -1416,3 +1416,7 @@
 1416	"Cara warna dari palet ditetapkan ke modul"
 1417	"Sobel"
 1418	"Canny"
+1419   "Pelajari"
+1420   "Contoh"
+1421   "Terkait"
+1422   "Pelajari lebih lanjut"

@@ -1416,3 +1416,7 @@
 1416	"Hvordan farver fra paletten tildeles moduler"
 1417	"Sobel"
 1418	"Canny"
+1419   "Lær"
+1420   "Eksempler"
+1421   "Relateret"
+1422   "Lær mere"
