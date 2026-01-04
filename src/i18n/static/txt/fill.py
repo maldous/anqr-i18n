@@ -253,6 +253,9 @@ def main(argv: List[str]) -> int:
     if not templates:
         raise SystemExit("No template-*.ts files found in the current directory.")
 
+    # Track all missing IDs across all templates
+    missing_ids: Dict[str, List[str]] = {}  # template -> list of missing ids
+
     for tp in templates:
         txt = tp.read_text(encoding="utf-8")
         span = find_export_object_span(txt)
@@ -267,9 +270,11 @@ def main(argv: List[str]) -> int:
                 continue
             _id = raw_s
             if _id not in id2txt:
-                raise KeyError(
-                    f"Missing translation for id {_id} in {translations_path} (template {tp})"
-                )
+                # Skip missing IDs but track them for reporting
+                if tp.name not in missing_ids:
+                    missing_ids[tp.name] = []
+                missing_ids[tp.name].append(_id)
+                continue
             tr = id2txt[_id]
             rep = f"{q}{js_escape_for_quote(tr, q)}{q}"
             repls.append((a, b, rep))
@@ -280,6 +285,15 @@ def main(argv: List[str]) -> int:
         # Write filled TS files into the language directory one level up (../<lang>/)
         out_path = out_dir / tp.name.replace("template-", "", 1)
         out_path.write_text(out_txt, encoding="utf-8")
+
+    # Report all missing IDs at the end
+    if missing_ids:
+        sys.stderr.write(f"\nError: Missing translation IDs in {translations_path}:\n")
+        for tpl, ids in sorted(missing_ids.items()):
+            sys.stderr.write(f"  {tpl}: {', '.join(ids)}\n")
+        sys.stderr.write("\nThese IDs are used in templates but not defined in the translations file.\n")
+        sys.stderr.write("Please add them to the translations file or remove them from the templates.\n")
+        return 1
 
     print(f"Wrote {len(templates)} files to {out_dir}")
     return 0

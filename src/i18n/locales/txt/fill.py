@@ -3,14 +3,14 @@
 fill_template.py
 
 Usage:
-  ./fill_template.py hi.txt > hi.json
+  ./fill_template.py hi.txt
 
 Reads:
   - template.txt : JSON where translatable strings have been replaced by id strings (e.g. "12")
   - <arg1>       : lines like: <id><TAB><translated string as JSON string OR raw text>
 
 Writes:
-  - translated JSON to STDOUT
+  - ../locales/<language>.json (e.g., hi.txt -> ../hi.json)
 """
 
 from __future__ import annotations
@@ -98,19 +98,23 @@ def fill(node: Any, id2txt: Dict[str, str], *, path: str = "$") -> Any:
 def main(argv: list[str]) -> int:
     if len(argv) != 2 or argv[1] in ("-h", "--help"):
         sys.stderr.write("Usage: fill_template.py <translations.txt>\n")
-        sys.stderr.write("Reads template.txt in the current directory; writes JSON to stdout.\n")
+        sys.stderr.write("Reads template.txt in the current directory; writes to ../locales/<lang>.json\n")
         return 2
 
     template_path = "template.txt"
     translated_xlate_path = argv[1]
+
+    # Derive language code from input filename (e.g., 'hi' from 'hi.txt')
+    lang_code = Path(translated_xlate_path).stem
+    out_path = Path("..") / f"{lang_code}.json"
 
     templ = json.loads(Path(template_path).read_text(encoding="utf-8"))
     id2txt = load_translations(translated_xlate_path)
 
     filled = fill(templ, id2txt)
 
-    json.dump(filled, sys.stdout, ensure_ascii=False, indent=2)
-    sys.stdout.write("\n")
+    out_path.write_text(json.dumps(filled, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    print(f"Wrote {out_path}")
     return 0
 
 

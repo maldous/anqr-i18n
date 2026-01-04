@@ -1,213 +1,369 @@
 import type { PageDefinition } from '../types';
 import { LAST_UPDATED } from '../types';
 
-// Template for the /learn page with 5 comprehensive guides
-// All string values are numeric ids that map to lines in en-GB.txt.
+/**
+ * Template for the Learn page.
+ * All string values are numeric ids that map to lines in en-GB.txt.
+ * Structure is FLAT - each subsection is a top-level section.
+ */
 export const learn: PageDefinition = {
   title: '640',
   description: '641',
   lastUpdated: LAST_UPDATED,
+
   primaryLinks: [
     { href: '/?lang=${lang}', label: '684', type: 'generator' },
-    { href: '/guide?lang=${lang}', label: '681', type: 'guide' },
     { href: '/examples?lang=${lang}', label: '683', type: 'example' },
+    { href: '/guide?lang=${lang}', label: '681', type: 'guide' },
   ],
+
   sections: [
-    // Guide 1: Improving Existing QR Campaigns (685-700)
+    // Guide 1: Improving Existing QR Campaigns
     {
-      heading: '685',
-      paragraphs: ['686'],
-      images: [{ src: '/images/learn/campaign-overview.svg', alt: '685', caption: '686' }],
-    },
-    {
-      heading: '687',
-      paragraphs: ['688'],
-    },
-    {
-      heading: '689',
-      paragraphs: ['690'],
+      heading: '900',
+      paragraphs: ['902', '903'],
       images: [
-        { src: '/images/learn/campaign-before.svg', alt: '689', caption: '690' },
-        { src: '/images/learn/campaign-after.svg', alt: '689', caption: '690' },
+        {
+          src: '/images/learn/improve-existing-overview.png',
+          alt: '904',
+          caption: '905',
+        },
       ],
     },
     {
-      heading: '691',
-      paragraphs: ['692'],
+      heading: '906',
+      paragraphs: ['907', '908'],
     },
     {
-      heading: '693',
-      paragraphs: ['694'],
-    },
-    {
-      heading: '695',
-      paragraphs: ['696'],
-    },
-    {
-      heading: '697',
-      paragraphs: ['698'],
-      links: [
-        { href: '/?lang=${lang}&tab=advanced#overlay', label: '700', type: 'generator' },
-        { href: '/examples?lang=${lang}', label: '670', type: 'example' },
-      ],
-    },
-
-    // Guide 2: QR Codes for Retail Payments (701-714)
-    {
-      heading: '701',
-      paragraphs: ['702'],
-      images: [{ src: '/images/learn/retail-payment-overview.svg', alt: '701', caption: '702' }],
-    },
-    {
-      heading: '703',
-      paragraphs: ['704'],
-    },
-    {
-      heading: '705',
-      paragraphs: ['706'],
-      images: [{ src: '/images/learn/retail-sizing.svg', alt: '705', caption: '706' }],
-    },
-    {
-      heading: '707',
-      paragraphs: ['708'],
-    },
-    {
-      heading: '709',
-      paragraphs: ['710'],
-    },
-    {
-      heading: '711',
-      paragraphs: ['712'],
-    },
-    {
-      heading: '713',
-      paragraphs: ['714'],
-      links: [
-        { href: '/?lang=${lang}&tab=professional#payload', label: '700', type: 'generator' },
-        { href: '/examples?lang=${lang}', label: '670', type: 'example' },
-      ],
-    },
-
-    // Guide 3: Print-Ready QR Codes: SVG vs PNG (715-728)
-    {
-      heading: '715',
-      paragraphs: ['716'],
-      images: [{ src: '/images/learn/print-svg-overview.svg', alt: '715', caption: '716' }],
-    },
-    {
-      heading: '717',
-      paragraphs: ['718'],
-    },
-    {
-      heading: '719',
-      paragraphs: ['720'],
+      heading: '909',
+      paragraphs: ['910', '911'],
       images: [
-        { src: '/images/learn/print-png-pixelated.svg', alt: '719', caption: '720' },
-        { src: '/images/learn/print-svg-crisp.svg', alt: '719', caption: '720' },
+        {
+          src: '/images/learn/improve-existing-audit.png',
+          alt: '912',
+          caption: '913',
+        },
       ],
     },
     {
-      heading: '721',
-      paragraphs: ['722'],
+      heading: '914',
+      paragraphs: ['915', '916'],
     },
     {
-      heading: '723',
-      paragraphs: ['724'],
-    },
-    {
-      heading: '725',
-      paragraphs: ['726'],
-    },
-    {
-      heading: '727',
-      paragraphs: ['728'],
-      links: [
-        { href: '/?lang=${lang}&tab=advanced#output', label: '700', type: 'generator' },
-        { href: '/examples?lang=${lang}', label: '670', type: 'example' },
-      ],
-    },
-
-    // Guide 4: Animated QR Codes for Digital Signage (729-742)
-    {
-      heading: '729',
-      paragraphs: ['730'],
-      images: [{ src: '/images/learn/animation-overview.svg', alt: '729', caption: '730' }],
-    },
-    {
-      heading: '731',
-      paragraphs: ['732'],
-    },
-    {
-      heading: '733',
-      paragraphs: ['734'],
+      heading: '917',
+      paragraphs: ['918', '919'],
       images: [
-        { src: '/images/learn/animation-static.svg', alt: '733', caption: '734' },
-        { src: '/images/learn/animation-animated.svg', alt: '733', caption: '734' },
+        {
+          src: '/images/learn/improve-existing-branding.png',
+          alt: '920',
+          caption: '921',
+        },
       ],
     },
     {
-      heading: '735',
-      paragraphs: ['736'],
+      heading: '922',
+      paragraphs: ['923', '924'],
     },
     {
-      heading: '737',
-      paragraphs: ['738'],
-    },
-    {
-      heading: '739',
-      paragraphs: ['740'],
-    },
-    {
-      heading: '741',
-      paragraphs: ['742'],
+      heading: '925',
+      paragraphs: ['926', '927'],
+      images: [
+        {
+          src: '/images/learn/improve-existing-lock.png',
+          alt: '928',
+          caption: '929',
+        },
+      ],
       links: [
-        { href: '/?lang=${lang}&tab=advanced#animation', label: '700', type: 'generator' },
-        { href: '/examples?lang=${lang}', label: '670', type: 'example' },
+        {
+          href: '/?lang=${lang}&tab=advanced&ec=H#overlay',
+          label: '684',
+          type: 'generator',
+        },
+        {
+          href: '/examples?lang=${lang}#section-0',
+          label: '683',
+          type: 'example',
+        },
       ],
     },
 
-    // Guide 5: QR Code Safety and Compliance (743-756)
+    // Guide 2: QR Codes for Retail Payments
     {
-      heading: '743',
-      paragraphs: ['744'],
-      images: [{ src: '/images/learn/safety-overview.svg', alt: '743', caption: '744' }],
+      heading: '930',
+      paragraphs: ['932', '933'],
+      images: [
+        {
+          src: '/images/learn/retail-payments-overview.png',
+          alt: '934',
+          caption: '935',
+        },
+      ],
     },
     {
-      heading: '745',
-      paragraphs: ['746'],
-      images: [{ src: '/images/learn/safety-quiet-zone.svg', alt: '745', caption: '746' }],
+      heading: '936',
+      paragraphs: ['937', '938'],
     },
     {
-      heading: '747',
-      paragraphs: ['748'],
-      images: [{ src: '/images/learn/safety-contrast.svg', alt: '747', caption: '748' }],
+      heading: '939',
+      paragraphs: ['940', '941'],
+      images: [
+        {
+          src: '/images/learn/retail-payments-placement.png',
+          alt: '942',
+          caption: '943',
+        },
+      ],
     },
     {
-      heading: '749',
-      paragraphs: ['750'],
+      heading: '944',
+      paragraphs: ['945', '946'],
+      images: [
+        {
+          src: '/images/learn/retail-payments-branding.png',
+          alt: '947',
+          caption: '948',
+        },
+      ],
     },
     {
-      heading: '751',
-      paragraphs: ['752'],
+      heading: '949',
+      paragraphs: ['950', '951'],
     },
     {
-      heading: '753',
-      paragraphs: ['754'],
-    },
-    {
-      heading: '755',
-      paragraphs: ['756'],
+      heading: '952',
+      paragraphs: ['953', '954'],
+      images: [
+        {
+          src: '/images/learn/retail-payments-testing.png',
+          alt: '955',
+          caption: '956',
+        },
+      ],
       links: [
-        { href: '/?lang=${lang}&tab=professional#safety', label: '700', type: 'generator' },
-        { href: '/examples?lang=${lang}', label: '670', type: 'example' },
+        {
+          href: '/?lang=${lang}&tab=professional#payload',
+          label: '684',
+          type: 'generator',
+        },
+        {
+          href: '/examples?lang=${lang}#section-5',
+          label: '683',
+          type: 'example',
+        },
+      ],
+    },
+
+    // Guide 3: Print-Ready QR Codes
+    {
+      heading: '957',
+      paragraphs: ['959', '960'],
+      images: [
+        {
+          src: '/images/learn/print-ready-overview.png',
+          alt: '961',
+          caption: '962',
+        },
+      ],
+    },
+    {
+      heading: '963',
+      paragraphs: ['964', '965'],
+    },
+    {
+      heading: '966',
+      paragraphs: ['967', '968'],
+      images: [
+        {
+          src: '/images/learn/print-ready-resolution.png',
+          alt: '969',
+          caption: '970',
+        },
+      ],
+    },
+    {
+      heading: '971',
+      paragraphs: ['972', '973'],
+    },
+    {
+      heading: '974',
+      paragraphs: ['975', '976'],
+      images: [
+        {
+          src: '/images/learn/print-ready-handoff.png',
+          alt: '977',
+          caption: '978',
+        },
+      ],
+    },
+    {
+      heading: '979',
+      paragraphs: ['980', '981'],
+      images: [
+        {
+          src: '/images/learn/print-ready-proof.png',
+          alt: '982',
+          caption: '983',
+        },
+      ],
+      links: [
+        {
+          href: '/?lang=${lang}&tab=advanced#output',
+          label: '684',
+          type: 'generator',
+        },
+        {
+          href: '/examples?lang=${lang}#section-11',
+          label: '683',
+          type: 'example',
+        },
+      ],
+    },
+
+    // Guide 4: Animated QR Codes
+    {
+      heading: '984',
+      paragraphs: ['986', '987'],
+      images: [
+        {
+          src: '/images/learn/animated-overview.png',
+          alt: '988',
+          caption: '989',
+        },
+      ],
+    },
+    {
+      heading: '990',
+      paragraphs: ['991', '992'],
+    },
+    {
+      heading: '993',
+      paragraphs: ['994', '995'],
+      images: [
+        {
+          src: '/images/learn/animated-layers.png',
+          alt: '996',
+          caption: '997',
+        },
+      ],
+    },
+    {
+      heading: '998',
+      paragraphs: ['999', '1000'],
+    },
+    {
+      heading: '1001',
+      paragraphs: ['1002', '1003'],
+      images: [
+        {
+          src: '/images/learn/animated-frames.png',
+          alt: '1004',
+          caption: '1005',
+        },
+      ],
+    },
+    {
+      heading: '1006',
+      paragraphs: ['1007', '1008'],
+    },
+    {
+      heading: '1009',
+      paragraphs: ['1010', '1011'],
+      images: [
+        {
+          src: '/images/learn/animated-testing.png',
+          alt: '1012',
+          caption: '1013',
+        },
+      ],
+      links: [
+        {
+          href: '/?lang=${lang}&tab=advanced#animation',
+          label: '684',
+          type: 'generator',
+        },
+        {
+          href: '/examples?lang=${lang}#section-17',
+          label: '683',
+          type: 'example',
+        },
+      ],
+    },
+
+    // Guide 5: QR Safety & Compliance
+    {
+      heading: '1014',
+      paragraphs: ['1016', '1017'],
+      images: [
+        {
+          src: '/images/learn/safety-overview.png',
+          alt: '1018',
+          caption: '1019',
+        },
+      ],
+    },
+    {
+      heading: '1020',
+      paragraphs: ['1021', '1022'],
+    },
+    {
+      heading: '1023',
+      paragraphs: ['1024', '1025'],
+      images: [
+        {
+          src: '/images/learn/safety-quietzone.png',
+          alt: '1026',
+          caption: '1027',
+        },
+      ],
+    },
+    {
+      heading: '1028',
+      paragraphs: ['1029', '1030'],
+    },
+    {
+      heading: '1031',
+      paragraphs: ['1032', '1033'],
+      images: [
+        {
+          src: '/images/learn/safety-distance.png',
+          alt: '1034',
+          caption: '1035',
+        },
+      ],
+    },
+    {
+      heading: '1036',
+      paragraphs: ['1037', '1038'],
+    },
+    {
+      heading: '1039',
+      paragraphs: ['1040', '1041'],
+      images: [
+        {
+          src: '/images/learn/safety-testing.png',
+          alt: '1042',
+          caption: '1043',
+        },
+      ],
+      links: [
+        {
+          href: '/?lang=${lang}&tab=advanced#safety',
+          label: '684',
+          type: 'generator',
+        },
+        {
+          href: '/examples?lang=${lang}#section-0',
+          label: '683',
+          type: 'example',
+        },
       ],
     },
   ],
+
   relatedLinks: [
-    { href: '/guide?lang=${lang}', label: '681', type: 'guide' },
     { href: '/examples?lang=${lang}', label: '683', type: 'example' },
-    { href: '/gallery?lang=${lang}', label: '683', type: 'gallery' },
+    { href: '/guide?lang=${lang}', label: '681', type: 'guide' },
+    { href: '/gallery?lang=${lang}', label: '899', type: 'gallery' },
   ],
 };
-
-export default learn;

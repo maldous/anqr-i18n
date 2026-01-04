@@ -83,6 +83,7 @@
     "tagline": "QR-koodigeneraattori"
   },
   "common": {
+    "learnMore": "Lue lisää",
     "none": "Ei mitään",
     "off": "Pois päältä",
     "optional": "(valinnainen)",
@@ -971,11 +972,13 @@
     "about": "Tietoja",
     "contact": "Yhteystiedot",
     "guide": "Opas",
-    "guide": "Opas",
+    "learn": "Opi",
+    "examples": "Esimerkit",
     "gallery": "Galleria",
     "generator": "Generaattori",
     "privacy": "Yksityisyys",
-    "terms": "Ehdot"
+    "terms": "Ehdot",
+    "related": "Aiheeseen liittyvää"
   },
   "output": {
     "none": "Ei mitään",

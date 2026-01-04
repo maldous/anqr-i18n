@@ -83,6 +83,7 @@
     "tagline": "Umkhiqizi Wekhodi Ye-QR"
   },
   "common": {
+    "learnMore": "Funda kabanzi",
     "none": "Akukho",
     "off": "Kuvaliwe",
     "optional": "(ongakukhetha)",
@@ -971,11 +972,13 @@
     "about": "Mayelana",
     "contact": "Ukuxhumana",
     "guide": "Umhlahlandlela",
-    "guide": "Umhlahlandlela",
+    "learn": "Funda",
+    "examples": "Izibonelo",
     "gallery": "Igalari",
     "generator": "Umkhiqizi",
     "privacy": "Ubumfihlo",
-    "terms": "Imigomo"
+    "terms": "Imigomo",
+    "related": "Okuhlobene"
   },
   "output": {
     "none": "Akukho",

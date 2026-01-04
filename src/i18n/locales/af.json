@@ -83,6 +83,7 @@
     "tagline": "QR-kodegenerator"
   },
   "common": {
+    "learnMore": "Leer meer",
     "none": "Geen",
     "off": "Af",
     "optional": "(opsioneel)",
@@ -971,11 +972,13 @@
     "about": "Oor",
     "contact": "Kontak",
     "guide": "Gids",
-    "guide": "Gids",
+    "learn": "Leer",
+    "examples": "Voorbeelde",
     "gallery": "Galery",
     "generator": "Kraafkragopwekker",
     "privacy": "Privaatheid",
-    "terms": "Terme"
+    "terms": "Terme",
+    "related": "Verwant"
   },
   "output": {
     "none": "Geen",

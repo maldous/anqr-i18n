@@ -83,6 +83,7 @@
     "tagline": "Generator QR koda"
   },
   "common": {
+    "learnMore": "Saznaj više",
     "none": "Ništa",
     "off": "Isključeno",
     "optional": "(nije obavezno)",
@@ -971,11 +972,13 @@
     "about": "O nama",
     "contact": "Kontakt",
     "guide": "Vodič",
-    "guide": "Vodič",
+    "learn": "Nauči",
+    "examples": "Primjeri",
     "gallery": "Galerija",
     "generator": "Generator",
     "privacy": "Privatnost",
-    "terms": "Uvjeti"
+    "terms": "Uvjeti",
+    "related": "Povezano"
   },
   "output": {
     "none": "Ništa",

@@ -83,6 +83,7 @@
     "tagline": "Generator Kode QR"
   },
   "common": {
+    "learnMore": "Pelajari lebih lanjut",
     "none": "Tidak ada",
     "off": "Mati",
     "optional": "(opsional)",
@@ -971,11 +972,13 @@
     "about": "Tentang",
     "contact": "Kontak",
     "guide": "Panduan",
-    "guide": "Panduan",
+    "learn": "Pelajari",
+    "examples": "Contoh",
     "gallery": "Galeri",
     "generator": "Generator",
     "privacy": "Privasi",
-    "terms": "Ketentuan"
+    "terms": "Ketentuan",
+    "related": "Terkait"
   },
   "output": {
     "none": "Tidak ada",

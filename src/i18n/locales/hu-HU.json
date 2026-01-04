@@ -83,6 +83,7 @@
     "tagline": "QR-kód generátor"
   },
   "common": {
+    "learnMore": "Tudj meg többet",
     "none": "Nincs",
     "off": "Ki",
     "optional": "(opcionális)",
@@ -971,11 +972,13 @@
     "about": "Rólunk",
     "contact": "Kapcsolat",
     "guide": "Útmutató",
-    "guide": "Útmutató",
+    "learn": "Tanulás",
+    "examples": "Példák",
     "gallery": "Galéria",
     "generator": "Generátor",
     "privacy": "Adatvédelem",
-    "terms": "Feltételek"
+    "terms": "Feltételek",
+    "related": "Kapcsolódó"
   },
   "output": {
     "none": "Nincs",

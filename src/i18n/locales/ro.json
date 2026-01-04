@@ -83,6 +83,7 @@
     "tagline": "Generator de coduri QR"
   },
   "common": {
+    "learnMore": "Află mai multe",
     "none": "Niciunul",
     "off": "Oprit",
     "optional": "(opțional)",
@@ -971,11 +972,13 @@
     "about": "Despre",
     "contact": "Contact",
     "guide": "Ghid",
-    "guide": "Ghid",
+    "learn": "Învață",
+    "examples": "Exemple",
     "gallery": "Galerie",
     "generator": "Generator",
     "privacy": "Confidențialitate",
-    "terms": "Termeni"
+    "terms": "Termeni",
+    "related": "Înrudit"
   },
   "output": {
     "none": "Niciunul",

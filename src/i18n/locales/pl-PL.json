@@ -83,6 +83,7 @@
     "tagline": "Generator kodów QR"
   },
   "common": {
+    "learnMore": "Dowiedz się więcej",
     "none": "Żaden",
     "off": "Wyłączone",
     "optional": "(opcjonalnie)",
@@ -971,11 +972,13 @@
     "about": "O",
     "contact": "Kontakt",
     "guide": "Przewodnik",
-    "guide": "Przewodnik",
+    "learn": "Naucz się",
+    "examples": "Przykłady",
     "gallery": "Galeria",
     "generator": "Generator",
     "privacy": "Prywatność",
-    "terms": "Warunki"
+    "terms": "Warunki",
+    "related": "Powiązane"
   },
   "output": {
     "none": "Żaden",
