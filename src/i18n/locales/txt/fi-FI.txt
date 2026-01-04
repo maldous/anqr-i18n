@@ -1416,3 +1416,7 @@
 1416	"Miten paletin värit määritetään moduuleille"
 1417	"Sobel"
 1418	"Canny"
+1419   "Opi"
+1420   "Esimerkit"
+1421   "Aiheeseen liittyvää"
+1422   "Lue lisää"

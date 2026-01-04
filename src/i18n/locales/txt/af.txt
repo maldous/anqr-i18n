@@ -1416,3 +1416,7 @@
 1416	"Hoe kleure van die palet aan modules toegewys word"
 1417	"Sobel"
 1418	"Canny"
+1419   "Leer"
+1420   "Voorbeelde"
+1421   "Verwant"
+1422   "Leer meer"

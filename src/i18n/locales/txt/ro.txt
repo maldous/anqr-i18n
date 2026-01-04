@@ -1416,3 +1416,7 @@
 1416	"Cum sunt atribuite culorile din paletă modulelor"
 1417	"Sobel"
 1418	"Canny"
+1419   "Învață"
+1420   "Exemple"
+1421   "Înrudit"
+1422   "Află mai multe"

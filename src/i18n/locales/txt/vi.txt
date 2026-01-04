@@ -1416,3 +1416,7 @@
 1416	"Cách màu từ bảng màu được gán cho các module"
 1417	"Sobel"
 1418	"Canny"
+1419   "Học"
+1420   "Ví dụ"
+1421   "Liên quan"
+1422   "Tìm hiểu thêm"

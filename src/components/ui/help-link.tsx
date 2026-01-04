@@ -125,7 +125,15 @@ export function HelpLink({ href, requiredTier, title, className = '' }: HelpLink
         window.scrollTo({ top: 0, behavior: 'smooth' });
       }
     },
-    [href, effectiveTier, currentTier, setTier, checkPremiumAccess, activatePremiumAccess, i18n.language]
+    [
+      href,
+      effectiveTier,
+      currentTier,
+      setTier,
+      checkPremiumAccess,
+      activatePremiumAccess,
+      i18n.language,
+    ]
   );
 
   return (

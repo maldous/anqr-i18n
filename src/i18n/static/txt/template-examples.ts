@@ -17,23 +17,17 @@ export const examples: PageDefinition = {
     {
       heading: '759',
       paragraphs: ['760'],
-      images: [
-        { src: '/images/examples/uplift-overview.svg', alt: '759', caption: '760' },
-      ],
+      images: [{ src: '/images/examples/uplift-overview.svg', alt: '759', caption: '760' }],
     },
     {
       heading: '761',
       paragraphs: ['762'],
-      images: [
-        { src: '/images/examples/uplift-before.svg', alt: '761', caption: '762' },
-      ],
+      images: [{ src: '/images/examples/uplift-before.svg', alt: '761', caption: '762' }],
     },
     {
       heading: '763',
       paragraphs: ['764'],
-      images: [
-        { src: '/images/examples/uplift-after.svg', alt: '763', caption: '764' },
-      ],
+      images: [{ src: '/images/examples/uplift-after.svg', alt: '763', caption: '764' }],
     },
     {
       heading: '765',
@@ -52,23 +46,17 @@ export const examples: PageDefinition = {
     {
       heading: '771',
       paragraphs: ['772'],
-      images: [
-        { src: '/images/examples/payment-overview.svg', alt: '771', caption: '772' },
-      ],
+      images: [{ src: '/images/examples/payment-overview.svg', alt: '771', caption: '772' }],
     },
     {
       heading: '773',
       paragraphs: ['774'],
-      images: [
-        { src: '/images/examples/payment-before.svg', alt: '773', caption: '774' },
-      ],
+      images: [{ src: '/images/examples/payment-before.svg', alt: '773', caption: '774' }],
     },
     {
       heading: '775',
       paragraphs: ['776'],
-      images: [
-        { src: '/images/examples/payment-after.svg', alt: '775', caption: '776' },
-      ],
+      images: [{ src: '/images/examples/payment-after.svg', alt: '775', caption: '776' }],
     },
     {
       heading: '777',
@@ -91,23 +79,17 @@ export const examples: PageDefinition = {
     {
       heading: '783',
       paragraphs: ['784'],
-      images: [
-        { src: '/images/examples/print-overview.svg', alt: '783', caption: '784' },
-      ],
+      images: [{ src: '/images/examples/print-overview.svg', alt: '783', caption: '784' }],
     },
     {
       heading: '785',
       paragraphs: ['786'],
-      images: [
-        { src: '/images/examples/print-png-scaled.svg', alt: '785', caption: '786' },
-      ],
+      images: [{ src: '/images/examples/print-png-scaled.svg', alt: '785', caption: '786' }],
     },
     {
       heading: '787',
       paragraphs: ['788'],
-      images: [
-        { src: '/images/examples/print-svg-scaled.svg', alt: '787', caption: '788' },
-      ],
+      images: [{ src: '/images/examples/print-svg-scaled.svg', alt: '787', caption: '788' }],
     },
     {
       heading: '789',
@@ -130,23 +112,17 @@ export const examples: PageDefinition = {
     {
       heading: '795',
       paragraphs: ['796'],
-      images: [
-        { src: '/images/examples/animation-overview.svg', alt: '795', caption: '796' },
-      ],
+      images: [{ src: '/images/examples/animation-overview.svg', alt: '795', caption: '796' }],
     },
     {
       heading: '797',
       paragraphs: ['798'],
-      images: [
-        { src: '/images/examples/animation-static.svg', alt: '797', caption: '798' },
-      ],
+      images: [{ src: '/images/examples/animation-static.svg', alt: '797', caption: '798' }],
     },
     {
       heading: '799',
       paragraphs: ['800'],
-      images: [
-        { src: '/images/examples/animation-animated.svg', alt: '799', caption: '800' },
-      ],
+      images: [{ src: '/images/examples/animation-animated.svg', alt: '799', caption: '800' }],
     },
     {
       heading: '801',
@@ -160,7 +136,11 @@ export const examples: PageDefinition = {
       heading: '805',
       paragraphs: ['806'],
       links: [
-        { href: '/?lang=${lang}&tab=advanced&format=gif#animation', label: '769', type: 'generator' },
+        {
+          href: '/?lang=${lang}&tab=advanced&format=gif#animation',
+          label: '769',
+          type: 'generator',
+        },
         { href: '/learn?lang=${lang}', label: '682', type: 'learn' },
       ],
     },
@@ -169,23 +149,17 @@ export const examples: PageDefinition = {
     {
       heading: '807',
       paragraphs: ['808'],
-      images: [
-        { src: '/images/examples/collab-overview.svg', alt: '807', caption: '808' },
-      ],
+      images: [{ src: '/images/examples/collab-overview.svg', alt: '807', caption: '808' }],
     },
     {
       heading: '809',
       paragraphs: ['810'],
-      images: [
-        { src: '/images/examples/collab-english.svg', alt: '809', caption: '810' },
-      ],
+      images: [{ src: '/images/examples/collab-english.svg', alt: '809', caption: '810' }],
     },
     {
       heading: '811',
       paragraphs: ['812'],
-      images: [
-        { src: '/images/examples/collab-japanese.svg', alt: '811', caption: '812' },
-      ],
+      images: [{ src: '/images/examples/collab-japanese.svg', alt: '811', caption: '812' }],
     },
     {
       heading: '813',

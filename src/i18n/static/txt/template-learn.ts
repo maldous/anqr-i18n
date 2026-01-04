@@ -17,9 +17,7 @@ export const learn: PageDefinition = {
     {
       heading: '685',
       paragraphs: ['686'],
-      images: [
-        { src: '/images/learn/campaign-overview.svg', alt: '685', caption: '686' },
-      ],
+      images: [{ src: '/images/learn/campaign-overview.svg', alt: '685', caption: '686' }],
     },
     {
       heading: '687',
@@ -58,9 +56,7 @@ export const learn: PageDefinition = {
     {
       heading: '701',
       paragraphs: ['702'],
-      images: [
-        { src: '/images/learn/retail-payment-overview.svg', alt: '701', caption: '702' },
-      ],
+      images: [{ src: '/images/learn/retail-payment-overview.svg', alt: '701', caption: '702' }],
     },
     {
       heading: '703',
@@ -69,9 +65,7 @@ export const learn: PageDefinition = {
     {
       heading: '705',
       paragraphs: ['706'],
-      images: [
-        { src: '/images/learn/retail-sizing.svg', alt: '705', caption: '706' },
-      ],
+      images: [{ src: '/images/learn/retail-sizing.svg', alt: '705', caption: '706' }],
     },
     {
       heading: '707',
@@ -98,9 +92,7 @@ export const learn: PageDefinition = {
     {
       heading: '715',
       paragraphs: ['716'],
-      images: [
-        { src: '/images/learn/print-svg-overview.svg', alt: '715', caption: '716' },
-      ],
+      images: [{ src: '/images/learn/print-svg-overview.svg', alt: '715', caption: '716' }],
     },
     {
       heading: '717',
@@ -139,9 +131,7 @@ export const learn: PageDefinition = {
     {
       heading: '729',
       paragraphs: ['730'],
-      images: [
-        { src: '/images/learn/animation-overview.svg', alt: '729', caption: '730' },
-      ],
+      images: [{ src: '/images/learn/animation-overview.svg', alt: '729', caption: '730' }],
     },
     {
       heading: '731',
@@ -180,23 +170,17 @@ export const learn: PageDefinition = {
     {
       heading: '743',
       paragraphs: ['744'],
-      images: [
-        { src: '/images/learn/safety-overview.svg', alt: '743', caption: '744' },
-      ],
+      images: [{ src: '/images/learn/safety-overview.svg', alt: '743', caption: '744' }],
     },
     {
       heading: '745',
       paragraphs: ['746'],
-      images: [
-        { src: '/images/learn/safety-quiet-zone.svg', alt: '745', caption: '746' },
-      ],
+      images: [{ src: '/images/learn/safety-quiet-zone.svg', alt: '745', caption: '746' }],
     },
     {
       heading: '747',
       paragraphs: ['748'],
-      images: [
-        { src: '/images/learn/safety-contrast.svg', alt: '747', caption: '748' },
-      ],
+      images: [{ src: '/images/learn/safety-contrast.svg', alt: '747', caption: '748' }],
     },
     {
       heading: '749',

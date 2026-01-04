@@ -1416,3 +1416,7 @@
 1416	"Come i colori dalla palette vengono assegnati ai moduli"
 1417	"Sobel"
 1418	"Canny"
+1419   "Impara"
+1420   "Esempi"
+1421   "Correlati"
+1422   "Scopri di più"

@@ -232,7 +232,9 @@ function GuideLinks() {
   const { t, i18n } = useTranslation();
   return (
     <div className="max-w-7xl mx-auto px-4 py-6 border-t">
-      <h3 className="text-lg font-semibold mb-4">{t('gallery.learnMore', 'Learn how to create these styles')}</h3>
+      <h3 className="text-lg font-semibold mb-4">
+        {t('gallery.learnMore', 'Learn how to create these styles')}
+      </h3>
       <div className="flex flex-wrap gap-3">
         <a
           href={`/guide?lang=${i18n.language}#section-8`}
