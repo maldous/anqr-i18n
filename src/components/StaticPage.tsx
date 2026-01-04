@@ -191,14 +191,17 @@ function buildGuideToc(sections: PageSection[], t: (key: string) => string): Toc
 function buildLearnToc(sections: PageSection[], _t: (key: string) => string): TocGroup[] {
   const groups: TocGroup[] = [];
 
-  // Group by major guide topics - a new group starts at section indices 0, 7, 14, 21, 28
-  // These correspond to the 5 guide title sections in template-learn.ts
+  // Guide start indices based on actual learn.ts structure:
+  // Guide 1: 7 sections (0-6), Guide 2: 6 sections (7-12), Guide 3: 6 sections (13-18),
+  // Guide 4: 7 sections (19-25), Guide 5: 7 sections (26-32)
+  const guideStartIndices = [0, 7, 13, 19, 26];
+
   sections.forEach((section, index) => {
     if (!section.heading) return;
     const id = `section-${index}`;
 
-    // Guide title sections (every 7 sections for 5 guides)
-    if (index % 7 === 0 && index < 35) {
+    // Guide title sections
+    if (guideStartIndices.includes(index)) {
       groups.push({ title: section.heading, id, items: [] });
     } else if (groups.length > 0) {
       groups[groups.length - 1].items.push({ id, title: section.heading });
@@ -209,12 +212,13 @@ function buildLearnToc(sections: PageSection[], _t: (key: string) => string): To
 }
 
 // Build TOC for Examples page with 5 examples grouped logically
-// Example sections are at indices 0, 5, 10, 16, 22 based on template-examples.ts structure
+// Each example has 5 sections based on examples.ts structure
 function buildExamplesToc(sections: PageSection[], _t: (key: string) => string): TocGroup[] {
   const groups: TocGroup[] = [];
 
-  // Group by example topics - indices where new examples start
-  const exampleStartIndices = [0, 5, 11, 17, 23];
+  // Example start indices based on actual examples.ts structure:
+  // Each example has 5 sections (case study + 4 subsections)
+  const exampleStartIndices = [0, 5, 10, 15, 20];
 
   sections.forEach((section, index) => {
     if (!section.heading) return;
