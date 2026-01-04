@@ -1,6 +1,13 @@
 #!/usr/bin/env python3
 from __future__ import annotations
 
+class RateLimited(Exception):
+    """Raised when an upstream translation service is rate-limiting or blocking us."""
+
+# If Google rate-limits once, disable Google for remainder of the run (instant skip).
+GOOGLE_DISABLED: bool = False
+GOOGLE_DISABLED_REASON: str = ""
+
 """
 xlate.py
 
@@ -287,8 +294,19 @@ class GoogleGTXEngine(Engine):
                 "dt": "t",
                 "q": q,
             }
+            global GOOGLE_DISABLED, GOOGLE_DISABLED_REASON
+            if GOOGLE_DISABLED:
+                raise RateLimited(GOOGLE_DISABLED_REASON or 'google disabled')
+
             limiter.wait()
             r = self._session.get(endpoint, params=params, timeout=60)
+
+            # Instant skip on quota / rate limit / temporary unavailable (disable for rest of run)
+            if r.status_code in (429, 503, 403):
+                GOOGLE_DISABLED = True
+                GOOGLE_DISABLED_REASON = f"google rate limited/block (HTTP {r.status_code})"
+                raise RateLimited(GOOGLE_DISABLED_REASON)
+
             r.raise_for_status()
             data = r.json()
             # data[0] is list of [translated, original, ...]
@@ -399,6 +417,9 @@ def translate_texts(engines: List[Engine], limiter: RateLimiter, texts: List[str
             if len(outs) != len(texts):
                 raise RuntimeError(f"count mismatch: expected {len(texts)} got {len(outs)}")
             return outs, eng.name
+        except RateLimited as e:
+            safe_print(f"  [{eng.name}] rate limited: {e}")
+            raise
         except Exception as e:
             last_err = f"{type(e).__name__}: {e!r}"
             safe_print(f"  [{eng.name}] failed: {last_err}")
@@ -448,6 +469,9 @@ def process_language(en_map: Dict[int, str], lang_file: Path, engines: List[Engi
             write_txt_file_atomic(lang_file, merged)
             safe_print(f"  [{lang_file.name}] Added {len(missing_ids)} lines (engine={used})")
             return (lang_file.name, len(missing_ids), used)
+        except RateLimited as e:
+            safe_print(f"  [{lang_file.name}] Skipped instantly: {e}; leaving file unchanged")
+            return (lang_file.name, 0, "rate_limited")
         except Exception as e:
             msg = f"{type(e).__name__}: {e!r}"
             safe_print(f"  [{lang_file.name}] attempt {attempt+1}/4 failed: {msg}")
