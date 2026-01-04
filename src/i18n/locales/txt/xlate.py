@@ -32,8 +32,9 @@ except ImportError:
     from deep_translator import GoogleTranslator
 
 # Configuration for parallel processing
-MAX_WORKERS = 8  # Number of parallel language translations (conservative to avoid rate limiting)
-DELAY_BETWEEN_REQUESTS = 0.1  # Small delay between individual translation requests
+MAX_LANG_WORKERS = 4  # Number of parallel language files to process
+MAX_LINE_WORKERS = 8  # Number of parallel line translations per language
+DELAY_BETWEEN_REQUESTS = 0.05  # Small delay between individual translation requests
 
 # Thread-safe print lock
 print_lock = threading.Lock()
@@ -159,43 +160,94 @@ def safe_print(*args, **kwargs):
         print(*args, **kwargs)
 
 
+def translate_single_line(line_num, en_text, google_lang):
+    """
+    Translate a single line. Returns (line_num, en_text, translated_text).
+    """
+    translated = translate_text(en_text, google_lang)
+    return (line_num, en_text, translated)
+
+
 def process_language_file(lang_file, google_lang, en_lines, target_lines):
     """
-    Process a single language file - translate missing lines and append them.
+    Process a single language file - translate missing lines in parallel and write sequentially.
     Returns a tuple of (lang_file.name, num_added, success)
     """
     lang_code = lang_file.stem
+    lang_name = lang_file.name
     
     # Parse existing translations
     existing = parse_txt_file(lang_file)
     
-    # Find missing lines
-    missing = [n for n in target_lines if n not in existing and n in en_lines]
+    # Find missing lines and sort them
+    missing = sorted([n for n in target_lines if n not in existing and n in en_lines])
     
     if not missing:
-        safe_print(f"{lang_file.name}: up to date")
-        return (lang_file.name, 0, True)
+        safe_print(f"{lang_name}: up to date")
+        return (lang_name, 0, True)
     
-    safe_print(f"{lang_file.name}: translating {len(missing)} lines to {google_lang}...")
+    safe_print(f"{lang_name}: translating {len(missing)} lines to {google_lang}...")
     
-    # Translate missing lines
-    new_lines = []
-    for line_num in sorted(missing):
-        en_text = en_lines[line_num]
-        translated = translate_text(en_text, google_lang)
-        # Escape quotes in the translated text and format with tab separator
-        escaped = escape_quotes(translated)
-        new_lines.append(f'{line_num}\t"{escaped}"')
-        safe_print(f"  [{lang_file.name}] {line_num}: \"{en_text}\" -> \"{translated}\"")
+    # Track completed translations and writing state
+    completed = {}  # line_num -> (en_text, translated)
+    next_to_write_idx = 0  # Index into missing[] for next line to write
+    write_lock = threading.Lock()
+    file_handle = None
     
-    # Append to file
-    with open(lang_file, 'a', encoding='utf-8') as f:
-        f.write('\n')
-        for line in new_lines:
-            f.write(line + '\n')
+    def on_translation_complete(line_num, en_text, translated):
+        """Called when a translation completes. Writes lines in order."""
+        nonlocal next_to_write_idx, file_handle
+        
+        with write_lock:
+            # Store the completed translation
+            completed[line_num] = (en_text, translated)
+            
+            # Open file on first write
+            if file_handle is None:
+                file_handle = open(lang_file, 'a', encoding='utf-8')
+                file_handle.write('\n')
+            
+            # Write all contiguous completed lines starting from next_to_write_idx
+            while next_to_write_idx < len(missing):
+                next_line_num = missing[next_to_write_idx]
+                if next_line_num not in completed:
+                    break  # Not yet translated, wait
+                
+                en_text, translated = completed[next_line_num]
+                escaped = escape_quotes(translated)
+                output_line = f'{next_line_num}\t"{escaped}"'
+                file_handle.write(output_line + '\n')
+                file_handle.flush()  # Ensure it's written immediately
+                
+                safe_print(f"  [{lang_name}] {next_line_num}: \"{en_text}\" -> \"{translated}\"")
+                
+                # Clean up and advance
+                del completed[next_line_num]
+                next_to_write_idx += 1
     
-    safe_print(f"  Added {len(new_lines)} lines to {lang_file.name}")
-    return (lang_file.name, len(new_lines), True)
+    try:
+        # Translate all lines in parallel
+        with ThreadPoolExecutor(max_workers=MAX_LINE_WORKERS) as executor:
+            futures = {
+                executor.submit(translate_single_line, line_num, en_lines[line_num], google_lang): line_num
+                for line_num in missing
+            }
+            
+            for future in as_completed(futures):
+                line_num = futures[future]
+                try:
+                    result_line_num, en_text, translated = future.result()
+                    on_translation_complete(result_line_num, en_text, translated)
+                except Exception as e:
+                    safe_print(f"  [{lang_name}] Error translating line {line_num}: {e}")
+                    # Use original English text on error
+                    on_translation_complete(line_num, en_lines[line_num], en_lines[line_num])
+    finally:
+        if file_handle:
+            file_handle.close()
+    
+    safe_print(f"  [{lang_name}] Added {len(missing)} lines")
+    return (lang_name, len(missing), True)
 
 def main():
     script_dir = Path(__file__).parent
@@ -235,13 +287,13 @@ def main():
         
         work_items.append((lang_file, google_lang))
     
-    print(f"\nProcessing {len(work_items)} languages with {MAX_WORKERS} parallel workers...\n")
+    print(f"\nProcessing {len(work_items)} languages ({MAX_LANG_WORKERS} lang workers, {MAX_LINE_WORKERS} line workers each)...\n")
     
     # Process languages in parallel
     total_added = 0
-    completed = 0
+    langs_completed = 0
     
-    with ThreadPoolExecutor(max_workers=MAX_WORKERS) as executor:
+    with ThreadPoolExecutor(max_workers=MAX_LANG_WORKERS) as executor:
         # Submit all tasks
         futures = {
             executor.submit(process_language_file, lang_file, google_lang, en_lines, target_lines): lang_file.name
@@ -254,12 +306,12 @@ def main():
             try:
                 name, num_added, success = future.result()
                 total_added += num_added
-                completed += 1
+                langs_completed += 1
             except Exception as e:
                 safe_print(f"Error processing {lang_name}: {e}")
-                completed += 1
+                langs_completed += 1
     
-    print(f"\nDone! Processed {completed} languages, added {total_added} total translations.")
+    print(f"\nDone! Processed {langs_completed} languages, added {total_added} total translations.")
 
 if __name__ == '__main__':
     main()
