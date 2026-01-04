@@ -78,19 +78,19 @@ export function WelcomeModal({ onClose }: WelcomeModalProps) {
   const remainingCount = languages.length - featuredLanguages.length;
 
   const features = [
-    { icon: QrCode, title: t('1427'), desc: t('1428') },
-    { icon: Image, title: t('1429'), desc: t('1430') },
-    { icon: Palette, title: t('1431'), desc: t('1432') },
-    { icon: Zap, title: t('1433'), desc: t('1434') },
-    { icon: Settings, title: t('1435'), desc: t('1436') },
-    { icon: Share2, title: t('1437'), desc: t('1438') },
+    { icon: QrCode, title: t('welcome.feature1Title'), desc: t('welcome.feature1Desc') },
+    { icon: Image, title: t('welcome.feature2Title'), desc: t('welcome.feature2Desc') },
+    { icon: Palette, title: t('welcome.feature3Title'), desc: t('welcome.feature3Desc') },
+    { icon: Zap, title: t('welcome.feature4Title'), desc: t('welcome.feature4Desc') },
+    { icon: Settings, title: t('welcome.feature5Title'), desc: t('welcome.feature5Desc') },
+    { icon: Share2, title: t('welcome.feature6Title'), desc: t('welcome.feature6Desc') },
   ];
 
   const updates = [
-    t('1440'),
-    t('1441'),
-    t('1442'),
-    t('1443'),
+    t('welcome.update1'),
+    t('welcome.update2'),
+    t('welcome.update3'),
+    t('welcome.update4'),
   ];
 
   return (
@@ -122,7 +122,7 @@ export function WelcomeModal({ onClose }: WelcomeModalProps) {
             type="button"
             onClick={handleDismiss}
             className="absolute top-4 right-4 p-2 rounded-full hover:bg-muted transition-colors"
-            aria-label={t('59')}
+            aria-label={t('common.close')}
           >
             <X className="h-5 w-5 text-muted-foreground" />
           </button>
@@ -133,13 +133,13 @@ export function WelcomeModal({ onClose }: WelcomeModalProps) {
             </div>
             <div>
               <h1 id="welcome-title" className="text-2xl font-bold text-foreground">
-                {t('1423')}
+                {t('welcome.title')}
               </h1>
-              <p className="text-sm text-muted-foreground">{t('1424')}</p>
+              <p className="text-sm text-muted-foreground">{t('welcome.subtitle')}</p>
             </div>
           </div>
 
-          <p className="text-sm text-muted-foreground leading-relaxed">{t('1425')}</p>
+          <p className="text-sm text-muted-foreground leading-relaxed">{t('welcome.intro')}</p>
         </div>
 
         {/* Scrollable Content */}
@@ -148,7 +148,7 @@ export function WelcomeModal({ onClose }: WelcomeModalProps) {
           <section>
             <h2 className="text-sm font-semibold text-foreground mb-3 flex items-center gap-2">
               <Sparkles className="h-4 w-4 text-primary" />
-              {t('1426')}
+              {t('welcome.featuresTitle')}
             </h2>
             <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
               {features.map((feature, idx) => (
@@ -168,7 +168,7 @@ export function WelcomeModal({ onClose }: WelcomeModalProps) {
           <section>
             <h2 className="text-sm font-semibold text-foreground mb-3 flex items-center gap-2">
               <Zap className="h-4 w-4 text-primary" />
-              {t('1439')}
+              {t('welcome.whatsNewTitle')}
             </h2>
             <ul className="space-y-2">
               {updates.map((update, idx) => (
@@ -184,7 +184,7 @@ export function WelcomeModal({ onClose }: WelcomeModalProps) {
           <section>
             <h2 className="text-sm font-semibold text-foreground mb-3 flex items-center gap-2">
               <Globe className="h-4 w-4 text-primary" />
-              {t('1444')}
+              {t('welcome.languagesTitle')}
             </h2>
             <div className="flex flex-wrap gap-2 items-center">
               {featuredLanguages.map((lang) => (
@@ -207,7 +207,7 @@ export function WelcomeModal({ onClose }: WelcomeModalProps) {
               ))}
               {remainingCount > 0 && (
                 <span className="text-xs text-muted-foreground px-2">
-                  +{remainingCount} {t('1445')}
+                  +{remainingCount} {t('welcome.moreLanguages')}
                 </span>
               )}
             </div>
@@ -216,17 +216,17 @@ export function WelcomeModal({ onClose }: WelcomeModalProps) {
           {/* Quick Start */}
           <section className="bg-muted/30 rounded-lg p-4">
             <h2 className="text-sm font-semibold text-foreground mb-2">
-              {t('1446')}
+              {t('welcome.quickStartTitle')}
             </h2>
             <ol className="text-sm text-muted-foreground space-y-1">
               <li>
-                <span className="font-medium text-foreground">1.</span> {t('1447')}
+                <span className="font-medium text-foreground">1.</span> {t('welcome.step1')}
               </li>
               <li>
-                <span className="font-medium text-foreground">2.</span> {t('1448')}
+                <span className="font-medium text-foreground">2.</span> {t('welcome.step2')}
               </li>
               <li>
-                <span className="font-medium text-foreground">3.</span> {t('1449')}
+                <span className="font-medium text-foreground">3.</span> {t('welcome.step3')}
               </li>
             </ol>
           </section>
@@ -234,9 +234,9 @@ export function WelcomeModal({ onClose }: WelcomeModalProps) {
 
         {/* Footer */}
         <div className="px-6 py-4 border-t bg-muted/30 flex flex-col sm:flex-row gap-3 sm:items-center sm:justify-between">
-          <p className="text-xs text-muted-foreground">{t('1450')}</p>
+          <p className="text-xs text-muted-foreground">{t('welcome.footerNote')}</p>
           <Button size="sm" onClick={handleDismiss}>
-            {t('1451')}
+            {t('welcome.getStarted')}
           </Button>
         </div>
       </div>

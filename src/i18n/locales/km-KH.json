@@ -1,34 +1,34 @@
 {
   "animation": {
-    "blueNoise": "សំឡេងពណ៌ខៀវ",
-    "bounce": "លោត (ប៉េងប៉ុង)",
+    "blueNoise": "សម្លេងពណ៌ខៀវ",
+    "bounce": "លោត (ពីងប៉ុង)",
     "colorCycle": "វដ្តពណ៌",
-    "crossfade": "ការ​រលាយ​បាត់​ទៅ​វិញ",
+    "crossfade": "ខ្វែង",
     "drift": "រសាត់",
     "enabled": "បើកដំណើរការចលនា",
     "everyNFrames": "រាល់ {{count}} ស៊ុម",
-    "exportAllFrames": "នាំចេញ​ស៊ុម​ទាំងអស់",
-    "fadeIn": "រសាត់ទៅ",
-    "flickerSafe": "មានសុវត្ថិភាពពេលភ្លឹបភ្លែតៗ",
+    "exportAllFrames": "នាំចេញស៊ុមទាំងអស់។",
+    "fadeIn": "រលាយចូល",
+    "flickerSafe": "សុវត្ថិភាព Flicker",
     "frameStep": "ជំហានស៊ុម",
-    "interpolation": "ការ​បញ្ចូល​គ្នា",
+    "interpolation": "អន្តរប៉ូល។",
     "loop": "ចលនារង្វិលជុំ",
     "maxFrames": "ស៊ុមអតិបរមា",
-    "moduleJitter": "ភាពរអាក់រអួលនៃម៉ូឌុល",
-    "moduleJitterWarning": "⚠️ អាចប៉ះពាល់ដល់សមត្ថភាពស្កេន",
-    "morph": "ម៉ូហ្វ",
+    "moduleJitter": "ម៉ូឌុល Jitter",
+    "moduleJitterWarning": "⚠️អាចប៉ះពាល់ដល់ការស្កេន",
+    "morph": "Morph",
     "none": "គ្មាន",
     "off": "បិទ",
     "pattern": "លំនាំដែលបានបង្កើត",
     "pulse": "ជីពចរ",
-    "randomSeed": "គ្រាប់ពូជចៃដន្យ",
+    "randomSeed": "ពូជចៃដន្យ",
     "rotate": "បង្វិល",
-    "scanline": "បន្ទាត់ស្កេន",
+    "scanline": "ស្កេន",
     "shimmer": "រស្មី",
     "slideIn": "រុញចូល",
-    "speed": "ល្បឿន​ស៊ុម",
-    "startFrame": "ស៊ុមចាប់ផ្តើម",
-    "temporalDither": "ភាពច្របូកច្របល់​ខាង​ពេលវេលា",
+    "speed": "ល្បឿនស៊ុម",
+    "startFrame": "ចាប់ផ្តើមស៊ុម",
+    "temporalDither": "Dither បណ្ដោះអាសន្ន",
     "wave": "រលក",
     "auto": "ស្វ័យប្រវត្តិ"
   },
@@ -46,65 +46,65 @@
     "ja-JP": "ជប៉ុន",
     "ko-KR": "កូរ៉េ",
     "es-ES": "ភាសាអេស្ប៉ាញ",
-    "ar": "អារ៉ាប់",
-    "ru-RU": "រុស្ស៊ី",
-    "te-IN": "ភាសាតេលូហ្គូ",
-    "mr-IN": "ភាសាម៉ារ៉ាធី",
-    "bn-BD": "បេងហ្គាលី",
-    "gu": "គុចារ៉ាទី",
-    "kn-IN": "កណ្ណាដា",
-    "ml-IN": "ម៉ាឡាយ៉ាឡាំ",
+    "ar": "ភាសាអារ៉ាប់",
+    "ru-RU": "រុស្សី",
+    "te-IN": "តេលូហ្គូ",
+    "mr-IN": "ម៉ារ៉ាធី",
+    "bn-BD": "បង់ក្លាដែស",
+    "gu": "ហ្គូចារ៉ាទី",
+    "kn-IN": "កាណាដា",
+    "ml-IN": "ម៉ាឡាយ៉ាឡា",
     "pa": "ពុនចាប៊ី",
-    "af": "ជនជាតិអាហ្វ្រិក",
+    "af": "អាហ្រ្វិក",
     "bg": "ប៊ុលហ្គារី",
-    "cs-CZ": "ឆែក",
-    "da-DK": "ភាសាដាណឺម៉ាក",
-    "de-DE": "អាល្លឺម៉ង់",
-    "el-GR": "ភាសាក្រិច",
+    "cs-CZ": "ឆេក",
+    "da-DK": "ដាណឺម៉ាក",
+    "de-DE": "អាឡឺម៉ង់",
+    "el-GR": "ក្រិក",
     "fi-FI": "ហ្វាំងឡង់",
     "fr-FR": "បារាំង",
     "hr": "ក្រូអាត",
     "hu-HU": "ហុងគ្រី",
     "it-IT": "អ៊ីតាលី",
-    "km-KH": "ភាសាខ្មែរ",
+    "km-KH": "ខ្មែរ",
     "lo-LA": "ឡាវ",
     "my-MM": "ភូមា",
-    "ne-NP": "ភាសានេប៉ាល់",
+    "ne-NP": "នេប៉ាល់",
     "nl-NL": "ហូឡង់",
-    "no-NO": "ភាសាន័រវេស",
+    "no-NO": "ន័រវេស",
     "pl-PL": "ប៉ូឡូញ",
-    "rm": "រឿង​មនោសញ្ចេតនា",
+    "rm": "រ៉ូម៉ាំង",
     "ro": "រ៉ូម៉ានី",
     "sv-SE": "ស៊ុយអែត",
     "zu": "ហ្សូលូ"
   },
   "app": {
     "name": "ANQR",
-    "tagline": "ម៉ាស៊ីនបង្កើតលេខកូដ QR"
+    "tagline": "ម៉ាស៊ីនបង្កើតកូដ QR"
   },
   "common": {
     "learnMore": "ស្វែងយល់បន្ថែម",
     "none": "គ្មាន",
     "off": "បិទ",
     "optional": "(ស្រេចចិត្ត)",
-    "required": "(តម្រូវ​ឲ្យ​មាន)",
+    "required": "(ទាមទារ)",
     "allRightsReserved": "រក្សាសិទ្ធិគ្រប់យ៉ាង",
-    "apply": "ដាក់ពាក្យ",
-    "back": "ថយក្រោយ",
+    "apply": "អនុវត្ត",
+    "back": "ត្រឡប់មកវិញ",
     "cancel": "បោះបង់",
     "close": "បិទ",
-    "copied": "បានចម្លងហើយ!",
-    "copy": "ច្បាប់ចម្លង",
+    "copied": "ចម្លង!",
+    "copy": "ចម្លង",
     "copyright": "© ANQR",
     "delete": "លុប",
-    "disabled": "ជនពិការ",
+    "disabled": "ពិការ",
     "download": "ទាញយក",
     "edit": "កែសម្រួល",
-    "enabled": "បានបើកដំណើរការ",
+    "enabled": "បានបើក",
     "error": "កំហុស",
     "filter": "តម្រង",
-    "less": "តិចជាង",
-    "loading": "កំពុងផ្ទុក...",
+    "less": "តិច",
+    "loading": "កំពុង​ផ្ទុក...",
     "more": "ច្រើនទៀត",
     "next": "បន្ទាប់",
     "no": "ទេ",
@@ -115,664 +115,664 @@
     "save": "រក្សាទុក",
     "search": "ស្វែងរក",
     "select": "ជ្រើសរើស",
-    "showLess": "បង្ហាញ​តិច",
-    "showMore": "បង្ហាញ​បន្ថែម",
+    "showLess": "បង្ហាញតិច",
+    "showMore": "បង្ហាញច្រើនទៀត",
     "sort": "តម្រៀប",
     "success": "ជោគជ័យ",
     "upload": "ផ្ទុកឡើង",
-    "viewAll": "មើលទាំងអស់",
-    "yes": "បាទ/ចាស៎"
+    "viewAll": "មើលទាំងអស់។",
+    "yes": "បាទ"
   },
   "fileSaveFailed": "បរាជ័យក្នុងការរក្សាទុកឯកសារ៖ {{error}}",
-  "fileSaved": "បាន​រក្សាទុក​ទៅ​ក្នុង​ឯកសារ៖ {{filename}}",
+  "fileSaved": "រក្សាទុកក្នុងឯកសារ៖ {{filename}}",
   "footer": {
     "copyright": "© ANQR {{year}}"
   },
   "gallery": {
     "filter": "តម្រង",
-    "all": "ទាំងអស់",
+    "all": "ទាំងអស់។",
     "animationOverlay": "ចលនា",
-    "blendModes": "របៀបលាយបញ្ចូលគ្នា",
+    "blendModes": "របៀបលាយ",
     "collapse": "ដួលរលំ",
     "colorModes": "របៀបពណ៌",
     "colors": "ពណ៌",
-    "contentTypes": "ប្រភេទ​មាតិកា",
-    "dithering": "ភាពច្របូកច្របល់",
+    "contentTypes": "ប្រភេទមាតិកា",
+    "dithering": "ហត់",
     "encoding": "ការអ៊ិនកូដ",
     "expand": "ពង្រីក",
-    "imageOverlay": "ការ​ដាក់​រូបភាព​ពីលើ",
+    "imageOverlay": "រូបភាពត្រួតលើគ្នា។",
     "items": {
       "anim-blue-noise": {
-        "description": "កម្រិតសំឡេងរំខានពណ៌ខៀវជាមួយចលនា",
-        "title": "សំឡេងពណ៌ខៀវមានចលនា"
+        "description": "កម្រិតសំឡេងពណ៌ខៀវជាមួយនឹងចលនា",
+        "title": "សំឡេងពណ៌ខៀវដែលមានចលនា"
       },
       "anim-blue-noise-i100": {
-        "description": "សំឡេងរំខានពណ៌ខៀវមានចលនានៅ ១០០%",
-        "title": "សំឡេងរំខានពណ៌ខៀវ ១០០%"
+        "description": "សំឡេងពណ៌ខៀវមានចលនា 100%",
+        "title": "Blue Noise 100%"
       },
       "anim-blue-noise-i50": {
-        "description": "សំឡេងរំខានពណ៌ខៀវមានចលនានៅ ៥០%",
-        "title": "សំឡេងរំខានពណ៌ខៀវ ៥០%"
+        "description": "សំឡេងពណ៌ខៀវដែលមានចលនា 50%",
+        "title": "សំឡេងពណ៌ខៀវ 50%"
       },
       "anim-blue-noise-i75": {
-        "description": "សំឡេងរំខានពណ៌ខៀវមានចលនានៅ ៧៥%",
-        "title": "សំឡេងរំខានពណ៌ខៀវ ៧៥%"
+        "description": "សំឡេងពណ៌ខៀវមានចលនា 75%",
+        "title": "សំឡេងពណ៌ខៀវ 75%"
       },
       "anim-brightness": {
-        "description": "ពន្លឺជាមួយនឹងចលនា",
-        "title": "ពន្លឺ​មាន​ចលនា"
+        "description": "ពន្លឺជាមួយចលនា",
+        "title": "ពន្លឺមានចលនា"
       },
       "anim-colormode-bw": {
-        "description": "ការ​លាប​ពណ៌​ខ្មៅ​ស​ដែល​មាន​ចលនា",
-        "title": "សខ្មៅមានចលនា"
+        "description": "B&W គំនូរជីវចលត្រួតលើគ្នា។",
+        "title": "B&W ដែលមានចលនា"
       },
       "anim-colormode-color": {
-        "description": "ការលាបពណ៌ដែលមានចលនា",
-        "title": "ពណ៌​មាន​ចលនា"
+        "description": "ការលាបពណ៌មានចលនា",
+        "title": "ពណ៌មានចលនា"
       },
       "anim-colormode-grayscale": {
-        "description": "ការ​លាប​ពណ៌​មាន​ចលនា​លើ​មាត្រដ្ឋាន​ប្រផេះ",
-        "title": "មាត្រដ្ឋានពណ៌ប្រផេះមានចលនា"
+        "description": "ការ​ជាន់​លើ​មាន​ចលនា​ពណ៌​ប្រផេះ",
+        "title": "មាត្រដ្ឋានប្រផេះមានចលនា"
       },
       "anim-dithered": {
-        "description": "ការរីករាលដាលកំហុសជាមួយចលនា",
-        "title": "មានចលនា បង្វិលខ្លួន"
+        "description": "កំហុសក្នុងការសាយភាយជាមួយចលនា",
+        "title": "ជីវចល Dithered"
       },
       "anim-duotone": {
-        "description": "ឌុយតូនជាមួយចលនា",
-        "title": "សំឡេង​គូ​មាន​ចលនា"
+        "description": "Duotone ជាមួយចលនា",
+        "title": "Duotone មានចលនា"
       },
       "anim-halftone": {
-        "description": "ចំណុច​ពាក់កណ្ដាល​ពណ៌​ជាមួយ​ចលនា",
-        "title": "ពាក់កណ្តាល​ពណ៌​មាន​ចលនា"
+        "description": "ចំណុចពាក់កណ្តាលសម្លេងជាមួយចលនា",
+        "title": "Halftone មានចលនា"
       },
       "anim-mosaic": {
-        "description": "រូបចម្លាក់ម៉ូសាអ៊ីកជាមួយចលនា",
-        "title": "រូបភាពម៉ូសាអ៊ីកមានចលនា"
+        "description": "Mosaic ជាមួយចលនា",
+        "title": "Mosaic មានចលនា"
       },
       "blend-classic": {
-        "description": "ការ​លាប​ពណ៌​ច្របូកច្របល់​ជាមួយ​ក្ដារលាយ​បុរាណ",
+        "description": "លាបពណ៌ជាមួយក្ដារលាយបុរាណ",
         "title": "ល្បាយបុរាណ"
       },
       "blend-forest": {
-        "description": "ការ​លាប​ពណ៌​ច្របូកច្របល់​ជាមួយ​ក្ដារលាយ​ពណ៌​ព្រៃឈើ",
-        "title": "ល្បាយព្រៃឈើ"
+        "description": "ស្រោបដោយក្ដារលាយព្រៃឈើ",
+        "title": "ព្រៃលាយ"
       },
       "blend-navy": {
-        "description": "ការ​លាប​ពណ៌​ច្របូកច្របល់​ជាមួយ​នឹង​ក្ដារ​ពណ៌​ខៀវ​ស្រាល",
-        "title": "ពណ៌​ខៀវ​លាយ​គ្នា"
+        "description": "លាបពណ៌ជាមួយក្ដារលាយពណ៌ទឹកប៊ិច",
+        "title": "Navy Blend"
       },
       "blend-wine": {
-        "description": "ការ​លាប​ពណ៌​ចម្រុះ​ជាមួយ​ក្ដារ​ពណ៌​ស្រា",
-        "title": "ស្រា​លាយ"
+        "description": "លាបលើក្ដារលាយស្រា",
+        "title": "ស្រាលាយ"
       },
       "cmode-blue-noise-bw": {
-        "description": "សំឡេង​ពណ៌​ខៀវ​ក្នុង​ពណ៌​ស​ខ្មៅ",
-        "title": "សំឡេង​ពណ៌​ខៀវ​ស​ខ្មៅ"
+        "description": "Blue Noise នៅក្នុង B&W",
+        "title": "Blue Noise B&W"
       },
       "cmode-blue-noise-color": {
-        "description": "សំឡេងពណ៌ខៀវក្នុងពណ៌",
-        "title": "ពណ៌​សំឡេង​ពណ៌​ខៀវ"
+        "description": "សម្លេងពណ៌ខៀវនៅក្នុងពណ៌",
+        "title": "ពណ៌​សំឡេង​ខៀវ"
       },
       "cmode-dithered-color": {
-        "description": "ច្របូកច្របល់​ក្នុង​ពណ៌",
-        "title": "ពណ៌ច្របូកច្របល់"
+        "description": "ជ្រលក់ពណ៌",
+        "title": "ពណ៌ចម្រុះ"
       },
       "cmode-dithered-grayscale": {
-        "description": "ច្របូកច្របល់​ក្នុង​មាត្រដ្ឋាន​ប្រផេះ",
-        "title": "មាត្រដ្ឋានពណ៌ប្រផេះច្របូកច្របល់"
+        "description": "ធ្លាក់ក្នុងមាត្រដ្ឋានប្រផេះ",
+        "title": "មាត្រដ្ឋានពណ៌ប្រផេះ"
       },
       "cmode-halftone-bw": {
-        "description": "ពាក់កណ្តាល​សម្លេង​ក្នុង​ពណ៌​ស និង​ខ្មៅ",
-        "title": "ពាក់កណ្តាល​សម្លេង ស និង ខ្មៅ"
+        "description": "សំឡេងពាក់កណ្តាលនៅក្នុង B&W",
+        "title": "Halftone B&W"
       },
       "cmode-halftone-color": {
-        "description": "ពាក់កណ្តាលពណ៌",
-        "title": "ពណ៌​ពាក់កណ្ដាល​ពណ៌"
+        "description": "សំឡេងពាក់កណ្តាលនៅក្នុងពណ៌",
+        "title": "ពណ៌ពាក់កណ្តាល"
       },
       "color-coral": {
-        "description": "#e85d04 លើ #ffe8d6",
+        "description": "#e85d04 នៅលើ #ffe8d6",
         "title": "ផ្កាថ្ម"
       },
       "color-coral-dots": {
-        "description": "ផ្កាថ្មដែលមានម៉ូឌុលចំណុច",
+        "description": "ផ្កាថ្មជាមួយម៉ូឌុលចំណុច",
         "title": "ចំណុចផ្កាថ្ម"
       },
       "color-crimson": {
-        "description": "#៩d០២០៨ លើ #ffccd៥",
+        "description": "#9d0208 នៅលើ #ffccd5",
         "title": "ពណ៌ក្រហម"
       },
       "color-forest": {
-        "description": "#១b៤៣៣២ លើ #d៨f៣dc",
-        "title": "ព្រៃឈើ"
+        "description": "#1b4332 នៅលើ #d8f3dc",
+        "title": "ព្រៃ"
       },
       "color-forest-dots": {
-        "description": "ព្រៃឈើដែលមានម៉ូឌុលចំណុច",
-        "title": "ចំណុចព្រៃឈើ"
+        "description": "ព្រៃជាមួយម៉ូឌុលចំណុច",
+        "title": "ចំណុចព្រៃ"
       },
       "color-gold": {
-        "description": "#៧f៥៥៣៩ លើ #ffe៨cc",
+        "description": "#7f5539 នៅលើ #ffe8cc",
         "title": "មាស"
       },
       "color-inverted": {
-        "description": "#ffffff លើ #០០០០០០",
+        "description": "#ffffff នៅលើ #000000",
         "title": "បញ្ច្រាស"
       },
       "color-midnight": {
-        "description": "#1a1a2e លើ #eef1ff",
-        "title": "ពាក់កណ្តាលអធ្រាត្រ"
+        "description": "#1a1a2e នៅលើ #eef1ff",
+        "title": "កណ្តាលអធ្រាត្រ"
       },
       "color-midnight-dots": {
-        "description": "ពាក់កណ្តាលអធ្រាត្រជាមួយម៉ូឌុលចំណុច",
-        "title": "ចំណុច​ពាក់កណ្តាលអធ្រាត្រ"
+        "description": "កណ្តាលអធ្រាត្រជាមួយម៉ូឌុលចំនុច",
+        "title": "ចំណុចកណ្តាលអធ្រាត្រ"
       },
       "color-navy": {
-        "description": "#០០១d៣d លើ #a2d2ff",
+        "description": "#001d3d នៅលើ #a2d2ff",
         "title": "កងទ័ពជើងទឹក"
       },
       "color-ocean": {
-        "description": "#០២៣e៨a លើ #caf0f8",
+        "description": "#023e8a នៅលើ #caf0f8",
         "title": "មហាសមុទ្រ"
       },
       "color-ocean-dots": {
         "description": "មហាសមុទ្រជាមួយម៉ូឌុលចំណុច",
-        "title": "ចំណុចសមុទ្រ"
+        "title": "ចំណុចមហាសមុទ្រ"
       },
       "color-royal": {
-        "description": "#៤a០០៨០ លើ #f5e6ff",
-        "title": "រាជវង្ស"
+        "description": "#4a0080 នៅលើ #f5e6ff",
+        "title": "រាជ"
       },
       "color-royal-dots": {
-        "description": "រ៉ូយ៉ាល់ជាមួយម៉ូឌុលចំណុច",
-        "title": "ចំណុចរាជវង្ស"
+        "description": "Royal ជាមួយម៉ូឌុលចំនុច",
+        "title": "Royal Dots"
       },
       "color-slate": {
-        "description": "#៣៤៣a៤០ លើ #e9ecef",
-        "title": "បន្ទះ​ថ្ម​ក្រាល"
+        "description": "#343a40 នៅលើ #e9ecef",
+        "title": "ស្លត"
       },
       "color-sunset": {
-        "description": "#bf0603 លើ #fff3b0",
+        "description": "#bf0603 នៅលើ #fff3b0",
         "title": "ថ្ងៃលិច"
       },
       "color-sunset-dots": {
-        "description": "ថ្ងៃលិចជាមួយម៉ូឌុលចំណុច",
+        "description": "ថ្ងៃលិចជាមួយម៉ូឌុលចំនុច",
         "title": "ចំណុចថ្ងៃលិច"
       },
       "color-teal": {
-        "description": "#០០៦d៧៧ លើ #e០f៤f៥",
-        "title": "ពណ៌ខៀវស្រងាត់"
+        "description": "#006d77 នៅលើ #e0f4f5",
+        "title": "ទឹកប្រៃ"
       },
       "combo-anim-dots-halftone": {
-        "description": "ពាក់កណ្តាល​ពណ៌​មាន​ចលនា​ជាមួយ​ម៉ូឌុល​ចំណុច",
-        "title": "ចំណុចមានចលនា + ពាក់កណ្តាលពណ៌"
+        "description": "សំឡេងពាក់កណ្តាលមានចលនាជាមួយម៉ូឌុលចំនុច",
+        "title": "ចំណុចមានចលនា + សំឡេងពាក់កណ្តាល"
       },
       "combo-anim-rounded-blue-noise": {
-        "description": "សំឡេង​ពណ៌​ខៀវ​មាន​ចលនា​ជាមួយ​នឹង​រាង​មូល",
-        "title": "សំឡេង​រំខាន​រាង​មូល​មាន​ចលនា + ខៀវ"
+        "description": "សំឡេងពណ៌ខៀវមានចលនាជាមួយនឹងរាងមូល",
+        "title": "មានចលនារាងមូល + សម្លេងពណ៌ខៀវ"
       },
       "combo-connected-pixelate-teal": {
-        "description": "ការ​លាប​ភីកសែល​ជាមួយ​ម៉ូឌុល​ដែល​បាន​ភ្ជាប់",
-        "title": "ភ្ជាប់ + ពណ៌បៃតងខ្ចី"
+        "description": "ការលាបលើភីកសែលជាមួយម៉ូឌុលដែលបានតភ្ជាប់",
+        "title": "បានភ្ជាប់ + Pixelate Teal"
       },
       "combo-connected-square": {
-        "description": "ម៉ូឌុលដែលភ្ជាប់ជាមួយឧបករណ៍ស្វែងរកការ៉េ",
+        "description": "ម៉ូឌុលដែលបានតភ្ជាប់ជាមួយឧបករណ៍រកការ៉េ",
         "title": "ភ្ជាប់ + ការ៉េ"
       },
       "combo-connected-wave-ocean": {
-        "description": "ម៉ូឌុលដែលភ្ជាប់ជាមួយបែបផែនរលក",
-        "title": "មហាសមុទ្រភ្ជាប់គ្នា + រលក"
+        "description": "ម៉ូឌុលដែលបានភ្ជាប់ជាមួយនឹងឥទ្ធិពលរលក",
+        "title": "បានភ្ជាប់ + រលកមហាសមុទ្រ"
       },
       "combo-diamond-blue-noise-navy": {
-        "description": "ម៉ូឌុលពេជ្រដែលមានសំឡេងរំខានពណ៌ខៀវ",
-        "title": "ពេជ្រ + ខៀវស្រងាត់ ពណ៌ខៀវស្រងាត់"
+        "description": "ម៉ូឌុលពេជ្រដែលមានសំលេងរំខានពណ៌ខៀវ",
+        "title": "Diamond + Blue Noise Navy"
       },
       "combo-diamond-duotone-crimson": {
-        "description": "ឥទ្ធិពលឌូតូនជាមួយម៉ូឌុលពេជ្រ",
-        "title": "ពេជ្រ + ក្រហម​ទុំ"
+        "description": "បែបផែន Duotone ជាមួយម៉ូឌុលពេជ្រ",
+        "title": "Diamond + Duotone Crimson"
       },
       "combo-diamond-rounded": {
-        "description": "ម៉ូឌុលពេជ្រដែលមានឧបករណ៍ស្វែងរករាងមូល",
+        "description": "ម៉ូឌុលពេជ្រជាមួយឧបករណ៍រករាងមូល",
         "title": "ពេជ្រ + មូល"
       },
       "combo-dots-circle": {
-        "description": "ម៉ូឌុលចំណុចជាមួយឧបករណ៍ស្វែងរករង្វង់",
-        "title": "ចំណុច + រង្វង់"
+        "description": "ម៉ូឌុលចំណុចជាមួយឧបករណ៍រករង្វង់",
+        "title": "ចំនុច + រង្វង់"
       },
       "combo-dots-extreme-forest": {
-        "description": "ភាពមើលឃើញអតិបរមាជាមួយចំណុច",
-        "title": "ចំណុច + ព្រៃ​ដ៏​ខ្លាំង​ក្លា"
+        "description": "ភាពមើលឃើញអតិបរមាជាមួយនឹងចំណុច",
+        "title": "ចំនុច + ព្រៃខ្លាំង"
       },
       "combo-dots-halftone-gold": {
-        "description": "ម៉ូឌុលចំណុចដែលមានស្រទាប់ពាក់កណ្តាលពណ៌",
-        "title": "ចំណុច + មាសពាក់កណ្តាលពណ៌"
+        "description": "ចំណុចម៉ូឌុលជាមួយនឹងការលាបពណ៌ពាក់កណ្តាល",
+        "title": "ចំណុច + មាសពាក់កណ្តាល"
       },
       "combo-dots-outline-slate": {
-        "description": "ការរកឃើញគែមជាមួយម៉ូឌុលចំណុច",
-        "title": "បន្ទះ​ថ្ម​ចំណុច + គ្រោង"
+        "description": "ការរកឃើញគែមជាមួយនឹងម៉ូឌុលចំណុច",
+        "title": "ចំនុច + គ្រោងគ្រោង"
       },
       "combo-rounded-dithered-royal": {
-        "description": "រចនាបថ​បុរាណ​ដែល​មាន​រចនាបថ​មូល",
-        "title": "រាងមូល + រាងច្របូកច្របល់"
+        "description": "រចនាប័ទ្មបុរាណ dithered ជាមួយរចនាប័ទ្មរាងមូល",
+        "title": "មូល + Dithered Royal"
       },
       "combo-rounded-mosaic-sunset": {
-        "description": "ម៉ូឌុលមូលជាមួយនឹងស្រទាប់ mosaic",
-        "title": "ថ្ងៃលិចរាងមូល + ម៉ូសាអ៊ីក"
+        "description": "ម៉ូឌុលរាងមូលជាមួយនឹងការលាបលើ mosaic",
+        "title": "រាងមូល + Mosaic Sunset"
       },
       "combo-rounded-rounded": {
-        "description": "ម៉ូឌុលមូលជាមួយឧបករណ៍ស្វែងរកមូល",
+        "description": "ម៉ូឌុលមូលជាមួយនឹងឧបករណ៍រករាងមូល",
         "title": "មូល + មូល"
       },
       "combo-rounded-subpixel-coral": {
-        "description": "ការបង្ហាញភីកសែលរងលម្អិតខ្ពស់",
-        "title": "ផ្កាថ្ម​រាង​មូល + ភីកសែល​រង"
+        "description": "ការបង្ហាញ subpixel លម្អិតខ្ពស់។",
+        "title": "រាងមូល + Subpixel Coral"
       },
       "content-email": {
-        "description": "Mailto ភ្ជាប់ជាមួយពណ៌ផ្កាថ្ម",
+        "description": "តំណភ្ជាប់ Mailto ជាមួយពណ៌ផ្កាថ្ម",
         "title": "អាសយដ្ឋានអ៊ីមែល"
       },
       "content-event": {
-        "description": "ព្រឹត្តិការណ៍ iCal ដែលមានរូបរាជវង្សមូល",
-        "title": "ព្រឹត្តិការណ៍​តាម​ប្រតិទិន"
+        "description": "ព្រឹត្តិការណ៍ iCal ជាមួយនឹងរាជរាងមូល",
+        "title": "ព្រឹត្តិការណ៍ប្រតិទិន"
       },
       "content-geo": {
-        "description": "កូអរដោនេផែនទីដែលមានមាសភ្ជាប់",
+        "description": "ផែនទីខ្សែជាមួយមាសដែលបានតភ្ជាប់",
         "title": "ទីតាំងភូមិសាស្ត្រ"
       },
       "content-sms": {
-        "description": "សារ SMS ដែលបានបំពេញជាមុនជាមួយនឹងពណ៌ខៀវស្រងាត់ពេជ្រ",
+        "description": "បំពេញសារ SMS ជាមុនជាមួយត្បូងពេជ្រ",
         "title": "សារ SMS"
       },
       "content-vcard": {
-        "description": "កាតទំនាក់ទំនងដែលមានរចនាបថពណ៌ខៀវស្រងាត់",
-        "title": "ទំនាក់ទំនង vCard"
+        "description": "កាតទំនាក់ទំនងដែលមានរចនាប័ទ្មកងទ័ពជើងទឹករាងមូល",
+        "title": "vCard ទំនាក់ទំនង"
       },
       "content-wifi": {
-        "description": "ការកំណត់រចនាសម្ព័ន្ធវ៉ាយហ្វាយជាមួយចំណុចពណ៌បៃតងព្រៃ",
+        "description": "ការកំណត់រចនាសម្ព័ន្ធវ៉ាយហ្វាយជាមួយចំណុចព្រៃបៃតង",
         "title": "បណ្តាញវ៉ាយហ្វាយ"
       },
       "dither-adaptive-threshold": {
-        "description": "កម្រិត​សម្រប​ខ្លួន",
-        "title": "សម្របខ្លួន"
+        "description": "កម្រិតនៃការសម្របខ្លួន",
+        "title": "អាដាប់ធ័រ"
       },
       "dither-blue-noise": {
-        "title": "សំឡេងពណ៌ខៀវ",
-        "description": "កម្រិតសំឡេងរំខានពណ៌ខៀវ"
+        "title": "សម្លេងពណ៌ខៀវ",
+        "description": "កម្រិតសំឡេងពណ៌ខៀវ"
       },
       "dither-blue-noise-error-diffusion": {
-        "description": "សំឡេងរំខានពណ៌ខៀវចម្រុះ",
-        "title": "សំឡេង​ពណ៌​ខៀវ + កំហុស"
+        "description": "សំលេងរំខានពណ៌ខៀវកូនកាត់",
+        "title": "សំឡេងពណ៌ខៀវ + កំហុស"
       },
       "dither-error-diffusion": {
         "description": "រចនាប័ទ្ម Floyd-Steinberg",
-        "title": "ការរីករាលដាលនៃកំហុស"
+        "title": "ការចែកចាយកំហុស"
       },
       "dither-kernel-atkinson": {
-        "description": "ការរីករាលដាលនៃកំហុស Atkinson",
-        "title": "អាតគីនសុន"
+        "description": "ការចែកចាយកំហុស Atkinson",
+        "title": "អាគីនសុន"
       },
       "dither-kernel-burkes": {
-        "description": "ការរីករាលដាលនៃកំហុស Burkes",
-        "title": "ប៊ើកស៍"
+        "description": "Burkes កំហុសរីករាលដាល",
+        "title": "ប៊ឺក"
       },
       "dither-kernel-floyd-steinberg": {
-        "description": "ការរីករាលដាលនៃកំហុសរបស់ Floyd-Steinberg",
-        "title": "ហ្វ្លុយអ៊ីដ-ស្តែនប៊ឺក"
+        "description": "ការរីករាលដាលកំហុស Floyd-Steinberg",
+        "title": "Floyd-Steinberg"
       },
       "dither-kernel-jarvis-judice-ninke": {
-        "description": "Jarvis-Judice-Ninke error diffusion",
-        "title": "ចាវីស-ជូឌីស-នីងគី"
+        "description": "ការចែកចាយកំហុស Jarvis-Judice-Ninke",
+        "title": "Jarvis-Judice-Ninke"
       },
       "dither-kernel-sierra": {
-        "description": "ការរីករាលដាលនៃកំហុសសៀរ៉ា",
+        "description": "ការសាយភាយកំហុសសៀរ៉ា",
         "title": "សៀរ៉ា"
       },
       "dither-kernel-stucki": {
-        "description": "ការសាយភាយកំហុស Stucki",
-        "title": "ស្តូគី"
+        "description": "ការរីករាលដាលនៃកំហុស Stucki",
+        "title": "ជាប់គាំង"
       },
       "dither-ordered-bayer": {
-        "description": "ការ​ធ្វើ​ឲ្យ​ច្របូកច្របល់​នៃ​ម៉ាទ្រីស Bayer",
-        "title": "បញ្ជាទិញ Bayer"
+        "description": "ម៉ាទ្រីស Bayer រលាយ",
+        "title": "បានបញ្ជាទិញ Bayer"
       },
       "dither-perceptual": {
-        "description": "ថ្លឹងថ្លែង​ពន្លឺ",
+        "description": "ពន្លឺ - ទម្ងន់",
         "title": "ការយល់ឃើញ"
       },
       "dither-strength-100": {
-        "description": "កម្លាំង​លាយ​នៅ ១០០%",
-        "title": "កម្លាំង ១០០%"
+        "description": "កម្លាំងខ្លាំង 100%",
+        "title": "កម្លាំង 100%"
       },
       "dither-strength-20": {
-        "description": "កម្លាំង​លាយ​នៅ​កម្រិត ២០%",
-        "title": "កម្លាំង ២០%"
+        "description": "កម្លាំង 20%",
+        "title": "កម្លាំង 20%"
       },
       "dither-strength-40": {
-        "description": "កម្លាំង​លាយ​នៅ ៤០%",
-        "title": "កម្លាំង ៤០%"
+        "description": "កម្លាំង 40%",
+        "title": "កម្លាំង 40%"
       },
       "dither-strength-60": {
-        "description": "កម្លាំង​លាយ​នៅ ៦០%",
-        "title": "កម្លាំង ៦០%"
+        "description": "កម្លាំង 60%",
+        "title": "កម្លាំង 60%"
       },
       "dither-strength-80": {
-        "description": "កម្លាំង​លាយ​នៅ ៨០%",
-        "title": "កម្លាំង ៨០%"
+        "description": "កម្លាំង 80%",
+        "title": "កម្លាំង 80%"
       },
       "dither-white-noise": {
         "description": "កម្រិតសំឡេងរំខានចៃដន្យ",
-        "title": "សំឡេង​ពណ៌​ស"
+        "title": "សំឡេងពណ៌ស"
       },
       "enc-ecc-h": {
-        "description": "ការកែកំហុស 30%",
-        "title": "វិទ្យាល័យ ECC"
+        "description": "30% ការកែកំហុស",
+        "title": "ECC ខ្ពស់។"
       },
       "enc-ecc-l": {
         "description": "ការកែកំហុស 7%",
         "title": "ECC ទាប"
       },
       "enc-ecc-m": {
-        "description": "ការកែកំហុស 15%",
-        "title": "ឧបករណ៍​ផ្ទុក​ទិន្នន័យ ECC"
+        "description": "15% ការកែកំហុស",
+        "title": "ECC មធ្យម"
       },
       "enc-ecc-q": {
-        "description": "ការកែកំហុស 25%",
-        "title": "ECC ក្វាទីល"
+        "description": "25% ការកែកំហុស",
+        "title": "ECC Quartile"
       },
       "enc-v0": {
         "description": "ការជ្រើសរើសកំណែដោយស្វ័យប្រវត្តិ",
         "title": "កំណែស្វ័យប្រវត្តិ"
       },
       "enc-v12": {
-        "description": "លេខកូដ QR ជំនាន់ទី 12",
-        "title": "កំណែទី ១២"
+        "description": "កំណែ 12 កូដ QR",
+        "title": "កំណែ 12"
       },
       "enc-v6": {
-        "description": "ល្អបំផុតសម្រាប់ការដាក់ពីលើ (គ្មានភ្នែកកណ្តាល)",
-        "title": "កំណែទី ៦"
+        "description": "ល្អបំផុតសម្រាប់ការត្រួតលើគ្នា (គ្មានភ្នែកកណ្តាល)",
+        "title": "កំណែ 6"
       },
       "enc-v6-h": {
-        "description": "កំណែទី 6 ជាមួយនឹងការកែកំហុសខ្ពស់",
-        "title": "V6 + ECC ខ្ពស់"
+        "description": "កំណែ 6 ជាមួយការកែកំហុសខ្ពស់។",
+        "title": "V6 + ECC ខ្ពស់។"
       },
       "enc-v6-l": {
-        "description": "កំណែទី 6 ជាមួយនឹងការកែកំហុសទាប",
-        "title": "V៦ + ECC ទាប"
+        "description": "កំណែ 6 ជាមួយការកែកំហុសទាប",
+        "title": "V6 + ECC ទាប"
       },
       "enc-v9": {
-        "description": "លេខកូដ QR ជំនាន់ទី ៩",
-        "title": "កំណែទី ៩"
+        "description": "កំណែ 9 កូដ QR",
+        "title": "កំណែ 9"
       },
       "enc-v9-h": {
-        "description": "កំណែទី 9 ជាមួយនឹងការកែកំហុសខ្ពស់",
-        "title": "V9 + ECC ខ្ពស់"
+        "description": "កំណែទី 9 ជាមួយនឹងការកែកំហុសខ្ពស់។",
+        "title": "V9 + ECC ខ្ពស់។"
       },
       "enc-v9-l": {
-        "description": "កំណែទី 9 ជាមួយនឹងការកែកំហុសទាប",
-        "title": "V៩ + ECC ទាប"
+        "description": "កំណែ 9 ជាមួយនឹងការកែកំហុសទាប",
+        "title": "V9 + ECC ទាប"
       },
       "finder-circle": {
-        "description": "លំនាំស្វែងរករង្វង់",
-        "title": "ឧបករណ៍ស្វែងរករង្វង់"
+        "description": "គំរូឧបករណ៍រករង្វង់",
+        "title": "អ្នកស្វែងរករង្វង់"
       },
       "finder-rounded": {
-        "description": "លំនាំ​ឧបករណ៍​ស្វែងរក​រាង​មូល",
-        "title": "ឧបករណ៍ស្វែងរករាងមូល"
+        "description": "គំរូឧបករណ៍រករាងមូល",
+        "title": "អ្នកស្វែងរករាងមូល"
       },
       "finder-square": {
-        "description": "លំនាំ​ឧបករណ៍​ស្វែងរក​ការ៉េ",
-        "title": "ឧបករណ៍ស្វែងរកការ៉េ"
+        "description": "គំរូឧបករណ៍រកការ៉េ",
+        "title": "អ្នកស្វែងរកការ៉េ"
       },
       "halftone-classic": {
-        "description": "ពណ៌​ហាល​ថូន​ជាមួយ​ក្ដារ​ពណ៌​បុរាណ",
-        "title": "ពាក់កណ្តាលសម្លេងបុរាណ"
+        "description": "ពាក់កណ្តាលសម្លេងជាមួយក្ដារលាយបុរាណ",
+        "title": "សំឡេងពាក់កណ្តាលបុរាណ"
       },
       "halftone-forest": {
-        "description": "ពាក់កណ្តាលពណ៌ជាមួយក្ដារលាយពណ៌ព្រៃឈើ",
-        "title": "ពាក់កណ្តាលពណ៌ព្រៃឈើ"
+        "description": "ពាក់កណ្តាលសម្លេងជាមួយក្ដារលាយព្រៃឈើ",
+        "title": "ព្រៃពាក់កណ្តាល"
       },
       "halftone-navy": {
-        "description": "ពណ៌​ហាល​ថូន​ជាមួយ​ក្ដារ​ពណ៌​ខៀវ​ស្រាល",
-        "title": "ពណ៌​សមុទ្រ​ពាក់កណ្ដាល​ពណ៌"
+        "description": "ពាក់កណ្តាលសម្លេងជាមួយក្ដារលាយពណ៌កងទ័ពជើងទឹក។",
+        "title": "Navy Halftone"
       },
       "halftone-wine": {
-        "description": "ពាក់កណ្តាលពណ៌ជាមួយក្ដារលាយស្រា",
-        "title": "ស្រាពាក់កណ្តាលពណ៌"
+        "description": "ពាក់កណ្តាលសម្លេងជាមួយក្ដារលាយស្រា",
+        "title": "ស្រាពាក់កណ្តាល"
       },
       "img-blend": {
-        "description": "ការលាយពណ៌ពីលើគ្នា",
-        "title": "របៀបលាយបញ្ចូលគ្នា"
+        "description": "ការលាបពណ៌ចម្រុះ",
+        "title": "របៀបលាយ"
       },
       "img-blue-noise": {
-        "title": "សំឡេងពណ៌ខៀវ",
-        "description": "កម្រិតសំឡេងរំខានពណ៌ខៀវញ័រ"
+        "title": "សម្លេងពណ៌ខៀវ",
+        "description": "កម្រិតសំឡេងពណ៌ខៀវកំពុងធ្លាក់ចុះ"
       },
       "img-brightness": {
         "description": "ម៉ូឌុលផ្អែកលើពន្លឺ",
         "title": "ពន្លឺ"
       },
       "img-colormode-bw": {
-        "description": "ដំណើរការ​ពណ៌​ខ្មៅ និង​ស",
-        "title": "ខ្មៅ និង ស"
+        "description": "ដំណើរការសខ្មៅ",
+        "title": "ខ្មៅ & ស"
       },
       "img-colormode-color": {
         "description": "ដំណើរការពណ៌",
         "title": "ពណ៌"
       },
       "img-colormode-grayscale": {
-        "description": "ដំណើរការ​មាត្រដ្ឋាន​ប្រផេះ",
+        "description": "ដំណើរការប្រផេះ",
         "title": "មាត្រដ្ឋានប្រផេះ"
       },
       "img-dithered": {
-        "description": "ការរីករាលដាលកំហុសធ្វើឱ្យរញ៉េរញ៉ៃ",
-        "title": "ច្របូកច្របល់"
+        "description": "កំហុសនៃការសាយភាយ dithering",
+        "title": "ខូចចិត្ត"
       },
       "img-dithered-i100": {
-        "description": "ញ័រ​នៅ​កម្រិត​អាំងតង់ស៊ីតេ ១០០%",
-        "title": "ច្របូកច្របល់ ១០០%"
+        "description": "Dithered នៅ 100% អាំងតង់ស៊ីតេ",
+        "title": "ខូច 100%"
       },
       "img-dithered-i50": {
-        "description": "ញ័រ​នៅ​កម្រិត​អាំងតង់ស៊ីតេ ៥០%",
-        "title": "ច្របូកច្របល់ ៥០%"
+        "description": "Dithered នៅ 50% អាំងតង់ស៊ីតេ",
+        "title": "ធ្លាក់ចុះ 50%"
       },
       "img-dithered-i75": {
-        "description": "ញ័រ​នៅ​កម្រិត​អាំងតង់ស៊ីតេ ៧៥%",
-        "title": "ច្របូកច្របល់ ៧៥%"
+        "description": "រលាយនៅអាំងតង់ស៊ីតេ 75%",
+        "title": "ធ្លាក់ចុះ 75%"
       },
       "img-duotone": {
-        "description": "ការ​គូស​ផែនទី​ពណ៌​ពីរ​ពណ៌",
-        "title": "ឌូតូន"
+        "description": "ការគូសផែនទីពណ៌ពីរពណ៌",
+        "title": "Duotone"
       },
       "img-extreme": {
         "description": "ភាពមើលឃើញរូបភាពអតិបរមា",
         "title": "ខ្លាំង"
       },
       "img-halftone": {
-        "description": "ចំណុចពាក់កណ្តាលពណ៌បុរាណ",
-        "title": "ពាក់កណ្តាលសម្លេង"
+        "description": "ចំណុចពាក់កណ្តាលបុរាណ",
+        "title": "សម្លេងពាក់កណ្តាល"
       },
       "img-mosaic": {
-        "description": "ឥទ្ធិពលក្បឿងម៉ូសាអ៊ីក",
-        "title": "ម៉ូសាអ៊ីក"
+        "description": "ឥទ្ធិពលក្បឿង Mosaic",
+        "title": "ម៉ូសេ"
       },
       "img-outline": {
-        "description": "ការ​ត្រួត​លើ​ការ​រក​ឃើញ​គែម",
+        "description": "ការត្រួតលើការរកឃើញគែម",
         "title": "គ្រោង"
       },
       "img-pixelate": {
-        "description": "បែបផែន​ភីកសែល​ត្រួត​លើ​គ្នា",
+        "description": "បែបផែន​ជាន់​លើ​ភីកសែល",
         "title": "ភីកសែល"
       },
       "img-subpixel": {
-        "description": "ការបង្ហាញភីកសែលរងលម្អិតខ្ពស់",
+        "description": "ការបង្ហាញ subpixel លម្អិតខ្ពស់។",
         "title": "ភីកសែលរង"
       },
       "img-wave": {
         "title": "រលក",
-        "description": "ឥទ្ធិពល​បង្ខូច​ទ្រង់ទ្រាយ​រលក"
+        "description": "ឥទ្ធិពលបង្ខូចទ្រង់ទ្រាយរលក"
       },
       "mosaic-classic": {
-        "description": "រូបចម្លាក់ Mosaic ជាមួយក្ដារលាយពណ៌បុរាណ",
-        "title": "រូបចម្លាក់ម៉ូសាអ៊ីកបុរាណ"
+        "description": "Mosaic ជាមួយក្ដារលាយបុរាណ",
+        "title": "Mosaic បុរាណ"
       },
       "mosaic-forest": {
-        "description": "រូបចម្លាក់ម៉ូសាអ៊ីកជាមួយនឹងក្ដារលាយពណ៌ព្រៃឈើ",
-        "title": "រូបចម្លាក់ព្រៃឈើ"
+        "description": "Mosaic ជាមួយក្ដារលាយព្រៃឈើ",
+        "title": "ព្រៃឈើ Mosaic"
       },
       "mosaic-navy": {
-        "description": "រូបចម្លាក់ Mosaic ជាមួយនឹងក្ដារលាយពណ៌ខៀវស្រងាត់",
-        "title": "ផ្ទាំងគំនូរពណ៌ខៀវសមុទ្រ"
+        "description": "Mosaic ជាមួយក្ដារលាយពណ៌កងទ័ពជើងទឹក។",
+        "title": "កងទ័ពជើងទឹក Mosaic"
       },
       "mosaic-wine": {
-        "description": "រូបចម្លាក់ Mosaic ជាមួយក្ដារលាយស្រា",
-        "title": "ផ្ទាំងគំនូរស្រា"
+        "description": "Mosaic ជាមួយក្ដារលាយស្រា",
+        "title": "ស្រា Mosaic"
       },
       "plain-basic": {
-        "description": "លេខកូដ QR ស្តង់ដារ",
+        "description": "កូដ QR ស្តង់ដារ",
         "title": "បុរាណ"
       },
       "plain-ecc-l": {
-        "description": "ការកែកំហុសតិចតួចបំផុត",
-        "title": "ECC ទាប (៧%)"
+        "description": "ការកែកំហុសតិចតួចបំផុត។",
+        "title": "ECC ទាប (7%)"
       },
       "plain-ecc-q": {
-        "description": "ការកែកំហុសកម្រិតមធ្យម-ខ្ពស់",
-        "title": "ត្រីមាស ECC (២៥%)"
+        "description": "ការកែកំហុសមធ្យមកម្រិតខ្ពស់",
+        "title": "ECC Quartile (25%)"
       },
       "plain-v12": {
-        "title": "កំណែទី ១២",
-        "description": "ធំ​ជាមួយ​ការ​តម្រឹម​ច្រើន"
+        "title": "កំណែ 12",
+        "description": "ធំជាមួយនឹងការតម្រឹមច្រើន។"
       },
       "plain-v6": {
-        "title": "កំណែទី ៦",
+        "title": "កំណែ 6",
         "description": "ធំជាងដោយគ្មានភ្នែកកណ្តាល"
       },
       "plain-v9": {
-        "title": "កំណែទី ៩",
-        "description": "ធំជាងនេះទៅទៀតជាមួយនឹងភ្នែកកណ្តាល"
+        "title": "កំណែ 9",
+        "description": "សូម្បីតែធំជាងដោយភ្នែកកណ្តាល"
       },
       "prep-blur-1": {
-        "description": "ភាពព្រិលៗហ្គោសៀន ១ភីកសែល",
-        "title": "ព្រិលៗ ១ ភីកសែល"
+        "description": "1px gaussian blur",
+        "title": "ព្រិល 1px"
       },
       "prep-blur-2": {
-        "description": "ព្រិលៗហ្គោសៀន ២ភីកសែល",
-        "title": "ព្រិលៗ ២ ភីកសែល"
+        "description": "2px gaussian blur",
+        "title": "ព្រិល 2px"
       },
       "prep-blur-4": {
-        "description": "ព្រិលៗហ្គោសៀន ៤ភីកសែល",
-        "title": "ព្រិល ៤ ភីកសែល"
+        "description": "4px gaussian blur",
+        "title": "ព្រិល 4px"
       },
       "prep-brightness-n25": {
-        "description": "ពន្លឺត្រូវបានកែតម្រូវឱ្យងងឹតជាងមុន",
-        "title": "ពន្លឺ -២៥"
+        "description": "ពន្លឺត្រូវបានកែតម្រូវឱ្យងងឹត",
+        "title": "ពន្លឺ -25"
       },
       "prep-brightness-n50": {
-        "description": "ពន្លឺត្រូវបានកែតម្រូវឱ្យងងឹតជាងមុន",
-        "title": "ពន្លឺ -៥០"
+        "description": "ពន្លឺត្រូវបានកែតម្រូវឱ្យងងឹត",
+        "title": "ពន្លឺ -50"
       },
       "prep-brightness-p25": {
-        "description": "ពន្លឺត្រូវបានកែតម្រូវឱ្យភ្លឺជាងមុន",
-        "title": "ពន្លឺ +២៥"
+        "description": "ពន្លឺត្រូវបានកែតម្រូវឱ្យកាន់តែភ្លឺ",
+        "title": "ពន្លឺ +25"
       },
       "prep-brightness-p50": {
-        "description": "ពន្លឺត្រូវបានកែតម្រូវឱ្យភ្លឺជាងមុន",
-        "title": "ពន្លឺ +៥០"
+        "description": "ពន្លឺត្រូវបានកែតម្រូវឱ្យកាន់តែភ្លឺ",
+        "title": "ពន្លឺ +50"
       },
       "prep-contrast-n50": {
         "description": "កម្រិតពណ៌ទាប",
-        "title": "កម្រិតពណ៌ -៥០"
+        "title": "កម្រិតពណ៌ -50"
       },
       "prep-contrast-p100": {
-        "description": "កម្រិតពណ៌ខ្ពស់",
-        "title": "កម្រិតពណ៌ +១០០"
+        "description": "កម្រិតពណ៌ខ្ពស់។",
+        "title": "កម្រិតពណ៌ +100"
       },
       "prep-contrast-p50": {
-        "description": "កម្រិតពណ៌ខ្ពស់",
-        "title": "កម្រិតពណ៌ +៥០"
+        "description": "កម្រិតពណ៌ខ្ពស់។",
+        "title": "កម្រិតពណ៌ +50"
       },
       "prep-edge-canny": {
-        "description": "ការរកឃើញគែមដ៏ប៉ិនប្រសប់",
-        "title": "Edge Canny"
+        "description": "ការរកឃើញគែមរបស់ Canny",
+        "title": "គែម Canny"
       },
       "prep-edge-sobel": {
-        "description": "ការរកឃើញគែម Sobel",
-        "title": "ពណ៌​ស​គែម"
+        "description": "ការរកឃើញគែមសូបែល",
+        "title": "គែម Sobel"
       },
       "prep-gamma-05": {
-        "description": "ការកែតម្រូវហ្គាម៉ា ០.៥",
-        "title": "ហ្គាម៉ា ០.៥"
+        "description": "ការកែតម្រូវហ្គាម៉ា 0.5",
+        "title": "ហ្គាម៉ា 0.5"
       },
       "prep-gamma-15": {
-        "description": "ការកែតម្រូវហ្គាម៉ា ១.៥",
-        "title": "ហ្គាម៉ា ១.៥"
+        "description": "ការកែតម្រូវហ្គាម៉ា 1.5",
+        "title": "ហ្គាម៉ា 1.5"
       },
       "prep-gamma-20": {
-        "description": "ការកែតម្រូវហ្គាម៉ា ២.០",
-        "title": "ហ្គាម៉ា ២.០"
+        "description": "ការកែហ្គាម៉ា 2.0",
+        "title": "ហ្គាម៉ា 2.0"
       },
       "prep-hue-90": {
-        "description": "ការបង្វិលពណ៌ ៩០ ដឺក្រេ",
-        "title": "ពណ៌​ពណ៌​ស +៩០°"
+        "description": "ការបង្វិលពណ៌ 90 ដឺក្រេ។",
+        "title": "ពណ៌លាំៗ +90°"
       },
       "prep-invert": {
         "title": "បញ្ច្រាស",
-        "description": "ពណ៌បញ្ច្រាស់"
+        "description": "ពណ៌បញ្ច្រាស"
       },
       "prep-posterize-2": {
-        "description": "កម្រិតពណ៌ ២",
-        "title": "ធ្វើ​ឲ្យ​រូបភាព​ភ្លឺ​ច្បាស់​ល្អ ២"
+        "description": "2 កម្រិតពណ៌",
+        "title": "Posterize ២"
       },
       "prep-posterize-4": {
-        "description": "កម្រិតពណ៌ ៤",
-        "title": "ធ្វើ​ឲ្យ​រូបភាព​ភ្លឺ​ច្បាស់ ៤"
+        "description": "4 កម្រិតពណ៌",
+        "title": "Posterize ៤"
       },
       "prep-posterize-8": {
-        "description": "កម្រិតពណ៌ ៨",
-        "title": "ធ្វើ​ឲ្យ​រូបភាព​ភ្លឺ​ច្បាស់ ៨"
+        "description": "8 កម្រិតពណ៌",
+        "title": "Posterize ៨"
       },
       "prep-saturation-n100": {
-        "description": "មិនឆ្អែត",
-        "title": "តិត្ថិភាព -១០០"
+        "description": "ឆ្អែត",
+        "title": "តិត្ថិភាព -100"
       },
       "prep-saturation-n50": {
-        "description": "តិត្ថិភាពថយចុះ",
-        "title": "តិត្ថិភាព -៥០"
+        "description": "កាត់បន្ថយការតិត្ថិភាព",
+        "title": "តិត្ថិភាព -50"
       },
       "prep-saturation-p100": {
-        "description": "ឆ្អែតពេក",
-        "title": "តិត្ថិភាព +១០០"
+        "description": "ឆ្អែត",
+        "title": "តិត្ថិភាព +100"
       },
       "prep-saturation-p50": {
-        "description": "ឆ្អែតពេក",
-        "title": "តិត្ថិភាព +៥០"
+        "description": "ឆ្អែត",
+        "title": "តិត្ថិភាព +50"
       },
       "prep-sharpen-100": {
-        "description": "ធ្វើឲ្យច្បាស់ ១០០%",
-        "title": "ធ្វើឱ្យច្បាស់ ១០០%"
+        "description": "ការធ្វើឱ្យច្បាស់ 100%",
+        "title": "ធ្វើឱ្យច្បាស់ 100%"
       },
       "prep-sharpen-25": {
-        "description": "ធ្វើឱ្យច្បាស់ ២៥%",
-        "title": "ធ្វើឱ្យច្បាស់ ២៥%"
+        "description": "ការធ្វើឱ្យច្បាស់ 25%",
+        "title": "ធ្វើឱ្យច្បាស់ 25%"
       },
       "prep-sharpen-50": {
-        "description": "ធ្វើឱ្យច្បាស់ ៥០%",
-        "title": "ធ្វើឱ្យច្បាស់ ៥០%"
+        "description": "ការធ្វើឱ្យច្បាស់ 50%",
+        "title": "ធ្វើឱ្យច្បាស់ 50%"
       },
       "prep-threshold-128": {
-        "description": "កម្រិត​គោល​ពីរ​នៅ ១២៨",
-        "title": "កម្រិត ១២៨"
+        "description": "កម្រិតគោលពីរនៅ 128",
+        "title": "កម្រិត 128"
       },
       "prep-threshold-192": {
-        "description": "កម្រិត​គោល​ពីរ​នៅ ១៩២",
-        "title": "កម្រិត ១៩២"
+        "description": "កម្រិតគោលពីរនៅ 192",
+        "title": "កម្រិត 192"
       },
       "prep-threshold-64": {
-        "description": "កម្រិត​គោលពីរ​នៅ​លេខ ៦៤",
-        "title": "កម្រិត ៦៤"
+        "description": "កម្រិតគោលពីរនៅ 64",
+        "title": "កម្រិត 64"
       },
       "style-connected": {
-        "description": "រចនាប័ទ្មម៉ូឌុលដែលបានភ្ជាប់",
-        "title": "ម៉ូឌុលដែលបានភ្ជាប់"
+        "description": "រចនាប័ទ្មម៉ូឌុលដែលបានតភ្ជាប់",
+        "title": "ម៉ូឌុលដែលបានតភ្ជាប់"
       },
       "style-diamond": {
         "description": "រចនាប័ទ្មម៉ូឌុលពេជ្រ",
@@ -780,169 +780,169 @@
       },
       "style-dots": {
         "description": "រចនាប័ទ្មម៉ូឌុលចំណុច",
-        "title": "ម៉ូឌុលចំណុច"
+        "title": "ម៉ូឌុលចំនុច"
       },
       "style-rounded": {
-        "description": "រចនាប័ទ្មម៉ូឌុលរាងមូល",
-        "title": "ម៉ូឌុលរាងមូល"
+        "description": "រចនាប័ទ្មម៉ូឌុលមូល",
+        "title": "ម៉ូឌុលមូល"
       },
       "style-square": {
         "description": "រចនាប័ទ្មម៉ូឌុលការ៉េ",
         "title": "ម៉ូឌុលការ៉េ"
       }
     },
-    "plain": "ធម្មតា",
-    "powerCombos": "បន្សំថាមពល",
-    "preprocessing": "ការកែច្នៃជាមុន",
+    "plain": "ធម្មតា។",
+    "powerCombos": "ថាមពលបន្សំ",
+    "preprocessing": "កំពុងដំណើរការមុន។",
     "sections": {
       "animation-overlay": {
-        "description": "ការ​លាប​រូបភាព GIF មាន​ចលនា​ជាមួយ​នឹង​របៀប​លាយ​បញ្ចូល​គ្នា​ផ្សេងៗ",
-        "title": "ការ​លាប​ពណ៌​មាន​ចលនា"
+        "description": "ការលាបលើ GIF ដែលមានចលនាជាមួយនឹងរបៀបលាយបញ្ចូលគ្នាផ្សេងៗគ្នា",
+        "title": "ការលាបពណ៌មានចលនា"
       },
       "blend-modes": {
-        "title": "របៀបលាយបញ្ចូលគ្នា",
-        "description": "ការលាយពណ៌ផ្សេងៗគ្នាជាមួយនឹងការដាក់លើរូបភាព"
+        "title": "របៀបលាយ",
+        "description": "ការលាយពណ៌ផ្សេងគ្នាជាមួយនឹងការលាបលើរូបភាព"
       },
       "color-modes": {
         "description": "ដំណើរការពណ៌ មាត្រដ្ឋានប្រផេះ និងខ្មៅ និងស",
         "title": "ដំណើរការពណ៌"
       },
       "colors": {
-        "description": "គ្រោងការណ៍ពណ៌ និងក្ដារលាយពណ៌តាមប្រធានបទ",
-        "title": "ពណ៌ និង ស្បែក"
+        "description": "ពណ៌ចម្រុះ និងក្ដារលាយតាមប្រធានបទ",
+        "title": "ពណ៌ & ស្បែក"
       },
       "content-types": {
-        "title": "ប្រភេទ​មាតិកា",
-        "description": "ទម្រង់​បន្ទុក​ផ្សេងៗ - vCard, WiFi, អ៊ីមែល, SMS, Geo, ប្រតិទិន"
+        "title": "ប្រភេទមាតិកា",
+        "description": "ទម្រង់បង់ប្រាក់ផ្សេងៗគ្នា - vCard, WiFi, អ៊ីមែល, SMS, Geo, ប្រតិទិន"
       },
       "dithering": {
-        "description": "វិធីសាស្ត្រ​ធ្វើ​ឲ្យ​ច្របូកច្របល់​ផ្សេងៗ​គ្នា និង​ខឺណែល​សាយភាយ​កំហុស",
-        "title": "ក្បួនដោះស្រាយការច្របូកច្របល់"
+        "description": "វិធីសាស្រ្ត dithering ផ្សេងគ្នានិងកំហុសខឺណែល diffusion",
+        "title": "Dithering Algorithms"
       },
       "encoding": {
-        "description": "កំណែ QR ផ្សេងៗគ្នា និងកម្រិតកែកំហុស",
+        "description": "កំណែ QR ផ្សេងគ្នា និងកម្រិតកែកំហុស",
         "title": "ការអ៊ិនកូដ QR"
       },
       "image-overlay": {
-        "description": "ការ​លាប​រូបភាព​ឋិតិវន្ត​ជាមួយ​នឹង​របៀប​លាយ​បញ្ចូល​គ្នា​ផ្សេងៗ",
-        "title": "ការ​ដាក់​រូបភាព​ពីលើ"
+        "description": "ការលាបលើរូបភាពឋិតិវន្តជាមួយនឹងរបៀបបញ្ចូលគ្នាផ្សេងៗគ្នា",
+        "title": "ការលាបលើរូបភាព"
       },
       "plain": {
-        "description": "លេខកូដ QR ស្តង់ដារដោយគ្មានការដាក់ពីលើ - កំណែផ្សេងៗគ្នា និងការកែកំហុស",
-        "title": "លេខកូដ QR ធម្មតា"
+        "description": "កូដ QR ស្តង់ដារ​ដោយ​មិន​មាន​ការ​ត្រួត​គ្នា - កំណែ​ផ្សេង​គ្នា​និង​ការ​កែ​កំហុស​",
+        "title": "កូដ QR ធម្មតា។"
       },
       "power-combos": {
-        "title": "បន្សំថាមពល",
-        "description": "ការរួមបញ្ចូលគ្នាដ៏គួរឱ្យចាប់អារម្មណ៍នៃមុខងារច្រើនដែលបង្ហាញពីសមត្ថភាព ANQR"
+        "title": "ថាមពលបន្សំ",
+        "description": "ការរួមបញ្ចូលពហុមុខងារដ៏គួរឱ្យចាប់អារម្មណ៍បង្ហាញពីសមត្ថភាព ANQR"
       },
       "preprocessing": {
-        "description": "ពន្លឺ, កម្រិតពណ៌, ហ្គាម៉ា, ព្រិល, ធ្វើឱ្យច្បាស់, ធ្វើឱ្យរូបភាពផ្ទៃខាងក្រោយ, ការរកឃើញគែម",
-        "title": "ការកែច្នៃរូបភាពជាមុន"
+        "description": "ពន្លឺ, កម្រិតពណ៌, ហ្គាម៉ា, ព្រិល, ធ្វើឱ្យច្បាស់, ផ្ទាំងរូបភាព, ការរកឃើញគែម",
+        "title": "ដំណើរការរូបភាពជាមុន"
       },
       "styles": {
-        "description": "រចនាប័ទ្ម​ដែល​មើល​ឃើញ​ផ្សេងៗ​គ្នា​សម្រាប់​ម៉ូឌុល និង​លំនាំ​ឧបករណ៍​ស្វែងរក",
-        "title": "ម៉ូឌុល និងរចនាប័ទ្មឧបករណ៍ស្វែងរក"
+        "description": "រចនាប័ទ្មដែលមើលឃើញខុសៗគ្នាសម្រាប់ម៉ូឌុល និងលំនាំអ្នកស្វែងរក",
+        "title": "រចនាប័ទ្មម៉ូឌុល និងឧបករណ៍ស្វែងរក"
       }
     },
-    "showAll": "បង្ហាញទាំងអស់",
+    "showAll": "បង្ហាញទាំងអស់។",
     "styles": "រចនាប័ទ្ម",
-    "subtitle": "ស្វែងយល់ពីឧទាហរណ៍នៃលេខកូដ QR ដែលបង្កើតឡើងដោយប្រើ ANQR",
-    "title": "វិចិត្រសាលលេខកូដ QR",
-    "tryThis": "សាកល្បង​វា"
+    "subtitle": "ស្វែងរកឧទាហរណ៍នៃកូដ QR ដែលបង្កើតជាមួយ ANQR",
+    "title": "វិចិត្រសាលកូដ QR",
+    "tryThis": "សាកល្បងនេះ។"
   },
   "header": {
     "close": "បិទ",
-    "copied": "បានចម្លងហើយ!",
+    "copied": "ចម្លង!",
     "reset": "កំណត់ឡើងវិញ",
     "copyLink": "ចម្លងតំណ",
     "darkMode": "ប្តូរទៅរបៀបងងឹត",
     "export": "នាំចេញ",
     "lightMode": "ប្តូរទៅរបៀបពន្លឺ",
-    "searchSettings": "ការកំណត់ការស្វែងរក...",
+    "searchSettings": "ការកំណត់ស្វែងរក...",
     "share": "ចែករំលែក"
   },
   "hints": {
-    "moduleJitterWarning": "⚠️ អាចប៉ះពាល់ដល់សមត្ថភាពស្កេន",
-    "alignmentStyle": "រចនាប័ទ្មនៃលំនាំតម្រឹម (ប្រើក្នុងលេខកូដ QR ធំៗ)",
-    "appLinkNote": "បើក​ខ្លឹមសារ​ជាក់លាក់​ក្នុង​កម្មវិធី​ទូរស័ព្ទ",
-    "autoDetect": "រកឃើញដោយស្វ័យប្រវត្តិ (តម្រូវឱ្យមាន v{{version}}+ សម្រាប់ខ្លឹមសារបច្ចុប្បន្ន)",
-    "autoMinVersion": "០ = ស្វ័យប្រវត្តិ, min v{{version}} សម្រាប់ខ្លឹមសារបច្ចុប្បន្ន",
-    "bgColorHex": "កូដ​ពណ៌​ផ្ទៃ​ខាង​ក្រោយ​ជា​លេខ​ឆកោន",
-    "bizcardLegacy": "ទម្រង់​ចាស់ - ពិចារណា​ប្រើ vCard ជំនួស​វិញ",
-    "bluetoothNote": "ចំណាំ៖ ការផ្គូផ្គងប៊្លូធូសតាមរយៈ QR គឺជាក់លាក់របស់អ្នកលក់ ហើយអាចនឹងមិនដំណើរការលើឧបករណ៍ទាំងអស់ទេ",
-    "bounceAnimation": "លេង​ចលនា​ទៅមុខ រួច​ថយក្រោយ (ប៉េងប៉ុង)",
-    "calendarNote": "ជាវ​មតិ​ព័ត៌មាន​ប្រតិទិន​ដែល​បាន​ចែករំលែក",
-    "contrastGuard": "ធានា​សមាមាត្រ​កម្រិត​ពណ៌​អប្បបរមា​រវាង​ផ្ទៃ​ខាងមុខ និង​ផ្ទៃខាងក្រោយ",
-    "cornerRadius": "ភាគរយកាំជ្រុងសម្រាប់ម៉ូឌុលដែលមូល (០-១០០%)",
-    "crispEdges": "ប្រើការបង្ហាញភីកសែលសម្រាប់គែមម៉ូឌុលច្បាស់",
-    "customNote": "បញ្ចូលទិន្នន័យឆៅក្នុងទម្រង់ណាមួយ។ គ្មានការផ្ទៀងផ្ទាត់ ឬការធ្វើទ្រង់ទ្រាយនឹងត្រូវបានអនុវត្តទេ។",
-    "dotRotation": "បង្វិលម៉ូឌុលរចនាប័ទ្មចំណុច (០-៣៦០ ដឺក្រេ)",
-    "encodingMode": "របៀបអ៊ិនកូដទិន្នន័យ - ជ្រើសរើសរបៀបមានប្រសិទ្ធភាពបំផុតដោយស្វ័យប្រវត្តិ",
-    "enforceMinQuietZone": "អនុវត្តតំបន់ស្ងាត់ម៉ូឌុលអប្បបរមា ៤ សម្រាប់ភាពជឿជាក់នៃការស្កេនកាន់តែប្រសើរ",
-    "enterTextContent": "បញ្ចូលខ្លឹមសារអត្ថបទដើម្បីអ៊ិនកូដនៅក្នុងលេខកូដ QR",
-    "enterUrlContent": "បញ្ចូល URL ដើម្បីអ៊ិនកូដនៅក្នុងលេខកូដ QR",
-    "epcSepaNote": "លេខកូដ QR របស់ក្រុមប្រឹក្សាទូទាត់អឺរ៉ុបសម្រាប់ការផ្ទេរឥណទាន SEPA",
-    "errorCorrection": "កម្រិតកែកំហុស - ខ្ពស់ជាង = ភាពធន់នឹងការខូចខាតកាន់តែច្រើន ប៉ុន្តែលេខកូដ QR ធំជាង",
-    "extraBorder": "ម៉ូឌុលព្រំដែនបន្ថែមហួសពីតំបន់ស្ងាត់ (០-១០)",
-    "eyeInnerStyle": "រចនាប័ទ្មនៃការ៉េខាងក្នុងនៃលំនាំឧបករណ៍ស្វែងរក",
-    "eyeOuterStyle": "រចនាប័ទ្មនៃរង្វង់ខាងក្រៅនៃលំនាំឧបករណ៍ស្វែងរក",
-    "eyeScale": "លំនាំ​ឧបករណ៍​ស្វែងរក​មាត្រដ្ឋាន​ទាក់ទង​នឹង​ទំហំ​លំនាំដើម​របស់​វា (៥០-១៥០%)",
-    "fgColorHex": "កូដ​ពណ៌​ផ្ទៃ​ខាងមុខ​ជា​លេខ​ឆកោន",
-    "finderStyle": "រចនាប័ទ្មនៃលំនាំឧបករណ៍ស្វែងរកជ្រុង",
-    "forceHttps": "បម្លែង URL HTTP ទៅជា HTTPS ដោយស្វ័យប្រវត្តិ",
-    "frameStyle": "បន្ថែមស៊ុមតុបតែងជុំវិញលេខកូដ QR",
-    "frameText": "អត្ថបទ​ដើម្បី​បង្ហាញ​លើ​ស៊ុម",
+    "moduleJitterWarning": "⚠️អាចប៉ះពាល់ដល់ការស្កេន",
+    "alignmentStyle": "រចនាប័ទ្មនៃលំនាំតម្រឹម (ប្រើក្នុងកូដ QR ធំជាង)",
+    "appLinkNote": "បើកមាតិកាជាក់លាក់នៅក្នុងកម្មវិធីទូរស័ព្ទ",
+    "autoDetect": "ស្វែងរកដោយស្វ័យប្រវត្តិ (ទាមទារ v{{version}}+ សម្រាប់មាតិកាបច្ចុប្បន្ន)",
+    "autoMinVersion": "0 = ស្វ័យប្រវត្តិ អប្បបរមា v{{version}} សម្រាប់មាតិកាបច្ចុប្បន្ន",
+    "bgColorHex": "កូដពណ៌ផ្ទៃខាងក្រោយ",
+    "bizcardLegacy": "ទម្រង់ចាស់ - ពិចារណាប្រើ vCard ជំនួសវិញ។",
+    "bluetoothNote": "ចំណាំ៖ ការផ្គូផ្គងប៊្លូធូសតាមរយៈ QR គឺជាក់លាក់សម្រាប់អ្នកលក់ ហើយប្រហែលជាមិនដំណើរការលើឧបករណ៍ទាំងអស់នោះទេ។",
+    "bounceAnimation": "លេងចលនាទៅមុខ បន្ទាប់មកថយក្រោយ (ភីងប៉ុង)",
+    "calendarNote": "ជាវប្រចាំទៅមតិព័ត៌មានប្រតិទិនដែលបានចែករំលែក",
+    "contrastGuard": "ធានាសមាមាត្រកម្រិតពណ៌អប្បបរមារវាងផ្ទៃខាងមុខ និងផ្ទៃខាងក្រោយ",
+    "cornerRadius": "ភាគរយកាំជ្រុងសម្រាប់ម៉ូឌុលមូល (0-100%)",
+    "crispEdges": "ប្រើការបង្ហាញភីកសែលសម្រាប់គែមម៉ូឌុលមុតស្រួច",
+    "customNote": "បញ្ចូលទិន្នន័យឆៅក្នុងទម្រង់ណាមួយ។ គ្មានសុពលភាព ឬទម្រង់នឹងត្រូវបានអនុវត្តទេ។",
+    "dotRotation": "បង្វិលម៉ូឌុលរចនាប័ទ្មចំនុច (0-360 ដឺក្រេ)",
+    "encodingMode": "របៀបអ៊ិនកូដទិន្នន័យ - ស្វ័យប្រវត្តិជ្រើសរើសរបៀបដែលមានប្រសិទ្ធភាពបំផុត។",
+    "enforceMinQuietZone": "អនុវត្តតំបន់ស្ងាត់នៃម៉ូឌុល 4 អប្បបរមាសម្រាប់ភាពជឿជាក់នៃការស្កេនកាន់តែប្រសើរ",
+    "enterTextContent": "បញ្ចូលមាតិកាអត្ថបទដើម្បីអ៊ិនកូដនៅក្នុងកូដ QR",
+    "enterUrlContent": "បញ្ចូល URL ដើម្បីអ៊ិនកូដនៅក្នុងកូដ QR",
+    "epcSepaNote": "ក្រុមប្រឹក្សាទូទាត់អ៊ឺរ៉ុប QR កូដសម្រាប់ការផ្ទេរឥណទាន SEPA",
+    "errorCorrection": "កម្រិតកែកំហុស - ខ្ពស់ជាង = ធន់នឹងការខូចខាតកាន់តែច្រើន ប៉ុន្តែលេខកូដ QR ធំជាង",
+    "extraBorder": "ម៉ូឌុលព្រំដែនបន្ថែមលើសពីតំបន់ស្ងាត់ (0-10)",
+    "eyeInnerStyle": "រចនាប័ទ្មនៃការ៉េខាងក្នុងនៃលំនាំស្វែងរក",
+    "eyeOuterStyle": "រចនាប័ទ្មនៃរង្វង់ខាងក្រៅនៃលំនាំស្វែងរក",
+    "eyeScale": "គំរូស្វែងរកមាត្រដ្ឋានទាក់ទងទៅនឹងទំហំលំនាំដើមរបស់វា (50-150%)",
+    "fgColorHex": "កូដពណ៌ផ្ទៃខាងមុខ",
+    "finderStyle": "រចនាប័ទ្មនៃលំនាំស្វែងរកជ្រុង",
+    "forceHttps": "បំប្លែង HTTP URLs ទៅ HTTPS ដោយស្វ័យប្រវត្តិ",
+    "frameStyle": "បន្ថែមស៊ុមតុបតែងជុំវិញកូដ QR",
+    "frameText": "អត្ថបទដែលត្រូវបង្ហាញនៅលើស៊ុម",
     "gapMode": "របៀបដែលគម្លាតរវាងម៉ូឌុលត្រូវបានបង្ហាញ",
-    "gradient": "អនុវត្តបែបផែនជម្រាលទៅលេខកូដ QR",
+    "gradient": "អនុវត្តបែបផែនពណ៌ជម្រាលទៅលេខកូដ QR",
     "gs1Note": "តំណភ្ជាប់ឌីជីថល GS1 សម្រាប់ការកំណត់អត្តសញ្ញាណផលិតផល និងការតាមដាន",
-    "higherEccLargerQr": "ខ្ពស់ជាង = ធន់នឹងការខូចខាតកាន់តែច្រើន QR ធំជាង",
-    "loopAnimation": "ចលនា​វិល​ជុំ​ជា​បន្តបន្ទាប់",
-    "maxLengthGuard": "ការពារការអ៊ិនកូដខ្លឹមសារដែលលើសពីសមត្ថភាពកូដ QR",
-    "minContrastRatio": "សមាមាត្រកម្រិតពណ៌អប្បបរមាដើម្បីអនុវត្ត (១-២១, WCAG AA តម្រូវឱ្យមាន ៤.៥:១)",
-    "moduleGap": "គម្លាតរវាងម៉ូឌុលជាភាគរយ (០-៣០%)",
-    "moduleSize": "ទំហំនៃម៉ូឌុលកូដ QR នីមួយៗជាភីកសែល (២-២០ ភីកសែល)",
-    "moduleStyle": "រចនាប័ទ្មមើលឃើញនៃម៉ូឌុលលេខកូដ QR",
-    "normalizeNewlines": "បម្លែង​ទម្រង់​បន្ទាត់​ថ្មី​ផ្សេងៗ​ទៅ​ជា​ទម្រង់​ស្តង់ដារ",
-    "outputFormat": "ជ្រើសរើសទម្រង់ឯកសារលទ្ធផលសម្រាប់នាំចេញ",
-    "paynowNote": "ប្រព័ន្ធទូទាត់រហ័សសិង្ហបុរី",
+    "higherEccLargerQr": "ខ្ពស់ជាង = ធន់នឹងការខូចខាតកាន់តែច្រើន កាន់តែធំ QR",
+    "loopAnimation": "ចលនារង្វិលជុំជាបន្តបន្ទាប់",
+    "maxLengthGuard": "ទប់ស្កាត់ការអ៊ិនកូដមាតិកាដែលលើសពីសមត្ថភាពកូដ QR",
+    "minContrastRatio": "សមាមាត្រកម្រិតពណ៌អប្បបរមាដើម្បីអនុវត្ត (1-21, WCAG AA ទាមទារ 4.5:1)",
+    "moduleGap": "គម្លាតរវាងម៉ូឌុលជាភាគរយ (0-30%)",
+    "moduleSize": "ទំហំម៉ូឌុលកូដ QR នីមួយៗគិតជាភីកសែល (2-20px)",
+    "moduleStyle": "រចនាប័ទ្មដែលមើលឃើញនៃម៉ូឌុលកូដ QR",
+    "normalizeNewlines": "បំលែងទម្រង់បន្ទាត់ថ្មីផ្សេងៗគ្នាទៅជាទម្រង់ស្តង់ដារ",
+    "outputFormat": "ជ្រើសរើសទម្រង់ឯកសារលទ្ធផលសម្រាប់ការនាំចេញ",
+    "paynowNote": "ប្រព័ន្ធទូទាត់រហ័សរបស់ប្រទេសសិង្ហបុរី",
     "perModuleColor": "របៀបកំណត់ពណ៌ទៅម៉ូឌុលនីមួយៗ",
-    "pickBgColor": "ចុច​ដើម្បី​ជ្រើសរើស​ពណ៌​ផ្ទៃ​ខាង​ក្រោយ",
+    "pickBgColor": "ចុចដើម្បីជ្រើសរើសពណ៌ផ្ទៃខាងក្រោយ",
     "pickFgColor": "ចុចដើម្បីជ្រើសរើសពណ៌ផ្ទៃខាងមុខ",
-    "pixNote": "ប្រព័ន្ធទូទាត់ប្រាក់ភ្លាមៗរបស់ប្រេស៊ីល",
-    "pixelSnap": "របៀប​ខ្ទាស់​ទីតាំង​ម៉ូឌុល​ទៅ​នឹង​ព្រំដែន​ភីកសែល",
-    "promptpayNote": "ប្រព័ន្ធទូទាត់ប្រាក់តាមប្រព័ន្ធអេឡិចត្រូនិកជាតិថៃ",
-    "qrVersion": "កំណែ​កូដ QR (០=ស្វ័យប្រវត្តិ ១-៤០ បង្កើន​ទំហំ និង​សមត្ថភាព)",
-    "quietZone": "រឹមតំបន់ស្ងាត់ជុំវិញលេខកូដ QR (ម៉ូឌុល ០-១០ បានណែនាំ៖ ៤+)",
-    "rsvpNote": "ភ្ជាប់ទៅទម្រង់បែបបទ RSVP តាមអ៊ីនធឺណិត ឬទំព័រចុះឈ្មោះព្រឹត្តិការណ៍",
-    "safetyMode": "របៀបវិភាគសុវត្ថិភាព - របៀបពិនិត្យមើលភាពអាចអានកូដ QR បានយ៉ាងតឹងរ៉ឹង",
-    "selectContentType": "ជ្រើសរើសប្រភេទខ្លឹមសារដើម្បីអ៊ិនកូដនៅក្នុងលេខកូដ QR",
-    "shortLinkNote": "ប្រើប្រាស់សេវាកម្មបង្រួម URL សម្រាប់លេខកូដ QR ថាមវន្ត/អាចតាមដានបាន",
-    "timingStyle": "រចនាប័ទ្មនៃលំនាំកំណត់ពេលវេលា (បន្ទាត់ផ្ដេក និងបន្ទាត់បញ្ឈរ)",
+    "pixNote": "ប្រព័ន្ធទូទាត់ភ្លាមៗរបស់ប្រេស៊ីល",
+    "pixelSnap": "របៀបខ្ទាស់ទីតាំងម៉ូឌុលទៅព្រំដែនភីកសែល",
+    "promptpayNote": "ប្រព័ន្ធទូទាត់តាមអេឡិចត្រូនិកជាតិរបស់ប្រទេសថៃ",
+    "qrVersion": "កំណែកូដ QR (0=ស្វ័យប្រវត្តិ, 1-40 បង្កើនទំហំ និងសមត្ថភាព)",
+    "quietZone": "រឹមតំបន់ស្ងាត់ជុំវិញកូដ QR (ម៉ូឌុល 0-10 ដែលបានណែនាំ៖ 4+)",
+    "rsvpNote": "ភ្ជាប់ទៅទម្រង់ RSVP តាមអ៊ីនធឺណិត ឬទំព័រចុះឈ្មោះព្រឹត្តិការណ៍",
+    "safetyMode": "របៀប​វិភាគ​សុវត្ថិភាព - របៀប​ពិនិត្យ​មើល​ការ​អាន​កូដ QR យ៉ាង​តឹងរ៉ឹង",
+    "selectContentType": "ជ្រើសរើសប្រភេទមាតិកាដើម្បីអ៊ិនកូដនៅក្នុងកូដ QR",
+    "shortLinkNote": "ប្រើសេវាកម្មខ្លី URL សម្រាប់កូដ QR ថាមវន្ត/អាចតាមដានបាន។",
+    "timingStyle": "រចនាប័ទ្មនៃលំនាំពេលវេលា (បន្ទាត់ផ្ដេកនិងបញ្ឈរ)",
     "transparentBg": "ធ្វើឱ្យផ្ទៃខាងក្រោយថ្លាជំនួសឱ្យការប្រើពណ៌ផ្ទៃខាងក្រោយ",
-    "trimWhitespace": "លុប​ចន្លោះ​ទទេ​នៅ​ខាង​មុខ និង​ខាង​ក្រោយ",
-    "upiNote": "ចំណុចប្រទាក់ទូទាត់បង្រួបបង្រួមសម្រាប់ប្រទេសឥណ្ឌា",
+    "trimWhitespace": "ដក​ចន្លោះ​ដែល​នាំមុខ និង​នៅ​ពីក្រោយ​ចេញ",
+    "upiNote": "ចំណុចប្រទាក់ការទូទាត់បង្រួបបង្រួមសម្រាប់ប្រទេសឥណ្ឌា",
     "utmCampaign": "ប៉ារ៉ាម៉ែត្រយុទ្ធនាការ UTM សម្រាប់ការតាមដានយុទ្ធនាការ",
-    "utmMedium": "ប៉ារ៉ាម៉ែត្រ​មធ្យម UTM សម្រាប់​តាមដាន​យុទ្ធនាការ",
+    "utmMedium": "ប៉ារ៉ាម៉ែត្រមធ្យម UTM សម្រាប់ការតាមដានយុទ្ធនាការ",
     "utmSource": "ប៉ារ៉ាម៉ែត្រប្រភព UTM សម្រាប់ការតាមដានយុទ្ធនាការ",
-    "validateInput": "ផ្ទៀងផ្ទាត់ទិន្នន័យបញ្ចូលមុនពេលអ៊ិនកូដ",
-    "versionTooLow": "⚠️ កំណែទាបពេក! តម្រូវឲ្យមានអប្បបរមា v{{version}}",
-    "swissQrBillNote": "ទម្រង់វិក្កយបត្រ QR របស់ស្វីសសម្រាប់ការទូទាត់ CH/LI តាមគោលការណ៍ណែនាំ SIX",
-    "lightningNote": "វិក្កយបត្រ BOLT11 របស់ Lightning Network សម្រាប់ការទូទាត់ Bitcoin",
+    "validateInput": "ធ្វើឱ្យទិន្នន័យបញ្ចូលមានសុពលភាពមុនពេលអ៊ិនកូដ",
+    "versionTooLow": "⚠️ កំណែទាបពេក! ទាមទារ v{{version}} អប្បបរមា",
+    "swissQrBillNote": "ទម្រង់វិក្កយបត្រ QR របស់ប្រទេសស្វីសសម្រាប់ការទូទាត់ CH/LI តាមគោលការណ៍ណែនាំចំនួនប្រាំមួយ។",
+    "lightningNote": "វិក្កយបត្រ Lightning Network BOLT11 សម្រាប់ការទូទាត់ Bitcoin",
     "ethereumNote": "ទម្រង់សំណើប្រតិបត្តិការ Ethereum EIP-681",
-    "qrisNote": "ស្តង់ដារឥណ្ឌូនេស៊ីឆ្លើយតបរហ័សសម្រាប់ការទូទាត់ជាតិ",
-    "duitnowNote": "DuitNow QR សម្រាប់ការទូទាត់ប្រាក់ Malaysia PayNet",
-    "bharatqrNote": "BharatQR សម្រាប់ការទូទាត់តាមកាត និង UPI រួមនៅក្នុងប្រទេសឥណ្ឌា",
-    "vietqrNote": "ការផ្ទេរប្រាក់តាមធនាគារ VietQR សម្រាប់វៀតណាម NAPAS",
-    "qrphNote": "QR Ph សម្រាប់ការទូទាត់ប្រាក់ InstaPay/PESONet ហ្វីលីពីន",
+    "qrisNote": "ការឆ្លើយតបរហ័សស្តង់ដារឥណ្ឌូនេស៊ីសម្រាប់ការបង់ប្រាក់ជាតិ",
+    "duitnowNote": "DuitNow QR សម្រាប់ការបង់ប្រាក់ម៉ាឡេស៊ី PayNet",
+    "bharatqrNote": "BharatQR សម្រាប់កាតបង្រួបបង្រួម និងការទូទាត់ UPI នៅក្នុងប្រទេសឥណ្ឌា",
+    "vietqrNote": "VietQR សម្រាប់ការផ្ទេរប្រាក់តាមធនាគារ NAPAS របស់វៀតណាម",
+    "qrphNote": "QR Ph សម្រាប់ការបង់ប្រាក់ហ្វីលីពីន InstaPay/PESONet",
     "twqrNote": "TWQR សម្រាប់ការទូទាត់របស់ស្ថាប័នហិរញ្ញវត្ថុតៃវ៉ាន់",
-    "hkqrNote": "HKQR សម្រាប់ប្រព័ន្ធទូទាត់លឿនជាងមុននៅហុងកុង",
+    "hkqrNote": "HKQR សម្រាប់ប្រព័ន្ធទូទាត់រហ័សរបស់ហុងកុង",
     "jpqrNote": "JPQR សម្រាប់ការទូទាត់ QR បង្រួបបង្រួមរបស់ប្រទេសជប៉ុន",
-    "auspaynetNote": "AusPayNet សម្រាប់ការទូទាត់ប្រាក់ PayID របស់ NPP អូស្ត្រាលី",
-    "paypalMeNote": "តំណភ្ជាប់ទូទាត់ដែលអាចចែករំលែកបានរបស់ PayPal.Me",
-    "cashAppNote": "តំណភ្ជាប់ទូទាត់ប្រាក់ $cashtag សម្រាប់កម្មវិធីសាច់ប្រាក់",
-    "emvGenericNote": "ទម្រង់​កូដ QR ទូទៅ EMVCo MPM",
+    "auspaynetNote": "AusPayNet សម្រាប់ការទូទាត់ NPP PayID របស់អូស្ត្រាលី",
+    "paypalMeNote": "PayPal.Me តំណទូទាត់ដែលអាចចែករំលែកបាន។",
+    "cashAppNote": "កម្មវិធីសាច់ប្រាក់ $cashtag តំណទូទាត់",
+    "emvGenericNote": "ទម្រង់កូដ QR EMVCo MPM ទូទៅ",
     "maxFramesAuto": "0 = ស្វ័យប្រវត្តិ (ប្រើស៊ុមប្រភព អតិបរមា 50 សម្រាប់ដំណើរការ)",
-    "paletteMode": "របៀបពណ៌ពីក្ដារពណ៌ត្រូវបានកំណត់ទៅម៉ូឌុល"
+    "paletteMode": "របៀបដែលពណ៌ពីក្ដារលាយត្រូវបានកំណត់ទៅម៉ូឌុល"
   },
   "language": {
     "current": "ភាសា",
@@ -952,19 +952,19 @@
     "addCustomField": "បន្ថែមវាលផ្ទាល់ខ្លួន",
     "author": "អ្នកនិពន្ធ",
     "authorPlaceholder": "ឈ្មោះអ្នកនិពន្ធ",
-    "copyright": "សិទ្ធិអ្នកនិពន្ធ",
-    "copyrightPlaceholder": "© ២០២៤ ឈ្មោះក្រុមហ៊ុន",
+    "copyright": "រក្សាសិទ្ធិ",
+    "copyrightPlaceholder": "© 2024 ឈ្មោះក្រុមហ៊ុន",
     "customMetadata": "ទិន្នន័យមេតាផ្ទាល់ខ្លួន",
     "description": "ការពិពណ៌នា",
-    "descriptionPlaceholder": "ការពិពណ៌នាអំពីលេខកូដ QR នេះ...",
+    "descriptionPlaceholder": "ការពិពណ៌នាអំពីកូដ QR នេះ...",
     "includeCreationTime": "រួមបញ្ចូលពេលវេលាបង្កើត",
-    "key": "កូនសោ",
-    "keyPlaceholder": "កូនសោ",
+    "key": "សោ",
+    "keyPlaceholder": "សោ",
     "keywords": "ពាក្យគន្លឹះ",
     "license": "អាជ្ញាប័ណ្ណ",
     "licensePlaceholder": "CC-BY-4.0",
     "title": "ចំណងជើង",
-    "titlePlaceholder": "ចំណងជើង​កូដ QR",
+    "titlePlaceholder": "ចំណងជើងកូដ QR",
     "value": "តម្លៃ",
     "valuePlaceholder": "តម្លៃ"
   },
@@ -976,81 +976,81 @@
     "examples": "ឧទាហរណ៍",
     "gallery": "វិចិត្រសាល",
     "generator": "ម៉ាស៊ីនភ្លើង",
-    "privacy": "ភាពឯកជន",
+    "privacy": "ឯកជនភាព",
     "terms": "លក្ខខណ្ឌ",
     "related": "ពាក់ព័ន្ធ"
   },
   "output": {
     "none": "គ្មាន",
     "off": "បិទ",
-    "dithering": "ភាពច្របូកច្របល់",
-    "floydSteinberg": "ហ្វ្លុយអ៊ីដ-ស្តែនប៊ឺក",
-    "backgroundOverride": "ការ​ជំនួស​ផ្ទៃ​ខាង​ក្រោយ",
-    "backgroundOverridePlaceholder": "ទុក​ឲ្យ​ទទេ​សម្រាប់​លំនាំដើម",
+    "dithering": "ហត់",
+    "floydSteinberg": "Floyd-Steinberg",
+    "backgroundOverride": "ការបដិសេធផ្ទៃខាងក្រោយ",
+    "backgroundOverridePlaceholder": "ទុកទទេសម្រាប់លំនាំដើម",
     "dpi": "DPI (បោះពុម្ព)",
-    "embedRasterOverlay": "បង្កប់​ស្រទាប់​រ៉ាស្ទ័រ",
+    "embedRasterOverlay": "បង្កប់ Raster Overlay",
     "exportAsAdditional": "នាំចេញជា (បន្ថែម)",
     "filename": "ឈ្មោះឯកសារ",
     "format": "ទម្រង់",
-    "gif": "ជីអេហ្វ",
+    "gif": "GIF",
     "gifSettings": "ការកំណត់ GIF",
     "height": "កម្ពស់",
-    "includeQuietZone": "រួមបញ្ចូលតំបន់ស្ងាត់",
-    "medianCut": "កាត់​មធ្យម",
-    "neuquant": "នូឃ្វាន់",
-    "octree": "អុកទ្រី",
+    "includeQuietZone": "រួមបញ្ចូលតំបន់ស្ងប់ស្ងាត់",
+    "medianCut": "កាត់មធ្យម",
+    "neuquant": "នឺក្វាន់",
+    "octree": "ខែតុលា",
     "ordered": "បានបញ្ជាទិញ",
-    "outputSize": "ទំហំ​ទិន្នផល",
-    "paletteSize": "ទំហំ​ក្ដារលាយ",
+    "outputSize": "ទំហំទិន្នផល",
+    "paletteSize": "ទំហំក្ដារលាយ",
     "pdf": "PDF",
     "pixel": "ភីកសែល",
     "png": "PNG",
     "precise": "ច្បាស់លាស់",
     "quality": "គុណភាព",
-    "quantizer": "ឧបករណ៍វាស់បរិមាណ",
+    "quantizer": "បរិមាណ",
     "shapePrecision": "ភាពជាក់លាក់នៃរូបរាង",
     "svg": "SVG",
     "svgSettings": "ការកំណត់ SVG",
     "transparentColor": "ពណ៌ថ្លា",
     "transparentColorPlaceholder": "#ffffff ឬទទេ",
     "trueVector": "វ៉ិចទ័រពិត",
-    "trueVectorDesc": "ប្រើផ្លូវជំនួសឱ្យរ៉ាស្ទ័រដែលបានបង្កប់",
-    "webp": "គេហទំព័រភី",
-    "width": "៥៧០",
-    "animatedWebp": "WebP ចលនា"
+    "trueVectorDesc": "ប្រើផ្លូវជំនួសឱ្យ raster ដែលបានបង្កប់",
+    "webp": "WebP",
+    "width": "ទទឹង",
+    "animatedWebp": "WebP មានចលនា"
   },
   "preview": {
-    "qrCodePreview": "ការមើលជាមុននៃលេខកូដ QR - ចុចនាំចេញដើម្បីទាញយក",
+    "qrCodePreview": "QR Code Preview - ចុច Export ដើម្បីទាញយក",
     "simulating": "ការក្លែងធ្វើ",
-    "simulationActive": "ការក្លែងធ្វើបរិស្ថានសកម្ម - ការមើលជាមុនបង្ហាញពីរបៀបដែលលេខកូដ QR អាចលេចឡើងក្រោមលក្ខខណ្ឌផ្សេងៗគ្នា"
+    "simulationActive": "ការក្លែងធ្វើបរិស្ថានសកម្ម - ការមើលជាមុនបង្ហាញពីរបៀបដែលកូដ QR អាចបង្ហាញនៅក្រោមលក្ខខណ្ឌផ្សេងៗ"
   },
   "qr": {
-    "additionalBorder": "ព្រំដែនបន្ថែមហួសពីតំបន់ស្ងាត់",
+    "additionalBorder": "ព្រំដែនបន្ថែមលើសពីតំបន់ស្ងប់ស្ងាត់",
     "alphanumeric": "អក្សរក្រមលេខ",
     "auto": "ស្វ័យប្រវត្តិ",
     "autoMin": "ស្វ័យប្រវត្តិ (អប្បបរមា៖ {{version}})",
     "autoOptimal": "ស្វ័យប្រវត្តិ (ល្អបំផុត)",
-    "byteUtf8": "បៃ / UTF-៨",
-    "contrastRatio": "{{count}}:១",
+    "byteUtf8": "បៃ / UTF-8",
+    "contrastRatio": "{{count}}:1",
     "encodingMode": "របៀបអ៊ិនកូដ",
-    "enforceMinQuietZone": "អនុវត្តតំបន់ស្ងាត់អប្បបរមា",
-    "enforceMinQuietZoneDesc": "ធានា​ឲ្យ​បាន​នូវ​រឹម​ម៉ូឌុល ≥៤",
+    "enforceMinQuietZone": "អនុវត្តតំបន់ស្ងាត់តិចតួច",
+    "enforceMinQuietZoneDesc": "ត្រូវប្រាកដថា ≥4 រឹមម៉ូឌុល",
     "errorCorrection": "ការកែកំហុស",
     "extraBorderModules": "ម៉ូឌុលព្រំដែនបន្ថែម",
-    "high": "H - ខ្ពស់ (៣០%)",
-    "kanji": "កាន់ជី",
-    "low": "L - ទាប (៧%)",
+    "high": "H - ខ្ពស់ (30%)",
+    "kanji": "កានជី",
+    "low": "L - ទាប (7%)",
     "margin": "តំបន់ស្ងាត់ (រឹម)",
-    "mask": "លំនាំរបាំងមុខ",
-    "medium": "M - មធ្យម (១៥%)",
+    "mask": "លំនាំរបាំង",
+    "medium": "M - មធ្យម (15%)",
     "moduleSize": "ទំហំម៉ូឌុល",
     "nDegrees": "{{count}}°",
-    "nModules": "ម៉ូឌុល {{count}}",
-    "nMs": "{{count}}មីលីវិនាទី",
+    "nModules": "{{count}} ម៉ូឌុល",
+    "nMs": "{{count}}ms",
     "nPercent": "{{count}}%",
-    "nPx": "{{count}}ភីកសែល",
-    "numericOnly": "មានតែលេខប៉ុណ្ណោះ",
-    "quartile": "Q - ក្វាទីល (២៥%)",
+    "nPx": "{{count}}px",
+    "numericOnly": "លេខតែប៉ុណ្ណោះ",
+    "quartile": "សំណួរ - ត្រីមាស (25%)",
     "version": "កំណែ"
   },
   "render": {
@@ -1058,52 +1058,52 @@
     "gradientColors": "ពណ៌",
     "classic": "បុរាណ",
     "addColor": "បន្ថែមពណ៌",
-    "alignmentStyle": "រចនាប័ទ្មលំនាំតម្រឹម",
+    "alignmentStyle": "តម្រឹមរចនាប័ទ្មលំនាំ",
     "background": "ផ្ទៃខាងក្រោយ",
-    "byBrightness": "ដោយពន្លឺ",
-    "byCluster": "តាមចង្កោម",
-    "byOverlay": "ដោយ​ការ​ត្រួត​គ្នា",
-    "byPosition": "តាម​មុខតំណែង",
-    "ceil": "ពិដាន",
+    "byBrightness": "ដោយ ពន្លឺ",
+    "byCluster": "ដោយ Cluster",
+    "byOverlay": "ដោយ Overlay",
+    "byPosition": "តាមមុខតំណែង",
+    "ceil": "ស៊ីល",
     "circle": "រង្វង់",
     "colorPalette": "ក្ដារលាយពណ៌",
-    "conic": "រាងកោណ",
-    "connected": "ភ្ជាប់",
-    "contrastGuard": "ឧបករណ៍ការពារកម្រិតពណ៌",
+    "conic": "សាជី",
+    "connected": "បានភ្ជាប់",
+    "contrastGuard": "ឆ្មាំកម្រិតពណ៌",
     "cornerRadius": "កាំជ្រុង",
-    "crispEdges": "គែម​ច្បាស់ៗ",
+    "crispEdges": "គែមស្រួយ",
     "crispEdgesDesc": "ប្រើការបង្ហាញរូបភាព៖ ភីកសែលសម្រាប់គែមមុតស្រួច",
     "dashed": "ដាច់ៗ",
     "diamond": "ពេជ្រ",
-    "dotRotation": "ការបង្វិលចំណុច",
+    "dotRotation": "ការបង្វិលចំនុច",
     "dots": "ចំណុច",
-    "eyeInnerStyle": "រចនាប័ទ្មខាងក្នុងភ្នែក",
-    "eyeOuterStyle": "រចនាប័ទ្មខាងក្រៅភ្នែក",
-    "eyeScale": "ជញ្ជីងភ្នែក",
-    "finderStyle": "រចនាប័ទ្មលំនាំឧបករណ៍ស្វែងរក",
+    "eyeInnerStyle": "រចនាប័ទ្មភ្នែកខាងក្នុង",
+    "eyeOuterStyle": "រចនាប័ទ្មភ្នែកខាងក្រៅ",
+    "eyeScale": "មាត្រដ្ឋានភ្នែក",
+    "finderStyle": "រចនាប័ទ្មលំនាំស្វែងរក",
     "floor": "ជាន់",
     "foreground": "ផ្ទៃខាងមុខ",
     "frameStyle": "រចនាប័ទ្មស៊ុម",
-    "frameText": "អត្ថបទ​ស៊ុម",
+    "frameText": "អត្ថបទស៊ុម",
     "gapMode": "របៀបគម្លាត",
     "gradient": "ជម្រាល",
     "gradientAngle": "មុំជម្រាល",
     "gradientType": "ប្រភេទជម្រាល",
-    "inset": "ការបញ្ចូល",
+    "inset": "បញ្ចូល",
     "linear": "លីនេអ៊ែរ",
-    "matchFinder": "ឧបករណ៍ស្វែងរកការផ្គូផ្គង",
-    "matchModule": "ម៉ូឌុល​ផ្គូផ្គង",
+    "matchFinder": "កម្មវិធីស្វែងរកការប្រកួត",
+    "matchModule": "ម៉ូឌុលផ្គូផ្គង",
     "minContrastRatio": "សមាមាត្រកម្រិតពណ៌អប្បបរមា",
     "moduleGap": "គម្លាតម៉ូឌុល",
-    "negativeSpace": "លំហអវិជ្ជមាន",
+    "negativeSpace": "ចន្លោះអវិជ្ជមាន",
     "perModuleColorMode": "របៀបពណ៌ក្នុងមួយម៉ូឌុល",
-    "pixelSnap": "ភីកសែលស្នាប",
+    "pixelSnap": "ភីកសែល ខ្ទាស់",
     "radial": "រ៉ាឌីកាល់",
-    "round": "មូល",
+    "round": "ជុំ",
     "rounded": "មូល",
-    "roundedFrame": "ស៊ុមមូល",
+    "roundedFrame": "ស៊ុមរាងមូល",
     "shape": "រចនាប័ទ្មម៉ូឌុល",
-    "sharp": "មុតស្រួច",
+    "sharp": "ស្រួច",
     "smooth": "រលោង",
     "solid": "រឹង",
     "square": "ការ៉េ",
@@ -1112,16 +1112,16 @@
     "stroke": "ជំងឺដាច់សរសៃឈាមខួរក្បាល",
     "style": "រចនាប័ទ្ម",
     "tag": "ស្លាក",
-    "timingStyle": "រចនាប័ទ្មលំនាំកំណត់ពេលវេលា",
+    "timingStyle": "រចនាប័ទ្មលំនាំពេលវេលា",
     "transparentBg": "ផ្ទៃខាងក្រោយថ្លា",
-    "paletteMode": "របៀបក្ដារពណ៌",
-    "paletteModePosition": "តាមទីតាំង",
-    "paletteModeBrightness": "តាមពន្លឺ",
+    "paletteMode": "របៀបក្ដារលាយ",
+    "paletteModePosition": "តាមមុខតំណែង",
+    "paletteModeBrightness": "ដោយ ពន្លឺ",
     "paletteModeDiagonal": "អង្កត់ទ្រូង",
-    "paletteModeRadial": "រ៉ាឌីអាល់",
+    "paletteModeRadial": "រ៉ាឌីកាល់",
     "paletteModeRandom": "ចៃដន្យ",
-    "paletteModeRow": "តាមជួរដេក",
-    "paletteModeColumn": "តាមជួរឈរ"
+    "paletteModeRow": "តាមជួរ",
+    "paletteModeColumn": "ដោយជួរឈរ"
   },
   "safety": {
     "off": "បិទ",
@@ -1129,41 +1129,41 @@
     "analysis": "ការវិភាគសុវត្ថិភាព",
     "autoPickEcc": "ជ្រើសរើសដោយស្វ័យប្រវត្តិ ECC",
     "autoPickVersion": "កំណែជ្រើសរើសដោយស្វ័យប្រវត្តិ",
-    "autoReduceIntensity": "អាំងតង់ស៊ីតេកាត់បន្ថយដោយស្វ័យប្រវត្តិ",
+    "autoReduceIntensity": "កាត់បន្ថយអាំងតង់ស៊ីតេដោយស្វ័យប្រវត្តិ",
     "autoTuning": "ការលៃតម្រូវដោយស្វ័យប្រវត្តិ",
     "balanced": "មានតុល្យភាព",
     "contrast": "សមាមាត្រកម្រិតពណ៌",
     "contrastRatio": "សមាមាត្រកម្រិតពណ៌",
-    "contrastCheck": "ការត្រួតពិនិត្យភាពផ្ទុយគ្នា",
+    "contrastCheck": "ពិនិត្យកម្រិតពណ៌",
     "excellent": "ល្អឥតខ្ចោះ",
     "fair": "យុត្តិធម៌",
     "good": "ល្អ",
-    "lockAlignment": "ការតម្រឹមសោ",
-    "lockFinders": "ឧបករណ៍ស្វែងរកសោ",
-    "lockFormat": "ព័ត៌មាន​ទម្រង់​ចាក់សោ",
-    "lockTiming": "ការកំណត់ពេលវេលាចាក់សោ",
-    "lockVersion": "ព័ត៌មានកំណែចាក់សោ",
+    "lockAlignment": "ការតម្រឹមចាក់សោ",
+    "lockFinders": "អ្នកស្វែងរកចាក់សោ",
+    "lockFormat": "ព័ត៌មានទម្រង់ចាក់សោ",
+    "lockTiming": "ពេលវេលាចាក់សោ",
+    "lockVersion": "ព័ត៌មានអំពីកំណែចាក់សោ",
     "minModuleSize": "ទំហំម៉ូឌុលអប្បបរមា",
-    "minQuietZone": "តំបន់ស្ងាត់បំផុត",
+    "minQuietZone": "តំបន់ស្ងាត់តិច",
     "poor": "ក្រីក្រ",
-    "protectionLocks": "សោរការពារ",
+    "protectionLocks": "សោការពារ",
     "qualityAnalysis": "ការវិភាគគុណភាព",
     "quietZone": "តំបន់ស្ងាត់",
     "safetyMode": "របៀបសុវត្ថិភាព",
-    "scanability": "ពិន្ទុ​សមត្ថភាព​ស្កេន",
-    "showHeatmap": "បង្ហាញ​ផែនទី​កម្ដៅ",
-    "simulateBlur": "ធ្វើត្រាប់តាមភាពព្រិលៗ",
-    "simulateNoise": "ក្លែងធ្វើសំឡេងរំខាន",
-    "simulateRotation": "ក្លែងធ្វើ​ការបង្វិល",
-    "untilScannable": "រហូតដល់អាចស្កេនបាន",
-    "eccAwareEnabled": "បើក ECC-Aware",
-    "eccAwareDesc": "រក្សាតំបន់ QR សំខាន់ៗដោយឆ្លាតវៃ",
+    "scanability": "ពិន្ទុស្កេន",
+    "showHeatmap": "បង្ហាញផែនទីកំដៅ",
+    "simulateBlur": "ក្លែងធ្វើព្រិល",
+    "simulateNoise": "ក្លែងធ្វើសំលេងរំខាន",
+    "simulateRotation": "ក្លែងធ្វើការបង្វិល",
+    "untilScannable": "រហូតដល់អាចស្កេនបាន។",
+    "eccAwareEnabled": "បើកដំណើរការ ECC-Aware",
+    "eccAwareDesc": "ថែរក្សាតំបន់ QR សំខាន់ៗយ៉ាងឆ្លាតវៃ",
     "eccAwareRiskBudget": "ថវិកាហានិភ័យ",
-    "eccAwareRiskBudgetDesc": "តម្លៃខ្ពស់អនុញ្ញាតឱ្យមានការគ្របដណ្តប់ overlay ច្រើនជាង",
+    "eccAwareRiskBudgetDesc": "តម្លៃខ្ពស់អនុញ្ញាតឱ្យគ្របដណ្តប់លើការត្រួតស៊ីគ្នាកាន់តែច្រើន",
     "eccAwareWeightMap": "ផែនទីទម្ងន់",
-    "eccMapDistanceToFinders": "ចម្ងាយទៅ Finders",
-    "eccMapBlockHeatmap": "ផែនទីកម្ដៅប្លុក",
-    "eccMapEmpiricalScan": "ផែនទីកម្ដៅស្កេនពិសោធន៍"
+    "eccMapDistanceToFinders": "ចម្ងាយទៅកាន់អ្នកស្វែងរក",
+    "eccMapBlockHeatmap": "រារាំងផែនទីកំដៅ",
+    "eccMapEmpiricalScan": "ផែនទីកំដៅស្កែនជាក់ស្តែង"
   },
   "sections": {
     "animation": "ចលនា",
@@ -1171,112 +1171,112 @@
     "share": "ចែករំលែក",
     "safety": "ការវិភាគសុវត្ថិភាព",
     "metadata": "ទិន្នន័យមេតា",
-    "output": "លទ្ធផល",
-    "overlay": "ការ​លាប​លើ / រូបភាព",
-    "payload": "បន្ទុក/ទិន្នន័យ",
+    "output": "ទិន្នផល",
+    "overlay": "ត្រួតលើគ្នា / រូបភាព",
+    "payload": "បន្ទុក / ទិន្នន័យ",
     "rendering": "ការបង្ហាញ",
-    "watermark": "សញ្ញាទឹក"
+    "watermark": "សញ្ញាសម្គាល់ទឹក។"
   },
   "share": {
-    "copied": "បានចម្លងហើយ!",
+    "copied": "ចម្លង!",
     "copyLink": "ចម្លងតំណ",
-    "whatsapp": "វ៉ាតសាំ",
-    "directLink": "តំណភ្ជាប់ផ្ទាល់",
-    "directLinkDesc": "បង្កើត URL ដែលអាចចែករំលែកបាន",
+    "whatsapp": "កម្មវិធី WhatsApp",
+    "directLink": "តំណផ្ទាល់",
+    "directLinkDesc": "បង្កើត URL ដែលអាចចែករំលែកបាន។",
     "embedHtml": "បង្កប់ HTML",
-    "embedHtmlDesc": "បង្កើត​កូដ​បង្កប់",
-    "encodeAllParams": "អ៊ិនកូដប៉ារ៉ាម៉ែត្រទាំងអស់",
+    "embedHtmlDesc": "បង្កើតកូដបង្កប់",
+    "encodeAllParams": "អ៊ិនកូដប៉ារ៉ាម៉ែត្រទាំងអស់។",
     "encodeAllParamsDesc": "រួមបញ្ចូលការកំណត់ទាំងអស់នៅក្នុង URL",
-    "markdown": "បញ្ចុះតម្លៃ",
+    "markdown": "Markdown",
     "quickShare": "ចែករំលែករហ័ស",
-    "twitter": "អ៊ិច/ធ្វីតធ័រ"
+    "twitter": "X/Twitter"
   },
   "tiers": {
     "advanced": "កម្រិតខ្ពស់",
     "basic": "មូលដ្ឋាន",
     "professional": "ប្រូ",
-    "watchAdForPro": "មើលការផ្សាយពាណិជ្ជកម្មដើម្បីដោះសោមុខងារវិជ្ជាជីវៈរយៈពេល ២៤ ម៉ោង"
+    "watchAdForPro": "មើលការផ្សាយពាណិជ្ជកម្មដើម្បីដោះសោមុខងារវិជ្ជាជីវៈរយៈពេល 24 ម៉ោង។"
   },
   "watermark": {
-    "blendMode": "របៀបលាយបញ្ចូលគ្នា",
+    "blendMode": "របៀបលាយ",
     "image": "រូបភាព",
     "type": "ប្រភេទ",
     "quietZone": "តំបន់ស្ងាត់",
     "behindQr": "នៅពីក្រោយ QR",
-    "bottomLeft": "ផ្នែក​ខាងក្រោម​ខាងឆ្វេង",
-    "bottomRight": "ផ្នែកខាងស្តាំខាងក្រោម",
+    "bottomLeft": "បាតឆ្វេង",
+    "bottomRight": "បាតស្តាំ",
     "center": "មជ្ឈមណ្ឌល",
     "corners": "ជ្រុង",
     "edges": "គែម",
-    "enabled": "បើក​រូប​សម្គាល់​ទឹក",
-    "fontColor": "ពណ៌​ពុម្ពអក្សរ",
+    "enabled": "បើកដំណើរការ Watermark",
+    "fontColor": "ពណ៌ពុម្ពអក្សរ",
     "fontSize": "ទំហំពុម្ពអក្សរ",
     "multiply": "គុណ",
-    "normal": "ធម្មតា",
+    "normal": "ធម្មតា។",
     "opacity": "ភាពស្រអាប់",
-    "overlay": "ការ​ត្រួត​លើ​គ្នា",
+    "overlay": "ត្រួតលើគ្នា។",
     "pattern": "លំនាំ",
-    "position": "ទីតាំង",
+    "position": "មុខតំណែង",
     "screen": "អេក្រង់",
     "text": "អត្ថបទ",
     "textPlaceholder": "© ឈ្មោះក្រុមហ៊ុន",
-    "topLeft": "ខាងលើឆ្វេង",
-    "topRight": "ខាងស្តាំខាងលើ",
-    "uploadImage": "ផ្ទុកឡើងរូបភាព"
+    "topLeft": "កំពូលឆ្វេង",
+    "topRight": "ខាងលើស្តាំ",
+    "uploadImage": "បង្ហោះរូបភាព"
   },
   "accessibility": {
-    "toggleSettings": "បន្ទះ​កំណត់​បិទ/បើក",
-    "allCategories": "គ្រប់ប្រភេទ",
-    "copyShareLink": "ចម្លងតំណភ្ជាប់ដែលអាចចែករំលែកបានទៅក្ដារតម្បៀតខ្ទាស់",
-    "exportQrCode": "នាំចេញលេខកូដ QR ទៅកាន់ឯកសារ",
-    "openNavMenu": "បើក​ម៉ឺនុយ​រុករក",
-    "openGuideSidebar": "បើក​របារ​ចំហៀង​ឯកសារ",
-    "closeSidebar": "បិទ​របារ​ចំហៀង",
-    "imageUnavailable": "រូបភាពមិនអាចប្រើបាន",
-    "messageSent": "សារត្រូវបានផ្ញើ",
-    "lastUpdated": "បានធ្វើបច្ចុប្បន្នភាពចុងក្រោយ",
-    "scanMePlaceholder": "ស្កេន​ខ្ញុំ!"
+    "toggleSettings": "បិទបើកផ្ទាំងការកំណត់",
+    "allCategories": "ប្រភេទទាំងអស់។",
+    "copyShareLink": "ចម្លងតំណដែលអាចចែករំលែកបានទៅក្ដារតម្បៀតខ្ទាស់",
+    "exportQrCode": "នាំចេញកូដ QR ទៅជាឯកសារ",
+    "openNavMenu": "បើកម៉ឺនុយរុករក",
+    "openGuideSidebar": "បើករបារចំហៀងឯកសារ",
+    "closeSidebar": "បិទរបារចំហៀង",
+    "imageUnavailable": "រូបភាពមិនអាចប្រើបានទេ។",
+    "messageSent": "សារ​បាន​ផ្ញើ",
+    "lastUpdated": "ធ្វើបច្ចុប្បន្នភាពចុងក្រោយ",
+    "scanMePlaceholder": "ស្កេនខ្ញុំ!"
   },
   "contact": {
-    "messageSentTitle": "សារត្រូវបានផ្ញើ",
-    "messageSentDesc": "អរគុណ - យើងបានទទួលសាររបស់អ្នកហើយ។ ប្រសិនបើអ្នកមិនឆ្លើយតប សូមផ្ញើអ៊ីមែលមកយើងតាមរយៈ",
-    "submitError": "យើងមិនអាចដាក់ស្នើទម្រង់បែបបទបានទេ។ សូមផ្ញើអ៊ីមែល",
+    "messageSentTitle": "សារ​បាន​ផ្ញើ",
+    "messageSentDesc": "សូមអរគុណ - យើងបានទទួលសាររបស់អ្នក។ ប្រសិនបើអ្នកមិនឮមកវិញទេ សូមផ្ញើអ៊ីមែលមកយើង",
+    "submitError": "យើងមិនអាចដាក់ទម្រង់បែបបទបានទេ។ សូមផ្ញើអ៊ីមែល",
     "sendMessage": "ផ្ញើសារ",
     "sending": "កំពុងផ្ញើ...",
-    "privacyNote": "តាមរយៈការផ្ញើសារ អ្នកយល់ព្រមថាយើងអាចប្រើប្រាស់ព័ត៌មានលម្អិតរបស់អ្នកដើម្បីឆ្លើយតប។ សូមមើលគោលការណ៍ឯកជនភាព។",
+    "privacyNote": "តាមរយៈការផ្ញើសារ អ្នកយល់ព្រមថាយើងអាចប្រើព័ត៌មានលម្អិតរបស់អ្នកដើម្បីឆ្លើយតប។ សូមមើលគោលការណ៍ឯកជនភាព។",
     "emailUs": "ផ្ញើអ៊ីមែលមកយើង",
-    "emailUsDesc": "មានសំណួរ សំណូមពរ ឬត្រូវការជំនួយ? សូមផ្ញើអ៊ីមែលមកយើង ហើយយើងនឹងឆ្លើយតបទៅអ្នកវិញ។"
+    "emailUsDesc": "មានសំណួរ សំណូមពរ ឬត្រូវការជំនួយ? ផ្ញើអ៊ីមែលមកយើង ហើយយើងនឹងឆ្លើយតបទៅអ្នកវិញ។"
   },
   "overlay": {
-    "blueNoise": "សំឡេងពណ៌ខៀវ",
-    "blueNoiseMode": "សំឡេងពណ៌ខៀវ",
+    "blueNoise": "សម្លេងពណ៌ខៀវ",
+    "blueNoiseMode": "សម្លេងពណ៌ខៀវ",
     "none": "គ្មាន",
     "wave": "រលក",
     "waveMode": "រលក",
     "upload": "ផ្ទុកឡើង",
-    "errorDiffusion": "ការរីករាលដាលនៃកំហុស",
-    "atkinson": "អាតគីនសុន",
-    "burkes": "ប៊ើកស៍",
-    "floydSteinberg": "ហ្វ្លុយអ៊ីដ-ស្តែនប៊ឺក",
-    "jarvisJudiceNinke": "ចាវីស-ជូឌីស-នីងគី",
+    "errorDiffusion": "ការចែកចាយកំហុស",
+    "atkinson": "អាគីនសុន",
+    "burkes": "ប៊ឺក",
+    "floydSteinberg": "Floyd-Steinberg",
+    "jarvisJudiceNinke": "Jarvis-Judice-Ninke",
     "sierra": "សៀរ៉ា",
-    "stucki": "ស្តូគី",
-    "whiteNoise": "សំឡេង​ពណ៌​ស",
-    "mode": "របៀបលាយបញ្ចូលគ្នា",
+    "stucki": "ជាប់គាំង",
+    "whiteNoise": "សំឡេងពណ៌ស",
+    "mode": "របៀបលាយ",
     "brightness": "ពន្លឺ",
     "brightnessMode": "ពន្លឺ",
-    "bw": "ខ្មៅ និង ស",
+    "bw": "ខ្មៅ & ស",
     "grayscale": "មាត្រដ្ឋានប្រផេះ",
-    "dithered": "ច្របូកច្របល់",
-    "ditheredMode": "ច្របូកច្របល់",
-    "duotone": "ឌូតូន",
-    "duotoneMode": "ឌូតូន",
+    "dithered": "ខូចចិត្ត",
+    "ditheredMode": "ខូចចិត្ត",
+    "duotone": "Duotone",
+    "duotoneMode": "Duotone",
     "extreme": "ខ្លាំង",
     "extremeMode": "ខ្លាំង",
-    "halftone": "ពាក់កណ្តាលសម្លេង",
-    "halftoneMode": "ពាក់កណ្តាលសម្លេង",
-    "mosaic": "ម៉ូសាអ៊ីក",
-    "mosaicMode": "ម៉ូសាអ៊ីក",
+    "halftone": "សម្លេងពាក់កណ្តាល",
+    "halftoneMode": "សម្លេងពាក់កណ្តាល",
+    "mosaic": "ម៉ូសេ",
+    "mosaicMode": "ម៉ូសេ",
     "outline": "គ្រោង",
     "outlineMode": "គ្រោង",
     "pixelate": "ភីកសែល",
@@ -1284,74 +1284,74 @@
     "subpixel": "ភីកសែលរង",
     "subpixelMode": "ភីកសែលរង",
     "gifSettings": "ការកំណត់ GIF",
-    "adaptiveThreshold": "កម្រិត​សម្រប​ខ្លួន",
-    "bayer2": "បាយ័រ ២×២",
-    "bayer4": "បាយ័រ ៤×៤",
-    "bayer8": "បាយ័រ ៨×៨",
+    "adaptiveThreshold": "កម្រិតនៃការសម្របខ្លួន",
+    "bayer2": "Bayer 2 × 2",
+    "bayer4": "Bayer 4 × 4",
+    "bayer8": "Bayer 8 × 8",
     "blend": "លាយ",
     "blendMode": "លាយ",
-    "blueNoiseErrorDiffusion": "សំឡេងរំខានពណ៌ខៀវ + ការសាយភាយកំហុស",
+    "blueNoiseErrorDiffusion": "Blue Noise + Error Disffusion",
     "blueNoiseThreshold": "កម្រិតសំឡេងរំខានពណ៌ខៀវ",
     "blur": "ព្រិលៗ",
     "brightnessCurve": "ខ្សែកោងពន្លឺ",
-    "cellSize": "ទំហំកោសិកា",
-    "centerLogo": "ឡូហ្គោកណ្តាល",
+    "cellSize": "ទំហំក្រឡា",
+    "centerLogo": "និមិត្តសញ្ញាកណ្តាល",
     "centerRule": "ច្បាប់កណ្តាល",
-    "clusteredDot": "ចំណុច​ចង្កោម",
-    "colorDither": "លាយពណ៌",
+    "clusteredDot": "ចំណុចចង្កោម",
+    "colorDither": "ពណ៌ Dither",
     "colorMode": "របៀបពណ៌",
-    "contain": "មាន",
-    "contrast": "ភាពផ្ទុយគ្នា",
-    "corsNote": "ចំណាំ៖ រូបភាពត្រូវតែអនុញ្ញាតឲ្យមានសំណើឆ្លងប្រភពដើម (CORS)",
+    "contain": "ផ្ទុក",
+    "contrast": "កម្រិតពណ៌",
+    "corsNote": "ចំណាំ៖ រូបភាពត្រូវតែអនុញ្ញាតសំណើប្រភពឆ្លង (CORS)",
     "cover": "គម្រប",
-    "cropImage": "កាត់រូបភាព",
+    "cropImage": "ច្រឹបរូបភាព",
     "cropSize": "ទំហំដំណាំ",
-    "diffusionKernel": "ខឺណែលសាយភាយ",
-    "disposalHandling": "ការដោះស្រាយការចោលសំរាម",
-    "dither": "ច្របូកច្របល់",
-    "ditherSettings": "ការកំណត់​ច្របូកច្របល់",
-    "ditherStrength": "កម្លាំង​ច្របូកច្របល់",
-    "dotShape": "រាងចំណុច",
-    "duotoneColors": "ពណ៌​ឌុយ​តូន",
-    "eccAwareMode": "របៀបយល់ដឹងអំពី ECC",
+    "diffusionKernel": "ខឺណែលផ្សព្វផ្សាយ",
+    "disposalHandling": "ការគ្រប់គ្រងការចោល",
+    "dither": "Dither",
+    "ditherSettings": "ការកំណត់ Dither",
+    "ditherStrength": "Dither កម្លាំង",
+    "dotShape": "រាងចំនុច",
+    "duotoneColors": "ពណ៌ Duotone",
+    "eccAwareMode": "របៀប ECC-Aware",
     "edge": "ការរកឃើញគែម",
-    "edgeAware": "យល់ដឹងពីគែម",
-    "enableCrop": "អនុញ្ញាត​ឲ្យ​ច្រឹប",
-    "finderOverride": "ការ​ជំនួស​ឧបករណ៍​ស្វែងរក",
+    "edgeAware": "Edge-Aware",
+    "enableCrop": "បើកការច្រឹប",
+    "finderOverride": "អ្នកស្វែងរកបដិសេធ",
     "fitMode": "របៀបសម",
     "flipX": "ត្រឡប់ X",
-    "flipY": "ត្រឡប់​រាង​អក្សរ Y",
+    "flipY": "ត្រឡប់ Y",
     "fromUrl": "ពី URL",
     "fullColor": "ពណ៌ពេញ",
     "gamma": "ហ្គាម៉ា",
-    "gapFillMode": "បំពេញចន្លោះប្រហោង",
-    "gapfill": "បំពេញចន្លោះប្រហោង",
-    "gaussianNoise": "សំឡេងរំខានហ្គោសៀន",
+    "gapFillMode": "ការបំពេញចន្លោះ",
+    "gapfill": "ការបំពេញចន្លោះ",
+    "gaussianNoise": "សំលេងរំខាន Gaussian",
     "gridSize": "ទំហំក្រឡាចត្រង្គ",
-    "halftoneCenter": "មជ្ឈមណ្ឌល​ហាល​តូន",
+    "halftoneCenter": "មជ្ឈមណ្ឌលពាក់កណ្តាលសម្លេង",
     "halftoneSettings": "ការកំណត់ពាក់កណ្តាលសម្លេង",
-    "highlight": "ចំណុចលេចធ្លោ",
-    "hueRotate": "បង្វិលពណ៌",
+    "highlight": "បន្លិច",
+    "hueRotate": "Hue បង្វិល",
     "imageGifWebp": "រូបភាព / GIF / WebP",
-    "imageUrl": "អាសយដ្ឋាន​រូបភាព",
+    "imageUrl": "URL រូបភាព",
     "intensity": "អាំងតង់ស៊ីតេ",
-    "invert": "បញ្ច្រាសរូបភាព",
+    "invert": "រូបភាពបញ្ច្រាស",
     "line": "បន្ទាត់",
     "load": "ផ្ទុក",
-    "loadedFromUrl": "បានផ្ទុកពី URL",
+    "loadedFromUrl": "ផ្ទុកពី URL",
     "maxFps": "FPS អតិបរមា",
     "neutralColor": "ពណ៌អព្យាក្រឹត",
     "noFile": "គ្មានឯកសារ",
-    "nxnGrid": "ក្រឡាចត្រង្គ N×N",
-    "orderedBayer": "បានបញ្ជាទិញ (បាយ័រ)",
-    "orderedMatrix": "ម៉ាទ្រីស​រៀបរយ",
+    "nxnGrid": "ក្រឡាចត្រង្គ N × N",
+    "orderedBayer": "បញ្ជាទិញ (Bayer)",
+    "orderedMatrix": "បានបញ្ជាទិញម៉ាទ្រីស",
     "original": "ដើម",
-    "perChannel": "ក្នុងមួយឆានែល",
+    "perChannel": "ក្នុងមួយប៉ុស្តិ៍",
     "perModule": "ក្នុងមួយម៉ូឌុល",
     "perceptual": "ការយល់ឃើញ (ពន្លឺ)",
-    "posterizeLevels": "កម្រិត​ពណ៌​ប៉ូស្ទ័រ​រីសេត",
-    "preserveAlignment": "រក្សា​ការ​តម្រឹម",
-    "preserveFinders": "រក្សា​លំនាំ​ឧបករណ៍​ស្វែងរក",
+    "posterizeLevels": "កម្រិត Posterize",
+    "preserveAlignment": "រក្សាការតម្រឹម",
+    "preserveFinders": "រក្សាលំនាំអ្នកស្វែងរក",
     "preserveTiming": "រក្សាពេលវេលា",
     "protectFormat": "ការពារព័ត៌មានទម្រង់",
     "protectFormatInfo": "ការពារព័ត៌មានទម្រង់",
@@ -1359,97 +1359,128 @@
     "protectVersionInfo": "ការពារព័ត៌មានកំណែ",
     "protection": "ការការពារ",
     "removeImage": "ដកចេញ",
-    "respect": "ការគោរព",
+    "respect": "គោរព",
     "riskBudget": "ថវិកាហានិភ័យ",
     "rotation": "ការបង្វិល",
-    "sCurve": "ខ្សែកោងរាងអក្សរ S",
-    "saturation": "ភាពឆ្អែត",
-    "screenedBlueNoise": "សំឡេងរំខានពណ៌ខៀវដែលត្រូវបានរារាំង",
-    "seed": "គ្រាប់ពូជ",
+    "sCurve": "S-Curve",
+    "saturation": "តិត្ថិភាព",
+    "screenedBlueNoise": "សំឡេងពណ៌ខៀវដែលបានបញ្ចាំង",
+    "seed": "ពូជ",
     "selectImage": "ជ្រើសរើសរូបភាព",
-    "sepia": "ពណ៌​ស៊ីបៀ",
-    "serpentineScanning": "ការស្កេនពស់វែក",
+    "sepia": "ស៊ីភីយ៉ា",
+    "serpentineScanning": "ការស្កេន Serpentine",
     "shadow": "ស្រមោល",
-    "sharpen": "ធ្វើឲ្យច្បាស់",
+    "sharpen": "មុតស្រួច",
     "sierra2": "សៀរ៉ា-២",
-    "sierraLite": "សៀរ៉ា-ឡាយត៍",
+    "sierraLite": "សៀរ៉ា-លីត",
     "simplify": "ធ្វើឱ្យសាមញ្ញ",
-    "stretch": "លាតសន្ធឹង",
+    "stretch": "លាត",
     "strict": "តឹងរ៉ឹង",
-    "stylized": "មាន​រចនាបថ",
-    "subpixelSettings": "ការកំណត់​ភីកសែល​រង",
-    "subpixelSize": "ទំហំ​ភីកសែល​រង",
-    "subpixelSizeMode": "ទំហំ​ភីកសែល​រង",
-    "temporalBlueNoise": "សំឡេងពណ៌ខៀវបណ្តោះអាសន្ន",
-    "threshold": "កម្រិត​ព្រំដែន",
+    "stylized": "រចនាម៉ូដ",
+    "subpixelSettings": "ការកំណត់ Subpixel",
+    "subpixelSize": "ទំហំ Subpixel",
+    "subpixelSizeMode": "ទំហំ Subpixel",
+    "temporalBlueNoise": "សម្លេងពណ៌ខៀវបណ្តោះអាសន្ន",
+    "threshold": "កម្រិត",
     "tileSize": "ទំហំក្រឡាក្បឿង",
-    "triangularNoise": "សំឡេង​ត្រីកោណ",
-    "trueDither": "ភាពច្របូកច្របល់ពិតប្រាកដ",
-    "trueDitherMode": "ភាពច្របូកច្របល់ពិតប្រាកដ",
+    "triangularNoise": "សំលេងរំខានត្រីកោណ",
+    "trueDither": "Dither ពិត",
+    "trueDitherMode": "Dither ពិត",
     "useFrameDelays": "ប្រើការពន្យារពេលស៊ុម",
-    "voidCluster": "ភាពទទេ និងចង្កោម",
+    "voidCluster": "មោឃៈ & ចង្កោម",
     "pleaseEnterUrl": "សូមបញ្ចូល URL",
-    "preview": "ការមើលជាមុន",
-    "sobel": "Sobel",
+    "preview": "មើលជាមុន",
+    "sobel": "សូបែល",
     "canny": "Canny"
+  },
+  "welcome": {
+    "title": "សូមស្វាគមន៍មកកាន់ ANQR",
+    "subtitle": "Professional QR Code Generator",
+    "intro": "បង្កើតកូដ QR ដ៏អស្ចារ្យដែលអាចស្កេនបានជាមួយនឹងការលាបលើរូបភាព ចលនា និងរចនាប័ទ្មកម្រិតខ្ពស់។ មិនថាអ្នកត្រូវការលេខកូដសាមញ្ញសម្រាប់នាមប័ណ្ណ ឬលេខកូដ QR ដែលមានចលនាសម្រាប់ស្លាកសញ្ញាឌីជីថលទេ ANQR បានរ៉ាប់រងអ្នក។",
+    "featuresTitle": "លក្ខណៈសំខាន់ៗ",
+    "feature1Title": "កូដ QR ឆ្លាតវៃ",
+    "feature1Desc": "កំណែដែលបានកែលម្អដោយស្វ័យប្រវត្តិ និងការកែកំហុសសម្រាប់ការស្កេនដែលអាចទុកចិត្តបាន។",
+    "feature2Title": "ការលាបលើរូបភាព",
+    "feature2Desc": "លាយរូបថត ឡូហ្គោ និង GIFs ដោយផ្ទាល់ទៅក្នុងកូដ QR របស់អ្នក។",
+    "feature3Title": "រចនាប័ទ្មផ្ទាល់ខ្លួន",
+    "feature3Desc": "ពណ៌ រូបរាង ជម្រាល និងការកំណត់លំនាំអ្នកស្វែងរកតាមបំណង",
+    "feature4Title": "ចលនា",
+    "feature4Desc": "បង្កើតកូដ QR ដែលមានចលនាដែលទាក់ទាញភ្នែកសម្រាប់ការបង្ហាញឌីជីថល",
+    "feature5Title": "ការវិភាគសុវត្ថិភាព",
+    "feature5Desc": "ការត្រួតពិនិត្យភាពជឿជាក់នៃការស្កេនតាមពេលវេលាជាក់ស្តែង និងការបង្កើនប្រសិទ្ធភាព",
+    "feature6Title": "ការចែករំលែកងាយស្រួល",
+    "feature6Desc": "Export as PNG, SVG, GIF, or share via URL with all settings preserved",
+    "whatsNewTitle": "តើមានអ្វីថ្មី។",
+    "update1": "ផ្នែកសិក្សាថ្មីជាមួយនឹងការណែនាំស៊ីជម្រៅសម្រាប់ការលក់រាយ ការទូទាត់ និងការបោះពុម្ព",
+    "update2": "ឧទាហរណ៍នៃពិភពពិតជាមួយនឹងករណីសិក្សា និងការអនុវត្តល្អបំផុត",
+    "update3": "40+ ភាសាឥឡូវនេះត្រូវបានគាំទ្រជាមួយនឹងការបកប្រែ UI ពេញលេញ",
+    "update4": "ការវិភាគសុវត្ថិភាពប្រសើរឡើង និងរបៀបត្រួតលើគ្នាដែលដឹងអំពី ECC",
+    "languagesTitle": "មាននៅក្នុង 40+ ភាសា",
+    "moreLanguages": "ច្រើនទៀត",
+    "quickStartTitle": "ចាប់ផ្តើមរហ័ស",
+    "step1": "បញ្ចូលមាតិការបស់អ្នក (URL, អត្ថបទ, WiFi, vCard ។ល។)",
+    "step2": "ប្ដូរពណ៌ រចនាប័ទ្មតាមបំណង និងបន្ថែមការលាបលើរូបភាពជាជម្រើស",
+    "step3": "នាំចេញកូដ QR របស់អ្នក ឬចែករំលែកតំណការកំណត់រចនាសម្ព័ន្ធ",
+    "footerNote": "សារនេះនឹងមិនបង្ហាញម្តងទៀតទេ រហូតដល់ការអាប់ដេតបន្ទាប់។",
+    "getStarted": "ចាប់ផ្តើម"
   },
   "payload": {
     "emailAddress": "អាសយដ្ឋានអ៊ីមែល",
-    "vevent": "ព្រឹត្តិការណ៍​តាម​ប្រតិទិន",
+    "vevent": "ព្រឹត្តិការណ៍ប្រតិទិន",
     "geo": "ទីតាំងភូមិសាស្ត្រ",
-    "vcard": "ទំនាក់ទំនង vCard",
+    "vcard": "vCard ទំនាក់ទំនង",
     "wifiNetwork": "បណ្តាញវ៉ាយហ្វាយ",
     "description": "ការពិពណ៌នា",
     "title": "ចំណងជើង",
     "contact": "ទំនាក់ទំនង",
     "accountName": "ឈ្មោះគណនី",
-    "address": "អាសយដ្ឋាន",
-    "walletAddress": "អាសយដ្ឋាន",
+    "address": "អាស័យដ្ឋាន",
+    "walletAddress": "អាស័យដ្ឋាន",
     "algorithm": "ក្បួនដោះស្រាយ",
     "allDay": "ព្រឹត្តិការណ៍ពេញមួយថ្ងៃ",
     "amount": "ចំនួនទឹកប្រាក់",
     "amountBrl": "ចំនួនទឹកប្រាក់ (BRL)",
-    "amountEur": "ចំនួនទឹកប្រាក់ (អឺរ៉ូ)",
+    "amountEur": "ចំនួនទឹកប្រាក់ (EUR)",
     "amountInr": "ចំនួនទឹកប្រាក់ (INR)",
-    "amountSgd": "ចំនួនទឹកប្រាក់ (សិង្ហបុរី)",
-    "amountThb": "ចំនួនទឹកប្រាក់ (បាត)",
-    "androidIntent": "ចេតនា​របស់​ប្រព័ន្ធ​ប្រតិបត្តិការ Android",
-    "appLink": "តំណភ្ជាប់ជ្រៅសម្រាប់កម្មវិធី (ប្រព័ន្ធប្រតិបត្តិការ Android/iOS)",
-    "assetInventory": "ស្លាកទ្រព្យសកម្ម/សារពើភ័ណ្ឌ",
-    "assetItemId": "លេខសម្គាល់ទ្រព្យសកម្ម/វត្ថុ",
+    "amountSgd": "ចំនួនទឹកប្រាក់ (SGD)",
+    "amountThb": "ចំនួនទឹកប្រាក់ (THB)",
+    "androidIntent": "ចេតនា Android",
+    "appLink": "កម្មវិធី Deep Link (Android/iOS)",
+    "assetInventory": "ស្លាកទ្រព្យសម្បត្តិ/សារពើភ័ណ្ឌ",
+    "assetItemId": "លេខសម្គាល់ទ្រព្យសម្បត្តិ/ធាតុ",
     "assetType": "ប្រភេទទ្រព្យសកម្ម",
     "attendeeName": "ឈ្មោះអ្នកចូលរួម",
     "audio": "អូឌីយ៉ូ",
-    "baseUrl": "អាសយដ្ឋាន​មូលដ្ឋាន",
+    "baseUrl": "URL មូលដ្ឋាន",
     "batchLot": "បាច់/ឡូត៍",
     "beneficiaryName": "ឈ្មោះអ្នកទទួលផល",
     "bicSwift": "BIC/SWIFT",
     "birthday": "ថ្ងៃកំណើត",
-    "bitcoin": "ប៊ីតខូអ៊ីន",
-    "bizcard": "កាតប៊ីសកាត (ចាស់)",
+    "bitcoin": "Bitcoin",
+    "bizcard": "BizCard (កេរ្តិ៍ដំណែល)",
     "bluetooth": "ប៊្លូធូស",
     "body": "តួសារ",
     "bodyOptional": "រាងកាយ",
     "box": "ប្រអប់",
     "calendar": "ប្រតិទិន",
     "calendarName": "ឈ្មោះប្រតិទិន",
-    "calendarSubscription": "ការជាវប្រតិទិន",
-    "calendarUrl": "អាសយដ្ឋាន​ប្រតិទិន (ICS/WebCal)",
-    "campaignContent": "ខ្លឹមសារយុទ្ធនាការ",
-    "campaignMedium": "ឧបករណ៍ផ្សព្វផ្សាយយុទ្ធនាការ",
+    "calendarSubscription": "ជាវប្រចាំប្រតិទិន",
+    "calendarUrl": "URL ប្រតិទិន (ICS/WebCal)",
+    "campaignContent": "ខ្លឹមសារនៃយុទ្ធនាការ",
+    "campaignMedium": "មធ្យមយុទ្ធនាការ",
     "campaignName": "ឈ្មោះយុទ្ធនាការ",
     "campaignSource": "ប្រភពយុទ្ធនាការ",
-    "campaignTerm": "ពាក្យយុទ្ធនាការ",
+    "campaignTerm": "រយៈពេលយុទ្ធនាការ",
     "city": "ទីក្រុង",
     "cityOptional": "ទីក្រុង",
-    "cloudLink": "តំណភ្ជាប់ផ្ទុកទិន្នន័យលើពពក",
+    "cloudLink": "តំណភ្ជាប់ឃ្លាំងផ្ទុកពពក",
     "company": "ក្រុមហ៊ុន",
-    "contentType": "ប្រភេទ​មាតិកា",
+    "contentType": "ប្រភេទមាតិកា",
     "core": "ស្នូល",
     "country": "ប្រទេស",
-    "crypto": "រូបិយប័ណ្ណគ្រីបតូ (BTC, ETH ។ល។)",
-    "cryptocurrency": "រូបិយប័ណ្ណឌីជីថល",
-    "custom": "ទម្រង់​ផ្ទាល់ខ្លួន",
+    "crypto": "គ្រីបតូ (BTC, ETH ។ល។)",
+    "cryptocurrency": "រូបិយប័ណ្ណគ្រីបតូ",
+    "custom": "ទម្រង់ផ្ទាល់ខ្លួន",
     "customScheme": "គ្រោងការណ៍ផ្ទាល់ខ្លួន",
     "dateTime": "កាលបរិច្ឆេទ និងពេលវេលា",
     "deepLinkUrl": "តំណភ្ជាប់ជ្រៅ URL",
@@ -1457,69 +1488,69 @@
     "deviceName": "ឈ្មោះឧបករណ៍",
     "digits": "ខ្ទង់",
     "documentsMedia": "ឯកសារ និងប្រព័ន្ធផ្សព្វផ្សាយ",
-    "dropbox": "ប្រអប់​ផ្ទុក​ទិន្នន័យ",
+    "dropbox": "Dropbox",
     "email": "អ៊ីមែល",
     "encryption": "ការអ៊ិនគ្រីប",
     "end": "ចប់",
     "endDate": "កាលបរិច្ឆេទបញ្ចប់",
     "enterprise": "សហគ្រាស",
     "epcSepa": "EPC / SEPA (EU)",
-    "equipment": "ឧបករណ៍",
-    "ethereum": "អ៊ីធើរៀម",
+    "equipment": "បរិក្ខារ",
+    "ethereum": "Ethereum",
     "event": "ព្រឹត្តិការណ៍ iCalendar",
     "eventName": "ឈ្មោះព្រឹត្តិការណ៍",
-    "eventRsvp": "តំណភ្ជាប់ RSVP សម្រាប់ព្រឹត្តិការណ៍",
-    "eventTicket": "សំបុត្រចូលរួមកម្មវិធី",
+    "eventRsvp": "តំណភ្ជាប់ RSVP ព្រឹត្តិការណ៍",
+    "eventTicket": "សំបុត្រព្រឹត្តិការណ៍",
     "expiryDate": "កាលបរិច្ឆេទផុតកំណត់",
     "facebook": "ហ្វេសប៊ុក",
-    "fallbackUrl": "URL បម្រុង",
+    "fallbackUrl": "URL ត្រឡប់ក្រោយ",
     "fax": "ទូរសារ",
     "fileType": "ប្រភេទឯកសារ",
-    "fileUrl": "អាសយដ្ឋានឯកសារ/ឯកសារ",
-    "firstName": "ឈ្មោះ",
+    "fileUrl": "ឯកសារ / ឯកសារ URL",
+    "firstName": "ឈ្មោះដំបូង",
     "forceHttps": "បង្ខំ HTTPS",
     "fullName": "ឈ្មោះពេញ",
-    "furniture": "គ្រឿងសង្ហារឹម",
-    "github": "ជីតហាប់",
-    "googleDrive": "ហ្គូហ្គល ថាស",
+    "furniture": "គ្រឿងសង្ហារិម",
+    "github": "GitHub",
+    "googleDrive": "ថាស Google",
     "gs1DigitalLink": "តំណភ្ជាប់ឌីជីថល GS1",
     "gtin": "GTIN (លេខទំនិញពាណិជ្ជកម្មសកល)",
-    "hidden": "បណ្តាញលាក់កំបាំង",
+    "hidden": "បណ្តាញលាក់",
     "homePhone": "ទូរស័ព្ទផ្ទះ",
-    "iban": "អ៊ីបាន",
-    "idType": "ប្រភេទអត្តសញ្ញាណ",
+    "iban": "IBAN",
+    "idType": "ប្រភេទលេខសម្គាល់",
     "image": "រូបភាព",
-    "instagram": "អ៊ីនស្តាក្រាម",
-    "inventoryItem": "ទំនិញ​ស្តុក",
-    "iosUniversal": "iOS សកល",
+    "instagram": "Instagram",
+    "inventoryItem": "ធាតុសារពើភ័ណ្ឌ",
+    "iosUniversal": "ប្រព័ន្ធប្រតិបត្តិការ iOS សកល",
     "issuer": "អ្នកចេញ",
-    "itAsset": "ទ្រព្យសកម្មបច្ចេកវិទ្យាព័ត៌មាន",
+    "itAsset": "ទ្រព្យសកម្ម IT",
     "label": "ស្លាក",
     "lastName": "នាមត្រកូល",
     "latitude": "រយៈទទឹង",
-    "linkType": "ប្រភេទតំណភ្ជាប់",
-    "linkedin": "លីងដអ៊ីន",
+    "linkType": "ប្រភេទតំណ",
+    "linkedin": "LinkedIn",
     "litecoin": "Litecoin",
     "location": "ទីតាំង",
     "locationNetwork": "ទីតាំង និងបណ្តាញ",
     "longitude": "រយៈបណ្តោយ",
-    "lookupUrl": "អាសយដ្ឋាន​ស្វែងរក",
+    "lookupUrl": "ស្វែងរក URL",
     "marketing": "ទីផ្សារ",
-    "marketingTags": "ស្លាក​ទីផ្សារ",
+    "marketingTags": "ស្លាកទីផ្សារ",
     "maxLengthGuard": "ឆ្មាំប្រវែងអតិបរមា",
     "mecard": "ទំនាក់ទំនង MeCard",
-    "merchantName": "ឈ្មោះអាជីវករ",
+    "merchantName": "ឈ្មោះពាណិជ្ជករ",
     "message": "សារ",
     "messageOptional": "សារ",
-    "messagingLink": "WhatsApp / Telegram / Signal",
-    "messenger": "អ្នកនាំសារ",
-    "mobileNumber": "លេខទូរស័ព្ទចល័ត",
+    "messagingLink": "WhatsApp / Telegram / សញ្ញា",
+    "messenger": "កម្មវិធីផ្ញើសារ",
+    "mobileNumber": "លេខទូរសព្ទ",
     "mobilePhone": "ទូរស័ព្ទចល័ត",
     "name": "ឈ្មោះ",
-    "nationalIdTaxId": "អត្តសញ្ញាណប័ណ្ណជាតិ / អត្តសញ្ញាណប័ណ្ណពន្ធដារ",
+    "nationalIdTaxId": "អត្តសញ្ញាណប័ណ្ណជាតិ / លេខសម្គាល់ពន្ធ",
     "nickname": "ឈ្មោះហៅក្រៅ",
-    "normalizeNewlines": "ធ្វើឱ្យបន្ទាត់ថ្មីមានលក្ខណៈធម្មតា",
-    "note": "កំណត់ចំណាំ",
+    "normalizeNewlines": "ធ្វើឱ្យបន្ទាត់ថ្មី។",
+    "note": "ចំណាំ",
     "oneDrive": "OneDrive",
     "openNoPassword": "បើក (គ្មានពាក្យសម្ងាត់)",
     "organization": "អង្គការ",
@@ -1533,11 +1564,11 @@
     "phone": "ទូរស័ព្ទ",
     "phoneUsername": "ទូរស័ព្ទ/ឈ្មោះអ្នកប្រើប្រាស់",
     "pix": "PIX (ប្រេស៊ីល)",
-    "pixKey": "សោ PIX",
+    "pixKey": "គ្រាប់ចុច PIX",
     "plainText": "អត្ថបទធម្មតា",
     "platform": "វេទិកា",
     "prefilledMessage": "សារដែលបានបំពេញជាមុន",
-    "profileUrl": "អាសយដ្ឋាន​ប្រវត្តិរូប",
+    "profileUrl": "URL ប្រវត្តិរូប",
     "promptPayId": "លេខសម្គាល់ PromptPay",
     "promptpay": "PromptPay (ប្រទេសថៃ)",
     "proxyType": "ប្រភេទប្រូកស៊ី",
@@ -1545,22 +1576,22 @@
     "recipient": "អ្នកទទួល",
     "reference": "ឯកសារយោង",
     "referenceOptional": "ឯកសារយោង",
-    "resolverDomain": "ដែន​អ្នក​ដោះស្រាយ",
-    "rsvpUrl": "អាសយដ្ឋាន​ឆ្លើយតប",
+    "resolverDomain": "ដែនដោះស្រាយ",
+    "rsvpUrl": "RSVP URL",
     "searchQuery": "សំណួរស្វែងរក",
     "seat": "កៅអី",
-    "secretBase32": "សម្ងាត់ (មូលដ្ឋាន ៣២)",
+    "secretBase32": "អាថ៌កំបាំង (មូលដ្ឋាន ៣២)",
     "sectionZone": "ផ្នែក/តំបន់",
     "securityType": "ប្រភេទសុវត្ថិភាព",
     "serialNumber": "លេខស៊េរី",
     "service": "សេវាកម្ម",
-    "shortLink": "ការបញ្ជូនបន្តតំណភ្ជាប់ខ្លី",
+    "shortLink": "តំណខ្លីប្តូរទិស",
     "shortUrl": "URL ខ្លី",
     "signal": "សញ្ញា",
     "sms": "សារ SMS",
     "smsMms": "សារ SMS / MMS",
-    "socialMessaging": "សង្គម និង ការផ្ញើសារ",
-    "socialProfile": "ទម្រង់​សង្គម",
+    "socialMessaging": "សង្គម និងការផ្ញើសារ",
+    "socialProfile": "ប្រវត្តិរូបសង្គម",
     "ssid": "ឈ្មោះបណ្តាញ (SSID)",
     "start": "ចាប់ផ្តើម",
     "startDate": "កាលបរិច្ឆេទចាប់ផ្តើម",
@@ -1573,49 +1604,49 @@
     "telegram": "តេឡេក្រាម",
     "text": "ខ្លឹមសារអត្ថបទ",
     "ticketId": "លេខសម្គាល់សំបុត្រ",
-    "tiktok": "ទីកតុក",
-    "transactionNote": "កំណត់ចំណាំប្រតិបត្តិការ",
-    "trimWhitespace": "កាត់​បន្ថយ​ចន្លោះ​ទទេ",
-    "uenMobile": "លេខ UEN/ទូរស័ព្ទដៃ",
-    "universalLink": "តំណភ្ជាប់សកល",
+    "tiktok": "TikTok",
+    "transactionNote": "ចំណាំប្រតិបត្តិការ",
+    "trimWhitespace": "កាត់កន្លែងទំនេរ",
+    "uenMobile": "UEN/លេខទូរសព្ទ",
+    "universalLink": "តំណសកល",
     "upi": "UPI (ឥណ្ឌា)",
-    "upiId": "លេខសម្គាល់ UPI (VPA)",
-    "url": "អាសយដ្ឋាន​គេហទំព័រ",
+    "upiId": "UPI ID (VPA)",
+    "url": "URL",
     "utmCampaign": "utm_campaign",
     "utmContent": "utm_content",
     "utmLink": "តំណភ្ជាប់យុទ្ធនាការ UTM",
     "utmMedium": "utm_medium",
-    "utmSource": "utm_source",
+    "utmSource": "ប្រភព utm",
     "utmTerm": "utm_term",
-    "validateInput": "ផ្ទៀងផ្ទាត់​ការ​បញ្ចូល",
-    "validationOptions": "ជម្រើសផ្ទៀងផ្ទាត់",
-    "validationUrl": "URL ផ្ទៀងផ្ទាត់",
-    "vehicle": "យានយន្ត",
+    "validateInput": "ធ្វើឱ្យការបញ្ចូលមានសុពលភាព",
+    "validationOptions": "ជម្រើសសុពលភាព",
+    "validationUrl": "URL សុពលភាព",
+    "vehicle": "យានជំនិះ",
     "venue": "ទីកន្លែង",
-    "viber": "វីប៊ើរ",
+    "viber": "Viber",
     "video": "វីដេអូ",
     "website": "គេហទំព័រ",
-    "whatsapp": "វ៉ាតសាំ",
+    "whatsapp": "កម្មវិធី WhatsApp",
     "wifi": "វ៉ាយហ្វាយ",
-    "wordDocument": "ឯកសារ Word",
+    "wordDocument": "ឯកសារពាក្យ",
     "workPhone": "ទូរស័ព្ទការងារ",
     "youtube": "យូធូប",
-    "zip": "លេខកូដប្រៃសណីយ៍",
+    "zip": "លេខ​កូដ​ប្រៃសណីយ៍",
     "pdfDocument": "ឯកសារ PDF",
-    "uenBusiness": "UEN (អាជីវកម្ម)",
-    "ewalletId": "លេខសម្គាល់កាបូបអេឡិចត្រូនិច",
+    "uenBusiness": "UEN (ពាណិជ្ជកម្ម)",
+    "ewalletId": "លេខសម្គាល់កាបូបអេឡិចត្រូនិក",
     "totpTimeBased": "TOTP (ផ្អែកលើពេលវេលា)",
-    "hotpCounterBased": "HOTP (ផ្អែកលើបញ្ជរ)",
-    "iosUrlScheme": "គ្រោងការណ៍ URL iOS",
-    "xTwitter": "អ៊ិច (ធ្វីតធ័រ)",
+    "hotpCounterBased": "HOTP (ផ្អែកលើការប្រឆាំង)",
+    "iosUrlScheme": "គ្រោងការណ៍ URL របស់ iOS",
+    "xTwitter": "X (Twitter)",
     "counter": "បញ្ជរ",
     "periodSec": "រយៈពេល (វិនាទី)",
-    "swissQrBill": "វិក្កយបត្រ QR ស្វីស (CH/LI)",
-    "lightning": "ផ្លេកបន្ទោរ (ប៊ីតខូអ៊ីន)",
-    "ethereumEip681": "អ៊ីធើរៀម (EIP-៦៨១)",
+    "swissQrBill": "វិក័យប័ត្រ QR របស់ប្រទេសស្វីស (CH/LI)",
+    "lightning": "រន្ទះ (Bitcoin)",
+    "ethereumEip681": "Ethereum (EIP-681)",
     "qris": "QRIS (ឥណ្ឌូនេស៊ី)",
-    "duitnow": "ឌូអ៊ីតណូ (ម៉ាឡេស៊ី)",
-    "bharatqr": "ភារ៉ាត ឃ្យូអរ (ឥណ្ឌា)",
+    "duitnow": "DuitNow (ម៉ាឡេស៊ី)",
+    "bharatqr": "BharatQR (ឥណ្ឌា)",
     "vietqr": "VietQR (វៀតណាម)",
     "qrph": "QR Ph (ហ្វីលីពីន)",
     "twqr": "TWQR (តៃវ៉ាន់)",
@@ -1627,65 +1658,65 @@
     "emvGeneric": "EMV QR (ទូទៅ)"
   },
   "placeholders": {
-    "enterText": "បញ្ចូល​អត្ថបទ​ដើម្បី​អ៊ិនកូដ...",
+    "enterText": "បញ្ចូលអត្ថបទដើម្បីអ៊ិនកូដ...",
     "emailSubject": "ប្រធានបទអ៊ីមែល",
-    "emailBody": "តួ​អ៊ីមែល",
+    "emailBody": "តួអ៊ីមែល",
     "prefilledMessage": "សារដែលបានបំពេញជាមុន",
-    "placeNameOrAddress": "ឈ្មោះ ឬអាសយដ្ឋានទីកន្លែង",
+    "placeNameOrAddress": "ឈ្មោះ ឬអាសយដ្ឋាន",
     "networkPassword": "ពាក្យសម្ងាត់បណ្តាញ",
     "eventDetails": "ព័ត៌មានលម្អិតអំពីព្រឹត្តិការណ៍...",
     "paymentFor": "ការទូទាត់សម្រាប់...",
     "rawQrData": "បញ្ចូលទិន្នន័យកូដ QR ឆៅ...",
-    "yourName": "ឈ្មោះរបស់អ្នក",
-    "helpSubject": "តើយើងអាចជួយអ្វីបាន?",
-    "helpMessage": "ប្រាប់យើងពីអ្វីដែលអ្នកកំពុងព្យាយាមធ្វើ ហើយរួមបញ្ចូលសារកំហុសណាមួយប្រសិនបើពាក់ព័ន្ធ។",
-    "utmSource": "utm_source",
+    "yourName": "ឈ្មោះរបស់អ្នក។",
+    "helpSubject": "តើយើងអាចជួយអ្វីខ្លះ?",
+    "helpMessage": "ប្រាប់យើងពីអ្វីដែលអ្នកកំពុងព្យាយាមធ្វើ និងបញ្ចូលសារកំហុសប្រសិនបើពាក់ព័ន្ធ។",
+    "utmSource": "ប្រភព utm",
     "utmMedium": "utm_medium",
     "utmCampaign": "utm_campaign",
-    "phoneExample": "+១២៣៤៥៦៧៨៩០",
+    "phoneExample": "+1234567890",
     "emailExample": "name@anqr.link",
-    "coordinateExample": "០.០",
-    "wifiNetwork": "បណ្តាញវ៉ាយហ្វាយរបស់ខ្ញុំ",
-    "fullName": "ចន ដូ",
+    "coordinateExample": "0.0",
+    "wifiNetwork": "បណ្តាញ MyWiFi",
+    "fullName": "លោក John Doe",
     "firstName": "ចន",
     "lastName": "ដូ",
     "nickname": "ចននី",
-    "company": "ក្រុមហ៊ុន អ៊ីនខបភើរេធីត",
-    "jobTitle": "វិស្វករ​ផ្នែក​សូហ្វវែរ",
-    "mecardName": "ដូ ចន",
-    "address": "ផ្លូវមេន ១២៣ ក្រុង",
+    "company": "ក្រុមហ៊ុន Inc.",
+    "jobTitle": "វិស្វករកម្មវិធី",
+    "mecardName": "ដូ, ចន",
+    "address": "123 ផ្លូវធំ, ទីក្រុង",
     "bluetoothDevice": "ឧបករណ៍ប៊្លូធូសរបស់ខ្ញុំ",
-    "eventTitle": "កិច្ចប្រជុំ",
-    "eventLocation": "បន្ទប់ប្រជុំ A",
-    "eventName": "សន្និសីទប្រចាំឆ្នាំ ២០២៤",
+    "eventTitle": "ការប្រជុំ",
+    "eventLocation": "បន្ទប់សន្និសីទ ក",
+    "eventName": "សន្និសីទប្រចាំឆ្នាំ 2024",
     "calendarName": "កាលវិភាគក្រុម",
-    "phoneOrUsername": "+១២៣៤៥៦៧៨៩០ ឬ @ឈ្មោះអ្នកប្រើប្រាស់",
-    "messagingGreeting": "សួស្តី! ខ្ញុំបានស្កេនលេខកូដ QR របស់អ្នកហើយ...",
+    "phoneOrUsername": "+1234567890 ឬ @ឈ្មោះអ្នកប្រើប្រាស់",
+    "messagingGreeting": "សួស្តី! ខ្ញុំបានស្កេនលេខកូដ QR របស់អ្នក...",
     "walletAddress": "អាសយដ្ឋានកាបូប",
-    "invoiceReference": "វិក្កយបត្រ ១២៣៤៥",
+    "invoiceReference": "វិក្កយបត្រ 12345",
     "upiId": "ឈ្មោះ@upi",
     "paymentNote": "ការទូទាត់សម្រាប់ការបញ្ជាទិញ",
-    "pixName": "ជូអាវ ស៊ីលវ៉ា",
+    "pixName": "João Silva",
     "pixCity": "សៅប៉ូឡូ",
-    "pixKeyTypes": "CPF, CNPJ, អ៊ីមែល, ទូរស័ព្ទ ឬសោចៃដន្យ",
-    "appName": "កម្មវិធីរបស់ខ្ញុំ",
+    "pixKeyTypes": "CPF, CNPJ, អ៊ីមែល, ទូរស័ព្ទ, ឬ សោចៃដន្យ",
+    "appName": "MyApp",
     "accountEmail": "user@anqr.link",
-    "serialNumber": "អេប៊ីស៊ី ១២៣",
-    "batchLot": "ឡូត ១២៣",
+    "serialNumber": "ABC123",
+    "batchLot": "ឡូតិ៍ 123",
     "resolverDomain": "id.gs1.org",
-    "assetLocation": "អគារ A បន្ទប់ ១០១",
-    "assetDescription": "កុំព្យូទ័រយួរដៃ Dell ទំហំ ១៥ អ៊ីញ",
-    "ticketId": "TKT-២០២៤-០០១២៣៤",
-    "concertEvent": "ការប្រគុំតន្ត្រី ២០២៤",
-    "venue": "សង្វៀនស្តាតឌីយ៉ាណា",
-    "section": "ផ្នែក ក",
-    "seatInfo": "ជួរទី ៥ កៅអីទី ១២",
-    "swissQrBill": "វិក្កយបត្រ QR ស្វីស (CH/LI)",
-    "swissQrBillNote": "វិក្កយបត្រ QR ស្វីសសម្រាប់ការចេញវិក្កយបត្រស្វីស និងលីចថេនស្តាញ",
-    "creditorIban": "IBAN របស់ម្ចាស់បំណុល",
-    "creditorName": "ឈ្មោះ​ម្ចាស់បំណុល",
+    "assetLocation": "អគារ A បន្ទប់ 101",
+    "assetDescription": "កុំព្យូទ័រយួរដៃ Dell 15 អ៊ីញ",
+    "ticketId": "TKT-2024-001234",
+    "concertEvent": "ការប្រគុំតន្ត្រី 2024",
+    "venue": "ពហុកីឡដ្ឋាន",
+    "section": "ផ្នែក A",
+    "seatInfo": "ជួរទី 5 កៅអី 12",
+    "swissQrBill": "វិក័យប័ត្រ QR របស់ប្រទេសស្វីស (CH/LI)",
+    "swissQrBillNote": "Swiss QR-bill for Switzerland និង Liechtenstein invoicing",
+    "creditorIban": "ម្ចាស់បំណុល IBAN",
+    "creditorName": "ឈ្មោះម្ចាស់បំណុល",
     "addressType": "ប្រភេទអាសយដ្ឋាន",
-    "addressTypeStructured": "មានរចនាសម្ព័ន្ធ",
+    "addressTypeStructured": "រចនាសម្ព័ន្ធ",
     "addressTypeCombined": "រួមបញ្ចូលគ្នា",
     "streetAddress": "ផ្លូវ",
     "buildingNumber": "លេខអគារ",
@@ -1693,207 +1724,207 @@
     "creditorCountry": "ប្រទេសម្ចាស់បំណុល",
     "referenceTypeField": "ប្រភេទឯកសារយោង",
     "referenceTypeQrr": "ឯកសារយោង QR",
-    "referenceTypeScor": "ឯកសារយោងរបស់ម្ចាស់បំណុល (ISO ១១៦៤៩)",
+    "referenceTypeScor": "ឯកសារយោងម្ចាស់បំណុល (ISO 11649)",
     "referenceTypeNon": "គ្មានឯកសារយោង",
-    "unstructuredMessage": "សារ​ដែល​មិន​មាន​រចនាសម្ព័ន្ធ",
-    "billInformation": "ព័ត៌មានវិក្កយបត្រ (Swico)",
+    "unstructuredMessage": "សារដែលមិនមានរចនាសម្ព័ន្ធ",
+    "billInformation": "ព័ត៌មានវិក័យប័ត្រ (Swico)",
     "lightningInvoice": "វិក្កយបត្ររន្ទះ",
-    "lightningNote": "ការទូទាត់ប្រាក់តាមបណ្តាញរន្ទះ Bitcoin (BOLT11)",
+    "lightningNote": "ការទូទាត់តាមបណ្តាញ Bitcoin Lightning (BOLT11)",
     "bolt11Invoice": "វិក្កយបត្រ BOLT11",
-    "bolt11Placeholder": "បិទភ្ជាប់វិក្កយបត្រដែលបានអ៊ិនកូដ BOLT11 របស់អ្នក",
-    "ethereumEip681": "អ៊ីធើរៀម (EIP-៦៨១)",
-    "ethereumNote": "សំណើសុំប្រតិបត្តិការ Ethereum ជាមួយប៉ារ៉ាម៉ែត្រខ្សែសង្វាក់ និងឧស្ម័ន",
+    "bolt11Placeholder": "បិទភ្ជាប់វិក្កយបត្រដែលបានអ៊ិនកូដ BOLT11 របស់អ្នក។",
+    "ethereumEip681": "Ethereum (EIP-681)",
+    "ethereumNote": "សំណើប្រតិបត្តិការ Ethereum ជាមួយនឹងប៉ារ៉ាម៉ែត្រខ្សែសង្វាក់និងឧស្ម័ន",
     "targetAddress": "អាសយដ្ឋានគោលដៅ",
     "chainId": "លេខសម្គាល់ខ្សែសង្វាក់",
-    "chainIdHint": "១ = Mainnet, ១៣៧ = ពហុកោណ, ល។",
+    "chainIdHint": "1 = Mainnet, 137 = Polygon ។ល។",
     "valueWei": "តម្លៃ (wei)",
-    "valueWeiHint": "ចំនួនទឹកប្រាក់ជា wei (ឯកតាតូចបំផុត)",
+    "valueWeiHint": "បរិមាណគិតជា wei (ឯកតាតូចបំផុត)",
     "gasLimit": "ដែនកំណត់ឧស្ម័ន",
-    "gasPriceWei": "តម្លៃប្រេងឥន្ធនៈ (wei)",
-    "tokenContractAddress": "អាសយដ្ឋានកិច្ចសន្យាសញ្ញាសម្ងាត់",
-    "tokenContractHint": "សម្រាប់ការផ្ទេរថូខឹន ERC-20",
-    "tokenAmount": "ចំនួនទឹកប្រាក់ថូខឹន",
+    "gasPriceWei": "តម្លៃហ្គាស (wei)",
+    "tokenContractAddress": "អាសយដ្ឋានកិច្ចសន្យា Token",
+    "tokenContractHint": "សម្រាប់ការផ្ទេរសញ្ញាសម្ងាត់ ERC-20",
+    "tokenAmount": "ចំនួន​ថូខឹន",
     "qris": "QRIS (ឥណ្ឌូនេស៊ី)",
     "qrisNote": "លេខកូដឆ្លើយតបរហ័សស្តង់ដារឥណ្ឌូនេស៊ី",
-    "merchantId": "លេខសម្គាល់អាជីវករ",
+    "merchantId": "លេខសម្គាល់ពាណិជ្ជករ",
     "nmid": "លេខសម្គាល់ពាណិជ្ជករជាតិ (NMID)",
-    "merchantCriteria": "លក្ខណៈវិនិច្ឆ័យសម្រាប់អាជីវករ",
-    "criteriaRegular": "ធម្មតា",
-    "criteriaSmall": "ពាណិជ្ជករតូចតាច",
-    "criteriaMicro": "អ្នកជំនួញខ្នាតតូច",
-    "duitnow": "ឌូអ៊ីតណាវ (ម៉ាឡេស៊ី)",
-    "duitnowNote": "ប្រព័ន្ធទូទាត់ប្រាក់ QR ជាតិម៉ាឡេស៊ី",
+    "merchantCriteria": "លក្ខណៈវិនិច្ឆ័យពាណិជ្ជករ",
+    "criteriaRegular": "ទៀងទាត់",
+    "criteriaSmall": "ឈ្មួញតូច",
+    "criteriaMicro": "ពាណិជ្ជករខ្នាតតូច",
+    "duitnow": "DuitNow (ម៉ាឡេស៊ី)",
+    "duitnowNote": "ប្រព័ន្ធទូទាត់ QR ជាតិម៉ាឡេស៊ី",
     "proxyTypeField": "ប្រភេទប្រូកស៊ី",
     "proxyTypeNric": "NRIC",
     "proxyTypePassport": "លិខិតឆ្លងដែន",
     "proxyTypeArmy": "លេខសម្គាល់កងទ័ព",
-    "proxyTypeBusiness": "ការចុះបញ្ជីអាជីវកម្ម",
+    "proxyTypeBusiness": "ការចុះឈ្មោះអាជីវកម្ម",
     "proxyValueField": "តម្លៃប្រូកស៊ី",
-    "bharatqr": "បារ៉ាតQR (ឥណ្ឌា)",
-    "bharatqrNote": "QR បង្រួបបង្រួមសម្រាប់ការទូទាត់តាមកាត និង UPI នៅក្នុងប្រទេសឥណ្ឌា",
-    "merchantVpa": "កិច្ចព្រមព្រៀងពាណិជ្ជកម្មទ្វេភាគី",
-    "merchantPan": "ផ្នែក​ពាណិជ្ជកម្ម",
-    "gstDetails": "ព័ត៌មានលម្អិតអំពីពន្ធលើទំនិញ និងសេវាកម្ម",
-    "invoiceNumber": "លេខវិក្កយបត្រ",
+    "bharatqr": "BharatQR (ឥណ្ឌា)",
+    "bharatqrNote": "បង្រួបបង្រួម QR សម្រាប់ការទូទាត់តាមកាត និង UPI នៅក្នុងប្រទេសឥណ្ឌា",
+    "merchantVpa": "VPA ពាណិជ្ជករ",
+    "merchantPan": "ឈ្មួញ PAN",
+    "gstDetails": "ព័ត៌មានលម្អិត GST",
+    "invoiceNumber": "លេខវិក័យប័ត្រ",
     "vietqr": "VietQR (វៀតណាម)",
-    "vietqrNote": "ស្តង់ដារទូទាត់ប្រាក់ QR ជាតិវៀតណាម",
-    "bankBin": "ធុងសំរាមធនាគារ",
-    "bankBinHint": "លេខសម្គាល់ធនាគារ NAPAS",
+    "vietqrNote": "ស្តង់ដារទូទាត់ QR របស់ប្រទេសវៀតណាម",
+    "bankBin": "ធនាគារ BIN",
+    "bankBinHint": "លេខអត្តសញ្ញាណធនាគារ NAPAS",
     "accountNumberField": "លេខគណនី",
     "accountNameField": "ឈ្មោះគណនី",
     "serviceCodeField": "លេខកូដសេវាកម្ម",
-    "serviceCodePush": "ចុច QR",
-    "serviceCodeFtta": "ការផ្ទេរប្រាក់អន្តរធនាគារ (២៤/៧)",
-    "serviceCodeFttc": "ការផ្ទេរប្រាក់អន្តរធនាគារ (ស៊ីតាដ)",
+    "serviceCodePush": "QR Push",
+    "serviceCodeFtta": "ការផ្ទេរប្រាក់អន្តរធនាគារ (24/7)",
+    "serviceCodeFttc": "ការផ្ទេរប្រាក់អន្តរធនាគារ (Citad)",
     "qrph": "QR Ph (ហ្វីលីពីន)",
-    "qrphNote": "ស្តង់ដារទូទាត់ប្រាក់ QR ជាតិហ្វីលីពីន",
+    "qrphNote": "ស្តង់ដារទូទាត់ QR របស់ប្រទេសហ្វីលីពីន",
     "twqr": "TWQR (តៃវ៉ាន់)",
-    "twqrNote": "ស្តង់ដារទូទាត់ប្រាក់ QR ជាតិតៃវ៉ាន់",
-    "taxIdField": "អត្តសញ្ញាណពន្ធ",
+    "twqrNote": "ស្តង់ដារទូទាត់ QR ជាតិតៃវ៉ាន់",
+    "taxIdField": "លេខសម្គាល់ពន្ធ",
     "hkqr": "HKQR (ហុងកុង)",
-    "hkqrNote": "ប្រព័ន្ធទូទាត់ប្រាក់លឿនជាងមុននៅហុងកុង QR",
+    "hkqrNote": "ប្រព័ន្ធទូទាត់រហ័សរបស់ហុងកុង QR",
     "fpsId": "លេខសម្គាល់ FPS",
     "jpqr": "JPQR (ជប៉ុន)",
-    "jpqrNote": "ស្តង់ដារទូទាត់ប្រាក់ QR ជាតិជប៉ុន",
+    "jpqrNote": "ស្តង់ដារទូទាត់ QR របស់ប្រទេសជប៉ុន",
     "storeIdField": "លេខសម្គាល់ហាង",
     "auspaynet": "AusPayNet (អូស្ត្រាលី)",
     "auspaynetNote": "PayID វេទិកាទូទាត់ថ្មីរបស់អូស្ត្រាលី",
-    "payIdField": "លេខសម្គាល់ការទូទាត់",
-    "payIdType": "ប្រភេទលេខសម្គាល់ការបង់ប្រាក់",
+    "payIdField": "PayID",
+    "payIdType": "ប្រភេទ PayID",
     "bsbField": "BSB",
     "abnField": "ABN",
     "orgIdField": "លេខសម្គាល់អង្គការ",
     "paypalMe": "PayPal.Me",
-    "paypalMeNote": "តំណភ្ជាប់ទូទាត់ផ្ទាល់ខ្លួន PayPal",
+    "paypalMeNote": "តំណភ្ជាប់ការទូទាត់ផ្ទាល់ខ្លួន PayPal",
     "paypalUsername": "ឈ្មោះអ្នកប្រើប្រាស់ PayPal",
-    "cashApp": "កម្មវិធី​សាច់ប្រាក់",
-    "cashAppNote": "តំណភ្ជាប់ទូទាត់ប្រាក់ $cashtag សម្រាប់កម្មវិធីសាច់ប្រាក់",
-    "cashtagField": "ស្លាក​ប្រាក់​ដុល្លារ",
-    "cashtagPlaceholder": "ឈ្មោះអ្នកប្រើប្រាស់កម្មវិធីសាច់ប្រាក់របស់អ្នក (ដោយគ្មាន $)",
+    "cashApp": "កម្មវិធីសាច់ប្រាក់",
+    "cashAppNote": "កម្មវិធីសាច់ប្រាក់ $cashtag តំណទូទាត់",
+    "cashtagField": "$cashtag",
+    "cashtagPlaceholder": "ឈ្មោះអ្នកប្រើប្រាស់កម្មវិធី Cash របស់អ្នក (ដោយគ្មាន $)",
     "emvGeneric": "EMV QR (ទូទៅ)",
-    "emvGenericNote": "លេខកូដ QR EMVCo ទូទៅសម្រាប់គម្រោងទូទាត់ផ្ទាល់ខ្លួន",
+    "emvGenericNote": "កូដ QR EMVCo ទូទៅសម្រាប់គ្រោងការណ៍ទូទាត់ផ្ទាល់ខ្លួន",
     "countryCodeField": "លេខកូដប្រទេស",
-    "countryCodeHint": "ISO 3166-1 alpha-2 (ឧ. SG, TH, ID)",
+    "countryCodeHint": "ISO 3166-1 អាល់ហ្វា-2 (ឧ. SG, TH, ID)",
     "currencyCodeField": "លេខកូដរូបិយប័ណ្ណ",
-    "currencyCodeHint": "លេខ ISO ៤២១៧ (ឧ. ៧០២ សម្រាប់ SGD)",
+    "currencyCodeHint": "លេខ ISO 4217 (ឧ. 702 សម្រាប់ SGD)",
     "staticQr": "QR ឋិតិវន្ត",
-    "staticQrHint": "លេខកូដ QR ដែលអាចប្រើប្រាស់ឡើងវិញបាន (គ្មានចំនួនទឹកប្រាក់កំណត់)",
-    "tipFeeIndicator": "សូចនាករ​ប្រាក់​ទឹកតែ/ថ្លៃ​សេវា",
-    "tipPrompt": "ស្នើសុំព័ត៌មានជំនួយ",
+    "staticQrHint": "លេខកូដ QR ដែលអាចប្រើឡើងវិញបាន (គ្មានចំនួនថេរ)",
+    "tipFeeIndicator": "ព័ត៌មានជំនួយ/សូចនាករថ្លៃសេវា",
+    "tipPrompt": "ជម្រុញសម្រាប់ព័ត៌មានជំនួយ",
     "tipFixed": "ថ្លៃសេវាថេរ",
-    "tipPercentage": "ភាគរយ​នៃ​ប្រាក់​ទឹកតែ",
+    "tipPercentage": "ភាគរយនៃព័ត៌មានជំនួយ",
     "feeAmount": "ចំនួនទឹកប្រាក់ថ្លៃសេវា",
-    "feePercentage": "ភាគរយ​នៃ​ថ្លៃ​សេវា",
+    "feePercentage": "ភាគរយនៃថ្លៃសេវា",
     "storeLabel": "ស្លាកហាង",
-    "loyaltyNumber": "លេខ​ស្មោះត្រង់",
-    "customerLabel": "ស្លាក​អតិថិជន",
-    "terminalLabel": "ស្លាក​ស្ថានីយ",
+    "loyaltyNumber": "លេខភក្ដីភាព",
+    "customerLabel": "ស្លាកអតិថិជន",
+    "terminalLabel": "ស្លាកស្ថានីយ",
     "purposeOfTransaction": "គោលបំណងនៃប្រតិបត្តិការ",
-    "amountEditable": "ចំនួនទឹកប្រាក់ដែលអាចកែសម្រួលបាន",
-    "amountEditableHint": "អនុញ្ញាតឱ្យអ្នកបង់ប្រាក់កែប្រែចំនួនទឹកប្រាក់",
+    "amountEditable": "ចំនួនទឹកប្រាក់ដែលអាចកែសម្រួលបាន។",
+    "amountEditableHint": "អនុញ្ញាតឱ្យអ្នកបង់ប្រាក់កែប្រែចំនួន",
     "expiryDateField": "កាលបរិច្ឆេទផុតកំណត់",
     "expiryDateHint": "ទម្រង់ YYYYMMDD",
-    "billRef1": "ឯកសារយោង​វិក្កយបត្រ ១",
-    "billRef2": "ឯកសារយោង​សេចក្តីព្រាងច្បាប់ ២",
-    "billRef3": "ឯកសារយោងវិក្កយបត្រ ៣ / លេខសម្គាល់ស្ថានីយ",
+    "billRef1": "ឯកសារយោង ១",
+    "billRef2": "ឯកសារយោង 2",
+    "billRef3": "Bill Reference 3 / លេខសម្គាល់ស្ថានីយ",
     "descriptionField": "ការពិពណ៌នា",
     "transactionId": "លេខសម្គាល់ប្រតិបត្តិការ",
-    "feeTipType": "ប្រភេទថ្លៃសេវា/ប្រាក់ទឹកតែ",
-    "feeTipFixed": "ថេរ",
+    "feeTipType": "ប្រភេទថ្លៃសេវា/ព័ត៌មានជំនួយ",
+    "feeTipFixed": "ជួសជុល",
     "feeTipPercentage": "ភាគរយ",
     "currency": "រូបិយប័ណ្ណ",
     "referenceType": "ប្រភេទឯកសារយោង",
-    "gasLimitOptional": "ដែនកំណត់ឧស្ម័ន (ស្រេចចិត្ត)",
+    "gasLimitOptional": "ដែនកំណត់ឧស្ម័ន (ជាជម្រើស)",
     "proxyValue": "តម្លៃប្រូកស៊ី",
     "accountNumber": "លេខគណនី",
     "storeId": "លេខសម្គាល់ហាង",
-    "payId": "លេខសម្គាល់ការទូទាត់",
+    "payId": "PayID",
     "paypalMeUsername": "ឈ្មោះអ្នកប្រើប្រាស់ PayPal.Me",
-    "cashtag": "ស្លាក​ប្រាក់​ដុល្លារ",
+    "cashtag": "$Cashtag",
     "countryCode": "លេខកូដប្រទេស",
     "currencyCode": "លេខកូដរូបិយប័ណ្ណ",
-    "mcc": "អឹមស៊ីស៊ី",
-    "tipConvenienceFee": "ថ្លៃទឹកតែ/ថ្លៃសម្រួល",
-    "tipAmount": "ចំនួនទឹកប្រាក់ទឹកតែ",
+    "mcc": "MCC",
+    "tipConvenienceFee": "ព័ត៌មានជំនួយ/ថ្លៃសេវាងាយស្រួល",
+    "tipAmount": "ចំនួនទឹកប្រាក់ជំនួយ",
     "switzerland": "ស្វីស",
-    "liechtenstein": "លីចតិនស្តាញ",
+    "liechtenstein": "លីចតេនស្ទីន",
     "qrReference": "ឯកសារយោង QR",
-    "creditorRefIso": "ឯកសារយោងរបស់ម្ចាស់បំណុល (ISO ១១៦៤៩)",
-    "mobileNumber": "លេខទូរស័ព្ទចល័ត",
+    "creditorRefIso": "ឯកសារយោងម្ចាស់បំណុល (ISO 11649)",
+    "mobileNumber": "លេខទូរសព្ទ",
     "nric": "NRIC",
     "passport": "លិខិតឆ្លងដែន",
     "armyId": "លេខសម្គាល់កងទ័ព",
-    "businessRegistration": "ការចុះបញ្ជីអាជីវកម្ម",
+    "businessRegistration": "ការចុះឈ្មោះអាជីវកម្ម",
     "others": "ផ្សេងៗ",
     "emailOption": "អ៊ីមែល",
     "mobileOption": "ទូរស័ព្ទចល័ត",
     "abn": "ABN",
     "organizationId": "លេខសម្គាល់អង្គការ",
-    "promptUser": "អ្នកប្រើប្រាស់​ដែល​បាន​ស្នើសុំ",
+    "promptUser": "ជម្រុញអ្នកប្រើប្រាស់",
     "fixedAmount": "ចំនួនទឹកប្រាក់ថេរ",
     "percentageOption": "ភាគរយ",
-    "ethMainnet": "បណ្តាញមេ Ethereum (1)",
-    "polygon": "ពហុកោណ (១៣៧)",
-    "bsc": "BSC (៥៦)",
-    "avalanche": "ការរអិលបាក់ដី (៤៣១១៤)",
-    "arbitrum": "អាប៊ីទ្រុម (៤២១៦១)",
+    "ethMainnet": "Ethereum Mainnet (1)",
+    "polygon": "ពហុកោណ (137)",
+    "bsc": "BSC (56)",
+    "avalanche": "ការ​រអិល​បាក់​ដី (43114)",
+    "arbitrum": "អាជ្ញាកណ្តាល (42161)",
     "optimism": "សុទិដ្ឋិនិយម (១០)",
-    "swissQrBillHint": "ស្តង់ដារទូទាត់វិក្កយបត្រ QR របស់ស្វីស (SIX)",
+    "swissQrBillHint": "ស្តង់ដារទូទាត់វិក្កយបត្រ QR របស់ប្រទេសស្វីស (SIX)",
     "bolt11Hint": "បិទភ្ជាប់វិក្កយបត្រ BOLT11 Lightning",
-    "eip681Hint": "URI សំណើ​ប្រតិបត្តិការ EIP-៦៨១",
+    "eip681Hint": "សំណើប្រតិបត្តិការ EIP-681 URI",
     "qrisHint": "លេខកូដឆ្លើយតបរហ័សស្តង់ដារឥណ្ឌូនេស៊ី",
-    "duitnowHint": "ប្រព័ន្ធទូទាត់ប្រាក់ភ្លាមៗរបស់ប្រទេសម៉ាឡេស៊ី",
-    "bharatqrHint": "ការទូទាត់តាម QR បង្រួបបង្រួមរបស់ឥណ្ឌាសម្រាប់ការទូទាត់តាមកាត UPI +",
-    "napasHint": "លេខសម្គាល់ធនាគារ NAPAS",
-    "qrphHint": "ស្តង់ដារទូទាត់ប្រាក់ QR របស់ប្រទេសហ្វីលីពីន",
-    "twqrHint": "ស្តង់ដារទូទាត់ប្រាក់ QR របស់តៃវ៉ាន់",
-    "fpsHint": "ឧបករណ៍កំណត់អត្តសញ្ញាណប្រព័ន្ធទូទាត់លឿនជាងមុន",
-    "jpqrHint": "ស្តង់ដារទូទាត់ប្រាក់ QR បង្រួបបង្រួមរបស់ប្រទេសជប៉ុន",
-    "auspaynetHint": "ការទូទាត់ប្រាក់ PayID របស់ NPP អូស្ត្រាលី",
-    "paypalMeHint": "បង្កើតតំណភ្ជាប់ paypal.me/ឈ្មោះរបស់អ្នក",
-    "cashappHint": "បង្កើតតំណភ្ជាប់ cash.app/$yourname",
-    "emvGenericHint": "QR របៀបបង្ហាញដោយអាជីវករ EMVCo ទូទៅ",
-    "isoCountryHint": "អាយអេសអូ ៣១៦៦-១ អាល់ហ្វា-២",
-    "isoCurrencyHint": "លេខ ISO ៤២១៧",
+    "duitnowHint": "ប្រព័ន្ធទូទាត់បន្ទាន់ម៉ាឡេស៊ី",
+    "bharatqrHint": "ប្រទេសឥណ្ឌាបង្រួបបង្រួម QR សម្រាប់ការទូទាត់តាមកាត UPI +",
+    "napasHint": "លេខអត្តសញ្ញាណធនាគារ NAPAS",
+    "qrphHint": "ស្តង់ដារទូទាត់ QR របស់ប្រទេសហ្វីលីពីន",
+    "twqrHint": "ស្តង់ដារទូទាត់ QR របស់តៃវ៉ាន់",
+    "fpsHint": "ការកំណត់អត្តសញ្ញាណប្រព័ន្ធទូទាត់លឿនជាងមុន",
+    "jpqrHint": "ស្តង់ដារទូទាត់ QR របស់ប្រទេសជប៉ុនបង្រួបបង្រួម",
+    "auspaynetHint": "ការទូទាត់ NPP PayID របស់អូស្ត្រាលី",
+    "paypalMeHint": "បង្កើតតំណ paypal.me/yourname",
+    "cashappHint": "បង្កើតតំណ cash.app/$yourname",
+    "emvGenericHint": "ទម្រង់ QR ដែលបង្ហាញដោយពាណិជ្ជករ EMVCo ទូទៅ",
+    "isoCountryHint": "ISO 3166-1 អាល់ហ្វា-2",
+    "isoCurrencyHint": "លេខ ISO 4217",
     "wpaWpa2": "WPA/WPA2",
     "icloud": "iCloud",
     "line": "បន្ទាត់",
-    "uenBusiness": "UEN (អាជីវកម្ម)",
-    "ewalletId": "លេខសម្គាល់កាបូបអេឡិចត្រូនិច",
+    "uenBusiness": "UEN (ពាណិជ្ជកម្ម)",
+    "ewalletId": "លេខសម្គាល់កាបូបអេឡិចត្រូនិក",
     "amountIdr": "ចំនួនទឹកប្រាក់ (IDR)",
     "amountMyr": "ចំនួនទឹកប្រាក់ (MYR)",
-    "amountVnd": "ចំនួនទឹកប្រាក់ (ដុង)",
+    "amountVnd": "ចំនួនទឹកប្រាក់ (VND)",
     "amountPhp": "ចំនួនទឹកប្រាក់ (PHP)",
     "amountTwd": "ចំនួនទឹកប្រាក់ (TWD)",
-    "amountHkd": "ចំនួនទឹកប្រាក់ (ហុងកុង)",
-    "amountJpy": "ចំនួនទឹកប្រាក់ (យ៉េនជប៉ុន)",
-    "amountAud": "ចំនួនទឹកប្រាក់ (អូស្ត្រាលី)",
-    "yourname": "ឈ្មោះរបស់អ្នក",
-    "zurich": "ហ្សូរីច",
-    "lnbcPlaceholder": "lnbc១...",
-    "ethAddressPlaceholder": "០x...",
-    "weiPlaceholder": "១០០០០០០០០០០០០០០០០០០០០",
+    "amountHkd": "ចំនួនទឹកប្រាក់ (HKD)",
+    "amountJpy": "ចំនួនទឹកប្រាក់ (JPY)",
+    "amountAud": "ចំនួនទឹកប្រាក់ (AUD)",
+    "yourname": "ឈ្មោះរបស់អ្នក។",
+    "zurich": "ហ្សឺរីច",
+    "lnbcPlaceholder": "lnbc1...",
+    "ethAddressPlaceholder": "0x...",
+    "weiPlaceholder": "10000000000000000000",
     "gasPlaceholder": "២១០០០",
-    "qrisMerchantIdPlaceholder": "លេខសម្គាល់ ១២៣៤៥៦៧៨៩០១២៣",
-    "tokoPlaceholder": "ហាងរបស់ខ្ញុំ",
+    "qrisMerchantIdPlaceholder": "លេខសម្គាល់ 1234567890123",
+    "tokoPlaceholder": "តូកូសាយ៉ា",
     "jakartaPlaceholder": "ហ្សាកាតា",
-    "myPhonePlaceholder": "+៦០១២៣៤៥៦៧៨៩",
-    "mumbaiPlaceholder": "មុំបៃ",
+    "myPhonePlaceholder": "+60123456789",
+    "mumbaiPlaceholder": "ទីក្រុងបុមបៃ",
     "bankBinPlaceholder": "៩៧០៤១៥",
-    "accountNumberPlaceholder": "១២៣៤៥៦៧៨៩០",
-    "vietnameseName": "ង្វៀន វ៉ាន់ អេ",
-    "vndAmountPlaceholder": "១០០០០០",
-    "filipinoName": "ជូអាន ដេឡា គ្រូស",
-    "manilaPlaceholder": "ម៉ានីល",
+    "accountNumberPlaceholder": "1234567890",
+    "vietnameseName": "ង្វៀន វ៉ាន់អេ",
+    "vndAmountPlaceholder": "100000",
+    "filipinoName": "Juan Dela Cruz",
+    "manilaPlaceholder": "ម៉ានីល។",
     "twMerchantIdPlaceholder": "TW1234567890",
-    "twMerchantNamePlaceholder": "ឈ្មោះហាង",
-    "jpStoreIdPlaceholder": "JP១២៣៤៥៦៧៨៩០",
-    "jpMerchantNamePlaceholder": "ឈ្មោះហាង",
-    "auPhonePlaceholder": "+៦១៤០០១២៣៤៥៦",
-    "abnPlaceholder": "១២៣៤៥៦៧៨៩០១",
+    "twMerchantNamePlaceholder": "商店名稱",
+    "jpStoreIdPlaceholder": "JP1234567890",
+    "jpMerchantNamePlaceholder": "店舗名",
+    "auPhonePlaceholder": "+61400123456",
+    "abnPlaceholder": "12345678901",
     "idrAmountPlaceholder": "៥០០០០",
-    "itAsset": "ទ្រព្យសកម្មបច្ចេកវិទ្យាព័ត៌មាន",
-    "xTwitter": "អ៊ិច (ធ្វីតធ័រ)",
+    "itAsset": "ទ្រព្យសកម្ម IT",
+    "xTwitter": "X (Twitter)",
     "pdfDocument": "ឯកសារ PDF"
   }
 }

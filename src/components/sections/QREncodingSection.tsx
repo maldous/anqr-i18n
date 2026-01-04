@@ -53,9 +53,12 @@ export function QREncodingSection() {
       {/* Version */}
       <div className="space-y-2">
         <div className="flex items-center justify-between">
-          <Label>
-            <HighlightedLabel>{t('qr.version')}</HighlightedLabel>
-          </Label>
+          <div className="flex items-center gap-1">
+            <Label>
+              <HighlightedLabel>{t('qr.version')}</HighlightedLabel>
+            </Label>
+            <HelpLink anchor="section-6" />
+          </div>
           <span className="text-sm text-muted-foreground">
             {qr.version === 0 ? t('qr.autoMin', { version: minRequiredVersion }) : qr.version}
           </span>
@@ -83,7 +86,7 @@ export function QREncodingSection() {
           <Label>
             <HighlightedLabel>{t('qr.errorCorrection')}</HighlightedLabel>
           </Label>
-          <HelpLink href="/guide#section-2" />
+          <HelpLink anchor="section-6" />
         </div>
         <Select value={qr.ecc} onValueChange={(v) => setQrEcc(v as ECCLevel)}>
           <SelectTrigger title={t('hints.errorCorrection')}>
@@ -102,9 +105,12 @@ export function QREncodingSection() {
       {/* Quiet Zone / Margin */}
       <div className="space-y-2">
         <div className="flex items-center justify-between">
-          <Label>
-            <HighlightedLabel>{t('qr.margin')}</HighlightedLabel>
-          </Label>
+          <div className="flex items-center gap-1">
+            <Label>
+              <HighlightedLabel>{t('qr.margin')}</HighlightedLabel>
+            </Label>
+            <HelpLink anchor="section-7" />
+          </div>
           <span className="text-sm text-muted-foreground">
             {t('qr.nModules', { count: qr.quietZoneModules })}
           </span>
@@ -124,9 +130,12 @@ export function QREncodingSection() {
         <>
           {/* Encoding Mode */}
           <div className="space-y-2">
-            <Label>
-              <HighlightedLabel>{t('qr.encodingMode')}</HighlightedLabel>
-            </Label>
+            <div className="flex items-center gap-1">
+              <Label>
+                <HighlightedLabel>{t('qr.encodingMode')}</HighlightedLabel>
+              </Label>
+              <HelpLink anchor="section-6" />
+            </div>
             <Select
               value={qr.encodingMode}
               onValueChange={(v) => setQrEncodingMode(v as EncodingMode)}

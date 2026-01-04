@@ -157,8 +157,9 @@ export function SafetySection() {
 
       {/* QA / Analysis */}
       <div className="space-y-2 pt-2 border-t">
-        <Label className="text-muted-foreground">
+        <Label className="text-muted-foreground flex items-center gap-1.5">
           <HighlightedLabel>{t('safety.qualityAnalysis')}</HighlightedLabel>
+          <HelpLink anchor="section-40" />
         </Label>
 
         <div className="flex items-center justify-between">
@@ -236,8 +237,9 @@ export function SafetySection() {
 
       {/* Auto-Tuning */}
       <div className="space-y-2 pt-2 border-t">
-        <Label className="text-muted-foreground">
+        <Label className="text-muted-foreground flex items-center gap-1.5">
           <HighlightedLabel>{t('safety.autoTuning')}</HighlightedLabel>
+          <HelpLink anchor="section-40" />
         </Label>
 
         <div className="flex items-center justify-between">

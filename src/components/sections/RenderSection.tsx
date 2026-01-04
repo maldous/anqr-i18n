@@ -58,7 +58,7 @@ export function RenderSection() {
             <Label>
               <HighlightedLabel>{t('qr.moduleSize')}</HighlightedLabel>
             </Label>
-            <HelpLink href="/guide#section-5" />
+            <HelpLink anchor="section-8" />
           </div>
           <span className="text-sm text-muted-foreground">
             {t('qr.nPx', { count: render.modulePx })}
@@ -77,9 +77,12 @@ export function RenderSection() {
       {/* Module Gap */}
       <div className="space-y-2">
         <div className="flex items-center justify-between">
-          <Label>
-            <HighlightedLabel>{t('render.moduleGap')}</HighlightedLabel>
-          </Label>
+          <div className="flex items-center gap-1">
+            <Label>
+              <HighlightedLabel>{t('render.moduleGap')}</HighlightedLabel>
+            </Label>
+            <HelpLink anchor="section-12" />
+          </div>
           <span className="text-sm text-muted-foreground">
             {t('qr.nPercent', { count: render.moduleGapPercent })}
           </span>
@@ -96,9 +99,12 @@ export function RenderSection() {
 
       {/* Module Style */}
       <div className="space-y-2">
-        <Label>
-          <HighlightedLabel>{t('render.shape')}</HighlightedLabel>
-        </Label>
+        <div className="flex items-center gap-1">
+          <Label>
+            <HighlightedLabel>{t('render.shape')}</HighlightedLabel>
+          </Label>
+          <HelpLink anchor="section-8" />
+        </div>
         <Select
           value={render.moduleStyle}
           onValueChange={(v) => setRenderModuleStyle(v as ModuleStyle)}
@@ -118,9 +124,12 @@ export function RenderSection() {
 
       {/* Finder Style */}
       <div className="space-y-2">
-        <Label>
-          <HighlightedLabel>{t('render.finderStyle')}</HighlightedLabel>
-        </Label>
+        <div className="flex items-center gap-1">
+          <Label>
+            <HighlightedLabel>{t('render.finderStyle')}</HighlightedLabel>
+          </Label>
+          <HelpLink anchor="section-9" />
+        </div>
         <Select
           value={render.finderStyle}
           onValueChange={(v) => setRenderFinderStyle(v as FinderStyle)}
@@ -179,9 +188,12 @@ export function RenderSection() {
 
       {/* Colors */}
       <div className="space-y-2">
-        <Label>
-          <HighlightedLabel>{t('render.gradientColors')}</HighlightedLabel>
-        </Label>
+        <div className="flex items-center gap-1">
+          <Label>
+            <HighlightedLabel>{t('render.gradientColors')}</HighlightedLabel>
+          </Label>
+          <HelpLink anchor="section-11" />
+        </div>
         <div className="grid grid-cols-2 gap-2">
           <div className="space-y-1">
             <Label className="text-xs text-muted-foreground">
@@ -283,9 +295,12 @@ export function RenderSection() {
 
           {/* Gradient */}
           <div className="space-y-2">
-            <Label>
-              <HighlightedLabel>{t('render.gradient')}</HighlightedLabel>
-            </Label>
+            <div className="flex items-center gap-1">
+              <Label>
+                <HighlightedLabel>{t('render.gradient')}</HighlightedLabel>
+              </Label>
+              <HelpLink anchor="section-11" />
+            </div>
             <Select
               value={render.gradient.type}
               onValueChange={(v) => setRenderGradient({ type: v as GradientType })}
@@ -351,9 +366,12 @@ export function RenderSection() {
 
           {/* Frame */}
           <div className="space-y-2">
-            <Label>
-              <HighlightedLabel>{t('render.frameStyle')}</HighlightedLabel>
-            </Label>
+            <div className="flex items-center gap-1">
+              <Label>
+                <HighlightedLabel>{t('render.frameStyle')}</HighlightedLabel>
+              </Label>
+              <HelpLink anchor="section-32" />
+            </div>
             <Select
               value={render.frameStyle}
               onValueChange={(v) => setRenderFrameStyle(v as FrameStyle)}
