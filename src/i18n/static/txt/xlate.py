@@ -1,838 +1,516 @@
 #!/usr/bin/env python3
-"""
-xlate.py - Translate specific lines from en-GB.txt to all other language files.
-
-Usage:
-    python xlate.py [line_numbers...] [--opts...]
-
-Examples:
-    python xlate.py --list-langs
-    python xlate.py 1419 1420 1421
-    python xlate.py --qps 0.7 --workers 1         # safer for free engines
-    python xlate.py --engine google --batch-size 15
-
-What changed vs the earlier version:
-    - FIX: deep_translator.GoogleTranslator.translate_batch often issues *one request per string*.
-           This script now translates batches by joining strings into one request (drastically fewer requests).
-    - Global rate limiter across threads + exponential backoff with jitter.
-    - Multi-engine fallback chain (Azure/DeepL/LibreTranslate/Google/MyMemory) where configured.
-    - Writes language files deterministically (sorted, no duplicate IDs).
-    - Better parsing: supports `123\t"..."`, `123="..."`, `123: "..."`, `123 "..."`.
-
-Engines (free-ish):
-    - google: no key, but unofficial endpoint; rate limits can be strict
-    - libretranslate: set LIBRETRANSLATE_URL (and optionally LIBRETRANSLATE_KEY)
-    - mymemory: no key, small quotas; optional MYMEMORY_EMAIL increases limits
-    - deepl: set DEEPL_KEY (free tier key)
-    - azure: set AZURE_TRANSLATOR_KEY and AZURE_TRANSLATOR_REGION (free tier)
-"""
-
 from __future__ import annotations
 
+"""
+xlate.py
+
+Translate en-GB.txt into locale .txt files.
+
+Key features (opinionated for reliability):
+- Tries local LibreTranslate first (if LIBRETRANSLATE_URL is set AND target supported by /languages EN targets)
+- Falls back to Google Translate (unofficial gtx endpoint) for unsupported targets or when LibreTranslate fails
+- Batch mode with numbered markers so we can split reliably
+- Placeholder protection for common i18n patterns
+- Never writes empty placeholder files; never deletes existing files on failure
+- Atomic writes
+
+File format:
+  <id>\t"<text with escaped quotes>"
+"""
+
 import argparse
-import faulthandler
-import signal
+import concurrent.futures as cf
+import json
 import os
+import random
 import re
+import signal
 import sys
 import time
-import json
-import random
-import threading
-import sqlite3
 from dataclasses import dataclass
 from pathlib import Path
-from typing import Dict, Iterable, List, Optional, Tuple
-from concurrent.futures import ThreadPoolExecutor, as_completed
+from typing import Dict, List, Tuple, Optional
 
-# -----------------------------
-# Optional third-party deps
-# -----------------------------
-def _ensure(pkg: str, import_name: str):
-    try:
-        return __import__(import_name)
-    except ImportError:
-        print(f"Installing {pkg}...")
-        import subprocess
-        subprocess.run([sys.executable, "-m", "pip", "install", "--user", pkg], check=True)
-        return __import__(import_name)
+import requests
 
-deep_translator = _ensure("deep-translator", "deep_translator")
+DEFAULT_WORKERS = 1
+DEFAULT_BATCH_SIZE = 25
+DEFAULT_MAX_CHARS = 3500
+DEFAULT_QPS = 0.8
 
-try:
-    import requests  # type: ignore
-except ImportError:
-    requests = _ensure("requests", "requests")
-
-# -----------------------------
-# Concurrency / rate config
-# -----------------------------
 DEBUG = False
-DEFAULT_WORKERS = 1          # safest default for free engines
-DEFAULT_BATCH_SIZE = 25      # number of strings per joined request (also bounded by max_chars)
-DEFAULT_MAX_CHARS = 3500     # keep joined payload small to avoid service limits
-DEFAULT_QPS = 0.8            # <= 1 request/sec is usually stable on free endpoints
-MAX_RETRIES = 8
-INITIAL_BACKOFF = 2.0
-MAX_BACKOFF = 120.0
 
-# -----------------------------
-# Language mapping
-# -----------------------------
-# Explicit overrides for filename stem -> engine code
-LANG_MAP: Dict[str, str] = {
-    "bn-BD": "bn",
-    "cs-CZ": "cs",
-    "da-DK": "da",
-    "de-DE": "de",
-    "el-GR": "el",
-    "es-ES": "es",
-    "fi-FI": "fi",
-    "fr-FR": "fr",
-    "hi-IN": "hi",
-    "hu-HU": "hu",
-    "it-IT": "it",
-    "ja-JP": "ja",
-    "km-KH": "km",
-    "kn-IN": "kn",
-    "ko-KR": "ko",
-    "lo-LA": "lo",
-    "ml-IN": "ml",
-    "mr-IN": "mr",
-    "my-MM": "my",
-    "ne-NP": "ne",
-    "nl-NL": "nl",
-    "no-NO": "no",
-    "pl-PL": "pl",
-    "pt-BR": "pt",
-    "ru-RU": "ru",
-    "sv-SE": "sv",
-    "ta-IN": "ta",
-    "te-IN": "te",
-    "zh-CN": "zh-CN",
-    "fil": "tl",      # Filipino -> Tagalog
-}
+SEP_MARK_RE = re.compile(r"\[\[\[\s*ANQR(\d+)\s*\]\]\]")
 
-def normalize_lang(stem: str) -> str:
-    """Map a locale filename stem to a best-effort target code."""
-    if stem in LANG_MAP:
-        return LANG_MAP[stem]
-
-    # common patterns: pt-PT, en-US, zh-TW, sr-Latn, etc.
-    s = stem.replace("_", "-")
-    if s.lower().startswith("zh-"):
-        # Keep full if provided (zh-CN/zh-TW). Otherwise default to zh-CN.
-        return stem if stem in ("zh-CN", "zh-TW") else "zh-CN"
-
-    base = s.split("-")[0]
-    return base.lower()
-
-# -----------------------------
-# IO helpers
-# -----------------------------
-print_lock = threading.Lock()
-def safe_print(*args, **kwargs):
-    # Always flush so progress appears immediately even when stdout is buffered
-    if "flush" not in kwargs:
-        kwargs["flush"] = True
-    with print_lock:
-        print(*args, **kwargs)
-
-def escape_quotes(text: str) -> str:
-    return text.replace("\\", "\\\\").replace('"', '\\"')
-
-def unescape_quotes(text: str) -> str:
-    return text.replace('\\"', '"').replace("\\\\", "\\")
-
-LINE_RE = re.compile(r'^\s*(\d+)\s*(?:\t|=|:|\s)\s*"(.*)"\s*$')
-
-def parse_txt_file(filepath: Path) -> Dict[int, str]:
-    """Parse .txt file into {id:int -> text:str}"""
-    out: Dict[int, str] = {}
-    if not filepath.exists():
-        return out
-    for raw in filepath.read_text(encoding="utf-8").splitlines():
-        raw = raw.strip()
-        if not raw:
-            continue
-        m = LINE_RE.match(raw)
-        if not m:
-            continue
-        out[int(m.group(1))] = unescape_quotes(m.group(2))
-    return out
-
-def write_txt_file(filepath: Path, mapping: Dict[int, str]) -> None:
-    """Write deterministically (sorted by id)."""
-    lines = []
-    for k in sorted(mapping.keys()):
-        lines.append(f'{k}\t"{escape_quotes(mapping[k])}"')
-    filepath.write_text("\n".join(lines) + "\n", encoding="utf-8")
-
-# -----------------------------
-# Placeholder protection
-# -----------------------------
+# Protect placeholders: {name}, {0}, {{var}}, %s, %d, %(name)s, %1$s, :name
 PH_RE = re.compile(
-    r"(\{\{.*?\}\}|\{.*?\}|%\d*\$?[sdif]|<[^>]+>|https?://\S+)",
-    re.DOTALL,
+    r"(\{\{[^{}]+\}\}|\{[^{}]+\}|%\([^)]+\)[sd]|%[0-9]+\$[sd]|%[sd]|:[A-Za-z_][A-Za-z0-9_]*|__ANQR_[A-Z0-9_]+__)",
+    re.UNICODE,
 )
 
-def protect(text: str) -> Tuple[str, Dict[str, str]]:
+def safe_print(*a: object, **k: object) -> None:
+    print(*a, **k, flush=True)
+
+def escape_quotes(s: str) -> str:
+    return s.replace("\\", "\\\\").replace('"', '\\"')
+
+def unescape_quotes(s: str) -> str:
+    # supports our writer: \" and \\ only
+    return s.replace('\\"', '"').replace("\\\\", "\\")
+
+def parse_txt_file(path: Path) -> Dict[int, str]:
+    out: Dict[int, str] = {}
+    if not path.exists():
+        return out
+    for line in path.read_text(encoding="utf-8", errors="replace").splitlines():
+        line = line.strip()
+        if not line:
+            continue
+        m = re.match(r"^(\d+)\t\"(.*)\"$", line)
+        if not m:
+            continue
+        k = int(m.group(1))
+        v = unescape_quotes(m.group(2))
+        out[k] = v
+    return out
+
+def write_txt_file_atomic(path: Path, mapping: Dict[int, str]) -> None:
+    tmp = path.with_suffix(path.suffix + ".tmp")
+    tmp.parent.mkdir(parents=True, exist_ok=True)
+    lines: List[str] = []
+    for k in sorted(mapping.keys()):
+        lines.append(f'{k}\t"{escape_quotes(mapping[k])}"')
+    tmp.write_text("\n".join(lines) + "\n", encoding="utf-8")
+    tmp.replace(path)
+
+def protect(s: str) -> Tuple[str, Dict[str, str]]:
     """
-    Replace sensitive tokens (placeholders, tags, urls) with stable sentinels,
-    to reduce breakage across translations.
+    Replace placeholders with tokens unlikely to be altered by translators.
     """
-    mapping: Dict[str, str] = {}
+    repl: Dict[str, str] = {}
     idx = 0
 
-    def repl(m: re.Match) -> str:
+    def sub(m: re.Match[str]) -> str:
         nonlocal idx
-        token = m.group(0)
-        key = f"__ANQR_PH_{idx:04d}__"
-        mapping[key] = token
+        tok = f"__ANQR_PH_{idx}__"
+        repl[tok] = m.group(0)
         idx += 1
-        return key
+        return tok
 
-    protected = PH_RE.sub(repl, text)
-    return protected, mapping
+    return PH_RE.sub(sub, s), repl
 
-def unprotect(text: str, mapping: Dict[str, str]) -> str:
-    for k, v in mapping.items():
-        text = text.replace(k, v)
-    return text
+def unprotect(s: str, repl: Dict[str, str]) -> str:
+    for tok, orig in repl.items():
+        s = s.replace(tok, orig)
+    return s
 
-# -----------------------------
-# Simple persistent cache
-# -----------------------------
-class Cache:
-    def __init__(self, path: Path):
-        self.path = path
-        self._lock = threading.Lock()
-        self._conn = sqlite3.connect(str(path), check_same_thread=False)
-        self._conn.execute(
-            "CREATE TABLE IF NOT EXISTS t (engine TEXT, lang TEXT, src TEXT, dst TEXT, PRIMARY KEY(engine, lang, src))"
-        )
-        self._conn.commit()
-
-    def get_many(self, engine: str, lang: str, srcs: List[str]) -> Dict[str, str]:
-        if not srcs:
-            return {}
-        with self._lock:
-            cur = self._conn.cursor()
-            qmarks = ",".join(["?"] * len(srcs))
-            rows = cur.execute(
-                f"SELECT src, dst FROM t WHERE engine=? AND lang=? AND src IN ({qmarks})",
-                [engine, lang, *srcs],
-            ).fetchall()
-        return {s: d for (s, d) in rows}
-
-    def put_many(self, engine: str, lang: str, pairs: List[Tuple[str, str]]) -> None:
-        if not pairs:
-            return
-        with self._lock:
-            self._conn.executemany(
-                "INSERT OR REPLACE INTO t(engine, lang, src, dst) VALUES(?,?,?,?)",
-                [(engine, lang, s, d) for (s, d) in pairs],
-            )
-            self._conn.commit()
-
-# -----------------------------
-# Global rate limiter
-# -----------------------------
 class RateLimiter:
     def __init__(self, qps: float):
-        self.min_interval = 1.0 / max(qps, 0.001)
-        self._lock = threading.Lock()
-        self._next = 0.0
+        self.qps = max(0.001, qps)
+        self.min_interval = 1.0 / self.qps
+        self._next = time.monotonic()
+        self._lock = None
 
-    def wait(self):
-        with self._lock:
-            now = time.monotonic()
-            if now < self._next:
-                time.sleep(self._next - now)
-            self._next = time.monotonic() + self.min_interval
-
-# -----------------------------
-# Engines
-# -----------------------------
-@dataclass
-class EngineResult:
-    ok: bool
-    outputs: List[str]
-    engine_name: str
-    error: Optional[str] = None
+    def wait(self) -> None:
+        # single-thread friendly
+        now = time.monotonic()
+        if now < self._next:
+            time.sleep(self._next - now)
+        self._next = time.monotonic() + self.min_interval
 
 @dataclass
 class EngineResult:
     ok: bool
     outputs: List[str]
-    engine_name: str
-    error: Optional[str] = None
-
-class UnsupportedLanguageError(RuntimeError):
-    """Raised when an engine doesn't support a requested target language."""
-    pass
+    engine: str
+    error: str = ""
 
 class Engine:
-    name: str
-
-    def available(self) -> bool:
-        return True
-
+    name: str = "engine"
     def normalize_target(self, target: str) -> str:
-        """Engine-specific target normalization (e.g., zh-CN -> zh)."""
         return target
-
-    def supports_target(self, target: str) -> bool:
-        """Whether this engine supports the given target (post-normalization)."""
+    def supports_target(self, target_norm: str) -> bool:
         return True
-
-    def translate_list(self, texts: List[str], target: str) -> List[str]:
-        """
-        Use LibreTranslate batch mode: send q as an array, get translatedText as an array.
-        This avoids separator-splitting issues (LibreTranslate can normalize newlines).
-        """
-        url_base = os.environ["LIBRETRANSLATE_URL"].rstrip("/")
-        url = url_base + "/translate"
-        key = os.environ.get("LIBRETRANSLATE_KEY")
-        tgt = self.normalize_target(target)
-
-        if not self.supports_target(tgt):
-            raise UnsupportedLanguageError(f"LibreTranslate does not support target '{tgt}'")
-
-        payload = {"q": texts, "source": "en", "target": tgt, "format": "text"}
-        if key:
-            payload["api_key"] = key
-
-        r = requests.post(url, json=payload, timeout=180)
-
-        # Raise richer error details for debugging
-        if r.status_code >= 400:
-            try:
-                err = r.json()
-            except Exception:
-                err = {"error": r.text[:500]}
-            msg = err.get("error") or err.get("message") or str(err)
-            if "not supported" in str(msg).lower():
-                raise UnsupportedLanguageError(str(msg))
-            raise RuntimeError(f"{r.status_code} LibreTranslate error: {msg}")
-
-        data = r.json()
-        tt = data.get("translatedText")
-
-        if isinstance(tt, list):
-            return [str(x) for x in tt]
-        if isinstance(tt, str) and len(texts) == 1:
-            return [tt]
-
-        raise RuntimeError(
-            "LibreTranslate batch response was not a list. "
-            "Your server may not support q as an array."
-        )
-
-
-    def translate_joined(self, joined: str, target: str) -> str:
+    def translate_batch(self, texts: List[str], target_norm: str, limiter: RateLimiter, max_chars: int) -> List[str]:
         raise NotImplementedError
-
-class GoogleEngine(Engine):
-    name = "google"
-    def translate_joined(self, joined: str, target: str) -> str:
-        gt = deep_translator.GoogleTranslator(source="en", target=target)
-        return gt.translate(joined)
-
-class MyMemoryEngine(Engine):
-    name = "mymemory"
-    def translate_joined(self, joined: str, target: str) -> str:
-        email = os.environ.get("MYMEMORY_EMAIL")
-        mm = deep_translator.MyMemoryTranslator(source="en", target=target, email=email) if email else deep_translator.MyMemoryTranslator(source="en", target=target)
-        return mm.translate(joined)
 
 class LibreTranslateEngine(Engine):
     name = "libretranslate"
+    def __init__(self, base_url: str, batch_size: int = DEFAULT_BATCH_SIZE):
+        self.base_url = base_url.rstrip("/")
+        self._targets_map: Optional[Dict[str, str]] = None  # lower -> canonical
+        self._session = requests.Session()
+        self.batch_size = int(max(1, batch_size))
 
-    def __init__(self) -> None:
-        self._langs: Optional[set[str]] = None
-        self._langs_lock = threading.Lock()
-
-    def available(self) -> bool:
-        return bool(os.environ.get("LIBRETRANSLATE_URL"))
+    def _load_targets(self) -> Dict[str, str]:
+        if self._targets_map is not None:
+            return self._targets_map
+        url = f"{self.base_url}/languages"
+        r = self._session.get(url, timeout=30)
+        r.raise_for_status()
+        data = r.json()
+        targets: List[str] = []
+        for entry in data:
+            if str(entry.get("code", "")).lower() == "en":
+                targets = list(entry.get("targets") or [])
+                break
+        if not targets:
+            # union fallback
+            s = set()
+            for entry in data:
+                for t in (entry.get("targets") or []):
+                    s.add(str(t))
+            targets = sorted(s)
+        self._targets_map = {t.lower(): t for t in targets}
+        return self._targets_map
 
     def normalize_target(self, target: str) -> str:
-        """
-        Normalize/alias-resolve language codes for *this* LibreTranslate server.
+        raw = target.replace("_", "-").strip()
+        raw_l = raw.lower()
+        tm = self._load_targets()
 
-        Some deployments expose aliases differently, e.g.:
-          - Norwegian: "nb"/"nn" instead of "no"
-          - Filipino: "tl" instead of "fil"
-          - Chinese: may be "zh" or variants (zh-cn, zh-tw, ...)
+        # Chinese mapping to server script codes
+        if raw_l == "zh" or raw_l.startswith("zh-"):
+            subtags = raw_l.split("-")[1:]
+            prefer_hant = any(st in {"tw", "hk", "mo"} or "hant" in st for st in subtags)
+            if prefer_hant and "zh-hant" in tm:
+                return tm["zh-hant"]
+            if "zh-hans" in tm:
+                return tm["zh-hans"]
+            for k, v in tm.items():
+                if k.startswith("zh"):
+                    return v
 
-        We resolve against /languages (loaded once) so your on-disk codes can stay standard.
-        """
-        t = target.replace("_", "-").strip()
-
-        if t.lower().startswith("zh-"):
-            base = "zh"
-        else:
-            base = t.split("-")[0].lower()
-
+        base = raw_l.split("-")[0]
         aliases = {
             "no": ["nb", "nn"],
             "nb": ["no"],
             "nn": ["no"],
             "fil": ["tl"],
             "tl": ["fil"],
-            "zh": ["zh-cn", "zh-tw", "zh-hans", "zh-hant"],
         }
-
-        with self._langs_lock:
-            if self._langs is None:
-                try:
-                    self._langs = self._fetch_languages()
-                except Exception:
-                    self._langs = set()
-
-            if self._langs:
-                if base in self._langs:
-                    return base
-                for a in aliases.get(base, []):
-                    if a in self._langs:
-                        return a
-
+        candidates = [raw_l, base] + aliases.get(base, [])
+        for c in candidates:
+            if c in tm:
+                return tm[c]
+        # prefix match
+        for k, v in tm.items():
+            if k.startswith(base):
+                return v
         return base
 
+    def supports_target(self, target_norm: str) -> bool:
+        tm = self._load_targets()
+        return target_norm.lower() in tm
 
-    def _fetch_languages(self) -> set[str]:
-        url_base = os.environ.get("LIBRETRANSLATE_URL", "").rstrip("/")
-        if not url_base:
-            return set()
-        url = url_base + "/languages"
-        r = requests.get(url, timeout=30)
-        r.raise_for_status()
-        data = r.json()
-        # Expected: [{"code":"en","name":"English"}, ...]
-        codes = set()
-        for item in data:
-            c = (item.get("code") or "").strip()
-            if c:
-                codes.add(c)
-        return codes
+    def translate_batch(self, texts: List[str], target_norm: str, limiter: RateLimiter, max_chars: int) -> List[str]:
+        # LibreTranslate: POST /translate {q, source:'en', target}
+        url = f"{self.base_url}/translate"
 
-    def supports_target(self, target: str) -> bool:
-        # normalize_target() loads /languages and alias-resolves when possible
-        t = self.normalize_target(target)
-        if not self._langs:
-            return True
-        return t in self._langs
+        def mk_payload(batch: List[str]) -> Tuple[str, List[str]]:
+            markers = [f"[[[ANQR{i}]]]" for i in range(len(batch))]
+            parts: List[str] = []
+            for m, s in zip(markers, batch):
+                parts.append(m)
+                parts.append(s)
+            return "\n".join(parts), markers
 
+        def parse_payload(out: str, n: int) -> List[str]:
+            matches = list(SEP_MARK_RE.finditer(out))
+            if len(matches) < n:
+                return []
+            segs: Dict[int, str] = {}
+            for i, m in enumerate(matches):
+                idx = int(m.group(1))
+                start = m.end()
+                end = matches[i + 1].start() if i + 1 < len(matches) else len(out)
+                segs[idx] = out[start:end].strip("\n ").rstrip()
+            return [segs.get(i, "") for i in range(n)]
 
-    def translate_joined(self, joined: str, target: str) -> str:
-        url_base = os.environ["LIBRETRANSLATE_URL"].rstrip("/")
-        url = url_base + "/translate"
-        key = os.environ.get("LIBRETRANSLATE_KEY")
-        tgt = self.normalize_target(target)
+        results: List[str] = []
+        i = 0
+        while i < len(texts):
+            batch = texts[i : i + self.batch_size]
+            joined, markers = mk_payload(batch)
+            limiter.wait()
+            r = self._session.post(
+                url,
+                json={"q": joined, "source": "en", "target": target_norm, "format": "text"},
+                timeout=60,
+            )
+            r.raise_for_status()
+            data = r.json()
+            out = data.get("translatedText") or ""
+            parts = parse_payload(out, len(batch))
+            if len(parts) != len(batch) or any(p == "" for p in parts):
+                # degrade to per-item (rare)
+                if DEBUG:
+                    safe_print(f"  [libretranslate] batch split mismatch; falling back to per-item ({target_norm})")
+                for s in batch:
+                    limiter.wait()
+                    rr = self._session.post(
+                        url,
+                        json={"q": s, "source": "en", "target": target_norm, "format": "text"},
+                        timeout=60,
+                    )
+                    rr.raise_for_status()
+                    results.append((rr.json().get("translatedText") or s).strip())
+            else:
+                results.extend(parts)
+            i += len(batch)
+        return results
 
-        if not self.supports_target(tgt):
-            raise UnsupportedLanguageError(f"LibreTranslate does not support target '{tgt}'")
+class GoogleGTXEngine(Engine):
+    """
+    Google Translate (unofficial) using translate.googleapis.com with client=gtx.
+    No API key required. Batch mode uses markers and join/split.
+    """
+    name = "google"
 
-        payload = {"q": joined, "source": "en", "target": tgt, "format": "text"}
-        if key:
-            payload["api_key"] = key
+    def __init__(self, batch_size: int = DEFAULT_BATCH_SIZE):
+        self._session = requests.Session()
+        self.batch_size = int(max(1, batch_size))
 
-        r = requests.post(url, json=payload, timeout=120)
+    def normalize_target(self, target: str) -> str:
+        # gtx accepts BCP47-ish; keep base for most.
+        return target.replace("_", "-").strip()
 
-        # Raise richer error details for debugging
-        if r.status_code >= 400:
+    def translate_batch(self, texts: List[str], target_norm: str, limiter: RateLimiter, max_chars: int) -> List[str]:
+        endpoint = "https://translate.googleapis.com/translate_a/single"
+
+        def gtx_translate(q: str) -> str:
+            # Use GET; requests handles encoding
+            params = {
+                "client": "gtx",
+                "sl": "en",
+                "tl": target_norm,
+                "dt": "t",
+                "q": q,
+            }
+            limiter.wait()
+            r = self._session.get(endpoint, params=params, timeout=60)
+            r.raise_for_status()
+            data = r.json()
+            # data[0] is list of [translated, original, ...]
+            chunks = []
+            for part in (data[0] or []):
+                if part and isinstance(part, list):
+                    chunks.append(part[0] or "")
+            return "".join(chunks)
+
+        def mk_payload(batch: List[str]) -> Tuple[str, int]:
+            markers = [f"[[[ANQR{i}]]]" for i in range(len(batch))]
+            parts: List[str] = []
+            for m, s in zip(markers, batch):
+                parts.append(m)
+                parts.append(s)
+            joined = "\n".join(parts)
+            return joined, len(batch)
+
+        def parse_payload(out: str, n: int) -> List[str]:
+            matches = list(SEP_MARK_RE.finditer(out))
+            if len(matches) < n:
+                return []
+            segs: Dict[int, str] = {}
+            for i, m in enumerate(matches):
+                idx = int(m.group(1))
+                start = m.end()
+                end = matches[i + 1].start() if i + 1 < len(matches) else len(out)
+                segs[idx] = out[start:end].strip("\n ").rstrip()
+            return [segs.get(i, "") for i in range(n)]
+
+        results: List[str] = []
+        i = 0
+        while i < len(texts):
+            batch = texts[i : i + self.batch_size]
+            joined, n = mk_payload(batch)
+
+            # Hard limit join size
+            if len(joined) > max_chars and len(batch) > 1:
+                # split batch
+                mid = max(1, len(batch) // 2)
+                results.extend(self.translate_batch(batch[:mid], target_norm, limiter, max_chars))
+                results.extend(self.translate_batch(batch[mid:], target_norm, limiter, max_chars))
+                i += len(batch)
+                continue
+
             try:
-                err = r.json()
-            except Exception:
-                err = {"error": r.text[:500]}
-            msg = err.get("error") or err.get("message") or str(err)
-            if "not supported" in str(msg).lower():
-                raise UnsupportedLanguageError(str(msg))
-            raise RuntimeError(f"{r.status_code} LibreTranslate error: {msg}")
+                out = gtx_translate(joined)
+                parts = parse_payload(out, n)
+                if len(parts) != n:
+                    if DEBUG:
+                        safe_print(f"  [google] marker parse failed; falling back to per-item ({target_norm})")
+                    raise ValueError("marker-parse-failed")
+                # If some entries come back empty, translate those individually.
+                for j, s in enumerate(batch):
+                    if parts[j].strip() == "":
+                        parts[j] = gtx_translate(s).strip() or s
+                results.extend([p.strip() for p in parts])
+            except Exception as e:
+                if DEBUG:
+                    safe_print(f"  [google] batch error ({type(e).__name__}): {e!r} -> per-item fallback")
+                for s in batch:
+                    try:
+                        results.append(gtx_translate(s).strip() or s)
+                    except Exception as ee:
+                        if DEBUG:
+                            safe_print(f"  [google] per-item error ({type(ee).__name__}): {ee!r}")
+                        results.append(s)
+            i += len(batch)
+        return results
 
-        data = r.json()
-        return data.get("translatedText") or ""
+def select_engines(force: Optional[str], batch_size: int) -> List[Engine]:
+    if force:
+        f = force.lower()
+        if f == "libretranslate":
+            url = os.environ.get("LIBRETRANSLATE_URL", "").strip()
+            if not url:
+                raise SystemExit("LIBRETRANSLATE_URL is not set")
+            return [LibreTranslateEngine(url, batch_size=batch_size)]
+        if f == "google":
+            return [GoogleGTXEngine(batch_size=batch_size)]
+        raise SystemExit(f"Unknown engine: {force}")
 
+    engines: List[Engine] = []
+    url = os.environ.get("LIBRETRANSLATE_URL", "").strip()
+    if url:
+        engines.append(LibreTranslateEngine(url, batch_size=batch_size))
+    # google always present unless explicitly disabled
+    if not os.environ.get("XLATE_LOCAL_ONLY"):
+        engines.append(GoogleGTXEngine(batch_size=batch_size))
+    return engines
 
-class DeepLEngine(Engine):
-    name = "deepl"
-    def available(self) -> bool:
-        return bool(os.environ.get("DEEPL_KEY"))
-    def translate_joined(self, joined: str, target: str) -> str:
-        # Optional (free tier): pip install deepl
-        deepl = _ensure("deepl", "deepl")
-        tr = deepl.Translator(os.environ["DEEPL_KEY"])
-        # DeepL expects target like DE, FR, etc. We'll pass upper base; DeepL will validate.
-        tgt = target.replace("-", "_").upper()
-        return tr.translate_text(joined, target_lang=tgt).text
+def translate_texts(engines: List[Engine], limiter: RateLimiter, texts: List[str], target: str, max_chars: int) -> Tuple[List[str], str]:
+    if not texts:
+        return [], "none"
+    if target.lower() in {"en", "en-gb"}:
+        return texts, "none"
 
-class AzureEngine(Engine):
-    name = "azure"
-    def available(self) -> bool:
-        return bool(os.environ.get("AZURE_TRANSLATOR_KEY") and os.environ.get("AZURE_TRANSLATOR_REGION"))
-    def translate_joined(self, joined: str, target: str) -> str:
-        key = os.environ["AZURE_TRANSLATOR_KEY"]
-        region = os.environ["AZURE_TRANSLATOR_REGION"]
-        endpoint = os.environ.get("AZURE_TRANSLATOR_ENDPOINT", "https://api.cognitive.microsofttranslator.com")
-        url = endpoint.rstrip("/") + "/translate?api-version=3.0"
-        params = {"to": target}
-        headers = {
-            "Ocp-Apim-Subscription-Key": key,
-            "Ocp-Apim-Subscription-Region": region,
-            "Content-type": "application/json",
-        }
-        body = [{"text": joined}]
-        r = requests.post(url, params=params, headers=headers, json=body, timeout=60)
-        r.raise_for_status()
-        data = r.json()
-        return data[0]["translations"][0]["text"]
+    last_err = ""
+    for eng in engines:
+        try:
+            tnorm = eng.normalize_target(target)
+            if not eng.supports_target(tnorm):
+                if DEBUG:
+                    safe_print(f"  [{eng.name}] skipping (unsupported language for this engine)")
+                last_err = f"{tnorm} is not supported"
+                continue
+            outs = eng.translate_batch(texts, tnorm, limiter, max_chars)
+            if len(outs) != len(texts):
+                raise RuntimeError(f"count mismatch: expected {len(texts)} got {len(outs)}")
+            return outs, eng.name
+        except Exception as e:
+            last_err = f"{type(e).__name__}: {e!r}"
+            safe_print(f"  [{eng.name}] failed: {last_err}")
+            if DEBUG:
+                import traceback
+                traceback.print_exc()
+            continue
 
-# -----------------------------
-# Translation core
-# -----------------------------
-SEP = "\n__ANQR_XLATE_SEP_9d0f7a9e__\n"
+    raise RuntimeError(last_err or "all engines failed")
 
-def chunk_by_chars(texts: List[str], max_chars: int) -> List[List[str]]:
-    chunks: List[List[str]] = []
-    cur: List[str] = []
-    cur_len = 0
-    for t in texts:
-        add = len(t) + len(SEP)
-        if cur and cur_len + add > max_chars:
-            chunks.append(cur)
-            cur = [t]
-            cur_len = len(t)
-        else:
-            cur.append(t)
-            cur_len += add
-    if cur:
-        chunks.append(cur)
-    return chunks
+def process_language(en_map: Dict[int, str], lang_file: Path, engines: List[Engine], limiter: RateLimiter, max_chars: int, dry_run: bool) -> Tuple[str, int, str]:
+    lang_code = lang_file.stem  # e.g. gu, zh-CN, no-NO
+    # normalize to translation target code (keep file stem; engines normalize further)
+    target = lang_code
 
-def try_translate(engine: Engine, limiter: RateLimiter, texts: List[str], target: str, batch_size: int, max_chars: int, cache: Cache) -> EngineResult:
-    """
-    Translate texts using joined-batch method:
-      - protect placeholders
-      - dedupe within request
-      - cache
-      - join with stable SEP and translate in chunks (bounded by max_chars)
-    """
-    if not texts or target == "en":
-        return EngineResult(ok=True, outputs=texts, engine_name=engine.name)
+    existing = parse_txt_file(lang_file)
+    missing_ids = [k for k in sorted(en_map.keys()) if k not in existing or not existing.get(k)]
+    if not missing_ids:
+        safe_print(f"{lang_file.name}: up to date")
+        return (lang_file.name, 0, "none")
 
-    # Engine-specific target normalization + support check
-    target_norm = engine.normalize_target(target)
-    if not engine.supports_target(target_norm):
-        return EngineResult(ok=False, outputs=texts, engine_name=engine.name, error=f"unsupported target: {target_norm}")
+    safe_print(f"{lang_file.name}: translating {len(missing_ids)} lines -> {target}")
 
-
-    # protect + track per-text placeholder maps
+    # Build texts and placeholder protection maps aligned with missing_ids
     protected: List[str] = []
     ph_maps: List[Dict[str, str]] = []
-    for t in texts:
-        p, m = protect(t)
+    for k in missing_ids:
+        p, m = protect(en_map[k])
         protected.append(p)
         ph_maps.append(m)
 
-    # cache lookup (on protected forms)
-    cached = cache.get_many(engine.name, target_norm, list(dict.fromkeys(protected)))
+    # Translate in batches with retries/backoff at the call-site
+    backoff = 1.0
+    for attempt in range(4):
+        try:
+            translated, used = translate_texts(engines, limiter, protected, target, max_chars)
+            # Unprotect
+            translated = [unprotect(t, m) for t, m in zip(translated, ph_maps)]
+            if dry_run:
+                safe_print(f"  [{lang_file.name}] dry-run: would add {len(missing_ids)} lines (engine={used})")
+                return (lang_file.name, len(missing_ids), used)
 
-    # translate missing uniques
-    uniques: List[str] = []
-    for p in protected:
-        if p not in cached and p not in uniques:
-            uniques.append(p)
-
-    # translate uniques in manageable groups
-    translated_uniques: Dict[str, str] = {}
-    try:
-        # break into request groups by count, then by char size
-        for i in range(0, len(uniques), batch_size):
-            group = uniques[i : i + batch_size]
-            for chunk in chunk_by_chars(group, max_chars=max_chars):
-                limiter.wait()
-                if engine.name == "libretranslate" and hasattr(engine, "translate_list"):
-                    if DEBUG:
-                        safe_print(f"    -> request engine={engine.name} lang={target_norm} items={len(chunk)} (batch-array)")
-                    parts = engine.translate_list(chunk, target_norm)  # type: ignore[attr-defined]
-                    if not parts:
-                        raise RuntimeError("empty translation response")
-                    if len(parts) != len(chunk):
-                        raise RuntimeError(f"batch size mismatch: expected {len(chunk)} got {len(parts)}")
-                    for src, dst in zip(chunk, parts):
-                        translated_uniques[src] = dst
-                else:
-                    joined = SEP.join(chunk)
-                    if DEBUG:
-                        safe_print(f"    -> request engine={engine.name} lang={target_norm} items={len(chunk)} chars={len(joined)}")
-                    out = engine.translate_joined(joined, target_norm)
-
-                    # if service returns empty, treat as failure
-                    if not out:
-                        raise RuntimeError("empty translation response")
-
-                    parts = out.split(SEP)
-                    if len(parts) != len(chunk):
-                        raise RuntimeError(f"separator split mismatch: expected {len(chunk)} got {len(parts)}")
-
-                    for src, dst in zip(chunk, parts):
-                        translated_uniques[src] = dst
-
-
-                # small jitter to avoid periodic throttles
-                time.sleep(0.10 + random.random() * 0.15)
-
-        # persist cache for this engine/lang
-        cache.put_many(engine.name, target_norm, list(translated_uniques.items()))
-        cached.update(translated_uniques)
-
-        # rebuild outputs and unprotect
-        outputs: List[str] = []
-        for p, m in zip(protected, ph_maps):
-            raw = cached.get(p, p)
-            outputs.append(unprotect(raw, m))
-
-        return EngineResult(ok=True, outputs=outputs, engine_name=engine.name)
-
-    except Exception as e:
-        return EngineResult(ok=False, outputs=texts, engine_name=engine.name, error=str(e))
-
-def translate_with_fallback(
-    engines: List[Engine],
-    limiter: RateLimiter,
-    texts: List[str],
-    target: str,
-    batch_size: int,
-    max_chars: int,
-    cache: Cache,
-) -> Tuple[List[str], str]:
-    """
-    Attempt engines in order with retry/backoff on transient errors.
-    Returns (translations, engine_name_used).
-    """
-    backoff = INITIAL_BACKOFF
-    last_err: Optional[str] = None
-
-    for engine in engines:
-        if not engine.available():
-            continue
-
-        # retry per engine (useful for 429s)
-        for attempt in range(MAX_RETRIES):
-            res = try_translate(engine, limiter, texts, target, batch_size, max_chars, cache)
-            if res.ok:
-                return res.outputs, res.engine_name
-
-            last_err = res.error or "unknown error"
-            if "unsupported target" in last_err.lower():
-                safe_print(f"  [{engine.name}] skipping (unsupported language for this engine)")
-                break
-
-            msg = last_err.lower()
-            is_rate = ("429" in msg) or ("too many" in msg) or ("rate" in msg) or ("throttle" in msg)
-            is_transient = is_rate or ("timeout" in msg) or ("temporar" in msg) or ("503" in msg) or ("502" in msg)
-
-            if attempt < MAX_RETRIES - 1 and is_transient:
-                sleep_for = min(backoff, MAX_BACKOFF) + random.random() * 0.5
-                safe_print(f"  [{engine.name}] transient error: {last_err} -> retry {attempt+1}/{MAX_RETRIES} after {sleep_for:.1f}s")
-                time.sleep(sleep_for)
-                backoff = min(backoff * 2.0, MAX_BACKOFF)
+            # Merge and write
+            merged = dict(existing)
+            for k, t in zip(missing_ids, translated):
+                merged[k] = t
+            write_txt_file_atomic(lang_file, merged)
+            safe_print(f"  [{lang_file.name}] Added {len(missing_ids)} lines (engine={used})")
+            return (lang_file.name, len(missing_ids), used)
+        except Exception as e:
+            msg = f"{type(e).__name__}: {e!r}"
+            safe_print(f"  [{lang_file.name}] attempt {attempt+1}/4 failed: {msg}")
+            if DEBUG:
+                import traceback
+                traceback.print_exc()
+            if attempt < 3:
+                time.sleep(backoff + random.random() * 0.3)
+                backoff = min(backoff * 2.0, 10.0)
                 continue
-            else:
-                safe_print(f"  [{engine.name}] failed: {last_err}")
-                break
-
-        # reset backoff when moving to next engine
-        backoff = INITIAL_BACKOFF
-
-    # fallback: return originals if everything fails
-    safe_print(f"  All engines failed for {target}. Last error: {last_err}")
-    if last_err and "unsupported" in last_err.lower():
-        return texts, "unsupported"
-    return texts, "none"
-
-# -----------------------------
-# Per-language processing
-# -----------------------------
-def process_language_file(
-    lang_file: Path,
-    target_code: str,
-    en_lines: Dict[int, str],
-    target_lines: List[int],
-    engines: List[Engine],
-    limiter: RateLimiter,
-    batch_size: int,
-    max_chars: int,
-    cache: Cache,
-    dry_run: bool,
-) -> Tuple[str, int, bool, str]:
-    lang_name = lang_file.name
-    existing = parse_txt_file(lang_file)
-
-    missing = [n for n in target_lines if n in en_lines and n not in existing]
-    if not missing:
-        safe_print(f"{lang_name}: up to date")
-        return (lang_name, 0, True, "none")
-
-    safe_print(f"{lang_name}: translating {len(missing)} lines -> {target_code}")
-    if DEBUG:
-        safe_print(f"  engines=" + ",".join([e.name for e in engines if e.available()]))
-
-    texts = [en_lines[n] for n in missing]
-    translated, used_engine = translate_with_fallback(
-        engines=engines,
-        limiter=limiter,
-        texts=texts,
-        target=target_code,
-        batch_size=batch_size,
-        max_chars=max_chars,
-        cache=cache,
-    )
-
-    # merge and write deterministically (avoid duplicates)
-    for n, t in zip(missing, translated):
-        existing[n] = t
-
-    if used_engine == "unsupported":
-        safe_print(f"  [{lang_name}] Skipped: LibreTranslate does not support '{target_code}' on this server")
-        return (lang_name, 0, True, used_engine)
-
-    if not dry_run:
-        write_txt_file(lang_file, existing)
-
-    safe_print(f"  [{lang_name}] Added {len(missing)} lines (engine={used_engine})")
-    return (lang_name, len(missing), True, used_engine)
-
-def build_engine_chain(preferred: Optional[str]) -> List[Engine]:
-    """
-    Engine order:
-      - If preferred set, only that engine (if available).
-      - Else:
-          * If LIBRETRANSLATE_URL is set, default to LibreTranslate ONLY (local-first, no external calls).
-          * Otherwise: azure -> deepl -> libretranslate -> google -> mymemory
-    """
-    registry: Dict[str, Engine] = {
-        "azure": AzureEngine(),
-        "deepl": DeepLEngine(),
-        "libretranslate": LibreTranslateEngine(),
-        "google": GoogleEngine(),
-        "mymemory": MyMemoryEngine(),
-    }
-
-    if preferred:
-        e = registry.get(preferred)
-        if not e:
-            raise SystemExit(f"Unknown engine: {preferred}. Choose from: {', '.join(registry.keys())}")
-        return [e]
-
-    # Local LibreTranslate present? Use it exclusively by default.
-    if os.environ.get("LIBRETRANSLATE_URL"):
-        return [registry["libretranslate"]]
-
-    return [registry["azure"], registry["deepl"], registry["libretranslate"], registry["google"], registry["mymemory"]]
-
-
-def list_langs(script_dir: Path):
-    en_file = script_dir / "en-GB.txt"
-    txt_files = list(script_dir.glob("*.txt"))
-    lang_files = [f for f in txt_files if f.name not in ("en-GB.txt", "template.txt", "play.txt")]
-    print("Language files found:\n")
-    for f in sorted(lang_files):
-        stem = f.stem
-        code = normalize_lang(stem)
-        print(f"  {f.name:<15} -> {code}")
-    print("\n(If a file isn't listed, it doesn't exist in this folder.)")
+            safe_print(f"  [{lang_file.name}] Failed: all engines errored; leaving file unchanged")
+            return (lang_file.name, 0, "failed")
 
 def main() -> None:
-    # Debug: allow `kill -USR1 <pid>` to dump Python stack traces
-    try:
-        faulthandler.register(signal.SIGUSR1)
-    except Exception:
-        pass
+    global DEBUG
     ap = argparse.ArgumentParser()
-    ap.add_argument("lines", nargs="*", help="Line numbers to translate (default: all)")
+    ap.add_argument("lines", nargs="*", help="Language files to process (default: all *.txt except en-GB.txt)")
     ap.add_argument("--workers", type=int, default=DEFAULT_WORKERS)
     ap.add_argument("--batch-size", type=int, default=DEFAULT_BATCH_SIZE)
     ap.add_argument("--max-chars", type=int, default=DEFAULT_MAX_CHARS)
-    ap.add_argument("--qps", type=float, default=DEFAULT_QPS, help="Global requests/sec across all threads")
-    ap.add_argument("--engine", type=str, default=None, help="Force one engine: google|libretranslate|mymemory|deepl|azure")
-    ap.add_argument("--list-langs", action="store_true")
+    ap.add_argument("--qps", type=float, default=DEFAULT_QPS)
+    ap.add_argument("--engine", type=str, default=None, help="Force one engine: google|libretranslate")
     ap.add_argument("--dry-run", action="store_true")
-    ap.add_argument("--debug", action="store_true", help="Print per-request progress and enable stack dumps via SIGUSR1")
+    ap.add_argument("--debug", action="store_true")
     args = ap.parse_args()
-
-    global DEBUG
     DEBUG = bool(args.debug)
 
     script_dir = Path(__file__).parent
-    if args.list_langs:
-        list_langs(script_dir)
-        return
-
     en_file = script_dir / "en-GB.txt"
     if not en_file.exists():
         raise SystemExit(f"Error: {en_file} not found")
 
-    en_lines = parse_txt_file(en_file)
-    safe_print(f"Loaded {len(en_lines)} lines from en-GB.txt")
+    en_map = parse_txt_file(en_file)
+    safe_print(f"Loaded {len(en_map)} lines from {en_file.name}\n")
 
+    engines = select_engines(args.engine, batch_size=int(max(1, args.batch_size)))
+    limiter = RateLimiter(args.qps)
+
+    # choose language files
     if args.lines:
-        target_lines = [int(x) for x in args.lines]
+        lang_files = [script_dir / x for x in args.lines]
     else:
-        target_lines = sorted(en_lines.keys())
+        lang_files = sorted([p for p in script_dir.glob("*.txt") if p.name != "en-GB.txt"])
 
-    # discover language files
-    txt_files = list(script_dir.glob("*.txt"))
-    lang_files = [f for f in txt_files if f.name not in ("en-GB.txt", "template.txt", "play.txt")]
+    safe_print(f"Processing {len(lang_files)} languages (workers={args.workers}, qps={args.qps}, batch={args.batch_size}, max_chars={args.max_chars})...\n")
 
-    work_items: List[Tuple[Path, str]] = []
-    for lf in sorted(lang_files):
-        stem = lf.stem
-        target_code = normalize_lang(stem)
-        if target_code == "en":
-            continue
-        work_items.append((lf, target_code))
+    added_total = 0
+    if args.workers <= 1:
+        for lf in lang_files:
+            name, added, used = process_language(en_map, lf, engines, limiter, args.max_chars, args.dry_run)
+            added_total += added
+    else:
+        # NOTE: RateLimiter isn't thread-safe; enforce per-thread QPS by splitting
+        per_qps = max(0.05, args.qps / args.workers)
+        def task(lf: Path) -> Tuple[str, int, str]:
+            return process_language(en_map, lf, engines, RateLimiter(per_qps), args.max_chars, args.dry_run)
+        with cf.ThreadPoolExecutor(max_workers=args.workers) as ex:
+            futs = [ex.submit(task, lf) for lf in lang_files]
+            for f in cf.as_completed(futs):
+                name, added, used = f.result()
+                added_total += added
 
-    engines = build_engine_chain(args.engine)
-    limiter = RateLimiter(qps=args.qps)
-    cache = Cache(script_dir / ".xlate_cache.sqlite")
-
-    safe_print(f"\nProcessing {len(work_items)} languages (workers={args.workers}, qps={args.qps}, batch={args.batch_size}, max_chars={args.max_chars})...\n")
-
-    total_added = 0
-    completed = 0
-
-    # With global limiter, >1 worker is OK but doesn't increase total request rate.
-    with ThreadPoolExecutor(max_workers=max(1, args.workers)) as ex:
-        futures = {
-            ex.submit(
-                process_language_file,
-                lf,
-                code,
-                en_lines,
-                target_lines,
-                engines,
-                limiter,
-                args.batch_size,
-                args.max_chars,
-                cache,
-                args.dry_run,
-            ): lf.name
-            for lf, code in work_items
-        }
-
-        for fut in as_completed(futures):
-            name = futures[fut]
-            try:
-                _name, added, ok, used_engine = fut.result()
-                total_added += added
-                completed += 1
-            except Exception as e:
-                safe_print(f"Error processing {name}: {e}")
-                completed += 1
-
-    safe_print(f"\nDone! Processed {completed} languages, added {total_added} total translations.")
-    safe_print("Tip: run with --qps 0.5 --workers 1 if you still see throttling.")
+    safe_print(f"\nDone! Processed {len(lang_files)} languages, added {added_total} total translations.")
 
 if __name__ == "__main__":
     main()
