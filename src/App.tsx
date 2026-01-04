@@ -2,6 +2,7 @@ import { Capacitor } from '@capacitor/core';
 import { useCallback, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { BusyOverlay } from '@/components/BusyOverlay';
+import { WelcomeModal } from '@/components/WelcomeModal';
 import { Gallery } from '@/components/Gallery';
 import { Header } from '@/components/Header';
 import { Preview } from '@/components/Preview';
@@ -691,6 +692,8 @@ function App() {
       <div className="h-screen bg-background flex flex-col overflow-hidden relative">
         {/* Global busy overlay for export operations */}
         <BusyOverlay visible={isExporting} />
+        {/* Welcome modal for first-time visitors (web only) */}
+        <WelcomeModal />
         <Header
           onToggleSidebar={() => setSidebarOpen(!sidebarOpen)}
           sidebarOpen={showEditor ? sidebarOpen : false}

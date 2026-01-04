@@ -63,3 +63,5 @@ Desktop.ini
 
 # Python cache
 __pycache__/
+
+.xlate_cache.sqlite
