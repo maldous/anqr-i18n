@@ -1,4 +1,5 @@
 import { useTranslation } from 'react-i18next';
+import { HelpLink } from '@/components/ui/help-link';
 import { Label } from '@/components/ui/label';
 import {
   Select,
@@ -33,8 +34,9 @@ export function SafetySection() {
     <div className="space-y-4">
       {/* Safety Mode */}
       <div className="space-y-2">
-        <Label>
+        <Label className="flex items-center gap-1.5">
           <HighlightedLabel>{t('safety.safetyMode')}</HighlightedLabel>
+          <HelpLink href="/guide#section-41" requiredTier="professional" title={t('common.learnMore')} />
         </Label>
         <Select value={safety.mode} onValueChange={(v) => setSafetyMode(v as SafetyMode)}>
           <SelectTrigger title={t('hints.safetyMode')}>
@@ -92,8 +94,9 @@ export function SafetySection() {
 
           {/* Locks */}
           <div className="space-y-2 pt-2 border-t">
-            <Label className="text-muted-foreground">
+            <Label className="text-muted-foreground flex items-center gap-1.5">
               <HighlightedLabel>{t('safety.protectionLocks')}</HighlightedLabel>
+              <HelpLink href="/guide#section-54" requiredTier="professional" title={t('common.learnMore')} />
             </Label>
             <div className="flex items-center justify-between">
               <Label className="text-sm">
@@ -263,8 +266,9 @@ export function SafetySection() {
 
       {/* ECC-Aware Mode */}
       <div className="space-y-2 pt-2 border-t">
-        <Label className="text-muted-foreground">
+        <Label className="text-muted-foreground flex items-center gap-1.5">
           <HighlightedLabel>{t('safety.eccAwareMode')}</HighlightedLabel>
+          <HelpLink href="/guide#section-55" requiredTier="professional" title={t('common.learnMore')} />
         </Label>
 
         <div className="flex items-center justify-between">

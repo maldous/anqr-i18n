@@ -2,6 +2,7 @@ import { Link, Loader2, Move, Upload, X } from 'lucide-react';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Button } from '@/components/ui/button';
+import { HelpLink } from '@/components/ui/help-link';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import {
@@ -227,8 +228,9 @@ export function OverlaySection() {
     <div className="space-y-4">
       {/* File Upload */}
       <div className="space-y-2">
-        <Label>
+        <Label className="flex items-center gap-1.5">
           <HighlightedLabel>{t('overlay.imageGifWebp')}</HighlightedLabel>
+          <HelpLink href="/guide#section-4" title={t('common.learnMore')} />
         </Label>
         <input
           ref={fileInputRef}
@@ -412,8 +414,9 @@ export function OverlaySection() {
         <>
           {/* Overlay Mode */}
           <div className="space-y-2">
-            <Label>
+            <Label className="flex items-center gap-1.5">
               <HighlightedLabel>{t('overlay.mode')}</HighlightedLabel>
+              <HelpLink href="/guide#section-17" requiredTier="advanced" title={t('common.learnMore')} />
             </Label>
             <Select value={overlay.mode} onValueChange={(v) => setOverlayMode(v as OverlayMode)}>
               <SelectTrigger>
@@ -744,8 +747,9 @@ export function OverlaySection() {
               {['dithered', 'blue-noise', 'dither'].includes(overlay.mode) && (
                 <>
                   <div className="space-y-2 pt-2 border-t">
-                    <Label className="text-muted-foreground">
+                    <Label className="text-muted-foreground flex items-center gap-1.5">
                       <HighlightedLabel>{t('overlay.ditherSettings')}</HighlightedLabel>
+                      <HelpLink href="/guide#section-25" requiredTier="advanced" title={t('common.learnMore')} />
                     </Label>
                     <Select
                       value={overlay.ditherKind}

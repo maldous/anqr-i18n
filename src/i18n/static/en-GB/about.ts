@@ -5,6 +5,14 @@ export const about: PageDefinition = {
   title: 'About ANQR',
   description: 'ANQR is a free QR code generator with a client-first approach — generate QR codes locally or use our API for embedding.',
   lastUpdated: LAST_UPDATED,
+  primaryLinks: [
+    { href: '/?lang=${lang}', label: 'Open the generator', type: 'generator' },
+    { href: '/learn?lang=${lang}', label: 'Browse Learn articles', type: 'learn' },
+  ],
+  relatedLinks: [
+    { href: '/privacy?lang=${lang}', label: 'Privacy Policy', type: 'external' },
+    { href: '/terms?lang=${lang}', label: 'Terms of Service', type: 'external' },
+  ],
   sections: [
     {
       heading: 'What is ANQR?',

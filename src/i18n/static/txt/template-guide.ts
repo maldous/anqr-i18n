@@ -5,20 +5,37 @@ export const guide: PageDefinition = {
   title: '62',
   description: '63',
   lastUpdated: LAST_UPDATED,
+  breadcrumb: ['Guide'],
+  primaryLinks: [
+    { href: '/?lang=${lang}', label: '684', type: 'generator' },
+    { href: '/learn?lang=${lang}', label: '682', type: 'learn' },
+    { href: '/examples?lang=${lang}', label: '683', type: 'example' },
+  ],
   sections: [
+    // Getting Started (sections 0-1)
     {
       heading: '64',
       paragraphs: ['65', '66'],
       bullets: ['67', '68', '69'],
+      links: [
+        { href: '/?lang=${lang}', label: '684', type: 'generator' },
+      ],
     },
     {
       heading: '70',
       paragraphs: ['71'],
       bullets: ['72', '73', '74', '75'],
+      links: [
+        { href: '/?lang=${lang}', label: '669', type: 'generator' },
+      ],
     },
+    // Basic Features (sections 2-4)
     {
       heading: '76',
       paragraphs: ['77'],
+      links: [
+        { href: '/?lang=${lang}&tab=basic', label: '669', type: 'generator' },
+      ],
     },
     {
       heading: '78',
@@ -28,15 +45,26 @@ export const guide: PageDefinition = {
       heading: '81',
       paragraphs: ['82'],
       bullets: ['83', '84', '85', '86', '87', '88', '89'],
+      links: [
+        { href: '/?lang=${lang}&tab=basic#overlay', label: '669', type: 'generator' },
+        { href: '/learn?lang=${lang}#section-5', label: '670', type: 'learn' },
+      ],
     },
+    // Advanced Features (sections 5-40)
     {
       heading: '90',
       paragraphs: ['91'],
+      links: [
+        { href: '/?lang=${lang}&tab=advanced', label: '669', type: 'generator' },
+      ],
     },
     {
       heading: '92',
       paragraphs: ['93', '94'],
       bullets: ['95', '96', '97', '98'],
+      links: [
+        { href: '/?lang=${lang}&tab=advanced#qr-encoding', label: '669', type: 'generator' },
+      ],
     },
     {
       heading: '99',
@@ -46,6 +74,9 @@ export const guide: PageDefinition = {
       heading: '101',
       paragraphs: ['102'],
       bullets: ['103', '104', '105', '106', '107'],
+      links: [
+        { href: '/?lang=${lang}&tab=advanced#render', label: '669', type: 'generator' },
+      ],
     },
     {
       heading: '108',
@@ -60,6 +91,9 @@ export const guide: PageDefinition = {
     {
       heading: '117',
       paragraphs: ['118', '119', '120'],
+      links: [
+        { href: '/?lang=${lang}&tab=advanced#render', label: '669', type: 'generator' },
+      ],
     },
     {
       heading: '121',
@@ -69,6 +103,10 @@ export const guide: PageDefinition = {
       heading: '124',
       paragraphs: ['125'],
       bullets: ['126', '127', '128', '129'],
+      links: [
+        { href: '/?lang=${lang}&tab=advanced#output', label: '669', type: 'generator' },
+        { href: '/learn?lang=${lang}#section-3', label: '670', type: 'learn' },
+      ],
     },
     {
       heading: '130',
@@ -78,6 +116,10 @@ export const guide: PageDefinition = {
       heading: '132',
       paragraphs: ['133'],
       bullets: ['134', '135', '136', '137', '138', '139', '140'],
+      links: [
+        { href: '/?lang=${lang}&tab=advanced#animation', label: '669', type: 'generator' },
+        { href: '/learn?lang=${lang}#section-4', label: '670', type: 'learn' },
+      ],
     },
     {
       heading: '141',
@@ -99,11 +141,17 @@ export const guide: PageDefinition = {
         '156',
         '157',
       ],
+      links: [
+        { href: '/?lang=${lang}&tab=advanced#payload', label: '669', type: 'generator' },
+      ],
     },
     {
       heading: '158',
       paragraphs: ['159'],
       bullets: ['160', '161', '162'],
+      links: [
+        { href: '/?lang=${lang}&tab=advanced#overlay', label: '669', type: 'generator' },
+      ],
     },
     {
       heading: '163',
@@ -113,6 +161,9 @@ export const guide: PageDefinition = {
     {
       heading: '171',
       paragraphs: ['172'],
+      links: [
+        { href: '/learn?lang=${lang}#section-5', label: '670', type: 'learn' },
+      ],
     },
     {
       heading: '173',
@@ -189,6 +240,9 @@ export const guide: PageDefinition = {
       heading: '245',
       paragraphs: ['246'],
       bullets: ['247', '248', '249', '250', '251', '252', '253', '254'],
+      links: [
+        { href: '/?lang=${lang}&tab=advanced#render', label: '669', type: 'generator' },
+      ],
     },
     {
       heading: '255',
@@ -199,81 +253,138 @@ export const guide: PageDefinition = {
       heading: '259',
       paragraphs: ['260'],
       bullets: ['261', '262', '263', '264', '265', '266', '267', '268', '269'],
+      links: [
+        { href: '/?lang=${lang}&tab=advanced#output', label: '669', type: 'generator' },
+      ],
     },
     {
       heading: '270',
       paragraphs: ['271'],
       bullets: ['272', '273', '274', '275'],
     },
+    // Professional Features (sections 41-56)
     {
       heading: '276',
       paragraphs: ['277'],
+      links: [
+        { href: '/?lang=${lang}&tab=professional', label: '669', type: 'generator' },
+      ],
     },
     {
       heading: '278',
       paragraphs: ['279'],
       bullets: ['280', '281', '282', '283'],
+      links: [
+        { href: '/?lang=${lang}&tab=professional#watermark', label: '669', type: 'generator' },
+      ],
     },
     {
       heading: '284',
       paragraphs: ['285'],
       bullets: ['286', '287', '288'],
+      links: [
+        { href: '/?lang=${lang}&tab=professional#metadata', label: '669', type: 'generator' },
+      ],
     },
     {
       heading: '289',
       paragraphs: ['290'],
       bullets: ['291', '292', '293', '294'],
+      links: [
+        { href: '/?lang=${lang}&tab=professional#share', label: '669', type: 'generator' },
+        { href: '/learn?lang=${lang}#section-7', label: '670', type: 'learn' },
+      ],
     },
     {
       heading: '295',
       paragraphs: ['296'],
       bullets: ['297', '298', '299', '300', '301'],
+      links: [
+        { href: '/?lang=${lang}&tab=professional#safety', label: '669', type: 'generator' },
+        { href: '/learn?lang=${lang}#section-5', label: '670', type: 'learn' },
+      ],
     },
     {
       heading: '302',
       paragraphs: ['303'],
       bullets: ['304', '305', '306', '307', '308', '309', '310', '311', '312', '313', '314'],
+      links: [
+        { href: '/?lang=${lang}&tab=professional#payload', label: '669', type: 'generator' },
+        { href: '/learn?lang=${lang}#section-2', label: '670', type: 'learn' },
+      ],
     },
+    // Payment Standards (Language-Relevant) - section 42
     {
       heading: '609',
       paragraphs: ['610'],
+      links: [
+        { href: '/?lang=${lang}&tab=advanced#payload', label: '669', type: 'generator' },
+      ],
     },
     {
       heading: '611',
       bullets: ['612', '613'],
+      links: [
+        { href: '/?lang=${lang}&tab=professional#payload', label: '669', type: 'generator' },
+      ],
     },
     {
       heading: '614',
       bullets: ['615', '616'],
+      links: [
+        { href: '/?lang=${lang}&tab=professional#payload', label: '669', type: 'generator' },
+      ],
     },
     {
       heading: '617',
       bullets: ['618', '619', '620', '621', '622', '623'],
+      links: [
+        { href: '/?lang=${lang}&tab=professional#payload', label: '669', type: 'generator' },
+      ],
     },
     {
       heading: '624',
       bullets: ['625', '626', '627'],
+      links: [
+        { href: '/?lang=${lang}&tab=professional#payload', label: '669', type: 'generator' },
+      ],
     },
     {
       heading: '628',
       bullets: ['629', '630'],
+      links: [
+        { href: '/?lang=${lang}&tab=professional#payload', label: '669', type: 'generator' },
+      ],
     },
     {
       heading: '631',
       bullets: ['632', '633', '634'],
+      links: [
+        { href: '/?lang=${lang}&tab=professional#payload', label: '669', type: 'generator' },
+      ],
     },
     {
       heading: '635',
       bullets: ['636', '637'],
+      links: [
+        { href: '/?lang=${lang}&tab=professional#payload', label: '669', type: 'generator' },
+      ],
     },
     {
       heading: '638',
       bullets: ['639'],
+      links: [
+        { href: '/?lang=${lang}&tab=professional#payload', label: '669', type: 'generator' },
+      ],
     },
+    // Professional Overlay/Render sections (continued)
     {
       heading: '315',
       paragraphs: ['316'],
       bullets: ['317', '318', '319', '320', '321', '322'],
+      links: [
+        { href: '/?lang=${lang}&tab=professional#overlay', label: '669', type: 'generator' },
+      ],
     },
     {
       heading: '323',
@@ -284,25 +395,42 @@ export const guide: PageDefinition = {
       heading: '329',
       paragraphs: ['330'],
       bullets: ['331', '332', '333'],
+      links: [
+        { href: '/?lang=${lang}&tab=professional#overlay', label: '669', type: 'generator' },
+      ],
     },
     {
       heading: '334',
       paragraphs: ['335'],
       bullets: ['336', '337', '338', '339', '340', '341', '342'],
+      links: [
+        { href: '/?lang=${lang}&tab=professional#render', label: '669', type: 'generator' },
+      ],
     },
     {
       heading: '343',
       paragraphs: ['344'],
       bullets: ['345', '346', '347'],
+      links: [
+        { href: '/?lang=${lang}&tab=professional#output', label: '669', type: 'generator' },
+      ],
     },
     {
       heading: '348',
       paragraphs: ['349'],
       bullets: ['350', '351'],
+      links: [
+        { href: '/?lang=${lang}&tab=professional#animation', label: '669', type: 'generator' },
+        { href: '/learn?lang=${lang}#section-4', label: '670', type: 'learn' },
+      ],
     },
+    // API Reference (sections 57-69)
     {
       heading: '505',
       paragraphs: ['506', '507'],
+      links: [
+        { href: '/examples?lang=${lang}', label: '683', type: 'example' },
+      ],
     },
     {
       heading: '508',
@@ -342,11 +470,17 @@ export const guide: PageDefinition = {
     {
       heading: '580',
       paragraphs: ['581', '582', '583', '584', '585', '586', '587', '588'],
+      links: [
+        { href: '/examples?lang=${lang}', label: '683', type: 'example' },
+      ],
     },
     {
       heading: '589',
       paragraphs: ['590'],
       bullets: ['591', '592', '593', '594'],
+      links: [
+        { href: '/?lang=${lang}&tab=professional#share', label: '669', type: 'generator' },
+      ],
     },
     {
       heading: '595',
@@ -360,15 +494,23 @@ export const guide: PageDefinition = {
       heading: '606',
       paragraphs: ['607', '608'],
     },
+    // Best Practices & Troubleshooting (sections 70+)
     {
       heading: '352',
       paragraphs: ['353'],
       bullets: ['354', '355', '356', '357', '358', '359', '360', '361'],
+      links: [
+        { href: '/learn?lang=${lang}', label: '682', type: 'learn' },
+        { href: '/examples?lang=${lang}', label: '683', type: 'example' },
+      ],
     },
     {
       heading: '362',
       paragraphs: ['363'],
       bullets: ['364', '365', '366', '367', '368', '369'],
+      links: [
+        { href: '/learn?lang=${lang}#section-5', label: '670', type: 'learn' },
+      ],
     },
     {
       heading: '370',
@@ -377,7 +519,16 @@ export const guide: PageDefinition = {
     {
       heading: '372',
       paragraphs: ['373'],
+      links: [
+        { href: '/?lang=${lang}&tab=professional#share', label: '669', type: 'generator' },
+      ],
     },
+  ],
+  relatedLinks: [
+    { href: '/learn?lang=${lang}', label: '682', type: 'learn' },
+    { href: '/examples?lang=${lang}', label: '683', type: 'example' },
+    { href: '/gallery?lang=${lang}', label: '683', type: 'gallery' },
+    { href: '/?lang=${lang}', label: '684', type: 'generator' },
   ],
 };
 

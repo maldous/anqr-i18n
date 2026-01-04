@@ -83,6 +83,7 @@
     "tagline": "QR Code Generator"
   },
   "common": {
+    "learnMore": "Learn more",
     "none": "None",
     "off": "Off",
     "optional": "(optional)",
@@ -976,7 +977,8 @@
     "gallery": "Gallery",
     "generator": "Generator",
     "privacy": "Privacy",
-    "terms": "Terms"
+    "terms": "Terms",
+    "related": "Related"
   },
   "output": {
     "none": "None",

@@ -5,6 +5,14 @@ export const about: PageDefinition = {
   title: '1',
   description: '2',
   lastUpdated: LAST_UPDATED,
+  primaryLinks: [
+    { href: '/?lang=${lang}', label: 'Open the generator', type: 'generator' },
+    { href: '/learn?lang=${lang}', label: 'Browse Learn articles', type: 'learn' },
+  ],
+  relatedLinks: [
+    { href: '/privacy?lang=${lang}', label: 'Privacy Policy', type: 'external' },
+    { href: '/terms?lang=${lang}', label: 'Terms of Service', type: 'external' },
+  ],
   sections: [
     {
       heading: '3',

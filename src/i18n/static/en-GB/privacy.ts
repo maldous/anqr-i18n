@@ -5,6 +5,9 @@ export const privacy: PageDefinition = {
   title: 'Privacy Policy',
   description: 'Information ANQR collects, how it is used, and your rights under applicable privacy laws.',
   lastUpdated: LAST_UPDATED,
+  relatedLinks: [
+    { href: '/terms?lang=${lang}', label: 'Terms of Service', type: 'external' },
+  ],
   sections: [
     {
       heading: 'Summary',

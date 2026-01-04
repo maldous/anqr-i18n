@@ -11,7 +11,7 @@ import { TooltipProvider } from '@/components/ui/tooltip';
 import type { GalleryCategory } from '@/data/gallery-items';
 import { useBannerHeight } from '@/hooks/useBannerHeight';
 import { useQRGenerator } from '@/hooks/useQRGenerator';
-import i18n, { isRtlLanguage } from '@/i18n';
+import i18n, { isRtlLanguage, loadLocale } from '@/i18n';
 import { parseUrlParams } from '@/modules/share-utils';
 import { type Tier, useQRStore } from '@/store/qr-store';
 
@@ -76,8 +76,16 @@ function App() {
 
   // Handle location changes for routing (paths + legacy hash)
   useEffect(() => {
-    const handleLocationChange = () => {
+    const handleLocationChange = async () => {
       setCurrentPage(getPageFromLocation());
+
+      // Process lang parameter on every navigation (works on all pages)
+      const params = new URLSearchParams(window.location.search);
+      const lang = params.get('lang');
+      if (lang && lang !== i18n.language) {
+        await loadLocale(lang);
+        i18n.changeLanguage(lang);
+      }
     };
 
     handleLocationChange();

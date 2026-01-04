@@ -1,5 +1,6 @@
 import { useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
+import { HelpLink } from '@/components/ui/help-link';
 import { Label } from '@/components/ui/label';
 import {
   Select,
@@ -78,9 +79,12 @@ export function QREncodingSection() {
 
       {/* Error Correction Level */}
       <div className="space-y-2">
-        <Label>
-          <HighlightedLabel>{t('qr.errorCorrection')}</HighlightedLabel>
-        </Label>
+        <div className="flex items-center gap-1">
+          <Label>
+            <HighlightedLabel>{t('qr.errorCorrection')}</HighlightedLabel>
+          </Label>
+          <HelpLink href="/guide#section-2" />
+        </div>
         <Select value={qr.ecc} onValueChange={(v) => setQrEcc(v as ECCLevel)}>
           <SelectTrigger title={t('hints.errorCorrection')}>
             <SelectValue />

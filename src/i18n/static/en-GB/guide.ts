@@ -5,20 +5,37 @@ export const guide: PageDefinition = {
   title: 'ANQR User Guide',
   description: 'Complete guide to using ANQR for creating QR codes.',
   lastUpdated: LAST_UPDATED,
+  breadcrumb: ['Guide'],
+  primaryLinks: [
+    { href: '/?lang=${lang}', label: 'Open the generator', type: 'generator' },
+    { href: '/learn?lang=${lang}', label: 'Browse Learn articles', type: 'learn' },
+    { href: '/examples?lang=${lang}', label: 'View QR examples', type: 'example' },
+  ],
   sections: [
+    // Getting Started (sections 0-1)
     {
       heading: 'Getting Started',
       paragraphs: ['ANQR is a QR code generator with a client-first approach. By default, QR codes are generated locally in your browser — no account required and your data stays private. For professional embedding, you can also use the server-side API.', 'The interface has three interface levels: Basic, Advanced, and Professional. Select your level using the tabs in the header. Each level unlocks additional features while keeping the interface focused on what you need.'],
       bullets: ['Basic: Simple QR code creation with plain text/URL content and image overlay.', 'Advanced: QR encoding options, rendering styles, animation, output formats, extended content types, and overlay customization.', 'Professional: Watermarks, metadata, sharing, safety analysis, payment QR codes, and enterprise features.'],
+      links: [
+        { href: '/?lang=${lang}', label: 'Open the generator', type: 'generator' },
+      ],
     },
     {
       heading: 'Quick Start',
       paragraphs: ['To create your first QR code:'],
       bullets: ['1. Select a content type (URL, text, WiFi, etc.) from the Content Type dropdown.', '2. Enter your data in the provided fields.', '3. Optionally customize colors, styles, and add an overlay image.', '4. Click Export to download your QR code as PNG, GIF, WebP, or SVG.'],
+      links: [
+        { href: '/?lang=${lang}', label: 'Try this configuration directly in the ANQR generator.', type: 'generator' },
+      ],
     },
+    // Basic Features (sections 2-4)
     {
       heading: 'Basic Features',
       paragraphs: ['The Basic level provides a streamlined interface for creating QR codes with payload content and image overlays. This is the simplest way to get started.'],
+      links: [
+        { href: '/?lang=${lang}&tab=basic', label: 'Try this configuration directly in the ANQR generator.', type: 'generator' },
+      ],
     },
     {
       heading: 'Content Types (Basic)',
@@ -28,15 +45,26 @@ export const guide: PageDefinition = {
       heading: 'Image Overlay (Basic)',
       paragraphs: ['Upload an image (JPG, PNG, GIF, WebP) to blend with your QR code. Basic overlay features include:'],
       bullets: ['Upload from file: Select an image from your device.', 'Load from URL: Enter an image URL (must allow CORS).', 'Center Logo: Places image in the center, relying on error correction.', 'Blend: Simple alpha blending of image with QR pattern.', 'Intensity: Controls how strongly the overlay affects the QR code (0-100%).', 'Color Mode: Full Color, Grayscale, or Black & White.', 'Preserve Finder Patterns: Keeps corner patterns unmodified for reliable scanning.'],
+      links: [
+        { href: '/?lang=${lang}&tab=basic#overlay', label: 'Try this configuration directly in the ANQR generator.', type: 'generator' },
+        { href: '/learn?lang=${lang}#section-5', label: 'See related guides and examples', type: 'learn' },
+      ],
     },
+    // Advanced Features (sections 5-40)
     {
       heading: 'Advanced Features',
       paragraphs: ['The Advanced level unlocks QR encoding options, rendering styles, animation, output formats, extended content types, and advanced overlay customization.'],
+      links: [
+        { href: '/?lang=${lang}&tab=advanced', label: 'Try this configuration directly in the ANQR generator.', type: 'generator' },
+      ],
     },
     {
       heading: 'QR Encoding Settings',
       paragraphs: ['Version: QR codes come in versions 1-40, with higher versions holding more data but being larger. Set to 0 (Auto) to let ANQR choose the smallest version that fits your content.', 'Error Correction: Determines how much damage a QR code can sustain while remaining scannable.'],
       bullets: ['L (Low): 7% error correction - smallest size, least redundancy.', 'M (Medium): 15% error correction - balanced option.', 'Q (Quartile): 25% error correction - good for printed codes.', 'H (High): 30% error correction - best for codes with overlays or in harsh conditions.'],
+      links: [
+        { href: '/?lang=${lang}&tab=advanced#qr-encoding', label: 'Try this configuration directly in the ANQR generator.', type: 'generator' },
+      ],
     },
     {
       heading: 'Quiet Zone (Margin)',
@@ -46,6 +74,9 @@ export const guide: PageDefinition = {
       heading: 'Module Style',
       paragraphs: ['Modules are the individual squares that make up a QR code. ANQR offers five styles:'],
       bullets: ['Square: Classic QR appearance with sharp corners.', 'Rounded: Softened corners for a friendlier look.', 'Dots: Circular modules for a modern aesthetic.', 'Diamond: 45° rotated squares for a distinctive pattern.', 'Connected: Modules merge when adjacent, creating organic shapes.'],
+      links: [
+        { href: '/?lang=${lang}&tab=advanced#render', label: 'Try this configuration directly in the ANQR generator.', type: 'generator' },
+      ],
     },
     {
       heading: 'Finder Pattern Style',
@@ -60,6 +91,9 @@ export const guide: PageDefinition = {
     {
       heading: 'Colors',
       paragraphs: ['Foreground: The color of the QR modules. Black (#000000) is standard but any dark color works.', 'Background: The background color. White (#ffffff) is standard. Ensure sufficient contrast with the foreground.', 'Transparent Background: Remove the background entirely for use on colored surfaces. Ensure the surface provides adequate contrast.'],
+      links: [
+        { href: '/?lang=${lang}&tab=advanced#render', label: 'Try this configuration directly in the ANQR generator.', type: 'generator' },
+      ],
     },
     {
       heading: 'Module Size & Gap',
@@ -69,6 +103,10 @@ export const guide: PageDefinition = {
       heading: 'Output Settings',
       paragraphs: ['Format: Choose your export format based on use case.'],
       bullets: ['PNG: Lossless raster format, ideal for most uses. Best for print and digital.', 'WebP: Modern format with smaller file sizes. Good for web use.', 'GIF: Required for animated QR codes. Supports transparency.', 'SVG: Vector format that scales infinitely. Best for large print or when you need to edit the code.'],
+      links: [
+        { href: '/?lang=${lang}&tab=advanced#output', label: 'Try this configuration directly in the ANQR generator.', type: 'generator' },
+        { href: '/learn?lang=${lang}#section-3', label: 'See related guides and examples', type: 'learn' },
+      ],
     },
     {
       heading: 'Output Dimensions',
@@ -78,6 +116,10 @@ export const guide: PageDefinition = {
       heading: 'Animation Settings (Advanced)',
       paragraphs: ['Control animated QR code behavior:'],
       bullets: ['Speed: Animation frame rate in milliseconds.', 'Loop: Continuous or single-play animation.', 'Bounce: Ping-pong animation direction.', 'Start Frame: Begin animation from specific frame.', 'Max Frames: Limit total frames in animation.', 'Frame Step: Skip frames for faster animation.', 'Interpolation: None, Crossfade, or Morph between frames.'],
+      links: [
+        { href: '/?lang=${lang}&tab=advanced#animation', label: 'Try this configuration directly in the ANQR generator.', type: 'generator' },
+        { href: '/learn?lang=${lang}#section-4', label: 'See related guides and examples', type: 'learn' },
+      ],
     },
     {
       heading: 'Content Types (Advanced)',
@@ -99,11 +141,17 @@ export const guide: PageDefinition = {
         'Social Profile: Links to LinkedIn, Twitter, Instagram, etc.',
         'Messaging Link: WhatsApp, Telegram, Signal deep links.',
       ],
+      links: [
+        { href: '/?lang=${lang}&tab=advanced#payload', label: 'Try this configuration directly in the ANQR generator.', type: 'generator' },
+      ],
     },
     {
       heading: 'Advanced Overlay Features',
       paragraphs: ['Additional overlay capabilities:'],
       bullets: ['Crop: Enable cropping to select a square region of your image.', 'Halftone: Classic print-style dot pattern based on image brightness.', 'Dithered: Error-diffusion dithering for detailed reproduction.'],
+      links: [
+        { href: '/?lang=${lang}&tab=advanced#overlay', label: 'Try this configuration directly in the ANQR generator.', type: 'generator' },
+      ],
     },
     {
       heading: 'Overlay Blend Modes (Advanced)',
@@ -113,6 +161,9 @@ export const guide: PageDefinition = {
     {
       heading: 'Overlay Intensity',
       paragraphs: ['Controls how strongly the overlay affects the QR code (0-100%). Higher values show more image detail but may reduce scannability. Start around 70% and adjust based on testing.'],
+      links: [
+        { href: '/learn?lang=${lang}#section-5', label: 'See related guides and examples', type: 'learn' },
+      ],
     },
     {
       heading: 'Color Mode',
@@ -189,6 +240,9 @@ export const guide: PageDefinition = {
       heading: 'Advanced Rendering Options',
       paragraphs: ['Additional rendering controls:'],
       bullets: ['Gap Mode: None, Inset, Stroke, or Negative Space gap styling.', 'Corner Radius: Rounded corners percentage for modules.', 'Gradient: None, Linear, Radial, or Conic gradient on modules.', 'Eye Outer/Inner Style: Independent styling for finder pattern rings.', 'Dot Rotation: Rotate diamond/dot modules.', 'Eye Scale: Size adjustment for finder patterns.', 'Frame Style: Add decorative frames (Rounded Frame, Sticker, Tag).', 'Frame Text: Add text like "Scan Me!" to frames.'],
+      links: [
+        { href: '/?lang=${lang}&tab=advanced#render', label: 'Try this configuration directly in the ANQR generator.', type: 'generator' },
+      ],
     },
     {
       heading: 'Advanced QR Encoding',
@@ -199,81 +253,138 @@ export const guide: PageDefinition = {
       heading: 'Advanced Output Options',
       paragraphs: ['Additional export settings:'],
       bullets: ['Filename: Custom filename for downloads.', 'GIF Palette Size: 2-256 colors in GIF output.', 'GIF Quantizer: Median Cut, NeuQuant, or Octree color reduction.', 'GIF Dithering: Off, Floyd-Steinberg, or Ordered.', 'GIF Transparent Color: Set a color to be transparent.', 'SVG True Vector: Use paths instead of embedded raster.', 'SVG Shape Precision: Pixel or Precise path rendering.', 'SVG Embed Raster Overlay: Include overlay as embedded image.', 'Background Override: Force a specific background color in output.'],
+      links: [
+        { href: '/?lang=${lang}&tab=advanced#output', label: 'Try this configuration directly in the ANQR generator.', type: 'generator' },
+      ],
     },
     {
       heading: 'Validation Options',
       paragraphs: ['Input processing settings:'],
       bullets: ['Validate Input: Check content format before encoding.', 'Trim Whitespace: Remove leading/trailing spaces.', 'Normalize Newlines: Convert all line endings to LF.', 'Max Length Guard: Warn if content exceeds QR capacity.'],
     },
+    // Professional Features (sections 41-56)
     {
       heading: 'Professional Features',
       paragraphs: ['The Professional level adds watermarks, metadata, sharing options, safety analysis, payment QR codes, and enterprise features.'],
+      links: [
+        { href: '/?lang=${lang}&tab=professional', label: 'Try this configuration directly in the ANQR generator.', type: 'generator' },
+      ],
     },
     {
       heading: 'Watermark',
       paragraphs: ['Add watermarks to your QR codes:'],
       bullets: ['Kind: Text, Image, or Pattern watermark.', 'Position: Center, Corners, Edges, Behind, or Quiet Zone.', 'Opacity: Watermark transparency (0-100%).', 'Blend Mode: Normal, Multiply, Screen, or Overlay blending.'],
+      links: [
+        { href: '/?lang=${lang}&tab=professional#watermark', label: 'Try this configuration directly in the ANQR generator.', type: 'generator' },
+      ],
     },
     {
       heading: 'Metadata',
       paragraphs: ['Embed metadata in exported files:'],
       bullets: ['Title, Author, Copyright, License, Description fields.', 'Creation Time: Embed generation timestamp.', 'Custom Key-Value: Add arbitrary metadata pairs.'],
+      links: [
+        { href: '/?lang=${lang}&tab=professional#metadata', label: 'Try this configuration directly in the ANQR generator.', type: 'generator' },
+      ],
     },
     {
       heading: 'Sharing',
       paragraphs: ['Share your QR code configurations:'],
       bullets: ['Direct Link: Generate a shareable URL with your current settings.', 'Embed HTML: Get embed code for websites.', 'Encode Parameters: Include all settings in the share URL.', 'Note: Overlay images from local files cannot be shared via URL.'],
+      links: [
+        { href: '/?lang=${lang}&tab=professional#share', label: 'Try this configuration directly in the ANQR generator.', type: 'generator' },
+        { href: '/learn?lang=${lang}#section-7', label: 'See related guides and examples', type: 'learn' },
+      ],
     },
     {
       heading: 'Safety Analysis',
       paragraphs: ['Ensure QR codes remain scannable:'],
       bullets: ['Safety Mode: Off, Balanced, or Strict scanning requirements.', 'Min Module Size: Minimum pixel size per module.', 'Min Quiet Zone: Minimum margin modules.', 'Lock Finders/Timing/Align/Format/Version: Protect specific elements.', 'Max Overlay Intensity by ECC: Automatic intensity limits based on error correction level.'],
+      links: [
+        { href: '/?lang=${lang}&tab=professional#safety', label: 'Try this configuration directly in the ANQR generator.', type: 'generator' },
+        { href: '/learn?lang=${lang}#section-5', label: 'See related guides and examples', type: 'learn' },
+      ],
     },
     {
       heading: 'Content Types (Professional)',
       paragraphs: ['Professional level adds payment and enterprise content types:'],
       bullets: ['EPC/SEPA (EU): European bank transfer QR codes with IBAN, BIC, amount, reference.', 'UPI (India): Unified Payments Interface with VPA, payee name, amount.', 'PayNow (Singapore): Singapore fast payment with UEN or mobile number.', 'PromptPay (Thailand): Thai national payment system.', 'PIX (Brazil): Brazilian instant payment with PIX key.', 'Crypto: Bitcoin, Ethereum, Litecoin payment addresses with optional amount.', 'Marketing Campaign Link: URLs with full UTM parameter (Marketing Tags) tracking.', 'Short Link: For use with URL shorteners for dynamic/trackable QR codes.', 'GS1 Digital Link: Product identification with GTIN, serial, batch, expiry.', 'App Deep Link: iOS/Android app deep links with custom schemes.', 'Custom Format: Raw data with no formatting or validation.'],
+      links: [
+        { href: '/?lang=${lang}&tab=professional#payload', label: 'Try this configuration directly in the ANQR generator.', type: 'generator' },
+        { href: '/learn?lang=${lang}#section-2', label: 'See related guides and examples', type: 'learn' },
+      ],
     },
+    // Payment Standards (Language-Relevant) - section 42
     {
       heading: 'Language-Relevant Payments in Advanced Mode',
       paragraphs: ['When using Advanced mode, ANQR automatically shows payment methods relevant to your selected language. For example, Vietnamese users see VietQR, Thai users see PromptPay, and Indian language users see UPI and BharatQR. Global payment methods (cryptocurrency, PayPal, Cash App) are available to all languages. Professional mode unlocks all payment standards regardless of language.'],
+      links: [
+        { href: '/?lang=${lang}&tab=advanced#payload', label: 'Try this configuration directly in the ANQR generator.', type: 'generator' },
+      ],
     },
     {
       heading: 'European Payment Standards',
       bullets: ['EPC/SEPA (EU): European bank transfer QR codes following the EPC QR Code Standard. Supports IBAN, BIC (optional for domestic), amount in EUR, and structured or unstructured payment references. Used across the SEPA zone including EU countries plus Switzerland, Norway, Iceland, Liechtenstein, Monaco, and San Marino.', 'Swiss QR-bill: Swiss payment standard following SIX Implementation Guidelines. Supports CHF and EUR, QR-Reference (QRR), Creditor Reference (ISO 11649), structured creditor/debtor addresses, and bill information. Required for Swiss invoices since 2022.'],
+      links: [
+        { href: '/?lang=${lang}&tab=professional#payload', label: 'Try this configuration directly in the ANQR generator.', type: 'generator' },
+      ],
     },
     {
       heading: 'Indian Payment Standards',
       bullets: ['UPI (India): Unified Payments Interface following NPCI Deep Linking Specification. Supports VPA (Virtual Payment Address), payee name, amount in INR, transaction note, reference ID, merchant category code, and transaction mode.', 'BharatQR (India): Unified QR standard supporting both UPI and card-based payments. Combines UPI VPA with card PAN for maximum compatibility. Includes merchant name, city, MCC, GST details, and invoice/reference numbers.'],
+      links: [
+        { href: '/?lang=${lang}&tab=professional#payload', label: 'Try this configuration directly in the ANQR generator.', type: 'generator' },
+      ],
     },
     {
       heading: 'Southeast Asian Payment Standards',
       bullets: ['PayNow (Singapore): Singapore fast payment system using EMVCo QR specification with SGQR profile. Supports UEN (business registration), mobile number, or NRIC as proxy identifiers. Includes amount editability flag and expiry date.', 'PromptPay (Thailand): Thai national payment system following Bank of Thailand EMV profile. Supports mobile number, national ID, tax ID, e-wallet ID, and bill payment with multiple reference fields.', 'QRIS (Indonesia): Quick Response Code Indonesian Standard. EMV-based national payment standard supporting merchant ID, NMID (National Merchant ID), merchant criteria classification, and convenience fees (fixed or percentage).', 'DuitNow (Malaysia): Malaysian instant payment system. Supports multiple proxy types including NRIC, mobile, passport, army ID, and business registration numbers.', 'VietQR (Vietnam): Vietnamese interbank transfer standard. Requires bank BIN (NAPAS identification) and account number. Supports multiple service codes for different transfer types (QRPUSH, QRIBFTTA, QRIBFTTC).', 'QR Ph (Philippines): Philippine QR payment standard for InstaPay and PESONet. Uses account numbers with merchant identification for P2M (person-to-merchant) transactions.'],
+      links: [
+        { href: '/?lang=${lang}&tab=professional#payload', label: 'Try this configuration directly in the ANQR generator.', type: 'generator' },
+      ],
     },
     {
       heading: 'East Asian Payment Standards',
       bullets: ['TWQR (Taiwan): Taiwanese QR payment standard. Supports merchant ID, tax ID, and TWD amounts.', 'HKQR/FPS (Hong Kong): Hong Kong Faster Payment System QR codes. Supports FPS ID, mobile number, or email as payment identifiers. Amounts in HKD.', 'JPQR (Japan): Japanese unified QR code payment standard. Uses store ID for merchant identification with JPY amounts.'],
+      links: [
+        { href: '/?lang=${lang}&tab=professional#payload', label: 'Try this configuration directly in the ANQR generator.', type: 'generator' },
+      ],
     },
     {
       heading: 'Other Regional Payment Standards',
       bullets: ['PIX (Brazil): Brazilian Central Bank instant payment system following BR Code specification. Supports PIX keys (CPF, CNPJ, email, phone, or random key), merchant name/city, transaction ID, and BRL amounts.', 'AusPayNet/NPP PayID (Australia): Australian New Payments Platform PayID system. Supports PayID types (email, mobile, ABN, organisation ID) or traditional BSB + account number. Merchant name is optional as payers see the registered name from NPP lookup.'],
+      links: [
+        { href: '/?lang=${lang}&tab=professional#payload', label: 'Try this configuration directly in the ANQR generator.', type: 'generator' },
+      ],
     },
     {
       heading: 'Cryptocurrency Payments',
       bullets: ['Bitcoin/Litecoin (BIP-21): Standard cryptocurrency payment URIs with wallet address, optional amount, and label. Compatible with all major Bitcoin and Litecoin wallets.', 'Lightning Network (BOLT11): Lightning Network payment invoices. Paste a BOLT11 encoded invoice string for instant Bitcoin payments with minimal fees.', 'Ethereum (EIP-681): Ethereum transaction request URIs supporting native ETH transfers and ERC-20 token transfers. Includes chain ID for multi-network support (Mainnet, Polygon, BSC, Arbitrum, Optimism, Avalanche), gas parameters, and contract function calls.'],
+      links: [
+        { href: '/?lang=${lang}&tab=professional#payload', label: 'Try this configuration directly in the ANQR generator.', type: 'generator' },
+      ],
     },
     {
       heading: 'Payment Link Services',
       bullets: ['PayPal.Me: PayPal payment links with username and optional pre-filled amount. Recipients can pay via PayPal balance, cards, or bank accounts.', 'Cash App: Cash App payment links using $cashtag with optional amount. Popular in the United States for peer-to-peer payments.'],
+      links: [
+        { href: '/?lang=${lang}&tab=professional#payload', label: 'Try this configuration directly in the ANQR generator.', type: 'generator' },
+      ],
     },
     {
       heading: 'Generic EMV QR',
       bullets: ['EMV Generic: Create custom EMV Merchant-Presented Mode QR codes for payment schemes not specifically listed. Configure merchant name, city, country code (ISO 3166-1), currency code (ISO 4217 numeric), MCC, tip/convenience fee options, and additional data fields. Useful for testing or custom integrations.'],
+      links: [
+        { href: '/?lang=${lang}&tab=professional#payload', label: 'Try this configuration directly in the ANQR generator.', type: 'generator' },
+      ],
     },
+    // Professional Overlay/Render sections (continued)
     {
       heading: 'Overlay Blend Modes (Professional)',
       paragraphs: ['Additional blend modes in Professional level:'],
       bullets: ['Pixelate: Pixelated overlay effect.', 'Outline: Edge detection overlay showing only contours.', 'Wave: Wavy distortion effect.', 'Subpixel Size: Variable subpixel sizing based on image.', 'True Dither: Advanced dithering with ordered matrix selection.', 'Extreme: Maximum image visibility, may affect scannability.'],
+      links: [
+        { href: '/?lang=${lang}&tab=professional#overlay', label: 'Try this configuration directly in the ANQR generator.', type: 'generator' },
+      ],
     },
     {
       heading: 'Protection Settings',
@@ -284,25 +395,42 @@ export const guide: PageDefinition = {
       heading: 'ECC-Aware Mode',
       paragraphs: ['Intelligently distributes overlay intensity based on error correction capacity. The system analyzes which modules can be modified while maintaining scannability.'],
       bullets: ['Risk Budget: Percentage of error correction capacity to use (0-100%).', 'Higher budget = more visible overlay but riskier scannability.', 'Lower budget = safer scanning but less visible overlay.'],
+      links: [
+        { href: '/?lang=${lang}&tab=professional#overlay', label: 'Try this configuration directly in the ANQR generator.', type: 'generator' },
+      ],
     },
     {
       heading: 'Professional Rendering Options',
       paragraphs: ['Advanced rendering controls:'],
       bullets: ['Crisp Edges: Use pixelated image rendering for sharp module edges.', 'Pixel Snap: Floor, Round, or Ceil pixel alignment.', 'Per-Module Color Mode: Solid, By Brightness, By Position, By Overlay, By Cluster.', 'Color Palette: Define custom color palette for per-module coloring.', 'Contrast Guard: Ensure minimum contrast ratio between colors.', 'Min Contrast Ratio: WCAG-style contrast requirement (1:1 to 21:1).', 'Extra Border Modules: Additional border beyond quiet zone.'],
+      links: [
+        { href: '/?lang=${lang}&tab=professional#render', label: 'Try this configuration directly in the ANQR generator.', type: 'generator' },
+      ],
     },
     {
       heading: 'Professional Output Options',
       paragraphs: ['Enterprise export settings:'],
       bullets: ['DPI: Set print resolution (72-600 DPI). 300 DPI recommended for print.', 'Include Quiet Zone: Toggle quiet zone in output dimensions.', 'Export As Additional: Generate PDF alongside primary format.'],
+      links: [
+        { href: '/?lang=${lang}&tab=professional#output', label: 'Try this configuration directly in the ANQR generator.', type: 'generator' },
+      ],
     },
     {
       heading: 'Animation Settings (Professional)',
       paragraphs: ['Additional professional animation features:'],
       bullets: ['Temporal Dither: Off, Blue Noise, or Flicker Safe per-frame dithering.', 'Pattern: None, Pulse, Wave, Scanline, Shimmer, or Drift effects.'],
+      links: [
+        { href: '/?lang=${lang}&tab=professional#animation', label: 'Try this configuration directly in the ANQR generator.', type: 'generator' },
+        { href: '/learn?lang=${lang}#section-4', label: 'See related guides and examples', type: 'learn' },
+      ],
     },
+    // API Reference (sections 57-69)
     {
       heading: 'API Reference',
       paragraphs: ['ANQR provides a server-side API for generating QR codes via URL parameters. This is ideal for embedding QR codes in websites, emails, documents, or automated workflows without client-side JavaScript.', 'Base URL: https://anqr.link/api/qr'],
+      links: [
+        { href: '/examples?lang=${lang}', label: 'View QR examples', type: 'example' },
+      ],
     },
     {
       heading: 'Basic Parameters',
@@ -342,11 +470,17 @@ export const guide: PageDefinition = {
     {
       heading: 'Example Usage',
       paragraphs: ['Basic QR code:', 'https://anqr.link/api/qr?data=https://example.com', 'Styled QR code with custom colors:', 'https://anqr.link/api/qr?data=Hello&size=300&fg=1e40af&bg=ffffff&style=rounded&radius=30', 'QR code with overlay image:', 'https://anqr.link/api/qr?data=https://example.com&ec=H&img=https://example.com/logo.png&mode=halftone&intensity=70', 'Animated GIF:', 'https://anqr.link/api/qr?data=Hello&format=gif&animPattern=pulse&animFrames=24&easing=ease_in_out'],
+      links: [
+        { href: '/examples?lang=${lang}', label: 'View QR examples', type: 'example' },
+      ],
     },
     {
       heading: 'Embedding QR Codes',
       paragraphs: ['In Professional mode, the Share feature generates embeddable HTML and URLs. Here is how embedding works:'],
       bullets: ['Share Link: Creates a URL to the ANQR app with all your settings encoded as URL parameters. Recipients can view and modify the QR code.', 'Embed Image: Generates an <img> tag pointing to the server API. The QR code is rendered server-side and served as an image.', 'Embed Markdown: Creates Markdown image syntax for documentation and README files.', 'Direct API URL: The raw API URL for use in applications, scripts, or other integrations.'],
+      links: [
+        { href: '/?lang=${lang}&tab=professional#share', label: 'Try this configuration directly in the ANQR generator.', type: 'generator' },
+      ],
     },
     {
       heading: 'HTML Example',
@@ -360,15 +494,23 @@ export const guide: PageDefinition = {
       heading: 'Rate Limits and Usage',
       paragraphs: ['The API is free to use for reasonable volumes. For high-volume usage or commercial applications requiring guaranteed uptime, please contact us.', 'API responses include aggressive caching headers. For best performance, cache responses on your end or use the same URL consistently for identical QR codes.'],
     },
+    // Best Practices & Troubleshooting (sections 70+)
     {
       heading: 'Best Practices',
       paragraphs: ['Follow these guidelines for reliable QR codes:'],
       bullets: ['Always test your QR codes with multiple scanner apps before printing.', 'Use Error Correction H (High) when adding overlays.', 'Keep at least 4 modules of quiet zone (margin).', 'Ensure high contrast between foreground and background.', 'For print, use at least 300 DPI and test at actual print size.', 'Enable Preserve Finder Patterns when using overlays.', 'Start with lower overlay intensity and increase gradually.', 'For outdoor use, consider larger module sizes and higher error correction.'],
+      links: [
+        { href: '/learn?lang=${lang}', label: 'Browse Learn articles', type: 'learn' },
+        { href: '/examples?lang=${lang}', label: 'View QR examples', type: 'example' },
+      ],
     },
     {
       heading: 'Troubleshooting',
       paragraphs: ['Common issues and solutions:'],
       bullets: ['QR won\'t scan: Reduce overlay intensity, increase error correction, check contrast.', 'Code too large: Reduce content length, use URL shortener, lower version.', 'Blurry output: Increase module size, use PNG instead of compressed formats.', 'Colors look wrong: Check color contrast, try grayscale overlay mode.', 'GIF not animating: Ensure using GIF format output, check frame count.', 'Image overlay not loading: Check CORS permissions on remote images.'],
+      links: [
+        { href: '/learn?lang=${lang}#section-5', label: 'See related guides and examples', type: 'learn' },
+      ],
     },
     {
       heading: 'Keyboard Shortcuts',
@@ -377,7 +519,16 @@ export const guide: PageDefinition = {
     {
       heading: 'Sharing & Embedding',
       paragraphs: ['In Professional mode, click the Share button to copy a URL with your current settings. Recipients can open this URL to see your exact configuration. Note: Overlay images from local files cannot be shared via URL.'],
+      links: [
+        { href: '/?lang=${lang}&tab=professional#share', label: 'Try this configuration directly in the ANQR generator.', type: 'generator' },
+      ],
     },
+  ],
+  relatedLinks: [
+    { href: '/learn?lang=${lang}', label: 'Browse Learn articles', type: 'learn' },
+    { href: '/examples?lang=${lang}', label: 'View QR examples', type: 'example' },
+    { href: '/gallery?lang=${lang}', label: 'View QR examples', type: 'gallery' },
+    { href: '/?lang=${lang}', label: 'Open the generator', type: 'generator' },
   ],
 };
 

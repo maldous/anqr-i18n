@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import { HelpLink } from '@/components/ui/help-link';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import {
@@ -837,9 +838,12 @@ export function PayloadSection() {
     <div className="space-y-4">
       {/* Payload Type Selector */}
       <div className="space-y-2">
-        <Label>
-          <HighlightedLabel>{t('payload.contentType')}</HighlightedLabel>
-        </Label>
+        <div className="flex items-center gap-1">
+          <Label>
+            <HighlightedLabel>{t('payload.contentType')}</HighlightedLabel>
+          </Label>
+          <HelpLink href="/guide#section-0" />
+        </div>
         <Select value={payload.kind} onValueChange={(v) => setPayloadKind(v as PayloadKind)}>
           <SelectTrigger className="w-full" title={t('hints.selectContentType')}>
             <SelectValue />
