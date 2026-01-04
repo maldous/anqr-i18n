@@ -9,7 +9,7 @@
 import type { PageDefinition, StaticPageType } from './types';
 
 // Re-export types for convenience
-export type { PageDefinition, PageSection, StaticPageType } from './types';
+export type { PageDefinition, PageImage, PageLink, PageSection, StaticPageType } from './types';
 export { CONTACT_EMAIL, LAST_UPDATED } from './types';
 
 // Only import English - other languages are lazy-loaded

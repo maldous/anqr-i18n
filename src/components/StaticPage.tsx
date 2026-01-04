@@ -8,7 +8,7 @@ import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { AdUnit } from '@/components/AdUnit';
 import { Button } from '@/components/ui/button';
-import type { PageDefinition, PageSection } from '@/i18n/static';
+import type { PageDefinition, PageImage, PageLink, PageSection } from '@/i18n/static';
 import { CONTACT_EMAIL, getStaticContentAsync, LAST_UPDATED } from '@/i18n/static';
 
 export type StaticPageType = 'about' | 'guide' | 'learn' | 'examples' | 'privacy' | 'terms' | 'contact';
@@ -24,76 +24,173 @@ function _slugify(text: string): string {
     .replace(/^-|-$/g, '');
 }
 
-// Helper to render text with clickable URLs
-function renderTextWithLinks(text: string): React.ReactNode {
-  // Match URLs starting with http:// or https://
-  const urlRegex = /(https?:\/\/[^\s]+)/g;
-  const parts = text.split(urlRegex);
+// Helper to process ${lang} placeholder in hrefs
+function processHref(href: string, lang: string): string {
+  return href.replace(/\$\{lang\}/g, lang);
+}
 
-  if (parts.length === 1) {
-    return text;
-  }
+// Helper to render text with clickable URLs and internal links
+// Supports: https://... URLs and [[/path|Label]] internal links
+function renderTextWithLinks(text: string, lang: string): React.ReactNode {
+  // Combined regex: match URLs or [[path|label]] syntax
+  const combinedRegex = /(https?:\/\/[^\s]+)|\[\[([^|\]]+)\|([^\]]+)\]\]/g;
+  
+  const result: React.ReactNode[] = [];
+  let lastIndex = 0;
+  let match: RegExpExecArray | null;
+  let keyIndex = 0;
 
-  return parts.map((part, index) => {
-    if (part.match(urlRegex)) {
-      return (
+  while ((match = combinedRegex.exec(text)) !== null) {
+    // Add text before match
+    if (match.index > lastIndex) {
+      result.push(<span key={`text-${keyIndex++}`}>{text.slice(lastIndex, match.index)}</span>);
+    }
+
+    if (match[1]) {
+      // External URL match
+      result.push(
         <a
-          key={`${part}-${index}`}
-          href={part}
+          key={`link-${keyIndex++}`}
+          href={match[1]}
           target="_blank"
           rel="noopener noreferrer"
           className="text-primary hover:underline break-all"
         >
-          {part}
+          {match[1]}
+        </a>
+      );
+    } else if (match[2] && match[3]) {
+      // Internal link [[path|label]] match
+      const href = processHref(match[2], lang);
+      const label = match[3];
+      const isExternal = href.startsWith('http');
+      
+      result.push(
+        <a
+          key={`link-${keyIndex++}`}
+          href={href}
+          {...(isExternal ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
+          className="text-primary hover:underline"
+        >
+          {label}
         </a>
       );
     }
-    return <span key={`text-${index}`}>{part}</span>;
-  });
+
+    lastIndex = match.index + match[0].length;
+  }
+
+  // Add remaining text
+  if (lastIndex < text.length) {
+    result.push(<span key={`text-${keyIndex++}`}>{text.slice(lastIndex)}</span>);
+  }
+
+  return result.length > 0 ? result : text;
 }
 
-// ToC group structure for guide
+// ToC group structure for pages with table of contents
 type TocGroup = {
   title: string;
+  id?: string; // ID of the first section in this group (for header navigation)
   items: { id: string; title: string }[];
 };
 
-// Group guide sections into logical categories
-// titleKey is used for i18n translation lookup
+// Build TOC for Guide page with categorized groups
 function buildGuideToc(sections: PageSection[], t: (key: string) => string): TocGroup[] {
   const groups: TocGroup[] = [
-    { title: t('nav.guide'), items: [] },
-    { title: t('tiers.basic'), items: [] },
-    { title: t('tiers.advanced'), items: [] },
-    { title: t('tiers.professional'), items: [] },
-    { title: 'API', items: [] },
-    { title: t('payload.other'), items: [] },
+    { title: t('nav.guide'), id: '', items: [] },
+    { title: t('tiers.basic'), id: '', items: [] },
+    { title: t('tiers.advanced'), id: '', items: [] },
+    { title: t('tiers.professional'), id: '', items: [] },
+    { title: 'API', id: '', items: [] },
+    { title: t('payload.other'), id: '', items: [] },
   ];
 
   // Map section indices to groups (stable across languages)
-  // Based on the consistent section order in all translations
   const getGroupIndex = (sectionIndex: number): number => {
-    if (sectionIndex <= 1) return 0; // Getting Started: sections 0-1
-    if (sectionIndex <= 4) return 1; // Basic Features: sections 2-4
-    if (sectionIndex <= 40) return 2; // Advanced Features: sections 5-40
-    if (sectionIndex <= 56) return 3; // Pro Features: sections 41-56 (includes payment guide 42-50)
-    if (sectionIndex <= 69) return 4; // API Reference: sections 57-69
-    return 5; // Other (Best Practices+): sections 70+
+    if (sectionIndex <= 1) return 0;
+    if (sectionIndex <= 4) return 1;
+    if (sectionIndex <= 40) return 2;
+    if (sectionIndex <= 56) return 3;
+    if (sectionIndex <= 69) return 4;
+    return 5;
   };
 
   sections.forEach((section, index) => {
     if (!section.heading) return;
-    // Use index-based ID for stable linking across languages
     const id = `section-${index}`;
     const groupIndex = getGroupIndex(index);
+    // First item in each group becomes the group's header link target
+    if (!groups[groupIndex].id) {
+      groups[groupIndex].id = id;
+    }
     groups[groupIndex].items.push({ id, title: section.heading });
   });
 
   return groups.filter((g) => g.items.length > 0);
 }
 
-// Table of Contents component for guide page
-function GuideTableOfContents({
+// Build TOC for Learn page with 5 guides grouped logically
+// Each guide starts at a section with links (end of previous guide) or at index 0
+function buildLearnToc(sections: PageSection[], t: (key: string) => string): TocGroup[] {
+  const groups: TocGroup[] = [];
+
+  // Group by major guide topics - a new group starts at section indices 0, 7, 14, 21, 28
+  // These correspond to the 5 guide title sections in template-learn.ts
+  sections.forEach((section, index) => {
+    if (!section.heading) return;
+    const id = `section-${index}`;
+    
+    // Guide title sections (every 7 sections for 5 guides)
+    if (index % 7 === 0 && index < 35) {
+      groups.push({ title: section.heading, id, items: [] });
+    } else if (groups.length > 0) {
+      groups[groups.length - 1].items.push({ id, title: section.heading });
+    }
+  });
+
+  return groups.filter((g) => g.items.length > 0);
+}
+
+// Build TOC for Examples page with 5 examples grouped logically  
+// Example sections are at indices 0, 5, 10, 16, 22 based on template-examples.ts structure
+function buildExamplesToc(sections: PageSection[], t: (key: string) => string): TocGroup[] {
+  const groups: TocGroup[] = [];
+
+  // Group by example topics - indices where new examples start
+  const exampleStartIndices = [0, 5, 11, 17, 23];
+  
+  sections.forEach((section, index) => {
+    if (!section.heading) return;
+    const id = `section-${index}`;
+    
+    // Example title sections
+    if (exampleStartIndices.includes(index)) {
+      groups.push({ title: section.heading, id, items: [] });
+    } else if (groups.length > 0) {
+      groups[groups.length - 1].items.push({ id, title: section.heading });
+    }
+  });
+
+  return groups.filter((g) => g.items.length > 0);
+}
+
+// Generic TOC builder that delegates to page-specific builders
+function buildToc(page: StaticPageType, sections: PageSection[], t: (key: string) => string): TocGroup[] {
+  switch (page) {
+    case 'guide':
+      return buildGuideToc(sections, t);
+    case 'learn':
+      return buildLearnToc(sections, t);
+    case 'examples':
+      return buildExamplesToc(sections, t);
+    default:
+      return [];
+  }
+}
+
+// Table of Contents component for content-heavy pages (guide, learn, examples)
+function TableOfContents({
   groups,
   activeSlug,
   onNavigate,
@@ -142,22 +239,48 @@ function GuideTableOfContents({
   const activeGroup = groups.find((g) => g.items.some((item) => item.id === activeSlug));
   const _activeItem = activeGroup?.items.find((item) => item.id === activeSlug);
 
+  // Handle clicking on a group title - navigate to the group's header section
+  const handleGroupClick = (group: TocGroup) => {
+    // Navigate to the group's header section (first section in that group)
+    if (group.id) {
+      handleItemClick(group.id);
+    } else if (group.items.length > 0) {
+      handleItemClick(group.items[0].id);
+    }
+    // Also expand the group if it's collapsed
+    if (!expandedGroups.has(group.title)) {
+      toggleGroup(group.title);
+    }
+  };
+
   const tocContent = (
     <nav className="text-sm">
       {groups.map((group) => (
-        <div key={group.title} className="mb-3">
-          <button
-            type="button"
-            onClick={() => toggleGroup(group.title)}
-            className="flex items-center justify-between w-full text-left font-semibold text-foreground hover:text-primary py-1.5 px-2 rounded transition-colors"
-          >
-            <span>{group.title}</span>
-            {expandedGroups.has(group.title) ? (
-              <ChevronUp className="h-4 w-4 text-muted-foreground" />
-            ) : (
-              <ChevronDown className="h-4 w-4 text-muted-foreground" />
-            )}
-          </button>
+        <div key={group.title} className="mb-4">
+          {/* Group header - clickable to navigate to first item */}
+          <div className="flex items-center justify-between">
+            <button
+              type="button"
+              onClick={() => handleGroupClick(group)}
+              className="flex-1 text-left text-base font-bold text-foreground hover:text-primary py-2 px-2 rounded-l transition-colors cursor-pointer"
+              title={`Go to ${group.title}`}
+            >
+              {group.title}
+            </button>
+            <button
+              type="button"
+              onClick={() => toggleGroup(group.title)}
+              className="p-2 rounded-r hover:bg-muted transition-colors"
+              title={expandedGroups.has(group.title) ? 'Collapse' : 'Expand'}
+            >
+              {expandedGroups.has(group.title) ? (
+                <ChevronUp className="h-4 w-4 text-muted-foreground" />
+              ) : (
+                <ChevronDown className="h-4 w-4 text-muted-foreground" />
+              )}
+            </button>
+          </div>
+          {/* Sub-items - smaller text for clear hierarchy */}
           {expandedGroups.has(group.title) && (
             <ul className="mt-1 space-y-0.5 border-l-2 border-muted ml-2">
               {group.items.map((item) => (
@@ -270,6 +393,90 @@ function GuideTableOfContents({
   );
 }
 
+// Breadcrumb component for navigation hierarchy
+function Breadcrumb({ items, lang }: { items: string[]; lang: string }) {
+  if (!items || items.length === 0) return null;
+  
+  return (
+    <nav className="flex items-center gap-2 text-sm text-muted-foreground mb-4" aria-label="Breadcrumb">
+      <a href={`/?lang=${lang}`} className="hover:text-primary transition-colors">
+        ANQR
+      </a>
+      {items.map((item, idx) => (
+        <span key={item} className="flex items-center gap-2">
+          <span className="text-muted-foreground/50">/</span>
+          {idx === items.length - 1 ? (
+            <span className="text-foreground font-medium">{item}</span>
+          ) : (
+            <a href={`/${item.toLowerCase()}?lang=${lang}`} className="hover:text-primary transition-colors">
+              {item}
+            </a>
+          )}
+        </span>
+      ))}
+    </nav>
+  );
+}
+
+// Render primary CTA links as prominent styled buttons
+function PrimaryLinks({ links, lang }: { links: PageLink[]; lang: string }) {
+  if (!links || links.length === 0) return null;
+  
+  return (
+    <div className="flex flex-wrap justify-center gap-3 mt-6 mb-2">
+      {links.map((link, idx) => (
+        <Button 
+          key={link.href} 
+          asChild 
+          variant={idx === 0 ? 'default' : 'outline'} 
+          size="default"
+          className="min-w-[140px]"
+        >
+          <a href={processHref(link.href, lang)}>{link.label}</a>
+        </Button>
+      ))}
+    </div>
+  );
+}
+
+// Render section contextual links
+function SectionLinks({ links, lang }: { links: PageLink[]; lang: string }) {
+  if (!links || links.length === 0) return null;
+  
+  return (
+    <div className="flex flex-wrap gap-x-4 gap-y-1 mt-3 pt-3 border-t border-border/50">
+      {links.map((link) => (
+        <a
+          key={link.href}
+          href={processHref(link.href, lang)}
+          className="text-sm text-primary hover:underline inline-flex items-center gap-1"
+        >
+          <span>→</span>
+          <span>{link.label}</span>
+        </a>
+      ))}
+    </div>
+  );
+}
+
+// Render related content links as consistent styled buttons
+function RelatedLinks({ links, lang, t }: { links: PageLink[]; lang: string; t: (key: string) => string }) {
+  if (!links || links.length === 0) return null;
+  
+  return (
+    <div className="mt-8 pt-6 border-t border-border">
+      <h3 className="text-lg font-semibold text-foreground mb-4">{t('nav.related') || 'Related'}</h3>
+      <div className="flex flex-wrap justify-center gap-3">
+        {links.map((link) => (
+          <Button key={link.href} asChild variant="outline" size="default" className="min-w-[140px]">
+            <a href={processHref(link.href, lang)}>{link.label}</a>
+          </Button>
+        ))}
+      </div>
+    </div>
+  );
+}
+
 function ContactEmailLink() {
   const { t } = useTranslation();
 
@@ -317,10 +524,11 @@ export function StaticPage({ page }: StaticPageProps) {
     }
   }, [def]);
 
-  const isGuidePage = page === 'guide';
+  // Pages that show TOC sidebar: guide, learn, examples
+  const hasToc = page === 'guide' || page === 'learn' || page === 'examples';
   const tocGroups = useMemo(
-    () => (isGuidePage && def ? buildGuideToc(def.sections, t) : []),
-    [isGuidePage, def, t]
+    () => (hasToc && def ? buildToc(page, def.sections, t) : []),
+    [hasToc, page, def, t]
   );
   const [activeSlug, setActiveSlug] = useState('');
   const contentRef = useRef<HTMLDivElement>(null);
@@ -333,7 +541,7 @@ export function StaticPage({ page }: StaticPageProps) {
 
   // Track active section with IntersectionObserver
   useEffect(() => {
-    if (!isGuidePage) return;
+    if (!hasToc) return;
 
     const observer = new IntersectionObserver(
       (entries) => {
@@ -360,7 +568,7 @@ export function StaticPage({ page }: StaticPageProps) {
     });
 
     return () => observer.disconnect();
-  }, [isGuidePage]);
+  }, [hasToc]);
 
   // Navigate to section with smooth scroll
   const navigateToSection = useCallback((slug: string) => {
@@ -377,7 +585,7 @@ export function StaticPage({ page }: StaticPageProps) {
 
   // Handle initial hash on mount
   useEffect(() => {
-    if (!isGuidePage) return;
+    if (!hasToc) return;
     const hash = window.location.hash.slice(1);
     if (hash) {
       // Delay to ensure refs are populated
@@ -385,7 +593,7 @@ export function StaticPage({ page }: StaticPageProps) {
     } else if (tocGroups.length > 0 && tocGroups[0].items.length > 0) {
       setActiveSlug(tocGroups[0].items[0].id);
     }
-  }, [isGuidePage, tocGroups, navigateToSection]);
+  }, [hasToc, tocGroups, navigateToSection]);
 
   // Register section ref
   const registerSectionRef = useCallback((slug: string, el: HTMLElement | null) => {
@@ -396,8 +604,8 @@ export function StaticPage({ page }: StaticPageProps) {
     }
   }, []);
 
-  // State for guide sidebar visibility - starts collapsed
-  const [isGuideSidebarOpen, setIsGuideSidebarOpen] = useState(false);
+  // State for TOC sidebar visibility - starts visible on desktop (web)
+  const [isTocSidebarOpen, setIsTocSidebarOpen] = useState(true);
 
   // Note: Click outside to close is disabled - user must click X button to close sidebar
 
@@ -413,25 +621,25 @@ export function StaticPage({ page }: StaticPageProps) {
     );
   }
 
-  // For guide page, use a different layout with ToC
-  if (isGuidePage) {
+  // For pages with TOC (guide, learn, examples), use layout with sidebar
+  if (hasToc) {
     return (
       <main className="min-h-[200px] flex-1 flex bg-background overflow-hidden transition-all duration-300">
-        {/* Left ad column - hidden on guide to make room for ToC */}
+        {/* Left ad column - hidden on TOC pages to make room for ToC */}
         <div className="hidden xl:flex flex-col items-center justify-center w-[180px] min-h-[600px] bg-background flex-shrink-0 pl-3 pr-2">
           <AdUnit slot="static-left" width={160} height={600} format="vertical" />
         </div>
 
         {/* Toggle button when sidebar is closed - positioned in main content area */}
-        {!isGuideSidebarOpen && (
+        {!isTocSidebarOpen && (
           <div className="hidden lg:block relative">
             <button
               type="button"
               onClick={(e) => {
                 e.stopPropagation();
-                setIsGuideSidebarOpen(true);
+                setIsTocSidebarOpen(true);
               }}
-              className="guide-sidebar-toggle absolute left-4 top-4 z-40 p-2 rounded-lg bg-card border shadow-md hover:bg-muted transition-colors"
+              className="toc-sidebar-toggle absolute left-4 top-4 z-40 p-2 rounded-lg bg-card border shadow-md hover:bg-muted transition-colors"
               title={t('accessibility.openGuideSidebar')}
             >
               <Menu className="h-5 w-5" />
@@ -440,12 +648,12 @@ export function StaticPage({ page }: StaticPageProps) {
         )}
 
         {/* Table of Contents */}
-        <GuideTableOfContents
+        <TableOfContents
           groups={tocGroups}
           activeSlug={activeSlug}
           onNavigate={navigateToSection}
-          onClose={() => setIsGuideSidebarOpen(false)}
-          isOpen={isGuideSidebarOpen}
+          onClose={() => setIsTocSidebarOpen(false)}
+          isOpen={isTocSidebarOpen}
           t={t}
         />
 
@@ -453,6 +661,11 @@ export function StaticPage({ page }: StaticPageProps) {
         <div ref={contentRef} className="flex-1 overflow-y-auto bg-background scrollbar-hide">
           {/* Centered header section like Gallery */}
           <div className="max-w-7xl mx-auto px-4 py-6">
+            {def.breadcrumb && (
+              <div className="flex justify-center mb-2">
+                <Breadcrumb items={def.breadcrumb} lang={i18n.language} />
+              </div>
+            )}
             <div className="text-center">
               <h1 className="text-2xl font-bold mb-2 tracking-tight text-foreground">
                 {def.title}
@@ -460,47 +673,65 @@ export function StaticPage({ page }: StaticPageProps) {
               <p className="text-sm text-muted-foreground leading-relaxed max-w-2xl mx-auto">
                 {def.description}
               </p>
+              {def.primaryLinks && <PrimaryLinks links={def.primaryLinks} lang={i18n.language} />}
             </div>
           </div>
 
           {/* Horizontal ad below header */}
           <div className="max-w-7xl mx-auto px-4 py-4">
             <div className="flex justify-center">
-              <AdUnit slot="guide-top" width={728} height={90} format="horizontal" />
+              <AdUnit slot={`${page}-top`} width={728} height={90} format="horizontal" />
             </div>
           </div>
 
-          <article className="max-w-3xl mx-auto px-4 sm:px-6 py-4">
+          <article className="max-w-3xl mx-auto px-4 sm:px-6 py-4 text-justify">
             <div className="space-y-8 sm:space-y-10">
               {def.sections.map((section, i) => {
                 const slug = `section-${i}`;
+                // Check if this section is a main heading (group title) vs a subheading
+                const isMainHeading = tocGroups.some((g) => g.id === slug);
                 return (
                   <section
                     key={section.heading}
                     id={slug}
                     data-slug={slug}
                     ref={(el) => registerSectionRef(slug, el)}
-                    className="space-y-3 sm:space-y-4 scroll-mt-20"
+                    className={`space-y-3 sm:space-y-4 scroll-mt-20 ${isMainHeading ? 'mt-8 pt-6 border-t border-border first:mt-0 first:pt-0 first:border-t-0' : ''}`}
                   >
-                    <h2 className="text-lg sm:text-xl font-semibold text-foreground">
-                      <a
-                        href={`#${slug}`}
-                        className="hover:text-primary transition-colors"
-                        onClick={(e) => {
-                          e.preventDefault();
-                          navigateToSection(slug);
-                        }}
-                      >
-                        {section.heading}
-                      </a>
-                    </h2>
+                    {isMainHeading ? (
+                      <h2 className="text-2xl sm:text-3xl font-bold text-foreground">
+                        <a
+                          href={`#${slug}`}
+                          className="hover:text-primary transition-colors"
+                          onClick={(e) => {
+                            e.preventDefault();
+                            navigateToSection(slug);
+                          }}
+                        >
+                          {section.heading}
+                        </a>
+                      </h2>
+                    ) : (
+                      <h3 className="text-lg sm:text-xl font-semibold text-foreground">
+                        <a
+                          href={`#${slug}`}
+                          className="hover:text-primary transition-colors"
+                          onClick={(e) => {
+                            e.preventDefault();
+                            navigateToSection(slug);
+                          }}
+                        >
+                          {section.heading}
+                        </a>
+                      </h3>
+                    )}
 
                     {section.paragraphs?.map((p, idx) => (
                       <p
                         key={idx}
                         className="text-sm sm:text-base text-muted-foreground leading-relaxed"
                       >
-                        {renderTextWithLinks(p)}
+                        {renderTextWithLinks(p, i18n.language)}
                       </p>
                     ))}
 
@@ -508,19 +739,44 @@ export function StaticPage({ page }: StaticPageProps) {
                       <ul className="list-disc pl-4 sm:pl-5 space-y-1.5 sm:space-y-2 text-sm sm:text-base text-muted-foreground">
                         {section.bullets.map((b) => (
                           <li key={b} className="leading-relaxed">
-                            {renderTextWithLinks(b)}
+                            {renderTextWithLinks(b, i18n.language)}
                           </li>
                         ))}
                       </ul>
                     )}
+
+                    {/* Images */}
+                    {section.images && section.images.length > 0 && (
+                      <div className="space-y-4 my-4">
+                        {section.images.map((image, imgIdx) => (
+                          <figure key={imgIdx} className="w-full">
+                            <img
+                              src={image.src}
+                              alt={image.alt}
+                              className="w-full rounded-lg shadow-md border"
+                              loading="lazy"
+                            />
+                            {image.caption && (
+                              <figcaption className="text-sm sm:text-base text-muted-foreground mt-2 text-justify">
+                                {image.caption}
+                              </figcaption>
+                            )}
+                          </figure>
+                        ))}
+                      </div>
+                    )}
+
+                    {section.links && <SectionLinks links={section.links} lang={i18n.language} />}
                   </section>
                 );
               })}
             </div>
 
+            {def.relatedLinks && <RelatedLinks links={def.relatedLinks} lang={i18n.language} t={t} />}
+
             {/* Bottom horizontal ad */}
             <div className="mt-8 flex justify-center">
-              <AdUnit slot="guide-bottom" width={728} height={90} format="horizontal" />
+              <AdUnit slot={`${page}-bottom`} width={728} height={90} format="horizontal" />
             </div>
 
             <div className="mt-8 pt-4 border-t border-border text-center">
@@ -551,11 +807,17 @@ export function StaticPage({ page }: StaticPageProps) {
       <div className="flex-1 overflow-y-auto bg-background scrollbar-hide">
         {/* Centered header section like Gallery */}
         <div className="max-w-7xl mx-auto px-4 py-6">
+          {def.breadcrumb && (
+            <div className="flex justify-center mb-2">
+              <Breadcrumb items={def.breadcrumb} lang={i18n.language} />
+            </div>
+          )}
           <div className="text-center">
             <h1 className="text-2xl font-bold mb-2 tracking-tight text-foreground">{def.title}</h1>
             <p className="text-sm text-muted-foreground leading-relaxed max-w-2xl mx-auto">
               {def.description}
             </p>
+            {def.primaryLinks && <PrimaryLinks links={def.primaryLinks} lang={i18n.language} />}
           </div>
         </div>
 
@@ -566,7 +828,7 @@ export function StaticPage({ page }: StaticPageProps) {
           </div>
         </div>
 
-        <article className="max-w-3xl mx-auto px-6 py-4">
+        <article className="max-w-3xl mx-auto px-6 py-4 text-justify">
           <div className="space-y-10">
             {def.sections.map((section) => (
               <section key={section.heading} className="space-y-4">
@@ -574,22 +836,47 @@ export function StaticPage({ page }: StaticPageProps) {
 
                 {section.paragraphs?.map((p, idx) => (
                   <p key={idx} className="text-base text-muted-foreground leading-relaxed">
-                    {renderTextWithLinks(p)}
+                    {renderTextWithLinks(p, i18n.language)}
                   </p>
                 ))}
 
                 {section.bullets && section.bullets.length > 0 && (
                   <ul className="list-disc pl-5 space-y-2 text-base text-muted-foreground">
                     {section.bullets.map((b) => (
-                      <li key={b}>{renderTextWithLinks(b)}</li>
+                      <li key={b}>{renderTextWithLinks(b, i18n.language)}</li>
                     ))}
                   </ul>
                 )}
+
+                {/* Images */}
+                {section.images && section.images.length > 0 && (
+                  <div className="space-y-4 my-4">
+                    {section.images.map((image, imgIdx) => (
+                      <figure key={imgIdx} className="w-full">
+                        <img
+                          src={image.src}
+                          alt={image.alt}
+                          className="w-full rounded-lg shadow-md border"
+                          loading="lazy"
+                        />
+                        {image.caption && (
+                          <figcaption className="text-sm sm:text-base text-muted-foreground mt-2 text-justify">
+                            {image.caption}
+                          </figcaption>
+                        )}
+                      </figure>
+                    ))}
+                  </div>
+                )}
+
+                {section.links && <SectionLinks links={section.links} lang={i18n.language} />}
               </section>
             ))}
 
             {page === 'contact' && <ContactEmailLink />}
           </div>
+
+          {def.relatedLinks && <RelatedLinks links={def.relatedLinks} lang={i18n.language} t={t} />}
 
           {/* Bottom horizontal ad */}
           <div className="mt-8 flex justify-center">

@@ -2,6 +2,7 @@ import { Upload, X } from 'lucide-react';
 import { useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Button } from '@/components/ui/button';
+import { HelpLink } from '@/components/ui/help-link';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import {
@@ -39,9 +40,12 @@ export function WatermarkSection() {
     <div className="space-y-4">
       {/* Enable */}
       <div className="flex items-center justify-between">
-        <Label>
-          <HighlightedLabel>{t('watermark.enabled')}</HighlightedLabel>
-        </Label>
+        <div className="flex items-center gap-1">
+          <Label>
+            <HighlightedLabel>{t('watermark.enabled')}</HighlightedLabel>
+          </Label>
+          <HelpLink href="/guide#section-23" requiredTier="advanced" />
+        </div>
         <Switch checked={watermark.enabled} onCheckedChange={setWatermarkEnabled} />
       </div>
 

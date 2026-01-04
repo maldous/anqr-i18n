@@ -5,6 +5,9 @@ export const terms: PageDefinition = {
   title: 'Terms of Service',
   description: 'By accessing or using the site, you agree to be bound by these terms.',
   lastUpdated: LAST_UPDATED,
+  relatedLinks: [
+    { href: '/privacy?lang=${lang}', label: 'Privacy Policy', type: 'external' },
+  ],
   sections: [
     {
       heading: 'Acceptance of terms',

@@ -2,6 +2,7 @@ import { Plus, X } from 'lucide-react';
 import { useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Button } from '@/components/ui/button';
+import { HelpLink } from '@/components/ui/help-link';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Switch } from '@/components/ui/switch';
@@ -45,9 +46,12 @@ export function MetadataSection() {
     <div className="space-y-4">
       {/* Title */}
       <div className="space-y-2">
-        <Label>
-          <HighlightedLabel>{t('metadata.title')}</HighlightedLabel>
-        </Label>
+        <div className="flex items-center gap-1">
+          <Label>
+            <HighlightedLabel>{t('metadata.title')}</HighlightedLabel>
+          </Label>
+          <HelpLink href="/guide#section-35" requiredTier="professional" />
+        </div>
         <Input
           value={metadata.title}
           onChange={(e) => setMetadata({ title: e.target.value })}

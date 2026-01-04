@@ -83,6 +83,7 @@
     "tagline": "54"
   },
   "common": {
+    "learnMore": "1422",
     "none": "18",
     "off": "19",
     "optional": "1396",
@@ -971,11 +972,13 @@
     "about": "532",
     "contact": "533",
     "guide": "534",
-    "guide": "534",
+    "learn": "1419",
+    "examples": "1420",
     "gallery": "535",
     "generator": "536",
     "privacy": "537",
-    "terms": "538"
+    "terms": "538",
+    "related": "1421"
   },
   "output": {
     "none": "18",

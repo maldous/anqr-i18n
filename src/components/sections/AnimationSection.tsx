@@ -1,4 +1,5 @@
 import { useTranslation } from 'react-i18next';
+import { HelpLink } from '@/components/ui/help-link';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import {
@@ -30,10 +31,10 @@ export function AnimationSection() {
     <div className="space-y-4">
       {/* Speed */}
       <div className="space-y-2">
-        <div className="flex items-center justify-between">
-          <Label>
-            <HighlightedLabel>{t('animation.speed')}</HighlightedLabel>
-          </Label>
+        <div className="flex items-center justify-between"><Label className="flex items-center gap-1.5">
+              <HighlightedLabel>{t('animation.speed')}</HighlightedLabel>
+              <HelpLink href="/guide#section-15" requiredTier="advanced" title={t('common.learnMore')} />
+            </Label>
           <span className="text-sm text-muted-foreground">
             {t('qr.nMs', { count: animation.speedMs })}
           </span>
@@ -194,9 +195,10 @@ export function AnimationSection() {
 
           {/* Animation Pattern */}
           <div className="space-y-2">
-            <Label>
-              <HighlightedLabel>{t('animation.pattern')}</HighlightedLabel>
-            </Label>
+          <Label className="flex items-center gap-1.5">
+            <HighlightedLabel>{t('animation.pattern')}</HighlightedLabel>
+            <HelpLink href="/guide#section-48" requiredTier="professional" title={t('common.learnMore')} />
+          </Label>
             <Select
               value={animation.pattern}
               onValueChange={(v) =>

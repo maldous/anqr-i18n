@@ -227,6 +227,36 @@ function MobileJumpButton({
   );
 }
 
+// Guide links component for Gallery
+function GuideLinks() {
+  const { t, i18n } = useTranslation();
+  return (
+    <div className="max-w-7xl mx-auto px-4 py-6 border-t">
+      <h3 className="text-lg font-semibold mb-4">{t('gallery.learnMore', 'Learn how to create these styles')}</h3>
+      <div className="flex flex-wrap gap-3">
+        <a
+          href={`/guide?lang=${i18n.language}#section-8`}
+          className="text-sm text-blue-600 dark:text-blue-400 hover:underline"
+        >
+          {t('gallery.guideModuleStyles', 'Module Styles Guide')}
+        </a>
+        <a
+          href={`/guide?lang=${i18n.language}#section-11`}
+          className="text-sm text-blue-600 dark:text-blue-400 hover:underline"
+        >
+          {t('gallery.guideColors', 'Colors & Gradients Guide')}
+        </a>
+        <a
+          href={`/learn?lang=${i18n.language}`}
+          className="text-sm text-blue-600 dark:text-blue-400 hover:underline"
+        >
+          {t('gallery.learnArticles', 'Browse Learn Articles')}
+        </a>
+      </div>
+    </div>
+  );
+}
+
 // Main Gallery component
 export function Gallery({ filter }: GalleryProps) {
   const { t } = useTranslation();
@@ -340,6 +370,9 @@ export function Gallery({ filter }: GalleryProps) {
             />
           ))}
         </div>
+
+        {/* Guide links */}
+        <GuideLinks />
 
         {/* Bottom horizontal ad */}
         <HorizontalAd slot="gallery-bottom" />
