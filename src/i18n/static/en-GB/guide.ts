@@ -5,7 +5,6 @@ export const guide: PageDefinition = {
   title: 'ANQR User Guide',
   description: 'Complete guide to using ANQR for creating QR codes.',
   lastUpdated: LAST_UPDATED,
-  breadcrumb: ['Guide'],
   primaryLinks: [
     { href: '/?lang=${lang}', label: 'Open the generator', type: 'generator' },
     { href: '/learn?lang=${lang}', label: 'Browse Learn articles', type: 'learn' },

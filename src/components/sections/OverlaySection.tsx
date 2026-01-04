@@ -230,7 +230,7 @@ export function OverlaySection() {
       <div className="space-y-2">
         <Label className="flex items-center gap-1.5">
           <HighlightedLabel>{t('overlay.imageGifWebp')}</HighlightedLabel>
-          <HelpLink href="/guide#section-4" title={t('common.learnMore')} />
+          <HelpLink anchor="overlays" />
         </Label>
         <input
           ref={fileInputRef}
@@ -416,11 +416,7 @@ export function OverlaySection() {
           <div className="space-y-2">
             <Label className="flex items-center gap-1.5">
               <HighlightedLabel>{t('overlay.mode')}</HighlightedLabel>
-              <HelpLink
-                href="/guide#section-17"
-                requiredTier="advanced"
-                title={t('common.learnMore')}
-              />
+              <HelpLink anchor="overlay-modes" />
             </Label>
             <Select value={overlay.mode} onValueChange={(v) => setOverlayMode(v as OverlayMode)}>
               <SelectTrigger>
@@ -439,8 +435,9 @@ export function OverlaySection() {
           {/* Intensity */}
           <div className="space-y-2">
             <div className="flex items-center justify-between">
-              <Label>
+              <Label className="flex items-center gap-1">
                 <HighlightedLabel>{t('overlay.intensity')}</HighlightedLabel>
+                <HelpLink anchor="overlay-modes" />
               </Label>
               <span className="text-sm text-muted-foreground">
                 {t('qr.nPercent', { count: overlay.intensity })}
@@ -555,8 +552,9 @@ export function OverlaySection() {
               {/* Brightness */}
               <div className="space-y-2">
                 <div className="flex items-center justify-between">
-                  <Label>
+                  <Label className="flex items-center gap-1">
                     <HighlightedLabel>{t('overlay.brightness')}</HighlightedLabel>
+                    <HelpLink anchor="filters" />
                   </Label>
                   <span className="text-sm text-muted-foreground">{overlay.brightness}</span>
                 </div>
@@ -753,11 +751,7 @@ export function OverlaySection() {
                   <div className="space-y-2 pt-2 border-t">
                     <Label className="text-muted-foreground flex items-center gap-1.5">
                       <HighlightedLabel>{t('overlay.ditherSettings')}</HighlightedLabel>
-                      <HelpLink
-                        href="/guide#section-25"
-                        requiredTier="advanced"
-                        title={t('common.learnMore')}
-                      />
+                      <HelpLink anchor="dithering" />
                     </Label>
                     <Select
                       value={overlay.ditherKind}
@@ -1267,7 +1261,10 @@ export function OverlaySection() {
             <>
               {/* Preserve Timing & Alignment */}
               <div className="space-y-2 pt-2 border-t">
-                <Label className="text-muted-foreground">{t('overlay.protection')}</Label>
+                <Label className="text-muted-foreground flex items-center gap-1.5">
+                  {t('overlay.protection')}
+                  <HelpLink anchor="protection" />
+                </Label>
                 <div className="flex items-center justify-between">
                   <Label className="text-sm">{t('overlay.preserveTiming')}</Label>
                   <Switch

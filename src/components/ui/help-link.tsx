@@ -14,7 +14,9 @@ import { type Tier, useQRStore } from '@/store/qr-store';
 
 interface HelpLinkProps {
   /** Path to navigate to, e.g., '/guide#section-5' or '/learn' */
-  href: string;
+  href?: string;
+  /** Anchor within the guide page (shorthand for href='/guide#anchor') */
+  anchor?: string;
   /** Tier required for the linked feature (overrides tab= in URL if provided) */
   requiredTier?: Tier;
   /** Tooltip text (defaults to 'Learn more') */
@@ -29,7 +31,9 @@ function parseTierFromUrl(href: string): Tier | undefined {
   return match ? (match[1] as Tier) : undefined;
 }
 
-export function HelpLink({ href, requiredTier, title, className = '' }: HelpLinkProps) {
+export function HelpLink({ href, anchor, requiredTier, title, className = '' }: HelpLinkProps) {
+  // Convert anchor shorthand to full href
+  const resolvedHref = anchor ? `/guide#${anchor}` : (href || '/guide');
   const { t, i18n } = useTranslation();
   const setTier = useQRStore((s) => s.setTier);
   const currentTier = useQRStore((s) => s.tier);
@@ -38,14 +42,14 @@ export function HelpLink({ href, requiredTier, title, className = '' }: HelpLink
   const [loadingAd, setLoadingAd] = useState(false);
 
   // Determine the effective required tier: explicit prop takes precedence, otherwise parse from URL
-  const effectiveTier = requiredTier ?? parseTierFromUrl(href);
+  const effectiveTier = requiredTier ?? parseTierFromUrl(resolvedHref);
 
   const handleClick = useCallback(
     async (e: React.MouseEvent) => {
       e.preventDefault();
 
       // If linking to generator with a required tier, handle tier switching
-      if (effectiveTier && href.startsWith('/')) {
+      if (effectiveTier && resolvedHref.startsWith('/')) {
         const tierOrder: Tier[] = ['basic', 'advanced', 'professional'];
         const currentIndex = tierOrder.indexOf(currentTier);
         const requiredIndex = tierOrder.indexOf(effectiveTier);
@@ -83,14 +87,14 @@ export function HelpLink({ href, requiredTier, title, className = '' }: HelpLink
 
       // Parse href to handle hash and query params correctly
       // Format: /path?query=value#hash or /path#hash or /path?query=value
-      let path = href;
+      let path = resolvedHref;
       let hash = '';
       let query = '';
 
-      const hashIndex = href.indexOf('#');
+      const hashIndex = resolvedHref.indexOf('#');
       if (hashIndex !== -1) {
-        hash = href.substring(hashIndex);
-        path = href.substring(0, hashIndex);
+        hash = resolvedHref.substring(hashIndex);
+        path = resolvedHref.substring(0, hashIndex);
       }
 
       const queryIndex = path.indexOf('?');
@@ -126,7 +130,7 @@ export function HelpLink({ href, requiredTier, title, className = '' }: HelpLink
       }
     },
     [
-      href,
+      resolvedHref,
       effectiveTier,
       currentTier,
       setTier,
@@ -138,7 +142,7 @@ export function HelpLink({ href, requiredTier, title, className = '' }: HelpLink
 
   return (
     <a
-      href={href}
+      href={resolvedHref}
       onClick={handleClick}
       className={`inline-flex items-center justify-center ml-1 p-1 rounded-full text-blue-500 hover:text-blue-600 hover:bg-blue-50 dark:text-blue-400 dark:hover:text-blue-300 dark:hover:bg-blue-950/50 transition-all ${loadingAd ? 'pointer-events-none opacity-50' : ''} ${className}`}
       title={title || t('common.learnMore')}

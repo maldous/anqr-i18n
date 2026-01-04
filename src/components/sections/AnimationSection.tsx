@@ -55,9 +55,12 @@ export function AnimationSection() {
 
       {/* Loop */}
       <div className="flex items-center justify-between">
-        <Label>
-          <HighlightedLabel>{t('animation.loop')}</HighlightedLabel>
-        </Label>
+        <div className="flex items-center gap-1">
+          <Label>
+            <HighlightedLabel>{t('animation.loop')}</HighlightedLabel>
+          </Label>
+          <HelpLink anchor="section-31" />
+        </div>
         <Switch
           checked={animation.loop}
           onCheckedChange={setAnimationLoop}
@@ -173,9 +176,12 @@ export function AnimationSection() {
         <>
           {/* Temporal Dither */}
           <div className="space-y-2 pt-2 border-t">
-            <Label>
-              <HighlightedLabel>{t('animation.temporalDither')}</HighlightedLabel>
-            </Label>
+            <div className="flex items-center gap-1">
+              <Label>
+                <HighlightedLabel>{t('animation.temporalDither')}</HighlightedLabel>
+              </Label>
+              <HelpLink anchor="section-67" />
+            </div>
             <Select
               value={animation.temporalDither}
               onValueChange={(v) =>

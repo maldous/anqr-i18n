@@ -37,7 +37,7 @@ export function OutputSection() {
           <Label>
             <HighlightedLabel>{t('output.format')}</HighlightedLabel>
           </Label>
-          <HelpLink href="/guide#section-25" />
+          <HelpLink anchor="section-13" />
         </div>
         <Select value={output.format} onValueChange={(v) => setOutputFormat(v as OutputFormat)}>
           <SelectTrigger title={t('hints.outputFormat')}>
@@ -54,9 +54,12 @@ export function OutputSection() {
 
       {/* Dimensions */}
       <div className="space-y-2">
-        <Label>
-          <HighlightedLabel>{t('output.width')}</HighlightedLabel>
-        </Label>
+        <div className="flex items-center gap-1">
+          <Label>
+            <HighlightedLabel>{t('output.outputSize')}</HighlightedLabel>
+          </Label>
+          <HelpLink anchor="section-14" />
+        </div>
         <div className="grid grid-cols-2 gap-2">
           <div className="space-y-1">
             <Label className="text-xs text-muted-foreground">
@@ -124,8 +127,9 @@ export function OutputSection() {
           {/* GIF Options */}
           {output.format === 'gif' && (
             <div className="space-y-2 pt-2 border-t">
-              <Label className="text-muted-foreground">
+              <Label className="text-muted-foreground flex items-center gap-1.5">
                 <HighlightedLabel>{t('output.gifSettings')}</HighlightedLabel>
+                <HelpLink anchor="section-31" />
               </Label>
 
               <div className="space-y-2">
@@ -191,8 +195,9 @@ export function OutputSection() {
           {/* SVG Options */}
           {output.format === 'svg' && (
             <div className="space-y-2 pt-2 border-t">
-              <Label className="text-muted-foreground">
+              <Label className="text-muted-foreground flex items-center gap-1.5">
                 <HighlightedLabel>{t('output.svgSettings')}</HighlightedLabel>
+                <HelpLink anchor="section-34" />
               </Label>
 
               <div className="flex items-center justify-between">
