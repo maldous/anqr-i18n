@@ -49,7 +49,14 @@ export type PageDefinition = {
   relatedLinks?: PageLink[];
 };
 
-export type StaticPageType = 'about' | 'guide' | 'learn' | 'examples' | 'privacy' | 'terms' | 'contact';
+export type StaticPageType =
+  | 'about'
+  | 'guide'
+  | 'learn'
+  | 'examples'
+  | 'privacy'
+  | 'terms'
+  | 'contact';
 
 // Shared constants
 export const LAST_UPDATED = '1 January 2026';

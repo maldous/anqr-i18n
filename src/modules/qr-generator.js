@@ -1,9 +1,8 @@
-import qrcode from './qrcode.mjs';
-
 import { generateBlueNoiseDithered } from './blue-noise-dither.ts';
 import { blendColors, parseColor } from './color-utils.ts';
 import { applyDither } from './dither-algorithms.ts';
 import { generateQR, isData, isLocked } from './qr-core.ts';
+import qrcode from './qrcode.mjs';
 
 // ============================================
 // MEMOIZATION CACHES

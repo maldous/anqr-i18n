@@ -1416,3 +1416,7 @@
 1416	"Imibala evela ku-palette yabiwa kanjani kumamojuli"
 1417	"Sobel"
 1418	"Canny"
+1419   "Funda"
+1420   "Izibonelo"
+1421   "Okuhlobene"
+1422   "Funda kabanzi"

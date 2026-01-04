@@ -100,7 +100,15 @@ function App() {
 
   // Convenience booleans for view states
   const showGallery = currentPage === 'gallery';
-  const showStaticPage = ['about', 'privacy', 'terms', 'contact', 'guide', 'learn', 'examples'].includes(currentPage);
+  const showStaticPage = [
+    'about',
+    'privacy',
+    'terms',
+    'contact',
+    'guide',
+    'learn',
+    'examples',
+  ].includes(currentPage);
   const showEditor = currentPage === 'editor';
 
   // Update document title and RTL direction when language changes

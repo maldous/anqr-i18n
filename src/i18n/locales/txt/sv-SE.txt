@@ -1416,3 +1416,7 @@
 1416	"Hur färger från paletten tilldelas moduler"
 1417	"Sobel"
 1418	"Canny"
+1419   "Lär dig"
+1420   "Exempel"
+1421   "Relaterat"
+1422   "Läs mer"

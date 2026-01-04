@@ -36,7 +36,11 @@ export function SafetySection() {
       <div className="space-y-2">
         <Label className="flex items-center gap-1.5">
           <HighlightedLabel>{t('safety.safetyMode')}</HighlightedLabel>
-          <HelpLink href="/guide#section-41" requiredTier="professional" title={t('common.learnMore')} />
+          <HelpLink
+            href="/guide#section-41"
+            requiredTier="professional"
+            title={t('common.learnMore')}
+          />
         </Label>
         <Select value={safety.mode} onValueChange={(v) => setSafetyMode(v as SafetyMode)}>
           <SelectTrigger title={t('hints.safetyMode')}>
@@ -96,7 +100,11 @@ export function SafetySection() {
           <div className="space-y-2 pt-2 border-t">
             <Label className="text-muted-foreground flex items-center gap-1.5">
               <HighlightedLabel>{t('safety.protectionLocks')}</HighlightedLabel>
-              <HelpLink href="/guide#section-54" requiredTier="professional" title={t('common.learnMore')} />
+              <HelpLink
+                href="/guide#section-54"
+                requiredTier="professional"
+                title={t('common.learnMore')}
+              />
             </Label>
             <div className="flex items-center justify-between">
               <Label className="text-sm">
@@ -268,7 +276,11 @@ export function SafetySection() {
       <div className="space-y-2 pt-2 border-t">
         <Label className="text-muted-foreground flex items-center gap-1.5">
           <HighlightedLabel>{t('safety.eccAwareMode')}</HighlightedLabel>
-          <HelpLink href="/guide#section-55" requiredTier="professional" title={t('common.learnMore')} />
+          <HelpLink
+            href="/guide#section-55"
+            requiredTier="professional"
+            title={t('common.learnMore')}
+          />
         </Label>
 
         <div className="flex items-center justify-between">

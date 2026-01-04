@@ -1039,9 +1039,8 @@ export function getShareableUrl(config: Partial<ShareConfig>, baseUrl?: string):
     lowerHost.endsWith('.localhost');
 
   // In dev (localhost) or Capacitor WebView, use the canonical public domain
-  const base = isLocalhost || protocol === 'capacitor:'
-    ? `https://anqr.link${pathname}`
-    : origin + pathname;
+  const base =
+    isLocalhost || protocol === 'capacitor:' ? `https://anqr.link${pathname}` : origin + pathname;
 
   const params = buildUrlParams(config);
   return params ? `${base}?${params}` : base;

@@ -1416,3 +1416,7 @@
 1416	"Kako se boje iz palete dodjeljuju modulima"
 1417	"Sobel"
 1418	"Canny"
+1419   "Nauči"
+1420   "Primjeri"
+1421   "Povezano"
+1422   "Saznaj više"

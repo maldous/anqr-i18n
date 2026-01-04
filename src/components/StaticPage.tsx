@@ -8,10 +8,17 @@ import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { AdUnit } from '@/components/AdUnit';
 import { Button } from '@/components/ui/button';
-import type { PageDefinition, PageImage, PageLink, PageSection } from '@/i18n/static';
+import type { PageDefinition, PageLink, PageSection } from '@/i18n/static';
 import { CONTACT_EMAIL, getStaticContentAsync, LAST_UPDATED } from '@/i18n/static';
 
-export type StaticPageType = 'about' | 'guide' | 'learn' | 'examples' | 'privacy' | 'terms' | 'contact';
+export type StaticPageType =
+  | 'about'
+  | 'guide'
+  | 'learn'
+  | 'examples'
+  | 'privacy'
+  | 'terms'
+  | 'contact';
 
 interface StaticPageProps {
   page: StaticPageType;
@@ -34,7 +41,7 @@ function processHref(href: string, lang: string): string {
 function renderTextWithLinks(text: string, lang: string): React.ReactNode {
   // Combined regex: match URLs or [[path|label]] syntax
   const combinedRegex = /(https?:\/\/[^\s]+)|\[\[([^|\]]+)\|([^\]]+)\]\]/g;
-  
+
   const result: React.ReactNode[] = [];
   let lastIndex = 0;
   let match: RegExpExecArray | null;
@@ -64,7 +71,7 @@ function renderTextWithLinks(text: string, lang: string): React.ReactNode {
       const href = processHref(match[2], lang);
       const label = match[3];
       const isExternal = href.startsWith('http');
-      
+
       result.push(
         <a
           key={`link-${keyIndex++}`}
@@ -132,7 +139,7 @@ function buildGuideToc(sections: PageSection[], t: (key: string) => string): Toc
 
 // Build TOC for Learn page with 5 guides grouped logically
 // Each guide starts at a section with links (end of previous guide) or at index 0
-function buildLearnToc(sections: PageSection[], t: (key: string) => string): TocGroup[] {
+function buildLearnToc(sections: PageSection[], _t: (key: string) => string): TocGroup[] {
   const groups: TocGroup[] = [];
 
   // Group by major guide topics - a new group starts at section indices 0, 7, 14, 21, 28
@@ -140,7 +147,7 @@ function buildLearnToc(sections: PageSection[], t: (key: string) => string): Toc
   sections.forEach((section, index) => {
     if (!section.heading) return;
     const id = `section-${index}`;
-    
+
     // Guide title sections (every 7 sections for 5 guides)
     if (index % 7 === 0 && index < 35) {
       groups.push({ title: section.heading, id, items: [] });
@@ -152,18 +159,18 @@ function buildLearnToc(sections: PageSection[], t: (key: string) => string): Toc
   return groups.filter((g) => g.items.length > 0);
 }
 
-// Build TOC for Examples page with 5 examples grouped logically  
+// Build TOC for Examples page with 5 examples grouped logically
 // Example sections are at indices 0, 5, 10, 16, 22 based on template-examples.ts structure
-function buildExamplesToc(sections: PageSection[], t: (key: string) => string): TocGroup[] {
+function buildExamplesToc(sections: PageSection[], _t: (key: string) => string): TocGroup[] {
   const groups: TocGroup[] = [];
 
   // Group by example topics - indices where new examples start
   const exampleStartIndices = [0, 5, 11, 17, 23];
-  
+
   sections.forEach((section, index) => {
     if (!section.heading) return;
     const id = `section-${index}`;
-    
+
     // Example title sections
     if (exampleStartIndices.includes(index)) {
       groups.push({ title: section.heading, id, items: [] });
@@ -176,7 +183,11 @@ function buildExamplesToc(sections: PageSection[], t: (key: string) => string): 
 }
 
 // Generic TOC builder that delegates to page-specific builders
-function buildToc(page: StaticPageType, sections: PageSection[], t: (key: string) => string): TocGroup[] {
+function buildToc(
+  page: StaticPageType,
+  sections: PageSection[],
+  t: (key: string) => string
+): TocGroup[] {
   switch (page) {
     case 'guide':
       return buildGuideToc(sections, t);
@@ -396,9 +407,12 @@ function TableOfContents({
 // Breadcrumb component for navigation hierarchy
 function Breadcrumb({ items, lang }: { items: string[]; lang: string }) {
   if (!items || items.length === 0) return null;
-  
+
   return (
-    <nav className="flex items-center gap-2 text-sm text-muted-foreground mb-4" aria-label="Breadcrumb">
+    <nav
+      className="flex items-center gap-2 text-sm text-muted-foreground mb-4"
+      aria-label="Breadcrumb"
+    >
       <a href={`/?lang=${lang}`} className="hover:text-primary transition-colors">
         ANQR
       </a>
@@ -408,7 +422,10 @@ function Breadcrumb({ items, lang }: { items: string[]; lang: string }) {
           {idx === items.length - 1 ? (
             <span className="text-foreground font-medium">{item}</span>
           ) : (
-            <a href={`/${item.toLowerCase()}?lang=${lang}`} className="hover:text-primary transition-colors">
+            <a
+              href={`/${item.toLowerCase()}?lang=${lang}`}
+              className="hover:text-primary transition-colors"
+            >
               {item}
             </a>
           )}
@@ -421,14 +438,14 @@ function Breadcrumb({ items, lang }: { items: string[]; lang: string }) {
 // Render primary CTA links as prominent styled buttons
 function PrimaryLinks({ links, lang }: { links: PageLink[]; lang: string }) {
   if (!links || links.length === 0) return null;
-  
+
   return (
     <div className="flex flex-wrap justify-center gap-3 mt-6 mb-2">
       {links.map((link, idx) => (
-        <Button 
-          key={link.href} 
-          asChild 
-          variant={idx === 0 ? 'default' : 'outline'} 
+        <Button
+          key={link.href}
+          asChild
+          variant={idx === 0 ? 'default' : 'outline'}
           size="default"
           className="min-w-[140px]"
         >
@@ -442,7 +459,7 @@ function PrimaryLinks({ links, lang }: { links: PageLink[]; lang: string }) {
 // Render section contextual links
 function SectionLinks({ links, lang }: { links: PageLink[]; lang: string }) {
   if (!links || links.length === 0) return null;
-  
+
   return (
     <div className="flex flex-wrap gap-x-4 gap-y-1 mt-3 pt-3 border-t border-border/50">
       {links.map((link) => (
@@ -460,15 +477,31 @@ function SectionLinks({ links, lang }: { links: PageLink[]; lang: string }) {
 }
 
 // Render related content links as consistent styled buttons
-function RelatedLinks({ links, lang, t }: { links: PageLink[]; lang: string; t: (key: string) => string }) {
+function RelatedLinks({
+  links,
+  lang,
+  t,
+}: {
+  links: PageLink[];
+  lang: string;
+  t: (key: string) => string;
+}) {
   if (!links || links.length === 0) return null;
-  
+
   return (
     <div className="mt-8 pt-6 border-t border-border">
-      <h3 className="text-lg font-semibold text-foreground mb-4">{t('nav.related') || 'Related'}</h3>
+      <h3 className="text-lg font-semibold text-foreground mb-4">
+        {t('nav.related') || 'Related'}
+      </h3>
       <div className="flex flex-wrap justify-center gap-3">
         {links.map((link) => (
-          <Button key={link.href} asChild variant="outline" size="default" className="min-w-[140px]">
+          <Button
+            key={link.href}
+            asChild
+            variant="outline"
+            size="default"
+            className="min-w-[140px]"
+          >
             <a href={processHref(link.href, lang)}>{link.label}</a>
           </Button>
         ))}
@@ -772,7 +805,9 @@ export function StaticPage({ page }: StaticPageProps) {
               })}
             </div>
 
-            {def.relatedLinks && <RelatedLinks links={def.relatedLinks} lang={i18n.language} t={t} />}
+            {def.relatedLinks && (
+              <RelatedLinks links={def.relatedLinks} lang={i18n.language} t={t} />
+            )}
 
             {/* Bottom horizontal ad */}
             <div className="mt-8 flex justify-center">

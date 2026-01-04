@@ -416,7 +416,11 @@ export function OverlaySection() {
           <div className="space-y-2">
             <Label className="flex items-center gap-1.5">
               <HighlightedLabel>{t('overlay.mode')}</HighlightedLabel>
-              <HelpLink href="/guide#section-17" requiredTier="advanced" title={t('common.learnMore')} />
+              <HelpLink
+                href="/guide#section-17"
+                requiredTier="advanced"
+                title={t('common.learnMore')}
+              />
             </Label>
             <Select value={overlay.mode} onValueChange={(v) => setOverlayMode(v as OverlayMode)}>
               <SelectTrigger>
@@ -749,7 +753,11 @@ export function OverlaySection() {
                   <div className="space-y-2 pt-2 border-t">
                     <Label className="text-muted-foreground flex items-center gap-1.5">
                       <HighlightedLabel>{t('overlay.ditherSettings')}</HighlightedLabel>
-                      <HelpLink href="/guide#section-25" requiredTier="advanced" title={t('common.learnMore')} />
+                      <HelpLink
+                        href="/guide#section-25"
+                        requiredTier="advanced"
+                        title={t('common.learnMore')}
+                      />
                     </Label>
                     <Select
                       value={overlay.ditherKind}

@@ -1416,3 +1416,7 @@
 1416	"Hogyan rendelődnek a paletta színei a modulokhoz"
 1417	"Sobel"
 1418	"Canny"
+1419   "Tanulás"
+1420   "Példák"
+1421   "Kapcsolódó"
+1422   "Tudj meg többet"
