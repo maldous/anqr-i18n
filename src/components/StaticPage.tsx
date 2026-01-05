@@ -3,6 +3,7 @@
  * About, Privacy, Terms, Contact, and Guide pages.
  */
 
+import { Capacitor } from '@capacitor/core';
 import { ChevronDown, ChevronUp, List, Loader2, Mail, Menu, X } from 'lucide-react';
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
@@ -23,6 +24,15 @@ export type StaticPageType =
 interface StaticPageProps {
   page: StaticPageType;
 }
+// Helper to get image URL - use absolute URL on native to load from web
+function getImageUrl(src: string): string {
+  // On native apps, load images from the web to keep APK size small
+  if (Capacitor.isNativePlatform() && src.startsWith('/')) {
+    return `https://anqr.link${src}`;
+  }
+  return src;
+}
+
 // Helper to generate URL-friendly slug from heading
 function _slugify(text: string): string {
   return text
@@ -43,32 +53,32 @@ function renderTextWithLinks(text: string, lang: string): React.ReactNode {
   // First check if this is a numbered list (contains "1. ... 2. ..." pattern)
   const numberedListRegex = /(?:^|\s)(\d+)\.\s/g;
   const matches = [...text.matchAll(numberedListRegex)];
-  
+
   // If we have 2+ numbered items, treat as a list
   if (matches.length >= 2) {
     // Split by numbered items pattern
     const items: { num: string; content: string }[] = [];
-    let lastEnd = 0;
-    
+    let _lastEnd = 0;
+
     for (let i = 0; i < matches.length; i++) {
       const match = matches[i];
       const num = match[1];
-      const startOfNumber = match.index! + (match[0].startsWith(' ') ? 1 : 0);
+      const _startOfNumber = match.index! + (match[0].startsWith(' ') ? 1 : 0);
       const startOfContent = match.index! + match[0].length;
-      
+
       // Find where this item ends (start of next number or end of string)
       const nextMatch = matches[i + 1];
-      const endOfContent = nextMatch 
+      const endOfContent = nextMatch
         ? nextMatch.index! + (nextMatch[0].startsWith(' ') ? 1 : 0)
         : text.length;
-      
+
       const content = text.slice(startOfContent, endOfContent).trim();
       if (content) {
         items.push({ num, content });
       }
-      lastEnd = endOfContent;
+      _lastEnd = endOfContent;
     }
-    
+
     if (items.length >= 2) {
       return (
         <ol className="list-decimal pl-5 space-y-1.5 text-left">
@@ -81,7 +91,7 @@ function renderTextWithLinks(text: string, lang: string): React.ReactNode {
       );
     }
   }
-  
+
   // Not a numbered list, render normally
   return renderTextContent(text, lang);
 }
@@ -837,7 +847,7 @@ export function StaticPage({ page }: StaticPageProps) {
                         {section.images.map((image, imgIdx) => (
                           <figure key={imgIdx} className="w-full">
                             <img
-                              src={image.src}
+                              src={getImageUrl(image.src)}
                               alt={image.alt}
                               className="w-full rounded-lg shadow-md border"
                               loading="lazy"
@@ -942,7 +952,7 @@ export function StaticPage({ page }: StaticPageProps) {
                     {section.images.map((image, imgIdx) => (
                       <figure key={imgIdx} className="w-full">
                         <img
-                          src={image.src}
+                          src={getImageUrl(image.src)}
                           alt={image.alt}
                           className="w-full rounded-lg shadow-md border"
                           loading="lazy"

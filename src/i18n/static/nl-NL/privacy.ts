@@ -3,79 +3,150 @@ import { LAST_UPDATED } from '../types';
 
 export const privacy: PageDefinition = {
   title: 'Privacybeleid',
-  description: 'Informatie ANQR verzamelt, hoe het wordt gebruikt, en uw rechten onder toepasselijke privacywetgeving.',
+  description:
+    'Informatie ANQR verzamelt, hoe het wordt gebruikt, en uw rechten onder toepasselijke privacywetgeving.',
   lastUpdated: LAST_UPDATED,
   relatedLinks: [{ href: '/terms?lang=${lang}', label: 'Terms of Service', type: 'external' }],
   sections: [
     {
       heading: 'Samenvatting',
-      paragraphs: ['ANQR is een QR codegenerator met een client-first benadering. U hoeft geen account aan te maken. Standaard worden QR codes lokaal gegenereerd in uw browser - we hebben geen toegang tot de inhoud die u codeert.', 'Voor professioneel gebruik biedt ANQR een server-side API die QR-codes genereert van URL-parameters. Bij het gebruik van de API wordt uw QR-content verwerkt op onze servers om de afbeelding te renderen, maar wordt deze niet opgeslagen of geregistreerd.', 'We gebruiken Google AdSense voor reclame en kunnen gebruik maken van analytische diensten. Deze diensten verzamelen informatie via cookies en soortgelijke technologieën. Dit beleid legt uit welke gegevens worden verzameld, hoe het wordt gebruikt, en uw rechten.'],
+      paragraphs: [
+        'ANQR is een QR codegenerator met een client-first benadering. U hoeft geen account aan te maken. Standaard worden QR codes lokaal gegenereerd in uw browser - we hebben geen toegang tot de inhoud die u codeert.',
+        'Voor professioneel gebruik biedt ANQR een server-side API die QR-codes genereert van URL-parameters. Bij het gebruik van de API wordt uw QR-content verwerkt op onze servers om de afbeelding te renderen, maar wordt deze niet opgeslagen of geregistreerd.',
+        'We gebruiken Google AdSense voor reclame en kunnen gebruik maken van analytische diensten. Deze diensten verzamelen informatie via cookies en soortgelijke technologieën. Dit beleid legt uit welke gegevens worden verzameld, hoe het wordt gebruikt, en uw rechten.',
+      ],
     },
     {
       heading: 'Informatie die we verzamelen',
-      bullets: ['Informatie die u verstrekt: Als u contact met ons opneemt via e-mail of ons contactformulier, verzamelen wij uw naam, e-mailadres en berichtinhoud.', 'Automatisch verzamelde informatie: Onze hosting provider (Netlify), advertising partners, en analytics diensten kunnen verzamelen: IP-adres, browser type en versie, besturingssysteem, apparaattype, verwijzende URL, bezochte pagina\'s, tijd ter plaatse, en bij benadering geografische locatie.', 'Cookies van derden: Onze reclamepartners (Google AdSense) gebruiken cookies en soortgelijke technologieën om advertenties te kunnen weergeven en meten. ANQR zelf stelt geen first-party cookies in.'],
+      bullets: [
+        'Informatie die u verstrekt: Als u contact met ons opneemt via e-mail of ons contactformulier, verzamelen wij uw naam, e-mailadres en berichtinhoud.',
+        "Automatisch verzamelde informatie: Onze hosting provider (Netlify), advertising partners, en analytics diensten kunnen verzamelen: IP-adres, browser type en versie, besturingssysteem, apparaattype, verwijzende URL, bezochte pagina's, tijd ter plaatse, en bij benadering geografische locatie.",
+        'Cookies van derden: Onze reclamepartners (Google AdSense) gebruiken cookies en soortgelijke technologieën om advertenties te kunnen weergeven en meten. ANQR zelf stelt geen first-party cookies in.',
+      ],
     },
     {
       heading: 'Cookies en technologieën van derden',
-      paragraphs: ['ANQR stelt geen first-party cookies in. Uw voorkeuren (zoals donkere modus) worden lokaal opgeslagen op uw apparaat, dat niet wordt verzonden naar een server.', 'Onze reclamepartners (Google AdSense) en hostingprovider kunnen echter cookies en soortgelijke trackingtechnologieën gebruiken:'],
-      bullets: ['Reclamecookies (derde partij): Set van Google AdSense en advertentiepartners om relevante advertenties te bedienen, advertentieprestaties te meten en gebruikersbelangen te begrijpen. Deze cookies kunnen uw activiteiten op verschillende websites bijhouden.', 'Analytics cookies (derde partij): Kan worden gebruikt door onze hosting provider of analytics diensten om geanonimiseerde gebruiksgegevens te verzamelen.'],
+      paragraphs: [
+        'ANQR stelt geen first-party cookies in. Uw voorkeuren (zoals donkere modus) worden lokaal opgeslagen op uw apparaat, dat niet wordt verzonden naar een server.',
+        'Onze reclamepartners (Google AdSense) en hostingprovider kunnen echter cookies en soortgelijke trackingtechnologieën gebruiken:',
+      ],
+      bullets: [
+        'Reclamecookies (derde partij): Set van Google AdSense en advertentiepartners om relevante advertenties te bedienen, advertentieprestaties te meten en gebruikersbelangen te begrijpen. Deze cookies kunnen uw activiteiten op verschillende websites bijhouden.',
+        'Analytics cookies (derde partij): Kan worden gebruikt door onze hosting provider of analytics diensten om geanonimiseerde gebruiksgegevens te verzamelen.',
+      ],
     },
     {
       heading: 'Google AdSense en reclame',
-      paragraphs: ['We tonen advertenties via Google AdSense. Google en haar partners gebruiken cookies om advertenties te tonen op basis van uw browsergeschiedenis op deze site en andere websites (op rente gebaseerde reclame).', 'Leer hoe Google uw informatie gebruikt: https://policies.google.com/technologies/partner-sites', 'Beheer ad-personalisatie: https://adsettings.google.com', 'Opt out via Network Advertising Initiative: https://optout.networkadvertising.org', 'Opt out via Digital Advertising Alliance: https://optout.aboutads.info'],
+      paragraphs: [
+        'We tonen advertenties via Google AdSense. Google en haar partners gebruiken cookies om advertenties te tonen op basis van uw browsergeschiedenis op deze site en andere websites (op rente gebaseerde reclame).',
+        'Leer hoe Google uw informatie gebruikt: https://policies.google.com/technologies/partner-sites',
+        'Beheer ad-personalisatie: https://adsettings.google.com',
+        'Opt out via Network Advertising Initiative: https://optout.networkadvertising.org',
+        'Opt out via Digital Advertising Alliance: https://optout.aboutads.info',
+      ],
     },
     {
       heading: 'Hoe we informatie gebruiken',
-      bullets: ['Om te reageren op uw vragen en ondersteuning te bieden.', 'Om relevante advertenties te tonen via onze reclamepartners.', 'Om het gebruik van de site te analyseren en onze diensten te verbeteren.', 'Het opsporen, voorkomen en aanpakken van fraude, misbruik en veiligheidskwesties.', 'Om te voldoen aan wettelijke verplichtingen.'],
+      bullets: [
+        'Om te reageren op uw vragen en ondersteuning te bieden.',
+        'Om relevante advertenties te tonen via onze reclamepartners.',
+        'Om het gebruik van de site te analyseren en onze diensten te verbeteren.',
+        'Het opsporen, voorkomen en aanpakken van fraude, misbruik en veiligheidskwesties.',
+        'Om te voldoen aan wettelijke verplichtingen.',
+      ],
     },
     {
       heading: 'Diensten van derden',
-      bullets: ['Google AdSense: ontvangt gegevens om advertenties te dienen en te meten.', 'Analyseleveranciers: Ontvang geanonimiseerde gebruiksgegevens.', 'Netlify (hosting): Verhandelt verzoeken en kan IP-adressen loggen.', 'Wij verkopen uw persoonlijke gegevens niet. Het delen van gegevens met reclamepartners kan echter worden beschouwd als een "verkoop" in het kader van CCPA (zie hieronder).'],
+      bullets: [
+        'Google AdSense: ontvangt gegevens om advertenties te dienen en te meten.',
+        'Analyseleveranciers: Ontvang geanonimiseerde gebruiksgegevens.',
+        'Netlify (hosting): Verhandelt verzoeken en kan IP-adressen loggen.',
+        'Wij verkopen uw persoonlijke gegevens niet. Het delen van gegevens met reclamepartners kan echter worden beschouwd als een "verkoop" in het kader van CCPA (zie hieronder).',
+      ],
     },
     {
       heading: 'Gegevensbewaring',
-      bullets: ['Opmerkingen: Tot 2 jaar.', 'Serverlogs: Tot 30 dagen (hosting provider).', 'Analysegegevens: Tot 26 maanden (geanonimiseerd).', 'Reclamecookies: Meestal 13 maanden (varieert per partner).'],
+      bullets: [
+        'Opmerkingen: Tot 2 jaar.',
+        'Serverlogs: Tot 30 dagen (hosting provider).',
+        'Analysegegevens: Tot 26 maanden (geanonimiseerd).',
+        'Reclamecookies: Meestal 13 maanden (varieert per partner).',
+      ],
     },
     {
       heading: 'Uw rechten onder AVG (EER-gebruikers)',
-      paragraphs: ['Als u lid bent van de Europese Economische Ruimte, hebt u de volgende rechten krachtens de Algemene Verordening Gegevensbescherming:'],
-      bullets: ['Recht van toegang: Vraag een kopie aan van uw persoonlijke gegevens.', 'Recht op rectificatie: Verzoek om correctie van onjuiste gegevens.', 'Recht op wissing: Verzoek om verwijdering van uw gegevens ("recht om te worden vergeten").', 'Recht om verwerking te beperken: Vraag limieten aan voor het gebruik van uw gegevens.', 'Recht op gegevensportabiliteit: Vraag uw gegevens in een draagbaar formaat aan.', 'Recht op bezwaar: Bezwaar tegen verwerking, ook voor direct marketing.', 'Recht om toestemming in te trekken: Trek te allen tijde de toestemming in wanneer de verwerking gebaseerd is op toestemming.', 'Recht om een klacht in te dienen: Een klacht indienen bij uw autoriteit voor gegevensbescherming.'],
+      paragraphs: [
+        'Als u lid bent van de Europese Economische Ruimte, hebt u de volgende rechten krachtens de Algemene Verordening Gegevensbescherming:',
+      ],
+      bullets: [
+        'Recht van toegang: Vraag een kopie aan van uw persoonlijke gegevens.',
+        'Recht op rectificatie: Verzoek om correctie van onjuiste gegevens.',
+        'Recht op wissing: Verzoek om verwijdering van uw gegevens ("recht om te worden vergeten").',
+        'Recht om verwerking te beperken: Vraag limieten aan voor het gebruik van uw gegevens.',
+        'Recht op gegevensportabiliteit: Vraag uw gegevens in een draagbaar formaat aan.',
+        'Recht op bezwaar: Bezwaar tegen verwerking, ook voor direct marketing.',
+        'Recht om toestemming in te trekken: Trek te allen tijde de toestemming in wanneer de verwerking gebaseerd is op toestemming.',
+        'Recht om een klacht in te dienen: Een klacht indienen bij uw autoriteit voor gegevensbescherming.',
+      ],
     },
     {
       heading: 'Rechtsgrondslag van de AVG',
-      paragraphs: ['We verwerken gegevens op deze basis: (a) Toestemming - voor gepersonaliseerde reclame (beheerd door onze reclamepartners); (b) Legitieme belangen - voor analyse, veiligheid en verbetering; (c) Contract - om te reageren op vragen.', 'Neem contact op met ${CONTACT_EMAIL} om uw rechten uit te oefenen. We reageren binnen 30 dagen.'],
+      paragraphs: [
+        'We verwerken gegevens op deze basis: (a) Toestemming - voor gepersonaliseerde reclame (beheerd door onze reclamepartners); (b) Legitieme belangen - voor analyse, veiligheid en verbetering; (c) Contract - om te reageren op vragen.',
+        'Neem contact op met ${CONTACT_EMAIL} om uw rechten uit te oefenen. We reageren binnen 30 dagen.',
+      ],
     },
     {
       heading: 'Uw rechten onder CCPA (Californië-gebruikers)',
-      bullets: ['Recht om te weten: Vraag informatie aan over verzamelde gegevens, bronnen, doeleinden en derden.', 'Recht om te verwijderen: Verzoek verwijdering van uw persoonlijke gegevens.', 'Recht op op opt-out: Kies uit de "verkoop" van persoonlijke informatie (delen met advertentiepartners kan in aanmerking komen).', 'Recht op non-discriminatie: We zullen niet discrimineren voor de uitoefening van uw rechten.'],
+      bullets: [
+        'Recht om te weten: Vraag informatie aan over verzamelde gegevens, bronnen, doeleinden en derden.',
+        'Recht om te verwijderen: Verzoek verwijdering van uw persoonlijke gegevens.',
+        'Recht op op opt-out: Kies uit de "verkoop" van persoonlijke informatie (delen met advertentiepartners kan in aanmerking komen).',
+        'Recht op non-discriminatie: We zullen niet discrimineren voor de uitoefening van uw rechten.',
+      ],
     },
     {
       heading: 'CCPA-categorieën verzameld',
-      paragraphs: ['Categorieën: Identifiers (IP-adres, apparaat-ID), Internetactiviteit (browsen, advertentie-interacties), Geolocatie (ca.', 'Om rechten uit te oefenen of af te melden: ${CONTACT_EMAIL} of cookie-instellingen aan te passen.'],
+      paragraphs: [
+        'Categorieën: Identifiers (IP-adres, apparaat-ID), Internetactiviteit (browsen, advertentie-interacties), Geolocatie (ca.',
+        'Om rechten uit te oefenen of af te melden: ${CONTACT_EMAIL} of cookie-instellingen aan te passen.',
+      ],
     },
     {
       heading: 'Internationale overdrachten',
-      paragraphs: ['Uw gegevens kunnen worden doorgegeven aan landen met verschillende wetgeving inzake gegevensbescherming, waaronder de Verenigde Staten. Wij maken gebruik van passende waarborgen zoals standaard contractuele clausules.'],
+      paragraphs: [
+        'Uw gegevens kunnen worden doorgegeven aan landen met verschillende wetgeving inzake gegevensbescherming, waaronder de Verenigde Staten. Wij maken gebruik van passende waarborgen zoals standaard contractuele clausules.',
+      ],
     },
     {
       heading: 'Privacy van kinderen',
-      paragraphs: ['ANQR is niet gericht op kinderen jonger dan 13 jaar (of 16 jaar in de EER). We verzamelen niet bewust gegevens van kinderen. Contact ${CONTACT_EMAIL} als u gelooft dat een kind informatie heeft verstrekt.'],
+      paragraphs: [
+        'ANQR is niet gericht op kinderen jonger dan 13 jaar (of 16 jaar in de EER). We verzamelen niet bewust gegevens van kinderen. Contact ${CONTACT_EMAIL} als u gelooft dat een kind informatie heeft verstrekt.',
+      ],
     },
     {
       heading: 'Beveiliging',
-      paragraphs: ['We gebruiken passende technische en organisatorische maatregelen om gegevens te beschermen, waaronder HTTPS-encryptie. Geen enkele internettransmissie is echter 100% veilig.'],
+      paragraphs: [
+        'We gebruiken passende technische en organisatorische maatregelen om gegevens te beschermen, waaronder HTTPS-encryptie. Geen enkele internettransmissie is echter 100% veilig.',
+      ],
     },
     {
       heading: 'Niet volgen',
-      paragraphs: ['We eren Not Track browser signalen waar mogelijk, hoewel reclame partners misschien niet reageren op DNT.'],
+      paragraphs: [
+        'We eren Not Track browser signalen waar mogelijk, hoewel reclame partners misschien niet reageren op DNT.',
+      ],
     },
     {
       heading: 'Wijzigingen in dit beleid',
-      paragraphs: ['We kunnen dit beleid regelmatig bijwerken. De "Laatst bijgewerkt" datum geeft de meest recente herziening. Belangrijke wijzigingen kunnen via een site banner worden meegedeeld.'],
+      paragraphs: [
+        'We kunnen dit beleid regelmatig bijwerken. De "Laatst bijgewerkt" datum geeft de meest recente herziening. Belangrijke wijzigingen kunnen via een site banner worden meegedeeld.',
+      ],
     },
     {
       heading: 'Contacteer ons',
-      paragraphs: ['Voor privacyvragen of om uw rechten uit te oefenen: ${CONTACT_EMAIL}_ of gebruik onze Contact pagina. Wij reageren binnen 30 dagen op privacyverzoeken.'],
+      paragraphs: [
+        'Voor privacyvragen of om uw rechten uit te oefenen: ${CONTACT_EMAIL}_ of gebruik onze Contact pagina. Wij reageren binnen 30 dagen op privacyverzoeken.',
+      ],
     },
   ],
 };

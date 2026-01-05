@@ -33,7 +33,7 @@ function parseTierFromUrl(href: string): Tier | undefined {
 
 export function HelpLink({ href, anchor, requiredTier, title, className = '' }: HelpLinkProps) {
   // Convert anchor shorthand to full href
-  const resolvedHref = anchor ? `/guide#${anchor}` : (href || '/guide');
+  const resolvedHref = anchor ? `/guide#${anchor}` : href || '/guide';
   const { t, i18n } = useTranslation();
   const setTier = useQRStore((s) => s.setTier);
   const currentTier = useQRStore((s) => s.tier);

@@ -1,4 +1,4 @@
-.PHONY: dev build gallery gallery\:gif deploy android android\:init android\:sync android\:build android\:release android\:open install clean fix lint format check
+.PHONY: dev build gallery gallery\:gif sitemap deploy android android\:init android\:sync android\:build android\:release android\:open install clean fix lint format check
 
 # ============================================
 # Environment variables
@@ -138,6 +138,13 @@ gallery:
 
 gallery\:gif:
 	node scripts/generate-gallery.mjs --gif
+
+# ============================================
+# Sitemap Generation
+# ============================================
+
+sitemap:
+	node scripts/generate-sitemap.mjs
 
 # ============================================
 # Deployment
