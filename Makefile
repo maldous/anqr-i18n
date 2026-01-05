@@ -186,7 +186,7 @@ android\:build:
 	# Remove source maps if any
 	find dist -name '*.map' -delete 2>/dev/null || true
 	# Remove large demo files not needed in mobile app (gallery loads from anqr.link)
-	rm -f dist/king.gif dist/tsunami.jpg 2>/dev/null || true
+	rm -fr dist/king.gif dist/tsunami.jpg dist/images 2>/dev/null || true
 	npx cap sync android
 	cd android && ./gradlew assembleDebug
 	@echo "Debug APK: android/app/build/outputs/apk/debug/app-debug.apk"
@@ -202,7 +202,7 @@ android\:release:
 	# Remove source maps if any
 	find dist -name '*.map' -delete 2>/dev/null || true
 	# Remove large demo files not needed in mobile app (gallery loads from anqr.link)
-	rm -f dist/king.gif dist/tsunami.jpg 2>/dev/null || true
+	rm -f dist/king.gif dist/tsunami.jpg dist/images 2>/dev/null || true
 	npx cap sync android
 	cd android && ./gradlew bundleRelease
 	@echo "Release AAB: android/app/build/outputs/bundle/release/app-release.aab"
