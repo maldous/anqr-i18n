@@ -18,7 +18,7 @@ import {
   X,
   Zap,
 } from 'lucide-react';
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Button } from '@/components/ui/button';
 import { languages } from '@/i18n';
@@ -49,7 +49,7 @@ export function WelcomeModal({ onClose }: WelcomeModalProps) {
     }
   }, []);
 
-  const handleDismiss = () => {
+  const handleDismiss = useCallback(() => {
     setIsClosing(true);
     localStorage.setItem(STORAGE_KEY, WELCOME_VERSION);
     // Wait for animation to complete
@@ -58,7 +58,7 @@ export function WelcomeModal({ onClose }: WelcomeModalProps) {
       setIsClosing(false);
       onClose?.();
     }, 200);
-  };
+  }, [onClose]);
 
   // Handle escape key
   useEffect(() => {
@@ -69,7 +69,7 @@ export function WelcomeModal({ onClose }: WelcomeModalProps) {
     };
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [isVisible, isClosing]);
+  }, [isVisible, isClosing, handleDismiss]);
 
   if (!isVisible) return null;
 

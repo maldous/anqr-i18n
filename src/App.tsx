@@ -2,17 +2,17 @@ import { Capacitor } from '@capacitor/core';
 import { useCallback, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { BusyOverlay } from '@/components/BusyOverlay';
-import { WelcomeModal } from '@/components/WelcomeModal';
 import { Gallery } from '@/components/Gallery';
 import { Header } from '@/components/Header';
 import { Preview } from '@/components/Preview';
 import { Sidebar } from '@/components/Sidebar';
 import { StaticPage, type StaticPageType } from '@/components/StaticPage';
 import { TooltipProvider } from '@/components/ui/tooltip';
+import { WelcomeModal } from '@/components/WelcomeModal';
 import type { GalleryCategory } from '@/data/gallery-items';
 import { useBannerHeight } from '@/hooks/useBannerHeight';
 import { useQRGenerator } from '@/hooks/useQRGenerator';
-import i18n, { isRtlLanguage, loadLocale } from '@/i18n';
+import i18n, { isRtlLanguage, languages, loadLocale } from '@/i18n';
 import { parseUrlParams } from '@/modules/share-utils';
 import { type Tier, useQRStore } from '@/store/qr-store';
 
@@ -112,7 +112,7 @@ function App() {
   ].includes(currentPage);
   const showEditor = currentPage === 'editor';
 
-  // Update document title and RTL direction when language changes
+  // Update document title, RTL direction, and hreflang links when language/page changes
   useEffect(() => {
     if (showEditor) {
       document.title = `${t('app.name')} - ${t('app.tagline')}`;
@@ -122,7 +122,64 @@ function App() {
     const isRtl = isRtlLanguage(i18n.language);
     document.documentElement.dir = isRtl ? 'rtl' : 'ltr';
     document.documentElement.lang = i18n.language.split('-')[0];
-  }, [showEditor, t]);
+
+    // Update hreflang links for SEO
+    // Only add hreflang for static pages that have translations
+    const staticPageTypes = ['learn', 'examples', 'guide', 'about', 'privacy', 'terms', 'contact'];
+    const isStaticPage = staticPageTypes.includes(currentPage);
+
+    // Remove existing hreflang links
+    document.querySelectorAll('link[rel="alternate"][hreflang]').forEach((el) => {
+      el.remove();
+    });
+
+    // Add hreflang links for translatable pages
+    if (isStaticPage || showEditor) {
+      const basePath = showEditor ? '' : `/${currentPage}`;
+      const baseUrl = 'https://anqr.link';
+
+      // Add hreflang for each supported language
+      for (const lang of languages) {
+        const link = document.createElement('link');
+        link.rel = 'alternate';
+        // Use 'en' for en-GB (broader match), lowercase for others
+        link.hreflang = lang.code === 'en-GB' ? 'en' : lang.code.toLowerCase();
+        link.href =
+          lang.code === 'en-GB'
+            ? `${baseUrl}${basePath || '/'}`
+            : `${baseUrl}${basePath || '/'}?lang=${lang.code}`;
+        document.head.appendChild(link);
+      }
+
+      // Add x-default pointing to English version
+      const xDefaultLink = document.createElement('link');
+      xDefaultLink.rel = 'alternate';
+      xDefaultLink.hreflang = 'x-default';
+      xDefaultLink.href = `${baseUrl}${basePath || '/'}`;
+      document.head.appendChild(xDefaultLink);
+    }
+
+    // Update canonical URL based on current page and language
+    let canonicalLink = document.querySelector('link[rel="canonical"]') as HTMLLinkElement;
+    if (!canonicalLink) {
+      canonicalLink = document.createElement('link');
+      canonicalLink.rel = 'canonical';
+      document.head.appendChild(canonicalLink);
+    }
+    const currentLang = i18n.language;
+    const basePath = showEditor ? '/' : `/${currentPage}`;
+    canonicalLink.href =
+      currentLang === 'en-GB'
+        ? `https://anqr.link${basePath}`
+        : `https://anqr.link${basePath}?lang=${currentLang}`;
+
+    // Cleanup: remove hreflang links when component unmounts or dependencies change
+    return () => {
+      document.querySelectorAll('link[rel="alternate"][hreflang]').forEach((el) => {
+        el.remove();
+      });
+    };
+  }, [showEditor, currentPage, t]);
 
   // Load overlay image from URL
   // Takes store reference to avoid subscribing component to store changes
