@@ -218,7 +218,7 @@
 218	"Acara Kalender"
 219	"Koord peta dengan emas terhubung"
 220	"Lokasi Geo"
-221	"Pre-filled SMS with diamond teal"
+221	"SMS yang sudah diisi sebelumnya dengan berlian teal"
 222	"SMS Pesan"
 223	"Kartu kontak dengan gaya angkatan laut bulat"
 224	"kontak vCard"
