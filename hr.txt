@@ -411,7 +411,7 @@
 411	"Ako se nalazite u Europskom gospodarskom prostoru, prema Općoj uredbi o zaštiti podataka imate sljedeća prava:"
 412	"Pravo pristupa: Zatražite kopiju osobnih podataka koje imamo o vama."
 413	"Pravo na ispravak: Zahtjev za ispravak netočnih podataka."
-414	"Pravo na brisanje: Zatražite brisanje svojih podataka („pravo na zaborav“)."
+414	"Pravo na brisanje: Zatražite brisanje svojih podataka (pravo na zaborav)."
 415	"Pravo na ograničenje obrade: Zatražite ograničenja načina na koji koristimo vaše podatke."
 416	"Pravo na prenosivost podataka: Zatražite svoje podatke u prenosivom formatu."
 417	"Pravo na prigovor: Prigovor na obradu, uključujući za izravni marketing."
