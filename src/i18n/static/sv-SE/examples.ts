@@ -24,30 +24,30 @@ export const examples: PageDefinition = {
     {
       heading: 'Fallstudie: Retail Counter QR Uplift',
       paragraphs: [
-        'This real-world example follows a small café that had been using the same QR code on their counter for three years. The original code was generated quickly during the pandemic rush, printed on standard paper, and slipped into a plastic stand. Det fungerade fortfarande - tekniskt - men kunderna behövde ofta flera försök att skanna det, och det gjorde ingenting för att förstärka caféets noggrant utformade varumärkesidentitet.',
-        "The transformation began with a simple audit: the existing code encoded the café's online menu URL, which they wanted to keep. The challenge was making the QR feel like part of the café experience rather than an afterthought utility from 2020.",
+        'Detta verkliga exempel följer ett litet kafé som hade använt samma QR-kod på sin disk i tre år. Den ursprungliga koden genererades snabbt under pandemirushen, trycktes på standardpapper och halkade in i ett plastställ. Det fungerade fortfarande - tekniskt - men kunderna behövde ofta flera försök att skanna det, och det gjorde ingenting för att förstärka caféets noggrant utformade varumärkesidentitet.',
+        'Förvandlingen började med en enkel granskning: den befintliga koden kodade caféets webbadress för meny, som de ville behålla. Utmaningen var att få QR:n att kännas som en del av caféupplevelsen snarare än ett eftertanke från 2020.',
       ],
       images: [
         {
           src: '/images/examples/uplift-overview.png',
-          alt: 'A weathered QR code in a plastic stand showing visible wear, fingerprints, and faded printing',
+          alt: 'En väderbiten QR-kod i ett plastställ som visar synligt slitage, fingeravtryck och blekta tryck',
           caption:
-            'The starting point: three years of counter service had left the original QR barely functional',
+            'Utgångspunkten: tre års diskservice hade gjort att den ursprungliga QR-koden knappt fungerade',
         },
       ],
     },
     {
       heading: 'Diagnostisera originalkodens problem',
       paragraphs: [
-        "Testning avslöjade flera problem: den ursprungliga koden använde Error Correction L (minsta redundans), hade en tyst zon på endast 2 moduler och skrevs ut med låg upplösning. Under the café's warm tungsten lighting, the already-faded black modules barely contrasted against the yellowed paper. Äldre telefoner kämpade; newer phones succeeded but with noticeable delay.",
-        "Beyond technical issues, the generic black-and-white square communicated nothing about the brand. Customers hesitated before scanning - a subtle trust barrier that reduced engagement with the café's carefully designed digital menu.",
+        'Testning avslöjade flera problem: den ursprungliga koden använde Error Correction L (minsta redundans), hade en tyst zon på endast 2 moduler och skrevs ut med låg upplösning. Under caféets varma volframbelysning kontrasterade de redan blekta svarta modulerna knappt mot det gulnade pappret. Äldre telefoner kämpade; nyare telefoner lyckades men med märkbar fördröjning.',
+        'Utöver tekniska problem kommunicerade den generiska svart-vita kvadraten ingenting om varumärket. Kunderna tvekade innan de skannade – en subtil förtroendebarriär som minskade engagemanget med caféets noggrant designade digitala meny.',
       ],
       images: [
         {
           src: '/images/examples/uplift-diagnosis.png',
-          alt: "A diagnostic overlay showing the original QR's technical deficiencies: low ECC, minimal quiet zone, poor contrast",
+          alt: 'En diagnostisk överlagring som visar den ursprungliga QR:s tekniska brister: låg ECC, minimal tyst zon, dålig kontrast',
           caption:
-            'Technical analysis revealing why the legacy code underperformed in real-world conditions',
+            'Teknisk analys som avslöjar varför den äldre koden underpresterade under verkliga förhållanden',
         },
       ],
     },
@@ -55,22 +55,22 @@ export const examples: PageDefinition = {
       heading: 'Upplyftsprocessen',
       paragraphs: [
         'Med hjälp av ANQR återskapade caféägaren koden med identisk meny-URL men dramatiskt förbättrade inställningar: Felkorrigering H för maximal motståndskraft, en tyst zon med 6 moduler för tillförlitlig gränsdetektering och märkesfärger (djupa vinröda moduler på krämfärgad bakgrund) som matchade caféets interiörpalett.',
-        'Ett litet mittöverlägg med caféets logotyp lades till - hölls medvetet subtilt för att bibehålla skanningsbarheten samtidigt som det ger omedelbar varumärkesigenkänning. Safety Mode confirmed the new design scanned reliably across test devices before any printing.',
+        'Ett litet mittöverlägg med caféets logotyp lades till - hölls medvetet subtilt för att bibehålla skanningsbarheten samtidigt som det ger omedelbar varumärkesigenkänning. Säkerhetsläge bekräftade att den nya designen skannades tillförlitligt över testenheter innan någon utskrift.',
       ],
       images: [
         {
           src: '/images/examples/uplift-process.png',
-          alt: 'The ANQR interface showing the configuration: brand colours, appropriate ECC, generous quiet zone, subtle logo overlay',
+          alt: 'ANQR-gränssnittet som visar konfigurationen: märkesfärger, lämplig ECC, generös tyst zon, subtil logotypöverlagring',
           caption:
-            'Building the upgraded configuration: every setting chosen to balance brand expression with scan reliability',
+            'Bygga den uppgraderade konfigurationen: varje inställning vald för att balansera varumärkesuttryck med skanningspålitlighet',
         },
       ],
     },
     {
       heading: 'Mätbara resultat',
       paragraphs: [
-        'After deploying the new QR on professional matte-laminated card stock, the café tracked results over four weeks. Scan success rate improved from an estimated 70% to near-100%. Average scan time dropped from 3-4 seconds to under 1 second. Most significantly, menu engagement increased 40% - customers who previously glanced at the QR and gave up were now scanning confidently.',
-        "Staff reported fewer customer questions about 'how to use the QR' and no more instances of manually typing the URL for frustrated customers. The branded appearance also sparked conversations, with customers commenting positively on the cohesive design.",
+        'Efter att ha implementerat den nya QR på professionellt mattlaminerat kartong spårade caféet resultat under fyra veckor. Framgångsfrekvensen för skanningen förbättrades från uppskattningsvis 70 % till nästan 100 %. Den genomsnittliga skanningstiden sjönk från 3-4 sekunder till under 1 sekund. Det viktigaste var att menyengagemang ökade med 40 % - kunder som tidigare tittade på QR:en och gav upp skannade nu med tillförsikt.',
+        'Personalen rapporterade färre kundfrågor om hur man använder QR:n och inga fler fall av manuell inmatning av URL:en för frustrerade kunder. Märkesutseendet väckte också konversationer, med kunder som kommenterade positivt om den sammanhållna designen.',
       ],
       images: [
         {
@@ -120,35 +120,35 @@ export const examples: PageDefinition = {
           src: '/images/examples/payments-overview.png',
           alt: 'Ett rörigt registerområde som visar fem felaktiga QR-koder i olika stativ och tryckt material',
           caption:
-            'The chaotic starting point: five disconnected QR codes competing for attention and causing customer confusion',
+            'Den kaotiska utgångspunkten: fem bortkopplade QR-koder som tävlar om uppmärksamheten och orsakar kundförvirring',
         },
       ],
     },
     {
       heading: 'Prioritera betalningsupplevelsen',
       paragraphs: [
-        "The store's primary payment method used a regional standard that required strict payload compliance. Testing revealed that even minor styling affected scan speed with certain banking apps. The decision: keep the payment QR completely unmodified except for size optimisation and professional printing on matte card stock.",
-        "This conservative approach meant the payment code looked less 'branded' than ideal, but transaction completion rates improved dramatically. The insight: payment moments aren't branding opportunities - they're reliability moments. Customers appreciate speed and certainty over aesthetics when money is involved.",
+        'Butikens primära betalningsmetod använde en regional standard som krävde strikt efterlevnad av nyttolast. Tester visade att även mindre styling påverkade skanningshastigheten med vissa bankappar. Beslutet: behåll QR-betalningen helt oförändrad förutom storleksoptimering och professionellt tryck på matt kartong.',
+        'Detta konservativa tillvägagångssätt innebar att betalningskoden såg mindre "märkt" ut än idealisk, men transaktionsgenomförandet förbättrades dramatiskt. Insikten: betalningsmoment är inte varumärkesmöjligheter – de är pålitlighetsmoment. Kunder uppskattar snabbhet och säkerhet över estetik när pengar är inblandade.',
       ],
       images: [
         {
           src: '/images/examples/payments-primary.png',
-          alt: 'A clean, large payment QR code on professional matte card stock, positioned prominently at the register',
+          alt: 'En ren, stor QR-kod för betalning på professionellt matt kartong, placerad väl vid registret',
           caption:
-            'The payment QR: sized generously, printed professionally, styled conservatively for instant recognition by banking apps',
+            'Betalningen QR: generöst storlek, professionellt tryckt, konservativt utformad för omedelbar igenkänning av bankappar',
         },
       ],
     },
     {
       heading: 'Skapar den sekundära åtgärdsskärmen',
       paragraphs: [
-        "For tips, reviews, social, and hiring, the store could be more expressive. These codes were regenerated in ANQR with consistent brand styling: the store's signature olive green on cream, rounded module style, and a subtle centre overlay with the store's icon. Error Correction H ensured reliability even with the styling.",
-        "These four codes were arranged in a branded panel positioned beside (not competing with) the payment code. Clear labels in the store's typography explained each code's purpose. The visual hierarchy was intentional: payment stood alone and prominent; sekundära åtgärder grupperade som alternativ.",
+        'För tips, recensioner, sociala medier och anställning kan butiken vara mer uttrycksfull. Dessa koder återskapades i ANQR med konsekvent varumärkesstyling: butikens signatur olivgrön på kräm, rundad modulstil och ett subtilt mittöverlägg med butikens ikon. Felkorrigering H säkerställde tillförlitlighet även med stylingen.',
+        'Dessa fyra koder var arrangerade i en märkespanel placerad bredvid (inte konkurrerar med) betalningskoden. Tydliga etiketter i butikens typografi förklarade varje kods syfte. Den visuella hierarkin var avsiktlig: betalningen stod ensam och framträdande; sekundära åtgärder grupperade som alternativ.',
       ],
       images: [
         {
           src: '/images/examples/payments-secondary.png',
-          alt: 'A branded panel showing four styled QR codes for tips, reviews, social, and hiring, with clear labels',
+          alt: 'En varumärkespanel som visar fyra stiliserade QR-koder för tips, recensioner, sociala medier och anställning, med tydliga etiketter',
           caption:
             'The secondary action panel: consistent branding, clear labelling, positioned as options rather than distractions',
         },
@@ -203,57 +203,57 @@ export const examples: PageDefinition = {
       heading: 'Fallstudie: Från visitkort till anslagstavla',
       paragraphs: [
         'Det här exemplet följer ett produktionsbolag för evenemang som förbereder sig för en stor konferens. De behövde samma QR-kod – länkad till evenemangsappen – utplacerad i radikalt olika format: deltagaremärken (3 cm), bordstältkort (8 cm), registreringsskrivbordsskyltar (30 cm), vägvisande affischer (60 cm) och en massiv scenbakgrundsbanner (4 meter). Varje format hade olika visningsavstånd, ljusförhållanden och produktionsarbetsflöden.',
-        "The challenge wasn't just technical - it was operational. Multiple vendors handled different print jobs, and the company needed to ensure consistent, scannable results regardless of who produced what. Their solution centred on SVG export and rigorous handoff documentation.",
+        'Utmaningen var inte bara teknisk – den var operativ. Flera leverantörer hanterade olika utskriftsjobb och företaget behövde säkerställa konsekventa, skanningsbara resultat oavsett vem som producerade vad. Deras lösning fokuserade på SVG-export och rigorös handoff-dokumentation.',
       ],
       images: [
         {
           src: '/images/examples/print-overview.png',
-          alt: 'A collage showing the same QR code deployed across five different sizes, from badge to banner',
+          alt: 'Ett collage som visar samma QR-kod distribuerad i fem olika storlekar, från märke till banner',
           caption:
-            'One QR code, five deployment sizes: the challenge of maintaining scannability from centimetres to metres',
+            'En QR-kod, fem implementeringsstorlekar: utmaningen att bibehålla skanningsbarhet från centimeter till meter',
         },
       ],
     },
     {
       heading: 'Varför tidigare evenemang hade problem',
       paragraphs: [
-        "At their last conference, the company had experienced embarrassing failures. Scenbannern QR genererades som en liten PNG och skalades upp i designprogramvara - resultatet såg acceptabelt ut på avstånd men kunde inte skanna tillförlitligt från publiken. Badge QRs were over-styled and too small, frustrating attendees trying to add contacts. Inconsistent settings across formats meant the 'same' QR actually looked different on each piece.",
-        'Post-event analysis revealed the root cause: no single source of truth. Each designer had recreated the QR with slightly different settings, and each print vendor had processed files differently. Quality degraded through the telephone game of file handoffs.',
+        'Vid sin senaste konferens hade företaget upplevt pinsamma misslyckanden. Scenbannern QR genererades som en liten PNG och skalades upp i designprogramvara - resultatet såg acceptabelt ut på avstånd men kunde inte skanna tillförlitligt från publiken. Märkets QR:er var överstilade och för små, frustrerande deltagare som försökte lägga till kontakter. Inkonsekventa inställningar i olika format innebar att "samma" QR faktiskt såg olika ut på varje del.',
+        'Analys efter händelsen avslöjade grundorsaken: ingen enskild källa till sanning. Varje designer hade återskapat QR:en med lite olika inställningar, och varje trycksaksleverantör hade bearbetat filer på olika sätt. Kvaliteten försämrades genom telefonspelet med filöverlämningar.',
       ],
       images: [
         {
           src: '/images/examples/print-problems.png',
           alt: 'Close-up photographs showing scanning failures: pixelated banner modules, undersized badge codes, inconsistent styling across formats',
           caption:
-            'Forensic analysis of previous event failures: each format had introduced different quality problems',
+            'Forensisk analys av tidigare händelsefel: varje format hade introducerat olika kvalitetsproblem',
         },
       ],
     },
     {
       heading: 'SVG-First Workflow',
       paragraphs: [
-        'För detta evenemang etablerade företaget ett strikt protokoll: en master QR genererad i ANQR med optimala inställningar (felkorrigering H, generös tyst zon, ren stil), exporteras som SVG och lagras som den enda auktoritativa källan. The ANQR configuration link was documented alongside the SVG file so the code could be regenerated if needed.',
+        'För detta evenemang etablerade företaget ett strikt protokoll: en master QR genererad i ANQR med optimala inställningar (felkorrigering H, generös tyst zon, ren stil), exporteras som SVG och lagras som den enda auktoritativa källan. ANQR-konfigurationslänken dokumenterades tillsammans med SVG-filen så att koden kunde återskapas vid behov.',
         'Varje designer och leverantör fick samma SVG-master med tydliga instruktioner: placera i önskad storlek, modifiera inte, bibehåll frigång till tyst zon. För leverantörer som kräver rasterformat tillhandahöll företaget förrenderade PNG-filer i specifika storlekar med tydliga namnkonventioner som indikerar avsedd användning.',
       ],
       images: [
         {
           src: '/images/examples/print-workflow.png',
-          alt: 'A file package showing the SVG master, size-specific PNGs, specification document, and configuration link',
+          alt: 'Ett filpaket som visar SVG-mastern, storleksspecifika PNG:er, specifikationsdokument och konfigurationslänk',
           caption:
-            'The handoff package: everything vendors needed to produce consistent results without guessing',
+            'Handoff-paketet: allt leverantörer behövde för att producera konsekventa resultat utan att gissa',
         },
       ],
     },
     {
       heading: 'Storleksspecifika överväganden',
       paragraphs: [
-        "Varje format krävde särskild uppmärksamhet. Badge inserts at 3cm needed the QR to occupy maximum available space - scanning distance would be arm's length. Table tents at 8cm could include decorative framing outside the quiet zone. 4-metersbannern krävde beräkning: från typiskt publikavstånd (15-20 meter) behövde moduler vara tydligt urskiljbara med telefonkameror, vilket innebar att QR-en behövde vara minst 80 cm inom bannerdesignen.",
-        'The company created a sizing guide documenting minimum QR dimensions for each expected scanning distance. This became a reusable asset for future events, removing guesswork from the design process.',
+        'Varje format krävde särskild uppmärksamhet. Badge-insatser på 3 cm behövde QR för att uppta maximalt tillgängligt utrymme - skanningsavståndet skulle vara armlängds avstånd. Bordstält på 8 cm kan inkludera dekorativ inramning utanför den tysta zonen. 4-metersbannern krävde beräkning: från typiskt publikavstånd (15-20 meter) behövde moduler vara tydligt urskiljbara med telefonkameror, vilket innebar att QR-en behövde vara minst 80 cm inom bannerdesignen.',
+        'Företaget skapade en storleksguide som dokumenterar lägsta QR-mått för varje förväntat skanningsavstånd. Detta blev en återanvändbar tillgång för framtida evenemang, vilket tog bort gissningar från designprocessen.',
       ],
       images: [
         {
           src: '/images/examples/print-sizing.png',
-          alt: 'A chart showing the relationship between scanning distance, minimum QR size, and module dimensions for each event format',
+          alt: 'Ett diagram som visar förhållandet mellan skanningsavstånd, lägsta QR-storlek och moduldimensioner för varje händelseformat',
           caption:
             "The sizing matrix: calculated dimensions ensuring reliable scanning at each format's expected viewing distance",
         },
@@ -262,16 +262,16 @@ export const examples: PageDefinition = {
     {
       heading: 'Production Results',
       paragraphs: [
-        "Conference day validation was systematic: staff tested every deployed QR before doors opened. The badge inserts scanned instantly at arm's length. Table tents worked reliably in the variable lighting of breakout rooms. The stage banner - the previous event's embarrassment - scanned successfully from the middle of the audience area.",
+        'Konferensdagens validering var systematisk: personalen testade varje utplacerad QR innan dörrarna öppnades. Märkets insatser skannas omedelbart på armlängds avstånd. Bordstält fungerade tillförlitligt i den variabla belysningen av grupprum. Scenbannern – det förra evenemangets pinsamhet – skannades framgångsrikt från mitten av publikområdet.',
         'Zero scanning complaints were logged across 2,000+ attendees. Den operativa vinsten var lika betydande: när ett sponsortillskott i sista minuten krävde ny skyltning, genererade produktionsteamet det från huvud-SVG på några minuter, övertygade om att det skulle matcha allt annat.',
-        'See the Learn guide on print-ready QR codes for the SVG vs PNG decision framework and handoff best practices.',
+        'Se Learn-guiden om utskriftsklara QR-koder för beslutsramverket SVG vs PNG och bästa praxis för handoff.',
       ],
       images: [
         {
           src: '/images/examples/print-success.png',
-          alt: 'Event photography showing attendees successfully scanning QR codes at various sizes and distances throughout the venue',
+          alt: 'Eventfotografering som visar deltagare som framgångsrikt skannar QR-koder i olika storlekar och avstånd över hela lokalen',
           caption:
-            'Conference day success: reliable scanning across every format, from badge close-ups to stage banner distance shots',
+            'Konferensdagens framgång: tillförlitlig skanning i alla format, från märkenärbilder till scenbilder på avstånd',
         },
       ],
       links: [
@@ -292,22 +292,22 @@ export const examples: PageDefinition = {
     {
       heading: 'Fallstudie: Airport Lounge Digital Display',
       paragraphs: [
-        'This example follows an airline lounge that had been using static QR codes on their digital welcome screens. The screens displayed rotating promotional content, but the QR code for lounge check-in sat in a corner, static and easily overlooked. Analytics showed only 15% of eligible guests used the QR check-in despite it being faster than the desk queue. De flesta gäster märkte det helt enkelt inte.',
-        'The hypothesis was simple: in a visually busy environment with moving content, a static QR becomes invisible. Lösningen som behövdes för att göra QR:n märkbar utan att kompromissa med tillförlitligheten som krävs för ett incheckningsflöde där ett misslyckande skulle innebära frustrerade resenärer och längre skrivbordsköer.',
+        'Det här exemplet följer en flygbolagslounge som hade använt statiska QR-koder på sina digitala välkomstskärmar. Skärmarna visade roterande reklaminnehåll, men QR-koden för loungeincheckning satt i ett hörn, statisk och lätt förbisedd. Analytics visade att endast 15 % av de kvalificerade gästerna använde QR-incheckningen trots att den var snabbare än skrivbordskön. De flesta gäster märkte det helt enkelt inte.',
+        'Hypotesen var enkel: i en visuellt hektisk miljö med rörligt innehåll blir en statisk QR osynlig. Lösningen som behövdes för att göra QR:n märkbar utan att kompromissa med tillförlitligheten som krävs för ett incheckningsflöde där ett misslyckande skulle innebära frustrerade resenärer och längre skrivbordsköer.',
       ],
       images: [
         {
           src: '/images/examples/animated-overview.png',
-          alt: 'A digital display in an airport lounge showing promotional content with a small, static QR code in the corner',
+          alt: 'En digital display i en flygplatslounge som visar reklaminnehåll med en liten statisk QR-kod i hörnet',
           caption:
-            'The original setup: a static QR lost in a sea of dynamic promotional content, achieving only 15% adoption',
+            'Den ursprungliga inställningen: en statisk QR förlorad i ett hav av dynamiskt reklaminnehåll, som endast uppnår 15 % adoption',
         },
       ],
     },
     {
       heading: 'Designa säker animering',
       paragraphs: [
-        "The lounge's digital signage used large LED panels - a challenging environment where aggressive animation could create scanning problems. Designteamet började konservativt: en mild pulseffekt som subtilt utökade och drog ihop QR:s visuella närvaro utan att ändra den faktiska kodstrukturen. Frame timing was set slow (250ms) to avoid any flicker issues with the LED refresh rate.",
+        'Loungens digitala skyltning använde stora LED-paneler – en utmanande miljö där aggressiv animering kunde skapa skanningsproblem. Designteamet började konservativt: en mild pulseffekt som subtilt utökade och drog ihop QR:s visuella närvaro utan att ändra den faktiska kodstrukturen. Frame timing var långsam (250ms) för att undvika flimmerproblem med LED-uppdateringsfrekvensen.',
         'Safety Mode validation confirmed every frame remained scannable. Ytterligare tester på de faktiska LED-panelerna avslöjade att pulsen behövde vara ännu mer subtil än förhandsvisningar på skrivbordet föreslog - LED-ljusstyrka och betraktningsvinklar påverkade den upplevda kontrasten mer än förväntat.',
       ],
       images: [
@@ -315,53 +315,53 @@ export const examples: PageDefinition = {
           src: '/images/examples/animated-config.png',
           alt: 'The ANQR animation settings panel showing pulse configuration: slow timing, subtle intensity, Safety Mode enabled',
           caption:
-            'Animation configuration: parameters tuned for LED panel display while maintaining scan reliability in every frame',
+            'Animationskonfiguration: parametrar inställda för LED-paneldisplay samtidigt som skanningens tillförlitlighet bibehålls i varje bildruta',
         },
       ],
     },
     {
       heading: 'Integration med Signage Content',
       paragraphs: [
-        'Den animerade QR:en placerades i en dedikerad "stabil zon" i skärmlayouten - ett område som förblev konstant medan reklaminnehåll roterade i huvudvisningsområdet. This separation was crucial: the QR needed visual stability for scanning even while attracting attention through its subtle animation.',
-        "A clear call-to-action was added adjacent to the QR: 'Skip the queue - scan to check in.' Texten förblev statisk medan QR:en pulserade, vilket skapade en visuell hierarki som drog blickarna till skanningsmöjligheten utan att överväldiga det reklaminnehållet.",
+        'Den animerade QR:en placerades i en dedikerad "stabil zon" i skärmlayouten - ett område som förblev konstant medan reklaminnehåll roterade i huvudvisningsområdet. Denna separation var avgörande: QR:n behövde visuell stabilitet för att skanna även när den väckte uppmärksamhet genom sin subtila animering.',
+        'En tydlig uppmaning lades till bredvid QR:en: "Hoppa över kön - skanna för att checka in." Texten förblev statisk medan QR:en pulserade, vilket skapade en visuell hierarki som drog blickarna till skanningsmöjligheten utan att överväldiga det reklaminnehållet.',
       ],
       images: [
         {
           src: '/images/examples/animated-layout.png',
-          alt: 'A screen layout diagram showing the animated QR in a stable zone while promotional content rotates in the main area',
+          alt: 'Ett skärmlayoutdiagram som visar den animerade QR-koden i en stabil zon medan reklaminnehåll roterar i huvudområdet',
           caption:
-            'Screen real estate allocation: the animated QR occupies a stable zone separate from rotating promotional content',
+            'Skärmfastighetstilldelning: den animerade QR-enheten upptar en stabil zon skild från roterande reklaminnehåll',
         },
       ],
     },
     {
       heading: 'Teknisk distribution',
       paragraphs: [
-        "The animated QR was exported as a GIF with optimised settings for the signage CMS. File size considerations mattered - the lounge's content management system had upload limits, and overly large files caused playback stuttering. The final export balanced visual quality against file size by limiting the colour palette and optimising frame count.",
-        'Deployment included a fallback: if the GIF failed to play for any reason, the signage system would display a static PNG backup. This redundancy ensured check-in capability was never lost due to technical issues with the animation.',
+        'Den animerade QR-koden exporterades som en GIF med optimerade inställningar för skylt-CMS. Filstorleksöverväganden spelade roll - loungens innehållshanteringssystem hade uppladdningsgränser, och alltför stora filer orsakade uppspelningsstamning. Den slutliga exporten balanserade visuell kvalitet mot filstorlek genom att begränsa färgpaletten och optimera bildruteantalet.',
+        'Implementeringen inkluderade en reserv: om GIF misslyckades med att spela av någon anledning, skulle skyltsystemet visa en statisk PNG-säkerhetskopia. Denna redundans säkerställde att incheckningsförmågan aldrig gick förlorad på grund av tekniska problem med animeringen.',
       ],
       images: [
         {
           src: '/images/examples/animated-cms.png',
-          alt: 'A CMS interface showing the animated QR upload with fallback static image configured',
+          alt: 'Ett CMS-gränssnitt som visar den animerade QR-uppladdningen med statisk reservbild konfigurerad',
           caption:
-            'Signage CMS configuration: animated primary with static fallback ensuring check-in capability is never interrupted',
+            'Signage CMS-konfiguration: animerad primär med statisk reserv som säkerställer att incheckningsförmågan aldrig avbryts',
         },
       ],
     },
     {
       heading: 'Uppmätt påverkan',
       paragraphs: [
-        "After one month of operation, QR check-in adoption increased from 15% to 24% - a 60% relative improvement. Guest feedback surveys indicated the animated QR was 'easier to notice' and 'felt more modern.' Desk queue times decreased measurably during peak periods as more guests self-served via the QR.",
-        'Importantly, zero scanning failures were reported despite thousands of daily scans. The conservative animation approach had achieved the attention goal without sacrificing the reliability a check-in flow demanded. The lounge subsequently rolled out similar animated QRs to their other locations.',
+        'Efter en månads drift ökade användningen av QR-incheckning från 15 % till 24 % – en relativ förbättring på 60 %. Gästfeedback-undersökningar visade att den animerade QR-koden var "lättare att lägga märke till" och "känndes mer modern". Kötiderna på skrivbordet minskade mätbart under högsäsong då fler gäster betjänade sig själv via QR.',
+        'Viktigt är att noll skanningsfel rapporterades trots tusentals dagliga skanningar. Det konservativa animationssättet hade uppnått uppmärksamhetsmålet utan att offra den tillförlitlighet som ett incheckningsflöde krävde. Loungen rullade därefter ut liknande animerade QR:er till sina andra platser.',
         'Se Learn-guiden om animerade QR-koder för digital skyltning för de tekniska principerna bakom säker animationsdesign.',
       ],
       images: [
         {
           src: '/images/examples/animated-metrics.png',
-          alt: 'A dashboard showing adoption rate increase, queue time reduction, and zero-failure scan reliability over the deployment period',
+          alt: 'En instrumentpanel som visar ökad användningsfrekvens, minskning av kötiden och tillförlitlighet med nollfelssökning under implementeringsperioden',
           caption:
-            'One month of data: 60% adoption increase, reduced queue times, and maintained perfect scan reliability',
+            'En månads data: 60 % ökad användning, minskade kötider och bibehållen perfekt skanningstillförlitlighet',
         },
       ],
       links: [
@@ -418,7 +418,7 @@ export const examples: PageDefinition = {
       images: [
         {
           src: '/images/examples/collab-regional.png',
-          alt: 'Screenshots showing the same configuration link opened in Japanese, Portuguese, and German interfaces',
+          alt: 'Skärmdumpar som visar samma konfigurationslänk öppnade i japanska, portugisiska och tyska gränssnitt',
           caption:
             'Same configuration, different interfaces: regional teams work in their preferred language while maintaining global consistency',
         },
@@ -427,13 +427,13 @@ export const examples: PageDefinition = {
     {
       heading: 'Hantering av regionala variationer',
       paragraphs: [
-        'Vissa marknader krävde mindre anpassningar. The Chinese team needed a version with a WeChat-optimised frame for social sharing. Istället för att modifiera mastern skapade de en dokumenterad variant med en egen konfigurationslänk, tydligt märkt som "CN-WeChat-variant" i kampanjtillgångsbiblioteket. This maintained traceability while allowing necessary localisation.',
-        "The brand team established a simple rule: any variation from master required a new, documented configuration link. No modifications to exported files, no 'quick fixes' in design software. This prevented the configuration drift that had plagued previous launches.",
+        'Vissa marknader krävde mindre anpassningar. Det kinesiska teamet behövde en version med en WeChat-optimerad ram för social delning. Istället för att modifiera mastern skapade de en dokumenterad variant med en egen konfigurationslänk, tydligt märkt som "CN-WeChat-variant" i kampanjtillgångsbiblioteket. Detta bibehöll spårbarheten samtidigt som nödvändig lokalisering möjliggjordes.',
+        'Varumärkesteamet fastställde en enkel regel: varje variation från master krävde en ny, dokumenterad konfigurationslänk. Inga ändringar av exporterade filer, inga "snabbfixar" i designprogramvara. Detta förhindrade konfigurationsdriften som hade plågat tidigare lanseringar.',
       ],
       images: [
         {
           src: '/images/examples/collab-variants.png',
-          alt: 'An asset library interface showing the master configuration and approved regional variants, each with its own link',
+          alt: 'Ett gränssnitt för tillgångsbibliotek som visar huvudkonfigurationen och godkända regionala varianter, var och en med sin egen länk',
           caption:
             'Campaign asset governance: master configuration plus documented variants, all traceable via configuration links',
         },
@@ -443,15 +443,15 @@ export const examples: PageDefinition = {
       heading: 'Startresultat',
       paragraphs: [
         'På produktlanseringsdagen distribuerades QR-koder över förpackningar, återförsäljare, evenemangsmaterial och digitala kampanjer på alla 12 marknader samtidigt. Kvalitetsrevisioner bekräftade visuell överensstämmelse mellan regioner - QR-koden på Tokyo-butiksskärmarna matchade QR-koden på São Paulo-förpackningen och QR-koden på Berlin-evenemangsbanner.',
-        'Zero scanning failures were reported across markets. When a post-launch product page URL change was needed, the redirect service handled it invisibly - no reprinting required. The global team estimated the configuration link approach saved 40+ hours of coordination time compared to their previous launch methodology.',
-        'See the Learn guide on cross-lingual QR collaboration for the workflow principles behind global campaign consistency.',
+        'Noll skanningsfel rapporterades på marknaderna. När en webbadress för produktsidan efter lanseringen behövdes, hanterade omdirigeringstjänsten det osynligt - ingen ny utskrift krävs. Det globala teamet uppskattade att konfigurationslänkmetoden sparade 40+ timmars koordinationstid jämfört med deras tidigare lanseringsmetod.',
+        'Se Learn-guiden om tvärspråkigt QR-samarbete för arbetsflödesprinciperna bakom global kampanjkonsistens.',
       ],
       images: [
         {
           src: '/images/examples/collab-success.png',
-          alt: 'A grid of photographs showing consistent QR deployment across different markets: Tokyo retail, São Paulo packaging, Berlin events',
+          alt: 'Ett rutnät med fotografier som visar konsekvent QR-distribution på olika marknader: Tokyo-detaljhandel, São Paulo-förpackningar, Berlin-evenemang',
           caption:
-            'Global consistency achieved: identical QR presentation across 12 markets despite different languages, vendors, and formats',
+            'Global konsekvens uppnådd: identisk QR-presentation på 12 marknader trots olika språk, leverantörer och format',
         },
       ],
       links: [

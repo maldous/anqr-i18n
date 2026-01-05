@@ -17,7 +17,7 @@ export const guide: PageDefinition = {
       heading: 'Kom i gang',
       paragraphs: [
         'ANQR er en QR kode generator med en klient- første tilgang. Som standard genereres QR-koder lokalt i din browser - ingen konto kræves, og dine data forbliver private. For professionel indlejring, kan du også bruge serverside API.',
-        'Interfacet har tre grænsefladeniveauer: Basic, Advanced, og Professional. Vælg dit niveau ved hjælp af fanerne i overskriften. Hvert niveau låser op for yderligere funktioner og samtidig holde grænsefladen fokuseret på, hvad du har brug for.',
+        'Grænsefladen har tre grænsefladeniveauer: Basic, Advanced og Professional. Vælg dit niveau ved hjælp af fanerne i overskriften. Hvert niveau låser op for yderligere funktioner, mens brugerfladen holdes fokuseret på det, du har brug for.',
       ],
       bullets: [
         'Grundlæggende: Simpel QR kode skabelse med almindelig tekst / URL indhold og billede overlay.',
@@ -33,7 +33,7 @@ export const guide: PageDefinition = {
         '1. Vælg en indholdstype (URL, tekst, WiFi osv.) fra indholdstypen dropdown.',
         '2. Indtast dine data i de angivne felter.',
         '3. Muligvis tilpasse farver, stilarter, og tilføje en overlay billede.',
-        '4. Klik på Eksportér for at downloade din QR-kode som PNG, GIF, WebP eller SVG.',
+        '4. Klik på Eksporter for at downloade din QR-kode som PNG, GIF, WebP eller SVG.',
       ],
       links: [
         {
@@ -76,7 +76,7 @@ export const guide: PageDefinition = {
         'Blend: Simpel alfablanding af billede med QR mønster.',
         'Intensitet: Kontrollerer hvor stærkt overlay påvirker QR-koden (0- 100%).',
         'Farvetilstand: Fuld farve, gråskala eller sort & hvid.',
-        'Bevar Finder Mønstre: Holder hjørnemønstre uændrede for pålidelig scanning.',
+        'Bevar Finder-mønstre: Holder hjørnemønstre uændrede for pålidelig scanning.',
       ],
       links: [
         {
@@ -108,14 +108,14 @@ export const guide: PageDefinition = {
     {
       heading: 'QR- indkodningsindstillinger',
       paragraphs: [
-        'Version: QR koder kommer i version 1-40, med højere versioner med flere data, men er større. Sæt til 0 (Auto) for at lade ANQR vælge den mindste version, der passer til dit indhold.',
+        'Version: QR-koder kommer i version 1-40, med højere versioner, der indeholder flere data, men er større. Indstil til 0 (Auto) for at lade ANQR vælge den mindste version, der passer til dit indhold.',
         'Fejlkorrektion: Bestemmer hvor meget skade en QR-kode kan bære, mens den kan scannes.',
       ],
       bullets: [
         'L (Lav): 7% fejlkorrektion - mindste størrelse, mindste redundans.',
         'M (Medium): 15% fejlkorrektion - afbalanceret indstilling.',
         'Q (Quarelle): 25% fejlkorrektion - god til trykte koder.',
-        'H (High): 30% fejlkorrektion - bedst for koder med overskridelser eller under barske forhold.',
+        'H (Høj): 30 % fejlkorrektion - bedst til koder med overlejringer eller under barske forhold.',
       ],
       links: [
         {
@@ -128,7 +128,7 @@ export const guide: PageDefinition = {
     {
       heading: 'Stille zone (Margin)',
       paragraphs: [
-        'Den stille zone er det hvide rum omkring QR koden. Scannere har brug for denne margin til at opdage, hvor koden starter. Standarden anbefaler mindst 4 moduler. Reduktion under 4 kan forårsage scanningsproblemer.',
+        'Den stille zone er det hvide rum omkring QR-koden. Scannere har brug for denne margen for at registrere, hvor koden starter. Standarden anbefaler mindst 4 moduler. Reduktion til under 4 kan forårsage scanningsproblemer.',
       ],
     },
     {
@@ -138,9 +138,9 @@ export const guide: PageDefinition = {
       ],
       bullets: [
         'Square: Classic QR udseende med skarpe hjørner.',
-        'Afrundet: Blødte hjørner for en venligere look.',
+        'Afrundede: Blødgjorte hjørner for et venligere look.',
         'Dots: Cirkulære moduler til en moderne æstetik.',
-        'Diamond: 45 ° roterede firkanter for et karakteristisk mønster.',
+        'Diamant: 45° roterede firkanter for et markant mønster.',
         'Forbundet: Moduler smelter sammen, når de støder op til hinanden, skaber organiske former.',
       ],
       links: [
@@ -159,13 +159,13 @@ export const guide: PageDefinition = {
       bullets: [
         'Square: Standard firkantede hjørner.',
         'Afrundet: Blødte hjørner matchende afrundede modul stil.',
-        'Circle: Circular finder mønstre for dot- stil koder.',
+        'Cirkel: Cirkulære findermønstre til koder i prikstil.',
       ],
     },
     {
       heading: 'Justering & Timing Mønstre',
       paragraphs: [
-        'Justeringsmønstre vises i større QR-koder (version 2 +) for at hjælpe med at korrigere forvrængning. Timing mønstre er de vekslende linjer forbinder findere mønstre.',
+        'Justeringsmønstre vises i større QR-koder (version 2+) for at hjælpe med at korrigere forvrængning. Timingmønstre er de skiftende linjer, der forbinder findermønstre.',
       ],
       bullets: [
         'Tilpas stil: Match Finder, Square, Afrunded, eller Circle.',
@@ -176,7 +176,7 @@ export const guide: PageDefinition = {
       heading: 'Farver',
       paragraphs: [
         'Forgrund: Farven på QR moduler. Sort (# 000000) er standard, men enhver mørk farve virker.',
-        'Baggrund: Baggrundsfarven. Hvid (# ffffff) er standard. Sørg for tilstrækkelig kontrast til forgrunden.',
+        'Baggrund: Baggrundsfarven. Hvid (#ffffff) er standard. Sørg for tilstrækkelig kontrast til forgrunden.',
         'Gennemsigtig baggrund: Fjern baggrunden helt til brug på farvede overflader. Sørg for, at overfladen giver tilstrækkelig kontrast.',
       ],
       links: [
@@ -200,8 +200,8 @@ export const guide: PageDefinition = {
       bullets: [
         'PNG: Lossless raster format, ideel til de fleste anvendelser. Bedste til print og digital.',
         'WebP: Moderne format med mindre filstørrelser. Godt til brug på nettet.',
-        'GIF: Krævet for animerede QR-koder. Understøtter gennemsigtighed.',
-        'SVG: Vektorformat, der skaleres uendeligt. Bedste for store print, eller når du har brug for at redigere koden.',
+        'GIF: Påkrævet for animerede QR-koder. Understøtter gennemsigtighed.',
+        'SVG: Vektorformat, der skaleres uendeligt. Bedst til stor skrift, eller når du skal redigere koden.',
       ],
       links: [
         {
@@ -231,7 +231,7 @@ export const guide: PageDefinition = {
         'Bounce: Pingpong animation retning.',
         'Start ramme: Begynd animation fra specifik ramme.',
         'Max Frame: Begræns samlede rammer i animation.',
-        'Ramme Trin: Spring rammer for hurtigere animation.',
+        'Rammetrin: Spring rammer over for hurtigere animation.',
         'Interpolation: Ingen, Crossfade, eller Morph mellem rammer.',
       ],
       links: [
@@ -279,9 +279,9 @@ export const guide: PageDefinition = {
       heading: 'Avancerede overlay-funktioner',
       paragraphs: ['Yderligere overlay kapaciteter:'],
       bullets: [
-        'Crop: Aktivér beskæring for at vælge en firkantet region af dit billede.',
+        'Beskær: Aktiver beskæring for at vælge et kvadratisk område af dit billede.',
         'Halftone: Klassisk print-stil prik mønster baseret på billede lysstyrke.',
-        'Dithered: Errordiffusionsdithering for detaljeret reproduktion.',
+        'Dithered: Error-diffusion dithering for detaljeret gengivelse.',
       ],
       links: [
         {
@@ -295,12 +295,12 @@ export const guide: PageDefinition = {
       heading: 'Overlay Blend Modes (Avanceret)',
       paragraphs: ['Yderligere blandingstilstande i Avanceret niveau:'],
       bullets: [
-        'Subpixel: Dividerer hvert modul i subpixels for flere detaljer.',
-        'Blå støj: Bruger blå støj dithering for artifact- frie mønstre.',
+        'Subpixel: Opdeler hvert modul i subpixels for at få flere detaljer.',
+        'Blue Noise: Bruger blå støj-dithering til artefaktfrie mønstre.',
         'Mosaik: Tilebaseret effekt bevare billedstruktur.',
         'Gap fyld: Placerer billede i mellemrum mellem moduler.',
         'Lysstyrke: Varers modulstørrelse baseret på billedets lysstyrke.',
-        'Duoton: Kort billede til to farver for slående kontrast.',
+        'Duotone: Tilordner billedet til to farver for slående kontrast.',
       ],
     },
     {
@@ -344,7 +344,7 @@ export const guide: PageDefinition = {
         'Hue Rotat (0- 360 °): Skift alle farver omkring farvehjulet.',
         'Blur (0- 20px): Svæve billeddetaljer.',
         'Sharpen (0- 100%): Forbedre kanter og detaljer.',
-        'Posterize (0- 16 niveauer): Reducer farveniveauer for en plakateffekt.',
+        'Posterize (0-16 niveauer): Reducer farveniveauer for en plakateffekt.',
         'Tærskel (0-255): Konverter til binær sort / hvid ved cutoff punkt.',
         'Kantdetektion: Sobel eller Canny algoritmer til at vise kun kanter.',
         'Invertér: Vend alle farver tilbage.',
@@ -382,7 +382,7 @@ export const guide: PageDefinition = {
         'Gausisk / trekantet Støj: Støj med forskellige distributioner.',
         'Blå støj + Fejl Diffusion: Hybrid kombinerer begge teknikker.',
         'Screened Blue Noise: Screen- lignende blå støjmønster.',
-        'Perceptual: Luminance- vægtet for bedre visuelle resultater.',
+        'Perceptuel: Luminansvægtet for bedre visuelle resultater.',
         'Edge- Aware: Bevarer billedkanter under skydning.',
         'Tilpasset tærskelværdi: Lokal-adaptive tærskeværk.',
         'Temporal blå støj: For animerede GIF, varierer mønster per ramme.',
@@ -434,11 +434,11 @@ export const guide: PageDefinition = {
       ],
     },
     {
-      heading: 'Indstillinger for GIF- animering',
+      heading: 'GIF-animationsindstillinger',
       paragraphs: ['Når du bruger animerede GIF overskrifter:'],
       bullets: [
         'Brug ramme-forsinkelser: Respekter den oprindelige GIF-timing.',
-        'Max FPS: Grænse for frame rate (1-60 fps).',
+        'Max FPS: Begræns billedhastighed (1-60 fps).',
         'Bortskaffelse Håndtering: Respekt eller simplificere frame bortskaffelse metoder.',
       ],
     },
@@ -447,11 +447,11 @@ export const guide: PageDefinition = {
       paragraphs: ['Yderligere destruktionskontrol:'],
       bullets: [
         'Gap tilstand: Ingen, Inset, Stroke, eller negativ mellemrum styling.',
-        'Corner Radius: Afrundede hjørner procent for moduler.',
+        'Hjørneradius: Afrundede hjørner i procent for moduler.',
         'Gradient: Ingen, lineær, radial eller konisk gradient på moduler.',
-        'Eye Outer / Indre Style: Uafhængig styling for finder mønster ringe.',
+        'Øjens ydre/indre stil: Uafhængig styling til ring med søgemønster.',
         'Dot Rotation: Rotér diamant / dot moduler.',
-        'Eye Scale: Størrelsesjustering for findermønstre.',
+        'Øjenskala: Størrelsesjustering til findermønstre.',
         'Frame Style: Tilføj dekorative rammer (Afrunded Frame, Sticker, Tag).',
         'Ramme tekst: Tilføj tekst som "Scan Me!" til rammer.',
       ],
@@ -468,7 +468,7 @@ export const guide: PageDefinition = {
       paragraphs: ['Fine- tune QR- kodning:'],
       bullets: [
         'Indkodningstilstand: Auto, Numerisk, Alfanumerisk, Byte / UTF-8 eller Kanji.',
-        'Påfør min stille zone: Sørg for mindst 4 modul margin.',
+        'Håndhæv Min Quiet Zone: Sørg for mindst 4 modulers margen.',
       ],
     },
     {
@@ -479,8 +479,8 @@ export const guide: PageDefinition = {
         'GIF Palette Størrelse: 2-256 farver i GIF output.',
         'GIF Kvantizer: Median Cut, NeuQuant, eller Octree farve reduktion.',
         'GIF Dithering: Off, Floyd- Steinberg, eller Ordered.',
-        'GIF Gennemsigtig farve: Sæt en farve for at være gennemsigtig.',
-        'SVG Sand Vector: Brug stier i stedet for indlejret raster.',
+        'GIF-gennemsigtig farve: Indstil en farve til at være gennemsigtig.',
+        'SVG True Vector: Brug stier i stedet for indlejret raster.',
         'SVG Form Præcision: Pixel eller Præcise sti rendering.',
         'SVG Indlejret Raster Overlay: Inkludér overlay som indlejret billede.',
         'Baggrund Tilsidesæt: Tving en bestemt baggrundsfarve i output.',
@@ -574,7 +574,7 @@ export const guide: PageDefinition = {
     },
     {
       heading: 'Sikkerhedsanalyse',
-      paragraphs: ['Sørg for, at QR-koder forbliver scannede:'],
+      paragraphs: ['Sørg for, at QR-koder forbliver scanbare:'],
       bullets: [
         'Sikkerhedstilstand: Off, Balanceret, eller Streng Scanning krav.',
         'Minimodul Størrelse: Minimum pixel størrelse pr. modul.',
@@ -599,14 +599,14 @@ export const guide: PageDefinition = {
       heading: 'Indhold typer (Professional)',
       paragraphs: ['Professionelt niveau tilføjer betaling og enterprise indhold typer:'],
       bullets: [
-        'EPC / SEPA (EU): European bank transfer QR codes with IBAN, BIC, amount, reference.',
-        'UPI (Indien): Unified Payments Interface with VPA, betalingsmodtager navn, beløb.',
+        'EPC/SEPA (EU): Europæisk bankoverførsel QR-koder med IBAN, BIC, beløb, reference.',
+        'UPI (Indien): Unified Payments Interface med VPA, betalingsmodtagernavn, beløb.',
         'PayNow (Singapore): Singapore hurtig betaling med UEN eller mobilnummer.',
         'PromptPay (Thailand): Thailands nationale betalingssystem.',
         'PIX (Brasilien): Brasiliansk øjeblikkelig betaling med PIX nøgle.',
         'Crypto: Bitcoin, Ethereum, Litecoin betalingsadresser med valgfrit beløb.',
         "Marketing Kampagne Link: URL 'er med fuld UTM parameter (Marketing Tags) sporing.",
-        'Kort link: Til brug med URL-forkortelser for dynamiske / sporbare QR-koder.',
+        'Kort link: Til brug med URL-forkortere til dynamiske/sporbare QR-koder.',
         'GS1 Digital Link: Produktidentifikation med GTIN, seriel, batch, udløb.',
         'App Deep Link: iOS / Android app dybe links med brugerdefinerede ordninger.',
         'Brugerdefineret format: Raw data uden formatering eller validering.',
@@ -628,7 +628,7 @@ export const guide: PageDefinition = {
     {
       heading: 'Language-Relevante betalinger i avanceret tilstand',
       paragraphs: [
-        'Når du bruger Avanceret tilstand, viser ANQR automatisk betalingsmetoder, der er relevante for dit valgte sprog. For eksempel, vietnamesiske brugere se Österreich QR, thailandske brugere se PromptPay, og indiske sprogbrugere se UPI og BharatQR. Globale betalingsmetoder (cryptocurrency, PayPal, Cash App) er tilgængelige for alle sprog. Professionel tilstand åbner alle betalingsstandarder uanset sprog.',
+        'Når du bruger avanceret tilstand, viser ANQR automatisk betalingsmetoder, der er relevante for dit valgte sprog. For eksempel ser vietnamesiske brugere VietQR, thailandske brugere ser PromptPay, og brugere på indiske sprog ser UPI og BharatQR. Globale betalingsmetoder (cryptocurrency, PayPal, Cash App) er tilgængelige på alle sprog. Professionel tilstand låser op for alle betalingsstandarder uanset sprog.',
       ],
       links: [
         {
@@ -641,8 +641,8 @@ export const guide: PageDefinition = {
     {
       heading: 'Europæiske betalingsstandarder',
       bullets: [
-        'EPC / SEPA (EU): Den europæiske bankoverførsel QR-koder efter EPC QR-koden. Understøtter IBAN, BIC (valgfrit for indenlandsk), beløb i EUR og strukturerede eller ustrukturerede betalingsreferencer. Anvendes i hele SEPA-zonen, herunder EU-lande samt Schweiz, Norge, Island, Liechtenstein, Monaco og San Marino.',
-        'Swiss QR- bill: Swiss payment standard efter SIX Implementation Guidelines. Understøtter CHF og EUR, QR- Reference (QRR), Kreditorreference (ISO 11649), strukturerede kreditor- / debitoradresser og oplysninger om regninger. Krævet for schweiziske fakturaer siden 2022.',
+        'EPC/SEPA (EU): Europæiske QR-koder for bankoverførsler efter EPC QR Code Standard. Understøtter IBAN, BIC (valgfrit for indenlandsk), beløb i EUR og strukturerede eller ustrukturerede betalingsreferencer. Anvendes på tværs af SEPA-zonen inklusive EU-lande plus Schweiz, Norge, Island, Liechtenstein, Monaco og San Marino.',
+        'Swiss QR-bill: Schweizisk betalingsstandard efter SIX Implementation Guidelines. Understøtter CHF og EUR, QR-Reference (QRR), Kreditorreference (ISO 11649), strukturerede kreditor-/debitoradresser og fakturaoplysninger. Påkrævet for schweiziske fakturaer siden 2022.',
       ],
       links: [
         {
@@ -656,7 +656,7 @@ export const guide: PageDefinition = {
       heading: 'Indiske betalingsstandarder',
       bullets: [
         'UPI (Indien): Unified Payments Interface following NPCI Deep Linking Specification. Understøtter VPA (Virtual Payment Address), betalingsmodtagerens navn, beløb i INR, transaktionsnote, referencenr, handelskategori kode og transaktionsmåde.',
-        'BharatQR (Indien): Unified QR standard understøtter både UPI og kortbaserede betalinger. Kombinerer UPI VPA med kort PAN for maksimal kompatibilitet. Inkluderer handelsnavn, by, MCC, GST detaljer, og faktura / referencenumre.',
+        'BharatQR (Indien): Unified QR-standard, der understøtter både UPI og kortbaserede betalinger. Kombinerer UPI VPA med kort PAN for maksimal kompatibilitet. Indeholder sælgernavn, by, MCC, GST-oplysninger og faktura-/referencenumre.',
       ],
       links: [
         {
@@ -670,11 +670,11 @@ export const guide: PageDefinition = {
       heading: 'Sydøstasien Betalingsstandarder',
       bullets: [
         'PayNow (Singapore): Singapore hurtigt betalingssystem ved hjælp EMVCo QR specifikation med SGQR profil. Understøtter UEN (virksomhedsregistrering), mobilnummer eller NRIC som proxyidentifikatorer. Omfatter destinationsflag og udløbsdato.',
-        'PromptPay (Thailand): Thai nationale betalingssystem efter Bank of Thailand EMV profil. Understøtter mobilnummer, nationalt id, skatteregistreringsnummer, e-tegnebog-id og betaling af regninger med flere referencefelter.',
+        'PromptPay (Thailand): Thai nationalt betalingssystem efter Bank of Thailand EMV-profil. Understøtter mobilnummer, nationalt ID, skatte-id, e-wallet ID og fakturabetaling med flere referencefelter.',
         'QRIS (Indonesien): Hurtig reaktionskode Indonesisk standard. EMV- baseret national betalingsstandard, der understøtter handelsidentifikation, NMID (National Merchant ID), handelskriteriklassifikation og bekvemmelighedsgebyrer (fast eller procentdel).',
         'DuitNow (Malaysia): Malaysisk instant payment system. Understøtter flere proxy typer, herunder NRIC, mobil, pas, hær ID, og business registreringsnumre.',
-        'Vietnams interbank-overførselsstandard. Kræver bank BIN (NAPAS-identifikation) og kontonummer. Understøtter flere servicekoder for forskellige overførselstyper (QRPUSH, QRIBFTTA, QRIBFTTC).',
-        'QR Ph (Filippinerne): Philippine QR betalingsstandard for InstaPay og PESONet. Bruger kontonumre med handelsbetegnelse for P2M-transaktioner.',
+        'VietQR (Vietnam): Vietnamesisk interbankoverførselsstandard. Kræver bank BIN (NAPAS identifikation) og kontonummer. Understøtter flere servicekoder til forskellige overførselstyper (QRPUSH, QRIBFTTA, QRIBFTTC).',
+        'QR Ph (Filippinerne): Filippinsk QR-betalingsstandard for InstaPay og PESONet. Bruger kontonumre med købmandsidentifikation til P2M (person-til-købmand) transaktioner.',
       ],
       links: [
         {
@@ -718,7 +718,7 @@ export const guide: PageDefinition = {
       bullets: [
         "Bitcoin / Litecoin (BIP-21): Standard cryptocurrency betaling URI 'er med tegnebogsadresse, valgfrit beløb og etiket. Kompatibel med alle store Bitcoin og Litecoin punge.",
         'Lightning Network (BOLT11): Lightning Network betaling fakturaer. Indsæt en BOLT11 kodet faktura streng til instant Bitcoin betalinger med minimale gebyrer.',
-        'Ethereum (EIP-681): Ethereum transaction request URIs supporting native ETH transfers and ERC-20 token transfers. Omfatter kæde-ID til multinetværkssupport (Mainnet, Polygon, BSC, Vilkår, Optimisme, Avalanche), gasparametre og kontraktfunktionskald.',
+        "Ethereum (EIP-681): Ethereum-transaktionsanmodnings-URI'er, der understøtter native ETH-overførsler og ERC-20-tokenoverførsler. Inkluderer kæde-id til multi-netværkssupport (Mainnet, Polygon, BSC, Arbitrum, Optimism, Avalanche), gasparametre og kontraktfunktionskald.",
       ],
       links: [
         {
@@ -732,7 +732,7 @@ export const guide: PageDefinition = {
       heading: 'Betalingslinketjenester',
       bullets: [
         'PayPal.Me: PayPal betaling links med brugernavn og valgfri forfyldt beløb. Modtagere kan betale via PayPal balance, kort eller bankkonti.',
-        'Cash App: Cash App betalingslinks ved hjælp af $cashtag med valgfrit beløb. Populære i USA for peer-to-peer betalinger.',
+        'Cash App: Cash App betalingslinks ved hjælp af $cashtag med valgfrit beløb. Populært i USA for peer-to-peer-betalinger.',
       ],
       links: [
         {
@@ -745,7 +745,7 @@ export const guide: PageDefinition = {
     {
       heading: 'Generisk EMV QR',
       bullets: [
-        'EMV Generisk: Opret brugerdefineret EMV Merchant- Præsenteret tilstand QR-koder for betalingsordninger, der ikke er anført specifikt. Indstil handelsnavn, by, landekode (ISO 3166-1), valutakode (ISO 4217 numerisk), MCC, tips / bekvemmelighedsgebyr muligheder, og yderligere datafelter. Nyttig til test eller brugerdefinerede integreringer.',
+        'EMV Generisk: Opret brugerdefinerede EMV Merchant-Presented Mode QR-koder til betalingsordninger, der ikke specifikt er angivet. Konfigurer forhandlernavn, by, landekode (ISO 3166-1), valutakode (ISO 4217 numerisk), MCC, muligheder for drikkepenge/bekvemmelighedsgebyrer og yderligere datafelter. Nyttigt til test eller tilpassede integrationer.',
       ],
       links: [
         {
@@ -813,7 +813,7 @@ export const guide: PageDefinition = {
         'Pixel Snap: Gulv, runde, eller Ceil pixel justering.',
         'Per- Modul farve tilstand: Solid, ved lysstyrke, ved position, ved overlay, ved klynge.',
         'Farvepalet: Definer brugerdefinerede farve palette til per- modul farve.',
-        'Kontrastvagt: Sørg for minimum kontrastforhold mellem farver.',
+        'Kontrastbeskyttelse: Sørg for minimalt kontrastforhold mellem farver.',
         'Min kontrast Ratio: WCAG- stil kontrast krav (1: 1 til 21: 1).',
         'Ekstra kant Moduler: Yderligere grænse ud over stille zone.',
       ],
@@ -881,7 +881,7 @@ export const guide: PageDefinition = {
         'ec: Fejlkorrektionsniveau - L, M, Q eller H (standard: H).',
         'fg: Forgrundsfarve som hex uden # (standard: 000000).',
         'bg: Baggrundsfarve som hex uden # (standard: ffffff).',
-        'transparent: Sæt til 1 for gennemsigtig baggrund.',
+        'transparent: Indstil til 1 for gennemsigtig baggrund.',
         'margen: Stille zone i moduler (standard: 4).',
       ],
     },
@@ -899,7 +899,7 @@ export const guide: PageDefinition = {
         'øje Ydre, eyInner: Øje stilarter - firkantet, afrundet, cirkel.',
         'eye Scale: Øjenskalaprocent (standard: 100).',
         'gradient type - ingen, lineær, radial, conic.',
-        'gradient vinkel for lineære gradienter.',
+        'gradAngle: Gradientvinkel for lineære gradienter.',
         'gradient stopper som color1, pos1, color2, pos2,... (f.eks. ff0000,0,0000ff, 1).',
       ],
     },
@@ -915,7 +915,7 @@ export const guide: PageDefinition = {
         'rot: Overlay rotation i grader.',
         'flipX, flipY: Sæt til 1 til flip overlay.',
         'behold Findere: Bevar findermønstre (standard: 1).',
-        'behold Timing, KeepJustn: Sæt til 1 for at bevare timing / justering mønstre.',
+        'keepTiming, keepAlign: Indstil til 1 for at bevare timing/justeringsmønstre.',
       ],
     },
     {
@@ -939,7 +939,7 @@ export const guide: PageDefinition = {
       heading: 'Vandmærkeparametre',
       paragraphs: ['Tilføj vandmærker til genererede QR-koder:'],
       bullets: [
-        'wmEn: Sæt til 1 for at aktivere vandmærke.',
+        'wmEn: Indstil til 1 for at aktivere vandmærke.',
         'wm Kind: Vandmærke type - tekst, billede, mønster.',
         'wmText: Vandmærke tekst (URL- kodet).',
         'wmImg: URL til vandmærke billede.',
@@ -992,7 +992,7 @@ export const guide: PageDefinition = {
       bullets: [
         'Del Link: Opretter en URL til ANQR-appen med alle dine indstillinger indkodet som URL-parametre. Modtagere kan se og ændre QR-koden.',
         'Indlejret billede: Genererer en < img > tag peger på serveren API. QR-koden bliver serversiden og bruges som et billede.',
-        'Indlejret Markdown: Opretter Markdown billede syntaks for dokumentation og README-filer.',
+        'Integrer Markdown: Opretter Markdown-billedsyntaks til dokumentation og README-filer.',
         'Direkte API URL: Den rå API URL til brug i programmer, scripts eller andre integreringer.',
       ],
       links: [
@@ -1026,7 +1026,7 @@ export const guide: PageDefinition = {
       heading: 'Rate grænser og brug',
       paragraphs: [
         'API er gratis at bruge til rimelige mængder. For brug af høj volumen eller kommercielle applikationer, der kræver garanteret oppetid, bedes du kontakte os.',
-        'API svar omfatter aggressive caching headers. For bedste ydeevne, cache svar på din ende eller bruge den samme URL konsekvent for identiske QR-koder.',
+        'API-svar inkluderer aggressive caching-headere. For at opnå den bedste ydeevne skal du cache svar på din side eller bruge den samme URL konsekvent til identiske QR-koder.',
       ],
     },
     // Best Practices & Troubleshooting (sections 70+)
@@ -1053,10 +1053,10 @@ export const guide: PageDefinition = {
       paragraphs: ['Fælles spørgsmål og løsninger:'],
       bullets: [
         'QR vil ikke scanne: Reducer overlay intensitet, øge fejlkorrektion, kontrollere kontrast.',
-        'Kode for stor: Reducer indholdslængde, brug URL kortere, lavere version.',
-        'Sløret udgang: Øg modulstørrelse, brug PNG i stedet for komprimerede formater.',
+        'Koden er for stor: Reducer indholdslængden, brug URL-forkorter, lavere version.',
+        'Sløret output: Forøg modulstørrelsen, brug PNG i stedet for komprimerede formater.',
         'Farver ser forkerte ud: Tjek farve kontrast, prøv gråskala overlay mode.',
-        'GIF animerer ikke: Sørg for at bruge GIF format output, kontrollere frame tæller.',
+        'GIF animerer ikke: Sørg for at bruge GIF-format output, tjek antal billeder.',
         'Billedoverlejring ikke indlæsning: Tjek CORS tilladelser på fjernbilleder.',
       ],
       links: [
@@ -1076,7 +1076,7 @@ export const guide: PageDefinition = {
     {
       heading: 'Deling og indlejring',
       paragraphs: [
-        'Klik på knappen Del for at kopiere en URL med dine nuværende indstillinger. Modtagere kan åbne denne URL for at se din nøjagtige konfiguration. Bemærk: Overlæg billeder fra lokale filer kan ikke deles via URL.',
+        'I professionel tilstand skal du klikke på knappen Del for at kopiere en URL med dine nuværende indstillinger. Modtagere kan åbne denne URL for at se din nøjagtige konfiguration. Bemærk: Overlejringsbilleder fra lokale filer kan ikke deles via URL.',
       ],
       links: [
         {

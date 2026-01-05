@@ -61,7 +61,7 @@ export const learn: PageDefinition = {
       heading: 'Strategin för säker uppgradering',
       paragraphs: [
         'Huvudregeln för QR-uppgraderingar är bevarande av destinationer. Extrahera den exakta webbadressen från varje befintlig kod och koda den identiskt i din nya version. Detta säkerställer att all befintlig analys, omdirigeringslogik och kundernas förväntningar förblir intakta. Om du behöver destinationsflexibilitet för framtida uppdateringar är det här den perfekta tiden att introducera en kort webbadress eller omdirigeringstjänst – men implementera detta som ett separat projekt för att undvika komplicerade ändringar.',
-        'For the visual upgrade, apply improvements in layers: first ensure technical reliability (appropriate error correction and quiet zone), then add brand styling (colours, module shapes), and finally consider optional enhancements (centre overlays, frames). Varje lager bör valideras genom testning innan du fortsätter. ANQR:s säkerhetsläge hjälper till att upprätthålla dessa prioriteringar genom att varna när stylingval kan äventyra skanningsbarheten.',
+        'För den visuella uppgraderingen, tillämpa förbättringar i lager: säkerställ först teknisk tillförlitlighet (lämplig felkorrigering och tyst zon), lägg sedan till varumärkesstyling (färger, modulformer) och överväg slutligen valfria förbättringar (centrumöverlägg, ramar). Varje lager bör valideras genom testning innan du fortsätter. ANQR:s säkerhetsläge hjälper till att upprätthålla dessa prioriteringar genom att varna när stylingval kan äventyra skanningsbarheten.',
       ],
     },
     {
@@ -89,7 +89,7 @@ export const learn: PageDefinition = {
     {
       heading: 'Låsa din konfiguration för konsekvens',
       paragraphs: [
-        'När du har validerat en optimal konfiguration, bevara den med hjälp av ANQR:s delbara länkar. This creates a permanent record of every setting used to generate your approved code - colours, module style, error correction, sizing, and any overlays. Dela den här länken med ditt designteam, tryckerileverantörer och alla som kan behöva reproducera koden i framtiden.',
+        'När du har validerat en optimal konfiguration, bevara den med hjälp av ANQR:s delbara länkar. Detta skapar en permanent registrering av varje inställning som används för att generera din godkända kod - färger, modulstil, felkorrigering, storlek och eventuella överlagringar. Dela den här länken med ditt designteam, tryckerileverantörer och alla som kan behöva reproducera koden i framtiden.',
         'Detta konfigurationslås förhindrar den gradvisa försämringen som plågar många QR-installationer. Utan det återskapar personalen koder från skärmdumpar, designers bygger om inställningar från minnet och tryckerileverantörer gör "nyttiga" justeringar. Varje variant introducerar potentiella problem. Med en låst konfigurationslänk är varje reproduktion identisk med ditt testade, godkända original.',
       ],
       images: [
@@ -221,36 +221,36 @@ export const learn: PageDefinition = {
     {
       heading: 'Varför Vector (SVG) är att föredra för utskrift',
       paragraphs: [
-        "SVG files describe QR codes as mathematical shapes rather than grids of pixels. This means the code can be scaled to any size - from a 1cm label to a 10-metre banner - without any loss of edge sharpness. Skrivarens RIP (Raster Image Processor) återger vektorerna med utenhetens ursprungliga upplösning, vilket säkerställer att varje modulkant är så skarp som hårdvaran tillåter. There's no interpolation, no anti-aliasing artifacts, no accumulated blur from multiple resize operations.",
-        'Beyond scalability, SVG files are more robust in professional workflows. They survive round-trips through design software without degradation. De kan färgkorrigeras utan omsampling. They embed cleanly into PDF files for press-ready output. For any print application where quality matters, SVG should be your default export format.',
+        'SVG-filer beskriver QR-koder som matematiska former snarare än rutnät av pixlar. Detta innebär att koden kan skalas till vilken storlek som helst - från en etikett på 1 cm till en 10-meters banderoll - utan förlust av kantskärpa. Skrivarens RIP (Raster Image Processor) återger vektorerna med utenhetens ursprungliga upplösning, vilket säkerställer att varje modulkant är så skarp som hårdvaran tillåter. Det finns ingen interpolation, inga anti-aliasing-artefakter, ingen ackumulerad oskärpa från flera storleksändringsoperationer.',
+        'Utöver skalbarhet är SVG-filer mer robusta i professionella arbetsflöden. De överlever rundresor genom designprogramvara utan försämring. De kan färgkorrigeras utan omsampling. De bäddar in rent i PDF-filer för pressklar utmatning. För alla utskriftsapplikationer där kvaliteten är viktig bör SVG vara ditt standardexportformat.',
       ],
     },
     {
       heading: 'När PNG är acceptabelt',
       paragraphs: [
-        "PNG becomes necessary when your workflow or destination platform doesn't support vector formats. Some web platforms, signage CMS systems, and legacy print workflows require raster images. I dessa fall kan PNG fungera bra - men bara om du följer strikta regler: exportera med den slutliga fysiska storleken och upplösningen, skala aldrig upp efter exporten och undvik all förlustbringande komprimering eller formatkonvertering.",
-        "The critical rule for PNG is to calculate your required pixel dimensions before exporting. If your QR will print at 5cm and your printer operates at 300 DPI, you need approximately 590 pixels. Export at this size or larger, then scale down if needed - never up. Include this information in your filename or metadata so future users don't accidentally misuse a size-specific export.",
+        'PNG blir nödvändigt när ditt arbetsflöde eller målplattform inte stöder vektorformat. Vissa webbplattformar, signage CMS-system och äldre utskriftsarbetsflöden kräver rasterbilder. I dessa fall kan PNG fungera bra - men bara om du följer strikta regler: exportera med den slutliga fysiska storleken och upplösningen, skala aldrig upp efter exporten och undvik all förlustbringande komprimering eller formatkonvertering.',
+        'Den kritiska regeln för PNG är att beräkna dina nödvändiga pixeldimensioner innan du exporterar. Om din QR kommer att skriva ut vid 5 cm och din skrivare arbetar med 300 DPI, behöver du cirka 590 pixlar. Exportera till denna storlek eller större, skala sedan ner om det behövs - aldrig upp. Inkludera denna information i ditt filnamn eller metadata så att framtida användare inte missbrukar en storleksspecifik export av misstag.',
       ],
       images: [
         {
           src: '/images/learn/print-ready-resolution.png',
-          alt: 'A calculator interface showing the relationship between physical size, DPI, and required pixel dimensions',
+          alt: 'Ett kalkylatorgränssnitt som visar förhållandet mellan fysisk storlek, DPI och nödvändiga pixeldimensioner',
           caption:
-            'Print resolution calculator: determining the minimum pixel dimensions for your target output size',
+            'Kalkylator för utskriftsupplösning: bestämmer minsta pixeldimensioner för din målstorlek',
         },
       ],
     },
     {
       heading: 'ANQR-exportalternativ förklaras',
       paragraphs: [
-        'ANQR offers several SVG export modes to suit different workflows. True Vector mode produces pure path-based output ideal for print and professional design tools. När du har lagt till rasteröverlägg eller vissa effekter kan ANQR bädda in dessa samtidigt som vektormoduler bibehålls, eller så kan du exportera en helt rastrerad version med din specificerade upplösning. Understanding these options helps you choose the right export for each use case.',
-        'For PNG exports, ANQR lets you specify exact dimensions and includes options for transparent backgrounds. DPI-inställningen hjälper dig att beräkna lämpliga storlekar för utskrift, men kom ihåg att DPI är metadata - det som är viktigt för utskriften är att ha tillräckligt med pixlar för din fysiska storlek. When in doubt, export larger than you think you need; scaling down preserves quality while scaling up destroys it.',
+        'ANQR erbjuder flera SVG-exportlägen för att passa olika arbetsflöden. True Vector-läget producerar ren banbaserad utskrift, idealisk för utskriftsverktyg och professionella designverktyg. När du har lagt till rasteröverlägg eller vissa effekter kan ANQR bädda in dessa samtidigt som vektormoduler bibehålls, eller så kan du exportera en helt rastrerad version med din specificerade upplösning. Att förstå dessa alternativ hjälper dig att välja rätt export för varje användningsfall.',
+        'För PNG-exporter låter ANQR dig ange exakta mått och inkluderar alternativ för transparenta bakgrunder. DPI-inställningen hjälper dig att beräkna lämpliga storlekar för utskrift, men kom ihåg att DPI är metadata - det som är viktigt för utskriften är att ha tillräckligt med pixlar för din fysiska storlek. När du är osäker, exportera större än du tror att du behöver; nedskalning bevarar kvaliteten medan uppskalning förstör den.',
       ],
     },
     {
       heading: 'Förbereder filer för överlämnande',
       paragraphs: [
-        'When passing QR artwork to designers or print vendors, include clear specifications: the intended physical size, minimum quiet zone requirements, and any colour space considerations. For critical applications, provide both an SVG master and a high-resolution PNG backup, clearly labeled with their intended uses. Include your ANQR configuration link so the code can be regenerated if needed.',
+        'När du skickar QR-konstverk till designers eller tryckerileverantörer, inkludera tydliga specifikationer: den avsedda fysiska storleken, minimikrav för tyst zon och eventuella färgrymdsöverväganden. För kritiska applikationer, tillhandahåll både en SVG-master och en högupplöst PNG-säkerhetskopia, tydligt märkt med deras avsedda användningsområden. Inkludera din ANQR-konfigurationslänk så att koden kan återskapas om det behövs.',
         'Förutse vanliga misstag i överlämningsprocessen. Ange uttryckligen att QR:en inte ska skalas, roteras, skevt eller ha effekter. Ange att den tysta zonen måste förbli fri - inga skärmärken, registreringsmärken eller designelement som tränger in. Om QR ska placeras på en färgad eller fotografisk bakgrund, tillhandahåll en version med en ogenomskinlig baksida för att säkerställa tillräcklig kontrast.',
       ],
       images: [
@@ -367,7 +367,7 @@ export const learn: PageDefinition = {
           src: '/images/learn/animated-testing.png',
           alt: 'En testmatris som visar skanningsframgångsfrekvenser över olika ramar, enheter och visningsförhållanden',
           caption:
-            'Animated QR testing protocol: systematic verification across frames, devices, and viewing conditions',
+            'Animerat QR-testprotokoll: systematisk verifiering över ramar, enheter och visningsförhållanden',
         },
       ],
       links: [
@@ -389,29 +389,29 @@ export const learn: PageDefinition = {
       heading: 'Bästa praxis för QR-säkerhet och efterlevnad',
       paragraphs: [
         'En vackert designad QR-kod som inte går att skanna är värre än värdelös - den frustrerar kunder, skadar varumärkesuppfattningen och slösar bort varje resurs som investeras i att skapa och distribuera den. Den här guiden täcker de tekniska och praktiska faktorerna som avgör om en QR-kod ska skannas tillförlitligt, och hur man använder ANQR:s säkerhetsfunktioner för att fånga upp potentiella problem innan de når produktionen.',
-        'QR-kodens tillförlitlighet är inte binär. A code might scan perfectly on flagship phones but fail on budget devices. It might work in ideal lighting but struggle in dim restaurants or bright sunlight. Understanding the factors that affect scannability helps you make informed tradeoffs between visual styling and real-world reliability.',
+        'QR-kodens tillförlitlighet är inte binär. En kod kan skanna perfekt på flaggskeppstelefoner men misslyckas på budgetenheter. Det kan fungera i idealisk belysning men kämpar i svaga restauranger eller starkt solljus. Att förstå faktorerna som påverkar skanningsbarheten hjälper dig att göra välgrundade avvägningar mellan visuell stil och verklig tillförlitlighet.',
       ],
       images: [
         {
           src: '/images/learn/safety-overview.png',
-          alt: 'A reliability spectrum showing QR codes ranging from highly scannable to marginally readable',
+          alt: 'Ett tillförlitlighetsspektrum som visar QR-koder som sträcker sig från mycket skanningsbara till marginellt läsbara',
           caption:
-            'The scannability spectrum: from bulletproof codes to styling that pushes reliability limits',
+            'Skanningsspektrat: från skottsäkra koder till styling som tänjer på tillförlitlighetsgränserna',
         },
       ],
     },
     {
       heading: 'Förstå felkorrigeringsnivåer',
       paragraphs: [
-        'QR codes include built-in redundancy that allows them to be read even when partially damaged or obscured. Felkorrigeringsnivån - L (7%), M (15%), Q (25%) eller H (30%) - bestämmer hur mycket av koden som kan saknas medan den fortfarande avkodas korrekt. Higher error correction creates larger codes but provides a safety margin for overlays, printing imperfections, and environmental damage.',
-        'För koder med bildöverlägg är felkorrigeringsnivå H väsentlig - överlägget skymmer fysiskt en del av koden, och du behöver den 30 % redundansen för att bibehålla tillförlitligheten. For clean, unstyled codes in controlled environments, level M often suffices. Level L should be reserved for situations where code size is critically constrained and you can guarantee pristine conditions.',
+        'QR-koder inkluderar inbyggd redundans som gör att de kan läsas även när de är delvis skadade eller mörka. Felkorrigeringsnivån - L (7%), M (15%), Q (25%) eller H (30%) - bestämmer hur mycket av koden som kan saknas medan den fortfarande avkodas korrekt. Högre felkorrigering skapar större koder men ger en säkerhetsmarginal för överlagringar, utskriftsfel och miljöskador.',
+        'För koder med bildöverlägg är felkorrigeringsnivå H väsentlig - överlägget skymmer fysiskt en del av koden, och du behöver den 30 % redundansen för att bibehålla tillförlitligheten. För rena, ostylade koder i kontrollerade miljöer räcker ofta nivå M. Nivå L bör reserveras för situationer där kodstorleken är kritiskt begränsad och du kan garantera orörda förhållanden.',
       ],
     },
     {
       heading: 'Den kritiska tysta zonen',
       paragraphs: [
-        'The quiet zone is the blank margin surrounding every QR code. Scanners use this boundary to identify where the code begins and ends. The ISO standard specifies a minimum quiet zone of four modules (four times the width of the smallest square in the code). Violating this space - with design elements, trim edges, or adjacent content - is one of the most common causes of scan failures.',
-        "ANQR's quiet zone enforcement helps maintain this critical spacing, but you must also ensure it's preserved in your final designs. When handing off QR artwork, explicitly specify the quiet zone requirements. When placing codes in layouts, verify that no elements intrude into this space. A few millimetres of clear space can mean the difference between reliable scanning and frustrated customers.",
+        'Den tysta zonen är den tomma marginalen som omger varje QR-kod. Scanners använder denna gräns för att identifiera var koden börjar och slutar. ISO-standarden specificerar en minsta tyst zon på fyra moduler (fyra gånger bredden på den minsta kvadraten i koden). Att kränka detta utrymme - med designelement, trimkanter eller intilliggande innehåll - är en av de vanligaste orsakerna till skanningsfel.',
+        'ANQR:s tillämpning av tysta zoner hjälper till att bibehålla detta kritiska avstånd, men du måste också se till att det bevaras i dina slutliga design. När du lämnar ut QR-konstverk, ange uttryckligen kraven på tyst zon. När du placerar koder i layouter, kontrollera att inga element tränger in i detta utrymme. Några millimeters fritt utrymme kan betyda skillnaden mellan pålitlig skanning och frustrerade kunder.',
       ],
       images: [
         {
@@ -424,7 +424,7 @@ export const learn: PageDefinition = {
     {
       heading: 'Kontrast och färgsäkerhet',
       paragraphs: [
-        'QR scanners detect the pattern of light and dark modules. Varje stil som minskar denna kontrast – ljusa förgrunder, mörka bakgrunder, gradienteffekter eller låg opacitet – gör koden svårare att läsa. ANQR beräknar kontrastförhållanden och varnar när dina färgval närmar sig farliga nivåer, men den slutliga bedömningen är alltid tester i verkligheten.',
+        'QR-skannrar upptäcker mönstret av ljusa och mörka moduler. Varje stil som minskar denna kontrast – ljusa förgrunder, mörka bakgrunder, gradienteffekter eller låg opacitet – gör koden svårare att läsa. ANQR beräknar kontrastförhållanden och varnar när dina färgval närmar sig farliga nivåer, men den slutliga bedömningen är alltid tester i verkligheten.',
         'Färguppfattningen varierar med ljusförhållandena. En färgkombination som verkar ha hög kontrast på din bildskärm kan bli svår att urskilja under varm glödlampsbelysning eller svala lysrör. Om din kod kommer att användas i olika ljusförhållanden, testa under flera ljuskällor och överväg mer konservativa kontrastförhållanden som en säkerhetsmarginal.',
       ],
     },
@@ -432,7 +432,7 @@ export const learn: PageDefinition = {
       heading: 'Modulstorlek och visningsavstånd',
       paragraphs: [
         'Den fysiska storleken på enskilda moduler bestämmer det maximala avståndet från vilket en kod kan skannas. Mindre moduler betyder mindre koder men kräver kortare skanningsavstånd. Den allmänna regeln är att varje modul ska vara minst 0,5 mm vid det avsedda skanningsavståndet, och skala upp proportionellt för större avstånd. En kod på en skylt behöver mycket större moduler än en kod på ett visitkort.',
-        "När du beräknar modulstorlek, överväg det värsta scenariot: kunden med en äldre telefon, i ofullständig belysning, skannar på det största sannolika avståndet. Design for this user, and everyone else will have an even better experience. ANQR's size recommendations factor in these real-world variables to suggest appropriate dimensions for your intended use.",
+        'När du beräknar modulstorlek, överväg det värsta scenariot: kunden med en äldre telefon, i ofullständig belysning, skannar på det största sannolika avståndet. Designa för den här användaren, så får alla andra en ännu bättre upplevelse. ANQR:s storleksrekommendationer tar hänsyn till dessa verkliga variabler för att föreslå lämpliga dimensioner för din avsedda användning.',
       ],
       images: [
         {
@@ -446,19 +446,19 @@ export const learn: PageDefinition = {
       heading: 'Använder ANQR säkerhetsläge',
       paragraphs: [
         'ANQR:s säkerhetsläge ger feedback i realtid om skanningens tillförlitlighet. Den övervakar kontrastförhållanden, tyst zonkompatibilitet, överlagringsintensitet och andra faktorer som påverkar skanningsbarheten. När någon parameter närmar sig riskabla nivåer kommer du att se varningar med specifik vägledning om hur man kan förbättra tillförlitligheten. För professionella installationer där fel är kostsamt, håll Säkerhetsläget aktivt under hela designprocessen.',
-        'Safety Mode also includes a scan verification feature that attempts to decode your generated code and reports success or failure. Även om denna verifiering i appen inte kan replikera alla verkliga tillstånd, fångar den många vanliga problem innan du investerar i utskrift eller distribution. Treat successful verification as a minimum bar, not a guarantee - real-world testing remains essential.',
+        'Säkerhetsläge inkluderar också en skanningsverifieringsfunktion som försöker avkoda din genererade kod och rapporterar framgång eller misslyckande. Även om denna verifiering i appen inte kan replikera alla verkliga tillstånd, fångar den många vanliga problem innan du investerar i utskrift eller distribution. Behandla framgångsrik verifiering som ett minimikrav, inte en garanti - tester i verkligheten är fortfarande viktiga.',
       ],
     },
     {
       heading: 'Testprotokoll i verkliga världen',
       paragraphs: [
-        'No amount of software verification replaces physical testing. Print your code at the intended size on representative material. Test it in the actual deployment environment with lighting conditions that match real use. Skanna med flera enheter – inte bara din flaggskeppstelefon, utan budgetbaserade Android-enheter, äldre iPhones och alla specifika enheter som din publik ofta använder.',
-        'Dokumentera dina tester systematiskt. Record which devices were tested, under what conditions, with what results. Om du distribuerar koder i stor skala, upprätta acceptanskriterier: kanske 95 % framgångsfrekvens för din enhetstestpool, eller framgångsrika skanningar inom 2 sekunder på alla testade enheter. These standards help make go/no-go decisions objective rather than hoping for the best.',
+        'Ingen mängd programverifiering ersätter fysisk testning. Skriv ut din kod i avsedd storlek på representativt material. Testa den i den faktiska implementeringsmiljön med ljusförhållanden som matchar verklig användning. Skanna med flera enheter – inte bara din flaggskeppstelefon, utan budgetbaserade Android-enheter, äldre iPhones och alla specifika enheter som din publik ofta använder.',
+        'Dokumentera dina tester systematiskt. Registrera vilka enheter som testades, under vilka förhållanden, med vilka resultat. Om du distribuerar koder i stor skala, upprätta acceptanskriterier: kanske 95 % framgångsfrekvens för din enhetstestpool, eller framgångsrika skanningar inom 2 sekunder på alla testade enheter. Dessa standarder hjälper till att göra go/no-go-beslut objektiva snarare än att hoppas på det bästa.',
       ],
       images: [
         {
           src: '/images/learn/safety-testing.png',
-          alt: 'A comprehensive testing checklist covering devices, conditions, and acceptance criteria',
+          alt: 'En omfattande checklista för testning som täcker enheter, villkor och acceptanskriterier',
           caption:
             'QR deployment testing protocol: systematic verification before production commitment',
         },

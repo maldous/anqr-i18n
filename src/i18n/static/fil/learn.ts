@@ -9,7 +9,7 @@ import { LAST_UPDATED } from '../types';
 export const learn: PageDefinition = {
   title: 'Matuto sa ANQR',
   description:
-    'Praktikal, business-first guides para ang QR code ay maging tunay na marketing assets - hindi lamang functional squares. Alamin kung paano i-upgrade ang legacy point-of-sale codes, lumikha ng compliant pay QR signage, maghanda ng print-handang imports, ligtas na gumamit ng animation sa digital display, at ibahagi ang naka-lock-in configurations sa pamamagitan ng mga languagewist team gamit ang ANQR ("anchor") links.',
+    'Praktikal, pang-negosyo na mga gabay para sa paggawa ng mga QR code sa totoong marketing asset - hindi lamang functional na mga parisukat. Matutunan kung paano mag-upgrade ng mga legacy na point-of-sale code, gumawa ng compliant na pagbabayad na QR signage, maghanda ng mga print-ready na pag-export, ligtas na gumamit ng animation sa mga digital na display, at magbahagi ng mga naka-lock na configuration sa mga multilingual na team gamit ang ANQR ("anchor") na mga link.',
   lastUpdated: LAST_UPDATED,
 
   primaryLinks: [
@@ -23,7 +23,7 @@ export const learn: PageDefinition = {
     {
       heading: 'Pagpapasulong sa mga Kampanya ng QR',
       paragraphs: [
-        'Karamihan sa mga negosyo ay may mga code ng QR na nakakalat sa kanilang mga operasyon - on menus, counter stand, pakete, at mga materyales pang-produksyon. Marami sa mga kodigong ito ay nilikha mga taon na ang nakalilipas sa pamamagitan ng mga pangunahing generator, na nagbunga ng mga generic black-and-white squares na hindi nagbibigay inspirasyon sa pagtitiwala o tumutugma sa iyong brand identity. Ang komprehensibong giyang ito ay lumalakad sa iyo sa sistematikong paraan ng pag - aawding, pag - a - upgrading, at pag - abot sa iyong umiiral na imprastraktura ng QR nang hindi sinisira ang mga paglalakbay ng parokyano na naitatag mo na.',
+        'Karamihan sa mga negosyo ay may mga QR code na nakakalat sa kanilang mga operasyon - sa mga menu, counter stand, packaging, at mga materyal na pang-promosyon. Marami sa mga code na ito ay nilikha taon na ang nakakaraan gamit ang mga pangunahing generator, na nagreresulta sa mga generic na black-and-white na parisukat na nabigong magbigay ng inspirasyon sa kumpiyansa o tumugma sa pagkakakilanlan ng iyong brand. Ang komprehensibong gabay na ito ay nagtuturo sa iyo sa isang sistematikong diskarte sa pag-audit, pag-upgrade, at pag-optimize ng iyong umiiral na imprastraktura ng QR nang hindi naaabala ang mga paglalakbay ng customer na naitatag mo na.',
         'Ang estratehikong bentaha ng pag - aalsa sa halip na palitan ang iyong mga kodigo ng QR ay nakasalalay sa pagpapanatiling patuluyan. Natutuhan na ng iyong mga parokyano na umasa sa tiyak na mga patutunguhan kapag sinusuri nila ang iyong mga kodigo. Sa pamamagitan ng pagpapanatiling magkatulad ng kodigong mga URL samantalang lubhang pinabubuti ang visual na presentasyon, ang pagiging maaasahan, at ang pagkakahanay ng mga marka, lumilikha ka ng isang di - mababagong pagbabago na nagpapatindi sa pagtitiwala nang hindi na nangangailangan ng anumang pagbabago sa iyong digital na imprastraktura o pagsusuri ng mga anestics.',
       ],
       images: [
@@ -60,7 +60,7 @@ export const learn: PageDefinition = {
     {
       heading: 'Ang Ligtas na Estratehiya sa Upgrade',
       paragraphs: [
-        'Ang cardinal rule of QR upgrades ay destinasyon preserve. Alisin ang eksaktong URL mula sa bawat umiiral na kodigo at i - adjust ito sa iyong bagong bersiyon. Tinitiyak nito ang lahat ng umiiral na anatomiko, naitutuwid ang lohika, at nananatiling buo ang mga inaasahan ng mga parokyano. Kung kailangan mong makibagay sa patutunguhan ng mga update sa hinaharap, tamang - tamang panahon ito upang ipakilala ang maikling URL o iredirect ang serbisyo - subalit ipatupad ito bilang isang hiwalay na proyekto upang maiwasan ang mga pagbabago.',
+        'Ang pangunahing panuntunan ng mga pag-upgrade ng QR ay pagpapanatili ng destinasyon. I-extract ang eksaktong URL mula sa bawat umiiral na code at i-encode ito nang magkapareho sa iyong bagong bersyon. Tinitiyak nito na mananatiling buo ang lahat ng umiiral na analytics, redirect logic, at inaasahan ng customer. Kung kailangan mo ng flexibility ng patutunguhan para sa mga update sa hinaharap, ito ang mainam na oras para ipakilala ang isang branded na maikling URL o serbisyo sa pag-redirect - ngunit ipatupad ito bilang isang hiwalay na proyekto upang maiwasan ang pagsasama-sama ng mga pagbabago.',
         "Para sa visual upgrade, maglagay ng mga pagpapabuti sa mga layer: una muna'y tiyakin ang teknikal na pagkamaaasahan (appropriate error reflection at tahimik na sona), pagkatapos ay idagdag ang brand styling (colours, module na hugis), at sa wakas ay isaalang - alang ang opsyonal na mga pagpapainam (gitnang mga balot, balangkas). Ang bawat suson ay dapat na tiyakin sa pamamagitan ng pagsubok bago magpatuloy. Ang ANQR's Safety Mode ay tumutulong sa pagpapatupad ng mga prayoridad na ito sa pamamagitan ng pagbababala kapag ang mga pagpipiliang pampagtatalik ay maaaring magkompromiso ng pagiging scannabilidad.",
       ],
     },
@@ -95,7 +95,7 @@ export const learn: PageDefinition = {
       images: [
         {
           src: '/images/learn/improve-existing-lock.png',
-          alt: 'Isang dayagram na nagpapakita ng configuration drift: mga screenshot na humahantong sa mga paglilibang na humahantong sa mga variant, laban sa isang pinagmulan-of-katotohanan na link',
+          alt: 'Isang diagram na nagpapakita ng configuration drift: mga screenshot na humahantong sa mga libangan na humahantong sa mga variant, kumpara sa isang link ng source-of-truth',
           caption:
             'Iwasan ang pag - anod sa pamamagitan ng pagtatatag ng isang may awtoridad na pinagmumulan para sa lahat ng pag - aanak ng QR',
         },
@@ -116,7 +116,7 @@ export const learn: PageDefinition = {
 
     // Guide 2: QR Codes for Retail Payments
     {
-      heading: 'QR Codes for Retail Payments',
+      heading: 'Mga QR Code para sa Mga Retail Payment',
       paragraphs: [
         'Ang mga code ng Payment QR ay gumagana sa pinaka-kinakailangang kapaligiran sa retail: ang sandali ng transaksiyon. Ang mga parokyano ay handang magbayad, kadalasan nang may queue na nabubuo sa likuran nila, at ang bawat segundo ng pagkaantala ay lumilikha ng pagkiskis. Gayunman ang high-pressure na sandaling ito ay pangunahing real estate din para sa brand refide. Ipinaliliwanag ng giyang ito kung paano lilikha ng mga kodigo ng bayad na QR na agad na nagsusuri sa mga ap ng bangko samantalang naghaharap pa rin ng isang propesyonal, may tatak na hitsura na gumagawa sa pagtitiwala ng parokyano.',
         'Ang saligang prinsipyo para sa pagbabayad ng QR codes ay ang pagkamaaasahan sa mga aesthetics. Ang isang maganda ang pagkakadisenyong kodigo na hindi nag - scan sa isang stage app ng isang parokyano ay magkakahalaga sa iyo nang higit sa pinabayaang mga transaksiyon at bigong mga parokyano kaysa sa magagawa ng isang konserbatibong disenyo. Magsimula sa pagsunod, magdagdag ng pagkamaaasahan, pagkatapos ay maingat na igisa lamang kung saan hindi nito ikinokompromiso ang pangunahing gawain.',
@@ -153,7 +153,7 @@ export const learn: PageDefinition = {
       ],
     },
     {
-      heading: 'Conservative Branding for Payment Codes',
+      heading: 'Conservative Branding para sa Mga Code ng Pagbabayad',
       paragraphs: [
         "Ang pagbabayad ng mga app ay hindi gaanong mapagpatawad kaysa sa mga generic camera scanner. Maraming mga app sa pagbabangko ang gumagamit ng mas matanda, mas simpleng QR na nagbabasa ng algorithms na tamang - tama para sa bilis sa halip na pag-aangkop. Nangangahulugan ito ng pag - iistrikto na ang isang kamera ng telepono ay maaaring hindi gumana sa pamamagitan ng espesipikong mga app na bayad. Manatiling konserbatibo: gamitin ang kulay ng iyong tatak para sa pang - ibabaw na kulay kung ito'y may malaking pagkakaiba, subalit iwasan ang mga pahiyas, mabibigat na balot, o palamuti na maaaring makahadlang sa pagkilala.",
         'Kung nais mo ng isang logo ng sentro o cluster, panatilihin itong lubhang maliit - hindi hihigit sa 10-15% ng lugar ng QR - at subukin nang malawakan sa bawat bayad app ang iyong mga parokyano ay maaaring gamitin. Pinipili ng maraming negosyo ang walang tapal sa mga kodigo ng pagbabayad, iniingatan na ang pag - iingat para sa pagbibili ng mga kodigo ng QR kung saan ang mga kahilingan ng pagkamaaasahan ay hindi gaanong mahigpit. Ang trabaho ng kodigo ng pagbabayad ay gumawa ng mga transaksiyon, hindi upang pahangain ang paningin.',

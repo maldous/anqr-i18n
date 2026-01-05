@@ -24,7 +24,7 @@ export const terms: PageDefinition = {
     {
       heading: 'Dozwolone stosowanie',
       paragraphs: [
-        'Możesz używać ANQR tylko w celach zgodnych z prawem. Jesteś wyłącznie odpowiedzialny za zawartość kodowania do kodów QR i za to, jak używasz dowolnych kodów QR generowanych przez Ciebie.',
+        'Możesz używać ANQR wyłącznie do celów zgodnych z prawem. Ponosisz wyłączną odpowiedzialność za treści, które kodujesz w kodach QR i za sposób, w jaki wykorzystujesz wygenerowane przez siebie kody QR.',
       ],
     },
     {

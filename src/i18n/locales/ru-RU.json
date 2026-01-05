@@ -1227,7 +1227,7 @@
   "accessibility": {
     "toggleSettings": "Панель настроек Toggle",
     "allCategories": "Все категории",
-    "copyShareLink": "Copy shareable link to clipboard скачать",
+    "copyShareLink": "Скопировать общую ссылку в буфер обмена",
     "exportQrCode": "Экспорт QR-кода в файл",
     "openNavMenu": "Открытое навигационное меню",
     "openGuideSidebar": "Открытая боковая панель документации",

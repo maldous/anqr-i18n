@@ -92,7 +92,7 @@ export const privacy: PageDefinition = {
       heading: 'GDPR 법적 근거',
       paragraphs: [
         '우리는 이러한 기초에 데이터를 처리 : (a) 일관성 - 개인화 광고 (우리의 광고 파트너에 의해 관리); (b) 분석, 보안 및 개선을위한 법적 관심 -; (c) 계약 - 문의에 응답하기.',
-        '귀하의 권리를 행사하려면 ${CONTACT_EMAIL}에 문의하십시오. 우리는 30 일 안에 반응합니다.',
+        '귀하의 권리를 행사하려면 email@anqr.link에 문의하십시오. 우리는 30 일 안에 반응합니다.',
       ],
     },
     {
@@ -108,7 +108,7 @@ export const privacy: PageDefinition = {
       heading: 'CCPA 범주 수집',
       paragraphs: [
         '카테고리: Identifiers (IP 주소, 장치 ID), 인터넷 활동 (브라우저, 광고 상호 작용), Geolocation (대략), Inferences (브라우저에서 클립).',
-        '운동 권리 또는 선택 : ${CONTACT_EMAIL} 또는 쿠키 설정을 조정할 수 있습니다.',
+        '운동 권리 또는 선택 : email@anqr.link 또는 쿠키 설정을 조정할 수 있습니다.',
       ],
     },
     {
@@ -120,7 +120,7 @@ export const privacy: PageDefinition = {
     {
       heading: '아이들의 개인 정보 보호',
       paragraphs: [
-        'ANQR은 13세 미만의 어린이(EEA에서 16세)를 감독하지 않습니다. 우리는 아이들에서 데이터를 수집하지 않습니다. 연락 ${CONTACT_EMAIL} 당신이 아이가 정보를 제공 한 경우.',
+        'ANQR은 13세 미만의 어린이(EEA에서 16세)를 감독하지 않습니다. 우리는 아이들에서 데이터를 수집하지 않습니다. 연락 email@anqr.link 당신이 아이가 정보를 제공 한 경우.',
       ],
     },
     {
@@ -144,7 +144,7 @@ export const privacy: PageDefinition = {
     {
       heading: '제품 정보',
       paragraphs: [
-        '개인 정보 보호 질문 또는 귀하의 권리를 행사하려면: ${CONTACT_EMAIL} 또는 우리의 연락처 페이지를 사용. 우리는 30 일 이내에 개인 정보 보호 요청에 응답합니다.',
+        '개인 정보 보호 질문 또는 귀하의 권리를 행사하려면: email@anqr.link 또는 우리의 연락처 페이지를 사용. 우리는 30 일 이내에 개인 정보 보호 요청에 응답합니다.',
       ],
     },
   ],

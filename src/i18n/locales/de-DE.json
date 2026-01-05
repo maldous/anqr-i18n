@@ -1874,7 +1874,7 @@
     "eip681Hint": "EIP-681 transaction request URI",
     "qrisHint": "Quick Response Code Indonesian Standard",
     "duitnowHint": "Malaysia instant payment system",
-    "bharatqrHint": "India unified QR for UPI + card payments",
+    "bharatqrHint": "Indien vereinheitlichte QR für UPI + Kartenzahlungen",
     "napasHint": "NAPAS bank identification number",
     "qrphHint": "Philippines QR payment standard",
     "twqrHint": "Taiwan QR payment standard",

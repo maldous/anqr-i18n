@@ -93,7 +93,7 @@ export const privacy: PageDefinition = {
       heading: 'Rechtsgrundlage',
       paragraphs: [
         'Wir verarbeiten Daten auf diesen Basisn: (a) Zustimmung - für personalisierte Werbung (verwaltet von unseren Werbepartnern); (b) Legitimierte Interessen - für Analytik, Sicherheit und Verbesserung; (c) Vertrag - auf Anfragen reagieren.',
-        'Um Ihre Rechte auszuüben, kontaktieren Sie ${CONTACT_EMAIL}. Wir reagieren innerhalb von 30 Tagen.',
+        'Um Ihre Rechte auszuüben, kontaktieren Sie email@anqr.link. Wir reagieren innerhalb von 30 Tagen.',
       ],
     },
     {

@@ -24,7 +24,7 @@ export const learn: PageDefinition = {
       heading: 'Cải thiện các chiến dịch QR hiện có',
       paragraphs: [
         'Hầu hết các doanh nghiệp đều có mã QR nằm rải rác trong các hoạt động của họ - trên thực đơn, quầy tính tiền, bao bì và tài liệu quảng cáo. Nhiều mã trong số này đã được tạo từ nhiều năm trước bằng các trình tạo cơ bản, dẫn đến các ô vuông đen trắng chung chung không tạo được sự tự tin hoặc không phù hợp với bản sắc thương hiệu của bạn. Hướng dẫn toàn diện này hướng dẫn bạn cách tiếp cận có hệ thống để kiểm tra, nâng cấp và tối ưu hóa cơ sở hạ tầng QR hiện tại của bạn mà không làm gián đoạn hành trình của khách hàng mà bạn đã thiết lập.',
-        'The strategic advantage of upgrading rather than replacing your QR codes lies in preserving continuity. Khách hàng của bạn đã biết cách mong đợi một số điểm đến nhất định khi họ quét mã của bạn. Bằng cách giữ các URL được mã hóa giống hệt nhau đồng thời cải thiện đáng kể cách trình bày trực quan, độ tin cậy khi quét và sự liên kết thương hiệu, bạn tạo ra một quá trình chuyển đổi liền mạch nhằm nâng cao độ tin cậy mà không yêu cầu bất kỳ thay đổi nào đối với cơ sở hạ tầng kỹ thuật số hoặc theo dõi phân tích của bạn.',
+        'Lợi thế chiến lược của việc nâng cấp thay vì thay thế mã QR của bạn nằm ở việc duy trì tính liên tục. Khách hàng của bạn đã biết cách mong đợi một số điểm đến nhất định khi họ quét mã của bạn. Bằng cách giữ các URL được mã hóa giống hệt nhau đồng thời cải thiện đáng kể cách trình bày trực quan, độ tin cậy khi quét và sự liên kết thương hiệu, bạn tạo ra một quá trình chuyển đổi liền mạch nhằm nâng cao độ tin cậy mà không yêu cầu bất kỳ thay đổi nào đối với cơ sở hạ tầng kỹ thuật số hoặc theo dõi phân tích của bạn.',
       ],
       images: [
         {
@@ -155,7 +155,7 @@ export const learn: PageDefinition = {
     {
       heading: 'Xây dựng thương hiệu bảo thủ cho mã thanh toán',
       paragraphs: [
-        'Payment apps are less forgiving than generic camera scanners. Nhiều ứng dụng ngân hàng sử dụng thuật toán đọc QR cũ hơn, đơn giản hơn được tối ưu hóa cho tốc độ thay vì tính linh hoạt. This means styling that works perfectly with a phone camera may fail with specific payment apps. Giữ thương hiệu thận trọng: sử dụng màu thương hiệu của bạn làm nền trước nếu nó duy trì độ tương phản mạnh, nhưng tránh chuyển màu, lớp phủ nặng hoặc các yếu tố trang trí có thể cản trở khả năng nhận dạng.',
+        'Các ứng dụng thanh toán ít dễ tha thứ hơn so với các máy quét camera thông thường. Nhiều ứng dụng ngân hàng sử dụng thuật toán đọc QR cũ hơn, đơn giản hơn được tối ưu hóa cho tốc độ thay vì tính linh hoạt. Điều này có nghĩa là kiểu dáng hoạt động hoàn hảo với camera điện thoại có thể không thành công với các ứng dụng thanh toán cụ thể. Giữ thương hiệu thận trọng: sử dụng màu thương hiệu của bạn làm nền trước nếu nó duy trì độ tương phản mạnh, nhưng tránh chuyển màu, lớp phủ nặng hoặc các yếu tố trang trí có thể cản trở khả năng nhận dạng.',
         'Nếu bạn muốn có biểu tượng hoặc lớp phủ ở giữa, hãy giữ kích thước cực nhỏ - không quá 10-15% diện tích QR - và thử nghiệm rộng rãi với mọi ứng dụng thanh toán mà khách hàng của bạn có thể sử dụng. Nhiều doanh nghiệp chọn không có lớp phủ cụ thể trên mã thanh toán, dành kiểu dáng đó cho mã QR tiếp thị nơi các yêu cầu về độ tin cậy ít nghiêm ngặt hơn. Nhiệm vụ của mã thanh toán là xử lý giao dịch chứ không phải để gây ấn tượng trực quan.',
       ],
       images: [
@@ -171,13 +171,13 @@ export const learn: PageDefinition = {
       heading: 'Cân nhắc về chất liệu và in ấn',
       paragraphs: [
         'Vật liệu hiển thị vật lý tác động đáng kể đến độ tin cậy của quá trình quét. Cán màng bóng phản chiếu ánh sáng trên cao trực tiếp vào camera của khách hàng. Vật liệu có kết cấu có thể làm biến dạng các cạnh của mô-đun. In ấn giá rẻ có thể làm mờ các chi tiết đẹp. Đối với mã QR thanh toán, hãy đầu tư vào chất lượng: sử dụng cán mờ hoặc satin, đảm bảo in có độ phân giải cao và thay thế màn hình trước khi chúng bị mòn. Mã thanh toán bị trầy xước hoặc bị mờ sẽ khiến bạn mất phí giao dịch.',
-        "Consider the display's durability and replaceability. Màn hình quầy bị chạm, di chuyển, văng tung tóe và đôi khi bị đổ. Thiết kế hệ thống hiển thị của bạn sao cho có thể dễ dàng thay thế phần chèn QR mà không cần thay thế toàn bộ chân đế. Luôn sẵn sàng các bản in dự phòng, được tạo từ liên kết cấu hình bị khóa của bạn để các mã bị mòn có thể được hoán đổi ngay lập tức.",
+        'Hãy xem xét độ bền và khả năng thay thế của màn hình. Màn hình quầy bị chạm, di chuyển, văng tung tóe và đôi khi bị đổ. Thiết kế hệ thống hiển thị của bạn sao cho có thể dễ dàng thay thế phần chèn QR mà không cần thay thế toàn bộ chân đế. Luôn sẵn sàng các bản in dự phòng, được tạo từ liên kết cấu hình bị khóa của bạn để các mã bị mòn có thể được hoán đổi ngay lập tức.',
       ],
     },
     {
       heading: 'Thử nghiệm với các ứng dụng thanh toán thực',
       paragraphs: [
-        "Máy quét camera thông thường sẽ giải mã hầu hết mọi mã QR được định dạng hợp lý. Ứng dụng thanh toán kén chọn hơn. Trước khi triển khai bất kỳ mã QR thanh toán nào, hãy thử nghiệm mã đó với mọi ứng dụng thanh toán mà khách hàng của bạn có thể sử dụng. Trong môi trường đa thanh toán, điều này có thể có nghĩa là thử nghiệm với nhiều ứng dụng ngân hàng, ví kỹ thuật số và nền tảng thanh toán. Document which apps you've tested and their versions - payment apps update frequently, and an update could change scanning behaviour.",
+        'Máy quét camera thông thường sẽ giải mã hầu hết mọi mã QR được định dạng hợp lý. Ứng dụng thanh toán kén chọn hơn. Trước khi triển khai bất kỳ mã QR thanh toán nào, hãy thử nghiệm mã đó với mọi ứng dụng thanh toán mà khách hàng của bạn có thể sử dụng. Trong môi trường đa thanh toán, điều này có thể có nghĩa là thử nghiệm với nhiều ứng dụng ngân hàng, ví kỹ thuật số và nền tảng thanh toán. Ghi lại những ứng dụng bạn đã thử nghiệm và phiên bản của chúng - ứng dụng thanh toán cập nhật thường xuyên và bản cập nhật có thể thay đổi hành vi quét.',
         'Kiểm tra trong điều kiện thực tế: màn hình thực tế, ánh sáng thực tế, khoảng cách quét thực tế. Một mã quét ngay lập tức trên bàn của bạn có thể gặp khó khăn trên quầy vào lúc 5 giờ chiều khi mặt trời buổi chiều tạo ra ánh sáng chói. Thử nghiệm với điện thoại thông minh cũ nhất, rẻ nhất mà bạn có thể tìm thấy - nếu nó hoạt động đáng tin cậy trên thiết bị giá rẻ thì nó sẽ hoạt động trên mọi thứ. Gắn cờ bất kỳ thời gian quét nào trên 2 giây để điều tra và thiết kế lại tiềm năng.',
       ],
       images: [
@@ -207,7 +207,7 @@ export const learn: PageDefinition = {
       heading: 'Mã QR sẵn sàng in: SVG so với PNG',
       paragraphs: [
         'Sự khác biệt giữa mã QR quét hoàn hảo và mã quét không thành công thường nằm ở cách xuất và xử lý mã đó trong quy trình in. Hướng dẫn này giải thích những điểm khác biệt quan trọng giữa định dạng vectơ (SVG) và raster (PNG), thời điểm sử dụng từng định dạng cũng như cách chuyển giao tác phẩm nghệ thuật QR cho nhà thiết kế và nhà cung cấp dịch vụ in ấn theo cách duy trì độ tin cậy khi quét từ danh thiếp đến biển hiệu cỡ bảng quảng cáo.',
-        'Quá trình sản xuất bản in đưa ra các biến không tồn tại trên màn hình: độ lan mực, kết cấu nền, quy trình hoàn thiện và hiệu ứng tích lũy của nhiều lần chuyển đổi tệp. A QR code that looks perfect in your design software can emerge from the printer with softened edges, reduced contrast, or subtly distorted modules. Việc hiểu rõ các phương pháp hay nhất về lựa chọn định dạng và quy trình làm việc sẽ ngăn chặn những lỗi thầm lặng này.',
+        'Quá trình sản xuất bản in đưa ra các biến không tồn tại trên màn hình: độ lan mực, kết cấu nền, quy trình hoàn thiện và hiệu ứng tích lũy của nhiều lần chuyển đổi tệp. Mã QR trông hoàn hảo trong phần mềm thiết kế của bạn có thể xuất hiện từ máy in với các cạnh được làm mềm, độ tương phản giảm hoặc các mô-đun bị biến dạng một cách tinh vi. Việc hiểu rõ các phương pháp hay nhất về lựa chọn định dạng và quy trình làm việc sẽ ngăn chặn những lỗi thầm lặng này.',
       ],
       images: [
         {
@@ -222,13 +222,13 @@ export const learn: PageDefinition = {
       heading: 'Tại sao Vector (SVG) được ưa thích để in',
       paragraphs: [
         'Tệp SVG mô tả mã QR dưới dạng hình dạng toán học thay vì lưới pixel. Điều này có nghĩa là mã có thể được điều chỉnh theo bất kỳ kích thước nào - từ nhãn 1 cm đến biểu ngữ dài 10 mét - mà không làm giảm độ sắc nét của cạnh. RIP (Bộ xử lý hình ảnh raster) của máy in hiển thị các vectơ ở độ phân giải gốc của thiết bị đầu ra, đảm bảo từng cạnh mô-đun sắc nét như phần cứng cho phép. Không có nội suy, không có tạo tác khử răng cưa, không có hiện tượng mờ tích lũy từ nhiều thao tác thay đổi kích thước.',
-        'Ngoài khả năng mở rộng, các tệp SVG còn mạnh mẽ hơn trong quy trình làm việc chuyên nghiệp. Chúng tồn tại qua các chuyến đi khứ hồi thông qua phần mềm thiết kế mà không bị xuống cấp. Chúng có thể được sửa màu mà không cần lấy mẫu lại. Chúng nhúng rõ ràng vào các tệp PDF để có đầu ra sẵn sàng cho báo chí. For any print application where quality matters, SVG should be your default export format.',
+        'Ngoài khả năng mở rộng, các tệp SVG còn mạnh mẽ hơn trong quy trình làm việc chuyên nghiệp. Chúng tồn tại qua các chuyến đi khứ hồi thông qua phần mềm thiết kế mà không bị xuống cấp. Chúng có thể được sửa màu mà không cần lấy mẫu lại. Chúng nhúng rõ ràng vào các tệp PDF để có đầu ra sẵn sàng cho báo chí. Đối với bất kỳ ứng dụng in nào có vấn đề về chất lượng, SVG phải là định dạng xuất mặc định của bạn.',
       ],
     },
     {
       heading: 'Khi PNG được chấp nhận',
       paragraphs: [
-        'PNG trở nên cần thiết khi quy trình làm việc hoặc nền tảng đích của bạn không hỗ trợ các định dạng vector. Một số nền tảng web, hệ thống CMS bảng hiệu và quy trình in cũ yêu cầu hình ảnh raster. In these cases, PNG can work well - but only if you follow strict rules: export at the final physical size and resolution, never scale up after export, and avoid any lossy compression or format conversion.',
+        'PNG trở nên cần thiết khi quy trình làm việc hoặc nền tảng đích của bạn không hỗ trợ các định dạng vector. Một số nền tảng web, hệ thống CMS bảng hiệu và quy trình in cũ yêu cầu hình ảnh raster. Trong những trường hợp này, PNG có thể hoạt động tốt - nhưng chỉ khi bạn tuân theo các quy tắc nghiêm ngặt: xuất ở kích thước và độ phân giải vật lý cuối cùng, không bao giờ mở rộng quy mô sau khi xuất và tránh mọi hoạt động nén hoặc chuyển đổi định dạng bị mất dữ liệu.',
         'Quy tắc quan trọng đối với PNG là tính toán kích thước pixel yêu cầu của bạn trước khi xuất. Nếu QR của bạn sẽ in ở kích thước 5cm và máy in của bạn hoạt động ở 300 dpi, bạn cần khoảng 590 pixel. Xuất ở kích thước này hoặc lớn hơn, sau đó giảm quy mô nếu cần - không bao giờ tăng. Hãy đưa thông tin này vào tên tệp hoặc siêu dữ liệu của bạn để người dùng trong tương lai không vô tình sử dụng sai mục đích xuất theo kích thước cụ thể.',
       ],
       images: [
@@ -243,14 +243,14 @@ export const learn: PageDefinition = {
     {
       heading: 'Giải thích về tùy chọn xuất ANQR',
       paragraphs: [
-        'ANQR cung cấp một số chế độ xuất SVG để phù hợp với các quy trình công việc khác nhau. Chế độ True Vector tạo ra đầu ra dựa trên đường dẫn thuần túy lý tưởng cho các công cụ in ấn và thiết kế chuyên nghiệp. Khi bạn đã thêm lớp phủ raster hoặc một số hiệu ứng nhất định, ANQR có thể nhúng những lớp phủ này trong khi duy trì các mô-đun vectơ hoặc bạn có thể xuất phiên bản rastered đầy đủ ở độ phân giải đã chỉ định của mình. Understanding these options helps you choose the right export for each use case.',
+        'ANQR cung cấp một số chế độ xuất SVG để phù hợp với các quy trình công việc khác nhau. Chế độ True Vector tạo ra đầu ra dựa trên đường dẫn thuần túy lý tưởng cho các công cụ in ấn và thiết kế chuyên nghiệp. Khi bạn đã thêm lớp phủ raster hoặc một số hiệu ứng nhất định, ANQR có thể nhúng những lớp phủ này trong khi duy trì các mô-đun vectơ hoặc bạn có thể xuất phiên bản rastered đầy đủ ở độ phân giải đã chỉ định của mình. Việc hiểu các tùy chọn này sẽ giúp bạn chọn cách xuất phù hợp cho từng trường hợp sử dụng.',
         'Để xuất PNG, ANQR cho phép bạn chỉ định kích thước chính xác và bao gồm các tùy chọn cho nền trong suốt. Cài đặt DPI giúp bạn tính toán kích thước thích hợp để in, tuy nhiên hãy nhớ rằng PPI là siêu dữ liệu - điều quan trọng đối với bản in là có đủ pixel cho kích thước vật lý của bạn. Khi nghi ngờ, hãy xuất lớn hơn mức bạn nghĩ mình cần; giảm quy mô sẽ duy trì chất lượng trong khi tăng quy mô sẽ phá hủy nó.',
       ],
     },
     {
       heading: 'Chuẩn bị tập tin cho Handoff',
       paragraphs: [
-        'Khi chuyển tác phẩm nghệ thuật QR cho nhà thiết kế hoặc nhà cung cấp dịch vụ in ấn, hãy bao gồm các thông số kỹ thuật rõ ràng: kích thước vật lý dự định, yêu cầu về vùng yên tĩnh tối thiểu và mọi cân nhắc về không gian màu. Đối với các ứng dụng quan trọng, hãy cung cấp cả bản sao SVG chính và bản sao lưu PNG có độ phân giải cao, được gắn nhãn rõ ràng với mục đích sử dụng. Include your ANQR configuration link so the code can be regenerated if needed.',
+        'Khi chuyển tác phẩm nghệ thuật QR cho nhà thiết kế hoặc nhà cung cấp dịch vụ in ấn, hãy bao gồm các thông số kỹ thuật rõ ràng: kích thước vật lý dự định, yêu cầu về vùng yên tĩnh tối thiểu và mọi cân nhắc về không gian màu. Đối với các ứng dụng quan trọng, hãy cung cấp cả bản sao SVG chính và bản sao lưu PNG có độ phân giải cao, được gắn nhãn rõ ràng với mục đích sử dụng. Bao gồm liên kết cấu hình ANQR của bạn để mã có thể được tạo lại nếu cần.',
         'Dự đoán những lỗi thường gặp trong quá trình bàn giao. Nêu rõ rằng QR không được thu nhỏ, xoay, lệch hoặc áp dụng các hiệu ứng. Chỉ định rằng vùng yên tĩnh phải rõ ràng - không có dấu cắt, dấu đăng ký hoặc các yếu tố thiết kế xâm nhập. Nếu QR sẽ được đặt trên nền màu hoặc nền ảnh, hãy cung cấp phiên bản có hình nền mờ đục để đảm bảo độ tương phản đầy đủ.',
       ],
       images: [
@@ -271,7 +271,7 @@ export const learn: PageDefinition = {
       images: [
         {
           src: '/images/learn/print-ready-proof.png',
-          alt: 'A proof review checklist with scan test results, contrast measurements, and approval signatures',
+          alt: 'Danh sách kiểm tra đánh giá bằng chứng có kết quả kiểm tra quét, đo độ tương phản và chữ ký phê duyệt',
           caption:
             'Quy trình xác minh bằng chứng in: kiểm tra có hệ thống trước khi cam kết số lượng sản xuất',
         },
@@ -294,7 +294,7 @@ export const learn: PageDefinition = {
     {
       heading: 'Tạo mã QR động',
       paragraphs: [
-        'Mã QR hoạt hình kết hợp chức năng của mã QR tiêu chuẩn với chuyển động bắt mắt giúp tăng đáng kể tỷ lệ tương tác. In digital signage, social media, and interactive displays, animation transforms a static utility into a compelling visual element that draws the eye and invites interaction. Hướng dẫn này bao gồm các nguyên tắc, kỹ thuật và các ràng buộc thực tế trong việc tạo mã QR động để quét một cách đáng tin cậy đồng thời mang lại tác động trực quan.',
+        'Mã QR hoạt hình kết hợp chức năng của mã QR tiêu chuẩn với chuyển động bắt mắt giúp tăng đáng kể tỷ lệ tương tác. Trong bảng hiệu kỹ thuật số, phương tiện truyền thông xã hội và màn hình tương tác, hoạt ảnh biến tiện ích tĩnh thành yếu tố hình ảnh hấp dẫn thu hút sự chú ý và mời gọi tương tác. Hướng dẫn này bao gồm các nguyên tắc, kỹ thuật và các ràng buộc thực tế trong việc tạo mã QR động để quét một cách đáng tin cậy đồng thời mang lại tác động trực quan.',
         'Thách thức cơ bản của mã QR động là cân bằng giữa lợi ích trực quan và độ tin cậy của quá trình quét. Mỗi khung hình phải có thể quét được riêng lẻ - máy quét có thể chụp mã tại bất kỳ điểm nào trong chu kỳ hoạt ảnh. Ràng buộc này định hình mọi quyết định thiết kế: thành phần nào có thể di chuyển, mức độ chúng có thể thay đổi và thành phần nào phải duy trì ổn định trong suốt hoạt ảnh.',
       ],
       images: [
@@ -310,7 +310,7 @@ export const learn: PageDefinition = {
       heading: 'Hoạt ảnh ảnh hưởng đến khả năng quét như thế nào',
       paragraphs: [
         'Máy quét QR hoạt động bằng cách chụp một khung hình duy nhất và phân tích mô hình của các mô-đun sáng và tối. Để mã động hoạt động, mọi khung hình phải chứa mẫu QR hoàn chỉnh, hợp lệ. Điều này loại trừ các hoạt ảnh làm thay đổi cấu trúc mã, hòa tan các mô-đun hoặc thay đổi đáng kể mẫu tương phản. Các mô-đun mang dữ liệu - mẫu dường như ngẫu nhiên ở trung tâm - phải luôn ổn định về mặt trực quan xuyên suốt.',
-        'Các phương pháp hoạt ảnh an toàn sửa đổi các phần tử không mang dữ liệu: nền, màu sắc, khung trang trí và các phần tử lớp phủ. Các thành phần cấu trúc - các mẫu tìm kiếm (các ô vuông góc lớn), các mẫu thời gian (các đường xen kẽ) và các mẫu căn chỉnh (các ô vuông nhỏ hơn trong các mã lớn hơn) - phải duy trì vị trí và tỷ lệ của chúng. Working within these constraints still allows for surprisingly dynamic and engaging animations.',
+        'Các phương pháp hoạt ảnh an toàn sửa đổi các phần tử không mang dữ liệu: nền, màu sắc, khung trang trí và các phần tử lớp phủ. Các thành phần cấu trúc - các mẫu tìm kiếm (các ô vuông góc lớn), các mẫu thời gian (các đường xen kẽ) và các mẫu căn chỉnh (các ô vuông nhỏ hơn trong các mã lớn hơn) - phải duy trì vị trí và tỷ lệ của chúng. Làm việc trong những hạn chế này vẫn cho phép tạo ra các hoạt ảnh động và hấp dẫn một cách đáng ngạc nhiên.',
       ],
     },
     {
@@ -339,21 +339,21 @@ export const learn: PageDefinition = {
       heading: 'Tạo lớp phủ hoạt hình',
       paragraphs: [
         'Khi sử dụng hình ảnh động (GIF, WebP động hoặc video) làm lớp phủ, ANQR sẽ trích xuất các khung và kết hợp chúng bằng mã QR của bạn. Cài đặt cường độ lớp phủ kiểm soát lượng hoạt ảnh hiển thị - giá trị thấp hơn ưu tiên khả năng quét trong khi giá trị cao hơn ưu tiên tác động trực quan. Kiểm tra cường độ bạn đã chọn trên nhiều khung hình để đảm bảo khả năng quét nhất quán.',
-        'Chất lượng nguyên liệu nguồn tác động đáng kể đến kết quả. Use overlays with clear subjects and good contrast. Tránh các hoạt ảnh nguồn có nhấp nháy nhanh hoặc thay đổi độ sáng quá mức có thể thỉnh thoảng tạo ra các khung hình có độ tương phản thấp. Xem trước toàn bộ chu trình hoạt ảnh trước khi xuất để nắm bắt mọi khung hình có vấn đề có thể không quét được.',
+        'Chất lượng nguyên liệu nguồn tác động đáng kể đến kết quả. Sử dụng lớp phủ có chủ thể rõ ràng và độ tương phản tốt. Tránh các hoạt ảnh nguồn có nhấp nháy nhanh hoặc thay đổi độ sáng quá mức có thể thỉnh thoảng tạo ra các khung hình có độ tương phản thấp. Xem trước toàn bộ chu trình hoạt ảnh trước khi xuất để nắm bắt mọi khung hình có vấn đề có thể không quét được.',
       ],
       images: [
         {
           src: '/images/learn/animated-frames.png',
           alt: 'Chế độ xem từng khung hình của lớp phủ hoạt hình hiển thị mức độ tương phản được duy trì trong toàn bộ chuỗi',
           caption:
-            'Frame analysis: verifying consistent scannability across the entire animation cycle',
+            'Phân tích khung hình: xác minh khả năng quét nhất quán trong toàn bộ chu trình hoạt ảnh',
         },
       ],
     },
     {
       heading: 'Những cân nhắc về xuất khẩu và giao hàng',
       paragraphs: [
-        'GIF remains the most widely supported animated format, playing automatically in most contexts without requiring video player support. Tuy nhiên, bảng màu 256 màu của GIF hạn chế độ trung thực của màu sắc. Đối với các hoạt ảnh quan trọng về màu sắc, hãy xem xét WebP hoạt hình nếu được hỗ trợ hoặc quay lại các định dạng video để có chất lượng cao nhất. Tính năng xuất GIF của ANQR bao gồm các tùy chọn phối màu để tối đa hóa chất lượng trong giới hạn bảng màu.',
+        'GIF vẫn là định dạng hoạt hình được hỗ trợ rộng rãi nhất, tự động phát trong hầu hết các ngữ cảnh mà không cần hỗ trợ trình phát video. Tuy nhiên, bảng màu 256 màu của GIF hạn chế độ trung thực của màu sắc. Đối với các hoạt ảnh quan trọng về màu sắc, hãy xem xét WebP hoạt hình nếu được hỗ trợ hoặc quay lại các định dạng video để có chất lượng cao nhất. Tính năng xuất GIF của ANQR bao gồm các tùy chọn phối màu để tối đa hóa chất lượng trong giới hạn bảng màu.',
         'Kích thước tập tin quan trọng đối với việc phân phối. Hệ thống bảng hiệu kỹ thuật số, ứng dụng email và nền tảng xã hội thường áp đặt giới hạn kích thước. Nếu hoạt ảnh của bạn vượt quá các giới hạn này, hãy giảm số lượng khung hình, kích thước hoặc độ sâu màu. Đôi khi việc chia một hoạt ảnh phức tạp thành một vòng lặp ngắn hơn sẽ đạt được kết quả tốt hơn so với việc nén mạnh làm giảm chất lượng mọi khung hình.',
       ],
     },
@@ -361,7 +361,7 @@ export const learn: PageDefinition = {
       heading: 'Kiểm tra mã QR hoạt hình',
       paragraphs: [
         'Kiểm tra mã hoạt ảnh yêu cầu quét tại nhiều điểm trong chu kỳ hoạt ảnh. Đừng chỉ quét một lần và coi như thành công - hãy quét nhiều lần, vào các thời điểm khác nhau, để xác minh rằng mọi khung hình đều có thể đọc được. Đặc biệt chú ý đến các khung hình ở mức cực đại của chu kỳ màu hoặc cường độ lớp phủ đạt đỉnh nơi độ tương phản có thể thấp nhất.',
-        'Kiểm tra phần cứng màn hình thực tế nếu có thể. Hiệu chỉnh màu sắc màn hình, góc nhìn và ánh sáng xung quanh đều ảnh hưởng đến cách hoạt ảnh xuất hiện và quét. A bright animation that scans perfectly on your monitor might wash out on an outdoor screen or become unreadable at oblique viewing angles.',
+        'Kiểm tra phần cứng màn hình thực tế nếu có thể. Hiệu chỉnh màu sắc màn hình, góc nhìn và ánh sáng xung quanh đều ảnh hưởng đến cách hoạt ảnh xuất hiện và quét. Hình ảnh động sáng quét hoàn hảo trên màn hình của bạn có thể bị mờ trên màn hình ngoài trời hoặc không thể đọc được ở các góc nhìn xiên.',
       ],
       images: [
         {
@@ -426,13 +426,13 @@ export const learn: PageDefinition = {
       heading: 'Độ tương phản và an toàn màu sắc',
       paragraphs: [
         'Máy quét QR phát hiện mô hình của các mô-đun sáng và tối. Bất kỳ kiểu dáng nào làm giảm độ tương phản này - nền trước sáng, nền tối, hiệu ứng chuyển màu hoặc lớp phủ có độ mờ thấp - đều làm cho mã khó đọc hơn. ANQR tính toán tỷ lệ tương phản và cảnh báo khi lựa chọn màu sắc của bạn đạt đến mức nguy hiểm, nhưng trọng tài cuối cùng luôn là thử nghiệm trong thế giới thực.',
-        'Colour perception varies with lighting conditions. Sự kết hợp màu sắc có độ tương phản cao trên màn hình của bạn có thể trở nên khó phân biệt dưới ánh sáng sợi đốt ấm áp hoặc đèn huỳnh quang mát mẻ. Nếu mã của bạn sẽ được triển khai trong các điều kiện ánh sáng khác nhau, hãy kiểm tra dưới nhiều nguồn sáng và xem xét tỷ lệ tương phản thận trọng hơn làm giới hạn an toàn.',
+        'Nhận thức màu sắc thay đổi theo điều kiện ánh sáng. Sự kết hợp màu sắc có độ tương phản cao trên màn hình của bạn có thể trở nên khó phân biệt dưới ánh sáng sợi đốt ấm áp hoặc đèn huỳnh quang mát mẻ. Nếu mã của bạn sẽ được triển khai trong các điều kiện ánh sáng khác nhau, hãy kiểm tra dưới nhiều nguồn sáng và xem xét tỷ lệ tương phản thận trọng hơn làm giới hạn an toàn.',
       ],
     },
     {
       heading: 'Kích thước mô-đun và khoảng cách xem',
       paragraphs: [
-        'The physical size of individual modules determines the maximum distance from which a code can be scanned. Các mô-đun nhỏ hơn có nghĩa là mã nhỏ hơn nhưng yêu cầu khoảng cách quét gần hơn. Nguyên tắc chung là mỗi mô-đun phải có khoảng cách quét ít nhất là 0,5mm ở khoảng cách quét dự định, tăng tỷ lệ tương ứng cho khoảng cách lớn hơn. A code on a billboard needs much larger modules than a code on a business card.',
+        'Kích thước vật lý của từng mô-đun riêng lẻ xác định khoảng cách tối đa mà mã có thể được quét. Các mô-đun nhỏ hơn có nghĩa là mã nhỏ hơn nhưng yêu cầu khoảng cách quét gần hơn. Nguyên tắc chung là mỗi mô-đun phải có khoảng cách quét ít nhất là 0,5mm ở khoảng cách quét dự định, tăng tỷ lệ tương ứng cho khoảng cách lớn hơn. Mã trên bảng quảng cáo cần mô-đun lớn hơn nhiều so với mã trên danh thiếp.',
         'Khi tính toán kích thước mô-đun, hãy xem xét trường hợp xấu nhất: khách hàng sử dụng điện thoại cũ, trong điều kiện ánh sáng không hoàn hảo, quét ở khoảng cách tối đa có thể xảy ra. Thiết kế cho người dùng này và những người khác sẽ có trải nghiệm tốt hơn nữa. Các đề xuất về kích thước của ANQR tính đến các biến số trong thế giới thực này để đề xuất các kích thước phù hợp cho mục đích sử dụng của bạn.',
       ],
       images: [
@@ -448,13 +448,13 @@ export const learn: PageDefinition = {
       heading: 'Sử dụng Chế độ An toàn ANQR',
       paragraphs: [
         'Chế độ an toàn của ANQR cung cấp phản hồi theo thời gian thực về độ tin cậy của quá trình quét. Nó giám sát tỷ lệ tương phản, tuân thủ vùng yên tĩnh, cường độ lớp phủ và các yếu tố khác ảnh hưởng đến khả năng quét. Khi bất kỳ thông số nào đạt đến mức rủi ro, bạn sẽ thấy cảnh báo kèm theo hướng dẫn cụ thể về cách cải thiện độ tin cậy. Đối với các hoạt động triển khai chuyên nghiệp mà thất bại gây tốn kém, hãy duy trì Chế độ an toàn ở trạng thái hoạt động trong suốt quá trình thiết kế.',
-        'Safety Mode also includes a scan verification feature that attempts to decode your generated code and reports success or failure. Mặc dù việc xác minh trong ứng dụng này không thể sao chép mọi điều kiện thực tế nhưng nó phát hiện được nhiều vấn đề thường gặp trước khi bạn đầu tư vào in ấn hoặc phân phối. Hãy coi việc xác minh thành công là điều kiện tối thiểu chứ không phải là sự đảm bảo - thử nghiệm trong thế giới thực vẫn là điều cần thiết.',
+        'Chế độ an toàn cũng bao gồm tính năng xác minh quét nhằm cố gắng giải mã mã được tạo của bạn và báo cáo thành công hay thất bại. Mặc dù việc xác minh trong ứng dụng này không thể sao chép mọi điều kiện thực tế nhưng nó phát hiện được nhiều vấn đề thường gặp trước khi bạn đầu tư vào in ấn hoặc phân phối. Hãy coi việc xác minh thành công là điều kiện tối thiểu chứ không phải là sự đảm bảo - thử nghiệm trong thế giới thực vẫn là điều cần thiết.',
       ],
     },
     {
       heading: 'Giao thức thử nghiệm trong thế giới thực',
       paragraphs: [
-        'Không có mức độ xác minh phần mềm nào có thể thay thế được thử nghiệm vật lý. In mã của bạn ở kích thước mong muốn trên tài liệu đại diện. Kiểm tra nó trong môi trường triển khai thực tế với điều kiện ánh sáng phù hợp với mục đích sử dụng thực tế. Scan with multiple devices - not just your flagship phone, but budget Android devices, older iPhones, and any specific devices your audience commonly uses.',
+        'Không có mức độ xác minh phần mềm nào có thể thay thế được thử nghiệm vật lý. In mã của bạn ở kích thước mong muốn trên tài liệu đại diện. Kiểm tra nó trong môi trường triển khai thực tế với điều kiện ánh sáng phù hợp với mục đích sử dụng thực tế. Quét bằng nhiều thiết bị - không chỉ điện thoại hàng đầu của bạn mà cả các thiết bị Android giá rẻ, iPhone cũ hơn và bất kỳ thiết bị cụ thể nào mà đối tượng của bạn thường sử dụng.',
         'Ghi lại thử nghiệm của bạn một cách có hệ thống. Ghi lại thiết bị nào đã được thử nghiệm, trong điều kiện nào, cho kết quả như thế nào. Nếu bạn đang triển khai mã trên quy mô lớn, hãy thiết lập tiêu chí chấp nhận: tỷ lệ thành công có thể là 95% trên nhóm thử nghiệm thiết bị của bạn hoặc quét thành công trong vòng 2 giây trên tất cả các thiết bị được thử nghiệm. Những tiêu chuẩn này giúp đưa ra quyết định đi/không đi một cách khách quan hơn là hy vọng điều tốt nhất.',
       ],
       images: [

@@ -60,7 +60,7 @@ export const contact: PageDefinition = {
     {
       heading: 'Kontak DMCA',
       paragraphs: [
-        'Kirim notis DMCA ke: ${CONTACT_EMAIL}_',
+        'Kirim notis DMCA ke: email@anqr.link_',
         'Silakan masukkan "DMCA Notice" dalam baris subjek. Kita akan menanggapi pemberitahuan yang sah sesuai dengan hukum yang berlaku. Khagne mencatat bahwa ANQR menghasilkan kode QR secara lokal pada perangkat pengguna dan tidak merumahkan konten yang dihasilkan pengguna.',
       ],
     },

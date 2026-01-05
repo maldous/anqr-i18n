@@ -9,7 +9,7 @@ import { LAST_UPDATED } from '../types';
 export const learn: PageDefinition = {
   title: 'Belajarlah dengan ANQR',
   description:
-    'Praktis, panduan bisnis-pertama untuk mengubah kode QR menjadi aset pemasaran nyata - bukan hanya kotak fungsional. Ketahui cara mengupgrade kode-kode legacy point-of-sale, membuat pembayaran compliant QR signage, menyiapkan ekspor siap cetak, menggunakan animasi dengan aman pada tampilan digital, dan berbagi konfigurasi terkunci-dalam di seluruh tim multibahasa menggunakan ANQR ("anchor") link.',
+    'Panduan praktikal yang mengutamakan perniagaan untuk menukar kod QR menjadi aset pemasaran sebenar - bukan hanya petak berfungsi. Ketahui cara untuk menaik taraf kod tempat jualan lama, membuat papan tanda QR pembayaran yang mematuhi, menyediakan eksport sedia cetak, menggunakan animasi dengan selamat pada paparan digital dan berkongsi konfigurasi terkunci dalam merentas pasukan berbilang bahasa menggunakan pautan ANQR ("sauh").',
   lastUpdated: LAST_UPDATED,
 
   primaryLinks: [
@@ -95,7 +95,7 @@ export const learn: PageDefinition = {
       images: [
         {
           src: '/images/learn/improve-existing-lock.png',
-          alt: 'Diagram yang menampilkan drift konfigurasi: cuplikan layar yang mengarah ke rekreasi yang mengarah ke varian, berbanding link sumber-of-truth tunggal',
+          alt: 'Gambar rajah yang menunjukkan hanyut konfigurasi: tangkapan skrin yang membawa kepada rekreasi yang membawa kepada variasi, berbanding pautan sumber-kebenaran tunggal',
           caption:
             'Melarang perubahan konfigurasi dengan menetapkan sumber otoritatif tunggal untuk semua reproduksi QR',
         },
@@ -140,7 +140,7 @@ export const learn: PageDefinition = {
     {
       heading: 'Pengubahsaizan dan Penempatan untuk Paparan Penanggulangan',
       paragraphs: [
-        'Kode QR Counter-top menghadapi tantangan fisik yang unik. Pelanggan bersin memindai panjang lengan, sering pada sudut, kadang-kadang melalui penjaga bersin atau menampilkan kasus. Cahaya di atas kepala menciptakan bintik-bintik silau. Kode ini bersaing dengan counter clutter lain untuk perhatian dan garis pandang yang jelas. Size your payment QR murah hati - minimal 4-5cm disarankan untuk sebagian besar aplikasi counter, skala up jika kode duduk di belakang kaca atau di daerah yang redup.',
+        'Kod QR kaunter teratas menghadapi cabaran fizikal yang unik. Pelanggan mengimbas pada paras lengan, selalunya pada sudut, kadang-kadang melalui pelindung bersin atau kotak paparan. Pencahayaan atas kepala menghasilkan bintik silau. Kod ini bersaing dengan kekacauan kaunter lain untuk perhatian dan pandangan yang jelas. Saiz QR pembayaran anda dengan murah hati - sekurang-kurangnya 4-5cm disyorkan untuk kebanyakan aplikasi kaunter, ditingkatkan jika kod terletak di belakang kaca atau di kawasan yang bercahaya malap.',
         'Posisi posisi penting sebanyak ukuran. Letakkan kode di mana pelanggan dapat dengan nyaman memegang telepon mereka tanpa menghalangi antrian atau mencapai canggung. Sudutkan tampilan ke arah pelanggan daripada meletakkannya datar. Jika memungkinkan, gunakan laminasi matte atau bahan tampilan non-reflektif untuk meminimalkan silau dari pencahayaan overhead. Tes posisi akhir di waktu yang berbeda hari untuk menangkap masalah pencahayaan.',
       ],
       images: [

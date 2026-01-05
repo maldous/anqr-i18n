@@ -9,7 +9,7 @@ import { LAST_UPDATED } from '../types';
 export const learn: PageDefinition = {
   title: 'Naučte se s ANQR',
   description:
-    'Praktické, obchodně-první pokyny pro přeměnu QR kódů na reálná marketingová aktiva - nejen funkční čtverce. Přečtěte si, jak upgradovat odkaz point-of- prodejní kódy, vytvořit odpovídající platební QR znamení, připravit print- ready exporty, používat animaci bezpečně na digitálních displejích, a sdílet uzamčené -v konfiguracích napříč vícejazyčných týmů pomocí ANQR ("kotvy") odkazy.',
+    'Praktické průvodce pro přeměnu QR kódů na skutečná marketingová aktiva – nejen na funkční čtverce. Naučte se upgradovat starší kódy prodejních míst, vytvořit vyhovující platební QR značení, připravit exporty připravené pro tisk, bezpečně používat animace na digitálních displejích a sdílet uzamčené konfigurace mezi vícejazyčnými týmy pomocí odkazů ANQR ("kotva").',
   lastUpdated: LAST_UPDATED,
 
   primaryLinks: [
@@ -60,7 +60,7 @@ export const learn: PageDefinition = {
     {
       heading: 'Strategie bezpečné aktualizace',
       paragraphs: [
-        'Základní pravidlo QR upgradů je zachování cíle. Extrahovat přesné URL z každého existujícího kódu a kódovat jej identicky ve své nové verzi. Tím se zajistí, že všechna stávající analytika, přesměrování logiky a očekávání zákazníků zůstanou neporušená. Potřebujete-li flexibilitu cíle pro budoucí aktualizace, je to ideální čas pro zavedení označené krátké URL nebo přesměrování služby - ale implementujte to jako samostatný projekt, aby se zabránilo kompulzování změn.',
+        'Základním pravidlem upgradů QR je zachování cíle. Extrahujte přesnou adresu URL z každého existujícího kódu a zakódujte ji identicky ve své nové verzi. To zajišťuje, že všechny stávající analýzy, logika přesměrování a očekávání zákazníků zůstanou nedotčeny. Pokud potřebujete flexibilitu cíle pro budoucí aktualizace, je ideální čas zavést značkovou krátkou adresu URL nebo službu přesměrování – implementujte to však jako samostatný projekt, abyste se vyhnuli složeným změnám.',
         'Pro vizuální upgrade použijte vylepšení vrstev: nejprve zajistěte technickou spolehlivost (vhodnou opravu chyb a klidovou zónu), poté přidejte styl značky (barvy, tvary modulu) a nakonec zvažte volitelná vylepšení (centrální překryvy, rámy). Každá vrstva by měla být validována testováním před pokračováním. Bezpečnostní režim ANQR pomáhá tyto priority prosazovat varováním, kdy styling může ohrozit skranovatelnost.',
       ],
     },
@@ -95,7 +95,7 @@ export const learn: PageDefinition = {
       images: [
         {
           src: '/images/learn/improve-existing-lock.png',
-          alt: 'Schéma ukazující konfigurační drift: screenshoty vedoucí k rekonstrukci vedoucí k variantám, oproti jedinému source- of- truth odkazu',
+          alt: 'Diagram ukazující posun konfigurace: snímky obrazovky vedoucí k rekreaci vedoucí k variantám oproti jedinému odkazu na zdroj pravdy',
           caption:
             'Zabránit nastavení driftu vytvořením jediného autoritativního zdroje pro všechny reprodukce QR',
         },
@@ -119,7 +119,7 @@ export const learn: PageDefinition = {
       heading: 'Kódy QR pro maloobchodní platby',
       paragraphs: [
         'Platební QR kódy fungují v nejnáročnějším prostředí v maloobchodě: okamžik transakce. Zákazníci jsou připraveni zaplatit, často s frontou tvoří za nimi, a každou vteřinu zpoždění vytváří tření. Přesto je tento vysokotlaký moment také prvořadou realitou pro posílení značky. Tato příručka vysvětluje, jak vytvářet platební QR kódy, které skenují okamžitě na bankovních aplikacích a zároveň stále prezentují profesionální, značkový vzhled, který buduje důvěru zákazníků.',
-        'Základní zásadou pro platební QR kódy je spolehlivost nad estetiky. Krásně navržený kód, který nedokáže skenovat bankovní aplikaci jednoho zákazníka, vás bude stát mnohem více v opuštěných transakcích a frustrovaných zákazníků, než by mohl konzervativní design. Začněte s dodržováním, přidejte spolehlivost, pak opatrně vrstvte do značky pouze tam, kde to neohrozí primární funkci.',
+        'Základním principem pro platební QR kódy je spolehlivost před estetikou. Krásně navržený kód, který se nepodaří naskenovat v bankovní aplikaci jednoho zákazníka, vás bude stát mnohem víc v opuštěných transakcích a frustrovaných zákaznících, než by kdy mohl konzervativní design. Začněte s dodržováním předpisů, přidejte spolehlivost a poté pečlivě vrstvěte branding pouze tam, kde to neohrožuje primární funkci.',
       ],
       images: [
         {
@@ -141,7 +141,7 @@ export const learn: PageDefinition = {
       heading: 'Nastavení a umístění počítadel',
       paragraphs: [
         'Protišpičkové QR kódy čelí jedinečným fyzickým výzvám. Zákazníci skenují na délku paže, často pod úhlem, někdy pomocí kýchnutí nebo vitríny. Osvětlení nad hlavou vytváří zářící skvrny. Kód soutěží s ostatními counter nepořádek o pozornost a jasné viditelnosti. Velikost vaší platby QR velkoryse - pro většinu counter aplikací se doporučuje minimálně 4-5cm, zvětšení, pokud kód sedí za sklem nebo v temně osvětlené oblasti.',
-        'Na pozici záleží stejně jako na velikosti. Umístěte kód tam, kde zákazníci mohou pohodlně držet svůj telefon bez blokování fronty nebo dosáhnout rozpačité. Zabočte displej směrem k zákazníkovi, než aby ho položil na plocho. Pokud je to možné, použijte matné laminace nebo nereflexní zobrazovací materiály, aby se minimalizovalo oslnění z vrchního osvětlení. Otestujte konečné umístění v různých časových obdobích dne, abyste zachytili problémy s osvětlením.',
+        'Na poloze záleží stejně jako na velikosti. Umístěte kód tam, kde mohou zákazníci pohodlně držet svůj telefon, aniž by blokovali frontu nebo nešikovně sahali. Natočte displej směrem k zákazníkovi a nepokládejte jej naplocho. Pokud je to možné, použijte matnou laminaci nebo nereflexní zobrazovací materiály, abyste minimalizovali odlesky od stropního osvětlení. Vyzkoušejte konečné umístění v různých denních dobách, abyste zachytili problémy s osvětlením.',
       ],
       images: [
         {
@@ -177,8 +177,8 @@ export const learn: PageDefinition = {
     {
       heading: 'Testování s reálnými platbami Aplikace',
       paragraphs: [
-        'Generické kamery dekódují téměř jakýkoliv přiměřeně formátovaný QR kód. Platební aplikace jsou vybíravější. Před nasazením platebního QR kódu jej otestujte každou platební aplikací, kterou mohou vaši zákazníci použít. V multiplatebním prostředí to může znamenat testování s více bankovními aplikacemi, digitálními peněženkami a platformami. Dokument, které aplikace jste testovali a jejich verze - platební aplikace aktualizují často, a aktualizace by mohla změnit skenovací chování.',
-        'Zkouška za reálných podmínek: skutečný displej, skutečné osvětlení, skutečná vzdálenost skenování. Kód, který skenuje okamžitě na vašem stole, by mohl bojovat na pultu v 17 hodin, kdy odpolední slunce vytváří záblesk. Test s nejstarší, nejlevnější smartphone můžete najít - pokud to funguje spolehlivě na rozpočet zařízení, to bude fungovat na všechno. Zaznamenejte jakýkoliv čas skenování po dobu 2 sekund pro vyšetřování a potenciální přepracování.',
+        'Obecné kamerové skenery dekódují téměř jakýkoli rozumně naformátovaný QR kód. Platební aplikace jsou vybíravější. Před nasazením jakéhokoli platebního QR kódu jej otestujte s každou platební aplikací, kterou vaši zákazníci mohou používat. V prostředí s více platbami to může znamenat testování s více bankovními aplikacemi, digitálními peněženkami a platebními platformami. Zdokumentujte, které aplikace jste testovali a jejich verze – platební aplikace se často aktualizují a aktualizace by mohla změnit chování při skenování.',
+        'Test za reálných podmínek: skutečný displej, skutečné osvětlení, skutečná snímací vzdálenost. Kód, který okamžitě naskenuje na vašem stole, může mít problémy na pultu v 17 hodin, když odpolední slunce vytváří odlesky. Otestujte si s nejstarším a nejlevnějším chytrým telefonem, který můžete najít – pokud spolehlivě funguje na levném zařízení, bude fungovat na všem. Označte jakoukoli dobu skenování delší než 2 sekundy pro vyšetřování a potenciální přepracování.',
       ],
       images: [
         {
@@ -360,7 +360,7 @@ export const learn: PageDefinition = {
       heading: 'Testování animovaných QR kódů',
       paragraphs: [
         'Testování animovaných kódů vyžaduje skenování v několika bodech animovaného cyklu. Neskenujte jen jednou a předpokládejte úspěch - skenujte opakovaně, v různých okamžicích, k ověření, že každý rám je čitelný. Zvláštní pozornost věnujte rámům při extrémech barevného cyklu nebo vrcholům intenzity překrytí, kde kontrast může být nejnižší.',
-        'Test na aktuálním displeji hardware, pokud je to možné. Monitorovat barevnou kalibraci, úhel pohledu a okolní osvětlení všechny ovlivnit, jak se animace objeví a skenuje. Zářivá animace, která dokonale skenuje na monitoru, by se mohla vyplavit na venkovní obrazovce nebo se stát nečitelnou při šikmém pohledu.',
+        'Pokud je to možné, vyzkoušejte na skutečném hardwaru displeje. Kalibrace barev monitoru, pozorovací úhel a okolní osvětlení ovlivňují to, jak se animace zobrazí a naskenuje. Jasná animace, která perfektně skenuje na vašem monitoru, se může na venkovní obrazovce vyblednout nebo se při šikmých pozorovacích úhlech stát nečitelná.',
       ],
       images: [
         {

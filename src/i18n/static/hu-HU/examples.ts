@@ -10,7 +10,7 @@ import { LAST_UPDATED } from '../types';
 export const examples: PageDefinition = {
   title: 'ANQR példák',
   description:
-    'Öt realworld, production- style példák, amelyek azt mutatják, ahol a QR-kódok mérhető értéket teremtenek: felemelő egy hagyományos kiskereskedelmi számláló kód, márkás kiskereskedelmi kifizetések és "scan- to" akciók, nyomtatás szórólapokról hirdetőtáblákra, animált QR digitális jelzéshez, és keresztnyelvi együttműködés megosztható Horgonyzó linkek használatával. Minden példa tartalmazza a képeket, gyakorlati korlátokat, és remix linket vissza a generátor.',
+    'Öt valós, gyártási stílusú példa, amely bemutatja, hogy a QR-kódok hol teremtenek mérhető értéket: egy régi kiskereskedelmi számlálókód felemelése, márkás kiskereskedelmi fizetések és "beolvasási" műveletek, nyomtatási méretezés a szórólapokról óriásplakátokra, animált QR digitális jelzésekhez és többnyelvű együttműködés megosztható horgonylinkekkel. Minden példa tartalmaz képeket, gyakorlati korlátokat, és egy remix hivatkozást, amely vissza a generátorhoz.',
   lastUpdated: LAST_UPDATED,
 
   primaryLinks: [
@@ -43,7 +43,7 @@ export const examples: PageDefinition = {
     {
       heading: 'Az eredeti kód problémáinak diagnosztizálása',
       paragraphs: [
-        'A tesztek több problémát is feltártak: az eredeti kód, amit a hibahelyesbítés L (minimális redundancia) használt, csak 2 modulból álló csendes zónával rendelkezett, és alacsony felbontással nyomtatták. A kávézó meleg volfrám világítása alatt a már elhalványult fekete modulok alig álltak szemben a sárgás papírral. Az idősebb telefonok dulakodtak; az újabb telefonok sikerrel jártak, de észrevehető késéssel.',
+        'A tesztelés több problémát is feltárt: az eredeti kód L hibajavítást (minimális redundancia) használt, mindössze 2 modulból álló csendes zóna volt, és alacsony felbontással nyomtatták. A kávézó meleg wolframvilágítása alatt a már kifakult fekete modulok alig kontrasztosak a megsárgult papírral. A régebbi telefonok küszködtek; az újabb telefonok sikerültek, de észrevehető késéssel.',
         'A technikai kérdéseken túl az általános fekete-fehér négyzet semmit sem közölt a márkáról. A vendégek hezitáltak a szkennelés előtt - egy finom bizalmi akadály, amely csökkentette az érintkezést a kávézó gondosan megtervezett digitális menüjével.',
       ],
       images: [
@@ -74,7 +74,7 @@ export const examples: PageDefinition = {
       heading: 'Mérhető eredmények',
       paragraphs: [
         'Miután az új QR-t a professzionális matte- laminált kártyaállományba helyezte, a kávézó négy hét alatt nyomon követte az eredményeket. Becslések szerint 70% -ról közel 100% -ra javult a scan sikerességi aránya. Az átlagos letapogatási idő 34 másodpercről 1 másodperc alá csökkent. A legfontosabb, hogy a menü elkötelezettség nőtt 40% - ügyfelek, akik korábban nézett a QR és feladta most szkennelt magabiztosan.',
-        'A személyzet kevesebb ügyfél-kérdést jelentett a "QR" használatával kapcsolatban, és nincs több eset az URL manuális beírására frusztrált ügyfelek számára. A márkás megjelenés is szikrázott beszélgetések, a vásárlók pozitívan kommentálják az összetartó design.',
+        'A személyzet kevesebb kérdésről számolt be az ügyfeleknek a "QR használatával" kapcsolatban, és nincs több olyan eset, amikor manuálisan beírták az URL-t a csalódott ügyfelek számára. A márkás megjelenés beszélgetéseket is kiváltott, a vásárlók pozitívan nyilatkoztak az összefüggő dizájnról.',
       ],
       images: [
         {
@@ -132,7 +132,7 @@ export const examples: PageDefinition = {
     {
       heading: 'A fizetési tapasztalat előtérbe helyezése',
       paragraphs: [
-        'Az áruház elsődleges fizetési módszere olyan regionális szabványt használt, amely szigorú terhelést igényelt. A vizsgálatok azt mutatták, hogy bizonyos banki alkalmazásokkal még a kisebb stílus is befolyásolta a letapogatás sebességét. A döntés: a fizetési QR teljesen változatlan marad, kivéve a méret optimalizálását és a professzionális nyomtatást a matte kártya készleten.',
+        'Az áruház elsődleges fizetési módja regionális szabványt használt, amely szigorú rakománymegfelelést írt elő. A tesztelés során kiderült, hogy bizonyos banki alkalmazásoknál még a kisebb stílus is befolyásolta a szkennelési sebességet. A döntés: a fizetési QR-kódot teljesen változatlanul hagyja, kivéve a méretoptimalizálást és a matt kartonra való professzionális nyomtatást.',
         'Ez a konzervatív megközelítés azt jelentette, hogy a fizetési kód kevésbé tűnik "márkának", mint ideális, de a tranzakciós befejezési arány drámaian javult. A meglátás: a fizetési pillanatok nem a márkanév lehetőségei, hanem a megbízhatóság pillanatai. A vásárlók értékelik a gyorsaságot és a bizonyosságot az esztétika felett, amikor pénz van benne.',
       ],
       images: [
@@ -162,7 +162,7 @@ export const examples: PageDefinition = {
     {
       heading: 'A rendszer kialakítása',
       paragraphs: [
-        'A fizikai megjelenítés több problémát is megoldott egyszerre. Mind a fizetési állvány, mind a másodlagos panel használt matte anyagok megszüntetése vakító a felső világítás. A különböző termetű vásárlók számára a magasságokat optimalizálták. Szögek irányította az ügyfél sorban helyett lapos a pult.',
+        'A fizikai megjelenítés több problémát is megoldott egyszerre. A fizetőállvány és a másodlagos panel is matt anyagokat használt, hogy kiküszöbölje a felső világítás tükröződését. A magasságokat a változó termetű ügyfelek számára optimalizálták. Szögek a vásárlói sor felé irányulnak, nem pedig a pulton.',
         'Kritikus módon, a bolt létrehozott tartalék ujjlenyomatokat a zárt ANQR konfigurációs linkekről. Amikor a tipp kódot végül kávéval fröccsent, a személyzet néhány percen belül kicserélte a tárolt konfigurációval - nincs screenshotok, nincs találgatás a beállításokban, nincs minőségi romlás.',
       ],
       images: [
@@ -177,7 +177,7 @@ export const examples: PageDefinition = {
     {
       heading: 'Működési fejlesztések',
       paragraphs: [
-        'Hat héttel a telepítés után a bolt jelentős fejlesztéseket dokumentált: nulla ügyfél panaszok "rossz kód" zavarral, gyorsabb tranzakciós idő, és a 3x növekedése tipp beadványok (ügyfelek most már megtalálja, és szkennelje a tipp kód nélkül kényelmetlenül kérni személyzet). A Google felülvizsgálata is nőtt, mivel a célzott, jól címkézett QR eltávolította a súrlódást.',
+        'Hat héttel az üzembe helyezés után az áruház jelentős fejlesztéseket dokumentált: nulla ügyfélpanasz a "hibás kód" összetévesztésével kapcsolatban, gyorsabb tranzakciós idő, és háromszorosára nőtt a borravalók beküldése (a vásárlók most már anélkül is megtalálhatják és beolvashatják a tippkódot, hogy kínos módon megkérdezték volna a személyzettől). A Google értékelései is növekedtek, mivel a dedikált, jól címkézett QR-kód megszüntette a súrlódást.',
         'A személyzet képzése egyszerűbbé vált: A fizetési kód a nagy, minden más a panelen van. Amikor a fizetési alkalmazások frissültek, és egy rövid ideig lassabb letapogatást mutatott, a konzervatív fizetési kód kialakítása azt jelentette, hogy még mindig működött - csak egy kicsit lassabban, mint hogy teljesen kudarcot vallott volna.',
         'Lásd a QR-kódokról szóló útmutatót a kijelző rendszer felépítésének alapelveiről.',
       ],
@@ -208,7 +208,7 @@ export const examples: PageDefinition = {
       heading: 'Esettanulmány: Üzleti kártyától Billboard-ig',
       paragraphs: [
         'Ez a példa egy nagyszabású konferenciára készülő rendezvénygyártó céget követ. Ugyanarra a QR-kódra volt szükségük - az eseményalkalmazáshoz kapcsolódva -, amelyeket radikálisan különböző formátumokban telepítettek: atentdee jelvény betétekre (3cm), asztali sátorkártyákra (8cm), regisztrációs asztali táblákra (30cm), útkereső plakátokra (60cm), és egy masszív színpadi háttérlobogóra (4 méter). Mindegyik formátum különböző távolságokat, világítási körülményeket és gyártási munkafolyamatokat mutatott.',
-        'A kihívás nem csak technikai volt, hanem operatív is. Többszörös kereskedők különböző nyomtatási feladatokat, és a cég kellett, hogy következetes, scannable eredményeket, függetlenül attól, hogy ki mit gyártott. Megoldásuk középpontjában az SVG export és szigorú átadási dokumentáció állt.',
+        'A kihívás nem csak technikai volt, hanem működési is. Több szállító kezelte a különböző nyomtatási feladatokat, és a vállalatnak konzisztens, szkennelhető eredményeket kellett biztosítania, függetlenül attól, hogy ki mit készített. Megoldásuk középpontjában az SVG export és a szigorú átadási dokumentáció állt.',
       ],
       images: [
         {
@@ -252,7 +252,7 @@ export const examples: PageDefinition = {
     {
       heading: 'Size- specifikus szempontok',
       paragraphs: [
-        'Minden formátum különleges figyelmet igényelt. A 3 cm-es jelvény behelyezéséhez a QR-nek maximális rendelkezésre álló helyet kell foglalnia - a letapogatási távolság a kar hossza. Asztali sátrak 8cm is tartalmazhat dekoratív keretezés kívül a csendes zónában. A 4 méteres banner számítása szükséges: tipikus közönségtávolságból (15- 20 méter) a moduloknak egyértelműen megkülönböztethetőnek kell lenniük a telefonkamerákkal, ami azt jelentette, hogy a QR legalább 80 cm-nek kell lennie a zászló kialakításán belül.',
+        'Mindegyik formátum különös figyelmet igényelt. A 3 cm-es jelvénybetétekhez szükség volt a QR-ra, hogy a lehető legtöbb helyet foglalják el – a szkennelési távolság karnyújtásnyira van. A 8 cm-es asztalsátrak a csendes zónán kívül dekoratív keretezést is tartalmazhatnak. A 4 méteres banner számítást igényelt: a tipikus közönségtávolságból (15-20 méter) a moduloknak jól megkülönböztethetőnek kellett lenniük a telefonkamerákkal, ami azt jelentette, hogy a QR-nak legalább 80 cm-re kellett lennie a banner kialakításán belül.',
         'A cég készített egy méretezési útmutatót, amely dokumentálja a minimális QR méreteket minden várható letapogatási távolság. Ez a jövőbeli események számára újra felhasználható eszközzé vált, eltávolítva a találgatásokat a tervezési folyamatból.',
       ],
       images: [
@@ -327,8 +327,8 @@ export const examples: PageDefinition = {
     {
       heading: 'Integráció a jelzés tartalmával',
       paragraphs: [
-        'Az animációs QR a képernyő elrendezésének egy külön "stabil zónájában" volt elhelyezve, egy olyan területen, amely állandó maradt, miközben a promóciós tartalom a fő megjelenítési területen forgott. Ez a szétválasztás döntő fontosságú volt: a QR-nek vizuális stabilitásra volt szüksége a szkenneléshez, még a finom animációjával is.',
-        'A QR mellett egyértelmű "call-to-action" -t adtak hozzá: "Kihagyni a sorban - scan ellenőrizni." A szöveg statikus maradt, miközben a QR pulzált, létrehozva egy vizuális hierarchia, amely felhívta a szemét a szkennelési lehetőséget anélkül, hogy elsöpri a promóciós tartalom.',
+        'Az animált QR-t a képernyő elrendezésének egy dedikált "stabil zónájában" helyezték el – ez a terület állandó maradt, miközben a promóciós tartalom forog a fő kijelzőterületen. Ez az elválasztás kulcsfontosságú volt: a QR-nak vizuális stabilitásra volt szüksége a szkenneléshez, még akkor is, ha finom animációjával felkelti a figyelmet.',
+        'Egy egyértelmű cselekvésre ösztönzés került a QR-kód mellé: "Kihagyja a sort – szkennelje be a bejelentkezéshez." A szöveg statikus maradt, miközben a QR pulzált, és olyan vizuális hierarchiát hozott létre, amely felhívta a figyelmet a szkennelési lehetőségre anélkül, hogy túlterhelné a promóciós tartalmat.',
       ],
       images: [
         {
@@ -366,7 +366,7 @@ export const examples: PageDefinition = {
           src: '/images/examples/animated-metrics.png',
           alt: 'Egy műszerfal, amely mutatja az adoptálási arány növekedését, a sorban álló idő csökkentését, és nulla sikertelen szkennelési megbízhatóságot a kiépítési időszakban',
           caption:
-            'Egy hónapnyi adat: 60% -os adoptálási növekedés, csökkent sorban állás idő, és továbbra is tökéletes scan megbízhatóság',
+            'Egy hónapnyi adat: 60%-os bevezetési növekedés, csökkentett várakozási idők és fenntartott tökéletes szkennelési megbízhatóság',
         },
       ],
       links: [

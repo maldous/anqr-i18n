@@ -16,7 +16,7 @@ export const contact: PageDefinition = {
     {
       heading: 'Courriel',
       paragraphs: [
-        'Pour toute demande : ${CONTACT_EMAIL}',
+        'Pour toute demande : email@anqr.link',
         "C'est la façon la plus fiable de nous joindre et est recommandé pour des questions détaillées, des demandes de renseignements d'affaires, ou toute autre demande.",
       ],
     },

@@ -10,7 +10,7 @@ import { LAST_UPDATED } from '../types';
 export const examples: PageDefinition = {
   title: 'Contoh ANQR',
   description:
-    'Lima contoh real-world, gaya-produksi yang menunjukkan di mana kode QR menciptakan nilai yang terukur: meningkatkan kode counter eceran warisan, pembayaran ritel bermerek dan aksi Óscan-to", mencetak skala dari selebaran ke papan iklan, animasi QR untuk signage digital, dan kolaborasi lintas-bahasa menggunakan shareable Anchor link. Contoh masing-masing termasuk gambar, kendala praktis, dan link remix kembali ke generator.',
+    'Lima contoh dunia sebenar, gaya pengeluaran yang menunjukkan tempat kod QR mencipta nilai yang boleh diukur: meningkatkan kod kaunter runcit lama, pembayaran runcit berjenama dan tindakan "imbas ke", pencetakan skala daripada risalah ke papan iklan, QR animasi untuk papan tanda digital dan kerjasama merentas bahasa menggunakan pautan Anchor boleh kongsi. Setiap contoh termasuk imej, kekangan praktikal dan pautan remix kembali ke penjana.',
   lastUpdated: LAST_UPDATED,
 
   primaryLinks: [

@@ -61,7 +61,7 @@ export const guide: PageDefinition = {
       heading: 'Tipos de contenido (Basic)',
       paragraphs: [
         'Texto del mensaje: codifica cualquier texto hasta el límite de capacidad del código QR. Ideal para mensajes cortos, códigos o identificadores.',
-        'URL: codificar direcciones web. El código QR abrirá la URL cuando sea escaneado. Supports http:// and https:// protocols.',
+        'URL: codifica direcciones web. El código QR abrirá la URL cuando se escanee. Admite protocolos http:// y https://.',
       ],
     },
     {
@@ -599,8 +599,8 @@ export const guide: PageDefinition = {
       heading: 'Tipos de contenido (profesional)',
       paragraphs: ['El nivel profesional añade tipos de pago y contenidos institucionales:'],
       bullets: [
-        'EPC/SEPA (EU): European bank transfer QR codes with IBAN, BIC, amount, reference.',
-        'UPI (India): Unified Payments Interface with VPA, payee name, amount.',
+        'EPC/SEPA (UE): Códigos QR de transferencia bancaria europea con IBAN, BIC, importe, referencia.',
+        'UPI (India): Interfaz de pagos unificada con VPA, nombre del beneficiario, monto.',
         'PayNow (Singapur): Pago rápido de Singapur con UEN o número móvil.',
         'PromptPay (Tailandia): Sistema nacional de pago tailandés.',
         'PIX (Brasil): pago instantáneo brasileño con llave PIX.',
@@ -641,7 +641,7 @@ export const guide: PageDefinition = {
     {
       heading: 'European Payment Standards',
       bullets: [
-        'EPC/SEPA (EU): European bank transfer QR codes following the EPC QR Code Standard. Apoya IBAN, BIC (opcional para el hogar), cantidad en EUR, y referencias de pago estructuradas o no estructuradas. Se utiliza en toda la zona de la SEPA, incluyendo países de la UE más Suiza, Noruega, Islandia, Liechtenstein, Mónaco y San Marino.',
+        'EPC/SEPA (UE): códigos QR de transferencia bancaria europea siguiendo el estándar de códigos QR EPC. Admite IBAN, BIC (opcional para nacionales), importe en EUR y referencias de pago estructuradas o no estructuradas. Se utiliza en toda la zona SEPA, incluidos los países de la UE, además de Suiza, Noruega, Islandia, Liechtenstein, Mónaco y San Marino.',
         'Swiss QR-bill: Swiss payment standard following SIX Implementation Guidelines. Soporta CHF y EUR, QR-Reference (QRR), Referencia del acreedor (ISO 11649), direcciones de acreedor/deuda estructuradas y información de facturación. Se requiere para facturas suizas desde 2022.',
       ],
       links: [
@@ -656,7 +656,7 @@ export const guide: PageDefinition = {
       heading: 'Normas de pago indios',
       bullets: [
         'UPI (India): Unified Payments Interface following NPCI Deep Linking Specification. Soporta VPA (Dirección de Pago Virtual), nombre de pago, cantidad en INR, nota de transacción, ID de referencia, código de la categoría mercante y modo de transacción.',
-        'BharatQR (India): Unified QR standard supporting both UPI and card-based payments. Combina UPI VPA con la tarjeta PAN para la máxima compatibilidad. Incluye nombre comercial, ciudad, MCC, detalles del GST y números de factura/referencia.',
+        'BharatQR (India): estándar QR unificado que admite pagos con UPI y con tarjeta. Combina UPI VPA con tarjeta PAN para máxima compatibilidad. Incluye nombre del comerciante, ciudad, MCC, detalles de GST y números de factura/referencia.',
       ],
       links: [
         {
@@ -670,7 +670,7 @@ export const guide: PageDefinition = {
       heading: 'Normas de Pago de Asia Sudoriental',
       bullets: [
         'PayNow (Singapur): Sistema de pago rápido de Singapur mediante especificación EMVCo QR con perfil SGQR. Soporta UEN (inscripción de negocios), número móvil o NRIC como identificadores proxy. Incluye bandera de editabilidad de la cantidad y fecha de vencimiento.',
-        'PromptPay (Tailandia): Sistema de pago nacional tailandés siguiendo el perfil de Bank of Thailand EMV. Admite el número de móvil, identificación nacional, identificación fiscal, identificación de e-wallet y pago de facturas con múltiples campos de referencia.',
+        'PromptPay (Tailandia): sistema de pago nacional tailandés que sigue el perfil EMV del Banco de Tailandia. Admite número de teléfono móvil, identificación nacional, identificación fiscal, identificación de billetera electrónica y pago de facturas con múltiples campos de referencia.',
         'QRIS (Indonesia): Código de Respuesta Rápida de Indonesia Estandar de pago nacional basado en EMV, NMID (ID Merchant Nacional), clasificación de criterios de mercader y tarifas de conveniencia (fijo o porcentaje).',
         'DuitNow (Malasia): Sistema de pago instantáneo de Malasia. Soporta varios tipos de proxy incluyendo NRIC, móvil, pasaporte, identificación del ejército y números de registro de negocios.',
         'VietQR (Vietnam): norma de transferencia interbancaria vietnamita. Requiere banco BIN (identificación de NAPAS) y número de cuenta. Soporta múltiples códigos de servicio para diferentes tipos de transferencia (QRPUSH, QRIBFTTA, QRIBFTTC).',
@@ -718,7 +718,7 @@ export const guide: PageDefinition = {
       bullets: [
         'Bitcoin/Litecoin (BIP-21): Pago estándar de criptomonedas URIs con dirección de cartera, cantidad opcional y etiqueta. Compatible con todas las principales carteras de Bitcoin y Litecoin.',
         'Lightning Network (BOLT11): Relámpago Red facturas de pago. Pruebe una cadena de factura codificada BOLT11 para pagos instantáneos de Bitcoin con tarifas mínimas.',
-        'Ethereum (EIP-681): Ethereum transaction request URIs supporting native ETH transfers and ERC-20 token transfers. Incluye ID de cadena para soporte multi-redes (Mainnet, Polygon, BSC, Arbitrum, Optimism, Avalanche), parámetros de gas y llamadas de función contractual.',
+        'Ethereum (EIP-681): URI de solicitud de transacciones de Ethereum que admiten transferencias nativas de ETH y transferencias de tokens ERC-20. Incluye ID de cadena para soporte de múltiples redes (Mainnet, Polygon, BSC, Arbitrum, Optimism, Avalanche), parámetros de gas y llamadas a funciones de contrato.',
       ],
       links: [
         {
@@ -917,7 +917,7 @@ export const guide: PageDefinition = {
         'rot: Rotación superpuesta en grados.',
         'fíjate en 1 para voltear.',
         'manténganse. Buscadores: Patrones de búsqueda predeterminados (por defecto: 1).',
-        'manténganse. Timing, keepAlign: Set to 1 to preserve timing/alignment patterns.',
+        'keepTiming, keepAlign: establezca en 1 para preservar los patrones de sincronización/alineación.',
       ],
     },
     {

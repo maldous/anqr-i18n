@@ -10,7 +10,7 @@ import { LAST_UPDATED } from '../types';
 export const examples: PageDefinition = {
   title: 'ANQR Voorbeelden',
   description:
-    'Vijf real-world, productie-stijl voorbeelden die laten zien waar QR codes meetbare waarde creëren: het verhogen van een legacy retail counter code, merk retail betalingen en "scan-to" acties, het printen van flyers naar billboards, geanimeerde QR voor digitale bewegwijzering, en cross-lingual samenwerking met behulp van gedeelde Anker links. Elk voorbeeld bevat afbeeldingen, praktische beperkingen, en een remix link terug naar de generator.',
+    "Vijf praktijkvoorbeelden in productiestijl die laten zien waar QR-codes meetbare waarde creëren: het opwaarderen van een oude toonbankcode, merkgerelateerde retailbetalingen en 'scan-to'-acties, printschaling van flyers naar billboards, geanimeerde QR voor digitale signage en grensoverschrijdende samenwerking met behulp van deelbare ankerlinks. Elk voorbeeld bevat afbeeldingen, praktische beperkingen en een remixlink terug naar de generator.",
   lastUpdated: LAST_UPDATED,
 
   primaryLinks: [
@@ -29,7 +29,7 @@ export const examples: PageDefinition = {
       heading: 'Case Study: Retail Counter QR Uplift',
       paragraphs: [
         'Dit real-world voorbeeld volgt een klein café dat al drie jaar dezelfde QR code op hun toonbank gebruikt. De originele code werd snel gegenereerd tijdens de pandemie rush, gedrukt op standaard papier, en gleed uit in een plastic standaard. Het werkte - technisch gezien - maar klanten hadden vaak meerdere pogingen nodig om het te scannen, en het deed niets om de zorgvuldig gemaakte merkidentiteit van het café te versterken.',
-        'De transformatie begon met een eenvoudige audit: de bestaande code code gecodeerde het online menu URL van het café, die ze wilden behouden. De uitdaging was om de QR zich te laten voelen als onderdeel van de café-ervaring in plaats van als een after thought utility uit 2020.',
+        "The transformation began with a simple audit: the existing code encoded the café's online menu URL, which they wanted to keep. The challenge was making the QR feel like part of the café experience rather than an afterthought utility from 2020.",
       ],
       images: [
         {
@@ -59,7 +59,7 @@ export const examples: PageDefinition = {
       heading: 'Het upliftproces',
       paragraphs: [
         'Met behulp van ANQR heeft de café eigenaar de code opnieuw gecreëerd met de identieke menu-URL maar drastisch verbeterde instellingen: Foutcorrectie H voor maximale veerkracht, een 6-module rustige zone voor betrouwbare grensdetectie, en merkkleuren (diepe bordeaux modules op crème achtergrond) die overeenkomen met het interieurpalet van het café.',
-        'Er werd een kleine centrumoverlay met het logo van het café toegevoegd - bewust subtiel gehouden om de scannbaarheid te behouden en tegelijkertijd meteen merkherkenning te bieden. De veiligheidsmodus bevestigde dat het nieuwe ontwerp betrouwbaar is gescand over de testapparatuur voordat er wordt gedrukt.',
+        'Er werd een kleine middenoverlay met het logo van het café toegevoegd, die bewust subtiel werd gehouden om de scanbaarheid te behouden en toch onmiddellijke merkherkenning te bieden. Safety Mode confirmed the new design scanned reliably across test devices before any printing.',
       ],
       images: [
         {
@@ -73,7 +73,7 @@ export const examples: PageDefinition = {
     {
       heading: 'Meetbare resultaten',
       paragraphs: [
-        'Na het inzetten van de nieuwe QR op professionele matte-gelamineerde kaarten voorraad, het café volgde resultaten over vier weken. Het succespercentage van de scan is verbeterd van naar schatting 70% tot bijna-100%. De gemiddelde scantijd daalde van 3-4 seconden tot minder dan 1 seconde. Het meest significant, menu engagement steeg 40% - klanten die eerder keek naar de QR en gaf nu scannen vertrouwen.',
+        'After deploying the new QR on professional matte-laminated card stock, the café tracked results over four weeks. Scan success rate improved from an estimated 70% to near-100%. Average scan time dropped from 3-4 seconds to under 1 second. Most significantly, menu engagement increased 40% - customers who previously glanced at the QR and gave up were now scanning confidently.',
         "Personeel meldde minder klantvragen over 'hoe gebruik je de QR' en geen gevallen meer van handmatig typen van de URL voor gefrustreerde klanten. De branded uiterlijk ook vonk gesprekken, met klanten positief commentaar op het samenhangende ontwerp.",
       ],
       images: [
@@ -116,7 +116,7 @@ export const examples: PageDefinition = {
     {
       heading: 'Case Study: Multi-Payment Counter Display',
       paragraphs: [
-        'Dit voorbeeld volgt een boetiek kledingwinkel die vijf verschillende QR codes had verzameld in hun register: bankbetaling, tips, Instagram, Google reviews, en een huurlink. Elk werd gegenereerd uit een andere bron, gedrukt op verschillende tijden, en weergegeven in niet-matched stands. De visuele chaos was het ondermijnen van de zorgvuldig gecureerde esthetiek van de winkel, en het personeel regelmatig omgaan met klanten scannen van de verkeerde code.',
+        "Dit voorbeeld volgt een boetiekkledingwinkel die vijf verschillende QR-codes bij de kassa had verzameld: bankbetalingen, fooien, Instagram, Google-recensies en een wervingslink. Each was generated from a different source, printed at different times, and displayed in mismatched stands. The visual chaos was undermining the store's carefully curated aesthetic, and staff regularly dealt with customers scanning the wrong code.",
         'De oplossing vereist het scheiden van zorgen: betaalcodes vereist maximale betrouwbaarheid met conservatieve styling, terwijl marketingcodes expressiever kunnen zijn. Het uniforme displaysysteem dat ontstond toont aan hoe de aanwezigheid van het merk in evenwicht te brengen met de functionele eisen van verschillende QR use cases.',
       ],
       images: [
@@ -147,7 +147,7 @@ export const examples: PageDefinition = {
       heading: 'Secundaire actieweergave aanmaken',
       paragraphs: [
         'Voor tips, recensies, sociale, en het huren, de winkel kan meer expressief. Deze codes werden gerecupereerd in ANQR met consistente merkstijlen: de handtekening van de winkel olijfgroen op crème, ronde modulestijl, en een subtiele centrumoverlay met het pictogram van de winkel. Foutcorrectie H zorgde zelfs met de styling voor betrouwbaarheid.',
-        'Deze vier codes werden gerangschikt in een branded panel naast (niet concurreren met) de betaalcode. Duidelijke labels in de typografie van de winkel verklaarden het doel van elke code. De visuele hiërarchie was opzettelijk: betaling stond alleen en prominent; secundaire acties gegroepeerd als opties.',
+        "These four codes were arranged in a branded panel positioned beside (not competing with) the payment code. Clear labels in the store's typography explained each code's purpose. The visual hierarchy was intentional: payment stood alone and prominent; secundaire acties gegroepeerd als opties.",
       ],
       images: [
         {
@@ -177,7 +177,7 @@ export const examples: PageDefinition = {
       heading: 'Operationele verbeteringen',
       paragraphs: [
         "Zes weken na implementatie heeft de winkel significante verbeteringen gedocumenteerd: nul klachten van klanten over 'foute code' verwarring, snellere transactietijden en een 3x toename van tip-inzendingen (klanten konden nu de tipcode vinden en scannen zonder lastig personeel te vragen). Google reviews ook verhoogd als de toegewijde, goed gelabelde QR verwijderd wrijving.",
-        'De opleiding van het personeel werd eenvoudiger: De betaalcode is de grote, de rest staat op het paneel. Toen betaling apps bijgewerkt en een kort toonde langzamer scannen, de conservatieve betaalcode ontwerp betekende het nog steeds werkte - slechts marginaal langzamer in plaats van volledig falen.',
+        "Het trainen van het personeel werd eenvoudiger: 'de betalingscode is de grote, al het andere staat op het paneel.' Toen betalingsapps werden bijgewerkt en één ervan kortstondig trager scande, zorgde het conservatieve ontwerp van de betalingscode ervoor dat het nog steeds werkte - alleen iets langzamer in plaats van helemaal te falen.",
         'Zie de Leergids over QR-codes voor retailbetalingen voor de principes achter dit displaysysteemontwerp.',
       ],
       images: [
@@ -207,7 +207,7 @@ export const examples: PageDefinition = {
       heading: 'Case Study: Van Business Card tot Billboard',
       paragraphs: [
         'Dit voorbeeld volgt op een event productie bedrijf voorbereiding op een grote conferentie. Ze hadden dezelfde QR-code nodig - koppelen aan de event-app - ingezet in radicaal verschillende formaten: bezoekersbadge inserts (3cm), tafeltentkaarten (8cm), registratie bureau signage (30cm), wayfinding posters (60cm), en een enorme stage backdrop banner (4 meter). Elk formaat had verschillende kijkafstanden, lichtomstandigheden en productie-workflows.',
-        'De uitdaging was niet alleen technisch - het was operationeel. Meerdere leveranciers behandelden verschillende afdruktaken, en het bedrijf moest zorgen voor consistente, scannable resultaten ongeacht wie geproduceerd wat. Hun oplossing was gericht op SVG export en strikte overdrachtsdocumentatie.',
+        'De uitdaging was niet alleen technisch, maar ook operationeel. Meerdere leveranciers verzorgden verschillende printopdrachten en het bedrijf moest consistente, scanbare resultaten garanderen, ongeacht wie wat produceerde. Hun oplossing was gericht op SVG-export en rigoureuze overdrachtsdocumentatie.',
       ],
       images: [
         {
@@ -266,8 +266,8 @@ export const examples: PageDefinition = {
     {
       heading: 'Productieresultaten',
       paragraphs: [
-        'De validatie van de conferentiedag was systematisch: het personeel testte elke ingezette QR voordat de deuren opengingen. De badge inserts scanden direct op armlengte. Tafeltenten werkten betrouwbaar in de variabele verlichting van breakout rooms. De podiumbanner - de schaamte van het vorige evenement - scande succesvol vanuit het midden van het publieksgebied.',
-        'Zero scanning klachten werden geregistreerd bij 2000+ bezoekers. De operationele overwinning was even belangrijk: wanneer een last-minute sponsor toevoeging nieuwe bewegwijzering vereist, het productieteam genereerde het van de master SVG in minuten, ervan overtuigd dat het zou overeenkomen met al het andere.',
+        'De validatie op de conferentiedag was systematisch: het personeel testte elke ingezette QR voordat de deuren opengingen. De badge-inzetstukken worden direct op armlengte gescand. Tafeltenten werkten betrouwbaar in de variabele verlichting van breakout rooms. Het podiumbanner – de schaamte van het vorige evenement – ​​scande met succes vanuit het midden van het publieksgebied.',
+        'Er werden geen scanklachten geregistreerd bij meer dan 2.000 aanwezigen. De operationele overwinning was even belangrijk: toen voor een last-minute sponsortoevoeging nieuwe bewegwijzering nodig was, genereerde het productieteam deze binnen enkele minuten op basis van de master-SVG, in het vertrouwen dat deze met al het andere zou matchen.',
         'Zie de Learn-gids over print-ready QR-codes voor het SVG vs PNG-besluitkader en de overdracht van beste praktijken.',
       ],
       images: [
@@ -297,7 +297,7 @@ export const examples: PageDefinition = {
       heading: 'Case Study: Airport Lounge Digital Display',
       paragraphs: [
         'Dit voorbeeld volgt een luchtvaartmaatschappij lounge die statische QR codes had gebruikt op hun digitale welkomstschermen. De schermen weergegeven roterende promotionele inhoud, maar de QR-code voor lounge check-in zat in een hoek, statische en gemakkelijk over het hoofd. Analytics toonde slechts 15% van de in aanmerking komende gasten gebruikt de QR check-in ondanks dat het sneller dan de bureauwachtrij. De meeste gasten merkten het gewoon niet.',
-        'De hypothese was simpel: in een visueel drukke omgeving met bewegende inhoud wordt een statische QR onzichtbaar. De oplossing die nodig is om de QR merkbaar te maken zonder afbreuk te doen aan de betrouwbaarheid die nodig is voor een check-in flow waar falen zou leiden tot gefrustreerde reizigers en langere bureaurijen.',
+        'De hypothese was simpel: in een visueel drukke omgeving met bewegende inhoud wordt een statische QR onzichtbaar. De oplossing moest de QR zichtbaar maken zonder afbreuk te doen aan de betrouwbaarheid die nodig is voor een check-instroom waarbij falen gefrustreerde reizigers en langere wachtrijen bij de balie zou betekenen.',
       ],
       images: [
         {
@@ -326,8 +326,8 @@ export const examples: PageDefinition = {
     {
       heading: 'Integratie met Signage Content',
       paragraphs: [
-        "De geanimeerde QR werd geplaatst in een speciale 'stabiele zone' van de schermindeling - een gebied dat constant bleef terwijl promotionele inhoud draaide in het hoofdschermgebied. Deze scheiding was van cruciaal belang: de QR had visuele stabiliteit nodig om te scannen, zelfs terwijl hij de aandacht trok door zijn subtiele animatie.",
-        'Een duidelijke call-to-action werd toegevoegd naast de QR: Scan de wachtrij om in te checken. De tekst bleef statisch terwijl de QR pulsed, het creëren van een visuele hiërarchie die het oog trok op de scankans zonder het overweldigen van de promotionele inhoud.',
+        "De geanimeerde QR werd in een speciale 'stabiele zone' van de schermindeling geplaatst - een gebied dat constant bleef terwijl de promotionele inhoud in het hoofdweergavegebied roteerde. Deze scheiding was cruciaal: de QR had visuele stabiliteit nodig om te kunnen scannen, zelfs terwijl hij de aandacht trok door zijn subtiele animatie.",
+        "Naast de QR is een duidelijke call-to-action toegevoegd: 'Sla de wachtrij over - scan om in te checken.' De tekst bleef statisch terwijl de QR pulseerde, waardoor een visuele hiërarchie ontstond die de aandacht naar de scanmogelijkheid trok zonder de promotionele inhoud te overweldigen.",
       ],
       images: [
         {
@@ -356,7 +356,7 @@ export const examples: PageDefinition = {
     {
       heading: 'Gemeten effect',
       paragraphs: [
-        "Na een maand van werking, QR check-in adoptie steeg van 15% naar 24% - een relatieve verbetering van 60%. Gast feedback onderzoeken wees uit dat de geanimeerde QR was 'makkelijker op te merken' en 'voelt meer modern.' Desk wachtrij tijden nam meetbaar tijdens de piek periodes als meer gasten zelf bediend via de QR.",
+        "Na een maand gebruik steeg de acceptatie van QR-check-in van 15% naar 24% - een relatieve verbetering van 60%. Uit gastfeedbackonderzoeken bleek dat de geanimeerde QR 'makkelijker op te merken was' en 'moderner aanvoelde'. De wachtrijtijden bij de balie namen tijdens piekperioden meetbaar af, omdat meer gasten zelfbediening via de QR verrichtten.",
         "Belangrijk, nul scanfouten werden gemeld ondanks duizenden dagelijkse scans. De conservatieve animatie aanpak had het aandachtsdoel bereikt zonder de betrouwbaarheid op te offeren een check-in flow gevraagd. De lounge rolde vervolgens soortgelijke geanimeerde QR's uit als hun andere locaties.",
         'Zie de Leergids over geanimeerde QR-codes voor digitale bewegwijzering voor de technische principes achter veilig animatieontwerp.',
       ],
@@ -401,7 +401,7 @@ export const examples: PageDefinition = {
     {
       heading: 'De masterconfiguratie instellen',
       paragraphs: [
-        'Het wereldwijde merkteam creëerde de gezaghebbende QR-configuratie in ANQR: merkkleuren die overeenkomen met de visuele identiteit van de productlijn, Foutcorrectie H voor betrouwbaarheid in alle print- en digitale toepassingen, en styling die consistent zou reproduceren ongeacht lokale productiemethoden. De configuratie was vergrendeld en de share link gedocumenteerd in de globale campagnebrief.',
+        'Het wereldwijde merkteam creëerde de gezaghebbende QR-configuratie in ANQR: merkkleuren die overeenkomen met de visuele identiteit van de productlijn, Error Correction H voor betrouwbaarheid in alle gedrukte en digitale toepassingen, en een styling die consistent reproduceert, ongeacht de lokale productiemethoden. De configuratie was vergrendeld en de deellink werd gedocumenteerd in de algemene campagnebriefing.',
         'Kritiek, de gecodeerde URL gebruikt een taal-detecting redirect service. Bij het scannen werden gebruikers automatisch doorgestuurd naar hun lokale taalproductpagina. Dit betekende dat alle 12 markten identieke QR-codes konden gebruiken - geen variaties per marktlading die fouten konden introduceren.',
       ],
       images: [
@@ -447,7 +447,7 @@ export const examples: PageDefinition = {
       heading: 'Startresultaten',
       paragraphs: [
         "Productlanceringsdag zag QR-codes die gelijktijdig op alle 12 markten werden ingezet voor verpakkingen, retaildisplays, eventmaterialen en digitale campagnes. Kwaliteitscontroles bevestigden visuele consistentie tussen regio's - de QR op Tokyo retail displays kwamen overeen met de QR op São Paulo verpakking overeen met de QR op Berlijn event banners.",
-        'Overal in de markt werden storingen in het scannen gerapporteerd. Wanneer een post-lancering product pagina URL-wijziging nodig was, de redirect service onzichtbaar behandeld - geen herdruk vereist. Het wereldwijde team schatte de configuratielinkbenadering 40+ uur coördinatietijd in vergelijking met hun vorige lanceringsmethode.',
+        'Er werden in alle markten nul scanfouten gemeld. Wanneer na de lancering de URL van een productpagina moest worden gewijzigd, handelde de omleidingsservice dit onzichtbaar af - opnieuw afdrukken was niet nodig. Het wereldwijde team schatte dat de configuratielink-aanpak meer dan 40 uur aan coördinatietijd bespaarde in vergelijking met hun vorige lanceringsmethodologie.',
         'Zie de Learn-gids over de meertalige QR-samenwerking voor de workflowprincipes van wereldwijde campagnesamenhang.',
       ],
       images: [

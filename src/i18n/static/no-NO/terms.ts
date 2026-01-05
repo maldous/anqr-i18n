@@ -2,7 +2,7 @@ import type { PageDefinition } from '../types';
 import { LAST_UPDATED } from '../types';
 
 export const terms: PageDefinition = {
-  title: 'Vilkår for tjeneste',
+  title: 'Vilkår for bruk',
   description:
     'Ved å få tilgang til eller bruke nettstedet, godtar du å være bundet av disse vilkårene.',
   lastUpdated: LAST_UPDATED,
@@ -18,13 +18,13 @@ export const terms: PageDefinition = {
     {
       heading: 'Kvalifikasjon',
       paragraphs: [
-        'Du må være minst 13 år for å bruke ANQR. Ved å bruke nettstedet, representerer du at du oppfyller dette alderskravet. Hvis du er under 18 år, representerer du at du har din foreldres eller verges tillatelse til å bruke nettstedet.',
+        'Du må være minst 13 år for å bruke ANQR. Ved å bruke siden, representerer du at du oppfyller dette alderskravet. Hvis du er under 18 år, representerer du at du har din forelders eller foresattes tillatelse til å bruke siden.',
       ],
     },
     {
       heading: 'Tillatt bruk',
       paragraphs: [
-        'Du kan kun bruke ANQR til lovlige formål. Du er utelukkende ansvarlig for innholdet du koder i QR-koder og for hvordan du bruker QR-koder du genererer.',
+        'Du kan bare bruke ANQR til lovlige formål. Du er alene ansvarlig for innholdet du koder til QR-koder og for hvordan du bruker eventuelle QR-koder du genererer.',
       ],
     },
     {
@@ -35,7 +35,7 @@ export const terms: PageDefinition = {
         'Kode innhold som bryter immaterielle rettigheter, bryter personvern eller inneholder ulovlig materiale.',
         'Forsøk på å forstyrre, overbelaste eller forstyrre driften eller sikkerheten på nettstedet.',
         'Reverse ingeniør, dekompilere eller forsøke å trekke ut kildekode fra nettstedet.',
-        'Bruk automatiske verktøy (bots, skrapere) for å få tilgang til nettstedet på en måte som reduserer ytelsen for andre brukere.',
+        'Bruk automatiserte verktøy (roboter, skrapere) for å få tilgang til nettstedet på en måte som forringer ytelsen for andre brukere.',
         'Omslutt eller deaktivere sikkerhets- eller tilgangskontrollfunksjoner.',
         'Personliggjør enhver person eller enhet eller feilrepresenter din tilhørighet.',
       ],
@@ -58,8 +58,8 @@ export const terms: PageDefinition = {
     {
       heading: 'Tredjepartstjenester og annonsering',
       paragraphs: [
-        'Nettstedet viser annonser gjennom Google AdSense og kan inkludere koblinger til tredjeparts nettsteder. Vi er ikke ansvarlig for tredjeparts innhold, tjenester eller personvernpraksis.',
-        'Samspillet med annonsører og tredjeparter er utelukkende mellom deg og dem. Se vår personvernerklæring for informasjon om reklamedatapraksis.',
+        'Nettstedet viser annonser gjennom Google AdSense og kan inneholde lenker til tredjeparts nettsteder. Vi er ikke ansvarlige for tredjepartsinnhold, tjenester eller personvernpraksis.',
+        'Dine interaksjoner med annonsører og tredjeparter er utelukkende mellom deg og dem. Se vår personvernerklæring for informasjon om praksis for annonseringsdata.',
       ],
     },
     {
@@ -88,8 +88,8 @@ export const terms: PageDefinition = {
     {
       heading: 'Tvistløsning',
       paragraphs: [
-        'Enhver tvist som oppstår fra disse vilkårene eller din bruk av ANQR skal først forsøkes å bli løst gjennom uformell forhandling ved å kontakte ${CONTACT_EMAIL}_.',
-        'Hvis uformell resolusjon mislykkes, skal tvister løses gjennom bindende voldgift i Victoria i Australia, bortsett fra at begge parter kan søke skadelig lindring i retten for brudd på immateriell eiendom.',
+        'Enhver tvist som oppstår fra disse vilkårene eller din bruk av ANQR skal først forsøkes å bli løst gjennom uformell forhandling ved å kontakte email@anqr.link_.',
+        'Hvis uformell løsning mislykkes, skal tvister løses gjennom bindende voldgift i Victoria, Australia, bortsett fra at hver av partene kan søke om forføyning i retten for brudd på immaterielle rettigheter.',
       ],
     },
     {
@@ -132,12 +132,12 @@ export const terms: PageDefinition = {
     {
       heading: 'Force majeure',
       paragraphs: [
-        'Vi vil ikke være ansvarlig for noen svikt eller forsinkelse i ytelse på grunn av omstendigheter som er utenfor vår rimelige kontroll, inkludert naturkatastrofer, krig, terrorisme, opprør, statlige handlinger eller internett/infrastrukturfeil.',
+        'Vi skal ikke holdes ansvarlige for svikt eller forsinkelse i ytelsen på grunn av omstendigheter utenfor vår rimelige kontroll, inkludert naturkatastrofer, krig, terrorisme, opptøyer, myndighetshandlinger eller internett-/infrastruktursvikt.',
       ],
     },
     {
       heading: 'Kontakt',
-      paragraphs: ['Spørsmål om disse vilkårene kan sendes til: ${CONTACT_EMAIL}'],
+      paragraphs: ['Spørsmål om disse vilkårene kan sendes til: email@anqr.link'],
     },
   ],
 };

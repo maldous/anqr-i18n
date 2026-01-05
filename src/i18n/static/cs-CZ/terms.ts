@@ -23,7 +23,7 @@ export const terms: PageDefinition = {
     {
       heading: 'Povolené použití',
       paragraphs: [
-        'ANQR můžete používat pouze pro zákonné účely. Jste výhradně zodpovědní za obsah, který zakódujete do QR kódů a za to, jak používáte QR kódy, které generujete.',
+        'ANQR můžete používat pouze pro zákonné účely. Jste výhradně odpovědní za obsah, který kódujete do QR kódů, a za to, jak používáte jakékoli QR kódy, které vygenerujete.',
       ],
     },
     {

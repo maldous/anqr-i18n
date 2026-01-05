@@ -24,7 +24,7 @@ export const contact: PageDefinition = {
       heading: 'A vizsgálatok típusai',
       bullets: [
         'Általános kérdések: Kérdések az ANQR használatáról, magyarázatok vagy általános visszajelzések.',
-        'A hibajelentések: Kérjük, hogy a böngészőt, az operációs rendszert, a reprodukáláshoz szükséges lépéseket és a hibaüzeneteket is tartalmazza.',
+        'Hibajelentések: Kérjük, adja meg böngészőjét, operációs rendszerét, a reprodukálás lépéseit és a megjelenő hibaüzeneteket.',
         'Téma kérések: Javaslatok új funkciók vagy fejlesztések. Minden kérést figyelembe veszünk, bár nem ígérhetünk végrehajtást.',
         'Üzleti kérdések: Partnerségi lehetőségek, engedélyezési kérdések vagy kereskedelmi célú felhasználás vizsgálata.',
         'Adatvédelmi kérések: A GDPR, CCPA vagy más adatvédelmi törvények (lásd Adatvédelmi irányelvek) szerinti adatvédelmi jogok gyakorlására irányuló kérelem.',

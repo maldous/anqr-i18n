@@ -1202,7 +1202,7 @@
 1202	"Statyczny QR"
 1203	"Kod QR wielokrotnego użytku (bez ustalonej kwoty)"
 1204	"Wskaźnik napiwku / opłaty"
-1205	"Prompt for Tip"
+1205	"Prośba o napiwek"
 1206	"Opłaty stałe"
 1207	"Stawka procentowa"
 1208	"Kwota opłaty"

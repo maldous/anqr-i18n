@@ -9,7 +9,7 @@ import { LAST_UPDATED } from '../types';
 export const learn: PageDefinition = {
   title: 'Pelajari dengan ANQR',
   description:
-    'Praktis, bisnis-pertama panduan untuk mengubah kode QR menjadi real marketing aset - tidak hanya fungsional kotak. Pelajari cara meningkatkan titik legacy -of -sale kode, buat pembayaran compliant QR signage, siapkan print- ready export, gunakan animasi aman pada tampilan digital, dan bagikan kunci-dalam konfigurasi seluruh tim multibahasa menggunakan ANQR ("anchor") links.',
+    'Panduan praktis dan mengutamakan bisnis untuk mengubah kode QR menjadi aset pemasaran nyata - bukan hanya kotak fungsional. Pelajari cara meningkatkan kode tempat penjualan lama, membuat tanda QR pembayaran yang sesuai, menyiapkan ekspor siap cetak, menggunakan animasi dengan aman di tampilan digital, dan berbagi konfigurasi terkunci ke seluruh tim multibahasa menggunakan tautan ANQR ("anchor").',
   lastUpdated: LAST_UPDATED,
 
   primaryLinks: [
@@ -138,7 +138,7 @@ export const learn: PageDefinition = {
       ],
     },
     {
-      heading: 'Sizing and Placement for Counter Displays',
+      heading: 'Ukuran dan Penempatan untuk Tampilan Konter',
       paragraphs: [
         'Counter- top QR kode menghadapi tantangan fisik yang unik. Pelanggan memindai pada panjang lengan, sering pada sudut, kadang-kadang melalui petugas bersin atau menampilkan kasus. Lampu di atas membuat bintik-bintik silau. Kode bersaing dengan lain counter kekacauan untuk perhatian dan pandangan yang jelas. Ukuran pembayaran Anda QR murah hati - minimal 4-5cm direkomendasikan untuk aplikasi kontra kebanyakan, skala up jika kode duduk di balik kaca atau dalam daerah menyala suram.',
         'Posisi sama pentingnya dengan ukuran. Tempatkan kode di mana pelanggan dapat dengan nyaman memegang telepon mereka tanpa memblokir antrian atau mencapai canggung. Sudut tampilan terhadap pelanggan daripada meletakkannya datar. Jika mungkin, gunakan laminasi matte atau non-reflektif tampilan bahan untuk meminimalkan silau dari pencahayaan atas. Uji penempatan akhir pada waktu yang berbeda hari untuk menangkap masalah pencahayaan.',

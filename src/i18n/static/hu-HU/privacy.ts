@@ -13,7 +13,7 @@ export const privacy: PageDefinition = {
       paragraphs: [
         'Az ANQR egy QR kódgenerátor, az ügyfelek első megközelítésével. Nem kérjük, hogy hozzon létre egy fiókot. Alapértelmezés szerint a QR kódok a böngésződben keletkeznek - nincs hozzáférésünk a kódolt tartalomhoz.',
         'Szakmai használatra az ANQR egy szerveroldalas API-t biztosít, amely QR-kódokat generál URL paraméterekből. Az API használatakor az Ön QR-tartalmát a szervereinken dolgozzák fel a kép elkészítéséhez, de nem tárolja vagy nem naplózza.',
-        'A Google AdSense-t hirdetésre használjuk, és elemzői szolgáltatásokat is igénybe vehetünk. Ezek a szolgáltatások cookie-kon és hasonló technológiákon keresztül gyűjtenek információkat. Ez a politika megmagyarázza, hogy milyen adatokat gyűjtenek, hogyan használják, és az Ön jogait.',
+        'A Google AdSense hirdetési szolgáltatást használjuk, és használhatunk elemzési szolgáltatásokat. Ezek a szolgáltatások cookie-kon és hasonló technológiákon keresztül gyűjtenek információkat. Ez a szabályzat elmagyarázza, hogy milyen adatokat gyűjtünk, hogyan használjuk fel azokat, valamint az Ön jogait.',
       ],
     },
     {
@@ -84,7 +84,7 @@ export const privacy: PageDefinition = {
         'A törléshez való jog: Adatainak törlését kérjük ("a felejtéshez való jog").',
         'A feldolgozás korlátozásának joga: Határokat kérek, hogy hogyan használjuk az adatait.',
         'Az adathordozhatóság joga: Kérje adatait hordozható formátumban.',
-        'A tiltakozáshoz való jog: A feldolgozás tárgya, beleértve a közvetlen forgalmazást is.',
+        'Tiltakozási jog: Tiltakozás a feldolgozás ellen, beleértve a direkt marketing célját is.',
         'A hozzájárulás visszavonása: A hozzájárulás visszavonása bármikor, amikor a feldolgozás konszenzus alapján történik.',
         'A panasz benyújtásának joga: Panaszt nyújt be adatvédelmi hatóságánál.',
       ],
@@ -115,7 +115,7 @@ export const privacy: PageDefinition = {
     {
       heading: 'Nemzetközi transzferek',
       paragraphs: [
-        'Az Ön adatai átadhatók különböző adatvédelmi jogszabályokkal rendelkező országoknak, beleértve az Egyesült Államokat is. Megfelelő biztosítékokat alkalmazunk, például a szokásos szerződési feltételeket.',
+        'Az Ön adatait más adatvédelmi törvényekkel rendelkező országokba továbbíthatjuk, beleértve az Egyesült Államokat is. Megfelelő biztosítékokat alkalmazunk, például szabványos szerződési feltételeket.',
       ],
     },
     {
@@ -139,7 +139,7 @@ export const privacy: PageDefinition = {
     {
       heading: 'E politika módosításai',
       paragraphs: [
-        'Időnként frissíthetjük a szabályzatot. A legutóbbi frissítés dátuma a legutóbbi felülvizsgálatot jelzi. A jelentős változtatások webhely-lobogón keresztül is közölhetők.',
+        'Ezt a szabályzatot rendszeresen frissíthetjük. Az "Utolsó frissítés" dátuma a legutóbbi változatot jelzi. A jelentős változásokat a webhely szalaghirdetésén keresztül lehet közölni.',
       ],
     },
     {

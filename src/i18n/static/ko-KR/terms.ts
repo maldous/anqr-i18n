@@ -87,7 +87,7 @@ export const terms: PageDefinition = {
     {
       heading: '분쟁 해결',
       paragraphs: [
-        '이 약관 또는 ANQR의 사용으로 인해 발생하는 모든 분쟁은 ${CONTACT_EMAIL}에 연락하여 통보 협상을 통해 해결 될 것입니다.',
+        '이 약관 또는 ANQR의 사용으로 인해 발생하는 모든 분쟁은 email@anqr.link에 연락하여 통보 협상을 통해 해결 될 것입니다.',
         '비공식적 인 해상도가 실패하면 분쟁은 빅토리아, 호주의 바인딩 중재를 통해 해결되어야하며, 당사자는 지적 재산 위반에 대한 법원의 부정적 구호를 구할 수 있습니다.',
       ],
     },
@@ -134,7 +134,7 @@ export const terms: PageDefinition = {
     },
     {
       heading: '제품정보',
-      paragraphs: ['이 약관에 대한 질문은 보내질 수 있습니다 : ${CONTACT_EMAIL}'],
+      paragraphs: ['이 약관에 대한 질문은 보내질 수 있습니다 : email@anqr.link'],
     },
   ],
 };

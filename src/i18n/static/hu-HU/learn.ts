@@ -9,7 +9,7 @@ import { LAST_UPDATED } from '../types';
 export const learn: PageDefinition = {
   title: 'Tanulj az ANQR-rel',
   description:
-    'Gyakorlati, üzleti-első útmutatók a QR kódok valódi marketing eszközök - nem csak funkcionális négyzetek. Ismerje meg, hogyan lehet frissíteni a régi point-of-sale kódokat, hozzon létre megfelelő fizetési QR jelzéseket, készítsen print- ready exportot, használja az animációt biztonságosan a digitális kijelzőkön, és ossza meg zárt konfigurációkat a többnyelvű csapatok ANQR ("horgony") linkek segítségével.',
+    'Gyakorlati, üzleti célú útmutatók a QR-kódok valódi marketingeszközzé alakításához – nem csak funkcionális négyzetekké. Tanulja meg, hogyan frissítheti a régi értékesítési pontkódokat, hozhat létre megfelelő fizetési QR-jelzéseket, készíthet elő nyomtatásra kész exportokat, hogyan használhat biztonságosan animációkat digitális kijelzőkön, és hogyan oszthatja meg a zárt konfigurációkat többnyelvű csapatok között ANQR ("horgony") hivatkozások segítségével.',
   lastUpdated: LAST_UPDATED,
 
   primaryLinks: [
@@ -50,7 +50,7 @@ export const learn: PageDefinition = {
       heading: 'A QR-kód ellenőrzése',
       paragraphs: [
         'Kezdje meg a frissítési projekt létrehozásával átfogó leltárt minden QR kódot jelenleg telepített az üzleti. Dokumentálja a fizikai elhelyezkedést, a kódolt rendeltetési helyet, a nyomtatott anyag jelenlegi állapotát, valamint a jellegzetes letapogatási környezetet, beleértve a világítási körülményeket és a látószöget. Tesztelni minden kódot több eszköz - régebbi okostelefonok és költségvetési eszközök gyakran fedi fel megbízhatósági problémák prémium telefonok maszk.',
-        'Különös figyelmet kell fordítani a magas tétű helyszíneken található kódokra: fizetési pontokra, ellenőrző pontokra és promóciós kijelzőkre, ahol a szkennelési hiba közvetlenül befolyásolja a bevételeket vagy az ügyfelek tapasztalatait. Ezeket prioritásként kell kezelni az azonnali korszerűsítés érdekében. Jegyezze meg azokat a kódokat is, amelyek megjelennek a fényképészetben vagy a videotartalomban, mivel ezek összehangolást igényelnek a marketing csapatával a vizuális eszközök frissítéséhez.',
+        'Fordítson különös figyelmet a nagy téttel rendelkező helyeken található kódokra: fizetési pontokra, bejelentkezési területekre és promóciós kijelzőkre, ahol a szkennelési hiba közvetlenül befolyásolja a bevételt vagy az ügyfélélményt. Ezeket prioritásként kell kezelni az azonnali frissítés érdekében. Figyelje meg a fotókban vagy a videotartalmakban megjelenő kódokat is, mivel ezekhez a vizuális eszközök frissítéséhez egyeztetni kell a marketingcsapattal.',
       ],
       images: [
         {
@@ -72,7 +72,7 @@ export const learn: PageDefinition = {
       heading: 'A védjegyek hozzáadása a megbízhatóság veszélyeztetése nélkül',
       paragraphs: [
         'Hatékony QR branding egyensúly vizuális hatás ellen scan megbízhatóság. Kezdje színnel: cserélje ki az alapértelmezett fekete előteret az elsődleges márka színére, biztosítva a háttér megfelelő kontrasztját. A legtöbb márka számára a sötét színek a könnyű háttéren a legjobb. Kerülje az alacsony kontrasztú kombinációkat, a széltisztaságot csökkentő gradienseket vagy a közös világítási körülmények között hasonló színeket.',
-        'Modulforma testreszabása újabb márkanév lehetőséget minimális megbízhatósági hatással. Kerekített modulok hoznak létre egy puhább, megközelíthetőbb megjelenés, miközben a kiváló scannability. Dot- style modulok jól működik a modern, techno-forward márkák. A csatlakoztatott modulok megfelelnek az ipari vagy vállalati identitásoknak. Bármilyen stílust is választasz, tartsd fenn a konzisztenciát a QR-ben az azonnali márkafelismerés érdekében.',
+        'A modul alakjának testreszabása egy újabb márkaépítési lehetőséget kínál minimális megbízhatósági hatással. A lekerekített modulok lágyabb, jobban megközelíthető megjelenést hoznak létre, miközben megtartják a kiváló szkennelhetőséget. A pontszerű modulok jól működnek a modern, technológiailag előremutató márkák számára. A csatlakoztatott modulok megfelelnek az ipari vagy vállalati identitásnak. Bármelyik stílust is választja, az azonnali márkafelismerés érdekében tartsa fenn a következetességet az összes QR-bevezetésben.',
       ],
       images: [
         {
@@ -99,7 +99,7 @@ export const learn: PageDefinition = {
       images: [
         {
           src: '/images/learn/improve-existing-lock.png',
-          alt: 'A konfigurációs eltolódást bemutató diagram: screenshotok, amelyek a változatok rekonstrukciójához vezetnek, szemben egyetlen source- of- truth linkkel',
+          alt: 'Egy diagram, amely a konfiguráció eltolódását mutatja: képernyőképek, amelyek változatokhoz vezető kikapcsolódásokhoz vezetnek, szemben az igazságforrás egyetlen linkjével',
           caption:
             'A konfigurációs eltolódás megelőzése egyetlen hiteles forrás létrehozásával minden QR reprodukcióhoz',
         },
@@ -122,8 +122,8 @@ export const learn: PageDefinition = {
     {
       heading: 'A lakossági fizetések QR-kódjai',
       paragraphs: [
-        'A fizetési QR-kódok a legigényesebb környezetben működnek a kiskereskedelemben: az ügylet pillanatában. A vásárlók készek fizetni, gyakran egy sor alkotó mögöttük, és minden másodperc késés teremt súrlódás. Mégis ez a nagy nyomású pillanat a márka megerősítésének elsődleges ingatlanja is. Ez az útmutató elmagyarázza, hogyan lehet létrehozni a fizetési QR kódokat, amelyek azonnal szkennelnek banki alkalmazások, miközben bemutatja a professzionális, márkás megjelenés, amely növeli az ügyfelek bizalmát.',
-        'A fizetési QR-kódok alapelve a megbízhatóság az esztétika felett. A gyönyörűen megtervezett kód, amely nem szkenneli az egyik ügyfél banki alkalmazás kerül sokkal több elhagyott tranzakciók és frusztrált ügyfelek, mint egy konzervatív design valaha is. Kezdje a megfeleléssel, adja hozzá a megbízhatóságot, majd óvatosan réteg márkanév csak ott, ahol nem veszélyezteti az elsődleges funkciót.',
+        'A fizetési QR-kódok a kiskereskedelem legigényesebb környezetben működnek: a tranzakció pillanatában. Az ügyfelek készek fizetni, gyakran sorban állnak mögöttük, és minden másodperc késés súrlódást okoz. Ez a nagynyomású momentum azonban a márka megerősítésének is kiváló tulajdonsága. Ez az útmutató elmagyarázza, hogyan hozhat létre fizetési QR-kódokat, amelyek azonnal beolvasnak a banki alkalmazásokban, miközben professzionális, márkás megjelenést kölcsönöznek az ügyfelek bizalmának.',
+        'A fizetési QR-kódok alapelve a megbízhatóság az esztétikával szemben. Egy gyönyörűen megtervezett kód, amely nem képes beolvasni az egyik ügyfél banki alkalmazását, sokkal többe kerül a félbehagyott tranzakciók és a frusztrált ügyfelek miatt, mint egy konzervatív kialakítás. Kezdje a megfelelőséggel, növelje a megbízhatóságot, majd óvatosan csak ott helyezze el a márkaépítést, ahol az nem veszélyezteti az elsődleges funkciót.',
       ],
       images: [
         {
@@ -137,8 +137,8 @@ export const learn: PageDefinition = {
     {
       heading: 'A fizetési QR-előírások megértése',
       paragraphs: [
-        'A QR fizetési kódok jellemzően a hasznos teher formátumát meghatározó regionális szabványokat követik. Szingapúrban a PayNow QR speciális formázást alkalmaz. Indiában az UPI-kódok a BharatQR vagy az UPI mélykapcsolati szabványokat követik. Az európai SEPA-fizetések EPC QR-kódokat használnak. Minden szabvány létezik annak biztosítására, hogy a banki alkalmazások azonnal felismerjék és feldolgozzák a fizetési információkat. Az e szabványoktól való eltéréssel - még kissé is - a fizetési alkalmazások elutasíthatják azokat a kódokat, amelyeket a generikus kameraszkennerek kérdés nélkül olvasnak.',
-        'ANQR tartalmaz sablonokat a nagyobb fizetési szabványok, amelyek automatikusan formázzák a kereskedő adatait a megfelelő terhelések. Mindig ezeket a sablonokat használja ahelyett, hogy kézzel készítené el a fizetési szálakat, mivel még a kisebb formázási hibák is okozhat tranzakciós hibákat. Ha a régió fizetési előírása sablonként nem áll rendelkezésre, akkor a pontos formázási követelmények érdekében keresse fel a pénzforgalmi szolgáltató műszaki dokumentációját.',
+        'A fizetési QR-kódok általában a regionális szabványokat követik, amelyek meghatározzák a hasznos teher formátumát. Szingapúrban a PayNow QR speciális formázást használ. Indiában az UPI-kódok a BharatQR vagy UPI mélylink szabványokat követik. Az európai SEPA fizetések EPC QR kódokat használnak. Mindegyik szabvány létezik annak biztosítására, hogy a banki alkalmazások azonnal felismerjék és feldolgozzák a fizetési információkat. Ha eltér ezektől a szabványoktól – akár kismértékben is –, a fizetőalkalmazások visszautasíthatják azokat a kódokat, amelyeket az általános kameraszkennerek probléma nélkül beolvasnak.',
+        'Az ANQR sablonokat tartalmaz a főbb fizetési szabványokhoz, amelyek automatikusan formázzák a kereskedői adatait megfelelő rakományokká. Mindig ezeket a sablonokat használja a fizetési karakterláncok manuális létrehozása helyett, mivel még a kisebb formázási hibák is tranzakciós sikertelenséget okozhatnak. Ha az Ön régiójában érvényes fizetési szabvány nem áll rendelkezésre sablonként, tekintse meg fizetési szolgáltatója műszaki dokumentációját a pontos formázási követelményekért.',
       ],
     },
     {
@@ -210,7 +210,7 @@ export const learn: PageDefinition = {
       heading: 'Print- Ready QR kódok: SVG vs PNG',
       paragraphs: [
         'A tökéletesen szkennelt QR-kód és a sikertelen QR-kód közötti különbség gyakran az exportálás és a nyomtatási munkafolyamat során történő kezelés módjából adódik. Ez az útmutató magyarázza a kritikus megkülönböztetéseket vektor (SVG) és raster (PNG) formátumok, mikor kell használni, és hogyan kell átadni a QR artwork a tervezők és nyomdai szállítók úgy, hogy megőrizze a scan megbízhatóságát a névjegykártyáktól a számlázási méretű jelek.',
-        'A nyomtatás olyan változókat vezet be, amelyek nem léteznek a képernyőn: tinta terjedése, szubsztrátum textúra, befejezési folyamatok, és a többszörös fájlátalakítások kumulatív hatása. A QR kód, amely úgy néz ki, tökéletes a tervezési szoftver is jelenik meg a nyomtató lágyított élű, csökkentett kontraszt, vagy finoman torzított modulok. A formátum kiválasztásának és a munkafolyamat legjobb gyakorlatának megértése megakadályozza ezeket a csendes hibákat.',
+        'A nyomtatási gyártás olyan változókat vezet be, amelyek nem léteznek a képernyőn: a tinta terjedését, a hordozó textúráját, a befejezési folyamatokat és a többszörös fájlkonverziók kumulatív hatását. A tervezőszoftverben tökéletesen kinéző QR-kód lágyított élekkel, csökkentett kontraszttal vagy finoman torz modulokkal léphet ki a nyomtatóból. A formátumválasztás és a munkafolyamat bevált gyakorlatainak megértése megelőzi ezeket a csendes hibákat.',
       ],
       images: [
         {
@@ -225,7 +225,7 @@ export const learn: PageDefinition = {
       heading: 'Miért a Vector (SVG) preferált nyomtatás',
       paragraphs: [
         'SVG fájlok leírja QR kódok matematikai formák helyett rácsok pixelek. Ez azt jelenti, hogy a kód bármilyen méretre méretezhető - egy 1cm-es címkéről egy 10 méteres bannerre - anélkül, hogy a szélélesség csökkenne. A nyomtató RIP-je (Raster Image Processor) a vektorokat a kimeneti eszköz anyanyelvi felbontására állítja be, biztosítva, hogy minden modul éle olyan ropogós legyen, amennyire a hardver engedi. Nincs interpoláció, nincs anti-aliasing ereklye, nincs halmozott elmosódás többszörös átméretezésből.',
-        'A méretezhetőségen túl az SVG-fájlok megbízhatóbbak a szakmai munkafolyamatokban. Túlélik a körutazásokat a design szoftvereken keresztül, romlás nélkül. Ezek a színek újraegyesítés nélkül is kijavíthatók. Tisztán beágyazódtak PDF fájlokba a press- ready kimenethez. Minden nyomtatási alkalmazás esetében, ahol a minőség számít, az SVG legyen az alapértelmezett exportformátum.',
+        'A méretezhetőségen túl az SVG-fájlok robusztusabbak a professzionális munkafolyamatokban. Degradáció nélkül túlélik a tervezőszoftveren keresztüli oda-vissza utakat. Újbóli mintavétel nélkül színkorrigálhatók. Tisztán beágyazódnak PDF-fájlokba a nyomdakész kimenet érdekében. Minden olyan nyomtatási alkalmazásnál, ahol a minőség számít, az SVG legyen az alapértelmezett exportálási formátum.',
       ],
     },
     {
@@ -252,7 +252,7 @@ export const learn: PageDefinition = {
     {
       heading: 'Fájlok előkészítése Handoff-hoz',
       paragraphs: [
-        'A QR műalkotások tervezőknek vagy nyomdaiparosoknak történő átadásakor egyértelmű előírásokat kell alkalmazni: a tervezett fizikai méretet, a minimális csendes zónára vonatkozó követelményeket, valamint a színterekre vonatkozó szempontokat. Kritikus alkalmazásokhoz SVG-mestert és magas felbontású PNG-erősítést is kell biztosítani, egyértelműen megjelölve a tervezett felhasználásokat. Tartalmazza az ANQR konfigurációs linket, hogy a kód szükség esetén regenerálódhasson.',
+        'Amikor QR-grafikát ad át a tervezőknek vagy a nyomatszállítóknak, adja meg az egyértelmű specifikációkat: a tervezett fizikai méretet, a minimális csendes zónára vonatkozó követelményeket és a színtérrel kapcsolatos megfontolásokat. A kritikus alkalmazásokhoz biztosítson egy SVG-főfájlt és egy nagy felbontású PNG-mentést is, amelyeken egyértelműen fel van tüntetve a tervezett felhasználás. Adja meg az ANQR konfigurációs hivatkozását, hogy a kódot szükség esetén újra lehessen generálni.',
         'Várjuk meg a közös hibákat az átadási folyamatban. Adja meg egyértelműen, hogy a QR-t nem szabad méretezni, forgatni, ferdíteni, vagy alkalmazni. Adja meg, hogy a csendes zónának tisztának kell maradnia - nincs termésjelölés, lajstromjel, vagy a tervezési elemek behatolása. Ha a QR kerül egy színes vagy fényképészeti háttér, ad egy változatot átlátszatlan hátoldalán, hogy biztosítsa a megfelelő kontraszt.',
       ],
       images: [
@@ -355,14 +355,14 @@ export const learn: PageDefinition = {
     {
       heading: 'Export- és szállítási szempontok',
       paragraphs: [
-        'GIF továbbra is a legszélesebb körben támogatott animált formátum, játék automatikusan a legtöbb környezetben anélkül, hogy szükséges video lejátszó támogatást. A GIF 256 színű palettája azonban korlátozza a színhűséget. A színes-kritikus animációk, fontolja animált WebP, ahol támogatott, vagy vissza videó formátumok a legmagasabb minőségű. Az ANQR GIF-exportja magában foglalja a paletta korlátain belül a minőség maximalizálására szolgáló ásási lehetőségeket.',
+        'A GIF továbbra is a legszélesebb körben támogatott animációs formátum, amely a legtöbb környezetben automatikusan lejátszásra kerül, anélkül, hogy videolejátszó támogatást igényelne. A GIF 256 színű palettája azonban korlátozza a színhűséget. Színkritikus animációk esetén fontolja meg az animált WebP-t, ahol ez támogatott, vagy térjen vissza a videoformátumokhoz a legjobb minőség érdekében. Az ANQR GIF-exportálása dithering opciókat tartalmaz a minőség maximalizálása érdekében a paletta korlátai között.',
         'A fájl mérete számít. A digitális jelzőrendszerek, az e-mail ügyfelek és a szociális platformok gyakran mérethatárokat szabnak. Ha az animáció túllépi ezeket a határértékeket, csökkentse a keret számát, méreteit vagy színmélységét. Néha a komplex animáció rövidebb hurokra osztása jobb eredményeket eredményez, mint az agresszív tömörítés, ami minden keretet lealacsonyít.',
       ],
     },
     {
       heading: 'Animált QR kódok tesztelése',
       paragraphs: [
-        'Az animációs kódok tesztelése az animációs ciklus több pontján is szükséges. Ne csak egyszer, és feltételezi a siker - szkennelés többször, különböző pillanatokban, hogy ellenőrizze, minden keret olvasható. Különös figyelmet kell fordítani azokra a képkockákra, amelyek a színciklus szélső pontjain vagy a túlnyúlás intenzitásának csúcsai között vannak, ahol a kontraszt lehet a legalacsonyabb.',
+        'Az animált kódok tesztelése az animációs ciklus több pontján történő beolvasást igényel. Ne csak egyszer szkenneljen, és feltételezze a sikert – ellenőrizze többször is, különböző pillanatokban, hogy ellenőrizze, minden képkocka olvasható-e. Különös figyelmet fordítson a szélsőséges színciklusú képkockákra vagy az átfedő intenzitáscsúcsokra, ahol a kontraszt a legalacsonyabb lehet.',
         'Ha lehetséges, a tényleges megjelenítő hardver tesztelése. A színkalibrálás, a látószög és a környezeti világítás monitorozása mind befolyásolja az animáció megjelenését és letapogatását. Egy fényes animáció, amely tökéletesen letapogatja a monitort, kimoshatja egy kültéri képernyőn, vagy olvashatatlanná válhat ferde látószögben.',
       ],
       images: [
@@ -406,7 +406,7 @@ export const learn: PageDefinition = {
     {
       heading: 'Hibaszintek megértése',
       paragraphs: [
-        'A QR-kódok magukban foglalják a redundanciát, amely lehetővé teszi számukra, hogy olvassák, még akkor is, ha részben sérült vagy elhomályosodott. A hibajavítási szint - L (7%), M (15%), Q (25%) vagy H (30%) - meghatározza, hogy a kód mekkora része hiányzik, miközben még mindig helyesen dekódolja. A nagyobb hibajavítás nagyobb kódokat eredményez, de biztonsági tartalékot biztosít a felülírások, a nyomtatási hibák és a környezeti károk esetére.',
+        'A QR-kódok beépített redundanciát tartalmaznak, amely lehetővé teszi azok kiolvasását még akkor is, ha részlegesen sérültek vagy takartak. A hibajavítási szint - L (7%), M (15%), Q (25%) vagy H (30%) - határozza meg, hogy mennyi hiányozhat a kódból a helyes dekódolás mellett. A magasabb hibajavítás nagyobb kódokat hoz létre, de biztonsági ráhagyást biztosít a rátétek, a nyomtatási hibák és a környezeti károk ellen.',
         'A képfelülettel rendelkező kódok esetében hibajavítási szint H elengedhetetlen - az átfedés fizikailag elfedi a kód egy részét, és szükség van arra, hogy 30% redundancia fenntartása megbízhatóság. A tiszta, stílustalan kódok ellenőrzött környezetben, szint M gyakran elegendő. Szint Az L-t azokra a helyzetekre kell fenntartani, amikor a kód mérete kritikus mértékben korlátozott, és Ön garantálhatja az eredeti feltételeket.',
       ],
     },
@@ -414,7 +414,7 @@ export const learn: PageDefinition = {
       heading: 'A kritikus csendes zóna',
       paragraphs: [
         'A csendes zóna a vaktér minden QR kód körül. A szkennerek ezt a határt használják a kód kezdetének és végének azonosítására. Az ISO szabvány négy modul minimális csendes zónáját határozza meg (a kód legkisebb négyzetének négyszerese). A szkennelési hibák egyik leggyakoribb oka, hogy megsértjük ezt a helyet - tervezési elemekkel, szegélyszegéllyel vagy szomszédos tartalommal.',
-        'Az ANQR csendes zónája segít fenntartani ezt a kritikus távolságot, de azt is meg kell győződnie róla, hogy megőrzi a végleges terveit. A QR műalkotások átadásakor egyértelműen meg kell határozni a csendes zóna követelményeit. A kódok elhelyezésekor győződjön meg róla, hogy nem hatoltak be elemek ebbe a térbe. Néhány milliméter tiszta tér jelentheti a különbséget megbízható szkenner és frusztrált ügyfelek.',
+        'Az ANQR csendes zóna-érvényesítése segít fenntartani ezt a kritikus távolságot, de gondoskodnia kell arról is, hogy ez megmaradjon a végleges tervekben. A QR-grafikák átadásakor kifejezetten adja meg a csendes zóna követelményeit. Amikor kódokat helyez el az elrendezésekben, győződjön meg arról, hogy egyetlen elem sem hatol be ebbe a helyre. Néhány milliméter szabad hely jelentheti a különbséget a megbízható szkennelés és a csalódott ügyfelek között.',
       ],
       images: [
         {
@@ -428,7 +428,7 @@ export const learn: PageDefinition = {
       heading: 'Kontraszt és színbiztonság',
       paragraphs: [
         'QR szkennerek érzékelik a fény- és sötét modulok mintáját. Bármilyen stílus, amely csökkenti ezt a kontraszt - könnyű előtér, sötét háttér, gradiens hatások, vagy alacsony opacitás overlays - megnehezíti a kódot olvasni. Az ANQR kiszámítja a kontrasztarányokat és figyelmeztet, ha a színválasztásaid veszélyes szintekhez közelítenek, de a végső arbiter mindig a realworld tesztelés.',
-        'A színek érzékelése a fényviszonyok függvényében változik. A monitoron magas kontrasztnak tűnő színkombináció nehezen megkülönböztethető meleg izzólámpa vagy hideg fluoreszkáló csövek esetén. Ha az Ön kódját különböző világítási körülmények között alkalmazzák, több fényforrás mellett is tesztelik, és a konzervatívabb kontrasztarányokat biztonsági tartaléknak tekintik.',
+        'A színérzékelés a fényviszonyoktól függően változik. A monitoron nagy kontrasztúnak tűnő színkombinációt nehéz lehet megkülönböztetni meleg izzólámpa vagy hideg fénycsövek esetén. Ha a kódot változó fényviszonyok között alkalmazzák, tesztelje több fényforrás mellett, és vegye figyelembe a konzervatívabb kontrasztarányt biztonsági tartalékként.',
       ],
     },
     {
@@ -450,7 +450,7 @@ export const learn: PageDefinition = {
       heading: 'ANQR biztonsági üzemmód használata',
       paragraphs: [
         'Az ANQR biztonsági üzemmódja valós idejű visszajelzést nyújt a letapogatás megbízhatóságáról. Figyeli a kontrasztarányokat, a csendes zóna megfelelőségét, az átfedési intenzitást, és egyéb tényezőket, amelyek befolyásolják a scannability-t. Amikor bármely paraméter megközelíti a kockázatos szinteket, figyelmeztetéseket fog látni, konkrét útmutatással a megbízhatóság javítására. Amennyiben a meghibásodás költséges, a biztonsági üzemmód a tervezési folyamat során mindvégig aktív marad.',
-        'A Safety Mode magában foglal egy letapogatási funkciót is, amely megpróbálja dekódolni a generált kódot, és sikerről vagy kudarcról számol be. Bár ez az in-app ellenőrzés nem képes megismételni minden real-world állapot, ez fog sok közös kérdéseket, mielőtt befektetnek a nyomtatás vagy forgalmazás. Kezelje a sikeres ellenőrzés, mint egy minimum bar, nem garancia - real-world tesztelés továbbra is elengedhetetlen.',
+        'A Biztonságos mód egy szkennelés-ellenőrző funkciót is tartalmaz, amely megpróbálja dekódolni a generált kódot, és jelentést tesz a sikerről vagy a sikertelenségről. Bár ez az alkalmazáson belüli ellenőrzés nem képes minden valós körülményt megismételni, számos gyakori problémát észlel, mielőtt a nyomtatásba vagy a terjesztésbe fektetne be. A sikeres ellenőrzést minimum korlátnak kell tekinteni, nem garanciaként – a valós tesztelés továbbra is elengedhetetlen.',
       ],
     },
     {

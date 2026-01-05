@@ -10,7 +10,7 @@ import { LAST_UPDATED } from '../types';
 export const examples: PageDefinition = {
   title: 'Esimerkkejä',
   description:
-    'Viisi tosimaailmaa, tuotanto-tyylisiä esimerkkejä, jotka osoittavat, missä QR-koodit luovat mitattavissa olevaa arvoa: perinteisen vähittäislaskurin, merkkien vähittäismaksujen ja "scan-to" -toimintojen nostaminen, skaalauksen painaminen lehtisistä mainostauluihin, animoitu QR digitaalisille kylteille ja monikielinen yhteistyö jakavilla Anchor-linkeillä. Jokainen esimerkki sisältää kuvia, käytännön rajoitteita, ja remix linkki takaisin generaattori.',
+    'Viisi todellista, tuotantotyylistä esimerkkiä, jotka osoittavat, missä QR-koodit luovat mitattavaa arvoa: vanhan vähittäiskaupan laskurikoodin kohottaminen, merkkivähittäismaksut ja skannaustoiminnot, tulosteiden skaalaus lentolehtisistä mainostauluihin, animoitu QR digitaalisiin kylteihin ja monikielinen yhteistyö jaettavien ankkurilinkkien avulla. Jokainen esimerkki sisältää kuvia, käytännön rajoituksia ja remix-linkin takaisin generaattoriin.',
   lastUpdated: LAST_UPDATED,
 
   primaryLinks: [
@@ -233,7 +233,7 @@ export const examples: PageDefinition = {
     {
       heading: 'SVG-ensimmäinen työnkulku',
       paragraphs: [
-        'Tätä tapahtumaa varten yhtiö laati tiukan protokollan: yksi master QR generated in ANQR with optimal settings (Error Correction H, antelias hiljainen alue, puhdas muotoilu), viedään SVG, ja tallennetaan yhtenä arvovaltaisena lähteenä. ANQR-konfiguraatiolinkki dokumentoitiin SVG-tiedoston vieressä, jotta koodi voitaisiin tarvittaessa regeneroida.',
+        'Tätä tapahtumaa varten yritys loi tiukan protokollan: yksi master-QR luotiin ANQR:ssä optimaalisilla asetuksilla (virheenkorjaus H, runsas hiljainen vyöhyke, puhdas tyyli), vietiin SVG-muodossa ja tallennetaan yhtenä virallisena lähteenä. ANQR-määrityslinkki dokumentoitiin SVG-tiedoston rinnalle, jotta koodi voidaan tarvittaessa luoda uudelleen.',
         'Jokainen suunnittelija ja myyjä sai saman SVG master kanssa selkeät ohjeet: paikka vaaditussa koossa, älä muuta, säilyttää hiljainen alueselvitys. Rasteriformaatteja tarvitseville myyjille yritys toimitti ennalta muokattuja PNG-kooltaan erityisiä PNG-kooltaan selkeitä nimeämiskäytäntöjä, jotka osoittavat käyttötarkoituksen.',
       ],
       images: [

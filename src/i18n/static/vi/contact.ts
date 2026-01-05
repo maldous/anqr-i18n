@@ -16,7 +16,7 @@ export const contact: PageDefinition = {
     {
       heading: 'Email',
       paragraphs: [
-        'Đối với tất cả các yêu cầu: ${CONTACT_EMAIL}',
+        'Đối với tất cả các yêu cầu: email@anqr.link',
         'Đây là cách đáng tin cậy nhất để liên hệ với chúng tôi và được khuyên dùng cho các câu hỏi chi tiết, thắc mắc về kinh doanh hoặc bất kỳ thắc mắc nào khác.',
       ],
     },
@@ -61,7 +61,7 @@ export const contact: PageDefinition = {
     {
       heading: 'Liên hệ DMCA',
       paragraphs: [
-        'Gửi thông báo DMCA tới: ${CONTACT_EMAIL}',
+        'Gửi thông báo DMCA tới: email@anqr.link',
         'Vui lòng bao gồm "Thông báo DMCA" trong dòng chủ đề. Chúng tôi sẽ phản hồi các thông báo hợp lệ theo luật hiện hành. Lưu ý rằng ANQR tạo mã QR cục bộ trên thiết bị của người dùng và không lưu trữ nội dung do người dùng tạo.',
       ],
     },

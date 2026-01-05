@@ -93,7 +93,7 @@ export const privacy: PageDefinition = {
       heading: 'GDPR rättslig grund',
       paragraphs: [
         'Vi behandlar data på dessa baser: (a) Samtycke - för personlig reklam (hanteras av våra reklampartner); (b) Legitima intressen - för analys, säkerhet och förbättring; (c) Kontrakt - för att svara på förfrågningar.',
-        'För att utöva dina rättigheter, kontakta ${CONTACT_EMAIL}. Vi svarar inom 30 dagar.',
+        'För att utöva dina rättigheter, kontakta email@anqr.link. Vi svarar inom 30 dagar.',
       ],
     },
     {
@@ -109,7 +109,7 @@ export const privacy: PageDefinition = {
       heading: 'CCPA-kategorier insamlade',
       paragraphs: [
         'Kategorier: Identifierare (IP-adress, enhets-ID), Internetaktivitet (surfning, annonsinteraktioner), Geolokalisering (ungefärlig), slutsatser (intressen från surfning).',
-        'För att utöva rättigheter eller välja bort: ${CONTACT_EMAIL} eller justera cookie-inställningar.',
+        'För att utöva rättigheter eller välja bort: email@anqr.link eller justera cookie-inställningar.',
       ],
     },
     {
@@ -121,7 +121,7 @@ export const privacy: PageDefinition = {
     {
       heading: 'Barns integritet',
       paragraphs: [
-        'ANQR riktar sig inte till barn under 13 år (eller 16 år inom EES). Vi samlar inte medvetet in data från barn. Kontakta ${CONTACT_EMAIL} om du tror att ett barn har lämnat information.',
+        'ANQR riktar sig inte till barn under 13 år (eller 16 år inom EES). Vi samlar inte medvetet in data från barn. Kontakta email@anqr.link om du tror att ett barn har lämnat information.',
       ],
     },
     {
@@ -145,7 +145,7 @@ export const privacy: PageDefinition = {
     {
       heading: 'Kontakta oss',
       paragraphs: [
-        'För integritetsfrågor eller för att utöva dina rättigheter: ${CONTACT_EMAIL} eller använd vår kontaktsida. Vi svarar på integritetsförfrågningar inom 30 dagar.',
+        'För integritetsfrågor eller för att utöva dina rättigheter: email@anqr.link eller använd vår kontaktsida. Vi svarar på integritetsförfrågningar inom 30 dagar.',
       ],
     },
   ],

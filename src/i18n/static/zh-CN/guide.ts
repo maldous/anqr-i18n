@@ -687,7 +687,7 @@ export const guide: PageDefinition = {
     {
       heading: '通用 EMV 二维码',
       bullets: [
-        'EMV 通用：为未特别列出的支付方案创建自定义 EMV 商家呈现模式二维码。 Configure merchant name, city, country code (ISO 3166-1), currency code (ISO 4217 numeric), MCC, tip/convenience fee options, and additional data fields.对于测试或自定义集成很有用。',
+        'EMV 通用：为未特别列出的支付方案创建自定义 EMV 商家呈现模式二维码。配置商家名称、城市、国家/地区代码 (ISO 3166-1)、货币代码（ISO 4217 数字）、MCC、小费/便利费选项和其他数据字段。对于测试或自定义集成很有用。',
       ],
       links: [
         {

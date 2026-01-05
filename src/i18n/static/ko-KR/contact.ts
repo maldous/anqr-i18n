@@ -15,7 +15,7 @@ export const contact: PageDefinition = {
     {
       heading: '이름 *',
       paragraphs: [
-        '모든 문의: ${CONTACT_EMAIL}',
+        '모든 문의: email@anqr.link',
         '이것은 저희를 도달하는 가장 믿을 수 있는 방법이고 상세한 질문, 사업 조회, 또는 다른 어떤 조회든지를 위해 추천됩니다.',
       ],
     },
@@ -60,7 +60,7 @@ export const contact: PageDefinition = {
     {
       heading: 'DMCA 연락처',
       paragraphs: [
-        'DMCA 통지를 보내: ${CONTACT_EMAIL}',
+        'DMCA 통지를 보내: email@anqr.link',
         '제목의 "DMCA 알림"을 포함하십시오. 우리는 적용 가능한 법률에 따라 유효한 통지에 응답합니다. ANQR은 사용자 장치에서 로컬 QR 코드를 생성하고 사용자 생성 콘텐츠를 호스팅하지 않습니다.',
       ],
     },

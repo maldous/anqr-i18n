@@ -10,7 +10,7 @@ import { LAST_UPDATED } from '../types';
 export const examples: PageDefinition = {
   title: 'Contoh ANQR',
   description:
-    'Lima dunia nyata, contoh gaya produksi yang menunjukkan di mana kode QR menciptakan nilai yang terukur: mengangkat sebuah kode counter ritel warisan, pembayaran ritel ternama dan aksi "scan-to", mencetak skala dari flyers ke billboard, animasi QR untuk tanda digital, dan lintas-lingual kolaborasi menggunakan sharable Anchor link. Setiap contoh mencakup gambar, kendala praktis, dan link remix kembali ke generator.',
+    'Lima contoh gaya produksi di dunia nyata yang menunjukkan di mana kode QR menciptakan nilai terukur: meningkatkan kode counter ritel lama, pembayaran ritel bermerek dan tindakan "scan-to", penskalaan pencetakan dari pamflet ke papan reklame, animasi QR untuk papan reklame digital, dan kolaborasi lintas bahasa menggunakan tautan Anchor yang dapat dibagikan. Setiap contoh menyertakan gambar, batasan praktis, dan tautan remix kembali ke generator.',
   lastUpdated: LAST_UPDATED,
 
   primaryLinks: [
@@ -172,7 +172,7 @@ export const examples: PageDefinition = {
     {
       heading: 'Improvisasi Operasional',
       paragraphs: [
-        "Enam minggu setelah penyebaran, toko tersebut mencatat peningkatan yang signifikan: tidak ada keluhan terhadap kebingungan kode 'salah', transaksi yang lebih cepat, dan 3x meningkat dalam pengiriman tip (pelanggan sekarang dapat menemukan dan memindai kode ujung tanpa staf yang bertanya dengan aneh). Google reviews also raised as the dedicated, well-lated QR gratification.",
+        "Enam minggu setelah penerapan, toko tersebut mendokumentasikan peningkatan yang signifikan: tidak ada keluhan pelanggan tentang kebingungan 'kode yang salah', waktu transaksi yang lebih cepat, dan peningkatan pengiriman tip sebesar 3x (pelanggan kini dapat menemukan dan memindai kode tip tanpa harus bertanya kepada staf dengan canggung). Ulasan Google juga meningkat karena QR khusus dan berlabel baik menghilangkan gesekan.",
         'Pelatihan staf menjadi lebih sederhana: \'Kode pembayaran adalah satu besar, segala sesuatu yang lain adalah pada panel. "Ketika aplikasi pembayaran diperbarui dan satu singkat menunjukkan lambat pemindaian, desain pembayaran kode konservatif berarti masih bekerja - hanya marginally lambat daripada gagal sepenuhnya.',
         'Lihat panduan Belajar pada kode QR untuk pembayaran ritel untuk prinsip-prinsip di balik desain sistem tampilan ini.',
       ],

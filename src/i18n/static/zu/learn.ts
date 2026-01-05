@@ -9,7 +9,7 @@ import { LAST_UPDATED } from '../types';
 export const learn: PageDefinition = {
   title: 'Funda nge-ANQR',
   description:
-    'Iziqondiso ezisebenzayo, zebhizinisi zokuqala zokuguqula amakhodi e-QR abe yimpahla yokumaketha yangempela - hhayi nje izikwele ezisebenzayo. Funda ukuthi ungathuthukisa kanjani amakhodi e-point-of-sale asekudala, udale izimpawu ze-QR zokukhokha ezihambisanayo, ulungiselele ukuthunyelwa kwamanye amazwe okulungele ukuphrinta, usebenzise izithombe ezinyakazayo ngokuphephile ezikrinini zedijithali, futhi wabelane ngokulungiselelwa okuvaliwe kuwo wonke amaqembu ezilimi eziningi usebenzisa izixhumanisi ze-ANQR ("anchor").',
+    'Imihlahlandlela esebenzayo, yokuqala yebhizinisi yokuguqula amakhodi e-QR abe izimpahla zokuthengisa zangempela - hhayi nje izikwele ezisebenzayo. Funda indlela yokuthuthukisa amakhodi ezindawo zokuthengisa zefa, dala izimpawu ze-QR zokukhokha ezivumelanayo, ulungiselele ukuthunyelwa okulungele ukuphrinta, sebenzisa ukugqwayiza ngokuphephile kuzibonisi zedijithali, futhi wabelane ngokulungiselelwa okukhiyiwe kuwo wonke amaqembu ezilimi eziningi usebenzisa izixhumanisi ze-ANQR ("ihange").',
   lastUpdated: LAST_UPDATED,
 
   primaryLinks: [

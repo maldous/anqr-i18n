@@ -865,7 +865,7 @@
     "moduleJitterWarning": "Peut affecter la scannabilité",
     "alignmentStyle": "Style des modèles d'alignement (utilisés dans les grands codes QR)",
     "appLinkNote": "Ouvre un contenu spécifique dans une application mobile",
-    "autoDetect": "Détecter automatiquement (exige v_ANQR_PH_0__+ pour le contenu actuel)",
+    "autoDetect": "Détection automatique (nécessite v{{version}}+ pour le contenu actuel)",
     "autoMinVersion": "0 = Automatique, min v{{version}} pour le contenu actuel",
     "bgColorHex": "Code couleur arrière-plan",
     "bizcardLegacy": "Format héritage - envisager d'utiliser vCard à la place",

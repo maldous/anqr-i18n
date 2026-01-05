@@ -10,7 +10,7 @@ import { LAST_UPDATED } from '../types';
 export const examples: PageDefinition = {
   title: 'Przykłady ANQR',
   description:
-    'Pięć real- world, production- style przykładów, które pokazują, gdzie kody QR tworzą wymierną wartość: podnoszenie dotychczasowego kodu licznika detalicznego, markowe płatności detaliczne i "scan- to" działania, skalowanie druku z ulotek do billboardów, animowany QR dla oznaczeń cyfrowych, i międzyjęzycznej współpracy przy użyciu udostępnianych linków Anchor. Każdy przykład zawiera obrazy, praktyczne ograniczenia i remix z powrotem do generatora.',
+    'Pięć rzeczywistych przykładów w stylu produkcyjnym, które pokazują, gdzie kody QR tworzą wymierną wartość: ulepszenie starszego kodu licznika w handlu detalicznym, markowe płatności detaliczne i działania "skanuj do", skalowanie druku od ulotek do billboardów, animowany kod QR do oznakowania cyfrowego oraz współpraca międzyjęzykowa przy użyciu udostępnianych linków Anchor. Każdy przykład zawiera obrazy, ograniczenia praktyczne i link do remiksu prowadzący do generatora.',
   lastUpdated: LAST_UPDATED,
 
   primaryLinks: [
@@ -24,7 +24,7 @@ export const examples: PageDefinition = {
     {
       heading: 'Badanie przypadku: Licznik sprzedaży detalicznej QR Upload',
       paragraphs: [
-        'Ten real- world przykład podąża za małą kawiarnią, która od trzech lat używa tego samego kodu QR na swoim ladzie. Oryginalny kod został wygenerowany szybko podczas wybuchu pandemii, wydrukowany na papierze standardowym i wsunięty do plastikowego stojaka. Nadal działało - technicznie - ale klienci często potrzebowali wielokrotnych prób jej skanowania, i nie pomogło to wzmocnić starannie opracowanej tożsamości marki kawiarni.',
+        'Ten przykład z życia wzięty dotyczy małej kawiarni, która od trzech lat używa na ladzie tego samego kodu QR. Oryginalny kod został wygenerowany szybko w czasie szczytu pandemii, wydrukowany na standardowym papierze i wsunięty do plastikowej podstawki. Nadal działał – technicznie – ale klienci często musieli wielokrotnie próbować go zeskanować, a to nie pomagało we wzmocnieniu starannie opracowanej tożsamości marki kawiarni.',
         'Transformacja rozpoczęła się od prostej kontroli: istniejący kod zakodował adres URL kawiarni, który chcieli zachować. Wyzwaniem było sprawienie, aby QR poczuł się raczej częścią doświadczenia w kawiarni, niż po przemyśleniu użyteczności od 2020 r.',
       ],
       images: [
@@ -69,7 +69,7 @@ export const examples: PageDefinition = {
     {
       heading: 'Wymierne wyniki',
       paragraphs: [
-        'Po umieszczeniu nowego QR na profesjonalnej karcie laminowanej, kawiarnia śledziła wyniki w ciągu czterech tygodni. Wskaźnik sukcesu skanowania poprawił się z około 70% do prawie 100%. Średni czas skanowania spadł z 3- 4 sekund do poniżej 1 sekundy. Najistotniejsze jest to, że zaangażowanie menu wzrosło o 40% - klienci, którzy wcześniej spojrzeli na QR i poddali się, teraz skanowali z ufnością.',
+        'Po wdrożeniu nowego modułu QR na profesjonalnym kartonie laminowanym matowo kawiarnia monitorowała wyniki przez cztery tygodnie. Wskaźnik powodzenia skanowania wzrósł z szacunkowych 70% do prawie 100%. Średni czas skanowania spadł z 3-4 sekund do poniżej 1 sekundy. Co najważniejsze, zaangażowanie menu wzrosło o 40% – klienci, którzy wcześniej spojrzeli na kod QR i poddali się, teraz skanowali pewnie.',
         'Pracownicy zgłosili mniej pytań o "jak korzystać z QR" i nie ma więcej przypadków ręcznego wpisywania URL dla sfrustrowanych klientów. Znakowy wygląd wywołał również rozmowy, z klientami komentując pozytywnie na spójny projekt.',
       ],
       images: [
@@ -249,7 +249,7 @@ export const examples: PageDefinition = {
       heading: 'Uwagi szczegółowe',
       paragraphs: [
         'Każdy format wymaga szczególnej uwagi. Odznaki o wymiarach 3cm potrzebowały QR do zajmowania maksymalnej dostępnej przestrzeni - odległość skanowania byłaby długością ramienia. Namioty stołowe na 8cm mogą obejmować dekoracyjne ramy poza strefą ciszy. Czterometrowy baner wymagał obliczeń: z typowej odległości widowni (15- 20 metrów) moduły musiały być wyraźnie rozróżnialne za pomocą kamer telefonicznych, co oznaczało, że QR musi być co najmniej 80 cm w ramach projektu banera.',
-        'Firma stworzyła przewodnik wielkości dokumentujący minimalne wymiary QR dla każdej oczekiwanej odległości skanowania. Stał się to atutem nadającym się do ponownego wykorzystania w przyszłych wydarzeniach, usuwającym przypuszczenia z procesu projektowania.',
+        'Firma stworzyła przewodnik po rozmiarach dokumentujący minimalne wymiary QR dla każdej oczekiwanej odległości skanowania. Stało się to zasobem nadającym się do ponownego wykorzystania w przyszłych wydarzeniach, eliminując domysły z procesu projektowania.',
       ],
       images: [
         {
@@ -384,7 +384,7 @@ export const examples: PageDefinition = {
       heading: 'Badanie przypadku: Globalna kampania inauguracji produktu QR',
       paragraphs: [
         'Przykład ten jest następstwem wprowadzenia przez firmę zajmującą się elektroniką konsumencką nowego produktu na 12 rynkach w 8 językach. Każdy regionalny zespół marketingowy musiał produkować opakowania, wyświetlacze detaliczne i materiały promocyjne zawierające kody QR łączące się z lokalnymi stronami produktu. Poprzednie starty doprowadziły do niespójnego stylu QR, sporadycznych niepowodzeń skanowania, i "gra telefoniczna" dryfu konfiguracji, jak każdy zespół odtworzył kody z zrzutów ekranu.',
-        'Rozwiązanie to umożliwiło przekierowanie łączników konfiguracyjnych ANQR w celu stworzenia jednego źródła prawdy, do którego każdy zespół regionalny mógłby się dostać, niezależnie od języka interfejsu. Ładunek użyteczny QR użył inteligentnego przekierowania, który wykrył język użytkownika, więc jeden kod pracował globalnie, dostarczając lokalnych doświadczeń.',
+        'Rozwiązanie wykorzystało udostępniane łącza konfiguracyjne ANQR w celu ustanowienia jednego źródła prawdy, do którego miał dostęp każdy zespół regionalny, niezależnie od języka interfejsu. Ładunek QR wykorzystywał inteligentne przekierowanie, które wykrywało język użytkownika, więc jeden kod działał globalnie, dostarczając zlokalizowane doświadczenia.',
       ],
       images: [
         {
@@ -399,7 +399,7 @@ export const examples: PageDefinition = {
       heading: 'Ustanowienie konfiguracji głównej',
       paragraphs: [
         'Globalny zespół marki stworzył autorytatywną konfigurację QR w ANQR: kolory marki pasujące do wizualnej tożsamości linii produktu, korekcja błędów H pod względem niezawodności we wszystkich zastosowaniach drukowanych i cyfrowych oraz stylizacja, która będzie się stale rozmnażać niezależnie od lokalnych metod produkcji. Konfiguracja została zablokowana i link do akcji udokumentowany w globalnej kampanii.',
-        'Krytycznie, zakodowany URL używał usługi redirect wykrywającej język. Po zeskanowaniu użytkownicy zostali automatycznie przekierowani na stronę produktu w języku lokalnym. Oznaczało to, że wszystkie 12 rynków mogło korzystać z identycznych kodów QR - nie było różnic w ładunku użytecznym na rynku, które mogłyby wprowadzić błędy.',
+        'Co najważniejsze, zakodowany adres URL korzystał z usługi przekierowania wykrywającej język. Po zeskanowaniu użytkownicy byli automatycznie kierowani na stronę produktu w języku lokalnym. Oznaczało to, że na wszystkich 12 rynkach można było używać identycznych kodów QR – bez różnic w ładunku w zależności od rynku, które mogłyby powodować błędy.',
       ],
       images: [
         {
@@ -428,7 +428,7 @@ export const examples: PageDefinition = {
     {
       heading: 'Obsługa zmian regionalnych',
       paragraphs: [
-        'Niektóre rynki wymagały drobnych dostosowań. Chiński zespół potrzebował wersji z zoptymalizowaną ramą WeChat do wspólnego korzystania ze społeczeństwa. Zamiast modyfikować mistrza, stworzyli udokumentowany wariant z własnym linkiem konfiguracyjnym, wyraźnie oznaczony jako "wariant CN- WeChat" w bibliotece aktywów kampanii. Utrzymuje to identyfikowalność, umożliwiając jednocześnie niezbędną lokalizację.',
+        'Niektóre rynki wymagały drobnych dostosowań. Chiński zespół potrzebował wersji z ramką zoptymalizowaną pod kątem WeChat do udostępniania w mediach społecznościowych. Zamiast modyfikować plik główny, utworzyli udokumentowany wariant z własnym łączem konfiguracyjnym, wyraźnie oznaczony jako "wariant CN-WeChat" w bibliotece zasobów kampanii. Pozwoliło to zachować identyfikowalność, a jednocześnie umożliwiło niezbędną lokalizację.',
         "Zespół marki ustanowił prostą zasadę: każda zmiana od master wymaga nowego, udokumentowanego łącza konfiguracyjnego. Żadnych modyfikacji w eksportowanych plikach, żadnych 'szybkich poprawek' w oprogramowaniu projektowym. To zapobiegło dryfowi konfiguracji, który nękał poprzednie starty.",
       ],
       images: [

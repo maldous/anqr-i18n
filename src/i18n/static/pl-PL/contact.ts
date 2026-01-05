@@ -17,7 +17,7 @@ export const contact: PageDefinition = {
       heading: 'E-mail',
       paragraphs: [
         'Dla wszystkich zapytań: $_ _ ANQR _ PH _ 0 _ _',
-        'Jest to najbardziej niezawodny sposób, aby dotrzeć do nas i jest zalecane do szczegółowych pytań, zapytania biznesowe, lub innych zapytań.',
+        'Jest to najbardziej niezawodny sposób skontaktowania się z nami i jest zalecany w przypadku szczegółowych pytań, zapytań biznesowych lub innych zapytań.',
       ],
     },
     {

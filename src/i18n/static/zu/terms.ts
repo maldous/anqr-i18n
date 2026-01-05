@@ -87,7 +87,7 @@ export const terms: PageDefinition = {
     {
       heading: 'Ukuxazululwa kwezingxabano',
       paragraphs: [
-        'Noma iyiphi ingxabano evela kule Migomo noma ukusebenzisa kwakho i-ANQR kufanele kuqala izame ukuxazululwa ngokuxoxisana okungakahleleki ngokuxhumana no-${CONTACT_EMAIL}.',
+        'Noma iyiphi ingxabano evela kule Migomo noma ukusebenzisa kwakho i-ANQR kufanele kuqala izame ukuxazululwa ngokuxoxisana okungakahleleki ngokuxhumana no-email@anqr.link.',
         'Uma isixazululo esingakahleleki sihluleka, izingxabano zizoxazululwa ngokulamula okubophezelayo eVictoria, e-Australia, ngaphandle kokuthi noma yiliphi iqembu lingafuna usizo oluphuthumayo enkantolo ngokwephulwa kwempahla yobuhlakani.',
       ],
     },
@@ -136,7 +136,7 @@ export const terms: PageDefinition = {
     },
     {
       heading: 'Xhumana',
-      paragraphs: ['Imibuzo mayelana nale Migomo ingathunyelwa ku: ${CONTACT_EMAIL}'],
+      paragraphs: ['Imibuzo mayelana nale Migomo ingathunyelwa ku: email@anqr.link'],
     },
   ],
 };

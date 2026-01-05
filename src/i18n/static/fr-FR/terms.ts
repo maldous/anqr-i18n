@@ -87,7 +87,7 @@ export const terms: PageDefinition = {
     {
       heading: 'Règlement des différends',
       paragraphs: [
-        "Tout différend découlant des présentes Conditions ou de votre utilisation de l'ANQR doit d'abord être résolu par une négociation informelle en communiquant avec ${CONTACT_EMAIL}.",
+        "Tout différend découlant des présentes Conditions ou de votre utilisation de l'ANQR doit d'abord être résolu par une négociation informelle en communiquant avec email@anqr.link.",
         "En cas d'échec d'un règlement informel, les différends seront réglés par voie d'arbitrage obligatoire à Victoria (Australie), sauf que l'une ou l'autre des parties peut demander une mesure d'injonction devant les tribunaux pour violation de la propriété intellectuelle.",
       ],
     },

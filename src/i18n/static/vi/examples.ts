@@ -30,7 +30,7 @@ export const examples: PageDefinition = {
       images: [
         {
           src: '/images/examples/uplift-overview.png',
-          alt: 'A weathered QR code in a plastic stand showing visible wear, fingerprints, and faded printing',
+          alt: 'Mã QR bị phong hóa trên giá nhựa hiển thị vết mòn, dấu vân tay và bản in bị mờ',
           caption:
             'Điểm khởi đầu: ba năm phục vụ tại quầy đã khiến QR ban đầu hầu như không hoạt động',
         },
@@ -70,7 +70,7 @@ export const examples: PageDefinition = {
       heading: 'Kết quả có thể đo lường được',
       paragraphs: [
         'Sau khi triển khai mã QR mới trên giấy in thẻ cán mờ chuyên nghiệp, quán cà phê đã theo dõi kết quả trong vòng bốn tuần. Tỷ lệ quét thành công được cải thiện từ ước tính 70% lên gần 100%. Thời gian quét trung bình giảm từ 3-4 giây xuống dưới 1 giây. Đáng kể nhất, mức độ tương tác với menu đã tăng 40% - những khách hàng trước đây đã nhìn vào QR và bỏ cuộc giờ đây đang quét một cách tự tin.',
-        "Staff reported fewer customer questions about 'how to use the QR' and no more instances of manually typing the URL for frustrated customers. Vẻ ngoài mang thương hiệu cũng làm dấy lên những cuộc trò chuyện, trong đó khách hàng nhận xét tích cực về thiết kế gắn kết.",
+        "Nhân viên báo cáo rằng khách hàng có ít câu hỏi hơn về 'cách sử dụng QR' và không có thêm trường hợp nhập URL thủ công nào khiến khách hàng thất vọng. Vẻ ngoài mang thương hiệu cũng làm dấy lên những cuộc trò chuyện, trong đó khách hàng nhận xét tích cực về thiết kế gắn kết.",
       ],
       images: [
         {
@@ -84,7 +84,7 @@ export const examples: PageDefinition = {
     {
       heading: 'Tạo lại cấu hình này',
       paragraphs: [
-        'Cấu hình của quán cà phê thể hiện thương hiệu thận trọng nhưng hiệu quả: Sửa lỗi H, vùng yên tĩnh 6 mô-đun, màu sắc thương hiệu có độ tương phản cao và lớp phủ trung tâm tối thiểu. This balance works for most retail counter applications where reliability must come first but brand presence still matters.',
+        'Cấu hình của quán cà phê thể hiện thương hiệu thận trọng nhưng hiệu quả: Sửa lỗi H, vùng yên tĩnh 6 mô-đun, màu sắc thương hiệu có độ tương phản cao và lớp phủ trung tâm tối thiểu. Cân này hoạt động với hầu hết các ứng dụng tại quầy bán lẻ trong đó độ tin cậy phải được đặt lên hàng đầu nhưng sự hiện diện của thương hiệu vẫn là vấn đề quan trọng.',
         'Mở trình tạo có cài đặt sẵn các cài đặt này và điều chỉnh màu sắc cũng như lớp phủ cho phù hợp với thương hiệu của riêng bạn. The key insight: reliability improvements alone can dramatically increase engagement, even before adding any visual styling.',
         'Xem hướng dẫn Tìm hiểu có liên quan về cách cải thiện các chiến dịch QR hiện có để biết phương pháp đầy đủ đằng sau phương pháp này.',
       ],
@@ -128,7 +128,7 @@ export const examples: PageDefinition = {
     {
       heading: 'Ưu tiên trải nghiệm thanh toán',
       paragraphs: [
-        'Phương thức thanh toán chính của cửa hàng sử dụng tiêu chuẩn khu vực yêu cầu tuân thủ nghiêm ngặt về tải trọng. Thử nghiệm cho thấy rằng ngay cả kiểu dáng nhỏ cũng ảnh hưởng đến tốc độ quét với một số ứng dụng ngân hàng nhất định. The decision: keep the payment QR completely unmodified except for size optimisation and professional printing on matte card stock.',
+        'Phương thức thanh toán chính của cửa hàng sử dụng tiêu chuẩn khu vực yêu cầu tuân thủ nghiêm ngặt về tải trọng. Thử nghiệm cho thấy rằng ngay cả kiểu dáng nhỏ cũng ảnh hưởng đến tốc độ quét với một số ứng dụng ngân hàng nhất định. Quyết định: giữ nguyên hoàn toàn mã QR thanh toán ngoại trừ việc tối ưu hóa kích thước và in chuyên nghiệp trên giấy mờ.',
         "Cách tiếp cận thận trọng này có nghĩa là mã thanh toán trông ít 'có thương hiệu' hơn mức lý tưởng, nhưng tỷ lệ hoàn thành giao dịch được cải thiện đáng kể. Thông tin chi tiết: khoảnh khắc thanh toán không phải là cơ hội xây dựng thương hiệu - mà là khoảnh khắc đáng tin cậy. Khách hàng đánh giá cao tốc độ và sự chắc chắn về tính thẩm mỹ khi liên quan đến tiền bạc.",
       ],
       images: [
@@ -173,7 +173,7 @@ export const examples: PageDefinition = {
     {
       heading: 'Cải tiến hoạt động',
       paragraphs: [
-        "Sáu tuần sau khi triển khai, cửa hàng đã ghi nhận những cải tiến đáng kể: không có khiếu nại nào của khách hàng về nhầm lẫn 'mã sai', thời gian giao dịch nhanh hơn và số lần gửi tiền boa tăng gấp 3 lần (giờ đây khách hàng có thể tìm và quét mã tiền boa mà không cần phải hỏi nhân viên một cách lúng túng). Google reviews also increased as the dedicated, well-labeled QR removed friction.",
+        "Sáu tuần sau khi triển khai, cửa hàng đã ghi nhận những cải tiến đáng kể: không có khiếu nại nào của khách hàng về nhầm lẫn 'mã sai', thời gian giao dịch nhanh hơn và số lần gửi tiền boa tăng gấp 3 lần (giờ đây khách hàng có thể tìm và quét mã tiền boa mà không cần phải hỏi nhân viên một cách lúng túng). Các đánh giá trên Google cũng tăng lên khi QR chuyên dụng, được gắn nhãn rõ ràng đã loại bỏ được xung đột.",
         "Việc đào tạo nhân viên trở nên đơn giản hơn: 'mã thanh toán là vấn đề lớn, mọi thứ khác đều có trong bảng điều khiển.' Khi các ứng dụng thanh toán được cập nhật và một ứng dụng hiển thị tốc độ quét chậm hơn trong thời gian ngắn, thiết kế mã thanh toán thận trọng có nghĩa là nó vẫn hoạt động - chỉ chậm hơn một chút thay vì thất bại hoàn toàn.",
         'Xem hướng dẫn Tìm hiểu về mã QR để thanh toán bán lẻ để biết các nguyên tắc đằng sau thiết kế hệ thống hiển thị này.',
       ],
@@ -254,7 +254,7 @@ export const examples: PageDefinition = {
       images: [
         {
           src: '/images/examples/print-sizing.png',
-          alt: 'A chart showing the relationship between scanning distance, minimum QR size, and module dimensions for each event format',
+          alt: 'Biểu đồ hiển thị mối quan hệ giữa khoảng cách quét, kích thước QR tối thiểu và kích thước mô-đun cho từng định dạng sự kiện',
           caption:
             'Ma trận định cỡ: kích thước được tính toán đảm bảo khả năng quét đáng tin cậy ở khoảng cách xem dự kiến của mỗi định dạng',
         },
@@ -353,8 +353,8 @@ export const examples: PageDefinition = {
     {
       heading: 'Tác động được đo',
       paragraphs: [
-        'After one month of operation, QR check-in adoption increased from 15% to 24% - a 60% relative improvement. Khảo sát phản hồi của khách cho thấy QR động "dễ nhận thấy hơn" và "có cảm giác hiện đại hơn". Thời gian xếp hàng tại bàn giảm đáng kể trong thời gian cao điểm do có nhiều khách tự phục vụ qua QR hơn.',
-        'Điều quan trọng là không có lỗi quét nào được báo cáo mặc dù có hàng nghìn lượt quét hàng ngày. Cách tiếp cận hoạt hình thận trọng đã đạt được mục tiêu gây chú ý mà không làm mất đi độ tin cậy mà quy trình đăng ký yêu cầu. The lounge subsequently rolled out similar animated QRs to their other locations.',
+        'Sau một tháng hoạt động, tỷ lệ chấp nhận đăng ký QR đã tăng từ 15% lên 24% - mức cải thiện tương đối là 60%. Khảo sát phản hồi của khách cho thấy QR động "dễ nhận thấy hơn" và "có cảm giác hiện đại hơn". Thời gian xếp hàng tại bàn giảm đáng kể trong thời gian cao điểm do có nhiều khách tự phục vụ qua QR hơn.',
+        'Điều quan trọng là không có lỗi quét nào được báo cáo mặc dù có hàng nghìn lượt quét hàng ngày. Cách tiếp cận hoạt hình thận trọng đã đạt được mục tiêu gây chú ý mà không làm mất đi độ tin cậy mà quy trình đăng ký yêu cầu. Phòng chờ sau đó đã triển khai các mã QR hoạt hình tương tự cho các địa điểm khác của họ.',
         'Xem hướng dẫn Tìm hiểu về mã QR động cho bảng hiệu kỹ thuật số để biết các nguyên tắc kỹ thuật đằng sau thiết kế hoạt ảnh an toàn.',
       ],
       images: [
@@ -444,7 +444,7 @@ export const examples: PageDefinition = {
       heading: 'Kết quả khởi động',
       paragraphs: [
         'Ngày ra mắt sản phẩm chứng kiến mã QR được triển khai đồng thời trên bao bì, màn hình bán lẻ, tài liệu sự kiện và chiến dịch kỹ thuật số ở tất cả 12 thị trường. Kiểm tra chất lượng đã xác nhận tính nhất quán trực quan giữa các khu vực - QR trên màn hình bán lẻ ở Tokyo khớp với QR trên bao bì São Paulo khớp với QR trên biểu ngữ sự kiện ở Berlin.',
-        'Không có lỗi quét nào được báo cáo trên khắp các thị trường. Khi cần thay đổi URL của trang sản phẩm sau khi ra mắt, dịch vụ chuyển hướng sẽ xử lý nó một cách ẩn - không cần in lại. The global team estimated the configuration link approach saved 40+ hours of coordination time compared to their previous launch methodology.',
+        'Không có lỗi quét nào được báo cáo trên khắp các thị trường. Khi cần thay đổi URL của trang sản phẩm sau khi ra mắt, dịch vụ chuyển hướng sẽ xử lý nó một cách ẩn - không cần in lại. Nhóm toàn cầu ước tính phương pháp liên kết cấu hình đã tiết kiệm được hơn 40 giờ thời gian phối hợp so với phương pháp ra mắt trước đó của họ.',
         'Xem hướng dẫn Tìm hiểu về cộng tác QR đa ngôn ngữ để biết các nguyên tắc quy trình làm việc đằng sau tính nhất quán của chiến dịch toàn cầu.',
       ],
       images: [

@@ -133,7 +133,7 @@ export const privacy: PageDefinition = {
     {
       heading: 'Nesledovat',
       paragraphs: [
-        'Poctíme Signály prohlížeče Do Not Track tam, kde je to možné, i když reklamní partneři nemusí reagovat na DNT.',
+        'Pokud je to možné, respektujeme signály prohlížeče Do Not Track, ačkoli reklamní partneři nemusí na DNT reagovat.',
       ],
     },
     {

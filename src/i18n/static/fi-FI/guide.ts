@@ -668,7 +668,7 @@ export const guide: PageDefinition = {
       heading: 'Kaakkois-Aasian maksustandardit',
       bullets: [
         'PayNow: Singaporen nopea maksujärjestelmä käyttäen EMVCo QR erittely SGQR profiili. Tukee UEN (yritysrekisteri), mobiilinumero, tai NRIC välitystunnusten. Sisältää määrä muokattavissa lippu ja viimeinen käyttöpäivämäärä.',
-        'PromptPay (Thaimaa): Thaimaan kansallinen maksujärjestelmä Bank of Thailand EMV profiilin mukaisesti. Tukee mobiilinumeroa, kansallista henkilötunnusta, verotunnusta, sähköistä lompakkotunnusta ja laskun maksua useilla viitekentillä.',
+        'PromptPay (Thaimaa): Thaimaan kansallinen maksujärjestelmä, joka seuraa Bank of Thailand EMV -profiilia. Tukee matkapuhelinnumeroa, henkilötunnusta, verotunnusta, e-lompakkotunnusta ja laskun maksua useilla viitekentillä.',
         'QRIS (Indonesia): Nopea vastekoodi Indonesian standardi. EMV-pohjainen kansallinen maksustandardi, joka tukee kauppiastunnusta, NMID:ää (National Merchant ID), kauppiaskriteereiden luokittelua ja mukavuusmaksuja (kiinteä tai prosenttiosuus).',
         'DuitNow (Malaysia): Malesian pikamaksujärjestelmä. Tukee useita välityspalkkiotyyppejä kuten NRIC, mobiili, passi, armeijan ID, ja liiketoiminnan rekisterinumerot.',
         'VietQR (Vietnam): Vietnamin pankkien välinen siirto standardi. Vaaditaan pankki BIN (NAPAS-tunnus) ja tilinumero. Tukee useita palvelukoodeja eri siirtotyypeille (QRPUSH, QRIBFTTA, QRIBFTTC).',
@@ -962,7 +962,7 @@ export const guide: PageDefinition = {
         'laatu: WebP laatu 0-1 (oletus: 0,9).',
         'webpQ: WebP laatu 0-100 (oletus: 90).',
         'gifColors: GIF-palettikoko 2-256 (oletus: 256).',
-        'dpi: Output DPI for PNG (oletus: 72).',
+        'dpi: Lähtö DPI PNG:lle (oletus: 72).',
         'MetaTime, metaAuthor, metaCopy, meta Desc: PNG-metatietokentät.',
       ],
     },

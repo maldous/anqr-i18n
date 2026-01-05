@@ -1,5 +1,5 @@
 import type { PageDefinition } from '../types';
-import { CONTACT_EMAIL, LAST_UPDATED } from '../types';
+import { LAST_UPDATED } from '../types';
 
 export const about: PageDefinition = {
   title: 'Om ANQR',
@@ -18,7 +18,7 @@ export const about: PageDefinition = {
     {
       heading: 'Hvad er ANQR?',
       paragraphs: [
-        'ANQR (udtales "anker") er en gratis QR kode generator, der skaber scannede koder for URL \'er, tekst, Wi- Fi legitimationsoplysninger, kontaktkort, kalender begivenheder, og meget mere.',
+        'ANQR (udtales "anker") er en gratis QR-kodegenerator, der opretter scanbare koder til URL\'er, tekst, Wi-Fi-legitimationsoplysninger, kontaktkort, kalenderbegivenheder og mere.',
         'Det er bygget til enkeltpersoner, små virksomheder, marketingfolk, og udviklere, der ønsker kraftfulde QR-værktøjer uden tilmelding. Klient- første design betyder QR koder genereres lokalt i din browser som standard, med en valgfri server API til professionel indlejring og integration.',
       ],
     },
@@ -28,8 +28,8 @@ export const about: PageDefinition = {
         'Generér QR-koder øjeblikkeligt i din browser - ingen konto kræves.',
         'Tilpas farver, modulstilarter, findermønstre og tilføj billedoverskrifter.',
         'Eksportér i flere formater: PNG, SVG, WebP og animeret GIF.',
-        'Avancerede kontroller for fejlkorrigeringsniveau, QR-version, kodningstilstand og maske valg.',
-        'Scan- sikkerhedsvejledning og live preview for at hjælpe med at holde koder læsbare i print og på skærme.',
+        'Avancerede kontroller til fejlkorrektionsniveau, QR-version, kodningstilstand og maskevalg.',
+        'Scanningssikkerhedsvejledning og live preview for at hjælpe med at holde koder læsbare på print og på skærme.',
         'Server- side API til professionel indlejring med fuld parameter support.',
         'Fungerer offline når du er indlæst - det er en statisk web-app, du kan køre overalt.',
       ],
@@ -40,12 +40,12 @@ export const about: PageDefinition = {
         'ANQR kører i din browser og indkoder dit input i en standard QR matrix med Reed- Solomon fejl korrektion, og derefter gør det til det format, du vælger.',
         'Som standard, generering sker lokalt i din browser. Til professionel brug, kan du også bruge serverside API til at generere QR-koder via URL-parametre - perfekt til indlejring i hjemmesider, e-mails eller automatiske arbejdsgange.',
         'Når du tilføjer overlejringer eller animationer, ANQR balancer styling med scanning pålidelighed, så resultatet forbliver scannede.',
-        'ANQR fokuserer på statiske koder (dataene er inde i QR). Hvis du har brug for en dynamisk kode (redigerbar destination), kan du indkode din egen omdirigerede URL eller kort link.',
+        'ANQR fokuserer på statiske koder (data er inde i QR). Hvis du har brug for en dynamisk kode (redigerbar destination), kan du kode din egen omdirigerings-URL eller et kort link.',
       ],
     },
     {
       heading: 'Hvem driver ANQR?',
-      paragraphs: [`18${CONTACT_EMAIL}19`],
+      paragraphs: [`email@anqr.link`],
     },
     {
       heading: 'Reklame og hvordan vi forbliver frie',

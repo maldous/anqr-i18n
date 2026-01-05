@@ -1,5 +1,5 @@
 import type { PageDefinition } from '../types';
-import { CONTACT_EMAIL, LAST_UPDATED } from '../types';
+import { LAST_UPDATED } from '../types';
 
 export const about: PageDefinition = {
   title: 'ARP এর পরিচিতি',
@@ -45,7 +45,7 @@ export const about: PageDefinition = {
     },
     {
       heading: 'কে কাজ করছে AR?',
-      paragraphs: [`18${CONTACT_EMAIL}19`],
+      paragraphs: [`email@anqr.link`],
     },
     {
       heading: 'বিজ্ঞাপন আর কিভাবে আমরা মুক্ত থাকি',

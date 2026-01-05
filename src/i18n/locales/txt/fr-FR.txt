@@ -450,7 +450,7 @@
 450	"Partager"
 451	"Style des modèles d'alignement (utilisés dans les grands codes QR)"
 452	"Ouvre un contenu spécifique dans une application mobile"
-453	"Détecter automatiquement (exige v_ANQR_PH_0__+ pour le contenu actuel)"
+453	"Détection automatique (nécessite v{{version}}+ pour le contenu actuel)"
 454	"0 = Automatique, min v{{version}} pour le contenu actuel"
 455	"Code couleur arrière-plan"
 456	"Format héritage - envisager d'utiliser vCard à la place"

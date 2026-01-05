@@ -10,7 +10,7 @@ import { LAST_UPDATED } from '../types';
 export const examples: PageDefinition = {
   title: 'ANQR Beispiele',
   description:
-    'Fünf reale, produktionstypische Beispiele, die zeigen, wo QR-Codes messbaren Wert schaffen: Aufheben eines alten Einzelhandelszählcodes, Markenzahlungen und "scan-to"-Aktionen, Druckskalierung von Flyern zu Billboards, animierten QR für digitale Signage und Cross-Lese-Kollaboration mit Shareable Anchor Links. Jedes Beispiel umfasst Bilder, praktische Zwänge und eine Remix-Link zurück zum Generator.',
+    'Fünf reale Beispiele im Produktionsstil, die zeigen, wo QR-Codes einen messbaren Wert schaffen: Aufwertung eines alten Ladenthekencodes, markenbezogene Einzelhandelszahlungen und "Scan-to"-Aktionen, Druckskalierung von Flyern bis hin zu Werbetafeln, animierte QR-Codes für digitale Beschilderung und sprachübergreifende Zusammenarbeit mithilfe gemeinsam nutzbarer Ankerlinks. Jedes Beispiel enthält Bilder, praktische Einschränkungen und einen Remix-Link zurück zum Generator.',
   lastUpdated: LAST_UPDATED,
 
   primaryLinks: [
@@ -204,7 +204,7 @@ export const examples: PageDefinition = {
       heading: 'Fallstudie: Von Business Card bis Billboard',
       paragraphs: [
         'Dieses Beispiel folgt einem Event-Produktionsunternehmen, das sich auf eine große Konferenz vorbereitet. Sie brauchten den gleichen QR-Code - die Verknüpfung mit der Event-App - über radikal unterschiedliche Formate eingesetzt: Teilnehmer Badge-Einsätze (3cm), Tischzeltkarten (8cm), Registrierungs-Desk-Zeichen (30cm), Wegfinder (60cm) und ein massives Bühnen-Banner (4 Meter). Jedes Format hatte unterschiedliche Betrachtungsdistanzen, Lichtverhältnisse und Produktionsabläufe.',
-        'Die Herausforderung war nicht nur technisch - sie war funktionsfähig. Mehrere Hersteller behandelten verschiedene Druckaufträge, und das Unternehmen musste konsequente, scannbare Ergebnisse sicherstellen, unabhängig davon, wer was produziert hat. Ihre Lösung konzentrierte sich auf SVG Export und strenge Handoff-Dokumentation.',
+        'Die Herausforderung war nicht nur technischer Natur, sondern auch betrieblicher Natur. Mehrere Anbieter wickelten unterschiedliche Druckaufträge ab und das Unternehmen musste konsistente, scanbare Ergebnisse sicherstellen, unabhängig davon, wer was produzierte. Ihre Lösung konzentrierte sich auf den SVG-Export und eine strenge Übergabedokumentation.',
       ],
       images: [
         {
@@ -248,7 +248,7 @@ export const examples: PageDefinition = {
     {
       heading: 'Größenspezifische Überlegungen',
       paragraphs: [
-        'Jedes Format erforderte besondere Aufmerksamkeit. Abzeicheneinsätze bei 3cm brauchte der QR maximal verfügbare Raum - Abtastabstand wäre Armlänge. Tischzelte bei 8cm könnte dekoratives Friaming außerhalb der ruhigen Zone enthalten. Das 4-Meter-Banner benötigte Berechnung: von der typischen Publikumsdistanz (15-20 Meter), Module, die durch Telefonkameras deutlich unterscheidbar sein mussten, was bedeutete, dass der QR mindestens 80cm im Bannerdesign sein musste.',
+        'Jedes Format erforderte besondere Aufmerksamkeit. Bei 3 cm breiten Abzeicheneinsätzen musste der QR den größtmöglichen verfügbaren Platz einnehmen – der Scanabstand würde einer Armlänge entsprechen. Tischzelte mit einer Höhe von 8 cm könnten außerhalb der Ruhezone mit dekorativen Rahmen versehen werden. Das 4-Meter-Banner erforderte eine Berechnung: Aus einer typischen Zuschauerentfernung (15–20 Meter) mussten die Module für Telefonkameras deutlich erkennbar sein, was bedeutete, dass der QR mindestens 80 cm innerhalb des Bannerdesigns liegen musste.',
         'Das Unternehmen erstellte für jede erwartete Scanstrecke einen Leimführer mit minimalen QR-Abmessungen. Dies wurde zu einem wiederverwendbaren Vermögen für zukünftige Ereignisse und entfernte Erraten aus dem Designprozess.',
       ],
       images: [
@@ -324,7 +324,7 @@ export const examples: PageDefinition = {
       heading: 'Integration mit Signage Content',
       paragraphs: [
         "Der animierte QR wurde in einer speziellen 'stabilen Zone' des Bildschirmlayouts positioniert - ein Bereich, der konstant blieb, während Werbeinhalte im Hauptanzeigebereich gedreht wurden. Diese Trennung war entscheidend: Der QR benötigte visuelle Stabilität zum Scannen, auch wenn er durch seine subtile Animation Aufmerksamkeit erregte.",
-        "Neben dem QR wurde eine klare Call-to-Action hinzugefügt: 'Skip the queue - scannen, um zu überprüfen.' Der Text blieb statisch, während der QR gepulst, wodurch eine visuelle Hierarchie, die das Auge auf die Scan-Möglichkeit zog, ohne die Werbeinhalte zu überwältigen.",
+        'Neben dem QR wurde ein klarer Call-to-Action hinzugefügt: "Überspringen Sie die Warteschlange – scannen Sie, um einzuchecken." Der Text blieb statisch, während der QR pulsierte, wodurch eine visuelle Hierarchie entstand, die den Blick auf die Scan-Gelegenheit lenkte, ohne den Werbeinhalt zu überfordern.',
       ],
       images: [
         {

@@ -87,7 +87,7 @@ export const terms: PageDefinition = {
     {
       heading: 'Dispute resolution',
       paragraphs: [
-        'Any dispute arising from these Terms or your use of ANQR shall first be attempted to be resolved through informal negotiation by contacting ${CONTACT_EMAIL}.',
+        'Any dispute arising from these Terms or your use of ANQR shall first be attempted to be resolved through informal negotiation by contacting email@anqr.link.',
         'If informal resolution fails, disputes shall be resolved through binding arbitration in Victoria, Australia, except that either party may seek injunctive relief in court for intellectual property violations.',
       ],
     },
@@ -136,7 +136,7 @@ export const terms: PageDefinition = {
     },
     {
       heading: 'Contact',
-      paragraphs: ['Questions about these Terms can be sent to: ${CONTACT_EMAIL}'],
+      paragraphs: ['Questions about these Terms can be sent to: email@anqr.link'],
     },
   ],
 };

@@ -128,12 +128,12 @@ export const guide: PageDefinition = {
     {
       heading: 'Strefa ciszy (Margines)',
       paragraphs: [
-        'Strefa ciszy to biała przestrzeń wokół kodu QR. Skanery potrzebują tego marginesu, aby wykryć, gdzie zaczyna się kod. Standard zaleca co najmniej 4 moduły. Zmniejszenie poniżej 4 może powodować problemy ze skanowaniem.',
+        'Cicha strefa to biała przestrzeń wokół kodu QR. Skanery potrzebują tego marginesu, aby wykryć, gdzie zaczyna się kod. Norma zaleca co najmniej 4 moduły. Zmniejszenie poniżej 4 może powodować problemy ze skanowaniem.',
       ],
     },
     {
       heading: 'Styl modułu',
-      paragraphs: ['Moduły to poszczególne kwadraty tworzące kod QR. ANQR oferuje pięć stylów:'],
+      paragraphs: ['Moduły to pojedyncze kwadraty tworzące kod QR. ANQR oferuje pięć stylów:'],
       bullets: [
         'Plac: Klasyczny wygląd QR z ostrymi narożnikami.',
         'Zaokrąglone: Zmiękczone narożniki dla bardziej przyjaznego wyglądu.',
@@ -152,7 +152,7 @@ export const guide: PageDefinition = {
     {
       heading: 'Styl wzoru wyszukiwania',
       paragraphs: [
-        'Wzory Finder to trzy duże kwadraty w narożnikach QR, które pomagają skanerom zorientować kod. Dostępne style:',
+        'Wzory Findera to trzy duże kwadraty w rogach QR, które pomagają skanerom zorientować się w kodzie. Dostępne style:',
       ],
       bullets: [
         'Kwadrat: Standardowe narożniki kwadratowe.',
@@ -598,7 +598,7 @@ export const guide: PageDefinition = {
       paragraphs: ['Poziom profesjonalny dodaje rodzaje płatności i treści dla przedsiębiorstw:'],
       bullets: [
         'EPC / SEPA (UE): europejskie kody QR przelewu bankowego z IBAN, BIC, kwota referencyjna.',
-        'UPI (Indie): Unified Payments Interface with VPA, receive name, amount.',
+        'UPI (Indie): Ujednolicony interfejs płatności z VPA, nazwą odbiorcy płatności i kwotą.',
         'PayNow (Singapur): Singapur szybkie płatności z UEN lub numer telefonu komórkowego.',
         'PromptPay (Tajlandia): Tajski krajowy system płatności.',
         'PIX (Brazylia): Brazylijska płatność natychmiastowa kluczem PIX.',
@@ -672,7 +672,7 @@ export const guide: PageDefinition = {
         'QRIS (Indonezja): Quick Response Code indonezyjski standard. Krajowy standard płatności oparty na EMV, wspierający ID kupca, NID (National Merchant ID), klasyfikację kryteriów handlowych oraz opłaty za wygody (stałe lub procentowe).',
         'DuitNow (Malezja): Malezyjski system płatności natychmiastowych. Obsługuje wiele typów proxy, w tym NRIC, telefon komórkowy, paszport, legitymacja wojskowa i numery rejestracyjne.',
         'VietQR (Wietnam): wietnamski standard transferu międzybankowego. Wymaga BIN banku (identyfikacja NAPAS) i numer konta. Obsługuje wiele kodów usług dla różnych rodzajów transferu (QRPUSH, QRIBFTTA, QRIBFTTC).',
-        'QR Ph (Filipiny): Filipiński standard płatności QR dla InstaPay i PESONet. Używa numerów kont z identyfikacją kupca dla transakcji P2M (persomert-to-trader).',
+        'QR Ph (Filipiny): Filipiński standard płatności QR dla InstaPay i PESONet. Używa numerów kont z identyfikacją sprzedawcy w transakcjach P2M (od osoby do sprzedawcy).',
       ],
       links: [
         {
@@ -730,7 +730,7 @@ export const guide: PageDefinition = {
       heading: 'Usługi łącza płatności',
       bullets: [
         'PayPal.Me: Linki płatnicze PayPal z nazwą użytkownika i opcjonalną wcześniej wypełnioną kwotą. Klienci mogą płacić za pośrednictwem salda PayPal, kart lub kont bankowych.',
-        'App Cash: Cash Linki płatności aplikacji za pomocą $cashtag z opcjonalną kwotą. Popularne w Stanach Zjednoczonych dla płatności peer-to-peer.',
+        'Aplikacja gotówkowa: linki do płatności w aplikacji gotówkowej przy użyciu tagu $cashtag z opcjonalną kwotą. Popularny w Stanach Zjednoczonych w przypadku płatności peer-to-peer.',
       ],
       links: [
         {
@@ -762,7 +762,7 @@ export const guide: PageDefinition = {
         'Uwaga: Nakładka wykrywająca krawędź pokazuje tylko kontury.',
         'Wave: Wavy efekt zniekształceń.',
         'Rozmiar subpixel: Zmienna wielkość subpixel na podstawie obrazu.',
-        'True Dither: Advanced dithering with order matrix selection.',
+        'True Dither: Zaawansowane dithering z uporządkowanym wyborem matrycy.',
         'Ekstremalne: Maksymalna widoczność obrazu, może wpływać na scannability.',
       ],
       links: [
@@ -863,7 +863,7 @@ export const guide: PageDefinition = {
     {
       heading: 'API Odniesienie',
       paragraphs: [
-        'ANQR dostarcza API po stronie serwera do generowania kodów QR poprzez parametry URL. Jest to idealne rozwiązanie do umieszczania kodów QR na stronach internetowych, e-mailach, dokumentach lub zautomatyzowanych źródłach pracy bez obsługi klienta JavaScript.',
+        'ANQR zapewnia interfejs API po stronie serwera do generowania kodów QR za pomocą parametrów adresu URL. Jest to idealne rozwiązanie do osadzania kodów QR w witrynach internetowych, wiadomościach e-mail, dokumentach lub zautomatyzowanych przepływach pracy bez JavaScript po stronie klienta.',
         'Base URL: https: / / anqr.link / api / qr',
       ],
       links: [{ href: '/examples?lang=${lang}', label: 'Zobacz przykłady QR', type: 'example' }],

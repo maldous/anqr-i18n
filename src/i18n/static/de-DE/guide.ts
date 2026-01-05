@@ -17,7 +17,7 @@ export const guide: PageDefinition = {
       heading: 'Erste Schritte',
       paragraphs: [
         'ANQR ist ein QR-Codegenerator mit einem Client-First-Ansatz. Standardmäßig werden QR-Codes lokal in Ihrem Browser generiert - kein Konto erforderlich und Ihre Daten bleiben privat. Zur professionellen Einbettung können Sie auch die serverseitige API verwenden.',
-        'Die Schnittstelle verfügt über drei Schnittstellenstufen: Basic, Advanced und Professional. Wählen Sie Ihre Ebene mit den Tabs im Header. Jede Ebene entsperrt zusätzliche Funktionen, während die Schnittstelle konzentriert auf das, was Sie brauchen.',
+        'Die Schnittstelle verfügt über drei Schnittstellenebenen: Basic, Advanced und Professional. Wählen Sie Ihr Level mithilfe der Registerkarten in der Kopfzeile aus. Mit jedem Level werden zusätzliche Funktionen freigeschaltet, während sich die Benutzeroberfläche auf das konzentriert, was Sie brauchen.',
       ],
       bullets: [
         'Basic: Einfache QR-Code-Erstellung mit Klartext/URL Inhalt und Bildüberlagerung.',
@@ -71,7 +71,7 @@ export const guide: PageDefinition = {
       ],
       bullets: [
         'Hochladen von Datei: Wählen Sie ein Bild aus Ihrem Gerät.',
-        'Last from URL: Geben Sie eine Bild-URL ein (muss CORS zulassen).',
+        'Von URL laden: Geben Sie eine Bild-URL ein (muss CORS zulassen).',
         'Center Logo: Platziert Bild in der Mitte, basierend auf Fehlerkorrektur.',
         'Blend: Einfache Alpha-Mischung von Bild mit QR-Muster.',
         'Intensität: Kontrolliert, wie stark die Overlay den QR-Code (0-100%) beeinflusst.',
@@ -555,7 +555,7 @@ export const guide: PageDefinition = {
       paragraphs: ['Teilen Sie Ihre QR-Code-Konfigurationen:'],
       bullets: [
         'Direct Link: Erstellen Sie eine aktifähige URL mit Ihren aktuellen Einstellungen.',
-        'Embed HTML: Get embed code for websites.',
+        'HTML einbetten: Holen Sie sich Einbettungscode für Websites.',
         'Parameter kodieren: Alle Einstellungen in der Share-URL enthalten.',
         'Hinweis: Overlay-Bilder aus lokalen Dateien können nicht über URL geteilt werden.',
       ],
@@ -670,7 +670,7 @@ export const guide: PageDefinition = {
       heading: 'Südostasiatischen Zahlungsstandards',
       bullets: [
         'PayNow (Singapur): Singapur schnelles Zahlungssystem mit EMVCo QR Spezifikation mit SGQR Profil. Unterstützt UEN (Business Registration), mobile Nummer oder NRIC als Proxy-Kennzeichen. Inklusive Anzahl Editability Flag und Ablaufdatum.',
-        'PromptPay (Thailand): Thailändisches nationales Zahlungssystem nach Bank of Thailand EMV Profil. Unterstützt mobile Nummer, nationale ID, Steuer-ID, e-wallet ID und Rechnung Zahlung mit mehreren Referenzfeldern.',
+        'PromptPay (Thailand): Thailändisches nationales Zahlungssystem gemäß EMV-Profil der Bank of Thailand. Unterstützt Mobiltelefonnummer, nationale ID, Steuer-ID, E-Wallet-ID und Rechnungszahlung mit mehreren Referenzfeldern.',
         'QRIS (Indonesien): Quick Response Code Indonesian Standard. EMV-basierte nationale Zahlungsstandard zur Unterstützung von Handels-ID, NMID (National Merchant ID), Handelskriterien Klassifizierung und Bequemlichkeitsgebühren (fest oder Prozentsatz).',
         'DuitNow (Malaysia): Malaysian Instant Payment System. Unterstützt mehrere Proxy-Typen, einschließlich NRIC, Mobil, Reisepass, Armee-ID und Geschäftsregistrierungsnummern.',
         'VietQR (Vietnam): Vietnamesischer Interbank-Transferstandard. Erfordert Bank BIN (NAPAS-Identifizierung) und Kontonummer. Unterstützt mehrere Servicecodes für verschiedene Transfertypen (QRPUSH, QRIBFTTA, QRIBFTTC).',
@@ -732,7 +732,7 @@ export const guide: PageDefinition = {
       heading: 'Dienstleistungen für den Kunden',
       bullets: [
         'PayPal.Me: PayPal-Zahlungslinks mit Benutzername und optionalem vorgefüllten Betrag. Empfänger können über PayPal-Bilanz, Karten oder Bankkonten bezahlen.',
-        'Cash App: Bargeld App-Zahlungslinks mit $cashtag mit optionalem Betrag. Beliebt in den Vereinigten Staaten für Peer-to-Peer-Zahlungen.',
+        'Cash App: Cash App-Zahlungslinks mit $cashtag und optionalem Betrag. In den USA beliebt für Peer-to-Peer-Zahlungen.',
       ],
       links: [
         {
@@ -944,7 +944,7 @@ export const guide: PageDefinition = {
         'wmEn: Auf 1 gesetzt, um Wasserzeichen zu aktivieren.',
         'wm Art: Wasserzeichentyp - Text, Bild, Muster.',
         'wmText: Wasserzeichentext (URL-codiert).',
-        'wmImg: URL to watermark image.',
+        'wmImg: URL zum Wasserzeichenbild.',
         'wmPos: Position - Mitte, Ecken, Kanten, hinter, ruhig_zone.',
         'wmOpacity: Opacity 0-100 (Standard: 50).',
         'wmBlend: Mischmodus - normal, multipliziert, Bildschirm, Overlay.',

@@ -88,7 +88,7 @@ export const terms: PageDefinition = {
     {
       heading: 'Dispuutbeslegting',
       paragraphs: [
-        'Enige dispuut wat voortspruit uit hierdie Bepalings of jou gebruik van ANQR sal eers gepoog word om deur informele onderhandeling opgelos te word deur ${CONTACT_EMAIL} te kontak.',
+        'Enige dispuut wat voortspruit uit hierdie Bepalings of jou gebruik van ANQR sal eers gepoog word om deur informele onderhandeling opgelos te word deur email@anqr.link te kontak.',
         'Indien informele oplossing misluk, sal dispute opgelos word deur bindende arbitrasie in Victoria, Australië, behalwe dat enige van die partye bevelverligting in die hof kan soek vir skending van intellektuele eiendom.',
       ],
     },
@@ -137,7 +137,7 @@ export const terms: PageDefinition = {
     },
     {
       heading: 'Kontak',
-      paragraphs: ['Vrae oor hierdie Bepalings kan gestuur word aan: ${CONTACT_EMAIL}'],
+      paragraphs: ['Vrae oor hierdie Bepalings kan gestuur word aan: email@anqr.link'],
     },
   ],
 };

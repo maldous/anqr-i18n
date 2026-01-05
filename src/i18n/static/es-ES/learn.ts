@@ -116,7 +116,7 @@ export const learn: PageDefinition = {
 
     // Guide 2: QR Codes for Retail Payments
     {
-      heading: 'QR Codes for Retail Payments',
+      heading: 'Códigos QR para pagos minoristas',
       paragraphs: [
         'Pago Los códigos QR funcionan en el entorno más exigente en el retail: el momento de la transacción. Los clientes están listos para pagar, a menudo con una cola formando detrás de ellos, y cada segundo de retraso crea fricción. Sin embargo, este momento de alta presión es también la propiedad principal para el refuerzo de la marca. Esta guía explica cómo crear códigos QR de pago que escanean instantáneamente en aplicaciones bancarias mientras todavía presenta una apariencia profesional y de marca que construye la confianza del cliente.',
         'El principio fundamental para el pago de códigos QR es la fiabilidad sobre la estética. Un código bien diseñado que no puede escanear en la aplicación bancaria de un cliente le costará mucho más en operaciones abandonadas y clientes frustrados de lo que un diseño conservador podría. Comience con el cumplimiento, agregue confiabilidad, luego capa cuidadosamente en la marca sólo donde no compromete la función primaria.',
@@ -138,7 +138,7 @@ export const learn: PageDefinition = {
       ],
     },
     {
-      heading: 'Sizing y Placement for Counter Displays',
+      heading: 'Dimensionamiento y ubicación de expositores de mostrador',
       paragraphs: [
         'Los códigos QR encimera enfrentan desafíos físicos únicos. Los clientes escanean la longitud del brazo, a menudo en un ángulo, a veces a través de protectores estornudos o casos de visualización. La iluminación superior crea manchas de brillo. El código compite con otro contador para la atención y líneas claras. Tamaño de su pago QR generosamente - un mínimo de 4-5cm se recomienda para la mayoría de las aplicaciones de contador, escalar si el código se sienta detrás de vidrio o en un área iluminada.',
         'La posición importa tanto como el tamaño. Coloque el código en el que los clientes puedan mantener cómodamente su teléfono sin bloquear la cola o llegar de forma incómoda. Enciende la pantalla hacia el cliente en lugar de ponerla plana. Si es posible, utilice materiales de laminación mate o de visualización no reflectante para minimizar el resplandor de la iluminación superior. Prueba la colocación final en diferentes momentos del día para detectar problemas de iluminación.',
@@ -251,7 +251,7 @@ export const learn: PageDefinition = {
       heading: 'Preparación de archivos para Handoff',
       paragraphs: [
         'Al pasar las obras de arte QR a diseñadores o proveedores de impresión, incluyen especificaciones claras: el tamaño físico previsto, requisitos mínimos de zona tranquila, y cualquier consideración de espacio de color. Para aplicaciones críticas, proporcione tanto un maestro SVG como una copia de seguridad PNG de alta resolución, claramente etiquetada con sus usos previstos. Incluya su enlace de configuración ANQR para que el código pueda regenerarse si es necesario.',
-        'Anticipar errores comunes en el proceso de entrega. Explicitly state that the QR should not be scaled, rotated, skewed, or have effects applied. Especifique que la zona tranquila debe permanecer clara - sin marcas de cultivo, marcas de registro, o elementos de diseño intrusos. Si el QR se coloca en un fondo coloreado o fotográfico, proporcione una versión con una forma de respaldo opaca para asegurar un contraste adecuado.',
+        'Anticípese a errores comunes en el proceso de traspaso. Indique explícitamente que el QR no se debe escalar, rotar, sesgar ni aplicar efectos. Especifique que la zona silenciosa debe permanecer despejada: sin que se entrometan marcas de corte, marcas de registro ni elementos de diseño. Si el QR se colocará sobre un fondo fotográfico o de color, proporcione una versión con una forma de respaldo opaca para garantizar un contraste adecuado.',
       ],
       images: [
         {
@@ -387,7 +387,7 @@ export const learn: PageDefinition = {
 
     // Guide 5: QR Safety & Compliance
     {
-      heading: 'QR Safety and Compliance Best Practices',
+      heading: 'Mejores prácticas de cumplimiento y seguridad de QR',
       paragraphs: [
         'Un código QR bien diseñado que no escanea es peor que inútil - frustra a los clientes, daña la percepción de la marca, y desperdicia cada recurso invertido en su creación y distribución. Esta guía cubre los factores técnicos y prácticos que determinan si un código QR escanea de forma fiable, y cómo utilizar las características de seguridad de ANQR para detectar problemas potenciales antes de alcanzar la producción.',
         'La confiabilidad del código QR no es binaria. Un código puede escanear perfectamente en los teléfonos insignia pero fallar en los dispositivos presupuestarios. Puede funcionar en la iluminación ideal pero lucha en restaurantes dim o luz solar brillante. Comprender los factores que afectan la escandalidad le ayuda a hacer cambios informados entre el estilo visual y la fiabilidad del mundo real.',

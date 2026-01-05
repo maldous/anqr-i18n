@@ -15,7 +15,7 @@ export const contact: PageDefinition = {
     {
       heading: 'E-pos',
       paragraphs: [
-        'Vir alle navrae: ${CONTACT_EMAIL}',
+        'Vir alle navrae: email@anqr.link',
         'Dit is die mees betroubare manier om ons te bereik en word aanbeveel vir gedetailleerde vrae, besigheidsnavrae of enige ander navrae.',
       ],
     },
@@ -60,7 +60,7 @@ export const contact: PageDefinition = {
     {
       heading: 'DMCA Kontak',
       paragraphs: [
-        'Stuur DMCA-kennisgewings na: ${CONTACT_EMAIL}',
+        'Stuur DMCA-kennisgewings na: email@anqr.link',
         'Sluit asseblief "DMCA Kennisgewing" in die onderwerplyn in. Ons sal reageer op geldige kennisgewings in ooreenstemming met toepaslike wetgewing. Let daarop dat ANQR QR-kodes plaaslik op gebruikerstoestelle genereer en nie gebruikergegenereerde inhoud huisves nie.',
       ],
     },

@@ -11,8 +11,8 @@ export const privacy: PageDefinition = {
     {
       heading: 'Samenvatting',
       paragraphs: [
-        'ANQR is een QR codegenerator met een client-first benadering. U hoeft geen account aan te maken. Standaard worden QR codes lokaal gegenereerd in uw browser - we hebben geen toegang tot de inhoud die u codeert.',
-        'Voor professioneel gebruik biedt ANQR een server-side API die QR-codes genereert van URL-parameters. Bij het gebruik van de API wordt uw QR-content verwerkt op onze servers om de afbeelding te renderen, maar wordt deze niet opgeslagen of geregistreerd.',
+        'ANQR is een QR-codegenerator met een klantgerichte aanpak. Wij vereisen niet dat u een account aanmaakt. Standaard worden QR-codes lokaal in uw browser gegenereerd. Wij hebben geen toegang tot de inhoud die u codeert.',
+        'Voor professioneel gebruik biedt ANQR een server-side API die QR-codes genereert op basis van URL-parameters. Wanneer u de API gebruikt, wordt uw QR-inhoud op onze servers verwerkt om de afbeelding weer te geven, maar niet opgeslagen of gelogd.',
         'We gebruiken Google AdSense voor reclame en kunnen gebruik maken van analytische diensten. Deze diensten verzamelen informatie via cookies en soortgelijke technologieën. Dit beleid legt uit welke gegevens worden verzameld, hoe het wordt gebruikt, en uw rechten.',
       ],
     },
@@ -32,7 +32,7 @@ export const privacy: PageDefinition = {
       ],
       bullets: [
         'Reclamecookies (derde partij): Set van Google AdSense en advertentiepartners om relevante advertenties te bedienen, advertentieprestaties te meten en gebruikersbelangen te begrijpen. Deze cookies kunnen uw activiteiten op verschillende websites bijhouden.',
-        'Analytics cookies (derde partij): Kan worden gebruikt door onze hosting provider of analytics diensten om geanonimiseerde gebruiksgegevens te verzamelen.',
+        'Analysecookies (derden): Kunnen door onze hostingprovider of analysediensten worden gebruikt om geanonimiseerde gebruiksgegevens te verzamelen.',
       ],
     },
     {
@@ -85,7 +85,7 @@ export const privacy: PageDefinition = {
         'Recht om verwerking te beperken: Vraag limieten aan voor het gebruik van uw gegevens.',
         'Recht op gegevensportabiliteit: Vraag uw gegevens in een draagbaar formaat aan.',
         'Recht op bezwaar: Bezwaar tegen verwerking, ook voor direct marketing.',
-        'Recht om toestemming in te trekken: Trek te allen tijde de toestemming in wanneer de verwerking gebaseerd is op toestemming.',
+        'Recht om toestemming in te trekken: Trek uw toestemming op elk moment in als de verwerking op toestemming is gebaseerd.',
         'Recht om een klacht in te dienen: Een klacht indienen bij uw autoriteit voor gegevensbescherming.',
       ],
     },
@@ -93,7 +93,7 @@ export const privacy: PageDefinition = {
       heading: 'Rechtsgrondslag van de AVG',
       paragraphs: [
         'We verwerken gegevens op deze basis: (a) Toestemming - voor gepersonaliseerde reclame (beheerd door onze reclamepartners); (b) Legitieme belangen - voor analyse, veiligheid en verbetering; (c) Contract - om te reageren op vragen.',
-        'Neem contact op met ${CONTACT_EMAIL} om uw rechten uit te oefenen. We reageren binnen 30 dagen.',
+        'Neem contact op met email@anqr.link om uw rechten uit te oefenen. We reageren binnen 30 dagen.',
       ],
     },
     {
@@ -109,7 +109,7 @@ export const privacy: PageDefinition = {
       heading: 'CCPA-categorieën verzameld',
       paragraphs: [
         'Categorieën: Identifiers (IP-adres, apparaat-ID), Internetactiviteit (browsen, advertentie-interacties), Geolocatie (ca.',
-        'Om rechten uit te oefenen of af te melden: ${CONTACT_EMAIL} of cookie-instellingen aan te passen.',
+        'Om rechten uit te oefenen of u af te melden: e-mail@anqr.link of pas de cookie-instellingen aan.',
       ],
     },
     {
@@ -121,13 +121,13 @@ export const privacy: PageDefinition = {
     {
       heading: 'Privacy van kinderen',
       paragraphs: [
-        'ANQR is niet gericht op kinderen jonger dan 13 jaar (of 16 jaar in de EER). We verzamelen niet bewust gegevens van kinderen. Contact ${CONTACT_EMAIL} als u gelooft dat een kind informatie heeft verstrekt.',
+        'ANQR is niet gericht op kinderen onder de 13 jaar (of 16 jaar in de EER). Wij verzamelen niet bewust gegevens van kinderen. Neem contact op met email@anqr.link als u denkt dat een kind informatie heeft verstrekt.',
       ],
     },
     {
       heading: 'Beveiliging',
       paragraphs: [
-        'We gebruiken passende technische en organisatorische maatregelen om gegevens te beschermen, waaronder HTTPS-encryptie. Geen enkele internettransmissie is echter 100% veilig.',
+        'Wij gebruiken passende technische en organisatorische maatregelen om gegevens te beschermen, waaronder HTTPS-encryptie. Geen enkele internettransmissie is echter 100% veilig.',
       ],
     },
     {
@@ -145,7 +145,7 @@ export const privacy: PageDefinition = {
     {
       heading: 'Contacteer ons',
       paragraphs: [
-        'Voor privacyvragen of om uw rechten uit te oefenen: ${CONTACT_EMAIL}_ of gebruik onze Contact pagina. Wij reageren binnen 30 dagen op privacyverzoeken.',
+        'Voor privacyvragen of om uw rechten uit te oefenen: email@anqr.link of gebruik onze Contactpagina. Wij reageren binnen 30 dagen op privacyverzoeken.',
       ],
     },
   ],

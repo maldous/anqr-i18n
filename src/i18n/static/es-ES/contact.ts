@@ -61,7 +61,7 @@ export const contact: PageDefinition = {
     {
       heading: 'DMCA Contacto',
       paragraphs: [
-        'Enviar avisos de DMCA a: ${CONTACT_EMAIL}',
+        'Enviar avisos de DMCA a: email@anqr.link',
         'Por favor incluya "Notificación DMCA" en la línea de asunto. Responderemos a avisos válidos de acuerdo con la ley aplicable. Tenga en cuenta que ANQR genera códigos QR localmente en dispositivos de usuarios y no alberga contenido generado por el usuario.',
       ],
     },

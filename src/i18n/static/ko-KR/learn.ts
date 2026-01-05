@@ -9,7 +9,7 @@ import { LAST_UPDATED } from '../types';
 export const learn: PageDefinition = {
   title: 'ANQR 소개',
   description:
-    '실제 마케팅 자산으로 QR 코드를 돌리기위한 실용적인, 비즈니스 첫 번째 가이드 - 단지 기능 광장. Legacy Point-of-sale 코드를 업그레이드하는 방법을 알아 보려면 호환 지불 QR signage를 생성하고 디지털 디스플레이에 안전하게 인쇄 ready 수출을 준비하고 ANQR ( "anchor") 링크를 사용하여 다국어 팀 전체에 고정 된 구성을 공유하십시오.',
+    'QR 코드를 단순한 기능 사각형이 아닌 실제 마케팅 자산으로 전환하기 위한 실용적이고 비즈니스 우선적인 가이드입니다. 기존 POS 코드를 업그레이드하고, 규정을 준수하는 결제 QR 간판을 만들고, 인쇄 가능한 내보내기를 준비하고, 디지털 디스플레이에서 애니메이션을 안전하게 사용하고, ANQR("앵커") 링크를 사용하여 다국어 팀 간에 고정된 구성을 공유하는 방법을 알아보세요.',
   lastUpdated: LAST_UPDATED,
 
   primaryLinks: [

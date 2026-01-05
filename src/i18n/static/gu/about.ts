@@ -1,5 +1,5 @@
 import type { PageDefinition } from '../types';
-import { CONTACT_EMAIL, LAST_UPDATED } from '../types';
+import { LAST_UPDATED } from '../types';
 
 export const about: PageDefinition = {
   title: 'ANQR વિશે',
@@ -45,7 +45,7 @@ export const about: PageDefinition = {
     },
     {
       heading: 'ANQR કોણ ચલાવે છે?',
-      paragraphs: [`18${CONTACT_EMAIL}19`],
+      paragraphs: [`email@anqr.link`],
     },
     {
       heading: 'જાહેરાત અને અમે કેવી રીતે મુક્ત રહીએ છીએ',
@@ -70,7 +70,7 @@ export const about: PageDefinition = {
     {
       heading: 'પ્રતિસાદ અને યોગદાન',
       paragraphs: [
-        'અમે પ્રતિસાદ, બગ રિપોર્ટ્સ અને સુવિધા સૂચનોનું સ્વાગત કરીએ છીએ. Please get in touch via email or the contact page - we read every message, though response times may vary.',
+        'અમે પ્રતિસાદ, બગ રિપોર્ટ્સ અને સુવિધા સૂચનોનું સ્વાગત કરીએ છીએ. કૃપા કરીને ઇમેઇલ અથવા સંપર્ક પૃષ્ઠ દ્વારા સંપર્કમાં રહો - અમે દરેક સંદેશ વાંચીએ છીએ, જોકે પ્રતિસાદનો સમય બદલાઈ શકે છે.',
       ],
     },
   ],
