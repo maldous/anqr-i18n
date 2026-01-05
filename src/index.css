@@ -180,6 +180,11 @@ body {
   }
 }
 
+/* Scroll margin for hash navigation - accounts for sticky headers */
+[id^="section-"] {
+  scroll-margin-top: 80px;
+}
+
 /* QR Preview container */
 .qr-preview-container {
   position: relative;
