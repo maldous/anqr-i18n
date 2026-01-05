@@ -33,7 +33,7 @@ export const guide: PageDefinition = {
         '1. Pumili ng isang nilalamang tipo (URL, teksto, WiFi, atbp.) mula sa Content Type dropdown.',
         '2. Ipasok ang iyong impormasyon sa inilaang mga field.',
         '3. Iangkop sa tamang paraan ang mga kulay, istilo, at kulay.',
-        '4. Click Export to download ang iyong QR code bilang PNG, GIF, WebP, o SVG.',
+        '4. I-click ang I-export upang i-download ang iyong QR code bilang PNG, GIF, WebP, o SVG.',
       ],
       links: [
         {
@@ -190,7 +190,7 @@ export const guide: PageDefinition = {
     {
       heading: 'Pagdami ng Module at Gap',
       paragraphs: [
-        'Module Size: Kumokontrol kung gaano kalaki ang bawat module sa mga pixel. Ang mas malalaking halaga ay lumilikha ng mas malaki, mas madaling-to-scan code.',
+        'Laki ng Module: Kinokontrol kung gaano kalaki ang bawat module ay nai-render sa mga pixel. Ang mas malalaking halaga ay lumilikha ng mas malaki, mas madaling i-scan na mga code.',
         'Gulong ng Module: Idinaragdag ang puwang sa pagitan ng mga module bilang isang porsiyento. Ang mga maliliit na puwang (5-15%) ay maaaring mapahusay ang pagiging scannabilidad sa ilang mga kondisyon ngunit ang labis na mga puwang ay nakababawas ng pagkamaaasahan.',
       ],
     },
@@ -258,13 +258,13 @@ export const guide: PageDefinition = {
         'MeCard: Compact contact format na popular sa Hapon.',
         'BizCard: Legacy business card formation.',
         'Lokasyon ng Geo: Ang GPS ay nagtutugma na bukas sa mga mapa.',
-        'WiFi: Network clients for automatic connection (SSID, password, security type).',
+        'WiFi: Mga kredensyal sa network para sa awtomatikong koneksyon (SSID, password, uri ng seguridad).',
         'Talaksan ng Kalendaryo: iCalendar format na may pamagat, lokasyon, petsa/panahon.',
         'Pangyayari RSVP: Kaugnay ng pahina ng rehistro.',
-        'Calendar Subscript: Subscribe to an ICS/WebCal feed.',
-        'File/Document URL: Direct link to downloadable files.',
+        'Calendar Subscribe: Mag-subscribe sa isang ICS/WebCal feed.',
+        'URL ng File/Dokumento: Direktang link sa mga nada-download na file.',
         'Cloud Storage Link: Mga link sa Google Drive, Dropbox, One Drive, atbp.',
-        'Larawan sa Lipunan: Mga link to Linked In, Twitter, Instagram, atbp.',
+        'Social Profile: Mga link sa LinkedIn, Twitter, Instagram, atbp.',
         'Messaging Link: WhatsApp, Telegram, Signal deep links.',
       ],
       links: [
@@ -609,8 +609,8 @@ export const guide: PageDefinition = {
         'Crypto: Bitcoin, Ethereum, Litecoin pagbabayad addresss na may opsyonal na halaga.',
         'Marketing Campaign Link: URLs na may ganap na UTM parameter (Marketing Tags).',
         'Maikling Kaugnayan: Para sa paggamit gamit ng URL shorters para sa dynamic/trackable QR codes.',
-        'GS1 Digital Link: Product identation with GTIN, serial, port, expiry.',
-        'App Deep Link: iOS/Android app deep links with custom schemes.',
+        'GS1 Digital Link: Pagkakakilanlan ng produkto na may GTIN, serial, batch, expiry.',
+        'Deep Link ng App: Mga deep link ng iOS/Android app na may mga custom na scheme.',
         'Kaugaliang Format: Raw data na walang format o bisa.',
       ],
       links: [
@@ -672,11 +672,11 @@ export const guide: PageDefinition = {
       heading: 'Mga Pamantayan ng Pagpapabayad sa Timog - Silangang Asia',
       bullets: [
         'Pay Ngayon (Singapore): Singapore sistema ng mabilisang pagbabayad gamit ang EMVCo QR propesyunal na may SGQR profile. Suportahan ang UEN (pagrerehistro sa negosyo), mobile number, o NRIC bilang proxy identifiers. Isama ang halaga ng conformable flag at expiry date.',
-        'Lex Pay (Thailand): Thai pambansang sistema ng pagbabayad kasunod ng Bank of Thailand EMV profile. Suportahan ang mobile number, pambansang ID, tax ID, e-wallet ID, at pagbabayad ng bill na may multiple reference fields.',
+        'PromptPay (Thailand): Thai national payment system kasunod ng Bank of Thailand EMV profile. Sinusuportahan ang mobile number, national ID, tax ID, e-wallet ID, at bill payment na may maraming reference field.',
         'QRIS (Indonesia): Quick Response Code Indonesian Standard. EMV-based pambansang pamantayan sa pagbabayad na sumusuporta sa mangangalakal na ID, NMID (National Merchant ID), pangkalakalang batayang klasipikasyon, at mga bayad sa kaginhawaan (fixed o persentahe).',
         'Duit Now (Malaysia): Sistema ng kagyat na pagbabayad sa Malaysia. Ang mga sumusuporta sa maramihang mga uri ng proxy kabilang ang NRIC, mobile, pasaporte, army ID, at business register numbers.',
         "VietQR (Vietnam): Vietnamese interbank transfer standard. Hinihiling ng bangko BIN (NAPAS identification) at numero ng account. Suportahan ang multiple service codes para sa iba't ibang transfer types (QRPUSH, QRIBFTTA, QRIBFTC).",
-        'QR Ph (Philapines): Philippine QR na pamantayan ng pagbabayad para sa Instay at PESONet. Ginagamit ang mga numerong may pangkalakalang pagkakakilanlan para sa mga transaksiyon ng P2M (person-to-merchant).',
+        'QR Ph (Philippines): Philippine QR payment standard para sa InstaPay at PESONet. Gumagamit ng mga account number na may merchant identification para sa P2M (person-to-merchant) na mga transaksyon.',
       ],
       links: [
         {
@@ -734,7 +734,7 @@ export const guide: PageDefinition = {
       heading: 'Mga Serbisyo ng Pagpapabayad',
       bullets: [
         'PayPal.Me: PayPal bayad links sa username at opsyonal pre-fillet na halaga. Ang mga recipiente ay maaaring magbayad sa pamamagitan ng PayPal balance, cards, o mga deposito sa bangko.',
-        'Cash App: Cash App pagbabayad links gamit ang $cashtag na may opsyonal na halaga. Popular sa Estados Unidos para sa mga kabayarang peer-to-peer.',
+        'Cash App: Mga link sa pagbabayad ng Cash App gamit ang $cashtag na may opsyonal na halaga. Sikat sa United States para sa mga peer-to-peer na pagbabayad.',
       ],
       links: [
         {
@@ -795,7 +795,7 @@ export const guide: PageDefinition = {
         'May katalinuhang ipinamamahagi ang tindi batay sa maling kakayahang magtuwid. Sinusuri ng sistema kung aling mga module ang maaaring baguhin samantalang pinananatili ang scannity.',
       ],
       bullets: [
-        'Risk Budget: Percentage of error recruiting kapasidad gamitin (0-100%).',
+        'Badyet sa Panganib: Porsiyento ng kapasidad sa pagwawasto ng error na gagamitin (0-100%).',
         'Mas mataas na badyet = mas nakikitang balot ngunit mas mapanganib na scannabilidad.',
         'Ibabang badyet = mas ligtas na scanning ngunit hindi gaanong nakikita na balot.',
       ],
@@ -915,7 +915,9 @@ export const guide: PageDefinition = {
     },
     {
       heading: 'Napakaraming Parametro',
-      paragraphs: ['Ang mga pagpipiliang may tatak (overlay image is access server-side):'],
+      paragraphs: [
+        'Mga opsyon sa overlay ng larawan (kinukuha ang overlay na larawan sa gilid ng server):',
+      ],
       bullets: [
         'img: URL Upang ibalot ang imahe (kailangang makuha sa publiko).',
         'mode: Overlay mode - center, halfutone, timplahan, ningning, mosaic, dithered, blue-noise, subpixel.',
@@ -952,7 +954,7 @@ export const guide: PageDefinition = {
         'wmEn: Ilagay sa 1 upang maging palatandaan ng tubig.',
         'wm Uri: Watermark type - text, imahe, disenyo.',
         'wmText: tekstong Watermark (URL-encoded).',
-        'wImg: URL to watermark image.',
+        'wmImg: URL sa watermark na larawan.',
         'wmPos: Position - center, sulok, gilid, likod, tahimik_zone.',
         'wmopacity: Opacity 0-100 (default: 50).',
         'wmBlend: Bend mode - normal, dumami ka, iskrin, balot.',

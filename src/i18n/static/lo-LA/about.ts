@@ -1,5 +1,5 @@
 import type { PageDefinition } from '../types';
-import { CONTACT_EMAIL, LAST_UPDATED } from '../types';
+import { LAST_UPDATED } from '../types';
 
 export const about: PageDefinition = {
   title: 'ກ່ຽວກັບ ANQR',
@@ -45,7 +45,7 @@ export const about: PageDefinition = {
     },
     {
       heading: 'ໃຜດໍາເນີນການ ANQR?',
-      paragraphs: [`18${CONTACT_EMAIL}19`],
+      paragraphs: [`email@anqr.link`],
     },
     {
       heading: 'ການໂຄສະນາແລະວິທີທີ່ພວກເຮົາຢູ່ຟຣີ',

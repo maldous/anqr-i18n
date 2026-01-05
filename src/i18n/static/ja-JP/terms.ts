@@ -88,7 +88,7 @@ export const terms: PageDefinition = {
     {
       heading: '紛争解決',
       paragraphs: [
-        'これらの利用規約またはANQRの使用に起因する紛争は、まず、${CONTACT_EMAIL}_に連絡することにより、非公式協議によって解決しようとする。',
+        'これらの利用規約またはANQRの使用に起因する紛争は、まず、email@anqr.link_に連絡することにより、非公式協議によって解決しようとする。',
         '非公式の決議が失敗した場合、紛争は、ビクトリア、オーストラリアの拘束力のある仲裁によって解決されなければなりません。ただし、いずれかの当事者は、知的財産権侵害の裁判所で審議的な救済を求めることができる場合を除きます。',
       ],
     },
@@ -137,7 +137,7 @@ export const terms: PageDefinition = {
     },
     {
       heading: 'お問い合わせ',
-      paragraphs: ['これらの条件に関する質問は、${CONTACT_EMAIL}_に送信できます。'],
+      paragraphs: ['これらの条件に関する質問は、email@anqr.link_に送信できます。'],
     },
   ],
 };

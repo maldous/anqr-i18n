@@ -9,7 +9,7 @@ import { LAST_UPDATED } from '../types';
 export const learn: PageDefinition = {
   title: 'Leren met ANQR',
   description:
-    'Praktische, business-first gidsen voor het omzetten van QR codes in echte marketing activa - niet alleen functionele vierkanten. Leer hoe u legacy point-of-sale codes kunt upgraden, conforme betaling QR signage kunt maken, print-ready export kunt voorbereiden, animatie veilig kunt gebruiken op digitale displays, en locked-in configuraties kunt delen over meertalige teams met behulp van ANQR ("anker") links.',
+    'Praktische, zakelijke handleidingen voor het omzetten van QR-codes in echte marketingmiddelen - niet alleen in functionele vierkanten. Leer hoe u verouderde kassacodes kunt upgraden, QR-signage voor betalingen kunt maken die aan de regels voldoen, afdrukklare exports kunt voorbereiden, animaties veilig op digitale schermen kunt gebruiken en vergrendelde configuraties kunt delen met meertalige teams met behulp van ANQR-links ("anker").',
   lastUpdated: LAST_UPDATED,
 
   primaryLinks: [
@@ -27,8 +27,8 @@ export const learn: PageDefinition = {
     {
       heading: 'De bestaande QR-campagnes verbeteren',
       paragraphs: [
-        "De meeste bedrijven hebben QR codes verspreid over hun activiteiten - op menu's, toonbank, verpakking en promotiemateriaal. Veel van deze codes zijn jaren geleden gemaakt met basisgeneratoren, wat resulteert in generieke zwart-wit vierkanten die niet inspireren vertrouwen of overeenkomen met uw merk identiteit. Deze uitgebreide gids begeleidt u door een systematische aanpak van het controleren, upgraden en optimaliseren van uw bestaande QR-infrastructuur zonder de klanttrajecten die u al hebt opgezet te verstoren.",
-        "Het strategische voordeel van het upgraden in plaats van het vervangen van uw QR codes ligt in het behouden van continuïteit. Uw klanten hebben al geleerd om bepaalde bestemmingen te verwachten wanneer ze uw codes scannen. Door de gecodeerde URL's identiek te houden en tegelijkertijd de visuele presentatie, betrouwbaarheid en merkuitlijning drastisch te verbeteren, creëer je een naadloze overgang die het vertrouwen verbetert zonder dat er wijzigingen nodig zijn in je digitale infrastructuur of analytics tracking.",
+        'De meeste bedrijven hebben QR-codes verspreid over hun activiteiten: op menukaarten, toonbankstandaards, verpakkingen en promotiemateriaal. Veel van deze codes zijn jaren geleden gemaakt met basisgeneratoren, wat resulteert in generieke zwart-witte vierkanten die geen vertrouwen wekken of passen bij uw merkidentiteit. Deze uitgebreide gids leidt u door een systematische aanpak voor het controleren, upgraden en optimaliseren van uw bestaande QR-infrastructuur zonder de klanttrajecten die u al heeft opgezet te verstoren.',
+        "Het strategische voordeel van het upgraden in plaats van het vervangen van uw QR-codes ligt in het behoud van de continuïteit. Uw klanten hebben al geleerd bepaalde bestemmingen te verwachten wanneer zij uw codes scannen. Door de gecodeerde URL's identiek te houden en tegelijkertijd de visuele presentatie, de scanbetrouwbaarheid en de merkuitlijning dramatisch te verbeteren, creëert u een naadloze overgang die het vertrouwen vergroot, zonder dat er wijzigingen aan uw digitale infrastructuur of analytische tracking nodig zijn.",
       ],
       images: [
         {
@@ -42,15 +42,15 @@ export const learn: PageDefinition = {
     {
       heading: 'Waarom Legacy QR Codes Underperform',
       paragraphs: [
-        'QR-codes die tijdens de vroege adoptiefase zijn gecreëerd - met name in 2020-2021 toen bedrijven haast maakten om contactloze oplossingen te implementeren - hebben vaak te maken met verschillende kritieke kwesties. Lage foutcorrectie instellingen maken ze kwetsbaar wanneer ze worden afgedrukt op textuuroppervlakken of bekeken onder uitdagende verlichting. Onvoldoende stille zones veroorzaken scanfouten wanneer codes in de buurt van andere visuele elementen worden geplaatst. Generieke styling communiceert geen merklegitimiteit, wat leidt tot aarzeling en verminderde scansnelheden.',
-        'Naast technische beperkingen vertegenwoordigen legacy codes vaak gemiste branding mogelijkheden. Elke QR-code is een touchpoint met uw klant - een moment waarop ze actief betrokken zijn en bereid zijn om actie te ondernemen. Een professioneel gestyleerde code die past bij uw merkkleuren, bevat passende veiligheidsmarges, en functies optionele merkelementen transformeert dit hulpprogramma in een marketingactivat die uw identiteit versterkt bij elke interactie.',
+        'QR-codes die zijn gemaakt tijdens de vroege adoptiefase – vooral in de periode 2020-2021, toen bedrijven zich haastten om contactloze oplossingen te implementeren – kampen vaak met verschillende kritieke problemen. Lage foutcorrectie-instellingen maken ze kwetsbaar wanneer ze worden afgedrukt op gestructureerde oppervlakken of worden bekeken onder uitdagende verlichting. Onvoldoende stille zones veroorzaken scanfouten wanneer codes in de buurt van andere visuele elementen worden geplaatst. Generieke styling slaagt er niet in de legitimiteit van het merk over te brengen, wat leidt tot aarzeling en lagere scanpercentages.',
+        'Naast technische beperkingen vertegenwoordigen verouderde codes vaak gemiste merkkansen. Elke QR-code is een contactmoment met uw klant: een moment waarop deze actief betrokken is en bereid is actie te ondernemen. Een professioneel opgemaakte code die past bij uw merkkleuren, passende veiligheidsmarges bevat en optionele merkelementen bevat, transformeert dit hulpprogramma in een marketingmiddel dat uw identiteit bij elke interactie versterkt.',
       ],
     },
     {
       heading: 'Een QR-codeaudit uitvoeren',
       paragraphs: [
         'Begin uw upgradeproject door het creëren van een uitgebreide inventaris van elke QR-code die momenteel in uw bedrijf wordt ingezet. Documenteer de fysieke locatie, de gecodeerde bestemming, de huidige staat van het bedrukte materiaal en de typische scanomgeving, inclusief lichtomstandigheden en kijkhoeken. Test elke code met meerdere apparaten - oudere smartphones en budget apparaten onthullen vaak betrouwbaarheidsproblemen die premium telefoons masker.',
-        'Bijzondere aandacht besteden aan codes in high-stakes locaties: betaalpunten, check-in gebieden, en promotionele displays waar scan falen direct invloed heeft op inkomsten of klantervaring. Deze moeten prioriteit krijgen voor onmiddellijke verbetering. Let ook op codes die verschijnen in fotografie of video-inhoud, want deze zullen coördinatie met uw marketingteam nodig hebben om visuele activa bij te werken.',
+        'Besteed bijzondere aandacht aan codes op locaties waar veel op het spel staat: betaalpunten, incheckzones en promotiedisplays waar het mislukken van de scan rechtstreeks van invloed is op de omzet of de klantervaring. Deze moeten prioriteit krijgen voor onmiddellijke upgrade. Let ook op codes die voorkomen in fotografie- of video-inhoud, omdat hiervoor coördinatie met uw marketingteam nodig is om visuele middelen bij te werken.',
       ],
       images: [
         {
@@ -64,15 +64,15 @@ export const learn: PageDefinition = {
     {
       heading: 'De Safe Upgrade-strategie',
       paragraphs: [
-        'De hoofdregel van QR upgrades is het behoud van de bestemming. Pak de exacte URL van elke bestaande code en codeer het identiek in uw nieuwe versie. Dit zorgt ervoor dat alle bestaande analytics, redirect logica en klantverwachtingen intact blijven. Als u bestemmingsflexibiliteit nodig heeft voor toekomstige updates, dan is dit het ideale moment om een branded short URL of redirect service in te voeren - maar implementeer dit als een apart project om samengestelde wijzigingen te voorkomen.',
+        'De hoofdregel bij QR-upgrades is het behoud van de bestemming. Extraheer de exacte URL uit elke bestaande code en codeer deze op identieke wijze in uw nieuwe versie. Dit zorgt ervoor dat alle bestaande analyses, omleidingslogica en klantverwachtingen intact blijven. Als u bestemmingsflexibiliteit nodig heeft voor toekomstige updates, is dit het ideale moment om een ​​korte URL of omleidingsservice met een merknaam te introduceren, maar implementeer dit als een afzonderlijk project om samengestelde wijzigingen te voorkomen.',
         'Voor de visuele upgrade, breng verbeteringen in lagen: eerst zorgen voor technische betrouwbaarheid (passende foutcorrectie en rustige zone), dan merk styling (kleuren, module vormen), en ten slotte overwegen optionele verbeteringen (centeroverlays, frames). Elke laag moet worden gevalideerd door middel van tests alvorens verder te gaan. De veiligheidsmodus van ANQR helpt deze prioriteiten af te dwingen door te waarschuwen wanneer styling keuzes de scannability in gevaar kunnen brengen.',
       ],
     },
     {
       heading: 'Merkidentiteit toevoegen zonder Betrouwbaarheid te compromitteren',
       paragraphs: [
-        'Effectieve QR branding balanceert visuele impact tegen scan betrouwbaarheid. Begin met kleur: vervang de standaard zwarte voorgrond met je primaire merkkleur, zodat er voldoende contrast is met je achtergrond. Voor de meeste merken werken donkere kleuren op lichte achtergronden het beste. Vermijd low-contrast combinaties, gradiënten die de helderheid van de rand verminderen, of kleuren die vergelijkbaar lijken onder gemeenschappelijke lichtomstandigheden.',
-        'Module vorm aanpassing biedt een andere branding mogelijkheid met minimale betrouwbaarheid impact. Afgeronde modules zorgen voor een zachtere, meer toegankelijke uitstraling met behoud van uitstekende scannability. Dot-stijl modules werken goed voor moderne, tech-forward merken. Aangesloten modules passen bij industriële of bedrijfsidentiteit. Welke stijl u ook kiest, onderhoud consistentie in al uw QR-implementaties voor directe merkherkenning.',
+        'Effectieve QR-branding balanceert visuele impact en scanbetrouwbaarheid. Begin met kleur: vervang de standaard zwarte voorgrond door uw primaire merkkleur en zorg voor voldoende contrast met uw achtergrond. Voor de meeste merken werken donkere kleuren op een lichte achtergrond het beste. Vermijd combinaties met laag contrast, kleurverlopen die de helderheid van de randen verminderen, of kleuren die er onder normale lichtomstandigheden hetzelfde uitzien.',
+        'Het aanpassen van de modulevorm biedt nog een mogelijkheid voor branding met minimale impact op de betrouwbaarheid. Afgeronde modules zorgen voor een zachter, toegankelijker uiterlijk terwijl de uitstekende scanbaarheid behouden blijft. Modules in puntstijl werken goed voor moderne, technologisch vooruitstrevende merken. Verbonden modules passen bij industriële of bedrijfsidentiteiten. Welke stijl u ook kiest, zorg voor consistentie in al uw QR-implementaties voor onmiddellijke merkherkenning.',
       ],
       images: [
         {
@@ -86,15 +86,15 @@ export const learn: PageDefinition = {
     {
       heading: 'Test- en valideringsprotocol',
       paragraphs: [
-        'Nooit upgrade QR codes implementeren zonder strenge testen. Druk een fysiek bewijs af op de exacte grootte en op hetzelfde materiaal als je uiteindelijke inzet. Test op de werkelijke locatie waar de code zal leven, op verschillende tijdstippen van de dag om rekening te houden met lichtvariaties. Gebruik ten minste drie verschillende apparaten: een huidige vlaggenschiptelefoon, een middelgroot apparaat en een oudere of budget smartphone.',
-        'Record scantijden en succespercentages voor elke test. Een goed geoptimaliseerde code moet binnen 1-2 seconden scannen op elk redelijk modern apparaat. Als u consistente vertragingen of storingen ziet, vermindert styling intensiteit - verwijder of krimp overlays, verhoog stille zone grootte, of schakel over naar een hogere foutcorrectie niveau. Betrouwbaarheid heeft altijd voorrang op visuele verfijning.',
+        'Implementeer nooit geüpgradede QR-codes zonder rigoureuze tests. Druk een fysieke proefdruk af op exact het formaat en op hetzelfde materiaal als uw uiteindelijke implementatie. Test op de daadwerkelijke locatie waar de code zal verschijnen, op verschillende tijdstippen van de dag, om rekening te houden met lichtvariaties. Gebruik ten minste drie verschillende apparaten: een huidige vlaggenschiptelefoon, een toestel uit het middensegment en een oudere of budgetsmartphone.',
+        'Registreer scantijden en succespercentages voor elke test. Een goed geoptimaliseerde code zou op elk redelijk modern apparaat binnen 1-2 seconden moeten worden gescand. Als u consistente vertragingen of mislukkingen constateert, verminder dan de stylingintensiteit - verwijder of verklein overlays, vergroot de grootte van de stille zone of schakel over naar een hoger foutcorrectieniveau. Betrouwbaarheid heeft altijd voorrang op visuele verfijning.',
       ],
     },
     {
       heading: 'Uw configuratie vergrendelen voor consistentie',
       paragraphs: [
         'Zodra u een optimale configuratie hebt gevalideerd, behoudt u deze met behulp van de deelbare koppelingen van ANQR. Dit maakt een permanent record van elke instelling die wordt gebruikt om uw goedgekeurde code te genereren - kleuren, modulestijl, foutcorrectie, grootte, en eventuele overlays. Deel deze link met uw ontwerpteam, drukverkopers en iedereen die de code in de toekomst moet reproduceren.',
-        "Dit configuratie slot voorkomt de geleidelijke degradatie die veel QR implementaties plagen. Zonder dat, medewerkers recreëren codes van screenshots, ontwerpers herbouwen instellingen uit het geheugen, en print leveranciers maken 'hulpzame' aanpassingen. Elke variatie introduceert potentiële problemen. Met een vergrendelde configuratielink is elke reproductie identiek aan uw geteste, goedgekeurde origineel.",
+        "Deze configuratievergrendeling voorkomt de geleidelijke degradatie waar veel QR-implementaties mee te maken hebben. Zonder dit kunnen medewerkers codes uit schermafbeeldingen opnieuw maken, ontwerpers instellingen opnieuw uit het geheugen bouwen en drukwerkleveranciers 'nuttige' aanpassingen maken. Elke variatie introduceert potentiële problemen. Met een vergrendelde configuratielink is elke reproductie identiek aan uw geteste, goedgekeurde origineel.",
       ],
       images: [
         {
@@ -122,8 +122,8 @@ export const learn: PageDefinition = {
     {
       heading: 'QR-codes voor retailbetalingen',
       paragraphs: [
-        'Betaling QR codes werken in de meest veeleisende omgeving in de detailhandel: het moment van transactie. Klanten zijn klaar om te betalen, vaak met een wachtrij vormen achter hen, en elke seconde van vertraging creëert wrijving. Toch is dit hogedrukmoment ook uitstekend vastgoed voor merkversterking. Deze gids legt uit hoe u betaal QR codes die direct scannen op banking apps, terwijl het presenteren van een professionele, branded uiterlijk dat het vertrouwen van de klant bouwt.',
-        'Het basisprincipe voor betaal QR codes is betrouwbaarheid boven esthetiek. Een prachtig ontworpen code die niet scant op de banking app van een klant zal u veel meer kosten in verlaten transacties en gefrustreerde klanten dan een conservatief ontwerp ooit zou kunnen. Beginnen met compliance, betrouwbaarheid toevoegen, dan zorgvuldig laag in branding alleen waar het niet compromitteert de primaire functie.',
+        'QR-codes voor betalingen werken in de meest veeleisende omgeving in de detailhandel: het moment van de transactie. Klanten staan ​​klaar om te betalen, vaak met een rij achter zich, en elke seconde vertraging zorgt voor wrijving. Toch is dit moment van hoge druk ook bij uitstek geschikt voor merkversterking. In deze handleiding wordt uitgelegd hoe u QR-codes voor betalingen kunt maken die direct in bank-apps kunnen worden gescand en toch een professionele, merkuitstraling hebben die het vertrouwen van de klant vergroot.',
+        'Het fundamentele principe voor QR-codes voor betalingen is betrouwbaarheid boven esthetiek. Een prachtig ontworpen code die de bankapp van een klant niet kan scannen, zal u veel meer kosten aan afgebroken transacties en gefrustreerde klanten dan een conservatief ontwerp ooit zou kunnen. Begin met compliance, voeg betrouwbaarheid toe en pas vervolgens zorgvuldig de branding toe op plekken waar dit de primaire functie niet in gevaar brengt.',
       ],
       images: [
         {
@@ -137,15 +137,15 @@ export const learn: PageDefinition = {
     {
       heading: 'Inzicht in betaal QR-normen',
       paragraphs: [
-        'Betaling QR codes meestal regionale normen die de lading formaat dicteren. In Singapore maakt PayNow QR gebruik van specifieke opmaak. In India, UPI codes volgen BharatQR of UPI diepe link standaarden. Europese SEPA-betalingen gebruiken EPC-QR-codes. Elke standaard bestaat om ervoor te zorgen dat bankapps direct de betalingsinformatie kunnen herkennen en verwerken. Afwijken van deze normen - zelfs enigszins - kan leiden tot betaling apps om codes die generieke camera scanners gelezen zonder probleem te weigeren.',
-        'ANQR bevat sjablonen voor grote betalingsnormen die automatisch uw merchantgegevens formatteren in conforme payloads. Gebruik altijd deze templates in plaats van handmatig het bouwen van betaling strings, zoals zelfs kleine formattering fouten kunnen leiden tot transactie fouten. Als de betaalstandaard van uw regio niet beschikbaar is als sjabloon, raadpleeg dan de technische documentatie van uw betalingsdienstaanbieder voor exacte formatteringsvereisten.',
+        'QR-codes voor betalingen volgen doorgaans regionale normen die het payload-formaat bepalen. In Singapore gebruikt PayNow QR een specifieke opmaak. In India volgen UPI-codes de BharatQR- of UPI-deeplinkstandaarden. Europese SEPA-betalingen maken gebruik van EPC QR-codes. Elke standaard bestaat om ervoor te zorgen dat bank-apps de betalingsinformatie onmiddellijk kunnen herkennen en verwerken. Als u – ook al is het maar een klein beetje – van deze normen afwijkt, kan dit ertoe leiden dat betaalapps codes weigeren die generieke camerascanners zonder problemen lezen.',
+        'ANQR bevat sjablonen voor de belangrijkste betalingsstandaarden waarmee uw verkopersgegevens automatisch worden opgemaakt in conforme payloads. Gebruik deze sjablonen altijd in plaats van handmatig betalingsreeksen samen te stellen, aangezien zelfs kleine opmaakfouten transactiefouten kunnen veroorzaken. Als de betalingsstandaard van uw regio niet beschikbaar is als sjabloon, raadpleeg dan de technische documentatie van uw betalingsprovider voor de exacte opmaakvereisten.',
       ],
     },
     {
       heading: 'Maten en plaatsen voor tellerweergaven',
       paragraphs: [
-        'Counter-top QR codes staan voor unieke fysieke uitdagingen. Klanten scannen op armlengte, vaak in een hoek, soms door niezen bewakers of vitrines. Overhead verlichting creëert schittering vlekken. De code wedijvert met andere rommel om aandacht en heldere zichtlijnen. Maat uw betaling QR royaal - een minimum van 4-5 cm wordt aanbevolen voor de meeste teller toepassingen, opschalen als de code zit achter glas of in een dimlicht gebied.',
-        'Positie is net zo belangrijk als grootte. Plaats de code waar klanten hun telefoon comfortabel kunnen vasthouden zonder de wachtrij te blokkeren of ongemakkelijk te bereiken. Hoek het display naar de klant in plaats van het plat leggen. Gebruik indien mogelijk matte laminatie- of niet-reflecterende displaymaterialen om de verblinding door bovenverlichting te minimaliseren. Test de laatste plaatsing op verschillende tijdstippen van de dag om verlichting problemen te vangen.',
+        'Counter-top QR-codes worden geconfronteerd met unieke fysieke uitdagingen. Klanten scannen op armlengte, vaak vanuit een hoek, soms door hoestschermen of vitrines. Bovenverlichting creëert verblindende plekken. De code concurreert met andere tegenrommel om aandacht en duidelijke zichtlijnen. Formaat van uw betalings-QR ruimschoots - een minimum van 4-5 cm wordt aanbevolen voor de meeste toonbanktoepassingen, groter als de code achter glas of in een slecht verlichte ruimte staat.',
+        'Positie is net zo belangrijk als grootte. Plaats de code op een plek waar klanten hun telefoon comfortabel kunnen vasthouden zonder de wachtrij te blokkeren of onhandig te reiken. Draai het display naar de klant toe in plaats van het plat neer te leggen. Gebruik indien mogelijk matte laminering of niet-reflecterende displaymaterialen om schittering door overheadverlichting te minimaliseren. Test de uiteindelijke plaatsing op verschillende tijdstippen van de dag om verlichtingsproblemen op te sporen.',
       ],
       images: [
         {
@@ -157,10 +157,10 @@ export const learn: PageDefinition = {
       ],
     },
     {
-      heading: 'Conservative Branding for Payment Codes',
+      heading: 'Conservatieve branding voor betalingscodes',
       paragraphs: [
-        'Betaalapps zijn minder vergevingsgezind dan generieke camerascanners. Veel banking apps gebruiken oudere, eenvoudigere QR leesalgoritmen geoptimaliseerd voor snelheid in plaats van flexibiliteit. Dit betekent styling die perfect werkt met een telefooncamera kan mislukken met specifieke betaalapps. Houd branding conservatief: gebruik uw merkkleur voor de voorgrond als het een sterk contrast behoudt, maar vermijd gradiënten, zware overlays of decoratieve elementen die de herkenning kunnen verstoren.',
-        'Als u een centraal logo of overlay wilt, houd het dan uiterst klein - niet meer dan 10-15% van het QR gebied - en test uitgebreid met elke betaalapp die uw klanten gebruiken. Veel bedrijven kiezen voor geen overlay op betaalcodes specifiek, reserveren dat styling voor de marketing van QR-codes waar betrouwbaarheidseisen minder streng zijn. Het is de taak van de betaalcode om transacties te verwerken, niet om visueel indruk te maken.',
+        'Betaalapps zijn minder vergevingsgezind dan generieke camerascanners. Veel bankapps gebruiken oudere, eenvoudigere QR-leesalgoritmen die zijn geoptimaliseerd voor snelheid in plaats van flexibiliteit. Dit betekent dat styling die perfect werkt met een telefooncamera mogelijk mislukt met specifieke betaalapps. Houd uw branding conservatief: gebruik uw merkkleur voor de voorgrond als deze een sterk contrast behoudt, maar vermijd kleurverlopen, zware overlays of decoratieve elementen die de herkenning kunnen verstoren.',
+        'Als u een centraal logo of overlay wilt, houd dit dan extreem klein (niet meer dan 10-15% van het QR-gebied) en test uitgebreid met elke betaalapp die uw klanten mogelijk gebruiken. Veel bedrijven kiezen ervoor om specifiek geen overlay op betalingscodes te gebruiken, en reserveren die stijl voor het op de markt brengen van QR-codes waar de betrouwbaarheidseisen minder streng zijn. De taak van de betalingscode is om transacties te verwerken, niet om visueel indruk te maken.',
       ],
       images: [
         {
@@ -174,7 +174,7 @@ export const learn: PageDefinition = {
     {
       heading: 'Materiële en afdrukken overwegingen',
       paragraphs: [
-        'Het fysieke displaymateriaal beïnvloedt de betrouwbaarheid van de scan aanzienlijk. Glanzende laminatie reflecteert bovenlichten direct in de camera van de klant. Getextureerde materialen kunnen module randen vervormen. Goedkope afdrukken kunnen fijne details vervagen. Voor betaling QR codes, investeren in kwaliteit: gebruik matte of satijnen laminatie, zorgen voor hoge resolutie afdrukken, en vervangen displays voordat ze slijt. Een gekraste of vervaagde betaalcode kost u transacties.',
+        'Het fysieke weergavemateriaal heeft een aanzienlijke invloed op de scanbetrouwbaarheid. Glanzende laminering reflecteert bovenlichten rechtstreeks in de camera van de klant. Getextureerde materialen kunnen de randen van modules vervormen. Door goedkoop printen kunnen fijne details vervagen. Investeer voor QR-codes voor betalingen in kwaliteit: gebruik matte of satijnen laminering, zorg voor afdrukken met hoge resolutie en vervang displays voordat ze slijtage vertonen. Een bekraste of vervaagde betalingscode kost u transacties.',
         'Overweeg de duurzaamheid van het display en de vervangbaarheid. Counter displays worden aangeraakt, verplaatst, opgeblazen, en soms omgestoten. Ontwerp uw displaysysteem zodat de QR-inzetstuk eenvoudig kan worden vervangen zonder de gehele stand te vervangen. Houd reserveprints klaar, gegenereerd door uw vergrendelde configuratielink, zodat versleten codes direct kunnen worden verwisseld.',
       ],
     },
@@ -210,7 +210,7 @@ export const learn: PageDefinition = {
       heading: 'Afdrukken-klaar QR-codes: SVG vs PNG',
       paragraphs: [
         'Het verschil tussen een QR-code die perfect scant en een code die faalt komt vaak neer op hoe het werd geëxporteerd en behandeld in de print workflow. Deze gids legt de kritische onderscheiding tussen vector (SVG) en raster (PNG) formaten uit, wanneer te gebruiken elk, en hoe om QR-kunstwerk over te dragen aan ontwerpers en print leveranciers op manieren die de scan betrouwbaarheid van visitekaartjes te behouden tot billboard-size signage.',
-        'Printproductie introduceert variabelen die niet op het scherm bestaan: inktspreiding, substraattextuur, afwerkingsprocessen en het cumulatieve effect van meerdere bestandsconversies. Een QR-code die er perfect uitziet in uw ontwerpsoftware kan uit de printer komen met verzachtte randen, verminderd contrast of subtiel vervormde modules. Begrijpen format selectie en workflow beste praktijken voorkomt deze stille storingen.',
+        'Bij printproductie worden variabelen geïntroduceerd die op het scherm niet bestaan: inktspreiding, substraattextuur, afwerkingsprocessen en het cumulatieve effect van meerdere bestandsconversies. Een QR-code die er in uw ontwerpsoftware perfect uitziet, kan uit de printer komen met zachtere randen, verminderd contrast of subtiel vervormde modules. Door inzicht te krijgen in de indelingsselectie en best practices in de workflow worden deze stille fouten voorkomen.',
       ],
       images: [
         {
@@ -224,15 +224,15 @@ export const learn: PageDefinition = {
     {
       heading: 'Waarom Vector (SVG) voorkeur heeft voor afdrukken',
       paragraphs: [
-        'SVG-bestanden beschrijven QR-codes als wiskundige vormen in plaats van rasters van pixels. Dit betekent dat de code op elke grootte kan worden geschaald - van een 1cm label tot een 10-meter banner - zonder verlies van randscherpte. De RIP (Raster Image Processor) van de printer geeft de vectoren weer bij de oorspronkelijke resolutie van het uitvoerapparaat, zodat elke modulerand zo scherp is als de hardware toelaat. Er is geen interpolatie, geen anti-aliasing artefacten, geen verzamelde vervaging van meerdere grootte bewerkingen.',
-        'Naast schaalbaarheid zijn SVG-bestanden robuuster in professionele workflows. Ze overleven ronde-trips door ontwerpsoftware zonder degradatie. Ze kunnen zonder herhaling worden gecorrigeerd. Ze zitten netjes in PDF-bestanden voor drukklare uitvoer. Voor elke afdrukapplicatie waar kwaliteit belangrijk is, dient SVG uw standaard exportformaat te zijn.',
+        'SVG-bestanden beschrijven QR-codes als wiskundige vormen in plaats van rasters van pixels. Dit betekent dat de code kan worden geschaald naar elk formaat - van een label van 1 cm tot een banner van 10 meter - zonder verlies van randscherpte. De RIP (Raster Image Processor) van de printer geeft de vectoren weer met de eigen resolutie van het uitvoerapparaat, waardoor elke modulerand zo scherp is als de hardware toelaat. Er is geen interpolatie, geen anti-aliasing-artefacten, geen geaccumuleerde vervaging door meerdere bewerkingen voor het wijzigen van de grootte.',
+        'Naast schaalbaarheid zijn SVG-bestanden robuuster in professionele workflows. Ze overleven rondreizen door ontwerpsoftware zonder degradatie. Ze kunnen op kleur worden gecorrigeerd zonder opnieuw te samplen. Ze kunnen netjes in PDF-bestanden worden ingesloten voor drukklare uitvoer. Voor elke printtoepassing waarbij kwaliteit belangrijk is, zou SVG uw standaard exportformaat moeten zijn.',
       ],
     },
     {
-      heading: 'Wanneer PNG aanvaardbaar is',
+      heading: 'Wanneer PNG acceptabel is',
       paragraphs: [
-        'PNG wordt noodzakelijk wanneer uw workflow of bestemming platform geen vectorformaten ondersteunt. Sommige webplatforms, signage CMS-systemen en legacy print workflows vereisen rasterafbeeldingen. In deze gevallen kan PNG goed werken - maar alleen als je strikte regels volgt: exporteren bij de uiteindelijke fysieke grootte en resolutie, nooit opschalen na export, en vermijd elke verlies aan compressie of formaat conversie.',
-        'De kritische regel voor PNG is om uw gewenste pixelafmetingen te berekenen voordat u exporteert. Als je QR op 5cm afdrukt en je printer op 300 DPI werkt, heb je ongeveer 590 pixels nodig. Exporteren op deze grootte of groter, dan schaal naar beneden indien nodig - nooit omhoog. Voeg deze informatie in uw bestandsnaam of metadata zodat toekomstige gebruikers niet per ongeluk misbruik maken van een grootte-specifieke export.',
+        'PNG wordt noodzakelijk wanneer uw workflow of bestemmingsplatform geen vectorformaten ondersteunt. Sommige webplatforms, CMS-systemen voor bewegwijzering en oudere printworkflows vereisen rasterafbeeldingen. In deze gevallen kan PNG goed werken, maar alleen als u strikte regels volgt: exporteer met de uiteindelijke fysieke grootte en resolutie, schaal nooit op na het exporteren en vermijd verliesgevende compressie of formaatconversie.',
+        'De cruciale regel voor PNG is om de vereiste pixelafmetingen te berekenen voordat u exporteert. Als uw QR op 5 cm afdrukt en uw printer op 300 DPI werkt, heeft u ongeveer 590 pixels nodig. Exporteer op dit formaat of groter en schaal vervolgens indien nodig terug – nooit omhoog. Neem deze informatie op in uw bestandsnaam of metagegevens, zodat toekomstige gebruikers niet per ongeluk een formaatspecifieke export misbruiken.',
       ],
       images: [
         {
@@ -246,22 +246,22 @@ export const learn: PageDefinition = {
     {
       heading: 'ANQR-exportopties uitgelegd',
       paragraphs: [
-        'ANQR biedt verschillende SVG-exportmodi voor verschillende workflows. True Vector-modus produceert pure path-based output ideaal voor print- en professionele ontwerptools. Wanneer je rasteroverlays of bepaalde effecten hebt toegevoegd, kan ANQR deze insluiten tijdens het onderhouden van vectormodules, of je kunt een volledig gerasterde versie exporteren met de opgegeven resolutie. Het begrijpen van deze opties helpt u kiezen voor de juiste export voor elke use case.',
-        'Voor PNG export kunt u met ANQR exacte afmetingen specificeren en opties voor transparante achtergronden bevatten. De DPI-instelling helpt u bij het berekenen van de juiste maten voor afdrukken, maar vergeet niet dat DPI metadata is - wat belangrijk is voor afdrukken is het hebben van voldoende pixels voor uw fysieke grootte. Bij twijfel, exporteren groter dan je denkt dat je nodig hebt; schalen omlaag behoudt kwaliteit terwijl schaalvergroting vernietigt het.',
+        'ANQR biedt verschillende SVG-exportmodi voor verschillende workflows. De True Vector-modus produceert pure, op paden gebaseerde uitvoer, ideaal voor print- en professionele ontwerptools. Wanneer u rasteroverlays of bepaalde effecten heeft toegevoegd, kan ANQR deze insluiten met behoud van vectormodules, of u kunt een volledig gerasterde versie exporteren met de door u opgegeven resolutie. Als u deze opties begrijpt, kunt u voor elke gebruikssituatie de juiste export kiezen.',
+        'Voor PNG-exports kunt u met ANQR exacte afmetingen opgeven en zijn er opties voor transparante achtergronden opgenomen. Met de DPI-instelling kunt u de juiste formaten voor afdrukken berekenen, maar onthoud dat DPI metadata is: wat voor afdrukken belangrijk is, is dat u voldoende pixels heeft voor uw fysieke grootte. Exporteer bij twijfel groter dan u denkt nodig te hebben; Schaalvergroting zorgt ervoor dat de kwaliteit behouden blijft, terwijl schaalvergroting deze vernietigt.',
       ],
     },
     {
       heading: 'Bestanden voorbereiden voor overdracht',
       paragraphs: [
-        'Bij het doorgeven van QR-kunstwerk aan ontwerpers of drukverkopers, omvatten duidelijke specificaties: de beoogde fysieke grootte, minimale eisen aan de rustige zone, en eventuele kleurruimte overwegingen. Voor kritische toepassingen kunt u zowel een SVG-master als een PNG-back-up met een hoge resolutie leveren, die duidelijk is voorzien van de beoogde toepassingen. Inclusief uw ANQR configuratie link zodat de code kan worden geregenereerd indien nodig.',
-        'Anticipeer algemene fouten in het overdrachtsproces. Geef duidelijk aan dat de QR niet moet worden geschaald, gedraaid, scheefgetrokken of effecten mag hebben. Specificeer dat de stille zone duidelijk moet blijven - geen gewasmerken, registratiemerken of ontwerpelementen storen. Indien de QR op een gekleurde of fotografische achtergrond wordt geplaatst, moet een versie met een ondoorzichtige steunvorm worden verstrekt om voldoende contrast te garanderen.',
+        'Wanneer u QR-illustraties doorgeeft aan ontwerpers of drukwerkleveranciers, geef dan duidelijke specificaties op: de beoogde fysieke grootte, minimale vereisten voor stille zones en eventuele overwegingen met betrekking tot de kleurruimte. Zorg voor kritieke toepassingen voor zowel een SVG-master als een PNG-back-up met hoge resolutie, duidelijk gelabeld met het beoogde gebruik. Voeg uw ANQR-configuratielink toe, zodat de code indien nodig opnieuw kan worden gegenereerd.',
+        'Anticipeer op veelvoorkomende fouten in het overdrachtsproces. Geef expliciet aan dat de QR niet mag worden geschaald, geroteerd, scheefgetrokken of dat er effecten op mogen worden toegepast. Specificeer dat de stille zone vrij moet blijven - er mogen geen snijtekens, registratietekens of ontwerpelementen indringen. Als de QR op een gekleurde of fotografische achtergrond wordt geplaatst, zorg dan voor een versie met een ondoorzichtige achterkant om voldoende contrast te garanderen.',
       ],
       images: [
         {
           src: '/images/learn/print-ready-handoff.png',
           alt: 'Een bestandspakketdiagram met SVG master, PNG back-up, specificaties document en configuratie koppeling',
           caption:
-            'Professioneel QR-handoffpakket: alles wat een ontwerper of printverkoper nodig heeft voor nauwkeurige reproductie',
+            'Professioneel QR-overdrachtspakket: alles wat een ontwerper of drukwerkleverancier nodig heeft voor nauwkeurige reproductie',
         },
       ],
     },
@@ -269,7 +269,7 @@ export const learn: PageDefinition = {
       heading: 'Controleren van afdrukproeven',
       paragraphs: [
         'Nooit een afdruk goedkeuren zonder een fysiek bewijs te scannen. Vraag een bewijs afgedrukt op het werkelijke substraat met de werkelijke afwerking die zal worden gebruikt in de productie. Scan het bewijs onder lichtomstandigheden die vergelijkbaar zijn met waar het laatste stuk zal worden weergegeven. Test met meerdere apparaten, waaronder oudere smartphones die misschien worstelen met marginale kwaliteit.',
-        'Als het bewijs langzaam of inconsistent scant, onderzoek het dan voordat het wordt goedgekeurd. Veel voorkomende problemen omvatten onvoldoende contrast op gekleurde substraten, inbreuken in de rustige zone van trimmen, inkt spread verzachtende module randen, of lamineren het creëren van schittering. Elk van deze kan worden aangepakt voordat u zich verbindt tot een volledige print run - maar alleen als u ze te vangen in het bewijs stadium.',
+        'Als het proefdrukproces langzaam of inconsistent wordt gescand, moet u dit onderzoeken voordat u het goedkeurt. Veelvoorkomende problemen zijn onder meer onvoldoende contrast op gekleurde substraten, schendingen van stille zones door bijsnijden, inktverspreiding die de randen van de module verzacht, of laminering die verblinding veroorzaakt. Al deze problemen kunnen worden aangepakt voordat u tot een volledige oplage overgaat, maar alleen als u ze in de proeffase ontdekt.',
       ],
       images: [
         {
@@ -298,7 +298,7 @@ export const learn: PageDefinition = {
       heading: 'Geanimeerde QR-codes aanmaken',
       paragraphs: [
         'Geanimeerde QR-codes combineren de functionaliteit van standaard QR-codes met opvallende bewegingen die de inzetcijfers drastisch verhogen. In digitale bewegwijzering, sociale media en interactieve displays transformeert animatie een statisch nut in een meeslepend visueel element dat het oog trekt en interactie uitnodigt. Deze gids behandelt de principes, technieken en praktische beperkingen van het creëren van geanimeerde QR codes die betrouwbaar scannen terwijl het leveren van visuele impact.',
-        'De fundamentele uitdaging van geanimeerde QR codes is het balanceren van visuele interesse tegen scan betrouwbaarheid. Elk frame moet individueel te scannen zijn - een scanner kan de code op elk punt in de animatiecyclus vastleggen. Deze beperking vormt elke ontwerpbeslissing: welke elementen kunnen bewegen, hoeveel ze kunnen veranderen en wat stabiel moet blijven gedurende de animatie.',
+        'De fundamentele uitdaging van geanimeerde QR-codes is het balanceren van visuele interesse en scanbetrouwbaarheid. Elk frame moet afzonderlijk kunnen worden gescand; een scanner kan de code op elk moment in de animatiecyclus vastleggen. Deze beperking bepaalt elke ontwerpbeslissing: welke elementen kunnen bewegen, hoeveel ze kunnen veranderen en wat tijdens de animatie stabiel moet blijven.',
       ],
       images: [
         {
@@ -312,7 +312,7 @@ export const learn: PageDefinition = {
     {
       heading: 'Hoe Animatie invloed heeft op de uitstraling',
       paragraphs: [
-        'QR scanners werken door het vastleggen van een enkel frame en het analyseren van het patroon van licht en donker modules. Om een geanimeerde code te laten werken, moet elk frame het volledige, geldige QR patroon bevatten. Dit sluit animaties uit die de codestructuur veranderen, modules oplossen of het contrastpatroon aanzienlijk veranderen. De gegevensdragers - het schijnbaar willekeurige patroon in het centrum - moeten visueel stabiel blijven.',
+        'QR-scanners werken door een enkel frame vast te leggen en het patroon van lichte en donkere modules te analyseren. Om een ​​geanimeerde code te laten werken, moet elk frame het volledige, geldige QR-patroon bevatten. Dit sluit animaties uit die de codestructuur veranderen, modules oplossen of het contrastpatroon aanzienlijk veranderen. De gegevensdragende modules – het schijnbaar willekeurige patroon in het midden – moeten overal visueel stabiel blijven.',
         'Veilige animatiebenaderingen wijzigen elementen die geen gegevens bevatten: achtergronden, kleuren, decoratieve frames en overlay elementen. De structurele componenten - zoekpatronen (de grote hoekvierkanten), timingpatronen (de afwisselende lijnen) en uitlijningspatronen (kleinere vierkanten in grotere codes) - moeten hun posities en verhoudingen behouden. Werken binnen deze beperkingen zorgt nog steeds voor verrassend dynamische en boeiende animaties.',
       ],
     },
@@ -320,7 +320,7 @@ export const learn: PageDefinition = {
       heading: 'Animatietechnieken Dat werk',
       paragraphs: [
         'Kleur Fietsen animeert de voorgrond- en achtergrondkleuren door een palet met behoud van voldoende contrast bij elke stap. Dit zorgt voor een levendig, aandacht grijpend effect met een minimaal scanrisico - zolang contrast nooit onder leesbaar niveau daalt. De presets van de kleurcyclus van ANQR zijn ontworpen om de scannabiliteit gedurende de hele cyclus te behouden.',
-        'Geanimeerde overlays plaatsen bewegende beelden achter een semi-transparant QR patroon. De code blijft stabiel terwijl de achtergrond animeert - misschien een looping video, geanimeerde merkelementen, of abstracte motion graphics. Deze techniek vereist zorgvuldige intensiteitsmanagement om te voorkomen dat de achtergrond het QR patroon overweldigen, maar creëert de meest visueel opvallende resultaten.',
+        'Geanimeerde overlays plaatsen bewegende beelden achter een semi-transparant QR-patroon. De code blijft stabiel terwijl de achtergrond animeert - misschien een looping-video, geanimeerde merkelementen of abstracte bewegende beelden. Deze techniek vereist zorgvuldig intensiteitsbeheer om te voorkomen dat de achtergrond het QR-patroon overheerst, maar levert de meest visueel opvallende resultaten op.',
       ],
       images: [
         {
@@ -341,8 +341,8 @@ export const learn: PageDefinition = {
     {
       heading: 'Geanimeerde overlays aanmaken',
       paragraphs: [
-        "Bij het gebruik van geanimeerde afbeeldingen (GIF's, geanimeerde WebP's, of video) als overlays haalt ANQR frames uit en combineert ze met uw QR-code. De overlay intensiteit instelling bepaalt hoeveel van de animatie toont door - lagere waarden prioriteit scannability terwijl hogere waarden voorkeur visuele impact. Test uw gekozen intensiteit over meerdere frames om consistente scannabiliteit te garanderen.",
-        'De materiaalkwaliteit van de bron heeft een significant effect op de resultaten. Gebruik overlays met duidelijke onderwerpen en goed contrast. Vermijd bronanimaties met snel knipperen of extreme helderheidsveranderingen die af en toe lage contrastframes kunnen creëren. Een voorbeeld van de volledige animatiecyclus voordat u exporteert om eventuele problematische frames te vangen die niet kunnen scannen.',
+        "Wanneer u geanimeerde afbeeldingen (GIF's, geanimeerde WebP's of video) als overlays gebruikt, extraheert ANQR frames en voegt deze samen met uw QR-code. De instelling voor de overlay-intensiteit bepaalt hoeveel van de animatie zichtbaar is: lagere waarden geven prioriteit aan scanbaarheid, terwijl hogere waarden de visuele impact bevorderen. Test de door u gekozen intensiteit over meerdere frames om consistente scanbaarheid te garanderen.",
+        'De kwaliteit van het bronmateriaal heeft een aanzienlijke invloed op de resultaten. Gebruik overlays met duidelijke onderwerpen en goed contrast. Vermijd bronanimaties met snel knipperen of extreme helderheidsveranderingen die af en toe frames met laag contrast kunnen veroorzaken. Bekijk een voorbeeld van de volledige animatiecyclus voordat u deze exporteert om eventuele problematische frames op te sporen die mogelijk niet kunnen worden gescand.',
       ],
       images: [
         {
@@ -356,15 +356,15 @@ export const learn: PageDefinition = {
     {
       heading: 'Uitvoer- en leveringsoverwegingen',
       paragraphs: [
-        "GIF blijft de meest ondersteunde geanimeerde formaat, automatisch afspelen in de meeste contexten zonder ondersteuning van de videospeler. GIF's 256-kleurenpalet beperkt echter de kleurtrouw. Voor kleurkritische animaties, overwegen geanimeerde WebP waar ondersteund, of terugvallen op video-formaten voor de hoogste kwaliteit. De GIF-export van ANQR omvat ditheringopties om de kwaliteit binnen paletbeperkingen te maximaliseren.",
-        'Bestandsgrootte is belangrijk voor levering. Digitale bewegwijzeringssystemen, e-mailclients en sociale platforms leggen vaak groottelimieten op. Als uw animatie deze grenzen overschrijdt, vermindert u het aantal frames, afmetingen of kleurdiepte. Soms bereikt het splitsen van een complexe animatie in een kortere lus betere resultaten dan agressieve compressie die elk frame degradeert.',
+        'GIF blijft het meest ondersteunde geanimeerde formaat en wordt in de meeste contexten automatisch afgespeeld zonder ondersteuning van een videospeler. Het 256-kleurenpalet van GIF beperkt echter de kleurgetrouwheid. Voor kleurkritische animaties kunt u geanimeerde WebP overwegen waar dit wordt ondersteund, of terugvallen op videoformaten voor de hoogste kwaliteit. De GIF-export van ANQR omvat dithering-opties om de kwaliteit binnen paletbeperkingen te maximaliseren.',
+        'File size matters for delivery. Narrowcastingsystemen, e-mailclients en sociale platforms leggen vaak groottelimieten op. Als uw animatie deze limieten overschrijdt, verkleint u het aantal frames, de afmetingen of de kleurdiepte. Soms levert het opsplitsen van een complexe animatie in een kortere lus betere resultaten op dan agressieve compressie die elk frame verslechtert.',
       ],
     },
     {
       heading: 'Geanimeerde QR-codes testen',
       paragraphs: [
-        'Het testen van geanimeerde codes vereist scannen op meerdere punten in de animatiecyclus. Niet één keer scannen en succes aannemen - herhaaldelijk scannen, op verschillende momenten, om te controleren of elk frame leesbaar is. Bijzondere aandacht besteden aan frames bij kleurcyclus extremen of overlay intensiteit pieken waar contrast het laagst kan zijn.',
-        'Testen op de werkelijke display hardware waar mogelijk. Monitor kleurkalibratie, kijkhoek en omgevingsverlichting alle invloed op hoe de animatie verschijnt en scant. Een heldere animatie die perfect scant op uw monitor kan uitspoelen op een buitenscherm of onleesbaar worden in schuine kijkhoeken.',
+        'Voor het testen van geanimeerde codes is scannen op meerdere punten in de animatiecyclus vereist. Scan niet slechts één keer en ga uit van succes; scan herhaaldelijk, op verschillende momenten, om te verifiëren dat elk frame leesbaar is. Besteed bijzondere aandacht aan frames met extreme kleurcycli of pieken in de overlay-intensiteit, waar het contrast het laagst kan zijn.',
+        'Test waar mogelijk op de daadwerkelijke weergavehardware. Monitorkleurkalibratie, kijkhoek en omgevingslicht hebben allemaal invloed op hoe de animatie verschijnt en scant. Een heldere animatie die perfect op uw monitor wordt gescand, kan op een buitenscherm wegvallen of onleesbaar worden bij schuine kijkhoeken.',
       ],
       images: [
         {
@@ -392,8 +392,8 @@ export const learn: PageDefinition = {
     {
       heading: 'Veiligheid en naleving van QR Beste praktijken',
       paragraphs: [
-        'Een prachtig ontworpen QR-code die niet scant is erger dan nutteloos - het frustreert klanten, schaadt merkperceptie, en verspilt elke bron geïnvesteerd in de creatie en distributie. Deze handleiding behandelt de technische en praktische factoren die bepalen of een QR-code betrouwbaar zal scannen, en hoe de veiligheidskenmerken van ANQR kunnen worden gebruikt om potentiële problemen op te vangen voordat ze de productie bereiken.',
-        'QR code betrouwbaarheid is niet binair. Een code kan perfect scannen op vlaggenschip telefoons, maar falen op budget apparaten. Het kan werken in ideale verlichting, maar worstelen in dim restaurants of helder zonlicht. Het begrijpen van de factoren die van invloed zijn scannability helpt u om geïnformeerde tradeoffs tussen visuele styling en betrouwbaarheid in de echte wereld.',
+        'Een prachtig ontworpen QR-code die niet kan worden gescand, is erger dan nutteloos: het frustreert klanten, schaadt de merkperceptie en verspilt alle middelen die zijn geïnvesteerd in de creatie en distributie ervan. Deze gids behandelt de technische en praktische factoren die bepalen of een QR-code betrouwbaar kan worden gescand, en hoe u de veiligheidsfuncties van ANQR kunt gebruiken om potentiële problemen op te sporen voordat deze in productie gaan.',
+        'De betrouwbaarheid van QR-codes is niet binair. Een code kan perfect scannen op vlaggenschiptelefoons, maar mislukt op budgetapparaten. Het werkt misschien bij ideale verlichting, maar heeft moeite in schemerige restaurants of fel zonlicht. Als u de factoren begrijpt die van invloed zijn op de scanbaarheid, kunt u weloverwogen afwegingen maken tussen visuele stijl en betrouwbaarheid in de echte wereld.',
       ],
       images: [
         {
@@ -407,15 +407,15 @@ export const learn: PageDefinition = {
     {
       heading: 'Inzicht in foutcorrectieniveaus',
       paragraphs: [
-        'QR codes omvatten ingebouwde redundantie waarmee ze kunnen worden gelezen, zelfs wanneer gedeeltelijk beschadigd of verduisterd. Het foutcorrectieniveau - L (7%), M (15%), Q (25%) of H (30%) - bepaalt hoeveel van de code kan ontbreken terwijl nog steeds correct wordt gedecodeerd. Hogere foutcorrectie creëert grotere codes, maar biedt een veiligheidsmarge voor overlays, druk imperfecties en milieuschade.',
-        'Voor codes met afbeeldingsoverlays, foutcorrectieniveau H is essentieel - de overlay verduistert een deel van de code, en je hebt die 30% redundantie nodig om de betrouwbaarheid te behouden. Voor schone, ongestileerde codes in gecontroleerde omgevingen volstaat level M vaak. Niveau L dient te worden gereserveerd voor situaties waar de codegrootte kritisch beperkt is en u kunt ongerepte omstandigheden garanderen.',
+        'QR-codes bevatten ingebouwde redundantie waardoor ze kunnen worden gelezen, zelfs als ze gedeeltelijk beschadigd of onzichtbaar zijn. Het foutcorrectieniveau - L (7%), M (15%), Q (25%) of H (30%) - bepaalt hoeveel van de code mag ontbreken terwijl de code nog steeds correct wordt gedecodeerd. Een hogere foutcorrectie zorgt voor grotere codes, maar biedt een veiligheidsmarge voor overlays, drukonvolkomenheden en milieuschade.',
+        'Voor codes met beeldoverlays is foutcorrectieniveau H essentieel: de overlay verbergt fysiek een deel van de code, en je hebt die 30% redundantie nodig om de betrouwbaarheid te behouden. Voor schone, ongestylede codes in gecontroleerde omgevingen is niveau M vaak voldoende. Niveau L moet worden gereserveerd voor situaties waarin de codegrootte kritisch beperkt is en u onberispelijke omstandigheden kunt garanderen.',
       ],
     },
     {
       heading: 'De kritieke stille zone',
       paragraphs: [
-        'De rustige zone is de lege marge rond elke QR code. Scanners gebruiken deze grens om te bepalen waar de code begint en eindigt. De ISO-norm specificeert een minimum rustige zone van vier modules (vier keer de breedte van het kleinste vierkant in de code). Het schenden van deze ruimte - met ontwerpelementen, trimranden of aangrenzende inhoud - is een van de meest voorkomende oorzaken van scanfouten.',
-        'De handhaving van de stille zone van ANQR helpt deze kritische afstand te behouden, maar u moet er ook voor zorgen dat het bewaard blijft in uw definitieve ontwerpen. Bij het afleveren van QR-artwork, expliciet de eisen voor de stille zone specificeren. Controleer bij het plaatsen van codes in lay-outs of er geen elementen in deze ruimte binnendringen. Een paar millimeter heldere ruimte kan het verschil betekenen tussen betrouwbaar scannen en gefrustreerde klanten.',
+        'De stille zone is de lege marge rond elke QR-code. Scanners gebruiken deze grens om te identificeren waar de code begint en eindigt. De ISO-norm specificeert een minimale stille zone van vier modules (vier keer de breedte van het kleinste vierkant in de code). Het schenden van deze ruimte (door ontwerpelementen, bijsnijdranden of aangrenzende inhoud) is een van de meest voorkomende oorzaken van scanfouten.',
+        'De handhaving van de stille zones van ANQR helpt deze kritische afstand te behouden, maar u moet er ook voor zorgen dat deze in uw definitieve ontwerpen behouden blijft. Geef bij het uitreiken van QR-illustraties expliciet de vereisten voor de stille zone op. Controleer bij het plaatsen van codes in lay-outs of er geen elementen in deze ruimte binnendringen. Een paar millimeter vrije ruimte kan het verschil betekenen tussen betrouwbaar scannen en gefrustreerde klanten.',
       ],
       images: [
         {
@@ -428,14 +428,14 @@ export const learn: PageDefinition = {
     {
       heading: 'Contrast en kleurveiligheid',
       paragraphs: [
-        'QR-scanners detecteren het patroon van lichte en donkere modules. Elke styling die dit contrast vermindert - lichte voorgrond, donkere achtergronden, gradiënteffecten of laag-opacity overlays - maakt de code moeilijker te lezen. ANQR berekent contrastverhoudingen en waarschuwt wanneer uw kleurkeuzes gevaarlijke niveaus benaderen, maar de uiteindelijke scheidsrechter is altijd real-world testing.',
-        'Kleurperceptie varieert per lichtomstandigheden. Een kleurcombinatie die hoog contrast op uw monitor lijkt, kan moeilijk te onderscheiden zijn onder warme gloeilampverlichting of koele fluorescerende buizen. Als uw code onder verschillende lichtomstandigheden zal worden ingezet, test dan onder meerdere lichtbronnen en beschouw meer conservatieve contrastverhoudingen als een veiligheidsmarge.',
+        'QR-scanners detecteren het patroon van lichte en donkere modules. Elke stijl die dit contrast verkleint (lichte voorgronden, donkere achtergronden, verloopeffecten of overlays met een lage dekking) maakt de code moeilijker leesbaar. ANQR berekent de contrastverhoudingen en waarschuwt wanneer uw kleurkeuze een gevaarlijk niveau nadert, maar de uiteindelijke scheidsrechter is altijd een praktijktest.',
+        'De kleurperceptie varieert afhankelijk van de lichtomstandigheden. Een kleurencombinatie die op uw monitor een hoog contrast lijkt, kan moeilijk te onderscheiden zijn bij warm gloeilamplicht of koele tl-buizen. Als uw code onder wisselende lichtomstandigheden wordt ingezet, test dan onder meerdere lichtbronnen en overweeg conservatievere contrastverhoudingen als veiligheidsmarge.',
       ],
     },
     {
       heading: 'Modulegrootte en weergaveafstand',
       paragraphs: [
-        'De fysieke grootte van individuele modules bepaalt de maximale afstand van waaruit een code kan worden gescand. Kleinere modules betekenen kleinere codes maar vereisen grotere scanafstanden. De algemene regel is dat elke module ten minste 0,5 mm moet zijn op de beoogde scanafstand, evenredig opschalen voor grotere afstanden. Een code op een reclamebord heeft veel grotere modules nodig dan een code op een visitekaartje.',
+        'De fysieke grootte van individuele modules bepaalt de maximale afstand waarop een code kan worden gescand. Kleinere modules betekenen kleinere codes, maar vereisen kleinere scanafstanden. De algemene regel is dat elke module minimaal 0,5 mm groot moet zijn op de beoogde scanafstand, en proportioneel moet worden opgeschaald voor grotere afstanden. Een code op een billboard heeft veel grotere modules nodig dan een code op een visitekaartje.',
         "Bij het berekenen van modulegrootte, rekening houden met het worst-case scenario: de klant met een oudere telefoon, in onvolmaakte verlichting, scannen op de maximale waarschijnlijke afstand. Ontwerp voor deze gebruiker, en iedereen zal een nog betere ervaring hebben. ANQR's grootte aanbevelingen factor in deze reële variabelen om passende afmetingen voor uw beoogde gebruik te suggereren.",
       ],
       images: [
@@ -450,15 +450,15 @@ export const learn: PageDefinition = {
     {
       heading: 'Gebruik van ANQR-veiligheidsmodus',
       paragraphs: [
-        "De veiligheidsmodus van ANQR geeft real-time feedback over scanbetrouwbaarheid. Het controleert contrast ratio's, rustige zone compliance, overlay intensiteit, en andere factoren die de scannability beïnvloeden. Wanneer een parameter riskante niveaus benadert, zie je waarschuwingen met specifieke richtlijnen over hoe om de betrouwbaarheid te verbeteren. Voor professionele implementaties waar falen duur is, houdt de veiligheidsmodus gedurende het hele ontwerpproces actief.",
-        'Veiligheidsmodus bevat ook een scan verificatie functie die probeert om uw gegenereerde code te decoderen en rapporten succes of mislukking. Hoewel deze in-app verificatie niet elke realiteit kan repliceren, worden er veel gemeenschappelijke problemen opgevangen voordat je investeert in printen of distributie. Beschouw succesvolle verificatie als een minimum staaf, geen garantie - real-world testen blijft essentieel.',
+        'De veiligheidsmodus van ANQR biedt realtime feedback over de betrouwbaarheid van de scan. Het bewaakt de contrastverhoudingen, de naleving van stille zones, de intensiteit van de overlay en andere factoren die de scanbaarheid beïnvloeden. Wanneer een parameter een riskant niveau nadert, ziet u waarschuwingen met specifieke richtlijnen over hoe u de betrouwbaarheid kunt verbeteren. Voor professionele implementaties waarbij fouten kostbaar zijn, kunt u de Veiligheidsmodus gedurende het hele ontwerpproces actief houden.',
+        'De Veiligheidsmodus bevat ook een scanverificatiefunctie die probeert de door u gegenereerde code te decoderen en succes of mislukking rapporteert. Hoewel deze in-app-verificatie niet elke situatie in de praktijk kan repliceren, worden veel veelvoorkomende problemen opgespoord voordat u investeert in afdrukken of distributie. Beschouw succesvolle verificatie als een minimumnorm en niet als een garantie. Testen in de praktijk blijft essentieel.',
       ],
     },
     {
       heading: 'Testprotocollen in de praktijk',
       paragraphs: [
         'Geen enkele hoeveelheid softwareverificatie vervangt fysieke tests. Print uw code op de gewenste grootte op representatief materiaal. Test het in de eigenlijke implementatieomgeving met lichtomstandigheden die overeenkomen met echt gebruik. Scannen met meerdere apparaten - niet alleen uw vlaggenschip telefoon, maar budget Android-apparaten, oudere iPhones, en alle specifieke apparaten die uw publiek vaak gebruikt.',
-        'Documenteer uw testen systematisch. Noteer welke apparaten werden getest, onder welke omstandigheden, met welke resultaten. Als u codes op schaal inzet, stelt u acceptatiecriteria vast: misschien 95% succespercentage in uw testpool of succesvolle scans binnen 2 seconden op alle geteste apparaten. Deze normen helpen om go/no-go beslissingen objectief te maken in plaats van te hopen op het beste.',
+        'Documenteer uw tests systematisch. Record which devices were tested, under what conditions, with what results. Als u codes op grote schaal implementeert, stelt u acceptatiecriteria op: misschien een succespercentage van 95% voor uw apparaattestpool, of succesvolle scans binnen 2 seconden op alle geteste apparaten. These standards help make go/no-go decisions objective rather than hoping for the best.',
       ],
       images: [
         {

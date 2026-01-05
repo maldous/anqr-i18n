@@ -60,7 +60,7 @@ export const contact: PageDefinition = {
     {
       heading: 'DMCA お問い合わせ',
       paragraphs: [
-        'DMCA通知を送信します: ${CONTACT_EMAIL}_',
+        'DMCA通知を送信します: email@anqr.link_',
         '対象となる行の「DMCA通知」を必ずご入力ください。 法令に基づき、有効な通知に応じます。 ANQR はユーザデバイス上でローカルに QR コードを生成し、ユーザ生成されたコンテンツをホストしないことに注意してください。',
       ],
     },

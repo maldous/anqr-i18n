@@ -87,7 +87,7 @@ export const terms: PageDefinition = {
     {
       heading: '争议解决',
       paragraphs: [
-        '因这些条款或您对 ANQR 的使用而产生的任何争议应首先联系 ${CONTACT_EMAIL} 通过非正式协商解决。',
+        '因这些条款或您对 ANQR 的使用而产生的任何争议应首先联系 email@anqr.link 通过非正式协商解决。',
         '如果非正式解决失败，争议应通过在澳大利亚维多利亚州进行有约束力的仲裁来解决，但任何一方均可就侵犯知识产权行为向法院寻求禁令救济。',
       ],
     },
@@ -134,7 +134,7 @@ export const terms: PageDefinition = {
     },
     {
       heading: '联系方式',
-      paragraphs: ['有关这些条款的问题可以发送至：${CONTACT_EMAIL}'],
+      paragraphs: ['有关这些条款的问题可以发送至：email@anqr.link'],
     },
   ],
 };

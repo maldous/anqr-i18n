@@ -136,7 +136,7 @@ export const terms: PageDefinition = {
     },
     {
       heading: 'Yhteystiedot',
-      paragraphs: ['Kysymyksiä näistä ehdoista voi lähettää osoitteeseen: ${CONTACT_EMAIL}'],
+      paragraphs: ['Kysymyksiä näistä ehdoista voi lähettää osoitteeseen: email@anqr.link'],
     },
   ],
 };

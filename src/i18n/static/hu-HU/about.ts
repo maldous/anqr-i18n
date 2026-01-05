@@ -1,5 +1,5 @@
 import type { PageDefinition } from '../types';
-import { CONTACT_EMAIL, LAST_UPDATED } from '../types';
+import { LAST_UPDATED } from '../types';
 
 export const about: PageDefinition = {
   title: 'Az ANQR-ről',
@@ -29,7 +29,7 @@ export const about: PageDefinition = {
         'Egyéni színek, modul stílusok, kereső minták, és add kép overlays.',
         'Export több formátumban: PNG, SVG, WebP, és animált GIF.',
         'Speciális vezérlések hibajavítási szinthez, QR verzióhoz, kódolási módhoz és maszkkiválasztáshoz.',
-        'Scan-safety guidance and live preview to help keep kód olvasható nyomtatásban és képernyőn.',
+        'Biztonsági szkennelési útmutatás és élő előnézet a kódok olvashatóságának megőrzéséhez nyomtatásban és képernyőn.',
         'Szerver-side API professzionális beágyazott teljes paraméter támogatás.',
         'Működik offline egyszer betöltött - ez egy statikus web app lehet futtatni bárhol.',
       ],
@@ -38,14 +38,14 @@ export const about: PageDefinition = {
       heading: 'Hogyan hat az ANQR',
       paragraphs: [
         'ANQR fut a böngészőben, és kódolja a bemenet egy szabványos QR mátrix Reed- Solomon hiba korrekció, majd adja meg a formátum, amit választ.',
-        'Alapértelmezés szerint a generáció helyi szinten történik a böngészőben. Professzionális használatra, akkor is használja a szerver- side API generálni QR kódok URL paraméterek - tökéletes beágyazására weboldalak, e-mailek, vagy automatizált munkafolyamatok.',
+        'Alapértelmezés szerint a generálás helyileg, a böngészőben történik. Professzionális használatra a szerveroldali API segítségével QR-kódokat is generálhat URL-paramétereken keresztül – ez tökéletes webhelyekbe, e-mailekbe vagy automatizált munkafolyamatokba való beágyazáshoz.',
         'Amikor hozzáadjuk az átfedéseket vagy animációkat, az ANQR egyensúlyozza a letapogatás megbízhatóságát, így az eredmény nem változik.',
         'Az ANQR a statikus kódokra összpontosít (az adatok a QR-en belül vannak). Ha dinamikus kódra van szüksége (szerkeszthető cél), kódolhatja saját URL-jét vagy rövid linket.',
       ],
     },
     {
       heading: 'Ki irányítja az ANQR-t?',
-      paragraphs: [`18${CONTACT_EMAIL}19`],
+      paragraphs: [`email@anqr.link`],
     },
     {
       heading: 'Reklám és hogyan maradunk szabadok',

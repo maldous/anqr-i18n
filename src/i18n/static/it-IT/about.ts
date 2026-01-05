@@ -1,5 +1,5 @@
 import type { PageDefinition } from '../types';
-import { CONTACT_EMAIL, LAST_UPDATED } from '../types';
+import { LAST_UPDATED } from '../types';
 
 export const about: PageDefinition = {
   title: 'Informazioni su ANQR',
@@ -45,7 +45,7 @@ export const about: PageDefinition = {
     },
     {
       heading: 'Chi gestisce ANQR?',
-      paragraphs: [`18${CONTACT_EMAIL}19`],
+      paragraphs: [`email@anqr.link`],
     },
     {
       heading: 'Pubblicità e come rimaniamo liberi',

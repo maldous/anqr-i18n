@@ -87,7 +87,7 @@ export const terms: PageDefinition = {
     {
       heading: 'Risoluzione delle controversie',
       paragraphs: [
-        "Qualsiasi controversia derivante da questi Termini o l'utilizzo di ANQR deve essere prima tentata di essere risolta attraverso negoziati informali contattando ${CONTACT_EMAIL}.",
+        "Qualsiasi controversia derivante da questi Termini o l'utilizzo di ANQR deve essere prima tentata di essere risolta attraverso negoziati informali contattando email@anqr.link.",
         'Se la risoluzione informale fallisce, le controversie saranno risolte mediante arbitrato vincolante in Victoria, Australia, tranne che o parte può chiedere sollievo ingiunto in tribunale per violazioni di proprietà intellettuale.',
       ],
     },

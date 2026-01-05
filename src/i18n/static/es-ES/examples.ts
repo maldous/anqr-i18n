@@ -10,7 +10,7 @@ import { LAST_UPDATED } from '../types';
 export const examples: PageDefinition = {
   title: 'Ejemplos de ANQR',
   description:
-    'Cinco ejemplos de estilo de producción en el mundo real que muestran dónde los códigos QR crean un valor mensurable: elevando un código de contador minorista legado, pagos de venta al por menor marca y acciones "scan-to", escalada de folletos a vallas publicitarias, QR animado para señalización digital, y colaboración interlingüe usando enlaces de Anchor compartidos. Cada ejemplo incluye imágenes, limitaciones prácticas y un remix enlace de vuelta al generador.',
+    'Cinco ejemplos de estilo de producción del mundo real que muestran dónde los códigos QR crean valor medible: mejora de un código de mostrador minorista heredado, pagos minoristas de marca y acciones de "escaneo", escala de impresión desde folletos hasta vallas publicitarias, QR animado para señalización digital y colaboración multilingüe mediante enlaces Anchor que se pueden compartir. Cada ejemplo incluye imágenes, restricciones prácticas y un enlace de remezcla al generador.',
   lastUpdated: LAST_UPDATED,
 
   primaryLinks: [
@@ -324,7 +324,7 @@ export const examples: PageDefinition = {
       heading: 'Integración con Contenido de Signage',
       paragraphs: [
         'El QR animado fue colocado en una "zona estable" dedicada del diseño de la pantalla - un área que permaneció constante mientras el contenido promocional giraba en el área de visualización principal. Esta separación fue crucial: el QR necesitaba estabilidad visual para escanear incluso a la vez que atraer la atención a través de su sutil animación.',
-        'Se agregó una llamada a la acción clara junto al QR: "Skip the queue - escaneo para entrar." El texto permaneció estático mientras el QR pulsaba, creando una jerarquía visual que atrajo el ojo a la oportunidad de escanear sin abrumar el contenido promocional.',
+        'Se agregó una llamada a la acción clara junto al QR: "Salta la cola - escanea para registrarte". El texto permaneció estático mientras el QR pulsaba, creando una jerarquía visual que atraía la atención hacia la oportunidad de escaneo sin abrumar el contenido promocional.',
       ],
       images: [
         {

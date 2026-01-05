@@ -50,7 +50,7 @@ export const learn: PageDefinition = {
       heading: 'Efectuarea unui audit al codurilor QR',
       paragraphs: [
         'Începeți proiectul de actualizare prin crearea unui inventar cuprinzător al fiecărui cod QR implementat în prezent în cadrul companiei dvs. Documentați locația fizică, destinația codificată, starea actuală a materialului tipărit și mediul tipic de scanare, inclusiv condițiile de iluminare și unghiurile de vizualizare. Testați fiecare cod cu mai multe dispozitive - smartphone-urile mai vechi și dispozitivele economice dezvăluie adesea probleme de fiabilitate pe care telefoanele premium le maschează.',
-        'Acordați o atenție deosebită codurilor din locațiile cu miză mare: puncte de plată, zone de check-in și afișaje promoționale unde eșecul scanării are impact direct asupra veniturilor sau experienței clienților. Acestea ar trebui prioritizate pentru actualizarea imediată. De asemenea, rețineți codurile care apar în fotografii sau conținut video, deoarece acestea vor necesita coordonare cu echipa dvs. de marketing pentru a actualiza elementele vizuale.',
+        'Acordați o atenție deosebită codurilor din locațiile cu miză mare: punctele de plată, zonele de check-in și afișajele promoționale în care eșecul scanării afectează direct veniturile sau experiența clienților. Acestea ar trebui să aibă prioritate pentru actualizarea imediată. Rețineți, de asemenea, codurile care apar în conținutul foto sau video, deoarece acestea vor necesita coordonarea cu echipa dvs. de marketing pentru a actualiza elementele vizuale.',
       ],
       images: [
         {
@@ -87,7 +87,7 @@ export const learn: PageDefinition = {
       heading: 'Protocol de testare și validare',
       paragraphs: [
         'Nu implementați niciodată coduri QR actualizate fără teste riguroase. Imprimați o dovadă fizică la dimensiunea exactă și pe același material ca implementarea finală. Testați în locația reală în care va exista codul, la diferite ore ale zilei, pentru a ține cont de variațiile de iluminare. Utilizați cel puțin trei dispozitive diferite: un telefon emblematic actual, un dispozitiv mid-range și un smartphone mai vechi sau cu buget redus.',
-        'Înregistrați timpii de scanare și ratele de succes pentru fiecare test. Un cod bine optimizat ar trebui să se scaneze în 1-2 secunde pe orice dispozitiv relativ modern. Dacă observați întârzieri sau eșecuri constante, reduceți intensitatea stilizării - eliminați sau micșorați suprapunerile, măriți dimensiunea zonei silențioase sau treceți la un nivel mai ridicat de corecție a erorilor. Fiabilitatea are întotdeauna prioritate față de sofisticarea vizuală.',
+        'Înregistrați timpii de scanare și ratele de succes pentru fiecare test. Un cod bine optimizat ar trebui scanat în 1-2 secunde pe orice dispozitiv destul de modern. Dacă observați întârzieri sau eșecuri consecvente, reduceți intensitatea stilului - eliminați sau micșorați suprapunerile, măriți dimensiunea zonei de liniște sau comutați la un nivel mai ridicat de corecție a erorilor. Fiabilitatea are întotdeauna prioritate față de sofisticarea vizuală.',
       ],
     },
     {
@@ -174,7 +174,7 @@ export const learn: PageDefinition = {
     {
       heading: 'Considerații privind materialele și imprimarea',
       paragraphs: [
-        'Materialul fizic al afișajului are un impact semnificativ asupra fiabilității scanării. Laminarea lucioasă reflectă luminile de plafon direct în camera clientului. Materialele texturate pot distorsiona marginile modulelor. Imprimarea ieftină poate estompa detaliile fine. Pentru codurile QR de plată, investiți în calitate: utilizați laminare mată sau satinată, asigurați o imprimare de înaltă rezoluție și înlocuiți afișajele înainte ca acestea să prezinte uzură. Un cod de plată zgâriat sau decolorat vă costă tranzacțiile.',
+        'Materialul de afișare fizică are un impact semnificativ asupra fiabilității scanării. Laminarea lucioasă reflectă luminile de deasupra capului direct în camera clientului. Materialele texturate pot distorsiona marginile modulului. Imprimarea ieftină poate estompa detaliile fine. Pentru codurile QR de plată, investiți în calitate: utilizați laminare mată sau satinată, asigurați imprimare de înaltă rezoluție și înlocuiți afișajele înainte ca acestea să se arate uzate. Un cod de plată zgâriat sau decolorat vă costă tranzacții.',
         'Luați în considerare durabilitatea și înlocuibilitatea afișajului. Afișajele de tejghea sunt atinse, mutate, stropite și ocazional răsturnate. Proiectați-vă sistemul de afișare astfel încât inserția QR să poată fi înlocuită cu ușurință fără a înlocui întregul suport. Păstrați la îndemână imprimeuri de rezervă, generate de linkul de configurare blocat, astfel încât codurile uzate să poată fi schimbate imediat.',
       ],
     },
@@ -262,7 +262,7 @@ export const learn: PageDefinition = {
           src: '/images/learn/print-ready-handoff.png',
           alt: 'O diagramă a pachetului de fișiere care prezintă fișierul master SVG, copia de rezervă PNG, documentul cu specificații și linkul de configurare',
           caption:
-            'Pachet profesional de predare a codurilor QR: tot ce are nevoie un designer sau un furnizor de materiale tipărite pentru o reproducere precisă',
+            'Pachet de transfer QR profesional: tot ce are nevoie un designer sau un furnizor de tipărire pentru o reproducere exactă',
         },
       ],
     },
@@ -343,7 +343,7 @@ export const learn: PageDefinition = {
       heading: 'Crearea de suprapuneri animate',
       paragraphs: [
         'Atunci când utilizați imagini animate (GIF-uri, fișiere WebP animate sau videoclipuri) ca suprapuneri, ANQR extrage cadre și le combină cu codul QR. Setarea intensității suprapunerii controlează cât de mult din animație este vizibilă - valorile mai mici prioritizează scanabilitatea, în timp ce valorile mai mari favorizează impactul vizual. Testați intensitatea aleasă pe mai multe cadre pentru a asigura o scanabilitate consistentă.',
-        'Calitatea materialului sursă are un impact semnificativ asupra rezultatelor. Folosiți suprapuneri cu subiecte clare și contrast bun. Evitați animațiile sursă cu clipiri rapide sau schimbări extreme de luminozitate, care ar putea crea cadre ocazionale cu contrast scăzut. Previzualizați întregul ciclu de animație înainte de exportare pentru a identifica orice cadre problematice care ar putea eșua la scanare.',
+        'Calitatea materialului sursă are un impact semnificativ asupra rezultatelor. Utilizați suprapuneri cu subiecte clare și contrast bun. Evitați animațiile sursă cu clipire rapidă sau modificări extreme de luminozitate care ar putea crea ocazional cadre cu contrast redus. Previzualizează întregul ciclu de animație înainte de a exporta pentru a prinde orice cadre problematice care ar putea eșua scanarea.',
       ],
       images: [
         {
@@ -437,7 +437,7 @@ export const learn: PageDefinition = {
     {
       heading: 'Dimensiunea modulului și distanța de vizualizare',
       paragraphs: [
-        'Dimensiunea fizică a modulelor individuale determină distanța maximă de la care poate fi scanat un cod." Modulele mai mici înseamnă coduri mai mici, dar necesită distanțe de scanare mai mici. Regula generală este că fiecare modul ar trebui să aibă cel puțin 0,5 mm la distanța de scanare dorită, scalându-se proporțional pentru distanțe mai mari. Un cod de pe un panou publicitar are nevoie de module mult mai mari decât un cod de pe o carte de vizită.',
+        'Dimensiunea fizică a modulelor individuale determină distanța maximă de la care poate fi scanat un cod. Modulele mai mici înseamnă coduri mai mici, dar necesită distanțe de scanare mai apropiate. Regula generală este că fiecare modul ar trebui să aibă cel puțin 0,5 mm la distanța de scanare prevăzută, mărindu-se proporțional pentru distanțe mai mari. Un cod de pe un panou publicitar are nevoie de module mult mai mari decât un cod de pe o carte de vizită.',
         'Atunci când calculați dimensiunea modulului, luați în considerare cel mai rău scenariu: clientul cu un telefon mai vechi, în condiții de iluminare imperfectă, scanând la distanța maximă probabilă. Proiectați pentru acest utilizator și toți ceilalți vor avea o experiență și mai bună. Recomandările de dimensiune ANQR iau în considerare aceste variabile din lumea reală pentru a sugera dimensiuni adecvate pentru utilizarea dorită.',
       ],
       images: [

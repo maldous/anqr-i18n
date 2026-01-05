@@ -1,5 +1,5 @@
 import type { PageDefinition } from '../types';
-import { CONTACT_EMAIL, LAST_UPDATED } from '../types';
+import { LAST_UPDATED } from '../types';
 
 export const about: PageDefinition = {
   title: 'Tentang ANQR',
@@ -45,13 +45,13 @@ export const about: PageDefinition = {
     },
     {
       heading: 'Siapa yang mengoperasikan ANQR?',
-      paragraphs: [`18${CONTACT_EMAIL}19`],
+      paragraphs: [`email@anqr.link`],
     },
     {
       heading: 'Iklan dan bagaimana kita tetap bebas',
       paragraphs: [
-        'ANQR bebas untuk digunakan dan didukung oleh iklan. We may show ads via Google Adsense and / or other iklan partner.',
-        'Provider Ad dapat menggunakan cookie atau teknologi serupa untuk iklan personalise berdasarkan kepentingan Anda dan aktivitas browsing. You can manage ad preference in your device settings and through Google ad settings, and learn more in our Privacy Policy.',
+        'ANQR gratis untuk digunakan dan didukung oleh iklan. Kami mungkin menampilkan iklan melalui Google AdSense dan/atau mitra periklanan lainnya.',
+        'Penyedia iklan dapat menggunakan cookie atau teknologi serupa untuk mempersonalisasi iklan berdasarkan minat dan aktivitas penjelajahan Anda. Anda dapat mengelola preferensi iklan di pengaturan perangkat Anda dan melalui pengaturan iklan Google, dan mempelajari lebih lanjut di Kebijakan Privasi kami.',
         'Kami tidak menjual isi yang Anda masukkan ke dalam kode QR. Iklan membantu menutupi biaya berjalan dan meningkatkan proyek.',
       ],
     },

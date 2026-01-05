@@ -17,7 +17,7 @@ export const guide: PageDefinition = {
       heading: 'Začínáme',
       paragraphs: [
         'ANQR je QR kód generátor s klient- první přístup. Ve výchozím nastavení jsou QR kódy generovány lokálně ve vašem prohlížeči - není potřeba žádný účet a vaše data zůstávají soukromá. Pro profesionální vkládání, můžete také použít serverboard API.',
-        'Rozhraní má tři úrovně rozhraní: základní, pokročilé a profesionální. Vyberte si úroveň pomocí karet v záhlaví. Každá úroveň odemyká další funkce a zároveň udržuje rozhraní zaměřené na to, co potřebujete.',
+        'Rozhraní má tři úrovně rozhraní: Basic, Advanced a Professional. Vyberte svou úroveň pomocí karet v záhlaví. Každá úroveň odemyká další funkce a zároveň udržuje rozhraní zaměřené na to, co potřebujete.',
       ],
       bullets: [
         'Základní: Jednoduchá tvorba QR kódu s prostým textovým / URL obsahem a překryvem obrazu.',
@@ -279,7 +279,7 @@ export const guide: PageDefinition = {
       bullets: [
         'Croph: Povolit cropping vybrat čtvereční oblast vašeho obrazu.',
         'Halftone: Classic print- style tečka vzor založený na jasu obrazu.',
-        'Dithered: Error- difusion dithering for podrobnou reprodukci.',
+        'Dithered: Chybové difúzní dithering pro detailní reprodukci.',
       ],
       links: [
         {
@@ -447,7 +447,7 @@ export const guide: PageDefinition = {
         'Gap Mode: Žádný, Inset, Stroke, nebo negativní mezera styl.',
         'Rohový poloměr: Procento zaoblených rohů pro moduly.',
         'Gradient: Žádný, lineární, radiální nebo kuželový gradient na modulech.',
-        'Eye Outer / Inner Style: Independent styling for finder patters.',
+        'Styl vnějšího/vnitřního oka: Nezávislý styl prstenů se vzorem hledáčku.',
         'Rotace tečky: Otočit moduly diamant / tečka.',
         'Oční měřítko: Nastavení velikosti pro nálezné vzory.',
         'Styl rámu: Přidat dekorativní rámy (kulatý rám, nálepka, štítek).',
@@ -654,7 +654,7 @@ export const guide: PageDefinition = {
       heading: 'Indické platební standardy',
       bullets: [
         'UPI (Indie): Unified Payments Interface following NPCI Deep Linking Specification. Podporuje VPA (Virtual Payment Address), jméno příjemce, částka v INR, transakční list, referenční ID, kód obchodní kategorie a transakční režim.',
-        'BharatQR (India): Unified QR standard supporting both UPI and card-based payments. Kombinuje UPI VPA s kartou PAN pro maximální kompatibilitu. Zahrnuje obchodní název, město, MCC, údaje GST a faktura / referenční čísla.',
+        'BharatQR (Indie): Jednotný QR standard podporující UPI i platby kartou. Kombinuje UPI VPA s kartou PAN pro maximální kompatibilitu. Zahrnuje jméno obchodníka, město, MCC, podrobnosti GST a fakturační/referenční čísla.',
       ],
       links: [
         {
@@ -672,7 +672,7 @@ export const guide: PageDefinition = {
         'QRIS (Indonésie): Kód rychlé reakce indonéský standard. Národní platební standard založený na EMV podporující obchodní ID, NMID (National Merchant ID), klasifikace obchodních kritérií a komfortní poplatky (pevné nebo procentní).',
         'DuitNow (Malajsie): Malajský okamžitý platební systém. Podporuje několik typů proxy, včetně NRIC, mobilní, pas, armádní průkaz a registrační čísla.',
         'VietQR (Vietnam): Vietnamský standard mezibankovního převodu. Vyžaduje bankovní BIN (identifikace NAPAS) a číslo účtu. Podporuje několik servisních kódů pro různé typy přenosu (QRPUSH, QRIBFTTA, QRIBFTTC).',
-        'QR Ph (Filipíny): Philipine QR platební standard pro InstaPay a PESOnet. Používá čísla účtů s identifikací obchodníka pro transakce P2M (person- to- commercial).',
+        'QR Ph (Filipíny): Filipínský QR platební standard pro InstaPay a PESONet. Používá čísla účtů s identifikací obchodníka pro transakce P2M (person-to-merchant).',
       ],
       links: [
         {
@@ -716,7 +716,7 @@ export const guide: PageDefinition = {
       bullets: [
         'Bitcoin / Litecoin (BIP-21): Standardní šifrovací platební URI s adresou peněženky, volitelnou částkou a štítkem. Kompatibilní se všemi velkými Bitcoiny a Litecoin peněženky.',
         'Síť blesku (BOLT11): Platební faktury Lightning Network. Vložte BOLT11 kódovaný řetězec faktur pro okamžité platby Bitcoin s minimálními poplatky.',
-        'Ethereum (EIP-681): Ethereum transaction request URI supporting native ETH transfers and ERC-20 token transfers. Zahrnuje identifikační řetězec pro podporu více sítí (Mainnet, Polygon, BSC, Arbitráž, Optimismus, Avalanche), parametry plynu a smluvní funkce volání.',
+        'Ethereum (EIP-681): Identifikátory URI požadavku transakce Ethereum podporující nativní přenosy ETH a přenosy tokenů ERC-20. Zahrnuje ID řetězce pro podporu více sítí (Mainnet, Polygon, BSC, Arbitrum, Optimism, Avalanche), parametry plynu a volání funkcí smlouvy.',
       ],
       links: [
         {
@@ -730,7 +730,7 @@ export const guide: PageDefinition = {
       heading: 'Služby související s platebními odkazy',
       bullets: [
         'PayPal.Me: PayPal platební odkazy s uživatelským jménem a volitelnou předvyplněnou částkou. Příjemci mohou platit prostřednictvím PayPal zůstatku, karet nebo bankovních účtů.',
-        'Cash App: Cash App platební odkazy pomocí $cashtag s volitelnou částkou. Populární ve Spojených státech pro peer-to-peer platby.',
+        'Hotovostní aplikace: Hotovostní platební odkazy pomocí aplikace $cashtag s volitelnou částkou. Populární ve Spojených státech pro platby peer-to-peer.',
       ],
       links: [
         {

@@ -12,7 +12,7 @@ export const privacy: PageDefinition = {
       heading: 'Oversigt',
       paragraphs: [
         'ANQR er en QR kode generator med en klient- første tilgang. Vi kræver ikke, at du opretter en konto. Som standard genereres QR-koder lokalt i din browser - vi har ikke adgang til det indhold, du indkoder.',
-        'Til professionel brug, ANQR giver en serverside API, der genererer QR-koder fra URL-parametre. Når du bruger API, dit QR-indhold behandles på vores servere for at gøre billedet, men er ikke gemt eller logget.',
+        "Til professionel brug leverer ANQR en server-side API, der genererer QR-koder fra URL-parametre. Når du bruger API'en, behandles dit QR-indhold på vores servere for at gengive billedet, men det gemmes eller logges ikke.",
         'Vi bruger Google AdSense til reklame og kan bruge analysetjenester. Disse tjenester indsamler information gennem cookies og lignende teknologier. Denne politik forklarer, hvilke data der indsamles, hvordan det anvendes, og dine rettigheder.',
       ],
     },
@@ -82,9 +82,9 @@ export const privacy: PageDefinition = {
         'Adgangsret: Anmoder om en kopi af personlige oplysninger om dig.',
         'Ret til berigtigelse: Anmoder om rettelse af unøjagtige oplysninger.',
         'Ret til sletning: Anmoder om sletning af dine data ("ret til at blive glemt").',
-        'Ret til at begrænse behandlingen: Anmoder om grænser for, hvordan vi bruger dine data.',
+        'Ret til at begrænse behandlingen: Anmod om grænser for, hvordan vi bruger dine data.',
         'Ret til dataportabilitet: Bed om dine data i et bærbart format.',
-        'Ret til at gøre indsigelse: Genstand for behandling, herunder direkte markedsføring.',
+        'Ret til indsigelse: Indsigelse mod behandling, herunder til direkte markedsføring.',
         'Ret til at trække sit samtykke tilbage: Tilbagekaldelse af samtykke på et hvilket som helst tidspunkt, hvor behandlingen er samtykke- baseret.',
         'Retten til at indgive klage: Send en klage til din databeskyttelsesmyndighed.',
       ],
@@ -93,7 +93,7 @@ export const privacy: PageDefinition = {
       heading: 'GDPR retsgrundlag',
       paragraphs: [
         'Vi behandler data på disse baser: (a) Samtykke - til personlig reklame (forvaltes af vores annonceringspartnere); (b) Legitimative interesser - til analyse, sikkerhed og forbedring; (c) Kontrakt - til at besvare forespørgsler.',
-        'For at udøve dine rettigheder, kontakt $_ _ ANQR _ PH _ 0 _ _. Vi svarer inden for 30 dage.',
+        'For at udøve dine rettigheder, kontakt email@anqr.link. Vi svarer inden for 30 dage.',
       ],
     },
     {
@@ -102,7 +102,7 @@ export const privacy: PageDefinition = {
         'Ret til at vide: Anmoder om oplysninger om indsamlede data, kilder, formål og tredjeparter.',
         'Ret til at slette: Anmoder om sletning af dine personlige oplysninger.',
         'Ret til opt- out: Undtaget fra "salg" af personlige oplysninger (deling med annoncepartnere kan kvalificere sig).',
-        'Retten til ikke-forskelsbehandling: Vi vil ikke diskriminere for at udøve dine rettigheder.',
+        'Ret til ikke-forskelsbehandling: Vi vil ikke diskriminere for at udøve dine rettigheder.',
       ],
     },
     {
@@ -145,7 +145,7 @@ export const privacy: PageDefinition = {
     {
       heading: 'Kontakt os',
       paragraphs: [
-        'For spørgsmål om beskyttelse af personlige oplysninger eller for at udøve dine rettigheder: $_ _ _ ANQR _ PH _ 0 _ _ eller brug vores kontaktside. Vi besvarer anmodninger om beskyttelse af personlige oplysninger inden for 30 dage.',
+        'For spørgsmål om privatliv eller for at udøve dine rettigheder: email@anqr.link eller brug vores kontaktside. Vi besvarer anmodninger om privatliv inden for 30 dage.',
       ],
     },
   ],

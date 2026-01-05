@@ -58,7 +58,7 @@ export const terms: PageDefinition = {
     {
       heading: 'Harmadik fél szolgáltatásai és reklámszolgáltatások',
       paragraphs: [
-        'A weboldal hirdetéseket jelenít meg a Google AdSense-en keresztül, és a harmadik fél weboldalára mutató linkeket is tartalmazhat. Nem vagyunk felelősek a harmadik fél tartalmakért, szolgáltatásokért vagy adatvédelmi gyakorlatokért.',
+        'A webhely hirdetéseket jelenít meg a Google AdSense-en keresztül, és tartalmazhat hivatkozásokat harmadik felek webhelyeire. Nem vállalunk felelősséget harmadik felek tartalmaiért, szolgáltatásaiért vagy adatvédelmi gyakorlataiért.',
         'A hirdetőkkel és harmadik felekkel való kapcsolatai kizárólag maguk és ők között állnak fenn. Lásd adatvédelmi irányelveinket a hirdetési adatkezelési gyakorlatokról.',
       ],
     },

@@ -229,7 +229,7 @@ export const learn: PageDefinition = {
       heading: 'Wanneer PNG aanvaarbaar is',
       paragraphs: [
         'PNG word nodig wanneer jou werkvloei of bestemmingsplatform nie vektorformate ondersteun nie. Sommige webplatforms, CMS-stelsels vir naamborde en verouderde drukwerkvloeie vereis rasterbeelde. In hierdie gevalle kan PNG goed werk - maar slegs as jy streng reëls volg: voer uit teen die finale fisiese grootte en resolusie, skaal nooit op na uitvoer nie, en vermy enige kompressie of formaatomskakeling met verlies.',
-        "Die kritieke reël vir PNG is om jou vereiste pixel-afmetings te bereken voor uitvoer. As jou QR teen 5 cm sal druk en jou drukker werk teen 300 DPI, benodig jy ongeveer 590 pieksels. Voer uit teen hierdie grootte of groter uit, skaal dan af indien nodig - nooit op nie. Sluit hierdie inligting by jou lêernaam of metadata in sodat toekomstige gebruikers nie per ongeluk 'n grootte-spesifieke uitvoer misbruik nie.",
+        "Die kritieke reël vir PNG is om jou vereiste pixel afmetings te bereken voor uitvoer. As jou QR teen 5 cm sal druk en jou drukker werk teen 300 DPI, benodig jy ongeveer 590 pieksels. Voer uit teen hierdie grootte of groter uit, skaal dan af indien nodig - nooit op nie. Sluit hierdie inligting by jou lêernaam of metadata in sodat toekomstige gebruikers nie per ongeluk 'n grootte-spesifieke uitvoer misbruik nie.",
       ],
       images: [
         {

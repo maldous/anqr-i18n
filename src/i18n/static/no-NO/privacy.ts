@@ -12,7 +12,7 @@ export const privacy: PageDefinition = {
       heading: 'Sammendrag',
       paragraphs: [
         'ANQR er en QR-kodegenerator med en klient-første tilnærming. Vi krever ikke at du oppretter en konto. Som standard genereres QR-koder lokalt i nettleseren din - vi har ikke tilgang til innholdet du koder.',
-        'For profesjonell bruk tilbyr ANQR en server-side API som genererer QR-koder fra URL-parametre. Når du bruker API, behandles QR-innholdet på våre servere for å gjøre bildet, men lagres ikke eller logges.',
+        'For profesjonell bruk tilbyr ANQR en server-side API som genererer QR-koder fra URL-parametere. Når du bruker API, behandles QR-innholdet ditt på våre servere for å gjengi bildet, men lagres eller logges ikke.',
         'Vi bruker Google AdSense til reklame og kan bruke analysetjenester. Disse tjenestene samler inn informasjon gjennom informasjonskapsler og lignende teknologier. Denne policyen forklarer hvilke data som samles inn, hvordan de brukes og dine rettigheter.',
       ],
     },
@@ -27,12 +27,12 @@ export const privacy: PageDefinition = {
     {
       heading: 'Cookies og tredjeparts teknologier',
       paragraphs: [
-        'ANQR angir ingen førsteparts cookies. Dine preferanser (for eksempel mørk modus) lagres lokalt på enheten, som ikke overføres til noen server.',
+        'ANQR setter ingen førsteparts informasjonskapsler. Preferansene dine (som mørk modus) lagres lokalt på enheten din, som ikke overføres til noen server.',
         'Våre reklamepartnere (Google AdSense) og hostingleverandør kan imidlertid bruke informasjonskapsler og lignende sporingsteknologier:',
       ],
       bullets: [
-        'Reklameinformasjonskapsler (tredjepart): Sett av Google AdSense og annonsepartnere for å betjene relevante annonser, måle annonseytelse og forstå brukerinteresser. Disse informasjonskapslene kan spore aktiviteten din på ulike nettsteder.',
-        'Analytiske informasjonskapsler (tredjepart): Kan brukes av vår hostingleverandør eller analysetjenester for å samle inn anonymiserte bruksdata.',
+        'Annonseinformasjonskapsler (tredjepart): Angitt av Google AdSense og annonsepartnere for å vise relevante annonser, måle annonseresultater og forstå brukerinteresser. Disse informasjonskapslene kan spore aktiviteten din på tvers av forskjellige nettsteder.',
+        'Analytics-informasjonskapsler (tredjepart): Kan brukes av vår vertsleverandør eller analysetjenester for å samle inn anonymiserte bruksdata.',
       ],
     },
     {
@@ -82,7 +82,7 @@ export const privacy: PageDefinition = {
         'Rett til tilgang: Be om en kopi av personopplysninger vi har om deg.',
         'Rett til rettelse: Be om rettelse av unøyaktige data.',
         'Rett til å slette: Be om sletting av dataene dine (" rett til å bli glemt").',
-        'Rett til å begrense behandlingen: Be om grenser for hvordan vi bruker dataene dine.',
+        'Rett til å begrense behandlingen: Begrensninger for hvordan vi bruker dataene dine.',
         'Rett til dataportabilitet: Be om dine data i et bærbar format.',
         'Rett til å protestere: Objekt mot behandling, inkludert direkte markedsføring.',
         'Rett til å trekke tilbake samtykke: Trekk tilbake samtykke når som helst der behandling er samtykkebasert.',
@@ -92,8 +92,8 @@ export const privacy: PageDefinition = {
     {
       heading: 'GDPRs juridiske grunnlag',
       paragraphs: [
-        'Vi behandler data på disse grunnlagene: a) Samtykke - for personlig annonsering (managert av våre reklamepartnere); b) legitime interesser - for analyse, sikkerhet og forbedring; c) Kontrakt - å svare på henvendelser.',
-        'For å utøve dine rettigheter, kontakt ${CONTACT_EMAIL}. Vi svarer innen 30 dager.',
+        'Vi behandler data på disse grunnlagene: (a) Samtykke - for personlig tilpasset annonsering (administrert av våre annonsepartnere); (b) Legitime interesser - for analyser, sikkerhet og forbedring; (c) Kontrakt - for å svare på henvendelser.',
+        'For å utøve dine rettigheter, kontakt email@anqr.link. Vi svarer innen 30 dager.',
       ],
     },
     {
@@ -109,7 +109,7 @@ export const privacy: PageDefinition = {
       heading: 'CCPA kategorier samlet',
       paragraphs: [
         'Kategorier: Identifikasjoner (IP-adresse, enhets-ID), Internett-aktivitet (browsing, annonseinteraksjoner), Geolocation (approximat), Inferenser (interesser fra surfing).',
-        'For å utøve rettigheter eller velge ut: ${CONTACT_EMAIL} eller justere informasjonskapselinnstillingene.',
+        'For å utøve rettigheter eller velge ut: email@anqr.link eller justere informasjonskapselinnstillingene.',
       ],
     },
     {
@@ -121,13 +121,13 @@ export const privacy: PageDefinition = {
     {
       heading: 'Barns personvern',
       paragraphs: [
-        'ANQR er ikke rettet mot barn under 13 år (eller 16 i EØS). Vi samler ikke bevisst inn data fra barn. Kontakt ${CONTACT_EMAIL} hvis du tror et barn har gitt informasjon.',
+        'ANQR er ikke rettet mot barn under 13 år (eller 16 i EØS). Vi samler ikke bevisst inn data fra barn. Kontakt email@anqr.link hvis du tror et barn har gitt informasjon.',
       ],
     },
     {
       heading: 'Sikkerhet',
       paragraphs: [
-        'Vi bruker egnede tekniske og organisatoriske tiltak for å beskytte data, inkludert HTTPS-kryptering. Men ingen Internett-overføring er 100% sikker.',
+        'Vi bruker passende tekniske og organisatoriske tiltak for å beskytte data, inkludert HTTPS-kryptering. Imidlertid er ingen internettoverføring 100 % sikker.',
       ],
     },
     {
@@ -145,7 +145,7 @@ export const privacy: PageDefinition = {
     {
       heading: 'Kontakt oss',
       paragraphs: [
-        'For personvernspørsmål eller å utøve dine rettigheter: ${CONTACT_EMAIL} eller bruk vår kontaktside. Vi svarer på personvernforespørsler innen 30 dager.',
+        'For personvernspørsmål eller å utøve dine rettigheter: email@anqr.link eller bruk vår kontaktside. Vi svarer på personvernforespørsler innen 30 dager.',
       ],
     },
   ],

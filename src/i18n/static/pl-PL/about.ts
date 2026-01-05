@@ -1,5 +1,5 @@
 import type { PageDefinition } from '../types';
-import { CONTACT_EMAIL, LAST_UPDATED } from '../types';
+import { LAST_UPDATED } from '../types';
 
 export const about: PageDefinition = {
   title: 'O ANQR',
@@ -31,7 +31,7 @@ export const about: PageDefinition = {
         'Zaawansowane sterowanie poziomem korekty błędów, wersja QR, tryb kodowania i wybór maski.',
         'Scan- bezpieczeństwo i podgląd na żywo pomóc utrzymać kody czytelne w druku i na ekranach.',
         'Serwerowy API dla profesjonalnego osadzania z pełnym obsługą parametrów.',
-        'Działa offline raz załadowany - jest to statyczna aplikacja web można uruchomić w dowolnym miejscu.',
+        'Po załadowaniu działa w trybie offline — jest to statyczna aplikacja internetowa, którą można uruchomić w dowolnym miejscu.',
       ],
     },
     {
@@ -45,7 +45,7 @@ export const about: PageDefinition = {
     },
     {
       heading: 'Kto prowadzi ANQR?',
-      paragraphs: [`18${CONTACT_EMAIL}19`],
+      paragraphs: [`email@anqr.link`],
     },
     {
       heading: 'Reklama i jak pozostajemy wolni',

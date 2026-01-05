@@ -87,7 +87,7 @@ export const terms: PageDefinition = {
     {
       heading: 'Resolução de disputas',
       paragraphs: [
-        'Qualquer disputa decorrente destes Termos ou do uso do ANQR deverá primeiro ser resolvida por meio de negociação informal, entrando em contato com ${CONTACT_EMAIL}.',
+        'Qualquer disputa decorrente destes Termos ou do uso do ANQR deverá primeiro ser resolvida por meio de negociação informal, entrando em contato com email@anqr.link.',
         'Se a resolução informal falhar, as disputas serão resolvidas através de arbitragem vinculativa em Victoria, Austrália, exceto que qualquer uma das partes poderá buscar medida cautelar em tribunal por violações de propriedade intelectual.',
       ],
     },
@@ -136,7 +136,7 @@ export const terms: PageDefinition = {
     },
     {
       heading: 'Contato',
-      paragraphs: ['Perguntas sobre estes Termos podem ser enviadas para: ${CONTACT_EMAIL}'],
+      paragraphs: ['Perguntas sobre estes Termos podem ser enviadas para: email@anqr.link'],
     },
   ],
 };

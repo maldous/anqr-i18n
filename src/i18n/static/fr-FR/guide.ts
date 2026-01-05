@@ -885,7 +885,7 @@ export const guide: PageDefinition = {
         "ec: Niveau de correction d'erreur - L, M, Q ou H (par défaut: H).",
         'fg: Couleur avant plan comme hexagone sans # (par défaut: 000000).',
         'bg: Couleur de fond comme hexagone sans # (par défaut: ffffff).',
-        'transparent: Set to 1 pour un fond transparent.',
+        'transparent : défini sur 1 pour un arrière-plan transparent.',
         'marge: Zone tranquille dans les modules (par défaut: 4).',
       ],
     },
@@ -921,7 +921,7 @@ export const guide: PageDefinition = {
         'pourriture: rotation de recouvrement en degrés.',
         'flipX, flipY : Réglez à 1 pour retourner la superposition.',
         'garder Trouver : Préserver les modèles de recherche (par défaut : 1).',
-        'garder Timing, keepAlign: Set to 1 pour préserver les modèles de timing/alignement.',
+        'keepTiming, keepAlign : défini sur 1 pour préserver les modèles de synchronisation/alignement.',
       ],
     },
     {

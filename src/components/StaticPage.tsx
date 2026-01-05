@@ -693,7 +693,7 @@ export function StaticPage({ page }: StaticPageProps) {
 
   // Handle initial hash on mount
   useEffect(() => {
-    if (!hasToc || !def) return;
+    if (!(hasToc && def)) return;
     const hash = window.location.hash.slice(1);
     if (!hash) {
       if (tocGroups.length > 0 && tocGroups[0].items.length > 0) {

@@ -92,7 +92,7 @@ export const privacy: PageDefinition = {
     {
       heading: 'Ang legal na saligan ng GDPR',
       paragraphs: [
-        'Iniproseso namin ang datos tungkol sa mga baseng ito: (a) Consent - for personaled advertising (pinangasiwaan ng ating mga kasosyo sa pag-aanunsiyo); (b) Legitimate interes - para sa analytics, seguridad, at pagpapabuti; (c) Contract - upang tumugon sa mga enquiry.',
+        'Pinoproseso namin ang data sa mga base na ito: (a) Pahintulot - para sa personalized na advertising (pinamamahalaan ng aming mga kasosyo sa advertising); (b) Mga lehitimong interes - para sa analytics, seguridad, at pagpapabuti; (c) Kontrata - upang tumugon sa mga katanungan.',
         "Upang isagawa ang iyong mga karapatan, makipag - ugnayan sa . Kami'y tumugon sa loob ng 30 araw.",
       ],
     },

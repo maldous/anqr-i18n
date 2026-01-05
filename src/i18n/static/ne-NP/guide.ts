@@ -638,7 +638,7 @@ export const guide: PageDefinition = {
       heading: 'European Payment Standards',
       bullets: [
         'EPC/SEPA (EU): युरोपेली बैंक स्थानान्तरण QR कोडहरू EPC QR कोड मानक पछ्याउँदै। IBAN, BIC (घरेलुका लागि ऐच्छिक), EUR मा रकम, र संरचित वा असंरचित भुक्तानी सन्दर्भहरूलाई समर्थन गर्दछ। EU देशहरू प्लस स्विट्जरल्याण्ड, नर्वे, आइसल्याण्ड, लिकटेन्स्टाइन, मोनाको, र सान मारिनो सहित SEPA क्षेत्र भर प्रयोग गरिन्छ।',
-        'स्विस QR-बिल: SIX कार्यान्वयन दिशानिर्देशहरू पालना गर्दै स्विस भुक्तानी मानक। CHF र EUR, QR-सन्दर्भ (QRR), क्रेडिटकर्ता सन्दर्भ (ISO 11649), संरचित लेनदार/ऋण ठेगानाहरू, र बिल जानकारी समर्थन गर्दछ। Required for Swiss invoices since 2022.',
+        'स्विस QR-बिल: SIX कार्यान्वयन दिशानिर्देशहरू पालना गर्दै स्विस भुक्तानी मानक। CHF र EUR, QR-सन्दर्भ (QRR), क्रेडिटकर्ता सन्दर्भ (ISO 11649), संरचित लेनदार/ऋण ठेगानाहरू, र बिल जानकारी समर्थन गर्दछ। २०२२ देखि स्विस इनभ्वाइसहरूको लागि आवश्यक छ।',
       ],
       links: [
         {
@@ -652,7 +652,7 @@ export const guide: PageDefinition = {
       heading: 'भारतीय भुक्तानी मानकहरू',
       bullets: [
         'UPI (भारत): NPCI डीप लिंकिङ स्पेसिफिकेशन पछ्याउँदै एकीकृत भुक्तानी इन्टरफेस। VPA (भर्चुअल भुक्तानी ठेगाना), भुक्तानीकर्ताको नाम, INR मा रकम, लेनदेन नोट, सन्दर्भ ID, व्यापारी वर्ग कोड, र लेनदेन मोड समर्थन गर्दछ।',
-        'BharatQR (भारत): UPI र कार्ड-आधारित भुक्तानीहरूलाई समर्थन गर्ने एकीकृत QR मानक। Combines UPI VPA with card PAN for maximum compatibility. व्यापारीको नाम, सहर, MCC, GST विवरणहरू, र इनभ्वाइस/सन्दर्भ नम्बरहरू समावेश गर्दछ।',
+        'BharatQR (भारत): UPI र कार्ड-आधारित भुक्तानीहरूलाई समर्थन गर्ने एकीकृत QR मानक। अधिकतम अनुकूलताका लागि UPI VPA लाई कार्ड प्यानसँग जोड्छ। व्यापारीको नाम, सहर, MCC, GST विवरणहरू, र इनभ्वाइस/सन्दर्भ नम्बरहरू समावेश गर्दछ।',
       ],
       links: [
         {
@@ -714,7 +714,7 @@ export const guide: PageDefinition = {
       bullets: [
         'Bitcoin/Litecoin (BIP-21): वालेट ठेगाना, वैकल्पिक रकम, र लेबल सहित मानक क्रिप्टोकरेन्सी भुक्तानी URI हरू। सबै प्रमुख Bitcoin र Litecoin वालेट संग उपयुक्त।',
         'लाइटनिङ नेटवर्क (BOLT11): लाइटनिङ नेटवर्क भुक्तानी इनभ्वाइसहरू। न्यूनतम शुल्कको साथ तत्काल बिटकोइन भुक्तानीहरूको लागि BOLT11 इन्कोड गरिएको इनभ्वाइस स्ट्रिङ टाँस्नुहोस्।',
-        'Ethereum (EIP-681): Ethereum transaction request URIs supporting native ETH transfers and ERC-20 token transfers. बहु-नेटवर्क समर्थन (Mainnet, Polygon, BSC, Arbitrum, Optimism, Avalanche), ग्यास प्यारामिटरहरू, र अनुबंध प्रकार्य कलहरूको लागि चेन ID समावेश गर्दछ।',
+        'Ethereum (EIP-681): नेटिभ ETH स्थानान्तरण र ERC-20 टोकन स्थानान्तरण समर्थन गर्ने Ethereum लेनदेन अनुरोध URIs। बहु-नेटवर्क समर्थन (Mainnet, Polygon, BSC, Arbitrum, Optimism, Avalanche), ग्यास प्यारामिटरहरू, र अनुबंध प्रकार्य कलहरूको लागि चेन ID समावेश गर्दछ।',
       ],
       links: [
         {
@@ -893,7 +893,7 @@ export const guide: PageDefinition = {
         'eyeOuter, eyeInner: आँखा शैलीहरू - वर्ग, गोलाकार, गोलाकार।',
         'eyeScale: Eye scale percentage (default: 100).',
         'grad: ग्रेडियन्ट प्रकार - कुनै पनि, रैखिक, रेडियल, कोनिक।',
-        'gradAngle: Gradient angle for linear gradients.',
+        'gradAngle: रेखीय ढाँचाका लागि ग्रेडियन्ट कोण।',
         'gradStops: ग्रेडियन्ट स्टपहरू color1,pos1,color2,pos2,... (जस्तै, ff0000,0,0000ff,1) को रूपमा।',
       ],
     },
@@ -931,9 +931,9 @@ export const guide: PageDefinition = {
     },
     {
       heading: 'वाटरमार्क प्यारामिटरहरू',
-      paragraphs: ['Add watermarks to generated QR codes:'],
+      paragraphs: ['उत्पन्न QR कोडहरूमा वाटरमार्कहरू थप्नुहोस्:'],
       bullets: [
-        'wmEn: Set to 1 to enable watermark.',
+        'wmEn: वाटरमार्क सक्षम गर्न 1 मा सेट गर्नुहोस्।',
         'wmKind: वाटरमार्क प्रकार - पाठ, छवि, ढाँचा।',
         'wmText: वाटरमार्क पाठ (URL-इन्कोड गरिएको)।',
         'wmImg: वाटरमार्क छविमा URL।',

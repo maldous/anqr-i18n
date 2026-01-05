@@ -88,7 +88,7 @@ export const terms: PageDefinition = {
     {
       heading: 'Tvistlösning',
       paragraphs: [
-        'Varje tvist som uppstår från dessa villkor eller din användning av ANQR ska först försöka lösas genom informella förhandlingar genom att kontakta ${CONTACT_EMAIL}.',
+        'Varje tvist som uppstår från dessa villkor eller din användning av ANQR ska först försöka lösas genom informella förhandlingar genom att kontakta email@anqr.link.',
         'Om den informella lösningen misslyckas, ska tvister lösas genom bindande skiljedomsförfarande i Victoria, Australien, förutom att endera parten kan begära föreläggande i domstol för kränkningar av immateriella rättigheter.',
       ],
     },
@@ -137,7 +137,7 @@ export const terms: PageDefinition = {
     },
     {
       heading: 'Kontakta',
-      paragraphs: ['Frågor om dessa villkor kan skickas till: ${CONTACT_EMAIL}'],
+      paragraphs: ['Frågor om dessa villkor kan skickas till: email@anqr.link'],
     },
   ],
 };

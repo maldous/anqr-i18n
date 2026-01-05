@@ -668,7 +668,7 @@ export const guide: PageDefinition = {
       heading: 'Standar Pembayaran Asia Tenggara',
       bullets: [
         'Paynow (Singapura): Sistem pembayaran cepat Singapura menggunakan spesifikasi EMVCo QR dengan profil SGQR. Mendukung UEN (pendaftaran bisnis), nomor ponsel, atau NRIC sebagai pengidentifikasi proksi. Termasuk jumlah tanda yang dapat disuntik dan tanggal kadaluarsa.',
-        'PromptPay (Thailand): Sistem pembayaran nasional Thailand mengikuti profil Bank of Thailand EMV. Mendukung nomor ponsel, ID nasional, ID pajak, ID e- dompet, dan pembayaran tagihan dengan beberapa bidang referensi.',
+        'PromptPay (Thailand): Sistem pembayaran nasional Thailand mengikuti profil EMV Bank of Thailand. Mendukung nomor ponsel, ID nasional, ID pajak, ID e-wallet, dan pembayaran tagihan dengan berbagai bidang referensi.',
         'QRIS (Indonesia): Standar Indonesia Response Cepat. EMV-based standar pembayaran nasional mendukung ID pedagang, NMID (National Merchant ID), klasifikasi kriteria pedagang, dan biaya kenyamanan (tetap atau persentase).',
         'DuitNow (Malaysia): sistem pembayaran instan Malaysia. Mendukung beberapa jenis proksi termasuk NRIC, mobile, paspor, ID tentara, dan nomor pendaftaran bisnis.',
         'Vietnam. Butuh bank BIN (identifikasi NAPAS) dan nomor rekening. Mendukung multiple service codes untuk tipe transfer yang berbeda (QRPUSH, QRIBFTTA, QRIBFTTC).',
@@ -730,7 +730,7 @@ export const guide: PageDefinition = {
       heading: 'Layanan Tautan Pembayaran',
       bullets: [
         'PayPal.Me: PayPal link pembayaran dengan nama pengguna dan jumlah pre- opsional yang diisi. Penerima dapat membayar melalui saldo PayPal, kartu, atau rekening bank.',
-        'Kas App: Kas Tautan pembayaran App menggunakan $cashtag dengan jumlah opsional. Populer di Amerika Serikat untuk pembayaran peer-to-peer.',
+        'Aplikasi Tunai: Tautan pembayaran Aplikasi Tunai menggunakan $cashtag dengan jumlah opsional. Populer di Amerika Serikat untuk pembayaran peer-to-peer.',
       ],
       links: [
         {
@@ -1014,7 +1014,7 @@ export const guide: PageDefinition = {
       paragraphs: [
         'Ketika Anda mengklik Share dalam mode Profesional, ANQR mengkodekan pengaturan Anda ke parameter URL. Format:',
         'https: / / anqr.link /? data =... & ec = H & style = dibulatkan &....',
-        'Parameter ini mencerminkan parameter API, sehingga Anda dapat mengubah URL berbagi ke URL API dengan mengubah jalur dasar dari / to / qr dan menyesuaikan w / h sebagaimana diperlukan.',
+        'Parameter ini mencerminkan parameter API, sehingga Anda dapat mengonversi URL berbagi menjadi URL API dengan mengubah jalur dasar dari / ke /api/qr dan menyesuaikan parameter w/h sesuai kebutuhan.',
         'Catatan: Gambar overlay diupload dari berkas lokal tidak dapat dibagikan via URL - hanya URL-based overlay (img parameter) bekerja dalam shared link dan API calls.',
       ],
     },

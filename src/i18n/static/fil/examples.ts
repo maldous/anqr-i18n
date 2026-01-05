@@ -10,7 +10,7 @@ import { LAST_UPDATED } from '../types';
 export const examples: PageDefinition = {
   title: 'MGA Halimbawa ng ANQR',
   description:
-    'Limang reality-world, production-style na mga halimbawa na nagpapakita kung saan ang QR code ay lumilikha ng aspeto na halaga: pag-udyok ng isang legacy retail counter code, branded retail na mga pagbabayad at "scan-to" aksyon, pag-print ng spiral mula sa flyers papunta sa mga billboard, revival QR para sa digital signage, at cross-lingual competition gamit ang mga kabahaging links ng Anchor. Ang bawat halimbawa ay naglalakip ng mga larawan, praktikal na mga pagbabawal, at isang remix na kawing pabalik sa generator.',
+    'Limang real-world, production-style na mga halimbawa na nagpapakita kung saan ang mga QR code ay lumilikha ng masusukat na halaga: pagtaas ng isang legacy na retail counter code, branded retail na mga pagbabayad at "scan-to" na mga aksyon, print scaling mula sa mga flyer hanggang sa mga billboard, animated na QR para sa digital signage, at cross-lingual na pakikipagtulungan gamit ang mga naibabahaging Anchor link. Kasama sa bawat halimbawa ang mga larawan, praktikal na mga hadlang, at isang link ng remix pabalik sa generator.',
   lastUpdated: LAST_UPDATED,
 
   primaryLinks: [
@@ -40,7 +40,7 @@ export const examples: PageDefinition = {
       heading: 'Pagsusuri sa mga Problema ng Orihinal na Kodigo',
       paragraphs: [
         'Isiniwalat ng pagsubok ang maraming isyu: ang orihinal na kodigong ginamit na Error Corrector L (minimum redundancy), ay may tahimik na sona na 2 module lamang, at inilimbag sa mababang resolusyon. Sa ilalim ng mainit na tungsten light ng café, ang mga itim na module ay halos walang pagkakaiba sa dilaw na papel. Ang mas matatandang telepono ay nakipagpunyagi; ang mas bagong mga telepono ay nagtagumpay subalit taglay ang kapansin - pansing pagkaantala.',
-        'Sa kabila ng mga teknikal na isyu, ang generic black-and-white square ay walang inihayag tungkol sa brand. Ang mga parokyano ay nag - atubili bago suriin ang isang tusong hadlang sa pagtitiwala na nakabawas sa pakikipagtipan sa maingat na idinisenyong digital menu ng karinderya.',
+        'Higit pa sa mga teknikal na isyu, ang generic na black-and-white square ay walang nakipag-ugnayan sa brand. Nag-alinlangan ang mga customer bago mag-scan - isang banayad na hadlang sa pagtitiwala na nagbawas ng pakikipag-ugnayan sa maingat na idinisenyong digital na menu ng cafe.',
       ],
       images: [
         {
@@ -324,7 +324,7 @@ export const examples: PageDefinition = {
       heading: 'Pagkahibang na May Nasisiyahan sa Pagsesenyas',
       paragraphs: [
         "Ang masiglang QR ay nakaposisyon sa isang dedikadong 'stable zone' ng screen na maayos - isang lugar na nanatiling hindi nagbabago habang ang promotional content ay umiikot sa pangunahing display area. Ang paghihiwalay na ito ay mahalaga: Ang QR ay nangangailangan ng katatagan sa paningin para sa pagninilay-nilay habang umaakit ng pansin sa pamamagitan ng tusong animasyon nito.",
-        "Isang malinaw na call-to-action ang idinagdag na katabi ng QR: 'Skip ang queue - scan upang tingnan.' Ang teksto ay nanatiling statistic habang ang QR pulsed, na lumilikha ng isang visual hirarkiya na umakit sa mata sa pagkakataon ng scanning nang walang labis sa promotional content.",
+        "Isang malinaw na call-to-action ang idinagdag sa tabi ng QR: 'Laktawan ang pila - i-scan upang mag-check in.' Ang teksto ay nanatiling static habang ang QR pulsed, na lumilikha ng isang visual na hierarchy na iginuhit ang mata sa pag-scan ng pagkakataon nang hindi labis ang pampromosyong nilalaman.",
       ],
       images: [
         {

@@ -16,7 +16,7 @@ export const contact: PageDefinition = {
     {
       heading: 'E-post',
       paragraphs: [
-        'För alla förfrågningar: ${CONTACT_EMAIL}',
+        'För alla förfrågningar: email@anqr.link',
         'Detta är det mest pålitliga sättet att nå oss och rekommenderas för detaljerade frågor, affärsförfrågningar eller andra förfrågningar.',
       ],
     },
@@ -61,7 +61,7 @@ export const contact: PageDefinition = {
     {
       heading: 'DMCA-kontakt',
       paragraphs: [
-        'Skicka DMCA-meddelanden till: ${CONTACT_EMAIL}',
+        'Skicka DMCA-meddelanden till: email@anqr.link',
         'Inkludera "DMCA Notice" i ämnesraden. Vi kommer att svara på giltiga meddelanden i enlighet med tillämplig lag. Observera att ANQR genererar QR-koder lokalt på användarnas enheter och inte är värd för användargenererat innehåll.',
       ],
     },

@@ -1,5 +1,5 @@
 import type { PageDefinition } from '../types';
-import { CONTACT_EMAIL, LAST_UPDATED } from '../types';
+import { LAST_UPDATED } from '../types';
 
 export const about: PageDefinition = {
   title: 'ANQR 소개',
@@ -30,7 +30,7 @@ export const about: PageDefinition = {
         '여러 형식으로 내보내기 : PNG, SVG, WebP 및 애니메이션 GIF.',
         '오류 교정 수준, QR 버전, 인코딩 모드 및 마스크 선택을위한 고급 제어.',
         'Scan-safety 지도 및 라이브 미리보기는 인쇄 및 화면에서 코드를 읽을 수 있도록 도와줍니다.',
-        'Server-side API for professional embedding with full 매개 변수 지원.',
+        '전체 매개변수를 지원하는 전문적인 임베딩을 위한 서버측 API입니다.',
         '한 번 로드 작업 - 어디서나 실행할 수있는 정적 웹 앱입니다.',
       ],
     },
@@ -45,7 +45,7 @@ export const about: PageDefinition = {
     },
     {
       heading: 'ANQR은 누구입니까?',
-      paragraphs: [`18${CONTACT_EMAIL}19`],
+      paragraphs: [`email@anqr.link`],
     },
     {
       heading: '광고 및 우리는 어떻게 무료',

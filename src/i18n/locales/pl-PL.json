@@ -1810,7 +1810,7 @@
     "staticQr": "Statyczny QR",
     "staticQrHint": "Kod QR wielokrotnego użytku (bez ustalonej kwoty)",
     "tipFeeIndicator": "Wskaźnik napiwku / opłaty",
-    "tipPrompt": "Prompt for Tip",
+    "tipPrompt": "Prośba o napiwek",
     "tipFixed": "Opłaty stałe",
     "tipPercentage": "Procent napiwkowy",
     "feeAmount": "Kwota opłaty",

@@ -1326,7 +1326,7 @@
 1326	"EIP-681 transaction request URI"
 1327	"Quick Response Code Indonesian Standard"
 1328	"Malaysia instant payment system"
-1329	"India unified QR for UPI + card payments"
+1329	"Indien vereinheitlichte QR für UPI + Kartenzahlungen"
 1330	"NAPAS bank identification number"
 1331	"Philippines QR payment standard"
 1332	"Taiwan QR payment standard"

@@ -11,7 +11,7 @@ export const privacy: PageDefinition = {
     {
       heading: 'Streszczenie',
       paragraphs: [
-        'ANQR jest generatorem kodu QR z podejściem klient- pierwszego podejścia. Nie wymagamy od was tworzenia rachunku. Domyślnie kody QR są generowane lokalnie w przeglądarce - nie mamy dostępu do kodowanej treści.',
+        'ANQR to generator kodów QR, który koncentruje się na kliencie. Nie wymagamy od Ciebie zakładania konta. Domyślnie kody QR generowane są lokalnie w Twojej przeglądarce – nie mamy dostępu do treści, które kodujesz.',
         'Do użytku profesjonalnego, ANQR zapewnia server- side API, który generuje kody QR z parametrów URL. Podczas korzystania z API zawartość QR jest przetwarzana na naszych serwerach w celu renderowania obrazu, ale nie jest przechowywana ani zalogowana.',
         'Używamy Google AdSense do reklamy i możemy korzystać z usług analitycznych. Usługi te gromadzą informacje za pośrednictwem plików cookie i podobnych technologii. Polityka ta wyjaśnia, jakie dane są gromadzone, jak są wykorzystywane i jakie są Twoje prawa.',
       ],
@@ -133,7 +133,7 @@ export const privacy: PageDefinition = {
     {
       heading: 'Nie śledź',
       paragraphs: [
-        'Honorujemy sygnały przeglądarki Do Not Track tam, gdzie jest to możliwe, chociaż partnerzy reklamowi mogą nie reagować na DNT.',
+        'Jeśli to możliwe, honorujemy sygnały przeglądarki "Nie śledź", chociaż partnerzy reklamowi mogą nie odpowiadać na DNT.',
       ],
     },
     {

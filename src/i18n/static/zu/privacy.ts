@@ -93,7 +93,7 @@ export const privacy: PageDefinition = {
       heading: 'Isisekelo sezomthetho se-GDPR',
       paragraphs: [
         'Sicubungula idatha ngalezi zisekelo: (a) Imvume - yokukhangisa okwenziwe ngezifiso (okuphathwa ngabalingani bethu bokukhangisa); (b) Izintshisekelo ezisemthethweni - zokuhlaziya, ukuphepha, kanye nokuthuthukiswa; (c) Inkontileka - yokuphendula imibuzo.',
-        'Ukuze usebenzise amalungelo akho, xhumana no-${CONTACT_EMAIL}. Siphendula zingakapheli izinsuku ezingama-30.',
+        'Ukuze usebenzise amalungelo akho, xhumana no-email@anqr.link. Siphendula zingakapheli izinsuku ezingama-30.',
       ],
     },
     {
@@ -109,7 +109,7 @@ export const privacy: PageDefinition = {
       heading: 'Izigaba ze-CCPA eziqoqwe',
       paragraphs: [
         'Izigaba: Izikhombisi (ikheli le-IP, i-ID yedivayisi), umsebenzi we-inthanethi (ukuphequlula, ukusebenzisana kwezikhangiso), Indawo (cishe), Izincazelo (izintshisekelo ezivela ekuphequluleni).',
-        'Ukusebenzisa amalungelo noma ukukhetha ukuphuma: ${CONTACT_EMAIL} noma ukulungisa izilungiselelo zamakhukhi.',
+        'Ukusebenzisa amalungelo noma ukukhetha ukuphuma: email@anqr.link noma ukulungisa izilungiselelo zamakhukhi.',
       ],
     },
     {
@@ -121,7 +121,7 @@ export const privacy: PageDefinition = {
     {
       heading: 'Ubumfihlo bezingane',
       paragraphs: [
-        'I-ANQR ayiqondisiwe ezinganeni ezingaphansi kweminyaka engu-13 (noma engu-16 ku-EEA). Asiqoqi ngamabomu idatha evela ezinganeni. Xhumana no-${CONTACT_EMAIL} uma ukholelwa ukuthi ingane inikeze ulwazi.',
+        'I-ANQR ayiqondisiwe ezinganeni ezingaphansi kweminyaka engu-13 (noma engu-16 ku-EEA). Asiqoqi ngamabomu idatha evela ezinganeni. Xhumana no-email@anqr.link uma ukholelwa ukuthi ingane inikeze ulwazi.',
       ],
     },
     {
@@ -145,7 +145,7 @@ export const privacy: PageDefinition = {
     {
       heading: 'Xhumana nathi',
       paragraphs: [
-        'Ngemibuzo yobumfihlo noma ukusebenzisa amalungelo akho: ${CONTACT_EMAIL} noma sebenzisa ikhasi lethu Lokuxhumana. Siphendula izicelo zobumfihlo zingakapheli izinsuku ezingama-30.',
+        'Ngemibuzo yobumfihlo noma ukusebenzisa amalungelo akho: email@anqr.link noma sebenzisa ikhasi lethu Lokuxhumana. Siphendula izicelo zobumfihlo zingakapheli izinsuku ezingama-30.',
       ],
     },
   ],

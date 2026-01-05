@@ -9,7 +9,7 @@ import { LAST_UPDATED } from '../types';
 export const learn: PageDefinition = {
   title: 'Lær med ANQR',
   description:
-    'Praktisk, business-første guider for å gjøre QR-koder til ekte markedsførings aktiva - ikke bare funksjonelle firkanter. Lær hvordan du oppgraderer gamle punkt-av-salgskoder, oppretter kompatibel betaling QR-signage, forbereder utskriftsklar eksport, bruker animasjon trygt på digitale skjermer, og deler låste konfigurasjoner på tvers av flerspråklige lag ved hjelp av ANQR-anchor-koblinger.',
+    'Praktiske, business-first guides for å gjøre QR-koder til virkelige markedsføringsressurser – ikke bare funksjonelle firkanter. Lær hvordan du oppgraderer eldre salgssteder, oppretter kompatibel QR-skilting for betaling, forbereder utskriftsklare eksporter, bruker animasjon trygt på digitale skjermer og deler innelåste konfigurasjoner på tvers av flerspråklige team ved å bruke ANQR ("anker")-lenker.',
   lastUpdated: LAST_UPDATED,
 
   primaryLinks: [
@@ -23,13 +23,13 @@ export const learn: PageDefinition = {
     {
       heading: 'Forbedre eksisterende QR-kampanjer',
       paragraphs: [
-        'De fleste bedrifter har QR-koder spredt over sine operasjoner - på menyer, benkestativer, emballasje og salgsfremmende materialer. Mange av disse kodene ble opprettet for mange år siden med grunnleggende generatorer, noe som resulterer i generiske svart-hvite firkanter som ikke kan inspirere tillit eller matche din merke identitet. Denne omfattende guiden går gjennom en systematisk tilnærming til revisjon, oppgradering og optimalisering av eksisterende QR-infrastruktur uten å forstyrre kundereisene du allerede har etablert.',
-        'Den strategiske fordelen med å oppgradere i stedet for å erstatte QR-kodene ligger i å bevare kontinuitet. Kundene dine har allerede lært å forvente bestemte destinasjoner når de skanner kodene dine. Ved å holde de kodede URL-ene identiske mens du dramatisk forbedrer den visuelle presentasjonen, skanner pålitelighet og merkejustering, oppretter du en sømløs overgang som forbedrer tilliten uten å kreve endringer i din digitale infrastruktur eller analysesporing.',
+        'De fleste bedrifter har QR-koder spredt over hele virksomheten – på menyer, benkestander, emballasje og reklamemateriell. Mange av disse kodene ble opprettet for mange år siden med grunnleggende generatorer, noe som resulterer i generiske svart-hvite firkanter som ikke skaper tillit eller samsvarer med merkevareidentiteten din. Denne omfattende guiden leder deg gjennom en systematisk tilnærming til revisjon, oppgradering og optimalisering av din eksisterende QR-infrastruktur uten å forstyrre kundereisene du allerede har etablert.',
+        'Den strategiske fordelen med å oppgradere i stedet for å erstatte QR-kodene dine ligger i å bevare kontinuiteten. Kundene dine har allerede lært å forvente bestemte destinasjoner når de skanner kodene dine. Ved å holde de kodede URL-ene identiske samtidig som du dramatisk forbedrer den visuelle presentasjonen, skanningens pålitelighet og merkevaretilpasning, skaper du en sømløs overgang som øker tilliten uten å kreve endringer i din digitale infrastruktur eller analysesporing.',
       ],
       images: [
         {
           src: '/images/learn/improve-existing-overview.png',
-          alt: 'En side-ved-side-sammenligning som viser en falmet, generisk QR-kode ved siden av en moderne merkevareversjon som koder for samme URL',
+          alt: 'En side-ved-side-sammenligning som viser en falmet, generisk QR-kode ved siden av en moderne merkeversjon som koder for samme URL',
           caption:
             'Før og etter: Den samme destinasjonsadressen forvandlet fra en datert generisk kode til en profesjonell merkevare',
         },
@@ -39,28 +39,28 @@ export const learn: PageDefinition = {
       heading: 'Hvorfor Legacy QR Koder Underperform',
       paragraphs: [
         'QR-koder som ble opprettet i den tidlige adopsjonsfasen - spesielt i 2020-2021 når bedrifter skyndte seg å implementere kontaktløse løsninger - lider ofte av flere kritiske problemer. Lave feilrettingsinnstillinger gjør dem skjøre når de skrives ut på teksturerte overflater eller vises under utfordrende belysning. Utilstrekkelig stille soner forårsaker skannefeil når koder er plassert nær andre visuelle elementer. Generisk styling ikke kommuniserer merke legitimitet, noe som fører til nøling og redusert skanning.',
-        'Utover tekniske begrensninger representerer arvskoder ofte savnet merker muligheter. Hver QR-kode er et touchpoint med kunden your et øyeblikk hvor de aktivt er engasjert og villige til å handle. En profesjonelt stylet kode som matcher merkefargene dine, inkluderer passende sikkerhetsmarginer, og funksjoner valgfrie merkevareelementer forvandler dette verktøyet til en markedsføringsressurs som styrker identiteten din ved hver interaksjon.',
+        'Utover tekniske begrensninger representerer eldre koder ofte tapte merkevarebyggingsmuligheter. Hver QR-kode er et kontaktpunkt med kunden din – et øyeblikk hvor de er aktivt engasjert og villige til å handle. En profesjonelt utformet kode som matcher merkefargene dine, inkluderer passende sikkerhetsmarginer, og funksjoner med valgfrie merkede elementer forvandler dette verktøyet til et markedsføringsmiddel som forsterker identiteten din ved hver interaksjon.',
       ],
     },
     {
       heading: 'Å gjennomføre en QR-koderevisjon',
       paragraphs: [
         'Begynn oppgraderingsprosjektet ved å opprette en omfattende inventar av alle QR-koder som er utplassert på tvers av virksomheten. Dokumenter den fysiske plasseringen, kodet destinasjon, den nåværende tilstanden til det trykte materialet, og det typiske skanningsmiljøet, inkludert lysforhold og visningsvinkler. Test hver kode med flere enheter - eldre smarttelefoner og budsjett enheter avslører ofte pålitelighetsproblemer som premium telefonmaske.',
-        'Vær spesielt oppmerksom på koder i høyhastighetssteder: betalingspoeng, innsjekkingsområder og kampanjevisninger der skannefeil direkte påvirker inntekter eller kundeopplevelse. Disse bør prioriteres for umiddelbar oppgradering. Legg også merke til koder som vises i fotografi eller videoinnhold, da disse vil kreve koordinering med markedsføringsteamet for å oppdatere visuelle eiendeler.',
+        'Vær spesielt oppmerksom på koder på steder med høy innsats: betalingspunkter, innsjekkingsområder og reklameskjermer der skanningsfeil direkte påvirker inntektene eller kundeopplevelsen. Disse bør prioriteres for umiddelbar oppgradering. Legg også merke til koder som vises i fotografi- eller videoinnhold, da disse vil kreve koordinering med markedsføringsteamet ditt for å oppdatere visuelle eiendeler.',
       ],
       images: [
         {
           src: '/images/learn/improve-existing-audit.png',
           alt: 'En sjekkliste grensesnitt som viser QR revisjonskategorier: plassering, tilstand, skanne pålitelighet og prioritetsklassifisering',
           caption:
-            'Systematisk QR revisjonsmal for å dokumentere og prioritere dine oppgraderingskandidater',
+            'Systematisk QR-revisjonsmal for å dokumentere og prioritere dine oppgraderingskandidater',
         },
       ],
     },
     {
       heading: 'Den sikre oppgraderingsstrategien',
       paragraphs: [
-        'Kardinalregelen for QR-oppgraderinger er bestemmelsesbevaring. Pakk ut den nøyaktige URL-adressen fra hver eksisterende kode og kode den identisk i din nye versjon. Dette sikrer alle eksisterende analyser, omdirigeringslogikk og kundeforventninger forblir intakt. Hvis du trenger destinasjonsfleksibilitet for fremtidige oppdateringer, er dette det ideelle tidspunktet for å introdusere en merket kort URL eller omdirigere tjeneste - men implementere dette som et separat prosjekt for å unngå sammensatte endringer.',
+        'Hovedregelen for QR-oppgraderinger er bevaring av destinasjoner. Trekk ut den eksakte URL-en fra hver eksisterende kode og kod den identisk i den nye versjonen. Dette sikrer at all eksisterende analyse, omdirigeringslogikk og kundenes forventninger forblir intakte. Hvis du trenger destinasjonsfleksibilitet for fremtidige oppdateringer, er dette det ideelle tidspunktet for å introdusere en merket kort URL eller omdirigeringstjeneste – men implementer dette som et eget prosjekt for å unngå kompliserte endringer.',
         'For visuell oppgradering, bruk forbedringer i lag: først sikre teknisk pålitelighet (passende feilrettelse og rolig sone), deretter legge merkevare styling (farger, modulformer) og til slutt vurdere valgfrie forbedringer (senter overlegg, rammer). Hvert lag skal valideres gjennom testing før det fortsetter. ANQRs sikkerhetsmodus bidrar til å håndheve disse prioriteringene ved å advare når styling valg kan kompromittere skannbarhet.',
       ],
     },
@@ -68,26 +68,26 @@ export const learn: PageDefinition = {
       heading: 'Legge til merkevareidentitet uten å kompromittere pålitelighet',
       paragraphs: [
         'Effektiv QR merkevare balanserer visuell effekt mot skanner pålitelighet. Start med farge: erstatte standard svart forgrunn med den primære merkefargen, noe som sikrer tilstrekkelig kontrast mot bakgrunnen. For de fleste merker fungerer mørke farger på lys bakgrunn best. Unngå kombinasjoner med lavkontrast, gradienter som reduserer kantens klarhet, eller farger som vises lignende under vanlige belysningsforhold.',
-        'Modulformtilpassing gir en annen merkemulighet med minimal pålitelighet. Avrundede moduler skaper en mykere, mer tilnærmelig utseende mens du opprettholder utmerket skannbarhet. Dot-stil moduler fungerer bra for moderne, tech-forward merker. Tilkoblede moduler passer til industrielle eller bedriftsmessige identiteter. Uansett hvilken stil du velger, hold konsistens på tvers av alle QR-utdelingene for øyeblikkelig merkegjenkjenning.',
+        'Tilpasning av modulform gir en annen merkevarebyggingsmulighet med minimal innvirkning på påliteligheten. Avrundede moduler skaper et mykere, mer tilgjengelig utseende samtidig som de opprettholder utmerket skanbarhet. Dot-style moduler fungerer godt for moderne, tech-forward merkevarer. Tilkoblede moduler passer industrielle eller bedriftsidentiteter. Uansett hvilken stil du velger, oppretthold konsistens på tvers av alle QR-implementeringene dine for umiddelbar merkevaregjenkjenning.',
       ],
       images: [
         {
           src: '/images/learn/improve-existing-branding.png',
           alt: 'Et fargehjuldiagram som viser optimale QR-fargekombinasjoner med kontrastforholdsindikatorer',
           caption:
-            'Guide for merkefargevalg som viser kombinasjoner med høy kontrast som opprettholder skannesikkerhet',
+            'Fargeveiledning for merkevarevalg som viser kombinasjoner med høy kontrast som opprettholder skanningens pålitelighet',
         },
       ],
     },
     {
       heading: 'Testing og valideringsprotokoll',
       paragraphs: [
-        'Utfør aldri oppgraderte QR-koder uten streng testing. Skriv ut et fysisk bevis i nøyaktig størrelse og på samme materiale som din endelige distribusjon. Test på den faktiske plasseringen der koden vil bo, på forskjellige tidspunkter på dagen for å regne for belysning variasjoner. Bruk minst tre forskjellige enheter: en gjeldende flaggskipstelefon, en mellomklasseenhet og en eldre eller budsjettsmarttelefon.',
-        'Ta opp skanningstider og suksessrate for hver test. En veloptimert kode bør skanne innen 1-2 sekunder på enhver rimelig moderne enhet. Hvis du ser konsekvente forsinkelser eller feil, redusere styling intensitet - fjerne eller krympe overlegg, øke stille sonestørrelse eller bytte til et høyere feilrettingsnivå. Pålitelighet tar alltid forrang over visuell sofistikasjon.',
+        'Aldri distribuer oppgraderte QR-koder uten streng testing. Skriv ut et fysisk prøvetrykk i nøyaktig størrelse og på samme materiale som den endelige distribusjonen. Test på det faktiske stedet der koden vil leve, til forskjellige tider på dagen for å ta hensyn til lysvariasjoner. Bruk minst tre forskjellige enheter: en nåværende flaggskiptelefon, en mellomtoneenhet og en eldre smarttelefon eller budsjettsmarttelefon.',
+        'Registrer skannetider og suksessrater for hver test. En godt optimalisert kode bør skanne innen 1-2 sekunder på en hvilken som helst rimelig moderne enhet. Hvis du ser konsekvente forsinkelser eller feil, reduser stylingintensiteten - fjern eller krymp overlegg, øk størrelsen på stillesonen eller bytt til et høyere feilkorrigeringsnivå. Pålitelighet går alltid foran visuell sofistikering.',
       ],
     },
     {
-      heading: 'Låse konfigurasjonen for konsistens',
+      heading: 'Låser konfigurasjonen for konsistens',
       paragraphs: [
         'Når du har validert en optimal konfigurasjon, bevare den ved hjelp av ANQRs delbare lenker. Dette skaper en permanent oppføring over alle innstillinger som brukes til å generere godkjent kode - farger, modulstil, feilretting, størrelse og eventuelle overlegg. Del denne lenken med designteamet ditt, skriver ut leverandører og alle som kanskje trenger å reprodusere koden i fremtiden.',
         'Denne konfigurasjonslåsen hindrer den gradvise nedbrytningen som plager mange QR-utdelinger. Uten det gjenskaper ansatte koder fra skjermbilde, designere gjenoppbygger innstillinger fra minne, og skriver leverandører gjøre \\"hjelpsomme\\" justeringer. Hver variant introduserer potensielle problemer. Med en låst konfigurasjonslink er hver reproduksjon identisk med den testede, godkjente originalen.',
@@ -97,7 +97,7 @@ export const learn: PageDefinition = {
           src: '/images/learn/improve-existing-lock.png',
           alt: 'Et diagram som viser konfigurasjonsdrift: skjermbilder som fører til rekreasjoner som fører til varianter, versus en enkelt kilde-til-truth-kobling',
           caption:
-            'Forhindre konfigurasjonsdrift ved å etablere en enkelt autoritativ kilde for alle QR reproduksjoner',
+            'Forhindre konfigurasjonsdrift ved å etablere en enkelt autoritativ kilde for alle QR-reproduksjoner',
         },
       ],
       links: [
@@ -118,8 +118,8 @@ export const learn: PageDefinition = {
     {
       heading: 'QR-koder for detaljbetalinger',
       paragraphs: [
-        'Betaling QR-koder opererer i det mest krevende miljøet i detaljhandelen: transaksjonens øyeblikk. Kundene er klare til å betale, ofte med en kø som dannes bak dem, og hvert sekund av forsinkelse skaper friksjon. Men dette høytrykksmomentet er også primale eiendommer for merkeforsterkning. Denne guiden forklarer hvordan du oppretter betaling QR-koder som skanner umiddelbart på bankapplikasjoner mens du fremdeles presenterer et profesjonelt, merkede utseende som bygger kundetillit.',
-        'Det grunnleggende prinsippet for betaling QR-koder er pålitelighet over estetikk. En vakkert designet kode som ikke klarer å skanne på en kundes bankapp vil koste deg mye mer i forlatte transaksjoner og frustrerte kunder enn en konservativ design noensinne kan. Begynn med samsvar, legg til pålitelighet, og deretter nøye lag i merkevare bare der den ikke kommer på kompromiss med primærfunksjonen.',
+        'QR-koder for betaling fungerer i det mest krevende miljøet i detaljhandelen: transaksjonsøyeblikket. Kundene er klare til å betale, ofte med kø bak seg, og hvert sekund med forsinkelse skaper friksjon. Likevel er dette høytrykksmomentet også førsteklasses eiendom for merkevareforsterkning. Denne veiledningen forklarer hvordan du oppretter betalings-QR-koder som skanner umiddelbart på bankapper, mens de fortsatt presenterer et profesjonelt, merkevareutseende som bygger kundenes tillit.',
+        'Det grunnleggende prinsippet for betalings-QR-koder er pålitelighet fremfor estetikk. En vakkert designet kode som ikke klarer å skanne på én kundes bankapp vil koste deg mye mer i forlatte transaksjoner og frustrerte kunder enn et konservativt design noensinne kunne. Begynn med samsvar, legg til pålitelighet, og legg deretter forsiktig inn merkevarebyggingen bare der det ikke kompromitterer hovedfunksjonen.',
       ],
       images: [
         {
@@ -133,35 +133,35 @@ export const learn: PageDefinition = {
     {
       heading: 'Forstå betaling QR standarder',
       paragraphs: [
-        'Betaling QR-koder følger vanligvis regionale standarder som dikterer nyttelastformatet. I Singapore bruker PayNow QR spesifikk formatering. I India følger UPI-koder BharatQR eller UPI-deep linkstandarder. Europeiske SEPA-betalinger bruker EPC QR-koder. Hver standard eksisterer for å sikre at bankappene umiddelbart kan gjenkjenne og behandle betalingsinformasjonen. Å avvike fra disse standardene - selv litt - kan føre til at betalingsapplikasjoner avviser koder som generiske kameraskannere leser uten problem.',
-        'ANQR inneholder maler for store betalingsstandarder som automatisk formaterer dine handelsdetaljer til kompatible nyttelaster. Bruk alltid disse malene i stedet for manuelt å konstruere betalingsstrenger, da selv mindre formateringsfeil kan forårsake transaksjonsfeil. Hvis regionens betalingsstandard ikke er tilgjengelig som mal, kan du lese betalingsleverandørens tekniske dokumentasjon for nøyaktige formateringskrav.',
+        'QR-koder for betaling følger vanligvis regionale standarder som dikterer nyttelastformatet. I Singapore bruker PayNow QR spesifikk formatering. I India følger UPI-koder BharatQR eller UPI dyplenkestandarder. Europeiske SEPA-betalinger bruker EPC QR-koder. Hver standard eksisterer for å sikre at bankapper umiddelbart kan gjenkjenne og behandle betalingsinformasjonen. Avvik fra disse standardene – selv litt – kan føre til at betalingsapper avviser koder som generiske kameraskannere leser uten problemer.',
+        'ANQR inkluderer maler for store betalingsstandarder som automatisk formaterer selgerdetaljene dine til kompatible nyttelaster. Bruk alltid disse malene i stedet for å manuelt konstruere betalingsstrenger, da selv mindre formateringsfeil kan forårsake transaksjonsfeil. Hvis regionens betalingsstandard ikke er tilgjengelig som mal, kan du se betalingsleverandørens tekniske dokumentasjon for nøyaktige formateringskrav.',
       ],
     },
     {
-      heading: 'Størrelse og plassering for diskskjermer',
+      heading: 'Dimensjonering og plassering for Counter Displays',
       paragraphs: [
-        'QR-koder står overfor unike fysiske utfordringer. Kundene skanner i armens lengde, ofte i en vinkel, noen ganger gjennom nysende vakter eller skjermsaker. Overhead belysning skaper bleke flekker. Koden konkurrerer med andre kontra cutter for oppmerksomhet og klare synslinjer. Størrelse på betalingen QR generøst - minimum 4-5cm anbefales for de fleste counter-applikasjoner, skalering opp hvis koden sitter bak glass eller i et svakt opplyst område.',
-        'Stillingen er like stor som størrelsen. Plasser koden der kundene komfortabelt kan holde telefonen uten å blokkere køen eller nå vanskelig. Angre skjermen mot kunden i stedet for å legge den flat. Hvis det er mulig, bruk matt laminering eller ikke-reflekterende displaymaterialer for å minimere blekk fra overbelysning. Test den endelige plasseringen på forskjellige tidspunkter på dagen for å fange belysningsproblemer.',
+        'Counter-top QR-koder møter unike fysiske utfordringer. Kunder skanner på armlengdes avstand, ofte på skrå, noen ganger gjennom nysebeskyttelser eller montrer. Overheadbelysning skaper blendingsflekker. Koden konkurrerer med annet motrot om oppmerksomhet og klare siktlinjer. Større betalingen QR generøst - minimum 4-5 cm anbefales for de fleste diskapplikasjoner, oppskalering hvis koden sitter bak glass eller i et svakt opplyst område.',
+        'Plassering betyr like mye som størrelse. Plasser koden der kundene komfortabelt kan holde telefonen sin uten å blokkere køen eller strekke seg vanskelig. Vinkle skjermen mot kunden i stedet for å legge den flatt. Hvis mulig, bruk matt laminering eller ikke-reflekterende skjermmaterialer for å minimere gjenskinn fra takbelysning. Test den endelige plasseringen til forskjellige tider på dagen for å fange lysproblemer.',
       ],
       images: [
         {
           src: '/images/learn/retail-payments-placement.png',
-          alt: 'Et diagram som viser optimale QR plasseringshøyder og vinkler for ulike kontrakonfigurasjoner',
+          alt: 'Et diagram som viser optimale QR-plasseringshøyder og -vinkler for forskjellige tellekonfigurasjoner',
           caption:
-            'Counter plassering guide: optimale høyder, vinkler og avstander for pålitelig betaling skanning',
+            'Tellerplasseringsguide: optimale høyder, vinkler og avstander for pålitelig betalingsskanning',
         },
       ],
     },
     {
-      heading: 'Konservativ merkevare for betalingskoder',
+      heading: 'Konservativ merkevarebygging for betalingskoder',
       paragraphs: [
-        'Betaling apper er mindre tilgivende enn generiske kamera skannere. Mange bankapplikasjoner bruker eldre, enklere QR-lesningsalgoritmer optimalisert for hastighet i stedet for fleksibilitet. Dette betyr at styling som fungerer perfekt med et telefonkamera kan mislykkes med bestemte betalingsapper. Hold merkevaren konservativ: bruk merkefargen for forgrunnen hvis den opprettholder sterk kontrast, men unngå gradienter, tunge overlegg eller dekorative elementer som kan forstyrre anerkjennelsen.',
-        'Hvis du vil ha en senter logo eller overlegg, holde det ekstremt lite - ikke mer enn 10-15% av QR-området - og test mye med hver betalingsapp kundene dine kan bruke. Mange bedrifter velger ikke overlegg på betalingskoder spesielt, reserverer at styling for markedsføring av QR-koder der pålitelighetskravene er mindre strenge. Betalingskodens jobb er å behandle transaksjoner, ikke å imponere visuelt.',
+        'Betalingsapper er mindre tilgivende enn generiske kameraskannere. Mange bankapper bruker eldre, enklere QR-lesealgoritmer som er optimert for hastighet i stedet for fleksibilitet. Dette betyr at styling som fungerer perfekt med et telefonkamera kan mislykkes med spesifikke betalingsapper. Keep branding conservative: use your brand colour for the foreground if it maintains strong contrast, but avoid gradients, heavy overlays, or decorative elements that could interfere with recognition.',
+        'If you want a centre logo or overlay, keep it extremely small - no more than 10-15% of the QR area - and test extensively with every payment app your customers might use. Many businesses opt for no overlay on payment codes specifically, reserving that styling for marketing QR codes where reliability requirements are less stringent. Betalingskodens jobb er å behandle transaksjoner, ikke å imponere visuelt.',
       ],
       images: [
         {
           src: '/images/learn/retail-payments-branding.png',
-          alt: 'En sammenligning som viser akseptable vs risikofrie merkenivå for betaling QR-koder',
+          alt: 'En sammenligning som viser akseptable kontra risikable merkevarenivåer for betalings-QR-koder',
           caption:
             'Betaling QR merkevarespektrum: fra sikker konservativ styling til risikable dekorative tilnærminger',
         },
@@ -178,12 +178,12 @@ export const learn: PageDefinition = {
       heading: 'Testing med ekte betaling Apps',
       paragraphs: [
         'Generisk kameraskannere vil dekode nesten alle rimelig formatert QR-kode. Betalingsapps er mer pickier. Før du distribuerer en betaling QR-kode, test den med hver betalingsapp kundene dine kan bruke. I flerbetalingsmiljøer kan dette bety testing med flere bankapper, digitale lommeboker og betalingsplattformer. Dokumenter hvilke apper du har testet og deres versjoner - betalingsapplikasjoner oppdaterer ofte, og en oppdatering kan endre skanneadferd.',
-        'Test under realistiske forhold: den faktiske skjermen, faktisk belysning, faktisk skanneavstand. En kode som skanner umiddelbart på skrivebordet kan kjempe på disken kl. 15.00 når ettermiddagssolen skaper glare. Test med den eldste, billigste smarttelefonen du kan finne - hvis det fungerer pålitelig på en budsjettenhet, vil det fungere på alt. Flagg enhver skannetid over 2 sekunder for undersøkelse og potensiell redesign.',
+        'Test under realistiske forhold: den faktiske skjermen, faktisk belysning, faktisk skanneavstand. En kode som skanner umiddelbart på skrivebordet ditt kan slite på disken klokken 17.00 når ettermiddagssolen skaper gjenskinn. Test med den eldste, billigste smarttelefonen du kan finne - hvis den fungerer pålitelig på en budsjettenhet, fungerer den på alt. Flagg enhver skannetid over 2 sekunder for undersøkelse og potensiell redesign.',
       ],
       images: [
         {
           src: '/images/learn/retail-payments-testing.png',
-          alt: 'En testkontrollliste som viser ulike betalingsapplikasjoner, enhetstyper og miljøforhold for å verifisere',
+          alt: 'En testsjekkliste som viser ulike betalingsapper, enhetstyper og miljøforhold å verifisere',
           caption: 'Samlet betaling QR test matrise dekker apper, enheter og miljøfaktorer',
         },
       ],
@@ -218,46 +218,46 @@ export const learn: PageDefinition = {
       ],
     },
     {
-      heading: 'Hvorfor Vector (SVG) Foretrekkes for Print',
+      heading: 'Hvorfor Vector (SVG) foretrekkes for utskrift',
       paragraphs: [
-        'SVG-filer beskriver QR-koder som matematiske former i stedet for rutenett av piksler. Dette betyr at koden kan skaleres til enhver størrelse - fra en 1cm etikett til et 10-meters banner - uten tap av kant skarphet. Skriverens RIP (Raster Image Processor) gjengir vektorene ved utgangsenhetens opprinnelige oppløsning, slik at hver modulkant er like skarp som maskinvaren tillater. Det er ingen interpolasjon, ingen anti-aliasing artefakter, ingen akkumulert uklarhet fra flere størrelsesoperasjoner.',
-        'Utover skalerbarhet er SVG-filer mer robuste i profesjonelle arbeidsflyter. De overlever rundturer gjennom designprogramvare uten nedbrytning. De kan bli fargekorrigert uten å resemplere. De embed rent inn i PDF-filer for trykkklar utdata. For ethvert utskriftsprogram der kvalitet spiller rolle, skal SVG være standard eksportformat.',
+        "SVG-filer beskriver QR-koder som matematiske former i stedet for rutenett av piksler. Dette betyr at koden kan skaleres til alle størrelser - fra en etikett på 1 cm til et 10-meters banner - uten tap av kantskarphet. The printer's RIP (Raster Image Processor) renders the vectors at the output device's native resolution, ensuring each module edge is as crisp as the hardware allows. Det er ingen interpolering, ingen anti-aliasing-artefakter, ingen akkumulert uskarphet fra flere operasjoner for endring av størrelse.",
+        'Utover skalerbarhet er SVG-filer mer robuste i profesjonelle arbeidsflyter. De overlever rundturer gjennom designprogramvare uten forringelse. De kan fargekorrigeres uten omsampling. De bygger rent inn i PDF-filer for trykkklar utskrift. For alle utskriftsapplikasjoner der kvalitet er viktig, bør SVG være standard eksportformat.',
       ],
     },
     {
       heading: 'Når PNG er akseptabel',
       paragraphs: [
         'PNG blir nødvendig når arbeidsflyten eller destinasjonsplattformen ikke støtter vektorformater. Noen nettplattformer, signage CMS-systemer og gamle utskriftsarbeidsflyter krever rasterbilder. I disse tilfellene kan PNG fungere bra - men bare hvis du følger strenge regler: eksport i den endelige fysiske størrelsen og oppløsningen, aldri skalere opp etter eksport, og unngå tapsfull komprimering eller formatkonvertering.',
-        'Den kritiske regelen for PNG er å beregne dine nødvendige pikseldimensjoner før eksport. Hvis QR vil skrive ut på 5cm og skriveren fungerer på 300 DPI, trenger du ca. 590 piksler. Eksporter i denne størrelsen eller større, deretter skalere ned om nødvendig - aldri opp. Inkluder denne informasjonen i filnavn eller metadata, så fremtidige brukere ikke ved et uhell misbruker en størrelsesspesifikk eksport.',
+        'Den kritiske regelen for PNG er å beregne de nødvendige pikseldimensjonene før eksport. Hvis QR-en din vil skrive ut på 5 cm og skriveren din fungerer på 300 DPI, trenger du omtrent 590 piksler. Eksporter i denne størrelsen eller større, og skaler deretter ned om nødvendig – aldri opp. Inkluder denne informasjonen i filnavnet eller metadataene dine, slik at fremtidige brukere ikke misbruker en størrelsesspesifikk eksport.',
       ],
       images: [
         {
           src: '/images/learn/print-ready-resolution.png',
           alt: 'Et kalkulatorsgrensesnitt som viser forholdet mellom fysisk størrelse, DPI og nødvendige pikseldimensjoner',
           caption:
-            'Utskriftsoppløsning kalkulator: bestemme minstepikseldimensjoner for målutgangsstørrelsen',
+            'Kalkulator for utskriftsoppløsning: bestemmer minimums pikseldimensjoner for målstørrelsen',
         },
       ],
     },
     {
       heading: 'ANQR eksportalternativer Forklart',
       paragraphs: [
-        'ANQR tilbyr flere SVG-eksportmoduser som passer til ulike arbeidsflyter. True Vector-modus produserer ren banebasert produksjon ideell for utskrift og profesjonelle designverktøy. Når du har lagt til rasteroverlegg eller visse effekter, kan ANQR embedde disse mens du opprettholder vektormoduler, eller du kan eksportere en fullstendig rasterisert versjon ved din spesifiserte oppløsning. Å forstå disse alternativene hjelper deg å velge riktig eksport for hvert brukstilfelle.',
-        'For PNG-eksport lar ANQR deg angi nøyaktige dimensjoner og inkluderer alternativer for gjennomsiktig bakgrunn. DPI-innstillingen hjelper deg å beregne passende størrelser for utskrift, men husk at DPI er metadata - det som betyr noe for utskrift har nok piksler for din fysiske størrelse. Når i tvil, eksport større enn du tror du trenger; skalering ned bevarer kvalitet mens skalering opp ødelegger det.',
+        'ANQR tilbyr flere SVG-eksportmoduser for å passe til forskjellige arbeidsflyter. True Vector-modus produserer ren banebasert utskrift som er ideell for utskrift og profesjonelle designverktøy. Når du har lagt til rasteroverlegg eller visse effekter, kan ANQR legge inn disse mens du opprettholder vektormoduler, eller du kan eksportere en fullstendig rasterisert versjon med din spesifiserte oppløsning. Å forstå disse alternativene hjelper deg med å velge riktig eksport for hvert brukstilfelle.',
+        'For PNG-eksport lar ANQR deg spesifisere nøyaktige dimensjoner og inkluderer alternativer for gjennomsiktige bakgrunner. DPI-innstillingen hjelper deg med å beregne passende størrelser for utskrift, men husk at DPI er metadata - det som betyr noe for utskrift er å ha nok piksler for din fysiske størrelse. Når du er i tvil, eksporter større enn du tror du trenger; nedskalering bevarer kvaliteten mens oppskalering ødelegger den.',
       ],
     },
     {
       heading: 'Forbereder filer til Handoff',
       paragraphs: [
         'Når du passerer QR-kunst til designere eller skriver ut leverandører, inkluderer klare spesifikasjoner: den tiltenkte fysiske størrelsen, minste stille sonekrav og alle fargeromshensyn. For kritiske programmer, gi både en SVG-master og en høyoppløselig PNG-sikkerhetskopi, tydelig merket med deres tiltenkte bruk. Ta med ANQR konfigurasjonslenken slik at koden kan regenereres om nødvendig.',
-        'Forutse vanlige feil i avleveringsprosessen. Eksplisitt oppgi at QR ikke bør skaleres, roteres, skjeves eller ha effekter påført. Angi at den rolige sonen må være klar - ingen avlingmerker, registreringsmerker eller designelementer som påtrenger. Hvis QR vil bli plassert på en farget eller fotografisk bakgrunn, gi en versjon med en ugjennomsiktig støtteform for å sikre tilstrekkelig kontrast.',
+        'Forutse vanlige feil i overleveringsprosessen. Si eksplisitt at QR-en ikke skal skaleres, roteres, skjevt eller ha effekter. Spesifiser at den stille sonen må forbli klar - ingen beskjæringsmerker, registreringsmerker eller designelementer trenger inn. Hvis QR-en skal plasseres på en farget eller fotografisk bakgrunn, gi en versjon med en ugjennomsiktig baksideform for å sikre tilstrekkelig kontrast.',
       ],
       images: [
         {
           src: '/images/learn/print-ready-handoff.png',
           alt: 'Et filpakkediagram som viser SVG-master, PNG-sikkerhetskopi, spesifikasjonsdokument og konfigurasjonslenke',
           caption:
-            'Profesjonell QR handoff pakke: alt en designer eller print leverandør trenger for nøyaktig reproduksjon',
+            'Profesjonell QR-overleveringspakke: alt en designer eller trykkerileverandør trenger for nøyaktig gjengivelse',
         },
       ],
     },
@@ -315,8 +315,8 @@ export const learn: PageDefinition = {
     {
       heading: 'Animasjonsteknikker Det fungerer',
       paragraphs: [
-        'Fargesykling animerer forgrunns- og bakgrunnsfargene gjennom en palett og samtidig opprettholder tilstrekkelig kontrast ved hvert trinn. Dette skaper en levende, oppmerksomhetsgravende effekt med minimal skannerisiko - så lenge kontrasten aldri faller under lesbare nivåer. ANQRs fargesyklusinnstillinger er designet for å opprettholde skannbarhet gjennom hele syklusen.',
-        'Animert overlegg plass beveger bilder bak et halvgjennomsiktig QR mønster. Koden forblir stabil mens bakgrunnen animerer - kanskje en looping video, animerte merkeelementer eller abstrakt bevegelsesgrafikk. Denne teknikken krever nøye intensitetsstyring for å hindre at bakgrunnen overvelder QR-mønsteret, men skaper de mest visuelt slående resultatene.',
+        'Fargesykling animerer forgrunns- og bakgrunnsfargene gjennom en palett samtidig som den opprettholder tilstrekkelig kontrast ved hvert trinn. Dette skaper en levende, oppmerksomhetsfangende effekt med minimal skanningsrisiko - så lenge kontrasten aldri synker under lesbare nivåer. ANQRs forhåndsinnstillinger for fargesyklus er designet for å opprettholde skanbarhet gjennom hele syklusen.',
+        'Animerte overlegg plasserer bevegelige bilder bak et semi-transparent QR-mønster. Koden forblir stabil mens bakgrunnen animerer - kanskje en looping-video, animerte merkeelementer eller abstrakt bevegelsesgrafikk. This technique requires careful intensity management to prevent the background from overwhelming the QR pattern, but creates the most visually striking results.',
       ],
       images: [
         {
@@ -331,19 +331,19 @@ export const learn: PageDefinition = {
       heading: 'Konfigurere animasjonsparametre',
       paragraphs: [
         'Rammehastigheten påvirker både visuell glatthet og filstørrelse. For de fleste applikasjoner gir 10-15 rammer i sekundet jevn bevegelse uten overdreven filstørrelse. Høyere rammepriser tilbyr redusert visuell avkastning mens betydelig øker filstørrelser. Overvei leveringskonteksten din - et stort digitalt tegn kan håndtere større filer enn en mobil annonse plassering.',
-        'Loop atferd bestemmer hvordan animasjonssyklusene. sømløse loops skaper kontinuerlig bevegelse ideell for skilt og omgivelsesskjermer. Ping-pong (forward-the-reverse) loops fungerer godt for enkle animasjoner. For oppmerksomhet-grabbing pulser, vurdere animasjoner med hold - perioder med stillhet punktisert av bevegelse som trekker øyet uten konstant bevegelse tretthet.',
+        'Loop-atferd bestemmer hvordan animasjonen sykluser. Sømløse løkker skaper kontinuerlig bevegelse ideell for skilting og omgivelsesvisninger. Ping-pong-løkker (forover-og-revers) fungerer bra for enkle animasjoner. For attention-grabbing pulses, consider animations with holds - periods of stillness punctuated by movement that draws the eye without constant motion fatigue.',
       ],
     },
     {
       heading: 'Opprette animerte overlegg',
       paragraphs: [
-        'Når du bruker animerte bilder (GIFs, animerte WebPs eller video) som overlegg, trekker ANQR ut rammer og kompositter dem med QR-koden. Overleggsintensitetsinnstillingen styrer hvor mye av animasjonen som vises gjennom - lavere verdier prioriterer skannbarhet mens høyere verdier favoriserer visuell effekt. Test din valgte intensitet over flere rammer for å sikre konsekvent skannbarhet.',
-        'Kildematerialets kvalitet påvirker betydelig resultatene. Bruk overlegg med klare emner og god kontrast. Unngå kildeanimasjoner med raske blinkende eller ekstreme lysstyrkeendringer som kan skape noen ganger lavkontrastrammer. Forhåndsvisning av hele animasjonssyklusen før eksport for å fange eventuelle problematiske rammer som kan mislykkes å skanne.',
+        'Når du bruker animerte bilder (GIF-er, animerte WebP-er eller video) som overlegg, trekker ANQR ut rammer og setter dem sammen med QR-koden din. The overlay intensity setting controls how much of the animation shows through - lower values prioritise scannability while higher values favour visual impact. Test den valgte intensiteten på tvers av flere rammer for å sikre konsekvent skanbarhet.',
+        'Kvaliteten på kildematerialet påvirker resultatene betydelig. Bruk overlegg med klare motiver og god kontrast. Unngå kildeanimasjoner med raskt blinkende eller ekstreme lysstyrkeendringer som kan skape sporadisk lavkontrastbilder. Forhåndsvis hele animasjonssyklusen før du eksporterer for å fange opp eventuelle problematiske rammer som kanskje ikke klarer å skanne.',
       ],
       images: [
         {
           src: '/images/learn/animated-frames.png',
-          alt: 'Et ramme-for-ramme-bilde av et animert overlegg som viser kontrastnivåer opprettholdt over sekvensen',
+          alt: 'En bilde-for-bilde-visning av et animert overlegg som viser kontrastnivåer som opprettholdes over sekvensen',
           caption:
             'Rammeanalyse: verifisere konsekvent skannbarhet gjennom hele animasjonssyklusen',
         },
@@ -352,14 +352,14 @@ export const learn: PageDefinition = {
     {
       heading: 'Eksport- og leveringsoverveielser',
       paragraphs: [
-        'GIF forblir det mest støttet animert format, spiller automatisk i de fleste sammenhenger uten å kreve støtte for videospiller. Men GIFs 256-fargede palett begrenser fargefidelitet. For fargekritiske animasjoner, vurdere animert WebP der støttes, eller fall tilbake til videoformater for høyeste kvalitet. ANQRs GIF-eksport inkluderer utjamningsalternativer for å maksimere kvaliteten innenfor palettbegrensninger.',
-        'Filstørrelse er viktig for levering. Digitale skiltsystemer, e-postklienter og sosiale plattformer pålegger ofte størrelsesgrenser. Hvis animasjonen din overstiger disse grensene, reduserer rammetelling, dimensjoner eller fargedybde. Noen ganger deler en kompleks animasjon i en kortere loop oppnår bedre resultater enn aggressiv kompresjon som nedgraderer hver ramme.',
+        'GIF er fortsatt det mest støttede animerte formatet, og spilles automatisk i de fleste sammenhenger uten å kreve støtte for videospiller. GIFs 256-fargepalett begrenser imidlertid fargetroskapen. For fargekritiske animasjoner bør du vurdere animert WebP der det støttes, eller fall tilbake til videoformater for høyeste kvalitet. ANQRs GIF-eksport inkluderer dithering-alternativer for å maksimere kvaliteten innenfor palettbegrensninger.',
+        'Filstørrelsen har betydning for levering. Digitale skiltsystemer, e-postklienter og sosiale plattformer pålegger ofte størrelsesgrenser. Hvis animasjonen din overskrider disse grensene, reduser antall bilder, dimensjoner eller fargedybde. Noen ganger oppnår du bedre resultater ved å dele en kompleks animasjon i en kortere sløyfe enn aggressiv komprimering som forringer hvert bilde.',
       ],
     },
     {
       heading: 'Testing av animerte QR-koder',
       paragraphs: [
-        'Teste animerte koder krever skanning ved flere punkt i animasjonssyklusen. Ikke skanne en gang og anta suksess - skann gjentatte ganger, i ulike øyeblikk, for å bekrefte at hver ramme er lesbar. Vær spesielt oppmerksom på rammer ved fargesyklus ekstremer eller overlegg intensitet topper der kontrast kan være laveste.',
+        'Testing av animerte koder krever skanning på flere punkter i animasjonssyklusen. Ikke bare skann én gang og anta suksess – skann gjentatte ganger, på forskjellige tidspunkter, for å bekrefte at hver frame er lesbar. Vær spesielt oppmerksom på rammer ved ekstreme fargesykluser eller overleggsintensitetstopper der kontrasten kan være lavest.',
         'Test på den faktiske skjermmaskinvaren der det er mulig. Overvåk fargekalibrering, visningsvinkel og omgivelsesbelysning påvirker alle hvordan animasjonen vises og skanner. En lys animasjon som skanner perfekt på skjermen din kan vaske ut på en utendørsskjerm eller bli uleselig på skrå sevinkler.',
       ],
       images: [
@@ -388,7 +388,7 @@ export const learn: PageDefinition = {
     {
       heading: 'QR sikkerhet og overholdelse beste praksis',
       paragraphs: [
-        'En vakkert konstruert QR-kode som ikke skanner er verre enn ubrukelig - det frustrerer kunder, skader merkevareoppfattelse og avfall alle ressurser investert i sin opprettelse og distribusjon. Denne veiledningen dekker de tekniske og praktiske faktorene som avgjør om en QR-kode vil skanne pålitelig, og hvordan du bruker ANQRs sikkerhetsfunksjoner for å fange potensielle problemer før de når produksjonen.',
+        'En vakkert designet QR-kode som ikke klarer å skanne er verre enn ubrukelig – den frustrerer kunder, skader merkeoppfatningen og sløser med alle ressursene som er investert i opprettelsen og distribusjonen. Denne veiledningen dekker de tekniske og praktiske faktorene som avgjør om en QR-kode vil skanne pålitelig, og hvordan du bruker ANQRs sikkerhetsfunksjoner for å fange opp potensielle problemer før de når produksjon.',
         'QR kode pålitelighet er ikke binær. En kode kan skanne perfekt på flaggskipstelefoner, men mislykkes på budsjettenheter. Det kan fungere i ideell belysning, men kamp i mørke restauranter eller lyst sollys. Forstå de faktorene som påvirker skannbarhet hjelper deg å gjøre informerte avleveringer mellom visuel styling og pålitelighet i virkeligheten.',
       ],
       images: [
@@ -403,8 +403,8 @@ export const learn: PageDefinition = {
     {
       heading: 'Forståelse av feilretting',
       paragraphs: [
-        'QR-koder inkluderer innebygd redundans som lar dem leses selv når delvis skadet eller skjult. Feilkorreksjonsnivå - L (7%), M (15%), Q (25%) eller H (30%) - bestemmer hvor mye av koden som kan mangle mens den fortsatt dekoder riktig. Høyere feilrettelse skaper større koder, men gir en sikkerhetsmargin for overlegg, utskriftsufullkommenheter og miljøskader.',
-        'For koder med bildeoverlegg, feilrettingsnivå H er viktig - overlegget fysisk skjuler en del av koden, og du trenger at 30 % redundans for å opprettholde pålitelighet. For rene, ustilede koder i kontrollerte miljøer er nivå M ofte tilstrekkelig. Nivå L bør reserveres for situasjoner der kodestørrelsen er kritisk begrenset og du kan garantere ubegrensede forhold.',
+        'QR-koder inkluderer innebygd redundans som gjør at de kan leses selv når de er delvis skadet eller skjult. Feilrettingsnivået – L (7 %), M (15 %), Q (25 %) eller H (30 %) – bestemmer hvor mye av koden som kan mangle mens den fortsatt dekoders riktig. Høyere feilkorrigering skaper større koder, men gir en sikkerhetsmargin for overlegg, utskriftsfeil og miljøskader.',
+        'For koder med bildeoverlegg er feilrettingsnivå H viktig - overlegget skjuler fysisk en del av koden, og du trenger 30 % redundans for å opprettholde påliteligheten. For rene, ustilte koder i kontrollerte miljøer er nivå M ofte tilstrekkelig. Nivå L bør reserveres for situasjoner der kodestørrelsen er kritisk begrenset og du kan garantere uberørte forhold.',
       ],
     },
     {
@@ -431,8 +431,8 @@ export const learn: PageDefinition = {
     {
       heading: 'Modulstørrelse og visning Avstand',
       paragraphs: [
-        'Den fysiske størrelsen på individuelle moduler bestemmer den maksimale avstanden fra hvilken en kode kan skannes. Mindre moduler betyr mindre koder, men krever nærmere skanneavstander. Den generelle regelen er at hver modul skal være minst 0,5 mm på den tiltenkte skanningsavstand, idet den skalere opp proporsjonalt for større avstander. En kode på en billboard trenger mye større moduler enn en kode på et visittkort.',
-        'Når du beregner modulstørrelse, bør du vurdere det verste tilfelle scenario: kunden med en eldre telefon, i ufullstendig belysning, skanne på maksimal sannsynlig avstand. Design for denne brukeren, og alle andre vil ha en enda bedre opplevelse. ANQRs størrelsesanbefalinger faktor i disse virkelige variablene for å foreslå passende dimensjoner for tiltenkt bruk.',
+        'Den fysiske størrelsen på individuelle moduler bestemmer den maksimale avstanden som en kode kan skannes fra. Mindre moduler betyr mindre koder, men krever tettere skanneavstander. Den generelle regelen er at hver modul skal være minst 0,5 mm ved den tiltenkte skanneavstanden, og skaleres opp proporsjonalt for større avstander. En kode på en reklametavle trenger mye større moduler enn en kode på et visittkort.',
+        'Når du beregner modulstørrelsen, bør du vurdere det verste tilfellet: kunden med en eldre telefon, i ufullkommen belysning, skanner på maksimal sannsynlig avstand. Design for denne brukeren, og alle andre vil få en enda bedre opplevelse. ANQRs størrelsesanbefalinger tar hensyn til disse virkelige variablene for å foreslå passende dimensjoner for den tiltenkte bruken.',
       ],
       images: [
         {
@@ -453,7 +453,7 @@ export const learn: PageDefinition = {
       heading: 'Real-World testprotokoller',
       paragraphs: [
         'Ingen mengde programvareverifisering erstatter fysisk testing. Skriv ut koden i den tiltenkte størrelsen på representativt materiale. Test det i det faktiske distribusjonsmiljøet med belysningsforhold som passer til ekte bruk. Skann med flere enheter - ikke bare flaggskipstelefonen din, men budsjett Android-enheter, eldre iPhoneer og eventuelle spesifikke enheter publikum vanligvis bruker.',
-        'Dokumenter testen systematisk. Opptak hvilke enheter som ble testet under hvilke betingelser, med hvilke resultater. Hvis du distribuerer koder i skala, etablere akseptkriterier: Kanskje 95% suksessrate på tvers av enhetens testbasseng, eller vellykkede skanner innen 2 sekunder på alle testede enheter. Disse standardene bidrar til å gjøre Go/No Go beslutninger objektive i stedet for å håpe på det beste.',
+        'Dokumenter testingen din systematisk. Registrer hvilke enheter som ble testet, under hvilke forhold, med hvilke resultater. Hvis du distribuerer koder i stor skala, etablere akseptkriterier: kanskje 95 % suksessrate på tvers av enhetens testpool, eller vellykkede skanninger innen 2 sekunder på alle testede enheter. Disse standardene bidrar til å gjøre go/no-go beslutninger objektive i stedet for å håpe på det beste.',
       ],
       images: [
         {

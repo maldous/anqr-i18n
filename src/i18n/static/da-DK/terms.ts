@@ -18,13 +18,13 @@ export const terms: PageDefinition = {
     {
       heading: 'Støtteberettigelse',
       paragraphs: [
-        'Du skal være mindst 13 år for at bruge ANQR. Ved at bruge webstedet, du repræsenterer, at du opfylder denne alder krav. Hvis du er under 18, du repræsenterer, at du har din forælder eller værge tilladelse til at bruge webstedet.',
+        'Du skal være mindst 13 år for at bruge ANQR. Ved at bruge siden erklærer du, at du opfylder dette alderskrav. Hvis du er under 18 år, repræsenterer du, at du har din forælders eller værges tilladelse til at bruge siden.',
       ],
     },
     {
       heading: 'Tilladt anvendelse',
       paragraphs: [
-        'Du må kun bruge ANQR til lovlige formål. Du er udelukkende ansvarlig for det indhold, du indkoder i QR-koder og for, hvordan du bruger QR-koder, du genererer.',
+        'Du må kun bruge ANQR til lovlige formål. Du er alene ansvarlig for det indhold, du koder til QR-koder, og for hvordan du bruger de QR-koder, du genererer.',
       ],
     },
     {
@@ -58,8 +58,8 @@ export const terms: PageDefinition = {
     {
       heading: 'Tredjepartstjenester og reklame',
       paragraphs: [
-        'Webstedet viser annoncer via Google AdSense og kan omfatte links til tredjeparts hjemmesider. Vi er ikke ansvarlige for tredjeparts indhold, tjenester eller privatlivspraksis.',
-        'Dine interaktioner med annoncører og tredjeparter er udelukkende mellem dig og dem. Se vores fortrolighedspolitik for information om annoncering af datapraksis.',
+        'Siden viser annoncer gennem Google AdSense og kan indeholde links til tredjepartswebsteder. Vi er ikke ansvarlige for tredjepartsindhold, tjenester eller privatlivspraksis.',
+        'Dine interaktioner med annoncører og tredjeparter er udelukkende mellem dig og dem. Se vores privatlivspolitik for oplysninger om praksis for annonceringsdata.',
       ],
     },
     {
@@ -89,7 +89,7 @@ export const terms: PageDefinition = {
       heading: 'Tvistbilæggelse',
       paragraphs: [
         'Enhver tvist, der opstår som følge af disse vilkår eller din brug af ANQR skal først søges løst gennem uformelle forhandlinger ved at kontakte $_ _ ANQR _ PH _ 0 _ _.',
-        'Hvis en uformel løsning mislykkes, skal tvister løses ved bindende voldgift i Victoria, Australien, bortset fra at en af parterne kan anmode om tvangsfuldbyrdelse i retten for overtrædelser af intellektuelle ejendomsrettigheder.',
+        'Hvis uformel løsning mislykkes, skal tvister løses gennem bindende voldgift i Victoria, Australien, bortset fra at hver af parterne kan anmode om forbud i retten for krænkelser af intellektuel ejendom.',
       ],
     },
     {
@@ -132,7 +132,7 @@ export const terms: PageDefinition = {
     {
       heading: 'Force majeure',
       paragraphs: [
-        'Vi vil ikke være ansvarlige for eventuelle svigt eller forsinkelser i udførelsen på grund af omstændigheder, der ligger uden for vores rimelige kontrol, herunder naturkatastrofer, krig, terrorisme, optøjer, regeringshandlinger eller fejl på internettet / infrastrukturen.',
+        'Vi er ikke ansvarlige for fejl eller forsinkelser i ydeevnen på grund af omstændigheder uden for vores rimelige kontrol, herunder naturkatastrofer, krig, terrorisme, optøjer, regeringshandlinger eller internet-/infrastrukturfejl.',
       ],
     },
     {

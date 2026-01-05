@@ -92,7 +92,7 @@ export const learn: PageDefinition = {
       images: [
         {
           src: '/images/learn/improve-existing-lock.png',
-          alt: 'A diagram showing configuration drift: screenshots leading to recreations leading to variants, versus a single source-of-truth link',
+          alt: '显示配置漂移的图表：导致娱乐的屏幕截图导致变体，而不是单一的真实来源链接',
           caption: '通过为所有 QR 复制品建立单一权威来源来防止配置漂移',
         },
       ],
@@ -129,7 +129,7 @@ export const learn: PageDefinition = {
       heading: '了解支付二维码标准',
       paragraphs: [
         '支付二维码通常遵循规定有效负载格式的区域标准。在新加坡，PayNow QR 使用特定格式。在印度，UPI 代码遵循 BharatQR 或 UPI 深度链接标准。欧洲 SEPA 支付使用 EPC QR 码。每个标准的存在都是为了确保银行应用程序能够立即识别和处理支付信息。偏离这些标准——即使是轻微偏离——都可能导致支付应用程序拒绝通用相机扫描仪读取的代码。',
-        "ANQR 包含主要支付标准的模板，可自动将您的商家详细信息格式化为合规的有效负载。始终使用这些模板，而不是手动构建支付字符串，因为即使很小的格式错误也可能导致交易失败。 If your region's payment standard isn't available as a template, consult your payment provider's technical documentation for exact formatting requirements.",
+        'ANQR 包含主要支付标准的模板，可自动将您的商家详细信息格式化为合规的有效负载。始终使用这些模板，而不是手动构建支付字符串，因为即使很小的格式错误也可能导致交易失败。如果您所在地区的付款标准无法用作模板，请参阅您的付款提供商的技术文档以了解确切的格式要求。',
       ],
     },
     {
@@ -150,14 +150,13 @@ export const learn: PageDefinition = {
       heading: '支付代码的保守品牌',
       paragraphs: [
         '支付应用程序比通用相机扫描仪更不宽容。许多银行应用程序使用较旧、更简单的二维码读取算法，针对速度而不是灵活性进行了优化。这意味着与手机摄像头完美配合的样式可能无法与特定的支付应用程序配合使用。保持品牌保守：如果保持强烈的对比度，则使用您的品牌颜色作为前景，但避免渐变、重覆盖或可能干扰识别的装饰元素。',
-        "如果您想要中心徽标或覆盖层，请使其非常小 - 不超过 QR 区域的 10-15% - 并对客户可能使用的每个支付应用程序进行广泛测试。许多企业专门选择不在支付代码上叠加，保留这种样式用于可靠性要求不太严格的营销二维码。 The payment code's job is to process transactions, not to impress visually.",
+        '如果您想要中心徽标或覆盖层，请使其非常小 - 不超过 QR 区域的 10-15% - 并对客户可能使用的每个支付应用程序进行广泛测试。许多企业专门选择不在支付代码上叠加，保留这种样式用于可靠性要求不太严格的营销二维码。支付代码的作用是处理交易，而不是给人留下视觉印象。',
       ],
       images: [
         {
           src: '/images/learn/retail-payments-branding.png',
           alt: '显示支付二维码可接受与有风险的品牌水平的比较',
-          caption:
-            'Payment QR branding spectrum: from safe conservative styling to risky decorative approaches',
+          caption: '支付二维码品牌范围：从安全保守的造型到危险的装饰方法',
         },
       ],
     },
@@ -165,7 +164,7 @@ export const learn: PageDefinition = {
       heading: '材料和印刷注意事项',
       paragraphs: [
         '物理显示材料显着影响扫描可靠性。光面层压将头顶的灯光直接反射到客户的相机中。有纹理的材料可能会使模块边缘变形。廉价的印刷可能会模糊精细的细节。对于支付二维码，请投资质量：使用哑光或缎面层压，确保高分辨率打印，并在显示屏出现磨损之前更换它们。刮擦或褪色的支付代码会导致交易成本增加。',
-        '考虑显示器的耐用性和可更换性。 Counter displays get touched, moved, splashed, and occasionally knocked over.设计您的显示系统，以便可以轻松更换 QR 插件，而无需更换整个支架。准备好从锁定的配置链接生成的备用打印件，以便可以立即更换磨损的代码。',
+        '考虑显示器的耐用性和可更换性。柜台展示品会被触摸、移动、溅水，有时还会被撞倒。设计您的显示系统，以便可以轻松更换 QR 插件，而无需更换整个支架。准备好从锁定的配置链接生成的备用打印件，以便可以立即更换磨损的代码。',
       ],
     },
     {
@@ -213,7 +212,7 @@ export const learn: PageDefinition = {
     {
       heading: '为什么矢量 (SVG) 是打印的首选',
       paragraphs: [
-        "SVG 文件将 QR 码描述为数学形状而不是像素网格。这意味着代码可以缩放到任何尺寸 - 从 1 厘米标签到 10 米横幅 - 而不会损失边缘清晰度。 The printer's RIP (Raster Image Processor) renders the vectors at the output device's native resolution, ensuring each module edge is as crisp as the hardware allows.没有插值，没有抗锯齿伪像，也没有因多次调整大小操作而累积的模糊。",
+        'SVG 文件将 QR 码描述为数学形状而不是像素网格。这意味着代码可以缩放到任何尺寸 - 从 1 厘米标签到 10 米横幅 - 而不会损失边缘清晰度。打印机的 RIP（光栅图像处理器）以输出设备的原始分辨率渲染矢量，确保每个模块边缘在硬件允许的范围内尽可能清晰。没有插值，没有抗锯齿伪像，也没有因多次调整大小操作而累积的模糊。',
         '除了可扩展性之外，SVG 文件在专业工作流程中也更加强大。它们可以在设计软件中反复运行而不会降级。无需重新采样即可对它们进行颜色校正。它们干净地嵌入 PDF 文件中，以供印刷输出。对于任何注重质量的打印应用程序，SVG 应该是您的默认导出格式。',
       ],
     },
@@ -234,14 +233,14 @@ export const learn: PageDefinition = {
     {
       heading: 'ANQR 导出选项说明',
       paragraphs: [
-        "ANQR 提供多种 SVG 导出模式以适应不同的工作流程。真正的矢量模式产生纯粹的基于路径的输出，非常适合打印和专业设计工具。 When you've added raster overlays or certain effects, ANQR can embed these while maintaining vector modules, or you can export a fully rasterised version at your specified resolution.了解这些选项有助于您为每个用例选择正确的导出。",
+        'ANQR 提供多种 SVG 导出模式以适应不同的工作流程。真正的矢量模式产生纯粹的基于路径的输出，非常适合打印和专业设计工具。添加光栅叠加或某些效果后，ANQR 可以嵌入这些内容，同时维护矢量模块，或者您可以按指定的分辨率导出完全光栅化的版本。了解这些选项有助于您为每个用例选择正确的导出。',
         '对于 PNG 导出，ANQR 允许您指定精确的尺寸并包括透明背景的选项。 DPI 设置可帮助您计算适当的打印尺寸，但请记住 DPI 是元数据 - 对于打印而言，重要的是为您的物理尺寸提供足够的像素。如有疑问，出口量应大于您认为需要的量；缩小规模可以保持质量，而扩大规模则会破坏质量。',
       ],
     },
     {
       heading: '准备移交文件',
       paragraphs: [
-        'When passing QR artwork to designers or print vendors, include clear specifications: the intended physical size, minimum quiet zone requirements, and any colour space considerations.对于关键应用程序，请提供 SVG 主版和高分辨率 PNG 备份，并清楚地标明其预期用途。包含您的 ANQR 配置链接，以便可以在需要时重新生成代码。',
+        '将 QR 图稿传递给设计师或印刷供应商时，请包括明确的规格：预期的物理尺寸、最小静区要求以及任何色彩空间注意事项。对于关键应用程序，请提供 SVG 主版和高分辨率 PNG 备份，并清楚地标明其预期用途。包含您的 ANQR 配置链接，以便可以在需要时重新生成代码。',
         '预测移交过程中的常见错误。明确声明 QR 不应缩放、旋转、倾斜或应用效果。指定安静区域必须保持清晰 - 没有裁剪标记、注册标记或设计元素侵入。如果将 QR 放置在彩色或照片背景上，请提供具有不透明背衬形状的版本，以确保足够的对比度。',
       ],
       images: [
@@ -256,7 +255,7 @@ export const learn: PageDefinition = {
       heading: '验证打印校样',
       paragraphs: [
         '切勿在未扫描实物校样的情况下批准印刷。请求在实际基材上打印的校样以及将在生产中使用的实际饰面。在类似于最终作品展示位置的照明条件下扫描校样。使用多种设备进行测试，包括可能难以满足边际质量的旧款智能手机。',
-        '如果校样扫描缓慢或不一致，请在批准之前进行调查。 Common issues include insufficient contrast on coloured substrates, quiet zone violations from trimming, ink spread softening module edges, or lamination creating glare.任何这些问题都可以在进行完整印刷之前解决 - 但前提是您在打样阶段发现了这些问题。',
+        '如果校样扫描缓慢或不一致，请在批准之前进行调查。常见问题包括彩色基材对比度不足、修剪造成的静区违规、油墨扩散软化模块边缘或层压产生眩光。任何这些问题都可以在进行完整印刷之前解决 - 但前提是您在打样阶段发现了这些问题。',
       ],
       images: [
         {
@@ -298,7 +297,7 @@ export const learn: PageDefinition = {
       heading: '动画如何影响可扫描性',
       paragraphs: [
         'QR 扫描仪的工作原理是捕获单个帧并分析明暗模块的图案。为了使动画代码正常工作，每一帧都必须包含完整、有效的 QR 图案。这排除了改变代码结构、溶解模块或显着改变对比度模式的动画。数据承载模块（中心看似随机的图案）必须始终保持视觉稳定。',
-        "Safe animation approaches modify elements that don't carry data: backgrounds, colours, decorative frames, and overlay elements.结构组件 - 取景器图案（大角方块）、计时图案（交替线）和对齐图案（较大代码中的较小方块） - 必须保持其位置和比例。 Working within these constraints still allows for surprisingly dynamic and engaging animations.",
+        '安全动画方法修改不携带数据的元素：背景、颜色、装饰框架和覆盖元素。结构组件 - 取景器图案（大角方块）、计时图案（交替线）和对齐图案（较大代码中的较小方块） - 必须保持其位置和比例。在这些限制下工作仍然可以实现令人惊讶的动态和引人入胜的动画。',
       ],
     },
     {
@@ -319,7 +318,7 @@ export const learn: PageDefinition = {
       heading: '配置动画参数',
       paragraphs: [
         '帧速率会影响视觉流畅度和文件大小。对于大多数应用程序，每秒 10-15 帧可提供流畅的运动，且文件大小不会过大。较高的帧速率会降低视觉效果，同时显着增加文件大小。考虑您的投放环境 - 大型数字标牌可以处理比移动广告展示位置更大的文件。',
-        '循环行为决定动画如何循环。 Seamless loops create continuous motion ideal for signage and ambient displays.乒乓（向前然后向后）循环非常适合简单的动画。对于吸引注意力的脉冲，请考虑带有停顿的动画 - 静止的时间段被运动所打断，吸引眼球而不会产生持续的运动疲劳。',
+        '循环行为决定动画如何循环。无缝循环创造连续运动，非常适合标牌和环境显示。乒乓（向前然后向后）循环非常适合简单的动画。对于吸引注意力的脉冲，请考虑带有停顿的动画 - 静止的时间段被运动所打断，吸引眼球而不会产生持续的运动疲劳。',
       ],
     },
     {
@@ -372,7 +371,7 @@ export const learn: PageDefinition = {
 
     // Guide 5: QR Safety & Compliance
     {
-      heading: 'QR Safety and Compliance Best Practices',
+      heading: 'QR 安全与合规性最佳实践',
       paragraphs: [
         '设计精美的二维码如果无法扫描，则比无用更糟糕——它会让客户感到沮丧，损害品牌认知度，并浪费在创建和分发过程中投入的所有资源。本指南涵盖了决定 QR 码是否能够可靠扫描的技术和实践因素，以及如何使用 ANQR 的安全功能在潜在问题进入生产之前发现它们。',
         'QR 码可靠性不是二进制的。代码可能在旗舰手机上完美扫描，但在廉价设备上扫描失败。它可能在理想的照明条件下工作，但在昏暗的餐厅或明亮的阳光下就很困难。了解影响可扫描性的因素有助于您在视觉样式和现实世界的可靠性之间做出明智的权衡。',
@@ -388,7 +387,7 @@ export const learn: PageDefinition = {
     {
       heading: 'Understanding Error Correction Levels',
       paragraphs: [
-        'QR 码包含内置冗余，即使在部分损坏或模糊的情况下也可以读取。 The error correction level - L (7%), M (15%), Q (25%), or H (30%) - determines how much of the code can be missing while still decoding correctly.更高的纠错率会产生更大的代码，但为覆盖、打印缺陷和环境破坏提供了安全裕度。',
+        'QR 码包含内置冗余，即使在部分损坏或模糊的情况下也可以读取。纠错级别 - L (7%)、M (15%)、Q (25%) 或 H (30%) - 确定在正确解码的同时可以丢失多少代码。更高的纠错率会产生更大的代码，但为覆盖、打印缺陷和环境破坏提供了安全裕度。',
         '对于具有图像覆盖的代码，纠错级别 H 至关重要 - 覆盖在物理上遮盖了部分代码，并且您需要 30% 的冗余来保持可靠性。对于受控环境中干净、无样式的代码，M 级通常就足够了。 L 级应该保留用于代码大小受到严格限制并且可以保证原始条件的情况。',
       ],
     },
@@ -438,7 +437,7 @@ export const learn: PageDefinition = {
       heading: '真实世界的测试协议',
       paragraphs: [
         '再多的软件验证也无法取代物理测试。在代表性材料上按预期尺寸打印代码。在实际部署环境中，在符合实际使用的光照条件下进行测试。使用多个设备进行扫描 - 不仅是您的旗舰手机，还包括经济型 Android 设备、旧款 iPhone 以及您的受众常用的任何特定设备。',
-        'Document your testing systematically.记录测试了哪些设备、在什么条件下测试了哪些结果。如果您要大规模部署代码，请建立验收标准：整个设备测试池的成功率可能为 95%，或者在所有测试设备上 2 秒内成功扫描。这些标准有助于客观地做出进行/不进行的决策，而不是抱有最好的希望。',
+        '系统地记录您的测试。记录测试了哪些设备、在什么条件下测试了哪些结果。如果您要大规模部署代码，请建立验收标准：整个设备测试池的成功率可能为 95%，或者在所有测试设备上 2 秒内成功扫描。这些标准有助于客观地做出进行/不进行的决策，而不是抱有最好的希望。',
       ],
       images: [
         {

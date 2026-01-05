@@ -61,8 +61,8 @@ const PROD_REWARDED_IDS: Record<RewardedType, string> = {
 // Production ads are tried first; if they fail, we fallback to test ads
 const hasProductionIds = Boolean(
   import.meta.env.VITE_ADMOB_BANNER_BOTTOM ||
-  import.meta.env.VITE_ADMOB_INTERSTITIAL_EXPORT ||
-  import.meta.env.VITE_ADMOB_REWARDED_PREMIUM
+    import.meta.env.VITE_ADMOB_INTERSTITIAL_EXPORT ||
+    import.meta.env.VITE_ADMOB_REWARDED_PREMIUM
 );
 const FORCE_TEST_ADS = import.meta.env.DEV || import.meta.env.VITE_ADMOB_TESTING === 'true';
 
@@ -174,14 +174,16 @@ export async function initializeAdMob(): Promise<boolean> {
 
     for (let attempt = 1; attempt <= MAX_RETRIES; attempt++) {
       try {
-        console.error(`AdMob: Initializing (attempt ${attempt}/${MAX_RETRIES}), forceTestMode=${FORCE_TEST_ADS}, hasProductionIds=${hasProductionIds}`);
-        
+        console.error(
+          `AdMob: Initializing (attempt ${attempt}/${MAX_RETRIES}), forceTestMode=${FORCE_TEST_ADS}, hasProductionIds=${hasProductionIds}`
+        );
+
         // The initialize call may take a while due to Google Play Services signal collection
         // This is normal and the SDK will still work even if signal collection times out
         await AdMob.initialize({
           initializeForTesting: FORCE_TEST_ADS,
         });
-        
+
         console.error('AdMob: SDK initialized successfully');
 
         setupAdMobListeners();
@@ -196,7 +198,7 @@ export async function initializeAdMob(): Promise<boolean> {
         console.error('AdMob: Preparing interstitial ad...');
         const interstitialResult = await prepareInterstitial('export');
         console.error(`AdMob: Interstitial prepare result: ${interstitialResult}`);
-        
+
         console.error('AdMob: Preparing rewarded ad...');
         const rewardedResult = await prepareRewardedAd('premium');
         console.error(`AdMob: Rewarded prepare result: ${rewardedResult}`);
@@ -206,7 +208,7 @@ export async function initializeAdMob(): Promise<boolean> {
       } catch (error) {
         const errorMsg = error instanceof Error ? error.message : String(error);
         console.error(`AdMob: Initialization attempt ${attempt} failed: ${errorMsg}`);
-        
+
         if (attempt < MAX_RETRIES) {
           console.error(`AdMob: Retrying in ${RETRY_DELAY}ms...`);
           await new Promise((resolve) => setTimeout(resolve, RETRY_DELAY));
@@ -243,14 +245,18 @@ function setupAdMobListeners() {
 
   AdMob.addListener(BannerAdPluginEvents.FailedToLoad, (error) => {
     console.error('AdMob: Banner ad failed to load:', error);
-    console.error(`AdMob: pendingBannerPosition=${pendingBannerPosition}, currentBannerPosition=${currentBannerPosition}`);
-    
+    console.error(
+      `AdMob: pendingBannerPosition=${pendingBannerPosition}, currentBannerPosition=${currentBannerPosition}`
+    );
+
     // Handle fallback to test ads
     // Use currentBannerPosition as fallback if pendingBannerPosition was cleared
     const position = pendingBannerPosition || currentBannerPosition;
     if (position) {
       const adTypeKey = position === 'top' ? 'bannerTop' : 'bannerBottom';
-      console.error(`AdMob: Checking fallback for ${adTypeKey}, shouldUseTestAds=${shouldUseTestAds(adTypeKey)}`);
+      console.error(
+        `AdMob: Checking fallback for ${adTypeKey}, shouldUseTestAds=${shouldUseTestAds(adTypeKey)}`
+      );
       if (!shouldUseTestAds(adTypeKey)) {
         markProdAdFailed(adTypeKey);
         // Clear state before retry to avoid loops
@@ -417,7 +423,7 @@ export async function showBannerAd(position: 'top' | 'bottom' = 'bottom'): Promi
   const adTypeKey = position === 'top' ? 'bannerTop' : 'bannerBottom';
   const prodAdId = position === 'top' ? PROD_BANNER_TOP_ID : PROD_BANNER_BOTTOM_ID;
   const useTestAds = shouldUseTestAds(adTypeKey);
-  
+
   // Track pending position for FailedToLoad event handler
   pendingBannerPosition = position;
 
@@ -430,7 +436,9 @@ export async function showBannerAd(position: 'top' | 'bottom' = 'bottom'): Promi
       isTesting: useTestAds,
     };
 
-    console.error(`AdMob: Showing banner at ${position}, testMode=${useTestAds}, adId=${options.adId}`);
+    console.error(
+      `AdMob: Showing banner at ${position}, testMode=${useTestAds}, adId=${options.adId}`
+    );
     await AdMob.showBanner(options);
     currentBannerPosition = position;
     // Note: Don't clear pendingBannerPosition here - wait for Loaded or FailedToLoad event
@@ -439,7 +447,7 @@ export async function showBannerAd(position: 'top' | 'bottom' = 'bottom'): Promi
     return true;
   } catch (error) {
     console.error('AdMob: Failed to show banner:', error);
-    
+
     // If production ads failed, retry with test ads
     if (!useTestAds) {
       markProdAdFailed(adTypeKey);

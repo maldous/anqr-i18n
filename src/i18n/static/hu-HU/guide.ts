@@ -16,7 +16,7 @@ export const guide: PageDefinition = {
     {
       heading: 'Kezdődik',
       paragraphs: [
-        'Az ANQR egy QR kódgenerátor, az ügyfelek első megközelítésével. Alapértelmezés szerint a QR kódok a böngészőben helyben keletkeznek - nincs szükség fiókra, és az adatok bizalmasak maradnak. A professzionális beágyazás, akkor is használja a szerver- side API.',
+        'Az ANQR egy QR-kód generátor, ügyfél-első megközelítéssel. Alapértelmezés szerint a QR-kódok helyileg generálódnak a böngészőben – nincs szükség fiókra, és adatai privátak maradnak. Professzionális beágyazáshoz használhatja a szerveroldali API-t is.',
         'Az interfész három interfész szinten: Basic, Advanced, és Professional. Válassza ki a szintet a fülek a fejléc. Minden szint további funkciókat nyit meg, miközben az interfész arra összpontosít, amire szüksége van.',
       ],
       bullets: [
@@ -61,7 +61,7 @@ export const guide: PageDefinition = {
       heading: 'Tartalomtípusok (alapvető)',
       paragraphs: [
         'Sima szöveg: bármilyen szöveget kódol a QR-kód kapacitáshatáráig. Ideális rövid üzenetek, kódok vagy azonosítók.',
-        'URL: Webcímek kódolása. A QR kód a szkenneléskor megnyitja az URL-t. Támogatja a http: / / and https: / / protokollokat.',
+        'URL: Webcímek kódolása. A QR-kód beolvasáskor megnyitja az URL-t. Támogatja a http:// és https:// protokollokat.',
       ],
     },
     {
@@ -190,7 +190,7 @@ export const guide: PageDefinition = {
     {
       heading: 'A modul mérete és Gap',
       paragraphs: [
-        'Modul mérete: Ellenőrzi, hogy az egyes modulok milyen nagy pixelek. Nagyobb értékek hoznak létre nagyobb, könnyebb-to-scan kódokat.',
+        'Modul mérete: Azt szabályozza, hogy az egyes modulok milyen nagyságúak legyenek pixelben. A nagyobb értékek nagyobb, könnyebben beolvasható kódokat hoznak létre.',
         'Gap modul: A modulok közötti tér növelése százalékban. A kis hiányosságok (5-15%) bizonyos körülmények között javíthatják a szóródást, de a túlzott hiányosságok csökkentik a megbízhatóságot.',
       ],
     },
@@ -572,7 +572,7 @@ export const guide: PageDefinition = {
     },
     {
       heading: 'Biztonsági elemzés',
-      paragraphs: ['Győződjön meg róla, hogy a QR-kódok továbbra is olvashatók:'],
+      paragraphs: ['Győződjön meg arról, hogy a QR-kódok továbbra is beolvashatók maradnak:'],
       bullets: [
         'Biztonsági mód: kikapcsolt, kiegyenlített vagy szigorú letapogatási követelmények.',
         'Min modul Méret: Minimális pixel méret modulonként.',
@@ -668,11 +668,11 @@ export const guide: PageDefinition = {
       heading: 'Délkelet-ázsiai fizetési előírások',
       bullets: [
         'PayNow (Szingapúr): Szingapúr gyors fizetési rendszer EMVCo QR specifikációval SGQR profillal. Támogatja az UEN-t (cégbejegyzés), a mobilszámot vagy az NRIC-t mint proxyazonosítót. Tartalmazza az esedékesség összegét és a lejárati dátumot.',
-        'PromptPay (Thaiföld): Thai nemzeti fizetési rendszer a Bank of Thailand EMV profilját követve. Támogatja a mobilszámot, a nemzeti személyazonosságot, az adóazonosítót, az e-pénztárca azonosítóját és a több hivatkozási mezőt tartalmazó számlafizetést.',
+        'PromptPay (Thaiföld): Thaiföldi nemzeti fizetési rendszer, amely a Bank of Thailand EMV profilját követi. Támogatja a mobilszámot, nemzeti azonosítót, adóazonosítót, e-pénztárca azonosítót és számlafizetést több hivatkozási mezővel.',
         'QRIS (Indonézia): Quick Response Code Indonéz szabvány. EMV-alapú nemzeti fizetési szabvány a kereskedelmi azonosító, NMID (National Merchant ID), kereskedelmi kritériumok osztályozása és kényelmi díjak (rögzített vagy százalékos) támogatására.',
         'DuitNow (Malajzia): Malaysia instant payment system. Támogatja a több proxy típusok, beleértve az NRIC, mobil, útlevél, hadsereg azonosító, és cégnyilvántartási számok.',
         'VietQR (Vietnam): Vietnami bankközi átutalási szabvány. Banki BIN (NAPAS azonosító) és számlaszám szükséges. Támogatja a különböző átviteli típusok (QRPUSH, QRIBFTTA, QRIBFTTC) több szolgáltatási kódját.',
-        'QR Ph (Fülöp-szigetek): Philippe QR fizetési szabvány az InstaPay és a PESONet. A P2M (personal-to-trade) tranzakciókhoz a kereskedelmi azonosító számokkal szolgál.',
+        'QR Ph (Fülöp-szigetek): Fülöp-szigeteki QR fizetési szabvány az InstaPay és a PESONet számára. Kereskedőazonosítóval ellátott számlaszámokat használ a P2M (személyek és kereskedők közötti) tranzakciókhoz.',
       ],
       links: [
         {
@@ -901,9 +901,9 @@ export const guide: PageDefinition = {
     },
     {
       heading: 'Átfedési paraméterek',
-      paragraphs: ['Image overlay opciók (overlay image is geted server- side):'],
+      paragraphs: ['Képfedvény-beállítások (a fedvényképet a szerver oldalon tölti le):'],
       bullets: [
-        'unit synonyms for matching user input.',
+        'img: A fedőkép URL-je (nyilvánosan elérhetőnek kell lennie).',
         'mód: Overlay mód - középen, félhang, keverék, fényerő, mozaik, eláztatott, blue- zaj, subpixel.',
         'intenzitás: Overlay intenzitás 0-100 (alapértelmezett: 100).',
         'szín Mode: Overlay szín mód - szín, szürkeárnyalat, bw.',

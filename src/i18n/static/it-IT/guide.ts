@@ -600,7 +600,7 @@ export const guide: PageDefinition = {
       paragraphs: ['Livello professionale aggiunge tipi di pagamento e contenuti aziendali:'],
       bullets: [
         'EPC/SEPA (UE): Codici QR di bonifico bancario europeo con IBAN, BIC, importo, riferimento.',
-        'UPI (India): Unified Payments Interface with VPA, payee nome, importo.',
+        'UPI (India): interfaccia pagamenti unificati con VPA, nome del beneficiario, importo.',
         'PayNow (Singapore): Pagamento veloce Singapore con UEN o numero di cellulare.',
         'PromptPay (Thailandia): Sistema di pagamento nazionale tailandese.',
         'PIX (Brasile): pagamento immediato brasiliano con chiave PIX.',
@@ -670,7 +670,7 @@ export const guide: PageDefinition = {
       heading: 'Sud-est asiatico standard di pagamento',
       bullets: [
         "PayNow (Singapore): Sistema di pagamento rapido a Singapore con specifiche QR EMVCo con profilo SGQR. Supporta UEN (registrazione aziendale), numero mobile o NRIC come identificatori proxy. Include la bandiera di modifica dell'importo e la data di scadenza.",
-        "PromptPay (Thailandia): Sistema di pagamento nazionale tailandese seguendo il profilo EMV Bank of Thailand. Supporta il numero di cellulare, l'ID nazionale, l'ID fiscale, l'ID e-wallet e il pagamento della fattura con più campi di riferimento.",
+        'PromptPay (Thailandia): sistema di pagamento nazionale tailandese secondo il profilo EMV della Banca di Thailandia. Supporta numero di cellulare, ID nazionale, ID fiscale, ID portafoglio elettronico e pagamento di fatture con più campi di riferimento.',
         "QRIS (Indonesia): Quick Response Code Indonesian Standard. Standard di pagamento nazionale basato su EMV che supporta l'ID commerciante, NMID (National Merchant ID), la classificazione dei criteri mercantili e le spese di convenienza (fisso o percentuale).",
         "DuitNow (Malaysia): sistema di pagamento immediato malese. Supporta più tipi di proxy tra cui NRIC, mobile, passaporto, ID dell'esercito e numeri di registrazione di affari.",
         'VietQR (Vietnam): standard di trasferimento interbanca vietnamita. Richiede BIN banca (identificazione NAPAS) e numero di conto. Supporta più codici di servizio per diversi tipi di trasferimento (QRPUSH, QRIBFTTA, QRIBFTTC).',
@@ -732,7 +732,7 @@ export const guide: PageDefinition = {
       heading: 'Servizi di pagamento',
       bullets: [
         'PayPal.Me: link di pagamento PayPal con nome utente e importo pre-riempito opzionale. I destinatari possono pagare tramite saldo PayPal, carte o conti bancari.',
-        'Cash App: Contanti App link di pagamento utilizzando $cashtag con importo opzionale. Popolare negli Stati Uniti per i pagamenti peer-to-peer.',
+        "App Cash: collegamenti di pagamento dell'app Cash utilizzando $cashtag con importo opzionale. Popolare negli Stati Uniti per i pagamenti peer-to-peer.",
       ],
       links: [
         {
@@ -917,7 +917,7 @@ export const guide: PageDefinition = {
         'colore Modalità: Modalità colore sovrapposizione - colore, scala di grigi, bw.',
         'fit: Come sovrapposizione - coprire, contenere, stretch.',
         'rotazione in gradi.',
-        'flipX, flipY: Set to 1 per ribaltare la sovrapposizione.',
+        'flipX, flipY: imposta su 1 per capovolgere la sovrapposizione.',
         'continua Cercatori: Conservare i modelli di ricerca (default: 1).',
         'continua Timing, mantenereAllineare: Impostare a 1 per preservare tempi / schemi di allineamento.',
       ],
@@ -936,17 +936,17 @@ export const guide: PageDefinition = {
         'posterize: Posterizzare i livelli.',
         'soglia: Soglia binaria 0-255.',
         'bordo: rilevamento bordo - off, sobel, canny.',
-        'invert: Set to 1 per invertire i colori.',
+        'inverti: impostare su 1 per invertire i colori.',
       ],
     },
     {
       heading: 'Parametri di filigrana',
       paragraphs: ['Aggiungi filigrane ai codici QR generati:'],
       bullets: [
-        'wmEn: Set to 1 per abilitare la filigrana.',
+        'wmEn: impostare su 1 per abilitare la filigrana.',
         '# Tipo: Tipo di filigrana - testo, immagine, modello.',
         'wmText: testo di filigrana (URL codificato).',
-        'wmImg: URL to watermark image.',
+        "wmImg: URL per aggiungere la filigrana all'immagine.",
         'wmPos: Posizione - centro, angoli, bordi, dietro, zona tranquilla.',
         'wmOpacity: Opacity 0-100 (default: 50).',
         'wmBlend: modalità Blend - normale, moltiplicare, schermo, sovrapposizione.',

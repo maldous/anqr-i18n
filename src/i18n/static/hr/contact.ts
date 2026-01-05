@@ -16,7 +16,7 @@ export const contact: PageDefinition = {
     {
       heading: 'E-mail',
       paragraphs: [
-        'Za sve upite: ${CONTACT_EMAIL}',
+        'Za sve upite: email@anqr.link',
         'Ovo je najpouzdaniji način da dođete do nas i preporučujemo ga za detaljna pitanja, poslovne upite ili bilo koje druge upite.',
       ],
     },
@@ -61,7 +61,7 @@ export const contact: PageDefinition = {
     {
       heading: 'DMCA kontakt',
       paragraphs: [
-        'Pošaljite DMCA obavijesti na: ${CONTACT_EMAIL}',
+        'Pošaljite DMCA obavijesti na: email@anqr.link',
         'Uključite "DMCA obavijest" u predmet. Odgovorit ćemo na važeće obavijesti u skladu s važećim zakonom. Imajte na umu da ANQR generira QR kodove lokalno na korisničkim uređajima i ne hostira sadržaj koji generiraju korisnici.',
       ],
     },

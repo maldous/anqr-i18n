@@ -28,20 +28,20 @@ export const contact: PageDefinition = {
         'Feature anmodninger: Forslag til nye funktioner eller forbedringer. Vi behandler alle anmodninger, selv om vi ikke kan love gennemførelse.',
         'Virksomhedsforespørgsler: Partnerskabsmuligheder, licensspørgsmål eller kommercielle forespørgsler.',
         'Forespørgsler om beskyttelse af personlige oplysninger: Anmodninger om at udøve dine personlige rettigheder under GDPR, CCPA eller andre love om beskyttelse af personlige oplysninger (se Privacy Policy).',
-        'DMCA / Copyright: Se DMCA-afsnittet nedenfor for krav til opstart.',
+        'DMCA/Copyright: Se DMCA-afsnittet nedenfor for krav om meddelelse om fjernelse.',
       ],
     },
     {
       heading: 'Responstid',
       paragraphs: [
-        'Vi har til hensigt at besvare forespørgsler inden for 5-7 hverdage. Privacy- relaterede anmodninger vil blive behandlet inden for 30 dage som krævet i loven.',
+        'Vi bestræber os på at besvare henvendelser inden for 5-7 hverdage. Privatlivsrelaterede anmodninger vil blive behandlet inden for 30 dage som krævet ved lov.',
         'I travle perioder kan responstiden være længere. I hastende tilfælde anføres "URGENT" i emnelinjen.',
       ],
     },
     {
       heading: 'Før du kontakter os',
       paragraphs: [
-        'Tjek venligst vores Dokumentationsside for svar på almindelige spørgsmål om, hvordan du bruger ANQR-funktioner. Mange spørgsmål om QR kode generation, styling, og eksport muligheder er dækket der.',
+        'Se venligst vores dokumentationsside for svar på almindelige spørgsmål om, hvordan du bruger ANQR-funktioner. Mange spørgsmål om QR-kodegenerering, styling og eksportmuligheder er dækket der.',
       ],
     },
     {
@@ -55,7 +55,7 @@ export const contact: PageDefinition = {
         'Identifikation af det materiale, der hævdes at krænke, med tilstrækkelige oplysninger til at lokalisere det.',
         'Din kontaktinformation (adresse, telefonnummer og e-mailadresse).',
         'En erklæring om, at du har en god tro på, at brugen af materialet ikke er godkendt af ejeren af ophavsretten.',
-        'En erklæring, under straf for mened, at oplysningerne i din meddelelse er korrekte, og at du er den ophavsretlige ejer eller bemyndiget til at handle på deres vegne.',
+        'En erklæring, under straf for mened, om, at oplysningerne i din meddelelse er nøjagtige, og at du er ophavsretsejeren eller autoriseret til at handle på deres vegne.',
       ],
     },
     {

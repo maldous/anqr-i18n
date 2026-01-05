@@ -15,7 +15,7 @@ export const contact: PageDefinition = {
     {
       heading: '电子邮件',
       paragraphs: [
-        '所有查询：${CONTACT_EMAIL}',
+        '所有查询：email@anqr.link',
         '这是联系我们最可靠的方式，建议您询问详细问题、业务咨询或任何其他咨询。',
       ],
     },
@@ -60,7 +60,7 @@ export const contact: PageDefinition = {
     {
       heading: '数字千年版权法案 (DMCA) 联系方式',
       paragraphs: [
-        '将 DMCA 通知发送至：${CONTACT_EMAIL}',
+        '将 DMCA 通知发送至：email@anqr.link',
         '请在主题行中注明DMCA 通知。我们将根据适用法律对有效通知做出回应。请注意，ANQR 在用户设备上本地生成 QR 码，并且不托管用户生成的内容。',
       ],
     },

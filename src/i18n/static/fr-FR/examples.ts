@@ -10,7 +10,7 @@ import { LAST_UPDATED } from '../types';
 export const examples: PageDefinition = {
   title: "Exemples d'ANQR",
   description:
-    "Cinq exemples du monde réel, style de production qui montrent où les codes QR créent une valeur mesurable: élever un ancien code de comptoir de détail, les paiements au détail de marque et les actions « scan-to » , l'impression des flyers aux panneaux d'affichage , QR animé pour l'affichage numérique , et la collaboration cross-lingual utilisant des liens Anchor partageables . Chaque exemple comprend des images, des contraintes pratiques et un lien remix vers le générateur.",
+    "Cinq exemples concrets de style production qui montrent où les codes QR créent une valeur mesurable : amélioration d'un ancien code de comptoir de vente au détail, paiements de vente au détail de marque et actions de « numérisation », mise à l'échelle de l'impression des dépliants aux panneaux d'affichage, QR animé pour l'affichage numérique et collaboration multilingue à l'aide de liens d'ancrage partageables. Chaque exemple comprend des images, des contraintes pratiques et un lien de remix vers le générateur.",
   lastUpdated: LAST_UPDATED,
 
   primaryLinks: [

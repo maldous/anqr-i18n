@@ -10,7 +10,7 @@ import { LAST_UPDATED } from '../types';
 export const examples: PageDefinition = {
   title: 'ANQR Eksempler',
   description:
-    'Fem virkelige eksempler på produksjonsstil som viser hvor QR-kodene skaper målbar verdi: å løfte opp en arvlig retail kontrakode, merkede detaljbetalinger og "scan-to" handlinger, skrive ut skalering fra flyers til billboards, animert QR for digital signage og tverrspråklig samarbeid ved hjelp av delerbare ankerkoblinger. Hvert eksempel inkluderer bilder, praktiske begrensninger og en remiksforbindelse tilbake til generatoren.',
+    'Fem virkelige eksempler i produksjonsstil som viser hvor QR-koder skaper målbar verdi: oppløfting av en eldre tellerkode, merkevarebetalinger og "skanne-til"-handlinger, utskriftsskalering fra flygeblad til reklametavler, animert QR for digital skilting og tverrspråklig samarbeid ved bruk av delbare ankerlenker. Hvert eksempel inkluderer bilder, praktiske begrensninger og en remikskobling tilbake til generatoren.',
   lastUpdated: LAST_UPDATED,
 
   primaryLinks: [
@@ -24,8 +24,8 @@ export const examples: PageDefinition = {
     {
       heading: 'Saksstudie: Retail Counter QR Uplift',
       paragraphs: [
-        'Dette virkelige eksemplet følger en liten kafé som hadde brukt den samme QR-koden på disken i tre år. Den opprinnelige koden ble generert raskt under pandemisk rush, trykt på standardpapir og gled inn i en plast stativ. Det fungerte fortsatt - teknisk - men kundene trengte ofte flere forsøk på å skanne det, og det gjorde ingenting for å styrke kaféens nøye laget merkevareidentitet.',
-        'Forvandlingen begynte med en enkel revisjon: den eksisterende koden kodet kaféens nettmeny URL, som de ønsket å beholde. Utfordringen var å få QR til å føle seg som en del av kaféopplevelsen i stedet for et ettertankeverktøy fra 2020.',
+        'Dette virkelige eksemplet følger en liten kafé som hadde brukt den samme QR-koden på disken i tre år. Den originale koden ble generert raskt under pandemien, trykt på standardpapir og skled inn i et plaststativ. Det fungerte fortsatt – teknisk – men kundene trengte ofte flere forsøk på å skanne det, og det gjorde ingenting for å forsterke kafeens nøye utformede merkeidentitet.',
+        'Transformasjonen begynte med en enkel revisjon: den eksisterende koden kodet kafeens nettmeny-URL, som de ønsket å beholde. Utfordringen var å få QR-en til å føles som en del av kaféopplevelsen i stedet for et ettertankeverktøy fra 2020.',
       ],
       images: [
         {
@@ -54,15 +54,15 @@ export const examples: PageDefinition = {
     {
       heading: 'Oppløftingsprosessen',
       paragraphs: [
-        'Ved hjelp av ANQR gjenskapte kaféeieren koden med den samme menyadressen, men dramatisk forbedrede innstillinger: Feilretting H for maksimal motstandsdyktighet, en 6-moduls rolig sone for pålitelig grensedetektering og merkefarger (deep burgundy moduler på krem bakgrunn) som matcher kaféens interiør palett.',
-        'En liten senteroverlegg med kaféens logo ble lagt til - holdt bevisst subtil for å opprettholde skannbarhet mens det ga umiddelbar merkegjenkjenning. Sikkerhetsmodus bekreftet den nye designen skannet pålitelig på tvers av testenheter før noen utskrift.',
+        'Ved å bruke ANQR gjenskapte kaféeieren koden med identisk meny-URL, men dramatisk forbedrede innstillinger: Feilretting H for maksimal motstandskraft, en 6-moduls stillesone for pålitelig grensedeteksjon og merkefarger (dyp burgunder-moduler på krembakgrunn) som matchet kafeens interiørpalett.',
+        'Et lite midtoverlegg med kafeens logo ble lagt til - holdt bevisst subtilt for å opprettholde skanbarhet samtidig som det gir umiddelbar merkegjenkjenning. Sikkerhetsmodus bekreftet den nye designen skannet pålitelig på tvers av testenheter før noen utskrift.',
       ],
       images: [
         {
           src: '/images/examples/uplift-process.png',
           alt: 'ANQR-grensesnitt som viser konfigurasjonen: merkefarger, passende ECC, sjenerøs stille sone, subtil logooverlegg',
           caption:
-            'Bygge oppgradert konfigurasjon: alle innstillinger valgt for å balansere merkeuttrykk med skanne pålitelighet',
+            'Bygge den oppgraderte konfigurasjonen: hver innstilling valgt for å balansere merkeuttrykk med skanningspålitelighet',
         },
       ],
     },
@@ -70,7 +70,7 @@ export const examples: PageDefinition = {
       heading: 'Målbare resultater',
       paragraphs: [
         'Etter å ha utplassert den nye QR på profesjonell matt-laminert kort aksje, sporet kaféen resultater over fire uker. Scan suksessrate forbedres fra en estimert 70% til nær-100%. Gjennomsnittlig skanningstid falt fra 3-4 sekunder til under 1 sekund. Mest betydelig økte menuen engasjement 40% - kunder som tidligere hadde sett på QR og gitt opp var nå skanning trygt.',
-        'Personalet rapporterte færre kundespørsmål om \\"hvordan du bruker QR\\" og ikke flere tilfeller av manuelt å skrive URL for frustrerte kunder. Det merkede utseendet utløste også samtaler med kunder som kommenterte positivt på den kohesive designen.',
+        'Personalet rapporterte færre kundespørsmål om "hvordan bruke QR-en" og ingen flere tilfeller av manuell inntasting av URL-en for frustrerte kunder. Det merkede utseendet utløste også samtaler, med kunder som kommenterte positivt på det sammenhengende designet.',
       ],
       images: [
         {
@@ -83,15 +83,15 @@ export const examples: PageDefinition = {
     {
       heading: 'Opprett dette konfigurasjonen på nytt',
       paragraphs: [
-        'Kaféens konfigurasjon demonstrerer konservativ, men effektiv merkevare: Feilretting H, 6-moduls stille sone, høykontrast merkefarger og et minimalt senteroverlegg. Denne balansen fungerer for de fleste retail counter applikasjoner hvor pålitelighet må komme først, men merkevare tilstedeværelse fortsatt spiller rolle.',
+        'Kaféens konfigurasjon demonstrerer konservativ, men effektiv merkevarebygging: Feilretting H, 6-modulers stillesone, merkefarger med høy kontrast og minimalt midtoverlegg. Denne balansen fungerer for de fleste skrankeapplikasjoner der pålitelighet må komme først, men tilstedeværelse av merkevarer fortsatt betyr noe.',
         'Åpne generatoren med disse innstillingene forhåndslastet og tilpasse farger og overlegg til ditt eget merke. Nøkkelinnsikten er at pålitelighetsforbedringer alene kan øke engasjement dramatisk, selv før du legger til noen visuell styling.',
-        'Se den relaterte Lær guiden om å forbedre eksisterende QR-kampanjer for den fulle metoden bak denne tilnærmingen.',
+        'Se den relaterte Learn-veiledningen for å forbedre eksisterende QR-kampanjer for hele metodikken bak denne tilnærmingen.',
       ],
       images: [
         {
           src: '/images/examples/uplift-config.png',
-          alt: 'Koble til generatoren forhåndskonfigurert med kaféens innstillinger for umiddelbar tilpasning',
-          caption: 'Start med en bevist konfigurasjon og skreddersydd for merket ditt',
+          alt: 'Link til generatoren forhåndskonfigurert med kafeens innstillinger for umiddelbar tilpasning',
+          caption: 'Start med en velprøvd konfigurasjon og tilpass merkevaren din',
         },
       ],
       links: [
@@ -135,7 +135,7 @@ export const examples: PageDefinition = {
           src: '/images/examples/payments-primary.png',
           alt: 'En ren, stor betaling QR-kode på profesjonell matt kortlager, plassert fremtredende på registeret',
           caption:
-            'Betaling QR: størrelse sjenerøst, trykt profesjonelt, stilet konservativt for øyeblikkelig anerkjennelse av bankapps',
+            'Betalings-QR: generøst størrelse, profesjonelt skrevet ut, stilet konservativt for umiddelbar gjenkjennelse av bankapper',
         },
       ],
     },
@@ -148,16 +148,16 @@ export const examples: PageDefinition = {
       images: [
         {
           src: '/images/examples/payments-secondary.png',
-          alt: 'Et merket panel som viser fire stylede QR-koder for tips, vurderinger, sosiale og ansettelse, med klare etiketter',
+          alt: 'Et merkepanel som viser fire stilede QR-koder for tips, anmeldelser, sosiale medier og ansettelse, med tydelige etiketter',
           caption:
-            'Det sekundære handlingspanelet: konsistent merkemerking, klar merking, posisjonert som alternativer i stedet for distraksjoner',
+            'Det sekundære handlingspanelet: konsekvent merkevarebygging, tydelig merking, plassert som alternativer i stedet for distraksjoner',
         },
       ],
     },
     {
       heading: 'Visningssystemdesign',
       paragraphs: [
-        'Den fysiske skjermen løste flere problemer samtidig. Både betalingsstativet og det sekundære panelet brukte mattematerialer for å eliminere bleke fra overbelysning. Høydene ble optimalisert for kunder med varierende vekst. Vinkler rettet mot kundekøen i stedet for flatt på disken.',
+        'Den fysiske skjermen løste flere problemer samtidig. Både betalingsstativet og det sekundære panelet brukte matte materialer for å eliminere gjenskinn fra takbelysning. Høyder ble optimalisert for kunder av varierende statur. Vinkler rettet mot kundekøen i stedet for flatt på disken.',
         'Kritisk opprettet lagret reserveutskrifter fra låste ANQR konfigurasjonslenker. Når tipskoden til slutt fikk kaffe-plashed, erstattet personalet det i løpet av minutter ved hjelp av den lagrede konfigurasjonen - ingen skjermbilde, ingen gjetting på innstillinger, ingen kvalitetsnedbrytning.',
       ],
       images: [
@@ -165,7 +165,7 @@ export const examples: PageDefinition = {
           src: '/images/examples/payments-display.png',
           alt: 'Et diagram som viser den fysiske visningen: høyder, vinkler, materialer og forholdet mellom betaling og sekundærskjermer',
           caption:
-            'Display system blueprint: fysisk ergonomi optimalisert for pålitelig skanning på tvers av kundehøyder og belysningsforhold',
+            'Skjermsystemplan: fysisk ergonomi optimalisert for pålitelig skanning på tvers av kundehøyder og lysforhold',
         },
       ],
     },
@@ -173,8 +173,8 @@ export const examples: PageDefinition = {
       heading: 'Operasjonelle forbedringer',
       paragraphs: [
         'Seks uker etter distribusjon dokumenterte butikken betydelige forbedringer: null kundeklager om \\"feilkode\\" forvirring, raskere transaksjonstider og en 3x økning i tip-innsendelser (kunder kan nå finne og skanne tip-koden uten å måtte be ansatte). Googles vurderinger økte også etter hvert som den dedikerte, godt merket QR fjernet friksjon.',
-        'Personaleutdanning ble enklere: «Payment code er den store, alt annet er på panelet.» Når betalingsapps oppdatert og en kort viser langsommere skanning, innebar den konservative betalingskodedesignen at det fortsatt fungerte - bare marginalt langsommere i stedet for å mislykkes helt.',
-        'Se Lær guiden på QR-koder for retailbetalinger for prinsippene bak denne skjermsystemdesignen.',
+        'Personalopplæringen ble enklere: "betalingskoden er den store, alt annet er på panelet." Når betalingsapper oppdaterte og en kort viste langsommere skanning, betydde den konservative betalingskodedesignen at den fortsatt fungerte - bare marginalt tregere i stedet for å feile helt.',
+        'Se Lær-veiledningen om QR-koder for detaljhandelsbetalinger for prinsippene bak dette skjermsystemdesignet.',
       ],
       images: [
         {
@@ -217,7 +217,7 @@ export const examples: PageDefinition = {
     {
       heading: 'Hvorfor tidligere hendelser hadde problemer',
       paragraphs: [
-        'På sin siste konferanse hadde selskapet opplevd pinlige feil. Scenebanneren QR ble generert som en liten PNG og skalert opp i designprogramvare - resultatet så akseptabelt ut fra avstand, men klarte ikke å skanne pålitelig fra publikum. Badge QRs var over-stylet og for små, frustrerende deltakere som prøvde å legge til kontakter. Inkonsekvente innstillinger på tvers av formater betydde at \\"same\\" QR faktisk så annerledes ut på hvert stykke.',
+        'På deres siste konferanse hadde selskapet opplevd pinlige fiaskoer. Scenebanneret QR ble generert som en liten PNG og oppskalert i designprogramvare - resultatet så akseptabelt ut på avstand, men klarte ikke å skanne pålitelig fra publikum. Merke-QR-er var overstilte og for små, frustrerende deltakere som prøvde å legge til kontakter. Inkonsekvente innstillinger på tvers av formater betydde at den "samme" QR-en faktisk så annerledes ut på hvert stykke.',
         'Post-event analyse avdekket årsaken: ingen enkelt kilde til sannhet. Hver designer hadde gjenskapt QR med litt forskjellige innstillinger, og hver utskriftsleverandør hadde behandlet filer annerledes. Kvalitet degradert gjennom telefonspillet til filavleveringer.',
       ],
       images: [
@@ -240,7 +240,7 @@ export const examples: PageDefinition = {
           src: '/images/examples/print-workflow.png',
           alt: 'En filpakke som viser SVG-master, størrelsesspesifikke PNG-er, spesifikasjonsdokument og konfigurasjonslenke',
           caption:
-            'Handoff pakken: alt leverandører trenger for å gi konsekvente resultater uten å gjette',
+            'Overleveringspakken: alt leverandører trengte for å produsere konsistente resultater uten å gjette',
         },
       ],
     },
@@ -248,12 +248,12 @@ export const examples: PageDefinition = {
       heading: 'Størrelsesspesifikke vurderinger',
       paragraphs: [
         'Hvert format krever spesiell oppmerksomhet. Badge innsatser på 3cm trengte QR å okkupere maksimal tilgjengelig plass - skanneavstand ville være armens lengde. Bordtelt på 8cm kan omfatte dekorativ utforming utenfor den rolige sonen. Den 4-meters banneren som kreves beregning: fra typisk publikum avstand (15-20 meter), må moduler være klart adskilt med telefonkameraer, noe som betydde at QR måtte være minst 80cm i bannerdesignen.',
-        'Selskapet opprettet en størrelsesguide som dokumenterte minimum QR-dimensjoner for hver forventet skanneavstand. Dette ble en gjenbrukbar ressurs for fremtidige arrangementer, fjerne gjettingarbeid fra designprosessen.',
+        'Selskapet laget en størrelsesguide som dokumenterer minimum QR-dimensjoner for hver forventet skanneavstand. Dette ble en gjenbrukbar ressurs for fremtidige arrangementer, og fjernet gjetting fra designprosessen.',
       ],
       images: [
         {
           src: '/images/examples/print-sizing.png',
-          alt: 'Et diagram som viser forholdet mellom skanneavstand, minste QR-størrelse og modulmål for hvert hendelsesformat',
+          alt: 'Et diagram som viser forholdet mellom skanneavstand, minimum QR-størrelse og moduldimensjoner for hvert hendelsesformat',
           caption:
             'Størrelsesmatrisen: beregnede dimensjoner som sikrer pålitelig skanning på hvert formats forventede visningsavstand',
         },
@@ -264,7 +264,7 @@ export const examples: PageDefinition = {
       paragraphs: [
         'Konferansedagsvalidering ble systematisk: personalet testet alle utplasserte QR før dørene åpnes. Merket setter skannet umiddelbart i armens lengde. Bordtelt jobbet pålitelig i variabel belysning av utbruddsrom. Scanet banner - den forrige hendelsens flaum - skannet med hell fra midten av publikumsområdet.',
         'Null scanning klager ble logget over 2.000+ deltakere. Den operative gevinsten var like stor: Når et siste minutts sponsortilskudd krevde ny skilting, genererte produksjonsteamet det fra mesteren SVG i minutter, selv om det ville matche alt annet.',
-        'Se Learn-guiden på QR-koder for SVG vs PNG-beslutningsrammeverket og avlevering av beste praksis.',
+        'Se Lær-veiledningen om utskriftsklare QR-koder for beslutningsrammeverket SVG vs PNG og beste praksis for overlevering.',
       ],
       images: [
         {
@@ -292,8 +292,8 @@ export const examples: PageDefinition = {
     {
       heading: 'Case Study: Flyplass Lounge Digital skjerm',
       paragraphs: [
-        'Dette eksemplet følger et flyselskap som hadde brukt statiske QR-koder på sine digitale velkomstskjermer. Skjermene viste roterende salgsfremmende innhold, men QR-koden for lounge-innsjekking satt i et hjørne, statisk og lett oversett. Analytics viste bare 15% av kvalifiserte gjester brukte QR-innsjekkingen til tross for at det var raskere enn bordkøen. De fleste gjestene merket det ikke.',
-        'Hypotesen var enkel: i et visuelt travelt miljø med bevegelig innhold blir en statisk QR usynlig. Løsningen som trengs for å gjøre QR merkbar uten å kompromittere påliteligheten som kreves for en innsjekkingsstrøm hvor feil ville bety frustrerte reisende og lengre skrivebordkøer.',
+        'Dette eksemplet følger en flyselskapslounge som hadde brukt statiske QR-koder på sine digitale velkomstskjermer. Skjermene viste roterende reklameinnhold, men QR-koden for lounge-innsjekking satt i et hjørne, statisk og lett oversett. Analytics viste at bare 15 % av de kvalifiserte gjestene brukte QR-innsjekkingen til tross for at den var raskere enn skrivebordskøen. De fleste gjestene la rett og slett ikke merke til det.',
+        'Hypotesen var enkel: i et visuelt travelt miljø med bevegelig innhold, blir en statisk QR usynlig. Løsningen som trengs for å gjøre QR-en merkbar uten å gå på bekostning av påliteligheten som kreves for en innsjekkingsflyt der feil vil bety frustrerte reisende og lengre skrivebordskøer.',
       ],
       images: [
         {
@@ -307,7 +307,7 @@ export const examples: PageDefinition = {
     {
       heading: 'Designe sikker animasjon',
       paragraphs: [
-        'Loungens digitale skilt brukte store LED-paneler - et utfordrende miljø der aggressiv animasjon kan skape skanneproblemer. Designteamet startet konservativt: en mild pulseffekt som subtly utvidet og kontrakt QRs visuelle tilstedeværelse uten å endre den faktiske kodestrukturen. Frame timing ble satt sakte (250ms) for å unngå flimrende problemer med LED-oppdateringshastigheten.',
+        'Salongens digitale skilting brukte store LED-paneler – et utfordrende miljø hvor aggressiv animasjon kunne skape skanningsproblemer. Designteamet startet konservativt: en mild pulseffekt som subtilt utvidet og kontraherte QR-ens visuelle tilstedeværelse uten å endre selve kodestrukturen. Bildetimingen ble satt sakte (250 ms) for å unngå flimringsproblemer med LED-oppdateringsfrekvensen.',
         'Validering av sikkerhetsmodus bekreftet at hver ramme forble skanneaktivert. Ytterligere testing på de faktiske LED-panelene viste at pulsen måtte være enda mer subtil enn desktop-forhåndsvisninger foreslått - LED-lysstyrke og visningsvinkler påvirket oppfattet kontrast mer enn forventet.',
       ],
       images: [
@@ -315,15 +315,15 @@ export const examples: PageDefinition = {
           src: '/images/examples/animated-config.png',
           alt: 'ANQR animasjonsinnstillingspanelet som viser pulskonfigurasjon: langsom timing, subtil intensitet, sikkerhetsmodus aktivert',
           caption:
-            'Animasjonskonfigurasjon: Parametre som er innstilt for LED-panelskjerm mens du opprettholder skannesikkerhet i hver ramme',
+            'Animasjonskonfigurasjon: parametere innstilt for LED-panelskjerm samtidig som skannepålitelighet opprettholdes i hver ramme',
         },
       ],
     },
     {
       heading: 'Integrasjon med skiltinnhold',
       paragraphs: [
-        "Den animerte QR var plassert i en dedikert 'stabil sone' i skjermutformingen - et område som forble konstant mens salgsfremmende innhold roterte i hoveddisplayområdet. Denne separasjonen var avgjørende: QR trengte visuel stabilitet for å skanne selv mens den tiltrekker seg oppmerksomhet gjennom sin subtile animasjon.",
-        'En klar anrop-til-handling ble lagt til ved siden av QR: \\"Hopp køen - skann for å sjekke inn.\\" Teksten forble statisk mens QR pulsert, og skapte et visuelt hierarki som trakk øyet til skannemuligheten uten å overvelde kampanjeinnholdet.',
+        'Den animerte QR-en ble plassert i en dedikert "stabil sone" av skjermoppsettet - et område som forble konstant mens reklameinnhold roterte i hovedvisningsområdet. Denne separasjonen var avgjørende: QR-en trengte visuell stabilitet for skanning selv mens den vekket oppmerksomhet gjennom sin subtile animasjon.',
+        "En tydelig handlingsfremmende oppfordring ble lagt til ved siden av QR-en: 'Hopp over køen - skann for å sjekke inn.' Teksten forble statisk mens QR-en pulserte, og skapte et visuelt hierarki som trakk blikket til skanningsmuligheten uten å overvelde reklameinnholdet.",
       ],
       images: [
         {
@@ -337,7 +337,7 @@ export const examples: PageDefinition = {
     {
       heading: 'Teknisk deployering',
       paragraphs: [
-        'Den animerte QR ble eksportert som en GIF med optimaliserte innstillinger for signage CMS. Filstørrelseshensyn - loungens innholdshåndteringssystem hadde opplastingsgrenser, og over store filer forårsaket avspilling stuttering. Den endelige eksportbalanserte visuelle kvaliteten mot filstørrelse ved å begrense fargepaletten og optimalisere rammetellingen.',
+        'Den animerte QR-en ble eksportert som en GIF med optimaliserte innstillinger for skilt-CMS. Filstørrelseshensyn var viktig – salongens innholdsstyringssystem hadde opplastingsgrenser, og altfor store filer forårsaket hakking i avspillingen. Den endelige eksporten balanserte visuell kvalitet mot filstørrelse ved å begrense fargepaletten og optimalisere antall bilder.',
         'Hvis GIF ikke spilte av noen grunn, vil skiltingssystemet vise en statisk PNG-sikkerhetskopi. Denne redundansen sikret innsjekkingskapasiteten ble aldri tapt på grunn av tekniske problemer med animasjonen.',
       ],
       images: [
@@ -353,8 +353,8 @@ export const examples: PageDefinition = {
       heading: 'Målt effekt',
       paragraphs: [
         "Etter en måneds drift økte QR-innsjekking fra 15% til 24% - en 60% relativ forbedring. Guest feedback undersøkelser indikerte den animerte QR var 'nøyere å legge merke til' og 'filt mer moderne'. Desk køtider reduserte betydelig i toppperioder som flere gjester selvbevaret via QR.",
-        'Det er viktig at det ble rapportert nullskanningsfeil til tross for tusenvis av daglige skanninger. Den konservative animasjonstilnærmingen hadde oppnådd oppmerksomhetsmålet uten å ofre påliteligheten som kreves. Loungen rullet ut lignende animerte QRs til sine andre steder.',
-        'Se Lær guiden om animerte QR-koder for digital skilting for de tekniske prinsippene bak sikker animasjonsdesign.',
+        'Viktigere, null skanningsfeil ble rapportert til tross for tusenvis av daglige skanninger. Den konservative animasjonstilnærmingen hadde oppnådd oppmerksomhetsmålet uten å ofre påliteligheten en innsjekkingsflyt krevde. Salongen rullet deretter ut lignende animerte QR-er til sine andre lokasjoner.',
+        'Se Lær-veiledningen om animerte QR-koder for digital skilting for de tekniske prinsippene bak sikker animasjonsdesign.',
       ],
       images: [
         {
@@ -382,8 +382,8 @@ export const examples: PageDefinition = {
     {
       heading: 'Case Study: Global produktlansering QR kampanje',
       paragraphs: [
-        "Dette eksemplet følger et forbrukerelektronikkselskap som lanserer et nytt produkt samtidig i 12 markeder på 8 språk. Hvert regionalt markedsføringsteam som trengs for å produsere emballasje, detaljvisninger og salgsfremmende materialer med QR-koder som knytter seg til lokale produktsider. Tidligere lanseringer hadde resultert i inkonsistent QR styling, noen ganger skannefeil, og et 'telefonspill' av konfigurasjonsdrift som hvert lag gjenskapte koder fra skjermbilder.",
-        'Løsningen utnyttet ANQRs delbare konfigurasjonskoblinger for å etablere en enkelt kilde til sannhet som alle regionale team kunne få tilgang til, uansett grensesnittspråk. QR nyttelast brukte en smart omdirigering som oppdaget brukerspråk, så en kode fungerte globalt mens de leverte lokale opplevelser.',
+        'Dette eksemplet følger et forbrukerelektronikkselskap som lanserer et nytt produkt samtidig i 12 markeder på 8 språk. Hvert regionalt markedsføringsteam trengte å produsere emballasje, detaljhandelsskjermer og reklamemateriell med QR-koder som linker til lokaliserte produktsider. Tidligere lanseringer hadde resultert i inkonsekvent QR-stil, sporadiske skannefeil og et "telefonspill" med konfigurasjonsdrift ettersom hvert lag gjenskapte koder fra skjermbilder.',
+        'Løsningen utnyttet ANQRs delbare konfigurasjonskoblinger for å etablere en enkelt kilde til sannhet som alle regionale team kunne få tilgang til, uavhengig av grensesnittspråket deres. QR-nyttelasten brukte en smart omdirigering som oppdaget brukerspråk, så én kode fungerte globalt mens den leverte lokaliserte opplevelser.',
       ],
       images: [
         {
@@ -397,7 +397,7 @@ export const examples: PageDefinition = {
     {
       heading: 'Opprette masterkonfigurasjonen',
       paragraphs: [
-        'Det globale merketeamet opprettet autoritativ QR-konfigurasjon i ANQR: merkefarger som matcher produktlinjens visuelle identitet, Feilretting H for pålitelighet på tvers av alle trykk og digitale applikasjoner, og styling som vil reprodusere konsekvent uansett lokale produksjonsmetoder. Konfigurasjonen var låst og aksjelenken dokumentert i den globale kampanjen kort.',
+        'Det globale merkevareteamet skapte den autoritative QR-konfigurasjonen i ANQR: merkefarger som matcher produktlinjens visuelle identitet, Error Correction H for pålitelighet på tvers av alle trykte og digitale applikasjoner, og styling som ville reproduseres konsekvent uavhengig av lokale produksjonsmetoder. Konfigurasjonen ble låst og delingslenken dokumentert i den globale kampanjebriefen.',
         'Kritisk brukte den kodede URL-en en språkoppdagende omdirigeringstjeneste. Når skannet, ble brukerne automatisk dirigert til deres lokale språkproduktside. Dette betydde at alle 12 markeder kunne bruke identiske QR-koder - ingen per marked nyttelast variasjoner som kunne introdusere feil.',
       ],
       images: [
@@ -412,8 +412,8 @@ export const examples: PageDefinition = {
     {
       heading: 'Regionalt team arbeidsflyt',
       paragraphs: [
-        'Hvert regional markedsføringsteam mottok konfigurasjonslenken med enkle instruksjoner: Åpne lenken, verifisere forhåndsvisningen samsvarer med merkeretningslinjene, eksportere i det nødvendige formatet for applikasjonen. ANQR-grensesnittet som vises i hvert lags foretrukne språk, men de underliggende QR-innstillingene forble identiske uansett grensesnittspråk.',
-        'Når det japanske teamet trengte SVG for high-end detail skjermer og det brasilianske laget trengte PNG for sosiale medier, begge eksportert fra samme konfigurasjon. Når det tyske lagets utskriftsleverandør forespurt spesifikke fargeverdier, kan de referere konfigurasjonen direkte i stedet for å gjette fra et skjermbilde.',
+        'Hvert regionalt markedsføringsteam mottok konfigurasjonslenken med enkle instruksjoner: åpne lenken, kontroller at forhåndsvisningen samsvarer med merkevareretningslinjene, eksporter i det nødvendige formatet for applikasjonen din. ANQR-grensesnittet ble vist på hvert teams foretrukne språk, men de underliggende QR-innstillingene forble identiske uavhengig av grensesnittspråk.',
+        'Da det japanske teamet trengte SVG for high-end detaljhandelsskjermer og det brasilianske teamet trengte PNG for sosiale medier, ble begge eksportert fra samme konfigurasjon. Når det tyske teamets utskriftsleverandør ba om spesifikke fargeverdier, kunne de referere til konfigurasjonen direkte i stedet for å gjette fra et skjermbilde.',
       ],
       images: [
         {
@@ -427,13 +427,13 @@ export const examples: PageDefinition = {
     {
       heading: 'Håndtering av regionale variasjoner',
       paragraphs: [
-        "Noen markeder krever mindre tilpasninger. Det kinesiske laget trengte en versjon med en WeChat-optimert ramme for sosial deling. I stedet for å endre masteren, skapte de en dokumentert variant med sin egen konfigurasjonslink, tydelig merket som 'CN-WeChat variant' i kampanjens aktiva bibliotek. Dette bibeholdt sporbarhet samtidig som det tillot nødvendig lokalisering.",
+        "Noen markeder krevde mindre tilpasninger. Det kinesiske teamet trengte en versjon med en WeChat-optimalisert ramme for sosial deling. I stedet for å modifisere masteren, opprettet de en dokumentert variant med sin egen konfigurasjonslenke, tydelig merket som 'CN-WeChat-variant' i biblioteket for kampanjeelementer. Dette opprettholdt sporbarheten samtidig som nødvendig lokalisering tillot.",
         'Merketeamet etablerte en enkel regel: Enhver variasjon fra master trengte en ny, dokumentert konfigurasjonslenke. Ingen endringer i eksporterte filer, ingen \\"snøggreparasjon\\" i designprogramvare. Dette hindret konfigurasjon drift som hadde plaget tidligere lanseringer.',
       ],
       images: [
         {
           src: '/images/examples/collab-variants.png',
-          alt: 'Et grensesnitt for ressursbibliotek som viser hovedkonfigurasjonen og godkjente regionale varianter, hver med sin egen lenke',
+          alt: 'Et grensesnitt for ressursbibliotek som viser hovedkonfigurasjonen og godkjente regionale varianter, hver med sin egen kobling',
           caption:
             'Campaign Account Governance: master configuration pluss dokumenterte varianter, alle sporbare via konfigurasjonslenker',
         },
@@ -444,14 +444,14 @@ export const examples: PageDefinition = {
       paragraphs: [
         'Produkt lanseringsdag så QR-koder som er utplassert på tvers av emballasje, detaljhandelsskjermer, eventmaterialer og digitale kampanjer i alle 12 markeder samtidig. Kvalitetsrevisjoner bekreftet visuell konsistens i hele regionene - QR på Tokyo-butikker matchet QR på São Paulo-emballasjen matchet QR på Berlin event bannere.',
         'Nullskanningsfeil ble rapportert på tvers av markeder. Når det var nødvendig med en URL-endring etter lansering, håndterte omdirigeringstjenesten den usynlig - ingen utskrift nødvendig. Det globale teamet estimerte konfigurasjonslinktilnærmingen lagret 40 + timers koordineringstid sammenlignet med tidligere lanseringsmetode.',
-        'Se Learn guide om tverrspråklig QR-samarbeid for arbeidsflytprinsippene bak global kampanjekonsistens.',
+        'Se Lær-veiledningen om tverrspråklig QR-samarbeid for arbeidsflytprinsippene bak global kampanjekonsistens.',
       ],
       images: [
         {
           src: '/images/examples/collab-success.png',
           alt: 'Et rutenett med fotografier som viser konsistent QR-utplassering i ulike markeder: Tokyo detaljhandel, São Paulo emballasje, Berlin hendelser',
           caption:
-            'Global konsistens oppnådd: identisk QR-presentasjon på tvers av 12 markeder til tross for ulike språk, leverandører og formater',
+            'Global konsistens oppnådd: identisk QR-presentasjon på tvers av 12 markeder til tross for forskjellige språk, leverandører og formater',
         },
       ],
       links: [

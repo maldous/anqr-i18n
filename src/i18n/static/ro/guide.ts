@@ -17,7 +17,7 @@ export const guide: PageDefinition = {
       heading: 'Noțiuni introductive',
       paragraphs: [
         'ANQR este un generator de coduri QR cu o abordare axată pe client. În mod implicit, codurile QR sunt generate local în browserul dumneavoastră - nu este necesar un cont, iar datele dumneavoastră rămân private. Pentru încorporarea profesională, puteți utiliza și API-ul server-side.',
-        'Interfața are trei niveluri de interfață: De bază, Avansat și Profesional. Selectați nivelul folosind filele din antet. Fiecare nivel deblochează funcții suplimentare, menținând în același timp interfața concentrată pe ceea ce aveți nevoie.',
+        'Interfața are trei niveluri de interfață: Basic, Advanced și Professional. Selectați-vă nivelul folosind filele din antet. Fiecare nivel deblochează funcții suplimentare, menținând în același timp interfața concentrată pe ceea ce aveți nevoie.',
       ],
       bullets: [
         'De bază: Creare simplă de coduri QR cu conținut text simplu/URL și suprapunere de imagini.',
@@ -732,7 +732,7 @@ export const guide: PageDefinition = {
       heading: 'Servicii de link-uri de plată',
       bullets: [
         'PayPal.Me: Link-uri de plată PayPal cu nume de utilizator și sumă precompletată opțională. Destinatarii pot plăti prin soldul PayPal, carduri sau conturi bancare.',
-        'Cash App: Link-uri de plată Cash App folosind $cashtag cu sumă opțională. Popular în Statele Unite pentru plăți peer-to-peer.',
+        'Aplicația Cash: Legături de plată pentru aplicația Cash folosind $cashtag cu sumă opțională. Popular în Statele Unite pentru plățile peer-to-peer.',
       ],
       links: [
         {

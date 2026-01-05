@@ -16,7 +16,7 @@ export const guide: PageDefinition = {
     {
       heading: 'Starten',
       paragraphs: [
-        'ANQR is een QR codegenerator met een client-first benadering. Standaard worden QR codes lokaal gegenereerd in uw browser - geen account nodig en uw gegevens blijven privé. Voor professionele inbedding kunt u ook de server-side API gebruiken.',
+        'ANQR is een QR-codegenerator met een klantgerichte aanpak. Standaard worden QR-codes lokaal in uw browser gegenereerd - er is geen account vereist en uw gegevens blijven privé. Voor professionele inbedding kunt u ook de server-side API gebruiken.',
         'De interface heeft drie interface niveaus: Basic, Advanced en Professional. Selecteer uw niveau met behulp van de tabbladen in de header. Elk niveau ontgrendelt extra functies terwijl het houden van de interface gericht op wat je nodig hebt.',
       ],
       bullets: [
@@ -47,7 +47,7 @@ export const guide: PageDefinition = {
     {
       heading: 'Basiskenmerken',
       paragraphs: [
-        'Het Basic niveau biedt een gestroomlijnde interface voor het maken van QR codes met lading inhoud en afbeelding overlays. Dit is de eenvoudigste manier om te beginnen.',
+        'Het basisniveau biedt een gestroomlijnde interface voor het maken van QR-codes met payload-inhoud en beeldoverlays. Dit is de eenvoudigste manier om aan de slag te gaan.',
       ],
       links: [
         {
@@ -60,7 +60,7 @@ export const guide: PageDefinition = {
     {
       heading: 'Inhoudstypen (basic)',
       paragraphs: [
-        'Platte tekst: codeer elke tekst tot aan de limiet van de QR-codecapaciteit. Ideaal voor korte berichten, codes of identificatiecodes.',
+        'Platte tekst: Codeer elke tekst tot aan de capaciteitslimiet van de QR-code. Ideaal voor korte berichten, codes of identificatiegegevens.',
         'URL: Webadressen coderen. De QR-code zal de URL openen bij het scannen. Ondersteunt http:// en https://protocollen.',
       ],
     },
@@ -115,7 +115,7 @@ export const guide: PageDefinition = {
         'L (Laag): 7% foutcorrectie - kleinste grootte, minst redundantie.',
         'M (Medium): 15% foutcorrectie - evenwichtige optie.',
         'Q (Quartile): 25% foutcorrectie - goed voor gedrukte codes.',
-        'H (High): 30% foutcorrectie - het beste voor codes met overlays of in zware omstandigheden.',
+        'H (Hoog): 30% foutcorrectie - het beste voor codes met overlays of onder zware omstandigheden.',
       ],
       links: [
         {
@@ -128,7 +128,7 @@ export const guide: PageDefinition = {
     {
       heading: 'Rustige zone (Margin)',
       paragraphs: [
-        'De rustige zone is de witte ruimte rond de QR code. Scanners hebben deze marge nodig om te detecteren waar de code begint. De norm beveelt ten minste 4 modules aan. Minder dan 4 kan scanproblemen veroorzaken.',
+        'De stille zone is de witte ruimte rond de QR-code. Scanners hebben deze marge nodig om te detecteren waar de code begint. De standaard beveelt minimaal 4 modules aan. Als u de waarde onder de 4 verlaagt, kunnen er scanproblemen optreden.',
       ],
     },
     {
@@ -168,15 +168,15 @@ export const guide: PageDefinition = {
         'Uitlijningspatronen verschijnen in grotere QR-codes (versie 2+) om vervorming te helpen corrigeren. Timing patronen zijn de afwisselende lijnen verbinden vinder patronen.',
       ],
       bullets: [
-        'Uitlijningsstijl: Match Finder, Square, Afgerond, of Cirkel.',
-        'Timing Style: Match Module, Solid, of Dashed.',
+        'Uitlijningsstijl: Match Finder, Vierkant, Rond of Cirkel.',
+        'Timingstijl: Match-module, Effen of Gestreept.',
       ],
     },
     {
       heading: 'Kleuren',
       paragraphs: [
-        'Voorgrond: De kleur van de QR modules. Zwart (#000000) is standaard maar elke donkere kleur werkt.',
-        'Achtergrond: De achtergrondkleur. Wit (#ffffff) is standaard. Zorg voor voldoende contrast met de voorgrond.',
+        'Voorgrond: De kleur van de QR-modules. Zwart (#000000) is standaard, maar elke donkere kleur werkt.',
+        'Achtergrond: de achtergrondkleur. Wit (#ffffff) is standaard. Zorg voor voldoende contrast met de voorgrond.',
         'Transparante achtergrond: Verwijder de achtergrond volledig voor gebruik op gekleurde oppervlakken. Zorg ervoor dat het oppervlak voldoende contrast biedt.',
       ],
       links: [
@@ -201,7 +201,7 @@ export const guide: PageDefinition = {
         'PNG: Verliesloos rasterformaat, ideaal voor de meeste toepassingen. Beste voor print en digitaal.',
         'WebP: Modern formaat met kleinere bestandsgroottes. Goed voor webgebruik.',
         'GIF: Vereist voor geanimeerde QR codes. Ondersteunt transparantie.',
-        'SVG: Vectorformaat dat oneindig schaalt. Het beste voor grote print of wanneer u de code moet bewerken.',
+        'SVG: Vectorformaat dat oneindig schaalt. Het beste voor grote letters of wanneer u de code moet bewerken.',
       ],
       links: [
         {
@@ -227,12 +227,12 @@ export const guide: PageDefinition = {
       paragraphs: ['Bedien geanimeerd QR-codegedrag:'],
       bullets: [
         'Snelheid: Animatie framesnelheid in milliseconden.',
-        'Loop: Continue of single-play animatie.',
+        'Loop: continue of single-play animatie.',
         'Bounce: Ping-pong animatie richting.',
         'Start Frame: Begin met animatie vanuit specifiek frame.',
         'Max Frames: Beperk totale frames in animatie.',
         'Frame Stap: Skip frames voor snellere animatie.',
-        'Interpolation: Geen, Crossfade, of Morph tussen frames.',
+        'Interpolatie: Geen, Crossfade of Morphing tussen frames.',
       ],
       links: [
         {
@@ -337,16 +337,16 @@ export const guide: PageDefinition = {
         'Filters toepassen op uw overlay-afbeelding alvorens te mengen. Deze aanpassingen kunnen verbeteren hoe de afbeelding verschijnt in de definitieve QR code.',
       ],
       bullets: [
-        'Helderheid (-100 tot +100): Verlicht of verduister het beeld.',
-        'Contrast (-100 tot +100): Tonaalbereik verhogen of verlagen.',
+        'Helderheid (-100 tot +100): Maak het beeld lichter of donkerder.',
+        'Contrast (-100 tot +100): toonbereik vergroten of verkleinen.',
         'Gamma (0.2 tot 3.0) Niet-lineaire helderheidsaanpassing. Waarden lager dan 1 lichte middentonen, boven 1 donkerder ze.',
-        'Verzadiging (-100 tot +100): Kleurintensiteit. -100 is grijs, +100 is oververzadigd.',
+        'Verzadiging (-100 tot +100): Kleurintensiteit. -100 is grijswaarden, +100 is oververzadigd.',
         'Tintrotaat (0-360°): Verschuif alle kleuren rond het kleurenwiel.',
         'Vervaging (0-20px): Zachte afbeeldingsdetails.',
         'Verscherpen (0-100%): Verbeter de randen en details.',
         'Posteriseren (0-16 niveaus): Verminder kleurniveaus voor een postereffect.',
         'Drempel (0-255): Zet om naar binair zwart/wit op cutoff point.',
-        'Randdetectie: Sobel of Canny algoritmen om alleen randen te tonen.',
+        'Randdetectie: Sobel- of Canny-algoritmen om alleen randen weer te geven.',
         'Omkeren: Alle kleuren omkeren.',
       ],
     },
@@ -363,13 +363,13 @@ export const guide: PageDefinition = {
       heading: 'Transformeeropties',
       paragraphs: [
         'Rotatie: Roteer overlay in stappen van 90°.',
-        'X/Y spiegelen: spiegel de afbeelding horizontaal of verticaal.',
+        'Flip X/Y: Spiegel de afbeelding horizontaal of verticaal.',
       ],
     },
     {
       heading: 'Ditheringalgoritmen',
       paragraphs: [
-        'Dithering converteert continue-tone afbeeldingen naar patronen die QR codes kunnen vertegenwoordigen. Beschikbaar bij gebruik van Dithered, Blue Noise, of True Dither blend modes.',
+        'Dithering converteert afbeeldingen met continue tonen naar patronen die QR-codes kunnen vertegenwoordigen. Beschikbaar bij gebruik van de mengmodi Dithered, Blue Noise of True Dither.',
       ],
       bullets: [
         'Fout Diffusion: Classic Floyd-Steinberg stijl. Verspreidt quantisatiefout naar naburige pixels.',
@@ -410,19 +410,19 @@ export const guide: PageDefinition = {
       heading: 'Subpixelinstellingen',
       paragraphs: ['Bij gebruik van Subpixel-mixmodus:'],
       bullets: [
-        'Rastergrootte: 2×2, 3×3, of 4×4 subpixels per module. Hoger = meer details.',
+        'Rastergrootte: 2×2, 3×3 of 4×4 subpixels per module. Hoger = meer details.',
         'Middenregel: Strict vereist dat het midden-subpixel overeenkomt met de module. Halftone Center staat variatie toe.',
         'Neutrale kleur: Kleur gebruikt voor onbepaalde subpixels.',
-        'Zoekopdracht negeren: Hoe zoekpatronen worden weergegeven (Solid of Stylized).',
+        'Finder Override: hoe vinderpatronen worden weergegeven (effen of gestileerd).',
       ],
     },
     {
       heading: 'Halftooninstellingen',
       paragraphs: ['Bij gebruik van de Halftone mengmodus:'],
       bullets: [
-        'Celgrootte: Per module of N×N raster.',
-        'Dot Shape: Cirkel, Vierkant, of Lijn.',
-        'Helderheidscurve: Lineair, S-Curve, of Gamma.',
+        'Celgrootte: per module of N×N-raster.',
+        'Puntvorm: cirkel, vierkant of lijn.',
+        'Helderheidscurve: lineair, S-curve of gamma.',
       ],
     },
     {
@@ -437,16 +437,16 @@ export const guide: PageDefinition = {
       bullets: [
         'Framevertragingen gebruiken: Respecteer originele GIF timing.',
         'Max FPS: Beperk de framesnelheid (1-60 fps).',
-        'Verwijdering Handling: Respect of Vereenvoudig frame verwijdering methoden.',
+        'Afvalverwerking: respecteer of vereenvoudig de afvoermethoden voor frames.',
       ],
     },
     {
       heading: 'Geavanceerde renderingsopties',
       paragraphs: ['Aanvullende destructiecontroles:'],
       bullets: [
-        'Gapmodus: Geen, Inset, Stroke of Negative Space gap styling.',
+        'Tussenruimtemodus: Geen, Inzet-, Lijn- of Negatieve spatie-tussenruimtestijl.',
         'Hoekstraal: Percentage afgeronde hoeken voor modules.',
-        'Kleurverloop: Geen, Lineair, Radiaal of Conisch verloop op modules.',
+        'Verloop: Geen, Lineair, Radiaal of Conisch verloop op modules.',
         'Eye Outer / Inner Stijl: Onafhankelijke styling voor zoekpatroon ringen.',
         'Puntrotatie: Roteer diamant/punt modules.',
         'Oogschaal: maataanpassing voor zoekpatronen.',
@@ -465,7 +465,7 @@ export const guide: PageDefinition = {
       heading: 'Geavanceerde QR-codering',
       paragraphs: ['Fine-tune QR-codering:'],
       bullets: [
-        'Codering Modus: Auto, Numeriek, Alfanumerisch, Byte/UTF-8, of Kanji.',
+        'Coderingsmodus: automatisch, numeriek, alfanumeriek, byte/UTF-8 of Kanji.',
         'Enforce Min Quiet Zone: Zorg voor minimaal 4 module marge.',
       ],
     },
@@ -475,11 +475,11 @@ export const guide: PageDefinition = {
       bullets: [
         'Bestandsnaam: aangepaste bestandsnaam voor downloads.',
         'GIF Paletgrootte: 2-256 kleuren in GIF-uitvoer.',
-        'GIF Kwantizer: Mediaan Cut, NeuQuant, of Octree kleurreductie.',
-        'GIF Uit, Floyd-Steinberg, of besteld.',
+        'GIF Quantizer: Median Cut, NeuQuant of Octree kleurreductie.',
+        'GIF-dithering: Uit, Floyd-Steinberg of Besteld.',
         'GIF Transparante kleur: Stel een kleur in die transparant is.',
         'SVG Echte vector: Paden gebruiken in plaats van ingesloten raster.',
-        'SVG Vormprecisie: Pixel of Precieze padweergave.',
+        'SVG-vormprecisie: Pixel- of nauwkeurige padweergave.',
         'SVG Rasteroverlay insluiten: Overlay opnemen als ingebedde afbeelding.',
         'Achtergrond Override: Dwing een specifieke achtergrondkleur in uitvoer.',
       ],
@@ -519,10 +519,10 @@ export const guide: PageDefinition = {
       heading: 'Watermerk',
       paragraphs: ['Voeg watermerken toe aan uw QR-codes:'],
       bullets: [
-        'Soort: Tekst, afbeelding of patroon watermerk.',
-        'Positie: Midden, hoeken, randen, achter, of stille zone.',
+        'Soort: tekst-, afbeelding- of patroonwatermerk.',
+        'Positie: Midden, Hoeken, Randen, Achter of Stille Zone.',
         'Doorzichtigheid: transparantie van het watermerk (0-100%).',
-        'Mengmodus: Normaal, Vermenigvuldigen, Scherm of Overlay mengen.',
+        'Mengmodus: Normaal, Vermenigvuldigen, Scherm of Overlay.',
       ],
       links: [
         {
@@ -574,7 +574,7 @@ export const guide: PageDefinition = {
       heading: 'Veiligheidsanalyse',
       paragraphs: ['Zorg ervoor dat QR codes blijven scannable:'],
       bullets: [
-        'Veiligheidsmodus: Uit, Balanced, of Strikte scanning eisen.',
+        'Veiligheidsmodus: Uit, Gebalanceerd of Strenge scanvereisten.',
         'Min Module Grootte: Minimale pixelgrootte per module.',
         'Min Rustig Gebied: minimummargemodules.',
         'Vergrendel zoekers/Timing/Align/Format/Version: Bescherm specifieke elementen.',
@@ -599,7 +599,7 @@ export const guide: PageDefinition = {
       bullets: [
         'EPC/SEPA (EU): Europese bankoverschrijving QR codes met IBAN, BIC, bedrag, referentie.',
         'UPI (India): Unified Payments Interface met VPA, begunstigde naam, bedrag.',
-        'PayNow (Singapore): Singapore snelle betaling met UEN of mobiele nummer.',
+        'PayNow (Singapore): Snelle betaling in Singapore met UEN of mobiel nummer.',
         'PromptPay (Thailand): Thais nationaal betalingssysteem.',
         'PIX (Brazilië): Braziliaanse onmiddellijke betaling met PIX-sleutel.',
         'Crypto: Bitcoin, Ethereum, Litecoin betalingsadressen met optioneel bedrag.',
@@ -607,7 +607,7 @@ export const guide: PageDefinition = {
         'Korte koppeling: Voor gebruik met URL-verkorters voor dynamische/traceerbare QR codes.',
         'GS1 Digital Link: Productidentificatie met GTIN, serieel, batch, vervaldatum.',
         "App Deep Link: iOS/Android app diepe banden met aangepaste schema's.",
-        'Aangepast formaat: ruwe gegevens zonder opmaak of validatie.',
+        'Aangepast formaat: onbewerkte gegevens zonder opmaak of validatie.',
       ],
       links: [
         {
@@ -639,7 +639,7 @@ export const guide: PageDefinition = {
     {
       heading: 'Europese betalingsstandaarden',
       bullets: [
-        'EPC/SEPA (EU): Europese QR-codes voor bankoverschrijving volgens de EPC QR-codenorm. Ondersteunt IBAN, BIC (facultatief voor binnenlands), bedrag in EUR en gestructureerde of ongestructureerde betalingsverwijzingen. Gebruikt in de SEPA-zone, waaronder EU-landen plus Zwitserland, Noorwegen, IJsland, Liechtenstein, Monaco en San Marino.',
+        'EPC/SEPA (EU): QR-codes voor Europese bankoverschrijvingen volgens de EPC QR Code Standard. Ondersteunt IBAN, BIC (optioneel voor binnenlands), bedrag in EUR en gestructureerde of ongestructureerde betalingsreferenties. Gebruikt in de SEPA-zone, inclusief EU-landen plus Zwitserland, Noorwegen, IJsland, Liechtenstein, Monaco en San Marino.',
         'Zwitserse QR-factuur: Zwitserse betaalstandaard volgens SIX Implementation Guidelines. Ondersteunt CHF en EUR, QR-Reference (QRR), Creditor Reference (ISO 11649), gestructureerde kredietgever/debetadressen, en factuurinformatie. Vereist voor Zwitserse facturen sinds 2022.',
       ],
       links: [
@@ -667,9 +667,9 @@ export const guide: PageDefinition = {
     {
       heading: 'Zuidoost-Aziatische betalingsstandaarden',
       bullets: [
-        'PayNow (Singapore): Singapore snelle betaling systeem met behulp van EMVCo QR specificatie met SGQR profiel. Ondersteunt UEN (bedrijfsregistratie), mobiele nummer, of NRIC als proxy-identificatie. Inclusief bedrag bewerkbaarheid vlag en vervaldatum.',
-        'PromptPay (Thailand): Thaise nationale betaling systeem volgens Bank of Thailand EMV profiel. Ondersteunt mobiele nummer, nationale ID, fiscale ID, e-wallet ID, en factuurbetaling met meerdere referentievelden.',
-        'QRIS (Indonesia): Quick Response Code Indonesia Standard. EMV-gebaseerde nationale betaalstandaard ter ondersteuning van merchant ID, NAMID (National Merchant ID), merchant criteria classificatie, en gemak vergoedingen (vast of percentage).',
+        "PayNow (Singapore): snel betalingssysteem in Singapore dat gebruik maakt van de EMVCo QR-specificatie met SGQR-profiel. Ondersteunt UEN (bedrijfsregistratie), mobiel nummer of NRIC als proxy-ID's. Inclusief bewerkbaarheidsvlag voor bedragen en vervaldatum.",
+        'PromptPay (Thailand): Thais nationaal betalingssysteem volgens het EMV-profiel van de Bank of Thailand. Ondersteunt mobiel nummer, nationaal ID, belastingnummer, e-wallet-ID en factuurbetaling met meerdere referentievelden.',
+        'QRIS (Indonesië): Quick Response Code Indonesische standaard. Op EMV gebaseerde nationale betalingsstandaard die verkopers-ID, NMID (National Merchant ID), classificatie van verkoperscriteria en gemakstoeslagen (vast of percentage) ondersteunt.',
         'DuitNow (Maleisië): Maleisisch systeem voor onmiddellijke betaling. Ondersteunt meerdere proxy types, waaronder NRIC, mobiele, paspoort, leger ID, en zakelijke registratienummers.',
         'VietQR (Vietnam): Vietnamese interbancaire transferstandaard. Vereist bank BIN (NAPAS identificatie) en rekeningnummer. Ondersteunt meerdere servicecodes voor verschillende transfertypes (QRPUSH, QRIBFTTA, QRIBFTTC).',
         'QR Ph (Filippines): Filippijnse QR-betalingsnorm voor InstaPay en PESONet. Gebruikt rekeningnummers met handelsidentificatie voor P2M (persoon-tot-handelaar) transacties.',
@@ -686,7 +686,7 @@ export const guide: PageDefinition = {
       heading: 'East Asian Payment Standards',
       bullets: [
         'TWQR (Taiwan): Taiwanese QR-betalingsnorm. Ondersteunt merchant ID, fiscale ID, en TWD bedragen.',
-        'HKQR/FPS Hong Kong Sneller betaalsysteem QR codes. Ondersteunt FPS ID, mobiele nummer, of e-mail als betalingsidentificatie. Bedragen in HKD.',
+        'HKQR/FPS (Hong Kong): QR-codes voor het snellere betalingssysteem van Hong Kong. Ondersteunt FPS-ID, mobiel nummer of e-mailadres als betalingsidentificatie. Bedragen in HKD.',
         'JPQR (Japan): Japanse uniforme QR code betaling standaard. Gebruikt opslag-ID voor handelsidentificatie met JPY-bedragen.',
       ],
       links: [
@@ -700,8 +700,8 @@ export const guide: PageDefinition = {
     {
       heading: 'Overige regionale betalingsnormen',
       bullets: [
-        'PIX (Brazilië): Braziliaanse centrale bank instant payment systeem volgens BR Code specificatie. Ondersteunt PIX-sleutels (CPF, CNPJ, e-mail, telefoon, of willekeurige sleutel), handelsnaam/stad, transactie-ID en BRL-bedragen.',
-        'AusPayNet/NPP PayID (Australië): Australisch Nieuw Betalingsplatform PayID systeem. Ondersteunt betaling ID-typen (e-mail, mobiel, ABN, organisatie-ID) of traditioneel BSB + rekeningnummer. Handelsnaam is optioneel als betalers zie de geregistreerde naam van NPP opzoeken.',
+        'PIX (Brazilië): Instant betalingssysteem van de Braziliaanse centrale bank volgens de BR-codespecificatie. Ondersteunt PIX-sleutels (CPF, CNPJ, e-mail, telefoon of willekeurige sleutel), naam/stad van de verkoper, transactie-ID en BRL-bedragen.',
+        'AusPayNet/NPP PayID (Australië): PayID-systeem van het Australische nieuwe betalingsplatform. Ondersteunt PayID-typen (e-mail, mobiel, ABN, organisatie-ID) of traditioneel BSB + rekeningnummer. De naam van de handelaar is optioneel omdat betalers de geregistreerde naam zien via de NPP-zoekopdracht.',
       ],
       links: [
         {
@@ -729,8 +729,8 @@ export const guide: PageDefinition = {
     {
       heading: 'Betalingslinkdiensten',
       bullets: [
-        'PayPal.Me: PayPal betaling links met gebruikersnaam en optionele voorgevulde hoeveelheid. Ontvangers kunnen betalen via PayPal saldo, kaarten of bankrekeningen.',
-        'Cash App: Cash App betaling links met behulp van $cashtag met optioneel bedrag. Populair in de Verenigde Staten voor peer-to-peer betalingen.',
+        'PayPal.Me: PayPal-betaallinks met gebruikersnaam en optioneel vooraf ingevuld bedrag. Ontvangers kunnen betalen via PayPal-saldo, kaarten of bankrekeningen.',
+        'Cash App: Cash App-betalingslinks met behulp van $cashtag met optioneel bedrag. Populair in de Verenigde Staten voor peer-to-peer-betalingen.',
       ],
       links: [
         {
@@ -743,7 +743,7 @@ export const guide: PageDefinition = {
     {
       heading: 'Algemeen EMV QR',
       bullets: [
-        'EMV Algemeen: Maak aangepaste EMV Merchant-Presented-modus QR-codes voor betalingssystemen die niet specifiek zijn vermeld. Configureer merchant name, stad, landcode (ISO 3166-1), valutacode (ISO 4217 numeriek), MCC, tip/convenience fee opties, en aanvullende gegevensvelden. Handig voor het testen of aangepaste integraties.',
+        "EMV Generiek: Creëer aangepaste EMV Merchant-Presented Mode QR-codes voor betalingsschema's die niet specifiek worden vermeld. Configureer de naam van de verkoper, de stad, de landcode (ISO 3166-1), de valutacode (ISO 4217 numeriek), MCC, opties voor fooien/gemakskosten en aanvullende gegevensvelden. Handig voor testen of aangepaste integraties.",
       ],
       links: [
         {
@@ -808,7 +808,7 @@ export const guide: PageDefinition = {
       paragraphs: ['Geavanceerde rendering bedieningsorganen:'],
       bullets: [
         'Crisp Edges: Gebruik beeldweergave voor scherpe moduleranden.',
-        'Pixel Snap: Vloer, Rond, of Ceil pixel uitlijning.',
+        'Pixel Snap: Pixeluitlijning op vloer, rond of plafond.',
         'Per-module kleurmodus: Solide, Door Helderheid, Door Positie, Door Overlay, Door Cluster.',
         'Kleurpalet: Definieer aangepaste kleurenpalet voor per-module kleuren.',
         'Contrastguard: Zorg voor een minimale contrastverhouding tussen kleuren.',
@@ -843,8 +843,8 @@ export const guide: PageDefinition = {
       heading: 'Animatie-instellingen (professioneel)',
       paragraphs: ['Extra professionele animatie functies:'],
       bullets: [
-        'Temporal Dither: Uit, Blue Noise, of Flicker Safe per-frame dithering.',
-        'Patroon: Geen, pulse, golf, scanline, shimmer, of Drift effecten.',
+        'Tijdelijke dithering: Uit, blauwe ruis of flikkering Veilige dithering per frame.',
+        'Patroon: Geen, Puls-, Golf-, Scanline-, Shimmer- of Drift-effecten.',
       ],
       links: [
         {
@@ -863,7 +863,7 @@ export const guide: PageDefinition = {
     {
       heading: 'API Rubrieknummer',
       paragraphs: [
-        'ANQR biedt een server-side API voor het genereren van QR codes via URL parameters. Dit is ideaal voor het inbedden van QR codes in websites, e-mails, documenten of geautomatiseerde workflows zonder client-side JavaScript.',
+        'ANQR biedt een server-side API voor het genereren van QR-codes via URL-parameters. Dit is ideaal voor het insluiten van QR-codes in websites, e-mails, documenten of geautomatiseerde workflows zonder JavaScript aan de clientzijde.',
         'URL-basis: https://anqr.link/api/qr',
       ],
       links: [
@@ -877,7 +877,7 @@ export const guide: PageDefinition = {
         'gegevens (nodig): De inhoud om te coderen in de QR code. URL-encode speciale tekens.',
         'Grootte: Afbeeldingsgrootte in pixels (standaard 400, max: 2000). Gebruikt indien w/h niet gespecificeerd.',
         'w, h: Uitvoerbreedte en -hoogte in pixels. Overschrijft grootte parameter.',
-        'formaat: Uitvoerformaat - png, webp, of gif (standaard: png).',
+        'formaat: Uitvoerformaat - png, webp of gif (standaard: png).',
         'ec: Foutcorrectieniveau - L, M, Q of H (standaard: H).',
         'fg: Voorgrondkleur als hex zonder # (standaard: 000000).',
         'bg: achtergrondkleur als hex zonder # (standaard: ffffff).',
@@ -905,7 +905,9 @@ export const guide: PageDefinition = {
     },
     {
       heading: 'Overlayparameters',
-      paragraphs: ['Afbeelding overlay opties (overlay afbeelding is opgehaalde server-kant):'],
+      paragraphs: [
+        'Opties voor afbeeldingsoverlay (overlayafbeelding wordt op de server opgehaald):',
+      ],
       bullets: [
         'img: URL naar overlay afbeelding (moet openbaar toegankelijk zijn).',
         'modus: Overlay mode - centrum, halve toon, blend, helderheid, mozaïek, dithered, blauw-ruis, subpixel.',
@@ -989,13 +991,13 @@ export const guide: PageDefinition = {
     {
       heading: 'Inbedding van QR-codes',
       paragraphs: [
-        "In de professionele modus genereert de Share-functie inbeddebare HTML en URL's. Hier is hoe inbedding werkt:",
+        "In de professionele modus genereert de Share-functie insluitbare HTML en URL's. Zo werkt het insluiten:",
       ],
       bullets: [
         'Delen Link: Maakt een URL aan de ANQR-app met al uw instellingen gecodeerd als URL-parameters. Ontvangers kunnen de QR-code bekijken en wijzigen.',
         'Afbeelding insluiten: Genereert een <img> tag die naar de server API wijst. De QR-code wordt aan de serverzijde weergegeven en dient als afbeelding.',
         'Opmaak insluiten: Maakt een afdruk van de afbeelding syntaxis voor documentatie en README-bestanden.',
-        'Directe API-URL: De rauwe API-URL voor gebruik in toepassingen, scripts of andere integraties.',
+        'Directe API-URL: De onbewerkte API-URL voor gebruik in applicaties, scripts of andere integraties.',
       ],
       links: [
         {
@@ -1018,7 +1020,7 @@ export const guide: PageDefinition = {
     {
       heading: 'URL-formaat delen',
       paragraphs: [
-        'Wanneer u op Delen in professionele modus klikt, codeert ANQR uw huidige instellingen in URL-parameters. Het formaat is:',
+        'Wanneer u in de professionele modus op Delen klikt, codeert ANQR uw huidige instellingen in URL-parameters. Het formaat is:',
         'https://anqr.link/?data=...&ec=H&style=rounded&...',
         'Deze parameters spiegelen de API parameters, zodat u een gedeelde URL kunt converteren naar een API URL door het basispad te veranderen van / naar /api/qr en waar nodig de parameters w/h aan te passen.',
         'Opmerking: Overlay beelden geüpload van lokale bestanden kunnen niet gedeeld worden via URL - alleen URL-gebaseerde overlays (img parameter) werken in gedeelde links en API-oproepen.',
@@ -1027,8 +1029,8 @@ export const guide: PageDefinition = {
     {
       heading: 'Percentage limieten en gebruik',
       paragraphs: [
-        'De API is vrij te gebruiken voor redelijke volumes. Voor gebruik in grote hoeveelheden of commerciële toepassingen waarvoor gegarandeerde uptime vereist is, neem dan contact met ons op.',
-        'API reacties omvatten agressieve caching headers. Voor de beste prestaties, cache antwoorden op uw einde of gebruik dezelfde URL consequent voor identieke QR codes.',
+        'De API is gratis te gebruiken voor redelijke volumes. Voor gebruik met grote volumes of commerciële toepassingen die een gegarandeerde uptime vereisen, kunt u contact met ons opnemen.',
+        'API-reacties omvatten agressieve caching-headers. Voor de beste prestaties kunt u de antwoorden aan uw kant in de cache plaatsen of dezelfde URL consistent gebruiken voor identieke QR-codes.',
       ],
     },
     // Best Practices & Troubleshooting (sections 70+)

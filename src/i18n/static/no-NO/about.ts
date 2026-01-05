@@ -1,5 +1,5 @@
 import type { PageDefinition } from '../types';
-import { CONTACT_EMAIL, LAST_UPDATED } from '../types';
+import { LAST_UPDATED } from '../types';
 
 export const about: PageDefinition = {
   title: 'Om ANQR',
@@ -18,8 +18,8 @@ export const about: PageDefinition = {
     {
       heading: 'Hva er ANQR?',
       paragraphs: [
-        'ANQR (uttalt "anchor")) er en gratis QR-kodegenerator som skaper skanneaktiverbare koder for URL-er, tekst, Wi-Fi-informasjon, kontaktkort, kalenderarrangementer og mer.',
-        'Den er bygget for enkeltpersoner, små bedrifter, markedsførere og utviklere som ønsker kraftige QR-verktøy uten å registrere seg. Den klient-første design betyr at QR-koder genereres lokalt i nettleseren din som standard, med en valgfri server-API for profesjonell innelegging og integrasjon.',
+        'ANQR (uttales "anker") er en gratis QR-kodegenerator som lager skannbare koder for URL-er, tekst, Wi-Fi-legitimasjon, kontaktkort, kalenderhendelser og mer.',
+        'Den er laget for enkeltpersoner, små bedrifter, markedsførere og utviklere som ønsker kraftige QR-verktøy uten å registrere seg. Klient-først-designet betyr at QR-koder genereres lokalt i nettleseren din som standard, med et valgfritt server-API for profesjonell innebygging og integrasjon.',
       ],
     },
     {
@@ -28,9 +28,9 @@ export const about: PageDefinition = {
         'Opprett QR-koder umiddelbart i nettleseren din - ingen konto kreves.',
         'Tilpasse farger, modulstiler, finner mønstre og legge til bildeoverlegg.',
         'Eksporter i flere formater: PNG, SVG, WebP og animert GIF.',
-        'Avanserte kontroller for feilrettingsnivå, QR-versjon, kodemodus og maskevalg.',
-        'Scan-sikkerhet veiledning og live forhåndsvisning for å holde koder lesbare i utskrift og på skjermer.',
-        'Serverside API for profesjonell innbygging med full parameterstøtte.',
+        'Avanserte kontroller for feilrettingsnivå, QR-versjon, kodingsmodus og maskevalg.',
+        'Skanningssikkerhetsveiledning og live forhåndsvisning for å holde koder lesbare på trykk og på skjermer.',
+        'Server-side API for profesjonell innebygging med full parameterstøtte.',
         'Fungerer offline når lastet - det er en statisk web app du kan kjøre hvor som helst.',
       ],
     },
@@ -38,14 +38,14 @@ export const about: PageDefinition = {
       heading: 'Hvordan ANQR fungerer',
       paragraphs: [
         'ANQR kjører i nettleseren din og koder inngangen til en standard QR matrise med Reed-Solomon feilretting, og deretter gjør det til det formatet du velger.',
-        'Som standard skjer generasjon lokalt i nettleseren din. For profesjonell bruk kan du også bruke serversiden API til å generere QR-koder via URL-parametre - perfekt for inneslutting i nettsteder, e-poster eller automatiserte arbeidsflyter.',
+        'Som standard skjer generering lokalt i nettleseren din. For profesjonell bruk kan du også bruke API-en på serversiden til å generere QR-koder via URL-parametere – perfekt for innbygging i nettsteder, e-poster eller automatiserte arbeidsflyter.',
         'Når du legger til overlegg eller animasjoner, balanserer ANQR styling med skanne pålitelighet slik at resultatet forblir skannet.',
         'ANQR fokuserer på statiske koder (data er inne i QR). Hvis du trenger en dynamisk kode (redigerbar reisemål), kan du kode din egen omdirigeringsadresse eller kort link.',
       ],
     },
     {
       heading: 'Hvem driver ANQR?',
-      paragraphs: [`18${CONTACT_EMAIL}19`],
+      paragraphs: [`email@anqr.link`],
     },
     {
       heading: 'Reklame og hvordan vi holder oss gratis',

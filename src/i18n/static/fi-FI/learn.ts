@@ -219,7 +219,7 @@ export const learn: PageDefinition = {
       ],
     },
     {
-      heading: 'Miksi Vector (SVG) on Preferred for Print',
+      heading: 'Miksi vektori (SVG) on ensisijainen tulostukseen',
       paragraphs: [
         'SVG-tiedostot kuvaavat QR-koodeja matemaattisina muotoina pikselien sijaan. Tämä tarkoittaa, että koodi voidaan skaalata mihin tahansa kokoon - 1 cm:n tarrasta 10 metrin banneriin - ilman että reunan terävyys häviää. Tulostajan RIP (Raster Image Processor) tekee vektorit lähtölaitteen alkuperäisresoluutiolla varmistaen, että jokainen moduulin reuna on niin terävä kuin laitteisto sallii. Ei ole interpolointia, ei anti-aliasointi esineitä, ei kertynyt sumeutta useista uudelleenkokoisista toiminnoista.',
         'Skaalauskyvyn lisäksi SVG-tiedostot ovat vahvempia ammattimaisissa työnkuluissa. He selviävät retkistä suunnitteluohjelmiston kautta ilman hajoamista. Ne voidaan korjata ilman uusintanäytteenottoa. Ne upotetaan siististi PDF-tiedostoihin painatusta varten. Mille tahansa tulostussovellukselle, jossa laadulla on merkitystä, SVG:n pitäisi olla oletusvientimuotosi.',

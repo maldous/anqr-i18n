@@ -9,7 +9,7 @@ import { LAST_UPDATED } from '../types';
 export const learn: PageDefinition = {
   title: 'Lernen mit ANQR',
   description:
-    'Praktische, geschäftsführende Anleitungen zum Umwandeln von QR-Codes in reale Marketing-Assets - nicht nur funktionale Quadrate. Erfahren Sie, wie Sie ältere Point-of-Sale-Codes aktualisieren, konforme Zahlung QR-Schildage erstellen, druckfertige Exporte vorbereiten, Animation sicher auf digitalen Displays verwenden und gesperrte Konfigurationen über mehrsprachige Teams mit ANQR-Links teilen.',
+    'Praktische, geschäftsorientierte Leitfäden, um QR-Codes in echte Marketingressourcen zu verwandeln – nicht nur in funktionale Quadrate. Erfahren Sie, wie Sie ältere Point-of-Sale-Codes aktualisieren, konforme QR-Beschilderungen für Zahlungen erstellen, druckfertige Exporte vorbereiten, Animationen sicher auf digitalen Displays verwenden und festgelegte Konfigurationen mithilfe von ANQR-Links ("Anker") für mehrsprachige Teams freigeben.',
   lastUpdated: LAST_UPDATED,
 
   primaryLinks: [
@@ -23,7 +23,7 @@ export const learn: PageDefinition = {
     {
       heading: 'Verbesserung bestehender QR-Kampagnen',
       paragraphs: [
-        'Die meisten Unternehmen haben QR-Codes über ihren Betrieb verteilt - auf Menüs, Gegenstände, Verpackungen und Werbematerialien. Viele dieser Codes wurden vor Jahren mit Basis-Generatoren erstellt, was zu generischen Schwarz-Weiß-Platz, die nicht zu inspirieren Vertrauen oder Ihre Markenidentität. Dieser umfassende Leitfaden führt Sie durch einen systematischen Ansatz zur Prüfung, Verbesserung und Optimierung Ihrer bestehenden QR-Infrastruktur, ohne die bereits etablierten Customer Journeys zu stören.',
+        'Die meisten Unternehmen haben QR-Codes in ihren Betrieben verteilt – auf Speisekarten, Thekenständern, Verpackungen und Werbematerialien. Viele dieser Codes wurden vor Jahren mit einfachen Generatoren erstellt, was zu generischen Schwarz-Weiß-Quadraten führte, die kein Vertrauen erwecken oder nicht zu Ihrer Markenidentität passen. Dieser umfassende Leitfaden führt Sie durch einen systematischen Ansatz zur Prüfung, Aktualisierung und Optimierung Ihrer vorhandenen QR-Infrastruktur, ohne die bereits eingerichteten Customer Journeys zu unterbrechen.',
         'Der strategische Vorteil des Upgrades, anstatt Ihre QR-Codes zu ersetzen, liegt in der Erhaltung der Kontinuität. Ihre Kunden haben bereits gelernt, bestimmte Ziele zu erwarten, wenn sie Ihre Codes scannen. Dadurch, dass die codierten URLs identisch bleiben und gleichzeitig die visuelle Präsentation, die Scansicherheit und die Markenausrichtung drastisch verbessern, erstellen Sie einen nahtlosen Übergang, der das Vertrauen verbessert, ohne dass Änderungen an Ihrer digitalen Infrastruktur oder Analyseverfolgung erforderlich sind.',
       ],
       images: [
@@ -38,7 +38,7 @@ export const learn: PageDefinition = {
     {
       heading: 'Warum Legacy QR Codes Underperform',
       paragraphs: [
-        'QR-Codes, die während der frühen Adoptionsphase erstellt wurden - insbesondere während 2020-2021, als Unternehmen eilten, kontaktlose Lösungen umzusetzen - leiden oft an mehreren kritischen Problemen. Niedrige Fehlerkorrektureinstellungen machen sie fragil, wenn sie auf strukturierten Oberflächen gedruckt oder unter anspruchsvoller Beleuchtung betrachtet werden. Unzureichende Ruhezonen verursachen Scanfehler, wenn Codes in der Nähe anderer visueller Elemente platziert werden. Generisches Styling lässt die Markenlegalität nicht kommunizieren, was zu Hesitation und reduzierten Scanraten führt.',
+        'QR-Codes, die in der frühen Einführungsphase erstellt wurden – insbesondere in den Jahren 2020–2021, als Unternehmen sich beeilten, kontaktlose Lösungen einzuführen – weisen häufig mehrere kritische Probleme auf. Niedrige Fehlerkorrektureinstellungen machen sie anfällig, wenn sie auf strukturierten Oberflächen gedruckt oder unter schwierigen Lichtverhältnissen betrachtet werden. Unzureichende Ruhezonen führen zu Scanfehlern, wenn Codes in der Nähe anderer visueller Elemente platziert werden. Generisches Design vermittelt die Markenlegitimität nicht, was zu Zögern und geringeren Scanraten führt.',
         'Neben technischen Einschränkungen stellen Legacy-Codes oft verpasste Branding-Möglichkeiten dar. Jeder QR-Code ist ein Touchpoint mit Ihrem Kunden - ein Moment, in dem sie aktiv engagiert sind und bereit sind, Maßnahmen zu ergreifen. Ein professionell gestalteter Code, der Ihren Markenfarben entspricht, beinhaltet angemessene Sicherheitsmargen und optionale Markenelemente verwandelt dieses Dienstprogramm in einen Marketing-Assistenten, der Ihre Identität bei jeder Interaktion verstärkt.',
       ],
     },
@@ -95,7 +95,7 @@ export const learn: PageDefinition = {
       images: [
         {
           src: '/images/learn/improve-existing-lock.png',
-          alt: 'Ein Diagramm, das Konfigurationsdrift zeigt: Screenshots, die zu Erholungen führen, die zu Varianten führen, gegen eine einzige Quelle-of-Wahrheit Link',
+          alt: 'Ein Diagramm, das Konfigurationsdrift zeigt: Screenshots, die zu Nachbildungen führen, die zu Varianten führen, im Vergleich zu einem einzigen Link mit einer einzigen Quelle der Wahrheit',
           caption:
             'Verhindern Sie die Konfigurationsdrift, indem Sie eine einzige maßgebliche Quelle für alle QR-Reproduktionen erstellen',
         },
@@ -243,7 +243,7 @@ export const learn: PageDefinition = {
       heading: 'ANQR Exportoptionen erklärt',
       paragraphs: [
         'ANQR bietet mehrere SVG-Exportmodi für unterschiedliche Workflows. True Vector Mode produziert pure path-basierte Ausgabe ideal für Druck- und professionelle Design-Tools. Wenn Sie Raster-Overlays oder bestimmte Effekte hinzugefügt haben, kann ANQR diese unter Beibehaltung von Vektormodulen einbetten oder Sie können eine vollständig rasterisierte Version in Ihrer angegebenen Auflösung exportieren. Diese Optionen zu verstehen hilft Ihnen, den richtigen Export für jeden Anwendungsfall zu wählen.',
-        'Bei PNG-Exporten können Sie mit ANQR genaue Abmessungen festlegen und Optionen für transparente Hintergründe einschließen. Die DPI-Einstellung hilft Ihnen, geeignete Größen für den Druck zu berechnen, aber denken Sie daran, dass DPI Metadaten ist - was für den Druck wichtig ist, ist genug Pixel für Ihre physische Größe. Wenn in Zweifel, Export größer als Sie denken, Sie brauchen; Skalierung nach unten bewahrt Qualität, während Skalierung nach oben zerstört es.',
+        'Für PNG-Exporte können Sie mit ANQR genaue Abmessungen angeben und Optionen für transparente Hintergründe enthalten. Mithilfe der DPI-Einstellung können Sie geeignete Größen für den Druck berechnen. Denken Sie jedoch daran, dass es sich bei DPI um Metadaten handelt. Für den Druck kommt es darauf an, dass genügend Pixel für Ihre physische Größe vorhanden sind. Im Zweifelsfall exportieren Sie größere Mengen, als Sie für nötig halten. Eine Verkleinerung erhält die Qualität, während eine Vergrößerung sie zerstört.',
       ],
     },
     {
@@ -257,7 +257,7 @@ export const learn: PageDefinition = {
           src: '/images/learn/print-ready-handoff.png',
           alt: 'Ein Dateipaketdiagramm, das SVG-Master, PNG-Backup, Spezifikationen Dokument und Konfigurationslink zeigt',
           caption:
-            'Professionelles QR Handoff-Paket: Alles, was ein Designer oder Print-Anbieter für genaue Reproduktion benötigt',
+            'Professionelles QR-Übergabepaket: alles, was ein Designer oder Druckanbieter für eine genaue Reproduktion benötigt',
         },
       ],
     },
@@ -294,7 +294,7 @@ export const learn: PageDefinition = {
       heading: 'Animierte QR Codes erstellen',
       paragraphs: [
         'Animierte QR-Codes kombinieren die Funktionalität von Standard QR-Codes mit auffälliger Bewegung, die die Eingriffsraten drastisch erhöht. In digitalen Zeichen, sozialen Medien und interaktiven Displays verwandelt Animation ein statisches Dienstprogramm in ein überzeugendes visuelles Element, das das Auge zieht und Interaktion einlädt. Diese Anleitung deckt die Prinzipien, Techniken und praktischen Zwänge ab, animierte QR-Codes zu schaffen, die zuverlässig scannen und visuelle Auswirkungen erzielen.',
-        'Die grundsätzliche Herausforderung animierter QR-Codes ist das Auswuchten von visuellem Interesse gegen die Scansicherheit. Jeder Frame muss einzeln scannbar sein - ein Scanner kann den Code an jedem Punkt im Animationszyklus erfassen. Diese Strenge formt jede Designentscheidung: welche Elemente bewegen können, wie viel sie sich ändern können, und was während der Animation stabil bleiben muss.',
+        'Die grundlegende Herausforderung animierter QR-Codes besteht darin, visuelles Interesse und Scan-Zuverlässigkeit in Einklang zu bringen. Jeder Frame muss einzeln scannbar sein – ein Scanner kann den Code zu jedem Zeitpunkt im Animationszyklus erfassen. Diese Einschränkung prägt jede Designentscheidung: Welche Elemente können sich bewegen, wie stark können sie sich ändern und was muss während der gesamten Animation stabil bleiben.',
       ],
       images: [
         {

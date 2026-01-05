@@ -1,5 +1,5 @@
 import type { PageDefinition } from '../types';
-import { CONTACT_EMAIL, LAST_UPDATED } from '../types';
+import { LAST_UPDATED } from '../types';
 
 export const about: PageDefinition = {
   title: 'ANQR ਬਾਰੇ',
@@ -45,7 +45,7 @@ export const about: PageDefinition = {
     },
     {
       heading: 'ANQR ਕੌਣ ਚਲਾਉਂਦਾ ਹੈ?',
-      paragraphs: [`18${CONTACT_EMAIL}19`],
+      paragraphs: [`email@anqr.link`],
     },
     {
       heading: 'ਇਸ਼ਤਿਹਾਰਬਾਜ਼ੀ ਅਤੇ ਅਸੀਂ ਕਿਵੇਂ ਆਜ਼ਾਦ ਰਹਿੰਦੇ ਹਾਂ',

@@ -15,7 +15,7 @@
     "loop": "लूप एनिमेशन",
     "maxFrames": "मैक्स फ्रेम",
     "moduleJitter": "मॉड्यूल जेटर",
-    "moduleJitterWarning": "Affecting of the process of the process",
+    "moduleJitterWarning": "⚠️ May affect scannability",
     "morph": "मोर्फ",
     "none": "कोई नहीं",
     "off": "बंद",
@@ -123,7 +123,7 @@
     "viewAll": "सभी देखें",
     "yes": "हाँ"
   },
-  "fileSaveFailed": "फ़ाइल को बचाने में विफल: __ANQR_PH_0_",
+  "fileSaveFailed": "Failed to save file: {{error}}",
   "fileSaved": "दस्तावेजों को सहेजा गया: A-A-A-A-A-A-A-A-A-A-A-A-A-A-A-A-A-A-A-A-A-A-A-A-A-A-A-A-A-A-A-A-A-A-A-A-A-A-A-A-A-A-A-A-A-A-A-A-A-A-A-A-A-A-A-A-A-A-A-A-A-A-A-A-A-A-A-E-A-A-A-A-A-A-A-A-A-A-A-A-A-A-A-A-A-A-A-A-A-A-A-A-A-A-A-A-A-A-A-A-A-A-A-A-A-A-A-A-A-A-A-A-A-A-A-A-A-A-A-A-A-A-A-A-A-A-A-A-",
   "footer": {
     "copyright": "ANQR __ ANQR_PH_0_"
@@ -862,11 +862,11 @@
     "share": "शेयर"
   },
   "hints": {
-    "moduleJitterWarning": "Affecting of the process of the process",
+    "moduleJitterWarning": "⚠️ May affect scannability",
     "alignmentStyle": "संरेखण पैटर्न की शैली (बड़े क्यूआर कोड में इस्तेमाल)",
     "appLinkNote": "मोबाइल ऐप के भीतर विशिष्ट सामग्री खोलें",
-    "autoDetect": "ऑटो-डिटेक्ट (V_ANQR_PH_0_+ वर्तमान सामग्री के लिए)",
-    "autoMinVersion": "0 = ऑटो, मिनट v_ANQR_PH_0__________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________",
+    "autoDetect": "स्वतः पता लगाएं (वर्तमान सामग्री के लिए v{{version}}+ की आवश्यकता है)",
+    "autoMinVersion": "0 = Auto, min v{{version}} for current content",
     "bgColorHex": "पृष्ठभूमि रंग हेक्स कोड",
     "bizcardLegacy": "विरासत प्रारूप - इसके बजाय vCard का उपयोग करने पर विचार करें",
     "bluetoothNote": "नोट: क्यूआर के माध्यम से ब्लूटूथ जोड़ी विक्रेता-विशिष्ट है और सभी उपकरणों पर काम नहीं कर सकता है",
@@ -925,7 +925,7 @@
     "utmMedium": "अभियान ट्रैकिंग के लिए UTM मध्यम पैरामीटर",
     "utmSource": "अभियान ट्रैकिंग के लिए UTM स्रोत पैरामीटर",
     "validateInput": "एन्कोडिंग से पहले इनपुट डेटा को मान्य करें",
-    "versionTooLow": "A word that is very low! न्यूनतम V_ANQR_PH_0_______________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________",
+    "versionTooLow": "⚠️ संस्करण बहुत कम! Minimum v{{version}} required",
     "swissQrBillNote": "SIX दिशानिर्देशों के अनुसार CH/LI भुगतान के लिए स्विस क्यूआर-बिल प्रारूप",
     "lightningNote": "बिटकॉइन भुगतान के लिए लाइटनिंग नेटवर्क BOLT11 चालान",
     "ethereumNote": "एथेरेयम EIP-681 लेनदेन अनुरोध प्रारूप",

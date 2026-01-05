@@ -523,19 +523,19 @@
         "title": "Buscadores cuadrados"
       },
       "halftone-classic": {
-        "description": "Halftone with classic palette",
+        "description": "Medio tono con paleta clásica.",
         "title": "Classic Halftone"
       },
       "halftone-forest": {
-        "description": "Halftone with forest palette",
+        "description": "Semitono con paleta de bosque.",
         "title": "Forest Halftone"
       },
       "halftone-navy": {
-        "description": "Halftone with navy palette",
+        "description": "Semitono con paleta azul marino.",
         "title": "Navy Halftone"
       },
       "halftone-wine": {
-        "description": "Halftone with wine palette",
+        "description": "Semitono con paleta de vino.",
         "title": "Wine Halftone"
       },
       "img-blend": {
@@ -881,7 +881,7 @@
     "enforceMinQuietZone": "Ejecute mínimo 4 módulo zona tranquila para una mejor fiabilidad de escaneo",
     "enterTextContent": "Introduzca el contenido de texto para codificar en el código QR",
     "enterUrlContent": "Introduzca la URL para codificar en el código QR",
-    "epcSepaNote": "European Payment Council QR code for SEPA credit transfers",
+    "epcSepaNote": "Código QR del Consejo Europeo de Pagos para transferencias de crédito SEPA",
     "errorCorrection": "Nivel de corrección de error - mayor = mayor resistencia al daño pero mayor código QR",
     "extraBorder": "Módulos fronterizos adicionales más allá de la zona tranquila (0-10)",
     "eyeInnerStyle": "Estilo de la plaza interior de los patrones del buscador",
@@ -935,7 +935,7 @@
     "vietqrNote": "VietQR para las transferencias bancarias de Vietnam NAPAS",
     "qrphNote": "QR Ph para Filipinas InstaPay/PESONet pagos",
     "twqrNote": "TWQR para pagos de instituciones financieras de Taiwán",
-    "hkqrNote": "HKQR for Hong Kong Faster Payment System",
+    "hkqrNote": "HKQR para el sistema de pago más rápido de Hong Kong",
     "jpqrNote": "JPQR para Japón pagos unificados QR",
     "auspaynetNote": "AusPayNet para pagos de NPP PayID australiano",
     "paypalMeNote": "PayPal.Me link de pago compartido",
@@ -1048,7 +1048,7 @@
     "nModules": "{{count}} módulos",
     "nMs": "{{count}}ms",
     "nPercent": "¿POR QUÉ",
-    "nPx": "__ANQR_PH_0_px",
+    "nPx": "{{count}}px",
     "numericOnly": "Sólo Numérico",
     "quartile": "Q - Cuartil (25%)",
     "version": "Versión"
@@ -1810,7 +1810,7 @@
     "staticQr": "Static QR",
     "staticQrHint": "Código QR reutilizable (sin cantidad fija)",
     "tipFeeIndicator": "Indicador de propinas",
-    "tipPrompt": "Prompt for Tip",
+    "tipPrompt": "Solicitar propina",
     "tipFixed": "Fiebre fija",
     "tipPercentage": "Porcentaje",
     "feeAmount": "Cantidad",

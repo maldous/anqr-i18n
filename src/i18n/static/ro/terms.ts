@@ -51,7 +51,7 @@ export const terms: PageDefinition = {
     {
       heading: 'Licență pentru conținutul utilizatorului',
       paragraphs: [
-        'Prin utilizarea ANQR, nu ne acordați niciun drept asupra conținutului dvs. Atunci când utilizați generarea locală (implicită), toată generarea de coduri QR are loc în browserul dvs. și nu accesăm, stocăm și nu transmitem datele dvs. codificate.',
+        'Prin utilizarea ANQR, nu ne acordați niciun drept asupra conținutului dvs. Când folosiți generarea locală (prestabilită), toate generarea codurilor QR au loc în browserul dvs. și nu accesăm, stocăm sau transmitem datele dvs. codificate.',
         'Atunci când utilizați API-ul server-side, conținutul dvs. este procesat pentru a genera imaginea QR, dar nu este stocat, înregistrat sau utilizat în niciun alt scop în afara redării imaginii solicitate.',
       ],
     },
@@ -88,7 +88,7 @@ export const terms: PageDefinition = {
     {
       heading: 'Soluționarea litigiilor',
       paragraphs: [
-        'Orice litigiu care decurge din acești Termeni sau din utilizarea de către dvs. a ANQR va fi mai întâi încercat să fie rezolvat prin negociere informală, contactând ${CONTACT_EMAIL}.',
+        'Orice litigiu care decurge din acești Termeni sau din utilizarea de către dvs. a ANQR va fi mai întâi încercat să fie rezolvat prin negociere informală, contactând email@anqr.link.',
         'Dacă soluționarea informală eșuează, litigiile vor fi soluționate prin arbitraj obligatoriu în Victoria, Australia, cu excepția cazului în care oricare dintre părți poate solicita măsuri reparatorii în instanță pentru încălcări ale proprietății intelectuale.',
       ],
     },
@@ -137,7 +137,7 @@ export const terms: PageDefinition = {
     },
     {
       heading: 'Contact',
-      paragraphs: ['Întrebările despre acești Termeni pot fi trimise la: ${CONTACT_EMAIL}'],
+      paragraphs: ['Întrebările despre acești Termeni pot fi trimise la: email@anqr.link'],
     },
   ],
 };

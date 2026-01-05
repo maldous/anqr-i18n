@@ -1,5 +1,5 @@
 import type { PageDefinition } from '../types';
-import { CONTACT_EMAIL, LAST_UPDATED } from '../types';
+import { LAST_UPDATED } from '../types';
 
 export const about: PageDefinition = {
   title: '关于ANQR',
@@ -18,8 +18,8 @@ export const about: PageDefinition = {
     {
       heading: '什么是ANQR？',
       paragraphs: [
-        'ANQR (pronounced "anchor") is a free QR code generator that creates scannable codes for URLs, text, Wi-Fi credentials, contact cards, calendar events, and more.',
-        '它专为需要强大的 QR 工具而无需注册的个人、小型企业、营销人员和开发人员而构建。 The client-first design means QR codes are generated locally in your browser by default, with an optional server API for professional embedding and integration.',
+        'ANQR（发音为"anchor"）是一款免费的二维码生成器，可以为 URL、文本、Wi-Fi 凭证、联系人卡片、日历事件等创建可扫描的代码。',
+        '它专为需要强大的 QR 工具而无需注册的个人、小型企业、营销人员和开发人员而构建。客户端优先的设计意味着默认情况下，QR 码在浏览器中本地生成，并具有用于专业嵌入和集成的可选服务器 API。',
       ],
     },
     {
@@ -37,7 +37,7 @@ export const about: PageDefinition = {
     {
       heading: 'ANQR 的工作原理',
       paragraphs: [
-        'ANQR runs in your browser and encodes your input into a standard QR matrix with Reed–Solomon error correction, then renders it to the format you choose.',
+        'ANQR 在您的浏览器中运行，并将您的输入编码为具有里德-所罗门纠错功能的标准 QR 矩阵，然后将其呈现为您选择的格式。',
         '默认情况下，生成发生在浏览器本地。对于专业用途，您还可以使用服务器端 API 通过 URL 参数生成 QR 码 - 非常适合嵌入网站、电子邮件或自动化工作流程。',
         '当您添加叠加或动画时，ANQR 会平衡样式与扫描可靠性，以便结果保持可扫描性。',
         'ANQR 侧重于静态代码（数据位于 QR 内部）。如果您需要动态代码（可编辑目标），您可以对自己的重定向 URL 或短链接进行编码。',
@@ -45,7 +45,7 @@ export const about: PageDefinition = {
     },
     {
       heading: '谁运营 ANQR？',
-      paragraphs: [`18${CONTACT_EMAIL}19`],
+      paragraphs: [`email@anqr.link`],
     },
     {
       heading: '广告以及我们如何保持免费',

@@ -93,7 +93,7 @@ export const privacy: PageDefinition = {
       heading: 'Cơ sở pháp lý GDPR',
       paragraphs: [
         'Chúng tôi xử lý dữ liệu dựa trên những cơ sở sau: (a) Sự đồng ý - đối với quảng cáo được cá nhân hóa (do đối tác quảng cáo của chúng tôi quản lý); (b) Lợi ích chính đáng - về phân tích, bảo mật và cải tiến; (c) Hợp đồng - để trả lời các yêu cầu.',
-        'Để thực hiện các quyền của bạn, hãy liên hệ với ${CONTACT_EMAIL}. Chúng tôi trả lời trong vòng 30 ngày.',
+        'Để thực hiện các quyền của bạn, hãy liên hệ với email@anqr.link. Chúng tôi trả lời trong vòng 30 ngày.',
       ],
     },
     {
@@ -109,7 +109,7 @@ export const privacy: PageDefinition = {
       heading: 'Các danh mục CCPA được thu thập',
       paragraphs: [
         'Danh mục: Giá trị nhận dạng (địa chỉ IP, ID thiết bị), Hoạt động Internet (duyệt web, tương tác quảng cáo), Định vị địa lý (gần đúng), Suy luận (sở thích từ việc duyệt web).',
-        'Để thực hiện các quyền hoặc chọn không tham gia: ${CONTACT_EMAIL} hoặc điều chỉnh cài đặt cookie.',
+        'Để thực hiện các quyền hoặc chọn không tham gia: email@anqr.link hoặc điều chỉnh cài đặt cookie.',
       ],
     },
     {
@@ -121,7 +121,7 @@ export const privacy: PageDefinition = {
     {
       heading: 'Quyền riêng tư của trẻ em',
       paragraphs: [
-        'ANQR không hướng tới trẻ em dưới 13 tuổi (hoặc 16 tuổi ở EEA). Chúng tôi không cố ý thu thập dữ liệu từ trẻ em. Hãy liên hệ với ${CONTACT_EMAIL} nếu bạn cho rằng một đứa trẻ đã cung cấp thông tin.',
+        'ANQR không hướng tới trẻ em dưới 13 tuổi (hoặc 16 tuổi ở EEA). Chúng tôi không cố ý thu thập dữ liệu từ trẻ em. Hãy liên hệ với email@anqr.link nếu bạn cho rằng một đứa trẻ đã cung cấp thông tin.',
       ],
     },
     {
@@ -145,7 +145,7 @@ export const privacy: PageDefinition = {
     {
       heading: 'Liên hệ với chúng tôi',
       paragraphs: [
-        'Đối với các câu hỏi về quyền riêng tư hoặc để thực hiện các quyền của bạn: ${CONTACT_EMAIL} hoặc sử dụng trang Liên hệ của chúng tôi. Chúng tôi đáp ứng các yêu cầu về quyền riêng tư trong vòng 30 ngày.',
+        'Đối với các câu hỏi về quyền riêng tư hoặc để thực hiện các quyền của bạn: email@anqr.link hoặc sử dụng trang Liên hệ của chúng tôi. Chúng tôi đáp ứng các yêu cầu về quyền riêng tư trong vòng 30 ngày.',
       ],
     },
   ],

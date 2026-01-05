@@ -88,7 +88,7 @@ export const terms: PageDefinition = {
     {
       heading: 'Streitbeilegung',
       paragraphs: [
-        'Jeder Streit, der sich aus diesen Bedingungen oder Ihrer Nutzung von ANQR ergibt, wird zunächst versucht, durch informelle Verhandlungen behoben zu werden, indem er ${CONTACT_EMAIL} kontaktiert.',
+        'Jeder Streit, der sich aus diesen Bedingungen oder Ihrer Nutzung von ANQR ergibt, wird zunächst versucht, durch informelle Verhandlungen behoben zu werden, indem er email@anqr.link kontaktiert.',
         'Wenn informelle Entschließung scheitert, werden Streitigkeiten durch verbindliche Schiedsverfahren in Victoria, Australien, außer, dass jede Partei kann einstweilige Entlastung vor Gericht für geistige Eigentum Verletzungen suchen.',
       ],
     },
@@ -137,7 +137,7 @@ export const terms: PageDefinition = {
     },
     {
       heading: 'Kontakt',
-      paragraphs: ['Fragen zu diesen Bedingungen können an: ${CONTACT_EMAIL}_'],
+      paragraphs: ['Fragen zu diesen Bedingungen können an: email@anqr.link_'],
     },
   ],
 };

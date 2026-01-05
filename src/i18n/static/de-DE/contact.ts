@@ -60,7 +60,7 @@ export const contact: PageDefinition = {
     {
       heading: 'Kontaktieren Sie uns',
       paragraphs: [
-        'DMCA Mitteilungen senden an: ${CONTACT_EMAIL}',
+        'DMCA Mitteilungen senden an: email@anqr.link',
         'Bitte beinhalten Sie "DMCA Hinweis" in der Betreffzeile. Wir werden nach geltendem Recht auf gültige Mitteilungen reagieren. Beachten Sie, dass ANQR QR-Codes lokal auf Benutzergeräten generiert und nicht benutzergenerierte Inhalte hostet.',
       ],
     },

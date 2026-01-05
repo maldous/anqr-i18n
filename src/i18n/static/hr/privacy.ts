@@ -93,7 +93,7 @@ export const privacy: PageDefinition = {
       heading: 'GDPR pravna osnova',
       paragraphs: [
         'Podatke obrađujemo na ovim osnovama: (a) Privola - za personalizirano oglašavanje (kojima upravljaju naši partneri za oglašavanje); (b) Legitimni interesi - za analitiku, sigurnost i poboljšanje; (c) Ugovor - odgovoriti na upite.',
-        'Za ostvarivanje svojih prava kontaktirajte ${CONTACT_EMAIL}. Odgovaramo u roku od 30 dana.',
+        'Za ostvarivanje svojih prava kontaktirajte email@anqr.link. Odgovaramo u roku od 30 dana.',
       ],
     },
     {
@@ -109,7 +109,7 @@ export const privacy: PageDefinition = {
       heading: 'Prikupljene kategorije CCPA',
       paragraphs: [
         'Kategorije: Identifikatori (IP adresa, ID uređaja), Internetska aktivnost (pregledavanje, interakcije s oglasima), Geolokacija (približna), Zaključci (interesi iz pregledavanja).',
-        'Za ostvarivanje prava ili isključivanje: ${CONTACT_EMAIL} ili prilagodite postavke kolačića.',
+        'Za ostvarivanje prava ili isključivanje: email@anqr.link ili prilagodite postavke kolačića.',
       ],
     },
     {
@@ -121,7 +121,7 @@ export const privacy: PageDefinition = {
     {
       heading: 'Privatnost djece',
       paragraphs: [
-        'ANQR nije usmjeren na djecu mlađu od 13 (ili 16 u EEA). Ne prikupljamo svjesno podatke od djece. Kontaktirajte ${CONTACT_EMAIL} ako mislite da je dijete dalo informacije.',
+        'ANQR nije usmjeren na djecu mlađu od 13 (ili 16 u EEA). Ne prikupljamo svjesno podatke od djece. Kontaktirajte email@anqr.link ako mislite da je dijete dalo informacije.',
       ],
     },
     {
@@ -145,7 +145,7 @@ export const privacy: PageDefinition = {
     {
       heading: 'Kontaktirajte nas',
       paragraphs: [
-        'Za pitanja o privatnosti ili ostvarivanje svojih prava: ${CONTACT_EMAIL} ili upotrijebite našu stranicu za kontakt. Na zahtjeve o privatnosti odgovaramo u roku od 30 dana.',
+        'Za pitanja o privatnosti ili ostvarivanje svojih prava: email@anqr.link ili upotrijebite našu stranicu za kontakt. Na zahtjeve o privatnosti odgovaramo u roku od 30 dana.',
       ],
     },
   ],

@@ -93,7 +93,7 @@ export const privacy: PageDefinition = {
       heading: 'Temeiul juridic GDPR',
       paragraphs: [
         'Prelucrăm datele pe următoarele temeiuri: (a) Consimțământ - pentru publicitate personalizată (gestionată de partenerii noștri de publicitate); (b) Interese legitime - pentru analiză, securitate și îmbunătățire; (c) Contract - pentru a răspunde la solicitări.',
-        'Pentru a vă exercita drepturile, contactați ${CONTACT_EMAIL}." "Vă răspundem în termen de 30 de zile.',
+        'Pentru a vă exercita drepturile, contactați email@anqr.link." "Vă răspundem în termen de 30 de zile.',
       ],
     },
     {
@@ -109,7 +109,7 @@ export const privacy: PageDefinition = {
       heading: 'Categorii CCPA colectate',
       paragraphs: [
         'Categorii: Identificatori (adresă IP, ID dispozitiv), Activitate pe internet (navigare, interacțiuni cu reclame), Geolocație (aproximativă), Inferențe (interese din navigare).',
-        'Pentru a exercita drepturi sau a renunța: ${CONTACT_EMAIL} sau ajustați setările cookie-urilor.',
+        'Pentru a exercita drepturi sau a renunța: email@anqr.link sau ajustați setările cookie-urilor.',
       ],
     },
     {
@@ -121,7 +121,7 @@ export const privacy: PageDefinition = {
     {
       heading: 'Confidențialitatea copiilor',
       paragraphs: [
-        'ANQR nu se adresează copiilor sub 13 ani (sau 16 ani în SEE). Nu colectăm în mod conștient date de la copii. Contactați ${CONTACT_EMAIL} dacă credeți că un copil a furnizat informații.',
+        'ANQR nu se adresează copiilor sub 13 ani (sau 16 ani în SEE). Nu colectăm în mod conștient date de la copii. Contactați email@anqr.link dacă credeți că un copil a furnizat informații.',
       ],
     },
     {
@@ -145,7 +145,7 @@ export const privacy: PageDefinition = {
     {
       heading: 'Contactați-ne',
       paragraphs: [
-        'Pentru întrebări legate de confidențialitate sau pentru a vă exercita drepturile: ${CONTACT_EMAIL} sau utilizați pagina noastră de Contact. Răspundem solicitărilor de confidențialitate în termen de 30 de zile.',
+        'Pentru întrebări legate de confidențialitate sau pentru a vă exercita drepturile: email@anqr.link sau utilizați pagina noastră de Contact. Răspundem solicitărilor de confidențialitate în termen de 30 de zile.',
       ],
     },
   ],

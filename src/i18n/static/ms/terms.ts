@@ -88,7 +88,7 @@ export const terms: PageDefinition = {
     {
       heading: 'Resolusi yang membingungkan',
       paragraphs: [
-        'Persoalan apa pun yang timbul dari Ketentuan ini atau penggunaan ANQR pertama kali akan diupayakan untuk diselesaikan melalui negosiasi tidak resmi dengan menghubungi ${CONTACT_EMAIL}.',
+        'Persoalan apa pun yang timbul dari Ketentuan ini atau penggunaan ANQR pertama kali akan diupayakan untuk diselesaikan melalui negosiasi tidak resmi dengan menghubungi email@anqr.link.',
         'Jika resolusi tidak resmi gagal, perselisihan harus diselesaikan melalui arbitrase yang mengikat di Victoria, Australia, kecuali bahwa kedua pihak mungkin mencari bantuan hukum di pengadilan untuk pelanggaran hak kekayaan intelektual.',
       ],
     },
@@ -137,7 +137,7 @@ export const terms: PageDefinition = {
     },
     {
       heading: 'Kenalan',
-      paragraphs: ['Pertanyaan tentang Ketentuan ini dapat dikirim ke: ${CONTACT_EMAIL}__'],
+      paragraphs: ['Pertanyaan tentang Ketentuan ini dapat dikirim ke: email@anqr.link__'],
     },
   ],
 };

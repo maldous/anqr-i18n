@@ -16,7 +16,7 @@ export const contact: PageDefinition = {
     {
       heading: 'I-imeyili',
       paragraphs: [
-        'Kuyo yonke imibuzo: ${CONTACT_EMAIL}',
+        'Kuyo yonke imibuzo: email@anqr.link',
         'Lena yindlela ethembekile kakhulu yokusithinta futhi inconywa ngemibuzo enemininingwane, imibuzo yebhizinisi, noma eminye imibuzo.',
       ],
     },
@@ -61,7 +61,7 @@ export const contact: PageDefinition = {
     {
       heading: 'Oxhumana naye we-DMCA',
       paragraphs: [
-        'Thumela izaziso ze-DMCA ku: ${CONTACT_EMAIL}',
+        'Thumela izaziso ze-DMCA ku: email@anqr.link',
         'Sicela ufake "Isaziso se-DMCA" emgqeni wesihloko. Sizophendula izaziso ezivumelekile ngokuhambisana nomthetho osebenzayo. Qaphela ukuthi i-ANQR ikhiqiza amakhodi e-QR endaweni yakini kumadivayisi abasebenzisi futhi ayigcini okuqukethwe okudalwe ngabasebenzisi.',
       ],
     },

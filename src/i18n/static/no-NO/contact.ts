@@ -16,19 +16,19 @@ export const contact: PageDefinition = {
     {
       heading: 'E-post',
       paragraphs: [
-        'For alle henvendelser: ${CONTACT_EMAIL}',
-        'Dette er den mest pålitelige måten å nå oss på og anbefales for detaljerte spørsmål, forretningsforespørsler eller andre henvendelser.',
+        'For alle henvendelser: email@anqr.link',
+        'Dette er den mest pålitelige måten å nå oss på og anbefales for detaljerte spørsmål, forretningshenvendelser eller andre forespørsler.',
       ],
     },
     {
       heading: 'Typer av henvendelser',
       bullets: [
         'Generelle spørsmål: Spørsmål om hvordan du bruker ANQR, funksjonsforklaringer eller generell tilbakemelding.',
-        'Feilrapporter: Vennligst ta med nettleseren din, operativsystemet, trinnene for å reprodusere og eventuelle feilmeldinger du ser.',
+        'Feilrapporter: Ta med nettleseren din, operativsystemet, fremgangsmåten for å reprodusere og eventuelle feilmeldinger du ser.',
         'Funksjonsforespørsler: Forslag til nye funksjoner eller forbedringer. Vi vurderer alle ønsker selv om vi ikke kan love implementering.',
         'Forretningsforespørsler: Partnerskapsmuligheter, lisensieringsspørsmål eller forespørsler om kommersiell bruk.',
         'Personvernforespørsler: Forespørsler om å utøve dine personvernrettigheter under GDPR, CCPA eller andre personvernlover (se Personvernerklæring).',
-        'DMCA/Opphavsrett: Se DMCA-delen nedenfor for krav til nedtak.',
+        'DMCA/Copyright: Se DMCA-delen nedenfor for varsel om fjerning.',
       ],
     },
     {
@@ -41,7 +41,7 @@ export const contact: PageDefinition = {
     {
       heading: 'Før du kontakter oss',
       paragraphs: [
-        'Sjekk vår Dokumentasjonsside for svar på vanlige spørsmål om hvordan du bruker ANQR-funksjoner. Mange spørsmål om QR-kodegenerering, styling og eksportalternativer er dekket der.',
+        'Vennligst sjekk vår dokumentasjonsside for svar på vanlige spørsmål om hvordan du bruker ANQR-funksjoner. Mange spørsmål om QR-kodegenerering, styling og eksportalternativer er dekket der.',
       ],
     },
     {
@@ -61,8 +61,8 @@ export const contact: PageDefinition = {
     {
       heading: 'DMCA Kontakt',
       paragraphs: [
-        'Send DMCA-meldinger til: ${CONTACT_EMAIL}',
-        'Ta med "DMCA-erklæring" i emnelinjen. Vi vil svare på gyldige meldinger i samsvar med gjeldende lov. Merk at ANQR genererer QR-koder lokalt på brukerenheter og ikke er vert for brukergenerert innhold.',
+        'Send DMCA-meldinger til: email@anqr.link',
+        'Vennligst inkluder "DMCA Notice" i emnelinjen. Vi vil svare på gyldige varsler i samsvar med gjeldende lov. Merk at ANQR genererer QR-koder lokalt på brukernes enheter og ikke er vert for brukergenerert innhold.',
       ],
     },
   ],

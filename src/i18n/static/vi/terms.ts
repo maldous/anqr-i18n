@@ -88,7 +88,7 @@ export const terms: PageDefinition = {
     {
       heading: 'Giải quyết tranh chấp',
       paragraphs: [
-        'Mọi tranh chấp phát sinh từ các Điều khoản này hoặc việc bạn sử dụng ANQR trước tiên sẽ được cố gắng giải quyết thông qua thương lượng không chính thức bằng cách liên hệ với ${CONTACT_EMAIL}.',
+        'Mọi tranh chấp phát sinh từ các Điều khoản này hoặc việc bạn sử dụng ANQR trước tiên sẽ được cố gắng giải quyết thông qua thương lượng không chính thức bằng cách liên hệ với email@anqr.link.',
         'Nếu giải pháp không chính thức không thành công, tranh chấp sẽ được giải quyết thông qua trọng tài có tính ràng buộc ở Victoria, Úc, ngoại trừ việc một trong hai bên có thể yêu cầu biện pháp khẩn cấp tại tòa án đối với các vi phạm sở hữu trí tuệ.',
       ],
     },
@@ -137,7 +137,7 @@ export const terms: PageDefinition = {
     },
     {
       heading: 'Liên hệ',
-      paragraphs: ['Bạn có thể gửi câu hỏi về các Điều khoản này tới: ${CONTACT_EMAIL}'],
+      paragraphs: ['Bạn có thể gửi câu hỏi về các Điều khoản này tới: email@anqr.link'],
     },
   ],
 };

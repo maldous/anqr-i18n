@@ -93,7 +93,7 @@ export const privacy: PageDefinition = {
       heading: 'Base jurídica do GDPR',
       paragraphs: [
         'Processamos dados nestas bases: (a) Consentimento – para publicidade personalizada (gerida pelos nossos parceiros publicitários); (b) Interesses legítimos – para análise, segurança e melhoria; (c) Contrato - para atendimento de dúvidas.',
-        'Para exercer seus direitos, entre em contato com ${CONTACT_EMAIL}. Respondemos em até 30 dias.',
+        'Para exercer seus direitos, entre em contato com email@anqr.link. Respondemos em até 30 dias.',
       ],
     },
     {
@@ -109,7 +109,7 @@ export const privacy: PageDefinition = {
       heading: 'Categorias CCPA coletadas',
       paragraphs: [
         'Categorias: Identificadores (endereço IP, ID do dispositivo), Atividade na Internet (navegação, interações com anúncios), Geolocalização (aproximada), Inferências (interesses de navegação).',
-        'Para exercer direitos ou cancelar: ${CONTACT_EMAIL} ou ajustar as configurações de cookies.',
+        'Para exercer direitos ou cancelar: email@anqr.link ou ajustar as configurações de cookies.',
       ],
     },
     {
@@ -121,7 +121,7 @@ export const privacy: PageDefinition = {
     {
       heading: 'Privacidade das crianças',
       paragraphs: [
-        'A ANQR não se destina a crianças menores de 13 anos (ou 16 anos no EEE). Não coletamos intencionalmente dados de crianças. Entre em contato com ${CONTACT_EMAIL} se você acredita que uma criança forneceu informações.',
+        'A ANQR não se destina a crianças menores de 13 anos (ou 16 anos no EEE). Não coletamos intencionalmente dados de crianças. Entre em contato com email@anqr.link se você acredita que uma criança forneceu informações.',
       ],
     },
     {
@@ -145,7 +145,7 @@ export const privacy: PageDefinition = {
     {
       heading: 'Contate-nos',
       paragraphs: [
-        'Para questões de privacidade ou para exercer seus direitos: ${CONTACT_EMAIL} ou use nossa página de contato. Respondemos às solicitações de privacidade dentro de 30 dias.',
+        'Para questões de privacidade ou para exercer seus direitos: email@anqr.link ou use nossa página de contato. Respondemos às solicitações de privacidade dentro de 30 dias.',
       ],
     },
   ],

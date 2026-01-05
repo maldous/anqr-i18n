@@ -1,5 +1,5 @@
 import type { PageDefinition } from '../types';
-import { CONTACT_EMAIL, LAST_UPDATED } from '../types';
+import { LAST_UPDATED } from '../types';
 
 export const about: PageDefinition = {
   title: 'O ANQR',
@@ -31,7 +31,7 @@ export const about: PageDefinition = {
         'Pokročilé ovládání pro úroveň opravy chyb, QR verze, kódování režimu a výběr masky.',
         'Scan- bezpečnostní navádění a živý náhled, který pomůže udržet kódy čitelné v tisku i na obrazovkách.',
         'Serverside API pro profesionální vkládání s plnou podporou parametru.',
-        'Funguje offline po načtení - je to statická webová aplikace, kterou můžete spustit kdekoliv.',
+        'Po načtení funguje offline – je to statická webová aplikace, kterou můžete spustit kdekoli.',
       ],
     },
     {
@@ -45,7 +45,7 @@ export const about: PageDefinition = {
     },
     {
       heading: 'Kdo provozuje ANQR?',
-      paragraphs: [`18${CONTACT_EMAIL}19`],
+      paragraphs: [`email@anqr.link`],
     },
     {
       heading: 'Reklama a jak jsme zůstat zdarma',

@@ -264,7 +264,7 @@ export const guide: PageDefinition = {
         'Langganan Calendar: Berlangganan ke feed ICS/WebCal.',
         'URL Berkas/Dokumen: Sambungan langsung ke berkas yang dapat diunduh.',
         'Tautan Penyimpanan Awan Ukiran: Tautan ke Google Drive, Dropbox, OneDrive, dll.',
-        'Profil Sosial Fizik: Links to LinkedIn, Twitter, Instagram, dll.',
+        'Profil Sosial: Pautan ke LinkedIn, Twitter, Instagram, dsb.',
         'Link Pesanan: WhatsApp, Telegram, Signal deep link.',
       ],
       links: [
@@ -337,8 +337,8 @@ export const guide: PageDefinition = {
         'Gunakan filter ke gambar overlay sebelum membaur. Penyesuaian ini dapat meningkatkan bagaimana gambar muncul dalam kode QR akhir.',
       ],
       bullets: [
-        'Kecerahan (-100 to +100): Terang atau gelapkan gambar.',
-        'Kontras (-100 to +100): Meningkatkan atau mengurangi jangkauan tonal.',
+        'Kecerahan (-100 hingga +100): Cerahkan atau gelapkan imej.',
+        'Kontras (-100 hingga +100): Menambah atau mengurangkan julat tonal.',
         'Gamma (0.2 hingga 3.0): Penyesuaian kecerahan non-linear. Nilai di bawah 1 nada tengah ringan, di atas 1 gelap mereka.',
         'Ketepuan (-100 hingga +100): Keamatan warna. -100 adalah skala kelabu, +100 terlalu jenuh.',
         'Rotan Rona Rona Rona (0-360°): Anjakkan semua warna di roda warna.',
@@ -642,7 +642,7 @@ export const guide: PageDefinition = {
       heading: 'Standar Pembayaran Euro',
       bullets: [
         'Arondisemen EPC/SEPA (EU): transfer bank QR Eropa kode QR mengikuti EPC QR Code Standard. Diagios Supports IBAN, BIC (opsional untuk domestik), jumlah dalam EUR, dan referensi pembayaran terstruktur atau tidak terstruktur. Terpakai di seluruh zona SEPA termasuk negara-negara UE ditambah Swiss, Norwegia, Islandia, Liechtenstein, Monako, dan San Marino.',
-        'Jalur QR-bill Swiss: Standar pembayaran Swiss mengikuti Panduan Implementasi SIX. Sogodes Supports CHF and EUR, QR-Reference (QRR), Creditor Reference (ISO 11649), structed creditor/debtor address, dan bill information. Waiske dibutuhkan untuk tagihan Swiss sejak 2022.',
+        'Bil QR Switzerland: Standard pembayaran Switzerland mengikut ENAM Garis Panduan Pelaksanaan. Menyokong CHF dan EUR, Rujukan QR (QRR), Rujukan Pemiutang (ISO 11649), alamat pemiutang/penghutang berstruktur dan maklumat bil. Diperlukan untuk invois Switzerland sejak 2022.',
       ],
       links: [
         {
@@ -670,11 +670,11 @@ export const guide: PageDefinition = {
       heading: 'Standar Pembayaran Asia Tenggara',
       bullets: [
         '(Singapura): Sistem pembayaran cepat Singapura menggunakan spesifikasi EMVCo QR dengan profil SGQR. Sodium Mendukung UEN (register bisnis), nomor seluler, atau NRIC sebagai pengidentifikasi proksi. Termasuk jumlah bendera pengeditan dan tanggal kadaluarsa.',
-        'PromptPay (Thailand): Sistem pembayaran nasional Thailand diikuti Bank of Thailand EMV profile. Sodium mendukung nomor seluler, ID nasional, ID pajak, ID e-wallet, dan pembayaran tagihan dengan berbagai bidang referensi.',
+        'PromptPay (Thailand): Sistem pembayaran negara Thai mengikut profil EMV Bank of Thailand. Menyokong nombor mudah alih, ID kebangsaan, ID cukai, ID e-dompet dan pembayaran bil dengan pelbagai medan rujukan.',
         'AVADIS QRIS (Indonesia): Kode Cepat Respons Kode Pos Indonesia Standar. Hak pembayaran nasional berbasis-EMV yang mendukung ID pedagang, NMID (National Merchant ID), klasifikasi kriteria pedagang, dan biaya kemudahan (fixed atau persentase).',
         'Aquino DuitNow (Malaysia): Sistem pembayaran instan Malaysia. Ogodia mendukung berbagai jenis proxy termasuk NRIC, mobile, paspor, ID tentara, dan nomor registrasi bisnis.',
         'VietQR (Vietnam): standar transfer antarbank Vietnam. Persyaratan BIN bank (naPAS identifikasi) dan nomor rekening. Arondisemen Mendukung kode layanan multiple untuk tipe transfer yang berbeda (QRPUSH, QRIBFTTA, QRIBFTTC).',
-        '(Philippines): Standar pembayaran untuk InstaPay dan PESONet. Uses nomer akun dengan identifikasi pedagang untuk transaksi P2M (person-to-merchant).',
+        'QR Ph (Filipina): Standard pembayaran QR Filipina untuk InstaPay dan PESONet. Menggunakan nombor akaun dengan pengenalan pedagang untuk transaksi P2M (orang-ke-peniaga).',
       ],
       links: [
         {
@@ -732,7 +732,7 @@ export const guide: PageDefinition = {
       heading: 'Layanan Tautan Pembayaran Bayaran',
       bullets: [
         'PayPal.Me: Sambungan pembayaran PayPal dengan nama pengguna dan jumlah pra-penuh pilihan. Penerima wasiat dapat membayar melalui saldo PayPal, kartu, atau rekening bank.',
-        'Tunai Tunai Tunai: Tunai Upah pembayaran App link menggunakan $cashtag dengan jumlah pilihan. Popular di Amerika Serikat untuk pembayaran peer-to-peer.',
+        'Apl Tunai: Pautan pembayaran Apl Tunai menggunakan $cashtag dengan jumlah pilihan. Popular di Amerika Syarikat untuk pembayaran peer-to-peer.',
       ],
       links: [
         {

@@ -90,7 +90,7 @@ export const privacy: PageDefinition = {
       heading: 'GDPR 法律依据',
       paragraphs: [
         '我们根据以下基础处理数据： (a) 同意 - 个性化广告（由我们的广告合作伙伴管理）； (b) 合法利益 - 用于分析、安全和改进； (c) 合同 - 回应询问。',
-        '要行使您的权利，请联系 ${CONTACT_EMAIL}。我们会在 30 天内回复。',
+        '要行使您的权利，请联系 email@anqr.link。我们会在 30 天内回复。',
       ],
     },
     {
@@ -106,7 +106,7 @@ export const privacy: PageDefinition = {
       heading: '收集的 CCPA 类别',
       paragraphs: [
         '类别：标识符（IP 地址、设备 ID）、互联网活动（浏览、广告交互）、地理位置（近似）、推论（浏览兴趣）。',
-        '要行使权利或选择退出：${CONTACT_EMAIL} 或调整 cookie 设置。',
+        '要行使权利或选择退出：email@anqr.link 或调整 cookie 设置。',
       ],
     },
     {
@@ -118,7 +118,7 @@ export const privacy: PageDefinition = {
     {
       heading: '儿童隐私',
       paragraphs: [
-        'ANQR 不针对 13 岁以下（或欧洲经济区 16 岁）以下的儿童。我们不会故意收集儿童的数据。如果您认为儿童提供了信息，请联系 ${CONTACT_EMAIL}。',
+        'ANQR 不针对 13 岁以下（或欧洲经济区 16 岁）以下的儿童。我们不会故意收集儿童的数据。如果您认为儿童提供了信息，请联系 email@anqr.link。',
       ],
     },
     {
@@ -140,7 +140,7 @@ export const privacy: PageDefinition = {
     {
       heading: '联系我们',
       paragraphs: [
-        '如有隐私问题或行使您的权利：${CONTACT_EMAIL} 或使用我们的联系页面。我们会在 30 天内回复隐私请求。',
+        '如有隐私问题或行使您的权利：email@anqr.link 或使用我们的联系页面。我们会在 30 天内回复隐私请求。',
       ],
     },
   ],

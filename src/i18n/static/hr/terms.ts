@@ -87,7 +87,7 @@ export const terms: PageDefinition = {
     {
       heading: 'Rješavanje sporova',
       paragraphs: [
-        'Svaki spor koji proizlazi iz ovih Uvjeta ili vaše upotrebe ANQR-a prvo će se pokušati riješiti neformalnim pregovorima kontaktiranjem ${CONTACT_EMAIL}.',
+        'Svaki spor koji proizlazi iz ovih Uvjeta ili vaše upotrebe ANQR-a prvo će se pokušati riješiti neformalnim pregovorima kontaktiranjem email@anqr.link.',
         'Ako neformalno rješenje ne uspije, sporovi će se rješavati putem obvezujuće arbitraže u Victoriji, Australija, osim što bilo koja strana može zatražiti mjeru zabrane na sudu zbog kršenja intelektualnog vlasništva.',
       ],
     },
@@ -136,7 +136,7 @@ export const terms: PageDefinition = {
     },
     {
       heading: 'kontakt',
-      paragraphs: ['Pitanja o ovim Uvjetima možete poslati na: ${CONTACT_EMAIL}'],
+      paragraphs: ['Pitanja o ovim Uvjetima možete poslati na: email@anqr.link'],
     },
   ],
 };

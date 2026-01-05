@@ -10,7 +10,7 @@ import { LAST_UPDATED } from '../types';
 export const examples: PageDefinition = {
   title: 'Příklady ANQR',
   description:
-    'Pět real- world, produktion- style příkladů, které ukazují, kde QR kódy vytvářet měřitelnou hodnotu: zvednutí odkaz maloobchodní počítadlo kód, značkové maloobchodní platby a "scan- to" akce, tisk škálování od letáků na billboardy, animované QR pro digitální značení, a cross-jazyková spolupráce pomocí sdílené Anchor odkazy. Každý příklad obsahuje obrázky, praktická omezení a remix odkaz zpět na generátor.',
+    'Pět reálných příkladů produkčního stylu, které ukazují, kde QR kódy vytvářejí měřitelnou hodnotu: pozvednutí staršího maloobchodního pultového kódu, značkové maloobchodní platby a akce "scan-to", škálování tisku od letáků po billboardy, animované QR pro digitální značení a spolupráce mezi jazyky pomocí sdílených odkazů Anchor. Každý příklad obsahuje obrázky, praktická omezení a odkaz na remix zpět do generátoru.',
   lastUpdated: LAST_UPDATED,
 
   primaryLinks: [
@@ -127,7 +127,7 @@ export const examples: PageDefinition = {
       heading: 'Priorizace zkušeností s platbou',
       paragraphs: [
         'Metoda primární platby v obchodě použila regionální standard, který vyžadoval přísnou shodu s užitečným zatížením. Testování ukázalo, že i menší styl ovlivňuje rychlost skenování s určitými bankovními aplikacemi. Rozhodnutí: udržujte platební QR zcela nezměněné s výjimkou optimalizace velikosti a profesionálního tisku na matném kartě.',
-        'Tento konzervativní přístup znamenal, že platební kód vypadal méně "značený" než ideální, ale sazby dokončení transakce se dramaticky zlepšily. Vhled: platební momenty nejsou značkové příležitosti - jsou to momenty spolehlivosti. Zákazníci oceňují rychlost a jistotu nad estetikou, když jde o peníze.',
+        'Tento konzervativní přístup znamenal, že platební kód vypadal méně "značkově" než ideálně, ale míra dokončení transakcí se dramaticky zlepšila. Poznatek: platební momenty nejsou příležitostí k budování značky, ale momenty spolehlivosti. Zákazníci oceňují rychlost a jistotu nad estetikou, když jde o peníze.',
       ],
       images: [
         {
@@ -202,7 +202,7 @@ export const examples: PageDefinition = {
       heading: 'Case Study: Od obchodní karty k Billboard',
       paragraphs: [
         'Tento příklad následuje po výrobní společnosti připravující se na velkou konferenci. Potřebovali stejný QR kód - spojení s aplikací event - rozmístěný napříč radikálně odlišnými formáty: destičky vstupenek (3cm), karty stolního stanu (8cm), cedule registračního stolu (30cm), plakáty (60cm) a masivní plakát na jevišti (4 metry). Každý formát měl různé vzdálenosti pohledu, světelné podmínky a výrobní pracovní toky.',
-        'Výzva nebyla jen technická - byla funkční. Několik prodejců se zabývalo různými tiskovými pracemi, a společnost potřebovala zajistit konzistentní, škálovatelné výsledky bez ohledu na to, kdo vyráběl co. Jejich řešení se soustředilo na SVG export a přísnou dokumentaci o předání.',
+        'Výzva nebyla jen technická – byla provozní. Více dodavatelů zpracovávalo různé tiskové úlohy a společnost potřebovala zajistit konzistentní, skenovatelné výsledky bez ohledu na to, kdo co vyrobil. Jejich řešení se soustředilo na export SVG a přísnou předávací dokumentaci.',
       ],
       images: [
         {
@@ -291,7 +291,7 @@ export const examples: PageDefinition = {
     {
       heading: 'Case Study: Airport Lounge Digital Display',
       paragraphs: [
-        'Tento příklad následuje po letovém salónku, který používal statické kódy QR na svých digitálních obrazovkách. Obrazovky zobrazují rotační propagační obsah, ale QR kód pro lounge check- v sedě v rohu, statické a snadno přehlédnutelné. Analytici ukázali pouze 15% způsobilých hostů použili QR check-in i přes to, že je rychlejší než stůl fronty. Většina hostů si toho prostě nevšimla.',
+        'Tento příklad sleduje salonek letecké společnosti, který na svých digitálních uvítacích obrazovkách používal statické QR kódy. Na obrazovkách se zobrazoval rotující propagační obsah, ale QR kód pro odbavení v salonku zůstal stát v rohu, statický a snadno přehlédnutelný. Analýza ukázala, že pouze 15 % způsobilých hostů využilo QR check-in, přestože byl rychlejší než fronta na stole. Většina hostů si toho prostě nevšimla.',
         'Hypotéza byla jednoduchá: ve vizuálně nabitém prostředí s pohyblivým obsahem se statický QR stává neviditelným. Řešení potřebné k tomu, aby QR bylo patrné, aniž by byla ohrožena spolehlivost potřebná pro check-in tok, kde by selhání znamenalo frustrované cestovatele a delší fronty.',
       ],
       images: [

@@ -93,7 +93,7 @@ export const privacy: PageDefinition = {
       heading: 'GDPR-regsgrondslag',
       paragraphs: [
         'Ons verwerk data op hierdie basisse: (a) Toestemming - vir gepersonaliseerde advertensies (bestuur deur ons advertensievennote); (b) Wettige belange - vir ontleding, sekuriteit en verbetering; (c) Kontrak - om op navrae te reageer.',
-        'Kontak ${CONTACT_EMAIL} om jou regte uit te oefen. Ons reageer binne 30 dae.',
+        'Kontak email@anqr.link om jou regte uit te oefen. Ons reageer binne 30 dae.',
       ],
     },
     {
@@ -109,7 +109,7 @@ export const privacy: PageDefinition = {
       heading: 'CCPA-kategorieë ingesamel',
       paragraphs: [
         'Kategorieë: Identifiseerders (IP-adres, toestel-ID), internetaktiwiteit (blaai, advertensie-interaksies), geoligging (benadering), afleidings (belangstellings van blaai).',
-        'Om regte uit te oefen of te onttrek: ${CONTACT_EMAIL} of pas koekie-instellings aan.',
+        'Om regte uit te oefen of te onttrek: email@anqr.link of pas koekie-instellings aan.',
       ],
     },
     {
@@ -121,7 +121,7 @@ export const privacy: PageDefinition = {
     {
       heading: 'Kinders se privaatheid',
       paragraphs: [
-        "ANQR is nie gerig op kinders onder 13 (of 16 in die EER nie). Ons samel nie bewustelik data van kinders in nie. Kontak ${CONTACT_EMAIL} as jy glo dat 'n kind inligting verskaf het.",
+        "ANQR is nie gerig op kinders onder 13 (of 16 in die EER nie). Ons samel nie bewustelik data van kinders in nie. Kontak email@anqr.link as jy glo dat 'n kind inligting verskaf het.",
       ],
     },
     {
@@ -145,7 +145,7 @@ export const privacy: PageDefinition = {
     {
       heading: 'Kontak ons',
       paragraphs: [
-        'Vir privaatheidsvrae of om jou regte uit te oefen: ${CONTACT_EMAIL} of gebruik ons Kontakbladsy. Ons reageer binne 30 dae op privaatheidsversoeke.',
+        'Vir privaatheidsvrae of om jou regte uit te oefen: email@anqr.link of gebruik ons Kontakbladsy. Ons reageer binne 30 dae op privaatheidsversoeke.',
       ],
     },
   ],

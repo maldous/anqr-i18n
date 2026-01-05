@@ -109,7 +109,7 @@ export const examples: PageDefinition = {
     {
       heading: '案例研究：多支付柜台展示',
       paragraphs: [
-        'This example follows a boutique clothing store that had accumulated five different QR codes at their register: bank payment, tips, Instagram, Google reviews, and a hiring link.每一个都是从不同的来源生成的，在不同的时间印刷，并在不匹配的展台上展示。视觉混乱破坏了商店精心策划的美感，工作人员经常处理扫描错误代码的顾客。',
+        '此示例以一家精品服装店为例，该店在收银台上积累了五个不同的二维码：银行付款、小费、Instagram、Google 评论和招聘链接。每一个都是从不同的来源生成的，在不同的时间印刷，并在不匹配的展台上展示。视觉混乱破坏了商店精心策划的美感，工作人员经常处理扫描错误代码的顾客。',
         '该解决方案需要分离关注点：支付代码需要最大程度的可靠性和保守的样式，而营销代码可以更具表现力。出现的统一显示系统展示了如何平衡品牌形象与不同二维码用例的功能需求。',
       ],
       images: [
@@ -151,7 +151,7 @@ export const examples: PageDefinition = {
     {
       heading: '显示系统设计',
       paragraphs: [
-        '物理显示同时解决了几个问题。 Both the payment stand and the secondary panel used matte materials to eliminate glare from overhead lighting.针对不同身材的客户优化了高度。角度指向顾客队列，而不是平放在柜台上。',
+        '物理显示同时解决了几个问题。付款台和副面板均采用哑光材料，以消除头顶照明的眩光。针对不同身材的客户优化了高度。角度指向顾客队列，而不是平放在柜台上。',
         '至关重要的是，该商店从锁定的 ANQR 配置链接中创建了备用打印件。当提示代码最终被咖啡溅到时，工作人员在几分钟内使用存储的配置替换了它 - 没有屏幕截图，没有猜测设置，没有质量下降。',
       ],
       images: [
@@ -196,7 +196,7 @@ export const examples: PageDefinition = {
       heading: '案例研究：从名片到广告牌',
       paragraphs: [
         '此示例讲述了一家活动制作公司为一次大型会议做准备的情况。他们需要相同的二维码 - 链接到活动应用程序 - 部署在完全不同的格式中：与会者徽章插页（3 厘米）、桌帐篷卡（8 厘米）、登记台标牌（30 厘米）、寻路海报（60 厘米）和巨大的舞台背景横幅（4 米）。每种格式都有不同的观看距离、照明条件和制作工作流程。',
-        '挑战不仅是技术上的，也是操作上的。 Multiple vendors handled different print jobs, and the company needed to ensure consistent, scannable results regardless of who produced what.他们的解决方案以 SVG 导出和严格的移交文档为中心。',
+        '挑战不仅是技术上的，也是操作上的。多个供应商处理不同的打印作业，公司需要确保一致的、可扫描的结果，无论谁生产什么。他们的解决方案以 SVG 导出和严格的移交文档为中心。',
       ],
       images: [
         {
@@ -224,7 +224,7 @@ export const examples: PageDefinition = {
       heading: 'SVG 优先工作流程',
       paragraphs: [
         '对于本次活动，该公司制定了严格的协议：在 ANQR 中生成一个具有最佳设置（纠错 H、慷慨的安静区域、干净的样式）的主 QR，导出为 SVG，并存储为单一权威源。 ANQR 配置链接与 SVG 文件一起记录，因此可以在需要时重新生成代码。',
-        '每个设计师和供应商都会收到相同的 SVG 母版，其中包含明确的说明：按所需尺寸放置、不要修改、保持安静区域间隙。 For vendors requiring raster formats, the company provided pre-rendered PNGs at specific sizes with clear naming conventions indicating intended use.',
+        '每个设计师和供应商都会收到相同的 SVG 母版，其中包含明确的说明：按所需尺寸放置、不要修改、保持安静区域间隙。对于需要光栅格式的供应商，该公司提供了特定尺寸的预渲染 PNG，并具有明确的命名约定来表明预期用途。',
       ],
       images: [
         {
@@ -281,7 +281,7 @@ export const examples: PageDefinition = {
       heading: '案例研究：机场休息室数字显示屏',
       paragraphs: [
         '此示例以航空公司休息室为例，该休息室一直在其数字欢迎屏幕上使用静态 QR 码。屏幕上轮流显示促销内容，但休息室办理登机手续的二维码却位于角落，一动不动，很容易被忽视。分析显示，只有 15% 的符合条件的客人使用二维码办理入住，尽管它比柜台排队更快。大多数客人根本没有注意到这一点。',
-        '假设很简单：在内容移动的视觉繁忙环境中，静态二维码变得不可见。 The solution needed to make the QR noticeable without compromising the reliability required for a check-in flow where failure would mean frustrated travellers and longer desk queues.',
+        '假设很简单：在内容移动的视觉繁忙环境中，静态二维码变得不可见。该解决方案需要使二维码引人注目，同时又不影响办理登机手续流程所需的可靠性，因为办理登机手续流程失败将意味着旅客感到沮丧，并导致柜台排队时间更长。',
       ],
       images: [
         {
@@ -336,8 +336,8 @@ export const examples: PageDefinition = {
     {
       heading: '测量的影响',
       paragraphs: [
-        "运行一个月后，二维码签到的采用率从 15% 增加到 24%，相对提高了 60%。 Guest feedback surveys indicated the animated QR was 'easier to notice' and 'felt more modern.'随着越来越多的客人通过二维码自助服务，高峰时段的服务台排队时间显着减少。",
-        'Importantly, zero scanning failures were reported despite thousands of daily scans.保守的动画方法在不牺牲签到流程所需的可靠性的情况下实现了注意力目标。该休息室随后在其他地点推出了类似的动画二维码。',
+        '运行一个月后，二维码签到的采用率从 15% 增加到 24%，相对提高了 60%。客户反馈调查表明，动画二维码"更容易注意到"并且"感觉更现代"。随着越来越多的客人通过二维码自助服务，高峰时段的服务台排队时间显着减少。',
+        '重要的是，尽管每天进行数千次扫描，但报告的扫描失败次数为零。保守的动画方法在不牺牲签到流程所需的可靠性的情况下实现了注意力目标。该休息室随后在其他地点推出了类似的动画二维码。',
         '请参阅数字标牌动画 QR 码学习指南，了解安全动画设计背后的技术原理。',
       ],
       images: [

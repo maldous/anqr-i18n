@@ -36,7 +36,7 @@ export const terms: PageDefinition = {
         'Ingeniero inverso, descompilado, o intentar extraer código fuente del sitio.',
         'Utilice herramientas automatizadas (bots, raspadores) para acceder al sitio de una manera que degrada el rendimiento para otros usuarios.',
         'Circunsta o deshabilita cualquier función de control de seguridad o acceso.',
-        'Impersonate any person or entity or misrepresent your affiliation.',
+        'Hacerse pasar por cualquier persona o entidad o tergiversar su afiliación.',
       ],
     },
     {
@@ -87,7 +87,7 @@ export const terms: PageDefinition = {
     {
       heading: 'Resolución de controversias',
       paragraphs: [
-        'Cualquier disputa que surja de estos Términos o su uso de ANQR se tratará primero de resolverse mediante negociación informal contactando ${CONTACT_EMAIL}_.',
+        'Cualquier disputa que surja de estos Términos o su uso de ANQR se tratará primero de resolverse mediante negociación informal contactando email@anqr.link_.',
         'Si la resolución informal fracasa, las controversias se resolverán mediante un arbitraje vinculante en Victoria (Australia), salvo que cualquiera de las partes pueda solicitar un recurso judicial por violaciones de la propiedad intelectual.',
       ],
     },
@@ -136,7 +136,7 @@ export const terms: PageDefinition = {
     },
     {
       heading: 'Contacto',
-      paragraphs: ['Preguntas sobre estos Términos pueden enviarse a: ${CONTACT_EMAIL}'],
+      paragraphs: ['Preguntas sobre estos Términos pueden enviarse a: email@anqr.link'],
     },
   ],
 };
