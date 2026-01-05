@@ -2,68 +2,38 @@ import type { PageDefinition } from '../types';
 import { LAST_UPDATED } from '../types';
 
 export const contact: PageDefinition = {
-  title: 'Makipag-ugnayan sa Amin',
-  description:
-    'Tinatanggap namin ang feedback, mga ulat ng bug, mga kahilingan sa tampok, at mga pangkalahatang katanungan.',
+  title: 'Makipag - ugnayan sa Atin',
+  description: 'Malugod naming tinatanggap ang impormasyon, mga ulat ng insekto, mga kahilingan sa tampok na bahagi, at pangkalahatang mga enquiry.',
   lastUpdated: LAST_UPDATED,
   sections: [
     {
-      heading: 'Paano kami makontak',
-      paragraphs: [
-        "Nag-aalok kami ng ilang paraan upang makipag-ugnayan sa amin depende sa iyong mga pangangailangan. Binabasa namin ang bawat mensahe, bagama't maaaring mag-iba ang mga oras ng pagtugon batay sa dami ng tao at uri ng pagtatanong.",
-      ],
+      heading: 'Kung paano tayo maaabot',
+      paragraphs: ['Nag - aalok kami ng ilang paraan upang makausap kami depende sa inyong mga pangangailangan. Binabasa natin ang bawat mensahe, bagaman ang oras ng pagtugon ay maaaring iba - iba batay sa dami at tipo ng pasasalamat.'],
     },
     {
       heading: 'Email',
-      paragraphs: [
-        'Para sa lahat ng mga katanungan: ${CONTACT_EMAIL}',
-        'Ito ang pinaka-maaasahang paraan upang makontak kami at inirerekomenda para sa mga detalyadong tanong, mga katanungan tungkol sa negosyo, o anumang iba pang mga katanungan.',
-      ],
+      paragraphs: ['Sa lahat ng mga tanong: ', 'Ito ang pinakamapagkakatiwalaang paraan upang marating tayo at iminumungkahi para sa detalyadong mga tanong, mga enquiry sa negosyo, o iba pang mga enquiry.'],
     },
     {
-      heading: 'Mga Uri ng Pagtatanong',
-      bullets: [
-        'Mga pangkalahatang tanong: Mga tanong tungkol sa kung paano gamitin ang ANQR, mga paliwanag sa tampok, o pangkalahatang feedback.',
-        'Mga ulat ng bug: Pakisama ang iyong browser, operating system, mga hakbang sa pagkopya, at anumang mga mensahe ng error na iyong nakikita.',
-        "Mga kahilingan para sa tampok: Mga mungkahi para sa mga bagong tampok o pagpapabuti. Isinasaalang-alang namin ang lahat ng kahilingan bagama't hindi namin maipapangako ang pagpapatupad.",
-        'Mga katanungan sa negosyo: Mga oportunidad sa pakikipagsosyo, mga katanungan sa paglilisensya, o mga katanungan sa paggamit ng komersyo.',
-        'Mga kahilingan sa privacy: Mga kahilingan na gamitin ang iyong mga karapatan sa privacy sa ilalim ng GDPR, CCPA, o iba pang mga batas sa privacy (tingnan ang Patakaran sa Privacy).',
-        'DMCA/Karapatang-ari: Tingnan ang seksyon ng DMCA sa ibaba para sa mga kinakailangan sa abiso ng pagtanggal.',
-      ],
+      heading: 'Mga uri ng enquiry',
+      bullets: ['Karaniwang mga tanong: Mga tanong kung paano gagamitin ang ANQR, tampok na mga paliwanag, o pangkalahatang impormasyon.', 'Nag - uulat ang Bug: Pakisuyong isama ang iyong browser, operating system, mga hakbang upang magparami, at anumang maling mensahe na nakikita mo.', 'Mga kahilingan sa pag - aanak: Mga mungkahi para sa bagong mga katangian o mga pagsulong. Isinasaalang - alang natin ang lahat ng kahilingan bagaman hindi tayo maaaring mangako ng pagpapatupad.', 'Mga tanong tungkol sa negosyo: Ang mga pagkakataon para maging kapareha, mga tanong na nagbibigay ng lisensiya, o komersiyal na paggamit ng mga enquiry.', 'Mga kahilingan sa pribadong buhay: Mga kahilingan upang isagawa ang iyong karapatan sa pribadong buhay sa ilalim ng GDPR, CCPA, o iba pang mga batas tungkol sa pribadong buhay (tingnan ang Pribadong Patakaran).', 'DMCA/Copyright: Tingnan ang bahaging DMCA sa ibaba para sa mga kahilingan para sa pagkuha ngdown notice.'],
     },
     {
-      heading: 'na Mga oras ng pagtugon',
-      paragraphs: [
-        'Layunin naming tumugon sa mga katanungan sa loob ng 5-7 araw ng negosyo. Ang mga kahilingang may kaugnayan sa privacy ay tutugunan sa loob ng 30 araw ayon sa hinihingi ng batas.',
-        'Sa mga panahong abala, maaaring mas matagal ang oras ng pagtugon. Para sa mga apurahang bagay, mangyaring ilagay ang URGENT sa iyong subject line.',
-      ],
+      heading: 'Mga Panahon ng Pagtugon',
+      paragraphs: ['Layunin naming tumugon sa mga enquiry sa loob ng 5-7 na araw ng negosyo. Pribadong-relatibong mga kahilingan ay sasagutin sa loob ng 30 araw gaya ng hinihiling ng batas.', 'Sa abalang mga panahon, ang panahon ng pagtugon ay maaaring mas mahaba. Para sa mga bagay na apurahan, pakisuyong ipahiwatig ang "URGENT" sa iyong paksa.'],
     },
     {
-      heading: 'Bago makipag-ugnayan sa amin',
-      paragraphs: [
-        'Pakitingnan ang aming pahina ng Dokumentasyon para sa mga sagot sa mga karaniwang tanong tungkol sa kung paano gamitin ang mga tampok ng ANQR. Maraming tanong tungkol sa pagbuo, pag-istilo, at mga opsyon sa pag-export ng QR code ang sakop doon.',
-      ],
+      heading: 'Bago makipag - ugnayan sa amin',
+      paragraphs: ['Pakisuyong tingnan ang aming Documentation page para sa mga sagot sa karaniwang mga tanong kung paano gagamitin ang ANQR features. Maraming mga tanong tungkol sa QR code generation, styling, at mga pagpipilian sa pagluluwas ay saklaw doon.'],
     },
     {
-      heading: 'Mga Paunawa sa Karapatang-ari ng DMCA',
-      paragraphs: [
-        'Kung naniniwala kang ang nilalamang makukuha sa ANQR ay lumalabag sa iyong karapatang-ari, maaari kang magsumite ng isang paunawa sa pagtanggal ng kopya ng Digital Millennium Copyright Act (DMCA). Upang maging wasto, dapat kasama sa iyong paunawa ang:',
-      ],
-      bullets: [
-        'Isang pisikal o elektronikong lagda ng may-ari ng karapatang-ari o awtorisadong ahente.',
-        'Pagkilala sa akdang may karapatang-ari na inaangkin na nilabag.',
-        'Pagkilala sa materyal na sinasabing lumalabag, na may sapat na impormasyon upang mahanap ito.',
-        'Ang iyong impormasyon sa pakikipag-ugnayan (tirahan, numero ng telepono, at email address).',
-        'Isang pahayag na mayroon kang mabuting pananampalataya na paniniwala na ang paggamit ng materyal ay hindi pinahihintulutan ng may-ari ng karapatang-ari.',
-        'Isang pahayag, sa ilalim ng parusa ng perjury, na ang impormasyon sa iyong paunawa ay tumpak at ikaw ang may-ari ng copyright o awtorisadong kumilos para sa kanila.',
-      ],
+      heading: 'DMCA Tumpak na mga Nota',
+      paragraphs: ['Kung ikaw ay naniniwala na ang nilalaman na makukuha sa ANQR infryed ang iyong copyright, maaari kang magsumite ng isang Digital Millennium Copyright Act (DMCA) na patalastas. Upang maging totoo, dapat na kasali sa iyong notisya ang:'],
+      bullets: ['Isang pisikal o elektronikong lagda ng may-akda ng copyright o ahenteng may-akda.', 'Ang pagkilala sa akda na may karapatan sa copyright ay sinasabing nabigo.', 'Ang pagkilala sa materyal na sinasabing nag - uumpukan, na may sapat na impormasyon upang makita ito.', 'Ang iyong contact information (address, numero ng telepono, at adres ng email).', 'Isang pangungusap na may mabuting pananampalataya ang naniniwala na ang paggamit ng materyal ay hindi galing sa may - ari ng copyright.', 'Isang pangungusap, sa ilalim ng parusa ng perjury, na ang impormasyon sa iyong patalastas ay tama at na ikaw ang may - ari ng copyright o may - akda na inatasang kumilos alang - alang sa kanila.'],
     },
     {
-      heading: 'Pakikipag-ugnayan sa DMCA',
-      paragraphs: [
-        'Ipadala ang mga abiso ng DMCA sa: ${CONTACT_EMAIL}',
-        'Pakilagay ang Paunawa ng DMCA sa subject line. Sasagot kami sa mga wastong abiso alinsunod sa naaangkop na batas. Tandaan na ang ANQR ay bumubuo ng mga QR code nang lokal sa mga device ng gumagamit at hindi nagho-host ng nilalamang binuo ng gumagamit.',
-      ],
+      heading: 'Pakikipag - ugnayan sa DMCA',
+      paragraphs: ['Magpadala ng mga patalastas sa DMCA: ', 'Pakisuyong isama ang "DMCA Note" sa linyang pantelebisyon. Tayo\'y tutugon sa makatuwirang mga babala ayon sa kapit na batas. Pansinin na ang ANQR ay lumilikha ng QR code sa mga user device at hindi naglalaman ng user-generated nilalaman.'],
     },
   ],
 };

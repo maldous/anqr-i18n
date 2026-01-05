@@ -2,87 +2,87 @@ import type { PageDefinition } from '../types';
 import { LAST_UPDATED } from '../types';
 
 export const terms: PageDefinition = {
-  title: 'Gebruiksvoorwaarden',
-  description: 'Door de site te bezoeken of te gebruiken, gaat u akkoord met deze voorwaarden.',
+  title: 'Servicevoorwaarden',
+  description: 'Door de site te openen of te gebruiken, gaat u akkoord met deze voorwaarden.',
   lastUpdated: LAST_UPDATED,
   relatedLinks: [{ href: '/privacy?lang=${lang}', label: 'Privacy Policy', type: 'external' }],
   sections: [
     {
-      heading: 'Aanvaarding van de voorwaarden',
-      paragraphs: ['Door ANQR (anqr.link) te bezoeken of te gebruiken, gaat u akkoord met deze Servicevoorwaarden en ons Privacybeleid. Als u niet akkoord gaat met deze voorwaarden, dient u de site niet te gebruiken.', 'We kunnen deze voorwaarden van tijd tot tijd bijwerken. Door de site te blijven gebruiken na wijzigingen, accepteert u de nieuwe voorwaarden.'],
+      heading: 'Aanvaarding van voorwaarden',
+      paragraphs: ['Door toegang te krijgen tot of gebruik te maken van ANQR (anqr.link), gaat u ermee akkoord gebonden te zijn door deze Servicevoorwaarden en ons Privacybeleid. Als u niet akkoord gaat met deze voorwaarden, gebruik dan de site niet.', 'We kunnen deze Voorwaarden van tijd tot tijd bijwerken. Voortzetting van het gebruik van de site na wijzigingen betekent aanvaarding van de nieuwe voorwaarden.'],
     },
     {
-      heading: 'Geschiktheid',
-      paragraphs: ['Je moet minimaal 13 jaar oud zijn om ANQR te gebruiken. Door de site te gebruiken, verklaar je dat je aan deze leeftijdseis voldoet. Als je jonger bent dan 18, verklaar je dat je toestemming hebt van je ouder of voogd om de site te gebruiken.'],
+      heading: 'Subsidiabiliteit',
+      paragraphs: ['U moet ten minste 13 jaar oud zijn om ANQR te gebruiken. Door het gebruik van de site, vertegenwoordigt u dat u voldoet aan deze leeftijdsvereiste. Als u jonger bent dan 18, vertegenwoordigt u dat u toestemming van uw ouder of voogd om de site te gebruiken.'],
     },
     {
       heading: 'Toegestaan gebruik',
-      paragraphs: ['U mag ANQR alleen voor wettige doeleinden gebruiken. U bent zelf volledig verantwoordelijk voor de inhoud die u in QR-codes codeert en voor de manier waarop u de door u gegenereerde QR-codes gebruikt.'],
+      paragraphs: ['U mag ANQR alleen voor wettige doeleinden gebruiken. U bent uitsluitend verantwoordelijk voor de inhoud die u codeert in QR codes en voor hoe u eventuele QR codes gebruikt die u genereert.'],
     },
     {
       heading: 'Verboden gedrag',
-      paragraphs: ['U stemt ermee in om niet:'],
-      bullets: ['Gebruik ANQR om QR-codes te maken die phishing, verspreiding van malware, fraude, oplichting, intimidatie, laster of andere illegale activiteiten mogelijk maken.', 'Codeer inhoud die inbreuk maakt op intellectuele-eigendomsrechten, de privacy schendt of illegaal materiaal bevat.', 'Poging om de werking of de beveiliging van de site te verstoren, te overbelasten of te belemmeren.', 'Reverse engineering toepassen, decompileren of proberen de broncode van de site te extraheren.', 'Gebruik geautomatiseerde tools (bots, scrapers) om toegang te krijgen tot de site op een manier die de prestaties voor andere gebruikers verslechtert.', 'Omzeil of schakel beveiligings- of toegangscontrolefuncties uit.', 'Je voordoen als een andere persoon of entiteit, of je band met een organisatie verkeerd voorstellen.'],
+      paragraphs: ['U stemt ermee in:'],
+      bullets: ['Gebruik ANQR om QR-codes te creëren die phishing, malware distributie, fraude, oplichting, intimidatie, smaad of enige illegale activiteit vergemakkelijken.', 'Codeer inhoud die inbreuk maakt op intellectuele-eigendomsrechten, inbreuk maakt op de privacy of illegaal materiaal bevat.', 'Poging om de werking of beveiliging van de locatie te verstoren, te overbelasten of te verstoren.', 'Reverse ingenieur, decompile, of poging om broncode uit de site te halen.', 'Gebruik geautomatiseerde tools (bots, schrapers) om toegang te krijgen tot de site op een manier die prestaties degradeert voor andere gebruikers.', 'Alle beveiligings- of toegangscontrolefuncties omzeilen of uitschakelen.', 'Je voordoen als een persoon of entiteit of verkeerd vertegenwoordigen uw verbondenheid.'],
     },
     {
-      heading: 'Intellectueel eigendom',
-      paragraphs: ['U behoudt het eigendom van de inhoud die u in QR-codes codeert. ANQR claimt geen eigendom van uw gegevens.', 'De naam ANQR, het logo, het interfaceontwerp en de onderliggende code zijn beschermd door auteursrecht, handelsmerk en andere wetten inzake intellectueel eigendom. U mag deze niet kopiëren, wijzigen, verspreiden of er afgeleide werken van maken zonder onze toestemming.', 'QR Code® is een geregistreerd handelsmerk van DENSO WAVE INCORPORATED. ANQR is niet gelieerd aan DENSO WAVE.'],
+      heading: 'Intellectuele eigendom',
+      paragraphs: ['U behoudt de eigendom van de inhoud die u codeert in QR-codes. ANQR claimt geen eigendom van uw gegevens.', 'De ANQR naam, logo, interface ontwerp en onderliggende code worden beschermd door auteursrecht, handelsmerk, en andere intellectuele eigendom wetten. U mag geen afgeleide werken kopiëren, wijzigen, distribueren of creëren zonder onze toestemming.', 'QR Code® is een geregistreerd handelsmerk van DENSO WAVE geïncorporeerd. ANQR is niet aangesloten bij DENSO WAVE.'],
     },
     {
-      heading: 'Gebruikerslicentie voor content',
-      paragraphs: ['Door ANQR te gebruiken, verleent u ons geen rechten op uw inhoud. Bij gebruik van lokale generatie (de standaardinstelling) vindt alle QR-codegeneratie plaats in uw browser en hebben wij geen toegang tot uw gecodeerde gegevens, slaan deze niet op en verzenden ze niet.', 'Bij gebruik van de server-side API wordt uw inhoud verwerkt om de QR-code te genereren, maar deze wordt niet opgeslagen, geregistreerd of gebruikt voor andere doeleinden dan het weergeven van de gevraagde afbeelding.'],
+      heading: 'Gebruikersinhoud licentie',
+      paragraphs: ['Door ANQR te gebruiken, geeft u ons geen rechten op uw inhoud. Bij het gebruik van lokale generatie (de standaard) vindt alle QR-codegeneratie plaats in uw browser en wij hebben geen toegang tot, opslaan of verzenden van uw gecodeerde gegevens.', 'Wanneer u de server-side API gebruikt, wordt uw inhoud verwerkt om de QR-afbeelding te genereren, maar wordt deze niet opgeslagen, gelogd of gebruikt voor andere doeleinden dan het renderen van de gevraagde afbeelding.'],
     },
     {
-      heading: 'Diensten en reclame van derden',
-      paragraphs: ['De site toont advertenties via Google AdSense en kan links naar websites van derden bevatten. Wij zijn niet verantwoordelijk voor de inhoud, diensten of privacypraktijken van derden.', 'Uw interacties met adverteerders en derden vinden uitsluitend tussen u en hen plaats. Zie ons privacybeleid voor informatie over de omgang met advertentiegegevens.'],
+      heading: 'Diensten van derden en reclame',
+      paragraphs: ['De site toont advertenties via Google AdSense en kan links naar websites van derden bevatten. Wij zijn niet verantwoordelijk voor inhoud, diensten of privacypraktijken van derden.', 'Uw interacties met adverteerders en derden zijn uitsluitend tussen u en hen. Zie ons Privacybeleid voor informatie over reclamegegevenspraktijken.'],
     },
     {
-      heading: 'Uitsluiting van garanties',
-      paragraphs: ['ANQR WORDT GELEVERD OP EEN \'AS IS\' EN \'AS AVAILABLE\' BASIS ZONDER ENIGE GARANTIES, EXPLICIET OF IMPLICIET, INCLUSIEF MAAR NIET BEPERKT TOT IMPLICIETE GARANTIES VAN VERKOOPBAARHEID, GESCHIKTHEID VOOR EEN BEPAALD DOEL EN NIET-INBREUK.', 'Wij garanderen niet dat: (a) de site ononderbroken, veilig of foutloos zal zijn; (b) QR-codes in alle omgevingen, op alle apparaten of met alle scannerapplicaties gescand kunnen worden; (c) de site aan uw eisen zal voldoen.', 'U moet QR-codes altijd testen onder de omstandigheden waarin ze gebruikt zullen worden (afdrukformaat, belichting, schermtype, afstand, camerakwaliteit).'],
+      heading: 'Disclaimer van garanties',
+      paragraphs: ['Het bedrag van de bestemmingsontvangsten bedoeld in artikel 21, lid 3, van het Financieel Reglement wordt geraamd op 300000 EUR.', 'Wij garanderen niet dat: (a) de site ononderbroken, veilig of foutloos zal zijn; (b) QR codes zullen scannen in alle omgevingen, op alle apparaten, of met alle scannertoepassingen; (c) de site zal voldoen aan uw eisen.', 'U moet altijd QR-codes testen in de omstandigheden waarin ze zullen worden gebruikt (afdrukgrootte, verlichting, schermtype, afstand, camerakwaliteit).'],
     },
     {
-      heading: 'Beperking van aansprakelijkheid',
-      paragraphs: ['VOOR ZOVER WETTELIJK TOEGESTAAN, ZIJN ANQR EN HAAR EXPLOITANTEN, GELIEERDE ONDERNEMINGEN EN LICENTIEGEVERS NIET AANSPRAKELIJK VOOR ENIGE DIRECTE, INDIRECTE, INCIDENTELE, SPECIALE, GEVOLGS-, PUNITIEVE OF EXEMPLAIRE SCHADE, WAARONDER MAAR NIET BEPERKT TOT SCHADEVERGOEDING VOOR VERLIES VAN WINST, OMZET, GEGEVENS, GOODWILL, GEBRUIK OF ANDERE IMMATERIËLE VERLIEZEN, VOORTVLOEIEND UIT OF VERBAND HOUDENDE MET UW TOEGANG TOT OF GEBRUIK VAN (OF ONVERMOGEN TOT TOEGANG TOT OF GEBRUIK VAN) DE DIENST.', 'U begrijpt en stemt er uitdrukkelijk mee in dat uw gebruik van de dienst geheel voor uw eigen risico is. De dienst wordt gratis aangeboden en daarom stemt u ermee in dat ANQR en haar beheerders op geen enkele wijze aansprakelijk zijn voor enige schade of verlies. In geen geval zal onze totale aansprakelijkheid meer dan nul dollar (AUD) bedragen.', 'U STEMT ERMEE IN OM AF TE ZIEN VAN ALLE CLAIMS, EISEN EN RECHTSVORDERINGEN TEGEN ANQR EN HAAR EXPLOITANTEN DIE VOORTVLOEIEN UIT UW GEBRUIK VAN DE DIENST.', 'SOMMIGE RECHTSGEBIEDEN STAAN DE UITSLUITING VAN BEPAALDE GARANTIES OF BEPERKINGEN VAN AANSPRAKELIJKHEID NIET TOE. IN DERGELIJKE RECHTSGEBIEDEN IS ONZE AANSPRAKELIJKHEID BEPERKT TOT DE MAXIMALE MATE DIE IS TOEGESTAAN VOLGENS DE TOEPASSELIJKE WETGEVING.'],
+      heading: 'Beperking van de aansprakelijkheid',
+      paragraphs: ['Voor de bij de wet toegestane mAXIMUMEXTENTIE, ANQR en zijn bestuurders, AFFILIAAT EN LICENSOREN zijn geen directe, INDIRECT, INCIDENTIEVE, SPECIALE, CONSEQUENTIEVE, MUNITIVE, OF VRIJE DAAMAGES, MET INBEGRIP VAN NIET MINISTERIE VOOR DE VERLIES VAN PROFITS, ONTVANGSTEN, GEGEVENS, GOODWILL, GEBRUIK, OF ANDERE INTANGBARE VERLIES, ONTBRANDINGEN UIT OF IN VERBAND MET UW TOEGANG TOT OF GEBRUIK VAN DE DIENST.', 'U begrijpt en bent het ermee eens dat uw gebruik van de dienst op uw eigen risico ligt. De dienst wordt gratis verleend, en u stemt ermee in dat Anqr en zijn ondernemers u niet mogen aanklagen voor wat er ook gebeurt. Onze totale aansprakelijkheid neemt niet af van de Zero Dollars ($0 AUD).', 'Jullie komen overeen om alle claims, bevelen en acties tegen Anqr en zijn bestuurders te ontheffen.', 'Sommige rechterlijke uitspraken geven geen vrijstelling van bepaalde garanties of beperkingen van aansprakelijkheid. In die gevallen is onze aansprakelijkheid beperkt tot het maximum dat door de toepasselijke wetgeving is toegestaan.'],
     },
     {
-      heading: 'Schadeloosstelling',
-      paragraphs: ['U stemt ermee in ANQR, haar beheerders, gelieerde ondernemingen en hun respectievelijke functionarissen, directeuren, werknemers en vertegenwoordigers te vrijwaren, te verdedigen en schadeloos te stellen voor alle claims, schade, verliezen, aansprakelijkheden, kosten en uitgaven (inclusief juridische kosten) die voortvloeien uit: (a) uw gebruik van de site; (b) uw schending van deze Voorwaarden; (c) uw schending van rechten van derden; (d) alle inhoud die u in QR-codes codeert.'],
+      heading: 'Bevrijding',
+      paragraphs: ['U stemt ermee in om ANQR, haar operators, filialen en hun respectieve functionarissen, bestuurders, werknemers en agenten te vrijwaren, te verdedigen en te houden van schade, schade, verliezen, verplichtingen, kosten en kosten (inclusief juridische kosten) die voortvloeien uit: a) uw gebruik van de site; b) uw schending van deze Voorwaarden; c) uw schending van rechten van derden; d) eventuele inhoud die u codeert in QR-codes.'],
     },
     {
       heading: 'Geschillenbeslechting',
-      paragraphs: ['Elk geschil dat voortvloeit uit deze voorwaarden of uw gebruik van ANQR zal eerst worden geprobeerd op te lossen door middel van informeel overleg door contact op te nemen met ${CONTACT_EMAIL}.', 'Indien informele schikking niet lukt, zullen geschillen worden beslecht door bindende arbitrage in Victoria, Australië, met dien verstande dat elk van beide partijen een gerechtelijk bevel kan aanvragen voor schendingen van intellectuele eigendomsrechten.'],
+      paragraphs: ['Elk geschil dat voortvloeit uit deze Voorwaarden of uw gebruik van ANQR zal eerst worden geprobeerd te worden opgelost via informele onderhandelingen door contact op te nemen met ${CONTACT_EMAIL}.', 'Indien een informele oplossing mislukt, zullen geschillen worden opgelost door middel van bindende arbitrage in Victoria, Australië, behalve dat een van beide partijen kan verzoeken om voorlopige vrijstelling in de rechtbank voor inbreuken op intellectuele eigendom.'],
     },
     {
-      heading: 'Afstand van collectieve rechtsvordering',
-      paragraphs: ['VOOR ZOVER WETTELIJK TOEGESTAAN, GAAT U ERMEE AKKOORD DAT EVENTUELE GESCHILLENBESLECHTINGSPROCEDURES UITSLUITEND OP INDIVIDUELE BASIS WORDEN GEVOERD EN NIET IN EEN COLLECTIEVE, GEBUNDELDE OF VERTEGENWOORDIGENDE ACTIE.'],
+      heading: 'Vrijstelling van klasse-actie',
+      paragraphs: ['U bent het erover eens dat elke procedure voor een gedisputeerde resolutie slechts op basis van een individuele basis en niet in een klasse, geconsolideerde of vertegenwoordigende actie zal worden uitgevoerd.'],
     },
     {
       heading: 'Toepasselijk recht',
-      paragraphs: ['Deze voorwaarden worden beheerst door de wetten van Victoria, Australië, zonder rekening te houden met beginselen van conflicterende wetten. U stemt in met de exclusieve bevoegdheid van de rechtbanken in Victoria, Australië.'],
+      paragraphs: ['Deze Voorwaarden worden beheerst door de wetten van Victoria, Australië, zonder rekening te houden met conflict van wetten principes. U stemt in met de exclusieve jurisdictie van de rechtbanken in Victoria, Australië.'],
     },
     {
       heading: 'Wijzigingen en beschikbaarheid',
-      paragraphs: ['Wij kunnen de site (of een deel ervan) te allen tijde zonder voorafgaande kennisgeving of aansprakelijkheid wijzigen, opschorten of stopzetten.', 'We kunnen deze voorwaarden op elk moment bijwerken. De datum \'Laatst bijgewerkt\' geeft aan wanneer ze voor het laatst zijn herzien. Voortgezet gebruik na wijzigingen houdt acceptatie in.'],
+      paragraphs: ['We kunnen de site (of enig deel ervan) op elk moment wijzigen, opschorten of beëindigen zonder kennisgeving of aansprakelijkheid.', 'We kunnen deze Voorwaarden op elk moment bijwerken. De "Laatst bijgewerkt" datum geeft aan wanneer ze het laatst zijn herzien. Voortgezet gebruik na wijzigingen betekent acceptatie.'],
     },
     {
       heading: 'Scheidbaarheid',
-      paragraphs: ['Indien een bepaling van deze Voorwaarden ongeldig of niet-afdwingbaar wordt verklaard, zal die bepaling in de maximaal mogelijke mate worden afgedwongen, en blijven de overige bepalingen volledig van kracht.'],
+      paragraphs: ['Indien een bepaling van deze Voorwaarden ongeldig of niet-afdwingbaar wordt geacht, wordt deze bepaling ten hoogste toegepast en blijven de overige bepalingen volledig van kracht en van kracht.'],
     },
     {
-      heading: 'Vrijwaring',
-      paragraphs: ['Het feit dat wij een recht of bepaling van deze Voorwaarden niet afdwingen, mag niet worden beschouwd als een afstand van dat recht of die bepaling.'],
+      heading: 'Afstand',
+      paragraphs: ['Ons verzuim om enig recht of bepaling van deze Voorwaarden af te dwingen wordt niet beschouwd als een afstand van een dergelijk recht of dergelijke bepaling.'],
     },
     {
       heading: 'Volledige overeenkomst',
-      paragraphs: ['Deze voorwaarden, samen met ons privacybeleid, vormen de volledige overeenkomst tussen u en ANQR met betrekking tot uw gebruik van de site en vervangen alle voorgaande overeenkomsten.'],
+      paragraphs: ['Deze Voorwaarden vormen samen met ons Privacybeleid de volledige overeenkomst tussen u en ANQR met betrekking tot uw gebruik van de site en vervangen alle eerdere overeenkomsten.'],
     },
     {
       heading: 'Overmacht',
-      paragraphs: ['Wij zijn niet aansprakelijk voor enig falen of vertraging in de uitvoering als gevolg van omstandigheden buiten onze redelijke controle, waaronder natuurrampen, oorlog, terrorisme, rellen, overheidsmaatregelen of storingen in internet/infrastructuur.'],
+      paragraphs: ['We zullen niet aansprakelijk zijn voor enige mislukking of vertraging in de uitvoering als gevolg van omstandigheden die buiten onze redelijke controle vallen, waaronder natuurrampen, oorlog, terrorisme, rellen, overheidsacties of falende internet/infrastructuur.'],
     },
     {
-      heading: 'Contact',
-      paragraphs: ['Vragen over deze voorwaarden kunt u sturen naar: ${CONTACT_EMAIL}'],
+      heading: 'Contactpersoon',
+      paragraphs: ['Vragen over deze Voorwaarden kunnen worden verzonden naar: ${CONTACT_EMAIL}'],
     },
   ],
 };

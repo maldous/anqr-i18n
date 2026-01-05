@@ -2,143 +2,87 @@ import type { PageDefinition } from '../types';
 import { LAST_UPDATED } from '../types';
 
 export const terms: PageDefinition = {
-  title: 'Mga Tuntunin ng Serbisyo',
-  description:
-    'Sa pamamagitan ng pag-access o paggamit ng site, sumasang-ayon kang masaklaw ng mga tuntuning ito.',
+  title: 'Mga Termino ng Paglilingkod',
+  description: 'Sa pamamagitan ng pag - access o paggamit sa site, sasang - ayon kang sundin ang mga terminong ito.',
   lastUpdated: LAST_UPDATED,
+  relatedLinks: [{ href: '/privacy?lang=${lang}', label: 'Privacy Policy', type: 'external' }],
   sections: [
     {
-      heading: 'Pagtanggap ng mga tuntunin',
-      paragraphs: [
-        'Sa pamamagitan ng pag-access o paggamit ng ANQR (anqr.link), sumasang-ayon kang masaklaw ng mga Tuntunin ng Serbisyong ito at ng aming Patakaran sa Pagkapribado. Kung hindi ka sumasang-ayon sa mga tuntuning ito, huwag gamitin ang site.',
-        'Maaari naming i-update ang mga Tuntuning ito paminsan-minsan. Ang patuloy na paggamit ng site pagkatapos ng mga pagbabago ay bumubuo ng pagtanggap sa mga bagong tuntunin.',
-      ],
+      heading: 'Pagtanggap ng mga termino',
+      paragraphs: ['Sa pamamagitan ng pag-access o paggamit ng ANQR (anqr.link), sumasang-ayon ka na mabuklod ng mga Terminong Ito ng Paglilingkod at ng ating Patakarang Pribado. Kung hindi ka sang - ayon sa mga terminong ito, huwag mong gamitin ang site.', 'Maaari nating i-update ang mga Termong ito paminsan-minsan. Ang patuloy na paggamit sa lugar pagkatapos ng mga pagbabago ay nangangahulugan ng pagtanggap sa bagong mga termino.'],
     },
     {
-      heading: 'Pagiging Karapat-dapat',
-      paragraphs: [
-        'Dapat ay hindi ka bababa sa 13 taong gulang upang magamit ang ANQR. Sa paggamit ng site, ipinapahayag mo na natutugunan mo ang kinakailangang edad na ito. Kung ikaw ay wala pang 18 taong gulang, ipinapahayag mo na mayroon kang pahintulot ng iyong magulang o tagapag-alaga na gamitin ang site.',
-      ],
+      heading: 'Pagiging kaayaaya',
+      paragraphs: ['Dapat ay hindi bababa sa 13 taong gulang ka upang gumamit ng ANQR. Sa paggamit sa site na ito, ipinakikita mong kaya mo na ang edad mo. Kung ikaw ay wala pang 18, kinakatawan mo na ikaw ay may pahintulot ng iyong magulang o tagapag - alaga na gamitin ang site.'],
     },
     {
-      heading: 'Pinapayagan na paggamit',
-      paragraphs: [
-        'Maaari mong gamitin ang ANQR para sa mga layuning naaayon sa batas lamang. Ikaw ang tanging mananagot para sa nilalamang iyong iko-encode sa mga QR code at sa kung paano mo ginagamit ang anumang QR code na iyong nalilikha.',
-      ],
+      heading: 'Pinahihintulutang gamitin',
+      paragraphs: ['Maaaring gumamit ka ng ANQR para sa legal na mga layunin lamang. Ikaw lamang ang may pananagutan sa nilalamang ini-record mo sa QR codes at kung paano mo ginagamit ang anumang QR code na nililikha mo.'],
     },
     {
-      heading: 'Ipinagbabawal na pag-uugali',
-      paragraphs: ['Sumasang-ayon kang hindi:'],
-      bullets: [
-        'Gumamit ng ANQR upang lumikha ng mga QR code na nagpapadali sa phishing, pamamahagi ng malware, pandaraya, mga scam, panliligalig, paninirang-puri, o anumang ilegal na aktibidad.',
-        'I-encode ang nilalamang lumalabag sa mga karapatan sa intelektwal na ari-arian, lumalabag sa privacy, o naglalaman ng ilegal na materyal.',
-        'Tangkang guluhin, labis na pasanin, o pakialaman ang operasyon o seguridad ng lugar.',
-        'Mag-reverse engineer, mag-decompile, o tangkaing kumuha ng source code mula sa site.',
-        'Gumamit ng mga automated na tool (mga bot, scraper) upang ma-access ang site sa paraang nakakabawas sa performance ng ibang mga user.',
-        'Lagpasan o huwag paganahin ang anumang mga tampok sa seguridad o kontrol sa pag-access.',
-        'Magpanggap bilang sinumang tao o entidad o magsinungaling tungkol sa iyong kaugnayan.',
-      ],
+      heading: 'Pilipit na paggawi',
+      paragraphs: ['Sumasang - ayon ka na hindi:'],
+      bullets: ['Gumamit ng ANQR upang lumikha ng mga QR code na magpapadali sa phishing, distribusyon ng malware, pandaraya, pandaraya, panliligalig, paninirang-puri, o anumang ilegal na gawain.', 'Ilagay ang nilalaman na nagpapawalang - bisa sa intelektuwal na mga karapatan sa pag - aari, lumalabag sa pribadong buhay, o naglalaman ng ilegal na materyal.', 'Pagtatangkang guluhin, labis na magsolo, o makialam sa operasyon o seguridad ng lugar.', 'Reverse engineer, decompile, o subukang kumuha ng source code mula sa site.', 'Gumamit ng awtomatikong mga kasangkapan (bots, scrapers) upang makapasok sa site sa paraang magpapahina sa kakayahan ng ibang gumagamit.', 'Ipunin o sirain ang anumang bahagi ng seguridad o kontrol.', 'Itakwil ang sinumang tao o bagay o siraan ang iyong pakikisama.'],
     },
     {
-      heading: 'Intelektwal na ari-arian',
-      paragraphs: [
-        'Ikaw ang may-ari ng nilalamang iko-encode mo sa mga QR code. Hindi inaangkin ng ANQR ang pagmamay-ari ng iyong data.',
-        'Ang pangalan, logo, disenyo ng interface, at pinagbabatayan na code ng ANQR ay protektado ng mga batas sa copyright, trademark, at iba pang mga batas sa intelektwal na ari-arian. Hindi mo maaaring kopyahin, baguhin, mamahagi, o lumikha ng mga hinangong gawa nang walang aming pahintulot.',
-        'Ang QR Code® ay isang rehistradong trademark ng DENSO WAVE INCORPORATED. Ang ANQR ay walang kaugnayan sa DENSO WAVE.',
-      ],
+      heading: 'Intelektuwal na pag - aari',
+      paragraphs: ['Napanatili mo pa rin ang pagmamay-ari ng nilalamang ini-record mo sa QR codes. HINDI inaangkin ng ANQR ang pagmamay-ari ng iyong datos.', 'Ang pangalan ng ANQR, logo, disenyong interface, at kodigong nasa ilalim ay protektado ng copyright, tatak, at iba pang mga batas sa pag-aaring intelektuwal. Hindi mo maaaring kopyahin, baguhin, ipamahagi, o lumikha ng mga gawang galing nang walang pahintulot.', 'Ang QR Code Alonso ay isang rehistradong tatak ng DENSO WAVE INCORPORATED. ANG pornograpya ay hindi iniuugnay sa DENSO WAVE.'],
     },
     {
-      heading: 'Lisensya ng nilalaman ng gumagamit',
-      paragraphs: [
-        'Sa paggamit ng ANQR, wala kang ibinibigay sa amin na karapatan sa iyong nilalaman — lahat ng pagbuo ng QR code ay nangyayari nang lokal sa iyong device at hindi namin ina-access, iniimbak, o ipinapadala ang iyong naka-encode na data.',
-        'Kapag ginagamit ang server-side API, ang iyong content ay pinoproseso upang buuin ang QR image ngunit hindi iniimbak, nilololog, o ginagamit para sa anumang ibang layunin maliban sa pag-render ng hiniling na imahe.',
-      ],
+      heading: 'Gumamit ng lisensiya sa nilalaman',
+      paragraphs: ['Sa paggamit ng ANQR, wala kang karapatan sa nilalaman mo. Kapag ginagamit ang lokal na henerasyon (ang default), ang lahat ng QR code gener ay nangyayari sa inyong browser at hindi kami nag-access, nag-iimbak, o naghahatid ng inyong naka-install na datos.', 'Kapag ginagamit ang server-side API, ang iyong nilalaman ay pinoproseso upang lumikha ng larawan ng QR ngunit ito ay hindi nakaimbak, logged, o ginagamit para sa anumang ibang layunin na higit pa sa pagsasalin ng hiniling na imahen.'],
     },
     {
-      heading: 'Mga serbisyo at patalastas ng ikatlong partido',
-      paragraphs: [
-        'Nagpapakita ang site ng mga advertisement sa pamamagitan ng Google AdSense at maaaring may kasamang mga link sa mga website ng ikatlong partido. Hindi kami responsable para sa nilalaman, serbisyo, o mga kasanayan sa privacy ng ikatlong partido.',
-        'Ang iyong mga pakikipag-ugnayan sa mga advertiser at mga ikatlong partido ay tanging sa pagitan mo at nila. Tingnan ang aming Patakaran sa Pagkapribado para sa impormasyon tungkol sa mga kasanayan sa data ng advertising.',
-      ],
+      heading: 'Ikatlong-bahaging mga serbisyo at advertising',
+      paragraphs: ['Ang site ay nagtatanghal ng mga anunsiyo sa pamamagitan ng Google AdSense at maaaring isama ang mga link sa ikatlong-party websites. Hindi tayo ang may pananagutan sa third-party content, serbisyo, o mga gawaing pribado.', 'Ang iyong mga kaugnayan sa mga tagapag - anunsiyo at sa ikatlong panig ay sa pagitan mo at nila lamang. Tingnan ang ating Pribadong Patakaran para sa impormasyon tungkol sa mga kaugalian sa pag - aanunsiyo ng impormasyon.'],
     },
     {
-      heading: 'Pagtatanggi sa mga garantiya',
-      paragraphs: [
-        'ANG ANQR AY IBINIBIGAY SA ISANG BATAS NA AS IS AT AS AVAILABLE NANG WALANG ANUMANG URI NG MGA GARANTIYA, HAYAGAN O IPINAHIWATIG, KABILANG ANG NGUNIT HINDI LIMITADO SA MGA IPINAHIWATIG NA GARANTIYA NG KAKAYAHANG MAIBENTA, KAANGKUPAN PARA SA ISANG PARTIKULAR NA LAYUNIN, AT HINDI PAGLABAG.',
-        'Hindi namin ginagarantiyahan na: (a) ang site ay magiging walang patid, ligtas, o walang error; (b) ang mga QR code ay mai-scan sa lahat ng kapaligiran, sa lahat ng device, o sa lahat ng scanner application; (c) ang site ay makakatugon sa iyong mga kinakailangan.',
-        'Dapat mong palaging subukan ang mga QR code sa mga kondisyon kung saan gagamitin ang mga ito (laki ng print, ilaw, uri ng screen, distansya, kalidad ng camera).',
-      ],
+      heading: 'Hindi pag - aangkin ng mga warranty',
+      paragraphs: ['ANG ANQR AY NATATANDAAN SA ISANG "AS IS" AT "AS AVAILLE" BASAN MAY WALANG MGA KARUNUNGAN SA WALANG KASAMAAN, EKSPRILES O IMPLIED, INCLUDING PENTURISTA SA IMPLENYANG MGA KARUNUNGAN NG MERCHANTABILON, PAGTAPATAN PARA SA ISANG PROKUWERTO, AT NON-INFREMENTO.', 'Hindi natin ipinag-uutos na: (a) ang site ay hindi i-interrupted, secure, o error-free; (b) Ang mga QR code ay mag-eeksperimento sa lahat ng mga kapaligiran, sa lahat ng mga aparato, o sa lahat ng mga aplikasyon ng scanner; (c) ang site ay makatutugon sa iyong mga kahilingan.', 'Dapat mong laging subukin ang QR codes sa mga kondisyon kung saan ito gagamitin (print sukat, lighting, screen type, distance, kalidad ng kamera).'],
     },
     {
-      heading: 'Limitasyon ng pananagutan',
-      paragraphs: [
-        'HANGGANG SA PINAKAMALAWAK NA SAKLAW NA PINAPAHINTULUTAN NG BATAS, ANG ANQR AT ANG MGA OPERATOR, KASAMA, AT MGA TAGAPAGLISENSYA NITO AY HINDI MANANAGOT PARA SA ANUMANG DIREKTA, INDIREKTA, INSIDENTAL, ESPESYAL, KONSEKWENSYAL, PUNITIBO, O HALIMBAWA NA MGA PINSALA, KABILANG ANG NGUNIT HINDI LIMITADO SA MGA PINSALA PARA SA PAGKAWALA NG MGA KITA, KITA, DATOS, GOODWILL, PAGGAMIT, O IBA PANG MGA HINDI NAHAHATANG PAGKAWALA, NA NAGMULA SA O MAY KAUGNAYAN SA IYONG PAG-ACCESS SA O PAGGAMIT NG (O KAWALAN NG KAKAYAHAN NA MA-ACCESS O GAMITIN) ANG SERBISYO.',
-        'HAYANG NAUUNAWAAN MO AT SUMASANG-AYON NA ANG IYONG PAGGAMIT NG SERBISYO AY NASA IYONG SARILING PANANAGUTAN. ANG SERBISYO AY IBINIBIGAY NANG LIBRE, AT AYON DITO, SUMASANG-AYON KA NA ANG ANQR AT ANG MGA OPERATOR NITO AY WALANG PANANAGUTAN SA IYO PARA SA ANUMANG MGA PINSALA O PAGKALUGI. SA ANUMANG PANGYAYARI AY HINDI LALAMPAS SA SERO DOLYAR ($0 AUD) ANG AMING KABUUANG KABUUANG PANANAGUTAN.',
-        'SUMASANG-AYON KA NA PALABASIN, IWASAN, AT IWASAN ANG ANUMAN AT LAHAT NG MGA PAGHAHAIN, KAHILINGAN, AT MGA DAHILAN NG AKSYON LABAN SA ANQR AT SA MGA OPERATOR NITO NA NAGMULA SA IYONG PAGGAMIT NG SERBISYO.',
-        'ANG ILANG HURISDIKSYON AY HINDI NAGPAPAHINTULOT NG PAGBUBUKOD NG ILANG MGA WARRANTY O LIMITASYON NG PANANAGUTAN. SA MGA GANITONG HURISDIKSYON, ANG AMING PANANAGUTAN AY LIMITADO SA PINAKAMALAWAK NA SAKLAW NA PINAPAHINTULUTAN NG NAAANGKOP NA BATAS.',
-      ],
+      heading: 'Hangganan ng Pananagutan',
+      paragraphs: ['PARA SA MGA MAXIMUKONG MAHUMUHAY NA MAHAL SA KASALAN, ANQR AT ITS OPERATORE, INCIDENTAL, POPEKTIL, KALIHILHATIL, ONSENTORS, PROPESOR SA ORSIYENTIL, O EXEMPLERA, INCIST, INCIDUMO SA SOKSION NG SO, SA ORYONG ORSIYENTENYO, SA ORYONG ESPERSIYONG ORYO, PO SA ESPERSIYONENYA.', 'IKAW AY NAG - AABULOG AT NAG - AABULOG NA ANG IYONG UUSAP SA PAGLILINGKOD AY SA IYONG SOBLE. ANG SERVICE AY WALANG SANG - AYON SA CHARGE, AT AYON SA SANG - AYON, IKAW AY NAG - AABI NA ANG ANQR AT MGA ITS OPERATOR AY WALANG SANG - AYON SA YO SA KUNG ANO ANG MAG - AABIGO PARA SA MGA PAG - AABULOY O LAPS. WALANG HALAGA SA AGGREGREA NG LIBILES NA MGA SERO DOLARS ($0 AUD).', 'IKAW AY NAG - AABULOY, NAG - ASAK, AT NAG - DISCHARGE SA LAHAT AT SA LAHAT NG MGA KLAIM, DEMAND, AT MGA SANULOG NG AKSIYON SA ANQR AT SA MGA IS OPERATOR AY NAG - AABURE SA IYONG USE NG PAGLILINGKOD.', 'ANG ILANG HURISIKSIYON AY HINDI NAG - AABULOY SA KARUNUNGAN O MGA LIMITATION NG LIBILY. SA MGA HURISIDIKSIYON, ANG ATING LIBIYON AY MALUMILI SA MAXIMUM EXUM NA MAHAL SA PAGTULONG NG APPLIKBLE.'],
     },
     {
-      heading: 'Indemnipikasyon',
-      paragraphs: [
-        'Sumasang-ayon kang bayaran, ipagtanggol, at hindi managot ang ANQR, ang mga operator, kaakibat, at ang kani-kanilang mga opisyal, direktor, empleyado, at ahente mula sa anumang mga paghahabol, pinsala, pagkalugi, pananagutan, gastos, at gastusin (kabilang ang mga bayarin sa abogado) na nagmumula sa: (a) ang iyong paggamit ng site; (b) ang iyong paglabag sa mga Tuntuning ito; (c) ang iyong paglabag sa anumang mga karapatan ng ikatlong partido; (d) anumang nilalaman na iyong iko-encode sa mga QR code.',
-      ],
+      heading: 'Pag - aalinlangan',
+      paragraphs: ['Sumasang-ayon ka sa hindi nakapipinsalang ANQR, sa mga nagpapatakbo nito, sa kani-kanilang mga opisyal, direktor, empleyado, at ahente mula sa anumang mga pag-aangkin, bayad-pinsala, pagkalugi, gastos, at gastos (kasama ang mga legal na bayad) na nagmumula sa: (a) ang paggamit mo ng site; (b) ang iyong paglabag sa mga Terminong ito; (c) ang iyong paglabag sa anumang ikatlong-party na karapatan; (d) anumang nilalaman na ini-re-record mo sa QR codes.'],
     },
     {
-      heading: 'Paglutas ng Hindi Pagkakasundo',
-      paragraphs: [
-        'Anumang hindi pagkakaunawaan na magmumula sa mga Tuntuning ito o sa iyong paggamit ng ANQR ay susubukan munang lutasin sa pamamagitan ng impormal na negosasyon sa pamamagitan ng pakikipag-ugnayan sa ${CONTACT_EMAIL}.',
-        'Kung mabigo ang impormal na resolusyon, ang mga hindi pagkakaunawaan ay lulutasin sa pamamagitan ng may bisang arbitrasyon sa Victoria, Australia, maliban na ang alinmang partido ay maaaring humingi ng injunctive relief sa korte para sa mga paglabag sa intelektwal na ari-arian.',
-      ],
+      heading: 'Resolution ng Pagtatalo',
+      paragraphs: ['Anumang pagtatalo na bumangon mula sa mga Terme na ito o sa paggamit mo ng ANQR ay sisikapin munang lutasin sa pamamagitan ng impormal na negosasyon sa pamamagitan ng pakikipag - ugnayan sa .', 'Kung mabigo ang impormal na resolusyon, ang mga pagtatalo ay malulutas sa pamamagitan ng pagtatali sa mga kasunduan sa Victoria, Australia, maliban na lamang na ang alinmang partido ay maaaring humingi ng lunas sa hukuman para sa intelektuwal na mga paglabag sa ari - arian.'],
     },
     {
-      heading: 'Pagpapaubaya sa class action',
-      paragraphs: [
-        'HANGGANG SA SUKLAY NA PINAPAHINTULUTAN NG BATAS, SUMASANG-AYON KA NA ANG ANUMANG MGA PAGLILITIS SA PAGRESOLUSYON NG HINDI PAGTATALO AY ISASAGAWA LAMANG SA ISANG INDIBIDWAL NA BASE AT HINDI SA ISANG AKSYONG PANG-URI, PINAGSAMANG, O KINATAWAN.',
-      ],
+      heading: 'Hindi na kailangan ang class aksyon',
+      paragraphs: ['PARA SA MAHABANG PAG - AABULOY SA KASALAN, IKAW\'Y NAG - AABULOG NA ANG MGA PAG - AABULOG AY HAHALAGANG MAHIRAP SA ISANG INDIVIDUAL NA KASALANAN AT HINDI SA ISANG KLAS, SA CONSOLIDE, O REPESENTONG PAG - ASA.'],
     },
     {
-      heading: 'Namamahalang batas',
-      paragraphs: [
-        'Ang mga Tuntuning ito ay pinamamahalaan ng mga batas ng Victoria, Australia, nang hindi isinasaalang-alang ang mga prinsipyo ng tunggalian ng mga batas. Pumapayag ka sa eksklusibong hurisdiksyon ng mga korte na matatagpuan sa Victoria, Australia.',
-      ],
+      heading: 'Batas Lupo',
+      paragraphs: ['Ang mga Terminong ito ay pinamamahalaan ng mga batas ng Victoria, Australia, nang walang alitan sa mga prinsipyo ng batas. Pumayag ka sa eksklusibong hurisdiksiyon ng mga hukuman na nasa Victoria, Australia.'],
     },
     {
-      heading: 'Mga Pagbabago at Kakayahang Magamit',
-      paragraphs: [
-        'Maaari naming baguhin, suspindihin, o ihinto ang site (o anumang bahagi nito) anumang oras nang walang abiso o pananagutan.',
-        'Maaari naming i-update ang mga Tuntuning ito anumang oras. Ang petsang Huling na-update ay nagpapahiwatig kung kailan ang mga ito ay pinakahuling binago. Ang patuloy na paggamit pagkatapos ng mga pagbabago ay bumubuo ng pagtanggap.',
-      ],
+      heading: 'Mga Pagbabago at madaling makuha',
+      paragraphs: ['Maaaring baguhin, itigil, o ihinto natin ang site (o anumang bahagi nito) sa anumang panahon nang walang abiso o pananagutan.', 'Maaari nating i-update ang mga Terme na ito anumang oras. Ang "Huling pag-apruba" na petsa ay nagpapakita nang ang mga ito ay pinakabagong nirebisa. Ang patuloy na paggamit pagkatapos ng mga pagbabago ay nangangahulugan ng pagtanggap.'],
     },
     {
-      heading: 'Paghihiwalay',
-      paragraphs: [
-        'Kung ang alinmang probisyon ng mga Tuntuning ito ay maituring na hindi wasto o hindi maipapatupad, ang probisyong iyon ay ipapatupad sa pinakamataas na lawak na pinahihintulutan, at ang mga natitirang probisyon ay mananatiling may ganap na bisa at bisa.',
-      ],
+      heading: 'Napakarami',
+      paragraphs: ['Kung ang anumang probisyon ng mga Terme na ito ay gagamitin nang walang bisa o walang bisa, ang paglalaang iyan ay ipatutupad sa sukdulang antas na ipinahihintulot, at ang natitirang mga paglalaan ay mananatiling lubusan at mabisa.'],
     },
     {
-      heading: 'Pagpapaubaya',
-      paragraphs: [
-        'Ang aming pagkabigong ipatupad ang anumang karapatan o probisyon ng mga Tuntuning ito ay hindi maituturing na pagtalikod sa naturang karapatan o probisyon.',
-      ],
+      heading: 'Waiver',
+      paragraphs: ['Ang hindi natin pagpapatupad ng anumang karapatan o paglalaan ng mga Terminong ito ay hindi masasabing isang tagapaglihis ng gayong karapatan o probisyon.'],
     },
     {
       heading: 'Buong kasunduan',
-      paragraphs: [
-        'Ang mga Tuntuning ito, kasama ang aming Patakaran sa Pagkapribado, ay bumubuo sa buong kasunduan sa pagitan mo at ng ANQR patungkol sa iyong paggamit ng site at pumapalit sa anumang naunang kasunduan.',
-      ],
+      paragraphs: ['Ang mga Terme na ito, pati na ang ating Pribadong Patakaran, ang bumubuo sa buong kasunduan sa pagitan mo at ng ANQR tungkol sa paggamit mo ng lugar at pinalitan ang anumang naunang mga kasunduan.'],
     },
     {
-      heading: 'Force majeure',
-      paragraphs: [
-        'Hindi kami mananagot para sa anumang pagkabigo o pagkaantala sa pagganap dahil sa mga pangyayaring lampas sa aming makatwirang kontrol, kabilang ang mga natural na sakuna, digmaan, terorismo, kaguluhan, aksyon ng gobyerno, o pagkabigo ng internet/imprastraktura.',
-      ],
+      heading: 'Pagkahiya sa Puwersa',
+      paragraphs: ['Hindi tayo mananagot sa anumang pagkabigo o pagkaantala sa paggawa dahil sa mga kalagayang wala tayong makatuwirang kontrol, kabilang na ang likas na mga sakuna, digmaan, terorismo, kaguluhan, pagkilos ng pamahalaan, o mga kabiguan sa internet/infrastructure.'],
     },
     {
-      heading: 'Makipag-ugnayan',
-      paragraphs: [
-        'Maaaring ipadala ang mga tanong tungkol sa mga Tuntuning ito sa: ${CONTACT_EMAIL}',
-      ],
+      heading: 'Makipag - ugnayan',
+      paragraphs: ['Ang mga tanong tungkol sa mga Terme na ito ay maaaring ipadala sa: '],
     },
   ],
 };

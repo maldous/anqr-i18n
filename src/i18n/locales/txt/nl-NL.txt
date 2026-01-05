@@ -888,7 +888,7 @@
 888	"Modulegrootte"
 889	"{{count}}°"
 890	"{{count}}_ modules"
-891	"__ANQR_PH_0000_ms"
+891	"__ANQR_PH_0_ms"
 892	"{{count}}%"
 893	"{{count}}px"
 894	"Alleen numeriek"

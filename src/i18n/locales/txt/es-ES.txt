@@ -890,7 +890,7 @@
 890	"{{count}} módulos"
 891	"{{count}}ms"
 892	"¿POR QUÉ"
-893	"__ANQR_PH_0000_px"
+893	"__ANQR_PH_0_px"
 894	"Sólo Numérico"
 895	"Q - Cuartil (25%)"
 896	"Versión"

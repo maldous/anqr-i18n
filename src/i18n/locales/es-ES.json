@@ -1048,7 +1048,7 @@
     "nModules": "{{count}} módulos",
     "nMs": "{{count}}ms",
     "nPercent": "¿POR QUÉ",
-    "nPx": "__ANQR_PH_0000_px",
+    "nPx": "__ANQR_PH_0_px",
     "numericOnly": "Sólo Numérico",
     "quartile": "Q - Cuartil (25%)",
     "version": "Versión"

@@ -126,7 +126,7 @@
   "fileSaveFailed": "Sawi sa pagliligtas ng talaksan: {{error}}__",
   "fileSaved": "Iniligtas sa mga Dokumento: {{filename}}__",
   "footer": {
-    "copyright": "© ANQR __ANQR_PH_000000____"
+    "copyright": "© ANQR {{year}}_"
   },
   "gallery": {
     "filter": "Pansala",
@@ -925,7 +925,7 @@
     "utmMedium": "UTM medium para sa pagsubaybay sa kampanya",
     "utmSource": "UTM source para sa pagsubaybay sa kampanya",
     "validateInput": "Basahin ang input data bago mag - adjust",
-    "versionTooLow": "Napakababa ng ⚠️ Version! Kailangan ang Minimum v_ANQR_PH_0000___",
+    "versionTooLow": "Napakababa ng ⚠️ Version! Pagliit Kailangan ang v_ANQR_PH_0______",
     "swissQrBillNote": "Swiss QR-bill format para sa mga pagbabayad ng CH/LI sa bawat panuntunan ng SIX",
     "lightningNote": "BOLT11 ng Lightning Network bilang resibo para sa pagbabayad ng Bitcoin",
     "ethereumNote": "Ethereum EIP-681 transaksyon request format",
@@ -1028,7 +1028,7 @@
     "additionalBorder": "Karagdagang hangganan sa labas ng tahimik na sona",
     "alphanumeric": "Alphanumeric",
     "auto": "Awto",
-    "autoMin": "Auto (min: __ANQR_PH_000000___)",
+    "autoMin": "Auto (min: {{version}})",
     "autoOptimal": "Awto (Optimal)",
     "byteUtf8": "Byte / UTF-8",
     "contrastRatio": "{{count}}__:1",

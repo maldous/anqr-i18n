@@ -3,140 +3,86 @@ import { LAST_UPDATED } from '../types';
 
 export const terms: PageDefinition = {
   title: 'Podmínky služby',
-  description:
-    'Přístupem na stránky nebo jejich používáním souhlasíte s tím, že budete vázáni těmito podmínkami.',
+  description: 'Tím, že přístup nebo používání webu, souhlasíte být vázán těmito podmínkami.',
   lastUpdated: LAST_UPDATED,
+  relatedLinks: [{ href: '/privacy?lang=${lang}', label: 'Privacy Policy', type: 'external' }],
   sections: [
     {
       heading: 'Přijetí podmínek',
-      paragraphs: [
-        'Přístupem k webu ANQR (anqr.link) nebo jeho používáním souhlasíte s těmito Podmínkami služby a našimi Zásadami ochrany osobních údajů. Pokud s těmito podmínkami nesouhlasíte, web nepoužívejte.',
-        'Tyto Podmínky můžeme čas od času aktualizovat. Pokračování v používání stránek po změnách představuje souhlas s novými podmínkami.',
-      ],
+      paragraphs: ['Přístupem nebo použitím ANQR (anqr.link) souhlasíte s tím, že budete vázáni těmito Podmínkami služby a našimi Zásadami ochrany soukromí. Pokud s těmito podmínkami nesouhlasíte, nepoužívejte stránku.', 'Tyto podmínky můžeme čas od času aktualizovat. Pokračování používání webu po změnách představuje přijetí nových podmínek.'],
     },
     {
       heading: 'Způsobilost',
-      paragraphs: [
-        'Pro používání ANQR musíte mít alespoň 13 let. Používáním stránek prohlašujete, že splňujete tento věkový požadavek. Pokud je vám méně než 18 let, prohlašujete, že máte s používáním stránek souhlas rodiče nebo zákonného zástupce.',
-      ],
+      paragraphs: ['K použití ANQR vám musí být nejméně 13 let. Používáním webu reprezentujete, že tento věkový požadavek splníte. Pokud je vám méně než 18 let, představujete, že máte svolení rodiče nebo opatrovníka k používání webu.'],
     },
     {
       heading: 'Povolené použití',
-      paragraphs: [
-        'ANQR můžete používat pouze k zákonným účelům. Nesete výhradní odpovědnost za obsah, který kódujete do QR kódů, a za to, jak používáte jakékoli QR kódy, které vygenerujete.',
-      ],
+      paragraphs: ['ANQR můžete používat pouze pro zákonné účely. Jste výhradně zodpovědní za obsah, který zakódujete do QR kódů a za to, jak používáte QR kódy, které generujete.'],
     },
     {
-      heading: 'Zakázané chování',
-      paragraphs: ['Souhlasíte s tím, že nebudete:'],
-      bullets: [
-        'Použijte ANQR k vytváření QR kódů, které usnadňují phishing, distribuci malwaru, podvody, lži, obtěžování, pomluvy nebo jakoukoli nezákonnou činnost.',
-        'Kódujte obsah, který porušuje práva duševního vlastnictví, narušuje soukromí nebo obsahuje nelegální materiál.',
-        'Pokus o narušení, přetížení nebo narušení provozu či zabezpečení lokality.',
-        'Zpětně analyzovat, dekompilovat nebo se pokusit extrahovat zdrojový kód z webu.',
-        'Používejte automatizované nástroje (boty, scrapery) k přístupu na web způsobem, který snižuje výkon ostatních uživatelů.',
-        'Obejděte nebo deaktivujte jakékoli bezpečnostní funkce nebo funkce kontroly přístupu.',
-        'Vydávat se za jinou osobu nebo subjekt nebo zkreslovat svou příslušnost.',
-      ],
+      heading: 'Zakázané jednání',
+      paragraphs: ['Souhlasíte, že ne:'],
+      bullets: ['Použijte ANQR k vytvoření QR kódů, které usnadňují phishing, malware distribuce, podvod, podvody, obtěžování, pomluvy, nebo jakékoli nezákonné činnosti.', 'Obsah kódu, který porušuje práva duševního vlastnictví, porušuje soukromí nebo obsahuje nelegální materiál.', 'Pokuste se narušit, přetížit, nebo narušit provoz nebo bezpečnost webu.', 'Reverse inženýr, rozklad, nebo pokus o získání zdrojového kódu ze stránky.', 'Pomocí automatických nástrojů (roboty, škrabače) přístup k webu způsobem, který degraduje výkon pro ostatní uživatele.', 'Obcházet nebo zakázat jakékoli bezpečnostní nebo přístupové prvky.', 'Vydejte se za jakoukoli osobu nebo subjekt nebo zkreslte svou příslušnost.'],
     },
     {
       heading: 'Duševní vlastnictví',
-      paragraphs: [
-        'Vlastnictví obsahu, který zakódujete do QR kódů, si ponecháváte. ANQR si nenárokuje vlastnictví vašich dat.',
-        'Název, logo, design rozhraní a podkladový kód ANQR jsou chráněny autorským právem, ochrannými známkami a dalšími zákony o duševním vlastnictví. Bez našeho svolení nesmíte kopírovat, upravovat, distribuovat ani vytvářet odvozená díla.',
-        'QR Code® je registrovaná ochranná známka společnosti DENSO WAVE INCORPORATED. ANQR není přidružena k DENSO WAVE.',
-      ],
+      paragraphs: ['Držíte si vlastnictví obsahu, který kódujete do QR kódů. ANQR nepožaduje vlastnictví vašich dat.', 'Název ANQR, logo, návrh rozhraní a základní kód jsou chráněny autorskými právy, ochrannou známkou a dalšími zákony duševního vlastnictví. Nesmíte kopírovat, upravovat, distribuovat nebo vytvářet odvozená díla bez našeho svolení.', 'QR Code ® je registrovaná ochranná známka DENSO WAVE INCORPORATED. ANQR není přidružen k DENSO WAVE.'],
     },
     {
-      heading: 'Licence k uživatelskému obsahu',
-      paragraphs: [
-        'Používáním ANQR nám neudělujete žádná práva k vašemu obsahu. Při použití lokálního generování (výchozí nastavení) probíhá veškeré generování QR kódů ve vašem prohlížeči a my k vašim kódovaným datům nepřistupujeme, neukládáme je ani nepřenášíme.',
-        'Při použití serverového API je váš obsah zpracován za účelem generování QR obrázku, ale není uložen, zaznamenáván ani používán k žádnému jinému účelu než k vykreslení požadovaného obrázku.',
-      ],
+      heading: 'Licence na obsah uživatele',
+      paragraphs: ['Používáním ANQR nám nedáváte žádná práva na váš obsah. Při použití lokální generace (výchozí) se ve vašem prohlížeči odehrává veškerá generace QR kódů a my nepřistupujeme, neukládáme ani nepředáváme kódovaná data.', 'Při použití serverside API je Váš obsah zpracováván pro generování QR obrazu, ale není uložen, zaznamenán nebo používán pro jakýkoli jiný účel, než je vykreslování požadovaného obrazu.'],
     },
     {
-      heading: 'Služby a reklama třetích stran',
-      paragraphs: [
-        'Stránka zobrazuje reklamy prostřednictvím služby Google AdSense a může obsahovat odkazy na webové stránky třetích stran. Neneseme odpovědnost za obsah, služby ani postupy ochrany osobních údajů třetích stran.',
-        'Vaše interakce s inzerenty a třetími stranami jsou výhradně mezi vámi a nimi. Informace o postupech v oblasti reklamních dat naleznete v našich Zásadách ochrany osobních údajů.',
-      ],
+      heading: 'Služby a reklama ve třetích zemích',
+      paragraphs: ['Stránky zobrazují reklamy prostřednictvím Google AdSense a mohou obsahovat odkazy na webové stránky třetích stran. Nejsme zodpovědní za třetí strany obsahu, služeb, nebo soukromí praxi.', 'Vaše interakce s inzerenty a třetími stranami jsou pouze mezi vámi a nimi. Viz naše Zásady ochrany soukromí pro informace o reklamních datových praktikách.'],
     },
     {
       heading: 'Vyloučení záruk',
-      paragraphs: [
-        'ANQR JE POSKYTOVÁN TAK, JAK JE A JAK JE K DISPOZICI BEZ JAKÝCHKOLI ZÁRUK, VÝSLOVNÝCH NEBO PŘEDPOKLÁDANÝCH, VČETNĚ, ALE NEJEN, PŘEDPOKLÁDANÝCH ZÁRUK OBCHODOVATELNOSTI, VHODNOSTI PRO URČITÝ ÚČEL A NEPORUŠENÍ PRÁV.',
-        'Nezaručujeme, že: (a) web bude nepřerušovaný, bezpečný nebo bezchybný; (b) QR kódy se budou skenovat ve všech prostředích, na všech zařízeních nebo se všemi aplikacemi pro skenování; (c) web bude splňovat vaše požadavky.',
-        'QR kódy byste měli vždy testovat v podmínkách, ve kterých budou použity (velikost tisku, osvětlení, typ obrazovky, vzdálenost, kvalita fotoaparátu).',
-      ],
+      paragraphs: ['ANQR JE POSKYTOVÁN NA "TAK, JAK JE" A "JAK JE K DISPOZICI" BÁZE BEZ VAD JAKÉHOKOLI DRUHU, EXPRESE NEBO IMPLIKOVANÉ, VČETNĚ, ALE NENÍ OMEZEN NA IMPLIKOVANÉ VAROVNOSTI MERCHANTABILITY, ZDATNOSTI PRO ZVLÁŠTNÍ ÚČELY, A NON- PORUŠENÍ.', 'Nezaručujeme, že: a) místo bude nepřerušené, bezpečné, nebo error-free; b) QR kódy budou skenovat ve všech prostředích, na všech zařízeních, nebo se všemi scannery aplikací; c) místo bude splňovat vaše požadavky.', 'Vždy byste měli testovat QR kódy v podmínkách, kde budou použity (velikost tisku, osvětlení, typ obrazovky, vzdálenost, kvalita kamery).'],
     },
     {
       heading: 'Omezení odpovědnosti',
-      paragraphs: [
-        'V MAXIMÁLNÍM ROZSAHU POVOLENÉM ZÁKONEM NEBUDE SPOLEČNOST ANQR A JEJÍ PROVOZOVATELÉ, PŘIDRUŽENÉ SPOLEČNOSTI A POSKYTOVATELÉ LICENCÍ ODPOVĚDNÉ ZA ŽÁDNÉ PŘÍMÉ, NEPŘÍMÉ, NÁHODNÉ, ZVLÁŠTNÍ, NÁSLEDNÉ, TRESTNÍ NEBO EXEMPLÁRNÍ ŠKODY, VČETNĚ, ALE NEJEN, ŠKOD ZA UŠLÝ ZISK, PŘÍJMY, DATA, GOODWELLE, POUŽITÍ NEBO JINÉ NEHMOTNÉ ZTRÁTY, KTERÉ VYPLÝVAJÍ Z NEBO S VAŠÍM PŘÍSTUPEM K NEBO POUŽÍVÁNÍM (NEBO NEMOŽNOSTÍ PŘÍSTUPU NEBO POUŽÍVÁNÍ) SLUŽBY.',
-        'VÝSLOVNĚ BERETE NA VĚDOMÍ A SOUHLASÍTE S TÍM, ŽE POUŽÍVÁNÍ SLUŽBY JE NA VAŠE VLASTNÍ RIZIKO. SLUŽBA JE POSKYTOVÁNA ZDARMA A V TOMTO SOUHLASÍTE S TÍM, ŽE ANQR ANI JEJÍ PROVOZOVATELÉ NEBUDOU VŮČI VÁM NEPONESOU ŽÁDNOU ODPOVĚDNOST ZA ŽÁDNÉ ŠKODY NEBO ZTRÁTY. NAŠE CELKOVÁ ODPOVĚDNOST V ŽÁDNÉM PŘÍPADĚ NEPŘESÁHNE NULU DOLARŮ (0 AUD).',
-        'SOUHLASÍTE S TÍM, ŽE SE ZŘEKNETE, ZŘEKNETE A UPUSTÍTE VEŠKERÉ NÁROKY, POŽADAVKY A DŮVODY K ŽALOBU VŮČI SPOLEČNOSTI ANQR A JEHO PROVOZOVATELŮM VYPLÝVAJÍCÍ Z VAŠEHO POUŽÍVÁNÍ SLUŽBY.',
-        'NĚKTERÉ JURISDIKCE NEPOVOLUJÍ VYLOUČENÍ URČITÝCH ZÁRUK NEBO OMEZENÍ ODPOVĚDNOSTI. V TAKOVÝCH JURISDIKCÍCH BUDE NAŠE ODPOVĚDNOST OMEZENA NA MAXIMÁLNÍ ROZSAH POVOLENÝ PLATNÝMI ZÁKONY.',
-      ],
+      paragraphs: ['K MAXIMÁLNÍMU ROZSAHU POVOLENÉMU PRÁVNÍMI PŘEDPISY, ANQR A JEHO OPERATORY, ZÁVAZKY A LICHVY SE NEVZTAHUJÍ NA ŽÁDNÉ PŘÍMÉ, NEPŘÍMÉ, NEPŘÍMÉ, NECIDENTNÍ, ZVLÁŠTNÍ, KONSOLIDOVANÉ, UNIJNÍ NEBO EXTRAPOLAČNÍ ÚDAJE, KTERÉ ZAHRNUJÍ, ALE NEOMEZUJÍ SE NA ÚDAJE O ZTRÁTĚ PROFESE, PŘÍJMECH, DATECH, GOODWILLU, POUŽITÍ NEBO JINÝCH INSTANČNÍCH ZTRÁTÁCH, KTERÉ POCHÁZEJÍ Z VAŠEHO PŘÍJMU NEBO Z NĚJ PLYNOU.', 'EXPERTNĚ ROZUMÍTE A SOUHLASÍTE S TÍM, ŽE VAŠE VYUŽITÍ SLUŽBY JE NA VAŠEM RIZIKU. SLUŽBA JE POSKYTOVÁNA ZDARMA A VY SE SHODNETE NA TOM, ŽE ANQR A JEHO OPERÁTOŘI PRO VÁS NEBUDOU MÍT ŽÁDNOU VÝHODU. V ŽÁDNÉM PŘÍPADĚ NESMÍ NAŠE CELKOVÁ AGREGÁTOVÁ KOMPATIBILITA MIMO ZERO DOLLARS (0 AUD).', 'SOUHLASÍTE S PROPUŠTĚNÍM, ČEKÁNÍM A ZPROŠTĚNÍM VŠECH PŘÍKAZŮ, DÉMANTŮ A PŘÍČIN AKCE PROTI ANQROVI A JEHO OPERATÉRŮM, KTEŘÍ PŘIŠLI Z VAŠÍ SLUŽBY.', 'NĚKTERÁ JURIZACE NEUMOŽŇUJÍ VYLOUČENÍ URČITÝCH VAROVNOSTÍ NEBO OMEZENÍ ODPOVĚDNOSTI. V TĚCHTO PŘÍPADECH JE NAŠE ODPOVĚDNOST OMEZENA NA MAXIMÁLNÍ ROZSAH POVOLENÝ PLATNÝM PRÁVEM.'],
     },
     {
       heading: 'Odškodnění',
-      paragraphs: [
-        'Souhlasíte s tím, že odškodníte, budete bránit a ochráníte společnost ANQR, její provozovatele, přidružené společnosti a jejich příslušné vedoucí pracovníky, ředitele, zaměstnance a zástupce před jakýmikoli nároky, škodami, ztrátami, závazky, náklady a výdaji (včetně právních poplatků) vyplývajícími z: (a) vašeho používání stránek; (b) vašeho porušení těchto Podmínek; (c) vašeho porušení jakýchkoli práv třetích stran; (d) jakéhokoli obsahu, který zakódujete do QR kódů.',
-      ],
+      paragraphs: ['Souhlasíte s odškodněním, obhajobou a zachováním neškodného ANQR, jejích operátorů, přidružených společností a jejich příslušných důstojníků, ředitelů, zaměstnanců a agentů za případné nároky, škody, ztráty, závazky, náklady a výdaje (včetně právních poplatků) vyplývající z: a) vašeho používání webu; b) vašeho porušení těchto podmínek; c) vašeho porušení práv třetích stran; d) jakéhokoli obsahu, který zadáte do kódů QR.'],
     },
     {
       heading: 'Řešení sporů',
-      paragraphs: [
-        'Jakýkoli spor vyplývající z těchto Podmínek nebo z vašeho používání ANQR bude nejprve pokusen vyřešit neformálním jednáním kontaktováním ${CONTACT_EMAIL}.',
-        'Pokud selže neformální řešení, budou spory řešeny závaznou arbitráží ve Victorii v Austrálii, s výjimkou případů, kdy se kterákoli ze stran může domáhat soudního zákazu v souvislosti s porušením práv duševního vlastnictví.',
-      ],
+      paragraphs: ['Jakýkoli spor vyplývající z těchto Podmínek nebo vaše používání ANQR se nejprve pokusí vyřešit prostřednictvím neformálního jednání kontaktováním $_ _ ANQR _ PH _ 0 _ _.', 'Nedojde-li k neformálnímu vyřešení sporu, řeší se spory prostřednictvím závazného rozhodčího řízení ve Victorii v Austrálii, s výjimkou případu, kdy kterákoli strana může požádat soud o soudní úlevu za porušování duševního vlastnictví.'],
     },
     {
-      heading: 'Zřeknutí se hromadné žaloby',
-      paragraphs: [
-        'V ROZSAHU POVOLENÉM ZÁKONEM SOUHLASÍTE S TÍM, ŽE VEŠKERÉ ŘÍZENÍ SPORŮ BUDOU VEDENO POUZE INDIVIDUÁLNĚ, A NE V ROVNĚ SKUPINOVÉ, KONSOLIDOVANÉ NEBO ZÁSTUPNÉ ŽALOBY.',
-      ],
+      heading: 'Odchylka od třídní akce',
+      paragraphs: ['PRO ROZSAH POVOLENÝ ZÁKONEM, SOUHLASÍTE S TÍM, ŽE JAKÁKOLI RESOLUČNÍ OPATŘENÍ BUDOU PROVÁDĚNA POUZE NA INDIVIDUÁLNÍM ZÁKLADĚ A NIKOLI VE TŘÍDĚ, KONSOLIDOVANÉ NEBO REPREZENTAČNÍ ČINNOSTI.'],
     },
     {
-      heading: 'Rozhodné právo',
-      paragraphs: [
-        'Tyto Podmínky se řídí zákony státu Victoria v Austrálii bez ohledu na principy kolize právních norem. Souhlasíte s výlučnou jurisdikcí soudů ve státě Victoria v Austrálii.',
-      ],
+      heading: 'Správní právo',
+      paragraphs: ['Tyto podmínky se řídí zákony Victoria, Austrálie, bez ohledu na kolizní zákony zásady. Souhlasíte s výlučnou jurisdikcí soudů ve Victorii v Austrálii.'],
     },
     {
       heading: 'Změny a dostupnost',
-      paragraphs: [
-        'Stránky (nebo jakoukoli jejich část) si vyhrazujeme právo kdykoli bez předchozího upozornění a bez jakékoli odpovědnosti upravit, pozastavit nebo ukončit jejich provoz.',
-        'Tyto Podmínky můžeme kdykoli aktualizovat. Datum Poslední aktualizace označuje, kdy byly naposledy revidovány. Pokračování v používání po změnách představuje jejich souhlas.',
-      ],
+      paragraphs: ['Můžeme změnit, pozastavit nebo přerušit místo (nebo jakoukoli jeho část) kdykoliv bez upozornění nebo odpovědnosti.', 'Tyto podmínky můžeme kdykoli aktualizovat. Datum "Poslední aktualizace" naznačuje, kdy byly naposledy revidovány. Pokračování používání po změnách představuje přijetí.'],
     },
     {
       heading: 'Oddělitelnost',
-      paragraphs: [
-        'Pokud bude jakékoli ustanovení těchto Podmínek shledáno neplatným nebo nevymahatelným, bude toto ustanovení vymáháno v maximálním povoleném rozsahu a zbývající ustanovení zůstanou v plné platnosti a účinnosti.',
-      ],
+      paragraphs: ['Je-li jakékoliv ustanovení těchto Podmínek považováno za neplatné nebo nevymahatelné, bude toto ustanovení vymáháno v maximální možné míře a zbývající ustanovení zůstanou v plném platnosti a budou účinná.'],
     },
     {
-      heading: 'Vyloučení',
-      paragraphs: [
-        'Neuplatnění jakéhokoli práva nebo ustanovení těchto Podmínek z naší strany nebude považováno za zřeknutí se takového práva nebo ustanovení.',
-      ],
+      heading: 'Odchod',
+      paragraphs: ['Naše neschopnost vymáhat jakékoli právo nebo poskytnutí těchto Podmínek se nepovažuje za zbavení tohoto práva nebo poskytnutí.'],
     },
     {
       heading: 'Celá dohoda',
-      paragraphs: [
-        'Tyto Podmínky spolu s našimi Zásadami ochrany osobních údajů představují úplnou dohodu mezi vámi a společností ANQR týkající se vašeho používání stránek a nahrazují veškeré předchozí dohody.',
-      ],
+      paragraphs: ['Tyto Podmínky, spolu s našimi Zásadami ochrany osobních údajů, představují celou dohodu mezi vámi a ANQR, pokud jde o vaše používání webu a nahradit všechny předchozí dohody.'],
     },
     {
       heading: 'Vyšší moc',
-      paragraphs: [
-        'Neneseme odpovědnost za žádné selhání nebo zpoždění plnění způsobené okolnostmi mimo naši přiměřenou kontrolu, včetně přírodních katastrof, války, terorismu, nepokojů, vládních opatření nebo selhání internetu/infrastruktury.',
-      ],
+      paragraphs: ['Nebudeme zodpovědní za žádné selhání nebo zpoždění ve výkonu kvůli okolnostem, které jsou mimo naši rozumnou kontrolu, včetně přírodních katastrof, války, terorismu, nepokojů, vládních akcí nebo selhání internetu / infrastruktury.'],
     },
     {
       heading: 'Kontakt',
-      paragraphs: ['Dotazy k těmto Podmínkám lze zasílat na adresu: ${CONTACT_EMAIL}'],
+      paragraphs: ['Otázky týkající se těchto Podmínek lze zaslat na adresu: $_ _ ANQR _ PH _ 0 _ _'],
     },
   ],
 };

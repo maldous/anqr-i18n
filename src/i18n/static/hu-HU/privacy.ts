@@ -3,149 +3,79 @@ import { LAST_UPDATED } from '../types';
 
 export const privacy: PageDefinition = {
   title: 'Adatvédelmi irányelvek',
-  description:
-    'Az ANQR által gyűjtött információk, azok felhasználási módja és az Ön jogai az alkalmazandó adatvédelmi törvények értelmében.',
+  description: 'Információ ANQR gyűjti, hogyan használják, és az Ön jogait vonatkozó adatvédelmi törvények.',
   lastUpdated: LAST_UPDATED,
+  relatedLinks: [{ href: '/terms?lang=${lang}', label: 'Terms of Service', type: 'external' }],
   sections: [
     {
       heading: 'Összefoglaló',
-      paragraphs: [
-        'Az ANQR egy kliensközpontú QR-kód generátor. Nem kell fiókot létrehoznia. Alapértelmezés szerint a QR-kódok helyben, a böngészőjében generálódnak – nincs hozzáférésünk a kódolt tartalomhoz.',
-        'Professzionális használatra az ANQR egy szerveroldali API-t biztosít, amely QR-kódokat generál URL-paraméterekből. Az API használatakor a QR-tartalmat a szervereink feldolgozzák a kép megjelenítéséhez, de nem tárolják vagy naplózzák.',
-        'A Google AdSense-t használjuk hirdetésekhez, és analitikai szolgáltatásokat is igénybe vehetünk. Ezek a szolgáltatások sütiken és hasonló technológiákon keresztül gyűjtenek információkat. Ez a szabályzat ismerteti, hogy milyen adatokat gyűjtünk, hogyan használjuk fel azokat, és milyen jogokkal rendelkezel.',
-      ],
+      paragraphs: ['Az ANQR egy QR kódgenerátor, az ügyfelek első megközelítésével. Nem kérjük, hogy hozzon létre egy fiókot. Alapértelmezés szerint a QR kódok a böngésződben keletkeznek - nincs hozzáférésünk a kódolt tartalomhoz.', 'Szakmai használatra az ANQR egy szerveroldalas API-t biztosít, amely QR-kódokat generál URL paraméterekből. Az API használatakor az Ön QR-tartalmát a szervereinken dolgozzák fel a kép elkészítéséhez, de nem tárolja vagy nem naplózza.', 'A Google AdSense-t hirdetésre használjuk, és elemzői szolgáltatásokat is igénybe vehetünk. Ezek a szolgáltatások cookie-kon és hasonló technológiákon keresztül gyűjtenek információkat. Ez a politika megmagyarázza, hogy milyen adatokat gyűjtenek, hogyan használják, és az Ön jogait.'],
     },
     {
-      heading: 'Általunk gyűjtött információk',
-      bullets: [
-        'Az Ön által megadott információk: Ha e-mailben vagy a kapcsolatfelvételi űrlapunkon keresztül veszi fel velünk a kapcsolatot, összegyűjtjük az Ön nevét, e-mail címét és az üzenet tartalmát.',
-        'Automatikusan gyűjtött információk: Tárhelyszolgáltatónk (Netlify), hirdetési partnereink és elemző szolgáltatásaink a következőket gyűjthetik: IP-cím, böngésző típusa és verziója, operációs rendszer, eszköztípus, hivatkozó URL, meglátogatott oldalak, a webhelyen töltött idő és a hozzávetőleges földrajzi hely.',
-        'Harmadik féltől származó sütik: Hirdetési partnereink (Google AdSense) sütiket és hasonló technológiákat használnak a hirdetések megjelenítéséhez és méréséhez. Maga az ANQR nem állít be semmilyen belső sütit.',
-      ],
+      heading: 'Információgyűjtés',
+      bullets: ['Az Ön által megadott információk: Ha e-mailben vagy a kapcsolatfelvételi űrlapon lép velünk kapcsolatba, összegyűjtjük a nevét, e-mail címét és üzenettartalmát.', 'Automatikusan gyűjtött információk: A hosting szolgáltatónk (Netlify), hirdetési partnereink és analitikus szolgáltatásaink gyűjthetnek: IP-cím, böngésző típus és verzió, operációs rendszer, eszköztípus, hivatkozó URL, meglátogatott oldalak, idő a helyszínen, és hozzávetőleges földrajzi elhelyezkedés.', 'Third-party cookie: Hirdetési partnereink (Google AdSense) cookie-kat és hasonló technológiákat használnak reklámok kiszolgálására és mérésére. Maga az ANQR nem állít be első-fél sütiket.'],
     },
     {
-      heading: 'Sütik és harmadik féltől származó technológiák',
-      paragraphs: [
-        'Az ANQR nem állít be semmilyen belső sütit. A beállításaid (például a sötét mód) helyben tárolódnak az eszközödön, és nem kerülnek továbbításra semmilyen szerverre.',
-        'Hirdetési partnereink (Google AdSense) és tárhelyszolgáltatónk azonban sütiket és hasonló nyomkövető technológiákat használhatnak:',
-      ],
-      bullets: [
-        'Hirdetési sütik (harmadik féltől): A Google AdSense és hirdetési partnerei állítják be őket a releváns hirdetések megjelenítése, a hirdetések teljesítményének mérése és a felhasználók érdeklődési körének megértése érdekében. Ezek a sütik nyomon követhetik az Ön tevékenységét különböző webhelyeken.',
-        'Analitikai sütik (harmadik féltől): Tárhelyszolgáltatónk vagy analitikai szolgáltatásaink anonimizált használati adatok gyűjtésére használhatják őket.',
-      ],
+      heading: 'Sütik és harmadik felek technológiái',
+      paragraphs: ['Az ANQR nem állít be első fél sütit. A beállításokat (mint például a sötét üzemmódot) helyileg tároljuk az eszközön, amelyet nem továbbítunk semmilyen szerverre.', 'Reklámpartnereink (Google AdSense) és tárhelyszolgáltatóink azonban sütiket és hasonló nyomkövető technológiákat használhatnak:'],
+      bullets: ['Reklámsütik (harmadik fél): A Google AdSense és reklámpartnerek által beállított hirdetések, hirdetési teljesítmény mérése és a felhasználói érdekek megértése. Ezek a cookie-k nyomon követhetik az Ön tevékenységét különböző honlapokon.', 'Analitikai sütik (harmadik fél): A tárhelyszolgáltatónk vagy elemzőnk felhasználhatja anonim használati adatok gyűjtésére.'],
     },
     {
-      heading: 'Google AdSense és hirdetések',
-      paragraphs: [
-        'A Google AdSense-en keresztül jelenítünk meg hirdetéseket. A Google és partnerei sütiket használnak a hirdetések megjelenítéséhez az ezen a webhelyen és más webhelyeken tett böngészési előzményei alapján (érdeklődésen alapuló hirdetés).',
-        'Tudja meg, hogyan használja fel a Google az Ön adatait: https://policies.google.com/technologies/partner-sites',
-        'Hirdetések személyre szabásának kezelése: https://adssettings.google.com',
-        'Leiratkozás a Network Advertising Initiative-en keresztül: https://optout.networkadvertising.org',
-        'Leiratkozás a Digital Advertising Alliance-on keresztül: https://optout.aboutads.info',
-      ],
+      heading: 'Google Adsense és reklám',
+      paragraphs: ['A Google AdSense-en keresztül hirdetéseket jelenítünk meg. A Google és partnerei cookie-kat használnak az Ön böngészési előzményei és más honlapok (érdekalapú hirdetések) alapján.', 'Ismerje meg, hogyan használja a Google az adatait: https: / / policies.google.com / technologies / partner- sites', 'Az Európai Parlament és a Tanács (EU) 2015 / 849 rendelete (2015. április 26.) a személyes adatok feldolgozása tekintetében az egyének védelméről, valamint az ilyen adatok szabad áramlásáról (HL L 298., 2015.10.26., 1. o.)', 'A hálózat hirdetési kezdeményezése útján történő kilépés: https: / / optout.networkadistising.org', 'A Digital Advertising Alliance (Digital Advertising Alliance) útján történő kilépés: https: / / optout.abopads.info'],
     },
     {
-      heading: 'Hogyan használjuk fel az információkat',
-      bullets: [
-        'Hogy válaszoljunk a kérdéseire és támogatást nyújtsunk.',
-        'Releváns hirdetések megjelenítése hirdetési partnereinken keresztül.',
-        'A webhelyhasználat elemzése és szolgáltatásaink fejlesztése érdekében.',
-        'A csalások, visszaélések és biztonsági problémák felderítése, megelőzése és kezelése érdekében.',
-        'Jogi kötelezettségek teljesítése érdekében.',
-      ],
+      heading: 'Hogyan használjuk az információkat',
+      bullets: ['Hogy válaszoljak a kérdéseire, és támogatást nyújtsak.', 'Hogy reklámpartnereinken keresztül megjelenítse a megfelelő reklámokat.', 'A weboldal használatának elemzése és szolgáltatásaink javítása.', 'A csalások, visszaélések és biztonsági problémák felderítése, megelőzése és kezelése.', 'A jogi kötelezettségek teljesítése.'],
     },
     {
       heading: 'Harmadik fél szolgáltatásai',
-      bullets: [
-        'Google AdSense: Adatokat fogad hirdetések megjelenítéséhez és méréséhez.',
-        'Elemzőszolgáltatók: Anonimizált használati adatok fogadása.',
-        'Netlify (tárhelyszolgáltató): Feldolgozza a kéréseket és naplózhatja az IP-címeket.',
-        'Nem adjuk el a személyes adatait. Azonban az adatok hirdetési partnerekkel való megosztása értékesítésnek minősülhet a CCPA értelmében (lásd alább).',
-      ],
+      bullets: ['Google AdSense: A hirdetések kiszolgálásához és méréséhez adatokat kap.', 'Analitikai szolgáltatók: Névtelen felhasználási adatok fogadása.', 'Nettify (hosting): A folyamatok kérése és az IP-címek bejelentkezése.', 'Nem adjuk el a személyes adatait. A reklámpartnerekkel való adatmegosztás azonban a CCPA keretében "értékesítésnek" tekinthető (lásd alább).'],
     },
     {
       heading: 'Adatmegőrzés',
-      bullets: [
-        'Kapcsolatfelvételi beküldések: Legfeljebb 2 év.',
-        'Szervernaplók: Legfeljebb 30 nap (tárhelyszolgáltató).',
-        'Analitikai adatok: Legfeljebb 26 hónap (anonimizált).',
-        'Hirdetési sütik: Általában 13 hónap (partnerenként változó).',
-      ],
+      bullets: ['Kapcsolattartók: Két évig.', 'A kiszolgáló naplója: Legfeljebb 30 nap (tárhelyszolgáltató).', 'Analitikai adatok: Legfeljebb 26 hónap (anonimizált).', 'Reklámsütik: Jellemzően 13 hónap (partnerenként változik).'],
     },
     {
-      heading: 'Az Ön jogai a GDPR értelmében (EGT-felhasználók)',
-      paragraphs: [
-        'Ha az Európai Gazdasági Térségben tartózkodik, az Általános Adatvédelmi Rendelet értelmében a következő jogokkal rendelkezik:',
-      ],
-      bullets: [
-        'Hozzáférési jog: Kérjen másolatot az Önről tárolt személyes adatokról.',
-        'Helyesbítéshez való jog: Kérni a pontatlan adatok helyesbítését.',
-        'Törléshez való jog: Kérheti adatai törlését (elfeledtetéshez való jog).',
-        'A feldolgozás korlátozásához való jog: Kérheti az adatai felhasználásának korlátozását.',
-        'Adathordozhatósághoz való jog: Kérheti adatait hordozható formátumban.',
-        'Tiltakozáshoz való jog: Tiltakozás az adatkezelés ellen, beleértve a közvetlen üzletszerzés céljából történő adatkezelést is.',
-        'A hozzájárulás visszavonásához való jog: A hozzájárulás bármikor visszavonható, ha az adatkezelés hozzájáruláson alapul.',
-        'Panasztételi jog: Panasz benyújtása az adatvédelmi hatóságnál.',
-      ],
+      heading: 'Az Ön jogai a GDPR (EGT felhasználók) alapján',
+      paragraphs: ['Ha Ön az Európai Gazdasági Térségben tartózkodik, az általános adatvédelmi rendelet értelmében a következő jogokkal rendelkezik:'],
+      bullets: ['Hozzáférési jog: Kérjen egy másolatot a személyes adatairól, amit őrzünk magáról.', 'A helyesbítéshez való jog: A pontatlan adatok helyesbítését kérem.', 'A törléshez való jog: Adatainak törlését kérjük ("a felejtéshez való jog").', 'A feldolgozás korlátozásának joga: Határokat kérek, hogy hogyan használjuk az adatait.', 'Az adathordozhatóság joga: Kérje adatait hordozható formátumban.', 'A tiltakozáshoz való jog: A feldolgozás tárgya, beleértve a közvetlen forgalmazást is.', 'A hozzájárulás visszavonása: A hozzájárulás visszavonása bármikor, amikor a feldolgozás konszenzus alapján történik.', 'A panasz benyújtásának joga: Panaszt nyújt be adatvédelmi hatóságánál.'],
     },
     {
-      heading: 'GDPR jogalap',
-      paragraphs: [
-        'Az adatokat a következő alapokon dolgozzuk fel: (a) Hozzájárulás – személyre szabott hirdetésekhez (hirdetési partnereink kezelik); (b) Jogos érdekek – elemzés, biztonság és fejlesztés céljából; (c) Szerződés – megkeresésekre való válaszadás céljából.',
-        'Jogainak gyakorlásához vegye fel a kapcsolatot a következő címen: ${CONTACT_EMAIL}. 30 napon belül válaszolunk.',
-      ],
+      heading: 'A GDPR jogalapja',
+      paragraphs: ['Ezekre az alapokra vonatkozó adatokat dolgozzuk fel: a) hozzájárulás - személyre szabott reklámhoz (reklámpartnereink által kezelt); b) törvényes érdekek - az analitika, a biztonság és a fejlesztés érdekében; c) Szerződés - a kérdések megválaszolására.', 'A jogok gyakorlásához lépjen kapcsolatba $_ _ _ ANQR _ PH _ 0 _ _. 30 napon belül válaszolunk.'],
     },
     {
-      heading: 'Az Ön jogai a CCPA értelmében (kaliforniai felhasználók)',
-      bullets: [
-        'Tudáshoz való jog: Információk kérése a gyűjtött adatokról, forrásokról, célokról és harmadik felekről.',
-        'Törléshez való jog: Kérheti személyes adatainak törlését.',
-        'Kilépési jog: Személyes adatok értékesítésének megtiltása (a hirdetési partnerekkel való megosztás erre jogosíthat).',
-        'A megkülönböztetésmentességhez való jog: Nem fogunk megkülönböztetni az Ön jogainak gyakorlása miatt.',
-      ],
+      heading: 'Az Ön jogai a CCPA (California felhasználók) alapján',
+      bullets: ['Joga van tudni: Információt kér az összegyűjtött adatokról, forrásokról, célokról és harmadik felekről.', 'Törlés joga: Törölje a személyes adatait.', 'A kijelentkezéshez való jog: A személyes adatok "értékesítéséből" való kizárás (a hirdetési partnerekkel való megosztás jogosult lehet).', 'A megkülönböztetésmentességhez való jog: Nem fogunk diszkriminálni a jogaik gyakorlása miatt.'],
     },
     {
-      heading: 'CCPA kategóriák gyűjtése',
-      paragraphs: [
-        'Kategóriák: Azonosítók (IP-cím, eszközazonosító), Internetes tevékenység (böngészés, hirdetési interakciók), Földrajzi helymeghatározás (hozzávetőleges), Következtetések (böngészésből származó érdeklődési körök).',
-        'Jogok gyakorlásához vagy leiratkozáshoz: ${CONTACT_EMAIL} vagy a sütibeállítások módosításához.',
-      ],
+      heading: 'Összegyűjtött CCPA-kategóriák',
+      paragraphs: ['Kategóriák: Azonosítók (IP-cím, eszközazonosító), Internet aktivitás (böngészés, hirdetési kölcsönhatások), Geoslocation (hozzávetőleges), Beállítások (böngészési érdekek).', 'Joggyakorlás vagy kívülmaradás: $_ _ ANQR _ PH _ 0 _ _ vagy cookie beállítások beállítása.'],
     },
     {
-      heading: 'Nemzetközi átutalások',
-      paragraphs: [
-        'Az Ön adatai továbbíthatók olyan országokba, ahol eltérő adatvédelmi törvények vannak érvényben, beleértve az Egyesült Államokat is. Megfelelő biztosítékokat alkalmazunk, például standard szerződési záradékokat.',
-      ],
+      heading: 'Nemzetközi transzferek',
+      paragraphs: ['Az Ön adatai átadhatók különböző adatvédelmi jogszabályokkal rendelkező országoknak, beleértve az Egyesült Államokat is. Megfelelő biztosítékokat alkalmazunk, például a szokásos szerződési feltételeket.'],
     },
     {
-      heading: 'Gyermekek magánélete',
-      paragraphs: [
-        'Az ANQR nem 13 év alatti (vagy az EGT-ben 16 év alatti) gyermekekre irányul. Tudatosan nem gyűjtünk adatokat gyermekektől. Lépjen kapcsolatba a ${CONTACT_EMAIL} címen, ha úgy gondolja, hogy egy gyermek információkat adott meg.',
-      ],
+      heading: 'A gyermekek magánélete',
+      paragraphs: ['Az ANQR nem vonatkozik a 13 év alatti (vagy az EGT-ben 16 éves) gyermekekre. Tudatosan nem gyűjtünk adatokat a gyerekekről. Lépjen kapcsolatba a $_ _ ANQR _ PH _ 0 _ _ -al, ha úgy gondolja, hogy egy gyermek információt szolgáltatott.'],
     },
     {
       heading: 'Biztonság',
-      paragraphs: [
-        'Megfelelő technikai és szervezési intézkedéseket alkalmazunk az adatok védelme érdekében, beleértve a HTTPS titkosítást is. Azonban egyetlen internetes átvitel sem 100%-ban biztonságos.',
-      ],
+      paragraphs: ['Megfelelő technikai és szervezeti intézkedéseket alkalmazunk az adatok védelmére, beleértve a HTTPS titkosítást. Az internetes átvitel azonban nem 100% -ig biztonságos.'],
     },
     {
-      heading: 'Kövesés tiltása',
-      paragraphs: [
-        'Ahol lehetséges, tiszteletben tartjuk a böngésző Do Not Track jelzéseit, bár előfordulhat, hogy a hirdetési partnerek nem reagálnak a DNT-re.',
-      ],
+      heading: 'Nem követhető',
+      paragraphs: ['Tiszteletben tartjuk a Do Not Track böngésző jeleket, ha ez megvalósítható, bár a reklámpartnerek nem válaszolnak a DNT-re.'],
     },
     {
-      heading: 'Változások ebben a szabályzatban',
-      paragraphs: [
-        'Ezt a szabályzatot rendszeresen frissíthetjük. Az Utolsó frissítés dátuma a legutóbbi változatot jelöli. A jelentős változásokról egy webhelyen található szalagcímen keresztül tájékoztathatunk.',
-      ],
+      heading: 'E politika módosításai',
+      paragraphs: ['Időnként frissíthetjük a szabályzatot. A legutóbbi frissítés dátuma a legutóbbi felülvizsgálatot jelzi. A jelentős változtatások webhely-lobogón keresztül is közölhetők.'],
     },
     {
-      heading: 'Kapcsolat',
-      paragraphs: [
-        'Adatvédelmi kérdésekkel vagy jogai gyakorlásával kapcsolatban: ${CONTACT_EMAIL} vagy használja a Kapcsolatfelvétel oldalunkat. Az adatvédelmi kérelmekre 30 napon belül válaszolunk.',
-      ],
+      heading: 'Lépjen kapcsolatba velünk',
+      paragraphs: ['Az adatvédelmi kérdések vagy a jogok gyakorlása: $_ _ ANQR _ PH _ 0 _ _ vagy használja a Kapcsolattartó oldalunkat. 30 napon belül válaszolunk a kérésekre.'],
     },
   ],
 };

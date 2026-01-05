@@ -3,67 +3,48 @@ import { CONTACT_EMAIL, LAST_UPDATED } from '../types';
 
 export const about: PageDefinition = {
   title: 'Tungkol sa ANQR',
-  description:
-    'Ang ANQR ay isang libreng QR code generator na may client-first na diskarte — gumawa ng mga QR code nang lokal o gamitin ang aming API para sa pag-embed.',
+  description: 'Ang ANQR ay isang malayang QR code generator na may client-first approwed QR code lokal o gamitin ang ating API para sa embbeding.',
   lastUpdated: LAST_UPDATED,
+  primaryLinks: [
+    { href: '/?lang=${lang}', label: 'Open the generator', type: 'generator' },
+    { href: '/learn?lang=${lang}', label: 'Browse Learn articles', type: 'learn' },
+  ],
+  relatedLinks: [
+    { href: '/privacy?lang=${lang}', label: 'Privacy Policy', type: 'external' },
+    { href: '/terms?lang=${lang}', label: 'Terms of Service', type: 'external' },
+  ],
   sections: [
     {
-      heading: 'Ano ang ANQR?',
-      paragraphs: [
-        'Ang ANQR (binibigkas na anchor) ay isang libreng QR code generator na tumatakbo nang lokal sa iyong device at lumilikha ng mga scannable code para sa mga URL, text, Wi-Fi credential, contact card, mga kaganapan sa kalendaryo, at marami pang iba.',
-        'Ito ay ginawa para sa mga indibidwal, maliliit na negosyo, marketer, at developer na nagnanais ng malalakas na QR tool nang hindi nag-a-upload ng mga file o nagsa-sign up. Ang iyong data ay nananatili sa iyong device.',
-      ],
+      heading: 'Ano ba ang ANQR?',
+      paragraphs: ['Ang ANQR (binibigkas na "anchor") ay isang libreng QR code generator na lumilikha ng mga kodigong scannable para sa mga URL, teksto, mga kredensiyal ng Wi-Fi, mga contact card, mga kaganapan sa kalendaryo, at higit pa.', 'Ito ay itinatayo para sa mga indibiduwal, maliliit na negosyo, mga marketer, at mga developer na nagnanais ng malakas na mga kasangkapan ng QR nang hindi pumipirma. Ang client-first design ay nangangahulugang QR codes ay lokal na nalilikha sa inyong browser sa pamamagitan ng default, na may opsyonal na server API para sa propesyonal na embending at pagsasanib.'],
     },
     {
-      heading: 'Mga Pangunahing Tampok',
-      bullets: [
-        'Gumawa agad ng mga QR code sa iyong device — hindi na kailangan ng pag-upload ng server, hindi na kailangan ng account.',
-        'I-customize ang mga kulay, istilo ng modyul, pattern ng finder, at magdagdag ng mga overlay ng imahe.',
-        "I-export sa iba't ibang format: PNG, SVG, WebP, at animated GIF.",
-        'Mga advanced na kontrol para sa antas ng pagwawasto ng error, bersyon ng QR, mode ng pag-encode, at pagpili ng mask.',
-        'Gabay sa kaligtasan ng pag-scan at live preview upang makatulong na mapanatiling nababasa ang mga code sa print at sa mga screen.',
-        'Server-side API para sa propesyonal na pag-embed na may buong suporta sa parameter.',
-        'Gumagana offline kapag na-load na — ito ay isang static na web app na maaari mong patakbuhin kahit saan.',
-      ],
+      heading: 'Mga pangunahing bahagi',
+      bullets: ['Generate QR codes sa inyong browser - walang account na kailangan.', 'Ang tradisyonal na mga kulay, mga istilong module, mga disenyo sa paghanap, at ang mga balot ng larawan.', 'Export in multiple format: PNG, SVG, WebP, at freshed GIF.', 'Advanced controls para sa error reflection level, QR version, composition mode, at mask selection.', 'Ang Scan-ligtasty guide at live preview upang makatulong upang mapanatili ang mga code na mababasa sa mga print at screen.', 'Server-side API para sa propesyonal na embelding na may buong suportang parameter.', 'Ang paggawa ng mga static web app na dati - rati\'y kargado - nito ay maaari mong patakbuhin saanman.'],
     },
     {
-      heading: 'Paano gumagana ang ANQR',
-      paragraphs: [
-        'Tumatakbo ang ANQR sa iyong browser at ini-encode ang iyong input sa isang karaniwang QR matrix gamit ang Reed–Solomon error correction, pagkatapos ay nire-render ito sa format na iyong pipiliin.',
-        'Bilang default, ang pagbuo ay nangyayari nang lokal sa iyong browser. Para sa propesyonal na paggamit, maaari mo ring gamitin ang server-side API upang bumuo ng mga QR code sa pamamagitan ng mga parameter ng URL — perpekto para sa pag-embed sa mga website, email, o automated na workflow.',
-        'Lahat ng henerasyon ay nangyayari nang lokal. Kapag nagdagdag ka ng mga overlay o animation, binabalanse ng ANQR ang estilo at ang pagiging maaasahan ng pag-scan upang ang resulta ay manatiling maaaring i-scan.',
-        'Nakatuon ang ANQR sa mga static code (ang datos ay nasa loob ng QR). Kung kailangan mo ng dynamic code (maaaring i-edit na destinasyon), maaari mong i-encode ang sarili mong redirect URL o maikling link.',
-      ],
+      heading: 'Kung Paano Gumagana ang ANQR',
+      paragraphs: ['ANG ANQR ay tumatakbo sa iyong browser at inihahanda ang iyong input sa isang pamantayang QR matrix sa pamamagitan ng Reed–Stank error reflection, pagkatapos ay isinasalin ito sa format na pinili mo.', 'Sa pamamagitan ng default, ang henerasyon ay nangyayari sa inyong browser. Para sa propesyonal na gamit, maaari mo ring gamitin ang server-side API upang lumikha ng mga QR code sa pamamagitan ng URL parameters - perpekto para sa embending sa mga website, emails, o automated workflows.', 'Kapag dinagdagan mo ng mga sapin o mga animation, tinitimbang ng ANQR ang pagiging maaasahan sa scan kaya ang resulta ay nananatiling scanning.', 'Ang ANQR ay nakatuon sa mga static code (ang datos ay nasa loob ng QR). Kung kailangan mo ng isang dinamikong kodigo (maihihiwalay na patutunguhan), maaari mong ayusin ang iyong sariling redirect na URL o maikling kawing.'],
     },
     {
       heading: 'Sino ang nagpapatakbo ng ANQR?',
       paragraphs: [`18${CONTACT_EMAIL}19`],
     },
     {
-      heading: 'Pag-aanunsyo at kung paano tayo nananatiling malaya',
-      paragraphs: [
-        'Libreng gamitin ang ANQR at sinusuportahan ito ng mga patalastas. Maaari kaming magpakita ng mga patalastas sa pamamagitan ng Google AdSense at/o iba pang mga kasosyo sa patalastas.',
-        'Maaaring gumamit ang mga tagapagbigay ng ad ng cookies o mga katulad na teknolohiya upang i-personalize ang mga ad batay sa iyong mga interes at aktibidad sa pag-browse. Maaari mong pamahalaan ang mga kagustuhan sa ad sa mga setting ng iyong device at sa pamamagitan ng mga setting ng Google ad, at matuto nang higit pa sa aming Patakaran sa Pagkapribado.',
-        'Hindi namin ibinebenta ang nilalamang iko-encode ninyo sa mga QR code. Nakakatulong ang mga ad sa pagbabayad ng gastos sa pagpapatakbo at pagpapabuti ng proyekto.',
-      ],
+      heading: 'Pag - aanunsiyo at kung paano tayo nananatiling malaya',
+      paragraphs: ['ANG ANQR ay malayang gamitin at sinusuportahan ng advertising. Maaari nating ipakita ang mga patalastas sa pamamagitan ng Google AdSense at/o iba pang mga kasosyo sa pag-aanunsiyo.', 'Ang mga tagapaglaan ng anunsiyo ay maaaring gumamit ng mga cookie o katulad na mga teknolohiya sa personalise advertising batay sa iyong mga interes at gawaing bista. Maaari mong pangasiwaan ang ad choices sa iyong device settings at sa pamamagitan ng Google ad settings, at matuto pa nang higit sa ating Pribadong Patakaran.', 'Hindi namin ipinagbibili ang nilalamang ini-record mo sa QR codes. Ang mga anunsiyo ay tumutulong upang mabayaran ang halaga ng pagtakbo at pagpapabuti ng proyekto.'],
     },
     {
-      heading: 'Mga bukas na pamantayan',
-      paragraphs: [
-        'Bumubuo ang ANQR ng mga QR code batay sa pamantayang ISO/IEC 18004 at naglalayong magkaroon ng malawak na pagkakatugma sa mga scanner, camera, at mga daloy ng trabaho sa pag-print.',
-      ],
+      heading: 'Bukás na mga pamantayan',
+      paragraphs: ['Ang ANQR ay gumagawa ng mga code ng QR na batay sa pamantayang ISO/IEC 18004 at naglalayon ng malawakang kombinatorika sa ibayo ng mga scanner, kamera, at print workflows.'],
     },
     {
-      heading: 'Paunawa ng trademark',
-      paragraphs: [
-        'Ang QR Code® ay isang rehistradong trademark ng DENSO WAVE INCORPORATED. Ang ANQR ay walang kaugnayan, ineendorso, o iniisponsor ng DENSO WAVE INCORPORATED.',
-      ],
+      heading: 'Napapansing Kalakalan',
+      paragraphs: ['Ang QR Code Alonso ay isang rehistradong tatak ng DENSO WAVE INCORPORATED. ANG pornograpya ay hindi iniuugnay, sinasang - ayunan, o itinataguyod ng DENSO WAVE INCORPORATED.'],
     },
     {
-      heading: 'Mga puna at kontribusyon',
-      paragraphs: [
-        "Tinatanggap namin ang feedback, mga ulat ng bug, at mga mungkahi sa feature. Mangyaring makipag-ugnayan sa amin sa pamamagitan ng email o sa pahina ng pakikipag-ugnayan — binabasa namin ang bawat mensahe, bagama't maaaring mag-iba ang mga oras ng pagtugon.",
-      ],
+      heading: 'Pagpapakain at mga kontribusyon',
+      paragraphs: ['Malugod naming tinatanggap ang impormasyon, mga ulat ng insekto, at tampok na mga mungkahi. Pakisuyong makipag - ugnayan sa pamamagitan ng email o ng contact page - na binabasa natin ang bawat mensahe, bagaman maaaring iba - iba ang oras ng pagtugon.'],
     },
   ],
 };

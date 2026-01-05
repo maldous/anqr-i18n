@@ -3,67 +3,48 @@ import { CONTACT_EMAIL, LAST_UPDATED } from '../types';
 
 export const about: PageDefinition = {
   title: 'Az ANQR-ről',
-  description:
-    'Az ANQR egy ingyenes QR-kód generátor kliensközpontú megközelítéssel – generáljon QR-kódokat helyben, vagy használja az API-nkat a beágyazáshoz.',
+  description: 'Az ANQR egy ingyenes QR kódgenerátor kliens-első megközelítéssel - QR-kódokat generál helyben vagy API-t használ beágyazáshoz.',
   lastUpdated: LAST_UPDATED,
+  primaryLinks: [
+    { href: '/?lang=${lang}', label: 'Open the generator', type: 'generator' },
+    { href: '/learn?lang=${lang}', label: 'Browse Learn articles', type: 'learn' },
+  ],
+  relatedLinks: [
+    { href: '/privacy?lang=${lang}', label: 'Privacy Policy', type: 'external' },
+    { href: '/terms?lang=${lang}', label: 'Terms of Service', type: 'external' },
+  ],
   sections: [
     {
-      heading: 'Mi az ANQR?',
-      paragraphs: [
-        'Az ANQR (ejtsd: horgony) egy ingyenes QR-kód generátor, amely beolvasható kódokat hoz létre URL-ekhez, szövegekhez, Wi-Fi hitelesítő adatokhoz, névjegykártyákhoz, naptári eseményekhez és egyebekhez.',
-        'Magánszemélyek, kisvállalkozások, marketingesek és fejlesztők számára készült, akik regisztráció nélkül szeretnének hatékony QR-kód eszközöket. Az ügyfélközpontú kialakítás azt jelenti, hogy a QR-kódok alapértelmezés szerint helyben, a böngészőben generálódnak, opcionális szerver API-val a professzionális beágyazás és integráció érdekében.',
-      ],
+      heading: 'Milyen típusú gyógyszer az ANQR?',
+      paragraphs: ['ANQR (kiejtett "horgony") egy ingyenes QR kód generátor, amely létrehoz scannable kódok URL, szöveg, WiFi hitelesítő, névjegykártyák, naptár események, és így tovább.', 'Olyan magánszemélyeknek, kisvállalkozásoknak, marketingeseknek és fejlesztőknek épült, akik erős QR-eszközöket akarnak, anélkül, hogy feliratkoznának. A kliens-first design azt jelenti, hogy a QR-kódokat alapértelmezés szerint helyben generálják a böngészőben, a professzionális beágyazás és integráció opcionális API szerverével.'],
     },
     {
       heading: 'Főbb jellemzők',
-      bullets: [
-        'QR-kódok generálása azonnal a böngészőben – fiók nélkül.',
-        'Szabja testre a színeket, a modulstílusokat, a keresőmintákat, és adjon hozzá képátfedéseket.',
-        'Exportálás több formátumban: PNG, SVG, WebP és animált GIF.',
-        'Speciális vezérlők a hibajavítási szinthez, a QR-kód verziójához, a kódolási módhoz és a maszk kiválasztásához.',
-        'Szkennelési biztonsági útmutatás és élő előnézet a kódok olvashatóságának megőrzéséhez nyomtatásban és a képernyőn.',
-        'Szerveroldali API professzionális beágyazáshoz teljes paraméter-támogatással.',
-        'Betöltés után offline is működik – ez egy statikus webalkalmazás, amelyet bárhol futtathatsz.',
-      ],
+      bullets: ['Azonnal generálja a QR-kódokat a böngészőjében - nincs szükség fiókra.', 'Egyéni színek, modul stílusok, kereső minták, és add kép overlays.', 'Export több formátumban: PNG, SVG, WebP, és animált GIF.', 'Speciális vezérlések hibajavítási szinthez, QR verzióhoz, kódolási módhoz és maszkkiválasztáshoz.', 'Scan-safety guidance and live preview to help keep kód olvasható nyomtatásban és képernyőn.', 'Szerver-side API professzionális beágyazott teljes paraméter támogatás.', 'Működik offline egyszer betöltött - ez egy statikus web app lehet futtatni bárhol.'],
     },
     {
-      heading: 'Hogyan működik az ANQR',
-      paragraphs: [
-        'Az ANQR a böngészőben fut, és a bemenetet egy szabványos QR-mátrixba kódolja Reed–Solomon hibajavítással, majd a kiválasztott formátumban megjeleníti.',
-        'Alapértelmezés szerint a generálás helyben, a böngészőben történik. Professzionális használatra a szerveroldali API-t is használhatja QR-kódok generálására URL-paramétereken keresztül – tökéletes webhelyekbe, e-mailekbe vagy automatizált munkafolyamatokba való beágyazáshoz.',
-        'Átfedések vagy animációk hozzáadásakor az ANQR egyensúlyt teremt a stílus és a szkennelés megbízhatósága között, így az eredmény szkennelhető marad.',
-        'Az ANQR statikus kódokra összpontosít (az adatok a QR-kódon belül vannak). Ha dinamikus kódra van szükséged (szerkeszthető cél), akkor kódolhatod a saját átirányítási URL-edet vagy rövid linkedet.',
-      ],
+      heading: 'Hogyan hat az ANQR',
+      paragraphs: ['ANQR fut a böngészőben, és kódolja a bemenet egy szabványos QR mátrix Reed- Solomon hiba korrekció, majd adja meg a formátum, amit választ.', 'Alapértelmezés szerint a generáció helyi szinten történik a böngészőben. Professzionális használatra, akkor is használja a szerver- side API generálni QR kódok URL paraméterek - tökéletes beágyazására weboldalak, e-mailek, vagy automatizált munkafolyamatok.', 'Amikor hozzáadjuk az átfedéseket vagy animációkat, az ANQR egyensúlyozza a letapogatás megbízhatóságát, így az eredmény nem változik.', 'Az ANQR a statikus kódokra összpontosít (az adatok a QR-en belül vannak). Ha dinamikus kódra van szüksége (szerkeszthető cél), kódolhatja saját URL-jét vagy rövid linket.'],
     },
     {
-      heading: 'Ki üzemelteti az ANQR-t?',
+      heading: 'Ki irányítja az ANQR-t?',
       paragraphs: [`18${CONTACT_EMAIL}19`],
     },
     {
-      heading: 'Reklám és hogyan maradhatunk szabadok',
-      paragraphs: [
-        'Az ANQR ingyenesen használható, és hirdetések támogatják. Hirdetéseket jeleníthetünk meg a Google AdSense-en és/vagy más hirdetési partnereken keresztül.',
-        'A hirdetésszolgáltatók sütiket vagy hasonló technológiákat használhatnak a hirdetések személyre szabására az Ön érdeklődési köre és böngészési tevékenysége alapján. A hirdetési beállításokat az eszközbeállításaiban és a Google hirdetésbeállításain keresztül kezelheti, további információkat pedig az Adatvédelmi irányelveinkben talál.',
-        'Nem áruljuk a QR-kódokba kódolt tartalmat. A hirdetések segítenek fedezni a projekt működtetésének és fejlesztésének költségeit.',
-      ],
+      heading: 'Reklám és hogyan maradunk szabadok',
+      paragraphs: ['Az ANQR szabadon használható, és reklámozással támogatja. A Google AdSense-en és / vagy más reklámpartnereken keresztül hirdetéseket mutathatunk.', 'A hirdetési szolgáltatók cookie-kat vagy hasonló technológiákat használhatnak az Ön érdekeire és böngészési tevékenységére épülő hirdetések személyre szabására. Az eszközbeállításokban és a Google hirdetési beállításokon keresztül kezelheti a hirdetési preferenciákat, és többet megtudhat az Adatvédelmi irányelveinkben.', 'Nem adjuk el a QR kódokba kódolt tartalmat. A hirdetések hozzájárulnak a projekt működtetésének és fejlesztésének költségeihez.'],
     },
     {
       heading: 'Nyílt szabványok',
-      paragraphs: [
-        'Az ANQR az ISO/IEC 18004 szabvány alapján generál QR-kódokat, és széles körű kompatibilitást céloz a szkennerek, kamerák és nyomtatási munkafolyamatok között.',
-      ],
+      paragraphs: ['Az ANQR az ISO / IEC 18004 szabványon alapuló QR-kódokat generál, amelyek célja a szkennerek, kamerák és nyomtatási munkafolyamatok széles körű összeegyeztethetősége.'],
     },
     {
-      heading: 'Védjegyre vonatkozó közlemény',
-      paragraphs: [
-        'A QR Code® a DENSO WAVE INCORPORATED bejegyzett védjegye. Az ANQR nem áll kapcsolatban a DENSO WAVE INCORPORATED-del, nem támogatja és nem szponzorálja azt.',
-      ],
+      heading: 'Kereskedelmi közlemény',
+      paragraphs: ['A QR Code ® a DENSO WAVE INCORPORATED bejegyzett védjegye. Az ANQR nem kapcsolódik a DENSO WAVE INCORPORATION-hoz, nem támogatja vagy támogatja azt.'],
     },
     {
-      heading: 'Visszajelzések és hozzájárulások',
-      paragraphs: [
-        'Szívesen fogadjuk a visszajelzéseket, hibajelentéseket és funkciójavaslatokat. Kérjük, vegye fel velünk a kapcsolatot e-mailben vagy a kapcsolatfelvételi oldalon keresztül – minden üzenetet elolvasunk, bár a válaszadási idők eltérőek lehetnek.',
-      ],
+      heading: 'Visszajelzés és hozzájárulások',
+      paragraphs: ['Üdvözöljük a visszajelzéseket, hibajelentéseket és javaslatokat. Kérjük, lépjen kapcsolatba e-mailben vagy a kapcsolattartó oldalon - minden üzenetet elolvasunk, bár a válaszidő változhat.'],
     },
   ],
 };

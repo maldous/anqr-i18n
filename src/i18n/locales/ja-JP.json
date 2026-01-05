@@ -123,8 +123,8 @@
     "viewAll": "すべて表示",
     "yes": "はい"
   },
-  "fileSaveFailed": "保存ファイル:_ANQR_PH_0000___",
-  "fileSaved": "ドキュメントに保存: {{filename}}______ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _",
+  "fileSaveFailed": "保存ファイル",
+  "fileSaved": "ドキュメントに保存: {{filename}}",
   "footer": {
     "copyright": "お問い合わせ _ ANQR"
   },
@@ -865,7 +865,7 @@
     "moduleJitterWarning": "⚠️ スキャン可能性に影響を与える可能性があります",
     "alignmentStyle": "整列パターンのスタイル(より大きいQRコードで使用される)",
     "appLinkNote": "モバイルアプリ内で特定のコンテンツを開きます",
-    "autoDetect": "Auto-detect (現在のコンテンツのv__ANQR_PH_0000_+が必要です)",
+    "autoDetect": "(現在のコンテンツの v{{version}}+ が必要です)",
     "autoMinVersion": "0 = 自動、現在のコンテンツのv_{{version}}_",
     "bgColorHex": "背景色六角コード",
     "bizcardLegacy": "レガシーフォーマット - 代わりにvCardを使用して検討",
@@ -1031,7 +1031,7 @@
     "autoMin": "オート (分: {{version}}_)",
     "autoOptimal": "自動(最適)",
     "byteUtf8": "バイト/UTF-8",
-    "contrastRatio": "__ANQR_PH_0000_1",
+    "contrastRatio": "",
     "encodingMode": "エンコーディングモード",
     "enforceMinQuietZone": "最低の静かな地帯を強制して下さい",
     "enforceMinQuietZoneDesc": "≥4 モジュールの証拠を保障して下さい",
@@ -1045,10 +1045,10 @@
     "medium": "M - ミディアム (15%)",
     "moduleSize": "モジュールのサイズ",
     "nDegrees": "{{count}}°",
-    "nModules": "__ANQR_PH_0000_ モジュール",
-    "nMs": "__ANQR_PH_0000_ms",
-    "nPercent": "__ANQR_PH_0000_%の特長",
-    "nPx": "__ANQR_PH_0000_ピクセル",
+    "nModules": "モジュール",
+    "nMs": "ミリ秒[",
+    "nPercent": "",
+    "nPx": "ピクセル",
     "numericOnly": "数値のみ",
     "quartile": "Q - 粗い (25%)",
     "version": "バージョン"
