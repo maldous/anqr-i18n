@@ -3,67 +3,48 @@ import { CONTACT_EMAIL, LAST_UPDATED } from '../types';
 
 export const about: PageDefinition = {
   title: 'Tentang ANQR',
-  description:
-    'ANQR adalah generator kode QR gratis dengan pendekatan client-first — buat kode QR secara lokal atau gunakan API kami untuk penyematan.',
+  description: 'ANQR adalah generator kode QR bebas dengan pendekatan pertama - hasilkan kode QR lokal atau gunakan API kami untuk embedding.',
   lastUpdated: LAST_UPDATED,
+  primaryLinks: [
+    { href: '/?lang=${lang}', label: 'Open the generator', type: 'generator' },
+    { href: '/learn?lang=${lang}', label: 'Browse Learn articles', type: 'learn' },
+  ],
+  relatedLinks: [
+    { href: '/privacy?lang=${lang}', label: 'Privacy Policy', type: 'external' },
+    { href: '/terms?lang=${lang}', label: 'Terms of Service', type: 'external' },
+  ],
   sections: [
     {
       heading: 'Apa itu ANQR?',
-      paragraphs: [
-        'ANQR (diucapkan anchor) adalah generator kode QR gratis yang berjalan secara lokal di perangkat Anda dan membuat kode yang dapat dipindai untuk URL, teks, kredensial Wi-Fi, kartu kontak, acara kalender, dan banyak lagi.',
-        'Aplikasi ini dirancang untuk individu, usaha kecil, pemasar, dan pengembang yang menginginkan alat QR yang canggih tanpa perlu mengunggah file atau mendaftar. Data Anda tetap berada di perangkat Anda.',
-      ],
+      paragraphs: ['ANQR (diucapkan "anchor") adalah kode generator QR bebas yang menciptakan kode scannable untuk URL, teks, kredensial WiFi, kontak kartu, peristiwa kalender, dan banyak lagi.', 'Dibangun untuk individu, usaha kecil, pemasaran, dan pengembang yang menginginkan alat-alat QR yang kuat tanpa mendaftar. Desain klien- pertama berarti kode QR dihasilkan secara lokal dalam peramban Anda secara baku, dengan server opsional API untuk pengembangan profesional dan integrasi.'],
     },
     {
-      heading: 'Fitur-fitur utama',
-      bullets: [
-        'Hasilkan kode QR secara instan di perangkat Anda — tanpa unggahan server, tanpa perlu akun.',
-        'Sesuaikan warna, gaya modul, pola pencari, dan tambahkan lapisan gambar.',
-        'Ekspor dalam berbagai format: PNG, SVG, WebP, dan GIF animasi.',
-        'Kontrol lanjutan untuk tingkat koreksi kesalahan, versi QR, mode pengkodean, dan pemilihan mask.',
-        'Panduan keamanan pemindaian dan pratinjau langsung untuk membantu menjaga agar kode tetap mudah dibaca dalam bentuk cetak dan di layar.',
-        'API sisi server untuk penyematan profesional dengan dukungan parameter lengkap.',
-        'Berfungsi secara offline setelah dimuat — ini adalah aplikasi web statis yang dapat Anda jalankan di mana saja.',
-      ],
+      heading: 'Fitur kunci',
+      bullets: ['Hasilkan kode QR langsung dalam peramban Anda - tidak ada akun yang diperlukan.', 'Warna pelanggan, gaya modul, pola penemu, dan menambahkan gambar overlay.', 'Ekspor dalam beberapa format: PNG, SVG, WebP, dan animasi GIF.', 'Kontrol tingkat lanjut untuk tingkat koreksi kesalahan, QR versi, mode pengkodean, dan pilihan mask.', 'Pemindai-bimbingan keselamatan dan pratinjau langsung untuk membantu menjaga kode dapat dibaca dalam cetak dan pada layar.', 'API Server- sisi profesional embedding dengan dukungan parameter penuh.', 'Bekerja offline sekali dimuat - itu adalah aplikasi statis web Anda dapat berjalan di mana saja.'],
     },
     {
-      heading: 'Cara kerja ANQR',
-      paragraphs: [
-        'ANQR berjalan di peramban Anda dan mengkodekan input Anda ke dalam matriks QR standar dengan koreksi kesalahan Reed–Solomon, lalu menampilkannya dalam format yang Anda pilih.',
-        'Secara default, pembuatan terjadi secara lokal di browser Anda. Untuk penggunaan profesional, Anda juga dapat menggunakan API sisi server untuk menghasilkan kode QR melalui parameter URL — sempurna untuk penyematan di situs web, email, atau alur kerja otomatis.',
-        'Semua proses pembuatan terjadi secara lokal. Saat Anda menambahkan overlay atau animasi, ANQR menyeimbangkan penataan gaya dengan keandalan pemindaian sehingga hasilnya tetap dapat dipindai.',
-        'ANQR berfokus pada kode statis (data berada di dalam QR). Jika Anda memerlukan kode dinamis (tujuan yang dapat diedit), Anda dapat mengkodekan URL pengalihan atau tautan pendek Anda sendiri.',
-      ],
+      heading: 'Bagaimana ANQR bekerja',
+      paragraphs: ['ANQR berjalan dalam peramban Anda dan memasukkan masukan Anda ke dalam matriks standar QR dengan Reed- Solomon error koreksi, kemudian merender ke format yang Anda pilih.', 'Secara baku, generasi terjadi secara lokal di browser Anda. Untuk penggunaan profesional, Anda juga dapat menggunakan server-side API untuk menghasilkan kode QR melalui parameter URL - sempurna untuk embedding dalam website, email, atau otomatis mengalir kerja.', 'Ketika Anda menambahkan overlay atau animasi, gaya keseimbangan ANQR dengan kemampuan pemindaian sehingga hasil tetap dapat dipindai.', 'ANQR berfokus pada kode statis (data berada di dalam QR). Bila Anda memerlukan suatu kode dinamis (tujuan yang dapat disuntikkan), Anda dapat mengkodekan sendiri URL redirect atau link pendek.'],
     },
     {
       heading: 'Siapa yang mengoperasikan ANQR?',
       paragraphs: [`18${CONTACT_EMAIL}19`],
     },
     {
-      heading: 'Periklanan dan bagaimana kita tetap bebas',
-      paragraphs: [
-        'ANQR gratis untuk digunakan dan didukung oleh iklan. Kami dapat menampilkan iklan melalui Google AdSense dan/atau mitra periklanan lainnya.',
-        'Penyedia iklan dapat menggunakan cookie atau teknologi serupa untuk mempersonalisasi iklan berdasarkan minat dan aktivitas penjelajahan Anda. Anda dapat mengelola preferensi iklan di pengaturan perangkat Anda dan melalui pengaturan iklan Google, dan mempelajari lebih lanjut di Kebijakan Privasi kami.',
-        'Kami tidak menjual konten yang Anda encode ke dalam kode QR. Iklan membantu menutupi biaya pengoperasian dan peningkatan proyek.',
-      ],
+      heading: 'Iklan dan bagaimana kita tetap bebas',
+      paragraphs: ['ANQR bebas untuk digunakan dan didukung oleh iklan. We may show ads via Google Adsense and / or other iklan partner.', 'Provider Ad dapat menggunakan cookie atau teknologi serupa untuk iklan personalise berdasarkan kepentingan Anda dan aktivitas browsing. You can manage ad preference in your device settings and through Google ad settings, and learn more in our Privacy Policy.', 'Kami tidak menjual isi yang Anda masukkan ke dalam kode QR. Iklan membantu menutupi biaya berjalan dan meningkatkan proyek.'],
     },
     {
       heading: 'Standar terbuka',
-      paragraphs: [
-        'ANQR menghasilkan kode QR berdasarkan standar ISO/IEC 18004 dan bertujuan untuk kompatibilitas luas di berbagai pemindai, kamera, dan alur kerja pencetakan.',
-      ],
+      paragraphs: ['ANQR menghasilkan kode QR berdasarkan standar ISO / IEC 18004 dan bertujuan untuk kompatibilitas luas di scanner, kamera, dan cetak arus kerja.'],
     },
     {
-      heading: 'Pemberitahuan merek dagang',
-      paragraphs: [
-        'QR Code® adalah merek dagang terdaftar dari DENSO WAVE INCORPORATED. ANQR tidak berafiliasi dengan, didukung oleh, atau disponsori oleh DENSO WAVE INCORPORATED.',
-      ],
+      heading: 'Pemberitahuan trademark',
+      paragraphs: ['QR Code ® adalah merek dagang terdaftar DENSO WAVE INCORATED. ANQR tidak berafiliasi dengan, didukung oleh, atau disponsori oleh DENSO WAVE INCORATED.'],
     },
     {
-      heading: 'Umpan balik dan kontribusi',
-      paragraphs: [
-        'Kami menerima masukan, laporan bug, dan saran fitur. Silakan hubungi kami melalui email atau halaman kontak — kami membaca setiap pesan, meskipun waktu respons dapat bervariasi.',
-      ],
+      heading: 'Feedback dan kontribusi',
+      paragraphs: ['Kami menyambut umpan balik, laporan bug, dan saran fitur. Harap hubungi via email atau halaman kontak - kami membaca setiap pesan, meskipun waktu respon mungkin bervariasi.'],
     },
   ],
 };

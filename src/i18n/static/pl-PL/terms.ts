@@ -2,143 +2,87 @@ import type { PageDefinition } from '../types';
 import { LAST_UPDATED } from '../types';
 
 export const terms: PageDefinition = {
-  title: 'Warunki korzystania z usługi',
-  description:
-    'Uzyskując dostęp do witryny lub korzystając z niej, zgadzasz się na przestrzeganie niniejszych warunków.',
+  title: 'Warunki świadczenia usług',
+  description: 'Poprzez dostęp lub korzystanie z witryny, zgadzasz się być związany tymi warunkami.',
   lastUpdated: LAST_UPDATED,
+  relatedLinks: [{ href: '/privacy?lang=${lang}', label: 'Privacy Policy', type: 'external' }],
   sections: [
     {
-      heading: 'Akceptacja warunków',
-      paragraphs: [
-        'Uzyskując dostęp do serwisu ANQR (anqr.link) lub korzystając z niego, zgadzasz się na przestrzeganie niniejszych Warunków korzystania z usługi oraz naszej Polityki prywatności. Jeśli nie zgadzasz się z tymi warunkami, nie korzystaj z serwisu.',
-        'Możemy okresowo aktualizować niniejsze Warunki. Dalsze korzystanie ze strony po wprowadzeniu zmian oznacza akceptację nowych Warunków.',
-      ],
+      heading: 'Przyjęcie warunków',
+      paragraphs: ['Poprzez dostęp lub korzystanie z ANQR (anqr.link) Użytkownik wyraża zgodę na związanie się niniejszymi Warunkami Usług i naszą Polityką Prywatności. Jeśli nie zgadzasz się na te warunki, nie korzystaj z witryny.', 'Od czasu do czasu możemy aktualizować niniejsze Warunki. Kontynuacja korzystania z witryny po zmianach stanowi przyjęcie nowych warunków.'],
     },
     {
-      heading: 'Kwalifikowalność',
-      paragraphs: [
-        'Aby korzystać z ANQR, musisz mieć ukończone 13 lat. Korzystając z serwisu, oświadczasz, że spełniasz ten wymóg wiekowy. Jeśli masz mniej niż 18 lat, oświadczasz, że masz zgodę rodzica lub opiekuna na korzystanie z serwisu.',
-      ],
+      heading: 'Kwalifikacja',
+      paragraphs: ['Pacjent musi mieć co najmniej 13 lat, aby stosować ANQR. Korzystając z witryny, reprezentujesz, że spełnia ten wymóg wieku. Jeśli masz poniżej 18 lat, reprezentujesz, że masz pozwolenie rodzica lub opiekuna na korzystanie z witryny.'],
     },
     {
-      heading: 'Dozwolone użycie',
-      paragraphs: [
-        'Możesz używać ANQR wyłącznie w celach zgodnych z prawem. Ponosisz wyłączną odpowiedzialność za treść, którą kodujesz w kodach QR, oraz za sposób, w jaki korzystasz z wygenerowanych kodów QR.',
-      ],
+      heading: 'Dozwolone stosowanie',
+      paragraphs: ['Możesz używać ANQR tylko w celach zgodnych z prawem. Jesteś wyłącznie odpowiedzialny za zawartość kodowania do kodów QR i za to, jak używasz dowolnych kodów QR generowanych przez Ciebie.'],
     },
     {
-      heading: 'Zabronione zachowanie',
+      heading: 'Zakazane zachowanie',
       paragraphs: ['Zgadzasz się nie:'],
-      bullets: [
-        'Użyj ANQR do tworzenia kodów QR, które ułatwiają phishing, dystrybucję złośliwego oprogramowania, oszustwa, wyłudzenia, nękanie, zniesławienie lub jakąkolwiek inną nielegalną działalność.',
-        'Kodowanie treści naruszających prawa własności intelektualnej, łamiących prywatność lub zawierających materiały niezgodne z prawem.',
-        'Próba zakłócenia, przeciążenia lub ingerencji w działanie lub bezpieczeństwo witryny.',
-        'Dokonuj inżynierii wstecznej, dekompiluj lub próbuj wyodrębnić kod źródłowy ze strony.',
-        'Używaj zautomatyzowanych narzędzi (botów, scraperów) w celu uzyskania dostępu do witryny w sposób, który pogarsza wydajność dla innych użytkowników.',
-        'Omijaj lub wyłączaj wszelkie zabezpieczenia lub funkcje kontroli dostępu.',
-        'Podszywanie się pod inną osobę lub podmiot lub fałszywe przedstawianie swoich powiązań.',
-      ],
+      bullets: ['Użyj ANQR do tworzenia kodów QR, które ułatwiają phishing, dystrybucji złośliwego oprogramowania, oszustw, oszustw, nękania, zniesławienia lub wszelkiej nielegalnej działalności.', 'Zakodowanie treści naruszających prawa własności intelektualnej, naruszających prywatność lub zawierających nielegalne materiały.', 'Próba zakłócenia, przeciążenia lub zakłócenia działania lub bezpieczeństwa strony.', 'Inżynier wsteczny, dekompilacja lub próba wydobycia kodu źródłowego ze strony.', 'Użyj automatycznych narzędzi (botów, scraperów), aby uzyskać dostęp do witryny w sposób, który obniża wydajność innych użytkowników.', 'Obwód lub wyłączyć wszelkie funkcje kontroli bezpieczeństwa lub dostępu.', 'Podszywać się pod każdą osobę lub podmiot lub błędnie przedstawić swoje powiązanie.'],
     },
     {
       heading: 'Własność intelektualna',
-      paragraphs: [
-        'Zachowujesz prawo własności do treści, które kodujesz w kodach QR. ANQR nie rości sobie prawa własności do Twoich danych.',
-        'Nazwa, logo, projekt interfejsu i kod źródłowy ANQR są chronione prawem autorskim, prawem do znaków towarowych i innymi prawami własności intelektualnej. Kopiowanie, modyfikowanie, rozpowszechnianie ani tworzenie utworów pochodnych bez naszej zgody jest zabronione.',
-        'QR Code® jest zastrzeżonym znakiem towarowym firmy DENSO WAVE INCORPORATED. ANQR nie jest powiązany z firmą DENSO WAVE.',
-      ],
+      paragraphs: ['Zachowujesz własność treści kodowanej do kodów QR. ANQR nie rości sobie prawa do Państwa danych.', 'Nazwa ANQR, logo, projekt interfejsu i kod bazowy są chronione prawem autorskim, znakiem towarowym i innymi prawami własności intelektualnej. Nie można kopiować, modyfikować, rozpowszechniać lub tworzyć pochodnych prac bez naszej zgody.', 'QR Code ® jest zarejestrowanym znakiem towarowym DENSO WAVE INCORPOROWANY. ANQR nie jest powiązany z DENSO WAVE.'],
     },
     {
-      heading: 'Licencja na treści użytkownika',
-      paragraphs: [
-        'Korzystając z ANQR, nie udzielasz nam żadnych praw do swoich treści. W przypadku generowania lokalnego (domyślnego), całe generowanie kodów QR odbywa się w Twojej przeglądarce, a my nie uzyskujemy dostępu, nie przechowujemy ani nie przesyłamy zakodowanych danych.',
-        'Podczas korzystania z API po stronie serwera Twoja treść jest przetwarzana w celu wygenerowania obrazu QR, ale nie jest przechowywana, rejestrowana ani wykorzystywana w żadnym innym celu poza renderowaniem żądanego obrazu.',
-      ],
+      heading: 'Licencja na zawartość użytkownika',
+      paragraphs: ['Korzystając z ANQR, nie przyznajesz nam żadnych praw do treści. Podczas korzystania z lokalnej generacji (domyślnie), cała generacja kodu QR dzieje się w przeglądarce i nie mamy dostępu, przechowywania lub przekazywania zakodowanych danych.', 'Podczas korzystania z API po stronie serwera, Twoja zawartość jest przetwarzana do generowania obrazu QR, ale nie jest przechowywana, rejestrowana lub używana do innych celów poza renderowaniem żądanego obrazu.'],
     },
     {
-      heading: 'Usługi i reklamy stron trzecich',
-      paragraphs: [
-        'Witryna wyświetla reklamy za pośrednictwem Google AdSense i może zawierać linki do stron internetowych osób trzecich. Nie ponosimy odpowiedzialności za treści, usługi ani praktyki dotyczące prywatności osób trzecich.',
-        'Twoje interakcje z reklamodawcami i podmiotami zewnętrznymi są sprawą wyłącznie między Tobą a nimi. Informacje na temat praktyk dotyczących danych reklamowych znajdziesz w naszej Polityce Prywatności.',
-      ],
+      heading: 'Usługi i reklama stron trzecich',
+      paragraphs: ['Strona wyświetla reklamy za pośrednictwem Google AdSense i może zawierać linki do stron trzecich. Nie jesteśmy odpowiedzialni za treści, usługi lub praktyki prywatności osób trzecich.', 'Twoje relacje z reklamodawcami i osobami trzecimi są tylko między tobą a nimi. Zobacz naszą politykę prywatności w celu uzyskania informacji o praktykach reklamowych.'],
     },
     {
-      heading: 'Zrzeczenie się gwarancji',
-      paragraphs: [
-        'ANQR JEST DOSTARCZANY W STANIE TAKIM, JAKIM SIĘ ZNAJDUJE I W MIARĘ DOSTĘPNOŚCI BEZ ŻADNYCH GWARANCJI, WYRAŹNYCH LUB DOROZUMIANYCH, W TYM MIĘDZY INNYMI DOROZUMIANYCH GWARANCJI PRZYDATNOŚCI HANDLOWEJ, PRZYDATNOŚCI DO OKREŚLONEGO CELU I NIENARUSZANIA PRAW.',
-        'Nie gwarantujemy, że: (a) witryna będzie działać nieprzerwanie, bezpiecznie lub będzie wolna od błędów; (b) kody QR będą skanowane we wszystkich środowiskach, na wszystkich urządzeniach i za pomocą wszystkich aplikacji skanujących; (c) witryna spełni Twoje wymagania.',
-        'Kody QR należy zawsze testować w warunkach, w jakich będą używane (rozmiar wydruku, oświetlenie, typ ekranu, odległość, jakość aparatu).',
-      ],
+      heading: 'Zwolnienie gwarancji',
+      paragraphs: ['ANQR JEST ZAPEWNIANY NA PODSTAWIE "AS IS" I "AS AVAILABLE", BEZ ZASTRZEŻEŃ JAKIEGOKOLWIEK RODZAJU, EKSPRESS LUB IMPLIFIED, W TYM, ALE NIE OGRANICZONY DO POPRAWY ALARMÓW DOTYCZĄCYCH MOŻLIWOŚCI WYMIANY HANDLOWEJ, ADEKWATNOŚCI DO KONKRETNEGO CELU, ORAZ NIESTOSOWANIA.', 'Nie gwarantujemy, że: a) strona będzie niezakłócona, bezpieczna lub wolna od błędów; b) kody QR będą skanować we wszystkich środowiskach, na wszystkich urządzeniach lub we wszystkich zastosowaniach skanerów; c) strona będzie spełniać Twoje wymagania.', 'Należy zawsze testować kody QR w warunkach, w których będą one stosowane (rozmiar druku, oświetlenie, typ ekranu, odległość, jakość kamery).'],
     },
     {
       heading: 'Ograniczenie odpowiedzialności',
-      paragraphs: [
-        'W MAKSYMALNYM ZAKRESIE DOZWOLONYM PRZEZ PRAWO, ANQR I JEGO OPERATORZY, PODMIOTY STOWARZYSZONE ORAZ LICENCJODAWCY NIE PONOSZĄ ODPOWIEDZIALNOŚCI ZA ŻADNE BEZPOŚREDNIE, POŚREDNIE, PRZYPADKOWE, SPECJALNE, WTÓRNE, KARNE LUB PRZYKŁADOWE SZKODY, W TYM MIĘDZY INNYMI SZKODY Z TYTUŁU UTRATY ZYSKÓW, DOCHODÓW, DANYCH, DOBREJ WOLI, UŻYTKOWANIA LUB INNYCH NIEMATERIALNYCH STRAT, WYNIKAJĄCYCH Z LUB ZWIĄZANYCH Z DOSTĘPEM DO USŁUGI LUB JEJ KORZYSTANIEM (LUB NIEMOŻNOŚCIĄ UZYSKANIA DOSTĘPU LUB JEJ KORZYSTANIA).',
-        'Wyraźnie rozumiesz i zgadzasz się, że korzystasz z Usługi na własne ryzyko. Usługa jest świadczona bezpłatnie, a zatem zgadzasz się, że ANQR i jej operatorzy nie ponoszą wobec Ciebie żadnej odpowiedzialności za jakiekolwiek szkody lub straty. W żadnym wypadku nasza łączna odpowiedzialność nie przekroczy zera dolarów (0 dolarów australijskich).',
-        'ZGADZASZ SIĘ ZRZEC SIĘ, ZRZEC SIĘ I ZRZEKAĆ WSZELKICH ROSZCZEŃ, ŻĄDAŃ I POWODÓW POWÓDZTWA WOBEC ANQR I JEGO OPERATORÓW WYNIKAJĄCYCH Z KORZYSTANIA PRZEZ CIEBIE Z USŁUGI.',
-        'NIEKTÓRE JURYSDYKCJE NIE DOPUSZCZAJĄ WYŁĄCZENIA NIEKTÓRYCH GWARANCJI LUB OGRANICZEŃ ODPOWIEDZIALNOŚCI. W TAKICH JURYSDYKCJACH NASZA ODPOWIEDZIALNOŚĆ BĘDZIE OGRANICZONA DO MAKSYMALNEGO ZAKRESU DOZWOLONEGO PRZEZ OBOWIĄZUJĄCE PRAWO.',
-      ],
+      paragraphs: ['W ODNIESIENIU DO WSZELKICH BEZPOŚREDNICH, BEZPOŚREDNICH, POŚREDNICH, SZCZEGÓLNYCH, KONEKSJONOWANYCH, ZAPOBIEGAWCZYCH LUB NADZWYCZAJNYCH, W TYM, ALE NIEOGRANICZONYCH DO UTRATY ZYSKÓW, DOCHODU, DANYCH, TOWARÓW, WYKORZYSTANIA LUB INNYCH NIEMATERIALNYCH STRAT, POCHODZĄCYCH Z LUB ZWIĄZANYCH Z WYKONYWANIEM CZYNNOŚCI LUB Z ICH WYKORZYSTANIEM.', 'Z CAŁĄ PEWNOŚCIĄ ROZUMIESZ I ZGADZASZ SIĘ, ŻE KORZYSTANIE ZE SŁUŻBY JEST DLA CIEBIE ZAGROŻENIEM. SŁUŻBA JEST BEZPŁATNA, A TY ZGADZASZ SIĘ, ŻE ANQR I JEGO AGENCI NIE BĘDĄ CI WINNI ZA JAKIEKOLWIEK STRATY. W ŻADNYM WYPADKU NASZA ŁĄCZNA ROLNA ODPOWIEDZIALNOŚĆ NIE MOŻE PRZEKROCZYĆ ZERO DOLLARS (0 USD AUD).', 'UZGODNIŁEŚ O ZWOLNIENIU, WAIVE, I ZNISZCZASZ WSZYSTKIE KLASYFIKACJE, DEMANDY I PRZYCZYNY DZIAŁANIA W ODNIESIENIU DO ANQR I ICH OPERATORÓW WYWOŁUJĄCYCH Z WYKORZYSTANIA SŁUŻBY.', 'NIEKTÓRE ORZECZENIA SĄDOWE NIE ZEZWALAJĄ NA WYŁĄCZENIE NIEKTÓRYCH RODZAJÓW POSTĘPOWAŃ WOJENNYCH LUB SĄDOWYCH. W TAKICH PRZYPADKACH NASZA ODPOWIEDZIALNOŚĆ JEST OGRANICZONA DO MAKSYMALNEJ ROZSZERZONEJ PODSTAWY PRAWNEJ.'],
     },
     {
-      heading: 'Odszkodowanie',
-      paragraphs: [
-        'Zgadzasz się zabezpieczyć, bronić i chronić ANQR, jego operatorów, podmioty stowarzyszone oraz ich odpowiednich funkcjonariuszy, dyrektorów, pracowników i agentów przed wszelkimi roszczeniami, szkodami, stratami, zobowiązaniami, kosztami i wydatkami (w tym honorariami prawnymi) wynikającymi z: (a) korzystania z witryny; (b) naruszenia niniejszych Warunków; (c) naruszenia praw osób trzecich; (d) wszelkich treści zakodowanych w kodach QR.',
-      ],
+      heading: 'Ukaranie',
+      paragraphs: ['Użytkownik zgadza się na odszkodowanie, obronę i utrzymanie nieszkodliwego ANQR, jego operatorów, spółek zależnych oraz ich odpowiednich urzędników, dyrektorów, pracowników i agentów od wszelkich roszczeń, szkód, strat, zobowiązań, kosztów i wydatków (w tym opłat prawnych) wynikających z: a) korzystania z witryny; b) naruszenia niniejszych Warunków; c) naruszenia praw osób trzecich; d) wszelkich treści kodowania do kodów QR.'],
     },
     {
       heading: 'Rozstrzyganie sporów',
-      paragraphs: [
-        'Wszelkie spory wynikające z niniejszych Warunków lub korzystania z ANQR będą w pierwszej kolejności rozwiązywane w drodze nieformalnych negocjacji poprzez kontakt z ${CONTACT_EMAIL}.',
-        'Jeśli nieformalne rozwiązanie okaże się nieskuteczne, spory zostaną rozstrzygnięte w drodze wiążącego arbitrażu w stanie Wiktoria w Australii, z tym wyjątkiem, że każda ze stron może wystąpić do sądu o nakaz sądowy w przypadku naruszenia praw własności intelektualnej.',
-      ],
+      paragraphs: ['Wszelkie spory wynikające z niniejszych Warunków lub korzystania z ANQR należy najpierw spróbować rozwiązać w drodze nieformalnych negocjacji, kontaktując się z $_ _ ANQR _ PH _ 0 _ _.', 'Jeżeli nieformalne rozstrzygnięcie nie powiedzie się, spory rozstrzyga się w drodze wiążącego arbitrażu w Wiktorii w Australii, z wyjątkiem sytuacji, w której każda ze stron może ubiegać się o pomoc sądową w przypadku naruszenia własności intelektualnej.'],
     },
     {
-      heading: 'Zrzeczenie się pozwu zbiorowego',
-      paragraphs: [
-        'W ZAKRESIE DOZWOLONYM PRZEZ PRAWO, ZGADZASZ SIĘ, ŻE WSZELKIE POSTĘPOWANIA W SPRAWIE ROZSTRZYGANIA SPORÓW BĘDĄ PROWADZONE WYŁĄCZNIE INDYWIDUALNIE, A NIE W RAMACH POWÓDZTWA GRUPOWEGO, POŁĄCZONEGO LUB REPREZENTATYWNEGO.',
-      ],
+      heading: 'Odstąpienie od działań klasowych',
+      paragraphs: ['W ODNIESIENIU DO ROZSZERZONEJ PODSTAWY PRAWNEJ, ZGADZASZ SIĘ, ŻE WSZELKIE PROCEDURY RESOCJALIZACYJNE BĘDĄ PROWADZONE WYŁĄCZNIE NA ZASADZIE INDYWIDUALNEJ, A NIE W KLASACH, SKONSOLIDOWANYCH LUB REPREZENTACYJNYCH.'],
     },
     {
       heading: 'Prawo właściwe',
-      paragraphs: [
-        'Niniejsze Warunki podlegają prawu stanu Wiktoria w Australii, bez względu na zasady kolizji praw. Użytkownik wyraża zgodę na wyłączną jurysdykcję sądów w stanie Wiktoria w Australii.',
-      ],
+      paragraphs: ['Warunki te są regulowane przez prawa Wiktorii, Australii, bez względu na zasady kolizyjne prawa. Zgadzasz się na wyłączną jurysdykcję sądów znajdujących się w Victoria w Australii.'],
     },
     {
       heading: 'Zmiany i dostępność',
-      paragraphs: [
-        'Możemy modyfikować, zawieszać lub zamykać witrynę (lub dowolną jej część) w dowolnym momencie, bez powiadomienia i ponoszenia odpowiedzialności.',
-        'Możemy aktualizować niniejsze Warunki w dowolnym momencie. Data Ostatniej aktualizacji oznacza datę ostatniej zmiany. Dalsze korzystanie po wprowadzeniu zmian oznacza akceptację.',
-      ],
+      paragraphs: ['Możemy modyfikować, zawiesić lub przerwać stronę (lub jej część) w dowolnym momencie bez wypowiedzenia lub odpowiedzialności.', 'W każdej chwili możemy zaktualizować niniejsze Warunki. Data "Last updated" wskazuje, kiedy zostały one ostatnio zmienione. Kontynuacja stosowania po zmianach oznacza akceptację.'],
     },
     {
-      heading: 'Rozdzielność',
-      paragraphs: [
-        'Jeżeli którekolwiek z postanowień niniejszych Warunków okaże się nieważne lub niewykonalne, postanowienie to będzie egzekwowane w maksymalnym dopuszczalnym zakresie, a pozostałe postanowienia pozostaną w pełnej mocy i będą skuteczne.',
-      ],
+      heading: 'Przedłużenie',
+      paragraphs: ['Jeżeli jakiekolwiek postanowienie niniejszych Warunków zostanie uznane za nieważne lub niewykonalne, przepis ten będzie egzekwowany w maksymalnym dopuszczalnym zakresie, a pozostałe postanowienia pozostaną w mocy i w mocy.'],
     },
     {
-      heading: 'Zrzeczenie się',
-      paragraphs: [
-        'Nasze zaniechanie egzekwowania jakiegokolwiek prawa lub postanowienia niniejszych Warunków nie będzie uważane za zrzeczenie się takiego prawa lub postanowienia.',
-      ],
+      heading: 'Wycofanie',
+      paragraphs: ['Nasze niewykonanie jakiegokolwiek prawa lub postanowienia niniejszych Warunków nie jest uważane za zrzeczenie się takiego prawa lub postanowienia.'],
     },
     {
       heading: 'Całość umowy',
-      paragraphs: [
-        'Niniejsze Warunki, wraz z naszą Polityką Prywatności, stanowią całość umowy pomiędzy Tobą a ANQR w zakresie korzystania z witryny i zastępują wszelkie wcześniejsze umowy.',
-      ],
+      paragraphs: ['Niniejsze Warunki, wraz z naszą Polityką Prywatności, stanowią całą umowę pomiędzy Tobą a ANQR dotyczącą korzystania z witryny i zastępują wszelkie wcześniejsze umowy.'],
     },
     {
       heading: 'Siła wyższa',
-      paragraphs: [
-        'Nie ponosimy odpowiedzialności za jakiekolwiek niewykonanie lub opóźnienie w realizacji wynikające z okoliczności pozostających poza naszą uzasadnioną kontrolą, w tym klęsk żywiołowych, wojny, aktów terroryzmu, zamieszek, działań rządu lub awarii Internetu/infrastruktury.',
-      ],
+      paragraphs: ['Nie ponosimy odpowiedzialności za jakiekolwiek niepowodzenie lub opóźnienia w wykonaniu z powodu okoliczności pozostających poza naszą rozsądną kontrolą, w tym klęsk żywiołowych, wojen, terroryzmu, zamieszek, działań rządowych lub awarii internetu / infrastruktury.'],
     },
     {
       heading: 'Kontakt',
-      paragraphs: [
-        'Pytania dotyczące niniejszego Regulaminu można kierować na adres: ${CONTACT_EMAIL}',
-      ],
+      paragraphs: ['Pytania dotyczące niniejszych Warunków można wysyłać na adres: $_ _ ANQR _ PH _ 0 _ _'],
     },
   ],
 };

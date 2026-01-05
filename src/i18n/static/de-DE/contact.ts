@@ -3,67 +3,37 @@ import { LAST_UPDATED } from '../types';
 
 export const contact: PageDefinition = {
   title: 'Kontaktieren Sie uns',
-  description:
-    'Wir freuen uns über Feedback, Fehlerberichte, Funktionswünsche und allgemeine Anfragen.',
+  description: 'Wir begrüßen Feedback, Bugberichte, Feature-Anfragen und allgemeine Anfragen.',
   lastUpdated: LAST_UPDATED,
   sections: [
     {
-      heading: 'So erreichen Sie uns',
-      paragraphs: [
-        'Wir bieten Ihnen verschiedene Kontaktmöglichkeiten, je nach Ihren Bedürfnissen. Wir lesen jede Nachricht, die Antwortzeiten können jedoch je nach Nachrichtenaufkommen und Art der Anfrage variieren.',
-      ],
+      heading: 'Wie erreichen Sie uns',
+      paragraphs: ['Wir bieten verschiedene Möglichkeiten, uns je nach Bedarf zu kontaktieren. Wir lesen jede Nachricht, obwohl Antwortzeiten können variieren basierend auf Volumen und Anfrage Typ.'],
     },
     {
-      heading: 'E-Mail',
-      paragraphs: [
-        'Für alle Anfragen: ${CONTACT_EMAIL}',
-        'Dies ist der zuverlässigste Weg, uns zu erreichen, und wird für detaillierte Fragen, Geschäftsanfragen oder sonstige Anfragen empfohlen.',
-      ],
+      heading: 'Email',
+      paragraphs: ['Für alle Anfragen: ', 'Dies ist der zuverlässigste Weg, um uns zu erreichen und wird für detaillierte Fragen, geschäftliche Anfragen oder andere Anfragen empfohlen.'],
     },
     {
       heading: 'Arten von Anfragen',
-      bullets: [
-        'Allgemeine Fragen: Fragen zur Verwendung von ANQR, Erläuterungen zu den Funktionen oder allgemeines Feedback.',
-        'Fehlerberichte: Bitte geben Sie Ihren Browser, Ihr Betriebssystem, die Schritte zur Reproduktion und alle angezeigten Fehlermeldungen an.',
-        'Funktionswünsche: Vorschläge für neue Funktionen oder Verbesserungen. Wir berücksichtigen alle Wünsche, können aber keine Umsetzung garantieren.',
-        'Geschäftsanfragen: Partnerschaftsmöglichkeiten, Lizenzfragen oder Anfragen zur kommerziellen Nutzung.',
-        'Anfragen zum Datenschutz: Anfragen zur Ausübung Ihrer Datenschutzrechte gemäß DSGVO, CCPA oder anderen Datenschutzgesetzen (siehe Datenschutzerklärung).',
-        'DMCA/Urheberrecht: Die Anforderungen an die Benachrichtigung über die Entfernung von Inhalten finden Sie im Abschnitt DMCA weiter unten.',
-      ],
+      bullets: ['Allgemeine Fragen: Fragen zur Verwendung von ANQR, Feature-Erklärungen oder allgemeines Feedback.', 'Fehlerberichte: Bitte beinhalten Sie Ihren Browser, Ihr Betriebssystem, Schritte zur Wiedergabe und alle Fehlermeldungen, die Sie sehen.', 'Feature-Anfragen: Vorschläge für neue Features oder Verbesserungen. Wir betrachten alle Anträge, obwohl wir die Umsetzung nicht versprechen können.', 'Unternehmensanfragen: Partnerschaftsmöglichkeiten, Lizenzfragen oder kommerzielle Anfragen.', 'Datenschutzanfragen: Bitte um Ausübung Ihrer Datenschutzrechte unter DSGVO, CCPA oder anderen Datenschutzgesetzen (siehe Datenschutzrichtlinie).', 'DMCA/Copyright: Siehe unten die DMCA-Sektion für Takedown-Anforderungen.'],
     },
     {
-      heading: 'Reaktionszeiten',
-      paragraphs: [
-        'Wir bemühen uns, Anfragen innerhalb von 5-7 Werktagen zu beantworten. Anfragen zum Datenschutz werden gemäß den gesetzlichen Bestimmungen innerhalb von 30 Tagen bearbeitet.',
-        'In Stoßzeiten kann es zu längeren Bearbeitungszeiten kommen. Bitte geben Sie bei dringenden Angelegenheiten DRINGEND in der Betreffzeile an.',
-      ],
+      heading: 'Antwortzeiten',
+      paragraphs: ['Wir wollen innerhalb von 5-7 Werktagen auf Anfragen antworten. Datenschutz-bezogene Anfragen werden innerhalb von 30 Tagen nach gesetzlicher Vorgaben bearbeitet.', 'Während der befahrenen Zeiten können Reaktionszeiten länger sein. Für dringende Angelegenheiten bitte "URGENT" in Ihrer Betreffzeile angeben.'],
     },
     {
       heading: 'Bevor Sie uns kontaktieren',
-      paragraphs: [
-        'Auf unserer Dokumentationsseite finden Sie Antworten auf häufig gestellte Fragen zur Verwendung der ANQR-Funktionen. Viele Fragen zur QR-Code-Generierung, zum Styling und zu den Exportoptionen werden dort behandelt.',
-      ],
+      paragraphs: ['Bitte überprüfen Sie unsere Dokumentationsseite für Antworten auf gemeinsame Fragen, wie Sie ANQR-Funktionen verwenden können. Viele Fragen zur QR-Code-Generierung, Styling und Exportoptionen werden dort abgedeckt.'],
     },
     {
-      heading: 'DMCA-Urheberrechtshinweise',
-      paragraphs: [
-        'Wenn Sie der Ansicht sind, dass auf ANQR verfügbare Inhalte Ihr Urheberrecht verletzen, können Sie eine DMCA-Mitteilung (Digital Millennium Copyright Act) einreichen. Ihre Mitteilung muss folgende Angaben enthalten, um gültig zu sein:',
-      ],
-      bullets: [
-        'Eine physische oder elektronische Unterschrift des Urheberrechtsinhabers oder seines Bevollmächtigten.',
-        'Identifizierung des urheberrechtlich geschützten Werkes, dessen Verletzung behauptet wird.',
-        'Identifizierung des Materials, das angeblich gegen Urheberrechte verstößt, mit ausreichenden Informationen, um es aufzufinden.',
-        'Ihre Kontaktdaten (Adresse, Telefonnummer und E-Mail-Adresse).',
-        'Eine Erklärung, dass Sie nach bestem Wissen und Gewissen davon überzeugt sind, dass die Verwendung des Materials nicht vom Urheberrechtsinhaber genehmigt wurde.',
-        'Eine eidesstattliche Erklärung, dass die Angaben in Ihrer Mitteilung richtig sind und dass Sie der Urheberrechtsinhaber sind oder befugt sind, in dessen Namen zu handeln.',
-      ],
+      heading: 'DMC Urheberrechtshinweise',
+      paragraphs: ['Wenn Sie glauben, dass Inhalte, die auf ANQR verfügbar sind, Ihr Urheberrecht verletzen, können Sie ein Digital Millennium Copyright Act (DMCA) Takedown-Mitteilung einreichen. Um gültig zu sein, muss Ihre Mitteilung enthalten:'],
+      bullets: ['Eine physische oder elektronische Signatur des Urheberrechtsinhabers oder des Bevollmächtigten.', 'Identifizierung der urheberrechtlich geschützten Werke, die verletzt wurden.', 'Identifizierung des Materials, das behauptet wird, verletzt zu sein, mit Informationen ausreichend, um es zu lokalisieren.', 'Ihre Kontaktdaten (Adresse, Telefonnummer und E-Mail-Adresse).', 'Eine Erklärung, dass Sie einen guten Glauben haben, dass die Verwendung des Materials nicht vom Urheberrechtsinhaber genehmigt wird.', 'Eine Erklärung unter Strafe der Verurteilung, dass die Informationen in Ihrer Mitteilung genau sind und Sie der Urheberrechtsinhaber sind oder berechtigt sind, in ihrem Namen zu handeln.'],
     },
     {
-      heading: 'DMCA-Kontakt',
-      paragraphs: [
-        'DMCA-Mitteilungen senden Sie bitte an: ${CONTACT_EMAIL}',
-        'Bitte geben Sie DMCA-Mitteilung in der Betreffzeile an. Wir werden auf berechtigte Mitteilungen gemäß geltendem Recht reagieren. Beachten Sie, dass ANQR QR-Codes lokal auf den Geräten der Nutzer generiert und keine nutzergenerierten Inhalte hostet.',
-      ],
+      heading: 'Kontaktieren Sie uns',
+      paragraphs: ['DMCA Mitteilungen senden an: ${CONTACT_EMAIL}', 'Bitte beinhalten Sie "DMCA Hinweis" in der Betreffzeile. Wir werden nach geltendem Recht auf gültige Mitteilungen reagieren. Beachten Sie, dass ANQR QR-Codes lokal auf Benutzergeräten generiert und nicht benutzergenerierte Inhalte hostet.'],
     },
   ],
 };

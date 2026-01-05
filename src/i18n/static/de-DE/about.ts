@@ -3,37 +3,28 @@ import { CONTACT_EMAIL, LAST_UPDATED } from '../types';
 
 export const about: PageDefinition = {
   title: 'Über ANQR',
-  description:
-    'ANQR ist ein kostenloser QR-Code-Generator mit einem clientseitigen Ansatz – generieren Sie QR-Codes lokal oder verwenden Sie unsere API zum Einbetten.',
+  description: 'ANQR ist ein freier QR-Code-Generator mit einem Client-First-Ansatz - QR-Codes lokal generieren oder unsere API zur Einbettung verwenden.',
   lastUpdated: LAST_UPDATED,
+  primaryLinks: [
+    { href: '/?lang=${lang}', label: 'Open the generator', type: 'generator' },
+    { href: '/learn?lang=${lang}', label: 'Browse Learn articles', type: 'learn' },
+  ],
+  relatedLinks: [
+    { href: '/privacy?lang=${lang}', label: 'Privacy Policy', type: 'external' },
+    { href: '/terms?lang=${lang}', label: 'Terms of Service', type: 'external' },
+  ],
   sections: [
     {
       heading: 'Was ist ANQR?',
-      paragraphs: [
-        'ANQR (ausgesprochen Anker) ist ein kostenloser QR-Code-Generator, der scannbare Codes für URLs, Texte, WLAN-Zugangsdaten, Visitenkarten, Kalenderereignisse und mehr erstellt.',
-        'Es wurde für Einzelpersonen, kleine Unternehmen, Marketingfachleute und Entwickler entwickelt, die leistungsstarke QR-Tools ohne Registrierung nutzen möchten. Dank des clientseitigen Designs werden QR-Codes standardmäßig lokal im Browser generiert. Optional steht eine Server-API für die professionelle Einbettung und Integration zur Verfügung.',
-      ],
+      paragraphs: ['ANQR (ausgesprochen "anchor") ist ein kostenloser QR-Code-Generator, der scannbare Codes für URLs, Text, Wi-Fi-Berechtigungen, Kontaktkarten, Kalenderereignisse und mehr erstellt.', 'Es ist für Einzelpersonen, kleine Unternehmen, Vermarkter und Entwickler gebaut, die leistungsstarke QR-Tools ohne Anmeldung wollen. Das Client-First-Design bedeutet QR-Codes werden standardmäßig lokal in Ihrem Browser generiert, mit einer optionalen Server-API für professionelle Einbettung und Integration.'],
     },
     {
-      heading: 'Hauptmerkmale',
-      bullets: [
-        'Generieren Sie QR-Codes sofort in Ihrem Browser – kein Konto erforderlich.',
-        'Farben, Modulstile und Suchmuster anpassen sowie Bildüberlagerungen hinzufügen.',
-        'Export in mehreren Formaten: PNG, SVG, WebP und animiertes GIF.',
-        'Erweiterte Steuerungsmöglichkeiten für Fehlerkorrekturstufe, QR-Version, Kodierungsmodus und Maskenauswahl.',
-        'Leitlinien zur Scansicherheit und Live-Vorschau helfen dabei, dass Codes sowohl in gedruckter Form als auch auf Bildschirmen lesbar bleiben.',
-        'Serverseitige API für professionelles Embedding mit vollständiger Parameterunterstützung.',
-        'Funktioniert nach dem Laden auch offline – es handelt sich um eine statische Webanwendung, die Sie überall ausführen können.',
-      ],
+      heading: 'Schlüsselmerkmale',
+      bullets: ['QR-Codes sofort in Ihrem Browser generieren - kein Konto erforderlich.', 'Passen Sie Farben, Modul-Stile, Finder-Muster, und fügen Sie Bild Overlays.', 'Export in mehrere Formate: PNG, SVG, WebP und animierte GIF.', 'Erweiterte Steuerungen für Fehlerkorrekturebene, QR-Version, Kodierungsmodus und Maskenauswahl.', 'Scan-Safety-Anleitung und Live-Vorschau, um Codes im Druck und auf Bildschirmen lesbar zu halten.', 'Serverseitige API zur professionellen Einbettung mit voller Parameterunterstützung.', 'Funktioniert offline einmal geladen - es ist eine statische Web-App, die Sie überall ausführen können.'],
     },
     {
-      heading: 'So funktioniert ANQR',
-      paragraphs: [
-        'ANQR läuft in Ihrem Browser und codiert Ihre Eingabe in eine Standard-QR-Matrix mit Reed-Solomon-Fehlerkorrektur und gibt sie dann in dem von Ihnen gewählten Format aus.',
-        'Standardmäßig erfolgt die Generierung lokal in Ihrem Browser. Für den professionellen Einsatz können Sie auch die serverseitige API verwenden, um QR-Codes über URL-Parameter zu generieren – ideal zum Einbetten in Websites, E-Mails oder automatisierte Arbeitsabläufe.',
-        'Wenn Sie Overlays oder Animationen hinzufügen, sorgt ANQR für ein ausgewogenes Verhältnis zwischen Styling und Scansicherheit, sodass das Ergebnis weiterhin scannbar bleibt.',
-        'ANQR konzentriert sich auf statische Codes (die Daten befinden sich im QR-Code). Wenn Sie einen dynamischen Code (bearbeitbares Ziel) benötigen, können Sie Ihre eigene Weiterleitungs-URL oder Ihren eigenen Kurzlink kodieren.',
-      ],
+      heading: 'Wie ANQR funktioniert',
+      paragraphs: ['ANQR läuft in Ihrem Browser und kodiert Ihre Eingabe in eine Standard- QR-Matrix mit Reed-Solomon Fehlerkorrektur, macht sie dann auf das Format, das Sie wählen.', 'Standardmäßig geschieht die Erzeugung lokal in Ihrem Browser. Für den professionellen Einsatz können Sie auch die serverseitige API nutzen, um QR-Codes über URL-Parameter zu generieren - perfekt zum Einbetten in Websites, E-Mails oder automatisierte Workflows.', 'Wenn Sie Overlays oder Animationen hinzufügen, bilanziert ANQR das Styling mit Scan-Verlässlichkeit, so dass das Ergebnis scannbar bleibt.', 'ANQR konzentriert sich auf statische Codes (die Daten befinden sich im QR). Wenn Sie einen dynamischen Code benötigen (erweiterbares Ziel), können Sie Ihre eigene Umleitung URL oder Kurzlink codieren.'],
     },
     {
       heading: 'Wer betreibt ANQR?',
@@ -41,29 +32,19 @@ export const about: PageDefinition = {
     },
     {
       heading: 'Werbung und wie wir frei bleiben',
-      paragraphs: [
-        'ANQR ist kostenlos nutzbar und wird durch Werbung finanziert. Wir schalten möglicherweise Anzeigen über Google AdSense und/oder andere Werbepartner.',
-        'Werbeanbieter können Cookies oder ähnliche Technologien verwenden, um Anzeigen basierend auf Ihren Interessen und Ihrem Surfverhalten zu personalisieren. Sie können Ihre Anzeigeneinstellungen in den Geräteeinstellungen und über die Google-Anzeigeneinstellungen verwalten. Weitere Informationen finden Sie in unserer Datenschutzerklärung.',
-        'Wir verkaufen die Inhalte, die Sie in QR-Codes kodieren, nicht. Anzeigen helfen uns, die Kosten für den Betrieb und die Verbesserung des Projekts zu decken.',
-      ],
+      paragraphs: ['ANQR ist frei zu bedienen und wird durch Werbung unterstützt. Wir können Anzeigen über Google AdSense und/oder andere Werbepartner anzeigen.', 'Ad-Provider können Cookies oder ähnliche Technologien verwenden, um Anzeigen basierend auf Ihren Interessen und Surfaktivitäten zu personalisieren. Sie können Anzeigeneinstellungen in Ihren Geräteeinstellungen und über Google-Anzeigeneinstellungen verwalten und mehr in unserer Datenschutzerklärung erfahren.', 'Wir verkaufen die Inhalte, die Sie codieren, nicht in QR-Codes. Anzeigen helfen dabei, die Kosten für den Betrieb und die Verbesserung des Projekts zu decken.'],
     },
     {
       heading: 'Offene Standards',
-      paragraphs: [
-        'ANQR generiert QR-Codes auf Basis des ISO/IEC 18004-Standards und strebt eine breite Kompatibilität mit Scannern, Kameras und Druckworkflows an.',
-      ],
+      paragraphs: ['ANQR generiert QR-Codes basierend auf dem ISO/IEC 18004 Standard und zielt auf eine breite Kompatibilität über Scanner, Kameras und Druck-Workflows.'],
     },
     {
-      heading: 'Markenhinweis',
-      paragraphs: [
-        'QR Code® ist eine eingetragene Marke von DENSO WAVE INCORPORATED. ANQR ist weder mit DENSO WAVE INCORPORATED verbunden, noch wird es von DENSO WAVE INCORPORATED unterstützt oder gesponsert.',
-      ],
+      heading: 'Warenbezeichnung',
+      paragraphs: ['QR Code® ist eine eingetragene Marke von DENSO WAVE INCORPORATED. ANQR ist nicht mit DENSO WAVE INCORPORATED verbunden, unterstützt oder gesponsert.'],
     },
     {
       heading: 'Feedback und Beiträge',
-      paragraphs: [
-        'Wir freuen uns über Feedback, Fehlerberichte und Funktionsvorschläge. Bitte kontaktieren Sie uns per E-Mail oder über das Kontaktformular – wir lesen jede Nachricht, die Antwortzeiten können jedoch variieren.',
-      ],
+      paragraphs: ['Wir begrüßen Feedback, Bugberichte und Featurevorschläge. Bitte kontaktieren Sie uns per E-Mail oder der Kontaktseite - wir lesen jede Nachricht, obwohl Antwortzeiten variieren können.'],
     },
   ],
 };

@@ -2,150 +2,80 @@ import type { PageDefinition } from '../types';
 import { LAST_UPDATED } from '../types';
 
 export const privacy: PageDefinition = {
-  title: 'Zásady ochrany osobních údajů',
-  description:
-    'Informace, které ANQR shromažďuje, jak jsou používány a vaše práva podle platných zákonů o ochraně osobních údajů.',
+  title: 'Ochrana osobních údajů',
+  description: 'Informace ANQR shromažďují, jak se používá, a vaše práva podle platných zákonů o ochraně soukromí.',
   lastUpdated: LAST_UPDATED,
+  relatedLinks: [{ href: '/terms?lang=${lang}', label: 'Terms of Service', type: 'external' }],
   sections: [
     {
       heading: 'Shrnutí',
-      paragraphs: [
-        'ANQR je generátor QR kódů s přístupem zaměřeným na klienta. Nevyžadujeme, abyste si vytvořili účet. Ve výchozím nastavení se QR kódy generují lokálně ve vašem prohlížeči – nemáme přístup k obsahu, který kódujete.',
-        'Pro profesionální použití poskytuje ANQR serverové API, které generuje QR kódy z parametrů URL. Při použití API je váš QR obsah zpracován na našich serverech za účelem vykreslení obrázku, ale není uložen ani protokolován.',
-        'Pro inzerci používáme Google AdSense a můžeme používat analytické služby. Tyto služby shromažďují informace prostřednictvím souborů cookie a podobných technologií. Tyto zásady vysvětlují, jaké údaje se shromažďují, jak se používají a jaká jsou vaše práva.',
-      ],
+      paragraphs: ['ANQR je QR kód generátor s klient- první přístup. Nechceme, abyste si vytvářeli účet. Ve výchozím nastavení, QR kódy jsou generovány lokálně ve vašem prohlížeči - nemáme přístup k obsahu, který enkódujete.', 'Pro profesionální použití ANQR poskytuje serverside API, který generuje QR kódy z URL parametrů. Pokud používáte API, váš QR obsah se zpracovává na našich serverech k vykreslení obrazu, ale není uložen ani zaznamenán.', 'Používáme Google AdSense pro reklamu a mohou využívat analytické služby. Tyto služby shromažďují informace prostřednictvím cookies a podobných technologií. Tato politika vysvětluje, jaké údaje jsou shromažďovány, jak se používají, a vaše práva.'],
     },
     {
-      heading: 'Informace, které shromažďujeme',
-      bullets: [
-        'Informace, které poskytnete: Pokud nás kontaktujete e-mailem nebo prostřednictvím našeho kontaktního formuláře, shromažďujeme vaše jméno, e-mailovou adresu a obsah zprávy.',
-        'Automaticky shromažďované informace: Náš poskytovatel hostingu (Netlify), reklamní partneři a analytické služby mohou shromažďovat: IP adresu, typ a verzi prohlížeče, operační systém, typ zařízení, odkazující URL, navštívené stránky, čas strávený na webu a přibližnou geografickou polohu.',
-        'Soubory cookie třetích stran: Naši reklamní partneři (Google AdSense) používají soubory cookie a podobné technologie k zobrazování a měření reklam. Samotný ANQR nenastavuje žádné soubory cookie první strany.',
-      ],
+      heading: 'Informace shromažďujeme',
+      bullets: ['Informace, které poskytnete: Pokud nás kontaktujete prostřednictvím e-mailu nebo našeho kontaktního formuláře, shromáždíme Vaše jméno, e-mailovou adresu a obsah zprávy.', 'Automaticky shromažďované informace: Náš poskytovatel hostingu (Netlify), reklamní partneři a analytické služby mohou shromažďovat: IP adresu, typ prohlížeče a verzi, operační systém, typ zařízení, odkazující na URL, navštívené stránky, čas na místě a přibližné zeměpisné umístění.', 'Sušenky na párty: Naši reklamní partneři (Google AdSense) používají cookies a podobné technologie k obsluze a měření reklam. Sám ANQR nenastavuje žádné první-party cookies.'],
     },
     {
-      heading: 'Soubory cookie a technologie třetích stran',
-      paragraphs: [
-        'ANQR nenastavuje žádné soubory cookie první strany. Vaše preference (například tmavý režim) jsou uloženy lokálně ve vašem zařízení a nejsou přenášeny na žádný server.',
-        'Naši reklamní partneři (Google AdSense) a poskytovatelé hostingu však mohou používat soubory cookie a podobné technologie sledování:',
-      ],
-      bullets: [
-        'Reklamní soubory cookie (třetích stran): Nastavují se službou Google AdSense a reklamními partnery za účelem zobrazování relevantních reklam, měření výkonu reklam a pochopení zájmů uživatelů. Tyto soubory cookie mohou sledovat vaši aktivitu na různých webových stránkách.',
-        'Analytické soubory cookie (třetích stran): Mohou být používány naším poskytovatelem hostingu nebo analytickými službami ke shromažďování anonymizovaných údajů o užívání.',
-      ],
+      heading: 'Cookies a technologie třetích stran',
+      paragraphs: ['ANQR nenastavuje žádné první-party cookies. Vaše preference (např. tmavý režim) jsou uloženy lokálně na vašem zařízení, které není přenášeno na žádný server.', 'Naši reklamní partneři (Google AdSense) a poskytovatel hostingu však mohou používat cookies a podobné sledovací technologie:'],
+      bullets: ['Reklamní cookies (třetí strana): Nastavit AdSense Google a reklamní partneři sloužit relevantní reklamy, měřit ad výkon, a pochopit zájmy uživatelů. Tyto cookies mohou sledovat vaši aktivitu na různých webových stránkách.', 'Analytické cookies (třetí strana): Může být používán naším poskytovatelem hostingu nebo analytickými službami pro sběr anonymizovaných údajů o používání.'],
     },
     {
       heading: 'Google AdSense a reklama',
-      paragraphs: [
-        'Reklamy zobrazujeme prostřednictvím služby Google AdSense. Google a jeho partneři používají soubory cookie k zobrazování reklam na základě vaší historie prohlížení na tomto webu a dalších webových stránkách (reklama založená na zájmech).',
-        'Zjistěte, jak Google používá vaše informace: https://policies.google.com/technologies/partner-sites',
-        'Spravovat personalizaci reklam: https://adssettings.google.com',
-        'Odhlásit se můžete prostřednictvím iniciativy Network Advertising Initiative: https://optout.networkadvertising.org',
-        'Odhlásit se můžete prostřednictvím Digital Advertising Alliance: https://optout.aboutads.info',
-      ],
+      paragraphs: ['Zobrazujeme reklamy prostřednictvím Google AdSense. Google a jeho partneři používají cookies k obsluhování reklam na základě vaší historie procházení na těchto stránkách a dalších webových stránkách (zajímavé reklamy).', 'Přečtěte si, jak Google využívá vaše informace: https: / / policies.google.com / technologies / partner- sites', 'Komise, T-413 / 03, Sb. rozh', 'Vyloučeno prostřednictvím Network Advertising Initiative: https: / / optout.networkinzering.org', 'Vyloučeno prostřednictvím Digital Advertising Alliance: https: / / optout.abouts.info'],
     },
     {
       heading: 'Jak používáme informace',
-      bullets: [
-        'Abychom mohli odpovídat na vaše dotazy a poskytovat podporu.',
-        'Abychom mohli zobrazovat relevantní reklamy prostřednictvím našich reklamních partnerů.',
-        'Analyzovat používání webu a zlepšovat naše služby.',
-        'Odhalovat, předcházet a řešit podvody, zneužívání a bezpečnostní problémy.',
-        'Aby bylo možné dodržet zákonné povinnosti.',
-      ],
+      bullets: ['Reagovat na vaše dotazy a poskytovat podporu.', 'Zobrazovat příslušné reklamy prostřednictvím našich reklamních partnerů.', 'Chcete-li analyzovat používání webových stránek a zlepšit naše služby.', 'Zjišťovat, předcházet a řešit podvody, zneužívání a bezpečnostní otázky.', 'Splnění právních povinností.'],
     },
     {
       heading: 'Služby třetích stran',
-      bullets: [
-        'Google AdSense: Přijímá data pro zobrazování a měření reklam.',
-        'Poskytovatelé analytických služeb: Získejte anonymní data o užívání.',
-        'Netlify (hosting): Zpracovává požadavky a může zaznamenávat IP adresy.',
-        'Vaše osobní údaje neprodáváme. Sdílení dat s reklamními partnery však může být podle zákona CCPA považováno za prodej (viz níže).',
-      ],
+      bullets: ['Google AdSense: Přijímá data pro obsluhu a měření reklam.', 'Poskytovatelé analýz: Příjem anonymizovaných údajů o používání.', 'Netlify (hosting): Zpracovává žádosti a může přihlásit IP adresy.', 'Vaše osobní údaje neprodáváme. Sdílení údajů s reklamními partnery však lze považovat za "prodej" v rámci CCPA (viz níže).'],
     },
     {
-      heading: 'Uchovávání dat',
-      bullets: [
-        'Podání kontaktů: Až 2 roky.',
-        'Protokoly serveru: Až 30 dní (poskytovatel hostingu).',
-        'Analytická data: Až 26 měsíců (anonymizovaná).',
-        'Reklamní soubory cookie: Obvykle 13 měsíců (liší se podle partnera).',
-      ],
+      heading: 'Uchovávání údajů',
+      bullets: ['Kontaktní údaje: Až 2 roky.', 'Záznamy serveru: Do 30 dnů (poskytovatel hostingu).', 'Analytická data: Do 26 měsíců (anonymizován).', 'Reklamní cookies: Typicky 13 měsíců (liší se podle partnera).'],
     },
     {
-      heading: 'Vaše práva podle GDPR (uživatelé z EHP)',
-      paragraphs: [
-        'Pokud se nacházíte v Evropském hospodářském prostoru, máte podle obecného nařízení o ochraně osobních údajů následující práva:',
-      ],
-      bullets: [
-        'Právo na přístup: Požádejte o kopii osobních údajů, které o vás uchováváme.',
-        'Právo na opravu: Požádat o opravu nepřesných údajů.',
-        'Právo na výmaz: Požádejte o výmaz svých údajů (právo být zapomenut).',
-        'Právo na omezení zpracování: Požádejte o omezení způsobu, jakým používáme vaše údaje.',
-        'Právo na přenositelnost údajů: Požádejte o své údaje v přenosném formátu.',
-        'Právo vznést námitku: Vznést námitku proti zpracování, a to i pro účely přímého marketingu.',
-        'Právo na odvolání souhlasu: Souhlas lze kdykoli odvolat, pokud je zpracování založeno na souhlasu.',
-        'Právo podat stížnost: Podejte stížnost u svého úřadu pro ochranu osobních údajů.',
-      ],
+      heading: 'Vaše práva podle GDPR (uživatelé EHP)',
+      paragraphs: ['Pokud jste v Evropském hospodářském prostoru, máte podle obecného nařízení o ochraně údajů tato práva:'],
+      bullets: ['Právo na přístup: Vyžádejte si kopii osobních údajů, které o vás máme.', 'Právo na opravu: Žádost o opravu nepřesných údajů.', 'Právo na vymazání: Žádost o vymazání Vašich dat ("právo na zapomenutí").', 'Právo omezit zpracování: Požadavek omezení, jak používat vaše data.', 'Právo na přenositelnost dat: Vyžádejte si data v přenosném formátu.', 'Právo na námitku: Předmět zpracování, včetně přímého uvádění na trh.', 'Právo odejmout souhlas: Odeberte souhlas kdykoliv, kdy je zpracování založeno na souhlasu.', 'Právo podat stížnost: Podejte stížnost u svého orgánu pro ochranu údajů.'],
     },
     {
       heading: 'Právní základ GDPR',
-      paragraphs: [
-        'Údaje zpracováváme na těchto základech: (a) Souhlas – pro personalizovanou reklamu (spravovanou našimi reklamními partnery); (b) Oprávněné zájmy – pro analytiku, zabezpečení a vylepšování; (c) Smlouva – pro zodpovězení dotazů.',
-        'Chcete-li uplatnit svá práva, kontaktujte ${CONTACT_EMAIL}. Odpovíme vám do 30 dnů.',
-      ],
+      paragraphs: ['Zpracováváme údaje na těchto základech: a) Souhlas - pro personalizovanou reklamu (řízenou našimi reklamními partnery); b) Legitimní zájmy - pro analytiku, bezpečnost a zlepšení; c) Smlouva - reagovat na dotazy.', 'Pro uplatnění svých práv kontaktujte $_ _ ANQR _ PH _ 0 _ _. Reagujeme do 30 dnů.'],
     },
     {
-      heading: 'Vaše práva podle CCPA (kalifornští uživatelé)',
-      bullets: [
-        'Právo vědět: Požadovat informace o shromážděných údajích, zdrojích, účelech a třetích stranách.',
-        'Právo na výmaz: Požádat o výmaz vašich osobních údajů.',
-        'Právo na odhlášení: Odhlásit se z prodeje osobních údajů (sdílení s reklamními partnery může splňovat podmínky).',
-        'Právo na nediskriminaci: Nebudeme diskriminovat za uplatňování vašich práv.',
-      ],
+      heading: 'Vaše práva podle CCPA (uživatelé Kalifornie)',
+      bullets: ['Právo vědět: Vyžádat si informace o shromážděných údajích, zdrojích, cílech a třetích stranách.', 'Právo na vymazání: Žádám o vymazání vašich osobních údajů.', 'Právo opt- out: Vyloučení z "prodeje" osobních údajů (sdílení s reklamními partnery může být způsobilé).', 'Právo na nediskriminaci: Nebudeme diskriminovat za výkon vašich práv.'],
     },
     {
-      heading: 'Shromážděné kategorie CCPA',
-      paragraphs: [
-        'Kategorie: Identifikátory (IP adresa, ID zařízení), Aktivita na internetu (prohlížení, interakce s reklamami), Geolokace (přibližná), Inference (zájmy z prohlížení).',
-        'Chcete-li uplatnit práva nebo se odhlásit: ${CONTACT_EMAIL} nebo upravte nastavení souborů cookie.',
-      ],
+      heading: 'Sebrané kategorie CCPA',
+      paragraphs: ['Kategorie: Identifikátory (IP adresa, ID zařízení), internetová aktivita (prohlížení, reklamní interakce), Geolokace (přibližné), Inference (zájmy z prohlížení).', 'Chcete-li uplatnit práva nebo vynechat: $_ _ ANQR _ PH _ 0 _ _ nebo upravit nastavení cookie.'],
     },
     {
       heading: 'Mezinárodní převody',
-      paragraphs: [
-        'Vaše informace mohou být převedeny do zemí s odlišnými zákony na ochranu osobních údajů, včetně Spojených států. Používáme vhodná ochranná opatření, jako jsou standardní smluvní doložky.',
-      ],
+      paragraphs: ['Vaše informace mohou být předány do zemí s různými zákony o ochraně údajů, včetně Spojených států. Používáme vhodné záruky, jako jsou standardní smluvní ustanovení.'],
     },
     {
       heading: 'Soukromí dětí',
-      paragraphs: [
-        'ANQR není určen pro děti mladší 13 let (nebo 16 let v EHP). Vědomě neshromažďujeme údaje od dětí. Pokud se domníváte, že dítě poskytlo informace, kontaktujte ${CONTACT_EMAIL}.',
-      ],
+      paragraphs: ['ANQR není určen pro děti mladší 13 let (nebo 16 let v EHP). Neshromažďujeme vědomě data od dětí. Kontaktujte $_ _ ANQR _ PH _ 0 _ _ pokud se domníváte, že vám dítě poskytlo informace.'],
     },
     {
       heading: 'Bezpečnost',
-      paragraphs: [
-        'Používáme vhodná technická a organizační opatření k ochraně dat, včetně šifrování HTTPS. Žádný internetový přenos však není 100% bezpečný.',
-      ],
+      paragraphs: ['Používáme vhodná technická a organizační opatření k ochraně dat, včetně HTTPS šifrování. Žádný přenos přes internet však není 100% bezpečný.'],
     },
     {
       heading: 'Nesledovat',
-      paragraphs: [
-        'Signály prohlížeče s klauzulí Nesledovat respektujeme, kdykoli je to možné, ačkoli reklamní partneři na signál Nesledovat nemusí reagovat.',
-      ],
+      paragraphs: ['Poctíme Signály prohlížeče Do Not Track tam, kde je to možné, i když reklamní partneři nemusí reagovat na DNT.'],
     },
     {
-      heading: 'Změny těchto zásad',
-      paragraphs: [
-        'Tyto zásady můžeme pravidelně aktualizovat. Datum Poslední aktualizace označuje nejnovější revizi. Významné změny mohou být oznámeny prostřednictvím banneru na webu.',
-      ],
+      heading: 'Změny této politiky',
+      paragraphs: ['Tuto politiku můžeme pravidelně aktualizovat. Datum "Poslední aktualizace" označuje poslední revizi. Významné změny mohou být sděleny prostřednictvím banneru.'],
     },
     {
       heading: 'Kontaktujte nás',
-      paragraphs: [
-        'V případě dotazů ohledně ochrany osobních údajů nebo pro uplatnění vašich práv: ${CONTACT_EMAIL} nebo použijte naši kontaktní stránku. Na žádosti o ochranu osobních údajů odpovídáme do 30 dnů.',
-      ],
+      paragraphs: ['Pro otázky soukromí nebo k výkonu svých práv: $_ _ ANQR _ PH _ 0 _ _ nebo použijte naši Kontaktní stránku. Na žádosti o soukromí odpovídáme do 30 dnů.'],
     },
   ],
 };

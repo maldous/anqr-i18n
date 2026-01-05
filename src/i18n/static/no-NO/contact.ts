@@ -2,68 +2,38 @@ import type { PageDefinition } from '../types';
 import { LAST_UPDATED } from '../types';
 
 export const contact: PageDefinition = {
-  title: '«Kontakt oss»',
-  description:
-    '«Vi tar gjerne imot tilbakemeldinger, feilrapporter, funksjonsforespørsler og generelle henvendelser.»',
+  title: 'Kontakt oss',
+  description: 'Vi ønsker gjerne tilbakemeldinger, feilrapporter, funksjonsforespørsler og generelle forespørsler.',
   lastUpdated: LAST_UPDATED,
   sections: [
     {
-      heading: '«Hvordan nå oss»',
-      paragraphs: [
-        '«Vi tilbyr flere måter å kontakte oss på, avhengig av dine behov. Vi leser hver melding, men responstiden kan variere basert på volum og type forespørsel.»',
-      ],
+      heading: 'Hvordan nå oss',
+      paragraphs: ['Vi tilbyr flere måter å kontakte oss på avhengig av dine behov. Vi leser hver melding, men responstider kan variere basert på volum og forespørselstype.'],
     },
     {
-      heading: '«E-post»',
-      paragraphs: [
-        '«For alle henvendelser: ${CONTACT_EMAIL}»',
-        '«Dette er den mest pålitelige måten å nå oss på, og anbefales for detaljerte spørsmål, forretningshenvendelser eller andre henvendelser.»',
-      ],
+      heading: 'E-post',
+      paragraphs: ['For alle henvendelser: ${CONTACT_EMAIL}', 'Dette er den mest pålitelige måten å nå oss på og anbefales for detaljerte spørsmål, forretningsforespørsler eller andre henvendelser.'],
     },
     {
-      heading: '«Typer henvendelser»',
-      bullets: [
-        '«Generelle spørsmål: Spørsmål om hvordan man bruker ANQR, forklaringer av funksjoner eller generell tilbakemelding.»',
-        '«Feilrapporter: Vennligst inkluder nettleseren din, operativsystemet ditt, trinn for å reprodusere det og eventuelle feilmeldinger du ser.»',
-        '«Funksjonsforespørsler: Forslag til nye funksjoner eller forbedringer. Vi vurderer alle forespørsler, men vi kan ikke love implementering.»',
-        '«Forretningshenvendelser: Partnerskapsmuligheter, lisensspørsmål eller forespørsler om kommersiell bruk.»',
-        '«Personvernforespørsler: Forespørsler om å utøve dine personvernrettigheter i henhold til GDPR, CCPA eller andre personvernlover (se personvernregler).»',
-        '«DMCA/opphavsrett: Se DMCA-delen nedenfor for krav til varsel om fjerning.»',
-      ],
+      heading: 'Typer av henvendelser',
+      bullets: ['Generelle spørsmål: Spørsmål om hvordan du bruker ANQR, funksjonsforklaringer eller generell tilbakemelding.', 'Feilrapporter: Vennligst ta med nettleseren din, operativsystemet, trinnene for å reprodusere og eventuelle feilmeldinger du ser.', 'Funksjonsforespørsler: Forslag til nye funksjoner eller forbedringer. Vi vurderer alle ønsker selv om vi ikke kan love implementering.', 'Forretningsforespørsler: Partnerskapsmuligheter, lisensieringsspørsmål eller forespørsler om kommersiell bruk.', 'Personvernforespørsler: Forespørsler om å utøve dine personvernrettigheter under GDPR, CCPA eller andre personvernlover (se Personvernerklæring).', 'DMCA/Opphavsrett: Se DMCA-delen nedenfor for krav til nedtak.'],
     },
     {
-      heading: '«Responstider»',
-      paragraphs: [
-        '«Vi tar sikte på å svare på henvendelser innen 5–7 virkedager. Forespørsler om personvern vil bli behandlet innen 30 dager, slik loven krever.»',
-        '«I travle perioder kan responstidene være lengre. For hastesaker, vennligst oppgi «HASTER» i emnefeltet.»',
-      ],
+      heading: 'Svarstider',
+      paragraphs: ['Vi ønsker å svare på henvendelser innen 5-7 virkedager. Personvernrelaterte forespørsler vil bli adressert innen 30 dager som kreves av loven.', 'I travle perioder kan responstiden være lengre. For hastesaker, vennligst angi "URGENT" i emnelinjen din.'],
     },
     {
-      heading: '«Før du kontakter oss»',
-      paragraphs: [
-        '«Sjekk dokumentasjonssiden vår for svar på vanlige spørsmål om hvordan du bruker ANQR-funksjoner. Mange spørsmål om generering av QR-koder, styling og eksportalternativer dekkes der.»',
-      ],
+      heading: 'Før du kontakter oss',
+      paragraphs: ['Sjekk vår Dokumentasjonsside for svar på vanlige spørsmål om hvordan du bruker ANQR-funksjoner. Mange spørsmål om QR-kodegenerering, styling og eksportalternativer er dekket der.'],
     },
     {
-      heading: '«DMCA-opphavsrettsmerknader»',
-      paragraphs: [
-        '«Hvis du mener at innhold som er tilgjengelig på ANQR krenker opphavsretten din, kan du sende inn et varsel om fjerning i henhold til Digital Millennium Copyright Act (DMCA). For at varselet skal være gyldig, må det inneholde:»',
-      ],
-      bullets: [
-        '«En fysisk eller elektronisk signatur fra opphavsrettsinnehaveren eller en autorisert representant.»',
-        '«Identifisering av det opphavsrettsbeskyttede verket som hevdes å være krenket.»',
-        '«Identifisering av materialet som hevdes å være et krenkende materiale, med tilstrekkelig informasjon til å lokalisere det.»',
-        '«Din kontaktinformasjon (adresse, telefonnummer og e-postadresse).»',
-        '«En erklæring om at du i god tro mener at bruken av materialet ikke er autorisert av rettighetshaveren.»',
-        '«En erklæring, under straff for mened, om at informasjonen i varselet ditt er nøyaktig og at du er opphavsrettsinnehaver eller har fullmakt til å handle på deres vegne.»',
-      ],
+      heading: 'DMCA Kundeområde',
+      paragraphs: ['Hvis du mener at innhold som er tilgjengelig på ANQR krenker opphavsretten din, kan du sende en Digital Millennium Copyright Act (DMCA) takedown-erklæring. For å være gyldig, må varselet inkludere:'],
+      bullets: ['En fysisk eller elektronisk signatur av opphavsrettseieren eller autorisert agent.', 'Identifikasjon av opphavsrettslig arbeid hevdet å ha blitt krenket.', 'Identifikasjon av materialet som hevdes å være infisert, med informasjon som er tilstrekkelig til å lokalisere det.', 'Din kontaktinformasjon (adresse, telefonnummer og e-postadresse).', 'En uttalelse om at du har god tro på at bruk av materialet ikke er autorisert av opphavsrettseieren.', 'En erklæring under straff av skade, om at informasjonen i din melding er nøyaktig og at du er opphavsrettseieren eller autorisert til å handle på deres vegne.'],
     },
     {
-      heading: '«DMCA-kontakt»',
-      paragraphs: [
-        '«Send DMCA-varsler til: ${CONTACT_EMAIL}»',
-        '«Vennligst legg til «DMCA-varsel» i emnefeltet. Vi vil svare på gyldige varsler i samsvar med gjeldende lov. Merk at ANQR genererer QR-koder lokalt på brukernes enheter og ikke er vert for brukergenerert innhold.»',
-      ],
+      heading: 'DMCA Kontakt',
+      paragraphs: ['Send DMCA-meldinger til: ${CONTACT_EMAIL}', 'Ta med "DMCA-erklæring" i emnelinjen. Vi vil svare på gyldige meldinger i samsvar med gjeldende lov. Merk at ANQR genererer QR-koder lokalt på brukerenheter og ikke er vert for brukergenerert innhold.'],
     },
   ],
 };

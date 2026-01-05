@@ -427,7 +427,7 @@
 427	"Derecho a la no discriminación: No discriminaremos por ejercer sus derechos."
 428	"Categorías de la CCPA"
 429	"Categorías: Identificadores (dirección IP, ID de dispositivo), actividad de Internet (crecimiento, interacciones de anuncios), Geolocalización (aproximada), Inferencias (interés de navegación)."
-430	"Para ejercer derechos o optar por salir: $_ANQR_PH_0__ o ajustar la configuración de cookies."
+430	"Para ejercer derechos o optar por salir:  o ajustar la configuración de cookies."
 431	"Transferencias internacionales"
 432	"Su información puede ser transferida a países con diferentes leyes de protección de datos, incluidos los Estados Unidos. Utilizamos salvaguardias adecuadas como las Cláusulas Contractuales Estándar."
 433	"Privacidad de los niños"

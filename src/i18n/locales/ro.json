@@ -1046,7 +1046,7 @@
     "moduleSize": "Dimensiune modul",
     "nDegrees": "{{count}}°",
     "nModules": "{{count}} module",
-    "nMs": "__ANQR_PH_0000_ms",
+    "nMs": "__ANQR_PH_0_ms",
     "nPercent": "{{count}}%",
     "nPx": "{{count}}px",
     "numericOnly": "Numai numere",

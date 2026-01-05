@@ -2,150 +2,80 @@ import type { PageDefinition } from '../types';
 import { LAST_UPDATED } from '../types';
 
 export const privacy: PageDefinition = {
-  title: 'Patakaran sa Pagkapribado',
-  description:
-    'Impormasyon na kinokolekta ng ANQR, kung paano ito ginagamit, at ang iyong mga karapatan sa ilalim ng naaangkop na mga batas sa privacy.',
+  title: 'Pribadong Patakaran',
+  description: 'Ang Information ANQR ay nagtitipon, kung paano ito ginagamit, at ang iyong mga karapatan sa ilalim ng kapit na mga batas sa pribadong buhay.',
   lastUpdated: LAST_UPDATED,
+  relatedLinks: [{ href: '/terms?lang=${lang}', label: 'Terms of Service', type: 'external' }],
   sections: [
     {
-      heading: 'Buod',
-      paragraphs: [
-        'Ang ANQR ay isang QR code generator na ganap na tumatakbo sa iyong device. Hindi ka namin hinihiling na gumawa ng account, at ang mga QR code ay lokal na nabubuo — wala kaming access sa nilalamang iyong ine-encode.',
-        'Para sa propesyonal na paggamit, nagbibigay ang ANQR ng server-side API na bumubuo ng mga QR code mula sa mga parameter ng URL. Kapag ginagamit ang API, ang iyong QR content ay pinoproseso sa aming mga server upang i-render ang imahe, ngunit hindi iniimbak o nilololog.',
-        'Ginagamit namin ang Google AdSense para sa advertising at maaaring gumamit ng mga serbisyo ng analytics. Nangongolekta ang mga serbisyong ito ng impormasyon sa pamamagitan ng cookies at mga katulad na teknolohiya. Ipinapaliwanag ng patakarang ito kung anong data ang kinokolekta, kung paano ito ginagamit, at ang iyong mga karapatan.',
-      ],
+      heading: 'Sumaryo',
+      paragraphs: ['Ang ANQR ay isang QR code generator na may kliyente-unang paglapit. Hindi namin hinihiling sa inyo na lumikha ng isang salaysay. Sa pamamagitan ng default, ang mga QR code ay nalilikha sa inyong browser - wala ang nilalaman na iyong ina-ayos.', 'Para sa propesyonal na gamit, ang ANQR ay nagbibigay ng server-side API na gumagawa ng mga QR code mula sa mga parameter ng URL. Kapag ginagamit ang API, ang nilalaman mong QR ay pinoproseso sa ating mga server upang isalin ang imahen, ngunit hindi iniimbak o naitatala.', 'Ginagamit natin ang Google AdSense para sa pag-aanunsiyo at maaaring gumamit ng mga serbisyong analytics. Ang mga serbisyong ito ay nagtitipon ng impormasyon sa pamamagitan ng mga anime at katulad na teknolohiya. Ipinaliliwanag ng patakarang ito kung anong impormasyon ang tinitipon, kung paano ito ginagamit, at ang iyong mga karapatan.'],
     },
     {
-      heading: 'Impormasyon na aming kinokolekta',
-      bullets: [
-        'Impormasyon na iyong ibibigay: Kung makikipag-ugnayan ka sa amin sa pamamagitan ng email o sa aming contact form, kokolektahin namin ang iyong pangalan, email address, at nilalaman ng mensahe.',
-        'Awtomatikong kinokolektang impormasyon: Ang aming hosting provider (Netlify), mga kasosyo sa advertising, at mga serbisyo ng analytics ay maaaring mangolekta ng: IP address, uri at bersyon ng browser, operating system, uri ng device, referring URL, mga pahinang binisita, oras sa site, at tinatayang lokasyong heograpiko.',
-        'Mga third-party cookies: Ang aming mga kasosyo sa advertising (Google AdSense) ay gumagamit ng mga cookies at mga katulad na teknolohiya upang maghatid at sumukat ng mga advertisement. Ang ANQR mismo ay hindi nagtatakda ng anumang first-party cookies.',
-      ],
+      heading: 'Mga impormasyong nakukuha natin',
+      bullets: ['Impormasyon na inilalaan mo: Kung makikipag - ugnayan ka sa amin sa pamamagitan ng email o ng aming contact form, tinitipon namin ang iyong pangalan, adres ng email, at nilalamang mensahe.', 'Awtomatikong nagtipon ng impormasyon: Ang ating hosting provider (Netlify), mga kasosyo sa pag - aanunsiyo, at mga serbisyo ng anestics ay maaaring magtipon: IP address, browser type at bersyon, operating system, tipo ng aparato, tinutukoy ang URL, mga pahinang dinadalaw, oras sa lugar, at tinatayang heograpikong lokasyon.', 'Ikatlong-bahaging mga anime: Ang ating mga kasosyo sa pag - aanunsiyo (Gogle AdSense) ay gumagamit ng mga cookies at katulad na mga teknolohiya upang maglingkod at sukatin ang mga anunsiyo. Ang ANQR mismo ay hindi nagtatakda ng anumang first-party cookies.'],
     },
     {
-      heading: 'Mga cookie at mga teknolohiya ng ikatlong partido',
-      paragraphs: [
-        'Hindi nagtatakda ang ANQR ng anumang first-party cookies. Ang iyong mga kagustuhan (tulad ng dark mode) ay nakaimbak nang lokal sa iyong device, na hindi ipinapadala sa anumang server.',
-        'Gayunpaman, maaaring gumamit ang aming mga kasosyo sa advertising (Google AdSense) at tagapagbigay ng hosting ng cookies at mga katulad na teknolohiya sa pagsubaybay:',
-      ],
-      bullets: [
-        "Mga cookies sa advertising (third-party): Itinakda ng Google AdSense at mga kasosyo sa advertising upang maghatid ng mga kaugnay na ad, sukatin ang pagganap ng ad, at maunawaan ang mga interes ng user. Maaaring subaybayan ng mga cookies na ito ang iyong aktibidad sa iba't ibang website.",
-        'Mga cookie ng analytics (ikatlong partido): Maaaring gamitin ng aming tagapagbigay ng hosting o mga serbisyo ng analytics upang mangolekta ng hindi nagpapakilalang datos ng paggamit.',
-      ],
+      heading: 'Mga cookies at ikatlong-partidong teknolohiya',
+      paragraphs: ['Ang ANQR ay hindi nagtatakda ng anumang first-party cookies. Ang iyong mga kagustuhan (gaya ng dark mode) ay iniimbak sa iyong aparato sa inyong lugar, na hindi naililipat sa anumang server.', 'Gayunman, ang ating mga kasosyo sa pag - aanunsiyo (Google AdSense) at ang hosting provider ay maaaring gumamit ng mga cookies at katulad na mga teknolohiya sa pagsubaybay:'],
+      bullets: ['Mga anime sa pag - aanunsiyo (ikatlong-bahagi): Itinakda ng Google AdSense at ng mga kasosyo sa pag - aanunsiyo na magsilbi sa nauugnay na mga anunsiyo, sukatin ang pagtatanghal, at unawain ang mga interes ng gumagamit. Maaaring subaybayan ng mga cookies na ito ang iyong gawain sa iba\'t ibang website.', 'Analytics cookies (ikatlong-bahagi): Maaaring gamitin ng aming hosting provider o anestics services upang tipunin ang mga impormasyong ginagamit sa pag - aanonymised.'],
     },
     {
-      heading: 'Google AdSense at pag-aanunsyo',
-      paragraphs: [
-        'Nagpapakita kami ng mga advertisement sa pamamagitan ng Google AdSense. Gumagamit ang Google at ang mga kasosyo nito ng cookies upang maghatid ng mga ad batay sa iyong kasaysayan ng pag-browse sa site na ito at iba pang mga website (interest-based advertising).',
-        'Alamin kung paano ginagamit ng Google ang iyong impormasyon: https://policies.google.com/technologies/partner-sites',
-        'Pamahalaan ang pag-personalize ng ad: https://adssettings.google.com',
-        'Mag-opt out sa pamamagitan ng Network Advertising Initiative: https://optout.networkadvertising.org',
-        'Mag-opt out sa pamamagitan ng Digital Advertising Alliance: https://optout.aboutads.info',
-      ],
+      heading: 'Google Adsenense at pag - aanunsiyo',
+      paragraphs: ['Ipinakikita namin ang mga anunsiyo sa pamamagitan ng Google AdSense. Ang Google at ang mga kapareha nito ay gumagamit ng mga cookies upang magsilbi sa mga anunsiyo batay sa iyong kasaysayan ng pag-aalsa sa site na ito at sa iba pang mga website (interest-based advertising).', 'Alamin kung paano ginagamit ng Google ang iyong impormasyon: https://policies.google.com/technologies/partner-sites', 'Paghawak ng adpersonalisyon: https://adssettings.google.com', 'Opt out via Network Advertising Initiative: https://optout.networkadvertising.org', 'Palabas sa pamamagitan ng Digital Advertising Alliance: https://optout.aboutads.infoinfo'],
     },
     {
-      heading: 'Paano namin ginagamit ang impormasyon',
-      bullets: [
-        'Upang tumugon sa iyong mga katanungan at magbigay ng suporta.',
-        'Upang magpakita ng mga kaugnay na patalastas sa pamamagitan ng aming mga kasosyo sa advertising.',
-        'Upang suriin ang paggamit ng site at pagbutihin ang aming mga serbisyo.',
-        'Upang matukoy, maiwasan, at matugunan ang pandaraya, pang-aabuso, at mga isyu sa seguridad.',
-        'Upang sumunod sa mga legal na obligasyon.',
-      ],
+      heading: 'Kung paano natin ginagamit ang impormasyon',
+      bullets: ['Upang tumugon sa iyong mga pagtatanong at maglaan ng suporta.', 'Upang ipakita ang nauugnay na mga anunsiyo sa pamamagitan ng ating mga kasosyo sa pag - aanunsiyo.', 'Sa analyse site gamitin at pagbutihin ang ating mga serbisyo.', 'Upang matuklasan, maiwasan, at masagot ang mga isyu tungkol sa pandaraya, pang - aabuso, at seguridad.', 'Upang makasunod sa legal na mga obligasyon.'],
     },
     {
-      heading: 'Mga serbisyo ng ikatlong partido',
-      bullets: [
-        'Google AdSense: Tumatanggap ng datos upang maghatid at sumukat ng mga patalastas.',
-        'Mga tagapagbigay ng analytics: Tumanggap ng hindi nagpapakilalang datos ng paggamit.',
-        'Netlify (hosting): Pinoproseso ang mga kahilingan at maaaring mag-log ng mga IP address.',
-        'Hindi namin ibinebenta ang iyong personal na impormasyon. Gayunpaman, ang pagbabahagi ng data sa mga kasosyo sa advertising ay maaaring ituring na isang pagbebenta sa ilalim ng CCPA (tingnan sa ibaba).',
-      ],
+      heading: 'Ikatlong-bahaging serbisyo',
+      bullets: ['Google AdSense: Tumatanggap ng datos upang magsilbi at sukatin ang mga anunsiyo.', 'Mga tagapaglaan ng Anatomys: Tumanggap ng mga impormasyon tungkol sa paggamit ng ayonymised.', 'Netlify (pagbabaybay): Proseso mga kahilingan at maaaring mag - log IP address.', 'Hindi namin ipinagbibili ang inyong personal na impormasyon. Gayunman, ang pagbabahagi ng datos sa mga kasosyo sa pag-aanunsiyo ay maaaring ituring na isang "sale" sa ilalim ng CCPA (tingnan sa ibaba).'],
     },
     {
-      heading: 'Pagpapanatili ng datos',
-      bullets: [
-        'Mga pagsusumite ng contact: Hanggang 2 taon.',
-        'Mga tala ng server: Hanggang 30 araw (tagapagbigay ng hosting).',
-        'Data ng Analytics: Hanggang 26 na buwan (hindi nagpapakilala).',
-        'Mga cookie sa advertising: Karaniwang 13 buwan (nag-iiba depende sa kasosyo).',
-      ],
+      heading: 'Pag - aaral ng Data',
+      bullets: ['Mga Pagpapasakop: Hanggang 2 taon.', 'Mga trosong server: Hanggang 30 araw (hosting provider).', 'Mga impormasyong anatomiko: Hanggang 26 na buwan (tinutukoy).', 'Mga pagluluto sa pag - aanunsiyo: Karaniwan nang 13 buwan (sa pamamagitan ng kapareha).'],
     },
     {
-      heading: 'Ang iyong mga karapatan sa ilalim ng GDPR (mga gumagamit ng EEA)',
-      paragraphs: [
-        'Kung ikaw ay nasa European Economic Area, mayroon kang mga sumusunod na karapatan sa ilalim ng General Data Protection Regulation:',
-      ],
-      bullets: [
-        'Karapatang maka-access: Humingi ng kopya ng personal na datos na hawak namin tungkol sa iyo.',
-        'Karapatan sa pagwawasto: Humiling ng pagwawasto ng hindi tumpak na datos.',
-        'Karapatang burahin: Humiling ng pagbura ng iyong datos (karapatang makalimutan).',
-        'Karapatang paghigpitan ang pagproseso: Humiling ng mga limitasyon sa kung paano namin ginagamit ang iyong data.',
-        'Karapatan sa kadalian ng pagdadala ng datos: Hilingin ang iyong datos sa isang portable na format.',
-        'Karapatang tumutol: Tumutol sa pagproseso, kabilang ang para sa direktang pagmemerkado.',
-        'Karapatang bawiin ang pahintulot: Bawiin ang pahintulot anumang oras kung saan ang pagproseso ay batay sa pahintulot.',
-        'Karapatang maghain ng reklamo: Maghain ng reklamo sa iyong awtoridad sa proteksyon ng datos.',
-      ],
+      heading: 'Ang inyong mga karapatan sa ilalim ng GDPR (mga gumagamit ng EEA)',
+      paragraphs: ['Kung ikaw ay nasa European Economic Area, taglay mo ang sumusunod na mga karapatan sa ilalim ng General Data Protection Regulation:'],
+      bullets: ['Kanang daanan: Humiling ng isang kopya ng personal na impormasyon na dala namin tungkol sa iyo.', 'Karapatan sa muling pagpapatibay: Humingi ng pagtutuwid sa maling impormasyon.', 'Karapatan sa panahon: Humingi ng deleksiyon ng iyong datos ("tamang makalimutan").', 'Karapatang limitahan ang pagproseso: Humingi ng limitasyon kung paano namin gagamitin ang inyong datos.', 'Karapatan sa portable ng datos: Hilingin ang iyong impormasyon sa isang nabibitbit na format.', 'Karapatang tumutol: Mahilig sa pagpoproseso, pati na sa tuwirang pagbebenta.', 'Karapatang tumanggi: Ini-draw ang pahintulot sa anumang oras kung saan ang pagpoproseso ay consent-based.', 'Karapatang magsampa ng reklamo: Sabihin ang reklamo sa iyong data protektibong awtoridad.'],
     },
     {
-      heading: 'Legal na batayan ng GDPR',
-      paragraphs: [
-        'Pinoproseso namin ang datos batay sa mga sumusunod: (a) Pahintulot — para sa personalized na advertising (pinamamahalaan ng aming mga kasosyo sa advertising); (b) Mga lehitimong interes — para sa analytics, seguridad, at pagpapabuti; (c) Kontrata — upang tumugon sa mga katanungan.',
-        'Para magamit ang iyong mga karapatan, makipag-ugnayan sa ${CONTACT_EMAIL}. Tutugon kami sa loob ng 30 araw.',
-      ],
+      heading: 'Ang legal na saligan ng GDPR',
+      paragraphs: ['Iniproseso namin ang datos tungkol sa mga baseng ito: (a) Consent - for personaled advertising (pinangasiwaan ng ating mga kasosyo sa pag-aanunsiyo); (b) Legitimate interes - para sa analytics, seguridad, at pagpapabuti; (c) Contract - upang tumugon sa mga enquiry.', 'Upang isagawa ang iyong mga karapatan, makipag - ugnayan sa . Kami\'y tumugon sa loob ng 30 araw.'],
     },
     {
-      heading: 'Ang iyong mga karapatan sa ilalim ng CCPA (mga gumagamit ng California)',
-      bullets: [
-        'Karapatang malaman: Humingi ng impormasyon tungkol sa nakalap na datos, mga pinagmulan, mga layunin, at mga ikatlong partido.',
-        'Karapatang magbura: Humiling ng pagbura ng iyong personal na impormasyon.',
-        'Karapatang mag-opt-out: Mag-opt out sa pagbebenta ng personal na impormasyon (maaaring maging kwalipikado ang pagbabahagi sa mga kasosyo sa ad).',
-        'Karapatan sa kawalan ng diskriminasyon: Hindi kami mandidiskrimina dahil sa paggamit ng iyong mga karapatan.',
-      ],
+      heading: 'Ang inyong mga karapatan sa ilalim ng CCPA (mga gumagamit ng California)',
+      bullets: ['Kanang malaman: Humingi ng impormasyon tungkol sa natipong impormasyon, mga pinagkunan, mga layunin, at ikatlong partido.', 'Karapatang mag - delete: Humiling ng pag - aalis ng iyong personal na impormasyon.', 'Karapatang pumili-out: Op mula sa "sale" ng personal na impormasyon (maaring maging kuwalipikado ang pakikipag-alyansa sa mga ad partner).', 'Karapatan sa hindi-diskriba: Tayo\'y walang pagtatangi sa paggamit ng iyong mga karapatan.'],
     },
     {
-      heading: 'Mga kategorya ng CCPA na nakolekta',
-      paragraphs: [
-        'Mga Kategorya: Mga Tagatukoy (IP address, ID ng device), Aktibidad sa Internet (pag-browse, mga interaksyon sa ad), Geolocation (tinatayang), Mga Hinuha (mga interes mula sa pag-browse).',
-        'Para gamitin ang mga karapatan o mag-opt out: ${CONTACT_EMAIL} o isaayos ang mga setting ng cookie.',
-      ],
+      heading: 'Nakolekta ang mga kategorya ng CCPA',
+      paragraphs: ['Categories: Identifiers (IP address, device ID), aktibidad sa Internet (browsing, ad interactions), Geolocation (approximate), Inferences (interes mula sa browsing).', 'Upang mag - ehersisyo ng mga karapatan o piliin:  o baguhin ang mga setting ng cookie.'],
     },
     {
-      heading: 'Mga internasyonal na paglilipat',
-      paragraphs: [
-        "Maaaring ilipat ang iyong impormasyon sa mga bansang may iba't ibang batas sa proteksyon ng datos, kabilang ang Estados Unidos. Gumagamit kami ng mga naaangkop na pananggalang tulad ng Mga Karaniwang Klausula ng Kontrata.",
-      ],
+      heading: 'Internasyonal na mga Paglipat',
+      paragraphs: ['Ang iyong impormasyon ay maaaring ilipat sa mga bansa na may iba\'t ibang batas sa pag - iingat ng impormasyon, pati na sa Estados Unidos. Gumagamit tayo ng angkop na mga pananggalang gaya ng Standard Contractual Clauses.'],
     },
     {
-      heading: 'Pagiging pribado ng mga bata',
-      paragraphs: [
-        'Ang ANQR ay hindi para sa mga batang wala pang 13 taong gulang (o 16 sa EEA). Hindi namin sadyang nangongolekta ng datos mula sa mga bata. Makipag-ugnayan sa ${CONTACT_EMAIL} kung naniniwala kang nagbigay ng impormasyon ang isang bata.',
-      ],
+      heading: 'Pribadong Buhay ng mga Bata',
+      paragraphs: ['ANG pornograpya ay hindi itinuturo sa mga batang wala pang 13 (o 16 sa EEA). Hindi natin namamalayang nakakakuha tayo ng impormasyon mula sa mga bata. Makipag - ugnayan sa  kung sa palagay mo ay naglaan ng impormasyon ang isang bata.'],
     },
     {
-      heading: 'Seguridad',
-      paragraphs: [
-        'Gumagamit kami ng mga naaangkop na teknikal at organisasyonal na hakbang upang protektahan ang datos, kabilang ang HTTPS encryption. Gayunpaman, walang transmisyon sa internet ang 100% ligtas.',
-      ],
+      heading: 'Katiwasayan',
+      paragraphs: ['Gumagamit tayo ng angkop na teknikal at organisadong mga hakbang upang maingatan ang impormasyon, pati na ang encryption ng HTTPS. Gayunman, walang transaksyon sa internet ang 100% secure.'],
     },
     {
-      heading: 'Huwag Subaybayan',
-      paragraphs: [
-        "Iginagalang namin ang mga signal ng browser na Huwag Subaybayan kung saan posible, bagama't maaaring hindi tumugon ang mga kasosyo sa advertising sa DNT.",
-      ],
+      heading: 'Huwag Magmaneho',
+      paragraphs: ['Ating pinararangalan ang mga hudyat ng "Deaster browser " kung saan maaari, bagaman ang mga kasosyo sa pag - aanunsiyo ay maaaring hindi tumugon sa DNT.'],
     },
     {
       heading: 'Mga pagbabago sa patakarang ito',
-      paragraphs: [
-        'Maaari naming i-update ang patakarang ito nang pana-panahon. Ang petsang Huling na-update ay nagpapahiwatig ng pinakabagong rebisyon. Ang mga mahahalagang pagbabago ay maaaring ipaalam sa pamamagitan ng isang banner ng site.',
-      ],
+      paragraphs: ['Maaari nating baguhin sa pana - panahon ang patakarang ito. Ang petsang "Huling panahon" ay nagpapahiwatig ng pinakabagong rebisyon. Mahahalagang pagbabago ang maaaring ipakipag - usap sa pamamagitan ng isang bandila sa site.'],
     },
     {
-      heading: 'Makipag-ugnayan sa amin',
-      paragraphs: [
-        'Para sa mga tanong tungkol sa privacy o para gamitin ang iyong mga karapatan: ${CONTACT_EMAIL} o gamitin ang aming pahina ng Makipag-ugnayan. Tumutugon kami sa mga kahilingan sa privacy sa loob ng 30 araw.',
-      ],
+      heading: 'Makipag - ugnayan sa amin',
+      paragraphs: ['Para sa personal na mga katanungan o upang isagawa ang iyong mga karapatan:  o gamitin ang ating contact page. Tinutugon natin ang personal na mga kahilingan sa loob ng 30 araw.'],
     },
   ],
 };
