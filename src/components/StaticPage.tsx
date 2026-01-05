@@ -692,15 +692,37 @@ export function StaticPage({ page }: StaticPageProps) {
 
   // Handle initial hash on mount
   useEffect(() => {
-    if (!hasToc) return;
+    if (!hasToc || !def) return;
     const hash = window.location.hash.slice(1);
-    if (hash) {
-      // Delay to ensure refs are populated
-      setTimeout(() => navigateToSection(hash), 100);
-    } else if (tocGroups.length > 0 && tocGroups[0].items.length > 0) {
-      setActiveSlug(tocGroups[0].items[0].id);
+    if (!hash) {
+      if (tocGroups.length > 0 && tocGroups[0].items.length > 0) {
+        setActiveSlug(tocGroups[0].items[0].id);
+      }
+      return;
     }
-  }, [hasToc, tocGroups, navigateToSection]);
+
+    // Use requestAnimationFrame with retry to ensure refs are populated
+    // This is more reliable than a fixed timeout, especially on production
+    let attempts = 0;
+    const maxAttempts = 20; // ~333ms at 60fps
+    let rafId: number;
+
+    const tryNavigate = () => {
+      const el = sectionRefs.current.get(hash);
+      if (el) {
+        navigateToSection(hash);
+      } else if (attempts < maxAttempts) {
+        attempts++;
+        rafId = requestAnimationFrame(tryNavigate);
+      }
+    };
+
+    rafId = requestAnimationFrame(tryNavigate);
+
+    return () => {
+      if (rafId) cancelAnimationFrame(rafId);
+    };
+  }, [hasToc, def, tocGroups, navigateToSection]);
 
   // Register section ref
   const registerSectionRef = useCallback((slug: string, el: HTMLElement | null) => {
