@@ -888,7 +888,7 @@
 888	"Dimensiune modul"
 889	"{{count}}°"
 890	"{{count}} module"
-891	"__ANQR_PH_0000_ms"
+891	"__ANQR_PH_0_ms"
 892	"{{count}}%"
 893	"{{count}}px"
 894	"Numai numere"
