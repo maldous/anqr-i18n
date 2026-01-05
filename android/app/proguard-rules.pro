@@ -28,10 +28,25 @@
 # ============================================
 -keep class com.google.android.gms.ads.** { *; }
 -keep class com.google.ads.** { *; }
+-keep interface com.google.android.gms.ads.** { *; }
 -dontwarn com.google.android.gms.ads.**
 
-# Keep AdMob initialization
+# Keep AdMob initialization and internal classes
+-keep class com.google.android.gms.internal.ads.** { *; }
 -keep class com.google.android.gms.internal.** { *; }
+
+# Keep AdMob listener interfaces and callbacks
+-keep interface com.google.android.gms.ads.AdListener { *; }
+-keep interface com.google.android.gms.ads.rewarded.RewardedAdLoadCallback { *; }
+-keep interface com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback { *; }
+-keep interface com.google.android.gms.ads.FullScreenContentCallback { *; }
+-keep interface com.google.android.gms.ads.OnUserEarnedRewardListener { *; }
+-keep class * implements com.google.android.gms.ads.AdListener { *; }
+-keep class * implements com.google.android.gms.ads.FullScreenContentCallback { *; }
+
+# Capacitor AdMob plugin event listeners
+-keep class com.getcapacitor.community.admob.** { *; }
+-keep interface com.getcapacitor.community.admob.** { *; }
 
 # ============================================
 # AndroidX and Support Libraries
@@ -127,9 +142,10 @@
 # ============================================
 # Additional Size Optimizations
 # ============================================
-# Remove unused code more aggressively
--dontnote **
--dontwarn **
+# Note: Removed -dontnote ** and -dontwarn ** to allow important warnings
+# Note: Removed -mergeinterfacesaggressively as it breaks plugin callbacks
 
-# Merge similar classes where possible
--mergeinterfacesaggressively
+# Suppress specific known harmless warnings only
+-dontwarn org.conscrypt.**
+-dontwarn org.bouncycastle.**
+-dontwarn org.openjsse.**

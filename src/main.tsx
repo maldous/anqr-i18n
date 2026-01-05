@@ -4,13 +4,30 @@ import App from './App.tsx';
 import './index.css';
 import './i18n'; // Initialize i18n
 import { ErrorBoundary } from './components/ErrorBoundary';
-import { prepareAllAds, showBannerAd } from './modules/admob-service';
+import { initializeAdMob, showBannerAd } from './modules/admob-service';
 
-// Initialize AdMob for native apps, prepare all ads, and show bottom banner
-prepareAllAds().then(() => {
-  // Show banner ad at bottom of screen on native apps
-  showBannerAd('bottom');
-});
+// Initialize AdMob for native apps after a short delay to ensure Capacitor bridge is ready
+// This is more reliable than calling at module load time
+const initAds = async () => {
+  try {
+    // Small delay to ensure Capacitor bridge is fully initialized
+    await new Promise((resolve) => setTimeout(resolve, 100));
+    const initialized = await initializeAdMob();
+    if (initialized) {
+      // Show banner ad at bottom of screen on native apps
+      await showBannerAd('bottom');
+    }
+  } catch (error) {
+    console.error('AdMob initialization error:', error);
+  }
+};
+
+// Start ad initialization after DOM is ready
+if (document.readyState === 'complete') {
+  initAds();
+} else {
+  window.addEventListener('load', initAds, { once: true });
+}
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>

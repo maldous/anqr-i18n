@@ -48,8 +48,21 @@ function serveGalleryFiles() {
   };
 }
 
+// Collect VITE_* environment variables from process.env (set by Makefile exports)
+// and make them available to import.meta.env in the client bundle
+function getEnvDefines() {
+  const defines: Record<string, string> = {};
+  for (const key of Object.keys(process.env)) {
+    if (key.startsWith('VITE_')) {
+      defines[`import.meta.env.${key}`] = JSON.stringify(process.env[key]);
+    }
+  }
+  return defines;
+}
+
 // https://vitejs.dev/config/
 export default defineConfig({
+  define: getEnvDefines(),
   plugins: [
     serveGalleryFiles(), // Serve gallery files before React plugin
     react(),
