@@ -7,8 +7,8 @@ android {
         applicationId "link.anqr.app"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode 43
-        versionName "1.43"
+        versionCode 44
+        versionName "1.44"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         
         // Enable vector drawable support for smaller APK
