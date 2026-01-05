@@ -678,12 +678,13 @@ export function StaticPage({ page }: StaticPageProps) {
   }, [hasToc]);
 
   // Navigate to section with smooth scroll
+  // Uses scrollIntoView which is more reliable than manual offset calculation
   const navigateToSection = useCallback((slug: string) => {
     const el = sectionRefs.current.get(slug);
-    if (el && contentRef.current) {
-      const container = contentRef.current;
-      const elementTop = el.offsetTop - 80; // Account for sticky header
-      container.scrollTo({ top: elementTop, behavior: 'smooth' });
+    if (el) {
+      // scrollIntoView handles nested scroll containers correctly
+      // scroll-margin-top CSS handles the header offset
+      el.scrollIntoView({ behavior: 'smooth', block: 'start' });
       setActiveSlug(slug);
       // Update URL hash without triggering scroll
       window.history.replaceState(null, '', `#${slug}`);
@@ -702,15 +703,19 @@ export function StaticPage({ page }: StaticPageProps) {
     }
 
     // Use requestAnimationFrame with retry to ensure refs are populated
-    // This is more reliable than a fixed timeout, especially on production
+    // Once found, add small delay to ensure layout is complete before scrolling
     let attempts = 0;
-    const maxAttempts = 20; // ~333ms at 60fps
+    const maxAttempts = 30; // ~500ms at 60fps
     let rafId: number;
+    let timeoutId: ReturnType<typeof setTimeout>;
 
     const tryNavigate = () => {
       const el = sectionRefs.current.get(hash);
       if (el) {
-        navigateToSection(hash);
+        // Small delay to ensure layout is complete on production
+        timeoutId = setTimeout(() => {
+          navigateToSection(hash);
+        }, 100);
       } else if (attempts < maxAttempts) {
         attempts++;
         rafId = requestAnimationFrame(tryNavigate);
@@ -721,6 +726,7 @@ export function StaticPage({ page }: StaticPageProps) {
 
     return () => {
       if (rafId) cancelAnimationFrame(rafId);
+      if (timeoutId) clearTimeout(timeoutId);
     };
   }, [hasToc, def, tocGroups, navigateToSection]);
 
