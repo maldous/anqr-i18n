@@ -58,7 +58,44 @@ const PROD_REWARDED_IDS: Record<RewardedType, string> = {
 };
 
 // Use test ads in development or when testing flag is set
-const USE_TEST_ADS = import.meta.env.DEV || import.meta.env.VITE_ADMOB_TESTING === 'true';
+// Production ads are tried first; if they fail, we fallback to test ads
+const hasProductionIds = Boolean(
+  import.meta.env.VITE_ADMOB_BANNER_BOTTOM ||
+  import.meta.env.VITE_ADMOB_INTERSTITIAL_EXPORT ||
+  import.meta.env.VITE_ADMOB_REWARDED_PREMIUM
+);
+const FORCE_TEST_ADS = import.meta.env.DEV || import.meta.env.VITE_ADMOB_TESTING === 'true';
+
+// Track which ad types have failed with production IDs and should use test ads
+const prodAdsFailed = {
+  bannerTop: false,
+  bannerBottom: false,
+  interstitialExport: false,
+  interstitialGallery: false,
+  interstitialGeneration: false,
+  rewardedPremium: false,
+  rewardedExportHd: false,
+};
+
+/**
+ * Check if we should use test ads for a given ad type
+ * Returns true if: forced test mode, no production IDs, or production ads have failed
+ */
+function shouldUseTestAds(adType: keyof typeof prodAdsFailed): boolean {
+  if (FORCE_TEST_ADS) return true;
+  if (!hasProductionIds) return true;
+  return prodAdsFailed[adType];
+}
+
+/**
+ * Mark that production ads failed for a given type - will use test ads from now on
+ */
+function markProdAdFailed(adType: keyof typeof prodAdsFailed): void {
+  if (!prodAdsFailed[adType]) {
+    prodAdsFailed[adType] = true;
+    console.error(`AdMob: Production ad failed for ${adType}, falling back to test ads`);
+  }
+}
 
 // ============================================
 // State Management
@@ -70,6 +107,7 @@ let isInitialized = false;
 let initInFlight: Promise<boolean> | null = null;
 let listenersSetup = false;
 let currentBannerPosition: 'top' | 'bottom' | null = null;
+let pendingBannerPosition: 'top' | 'bottom' | null = null; // Track position during load attempt
 let currentBannerHeight = 0;
 
 // Callbacks for banner height changes
@@ -110,47 +148,81 @@ let generationCount = 0;
 /**
  * Initialize AdMob SDK
  * Should be called once when the app starts
+ * Includes retry logic for reliability
  */
 export async function initializeAdMob(): Promise<boolean> {
   if (!Capacitor.isNativePlatform()) {
-    console.warn('AdMob: Not a native platform, skipping initialization');
+    // Use console.error for critical logs that survive ProGuard stripping
+    console.error('AdMob: Not a native platform, skipping initialization');
     return false;
   }
 
   if (isInitialized) {
+    console.error('AdMob: Already initialized');
     return true;
   }
 
   // If multiple parts of the app call initialize at the same time, share the same promise
   if (initInFlight) {
+    console.error('AdMob: Initialization already in progress, waiting...');
     return initInFlight;
   }
 
   initInFlight = (async () => {
-    try {
-      console.log('AdMob: Initializing...');
-      await AdMob.initialize({
-        initializeForTesting: USE_TEST_ADS,
-      });
-      console.log('AdMob: Initialized');
+    const MAX_RETRIES = 3;
+    const RETRY_DELAY = 2000; // Increased delay between retries
 
-      setupAdMobListeners();
-      isInitialized = true;
+    for (let attempt = 1; attempt <= MAX_RETRIES; attempt++) {
+      try {
+        console.error(`AdMob: Initializing (attempt ${attempt}/${MAX_RETRIES}), forceTestMode=${FORCE_TEST_ADS}, hasProductionIds=${hasProductionIds}`);
+        
+        // The initialize call may take a while due to Google Play Services signal collection
+        // This is normal and the SDK will still work even if signal collection times out
+        await AdMob.initialize({
+          initializeForTesting: FORCE_TEST_ADS,
+        });
+        
+        console.error('AdMob: SDK initialized successfully');
 
-      // Preload the most common ads only; others can be prepared on-demand
-      await prepareInterstitial('export');
-      await prepareRewardedAd('premium');
+        setupAdMobListeners();
+        isInitialized = true;
 
-      return true;
-    } catch (error) {
-      console.error('AdMob: Initialization failed:', error);
-      return false;
-    } finally {
-      initInFlight = null;
+        // Longer delay to ensure SDK is fully ready after initialization
+        // This helps with the GMS signal collection timeout issue
+        console.error('AdMob: Waiting for SDK to stabilize...');
+        await new Promise((resolve) => setTimeout(resolve, 1500));
+
+        // Preload the most common ads only; others can be prepared on-demand
+        console.error('AdMob: Preparing interstitial ad...');
+        const interstitialResult = await prepareInterstitial('export');
+        console.error(`AdMob: Interstitial prepare result: ${interstitialResult}`);
+        
+        console.error('AdMob: Preparing rewarded ad...');
+        const rewardedResult = await prepareRewardedAd('premium');
+        console.error(`AdMob: Rewarded prepare result: ${rewardedResult}`);
+
+        console.error('AdMob: Initialization complete');
+        return true;
+      } catch (error) {
+        const errorMsg = error instanceof Error ? error.message : String(error);
+        console.error(`AdMob: Initialization attempt ${attempt} failed: ${errorMsg}`);
+        
+        if (attempt < MAX_RETRIES) {
+          console.error(`AdMob: Retrying in ${RETRY_DELAY}ms...`);
+          await new Promise((resolve) => setTimeout(resolve, RETRY_DELAY));
+        }
+      }
     }
+
+    console.error('AdMob: All initialization attempts failed');
+    return false;
   })();
 
-  return initInFlight;
+  try {
+    return await initInFlight;
+  } finally {
+    initInFlight = null;
+  }
 }
 
 /**
@@ -162,21 +234,47 @@ function setupAdMobListeners() {
   }
   listenersSetup = true;
 
-  // Banner ad listeners
+  // Banner ad listeners - using console.error for logs that survive ProGuard
   AdMob.addListener(BannerAdPluginEvents.Loaded, () => {
-    console.log('AdMob: Banner ad loaded');
+    console.error('AdMob: Banner ad loaded successfully');
+    // Clear pending position on successful load
+    pendingBannerPosition = null;
   });
 
   AdMob.addListener(BannerAdPluginEvents.FailedToLoad, (error) => {
     console.error('AdMob: Banner ad failed to load:', error);
+    console.error(`AdMob: pendingBannerPosition=${pendingBannerPosition}, currentBannerPosition=${currentBannerPosition}`);
+    
+    // Handle fallback to test ads
+    // Use currentBannerPosition as fallback if pendingBannerPosition was cleared
+    const position = pendingBannerPosition || currentBannerPosition;
+    if (position) {
+      const adTypeKey = position === 'top' ? 'bannerTop' : 'bannerBottom';
+      console.error(`AdMob: Checking fallback for ${adTypeKey}, shouldUseTestAds=${shouldUseTestAds(adTypeKey)}`);
+      if (!shouldUseTestAds(adTypeKey)) {
+        markProdAdFailed(adTypeKey);
+        // Clear state before retry to avoid loops
+        pendingBannerPosition = null;
+        currentBannerPosition = null;
+        // Retry with test ads
+        console.error('AdMob: Retrying banner with test ads after FailedToLoad event...');
+        showBannerAd(position);
+      } else {
+        // Test ads also failed, clear state
+        pendingBannerPosition = null;
+        console.error('AdMob: Test ads also failed, giving up');
+      }
+    } else {
+      console.error('AdMob: No position tracked, cannot retry');
+    }
   });
 
   AdMob.addListener(BannerAdPluginEvents.Opened, () => {
-    console.log('AdMob: Banner ad opened');
+    console.error('AdMob: Banner ad opened');
   });
 
   AdMob.addListener(BannerAdPluginEvents.Closed, () => {
-    console.log('AdMob: Banner ad closed');
+    console.error('AdMob: Banner ad closed');
   });
 
   AdMob.addListener(BannerAdPluginEvents.SizeChanged, (size: AdMobBannerSize) => {
@@ -195,7 +293,7 @@ function setupAdMobListeners() {
   // because the Loaded event fires asynchronously and currentlyPreparingInterstitial
   // may have changed by then (causing state desync)
   AdMob.addListener(InterstitialAdPluginEvents.Loaded, () => {
-    console.log('AdMob: Interstitial ad loaded');
+    console.error('AdMob: Interstitial ad loaded');
     if (lastPreparedInterstitialType) {
       interstitialLoadedState[lastPreparedInterstitialType] = true;
     }
@@ -205,15 +303,20 @@ function setupAdMobListeners() {
     console.error('AdMob: Interstitial ad failed to load:', error);
     if (lastPreparedInterstitialType) {
       interstitialLoadedState[lastPreparedInterstitialType] = false;
+      // Mark for fallback to test ads on next prepare
+      const adTypeKey = getInterstitialAdTypeKey(lastPreparedInterstitialType);
+      if (!shouldUseTestAds(adTypeKey)) {
+        markProdAdFailed(adTypeKey);
+      }
     }
   });
 
   AdMob.addListener(InterstitialAdPluginEvents.Showed, () => {
-    console.log('AdMob: Interstitial ad showed');
+    console.error('AdMob: Interstitial ad showed');
   });
 
   AdMob.addListener(InterstitialAdPluginEvents.Dismissed, () => {
-    console.log('AdMob: Interstitial ad dismissed');
+    console.error('AdMob: Interstitial ad dismissed');
 
     // The plugin only keeps a single interstitial instance; after dismissal it must be prepared again.
     for (const key of Object.keys(interstitialLoadedState)) {
@@ -240,7 +343,7 @@ function setupAdMobListeners() {
   // Use lastPreparedRewardedType instead of currentlyPreparingRewarded
   // to avoid state desync when Loaded event fires asynchronously
   AdMob.addListener(RewardInterstitialAdPluginEvents.Loaded, () => {
-    console.log('AdMob: Rewarded Interstitial ad loaded');
+    console.error('AdMob: Rewarded Interstitial ad loaded');
     if (lastPreparedRewardedType) {
       rewardedLoadedState[lastPreparedRewardedType] = true;
     }
@@ -250,15 +353,20 @@ function setupAdMobListeners() {
     console.error('AdMob: Rewarded Interstitial ad failed to load:', error);
     if (lastPreparedRewardedType) {
       rewardedLoadedState[lastPreparedRewardedType] = false;
+      // Mark for fallback to test ads on next prepare
+      const adTypeKey = getRewardedAdTypeKey(lastPreparedRewardedType);
+      if (!shouldUseTestAds(adTypeKey)) {
+        markProdAdFailed(adTypeKey);
+      }
     }
   });
 
   AdMob.addListener(RewardInterstitialAdPluginEvents.Showed, () => {
-    console.log('AdMob: Rewarded Interstitial ad showed');
+    console.error('AdMob: Rewarded Interstitial ad showed');
   });
 
   AdMob.addListener(RewardInterstitialAdPluginEvents.Dismissed, () => {
-    console.log('AdMob: Rewarded Interstitial ad dismissed');
+    console.error('AdMob: Rewarded Interstitial ad dismissed');
     // Reset loaded state
     for (const key of Object.keys(rewardedLoadedState)) {
       rewardedLoadedState[key as RewardedType] = false;
@@ -272,7 +380,7 @@ function setupAdMobListeners() {
   AdMob.addListener(
     RewardInterstitialAdPluginEvents.Rewarded,
     (reward: AdMobRewardInterstitialItem) => {
-      console.log('AdMob: User earned reward:', reward);
+      console.error('AdMob: User earned reward:', reward);
     }
   );
 }
@@ -306,23 +414,38 @@ export async function showBannerAd(position: 'top' | 'bottom' = 'bottom'): Promi
     await hideBannerAd();
   }
 
-  try {
-    const prodAdId = position === 'top' ? PROD_BANNER_TOP_ID : PROD_BANNER_BOTTOM_ID;
+  const adTypeKey = position === 'top' ? 'bannerTop' : 'bannerBottom';
+  const prodAdId = position === 'top' ? PROD_BANNER_TOP_ID : PROD_BANNER_BOTTOM_ID;
+  const useTestAds = shouldUseTestAds(adTypeKey);
+  
+  // Track pending position for FailedToLoad event handler
+  pendingBannerPosition = position;
 
+  try {
     const options: BannerAdOptions = {
-      adId: USE_TEST_ADS ? TEST_BANNER_AD_ID : prodAdId,
+      adId: useTestAds ? TEST_BANNER_AD_ID : prodAdId,
       adSize: BannerAdSize.ADAPTIVE_BANNER,
       position: position === 'top' ? BannerAdPosition.TOP_CENTER : BannerAdPosition.BOTTOM_CENTER,
       margin: 0,
-      isTesting: USE_TEST_ADS,
+      isTesting: useTestAds,
     };
 
+    console.error(`AdMob: Showing banner at ${position}, testMode=${useTestAds}, adId=${options.adId}`);
     await AdMob.showBanner(options);
     currentBannerPosition = position;
-    console.log(`AdMob: Banner shown at ${position}`);
+    // Note: Don't clear pendingBannerPosition here - wait for Loaded or FailedToLoad event
+    // The showBanner() call returns before we know if the ad actually loaded
+    console.error(`AdMob: Banner request sent for ${position}`);
     return true;
   } catch (error) {
     console.error('AdMob: Failed to show banner:', error);
+    
+    // If production ads failed, retry with test ads
+    if (!useTestAds) {
+      markProdAdFailed(adTypeKey);
+      console.error('AdMob: Retrying banner with test ads...');
+      return showBannerAd(position); // Recursive retry with test ads
+    }
     return false;
   }
 }
@@ -352,7 +475,7 @@ export async function hideBannerAd(): Promise<void> {
   try {
     await AdMob.hideBanner();
     currentBannerPosition = null;
-    console.log('AdMob: Banner hidden');
+    console.error('AdMob: Banner hidden');
   } catch (error) {
     console.error('AdMob: Failed to hide banner:', error);
   }
@@ -369,7 +492,7 @@ export async function removeBannerAd(): Promise<void> {
   try {
     await AdMob.removeBanner();
     currentBannerPosition = null;
-    console.log('AdMob: Banner removed');
+    console.error('AdMob: Banner removed');
   } catch (error) {
     console.error('AdMob: Failed to remove banner:', error);
   }
@@ -380,7 +503,21 @@ export async function removeBannerAd(): Promise<void> {
 // ============================================
 
 /**
+ * Get the ad type key for tracking production failures
+ */
+function getInterstitialAdTypeKey(type: InterstitialType): keyof typeof prodAdsFailed {
+  const keyMap: Record<InterstitialType, keyof typeof prodAdsFailed> = {
+    export: 'interstitialExport',
+    gallery: 'interstitialGallery',
+    generation: 'interstitialGeneration',
+  };
+  return keyMap[type];
+}
+
+/**
  * Prepare (preload) an interstitial ad of the specified type
+ * If production ads fail, the FailedToLoad listener marks them for fallback,
+ * and subsequent calls will automatically use test ads.
  * @param type - 'export', 'gallery', or 'generation'
  */
 export async function prepareInterstitial(type: InterstitialType = 'export'): Promise<boolean> {
@@ -399,18 +536,22 @@ export async function prepareInterstitial(type: InterstitialType = 'export'): Pr
     return true;
   }
 
+  const adTypeKey = getInterstitialAdTypeKey(type);
+  const useTestAds = shouldUseTestAds(adTypeKey);
+
   try {
     _currentlyPreparingInterstitial = type;
     lastPreparedInterstitialType = type; // Track for async loaded event
     const prodAdId = PROD_INTERSTITIAL_IDS[type];
 
     const options: AdOptions = {
-      adId: USE_TEST_ADS ? TEST_INTERSTITIAL_AD_ID : prodAdId,
-      isTesting: USE_TEST_ADS,
+      adId: useTestAds ? TEST_INTERSTITIAL_AD_ID : prodAdId,
+      isTesting: useTestAds,
     };
 
+    console.error(`AdMob: Preparing interstitial (${type}), testMode=${useTestAds}`);
     await AdMob.prepareInterstitial(options);
-    console.log(`AdMob: Interstitial (${type}) prepared`);
+    console.error(`AdMob: Interstitial (${type}) prepare call completed`);
     return true;
   } catch (error) {
     console.error(`AdMob: Failed to prepare interstitial (${type}):`, error);
@@ -435,7 +576,7 @@ export async function showInterstitial(type: InterstitialType = 'export'): Promi
 
   // Ensure the requested interstitial is loaded (prepareInterstitial may replace the currently loaded one)
   if (!interstitialLoadedState[type]) {
-    console.log(`AdMob: Interstitial (${type}) not loaded, preparing...`);
+    console.error(`AdMob: Interstitial (${type}) not loaded, preparing...`);
     await prepareInterstitial(type);
 
     const start = Date.now();
@@ -445,13 +586,13 @@ export async function showInterstitial(type: InterstitialType = 'export'): Promi
   }
 
   if (!interstitialLoadedState[type]) {
-    console.log(`AdMob: Interstitial (${type}) still not ready`);
+    console.error(`AdMob: Interstitial (${type}) still not ready after waiting`);
     return false;
   }
 
   // If an interstitial is already being shown, don't attempt to show another
   if (interstitialDismissResolver) {
-    console.warn('AdMob: Interstitial already showing, skipping');
+    console.error('AdMob: Interstitial already showing, skipping');
     return false;
   }
 
@@ -463,7 +604,7 @@ export async function showInterstitial(type: InterstitialType = 'export'): Promi
 
   try {
     await AdMob.showInterstitial();
-    console.log(`AdMob: Interstitial (${type}) show requested`);
+    console.error(`AdMob: Interstitial (${type}) show requested`);
 
     // Wait until the user dismisses the ad (or it fails to show)
     const timeout = new Promise<boolean>((resolve) => setTimeout(() => resolve(false), 60000));
@@ -511,7 +652,20 @@ export function getGenerationCount(): number {
 // ============================================
 
 /**
+ * Get the ad type key for tracking production failures
+ */
+function getRewardedAdTypeKey(type: RewardedType): keyof typeof prodAdsFailed {
+  const keyMap: Record<RewardedType, keyof typeof prodAdsFailed> = {
+    premium: 'rewardedPremium',
+    export_hd: 'rewardedExportHd',
+  };
+  return keyMap[type];
+}
+
+/**
  * Prepare (preload) a rewarded interstitial ad
+ * If production ads fail, the FailedToLoad listener marks them for fallback,
+ * and subsequent calls will automatically use test ads.
  * @param type - 'premium' or 'export_hd'
  */
 export async function prepareRewardedAd(type: RewardedType): Promise<boolean> {
@@ -530,18 +684,22 @@ export async function prepareRewardedAd(type: RewardedType): Promise<boolean> {
     return true;
   }
 
+  const adTypeKey = getRewardedAdTypeKey(type);
+  const useTestAds = shouldUseTestAds(adTypeKey);
+
   try {
     _currentlyPreparingRewarded = type;
     lastPreparedRewardedType = type; // Track for async loaded event
     const prodAdId = PROD_REWARDED_IDS[type];
 
     const options: RewardInterstitialAdOptions = {
-      adId: USE_TEST_ADS ? TEST_REWARDED_INTERSTITIAL_AD_ID : prodAdId,
-      isTesting: USE_TEST_ADS,
+      adId: useTestAds ? TEST_REWARDED_INTERSTITIAL_AD_ID : prodAdId,
+      isTesting: useTestAds,
     };
 
+    console.error(`AdMob: Preparing rewarded ad (${type}), testMode=${useTestAds}`);
     await AdMob.prepareRewardInterstitialAd(options);
-    console.log(`AdMob: Rewarded Interstitial ad (${type}) prepared`);
+    console.error(`AdMob: Rewarded ad (${type}) prepare call completed`);
     return true;
   } catch (error) {
     console.error(`AdMob: Failed to prepare rewarded interstitial ad (${type}):`, error);
@@ -563,20 +721,20 @@ export async function showRewardedAd(
 
   // Prepare if not loaded
   if (!rewardedLoadedState[type]) {
-    console.log(`AdMob: Rewarded Interstitial ad (${type}) not loaded, preparing...`);
+    console.error(`AdMob: Rewarded Interstitial ad (${type}) not loaded, preparing...`);
     await prepareRewardedAd(type);
     // Give it a moment to load
     await new Promise((resolve) => setTimeout(resolve, 2000));
   }
 
   if (!rewardedLoadedState[type]) {
-    console.log(`AdMob: Rewarded Interstitial ad (${type}) still not ready`);
+    console.error(`AdMob: Rewarded Interstitial ad (${type}) still not ready`);
     return null;
   }
 
   try {
     const result = await AdMob.showRewardInterstitialAd();
-    console.log(`AdMob: Rewarded Interstitial ad (${type}) completed:`, result);
+    console.error(`AdMob: Rewarded Interstitial ad (${type}) completed:`, result);
     rewardedLoadedState[type] = false;
 
     // Return the reward (result is the AdMobRewardInterstitialItem itself)

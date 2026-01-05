@@ -169,6 +169,8 @@ android\:sync:
 	# Remove pre-compressed files that cause Android asset merger conflicts
 	find dist -name '*.gz' -delete 2>/dev/null || true
 	find dist -name '*.br' -delete 2>/dev/null || true
+	# Remove large assets not needed in mobile app (images load from anqr.link)
+	rm -rf dist/gallery dist/images dist/king.gif dist/tsunami.jpg 2>/dev/null || true
 	npx cap sync android
 
 # Open in Android Studio for development
@@ -185,8 +187,8 @@ android\:build:
 	rm -rf dist/gallery 2>/dev/null || true
 	# Remove source maps if any
 	find dist -name '*.map' -delete 2>/dev/null || true
-	# Remove large demo files not needed in mobile app (gallery loads from anqr.link)
-	rm -fr dist/king.gif dist/tsunami.jpg dist/images 2>/dev/null || true
+	# Remove large demo files not needed in mobile app (images load from anqr.link)
+	rm -rf dist/king.gif dist/tsunami.jpg dist/images 2>/dev/null || true
 	npx cap sync android
 	cd android && ./gradlew assembleDebug
 	@echo "Debug APK: android/app/build/outputs/apk/debug/app-debug.apk"
@@ -201,8 +203,8 @@ android\:release:
 	rm -rf dist/gallery 2>/dev/null || true
 	# Remove source maps if any
 	find dist -name '*.map' -delete 2>/dev/null || true
-	# Remove large demo files not needed in mobile app (gallery loads from anqr.link)
-	rm -f dist/king.gif dist/tsunami.jpg dist/images 2>/dev/null || true
+	# Remove large demo files not needed in mobile app (images load from anqr.link)
+	rm -rf dist/king.gif dist/tsunami.jpg dist/images 2>/dev/null || true
 	npx cap sync android
 	cd android && ./gradlew bundleRelease
 	@echo "Release AAB: android/app/build/outputs/bundle/release/app-release.aab"
