@@ -156,6 +156,7 @@ function renderTextContent(text: string, lang: string): React.ReactNode {
 
 // ToC group structure for pages with table of contents
 type TocGroup = {
+  key: string; // stable, non-i18n identifier for group
   title: string;
   id?: string; // ID of the first section in this group (for header navigation)
   items: { id: string; title: string }[];
@@ -164,12 +165,12 @@ type TocGroup = {
 // Build TOC for Guide page with categorized groups
 function buildGuideToc(sections: PageSection[], t: (key: string) => string): TocGroup[] {
   const groups: TocGroup[] = [
-    { title: t('nav.guide'), id: '', items: [] },
-    { title: t('tiers.basic'), id: '', items: [] },
-    { title: t('tiers.advanced'), id: '', items: [] },
-    { title: t('tiers.professional'), id: '', items: [] },
-    { title: 'API', id: '', items: [] },
-    { title: t('payload.other'), id: '', items: [] },
+    { key: 'guide-0', title: t('nav.guide'), id: '', items: [] },
+    { key: 'guide-1', title: t('tiers.basic'), id: '', items: [] },
+    { key: 'guide-2', title: t('tiers.advanced'), id: '', items: [] },
+    { key: 'guide-3', title: t('tiers.professional'), id: '', items: [] },
+    { key: 'guide-4', title: 'API', id: '', items: [] },
+    { key: 'guide-5', title: t('payload.other'), id: '', items: [] },
   ];
 
   // Map section indices to groups (stable across languages)
@@ -212,7 +213,12 @@ function buildLearnToc(sections: PageSection[], _t: (key: string) => string): To
 
     // Guide title sections
     if (guideStartIndices.includes(index)) {
-      groups.push({ title: section.heading, id, items: [] });
+      groups.push({
+        key: `learn-${groups.length}`,
+        title: section.heading,
+        id,
+        items: [],
+      });
     } else if (groups.length > 0) {
       groups[groups.length - 1].items.push({ id, title: section.heading });
     }
@@ -236,7 +242,12 @@ function buildExamplesToc(sections: PageSection[], _t: (key: string) => string):
 
     // Example title sections
     if (exampleStartIndices.includes(index)) {
-      groups.push({ title: section.heading, id, items: [] });
+      groups.push({
+        key: `example-${groups.length}`,
+        title: section.heading,
+        id,
+        items: [],
+      });
     } else if (groups.length > 0) {
       groups[groups.length - 1].items.push({ id, title: section.heading });
     }
@@ -284,21 +295,21 @@ function TableOfContents({
   // On desktop, respect isOpen prop. On mobile, always render (has its own mobileOpen state)
   // We check window width via CSS classes, so we render both but hide with lg:hidden / hidden lg:block
   const [expandedGroups, setExpandedGroups] = useState<Set<string>>(
-    () => new Set(groups.length > 0 ? [groups[0].title] : [])
+    () => new Set(groups.length > 0 ? [groups[0].key] : [])
   );
 
   // Reset expanded groups when groups change (e.g., language change)
   useEffect(() => {
-    setExpandedGroups(new Set(groups.length > 0 ? [groups[0].title] : []));
+    setExpandedGroups(new Set(groups.length > 0 ? [groups[0].key] : []));
   }, [groups]);
 
-  const toggleGroup = (title: string) => {
+  const toggleGroup = (key: string) => {
     setExpandedGroups((prev) => {
       const next = new Set(prev);
-      if (next.has(title)) {
-        next.delete(title);
+      if (next.has(key)) {
+        next.delete(key);
       } else {
-        next.add(title);
+        next.add(key);
       }
       return next;
     });
@@ -322,15 +333,15 @@ function TableOfContents({
       handleItemClick(group.items[0].id);
     }
     // Also expand the group if it's collapsed
-    if (!expandedGroups.has(group.title)) {
-      toggleGroup(group.title);
+    if (!expandedGroups.has(group.key)) {
+      toggleGroup(group.key);
     }
   };
 
   const tocContent = (
     <nav className="text-sm">
       {groups.map((group) => (
-        <div key={group.title} className="mb-4">
+        <div key={group.key} className="mb-4">
           {/* Group header - clickable to navigate to first item */}
           <div className="flex items-center justify-between">
             <button
@@ -343,11 +354,11 @@ function TableOfContents({
             </button>
             <button
               type="button"
-              onClick={() => toggleGroup(group.title)}
+              onClick={() => toggleGroup(group.key)}
               className="p-2 rounded-r hover:bg-muted transition-colors"
-              title={expandedGroups.has(group.title) ? 'Collapse' : 'Expand'}
+              title={expandedGroups.has(group.key) ? 'Collapse' : 'Expand'}
             >
-              {expandedGroups.has(group.title) ? (
+              {expandedGroups.has(group.key) ? (
                 <ChevronUp className="h-4 w-4 text-muted-foreground" />
               ) : (
                 <ChevronDown className="h-4 w-4 text-muted-foreground" />
@@ -355,7 +366,7 @@ function TableOfContents({
             </button>
           </div>
           {/* Sub-items - smaller text for clear hierarchy */}
-          {expandedGroups.has(group.title) && (
+          {expandedGroups.has(group.key) && (
             <ul className="mt-1 space-y-0.5 border-l-2 border-muted ml-2">
               {group.items.map((item) => (
                 <li key={item.id}>
