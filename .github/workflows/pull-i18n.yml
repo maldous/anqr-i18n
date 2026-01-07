@@ -11,9 +11,10 @@ on:
   # Manual trigger from GitHub Actions UI
   workflow_dispatch:
   
-  # Scheduled daily check (optional - runs at 6am UTC)
-  schedule:
-    - cron: '0 6 * * *'
+  # Scheduled daily check - DISABLED until community activity picks up
+  # Uncomment when you start receiving community contributions:
+  # schedule:
+  #   - cron: '0 6 * * *'
 
 jobs:
   pull-i18n:
