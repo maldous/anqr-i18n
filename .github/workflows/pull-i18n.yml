@@ -1,0 +1,108 @@
+# Pull i18n translations from public repo
+# Allows manual trigger to pull community contributions from maldous/anqr-i18n
+# Can also be scheduled to run daily to check for updates
+#
+# This workflow creates a PR with any community translation updates,
+# allowing maintainers to review before merging.
+
+name: Pull i18n Community Contributions
+
+on:
+  # Manual trigger from GitHub Actions UI
+  workflow_dispatch:
+  
+  # Scheduled daily check (optional - runs at 6am UTC)
+  schedule:
+    - cron: '0 6 * * *'
+
+jobs:
+  pull-i18n:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Setup SSH for public repo
+        env:
+          I18N_DEPLOY_KEY: ${{ secrets.I18N_DEPLOY_KEY }}
+        run: |
+          if [ -z "$I18N_DEPLOY_KEY" ]; then
+            echo "Error: I18N_DEPLOY_KEY secret is not set"
+            exit 1
+          fi
+          mkdir -p ~/.ssh
+          echo "$I18N_DEPLOY_KEY" > ~/.ssh/id_ed25519_public
+          chmod 600 ~/.ssh/id_ed25519_public
+          
+          cat >> ~/.ssh/config << EOF
+          Host github-public
+            HostName github.com
+            User git
+            IdentityFile ~/.ssh/id_ed25519_public
+            IdentitiesOnly yes
+            StrictHostKeyChecking no
+          EOF
+          
+          chmod 600 ~/.ssh/config
+
+      - name: Configure git
+        run: |
+          git config user.name "GitHub Actions"
+          git config user.email "actions@github.com"
+
+      - name: Add public repo remote
+        run: |
+          git remote add anqr-i18n git@github-public:maldous/anqr-i18n.git || true
+          git fetch anqr-i18n
+
+      - name: Create branch for i18n updates
+        run: |
+          BRANCH_NAME="i18n-updates-$(date +%Y%m%d-%H%M%S)"
+          git checkout -b "$BRANCH_NAME"
+          echo "BRANCH_NAME=$BRANCH_NAME" >> $GITHUB_ENV
+
+      - name: Pull static translations
+        run: |
+          git subtree pull --prefix=src/i18n/static/txt anqr-i18n static --squash -m "Pull community static translations" || echo "No static changes or already up to date"
+
+      - name: Pull locales translations
+        run: |
+          git subtree pull --prefix=src/i18n/locales/txt anqr-i18n locales --squash -m "Pull community locales translations" || echo "No locales changes or already up to date"
+
+      - name: Check for changes
+        id: changes
+        run: |
+          if git diff --quiet HEAD origin/master; then
+            echo "has_changes=false" >> $GITHUB_OUTPUT
+            echo "No new translations to pull"
+          else
+            echo "has_changes=true" >> $GITHUB_OUTPUT
+            echo "New translations found!"
+            git log --oneline origin/master..HEAD
+          fi
+
+      - name: Push branch and create PR
+        if: steps.changes.outputs.has_changes == 'true'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          git push origin "$BRANCH_NAME"
+          gh pr create \
+            --title "🌐 Community i18n translations update" \
+            --body "This PR contains community translation updates pulled from the public [anqr-i18n](https://github.com/maldous/anqr-i18n) repository.
+
+          ## Changes
+          $(git log --oneline origin/master..HEAD)
+
+          ## Review checklist
+          - [ ] Translations look correct
+          - [ ] No malicious content
+          - [ ] Format is preserved
+
+          ---
+          *This PR was automatically created by the pull-i18n workflow.*" \
+            --base master \
+            --head "$BRANCH_NAME"
