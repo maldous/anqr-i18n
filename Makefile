@@ -1,4 +1,4 @@
-.PHONY: dev build gallery gallery\:gif sitemap deploy android android\:init android\:sync android\:build android\:release android\:open install clean fix lint format check
+.PHONY: dev build gallery gallery\:gif sitemap deploy android android\:init android\:sync android\:build android\:release android\:open install clean fix lint format check pull push i18n\:pull i18n\:push
 
 # ============================================
 # Environment variables
@@ -252,6 +252,43 @@ android: build android\:bump android\:release
 zip:
 	@rm -f anqr.zip
 	@git archive --format=zip --prefix=anqr/ HEAD -o anqr.zip
+
+# ============================================
+# i18n Public Repo Sync (anqr-i18n)
+# ============================================
+# The txt translation files are published to a public repo for community contributions.
+# Remote: anqr-i18n -> git@github-public:maldous/anqr-i18n.git
+# Branches: 'static' (static/txt files), 'locales' (locales/txt files)
+
+# Pull translation updates from public repo (run this after git pull)
+i18n\:pull:
+	@echo "Pulling i18n translations from public repo..."
+	git subtree pull --prefix=src/i18n/static/txt anqr-i18n static --squash -m "Merge i18n static translations" || true
+	git subtree pull --prefix=src/i18n/locales/txt anqr-i18n locales --squash -m "Merge i18n locales translations" || true
+	@echo "i18n pull complete."
+
+# Push translation updates to public repo
+i18n\:push:
+	@echo "Pushing i18n translations to public repo..."
+	git subtree push --prefix=src/i18n/static/txt anqr-i18n static
+	git subtree push --prefix=src/i18n/locales/txt anqr-i18n locales
+	@echo "i18n push complete."
+
+# Full sync: pull from origin, pull i18n, ready to work
+pull:
+	@echo "Pulling from origin..."
+	git pull
+	@echo "Pulling i18n translations..."
+	$(MAKE) i18n:pull
+	@echo "All pulls complete."
+
+# Full push: push i18n first, then push to origin
+push:
+	@echo "Pushing i18n translations..."
+	$(MAKE) i18n:push
+	@echo "Pushing to origin..."
+	git push
+	@echo "All pushes complete."
 
 dep:
 	@npx depcruise src --output-type dot | dot -Tpng > deps.png
