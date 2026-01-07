@@ -1,0 +1,73 @@
+# Sync i18n translations to public repo
+# When txt files in i18n directories change, push them to maldous/anqr-i18n
+#
+# SETUP REQUIRED:
+# 1. Add your private SSH key as a GitHub secret named I18N_DEPLOY_KEY
+#    - Go to: https://github.com/maldous/anqr/settings/secrets/actions
+#    - Add secret: I18N_DEPLOY_KEY = contents of ~/.ssh/id_ed25519_public
+#    - Run: cat ~/.ssh/id_ed25519_public | gh secret set I18N_DEPLOY_KEY
+#
+# 2. Ensure the public key is added to anqr-i18n with write access
+#    - https://github.com/maldous/anqr-i18n/settings/keys
+
+name: Sync i18n to Public Repo
+
+on:
+  push:
+    branches:
+      - master
+    paths:
+      - 'src/i18n/static/txt/**'
+      - 'src/i18n/locales/txt/**'
+
+jobs:
+  sync-i18n:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # Full history needed for subtree
+
+      - name: Setup SSH for public repo
+        env:
+          I18N_DEPLOY_KEY: ${{ secrets.I18N_DEPLOY_KEY }}
+        run: |
+          if [ -z "$I18N_DEPLOY_KEY" ]; then
+            echo "Error: I18N_DEPLOY_KEY secret is not set"
+            exit 1
+          fi
+          mkdir -p ~/.ssh
+          echo "$I18N_DEPLOY_KEY" > ~/.ssh/id_ed25519_public
+          chmod 600 ~/.ssh/id_ed25519_public
+          
+          # Configure SSH to use this key for github-public host
+          cat >> ~/.ssh/config << EOF
+          Host github-public
+            HostName github.com
+            User git
+            IdentityFile ~/.ssh/id_ed25519_public
+            IdentitiesOnly yes
+            StrictHostKeyChecking no
+          EOF
+          
+          chmod 600 ~/.ssh/config
+
+      - name: Configure git
+        run: |
+          git config user.name "GitHub Actions"
+          git config user.email "actions@github.com"
+
+      - name: Add public repo remote
+        run: |
+          git remote add anqr-i18n git@github-public:maldous/anqr-i18n.git || true
+
+      - name: Push i18n to public repo
+        run: |
+          echo "Pushing static/txt to public repo..."
+          git subtree push --prefix=src/i18n/static/txt anqr-i18n static || echo "Static push failed or no changes"
+          
+          echo "Pushing locales/txt to public repo..."
+          git subtree push --prefix=src/i18n/locales/txt anqr-i18n locales || echo "Locales push failed or no changes"
+          
+          echo "i18n sync complete!"
