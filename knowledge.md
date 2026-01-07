@@ -1762,6 +1762,17 @@ _(none)_
 
 ---
 
+## Community Translations
+
+Translation files are open-sourced in a separate public repository to allow community contributions:
+
+- **Public repo**: https://github.com/maldous/anqr-i18n
+- **Branches**:
+  - `static` - Static content translations (guides, about pages)
+  - `locales` - UI string translations
+- **Auto-sync**: Changes to `src/i18n/static/txt/` and `src/i18n/locales/txt/` are automatically pushed via GitHub Action
+- **Contributing**: See the README in the public repo for contribution guidelines
+
 ## Appendix A: additional key files
 
 ### `netlify/functions/qr.ts`
