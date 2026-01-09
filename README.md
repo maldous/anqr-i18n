@@ -1,8 +1,6 @@
 # ANQR Translations
 
 ![Languages](https://img.shields.io/badge/languages-87-blue)
-![Static Content](https://img.shields.io/badge/static%20content-87%20files-green)
-![UI Strings](https://img.shields.io/badge/UI%20strings-87%20files-green)
 [![Contributions Welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg)](CONTRIBUTING.md)
 
 This repository contains the translation files for [ANQR](https://anqr.link) - an advanced QR code generator with styling, overlays, and animations.
@@ -11,7 +9,6 @@ This repository contains the translation files for [ANQR](https://anqr.link) - a
 
 **No Git knowledge required!** Click any language below to edit directly in your browser:
 
-### Static Content (Guides & Documentation)
 
 | Language | Code | Edit |
 |----------|------|------|
@@ -103,7 +100,6 @@ This repository contains the translation files for [ANQR](https://anqr.link) - a
 | Chinese (Traditional) | zh-TW | [✏️ Edit](../../edit/static/zh-TW.txt) |
 | Zulu | zu | [✏️ Edit](../../edit/static/zu.txt) |
 
-### UI Strings (Buttons & Labels)
 
 | Language | Code | Edit |
 |----------|------|------|
