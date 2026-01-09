@@ -1064,7 +1064,7 @@ export function generateBizCard(params: BizCardParams): string {
   if (params.phone) fields.push(`B:${params.phone}`);
   if (params.email) fields.push(`E:${params.email}`);
   if (params.address) fields.push(`A:${params.address}`);
-  
+
   lines.push(...fields, ';');
   return lines.join(';');
 }
@@ -1077,7 +1077,12 @@ export function generateBizCard(params: BizCardParams): string {
 export function generateEvent(params: EventHelper): string {
   const lines: string[] = [];
 
-  lines.push('BEGIN:VCALENDAR', 'VERSION:2.0', 'PRODID:-//ANQR//QR Code Generator//EN', 'BEGIN:VEVENT');
+  lines.push(
+    'BEGIN:VCALENDAR',
+    'VERSION:2.0',
+    'PRODID:-//ANQR//QR Code Generator//EN',
+    'BEGIN:VEVENT'
+  );
 
   // Generate UID using crypto for uniqueness
   const uid = `${Date.now()}-${crypto.randomUUID().slice(0, 9)}@anqr`;
@@ -1419,7 +1424,10 @@ export function generateSwissQRBill(params: SwissQRBillParams): string {
   lines.push(params.creditorCountry.toUpperCase());
 
   // Ultimate Creditor (optional - usually empty)
-  lines.push(params.ultimateCreditorAddressType || '', params.ultimateCreditorName?.substring(0, 70) || '');
+  lines.push(
+    params.ultimateCreditorAddressType || '',
+    params.ultimateCreditorName?.substring(0, 70) || ''
+  );
   if (params.ultimateCreditorAddressType === 'S') {
     lines.push(
       params.ultimateCreditorStreet?.substring(0, 70) || '',
@@ -1446,7 +1454,10 @@ export function generateSwissQRBill(params: SwissQRBillParams): string {
   lines.push(params.currency);
 
   // Ultimate Debtor (payer - optional)
-  lines.push(params.ultimateDebtorAddressType || '', params.ultimateDebtorName?.substring(0, 70) || '');
+  lines.push(
+    params.ultimateDebtorAddressType || '',
+    params.ultimateDebtorName?.substring(0, 70) || ''
+  );
   if (params.ultimateDebtorAddressType === 'S') {
     lines.push(
       params.ultimateDebtorStreet?.substring(0, 70) || '',

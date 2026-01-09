@@ -348,10 +348,7 @@ const DEFAULT_ANALYZE_OPTIONS: {
   safetyMode?: SafetyMode;
 } = {};
 
-export function analyzeQR(
-  matrix: boolean[][],
-  options = DEFAULT_ANALYZE_OPTIONS
-): AnalysisResult {
+export function analyzeQR(matrix: boolean[][], options = DEFAULT_ANALYZE_OPTIONS): AnalysisResult {
   const issues: AnalysisIssue[] = [];
   const warnings: AnalysisWarning[] = [];
   const recommendations: string[] = [];

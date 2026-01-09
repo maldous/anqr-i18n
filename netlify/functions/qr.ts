@@ -1077,7 +1077,9 @@ export default async (request: Request) => {
 
   // Parse all parameters with defaults
   const sizeParam = Number.parseInt(params.get('size') || '400', 10);
-  const modulePxParam = params.get('modulePx') ? Number.parseInt(params.get('modulePx')!, 10) : null;
+  const modulePxParam = params.get('modulePx')
+    ? Number.parseInt(params.get('modulePx')!, 10)
+    : null;
   const widthParam = params.get('w') ? Number.parseInt(params.get('w')!, 10) : null;
   const heightParam = params.get('h') ? Number.parseInt(params.get('h')!, 10) : null;
 
@@ -1094,7 +1096,10 @@ export default async (request: Request) => {
   const transparent = params.get('transparent') === '1';
   const encodingMode = params.get('enc') || 'auto';
   const version = params.get('v') ? Number.parseInt(params.get('v')!, 10) : 0;
-  const borderModulesExtra = Math.min(10, Math.max(0, Number.parseInt(params.get('border') || '0', 10)));
+  const borderModulesExtra = Math.min(
+    10,
+    Math.max(0, Number.parseInt(params.get('border') || '0', 10))
+  );
   const crispEdges = params.get('crisp') !== '0';
   const pixelSnap = params.get('snap') || 'floor';
   const perModuleColorMode = params.get('modColor') || 'solid';
@@ -1106,7 +1111,10 @@ export default async (request: Request) => {
   const finderStyle = params.get('finder') || 'square';
   const eyeOuterStyle = params.get('eyeOuter') || finderStyle;
   const eyeInnerStyle = params.get('eyeInner') || finderStyle;
-  const eyeScale = Math.min(150, Math.max(50, Number.parseInt(params.get('eyeScale') || '100', 10)));
+  const eyeScale = Math.min(
+    150,
+    Math.max(50, Number.parseInt(params.get('eyeScale') || '100', 10))
+  );
   const cornerRadius = Math.min(100, Math.max(0, Number.parseInt(params.get('radius') || '0', 10)));
   const moduleGap = Math.min(50, Math.max(0, Number.parseInt(params.get('gap') || '0', 10)));
   const gapMode = params.get('gapMode') || 'none';
@@ -1235,7 +1243,10 @@ export default async (request: Request) => {
   // Output format (may be overridden if overlay is animated GIF)
   // Default to GIF to align with client default (was PNG, causing embed/share mismatch)
   let outputFormat = (params.get('format') || DEFAULT_OUTPUT_FORMAT) as OutputFormat;
-  const _outputQuality = Math.max(0, Math.min(1, Number.parseFloat(params.get('quality') || '0.9')));
+  const _outputQuality = Math.max(
+    0,
+    Math.min(1, Number.parseFloat(params.get('quality') || '0.9'))
+  );
   const outputDpi = Math.max(1, Math.min(1200, Number.parseInt(params.get('dpi') || '72', 10)));
 
   // Watermark
@@ -1271,7 +1282,10 @@ export default async (request: Request) => {
 
   // Format-specific quality params
   const webpQuality = Math.min(100, Math.max(0, Number.parseInt(params.get('webpQ') || '90', 10)));
-  const gifColors = Math.min(256, Math.max(2, Number.parseInt(params.get('gifColors') || '256', 10)));
+  const gifColors = Math.min(
+    256,
+    Math.max(2, Number.parseInt(params.get('gifColors') || '256', 10))
+  );
 
   // Metadata
   const metaTitle = params.get('metaTitle') || undefined;

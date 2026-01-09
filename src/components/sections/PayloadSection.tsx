@@ -912,7 +912,9 @@ export function PayloadSection() {
       postalCode: emvGenericForm.postalCode || undefined,
       tipIndicator: emvGenericForm.tipIndicator as 'none' | 'prompt' | 'fixed' | 'percent',
       tipAmount: emvGenericForm.tipAmount ? Number.parseFloat(emvGenericForm.tipAmount) : undefined,
-      tipPercent: emvGenericForm.tipPercent ? Number.parseFloat(emvGenericForm.tipPercent) : undefined,
+      tipPercent: emvGenericForm.tipPercent
+        ? Number.parseFloat(emvGenericForm.tipPercent)
+        : undefined,
       reference: emvGenericForm.reference || undefined,
       storeLabel: emvGenericForm.storeLabel || undefined,
       terminalLabel: emvGenericForm.terminalLabel || undefined,
@@ -2885,7 +2887,9 @@ export function PayloadSection() {
               <Input
                 type="number"
                 value={payload.otpauth.digits || 6}
-                onChange={(e) => setPayloadOtpAuth({ digits: Number.parseInt(e.target.value, 10) || 6 })}
+                onChange={(e) =>
+                  setPayloadOtpAuth({ digits: Number.parseInt(e.target.value, 10) || 6 })
+                }
                 min={6}
                 max={8}
               />
