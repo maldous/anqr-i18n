@@ -893,13 +893,7 @@
     "title": "QR Code Gallery",
     "tryThis": "Try this"
   },
-  "camera": {
-    "loading": "Capturing...",
-    "permissionDenied": "Camera permission denied. Please enable in settings.",
-    "error": "Failed to capture image"
-  },
   "header": {
-    "captureOverlay": "Capture photo as overlay",
     "close": "Close",
     "copied": "Copied!",
     "reset": "Reset",
@@ -1242,7 +1236,7 @@
     "twitter": "X/Twitter"
   },
   "tiers": {
-    "advanced": "Adv",
+    "advanced": "Advanced",
     "basic": "Basic",
     "professional": "Pro",
     "watchAdForPro": "Watch ad to unlock Professional features for 24 hours"
@@ -1295,7 +1289,10 @@
     "sending": "Sending...",
     "privacyNote": "By sending a message, you agree that we can use your details to respond. See the Privacy Policy.",
     "emailUs": "Email Us",
-    "emailUsDesc": "Have a question, suggestion, or need help? Send us an email and we'll get back to you."
+    "emailUsDesc": "Have a question, suggestion, or need help? Send us an email and we'll get back to you.",
+    "redditCommunity": "Reddit Community",
+    "redditCommunityDesc": "Join our Reddit community to share creations, ask questions, and connect with other users.",
+    "joinReddit": "Join r/ANQR"
   },
   "overlay": {
     "blueNoise": "Blue Noise",

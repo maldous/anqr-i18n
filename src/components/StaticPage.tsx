@@ -4,7 +4,7 @@
  */
 
 import { Capacitor } from '@capacitor/core';
-import { ChevronDown, ChevronUp, List, Loader2, Mail, Menu, X } from 'lucide-react';
+import { ChevronDown, ChevronUp, List, Loader2, Mail, Menu, Users, X } from 'lucide-react';
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { AdUnit } from '@/components/AdUnit';
@@ -603,6 +603,26 @@ function ContactEmailLink() {
   );
 }
 
+const REDDIT_URL = 'https://www.reddit.com/r/ANQR/';
+
+function ContactRedditLink() {
+  const { t } = useTranslation();
+
+  return (
+    <div className="rounded-xl border bg-card p-6 text-center">
+      <Users className="h-12 w-12 mx-auto mb-4 text-primary" />
+      <h3 className="text-lg font-semibold text-foreground mb-2">{t('contact.redditCommunity')}</h3>
+      <p className="text-sm text-muted-foreground mb-4">{t('contact.redditCommunityDesc')}</p>
+      <Button asChild size="lg">
+        <a href={REDDIT_URL} target="_blank" rel="noopener noreferrer">
+          <Users className="h-4 w-4 mr-2" />
+          {t('contact.joinReddit')}
+        </a>
+      </Button>
+    </div>
+  );
+}
+
 export function StaticPage({ page }: StaticPageProps) {
   const { t, i18n } = useTranslation();
   const [def, setDef] = useState<PageDefinition | null>(null);
@@ -1011,7 +1031,12 @@ export function StaticPage({ page }: StaticPageProps) {
               </section>
             ))}
 
-            {page === 'contact' && <ContactEmailLink />}
+            {page === 'contact' && (
+              <div className="grid gap-6 md:grid-cols-2">
+                <ContactEmailLink />
+                <ContactRedditLink />
+              </div>
+            )}
           </div>
 
           {def.relatedLinks && <RelatedLinks links={def.relatedLinks} lang={i18n.language} t={t} />}
