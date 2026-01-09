@@ -1,4 +1,4 @@
-import { useMemo } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { HelpLink } from '@/components/ui/help-link';
 import { Label } from '@/components/ui/label';
@@ -15,6 +15,9 @@ import { HighlightedLabel } from '@/lib/search-context';
 import { calculateOptimalVersion } from '@/modules/qr-core';
 import { type ECCLevel, type EncodingMode, useQRStore } from '@/store/qr-store';
 
+// Longer debounce for version changes to prevent expensive computation while sliding
+const VERSION_DEBOUNCE_MS = 500;
+
 export function QREncodingSection() {
   const {
     tier,
@@ -28,6 +31,21 @@ export function QREncodingSection() {
   } = useQRStore();
   const { t } = useTranslation();
 
+  // Local version state for immediate slider feedback
+  // This allows the slider to move instantly while debouncing the expensive store update
+  const [localVersion, setLocalVersion] = useState(qr.version);
+  const versionDebounceRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  // Sync local version when store version changes externally (e.g., URL params, presets)
+  useEffect(() => {
+    // Cancel any pending debounced update when store version changes externally
+    // This prevents a race where external change + pending timeout fight each other
+    if (versionDebounceRef.current) {
+      clearTimeout(versionDebounceRef.current);
+    }
+    setLocalVersion(qr.version);
+  }, [qr.version]);
+
   // Calculate minimum required version for current content
   const minRequiredVersion = useMemo(() => {
     const content = getPayloadText();
@@ -35,18 +53,39 @@ export function QREncodingSection() {
     return calculateOptimalVersion(content, qr.ecc);
   }, [getPayloadText, qr.ecc]);
 
-  // Handle version change - ensure it doesn't go below minimum (unless 0 = auto)
+  // Handle version change with debounce - immediate visual feedback, delayed computation
   const handleVersionChange = (value: number) => {
-    if (value === 0) {
-      // Auto mode is always allowed
-      setQrVersion(0);
-    } else if (value < minRequiredVersion) {
-      // Jump to minimum required version
-      setQrVersion(minRequiredVersion);
-    } else {
-      setQrVersion(value);
+    // Update local state immediately for responsive slider
+    setLocalVersion(value);
+
+    // Clear any pending debounced update
+    if (versionDebounceRef.current) {
+      clearTimeout(versionDebounceRef.current);
     }
+
+    // Debounce the actual store update to prevent expensive computation while sliding
+    versionDebounceRef.current = setTimeout(() => {
+      let finalValue = value;
+      if (value === 0) {
+        // Auto mode is always allowed
+        finalValue = 0;
+      } else if (value < minRequiredVersion) {
+        // Jump to minimum required version
+        finalValue = minRequiredVersion;
+        setLocalVersion(finalValue); // Sync local to corrected value
+      }
+      setQrVersion(finalValue);
+    }, VERSION_DEBOUNCE_MS);
   };
+
+  // Cleanup debounce timer on unmount
+  useEffect(() => {
+    return () => {
+      if (versionDebounceRef.current) {
+        clearTimeout(versionDebounceRef.current);
+      }
+    };
+  }, []);
 
   return (
     <div className="space-y-4">
@@ -60,11 +99,11 @@ export function QREncodingSection() {
             <HelpLink anchor="section-6" />
           </div>
           <span className="text-sm text-muted-foreground">
-            {qr.version === 0 ? t('qr.autoMin', { version: minRequiredVersion }) : qr.version}
+            {localVersion === 0 ? t('qr.autoMin', { version: minRequiredVersion }) : localVersion}
           </span>
         </div>
         <Slider
-          value={[qr.version]}
+          value={[localVersion]}
           onValueChange={([v]) => handleVersionChange(v)}
           min={0}
           max={40}
@@ -72,9 +111,9 @@ export function QREncodingSection() {
           title={t('hints.qrVersion')}
         />
         <p className="text-xs text-muted-foreground">
-          {qr.version === 0
+          {localVersion === 0
             ? t('hints.autoDetect', { version: minRequiredVersion })
-            : qr.version < minRequiredVersion
+            : localVersion < minRequiredVersion
               ? t('hints.versionTooLow', { version: minRequiredVersion })
               : t('hints.autoMinVersion', { version: minRequiredVersion })}
         </p>

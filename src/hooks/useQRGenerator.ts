@@ -92,6 +92,7 @@ interface UseQRGeneratorResult {
   canvas: HTMLCanvasElement | null;
   isLoading: boolean;
   isExporting: boolean;
+  isRendering: boolean; // True when actively rendering (after debounce, during generation)
   error: string | null;
   regenerate: () => void;
   download: () => Promise<void>;
@@ -173,6 +174,7 @@ export function useQRGenerator(): UseQRGeneratorResult {
   const [canvas, setCanvas] = useState<HTMLCanvasElement | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const [isExporting, setIsExporting] = useState(false);
+  const [isRendering, setIsRendering] = useState(false); // Active rendering state
   const [error, setError] = useState<string | null>(null);
   const [overlayCanvas, setOverlayCanvas] = useState<HTMLCanvasElement | null>(null);
 
@@ -811,6 +813,18 @@ export function useQRGenerator(): UseQRGeneratorResult {
     setIsLoading(true);
     setError(null);
 
+    // CRITICAL: Yield to browser to allow React to render the loading state
+    // before starting expensive QR generation. Without this, the busy overlay
+    // may not appear because the heavy computation blocks the UI thread.
+    await new Promise<void>((resolve) => {
+      requestAnimationFrame(() => {
+        // Double-RAF ensures the browser has completed painting
+        requestAnimationFrame(() => resolve());
+      });
+    });
+
+    setIsRendering(true);
+
     try {
       // Generate QR code
       let result = await qrGenerator.generate(
@@ -881,6 +895,7 @@ export function useQRGenerator(): UseQRGeneratorResult {
       console.error('QR generation error:', err);
       setError(err instanceof Error ? err.message : 'Failed to generate QR code');
     } finally {
+      setIsRendering(false);
       setIsLoading(false);
     }
   }, [
@@ -1796,6 +1811,7 @@ export function useQRGenerator(): UseQRGeneratorResult {
     canvas,
     isLoading,
     isExporting,
+    isRendering,
     error,
     regenerate: generate,
     download,
