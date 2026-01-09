@@ -15,8 +15,9 @@ import { HighlightedLabel } from '@/lib/search-context';
 import { calculateOptimalVersion } from '@/modules/qr-core';
 import { type ECCLevel, type EncodingMode, useQRStore } from '@/store/qr-store';
 
-// Longer debounce for version changes to prevent expensive computation while sliding
-const VERSION_DEBOUNCE_MS = 500;
+// Short debounce for version slider to batch rapid changes while sliding
+// The main useQRGenerator debounce (300ms) handles the expensive computation
+const VERSION_DEBOUNCE_MS = 100;
 
 export function QREncodingSection() {
   const {
