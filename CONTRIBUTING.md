@@ -20,35 +20,27 @@ That's it! We'll review and merge your contribution.
 
 ## 📝 Translation Guidelines
 
-### For Static Content (.txt files)
+### File Format
 
-These files use a simple `ID=text` format:
+All translation files use a simple tab-separated format:
 
 ```
-100=Welcome to ANQR
-101=Create beautiful QR codes with custom styling
-102=Get Started
+ID<TAB>translated text
 ```
 
-**Tips:**
-- Only translate the text after the `=` sign
+For example:
+```
+100	Welcome to ANQR
+101	Create beautiful QR codes with custom styling
+102	Get Started
+```
+
+### Tips
+
+- Only translate the text after the tab character
 - Keep the ID numbers exactly the same
 - Preserve any placeholders like `{name}` or `{{variable}}`
 - Don't translate URLs or technical terms
-
-### For Locales/UI Strings (.txt files)
-
-Same format - translate only the text after `=`:
-
-```
-button.save=Save
-button.cancel=Cancel
-message.success=Your QR code is ready!
-```
-
-**Tips:**
-- Keep keys (before `=`) exactly the same
-- Preserve any `{variables}` in the text
 - Keep translations concise for UI elements
 
 ## ➕ Adding a New Language
