@@ -76,7 +76,7 @@ export function createGifCompositor(arrayBuffer: ArrayBuffer): GifCompositor {
   const patchCanvas = document.createElement('canvas');
   patchCanvas.width = maxPatchW;
   patchCanvas.height = maxPatchH;
-  const patchCtx = patchCanvas.getContext('2d')!;
+  const patchCtx = patchCanvas.getContext('2d');
 
   // For disposalType=3, we need to restore the previous state
   let restoreData: { x: number; y: number; w: number; h: number; data: ImageData } | null = null;
@@ -103,10 +103,12 @@ export function createGifCompositor(arrayBuffer: ArrayBuffer): GifCompositor {
     // IMPORTANT: We must use drawImage for proper alpha compositing!
     // putImageData replaces pixels directly (transparent pixels become black)
     // drawImage properly composites with alpha blending
-    patchCtx.clearRect(0, 0, w, h);
-    const imageData = new ImageData(new Uint8ClampedArray(f.patch), w, h);
-    patchCtx.putImageData(imageData, 0, 0);
-    ctx.drawImage(patchCanvas, 0, 0, w, h, left, top, w, h);
+    if (patchCtx) {
+      patchCtx.clearRect(0, 0, w, h);
+      const imageData = new ImageData(new Uint8ClampedArray(f.patch), w, h);
+      patchCtx.putImageData(imageData, 0, 0);
+      ctx.drawImage(patchCanvas, 0, 0, w, h, left, top, w, h);
+    }
   }
 
   function dispose(i: number): void {
@@ -409,8 +411,10 @@ export async function parseWebPFrames(source: ArrayBuffer): Promise<AnimationFra
       const canvas = document.createElement('canvas');
       canvas.width = image.displayWidth;
       canvas.height = image.displayHeight;
-      const ctx = canvas.getContext('2d')!;
-      ctx.drawImage(image, 0, 0);
+      const ctx = canvas.getContext('2d');
+      if (ctx) {
+        ctx.drawImage(image, 0, 0);
+      }
       image.close();
 
       frames.push({
@@ -480,7 +484,27 @@ export async function parseAnimatedImage(source: string | ArrayBuffer): Promise<
   const format = detectImageFormat(arrayBuffer);
 
   if (format === 'gif') {
-    return parseGifFrames(arrayBuffer);
+    // Use compositor for optimal performance, then convert to AnimationFrame[]
+    const compositor = createGifCompositor(arrayBuffer);
+    const animationFrames: AnimationFrame[] = [];
+    for (let i = 0; i < compositor.frameCount; i++) {
+      compositor.apply(i);
+      // Create a copy of the current frame
+      const frameCanvas = document.createElement('canvas');
+      frameCanvas.width = compositor.width;
+      frameCanvas.height = compositor.height;
+      const frameCtx = frameCanvas.getContext('2d');
+      if (frameCtx) {
+        frameCtx.drawImage(compositor.canvas, 0, 0);
+      }
+      animationFrames.push({
+        canvas: frameCanvas,
+        delay: compositor.delayMs(i),
+        disposalType: 0,
+      });
+      compositor.dispose(i);
+    }
+    return animationFrames;
   }
 
   if (format === 'webp') {
@@ -553,8 +577,7 @@ export async function parseGifFrames(source: string | ArrayBuffer): Promise<Anim
   if (frames.length === 0) {
     throw new Error('No frames found in GIF');
   }
-
-  const { width, height } = gif.lsd;
+    const { width, height } = gif.lsd;
 
   // Reuse a single composite canvas for building frames
   const compositeCanvas = document.createElement('canvas');
@@ -564,8 +587,7 @@ export async function parseGifFrames(source: string | ArrayBuffer): Promise<Anim
 
   const animationFrames: AnimationFrame[] = [];
 
-  for (let i = 0; i < frames.length; i++) {
-    const frame = frames[i];
+  for (const frame of frames) {
     const { dims, patch, disposalType, delay } = frame;
 
     // Create ImageData from patch
@@ -576,8 +598,10 @@ export async function parseGifFrames(source: string | ArrayBuffer): Promise<Anim
     const patchCanvas = document.createElement('canvas');
     patchCanvas.width = dims.width;
     patchCanvas.height = dims.height;
-    const patchCtx = patchCanvas.getContext('2d')!;
-    patchCtx.putImageData(imageData, 0, 0);
+    const patchCtx = patchCanvas.getContext('2d');
+    if (patchCtx) {
+      patchCtx.putImageData(imageData, 0, 0);
+    }
 
     // Draw patch onto composite
     compositeCtx.drawImage(patchCanvas, dims.left, dims.top);
@@ -586,8 +610,10 @@ export async function parseGifFrames(source: string | ArrayBuffer): Promise<Anim
     const outputCanvas = document.createElement('canvas');
     outputCanvas.width = width;
     outputCanvas.height = height;
-    const outputCtx = outputCanvas.getContext('2d')!;
-    outputCtx.drawImage(compositeCanvas, 0, 0);
+    const outputCtx = outputCanvas.getContext('2d');
+    if (outputCtx) {
+      outputCtx.drawImage(compositeCanvas, 0, 0);
+    }
 
     animationFrames.push({
       canvas: outputCanvas,
@@ -714,7 +740,8 @@ export function applyAnimationPattern(
   const result = document.createElement('canvas');
   result.width = canvas.width;
   result.height = canvas.height;
-  const ctx = result.getContext('2d')!;
+  const ctx = result.getContext('2d');
+  if (!ctx) return canvas;
 
   const progress = frameIndex / Math.max(1, totalFrames - 1);
   const seed = options.seed ?? 0;
@@ -805,7 +832,8 @@ export function applyTemporalDither(
   const result = document.createElement('canvas');
   result.width = canvas.width;
   result.height = canvas.height;
-  const ctx = result.getContext('2d')!;
+  const ctx = result.getContext('2d');
+  if (!ctx) return canvas;
 
   ctx.drawImage(canvas, 0, 0);
   const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
@@ -860,7 +888,8 @@ export function interpolateFrames(
   const result = document.createElement('canvas');
   result.width = frame1.width;
   result.height = frame1.height;
-  const ctx = result.getContext('2d')!;
+  const ctx = result.getContext('2d');
+  if (!ctx) return frame1;
 
   switch (mode) {
     case 'crossfade': {
@@ -873,8 +902,12 @@ export function interpolateFrames(
     }
 
     case 'morph': {
-      const ctx1 = frame1.getContext('2d')!;
-      const ctx2 = frame2.getContext('2d')!;
+      const ctx1 = frame1.getContext('2d');
+      const ctx2 = frame2.getContext('2d');
+      if (!ctx1 || !ctx2) {
+        ctx.drawImage(frame1, 0, 0);
+        break;
+      }
       const data1 = ctx1.getImageData(0, 0, frame1.width, frame1.height);
       const data2 = ctx2.getImageData(0, 0, frame2.width, frame2.height);
       const resultData = ctx.createImageData(result.width, result.height);
@@ -914,7 +947,8 @@ export function applyColorCycle(
   const result = document.createElement('canvas');
   result.width = canvas.width;
   result.height = canvas.height;
-  const ctx = result.getContext('2d')!;
+  const ctx = result.getContext('2d');
+  if (!ctx) return canvas;
 
   ctx.drawImage(canvas, 0, 0);
   const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
