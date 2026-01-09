@@ -4,8 +4,8 @@ import { useTranslation } from 'react-i18next';
 import { BusyOverlay } from '@/components/BusyOverlay';
 import { Gallery } from '@/components/Gallery';
 import { Header } from '@/components/Header';
-import { Preview } from '@/components/Preview';
 import { MobileDivider } from '@/components/MobileDivider';
+import { Preview } from '@/components/Preview';
 import { Sidebar } from '@/components/Sidebar';
 import { StaticPage, type StaticPageType } from '@/components/StaticPage';
 import { TooltipProvider } from '@/components/ui/tooltip';
@@ -70,10 +70,10 @@ function App() {
     if (!containerRef.current) return;
     const containerHeight = containerRef.current.clientHeight;
     if (containerHeight <= 0) return;
-    
+
     // Convert pixel delta to percentage
     const deltaPercent = (deltaY / containerHeight) * 100;
-    
+
     setMobileSplitPercent((prev) => {
       const newValue = prev + deltaPercent;
       return Math.max(MIN_MOBILE_SPLIT, Math.min(MAX_MOBILE_SPLIT, newValue));
@@ -84,7 +84,7 @@ function App() {
   // Use a ref to get the current value to avoid recreating the callback
   const mobileSplitPercentRef = useRef(mobileSplitPercent);
   mobileSplitPercentRef.current = mobileSplitPercent;
-  
+
   const handleMobileDividerDragEnd = useCallback(() => {
     localStorage.setItem(MOBILE_SPLIT_STORAGE_KEY, String(mobileSplitPercentRef.current));
   }, []);
@@ -94,7 +94,7 @@ function App() {
     const saved = localStorage.getItem(MOBILE_SPLIT_STORAGE_KEY);
     if (saved) {
       const parsed = parseFloat(saved);
-      if (!isNaN(parsed) && parsed >= MIN_MOBILE_SPLIT && parsed <= MAX_MOBILE_SPLIT) {
+      if (!Number.isNaN(parsed) && parsed >= MIN_MOBILE_SPLIT && parsed <= MAX_MOBILE_SPLIT) {
         setMobileSplitPercent(parsed);
       }
     }
