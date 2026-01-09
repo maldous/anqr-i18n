@@ -185,6 +185,18 @@ body {
   scroll-margin-top: 80px;
 }
 
+/* Mobile sidebar height - uses CSS variable for dynamic height on mobile */
+.mobile-sidebar-height {
+  height: var(--mobile-height, 0);
+}
+
+/* On md+ screens, override the inline style height */
+@media (min-width: 768px) {
+  .mobile-sidebar-height {
+    height: auto !important;
+  }
+}
+
 /* QR Preview container */
 .qr-preview-container {
   position: relative;

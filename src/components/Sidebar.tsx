@@ -976,9 +976,10 @@ function getAvailableKeywords(
 interface SidebarProps {
   isOpen: boolean;
   onClose: () => void;
+  mobileHeightPercent?: number;
 }
 
-export function Sidebar({ isOpen, onClose }: SidebarProps) {
+export function Sidebar({ isOpen, onClose, mobileHeightPercent = 45 }: SidebarProps) {
   // Use individual selectors to avoid re-renders when unrelated state changes
   const tier = useQRStore((s) => s.tier);
   const searchQuery = useQRStore((s) => s.searchQuery);
@@ -1146,16 +1147,22 @@ export function Sidebar({ isOpen, onClose }: SidebarProps) {
           ${/* Mobile: relative in-flow element for split view */ ''}
           ${/* Tablet: fixed overlay */ ''}
           ${/* Desktop: fixed sidebar */ ''}
+          mobile-sidebar-height
           md:fixed md:inset-y-0 md:top-0 md:start-0 md:end-auto md:z-50
           w-full md:w-80 lg:w-96 bg-card md:border-e md:shadow-xl
-          transform transition-all duration-300 ease-in-out
+          transform transition-[transform,opacity] duration-300 ease-in-out
           ${
             isOpen
-              ? `${Capacitor.isNativePlatform() ? 'h-[35vh]' : 'h-[45vh]'} md:h-auto md:flex-none md:translate-x-0 rtl:md:-translate-x-0 opacity-100 border-b md:border-b-0`
-              : 'h-0 md:h-auto md:-translate-x-full rtl:md:translate-x-full opacity-0 pointer-events-none md:pointer-events-auto'
+              ? 'md:h-auto md:translate-x-0 rtl:md:-translate-x-0 opacity-100 md:border-b-0'
+              : 'md:h-auto md:-translate-x-full rtl:md:translate-x-full opacity-0 pointer-events-none md:pointer-events-auto'
           }
           flex flex-col overflow-hidden flex-shrink-0
         `}
+        style={
+          {
+            '--mobile-height': isOpen ? `${mobileHeightPercent}%` : '0',
+          } as React.CSSProperties
+        }
       >
         {/* Sections - scrolls within container */}
         <div className="flex-1 overflow-y-auto px-4 pt-1 scrollbar-hide">

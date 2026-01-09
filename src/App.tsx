@@ -1,10 +1,11 @@
 import { Capacitor } from '@capacitor/core';
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { BusyOverlay } from '@/components/BusyOverlay';
 import { Gallery } from '@/components/Gallery';
 import { Header } from '@/components/Header';
 import { Preview } from '@/components/Preview';
+import { MobileDivider } from '@/components/MobileDivider';
 import { Sidebar } from '@/components/Sidebar';
 import { StaticPage, type StaticPageType } from '@/components/StaticPage';
 import { TooltipProvider } from '@/components/ui/tooltip';
@@ -47,13 +48,51 @@ function getPageFromLocation(): PageView {
   return 'editor';
 }
 
+// Default mobile split heights (percentage of available height)
+const DEFAULT_MOBILE_SPLIT = Capacitor.isNativePlatform() ? 35 : 45;
+const MIN_MOBILE_SPLIT = 20; // Minimum sidebar height %
+const MAX_MOBILE_SPLIT = 70; // Maximum sidebar height %
+
 function App() {
   const { t } = useTranslation();
   const [sidebarOpen, setSidebarOpen] = useState(true);
   const [currentPage, setCurrentPage] = useState<PageView>('editor');
   const [galleryFilter, setGalleryFilter] = useState<GalleryCategory | 'all'>('all');
+  const [mobileSplitPercent, setMobileSplitPercent] = useState(DEFAULT_MOBILE_SPLIT);
+  const containerRef = useRef<HTMLDivElement>(null);
   const bannerHeight = useBannerHeight();
   const { download, isExporting } = useQRGenerator();
+
+  // Handle mobile divider drag
+  const handleMobileDividerDrag = useCallback((deltaY: number) => {
+    if (!containerRef.current) return;
+    const containerHeight = containerRef.current.clientHeight;
+    if (containerHeight <= 0) return;
+    
+    // Convert pixel delta to percentage
+    const deltaPercent = (deltaY / containerHeight) * 100;
+    
+    setMobileSplitPercent((prev) => {
+      const newValue = prev + deltaPercent;
+      return Math.max(MIN_MOBILE_SPLIT, Math.min(MAX_MOBILE_SPLIT, newValue));
+    });
+  }, []);
+
+  // Save split position to localStorage on drag end
+  const handleMobileDividerDragEnd = useCallback(() => {
+    localStorage.setItem('anqr-mobile-split', String(mobileSplitPercent));
+  }, [mobileSplitPercent]);
+
+  // Load saved split position from localStorage
+  useEffect(() => {
+    const saved = localStorage.getItem('anqr-mobile-split');
+    if (saved) {
+      const parsed = parseFloat(saved);
+      if (!isNaN(parsed) && parsed >= MIN_MOBILE_SPLIT && parsed <= MAX_MOBILE_SPLIT) {
+        setMobileSplitPercent(parsed);
+      }
+    }
+  }, []);
 
   // NOTE: We use useQRStore.getState() for setters in the URL params effect below
   // instead of subscribing to the store here. This prevents App from re-rendering
@@ -764,6 +803,7 @@ function App() {
           onNavigate={navigateTo}
         />
         <div
+          ref={containerRef}
           className="flex-1 flex flex-col md:flex-row overflow-hidden relative"
           style={{ marginTop: 'calc(52px + max(var(--sat, 0px), env(safe-area-inset-top, 0px)))' }}
         >
@@ -771,7 +811,21 @@ function App() {
           {/* Desktop/Tablet: Sidebar is fixed, Preview takes remaining space */}
 
           {/* Sidebar - only shown in editor mode */}
-          {showEditor && <Sidebar isOpen={sidebarOpen} onClose={() => setSidebarOpen(false)} />}
+          {showEditor && (
+            <Sidebar
+              isOpen={sidebarOpen}
+              onClose={() => setSidebarOpen(false)}
+              mobileHeightPercent={mobileSplitPercent}
+            />
+          )}
+
+          {/* Mobile divider - drag to resize sidebar/preview split */}
+          {showEditor && sidebarOpen && (
+            <MobileDivider
+              onDrag={handleMobileDividerDrag}
+              onDragEnd={handleMobileDividerDragEnd}
+            />
+          )}
 
           {/* Main content area - conditionally render active page */}
           {/* Content is constrained above footer and AdMob banner */}
