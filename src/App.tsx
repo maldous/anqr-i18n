@@ -51,7 +51,7 @@ function getPageFromLocation(): PageView {
 // Mobile split configuration
 // localStorage key for persisting user's preferred split position
 const MOBILE_SPLIT_STORAGE_KEY = 'anqr:ui:mobile-split-percent';
-const DEFAULT_MOBILE_SPLIT = Capacitor.isNativePlatform() ? 35 : 45;
+const DEFAULT_MOBILE_SPLIT = 50; // Start with 50/50 split
 const MIN_MOBILE_SPLIT = 20; // Minimum sidebar height %
 const MAX_MOBILE_SPLIT = 70; // Maximum sidebar height %
 
@@ -838,7 +838,7 @@ function App() {
           {/* On native: account for footer (~40px) + share/export bar (~48px) + AdMob banner (dynamic) */}
           {/* On web: just footer (~48px) */}
           <div
-            className="flex-1 flex flex-col min-h-0"
+            className="flex-1 flex flex-col min-h-0 overflow-hidden"
             style={{
               paddingBottom: showEditor
                 ? Capacitor.isNativePlatform()

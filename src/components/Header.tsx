@@ -682,7 +682,7 @@ export function Header({
                     onValueChange={(v) => handleTierChange(v as Tier)}
                     disabled={loadingAd}
                   >
-                    <SelectTrigger className="w-[100px] h-9 text-xs">
+                    <SelectTrigger className="w-[72px] h-9 text-xs">
                       <SelectValue />
                     </SelectTrigger>
                     <SelectContent>
