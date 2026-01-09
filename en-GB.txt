@@ -1493,3 +1493,6 @@
 1493	"Urdu"
 1494	"Chinese (Hong Kong)"
 1495	"Chinese (Traditional)"
+1496	"Reddit Community"
+1497	"Join our Reddit community to share creations, ask questions, and connect with other users."
+1498	"Join r/ANQR"
