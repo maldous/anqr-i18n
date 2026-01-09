@@ -784,7 +784,6 @@
 784	"Normalizzare le novità"
 785	"Nota"
 786	"OneDrive"
-787	"Aprire (Nessuna password)"
 788	"Organizzazione"
 789	"Altri"
 790	"Autentico OTP"

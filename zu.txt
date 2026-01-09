@@ -1104,7 +1104,6 @@
 1104	"Isigaba A"
 1105	"Umugqa wesi-5, Isihlalo se-12"
 1106	"I-Swiss QR-bill (CH/LI)"
-1107	"I-Swiss QR-bill for Switzerland and Liechtenstein invoicing"
 1108	"Umkweletu IBAN"
 1109	"Igama Lomkweletu"
 1110	"Uhlobo Lwekheli"
