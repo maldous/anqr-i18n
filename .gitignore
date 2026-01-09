@@ -65,3 +65,5 @@ Desktop.ini
 __pycache__/
 
 .xlate_cache.sqlite
+.scannerwork/
+sonar-report.json

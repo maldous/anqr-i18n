@@ -561,8 +561,8 @@ export function Header({
               <span className="text-xl font-bold leading-6">ANQR</span>
             </button>
 
-            {/* Camera button for quick overlay demo (Android only) - positioned between ANQR and tier selector */}
-            {Capacitor.isNativePlatform() && (
+            {/* Camera button for quick overlay demo (Android only, editor only) */}
+            {isEditor && Capacitor.isNativePlatform() && (
               <Button
                 variant="ghost"
                 size="icon"

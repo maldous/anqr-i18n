@@ -1,4 +1,4 @@
-.PHONY: help dev build gallery gallery\:gif sitemap deploy android android\:init android\:sync android\:build android\:release android\:open install clean fix lint format check pull push i18n\:pull i18n\:push i18n\:xlate i18n\:xlate\:static i18n\:xlate\:locales i18n\:fill i18n\:fill\:static i18n\:fill\:locales icons icons\:android android\:run android\:keystore android\:bump zip dep
+.PHONY: help dev build gallery gallery\:gif sitemap deploy android android\:init android\:sync android\:build android\:release android\:open install clean fix lint format check pull push i18n\:pull i18n\:push i18n\:xlate i18n\:xlate\:static i18n\:xlate\:locales i18n\:fill i18n\:fill\:static i18n\:fill\:locales icons icons\:android android\:run android\:keystore android\:bump zip dep sonar sonar-report
 
 # ============================================
 # Help
@@ -62,6 +62,10 @@ help:
 	@echo "  UTILITIES"
 	@echo "    make zip            Create git archive zip of the project"
 	@echo "    make dep            Generate dependency graph (deps.png)"
+	@echo ""
+	@echo "  CODE ANALYSIS (SonarQube)"
+	@echo "    make sonar          Run SonarQube analysis (requires local server)"
+	@echo "    make sonar-report   Get full issues report from SonarQube"
 	@echo ""
 
 # ============================================
@@ -441,3 +445,65 @@ i18n\:fill: i18n\:fill\:static i18n\:fill\:locales
 
 dep:
 	@npx depcruise src --output-type dot | dot -Tpng > deps.png
+
+# ============================================
+# SonarQube Code Analysis
+# ============================================
+# Configuration in: sonar-project.properties
+# Local SonarQube server at http://localhost:9000
+# Run `make sonar` to perform analysis, `make sonar-report` to view issues
+
+SONAR_HOST_URL := http://localhost:9000
+SONAR_TOKEN := sqa_d92be6588fb7576a7de0014b7ddc05911d9afc6b
+
+# Run SonarQube analysis (uses sonar-project.properties)
+sonar:
+	@echo "Running SonarQube analysis..."
+	npx sonar-scanner
+	@echo ""
+	@echo "Analysis complete! View results at: $(SONAR_HOST_URL)/dashboard?id=anqr"
+
+# Get full SonarQube issues report and save to JSON file
+sonar-report:
+	@echo "Generating comprehensive SonarQube report..."
+	@echo '{' > sonar-report.json
+	@echo '  "generated": "'$$(date -Iseconds)'",' >> sonar-report.json
+	@echo '  "project": "anqr",' >> sonar-report.json
+	@echo '  "dashboard": "$(SONAR_HOST_URL)/dashboard?id=anqr",' >> sonar-report.json
+	@# Fetch summary metrics
+	@echo '  "summary": ' >> sonar-report.json
+	@curl -s -u $(SONAR_TOKEN): "$(SONAR_HOST_URL)/api/measures/component?component=anqr&metricKeys=bugs,vulnerabilities,code_smells,security_hotspots,coverage,duplicated_lines_density,ncloc,cognitive_complexity,reliability_rating,security_rating,sqale_rating" | \
+		jq '.component.measures | map({(.metric): .value}) | add' >> sonar-report.json 2>/dev/null || echo '{}' >> sonar-report.json
+	@echo '  ,' >> sonar-report.json
+	@# Fetch all issues with full details (bugs, vulnerabilities, code smells)
+	@echo '  "issues": ' >> sonar-report.json
+	@curl -s -u $(SONAR_TOKEN): "$(SONAR_HOST_URL)/api/issues/search?componentKeys=anqr&ps=500&additionalFields=_all" | \
+		jq '[.issues[] | {key: .key, type: .type, severity: .severity, status: .status, message: .message, file: (.component | split(":") | .[1]), line: .line, effort: .effort, debt: .debt, tags: .tags, rule: .rule, flows: .flows, textRange: .textRange}]' >> sonar-report.json 2>/dev/null || echo '[]' >> sonar-report.json
+	@echo '  ,' >> sonar-report.json
+	@# Fetch security hotspots
+	@echo '  "hotspots": ' >> sonar-report.json
+	@curl -s -u $(SONAR_TOKEN): "$(SONAR_HOST_URL)/api/hotspots/search?projectKey=anqr&ps=500" | \
+		jq '[.hotspots[]? | {key: .key, message: .message, file: (.component | split(":") | .[1]), line: .line, status: .status, vulnerabilityProbability: .vulnerabilityProbability, securityCategory: .securityCategory}]' >> sonar-report.json 2>/dev/null || echo '[]' >> sonar-report.json
+	@echo '  ,' >> sonar-report.json
+	@# Fetch duplications
+	@echo '  "duplications": ' >> sonar-report.json
+	@curl -s -u $(SONAR_TOKEN): "$(SONAR_HOST_URL)/api/duplications/show?key=anqr" | \
+		jq '{duplications: .duplications, files: .files}' >> sonar-report.json 2>/dev/null || echo '{}' >> sonar-report.json
+	@echo '}' >> sonar-report.json
+	@# Pretty print and validate JSON
+	@jq '.' sonar-report.json > sonar-report.tmp.json 2>/dev/null && mv sonar-report.tmp.json sonar-report.json || true
+	@echo ""
+	@echo "=== SUMMARY ==="
+	@jq -r '.summary | to_entries[] | "  \(.key): \(.value)"' sonar-report.json 2>/dev/null || echo "  (see sonar-report.json)"
+	@echo ""
+	@echo "=== ISSUE COUNTS BY TYPE ==="
+	@jq -r '.issues | group_by(.type) | map({type: .[0].type, count: length}) | .[] | "  \(.type): \(.count)"' sonar-report.json 2>/dev/null || echo "  (see sonar-report.json)"
+	@echo ""
+	@echo "=== ISSUE COUNTS BY SEVERITY ==="
+	@jq -r '.issues | group_by(.severity) | map({severity: .[0].severity, count: length}) | sort_by(.severity) | .[] | "  \(.severity): \(.count)"' sonar-report.json 2>/dev/null || echo "  (see sonar-report.json)"
+	@echo ""
+	@echo "Report saved to: sonar-report.json"
+	@echo "Dashboard: $(SONAR_HOST_URL)/dashboard?id=anqr"
+	@echo ""
+	@echo "To view issues: jq '.issues[] | {file, line, severity, type, message}' sonar-report.json"
+	@echo "To view by file: jq '.issues | group_by(.file) | map({file: .[0].file, count: length})' sonar-report.json"
