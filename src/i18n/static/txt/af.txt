@@ -1211,3 +1211,6 @@
 1211	"Dankie aan al ons vertaalbydraers wat gehelp het om ANQR wêreldwyd toeganklik te maak!"
 1212	"Vrae?"
 1213	"As jy vrae het oor bydraende vertalings, maak asseblief 'n kwessie op ons GitHub-bewaarplek oop of kontak ons per e-pos. Ons help jou graag om aan die gang te kom."
+1214	"Reddit-gemeenskap"
+1215	"Sluit aan by ons Reddit-gemeenskap by r/ANQR om jou QR-skeppings te deel, vrae te vra, hulp te kry en met ander ANQR-gebruikers te skakel."
+1216	"Sluit aan by r/ANQR"
