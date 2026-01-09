@@ -14,12 +14,13 @@ interface PreviewProps {
 
 export function Preview({ sidebarOpen = true }: PreviewProps) {
   const { t } = useTranslation();
-  const { canvasRef, isLoading, error, safetyWarnings, canvas, isPreparingAnimation } =
+  const { canvasRef, isLoading, isRendering, error, safetyWarnings, canvas, isPreparingAnimation } =
     useQRGenerator();
 
-  // Show busy overlay while loading OR while preparing multi-frame animation
+  // Show busy overlay while loading OR while preparing multi-frame animation OR during active rendering
   // isPreparingAnimation is true when we have multi-frame content but cache isn't ready yet
-  const showBusy = isLoading || isPreparingAnimation;
+  // isRendering is true when actively generating QR (after debounce, during expensive computation)
+  const showBusy = isLoading || isRendering || isPreparingAnimation;
   const [showWarnings, setShowWarnings] = useState(true);
   const [heatmapActive, setHeatmapActive] = useState(false);
   const heatmapCanvasRef = useRef<HTMLCanvasElement>(null);
