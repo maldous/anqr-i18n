@@ -321,7 +321,7 @@ export function parseUrlParams(): Partial<ShareConfig> {
     rotate: params.get('rot') ? Number.parseInt(params.get('rot')!, 10) : undefined,
     flipX: params.get('flipX') === '1',
     flipY: params.get('flipY') === '1',
-    preserveFinders: params.get('keepFinders') !== '0',
+    preserveFinders: params.get('keepFinders') === '0' ? false : true,
     preserveTiming: params.get('keepTiming') === '1',
     preserveAlignment: params.get('keepAlign') === '1',
     protectFormatInfo: params.get('protectFmt') === '1',
@@ -1424,10 +1424,10 @@ export async function copyToClipboard(text: string): Promise<boolean> {
     try {
       document.execCommand('copy');
       return true;
-    } catch (_e) {
+    } catch {
       return false;
     } finally {
-      document.body.removeChild(textarea);
+      textarea.remove();
     }
   }
 }
@@ -1462,8 +1462,12 @@ export function canvasToDataUrl(
   format: 'png' | 'jpeg' | 'webp' = 'png',
   quality: number = 0.9
 ): string {
-  const mimeType =
-    format === 'jpeg' ? 'image/jpeg' : format === 'webp' ? 'image/webp' : 'image/png';
+  const mimeTypes: Record<string, string> = {
+    jpeg: 'image/jpeg',
+    webp: 'image/webp',
+    png: 'image/png',
+  };
+  const mimeType = mimeTypes[format] || 'image/png';
   return canvas.toDataURL(mimeType, quality);
 }
 
@@ -1475,8 +1479,12 @@ export function canvasToBlob(
   format: 'png' | 'jpeg' | 'webp' = 'png',
   quality: number = 0.9
 ): Promise<Blob | null> {
-  const mimeType =
-    format === 'jpeg' ? 'image/jpeg' : format === 'webp' ? 'image/webp' : 'image/png';
+  const mimeTypes: Record<string, string> = {
+    jpeg: 'image/jpeg',
+    webp: 'image/webp',
+    png: 'image/png',
+  };
+  const mimeType = mimeTypes[format] || 'image/png';
   return new Promise((resolve) => canvas.toBlob(resolve, mimeType, quality));
 }
 
@@ -1490,7 +1498,7 @@ export function downloadBlob(blob: Blob, filename: string): void {
   a.download = filename;
   document.body.appendChild(a);
   a.click();
-  document.body.removeChild(a);
+  a.remove();
   URL.revokeObjectURL(url);
 }
 
