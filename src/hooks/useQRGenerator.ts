@@ -93,6 +93,7 @@ interface UseQRGeneratorResult {
   isLoading: boolean;
   isExporting: boolean;
   isRendering: boolean; // True when actively rendering (after debounce, during generation)
+  isPending: boolean; // True when config has changed but debounce hasn't settled yet
   error: string | null;
   regenerate: () => void;
   download: () => Promise<void>;
@@ -175,6 +176,7 @@ export function useQRGenerator(): UseQRGeneratorResult {
   const [isLoading, setIsLoading] = useState(false);
   const [isExporting, setIsExporting] = useState(false);
   const [isRendering, setIsRendering] = useState(false); // Active rendering state
+  const [isPending, setIsPending] = useState(false); // Config changed, waiting for debounce
   const [error, setError] = useState<string | null>(null);
   const [overlayCanvas, setOverlayCanvas] = useState<HTMLCanvasElement | null>(null);
 
@@ -556,7 +558,25 @@ export function useQRGenerator(): UseQRGeneratorResult {
   ]);
 
   // Debounce config changes to prevent excessive regeneration
-  const debouncedConfig = useDebounce(config, 150);
+  // 300ms is a good balance for slow phones while remaining responsive
+  const debouncedConfig = useDebounce(config, 300);
+
+  // Track when config changes but debounce hasn't settled yet
+  // Only show pending state after a short delay (100ms) to avoid flashing on fast devices
+  // This provides visual feedback for slower devices while keeping fast devices responsive
+  useEffect(() => {
+    // Delay showing pending state to avoid flashing on fast renders
+    const showPendingTimeout = setTimeout(() => {
+      setIsPending(true);
+    }, 100);
+
+    return () => clearTimeout(showPendingTimeout);
+  }, [config]);
+
+  // Clear pending state when debounced config catches up
+  useEffect(() => {
+    setIsPending(false);
+  }, [debouncedConfig]);
 
   /**
    * Apply only geometric transforms (crop, fit, rotate, flip) to a canvas.
@@ -1812,6 +1832,7 @@ export function useQRGenerator(): UseQRGeneratorResult {
     isLoading,
     isExporting,
     isRendering,
+    isPending,
     error,
     regenerate: generate,
     download,
