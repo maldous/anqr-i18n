@@ -1289,7 +1289,10 @@
     "sending": "1050",
     "privacyNote": "1051",
     "emailUs": "1052",
-    "emailUsDesc": "1053"
+    "emailUsDesc": "1053",
+    "redditCommunity": "1496",
+    "redditCommunityDesc": "1497",
+    "joinReddit": "1498"
   },
   "overlay": {
     "blueNoise": "1",

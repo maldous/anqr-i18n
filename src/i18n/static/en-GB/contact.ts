@@ -64,6 +64,12 @@ export const contact: PageDefinition = {
         'Please include "DMCA Notice" in the subject line. We will respond to valid notices in accordance with applicable law. Note that ANQR generates QR codes locally on users devices and does not host user-generated content.',
       ],
     },
+    {
+      heading: 'Reddit Community',
+      paragraphs: [
+        'Join our Reddit community at r/ANQR to share your QR creations, ask questions, get help, and connect with other ANQR users.',
+      ],
+    },
   ],
 };
 
