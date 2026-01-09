@@ -1447,5 +1447,4 @@
 1447	"Masukkan isi Anda (URL, teks, WiFi, vCard, dsb.)"
 1448	"Kustomisasi warna, gaya, dan pilihan menambahkan suatu gambar overlay"
 1449	"Ekspor kode QR Anda atau bagikan link konfigurasi"
-1450	"Pesan ini tidak akan muncul lagi sampai update berikutnya."
 1451	"Mulai"

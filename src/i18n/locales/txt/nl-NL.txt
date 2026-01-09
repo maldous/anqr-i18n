@@ -1447,5 +1447,4 @@
 1447	"Vul uw inhoud in (URL, tekst, WiFi, vCard, enz.)"
 1448	"Kleuren, stijl aanpassen en eventueel een afbeelding overlay toevoegen"
 1449	"Exporteer uw QR-code of deel de configuratielink"
-1450	"Dit bericht zal niet opnieuw verschijnen tot de volgende update."
 1451	"Starten"
