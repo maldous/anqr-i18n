@@ -2,127 +2,94 @@
 
 Thank you for helping translate ANQR! **No coding or Git experience required** - you can contribute directly from your web browser.
 
-## 🌐 Web-Based Contributing (Recommended)
+## 🌐 Quick Start
 
-The easiest way to contribute - no software installation needed!
+1. Go to the [README](README.md) and find your language in the table
+2. Click **✏️ edit** under either **Static** or **Locales** column
+3. Make your changes in the GitHub editor
+4. Click "Commit changes" and create a pull request
 
-### Step 1: Find the Language File
+That's it! We'll review and merge your contribution.
 
-Go to the [README](README.md) and click the ✏️ **Edit** link next to your language.
+## 📁 What's the Difference?
 
-Or browse directly:
-- **Static content** (guides, docs): [View static branch](../../tree/static)
-- **UI strings** (buttons, labels): [View locales branch](../../tree/locales)
-
-### Step 2: Edit the File
-
-1. Click the **pencil icon** (✏️) in the top-right corner of the file
-2. Make your changes in the editor
-3. Preview your changes using the "Preview" tab
-
-### Step 3: Submit Your Changes
-
-1. Scroll down to "Commit changes"
-2. Write a brief description (e.g., "Fix Spanish translation for button label")
-3. Select **"Create a new branch for this commit and start a pull request"**
-4. Click **"Propose changes"**
-5. On the next page, click **"Create pull request"**
-
-That's it! We'll review your contribution and merge it.
-
----
+| Type | What it contains | Examples |
+|------|------------------|----------|
+| **Static** | Long-form page content | About page, Guide, Privacy Policy, Terms of Service |
+| **Locales** | Short UI strings | Button labels, menu items, tooltips, error messages |
 
 ## 📝 Translation Guidelines
 
 ### For Static Content (.txt files)
 
-These files contain documentation, guides, and about pages.
+These files use a simple `ID=text` format:
 
-**Format:**
 ```
-## Section Title
-
-Paragraph text goes here. Keep the same structure
-as the original English file.
-
-### Subsection
-
-More content...
+100=Welcome to ANQR
+101=Create beautiful QR codes with custom styling
+102=Get Started
 ```
 
 **Tips:**
-- Keep the same heading structure (##, ###)
-- Preserve any links `[text](url)`
-- Don't translate code examples or technical terms
-- Keep placeholders like `{name}` or `{{variable}}` unchanged
+- Only translate the text after the `=` sign
+- Keep the ID numbers exactly the same
+- Preserve any placeholders like `{name}` or `{{variable}}`
+- Don't translate URLs or technical terms
 
-### For UI Strings (.json files)
+### For Locales/UI Strings (.txt files)
 
-These files contain short UI text like button labels and messages.
+Same format - translate only the text after `=`:
 
-**Format:**
-```json
-{
-  "button.save": "Save",
-  "button.cancel": "Cancel",
-  "message.success": "Your QR code is ready!"
-}
+```
+button.save=Save
+button.cancel=Cancel
+message.success=Your QR code is ready!
 ```
 
 **Tips:**
-- Only translate the text after the colon (`"`)
-- Keep the keys (before the colon) exactly the same
+- Keep keys (before `=`) exactly the same
 - Preserve any `{variables}` in the text
-- Keep valid JSON format (watch your commas and quotes!)
-
----
+- Keep translations concise for UI elements
 
 ## ➕ Adding a New Language
 
-1. Go to the appropriate branch:
+1. Choose the correct language code (e.g., `pt-PT` for Portuguese-Portugal)
+   - Reference: [ISO 639-1 codes](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes)
+
+2. Create both files:
    - [Create static content file](../../new/static?filename=xx-XX.txt)
-   - [Create UI strings file](../../new/locales?filename=xx-XX.json)
+   - [Create locales file](../../new/locales?filename=xx-XX.txt)
 
-2. Name your file using the correct language code:
-   - Format: `language-REGION` (e.g., `pt-PT.txt` for Portuguese-Portugal)
-   - Common codes: [ISO 639-1](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes)
-
-3. Copy content from `en-GB.txt` or `en-GB.json` as a starting template
+3. Copy content from `en-GB.txt` as your starting template
 
 4. Translate and submit as a pull request
 
----
+## 💻 Using Git (Optional)
 
-## 💻 Advanced: Using Git (Optional)
-
-If you prefer using Git:
+For advanced users who prefer Git:
 
 ```bash
-# Fork and clone
 git clone https://github.com/YOUR-USERNAME/anqr-i18n.git
 cd anqr-i18n
 
-# Work on static content
+# Edit static content
 git checkout static
-# Edit files...
-git commit -am "Update Spanish translations"
-git push origin static
+# Make changes...
+git commit -am "Update Spanish static content"
+git push
 
-# Or work on UI strings
-git checkout locales
-# Edit files...
+# Edit UI strings
+git checkout locales  
+# Make changes...
 git commit -am "Update Spanish UI strings"
-git push origin locales
+git push
 ```
 
 Then create a pull request on GitHub.
 
----
-
 ## ❓ Questions?
 
-- **Email**: [email@anqr.link](mailto:email@anqr.link)
 - **Website**: [anqr.link](https://anqr.link)
-- **Issues**: [Open an issue](../../issues/new/choose)
+- **Issues**: [Open an issue](../../issues/new)
 
 Thank you for making ANQR accessible to more people! 🙏
