@@ -107,14 +107,16 @@ export function MobileDivider({ onDrag, onDragEnd }: MobileDividerProps) {
         touch-none
         select-none
         transition-all duration-150
-        ${isDragging 
-          ? 'bg-accent shadow-md border-accent-foreground/20' 
-          : 'hover:bg-accent/50 active:bg-accent hover:shadow-sm'
+        ${
+          isDragging
+            ? 'bg-accent shadow-md border-accent-foreground/20'
+            : 'hover:bg-accent/50 active:bg-accent hover:shadow-sm'
         }
       `}
       onMouseDown={handleMouseDown}
       onTouchStart={handleTouchStart}
       role="separator"
+      tabIndex={0}
       aria-orientation="horizontal"
       aria-label="Drag to resize panels"
       aria-valuenow={isDragging ? 1 : 0}

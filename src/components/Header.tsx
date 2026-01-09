@@ -215,7 +215,7 @@ export function Header({
   const handleCameraCapture = async () => {
     setCameraError(null);
     setCameraLoading(true);
-    
+
     try {
       // Check permissions first
       const permissions = await Camera.checkPermissions();
