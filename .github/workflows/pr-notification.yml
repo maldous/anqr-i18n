@@ -1,0 +1,32 @@
+# Send email notification when PRs are opened on the public i18n repo
+name: PR Notification
+
+on:
+  pull_request:
+    types: [opened, reopened]
+
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Send email notification
+        uses: dawidd6/action-send-mail@v3
+        with:
+          server_address: smtp.gmail.com
+          server_port: 587
+          username: ${{ secrets.EMAIL_USERNAME }}
+          password: ${{ secrets.EMAIL_PASSWORD }}
+          subject: "[ANQR i18n] New PR: ${{ github.event.pull_request.title }}"
+          to: email@anqr.link
+          from: ANQR Translations <noreply@anqr.link>
+          body: |
+            A new translation contribution has been submitted!
+            
+            Title: ${{ github.event.pull_request.title }}
+            Author: ${{ github.event.pull_request.user.login }}
+            Branch: ${{ github.event.pull_request.head.ref }} → ${{ github.event.pull_request.base.ref }}
+            
+            View PR: ${{ github.event.pull_request.html_url }}
+            
+            ---
+            ANQR Translation Bot
