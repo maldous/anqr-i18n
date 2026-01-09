@@ -1,4 +1,4 @@
-.PHONY: dev build gallery gallery\:gif sitemap deploy android android\:init android\:sync android\:build android\:release android\:open install clean fix lint format check pull push i18n\:pull i18n\:push
+.PHONY: dev build gallery gallery\:gif sitemap deploy android android\:init android\:sync android\:build android\:release android\:open install clean fix lint format check pull push i18n\:pull i18n\:push i18n\:xlate i18n\:xlate\:static i18n\:xlate\:locales i18n\:fill i18n\:fill\:static i18n\:fill\:locales
 
 # ============================================
 # Environment variables
@@ -295,6 +295,85 @@ push:
 	@echo "Pushing to origin..."
 	git push
 	@echo "All pushes complete."
+
+# ============================================
+# i18n Translation Tools (xlate.py / fill.py)
+# ============================================
+# Usage:
+#   make i18n:xlate                    # Translate all languages (both static and locales)
+#   make i18n:xlate LANGS="fr-FR de-DE" # Translate specific languages only
+#   make i18n:xlate:static             # Translate static content only
+#   make i18n:xlate:locales            # Translate locales only
+#   make i18n:fill                     # Generate TS/JSON from all translated txt files
+#   make i18n:fill LANGS="en-GB fr-FR" # Generate for specific languages only
+
+# Translate static content (guides, docs) - all languages or LANGS
+i18n\:xlate\:static:
+	@echo "Translating static content..."
+	@cd src/i18n/static/txt && \
+	if [ -n "$(LANGS)" ]; then \
+		for lang in $(LANGS); do \
+			if [ "$$lang" != "en-GB" ]; then \
+				python3 xlate.py "$$lang.txt"; \
+			fi \
+		done; \
+	else \
+		python3 xlate.py; \
+	fi
+
+# Translate locales (UI strings) - all languages or LANGS
+i18n\:xlate\:locales:
+	@echo "Translating locales..."
+	@cd src/i18n/locales/txt && \
+	if [ -n "$(LANGS)" ]; then \
+		for lang in $(LANGS); do \
+			if [ "$$lang" != "en-GB" ]; then \
+				python3 xlate.py "$$lang.txt"; \
+			fi \
+		done; \
+	else \
+		python3 xlate.py; \
+	fi
+
+# Translate both static and locales
+i18n\:xlate: i18n\:xlate\:static i18n\:xlate\:locales
+	@echo "All translations complete."
+
+# Generate static TS files from translated txt - all languages or LANGS
+i18n\:fill\:static:
+	@echo "Generating static TS files..."
+	@cd src/i18n/static/txt && \
+	if [ -n "$(LANGS)" ]; then \
+		for lang in $(LANGS); do \
+			python3 fill.py "$$lang.txt"; \
+		done; \
+	else \
+		for f in *.txt; do \
+			if [ "$$f" != "template.txt" ]; then \
+				python3 fill.py "$$f"; \
+			fi; \
+		done; \
+	fi
+
+# Generate locales JSON files from translated txt - all languages or LANGS
+i18n\:fill\:locales:
+	@echo "Generating locales JSON files..."
+	@cd src/i18n/locales/txt && \
+	if [ -n "$(LANGS)" ]; then \
+		for lang in $(LANGS); do \
+			python3 fill.py "$$lang.txt"; \
+		done; \
+	else \
+		for f in *.txt; do \
+			if [ "$$f" != "template.txt" ]; then \
+				python3 fill.py "$$f"; \
+			fi; \
+		done; \
+	fi
+
+# Generate both static TS and locales JSON
+i18n\:fill: i18n\:fill\:static i18n\:fill\:locales
+	@echo "All fills complete."
 
 dep:
 	@npx depcruise src --output-type dot | dot -Tpng > deps.png
