@@ -37,6 +37,16 @@ const GLOBAL_PAYMENT_METHODS: PayloadKind[] = [
 // Language-to-payment mapping for advanced tier
 // Maps language codes to arrays of region-specific payment methods
 const LANGUAGE_PAYMENT_MAP: Record<string, PayloadKind[]> = {
+  // === English variants ===
+  'en-GB': ['epc_sepa'], // UK - SEPA compatible
+  'en-US': [], // USA - global payments only
+  'en-AU': ['auspaynet'], // Australia - NPP/PayID
+  'en-CA': [], // Canada - global payments only
+  'en-IN': ['upi', 'bharatqr'], // India
+  'en-SG': ['paynow'], // Singapore
+  'en-ZA': [], // South Africa - global payments only
+
+  // === East Asian ===
   // Vietnamese - VietQR
   vi: ['vietqr'],
 
@@ -49,21 +59,32 @@ const LANGUAGE_PAYMENT_MAP: Record<string, PayloadKind[]> = {
   // Korean - global only (Google Play: ko-KR)
   'ko-KR': [],
 
-  // Chinese - includes mainland, Taiwan, HK (Google Play: zh-CN)
-  'zh-CN': ['twqr', 'hkqr'],
+  // Chinese variants
+  'zh-CN': [], // Mainland China - global only (WeChat/Alipay not supported)
+  'zh-HK': ['hkqr'], // Hong Kong - FPS
+  'zh-TW': ['twqr'], // Taiwan
 
+  // === Southeast Asian ===
   // Indonesian - QRIS
   id: ['qris'],
 
   // Malay (Malaysia, Singapore) - DuitNow, PayNow
   ms: ['duitnow', 'paynow'],
+  'ms-MY': ['duitnow', 'paynow'], // Malaysia variant
 
   // Filipino (Philippines) - QR Ph (Google Play: fil)
   fil: ['qrph'],
 
-  // Portuguese (Brazil) - PIX (Google Play: pt-BR)
-  'pt-BR': ['pix'],
+  // Khmer (Cambodia) - global only
+  'km-KH': [],
 
+  // Lao - global only
+  'lo-LA': [],
+
+  // Burmese - global only
+  'my-MM': [],
+
+  // === South Asian ===
   // Indian languages - UPI, BharatQR (Google Play codes)
   'hi-IN': ['upi', 'bharatqr'],
   'bn-BD': ['upi', 'bharatqr'], // Bengali
@@ -72,47 +93,111 @@ const LANGUAGE_PAYMENT_MAP: Record<string, PayloadKind[]> = {
   gu: ['upi', 'bharatqr'],
   'kn-IN': ['upi', 'bharatqr'],
   'ml-IN': ['upi', 'bharatqr'],
-  pa: ['upi', 'bharatqr'], // Punjabi (Google Play: pa)
+  pa: ['upi', 'bharatqr'], // Punjabi
   'ta-IN': ['upi', 'bharatqr'],
 
-  // European languages - EPC/SEPA, Swiss QR-bill (with Google Play codes)
-  'de-DE': ['epc_sepa', 'swiss_qr_bill'],
-  'fr-FR': ['epc_sepa', 'swiss_qr_bill'],
-  'it-IT': ['epc_sepa', 'swiss_qr_bill'],
-  'es-ES': ['epc_sepa'], // Spanish (Google Play: es-ES)
-  'nl-NL': ['epc_sepa'],
-  'pl-PL': ['epc_sepa'],
-  'cs-CZ': ['epc_sepa'],
-  'da-DK': ['epc_sepa'],
-  'km-KH': [], // Khmer (Cambodia)
-  'fi-FI': ['epc_sepa'],
-  'sv-SE': ['epc_sepa'],
-  'no-NO': ['epc_sepa'],
-  ro: ['epc_sepa'],
-  'hu-HU': ['epc_sepa'],
-  hr: ['epc_sepa'],
-  bg: ['epc_sepa'],
-  'el-GR': ['epc_sepa'],
-
-  // English - payment types from English-speaking countries (UK, Australia, etc.)
-  'en-GB': ['epc_sepa', 'auspaynet'],
-
-  // Russian - global + SEPA for cross-border (using Google Play codes)
-  'ru-RU': ['epc_sepa'],
-
-  // Arabic - global options
-  ar: [],
-
-  // Southeast Asian (no specific QR standards in our list) - with Google Play codes
-  'lo-LA': [], // Lao
-  'my-MM': [], // Burmese
-
-  // South Asian - Nepali gets UPI (close ties with India)
+  // Nepali - UPI (close ties with India)
   'ne-NP': ['upi', 'bharatqr'],
 
+  // Sinhala (Sri Lanka) - global only
+  'si-LK': [],
+
+  // Urdu (Pakistan) - global only
+  ur: [],
+
+  // === Latin America ===
+  // Portuguese (Brazil) - PIX
+  'pt-BR': ['pix'],
+
+  // Spanish (Latin America) - global only
+  'es-419': [],
+  'es-US': [],
+
+  // === European SEPA countries ===
+  // Western Europe
+  'de-DE': ['epc_sepa', 'swiss_qr_bill'], // German (Germany, Austria, Switzerland)
+  'fr-FR': ['epc_sepa', 'swiss_qr_bill'], // French (France, Switzerland)
+  'fr-CA': [], // French (Canada) - global only
+  'it-IT': ['epc_sepa', 'swiss_qr_bill'], // Italian (Italy, Switzerland)
+  'es-ES': ['epc_sepa'], // Spanish (Spain)
+  'pt-PT': ['epc_sepa'], // Portuguese (Portugal)
+  'nl-NL': ['epc_sepa'], // Dutch
+
+  // Spanish regional languages
+  ca: ['epc_sepa'], // Catalan
+  'eu-ES': ['epc_sepa'], // Basque
+  'gl-ES': ['epc_sepa'], // Galician
+
+  // Nordic countries
+  'da-DK': ['epc_sepa'], // Danish
+  'fi-FI': ['epc_sepa'], // Finnish
+  'sv-SE': ['epc_sepa'], // Swedish
+  'no-NO': ['epc_sepa'], // Norwegian
+  'is-IS': ['epc_sepa'], // Icelandic (EEA/SEPA member)
+
+  // Central Europe
+  'pl-PL': ['epc_sepa'], // Polish
+  'cs-CZ': ['epc_sepa'], // Czech
+  sk: ['epc_sepa'], // Slovak
+  'hu-HU': ['epc_sepa'], // Hungarian
+  sl: ['epc_sepa'], // Slovenian
+
+  // Baltic states
+  et: ['epc_sepa'], // Estonian
+  lt: ['epc_sepa'], // Lithuanian
+  lv: ['epc_sepa'], // Latvian
+
+  // Southern Europe
+  'el-GR': ['epc_sepa'], // Greek
+  hr: ['epc_sepa'], // Croatian
+  ro: ['epc_sepa'], // Romanian
+  bg: ['epc_sepa'], // Bulgarian
+
+  // Switzerland
+  rm: ['epc_sepa', 'swiss_qr_bill'], // Romansh
+
+  // === Eastern European (non-SEPA) ===
+  'ru-RU': ['epc_sepa'], // Russian - SEPA for cross-border
+  uk: [], // Ukrainian - global only
+  be: [], // Belarusian - global only
+  sr: [], // Serbian - global only
+  'mk-MK': [], // Macedonian - global only
+  sq: [], // Albanian - global only
+
+  // === Middle East & Central Asia ===
+  // Arabic - global only
+  ar: [],
+
+  // Hebrew (Israel) - global only
+  'iw-IL': [],
+
+  // Persian variants - global only
+  fa: [],
+  'fa-AE': [],
+  'fa-AF': [],
+  'fa-IR': [],
+
+  // Turkish - global only
+  'tr-TR': [],
+
+  // Central Asian - global only
+  'az-AZ': [], // Azerbaijani
+  'hy-AM': [], // Armenian
+  'ka-GE': [], // Georgian
+  kk: [], // Kazakh
+  'ky-KG': [], // Kyrgyz
+  'mn-MN': [], // Mongolian
+
+  // === African ===
   // South African languages - global only
-  af: [],
-  zu: [],
+  af: [], // Afrikaans
+  zu: [], // Zulu
+
+  // Ethiopian - global only
+  am: [], // Amharic
+
+  // East African - global only
+  sw: [], // Swahili
 };
 
 /**
