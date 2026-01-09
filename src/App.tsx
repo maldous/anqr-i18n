@@ -48,7 +48,9 @@ function getPageFromLocation(): PageView {
   return 'editor';
 }
 
-// Default mobile split heights (percentage of available height)
+// Mobile split configuration
+// localStorage key for persisting user's preferred split position
+const MOBILE_SPLIT_STORAGE_KEY = 'anqr:ui:mobile-split-percent';
 const DEFAULT_MOBILE_SPLIT = Capacitor.isNativePlatform() ? 35 : 45;
 const MIN_MOBILE_SPLIT = 20; // Minimum sidebar height %
 const MAX_MOBILE_SPLIT = 70; // Maximum sidebar height %
@@ -79,13 +81,17 @@ function App() {
   }, []);
 
   // Save split position to localStorage on drag end
+  // Use a ref to get the current value to avoid recreating the callback
+  const mobileSplitPercentRef = useRef(mobileSplitPercent);
+  mobileSplitPercentRef.current = mobileSplitPercent;
+  
   const handleMobileDividerDragEnd = useCallback(() => {
-    localStorage.setItem('anqr-mobile-split', String(mobileSplitPercent));
-  }, [mobileSplitPercent]);
+    localStorage.setItem(MOBILE_SPLIT_STORAGE_KEY, String(mobileSplitPercentRef.current));
+  }, []);
 
   // Load saved split position from localStorage
   useEffect(() => {
-    const saved = localStorage.getItem('anqr-mobile-split');
+    const saved = localStorage.getItem(MOBILE_SPLIT_STORAGE_KEY);
     if (saved) {
       const parsed = parseFloat(saved);
       if (!isNaN(parsed) && parsed >= MIN_MOBILE_SPLIT && parsed <= MAX_MOBILE_SPLIT) {
