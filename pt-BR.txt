@@ -415,7 +415,6 @@
 415	"Direito de restringir o processamento: Solicitar limites sobre como usamos seus dados."
 416	"Direito à portabilidade dos dados: Solicite os seus dados em formato portátil."
 417	"Direito de oposição: Opor-se ao processamento, inclusive para marketing direto."
-418	"Direito de retirar o consentimento: Retirar o consentimento a qualquer momento quando o processamento for baseado no consentimento."
 419	"Direito de apresentar uma reclamação: apresente uma reclamação junto da sua autoridade de proteção de dados."
 420	"Base jurídica do GDPR"
 421	"Processamos dados nestas bases: (a) Consentimento – para publicidade personalizada (gerida pelos nossos parceiros publicitários); (b) Interesses legítimos – para análise, segurança e melhoria; (c) Contrato - para atendimento de dúvidas."

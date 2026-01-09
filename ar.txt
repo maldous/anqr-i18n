@@ -1187,8 +1187,6 @@
 1187	"فكل مساهمة في الترجمة - سواء كانت ترمي إلى تمثال أو ترجمة لغة كاملة - تشكل فرقا حقيقيا للمستعملين في مجتمعكم."
 1188	"ماذا يمكنك أن تترجم؟?"
 1189	"ولشركة أنكرو نوعان من المحتويات القابلة للترجمة:"
-1190	"UI Strings: Button labels, menu items, tooltips, and interface text that appears throughout the app."
-1191	"Conttic Content: Documentation pages including guides, examples, privacy policy, and help articles."
 1192	"كلا النوعين مخزنين كملفات نصية بسيطة يمكنك تحريرها مباشرة في منظفك لا حاجة لبرمجيات خاصة."
 1193	"وتُستعرض الترجمة قبل دمجها لضمان الجودة والاتساق."
 1194	"كيفية التبرع"
