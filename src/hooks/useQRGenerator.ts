@@ -49,11 +49,11 @@ const YIELD_INTERVAL_MS = 16; // ~60fps frame budget
  */
 function yieldToMainThread(timeout = 50): Promise<void> {
   return new Promise((resolve) => {
-    if (typeof requestIdleCallback !== 'undefined') {
-      requestIdleCallback(() => resolve(), { timeout });
-    } else {
+    if (typeof requestIdleCallback === 'undefined') {
       // Fallback for browsers without requestIdleCallback
       setTimeout(resolve, 0);
+    } else {
+      requestIdleCallback(() => resolve(), { timeout });
     }
   });
 }
@@ -143,12 +143,19 @@ async function loadFileAsCanvas(file: File): Promise<HTMLCanvasElement> {
         const canvas = document.createElement('canvas');
         canvas.width = img.naturalWidth;
         canvas.height = img.naturalHeight;
-        const ctx = canvas.getContext('2d')!;
-        ctx.drawImage(img, 0, 0);
+        const ctx = canvas.getContext('2d');
+        if (ctx) {
+          ctx.drawImage(img, 0, 0);
+        }
         resolve(canvas);
       };
       img.onerror = () => reject(new Error('Failed to load image'));
-      img.src = e.target?.result as string;
+      const dataUrl = e.target?.result;
+      if (typeof dataUrl === 'string') {
+        img.src = dataUrl;
+      } else {
+        reject(new Error('Invalid file data'));
+      }
     };
     reader.onerror = () => reject(new Error('Failed to read file'));
     reader.readAsDataURL(file);
@@ -351,8 +358,8 @@ export function useQRGenerator(): UseQRGeneratorResult {
   // getPayloadText is a stable function reference - it doesn't change when payload changes
   const config = useMemo(() => {
     // Force dependency on payload by accessing it (even if getPayloadText reads it internally)
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const _payloadDep = payload;
-    void _payloadDep; // Suppress unused variable warning
     const content = getPayloadText();
 
     return {
@@ -748,10 +755,9 @@ export function useQRGenerator(): UseQRGeneratorResult {
 
     if (isGif) {
       // Use GIF compositor for optimal patch-only decoding
-      const reader = new FileReader();
-      reader.onload = (e) => {
+      // Use modern Blob#arrayBuffer() API instead of FileReader
+      overlay.file.arrayBuffer().then((arrayBuffer) => {
         try {
-          const arrayBuffer = e.target?.result as ArrayBuffer;
           const compositor = createGifCompositor(arrayBuffer);
           setGifCompositor(compositor);
           setGifFrames([]); // Clear legacy frames
@@ -777,43 +783,45 @@ export function useQRGenerator(): UseQRGeneratorResult {
               setIsLoadingOverlay(false);
             });
         }
-      };
-      reader.readAsArrayBuffer(overlay.file);
+      }).catch((err) => {
+        console.error('Failed to read GIF file:', err);
+        setRawOverlayCanvas(null);
+        setIsLoadingOverlay(false);
+      });
     } else if (isAnimatedWebP) {
       // Use legacy parseAnimatedImage for WebP (compositor only supports GIF)
-      const reader = new FileReader();
-      reader.onload = (e) => {
-        // Wrap async logic in IIFE to avoid Promise-returning function in void context (S6544)
-        (async () => {
-          try {
-            const arrayBuffer = e.target?.result as ArrayBuffer;
-            const frames = await parseAnimatedImage(arrayBuffer);
-            setGifFrames(frames);
-            setGifCompositor(null);
-            setCurrentFrame(0);
-            if (frames.length > 0) {
-              setRawOverlayCanvas(frames[0].canvas);
-            }
-            // Note: Don't clear isLoadingOverlay here for multi-frame - wait for animation cache
-            if (frames.length <= 1) {
-              setIsLoadingOverlay(false);
-            }
-          } catch (err) {
-            console.error('Failed to parse animated WebP:', err);
-            loadFileAsCanvas(overlay.file!)
-              .then((canvas) => {
-                setRawOverlayCanvas(canvas);
-                setGifFrames([{ canvas, delay: 100, disposalType: 0 }]);
-                setIsLoadingOverlay(false);
-              })
-              .catch(() => {
-                setRawOverlayCanvas(null);
-                setIsLoadingOverlay(false);
-              });
+      // Use modern Blob#arrayBuffer() API instead of FileReader
+      overlay.file.arrayBuffer().then(async (arrayBuffer) => {
+        try {
+          const frames = await parseAnimatedImage(arrayBuffer);
+          setGifFrames(frames);
+          setGifCompositor(null);
+          setCurrentFrame(0);
+          if (frames.length > 0) {
+            setRawOverlayCanvas(frames[0].canvas);
           }
-        })().catch(console.error);
-      };
-      reader.readAsArrayBuffer(overlay.file);
+          // Note: Don't clear isLoadingOverlay here for multi-frame - wait for animation cache
+          if (frames.length <= 1) {
+            setIsLoadingOverlay(false);
+          }
+        } catch (err) {
+          console.error('Failed to parse animated WebP:', err);
+          loadFileAsCanvas(overlay.file!)
+            .then((canvas) => {
+              setRawOverlayCanvas(canvas);
+              setGifFrames([{ canvas, delay: 100, disposalType: 0 }]);
+              setIsLoadingOverlay(false);
+            })
+            .catch(() => {
+              setRawOverlayCanvas(null);
+              setIsLoadingOverlay(false);
+            });
+        }
+      }).catch((err) => {
+        console.error('Failed to read WebP file:', err);
+        setRawOverlayCanvas(null);
+        setIsLoadingOverlay(false);
+      });
     } else {
       // Static image (PNG, JPG, etc.)
       setGifFrames([]);
@@ -1215,12 +1223,12 @@ export function useQRGenerator(): UseQRGeneratorResult {
         exportCanvas = document.createElement('canvas');
         exportCanvas.width = output.widthPx;
         exportCanvas.height = output.heightPx;
-        const ctx = exportCanvas.getContext('2d');
-        if (ctx) {
+        const exportCtx = exportCanvas.getContext('2d');
+        if (exportCtx) {
           // Use high-quality scaling
-          ctx.imageSmoothingEnabled = !render.crispEdges;
-          ctx.imageSmoothingQuality = 'high';
-          ctx.drawImage(canvas, 0, 0, output.widthPx, output.heightPx);
+          exportCtx.imageSmoothingEnabled = !render.crispEdges;
+          exportCtx.imageSmoothingQuality = 'high';
+          exportCtx.drawImage(canvas, 0, 0, output.widthPx, output.heightPx);
         }
       }
 
@@ -1331,11 +1339,11 @@ export function useQRGenerator(): UseQRGeneratorResult {
           const scaledCanvas = document.createElement('canvas');
           scaledCanvas.width = output.widthPx;
           scaledCanvas.height = output.heightPx;
-          const ctx = scaledCanvas.getContext('2d');
-          if (ctx) {
-            ctx.imageSmoothingEnabled = !render.crispEdges;
-            ctx.imageSmoothingQuality = 'high';
-            ctx.drawImage(frame, 0, 0, output.widthPx, output.heightPx);
+          const scaledCtx = scaledCanvas.getContext('2d');
+          if (scaledCtx) {
+            scaledCtx.imageSmoothingEnabled = !render.crispEdges;
+            scaledCtx.imageSmoothingQuality = 'high';
+            scaledCtx.drawImage(frame, 0, 0, output.widthPx, output.heightPx);
           }
           return scaledCanvas;
         });
@@ -1785,11 +1793,11 @@ export function useQRGenerator(): UseQRGeneratorResult {
       if (frames.length > 0) {
         setCanvas(frames[0]);
         if (canvasRef.current) {
-          const ctx = canvasRef.current.getContext('2d');
-          if (ctx) {
+          const finalCtx = canvasRef.current.getContext('2d');
+          if (finalCtx) {
             canvasRef.current.width = frames[0].width;
             canvasRef.current.height = frames[0].height;
-            ctx.drawImage(frames[0], 0, 0);
+            finalCtx.drawImage(frames[0], 0, 0);
           }
         }
       }
