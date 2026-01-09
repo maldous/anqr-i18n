@@ -978,7 +978,8 @@
     "generator": "Generator",
     "privacy": "Privacy",
     "terms": "Terms",
-    "related": "Related"
+    "related": "Related",
+    "translate": "Translate"
   },
   "output": {
     "none": "None",

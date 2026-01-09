@@ -17,6 +17,7 @@ export type StaticPageType =
   | 'guide'
   | 'learn'
   | 'examples'
+  | 'translate'
   | 'privacy'
   | 'terms'
   | 'contact';

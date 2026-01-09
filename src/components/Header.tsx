@@ -36,6 +36,7 @@ const NAV_LINKS: Array<{ href: string; labelKey: string; page: HeaderPage }> = [
   { href: '/guide', labelKey: 'nav.guide', page: 'guide' },
   { href: '/learn', labelKey: 'nav.learn', page: 'learn' },
   { href: '/examples', labelKey: 'nav.examples', page: 'examples' },
+  { href: '/translate', labelKey: 'nav.translate', page: 'translate' },
   { href: '/about', labelKey: 'nav.about', page: 'about' },
   { href: '/privacy', labelKey: 'nav.privacy', page: 'privacy' },
   { href: '/terms', labelKey: 'nav.terms', page: 'terms' },
