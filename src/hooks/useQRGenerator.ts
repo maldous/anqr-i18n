@@ -581,12 +581,12 @@ export function useQRGenerator(): UseQRGeneratorResult {
     }, 100);
 
     return () => clearTimeout(showPendingTimeout);
-  }, [config]); // Re-run when config changes
+  }, []); // Re-run when config changes
 
   // Clear pending state when debounced config catches up
   useEffect(() => {
     setIsPending(false);
-  }, [debouncedConfig]); // Clear when debounce settles
+  }, []); // Clear when debounce settles
 
   /**
    * Apply only geometric transforms (crop, fit, rotate, flip) to a canvas.
