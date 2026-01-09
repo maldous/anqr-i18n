@@ -273,7 +273,7 @@ export function isAnimatedWebP(buffer: ArrayBuffer): boolean {
 
   // Check RIFF header
   if (view.byteLength < 12) return false;
-  const riff = String.fromCharCode(
+  const riff = String.fromCodePoint(
     view.getUint8(0),
     view.getUint8(1),
     view.getUint8(2),
@@ -282,7 +282,7 @@ export function isAnimatedWebP(buffer: ArrayBuffer): boolean {
   if (riff !== 'RIFF') return false;
 
   // Check WEBP signature
-  const webp = String.fromCharCode(
+  const webp = String.fromCodePoint(
     view.getUint8(8),
     view.getUint8(9),
     view.getUint8(10),
@@ -293,7 +293,7 @@ export function isAnimatedWebP(buffer: ArrayBuffer): boolean {
   // Search for ANIM chunk (indicates animation)
   let offset = 12;
   while (offset < view.byteLength - 8) {
-    const chunkId = String.fromCharCode(
+    const chunkId = String.fromCodePoint(
       view.getUint8(offset),
       view.getUint8(offset + 1),
       view.getUint8(offset + 2),
@@ -319,17 +319,17 @@ export function detectImageFormat(buffer: ArrayBuffer): 'gif' | 'webp' | 'unknow
   if (view.byteLength < 12) return 'unknown';
 
   // Check GIF signature (GIF87a or GIF89a)
-  const gif = String.fromCharCode(view.getUint8(0), view.getUint8(1), view.getUint8(2));
+  const gif = String.fromCodePoint(view.getUint8(0), view.getUint8(1), view.getUint8(2));
   if (gif === 'GIF') return 'gif';
 
   // Check RIFF/WEBP signature
-  const riff = String.fromCharCode(
+  const riff = String.fromCodePoint(
     view.getUint8(0),
     view.getUint8(1),
     view.getUint8(2),
     view.getUint8(3)
   );
-  const webp = String.fromCharCode(
+  const webp = String.fromCodePoint(
     view.getUint8(8),
     view.getUint8(9),
     view.getUint8(10),

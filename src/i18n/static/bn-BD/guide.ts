@@ -929,11 +929,11 @@ export const guide: PageDefinition = {
       heading: 'ব্যবহারবিধি',
       paragraphs: [
         'মৌলিক ইনপুট কোড:',
-        'http://t',
+        'https://t',
         'স্বনির্ধারিত রঙ সহযোগে স্টাইল-QR কোড:',
         'datanker / wapi/ker? data= hasap এবং nafafafafas@fafffaffa এবং wafafaf এবং ffafted',
         'ওভারলে ছবি সহ QROP কোড:',
-        'http://www',
+        'https://www',
         'অ্যানিমেটেড GIF:',
         'datanker / wapi/ker? data= data এবং aminiamafs=mapam=24 এবং snims=2_ner_in_in_in_in_tach_(seper)',
       ],
@@ -962,7 +962,7 @@ export const guide: PageDefinition = {
       heading: 'HTML উদাহরণ',
       paragraphs: [
         'আপনার ওয়েবসাইটে একটা কিউআরসি কোড যোগ করার জন্য:',
-        '<mimgsrc=" http://anker. লিংক/Ap/ker. data=https. data/s. datas এবং example= > "Qolis" কোড।',
+        '<mimgsrc=" https://anker. লিংক/Ap/ker. data=https. data/s. datas এবং example= > "Qolis" কোড।',
         'বিদায় জানানোর জন্য:',
         '<mimgsrc=http://s.https/sker. লিংক/pap/ker. data. data. data. data. data. com/ data. com/ datamapert এবং example-এর ধরন "Qolux-tty" ধরন=10=50: 00:/ 00:/ 000000:/ 00',
         'এই সার্ভার- টি দীর্ঘ ক্যাশে হেডারের মাধ্যমে প্রতি সেকেন্ডে উত্তর দিতে ব্যবহৃত হয়, ফলে একই ইউ- আর- এল অনুরোধ করা হয়।.',

@@ -115,6 +115,11 @@ export function MobileDivider({ onDrag, onDragEnd }: MobileDividerProps) {
       `}
       onMouseDown={handleMouseDown}
       onTouchStart={handleTouchStart}
+      onKeyDown={(e) => {
+        if (e.key === 'ArrowUp' || e.key === 'ArrowDown') {
+          e.preventDefault();
+        }
+      }}
       role="separator"
       tabIndex={0}
       aria-orientation="horizontal"

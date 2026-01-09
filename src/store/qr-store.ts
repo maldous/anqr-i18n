@@ -1324,7 +1324,7 @@ export const useQRStore = create<QRState>((set, get) => ({
         result = result.trim();
       }
       if (payload.normalizeNewlines) {
-        result = result.replace(/\r\n/g, '\n').replace(/\r/g, '\n');
+        result = result.replaceAll('\r\n', '\n').replaceAll('\r', '\n');
       }
       return result;
     };
@@ -1521,7 +1521,7 @@ export const useQRStore = create<QRState>((set, get) => ({
         const text = payload.text;
         // If it's a phone number, format as sms:
         if (/^\+?[\d\s-]+$/.test(text)) {
-          return `sms:${text.replace(/[\s-]/g, '')}`;
+          return `sms:${text.replaceAll(/[\s-]/g, '')}`;
         }
         // If it looks like a WhatsApp link
         if (text.includes('wa.me') || text.includes('whatsapp')) {
@@ -1544,7 +1544,7 @@ export const useQRStore = create<QRState>((set, get) => ({
         // If already a URL, return as-is
         if (text.startsWith('http')) return text;
         // If it's just a GTIN number, format it
-        const gtin = text.replace(/[^\d]/g, '');
+        const gtin = text.replaceAll(/[^\d]/g, '');
         if (gtin.length >= 8) {
           return `https://id.gs1.org/01/${gtin.padStart(14, '0')}`;
         }

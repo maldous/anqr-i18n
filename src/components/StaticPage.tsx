@@ -38,13 +38,13 @@ function getImageUrl(src: string): string {
 function _slugify(text: string): string {
   return text
     .toLowerCase()
-    .replace(/[^a-z0-9]+/g, '-')
-    .replace(/(?:^-|-$)/g, '');
+    .replaceAll(/[^a-z0-9]+/g, '-')
+    .replaceAll(/(?:^-|-$)/g, '');
 }
 
 // Helper to process ${lang} placeholder in hrefs
 function processHref(href: string, lang: string): string {
-  return href.replace(/\$\{lang\}/g, lang);
+  return href.replaceAll('${lang}', lang);
 }
 
 // Helper to render text with clickable URLs and internal links
@@ -100,6 +100,7 @@ function renderTextWithLinks(text: string, lang: string): React.ReactNode {
 // Helper to render text content with links (used by renderTextWithLinks)
 function renderTextContent(text: string, lang: string): React.ReactNode {
   // Combined regex: match URLs or [[path|label]] syntax
+  // NOSONAR - This regex is safe: no nested quantifiers or overlapping alternatives that could cause catastrophic backtracking
   const combinedRegex = /(https?:\/\/[^\s]+)|\[\[([^|\]]+)\|([^\]]+)\]\]/g;
 
   const result: React.ReactNode[] = [];

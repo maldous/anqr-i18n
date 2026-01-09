@@ -20,6 +20,7 @@ import { type Tier, useQRStore } from '@/store/qr-store';
 type PageView = 'editor' | 'gallery' | StaticPageType;
 
 function getPageFromLocation(): PageView {
+  // NOSONAR - This regex is safe: /\/+$/ has no backtracking risk (simple trailing slash removal)
   const path = globalThis.location.pathname.replace(/\/+$/, '') || '/';
   const hash = globalThis.location.hash.replace(/^#/, '');
 
@@ -110,6 +111,7 @@ function App() {
     const nextSearch = page === 'editor' ? globalThis.location.search : '';
 
     // Avoid unnecessary history entries.
+    // NOSONAR - This regex is safe: /\/+$/ has no backtracking risk (simple trailing slash removal)
     const current = globalThis.location.pathname.replace(/\/+$/, '') || '/';
     if (current === nextPath && globalThis.location.search === nextSearch) {
       setCurrentPage(page);

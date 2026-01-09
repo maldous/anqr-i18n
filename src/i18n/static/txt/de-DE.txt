@@ -585,7 +585,7 @@
 585	"QR Code mit Overlay-Bild:"
 586	"https://anqr.link/api/qr?data=https://example.com&ec=H&img=https://example.com/logo.png&mode=halftone&intensity=70"
 587	"Animierter GIF:"
-588	"http://anqr.link/api/qr?data=Hello&format=gif&animPattern=pulse&animFrames=24&easing=ease_in_out"
+588	"https://anqr.link/api/qr?data=Hello&format=gif&animPattern=pulse&animFrames=24&easing=ease_in_out"
 589	"QR Codes einbetten"
 590	"Im Professional-Modus erzeugt das Share-Feature einbettbare HTML und URLs. So funktioniert die Einbettung:"
 591	"Link teilen: Erstellt eine URL zur ANQR App mit allen Einstellungen, die als URL-Parameter codiert sind. Empfänger können den QR-Code anzeigen und ändern."

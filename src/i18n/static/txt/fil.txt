@@ -579,7 +579,7 @@
 579	"meta Tittle, metaAuthor, metaCopy, meta meta Desc: Mga bukirin ng metadata."
 580	"Halimbawa sa Paggamit"
 581	"Pangunahing kodigo ng QR:"
-582	"mga http://anqr.link/api/qr?data=htps://example.com"
+582	"mga https://anqr.link/api/qr?data=htps://example.com"
 583	"Hugis QR code na may mga nakaugaliang kulay:"
 584	"https://anqr.link/api/qr?data=Hello&size=300&fg=1e40af&bg=ff&style=rounded&radius=30"
 585	"Code ng QR na may nakabalatang larawan:"

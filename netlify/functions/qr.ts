@@ -773,7 +773,7 @@ interface ServerAnimationFrame {
 function isGifBuffer(buffer: ArrayBuffer): boolean {
   const view = new DataView(buffer);
   if (view.byteLength < 6) return false;
-  const sig = String.fromCharCode(view.getUint8(0), view.getUint8(1), view.getUint8(2));
+  const sig = String.fromCodePoint(view.getUint8(0), view.getUint8(1), view.getUint8(2));
   return sig === 'GIF';
 }
 

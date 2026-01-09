@@ -461,10 +461,10 @@ export interface OTPAuthParams {
 /** Escape special characters for vCard/iCal format */
 function escapeValue(value: string): string {
   return value
-    .replace(/\\/g, '\\\\')
-    .replace(/;/g, '\\;')
-    .replace(/,/g, '\\,')
-    .replace(/\n/g, '\\n');
+    .replaceAll('\\', '\\\\')
+    .replaceAll(';', '\\;')
+    .replaceAll(',', '\\,')
+    .replaceAll('\n', '\\n');
 }
 
 /** Format date for iCalendar (YYYYMMDD or YYYYMMDDTHHmmss) */
@@ -846,7 +846,7 @@ export function generateUrl(params: UrlHelper): string {
 
 /** Generate telephone URI */
 export function generateTel(params: TelHelper): string {
-  return `tel:${params.number.replace(/\s+/g, '')}`;
+  return `tel:${params.number.replaceAll(/\s+/g, '')}`;
 }
 
 /** Generate email (mailto) URI */
@@ -887,7 +887,7 @@ export function generateGeo(params: GeoHelper): string {
 
 /** Generate WiFi configuration string */
 export function generateWifi(params: WifiHelper): string {
-  const escapeWifi = (s: string) => s.replace(/[\\";,:]/g, '\\$&');
+  const escapeWifi = (s: string) => s.replaceAll(/[\\";,:]/g, '\\$&');
 
   let wifi = 'WIFI:';
   wifi += `T:${params.auth};`;
@@ -1029,7 +1029,7 @@ export function generateVCard(params: VCardHelper): string {
 
 /** Generate MeCard string (Japanese format, more compact than vCard) */
 export function generateMeCard(params: MeCardHelper): string {
-  const escapeMeCard = (s: string) => s.replace(/[\\";,:]/g, '\\$&');
+  const escapeMeCard = (s: string) => s.replaceAll(/[\\";,:]/g, '\\$&');
 
   let mecard = 'MECARD:';
 
@@ -1040,7 +1040,7 @@ export function generateMeCard(params: MeCardHelper): string {
   if (params.email) mecard += `EMAIL:${params.email};`;
   if (params.url) mecard += `URL:${params.url};`;
   if (params.adr) mecard += `ADR:${escapeMeCard(params.adr)};`;
-  if (params.bday) mecard += `BDAY:${params.bday.replace(/-/g, '')};`;
+  if (params.bday) mecard += `BDAY:${params.bday.replaceAll('-', '')};`;
   if (params.note) mecard += `NOTE:${escapeMeCard(params.note)};`;
 
   mecard += ';';
@@ -1079,8 +1079,8 @@ export function generateEvent(params: EventHelper): string {
 
   lines.push('BEGIN:VCALENDAR', 'VERSION:2.0', 'PRODID:-//ANQR//QR Code Generator//EN', 'BEGIN:VEVENT');
 
-  // Generate UID
-  const uid = `${Date.now()}-${Math.random().toString(36).substr(2, 9)}@anqr`;
+  // Generate UID using crypto for uniqueness
+  const uid = `${Date.now()}-${crypto.randomUUID().slice(0, 9)}@anqr`;
   lines.push(`UID:${uid}`);
 
   // Timestamp
@@ -1160,7 +1160,7 @@ export function generateEPCSepa(params: EPCSepaParams): string {
   lines.push(
     params.bic || '',
     params.name.substring(0, 70),
-    params.iban.replace(/\s/g, '').toUpperCase()
+    params.iban.replaceAll(/\s/g, '').toUpperCase()
   );
 
   // Amount (EUR format with currency prefix)
@@ -1281,7 +1281,7 @@ export function generatePromptPay(params: PromptPayParams): string {
   const aid = aidMap[params.type];
 
   // Format mobile number with country code
-  let formattedValue = params.value.replace(/[\s-]/g, '');
+  let formattedValue = params.value.replaceAll(/[\s-]/g, '');
   if (params.type === 'mobile' && formattedValue.startsWith('0')) {
     formattedValue = `66${formattedValue.substring(1)}`;
   }
@@ -1395,7 +1395,7 @@ export function generateSwissQRBill(params: SwissQRBillParams): string {
 
   // Creditor information
   lines.push(
-    params.creditorIBAN.replace(/\s/g, '').toUpperCase(),
+    params.creditorIBAN.replaceAll(/\s/g, '').toUpperCase(),
     params.creditorAddressType,
     params.creditorName.substring(0, 70)
   );
@@ -2136,7 +2136,7 @@ export function generateMessagingLink(
 ): string {
   switch (platform.toLowerCase()) {
     case 'whatsapp': {
-      let url = `https://wa.me/${identifier.replace(/[^0-9]/g, '')}`;
+      let url = `https://wa.me/${identifier.replaceAll(/[^0-9]/g, '')}`;
       if (message) url += `?text=${encodeURIComponent(message)}`;
       return url;
     }
@@ -2148,7 +2148,7 @@ export function generateMessagingLink(
     case 'signal':
       return `https://signal.me/#p/${identifier}`;
     case 'viber':
-      return `viber://chat?number=${identifier.replace(/[^0-9]/g, '')}`;
+      return `viber://chat?number=${identifier.replaceAll(/[^0-9]/g, '')}`;
     case 'line':
       return `https://line.me/ti/p/${identifier}`;
     case 'skype':

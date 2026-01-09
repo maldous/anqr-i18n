@@ -791,7 +791,7 @@ const ditherKinds = [
 
 for (const dither of ditherKinds) {
   ditheringItems.push({
-    id: `dither-${dither.kind.replace(/_/g, '-')}`,
+    id: `dither-${dither.kind.replaceAll('_', '-')}`,
     title: dither.name,
     description: dither.desc,
     category: 'dithering',
@@ -819,7 +819,7 @@ const diffusionKernels = [
 
 for (const d of diffusionKernels) {
   ditheringItems.push({
-    id: `dither-kernel-${d.kernel.replace(/_/g, '-')}`,
+    id: `dither-kernel-${d.kernel.replaceAll('_', '-')}`,
     title: d.name,
     description: `${d.name} error diffusion`,
     category: 'dithering',

@@ -95,7 +95,7 @@ interface UseQRGeneratorResult {
   isRendering: boolean; // True when actively rendering (after debounce, during generation)
   isPending: boolean; // True when config has changed but debounce hasn't settled yet
   error: string | null;
-  regenerate: () => void;
+  regenerate: () => Promise<void>;
   download: () => Promise<void>;
   // Animation state
   isAnimating: boolean;
