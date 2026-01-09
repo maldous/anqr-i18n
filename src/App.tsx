@@ -27,6 +27,7 @@ function getPageFromLocation(): PageView {
   if (path === '/guide') return 'guide';
   if (path === '/learn') return 'learn';
   if (path === '/examples') return 'examples';
+  if (path === '/translate') return 'translate';
   if (path === '/about') return 'about';
   if (path === '/privacy') return 'privacy';
   if (path === '/terms') return 'terms';
@@ -109,6 +110,7 @@ function App() {
     'guide',
     'learn',
     'examples',
+    'translate',
   ].includes(currentPage);
   const showEditor = currentPage === 'editor';
 

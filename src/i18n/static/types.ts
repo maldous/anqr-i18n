@@ -56,7 +56,8 @@ export type StaticPageType =
   | 'examples'
   | 'privacy'
   | 'terms'
-  | 'contact';
+  | 'contact'
+  | 'translate';
 
 // Shared constants
 export const LAST_UPDATED = '4 January 2026';
