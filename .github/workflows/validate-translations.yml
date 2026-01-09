@@ -1,0 +1,99 @@
+# Validate translation files on pull requests
+name: Validate Translations
+
+on:
+  pull_request:
+    branches: [static, locales]
+    paths:
+      - '**.txt'
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout PR
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Get changed files
+        id: changed
+        run: |
+          FILES=$(git diff --name-only ${{ github.event.pull_request.base.sha }} ${{ github.sha }} -- '*.txt' | tr '\n' ' ')
+          echo "files=$FILES" >> $GITHUB_OUTPUT
+          echo "Changed files: $FILES"
+
+      - name: Validate file format
+        if: steps.changed.outputs.files != ''
+        run: |
+          ERRORS=0
+          
+          for file in ${{ steps.changed.outputs.files }}; do
+            echo "Checking $file..."
+            
+            # Check file exists
+            if [ ! -f "$file" ]; then
+              echo "⚠️ File not found: $file"
+              continue
+            fi
+            
+            # Check file is not empty
+            if [ ! -s "$file" ]; then
+              echo "❌ Error: $file is empty"
+              ERRORS=$((ERRORS + 1))
+              continue
+            fi
+            
+            # Check file ends with newline
+            if [ -n "$(tail -c 1 "$file")" ]; then
+              echo "⚠️ Warning: $file does not end with newline"
+            fi
+            
+            # Check for valid UTF-8 encoding
+            if ! iconv -f UTF-8 -t UTF-8 "$file" > /dev/null 2>&1; then
+              echo "❌ Error: $file has invalid UTF-8 encoding"
+              ERRORS=$((ERRORS + 1))
+              continue
+            fi
+            
+            # Check filename format (language-code.txt)
+            BASENAME=$(basename "$file")
+            if ! echo "$BASENAME" | grep -qE '^[a-z]{2}(-[A-Z]{2})?\.txt$'; then
+              echo "⚠️ Warning: $BASENAME may not follow language code convention (e.g., en-GB.txt, es.txt)"
+            fi
+            
+            echo "✅ $file passed validation"
+          done
+          
+          if [ $ERRORS -gt 0 ]; then
+            echo ""
+            echo "❌ Validation failed with $ERRORS error(s)"
+            exit 1
+          fi
+          
+          echo ""
+          echo "✅ All files passed validation"
+
+      - name: Check file size
+        if: steps.changed.outputs.files != ''
+        run: |
+          MAX_SIZE=1048576  # 1MB
+          
+          for file in ${{ steps.changed.outputs.files }}; do
+            if [ -f "$file" ]; then
+              SIZE=$(stat -f%z "$file" 2>/dev/null || stat -c%s "$file")
+              if [ "$SIZE" -gt "$MAX_SIZE" ]; then
+                echo "❌ Error: $file exceeds 1MB size limit"
+                exit 1
+              fi
+            fi
+          done
+          
+          echo "✅ All files within size limits"
+
+      - name: Summary
+        if: always()
+        run: |
+          echo "## Translation Validation Summary" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "Files checked: ${{ steps.changed.outputs.files }}" >> $GITHUB_STEP_SUMMARY

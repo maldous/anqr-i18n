@@ -1,0 +1,50 @@
+name: "🌍 Translation Request"
+description: Request a new language or improvements to existing translations
+title: "[Translation] "
+labels: ["translation", "enhancement"]
+body:
+  - type: dropdown
+    id: request-type
+    attributes:
+      label: Request Type
+      options:
+        - New language
+        - Improve existing translation
+        - Fix translation error
+    validations:
+      required: true
+
+  - type: input
+    id: language
+    attributes:
+      label: Language
+      description: Which language is this about?
+      placeholder: "e.g., Spanish (es-ES), Korean (ko-KR)"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: branch
+    attributes:
+      label: Content Type
+      description: Which type of content needs translation?
+      options:
+        - Static content (guides, documentation)
+        - UI strings (buttons, labels)
+        - Both
+    validations:
+      required: true
+
+  - type: textarea
+    id: details
+    attributes:
+      label: Details
+      description: Provide any additional context or specific text that needs attention
+      placeholder: "Describe what needs to be translated or fixed..."
+
+  - type: checkboxes
+    id: contribution
+    attributes:
+      label: Contribution
+      options:
+        - label: I am willing to contribute this translation myself

@@ -1,0 +1,39 @@
+name: "🐛 Bug Report"
+description: Report an issue with translations (typos, errors, formatting)
+title: "[Bug] "
+labels: ["bug"]
+body:
+  - type: input
+    id: file
+    attributes:
+      label: Affected File
+      description: Which translation file has the issue?
+      placeholder: "e.g., es-ES.txt, fr-FR.txt"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: branch
+    attributes:
+      label: Branch
+      options:
+        - static
+        - locales
+    validations:
+      required: true
+
+  - type: textarea
+    id: issue
+    attributes:
+      label: Issue Description
+      description: What's wrong with the translation?
+      placeholder: "Describe the error, typo, or formatting issue..."
+    validations:
+      required: true
+
+  - type: textarea
+    id: suggestion
+    attributes:
+      label: Suggested Fix
+      description: If you know the correct translation, please provide it
+      placeholder: "The correct text should be..."

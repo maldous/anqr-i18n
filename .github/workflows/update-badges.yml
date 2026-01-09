@@ -1,0 +1,67 @@
+# Update README badges when translation files change
+name: Update Badges
+
+on:
+  push:
+    branches: [static, locales]
+  workflow_dispatch:
+
+jobs:
+  update-badges:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout master
+        uses: actions/checkout@v4
+        with:
+          ref: master
+          fetch-depth: 0
+
+      - name: Count translation files
+        id: count
+        run: |
+          # Count files in static branch
+          git fetch origin static
+          STATIC_COUNT=$(git ls-tree -r origin/static --name-only | grep -c '\.txt$' || echo 0)
+          echo "static_count=$STATIC_COUNT" >> $GITHUB_OUTPUT
+          
+          # Count files in locales branch
+          git fetch origin locales
+          LOCALES_COUNT=$(git ls-tree -r origin/locales --name-only | grep -c '\.txt$' || echo 0)
+          echo "locales_count=$LOCALES_COUNT" >> $GITHUB_OUTPUT
+          
+          # Calculate unique languages (use static as reference)
+          echo "lang_count=$STATIC_COUNT" >> $GITHUB_OUTPUT
+          
+          echo "Static: $STATIC_COUNT, Locales: $LOCALES_COUNT"
+
+      - name: Update README badges
+        run: |
+          STATIC=${{ steps.count.outputs.static_count }}
+          LOCALES=${{ steps.count.outputs.locales_count }}
+          LANGS=${{ steps.count.outputs.lang_count }}
+          
+          # Update badge numbers in README
+          sed -i "s/languages-[0-9]*-/languages-$LANGS-/" README.md
+          sed -i "s/static%20content-[0-9]*%20files/static%20content-$STATIC%20files/" README.md
+          sed -i "s/UI%20strings-[0-9]*%20files/UI%20strings-$LOCALES%20files/" README.md
+          sed -i "s/| \`static\` |.*| [0-9]* |/| [\`static\`](\.\.\/\.\.\tree\/static) | Documentation, guides, about pages | $STATIC |/" README.md
+          sed -i "s/| \`locales\` |.*| [0-9]* |/| [\`locales\`](\.\.\/\.\.\tree\/locales) | UI strings, labels, messages | $LOCALES |/" README.md
+
+      - name: Check for changes
+        id: changes
+        run: |
+          if git diff --quiet README.md; then
+            echo "changed=false" >> $GITHUB_OUTPUT
+          else
+            echo "changed=true" >> $GITHUB_OUTPUT
+            git diff README.md
+          fi
+
+      - name: Commit and push
+        if: steps.changes.outputs.changed == 'true'
+        run: |
+          git config user.name "GitHub Actions"
+          git config user.email "actions@github.com"
+          git add README.md
+          git commit -m "Update translation badges [skip ci]"
+          git push origin master

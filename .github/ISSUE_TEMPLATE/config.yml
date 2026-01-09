@@ -1,0 +1,8 @@
+blank_issues_enabled: true
+contact_links:
+  - name: ANQR Website
+    url: https://anqr.link
+    about: Visit the main ANQR website
+  - name: Email Support
+    url: mailto:email@anqr.link
+    about: Contact us directly via email
