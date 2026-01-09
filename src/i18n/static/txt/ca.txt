@@ -449,7 +449,6 @@
 449	"Deus ser com a mínim 13 anys d'edat per fer servir AAAQR. Utilitzant el lloc web, representes que coneixes aquest requisit d'edat. Si tens 18 anys, representes que tens el teu pare o el permís de tutor per usar el lloc web."
 450	"Ús autoritzat"
 451	"Només es pot utilitzar ANP per a propòsits legals. Ets només responsable del contingut que codificar en codis de QR i de com utilitzes els codis QR que genereu."
-452	"S' ha prohibit la conductaThe role of the transaction, in past tense"
 453	"Esteu d'acord a no:"
 454	"Useu ANQR per crear codis QR que facilitaran la distribució de danys, frau, trams, assetjament, difamació o activitat il·legal."
 455	"Codifica el contingut que provoca els drets de propietat intel·lectual, viola la privacitat, o conté material il·legal."

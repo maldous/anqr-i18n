@@ -866,7 +866,6 @@
 866	"ZIP/Postal Code"
 867	"Προεπισκόπηση κώδικα QR - Κάντε κλικ στην Εξαγωγή για λήψη"
 868	"Simulating"
-869	"Environmental simulation active - Preview shows how QR code may appear under different conditions"
 870	"Additional border beyond quiet zone"
 871	"Alphanumeric"
 872	"Auto"
