@@ -1,51 +1,71 @@
 # ANQR Translations
 
-This repository contains the translation files for [ANQR](https://anqr.link) - a QR code generator with advanced styling options.
+![Languages](https://img.shields.io/badge/languages-43-blue)
+![Static Content](https://img.shields.io/badge/static%20content-43%20files-green)
+![UI Strings](https://img.shields.io/badge/UI%20strings-44%20files-green)
+[![Contributions Welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg)](CONTRIBUTING.md)
+
+This repository contains the translation files for [ANQR](https://anqr.link) - an advanced QR code generator with styling, overlays, and animations.
 
 ## Repository Structure
 
-- **`static` branch** - Static content translations (guides, about pages, etc.)
-- **`locales` branch** - UI string translations
+| Branch | Content | Files |
+|--------|---------|-------|
+| [`static`](../../tree/static) | Documentation, guides, about pages | 43 |
+| [`locales`](../../tree/locales) | UI strings, labels, messages | 44 |
 
-## Contributing Translations
+## Contributing
 
-We welcome community contributions to improve translations or add new languages!
+We welcome community contributions! See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines.
 
-### How to Contribute
+### Quick Start
 
-1. **Fork this repository**
-2. **Switch to the appropriate branch:**
-   ```bash
-   git checkout static   # For static content (guides, docs)
-   git checkout locales  # For UI strings
-   ```
-3. **Edit or create translation files:**
-   - Files are named by language code (e.g., `es-ES.txt`, `fr-FR.txt`, `ja-JP.txt`)
-   - Use existing files as a reference for format
-4. **Submit a Pull Request** with your changes
+1. Fork this repository
+2. Choose a branch: `git checkout static` or `git checkout locales`
+3. Edit or create translation files (e.g., `es-ES.txt`, `fr-FR.txt`)
+4. Submit a Pull Request
 
-### Language Codes
+## Supported Languages
 
-We use standard language codes following the pattern `language-REGION`:
-- `en-GB` - English (UK)
-- `es-ES` - Spanish (Spain)
-- `fr-FR` - French (France)
-- `de-DE` - German (Germany)
-- `ja-JP` - Japanese
-- `zh-CN` - Chinese (Simplified)
-- etc.
+<details>
+<summary>Click to expand (43 languages)</summary>
 
-### Guidelines
+| Code | Language | Code | Language |
+|------|----------|------|----------|
+| `af` | Afrikaans | `ms` | Malay |
+| `ar` | Arabic | `my-MM` | Burmese |
+| `bg` | Bulgarian | `ne-NP` | Nepali |
+| `bn-BD` | Bengali | `nl-NL` | Dutch |
+| `cs-CZ` | Czech | `no-NO` | Norwegian |
+| `da-DK` | Danish | `pa` | Punjabi |
+| `de-DE` | German | `pl-PL` | Polish |
+| `el-GR` | Greek | `pt-BR` | Portuguese |
+| `en-GB` | English | `ro` | Romanian |
+| `es-ES` | Spanish | `ru-RU` | Russian |
+| `fi-FI` | Finnish | `sv-SE` | Swedish |
+| `fil` | Filipino | `ta-IN` | Tamil |
+| `fr-FR` | French | `te-IN` | Telugu |
+| `gu` | Gujarati | `th` | Thai |
+| `hi-IN` | Hindi | `vi` | Vietnamese |
+| `hr` | Croatian | `zh-CN` | Chinese (Simplified) |
+| `hu-HU` | Hungarian | `zu` | Zulu |
+| `id` | Indonesian | | |
+| `it-IT` | Italian | | |
+| `ja-JP` | Japanese | | |
+| `km-KH` | Khmer | | |
+| `kn-IN` | Kannada | | |
+| `ko-KR` | Korean | | |
+| `lo-LA` | Lao | | |
+| `ml-IN` | Malayalam | | |
+| `mr-IN` | Marathi | | |
 
-- Keep the same structure/format as existing files
-- Preserve any placeholder variables (e.g., `{{name}}`, `%s`)
-- Test your translations if possible by running ANQR locally
-- For new languages, copy an existing file and translate all strings
+</details>
 
-## Questions?
+## Contact
 
-Open an issue in this repository or contact us through [anqr.link](https://anqr.link).
+- Website: [anqr.link](https://anqr.link)
+- Email: email@anqr.link
 
-## License
+---
 
-Translations are provided under the same license as ANQR.
+**ANQR** - Advanced QR Code Generator
