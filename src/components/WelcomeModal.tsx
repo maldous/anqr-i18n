@@ -67,8 +67,8 @@ export function WelcomeModal({ onClose }: WelcomeModalProps) {
         handleDismiss();
       }
     };
-    window.addEventListener('keydown', handleKeyDown);
-    return () => window.removeEventListener('keydown', handleKeyDown);
+    globalThis.addEventListener('keydown', handleKeyDown);
+    return () => globalThis.removeEventListener('keydown', handleKeyDown);
   }, [isVisible, isClosing, handleDismiss]);
 
   if (!isVisible) return null;

@@ -887,7 +887,7 @@ function parseGradientStops(stopsParam: string): Array<{ pos: number; color: str
 
   for (let i = 0; i < parts.length - 1; i += 2) {
     const color = `#${parts[i]}`;
-    const pos = parseFloat(parts[i + 1]);
+    const pos = Number.parseFloat(parts[i + 1]);
     if (!Number.isNaN(pos)) {
       stops.push({ color, pos });
     }
@@ -1076,10 +1076,10 @@ export default async (request: Request) => {
   }
 
   // Parse all parameters with defaults
-  const sizeParam = parseInt(params.get('size') || '400', 10);
-  const modulePxParam = params.get('modulePx') ? parseInt(params.get('modulePx')!, 10) : null;
-  const widthParam = params.get('w') ? parseInt(params.get('w')!, 10) : null;
-  const heightParam = params.get('h') ? parseInt(params.get('h')!, 10) : null;
+  const sizeParam = Number.parseInt(params.get('size') || '400', 10);
+  const modulePxParam = params.get('modulePx') ? Number.parseInt(params.get('modulePx')!, 10) : null;
+  const widthParam = params.get('w') ? Number.parseInt(params.get('w')!, 10) : null;
+  const heightParam = params.get('h') ? Number.parseInt(params.get('h')!, 10) : null;
 
   // Use w/h if provided, otherwise fall back to size
   // Cap at MAX_SERVER_IMAGE_SIZE for server-side performance
@@ -1090,27 +1090,27 @@ export default async (request: Request) => {
   const fg = params.get('fg') || '000000';
   const bg = params.get('bg') || 'ffffff';
   const ec = (params.get('ec')?.toUpperCase() || 'H') as ECCLevel;
-  const margin = Math.min(20, Math.max(0, parseInt(params.get('margin') || '4', 10)));
+  const margin = Math.min(20, Math.max(0, Number.parseInt(params.get('margin') || '4', 10)));
   const transparent = params.get('transparent') === '1';
   const encodingMode = params.get('enc') || 'auto';
-  const version = params.get('v') ? parseInt(params.get('v')!, 10) : 0;
-  const borderModulesExtra = Math.min(10, Math.max(0, parseInt(params.get('border') || '0', 10)));
+  const version = params.get('v') ? Number.parseInt(params.get('v')!, 10) : 0;
+  const borderModulesExtra = Math.min(10, Math.max(0, Number.parseInt(params.get('border') || '0', 10)));
   const crispEdges = params.get('crisp') !== '0';
   const pixelSnap = params.get('snap') || 'floor';
   const perModuleColorMode = params.get('modColor') || 'solid';
   const contrastGuard = params.get('cGuard') === '1';
-  const minContrastRatio = parseFloat(params.get('minContrast') || '4.5');
+  const minContrastRatio = Number.parseFloat(params.get('minContrast') || '4.5');
 
   // Module styling
   const moduleStyle = params.get('style') || 'square';
   const finderStyle = params.get('finder') || 'square';
   const eyeOuterStyle = params.get('eyeOuter') || finderStyle;
   const eyeInnerStyle = params.get('eyeInner') || finderStyle;
-  const eyeScale = Math.min(150, Math.max(50, parseInt(params.get('eyeScale') || '100', 10)));
-  const cornerRadius = Math.min(100, Math.max(0, parseInt(params.get('radius') || '0', 10)));
-  const moduleGap = Math.min(50, Math.max(0, parseInt(params.get('gap') || '0', 10)));
+  const eyeScale = Math.min(150, Math.max(50, Number.parseInt(params.get('eyeScale') || '100', 10)));
+  const cornerRadius = Math.min(100, Math.max(0, Number.parseInt(params.get('radius') || '0', 10)));
+  const moduleGap = Math.min(50, Math.max(0, Number.parseInt(params.get('gap') || '0', 10)));
   const gapMode = params.get('gapMode') || 'none';
-  const dotRotationDeg = parseInt(params.get('dotRot') || '0', 10);
+  const dotRotationDeg = Number.parseInt(params.get('dotRot') || '0', 10);
 
   // Frame
   const frameStyle = params.get('frame') || 'none';
@@ -1118,7 +1118,7 @@ export default async (request: Request) => {
 
   // Gradient
   const gradientType = params.get('grad') || 'none';
-  const gradientAngle = parseInt(params.get('gradAngle') || '0', 10);
+  const gradientAngle = Number.parseInt(params.get('gradAngle') || '0', 10);
   const gradientStopsParam = params.get('gradStops');
   const gradientStops = gradientStopsParam ? parseGradientStops(gradientStopsParam) : undefined;
 
@@ -1135,7 +1135,7 @@ export default async (request: Request) => {
   const eccAwareEnabled = params.get('eccAware') === '1';
   const eccAwareRiskBudget = Math.min(
     100,
-    Math.max(0, parseInt(params.get('eccRisk') || '50', 10))
+    Math.max(0, Number.parseInt(params.get('eccRisk') || '50', 10))
   );
   const eccAwareWeightMap = params.get('eccMap') || 'distance_to_finders';
 
@@ -1146,37 +1146,37 @@ export default async (request: Request) => {
   const overlayMode = params.get('mode') || (overlayUrl ? 'dithered' : undefined);
   const overlayIntensity = Math.min(
     100,
-    Math.max(0, parseInt(params.get('intensity') || '100', 10))
+    Math.max(0, Number.parseInt(params.get('intensity') || '100', 10))
   );
   const colorMode = params.get('colorMode') || 'color';
-  const logoSize = Math.min(50, Math.max(5, parseInt(params.get('logoSize') || '25', 10)));
+  const logoSize = Math.min(50, Math.max(5, Number.parseInt(params.get('logoSize') || '25', 10)));
 
   // Overlay preprocessing
   const overlayBrightness = Math.min(
     100,
-    Math.max(-100, parseInt(params.get('brightness') || '0', 10))
+    Math.max(-100, Number.parseInt(params.get('brightness') || '0', 10))
   );
   const overlayContrast = Math.min(
     100,
-    Math.max(-100, parseInt(params.get('contrast') || '0', 10))
+    Math.max(-100, Number.parseInt(params.get('contrast') || '0', 10))
   );
-  const overlayGamma = Math.max(0.1, Math.min(3, parseFloat(params.get('gamma') || '1')));
+  const overlayGamma = Math.max(0.1, Math.min(3, Number.parseFloat(params.get('gamma') || '1')));
   const overlaySaturation = Math.min(
     100,
-    Math.max(-100, parseInt(params.get('saturation') || '0', 10))
+    Math.max(-100, Number.parseInt(params.get('saturation') || '0', 10))
   );
-  const overlayHueRotate = parseInt(params.get('hue') || '0', 10);
+  const overlayHueRotate = Number.parseInt(params.get('hue') || '0', 10);
   const overlayInvert = params.get('invert') === '1';
-  const overlayBlur = Math.max(0, parseInt(params.get('blur') || '0', 10));
-  const overlaySharpen = Math.max(0, parseInt(params.get('sharpen') || '0', 10));
-  const overlayPosterize = Math.max(0, parseInt(params.get('posterize') || '0', 10));
+  const overlayBlur = Math.max(0, Number.parseInt(params.get('blur') || '0', 10));
+  const overlaySharpen = Math.max(0, Number.parseInt(params.get('sharpen') || '0', 10));
+  const overlayPosterize = Math.max(0, Number.parseInt(params.get('posterize') || '0', 10));
   const overlayThreshold = Math.min(
     255,
-    Math.max(0, parseInt(params.get('threshold') || '128', 10))
+    Math.max(0, Number.parseInt(params.get('threshold') || '128', 10))
   );
   const overlayEdgeDetect = params.get('edge') || 'off';
   const overlayFit = params.get('fit') || 'cover';
-  const overlayRotate = parseInt(params.get('rot') || '0', 10);
+  const overlayRotate = Number.parseInt(params.get('rot') || '0', 10);
   const overlayFlipX = params.get('flipX') === '1';
   const overlayFlipY = params.get('flipY') === '1';
 
@@ -1186,12 +1186,12 @@ export default async (request: Request) => {
   const diffusionKernel = params.get('diffusionKernel') || 'floyd_steinberg';
   const ditherStrength = Math.min(
     100,
-    Math.max(0, parseInt(params.get('ditherStrength') || '50', 10))
+    Math.max(0, Number.parseInt(params.get('ditherStrength') || '50', 10))
   );
   const ditherSerpentine = params.get('serpentine') === '1';
   const orderedMatrix = params.get('matrix') || 'bayer4';
-  const blueNoiseTileSize = parseInt(params.get('bnTile') || '64', 10);
-  const blueNoiseSeed = parseInt(params.get('bnSeed') || '0', 10);
+  const blueNoiseTileSize = Number.parseInt(params.get('bnTile') || '64', 10);
+  const blueNoiseSeed = Number.parseInt(params.get('bnSeed') || '0', 10);
   const colorDither = params.get('colorDither') || 'none';
 
   // Subpixel options
@@ -1215,19 +1215,19 @@ export default async (request: Request) => {
   const paletteMode = params.get('paletteMode') || 'position';
 
   // Safety per-ECC limits (support both short and long param names)
-  const maxOverlayIntensityL = parseInt(
+  const maxOverlayIntensityL = Number.parseInt(
     params.get('maxIntL') || params.get('maxOverlayIntensityL') || '100',
     10
   );
-  const maxOverlayIntensityM = parseInt(
+  const maxOverlayIntensityM = Number.parseInt(
     params.get('maxIntM') || params.get('maxOverlayIntensityM') || '100',
     10
   );
-  const maxOverlayIntensityQ = parseInt(
+  const maxOverlayIntensityQ = Number.parseInt(
     params.get('maxIntQ') || params.get('maxOverlayIntensityQ') || '100',
     10
   );
-  const maxOverlayIntensityH = parseInt(
+  const maxOverlayIntensityH = Number.parseInt(
     params.get('maxIntH') || params.get('maxOverlayIntensityH') || '100',
     10
   );
@@ -1235,8 +1235,8 @@ export default async (request: Request) => {
   // Output format (may be overridden if overlay is animated GIF)
   // Default to GIF to align with client default (was PNG, causing embed/share mismatch)
   let outputFormat = (params.get('format') || DEFAULT_OUTPUT_FORMAT) as OutputFormat;
-  const _outputQuality = Math.max(0, Math.min(1, parseFloat(params.get('quality') || '0.9')));
-  const outputDpi = Math.max(1, Math.min(1200, parseInt(params.get('dpi') || '72', 10)));
+  const _outputQuality = Math.max(0, Math.min(1, Number.parseFloat(params.get('quality') || '0.9')));
+  const outputDpi = Math.max(1, Math.min(1200, Number.parseInt(params.get('dpi') || '72', 10)));
 
   // Watermark
   const watermarkEnabled = params.get('wmEn') === '1';
@@ -1246,7 +1246,7 @@ export default async (request: Request) => {
   const watermarkPosition = (params.get('wmPos') || 'center') as WatermarkPosition;
   const watermarkOpacity = Math.min(
     100,
-    Math.max(0, parseInt(params.get('wmOpacity') || '50', 10))
+    Math.max(0, Number.parseInt(params.get('wmOpacity') || '50', 10))
   );
   const watermarkBlend = (params.get('wmBlend') || 'normal') as WatermarkBlend;
 
@@ -1255,23 +1255,23 @@ export default async (request: Request) => {
   // colorCycle, temporalDither, interpolate, moduleJitter require full client-side rendering
   const animationPattern = (params.get('animPattern') || 'none') as AnimationPattern;
   // Ensure frame count is at least 1 to prevent empty animation loops
-  const animationFramesRaw = parseInt(params.get('animFrames') || '24', 10);
+  const animationFramesRaw = Number.parseInt(params.get('animFrames') || '24', 10);
   const animationFrames = Math.min(
     60,
     Math.max(1, Number.isNaN(animationFramesRaw) ? 24 : animationFramesRaw)
   );
   // Ensure speed is valid to prevent division issues
-  const animationSpeedRaw = parseInt(params.get('animSpeed') || '100', 10);
+  const animationSpeedRaw = Number.parseInt(params.get('animSpeed') || '100', 10);
   const animationSpeed = Math.min(
     1000,
     Math.max(10, Number.isNaN(animationSpeedRaw) ? 100 : animationSpeedRaw)
   );
-  const animationSeed = parseInt(params.get('animSeed') || '0', 10);
+  const animationSeed = Number.parseInt(params.get('animSeed') || '0', 10);
   const animationEasing = params.get('easing') || 'linear';
 
   // Format-specific quality params
-  const webpQuality = Math.min(100, Math.max(0, parseInt(params.get('webpQ') || '90', 10)));
-  const gifColors = Math.min(256, Math.max(2, parseInt(params.get('gifColors') || '256', 10)));
+  const webpQuality = Math.min(100, Math.max(0, Number.parseInt(params.get('webpQ') || '90', 10)));
+  const gifColors = Math.min(256, Math.max(2, Number.parseInt(params.get('gifColors') || '256', 10)));
 
   // Metadata
   const metaTitle = params.get('metaTitle') || undefined;

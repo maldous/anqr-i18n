@@ -483,10 +483,11 @@ export function interpolateFrames(
           const result = ctx.createImageData(width, height);
 
           for (let p = 0; p < dataA.data.length; p += 4) {
-            result.data[p] = Math.round(dataA.data[p] * (1 - t) + dataB.data[p] * t);
-            result.data[p + 1] = Math.round(dataA.data[p + 1] * (1 - t) + dataB.data[p + 1] * t);
-            result.data[p + 2] = Math.round(dataA.data[p + 2] * (1 - t) + dataB.data[p + 2] * t);
-            result.data[p + 3] = Math.round(dataA.data[p + 3] * (1 - t) + dataB.data[p + 3] * t);
+            const invT = 1 - t;
+            result.data[p] = Math.round(dataA.data[p] * invT + dataB.data[p] * t);
+            result.data[p + 1] = Math.round(dataA.data[p + 1] * invT + dataB.data[p + 1] * t);
+            result.data[p + 2] = Math.round(dataA.data[p + 2] * invT + dataB.data[p + 2] * t);
+            result.data[p + 3] = Math.round(dataA.data[p + 3] * invT + dataB.data[p + 3] * t);
           }
 
           ctx.putImageData(result, 0, 0);

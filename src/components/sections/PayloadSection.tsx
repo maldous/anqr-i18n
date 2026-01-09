@@ -692,7 +692,7 @@ export function PayloadSection() {
         name: epcSepaForm.name,
         iban: epcSepaForm.iban,
         bic: epcSepaForm.bic || undefined,
-        amount: epcSepaForm.amount ? parseFloat(epcSepaForm.amount) : undefined,
+        amount: epcSepaForm.amount ? Number.parseFloat(epcSepaForm.amount) : undefined,
         reference: epcSepaForm.reference || undefined,
       });
       setPayloadText(generated);
@@ -705,7 +705,7 @@ export function PayloadSection() {
       const generated = generateUPI({
         pa: upiForm.vpa,
         pn: upiForm.payeeName || undefined,
-        am: upiForm.amount ? parseFloat(upiForm.amount) : undefined,
+        am: upiForm.amount ? Number.parseFloat(upiForm.amount) : undefined,
         tn: upiForm.transactionNote || undefined,
       });
       setPayloadText(generated);
@@ -718,7 +718,7 @@ export function PayloadSection() {
       const generated = generatePayNow({
         type: payNowForm.type,
         value: payNowForm.value,
-        amount: payNowForm.amount ? parseFloat(payNowForm.amount) : undefined,
+        amount: payNowForm.amount ? Number.parseFloat(payNowForm.amount) : undefined,
         reference: payNowForm.reference || undefined,
         editable: true,
       });
@@ -732,7 +732,7 @@ export function PayloadSection() {
       const generated = generatePromptPay({
         type: promptPayForm.type,
         value: promptPayForm.value,
-        amount: promptPayForm.amount ? parseFloat(promptPayForm.amount) : undefined,
+        amount: promptPayForm.amount ? Number.parseFloat(promptPayForm.amount) : undefined,
       });
       setPayloadText(generated);
     }
@@ -745,7 +745,7 @@ export function PayloadSection() {
         key: pixForm.key,
         name: pixForm.name || undefined,
         city: pixForm.city || undefined,
-        amount: pixForm.amount ? parseFloat(pixForm.amount) : undefined,
+        amount: pixForm.amount ? Number.parseFloat(pixForm.amount) : undefined,
       });
       setPayloadText(generated);
     }
@@ -760,7 +760,7 @@ export function PayloadSection() {
       creditorName: swissQrBillForm.creditorName,
       creditorCity: swissQrBillForm.creditorCity || undefined,
       creditorCountry: swissQrBillForm.creditorCountry,
-      amount: swissQrBillForm.amount ? parseFloat(swissQrBillForm.amount) : undefined,
+      amount: swissQrBillForm.amount ? Number.parseFloat(swissQrBillForm.amount) : undefined,
       currency: swissQrBillForm.currency,
       referenceType: swissQrBillForm.referenceType,
       reference: swissQrBillForm.reference || undefined,
@@ -778,9 +778,9 @@ export function PayloadSection() {
     if (payload.kind !== 'ethereum_eip681') return;
     setPayloadEthereum({
       targetAddress: ethereumForm.targetAddress,
-      chainId: ethereumForm.chainId ? parseInt(ethereumForm.chainId, 10) : undefined,
+      chainId: ethereumForm.chainId ? Number.parseInt(ethereumForm.chainId, 10) : undefined,
       value: ethereumForm.value || undefined,
-      gas: ethereumForm.gas ? parseInt(ethereumForm.gas, 10) : undefined,
+      gas: ethereumForm.gas ? Number.parseInt(ethereumForm.gas, 10) : undefined,
     });
   }, [payload.kind, ethereumForm, setPayloadEthereum]);
 
@@ -791,7 +791,7 @@ export function PayloadSection() {
       merchantId: qrisForm.merchantId,
       merchantName: qrisForm.merchantName,
       merchantCity: qrisForm.merchantCity,
-      amount: qrisForm.amount ? parseFloat(qrisForm.amount) : undefined,
+      amount: qrisForm.amount ? Number.parseFloat(qrisForm.amount) : undefined,
     });
   }, [payload.kind, qrisForm, setPayloadQRIS]);
 
@@ -802,7 +802,7 @@ export function PayloadSection() {
       proxyType: duitnowForm.proxyType,
       proxyValue: duitnowForm.proxyValue,
       merchantName: duitnowForm.merchantName,
-      amount: duitnowForm.amount ? parseFloat(duitnowForm.amount) : undefined,
+      amount: duitnowForm.amount ? Number.parseFloat(duitnowForm.amount) : undefined,
     });
   }, [payload.kind, duitnowForm, setPayloadDuitNow]);
 
@@ -813,7 +813,7 @@ export function PayloadSection() {
       merchantVPA: bharatqrForm.merchantVPA || undefined,
       merchantName: bharatqrForm.merchantName,
       merchantCity: bharatqrForm.merchantCity,
-      amount: bharatqrForm.amount ? parseFloat(bharatqrForm.amount) : undefined,
+      amount: bharatqrForm.amount ? Number.parseFloat(bharatqrForm.amount) : undefined,
     });
   }, [payload.kind, bharatqrForm, setPayloadBharatQR]);
 
@@ -824,7 +824,7 @@ export function PayloadSection() {
       bankBin: vietqrForm.bankBin,
       accountNumber: vietqrForm.accountNumber,
       accountName: vietqrForm.accountName || undefined,
-      amount: vietqrForm.amount ? parseFloat(vietqrForm.amount) : undefined,
+      amount: vietqrForm.amount ? Number.parseFloat(vietqrForm.amount) : undefined,
     });
   }, [payload.kind, vietqrForm, setPayloadVietQR]);
 
@@ -835,7 +835,7 @@ export function PayloadSection() {
       accountNumber: qrphForm.accountNumber,
       merchantName: qrphForm.merchantName,
       merchantCity: qrphForm.merchantCity,
-      amount: qrphForm.amount ? parseFloat(qrphForm.amount) : undefined,
+      amount: qrphForm.amount ? Number.parseFloat(qrphForm.amount) : undefined,
     });
   }, [payload.kind, qrphForm, setPayloadQRPh]);
 
@@ -845,7 +845,7 @@ export function PayloadSection() {
     setPayloadTWQR({
       merchantId: twqrForm.merchantId,
       merchantName: twqrForm.merchantName,
-      amount: twqrForm.amount ? parseFloat(twqrForm.amount) : undefined,
+      amount: twqrForm.amount ? Number.parseFloat(twqrForm.amount) : undefined,
     });
   }, [payload.kind, twqrForm, setPayloadTWQR]);
 
@@ -855,7 +855,7 @@ export function PayloadSection() {
     setPayloadHKQR({
       fpsId: hkqrForm.fpsId || undefined,
       merchantName: hkqrForm.merchantName,
-      amount: hkqrForm.amount ? parseFloat(hkqrForm.amount) : undefined,
+      amount: hkqrForm.amount ? Number.parseFloat(hkqrForm.amount) : undefined,
     });
   }, [payload.kind, hkqrForm, setPayloadHKQR]);
 
@@ -865,7 +865,7 @@ export function PayloadSection() {
     setPayloadJPQR({
       storeId: jpqrForm.storeId,
       merchantName: jpqrForm.merchantName,
-      amount: jpqrForm.amount ? parseFloat(jpqrForm.amount) : undefined,
+      amount: jpqrForm.amount ? Number.parseFloat(jpqrForm.amount) : undefined,
     });
   }, [payload.kind, jpqrForm, setPayloadJPQR]);
 
@@ -877,7 +877,7 @@ export function PayloadSection() {
       payId: auspaynetForm.payId || undefined,
       payIdType: auspaynetForm.payIdType,
       merchantName: auspaynetForm.merchantName,
-      amount: auspaynetForm.amount ? parseFloat(auspaynetForm.amount) : undefined,
+      amount: auspaynetForm.amount ? Number.parseFloat(auspaynetForm.amount) : undefined,
     });
   }, [payload.kind, auspaynetForm, setPayloadAusPayNet]);
 
@@ -886,7 +886,7 @@ export function PayloadSection() {
     if (payload.kind !== 'paypal_me') return;
     setPayloadPayPalMe({
       username: paypalMeForm.username,
-      amount: paypalMeForm.amount ? parseFloat(paypalMeForm.amount) : undefined,
+      amount: paypalMeForm.amount ? Number.parseFloat(paypalMeForm.amount) : undefined,
     });
   }, [payload.kind, paypalMeForm, setPayloadPayPalMe]);
 
@@ -895,7 +895,7 @@ export function PayloadSection() {
     if (payload.kind !== 'cashapp') return;
     setPayloadCashApp({
       cashtag: cashappForm.cashtag,
-      amount: cashappForm.amount ? parseFloat(cashappForm.amount) : undefined,
+      amount: cashappForm.amount ? Number.parseFloat(cashappForm.amount) : undefined,
     });
   }, [payload.kind, cashappForm, setPayloadCashApp]);
 
@@ -907,12 +907,12 @@ export function PayloadSection() {
       merchantCity: emvGenericForm.merchantCity,
       countryCode: emvGenericForm.countryCode,
       currencyCode: emvGenericForm.currencyCode,
-      amount: emvGenericForm.amount ? parseFloat(emvGenericForm.amount) : undefined,
+      amount: emvGenericForm.amount ? Number.parseFloat(emvGenericForm.amount) : undefined,
       mcc: emvGenericForm.mcc || undefined,
       postalCode: emvGenericForm.postalCode || undefined,
       tipIndicator: emvGenericForm.tipIndicator as 'none' | 'prompt' | 'fixed' | 'percent',
-      tipAmount: emvGenericForm.tipAmount ? parseFloat(emvGenericForm.tipAmount) : undefined,
-      tipPercent: emvGenericForm.tipPercent ? parseFloat(emvGenericForm.tipPercent) : undefined,
+      tipAmount: emvGenericForm.tipAmount ? Number.parseFloat(emvGenericForm.tipAmount) : undefined,
+      tipPercent: emvGenericForm.tipPercent ? Number.parseFloat(emvGenericForm.tipPercent) : undefined,
       reference: emvGenericForm.reference || undefined,
       storeLabel: emvGenericForm.storeLabel || undefined,
       terminalLabel: emvGenericForm.terminalLabel || undefined,
@@ -1144,7 +1144,7 @@ export function PayloadSection() {
                 type="number"
                 step="any"
                 value={payload.geo.lat}
-                onChange={(e) => setPayloadGeo({ lat: parseFloat(e.target.value) || 0 })}
+                onChange={(e) => setPayloadGeo({ lat: Number.parseFloat(e.target.value) || 0 })}
                 placeholder="0.0"
               />
             </div>
@@ -1156,7 +1156,7 @@ export function PayloadSection() {
                 type="number"
                 step="any"
                 value={payload.geo.lon}
-                onChange={(e) => setPayloadGeo({ lon: parseFloat(e.target.value) || 0 })}
+                onChange={(e) => setPayloadGeo({ lon: Number.parseFloat(e.target.value) || 0 })}
                 placeholder="0.0"
               />
             </div>
@@ -1732,7 +1732,7 @@ export function PayloadSection() {
               step="any"
               value={payload.crypto.amount || ''}
               onChange={(e) =>
-                setPayloadCrypto({ amount: parseFloat(e.target.value) || undefined })
+                setPayloadCrypto({ amount: Number.parseFloat(e.target.value) || undefined })
               }
               placeholder="0.001"
             />
@@ -2885,7 +2885,7 @@ export function PayloadSection() {
               <Input
                 type="number"
                 value={payload.otpauth.digits || 6}
-                onChange={(e) => setPayloadOtpAuth({ digits: parseInt(e.target.value, 10) || 6 })}
+                onChange={(e) => setPayloadOtpAuth({ digits: Number.parseInt(e.target.value, 10) || 6 })}
                 min={6}
                 max={8}
               />
@@ -2905,9 +2905,9 @@ export function PayloadSection() {
                 }
                 onChange={(e) => {
                   if (payload.otpauth.type === 'hotp') {
-                    setPayloadOtpAuth({ counter: parseInt(e.target.value, 10) || 0 });
+                    setPayloadOtpAuth({ counter: Number.parseInt(e.target.value, 10) || 0 });
                   } else {
-                    setPayloadOtpAuth({ period: parseInt(e.target.value, 10) || 30 });
+                    setPayloadOtpAuth({ period: Number.parseInt(e.target.value, 10) || 30 });
                   }
                 }}
               />

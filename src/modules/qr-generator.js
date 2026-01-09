@@ -202,7 +202,7 @@ export class QRGenerator {
       case 'subpixel-size': {
         // Configurable NxN grid
         const gridSizeStr = config?.subpixelGridSize || '3x3';
-        return parseInt(gridSizeStr.charAt(0), 10) || 3;
+        return Number.parseInt(gridSizeStr.charAt(0), 10) || 3;
       }
       default:
         return 1; // Module-level rendering
@@ -2359,9 +2359,9 @@ export class QRGenerator {
    */
   darkenColor(color, factor) {
     const hex = color.replace('#', '');
-    const r = Math.round(parseInt(hex.substr(0, 2), 16) * (1 - factor));
-    const g = Math.round(parseInt(hex.substr(2, 2), 16) * (1 - factor));
-    const b = Math.round(parseInt(hex.substr(4, 2), 16) * (1 - factor));
+    const r = Math.round(Number.parseInt(hex.substr(0, 2), 16) * (1 - factor));
+    const g = Math.round(Number.parseInt(hex.substr(2, 2), 16) * (1 - factor));
+    const b = Math.round(Number.parseInt(hex.substr(4, 2), 16) * (1 - factor));
     return `rgb(${r},${g},${b})`;
   }
 
@@ -2372,13 +2372,13 @@ export class QRGenerator {
   lightenColor(color, factor) {
     const hex = color.replace('#', '');
     const r = Math.round(
-      parseInt(hex.substr(0, 2), 16) + (255 - parseInt(hex.substr(0, 2), 16)) * factor
+      Number.parseInt(hex.substr(0, 2), 16) + (255 - Number.parseInt(hex.substr(0, 2), 16)) * factor
     );
     const g = Math.round(
-      parseInt(hex.substr(2, 2), 16) + (255 - parseInt(hex.substr(2, 2), 16)) * factor
+      Number.parseInt(hex.substr(2, 2), 16) + (255 - Number.parseInt(hex.substr(2, 2), 16)) * factor
     );
     const b = Math.round(
-      parseInt(hex.substr(4, 2), 16) + (255 - parseInt(hex.substr(4, 2), 16)) * factor
+      Number.parseInt(hex.substr(4, 2), 16) + (255 - Number.parseInt(hex.substr(4, 2), 16)) * factor
     );
     return `rgb(${r},${g},${b})`;
   }

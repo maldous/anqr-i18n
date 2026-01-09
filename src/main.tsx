@@ -26,7 +26,7 @@ const initAds = async () => {
 if (document.readyState === 'complete') {
   initAds();
 } else {
-  window.addEventListener('load', initAds, { once: true });
+  globalThis.addEventListener('load', initAds, { once: true });
 }
 
 ReactDOM.createRoot(document.getElementById('root')!).render(

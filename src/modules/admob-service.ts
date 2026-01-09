@@ -163,7 +163,7 @@ export async function initializeAdMob(): Promise<boolean> {
   }
 
   // If multiple parts of the app call initialize at the same time, share the same promise
-  if (initInFlight) {
+  if (initInFlight !== null) {
     console.error('AdMob: Initialization already in progress, waiting...');
     return initInFlight;
   }

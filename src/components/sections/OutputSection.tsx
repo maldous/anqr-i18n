@@ -68,7 +68,7 @@ export function OutputSection() {
             <Input
               type="number"
               value={output.widthPx}
-              onChange={(e) => setOutputWidth(parseInt(e.target.value, 10) || 400)}
+              onChange={(e) => setOutputWidth(Number.parseInt(e.target.value, 10) || 400)}
               min={100}
               max={2000}
             />
@@ -80,7 +80,7 @@ export function OutputSection() {
             <Input
               type="number"
               value={output.heightPx}
-              onChange={(e) => setOutputHeight(parseInt(e.target.value, 10) || 400)}
+              onChange={(e) => setOutputHeight(Number.parseInt(e.target.value, 10) || 400)}
               min={100}
               max={2000}
             />

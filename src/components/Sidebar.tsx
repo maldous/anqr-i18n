@@ -1019,7 +1019,7 @@ export function Sidebar({ isOpen, onClose, mobileHeightPercent = 45 }: SidebarPr
       }
 
       // Close on tablet (md-lg) and desktop (lg+) when clicking outside
-      if (window.innerWidth >= 768) {
+      if (globalThis.innerWidth >= 768) {
         onClose();
       }
     };
@@ -1030,7 +1030,7 @@ export function Sidebar({ isOpen, onClose, mobileHeightPercent = 45 }: SidebarPr
   // Reset all settings
   const handleReset = () => {
     if (confirm('Reset all settings to defaults?')) {
-      window.location.reload();
+      globalThis.location.reload();
     }
   };
 

@@ -205,12 +205,14 @@ export function decimateCompositorFrames(compositor: GifCompositor, targetFps: n
   }
 
   // Always include first and last frame for complete animation
-  if (keepIndices.length > 0 && keepIndices[0] !== 0) {
-    keepIndices.unshift(0);
-  }
   const lastIdx = compositor.frameCount - 1;
-  if (keepIndices.length > 0 && keepIndices[keepIndices.length - 1] !== lastIdx) {
-    keepIndices.push(lastIdx);
+  if (keepIndices.length > 0) {
+    if (keepIndices[0] !== 0) {
+      keepIndices.unshift(0);
+    }
+    if (keepIndices[keepIndices.length - 1] !== lastIdx) {
+      keepIndices.push(lastIdx);
+    }
   }
 
   return keepIndices;

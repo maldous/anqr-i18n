@@ -157,17 +157,18 @@ async function loadFileAsCanvas(file: File): Promise<HTMLCanvasElement> {
 
 // Expose animation state globally for external tools (e.g., gallery generator)
 declare global {
-  interface Window {
-    __ANQR_STATE__?: {
-      isLoading: boolean;
-      isAnimationReady: boolean;
-      animationFrameCount: number;
-      currentFrame: number;
-      animationFrames: HTMLCanvasElement[];
-      animationSpeedMs: number;
-      frameDelays: number[]; // Original frame delays from source GIF in ms
-    };
-  }
+  // eslint-disable-next-line no-var
+  var __ANQR_STATE__:
+    | {
+        isLoading: boolean;
+        isAnimationReady: boolean;
+        animationFrameCount: number;
+        currentFrame: number;
+        animationFrames: HTMLCanvasElement[];
+        animationSpeedMs: number;
+        frameDelays: number[]; // Original frame delays from source GIF in ms
+      }
+    | undefined;
 }
 
 export function useQRGenerator(): UseQRGeneratorResult {
@@ -781,33 +782,36 @@ export function useQRGenerator(): UseQRGeneratorResult {
     } else if (isAnimatedWebP) {
       // Use legacy parseAnimatedImage for WebP (compositor only supports GIF)
       const reader = new FileReader();
-      reader.onload = async (e) => {
-        try {
-          const arrayBuffer = e.target?.result as ArrayBuffer;
-          const frames = await parseAnimatedImage(arrayBuffer);
-          setGifFrames(frames);
-          setGifCompositor(null);
-          setCurrentFrame(0);
-          if (frames.length > 0) {
-            setRawOverlayCanvas(frames[0].canvas);
-          }
-          // Note: Don't clear isLoadingOverlay here for multi-frame - wait for animation cache
-          if (frames.length <= 1) {
-            setIsLoadingOverlay(false);
-          }
-        } catch (err) {
-          console.error('Failed to parse animated WebP:', err);
-          loadFileAsCanvas(overlay.file!)
-            .then((canvas) => {
-              setRawOverlayCanvas(canvas);
-              setGifFrames([{ canvas, delay: 100, disposalType: 0 }]);
+      reader.onload = (e) => {
+        // Wrap async logic in IIFE to avoid Promise-returning function in void context (S6544)
+        (async () => {
+          try {
+            const arrayBuffer = e.target?.result as ArrayBuffer;
+            const frames = await parseAnimatedImage(arrayBuffer);
+            setGifFrames(frames);
+            setGifCompositor(null);
+            setCurrentFrame(0);
+            if (frames.length > 0) {
+              setRawOverlayCanvas(frames[0].canvas);
+            }
+            // Note: Don't clear isLoadingOverlay here for multi-frame - wait for animation cache
+            if (frames.length <= 1) {
               setIsLoadingOverlay(false);
-            })
-            .catch(() => {
-              setRawOverlayCanvas(null);
-              setIsLoadingOverlay(false);
-            });
-        }
+            }
+          } catch (err) {
+            console.error('Failed to parse animated WebP:', err);
+            loadFileAsCanvas(overlay.file!)
+              .then((canvas) => {
+                setRawOverlayCanvas(canvas);
+                setGifFrames([{ canvas, delay: 100, disposalType: 0 }]);
+                setIsLoadingOverlay(false);
+              })
+              .catch(() => {
+                setRawOverlayCanvas(null);
+                setIsLoadingOverlay(false);
+              });
+          }
+        })().catch(console.error);
       };
       reader.readAsArrayBuffer(overlay.file);
     } else {
@@ -1009,7 +1013,7 @@ export function useQRGenerator(): UseQRGeneratorResult {
     // Get original frame delays from parsed GIF frames
     const frameDelays = effectiveFrames.map((f) => f.delay || 100);
 
-    window.__ANQR_STATE__ = {
+    globalThis.__ANQR_STATE__ = {
       isLoading,
       isAnimationReady: isAnimationCacheReady && animationFrames.length > 1,
       animationFrameCount: animationFrames.length,
@@ -1024,9 +1028,9 @@ export function useQRGenerator(): UseQRGeneratorResult {
 
     // Cleanup: remove reference when component unmounts or deps change
     return () => {
-      if (window.__ANQR_STATE__) {
+      if (globalThis.__ANQR_STATE__) {
         // Clear the reference to allow GC
-        window.__ANQR_STATE__ = undefined;
+        globalThis.__ANQR_STATE__ = undefined;
       }
     };
   }, [
