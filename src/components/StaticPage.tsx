@@ -39,7 +39,7 @@ function _slugify(text: string): string {
   return text
     .toLowerCase()
     .replace(/[^a-z0-9]+/g, '-')
-    .replace(/^-|-$/g, '');
+    .replace(/(?:^-|-$)/g, '');
 }
 
 // Helper to process ${lang} placeholder in hrefs
@@ -708,14 +708,14 @@ export function StaticPage({ page }: StaticPageProps) {
       el.scrollIntoView({ behavior: 'smooth', block: 'start' });
       setActiveSlug(slug);
       // Update URL hash without triggering scroll
-      window.history.replaceState(null, '', `#${slug}`);
+      globalThis.history.replaceState(null, '', `#${slug}`);
     }
   }, []);
 
   // Handle initial hash on mount
   useEffect(() => {
     if (!(hasToc && def)) return;
-    const hash = window.location.hash.slice(1);
+    const hash = globalThis.location.hash.slice(1);
     if (!hash) {
       if (tocGroups.length > 0 && tocGroups[0].items.length > 0) {
         setActiveSlug(tocGroups[0].items[0].id);

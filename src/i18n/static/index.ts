@@ -19,7 +19,8 @@ import * as enGB from './en-GB';
 const contentCache = new Map<string, Record<StaticPageType, PageDefinition>>();
 
 // Pre-populate cache with English
-contentCache.set('en-GB', enGB as unknown as Record<StaticPageType, PageDefinition>);
+// The module exports match the expected Record type structure
+contentCache.set('en-GB', enGB as Record<StaticPageType, PageDefinition>);
 
 // Use import.meta.glob for Vite to properly analyze and code-split
 // Each language folder gets its own chunk

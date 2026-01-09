@@ -281,7 +281,7 @@ export function AnimationSection() {
               value={animation.seed}
               onChange={(e) =>
                 useQRStore.setState((s) => ({
-                  animation: { ...s.animation, seed: parseInt(e.target.value, 10) || 0 },
+                  animation: { ...s.animation, seed: Number.parseInt(e.target.value, 10) || 0 },
                 }))
               }
             />

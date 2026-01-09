@@ -278,8 +278,7 @@ export function Gallery({ filter }: GalleryProps) {
   }, [t]);
 
   const _filteredSections = useMemo(() => {
-    if (filter === 'all') return gallerySections;
-    return gallerySections.filter((s) => s.id === filter);
+    return filter === 'all' ? gallerySections : gallerySections.filter((s) => s.id === filter);
   }, [filter]);
 
   const _totalItems = useMemo(

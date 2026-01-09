@@ -50,9 +50,9 @@ export function parseHex(hex: string): RGB {
   }
 
   return {
-    r: parseInt(hex.substr(0, 2), 16),
-    g: parseInt(hex.substr(2, 2), 16),
-    b: parseInt(hex.substr(4, 2), 16),
+    r: Number.parseInt(hex.substring(0, 2), 16),
+    g: Number.parseInt(hex.substring(2, 4), 16),
+    b: Number.parseInt(hex.substring(4, 6), 16),
   };
 }
 
@@ -64,8 +64,8 @@ export function parseHexAlpha(hex: string): RGBA {
     hex = hex[0] + hex[0] + hex[1] + hex[1] + hex[2] + hex[2] + hex[3] + hex[3];
   }
 
-  const rgb = parseHex(hex.substr(0, 6));
-  const a = hex.length >= 8 ? parseInt(hex.substr(6, 2), 16) / 255 : 1;
+  const rgb = parseHex(hex.substring(0, 6));
+  const a = hex.length >= 8 ? Number.parseInt(hex.substring(6, 8), 16) / 255 : 1;
 
   return { ...rgb, a };
 }
@@ -75,10 +75,10 @@ export function parseRgbString(str: string): RGBA {
   const match = str.match(/rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*([\d.]+))?\)/);
   if (match) {
     return {
-      r: parseInt(match[1], 10),
-      g: parseInt(match[2], 10),
-      b: parseInt(match[3], 10),
-      a: match[4] !== undefined ? parseFloat(match[4]) : 1,
+      r: Number.parseInt(match[1], 10),
+      g: Number.parseInt(match[2], 10),
+      b: Number.parseInt(match[3], 10),
+      a: match[4] !== undefined ? Number.parseFloat(match[4]) : 1,
     };
   }
   return { r: 0, g: 0, b: 0, a: 1 };
@@ -89,10 +89,10 @@ export function parseHslString(str: string): HSLA {
   const match = str.match(/hsla?\((\d+),\s*([\d.]+)%?,\s*([\d.]+)%?(?:,\s*([\d.]+))?\)/);
   if (match) {
     return {
-      h: parseInt(match[1], 10),
-      s: parseFloat(match[2]),
-      l: parseFloat(match[3]),
-      a: match[4] !== undefined ? parseFloat(match[4]) : 1,
+      h: Number.parseInt(match[1], 10),
+      s: Number.parseFloat(match[2]),
+      l: Number.parseFloat(match[3]),
+      a: match[4] !== undefined ? Number.parseFloat(match[4]) : 1,
     };
   }
   return { h: 0, s: 0, l: 0, a: 1 };

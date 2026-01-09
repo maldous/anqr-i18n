@@ -159,7 +159,7 @@ export function Header({
     const isDark =
       localStorage.getItem('darkMode') === 'true' ||
       (!localStorage.getItem('darkMode') &&
-        window.matchMedia('(prefers-color-scheme: dark)').matches);
+        globalThis.matchMedia('(prefers-color-scheme: dark)').matches);
     setDarkMode(isDark);
     document.documentElement.classList.toggle('dark', isDark);
   }, []);

@@ -425,7 +425,7 @@ export function ShareSection() {
             variant="outline"
             size="sm"
             className="flex-1"
-            onClick={() => window.open(socialUrls.twitter, '_blank')}
+            onClick={() => globalThis.open(socialUrls.twitter, '_blank')}
           >
             {t('share.twitter')}
           </Button>
@@ -433,7 +433,7 @@ export function ShareSection() {
             variant="outline"
             size="sm"
             className="flex-1"
-            onClick={() => window.open(socialUrls.whatsapp, '_blank')}
+            onClick={() => globalThis.open(socialUrls.whatsapp, '_blank')}
           >
             <MessageCircle className="h-4 w-4 mr-1" />
             {t('share.whatsapp')}

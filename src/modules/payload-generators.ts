@@ -749,7 +749,7 @@ export class EMVQRBuilder {
   build(): string {
     // Sort fields by tag number (ascending)
     const sortedTags = Array.from(this.fields.keys()).sort(
-      (a, b) => parseInt(a, 10) - parseInt(b, 10)
+      (a, b) => Number.parseInt(a, 10) - Number.parseInt(b, 10)
     );
 
     // Build payload without CRC
@@ -792,7 +792,7 @@ export function parseEMVQR(payload: string): Map<string, string> {
     const tag = decoder.decode(bytes.subarray(pos, pos + 2));
     // Length is 2 ASCII digits (2 bytes)
     const lengthStr = decoder.decode(bytes.subarray(pos + 2, pos + 4));
-    const length = parseInt(lengthStr, 10);
+    const length = Number.parseInt(lengthStr, 10);
     if (Number.isNaN(length) || length < 0) {
       break; // Invalid length, stop parsing
     }
@@ -918,8 +918,7 @@ export function generateWifi(params: WifiHelper): string {
 export function generateVCard(params: VCardHelper): string {
   const lines: string[] = [];
 
-  lines.push('BEGIN:VCARD');
-  lines.push(`VERSION:${params.version}`);
+  lines.push('BEGIN:VCARD', `VERSION:${params.version}`);
 
   // Full name (required)
   if (params.fn) {
@@ -1056,15 +1055,17 @@ export function generateMeCard(params: MeCardHelper): string {
 export function generateBizCard(params: BizCardParams): string {
   const lines: string[] = ['BIZCARD:'];
 
-  if (params.firstName) lines.push(`N:${params.firstName}`);
-  if (params.lastName) lines.push(`X:${params.lastName}`);
-  if (params.title) lines.push(`T:${params.title}`);
-  if (params.company) lines.push(`C:${params.company}`);
-  if (params.phone) lines.push(`B:${params.phone}`);
-  if (params.email) lines.push(`E:${params.email}`);
-  if (params.address) lines.push(`A:${params.address}`);
-
-  lines.push(';');
+  // Conditionally add fields
+  const fields: string[] = [];
+  if (params.firstName) fields.push(`N:${params.firstName}`);
+  if (params.lastName) fields.push(`X:${params.lastName}`);
+  if (params.title) fields.push(`T:${params.title}`);
+  if (params.company) fields.push(`C:${params.company}`);
+  if (params.phone) fields.push(`B:${params.phone}`);
+  if (params.email) fields.push(`E:${params.email}`);
+  if (params.address) fields.push(`A:${params.address}`);
+  
+  lines.push(...fields, ';');
   return lines.join(';');
 }
 
@@ -1076,10 +1077,7 @@ export function generateBizCard(params: BizCardParams): string {
 export function generateEvent(params: EventHelper): string {
   const lines: string[] = [];
 
-  lines.push('BEGIN:VCALENDAR');
-  lines.push('VERSION:2.0');
-  lines.push('PRODID:-//ANQR//QR Code Generator//EN');
-  lines.push('BEGIN:VEVENT');
+  lines.push('BEGIN:VCALENDAR', 'VERSION:2.0', 'PRODID:-//ANQR//QR Code Generator//EN', 'BEGIN:VEVENT');
 
   // Generate UID
   const uid = `${Date.now()}-${Math.random().toString(36).substr(2, 9)}@anqr`;
@@ -1128,8 +1126,7 @@ export function generateEvent(params: EventHelper): string {
     lines.push(`RRULE:${params.rrule}`);
   }
 
-  lines.push('END:VEVENT');
-  lines.push('END:VCALENDAR');
+  lines.push('END:VEVENT', 'END:VCALENDAR');
 
   return lines.join('\n');
 }
@@ -1157,13 +1154,14 @@ export function generateCalendarSubscription(url: string): string {
 export function generateEPCSepa(params: EPCSepaParams): string {
   const lines: string[] = [];
 
-  lines.push('BCD'); // Service tag
-  lines.push('002'); // Version (002 = 2.0)
-  lines.push('1'); // Character set (1 = UTF-8)
-  lines.push('SCT'); // Identification code (SEPA Credit Transfer)
-  lines.push(params.bic || ''); // BIC (optional for domestic)
-  lines.push(params.name.substring(0, 70)); // Beneficiary name (max 70)
-  lines.push(params.iban.replace(/\s/g, '').toUpperCase()); // IBAN
+  // Service tag, Version (002 = 2.0), Character set (1 = UTF-8), Identification code (SEPA Credit Transfer)
+  lines.push('BCD', '002', '1', 'SCT');
+  // BIC (optional for domestic), Beneficiary name (max 70), IBAN
+  lines.push(
+    params.bic || '',
+    params.name.substring(0, 70),
+    params.iban.replace(/\s/g, '').toUpperCase()
+  );
 
   // Amount (EUR format with currency prefix)
   if (params.amount !== undefined && params.amount > 0) {
@@ -1172,11 +1170,13 @@ export function generateEPCSepa(params: EPCSepaParams): string {
     lines.push('');
   }
 
-  lines.push(''); // Purpose code (AT-44, optional)
-  // Reference: either structured (RF..) or unstructured
-  lines.push(params.reference?.substring(0, 35) || ''); // Structured reference (max 35)
-  lines.push(params.text?.substring(0, 140) || ''); // Unstructured remittance info (max 140)
-  lines.push(''); // Beneficiary to originator info (optional)
+  // Purpose code (AT-44, optional), Structured reference (max 35), Unstructured remittance info (max 140), Beneficiary to originator info (optional)
+  lines.push(
+    '',
+    params.reference?.substring(0, 35) || '',
+    params.text?.substring(0, 140) || '',
+    ''
+  );
 
   return lines.join('\n');
 }
@@ -1390,43 +1390,50 @@ export function generatePIX(params: PIXParams): string {
 export function generateSwissQRBill(params: SwissQRBillParams): string {
   const lines: string[] = [];
 
-  // Header
-  lines.push('SPC'); // QR Type
-  lines.push(params.version || '0200'); // Version
-  lines.push('1'); // Coding (1 = UTF-8)
+  // Header: QR Type, Version, Coding (1 = UTF-8)
+  lines.push('SPC', params.version || '0200', '1');
 
   // Creditor information
-  lines.push(params.creditorIBAN.replace(/\s/g, '').toUpperCase());
-  lines.push(params.creditorAddressType);
-  lines.push(params.creditorName.substring(0, 70));
+  lines.push(
+    params.creditorIBAN.replace(/\s/g, '').toUpperCase(),
+    params.creditorAddressType,
+    params.creditorName.substring(0, 70)
+  );
 
   if (params.creditorAddressType === 'S') {
-    lines.push(params.creditorStreet?.substring(0, 70) || '');
-    lines.push(params.creditorBuildingNumber?.substring(0, 16) || '');
-    lines.push(params.creditorPostalCode?.substring(0, 16) || '');
-    lines.push(params.creditorCity?.substring(0, 35) || '');
+    lines.push(
+      params.creditorStreet?.substring(0, 70) || '',
+      params.creditorBuildingNumber?.substring(0, 16) || '',
+      params.creditorPostalCode?.substring(0, 16) || '',
+      params.creditorCity?.substring(0, 35) || ''
+    );
   } else {
-    // Combined address (K)
-    lines.push(params.creditorStreet?.substring(0, 70) || ''); // Address line 1
-    lines.push(params.creditorCity?.substring(0, 70) || ''); // Address line 2
-    lines.push('');
-    lines.push('');
+    // Combined address (K): Address line 1, Address line 2, empty, empty
+    lines.push(
+      params.creditorStreet?.substring(0, 70) || '',
+      params.creditorCity?.substring(0, 70) || '',
+      '',
+      ''
+    );
   }
   lines.push(params.creditorCountry.toUpperCase());
 
   // Ultimate Creditor (optional - usually empty)
-  lines.push(params.ultimateCreditorAddressType || '');
-  lines.push(params.ultimateCreditorName?.substring(0, 70) || '');
+  lines.push(params.ultimateCreditorAddressType || '', params.ultimateCreditorName?.substring(0, 70) || '');
   if (params.ultimateCreditorAddressType === 'S') {
-    lines.push(params.ultimateCreditorStreet?.substring(0, 70) || '');
-    lines.push(params.ultimateCreditorBuildingNumber?.substring(0, 16) || '');
-    lines.push(params.ultimateCreditorPostalCode?.substring(0, 16) || '');
-    lines.push(params.ultimateCreditorCity?.substring(0, 35) || '');
+    lines.push(
+      params.ultimateCreditorStreet?.substring(0, 70) || '',
+      params.ultimateCreditorBuildingNumber?.substring(0, 16) || '',
+      params.ultimateCreditorPostalCode?.substring(0, 16) || '',
+      params.ultimateCreditorCity?.substring(0, 35) || ''
+    );
   } else {
-    lines.push(params.ultimateCreditorStreet?.substring(0, 70) || '');
-    lines.push(params.ultimateCreditorCity?.substring(0, 70) || '');
-    lines.push('');
-    lines.push('');
+    lines.push(
+      params.ultimateCreditorStreet?.substring(0, 70) || '',
+      params.ultimateCreditorCity?.substring(0, 70) || '',
+      '',
+      ''
+    );
   }
   lines.push(params.ultimateCreditorCountry?.toUpperCase() || '');
 
@@ -1439,29 +1446,33 @@ export function generateSwissQRBill(params: SwissQRBillParams): string {
   lines.push(params.currency);
 
   // Ultimate Debtor (payer - optional)
-  lines.push(params.ultimateDebtorAddressType || '');
-  lines.push(params.ultimateDebtorName?.substring(0, 70) || '');
+  lines.push(params.ultimateDebtorAddressType || '', params.ultimateDebtorName?.substring(0, 70) || '');
   if (params.ultimateDebtorAddressType === 'S') {
-    lines.push(params.ultimateDebtorStreet?.substring(0, 70) || '');
-    lines.push(params.ultimateDebtorBuildingNumber?.substring(0, 16) || '');
-    lines.push(params.ultimateDebtorPostalCode?.substring(0, 16) || '');
-    lines.push(params.ultimateDebtorCity?.substring(0, 35) || '');
+    lines.push(
+      params.ultimateDebtorStreet?.substring(0, 70) || '',
+      params.ultimateDebtorBuildingNumber?.substring(0, 16) || '',
+      params.ultimateDebtorPostalCode?.substring(0, 16) || '',
+      params.ultimateDebtorCity?.substring(0, 35) || ''
+    );
   } else {
-    lines.push(params.ultimateDebtorStreet?.substring(0, 70) || '');
-    lines.push(params.ultimateDebtorCity?.substring(0, 70) || '');
-    lines.push('');
-    lines.push('');
+    lines.push(
+      params.ultimateDebtorStreet?.substring(0, 70) || '',
+      params.ultimateDebtorCity?.substring(0, 70) || '',
+      '',
+      ''
+    );
   }
   lines.push(params.ultimateDebtorCountry?.toUpperCase() || '');
 
   // Reference
-  lines.push(params.referenceType);
-  lines.push(params.reference?.substring(0, 27) || '');
+  lines.push(params.referenceType, params.reference?.substring(0, 27) || '');
 
   // Additional information
-  lines.push(params.unstructuredMessage?.substring(0, 140) || '');
-  lines.push(params.trailer || 'EPD');
-  lines.push(params.billInformation?.substring(0, 140) || '');
+  lines.push(
+    params.unstructuredMessage?.substring(0, 140) || '',
+    params.trailer || 'EPD',
+    params.billInformation?.substring(0, 140) || ''
+  );
 
   // Alternative procedures
   if (params.alternativeProcedure1) {

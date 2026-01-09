@@ -7,9 +7,8 @@ import { useEffect, useRef } from 'react';
 
 // Type declaration for Google AdSense
 declare global {
-  interface Window {
-    adsbygoogle?: Record<string, unknown>[];
-  }
+  // biome-ignore lint: SonarQube recommends globalThis over window
+  var adsbygoogle: Record<string, unknown>[] | undefined;
 }
 
 // AdSense Publisher ID
@@ -58,8 +57,8 @@ export function AdSense({
 
       try {
         // Push ad to AdSense
-        if (typeof window !== 'undefined' && window.adsbygoogle) {
-          window.adsbygoogle.push({});
+        if (typeof globalThis !== 'undefined' && globalThis.adsbygoogle) {
+          globalThis.adsbygoogle.push({});
           isLoaded.current = true;
         }
       } catch (_e) {

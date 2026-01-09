@@ -920,7 +920,7 @@ export function OverlaySection() {
                             useQRStore.setState((s) => ({
                               overlay: {
                                 ...s.overlay,
-                                blueNoiseSeed: parseInt(e.target.value, 10) || 0,
+                                blueNoiseSeed: Number.parseInt(e.target.value, 10) || 0,
                               },
                             }))
                           }

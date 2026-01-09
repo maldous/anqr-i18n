@@ -58,7 +58,7 @@ function ErrorFallbackUI({ error, onRetry }: { error: Error | null; onRetry: () 
           </Button>
           <Button
             onClick={() => {
-              window.location.href = '/';
+              globalThis.location.href = '/';
             }}
             variant="outline"
           >

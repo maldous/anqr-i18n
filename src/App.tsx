@@ -20,8 +20,8 @@ import { type Tier, useQRStore } from '@/store/qr-store';
 type PageView = 'editor' | 'gallery' | StaticPageType;
 
 function getPageFromLocation(): PageView {
-  const path = window.location.pathname.replace(/\/+$/, '') || '/';
-  const hash = window.location.hash.replace(/^#/, '');
+  const path = globalThis.location.pathname.replace(/\/+$/, '') || '/';
+  const hash = globalThis.location.hash.replace(/^#/, '');
 
   // Prefer clean paths when present.
   if (path === '/gallery') return 'gallery';
@@ -93,7 +93,7 @@ function App() {
   useEffect(() => {
     const saved = localStorage.getItem(MOBILE_SPLIT_STORAGE_KEY);
     if (saved) {
-      const parsed = parseFloat(saved);
+      const parsed = Number.parseFloat(saved);
       if (!Number.isNaN(parsed) && parsed >= MIN_MOBILE_SPLIT && parsed <= MAX_MOBILE_SPLIT) {
         setMobileSplitPercent(parsed);
       }
@@ -107,18 +107,18 @@ function App() {
 
   const navigateTo = useCallback((page: PageView) => {
     const nextPath = page === 'editor' ? '/' : `/${page}`;
-    const nextSearch = page === 'editor' ? window.location.search : '';
+    const nextSearch = page === 'editor' ? globalThis.location.search : '';
 
     // Avoid unnecessary history entries.
-    const current = window.location.pathname.replace(/\/+$/, '') || '/';
-    if (current === nextPath && window.location.search === nextSearch) {
+    const current = globalThis.location.pathname.replace(/\/+$/, '') || '/';
+    if (current === nextPath && globalThis.location.search === nextSearch) {
       setCurrentPage(page);
       return;
     }
 
-    window.history.pushState({}, '', `${nextPath}${nextSearch}`);
+    globalThis.history.pushState({}, '', `${nextPath}${nextSearch}`);
     setCurrentPage(page);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    globalThis.scrollTo({ top: 0, behavior: 'smooth' });
   }, []);
 
   // Handle location changes for routing (paths + legacy hash)
@@ -127,7 +127,7 @@ function App() {
       setCurrentPage(getPageFromLocation());
 
       // Process lang parameter on every navigation (works on all pages)
-      const params = new URLSearchParams(window.location.search);
+      const params = new URLSearchParams(globalThis.location.search);
       const lang = params.get('lang');
       if (lang && lang !== i18n.language) {
         await loadLocale(lang);
@@ -137,11 +137,11 @@ function App() {
 
     handleLocationChange();
 
-    window.addEventListener('popstate', handleLocationChange);
-    window.addEventListener('hashchange', handleLocationChange);
+    globalThis.addEventListener('popstate', handleLocationChange);
+    globalThis.addEventListener('hashchange', handleLocationChange);
     return () => {
-      window.removeEventListener('popstate', handleLocationChange);
-      window.removeEventListener('hashchange', handleLocationChange);
+      globalThis.removeEventListener('popstate', handleLocationChange);
+      globalThis.removeEventListener('hashchange', handleLocationChange);
     };
   }, []);
 

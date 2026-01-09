@@ -48,10 +48,10 @@ function isMobile(): boolean {
   const isMobileUA = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(ua);
 
   // Also check for touch capability as a secondary signal
-  const hasTouch = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+  const hasTouch = 'ontouchstart' in globalThis || navigator.maxTouchPoints > 0;
 
   // Consider mobile if user agent matches OR if it's a touch device with small screen
-  const isSmallScreen = typeof window !== 'undefined' && window.innerWidth < 768;
+  const isSmallScreen = typeof globalThis !== 'undefined' && globalThis.innerWidth < 768;
 
   _isMobile = isMobileUA || (hasTouch && isSmallScreen);
   return _isMobile;

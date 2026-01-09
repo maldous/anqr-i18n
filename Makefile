@@ -464,6 +464,8 @@ sonar:
 	@echo "Analysis complete! View results at: $(SONAR_HOST_URL)/dashboard?id=anqr"
 
 # Get full SonarQube issues report and save to JSON file
+# Handles pagination to fetch ALL issues (API returns max 500 per page)
+# Uses softwareQualities parameter to properly categorize RELIABILITY, SECURITY, MAINTAINABILITY
 sonar-report:
 	@echo "Generating comprehensive SonarQube report..."
 	@echo '{' > sonar-report.json
@@ -475,10 +477,24 @@ sonar-report:
 	@curl -s -u $(SONAR_TOKEN): "$(SONAR_HOST_URL)/api/measures/component?component=anqr&metricKeys=bugs,vulnerabilities,code_smells,security_hotspots,coverage,duplicated_lines_density,ncloc,cognitive_complexity,reliability_rating,security_rating,sqale_rating" | \
 		jq '.component.measures | map({(.metric): .value}) | add' >> sonar-report.json 2>/dev/null || echo '{}' >> sonar-report.json
 	@echo '  ,' >> sonar-report.json
-	@# Fetch all issues with full details (bugs, vulnerabilities, code smells)
+	@# Fetch ALL issues with pagination (API max 500 per page), merge with jq
+	@# Note: Uses issueStatuses instead of deprecated statuses parameter
 	@echo '  "issues": ' >> sonar-report.json
-	@curl -s -u $(SONAR_TOKEN): "$(SONAR_HOST_URL)/api/issues/search?componentKeys=anqr&ps=500&additionalFields=_all" | \
-		jq '[.issues[] | {key: .key, type: .type, severity: .severity, status: .status, message: .message, file: (.component | split(":") | .[1]), line: .line, effort: .effort, debt: .debt, tags: .tags, rule: .rule, flows: .flows, textRange: .textRange}]' >> sonar-report.json 2>/dev/null || echo '[]' >> sonar-report.json
+	@( \
+		page1=$$(curl -s -u $(SONAR_TOKEN): "$(SONAR_HOST_URL)/api/issues/search?componentKeys=anqr&ps=500&p=1&issueStatuses=OPEN,CONFIRMED&additionalFields=_all"); \
+		total=$$(echo "$$page1" | jq '.total' 2>/dev/null || echo 0); \
+		if [ "$$total" -le 500 ]; then \
+			echo "$$page1" | jq '[.issues[] | {key: .key, type: .type, severity: .severity, status: .status, message: .message, file: (.component | split(":") | .[1]), line: .line, effort: .effort, debt: .debt, tags: .tags, rule: .rule, flows: .flows, textRange: .textRange, softwareQualities: .impacts}]'; \
+		else \
+			page2=$$(curl -s -u $(SONAR_TOKEN): "$(SONAR_HOST_URL)/api/issues/search?componentKeys=anqr&ps=500&p=2&issueStatuses=OPEN,CONFIRMED&additionalFields=_all"); \
+			if [ "$$total" -le 1000 ]; then \
+				( echo "$$page1"; echo "$$page2" ) | jq -s '[.[].issues[] | {key: .key, type: .type, severity: .severity, status: .status, message: .message, file: (.component | split(":") | .[1]), line: .line, effort: .effort, debt: .debt, tags: .tags, rule: .rule, flows: .flows, textRange: .textRange, softwareQualities: .impacts}]'; \
+			else \
+				page3=$$(curl -s -u $(SONAR_TOKEN): "$(SONAR_HOST_URL)/api/issues/search?componentKeys=anqr&ps=500&p=3&issueStatuses=OPEN,CONFIRMED&additionalFields=_all"); \
+				( echo "$$page1"; echo "$$page2"; echo "$$page3" ) | jq -s '[.[].issues[] | {key: .key, type: .type, severity: .severity, status: .status, message: .message, file: (.component | split(":") | .[1]), line: .line, effort: .effort, debt: .debt, tags: .tags, rule: .rule, flows: .flows, textRange: .textRange, softwareQualities: .impacts}]'; \
+			fi; \
+		fi; \
+	) >> sonar-report.json 2>/dev/null || echo '[]' >> sonar-report.json
 	@echo '  ,' >> sonar-report.json
 	@# Fetch security hotspots
 	@echo '  "hotspots": ' >> sonar-report.json

@@ -113,8 +113,8 @@ export function HelpLink({ href, anchor, requiredTier, title, className = '' }: 
       const fullHref = `${path}${query}${hash}`;
 
       // Navigate using history API for SPA navigation
-      window.history.pushState({}, '', fullHref);
-      window.dispatchEvent(new PopStateEvent('popstate'));
+      globalThis.history.pushState({}, '', fullHref);
+      globalThis.dispatchEvent(new PopStateEvent('popstate'));
 
       // Scroll to top for page navigation, or to anchor if present
       if (hash) {
@@ -126,7 +126,7 @@ export function HelpLink({ href, anchor, requiredTier, title, className = '' }: 
           }
         }, 150);
       } else {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
+        globalThis.scrollTo({ top: 0, behavior: 'smooth' });
       }
     },
     [

@@ -25,7 +25,7 @@ export function MetadataSection() {
     if (!kvIdsRef.current.has(index)) {
       kvIdsRef.current.set(index, `kv-${++kvIdCounter}`);
     }
-    return kvIdsRef.current.get(index) as string;
+    return kvIdsRef.current.get(index)!;
   };
 
   const addCustomKv = () => {
