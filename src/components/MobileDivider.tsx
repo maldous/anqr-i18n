@@ -100,23 +100,27 @@ export function MobileDivider({ onDrag, onDragEnd }: MobileDividerProps) {
       ref={dividerRef}
       className={`
         md:hidden
-        h-3 w-full
+        h-4 w-full
         flex items-center justify-center
         bg-muted border-y border-border
         cursor-row-resize
         touch-none
         select-none
-        transition-colors
-        ${isDragging ? 'bg-accent' : 'hover:bg-accent/50 active:bg-accent'}
+        transition-all duration-150
+        ${isDragging 
+          ? 'bg-accent shadow-md border-accent-foreground/20' 
+          : 'hover:bg-accent/50 active:bg-accent hover:shadow-sm'
+        }
       `}
       onMouseDown={handleMouseDown}
       onTouchStart={handleTouchStart}
       role="separator"
       aria-orientation="horizontal"
       aria-label="Drag to resize panels"
+      aria-valuenow={isDragging ? 1 : 0}
     >
       <GripHorizontal
-        className={`h-4 w-4 text-muted-foreground transition-colors ${isDragging ? 'text-foreground' : ''}`}
+        className={`h-5 w-5 transition-all duration-150 ${isDragging ? 'text-foreground scale-110' : 'text-muted-foreground'}`}
       />
     </div>
   );
