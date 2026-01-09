@@ -1,6 +1,26 @@
 import { Capacitor } from '@capacitor/core';
 import * as LucideIcons from 'lucide-react';
-import { Check, Download, Grid3x3, Menu, Moon, PanelLeft, Play, Share2, Sun } from 'lucide-react';
+import {
+  BookOpen,
+  Check,
+  Download,
+  FileText,
+  Globe,
+  Grid3x3,
+  Images,
+  Info,
+  Lightbulb,
+  Mail,
+  Menu,
+  Moon,
+  PanelLeft,
+  Play,
+  QrCode,
+  Share2,
+  Shield,
+  Sparkles,
+  Sun,
+} from 'lucide-react';
 import { useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import type { StaticPageType } from '@/components/StaticPage';
@@ -30,17 +50,22 @@ function DynamicIcon({ name, className }: { name: string; className?: string }) 
 
 type HeaderPage = 'editor' | 'gallery' | StaticPageType;
 
-const NAV_LINKS: Array<{ href: string; labelKey: string; page: HeaderPage }> = [
-  { href: '/', labelKey: 'nav.generator', page: 'editor' },
-  { href: '/gallery', labelKey: 'nav.gallery', page: 'gallery' },
-  { href: '/guide', labelKey: 'nav.guide', page: 'guide' },
-  { href: '/learn', labelKey: 'nav.learn', page: 'learn' },
-  { href: '/examples', labelKey: 'nav.examples', page: 'examples' },
-  { href: '/about', labelKey: 'nav.about', page: 'about' },
-  { href: '/privacy', labelKey: 'nav.privacy', page: 'privacy' },
-  { href: '/terms', labelKey: 'nav.terms', page: 'terms' },
-  { href: '/translate', labelKey: 'nav.translate', page: 'translate' },
-  { href: '/contact', labelKey: 'nav.contact', page: 'contact' },
+const NAV_LINKS: Array<{
+  href: string;
+  labelKey: string;
+  page: HeaderPage;
+  icon: React.ComponentType<{ className?: string }>;
+}> = [
+  { href: '/', labelKey: 'nav.generator', page: 'editor', icon: QrCode },
+  { href: '/gallery', labelKey: 'nav.gallery', page: 'gallery', icon: Images },
+  { href: '/guide', labelKey: 'nav.guide', page: 'guide', icon: BookOpen },
+  { href: '/learn', labelKey: 'nav.learn', page: 'learn', icon: Lightbulb },
+  { href: '/examples', labelKey: 'nav.examples', page: 'examples', icon: Sparkles },
+  { href: '/about', labelKey: 'nav.about', page: 'about', icon: Info },
+  { href: '/privacy', labelKey: 'nav.privacy', page: 'privacy', icon: Shield },
+  { href: '/terms', labelKey: 'nav.terms', page: 'terms', icon: FileText },
+  { href: '/translate', labelKey: 'nav.translate', page: 'translate', icon: Globe },
+  { href: '/contact', labelKey: 'nav.contact', page: 'contact', icon: Mail },
 ];
 
 interface HeaderProps {
@@ -716,7 +741,7 @@ export function Header({
         {/* Mobile Menu */}
         {(mobileMenuOpen || isMobileMenuClosing) && (
           <div
-            className={`md:hidden border-t bg-card p-3 space-y-2 overflow-hidden origin-top ${
+            className={`md:hidden border-t bg-card p-3 overflow-hidden origin-top ${
               isMobileMenuClosing
                 ? 'animate-[slide-up_0.2s_ease-in_forwards]'
                 : 'animate-[slide-down_0.2s_ease-out_forwards]'
@@ -727,32 +752,66 @@ export function Header({
               }
             }}
           >
-            {/* Nav links as full-width vertical buttons */}
-            <nav className="flex flex-col gap-1">
-              {NAV_LINKS.map((link) => {
-                const isActive = link.page === resolvedPage;
+            <nav className="flex flex-col gap-2">
+              {/* Generator - Full width emphasized */}
+              {(() => {
+                const generatorLink = NAV_LINKS[0];
+                const isActive = generatorLink.page === resolvedPage;
+                const IconComponent = generatorLink.icon;
                 return (
                   <a
-                    key={link.labelKey}
-                    href={link.href}
-                    className={`w-full px-4 py-3 text-sm rounded-md text-center transition-colors ${
+                    href={generatorLink.href}
+                    className={`w-full px-4 py-3 rounded-lg flex items-center justify-center gap-2 transition-colors ${
                       isActive
-                        ? 'text-foreground bg-muted font-medium'
-                        : 'text-muted-foreground hover:bg-muted hover:text-foreground'
+                        ? 'bg-primary text-primary-foreground font-medium'
+                        : 'bg-muted hover:bg-primary/10 text-foreground font-medium'
                     }`}
                     onClick={(e) => {
                       if (onNavigate) {
                         e.preventDefault();
-                        onNavigate(link.page);
+                        onNavigate(generatorLink.page);
                       }
                       closeMobileMenu();
                     }}
-                    title={`Go to ${t(link.labelKey)}`}
+                    title={`Go to ${t(generatorLink.labelKey)}`}
                   >
-                    {t(link.labelKey)}
+                    <IconComponent className="w-5 h-5" />
+                    <span className="text-sm">{t(generatorLink.labelKey)}</span>
                   </a>
                 );
-              })}
+              })()}
+
+              {/* Remaining items in 3x3 grid */}
+              <div className="grid grid-cols-3 gap-1.5">
+                {NAV_LINKS.slice(1).map((link) => {
+                  const isActive = link.page === resolvedPage;
+                  const IconComponent = link.icon;
+                  return (
+                    <a
+                      key={link.labelKey}
+                      href={link.href}
+                      className={`flex flex-col items-center justify-center gap-1 py-2.5 px-1 rounded-md transition-colors ${
+                        isActive
+                          ? 'text-foreground bg-muted font-medium'
+                          : 'text-muted-foreground hover:bg-muted hover:text-foreground'
+                      }`}
+                      onClick={(e) => {
+                        if (onNavigate) {
+                          e.preventDefault();
+                          onNavigate(link.page);
+                        }
+                        closeMobileMenu();
+                      }}
+                      title={`Go to ${t(link.labelKey)}`}
+                    >
+                      <IconComponent className="w-5 h-5" />
+                      <span className="text-[11px] leading-tight text-center">
+                        {t(link.labelKey)}
+                      </span>
+                    </a>
+                  );
+                })}
+              </div>
             </nav>
           </div>
         )}
