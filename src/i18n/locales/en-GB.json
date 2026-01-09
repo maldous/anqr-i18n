@@ -893,7 +893,13 @@
     "title": "QR Code Gallery",
     "tryThis": "Try this"
   },
+  "camera": {
+    "loading": "Capturing...",
+    "permissionDenied": "Camera permission denied. Please enable in settings.",
+    "error": "Failed to capture image"
+  },
   "header": {
+    "captureOverlay": "Capture photo as overlay",
     "close": "Close",
     "copied": "Copied!",
     "reset": "Reset",
