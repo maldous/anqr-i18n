@@ -252,7 +252,9 @@ export function parseUrlParams(): Partial<ShareConfig> {
     size: params.get('size') ? Number.parseInt(params.get('size')!, 10) : undefined,
     margin: params.get('margin') ? Number.parseInt(params.get('margin')!, 10) : undefined,
     encodingMode: params.get('enc') || undefined,
-    borderModulesExtra: params.get('border') ? Number.parseInt(params.get('border')!, 10) : undefined,
+    borderModulesExtra: params.get('border')
+      ? Number.parseInt(params.get('border')!, 10)
+      : undefined,
     quietZoneMinEnforce: params.has('qzEnforce') ? params.get('qzEnforce') === '1' : undefined,
     // Colors
     fg: params.get('fg') ? `#${params.get('fg')}` : undefined,
@@ -285,7 +287,9 @@ export function parseUrlParams(): Partial<ShareConfig> {
             ),
         }
       : {}),
-    ...(params.get('gradAngle') ? { gradientAngle: Number.parseInt(params.get('gradAngle')!, 10) } : {}),
+    ...(params.get('gradAngle')
+      ? { gradientAngle: Number.parseInt(params.get('gradAngle')!, 10) }
+      : {}),
     eyeOuterStyle: params.get('eyeOuter') || undefined,
     eyeInnerStyle: params.get('eyeInner') || undefined,
     eyeScale: params.get('eyeScale') ? Number.parseInt(params.get('eyeScale')!, 10) : undefined,
@@ -323,14 +327,20 @@ export function parseUrlParams(): Partial<ShareConfig> {
     protectFormatInfo: params.get('protectFmt') === '1',
     protectVersionInfo: params.get('protectVer') === '1',
     eccAwareEnabled: params.get('eccAware') === '1',
-    eccAwareRiskBudget: params.get('eccRisk') ? Number.parseInt(params.get('eccRisk')!, 10) : undefined,
+    eccAwareRiskBudget: params.get('eccRisk')
+      ? Number.parseInt(params.get('eccRisk')!, 10)
+      : undefined,
     eccAwareWeightMap: params.get('eccMap') || undefined,
     // Overlay preprocessing
     colorMode: params.get('colorMode') || undefined,
-    brightness: params.get('brightness') ? Number.parseInt(params.get('brightness')!, 10) : undefined,
+    brightness: params.get('brightness')
+      ? Number.parseInt(params.get('brightness')!, 10)
+      : undefined,
     contrast: params.get('contrast') ? Number.parseInt(params.get('contrast')!, 10) : undefined,
     gamma: params.get('gamma') ? Number.parseFloat(params.get('gamma')!) : undefined,
-    saturation: params.get('saturation') ? Number.parseInt(params.get('saturation')!, 10) : undefined,
+    saturation: params.get('saturation')
+      ? Number.parseInt(params.get('saturation')!, 10)
+      : undefined,
     blur: params.get('blur') ? Number.parseInt(params.get('blur')!, 10) : undefined,
     sharpen: params.get('sharpen') ? Number.parseInt(params.get('sharpen')!, 10) : undefined,
     posterize: params.get('posterize') ? Number.parseInt(params.get('posterize')!, 10) : undefined,
@@ -340,7 +350,9 @@ export function parseUrlParams(): Partial<ShareConfig> {
     hue: params.get('hue') ? Number.parseInt(params.get('hue')!, 10) : undefined,
     // Subpixel rendering
     subpixelMode: params.get('subpixel') === '1',
-    subpixelGrid: params.get('spGridNum') ? Number.parseInt(params.get('spGridNum')!, 10) : undefined,
+    subpixelGrid: params.get('spGridNum')
+      ? Number.parseInt(params.get('spGridNum')!, 10)
+      : undefined,
     // Dithering
     ditherKind: params.get('ditherKind') || undefined,
     diffusionKernel: params.get('diffusionKernel') || undefined,
@@ -349,7 +361,9 @@ export function parseUrlParams(): Partial<ShareConfig> {
       : undefined,
     ditherSerpentine: params.get('serpentine') === '1',
     orderedMatrix: params.get('matrix') || undefined,
-    blueNoiseTileSize: params.get('bnTile') ? Number.parseInt(params.get('bnTile')!, 10) : undefined,
+    blueNoiseTileSize: params.get('bnTile')
+      ? Number.parseInt(params.get('bnTile')!, 10)
+      : undefined,
     blueNoiseSeed: params.get('bnSeed') ? Number.parseInt(params.get('bnSeed')!, 10) : undefined,
     colorDither: params.get('colorDither') || undefined,
     // Subpixel
@@ -401,7 +415,9 @@ export function parseUrlParams(): Partial<ShareConfig> {
     formatExtra: params.get('fmtExtra') || undefined,
     // Safety
     safetyMode: params.get('safeMode') || undefined,
-    safetyMinModulePx: params.get('safeMinPx') ? Number.parseInt(params.get('safeMinPx')!, 10) : undefined,
+    safetyMinModulePx: params.get('safeMinPx')
+      ? Number.parseInt(params.get('safeMinPx')!, 10)
+      : undefined,
     safetyMinQuietZone: params.get('safeMinQz')
       ? Number.parseInt(params.get('safeMinQz')!, 10)
       : undefined,
@@ -414,7 +430,9 @@ export function parseUrlParams(): Partial<ShareConfig> {
     // QA
     qaContrastCheck: params.get('qaContrast') === '1',
     qaSimulateBlur: params.get('qaBlur') ? Number.parseFloat(params.get('qaBlur')!) : undefined,
-    qaSimulateNoise: params.get('qaNoise') ? Number.parseInt(params.get('qaNoise')!, 10) : undefined,
+    qaSimulateNoise: params.get('qaNoise')
+      ? Number.parseInt(params.get('qaNoise')!, 10)
+      : undefined,
     qaSimulateRotation: params.get('qaRot') ? Number.parseInt(params.get('qaRot')!, 10) : undefined,
     qaShowHeatmap: params.get('qaHeatmap') === '1',
 
@@ -428,15 +446,23 @@ export function parseUrlParams(): Partial<ShareConfig> {
     watermarkKind: params.get('wmKind') || undefined,
     watermarkText: params.get('wmText') || undefined,
     watermarkPosition: params.get('wmPos') || undefined,
-    watermarkOpacity: params.get('wmOpacity') ? Number.parseInt(params.get('wmOpacity')!, 10) : undefined,
+    watermarkOpacity: params.get('wmOpacity')
+      ? Number.parseInt(params.get('wmOpacity')!, 10)
+      : undefined,
     watermarkBlend: params.get('wmBlend') || undefined,
     watermarkImageUrl: params.get('wmImg') || undefined,
 
     // Animation
     animationPattern: params.get('animPattern') || undefined,
-    animationFrames: params.get('animFrames') ? Number.parseInt(params.get('animFrames')!, 10) : undefined,
-    animationSpeed: params.get('animSpeed') ? Number.parseInt(params.get('animSpeed')!, 10) : undefined,
-    animationSeed: params.get('animSeed') ? Number.parseInt(params.get('animSeed')!, 10) : undefined,
+    animationFrames: params.get('animFrames')
+      ? Number.parseInt(params.get('animFrames')!, 10)
+      : undefined,
+    animationSpeed: params.get('animSpeed')
+      ? Number.parseInt(params.get('animSpeed')!, 10)
+      : undefined,
+    animationSeed: params.get('animSeed')
+      ? Number.parseInt(params.get('animSeed')!, 10)
+      : undefined,
 
     // Metadata
     metaTitle: params.get('metaTitle') || undefined,
@@ -452,10 +478,18 @@ export function parseUrlParams(): Partial<ShareConfig> {
     paletteMode: params.get('paletteMode') || undefined,
 
     // Safety per-ECC limits
-    maxOverlayIntensityL: params.get('maxIntL') ? Number.parseInt(params.get('maxIntL')!, 10) : undefined,
-    maxOverlayIntensityM: params.get('maxIntM') ? Number.parseInt(params.get('maxIntM')!, 10) : undefined,
-    maxOverlayIntensityQ: params.get('maxIntQ') ? Number.parseInt(params.get('maxIntQ')!, 10) : undefined,
-    maxOverlayIntensityH: params.get('maxIntH') ? Number.parseInt(params.get('maxIntH')!, 10) : undefined,
+    maxOverlayIntensityL: params.get('maxIntL')
+      ? Number.parseInt(params.get('maxIntL')!, 10)
+      : undefined,
+    maxOverlayIntensityM: params.get('maxIntM')
+      ? Number.parseInt(params.get('maxIntM')!, 10)
+      : undefined,
+    maxOverlayIntensityQ: params.get('maxIntQ')
+      ? Number.parseInt(params.get('maxIntQ')!, 10)
+      : undefined,
+    maxOverlayIntensityH: params.get('maxIntH')
+      ? Number.parseInt(params.get('maxIntH')!, 10)
+      : undefined,
   };
 }
 

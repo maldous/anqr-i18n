@@ -7,7 +7,6 @@ import { useEffect, useRef } from 'react';
 
 // Type declaration for Google AdSense
 declare global {
-  // biome-ignore lint: SonarQube recommends globalThis over window
   var adsbygoogle: Record<string, unknown>[] | undefined;
 }
 
