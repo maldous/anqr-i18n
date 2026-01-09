@@ -64,10 +64,42 @@ jobs:
 
       - name: Push i18n to public repo
         run: |
+          # Use subtree split + force push to handle diverged branch histories
+          # This is necessary because the public repo branches may have commits
+          # (like merge commits or manual fixes) that don't exist in the subtree history
+          #
+          # NOTE: Branch protection on static/locales branches must allow force pushes
+          # from the deploy key, or be disabled. Configure at:
+          # https://github.com/maldous/anqr-i18n/settings/branches
+          
           echo "Pushing static/txt to public repo..."
-          git subtree push --prefix=src/i18n/static/txt anqr-i18n static || echo "Static push failed or no changes"
+          STATIC_SHA=$(git subtree split --prefix=src/i18n/static/txt)
+          if [ -n "$STATIC_SHA" ]; then
+            # Try normal push first, fall back to force push if rejected
+            if git push anqr-i18n "$STATIC_SHA":static 2>/dev/null; then
+              echo "Static branch updated successfully"
+            elif git push anqr-i18n "$STATIC_SHA":static --force; then
+              echo "Static branch force-updated successfully"
+            else
+              echo "Warning: Static push failed - check branch protection settings"
+            fi
+          else
+            echo "No static content to push"
+          fi
           
           echo "Pushing locales/txt to public repo..."
-          git subtree push --prefix=src/i18n/locales/txt anqr-i18n locales || echo "Locales push failed or no changes"
+          LOCALES_SHA=$(git subtree split --prefix=src/i18n/locales/txt)
+          if [ -n "$LOCALES_SHA" ]; then
+            # Try normal push first, fall back to force push if rejected
+            if git push anqr-i18n "$LOCALES_SHA":locales 2>/dev/null; then
+              echo "Locales branch updated successfully"
+            elif git push anqr-i18n "$LOCALES_SHA":locales --force; then
+              echo "Locales branch force-updated successfully"
+            else
+              echo "Warning: Locales push failed - check branch protection settings"
+            fi
+          else
+            echo "No locales content to push"
+          fi
           
           echo "i18n sync complete!"

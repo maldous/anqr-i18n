@@ -67,11 +67,39 @@ jobs:
 
       - name: Pull static translations
         run: |
-          git subtree pull --prefix=src/i18n/static/txt anqr-i18n static --squash -m "Pull community static translations" || echo "No static changes or already up to date"
+          # Use subtree pull with squash to handle diverged histories
+          # If subtree pull fails due to history issues, fall back to manual merge
+          if ! git subtree pull --prefix=src/i18n/static/txt anqr-i18n static --squash -m "Pull community static translations" 2>/dev/null; then
+            echo "Standard subtree pull failed, attempting manual sync..."
+            # Fetch the remote branch content and copy files directly
+            git fetch anqr-i18n static
+            TMP_DIR=$(mktemp -d)
+            git archive anqr-i18n/static | tar -x -C "$TMP_DIR"
+            if [ "$(ls -A $TMP_DIR)" ]; then
+              cp -r "$TMP_DIR"/* src/i18n/static/txt/
+              git add src/i18n/static/txt/
+              git diff --cached --quiet || git commit -m "Pull community static translations (manual sync)"
+            fi
+            rm -rf "$TMP_DIR"
+          fi
 
       - name: Pull locales translations
         run: |
-          git subtree pull --prefix=src/i18n/locales/txt anqr-i18n locales --squash -m "Pull community locales translations" || echo "No locales changes or already up to date"
+          # Use subtree pull with squash to handle diverged histories
+          # If subtree pull fails due to history issues, fall back to manual merge
+          if ! git subtree pull --prefix=src/i18n/locales/txt anqr-i18n locales --squash -m "Pull community locales translations" 2>/dev/null; then
+            echo "Standard subtree pull failed, attempting manual sync..."
+            # Fetch the remote branch content and copy files directly
+            git fetch anqr-i18n locales
+            TMP_DIR=$(mktemp -d)
+            git archive anqr-i18n/locales | tar -x -C "$TMP_DIR"
+            if [ "$(ls -A $TMP_DIR)" ]; then
+              cp -r "$TMP_DIR"/* src/i18n/locales/txt/
+              git add src/i18n/locales/txt/
+              git diff --cached --quiet || git commit -m "Pull community locales translations (manual sync)"
+            fi
+            rm -rf "$TMP_DIR"
+          fi
 
       - name: Check for changes
         id: changes
