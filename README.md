@@ -2,7 +2,7 @@
 
 ![Languages](https://img.shields.io/badge/languages-87-blue)
 ![Static Content](https://img.shields.io/badge/static%20content-87%20files-green)
-![UI Strings](https://img.shields.io/badge/UI%20strings-88%20files-green)
+![UI Strings](https://img.shields.io/badge/UI%20strings-87%20files-green)
 [![Contributions Welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg)](CONTRIBUTING.md)
 
 This repository contains the translation files for [ANQR](https://anqr.link) - an advanced QR code generator with styling, overlays, and animations.
