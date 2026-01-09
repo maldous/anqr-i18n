@@ -986,7 +986,7 @@ export const guide: PageDefinition = {
       heading: 'Halimbawa sa Paggamit',
       paragraphs: [
         'Pangunahing kodigo ng QR:',
-        'mga http://anqr.link/api/qr?data=htps://example.com',
+        'mga https://anqr.link/api/qr?data=htps://example.com',
         'Hugis QR code na may mga nakaugaliang kulay:',
         'https://anqr.link/api/qr?data=Hello&size=300&fg=1e40af&bg=ff&style=rounded&radius=30',
         'Code ng QR na may nakabalatang larawan:',

@@ -163,9 +163,9 @@ export function Preview({ sidebarOpen = true }: PreviewProps) {
     const imageData = ctx.createImageData(canvas.width, canvas.height);
     const data = imageData.data;
 
-    // Generate random noise
+    // Generate random noise (Math.random is safe here - purely visual effect, not security-sensitive)
     for (let i = 0; i < data.length; i += 4) {
-      const noise = Math.random() * 255;
+      const noise = Math.random() * 255; // NOSONAR - visual noise only
       data[i] = noise; // R
       data[i + 1] = noise; // G
       data[i + 2] = noise; // B

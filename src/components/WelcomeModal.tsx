@@ -100,11 +100,8 @@ export function WelcomeModal({ onClose }: WelcomeModalProps) {
       }`}
       style={{ backgroundColor: 'rgba(0, 0, 0, 0.6)', backdropFilter: 'blur(4px)' }}
       onClick={handleDismiss}
-      onKeyDown={(e) => {
-        if (e.key === 'Enter' || e.key === ' ') handleDismiss();
-      }}
-      role="button"
-      tabIndex={0}
+      role="presentation"
+      aria-hidden="true"
     >
       <div
         className={`bg-card border rounded-2xl shadow-2xl max-w-2xl w-full max-h-[90vh] overflow-hidden flex flex-col transition-all duration-200 ${

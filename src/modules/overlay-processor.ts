@@ -121,9 +121,9 @@ export function loadImageFromFile(file: File): Promise<HTMLImageElement> {
       URL.revokeObjectURL(objectUrl); // Prevent memory leak
       resolve(img);
     };
-    img.onerror = (e) => {
+    img.onerror = () => {
       URL.revokeObjectURL(objectUrl); // Prevent memory leak on error too
-      reject(e);
+      reject(new Error('Failed to load image from file'));
     };
     img.src = objectUrl;
   });

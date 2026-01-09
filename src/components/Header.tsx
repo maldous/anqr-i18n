@@ -750,6 +750,7 @@ export function Header({
                     onKeyDown={(e) => {
                       if (e.key === 'Escape') closeLangMenu();
                     }}
+                    role="presentation"
                   />
                   <div
                     className={`fixed w-72 bg-card border rounded-lg shadow-lg z-[70] py-1 max-h-[50vh] overflow-y-auto origin-top ${

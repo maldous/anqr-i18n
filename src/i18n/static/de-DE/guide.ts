@@ -982,7 +982,7 @@ export const guide: PageDefinition = {
         'QR Code mit Overlay-Bild:',
         'https://anqr.link/api/qr?data=https://example.com&ec=H&img=https://example.com/logo.png&mode=halftone&intensity=70',
         'Animierter GIF:',
-        'http://anqr.link/api/qr?data=Hello&format=gif&animPattern=pulse&animFrames=24&easing=ease_in_out',
+        'https://anqr.link/api/qr?data=Hello&format=gif&animPattern=pulse&animFrames=24&easing=ease_in_out',
       ],
       links: [{ href: '/examples?lang=${lang}', label: 'QR-Beispiele', type: 'example' }],
     },

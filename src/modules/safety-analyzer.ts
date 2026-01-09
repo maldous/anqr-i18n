@@ -180,9 +180,11 @@ export function validateQuietZone(
 /**
  * Calculate safe overlay intensity based on ECC level
  */
+const DEFAULT_MAX_BY_ECC: Record<ECCLevel, number> = { L: 30, M: 50, Q: 70, H: 85 };
+
 export function calculateSafeIntensity(
   ecc: ECCLevel,
-  maxByEcc: Record<ECCLevel, number> = { L: 30, M: 50, Q: 70, H: 85 }
+  maxByEcc: Record<ECCLevel, number> = DEFAULT_MAX_BY_ECC
 ): number {
   return maxByEcc[ecc] || 50;
 }
@@ -335,18 +337,20 @@ export function applyNoiseSimulation(
 /**
  * Perform comprehensive QR code analysis
  */
+const DEFAULT_ANALYZE_OPTIONS: {
+  fgColor?: string;
+  bgColor?: string;
+  modulePx?: number;
+  outputWidth?: number;
+  marginModules?: number;
+  overlayIntensity?: number;
+  ecc?: ECCLevel;
+  safetyMode?: SafetyMode;
+} = {};
+
 export function analyzeQR(
   matrix: boolean[][],
-  options: {
-    fgColor?: string;
-    bgColor?: string;
-    modulePx?: number;
-    outputWidth?: number;
-    marginModules?: number;
-    overlayIntensity?: number;
-    ecc?: ECCLevel;
-    safetyMode?: SafetyMode;
-  } = {}
+  options = DEFAULT_ANALYZE_OPTIONS
 ): AnalysisResult {
   const issues: AnalysisIssue[] = [];
   const warnings: AnalysisWarning[] = [];

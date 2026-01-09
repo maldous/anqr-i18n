@@ -1675,7 +1675,7 @@ export class QRGenerator {
   hashString(str) {
     let hash = 5381;
     for (let i = 0; i < str.length; i++) {
-      hash = (hash << 5) + hash + str.charCodeAt(i);
+      hash = (hash << 5) + hash + (str.codePointAt(i) ?? 0);
       hash = hash >>> 0; // Keep as unsigned 32-bit
     }
     return hash;
