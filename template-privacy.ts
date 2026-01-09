@@ -5,7 +5,7 @@ export const privacy: PageDefinition = {
   title: '374',
   description: '375',
   lastUpdated: LAST_UPDATED,
-  relatedLinks: [{ href: '/terms?lang=${lang}', label: 'Terms of Service', type: 'external' }],
+  relatedLinks: [{ href: '/terms?lang=${lang}', label: '443', type: 'external' }],
   sections: [
     {
       heading: '376',
