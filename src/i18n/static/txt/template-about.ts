@@ -6,12 +6,12 @@ export const about: PageDefinition = {
   description: '2',
   lastUpdated: LAST_UPDATED,
   primaryLinks: [
-    { href: '/?lang=${lang}', label: 'Open the generator', type: 'generator' },
-    { href: '/learn?lang=${lang}', label: 'Browse Learn articles', type: 'learn' },
+    { href: '/?lang=${lang}', label: '684', type: 'generator' },
+    { href: '/learn?lang=${lang}', label: '682', type: 'learn' },
   ],
   relatedLinks: [
-    { href: '/privacy?lang=${lang}', label: 'Privacy Policy', type: 'external' },
-    { href: '/terms?lang=${lang}', label: 'Terms of Service', type: 'external' },
+    { href: '/privacy?lang=${lang}', label: '374', type: 'external' },
+    { href: '/terms?lang=${lang}', label: '443', type: 'external' },
   ],
   sections: [
     {
