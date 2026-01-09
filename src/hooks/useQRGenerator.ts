@@ -564,19 +564,29 @@ export function useQRGenerator(): UseQRGeneratorResult {
   // Track when config changes but debounce hasn't settled yet
   // Only show pending state after a short delay (100ms) to avoid flashing on fast devices
   // This provides visual feedback for slower devices while keeping fast devices responsive
+  // Use a ref to track if this is the initial mount - we don't want to show pending on first render
+  const isInitialMountRef = useRef(true);
+
   useEffect(() => {
+    // Skip setting pending on initial mount - only set it when config actually changes
+    // This prevents the stuck pending state when navigating back to editor from static pages
+    if (isInitialMountRef.current) {
+      isInitialMountRef.current = false;
+      return;
+    }
+
     // Delay showing pending state to avoid flashing on fast renders
     const showPendingTimeout = setTimeout(() => {
       setIsPending(true);
     }, 100);
 
     return () => clearTimeout(showPendingTimeout);
-  }, []);
+  }, [config]); // Re-run when config changes
 
   // Clear pending state when debounced config catches up
   useEffect(() => {
     setIsPending(false);
-  }, []);
+  }, [debouncedConfig]); // Clear when debounce settles
 
   /**
    * Apply only geometric transforms (crop, fit, rotate, flip) to a canvas.
