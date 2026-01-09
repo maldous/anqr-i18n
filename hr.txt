@@ -1211,3 +1211,6 @@
 1211	"Hvala svim našim suradnicima u prijevodima što su nam pomogli da ANQR postane dostupan u cijelom svijetu!"
 1212	"Pitanja?"
 1213	"Ako imate pitanja o doprinosu prijevodima, otvorite problem na našem GitHub repozitoriju ili nas kontaktirajte putem e-pošte. Rado ćemo vam pomoći da započnete."
+1214	"Reddit zajednica"
+1215	"Pridružite se našoj Reddit zajednici na r/ANQR kako biste podijelili svoje QR kreacije, postavljali pitanja, dobili pomoć i povezali se s drugim korisnicima ANQR-a."
+1216	"Pridružite se r/ANQR"
