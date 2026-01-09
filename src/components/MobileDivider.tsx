@@ -1,0 +1,123 @@
+import { GripHorizontal } from 'lucide-react';
+import { useCallback, useEffect, useRef, useState } from 'react';
+
+interface MobileDividerProps {
+  onDrag: (deltaY: number) => void;
+  onDragEnd: () => void;
+}
+
+export function MobileDivider({ onDrag, onDragEnd }: MobileDividerProps) {
+  const [isDragging, setIsDragging] = useState(false);
+  const lastY = useRef<number>(0);
+  const dividerRef = useRef<HTMLDivElement>(null);
+
+  // Handle mouse/touch start
+  const handleDragStart = useCallback((clientY: number) => {
+    setIsDragging(true);
+    lastY.current = clientY;
+  }, []);
+
+  // Handle mouse/touch move
+  const handleDragMove = useCallback(
+    (clientY: number) => {
+      if (!isDragging) return;
+      const deltaY = clientY - lastY.current;
+      lastY.current = clientY;
+      onDrag(deltaY);
+    },
+    [isDragging, onDrag]
+  );
+
+  // Handle mouse/touch end
+  const handleDragEnd = useCallback(() => {
+    if (isDragging) {
+      setIsDragging(false);
+      onDragEnd();
+    }
+  }, [isDragging, onDragEnd]);
+
+  // Mouse events
+  const handleMouseDown = useCallback(
+    (e: React.MouseEvent) => {
+      e.preventDefault();
+      handleDragStart(e.clientY);
+    },
+    [handleDragStart]
+  );
+
+  // Touch events
+  const handleTouchStart = useCallback(
+    (e: React.TouchEvent) => {
+      if (e.touches.length === 1) {
+        handleDragStart(e.touches[0].clientY);
+      }
+    },
+    [handleDragStart]
+  );
+
+  // Global event listeners for drag
+  useEffect(() => {
+    if (!isDragging) return;
+
+    const handleMouseMove = (e: MouseEvent) => {
+      e.preventDefault();
+      handleDragMove(e.clientY);
+    };
+
+    const handleTouchMove = (e: TouchEvent) => {
+      if (e.touches.length === 1) {
+        handleDragMove(e.touches[0].clientY);
+      }
+    };
+
+    const handleMouseUp = () => handleDragEnd();
+    const handleTouchEnd = () => handleDragEnd();
+
+    // Add listeners to document for global tracking
+    document.addEventListener('mousemove', handleMouseMove, { passive: false });
+    document.addEventListener('mouseup', handleMouseUp);
+    document.addEventListener('touchmove', handleTouchMove, { passive: false });
+    document.addEventListener('touchend', handleTouchEnd);
+    document.addEventListener('touchcancel', handleTouchEnd);
+
+    // Prevent text selection during drag
+    document.body.style.userSelect = 'none';
+    document.body.style.touchAction = 'none';
+
+    return () => {
+      document.removeEventListener('mousemove', handleMouseMove);
+      document.removeEventListener('mouseup', handleMouseUp);
+      document.removeEventListener('touchmove', handleTouchMove);
+      document.removeEventListener('touchend', handleTouchEnd);
+      document.removeEventListener('touchcancel', handleTouchEnd);
+      document.body.style.userSelect = '';
+      document.body.style.touchAction = '';
+    };
+  }, [isDragging, handleDragMove, handleDragEnd]);
+
+  return (
+    <div
+      ref={dividerRef}
+      className={`
+        md:hidden
+        h-3 w-full
+        flex items-center justify-center
+        bg-muted border-y border-border
+        cursor-row-resize
+        touch-none
+        select-none
+        transition-colors
+        ${isDragging ? 'bg-accent' : 'hover:bg-accent/50 active:bg-accent'}
+      `}
+      onMouseDown={handleMouseDown}
+      onTouchStart={handleTouchStart}
+      role="separator"
+      aria-orientation="horizontal"
+      aria-label="Drag to resize panels"
+    >
+      <GripHorizontal
+        className={`h-4 w-4 text-muted-foreground transition-colors ${isDragging ? 'text-foreground' : ''}`}
+      />
+    </div>
+  );
+}
