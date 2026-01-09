@@ -267,11 +267,17 @@ i18n\:pull:
 	git subtree pull --prefix=src/i18n/locales/txt anqr-i18n locales --squash -m "Merge i18n locales translations" || true
 	@echo "i18n pull complete."
 
-# Push translation updates to public repo
+# Push translation updates to public repo (uses force push to handle diverged histories)
 i18n\:push:
 	@echo "Pushing i18n translations to public repo..."
-	git subtree push --prefix=src/i18n/static/txt anqr-i18n static
-	git subtree push --prefix=src/i18n/locales/txt anqr-i18n locales
+	@STATIC_SHA=$$(git subtree split --prefix=src/i18n/static/txt); \
+	if [ -n "$$STATIC_SHA" ]; then \
+		git push anqr-i18n "$$STATIC_SHA":static 2>/dev/null || git push anqr-i18n "$$STATIC_SHA":static --force; \
+	fi
+	@LOCALES_SHA=$$(git subtree split --prefix=src/i18n/locales/txt); \
+	if [ -n "$$LOCALES_SHA" ]; then \
+		git push anqr-i18n "$$LOCALES_SHA":locales 2>/dev/null || git push anqr-i18n "$$LOCALES_SHA":locales --force; \
+	fi
 	@echo "i18n push complete."
 
 # Full sync: pull from origin, pull i18n, ready to work
