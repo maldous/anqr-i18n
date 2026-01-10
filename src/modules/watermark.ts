@@ -125,13 +125,6 @@ export function getWatermarkPositions(
   const positions: Array<{ x: number; y: number }> = [];
 
   switch (position) {
-    case 'center':
-      positions.push({
-        x: (canvasWidth - watermarkWidth) / 2,
-        y: (canvasHeight - watermarkHeight) / 2,
-      });
-      break;
-
     case 'corners':
       positions.push(
         { x: margin, y: margin },
@@ -159,9 +152,10 @@ export function getWatermarkPositions(
       break;
     }
 
+    case 'center':
     case 'behind':
     default:
-      // For behind and default: return center position
+      // For center, behind, and default: return center position
       // (behind mode layering is handled by applyWatermark)
       positions.push({
         x: (canvasWidth - watermarkWidth) / 2,

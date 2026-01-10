@@ -40,9 +40,9 @@ export function hslToRgbTuple(h: number, s: number, l: number): [number, number,
   const x = c * (1 - Math.abs(((h / 60) % 2) - 1));
   const m = lNorm - c / 2;
 
-  let r = 0;
-  let g = 0;
-  let b = 0;
+  let r: number;
+  let g: number;
+  let b: number;
 
   if (h < 60) {
     r = c;
