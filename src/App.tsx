@@ -19,6 +19,13 @@ import { type Tier, useQRStore } from '@/store/qr-store';
 
 type PageView = 'editor' | 'gallery' | StaticPageType;
 
+/** Type alias for gradient update configuration */
+interface GradientUpdate {
+  type: 'none' | 'linear' | 'radial' | 'conic';
+  stops?: Array<{ pos: number; color: string }>;
+  angle?: number;
+}
+
 function getPageFromLocation(): PageView {
   // NOSONAR - This regex is safe: /\/+$/ has no backtracking risk (simple trailing slash removal)
   const path = globalThis.location.pathname.replace(/\/+$/, '') || '/';
@@ -351,11 +358,7 @@ function App() {
       store.setRenderGapMode(params.gapMode as 'none' | 'inset' | 'stroke' | 'negative_space');
     if (params.cornerRadius !== undefined) store.setRenderCornerRadius(params.cornerRadius);
     if (params.gradientType) {
-      const gradientUpdate: {
-        type: 'none' | 'linear' | 'radial' | 'conic';
-        stops?: Array<{ pos: number; color: string }>;
-        angle?: number;
-      } = {
+      const gradientUpdate: GradientUpdate = {
         type: params.gradientType as 'none' | 'linear' | 'radial' | 'conic',
       };
       if (params.gradientStops && params.gradientStops.length > 0) {
@@ -842,13 +845,12 @@ function App() {
           <div
             className="flex-1 flex flex-col min-h-0 overflow-hidden"
             style={{
-              paddingBottom: showEditor
-                ? Capacitor.isNativePlatform()
-                  ? `${bannerHeight + 88}px` // banner + footer(40) + share/export bar(48)
-                  : '48px' // just footer
-                : Capacitor.isNativePlatform()
-                  ? `${bannerHeight + 40}px` // banner + footer on non-editor pages
-                  : '48px',
+              paddingBottom: (() => {
+                const isNative = Capacitor.isNativePlatform();
+                const editorPadding = isNative ? bannerHeight + 88 : 48;
+                const nonEditorPadding = isNative ? bannerHeight + 40 : 48;
+                return showEditor ? `${editorPadding}px` : `${nonEditorPadding}px`;
+              })(),
             }}
           >
             {showEditor && <Preview sidebarOpen={sidebarOpen} />}

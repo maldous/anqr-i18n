@@ -40,7 +40,8 @@ export function generatePatternFrames(
   const height = sourceCanvas.height;
 
   // Get source image data
-  const sourceCtx = sourceCanvas.getContext('2d')!;
+  const sourceCtx = sourceCanvas.getContext('2d');
+  if (!sourceCtx) throw new Error('Could not get canvas context');
   const sourceData = sourceCtx.getImageData(0, 0, width, height);
 
   for (let i = 0; i < frameCount; i++) {
@@ -48,7 +49,8 @@ export function generatePatternFrames(
     const frame = document.createElement('canvas');
     frame.width = width;
     frame.height = height;
-    const ctx = frame.getContext('2d')!;
+    const ctx = frame.getContext('2d');
+    if (!ctx) throw new Error('Could not get canvas context');
 
     // Copy source data
     const frameData = ctx.createImageData(width, height);
@@ -465,7 +467,8 @@ export function interpolateFrames(
         const interpolated = document.createElement('canvas');
         interpolated.width = width;
         interpolated.height = height;
-        const ctx = interpolated.getContext('2d')!;
+        const ctx = interpolated.getContext('2d');
+        if (!ctx) throw new Error('Could not get canvas context');
 
         if (mode === 'crossfade') {
           // Simple crossfade - draw both frames with opacity
@@ -476,8 +479,9 @@ export function interpolateFrames(
           ctx.globalAlpha = 1;
         } else if (mode === 'morph') {
           // Pixel-level blending for smoother morph
-          const ctxA = frameA.getContext('2d')!;
-          const ctxB = frameB.getContext('2d')!;
+          const ctxA = frameA.getContext('2d');
+          const ctxB = frameB.getContext('2d');
+          if (!ctxA || !ctxB) throw new Error('Could not get canvas context');
           const dataA = ctxA.getImageData(0, 0, width, height);
           const dataB = ctxB.getImageData(0, 0, width, height);
           const result = ctx.createImageData(width, height);

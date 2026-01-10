@@ -33,16 +33,16 @@ export type AnimationEasing = 'linear' | 'ease_in' | 'ease_out' | 'ease_in_out' 
  * This is the canonical implementation used by both client and server.
  */
 export function hslToRgbTuple(h: number, s: number, l: number): [number, number, number] {
-  s /= 100;
-  l /= 100;
+  const sNorm = s / 100;
+  const lNorm = l / 100;
 
-  const c = (1 - Math.abs(2 * l - 1)) * s;
+  const c = (1 - Math.abs(2 * lNorm - 1)) * sNorm;
   const x = c * (1 - Math.abs(((h / 60) % 2) - 1));
-  const m = l - c / 2;
+  const m = lNorm - c / 2;
 
-  let r = 0,
-    g = 0,
-    b = 0;
+  let r = 0;
+  let g = 0;
+  let b = 0;
 
   if (h < 60) {
     r = c;

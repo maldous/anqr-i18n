@@ -20,7 +20,7 @@ const contentCache = new Map<string, Record<StaticPageType, PageDefinition>>();
 
 // Pre-populate cache with English
 // The module exports match the expected Record type structure
-contentCache.set('en-GB', enGB as Record<StaticPageType, PageDefinition>);
+contentCache.set('en-GB', enGB);
 
 // Use import.meta.glob for Vite to properly analyze and code-split
 // Each language folder gets its own chunk
@@ -206,8 +206,9 @@ function resolveLanguageCode(language: string): string {
  */
 async function loadLanguageContent(lang: string): Promise<Record<StaticPageType, PageDefinition>> {
   // Check cache first
-  if (contentCache.has(lang)) {
-    return contentCache.get(lang)!;
+  const cached = contentCache.get(lang);
+  if (cached) {
+    return cached;
   }
 
   try {
@@ -226,7 +227,9 @@ async function loadLanguageContent(lang: string): Promise<Record<StaticPageType,
   } catch (error) {
     console.error(`Failed to load static content for: ${lang}`, error);
     // Fall back to English
-    return contentCache.get('en-GB')!;
+    const fallback = contentCache.get('en-GB');
+    if (!fallback) throw new Error('English fallback not available');
+    return fallback;
   }
 }
 
@@ -240,7 +243,8 @@ export async function getStaticContentAsync(
 ): Promise<PageDefinition> {
   const resolvedLang = resolveLanguageCode(language);
   const content = await loadLanguageContent(resolvedLang);
-  return content[page] || contentCache.get('en-GB')![page];
+  const englishFallback = contentCache.get('en-GB');
+  return content[page] || (englishFallback ? englishFallback[page] : content[page]);
 }
 
 /**
@@ -252,15 +256,18 @@ export function getStaticContent(language: string, page: StaticPageType): PageDe
   const resolvedLang = resolveLanguageCode(language);
 
   // Return cached content if available
-  if (contentCache.has(resolvedLang)) {
-    return contentCache.get(resolvedLang)![page];
+  const cached = contentCache.get(resolvedLang);
+  if (cached) {
+    return cached[page];
   }
 
   // Trigger async load for next time (fire and forget)
   loadLanguageContent(resolvedLang);
 
   // Return English as fallback for immediate render
-  return contentCache.get('en-GB')![page];
+  const englishFallback = contentCache.get('en-GB');
+  if (!englishFallback) throw new Error('English fallback not available');
+  return englishFallback[page];
 }
 
 /**

@@ -48,7 +48,8 @@ export function createTextWatermark(
   color: string = '#000000'
 ): HTMLCanvasElement {
   const canvas = document.createElement('canvas');
-  const ctx = canvas.getContext('2d')!;
+  const ctx = canvas.getContext('2d');
+  if (!ctx) throw new Error('Could not get canvas context');
 
   ctx.font = `${fontSize}px ${fontFamily}`;
   const metrics = ctx.measureText(text);
@@ -83,7 +84,8 @@ export function createPatternWatermark(
   const canvas = document.createElement('canvas');
   canvas.width = targetWidth;
   canvas.height = targetHeight;
-  const ctx = canvas.getContext('2d')!;
+  const ctx = canvas.getContext('2d');
+  if (!ctx) throw new Error('Could not get canvas context');
 
   const sourceWidth = source instanceof HTMLImageElement ? source.naturalWidth : source.width;
   const sourceHeight = source instanceof HTMLImageElement ? source.naturalHeight : source.height;
@@ -148,20 +150,19 @@ export function getWatermarkPositions(
       );
       break;
 
-    case 'quiet_zone':
-      // Place in the quiet zone area (margin area around QR)
-      positions.push({ x: margin / 2, y: canvasHeight - watermarkHeight - margin / 2 });
-      break;
-
-    case 'behind':
-      // For behind mode, we return center - the actual rendering will handle layering
+    case 'quiet_zone': {
+      // Quiet zone uses margin/2 offset
       positions.push({
-        x: (canvasWidth - watermarkWidth) / 2,
-        y: (canvasHeight - watermarkHeight) / 2,
+        x: margin / 2,
+        y: canvasHeight - watermarkHeight - margin / 2,
       });
       break;
+    }
 
+    case 'behind':
     default:
+      // For behind and default: return center position
+      // (behind mode layering is handled by applyWatermark)
       positions.push({
         x: (canvasWidth - watermarkWidth) / 2,
         y: (canvasHeight - watermarkHeight) / 2,
@@ -230,7 +231,8 @@ export function applyWatermark(
   const result = document.createElement('canvas');
   result.width = source.width;
   result.height = source.height;
-  const ctx = result.getContext('2d')!;
+  const ctx = result.getContext('2d');
+  if (!ctx) throw new Error('Could not get canvas context');
 
   // For 'behind' position, draw watermark first
   if (opts.position === 'behind') {
@@ -282,7 +284,8 @@ function drawWatermarkLayer(
 
         watermarkCanvas.width = sourceWidth * (options.scale || 1);
         watermarkCanvas.height = sourceHeight * (options.scale || 1);
-        const wCtx = watermarkCanvas.getContext('2d')!;
+        const wCtx = watermarkCanvas.getContext('2d');
+        if (!wCtx) throw new Error('Could not get canvas context');
         wCtx.drawImage(options.image, 0, 0, watermarkCanvas.width, watermarkCanvas.height);
       }
       break;
@@ -366,7 +369,8 @@ export function applyCenterLogo(
   const result = document.createElement('canvas');
   result.width = source.width;
   result.height = source.height;
-  const ctx = result.getContext('2d')!;
+  const ctx = result.getContext('2d');
+  if (!ctx) throw new Error('Could not get canvas context');
 
   ctx.drawImage(source, 0, 0);
 

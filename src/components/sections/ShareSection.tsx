@@ -46,7 +46,7 @@ export function ShareSection() {
       margin: qr.quietZoneModules !== 4 ? qr.quietZoneModules : undefined,
       encodingMode: qr.encodingMode !== 'auto' ? qr.encodingMode : undefined,
       borderModulesExtra: qr.borderModulesExtra !== 0 ? qr.borderModulesExtra : undefined,
-      quietZoneMinEnforce: qr.quietZoneMinEnforce === false ? false : undefined,
+      quietZoneMinEnforce: qr.quietZoneMinEnforce !== false ? undefined : false,
       // Colors
       fg: render.fgColor !== '#000000' ? render.fgColor : undefined,
       bg: render.bgColor !== '#ffffff' ? render.bgColor : undefined,
@@ -67,7 +67,7 @@ export function ShareSection() {
       frameStyle: render.frameStyle !== 'none' ? render.frameStyle : undefined,
       frameText: render.frameText || undefined,
       dotRotation: render.dotRotationDeg !== 0 ? render.dotRotationDeg : undefined,
-      crispEdges: render.crispEdges === false ? false : undefined,
+      crispEdges: render.crispEdges !== false ? undefined : false,
       pixelSnap: render.pixelSnap !== 'floor' ? render.pixelSnap : undefined,
       perModuleColorMode:
         render.perModuleColorMode !== 'solid' ? render.perModuleColorMode : undefined,
@@ -174,7 +174,7 @@ export function ShareSection() {
           : undefined,
       // Animation
       speed: animation.speedMs !== 100 ? animation.speedMs : undefined,
-      loop: animation.loop === false ? false : undefined,
+      loop: animation.loop !== false ? undefined : false,
       reverse: animation.bounce ? true : undefined,
       startFrame: animation.startFrame !== 0 ? animation.startFrame : undefined,
       maxFrames: animation.maxFrames !== 0 ? animation.maxFrames : undefined,
@@ -203,7 +203,7 @@ export function ShareSection() {
         output.format === 'gif' && output.gifDither !== 'floyd' ? output.gifDither : undefined,
       svgTrueVector: output.format === 'svg' && output.svgTrueVector ? true : undefined,
       dpi: output.dpi !== 72 ? output.dpi : undefined,
-      includeQuietZone: output.includeQuietZone === false ? false : undefined,
+      includeQuietZone: output.includeQuietZone !== false ? undefined : false,
       bgOverride: output.bgOverride ? output.bgOverride : undefined,
       gifTransparentColor:
         output.format === 'gif' && output.gifTransparentColor
@@ -236,7 +236,7 @@ export function ShareSection() {
       qaSimulateRotation: qa.simulateRotationDeg !== 0 ? qa.simulateRotationDeg : undefined,
       qaShowHeatmap: qa.showHeatmap ? true : undefined,
       // Auto-tuning
-      autoPickVersion: auto.pickVersion === false ? false : undefined,
+      autoPickVersion: auto.pickVersion !== false ? undefined : false,
       autoPickEcc: auto.pickEcc ? true : undefined,
       autoReduceIntensity: auto.reduceIntensityUntilSafe ? true : undefined,
       // Watermark

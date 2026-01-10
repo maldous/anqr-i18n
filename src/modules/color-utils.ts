@@ -72,7 +72,8 @@ export function parseHexAlpha(hex: string): RGBA {
 
 /** Parse rgb() or rgba() string */
 export function parseRgbString(str: string): RGBA {
-  const match = str.match(/rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*([\d.]+))?\)/);
+  const rgbRegex = /rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*([\d.]+))?\)/;
+  const match = rgbRegex.exec(str);
   if (match) {
     return {
       r: Number.parseInt(match[1], 10),
@@ -86,7 +87,8 @@ export function parseRgbString(str: string): RGBA {
 
 /** Parse hsl() or hsla() string */
 export function parseHslString(str: string): HSLA {
-  const match = str.match(/hsla?\((\d+),\s*([\d.]+)%?,\s*([\d.]+)%?(?:,\s*([\d.]+))?\)/);
+  const hslRegex = /hsla?\((\d+),\s*([\d.]+)%?,\s*([\d.]+)%?(?:,\s*([\d.]+))?\)/;
+  const match = hslRegex.exec(str);
   if (match) {
     return {
       h: Number.parseInt(match[1], 10),
@@ -410,7 +412,7 @@ export function getGradientColorAt(
       const cy = config.centerY ?? 0.5;
       const dx = x / width - cx;
       const dy = y / height - cy;
-      position = Math.sqrt(dx * dx + dy * dy) * 2;
+      position = Math.hypot(dx, dy) * 2;
       break;
     }
     case 'conic': {

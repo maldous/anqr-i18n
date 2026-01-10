@@ -286,7 +286,8 @@ export function applyBlurSimulation(canvas: HTMLCanvasElement, blurPx: number): 
   const result = document.createElement('canvas');
   result.width = canvas.width;
   result.height = canvas.height;
-  const ctx = result.getContext('2d')!;
+  const ctx = result.getContext('2d');
+  if (!ctx) throw new Error('Could not get canvas context');
 
   ctx.filter = `blur(${blurPx}px)`;
   ctx.drawImage(canvas, 0, 0);
@@ -306,7 +307,8 @@ export function applyNoiseSimulation(
   const result = document.createElement('canvas');
   result.width = canvas.width;
   result.height = canvas.height;
-  const ctx = result.getContext('2d')!;
+  const ctx = result.getContext('2d');
+  if (!ctx) throw new Error('Could not get canvas context');
 
   ctx.drawImage(canvas, 0, 0);
   const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
@@ -459,7 +461,8 @@ export function generateReadabilityHeatmap(
   const canvas = document.createElement('canvas');
   canvas.width = moduleCount;
   canvas.height = moduleCount;
-  const ctx = canvas.getContext('2d')!;
+  const ctx = canvas.getContext('2d');
+  if (!ctx) throw new Error('Could not get canvas context');
 
   const bg = parseColor(bgColor);
 

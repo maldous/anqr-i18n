@@ -46,18 +46,18 @@ export interface ValidationResult {
 export function scanCanvas(canvas: HTMLCanvasElement): ScanResult {
   const startTime = performance.now();
 
-  try {
-    const ctx = canvas.getContext('2d');
-    if (!ctx) {
-      return {
-        success: false,
-        data: null,
-        error: 'Could not get canvas context',
-        location: null,
-        scanTimeMs: performance.now() - startTime,
-      };
-    }
+  const ctx = canvas.getContext('2d');
+  if (!ctx) {
+    return {
+      success: false,
+      data: null,
+      error: 'Could not get canvas context',
+      location: null,
+      scanTimeMs: performance.now() - startTime,
+    };
+  }
 
+  try {
     const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
     return scanImageData(imageData, startTime);
   } catch (err) {
@@ -129,7 +129,17 @@ export async function scanFile(file: File): Promise<ScanResult> {
         const canvas = document.createElement('canvas');
         canvas.width = img.naturalWidth;
         canvas.height = img.naturalHeight;
-        const ctx = canvas.getContext('2d')!;
+        const ctx = canvas.getContext('2d');
+        if (!ctx) {
+          resolve({
+            success: false,
+            data: null,
+            error: 'Could not get canvas context',
+            location: null,
+            scanTimeMs: performance.now() - startTime,
+          });
+          return;
+        }
         ctx.drawImage(img, 0, 0);
 
         const result = scanCanvas(canvas);
@@ -234,9 +244,10 @@ export function validateQRCodeRobust(
     const scaledCanvas = document.createElement('canvas');
     scaledCanvas.width = Math.round(canvas.width * scale);
     scaledCanvas.height = Math.round(canvas.height * scale);
-    const ctx = scaledCanvas.getContext('2d')!;
-    ctx.imageSmoothingEnabled = false;
-    ctx.drawImage(canvas, 0, 0, scaledCanvas.width, scaledCanvas.height);
+    const scaledCtx = scaledCanvas.getContext('2d');
+    if (!scaledCtx) continue;
+    scaledCtx.imageSmoothingEnabled = false;
+    scaledCtx.drawImage(canvas, 0, 0, scaledCanvas.width, scaledCanvas.height);
 
     const result = validateQRCode(scaledCanvas, expectedData);
     if (result.isValid) {

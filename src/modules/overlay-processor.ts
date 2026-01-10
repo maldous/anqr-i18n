@@ -169,7 +169,8 @@ export function cropImage(
   const canvas = document.createElement('canvas');
   canvas.width = outputSize;
   canvas.height = outputSize;
-  const ctx = canvas.getContext('2d')!;
+  const ctx = canvas.getContext('2d');
+  if (!ctx) throw new Error('Could not get canvas context');
 
   const sourceWidth = source instanceof HTMLImageElement ? source.naturalWidth : source.width;
   const sourceHeight = source instanceof HTMLImageElement ? source.naturalHeight : source.height;
@@ -205,7 +206,8 @@ export function fitImage(
   const canvas = document.createElement('canvas');
   canvas.width = targetSize;
   canvas.height = targetSize;
-  const ctx = canvas.getContext('2d')!;
+  const ctx = canvas.getContext('2d');
+  if (!ctx) throw new Error('Could not get canvas context');
 
   const sourceWidth = source instanceof HTMLImageElement ? source.naturalWidth : source.width;
   const sourceHeight = source instanceof HTMLImageElement ? source.naturalHeight : source.height;
@@ -259,7 +261,8 @@ export function rotateCanvas(source: HTMLCanvasElement, degrees: number): HTMLCa
   const canvas = document.createElement('canvas');
   canvas.width = source.width;
   canvas.height = source.height;
-  const ctx = canvas.getContext('2d')!;
+  const ctx = canvas.getContext('2d');
+  if (!ctx) throw new Error('Could not get canvas context');
 
   ctx.translate(canvas.width / 2, canvas.height / 2);
   ctx.rotate((degrees * Math.PI) / 180);
@@ -281,7 +284,8 @@ export function flipCanvas(
   const canvas = document.createElement('canvas');
   canvas.width = source.width;
   canvas.height = source.height;
-  const ctx = canvas.getContext('2d')!;
+  const ctx = canvas.getContext('2d');
+  if (!ctx) throw new Error('Could not get canvas context');
 
   ctx.translate(flipX ? source.width : 0, flipY ? source.height : 0);
   ctx.scale(flipX ? -1 : 1, flipY ? -1 : 1);
@@ -340,7 +344,8 @@ export async function processOverlay(
   canvas = flipCanvas(canvas, opts.flipX, opts.flipY);
 
   // Step 3: Apply filters
-  const ctx = canvas.getContext('2d')!;
+  const ctx = canvas.getContext('2d');
+  if (!ctx) throw new Error('Could not get canvas context');
   const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
 
   const filterOpts: FilterOptions = {
@@ -390,7 +395,8 @@ export function getOverlayData(
   const tempCanvas = document.createElement('canvas');
   tempCanvas.width = moduleCount;
   tempCanvas.height = moduleCount;
-  const ctx = tempCanvas.getContext('2d')!;
+  const ctx = tempCanvas.getContext('2d');
+  if (ctx === null) throw new Error('Could not get canvas context');
 
   ctx.drawImage(overlayCanvas, 0, 0, moduleCount, moduleCount);
 
@@ -437,7 +443,8 @@ export function getOverlayRGBData(
   const tempCanvas = document.createElement('canvas');
   tempCanvas.width = moduleCount;
   tempCanvas.height = moduleCount;
-  const ctx = tempCanvas.getContext('2d')!;
+  const ctx = tempCanvas.getContext('2d');
+  if (ctx === null) throw new Error('Could not get canvas context');
 
   ctx.drawImage(overlayCanvas, 0, 0, moduleCount, moduleCount);
 
@@ -645,6 +652,14 @@ export async function ditherOverlay(
   // via getEffectiveDitherKind() before calling this function
   const effectiveKind = options.kind;
 
+  // Determine color mode
+  const colorModeMap: Record<string, ColorMode> = {
+    color: 'color',
+    grayscale: 'grayscale',
+    bw: 'bw',
+  };
+  const ditherColorMode: ColorMode = colorModeMap[options.colorMode] ?? 'bw';
+
   // Build full dither options
   const ditherOpts: DitherOptions = {
     kind: effectiveKind,
@@ -652,12 +667,7 @@ export async function ditherOverlay(
     serpentine: options.serpentine,
     diffusionKernel: options.diffusionKernel,
     orderedMatrix: options.orderedMatrix,
-    colorMode:
-      options.colorMode === 'color'
-        ? 'color'
-        : options.colorMode === 'grayscale'
-          ? 'grayscale'
-          : 'bw',
+    colorMode: ditherColorMode,
     levels: options.levels ?? 2,
     blueNoiseSeed: options.blueNoiseSeed ?? 0,
     blueNoiseTileSize: options.blueNoiseTileSize ?? 64,
@@ -683,7 +693,8 @@ export async function ditherOverlayForQR(
   const tempCanvas = document.createElement('canvas');
   tempCanvas.width = moduleCount;
   tempCanvas.height = moduleCount;
-  const ctx = tempCanvas.getContext('2d')!;
+  const ctx = tempCanvas.getContext('2d');
+  if (ctx === null) throw new Error('Could not get canvas context');
   ctx.drawImage(overlayCanvas, 0, 0, moduleCount, moduleCount);
 
   // Then apply dithering
