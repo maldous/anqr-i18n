@@ -235,7 +235,7 @@ export function OverlaySection() {
         <input
           ref={fileInputRef}
           type="file"
-          accept="image/*,.gif,.webp"
+          accept="image/*"
           onChange={handleFileSelect}
           className="hidden"
         />

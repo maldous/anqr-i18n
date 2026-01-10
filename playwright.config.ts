@@ -97,7 +97,7 @@ export default defineConfig({
     command: 'npm run dev',
     url: 'http://localhost:5173',
     reuseExistingServer: !process.env.CI,
-    timeout: 120 * 1000,
+    timeout: 30 * 1000, // 30 seconds max for dev server startup
   },
 
   /* Output directory for test artifacts */
