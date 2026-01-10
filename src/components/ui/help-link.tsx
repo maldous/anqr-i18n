@@ -27,11 +27,12 @@ interface HelpLinkProps {
 
 /** Extract tier from tab= query parameter in URL */
 function parseTierFromUrl(href: string): Tier | undefined {
-  const match = href.match(/[?&]tab=(basic|advanced|professional)(?:&|#|$)/);
+  const regex = /[?&]tab=(basic|advanced|professional)(?:&|#|$)/;
+  const match = regex.exec(href);
   return match ? (match[1] as Tier) : undefined;
 }
 
-export function HelpLink({ href, anchor, requiredTier, title, className = '' }: HelpLinkProps) {
+export function HelpLink({ href, anchor, requiredTier, title, className = '' }: Readonly<HelpLinkProps>) {
   // Convert anchor shorthand to full href
   const resolvedHref = anchor ? `/guide#${anchor}` : href || '/guide';
   const { t, i18n } = useTranslation();
