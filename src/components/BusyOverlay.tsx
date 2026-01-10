@@ -10,7 +10,7 @@ interface BusyOverlayProps {
   visible: boolean;
 }
 
-export function BusyOverlay({ visible }: BusyOverlayProps) {
+export function BusyOverlay({ visible }: Readonly<BusyOverlayProps>) {
   if (!visible) return null;
 
   return (

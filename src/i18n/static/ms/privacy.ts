@@ -34,7 +34,7 @@ export const privacy: PageDefinition = {
     },
     {
       heading: 'Retensi Data',
-      bullets: ['Pengiriman Kenalan: Sampai 2 tahun.', 'Log log log log log: Jeoza hingga 30 hari (pembawa tamu).', 'Data Analitik: \\"Overia\\" sampai 26 bulan (anonim).', 'Biskuit iklan: Biasanyak 13 bulan (varian oleh pasangan).'],
+      bullets: ['Pengiriman Kenalan: Sampai 2 tahun.', 'Log log log log log: Jeoza hingga 30 hari (pembawa tamu).', String.raw`Data Analitik: \"Overia\" sampai 26 bulan (anonim).`, 'Biskuit iklan: Biasanyak 13 bulan (varian oleh pasangan).'],
     },
     {
       heading: 'Hak anda di bawah GDPR (pengguna EEA)',
