@@ -110,9 +110,11 @@ export function WelcomeModal({ onClose }: WelcomeModalProps) {
       />
       <dialog
         open
-        className={`bg-card border rounded-2xl shadow-2xl max-w-2xl w-full max-h-[90vh] overflow-hidden flex flex-col transition-all duration-200 ${
+        role="dialog"
+        className={`relative bg-card border rounded-2xl shadow-2xl max-w-2xl w-full max-h-[90vh] overflow-hidden flex flex-col transition-all duration-200 ${
           isClosing ? 'scale-95 opacity-0' : 'scale-100 opacity-100'
         }`}
+        style={{ margin: 0 }}
         aria-labelledby="welcome-title"
       >
         <div className="contents">

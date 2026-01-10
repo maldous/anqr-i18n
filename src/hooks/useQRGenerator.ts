@@ -569,32 +569,17 @@ export function useQRGenerator(): UseQRGeneratorResult {
   // 300ms is a good balance for slow phones while remaining responsive
   const debouncedConfig = useDebounce(config, 300);
 
+  // Create stable content hashes for change detection
+  // This avoids false triggers from object reference changes on remount
+  const configHash = useMemo(() => JSON.stringify(config), [config]);
+  const debouncedConfigHash = useMemo(() => JSON.stringify(debouncedConfig), [debouncedConfig]);
+
   // Track when config changes but debounce hasn't settled yet
-  // Only show pending state after a short delay (100ms) to avoid flashing on fast devices
-  // This provides visual feedback for slower devices while keeping fast devices responsive
-  // Use a ref to track if this is the initial mount - we don't want to show pending on first render
-  const isInitialMountRef = useRef(true);
-
+  // Uses content hashing instead of object reference comparison
+  // isPending is true when config has changed but debounce hasn't caught up yet
   useEffect(() => {
-    // Skip setting pending on initial mount - only set it when config actually changes
-    // This prevents the stuck pending state when navigating back to editor from static pages
-    if (isInitialMountRef.current) {
-      isInitialMountRef.current = false;
-      return;
-    }
-
-    // Delay showing pending state to avoid flashing on fast renders
-    const showPendingTimeout = setTimeout(() => {
-      setIsPending(true);
-    }, 100);
-
-    return () => clearTimeout(showPendingTimeout);
-  }, []); // Re-run when config changes
-
-  // Clear pending state when debounced config catches up
-  useEffect(() => {
-    setIsPending(false);
-  }, []); // Clear when debounce settles
+    setIsPending(configHash !== debouncedConfigHash);
+  }, [configHash, debouncedConfigHash]);
 
   /**
    * Apply only geometric transforms (crop, fit, rotate, flip) to a canvas.
@@ -1819,8 +1804,11 @@ export function useQRGenerator(): UseQRGeneratorResult {
     generateAllFrames();
 
     // Cleanup: cancel in-flight generation if deps change
+    // IMPORTANT: Reset loading states to prevent stuck spinner when navigating away and back
     return () => {
       isCancelled = true;
+      setIsLoading(false);
+      setIsLoadingOverlay(false);
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [
