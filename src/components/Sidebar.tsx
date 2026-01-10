@@ -984,7 +984,7 @@ export function Sidebar({ isOpen, onClose, mobileHeightPercent = 45 }: SidebarPr
   const searchQuery = useQRStore((s) => s.searchQuery);
   const setSearchQuery = useQRStore((s) => s.setSearchQuery);
   const { t, i18n } = useTranslation();
-  const [openSections, setOpenSections] = useState<string[]>(['payload']);
+  const [openSections, setOpenSections] = useState<string[]>(['payload', 'render']);
 
   // Force re-render when language changes by using i18n.language as a key dependency
   const _currentLanguage = i18n.language;
