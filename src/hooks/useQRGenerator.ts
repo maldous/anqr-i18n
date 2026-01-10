@@ -775,7 +775,9 @@ export function useQRGenerator(): UseQRGeneratorResult {
           console.error('Failed to create GIF compositor:', err);
           setGifCompositor(null);
           // Fall back to static image loading
-          loadFileAsCanvas(overlay.file!)
+          const file = overlay.file;
+          if (!file) return;
+          loadFileAsCanvas(file)
             .then((canvas) => {
               setRawOverlayCanvas(canvas);
               setGifFrames([{ canvas, delay: 100, disposalType: 0 }]);

@@ -63,7 +63,10 @@ export function createGifCompositor(arrayBuffer: ArrayBuffer): GifCompositor {
   const canvas = document.createElement('canvas');
   canvas.width = width;
   canvas.height = height;
-  const ctx = canvas.getContext('2d')!;
+  const ctx = canvas.getContext('2d');
+  if (!ctx) {
+    throw new Error('Failed to get 2D context for GIF compositor canvas');
+  }
 
   // Reusable patch canvas for compositing (avoids per-frame allocation)
   // We size it to the max patch dimensions across all frames
@@ -445,8 +448,10 @@ async function parseWebPAsSingleFrame(source: ArrayBuffer): Promise<AnimationFra
       const canvas = document.createElement('canvas');
       canvas.width = img.naturalWidth;
       canvas.height = img.naturalHeight;
-      const ctx = canvas.getContext('2d')!;
-      ctx.drawImage(img, 0, 0);
+      const ctx = canvas.getContext('2d');
+      if (ctx) {
+        ctx.drawImage(img, 0, 0);
+      }
       URL.revokeObjectURL(url);
 
       resolve([
@@ -533,8 +538,10 @@ async function parseStaticImageAsFrame(source: ArrayBuffer): Promise<AnimationFr
       const canvas = document.createElement('canvas');
       canvas.width = img.naturalWidth;
       canvas.height = img.naturalHeight;
-      const ctx = canvas.getContext('2d')!;
-      ctx.drawImage(img, 0, 0);
+      const ctx = canvas.getContext('2d');
+      if (ctx) {
+        ctx.drawImage(img, 0, 0);
+      }
       URL.revokeObjectURL(url);
 
       resolve([
@@ -583,7 +590,10 @@ export async function parseGifFrames(source: string | ArrayBuffer): Promise<Anim
   const compositeCanvas = document.createElement('canvas');
   compositeCanvas.width = width;
   compositeCanvas.height = height;
-  const compositeCtx = compositeCanvas.getContext('2d')!;
+  const compositeCtx = compositeCanvas.getContext('2d');
+  if (!compositeCtx) {
+    throw new Error('Failed to get 2D context for GIF composite canvas');
+  }
 
   const animationFrames: AnimationFrame[] = [];
 
