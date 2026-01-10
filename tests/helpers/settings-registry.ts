@@ -1,561 +1,1453 @@
 /**
- * Settings Registry for ANQR UI Testing
- * Maps all UI settings with their tier, section, type, and test values
+ * Comprehensive Settings Registry
+ * Maps ALL UI controls across all sections and tiers
+ * 
+ * Each setting defines:
+ * - section: Which accordion section it belongs to
+ * - tier: Which tier level exposes this setting (basic/advanced/professional)
+ * - type: The control type (switch, slider, select, input, textarea, color)
+ * - selector: CSS selector to find the control
+ * - label: Human-readable label (for finding by text)
+ * - expectsQRChange: Whether changing this setting should change the QR output
+ * - testValues: Values to test with
+ * - conditional: Optional condition for when this setting is visible
  */
 
+export type SettingType = 'switch' | 'slider' | 'select' | 'input' | 'textarea' | 'color' | 'file';
 export type Tier = 'basic' | 'advanced' | 'professional';
-export type InputType = 'slider' | 'select' | 'switch' | 'color' | 'text' | 'number' | 'textarea' | 'file';
 
-export interface Setting {
-  id: string;
+export interface SettingDefinition {
   section: string;
   tier: Tier;
-  type: InputType;
-  /** CSS selector or descriptive identifier for the input */
-  selector: string;
-  /** Test values to try for this setting */
-  testValues: (string | number | boolean)[];
-  /** Human-readable name */
-  name: string;
-  /** Whether this setting directly affects QR rendering */
-  affectsQR: boolean;
+  type: SettingType;
+  label: string;
+  expectsQRChange: boolean;
+  testValues?: string[] | number[] | boolean[];
+  conditional?: string; // Description of when this is visible
+  notes?: string; // Why QR may or may not change
+}
+
+export interface SettingsRegistry {
+  [key: string]: SettingDefinition;
 }
 
 /**
- * All settings organized by section
+ * COMPLETE settings registry covering ALL UI controls
  */
-export const SETTINGS_REGISTRY: Setting[] = [
-  // ============================================
-  // PAYLOAD SECTION (Basic)
-  // ============================================
-  {
-    id: 'payload.kind',
-    section: 'payload',
+export const SETTINGS_REGISTRY: SettingsRegistry = {
+  // ==========================================
+  // PAYLOAD SECTION (Basic tier)
+  // ==========================================
+  'payload.kind': {
+    section: 'Payload',
     tier: 'basic',
     type: 'select',
-    selector: '[data-testid="payload-type-select"]',
-    testValues: ['plain_text', 'url'],
-    name: 'Content Type',
-    affectsQR: true,
+    label: 'Content Type',
+    expectsQRChange: false, // Changing type alone doesn't change QR if data is same
+    testValues: ['url', 'plain_text', 'wifi', 'email', 'sms', 'geo', 'tel'],
+    notes: 'Content type change alone may not change QR - depends on actual data'
   },
-  {
-    id: 'payload.text',
-    section: 'payload',
+  'payload.text': {
+    section: 'Payload',
     tier: 'basic',
     type: 'textarea',
-    selector: 'textarea',
-    testValues: ['Hello World', 'Test 123', 'ANQR Test Content'],
-    name: 'Payload Text',
-    affectsQR: true,
+    label: 'Plain Text',
+    expectsQRChange: true,
+    testValues: ['Hello World', 'Test QR Code', 'ANQR Testing'],
+    conditional: 'payload.kind === plain_text'
   },
-  {
-    id: 'payload.url.href',
-    section: 'payload',
+  'payload.url.href': {
+    section: 'Payload',
     tier: 'basic',
-    type: 'text',
-    selector: 'input[type="url"]',
-    testValues: ['https://example.com', 'https://test.com/page', 'https://anqr.link'],
-    name: 'URL',
-    affectsQR: true,
+    type: 'input',
+    label: 'URL',
+    expectsQRChange: true,
+    testValues: ['https://example.com', 'https://test.org', 'https://anqr.link'],
+    conditional: 'payload.kind === url'
   },
-
-  // ============================================
-  // OVERLAY SECTION (Basic)
-  // ============================================
-  {
-    id: 'overlay.enabled',
-    section: 'overlay',
+  'payload.wifi.ssid': {
+    section: 'Payload',
     tier: 'basic',
-    type: 'switch',
-    selector: '[role="switch"]',
-    testValues: [true, false],
-    name: 'Overlay Enabled',
-    affectsQR: true,
+    type: 'input',
+    label: 'Network Name',
+    expectsQRChange: true,
+    conditional: 'payload.kind === wifi'
   },
-  {
-    id: 'overlay.mode',
-    section: 'overlay',
+  'payload.wifi.password': {
+    section: 'Payload',
+    tier: 'basic',
+    type: 'input',
+    label: 'Password',
+    expectsQRChange: true,
+    conditional: 'payload.kind === wifi'
+  },
+  'payload.wifi.auth': {
+    section: 'Payload',
     tier: 'basic',
     type: 'select',
-    selector: '[data-testid="overlay-mode-select"]',
-    testValues: ['center', 'blend', 'halftone', 'dithered'],
-    name: 'Overlay Mode',
-    affectsQR: true,
+    label: 'Security',
+    expectsQRChange: true,
+    testValues: ['WPA', 'WEP', 'nopass'],
+    conditional: 'payload.kind === wifi'
   },
-  {
-    id: 'overlay.intensity',
-    section: 'overlay',
+  'payload.wifi.hidden': {
+    section: 'Payload',
+    tier: 'basic',
+    type: 'switch',
+    label: 'Hidden Network',
+    expectsQRChange: true,
+    conditional: 'payload.kind === wifi'
+  },
+  'payload.email.to': {
+    section: 'Payload',
+    tier: 'basic',
+    type: 'input',
+    label: 'To',
+    expectsQRChange: true,
+    conditional: 'payload.kind === email'
+  },
+  'payload.email.subject': {
+    section: 'Payload',
+    tier: 'basic',
+    type: 'input',
+    label: 'Subject',
+    expectsQRChange: true,
+    conditional: 'payload.kind === email'
+  },
+  'payload.email.body': {
+    section: 'Payload',
+    tier: 'basic',
+    type: 'textarea',
+    label: 'Body',
+    expectsQRChange: true,
+    conditional: 'payload.kind === email'
+  },
+  'payload.sms.phone': {
+    section: 'Payload',
+    tier: 'basic',
+    type: 'input',
+    label: 'Phone Number',
+    expectsQRChange: true,
+    conditional: 'payload.kind === sms'
+  },
+  'payload.sms.message': {
+    section: 'Payload',
+    tier: 'basic',
+    type: 'textarea',
+    label: 'Message',
+    expectsQRChange: true,
+    conditional: 'payload.kind === sms'
+  },
+  'payload.tel.number': {
+    section: 'Payload',
+    tier: 'basic',
+    type: 'input',
+    label: 'Phone Number',
+    expectsQRChange: true,
+    conditional: 'payload.kind === tel'
+  },
+  'payload.geo.lat': {
+    section: 'Payload',
+    tier: 'basic',
+    type: 'input',
+    label: 'Latitude',
+    expectsQRChange: true,
+    conditional: 'payload.kind === geo'
+  },
+  'payload.geo.lon': {
+    section: 'Payload',
+    tier: 'basic',
+    type: 'input',
+    label: 'Longitude',
+    expectsQRChange: true,
+    conditional: 'payload.kind === geo'
+  },
+
+  // ==========================================
+  // OVERLAY SECTION (Basic tier basics)
+  // ==========================================
+  'overlay.enabled': {
+    section: 'Overlay',
+    tier: 'basic',
+    type: 'switch',
+    label: 'Enable Overlay',
+    expectsQRChange: true,
+    notes: 'Requires image to be loaded first'
+  },
+  'overlay.mode': {
+    section: 'Overlay',
+    tier: 'basic',
+    type: 'select',
+    label: 'Mode',
+    expectsQRChange: true,
+    testValues: ['blend', 'dither', 'halftone', 'subpixel', 'duotone'],
+    conditional: 'overlay.enabled && image loaded'
+  },
+  'overlay.intensity': {
+    section: 'Overlay',
     tier: 'basic',
     type: 'slider',
-    selector: '[role="slider"]',
+    label: 'Intensity',
+    expectsQRChange: true,
     testValues: [25, 50, 75, 100],
-    name: 'Overlay Intensity',
-    affectsQR: true,
+    conditional: 'overlay.enabled && image loaded'
   },
-  {
-    id: 'overlay.colorMode',
-    section: 'overlay',
+  'overlay.colorMode': {
+    section: 'Overlay',
     tier: 'basic',
     type: 'select',
-    selector: '[data-testid="color-mode-select"]',
-    testValues: ['color', 'grayscale', 'bw'],
-    name: 'Color Mode',
-    affectsQR: true,
+    label: 'Color Mode',
+    expectsQRChange: true,
+    testValues: ['color', 'grayscale', 'sepia', 'invert'],
+    conditional: 'overlay.enabled && image loaded'
   },
-  {
-    id: 'overlay.preserveFinders',
-    section: 'overlay',
+  'overlay.preserveFinders': {
+    section: 'Overlay',
     tier: 'basic',
     type: 'switch',
-    selector: '[role="switch"]',
-    testValues: [true, false],
-    name: 'Preserve Finders',
-    affectsQR: true,
+    label: 'Preserve Finders',
+    expectsQRChange: true,
+    conditional: 'overlay.enabled && image loaded'
   },
-
-  // ============================================
-  // QR ENCODING SECTION (Advanced)
-  // ============================================
-  {
-    id: 'qr.version',
-    section: 'qr',
-    tier: 'advanced',
-    type: 'slider',
-    selector: '[role="slider"]',
-    testValues: [0, 5, 10, 20],
-    name: 'QR Version',
-    affectsQR: true,
-  },
-  {
-    id: 'qr.ecc',
-    section: 'qr',
+  'overlay.fit': {
+    section: 'Overlay',
     tier: 'advanced',
     type: 'select',
-    selector: '[data-testid="ecc-select"]',
+    label: 'Fit Mode',
+    expectsQRChange: true,
+    testValues: ['cover', 'contain', 'fill', 'none'],
+    conditional: 'overlay.enabled && image loaded'
+  },
+  'overlay.rotateDeg': {
+    section: 'Overlay',
+    tier: 'advanced',
+    type: 'slider',
+    label: 'Rotation',
+    expectsQRChange: true,
+    testValues: [0, 45, 90, 180],
+    conditional: 'overlay.enabled && image loaded'
+  },
+  'overlay.flipX': {
+    section: 'Overlay',
+    tier: 'advanced',
+    type: 'switch',
+    label: 'Flip Horizontal',
+    expectsQRChange: true,
+    conditional: 'overlay.enabled && image loaded'
+  },
+  'overlay.flipY': {
+    section: 'Overlay',
+    tier: 'advanced',
+    type: 'switch',
+    label: 'Flip Vertical',
+    expectsQRChange: true,
+    conditional: 'overlay.enabled && image loaded'
+  },
+  'overlay.preserveTiming': {
+    section: 'Overlay',
+    tier: 'advanced',
+    type: 'switch',
+    label: 'Preserve Timing',
+    expectsQRChange: true,
+    conditional: 'overlay.enabled && image loaded'
+  },
+  'overlay.preserveAlignment': {
+    section: 'Overlay',
+    tier: 'advanced',
+    type: 'switch',
+    label: 'Preserve Alignment',
+    expectsQRChange: true,
+    conditional: 'overlay.enabled && image loaded'
+  },
+  'overlay.protectFormatInfo': {
+    section: 'Overlay',
+    tier: 'advanced',
+    type: 'switch',
+    label: 'Protect Format Info',
+    expectsQRChange: true,
+    conditional: 'overlay.enabled && image loaded'
+  },
+  'overlay.protectVersionInfo': {
+    section: 'Overlay',
+    tier: 'advanced',
+    type: 'switch',
+    label: 'Protect Version Info',
+    expectsQRChange: true,
+    conditional: 'overlay.enabled && image loaded'
+  },
+  'overlay.brightness': {
+    section: 'Overlay',
+    tier: 'advanced',
+    type: 'slider',
+    label: 'Brightness',
+    expectsQRChange: true,
+    testValues: [-50, 0, 50],
+    conditional: 'overlay.enabled && image loaded'
+  },
+  'overlay.contrast': {
+    section: 'Overlay',
+    tier: 'advanced',
+    type: 'slider',
+    label: 'Contrast',
+    expectsQRChange: true,
+    testValues: [-50, 0, 50],
+    conditional: 'overlay.enabled && image loaded'
+  },
+  'overlay.gamma': {
+    section: 'Overlay',
+    tier: 'advanced',
+    type: 'slider',
+    label: 'Gamma',
+    expectsQRChange: true,
+    testValues: [0.5, 1.0, 2.0],
+    conditional: 'overlay.enabled && image loaded'
+  },
+  'overlay.saturation': {
+    section: 'Overlay',
+    tier: 'advanced',
+    type: 'slider',
+    label: 'Saturation',
+    expectsQRChange: true,
+    testValues: [-100, 0, 100],
+    conditional: 'overlay.enabled && image loaded'
+  },
+  'overlay.hueRotateDeg': {
+    section: 'Overlay',
+    tier: 'advanced',
+    type: 'slider',
+    label: 'Hue Rotation',
+    expectsQRChange: true,
+    testValues: [0, 90, 180],
+    conditional: 'overlay.enabled && image loaded'
+  },
+  'overlay.blurPx': {
+    section: 'Overlay',
+    tier: 'advanced',
+    type: 'slider',
+    label: 'Blur',
+    expectsQRChange: true,
+    testValues: [0, 2, 5],
+    conditional: 'overlay.enabled && image loaded'
+  },
+  'overlay.sharpen': {
+    section: 'Overlay',
+    tier: 'advanced',
+    type: 'slider',
+    label: 'Sharpen',
+    expectsQRChange: true,
+    testValues: [0, 50, 100],
+    conditional: 'overlay.enabled && image loaded'
+  },
+  'overlay.posterizeLevels': {
+    section: 'Overlay',
+    tier: 'advanced',
+    type: 'slider',
+    label: 'Posterize',
+    expectsQRChange: true,
+    testValues: [0, 4, 8],
+    conditional: 'overlay.enabled && image loaded'
+  },
+  'overlay.threshold': {
+    section: 'Overlay',
+    tier: 'advanced',
+    type: 'slider',
+    label: 'Threshold',
+    expectsQRChange: true,
+    testValues: [64, 128, 192],
+    conditional: 'overlay.enabled && image loaded'
+  },
+  'overlay.edgeDetect': {
+    section: 'Overlay',
+    tier: 'advanced',
+    type: 'select',
+    label: 'Edge Detection',
+    expectsQRChange: true,
+    testValues: ['off', 'sobel', 'canny'],
+    conditional: 'overlay.enabled && image loaded'
+  },
+  'overlay.invert': {
+    section: 'Overlay',
+    tier: 'advanced',
+    type: 'switch',
+    label: 'Invert Colors',
+    expectsQRChange: true,
+    conditional: 'overlay.enabled && image loaded'
+  },
+  // Dithering options
+  'overlay.ditherKind': {
+    section: 'Overlay',
+    tier: 'advanced',
+    type: 'select',
+    label: 'Dither Algorithm',
+    expectsQRChange: true,
+    testValues: ['error_diffusion', 'ordered', 'blue_noise', 'white_noise'],
+    conditional: 'overlay.enabled && image loaded'
+  },
+  'overlay.diffusionKernel': {
+    section: 'Overlay',
+    tier: 'advanced',
+    type: 'select',
+    label: 'Diffusion Kernel',
+    expectsQRChange: true,
+    testValues: ['floyd_steinberg', 'jarvis_judice_ninke', 'stucki', 'atkinson', 'burkes', 'sierra'],
+    conditional: 'overlay.enabled && ditherKind === error_diffusion'
+  },
+  'overlay.ditherStrength': {
+    section: 'Overlay',
+    tier: 'advanced',
+    type: 'slider',
+    label: 'Dither Strength',
+    expectsQRChange: true,
+    testValues: [25, 50, 75, 100],
+    conditional: 'overlay.enabled && image loaded'
+  },
+  'overlay.ditherSerpentine': {
+    section: 'Overlay',
+    tier: 'advanced',
+    type: 'switch',
+    label: 'Serpentine Scanning',
+    expectsQRChange: true,
+    conditional: 'overlay.enabled && ditherKind === error_diffusion'
+  },
+  'overlay.orderedMatrix': {
+    section: 'Overlay',
+    tier: 'advanced',
+    type: 'select',
+    label: 'Ordered Matrix',
+    expectsQRChange: true,
+    testValues: ['bayer2', 'bayer4', 'bayer8'],
+    conditional: 'overlay.enabled && ditherKind === ordered'
+  },
+  'overlay.blueNoiseTileSize': {
+    section: 'Overlay',
+    tier: 'advanced',
+    type: 'slider',
+    label: 'Blue Noise Tile Size',
+    expectsQRChange: true,
+    testValues: [32, 64, 128],
+    conditional: 'overlay.enabled && ditherKind === blue_noise'
+  },
+  'overlay.blueNoiseSeed': {
+    section: 'Overlay',
+    tier: 'advanced',
+    type: 'input',
+    label: 'Blue Noise Seed',
+    expectsQRChange: true,
+    conditional: 'overlay.enabled && ditherKind === blue_noise'
+  },
+  'overlay.colorDither': {
+    section: 'Overlay',
+    tier: 'advanced',
+    type: 'select',
+    label: 'Color Dither',
+    expectsQRChange: true,
+    testValues: ['none', 'palette', 'adaptive'],
+    conditional: 'overlay.enabled && image loaded'
+  },
+  // Subpixel options
+  'overlay.subpixelGridSize': {
+    section: 'Overlay',
+    tier: 'professional',
+    type: 'select',
+    label: 'Subpixel Grid',
+    expectsQRChange: true,
+    testValues: ['2x2', '3x3', '4x4'],
+    conditional: 'overlay.enabled && mode === subpixel'
+  },
+  'overlay.subpixelCenterRule': {
+    section: 'Overlay',
+    tier: 'professional',
+    type: 'select',
+    label: 'Center Rule',
+    expectsQRChange: true,
+    testValues: ['strict', 'relaxed', 'adaptive'],
+    conditional: 'overlay.enabled && mode === subpixel'
+  },
+  'overlay.subpixelNeutralColor': {
+    section: 'Overlay',
+    tier: 'professional',
+    type: 'color',
+    label: 'Neutral Color',
+    expectsQRChange: true,
+    conditional: 'overlay.enabled && mode === subpixel'
+  },
+  'overlay.subpixelFinderOverride': {
+    section: 'Overlay',
+    tier: 'professional',
+    type: 'select',
+    label: 'Finder Override',
+    expectsQRChange: true,
+    testValues: ['solid', 'grid', 'none'],
+    conditional: 'overlay.enabled && mode === subpixel'
+  },
+  // Halftone options
+  'overlay.halftoneCell': {
+    section: 'Overlay',
+    tier: 'professional',
+    type: 'select',
+    label: 'Cell Mode',
+    expectsQRChange: true,
+    testValues: ['per_module', 'per_pixel'],
+    conditional: 'overlay.enabled && mode === halftone'
+  },
+  'overlay.halftoneDotShape': {
+    section: 'Overlay',
+    tier: 'professional',
+    type: 'select',
+    label: 'Dot Shape',
+    expectsQRChange: true,
+    testValues: ['circle', 'square', 'diamond', 'line'],
+    conditional: 'overlay.enabled && mode === halftone'
+  },
+  'overlay.brightnessCurve': {
+    section: 'Overlay',
+    tier: 'professional',
+    type: 'select',
+    label: 'Brightness Curve',
+    expectsQRChange: true,
+    testValues: ['linear', 'gamma', 'sigmoid'],
+    conditional: 'overlay.enabled && mode === halftone'
+  },
+  // Duotone options
+  'overlay.duotoneColor1': {
+    section: 'Overlay',
+    tier: 'professional',
+    type: 'color',
+    label: 'Duotone Color 1',
+    expectsQRChange: true,
+    conditional: 'overlay.enabled && mode === duotone'
+  },
+  'overlay.duotoneColor2': {
+    section: 'Overlay',
+    tier: 'professional',
+    type: 'color',
+    label: 'Duotone Color 2',
+    expectsQRChange: true,
+    conditional: 'overlay.enabled && mode === duotone'
+  },
+
+  // ==========================================
+  // QR ENCODING SECTION (Advanced tier)
+  // ==========================================
+  'qr.version': {
+    section: 'QR Encoding',
+    tier: 'advanced',
+    type: 'slider',
+    label: 'Version',
+    expectsQRChange: true,
+    testValues: [0, 1, 5, 10], // 0 = auto
+    notes: 'Higher version = more data capacity, larger QR'
+  },
+  'qr.ecc': {
+    section: 'QR Encoding',
+    tier: 'advanced',
+    type: 'select',
+    label: 'Error Correction',
+    expectsQRChange: true,
     testValues: ['L', 'M', 'Q', 'H'],
-    name: 'Error Correction',
-    affectsQR: true,
+    notes: 'Higher ECC = more redundancy'
   },
-  {
-    id: 'qr.quietZoneModules',
-    section: 'qr',
-    tier: 'advanced',
-    type: 'slider',
-    selector: '[role="slider"]',
-    testValues: [0, 2, 4, 8],
-    name: 'Quiet Zone',
-    affectsQR: true,
-  },
-  {
-    id: 'qr.encodingMode',
-    section: 'qr',
+  'qr.encodingMode': {
+    section: 'QR Encoding',
     tier: 'advanced',
     type: 'select',
-    selector: '[data-testid="encoding-mode-select"]',
-    testValues: ['auto', 'numeric', 'alphanumeric', 'byte'],
-    name: 'Encoding Mode',
-    affectsQR: true,
+    label: 'Encoding Mode',
+    expectsQRChange: true,
+    testValues: ['auto', 'numeric', 'alphanumeric', 'byte', 'kanji'],
+    notes: 'Auto usually picks optimal'
+  },
+  'qr.maskPattern': {
+    section: 'QR Encoding',
+    tier: 'advanced',
+    type: 'select',
+    label: 'Mask Pattern',
+    expectsQRChange: true,
+    testValues: ['auto', '0', '1', '2', '3', '4', '5', '6', '7']
+  },
+  'qr.quietZoneModules': {
+    section: 'QR Encoding',
+    tier: 'advanced',
+    type: 'slider',
+    label: 'Quiet Zone',
+    expectsQRChange: true,
+    testValues: [0, 2, 4, 6]
+  },
+  'qr.borderModulesExtra': {
+    section: 'QR Encoding',
+    tier: 'advanced',
+    type: 'slider',
+    label: 'Extra Border',
+    expectsQRChange: true,
+    testValues: [0, 1, 2, 4]
+  },
+  'qr.quietZoneMinEnforce': {
+    section: 'QR Encoding',
+    tier: 'advanced',
+    type: 'switch',
+    label: 'Enforce Min Quiet Zone',
+    expectsQRChange: false,
+    notes: 'Only affects validation warnings'
   },
 
-  // ============================================
-  // RENDER SECTION (Advanced)
-  // ============================================
-  {
-    id: 'render.modulePx',
-    section: 'render',
+  // ==========================================
+  // RENDER SECTION (Advanced tier)
+  // ==========================================
+  'render.modulePx': {
+    section: 'Render',
     tier: 'advanced',
     type: 'slider',
-    selector: '[role="slider"]',
-    testValues: [5, 10, 15, 20],
-    name: 'Module Size',
-    affectsQR: true,
+    label: 'Module Size',
+    expectsQRChange: true,
+    testValues: [10, 15, 20, 25]
   },
-  {
-    id: 'render.moduleGapPercent',
-    section: 'render',
+  'render.moduleStyle': {
+    section: 'Render',
+    tier: 'advanced',
+    type: 'select',
+    label: 'Module Style',
+    expectsQRChange: true,
+    testValues: ['square', 'rounded', 'circle', 'diamond', 'star']
+  },
+  'render.finderStyle': {
+    section: 'Render',
+    tier: 'advanced',
+    type: 'select',
+    label: 'Finder Style',
+    expectsQRChange: true,
+    testValues: ['square', 'rounded', 'circle', 'diamond']
+  },
+  'render.alignmentStyle': {
+    section: 'Render',
+    tier: 'advanced',
+    type: 'select',
+    label: 'Alignment Style',
+    expectsQRChange: true,
+    testValues: ['match_finder', 'square', 'rounded', 'circle', 'diamond']
+  },
+  'render.timingStyle': {
+    section: 'Render',
+    tier: 'advanced',
+    type: 'select',
+    label: 'Timing Style',
+    expectsQRChange: true,
+    testValues: ['match_module', 'square', 'rounded', 'dotted', 'dashed']
+  },
+  'render.eyeOuterStyle': {
+    section: 'Render',
+    tier: 'advanced',
+    type: 'select',
+    label: 'Eye Outer Style',
+    expectsQRChange: true,
+    testValues: ['square', 'rounded', 'circle', 'leaf']
+  },
+  'render.eyeInnerStyle': {
+    section: 'Render',
+    tier: 'advanced',
+    type: 'select',
+    label: 'Eye Inner Style',
+    expectsQRChange: true,
+    testValues: ['square', 'rounded', 'circle', 'diamond']
+  },
+  'render.eyeScale': {
+    section: 'Render',
     tier: 'advanced',
     type: 'slider',
-    selector: '[role="slider"]',
-    testValues: [0, 10, 20, 30],
-    name: 'Module Gap',
-    affectsQR: true,
+    label: 'Eye Scale',
+    expectsQRChange: true,
+    testValues: [80, 100, 120]
   },
-  {
-    id: 'render.moduleStyle',
-    section: 'render',
+  'render.moduleGapPercent': {
+    section: 'Render',
+    tier: 'advanced',
+    type: 'slider',
+    label: 'Module Gap',
+    expectsQRChange: true,
+    testValues: [0, 10, 20, 30]
+  },
+  'render.gapMode': {
+    section: 'Render',
     tier: 'advanced',
     type: 'select',
-    selector: '[data-testid="module-style-select"]',
-    testValues: ['square', 'rounded', 'dots', 'diamond', 'connected'],
-    name: 'Module Style',
-    affectsQR: true,
+    label: 'Gap Mode',
+    expectsQRChange: true,
+    testValues: ['none', 'uniform', 'random']
   },
-  {
-    id: 'render.finderStyle',
-    section: 'render',
+  'render.cornerRadius': {
+    section: 'Render',
     tier: 'advanced',
-    type: 'select',
-    selector: '[data-testid="finder-style-select"]',
-    testValues: ['square', 'rounded', 'circle'],
-    name: 'Finder Style',
-    affectsQR: true,
+    type: 'slider',
+    label: 'Corner Radius',
+    expectsQRChange: true,
+    testValues: [0, 25, 50]
   },
-  {
-    id: 'render.fgColor',
-    section: 'render',
+  'render.dotRotationDeg': {
+    section: 'Render',
+    tier: 'advanced',
+    type: 'slider',
+    label: 'Dot Rotation',
+    expectsQRChange: true,
+    testValues: [0, 15, 45]
+  },
+  'render.fgColor': {
+    section: 'Render',
     tier: 'advanced',
     type: 'color',
-    selector: 'input[type="color"]',
-    testValues: ['#000000', '#ff0000', '#0000ff', '#00ff00'],
-    name: 'Foreground Color',
-    affectsQR: true,
+    label: 'Foreground Color',
+    expectsQRChange: true,
+    testValues: ['#000000', '#FF0000', '#0000FF']
   },
-  {
-    id: 'render.bgColor',
-    section: 'render',
+  'render.bgColor': {
+    section: 'Render',
     tier: 'advanced',
     type: 'color',
-    selector: 'input[type="color"]',
-    testValues: ['#ffffff', '#f0f0f0', '#ffffcc'],
-    name: 'Background Color',
-    affectsQR: true,
+    label: 'Background Color',
+    expectsQRChange: true,
+    testValues: ['#FFFFFF', '#FFFF00', '#00FF00']
   },
-  {
-    id: 'render.bgTransparent',
-    section: 'render',
+  'render.bgTransparent': {
+    section: 'Render',
     tier: 'advanced',
     type: 'switch',
-    selector: '[role="switch"]',
-    testValues: [true, false],
-    name: 'Transparent Background',
-    affectsQR: true,
+    label: 'Transparent Background',
+    expectsQRChange: true
   },
-  {
-    id: 'render.cornerRadius',
-    section: 'render',
+  'render.gradient.type': {
+    section: 'Render',
+    tier: 'advanced',
+    type: 'select',
+    label: 'Gradient Type',
+    expectsQRChange: true,
+    testValues: ['none', 'linear', 'radial', 'conic']
+  },
+  'render.gradient.angle': {
+    section: 'Render',
     tier: 'advanced',
     type: 'slider',
-    selector: '[role="slider"]',
-    testValues: [0, 25, 50, 100],
-    name: 'Corner Radius',
-    affectsQR: true,
+    label: 'Gradient Angle',
+    expectsQRChange: true,
+    testValues: [0, 45, 90, 180],
+    conditional: 'gradient.type !== none'
   },
-  {
-    id: 'render.gapMode',
-    section: 'render',
+  'render.perModuleColorMode': {
+    section: 'Render',
     tier: 'advanced',
     type: 'select',
-    selector: '[data-testid="gap-mode-select"]',
-    testValues: ['none', 'inset', 'stroke', 'negative_space'],
-    name: 'Gap Mode',
-    affectsQR: true,
+    label: 'Per-Module Color',
+    expectsQRChange: true,
+    testValues: ['solid', 'random', 'position', 'checkered']
   },
-  {
-    id: 'render.gradient.type',
-    section: 'render',
+  'render.frameStyle': {
+    section: 'Render',
     tier: 'advanced',
     type: 'select',
-    selector: '[data-testid="gradient-select"]',
-    testValues: ['none', 'linear', 'radial', 'conic'],
-    name: 'Gradient Type',
-    affectsQR: true,
+    label: 'Frame Style',
+    expectsQRChange: true,
+    testValues: ['none', 'simple', 'rounded', 'fancy']
   },
-  {
-    id: 'render.frameStyle',
-    section: 'render',
+  'render.frameText': {
+    section: 'Render',
+    tier: 'advanced',
+    type: 'input',
+    label: 'Frame Text',
+    expectsQRChange: true,
+    conditional: 'frameStyle !== none'
+  },
+  'render.crispEdges': {
+    section: 'Render',
+    tier: 'advanced',
+    type: 'switch',
+    label: 'Crisp Edges',
+    expectsQRChange: true,
+    notes: 'Affects canvas rendering hint'
+  },
+  'render.pixelSnap': {
+    section: 'Render',
     tier: 'advanced',
     type: 'select',
-    selector: '[data-testid="frame-style-select"]',
-    testValues: ['none', 'rounded_frame', 'sticker', 'tag'],
-    name: 'Frame Style',
-    affectsQR: true,
+    label: 'Pixel Snap',
+    expectsQRChange: true,
+    testValues: ['floor', 'round', 'ceil', 'none']
   },
-
-  // ============================================
-  // ANIMATION SECTION (Advanced)
-  // ============================================
-  {
-    id: 'animation.speedMs',
-    section: 'animation',
+  'render.contrastGuard': {
+    section: 'Render',
+    tier: 'advanced',
+    type: 'switch',
+    label: 'Contrast Guard',
+    expectsQRChange: false,
+    notes: 'Affects warnings only'
+  },
+  'render.minContrastRatio': {
+    section: 'Render',
     tier: 'advanced',
     type: 'slider',
-    selector: '[role="slider"]',
-    testValues: [50, 100, 200, 500],
-    name: 'Animation Speed',
-    affectsQR: false, // Affects playback, not static QR
-  },
-  {
-    id: 'animation.loop',
-    section: 'animation',
-    tier: 'advanced',
-    type: 'switch',
-    selector: '[role="switch"]',
-    testValues: [true, false],
-    name: 'Loop Animation',
-    affectsQR: false,
-  },
-  {
-    id: 'animation.bounce',
-    section: 'animation',
-    tier: 'advanced',
-    type: 'switch',
-    selector: '[role="switch"]',
-    testValues: [true, false],
-    name: 'Bounce Animation',
-    affectsQR: false,
+    label: 'Min Contrast Ratio',
+    expectsQRChange: false,
+    testValues: [3, 4.5, 7],
+    conditional: 'contrastGuard enabled',
+    notes: 'Affects warnings only'
   },
 
-  // ============================================
-  // OUTPUT SECTION (Advanced)
-  // ============================================
-  {
-    id: 'output.format',
-    section: 'output',
+  // ==========================================
+  // ANIMATION SECTION
+  // ==========================================
+  'animation.speedMs': {
+    section: 'Animation',
+    tier: 'basic',
+    type: 'slider',
+    label: 'Speed',
+    expectsQRChange: false,
+    testValues: [50, 100, 200],
+    notes: 'Playback speed only, does not change static QR'
+  },
+  'animation.loop': {
+    section: 'Animation',
+    tier: 'basic',
+    type: 'switch',
+    label: 'Loop',
+    expectsQRChange: false,
+    notes: 'Playback setting only'
+  },
+  'animation.bounce': {
+    section: 'Animation',
+    tier: 'basic',
+    type: 'switch',
+    label: 'Bounce',
+    expectsQRChange: false,
+    notes: 'Playback setting only'
+  },
+  'animation.startFrame': {
+    section: 'Animation',
+    tier: 'advanced',
+    type: 'slider',
+    label: 'Start Frame',
+    expectsQRChange: true,
+    testValues: [0, 5, 10],
+    conditional: 'animated source loaded'
+  },
+  'animation.maxFrames': {
+    section: 'Animation',
+    tier: 'advanced',
+    type: 'slider',
+    label: 'Max Frames',
+    expectsQRChange: true,
+    testValues: [0, 10, 50],
+    conditional: 'animated source loaded'
+  },
+  'animation.frameStep': {
+    section: 'Animation',
+    tier: 'advanced',
+    type: 'slider',
+    label: 'Frame Step',
+    expectsQRChange: true,
+    testValues: [1, 2, 5],
+    conditional: 'animated source loaded'
+  },
+  'animation.interpolate': {
+    section: 'Animation',
     tier: 'advanced',
     type: 'select',
-    selector: '[data-testid="format-select"]',
+    label: 'Interpolation',
+    expectsQRChange: true,
+    testValues: ['none', 'crossfade', 'morph'],
+    conditional: 'animated source loaded'
+  },
+  'animation.temporalDither': {
+    section: 'Animation',
+    tier: 'professional',
+    type: 'select',
+    label: 'Temporal Dither',
+    expectsQRChange: true,
+    testValues: ['off', 'blue_noise', 'flicker_safe'],
+    conditional: 'animated source loaded'
+  },
+  'animation.pattern': {
+    section: 'Animation',
+    tier: 'professional',
+    type: 'select',
+    label: 'Animation Pattern',
+    expectsQRChange: true,
+    testValues: ['none', 'pulse', 'wave', 'scanline', 'shimmer', 'drift']
+  },
+  'animation.moduleJitterPx': {
+    section: 'Animation',
+    tier: 'professional',
+    type: 'slider',
+    label: 'Module Jitter',
+    expectsQRChange: true,
+    testValues: [0, 1, 3]
+  },
+  'animation.colorCycle': {
+    section: 'Animation',
+    tier: 'professional',
+    type: 'switch',
+    label: 'Color Cycle',
+    expectsQRChange: true
+  },
+  'animation.seed': {
+    section: 'Animation',
+    tier: 'professional',
+    type: 'input',
+    label: 'Random Seed',
+    expectsQRChange: true,
+    notes: 'Changes random-based effects'
+  },
+
+  // ==========================================
+  // OUTPUT SECTION
+  // ==========================================
+  'output.format': {
+    section: 'Output',
+    tier: 'basic',
+    type: 'select',
+    label: 'Format',
+    expectsQRChange: false,
     testValues: ['png', 'webp', 'gif', 'svg'],
-    name: 'Output Format',
-    affectsQR: false, // Export format, not display
+    notes: 'Export format only, does not affect preview'
   },
-  {
-    id: 'output.widthPx',
-    section: 'output',
+  'output.widthPx': {
+    section: 'Output',
+    tier: 'basic',
+    type: 'input',
+    label: 'Width',
+    expectsQRChange: false,
+    notes: 'Export dimension only'
+  },
+  'output.heightPx': {
+    section: 'Output',
+    tier: 'basic',
+    type: 'input',
+    label: 'Height',
+    expectsQRChange: false,
+    notes: 'Export dimension only'
+  },
+  'output.quality': {
+    section: 'Output',
+    tier: 'basic',
+    type: 'slider',
+    label: 'Quality',
+    expectsQRChange: false,
+    testValues: [0.5, 0.8, 1.0],
+    conditional: 'format === webp',
+    notes: 'Export quality only'
+  },
+  'output.filename': {
+    section: 'Output',
     tier: 'advanced',
-    type: 'number',
-    selector: 'input[type="number"]',
-    testValues: [200, 400, 800],
-    name: 'Output Width',
-    affectsQR: false,
+    type: 'input',
+    label: 'Filename',
+    expectsQRChange: false,
+    notes: 'Export filename only'
   },
-  {
-    id: 'output.heightPx',
-    section: 'output',
+  'output.gifPaletteSize': {
+    section: 'Output',
     tier: 'advanced',
-    type: 'number',
-    selector: 'input[type="number"]',
-    testValues: [200, 400, 800],
-    name: 'Output Height',
-    affectsQR: false,
+    type: 'slider',
+    label: 'GIF Palette Size',
+    expectsQRChange: false,
+    testValues: [16, 64, 256],
+    conditional: 'format === gif',
+    notes: 'Export setting only'
   },
-
-  // ============================================
-  // WATERMARK SECTION (Professional)
-  // ============================================
-  {
-    id: 'watermark.enabled',
-    section: 'watermark',
+  'output.gifQuantizer': {
+    section: 'Output',
+    tier: 'advanced',
+    type: 'select',
+    label: 'GIF Quantizer',
+    expectsQRChange: false,
+    testValues: ['median_cut', 'neuquant', 'octree'],
+    conditional: 'format === gif',
+    notes: 'Export setting only'
+  },
+  'output.gifDither': {
+    section: 'Output',
+    tier: 'advanced',
+    type: 'select',
+    label: 'GIF Dither',
+    expectsQRChange: false,
+    testValues: ['off', 'floyd', 'ordered'],
+    conditional: 'format === gif',
+    notes: 'Export setting only'
+  },
+  'output.svgTrueVector': {
+    section: 'Output',
+    tier: 'advanced',
+    type: 'switch',
+    label: 'True Vector SVG',
+    expectsQRChange: false,
+    conditional: 'format === svg',
+    notes: 'Export setting only'
+  },
+  'output.svgShapePrecision': {
+    section: 'Output',
+    tier: 'advanced',
+    type: 'select',
+    label: 'SVG Shape Precision',
+    expectsQRChange: false,
+    testValues: ['pixel', 'precise'],
+    conditional: 'format === svg && svgTrueVector',
+    notes: 'Export setting only'
+  },
+  'output.svgEmbedRasterOverlay': {
+    section: 'Output',
+    tier: 'advanced',
+    type: 'switch',
+    label: 'Embed Raster Overlay',
+    expectsQRChange: false,
+    conditional: 'format === svg',
+    notes: 'Export setting only'
+  },
+  'output.bgOverride': {
+    section: 'Output',
+    tier: 'advanced',
+    type: 'color',
+    label: 'Background Override',
+    expectsQRChange: false,
+    notes: 'Export setting only'
+  },
+  'output.gifTransparentColor': {
+    section: 'Output',
+    tier: 'advanced',
+    type: 'color',
+    label: 'GIF Transparent Color',
+    expectsQRChange: false,
+    conditional: 'format === gif',
+    notes: 'Export setting only'
+  },
+  'output.dpi': {
+    section: 'Output',
+    tier: 'professional',
+    type: 'slider',
+    label: 'DPI',
+    expectsQRChange: false,
+    testValues: [72, 150, 300],
+    notes: 'Export metadata only'
+  },
+  'output.includeQuietZone': {
+    section: 'Output',
     tier: 'professional',
     type: 'switch',
-    selector: '[role="switch"]',
-    testValues: [true, false],
-    name: 'Watermark Enabled',
-    affectsQR: true,
+    label: 'Include Quiet Zone',
+    expectsQRChange: false,
+    notes: 'Export setting only'
   },
-  {
-    id: 'watermark.kind',
-    section: 'watermark',
+  'output.formatExtra': {
+    section: 'Output',
     tier: 'professional',
     type: 'select',
-    selector: '[data-testid="watermark-kind-select"]',
+    label: 'Additional Format',
+    expectsQRChange: false,
+    testValues: ['none', 'eps', 'animated_webp'],
+    notes: 'Export setting only'
+  },
+
+  // ==========================================
+  // WATERMARK SECTION (Professional tier)
+  // ==========================================
+  'watermark.enabled': {
+    section: 'Watermark',
+    tier: 'professional',
+    type: 'switch',
+    label: 'Enable Watermark',
+    expectsQRChange: true
+  },
+  'watermark.kind': {
+    section: 'Watermark',
+    tier: 'professional',
+    type: 'select',
+    label: 'Watermark Type',
+    expectsQRChange: true,
     testValues: ['text', 'image', 'pattern'],
-    name: 'Watermark Type',
-    affectsQR: true,
+    conditional: 'watermark.enabled'
   },
-  {
-    id: 'watermark.text',
-    section: 'watermark',
+  'watermark.text': {
+    section: 'Watermark',
     tier: 'professional',
-    type: 'text',
-    selector: 'input[type="text"]',
-    testValues: ['SAMPLE', 'DRAFT', 'TEST'],
-    name: 'Watermark Text',
-    affectsQR: true,
+    type: 'input',
+    label: 'Watermark Text',
+    expectsQRChange: true,
+    conditional: 'watermark.enabled && kind === text'
   },
-  {
-    id: 'watermark.position',
-    section: 'watermark',
+  'watermark.position': {
+    section: 'Watermark',
     tier: 'professional',
     type: 'select',
-    selector: '[data-testid="watermark-position-select"]',
+    label: 'Position',
+    expectsQRChange: true,
     testValues: ['center', 'corners', 'edges', 'behind', 'quiet_zone'],
-    name: 'Watermark Position',
-    affectsQR: true,
+    conditional: 'watermark.enabled'
   },
-  {
-    id: 'watermark.opacity',
-    section: 'watermark',
+  'watermark.opacity': {
+    section: 'Watermark',
     tier: 'professional',
     type: 'slider',
-    selector: '[role="slider"]',
+    label: 'Opacity',
+    expectsQRChange: true,
     testValues: [25, 50, 75, 100],
-    name: 'Watermark Opacity',
-    affectsQR: true,
+    conditional: 'watermark.enabled'
   },
-
-  // ============================================
-  // SAFETY SECTION (Professional)
-  // ============================================
-  {
-    id: 'safety.mode',
-    section: 'safety',
+  'watermark.blend': {
+    section: 'Watermark',
     tier: 'professional',
     type: 'select',
-    selector: '[data-testid="safety-mode-select"]',
-    testValues: ['off', 'balanced', 'strict'],
-    name: 'Safety Mode',
-    affectsQR: true,
+    label: 'Blend Mode',
+    expectsQRChange: true,
+    testValues: ['normal', 'multiply', 'screen', 'overlay'],
+    conditional: 'watermark.enabled'
   },
-  {
-    id: 'safety.minModulePx',
-    section: 'safety',
+
+  // ==========================================
+  // SAFETY SECTION (Professional tier)
+  // ==========================================
+  'safety.mode': {
+    section: 'Safety',
+    tier: 'professional',
+    type: 'select',
+    label: 'Safety Mode',
+    expectsQRChange: false,
+    testValues: ['off', 'balanced', 'strict'],
+    notes: 'May trigger auto-adjustments but not direct QR change'
+  },
+  'safety.minModulePx': {
+    section: 'Safety',
     tier: 'professional',
     type: 'slider',
-    selector: '[role="slider"]',
-    testValues: [1, 3, 5, 10],
-    name: 'Min Module Size',
-    affectsQR: true,
+    label: 'Min Module Size',
+    expectsQRChange: false,
+    testValues: [1, 2, 4],
+    conditional: 'safety.mode !== off',
+    notes: 'Validation threshold only'
   },
-  {
-    id: 'qa.contrastCheck',
-    section: 'safety',
+  'safety.minQuietZoneModules': {
+    section: 'Safety',
+    tier: 'professional',
+    type: 'slider',
+    label: 'Min Quiet Zone',
+    expectsQRChange: false,
+    testValues: [2, 4, 6],
+    conditional: 'safety.mode !== off',
+    notes: 'Validation threshold only'
+  },
+  'safety.lockFinders': {
+    section: 'Safety',
     tier: 'professional',
     type: 'switch',
-    selector: '[role="switch"]',
-    testValues: [true, false],
-    name: 'Contrast Check',
-    affectsQR: false,
+    label: 'Lock Finders',
+    expectsQRChange: true,
+    conditional: 'safety.mode !== off',
+    notes: 'Affects overlay behavior'
   },
-  {
-    id: 'qa.showHeatmap',
-    section: 'safety',
+  'safety.lockTiming': {
+    section: 'Safety',
     tier: 'professional',
     type: 'switch',
-    selector: '[role="switch"]',
-    testValues: [true, false],
-    name: 'Show Heatmap',
-    affectsQR: true, // Heatmap overlays on QR
+    label: 'Lock Timing',
+    expectsQRChange: true,
+    conditional: 'safety.mode !== off',
+    notes: 'Affects overlay behavior'
   },
-  {
-    id: 'auto.pickVersion',
-    section: 'safety',
+  'safety.lockAlign': {
+    section: 'Safety',
     tier: 'professional',
     type: 'switch',
-    selector: '[role="switch"]',
-    testValues: [true, false],
-    name: 'Auto Pick Version',
-    affectsQR: true,
+    label: 'Lock Alignment',
+    expectsQRChange: true,
+    conditional: 'safety.mode !== off',
+    notes: 'Affects overlay behavior'
   },
-  {
-    id: 'auto.pickEcc',
-    section: 'safety',
+  'safety.lockFormat': {
+    section: 'Safety',
     tier: 'professional',
     type: 'switch',
-    selector: '[role="switch"]',
-    testValues: [true, false],
-    name: 'Auto Pick ECC',
-    affectsQR: true,
+    label: 'Lock Format',
+    expectsQRChange: true,
+    conditional: 'safety.mode !== off',
+    notes: 'Affects overlay behavior'
+  },
+  'safety.lockVersion': {
+    section: 'Safety',
+    tier: 'professional',
+    type: 'switch',
+    label: 'Lock Version',
+    expectsQRChange: true,
+    conditional: 'safety.mode !== off',
+    notes: 'Affects overlay behavior'
+  },
+  // QA section
+  'qa.contrastCheck': {
+    section: 'Safety',
+    tier: 'professional',
+    type: 'switch',
+    label: 'Contrast Check',
+    expectsQRChange: false,
+    notes: 'Diagnostic only'
+  },
+  'qa.showHeatmap': {
+    section: 'Safety',
+    tier: 'professional',
+    type: 'switch',
+    label: 'Show Heatmap',
+    expectsQRChange: true,
+    notes: 'Visual overlay for debugging'
+  },
+  'qa.simulateBlurPx': {
+    section: 'Safety',
+    tier: 'professional',
+    type: 'slider',
+    label: 'Simulate Blur',
+    expectsQRChange: true,
+    testValues: [0, 2, 5],
+    notes: 'Preview simulation effect'
+  },
+  'qa.simulateNoise': {
+    section: 'Safety',
+    tier: 'professional',
+    type: 'slider',
+    label: 'Simulate Noise',
+    expectsQRChange: true,
+    testValues: [0, 10, 25],
+    notes: 'Preview simulation effect'
+  },
+  'qa.simulateRotationDeg': {
+    section: 'Safety',
+    tier: 'professional',
+    type: 'slider',
+    label: 'Simulate Rotation',
+    expectsQRChange: true,
+    testValues: [0, 15, 30],
+    notes: 'Preview simulation effect'
+  },
+  // Auto-tuning
+  'auto.pickVersion': {
+    section: 'Safety',
+    tier: 'professional',
+    type: 'switch',
+    label: 'Auto Pick Version',
+    expectsQRChange: true,
+    notes: 'May change QR if version auto-adjusted'
+  },
+  'auto.pickEcc': {
+    section: 'Safety',
+    tier: 'professional',
+    type: 'switch',
+    label: 'Auto Pick ECC',
+    expectsQRChange: true,
+    notes: 'May change QR if ECC auto-adjusted'
+  },
+  'auto.reduceIntensityUntilSafe': {
+    section: 'Safety',
+    tier: 'professional',
+    type: 'switch',
+    label: 'Auto Reduce Intensity',
+    expectsQRChange: true,
+    notes: 'May reduce overlay intensity'
+  },
+  // ECC-Aware
+  'overlay.eccAwareEnabled': {
+    section: 'Safety',
+    tier: 'professional',
+    type: 'switch',
+    label: 'ECC-Aware Mode',
+    expectsQRChange: true,
+    notes: 'Changes how overlay is applied'
+  },
+  'overlay.eccAwareRiskBudget': {
+    section: 'Safety',
+    tier: 'professional',
+    type: 'slider',
+    label: 'ECC Risk Budget',
+    expectsQRChange: true,
+    testValues: [25, 50, 75],
+    conditional: 'overlay.eccAwareEnabled'
+  },
+  'overlay.eccAwareWeightMap': {
+    section: 'Safety',
+    tier: 'professional',
+    type: 'select',
+    label: 'ECC Weight Map',
+    expectsQRChange: true,
+    testValues: ['distance_to_finders', 'block_heatmap', 'empirical_scan_heatmap'],
+    conditional: 'overlay.eccAwareEnabled'
   },
 
-  // ============================================
-  // METADATA SECTION (Professional)
-  // ============================================
-  {
-    id: 'metadata.title',
-    section: 'metadata',
+  // ==========================================
+  // METADATA SECTION (Professional tier)
+  // ==========================================
+  'metadata.title': {
+    section: 'Metadata',
     tier: 'professional',
-    type: 'text',
-    selector: 'input[type="text"]',
-    testValues: ['My QR Code', 'Test Title'],
-    name: 'Metadata Title',
-    affectsQR: false, // Metadata doesn't change visual QR
+    type: 'input',
+    label: 'Title',
+    expectsQRChange: false,
+    notes: 'Export metadata only'
   },
-  {
-    id: 'metadata.author',
-    section: 'metadata',
+  'metadata.author': {
+    section: 'Metadata',
     tier: 'professional',
-    type: 'text',
-    selector: 'input[type="text"]',
-    testValues: ['John Doe', 'ANQR'],
-    name: 'Metadata Author',
-    affectsQR: false,
+    type: 'input',
+    label: 'Author',
+    expectsQRChange: false,
+    notes: 'Export metadata only'
   },
-
-  // ============================================
-  // SHARE SECTION (Professional)
-  // ============================================
-  {
-    id: 'share.encodeMoreParams',
-    section: 'share',
+  'metadata.copyright': {
+    section: 'Metadata',
+    tier: 'professional',
+    type: 'input',
+    label: 'Copyright',
+    expectsQRChange: false,
+    notes: 'Export metadata only'
+  },
+  'metadata.license': {
+    section: 'Metadata',
+    tier: 'professional',
+    type: 'input',
+    label: 'License',
+    expectsQRChange: false,
+    notes: 'Export metadata only'
+  },
+  'metadata.description': {
+    section: 'Metadata',
+    tier: 'professional',
+    type: 'textarea',
+    label: 'Description',
+    expectsQRChange: false,
+    notes: 'Export metadata only'
+  },
+  'metadata.creationTime': {
+    section: 'Metadata',
     tier: 'professional',
     type: 'switch',
-    selector: '[role="switch"]',
-    testValues: [true, false],
-    name: 'Encode More Params',
-    affectsQR: false,
+    label: 'Include Creation Time',
+    expectsQRChange: false,
+    notes: 'Export metadata only'
   },
-];
+
+  // ==========================================
+  // SHARE SECTION (Professional tier)
+  // ==========================================
+  'share.directLink': {
+    section: 'Share',
+    tier: 'professional',
+    type: 'switch',
+    label: 'Direct Link',
+    expectsQRChange: false,
+    notes: 'URL generation only'
+  },
+  'share.embedHtml': {
+    section: 'Share',
+    tier: 'professional',
+    type: 'switch',
+    label: 'Embed HTML',
+    expectsQRChange: false,
+    notes: 'URL generation only'
+  },
+  'share.encodeMoreParams': {
+    section: 'Share',
+    tier: 'professional',
+    type: 'switch',
+    label: 'Encode All Params',
+    expectsQRChange: false,
+    notes: 'URL generation only'
+  },
+};
 
 /**
- * Get settings for a specific tier (includes lower tiers)
+ * Get all settings for a specific tier
  */
-export function getSettingsForTier(tier: Tier): Setting[] {
-  const tierHierarchy: Record<Tier, Tier[]> = {
-    basic: ['basic'],
-    advanced: ['basic', 'advanced'],
-    professional: ['basic', 'advanced', 'professional'],
-  };
+export function getSettingsForTier(tier: Tier): SettingsRegistry {
+  const result: SettingsRegistry = {};
+  const tierOrder = ['basic', 'advanced', 'professional'];
+  const tierIndex = tierOrder.indexOf(tier);
   
-  const allowedTiers = tierHierarchy[tier];
-  return SETTINGS_REGISTRY.filter(s => allowedTiers.includes(s.tier));
-}
-
-/**
- * Get settings for a specific section
- */
-export function getSettingsForSection(section: string): Setting[] {
-  return SETTINGS_REGISTRY.filter(s => s.section === section);
-}
-
-/**
- * Get settings that affect QR rendering
- */
-export function getQRAffectingSettings(): Setting[] {
-  return SETTINGS_REGISTRY.filter(s => s.affectsQR);
-}
-
-/**
- * Get all unique sections
- */
-export function getSections(): string[] {
-  return [...new Set(SETTINGS_REGISTRY.map(s => s.section))];
-}
-
-/**
- * Generate all permutations of settings for exhaustive testing
- * WARNING: This can generate millions of combinations!
- */
-export function* generatePermutations(
-  settings: Setting[],
-  maxDepth = 3
-): Generator<Array<{ setting: Setting; value: string | number | boolean }>> {
-  if (settings.length === 0 || maxDepth === 0) {
-    yield [];
-    return;
-  }
-  
-  const [first, ...rest] = settings;
-  
-  for (const value of first.testValues) {
-    for (const restPerm of generatePermutations(rest, maxDepth - 1)) {
-      yield [{ setting: first, value }, ...restPerm];
+  for (const [key, setting] of Object.entries(SETTINGS_REGISTRY)) {
+    const settingTierIndex = tierOrder.indexOf(setting.tier);
+    if (settingTierIndex <= tierIndex) {
+      result[key] = setting;
     }
   }
+  return result;
 }
 
 /**
- * Calculate total permutation count
+ * Get all settings for a specific section
  */
-export function countPermutations(settings: Setting[]): number {
-  return settings.reduce((acc, s) => acc * s.testValues.length, 1);
+export function getSettingsForSection(section: string): SettingsRegistry {
+  const result: SettingsRegistry = {};
+  for (const [key, setting] of Object.entries(SETTINGS_REGISTRY)) {
+    if (setting.section === section) {
+      result[key] = setting;
+    }
+  }
+  return result;
+}
+
+/**
+ * Get settings that expect QR changes
+ */
+export function getQRChangingSettings(): SettingsRegistry {
+  const result: SettingsRegistry = {};
+  for (const [key, setting] of Object.entries(SETTINGS_REGISTRY)) {
+    if (setting.expectsQRChange) {
+      result[key] = setting;
+    }
+  }
+  return result;
+}
+
+/**
+ * Get settings that don't expect QR changes
+ */
+export function getNonQRChangingSettings(): SettingsRegistry {
+  const result: SettingsRegistry = {};
+  for (const [key, setting] of Object.entries(SETTINGS_REGISTRY)) {
+    if (!setting.expectsQRChange) {
+      result[key] = setting;
+    }
+  }
+  return result;
+}
+
+/**
+ * Get unique sections
+ */
+export function getSections(): string[] {
+  const sections = new Set<string>();
+  for (const setting of Object.values(SETTINGS_REGISTRY)) {
+    sections.add(setting.section);
+  }
+  return Array.from(sections);
+}
+
+/**
+ * Get statistics about the registry
+ */
+export function getRegistryStats(): {
+  total: number;
+  byTier: Record<Tier, number>;
+  bySection: Record<string, number>;
+  byType: Record<SettingType, number>;
+  expectsQRChange: number;
+  noQRChange: number;
+} {
+  const stats = {
+    total: 0,
+    byTier: { basic: 0, advanced: 0, professional: 0 } as Record<Tier, number>,
+    bySection: {} as Record<string, number>,
+    byType: {} as Record<SettingType, number>,
+    expectsQRChange: 0,
+    noQRChange: 0,
+  };
+  
+  for (const setting of Object.values(SETTINGS_REGISTRY)) {
+    stats.total++;
+    stats.byTier[setting.tier]++;
+    stats.bySection[setting.section] = (stats.bySection[setting.section] || 0) + 1;
+    stats.byType[setting.type] = (stats.byType[setting.type] || 0) + 1;
+    if (setting.expectsQRChange) {
+      stats.expectsQRChange++;
+    } else {
+      stats.noQRChange++;
+    }
+  }
+  
+  return stats;
 }

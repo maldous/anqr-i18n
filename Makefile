@@ -1,4 +1,4 @@
-.PHONY: help dev build gallery gallery\:gif sitemap deploy android android\:init android\:sync android\:build android\:release android\:open install clean fix lint format check pull push i18n\:pull i18n\:push i18n\:xlate i18n\:xlate\:static i18n\:xlate\:locales i18n\:fill i18n\:fill\:static i18n\:fill\:locales icons icons\:android android\:run android\:keystore android\:bump zip dep sonar sonar-report test test\:basic test\:advanced test\:pro test\:all test\:ui test\:permutations test\:parallel test\:report
+.PHONY: help dev build gallery gallery\:gif sitemap deploy android android\:init android\:sync android\:build android\:release android\:open install clean fix lint format check pull push i18n\:pull i18n\:push i18n\:xlate i18n\:xlate\:static i18n\:xlate\:locales i18n\:fill i18n\:fill\:static i18n\:fill\:locales icons icons\:android android\:run android\:keystore android\:bump zip dep sonar sonar-report test test\:basic test\:advanced test\:pro test\:all test\:ui test\:permutations test\:report
 
 # ============================================
 # Help
@@ -75,9 +75,7 @@ help:
 	@echo "    make test:all       Run all tier tests sequentially"
 	@echo "    make test:ui        Open Playwright UI mode"
 	@echo "    make test:permutations  Run exhaustive permutation tests (long!)"
-	@echo ""
-	@echo "    make test:parallel WORKERS=24   Run with explicit worker count"
-	@echo "    make test:report                Show HTML test report"
+	@echo "    make test:report        Show HTML test report"
 	@echo ""
 
 # ============================================
@@ -509,15 +507,13 @@ test\:ui:
 # Control with environment variables:
 #   PERM_TIER=basic|advanced|professional
 #   PERM_SECTION=payload|overlay|render|etc
-#   PERM_DEPTH=2 (number of settings to combine)
-#   PERM_MAX=100 (max permutations to test)
+#   PERM_MAX=50 (max permutations to test)
 test\:permutations:
 	npx playwright test --project=permutations
 
-# Run with explicit worker count (override auto-detection)
-# Usage: make test:parallel WORKERS=32
-test\:parallel:
-	npx playwright test --workers=$${WORKERS:-24}
+# Generate settings QR change report for manual review
+test\:report\:settings:
+	npx playwright test tests/reports/settings-report.spec.ts --reporter=list 2>&1 | tee test-results/settings-report.txt
 
 # Show test report
 test\:report:
