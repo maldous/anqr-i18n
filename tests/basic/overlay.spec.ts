@@ -1,7 +1,13 @@
 import * as path from 'path';
 import { test, expect } from '../fixtures/test-fixtures';
-import { getCanvasSnapshot, snapshotsAreDifferent } from '../helpers/qr-detector';
-import { setSliderByPercent } from '../helpers/input-helpers';
+import { 
+  getCanvasSnapshot, 
+  snapshotsAreDifferent, 
+  waitForCanvasChange,
+  waitForAccordionOpen,
+  waitForSelectOpen,
+  clickSelectOption
+} from '../helpers/qr-detector';
 import type { Page } from '@playwright/test';
 
 /**
@@ -33,153 +39,160 @@ const ANIMATED_IMAGE_URL = 'https://anqr.link/king.gif';
 
 /**
  * Expand the Overlay section in the sidebar and ensure it stays open
+ * Uses data-state attribute detection instead of timeouts
  */
 async function expandOverlaySection(page: Page) {
-  // Find the Overlay accordion trigger by text
-  const overlayTrigger = page.locator('button[data-radix-collection-item]').filter({ hasText: /^Overlay$/i }).first();
+  // Try multiple strategies to find and expand the overlay section
   
-  // Check if the section is already open by looking at the accordion item's data-state
+  // Strategy 1: Check if already open via accordion item data-state
   const accordionItem = page.locator('[data-state][value="overlay"]').first();
-  const state = await accordionItem.getAttribute('data-state').catch(() => 'closed');
+  const existingState = await accordionItem.getAttribute('data-state').catch(() => null);
   
-  if (state !== 'open') {
-    // Click to expand
-    if (await overlayTrigger.isVisible().catch(() => false)) {
-      await overlayTrigger.click();
-      await page.waitForTimeout(400);
+  if (existingState === 'open') {
+    // Already open, just scroll into view
+    const content = page.locator('[role="region"]').filter({ has: page.locator('input[type="file"]') }).first();
+    await content.scrollIntoViewIfNeeded().catch(() => {});
+    return;
+  }
+  
+  // Strategy 2: Find overlay accordion trigger by text content
+  const overlayTriggers = [
+    page.locator('button').filter({ hasText: /^Overlay$/i }).first(),
+    page.locator('[data-radix-collection-item]').filter({ hasText: /Overlay/i }).first(),
+    page.getByRole('button', { name: /Overlay/i }).first(),
+  ];
+  
+  for (const trigger of overlayTriggers) {
+    if (await trigger.isVisible().catch(() => false)) {
+      await trigger.click();
+      // Wait for the section to open - look for file input becoming available
+      await page.waitForSelector('input[type="file"]', { state: 'attached', timeout: 5000 }).catch(() => {});
+      return;
     }
   }
   
-  // Scroll the overlay section into view to ensure controls are visible
-  const overlayContent = page.locator('[data-state="open"][value="overlay"]').first();
-  if (await overlayContent.isVisible().catch(() => false)) {
-    await overlayContent.scrollIntoViewIfNeeded();
+  // Strategy 3: Click any accordion trigger that contains "Overlay" text
+  const allTriggers = page.locator('[data-radix-collection-item]');
+  const count = await allTriggers.count();
+  for (let i = 0; i < count; i++) {
+    const trigger = allTriggers.nth(i);
+    const text = await trigger.textContent().catch(() => '');
+    if (text && /overlay/i.test(text)) {
+      await trigger.click();
+      await page.waitForSelector('input[type="file"]', { state: 'attached', timeout: 5000 }).catch(() => {});
+      return;
+    }
   }
 }
 
 /**
  * Upload an overlay image file
+ * Uses application signaling (data-rendering-state) instead of canvas pixel comparison
  */
 async function uploadOverlayImage(page: Page, filePath: string) {
   await expandOverlaySection(page);
   
+  // Get snapshot before upload to detect change
+  const beforeSnapshot = await getCanvasSnapshot(page);
+  
   // File input is hidden but setInputFiles works on hidden inputs
+  // Wait for it to be attached to the DOM (not necessarily visible)
   const fileInput = page.locator('input[type="file"]').first();
+  await fileInput.waitFor({ state: 'attached', timeout: 5000 });
   await fileInput.setInputFiles(filePath);
-  await page.waitForTimeout(1500); // Wait for image to load and process
+  
+  // Wait for rendering to complete using application signaling
+  await page.waitForSelector('[data-rendering-state="idle"]', { state: 'attached', timeout: 10000 }).catch(() => {});
+  
+  // Also verify canvas actually changed
+  await waitForCanvasChange(page, beforeSnapshot, 10000).catch(() => {});
   
   // Re-expand the section in case it closed after file selection
   await expandOverlaySection(page);
-  await page.waitForTimeout(300);
 }
 
 /**
  * Load an overlay image from URL
+ * Uses network idle and canvas change detection instead of fixed timeouts
  */
 async function loadOverlayFromUrl(page: Page, url: string) {
   await expandOverlaySection(page);
   
+  // Get snapshot before to detect change
+  const beforeSnapshot = await getCanvasSnapshot(page);
+  
   // Click "From URL" button
   const fromUrlButton = page.locator('button').filter({ hasText: /From URL|URL/i }).first();
   await fromUrlButton.click();
-  await page.waitForTimeout(300);
   
-  // Enter URL
+  // Wait for URL input to be visible
   const urlInput = page.locator('input[type="url"]').first();
+  await urlInput.waitFor({ state: 'visible', timeout: 5000 });
   await urlInput.fill(url);
   
-  // Click Load button
+  // Click Load button and wait for network + canvas change
   const loadButton = page.locator('button').filter({ hasText: /^Load$/i }).first();
   await loadButton.click();
   
-  // Wait for network request and image load
-  await page.waitForTimeout(2500);
+  // Wait for canvas to change (indicates image was loaded and processed)
+  await waitForCanvasChange(page, beforeSnapshot, 15000);
 }
 
 /**
  * Clear the current overlay
+ * Uses canvas change detection instead of fixed timeout
  */
 async function clearOverlay(page: Page) {
   await expandOverlaySection(page);
+  
+  const beforeSnapshot = await getCanvasSnapshot(page);
+  
   // Look for the X button near the filename
   const clearButton = page.locator('button').filter({ has: page.locator('svg.lucide-x') }).first();
   if (await clearButton.isVisible().catch(() => false)) {
     await clearButton.click();
-    await page.waitForTimeout(300);
+    // Wait for canvas to change (overlay removed)
+    await waitForCanvasChange(page, beforeSnapshot, 5000);
   }
 }
 
 /**
  * Set overlay mode (center, blend, halftone, dithered)
+ * Uses event-driven select interaction with proper scrolling
  */
 async function setOverlayMode(page: Page, mode: string) {
   await expandOverlaySection(page);
-  await page.waitForTimeout(300);
   
   // Find the Mode select - it's the first combobox in the overlay section content
-  // The accordion content region contains all controls
-  const overlaySection = page.locator('[data-state="open"][value="overlay"]').first();
-  const accordionContent = overlaySection.locator('xpath=following-sibling::*[1]');
+  const overlaySection = page.locator('[role="region"][data-state="open"]').first();
+  const modeSelect = overlaySection.locator('[role="combobox"]').first();
   
-  // Scroll down within the overlay section to ensure controls are visible
-  await accordionContent.evaluate(el => el.scrollTop = 0);
+  await modeSelect.waitFor({ state: 'visible', timeout: 5000 });
+  await modeSelect.scrollIntoViewIfNeeded();
+  await modeSelect.click();
   
-  // Find the Mode select - look for combobox
-  const modeSelect = accordionContent.locator('[role="combobox"]').first();
-  await modeSelect.waitFor({ state: 'visible', timeout: 5000 }).catch(() => {});
+  // Wait for dropdown to open
+  await waitForSelectOpen(page);
   
-  if (await modeSelect.isVisible().catch(() => false)) {
-    // Scroll the select into view first
-    await modeSelect.scrollIntoViewIfNeeded();
-    await modeSelect.click();
-    await page.waitForTimeout(300);
-    
-    // Wait for dropdown to appear
-    await page.waitForSelector('[data-radix-popper-content-wrapper]', { timeout: 3000 }).catch(() => {});
-    
-    // Find the option - scroll through options if needed
-    const optionsContainer = page.locator('[data-radix-popper-content-wrapper]').first();
-    const option = optionsContainer.locator('[role="option"]').filter({ hasText: new RegExp(mode, 'i') }).first();
-    
-    // Scroll the option into view within the dropdown
-    if (await option.count() > 0) {
-      await option.scrollIntoViewIfNeeded();
-      await page.waitForTimeout(100);
-      await option.click();
-      await page.waitForTimeout(300);
-    } else {
-      // Try keyboard navigation as fallback
-      const allOptions = optionsContainer.locator('[role="option"]');
-      const count = await allOptions.count();
-      for (let i = 0; i < count; i++) {
-        const opt = allOptions.nth(i);
-        const text = await opt.textContent();
-        if (text && new RegExp(mode, 'i').test(text)) {
-          await opt.scrollIntoViewIfNeeded();
-          await opt.click();
-          await page.waitForTimeout(300);
-          return;
-        }
-      }
-      // Close dropdown if option not found
-      await page.keyboard.press('Escape');
-    }
+  // Click the option with scrolling support
+  const clicked = await clickSelectOption(page, mode);
+  
+  if (!clicked) {
+    // Close dropdown if option not found
+    await page.keyboard.press('Escape');
   }
 }
 
 /**
  * Set overlay color mode (color, grayscale, bw)
+ * Uses event-driven select interaction
  */
 async function setOverlayColorMode(page: Page, colorMode: string) {
   await expandOverlaySection(page);
-  await page.waitForTimeout(300);
   
   // Find overlay section content
-  const overlaySection = page.locator('[data-state="open"][value="overlay"]').first();
-  const accordionContent = overlaySection.locator('xpath=following-sibling::*[1]');
-  
-  // Color mode is typically the second combobox in the overlay section
-  const comboboxes = accordionContent.locator('[role="combobox"]');
+  const overlaySection = page.locator('[role="region"][data-state="open"]').first();
+  const comboboxes = overlaySection.locator('[role="combobox"]');
   const count = await comboboxes.count();
   
   // Look through comboboxes to find the one with color options
@@ -190,26 +203,28 @@ async function setOverlayColorMode(page: Page, colorMode: string) {
     // Scroll combobox into view
     await combobox.scrollIntoViewIfNeeded();
     await combobox.click();
-    await page.waitForTimeout(300);
     
-    // Wait for dropdown
-    await page.waitForSelector('[data-radix-popper-content-wrapper]', { timeout: 3000 }).catch(() => {});
+    // Wait for dropdown to open
+    await waitForSelectOpen(page).catch(() => {});
     const optionsContainer = page.locator('[data-radix-popper-content-wrapper]').first();
+    
+    if (!(await optionsContainer.isVisible().catch(() => false))) continue;
     
     // Check if this dropdown has color mode options
     const allOptions = optionsContainer.locator('[role="option"]');
-    const optionTexts: string[] = [];
     const optCount = await allOptions.count();
+    
+    let hasColorOptions = false;
     for (let j = 0; j < optCount; j++) {
       const text = await allOptions.nth(j).textContent();
-      optionTexts.push(text || '');
+      if (text && /Color|Grayscale|B&W/i.test(text)) {
+        hasColorOptions = true;
+        break;
+      }
     }
     
-    // Check if this is the color mode dropdown
-    const hasColorOptions = optionTexts.some(t => /Color|Grayscale|B&W/i.test(t));
-    
     if (hasColorOptions) {
-      // Find our target option
+      // Find and click our target option
       for (let j = 0; j < optCount; j++) {
         const opt = allOptions.nth(j);
         const text = await opt.textContent();
@@ -223,7 +238,6 @@ async function setOverlayColorMode(page: Page, colorMode: string) {
         if (isMatch) {
           await opt.scrollIntoViewIfNeeded();
           await opt.click();
-          await page.waitForTimeout(300);
           return;
         }
       }
@@ -231,53 +245,44 @@ async function setOverlayColorMode(page: Page, colorMode: string) {
     
     // Close dropdown if not the right one
     await page.keyboard.press('Escape');
-    await page.waitForTimeout(100);
   }
 }
 
 /**
  * Set overlay intensity via slider
+ * Uses event-driven interaction
  */
 async function setOverlayIntensity(page: Page, percent: number) {
   await expandOverlaySection(page);
-  await page.waitForTimeout(300);
   
   // Find overlay section content
-  const overlaySection = page.locator('[data-state="open"][value="overlay"]').first();
-  const accordionContent = overlaySection.locator('xpath=following-sibling::*[1]');
+  const overlaySection = page.locator('[role="region"][data-state="open"]').first();
   
   // Find intensity slider (usually the first slider in overlay section)
-  const slider = accordionContent.locator('[role="slider"]').first();
-  await slider.waitFor({ state: 'visible', timeout: 5000 }).catch(() => {});
+  const slider = overlaySection.locator('[role="slider"]').first();
+  await slider.waitFor({ state: 'visible', timeout: 5000 });
+  await slider.scrollIntoViewIfNeeded();
   
-  if (await slider.isVisible().catch(() => false)) {
-    // Scroll slider into view
-    await slider.scrollIntoViewIfNeeded();
-    await page.waitForTimeout(100);
-    
-    const box = await slider.boundingBox();
-    if (box) {
-      const x = box.x + (box.width * percent) / 100;
-      const y = box.y + box.height / 2;
-      await page.mouse.click(x, y);
-      await page.waitForTimeout(300);
-    }
+  const box = await slider.boundingBox();
+  if (box) {
+    const x = box.x + (box.width * percent) / 100;
+    const y = box.y + box.height / 2;
+    await page.mouse.click(x, y);
   }
 }
 
 /**
  * Toggle preserve finders switch
+ * Uses event-driven interaction
  */
 async function togglePreserveFinders(page: Page) {
   await expandOverlaySection(page);
-  await page.waitForTimeout(300);
   
   // Find overlay section content
-  const overlaySection = page.locator('[data-state="open"][value="overlay"]').first();
-  const accordionContent = overlaySection.locator('xpath=following-sibling::*[1]');
+  const overlaySection = page.locator('[role="region"][data-state="open"]').first();
   
   // Find switches in the overlay section content
-  const switches = accordionContent.locator('[role="switch"]');
+  const switches = overlaySection.locator('[role="switch"]');
   const count = await switches.count();
   
   // Look for the "Preserve Finders" switch by examining nearby labels
@@ -293,7 +298,6 @@ async function togglePreserveFinders(page: Page) {
       if (text && /preserve|finder/i.test(text)) {
         await switchEl.scrollIntoViewIfNeeded();
         await switchEl.click();
-        await page.waitForTimeout(300);
         return;
       }
     }
@@ -308,7 +312,6 @@ async function togglePreserveFinders(page: Page) {
     if (isVisible && !isDisabled) {
       await switchEl.scrollIntoViewIfNeeded();
       await switchEl.click();
-      await page.waitForTimeout(300);
       return;
     }
   }
@@ -316,17 +319,16 @@ async function togglePreserveFinders(page: Page) {
 
 /**
  * Enable/disable crop
+ * Uses data-state detection instead of timeouts
  */
 async function setCropEnabled(page: Page, enabled: boolean) {
   await expandOverlaySection(page);
-  await page.waitForTimeout(300);
   
   // Find overlay section content
-  const overlaySection = page.locator('[data-state="open"][value="overlay"]').first();
-  const accordionContent = overlaySection.locator('xpath=following-sibling::*[1]');
+  const overlaySection = page.locator('[role="region"][data-state="open"]').first();
   
   // Find the crop enable switch
-  const switches = accordionContent.locator('[role="switch"]');
+  const switches = overlaySection.locator('[role="switch"]');
   const count = await switches.count();
   
   for (let i = 0; i < count; i++) {
@@ -346,7 +348,23 @@ async function setCropEnabled(page: Page, enabled: boolean) {
         
         if (isCurrentlyEnabled !== enabled) {
           await switchEl.click();
-          await page.waitForTimeout(300);
+          // Wait for switch state to change
+          const expectedState = enabled ? 'checked' : 'unchecked';
+          await switchEl.waitFor({ state: 'attached' });
+          await page.waitForFunction(
+            (args: { switchId: string; expected: string }) => {
+              const switches = document.querySelectorAll('[role="switch"]');
+              for (const sw of switches) {
+                const container = sw.closest('div');
+                if (container?.textContent?.toLowerCase().includes('crop')) {
+                  return sw.getAttribute('data-state') === args.expected;
+                }
+              }
+              return true;
+            },
+            { switchId: '', expected: expectedState },
+            { timeout: 2000 }
+          ).catch(() => {});
         }
         return;
       }
@@ -356,34 +374,30 @@ async function setCropEnabled(page: Page, enabled: boolean) {
 
 /**
  * Set crop size via slider
+ * Uses event-driven interaction
  */
 async function setCropSize(page: Page, percent: number) {
   await expandOverlaySection(page);
-  await page.waitForTimeout(300);
   
   // Find overlay section content
-  const overlaySection = page.locator('[data-state="open"][value="overlay"]').first();
-  const accordionContent = overlaySection.locator('xpath=following-sibling::*[1]');
+  const overlaySection = page.locator('[role="region"][data-state="open"]').first();
   
   // Find crop size slider (usually appears after crop is enabled)
-  const sliders = accordionContent.locator('[role="slider"]');
+  const sliders = overlaySection.locator('[role="slider"]');
   const count = await sliders.count();
   
   if (count > 1) {
     // Crop size slider is typically the second slider
     const cropSlider = sliders.nth(1);
-    if (await cropSlider.isVisible().catch(() => false)) {
-      await cropSlider.scrollIntoViewIfNeeded();
-      await page.waitForTimeout(100);
-      
-      const box = await cropSlider.boundingBox();
-      if (box) {
-        // Map percent (10-100) to slider position
-        const x = box.x + (box.width * percent) / 100;
-        const y = box.y + box.height / 2;
-        await page.mouse.click(x, y);
-        await page.waitForTimeout(300);
-      }
+    await cropSlider.waitFor({ state: 'visible', timeout: 5000 });
+    await cropSlider.scrollIntoViewIfNeeded();
+    
+    const box = await cropSlider.boundingBox();
+    if (box) {
+      // Map percent (10-100) to slider position
+      const x = box.x + (box.width * percent) / 100;
+      const y = box.y + box.height / 2;
+      await page.mouse.click(x, y);
     }
   }
 }
@@ -400,35 +414,36 @@ async function isOverlayEnabled(page: Page): Promise<boolean> {
 
 /**
  * Set payload text (for combined tests)
+ * Uses event-driven interaction
  */
 async function setPayloadText(page: Page, text: string) {
   // Expand payload section
   const payloadTrigger = page.locator('button').filter({ hasText: /^Payload$/i }).first();
   if (await payloadTrigger.isVisible().catch(() => false)) {
     await payloadTrigger.click();
-    await page.waitForTimeout(300);
+    await waitForAccordionOpen(page, 'payload').catch(() => {});
   }
   
   // Switch to plain text type
   const combobox = page.getByRole('combobox').first();
   await combobox.click();
-  await page.waitForTimeout(200);
+  await waitForSelectOpen(page).catch(() => {});
   
   const plainTextOption = page.getByRole('option', { name: /Plain Text/i }).first();
   if (await plainTextOption.isVisible().catch(() => false)) {
     await plainTextOption.click();
-    await page.waitForTimeout(200);
   } else {
     await page.keyboard.press('Escape');
   }
   
-  // Set text
+  // Set text - wait for textarea to be visible
   const textarea = page.locator('textarea').first();
+  await textarea.waitFor({ state: 'visible', timeout: 5000 }).catch(() => {});
+  
   if (await textarea.isVisible().catch(() => false)) {
     await textarea.clear();
     await textarea.fill(text);
     await textarea.blur();
-    await page.waitForTimeout(300);
   }
 }
 
@@ -437,11 +452,12 @@ async function setPayloadText(page: Page, text: string) {
 // ==========================================
 
 test.describe('Overlay Section - Basic Tier', () => {
-  test.beforeEach(async ({ page, setTier }) => {
+  test.beforeEach(async ({ page, setTier, waitForQRRender }) => {
     await page.goto('/');
     await setTier('basic');
     await page.waitForSelector('canvas', { timeout: 10000 });
-    await page.waitForTimeout(500);
+    // Event-driven: wait for canvas to stabilize instead of arbitrary timeout
+    await waitForQRRender();
   });
 
   // ==========================================
@@ -833,14 +849,25 @@ test.describe('Overlay Section - Basic Tier', () => {
       await expandOverlaySection(page);
       
       // Count sliders before enabling crop
-      const slidersBefore = await page.locator('[role="slider"]').count();
+      const overlaySection = page.locator('[role="region"][data-state="open"]').first();
+      const slidersBefore = await overlaySection.locator('[role="slider"]').count();
       
       // Enable crop
       await setCropEnabled(page, true);
-      await page.waitForTimeout(300);
+      
+      // Wait for new slider to appear
+      await page.waitForFunction(
+        (prevCount: number) => {
+          const section = document.querySelector('[role="region"][data-state="open"]');
+          if (!section) return false;
+          return section.querySelectorAll('[role="slider"]').length > prevCount;
+        },
+        slidersBefore,
+        { timeout: 5000 }
+      ).catch(() => {});
       
       // Count sliders after
-      const slidersAfter = await page.locator('[role="slider"]').count();
+      const slidersAfter = await overlaySection.locator('[role="slider"]').count();
       
       // Should have more controls after enabling crop
       expect(slidersAfter).toBeGreaterThanOrEqual(slidersBefore);
@@ -1092,16 +1119,18 @@ test.describe('Overlay Section - Basic Tier', () => {
       await waitForQRRender();
       await expandOverlaySection(page);
 
+      const overlaySection = page.locator('[role="region"][data-state="open"]').first();
+
       // Check switches have role
-      const switches = page.locator('[role="switch"]');
+      const switches = overlaySection.locator('[role="switch"]');
       expect(await switches.count()).toBeGreaterThan(0);
 
       // Check sliders have role
-      const sliders = page.locator('[role="slider"]');
+      const sliders = overlaySection.locator('[role="slider"]');
       expect(await sliders.count()).toBeGreaterThan(0);
 
       // Check comboboxes have role
-      const comboboxes = page.locator('[role="combobox"]');
+      const comboboxes = overlaySection.locator('[role="combobox"]');
       expect(await comboboxes.count()).toBeGreaterThan(0);
     });
 
@@ -1126,16 +1155,18 @@ test.describe('Overlay Section - Basic Tier', () => {
       // Click "From URL" button
       const fromUrlButton = page.locator('button').filter({ hasText: /From URL|URL/i }).first();
       await fromUrlButton.click();
-      await page.waitForTimeout(300);
       
-      // Enter invalid URL
+      // Wait for URL input to be visible
       const urlInput = page.locator('input[type="url"]').first();
+      await urlInput.waitFor({ state: 'visible', timeout: 5000 });
       await urlInput.fill('not-a-valid-url');
       
       // Try to load
       const loadButton = page.locator('button').filter({ hasText: /^Load$/i }).first();
       await loadButton.click();
-      await page.waitForTimeout(1000);
+      
+      // Event-driven: wait for network to settle after failed request
+      await page.waitForLoadState('networkidle', { timeout: 5000 }).catch(() => {});
       
       // Page should not crash - canvas should still be visible
       const canvas = page.locator('canvas').first();
@@ -1148,12 +1179,14 @@ test.describe('Overlay Section - Basic Tier', () => {
       // Click "From URL" button
       const fromUrlButton = page.locator('button').filter({ hasText: /From URL|URL/i }).first();
       await fromUrlButton.click();
-      await page.waitForTimeout(300);
+      
+      // Wait for URL input to be visible
+      const urlInput = page.locator('input[type="url"]').first();
+      await urlInput.waitFor({ state: 'visible', timeout: 5000 });
       
       // Try to load with empty URL
       const loadButton = page.locator('button').filter({ hasText: /^Load$/i }).first();
       await loadButton.click();
-      await page.waitForTimeout(500);
       
       // Should show error or be disabled - page should not crash
       const canvas = page.locator('canvas').first();

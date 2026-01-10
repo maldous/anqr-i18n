@@ -1,4 +1,6 @@
 import { test as base, type Page } from '@playwright/test';
+import { waitForCanvasChange, getCanvasSnapshot, waitForAccordionOpen } from '../helpers/qr-detector';
+import { enableBrowserDebug, waitForAppReady, waitForRenderingIdle } from '../helpers/test-setup';
 
 export type Tier = 'basic' | 'advanced' | 'professional';
 
@@ -17,25 +19,29 @@ export interface TestFixtures {
 
 /**
  * Dismiss the welcome modal by clicking the dismiss button if it appears
+ * Uses event-driven waiting instead of arbitrary timeouts
  */
 async function dismissWelcomeModalHelper(page: Page): Promise<void> {
-  // Wait a bit for modal to potentially appear
-  await page.waitForTimeout(800);
-  
   // Check if any modal overlay is blocking - look for the z-[200] fixed overlay
   const modalOverlay = page.locator('.fixed.z-\\[200\\]').first();
-  if (await modalOverlay.isVisible().catch(() => false)) {
+  
+  // Give a short window for modal to appear (this is acceptable as we're checking for absence)
+  const isVisible = await modalOverlay.waitFor({ state: 'visible', timeout: 1000 }).then(() => true).catch(() => false);
+  
+  if (isVisible) {
     // Try clicking "Get Started" button first (most reliable)
     const getStartedBtn = page.locator('button:has-text("Get Started")').first();
     if (await getStartedBtn.isVisible().catch(() => false)) {
       await getStartedBtn.click();
-      await page.waitForTimeout(400);
+      // Wait for modal to close
+      await modalOverlay.waitFor({ state: 'hidden', timeout: 2000 }).catch(() => {});
       return;
     }
     
     // Try pressing Escape key
     await page.keyboard.press('Escape');
-    await page.waitForTimeout(400);
+    // Wait for modal to close
+    await modalOverlay.waitFor({ state: 'hidden', timeout: 2000 }).catch(() => {});
   }
 }
 
@@ -51,12 +57,16 @@ async function setupLocalStorage(page: Page): Promise<void> {
 }
 
 export const test = base.extend<TestFixtures>({
-  // Auto-setup: Set localStorage to skip welcome modal BEFORE each test
+  // Auto-setup: Set localStorage to skip welcome modal and enable debugging
   page: async ({ page }, use) => {
     // Set localStorage via init script to prevent welcome modal
     await page.addInitScript(() => {
       localStorage.setItem('anqr-welcome-seen', '2026.01.04');
     });
+    
+    // Enable browser-side debugging (errors only by default to reduce noise)
+    enableBrowserDebug(page, { console: true, errors: true, network: false });
+    
     await use(page);
   },
 
@@ -90,6 +100,8 @@ export const test = base.extend<TestFixtures>({
         if (await tab.isVisible().catch(() => false)) {
           await tab.click();
           clicked = true;
+          // Wait for tab to be selected (aria-selected="true")
+          await page.waitForSelector(`[role="tab"][aria-selected="true"]:has-text("${label}")`, { timeout: 2000 }).catch(() => {});
           break;
         }
       }
@@ -99,20 +111,20 @@ export const test = base.extend<TestFixtures>({
         const selectTrigger = page.locator('button[role="combobox"]').first();
         if (await selectTrigger.isVisible().catch(() => false)) {
           await selectTrigger.click();
-          await page.waitForTimeout(100);
+          // Wait for dropdown to open
+          await page.waitForSelector('[data-radix-popper-content-wrapper]', { state: 'visible', timeout: 2000 });
           
           for (const label of labels) {
             const option = page.locator(`[role="option"]:has-text("${label}")`).first();
             if (await option.isVisible().catch(() => false)) {
               await option.click();
+              // Wait for dropdown to close
+              await page.waitForSelector('[data-radix-popper-content-wrapper]', { state: 'hidden', timeout: 2000 }).catch(() => {});
               break;
             }
           }
         }
       }
-      
-      // Wait for UI to update
-      await page.waitForTimeout(300);
     };
     await use(setTier);
   },
@@ -128,7 +140,8 @@ export const test = base.extend<TestFixtures>({
       if (!isExpanded) {
         // Click the accordion trigger to expand
         await page.click(`button:has-text("${getSectionLabel(sectionId)}")`);
-        await page.waitForTimeout(200);
+        // Wait for accordion to open using data-state attribute
+        await waitForAccordionOpen(page, sectionId);
       }
     };
     await use(expandSection);
@@ -143,10 +156,13 @@ export const test = base.extend<TestFixtures>({
 
   waitForQRRender: async ({ page }, use) => {
     const waitForQRRender = async () => {
-      // Wait for the debounce (300ms) plus render time
-      await page.waitForTimeout(500);
-      // Wait for any loading indicators to disappear
-      await page.waitForSelector('[data-loading="true"]', { state: 'hidden', timeout: 5000 }).catch(() => {});
+      // Wait for canvas to be visible first
+      const canvas = page.locator('canvas').first();
+      await canvas.waitFor({ state: 'visible', timeout: 5000 });
+      
+      // Wait for app to signal rendering is complete (data-rendering-state="idle")
+      // This waits for: blur -> debounce (300ms) -> render -> idle
+      await waitForRenderingIdle(page, 10000);
     };
     await use(waitForQRRender);
   },

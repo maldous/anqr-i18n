@@ -41,9 +41,15 @@ export default defineConfig({
   /* Global settings */
   use: {
     baseURL: 'http://localhost:5173',
-    trace: 'on-first-retry',
+    
+    /* Debugging: Gold standard trace capture */
+    trace: 'on-first-retry', // Captures DOM snapshots, network waterfall, exact wait reasons
     screenshot: 'only-on-failure',
     video: 'retain-on-failure',
+    
+    /* Action timeout - fail fast if locators don't resolve */
+    actionTimeout: 5000,
+    navigationTimeout: 10000,
     
     /* Browser launch options for performance */
     launchOptions: {
