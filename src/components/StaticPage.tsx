@@ -64,14 +64,19 @@ function renderTextWithLinks(text: string, lang: string): React.ReactNode {
     for (let i = 0; i < matches.length; i++) {
       const match = matches[i];
       const num = match[1];
-      const _startOfNumber = match.index! + (match[0].startsWith(' ') ? 1 : 0);
-      const startOfContent = match.index! + match[0].length;
+      const matchIndex = match.index ?? 0;
+      const _startOfNumber = matchIndex + (match[0].startsWith(' ') ? 1 : 0);
+      const startOfContent = matchIndex + match[0].length;
 
       // Find where this item ends (start of next number or end of string)
       const nextMatch = matches[i + 1];
-      const endOfContent = nextMatch
-        ? nextMatch.index! + (nextMatch[0].startsWith(' ') ? 1 : 0)
-        : text.length;
+      let endOfContent: number;
+      if (nextMatch) {
+        const nextIndex = nextMatch.index ?? 0;
+        endOfContent = nextIndex + (nextMatch[0].startsWith(' ') ? 1 : 0);
+      } else {
+        endOfContent = text.length;
+      }
 
       const content = text.slice(startOfContent, endOfContent).trim();
       if (content) {
@@ -83,8 +88,8 @@ function renderTextWithLinks(text: string, lang: string): React.ReactNode {
     if (items.length >= 2) {
       return (
         <ol className="list-decimal pl-5 space-y-1.5 text-left">
-          {items.map((item, idx) => (
-            <li key={idx} className="leading-relaxed">
+          {items.map((item) => (
+            <li key={`${item.num}-${item.content.slice(0, 20)}`} className="leading-relaxed">
               {renderTextContent(item.content, lang)}
             </li>
           ))}
@@ -185,8 +190,8 @@ function buildGuideToc(sections: PageSection[], t: (key: string) => string): Toc
     return 5;
   };
 
-  sections.forEach((section, index) => {
-    if (!section.heading) return;
+  for (const [index, section] of sections.entries()) {
+    if (!section.heading) continue;
     const id = `section-${index}`;
     const groupIndex = getGroupIndex(index);
     // First item in each group becomes the group's header link target
@@ -194,7 +199,7 @@ function buildGuideToc(sections: PageSection[], t: (key: string) => string): Toc
       groups[groupIndex].id = id;
     }
     groups[groupIndex].items.push({ id, title: section.heading });
-  });
+  }
 
   return groups.filter((g) => g.items.length > 0);
 }
@@ -207,14 +212,14 @@ function buildLearnToc(sections: PageSection[], _t: (key: string) => string): To
   // Guide start indices based on actual learn.ts structure:
   // Guide 1: 7 sections (0-6), Guide 2: 6 sections (7-12), Guide 3: 6 sections (13-18),
   // Guide 4: 7 sections (19-25), Guide 5: 7 sections (26-32)
-  const guideStartIndices = [0, 7, 13, 19, 26];
+  const guideStartIndices = new Set([0, 7, 13, 19, 26]);
 
-  sections.forEach((section, index) => {
-    if (!section.heading) return;
+  for (const [index, section] of sections.entries()) {
+    if (!section.heading) continue;
     const id = `section-${index}`;
 
     // Guide title sections
-    if (guideStartIndices.includes(index)) {
+    if (guideStartIndices.has(index)) {
       groups.push({
         key: `learn-${groups.length}`,
         title: section.heading,
@@ -224,7 +229,7 @@ function buildLearnToc(sections: PageSection[], _t: (key: string) => string): To
     } else if (groups.length > 0) {
       groups[groups.length - 1].items.push({ id, title: section.heading });
     }
-  });
+  }
 
   return groups.filter((g) => g.items.length > 0);
 }
@@ -236,14 +241,14 @@ function buildExamplesToc(sections: PageSection[], _t: (key: string) => string):
 
   // Example start indices based on actual examples.ts structure:
   // Each example has 5 sections (case study + 4 subsections)
-  const exampleStartIndices = [0, 5, 10, 15, 20];
+  const exampleStartIndices = new Set([0, 5, 10, 15, 20]);
 
-  sections.forEach((section, index) => {
-    if (!section.heading) return;
+  for (const [index, section] of sections.entries()) {
+    if (!section.heading) continue;
     const id = `section-${index}`;
 
     // Example title sections
-    if (exampleStartIndices.includes(index)) {
+    if (exampleStartIndices.has(index)) {
       groups.push({
         key: `example-${groups.length}`,
         title: section.heading,
@@ -253,7 +258,7 @@ function buildExamplesToc(sections: PageSection[], _t: (key: string) => string):
     } else if (groups.length > 0) {
       groups[groups.length - 1].items.push({ id, title: section.heading });
     }
-  });
+  }
 
   return groups.filter((g) => g.items.length > 0);
 }
@@ -284,14 +289,14 @@ function TableOfContents({
   onClose,
   isOpen,
   t,
-}: {
+}: Readonly<{
   groups: TocGroup[];
   activeSlug: string;
   onNavigate: (slug: string) => void;
   onClose: () => void;
   isOpen: boolean;
   t: (key: string) => string;
-}) {
+}>) {
   const [mobileOpen, setMobileOpen] = useState(false);
 
   // On desktop, respect isOpen prop. On mobile, always render (has its own mobileOpen state)
@@ -414,17 +419,11 @@ function TableOfContents({
 
         {/* Backdrop */}
         {mobileOpen && (
-          <div
-            role="button"
-            tabIndex={0}
-            className="fixed inset-0 z-40 bg-black/50"
+          <button
+            type="button"
+            className="fixed inset-0 z-40 bg-black/50 cursor-default"
             onClick={() => setMobileOpen(false)}
-            onKeyDown={(e) => {
-              if (e.key === 'Enter' || e.key === ' ') {
-                e.preventDefault();
-                setMobileOpen(false);
-              }
-            }}
+            aria-label="Close sidebar"
           />
         )}
 
@@ -481,7 +480,7 @@ function TableOfContents({
 }
 
 // Breadcrumb component for navigation hierarchy
-function Breadcrumb({ items, lang }: { items: string[]; lang: string }) {
+function Breadcrumb({ items, lang }: Readonly<{ items: string[]; lang: string }>) {
   if (!items || items.length === 0) return null;
 
   return (
@@ -512,7 +511,7 @@ function Breadcrumb({ items, lang }: { items: string[]; lang: string }) {
 }
 
 // Render primary CTA links as prominent styled buttons
-function PrimaryLinks({ links, lang }: { links: PageLink[]; lang: string }) {
+function PrimaryLinks({ links, lang }: Readonly<{ links: PageLink[]; lang: string }>) {
   if (!links || links.length === 0) return null;
 
   return (
@@ -533,7 +532,7 @@ function PrimaryLinks({ links, lang }: { links: PageLink[]; lang: string }) {
 }
 
 // Render section contextual links
-function SectionLinks({ links, lang }: { links: PageLink[]; lang: string }) {
+function SectionLinks({ links, lang }: Readonly<{ links: PageLink[]; lang: string }>) {
   if (!links || links.length === 0) return null;
 
   return (
@@ -557,11 +556,11 @@ function RelatedLinks({
   links,
   lang,
   t,
-}: {
+}: Readonly<{
   links: PageLink[];
   lang: string;
   t: (key: string) => string;
-}) {
+}>) {
   if (!links || links.length === 0) return null;
 
   return (
@@ -624,7 +623,7 @@ function ContactRedditLink() {
   );
 }
 
-export function StaticPage({ page }: StaticPageProps) {
+export function StaticPage({ page }: Readonly<StaticPageProps>) {
   const { t, i18n } = useTranslation();
   const [def, setDef] = useState<PageDefinition | null>(null);
   const [isLoading, setIsLoading] = useState(true);
@@ -680,7 +679,7 @@ export function StaticPage({ page }: StaticPageProps) {
           // Sort by position in viewport (topmost first)
           visibleEntries.sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top);
           const topEntry = visibleEntries[0];
-          const slug = topEntry.target.getAttribute('data-slug');
+          const slug = (topEntry.target as HTMLElement).dataset.slug;
           if (slug) setActiveSlug(slug);
         }
       },
@@ -692,9 +691,9 @@ export function StaticPage({ page }: StaticPageProps) {
     );
 
     // Observe all section headings
-    sectionRefs.current.forEach((el) => {
+    for (const el of sectionRefs.current.values()) {
       observer.observe(el);
-    });
+    }
 
     return () => observer.disconnect();
   }, [hasToc]);
@@ -883,9 +882,9 @@ export function StaticPage({ page }: StaticPageProps) {
                       </h3>
                     )}
 
-                    {section.paragraphs?.map((p, idx) => (
+                    {section.paragraphs?.map((p) => (
                       <p
-                        key={idx}
+                        key={p.slice(0, 50)}
                         className="text-sm sm:text-base text-muted-foreground leading-relaxed"
                       >
                         {renderTextWithLinks(p, i18n.language)}
@@ -905,8 +904,8 @@ export function StaticPage({ page }: StaticPageProps) {
                     {/* Images */}
                     {section.images && section.images.length > 0 && (
                       <div className="space-y-4 my-4">
-                        {section.images.map((image, imgIdx) => (
-                          <figure key={imgIdx} className="w-full">
+                        {section.images.map((image) => (
+                          <figure key={image.src} className="w-full">
                             <img
                               src={getImageUrl(image.src)}
                               alt={image.alt}
@@ -993,8 +992,8 @@ export function StaticPage({ page }: StaticPageProps) {
               <section key={section.heading} className="space-y-4">
                 <h2 className="text-xl font-semibold text-foreground">{section.heading}</h2>
 
-                {section.paragraphs?.map((p, idx) => (
-                  <p key={idx} className="text-base text-muted-foreground leading-relaxed">
+                {section.paragraphs?.map((p) => (
+                  <p key={p.slice(0, 50)} className="text-base text-muted-foreground leading-relaxed">
                     {renderTextWithLinks(p, i18n.language)}
                   </p>
                 ))}
@@ -1010,8 +1009,8 @@ export function StaticPage({ page }: StaticPageProps) {
                 {/* Images */}
                 {section.images && section.images.length > 0 && (
                   <div className="space-y-4 my-4">
-                    {section.images.map((image, imgIdx) => (
-                      <figure key={imgIdx} className="w-full">
+                    {section.images.map((image) => (
+                      <figure key={image.src} className="w-full">
                         <img
                           src={getImageUrl(image.src)}
                           alt={image.alt}
