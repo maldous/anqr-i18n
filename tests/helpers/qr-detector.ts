@@ -1,16 +1,19 @@
-import type { Page } from '@playwright/test';
+import type { Page, Locator } from '@playwright/test';
 
 /**
  * QR Canvas Change Detection Utilities
- * Helps verify that UI changes actually update the QR code
+ * Uses event-driven patterns instead of arbitrary timeouts
  */
+
+/** Default timeout for waiting operations */
+const DEFAULT_TIMEOUT = 10000;
 
 /**
  * Get a snapshot of the canvas as a data URL
  */
 export async function getCanvasSnapshot(page: Page): Promise<string> {
   const canvas = page.locator('canvas').first();
-  await canvas.waitFor({ state: 'visible', timeout: 5000 });
+  await canvas.waitFor({ state: 'visible', timeout: DEFAULT_TIMEOUT });
   
   const dataUrl = await canvas.evaluate((el: HTMLCanvasElement) => {
     return el.toDataURL('image/png');
@@ -44,49 +47,48 @@ export function snapshotsAreDifferent(before: string, after: string): boolean {
 
 /**
  * Wait for the QR canvas to change from a previous snapshot
+ * Uses page.waitForFunction for efficient polling without arbitrary timeouts
  */
 export async function waitForCanvasChange(
   page: Page,
   previousSnapshot: string,
-  timeout = 5000
+  timeout = DEFAULT_TIMEOUT
 ): Promise<boolean> {
-  const startTime = Date.now();
-  
-  while (Date.now() - startTime < timeout) {
-    const currentSnapshot = await getCanvasSnapshot(page);
-    if (snapshotsAreDifferent(previousSnapshot, currentSnapshot)) {
-      return true;
-    }
-    await page.waitForTimeout(100);
+  try {
+    await page.waitForFunction(
+      (prevSnapshot: string) => {
+        const canvas = document.querySelector('canvas');
+        if (!canvas) return false;
+        const currentSnapshot = canvas.toDataURL('image/png');
+        return currentSnapshot !== prevSnapshot;
+      },
+      previousSnapshot,
+      { timeout, polling: 50 }
+    );
+    return true;
+  } catch {
+    return false;
   }
-  
-  return false;
 }
 
 /**
  * Execute an action and verify it changes the QR canvas
  * Returns true if the action caused a canvas change
+ * Uses waitForFunction for efficient event-driven detection
  */
 export async function expectQRChanged(
   page: Page,
   action: () => Promise<void>,
-  options: { timeout?: number; waitAfterAction?: number } = {}
+  timeout = DEFAULT_TIMEOUT
 ): Promise<boolean> {
-  const { timeout = 5000, waitAfterAction = 500 } = options;
-  
   // Get snapshot before action
   const before = await getCanvasSnapshot(page);
   
   // Execute the action
   await action();
   
-  // Wait for debounce and render
-  await page.waitForTimeout(waitAfterAction);
-  
-  // Check if canvas changed
-  const changed = await waitForCanvasChange(page, before, timeout);
-  
-  return changed;
+  // Wait for canvas to change (event-driven, no fixed timeout)
+  return await waitForCanvasChange(page, before, timeout);
 }
 
 /**
@@ -176,4 +178,114 @@ export async function getCanvasDifferencePercent(
   }
   
   return (differentPixels / totalPixels) * 100;
+}
+
+/**
+ * Wait for accordion section to be fully open
+ * Uses data-state attribute detection instead of timeouts
+ */
+export async function waitForAccordionOpen(
+  page: Page,
+  sectionValue: string,
+  timeout = DEFAULT_TIMEOUT
+): Promise<void> {
+  // Wait for the accordion item to have data-state="open"
+  await page.waitForSelector(
+    `[data-state="open"][value="${sectionValue}"], [data-state="open"] [value="${sectionValue}"]`,
+    { state: 'attached', timeout }
+  ).catch(() => {
+    // Alternative: look for the content region to be visible
+  });
+  
+  // Also wait for the content to be visible
+  const content = page.locator(`[role="region"][data-state="open"]`).first();
+  await content.waitFor({ state: 'visible', timeout }).catch(() => {});
+}
+
+/**
+ * Wait for an image to load into the overlay processor
+ * Detects canvas change after file input
+ */
+export async function waitForOverlayImageLoad(
+  page: Page,
+  previousSnapshot: string,
+  timeout = DEFAULT_TIMEOUT
+): Promise<void> {
+  // Wait for canvas to change (indicates image was processed)
+  await waitForCanvasChange(page, previousSnapshot, timeout);
+}
+
+/**
+ * Wait for QR to finish rendering after any change
+ * Uses application signaling (data-rendering-state) for reliability
+ */
+export async function waitForQRStable(
+  page: Page,
+  _stabilityMs = 200,
+  timeout = DEFAULT_TIMEOUT
+): Promise<void> {
+  // Wait for app to signal rendering is complete
+  // The app sets data-rendering-state="idle" when:
+  // - debounce has settled (isPending = false)
+  // - rendering is complete (isRendering = false)
+  await page.waitForSelector(
+    '[data-rendering-state="idle"]',
+    { state: 'attached', timeout }
+  ).catch(() => {
+    // Fallback: wait for canvas to be visible
+    return page.waitForSelector('canvas', { state: 'visible', timeout: 2000 });
+  });
+}
+
+/**
+ * Wait for select dropdown to open (Radix UI)
+ */
+export async function waitForSelectOpen(page: Page, timeout = DEFAULT_TIMEOUT): Promise<void> {
+  await page.waitForSelector('[data-radix-popper-content-wrapper]', { state: 'visible', timeout });
+}
+
+/**
+ * Wait for select dropdown to close (Radix UI)
+ */
+export async function waitForSelectClosed(page: Page, timeout = DEFAULT_TIMEOUT): Promise<void> {
+  await page.waitForSelector('[data-radix-popper-content-wrapper]', { state: 'hidden', timeout }).catch(() => {});
+}
+
+/**
+ * Click an option in an open Radix select, scrolling if needed
+ */
+export async function clickSelectOption(
+  page: Page,
+  optionText: string,
+  timeout = DEFAULT_TIMEOUT
+): Promise<boolean> {
+  const dropdown = page.locator('[data-radix-popper-content-wrapper]').first();
+  await dropdown.waitFor({ state: 'visible', timeout });
+  
+  // Find the option by text
+  const option = dropdown.locator('[role="option"]').filter({ hasText: new RegExp(optionText, 'i') }).first();
+  
+  // Check if option exists
+  const count = await option.count();
+  if (count === 0) {
+    // Try scrolling through options to find it
+    const allOptions = dropdown.locator('[role="option"]');
+    const totalOptions = await allOptions.count();
+    
+    for (let i = 0; i < totalOptions; i++) {
+      const opt = allOptions.nth(i);
+      const text = await opt.textContent();
+      if (text && new RegExp(optionText, 'i').test(text)) {
+        await opt.scrollIntoViewIfNeeded();
+        await opt.click();
+        return true;
+      }
+    }
+    return false;
+  }
+  
+  // Scroll option into view and click
+  await option.scrollIntoViewIfNeeded();
+  await option.click();
+  return true;
 }

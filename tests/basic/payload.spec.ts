@@ -1,5 +1,10 @@
 import { test, expect } from '../fixtures/test-fixtures';
-import { getCanvasSnapshot, snapshotsAreDifferent } from '../helpers/qr-detector';
+import { 
+  getCanvasSnapshot, 
+  snapshotsAreDifferent,
+  waitForAccordionOpen,
+  waitForSelectOpen
+} from '../helpers/qr-detector';
 import type { Page } from '@playwright/test';
 
 /**
@@ -19,22 +24,24 @@ import type { Page } from '@playwright/test';
 
 /**
  * Expand the Payload section in the sidebar
+ * Uses data-state detection instead of timeouts
  */
 async function expandPayloadSection(page: Page) {
-  const payloadTrigger = page.locator('button').filter({ hasText: /^Payload$/i }).first();
-  if (await payloadTrigger.isVisible().catch(() => false)) {
-    // Check if already expanded by looking for accordion state
-    const accordionItem = payloadTrigger.locator('..').locator('[data-state]').first();
-    const state = await accordionItem.getAttribute('data-state').catch(() => null);
-    if (state !== 'open') {
+  const accordionItem = page.locator('[data-state][value="payload"]').first();
+  const state = await accordionItem.getAttribute('data-state').catch(() => 'closed');
+  
+  if (state !== 'open') {
+    const payloadTrigger = page.locator('button').filter({ hasText: /^Payload$/i }).first();
+    if (await payloadTrigger.isVisible().catch(() => false)) {
       await payloadTrigger.click();
-      await page.waitForTimeout(300);
+      await waitForAccordionOpen(page, 'payload');
     }
   }
 }
 
 /**
  * Switch to a specific payload/content type
+ * Uses event-driven select interaction
  */
 async function switchToPayloadType(page: Page, type: 'url' | 'plain_text') {
   await expandPayloadSection(page);
@@ -42,13 +49,14 @@ async function switchToPayloadType(page: Page, type: 'url' | 'plain_text') {
   // Find the content type select (first combobox in payload section)
   const combobox = page.getByRole('combobox').first();
   await combobox.click();
-  await page.waitForTimeout(200);
+  
+  // Wait for dropdown to open
+  await waitForSelectOpen(page);
   
   // Select the option
   const optionText = type === 'url' ? 'URL' : 'Plain Text';
   const option = page.getByRole('option', { name: new RegExp(`^${optionText}$`, 'i') }).first();
   await option.click();
-  await page.waitForTimeout(300);
 }
 
 /**
@@ -89,11 +97,12 @@ async function getCurrentContentType(page: Page): Promise<string> {
 // ==========================================
 
 test.describe('Payload Section - Basic Tier', () => {
-  test.beforeEach(async ({ page, setTier }) => {
+  test.beforeEach(async ({ page, setTier, waitForQRRender }) => {
     await page.goto('/');
     await setTier('basic');
     await page.waitForSelector('canvas', { timeout: 10000 });
-    await page.waitForTimeout(500);
+    // Event-driven: wait for canvas to stabilize instead of arbitrary timeout
+    await waitForQRRender();
   });
 
   // ==========================================
