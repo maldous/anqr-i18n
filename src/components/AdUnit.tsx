@@ -122,7 +122,7 @@ export function AdUnit({
   className = '',
   format = 'auto',
   responsive = true,
-}: AdUnitProps) {
+}: Readonly<AdUnitProps>) {
   const slotId = resolveSlotId(slot);
 
   // Check if running in native app (Android/iOS via Capacitor)
