@@ -1,4 +1,4 @@
-.PHONY: help dev build gallery gallery\:gif sitemap deploy android android\:init android\:sync android\:build android\:release android\:open install clean fix lint format check pull push i18n\:pull i18n\:push i18n\:xlate i18n\:xlate\:static i18n\:xlate\:locales i18n\:fill i18n\:fill\:static i18n\:fill\:locales icons icons\:android android\:run android\:keystore android\:bump zip dep sonar sonar-report
+.PHONY: help dev build gallery gallery\:gif sitemap deploy android android\:init android\:sync android\:build android\:release android\:open install clean fix lint format check pull push i18n\:pull i18n\:push i18n\:xlate i18n\:xlate\:static i18n\:xlate\:locales i18n\:fill i18n\:fill\:static i18n\:fill\:locales icons icons\:android android\:run android\:keystore android\:bump zip dep sonar sonar-report test test\:basic test\:advanced test\:pro test\:all test\:ui test\:permutations test\:parallel test\:report
 
 # ============================================
 # Help
@@ -66,6 +66,18 @@ help:
 	@echo "  CODE ANALYSIS (SonarQube)"
 	@echo "    make sonar          Run SonarQube analysis (requires local server)"
 	@echo "    make sonar-report   Get full issues report from SonarQube"
+	@echo ""
+	@echo "  UI TESTING (Playwright)"
+	@echo "    make test           Run all tests"
+	@echo "    make test:basic     Run basic tier UI tests"
+	@echo "    make test:advanced  Run advanced tier UI tests"
+	@echo "    make test:pro       Run professional tier UI tests"
+	@echo "    make test:all       Run all tier tests sequentially"
+	@echo "    make test:ui        Open Playwright UI mode"
+	@echo "    make test:permutations  Run exhaustive permutation tests (long!)"
+	@echo ""
+	@echo "    make test:parallel WORKERS=24   Run with explicit worker count"
+	@echo "    make test:report                Show HTML test report"
 	@echo ""
 
 # ============================================
@@ -461,3 +473,52 @@ sonar:
 
 sonar-report:
 	@./scripts/sonar-export.sh
+
+# ============================================
+# UI Testing (Playwright)
+# ============================================
+# Runs E2E tests against local dev server with Chrome
+# Tests are organized by tier: basic, advanced, professional
+# Permutation tests run exhaustive setting combinations (very long!)
+
+# Run all tests
+test:
+	npx playwright test
+
+# Run basic tier tests only
+test\:basic:
+	npx playwright test --project=basic
+
+# Run advanced tier tests only
+test\:advanced:
+	npx playwright test --project=advanced
+
+# Run professional tier tests only
+test\:pro:
+	npx playwright test --project=professional
+
+# Run all tiers sequentially
+test\:all:
+	npx playwright test --project=basic --project=advanced --project=professional
+
+# Open Playwright UI mode for interactive debugging
+test\:ui:
+	npx playwright test --ui
+
+# Run exhaustive permutation tests (WARNING: very long running!)
+# Control with environment variables:
+#   PERM_TIER=basic|advanced|professional
+#   PERM_SECTION=payload|overlay|render|etc
+#   PERM_DEPTH=2 (number of settings to combine)
+#   PERM_MAX=100 (max permutations to test)
+test\:permutations:
+	npx playwright test --project=permutations
+
+# Run with explicit worker count (override auto-detection)
+# Usage: make test:parallel WORKERS=32
+test\:parallel:
+	npx playwright test --workers=$${WORKERS:-24}
+
+# Show test report
+test\:report:
+	npx playwright show-report
