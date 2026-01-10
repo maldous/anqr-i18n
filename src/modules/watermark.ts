@@ -151,9 +151,6 @@ export function getWatermarkPositions(
       });
       break;
     }
-
-    case 'center':
-    case 'behind':
     default:
       // For center, behind, and default: return center position
       // (behind mode layering is handled by applyWatermark)

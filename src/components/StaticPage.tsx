@@ -993,7 +993,10 @@ export function StaticPage({ page }: Readonly<StaticPageProps>) {
                 <h2 className="text-xl font-semibold text-foreground">{section.heading}</h2>
 
                 {section.paragraphs?.map((p) => (
-                  <p key={p.slice(0, 50)} className="text-base text-muted-foreground leading-relaxed">
+                  <p
+                    key={p.slice(0, 50)}
+                    className="text-base text-muted-foreground leading-relaxed"
+                  >
                     {renderTextWithLinks(p, i18n.language)}
                   </p>
                 ))}

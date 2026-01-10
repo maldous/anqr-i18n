@@ -584,7 +584,7 @@ export async function parseGifFrames(source: string | ArrayBuffer): Promise<Anim
   if (frames.length === 0) {
     throw new Error('No frames found in GIF');
   }
-    const { width, height } = gif.lsd;
+  const { width, height } = gif.lsd;
 
   // Reuse a single composite canvas for building frames
   const compositeCanvas = document.createElement('canvas');
@@ -914,7 +914,7 @@ export function interpolateFrames(
     case 'morph': {
       const ctx1 = frame1.getContext('2d');
       const ctx2 = frame2.getContext('2d');
-      if (!ctx1 || !ctx2) {
+      if (!(ctx1 && ctx2)) {
         ctx.drawImage(frame1, 0, 0);
         break;
       }

@@ -1416,7 +1416,7 @@ export function generateSwissQRBill(params: SwissQRBillParams): string {
           '',
           '',
         ]),
-    params.creditorCountry.toUpperCase(),
+    params.creditorCountry.toUpperCase()
   );
 
   // Ultimate Creditor (optional - usually empty)
@@ -1436,7 +1436,7 @@ export function generateSwissQRBill(params: SwissQRBillParams): string {
           '',
           '',
         ]),
-    params.ultimateCreditorCountry?.toUpperCase() || '',
+    params.ultimateCreditorCountry?.toUpperCase() || ''
   );
 
   // Payment amount
@@ -1464,7 +1464,7 @@ export function generateSwissQRBill(params: SwissQRBillParams): string {
           '',
           '',
         ]),
-    params.ultimateDebtorCountry?.toUpperCase() || '',
+    params.ultimateDebtorCountry?.toUpperCase() || ''
   );
 
   // Reference and Additional information
@@ -1473,7 +1473,7 @@ export function generateSwissQRBill(params: SwissQRBillParams): string {
     params.reference?.substring(0, 27) || '',
     params.unstructuredMessage?.substring(0, 140) || '',
     params.trailer || 'EPD',
-    params.billInformation?.substring(0, 140) || '',
+    params.billInformation?.substring(0, 140) || ''
   );
 
   // Alternative procedures

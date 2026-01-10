@@ -222,12 +222,7 @@ interface MobileJumpButtonProps {
   readonly onClick: () => void;
 }
 
-function MobileJumpButton({
-  icon,
-  label,
-  isActive,
-  onClick,
-}: MobileJumpButtonProps) {
+function MobileJumpButton({ icon, label, isActive, onClick }: MobileJumpButtonProps) {
   return (
     <button
       type="button"
@@ -295,9 +290,7 @@ export function Gallery({ filter }: GalleryProps) {
   }, [t]);
 
   const _filteredSections = useMemo(() => {
-    return filter === 'all'
-      ? gallerySections
-      : gallerySections.filter((s) => s.id === filter);
+    return filter === 'all' ? gallerySections : gallerySections.filter((s) => s.id === filter);
   }, [filter]);
 
   const _totalItems = useMemo(

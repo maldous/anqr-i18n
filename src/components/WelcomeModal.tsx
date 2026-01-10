@@ -108,141 +108,145 @@ export function WelcomeModal({ onClose }: WelcomeModalProps) {
         aria-label="Close modal"
         tabIndex={-1}
       />
-          <dialog
-            open
-            className={`bg-card border rounded-2xl shadow-2xl max-w-2xl w-full max-h-[90vh] overflow-hidden flex flex-col transition-all duration-200 ${
-              isClosing ? 'scale-95 opacity-0' : 'scale-100 opacity-100'
-            }`}
-            aria-labelledby="welcome-title"
-          >
+      <dialog
+        open
+        className={`bg-card border rounded-2xl shadow-2xl max-w-2xl w-full max-h-[90vh] overflow-hidden flex flex-col transition-all duration-200 ${
+          isClosing ? 'scale-95 opacity-0' : 'scale-100 opacity-100'
+        }`}
+        aria-labelledby="welcome-title"
+      >
         <div
           onClick={(e) => e.stopPropagation()}
           onKeyDown={(e) => e.stopPropagation()}
           className="contents"
         >
-        {/* Header */}
-        <div className="relative px-6 pt-6 pb-4 border-b bg-gradient-to-br from-primary/5 to-primary/10">
-          <button
-            type="button"
-            onClick={handleDismiss}
-            className="absolute top-4 right-4 p-2 rounded-full hover:bg-muted transition-colors"
-            aria-label={t('common.close')}
-          >
-            <X className="h-5 w-5 text-muted-foreground" />
-          </button>
+          {/* Header */}
+          <div className="relative px-6 pt-6 pb-4 border-b bg-gradient-to-br from-primary/5 to-primary/10">
+            <button
+              type="button"
+              onClick={handleDismiss}
+              className="absolute top-4 right-4 p-2 rounded-full hover:bg-muted transition-colors"
+              aria-label={t('common.close')}
+            >
+              <X className="h-5 w-5 text-muted-foreground" />
+            </button>
 
-          <div className="flex items-center gap-3 mb-3">
-            <div className="p-2 rounded-xl bg-primary text-primary-foreground">
-              <QrCode className="h-8 w-8" />
+            <div className="flex items-center gap-3 mb-3">
+              <div className="p-2 rounded-xl bg-primary text-primary-foreground">
+                <QrCode className="h-8 w-8" />
+              </div>
+              <div>
+                <h1 id="welcome-title" className="text-2xl font-bold text-foreground">
+                  {t('welcome.title')}
+                </h1>
+                <p className="text-sm text-muted-foreground">{t('welcome.subtitle')}</p>
+              </div>
             </div>
-            <div>
-              <h1 id="welcome-title" className="text-2xl font-bold text-foreground">
-                {t('welcome.title')}
-              </h1>
-              <p className="text-sm text-muted-foreground">{t('welcome.subtitle')}</p>
-            </div>
+
+            <p className="text-sm text-muted-foreground leading-relaxed">{t('welcome.intro')}</p>
           </div>
 
-          <p className="text-sm text-muted-foreground leading-relaxed">{t('welcome.intro')}</p>
-        </div>
+          {/* Scrollable Content */}
+          <div className="flex-1 overflow-y-auto px-6 py-4 space-y-6">
+            {/* Features Grid */}
+            <section>
+              <h2 className="text-sm font-semibold text-foreground mb-3 flex items-center gap-2">
+                <Sparkles className="h-4 w-4 text-primary" />
+                {t('welcome.featuresTitle')}
+              </h2>
+              <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
+                {features.map((feature) => (
+                  <div
+                    key={`feature-${feature.title}`}
+                    className="p-3 rounded-lg bg-muted/50 hover:bg-muted transition-colors"
+                  >
+                    <feature.icon className="h-5 w-5 text-primary mb-2" />
+                    <h3 className="text-xs font-medium text-foreground mb-1">{feature.title}</h3>
+                    <p className="text-xs text-muted-foreground leading-snug">{feature.desc}</p>
+                  </div>
+                ))}
+              </div>
+            </section>
 
-        {/* Scrollable Content */}
-        <div className="flex-1 overflow-y-auto px-6 py-4 space-y-6">
-          {/* Features Grid */}
-          <section>
-            <h2 className="text-sm font-semibold text-foreground mb-3 flex items-center gap-2">
-              <Sparkles className="h-4 w-4 text-primary" />
-              {t('welcome.featuresTitle')}
-            </h2>
-            <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
-              {features.map((feature) => (
-                <div
-                  key={`feature-${feature.title}`}
-                  className="p-3 rounded-lg bg-muted/50 hover:bg-muted transition-colors"
-                >
-                  <feature.icon className="h-5 w-5 text-primary mb-2" />
-                  <h3 className="text-xs font-medium text-foreground mb-1">{feature.title}</h3>
-                  <p className="text-xs text-muted-foreground leading-snug">{feature.desc}</p>
-                </div>
-              ))}
-            </div>
-          </section>
+            {/* What's New */}
+            <section>
+              <h2 className="text-sm font-semibold text-foreground mb-3 flex items-center gap-2">
+                <Zap className="h-4 w-4 text-primary" />
+                {t('welcome.whatsNewTitle')}
+              </h2>
+              <ul className="space-y-2">
+                {updates.map((update) => (
+                  <li
+                    key={`update-${update}`}
+                    className="flex items-start gap-2 text-sm text-muted-foreground"
+                  >
+                    <Check className="h-4 w-4 text-green-500 mt-0.5 flex-shrink-0" />
+                    <span>{update}</span>
+                  </li>
+                ))}
+              </ul>
+            </section>
 
-          {/* What's New */}
-          <section>
-            <h2 className="text-sm font-semibold text-foreground mb-3 flex items-center gap-2">
-              <Zap className="h-4 w-4 text-primary" />
-              {t('welcome.whatsNewTitle')}
-            </h2>
-            <ul className="space-y-2">
-              {updates.map((update) => (
-                <li key={`update-${update}`} className="flex items-start gap-2 text-sm text-muted-foreground">
-                  <Check className="h-4 w-4 text-green-500 mt-0.5 flex-shrink-0" />
-                  <span>{update}</span>
+            {/* Languages */}
+            <section>
+              <h2 className="text-sm font-semibold text-foreground mb-3 flex items-center gap-2">
+                <Globe className="h-4 w-4 text-primary" />
+                {t('welcome.languagesTitle')}
+              </h2>
+              <div className="flex flex-wrap gap-2 items-center">
+                {featuredLanguages.map((lang) => (
+                  <button
+                    key={lang.code}
+                    type="button"
+                    onClick={() => {
+                      i18n.changeLanguage(lang.code);
+                    }}
+                    className={`px-2 py-1 rounded-md text-sm transition-colors ${
+                      i18n.language === lang.code ||
+                      i18n.language.startsWith(lang.code.split('-')[0])
+                        ? 'bg-primary text-primary-foreground'
+                        : 'bg-muted hover:bg-muted/80'
+                    }`}
+                    title={lang.nativeName}
+                  >
+                    <span className="mr-1">{lang.flag}</span>
+                    <span className="text-xs">{lang.nativeName.split(' ')[0]}</span>
+                  </button>
+                ))}
+                {remainingCount > 0 && (
+                  <span className="text-xs text-muted-foreground px-2">
+                    +{remainingCount} {t('welcome.moreLanguages')}
+                  </span>
+                )}
+              </div>
+            </section>
+
+            {/* Quick Start */}
+            <section className="bg-muted/30 rounded-lg p-4">
+              <h2 className="text-sm font-semibold text-foreground mb-2">
+                {t('welcome.quickStartTitle')}
+              </h2>
+              <ol className="text-sm text-muted-foreground space-y-1">
+                <li>
+                  <span className="font-medium text-foreground">1.</span> {t('welcome.step1')}
                 </li>
-              ))}
-            </ul>
-          </section>
+                <li>
+                  <span className="font-medium text-foreground">2.</span> {t('welcome.step2')}
+                </li>
+                <li>
+                  <span className="font-medium text-foreground">3.</span> {t('welcome.step3')}
+                </li>
+              </ol>
+            </section>
+          </div>
 
-          {/* Languages */}
-          <section>
-            <h2 className="text-sm font-semibold text-foreground mb-3 flex items-center gap-2">
-              <Globe className="h-4 w-4 text-primary" />
-              {t('welcome.languagesTitle')}
-            </h2>
-            <div className="flex flex-wrap gap-2 items-center">
-              {featuredLanguages.map((lang) => (
-                <button
-                  key={lang.code}
-                  type="button"
-                  onClick={() => {
-                    i18n.changeLanguage(lang.code);
-                  }}
-                  className={`px-2 py-1 rounded-md text-sm transition-colors ${
-                    i18n.language === lang.code || i18n.language.startsWith(lang.code.split('-')[0])
-                      ? 'bg-primary text-primary-foreground'
-                      : 'bg-muted hover:bg-muted/80'
-                  }`}
-                  title={lang.nativeName}
-                >
-                  <span className="mr-1">{lang.flag}</span>
-                  <span className="text-xs">{lang.nativeName.split(' ')[0]}</span>
-                </button>
-              ))}
-              {remainingCount > 0 && (
-                <span className="text-xs text-muted-foreground px-2">
-                  +{remainingCount} {t('welcome.moreLanguages')}
-                </span>
-              )}
-            </div>
-          </section>
-
-          {/* Quick Start */}
-          <section className="bg-muted/30 rounded-lg p-4">
-            <h2 className="text-sm font-semibold text-foreground mb-2">
-              {t('welcome.quickStartTitle')}
-            </h2>
-            <ol className="text-sm text-muted-foreground space-y-1">
-              <li>
-                <span className="font-medium text-foreground">1.</span> {t('welcome.step1')}
-              </li>
-              <li>
-                <span className="font-medium text-foreground">2.</span> {t('welcome.step2')}
-              </li>
-              <li>
-                <span className="font-medium text-foreground">3.</span> {t('welcome.step3')}
-              </li>
-            </ol>
-          </section>
-        </div>
-
-        {/* Footer */}
-        <div className="px-6 py-4 border-t bg-muted/30 flex flex-col sm:flex-row gap-3 sm:items-center sm:justify-between">
-          <p className="text-xs text-muted-foreground">{t('welcome.footerNote')}</p>
-          <Button size="sm" onClick={handleDismiss}>
-            {t('welcome.getStarted')}
-          </Button>
-        </div>
+          {/* Footer */}
+          <div className="px-6 py-4 border-t bg-muted/30 flex flex-col sm:flex-row gap-3 sm:items-center sm:justify-between">
+            <p className="text-xs text-muted-foreground">{t('welcome.footerNote')}</p>
+            <Button size="sm" onClick={handleDismiss}>
+              {t('welcome.getStarted')}
+            </Button>
+          </div>
         </div>
       </dialog>
     </div>
