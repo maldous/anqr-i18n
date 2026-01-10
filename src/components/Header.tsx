@@ -71,14 +71,14 @@ const NAV_LINKS: Array<{
 ];
 
 interface HeaderProps {
-  onToggleSidebar?: () => void;
-  onExport?: () => void;
-  sidebarOpen?: boolean;
-  showGallery?: boolean;
-  activePage?: HeaderPage;
-  galleryFilter?: GalleryCategory | 'all';
-  onGalleryFilterChange?: (filter: GalleryCategory | 'all') => void;
-  onNavigate?: (page: HeaderPage) => void;
+  readonly onToggleSidebar?: () => void;
+  readonly onExport?: () => void;
+  readonly sidebarOpen?: boolean;
+  readonly showGallery?: boolean;
+  readonly activePage?: HeaderPage;
+  readonly galleryFilter?: GalleryCategory | 'all';
+  readonly onGalleryFilterChange?: (filter: GalleryCategory | 'all') => void;
+  readonly onNavigate?: (page: HeaderPage) => void;
 }
 
 export function Header({
@@ -252,7 +252,14 @@ export function Header({
       }
     } catch (error: unknown) {
       // Check for user cancellation vs actual error
-      const errorMessage = error instanceof Error ? error.message : (typeof error === 'string' ? error : 'Unknown error');
+      let errorMessage: string;
+      if (error instanceof Error) {
+        errorMessage = error.message;
+      } else if (typeof error === 'string') {
+        errorMessage = error;
+      } else {
+        errorMessage = 'Unknown error';
+      }
       if (errorMessage.includes('cancelled') || errorMessage.includes('User cancelled')) {
         // User cancelled - silently ignore
         console.log('Camera capture cancelled');
@@ -281,47 +288,47 @@ export function Header({
       lang: i18n.language,
       // QR settings
       ec: qr.ecc,
-      version: qr.version !== 0 ? qr.version : undefined,
-      size: render.modulePx !== 20 ? render.modulePx : undefined,
-      margin: qr.quietZoneModules !== 4 ? qr.quietZoneModules : undefined,
-      encodingMode: qr.encodingMode !== 'auto' ? qr.encodingMode : undefined,
-      borderModulesExtra: qr.borderModulesExtra !== 0 ? qr.borderModulesExtra : undefined,
+      version: qr.version === 0 ? undefined : qr.version,
+      size: render.modulePx === 20 ? undefined : render.modulePx,
+      margin: qr.quietZoneModules === 4 ? undefined : qr.quietZoneModules,
+      encodingMode: qr.encodingMode === 'auto' ? undefined : qr.encodingMode,
+      borderModulesExtra: qr.borderModulesExtra === 0 ? undefined : qr.borderModulesExtra,
       quietZoneMinEnforce: qr.quietZoneMinEnforce === false ? false : undefined,
       // Colors
-      fg: render.fgColor !== '#000000' ? render.fgColor : undefined,
-      bg: render.bgColor !== '#ffffff' ? render.bgColor : undefined,
+      fg: render.fgColor === '#000000' ? undefined : render.fgColor,
+      bg: render.bgColor === '#ffffff' ? undefined : render.bgColor,
       transparent: render.bgTransparent || undefined,
       // Styles
-      style: render.moduleStyle !== 'square' ? render.moduleStyle : undefined,
-      finder: render.finderStyle !== 'square' ? render.finderStyle : undefined,
-      alignmentStyle: render.alignmentStyle !== 'match_finder' ? render.alignmentStyle : undefined,
-      timingStyle: render.timingStyle !== 'match_module' ? render.timingStyle : undefined,
+      style: render.moduleStyle === 'square' ? undefined : render.moduleStyle,
+      finder: render.finderStyle === 'square' ? undefined : render.finderStyle,
+      alignmentStyle: render.alignmentStyle === 'match_finder' ? undefined : render.alignmentStyle,
+      timingStyle: render.timingStyle === 'match_module' ? undefined : render.timingStyle,
       // Render settings
-      moduleGap: render.moduleGapPercent !== 0 ? render.moduleGapPercent : undefined,
-      gapMode: render.gapMode !== 'none' ? render.gapMode : undefined,
-      cornerRadius: render.cornerRadius !== 0 ? render.cornerRadius : undefined,
-      gradientType: render.gradient.type !== 'none' ? render.gradient.type : undefined,
-      eyeOuterStyle: render.eyeOuterStyle !== 'square' ? render.eyeOuterStyle : undefined,
-      eyeInnerStyle: render.eyeInnerStyle !== 'square' ? render.eyeInnerStyle : undefined,
-      eyeScale: render.eyeScale !== 100 ? render.eyeScale : undefined,
-      frameStyle: render.frameStyle !== 'none' ? render.frameStyle : undefined,
+      moduleGap: render.moduleGapPercent === 0 ? undefined : render.moduleGapPercent,
+      gapMode: render.gapMode === 'none' ? undefined : render.gapMode,
+      cornerRadius: render.cornerRadius === 0 ? undefined : render.cornerRadius,
+      gradientType: render.gradient.type === 'none' ? undefined : render.gradient.type,
+      eyeOuterStyle: render.eyeOuterStyle === 'square' ? undefined : render.eyeOuterStyle,
+      eyeInnerStyle: render.eyeInnerStyle === 'square' ? undefined : render.eyeInnerStyle,
+      eyeScale: render.eyeScale === 100 ? undefined : render.eyeScale,
+      frameStyle: render.frameStyle === 'none' ? undefined : render.frameStyle,
       frameText: render.frameText || undefined,
-      dotRotation: render.dotRotationDeg !== 0 ? render.dotRotationDeg : undefined,
+      dotRotation: render.dotRotationDeg === 0 ? undefined : render.dotRotationDeg,
       crispEdges: render.crispEdges === false ? false : undefined,
-      pixelSnap: render.pixelSnap !== 'floor' ? render.pixelSnap : undefined,
+      pixelSnap: render.pixelSnap === 'floor' ? undefined : render.pixelSnap,
       perModuleColorMode:
-        render.perModuleColorMode !== 'solid' ? render.perModuleColorMode : undefined,
+        render.perModuleColorMode === 'solid' ? undefined : render.perModuleColorMode,
       contrastGuard: render.contrastGuard ? true : undefined,
       minContrastRatio:
-        render.contrastGuard && render.minContrastRatio !== 4.5
-          ? render.minContrastRatio
-          : undefined,
+        !render.contrastGuard || render.minContrastRatio === 4.5
+          ? undefined
+          : render.minContrastRatio,
       // Overlay
       mode: overlay.enabled ? overlay.mode : undefined,
-      intensity: overlay.enabled && overlay.intensity !== 100 ? overlay.intensity : undefined,
+      intensity: !overlay.enabled || overlay.intensity === 100 ? undefined : overlay.intensity,
       overlayUrl: overlay.enabled && overlay.url ? overlay.url : undefined,
-      fit: overlay.enabled && overlay.fit !== 'cover' ? overlay.fit : undefined,
-      rotate: overlay.enabled && overlay.rotateDeg !== 0 ? overlay.rotateDeg : undefined,
+      fit: !overlay.enabled || overlay.fit === 'cover' ? undefined : overlay.fit,
+      rotate: !overlay.enabled || overlay.rotateDeg === 0 ? undefined : overlay.rotateDeg,
       flipX: overlay.enabled && overlay.flipX ? true : undefined,
       flipY: overlay.enabled && overlay.flipY ? true : undefined,
       preserveFinders: overlay.enabled && !overlay.preserveFinders ? false : undefined,
@@ -331,106 +338,106 @@ export function Header({
       protectVersionInfo: overlay.enabled && overlay.protectVersionInfo ? true : undefined,
       eccAwareEnabled: overlay.enabled && overlay.eccAwareEnabled ? true : undefined,
       eccAwareRiskBudget:
-        overlay.enabled && overlay.eccAwareEnabled && overlay.eccAwareRiskBudget !== 50
-          ? overlay.eccAwareRiskBudget
-          : undefined,
+        !overlay.enabled || !overlay.eccAwareEnabled || overlay.eccAwareRiskBudget === 50
+          ? undefined
+          : overlay.eccAwareRiskBudget,
       eccAwareWeightMap:
-        overlay.enabled &&
-        overlay.eccAwareEnabled &&
-        overlay.eccAwareWeightMap !== 'distance_to_finders'
-          ? overlay.eccAwareWeightMap
-          : undefined,
+        !overlay.enabled ||
+        !overlay.eccAwareEnabled ||
+        overlay.eccAwareWeightMap === 'distance_to_finders'
+          ? undefined
+          : overlay.eccAwareWeightMap,
       // Overlay preprocessing (only if overlay enabled)
-      colorMode: overlay.enabled && overlay.colorMode !== 'color' ? overlay.colorMode : undefined,
-      brightness: overlay.enabled && overlay.brightness !== 0 ? overlay.brightness : undefined,
-      contrast: overlay.enabled && overlay.contrast !== 0 ? overlay.contrast : undefined,
-      gamma: overlay.enabled && overlay.gamma !== 1 ? overlay.gamma : undefined,
-      saturation: overlay.enabled && overlay.saturation !== 0 ? overlay.saturation : undefined,
-      hue: overlay.enabled && overlay.hueRotateDeg !== 0 ? overlay.hueRotateDeg : undefined,
-      blur: overlay.enabled && overlay.blurPx !== 0 ? overlay.blurPx : undefined,
-      sharpen: overlay.enabled && overlay.sharpen !== 0 ? overlay.sharpen : undefined,
+      colorMode: !overlay.enabled || overlay.colorMode === 'color' ? undefined : overlay.colorMode,
+      brightness: !overlay.enabled || overlay.brightness === 0 ? undefined : overlay.brightness,
+      contrast: !overlay.enabled || overlay.contrast === 0 ? undefined : overlay.contrast,
+      gamma: !overlay.enabled || overlay.gamma === 1 ? undefined : overlay.gamma,
+      saturation: !overlay.enabled || overlay.saturation === 0 ? undefined : overlay.saturation,
+      hue: !overlay.enabled || overlay.hueRotateDeg === 0 ? undefined : overlay.hueRotateDeg,
+      blur: !overlay.enabled || overlay.blurPx === 0 ? undefined : overlay.blurPx,
+      sharpen: !overlay.enabled || overlay.sharpen === 0 ? undefined : overlay.sharpen,
       posterize:
-        overlay.enabled && overlay.posterizeLevels !== 0 ? overlay.posterizeLevels : undefined,
-      threshold: overlay.enabled && overlay.threshold !== 128 ? overlay.threshold : undefined,
-      edge: overlay.enabled && overlay.edgeDetect !== 'off' ? overlay.edgeDetect : undefined,
+        !overlay.enabled || overlay.posterizeLevels === 0 ? undefined : overlay.posterizeLevels,
+      threshold: !overlay.enabled || overlay.threshold === 128 ? undefined : overlay.threshold,
+      edge: !overlay.enabled || overlay.edgeDetect === 'off' ? undefined : overlay.edgeDetect,
       invert: overlay.enabled && overlay.invert ? overlay.invert : undefined,
       // Dithering (only if overlay enabled)
       ditherKind:
-        overlay.enabled && overlay.ditherKind !== 'error_diffusion'
-          ? overlay.ditherKind
-          : undefined,
+        !overlay.enabled || overlay.ditherKind === 'error_diffusion'
+          ? undefined
+          : overlay.ditherKind,
       diffusionKernel:
-        overlay.enabled && overlay.diffusionKernel !== 'floyd_steinberg'
-          ? overlay.diffusionKernel
-          : undefined,
+        !overlay.enabled || overlay.diffusionKernel === 'floyd_steinberg'
+          ? undefined
+          : overlay.diffusionKernel,
       ditherStrength:
-        overlay.enabled && overlay.ditherStrength !== 50 ? overlay.ditherStrength : undefined,
+        !overlay.enabled || overlay.ditherStrength === 50 ? undefined : overlay.ditherStrength,
       ditherSerpentine: overlay.enabled && overlay.ditherSerpentine ? true : undefined,
       orderedMatrix:
-        overlay.enabled && overlay.orderedMatrix !== 'bayer4' ? overlay.orderedMatrix : undefined,
+        !overlay.enabled || overlay.orderedMatrix === 'bayer4' ? undefined : overlay.orderedMatrix,
       blueNoiseTileSize:
-        overlay.enabled && overlay.blueNoiseTileSize !== 64 ? overlay.blueNoiseTileSize : undefined,
+        !overlay.enabled || overlay.blueNoiseTileSize === 64 ? undefined : overlay.blueNoiseTileSize,
       blueNoiseSeed:
-        overlay.enabled && overlay.blueNoiseSeed !== 0 ? overlay.blueNoiseSeed : undefined,
+        !overlay.enabled || overlay.blueNoiseSeed === 0 ? undefined : overlay.blueNoiseSeed,
       colorDither:
-        overlay.enabled && overlay.colorDither !== 'none' ? overlay.colorDither : undefined,
+        !overlay.enabled || overlay.colorDither === 'none' ? undefined : overlay.colorDither,
       // Subpixel
       subpixelGridSize:
-        overlay.enabled && overlay.mode === 'subpixel' && overlay.subpixelGridSize !== '3x3'
-          ? overlay.subpixelGridSize
-          : undefined,
+        !overlay.enabled || overlay.mode !== 'subpixel' || overlay.subpixelGridSize === '3x3'
+          ? undefined
+          : overlay.subpixelGridSize,
       subpixelCenterRule:
-        overlay.enabled && overlay.mode === 'subpixel' && overlay.subpixelCenterRule !== 'strict'
-          ? overlay.subpixelCenterRule
-          : undefined,
+        !overlay.enabled || overlay.mode !== 'subpixel' || overlay.subpixelCenterRule === 'strict'
+          ? undefined
+          : overlay.subpixelCenterRule,
       subpixelNeutralColor:
-        overlay.enabled && overlay.mode === 'subpixel' && overlay.subpixelNeutralColor !== '#808080'
-          ? overlay.subpixelNeutralColor
-          : undefined,
+        !overlay.enabled || overlay.mode !== 'subpixel' || overlay.subpixelNeutralColor === '#808080'
+          ? undefined
+          : overlay.subpixelNeutralColor,
       subpixelFinderOverride:
-        overlay.enabled && overlay.mode === 'subpixel' && overlay.subpixelFinderOverride !== 'solid'
-          ? overlay.subpixelFinderOverride
-          : undefined,
+        !overlay.enabled || overlay.mode !== 'subpixel' || overlay.subpixelFinderOverride === 'solid'
+          ? undefined
+          : overlay.subpixelFinderOverride,
       // Halftone
       halftoneCell:
-        overlay.enabled && overlay.mode === 'halftone' && overlay.halftoneCell !== 'per_module'
-          ? overlay.halftoneCell
-          : undefined,
+        !overlay.enabled || overlay.mode !== 'halftone' || overlay.halftoneCell === 'per_module'
+          ? undefined
+          : overlay.halftoneCell,
       halftoneDotShape:
-        overlay.enabled && overlay.mode === 'halftone' && overlay.halftoneDotShape !== 'circle'
-          ? overlay.halftoneDotShape
-          : undefined,
+        !overlay.enabled || overlay.mode !== 'halftone' || overlay.halftoneDotShape === 'circle'
+          ? undefined
+          : overlay.halftoneDotShape,
       brightnessCurve:
-        overlay.enabled && overlay.mode === 'halftone' && overlay.brightnessCurve !== 'linear'
-          ? overlay.brightnessCurve
-          : undefined,
+        !overlay.enabled || overlay.mode !== 'halftone' || overlay.brightnessCurve === 'linear'
+          ? undefined
+          : overlay.brightnessCurve,
       duotoneColor1:
-        overlay.enabled && overlay.mode === 'duotone' && overlay.duotoneColors[0] !== '#000000'
-          ? overlay.duotoneColors[0]
-          : undefined,
+        !overlay.enabled || overlay.mode !== 'duotone' || overlay.duotoneColors[0] === '#000000'
+          ? undefined
+          : overlay.duotoneColors[0],
       duotoneColor2:
-        overlay.enabled && overlay.mode === 'duotone' && overlay.duotoneColors[1] !== '#ffffff'
-          ? overlay.duotoneColors[1]
-          : undefined,
+        !overlay.enabled || overlay.mode !== 'duotone' || overlay.duotoneColors[1] === '#ffffff'
+          ? undefined
+          : overlay.duotoneColors[1],
       // Animation
-      speed: animation.speedMs !== 100 ? animation.speedMs : undefined,
+      speed: animation.speedMs === 100 ? undefined : animation.speedMs,
       loop: animation.loop === false ? false : undefined,
       reverse: animation.bounce ? true : undefined,
-      startFrame: animation.startFrame !== 0 ? animation.startFrame : undefined,
-      maxFrames: animation.maxFrames !== 0 ? animation.maxFrames : undefined,
-      frameStep: animation.frameStep !== 1 ? animation.frameStep : undefined,
-      interpolate: animation.interpolate !== 'none' ? animation.interpolate : undefined,
-      temporalDither: animation.temporalDither !== 'off' ? animation.temporalDither : undefined,
-      pattern: animation.pattern !== 'none' ? animation.pattern : undefined,
-      moduleJitter: animation.moduleJitterPx !== 0 ? animation.moduleJitterPx : undefined,
+      startFrame: animation.startFrame === 0 ? undefined : animation.startFrame,
+      maxFrames: animation.maxFrames === 0 ? undefined : animation.maxFrames,
+      frameStep: animation.frameStep === 1 ? undefined : animation.frameStep,
+      interpolate: animation.interpolate === 'none' ? undefined : animation.interpolate,
+      temporalDither: animation.temporalDither === 'off' ? undefined : animation.temporalDither,
+      pattern: animation.pattern === 'none' ? undefined : animation.pattern,
+      moduleJitter: animation.moduleJitterPx === 0 ? undefined : animation.moduleJitterPx,
       colorCycle: animation.colorCycle ? true : undefined,
-      seed: animation.seed !== 0 ? animation.seed : undefined,
+      seed: animation.seed === 0 ? undefined : animation.seed,
       // Output
-      width: output.widthPx !== 400 ? output.widthPx : undefined,
-      height: output.heightPx !== 400 ? output.heightPx : undefined,
-      format: output.format !== 'gif' ? output.format : undefined,
-      quality: output.quality !== 0.9 ? output.quality : undefined,
-      filename: output.filename !== 'anqr-qrcode' ? output.filename : undefined,
+      width: output.widthPx === 400 ? undefined : output.widthPx,
+      height: output.heightPx === 400 ? undefined : output.heightPx,
+      format: output.format === 'gif' ? undefined : output.format,
+      quality: output.quality === 0.9 ? undefined : output.quality,
+      filename: output.filename === 'anqr-qrcode' ? undefined : output.filename,
       gifPaletteSize:
         output.format === 'gif' && output.gifPaletteSize !== 256
           ? output.gifPaletteSize
@@ -442,7 +449,7 @@ export function Header({
       gifDither:
         output.format === 'gif' && output.gifDither !== 'floyd' ? output.gifDither : undefined,
       svgTrueVector: output.format === 'svg' && output.svgTrueVector ? true : undefined,
-      dpi: output.dpi !== 72 ? output.dpi : undefined,
+      dpi: output.dpi === 72 ? undefined : output.dpi,
       includeQuietZone: output.includeQuietZone === false ? false : undefined,
       bgOverride: output.bgOverride ? output.bgOverride : undefined,
       gifTransparentColor:
@@ -455,15 +462,15 @@ export function Header({
           : undefined,
       svgEmbedRasterOverlay:
         output.format === 'svg' && output.svgEmbedRasterOverlay === false ? false : undefined,
-      formatExtra: output.formatExtra !== 'none' ? output.formatExtra : undefined,
+      formatExtra: output.formatExtra === 'none' ? undefined : output.formatExtra,
       // Safety
-      safetyMode: safety.mode !== 'off' ? safety.mode : undefined,
+      safetyMode: safety.mode === 'off' ? undefined : safety.mode,
       safetyMinModulePx:
-        safety.mode !== 'off' && safety.minModulePx !== 2 ? safety.minModulePx : undefined,
+        safety.mode === 'off' || safety.minModulePx === 2 ? undefined : safety.minModulePx,
       safetyMinQuietZone:
-        safety.mode !== 'off' && safety.minQuietZoneModules !== 4
-          ? safety.minQuietZoneModules
-          : undefined,
+        safety.mode === 'off' || safety.minQuietZoneModules === 4
+          ? undefined
+          : safety.minQuietZoneModules,
       lockFinders: safety.mode !== 'off' && !safety.lockFinders ? false : undefined,
       lockTiming: safety.mode !== 'off' && !safety.lockTiming ? false : undefined,
       lockAlign: safety.mode !== 'off' && !safety.lockAlign ? false : undefined,
@@ -471,9 +478,9 @@ export function Header({
       lockVersion: safety.mode !== 'off' && !safety.lockVersion ? false : undefined,
       // QA
       qaContrastCheck: qa.contrastCheck ? true : undefined,
-      qaSimulateBlur: qa.simulateBlurPx !== 0 ? qa.simulateBlurPx : undefined,
-      qaSimulateNoise: qa.simulateNoise !== 0 ? qa.simulateNoise : undefined,
-      qaSimulateRotation: qa.simulateRotationDeg !== 0 ? qa.simulateRotationDeg : undefined,
+      qaSimulateBlur: qa.simulateBlurPx === 0 ? undefined : qa.simulateBlurPx,
+      qaSimulateNoise: qa.simulateNoise === 0 ? undefined : qa.simulateNoise,
+      qaSimulateRotation: qa.simulateRotationDeg === 0 ? undefined : qa.simulateRotationDeg,
       qaShowHeatmap: qa.showHeatmap ? true : undefined,
       // Auto-tuning
       autoPickVersion: auto.pickVersion === false ? false : undefined,
@@ -487,11 +494,11 @@ export function Header({
           ? watermark.text
           : undefined,
       watermarkPosition:
-        watermark.enabled && watermark.position !== 'center' ? watermark.position : undefined,
+        !watermark.enabled || watermark.position === 'center' ? undefined : watermark.position,
       watermarkOpacity:
-        watermark.enabled && watermark.opacity !== 50 ? watermark.opacity : undefined,
+        !watermark.enabled || watermark.opacity === 50 ? undefined : watermark.opacity,
       watermarkBlend:
-        watermark.enabled && watermark.blend !== 'normal' ? watermark.blend : undefined,
+        !watermark.enabled || watermark.blend === 'normal' ? undefined : watermark.blend,
       // Metadata
       metaTitle: metadata.title || undefined,
       metaAuthor: metadata.author || undefined,
@@ -744,13 +751,15 @@ export function Header({
               </Button>
               {(langMenuOpen || isLangMenuClosing) && (
                 <>
-                  <div
-                    className="fixed inset-0 z-[60]"
+                  <button
+                    type="button"
+                    className="fixed inset-0 z-[60] cursor-default bg-transparent border-none"
                     onClick={closeLangMenu}
                     onKeyDown={(e) => {
                       if (e.key === 'Escape') closeLangMenu();
                     }}
-                    role="presentation"
+                    aria-label="Close menu"
+                    tabIndex={-1}
                   />
                   <div
                     className={`fixed w-72 bg-card border rounded-lg shadow-lg z-[70] py-1 max-h-[50vh] overflow-y-auto origin-top ${
@@ -793,7 +802,7 @@ export function Header({
                           key={lang.code}
                           onClick={() => changeLanguage(lang.code)}
                           className={`w-full px-3 py-2 text-left text-sm hover:bg-muted flex items-center gap-2 ${i18n.language === lang.code || i18n.language.startsWith(lang.code) ? 'bg-muted' : ''}`}
-                          title={`${lang.nativeName} - ${t('languages.' + lang.code)}`}
+                          title={`${lang.nativeName} - ${t(`languages.${lang.code}`)}`}
                         >
                           <span>{lang.flag}</span>
                           <span>
@@ -804,7 +813,7 @@ export function Header({
                               if (isCurrentLang) {
                                 return lang.code !== 'en-GB' ? ` (${lang.name})` : '';
                               }
-                              return ` (${t('languages.' + lang.code)})`;
+                              return ` (${t(`languages.${lang.code}`)})`;
                             })()}
                           </span>
                           {(i18n.language === lang.code || i18n.language.startsWith(lang.code)) && (
