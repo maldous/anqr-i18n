@@ -1094,22 +1094,20 @@ export class QRGenerator {
                 const highlightColor = duotoneArr[1] || null;
                 const intensity = config.overlayIntensity / 100;
 
-                if (brightness > 0.5) {
+                if (brightness > 0.5 && highlightColor) {
                   // Bright areas get highlight color
-                  if (highlightColor) {
-                    moduleColor = blendColors(
-                      config.fgColor,
-                      highlightColor,
-                      intensity * (brightness - 0.5) * 2
-                    );
-                  } else {
-                    // Fallback: lighten the foreground color
-                    const fgParsed = parseColor(config.fgColor);
-                    const lightR = Math.min(255, fgParsed.r + 80);
-                    const lightG = Math.min(255, fgParsed.g + 80);
-                    const lightB = Math.min(255, fgParsed.b + 80);
-                    moduleColor = `rgb(${lightR},${lightG},${lightB})`;
-                  }
+                  moduleColor = blendColors(
+                    config.fgColor,
+                    highlightColor,
+                    intensity * (brightness - 0.5) * 2
+                  );
+                } else if (brightness > 0.5) {
+                  // Fallback: lighten the foreground color
+                  const fgParsed = parseColor(config.fgColor);
+                  const lightR = Math.min(255, fgParsed.r + 80);
+                  const lightG = Math.min(255, fgParsed.g + 80);
+                  const lightB = Math.min(255, fgParsed.b + 80);
+                  moduleColor = `rgb(${lightR},${lightG},${lightB})`;
                 } else {
                   // Dark areas get shadow color
                   moduleColor = blendColors(
@@ -3157,16 +3155,14 @@ export class QRGenerator {
           // Vertical edge (compare top/bottom)
           q = magnitude[(y - 1) * width + x];
           r = magnitude[(y + 1) * width + x];
-        } else {
+        } else if (angle > 0) {
           // Diagonal edge (compare top-left/bottom-right)
-          if (angle > 0) {
             q = magnitude[(y - 1) * width + (x - 1)];
             r = magnitude[(y + 1) * width + (x + 1)];
           } else {
             q = magnitude[(y - 1) * width + (x + 1)];
             r = magnitude[(y + 1) * width + (x - 1)];
           }
-        }
 
         // Keep only local maxima
         suppressed[idx] = mag >= q && mag >= r ? mag : 0;
@@ -3519,9 +3515,11 @@ export class QRGenerator {
         break;
 
       default:
+        // Default to circle (same as 'circle' case)
         ctx.beginPath();
         ctx.arc(centerX, centerY, dotSize / 2, 0, Math.PI * 2);
         ctx.fill();
+        break;
     }
   }
 
