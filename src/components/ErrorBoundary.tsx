@@ -21,7 +21,7 @@ interface State {
 }
 
 // Functional component for the error UI (to use hooks)
-function ErrorFallbackUI({ error, onRetry }: { error: Error | null; onRetry: () => void }) {
+function ErrorFallbackUI({ error, onRetry }: Readonly<{ error: Error | null; onRetry: () => void }>) {
   const { t } = useTranslation();
 
   return (

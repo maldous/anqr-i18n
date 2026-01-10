@@ -6,7 +6,7 @@ interface MobileDividerProps {
   onDragEnd: () => void;
 }
 
-export function MobileDivider({ onDrag, onDragEnd }: MobileDividerProps) {
+export function MobileDivider({ onDrag, onDragEnd }: Readonly<MobileDividerProps>) {
   const [isDragging, setIsDragging] = useState(false);
   const lastY = useRef<number>(0);
   const dividerRef = useRef<HTMLDivElement>(null);
@@ -96,8 +96,8 @@ export function MobileDivider({ onDrag, onDragEnd }: MobileDividerProps) {
   }, [isDragging, handleDragMove, handleDragEnd]);
 
   return (
-    <div
-      ref={dividerRef}
+    <hr
+      ref={dividerRef as React.RefObject<HTMLHRElement>}
       className={`
         md:hidden
         h-4 w-full
@@ -120,15 +120,10 @@ export function MobileDivider({ onDrag, onDragEnd }: MobileDividerProps) {
           e.preventDefault();
         }
       }}
-      role="separator"
       tabIndex={0}
       aria-orientation="horizontal"
       aria-label="Drag to resize panels"
       aria-valuenow={isDragging ? 1 : 0}
-    >
-      <GripHorizontal
-        className={`h-5 w-5 transition-all duration-150 ${isDragging ? 'text-foreground scale-110' : 'text-muted-foreground'}`}
-      />
-    </div>
+    />
   );
 }
