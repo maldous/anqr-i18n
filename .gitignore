@@ -69,3 +69,4 @@ __pycache__/
 sonar-report.json
 playwright-report/
 test-results/
+tests/reports

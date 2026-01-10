@@ -84,6 +84,12 @@ export default defineConfig({
       use: { ...devices['Desktop Chrome'] },
       timeout: 4 * 60 * 60 * 1000, // 4 hours for exhaustive permutation tests
     },
+    {
+      name: 'reports',
+      testMatch: /tests\/reports\/.*\.spec\.ts/,
+      use: { ...devices['Desktop Chrome'] },
+      timeout: 10 * 60 * 1000, // 10 minutes for report generation
+    },
   ],
 
   /* Run local dev server before starting tests */
