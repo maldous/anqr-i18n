@@ -218,7 +218,11 @@ async function loadLanguageContent(lang: string): Promise<Record<StaticPageType,
 
     if (!loader) {
       console.warn(`No static content module found for: ${lang}`);
-      return contentCache.get('en-GB')!;
+      const fallback = contentCache.get('en-GB');
+      if (!fallback) {
+        throw new Error('English fallback content not loaded');
+      }
+      return fallback;
     }
 
     const content = await loader();

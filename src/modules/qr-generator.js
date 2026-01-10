@@ -3513,12 +3513,7 @@ export class QRGenerator {
         ctx.fill();
         break;
       }
-      default:
-        // Default to circle
-        ctx.beginPath();
-        ctx.arc(centerX, centerY, dotSize / 2, 0, Math.PI * 2);
-        ctx.fill();
-        break;
+      // default case uses identical logic to 'circle' - fall through
     }
   }
 

@@ -357,11 +357,7 @@ function getWatermarkPositions(
     case 'quiet_zone':
       positions.push({ x: margin / 2, y: canvasHeight - watermarkHeight - margin / 2 });
       break;
-    default:
-      positions.push({
-        x: (canvasWidth - watermarkWidth) / 2,
-        y: (canvasHeight - watermarkHeight) / 2,
-      });
+    // default case intentionally falls through to 'center' behavior
   }
 
   return positions;
@@ -1051,7 +1047,7 @@ async function fetchImageAsCanvas(url: string): Promise<ReturnType<typeof create
   return result?.canvas ?? null;
 }
 
-export default async (request: Request) => {
+async function handler(request: Request) {
   const url = new URL(request.url);
   const params = url.searchParams;
 
@@ -1596,4 +1592,6 @@ export default async (request: Request) => {
       headers: { 'Access-Control-Allow-Origin': '*' },
     });
   }
-};
+}
+
+export default handler;

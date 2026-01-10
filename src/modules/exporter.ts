@@ -1041,8 +1041,8 @@ export function exportVectorSvg(matrix: boolean[][], config: VectorSvgConfig = {
 
   // Build SVG content
   let defs = '';
-  if (hasGradient) {
-    defs = `<defs>${generateGradientDef(gradient as NonNullable<typeof gradient>, gradientId)}</defs>`;
+  if (hasGradient && gradient) {
+    defs = `<defs>${generateGradientDef(gradient, gradientId)}</defs>`;
   }
 
   // Generate finder patterns separately for proper styling

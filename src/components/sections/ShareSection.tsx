@@ -215,7 +215,7 @@ export function ShareSection() {
           : undefined,
       svgEmbedRasterOverlay:
         output.format === 'svg' && output.svgEmbedRasterOverlay === false ? false : undefined,
-      formatExtra: output.formatExtra !== 'none' ? output.formatExtra : undefined,
+      formatExtra: output.formatExtra === 'none' ? undefined : output.formatExtra,
       // Safety
       safetyMode: safety.mode === 'off' ? undefined : safety.mode,
       safetyMinModulePx:
