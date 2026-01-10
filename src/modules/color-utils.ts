@@ -79,7 +79,7 @@ export function parseRgbString(str: string): RGBA {
       r: Number.parseInt(match[1], 10),
       g: Number.parseInt(match[2], 10),
       b: Number.parseInt(match[3], 10),
-      a: match[4] !== undefined ? Number.parseFloat(match[4]) : 1,
+      a: match[4] === undefined ? 1 : Number.parseFloat(match[4]),
     };
   }
   return { r: 0, g: 0, b: 0, a: 1 };
@@ -94,7 +94,7 @@ export function parseHslString(str: string): HSLA {
       h: Number.parseInt(match[1], 10),
       s: Number.parseFloat(match[2]),
       l: Number.parseFloat(match[3]),
-      a: match[4] !== undefined ? Number.parseFloat(match[4]) : 1,
+      a: match[4] === undefined ? 1 : Number.parseFloat(match[4]),
     };
   }
   return { h: 0, s: 0, l: 0, a: 1 };
