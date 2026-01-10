@@ -216,7 +216,7 @@ function App() {
     }
 
     // Update canonical URL based on current page and language
-    let canonicalLink = document.querySelector('link[rel="canonical"]') as HTMLLinkElement;
+    let canonicalLink = document.querySelector<HTMLLinkElement>('link[rel="canonical"]');
     if (!canonicalLink) {
       canonicalLink = document.createElement('link');
       canonicalLink.rel = 'canonical';
@@ -542,20 +542,24 @@ function App() {
       useQRStore.setState((s) => ({
         overlay: { ...s.overlay, brightnessCurve: params.brightnessCurve as any },
       }));
-    if (params.duotoneColor1)
+    if (params.duotoneColor1) {
+      const color1 = params.duotoneColor1;
       useQRStore.setState((s) => ({
         overlay: {
           ...s.overlay,
-          duotoneColors: [params.duotoneColor1!, s.overlay.duotoneColors[1]],
+          duotoneColors: [color1, s.overlay.duotoneColors[1]],
         },
       }));
-    if (params.duotoneColor2)
+    }
+    if (params.duotoneColor2) {
+      const color2 = params.duotoneColor2;
       useQRStore.setState((s) => ({
         overlay: {
           ...s.overlay,
-          duotoneColors: [s.overlay.duotoneColors[0], params.duotoneColor2!],
+          duotoneColors: [s.overlay.duotoneColors[0], color2],
         },
       }));
+    }
 
     // Animation params
     if (params.speed !== undefined) store.setAnimationSpeedMs(params.speed);
@@ -750,46 +754,54 @@ function App() {
       }));
 
     // Per-ECC intensity limits
-    if (params.maxOverlayIntensityL !== undefined)
+    if (params.maxOverlayIntensityL !== undefined) {
+      const intensityL = params.maxOverlayIntensityL;
       useQRStore.setState((s) => ({
         safety: {
           ...s.safety,
           maxOverlayIntensityByEcc: {
             ...s.safety.maxOverlayIntensityByEcc,
-            L: params.maxOverlayIntensityL!,
+            L: intensityL,
           },
         },
       }));
-    if (params.maxOverlayIntensityM !== undefined)
+    }
+    if (params.maxOverlayIntensityM !== undefined) {
+      const intensityM = params.maxOverlayIntensityM;
       useQRStore.setState((s) => ({
         safety: {
           ...s.safety,
           maxOverlayIntensityByEcc: {
             ...s.safety.maxOverlayIntensityByEcc,
-            M: params.maxOverlayIntensityM!,
+            M: intensityM,
           },
         },
       }));
-    if (params.maxOverlayIntensityQ !== undefined)
+    }
+    if (params.maxOverlayIntensityQ !== undefined) {
+      const intensityQ = params.maxOverlayIntensityQ;
       useQRStore.setState((s) => ({
         safety: {
           ...s.safety,
           maxOverlayIntensityByEcc: {
             ...s.safety.maxOverlayIntensityByEcc,
-            Q: params.maxOverlayIntensityQ!,
+            Q: intensityQ,
           },
         },
       }));
-    if (params.maxOverlayIntensityH !== undefined)
+    }
+    if (params.maxOverlayIntensityH !== undefined) {
+      const intensityH = params.maxOverlayIntensityH;
       useQRStore.setState((s) => ({
         safety: {
           ...s.safety,
           maxOverlayIntensityByEcc: {
             ...s.safety.maxOverlayIntensityByEcc,
-            H: params.maxOverlayIntensityH!,
+            H: intensityH,
           },
         },
       }));
+    }
 
     // GIF disposal
     if (params.gifDisposal)

@@ -626,7 +626,8 @@ export function useQRGenerator(): UseQRGeneratorResult {
       if (overlay.cropEnabled && overlay.cropRegion) {
         const { x, y, size } = overlay.cropRegion;
         const cropCanvas = document.createElement('canvas');
-        const cropCtx = cropCanvas.getContext('2d')!;
+        const cropCtx = cropCanvas.getContext('2d');
+        if (!cropCtx) return sourceCanvas;
 
         const srcWidth = sourceCanvas.width;
         const srcHeight = sourceCanvas.height;
@@ -646,7 +647,8 @@ export function useQRGenerator(): UseQRGeneratorResult {
       // Apply fit mode if specified
       if (overlay.fit) {
         const fitCanvas = document.createElement('canvas');
-        const fitCtx = fitCanvas.getContext('2d')!;
+        const fitCtx = fitCanvas.getContext('2d');
+        if (!fitCtx) return workingCanvas;
         const srcW = workingCanvas.width;
         const srcH = workingCanvas.height;
         const targetSize = Math.max(srcW, srcH);
@@ -685,7 +687,8 @@ export function useQRGenerator(): UseQRGeneratorResult {
       // Apply rotation and flip if needed
       if (overlay.rotateDeg !== 0 || overlay.flipX || overlay.flipY) {
         const processedCanvas = document.createElement('canvas');
-        const ctx = processedCanvas.getContext('2d')!;
+        const ctx = processedCanvas.getContext('2d');
+        if (!ctx) return workingCanvas;
         const angle = (overlay.rotateDeg * Math.PI) / 180;
         const isRightAngle = overlay.rotateDeg === 90 || overlay.rotateDeg === 270;
 
@@ -806,7 +809,9 @@ export function useQRGenerator(): UseQRGeneratorResult {
           }
         } catch (err) {
           console.error('Failed to parse animated WebP:', err);
-          loadFileAsCanvas(overlay.file!)
+          const file = overlay.file;
+          if (!file) return;
+          loadFileAsCanvas(file)
             .then((canvas) => {
               setRawOverlayCanvas(canvas);
               setGifFrames([{ canvas, delay: 100, disposalType: 0 }]);
