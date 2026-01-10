@@ -1493,3 +1493,6 @@
 1493	"Oerdoe"
 1494	"Sjinees (Hongkong)"
 1495	"Chinees (tradisioneel)"
+1496	"Reddit-gemeenskap"
+1497	"Sluit aan by ons Reddit-gemeenskap om skeppings te deel, vrae te vra en met ander gebruikers in aanraking te kom."
+1498	"Sluit aan by r/ANQR"
