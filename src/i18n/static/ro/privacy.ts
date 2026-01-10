@@ -6,7 +6,7 @@ export const privacy: PageDefinition = {
   description:
     'Informațiile pe care le colectează ANQR, modul în care sunt utilizate și drepturile dvs. în conformitate cu legile aplicabile privind confidențialitatea.',
   lastUpdated: LAST_UPDATED,
-  relatedLinks: [{ href: '/terms?lang=${lang}', label: 'Terms of Service', type: 'external' }],
+  relatedLinks: [{ href: '/terms?lang=${lang}', label: 'Termeni și condiții', type: 'external' }],
   sections: [
     {
       heading: 'Rezumat',

@@ -6,7 +6,9 @@ export const privacy: PageDefinition = {
   description:
     'Információ ANQR gyűjti, hogyan használják, és az Ön jogait vonatkozó adatvédelmi törvények.',
   lastUpdated: LAST_UPDATED,
-  relatedLinks: [{ href: '/terms?lang=${lang}', label: 'Terms of Service', type: 'external' }],
+  relatedLinks: [
+    { href: '/terms?lang=${lang}', label: 'Szolgáltatási feltételek', type: 'external' },
+  ],
   sections: [
     {
       heading: 'Összefoglaló',

@@ -65,6 +65,12 @@ export const contact: PageDefinition = {
         'Kérjük, vegye fel a "DMCA közlemény" szót a tárgysorba. Az érvényes hirdetményekre az alkalmazandó joggal összhangban válaszolunk. Megjegyzés: az ANQR helyi QR-kódokat generál a felhasználói eszközökön, és nem tárol felhasználógenerált tartalmat.',
       ],
     },
+    {
+      heading: 'Reddit Community',
+      paragraphs: [
+        'Csatlakozzon a Reddit közösségünkhöz az r/ANQR címen, hogy megossza QR-alkotásait, kérdéseket tegyen fel, segítséget kérjen, és kapcsolatba léphessen más ANQR-felhasználókkal.',
+      ],
+    },
   ],
 };
 

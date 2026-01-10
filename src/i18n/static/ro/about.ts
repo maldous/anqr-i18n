@@ -7,12 +7,12 @@ export const about: PageDefinition = {
     'ANQR este un generator de coduri QR gratuit cu o abordare axată pe client - generați coduri QR local sau utilizați API-ul nostru pentru încorporare.',
   lastUpdated: LAST_UPDATED,
   primaryLinks: [
-    { href: '/?lang=${lang}', label: 'Open the generator', type: 'generator' },
-    { href: '/learn?lang=${lang}', label: 'Browse Learn articles', type: 'learn' },
+    { href: '/?lang=${lang}', label: 'Deschideți generatorul', type: 'generator' },
+    { href: '/learn?lang=${lang}', label: 'Răsfoiți articolele Learn', type: 'learn' },
   ],
   relatedLinks: [
-    { href: '/privacy?lang=${lang}', label: 'Privacy Policy', type: 'external' },
-    { href: '/terms?lang=${lang}', label: 'Terms of Service', type: 'external' },
+    { href: '/privacy?lang=${lang}', label: 'Politica de confidențialitate', type: 'external' },
+    { href: '/terms?lang=${lang}', label: 'Termeni și condiții', type: 'external' },
   ],
   sections: [
     {

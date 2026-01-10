@@ -64,6 +64,12 @@ export const contact: PageDefinition = {
         '请在主题行中注明DMCA 通知。我们将根据适用法律对有效通知做出回应。请注意，ANQR 在用户设备上本地生成 QR 码，并且不托管用户生成的内容。',
       ],
     },
+    {
+      heading: '红迪社区',
+      paragraphs: [
+        '加入我们的 Reddit 社区 r/ANQR，分享您的 QR 创作、提出问题、获取帮助并与其他 ANQR 用户联系。',
+      ],
+    },
   ],
 };
 

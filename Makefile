@@ -378,7 +378,7 @@ push:
 # Translate static content (guides, docs) - all languages or LANGS
 i18n\:xlate\:static:
 	@echo "Translating static content..."
-	@cd src/i18n/static/txt && \
+	@cd src/i18n/static && \
 	if [ -n "$(LANGS)" ]; then \
 		for lang in $(LANGS); do \
 			if [ "$$lang" != "en-GB" ]; then \
@@ -392,7 +392,7 @@ i18n\:xlate\:static:
 # Translate locales (UI strings) - all languages or LANGS
 i18n\:xlate\:locales:
 	@echo "Translating locales..."
-	@cd src/i18n/locales/txt && \
+	@cd src/i18n/locales && \
 	if [ -n "$(LANGS)" ]; then \
 		for lang in $(LANGS); do \
 			if [ "$$lang" != "en-GB" ]; then \
@@ -410,32 +410,28 @@ i18n\:xlate: i18n\:xlate\:static i18n\:xlate\:locales
 # Generate static TS files from translated txt - all languages or LANGS
 i18n\:fill\:static:
 	@echo "Generating static TS files..."
-	@cd src/i18n/static/txt && \
+	@cd src/i18n/static && \
 	if [ -n "$(LANGS)" ]; then \
 		for lang in $(LANGS); do \
 			python3 fill.py "$$lang.txt"; \
 		done; \
 	else \
-		for f in *.txt; do \
-			if [ "$$f" != "template.txt" ]; then \
-				python3 fill.py "$$f"; \
-			fi; \
+		for f in txt/*.txt; do \
+			python3 fill.py "$$(basename $$f)"; \
 		done; \
 	fi
 
 # Generate locales JSON files from translated txt - all languages or LANGS
 i18n\:fill\:locales:
 	@echo "Generating locales JSON files..."
-	@cd src/i18n/locales/txt && \
+	@cd src/i18n/locales && \
 	if [ -n "$(LANGS)" ]; then \
 		for lang in $(LANGS); do \
 			python3 fill.py "$$lang.txt"; \
 		done; \
 	else \
-		for f in *.txt; do \
-			if [ "$$f" != "template.txt" ]; then \
-				python3 fill.py "$$f"; \
-			fi; \
+		for f in txt/*.txt; do \
+			python3 fill.py "$$(basename $$f)"; \
 		done; \
 	fi
 

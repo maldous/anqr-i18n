@@ -5,7 +5,7 @@ export const privacy: PageDefinition = {
   title: '隐私政策',
   description: 'ANQR 收集的信息、其使用方式以及您根据适用隐私法享有的权利。',
   lastUpdated: LAST_UPDATED,
-  relatedLinks: [{ href: '/terms?lang=${lang}', label: 'Terms of Service', type: 'external' }],
+  relatedLinks: [{ href: '/terms?lang=${lang}', label: '服务条款', type: 'external' }],
   sections: [
     {
       heading: '总结',

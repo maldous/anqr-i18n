@@ -65,6 +65,12 @@ export const contact: PageDefinition = {
         'Proszę włączyć "DMCA Notice" do tematu. Odpowiemy na ważne zawiadomienia zgodnie z obowiązującym prawem. Należy zauważyć, że ANQR generuje kody QR lokalnie na urządzeniach użytkowników i nie posiada treści generowanej przez użytkownika.',
       ],
     },
+    {
+      heading: 'Społeczność Reddita',
+      paragraphs: [
+        'Dołącz do naszej społeczności Reddit w r/ANQR, aby dzielić się swoimi dziełami QR, zadawać pytania, uzyskiwać pomoc i łączyć się z innymi użytkownikami ANQR.',
+      ],
+    },
   ],
 };
 

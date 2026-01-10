@@ -7,12 +7,12 @@ export const about: PageDefinition = {
     'Az ANQR egy ingyenes QR kódgenerátor kliens-első megközelítéssel - QR-kódokat generál helyben vagy API-t használ beágyazáshoz.',
   lastUpdated: LAST_UPDATED,
   primaryLinks: [
-    { href: '/?lang=${lang}', label: 'Open the generator', type: 'generator' },
-    { href: '/learn?lang=${lang}', label: 'Browse Learn articles', type: 'learn' },
+    { href: '/?lang=${lang}', label: 'Nyisd ki a generátort', type: 'generator' },
+    { href: '/learn?lang=${lang}', label: 'Böngészés Tanulj cikkeket', type: 'learn' },
   ],
   relatedLinks: [
-    { href: '/privacy?lang=${lang}', label: 'Privacy Policy', type: 'external' },
-    { href: '/terms?lang=${lang}', label: 'Terms of Service', type: 'external' },
+    { href: '/privacy?lang=${lang}', label: 'Adatvédelmi irányelvek', type: 'external' },
+    { href: '/terms?lang=${lang}', label: 'Szolgáltatási feltételek', type: 'external' },
   ],
   sections: [
     {

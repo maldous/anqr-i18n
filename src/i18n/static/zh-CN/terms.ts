@@ -5,7 +5,7 @@ export const terms: PageDefinition = {
   title: '服务条款',
   description: '通过访问或使用该网站，您同意受这些条款的约束。',
   lastUpdated: LAST_UPDATED,
-  relatedLinks: [{ href: '/privacy?lang=${lang}', label: 'Privacy Policy', type: 'external' }],
+  relatedLinks: [{ href: '/privacy?lang=${lang}', label: '隐私政策', type: 'external' }],
   sections: [
     {
       heading: '接受条款',
