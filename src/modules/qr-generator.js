@@ -564,7 +564,7 @@ export class QRGenerator {
         const color = colors[y]?.[x];
 
         // Skip light pixels unless doing color rendering
-        if (!isDark && !useColorRendering) continue;
+        if (!(isDark || useColorRendering)) continue;
 
         const dx = marginPx + x * subPixelSize;
         const dy = marginPx + y * subPixelSize;
@@ -715,8 +715,8 @@ export class QRGenerator {
               if (useHalftone && isDark) {
                 // Halftone center uses brightness to vary appearance
                 const brightness = moduleBrightness[moduleRow]?.[moduleCol] ?? 0.5;
-    const minSize = 0.4;
-    const maxSize = 1;
+                const minSize = 0.4;
+                const maxSize = 1;
                 const sizeRatio = minSize + (1 - brightness) * (maxSize - minSize) * intensity;
                 // For the matrix, we still mark it as dark
                 matrix[y][x] = true;
@@ -1009,8 +1009,9 @@ export class QRGenerator {
                   halftoneBrightness = brightness;
                 } else {
                   // Legacy halftone behavior
-                  const intensity = effectiveIntensity / 100;    const minSize = 0.3;
-    const maxSize = 1;
+                  const intensity = effectiveIntensity / 100;
+                  const minSize = 0.3;
+                  const maxSize = 1;
                   moduleSizeModifier =
                     minSize +
                     (1 - brightness) * (maxSize - minSize) * intensity +
@@ -3157,12 +3158,12 @@ export class QRGenerator {
           r = magnitude[(y + 1) * width + x];
         } else if (angle > 0) {
           // Diagonal edge (compare top-left/bottom-right)
-            q = magnitude[(y - 1) * width + (x - 1)];
-            r = magnitude[(y + 1) * width + (x + 1)];
-          } else {
-            q = magnitude[(y - 1) * width + (x + 1)];
-            r = magnitude[(y + 1) * width + (x - 1)];
-          }
+          q = magnitude[(y - 1) * width + (x - 1)];
+          r = magnitude[(y + 1) * width + (x + 1)];
+        } else {
+          q = magnitude[(y - 1) * width + (x + 1)];
+          r = magnitude[(y + 1) * width + (x - 1)];
+        }
 
         // Keep only local maxima
         suppressed[idx] = mag >= q && mag >= r ? mag : 0;
@@ -3513,6 +3514,7 @@ export class QRGenerator {
         ctx.closePath();
         ctx.fill();
         break;
+      }
 
       default:
         // Default to circle (same as 'circle' case)
@@ -3528,8 +3530,8 @@ export class QRGenerator {
    * Higher weight = more important to preserve
    * @private
    */
-  getEccWeight(row, col, moduleCount, _version, weightMap) {
-    switch (weightMap) {
+  getEccWeight(_row, _col, _moduleCount, _version, _weightMap) {
+    switch (_weightMap) {
       case 'distance_to_finders': {
         // Closer to finders = more important
         const distTL = Math.hypot(row, col);

@@ -481,7 +481,7 @@ export function interpolateFrames(
           // Pixel-level blending for smoother morph
           const ctxA = frameA.getContext('2d');
           const ctxB = frameB.getContext('2d');
-          if (!ctxA || !ctxB) throw new Error('Could not get canvas context');
+          if (!(ctxA && ctxB)) throw new Error('Could not get canvas context');
           const dataA = ctxA.getImageData(0, 0, width, height);
           const dataB = ctxB.getImageData(0, 0, width, height);
           const result = ctx.createImageData(width, height);

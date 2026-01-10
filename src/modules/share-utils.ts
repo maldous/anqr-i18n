@@ -298,9 +298,7 @@ export function parseUrlParams(): Partial<ShareConfig> {
             ),
         }
       : {}),
-    ...(params.get('gradAngle')
-      ? { gradientAngle: parseIntParam(params.get('gradAngle')) }
-      : {}),
+    ...(params.get('gradAngle') ? { gradientAngle: parseIntParam(params.get('gradAngle')) } : {}),
     eyeOuterStyle: params.get('eyeOuter') || undefined,
     eyeInnerStyle: params.get('eyeInner') || undefined,
     eyeScale: parseIntParam(params.get('eyeScale')),

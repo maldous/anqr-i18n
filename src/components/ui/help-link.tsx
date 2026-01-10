@@ -32,7 +32,13 @@ function parseTierFromUrl(href: string): Tier | undefined {
   return match ? (match[1] as Tier) : undefined;
 }
 
-export function HelpLink({ href, anchor, requiredTier, title, className = '' }: Readonly<HelpLinkProps>) {
+export function HelpLink({
+  href,
+  anchor,
+  requiredTier,
+  title,
+  className = '',
+}: Readonly<HelpLinkProps>) {
   // Convert anchor shorthand to full href
   const resolvedHref = anchor ? `/guide#${anchor}` : href || '/guide';
   const { t, i18n } = useTranslation();

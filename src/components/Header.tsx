@@ -338,12 +338,11 @@ export function Header({
       protectVersionInfo: overlay.enabled && overlay.protectVersionInfo ? true : undefined,
       eccAwareEnabled: overlay.enabled && overlay.eccAwareEnabled ? true : undefined,
       eccAwareRiskBudget:
-        !overlay.enabled || !overlay.eccAwareEnabled || overlay.eccAwareRiskBudget === 50
+        !(overlay.enabled && overlay.eccAwareEnabled) || overlay.eccAwareRiskBudget === 50
           ? undefined
           : overlay.eccAwareRiskBudget,
       eccAwareWeightMap:
-        !overlay.enabled ||
-        !overlay.eccAwareEnabled ||
+        !(overlay.enabled && overlay.eccAwareEnabled) ||
         overlay.eccAwareWeightMap === 'distance_to_finders'
           ? undefined
           : overlay.eccAwareWeightMap,
@@ -376,7 +375,9 @@ export function Header({
       orderedMatrix:
         !overlay.enabled || overlay.orderedMatrix === 'bayer4' ? undefined : overlay.orderedMatrix,
       blueNoiseTileSize:
-        !overlay.enabled || overlay.blueNoiseTileSize === 64 ? undefined : overlay.blueNoiseTileSize,
+        !overlay.enabled || overlay.blueNoiseTileSize === 64
+          ? undefined
+          : overlay.blueNoiseTileSize,
       blueNoiseSeed:
         !overlay.enabled || overlay.blueNoiseSeed === 0 ? undefined : overlay.blueNoiseSeed,
       colorDither:
@@ -391,11 +392,15 @@ export function Header({
           ? undefined
           : overlay.subpixelCenterRule,
       subpixelNeutralColor:
-        !overlay.enabled || overlay.mode !== 'subpixel' || overlay.subpixelNeutralColor === '#808080'
+        !overlay.enabled ||
+        overlay.mode !== 'subpixel' ||
+        overlay.subpixelNeutralColor === '#808080'
           ? undefined
           : overlay.subpixelNeutralColor,
       subpixelFinderOverride:
-        !overlay.enabled || overlay.mode !== 'subpixel' || overlay.subpixelFinderOverride === 'solid'
+        !overlay.enabled ||
+        overlay.mode !== 'subpixel' ||
+        overlay.subpixelFinderOverride === 'solid'
           ? undefined
           : overlay.subpixelFinderOverride,
       // Halftone
@@ -792,8 +797,8 @@ export function Header({
                         if (aIsCurrent && !bIsCurrent) return -1;
                         if (bIsCurrent && !aIsCurrent) return 1;
                         // Sort by translated name in current language
-                        const aName = t('languages.' + a.code);
-                        const bName = t('languages.' + b.code);
+                        const aName = t(`languages.${a.code}`);
+                        const bName = t(`languages.${b.code}`);
                         return aName.localeCompare(bName, i18n.language);
                       })
                       .map((lang) => (
@@ -809,11 +814,12 @@ export function Header({
                             {lang.nativeName}
                             {/* Show English name for current language if not English, otherwise show translated name for other languages */}
                             {(() => {
-                              const isCurrentLang = lang.code === i18n.language || i18n.language.startsWith(lang.code);
+                              const isCurrentLang =
+                                lang.code === i18n.language || i18n.language.startsWith(lang.code);
                               if (isCurrentLang) {
                                 return lang.code === 'en-GB' ? '' : ` (${lang.name})`;
                               }
-                              return ` (${t('languages.' + lang.code)})`;
+                              return ` (${t(`languages.${lang.code}`)})`;
                             })()}
                           </span>
                           {(i18n.language === lang.code || i18n.language.startsWith(lang.code)) && (
