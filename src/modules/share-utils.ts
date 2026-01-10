@@ -1397,6 +1397,7 @@ export async function copyToClipboard(text: string): Promise<boolean> {
 
     try {
       // execCommand is deprecated but necessary for older browser fallback
+      // NOSONAR - intentionally using deprecated API for browser compatibility
       document.execCommand('copy');
       return true;
     } catch (fallbackError_) {

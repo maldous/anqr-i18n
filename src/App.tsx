@@ -15,7 +15,13 @@ import { useBannerHeight } from '@/hooks/useBannerHeight';
 import { useQRGenerator } from '@/hooks/useQRGenerator';
 import i18n, { isRtlLanguage, languages, loadLocale } from '@/i18n';
 import { parseUrlParams } from '@/modules/share-utils';
-import { type Tier, useQRStore } from '@/store/qr-store';
+import {
+  type AlignmentStyle,
+  type FinderStyle,
+  type Tier,
+  type TimingStyle,
+  useQRStore,
+} from '@/store/qr-store';
 
 type PageView = 'editor' | 'gallery' | StaticPageType;
 type ModuleStyleOption = 'square' | 'rounded' | 'dots' | 'diamond' | 'connected';
@@ -343,13 +349,10 @@ function App() {
     if (params.bg) store.setRenderBgColor(params.bg);
     if (params.transparent) store.setRenderBgTransparent(true);
     if (params.style) store.setRenderModuleStyle(params.style as ModuleStyleOption);
-    if (params.finder) store.setRenderFinderStyle(params.finder as 'square' | 'rounded' | 'circle');
+    if (params.finder) store.setRenderFinderStyle(params.finder as FinderStyle);
     if (params.alignmentStyle)
-      store.setRenderAlignmentStyle(
-        params.alignmentStyle as 'match_finder' | 'square' | 'rounded' | 'circle'
-      );
-    if (params.timingStyle)
-      store.setRenderTimingStyle(params.timingStyle as 'match_module' | 'solid' | 'dashed');
+      store.setRenderAlignmentStyle(params.alignmentStyle as AlignmentStyle);
+    if (params.timingStyle) store.setRenderTimingStyle(params.timingStyle as TimingStyle);
     // Render settings
     if (params.moduleGap !== undefined) store.setRenderModuleGap(params.moduleGap);
     if (params.gapMode)

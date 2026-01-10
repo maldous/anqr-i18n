@@ -1508,14 +1508,8 @@ export const useQRStore = create<QRState>((set, get) => ({
         return url;
       }
 
-      case 'social_profile': {
-        // Social profile - ensure proper URL format
-        let url = payload.text;
-        if (!(url.startsWith('http://') || url.startsWith('https://'))) {
-          url = `https://${url}`;
-        }
-        return url;
-      }
+      // social_profile uses identical logic to url - fall through
+      case 'social_profile':
 
       case 'messaging_link': {
         // Messaging links - detect platform and format appropriately
