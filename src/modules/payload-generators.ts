@@ -592,7 +592,7 @@ export class EMVQRBuilder {
 
   /** Set Merchant Category Code (MCC) */
   setMCC(mcc: string): this {
-    if (mcc && mcc.length === 4) {
+    if (mcc?.length === 4) {
       this.fields.set(EMV_TAGS.MERCHANT_CATEGORY_CODE, mcc);
     }
     return this;
@@ -1086,10 +1086,11 @@ export function generateEvent(params: EventHelper): string {
 
   // Generate UID using crypto for uniqueness
   const uid = `${Date.now()}-${crypto.randomUUID().slice(0, 9)}@anqr`;
-  lines.push(`UID:${uid}`);
-
-  // Timestamp
-  lines.push(`DTSTAMP:${formatICalDate(new Date().toISOString())}`);
+  lines.push(
+    `UID:${uid}`,
+    // Timestamp
+    `DTSTAMP:${formatICalDate(new Date().toISOString())}`
+  );
 
   // Start time
   if (params.start) {
@@ -1439,13 +1440,11 @@ export function generateSwissQRBill(params: SwissQRBillParams): string {
     params.ultimateCreditorCountry?.toUpperCase() || ''
   );
 
-  // Payment amount
-  if (params.amount !== undefined && params.amount > 0) {
-    lines.push(params.amount.toFixed(2));
-  } else {
-    lines.push('');
-  }
-  lines.push(params.currency);
+  // Payment amount and currency
+  lines.push(
+    params.amount !== undefined && params.amount > 0 ? params.amount.toFixed(2) : '',
+    params.currency
+  );
 
   // Ultimate Debtor (payer - optional)
   lines.push(
@@ -1950,14 +1949,12 @@ export function generateAusPayNet(params: AusPayNetParams): string {
 
   // PayID with type
   if (params.payId && params.payIdType) {
-    maiData.push({ tag: '01', value: params.payIdType });
-    maiData.push({ tag: '02', value: params.payId });
+    maiData.push({ tag: '01', value: params.payIdType }, { tag: '02', value: params.payId });
   }
 
   // Traditional BSB + Account
   if (params.bsb && params.accountNumber) {
-    maiData.push({ tag: '03', value: params.bsb });
-    maiData.push({ tag: '04', value: params.accountNumber });
+    maiData.push({ tag: '03', value: params.bsb }, { tag: '04', value: params.accountNumber });
   }
 
   builder.addMerchantAccountInfo(26, PAYMENT_SCHEME_GUI.AUSPAYNET, maiData);
