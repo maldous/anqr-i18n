@@ -179,7 +179,6 @@ export class QRGenerator {
   async loadLibrary() {
     // Library is imported synchronously via ES module
     // This method is kept for backwards compatibility
-    return Promise.resolve();
   }
 
   // ============================================
@@ -232,7 +231,7 @@ export class QRGenerator {
     const effectiveConfig = { ...config, overlayIntensity: effectiveIntensity };
 
     // No overlay - return base QR matrix at requested scale
-    if (!overlayCanvas) {
+    if (overlayCanvas === null || overlayCanvas === undefined) {
       const matrix = [];
       const colors = [];
       for (let y = 0; y < scaledSize; y++) {
@@ -565,7 +564,7 @@ export class QRGenerator {
         const color = colors[y]?.[x];
 
         // Skip light pixels unless doing color rendering
-        if (!(isDark || useColorRendering)) continue;
+        if (!isDark && !useColorRendering) continue;
 
         const dx = marginPx + x * subPixelSize;
         const dy = marginPx + y * subPixelSize;
@@ -716,8 +715,8 @@ export class QRGenerator {
               if (useHalftone && isDark) {
                 // Halftone center uses brightness to vary appearance
                 const brightness = moduleBrightness[moduleRow]?.[moduleCol] ?? 0.5;
-                const minSize = 0.4;
-                const maxSize = 1.0;
+    const minSize = 0.4;
+    const maxSize = 1;
                 const sizeRatio = minSize + (1 - brightness) * (maxSize - minSize) * intensity;
                 // For the matrix, we still mark it as dark
                 matrix[y][x] = true;
@@ -815,16 +814,8 @@ export class QRGenerator {
     // All overlay modes now go through the same QR generation path
     // =======================================================================
 
-    // For dithered/blue-noise modes that use 3x scale, we need special handling
-    // but they will STILL use the main render loop for styling
-    const _useSubpixelDithering =
-      (config.overlayMode === 'dithered' || config.overlayMode === 'blue-noise') &&
-      processedOverlayCanvas;
-
-    // For subpixel modes, use special NxN grid rendering
-    const _useSubpixelGrid =
-      (config.overlayMode === 'subpixel' || config.overlayMode === 'subpixel-size') &&
-      processedOverlayCanvas;
+    // Note: Dithered/blue-noise modes use 3x scale and subpixel modes use NxN grid rendering
+    // These are handled by the getScaleFactor() and generateScaledQR() methods below
 
     // Build cache key for QR matrix reuse (avoids expensive qr.make() on every frame)
     const encodingMode = config.encodingMode || 'auto';
@@ -1018,9 +1009,8 @@ export class QRGenerator {
                   halftoneBrightness = brightness;
                 } else {
                   // Legacy halftone behavior
-                  const intensity = effectiveIntensity / 100;
-                  const minSize = 0.3;
-                  const maxSize = 1.0;
+                  const intensity = effectiveIntensity / 100;    const minSize = 0.3;
+    const maxSize = 1;
                   moduleSizeModifier =
                     minSize +
                     (1 - brightness) * (maxSize - minSize) * intensity +
@@ -1734,8 +1724,9 @@ export class QRGenerator {
       canvasHashCache.set(canvas, hashStr);
 
       return hashStr;
-    } catch (_e) {
+    } catch (error_) {
       // Fallback to dimensions-only if getImageData fails
+      console.warn('Canvas hashing failed:', error_);
       return `${canvas.width}x${canvas.height}`;
     }
   }
@@ -1995,9 +1986,9 @@ export class QRGenerator {
 
     // Add color stops
     if (stops && stops.length > 0) {
-      stops.forEach((stop) => {
+      for (const stop of stops) {
         gradient.addColorStop(stop.pos, stop.color);
-      });
+      }
     } else {
       // Default gradient from fgColor to a lighter version
       gradient.addColorStop(0, config.fgColor);
@@ -2530,7 +2521,7 @@ export class QRGenerator {
       const xEnd = leftToRight ? scaledSize : -1;
       const xStep = leftToRight ? 1 : -1;
 
-      for (let x = xStart; x !== xEnd; x += xStep) {
+      for (let x = xStart; leftToRight ? x < xEnd : x > xEnd; x += xStep) {
         // Skip locked areas and data points
         if (isLocked(scaledSize, x, y, scale)) continue;
         if (isData(x, y, scale)) continue;
@@ -2689,6 +2680,7 @@ export class QRGenerator {
     const scaledErrorR = errorR * strength;
     const scaledErrorG = errorG * strength;
     const scaledErrorB = errorB * strength;
+    // Note: strength of 1.0 means full error diffusion
 
     // Use provided kernel or default Floyd-Steinberg
     const diffusionKernel = kernel || [
@@ -3130,7 +3122,7 @@ export class QRGenerator {
           }
         }
         const idx = y * width + x;
-        magnitude[idx] = Math.sqrt(gx * gx + gy * gy);
+        magnitude[idx] = Math.hypot(gx, gy);
         direction[idx] = Math.atan2(gy, gx);
       }
     }
@@ -3253,7 +3245,7 @@ export class QRGenerator {
           }
         }
 
-        const magnitude = Math.min(255, Math.sqrt(gx * gx + gy * gy));
+        const magnitude = Math.min(255, Math.hypot(gx, gy));
         const outIdx = (y * width + x) * 4;
         data[outIdx] = magnitude;
         data[outIdx + 1] = magnitude;
@@ -3377,7 +3369,8 @@ export class QRGenerator {
 
       // If still not enough contrast, return black
       return '#000000';
-    } catch (_e) {
+    } catch (error_) {
+      console.warn('Contrast check failed:', error_);
       return moduleColor;
     }
   }
@@ -3436,8 +3429,8 @@ export class QRGenerator {
         // Color based on distance from center
         const cx = moduleCount / 2;
         const cy = moduleCount / 2;
-        const dist = Math.sqrt((row - cy) ** 2 + (col - cx) ** 2);
-        const maxDist = Math.sqrt(cx ** 2 + cy ** 2);
+        const dist = Math.hypot(row - cy, col - cx);
+        const maxDist = Math.hypot(cx, cy);
         const idx = Math.floor((dist / maxDist) * palette.length) % palette.length;
         return palette[idx];
       }
@@ -3470,7 +3463,7 @@ export class QRGenerator {
    * @private
    */
   drawHalftoneModule(ctx, x, y, size, brightness, config) {
-    const _htCell = config.halftoneCell || 'per_module';
+    // halftoneCell setting determines rendering scope (per_module is default)
     const htDot = config.halftoneDotShape || 'circle';
     const htCurve = config.brightnessCurve || 'linear';
 
@@ -3489,7 +3482,7 @@ export class QRGenerator {
 
     // Calculate dot size based on brightness (darker = larger dot)
     const minSize = 0.2;
-    const maxSize = 1.0;
+    const maxSize = 1;
     const dotSizeRatio = minSize + (1 - adjustedBrightness) * (maxSize - minSize);
     const dotSize = size * dotSizeRatio;
     const offset = (size - dotSize) / 2;
@@ -3515,7 +3508,7 @@ export class QRGenerator {
         break;
       }
 
-      case 'diamond':
+      case 'diamond': {
         ctx.beginPath();
         ctx.moveTo(centerX, y + offset);
         ctx.lineTo(x + size - offset, centerY);
@@ -3541,9 +3534,9 @@ export class QRGenerator {
     switch (weightMap) {
       case 'distance_to_finders': {
         // Closer to finders = more important
-        const distTL = Math.sqrt(row * row + col * col);
-        const distTR = Math.sqrt(row * row + (moduleCount - 1 - col) ** 2);
-        const distBL = Math.sqrt((moduleCount - 1 - row) ** 2 + col * col);
+        const distTL = Math.hypot(row, col);
+        const distTR = Math.hypot(row, moduleCount - 1 - col);
+        const distBL = Math.hypot(moduleCount - 1 - row, col);
         const minDist = Math.min(distTL, distTR, distBL);
         const maxDist = (Math.sqrt(2) * moduleCount) / 2;
         return 1 - minDist / maxDist;
@@ -3553,7 +3546,7 @@ export class QRGenerator {
         // Center blocks are less critical than edge blocks
         const centerRow = moduleCount / 2;
         const centerCol = moduleCount / 2;
-        const distToCenter = Math.sqrt((row - centerRow) ** 2 + (col - centerCol) ** 2);
+        const distToCenter = Math.hypot(row - centerRow, col - centerCol);
         const maxDist = (Math.sqrt(2) * moduleCount) / 2;
         return distToCenter / maxDist;
       }
