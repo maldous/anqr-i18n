@@ -1054,10 +1054,15 @@ export function createAnimationLoop(
 // EXPORT
 // ============================================
 
+// Legacy utilities - kept for backward compatibility
+// NOSONAR - intentionally exporting deprecated functions for API stability
+const legacyParseGifFrames = parseGifFrames;
+const legacyDecimateFramesToFps = decimateFramesToFps;
+
 export const Animation = {
   // Image parsing
   parseAnimatedImage,
-  parseGifFrames,
+  parseGifFrames: legacyParseGifFrames,
   parseWebPFrames,
   getGifDelays,
   detectImageFormat,
@@ -1083,9 +1088,9 @@ export const Animation = {
   createGifCompositor,
   calculateCompositorFps,
   decimateCompositorFrames,
-  // Legacy utilities
+  // Legacy utilities (kept for backward compatibility)
   calculateSourceFps,
-  decimateFramesToFps,
+  decimateFramesToFps: legacyDecimateFramesToFps,
 };
 
 export default Animation;

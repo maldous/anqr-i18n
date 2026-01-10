@@ -247,7 +247,7 @@ export function ShareSection() {
           ? watermark.text
           : undefined,
       watermarkPosition:
-        !watermark.enabled || watermark.position === 'center' ? undefined : watermark.position,
+        watermark.enabled && watermark.position !== 'center' ? watermark.position : undefined,
       watermarkOpacity:
         watermark.enabled && watermark.opacity !== 50 ? watermark.opacity : undefined,
       watermarkBlend:

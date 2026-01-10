@@ -973,9 +973,9 @@ function getAvailableKeywords(
 }
 
 interface SidebarProps {
-  isOpen: boolean;
-  onClose: () => void;
-  mobileHeightPercent?: number;
+  readonly isOpen: boolean;
+  readonly onClose: () => void;
+  readonly mobileHeightPercent?: number;
 }
 
 export function Sidebar({ isOpen, onClose, mobileHeightPercent = 45 }: SidebarProps) {
@@ -1126,10 +1126,9 @@ export function Sidebar({ isOpen, onClose, mobileHeightPercent = 45 }: SidebarPr
     <>
       {/* Backdrop for tablet only (md to lg) - mobile uses split view, no backdrop needed */}
       {isOpen && (
-        <div
-          role="button"
-          tabIndex={0}
-          className="fixed inset-0 bg-black/50 z-30 hidden md:block lg:hidden"
+        <button
+          type="button"
+          className="fixed inset-0 bg-black/50 z-30 hidden md:block lg:hidden appearance-none border-none cursor-default"
           onClick={onClose}
           onKeyDown={(e) => {
             if (e.key === 'Enter' || e.key === ' ') {
@@ -1137,7 +1136,9 @@ export function Sidebar({ isOpen, onClose, mobileHeightPercent = 45 }: SidebarPr
               onClose();
             }
           }}
-        />
+        >
+          <span className="sr-only">Close sidebar</span>
+        </button>
       )}
 
       <aside

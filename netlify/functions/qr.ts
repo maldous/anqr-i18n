@@ -357,6 +357,7 @@ function getWatermarkPositions(
     case 'quiet_zone':
       positions.push({ x: margin / 2, y: canvasHeight - watermarkHeight - margin / 2 });
       break;
+    case 'center':
     default:
       positions.push({
         x: (canvasWidth - watermarkWidth) / 2,
@@ -487,8 +488,8 @@ function calculateCrc32(data: Uint8Array): number {
     table[n] = c;
   }
 
-  for (let i = 0; i < data.length; i++) {
-    crc = table[(crc ^ data[i]) & 0xff] ^ (crc >>> 8);
+  for (const byte of data) {
+    crc = table[(crc ^ byte) & 0xff] ^ (crc >>> 8);
   }
 
   return (crc ^ 0xffffffff) >>> 0;
@@ -666,8 +667,7 @@ function encodeAnimatedGif(
   // Use minimum of 2 centiseconds (20ms) - browsers interpret <2cs as 10cs anyway
   const delayCentiseconds = Math.max(2, Math.round(frameDelayMs / 10));
 
-  for (let i = 0; i < frames.length; i++) {
-    const frame = frames[i];
+  for (const frame of frames) {
     const ctx = frame.getContext('2d');
     const imageData = ctx.getImageData(0, 0, width, height);
     const { data } = imageData;
@@ -797,8 +797,7 @@ function parseGifFramesServer(arrayBuffer: ArrayBuffer): ServerAnimationFrame[] 
 
   const animationFrames: ServerAnimationFrame[] = [];
 
-  for (let i = 0; i < frames.length; i++) {
-    const frame = frames[i];
+  for (const frame of frames) {
     const { dims, patch, disposalType, delay } = frame;
 
     // Create ImageData from patch
@@ -848,8 +847,7 @@ function encodeAnimatedGifWithDelays(frames: ServerAnimationFrame[], colors: num
   const gif = GIFEncoder();
   const paletteSize = Math.min(256, Math.max(2, colors));
 
-  for (let i = 0; i < frames.length; i++) {
-    const frame = frames[i];
+  for (const frame of frames) {
     const ctx = frame.canvas.getContext('2d');
     const imageData = ctx.getImageData(0, 0, width, height);
     const { data } = imageData;
@@ -1409,13 +1407,13 @@ export default async (request: Request) => {
       palette,
       paletteMode,
       gradient:
-        gradientType !== 'none'
-          ? {
+        gradientType === 'none'
+          ? undefined
+          : {
               type: gradientType,
               angle: gradientAngle,
               stops: gradientStops,
-            }
-          : undefined,
+            },
       // Per-ECC intensity limits
       maxOverlayIntensityByEcc: {
         L: maxOverlayIntensityL,

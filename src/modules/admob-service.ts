@@ -106,8 +106,10 @@ let isInitialized = false;
 // Guard against concurrent initialization / duplicate listeners
 let initInFlight: Promise<boolean> | null = null;
 let listenersSetup = false;
-let currentBannerPosition: 'top' | 'bottom' | null = null;
-let pendingBannerPosition: 'top' | 'bottom' | null = null; // Track position during load attempt
+
+type BannerPosition = 'top' | 'bottom';
+let currentBannerPosition: BannerPosition | null = null;
+let pendingBannerPosition: BannerPosition | null = null; // Track position during load attempt
 let currentBannerHeight = 0;
 
 // Callbacks for banner height changes
@@ -257,7 +259,11 @@ function setupAdMobListeners() {
       console.error(
         `AdMob: Checking fallback for ${adTypeKey}, shouldUseTestAds=${shouldUseTestAds(adTypeKey)}`
       );
-      if (!shouldUseTestAds(adTypeKey)) {
+      if (shouldUseTestAds(adTypeKey)) {
+        // Test ads also failed, clear state
+        pendingBannerPosition = null;
+        console.error('AdMob: Test ads also failed, giving up');
+      } else {
         markProdAdFailed(adTypeKey);
         // Clear state before retry to avoid loops
         pendingBannerPosition = null;
@@ -265,10 +271,6 @@ function setupAdMobListeners() {
         // Retry with test ads
         console.error('AdMob: Retrying banner with test ads after FailedToLoad event...');
         showBannerAd(position);
-      } else {
-        // Test ads also failed, clear state
-        pendingBannerPosition = null;
-        console.error('AdMob: Test ads also failed, giving up');
       }
     } else {
       console.error('AdMob: No position tracked, cannot retry');

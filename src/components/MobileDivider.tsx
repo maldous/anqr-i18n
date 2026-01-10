@@ -123,12 +123,7 @@ export function MobileDivider({ onDrag, onDragEnd }: Readonly<MobileDividerProps
         }
       }}
       tabIndex={0}
-      role="separator"
-      aria-orientation="horizontal"
-      aria-valuenow={50}
-      aria-valuemin={0}
-      aria-valuemax={100}
-      aria-label="Drag to resize panels"
+      aria-label="Resize panels. Use arrow keys to adjust."
     >
       <GripHorizontal
         className={`h-5 w-5 transition-all duration-150 ${isDragging ? 'text-foreground scale-110' : 'text-muted-foreground'}`}
