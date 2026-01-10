@@ -1,4 +1,4 @@
-import { createContext, type ReactNode, useContext } from 'react';
+import { createContext, type ReactNode, useContext, useMemo } from 'react';
 
 interface SearchContextValue {
   searchQuery: string;
@@ -9,11 +9,12 @@ const SearchContext = createContext<SearchContextValue>({ searchQuery: '' });
 export function SearchProvider({
   children,
   searchQuery,
-}: {
+}: Readonly<{
   children: ReactNode;
   searchQuery: string;
-}) {
-  return <SearchContext.Provider value={{ searchQuery }}>{children}</SearchContext.Provider>;
+}>) {
+  const value = useMemo(() => ({ searchQuery }), [searchQuery]);
+  return <SearchContext.Provider value={value}>{children}</SearchContext.Provider>;
 }
 
 export function useSearch() {
@@ -48,7 +49,7 @@ export function highlightText(text: string, searchQuery: string): ReactNode {
   );
 }
 
-export function HighlightedLabel({ children }: { children: string }) {
+export function HighlightedLabel({ children }: Readonly<{ children: string }>) {
   const { searchQuery } = useSearch();
   return <>{highlightText(children, searchQuery)}</>;
 }
