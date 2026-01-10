@@ -268,7 +268,7 @@ export function OverlaySection() {
                 onTouchStart={handleTouchStart}
                 onTouchMove={handleTouchMove}
                 onTouchEnd={handleTouchEnd}
-                aria-label="Image preview with crop area selector"
+                title="Image preview with crop area selector"
               >
                 <img
                   src={imagePreview}

@@ -357,7 +357,6 @@ function getWatermarkPositions(
     case 'quiet_zone':
       positions.push({ x: margin / 2, y: canvasHeight - watermarkHeight - margin / 2 });
       break;
-    case 'center':
     default:
       positions.push({
         x: (canvasWidth - watermarkWidth) / 2,

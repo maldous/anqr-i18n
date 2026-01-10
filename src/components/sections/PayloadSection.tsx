@@ -910,7 +910,7 @@ export function PayloadSection() {
       amount: emvGenericForm.amount ? Number.parseFloat(emvGenericForm.amount) : undefined,
       mcc: emvGenericForm.mcc || undefined,
       postalCode: emvGenericForm.postalCode || undefined,
-      tipIndicator: emvGenericForm.tipIndicator as 'none' | 'prompt' | 'fixed' | 'percent',
+      tipIndicator: emvGenericForm.tipIndicator as NonNullable<typeof emvGenericForm.tipIndicator>,
       tipAmount: emvGenericForm.tipAmount ? Number.parseFloat(emvGenericForm.tipAmount) : undefined,
       tipPercent: emvGenericForm.tipPercent
         ? Number.parseFloat(emvGenericForm.tipPercent)
@@ -2578,13 +2578,11 @@ export function PayloadSection() {
           <div className="space-y-2">
             <Label>{t('placeholders.payId')}</Label>
             <Input
-              placeholder={
-                auspaynetForm.payIdType === 'EMAIL'
-                  ? t('placeholders.emailExample')
-                  : auspaynetForm.payIdType === 'MOBILE'
-                    ? '+61400123456'
-                    : '12345678901'
-              }
+              placeholder={(() => {
+                if (auspaynetForm.payIdType === 'EMAIL') return t('placeholders.emailExample');
+                if (auspaynetForm.payIdType === 'MOBILE') return '+61400123456';
+                return '12345678901';
+              })()}
               value={auspaynetForm.payId}
               onChange={(e) => setAuspaynetForm({ ...auspaynetForm, payId: e.target.value })}
             />
