@@ -98,6 +98,9 @@ export function MobileDivider({ onDrag, onDragEnd }: Readonly<MobileDividerProps
   return (
     <div
       ref={dividerRef}
+      role="button"
+      tabIndex={0}
+      aria-label="Resize panels. Use arrow keys to adjust."
       className={`
         md:hidden
         h-4 w-full
@@ -107,6 +110,7 @@ export function MobileDivider({ onDrag, onDragEnd }: Readonly<MobileDividerProps
         touch-none
         select-none
         transition-all duration-150
+        focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-1
         ${
           isDragging
             ? 'bg-accent shadow-md border-accent-foreground/20'
@@ -122,7 +126,6 @@ export function MobileDivider({ onDrag, onDragEnd }: Readonly<MobileDividerProps
           onDragEnd();
         }
       }}
-      title="Resize panels. Use arrow keys to adjust."
     >
       <GripHorizontal
         className={`h-5 w-5 transition-all duration-150 ${isDragging ? 'text-foreground scale-110' : 'text-muted-foreground'}`}

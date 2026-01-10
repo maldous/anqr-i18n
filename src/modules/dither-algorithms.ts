@@ -396,18 +396,18 @@ export function errorDiffusion(
         };
 
         // Distribute error
-        distributeErrorWithKernel(
+        distributeErrorWithKernel({
           pixels,
           x,
           y,
           width,
           height,
-          error,
-          error,
-          error,
+          errorR: error,
+          errorG: error,
+          errorB: error,
           kernel,
-          leftToRight
-        );
+          leftToRight,
+        });
       } else if (colorMode === 'grayscale') {
         // Grayscale with multiple levels
         const gray = rgbToGray(pixel.r, pixel.g, pixel.b);
@@ -418,27 +418,27 @@ export function errorDiffusion(
         const grayByte = Math.round(clamp01(newVal) * 255);
         resultColors[y][x] = { r: grayByte, g: grayByte, b: grayByte };
 
-        distributeErrorWithKernel(
+        distributeErrorWithKernel({
           pixels,
           x,
           y,
           width,
           height,
-          error,
-          error,
-          error,
+          errorR: error,
+          errorG: error,
+          errorB: error,
           kernel,
-          leftToRight
-        );
+          leftToRight,
+        });
       } else {
         // Color mode - process each channel
         const newR = Math.round(pixel.r / step) * step;
         const newG = Math.round(pixel.g / step) * step;
         const newB = Math.round(pixel.b / step) * step;
 
-        const errorR = (pixel.r - newR) * strengthFactor;
-        const errorG = (pixel.g - newG) * strengthFactor;
-        const errorB = (pixel.b - newB) * strengthFactor;
+        const errR = (pixel.r - newR) * strengthFactor;
+        const errG = (pixel.g - newG) * strengthFactor;
+        const errB = (pixel.b - newB) * strengthFactor;
 
         const brightness = rgbToGray(newR, newG, newB);
         resultMatrix[y][x] = brightness < 0.5;
@@ -449,18 +449,18 @@ export function errorDiffusion(
           b: Math.round(clamp01(newB) * 255),
         };
 
-        distributeErrorWithKernel(
+        distributeErrorWithKernel({
           pixels,
           x,
           y,
           width,
           height,
-          errorR,
-          errorG,
-          errorB,
+          errorR: errR,
+          errorG: errG,
+          errorB: errB,
           kernel,
-          leftToRight
-        );
+          leftToRight,
+        });
       }
     }
   }
@@ -468,19 +468,23 @@ export function errorDiffusion(
   return { matrix: resultMatrix, colors: resultColors };
 }
 
+/** Options for distributing error to neighboring pixels */
+interface DistributeErrorOptions {
+  pixels: { r: number; g: number; b: number }[][];
+  x: number;
+  y: number;
+  width: number;
+  height: number;
+  errorR: number;
+  errorG: number;
+  errorB: number;
+  kernel: DiffusionKernelDef;
+  leftToRight: boolean;
+}
+
 /** Distribute error to neighboring pixels */
-function distributeErrorWithKernel(
-  pixels: { r: number; g: number; b: number }[][],
-  x: number,
-  y: number,
-  width: number,
-  height: number,
-  errorR: number,
-  errorG: number,
-  errorB: number,
-  kernel: DiffusionKernelDef,
-  leftToRight: boolean
-): void {
+function distributeErrorWithKernel(opts: DistributeErrorOptions): void {
+  const { pixels, x, y, width, height, errorR, errorG, errorB, kernel, leftToRight } = opts;
   for (let ky = 0; ky < kernel.matrix.length; ky++) {
     for (let kx = 0; kx < kernel.matrix[ky].length; kx++) {
       const weight = kernel.matrix[ky][kx];
@@ -813,18 +817,18 @@ export function blueNoiseErrorDiffusion(
 
         resultMatrix[y][x] = newVal === 0;
         resultColors[y][x] = { r: newVal * 255, g: newVal * 255, b: newVal * 255 };
-        distributeErrorWithKernel(
+        distributeErrorWithKernel({
           pixels,
           x,
           y,
           width,
           height,
-          error,
-          error,
-          error,
+          errorR: error,
+          errorG: error,
+          errorB: error,
           kernel,
-          leftToRight
-        );
+          leftToRight,
+        });
       } else {
         const newR = Math.round(pixel.r / step) * step;
         const newG = Math.round(pixel.g / step) * step;
@@ -840,18 +844,18 @@ export function blueNoiseErrorDiffusion(
           g: Math.round(clamp01(newG) * 255),
           b: Math.round(clamp01(newB) * 255),
         };
-        distributeErrorWithKernel(
+        distributeErrorWithKernel({
           pixels,
           x,
           y,
           width,
           height,
-          errR,
-          errG,
-          errB,
+          errorR: errR,
+          errorG: errG,
+          errorB: errB,
           kernel,
-          leftToRight
-        );
+          leftToRight,
+        });
       }
     }
   }
@@ -995,25 +999,25 @@ export function perceptualDither(
         resultMatrix[y][x] = newVal === 0;
         const outVal = Math.round(toSRGB(newVal) * 255);
         resultColors[y][x] = { r: outVal, g: outVal, b: outVal };
-        distributeErrorWithKernel(
+        distributeErrorWithKernel({
           pixels,
           x,
           y,
           width,
           height,
-          error,
-          error,
-          error,
+          errorR: error,
+          errorG: error,
+          errorB: error,
           kernel,
-          leftToRight
-        );
+          leftToRight,
+        });
       } else {
         const newR = Math.round(pixel.r / step) * step;
         const newG = Math.round(pixel.g / step) * step;
         const newB = Math.round(pixel.b / step) * step;
-        const errorR = (pixel.r - newR) * strengthFactor;
-        const errorG = (pixel.g - newG) * strengthFactor;
-        const errorB = (pixel.b - newB) * strengthFactor;
+        const errR = (pixel.r - newR) * strengthFactor;
+        const errG = (pixel.g - newG) * strengthFactor;
+        const errB = (pixel.b - newB) * strengthFactor;
 
         const brightness = newR * 0.2126 + newG * 0.7152 + newB * 0.0722;
         resultMatrix[y][x] = brightness < 0.5;
@@ -1022,18 +1026,18 @@ export function perceptualDither(
           g: Math.round(clamp01(toSRGB(newG)) * 255),
           b: Math.round(clamp01(toSRGB(newB)) * 255),
         };
-        distributeErrorWithKernel(
+        distributeErrorWithKernel({
           pixels,
           x,
           y,
           width,
           height,
-          errorR,
-          errorG,
-          errorB,
+          errorR: errR,
+          errorG: errG,
+          errorB: errB,
           kernel,
-          leftToRight
-        );
+          leftToRight,
+        });
       }
     }
   }
@@ -1142,25 +1146,25 @@ export function edgeAwareDither(
 
         resultMatrix[y][x] = newVal === 0;
         resultColors[y][x] = { r: newVal * 255, g: newVal * 255, b: newVal * 255 };
-        distributeErrorWithKernel(
+        distributeErrorWithKernel({
           pixels,
           x,
           y,
           width,
           height,
-          error,
-          error,
-          error,
+          errorR: error,
+          errorG: error,
+          errorB: error,
           kernel,
-          leftToRight
-        );
+          leftToRight,
+        });
       } else {
         const newR = Math.round(pixel.r / step) * step;
         const newG = Math.round(pixel.g / step) * step;
         const newB = Math.round(pixel.b / step) * step;
-        const errorR = (pixel.r - newR) * strengthFactor * edgeFactor;
-        const errorG = (pixel.g - newG) * strengthFactor * edgeFactor;
-        const errorB = (pixel.b - newB) * strengthFactor * edgeFactor;
+        const errR = (pixel.r - newR) * strengthFactor * edgeFactor;
+        const errG = (pixel.g - newG) * strengthFactor * edgeFactor;
+        const errB = (pixel.b - newB) * strengthFactor * edgeFactor;
 
         const brightness = rgbToGray(newR, newG, newB);
         resultMatrix[y][x] = brightness < 0.5;
@@ -1169,18 +1173,18 @@ export function edgeAwareDither(
           g: Math.round(clamp01(newG) * 255),
           b: Math.round(clamp01(newB) * 255),
         };
-        distributeErrorWithKernel(
+        distributeErrorWithKernel({
           pixels,
           x,
           y,
           width,
           height,
-          errorR,
-          errorG,
-          errorB,
+          errorR: errR,
+          errorG: errG,
+          errorB: errB,
           kernel,
-          leftToRight
-        );
+          leftToRight,
+        });
       }
     }
   }
