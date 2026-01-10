@@ -50,13 +50,22 @@ const iconRegistry: Record<string, LucideIcon> = {
 };
 
 // Dynamic icon component using registry instead of namespace import
-function DynamicIcon({ name, className }: { name: string; className?: string }) {
+interface DynamicIconProps {
+  readonly name: string;
+  readonly className?: string;
+}
+
+function DynamicIcon({ name, className }: DynamicIconProps) {
   const Icon = iconRegistry[name];
   return Icon ? <Icon className={className} /> : null;
 }
 
 // Gallery card component with hover-to-enlarge
-function GalleryCard({ item }: { item: GalleryItem }) {
+interface GalleryCardProps {
+  readonly item: GalleryItem;
+}
+
+function GalleryCard({ item }: GalleryCardProps) {
   const { t } = useTranslation();
   const [imageError, setImageError] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
@@ -116,7 +125,11 @@ function GalleryCard({ item }: { item: GalleryItem }) {
 }
 
 // Horizontal ad component
-function HorizontalAd({ slot }: { slot: string }) {
+interface HorizontalAdProps {
+  readonly slot: string;
+}
+
+function HorizontalAd({ slot }: HorizontalAdProps) {
   return (
     <div className="max-w-7xl mx-auto px-4 py-4">
       <div className="flex justify-center">
@@ -127,17 +140,19 @@ function HorizontalAd({ slot }: { slot: string }) {
 }
 
 // Section component
+interface GallerySectionComponentProps {
+  readonly section: GallerySection;
+  readonly isExpanded: boolean;
+  readonly onToggle: () => void;
+  readonly showAdAfter?: string;
+}
+
 function GallerySectionComponent({
   section,
   isExpanded,
   onToggle,
   showAdAfter,
-}: {
-  section: GallerySection;
-  isExpanded: boolean;
-  onToggle: () => void;
-  showAdAfter?: string;
-}) {
+}: GallerySectionComponentProps) {
   const { t } = useTranslation();
   const sectionTitle = t(`gallery.sections.${section.id}.title`, { defaultValue: section.title });
   const sectionDescription = t(`gallery.sections.${section.id}.description`, {
@@ -196,21 +211,23 @@ function GallerySectionComponent({
 
 // Props for Gallery component
 interface GalleryProps {
-  filter: GalleryCategory | 'all';
+  readonly filter: GalleryCategory | 'all';
 }
 
 // Mobile jump button component
+interface MobileJumpButtonProps {
+  readonly icon: string;
+  readonly label: string;
+  readonly isActive: boolean;
+  readonly onClick: () => void;
+}
+
 function MobileJumpButton({
   icon,
   label,
   isActive,
   onClick,
-}: {
-  icon: string;
-  label: string;
-  isActive: boolean;
-  onClick: () => void;
-}) {
+}: MobileJumpButtonProps) {
   return (
     <button
       type="button"
@@ -278,7 +295,9 @@ export function Gallery({ filter }: GalleryProps) {
   }, [t]);
 
   const _filteredSections = useMemo(() => {
-    return filter === 'all' ? gallerySections : gallerySections.filter((s) => s.id === filter);
+    return filter === 'all'
+      ? gallerySections
+      : gallerySections.filter((s) => s.id === filter);
   }, [filter]);
 
   const _totalItems = useMemo(
@@ -299,7 +318,7 @@ export function Gallery({ filter }: GalleryProps) {
   };
 
   // Combined filter: use prop filter on desktop, mobile filter on mobile
-  const effectiveFilter = mobileFilter !== 'all' ? mobileFilter : filter;
+  const effectiveFilter = mobileFilter === 'all' ? filter : mobileFilter;
 
   const displaySections = useMemo(() => {
     if (effectiveFilter === 'all') return gallerySections;

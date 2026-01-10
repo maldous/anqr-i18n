@@ -28,7 +28,7 @@ const WELCOME_VERSION = '2026.01.04';
 const STORAGE_KEY = 'anqr-welcome-seen';
 
 interface WelcomeModalProps {
-  onClose?: () => void;
+  readonly onClose?: () => void;
 }
 
 export function WelcomeModal({ onClose }: WelcomeModalProps) {
@@ -100,19 +100,16 @@ export function WelcomeModal({ onClose }: WelcomeModalProps) {
       }`}
       style={{ backgroundColor: 'rgba(0, 0, 0, 0.6)', backdropFilter: 'blur(4px)' }}
       onClick={handleDismiss}
-      role="presentation"
       aria-hidden="true"
     >
-      <div
-        className={`bg-card border rounded-2xl shadow-2xl max-w-2xl w-full max-h-[90vh] overflow-hidden flex flex-col transition-all duration-200 ${
-          isClosing ? 'scale-95 opacity-0' : 'scale-100 opacity-100'
-        }`}
-        onClick={(e) => e.stopPropagation()}
-        onKeyDown={(e) => e.stopPropagation()}
-        role="dialog"
-        aria-modal="true"
-        aria-labelledby="welcome-title"
-      >
+          <dialog
+            open
+            className={`bg-card border rounded-2xl shadow-2xl max-w-2xl w-full max-h-[90vh] overflow-hidden flex flex-col transition-all duration-200 ${
+              isClosing ? 'scale-95 opacity-0' : 'scale-100 opacity-100'
+            }`}
+            onClick={(e) => e.stopPropagation()}
+            aria-labelledby="welcome-title"
+          >
         {/* Header */}
         <div className="relative px-6 pt-6 pb-4 border-b bg-gradient-to-br from-primary/5 to-primary/10">
           <button
@@ -148,9 +145,9 @@ export function WelcomeModal({ onClose }: WelcomeModalProps) {
               {t('welcome.featuresTitle')}
             </h2>
             <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
-              {features.map((feature, idx) => (
+              {features.map((feature) => (
                 <div
-                  key={idx}
+                  key={`feature-${feature.title}`}
                   className="p-3 rounded-lg bg-muted/50 hover:bg-muted transition-colors"
                 >
                   <feature.icon className="h-5 w-5 text-primary mb-2" />
@@ -168,8 +165,8 @@ export function WelcomeModal({ onClose }: WelcomeModalProps) {
               {t('welcome.whatsNewTitle')}
             </h2>
             <ul className="space-y-2">
-              {updates.map((update, idx) => (
-                <li key={idx} className="flex items-start gap-2 text-sm text-muted-foreground">
+              {updates.map((update) => (
+                <li key={`update-${update}`} className="flex items-start gap-2 text-sm text-muted-foreground">
                   <Check className="h-4 w-4 text-green-500 mt-0.5 flex-shrink-0" />
                   <span>{update}</span>
                 </li>
@@ -236,7 +233,7 @@ export function WelcomeModal({ onClose }: WelcomeModalProps) {
             {t('welcome.getStarted')}
           </Button>
         </div>
-      </div>
+      </dialog>
     </div>
   );
 }

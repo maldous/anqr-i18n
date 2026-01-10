@@ -319,17 +319,27 @@ export function bayerDither(
 // ERROR DIFFUSION DITHERING
 // ============================================
 
+/** Options for error diffusion dithering */
+interface ErrorDiffusionOptions {
+  kernelName?: DiffusionKernel;
+  serpentine?: boolean;
+  levels?: number;
+  strength?: number;
+  colorMode?: ColorMode;
+}
+
 /** Apply error diffusion dithering */
 export function errorDiffusion(
-  imageData: Float32Array[], // Array of rows, each containing RGB values 0-1
+  imageData: Float32Array[],
   width: number,
   height: number,
-  kernelName: DiffusionKernel = 'floyd_steinberg',
-  serpentine: boolean = true,
-  levels: number = 2,
-  strength: number = 100,
-  colorMode: ColorMode = 'bw'
+  options: ErrorDiffusionOptions = {}
 ): DitherResult {
+  const kernelName = options.kernelName ?? 'floyd_steinberg';
+  const serpentine = options.serpentine ?? true;
+  const levels = options.levels ?? 2;
+  const strength = options.strength ?? 100;
+  const colorMode = options.colorMode ?? 'bw';
   const kernel = DIFFUSION_KERNELS[kernelName];
   const strengthFactor = strength / 100;
   const step = 1 / (levels - 1);
@@ -365,7 +375,7 @@ export function errorDiffusion(
     const endX = leftToRight ? width : -1;
     const deltaX = leftToRight ? 1 : -1;
 
-    for (let x = startX; x !== endX; x += deltaX) {
+    for (let x = startX; deltaX > 0 ? x < endX : x > endX; x += deltaX) {
       const pixel = pixels[y][x];
 
       if (colorMode === 'bw') {
@@ -382,7 +392,7 @@ export function errorDiffusion(
         };
 
         // Distribute error
-        distributeError(pixels, x, y, width, height, error, error, error, kernel, leftToRight);
+        distributeErrorWithKernel(pixels, x, y, width, height, error, error, error, kernel, leftToRight);
       } else if (colorMode === 'grayscale') {
         // Grayscale with multiple levels
         const gray = rgbToGray(pixel.r, pixel.g, pixel.b);
@@ -393,7 +403,7 @@ export function errorDiffusion(
         const grayByte = Math.round(clamp01(newVal) * 255);
         resultColors[y][x] = { r: grayByte, g: grayByte, b: grayByte };
 
-        distributeError(pixels, x, y, width, height, error, error, error, kernel, leftToRight);
+        distributeErrorWithKernel(pixels, x, y, width, height, error, error, error, kernel, leftToRight);
       } else {
         // Color mode - process each channel
         const newR = Math.round(pixel.r / step) * step;
@@ -413,7 +423,7 @@ export function errorDiffusion(
           b: Math.round(clamp01(newB) * 255),
         };
 
-        distributeError(pixels, x, y, width, height, errorR, errorG, errorB, kernel, leftToRight);
+        distributeErrorWithKernel(pixels, x, y, width, height, errorR, errorG, errorB, kernel, leftToRight);
       }
     }
   }
@@ -422,7 +432,7 @@ export function errorDiffusion(
 }
 
 /** Distribute error to neighboring pixels */
-function distributeError(
+function distributeErrorWithKernel(
   pixels: { r: number; g: number; b: number }[][],
   x: number,
   y: number,
@@ -459,17 +469,27 @@ function distributeError(
 // BLUE NOISE DITHERING
 // ============================================
 
+/** Options for blue noise dithering */
+interface BlueNoiseOptions {
+  tileSize?: number;
+  seed?: number;
+  levels?: number;
+  strength?: number;
+  colorMode?: ColorMode;
+}
+
 /** Apply blue noise threshold dithering */
 export function blueNoiseDither(
   imageData: Float32Array[],
   width: number,
   height: number,
-  tileSize: number = 64,
-  seed: number = 0,
-  levels: number = 2,
-  strength: number = 100,
-  colorMode: ColorMode = 'bw'
+  options: BlueNoiseOptions = {}
 ): DitherResult {
+  const tileSize = options.tileSize ?? 64;
+  const seed = options.seed ?? 0;
+  const levels = options.levels ?? 2;
+  const strength = options.strength ?? 100;
+  const colorMode = options.colorMode ?? 'bw';
   const tile = generateBlueNoiseTile(tileSize, seed);
   const strengthFactor = strength / 100;
   const _step = 1 / (levels - 1);
@@ -683,19 +703,31 @@ export function triangularNoiseDither(
 // ADVANCED DITHERING ALGORITHMS
 // ============================================
 
+/** Options for blue noise error diffusion */
+interface BlueNoiseErrorDiffusionOptions {
+  kernelName?: DiffusionKernel;
+  serpentine?: boolean;
+  levels?: number;
+  strength?: number;
+  colorMode?: ColorMode;
+  tileSize?: number;
+  seed?: number;
+}
+
 /** Blue noise modulated error diffusion - combines error diffusion with blue noise threshold modulation */
 export function blueNoiseErrorDiffusion(
   imageData: Float32Array[],
   width: number,
   height: number,
-  kernelName: DiffusionKernel = 'floyd_steinberg',
-  serpentine: boolean = true,
-  levels: number = 2,
-  strength: number = 100,
-  colorMode: ColorMode = 'bw',
-  tileSize: number = 64,
-  seed: number = 0
+  options: BlueNoiseErrorDiffusionOptions = {}
 ): DitherResult {
+  const kernelName = options.kernelName ?? 'floyd_steinberg';
+  const serpentine = options.serpentine ?? true;
+  const levels = options.levels ?? 2;
+  const strength = options.strength ?? 100;
+  const colorMode = options.colorMode ?? 'bw';
+  const tileSize = options.tileSize ?? 64;
+  const seed = options.seed ?? 0;
   const kernel = DIFFUSION_KERNELS[kernelName];
   const strengthFactor = strength / 100;
   const step = 1 / (levels - 1);
@@ -730,7 +762,7 @@ export function blueNoiseErrorDiffusion(
     const endX = leftToRight ? width : -1;
     const deltaX = leftToRight ? 1 : -1;
 
-    for (let x = startX; x !== endX; x += deltaX) {
+    for (let x = startX; deltaX > 0 ? x < endX : x > endX; x += deltaX) {
       const pixel = pixels[y][x];
       // Add blue noise modulation to threshold
       const blueNoiseVal = sampleBlueNoise(x, y, tile, tileSize);
@@ -744,14 +776,14 @@ export function blueNoiseErrorDiffusion(
 
         resultMatrix[y][x] = newVal === 0;
         resultColors[y][x] = { r: newVal * 255, g: newVal * 255, b: newVal * 255 };
-        distributeError(pixels, x, y, width, height, error, error, error, kernel, leftToRight);
+        distributeErrorWithKernel(pixels, x, y, width, height, error, error, error, kernel, leftToRight);
       } else {
         const newR = Math.round(pixel.r / step) * step;
         const newG = Math.round(pixel.g / step) * step;
         const newB = Math.round(pixel.b / step) * step;
-        const errorR = (pixel.r - newR) * strengthFactor;
-        const errorG = (pixel.g - newG) * strengthFactor;
-        const errorB = (pixel.b - newB) * strengthFactor;
+        const errR = (pixel.r - newR) * strengthFactor;
+        const errG = (pixel.g - newG) * strengthFactor;
+        const errB = (pixel.b - newB) * strengthFactor;
 
         const brightness = rgbToGray(newR, newG, newB);
         resultMatrix[y][x] = brightness < 0.5;
@@ -760,7 +792,7 @@ export function blueNoiseErrorDiffusion(
           g: Math.round(clamp01(newG) * 255),
           b: Math.round(clamp01(newB) * 255),
         };
-        distributeError(pixels, x, y, width, height, errorR, errorG, errorB, kernel, leftToRight);
+        distributeErrorWithKernel(pixels, x, y, width, height, errR, errG, errB, kernel, leftToRight);
       }
     }
   }
@@ -768,20 +800,30 @@ export function blueNoiseErrorDiffusion(
   return { matrix: resultMatrix, colors: resultColors };
 }
 
+/** Options for screened blue noise dithering */
+interface ScreenedBlueNoiseOptions {
+  tileSize?: number;
+  seed?: number;
+  levels?: number;
+  strength?: number;
+  colorMode?: ColorMode;
+}
+
 /** Screened blue noise - combines halftone screening with blue noise */
 export function screenedBlueNoiseDither(
   imageData: Float32Array[],
   width: number,
   height: number,
-  tileSize: number = 64,
-  seed: number = 0,
-  levels: number = 2,
-  strength: number = 100,
-  _colorMode: ColorMode = 'bw'
+  options: ScreenedBlueNoiseOptions = {}
 ): DitherResult {
+  const tileSize = options.tileSize ?? 64;
+  const seed = options.seed ?? 0;
+  const levels = options.levels ?? 2;
+  const strength = options.strength ?? 100;
+  const _colorMode = options.colorMode ?? 'bw';
   const tile = generateBlueNoiseTile(tileSize, seed);
   const strengthFactor = strength / 100;
-  const _step = 1 / (levels - 1);
+  const step = 1 / (levels - 1);
 
   const resultMatrix: boolean[][] = [];
   const resultColors: RGB[][] = [];
@@ -824,17 +866,27 @@ export function screenedBlueNoiseDither(
   return { matrix: resultMatrix, colors: resultColors };
 }
 
+/** Options for perceptual dithering */
+interface PerceptualDitherOptions {
+  kernelName?: DiffusionKernel;
+  serpentine?: boolean;
+  levels?: number;
+  strength?: number;
+  colorMode?: ColorMode;
+}
+
 /** Perceptual dithering - uses perceptual luminance weighting */
 export function perceptualDither(
   imageData: Float32Array[],
   width: number,
   height: number,
-  kernelName: DiffusionKernel = 'floyd_steinberg',
-  serpentine: boolean = true,
-  levels: number = 2,
-  strength: number = 100,
-  colorMode: ColorMode = 'bw'
+  options: PerceptualDitherOptions = {}
 ): DitherResult {
+  const kernelName = options.kernelName ?? 'floyd_steinberg';
+  const serpentine = options.serpentine ?? true;
+  const levels = options.levels ?? 2;
+  const strength = options.strength ?? 100;
+  const colorMode = options.colorMode ?? 'bw';
   const kernel = DIFFUSION_KERNELS[kernelName];
   const strengthFactor = strength / 100;
   const step = 1 / (levels - 1);
@@ -872,7 +924,7 @@ export function perceptualDither(
     const endX = leftToRight ? width : -1;
     const deltaX = leftToRight ? 1 : -1;
 
-    for (let x = startX; x !== endX; x += deltaX) {
+    for (let x = startX; (deltaX > 0 ? x < endX : x > endX); x += deltaX) {
       const pixel = pixels[y][x];
 
       if (colorMode === 'bw') {
@@ -884,7 +936,7 @@ export function perceptualDither(
         resultMatrix[y][x] = newVal === 0;
         const outVal = Math.round(toSRGB(newVal) * 255);
         resultColors[y][x] = { r: outVal, g: outVal, b: outVal };
-        distributeError(pixels, x, y, width, height, error, error, error, kernel, leftToRight);
+        distributeErrorWithKernel(pixels, x, y, width, height, error, error, error, kernel, leftToRight);
       } else {
         const newR = Math.round(pixel.r / step) * step;
         const newG = Math.round(pixel.g / step) * step;
@@ -900,7 +952,7 @@ export function perceptualDither(
           g: Math.round(clamp01(toSRGB(newG)) * 255),
           b: Math.round(clamp01(toSRGB(newB)) * 255),
         };
-        distributeError(pixels, x, y, width, height, errorR, errorG, errorB, kernel, leftToRight);
+        distributeErrorWithKernel(pixels, x, y, width, height, errorR, errorG, errorB, kernel, leftToRight);
       }
     }
   }
@@ -908,17 +960,27 @@ export function perceptualDither(
   return { matrix: resultMatrix, colors: resultColors };
 }
 
+/** Options for edge-aware dithering */
+interface EdgeAwareDitherOptions {
+  kernelName?: DiffusionKernel;
+  serpentine?: boolean;
+  levels?: number;
+  strength?: number;
+  colorMode?: ColorMode;
+}
+
 /** Edge-aware dithering - reduces error diffusion across edges */
 export function edgeAwareDither(
   imageData: Float32Array[],
   width: number,
   height: number,
-  kernelName: DiffusionKernel = 'floyd_steinberg',
-  serpentine: boolean = true,
-  levels: number = 2,
-  strength: number = 100,
-  colorMode: ColorMode = 'bw'
+  options: EdgeAwareDitherOptions = {}
 ): DitherResult {
+  const kernelName = options.kernelName ?? 'floyd_steinberg';
+  const serpentine = options.serpentine ?? true;
+  const levels = options.levels ?? 2;
+  const strength = options.strength ?? 100;
+  const colorMode = options.colorMode ?? 'bw';
   const kernel = DIFFUSION_KERNELS[kernelName];
   const strengthFactor = strength / 100;
   const step = 1 / (levels - 1);
@@ -987,7 +1049,7 @@ export function edgeAwareDither(
     const endX = leftToRight ? width : -1;
     const deltaX = leftToRight ? 1 : -1;
 
-    for (let x = startX; x !== endX; x += deltaX) {
+    for (let x = startX; (deltaX > 0 ? x < endX : x > endX); x += deltaX) {
       const pixel = pixels[y][x];
       // Reduce error diffusion at edges
       const edgeFactor = 1 - edgeMap[y][x] * 0.8;
@@ -999,7 +1061,7 @@ export function edgeAwareDither(
 
         resultMatrix[y][x] = newVal === 0;
         resultColors[y][x] = { r: newVal * 255, g: newVal * 255, b: newVal * 255 };
-        distributeError(pixels, x, y, width, height, error, error, error, kernel, leftToRight);
+        distributeErrorWithKernel(pixels, x, y, width, height, error, error, error, kernel, leftToRight);
       } else {
         const newR = Math.round(pixel.r / step) * step;
         const newG = Math.round(pixel.g / step) * step;
@@ -1015,7 +1077,7 @@ export function edgeAwareDither(
           g: Math.round(clamp01(newG) * 255),
           b: Math.round(clamp01(newB) * 255),
         };
-        distributeError(pixels, x, y, width, height, errorR, errorG, errorB, kernel, leftToRight);
+        distributeErrorWithKernel(pixels, x, y, width, height, errorR, errorG, errorB, kernel, leftToRight);
       }
     }
   }
@@ -1183,15 +1245,18 @@ export function applyDither(imageData: ImageData, options: DitherOptions): Dithe
   const { width, height } = imageData;
 
   switch (options.kind) {
-    case 'ordered_bayer':
+    case 'ordered_bayer': {
+      const bayerSizeMap: Record<string, 2 | 4 | 8> = { bayer2: 2, bayer4: 4, bayer8: 8 };
+      const bayerSize = bayerSizeMap[options.orderedMatrix] ?? 4;
       return bayerDither(
         floatData,
         width,
         height,
-        options.orderedMatrix === 'bayer2' ? 2 : options.orderedMatrix === 'bayer8' ? 8 : 4,
+        bayerSize,
         options.levels,
         options.strength
       );
+    }
 
     case 'ordered_clustered':
       return orderedDither(
@@ -1219,11 +1284,13 @@ export function applyDither(imageData: ImageData, options: DitherOptions): Dithe
         floatData,
         width,
         height,
-        options.blueNoiseTileSize,
-        options.blueNoiseSeed,
-        options.levels,
-        options.strength,
-        options.colorMode
+        {
+          tileSize: options.blueNoiseTileSize,
+          seed: options.blueNoiseSeed,
+          levels: options.levels,
+          strength: options.strength,
+          colorMode: options.colorMode
+        }
       );
 
     case 'white_noise':
@@ -1262,13 +1329,15 @@ export function applyDither(imageData: ImageData, options: DitherOptions): Dithe
         floatData,
         width,
         height,
-        options.diffusionKernel,
-        options.serpentine,
-        options.levels,
-        options.strength,
-        options.colorMode,
-        options.blueNoiseTileSize,
-        options.blueNoiseSeed
+        {
+          kernelName: options.diffusionKernel,
+          serpentine: options.serpentine,
+          levels: options.levels,
+          strength: options.strength,
+          colorMode: options.colorMode,
+          tileSize: options.blueNoiseTileSize,
+          seed: options.blueNoiseSeed
+        }
       );
 
     case 'screened_blue_noise':
@@ -1277,11 +1346,13 @@ export function applyDither(imageData: ImageData, options: DitherOptions): Dithe
         floatData,
         width,
         height,
-        options.blueNoiseTileSize,
-        options.blueNoiseSeed,
-        options.levels,
-        options.strength,
-        options.colorMode
+        {
+          tileSize: options.blueNoiseTileSize,
+          seed: options.blueNoiseSeed,
+          levels: options.levels,
+          strength: options.strength,
+          colorMode: options.colorMode
+        }
       );
 
     case 'perceptual':
@@ -1290,11 +1361,13 @@ export function applyDither(imageData: ImageData, options: DitherOptions): Dithe
         floatData,
         width,
         height,
-        options.diffusionKernel,
-        options.serpentine,
-        options.levels,
-        options.strength,
-        options.colorMode
+        {
+          kernelName: options.diffusionKernel,
+          serpentine: options.serpentine,
+          levels: options.levels,
+          strength: options.strength,
+          colorMode: options.colorMode
+        }
       );
 
     case 'edge_aware':
@@ -1303,11 +1376,13 @@ export function applyDither(imageData: ImageData, options: DitherOptions): Dithe
         floatData,
         width,
         height,
-        options.diffusionKernel,
-        options.serpentine,
-        options.levels,
-        options.strength,
-        options.colorMode
+        {
+          kernelName: options.diffusionKernel,
+          serpentine: options.serpentine,
+          levels: options.levels,
+          strength: options.strength,
+          colorMode: options.colorMode
+        }
       );
 
     case 'adaptive_threshold':
@@ -1330,11 +1405,13 @@ export function applyDither(imageData: ImageData, options: DitherOptions): Dithe
         floatData,
         width,
         height,
-        options.diffusionKernel,
-        options.serpentine,
-        options.levels,
-        options.strength,
-        options.colorMode
+        {
+          kernelName: options.diffusionKernel,
+          serpentine: options.serpentine,
+          levels: options.levels,
+          strength: options.strength,
+          colorMode: options.colorMode
+        }
       );
   }
 }

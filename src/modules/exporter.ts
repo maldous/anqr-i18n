@@ -211,8 +211,8 @@ function calculateCrc32(data: Uint8Array): number {
     table[n] = c;
   }
 
-  for (let i = 0; i < data.length; i++) {
-    crc = table[(crc ^ data[i]) & 0xff] ^ (crc >>> 8);
+  for (const byte of data) {
+    crc = table[(crc ^ byte) & 0xff] ^ (crc >>> 8);
   }
 
   return (crc ^ 0xffffffff) >>> 0;
@@ -227,8 +227,8 @@ async function embedPngMetadata(pngBlob: Blob, metadata: PngMetadata): Promise<B
 
   // Verify PNG signature
   const pngSignature = [137, 80, 78, 71, 13, 10, 26, 10];
-  for (let i = 0; i < 8; i++) {
-    if (data[i] !== pngSignature[i]) {
+  for (const [i, sigByte] of pngSignature.entries()) {
+    if (data[i] !== sigByte) {
       console.warn('Invalid PNG signature, returning original');
       return pngBlob;
     }
@@ -248,7 +248,8 @@ async function embedPngMetadata(pngBlob: Blob, metadata: PngMetadata): Promise<B
     comment: 'Comment',
   };
 
-  for (const [key, value] of Object.entries(metadata)) {
+  for (const entry of Object.entries(metadata)) {
+    const [key, value] = entry;
     if (value && typeof value === 'string') {
       const keyword = keywordMap[key] || key;
       metadataChunks.push(createPngTextChunk(keyword, value));
@@ -326,12 +327,12 @@ export async function exportImage(
     metadata: config.metadata,
   };
 
-  const format =
-    opts.outputFormat === 'webp'
-      ? 'image/webp'
-      : opts.outputFormat === 'jpeg'
-        ? 'image/jpeg'
-        : 'image/png';
+  const mimeTypes: Record<string, string> = {
+    webp: 'image/webp',
+    jpeg: 'image/jpeg',
+    png: 'image/png',
+  };
+  const format = mimeTypes[opts.outputFormat] ?? 'image/png';
 
   const quality = opts.outputQuality;
 
@@ -339,7 +340,8 @@ export async function exportImage(
   const outputCanvas = document.createElement('canvas');
   outputCanvas.width = opts.outputWidth;
   outputCanvas.height = opts.outputHeight;
-  const ctx = outputCanvas.getContext('2d')!;
+  const ctx = outputCanvas.getContext('2d');
+  if (!ctx) throw new Error('Could not get canvas context');
 
   // Apply background override if specified
   if (opts.bgOverride?.trim()) {
@@ -377,7 +379,12 @@ export async function exportImage(
     }
   }
 
-  const ext = opts.outputFormat === 'webp' ? 'webp' : opts.outputFormat === 'jpeg' ? 'jpg' : 'png';
+  const extensionMap: Record<string, string> = {
+    webp: 'webp',
+    jpeg: 'jpg',
+    png: 'png',
+  };
+  const ext = extensionMap[opts.outputFormat] ?? 'png';
 
   const filename = `${opts.filename}.${ext}`;
   const url = URL.createObjectURL(blob);
@@ -459,7 +466,8 @@ export async function exportGif(
   const scaledCanvas = document.createElement('canvas');
   scaledCanvas.width = width;
   scaledCanvas.height = height;
-  const scaledCtx = scaledCanvas.getContext('2d')!;
+  const scaledCtx = scaledCanvas.getContext('2d');
+  if (!scaledCtx) throw new Error('Could not get canvas context');
 
   // Pre-compute disposal code once (not per-frame)
   const disposalMap: Record<string, number> = {
@@ -1251,7 +1259,7 @@ export function downloadUrl(url: string, filename: string, blob?: Blob): void {
     a.download = filename;
     document.body.appendChild(a);
     a.click();
-    document.body.removeChild(a);
+    a.remove();
   }
 }
 

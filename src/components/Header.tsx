@@ -252,7 +252,7 @@ export function Header({
       }
     } catch (error: unknown) {
       // Check for user cancellation vs actual error
-      const errorMessage = error instanceof Error ? error.message : String(error);
+      const errorMessage = error instanceof Error ? error.message : (typeof error === 'string' ? error : 'Unknown error');
       if (errorMessage.includes('cancelled') || errorMessage.includes('User cancelled')) {
         // User cancelled - silently ignore
         console.log('Camera capture cancelled');
@@ -260,7 +260,7 @@ export function Header({
         setCameraError(t('camera.permissionDenied'));
       } else {
         setCameraError(t('camera.error'));
-        console.error('Camera capture failed:', error);
+        console.error('Camera capture failed:', errorMessage);
       }
     } finally {
       setCameraLoading(false);
@@ -793,17 +793,19 @@ export function Header({
                           key={lang.code}
                           onClick={() => changeLanguage(lang.code)}
                           className={`w-full px-3 py-2 text-left text-sm hover:bg-muted flex items-center gap-2 ${i18n.language === lang.code || i18n.language.startsWith(lang.code) ? 'bg-muted' : ''}`}
-                          title={`${lang.nativeName} - ${t(`languages.${lang.code}`)}`}
+                          title={`${lang.nativeName} - ${t('languages.' + lang.code)}`}
                         >
                           <span>{lang.flag}</span>
                           <span>
                             {lang.nativeName}
                             {/* Show English name for current language if not English, otherwise show translated name for other languages */}
-                            {lang.code === i18n.language || i18n.language.startsWith(lang.code)
-                              ? lang.code !== 'en-GB'
-                                ? ` (${lang.name})`
-                                : ''
-                              : ` (${t(`languages.${lang.code}`)})`}
+                            {(() => {
+                              const isCurrentLang = lang.code === i18n.language || i18n.language.startsWith(lang.code);
+                              if (isCurrentLang) {
+                                return lang.code !== 'en-GB' ? ` (${lang.name})` : '';
+                              }
+                              return ` (${t('languages.' + lang.code)})`;
+                            })()}
                           </span>
                           {(i18n.language === lang.code || i18n.language.startsWith(lang.code)) && (
                             <Check className="h-4 w-4 ml-auto" />

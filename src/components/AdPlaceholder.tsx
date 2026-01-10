@@ -15,17 +15,17 @@ const AD_CLIENT = 'ca-pub-2270701384951162';
 
 interface AdSenseProps {
   /** Ad slot identifier */
-  slot: string;
+  readonly slot: string;
   /** Ad format */
-  format?: 'auto' | 'horizontal' | 'vertical' | 'rectangle';
+  readonly format?: 'auto' | 'horizontal' | 'vertical' | 'rectangle';
   /** Full width responsive */
-  responsive?: boolean;
+  readonly responsive?: boolean;
   /** Additional CSS classes */
-  className?: string;
+  readonly className?: string;
   /** Fixed width in pixels (optional) */
-  width?: number;
+  readonly width?: number;
   /** Fixed height in pixels (optional) */
-  height?: number;
+  readonly height?: number;
 }
 
 export function AdSense({
@@ -54,15 +54,10 @@ export function AdSense({
         return; // Don't try to load ad on hidden elements
       }
 
-      try {
-        // Push ad to AdSense
-        if (typeof globalThis !== 'undefined' && globalThis.adsbygoogle) {
-          globalThis.adsbygoogle.push({});
-          isLoaded.current = true;
-        }
-      } catch (_e) {
-        // Silently ignore AdSense errors - they're usually about no ads available
-        // console.error('AdSense error:', e)
+      // Push ad to AdSense
+      if (typeof globalThis !== 'undefined' && globalThis.adsbygoogle) {
+        globalThis.adsbygoogle.push({});
+        isLoaded.current = true;
       }
     };
 
@@ -118,15 +113,15 @@ export function AdSense({
 // Placeholder component for development/preview
 interface AdPlaceholderProps {
   /** Ad slot identifier for tracking */
-  slot: string;
+  readonly slot: string;
   /** Width of the ad - can be number (px) or string (e.g., '100%', 'auto') */
-  width?: number | string;
+  readonly width?: number | string;
   /** Height of the ad in pixels */
-  height?: number;
+  readonly height?: number;
   /** Additional CSS classes */
-  className?: string;
+  readonly className?: string;
   /** Format type for responsive ads */
-  format?: 'horizontal' | 'vertical' | 'rectangle' | 'auto';
+  readonly format?: 'horizontal' | 'vertical' | 'rectangle' | 'auto';
 }
 
 export function AdPlaceholder({
