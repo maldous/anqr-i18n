@@ -96,8 +96,8 @@ export function MobileDivider({ onDrag, onDragEnd }: Readonly<MobileDividerProps
   }, [isDragging, handleDragMove, handleDragEnd]);
 
   return (
-    <hr
-      ref={dividerRef as React.RefObject<HTMLHRElement>}
+    <div
+      ref={dividerRef}
       className={`
         md:hidden
         h-4 w-full
@@ -118,12 +118,16 @@ export function MobileDivider({ onDrag, onDragEnd }: Readonly<MobileDividerProps
       onKeyDown={(e) => {
         if (e.key === 'ArrowUp' || e.key === 'ArrowDown') {
           e.preventDefault();
+          onDrag(e.key === 'ArrowUp' ? -10 : 10);
+          onDragEnd();
         }
       }}
       tabIndex={0}
-      aria-orientation="horizontal"
       aria-label="Drag to resize panels"
-      aria-valuenow={isDragging ? 1 : 0}
-    />
+    >
+      <GripHorizontal
+        className={`h-5 w-5 transition-all duration-150 ${isDragging ? 'text-foreground scale-110' : 'text-muted-foreground'}`}
+      />
+    </div>
   );
 }

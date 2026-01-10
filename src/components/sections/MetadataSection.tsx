@@ -22,10 +22,12 @@ export function MetadataSection() {
 
   // Ensure each kv item has a stable ID
   const getKvId = (index: number): string => {
-    if (!kvIdsRef.current.has(index)) {
-      kvIdsRef.current.set(index, `kv-${++kvIdCounter}`);
+    let id = kvIdsRef.current.get(index);
+    if (!id) {
+      id = `kv-${++kvIdCounter}`;
+      kvIdsRef.current.set(index, id);
     }
-    return kvIdsRef.current.get(index)!;
+    return id;
   };
 
   const addCustomKv = () => {

@@ -112,11 +112,15 @@ export function QREncodingSection() {
           title={t('hints.qrVersion')}
         />
         <p className="text-xs text-muted-foreground">
-          {localVersion === 0
-            ? t('hints.autoDetect', { version: minRequiredVersion })
-            : localVersion < minRequiredVersion
-              ? t('hints.versionTooLow', { version: minRequiredVersion })
-              : t('hints.autoMinVersion', { version: minRequiredVersion })}
+          {(() => {
+            if (localVersion === 0) {
+              return t('hints.autoDetect', { version: minRequiredVersion });
+            }
+            if (localVersion < minRequiredVersion) {
+              return t('hints.versionTooLow', { version: minRequiredVersion });
+            }
+            return t('hints.autoMinVersion', { version: minRequiredVersion });
+          })()}
         </p>
       </div>
 

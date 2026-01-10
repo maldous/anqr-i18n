@@ -99,9 +99,15 @@ export function WelcomeModal({ onClose }: WelcomeModalProps) {
         isClosing ? 'opacity-0' : 'opacity-100'
       }`}
       style={{ backgroundColor: 'rgba(0, 0, 0, 0.6)', backdropFilter: 'blur(4px)' }}
-      onClick={handleDismiss}
       aria-hidden="true"
     >
+      <button
+        type="button"
+        className="absolute inset-0 w-full h-full cursor-default bg-transparent border-none"
+        onClick={handleDismiss}
+        aria-label="Close modal"
+        tabIndex={-1}
+      />
           <dialog
             open
             className={`bg-card border rounded-2xl shadow-2xl max-w-2xl w-full max-h-[90vh] overflow-hidden flex flex-col transition-all duration-200 ${

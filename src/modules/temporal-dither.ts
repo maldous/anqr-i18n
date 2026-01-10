@@ -80,7 +80,10 @@ export function applyTemporalNoiseToCanvas(
   const result = document.createElement('canvas');
   result.width = canvas.width;
   result.height = canvas.height;
-  const ctx = result.getContext('2d')!;
+  const ctx = result.getContext('2d');
+  if (!ctx) {
+    return canvas;
+  }
 
   // Draw original
   ctx.drawImage(canvas, 0, 0);
