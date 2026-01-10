@@ -113,9 +113,13 @@ export function WelcomeModal({ onClose }: WelcomeModalProps) {
             className={`bg-card border rounded-2xl shadow-2xl max-w-2xl w-full max-h-[90vh] overflow-hidden flex flex-col transition-all duration-200 ${
               isClosing ? 'scale-95 opacity-0' : 'scale-100 opacity-100'
             }`}
-            onClick={(e) => e.stopPropagation()}
             aria-labelledby="welcome-title"
           >
+        <div
+          onClick={(e) => e.stopPropagation()}
+          onKeyDown={(e) => e.stopPropagation()}
+          className="contents"
+        >
         {/* Header */}
         <div className="relative px-6 pt-6 pb-4 border-b bg-gradient-to-br from-primary/5 to-primary/10">
           <button
@@ -238,6 +242,7 @@ export function WelcomeModal({ onClose }: WelcomeModalProps) {
           <Button size="sm" onClick={handleDismiss}>
             {t('welcome.getStarted')}
           </Button>
+        </div>
         </div>
       </dialog>
     </div>

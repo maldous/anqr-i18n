@@ -79,7 +79,7 @@ export type ColorMode = 'color' | 'grayscale' | 'bw';
  * Allows blue-noise dithering to work in both browser and Node.js.
  */
 export interface CanvasFactory {
-  createCanvas: (width: number, height: number) => Promise<HTMLCanvasElement | any>;
+  createCanvas: (width: number, height: number) => Promise<HTMLCanvasElement | OffscreenCanvas>;
 }
 
 /**
@@ -253,11 +253,11 @@ function rgbToGray(r: number, g: number, b: number): number {
  * Convert RGB image data to grayscale
  */
 function convertToGrayscale(imageData: { r: number; g: number; b: number }[][]): void {
-  for (let y = 0; y < imageData.length; y++) {
-    for (let x = 0; x < imageData[y].length; x++) {
-      const { r, g, b } = imageData[y][x];
+  for (const row of imageData) {
+    for (let x = 0; x < row.length; x++) {
+      const { r, g, b } = row[x];
       const gray = rgbToGray(r, g, b);
-      imageData[y][x] = { r: gray, g: gray, b: gray };
+      row[x] = { r: gray, g: gray, b: gray };
     }
   }
 }

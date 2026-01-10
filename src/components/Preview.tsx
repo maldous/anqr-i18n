@@ -12,7 +12,7 @@ interface PreviewProps {
   sidebarOpen?: boolean;
 }
 
-export function Preview({ sidebarOpen = true }: PreviewProps) {
+export function Preview({ sidebarOpen = true }: Readonly<PreviewProps>) {
   const { t } = useTranslation();
   const {
     canvasRef,
@@ -245,7 +245,11 @@ export function Preview({ sidebarOpen = true }: PreviewProps) {
                 <div className="absolute bottom-2 left-2 z-10 flex items-center gap-1">
                   <div
                     className={`${getContrastBadgeColor(contrastAnalysis.ratio)} text-white text-xs font-medium px-2 py-1 rounded-md shadow-sm flex items-center gap-1`}
-                    title={`${t('safety.contrast')}: ${contrastAnalysis.ratio.toFixed(2)}:1 - ${contrastAnalysis.meetsAAA ? 'WCAG AAA' : contrastAnalysis.meetsAA ? 'WCAG AA' : t('safety.poor')}`}
+                    title={`${t('safety.contrast')}: ${contrastAnalysis.ratio.toFixed(2)}:1 - ${(() => {
+                      if (contrastAnalysis.meetsAAA) return 'WCAG AAA';
+                      if (contrastAnalysis.meetsAA) return 'WCAG AA';
+                      return t('safety.poor');
+                    })()}`}
                   >
                     <Eye className="h-3 w-3" />
                     <span>{contrastAnalysis.ratio.toFixed(1)}:1</span>

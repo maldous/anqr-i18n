@@ -34,12 +34,12 @@ export class CropHandler {
 
     // Create resize handles for corners
     const handles = ['nw', 'ne', 'sw', 'se'];
-    handles.forEach((pos) => {
+    for (const pos of handles) {
       const handle = document.createElement('div');
       handle.className = `crop-handle crop-handle-${pos}`;
       handle.dataset.handle = pos;
       this.cropBox.appendChild(handle);
-    });
+    }
 
     this.overlay.appendChild(this.cropBox);
     this.container.appendChild(this.overlay);
@@ -60,10 +60,10 @@ export class CropHandler {
     document.addEventListener('touchend', () => this.onMouseUp());
 
     // Handle resize
-    this.cropBox.querySelectorAll('.crop-handle').forEach((handle) => {
+    for (const handle of this.cropBox.querySelectorAll('.crop-handle')) {
       handle.addEventListener('mousedown', (e) => this.onResizeStart(e));
       handle.addEventListener('touchstart', (e) => this.onResizeTouchStart(e));
-    });
+    }
   }
 
   show(imageElement) {
@@ -326,7 +326,7 @@ export class CropHandler {
 
   destroy() {
     if (this.overlay?.parentNode) {
-      this.overlay.parentNode.removeChild(this.overlay);
+      this.overlay.remove();
     }
   }
 }

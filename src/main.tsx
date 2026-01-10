@@ -29,7 +29,9 @@ if (document.readyState === 'complete') {
   globalThis.addEventListener('load', initAds, { once: true });
 }
 
-ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
+const rootElement = document.getElementById('root');
+if (!rootElement) throw new Error('Root element not found');
+ReactDOM.createRoot(rootElement).render(
   <React.StrictMode>
     <ErrorBoundary>
       <Suspense
