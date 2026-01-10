@@ -6,7 +6,9 @@ export const terms: PageDefinition = {
   description:
     'Az oldal elérésével vagy használatával Ön beleegyezik, hogy ezek a feltételek kötelezőek.',
   lastUpdated: LAST_UPDATED,
-  relatedLinks: [{ href: '/privacy?lang=${lang}', label: 'Privacy Policy', type: 'external' }],
+  relatedLinks: [
+    { href: '/privacy?lang=${lang}', label: 'Adatvédelmi irányelvek', type: 'external' },
+  ],
   sections: [
     {
       heading: 'A feltételek elfogadása',

@@ -6,7 +6,9 @@ export const terms: PageDefinition = {
   description:
     'Prin accesarea sau utilizarea site-ului, sunteți de acord să respectați acești termeni.',
   lastUpdated: LAST_UPDATED,
-  relatedLinks: [{ href: '/privacy?lang=${lang}', label: 'Privacy Policy', type: 'external' }],
+  relatedLinks: [
+    { href: '/privacy?lang=${lang}', label: 'Politica de confidențialitate', type: 'external' },
+  ],
   sections: [
     {
       heading: 'Acceptarea termenilor',

@@ -6,7 +6,9 @@ export const terms: PageDefinition = {
   description:
     'Poprzez dostęp lub korzystanie z witryny, zgadzasz się być związany tymi warunkami.',
   lastUpdated: LAST_UPDATED,
-  relatedLinks: [{ href: '/privacy?lang=${lang}', label: 'Privacy Policy', type: 'external' }],
+  relatedLinks: [
+    { href: '/privacy?lang=${lang}', label: 'Polityka prywatności', type: 'external' },
+  ],
   sections: [
     {
       heading: 'Przyjęcie warunków',

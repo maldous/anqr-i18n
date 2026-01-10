@@ -7,12 +7,12 @@ export const about: PageDefinition = {
     'ANQR jest darmowym generatorem kodu QR z podejściem klient-pierwszy - generować kody QR lokalnie lub używać naszych API do osadzania.',
   lastUpdated: LAST_UPDATED,
   primaryLinks: [
-    { href: '/?lang=${lang}', label: 'Open the generator', type: 'generator' },
-    { href: '/learn?lang=${lang}', label: 'Browse Learn articles', type: 'learn' },
+    { href: '/?lang=${lang}', label: 'Otwórz generator', type: 'generator' },
+    { href: '/learn?lang=${lang}', label: 'Przeglądaj Nauka artykułów', type: 'learn' },
   ],
   relatedLinks: [
-    { href: '/privacy?lang=${lang}', label: 'Privacy Policy', type: 'external' },
-    { href: '/terms?lang=${lang}', label: 'Terms of Service', type: 'external' },
+    { href: '/privacy?lang=${lang}', label: 'Polityka prywatności', type: 'external' },
+    { href: '/terms?lang=${lang}', label: 'Warunki świadczenia usług', type: 'external' },
   ],
   sections: [
     {

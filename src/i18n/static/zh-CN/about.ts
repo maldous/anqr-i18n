@@ -7,12 +7,12 @@ export const about: PageDefinition = {
     'ANQR 是一款免费的 QR 码生成器，采用客户端优先的方法 - 在本地生成 QR 码或使用我们的 API 进行嵌入。',
   lastUpdated: LAST_UPDATED,
   primaryLinks: [
-    { href: '/?lang=${lang}', label: 'Open the generator', type: 'generator' },
-    { href: '/learn?lang=${lang}', label: 'Browse Learn articles', type: 'learn' },
+    { href: '/?lang=${lang}', label: '打开发电机', type: 'generator' },
+    { href: '/learn?lang=${lang}', label: '浏览学习文章', type: 'learn' },
   ],
   relatedLinks: [
-    { href: '/privacy?lang=${lang}', label: 'Privacy Policy', type: 'external' },
-    { href: '/terms?lang=${lang}', label: 'Terms of Service', type: 'external' },
+    { href: '/privacy?lang=${lang}', label: '隐私政策', type: 'external' },
+    { href: '/terms?lang=${lang}', label: '服务条款', type: 'external' },
   ],
   sections: [
     {

@@ -6,7 +6,9 @@ export const privacy: PageDefinition = {
   description:
     'Informacje ANQR zbiera, jak jest używany, i swoje prawa zgodnie z obowiązującymi przepisami prywatności.',
   lastUpdated: LAST_UPDATED,
-  relatedLinks: [{ href: '/terms?lang=${lang}', label: 'Terms of Service', type: 'external' }],
+  relatedLinks: [
+    { href: '/terms?lang=${lang}', label: 'Warunki świadczenia usług', type: 'external' },
+  ],
   sections: [
     {
       heading: 'Streszczenie',
