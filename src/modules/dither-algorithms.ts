@@ -311,7 +311,11 @@ export function bayerDither(
   levels: number = 2,
   strength: number = 100
 ): DitherResult {
-  const matrix = size === 2 ? BAYER_2 : size === 4 ? BAYER_4 : BAYER_8;
+  const matrix = (() => {
+    if (size === 2) return BAYER_2;
+    if (size === 4) return BAYER_4;
+    return BAYER_8;
+  })();
   return orderedDither(imageData, width, height, matrix, levels, strength);
 }
 
@@ -1092,7 +1096,7 @@ export function edgeAwareDither(
         2 * getGray(x, y + 1) +
         getGray(x + 1, y + 1);
 
-      edgeMap[y][x] = Math.min(1, Math.sqrt(gx * gx + gy * gy));
+      edgeMap[y][x] = Math.min(1, Math.hypot(gx, gy));
     }
   }
 

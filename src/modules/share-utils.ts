@@ -285,8 +285,8 @@ export function parseUrlParams(): Partial<ShareConfig> {
     ...(params.get('gradStops')
       ? {
           gradientStops: params
-            .get('gradStops')!
-            .split(',')
+            .get('gradStops')
+            ?.split(',')
             .reduce(
               (acc, part, i, arr) => {
                 if (i % 2 === 0 && arr[i + 1]) {
@@ -1093,8 +1093,8 @@ export function generateImageEmbed(
   const imageUrl = convertToImageApiUrl(
     shareableUrl,
     opts.width,
-    opts.width !== opts.height ? opts.width : undefined,
-    opts.width !== opts.height ? opts.height : undefined
+    opts.width === opts.height ? undefined : opts.width,
+    opts.width === opts.height ? undefined : opts.height
   );
 
   const style = opts.responsive

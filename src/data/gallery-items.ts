@@ -530,7 +530,7 @@ for (const c of contrastLevels) {
 }
 
 // Gamma variations
-const gammaLevels = [0.5, 1.5, 2.0];
+const gammaLevels = [0.5, 1.5, 2];
 for (const g of gammaLevels) {
   preprocessingItems.push({
     id: `prep-gamma-${String(g).replace('.', '')}`,
@@ -555,7 +555,11 @@ for (const s of saturationLevels) {
   preprocessingItems.push({
     id: `prep-saturation-${s > 0 ? 'p' : 'n'}${Math.abs(s)}`,
     title: `Saturation ${s > 0 ? '+' : ''}${s}`,
-    description: s === -100 ? 'Desaturated' : s > 0 ? 'Oversaturated' : 'Reduced saturation',
+    description: (() => {
+      if (s === -100) return 'Desaturated';
+      if (s > 0) return 'Oversaturated';
+      return 'Reduced saturation';
+    })(),
     category: 'preprocessing',
     params: {
       data: BASE_DATA,
@@ -669,39 +673,39 @@ for (const edge of edgeModes) {
   });
 }
 
-// Invert
-preprocessingItems.push({
-  id: 'prep-invert',
-  title: 'Inverted',
-  description: 'Inverted colors',
-  category: 'preprocessing',
-  params: {
-    data: BASE_DATA,
-    ec: 'H',
-    v: 6,
-    mode: 'dithered',
-    img: TSUNAMI_IMG,
-    intensity: 100,
-    invert: true,
+// Invert and hue rotate to make 30 total (multiple of 6)
+preprocessingItems.push(
+  {
+    id: 'prep-invert',
+    title: 'Inverted',
+    description: 'Inverted colors',
+    category: 'preprocessing',
+    params: {
+      data: BASE_DATA,
+      ec: 'H',
+      v: 6,
+      mode: 'dithered',
+      img: TSUNAMI_IMG,
+      intensity: 100,
+      invert: true,
+    },
   },
-});
-
-// Add hue rotate to make 30 total (multiple of 6)
-preprocessingItems.push({
-  id: 'prep-hue-90',
-  title: 'Hue +90°',
-  description: 'Hue rotation 90 degrees',
-  category: 'preprocessing',
-  params: {
-    data: BASE_DATA,
-    ec: 'H',
-    v: 6,
-    mode: 'dithered',
-    img: TSUNAMI_IMG,
-    intensity: 100,
-    hue: 90,
+  {
+    id: 'prep-hue-90',
+    title: 'Hue +90°',
+    description: 'Hue rotation 90 degrees',
+    category: 'preprocessing',
+    params: {
+      data: BASE_DATA,
+      ec: 'H',
+      v: 6,
+      mode: 'dithered',
+      img: TSUNAMI_IMG,
+      intensity: 100,
+      hue: 90,
+    },
   },
-});
+);
 
 // ============================================
 // QR ENCODING - Versions and ECC
@@ -714,12 +718,11 @@ for (const v of versions) {
   encodingItems.push({
     id: `enc-v${v}`,
     title: v === 0 ? 'Auto Version' : `Version ${v}`,
-    description:
-      v === 0
-        ? 'Automatic version selection'
-        : v === 6
-          ? 'Best for overlays (no center eye)'
-          : `Version ${v} QR code`,
+    description: (() => {
+      if (v === 0) return 'Automatic version selection';
+      if (v === 6) return 'Best for overlays (no center eye)';
+      return `Version ${v} QR code`;
+    })(),
     category: 'encoding',
     params: { data: BASE_DATA, ec: 'H', v, mode: 'dithered', img: TSUNAMI_IMG, intensity: 100 },
   });

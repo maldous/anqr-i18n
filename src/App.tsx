@@ -18,6 +18,7 @@ import { parseUrlParams } from '@/modules/share-utils';
 import { type Tier, useQRStore } from '@/store/qr-store';
 
 type PageView = 'editor' | 'gallery' | StaticPageType;
+type ModuleStyleOption = 'square' | 'rounded' | 'dots' | 'diamond' | 'connected';
 
 /** Type alias for gradient update configuration */
 interface GradientUpdate {
@@ -185,9 +186,9 @@ function App() {
     const isStaticPage = staticPageTypes.includes(currentPage);
 
     // Remove existing hreflang links
-    document.querySelectorAll('link[rel="alternate"][hreflang]').forEach((el) => {
+    for (const el of document.querySelectorAll('link[rel="alternate"][hreflang]')) {
       el.remove();
-    });
+    }
 
     // Add hreflang links for translatable pages
     if (isStaticPage || showEditor) {
@@ -231,9 +232,9 @@ function App() {
 
     // Cleanup: remove hreflang links when component unmounts or dependencies change
     return () => {
-      document.querySelectorAll('link[rel="alternate"][hreflang]').forEach((el) => {
+      for (const el of document.querySelectorAll('link[rel="alternate"][hreflang]')) {
         el.remove();
-      });
+      }
     };
   }, [showEditor, currentPage, t]);
 
@@ -343,7 +344,7 @@ function App() {
     if (params.transparent) store.setRenderBgTransparent(true);
     if (params.style)
       store.setRenderModuleStyle(
-        params.style as 'square' | 'rounded' | 'dots' | 'diamond' | 'connected'
+        params.style as ModuleStyleOption
       );
     if (params.finder) store.setRenderFinderStyle(params.finder as 'square' | 'rounded' | 'circle');
     if (params.alignmentStyle)

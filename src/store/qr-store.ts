@@ -1347,7 +1347,8 @@ export const useQRStore = create<QRState>((set, get) => ({
         if (payload.url.utmTerm) params.set('utm_term', payload.url.utmTerm);
         if (payload.url.utmContent) params.set('utm_content', payload.url.utmContent);
         const paramStr = params.toString();
-        return paramStr ? `${url}${url.includes('?') ? '&' : '?'}${paramStr}` : url;
+        if (!paramStr) return url;
+        return `${url}${url.includes('?') ? '&' : '?'}${paramStr}`;
       }
 
       case 'tel':

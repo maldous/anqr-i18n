@@ -397,7 +397,7 @@ export function sobelEdge(imageData: ImageData): ImageData {
         }
       }
 
-      const magnitude = Math.sqrt(gx * gx + gy * gy);
+      const magnitude = Math.hypot(gx, gy);
       const outIdx = (y * width + x) * 4;
       data[outIdx] = clamp(magnitude);
       data[outIdx + 1] = clamp(magnitude);
@@ -452,7 +452,7 @@ export function cannyEdge(
         2 * gray[(y + 1) * width + x] +
         gray[(y + 1) * width + (x + 1)];
 
-      magnitude[idx] = Math.sqrt(gx * gx + gy * gy);
+      magnitude[idx] = Math.hypot(gx, gy);
       direction[idx] = Math.atan2(gy, gx);
     }
   }
