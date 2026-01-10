@@ -461,10 +461,10 @@ export interface OTPAuthParams {
 /** Escape special characters for vCard/iCal format */
 function escapeValue(value: string): string {
   return value
-    .replaceAll('\\', '\\\\')
-    .replaceAll(';', '\\;')
-    .replaceAll(',', '\\,')
-    .replaceAll('\n', '\\n');
+    .replaceAll('\\', String.raw`\\`)
+    .replaceAll(';', String.raw`\;`)
+    .replaceAll(',', String.raw`\,`)
+    .replaceAll('\n', String.raw`\n`);
 }
 
 /** Format date for iCalendar (YYYYMMDD or YYYYMMDDTHHmmss) */
@@ -503,8 +503,8 @@ export function crc16CCITT(str: string): string {
   // Convert string to UTF-8 bytes for correct CRC calculation
   const bytes = new TextEncoder().encode(str);
   let crc = 0xffff;
-  for (let i = 0; i < bytes.length; i++) {
-    crc ^= bytes[i] << 8;
+  for (const byte of bytes) {
+    crc ^= byte << 8;
     for (let j = 0; j < 8; j++) {
       if (crc & 0x8000) {
         crc = (crc << 1) ^ 0x1021;
@@ -526,7 +526,7 @@ export function crc16CCITT(str: string): string {
  * Implements EMVCo QR Code Specification with full TLV support
  */
 export class EMVQRBuilder {
-  private fields: Map<string, string> = new Map();
+  private readonly fields: Map<string, string> = new Map();
 
   /**
    * Encode a TLV (Tag-Length-Value) field
@@ -535,7 +535,7 @@ export class EMVQRBuilder {
    * @throws Error if value exceeds 99 bytes (EMV TLV length limit)
    */
   static encodeTLV(tag: string, value: string): string {
-    if (!value || value.length === 0) return '';
+    if (!value?.length) return '';
     const paddedTag = tag.padStart(2, '0');
     // Use UTF-8 byte length for EMV compliance (not JS string length)
     const byteLength = utf8ByteLength(value);
@@ -755,8 +755,10 @@ export class EMVQRBuilder {
     // Build payload without CRC
     let payload = '';
     for (const tag of sortedTags) {
-      const value = this.fields.get(tag)!;
-      payload += EMVQRBuilder.encodeTLV(tag, value);
+      const value = this.fields.get(tag);
+      if (value) {
+        payload += EMVQRBuilder.encodeTLV(tag, value);
+      }
     }
 
     // Add CRC placeholder (tag 63, length 04)
@@ -887,7 +889,7 @@ export function generateGeo(params: GeoHelper): string {
 
 /** Generate WiFi configuration string */
 export function generateWifi(params: WifiHelper): string {
-  const escapeWifi = (s: string) => s.replaceAll(/[\\";,:]/g, '\\$&');
+  const escapeWifi = (s: string) => s.replaceAll(/[\\";,:]/g, String.raw`\$&`);
 
   let wifi = 'WIFI:';
   wifi += `T:${params.auth};`;
@@ -1029,7 +1031,7 @@ export function generateVCard(params: VCardHelper): string {
 
 /** Generate MeCard string (Japanese format, more compact than vCard) */
 export function generateMeCard(params: MeCardHelper): string {
-  const escapeMeCard = (s: string) => s.replaceAll(/[\\";,:]/g, '\\$&');
+  const escapeMeCard = (s: string) => s.replaceAll(/[\\";,:]/g, String.raw`\$&`);
 
   let mecard = 'MECARD:';
 
@@ -1075,14 +1077,12 @@ export function generateBizCard(params: BizCardParams): string {
 
 /** Generate iCalendar VEVENT string */
 export function generateEvent(params: EventHelper): string {
-  const lines: string[] = [];
-
-  lines.push(
+  const lines: string[] = [
     'BEGIN:VCALENDAR',
     'VERSION:2.0',
     'PRODID:-//ANQR//QR Code Generator//EN',
-    'BEGIN:VEVENT'
-  );
+    'BEGIN:VEVENT',
+  ];
 
   // Generate UID using crypto for uniqueness
   const uid = `${Date.now()}-${crypto.randomUUID().slice(0, 9)}@anqr`;
@@ -1157,16 +1157,17 @@ export function generateCalendarSubscription(url: string): string {
  * Used across SEPA zone (EU + CH, NO, IS, LI, MC, SM)
  */
 export function generateEPCSepa(params: EPCSepaParams): string {
-  const lines: string[] = [];
-
   // Service tag, Version (002 = 2.0), Character set (1 = UTF-8), Identification code (SEPA Credit Transfer)
-  lines.push('BCD', '002', '1', 'SCT');
   // BIC (optional for domestic), Beneficiary name (max 70), IBAN
-  lines.push(
+  const lines: string[] = [
+    'BCD',
+    '002',
+    '1',
+    'SCT',
     params.bic || '',
     params.name.substring(0, 70),
-    params.iban.replaceAll(/\s/g, '').toUpperCase()
-  );
+    params.iban.replaceAll(/\s/g, '').toUpperCase(),
+  ];
 
   // Amount (EUR format with currency prefix)
   if (params.amount !== undefined && params.amount > 0) {
@@ -1393,57 +1394,50 @@ export function generatePIX(params: PIXParams): string {
  * Line-based format (not TLV)
  */
 export function generateSwissQRBill(params: SwissQRBillParams): string {
-  const lines: string[] = [];
-
   // Header: QR Type, Version, Coding (1 = UTF-8)
-  lines.push('SPC', params.version || '0200', '1');
+  const lines: string[] = ['SPC', params.version || '0200', '1'];
 
   // Creditor information
   lines.push(
     params.creditorIBAN.replaceAll(/\s/g, '').toUpperCase(),
     params.creditorAddressType,
-    params.creditorName.substring(0, 70)
+    params.creditorName.substring(0, 70),
+    ...(params.creditorAddressType === 'S'
+      ? [
+          params.creditorStreet?.substring(0, 70) || '',
+          params.creditorBuildingNumber?.substring(0, 16) || '',
+          params.creditorPostalCode?.substring(0, 16) || '',
+          params.creditorCity?.substring(0, 35) || '',
+        ]
+      : [
+          // Combined address (K): Address line 1, Address line 2, empty, empty
+          params.creditorStreet?.substring(0, 70) || '',
+          params.creditorCity?.substring(0, 70) || '',
+          '',
+          '',
+        ]),
+    params.creditorCountry.toUpperCase(),
   );
-
-  if (params.creditorAddressType === 'S') {
-    lines.push(
-      params.creditorStreet?.substring(0, 70) || '',
-      params.creditorBuildingNumber?.substring(0, 16) || '',
-      params.creditorPostalCode?.substring(0, 16) || '',
-      params.creditorCity?.substring(0, 35) || ''
-    );
-  } else {
-    // Combined address (K): Address line 1, Address line 2, empty, empty
-    lines.push(
-      params.creditorStreet?.substring(0, 70) || '',
-      params.creditorCity?.substring(0, 70) || '',
-      '',
-      ''
-    );
-  }
-  lines.push(params.creditorCountry.toUpperCase());
 
   // Ultimate Creditor (optional - usually empty)
   lines.push(
     params.ultimateCreditorAddressType || '',
-    params.ultimateCreditorName?.substring(0, 70) || ''
+    params.ultimateCreditorName?.substring(0, 70) || '',
+    ...(params.ultimateCreditorAddressType === 'S'
+      ? [
+          params.ultimateCreditorStreet?.substring(0, 70) || '',
+          params.ultimateCreditorBuildingNumber?.substring(0, 16) || '',
+          params.ultimateCreditorPostalCode?.substring(0, 16) || '',
+          params.ultimateCreditorCity?.substring(0, 35) || '',
+        ]
+      : [
+          params.ultimateCreditorStreet?.substring(0, 70) || '',
+          params.ultimateCreditorCity?.substring(0, 70) || '',
+          '',
+          '',
+        ]),
+    params.ultimateCreditorCountry?.toUpperCase() || '',
   );
-  if (params.ultimateCreditorAddressType === 'S') {
-    lines.push(
-      params.ultimateCreditorStreet?.substring(0, 70) || '',
-      params.ultimateCreditorBuildingNumber?.substring(0, 16) || '',
-      params.ultimateCreditorPostalCode?.substring(0, 16) || '',
-      params.ultimateCreditorCity?.substring(0, 35) || ''
-    );
-  } else {
-    lines.push(
-      params.ultimateCreditorStreet?.substring(0, 70) || '',
-      params.ultimateCreditorCity?.substring(0, 70) || '',
-      '',
-      ''
-    );
-  }
-  lines.push(params.ultimateCreditorCountry?.toUpperCase() || '');
 
   // Payment amount
   if (params.amount !== undefined && params.amount > 0) {
@@ -1456,33 +1450,30 @@ export function generateSwissQRBill(params: SwissQRBillParams): string {
   // Ultimate Debtor (payer - optional)
   lines.push(
     params.ultimateDebtorAddressType || '',
-    params.ultimateDebtorName?.substring(0, 70) || ''
+    params.ultimateDebtorName?.substring(0, 70) || '',
+    ...(params.ultimateDebtorAddressType === 'S'
+      ? [
+          params.ultimateDebtorStreet?.substring(0, 70) || '',
+          params.ultimateDebtorBuildingNumber?.substring(0, 16) || '',
+          params.ultimateDebtorPostalCode?.substring(0, 16) || '',
+          params.ultimateDebtorCity?.substring(0, 35) || '',
+        ]
+      : [
+          params.ultimateDebtorStreet?.substring(0, 70) || '',
+          params.ultimateDebtorCity?.substring(0, 70) || '',
+          '',
+          '',
+        ]),
+    params.ultimateDebtorCountry?.toUpperCase() || '',
   );
-  if (params.ultimateDebtorAddressType === 'S') {
-    lines.push(
-      params.ultimateDebtorStreet?.substring(0, 70) || '',
-      params.ultimateDebtorBuildingNumber?.substring(0, 16) || '',
-      params.ultimateDebtorPostalCode?.substring(0, 16) || '',
-      params.ultimateDebtorCity?.substring(0, 35) || ''
-    );
-  } else {
-    lines.push(
-      params.ultimateDebtorStreet?.substring(0, 70) || '',
-      params.ultimateDebtorCity?.substring(0, 70) || '',
-      '',
-      ''
-    );
-  }
-  lines.push(params.ultimateDebtorCountry?.toUpperCase() || '');
 
-  // Reference
-  lines.push(params.referenceType, params.reference?.substring(0, 27) || '');
-
-  // Additional information
+  // Reference and Additional information
   lines.push(
+    params.referenceType,
+    params.reference?.substring(0, 27) || '',
     params.unstructuredMessage?.substring(0, 140) || '',
     params.trailer || 'EPD',
-    params.billInformation?.substring(0, 140) || ''
+    params.billInformation?.substring(0, 140) || '',
   );
 
   // Alternative procedures
@@ -2022,12 +2013,12 @@ export function generateEMVMPM(params: EMVMPMParams): string {
   }
 
   if (params.tipIndicator) {
-    const tipValue =
-      params.tipIndicator === '02'
-        ? params.tipFixed
-        : params.tipIndicator === '03'
-          ? params.tipPercentage
-          : undefined;
+    let tipValue: number | undefined;
+    if (params.tipIndicator === '02') {
+      tipValue = params.tipFixed;
+    } else if (params.tipIndicator === '03') {
+      tipValue = params.tipPercentage;
+    }
     builder.setTipIndicator(params.tipIndicator, tipValue);
   }
 
@@ -2147,7 +2138,7 @@ export function generateMessagingLink(
 ): string {
   switch (platform.toLowerCase()) {
     case 'whatsapp': {
-      let url = `https://wa.me/${identifier.replaceAll(/[^0-9]/g, '')}`;
+      let url = `https://wa.me/${identifier.replaceAll(/\D/g, '')}`;
       if (message) url += `?text=${encodeURIComponent(message)}`;
       return url;
     }
@@ -2159,7 +2150,7 @@ export function generateMessagingLink(
     case 'signal':
       return `https://signal.me/#p/${identifier}`;
     case 'viber':
-      return `viber://chat?number=${identifier.replaceAll(/[^0-9]/g, '')}`;
+      return `viber://chat?number=${identifier.replaceAll(/\D/g, '')}`;
     case 'line':
       return `https://line.me/ti/p/${identifier}`;
     case 'skype':
