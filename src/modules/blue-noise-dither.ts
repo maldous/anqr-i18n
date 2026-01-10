@@ -220,7 +220,8 @@ async function loadImageDataRGB(
   canvasFactory: CanvasFactory = defaultBrowserCanvasFactory
 ): Promise<{ r: number; g: number; b: number }[][]> {
   const tempCanvas = await canvasFactory.createCanvas(size, size);
-  const ctx = tempCanvas.getContext('2d')!;
+  const ctx = tempCanvas.getContext('2d');
+  if (!ctx) throw new Error('Could not get 2D context');
 
   ctx.drawImage(canvas, 0, 0, size, size);
   const imgData = ctx.getImageData(0, 0, size, size);

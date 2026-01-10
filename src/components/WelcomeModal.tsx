@@ -115,11 +115,7 @@ export function WelcomeModal({ onClose }: WelcomeModalProps) {
         }`}
         aria-labelledby="welcome-title"
       >
-        <div
-          onClick={(e) => e.stopPropagation()}
-          onKeyDown={(e) => e.stopPropagation()}
-          className="contents"
-        >
+        <div className="contents">
           {/* Header */}
           <div className="relative px-6 pt-6 pb-4 border-b bg-gradient-to-br from-primary/5 to-primary/10">
             <button

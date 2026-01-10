@@ -527,58 +527,46 @@ export function RenderSection() {
               <HighlightedLabel>{t('render.colorPalette')}</HighlightedLabel>
             </Label>
             <div className="flex flex-wrap gap-2">
-              {render.palette.map((color, index) => (
-                <div key={index} className="flex items-center gap-1">
-                  <div
-                    className="w-6 h-6 rounded border cursor-pointer"
-                    style={{ backgroundColor: color }}
-                    onClick={() => {
-                      const input = document.createElement('input');
-                      input.type = 'color';
-                      input.value = color;
-                      input.onchange = (e) => {
-                        const newPalette = [...render.palette];
-                        newPalette[index] = (e.target as HTMLInputElement).value;
+              {render.palette.map((color, index) => {
+                const openColorPicker = () => {
+                  const input = document.createElement('input');
+                  input.type = 'color';
+                  input.value = color;
+                  input.onchange = (e) => {
+                    const newPalette = [...render.palette];
+                    newPalette[index] = (e.target as HTMLInputElement).value;
+                    useQRStore.setState((s) => ({
+                      render: { ...s.render, palette: newPalette },
+                    }));
+                  };
+                  input.click();
+                };
+
+                return (
+                  <div key={`palette-${color}-${index}`} className="flex items-center gap-1">
+                    <button
+                      type="button"
+                      className="w-6 h-6 rounded border cursor-pointer"
+                      style={{ backgroundColor: color }}
+                      onClick={openColorPicker}
+                      aria-label={`Edit color ${color}`}
+                    />
+                    <Button
+                      variant="ghost"
+                      size="icon"
+                      className="h-6 w-6"
+                      onClick={() => {
+                        const newPalette = render.palette.filter((_, i) => i !== index);
                         useQRStore.setState((s) => ({
                           render: { ...s.render, palette: newPalette },
                         }));
-                      };
-                      input.click();
-                    }}
-                    onKeyDown={(e) => {
-                      if (e.key === 'Enter' || e.key === ' ') {
-                        e.preventDefault();
-                        const input = document.createElement('input');
-                        input.type = 'color';
-                        input.value = color;
-                        input.onchange = (ev) => {
-                          const newPalette = [...render.palette];
-                          newPalette[index] = (ev.target as HTMLInputElement).value;
-                          useQRStore.setState((s) => ({
-                            render: { ...s.render, palette: newPalette },
-                          }));
-                        };
-                        input.click();
-                      }
-                    }}
-                    role="button"
-                    tabIndex={0}
-                  />
-                  <Button
-                    variant="ghost"
-                    size="icon"
-                    className="h-6 w-6"
-                    onClick={() => {
-                      const newPalette = render.palette.filter((_, i) => i !== index);
-                      useQRStore.setState((s) => ({
-                        render: { ...s.render, palette: newPalette },
-                      }));
-                    }}
-                  >
-                    <X className="h-3 w-3" />
-                  </Button>
-                </div>
-              ))}
+                      }}
+                    >
+                      <X className="h-3 w-3" />
+                    </Button>
+                  </div>
+                );
+              })}
             </div>
             <div className="flex gap-2">
               <Input
