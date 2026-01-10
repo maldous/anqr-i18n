@@ -288,41 +288,41 @@ export function Header({
       lang: i18n.language,
       // QR settings
       ec: qr.ecc,
-      version: qr.version !== 0 ? qr.version : undefined,
-      size: render.modulePx !== 20 ? render.modulePx : undefined,
-      margin: qr.quietZoneModules !== 4 ? qr.quietZoneModules : undefined,
-      encodingMode: qr.encodingMode !== 'auto' ? qr.encodingMode : undefined,
-      borderModulesExtra: qr.borderModulesExtra !== 0 ? qr.borderModulesExtra : undefined,
-      quietZoneMinEnforce: qr.quietZoneMinEnforce !== false ? undefined : false,
+      version: qr.version === 0 ? undefined : qr.version,
+      size: render.modulePx === 20 ? undefined : render.modulePx,
+      margin: qr.quietZoneModules === 4 ? undefined : qr.quietZoneModules,
+      encodingMode: qr.encodingMode === 'auto' ? undefined : qr.encodingMode,
+      borderModulesExtra: qr.borderModulesExtra === 0 ? undefined : qr.borderModulesExtra,
+      quietZoneMinEnforce: qr.quietZoneMinEnforce === false ? false : undefined,
       // Colors
-      fg: render.fgColor !== '#000000' ? render.fgColor : undefined,
-      bg: render.bgColor !== '#ffffff' ? render.bgColor : undefined,
+      fg: render.fgColor === '#000000' ? undefined : render.fgColor,
+      bg: render.bgColor === '#ffffff' ? undefined : render.bgColor,
       transparent: render.bgTransparent || undefined,
       // Styles
-      style: render.moduleStyle !== 'square' ? render.moduleStyle : undefined,
-      finder: render.finderStyle !== 'square' ? render.finderStyle : undefined,
-      alignmentStyle: render.alignmentStyle !== 'match_finder' ? render.alignmentStyle : undefined,
-      timingStyle: render.timingStyle !== 'match_module' ? render.timingStyle : undefined,
+      style: render.moduleStyle === 'square' ? undefined : render.moduleStyle,
+      finder: render.finderStyle === 'square' ? undefined : render.finderStyle,
+      alignmentStyle: render.alignmentStyle === 'match_finder' ? undefined : render.alignmentStyle,
+      timingStyle: render.timingStyle === 'match_module' ? undefined : render.timingStyle,
       // Render settings
-      moduleGap: render.moduleGapPercent !== 0 ? render.moduleGapPercent : undefined,
-      gapMode: render.gapMode !== 'none' ? render.gapMode : undefined,
-      cornerRadius: render.cornerRadius !== 0 ? render.cornerRadius : undefined,
-      gradientType: render.gradient.type !== 'none' ? render.gradient.type : undefined,
-      eyeOuterStyle: render.eyeOuterStyle !== 'square' ? render.eyeOuterStyle : undefined,
-      eyeInnerStyle: render.eyeInnerStyle !== 'square' ? render.eyeInnerStyle : undefined,
-      eyeScale: render.eyeScale !== 100 ? render.eyeScale : undefined,
-      frameStyle: render.frameStyle !== 'none' ? render.frameStyle : undefined,
+      moduleGap: render.moduleGapPercent === 0 ? undefined : render.moduleGapPercent,
+      gapMode: render.gapMode === 'none' ? undefined : render.gapMode,
+      cornerRadius: render.cornerRadius === 0 ? undefined : render.cornerRadius,
+      gradientType: render.gradient.type === 'none' ? undefined : render.gradient.type,
+      eyeOuterStyle: render.eyeOuterStyle === 'square' ? undefined : render.eyeOuterStyle,
+      eyeInnerStyle: render.eyeInnerStyle === 'square' ? undefined : render.eyeInnerStyle,
+      eyeScale: render.eyeScale === 100 ? undefined : render.eyeScale,
+      frameStyle: render.frameStyle === 'none' ? undefined : render.frameStyle,
       frameText: render.frameText || undefined,
-      dotRotation: render.dotRotationDeg !== 0 ? render.dotRotationDeg : undefined,
-      crispEdges: render.crispEdges !== false ? undefined : false,
-      pixelSnap: render.pixelSnap !== 'floor' ? render.pixelSnap : undefined,
+      dotRotation: render.dotRotationDeg === 0 ? undefined : render.dotRotationDeg,
+      crispEdges: render.crispEdges === false ? false : undefined,
+      pixelSnap: render.pixelSnap === 'floor' ? undefined : render.pixelSnap,
       perModuleColorMode:
-        render.perModuleColorMode !== 'solid' ? render.perModuleColorMode : undefined,
+        render.perModuleColorMode === 'solid' ? undefined : render.perModuleColorMode,
       contrastGuard: render.contrastGuard ? true : undefined,
       minContrastRatio:
-        render.contrastGuard && render.minContrastRatio !== 4.5
-          ? render.minContrastRatio
-          : undefined,
+        !render.contrastGuard || render.minContrastRatio === 4.5
+          ? undefined
+          : render.minContrastRatio,
       // Overlay
       mode: overlay.enabled ? overlay.mode : undefined,
       intensity: !overlay.enabled || overlay.intensity === 100 ? undefined : overlay.intensity,
@@ -420,57 +420,57 @@ export function Header({
           ? undefined
           : overlay.duotoneColors[1],
       // Animation
-      speed: animation.speedMs !== 100 ? animation.speedMs : undefined,
-      loop: animation.loop !== false ? undefined : false,
+      speed: animation.speedMs === 100 ? undefined : animation.speedMs,
+      loop: animation.loop === false ? false : undefined,
       reverse: animation.bounce ? true : undefined,
-      startFrame: animation.startFrame !== 0 ? animation.startFrame : undefined,
-      maxFrames: animation.maxFrames !== 0 ? animation.maxFrames : undefined,
-      frameStep: animation.frameStep !== 1 ? animation.frameStep : undefined,
-      interpolate: animation.interpolate !== 'none' ? animation.interpolate : undefined,
-      temporalDither: animation.temporalDither !== 'off' ? animation.temporalDither : undefined,
-      pattern: animation.pattern !== 'none' ? animation.pattern : undefined,
-      moduleJitter: animation.moduleJitterPx !== 0 ? animation.moduleJitterPx : undefined,
+      startFrame: animation.startFrame === 0 ? undefined : animation.startFrame,
+      maxFrames: animation.maxFrames === 0 ? undefined : animation.maxFrames,
+      frameStep: animation.frameStep === 1 ? undefined : animation.frameStep,
+      interpolate: animation.interpolate === 'none' ? undefined : animation.interpolate,
+      temporalDither: animation.temporalDither === 'off' ? undefined : animation.temporalDither,
+      pattern: animation.pattern === 'none' ? undefined : animation.pattern,
+      moduleJitter: animation.moduleJitterPx === 0 ? undefined : animation.moduleJitterPx,
       colorCycle: animation.colorCycle ? true : undefined,
-      seed: animation.seed !== 0 ? animation.seed : undefined,
+      seed: animation.seed === 0 ? undefined : animation.seed,
       // Output
-      width: output.widthPx !== 400 ? output.widthPx : undefined,
-      height: output.heightPx !== 400 ? output.heightPx : undefined,
-      format: output.format !== 'gif' ? output.format : undefined,
-      quality: output.quality !== 0.9 ? output.quality : undefined,
-      filename: output.filename !== 'anqr-qrcode' ? output.filename : undefined,
+      width: output.widthPx === 400 ? undefined : output.widthPx,
+      height: output.heightPx === 400 ? undefined : output.heightPx,
+      format: output.format === 'gif' ? undefined : output.format,
+      quality: output.quality === 0.9 ? undefined : output.quality,
+      filename: output.filename === 'anqr-qrcode' ? undefined : output.filename,
       gifPaletteSize:
-        output.format === 'gif' && output.gifPaletteSize !== 256
-          ? output.gifPaletteSize
-          : undefined,
+        output.format !== 'gif' || output.gifPaletteSize === 256
+          ? undefined
+          : output.gifPaletteSize,
       gifQuantizer:
-        output.format === 'gif' && output.gifQuantizer !== 'median_cut'
-          ? output.gifQuantizer
-          : undefined,
+        output.format !== 'gif' || output.gifQuantizer === 'median_cut'
+          ? undefined
+          : output.gifQuantizer,
       gifDither:
-        output.format === 'gif' && output.gifDither !== 'floyd' ? output.gifDither : undefined,
+        output.format !== 'gif' || output.gifDither === 'floyd' ? undefined : output.gifDither,
       svgTrueVector: output.format === 'svg' && output.svgTrueVector ? true : undefined,
-      dpi: output.dpi !== 72 ? output.dpi : undefined,
-      includeQuietZone: output.includeQuietZone !== false ? undefined : false,
+      dpi: output.dpi === 72 ? undefined : output.dpi,
+      includeQuietZone: output.includeQuietZone === false ? false : undefined,
       bgOverride: output.bgOverride ? output.bgOverride : undefined,
       gifTransparentColor:
-        output.format === 'gif' && output.gifTransparentColor
-          ? output.gifTransparentColor
-          : undefined,
+        output.format !== 'gif' || !output.gifTransparentColor
+          ? undefined
+          : output.gifTransparentColor,
       svgShapePrecision:
-        output.format === 'svg' && output.svgShapePrecision !== 'pixel'
-          ? output.svgShapePrecision
-          : undefined,
+        output.format !== 'svg' || output.svgShapePrecision === 'pixel'
+          ? undefined
+          : output.svgShapePrecision,
       svgEmbedRasterOverlay:
         output.format === 'svg' && output.svgEmbedRasterOverlay === false ? false : undefined,
       formatExtra: output.formatExtra === 'none' ? undefined : output.formatExtra,
       // Safety
-      safetyMode: safety.mode !== 'off' ? safety.mode : undefined,
+      safetyMode: safety.mode === 'off' ? undefined : safety.mode,
       safetyMinModulePx:
-        safety.mode === 'off' || safety.minModulePx === 2 ? undefined : safety.minModulePx,
+        safety.mode !== 'off' && safety.minModulePx !== 2 ? safety.minModulePx : undefined,
       safetyMinQuietZone:
-        safety.mode === 'off' || safety.minQuietZoneModules === 4
-          ? undefined
-          : safety.minQuietZoneModules,
+        safety.mode !== 'off' && safety.minQuietZoneModules !== 4
+          ? safety.minQuietZoneModules
+          : undefined,
       lockFinders: safety.mode !== 'off' && !safety.lockFinders ? false : undefined,
       lockTiming: safety.mode !== 'off' && !safety.lockTiming ? false : undefined,
       lockAlign: safety.mode !== 'off' && !safety.lockAlign ? false : undefined,
@@ -478,17 +478,17 @@ export function Header({
       lockVersion: safety.mode !== 'off' && !safety.lockVersion ? false : undefined,
       // QA
       qaContrastCheck: qa.contrastCheck ? true : undefined,
-      qaSimulateBlur: qa.simulateBlurPx !== 0 ? qa.simulateBlurPx : undefined,
-      qaSimulateNoise: qa.simulateNoise !== 0 ? qa.simulateNoise : undefined,
-      qaSimulateRotation: qa.simulateRotationDeg !== 0 ? qa.simulateRotationDeg : undefined,
+      qaSimulateBlur: qa.simulateBlurPx === 0 ? undefined : qa.simulateBlurPx,
+      qaSimulateNoise: qa.simulateNoise === 0 ? undefined : qa.simulateNoise,
+      qaSimulateRotation: qa.simulateRotationDeg === 0 ? undefined : qa.simulateRotationDeg,
       qaShowHeatmap: qa.showHeatmap ? true : undefined,
       // Auto-tuning
-      autoPickVersion: auto.pickVersion !== false ? undefined : false,
+      autoPickVersion: auto.pickVersion === false ? false : undefined,
       autoPickEcc: auto.pickEcc ? true : undefined,
       autoReduceIntensity: auto.reduceIntensityUntilSafe ? true : undefined,
       // Watermark
       watermarkEnabled: watermark.enabled ? true : undefined,
-      watermarkKind: watermark.enabled && watermark.kind !== 'text' ? watermark.kind : undefined,
+      watermarkKind: !watermark.enabled || watermark.kind === 'text' ? undefined : watermark.kind,
       watermarkText:
         watermark.enabled && watermark.kind === 'text' && watermark.text
           ? watermark.text
@@ -792,8 +792,8 @@ export function Header({
                         if (aIsCurrent && !bIsCurrent) return -1;
                         if (bIsCurrent && !aIsCurrent) return 1;
                         // Sort by translated name in current language
-                        const aName = t(`languages.${a.code}`);
-                        const bName = t(`languages.${b.code}`);
+                        const aName = t('languages.' + a.code);
+                        const bName = t('languages.' + b.code);
                         return aName.localeCompare(bName, i18n.language);
                       })
                       .map((lang) => (
@@ -811,9 +811,9 @@ export function Header({
                             {(() => {
                               const isCurrentLang = lang.code === i18n.language || i18n.language.startsWith(lang.code);
                               if (isCurrentLang) {
-                                return lang.code !== 'en-GB' ? ` (${lang.name})` : '';
+                                return lang.code === 'en-GB' ? '' : ` (${lang.name})`;
                               }
-                              return ` (${t(`languages.${lang.code}`)})`;
+                              return ` (${t('languages.' + lang.code)})`;
                             })()}
                           </span>
                           {(i18n.language === lang.code || i18n.language.startsWith(lang.code)) && (
