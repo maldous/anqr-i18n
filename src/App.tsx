@@ -342,10 +342,7 @@ function App() {
     if (params.fg) store.setRenderFgColor(params.fg);
     if (params.bg) store.setRenderBgColor(params.bg);
     if (params.transparent) store.setRenderBgTransparent(true);
-    if (params.style)
-      store.setRenderModuleStyle(
-        params.style as ModuleStyleOption
-      );
+    if (params.style) store.setRenderModuleStyle(params.style as ModuleStyleOption);
     if (params.finder) store.setRenderFinderStyle(params.finder as 'square' | 'rounded' | 'circle');
     if (params.alignmentStyle)
       store.setRenderAlignmentStyle(

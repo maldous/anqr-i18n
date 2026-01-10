@@ -525,7 +525,7 @@ export class QRGenerator {
     const scaledSize = matrix.length;
 
     // UNIFIED: Apply quietZoneMinEnforce setting
-    const quietZoneMin = config.quietZoneMinEnforce !== false ? 4 : 0;
+    const quietZoneMin = config.quietZoneMinEnforce === false ? 0 : 4;
     const marginModules = Math.max(quietZoneMin, config.margin);
 
     // Calculate pixel size
@@ -755,25 +755,23 @@ export class QRGenerator {
                   matrix[y][x] = blended.r * 0.299 + blended.g * 0.587 + blended.b * 0.114 < 128;
                   colors[y][x] = blended;
                 }
-              } else {
+              } else if (isDark) {
                 // No overlay - show based on QR pattern with reduced contrast
-                if (isDark) {
-                  const darkened = {
-                    r: Math.round(neutralParsed.r * 0.5),
-                    g: Math.round(neutralParsed.g * 0.5),
-                    b: Math.round(neutralParsed.b * 0.5),
-                  };
-                  matrix[y][x] = true;
-                  colors[y][x] = darkened;
-                } else {
-                  const lightened = {
-                    r: Math.round(255 - (255 - neutralParsed.r) * 0.5),
-                    g: Math.round(255 - (255 - neutralParsed.g) * 0.5),
-                    b: Math.round(255 - (255 - neutralParsed.b) * 0.5),
-                  };
-                  matrix[y][x] = false;
-                  colors[y][x] = lightened;
-                }
+                const darkened = {
+                  r: Math.round(neutralParsed.r * 0.5),
+                  g: Math.round(neutralParsed.g * 0.5),
+                  b: Math.round(neutralParsed.b * 0.5),
+                };
+                matrix[y][x] = true;
+                colors[y][x] = darkened;
+              } else {
+                const lightened = {
+                  r: Math.round(255 - (255 - neutralParsed.r) * 0.5),
+                  g: Math.round(255 - (255 - neutralParsed.g) * 0.5),
+                  b: Math.round(255 - (255 - neutralParsed.b) * 0.5),
+                };
+                matrix[y][x] = false;
+                colors[y][x] = lightened;
               }
             }
           }
@@ -876,7 +874,7 @@ export class QRGenerator {
     // =======================================================================
     const moduleSize = config.moduleSize;
     // Apply quiet zone minimum enforcement if enabled (QR spec recommends 4 modules)
-    const quietZoneMin = config.quietZoneMinEnforce !== false ? 4 : 0;
+    const quietZoneMin = config.quietZoneMinEnforce === false ? 0 : 4;
     const margin = Math.max(config.margin, quietZoneMin);
     const frameExtra =
       config.frameStyle && config.frameStyle !== 'none' && config.frameText ? moduleSize * 4 : 0;
@@ -2668,7 +2666,7 @@ export class QRGenerator {
     errorB,
     leftToRight = true,
     kernel = null,
-    strength = 1.0
+    strength = 1
   ) {
     const canChange = (px, py) => {
       if (px < 0 || py < 0 || px >= size || py >= size) return false;
@@ -3515,9 +3513,8 @@ export class QRGenerator {
         ctx.fill();
         break;
       }
-
       default:
-        // Default to circle (same as 'circle' case)
+        // Default to circle
         ctx.beginPath();
         ctx.arc(centerX, centerY, dotSize / 2, 0, Math.PI * 2);
         ctx.fill();
