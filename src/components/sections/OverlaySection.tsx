@@ -260,9 +260,12 @@ export function OverlaySection() {
             {imagePreview && (
               <div
                 ref={previewContainerRef}
-                role="application"
-                tabIndex={overlay.cropEnabled ? 0 : -1}
-                aria-label="Image preview with crop area selector. Drag to adjust crop position."
+                {...(overlay.cropEnabled && {
+                  role: 'application',
+                  tabIndex: 0,
+                  'aria-label':
+                    'Image preview with crop area selector. Drag to adjust crop position.',
+                })}
                 className="relative w-full aspect-square bg-muted/30 rounded-lg overflow-hidden border cursor-crosshair touch-none focus:outline-none focus:ring-2 focus:ring-ring"
                 onMouseDown={() => overlay.cropEnabled && setIsDragging(true)}
                 onMouseUp={() => setIsDragging(false)}
