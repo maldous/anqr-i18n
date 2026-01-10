@@ -67,3 +67,5 @@ __pycache__/
 .xlate_cache.sqlite
 .scannerwork/
 sonar-report.json
+playwright-report/
+test-results/
