@@ -26,9 +26,19 @@ export function enableBrowserDebug(page: Page, options: {
   if (logConsole) {
     page.on('console', msg => {
       const type = msg.type();
-      // Filter out noise - only log warnings and errors by default
-      if (type === 'error' || type === 'warning') {
-        console.log(`[browser:${type}]`, msg.text());
+      const text = msg.text();
+      
+      // Filter out known noise that doesn't affect tests
+      const isNoise = 
+        text.includes('AdMob') ||
+        text.includes('WebGL') ||
+        text.includes('SwiftShader') ||
+        text.includes('GroupMarkerNotSet') ||
+        text.includes('crbug.com');
+      
+      // Only log warnings and errors, excluding known noise
+      if ((type === 'error' || type === 'warning') && !isNoise) {
+        console.log(`[browser:${type}]`, text);
       }
     });
   }
@@ -36,7 +46,17 @@ export function enableBrowserDebug(page: Page, options: {
   // 2. Page errors (uncaught exceptions)
   if (errors) {
     page.on('pageerror', err => {
-      console.error('[browser:error]', err.message);
+      const msg = err.message;
+      
+      // Filter out known noise
+      const isNoise = 
+        msg.includes('AdMob') ||
+        msg.includes('WebGL') ||
+        msg.includes('SwiftShader');
+      
+      if (!isNoise) {
+        console.error('[browser:error]', msg);
+      }
     });
   }
 

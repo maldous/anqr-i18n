@@ -1451,3 +1451,20 @@ export function getRegistryStats(): {
   
   return stats;
 }
+
+/**
+ * Get all settings as an array with their IDs
+ */
+export function getAllSettingsWithIds(): Array<SettingDefinition & { id: string }> {
+  return Object.entries(SETTINGS_REGISTRY).map(([id, def]) => ({ ...def, id }));
+}
+
+/**
+ * Get exhaustive test cases for a setting
+ * Returns all test values to iterate through
+ */
+export function getExhaustiveTestCases(settingId: string): Array<string | number | boolean> {
+  const setting = SETTINGS_REGISTRY[settingId];
+  if (!setting) return [];
+  return setting.testValues || [];
+}
