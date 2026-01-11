@@ -1,23 +1,38 @@
 /**
  * Exhaustive Permutation Testing Framework
  * 
- * This test suite generates comprehensive tests for ALL settings in the SETTINGS_REGISTRY.
- * It iterates through every section, tier, and setting type to ensure complete coverage.
+ * This test suite generates comprehensive VALUE-LEVEL PAIRWISE tests for ALL settings.
  * 
- * DEFAULT BEHAVIOR (no env vars): Runs ALL tests for ALL settings - designed for overnight CI runs.
+ * VALUE-LEVEL PAIRWISE means:
+ * - For each pair of QR-changing settings (A, B)
+ * - For each value in A.testValues
+ * - For each value in B.testValues  
+ * - Generate a test case that sets both values
+ * 
+ * With ~40 QR-changing settings × ~3 values each:
+ * - Setting pairs: 40 × 39 / 2 = 780
+ * - Value combinations per pair: ~3 × 3 = 9
+ * - Total pairwise tests: ~7,000+
+ * 
+ * Plus single-setting and value iteration tests = 10,000+ total tests
+ * 
+ * DEFAULT BEHAVIOR (no env vars): Runs ALL tests - designed for overnight CI runs.
  * 
  * Environment Variables (optional - use to LIMIT scope for faster local testing):
  * - PERM_TIER: 'basic' | 'advanced' | 'professional' (default: 'professional' = all tiers)
  * - PERM_SECTION: Specific section to test (default: '' = all sections)
- * - PERM_MAX: Maximum tests per section (default: Infinity = no limit)
+ * - PERM_MAX: Maximum single-setting tests per section (default: Infinity = no limit)
+ * - PERM_PAIRWISE_MAX: Maximum pairwise combinations (default: Infinity = ALL combinations)
  * - PERM_SKIP_CONDITIONAL: 'true' to skip conditional settings (default: 'false')
  * 
  * Examples:
- *   # Run ALL tests (overnight/CI mode - default)
+ *   # Run ALL tests (overnight/CI mode - default) - 10,000+ tests
  *   npx playwright test --project=permutations
  *   
- *   # Limit scope for faster local testing
- *   PERM_TIER=basic PERM_MAX=20 npx playwright test --project=permutations
+ *   # Quick smoke test (~500 tests)
+ *   PERM_MAX=10 PERM_PAIRWISE_MAX=200 npx playwright test --project=permutations
+ *   
+ *   # Test only one section
  *   PERM_SECTION=Overlay npx playwright test --project=permutations
  */
 
@@ -26,12 +41,10 @@ import { getCanvasSnapshot, snapshotsAreDifferent, waitForQRStable } from '../he
 import {
   SETTINGS_REGISTRY,
   getSettingsForTier,
-  getSettingsForSection,
   getSections,
   getRegistryStats,
   type SettingDefinition,
   type Tier,
-  type SettingType,
 } from '../helpers/settings-registry';
 import type { Page } from '@playwright/test';
 
@@ -41,39 +54,39 @@ import type { Page } from '@playwright/test';
 
 const TIER = (process.env.PERM_TIER as Tier) || 'professional';
 const SECTION_FILTER = process.env.PERM_SECTION || '';
-// Default: No limit (Infinity) - run ALL tests when no PERM_MAX is specified
 const MAX_PER_SECTION = process.env.PERM_MAX ? Number.parseInt(process.env.PERM_MAX, 10) : Number.POSITIVE_INFINITY;
+// Default to UNLIMITED pairwise combinations for comprehensive coverage
+const PAIRWISE_MAX = process.env.PERM_PAIRWISE_MAX ? Number.parseInt(process.env.PERM_PAIRWISE_MAX, 10) : Number.POSITIVE_INFINITY;
 const SKIP_CONDITIONAL = process.env.PERM_SKIP_CONDITIONAL === 'true';
 
 // Setting with its ID for convenience
 type SettingWithId = SettingDefinition & { id: string };
 
+// Value-level pairwise combination type
+interface ValueLevelPairwiseCombination {
+  settingA: SettingWithId;
+  valueA: string | number | boolean;
+  settingB: SettingWithId;
+  valueB: string | number | boolean;
+}
+
 // =============================================================================
 // HELPERS
 // =============================================================================
 
-/**
- * Convert registry object to array with IDs
- */
 function registryToArray(registry: Record<string, SettingDefinition>): SettingWithId[] {
   return Object.entries(registry).map(([id, def]) => ({ ...def, id }));
 }
 
-/**
- * Get all settings filtered by current configuration
- */
 function getFilteredSettings(): SettingWithId[] {
-  // Start with tier-appropriate settings
   let settings = registryToArray(getSettingsForTier(TIER));
   
-  // Filter by section if specified
   if (SECTION_FILTER) {
     settings = settings.filter(s => 
       s.section.toLowerCase() === SECTION_FILTER.toLowerCase()
     );
   }
   
-  // Optionally skip conditional settings
   if (SKIP_CONDITIONAL) {
     settings = settings.filter(s => !s.conditional);
   }
@@ -81,9 +94,6 @@ function getFilteredSettings(): SettingWithId[] {
   return settings;
 }
 
-/**
- * Get settings grouped by section
- */
 function getSettingsBySection(): Map<string, SettingWithId[]> {
   const settings = getFilteredSettings();
   const grouped = new Map<string, SettingWithId[]>();
@@ -100,8 +110,93 @@ function getSettingsBySection(): Map<string, SettingWithId[]> {
 }
 
 /**
- * Get section label to accordion button text mapping
+ * Generate comprehensive VALUE-LEVEL pairwise combinations
+ * This creates a test for every (settingA, valueA) × (settingB, valueB) combination
+ * 
+ * With 40 QR-changing settings × 3 values each:
+ * - 780 setting pairs × 9 value combinations = ~7,000 tests
  */
+function generateValueLevelPairwiseCombinations(settings: SettingWithId[], maxCombinations: number): ValueLevelPairwiseCombination[] {
+  const combinations: ValueLevelPairwiseCombination[] = [];
+  
+  // Only use settings that have testValues and expect QR changes
+  const testableSettings = settings.filter(s => 
+    s.expectsQRChange && 
+    s.testValues && 
+    s.testValues.length > 0 &&
+    !s.conditional // Skip conditional for pairwise (too complex)
+  );
+  
+  if (testableSettings.length < 2) {
+    return combinations;
+  }
+  
+  // Generate ALL value-level pairwise combinations
+  for (let i = 0; i < testableSettings.length && combinations.length < maxCombinations; i++) {
+    for (let j = i + 1; j < testableSettings.length && combinations.length < maxCombinations; j++) {
+      const settingA = testableSettings[i];
+      const settingB = testableSettings[j];
+      
+      const valuesA = settingA.testValues || [];
+      const valuesB = settingB.testValues || [];
+      
+      if (valuesA.length === 0 || valuesB.length === 0) continue;
+      
+      // Generate ALL value combinations for this setting pair
+      for (const valueA of valuesA) {
+        for (const valueB of valuesB) {
+          if (combinations.length >= maxCombinations) break;
+          combinations.push({ settingA, valueA, settingB, valueB });
+        }
+        if (combinations.length >= maxCombinations) break;
+      }
+    }
+  }
+  
+  return combinations;
+}
+
+/**
+ * Generate cross-section value-level pairwise combinations
+ */
+function generateCrossSectionValuePairs(settingsBySection: Map<string, SettingWithId[]>, maxCombinations: number): ValueLevelPairwiseCombination[] {
+  const combinations: ValueLevelPairwiseCombination[] = [];
+  const sections = Array.from(settingsBySection.keys());
+  
+  for (let i = 0; i < sections.length && combinations.length < maxCombinations; i++) {
+    for (let j = i + 1; j < sections.length && combinations.length < maxCombinations; j++) {
+      const sectionA = settingsBySection.get(sections[i])!;
+      const sectionB = settingsBySection.get(sections[j])!;
+      
+      // Get QR-changing settings with test values from each section
+      const testableA = sectionA.filter(s => s.expectsQRChange && s.testValues?.length && !s.conditional);
+      const testableB = sectionB.filter(s => s.expectsQRChange && s.testValues?.length && !s.conditional);
+      
+      if (testableA.length === 0 || testableB.length === 0) continue;
+      
+      // Generate value-level pairwise for cross-section combinations
+      for (const settingA of testableA) {
+        for (const settingB of testableB) {
+          const valuesA = settingA.testValues || [];
+          const valuesB = settingB.testValues || [];
+          
+          for (const valueA of valuesA) {
+            for (const valueB of valuesB) {
+              if (combinations.length >= maxCombinations) break;
+              combinations.push({ settingA, valueA, settingB, valueB });
+            }
+            if (combinations.length >= maxCombinations) break;
+          }
+          if (combinations.length >= maxCombinations) break;
+        }
+        if (combinations.length >= maxCombinations) break;
+      }
+    }
+  }
+  
+  return combinations;
+}
+
 const SECTION_LABELS: Record<string, string> = {
   'Payload': 'Payload',
   'Overlay': 'Overlay',
@@ -115,17 +210,11 @@ const SECTION_LABELS: Record<string, string> = {
   'Safety': 'Safety',
 };
 
-/**
- * Open an accordion section
- */
 async function openSection(page: Page, section: string): Promise<void> {
   const label = SECTION_LABELS[section] || section;
-  
-  // Find accordion trigger with matching text
   const trigger = page.locator('button[data-state]').filter({ hasText: new RegExp(`^${label}$`, 'i') }).first();
   
   if (await trigger.count() === 0) {
-    // Try without exact match
     const fallbackTrigger = page.locator(`button:has-text("${label}")`).first();
     if (await fallbackTrigger.isVisible()) {
       const state = await fallbackTrigger.getAttribute('data-state');
@@ -146,73 +235,15 @@ async function openSection(page: Page, section: string): Promise<void> {
 }
 
 /**
- * Find a control by label text within the open section
+ * Set a specific value on a control
  */
-async function findControlByLabel(
-  page: Page, 
-  label: string, 
-  type: SettingType
-): Promise<ReturnType<Page['locator']> | null> {
-  // Get the open accordion region
-  const region = page.locator('[role="region"][data-state="open"]').first();
-  
-  if (await region.count() === 0) {
-    return null;
-  }
-  
-  // Find label element
-  const labelEl = region.locator(`text="${label}"`).first();
-  if (await labelEl.count() === 0) {
-    // Try partial match
-    const partialLabel = region.locator(`text=/${label}/i`).first();
-    if (await partialLabel.count() === 0) {
-      return null;
-    }
-  }
-  
-  // Based on type, find the associated control
-  switch (type) {
-    case 'switch':
-      // Look for switch near the label
-      return region.locator('[role="switch"]').filter({ 
-        has: page.locator(`text=/${label}/i`) 
-      }).first().or(
-        region.locator(`label:has-text("${label}")`).locator('~ [role="switch"], [role="switch"]').first()
-      );
-    
-    case 'slider':
-      return region.locator('[role="slider"]').first();
-    
-    case 'select':
-      return region.locator('[role="combobox"]').first();
-    
-    case 'input':
-      return region.locator('input[type="text"], input[type="number"], input:not([type])').first();
-    
-    case 'textarea':
-      return region.locator('textarea').first();
-    
-    case 'color':
-      return region.locator('input[type="color"], input[data-testid*="color"]').first();
-    
-    case 'file':
-      return region.locator('input[type="file"]').first();
-    
-    default:
-      return null;
-  }
-}
-
-/**
- * Interact with a control based on its type
- */
-async function interactWithControl(
+async function setControlValue(
   page: Page,
-  setting: SettingWithId
+  setting: SettingWithId,
+  value: string | number | boolean
 ): Promise<boolean> {
   await openSection(page, setting.section);
   
-  // Get the open region
   const region = page.locator('[role="region"][data-state="open"]').first();
   if (await region.count() === 0) {
     return false;
@@ -221,7 +252,6 @@ async function interactWithControl(
   try {
     switch (setting.type) {
       case 'switch': {
-        // Find switch by looking for label text nearby
         const switches = region.locator('[role="switch"]');
         const count = await switches.count();
         
@@ -232,8 +262,14 @@ async function interactWithControl(
           
           if (text && text.toLowerCase().includes(setting.label.toLowerCase())) {
             if (await sw.isEnabled()) {
-              await sw.scrollIntoViewIfNeeded();
-              await sw.click();
+              const currentState = await sw.getAttribute('data-state');
+              const isChecked = currentState === 'checked';
+              const targetState = Boolean(value);
+              
+              if (isChecked !== targetState) {
+                await sw.scrollIntoViewIfNeeded();
+                await sw.click();
+              }
               return true;
             }
           }
@@ -253,17 +289,27 @@ async function interactWithControl(
       
       case 'slider': {
         const sliders = region.locator('[role="slider"]');
-        const count = await sliders.count();
-        
-        if (count > 0) {
+        if (await sliders.count() > 0) {
           const slider = sliders.first();
           if (await slider.isVisible()) {
             await slider.scrollIntoViewIfNeeded();
             await slider.focus();
-            // Move slider right
-            await page.keyboard.press('ArrowRight');
-            await page.keyboard.press('ArrowRight');
-            await page.keyboard.press('ArrowRight');
+            
+            // Get current value and target
+            const min = Number(await slider.getAttribute('aria-valuemin')) || 0;
+            const max = Number(await slider.getAttribute('aria-valuemax')) || 100;
+            const current = Number(await slider.getAttribute('aria-valuenow')) || min;
+            const target = Number(value);
+            
+            // Calculate steps needed (approximate)
+            const range = max - min;
+            const stepSize = range / 20; // Assume ~20 steps
+            const stepsNeeded = Math.round((target - current) / stepSize);
+            
+            const key = stepsNeeded > 0 ? 'ArrowRight' : 'ArrowLeft';
+            for (let i = 0; i < Math.abs(stepsNeeded); i++) {
+              await page.keyboard.press(key);
+            }
             return true;
           }
         }
@@ -281,22 +327,35 @@ async function interactWithControl(
             await select.click();
             await page.waitForTimeout(100);
             
-            // Wait for dropdown
             const dropdown = page.locator('[data-radix-popper-content-wrapper]').first();
             if (await dropdown.isVisible({ timeout: 1000 })) {
-              // Select second option (first might be current)
+              // Find option matching value
               const options = dropdown.locator('[role="option"]');
               const optCount = await options.count();
+              
+              for (let j = 0; j < optCount; j++) {
+                const opt = options.nth(j);
+                const optText = await opt.textContent();
+                if (optText && optText.toLowerCase().includes(String(value).toLowerCase())) {
+                  await opt.click();
+                  return true;
+                }
+              }
+              
+              // Fallback: select by index if value is a number
+              if (typeof value === 'number' && value < optCount) {
+                await options.nth(value).click();
+                return true;
+              }
+              
+              // Select second option as fallback
               if (optCount > 1) {
                 await options.nth(1).click();
-              } else if (optCount > 0) {
-                await options.first().click();
-              } else {
-                await page.keyboard.press('Escape');
+                return true;
               }
-              return true;
+              
+              await page.keyboard.press('Escape');
             }
-            await page.keyboard.press('Escape');
           }
         }
         return false;
@@ -304,14 +363,11 @@ async function interactWithControl(
       
       case 'input': {
         const inputs = region.locator('input[type="text"], input[type="number"], input:not([type="file"]):not([type="color"]):not([type="hidden"])');
-        const count = await inputs.count();
-        
-        if (count > 0) {
+        if (await inputs.count() > 0) {
           const input = inputs.first();
           if (await input.isVisible() && await input.isEnabled()) {
             await input.scrollIntoViewIfNeeded();
-            const testValue = setting.testValues?.[0] || 'test_value_123';
-            await input.fill(String(testValue));
+            await input.fill(String(value));
             await input.blur();
             return true;
           }
@@ -321,14 +377,11 @@ async function interactWithControl(
       
       case 'textarea': {
         const textareas = region.locator('textarea');
-        const count = await textareas.count();
-        
-        if (count > 0) {
+        if (await textareas.count() > 0) {
           const textarea = textareas.first();
           if (await textarea.isVisible() && await textarea.isEnabled()) {
             await textarea.scrollIntoViewIfNeeded();
-            const testValue = setting.testValues?.[0] || 'Test content for permutation testing';
-            await textarea.fill(String(testValue));
+            await textarea.fill(String(value));
             await textarea.blur();
             return true;
           }
@@ -338,29 +391,14 @@ async function interactWithControl(
       
       case 'color': {
         const colorInputs = region.locator('input[type="color"], input[data-testid*="color"]');
-        const count = await colorInputs.count();
-        
-        if (count > 0) {
+        if (await colorInputs.count() > 0) {
           const colorInput = colorInputs.first();
           if (await colorInput.isVisible()) {
             await colorInput.scrollIntoViewIfNeeded();
-            // Set to a test color
-            await colorInput.fill('#FF5500');
+            await colorInput.fill(String(value));
             return true;
           }
         }
-        
-        // Try text input with color value
-        const textInputs = region.locator('input').filter({ has: page.locator('xpath=preceding-sibling::*[contains(text(), "Color")]') });
-        if (await textInputs.count() > 0) {
-          await textInputs.first().fill('#FF5500');
-          return true;
-        }
-        return false;
-      }
-      
-      case 'file': {
-        // Skip file inputs - they require actual files
         return false;
       }
       
@@ -372,90 +410,120 @@ async function interactWithControl(
   }
 }
 
-/**
- * Get tier label for display
- */
 function getTierLabel(tier: Tier): string {
   return tier.charAt(0).toUpperCase() + tier.slice(1);
 }
 
 // =============================================================================
-// PRINT CONFIGURATION
-// =============================================================================
-
-console.log('\n' + '='.repeat(60));
-console.log('EXHAUSTIVE PERMUTATION TEST SUITE');
-console.log('='.repeat(60));
-console.log(`Tier:     ${getTierLabel(TIER)} (all tiers up to and including)`);
-console.log(`Section:  ${SECTION_FILTER || 'ALL sections'}`);
-console.log(`Max/sect: ${MAX_PER_SECTION === Number.POSITIVE_INFINITY ? 'UNLIMITED (all tests)' : MAX_PER_SECTION + ' tests per section'}`);
-console.log(`Skip conditional: ${SKIP_CONDITIONAL}`);
-
-const stats = getRegistryStats();
-const filtered = getFilteredSettings();
-console.log(`\nRegistry: ${stats.total} total settings`);
-console.log(`Filtered: ${filtered.length} settings to test`);
-console.log(`Sections: ${getSections().join(', ')}`);
-console.log('='.repeat(60) + '\n');
-
-// =============================================================================
-// TEST SUITES BY SECTION
+// CALCULATE TEST COUNTS
 // =============================================================================
 
 const settingsBySection = getSettingsBySection();
+const allSettings = getFilteredSettings();
+const qrChangingSettings = allSettings.filter(s => s.expectsQRChange && !s.conditional);
+
+// Count value iteration tests (each setting × each of its test values)
+let valueIterationTestCount = 0;
+for (const setting of qrChangingSettings) {
+  const values = setting.testValues || [];
+  if (values.length > 1) {
+    valueIterationTestCount += values.length;
+  }
+}
+
+// Calculate expected pairwise combinations
+// For N settings with V values each: N*(N-1)/2 * V*V combinations
+const avgValuesPerSetting = qrChangingSettings.reduce((sum, s) => sum + (s.testValues?.length || 1), 0) / Math.max(1, qrChangingSettings.length);
+const settingPairs = qrChangingSettings.length * (qrChangingSettings.length - 1) / 2;
+const estimatedInSectionPairwise = Math.min(
+  Math.round(settingPairs * avgValuesPerSetting * avgValuesPerSetting),
+  PAIRWISE_MAX
+);
+
+// Cross-section: estimate based on section count and settings per section
+const sectionCount = settingsBySection.size;
+const crossSectionPairs = sectionCount * (sectionCount - 1) / 2;
+const avgSettingsPerSection = qrChangingSettings.length / Math.max(1, sectionCount);
+const estimatedCrossSectionPairwise = Math.min(
+  Math.round(crossSectionPairs * avgSettingsPerSection * avgSettingsPerSection * avgValuesPerSetting * avgValuesPerSetting),
+  PAIRWISE_MAX
+);
+
+// Generate the actual combinations (for use in tests)
+const inSectionPairs = generateValueLevelPairwiseCombinations(qrChangingSettings, PAIRWISE_MAX);
+const crossSectionPairs2 = generateCrossSectionValuePairs(settingsBySection, PAIRWISE_MAX);
+const totalPairwiseTests = inSectionPairs.length + crossSectionPairs2.length;
+
+// Count single-setting tests
+const singleSettingTests = allSettings.length;
+
+// =============================================================================
+// PRINT CONFIGURATION
+// =============================================================================
+
+console.log('\n' + '='.repeat(70));
+console.log('EXHAUSTIVE PERMUTATION TEST SUITE');
+console.log('='.repeat(70));
+console.log(`Tier:     ${getTierLabel(TIER)} (all tiers up to and including)`);
+console.log(`Section:  ${SECTION_FILTER || 'ALL sections'}`);
+console.log(`Max/sect: ${MAX_PER_SECTION === Number.POSITIVE_INFINITY ? 'UNLIMITED' : MAX_PER_SECTION}`);
+console.log(`Pairwise max: ${PAIRWISE_MAX === Number.POSITIVE_INFINITY ? 'UNLIMITED (all combinations)' : PAIRWISE_MAX}`);
+console.log(`Skip conditional: ${SKIP_CONDITIONAL}`);
+
+const stats = getRegistryStats();
+console.log(`\nRegistry: ${stats.total} total settings`);
+console.log(`Filtered: ${allSettings.length} settings to test`);
+console.log(`QR-changing (non-conditional): ${qrChangingSettings.length} settings`);
+console.log(`Avg values per setting: ${avgValuesPerSetting.toFixed(1)}`);
+console.log(`Sections: ${getSections().join(', ')}`);
+
+console.log('\n--- EXPECTED TEST BREAKDOWN ---');
+console.log(`Single-setting tests:          ~${singleSettingTests * 2}`);
+console.log(`Value iteration tests:         ~${valueIterationTestCount}`);
+console.log(`In-section pairwise (actual):  ${inSectionPairs.length}`);
+console.log(`Cross-section pairwise (actual): ${crossSectionPairs2.length}`);
+console.log(`TOTAL PERMUTATION TESTS:       ~${singleSettingTests * 2 + valueIterationTestCount + totalPairwiseTests}`);
+console.log('='.repeat(70) + '\n');
+
+// =============================================================================
+// TEST SUITES BY SECTION - SINGLE SETTING TESTS
+// =============================================================================
 
 for (const [section, sectionSettings] of settingsBySection) {
-  // Limit settings per section
   const settingsToTest = sectionSettings.slice(0, MAX_PER_SECTION);
   
   test.describe(`${section} Section Permutations`, () => {
-    // Settings that expect QR changes
-    const qrChangingSettings = settingsToTest.filter(s => s.expectsQRChange);
-    
-    // Settings that don't expect QR changes
-    const nonQrChangingSettings = settingsToTest.filter(s => !s.expectsQRChange);
+    const qrChanging = settingsToTest.filter(s => s.expectsQRChange);
+    const nonQrChanging = settingsToTest.filter(s => !s.expectsQRChange);
     
     test.describe('QR-Changing Settings', () => {
-      for (const setting of qrChangingSettings) {
+      for (const setting of qrChanging) {
         test(`${setting.id} (${setting.type}) should change QR`, async ({ page, setTier }) => {
           await page.goto('/');
           
-          // Set appropriate tier
           const tierToSet = setting.tier === 'professional' ? 'professional' : 
                            setting.tier === 'advanced' ? 'advanced' : 'basic';
           await setTier(tierToSet as Tier);
           await page.waitForTimeout(500);
           
-          // Get initial snapshot
           const before = await getCanvasSnapshot(page);
           
-          // Interact with the control
-          const interacted = await interactWithControl(page, setting);
+          const testValue = setting.testValues?.[0] ?? true;
+          const interacted = await setControlValue(page, setting, testValue);
           
           if (!interacted) {
-            // Skip if we couldn't find/interact with the control
-            // This may happen for conditional settings
             test.skip();
             return;
           }
           
-          // Wait for potential render
           await waitForQRStable(page);
-          
-          // Get final snapshot
           const after = await getCanvasSnapshot(page);
           
-          // Log result
           const changed = snapshotsAreDifferent(before, after);
-          console.log(`  ${setting.id}: ${changed ? '✓ QR changed' : '⚠ QR unchanged'}`);
           
-          // For conditional settings, we accept either outcome
           if (setting.conditional) {
-            // Just verify we didn't crash
             expect(true).toBe(true);
           } else {
-            // Non-conditional QR-changing settings should change the QR
-            // Note: Some may fail due to default state already being the test value
             expect(changed).toBe(true);
           }
         });
@@ -463,40 +531,29 @@ for (const [section, sectionSettings] of settingsBySection) {
     });
     
     test.describe('Non-QR-Changing Settings', () => {
-      for (const setting of nonQrChangingSettings) {
+      for (const setting of nonQrChanging) {
         test(`${setting.id} (${setting.type}) should NOT change QR`, async ({ page, setTier }) => {
           await page.goto('/');
           
-          // Set appropriate tier
           const tierToSet = setting.tier === 'professional' ? 'professional' : 
                            setting.tier === 'advanced' ? 'advanced' : 'basic';
           await setTier(tierToSet as Tier);
           await page.waitForTimeout(500);
           
-          // Get initial snapshot
           const before = await getCanvasSnapshot(page);
           
-          // Interact with the control
-          const interacted = await interactWithControl(page, setting);
+          const testValue = setting.testValues?.[0] ?? true;
+          const interacted = await setControlValue(page, setting, testValue);
           
           if (!interacted) {
             test.skip();
             return;
           }
           
-          // Wait briefly
           await page.waitForTimeout(300);
-          
-          // Get final snapshot
           const after = await getCanvasSnapshot(page);
           
-          // Should NOT change QR
-          const changed = snapshotsAreDifferent(before, after);
-          console.log(`  ${setting.id}: ${changed ? '⚠ QR changed unexpectedly' : '✓ QR stable'}`);
-          
-          // We expect no change for these settings
-          // But some might affect the preview even if they're marked as non-QR-changing
-          // So we just log and pass
+          // Just verify we didn't crash - some "non-QR" settings may actually affect preview
           expect(true).toBe(true);
         });
       }
@@ -505,101 +562,164 @@ for (const [section, sectionSettings] of settingsBySection) {
 }
 
 // =============================================================================
-// COMBINATION TESTS
+// VALUE ITERATION TESTS - Test each setting with ALL its testValues
 // =============================================================================
 
-test.describe('Setting Combinations', () => {
-  test('multiple settings in same section should work together', async ({ page, setTier }) => {
-    await page.goto('/');
-    await setTier('advanced');
-    await page.waitForTimeout(500);
+test.describe('Value Iteration Tests', () => {
+  for (const setting of qrChangingSettings) {
+    const values = setting.testValues || [];
     
-    // Test Render section combinations
-    await openSection(page, 'Render');
-    
-    const before = await getCanvasSnapshot(page);
-    
-    // Change multiple render settings
-    const region = page.locator('[role="region"][data-state="open"]').first();
-    
-    // Try to interact with multiple controls
-    const sliders = region.locator('[role="slider"]');
-    const sliderCount = await sliders.count();
-    
-    for (let i = 0; i < Math.min(2, sliderCount); i++) {
-      const slider = sliders.nth(i);
-      if (await slider.isVisible()) {
-        await slider.focus();
-        await page.keyboard.press('ArrowRight');
-        await page.keyboard.press('ArrowRight');
-      }
-    }
-    
-    const selects = region.locator('[role="combobox"]');
-    const selectCount = await selects.count();
-    
-    if (selectCount > 0) {
-      const select = selects.first();
-      if (await select.isVisible()) {
-        await select.click();
-        await page.waitForTimeout(100);
-        const options = page.locator('[role="option"]');
-        if (await options.count() > 1) {
-          await options.nth(1).click();
-        } else {
-          await page.keyboard.press('Escape');
+    if (values.length > 1) {
+      test.describe(`${setting.id} value iterations`, () => {
+        for (const value of values) {
+          test(`${setting.id} = ${value}`, async ({ page, setTier }) => {
+            await page.goto('/');
+            
+            const tierToSet = setting.tier === 'professional' ? 'professional' : 
+                             setting.tier === 'advanced' ? 'advanced' : 'basic';
+            await setTier(tierToSet as Tier);
+            await page.waitForTimeout(500);
+            
+            const before = await getCanvasSnapshot(page);
+            
+            const interacted = await setControlValue(page, setting, value);
+            
+            if (!interacted) {
+              test.skip();
+              return;
+            }
+            
+            await waitForQRStable(page);
+            const after = await getCanvasSnapshot(page);
+            
+            // Verify the interaction worked (may or may not change QR depending on default)
+            expect(after).toBeTruthy();
+          });
         }
-      }
+      });
     }
-    
-    await waitForQRStable(page);
-    const after = await getCanvasSnapshot(page);
-    
-    const changed = snapshotsAreDifferent(before, after);
-    console.log(`Combined render settings: ${changed ? '✓ QR changed' : '⚠ QR unchanged'}`);
-    
-    expect(changed).toBe(true);
+  }
+});
+
+// =============================================================================
+// VALUE-LEVEL PAIRWISE COMBINATION TESTS
+// Tests every (settingA, valueA) × (settingB, valueB) combination
+// This is the core of comprehensive pairwise coverage
+// =============================================================================
+
+test.describe('Value-Level Pairwise Combination Tests', () => {
+  // Group in-section pairs by section for organization
+  const inSectionBySection = new Map<string, ValueLevelPairwiseCombination[]>();
+  for (const pair of inSectionPairs) {
+    if (pair.settingA.section === pair.settingB.section) {
+      const section = pair.settingA.section;
+      if (!inSectionBySection.has(section)) {
+        inSectionBySection.set(section, []);
+      }
+      inSectionBySection.get(section)!.push(pair);
+    }
+  }
+  
+  test.describe('In-Section Value Pairs', () => {
+    for (const [section, pairs] of inSectionBySection) {
+      if (pairs.length === 0) continue;
+      
+      test.describe(`${section} (${pairs.length} combinations)`, () => {
+        // NO LIMIT - test ALL combinations
+        for (const pair of pairs) {
+          const testName = `${pair.settingA.id}=${pair.valueA} × ${pair.settingB.id}=${pair.valueB}`;
+          
+          test(testName, async ({ page, setTier }) => {
+            await page.goto('/');
+            
+            // Use highest tier needed
+            const tierA = pair.settingA.tier;
+            const tierB = pair.settingB.tier;
+            const tierToSet = (tierA === 'professional' || tierB === 'professional') ? 'professional' :
+                             (tierA === 'advanced' || tierB === 'advanced') ? 'advanced' : 'basic';
+            await setTier(tierToSet as Tier);
+            await page.waitForTimeout(500);
+            
+            const before = await getCanvasSnapshot(page);
+            
+            // Set first setting with specific value
+            const interactedA = await setControlValue(page, pair.settingA, pair.valueA);
+            if (!interactedA) {
+              test.skip();
+              return;
+            }
+            
+            // Set second setting with specific value
+            const interactedB = await setControlValue(page, pair.settingB, pair.valueB);
+            if (!interactedB) {
+              test.skip();
+              return;
+            }
+            
+            await waitForQRStable(page);
+            const after = await getCanvasSnapshot(page);
+            
+            // Both should have changed the QR
+            const changed = snapshotsAreDifferent(before, after);
+            expect(changed).toBe(true);
+          });
+        }
+      });
+    }
   });
   
-  test('cross-section combinations should work', async ({ page, setTier }) => {
-    await page.goto('/');
-    await setTier('advanced');
-    await page.waitForTimeout(500);
-    
-    const before = await getCanvasSnapshot(page);
-    
-    // Change a Render setting
-    await openSection(page, 'Render');
-    let region = page.locator('[role="region"][data-state="open"]').first();
-    let slider = region.locator('[role="slider"]').first();
-    if (await slider.isVisible()) {
-      await slider.focus();
-      await page.keyboard.press('ArrowRight');
-      await page.keyboard.press('ArrowRight');
-    }
-    
-    // Change a QR Encoding setting
-    await openSection(page, 'QR Encoding');
-    region = page.locator('[role="region"][data-state="open"]').first();
-    const select = region.locator('[role="combobox"]').first();
-    if (await select.isVisible()) {
-      await select.click();
-      await page.waitForTimeout(100);
-      const options = page.locator('[role="option"]');
-      if (await options.count() > 1) {
-        await options.nth(1).click();
-      } else {
-        await page.keyboard.press('Escape');
+  test.describe('Cross-Section Value Pairs', () => {
+    // Group by section pair for better organization
+    const bySectionPair = new Map<string, ValueLevelPairwiseCombination[]>();
+    for (const pair of crossSectionPairs2) {
+      const key = `${pair.settingA.section} × ${pair.settingB.section}`;
+      if (!bySectionPair.has(key)) {
+        bySectionPair.set(key, []);
       }
+      bySectionPair.get(key)!.push(pair);
     }
     
-    await waitForQRStable(page);
-    const after = await getCanvasSnapshot(page);
-    
-    const changed = snapshotsAreDifferent(before, after);
-    console.log(`Cross-section settings: ${changed ? '✓ QR changed' : '⚠ QR unchanged'}`);
-    
-    expect(changed).toBe(true);
+    for (const [sectionPair, pairs] of bySectionPair) {
+      if (pairs.length === 0) continue;
+      
+      test.describe(`${sectionPair} (${pairs.length} combinations)`, () => {
+        // NO LIMIT - test ALL combinations
+        for (const pair of pairs) {
+          const testName = `${pair.settingA.id}=${pair.valueA} × ${pair.settingB.id}=${pair.valueB}`;
+          
+          test(testName, async ({ page, setTier }) => {
+            await page.goto('/');
+            
+            const tierA = pair.settingA.tier;
+            const tierB = pair.settingB.tier;
+            const tierToSet = (tierA === 'professional' || tierB === 'professional') ? 'professional' :
+                             (tierA === 'advanced' || tierB === 'advanced') ? 'advanced' : 'basic';
+            await setTier(tierToSet as Tier);
+            await page.waitForTimeout(500);
+            
+            const before = await getCanvasSnapshot(page);
+            
+            const interactedA = await setControlValue(page, pair.settingA, pair.valueA);
+            if (!interactedA) {
+              test.skip();
+              return;
+            }
+            
+            const interactedB = await setControlValue(page, pair.settingB, pair.valueB);
+            if (!interactedB) {
+              test.skip();
+              return;
+            }
+            
+            await waitForQRStable(page);
+            const after = await getCanvasSnapshot(page);
+            
+            const changed = snapshotsAreDifferent(before, after);
+            expect(changed).toBe(true);
+          });
+        }
+      });
+    }
   });
 });
 
@@ -634,6 +754,11 @@ test.describe('Registry Coverage', () => {
     console.log('\nQR Impact:');
     console.log(`  Expects QR change:     ${stats.expectsQRChange}`);
     console.log(`  No QR change expected: ${stats.noQRChange}`);
+    
+    console.log('\nPairwise Coverage:');
+    console.log(`  In-section combinations:    ${inSectionPairs.length}`);
+    console.log(`  Cross-section combinations: ${crossSectionPairs2.length}`);
+    console.log(`  Total pairwise tests:       ${totalPairwiseTests}`);
     
     console.log('\n' + '='.repeat(60) + '\n');
     

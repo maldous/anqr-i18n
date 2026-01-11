@@ -740,6 +740,7 @@ export function Header({
                   className="shadow-sm"
                   onClick={onExport}
                   title={t('accessibility.exportQrCode')}
+                  data-testid="export-button"
                 >
                   <Download className="h-4 w-4 mr-2" />
                   {t('header.export')}
