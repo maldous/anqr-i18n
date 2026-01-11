@@ -31,11 +31,25 @@ async function expandShareSection(page: Page) {
     await waitForRenderComplete(page, 'settle');
   }
   
-  // Find and click Share accordion trigger
-  const shareTrigger = page.locator('button').filter({ hasText: /^Share$/i }).first();
-  if (await shareTrigger.count() > 0) {
-    await shareTrigger.scrollIntoViewIfNeeded();
-    await shareTrigger.click();
+  // Use data-testid for stable selection - scroll sidebar first to reveal pro sections
+  const sidebar = page.locator('[data-testid="sidebar-scroll"]');
+  if (await sidebar.count() > 0) {
+    // Scroll sidebar to bottom to reveal professional tier sections
+    await sidebar.evaluate(el => el.scrollTop = el.scrollHeight);
+    await page.waitForTimeout(100); // Brief wait for scroll to settle
+  }
+  
+  // Find and click Share accordion trigger using data-testid
+  const shareTrigger = page.locator('[data-testid="accordion-share"] button[data-state]').first();
+  
+  // Fallback to text-based selector if data-testid not found
+  const triggerToUse = await shareTrigger.count() > 0 
+    ? shareTrigger 
+    : page.locator('button').filter({ hasText: /Share/i }).first();
+  
+  if (await triggerToUse.count() > 0) {
+    await triggerToUse.scrollIntoViewIfNeeded();
+    await triggerToUse.click();
     await waitForAccordionOpen(page);
     await waitForRenderComplete(page, 'settle');
   }

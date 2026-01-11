@@ -32,11 +32,25 @@ async function expandSafetySection(page: Page) {
     await waitForRenderComplete(page, 'settle');
   }
   
-  // Find and click Safety accordion trigger
-  const safetyTrigger = page.locator('button').filter({ hasText: /^Safety$/i }).first();
-  if (await safetyTrigger.count() > 0) {
-    await safetyTrigger.scrollIntoViewIfNeeded();
-    await safetyTrigger.click();
+  // Use data-testid for stable selection - scroll sidebar first to reveal pro sections
+  const sidebar = page.locator('[data-testid="sidebar-scroll"]');
+  if (await sidebar.count() > 0) {
+    // Scroll sidebar to bottom to reveal professional tier sections
+    await sidebar.evaluate(el => el.scrollTop = el.scrollHeight);
+    await page.waitForTimeout(100); // Brief wait for scroll to settle
+  }
+  
+  // Find and click Safety accordion trigger using data-testid
+  const safetyTrigger = page.locator('[data-testid="accordion-safety"] button[data-state]').first();
+  
+  // Fallback to text-based selector if data-testid not found
+  const triggerToUse = await safetyTrigger.count() > 0 
+    ? safetyTrigger 
+    : page.locator('button').filter({ hasText: /Safety/i }).first();
+  
+  if (await triggerToUse.count() > 0) {
+    await triggerToUse.scrollIntoViewIfNeeded();
+    await triggerToUse.click();
     await waitForAccordionOpen(page);
     await waitForRenderComplete(page, 'settle');
   }
