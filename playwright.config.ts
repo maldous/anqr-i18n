@@ -36,6 +36,9 @@ export default defineConfig({
   fullyParallel: true,
   workers: process.env.CI ? 4 : optimalWorkers, // 24 workers on 32-core machine
   
+  /* Global timeout for entire test run - 0 means no limit (run until completion) */
+  globalTimeout: 0,
+  
   /* Increase timeouts for parallel load */
   timeout: 60 * 1000, // 60s per test
   expect: {

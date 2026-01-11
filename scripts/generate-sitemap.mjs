@@ -11,14 +11,30 @@ import { fileURLToPath } from 'url';
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
 // All supported languages (from src/i18n/index.ts)
+// This must match the languages array in src/i18n/index.ts
 const languages = [
   'en-GB', // Default
-  'af', 'ar', 'bg', 'bn-BD', 'cs-CZ', 'da-DK', 'de-DE', 'el-GR',
-  'es-ES', 'fi-FI', 'fil', 'fr-FR', 'gu', 'hi-IN', 'hr', 'hu-HU',
-  'id', 'it-IT', 'ja-JP', 'km-KH', 'kn-IN', 'ko-KR', 'lo-LA',
-  'ml-IN', 'mr-IN', 'ms', 'my-MM', 'ne-NP', 'nl-NL', 'no-NO',
-  'pa', 'pl-PL', 'pt-BR', 'ro', 'ru-RU', 'sv-SE', 'ta-IN',
-  'te-IN', 'th', 'vi', 'zh-CN', 'zu'
+  // English variants
+  'en-US', 'en-AU', 'en-CA', 'en-IN', 'en-SG', 'en-ZA',
+  // A-Z languages
+  'af', 'am', 'ar', 'az-AZ', 'be', 'bg', 'bn-BD', 'ca',
+  'cs-CZ', 'da-DK', 'de-DE', 'el-GR',
+  'es-ES', 'es-419', 'es-US', 'et', 'eu-ES',
+  'fa', 'fa-AE', 'fa-AF', 'fa-IR', 'fi-FI', 'fil', 'fr-CA', 'fr-FR', 'gl-ES',
+  'gu', 'hi-IN', 'hr', 'hu-HU', 'hy-AM',
+  'id', 'is-IS', 'it-IT', 'iw-IL', 'ja-JP',
+  'ka-GE', 'kk', 'km-KH', 'kn-IN', 'ko-KR', 'ky-KG',
+  'lo-LA', 'lt', 'lv',
+  'mk-MK', 'ml-IN', 'mn-MN', 'mr-IN', 'ms', 'ms-MY', 'my-MM',
+  'ne-NP', 'nl-NL', 'no-NO',
+  'pa', 'pl-PL', 'pt-BR', 'pt-PT',
+  'rm', 'ro', 'ru-RU',
+  'si-LK', 'sk', 'sl', 'sq', 'sr', 'sv-SE', 'sw',
+  'ta-IN', 'te-IN', 'th', 'tr-TR',
+  'uk', 'ur',
+  'vi',
+  'zh-CN', 'zh-HK', 'zh-TW',
+  'zu'
 ];
 
 // Static pages with their priorities and change frequencies
