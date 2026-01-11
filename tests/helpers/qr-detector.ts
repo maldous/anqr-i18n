@@ -9,6 +9,90 @@ import type { Page, Locator } from '@playwright/test';
 const DEFAULT_TIMEOUT = 10000;
 
 /**
+ * Scroll the overlay section content to reveal controls below the file preview.
+ * After uploading an overlay image, the controls (Mode, Intensity, etc.) are
+ * below the fold and need scrolling within the sidebar to be visible.
+ * 
+ * This function:
+ * 1. Enables the overlay if needed (Mode combobox only exists when overlay.enabled is true)
+ * 2. Scrolls the sidebar's scrollable container to bring controls into view
+ */
+export async function scrollOverlaySectionToControls(page: Page): Promise<void> {
+  // Step 1: Enable the overlay if it's not enabled
+  // The Mode/Intensity/ColorMode controls only render when overlay.enabled is true
+  await page.evaluate(() => {
+    const openSection = document.querySelector('[role="region"][data-state="open"]');
+    if (!openSection) return;
+    
+    // Find all switches and look for the "Enabled" one
+    const switches = openSection.querySelectorAll('[role="switch"]');
+    for (const sw of switches) {
+      const row = sw.closest('.flex');
+      if (row && row.textContent?.toLowerCase().includes('enabled')) {
+        if (sw.getAttribute('data-state') === 'unchecked') {
+          (sw as HTMLElement).click();
+        }
+        break;
+      }
+    }
+  });
+  
+  // Wait briefly for React to render the controls
+  await page.waitForSelector('[role="region"][data-state="open"] [role="combobox"]', {
+    state: 'attached',
+    timeout: 5000
+  }).catch(() => {});
+  
+  // Step 2: Scroll the sidebar container to show the Mode combobox
+  // The sidebar structure is: <aside> -> <div class="overflow-y-auto"> -> content
+  await page.evaluate(() => {
+    // Find the sidebar's scrollable container
+    const sidebar = document.querySelector('aside');
+    if (!sidebar) return;
+    
+    const scrollContainer = sidebar.querySelector('.overflow-y-auto') as HTMLElement;
+    if (!scrollContainer) return;
+    
+    // Find the Mode combobox in the open section
+    const openSection = document.querySelector('[role="region"][data-state="open"]');
+    if (!openSection) return;
+    
+    const modeCombobox = openSection.querySelector('[role="combobox"]') as HTMLElement;
+    if (!modeCombobox) return;
+    
+    // Get positions
+    const containerRect = scrollContainer.getBoundingClientRect();
+    const comboboxRect = modeCombobox.getBoundingClientRect();
+    
+    // Check if the combobox is below the visible area of the scroll container
+    if (comboboxRect.top > containerRect.bottom - 50) {
+      // Calculate scroll amount: current scroll + how far below the combobox is
+      // We want the combobox about 150px from the top of the visible area
+      const scrollAmount = comboboxRect.top - containerRect.top - 150;
+      scrollContainer.scrollTop += scrollAmount;
+    }
+    // Check if the combobox is above the visible area
+    else if (comboboxRect.top < containerRect.top + 50) {
+      const scrollAmount = comboboxRect.top - containerRect.top - 150;
+      scrollContainer.scrollTop += scrollAmount;
+    }
+  });
+  
+  // Wait for scroll to settle
+  await page.waitForFunction(() => {
+    const openSection = document.querySelector('[role="region"][data-state="open"]');
+    if (!openSection) return true;
+    
+    const combobox = openSection.querySelector('[role="combobox"]');
+    if (!combobox) return false;
+    
+    const rect = combobox.getBoundingClientRect();
+    // Combobox should be visible (between 50 and 800 pixels from top of viewport)
+    return rect.top > 50 && rect.top < 800;
+  }, {}, { timeout: 3000, polling: 50 }).catch(() => {});
+}
+
+/**
  * Get a snapshot of the canvas as a data URL
  */
 export async function getCanvasSnapshot(page: Page): Promise<string> {
@@ -252,7 +336,8 @@ export async function waitForSelectClosed(page: Page, timeout = DEFAULT_TIMEOUT)
 }
 
 /**
- * Click an option in an open Radix select, scrolling if needed
+ * Click an option in an open Radix select
+ * Uses scrollIntoViewIfNeeded and force click for reliability
  */
 export async function clickSelectOption(
   page: Page,
@@ -262,30 +347,31 @@ export async function clickSelectOption(
   const dropdown = page.locator('[data-radix-popper-content-wrapper]').first();
   await dropdown.waitFor({ state: 'visible', timeout });
   
-  // Find the option by text
-  const option = dropdown.locator('[role="option"]').filter({ hasText: new RegExp(optionText, 'i') }).first();
+  // Find the option by text (case-insensitive partial match)
+  const option = dropdown.locator('[role="option"]').filter({ 
+    hasText: new RegExp(optionText, 'i') 
+  }).first();
   
-  // Check if option exists
-  const count = await option.count();
-  if (count === 0) {
-    // Try scrolling through options to find it
-    const allOptions = dropdown.locator('[role="option"]');
-    const totalOptions = await allOptions.count();
-    
-    for (let i = 0; i < totalOptions; i++) {
-      const opt = allOptions.nth(i);
-      const text = await opt.textContent();
-      if (text && new RegExp(optionText, 'i').test(text)) {
-        await opt.scrollIntoViewIfNeeded();
-        await opt.click();
-        return true;
-      }
-    }
-    return false;
+  if (await option.count() > 0) {
+    // Scroll the option into view within the dropdown
+    await option.scrollIntoViewIfNeeded();
+    await option.click({ force: true });
+    return true;
   }
   
-  // Scroll option into view and click
-  await option.scrollIntoViewIfNeeded();
-  await option.click();
-  return true;
+  // Fallback: iterate through all options if filter didn't work
+  const allOptions = dropdown.locator('[role="option"]');
+  const count = await allOptions.count();
+  
+  for (let i = 0; i < count; i++) {
+    const opt = allOptions.nth(i);
+    const text = await opt.textContent();
+    if (text && new RegExp(optionText, 'i').test(text.trim())) {
+      await opt.scrollIntoViewIfNeeded();
+      await opt.click({ force: true });
+      return true;
+    }
+  }
+  
+  return false;
 }
