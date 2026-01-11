@@ -312,16 +312,19 @@ export async function getCanvasDifferencePercent(
  */
 export async function waitForAccordionOpen(
   page: Page,
-  sectionValue: string,
+  sectionId?: string,
   timeout = DEFAULT_TIMEOUT
 ): Promise<void> {
-  // Wait for the accordion item to have data-state="open"
-  await page.waitForSelector(
-    `[data-state="open"][value="${sectionValue}"], [data-state="open"] [value="${sectionValue}"]`,
-    { state: 'attached', timeout }
-  ).catch(() => {
-    // Alternative: look for the content region to be visible
-  });
+  // Wait for the accordion content region to be visible
+  // If sectionId provided, wait for that specific section's region
+  if (sectionId) {
+    await page.waitForSelector(
+      `[data-testid="accordion-${sectionId}"] [role="region"][data-state="open"]`,
+      { state: 'visible', timeout }
+    ).catch(() => {
+      // Fallback: wait for any open region
+    });
+  }
   
   // Also wait for the content to be visible
   const content = page.locator(`[role="region"][data-state="open"]`).first();

@@ -52,7 +52,12 @@ async function expandSafetySection(page: Page) {
   }
 }
 
-// Helper: Select dropdown option
+// Option indices for safety-mode-trigger: Off=0, Balanced=1, Strict=2
+const SAFETY_MODE_INDEX: Record<string, number> = { off: 0, balanced: 1, strict: 2 };
+// Option indices for safety-ecc-weight-map-trigger: distance=0, block=1, empirical=2
+const ECC_WEIGHT_MAP_INDEX: Record<string, number> = { distance: 0, block: 1, empirical: 2 };
+
+// Helper: Select dropdown option using index-based keyboard navigation (i18n-safe)
 async function selectDropdownOption(page: Page, triggerTestId: string, optionText: string) {
   const trigger = page.locator(`[data-testid="${triggerTestId}"]`);
   await trigger.waitFor({ state: 'visible', timeout: 5000 });
@@ -61,13 +66,23 @@ async function selectDropdownOption(page: Page, triggerTestId: string, optionTex
   
   await page.waitForSelector('[data-radix-popper-content-wrapper]', { timeout: 3000 });
   await waitForRenderComplete(page, 'settle');
-  const option = page.locator('[role="option"]').getByText(optionText, { exact: false }).first();
-  if (await option.count() > 0) {
-    await option.scrollIntoViewIfNeeded();
-    await option.click();
-  } else {
-    await page.keyboard.press('Escape');
+  
+  // Get option index based on trigger type
+  let optionIndex = 0;
+  const normalizedText = optionText.toLowerCase();
+  
+  if (triggerTestId === 'safety-mode-trigger') {
+    optionIndex = SAFETY_MODE_INDEX[normalizedText] ?? 0;
+  } else if (triggerTestId === 'safety-ecc-weight-map-trigger') {
+    optionIndex = ECC_WEIGHT_MAP_INDEX[normalizedText] ?? 0;
   }
+  
+  // Use keyboard navigation for i18n-safe selection
+  await page.keyboard.press('Home');
+  for (let i = 0; i < optionIndex; i++) {
+    await page.keyboard.press('ArrowDown');
+  }
+  await page.keyboard.press('Enter');
   await waitForRenderComplete(page, 'settle');
 }
 
@@ -114,18 +129,13 @@ test.describe('Safety Mode Selection', () => {
     const trigger = page.locator('[data-testid="safety-mode-trigger"]');
     await trigger.click();
     await waitForRenderComplete(page, 'settle');
-    const modes = ['off', 'balanced', 'strict'];
-    let foundCount = 0;
     
-    for (const mode of modes) {
-      const option = page.locator('[role="option"]').getByText(mode, { exact: false });
-      if (await option.count() > 0) {
-        foundCount++;
-      }
-    }
+    // Count total options (should have 3: Off, Balanced, Strict)
+    const options = page.locator('[role="option"]');
+    const count = await options.count();
     
     await page.keyboard.press('Escape');
-    expect(foundCount).toBe(3);
+    expect(count).toBe(3);
   });
 
   test('selecting Off mode works', async ({ page }) => {
@@ -590,18 +600,13 @@ test.describe('ECC-Aware Settings', () => {
     const trigger = page.locator('[data-testid="safety-ecc-weight-map-trigger"]');
     await trigger.click();
     await waitForRenderComplete(page, 'settle');
-    const options = ['distance', 'block', 'empirical'];
-    let foundCount = 0;
     
-    for (const opt of options) {
-      const option = page.locator('[role="option"]').getByText(opt, { exact: false });
-      if (await option.count() > 0) {
-        foundCount++;
-      }
-    }
+    // Count total options (should have at least 1: distance, block, empirical)
+    const options = page.locator('[role="option"]');
+    const count = await options.count();
     
     await page.keyboard.press('Escape');
-    expect(foundCount).toBeGreaterThanOrEqual(1);
+    expect(count).toBeGreaterThanOrEqual(1);
   });
 
   test('selecting different weight map options works', async ({ page }) => {

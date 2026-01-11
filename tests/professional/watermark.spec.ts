@@ -60,7 +60,14 @@ async function toggleSwitchByTestId(page: Page, testId: string) {
   await waitForRenderComplete(page, 'settle');
 }
 
-// Helper: Select dropdown option
+// Option indices for watermark-kind-trigger: text=0, image=1, pattern=2
+const WATERMARK_KIND_INDEX: Record<string, number> = { text: 0, image: 1, pattern: 2 };
+// Option indices for watermark-position-trigger: center=0, corners=1, edges=2, behind=3, quiet=4
+const WATERMARK_POSITION_INDEX: Record<string, number> = { center: 0, corners: 1, edges: 2, behind: 3, quiet: 4 };
+// Option indices for watermark-blend-trigger: normal=0, multiply=1, screen=2, overlay=3
+const WATERMARK_BLEND_INDEX: Record<string, number> = { normal: 0, multiply: 1, screen: 2, overlay: 3 };
+
+// Helper: Select dropdown option using index-based keyboard navigation (i18n-safe)
 async function selectDropdownOption(page: Page, triggerTestId: string, optionText: string) {
   const trigger = page.locator(`[data-testid="${triggerTestId}"]`);
   await trigger.waitFor({ state: 'visible', timeout: 5000 });
@@ -69,13 +76,25 @@ async function selectDropdownOption(page: Page, triggerTestId: string, optionTex
   
   await page.waitForSelector('[data-radix-popper-content-wrapper]', { timeout: 3000 });
   await waitForRenderComplete(page, 'settle');
-  const option = page.locator('[role="option"]').getByText(optionText, { exact: false }).first();
-  if (await option.count() > 0) {
-    await option.scrollIntoViewIfNeeded();
-    await option.click();
-  } else {
-    await page.keyboard.press('Escape');
+  
+  // Get option index based on trigger type
+  let optionIndex = 0;
+  const normalizedText = optionText.toLowerCase();
+  
+  if (triggerTestId === 'watermark-kind-trigger') {
+    optionIndex = WATERMARK_KIND_INDEX[normalizedText] ?? 0;
+  } else if (triggerTestId === 'watermark-position-trigger') {
+    optionIndex = WATERMARK_POSITION_INDEX[normalizedText] ?? 0;
+  } else if (triggerTestId === 'watermark-blend-trigger') {
+    optionIndex = WATERMARK_BLEND_INDEX[normalizedText] ?? 0;
   }
+  
+  // Use keyboard navigation for i18n-safe selection
+  await page.keyboard.press('Home');
+  for (let i = 0; i < optionIndex; i++) {
+    await page.keyboard.press('ArrowDown');
+  }
+  await page.keyboard.press('Enter');
   await waitForRenderComplete(page, 'settle');
 }
 
@@ -206,18 +225,13 @@ test.describe('Watermark Kind Selection', () => {
     const trigger = page.locator('[data-testid="watermark-kind-trigger"]');
     await trigger.click();
     await waitForRenderComplete(page, 'settle');
-    const kinds = ['text', 'image', 'pattern'];
-    let foundCount = 0;
     
-    for (const kind of kinds) {
-      const option = page.locator('[role="option"]').getByText(kind, { exact: false });
-      if (await option.count() > 0) {
-        foundCount++;
-      }
-    }
+    // Count total options (should have 3: text, image, pattern)
+    const options = page.locator('[role="option"]');
+    const count = await options.count();
     
     await page.keyboard.press('Escape');
-    expect(foundCount).toBe(3);
+    expect(count).toBe(3);
   });
 
   test('selecting text kind shows text input', async ({ page }) => {
@@ -375,18 +389,13 @@ test.describe('Watermark Position Selection', () => {
     const trigger = page.locator('[data-testid="watermark-position-trigger"]');
     await trigger.click();
     await waitForRenderComplete(page, 'settle');
-    const positions = ['center', 'corners', 'edges', 'behind', 'quiet'];
-    let foundCount = 0;
     
-    for (const pos of positions) {
-      const option = page.locator('[role="option"]').getByText(pos, { exact: false });
-      if (await option.count() > 0) {
-        foundCount++;
-      }
-    }
+    // Count total options (should have at least 4: center, corners, edges, behind, quiet)
+    const options = page.locator('[role="option"]');
+    const count = await options.count();
     
     await page.keyboard.press('Escape');
-    expect(foundCount).toBeGreaterThanOrEqual(4);
+    expect(count).toBeGreaterThanOrEqual(4);
   });
 
   test('selecting center position works', async ({ page }) => {
@@ -518,18 +527,13 @@ test.describe('Watermark Blend Mode Selection', () => {
     const trigger = page.locator('[data-testid="watermark-blend-trigger"]');
     await trigger.click();
     await waitForRenderComplete(page, 'settle');
-    const modes = ['normal', 'multiply', 'screen', 'overlay'];
-    let foundCount = 0;
     
-    for (const mode of modes) {
-      const option = page.locator('[role="option"]').getByText(mode, { exact: false });
-      if (await option.count() > 0) {
-        foundCount++;
-      }
-    }
+    // Count total options (should have 4: normal, multiply, screen, overlay)
+    const options = page.locator('[role="option"]');
+    const count = await options.count();
     
     await page.keyboard.press('Escape');
-    expect(foundCount).toBe(4);
+    expect(count).toBe(4);
   });
 
   test('selecting normal blend mode works', async ({ page }) => {

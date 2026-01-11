@@ -98,11 +98,11 @@ test.describe('QR Encoding Section - Advanced Tier', () => {
         await cb.click();
         await waitForSelectOpen(page);
         
-        // Check if this has encoding mode options (use getByText for i18n safety)
-        const hasAutoOption = await page.locator('[role="option"]').getByText('Auto', { exact: false }).count() > 0;
-        const hasByteOption = await page.locator('[role="option"]').getByText('Byte', { exact: false }).count() > 0;
+        // Check if this has encoding mode options by counting options
+        // Encoding mode select typically has 4-5 options (Auto, Numeric, Alphanumeric, Byte, Kanji)
+        const optionCount = await page.locator('[role="option"]').count();
         
-        if (hasAutoOption && hasByteOption) {
+        if (optionCount >= 4) {
           selectTrigger = cb;
           break;
         }
@@ -119,13 +119,14 @@ test.describe('QR Encoding Section - Advanced Tier', () => {
       throw new Error('Could not find encoding mode select');
     }
     
-    // Find and click the option using case-insensitive text matching
-    const option = page.locator('[role="option"]').getByText(mode, { exact: false }).first();
-    if (await option.count() > 0) {
-      await option.click();
-    } else {
-      await page.keyboard.press('Escape');
+    // Select option by index using keyboard navigation (i18n-safe)
+    // Mode indices: Auto=0, Numeric=1, Alphanumeric=2, Byte=3, Kanji=4
+    const modeIndex = { 'Auto': 0, 'Numeric': 1, 'Alphanumeric': 2, 'Byte': 3, 'Kanji': 4 }[mode] ?? 0;
+    await page.keyboard.press('Home');
+    for (let i = 0; i < modeIndex; i++) {
+      await page.keyboard.press('ArrowDown');
     }
+    await page.keyboard.press('Enter');
     await waitForSelectClosed(page);
   }
 

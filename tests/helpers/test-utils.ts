@@ -427,28 +427,21 @@ export async function selectTier(page: Page, tier: Tier): Promise<void> {
   // Wait for page to be ready
   await page.waitForSelector('[data-testid="tier-tabs"], [data-testid="tier-select"]', { timeout: 10000 });
   
-  // Map tier to tab value attribute
-  const tierValue = tier; // 'basic', 'advanced', 'professional'
-  
-  // Try tabs first (desktop) - use data-testid="tier-tabs"
-  const tabsList = page.locator('[data-testid="tier-tabs"]');
-  if (await tabsList.isVisible().catch(() => false)) {
-    // Find tab by value attribute
-    const tab = tabsList.locator(`[role="tab"][value="${tierValue}"]`).first();
-    if (await tab.isVisible().catch(() => false)) {
-      await tab.click();
-      // Wait for tab to be selected
-      await page.waitForFunction(
-        (value: string) => {
-          const tab = document.querySelector(`[data-testid="tier-tabs"] [role="tab"][value="${value}"]`);
-          return tab && tab.getAttribute('aria-selected') === 'true';
-        },
-        tierValue,
-        { timeout: 2000 }
-      );
-      await dismissWelcomeModal(page);
-      return;
-    }
+  // Try tabs first (desktop) - use data-testid="tier-tab-{tier}"
+  const tab = page.locator(`[data-testid="tier-tab-${tier}"]`);
+  if (await tab.isVisible().catch(() => false)) {
+    await tab.click();
+    // Wait for tab to be selected using aria-selected
+    await page.waitForFunction(
+      (tierName: string) => {
+        const tabEl = document.querySelector(`[data-testid="tier-tab-${tierName}"]`);
+        return tabEl && tabEl.getAttribute('aria-selected') === 'true';
+      },
+      tier,
+      { timeout: 2000 }
+    );
+    await dismissWelcomeModal(page);
+    return;
   }
   
   // Fallback: try select dropdown (mobile) - use data-testid="tier-select"
@@ -457,14 +450,12 @@ export async function selectTier(page: Page, tier: Tier): Promise<void> {
     await selectTrigger.click();
     await waitForDropdownOpen(page);
     
-    // Find option by value attribute
-    const option = page.locator(`[role="option"][data-value="${tierValue}"]`).first();
+    // Find option by data-testid
+    const option = page.locator(`[data-testid="tier-option-${tier}"]`).first();
     if (await option.isVisible().catch(() => false)) {
       await option.click();
     } else {
       // Use keyboard navigation as fallback
-      const allOptions = page.locator('[data-radix-popper-content-wrapper] [role="option"]');
-      const count = await allOptions.count();
       const tierIndex = tier === 'basic' ? 0 : tier === 'advanced' ? 1 : 2;
       
       await page.keyboard.press('Home');
