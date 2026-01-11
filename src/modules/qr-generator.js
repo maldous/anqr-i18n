@@ -596,7 +596,7 @@ export class QRGenerator {
     // Only draw finders separately if preserveFinders is true OR there's no overlay
     // When preserveFinders=false with overlay, finder modules were already rendered with overlay effects
     const shouldDrawFindersFirst = config.preserveFinders !== false || !overlayCanvas;
-    
+
     const finderPositions = [
       { row: 0, col: 0 }, // Top-left
       { row: 0, col: moduleCount - 7 }, // Top-right
@@ -922,7 +922,7 @@ export class QRGenerator {
     // When preserveFinders=false with overlay, finder modules go through the normal render loop
     // so overlay effects can be applied to them
     const shouldDrawFindersFirst = config.preserveFinders !== false || !overlayData;
-    
+
     const finderPositions = [
       { row: 0, col: 0 }, // Top-left
       { row: 0, col: moduleCount - 7 }, // Top-right
@@ -947,7 +947,7 @@ export class QRGenerator {
     // Draw alignment patterns (for version 2+)
     // Only draw alignment patterns separately if preserveAlignment is true OR there's no overlay
     const shouldDrawAlignmentFirst = config.preserveAlignment !== false || !overlayData;
-    
+
     if (version >= 2 && shouldDrawAlignmentFirst) {
       const alignPositions = this.getAlignmentPositions(version, moduleCount);
       for (const pos of alignPositions) {

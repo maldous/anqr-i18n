@@ -327,8 +327,18 @@ export function ShareSection() {
       {share.directLink && (
         <div className="space-y-2">
           <div className="flex gap-2">
-            <Input data-testid="share-direct-link-input" readOnly value={shareableUrl} className="flex-1 text-xs" />
-            <Button data-testid="share-copy-link-button" variant="outline" size="icon" onClick={() => handleCopy(shareableUrl, 'link')}>
+            <Input
+              data-testid="share-direct-link-input"
+              readOnly
+              value={shareableUrl}
+              className="flex-1 text-xs"
+            />
+            <Button
+              data-testid="share-copy-link-button"
+              variant="outline"
+              size="icon"
+              onClick={() => handleCopy(shareableUrl, 'link')}
+            >
               {copiedField === 'link' ? (
                 <Check className="h-4 w-4" />
               ) : (
@@ -357,8 +367,18 @@ export function ShareSection() {
       {share.embedHtml && (
         <div className="space-y-2">
           <div className="flex gap-2">
-            <Input data-testid="share-embed-code-input" readOnly value={embedCode} className="flex-1 text-xs font-mono" />
-            <Button data-testid="share-copy-embed-button" variant="outline" size="icon" onClick={() => handleCopy(embedCode, 'embed')}>
+            <Input
+              data-testid="share-embed-code-input"
+              readOnly
+              value={embedCode}
+              className="flex-1 text-xs font-mono"
+            />
+            <Button
+              data-testid="share-copy-embed-button"
+              variant="outline"
+              size="icon"
+              onClick={() => handleCopy(embedCode, 'embed')}
+            >
               {copiedField === 'embed' ? (
                 <Check className="h-4 w-4" />
               ) : (

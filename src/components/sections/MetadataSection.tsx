@@ -133,7 +133,11 @@ export function MetadataSection() {
           <HighlightedLabel>{t('metadata.customMetadata')}</HighlightedLabel>
         </Label>
         {metadata.customKv.map((kv, index) => (
-          <div key={getKvId(index)} className="flex gap-2" data-testid={`metadata-custom-kv-row-${index}`}>
+          <div
+            key={getKvId(index)}
+            className="flex gap-2"
+            data-testid={`metadata-custom-kv-row-${index}`}
+          >
             <Input
               data-testid={`metadata-custom-key-input-${index}`}
               value={kv.k}
@@ -159,7 +163,13 @@ export function MetadataSection() {
             </Button>
           </div>
         ))}
-        <Button data-testid="metadata-add-custom-button" variant="outline" size="sm" onClick={addCustomKv} className="w-full">
+        <Button
+          data-testid="metadata-add-custom-button"
+          variant="outline"
+          size="sm"
+          onClick={addCustomKv}
+          className="w-full"
+        >
           <Plus className="h-4 w-4 mr-2" /> {t('metadata.addCustomField')}
         </Button>
       </div>

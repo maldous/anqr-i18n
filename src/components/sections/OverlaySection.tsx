@@ -489,7 +489,11 @@ export function OverlaySection() {
             <Label>
               <HighlightedLabel>{t('overlay.preserveFinders')}</HighlightedLabel>
             </Label>
-            <Switch checked={overlay.preserveFinders} onCheckedChange={setOverlayPreserveFinders} data-testid="overlay-preserve-finders-switch" />
+            <Switch
+              checked={overlay.preserveFinders}
+              onCheckedChange={setOverlayPreserveFinders}
+              data-testid="overlay-preserve-finders-switch"
+            />
           </div>
 
           {/* Advanced Options */}
