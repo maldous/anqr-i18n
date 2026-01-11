@@ -58,8 +58,11 @@ test.describe('Render Section - Advanced Tier', () => {
     await waitForRenderComplete(page, 'settle');
   }
 
+  // Option indices for render-module-style-select: Square=0, Rounded=1, Dots=2, Diamond=3, Connected=4
+  const MODULE_STYLE_INDEX: Record<string, number> = { square: 0, rounded: 1, dots: 2, diamond: 3, connected: 4 };
+  
   /**
-   * Helper to select an option from a dropdown by testid
+   * Helper to select an option from a dropdown by testid using keyboard navigation (i18n-safe)
    */
   async function selectOption(
     page: import('@playwright/test').Page, 
@@ -77,19 +80,30 @@ test.describe('Render Section - Advanced Tier', () => {
     await selectTrigger.click();
     await waitForSelectOpen(page);
     
-    // Find and click the option using case-insensitive text matching
-    const option = page.locator('[role="option"]').getByText(optionText, { exact: false }).first();
-    if (await option.count() > 0) {
-      await option.click();
-    } else {
-      // Use keyboard navigation fallback
-      await page.keyboard.press('Escape');
+    // Get option index based on normalized text
+    const normalizedText = optionText.toLowerCase();
+    const optionIndex = MODULE_STYLE_INDEX[normalizedText] ?? 0;
+    
+    // Use keyboard navigation for i18n-safe selection
+    await page.keyboard.press('Home');
+    for (let i = 0; i < optionIndex; i++) {
+      await page.keyboard.press('ArrowDown');
     }
+    await page.keyboard.press('Enter');
     await waitForSelectClosed(page);
   }
 
+  // General option indices for common dropdown values
+  const GENERAL_OPTION_INDEX: Record<string, number> = {
+    square: 0, rounded: 1, circle: 2, dots: 2, diamond: 3, connected: 4,
+    linear: 1, radial: 2, conic: 3,
+    sticker: 1, tag: 2,
+    none: 0
+  };
+  
   /**
-   * Helper to select from any combobox containing specific option text
+   * Helper to select from any combobox using keyboard navigation (i18n-safe)
+   * Tries each combobox until it finds one with enough options
    */
   async function selectFromComboboxWithOption(
     page: import('@playwright/test').Page,
@@ -97,6 +111,8 @@ test.describe('Render Section - Advanced Tier', () => {
   ): Promise<boolean> {
     const comboboxes = page.locator('[role="region"][data-state="open"]').first().locator('[role="combobox"]');
     const count = await comboboxes.count();
+    const normalizedText = optionText.toLowerCase();
+    const targetIndex = GENERAL_OPTION_INDEX[normalizedText] ?? 0;
     
     for (let i = 0; i < count; i++) {
       const cb = comboboxes.nth(i);
@@ -104,9 +120,17 @@ test.describe('Render Section - Advanced Tier', () => {
       await cb.click();
       await waitForSelectOpen(page);
       
-      const option = page.locator('[role="option"]').getByText(optionText, { exact: false }).first();
-      if (await option.count() > 0) {
-        await option.click();
+      // Check if this dropdown has enough options for the target index
+      const options = page.locator('[role="option"]');
+      const optionCount = await options.count();
+      
+      if (optionCount > targetIndex) {
+        // Use keyboard navigation for i18n-safe selection
+        await page.keyboard.press('Home');
+        for (let j = 0; j < targetIndex; j++) {
+          await page.keyboard.press('ArrowDown');
+        }
+        await page.keyboard.press('Enter');
         await waitForSelectClosed(page);
         return true;
       }

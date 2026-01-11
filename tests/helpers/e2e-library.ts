@@ -852,8 +852,8 @@ export async function selectTier(page: Page, tier: Tier): Promise<void> {
   // Try tabs first (desktop) - use data-testid="tier-tabs"
   const tabsList = page.locator('[data-testid="tier-tabs"]');
   if (await tabsList.isVisible({ timeout: 2000 }).catch(() => false)) {
-    // Find tab by value attribute
-    const tab = tabsList.locator(`[role="tab"][value="${tierValue}"]`).first();
+    // Find tab by data-testid attribute (i18n-safe)
+    const tab = page.locator(`[data-testid="tier-tab-${tierValue}"]`).first();
     if (await tab.isVisible().catch(() => false)) {
       await tab.click();
       await waitForRenderComplete(page, 'settle');
@@ -867,8 +867,8 @@ export async function selectTier(page: Page, tier: Tier): Promise<void> {
     await selectTrigger.click();
     await waitForSelectOpen(page);
     
-    // Find option by value attribute
-    const option = page.locator(`[role="option"][data-value="${tierValue}"]`).first();
+    // Find option by data-testid attribute (i18n-safe)
+    const option = page.locator(`[data-testid="tier-option-${tierValue}"]`).first();
     if (await option.isVisible().catch(() => false)) {
       await option.click();
     } else {
