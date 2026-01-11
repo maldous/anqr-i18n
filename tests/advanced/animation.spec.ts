@@ -2,102 +2,98 @@
  * Animation Section Tests - Comprehensive Coverage
  * Tests all animation controls: speed, loop, bounce, frames, interpolation, patterns
  * Uses data-testid selectors and keyboard navigation for reliability
+ * 
+ * Follows Playwright E2E "must-haves":
+ * - Deterministic event-driven waits (no sleeps)
+ * - Stable selectors (data-testid first)
+ * - Explicit UI scoping (region-first)
+ * - Correct scrolling model
  */
 
 import { expect, test, type Page } from '@playwright/test';
 import {
-  waitForQRRender,
+  waitForRenderComplete,
+  waitForAccordionState,
+  waitForDropdownOpen,
+  waitForDropdownClosed,
+  waitForControlReady,
   getCanvasSnapshot,
   snapshotsAreDifferent,
-  waitForAccordionOpen,
-} from '../helpers/qr-detector';
+  openAccordion,
+  ensureVisibleInSidebar,
+  setSlider,
+  toggleSwitch,
+  selectOption,
+  setInput,
+  selectTier,
+  dismissWelcomeModal,
+  navigateToApp,
+  getControl,
+  type AccordionSection,
+} from '../helpers/test-utils';
 
 // Test timeout for complex operations
 const TEST_TIMEOUT = 30000;
 
-// Helper: Navigate to the app and wait for initial load
+/**
+ * Navigate to the app and wait for initial load.
+ * Uses event-driven waits (no arbitrary timeouts).
+ */
 async function setupPage(page: Page) {
-  await page.goto('/');
-  await page.waitForLoadState('networkidle');
-  await waitForQRRender(page);
+  await navigateToApp(page);
 }
 
-// Helper: Expand the Animation section
+/**
+ * Switch to advanced tier.
+ * Uses centralized selectTier helper.
+ */
+async function switchToAdvancedTier(page: Page) {
+  await selectTier(page, 'advanced');
+}
+
+/**
+ * Expand the Animation section.
+ * First switches to advanced tier, then opens the accordion.
+ * Uses event-driven waits (no arbitrary timeouts).
+ */
 async function expandAnimationSection(page: Page) {
-  // First close any open sections for clean state
-  const openTriggers = page.locator('[data-state="open"] > [role="button"]');
-  const openCount = await openTriggers.count();
-  for (let i = 0; i < openCount; i++) {
-    await openTriggers.nth(i).click();
-    await page.waitForTimeout(100);
-  }
+  // First switch to advanced tier to ensure Animation section is visible
+  await switchToAdvancedTier(page);
   
-  // Find and click Animation accordion trigger
-  const animationTrigger = page.locator('button').filter({ hasText: /^Animation$/i }).first();
-  if (await animationTrigger.count() > 0) {
-    await animationTrigger.scrollIntoViewIfNeeded();
-    await animationTrigger.click();
-    await waitForAccordionOpen(page);
-    await page.waitForTimeout(200);
-  }
+  // Use centralized openAccordion helper
+  await openAccordion(page, 'animation');
 }
 
-// Helper: Set slider value using data-testid
+/**
+ * Set slider value using data-testid.
+ * Uses centralized setSlider helper (no arbitrary timeouts).
+ */
 async function setSliderByTestId(page: Page, testId: string, percent: number) {
-  const slider = page.locator(`[data-testid="${testId}"] [role="slider"]`);
-  await slider.waitFor({ state: 'visible', timeout: 5000 });
-  await slider.scrollIntoViewIfNeeded();
-  
-  const box = await slider.boundingBox();
-  if (box) {
-    const x = box.x + (box.width * percent) / 100;
-    const y = box.y + box.height / 2;
-    await page.mouse.click(x, y);
-    await page.waitForTimeout(100);
-  }
+  await setSlider(page, testId, percent);
 }
 
-// Helper: Toggle switch using data-testid
+/**
+ * Toggle switch using data-testid.
+ * Uses centralized toggleSwitch helper (no arbitrary timeouts).
+ */
 async function toggleSwitchByTestId(page: Page, testId: string) {
-  const switchEl = page.locator(`[data-testid="${testId}"]`);
-  await switchEl.waitFor({ state: 'visible', timeout: 5000 });
-  await switchEl.scrollIntoViewIfNeeded();
-  await switchEl.click();
-  await page.waitForTimeout(100);
+  await toggleSwitch(page, testId);
 }
 
-// Helper: Select dropdown option using keyboard navigation
-async function selectDropdownOption(page: Page, triggerTestId: string, optionText: string) {
-  const trigger = page.locator(`[data-testid="${triggerTestId}"]`);
-  await trigger.waitFor({ state: 'visible', timeout: 5000 });
-  await trigger.scrollIntoViewIfNeeded();
-  await trigger.click();
-  
-  // Wait for dropdown to open
-  await page.waitForSelector('[data-radix-popper-content-wrapper]', { timeout: 3000 });
-  await page.waitForTimeout(100);
-  
-  // Find and click the option
-  const option = page.locator('[role="option"]').filter({ hasText: new RegExp(optionText, 'i') }).first();
-  if (await option.count() > 0) {
-    await option.scrollIntoViewIfNeeded();
-    await option.click();
-  } else {
-    // Close dropdown if option not found
-    await page.keyboard.press('Escape');
-  }
-  await page.waitForTimeout(100);
+/**
+ * Select dropdown option using data-testid.
+ * Uses centralized selectOption helper with keyboard navigation (no arbitrary timeouts).
+ */
+async function selectDropdownOptionLocal(page: Page, triggerTestId: string, optionText: string) {
+  await selectOption(page, triggerTestId, optionText);
 }
 
-// Helper: Set input value using data-testid
+/**
+ * Set input value using data-testid.
+ * Uses centralized setInput helper (no arbitrary timeouts).
+ */
 async function setInputByTestId(page: Page, testId: string, value: string) {
-  const input = page.locator(`[data-testid="${testId}"]`);
-  await input.waitFor({ state: 'visible', timeout: 5000 });
-  await input.scrollIntoViewIfNeeded();
-  await input.fill('');
-  await input.fill(value);
-  await input.blur();
-  await page.waitForTimeout(100);
+  await setInput(page, testId, value);
 }
 
 // ============================================================================
@@ -128,7 +124,7 @@ test.describe('Animation Speed', () => {
   test('speed slider value updates display text', async ({ page }) => {
     // Set to minimum
     await setSliderByTestId(page, 'animation-speed-slider', 0);
-    await page.waitForTimeout(200);
+    await waitForRenderComplete(page, 'speed slider change');
     
     // Check if display shows ~20ms
     const displayText = await page.locator('text=/\\d+\\s*ms/i').first().textContent();
@@ -141,7 +137,16 @@ test.describe('Animation Speed', () => {
     
     const initialValue = await slider.getAttribute('aria-valuenow');
     await page.keyboard.press('ArrowRight');
-    await page.waitForTimeout(100);
+    
+    // Wait for the value to update (event-driven)
+    await page.waitForFunction(
+      (initial: string) => {
+        const slider = document.querySelector('[data-testid="animation-speed-slider"] [role="slider"]');
+        return slider && slider.getAttribute('aria-valuenow') !== initial;
+      },
+      initialValue || '0',
+      { timeout: 2000, polling: 50 }
+    ).catch(() => {});
     
     const newValue = await slider.getAttribute('aria-valuenow');
     expect(Number(newValue)).toBeGreaterThanOrEqual(Number(initialValue));
@@ -242,16 +247,7 @@ test.describe('Animation Bounce', () => {
 test.describe('Animation Start Frame (Advanced Tier)', () => {
   test.beforeEach(async ({ page }) => {
     await setupPage(page);
-    // Switch to advanced tier
-    const tierSelect = page.locator('[data-testid="tier-select"]').or(page.locator('button').filter({ hasText: /basic|advanced|professional/i }));
-    if (await tierSelect.count() > 0) {
-      await tierSelect.first().click();
-      const advancedOption = page.locator('[role="option"], [role="menuitem"]').filter({ hasText: /advanced/i });
-      if (await advancedOption.count() > 0) {
-        await advancedOption.click();
-        await page.waitForTimeout(300);
-      }
-    }
+    // Advanced tier switch is handled in expandAnimationSection
     await expandAnimationSection(page);
   });
 
@@ -342,7 +338,7 @@ test.describe('Animation Interpolation (Advanced Tier)', () => {
     const trigger = page.locator('[data-testid="animation-interpolation-trigger"]');
     if (await trigger.isVisible().catch(() => false)) {
       await trigger.click();
-      await page.waitForTimeout(200);
+      await waitForDropdownOpen(page);
       
       // Check for expected options
       const noneOption = page.locator('[role="option"]').filter({ hasText: /none/i });
@@ -354,6 +350,7 @@ test.describe('Animation Interpolation (Advanced Tier)', () => {
       const hasMorph = await morphOption.count() > 0;
       
       await page.keyboard.press('Escape');
+      await waitForDropdownClosed(page);
       
       // At least some options should exist
       expect(hasNone || hasCrossfade || hasMorph).toBe(true);
@@ -365,15 +362,15 @@ test.describe('Animation Interpolation (Advanced Tier)', () => {
     if (await trigger.isVisible().catch(() => false)) {
       await trigger.focus();
       await page.keyboard.press('Enter');
-      await page.waitForTimeout(200);
+      await waitForDropdownOpen(page);
       
       // Navigate with arrow keys
       await page.keyboard.press('ArrowDown');
       await page.keyboard.press('Enter');
       
-      // Verify dropdown closed
+      // Verify dropdown closed (event-driven)
+      await waitForDropdownClosed(page);
       const dropdown = page.locator('[data-radix-popper-content-wrapper]');
-      await page.waitForTimeout(200);
       const isOpen = await dropdown.isVisible().catch(() => false);
       expect(isOpen).toBe(false);
     }
@@ -394,7 +391,7 @@ test.describe('Animation Temporal Dither (Professional Tier)', () => {
     const trigger = page.locator('[data-testid="animation-temporal-dither-trigger"]');
     if (await trigger.isVisible().catch(() => false)) {
       await trigger.click();
-      await page.waitForTimeout(200);
+      await waitForDropdownOpen(page);
       
       const offOption = page.locator('[role="option"]').filter({ hasText: /off/i });
       const blueNoiseOption = page.locator('[role="option"]').filter({ hasText: /blue.?noise/i });
@@ -403,6 +400,7 @@ test.describe('Animation Temporal Dither (Professional Tier)', () => {
       const hasOptions = (await offOption.count()) > 0 || (await blueNoiseOption.count()) > 0 || (await flickerSafeOption.count()) > 0;
       
       await page.keyboard.press('Escape');
+      await waitForDropdownClosed(page);
       expect(hasOptions).toBe(true);
     }
   });
@@ -422,7 +420,7 @@ test.describe('Animation Pattern (Professional Tier)', () => {
     const trigger = page.locator('[data-testid="animation-pattern-trigger"]');
     if (await trigger.isVisible().catch(() => false)) {
       await trigger.click();
-      await page.waitForTimeout(200);
+      await waitForDropdownOpen(page);
       
       const patterns = ['none', 'pulse', 'wave', 'scanline', 'shimmer', 'drift'];
       let foundCount = 0;
@@ -435,6 +433,7 @@ test.describe('Animation Pattern (Professional Tier)', () => {
       }
       
       await page.keyboard.press('Escape');
+      await waitForDropdownClosed(page);
       
       // Should have at least some pattern options
       expect(foundCount).toBeGreaterThan(0);
@@ -445,8 +444,8 @@ test.describe('Animation Pattern (Professional Tier)', () => {
     const trigger = page.locator('[data-testid="animation-pattern-trigger"]');
     if (await trigger.isVisible().catch(() => false)) {
       // Select pulse pattern
-      await selectDropdownOption(page, 'animation-pattern-trigger', 'pulse');
-      await page.waitForTimeout(200);
+      await selectDropdownOptionLocal(page, 'animation-pattern-trigger', 'pulse');
+      await waitForRenderComplete(page, 'pattern selection');
       
       // Verify trigger shows selected value
       const triggerText = await trigger.textContent();
@@ -630,9 +629,9 @@ test.describe('Animation Combined Settings', () => {
     // Collapse and expand
     const animationTrigger = page.locator('button').filter({ hasText: /^Animation$/i }).first();
     await animationTrigger.click();
-    await page.waitForTimeout(200);
+    await waitForAccordionState(page, 'animation', 'closed');
     await animationTrigger.click();
-    await waitForAccordionOpen(page);
+    await waitForAccordionState(page, 'animation', 'open');
     
     // Verify state persisted
     const stateAfterExpand = await loopSwitch.getAttribute('data-state');
@@ -668,9 +667,20 @@ test.describe('Animation Edge Cases', () => {
     const switchEl = page.locator('[data-testid="animation-loop-switch"]');
     
     // Toggle rapidly multiple times
+    // Use waitForFunction to wait for state change after each toggle
     for (let i = 0; i < 5; i++) {
+      const currentState = await switchEl.getAttribute('data-state');
       await toggleSwitchByTestId(page, 'animation-loop-switch');
-      await page.waitForTimeout(50);
+      
+      // Wait for state to change (event-driven)
+      await page.waitForFunction(
+        (prev: string) => {
+          const el = document.querySelector('[data-testid="animation-loop-switch"]');
+          return el && el.getAttribute('data-state') !== prev;
+        },
+        currentState || 'unchecked',
+        { timeout: 1000, polling: 16 }
+      ).catch(() => {});
     }
     
     // Switch should still be functional

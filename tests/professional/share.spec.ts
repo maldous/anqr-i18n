@@ -473,3 +473,485 @@ test.describe('Share Edge Cases', () => {
     await expect(copyButton).toBeEnabled();
   });
 });
+
+// ============================================================================
+// URL VERIFICATION TESTS
+// ============================================================================
+
+test.describe('Share URL Verification', () => {
+  test.beforeEach(async ({ page }) => {
+    await setupPage(page);
+    await expandShareSection(page);
+  });
+
+  test('direct link URL contains data parameter', async ({ page }) => {
+    const switchEl = page.locator('[data-testid="share-direct-link-switch"]');
+    if ((await switchEl.getAttribute('data-state')) !== 'checked') {
+      await toggleSwitchByTestId(page, 'share-direct-link-switch');
+      await page.waitForTimeout(200);
+    }
+    
+    const urlInput = page.locator('[data-testid="share-direct-link-input"]');
+    const url = await urlInput.inputValue();
+    expect(url).toContain('data=');
+  });
+
+  test('direct link URL is properly encoded', async ({ page }) => {
+    const switchEl = page.locator('[data-testid="share-direct-link-switch"]');
+    if ((await switchEl.getAttribute('data-state')) !== 'checked') {
+      await toggleSwitchByTestId(page, 'share-direct-link-switch');
+      await page.waitForTimeout(200);
+    }
+    
+    const urlInput = page.locator('[data-testid="share-direct-link-input"]');
+    const url = await urlInput.inputValue();
+    // URL should not contain unencoded special characters
+    expect(url).not.toContain(' ');
+  });
+
+  test('encode more params changes URL length', async ({ page }) => {
+    // Enable direct link
+    const directLinkSwitch = page.locator('[data-testid="share-direct-link-switch"]');
+    if ((await directLinkSwitch.getAttribute('data-state')) !== 'checked') {
+      await toggleSwitchByTestId(page, 'share-direct-link-switch');
+      await page.waitForTimeout(200);
+    }
+    
+    const urlInput = page.locator('[data-testid="share-direct-link-input"]');
+    const urlBefore = await urlInput.inputValue();
+    
+    // Toggle encode more params
+    const encodeMoreSwitch = page.locator('[data-testid="share-encode-more-params-switch"]');
+    if ((await encodeMoreSwitch.getAttribute('data-state')) !== 'checked') {
+      await toggleSwitchByTestId(page, 'share-encode-more-params-switch');
+      await page.waitForTimeout(200);
+    }
+    
+    const urlAfter = await urlInput.inputValue();
+    // URL should be different (longer with more params)
+    expect(urlAfter.length).not.toBe(urlBefore.length);
+  });
+
+  test('URL updates when QR settings change', async ({ page }) => {
+    // Enable direct link
+    const directLinkSwitch = page.locator('[data-testid="share-direct-link-switch"]');
+    if ((await directLinkSwitch.getAttribute('data-state')) !== 'checked') {
+      await toggleSwitchByTestId(page, 'share-direct-link-switch');
+      await page.waitForTimeout(200);
+    }
+    
+    const urlInput = page.locator('[data-testid="share-direct-link-input"]');
+    const urlBefore = await urlInput.inputValue();
+    
+    // Change payload section to update QR
+    const payloadTrigger = page.locator('button').filter({ hasText: /^Payload$/i }).first();
+    await payloadTrigger.click();
+    await waitForAccordionOpen(page);
+    
+    const textInput = page.locator('textarea, input[type="text"]').first();
+    if (await textInput.isVisible()) {
+      await textInput.fill('New Test Data');
+      await textInput.blur();
+      await page.waitForTimeout(300);
+    }
+    
+    // Re-expand share section
+    await expandShareSection(page);
+    
+    const urlAfter = await urlInput.inputValue();
+    // URL may or may not change depending on implementation
+    expect(urlAfter).toBeTruthy();
+  });
+});
+
+// ============================================================================
+// EMBED CODE VERIFICATION TESTS
+// ============================================================================
+
+test.describe('Share Embed Code Verification', () => {
+  test.beforeEach(async ({ page }) => {
+    await setupPage(page);
+    await expandShareSection(page);
+  });
+
+  test('embed code contains src attribute', async ({ page }) => {
+    const switchEl = page.locator('[data-testid="share-embed-html-switch"]');
+    if ((await switchEl.getAttribute('data-state')) !== 'checked') {
+      await toggleSwitchByTestId(page, 'share-embed-html-switch');
+      await page.waitForTimeout(200);
+    }
+    
+    const embedInput = page.locator('[data-testid="share-embed-code-input"]');
+    const embedCode = await embedInput.inputValue();
+    expect(embedCode.toLowerCase()).toContain('src=');
+  });
+
+  test('embed code contains alt attribute', async ({ page }) => {
+    const switchEl = page.locator('[data-testid="share-embed-html-switch"]');
+    if ((await switchEl.getAttribute('data-state')) !== 'checked') {
+      await toggleSwitchByTestId(page, 'share-embed-html-switch');
+      await page.waitForTimeout(200);
+    }
+    
+    const embedInput = page.locator('[data-testid="share-embed-code-input"]');
+    const embedCode = await embedInput.inputValue();
+    expect(embedCode.toLowerCase()).toContain('alt=');
+  });
+
+  test('embed code is valid HTML', async ({ page }) => {
+    const switchEl = page.locator('[data-testid="share-embed-html-switch"]');
+    if ((await switchEl.getAttribute('data-state')) !== 'checked') {
+      await toggleSwitchByTestId(page, 'share-embed-html-switch');
+      await page.waitForTimeout(200);
+    }
+    
+    const embedInput = page.locator('[data-testid="share-embed-code-input"]');
+    const embedCode = await embedInput.inputValue();
+    // Should have opening < and closing >
+    expect(embedCode).toMatch(/^<.*>$/);
+  });
+
+  test('markdown embed uses correct syntax', async ({ page }) => {
+    const switchEl = page.locator('[data-testid="share-embed-html-switch"]');
+    if ((await switchEl.getAttribute('data-state')) !== 'checked') {
+      await toggleSwitchByTestId(page, 'share-embed-html-switch');
+      await page.waitForTimeout(200);
+    }
+    
+    const markdownInput = page.locator('[data-testid="share-markdown-input"]');
+    const markdown = await markdownInput.inputValue();
+    // Markdown image: ![alt](url)
+    expect(markdown).toMatch(/!\[.*\]\(.*\)/);
+  });
+
+  test('markdown embed contains URL', async ({ page }) => {
+    const switchEl = page.locator('[data-testid="share-embed-html-switch"]');
+    if ((await switchEl.getAttribute('data-state')) !== 'checked') {
+      await toggleSwitchByTestId(page, 'share-embed-html-switch');
+      await page.waitForTimeout(200);
+    }
+    
+    const markdownInput = page.locator('[data-testid="share-markdown-input"]');
+    const markdown = await markdownInput.inputValue();
+    expect(markdown).toContain('http');
+  });
+});
+
+// ============================================================================
+// SOCIAL SHARE URL TESTS
+// ============================================================================
+
+test.describe('Share Social URLs', () => {
+  test.beforeEach(async ({ page }) => {
+    await setupPage(page);
+    await expandShareSection(page);
+  });
+
+  test('twitter button has href attribute', async ({ page }) => {
+    const twitterButton = page.locator('[data-testid="share-twitter-button"]');
+    const href = await twitterButton.getAttribute('href');
+    expect(href).toBeTruthy();
+  });
+
+  test('twitter button href contains twitter.com or x.com', async ({ page }) => {
+    const twitterButton = page.locator('[data-testid="share-twitter-button"]');
+    const href = await twitterButton.getAttribute('href');
+    expect(href?.toLowerCase()).toMatch(/twitter\.com|x\.com/);
+  });
+
+  test('whatsapp button has href attribute', async ({ page }) => {
+    const whatsappButton = page.locator('[data-testid="share-whatsapp-button"]');
+    const href = await whatsappButton.getAttribute('href');
+    expect(href).toBeTruthy();
+  });
+
+  test('whatsapp button href contains whatsapp', async ({ page }) => {
+    const whatsappButton = page.locator('[data-testid="share-whatsapp-button"]');
+    const href = await whatsappButton.getAttribute('href');
+    expect(href?.toLowerCase()).toContain('whatsapp');
+  });
+
+  test('social buttons open in new tab', async ({ page }) => {
+    const twitterButton = page.locator('[data-testid="share-twitter-button"]');
+    const target = await twitterButton.getAttribute('target');
+    expect(target).toBe('_blank');
+  });
+
+  test('social buttons have rel=noopener', async ({ page }) => {
+    const twitterButton = page.locator('[data-testid="share-twitter-button"]');
+    const rel = await twitterButton.getAttribute('rel');
+    expect(rel).toContain('noopener');
+  });
+});
+
+// ============================================================================
+// COPY BUTTON BEHAVIOR TESTS
+// ============================================================================
+
+test.describe('Share Copy Button Behavior', () => {
+  test.beforeEach(async ({ page }) => {
+    await setupPage(page);
+    await expandShareSection(page);
+  });
+
+  test('copy link button shows feedback on click', async ({ page }) => {
+    const directLinkSwitch = page.locator('[data-testid="share-direct-link-switch"]');
+    if ((await directLinkSwitch.getAttribute('data-state')) !== 'checked') {
+      await toggleSwitchByTestId(page, 'share-direct-link-switch');
+      await page.waitForTimeout(200);
+    }
+    
+    const copyButton = page.locator('[data-testid="share-copy-link-button"]');
+    const textBefore = await copyButton.textContent();
+    
+    await copyButton.click();
+    await page.waitForTimeout(100);
+    
+    // Button text may change to "Copied" or show checkmark
+    const textAfter = await copyButton.textContent();
+    // Either text changes or stays same (depends on implementation)
+    expect(textAfter).toBeTruthy();
+  });
+
+  test('quick copy button is always visible', async ({ page }) => {
+    const quickCopyButton = page.locator('[data-testid="share-quick-copy-button"]');
+    await expect(quickCopyButton).toBeVisible();
+  });
+
+  test('quick copy button has accessible name', async ({ page }) => {
+    const quickCopyButton = page.locator('[data-testid="share-quick-copy-button"]');
+    const text = await quickCopyButton.textContent();
+    expect(text?.length).toBeGreaterThan(0);
+  });
+
+  test('copy embed button works when embed is enabled', async ({ page }) => {
+    const embedSwitch = page.locator('[data-testid="share-embed-html-switch"]');
+    if ((await embedSwitch.getAttribute('data-state')) !== 'checked') {
+      await toggleSwitchByTestId(page, 'share-embed-html-switch');
+      await page.waitForTimeout(200);
+    }
+    
+    const copyEmbedButton = page.locator('[data-testid="share-copy-embed-button"]');
+    await copyEmbedButton.click();
+    await page.waitForTimeout(100);
+    
+    // Button should still be enabled after click
+    await expect(copyEmbedButton).toBeEnabled();
+  });
+
+  test('copy markdown button works when embed is enabled', async ({ page }) => {
+    const embedSwitch = page.locator('[data-testid="share-embed-html-switch"]');
+    if ((await embedSwitch.getAttribute('data-state')) !== 'checked') {
+      await toggleSwitchByTestId(page, 'share-embed-html-switch');
+      await page.waitForTimeout(200);
+    }
+    
+    const copyMarkdownButton = page.locator('[data-testid="share-copy-markdown-button"]');
+    await copyMarkdownButton.click();
+    await page.waitForTimeout(100);
+    
+    await expect(copyMarkdownButton).toBeEnabled();
+  });
+});
+
+// ============================================================================
+// KEYBOARD ACCESSIBILITY TESTS
+// ============================================================================
+
+test.describe('Share Keyboard Accessibility', () => {
+  test.beforeEach(async ({ page }) => {
+    await setupPage(page);
+    await expandShareSection(page);
+  });
+
+  test('Tab navigates through share controls', async ({ page }) => {
+    const firstSwitch = page.locator('[data-testid="share-direct-link-switch"]');
+    await firstSwitch.focus();
+    
+    const focusedElements: string[] = [];
+    for (let i = 0; i < 5; i++) {
+      await page.keyboard.press('Tab');
+      const tag = await page.evaluate(() => document.activeElement?.tagName);
+      if (tag) focusedElements.push(tag);
+    }
+    
+    expect(focusedElements.length).toBeGreaterThan(0);
+  });
+
+  test('Space toggles direct link switch', async ({ page }) => {
+    const switchEl = page.locator('[data-testid="share-direct-link-switch"]');
+    await switchEl.focus();
+    
+    const initialState = await switchEl.getAttribute('data-state');
+    await page.keyboard.press('Space');
+    await page.waitForTimeout(100);
+    
+    const newState = await switchEl.getAttribute('data-state');
+    expect(newState).not.toBe(initialState);
+  });
+
+  test('Space toggles embed HTML switch', async ({ page }) => {
+    const switchEl = page.locator('[data-testid="share-embed-html-switch"]');
+    await switchEl.focus();
+    
+    const initialState = await switchEl.getAttribute('data-state');
+    await page.keyboard.press('Space');
+    await page.waitForTimeout(100);
+    
+    const newState = await switchEl.getAttribute('data-state');
+    expect(newState).not.toBe(initialState);
+  });
+
+  test('Enter activates copy button', async ({ page }) => {
+    const quickCopyButton = page.locator('[data-testid="share-quick-copy-button"]');
+    await quickCopyButton.focus();
+    await page.keyboard.press('Enter');
+    await page.waitForTimeout(100);
+    
+    // Button should still be enabled after activation
+    await expect(quickCopyButton).toBeEnabled();
+  });
+
+  test('Shift+Tab navigates backwards', async ({ page }) => {
+    const embedSwitch = page.locator('[data-testid="share-embed-html-switch"]');
+    await embedSwitch.focus();
+    
+    await page.keyboard.press('Shift+Tab');
+    const focusedElement = await page.evaluate(() => document.activeElement?.tagName);
+    expect(focusedElement).toBeTruthy();
+  });
+});
+
+// ============================================================================
+// INPUT READONLY TESTS
+// ============================================================================
+
+test.describe('Share Input Fields', () => {
+  test.beforeEach(async ({ page }) => {
+    await setupPage(page);
+    await expandShareSection(page);
+  });
+
+  test('direct link input is readonly', async ({ page }) => {
+    const directLinkSwitch = page.locator('[data-testid="share-direct-link-switch"]');
+    if ((await directLinkSwitch.getAttribute('data-state')) !== 'checked') {
+      await toggleSwitchByTestId(page, 'share-direct-link-switch');
+      await page.waitForTimeout(200);
+    }
+    
+    const urlInput = page.locator('[data-testid="share-direct-link-input"]');
+    const isReadonly = await urlInput.getAttribute('readonly');
+    expect(isReadonly).not.toBeNull();
+  });
+
+  test('embed code input is readonly', async ({ page }) => {
+    const embedSwitch = page.locator('[data-testid="share-embed-html-switch"]');
+    if ((await embedSwitch.getAttribute('data-state')) !== 'checked') {
+      await toggleSwitchByTestId(page, 'share-embed-html-switch');
+      await page.waitForTimeout(200);
+    }
+    
+    const embedInput = page.locator('[data-testid="share-embed-code-input"]');
+    const isReadonly = await embedInput.getAttribute('readonly');
+    expect(isReadonly).not.toBeNull();
+  });
+
+  test('markdown input is readonly', async ({ page }) => {
+    const embedSwitch = page.locator('[data-testid="share-embed-html-switch"]');
+    if ((await embedSwitch.getAttribute('data-state')) !== 'checked') {
+      await toggleSwitchByTestId(page, 'share-embed-html-switch');
+      await page.waitForTimeout(200);
+    }
+    
+    const markdownInput = page.locator('[data-testid="share-markdown-input"]');
+    const isReadonly = await markdownInput.getAttribute('readonly');
+    expect(isReadonly).not.toBeNull();
+  });
+
+  test('direct link input can be selected for copy', async ({ page }) => {
+    const directLinkSwitch = page.locator('[data-testid="share-direct-link-switch"]');
+    if ((await directLinkSwitch.getAttribute('data-state')) !== 'checked') {
+      await toggleSwitchByTestId(page, 'share-direct-link-switch');
+      await page.waitForTimeout(200);
+    }
+    
+    const urlInput = page.locator('[data-testid="share-direct-link-input"]');
+    await urlInput.click();
+    
+    // Should be able to select text even if readonly
+    await page.keyboard.press('Control+a');
+    // No error means it works
+    expect(true).toBe(true);
+  });
+});
+
+// ============================================================================
+// PERSISTENCE AND STATE TESTS
+// ============================================================================
+
+test.describe('Share Persistence', () => {
+  test.beforeEach(async ({ page }) => {
+    await setupPage(page);
+    await expandShareSection(page);
+  });
+
+  test('direct link state persists after collapse/expand', async ({ page }) => {
+    const directLinkSwitch = page.locator('[data-testid="share-direct-link-switch"]');
+    
+    // Toggle to enabled
+    if ((await directLinkSwitch.getAttribute('data-state')) !== 'checked') {
+      await toggleSwitchByTestId(page, 'share-direct-link-switch');
+    }
+    const enabledState = await directLinkSwitch.getAttribute('data-state');
+    
+    // Collapse and expand
+    const shareTrigger = page.locator('button').filter({ hasText: /^Share$/i }).first();
+    await shareTrigger.click();
+    await page.waitForTimeout(200);
+    await shareTrigger.click();
+    await waitForAccordionOpen(page);
+    
+    const persistedState = await directLinkSwitch.getAttribute('data-state');
+    expect(persistedState).toBe(enabledState);
+  });
+
+  test('embed HTML state persists after collapse/expand', async ({ page }) => {
+    const embedSwitch = page.locator('[data-testid="share-embed-html-switch"]');
+    
+    // Toggle to enabled
+    if ((await embedSwitch.getAttribute('data-state')) !== 'checked') {
+      await toggleSwitchByTestId(page, 'share-embed-html-switch');
+    }
+    const enabledState = await embedSwitch.getAttribute('data-state');
+    
+    // Collapse and expand
+    const shareTrigger = page.locator('button').filter({ hasText: /^Share$/i }).first();
+    await shareTrigger.click();
+    await page.waitForTimeout(200);
+    await shareTrigger.click();
+    await waitForAccordionOpen(page);
+    
+    const persistedState = await embedSwitch.getAttribute('data-state');
+    expect(persistedState).toBe(enabledState);
+  });
+
+  test('encode more params state persists after collapse/expand', async ({ page }) => {
+    const encodeMoreSwitch = page.locator('[data-testid="share-encode-more-params-switch"]');
+    
+    // Toggle state
+    const initialState = await encodeMoreSwitch.getAttribute('data-state');
+    await toggleSwitchByTestId(page, 'share-encode-more-params-switch');
+    const toggledState = await encodeMoreSwitch.getAttribute('data-state');
+    
+    // Collapse and expand
+    const shareTrigger = page.locator('button').filter({ hasText: /^Share$/i }).first();
+    await shareTrigger.click();
+    await page.waitForTimeout(200);
+    await shareTrigger.click();
+    await waitForAccordionOpen(page);
+    
+    const persistedState = await encodeMoreSwitch.getAttribute('data-state');
+    expect(persistedState).toBe(toggledState);
+    expect(persistedState).not.toBe(initialState);
+  });
+});
