@@ -33,7 +33,16 @@ test.describe('Render Section - Advanced Tier', () => {
    * Helper to expand Render section
    */
   async function expandRenderSection(page: import('@playwright/test').Page): Promise<void> {
-    const trigger = page.locator('button:has-text("Render")').first();
+    // Scroll sidebar to ensure Render section is visible
+    const sidebar = page.locator('aside, [role="complementary"], .sidebar').first();
+    if (await sidebar.count() > 0) {
+      await sidebar.evaluate(el => el.scrollTop = 0);
+    }
+    
+    // Use data-testid selector for accordion trigger
+    const renderTrigger = page.locator('[data-testid="accordion-render"] button[data-state]').first();
+    const trigger = renderTrigger;
+    
     await trigger.scrollIntoViewIfNeeded();
     
     // Check if already expanded
@@ -68,8 +77,8 @@ test.describe('Render Section - Advanced Tier', () => {
     await selectTrigger.click();
     await waitForSelectOpen(page);
     
-    // Find and click the option
-    const option = page.locator('[role="option"]').filter({ hasText: new RegExp(optionText, 'i') }).first();
+    // Find and click the option using case-insensitive text matching
+    const option = page.locator('[role="option"]').getByText(optionText, { exact: false }).first();
     if (await option.count() > 0) {
       await option.click();
     } else {
@@ -95,7 +104,7 @@ test.describe('Render Section - Advanced Tier', () => {
       await cb.click();
       await waitForSelectOpen(page);
       
-      const option = page.locator('[role="option"]').filter({ hasText: new RegExp(`^${optionText}$|^${optionText}\\s|\\s${optionText}$`, 'i') }).first();
+      const option = page.locator('[role="option"]').getByText(optionText, { exact: false }).first();
       if (await option.count() > 0) {
         await option.click();
         await waitForSelectClosed(page);
@@ -916,8 +925,10 @@ test.describe('Render Section - Advanced Tier', () => {
     test('section can be collapsed and reopened', async ({ page }) => {
       await expandRenderSection(page);
       
-      // Collapse
-      const trigger = page.locator('button:has-text("Render")').first();
+      // Collapse using data-testid
+      const renderTrigger = page.locator('[data-testid="accordion-render"] button[data-state]').first();
+      const trigger = renderTrigger;
+      
       await trigger.click();
       await waitForRenderComplete(page, 'settle');
       // Reopen
@@ -936,8 +947,9 @@ test.describe('Render Section - Advanced Tier', () => {
       await waitForQRRender();
       const beforeCollapse = await getCanvasSnapshot(page);
       
-      // Collapse and reopen
-      const trigger = page.locator('button:has-text("Render")').first();
+      // Collapse and reopen using data-testid (i18n-safe)
+      const trigger = page.locator('[data-testid="accordion-render"] button[data-state]').first();
+      
       await trigger.click();
       await waitForRenderComplete(page, 'settle');
       await trigger.click();

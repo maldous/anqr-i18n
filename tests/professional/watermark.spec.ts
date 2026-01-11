@@ -41,11 +41,7 @@ async function expandWatermarkSection(page: Page) {
   
   // Find and click Watermark accordion trigger using data-testid
   const watermarkTrigger = page.locator('[data-testid="accordion-watermark"] button[data-state]').first();
-  
-  // Fallback to text-based selector if data-testid not found
-  const triggerToUse = await watermarkTrigger.count() > 0 
-    ? watermarkTrigger 
-    : page.locator('button').filter({ hasText: /Watermark/i }).first();
+  const triggerToUse = watermarkTrigger;
   
   if (await triggerToUse.count() > 0) {
     await triggerToUse.scrollIntoViewIfNeeded();
@@ -73,7 +69,7 @@ async function selectDropdownOption(page: Page, triggerTestId: string, optionTex
   
   await page.waitForSelector('[data-radix-popper-content-wrapper]', { timeout: 3000 });
   await waitForRenderComplete(page, 'settle');
-  const option = page.locator('[role="option"]').filter({ hasText: new RegExp(optionText, 'i') }).first();
+  const option = page.locator('[role="option"]').getByText(optionText, { exact: false }).first();
   if (await option.count() > 0) {
     await option.scrollIntoViewIfNeeded();
     await option.click();
@@ -214,7 +210,7 @@ test.describe('Watermark Kind Selection', () => {
     let foundCount = 0;
     
     for (const kind of kinds) {
-      const option = page.locator('[role="option"]').filter({ hasText: new RegExp(kind, 'i') });
+      const option = page.locator('[role="option"]').getByText(kind, { exact: false });
       if (await option.count() > 0) {
         foundCount++;
       }
@@ -383,7 +379,7 @@ test.describe('Watermark Position Selection', () => {
     let foundCount = 0;
     
     for (const pos of positions) {
-      const option = page.locator('[role="option"]').filter({ hasText: new RegExp(pos, 'i') });
+      const option = page.locator('[role="option"]').getByText(pos, { exact: false });
       if (await option.count() > 0) {
         foundCount++;
       }
@@ -526,7 +522,7 @@ test.describe('Watermark Blend Mode Selection', () => {
     let foundCount = 0;
     
     for (const mode of modes) {
-      const option = page.locator('[role="option"]').filter({ hasText: new RegExp(mode, 'i') });
+      const option = page.locator('[role="option"]').getByText(mode, { exact: false });
       if (await option.count() > 0) {
         foundCount++;
       }
@@ -677,8 +673,8 @@ test.describe('Watermark Combined Settings', () => {
     await setInputByTestId(page, 'watermark-text-input', 'Persistent Text');
     
     // Collapse and expand
-    const watermarkTrigger = page.locator('button').filter({ hasText: /^Watermark$/i }).first();
-    await watermarkTrigger.click();
+    const watermarkTriggerEl = page.locator('[data-testid="accordion-watermark"] button[data-state]').first();
+    await watermarkTriggerEl.click();
     await waitForRenderComplete(page, 'settle');
     await watermarkTrigger.click();
     await waitForAccordionOpen(page);

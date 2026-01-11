@@ -62,6 +62,12 @@ async function expandAnimationSection(page: Page) {
   // First switch to advanced tier to ensure Animation section is visible
   await switchToAdvancedTier(page);
   
+  // Scroll sidebar to ensure Animation section is visible
+  const sidebar = page.locator('aside, [role="complementary"], .sidebar').first();
+  if (await sidebar.count() > 0) {
+    await sidebar.evaluate(el => el.scrollTop = el.scrollHeight / 2);
+  }
+  
   // Use centralized openAccordion helper
   await openAccordion(page, 'animation');
 }
@@ -347,10 +353,10 @@ test.describe('Animation Interpolation (Advanced Tier)', () => {
       await trigger.click();
       await waitForDropdownOpen(page);
       
-      // Check for expected options
-      const noneOption = page.locator('[role="option"]').filter({ hasText: /none/i });
-      const crossfadeOption = page.locator('[role="option"]').filter({ hasText: /crossfade/i });
-      const morphOption = page.locator('[role="option"]').filter({ hasText: /morph/i });
+      // Check for expected options using getByText
+      const noneOption = page.locator('[role="option"]').getByText('none', { exact: false });
+      const crossfadeOption = page.locator('[role="option"]').getByText('crossfade', { exact: false });
+      const morphOption = page.locator('[role="option"]').getByText('morph', { exact: false });
       
       const hasNone = await noneOption.count() > 0;
       const hasCrossfade = await crossfadeOption.count() > 0;
@@ -401,9 +407,9 @@ test.describe('Animation Temporal Dither (Professional Tier)', () => {
       await trigger.click();
       await waitForDropdownOpen(page);
       
-      const offOption = page.locator('[role="option"]').filter({ hasText: /off/i });
-      const blueNoiseOption = page.locator('[role="option"]').filter({ hasText: /blue.?noise/i });
-      const flickerSafeOption = page.locator('[role="option"]').filter({ hasText: /flicker/i });
+      const offOption = page.locator('[role="option"]').getByText('off', { exact: false });
+      const blueNoiseOption = page.locator('[role="option"]').getByText('blue noise', { exact: false });
+      const flickerSafeOption = page.locator('[role="option"]').getByText('flicker', { exact: false });
       
       const hasOptions = (await offOption.count()) > 0 || (await blueNoiseOption.count()) > 0 || (await flickerSafeOption.count()) > 0;
       
@@ -435,7 +441,7 @@ test.describe('Animation Pattern (Professional Tier)', () => {
       let foundCount = 0;
       
       for (const pattern of patterns) {
-        const option = page.locator('[role="option"]').filter({ hasText: new RegExp(pattern, 'i') });
+        const option = page.locator('[role="option"]').getByText(pattern, { exact: false });
         if (await option.count() > 0) {
           foundCount++;
         }
@@ -641,10 +647,13 @@ test.describe('Animation Combined Settings', () => {
     const stateBeforeCollapse = await loopSwitch.getAttribute('data-state');
     
     // Collapse and expand
-    const animationTrigger = page.locator('button').filter({ hasText: /^Animation$/i }).first();
-    await animationTrigger.click();
+    // Use data-testid selector for accordion trigger
+    const animationTrigger = page.locator('[data-testid="accordion-animation"] button[data-state]').first();
+    const trigger = animationTrigger;
+    
+    await trigger.click();
     await waitForAccordionState(page, 'animation', 'closed');
-    await animationTrigger.click();
+    await trigger.click();
     await waitForAccordionState(page, 'animation', 'open');
     
     // Verify state persisted

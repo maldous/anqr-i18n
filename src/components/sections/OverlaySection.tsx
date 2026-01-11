@@ -365,7 +365,7 @@ export function OverlaySection() {
                 variant="outline"
                 className="flex-1"
                 onClick={() => setShowUrlInput(!showUrlInput)}
-                data-testid="overlay-from-url"
+                data-testid="overlay-from-url-button"
               >
                 <Link className="h-4 w-4 mr-2" />
                 {t('overlay.fromUrl')}
@@ -392,6 +392,7 @@ export function OverlaySection() {
                     onClick={loadFromUrl}
                     disabled={isLoadingUrl || !urlInput.trim()}
                     size="sm"
+                    data-testid="overlay-load-url-button"
                   >
                     {isLoadingUrl ? (
                       <Loader2 className="h-4 w-4 animate-spin" />

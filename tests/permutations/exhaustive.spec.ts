@@ -205,27 +205,38 @@ const SECTION_LABELS: Record<string, string> = {
   'Safety': 'Safety',
 };
 
+// Map section names to accordion data-testid IDs
+const SECTION_TESTIDS: Record<string, string> = {
+  'Payload': 'payload',
+  'Overlay': 'overlay',
+  'QR Encoding': 'qr',
+  'Render': 'render',
+  'Animation': 'animation',
+  'Output': 'output',
+  'Watermark': 'watermark',
+  'Metadata': 'metadata',
+  'Share': 'share',
+  'Safety': 'safety',
+};
+
 async function openSection(page: Page, section: string): Promise<void> {
-  const label = SECTION_LABELS[section] || section;
-  const trigger = page.locator('button[data-state]').filter({ hasText: new RegExp(`^${label}$`, 'i') }).first();
+  // Use data-testid for reliable section opening (i18n-safe)
+  const testId = SECTION_TESTIDS[section];
   
-  if (await trigger.count() === 0) {
-    const fallbackTrigger = page.locator(`button:has-text("${label}")`).first();
-    if (await fallbackTrigger.isVisible()) {
-      const state = await fallbackTrigger.getAttribute('data-state');
-      if (state !== 'open') {
-        await fallbackTrigger.click();
-        await waitForRenderComplete(page, 'settle');
-      }
-    }
+  if (!testId) {
+    // Unknown section - skip
     return;
   }
   
-  const state = await trigger.getAttribute('data-state');
-  if (state !== 'open') {
-    await trigger.scrollIntoViewIfNeeded();
-    await trigger.click();
-    await waitForRenderComplete(page, 'settle');
+  const trigger = page.locator(`[data-testid="accordion-${testId}"] button[data-state]`).first();
+  if (await trigger.count() > 0) {
+    // Check if already open
+    const isOpen = await page.locator(`[data-testid="accordion-${testId}"] [role="region"][data-state="open"]`).count() > 0;
+    if (!isOpen) {
+      await trigger.scrollIntoViewIfNeeded();
+      await trigger.click();
+      await waitForRenderComplete(page, 'settle');
+    }
   }
 }
 

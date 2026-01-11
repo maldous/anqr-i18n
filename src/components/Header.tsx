@@ -663,6 +663,7 @@ export function Header({
                         className="text-xs px-3"
                         title={t('tiers.basic')}
                         disabled={loadingAd}
+                        data-testid="tier-tab-basic"
                       >
                         {t('tiers.basic')}
                       </TabsTrigger>
@@ -671,6 +672,7 @@ export function Header({
                         className="text-xs px-3"
                         title={t('tiers.advanced')}
                         disabled={loadingAd}
+                        data-testid="tier-tab-advanced"
                       >
                         {t('tiers.advanced')}
                       </TabsTrigger>
@@ -683,6 +685,7 @@ export function Header({
                             : t('tiers.professional')
                         }
                         disabled={loadingAd}
+                        data-testid="tier-tab-professional"
                       >
                         {Capacitor.isNativePlatform() && !checkPremiumAccess() && (
                           <Play className="w-3 h-3" />
@@ -702,9 +705,13 @@ export function Header({
                       <SelectValue />
                     </SelectTrigger>
                     <SelectContent>
-                      <SelectItem value="basic">{t('tiers.basic')}</SelectItem>
-                      <SelectItem value="advanced">{t('tiers.advanced')}</SelectItem>
-                      <SelectItem value="professional">
+                      <SelectItem value="basic" data-testid="tier-option-basic">
+                        {t('tiers.basic')}
+                      </SelectItem>
+                      <SelectItem value="advanced" data-testid="tier-option-advanced">
+                        {t('tiers.advanced')}
+                      </SelectItem>
+                      <SelectItem value="professional" data-testid="tier-option-professional">
                         <span className="flex items-center gap-1">
                           {Capacitor.isNativePlatform() && !checkPremiumAccess() && (
                             <Play className="w-3 h-3" />

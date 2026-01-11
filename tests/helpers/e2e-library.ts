@@ -349,30 +349,49 @@ export class SelectHelper {
   }
   
   /**
-   * Choose an option by text using keyboard navigation.
+   * Choose an option by data-value or index using keyboard navigation.
    * This is more reliable than clicking options in scrollable dropdowns.
+   * 
+   * @param optionValue - The data-value attribute value, or a numeric index
    */
-  async choose(optionText: string): Promise<void> {
+  async choose(optionValue: string | number): Promise<void> {
     const dropdown = await this.open();
     
     // Get all options
     const options = dropdown.locator('[role="option"]');
     const count = await options.count();
     
-    // Find the target option index
     let targetIndex = -1;
-    for (let i = 0; i < count; i++) {
-      const text = await options.nth(i).textContent();
-      if (text && new RegExp(optionText, 'i').test(text.trim())) {
-        targetIndex = i;
-        break;
+    
+    if (typeof optionValue === 'number') {
+      // Use index directly
+      targetIndex = optionValue;
+    } else {
+      // Find the target option index by data-value
+      for (let i = 0; i < count; i++) {
+        const value = await options.nth(i).getAttribute('data-value');
+        if (value && value.toLowerCase() === optionValue.toLowerCase()) {
+          targetIndex = i;
+          break;
+        }
+      }
+      
+      // Fallback: try text content as last resort
+      if (targetIndex === -1) {
+        for (let i = 0; i < count; i++) {
+          const text = await options.nth(i).textContent();
+          if (text && new RegExp(optionValue, 'i').test(text.trim())) {
+            targetIndex = i;
+            break;
+          }
+        }
       }
     }
     
-    if (targetIndex === -1) {
+    if (targetIndex === -1 || targetIndex >= count) {
       // Option not found - close dropdown and throw
       await this.page.keyboard.press('Escape');
-      throw new Error(`Option "${optionText}" not found in select`);
+      throw new Error(`Option "${optionValue}" not found in select`);
     }
     
     // Navigate to option using keyboard
@@ -770,7 +789,7 @@ export async function setWelcomeModalSeen(page: Page): Promise<void> {
 
 /**
  * Dismiss the welcome modal if present.
- * Uses multiple strategies in order of reliability.
+ * Uses data-testid and ARIA selectors for i18n compatibility.
  * 
  * IMPORTANT: Prefer setWelcomeModalSeen() BEFORE navigation instead.
  */
@@ -782,33 +801,41 @@ export async function dismissWelcomeModal(page: Page): Promise<void> {
     
     if (!isVisible) return;
     
-    // Strategy 1: Click "Get Started" button (the main CTA in WelcomeModal)
-    const getStartedBtn = page.locator('button').filter({ hasText: /get started/i }).first();
+    // Strategy 1: Click "Get Started" button using data-testid
+    const getStartedBtn = page.locator('[data-testid="welcome-get-started"]').first();
     if (await getStartedBtn.isVisible({ timeout: 500 }).catch(() => false)) {
       await getStartedBtn.click();
       await page.waitForSelector('dialog[open]', { state: 'hidden', timeout: 2000 });
       return;
     }
     
-    // Strategy 2: Click close button (X button in the modal header)
+    // Strategy 2: Find first button in dialog (usually the CTA)
+    const dialogBtn = dialog.locator('button').first();
+    if (await dialogBtn.isVisible({ timeout: 500 }).catch(() => false)) {
+      await dialogBtn.click();
+      await page.waitForSelector('dialog[open]', { state: 'hidden', timeout: 2000 }).catch(() => {});
+      return;
+    }
+    
+    // Strategy 3: Click close button using aria-label
     const closeBtn = page.locator('button[aria-label*="close" i], button[aria-label="Close modal"]').first();
     if (await closeBtn.isVisible({ timeout: 500 }).catch(() => false)) {
       await closeBtn.click();
-      await page.waitForSelector('dialog[open]', { state: 'hidden', timeout: 2000 });
+      await page.waitForSelector('dialog[open]', { state: 'hidden', timeout: 2000 }).catch(() => {});
       return;
     }
     
-    // Strategy 3: Click the backdrop
+    // Strategy 4: Click the backdrop
     const backdrop = page.locator('button.absolute.inset-0').first();
     if (await backdrop.isVisible({ timeout: 500 }).catch(() => false)) {
       await backdrop.click({ force: true });
-      await page.waitForSelector('dialog[open]', { state: 'hidden', timeout: 2000 });
+      await page.waitForSelector('dialog[open]', { state: 'hidden', timeout: 2000 }).catch(() => {});
       return;
     }
     
-    // Strategy 4: Press Escape key
+    // Strategy 5: Press Escape key
     await page.keyboard.press('Escape');
-    await page.waitForSelector('dialog[open]', { state: 'hidden', timeout: 2000 });
+    await page.waitForSelector('dialog[open]', { state: 'hidden', timeout: 2000 }).catch(() => {});
   } catch {
     // Modal might not exist, that's OK
   }
@@ -816,23 +843,45 @@ export async function dismissWelcomeModal(page: Page): Promise<void> {
 
 /**
  * Select a tier (Basic/Advanced/Professional).
+ * Uses data-testid selectors for i18n compatibility.
  */
 export async function selectTier(page: Page, tier: Tier): Promise<void> {
-  const tierMap: Record<Tier, string> = {
-    basic: 'Basic',
-    advanced: 'Advanced',
-    professional: 'Professional',
-  };
+  // Map tier to value attribute
+  const tierValue = tier; // 'basic', 'advanced', 'professional'
   
-  const tierText = tierMap[tier];
+  // Try tabs first (desktop) - use data-testid="tier-tabs"
+  const tabsList = page.locator('[data-testid="tier-tabs"]');
+  if (await tabsList.isVisible({ timeout: 2000 }).catch(() => false)) {
+    // Find tab by value attribute
+    const tab = tabsList.locator(`[role="tab"][value="${tierValue}"]`).first();
+    if (await tab.isVisible().catch(() => false)) {
+      await tab.click();
+      await waitForRenderComplete(page, 'settle');
+      return;
+    }
+  }
   
-  // Find tier tabs/buttons
-  const tierButton = page.locator('[role="tab"], button').filter({ hasText: new RegExp(`^${tierText}$`, 'i') }).first();
-  
-  if (await tierButton.isVisible({ timeout: 2000 })) {
-    await tierButton.click();
-    // Wait for tier change to take effect
-    await waitForRenderComplete(page, 'settle'); // Small delay for UI update
+  // Fallback: try select dropdown (mobile) - use data-testid="tier-select"
+  const selectTrigger = page.locator('[data-testid="tier-select"]');
+  if (await selectTrigger.isVisible({ timeout: 1000 }).catch(() => false)) {
+    await selectTrigger.click();
+    await waitForSelectOpen(page);
+    
+    // Find option by value attribute
+    const option = page.locator(`[role="option"][data-value="${tierValue}"]`).first();
+    if (await option.isVisible().catch(() => false)) {
+      await option.click();
+    } else {
+      // Use keyboard navigation as fallback
+      const tierIndex = tier === 'basic' ? 0 : tier === 'advanced' ? 1 : 2;
+      await page.keyboard.press('Home');
+      for (let i = 0; i < tierIndex; i++) {
+        await page.keyboard.press('ArrowDown');
+      }
+      await page.keyboard.press('Enter');
+    }
+    await waitForSelectClosed(page).catch(() => {});
+    await waitForRenderComplete(page, 'settle');
   }
 }
 

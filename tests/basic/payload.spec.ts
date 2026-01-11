@@ -24,18 +24,21 @@ import type { Page } from '@playwright/test';
 
 /**
  * Expand the Payload section in the sidebar
- * Uses data-state detection instead of timeouts
+ * Uses data-testid for reliable selection (i18n safe)
  */
 async function expandPayloadSection(page: Page) {
-  const accordionItem = page.locator('[data-state][value="payload"]').first();
-  const state = await accordionItem.getAttribute('data-state').catch(() => 'closed');
+  // Use data-testid selector for accordion trigger only - no text fallback for i18n compatibility
+  const payloadTrigger = page.locator('[data-testid="accordion-payload"] button[data-state]').first();
   
-  if (state !== 'open') {
-    const payloadTrigger = page.locator('button').filter({ hasText: /^Payload$/i }).first();
-    if (await payloadTrigger.isVisible().catch(() => false)) {
-      await payloadTrigger.click();
-      await waitForAccordionOpen(page, 'payload');
-    }
+  // Wait for trigger to be visible
+  await payloadTrigger.waitFor({ state: 'visible', timeout: 5000 });
+  
+  // Check if section is already open
+  const currentState = await payloadTrigger.getAttribute('data-state');
+  
+  if (currentState !== 'open') {
+    await payloadTrigger.click();
+    await waitForAccordionOpen(page, 'payload');
   }
 }
 

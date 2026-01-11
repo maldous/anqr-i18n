@@ -41,11 +41,7 @@ async function expandShareSection(page: Page) {
   
   // Find and click Share accordion trigger using data-testid
   const shareTrigger = page.locator('[data-testid="accordion-share"] button[data-state]').first();
-  
-  // Fallback to text-based selector if data-testid not found
-  const triggerToUse = await shareTrigger.count() > 0 
-    ? shareTrigger 
-    : page.locator('button').filter({ hasText: /Share/i }).first();
+  const triggerToUse = shareTrigger;
   
   if (await triggerToUse.count() > 0) {
     await triggerToUse.scrollIntoViewIfNeeded();
@@ -435,8 +431,8 @@ test.describe('Share Combined Settings', () => {
     const stateBeforeCollapse = await directLinkSwitch.getAttribute('data-state');
     
     // Collapse and expand
-    const shareTrigger = page.locator('button').filter({ hasText: /^Share$/i }).first();
-    await shareTrigger.click();
+    const shareTriggerEl = page.locator('[data-testid="accordion-share"] button[data-state]').first();
+    await shareTriggerEl.click();
     await waitForRenderComplete(page, 'settle');
     await shareTrigger.click();
     await waitForAccordionOpen(page);
@@ -561,7 +557,7 @@ test.describe('Share URL Verification', () => {
     const urlBefore = await urlInput.inputValue();
     
     // Change payload section to update QR
-    const payloadTrigger = page.locator('button').filter({ hasText: /^Payload$/i }).first();
+    const payloadTrigger = page.locator('[data-testid="accordion-payload"] button[data-state]').first();
     await payloadTrigger.click();
     await waitForAccordionOpen(page);
     
@@ -916,8 +912,8 @@ test.describe('Share Persistence', () => {
     const enabledState = await directLinkSwitch.getAttribute('data-state');
     
     // Collapse and expand
-    const shareTrigger = page.locator('button').filter({ hasText: /^Share$/i }).first();
-    await shareTrigger.click();
+    const shareTriggerEl = page.locator('[data-testid="accordion-share"] button[data-state]').first();
+    await shareTriggerEl.click();
     await waitForRenderComplete(page, 'settle');
     await shareTrigger.click();
     await waitForAccordionOpen(page);
@@ -936,8 +932,8 @@ test.describe('Share Persistence', () => {
     const enabledState = await embedSwitch.getAttribute('data-state');
     
     // Collapse and expand
-    const shareTrigger = page.locator('button').filter({ hasText: /^Share$/i }).first();
-    await shareTrigger.click();
+    const shareTriggerEl = page.locator('[data-testid="accordion-share"] button[data-state]').first();
+    await shareTriggerEl.click();
     await waitForRenderComplete(page, 'settle');
     await shareTrigger.click();
     await waitForAccordionOpen(page);
@@ -955,8 +951,8 @@ test.describe('Share Persistence', () => {
     const toggledState = await encodeMoreSwitch.getAttribute('data-state');
     
     // Collapse and expand
-    const shareTrigger = page.locator('button').filter({ hasText: /^Share$/i }).first();
-    await shareTrigger.click();
+    const shareTriggerEl = page.locator('[data-testid="accordion-share"] button[data-state]').first();
+    await shareTriggerEl.click();
     await waitForRenderComplete(page, 'settle');
     await shareTrigger.click();
     await waitForAccordionOpen(page);

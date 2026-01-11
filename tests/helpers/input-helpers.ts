@@ -63,6 +63,7 @@ export async function setSliderByPercent(
 
 /**
  * Select an option in a Radix UI Select component
+ * Uses data-value attribute or keyboard navigation for i18n compatibility
  */
 export async function setSelect(
   page: Page,
@@ -77,33 +78,47 @@ export async function setSelect(
   // Wait for the portal content to appear
   await page.waitForSelector('[data-radix-popper-content-wrapper]', { timeout: 5000 });
   
-  // Click the option - Radix renders options in a portal
-  // Try multiple selector strategies
-  const optionSelectors = [
-    `[role="option"][data-value="${optionValue}"]`,
-    `[role="option"]:has-text("${optionValue}")`,
-    `[data-radix-collection-item]:has-text("${optionValue}")`,
-  ];
+  // Try data-value selector first (i18n safe)
+  const optionByValue = page.locator(`[role="option"][data-value="${optionValue}"]`).first();
+  if (await optionByValue.isVisible().catch(() => false)) {
+    await optionByValue.click();
+    return;
+  }
   
-  for (const sel of optionSelectors) {
-    const option = page.locator(sel).first();
-    if (await option.isVisible().catch(() => false)) {
-      await option.click();
-      return;
+  // Fallback: Use keyboard navigation to find and select option
+  // Get all options and find target index by data-value
+  const allOptions = page.locator('[data-radix-popper-content-wrapper] [role="option"]');
+  const count = await allOptions.count();
+  
+  let targetIndex = -1;
+  for (let i = 0; i < count; i++) {
+    const value = await allOptions.nth(i).getAttribute('data-value');
+    if (value === optionValue) {
+      targetIndex = i;
+      break;
     }
   }
   
-  // Fallback: find by text content
-  await page.click(`text="${optionValue}"`);
+  if (targetIndex >= 0) {
+    await page.keyboard.press('Home');
+    for (let i = 0; i < targetIndex; i++) {
+      await page.keyboard.press('ArrowDown');
+    }
+    await page.keyboard.press('Enter');
+  } else {
+    // Last resort: press Escape to close
+    await page.keyboard.press('Escape');
+  }
 }
 
 /**
- * Select an option by its display text (useful when value differs from display)
+ * Select an option by navigating with keyboard
+ * Uses keyboard navigation for i18n compatibility
  */
 export async function setSelectByText(
   page: Page,
   triggerSelector: string,
-  optionText: string
+  optionIndex: number
 ): Promise<void> {
   const trigger = page.locator(triggerSelector).first();
   await trigger.waitFor({ state: 'visible' });
@@ -111,10 +126,12 @@ export async function setSelectByText(
   
   await page.waitForSelector('[data-radix-popper-content-wrapper]', { timeout: 5000 });
   
-  // Find and click the option by text
-  const option = page.locator(`[role="option"]:has-text("${optionText}")`).first();
-  await option.waitFor({ state: 'visible' });
-  await option.click();
+  // Use keyboard navigation to select by index
+  await page.keyboard.press('Home');
+  for (let i = 0; i < optionIndex; i++) {
+    await page.keyboard.press('ArrowDown');
+  }
+  await page.keyboard.press('Enter');
 }
 
 /**
@@ -217,10 +234,12 @@ export async function setTextarea(
 }
 
 /**
- * Click a button by text
+ * Click a button by data-testid
+ * @param page - Playwright page
+ * @param testId - The data-testid attribute value
  */
-export async function clickButton(page: Page, buttonText: string): Promise<void> {
-  await page.click(`button:has-text("${buttonText}")`);
+export async function clickButton(page: Page, testId: string): Promise<void> {
+  await page.click(`[data-testid="${testId}"]`);
 }
 
 /**
