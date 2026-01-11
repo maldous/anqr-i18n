@@ -323,6 +323,7 @@ export function OverlaySection() {
               <Switch
                 checked={overlay.cropEnabled}
                 onCheckedChange={(checked) => setOverlayCrop({ enabled: checked })}
+                data-testid="overlay-crop-switch"
               />
             </div>
 
@@ -342,6 +343,7 @@ export function OverlaySection() {
                   min={0.1}
                   max={1}
                   step={0.05}
+                  data-testid="overlay-crop-slider"
                 />
               </div>
             )}
@@ -354,6 +356,7 @@ export function OverlaySection() {
                 variant="outline"
                 className="flex-1"
                 onClick={() => fileInputRef.current?.click()}
+                data-testid="overlay-upload"
               >
                 <Upload className="h-4 w-4 mr-2" />
                 {t('overlay.upload')}
@@ -362,6 +365,7 @@ export function OverlaySection() {
                 variant="outline"
                 className="flex-1"
                 onClick={() => setShowUrlInput(!showUrlInput)}
+                data-testid="overlay-from-url"
               >
                 <Link className="h-4 w-4 mr-2" />
                 {t('overlay.fromUrl')}
@@ -413,6 +417,7 @@ export function OverlaySection() {
           checked={overlay.enabled}
           onCheckedChange={setOverlayEnabled}
           disabled={!overlay.file}
+          data-testid="overlay-enabled-switch"
         />
       </div>
 
@@ -425,7 +430,7 @@ export function OverlaySection() {
               <HelpLink anchor="overlay-modes" />
             </Label>
             <Select value={overlay.mode} onValueChange={(v) => setOverlayMode(v as OverlayMode)}>
-              <SelectTrigger>
+              <SelectTrigger data-testid="overlay-mode-select">
                 <SelectValue />
               </SelectTrigger>
               <SelectContent>
@@ -455,6 +460,7 @@ export function OverlaySection() {
               min={0}
               max={100}
               step={1}
+              data-testid="overlay-intensity-slider"
             />
           </div>
 
@@ -467,7 +473,7 @@ export function OverlaySection() {
               value={overlay.colorMode}
               onValueChange={(v) => setOverlayColorMode(v as ColorMode)}
             >
-              <SelectTrigger>
+              <SelectTrigger data-testid="overlay-color-mode-select">
                 <SelectValue />
               </SelectTrigger>
               <SelectContent>
@@ -483,7 +489,7 @@ export function OverlaySection() {
             <Label>
               <HighlightedLabel>{t('overlay.preserveFinders')}</HighlightedLabel>
             </Label>
-            <Switch checked={overlay.preserveFinders} onCheckedChange={setOverlayPreserveFinders} />
+            <Switch checked={overlay.preserveFinders} onCheckedChange={setOverlayPreserveFinders} data-testid="overlay-preserve-finders-switch" />
           </div>
 
           {/* Advanced Options */}

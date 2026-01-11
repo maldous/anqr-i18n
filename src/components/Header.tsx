@@ -652,7 +652,7 @@ export function Header({
             {isEditor && (
               <>
                 <div className="hidden sm:block">
-                  <Tabs value={tier} onValueChange={(v) => handleTierChange(v as Tier)}>
+                  <Tabs value={tier} onValueChange={(v) => handleTierChange(v as Tier)} data-testid="tier-tabs">
                     <TabsList className="shadow-sm">
                       <TabsTrigger
                         value="basic"
@@ -694,7 +694,7 @@ export function Header({
                     onValueChange={(v) => handleTierChange(v as Tier)}
                     disabled={loadingAd}
                   >
-                    <SelectTrigger className="w-[72px] h-9 text-xs">
+                    <SelectTrigger className="w-[72px] h-9 text-xs" data-testid="tier-select">
                       <SelectValue />
                     </SelectTrigger>
                     <SelectContent>

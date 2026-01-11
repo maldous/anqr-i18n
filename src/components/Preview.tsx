@@ -302,7 +302,7 @@ export function Preview({ sidebarOpen = true }: Readonly<PreviewProps>) {
                   </div>
                 </div>
               )}
-              <div className="relative inline-block" data-rendering-state={renderingState}>
+              <div className="relative inline-block" data-rendering-state={renderingState} data-testid="qr-preview">
                 {/* Simulation indicator badge */}
                 {hasActiveSimulation && (
                   <div
