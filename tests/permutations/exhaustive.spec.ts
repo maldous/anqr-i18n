@@ -463,32 +463,43 @@ const totalPairwiseTests = inSectionPairs.length + crossSectionPairs2.length;
 const singleSettingTests = allSettings.length;
 
 // =============================================================================
-// PRINT CONFIGURATION
+// CONFIGURATION BANNER (printed once via dedicated test)
 // =============================================================================
 
-console.log('\n' + '='.repeat(70));
-console.log('EXHAUSTIVE PERMUTATION TEST SUITE');
-console.log('='.repeat(70));
-console.log(`Tier:     ${getTierLabel(TIER)} (all tiers up to and including)`);
-console.log(`Section:  ${SECTION_FILTER || 'ALL sections'}`);
-console.log(`Max/sect: ${MAX_PER_SECTION === Number.POSITIVE_INFINITY ? 'UNLIMITED' : MAX_PER_SECTION}`);
-console.log(`Pairwise max: ${PAIRWISE_MAX === Number.POSITIVE_INFINITY ? 'UNLIMITED (all combinations)' : PAIRWISE_MAX}`);
-console.log(`Skip conditional: ${SKIP_CONDITIONAL}`);
+function printConfigurationBanner(): void {
+  const stats = getRegistryStats();
+  
+  console.log('\n' + '='.repeat(70));
+  console.log('EXHAUSTIVE PERMUTATION TEST SUITE');
+  console.log('='.repeat(70));
+  console.log(`Tier:     ${getTierLabel(TIER)} (all tiers up to and including)`);
+  console.log(`Section:  ${SECTION_FILTER || 'ALL sections'}`);
+  console.log(`Max/sect: ${MAX_PER_SECTION === Number.POSITIVE_INFINITY ? 'UNLIMITED' : MAX_PER_SECTION}`);
+  console.log(`Pairwise max: ${PAIRWISE_MAX === Number.POSITIVE_INFINITY ? 'UNLIMITED (all combinations)' : PAIRWISE_MAX}`);
+  console.log(`Skip conditional: ${SKIP_CONDITIONAL}`);
+  
+  console.log(`\nRegistry: ${stats.total} total settings`);
+  console.log(`Filtered: ${allSettings.length} settings to test`);
+  console.log(`QR-changing (non-conditional): ${qrChangingSettings.length} settings`);
+  console.log(`Avg values per setting: ${avgValuesPerSetting.toFixed(1)}`);
+  console.log(`Sections: ${getSections().join(', ')}`);
+  
+  console.log('\n--- EXPECTED TEST BREAKDOWN ---');
+  console.log(`Single-setting tests:          ~${singleSettingTests * 2}`);
+  console.log(`Value iteration tests:         ~${valueIterationTestCount}`);
+  console.log(`In-section pairwise (actual):  ${inSectionPairs.length}`);
+  console.log(`Cross-section pairwise (actual): ${crossSectionPairs2.length}`);
+  console.log(`TOTAL PERMUTATION TESTS:       ~${singleSettingTests * 2 + valueIterationTestCount + totalPairwiseTests}`);
+  console.log('='.repeat(70) + '\n');
+}
 
-const stats = getRegistryStats();
-console.log(`\nRegistry: ${stats.total} total settings`);
-console.log(`Filtered: ${allSettings.length} settings to test`);
-console.log(`QR-changing (non-conditional): ${qrChangingSettings.length} settings`);
-console.log(`Avg values per setting: ${avgValuesPerSetting.toFixed(1)}`);
-console.log(`Sections: ${getSections().join(', ')}`);
-
-console.log('\n--- EXPECTED TEST BREAKDOWN ---');
-console.log(`Single-setting tests:          ~${singleSettingTests * 2}`);
-console.log(`Value iteration tests:         ~${valueIterationTestCount}`);
-console.log(`In-section pairwise (actual):  ${inSectionPairs.length}`);
-console.log(`Cross-section pairwise (actual): ${crossSectionPairs2.length}`);
-console.log(`TOTAL PERMUTATION TESTS:       ~${singleSettingTests * 2 + valueIterationTestCount + totalPairwiseTests}`);
-console.log('='.repeat(70) + '\n');
+// Print configuration banner once at start (first test to run)
+test.describe('Permutation Test Suite', () => {
+  test('configuration summary', async () => {
+    printConfigurationBanner();
+    expect(allSettings.length).toBeGreaterThan(0);
+  });
+});
 
 // =============================================================================
 // TEST SUITES BY SECTION - SINGLE SETTING TESTS
@@ -504,8 +515,6 @@ for (const [section, sectionSettings] of settingsBySection) {
     test.describe('QR-Changing Settings', () => {
       for (const setting of qrChanging) {
         test(`${setting.id} (${setting.type}) should change QR`, async ({ page, setTier }) => {
-          await page.goto('/');
-          
           const tierToSet = setting.tier === 'professional' ? 'professional' : 
                            setting.tier === 'advanced' ? 'advanced' : 'basic';
           await setTier(tierToSet as Tier);
@@ -537,8 +546,6 @@ for (const [section, sectionSettings] of settingsBySection) {
     test.describe('Non-QR-Changing Settings', () => {
       for (const setting of nonQrChanging) {
         test(`${setting.id} (${setting.type}) should NOT change QR`, async ({ page, setTier }) => {
-          await page.goto('/');
-          
           const tierToSet = setting.tier === 'professional' ? 'professional' : 
                            setting.tier === 'advanced' ? 'advanced' : 'basic';
           await setTier(tierToSet as Tier);
@@ -576,8 +583,6 @@ test.describe('Value Iteration Tests', () => {
       test.describe(`${setting.id} value iterations`, () => {
         for (const value of values) {
           test(`${setting.id} = ${value}`, async ({ page, setTier }) => {
-            await page.goto('/');
-            
             const tierToSet = setting.tier === 'professional' ? 'professional' : 
                              setting.tier === 'advanced' ? 'advanced' : 'basic';
             await setTier(tierToSet as Tier);
@@ -632,8 +637,6 @@ test.describe('Value-Level Pairwise Combination Tests', () => {
           const testName = `${pair.settingA.id}=${pair.valueA} × ${pair.settingB.id}=${pair.valueB}`;
           
           test(testName, async ({ page, setTier }) => {
-            await page.goto('/');
-            
             // Use highest tier needed
             const tierA = pair.settingA.tier;
             const tierB = pair.settingB.tier;
@@ -689,8 +692,6 @@ test.describe('Value-Level Pairwise Combination Tests', () => {
           const testName = `${pair.settingA.id}=${pair.valueA} × ${pair.settingB.id}=${pair.valueB}`;
           
           test(testName, async ({ page, setTier }) => {
-            await page.goto('/');
-            
             const tierA = pair.settingA.tier;
             const tierB = pair.settingB.tier;
             const tierToSet = (tierA === 'professional' || tierB === 'professional') ? 'professional' :
