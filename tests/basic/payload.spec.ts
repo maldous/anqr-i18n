@@ -98,7 +98,7 @@ async function getCurrentContentType(page: Page): Promise<string> {
 
 test.describe('Payload Section - Basic Tier', () => {
   test.beforeEach(async ({ page, setTier, waitForQRRender }) => {
-    await page.goto('/');
+    // Note: page.goto('/') is handled by resetAppState in test-fixtures.ts
     await setTier('basic');
     await page.waitForSelector('canvas', { timeout: 10000 });
     // Event-driven: wait for canvas to stabilize instead of arbitrary timeout

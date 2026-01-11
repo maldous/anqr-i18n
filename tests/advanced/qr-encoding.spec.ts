@@ -15,7 +15,7 @@ import { waitForRenderComplete } from '../helpers/test-utils';
  */
 test.describe('QR Encoding Section - Advanced Tier', () => {
   test.beforeEach(async ({ page, setTier }) => {
-    await page.goto('/');
+    // page.goto('/') is handled by fixture's resetAppState
     await setTier('advanced');
     // Wait for initial render
     await page.waitForSelector('canvas', { state: 'visible', timeout: 10000 });

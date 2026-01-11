@@ -13,9 +13,8 @@ import {
 } from '../helpers/qr-detector';
 import { setTier, waitForRenderComplete } from '../helpers/test-utils';
 
-// Helper: Navigate to the app and wait for initial load
+// Helper: Wait for initial load and set tier (page.goto is handled by fixture)
 async function setupPage(page: Page) {
-  await page.goto('/');
   await page.waitForLoadState('networkidle');
   await waitForQRRender(page);
   // Select professional tier for Share section tests
