@@ -1,5 +1,17 @@
 import { defineConfig, devices } from '@playwright/test';
 import os from 'os';
+import path from 'path';
+import { fileURLToPath } from 'url';
+
+// ES module compatibility: get __dirname equivalent
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+/**
+ * Storage state file path - created by global-setup.ts
+ * Contains localStorage with welcome modal "seen" flag
+ */
+const STORAGE_STATE_PATH = path.join(__dirname, 'tests', '.storage-state.json');
 
 /**
  * Playwright configuration for ANQR UI testing
@@ -54,6 +66,11 @@ export default defineConfig({
     /* Action timeout - fail fast if locators don't resolve */
     actionTimeout: 5000,
     navigationTimeout: 10000,
+    
+    /* GLOBAL STORAGE STATE: Pre-set localStorage to skip welcome modal for ALL tests
+     * The storage state is created by tests/global-setup.ts before any tests run.
+     * This ensures the welcome modal NEVER appears in any test. */
+    storageState: STORAGE_STATE_PATH,
     
     /* Browser launch options for performance */
     launchOptions: {
@@ -126,6 +143,9 @@ export default defineConfig({
     timeout: 30 * 1000, // 30 seconds max for dev server startup
   },
 
+  /* Global setup - runs ONCE before all tests to create storage state */
+  globalSetup: path.join(__dirname, 'tests', 'global-setup.ts'),
+  
   /* Output directory for test artifacts */
   outputDir: 'test-results/',
   
