@@ -4,13 +4,19 @@
  * This test suite generates comprehensive tests for ALL settings in the SETTINGS_REGISTRY.
  * It iterates through every section, tier, and setting type to ensure complete coverage.
  * 
- * Environment Variables:
+ * DEFAULT BEHAVIOR (no env vars): Runs ALL tests for ALL settings - designed for overnight CI runs.
+ * 
+ * Environment Variables (optional - use to LIMIT scope for faster local testing):
  * - PERM_TIER: 'basic' | 'advanced' | 'professional' (default: 'professional' = all tiers)
  * - PERM_SECTION: Specific section to test (default: '' = all sections)
- * - PERM_MAX: Maximum tests per section (default: 100)
+ * - PERM_MAX: Maximum tests per section (default: Infinity = no limit)
  * - PERM_SKIP_CONDITIONAL: 'true' to skip conditional settings (default: 'false')
  * 
  * Examples:
+ *   # Run ALL tests (overnight/CI mode - default)
+ *   npx playwright test --project=permutations
+ *   
+ *   # Limit scope for faster local testing
  *   PERM_TIER=basic PERM_MAX=20 npx playwright test --project=permutations
  *   PERM_SECTION=Overlay npx playwright test --project=permutations
  */
@@ -35,7 +41,8 @@ import type { Page } from '@playwright/test';
 
 const TIER = (process.env.PERM_TIER as Tier) || 'professional';
 const SECTION_FILTER = process.env.PERM_SECTION || '';
-const MAX_PER_SECTION = Number.parseInt(process.env.PERM_MAX || '100', 10);
+// Default: No limit (Infinity) - run ALL tests when no PERM_MAX is specified
+const MAX_PER_SECTION = process.env.PERM_MAX ? Number.parseInt(process.env.PERM_MAX, 10) : Number.POSITIVE_INFINITY;
 const SKIP_CONDITIONAL = process.env.PERM_SKIP_CONDITIONAL === 'true';
 
 // Setting with its ID for convenience
@@ -381,7 +388,7 @@ console.log('EXHAUSTIVE PERMUTATION TEST SUITE');
 console.log('='.repeat(60));
 console.log(`Tier:     ${getTierLabel(TIER)} (all tiers up to and including)`);
 console.log(`Section:  ${SECTION_FILTER || 'ALL sections'}`);
-console.log(`Max/sect: ${MAX_PER_SECTION} tests per section`);
+console.log(`Max/sect: ${MAX_PER_SECTION === Number.POSITIVE_INFINITY ? 'UNLIMITED (all tests)' : MAX_PER_SECTION + ' tests per section'}`);
 console.log(`Skip conditional: ${SKIP_CONDITIONAL}`);
 
 const stats = getRegistryStats();

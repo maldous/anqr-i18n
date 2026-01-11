@@ -297,48 +297,6 @@ test.describe('E2E Library Demo', () => {
   });
 });
 
-test.describe('Advanced Tier Features', () => {
-  test.beforeEach(async ({ page }) => {
-    await setupTest(page, { tier: 'advanced' });
-  });
-
-  test('can access animation section in advanced tier', async ({ page }) => {
-    const ctx = createTestContext(page);
-    
-    await ctx.animation.open();
-    expect(await ctx.animation.isOpen()).toBe(true);
-    
-    const region = ctx.animation.getRegion();
-    await expect(region).toBeVisible();
-  });
-});
-
-test.describe('Professional Tier Features', () => {
-  test.beforeEach(async ({ page }) => {
-    await setupTest(page, { tier: 'professional' });
-  });
-
-  test('can access watermark section in professional tier', async ({ page }) => {
-    const ctx = createTestContext(page);
-    
-    await ctx.watermark.open();
-    expect(await ctx.watermark.isOpen()).toBe(true);
-    
-    const region = ctx.watermark.getRegion();
-    await expect(region).toBeVisible();
-  });
-
-  test('can access safety section in professional tier', async ({ page }) => {
-    const ctx = createTestContext(page);
-    
-    await ctx.safety.open();
-    expect(await ctx.safety.isOpen()).toBe(true);
-  });
-
-  test('can access metadata section in professional tier', async ({ page }) => {
-    const ctx = createTestContext(page);
-    
-    await ctx.metadata.open();
-    expect(await ctx.metadata.isOpen()).toBe(true);
-  });
-});
+// NOTE: Advanced and Professional tier tests have been moved to their respective directories:
+// - tests/advanced/e2e-library-demo.spec.ts
+// - tests/professional/e2e-library-demo.spec.ts

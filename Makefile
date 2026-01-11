@@ -1,4 +1,4 @@
-.PHONY: help dev build gallery gallery\:gif sitemap deploy android android\:init android\:sync android\:build android\:release android\:open install clean fix lint format check pull push i18n\:pull i18n\:push i18n\:xlate i18n\:xlate\:static i18n\:xlate\:locales i18n\:fill i18n\:fill\:static i18n\:fill\:locales icons icons\:android android\:run android\:keystore android\:bump zip dep sonar sonar-report test test\:basic test\:advanced test\:pro test\:all test\:ui test\:permutations test\:report
+.PHONY: help dev build gallery gallery\:gif sitemap deploy android android\:init android\:sync android\:build android\:release android\:open install clean fix lint format check pull push i18n\:pull i18n\:push i18n\:xlate i18n\:xlate\:static i18n\:xlate\:locales i18n\:fill i18n\:fill\:static i18n\:fill\:locales icons icons\:android android\:run android\:keystore android\:bump zip dep sonar sonar-report test test\:basic test\:advanced test\:pro test\:tiers test\:ui test\:permutations test\:report
 
 # ============================================
 # Help
@@ -68,13 +68,13 @@ help:
 	@echo "    make sonar-report   Get full issues report from SonarQube"
 	@echo ""
 	@echo "  UI TESTING (Playwright)"
-	@echo "    make test           Run all tests"
-	@echo "    make test:basic     Run basic tier UI tests"
-	@echo "    make test:advanced  Run advanced tier UI tests"
-	@echo "    make test:pro       Run professional tier UI tests"
-	@echo "    make test:all       Run all tier tests sequentially"
+	@echo "    make test           Run ALL tests (basic + advanced + pro + permutations)"
+	@echo "    make test:basic     Run basic tier UI tests only"
+	@echo "    make test:advanced  Run advanced tier UI tests only"
+	@echo "    make test:pro       Run professional tier UI tests only"
+	@echo "    make test:tiers     Run tier tests only (excludes permutations)"
 	@echo "    make test:ui        Open Playwright UI mode"
-	@echo "    make test:permutations  Run exhaustive permutation tests (long!)"
+	@echo "    make test:permutations  Run ONLY exhaustive permutation tests"
 	@echo "    make test:report        Show HTML test report"
 	@echo ""
 
@@ -479,38 +479,39 @@ sonar-report:
 # Tests are organized by tier: basic, advanced, professional
 # Permutation tests run exhaustive setting combinations (very long!)
 
-# Run all tests
+# Run ALL tests (basic + advanced + professional + permutations)
+# This is the comprehensive test target - use for full CI validation
 test:
-	npx playwright test
+	npx playwright test --project=basic --project=advanced --project=professional --project=permutations
 
-# Run basic tier tests only
+# Run basic tier tests only (tests/basic/*.spec.ts)
 test\:basic:
 	npx playwright test --project=basic
 
-# Run advanced tier tests only
+# Run advanced tier tests only (tests/advanced/*.spec.ts)
 test\:advanced:
 	npx playwright test --project=advanced
 
-# Run professional tier tests only
+# Run professional tier tests only (tests/professional/*.spec.ts)
 test\:pro:
 	npx playwright test --project=professional
 
-# Run all tiers sequentially
-test\:all:
+# Run all tier tests (basic + advanced + professional) but NOT permutations
+# Use this for faster feedback during development
+test\:tiers:
 	npx playwright test --project=basic --project=advanced --project=professional
 
 # Open Playwright UI mode for interactive debugging
 test\:ui:
 	npx playwright test --ui
 
-# Run ALL tests including exhaustive permutation tests (WARNING: very long running!)
-# This runs: basic, advanced, professional, AND permutations projects
-# Control permutations with environment variables:
+# Run ONLY exhaustive permutation tests (tests/permutations/*.spec.ts)
+# WARNING: Very long running! Control with environment variables:
 #   PERM_TIER=basic|advanced|professional
 #   PERM_SECTION=payload|overlay|render|etc
 #   PERM_MAX=50 (max permutations to test)
 test\:permutations:
-	npx playwright test --project=basic --project=advanced --project=professional --project=permutations
+	npx playwright test --project=permutations
 
 # Generate settings QR change report for manual review
 test\:report\:settings:
