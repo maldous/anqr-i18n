@@ -55,6 +55,7 @@ export function MetadataSection() {
           <HelpLink href="/guide#section-35" requiredTier="professional" />
         </div>
         <Input
+          data-testid="metadata-title-input"
           value={metadata.title}
           onChange={(e) => setMetadata({ title: e.target.value })}
           placeholder={t('metadata.titlePlaceholder')}
@@ -67,6 +68,7 @@ export function MetadataSection() {
           <HighlightedLabel>{t('metadata.author')}</HighlightedLabel>
         </Label>
         <Input
+          data-testid="metadata-author-input"
           value={metadata.author}
           onChange={(e) => setMetadata({ author: e.target.value })}
           placeholder={t('metadata.authorPlaceholder')}
@@ -79,6 +81,7 @@ export function MetadataSection() {
           <HighlightedLabel>{t('metadata.copyright')}</HighlightedLabel>
         </Label>
         <Input
+          data-testid="metadata-copyright-input"
           value={metadata.copyright}
           onChange={(e) => setMetadata({ copyright: e.target.value })}
           placeholder={t('metadata.copyrightPlaceholder')}
@@ -91,6 +94,7 @@ export function MetadataSection() {
           <HighlightedLabel>{t('metadata.license')}</HighlightedLabel>
         </Label>
         <Input
+          data-testid="metadata-license-input"
           value={metadata.license}
           onChange={(e) => setMetadata({ license: e.target.value })}
           placeholder={t('metadata.licensePlaceholder')}
@@ -103,6 +107,7 @@ export function MetadataSection() {
           <HighlightedLabel>{t('metadata.description')}</HighlightedLabel>
         </Label>
         <Textarea
+          data-testid="metadata-description-textarea"
           value={metadata.description}
           onChange={(e) => setMetadata({ description: e.target.value })}
           placeholder={t('metadata.descriptionPlaceholder')}
@@ -116,6 +121,7 @@ export function MetadataSection() {
           <HighlightedLabel>{t('metadata.includeCreationTime')}</HighlightedLabel>
         </Label>
         <Switch
+          data-testid="metadata-creation-time-switch"
           checked={metadata.creationTime}
           onCheckedChange={(checked) => setMetadata({ creationTime: checked })}
         />
@@ -127,20 +133,23 @@ export function MetadataSection() {
           <HighlightedLabel>{t('metadata.customMetadata')}</HighlightedLabel>
         </Label>
         {metadata.customKv.map((kv, index) => (
-          <div key={getKvId(index)} className="flex gap-2">
+          <div key={getKvId(index)} className="flex gap-2" data-testid={`metadata-custom-kv-row-${index}`}>
             <Input
+              data-testid={`metadata-custom-key-input-${index}`}
               value={kv.k}
               onChange={(e) => updateCustomKv(index, 'k', e.target.value)}
               placeholder={t('metadata.key')}
               className="flex-1"
             />
             <Input
+              data-testid={`metadata-custom-value-input-${index}`}
               value={kv.v}
               onChange={(e) => updateCustomKv(index, 'v', e.target.value)}
               placeholder={t('metadata.value')}
               className="flex-1"
             />
             <Button
+              data-testid={`metadata-custom-remove-button-${index}`}
               variant="ghost"
               size="icon"
               className="h-10 w-10"
@@ -150,7 +159,7 @@ export function MetadataSection() {
             </Button>
           </div>
         ))}
-        <Button variant="outline" size="sm" onClick={addCustomKv} className="w-full">
+        <Button data-testid="metadata-add-custom-button" variant="outline" size="sm" onClick={addCustomKv} className="w-full">
           <Plus className="h-4 w-4 mr-2" /> {t('metadata.addCustomField')}
         </Button>
       </div>

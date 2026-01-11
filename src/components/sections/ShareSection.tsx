@@ -318,6 +318,7 @@ export function ShareSection() {
           <p className="text-xs text-muted-foreground">{t('share.directLinkDesc')}</p>
         </div>
         <Switch
+          data-testid="share-direct-link-switch"
           checked={share.directLink}
           onCheckedChange={(checked) => setShare({ directLink: checked })}
         />
@@ -326,8 +327,8 @@ export function ShareSection() {
       {share.directLink && (
         <div className="space-y-2">
           <div className="flex gap-2">
-            <Input readOnly value={shareableUrl} className="flex-1 text-xs" />
-            <Button variant="outline" size="icon" onClick={() => handleCopy(shareableUrl, 'link')}>
+            <Input data-testid="share-direct-link-input" readOnly value={shareableUrl} className="flex-1 text-xs" />
+            <Button data-testid="share-copy-link-button" variant="outline" size="icon" onClick={() => handleCopy(shareableUrl, 'link')}>
               {copiedField === 'link' ? (
                 <Check className="h-4 w-4" />
               ) : (
@@ -347,6 +348,7 @@ export function ShareSection() {
           <p className="text-xs text-muted-foreground">{t('share.embedHtmlDesc')}</p>
         </div>
         <Switch
+          data-testid="share-embed-html-switch"
           checked={share.embedHtml}
           onCheckedChange={(checked) => setShare({ embedHtml: checked })}
         />
@@ -355,8 +357,8 @@ export function ShareSection() {
       {share.embedHtml && (
         <div className="space-y-2">
           <div className="flex gap-2">
-            <Input readOnly value={embedCode} className="flex-1 text-xs font-mono" />
-            <Button variant="outline" size="icon" onClick={() => handleCopy(embedCode, 'embed')}>
+            <Input data-testid="share-embed-code-input" readOnly value={embedCode} className="flex-1 text-xs font-mono" />
+            <Button data-testid="share-copy-embed-button" variant="outline" size="icon" onClick={() => handleCopy(embedCode, 'embed')}>
               {copiedField === 'embed' ? (
                 <Check className="h-4 w-4" />
               ) : (
@@ -366,12 +368,14 @@ export function ShareSection() {
           </div>
           <div className="flex gap-2">
             <Input
+              data-testid="share-markdown-input"
               readOnly
               value={markdownEmbed}
               className="flex-1 text-xs font-mono"
               placeholder={t('share.markdown')}
             />
             <Button
+              data-testid="share-copy-markdown-button"
               variant="outline"
               size="icon"
               onClick={() => handleCopy(markdownEmbed, 'markdown')}
@@ -395,6 +399,7 @@ export function ShareSection() {
           <p className="text-xs text-muted-foreground">{t('share.encodeAllParamsDesc')}</p>
         </div>
         <Switch
+          data-testid="share-encode-more-params-switch"
           checked={share.encodeMoreParams}
           onCheckedChange={(checked) => setShare({ encodeMoreParams: checked })}
         />
@@ -407,6 +412,7 @@ export function ShareSection() {
         </Label>
         <div className="flex gap-2">
           <Button
+            data-testid="share-quick-copy-button"
             variant="outline"
             size="sm"
             className="flex-1"
@@ -422,6 +428,7 @@ export function ShareSection() {
         </div>
         <div className="flex gap-2">
           <Button
+            data-testid="share-twitter-button"
             variant="outline"
             size="sm"
             className="flex-1"
@@ -430,6 +437,7 @@ export function ShareSection() {
             {t('share.twitter')}
           </Button>
           <Button
+            data-testid="share-whatsapp-button"
             variant="outline"
             size="sm"
             className="flex-1"
