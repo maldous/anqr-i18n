@@ -42,6 +42,9 @@ export default defineConfig({
   use: {
     baseURL: 'http://localhost:5173',
     
+    /* Use large viewport to reduce scrolling complexity */
+    viewport: { width: 1400, height: 900 },
+    
     /* Debugging: Gold standard trace capture */
     trace: 'on-first-retry', // Captures DOM snapshots, network waterfall, exact wait reasons
     screenshot: 'only-on-failure',

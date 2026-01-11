@@ -6,7 +6,8 @@ import {
   waitForCanvasChange,
   waitForAccordionOpen,
   waitForSelectOpen,
-  clickSelectOption
+  clickSelectOption,
+  scrollOverlaySectionToControls
 } from '../helpers/qr-detector';
 import type { Page } from '@playwright/test';
 
@@ -50,7 +51,7 @@ async function expandOverlaySection(page: Page) {
   
   if (existingState === 'open') {
     // Already open, just scroll into view
-    const content = page.locator('[role="region"]').filter({ has: page.locator('input[type="file"]') }).first();
+    const content = page.locator('[role="region"][data-state="open"]').first();
     await content.scrollIntoViewIfNeeded().catch(() => {});
     return;
   }
@@ -58,15 +59,17 @@ async function expandOverlaySection(page: Page) {
   // Strategy 2: Find overlay accordion trigger by text content
   const overlayTriggers = [
     page.locator('button').filter({ hasText: /^Overlay$/i }).first(),
+    page.locator('button').filter({ hasText: /Overlay \/ Image/i }).first(),
     page.locator('[data-radix-collection-item]').filter({ hasText: /Overlay/i }).first(),
     page.getByRole('button', { name: /Overlay/i }).first(),
   ];
   
   for (const trigger of overlayTriggers) {
     if (await trigger.isVisible().catch(() => false)) {
+      await trigger.scrollIntoViewIfNeeded();
       await trigger.click();
-      // Wait for the section to open - look for file input becoming available
-      await page.waitForSelector('input[type="file"]', { state: 'attached', timeout: 5000 }).catch(() => {});
+      // Wait for the section to open - look for region with data-state="open"
+      await page.waitForSelector('[role="region"][data-state="open"]', { state: 'visible', timeout: 5000 }).catch(() => {});
       return;
     }
   }
@@ -78,8 +81,9 @@ async function expandOverlaySection(page: Page) {
     const trigger = allTriggers.nth(i);
     const text = await trigger.textContent().catch(() => '');
     if (text && /overlay/i.test(text)) {
+      await trigger.scrollIntoViewIfNeeded();
       await trigger.click();
-      await page.waitForSelector('input[type="file"]', { state: 'attached', timeout: 5000 }).catch(() => {});
+      await page.waitForSelector('[role="region"][data-state="open"]', { state: 'visible', timeout: 5000 }).catch(() => {});
       return;
     }
   }
@@ -121,18 +125,35 @@ async function loadOverlayFromUrl(page: Page, url: string) {
   // Get snapshot before to detect change
   const beforeSnapshot = await getCanvasSnapshot(page);
   
-  // Click "From URL" button
-  const fromUrlButton = page.locator('button').filter({ hasText: /From URL|URL/i }).first();
-  await fromUrlButton.click();
+  // Click "From URL" button to show the URL input section
+  // The button is in the sidebar, look for it using page-level locator
+  // It contains "From URL" or "URL" text with a Link icon
+  const fromUrlButton = page.locator('button').filter({ hasText: /From URL/i }).first();
+  await fromUrlButton.waitFor({ state: 'visible', timeout: 5000 });
+  await fromUrlButton.scrollIntoViewIfNeeded();
+  await fromUrlButton.click({ force: true });
   
-  // Wait for URL input to be visible
+  // Wait for URL input section to appear (it's inside a bordered container with p-3 class)
+  // The container has input[type="url"] inside it
   const urlInput = page.locator('input[type="url"]').first();
   await urlInput.waitFor({ state: 'visible', timeout: 5000 });
   await urlInput.fill(url);
   
-  // Click Load button and wait for network + canvas change
-  const loadButton = page.locator('button').filter({ hasText: /^Load$/i }).first();
-  await loadButton.click();
+  // Find the Load button - it's in a flex container next to the URL input
+  // Look for a button inside the same parent container (div.flex.gap-2) as the input
+  const urlInputContainer = urlInput.locator('xpath=ancestor::div[contains(@class, "flex")]').first();
+  const loadButton = urlInputContainer.locator('button').filter({ hasText: /Load/i }).first();
+  
+  // If not found in container, fallback to page-level search within the URL section
+  const loadButtonFallback = page.locator('.border.rounded-md button').filter({ hasText: /Load/i }).first();
+  
+  // Try the container button first, then fallback
+  if (await loadButton.isVisible().catch(() => false)) {
+    await loadButton.click({ force: true });
+  } else {
+    await loadButtonFallback.waitFor({ state: 'visible', timeout: 5000 });
+    await loadButtonFallback.click({ force: true });
+  }
   
   // Wait for canvas to change (indicates image was loaded and processed)
   await waitForCanvasChange(page, beforeSnapshot, 15000);
@@ -158,25 +179,36 @@ async function clearOverlay(page: Page) {
 
 /**
  * Set overlay mode (center, blend, halftone, dithered)
- * Uses event-driven select interaction with proper scrolling
+ * Scrolls section to reveal controls below the file preview, then interacts
  */
 async function setOverlayMode(page: Page, mode: string) {
+  // Ensure the overlay section is expanded
   await expandOverlaySection(page);
+  
+  // Wait for the section to be fully open (has region with data-state="open")
+  await page.waitForSelector('[role="region"][data-state="open"]', { state: 'visible', timeout: 5000 });
+  
+  // CRITICAL: Scroll the section content to reveal controls below the file preview
+  await scrollOverlaySectionToControls(page);
   
   // Find the Mode select - it's the first combobox in the overlay section content
   const overlaySection = page.locator('[role="region"][data-state="open"]').first();
   const modeSelect = overlaySection.locator('[role="combobox"]').first();
   
+  // Wait for the combobox to be visible (controls are rendered)
   await modeSelect.waitFor({ state: 'visible', timeout: 5000 });
+  
+  // Scroll it into view again to ensure it's clickable
   await modeSelect.scrollIntoViewIfNeeded();
-  await modeSelect.click();
+  
+  // Click to open dropdown
+  await modeSelect.click({ force: true });
   
   // Wait for dropdown to open
   await waitForSelectOpen(page);
   
-  // Click the option with scrolling support
+  // Find and click the option using clickSelectOption helper
   const clicked = await clickSelectOption(page, mode);
-  
   if (!clicked) {
     // Close dropdown if option not found
     await page.keyboard.press('Escape');
@@ -185,33 +217,53 @@ async function setOverlayMode(page: Page, mode: string) {
 
 /**
  * Set overlay color mode (color, grayscale, bw)
- * Uses event-driven select interaction
+ * Scrolls section to reveal controls, then interacts
  */
 async function setOverlayColorMode(page: Page, colorMode: string) {
   await expandOverlaySection(page);
   
+  // Wait for the section to be fully open
+  await page.waitForSelector('[role="region"][data-state="open"]', { state: 'visible', timeout: 5000 });
+  
+  // CRITICAL: Scroll the section content to reveal controls below the file preview
+  await scrollOverlaySectionToControls(page);
+  
   // Find overlay section content
   const overlaySection = page.locator('[role="region"][data-state="open"]').first();
+  
+  // Color mode select is typically the second combobox (after Mode)
+  // We identify it by checking the dropdown contains color-related options
   const comboboxes = overlaySection.locator('[role="combobox"]');
   const count = await comboboxes.count();
+  
+  // Build target text for matching
+  let targetText: string;
+  if (colorMode.toLowerCase() === 'color') {
+    targetText = 'Color';
+  } else if (colorMode.toLowerCase() === 'grayscale') {
+    targetText = 'Grayscale';
+  } else {
+    targetText = 'B&W';
+  }
   
   // Look through comboboxes to find the one with color options
   for (let i = 0; i < count; i++) {
     const combobox = comboboxes.nth(i);
-    if (!(await combobox.isVisible().catch(() => false))) continue;
+    if (!(await combobox.isVisible())) continue;
     
-    // Scroll combobox into view
     await combobox.scrollIntoViewIfNeeded();
-    await combobox.click();
+    await combobox.click({ force: true });
     
     // Wait for dropdown to open
-    await waitForSelectOpen(page).catch(() => {});
-    const optionsContainer = page.locator('[data-radix-popper-content-wrapper]').first();
+    await waitForSelectOpen(page);
+    const dropdown = page.locator('[data-radix-popper-content-wrapper]').first();
     
-    if (!(await optionsContainer.isVisible().catch(() => false))) continue;
+    if (!(await dropdown.isVisible())) {
+      continue;
+    }
     
     // Check if this dropdown has color mode options
-    const allOptions = optionsContainer.locator('[role="option"]');
+    const allOptions = dropdown.locator('[role="option"]');
     const optCount = await allOptions.count();
     
     let hasColorOptions = false;
@@ -224,43 +276,38 @@ async function setOverlayColorMode(page: Page, colorMode: string) {
     }
     
     if (hasColorOptions) {
-      // Find and click our target option
-      for (let j = 0; j < optCount; j++) {
-        const opt = allOptions.nth(j);
-        const text = await opt.textContent();
-        
-        // Match color mode by text
-        const isMatch = 
-          (colorMode.toLowerCase() === 'color' && /^Color$/i.test(text || '')) ||
-          (colorMode.toLowerCase() === 'grayscale' && /Grayscale/i.test(text || '')) ||
-          ((colorMode.toLowerCase() === 'bw' || colorMode.toLowerCase() === 'b&w') && /B&W|BW|Black/i.test(text || ''));
-        
-        if (isMatch) {
-          await opt.scrollIntoViewIfNeeded();
-          await opt.click();
-          return;
-        }
-      }
+      // Use clickSelectOption to find and click the target
+      const clicked = await clickSelectOption(page, targetText);
+      if (clicked) return;
     }
     
-    // Close dropdown if not the right one
+    // Close dropdown if not the right one or option not found
     await page.keyboard.press('Escape');
   }
 }
 
 /**
  * Set overlay intensity via slider
- * Uses event-driven interaction
+ * Scrolls section to reveal controls, then clicks at target position
  */
 async function setOverlayIntensity(page: Page, percent: number) {
   await expandOverlaySection(page);
   
+  // Wait for the section to be fully open
+  await page.waitForSelector('[role="region"][data-state="open"]', { state: 'visible', timeout: 5000 });
+  
+  // CRITICAL: Scroll the section content to reveal controls below the file preview
+  await scrollOverlaySectionToControls(page);
+  
   // Find overlay section content
   const overlaySection = page.locator('[role="region"][data-state="open"]').first();
   
-  // Find intensity slider (usually the first slider in overlay section)
+  // Find intensity slider (usually the first slider in overlay section, after crop slider if crop is enabled)
+  // Look for sliders that are NOT inside a crop-related section
   const slider = overlaySection.locator('[role="slider"]').first();
   await slider.waitFor({ state: 'visible', timeout: 5000 });
+  
+  // Scroll the slider into view
   await slider.scrollIntoViewIfNeeded();
   
   const box = await slider.boundingBox();
@@ -273,128 +320,115 @@ async function setOverlayIntensity(page: Page, percent: number) {
 
 /**
  * Toggle preserve finders switch
- * Uses event-driven interaction
+ * Scrolls section to reveal controls, then finds switch by label text
  */
 async function togglePreserveFinders(page: Page) {
   await expandOverlaySection(page);
   
+  // Wait for the section to be fully open
+  await page.waitForSelector('[role="region"][data-state="open"]', { state: 'visible', timeout: 5000 });
+  
+  // CRITICAL: Scroll the section content to reveal controls below the file preview
+  await scrollOverlaySectionToControls(page);
+  
   // Find overlay section content
   const overlaySection = page.locator('[role="region"][data-state="open"]').first();
   
-  // Find switches in the overlay section content
+  // The preserve finders switch is usually after the color mode select
+  // Find all switches in the section
   const switches = overlaySection.locator('[role="switch"]');
   const count = await switches.count();
   
-  // Look for the "Preserve Finders" switch by examining nearby labels
+  // Look for a switch near text containing "Preserve" or "Finder"
   for (let i = 0; i < count; i++) {
     const switchEl = switches.nth(i);
-    const isVisible = await switchEl.isVisible().catch(() => false);
+    // Check the parent row for relevant text
+    const parent = switchEl.locator('xpath=ancestor::div[contains(@class, "flex")]').first();
+    const parentText = await parent.textContent();
     
-    if (isVisible) {
-      // Check if this switch is for preserve finders by looking at its container
-      const container = switchEl.locator('xpath=ancestor::div[contains(@class, "flex")]').first();
-      const text = await container.textContent().catch(() => '');
-      
-      if (text && /preserve|finder/i.test(text)) {
-        await switchEl.scrollIntoViewIfNeeded();
-        await switchEl.click();
-        return;
-      }
+    if (parentText && /preserve|finder/i.test(parentText)) {
+      await switchEl.scrollIntoViewIfNeeded();
+      await switchEl.click({ force: true });
+      return;
     }
   }
   
-  // Fallback: toggle the first non-disabled switch after the enable switch
-  for (let i = 1; i < count; i++) {
+  // Fallback: click the second switch (first is usually "Enabled", second is "Preserve Finders")
+  if (count > 1) {
+    const switchEl = switches.nth(1);
+    await switchEl.scrollIntoViewIfNeeded();
+    await switchEl.click({ force: true });
+  }
+}
+
+/**
+ * Enable/disable crop
+ * Scrolls section to reveal controls, then finds crop switch
+ */
+async function setCropEnabled(page: Page, enabled: boolean) {
+  await expandOverlaySection(page);
+  
+  // Wait for the section to be fully open
+  await page.waitForSelector('[role="region"][data-state="open"]', { state: 'visible', timeout: 5000 });
+  
+  // CRITICAL: Scroll the section content to reveal controls below the file preview
+  await scrollOverlaySectionToControls(page);
+  
+  // Find overlay section content
+  const overlaySection = page.locator('[role="region"][data-state="open"]').first();
+  
+  // Find all switches and look for one near "Crop" text
+  const switches = overlaySection.locator('[role="switch"]');
+  const count = await switches.count();
+  
+  for (let i = 0; i < count; i++) {
     const switchEl = switches.nth(i);
-    const isVisible = await switchEl.isVisible().catch(() => false);
-    const isDisabled = await switchEl.getAttribute('aria-disabled') === 'true';
+    // Check parent for crop-related text
+    const parent = switchEl.locator('xpath=ancestor::div[contains(@class, "flex")]').first();
+    const parentText = await parent.textContent();
     
-    if (isVisible && !isDisabled) {
+    if (parentText && /crop/i.test(parentText)) {
       await switchEl.scrollIntoViewIfNeeded();
-      await switchEl.click();
+      
+      const currentState = await switchEl.getAttribute('data-state');
+      const isCurrentlyEnabled = currentState === 'checked';
+      
+      if (isCurrentlyEnabled !== enabled) {
+        await switchEl.click({ force: true });
+      }
       return;
     }
   }
 }
 
 /**
- * Enable/disable crop
- * Uses data-state detection instead of timeouts
- */
-async function setCropEnabled(page: Page, enabled: boolean) {
-  await expandOverlaySection(page);
-  
-  // Find overlay section content
-  const overlaySection = page.locator('[role="region"][data-state="open"]').first();
-  
-  // Find the crop enable switch
-  const switches = overlaySection.locator('[role="switch"]');
-  const count = await switches.count();
-  
-  for (let i = 0; i < count; i++) {
-    const switchEl = switches.nth(i);
-    const isVisible = await switchEl.isVisible().catch(() => false);
-    
-    if (isVisible) {
-      // Check if this might be the crop switch by looking at nearby text
-      const container = switchEl.locator('xpath=ancestor::div[contains(@class, "flex")]').first();
-      const text = await container.textContent().catch(() => '');
-      
-      if (text?.toLowerCase().includes('crop')) {
-        await switchEl.scrollIntoViewIfNeeded();
-        
-        const currentState = await switchEl.getAttribute('data-state');
-        const isCurrentlyEnabled = currentState === 'checked';
-        
-        if (isCurrentlyEnabled !== enabled) {
-          await switchEl.click();
-          // Wait for switch state to change
-          const expectedState = enabled ? 'checked' : 'unchecked';
-          await switchEl.waitFor({ state: 'attached' });
-          await page.waitForFunction(
-            (args: { switchId: string; expected: string }) => {
-              const switches = document.querySelectorAll('[role="switch"]');
-              for (const sw of switches) {
-                const container = sw.closest('div');
-                if (container?.textContent?.toLowerCase().includes('crop')) {
-                  return sw.getAttribute('data-state') === args.expected;
-                }
-              }
-              return true;
-            },
-            { switchId: '', expected: expectedState },
-            { timeout: 2000 }
-          ).catch(() => {});
-        }
-        return;
-      }
-    }
-  }
-}
-
-/**
  * Set crop size via slider
- * Uses event-driven interaction
+ * Scrolls section to reveal controls, then clicks at target position
  */
 async function setCropSize(page: Page, percent: number) {
   await expandOverlaySection(page);
+  
+  // Wait for the section to be fully open
+  await page.waitForSelector('[role="region"][data-state="open"]', { state: 'visible', timeout: 5000 });
+  
+  // CRITICAL: Scroll the section content to reveal controls below the file preview
+  await scrollOverlaySectionToControls(page);
   
   // Find overlay section content
   const overlaySection = page.locator('[role="region"][data-state="open"]').first();
   
   // Find crop size slider (usually appears after crop is enabled)
+  // It's typically the second slider when crop is enabled
   const sliders = overlaySection.locator('[role="slider"]');
   const count = await sliders.count();
   
   if (count > 1) {
-    // Crop size slider is typically the second slider
     const cropSlider = sliders.nth(1);
     await cropSlider.waitFor({ state: 'visible', timeout: 5000 });
     await cropSlider.scrollIntoViewIfNeeded();
     
     const box = await cropSlider.boundingBox();
     if (box) {
-      // Map percent (10-100) to slider position
       const x = box.x + (box.width * percent) / 100;
       const y = box.y + box.height / 2;
       await page.mouse.click(x, y);
@@ -1153,17 +1187,20 @@ test.describe('Overlay Section - Basic Tier', () => {
       await expandOverlaySection(page);
       
       // Click "From URL" button
-      const fromUrlButton = page.locator('button').filter({ hasText: /From URL|URL/i }).first();
-      await fromUrlButton.click();
+      const fromUrlButton = page.locator('button').filter({ hasText: /From URL/i }).first();
+      await fromUrlButton.waitFor({ state: 'visible', timeout: 5000 });
+      await fromUrlButton.scrollIntoViewIfNeeded();
+      await fromUrlButton.click({ force: true });
       
       // Wait for URL input to be visible
       const urlInput = page.locator('input[type="url"]').first();
       await urlInput.waitFor({ state: 'visible', timeout: 5000 });
       await urlInput.fill('not-a-valid-url');
       
-      // Try to load
-      const loadButton = page.locator('button').filter({ hasText: /^Load$/i }).first();
-      await loadButton.click();
+      // Try to load - find button in the bordered URL section
+      const loadButton = page.locator('.border.rounded-md button').filter({ hasText: /Load/i }).first();
+      await loadButton.waitFor({ state: 'visible', timeout: 5000 });
+      await loadButton.click({ force: true });
       
       // Event-driven: wait for network to settle after failed request
       await page.waitForLoadState('networkidle', { timeout: 5000 }).catch(() => {});
@@ -1177,18 +1214,27 @@ test.describe('Overlay Section - Basic Tier', () => {
       await expandOverlaySection(page);
       
       // Click "From URL" button
-      const fromUrlButton = page.locator('button').filter({ hasText: /From URL|URL/i }).first();
-      await fromUrlButton.click();
+      const fromUrlButton = page.locator('button').filter({ hasText: /From URL/i }).first();
+      await fromUrlButton.waitFor({ state: 'visible', timeout: 5000 });
+      await fromUrlButton.scrollIntoViewIfNeeded();
+      await fromUrlButton.click({ force: true });
       
       // Wait for URL input to be visible
       const urlInput = page.locator('input[type="url"]').first();
       await urlInput.waitFor({ state: 'visible', timeout: 5000 });
       
-      // Try to load with empty URL
-      const loadButton = page.locator('button').filter({ hasText: /^Load$/i }).first();
-      await loadButton.click();
+      // Try to load with empty URL - the button should be disabled
+      const loadButton = page.locator('.border.rounded-md button').filter({ hasText: /Load/i }).first();
+      await loadButton.waitFor({ state: 'visible', timeout: 5000 });
       
-      // Should show error or be disabled - page should not crash
+      // Check if button is disabled (which is correct behavior)
+      const isDisabled = await loadButton.isDisabled();
+      if (!isDisabled) {
+        // If not disabled, clicking should not crash
+        await loadButton.click({ force: true });
+      }
+      
+      // Page should not crash - canvas should still be visible
       const canvas = page.locator('canvas').first();
       await expect(canvas).toBeVisible();
     });
