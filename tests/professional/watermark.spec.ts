@@ -31,11 +31,25 @@ async function expandWatermarkSection(page: Page) {
     await waitForRenderComplete(page, 'settle');
   }
   
-  // Find and click Watermark accordion trigger
-  const watermarkTrigger = page.locator('button').filter({ hasText: /^Watermark$/i }).first();
-  if (await watermarkTrigger.count() > 0) {
-    await watermarkTrigger.scrollIntoViewIfNeeded();
-    await watermarkTrigger.click();
+  // Use data-testid for stable selection - scroll sidebar first to reveal pro sections
+  const sidebar = page.locator('[data-testid="sidebar-scroll"]');
+  if (await sidebar.count() > 0) {
+    // Scroll sidebar to bottom to reveal professional tier sections
+    await sidebar.evaluate(el => el.scrollTop = el.scrollHeight);
+    await page.waitForTimeout(100); // Brief wait for scroll to settle
+  }
+  
+  // Find and click Watermark accordion trigger using data-testid
+  const watermarkTrigger = page.locator('[data-testid="accordion-watermark"] button[data-state]').first();
+  
+  // Fallback to text-based selector if data-testid not found
+  const triggerToUse = await watermarkTrigger.count() > 0 
+    ? watermarkTrigger 
+    : page.locator('button').filter({ hasText: /Watermark/i }).first();
+  
+  if (await triggerToUse.count() > 0) {
+    await triggerToUse.scrollIntoViewIfNeeded();
+    await triggerToUse.click();
     await waitForAccordionOpen(page);
     await waitForRenderComplete(page, 'settle');
   }
