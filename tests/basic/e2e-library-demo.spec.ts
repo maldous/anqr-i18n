@@ -37,47 +37,49 @@ test.describe('E2E Library Demo', () => {
     test('can open and close accordion sections', async ({ page }) => {
       const ctx = createTestContext(page);
       
-      // Open QR Encoding section
-      await ctx.qrEncoding.open();
-      expect(await ctx.qrEncoding.isOpen()).toBe(true);
+      // Open Payload section (basic tier)
+      await ctx.payload.open();
+      expect(await ctx.payload.isOpen()).toBe(true);
       
-      // Open Render section (may auto-close QR Encoding depending on accordion mode)
-      await ctx.render.open();
-      expect(await ctx.render.isOpen()).toBe(true);
+      // Open Overlay section (basic tier)
+      await ctx.overlay.open();
+      expect(await ctx.overlay.isOpen()).toBe(true);
       
-      // Close Render section
-      await ctx.render.close();
-      expect(await ctx.render.isOpen()).toBe(false);
+      // Close Overlay section
+      await ctx.overlay.close();
+      expect(await ctx.overlay.isOpen()).toBe(false);
     });
 
     test('can access controls within a section', async ({ page }) => {
       const ctx = createTestContext(page);
       
-      await ctx.qrEncoding.open();
-      const region = ctx.qrEncoding.getRegion();
+      await ctx.payload.open();
+      const region = ctx.payload.getRegion();
       
-      // Find a slider within the section
-      const slider = region.locator('[role="slider"]').first();
-      await expect(slider).toBeVisible();
+      // Find an input or textarea within the section
+      const input = region.locator('input, textarea').first();
+      await expect(input).toBeVisible();
     });
   });
 
   test.describe('Select Interactions', () => {
-    test('can change ECC level and verify render update', async ({ page }) => {
+    test('can change content type and verify render update', async ({ page }) => {
       const ctx = createTestContext(page);
       
-      // Take initial snapshot
+      // Open Payload section and find content type select (basic tier)
+      await ctx.payload.open();
+      const region = ctx.payload.getRegion();
+      const contentTypeSelect = new SelectHelper(region.locator('[role="combobox"]').first());
+      
+      // First ensure we're on Plain Text (to have a different starting point)
+      await contentTypeSelect.choose('Plain Text');
+      await ctx.waitForRender();
+      
+      // Take snapshot after switching to Plain Text
       const before = await ctx.getSnapshot();
       
-      // Open QR Encoding section and find ECC select
-      await ctx.qrEncoding.open();
-      const region = ctx.qrEncoding.getRegion();
-      const eccSelect = new SelectHelper(region.locator('[role="combobox"]').first());
-      
-      // Change ECC to H (highest)
-      await eccSelect.choose('H');
-      
-      // Wait for render to complete
+      // Now change to URL (should produce different QR)
+      await contentTypeSelect.choose('URL');
       await ctx.waitForRender();
       
       // Verify QR changed
@@ -88,8 +90,8 @@ test.describe('E2E Library Demo', () => {
     test('select has proper ARIA attributes', async ({ page }) => {
       const ctx = createTestContext(page);
       
-      await ctx.qrEncoding.open();
-      const region = ctx.qrEncoding.getRegion();
+      await ctx.payload.open();
+      const region = ctx.payload.getRegion();
       const select = region.locator('[role="combobox"]').first();
       
       await assertSelectAccessibility(select);
@@ -97,24 +99,24 @@ test.describe('E2E Library Demo', () => {
   });
 
   test.describe('Slider Interactions', () => {
-    test('can change version slider and verify render update', async ({ page }) => {
+    test('can change overlay intensity slider and verify render update', async ({ page }) => {
       const ctx = createTestContext(page);
+      
+      // First upload an overlay image to enable the intensity slider
+      await ctx.overlay.open();
+      // Use page-level file input selector - more reliable
+      const fileInput = page.locator('input[type="file"]').first();
+      await fileInput.setInputFiles('public/tsunami.jpg');
+      await ctx.waitForRender();
       
       const before = await ctx.getSnapshot();
       
-      await ctx.qrEncoding.open();
-      const region = ctx.qrEncoding.getRegion();
-      
-      // Find the version slider (contains role="slider")
-      const sliderContainer = region.locator('.relative').filter({ has: page.locator('[role="slider"]') }).first();
+      // Find the intensity slider using data-testid
+      const sliderContainer = page.locator('[data-testid="overlay-intensity-slider"]').first();
       const slider = new SliderHelper(sliderContainer);
       
-      // Get current value
-      const currentValue = await slider.getValue();
-      
-      // Set to a different value (e.g., version 5)
-      const newValue = currentValue === 5 ? 10 : 5;
-      await slider.setValue(newValue);
+      // Set to a different value
+      await slider.setValue(25);
       
       await ctx.waitForRender();
       
@@ -125,9 +127,13 @@ test.describe('E2E Library Demo', () => {
     test('slider has proper ARIA attributes', async ({ page }) => {
       const ctx = createTestContext(page);
       
-      await ctx.qrEncoding.open();
-      const region = ctx.qrEncoding.getRegion();
-      const sliderContainer = region.locator('.relative').filter({ has: page.locator('[role="slider"]') }).first();
+      // Upload overlay to enable sliders
+      await ctx.overlay.open();
+      const fileInput = page.locator('input[type="file"]').first();
+      await fileInput.setInputFiles('public/tsunami.jpg');
+      await ctx.waitForRender();
+      
+      const sliderContainer = page.locator('[data-testid="overlay-intensity-slider"]').first();
       
       await assertSliderAccessibility(sliderContainer);
     });
@@ -135,9 +141,13 @@ test.describe('E2E Library Demo', () => {
     test('slider is keyboard operable', async ({ page }) => {
       const ctx = createTestContext(page);
       
-      await ctx.qrEncoding.open();
-      const region = ctx.qrEncoding.getRegion();
-      const sliderThumb = region.locator('[role="slider"]').first();
+      // Upload overlay to enable sliders
+      await ctx.overlay.open();
+      const fileInput = page.locator('input[type="file"]').first();
+      await fileInput.setInputFiles('public/tsunami.jpg');
+      await ctx.waitForRender();
+      
+      const sliderThumb = page.locator('[data-testid="overlay-intensity-slider"] [role="slider"]').first();
       
       await assertKeyboardFocusable(sliderThumb);
       
@@ -154,14 +164,17 @@ test.describe('E2E Library Demo', () => {
   });
 
   test.describe('Switch Interactions', () => {
-    test('can toggle transparent background', async ({ page }) => {
+    test('can toggle overlay enabled switch', async ({ page }) => {
       const ctx = createTestContext(page);
       
-      await ctx.render.open();
-      const region = ctx.render.getRegion();
+      // First upload an overlay to enable the switch
+      await ctx.overlay.open();
+      const fileInput = page.locator('input[type="file"]').first();
+      await fileInput.setInputFiles('public/tsunami.jpg');
+      await ctx.waitForRender();
       
-      // Find a switch in the render section
-      const switchEl = region.locator('[role="switch"]').first();
+      // Find the enabled switch using data-testid
+      const switchEl = page.locator('[data-testid="overlay-enabled-switch"]').first();
       const switchHelper = new SwitchHelper(switchEl);
       
       const before = await switchHelper.isChecked();
@@ -174,9 +187,13 @@ test.describe('E2E Library Demo', () => {
     test('switch has proper ARIA attributes', async ({ page }) => {
       const ctx = createTestContext(page);
       
-      await ctx.render.open();
-      const region = ctx.render.getRegion();
-      const switchEl = region.locator('[role="switch"]').first();
+      // Upload overlay to enable the switch
+      await ctx.overlay.open();
+      const fileInput = page.locator('input[type="file"]').first();
+      await fileInput.setInputFiles('public/tsunami.jpg');
+      await ctx.waitForRender();
+      
+      const switchEl = page.locator('[data-testid="overlay-enabled-switch"]').first();
       
       await assertSwitchAccessibility(switchEl);
     });
@@ -184,9 +201,13 @@ test.describe('E2E Library Demo', () => {
     test('switch is keyboard operable', async ({ page }) => {
       const ctx = createTestContext(page);
       
-      await ctx.render.open();
-      const region = ctx.render.getRegion();
-      const switchEl = region.locator('[role="switch"]').first();
+      // Upload overlay to enable the switch
+      await ctx.overlay.open();
+      const fileInput = page.locator('input[type="file"]').first();
+      await fileInput.setInputFiles('public/tsunami.jpg');
+      await ctx.waitForRender();
+      
+      const switchEl = page.locator('[data-testid="overlay-enabled-switch"]').first();
       
       await assertKeyboardFocusable(switchEl);
       
@@ -282,11 +303,11 @@ test.describe('E2E Library Demo', () => {
       
       const snapshot1 = await ctx.getSnapshot();
       
-      // Change foreground color
-      await ctx.render.open();
-      const region = ctx.render.getRegion();
-      const colorInput = region.locator('input[type="color"], input[type="text"]').first();
-      await colorInput.fill('#ff0000');
+      // Change payload text (basic tier)
+      await ctx.payload.open();
+      const region = ctx.payload.getRegion();
+      const textInput = region.locator('input, textarea').first();
+      await textInput.fill('https://different-url.com/test');
       
       await ctx.waitForRender();
       

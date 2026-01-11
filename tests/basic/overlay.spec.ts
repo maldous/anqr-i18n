@@ -313,7 +313,7 @@ async function setPayloadText(page: Page, text: string) {
 
 test.describe('Overlay Section - Basic Tier', () => {
   test.beforeEach(async ({ page, setTier, waitForQRRender }) => {
-    await page.goto('/');
+    // Note: page.goto('/') is handled by resetAppState in test-fixtures.ts
     await setTier('basic');
     await page.waitForSelector('canvas', { timeout: 10000 });
     // Event-driven: wait for canvas to stabilize instead of arbitrary timeout
@@ -759,28 +759,16 @@ test.describe('Overlay Section - Basic Tier', () => {
     test('enabling crop shows crop controls', async ({ page, waitForQRRender }) => {
       await expandOverlaySection(page);
       
-      // Count sliders before enabling crop
-      const overlaySection = page.locator('[role="region"][data-state="open"]').first();
-      const slidersBefore = await overlaySection.locator('[role="slider"]').count();
-      
       // Enable crop
       await setCropEnabled(page, true);
+      await waitForQRRender();
       
-      // Wait for new slider to appear
-      await page.waitForFunction(
-        (prevCount: number) => {
-          const section = document.querySelector('[role="region"][data-state="open"]');
-          if (!section) return false;
-          return section.querySelectorAll('[role="slider"]').length > prevCount;
-        },
-        slidersBefore,
-        { timeout: 5000 }
-      );
-      // Count sliders after
-      const slidersAfter = await overlaySection.locator('[role="slider"]').count();
+      // Verify the crop slider is visible using data-testid
+      const cropSlider = page.locator('[data-testid="overlay-crop-slider"]');
+      await cropSlider.waitFor({ state: 'visible', timeout: 5000 });
       
-      // Should have more controls after enabling crop
-      expect(slidersAfter).toBeGreaterThanOrEqual(slidersBefore);
+      // Should have crop slider visible after enabling crop
+      expect(await cropSlider.isVisible()).toBe(true);
     });
 
     test('changing crop size changes QR', async ({ page, waitForQRRender }) => {

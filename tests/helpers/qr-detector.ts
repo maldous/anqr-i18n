@@ -451,7 +451,8 @@ export async function selectDropdownOption(
   
   // Find the option by text and click it directly
   const dropdown = page.locator('[data-radix-popper-content-wrapper]').first();
-  const option = dropdown.locator('[role="option"]').filter({ hasText: new RegExp(`^${optionText}$|^${optionText}\\s|\\s${optionText}$`, 'i') }).first();
+  // Use simple case-insensitive contains match - the strict regex was failing to find options
+  const option = dropdown.locator('[role="option"]').filter({ hasText: new RegExp(optionText, 'i') }).first();
   
   if (await option.count() > 0) {
     await option.click({ force: true });

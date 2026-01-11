@@ -42,6 +42,20 @@ export type SectionName =
   | 'Metadata'
   | 'Share';
 
+// Map section display names to their data-testid IDs
+const SECTION_NAME_TO_ID: Record<SectionName, string> = {
+  'Payload': 'payload',
+  'QR Encoding': 'qr',
+  'Render': 'render',
+  'Overlay': 'overlay',
+  'Watermark': 'watermark',
+  'Animation': 'animation',
+  'Safety': 'safety',
+  'Output': 'output',
+  'Metadata': 'metadata',
+  'Share': 'share',
+};
+
 // =============================================================================
 // 1. DETERMINISTIC EVENT-DRIVEN WAITS
 // =============================================================================
@@ -221,13 +235,16 @@ export function getCanvas(page: Page): Locator {
 export class SidebarSection {
   private page: Page;
   private name: SectionName;
+  private sectionId: string;
   private trigger: Locator;
   
   constructor(page: Page, name: SectionName) {
     this.page = page;
     this.name = name;
-    // Find trigger by text content within accordion triggers
-    this.trigger = page.locator('[data-state]').filter({ hasText: new RegExp(`^${name}$`, 'i') }).first();
+    this.sectionId = SECTION_NAME_TO_ID[name];
+    // Find trigger using data-testid for reliable selection
+    // The accordion item has data-testid="accordion-{id}" and the trigger is a button with data-state inside
+    this.trigger = page.locator(`[data-testid="accordion-${this.sectionId}"] button[data-state]`).first();
   }
   
   /**
