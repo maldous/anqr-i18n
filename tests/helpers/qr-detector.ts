@@ -378,37 +378,32 @@ export async function waitForSelectClosed(page: Page, timeout = DEFAULT_TIMEOUT)
 }
 
 /**
- * Click an option in an open Radix select
+ * Click an option in an open Radix select by index
  * Uses keyboard navigation for reliable scrolling within dropdowns
  * Event-driven: No arbitrary timeouts
+ * 
+ * @param page - Playwright page
+ * @param optionIndex - Index of the option to select (0-based)
+ * @param timeout - Maximum timeout
  */
 export async function clickSelectOption(
   page: Page,
-  optionText: string,
+  optionIndex: number,
   timeout = DEFAULT_TIMEOUT
 ): Promise<boolean> {
   const dropdown = page.locator('[data-radix-popper-content-wrapper]').first();
   await dropdown.waitFor({ state: 'visible', timeout });
   
-  // Get all options and find target index
+  // Get all options
   const allOptions = dropdown.locator('[role="option"]');
   const count = await allOptions.count();
   
-  let targetIndex = -1;
-  for (let i = 0; i < count; i++) {
-    const text = await allOptions.nth(i).textContent();
-    if (text && new RegExp(optionText, 'i').test(text.trim())) {
-      targetIndex = i;
-      break;
-    }
-  }
-  
-  if (targetIndex === -1) return false;
+  if (optionIndex < 0 || optionIndex >= count) return false;
   
   // Use keyboard navigation - more reliable than click for scrolling
   // Press Home to go to first option, then arrow down to target
   await page.keyboard.press('Home');
-  for (let i = 0; i < targetIndex; i++) {
+  for (let i = 0; i < optionIndex; i++) {
     await page.keyboard.press('ArrowDown');
   }
   
@@ -420,9 +415,10 @@ export async function clickSelectOption(
       const target = options[idx];
       return target && (target.getAttribute('data-highlighted') === '' || target.getAttribute('data-state') === 'checked');
     },
-    targetIndex,
+    optionIndex,
     { timeout: 2000, polling: 16 }
-  );
+  ).catch(() => {});
+  
   // Press Enter to select
   await page.keyboard.press('Enter');
   return true;
@@ -430,12 +426,16 @@ export async function clickSelectOption(
 
 /**
  * Select an option from a dropdown using data-testid
- * Opens the dropdown, selects option, and waits for close
+ * Uses keyboard navigation for i18n compatibility
+ * 
+ * @param page - Playwright page
+ * @param selectTestId - data-testid of the select trigger
+ * @param optionValue - The data-value attribute of the option, or the option index if numeric
  */
 export async function selectDropdownOption(
   page: Page,
   selectTestId: string,
-  optionText: string
+  optionValue: string | number
 ): Promise<boolean> {
   const select = page.locator(`[data-testid="${selectTestId}"]`);
   
@@ -449,26 +449,71 @@ export async function selectDropdownOption(
   // Wait for dropdown to appear
   await waitForSelectOpen(page);
   
-  // Find the option by text and click it directly
   const dropdown = page.locator('[data-radix-popper-content-wrapper]').first();
-  // Use simple case-insensitive contains match - the strict regex was failing to find options
-  const option = dropdown.locator('[role="option"]').filter({ hasText: new RegExp(optionText, 'i') }).first();
+  const allOptions = dropdown.locator('[role="option"]');
+  const count = await allOptions.count();
   
-  if (await option.count() > 0) {
-    await option.click({ force: true });
-    // Wait for dropdown to close
-    await waitForSelectClosed(page);
-    return true;
-  }
-  
-  // Fallback: try keyboard navigation
-  const clicked = await clickSelectOption(page, optionText);
-  
-  if (!clicked) {
+  if (count === 0) {
     await page.keyboard.press('Escape');
+    return false;
   }
   
-  return clicked;
+  let targetIndex = -1;
+  
+  // If optionValue is a number, use it directly as index
+  if (typeof optionValue === 'number') {
+    targetIndex = optionValue;
+  } else {
+    // Try to find by data-value attribute first (i18n safe)
+    for (let i = 0; i < count; i++) {
+      const value = await allOptions.nth(i).getAttribute('data-value');
+      if (value && value.toLowerCase() === optionValue.toLowerCase()) {
+        targetIndex = i;
+        break;
+      }
+    }
+    
+    // If not found by data-value, try text content as last resort
+    if (targetIndex === -1) {
+      for (let i = 0; i < count; i++) {
+        const text = await allOptions.nth(i).textContent();
+        if (text && new RegExp(optionValue, 'i').test(text.trim())) {
+          targetIndex = i;
+          break;
+        }
+      }
+    }
+  }
+  
+  if (targetIndex === -1 || targetIndex >= count) {
+    await page.keyboard.press('Escape');
+    return false;
+  }
+  
+  // Use keyboard navigation for reliable scrolling and selection
+  await page.keyboard.press('Home');
+  for (let i = 0; i < targetIndex; i++) {
+    await page.keyboard.press('ArrowDown');
+  }
+  
+  // Wait for option to be highlighted
+  await page.waitForFunction(
+    (idx: number) => {
+      const options = document.querySelectorAll('[data-radix-popper-content-wrapper] [role="option"]');
+      const target = options[idx];
+      return target && (target.getAttribute('data-highlighted') === '' || target.hasAttribute('data-highlighted'));
+    },
+    targetIndex,
+    { timeout: 2000, polling: 16 }
+  ).catch(() => {});
+  
+  // Press Enter to select
+  await page.keyboard.press('Enter');
+  
+  // Wait for dropdown to close
+  await waitForSelectClosed(page).catch(() => {});
+  
+  return true;
 }
 
 /**

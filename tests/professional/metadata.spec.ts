@@ -41,11 +41,7 @@ async function expandMetadataSection(page: Page) {
   
   // Find and click Metadata accordion trigger using data-testid
   const metadataTrigger = page.locator('[data-testid="accordion-metadata"] button[data-state]').first();
-  
-  // Fallback to text-based selector if data-testid not found
-  const triggerToUse = await metadataTrigger.count() > 0 
-    ? metadataTrigger 
-    : page.locator('button').filter({ hasText: /Metadata/i }).first();
+  const triggerToUse = metadataTrigger;
   
   if (await triggerToUse.count() > 0) {
     await triggerToUse.scrollIntoViewIfNeeded();
@@ -429,8 +425,8 @@ test.describe('Metadata Combined Settings', () => {
     await setInputByTestId(page, 'metadata-title-input', 'Persistent Title');
     
     // Collapse and expand
-    const metadataTrigger = page.locator('button').filter({ hasText: /^Metadata$/i }).first();
-    await metadataTrigger.click();
+    const metadataTriggerEl = page.locator('[data-testid="accordion-metadata"] button[data-state]').first();
+    await metadataTriggerEl.click();
     await waitForRenderComplete(page, 'settle');
     await metadataTrigger.click();
     await waitForAccordionOpen(page);
@@ -797,8 +793,8 @@ test.describe('Metadata Persistence', () => {
     await setInputByTestId(page, 'metadata-description-textarea', 'Persistent Description');
     
     // Collapse and expand
-    const metadataTrigger = page.locator('button').filter({ hasText: /^Metadata$/i }).first();
-    await metadataTrigger.click();
+    const metadataTriggerEl = page.locator('[data-testid="accordion-metadata"] button[data-state]').first();
+    await metadataTriggerEl.click();
     await waitForRenderComplete(page, 'settle');
     await metadataTrigger.click();
     await waitForAccordionOpen(page);
@@ -821,8 +817,8 @@ test.describe('Metadata Persistence', () => {
     await setInputByTestId(page, 'metadata-custom-value-input-0', 'persistValue');
     
     // Collapse and expand
-    const metadataTrigger = page.locator('button').filter({ hasText: /^Metadata$/i }).first();
-    await metadataTrigger.click();
+    const metadataTriggerEl = page.locator('[data-testid="accordion-metadata"] button[data-state]').first();
+    await metadataTriggerEl.click();
     await waitForRenderComplete(page, 'settle');
     await metadataTrigger.click();
     await waitForAccordionOpen(page);
@@ -846,8 +842,8 @@ test.describe('Metadata Persistence', () => {
     const toggledState = await switchEl.getAttribute('data-state');
     
     // Collapse and expand
-    const metadataTrigger = page.locator('button').filter({ hasText: /^Metadata$/i }).first();
-    await metadataTrigger.click();
+    const metadataTriggerEl = page.locator('[data-testid="accordion-metadata"] button[data-state]').first();
+    await metadataTriggerEl.click();
     await waitForRenderComplete(page, 'settle');
     await metadataTrigger.click();
     await waitForAccordionOpen(page);

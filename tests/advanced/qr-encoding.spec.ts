@@ -26,7 +26,16 @@ test.describe('QR Encoding Section - Advanced Tier', () => {
    * Helper to expand QR Encoding section
    */
   async function expandQREncodingSection(page: import('@playwright/test').Page): Promise<void> {
-    const trigger = page.locator('button:has-text("QR Encoding")').first();
+    // Scroll sidebar to ensure QR Encoding section is visible
+    const sidebar = page.locator('aside, [role="complementary"], .sidebar').first();
+    if (await sidebar.count() > 0) {
+      await sidebar.evaluate(el => el.scrollTop = 0);
+    }
+    
+    // Use data-testid selector for accordion trigger
+    const qrTrigger = page.locator('[data-testid="accordion-qr"] button[data-state]').first();
+    const trigger = qrTrigger;
+    
     await trigger.scrollIntoViewIfNeeded();
     
     // Check if already expanded by looking for region state
@@ -89,9 +98,9 @@ test.describe('QR Encoding Section - Advanced Tier', () => {
         await cb.click();
         await waitForSelectOpen(page);
         
-        // Check if this has encoding mode options
-        const hasAutoOption = await page.locator('[role="option"]:has-text("Auto")').count() > 0;
-        const hasByteOption = await page.locator('[role="option"]:has-text("Byte")').count() > 0;
+        // Check if this has encoding mode options (use getByText for i18n safety)
+        const hasAutoOption = await page.locator('[role="option"]').getByText('Auto', { exact: false }).count() > 0;
+        const hasByteOption = await page.locator('[role="option"]').getByText('Byte', { exact: false }).count() > 0;
         
         if (hasAutoOption && hasByteOption) {
           selectTrigger = cb;
@@ -110,8 +119,8 @@ test.describe('QR Encoding Section - Advanced Tier', () => {
       throw new Error('Could not find encoding mode select');
     }
     
-    // Find and click the option
-    const option = page.locator(`[role="option"]`).filter({ hasText: new RegExp(`^${mode}`, 'i') }).first();
+    // Find and click the option using case-insensitive text matching
+    const option = page.locator('[role="option"]').getByText(mode, { exact: false }).first();
     if (await option.count() > 0) {
       await option.click();
     } else {
@@ -399,7 +408,8 @@ test.describe('QR Encoding Section - Advanced Tier', () => {
       
       // First set some complex data that needs byte encoding
       // Expand payload section
-      await page.click('button:has-text("Payload")');
+      const payloadTrigger = page.locator('[data-testid="accordion-payload"] button[data-state]').first();
+      await payloadTrigger.click();
       await waitForRenderComplete(page, 'settle');
       // Set complex text with special characters
       const textInput = page.locator('textarea, input[type="text"]').first();
@@ -425,7 +435,8 @@ test.describe('QR Encoding Section - Advanced Tier', () => {
       await expandQREncodingSection(page);
       
       // Set numeric-only data first
-      await page.click('button:has-text("Payload")');
+      const payloadTrigger3 = page.locator('[data-testid="accordion-payload"] button[data-state]').first();
+      await payloadTrigger3.click();
       await waitForRenderComplete(page, 'settle');
       const textInput = page.locator('textarea, input[type="text"]').first();
       if (await textInput.isVisible()) {
@@ -446,7 +457,8 @@ test.describe('QR Encoding Section - Advanced Tier', () => {
       await expandQREncodingSection(page);
       
       // Set alphanumeric data
-      await page.click('button:has-text("Payload")');
+      const payloadTrigger4 = page.locator('[data-testid="accordion-payload"] button[data-state]').first();
+      await payloadTrigger4.click();
       await waitForRenderComplete(page, 'settle');
       const textInput = page.locator('textarea, input[type="text"]').first();
       if (await textInput.isVisible()) {
@@ -467,7 +479,8 @@ test.describe('QR Encoding Section - Advanced Tier', () => {
       await expandQREncodingSection(page);
       
       // Use numeric data that works with multiple modes
-      await page.click('button:has-text("Payload")');
+      const payloadTrigger5 = page.locator('[data-testid="accordion-payload"] button[data-state]').first();
+      await payloadTrigger5.click();
       await waitForRenderComplete(page, 'settle');
       const textInput = page.locator('textarea, input[type="text"]').first();
       if (await textInput.isVisible()) {
@@ -603,7 +616,8 @@ test.describe('QR Encoding Section - Advanced Tier', () => {
 
     test('changing payload updates minimum version', async ({ page, waitForQRRender }) => {
       // Set short data
-      await page.click('button:has-text("Payload")');
+      const payloadTrigger6 = page.locator('[data-testid="accordion-payload"] button[data-state]').first();
+      await payloadTrigger6.click();
       await waitForRenderComplete(page, 'settle');
       const textInput = page.locator('textarea, input[type="text"]').first();
       if (await textInput.isVisible()) {
@@ -615,7 +629,8 @@ test.describe('QR Encoding Section - Advanced Tier', () => {
       const shortDataSnapshot = await getCanvasSnapshot(page);
       
       // Set very long data
-      await page.click('button:has-text("Payload")');
+      const payloadTrigger7 = page.locator('[data-testid="accordion-payload"] button[data-state]').first();
+      await payloadTrigger7.click();
       await waitForRenderComplete(page, 'settle');
       if (await textInput.isVisible()) {
         const longText = 'A'.repeat(100);
@@ -759,8 +774,10 @@ test.describe('QR Encoding Section - Advanced Tier', () => {
     test('section can be collapsed and reopened', async ({ page }) => {
       await expandQREncodingSection(page);
       
-      // Collapse
-      const trigger = page.locator('button:has-text("QR Encoding")').first();
+      // Collapse using data-testid
+      const qrTrigger = page.locator('[data-testid="accordion-qr"] button[data-state]').first();
+      const trigger = qrTrigger;
+      
       await trigger.click();
       await waitForRenderComplete(page, 'settle');
       // Reopen
@@ -779,8 +796,9 @@ test.describe('QR Encoding Section - Advanced Tier', () => {
       await waitForQRRender();
       const beforeCollapse = await getCanvasSnapshot(page);
       
-      // Collapse and reopen section
-      const trigger = page.locator('button:has-text("QR Encoding")').first();
+      // Collapse and reopen section using data-testid (i18n-safe)
+      const trigger = page.locator('[data-testid="accordion-qr"] button[data-state]').first();
+      
       await trigger.click();
       await waitForRenderComplete(page, 'settle');
       await trigger.click();

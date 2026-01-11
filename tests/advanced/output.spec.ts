@@ -31,8 +31,14 @@ async function expandOutputSection(page: Page) {
     await waitForRenderComplete(page, 'settle');
   }
   
-  // Find and click Output accordion trigger
-  const outputTrigger = page.locator('button').filter({ hasText: /^Output$/i }).first();
+  // Scroll sidebar to ensure Output section is visible
+  const sidebar = page.locator('aside, [role="complementary"], .sidebar').first();
+  if (await sidebar.count() > 0) {
+    await sidebar.evaluate(el => el.scrollTop = el.scrollHeight / 2);
+  }
+  
+  // Find and click Output accordion trigger using data-testid
+  const outputTrigger = page.locator('[data-testid="accordion-output"] button[data-radix-collection-item]');
   if (await outputTrigger.count() > 0) {
     await outputTrigger.scrollIntoViewIfNeeded();
     await outputTrigger.click();
@@ -41,7 +47,7 @@ async function expandOutputSection(page: Page) {
   }
 }
 
-// Helper: Select dropdown option
+// Helper: Select dropdown option (i18n-safe using getByText)
 async function selectDropdownOption(page: Page, triggerTestId: string, optionText: string) {
   const trigger = page.locator(`[data-testid="${triggerTestId}"]`);
   await trigger.waitFor({ state: 'visible', timeout: 5000 });
@@ -50,7 +56,7 @@ async function selectDropdownOption(page: Page, triggerTestId: string, optionTex
   
   await page.waitForSelector('[data-radix-popper-content-wrapper]', { timeout: 3000 });
   await waitForRenderComplete(page, 'settle');
-  const option = page.locator('[role="option"]').filter({ hasText: new RegExp(optionText, 'i') }).first();
+  const option = page.locator('[role="option"]').getByText(optionText, { exact: false }).first();
   if (await option.count() > 0) {
     await option.scrollIntoViewIfNeeded();
     await option.click();
@@ -103,7 +109,7 @@ test.describe('Output Format Selection', () => {
     let foundCount = 0;
     
     for (const format of formats) {
-      const option = page.locator('[role="option"]').filter({ hasText: new RegExp(format, 'i') });
+      const option = page.locator('[role="option"]').getByText(format, { exact: false });
       if (await option.count() > 0) {
         foundCount++;
       }
@@ -322,8 +328,8 @@ test.describe('Output GIF Settings', () => {
     if (await trigger.isVisible().catch(() => false)) {
       await trigger.click();
       await waitForRenderComplete(page, 'settle');
-      const offOption = page.locator('[role="option"]').filter({ hasText: /off/i });
-      const floydOption = page.locator('[role="option"]').filter({ hasText: /floyd/i });
+      const offOption = page.locator('[role="option"]').getByText('off', { exact: false });
+      const floydOption = page.locator('[role="option"]').getByText('floyd', { exact: false });
       
       const hasOff = await offOption.count() > 0;
       const hasFloyd = await floydOption.count() > 0;
@@ -381,8 +387,8 @@ test.describe('Output SVG Settings', () => {
     if (await trigger.isVisible().catch(() => false)) {
       await trigger.click();
       await waitForRenderComplete(page, 'settle');
-      const pixelOption = page.locator('[role="option"]').filter({ hasText: /pixel/i });
-      const preciseOption = page.locator('[role="option"]').filter({ hasText: /precise/i });
+      const pixelOption = page.locator('[role="option"]').getByText('pixel', { exact: false });
+      const preciseOption = page.locator('[role="option"]').getByText('precise', { exact: false });
       
       const hasPixel = await pixelOption.count() > 0;
       const hasPrecise = await preciseOption.count() > 0;
@@ -527,8 +533,8 @@ test.describe('Output Professional Settings (Professional Tier)', () => {
     if (await trigger.isVisible().catch(() => false)) {
       await trigger.click();
       await waitForRenderComplete(page, 'settle');
-      const noneOption = page.locator('[role="option"]').filter({ hasText: /none/i });
-      const epsOption = page.locator('[role="option"]').filter({ hasText: /eps/i });
+      const noneOption = page.locator('[role="option"]').getByText('none', { exact: false });
+      const epsOption = page.locator('[role="option"]').getByText('eps', { exact: false });
       
       const hasNone = await noneOption.count() > 0;
       const hasEps = await epsOption.count() > 0;
@@ -610,11 +616,13 @@ test.describe('Output Edge Cases', () => {
     // Set a custom value
     await setInputByTestId(page, 'output-width-input', '999');
     
-    // Collapse and expand
-    const outputTrigger = page.locator('button').filter({ hasText: /^Output$/i }).first();
-    await outputTrigger.click();
+    // Collapse and expand using data-testid
+    const outputTrigger = page.locator('[data-testid="accordion-output"] button[data-state]').first();
+    const trigger = outputTrigger;
+    
+    await trigger.click();
     await waitForRenderComplete(page, 'settle');
-    await outputTrigger.click();
+    await trigger.click();
     await waitForAccordionOpen(page);
     
     // Verify value persisted
@@ -967,7 +975,7 @@ test.describe('Output GIF Settings Combinations', () => {
     if (await trigger.isVisible().catch(() => false)) {
       await trigger.click();
       await waitForRenderComplete(page, 'settle');
-      const option = page.locator('[role="option"]').filter({ hasText: /median/i });
+      const option = page.locator('[role="option"]').getByText('median', { exact: false });
       if (await option.count() > 0) {
         await option.click();
         const text = await trigger.textContent();
@@ -983,7 +991,7 @@ test.describe('Output GIF Settings Combinations', () => {
     if (await trigger.isVisible().catch(() => false)) {
       await trigger.click();
       await waitForRenderComplete(page, 'settle');
-      const option = page.locator('[role="option"]').filter({ hasText: /neuquant/i });
+      const option = page.locator('[role="option"]').getByText('neuquant', { exact: false });
       if (await option.count() > 0) {
         await option.click();
         const text = await trigger.textContent();
@@ -999,7 +1007,7 @@ test.describe('Output GIF Settings Combinations', () => {
     if (await trigger.isVisible().catch(() => false)) {
       await trigger.click();
       await waitForRenderComplete(page, 'settle');
-      const option = page.locator('[role="option"]').filter({ hasText: /octree/i });
+      const option = page.locator('[role="option"]').getByText('octree', { exact: false });
       if (await option.count() > 0) {
         await option.click();
         const text = await trigger.textContent();
@@ -1015,7 +1023,7 @@ test.describe('Output GIF Settings Combinations', () => {
     if (await trigger.isVisible().catch(() => false)) {
       await trigger.click();
       await waitForRenderComplete(page, 'settle');
-      const option = page.locator('[role="option"]').filter({ hasText: /off/i });
+      const option = page.locator('[role="option"]').getByText('off', { exact: false });
       if (await option.count() > 0) {
         await option.click();
         const text = await trigger.textContent();
@@ -1031,7 +1039,7 @@ test.describe('Output GIF Settings Combinations', () => {
     if (await trigger.isVisible().catch(() => false)) {
       await trigger.click();
       await waitForRenderComplete(page, 'settle');
-      const option = page.locator('[role="option"]').filter({ hasText: /floyd/i });
+      const option = page.locator('[role="option"]').getByText('floyd', { exact: false });
       if (await option.count() > 0) {
         await option.click();
         const text = await trigger.textContent();
@@ -1047,7 +1055,7 @@ test.describe('Output GIF Settings Combinations', () => {
     if (await trigger.isVisible().catch(() => false)) {
       await trigger.click();
       await waitForRenderComplete(page, 'settle');
-      const option = page.locator('[role="option"]').filter({ hasText: /ordered/i });
+      const option = page.locator('[role="option"]').getByText('ordered', { exact: false });
       if (await option.count() > 0) {
         await option.click();
         const text = await trigger.textContent();
@@ -1073,7 +1081,7 @@ test.describe('Output GIF Settings Combinations', () => {
     if (await quantizerTrigger.isVisible().catch(() => false)) {
       await quantizerTrigger.click();
       await waitForRenderComplete(page, 'settle');
-      const medianOpt = page.locator('[role="option"]').filter({ hasText: /median/i });
+      const medianOpt = page.locator('[role="option"]').getByText('median', { exact: false });
       if (await medianOpt.count() > 0) {
         await medianOpt.click();
       } else {
@@ -1086,7 +1094,7 @@ test.describe('Output GIF Settings Combinations', () => {
     if (await ditherTrigger.isVisible().catch(() => false)) {
       await ditherTrigger.click();
       await waitForRenderComplete(page, 'settle');
-      const floydOpt = page.locator('[role="option"]').filter({ hasText: /floyd/i });
+      const floydOpt = page.locator('[role="option"]').getByText('floyd', { exact: false });
       if (await floydOpt.count() > 0) {
         await floydOpt.click();
       } else {
@@ -1115,7 +1123,7 @@ test.describe('Output GIF Settings Combinations', () => {
     if (await quantizerTrigger.isVisible().catch(() => false)) {
       await quantizerTrigger.click();
       await waitForRenderComplete(page, 'settle');
-      const octreeOpt = page.locator('[role="option"]').filter({ hasText: /octree/i });
+      const octreeOpt = page.locator('[role="option"]').getByText('octree', { exact: false });
       if (await octreeOpt.count() > 0) {
         await octreeOpt.click();
       } else {
@@ -1128,7 +1136,7 @@ test.describe('Output GIF Settings Combinations', () => {
     if (await ditherTrigger.isVisible().catch(() => false)) {
       await ditherTrigger.click();
       await waitForRenderComplete(page, 'settle');
-      const offOpt = page.locator('[role="option"]').filter({ hasText: /off/i });
+      const offOpt = page.locator('[role="option"]').getByText('off', { exact: false });
       if (await offOpt.count() > 0) {
         await offOpt.click();
       } else {
@@ -1193,7 +1201,7 @@ test.describe('Output SVG Settings', () => {
       if (await precisionTrigger.isVisible().catch(() => false)) {
         await precisionTrigger.click();
         await waitForRenderComplete(page, 'settle');
-        const pixelOpt = page.locator('[role="option"]').filter({ hasText: /pixel/i });
+        const pixelOpt = page.locator('[role="option"]').getByText('pixel', { exact: false });
         if (await pixelOpt.count() > 0) {
           await pixelOpt.click();
           const text = await precisionTrigger.textContent();
@@ -1217,7 +1225,7 @@ test.describe('Output SVG Settings', () => {
       if (await precisionTrigger.isVisible().catch(() => false)) {
         await precisionTrigger.click();
         await waitForRenderComplete(page, 'settle');
-        const preciseOpt = page.locator('[role="option"]').filter({ hasText: /precise/i });
+        const preciseOpt = page.locator('[role="option"]').getByText('precise', { exact: false });
         if (await preciseOpt.count() > 0) {
           await preciseOpt.click();
           const text = await precisionTrigger.textContent();
@@ -1390,7 +1398,7 @@ test.describe('Output Extra Formats', () => {
     if (await trigger.isVisible().catch(() => false)) {
       await trigger.click();
       await waitForRenderComplete(page, 'settle');
-      const noneOpt = page.locator('[role="option"]').filter({ hasText: /none/i });
+      const noneOpt = page.locator('[role="option"]').getByText('none', { exact: false });
       const hasNone = await noneOpt.count() > 0;
       await page.keyboard.press('Escape');
       expect(hasNone).toBe(true);
@@ -1402,7 +1410,7 @@ test.describe('Output Extra Formats', () => {
     if (await trigger.isVisible().catch(() => false)) {
       await trigger.click();
       await waitForRenderComplete(page, 'settle');
-      const epsOpt = page.locator('[role="option"]').filter({ hasText: /eps/i });
+      const epsOpt = page.locator('[role="option"]').getByText('eps', { exact: false });
       const hasEps = await epsOpt.count() > 0;
       await page.keyboard.press('Escape');
       expect(hasEps).toBe(true);
@@ -1414,7 +1422,7 @@ test.describe('Output Extra Formats', () => {
     if (await trigger.isVisible().catch(() => false)) {
       await trigger.click();
       await waitForRenderComplete(page, 'settle');
-      const webpOpt = page.locator('[role="option"]').filter({ hasText: /animated.*webp|webp.*animated/i });
+      const webpOpt = page.locator('[role="option"]').getByText('webp', { exact: false });
       const hasWebp = await webpOpt.count() > 0;
       await page.keyboard.press('Escape');
       // May or may not exist
@@ -1427,7 +1435,7 @@ test.describe('Output Extra Formats', () => {
     if (await trigger.isVisible().catch(() => false)) {
       await trigger.click();
       await waitForRenderComplete(page, 'settle');
-      const epsOpt = page.locator('[role="option"]').filter({ hasText: /eps/i });
+      const epsOpt = page.locator('[role="option"]').getByText('eps', { exact: false });
       if (await epsOpt.count() > 0) {
         await epsOpt.click();
         const text = await trigger.textContent();

@@ -42,11 +42,7 @@ async function expandSafetySection(page: Page) {
   
   // Find and click Safety accordion trigger using data-testid
   const safetyTrigger = page.locator('[data-testid="accordion-safety"] button[data-state]').first();
-  
-  // Fallback to text-based selector if data-testid not found
-  const triggerToUse = await safetyTrigger.count() > 0 
-    ? safetyTrigger 
-    : page.locator('button').filter({ hasText: /Safety/i }).first();
+  const triggerToUse = safetyTrigger;
   
   if (await triggerToUse.count() > 0) {
     await triggerToUse.scrollIntoViewIfNeeded();
@@ -65,7 +61,7 @@ async function selectDropdownOption(page: Page, triggerTestId: string, optionTex
   
   await page.waitForSelector('[data-radix-popper-content-wrapper]', { timeout: 3000 });
   await waitForRenderComplete(page, 'settle');
-  const option = page.locator('[role="option"]').filter({ hasText: new RegExp(optionText, 'i') }).first();
+  const option = page.locator('[role="option"]').getByText(optionText, { exact: false }).first();
   if (await option.count() > 0) {
     await option.scrollIntoViewIfNeeded();
     await option.click();
@@ -122,7 +118,7 @@ test.describe('Safety Mode Selection', () => {
     let foundCount = 0;
     
     for (const mode of modes) {
-      const option = page.locator('[role="option"]').filter({ hasText: new RegExp(mode, 'i') });
+      const option = page.locator('[role="option"]').getByText(mode, { exact: false });
       if (await option.count() > 0) {
         foundCount++;
       }
@@ -598,7 +594,7 @@ test.describe('ECC-Aware Settings', () => {
     let foundCount = 0;
     
     for (const opt of options) {
-      const option = page.locator('[role="option"]').filter({ hasText: new RegExp(opt, 'i') });
+      const option = page.locator('[role="option"]').getByText(opt, { exact: false });
       if (await option.count() > 0) {
         foundCount++;
       }
@@ -706,8 +702,8 @@ test.describe('Safety Edge Cases', () => {
     const changedState = await page.locator('[data-testid="safety-lock-finders-switch"]').getAttribute('data-state');
     
     // Collapse and expand
-    const safetyTrigger = page.locator('button').filter({ hasText: /^Safety$/i }).first();
-    await safetyTrigger.click();
+    const safetyTriggerEl = page.locator('[data-testid="accordion-safety"] button[data-state]').first();
+    await safetyTriggerEl.click();
     await waitForRenderComplete(page, 'settle');
     await safetyTrigger.click();
     await waitForAccordionOpen(page);

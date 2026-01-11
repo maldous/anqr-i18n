@@ -349,15 +349,11 @@ export async function openAccordion(
   page: Page,
   section: AccordionSection | string
 ): Promise<Locator> {
-  const sectionLabel = SECTION_LABELS[section as AccordionSection] || section;
+  // Use data-testid selector only - no text-based fallback for i18n compatibility
+  const trigger = page.locator(`[data-testid="accordion-${section}"] button[data-state]`).first();
   
-  // Try data-testid first
-  let trigger = page.locator(`[data-testid="accordion-${section}"] button[data-state]`).first();
-  
-  // Fallback to text-based selector
-  if (await trigger.count() === 0) {
-    trigger = page.locator('button').filter({ hasText: new RegExp(`^${sectionLabel}$`, 'i') }).first();
-  }
+  // Wait for trigger to be visible
+  await trigger.waitFor({ state: 'visible', timeout: 5000 });
   
   // Check if already open
   const currentState = await trigger.getAttribute('data-state').catch(() => null);
@@ -422,48 +418,62 @@ export async function ensureVisibleInSidebar(page: Page, locator: Locator): Prom
 
 /**
  * Select an application tier.
- * Handles both tab-based and dropdown-based tier selectors.
+ * Uses data-testid selectors for i18n compatibility.
  * 
  * @param page - Playwright page instance
  * @param tier - Target tier
  */
 export async function selectTier(page: Page, tier: Tier): Promise<void> {
   // Wait for page to be ready
-  await page.waitForSelector('[role="tablist"], [role="combobox"]', { timeout: 10000 });
-  const labels = TIER_LABELS[tier];
-  let clicked = false;
+  await page.waitForSelector('[data-testid="tier-tabs"], [data-testid="tier-select"]', { timeout: 10000 });
   
-  // Try tabs first
-  for (const label of labels) {
-    const tab = page.locator(`[role="tab"]:has-text("${label}")`).first();
+  // Map tier to tab value attribute
+  const tierValue = tier; // 'basic', 'advanced', 'professional'
+  
+  // Try tabs first (desktop) - use data-testid="tier-tabs"
+  const tabsList = page.locator('[data-testid="tier-tabs"]');
+  if (await tabsList.isVisible().catch(() => false)) {
+    // Find tab by value attribute
+    const tab = tabsList.locator(`[role="tab"][value="${tierValue}"]`).first();
     if (await tab.isVisible().catch(() => false)) {
       await tab.click();
-      clicked = true;
       // Wait for tab to be selected
-      await page.waitForSelector(
-        `[role="tab"][aria-selected="true"]:has-text("${label}")`,
+      await page.waitForFunction(
+        (value: string) => {
+          const tab = document.querySelector(`[data-testid="tier-tabs"] [role="tab"][value="${value}"]`);
+          return tab && tab.getAttribute('aria-selected') === 'true';
+        },
+        tierValue,
         { timeout: 2000 }
       );
-      break;
+      await dismissWelcomeModal(page);
+      return;
     }
   }
   
-  // Fallback: try select dropdown
-  if (!clicked) {
-    const selectTrigger = page.locator('button[role="combobox"]').first();
-    if (await selectTrigger.isVisible().catch(() => false)) {
-      await selectTrigger.click();
-      await waitForDropdownOpen(page);
+  // Fallback: try select dropdown (mobile) - use data-testid="tier-select"
+  const selectTrigger = page.locator('[data-testid="tier-select"]');
+  if (await selectTrigger.isVisible().catch(() => false)) {
+    await selectTrigger.click();
+    await waitForDropdownOpen(page);
+    
+    // Find option by value attribute
+    const option = page.locator(`[role="option"][data-value="${tierValue}"]`).first();
+    if (await option.isVisible().catch(() => false)) {
+      await option.click();
+    } else {
+      // Use keyboard navigation as fallback
+      const allOptions = page.locator('[data-radix-popper-content-wrapper] [role="option"]');
+      const count = await allOptions.count();
+      const tierIndex = tier === 'basic' ? 0 : tier === 'advanced' ? 1 : 2;
       
-      for (const label of labels) {
-        const option = page.locator(`[role="option"]:has-text("${label}")`).first();
-        if (await option.isVisible().catch(() => false)) {
-          await option.click();
-          await waitForDropdownClosed(page);
-          break;
-        }
+      await page.keyboard.press('Home');
+      for (let i = 0; i < tierIndex; i++) {
+        await page.keyboard.press('ArrowDown');
       }
+      await page.keyboard.press('Enter');
     }
+    await waitForDropdownClosed(page);
   }
   
   // Dismiss welcome modal if it appears after tier switch
@@ -765,7 +775,7 @@ export const WELCOME_MODAL_VERSION = '2026.01.04';
 
 /**
  * Dismiss the welcome modal if it's visible.
- * Tries multiple strategies in order of reliability.
+ * Uses data-testid and ARIA selectors for i18n compatibility.
  * 
  * IMPORTANT: Call this after every page navigation or use setWelcomeModalSeen()
  * before navigation to prevent the modal from appearing at all.
@@ -773,46 +783,46 @@ export const WELCOME_MODAL_VERSION = '2026.01.04';
  * @param page - Playwright page instance
  */
 export async function dismissWelcomeModal(page: Page): Promise<void> {
-  // The modal uses z-[200] class - we need to escape the brackets for CSS selector
-  const modalOverlay = page.locator('.fixed.inset-0').filter({ has: page.locator('dialog[open]') }).first();
-  
   // Check if modal is visible (short timeout is OK here - we're checking for presence)
-  const isVisible = await modalOverlay.waitFor({ state: 'visible', timeout: 1000 }).then(() => true).catch(() => false);
+  const dialog = page.locator('dialog[open]').first();
+  const dialogVisible = await dialog.waitFor({ state: 'visible', timeout: 1000 }).then(() => true).catch(() => false);
+  if (!dialogVisible) return;
   
-  if (!isVisible) {
-    // Also check for dialog directly
-    const dialog = page.locator('dialog[open]').first();
-    const dialogVisible = await dialog.waitFor({ state: 'visible', timeout: 500 }).then(() => true).catch(() => false);
-    if (!dialogVisible) return;
-  }
-  
-  // Strategy 1: Click "Get Started" button (the main CTA in WelcomeModal)
-  const getStartedBtn = page.locator('button').filter({ hasText: /get started/i }).first();
+  // Strategy 1: Click "Get Started" button using data-testid
+  const getStartedBtn = page.locator('[data-testid="welcome-get-started"]').first();
   if (await getStartedBtn.isVisible().catch(() => false)) {
     await getStartedBtn.click();
     await page.waitForSelector('dialog[open]', { state: 'hidden', timeout: 2000 });
     return;
   }
   
-  // Strategy 2: Click close button (X button in the modal header)
+  // Strategy 2: Find first button in dialog (usually the CTA)
+  const dialogBtn = dialog.locator('button').first();
+  if (await dialogBtn.isVisible().catch(() => false)) {
+    await dialogBtn.click();
+    await page.waitForSelector('dialog[open]', { state: 'hidden', timeout: 2000 }).catch(() => {});
+    return;
+  }
+  
+  // Strategy 3: Click close button using aria-label
   const closeBtn = page.locator('button[aria-label*="close" i], button[aria-label="Close"], button[aria-label="Close modal"]').first();
   if (await closeBtn.isVisible().catch(() => false)) {
     await closeBtn.click();
-    await page.waitForSelector('dialog[open]', { state: 'hidden', timeout: 2000 });
+    await page.waitForSelector('dialog[open]', { state: 'hidden', timeout: 2000 }).catch(() => {});
     return;
   }
   
-  // Strategy 3: Click the backdrop (the button covering the background)
+  // Strategy 4: Click the backdrop (the button covering the background)
   const backdrop = page.locator('button.absolute.inset-0').first();
   if (await backdrop.isVisible().catch(() => false)) {
     await backdrop.click({ force: true });
-    await page.waitForSelector('dialog[open]', { state: 'hidden', timeout: 2000 });
+    await page.waitForSelector('dialog[open]', { state: 'hidden', timeout: 2000 }).catch(() => {});
     return;
   }
   
-  // Strategy 4: Press Escape key
+  // Strategy 5: Press Escape key
   await page.keyboard.press('Escape');
-  await page.waitForSelector('dialog[open]', { state: 'hidden', timeout: 2000 });
+  await page.waitForSelector('dialog[open]', { state: 'hidden', timeout: 2000 }).catch(() => {});
 }
 
 /**
