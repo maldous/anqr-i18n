@@ -70,3 +70,4 @@ sonar-report.json
 playwright-report/
 test-results/
 tests/reports
+tests/.storage-state.json
