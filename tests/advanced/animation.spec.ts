@@ -10,7 +10,9 @@
  * - Correct scrolling model
  */
 
-import { expect, test, type Page } from '@playwright/test';
+import { test, expect } from '../fixtures/test-fixtures';
+import type { Page } from '@playwright/test';
+
 import {
   waitForRenderComplete,
   waitForAccordionState,
@@ -147,8 +149,7 @@ test.describe('Animation Speed', () => {
       },
       initialValue || '0',
       { timeout: 2000, polling: 50 }
-    ).catch(() => {});
-    
+    );
     const newValue = await slider.getAttribute('aria-valuenow');
     expect(Number(newValue)).toBeGreaterThanOrEqual(Number(initialValue));
   });
@@ -694,7 +695,7 @@ test.describe('Animation Edge Cases', () => {
         },
         currentState || 'unchecked',
         { timeout: 1000, polling: 16 }
-      ).catch(() => {});
+      );
     }
     
     // Switch should still be functional

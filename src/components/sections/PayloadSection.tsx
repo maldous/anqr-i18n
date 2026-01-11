@@ -932,7 +932,7 @@ export function PayloadSection() {
           <HelpLink href="/guide#section-0" />
         </div>
         <Select value={payload.kind} onValueChange={(v) => setPayloadKind(v as PayloadKind)}>
-          <SelectTrigger className="w-full" title={t('hints.selectContentType')}>
+          <SelectTrigger className="w-full" title={t('hints.selectContentType')} data-testid="payload-content-type-select">
             <SelectValue />
           </SelectTrigger>
           <SelectContent className="max-h-[400px]">
@@ -994,6 +994,7 @@ export function PayloadSection() {
             }
             autoFocus={showStartupHighlight}
             title={t('hints.enterTextContent')}
+            data-testid="payload-text-textarea"
           />
         </div>
       )}
@@ -1011,6 +1012,7 @@ export function PayloadSection() {
               onChange={(e) => setPayloadUrl({ href: e.target.value })}
               placeholder="https://anqr.link"
               title={t('hints.enterUrlContent')}
+              data-testid="payload-url-input"
             />
           </div>
           {(tier === 'advanced' || tier === 'professional') && (
@@ -1023,6 +1025,7 @@ export function PayloadSection() {
                   checked={payload.url.forceHttps}
                   onCheckedChange={(checked) => setPayloadUrl({ forceHttps: checked })}
                   title={t('hints.forceHttps')}
+                  data-testid="payload-url-force-https-switch"
                 />
               </div>
               <div className="space-y-2">
@@ -1034,18 +1037,21 @@ export function PayloadSection() {
                   value={payload.url.utmSource || ''}
                   onChange={(e) => setPayloadUrl({ utmSource: e.target.value })}
                   title={t('hints.utmSource')}
+                  data-testid="payload-url-utm-source-input"
                 />
                 <Input
                   placeholder="utm_medium"
                   value={payload.url.utmMedium || ''}
                   onChange={(e) => setPayloadUrl({ utmMedium: e.target.value })}
                   title={t('hints.utmMedium')}
+                  data-testid="payload-url-utm-medium-input"
                 />
                 <Input
                   placeholder="utm_campaign"
                   value={payload.url.utmCampaign || ''}
                   onChange={(e) => setPayloadUrl({ utmCampaign: e.target.value })}
                   title={t('hints.utmCampaign')}
+                  data-testid="payload-url-utm-campaign-input"
                 />
               </div>
             </>
@@ -1064,6 +1070,7 @@ export function PayloadSection() {
             value={payload.tel.number}
             onChange={(e) => setPayloadTel({ number: e.target.value })}
             placeholder="+1234567890"
+            data-testid="payload-tel-input"
           />
         </div>
       )}
@@ -1080,6 +1087,7 @@ export function PayloadSection() {
               value={payload.email.to}
               onChange={(e) => setPayloadEmail({ to: e.target.value })}
               placeholder="name@anqr.link"
+              data-testid="payload-email-to-input"
             />
           </div>
           <div className="space-y-2">
@@ -1090,6 +1098,7 @@ export function PayloadSection() {
               value={payload.email.subject || ''}
               onChange={(e) => setPayloadEmail({ subject: e.target.value })}
               placeholder={t('placeholders.emailSubject')}
+              data-testid="payload-email-subject-input"
             />
           </div>
           <div className="space-y-2">
@@ -1101,6 +1110,7 @@ export function PayloadSection() {
               onChange={(e) => setPayloadEmail({ body: e.target.value })}
               placeholder={t('placeholders.emailBody')}
               rows={3}
+              data-testid="payload-email-body-textarea"
             />
           </div>
         </div>
@@ -1118,6 +1128,7 @@ export function PayloadSection() {
               value={payload.sms.number}
               onChange={(e) => setPayloadSms({ number: e.target.value })}
               placeholder="+1234567890"
+              data-testid="payload-sms-number-input"
             />
           </div>
           <div className="space-y-2">
@@ -1129,6 +1140,7 @@ export function PayloadSection() {
               onChange={(e) => setPayloadSms({ body: e.target.value })}
               placeholder={t('placeholders.prefilledMessage')}
               rows={3}
+              data-testid="payload-sms-body-textarea"
             />
           </div>
         </div>
@@ -1148,6 +1160,7 @@ export function PayloadSection() {
                 value={payload.geo.lat}
                 onChange={(e) => setPayloadGeo({ lat: Number.parseFloat(e.target.value) || 0 })}
                 placeholder="0.0"
+                data-testid="payload-geo-lat-input"
               />
             </div>
             <div className="space-y-2">
@@ -1160,6 +1173,7 @@ export function PayloadSection() {
                 value={payload.geo.lon}
                 onChange={(e) => setPayloadGeo({ lon: Number.parseFloat(e.target.value) || 0 })}
                 placeholder="0.0"
+                data-testid="payload-geo-lon-input"
               />
             </div>
           </div>
@@ -1171,6 +1185,7 @@ export function PayloadSection() {
               value={payload.geo.query || ''}
               onChange={(e) => setPayloadGeo({ query: e.target.value })}
               placeholder={t('placeholders.placeNameOrAddress')}
+              data-testid="payload-geo-query-input"
             />
           </div>
         </div>
@@ -1187,6 +1202,7 @@ export function PayloadSection() {
               value={payload.wifi.ssid}
               onChange={(e) => setPayloadWifi({ ssid: e.target.value })}
               placeholder="MyWiFiNetwork"
+              data-testid="payload-wifi-ssid-input"
             />
           </div>
           <div className="space-y-2">
@@ -1197,7 +1213,7 @@ export function PayloadSection() {
               value={payload.wifi.auth}
               onValueChange={(v) => setPayloadWifi({ auth: v as typeof payload.wifi.auth })}
             >
-              <SelectTrigger>
+              <SelectTrigger data-testid="payload-wifi-auth-select">
                 <SelectValue />
               </SelectTrigger>
               <SelectContent>
@@ -1219,6 +1235,7 @@ export function PayloadSection() {
                 value={payload.wifi.password || ''}
                 onChange={(e) => setPayloadWifi({ password: e.target.value })}
                 placeholder={t('placeholders.networkPassword')}
+                data-testid="payload-wifi-password-input"
               />
             </div>
           )}
@@ -1229,6 +1246,7 @@ export function PayloadSection() {
             <Switch
               checked={payload.wifi.hidden}
               onCheckedChange={(checked) => setPayloadWifi({ hidden: checked })}
+              data-testid="payload-wifi-hidden-switch"
             />
           </div>
         </div>
@@ -1245,6 +1263,7 @@ export function PayloadSection() {
               value={payload.vcard.fn || ''}
               onChange={(e) => setPayloadVCard({ fn: e.target.value })}
               placeholder="John Doe"
+              data-testid="payload-vcard-fn-input"
             />
           </div>
           <div className="space-y-2">
@@ -1255,6 +1274,7 @@ export function PayloadSection() {
               value={payload.vcard.org || ''}
               onChange={(e) => setPayloadVCard({ org: e.target.value })}
               placeholder="Company Inc."
+              data-testid="payload-vcard-org-input"
             />
           </div>
           <div className="space-y-2">
@@ -1265,6 +1285,7 @@ export function PayloadSection() {
               value={payload.vcard.title || ''}
               onChange={(e) => setPayloadVCard({ title: e.target.value })}
               placeholder="Software Engineer"
+              data-testid="payload-vcard-title-input"
             />
           </div>
           <div className="space-y-2">
@@ -1276,6 +1297,7 @@ export function PayloadSection() {
               value={payload.vcard.tel?.[0] || ''}
               onChange={(e) => setPayloadVCard({ tel: [e.target.value] })}
               placeholder="+1234567890"
+              data-testid="payload-vcard-tel-input"
             />
           </div>
           <div className="space-y-2">
@@ -1287,6 +1309,7 @@ export function PayloadSection() {
               value={payload.vcard.email?.[0] || ''}
               onChange={(e) => setPayloadVCard({ email: [e.target.value] })}
               placeholder="name@anqr.link"
+              data-testid="payload-vcard-email-input"
             />
           </div>
           <div className="space-y-2">
@@ -1298,6 +1321,7 @@ export function PayloadSection() {
               value={payload.vcard.url || ''}
               onChange={(e) => setPayloadVCard({ url: e.target.value })}
               placeholder="https://anqr.link"
+              data-testid="payload-vcard-url-input"
             />
           </div>
         </div>
@@ -1314,6 +1338,7 @@ export function PayloadSection() {
               value={payload.mecard.n || ''}
               onChange={(e) => setPayloadMeCard({ n: e.target.value })}
               placeholder="Doe,John"
+              data-testid="payload-mecard-n-input"
             />
           </div>
           <div className="space-y-2">
@@ -1324,6 +1349,7 @@ export function PayloadSection() {
               value={payload.mecard.nickname || ''}
               onChange={(e) => setPayloadMeCard({ nickname: e.target.value })}
               placeholder="Johnny"
+              data-testid="payload-mecard-nickname-input"
             />
           </div>
           <div className="space-y-2">
@@ -1335,6 +1361,7 @@ export function PayloadSection() {
               value={payload.mecard.tel || ''}
               onChange={(e) => setPayloadMeCard({ tel: e.target.value })}
               placeholder="+1234567890"
+              data-testid="payload-mecard-tel-input"
             />
           </div>
           <div className="space-y-2">
@@ -1346,6 +1373,7 @@ export function PayloadSection() {
               value={payload.mecard.email || ''}
               onChange={(e) => setPayloadMeCard({ email: e.target.value })}
               placeholder="name@anqr.link"
+              data-testid="payload-mecard-email-input"
             />
           </div>
           <div className="space-y-2">
@@ -1356,6 +1384,7 @@ export function PayloadSection() {
               value={payload.mecard.org || ''}
               onChange={(e) => setPayloadMeCard({ org: e.target.value })}
               placeholder="Company Inc."
+              data-testid="payload-mecard-org-input"
             />
           </div>
           <div className="space-y-2">
@@ -1366,6 +1395,7 @@ export function PayloadSection() {
               value={payload.mecard.adr || ''}
               onChange={(e) => setPayloadMeCard({ adr: e.target.value })}
               placeholder="123 Main St, City"
+              data-testid="payload-mecard-adr-input"
             />
           </div>
           <div className="space-y-2">
@@ -1376,6 +1406,7 @@ export function PayloadSection() {
               type="date"
               value={payload.mecard.bday || ''}
               onChange={(e) => setPayloadMeCard({ bday: e.target.value })}
+              data-testid="payload-mecard-bday-input"
             />
           </div>
         </div>
@@ -1450,6 +1481,7 @@ export function PayloadSection() {
               value={payload.event.summary || ''}
               onChange={(e) => setPayloadEvent({ summary: e.target.value })}
               placeholder="Meeting"
+              data-testid="payload-event-summary-input"
             />
           </div>
           <div className="space-y-2">
@@ -1460,6 +1492,7 @@ export function PayloadSection() {
               value={payload.event.location || ''}
               onChange={(e) => setPayloadEvent({ location: e.target.value })}
               placeholder="Conference Room A"
+              data-testid="payload-event-location-input"
             />
           </div>
           <div className="space-y-2">
@@ -1471,6 +1504,7 @@ export function PayloadSection() {
               onChange={(e) => setPayloadEvent({ description: e.target.value })}
               placeholder={t('placeholders.eventDetails')}
               rows={2}
+              data-testid="payload-event-description-textarea"
             />
           </div>
           <div className="grid grid-cols-2 gap-2">
@@ -1482,6 +1516,7 @@ export function PayloadSection() {
                 type="datetime-local"
                 value={payload.event.start || ''}
                 onChange={(e) => setPayloadEvent({ start: e.target.value })}
+                data-testid="payload-event-start-input"
               />
             </div>
             <div className="space-y-2">
@@ -1492,6 +1527,7 @@ export function PayloadSection() {
                 type="datetime-local"
                 value={payload.event.end || ''}
                 onChange={(e) => setPayloadEvent({ end: e.target.value })}
+                data-testid="payload-event-end-input"
               />
             </div>
           </div>
@@ -1705,7 +1741,7 @@ export function PayloadSection() {
               value={payload.crypto.type}
               onValueChange={(v) => setPayloadCrypto({ type: v })}
             >
-              <SelectTrigger>
+              <SelectTrigger data-testid="payload-crypto-type-select">
                 <SelectValue />
               </SelectTrigger>
               <SelectContent>
@@ -1723,6 +1759,7 @@ export function PayloadSection() {
               value={payload.crypto.address}
               onChange={(e) => setPayloadCrypto({ address: e.target.value })}
               placeholder="Wallet address"
+              data-testid="payload-crypto-address-input"
             />
           </div>
           <div className="space-y-2">
@@ -1737,6 +1774,7 @@ export function PayloadSection() {
                 setPayloadCrypto({ amount: Number.parseFloat(e.target.value) || undefined })
               }
               placeholder="0.001"
+              data-testid="payload-crypto-amount-input"
             />
           </div>
           <div className="space-y-2">
@@ -1747,6 +1785,7 @@ export function PayloadSection() {
               value={payload.crypto.label || ''}
               onChange={(e) => setPayloadCrypto({ label: e.target.value })}
               placeholder={t('placeholders.paymentFor')}
+              data-testid="payload-crypto-label-input"
             />
           </div>
         </div>
@@ -1763,6 +1802,7 @@ export function PayloadSection() {
               value={epcSepaForm.name}
               onChange={(e) => setEpcSepaForm((prev) => ({ ...prev, name: e.target.value }))}
               placeholder="Company Ltd."
+              data-testid="payload-epc-name-input"
             />
           </div>
           <div className="space-y-2">
@@ -1773,6 +1813,7 @@ export function PayloadSection() {
               value={epcSepaForm.iban}
               onChange={(e) => setEpcSepaForm((prev) => ({ ...prev, iban: e.target.value }))}
               placeholder="DE89370400440532013000"
+              data-testid="payload-epc-iban-input"
             />
           </div>
           <div className="space-y-2">
@@ -1783,6 +1824,7 @@ export function PayloadSection() {
               value={epcSepaForm.bic}
               onChange={(e) => setEpcSepaForm((prev) => ({ ...prev, bic: e.target.value }))}
               placeholder="COBADEFFXXX"
+              data-testid="payload-epc-bic-input"
             />
           </div>
           <div className="space-y-2">
@@ -1795,6 +1837,7 @@ export function PayloadSection() {
               value={epcSepaForm.amount}
               onChange={(e) => setEpcSepaForm((prev) => ({ ...prev, amount: e.target.value }))}
               placeholder="100.00"
+              data-testid="payload-epc-amount-input"
             />
           </div>
           <div className="space-y-2">
@@ -1805,6 +1848,7 @@ export function PayloadSection() {
               value={epcSepaForm.reference}
               onChange={(e) => setEpcSepaForm((prev) => ({ ...prev, reference: e.target.value }))}
               placeholder="Invoice 12345"
+              data-testid="payload-epc-reference-input"
             />
           </div>
           <p className="text-xs text-muted-foreground">{t('hints.epcSepaNote')}</p>
@@ -1822,6 +1866,7 @@ export function PayloadSection() {
               value={upiForm.vpa}
               onChange={(e) => setUpiForm((prev) => ({ ...prev, vpa: e.target.value }))}
               placeholder="name@upi"
+              data-testid="payload-upi-vpa-input"
             />
           </div>
           <div className="space-y-2">
@@ -1832,6 +1877,7 @@ export function PayloadSection() {
               value={upiForm.payeeName}
               onChange={(e) => setUpiForm((prev) => ({ ...prev, payeeName: e.target.value }))}
               placeholder="John Doe"
+              data-testid="payload-upi-payee-name-input"
             />
           </div>
           <div className="space-y-2">
@@ -1844,6 +1890,7 @@ export function PayloadSection() {
               value={upiForm.amount}
               onChange={(e) => setUpiForm((prev) => ({ ...prev, amount: e.target.value }))}
               placeholder="500.00"
+              data-testid="payload-upi-amount-input"
             />
           </div>
           <div className="space-y-2">
@@ -1854,6 +1901,7 @@ export function PayloadSection() {
               value={upiForm.transactionNote}
               onChange={(e) => setUpiForm((prev) => ({ ...prev, transactionNote: e.target.value }))}
               placeholder="Payment for order"
+              data-testid="payload-upi-note-input"
             />
           </div>
           <p className="text-xs text-muted-foreground">{t('hints.upiNote')}</p>
@@ -1873,7 +1921,7 @@ export function PayloadSection() {
                 setPayNowForm((prev) => ({ ...prev, type: v as 'mobile' | 'uen' }))
               }
             >
-              <SelectTrigger>
+              <SelectTrigger data-testid="payload-paynow-type-select">
                 <SelectValue />
               </SelectTrigger>
               <SelectContent>
@@ -1890,6 +1938,7 @@ export function PayloadSection() {
               value={payNowForm.value}
               onChange={(e) => setPayNowForm((prev) => ({ ...prev, value: e.target.value }))}
               placeholder="201234567X or +65..."
+              data-testid="payload-paynow-value-input"
             />
           </div>
           <div className="space-y-2">
@@ -1902,6 +1951,7 @@ export function PayloadSection() {
               value={payNowForm.amount}
               onChange={(e) => setPayNowForm((prev) => ({ ...prev, amount: e.target.value }))}
               placeholder="50.00"
+              data-testid="payload-paynow-amount-input"
             />
           </div>
           <div className="space-y-2">
@@ -1912,6 +1962,7 @@ export function PayloadSection() {
               value={payNowForm.reference}
               onChange={(e) => setPayNowForm((prev) => ({ ...prev, reference: e.target.value }))}
               placeholder="Invoice 123"
+              data-testid="payload-paynow-reference-input"
             />
           </div>
           <p className="text-xs text-muted-foreground">{t('hints.paynowNote')}</p>
@@ -1931,7 +1982,7 @@ export function PayloadSection() {
                 setPromptPayForm((prev) => ({ ...prev, type: v as 'mobile' | 'id' | 'ewallet' }))
               }
             >
-              <SelectTrigger>
+              <SelectTrigger data-testid="payload-promptpay-type-select">
                 <SelectValue />
               </SelectTrigger>
               <SelectContent>
@@ -1949,6 +2000,7 @@ export function PayloadSection() {
               value={promptPayForm.value}
               onChange={(e) => setPromptPayForm((prev) => ({ ...prev, value: e.target.value }))}
               placeholder="0812345678"
+              data-testid="payload-promptpay-value-input"
             />
           </div>
           <div className="space-y-2">
@@ -1961,6 +2013,7 @@ export function PayloadSection() {
               value={promptPayForm.amount}
               onChange={(e) => setPromptPayForm((prev) => ({ ...prev, amount: e.target.value }))}
               placeholder="100.00"
+              data-testid="payload-promptpay-amount-input"
             />
           </div>
           <p className="text-xs text-muted-foreground">{t('hints.promptpayNote')}</p>
@@ -1978,6 +2031,7 @@ export function PayloadSection() {
               value={pixForm.key}
               onChange={(e) => setPixForm((prev) => ({ ...prev, key: e.target.value }))}
               placeholder="CPF, CNPJ, Email, Phone, or Random Key"
+              data-testid="payload-pix-key-input"
             />
           </div>
           <div className="space-y-2">
@@ -1988,6 +2042,7 @@ export function PayloadSection() {
               value={pixForm.name}
               onChange={(e) => setPixForm((prev) => ({ ...prev, name: e.target.value }))}
               placeholder="João Silva"
+              data-testid="payload-pix-name-input"
             />
           </div>
           <div className="space-y-2">
@@ -1998,6 +2053,7 @@ export function PayloadSection() {
               value={pixForm.city}
               onChange={(e) => setPixForm((prev) => ({ ...prev, city: e.target.value }))}
               placeholder="São Paulo"
+              data-testid="payload-pix-city-input"
             />
           </div>
           <div className="space-y-2">
@@ -2010,6 +2066,7 @@ export function PayloadSection() {
               value={pixForm.amount}
               onChange={(e) => setPixForm((prev) => ({ ...prev, amount: e.target.value }))}
               placeholder="100.00"
+              data-testid="payload-pix-amount-input"
             />
           </div>
           <p className="text-xs text-muted-foreground">{t('hints.pixNote')}</p>
@@ -3228,6 +3285,7 @@ export function PayloadSection() {
               checked={payload.validate}
               onCheckedChange={(checked) => setPayloadValidation({ validate: checked })}
               title={t('hints.validateInput')}
+              data-testid="payload-validate-switch"
             />
           </div>
           <div className="flex items-center justify-between">
@@ -3238,6 +3296,7 @@ export function PayloadSection() {
               checked={payload.trim}
               onCheckedChange={(checked) => setPayloadValidation({ trim: checked })}
               title={t('hints.trimWhitespace')}
+              data-testid="payload-trim-switch"
             />
           </div>
           <div className="flex items-center justify-between">
@@ -3248,6 +3307,7 @@ export function PayloadSection() {
               checked={payload.normalizeNewlines}
               onCheckedChange={(checked) => setPayloadValidation({ normalizeNewlines: checked })}
               title={t('hints.normalizeNewlines')}
+              data-testid="payload-normalize-newlines-switch"
             />
           </div>
           <div className="flex items-center justify-between">
@@ -3258,6 +3318,7 @@ export function PayloadSection() {
               checked={payload.maxLenGuard}
               onCheckedChange={(checked) => setPayloadValidation({ maxLenGuard: checked })}
               title={t('hints.maxLengthGuard')}
+              data-testid="payload-max-len-guard-switch"
             />
           </div>
         </div>

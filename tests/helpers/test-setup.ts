@@ -101,7 +101,7 @@ export async function waitForAppReady(page: Page): Promise<void> {
   await page.waitForSelector('canvas', { state: 'visible', timeout: 10000 });
   
   // Wait for the app to be interactive by checking for the sidebar
-  await page.waitForSelector('[role="tablist"], [role="combobox"]', { state: 'visible', timeout: 5000 }).catch(() => {});
+  await page.waitForSelector('[role="tablist"], [role="combobox"]', { state: 'visible', timeout: 5000 });
 }
 
 /**
@@ -109,7 +109,6 @@ export async function waitForAppReady(page: Page): Promise<void> {
  * Useful after loading external resources
  */
 export async function waitForNetworkIdle(page: Page, timeout = 5000): Promise<void> {
-  await page.waitForLoadState('networkidle', { timeout }).catch(() => {});
 }
 
 /**
@@ -179,8 +178,7 @@ export async function waitForCanvasStable(
   timeout = 5000
 ): Promise<void> {
   // First wait for app to signal idle state
-  await waitForRenderingIdle(page, timeout).catch(() => {});
-  
+  await waitForRenderingIdle(page, timeout);
   // Then optionally wait for canvas stability as a backup
   await page.waitForFunction(
     (stability: number) => {
@@ -207,7 +205,7 @@ export async function waitForCanvasStable(
     },
     stabilityMs,
     { timeout: 2000, polling: 50 }
-  ).catch(() => {});
+  );
 }
 
 /**

@@ -4,12 +4,14 @@
  * Uses data-testid selectors for reliability
  */
 
-import { expect, test, type Page } from '@playwright/test';
+import { test, expect } from '../fixtures/test-fixtures';
+import type { Page } from '@playwright/test';
+
 import {
   waitForQRRender,
   waitForAccordionOpen,
 } from '../helpers/qr-detector';
-import { setTier } from '../helpers/test-utils';
+import { setTier, waitForRenderComplete } from '../helpers/test-utils';
 
 // Helper: Navigate to the app and wait for initial load
 async function setupPage(page: Page) {
@@ -27,7 +29,7 @@ async function expandMetadataSection(page: Page) {
   const openCount = await openTriggers.count();
   for (let i = 0; i < openCount; i++) {
     await openTriggers.nth(i).click();
-    await page.waitForTimeout(100);
+    await waitForRenderComplete(page, 'settle');
   }
   
   // Find and click Metadata accordion trigger
@@ -36,7 +38,7 @@ async function expandMetadataSection(page: Page) {
     await metadataTrigger.scrollIntoViewIfNeeded();
     await metadataTrigger.click();
     await waitForAccordionOpen(page);
-    await page.waitForTimeout(200);
+    await waitForRenderComplete(page, 'settle');
   }
 }
 
@@ -48,7 +50,7 @@ async function setInputByTestId(page: Page, testId: string, value: string) {
   await input.fill('');
   await input.fill(value);
   await input.blur();
-  await page.waitForTimeout(100);
+  await waitForRenderComplete(page, 'settle');
 }
 
 // Helper: Toggle switch using data-testid
@@ -57,7 +59,7 @@ async function toggleSwitchByTestId(page: Page, testId: string) {
   await switchEl.waitFor({ state: 'visible', timeout: 5000 });
   await switchEl.scrollIntoViewIfNeeded();
   await switchEl.click();
-  await page.waitForTimeout(100);
+  await waitForRenderComplete(page, 'settle');
 }
 
 // ============================================================================
@@ -265,8 +267,7 @@ test.describe('Metadata Custom Key-Value Pairs', () => {
     const addButton = page.locator('[data-testid="metadata-add-custom-button"]');
     await addButton.scrollIntoViewIfNeeded();
     await addButton.click();
-    await page.waitForTimeout(200);
-    
+    await waitForRenderComplete(page, 'settle');
     // First row should now exist
     const keyInput = page.locator('[data-testid="metadata-custom-key-input-0"]');
     await expect(keyInput).toBeVisible();
@@ -282,7 +283,7 @@ test.describe('Metadata Custom Key-Value Pairs', () => {
     for (let i = 0; i < 3; i++) {
       await addButton.scrollIntoViewIfNeeded();
       await addButton.click();
-      await page.waitForTimeout(100);
+      await waitForRenderComplete(page, 'settle');
     }
     
     // All 3 rows should exist
@@ -297,8 +298,7 @@ test.describe('Metadata Custom Key-Value Pairs', () => {
     const addButton = page.locator('[data-testid="metadata-add-custom-button"]');
     await addButton.scrollIntoViewIfNeeded();
     await addButton.click();
-    await page.waitForTimeout(200);
-    
+    await waitForRenderComplete(page, 'settle');
     // Edit the key
     await setInputByTestId(page, 'metadata-custom-key-input-0', 'myKey');
     const keyInput = page.locator('[data-testid="metadata-custom-key-input-0"]');
@@ -315,8 +315,7 @@ test.describe('Metadata Custom Key-Value Pairs', () => {
     const addButton = page.locator('[data-testid="metadata-add-custom-button"]');
     await addButton.scrollIntoViewIfNeeded();
     await addButton.click();
-    await page.waitForTimeout(200);
-    
+    await waitForRenderComplete(page, 'settle');
     // Verify row exists
     const row = page.locator('[data-testid="metadata-custom-kv-row-0"]');
     await expect(row).toBeVisible();
@@ -324,8 +323,7 @@ test.describe('Metadata Custom Key-Value Pairs', () => {
     // Click remove button
     const removeButton = page.locator('[data-testid="metadata-custom-remove-button-0"]');
     await removeButton.click();
-    await page.waitForTimeout(200);
-    
+    await waitForRenderComplete(page, 'settle');
     // Row should be gone
     await expect(row).not.toBeVisible();
   });
@@ -335,8 +333,7 @@ test.describe('Metadata Custom Key-Value Pairs', () => {
     const addButton = page.locator('[data-testid="metadata-add-custom-button"]');
     await addButton.scrollIntoViewIfNeeded();
     await addButton.click();
-    await page.waitForTimeout(200);
-    
+    await waitForRenderComplete(page, 'settle');
     const keyInput = page.locator('[data-testid="metadata-custom-key-input-0"]');
     const valueInput = page.locator('[data-testid="metadata-custom-value-input-0"]');
     
@@ -375,8 +372,7 @@ test.describe('Metadata Section Accessibility', () => {
     const addButton = page.locator('[data-testid="metadata-add-custom-button"]');
     await addButton.focus();
     await page.keyboard.press('Enter');
-    await page.waitForTimeout(200);
-    
+    await waitForRenderComplete(page, 'settle');
     // Row should be added
     const row = page.locator('[data-testid="metadata-custom-kv-row-0"]');
     await expect(row).toBeVisible();
@@ -422,7 +418,7 @@ test.describe('Metadata Combined Settings', () => {
     // Collapse and expand
     const metadataTrigger = page.locator('button').filter({ hasText: /^Metadata$/i }).first();
     await metadataTrigger.click();
-    await page.waitForTimeout(200);
+    await waitForRenderComplete(page, 'settle');
     await metadataTrigger.click();
     await waitForAccordionOpen(page);
     
@@ -469,14 +465,14 @@ test.describe('Metadata Edge Cases', () => {
     for (let i = 0; i < 3; i++) {
       await addButton.scrollIntoViewIfNeeded();
       await addButton.click();
-      await page.waitForTimeout(50);
+      await waitForRenderComplete(page, 'settle');
     }
     
     // Remove middle row
     const removeButton = page.locator('[data-testid="metadata-custom-remove-button-1"]');
     if (await removeButton.isVisible()) {
       await removeButton.click();
-      await page.waitForTimeout(100);
+      await waitForRenderComplete(page, 'settle');
     }
     
     // Should still have at least one row visible
@@ -550,8 +546,7 @@ test.describe('Metadata Unicode Handling', () => {
     const addButton = page.locator('[data-testid="metadata-add-custom-button"]');
     await addButton.scrollIntoViewIfNeeded();
     await addButton.click();
-    await page.waitForTimeout(200);
-    
+    await waitForRenderComplete(page, 'settle');
     await setInputByTestId(page, 'metadata-custom-key-input-0', '标签');
     const keyInput = page.locator('[data-testid="metadata-custom-key-input-0"]');
     expect(await keyInput.inputValue()).toBe('标签');
@@ -561,8 +556,7 @@ test.describe('Metadata Unicode Handling', () => {
     const addButton = page.locator('[data-testid="metadata-add-custom-button"]');
     await addButton.scrollIntoViewIfNeeded();
     await addButton.click();
-    await page.waitForTimeout(200);
-    
+    await waitForRenderComplete(page, 'settle');
     await setInputByTestId(page, 'metadata-custom-value-input-0', '日本語の値 🎌');
     const valueInput = page.locator('[data-testid="metadata-custom-value-input-0"]');
     expect(await valueInput.inputValue()).toBe('日本語の値 🎌');
@@ -645,7 +639,7 @@ test.describe('Metadata Custom KV CRUD', () => {
     for (let i = 0; i < 5; i++) {
       await addButton.scrollIntoViewIfNeeded();
       await addButton.click();
-      await page.waitForTimeout(100);
+      await waitForRenderComplete(page, 'settle');
     }
     
     // Check at least 5 rows exist
@@ -658,8 +652,7 @@ test.describe('Metadata Custom KV CRUD', () => {
     const addButton = page.locator('[data-testid="metadata-add-custom-button"]');
     await addButton.scrollIntoViewIfNeeded();
     await addButton.click();
-    await page.waitForTimeout(200);
-    
+    await waitForRenderComplete(page, 'settle');
     // Set initial key
     await setInputByTestId(page, 'metadata-custom-key-input-0', 'originalKey');
     
@@ -674,8 +667,7 @@ test.describe('Metadata Custom KV CRUD', () => {
     const addButton = page.locator('[data-testid="metadata-add-custom-button"]');
     await addButton.scrollIntoViewIfNeeded();
     await addButton.click();
-    await page.waitForTimeout(200);
-    
+    await waitForRenderComplete(page, 'settle');
     // Set initial value
     await setInputByTestId(page, 'metadata-custom-value-input-0', 'originalValue');
     
@@ -690,15 +682,13 @@ test.describe('Metadata Custom KV CRUD', () => {
     const addButton = page.locator('[data-testid="metadata-add-custom-button"]');
     await addButton.scrollIntoViewIfNeeded();
     await addButton.click();
-    await page.waitForTimeout(200);
-    
+    await waitForRenderComplete(page, 'settle');
     const row = page.locator('[data-testid="metadata-custom-kv-row-0"]');
     await expect(row).toBeVisible();
     
     const removeButton = page.locator('[data-testid="metadata-custom-remove-button-0"]');
     await removeButton.click();
-    await page.waitForTimeout(200);
-    
+    await waitForRenderComplete(page, 'settle');
     await expect(row).not.toBeVisible();
   });
 
@@ -709,7 +699,7 @@ test.describe('Metadata Custom KV CRUD', () => {
     for (let i = 0; i < 3; i++) {
       await addButton.scrollIntoViewIfNeeded();
       await addButton.click();
-      await page.waitForTimeout(100);
+      await waitForRenderComplete(page, 'settle');
     }
     
     // Set values to identify rows
@@ -721,7 +711,7 @@ test.describe('Metadata Custom KV CRUD', () => {
     const removeButton = page.locator('[data-testid="metadata-custom-remove-button-1"]');
     if (await removeButton.isVisible()) {
       await removeButton.click();
-      await page.waitForTimeout(200);
+      await waitForRenderComplete(page, 'settle');
     }
     
     // Verify first and third still exist (indices may shift)
@@ -734,8 +724,7 @@ test.describe('Metadata Custom KV CRUD', () => {
     const addButton = page.locator('[data-testid="metadata-add-custom-button"]');
     await addButton.scrollIntoViewIfNeeded();
     await addButton.click();
-    await page.waitForTimeout(200);
-    
+    await waitForRenderComplete(page, 'settle');
     // Leave key empty, set value
     await setInputByTestId(page, 'metadata-custom-value-input-0', 'valueWithoutKey');
     
@@ -747,8 +736,7 @@ test.describe('Metadata Custom KV CRUD', () => {
     const addButton = page.locator('[data-testid="metadata-add-custom-button"]');
     await addButton.scrollIntoViewIfNeeded();
     await addButton.click();
-    await page.waitForTimeout(200);
-    
+    await waitForRenderComplete(page, 'settle');
     // Set key, leave value empty
     await setInputByTestId(page, 'metadata-custom-key-input-0', 'keyWithoutValue');
     
@@ -762,10 +750,9 @@ test.describe('Metadata Custom KV CRUD', () => {
     // Add 2 rows
     await addButton.scrollIntoViewIfNeeded();
     await addButton.click();
-    await page.waitForTimeout(100);
+    await waitForRenderComplete(page, 'settle');
     await addButton.click();
-    await page.waitForTimeout(100);
-    
+    await waitForRenderComplete(page, 'settle');
     // Set same key for both
     await setInputByTestId(page, 'metadata-custom-key-input-0', 'duplicateKey');
     await setInputByTestId(page, 'metadata-custom-key-input-1', 'duplicateKey');
@@ -799,7 +786,7 @@ test.describe('Metadata Persistence', () => {
     // Collapse and expand
     const metadataTrigger = page.locator('button').filter({ hasText: /^Metadata$/i }).first();
     await metadataTrigger.click();
-    await page.waitForTimeout(200);
+    await waitForRenderComplete(page, 'settle');
     await metadataTrigger.click();
     await waitForAccordionOpen(page);
     
@@ -816,15 +803,14 @@ test.describe('Metadata Persistence', () => {
     const addButton = page.locator('[data-testid="metadata-add-custom-button"]');
     await addButton.scrollIntoViewIfNeeded();
     await addButton.click();
-    await page.waitForTimeout(200);
-    
+    await waitForRenderComplete(page, 'settle');
     await setInputByTestId(page, 'metadata-custom-key-input-0', 'persistKey');
     await setInputByTestId(page, 'metadata-custom-value-input-0', 'persistValue');
     
     // Collapse and expand
     const metadataTrigger = page.locator('button').filter({ hasText: /^Metadata$/i }).first();
     await metadataTrigger.click();
-    await page.waitForTimeout(200);
+    await waitForRenderComplete(page, 'settle');
     await metadataTrigger.click();
     await waitForAccordionOpen(page);
     
@@ -849,7 +835,7 @@ test.describe('Metadata Persistence', () => {
     // Collapse and expand
     const metadataTrigger = page.locator('button').filter({ hasText: /^Metadata$/i }).first();
     await metadataTrigger.click();
-    await page.waitForTimeout(200);
+    await waitForRenderComplete(page, 'settle');
     await metadataTrigger.click();
     await waitForAccordionOpen(page);
     
@@ -867,8 +853,7 @@ test.describe('Metadata Persistence', () => {
     await titleInput.fill('');
     await page.keyboard.type('rapid input test', { delay: 10 });
     await titleInput.blur();
-    await page.waitForTimeout(100);
-    
+    await waitForRenderComplete(page, 'settle');
     const value = await titleInput.inputValue();
     expect(value).toBe('rapid input test');
   });
@@ -914,8 +899,7 @@ test.describe('Metadata Keyboard Accessibility', () => {
     
     const initialState = await switchEl.getAttribute('data-state');
     await page.keyboard.press('Space');
-    await page.waitForTimeout(100);
-    
+    await waitForRenderComplete(page, 'settle');
     const newState = await switchEl.getAttribute('data-state');
     expect(newState).not.toBe(initialState);
   });
@@ -924,8 +908,7 @@ test.describe('Metadata Keyboard Accessibility', () => {
     const addButton = page.locator('[data-testid="metadata-add-custom-button"]');
     await addButton.focus();
     await page.keyboard.press('Enter');
-    await page.waitForTimeout(200);
-    
+    await waitForRenderComplete(page, 'settle');
     const row = page.locator('[data-testid="metadata-custom-kv-row-0"]');
     await expect(row).toBeVisible();
   });
@@ -958,8 +941,7 @@ test.describe('Metadata Keyboard Accessibility', () => {
     const addButton = page.locator('[data-testid="metadata-add-custom-button"]');
     await addButton.scrollIntoViewIfNeeded();
     await addButton.click();
-    await page.waitForTimeout(200);
-    
+    await waitForRenderComplete(page, 'settle');
     const row = page.locator('[data-testid="metadata-custom-kv-row-0"]');
     await expect(row).toBeVisible();
     
@@ -967,8 +949,7 @@ test.describe('Metadata Keyboard Accessibility', () => {
     const removeButton = page.locator('[data-testid="metadata-custom-remove-button-0"]');
     await removeButton.focus();
     await page.keyboard.press('Enter');
-    await page.waitForTimeout(200);
-    
+    await waitForRenderComplete(page, 'settle');
     await expect(row).not.toBeVisible();
   });
 });

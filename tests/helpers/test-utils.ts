@@ -97,17 +97,16 @@ export async function waitForRenderComplete(
   reason: string = 'render',
   timeout: number = RENDER_TIMEOUT
 ): Promise<void> {
-  // First ensure canvas is visible
-  await page.waitForSelector('canvas', { state: 'visible', timeout: 5000 }).catch(() => {});
-  
-  // Wait for app to signal rendering is complete
-  await page.waitForSelector(
-    '[data-rendering-state="idle"]',
-    { state: 'attached', timeout }
-  ).catch(() => {
-    // Fallback: wait for canvas to be stable
-    return waitForCanvasStable(page, 200, timeout);
-  });
+  // Ensure the canvas exists and is visible. If the app cannot render, fail fast.
+  await page.waitForSelector('canvas', { state: 'visible', timeout: Math.min(timeout, 5000) });
+
+  // Prefer the app's explicit render-state marker when available.
+  try {
+    await page.waitForSelector('[data-rendering-state="idle"]', { state: 'attached', timeout });
+  } catch (err) {
+    // Fallback: if the marker is missing or never flips, rely on canvas stability.
+    await waitForCanvasStable(page, 200, timeout);
+  }
 }
 
 /**
@@ -133,7 +132,7 @@ export async function waitForAccordionState(
       `[data-testid="accordion-${section}"] [role="region"][data-state="open"], ` +
       `[role="region"][data-state="open"]`,
       { state: 'visible', timeout }
-    ).catch(() => {});
+    );
   } else {
     // Wait for trigger to have data-state="closed"
     await page.waitForFunction(
@@ -143,7 +142,7 @@ export async function waitForAccordionState(
       },
       section,
       { timeout, polling: 50 }
-    ).catch(() => {});
+    );
   }
 }
 
@@ -175,10 +174,21 @@ export async function waitForDropdownClosed(
   page: Page,
   timeout: number = 2000
 ): Promise<void> {
-  await page.waitForSelector(
-    '[data-radix-popper-content-wrapper]',
-    { state: 'hidden', timeout }
-  ).catch(() => {});
+  // Radix popper content may close by becoming hidden OR detaching entirely.
+  await page.waitForFunction(
+    () => {
+      const el = document.querySelector('[data-radix-popper-content-wrapper]') as HTMLElement | null;
+      if (!el) return true;
+      const style = window.getComputedStyle(el);
+      if (style.display === 'none' || style.visibility === 'hidden') return true;
+      // offsetParent === null covers "display:none" and some positioned hidden states.
+      if (el.offsetParent === null) return true;
+      // aria-hidden is sometimes toggled.
+      if (el.getAttribute('aria-hidden') === 'true') return true;
+      return false;
+    },
+    { timeout }
+  );
 }
 
 /**
@@ -236,7 +246,7 @@ export async function waitForCanvasStable(
     },
     stabilityMs,
     { timeout, polling: 50 }
-  ).catch(() => {});
+  );
 }
 
 // =============================================================================
@@ -344,8 +354,7 @@ export async function ensureVisibleInSidebar(page: Page, locator: Locator): Prom
   // Use JavaScript scrollIntoView which handles nested scroll containers
   await locator.evaluate(el => {
     el.scrollIntoView({ behavior: 'instant', block: 'center' });
-  }).catch(() => {});
-  
+  });
   // Wait for scroll to settle using event-driven detection
   await page.waitForFunction(
     () => {
@@ -367,7 +376,7 @@ export async function ensureVisibleInSidebar(page: Page, locator: Locator): Prom
       return false;
     },
     { timeout: 2000, polling: 16 }
-  ).catch(() => {});
+  );
 }
 
 // =============================================================================
@@ -383,8 +392,7 @@ export async function ensureVisibleInSidebar(page: Page, locator: Locator): Prom
  */
 export async function selectTier(page: Page, tier: Tier): Promise<void> {
   // Wait for page to be ready
-  await page.waitForSelector('[role="tablist"], [role="combobox"]', { timeout: 10000 }).catch(() => {});
-  
+  await page.waitForSelector('[role="tablist"], [role="combobox"]', { timeout: 10000 });
   const labels = TIER_LABELS[tier];
   let clicked = false;
   
@@ -398,7 +406,7 @@ export async function selectTier(page: Page, tier: Tier): Promise<void> {
       await page.waitForSelector(
         `[role="tab"][aria-selected="true"]:has-text("${label}")`,
         { timeout: 2000 }
-      ).catch(() => {});
+      );
       break;
     }
   }
@@ -424,6 +432,12 @@ export async function selectTier(page: Page, tier: Tier): Promise<void> {
   // Dismiss welcome modal if it appears after tier switch
   await dismissWelcomeModal(page);
 }
+
+// Backwards-compatible aliases (older suites used these names)
+export const setTier = selectTier;
+export const waitForSelectOpen = waitForDropdownOpen;
+export const waitForSelectClosed = waitForDropdownClosed;
+
 
 /**
  * Set a slider value by clicking at a percentage position.
@@ -464,7 +478,7 @@ export async function setSlider(page: Page, testId: string, percent: number): Pr
         },
         { testId, initial: initialValue },
         { timeout: 2000, polling: 50 }
-      ).catch(() => {});
+      );
     }
   }
 }
@@ -522,8 +536,7 @@ export async function selectOption(page: Page, testId: string, optionText: strin
     },
     targetIndex,
     { timeout: 2000, polling: 16 }
-  ).catch(() => {});
-  
+  );
   // Press Enter to select
   await page.keyboard.press('Enter');
   
@@ -565,7 +578,7 @@ export async function toggleSwitch(page: Page, testId: string, targetState?: Swi
     },
     { testId, expected: expectedState },
     { timeout: 2000, polling: 50 }
-  ).catch(() => {});
+  );
 }
 
 /**
@@ -593,7 +606,7 @@ export async function setInput(page: Page, testId: string, value: string): Promi
     },
     { testId, value },
     { timeout: 1000, polling: 50 }
-  ).catch(() => {});
+  );
 }
 
 /**
@@ -740,7 +753,7 @@ export async function dismissWelcomeModal(page: Page): Promise<void> {
   const getStartedBtn = page.locator('button').filter({ hasText: /get started/i }).first();
   if (await getStartedBtn.isVisible().catch(() => false)) {
     await getStartedBtn.click();
-    await page.waitForSelector('dialog[open]', { state: 'hidden', timeout: 2000 }).catch(() => {});
+    await page.waitForSelector('dialog[open]', { state: 'hidden', timeout: 2000 });
     return;
   }
   
@@ -748,7 +761,7 @@ export async function dismissWelcomeModal(page: Page): Promise<void> {
   const closeBtn = page.locator('button[aria-label*="close" i], button[aria-label="Close"], button[aria-label="Close modal"]').first();
   if (await closeBtn.isVisible().catch(() => false)) {
     await closeBtn.click();
-    await page.waitForSelector('dialog[open]', { state: 'hidden', timeout: 2000 }).catch(() => {});
+    await page.waitForSelector('dialog[open]', { state: 'hidden', timeout: 2000 });
     return;
   }
   
@@ -756,13 +769,13 @@ export async function dismissWelcomeModal(page: Page): Promise<void> {
   const backdrop = page.locator('button.absolute.inset-0').first();
   if (await backdrop.isVisible().catch(() => false)) {
     await backdrop.click({ force: true });
-    await page.waitForSelector('dialog[open]', { state: 'hidden', timeout: 2000 }).catch(() => {});
+    await page.waitForSelector('dialog[open]', { state: 'hidden', timeout: 2000 });
     return;
   }
   
   // Strategy 4: Press Escape key
   await page.keyboard.press('Escape');
-  await page.waitForSelector('dialog[open]', { state: 'hidden', timeout: 2000 }).catch(() => {});
+  await page.waitForSelector('dialog[open]', { state: 'hidden', timeout: 2000 });
 }
 
 /**
@@ -800,8 +813,6 @@ export async function navigateToApp(page: Page): Promise<void> {
   }, { key: WELCOME_MODAL_STORAGE_KEY, value: WELCOME_MODAL_VERSION });
   
   await page.goto('/');
-  await page.waitForLoadState('networkidle').catch(() => {});
-  
   // Double-check: dismiss welcome modal if it still appears (shouldn't happen but defensive)
   await dismissWelcomeModal(page);
   
@@ -829,10 +840,10 @@ export async function resetAppState(page: Page): Promise<void> {
 export async function waitForAccordionOpen(page: Page, sectionId?: string): Promise<void> {
   if (sectionId) {
     await waitForAccordionState(page, sectionId, 'open');
-  } else {
-    // Wait for any accordion region to be visible
-    await page.waitForSelector('[role="region"][data-state="open"]', { state: 'visible', timeout: 5000 }).catch(() => {});
+    return;
   }
+  // Wait for any accordion region to be visible
+  await page.waitForSelector('[role="region"][data-state="open"]', { state: 'visible', timeout: 5000 });
 }
 
 /**

@@ -1,5 +1,6 @@
 import { test, expect } from '../fixtures/test-fixtures';
 import { getCanvasSnapshot, snapshotsAreDifferent, waitForSelectOpen, waitForSelectClosed } from '../helpers/qr-detector';
+import { waitForRenderComplete } from '../helpers/test-utils';
 
 /**
  * QR Encoding Section - Advanced Tier (Comprehensive)
@@ -18,7 +19,7 @@ test.describe('QR Encoding Section - Advanced Tier', () => {
     await setTier('advanced');
     // Wait for initial render
     await page.waitForSelector('canvas', { state: 'visible', timeout: 10000 });
-    await page.waitForTimeout(500);
+    await waitForRenderComplete(page, 'settle');
   });
 
   /**
@@ -39,8 +40,8 @@ test.describe('QR Encoding Section - Advanced Tier', () => {
       await page.waitForSelector('[role="region"][data-state="open"]', { 
         state: 'visible', 
         timeout: 5000 
-      }).catch(() => {});
-      await page.waitForTimeout(300);
+      });
+      await waitForRenderComplete(page, 'settle');
     }
   }
 
@@ -66,7 +67,7 @@ test.describe('QR Encoding Section - Advanced Tier', () => {
       await page.keyboard.press('ArrowDown');
     }
     await page.keyboard.press('Enter');
-    await waitForSelectClosed(page).catch(() => {});
+    await waitForSelectClosed(page);
   }
 
   /**
@@ -97,7 +98,7 @@ test.describe('QR Encoding Section - Advanced Tier', () => {
           break;
         }
         await page.keyboard.press('Escape');
-        await page.waitForTimeout(100);
+        await waitForRenderComplete(page, 'settle');
       }
     } else {
       await selectTrigger.scrollIntoViewIfNeeded();
@@ -116,7 +117,7 @@ test.describe('QR Encoding Section - Advanced Tier', () => {
     } else {
       await page.keyboard.press('Escape');
     }
-    await waitForSelectClosed(page).catch(() => {});
+    await waitForSelectClosed(page);
   }
 
   /**
@@ -186,8 +187,7 @@ test.describe('QR Encoding Section - Advanced Tier', () => {
       
       // Set to auto mode (0%)
       await setVersionSlider(page, 0);
-      await page.waitForTimeout(300);
-      
+      await waitForRenderComplete(page, 'settle');
       // Look for "Auto" text in the version display
       const versionLabel = page.locator('text=/Auto|auto/i').first();
       const isVisible = await versionLabel.isVisible().catch(() => false);
@@ -400,8 +400,7 @@ test.describe('QR Encoding Section - Advanced Tier', () => {
       // First set some complex data that needs byte encoding
       // Expand payload section
       await page.click('button:has-text("Payload")');
-      await page.waitForTimeout(300);
-      
+      await waitForRenderComplete(page, 'settle');
       // Set complex text with special characters
       const textInput = page.locator('textarea, input[type="text"]').first();
       if (await textInput.isVisible()) {
@@ -427,8 +426,7 @@ test.describe('QR Encoding Section - Advanced Tier', () => {
       
       // Set numeric-only data first
       await page.click('button:has-text("Payload")');
-      await page.waitForTimeout(300);
-      
+      await waitForRenderComplete(page, 'settle');
       const textInput = page.locator('textarea, input[type="text"]').first();
       if (await textInput.isVisible()) {
         await textInput.fill('1234567890');
@@ -449,8 +447,7 @@ test.describe('QR Encoding Section - Advanced Tier', () => {
       
       // Set alphanumeric data
       await page.click('button:has-text("Payload")');
-      await page.waitForTimeout(300);
-      
+      await waitForRenderComplete(page, 'settle');
       const textInput = page.locator('textarea, input[type="text"]').first();
       if (await textInput.isVisible()) {
         await textInput.fill('HELLO123');
@@ -471,8 +468,7 @@ test.describe('QR Encoding Section - Advanced Tier', () => {
       
       // Use numeric data that works with multiple modes
       await page.click('button:has-text("Payload")');
-      await page.waitForTimeout(300);
-      
+      await waitForRenderComplete(page, 'settle');
       const textInput = page.locator('textarea, input[type="text"]').first();
       if (await textInput.isVisible()) {
         await textInput.fill('12345678901234567890');
@@ -608,8 +604,7 @@ test.describe('QR Encoding Section - Advanced Tier', () => {
     test('changing payload updates minimum version', async ({ page, waitForQRRender }) => {
       // Set short data
       await page.click('button:has-text("Payload")');
-      await page.waitForTimeout(300);
-      
+      await waitForRenderComplete(page, 'settle');
       const textInput = page.locator('textarea, input[type="text"]').first();
       if (await textInput.isVisible()) {
         await textInput.fill('short');
@@ -621,8 +616,7 @@ test.describe('QR Encoding Section - Advanced Tier', () => {
       
       // Set very long data
       await page.click('button:has-text("Payload")');
-      await page.waitForTimeout(300);
-      
+      await waitForRenderComplete(page, 'settle');
       if (await textInput.isVisible()) {
         const longText = 'A'.repeat(100);
         await textInput.fill(longText);
@@ -711,7 +705,7 @@ test.describe('QR Encoding Section - Advanced Tier', () => {
       
       // Close with Escape
       await page.keyboard.press('Escape');
-      await waitForSelectClosed(page).catch(() => {});
+      await waitForSelectClosed(page);
     });
 
     test('all controls have visible labels', async ({ page }) => {
@@ -752,7 +746,7 @@ test.describe('QR Encoding Section - Advanced Tier', () => {
       // Rapidly change settings
       for (let i = 0; i < 5; i++) {
         await setVersionSlider(page, (i * 20) % 100);
-        await page.waitForTimeout(50);
+        await waitForRenderComplete(page, 'settle');
       }
       
       await waitForQRRender();
@@ -768,12 +762,10 @@ test.describe('QR Encoding Section - Advanced Tier', () => {
       // Collapse
       const trigger = page.locator('button:has-text("QR Encoding")').first();
       await trigger.click();
-      await page.waitForTimeout(300);
-      
+      await waitForRenderComplete(page, 'settle');
       // Reopen
       await trigger.click();
-      await page.waitForTimeout(300);
-      
+      await waitForRenderComplete(page, 'settle');
       // Controls should still be visible
       const sliders = page.locator('[role="region"][data-state="open"]').first().locator('[role="slider"]');
       expect(await sliders.count()).toBeGreaterThan(0);
@@ -790,10 +782,9 @@ test.describe('QR Encoding Section - Advanced Tier', () => {
       // Collapse and reopen section
       const trigger = page.locator('button:has-text("QR Encoding")').first();
       await trigger.click();
-      await page.waitForTimeout(200);
+      await waitForRenderComplete(page, 'settle');
       await trigger.click();
-      await page.waitForTimeout(300);
-      
+      await waitForRenderComplete(page, 'settle');
       const afterReopen = await getCanvasSnapshot(page);
       
       // QR should be the same (settings persisted)

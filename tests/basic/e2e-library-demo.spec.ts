@@ -8,7 +8,8 @@
  * - Visual comparison tied to render completion
  */
 
-import { test, expect } from '@playwright/test';
+import { test, expect } from '../fixtures/test-fixtures';
+
 import {
   setupTest,
   createTestContext,
