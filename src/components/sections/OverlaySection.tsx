@@ -433,7 +433,7 @@ export function OverlaySection() {
               <SelectTrigger data-testid="overlay-mode-select">
                 <SelectValue />
               </SelectTrigger>
-              <SelectContent>
+              <SelectContent data-testid="overlay-mode-content">
                 {availableModes.map((m) => (
                   <SelectItem key={m.value} value={m.value}>
                     {t(m.labelKey)}
@@ -476,7 +476,7 @@ export function OverlaySection() {
               <SelectTrigger data-testid="overlay-color-mode-select">
                 <SelectValue />
               </SelectTrigger>
-              <SelectContent>
+              <SelectContent data-testid="overlay-color-mode-content">
                 <SelectItem value="color">{t('overlay.fullColor')}</SelectItem>
                 <SelectItem value="grayscale">{t('overlay.grayscale')}</SelectItem>
                 <SelectItem value="bw">{t('overlay.bw')}</SelectItem>
