@@ -24,9 +24,10 @@ const STORAGE_STATE_PATH = path.join(__dirname, 'tests', '.storage-state.json');
  */
 
 // Calculate optimal worker count based on hardware
-// Use 75% of CPUs to leave room for browser rendering threads
+// Use 50% of CPUs - each Playwright worker spawns ~6 Chrome processes
+// On 32-core: 16 workers × 6 processes = 96 total, leaving headroom for system
 const cpuCount = os.cpus().length;
-const optimalWorkers = Math.max(4, Math.floor(cpuCount * 0.75));
+const optimalWorkers = Math.max(4, Math.floor(cpuCount * 0.50));
 
 export default defineConfig({
   testDir: './tests',
@@ -124,6 +125,9 @@ export default defineConfig({
         viewport: { width: 1920, height: 1080 }, // Override Chrome default - 1080p to ensure all header elements visible
       },
       timeout: 4 * 60 * 60 * 1000, // 4 hours for exhaustive permutation tests
+      // Permutation tests: use full parallelism for maximum throughput
+      // On 32-core/64GB machine: 24 workers = 24 concurrent browser instances (~4.8GB RAM)
+      fullyParallel: true,
     },
     {
       name: 'reports',
