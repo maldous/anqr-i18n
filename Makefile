@@ -506,10 +506,11 @@ test\:ui:
 	npx playwright test --ui
 
 # Run ONLY exhaustive permutation tests (tests/permutations/*.spec.ts)
-# WARNING: Very long running! Control with environment variables:
-#   PERM_TIER=basic|advanced|professional
-#   PERM_SECTION=payload|overlay|render|etc
-#   PERM_MAX=50 (max permutations to test)
+# DEFAULT: Runs ALL tests for ALL settings - designed for overnight CI runs
+# Use environment variables to LIMIT scope for faster local testing:
+#   PERM_TIER=basic|advanced|professional (filter by tier)
+#   PERM_SECTION=payload|overlay|render|etc (filter by section)
+#   PERM_MAX=50 (limit tests per section)
 test\:permutations:
 	npx playwright test --project=permutations
 
