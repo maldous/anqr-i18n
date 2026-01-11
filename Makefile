@@ -481,8 +481,9 @@ sonar-report:
 
 # Run ALL tests (basic + advanced + professional + permutations)
 # This is the comprehensive test target - use for full CI validation
+# Outputs to test-report.txt for text-based review (with test names and pass/fail status)
 test:
-	npx playwright test --project=basic --project=advanced --project=professional --project=permutations
+	npx playwright test --project=basic --project=advanced --project=professional --project=permutations --reporter=list 2>&1 | tee test-report.txt
 
 # Run basic tier tests only (tests/basic/*.spec.ts)
 test\:basic:
