@@ -8,6 +8,7 @@ import {
   SECTION_LABELS,
   type Tier,
   type AccordionSection,
+  resetAppState,
 } from '../helpers/test-utils';
 import { enableBrowserDebug } from '../helpers/test-setup';
 export type { Tier } from '../helpers/test-utils';
@@ -38,7 +39,9 @@ export const test = base.extend<TestFixtures>({
     
     // Enable browser-side debugging (errors only, no console noise)
     enableBrowserDebug(page, { console: false, errors: true, network: false });
-    
+    // Ensure each test starts from a clean, deterministic state
+    await resetAppState(page);
+
     await use(page);
   },
 

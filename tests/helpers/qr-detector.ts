@@ -48,7 +48,7 @@ export async function openAccordion(page: Page, sectionId: string): Promise<void
   await page.waitForSelector(`[data-testid="accordion-${sectionId}"] [role="region"][data-state="open"]`, {
     state: 'visible',
     timeout: 5000
-  }).catch(() => {});
+  });
 }
 
 /**
@@ -105,8 +105,7 @@ export async function scrollOverlaySectionToControls(page: Page): Promise<void> 
   const enabledSwitch = page.locator('[data-testid="overlay-enabled-switch"]');
   
   // Wait for the switch to be attached (it appears after file upload)
-  await enabledSwitch.waitFor({ state: 'attached', timeout: 5000 }).catch(() => {});
-  
+  await enabledSwitch.waitFor({ state: 'attached', timeout: 5000 });
   // Check if it exists and is unchecked
   if (await enabledSwitch.count() > 0) {
     const state = await enabledSwitch.getAttribute('data-state');
@@ -117,7 +116,7 @@ export async function scrollOverlaySectionToControls(page: Page): Promise<void> 
       await page.waitForSelector('[data-testid="overlay-mode-select"]', {
         state: 'attached',
         timeout: 3000
-      }).catch(() => {});
+      });
     }
   }
   
@@ -126,15 +125,13 @@ export async function scrollOverlaySectionToControls(page: Page): Promise<void> 
   const modeSelect = page.locator('[data-testid="overlay-mode-select"]');
   
   // Wait for element to exist
-  await modeSelect.waitFor({ state: 'attached', timeout: 3000 }).catch(() => {});
-  
+  await modeSelect.waitFor({ state: 'attached', timeout: 3000 });
   // Use JavaScript scrollIntoView which handles nested scroll containers correctly
   await modeSelect.evaluate(el => {
     el.scrollIntoView({ behavior: 'instant', block: 'center' });
-  }).catch(() => {});
-  
+  });
   // Verify it's now visible
-  await modeSelect.waitFor({ state: 'visible', timeout: 3000 }).catch(() => {});
+  await modeSelect.waitFor({ state: 'visible', timeout: 3000 });
 }
 
 /**
@@ -328,7 +325,7 @@ export async function waitForAccordionOpen(
   
   // Also wait for the content to be visible
   const content = page.locator(`[role="region"][data-state="open"]`).first();
-  await content.waitFor({ state: 'visible', timeout }).catch(() => {});
+  await content.waitFor({ state: 'visible', timeout });
 }
 
 /**
@@ -377,7 +374,7 @@ export async function waitForSelectOpen(page: Page, timeout = DEFAULT_TIMEOUT): 
  * Wait for select dropdown to close (Radix UI)
  */
 export async function waitForSelectClosed(page: Page, timeout = DEFAULT_TIMEOUT): Promise<void> {
-  await page.waitForSelector('[data-radix-popper-content-wrapper]', { state: 'hidden', timeout }).catch(() => {});
+  await page.waitForSelector('[data-radix-popper-content-wrapper]', { state: 'hidden', timeout });
 }
 
 /**
@@ -425,8 +422,7 @@ export async function clickSelectOption(
     },
     targetIndex,
     { timeout: 2000, polling: 16 }
-  ).catch(() => {});
-  
+  );
   // Press Enter to select
   await page.keyboard.press('Enter');
   return true;
@@ -444,7 +440,7 @@ export async function selectDropdownOption(
   const select = page.locator(`[data-testid="${selectTestId}"]`);
   
   // Wait for element to exist and scroll into view
-  await select.waitFor({ state: 'visible', timeout: 5000 }).catch(() => {});
+  await select.waitFor({ state: 'visible', timeout: 5000 });
   await select.scrollIntoViewIfNeeded();
   
   // Click to open dropdown
@@ -460,7 +456,7 @@ export async function selectDropdownOption(
   if (await option.count() > 0) {
     await option.click({ force: true });
     // Wait for dropdown to close
-    await waitForSelectClosed(page).catch(() => {});
+    await waitForSelectClosed(page);
     return true;
   }
   

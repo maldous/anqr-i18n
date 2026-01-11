@@ -4,12 +4,14 @@
  * Uses data-testid selectors for reliability
  */
 
-import { expect, test, type Page } from '@playwright/test';
+import { test, expect } from '../fixtures/test-fixtures';
+import type { Page } from '@playwright/test';
+
 import {
   waitForQRRender,
   waitForAccordionOpen,
 } from '../helpers/qr-detector';
-import { setTier } from '../helpers/test-utils';
+import { setTier, waitForRenderComplete } from '../helpers/test-utils';
 
 // Helper: Navigate to the app and wait for initial load
 async function setupPage(page: Page) {
@@ -27,7 +29,7 @@ async function expandOutputSection(page: Page) {
   const openCount = await openTriggers.count();
   for (let i = 0; i < openCount; i++) {
     await openTriggers.nth(i).click();
-    await page.waitForTimeout(100);
+    await waitForRenderComplete(page, 'settle');
   }
   
   // Find and click Output accordion trigger
@@ -36,7 +38,7 @@ async function expandOutputSection(page: Page) {
     await outputTrigger.scrollIntoViewIfNeeded();
     await outputTrigger.click();
     await waitForAccordionOpen(page);
-    await page.waitForTimeout(200);
+    await waitForRenderComplete(page, 'settle');
   }
 }
 
@@ -48,8 +50,7 @@ async function selectDropdownOption(page: Page, triggerTestId: string, optionTex
   await trigger.click();
   
   await page.waitForSelector('[data-radix-popper-content-wrapper]', { timeout: 3000 });
-  await page.waitForTimeout(100);
-  
+  await waitForRenderComplete(page, 'settle');
   const option = page.locator('[role="option"]').filter({ hasText: new RegExp(optionText, 'i') }).first();
   if (await option.count() > 0) {
     await option.scrollIntoViewIfNeeded();
@@ -57,7 +58,7 @@ async function selectDropdownOption(page: Page, triggerTestId: string, optionTex
   } else {
     await page.keyboard.press('Escape');
   }
-  await page.waitForTimeout(100);
+  await waitForRenderComplete(page, 'settle');
 }
 
 // Helper: Set input value
@@ -68,7 +69,7 @@ async function setInputByTestId(page: Page, testId: string, value: string) {
   await input.fill('');
   await input.fill(value);
   await input.blur();
-  await page.waitForTimeout(100);
+  await waitForRenderComplete(page, 'settle');
 }
 
 // Helper: Toggle switch
@@ -77,7 +78,7 @@ async function toggleSwitchByTestId(page: Page, testId: string) {
   await switchEl.waitFor({ state: 'visible', timeout: 5000 });
   await switchEl.scrollIntoViewIfNeeded();
   await switchEl.click();
-  await page.waitForTimeout(100);
+  await waitForRenderComplete(page, 'settle');
 }
 
 // ============================================================================
@@ -98,8 +99,7 @@ test.describe('Output Format Selection', () => {
   test('format select has all format options', async ({ page }) => {
     const trigger = page.locator('[data-testid="output-format-trigger"]');
     await trigger.click();
-    await page.waitForTimeout(200);
-    
+    await waitForRenderComplete(page, 'settle');
     const formats = ['PNG', 'WebP', 'GIF', 'SVG'];
     let foundCount = 0;
     
@@ -123,16 +123,14 @@ test.describe('Output Format Selection', () => {
 
   test('selecting WebP format shows quality slider', async ({ page }) => {
     await selectDropdownOption(page, 'output-format-trigger', 'WebP');
-    await page.waitForTimeout(300);
-    
+    await waitForRenderComplete(page, 'settle');
     const qualitySlider = page.locator('[data-testid="output-quality-slider"]');
     await expect(qualitySlider).toBeVisible();
   });
 
   test('selecting GIF format shows GIF settings', async ({ page }) => {
     await selectDropdownOption(page, 'output-format-trigger', 'GIF');
-    await page.waitForTimeout(300);
-    
+    await waitForRenderComplete(page, 'settle');
     // GIF settings should be visible
     const paletteSlider = page.locator('[data-testid="output-gif-palette-slider"]');
     const quantizerTrigger = page.locator('[data-testid="output-gif-quantizer-trigger"]');
@@ -146,8 +144,7 @@ test.describe('Output Format Selection', () => {
 
   test('selecting SVG format shows SVG settings', async ({ page }) => {
     await selectDropdownOption(page, 'output-format-trigger', 'SVG');
-    await page.waitForTimeout(300);
-    
+    await waitForRenderComplete(page, 'settle');
     // SVG settings should be visible
     const trueVectorSwitch = page.locator('[data-testid="output-svg-true-vector-switch"]');
     const isVisible = await trueVectorSwitch.isVisible().catch(() => false);
@@ -160,12 +157,11 @@ test.describe('Output Format Selection', () => {
     const trigger = page.locator('[data-testid="output-format-trigger"]');
     await trigger.focus();
     await page.keyboard.press('Enter');
-    await page.waitForTimeout(200);
-    
+    await waitForRenderComplete(page, 'settle');
     await page.keyboard.press('ArrowDown');
     await page.keyboard.press('Enter');
     
-    await page.waitForTimeout(200);
+    await waitForRenderComplete(page, 'settle');
     // Dropdown should be closed
     const dropdown = page.locator('[data-radix-popper-content-wrapper]');
     const isOpen = await dropdown.isVisible().catch(() => false);
@@ -256,7 +252,7 @@ test.describe('Output WebP Quality', () => {
     await expandOutputSection(page);
     // Select WebP format to show quality slider
     await selectDropdownOption(page, 'output-format-trigger', 'WebP');
-    await page.waitForTimeout(300);
+    await waitForRenderComplete(page, 'settle');
   });
 
   test('quality slider is visible for WebP format', async ({ page }) => {
@@ -279,8 +275,7 @@ test.describe('Output WebP Quality', () => {
     
     const initialValue = await slider.getAttribute('aria-valuenow');
     await page.keyboard.press('ArrowRight');
-    await page.waitForTimeout(100);
-    
+    await waitForRenderComplete(page, 'settle');
     const newValue = await slider.getAttribute('aria-valuenow');
     // Value should change (or stay at max)
     expect(newValue).toBeTruthy();
@@ -297,7 +292,7 @@ test.describe('Output GIF Settings', () => {
     await expandOutputSection(page);
     // Select GIF format to show GIF settings
     await selectDropdownOption(page, 'output-format-trigger', 'GIF');
-    await page.waitForTimeout(300);
+    await waitForRenderComplete(page, 'settle');
   });
 
   test('GIF palette slider has correct range (2-256)', async ({ page }) => {
@@ -314,8 +309,7 @@ test.describe('Output GIF Settings', () => {
     const trigger = page.locator('[data-testid="output-gif-quantizer-trigger"]');
     if (await trigger.isVisible().catch(() => false)) {
       await trigger.click();
-      await page.waitForTimeout(200);
-      
+      await waitForRenderComplete(page, 'settle');
       const options = page.locator('[role="option"]');
       const count = await options.count();
       
@@ -328,8 +322,7 @@ test.describe('Output GIF Settings', () => {
     const trigger = page.locator('[data-testid="output-gif-dither-trigger"]');
     if (await trigger.isVisible().catch(() => false)) {
       await trigger.click();
-      await page.waitForTimeout(200);
-      
+      await waitForRenderComplete(page, 'settle');
       const offOption = page.locator('[role="option"]').filter({ hasText: /off/i });
       const floydOption = page.locator('[role="option"]').filter({ hasText: /floyd/i });
       
@@ -352,7 +345,7 @@ test.describe('Output SVG Settings', () => {
     await expandOutputSection(page);
     // Select SVG format to show SVG settings
     await selectDropdownOption(page, 'output-format-trigger', 'SVG');
-    await page.waitForTimeout(300);
+    await waitForRenderComplete(page, 'settle');
   });
 
   test('true vector switch is toggleable', async ({ page }) => {
@@ -381,15 +374,14 @@ test.describe('Output SVG Settings', () => {
     if (await trueVectorSwitch.isVisible().catch(() => false)) {
       if ((await trueVectorSwitch.getAttribute('data-state')) !== 'checked') {
         await toggleSwitchByTestId(page, 'output-svg-true-vector-switch');
-        await page.waitForTimeout(200);
+        await waitForRenderComplete(page, 'settle');
       }
     }
     
     const trigger = page.locator('[data-testid="output-svg-precision-trigger"]');
     if (await trigger.isVisible().catch(() => false)) {
       await trigger.click();
-      await page.waitForTimeout(200);
-      
+      await waitForRenderComplete(page, 'settle');
       const pixelOption = page.locator('[role="option"]').filter({ hasText: /pixel/i });
       const preciseOption = page.locator('[role="option"]').filter({ hasText: /precise/i });
       
@@ -414,8 +406,7 @@ test.describe('Output Conditional Settings Visibility', () => {
 
   test('quality slider hidden for PNG format', async ({ page }) => {
     await selectDropdownOption(page, 'output-format-trigger', 'PNG');
-    await page.waitForTimeout(300);
-    
+    await waitForRenderComplete(page, 'settle');
     const qualitySlider = page.locator('[data-testid="output-quality-slider"]');
     const isVisible = await qualitySlider.isVisible().catch(() => false);
     expect(isVisible).toBe(false);
@@ -423,8 +414,7 @@ test.describe('Output Conditional Settings Visibility', () => {
 
   test('GIF settings hidden for PNG format', async ({ page }) => {
     await selectDropdownOption(page, 'output-format-trigger', 'PNG');
-    await page.waitForTimeout(300);
-    
+    await waitForRenderComplete(page, 'settle');
     const gifPalette = page.locator('[data-testid="output-gif-palette-slider"]');
     const isVisible = await gifPalette.isVisible().catch(() => false);
     expect(isVisible).toBe(false);
@@ -432,8 +422,7 @@ test.describe('Output Conditional Settings Visibility', () => {
 
   test('SVG settings hidden for PNG format', async ({ page }) => {
     await selectDropdownOption(page, 'output-format-trigger', 'PNG');
-    await page.waitForTimeout(300);
-    
+    await waitForRenderComplete(page, 'settle');
     const svgSwitch = page.locator('[data-testid="output-svg-true-vector-switch"]');
     const isVisible = await svgSwitch.isVisible().catch(() => false);
     expect(isVisible).toBe(false);
@@ -441,8 +430,7 @@ test.describe('Output Conditional Settings Visibility', () => {
 
   test('GIF settings hidden for SVG format', async ({ page }) => {
     await selectDropdownOption(page, 'output-format-trigger', 'SVG');
-    await page.waitForTimeout(300);
-    
+    await waitForRenderComplete(page, 'settle');
     const gifPalette = page.locator('[data-testid="output-gif-palette-slider"]');
     const isVisible = await gifPalette.isVisible().catch(() => false);
     expect(isVisible).toBe(false);
@@ -450,8 +438,7 @@ test.describe('Output Conditional Settings Visibility', () => {
 
   test('SVG settings hidden for GIF format', async ({ page }) => {
     await selectDropdownOption(page, 'output-format-trigger', 'GIF');
-    await page.waitForTimeout(300);
-    
+    await waitForRenderComplete(page, 'settle');
     const svgSwitch = page.locator('[data-testid="output-svg-true-vector-switch"]');
     const isVisible = await svgSwitch.isVisible().catch(() => false);
     expect(isVisible).toBe(false);
@@ -460,22 +447,19 @@ test.describe('Output Conditional Settings Visibility', () => {
   test('switching formats updates visible settings', async ({ page }) => {
     // Start with PNG
     await selectDropdownOption(page, 'output-format-trigger', 'PNG');
-    await page.waitForTimeout(300);
-    
+    await waitForRenderComplete(page, 'settle');
     let qualityVisible = await page.locator('[data-testid="output-quality-slider"]').isVisible().catch(() => false);
     expect(qualityVisible).toBe(false);
     
     // Switch to WebP
     await selectDropdownOption(page, 'output-format-trigger', 'WebP');
-    await page.waitForTimeout(300);
-    
+    await waitForRenderComplete(page, 'settle');
     qualityVisible = await page.locator('[data-testid="output-quality-slider"]').isVisible().catch(() => false);
     expect(qualityVisible).toBe(true);
     
     // Switch back to PNG
     await selectDropdownOption(page, 'output-format-trigger', 'PNG');
-    await page.waitForTimeout(300);
-    
+    await waitForRenderComplete(page, 'settle');
     qualityVisible = await page.locator('[data-testid="output-quality-slider"]').isVisible().catch(() => false);
     expect(qualityVisible).toBe(false);
   });
@@ -543,8 +527,7 @@ test.describe('Output Professional Settings (Professional Tier)', () => {
     const trigger = page.locator('[data-testid="output-format-extra-trigger"]');
     if (await trigger.isVisible().catch(() => false)) {
       await trigger.click();
-      await page.waitForTimeout(200);
-      
+      await waitForRenderComplete(page, 'settle');
       const noneOption = page.locator('[role="option"]').filter({ hasText: /none/i });
       const epsOption = page.locator('[role="option"]').filter({ hasText: /eps/i });
       
@@ -604,8 +587,7 @@ test.describe('Output Edge Cases', () => {
     const widthInput = page.locator('[data-testid="output-width-input"]');
     await widthInput.fill('');
     await widthInput.blur();
-    await page.waitForTimeout(100);
-    
+    await waitForRenderComplete(page, 'settle');
     // Should have some default value
     const value = await widthInput.inputValue();
     expect(value).toBeTruthy();
@@ -616,7 +598,7 @@ test.describe('Output Edge Cases', () => {
     
     for (const format of formats) {
       await selectDropdownOption(page, 'output-format-trigger', format);
-      await page.waitForTimeout(100);
+      await waitForRenderComplete(page, 'settle');
     }
     
     // Should end on PNG
@@ -632,7 +614,7 @@ test.describe('Output Edge Cases', () => {
     // Collapse and expand
     const outputTrigger = page.locator('button').filter({ hasText: /^Output$/i }).first();
     await outputTrigger.click();
-    await page.waitForTimeout(200);
+    await waitForRenderComplete(page, 'settle');
     await outputTrigger.click();
     await waitForAccordionOpen(page);
     
@@ -732,7 +714,7 @@ test.describe('Output Dimension Validation', () => {
 
   test('width minimum value is 100', async ({ page }) => {
     await setInputByTestId(page, 'output-width-input', '50');
-    await page.waitForTimeout(100);
+    await waitForRenderComplete(page, 'settle');
     const widthInput = page.locator('[data-testid="output-width-input"]');
     const value = await widthInput.inputValue();
     // Should either clamp to 100 or accept 50 (depending on implementation)
@@ -741,7 +723,7 @@ test.describe('Output Dimension Validation', () => {
 
   test('width maximum value is 2000', async ({ page }) => {
     await setInputByTestId(page, 'output-width-input', '3000');
-    await page.waitForTimeout(100);
+    await waitForRenderComplete(page, 'settle');
     const widthInput = page.locator('[data-testid="output-width-input"]');
     const value = await widthInput.inputValue();
     // Should either clamp to 2000 or accept 3000
@@ -750,7 +732,7 @@ test.describe('Output Dimension Validation', () => {
 
   test('height minimum value is 100', async ({ page }) => {
     await setInputByTestId(page, 'output-height-input', '50');
-    await page.waitForTimeout(100);
+    await waitForRenderComplete(page, 'settle');
     const heightInput = page.locator('[data-testid="output-height-input"]');
     const value = await heightInput.inputValue();
     expect(Number(value)).toBeGreaterThanOrEqual(50);
@@ -758,7 +740,7 @@ test.describe('Output Dimension Validation', () => {
 
   test('height maximum value is 2000', async ({ page }) => {
     await setInputByTestId(page, 'output-height-input', '3000');
-    await page.waitForTimeout(100);
+    await waitForRenderComplete(page, 'settle');
     const heightInput = page.locator('[data-testid="output-height-input"]');
     const value = await heightInput.inputValue();
     expect(Number(value)).toBeLessThanOrEqual(3000);
@@ -791,7 +773,7 @@ test.describe('Output Dimension Validation', () => {
 
   test('width input handles decimal values', async ({ page }) => {
     await setInputByTestId(page, 'output-width-input', '500.5');
-    await page.waitForTimeout(100);
+    await waitForRenderComplete(page, 'settle');
     const widthInput = page.locator('[data-testid="output-width-input"]');
     // Number input may round to integer
     const value = await widthInput.inputValue();
@@ -800,7 +782,7 @@ test.describe('Output Dimension Validation', () => {
 
   test('height input handles negative values', async ({ page }) => {
     await setInputByTestId(page, 'output-height-input', '-100');
-    await page.waitForTimeout(100);
+    await waitForRenderComplete(page, 'settle');
     const heightInput = page.locator('[data-testid="output-height-input"]');
     const value = await heightInput.inputValue();
     // Should clamp or reject negative values
@@ -812,7 +794,7 @@ test.describe('Output Dimension Validation', () => {
     await widthInput.fill('400');
     await widthInput.focus();
     await page.keyboard.press('ArrowUp');
-    await page.waitForTimeout(50);
+    await waitForRenderComplete(page, 'settle');
     const value = await widthInput.inputValue();
     expect(Number(value)).toBeGreaterThanOrEqual(400);
   });
@@ -822,7 +804,7 @@ test.describe('Output Dimension Validation', () => {
     await heightInput.fill('500');
     await heightInput.focus();
     await page.keyboard.press('ArrowDown');
-    await page.waitForTimeout(50);
+    await waitForRenderComplete(page, 'settle');
     const value = await heightInput.inputValue();
     expect(Number(value)).toBeLessThanOrEqual(500);
   });
@@ -837,7 +819,7 @@ test.describe('Output WebP Quality Key Points', () => {
     await setupPage(page);
     await expandOutputSection(page);
     await selectDropdownOption(page, 'output-format-trigger', 'WebP');
-    await page.waitForTimeout(300);
+    await waitForRenderComplete(page, 'settle');
   });
 
   test('quality slider at 0% (minimum)', async ({ page }) => {
@@ -847,7 +829,7 @@ test.describe('Output WebP Quality Key Points', () => {
       await sliderThumb.focus();
       // Press Home to go to minimum
       await page.keyboard.press('Home');
-      await page.waitForTimeout(100);
+      await waitForRenderComplete(page, 'settle');
       const value = await sliderThumb.getAttribute('aria-valuenow');
       expect(Number(value)).toBeLessThanOrEqual(0.15); // ~10-15%
     }
@@ -859,7 +841,7 @@ test.describe('Output WebP Quality Key Points', () => {
       const sliderThumb = slider.locator('[role="slider"]');
       await sliderThumb.focus();
       await page.keyboard.press('End');
-      await page.waitForTimeout(100);
+      await waitForRenderComplete(page, 'settle');
       const value = await sliderThumb.getAttribute('aria-valuenow');
       expect(Number(value)).toBeGreaterThanOrEqual(0.95);
     }
@@ -873,7 +855,7 @@ test.describe('Output WebP Quality Key Points', () => {
         const x = box.x + box.width * 0.45; // ~45-55%
         const y = box.y + box.height / 2;
         await page.mouse.click(x, y);
-        await page.waitForTimeout(100);
+        await waitForRenderComplete(page, 'settle');
         const sliderThumb = slider.locator('[role="slider"]');
         const value = await sliderThumb.getAttribute('aria-valuenow');
         expect(Number(value)).toBeGreaterThan(0.3);
@@ -890,7 +872,7 @@ test.describe('Output WebP Quality Key Points', () => {
         const x = box.x + box.width * 0.15;
         const y = box.y + box.height / 2;
         await page.mouse.click(x, y);
-        await page.waitForTimeout(100);
+        await waitForRenderComplete(page, 'settle');
         const sliderThumb = slider.locator('[role="slider"]');
         const value = await sliderThumb.getAttribute('aria-valuenow');
         expect(Number(value)).toBeGreaterThan(0.1);
@@ -907,7 +889,7 @@ test.describe('Output WebP Quality Key Points', () => {
         const x = box.x + box.width * 0.75;
         const y = box.y + box.height / 2;
         await page.mouse.click(x, y);
-        await page.waitForTimeout(100);
+        await waitForRenderComplete(page, 'settle');
         const sliderThumb = slider.locator('[role="slider"]');
         const value = await sliderThumb.getAttribute('aria-valuenow');
         expect(Number(value)).toBeGreaterThan(0.5);
@@ -923,7 +905,7 @@ test.describe('Output WebP Quality Key Points', () => {
       await sliderThumb.focus();
       const initialValue = Number(await sliderThumb.getAttribute('aria-valuenow'));
       await page.keyboard.press('ArrowRight');
-      await page.waitForTimeout(50);
+      await waitForRenderComplete(page, 'settle');
       const newValue = Number(await sliderThumb.getAttribute('aria-valuenow'));
       expect(newValue).toBeGreaterThanOrEqual(initialValue);
     }
@@ -935,10 +917,10 @@ test.describe('Output WebP Quality Key Points', () => {
       const sliderThumb = slider.locator('[role="slider"]');
       await sliderThumb.focus();
       await page.keyboard.press('End'); // Go to max first
-      await page.waitForTimeout(50);
+      await waitForRenderComplete(page, 'settle');
       const initialValue = Number(await sliderThumb.getAttribute('aria-valuenow'));
       await page.keyboard.press('ArrowLeft');
-      await page.waitForTimeout(50);
+      await waitForRenderComplete(page, 'settle');
       const newValue = Number(await sliderThumb.getAttribute('aria-valuenow'));
       expect(newValue).toBeLessThanOrEqual(initialValue);
     }
@@ -954,7 +936,7 @@ test.describe('Output GIF Settings Combinations', () => {
     await setupPage(page);
     await expandOutputSection(page);
     await selectDropdownOption(page, 'output-format-trigger', 'GIF');
-    await page.waitForTimeout(300);
+    await waitForRenderComplete(page, 'settle');
   });
 
   test('GIF palette size minimum (2 colors)', async ({ page }) => {
@@ -963,7 +945,7 @@ test.describe('Output GIF Settings Combinations', () => {
       const sliderThumb = slider.locator('[role="slider"]');
       await sliderThumb.focus();
       await page.keyboard.press('Home');
-      await page.waitForTimeout(100);
+      await waitForRenderComplete(page, 'settle');
       const value = await sliderThumb.getAttribute('aria-valuenow');
       expect(Number(value)).toBe(2);
     }
@@ -975,7 +957,7 @@ test.describe('Output GIF Settings Combinations', () => {
       const sliderThumb = slider.locator('[role="slider"]');
       await sliderThumb.focus();
       await page.keyboard.press('End');
-      await page.waitForTimeout(100);
+      await waitForRenderComplete(page, 'settle');
       const value = await sliderThumb.getAttribute('aria-valuenow');
       expect(Number(value)).toBe(256);
     }
@@ -985,7 +967,7 @@ test.describe('Output GIF Settings Combinations', () => {
     const trigger = page.locator('[data-testid="output-gif-quantizer-trigger"]');
     if (await trigger.isVisible().catch(() => false)) {
       await trigger.click();
-      await page.waitForTimeout(200);
+      await waitForRenderComplete(page, 'settle');
       const option = page.locator('[role="option"]').filter({ hasText: /median/i });
       if (await option.count() > 0) {
         await option.click();
@@ -1001,7 +983,7 @@ test.describe('Output GIF Settings Combinations', () => {
     const trigger = page.locator('[data-testid="output-gif-quantizer-trigger"]');
     if (await trigger.isVisible().catch(() => false)) {
       await trigger.click();
-      await page.waitForTimeout(200);
+      await waitForRenderComplete(page, 'settle');
       const option = page.locator('[role="option"]').filter({ hasText: /neuquant/i });
       if (await option.count() > 0) {
         await option.click();
@@ -1017,7 +999,7 @@ test.describe('Output GIF Settings Combinations', () => {
     const trigger = page.locator('[data-testid="output-gif-quantizer-trigger"]');
     if (await trigger.isVisible().catch(() => false)) {
       await trigger.click();
-      await page.waitForTimeout(200);
+      await waitForRenderComplete(page, 'settle');
       const option = page.locator('[role="option"]').filter({ hasText: /octree/i });
       if (await option.count() > 0) {
         await option.click();
@@ -1033,7 +1015,7 @@ test.describe('Output GIF Settings Combinations', () => {
     const trigger = page.locator('[data-testid="output-gif-dither-trigger"]');
     if (await trigger.isVisible().catch(() => false)) {
       await trigger.click();
-      await page.waitForTimeout(200);
+      await waitForRenderComplete(page, 'settle');
       const option = page.locator('[role="option"]').filter({ hasText: /off/i });
       if (await option.count() > 0) {
         await option.click();
@@ -1049,7 +1031,7 @@ test.describe('Output GIF Settings Combinations', () => {
     const trigger = page.locator('[data-testid="output-gif-dither-trigger"]');
     if (await trigger.isVisible().catch(() => false)) {
       await trigger.click();
-      await page.waitForTimeout(200);
+      await waitForRenderComplete(page, 'settle');
       const option = page.locator('[role="option"]').filter({ hasText: /floyd/i });
       if (await option.count() > 0) {
         await option.click();
@@ -1065,7 +1047,7 @@ test.describe('Output GIF Settings Combinations', () => {
     const trigger = page.locator('[data-testid="output-gif-dither-trigger"]');
     if (await trigger.isVisible().catch(() => false)) {
       await trigger.click();
-      await page.waitForTimeout(200);
+      await waitForRenderComplete(page, 'settle');
       const option = page.locator('[role="option"]').filter({ hasText: /ordered/i });
       if (await option.count() > 0) {
         await option.click();
@@ -1084,14 +1066,14 @@ test.describe('Output GIF Settings Combinations', () => {
       const sliderThumb = paletteSlider.locator('[role="slider"]');
       await sliderThumb.focus();
       await page.keyboard.press('Home');
-      await page.waitForTimeout(100);
+      await waitForRenderComplete(page, 'settle');
     }
     
     // Set quantizer
     const quantizerTrigger = page.locator('[data-testid="output-gif-quantizer-trigger"]');
     if (await quantizerTrigger.isVisible().catch(() => false)) {
       await quantizerTrigger.click();
-      await page.waitForTimeout(200);
+      await waitForRenderComplete(page, 'settle');
       const medianOpt = page.locator('[role="option"]').filter({ hasText: /median/i });
       if (await medianOpt.count() > 0) {
         await medianOpt.click();
@@ -1104,7 +1086,7 @@ test.describe('Output GIF Settings Combinations', () => {
     const ditherTrigger = page.locator('[data-testid="output-gif-dither-trigger"]');
     if (await ditherTrigger.isVisible().catch(() => false)) {
       await ditherTrigger.click();
-      await page.waitForTimeout(200);
+      await waitForRenderComplete(page, 'settle');
       const floydOpt = page.locator('[role="option"]').filter({ hasText: /floyd/i });
       if (await floydOpt.count() > 0) {
         await floydOpt.click();
@@ -1126,14 +1108,14 @@ test.describe('Output GIF Settings Combinations', () => {
       const sliderThumb = paletteSlider.locator('[role="slider"]');
       await sliderThumb.focus();
       await page.keyboard.press('End');
-      await page.waitForTimeout(100);
+      await waitForRenderComplete(page, 'settle');
     }
     
     // Set quantizer
     const quantizerTrigger = page.locator('[data-testid="output-gif-quantizer-trigger"]');
     if (await quantizerTrigger.isVisible().catch(() => false)) {
       await quantizerTrigger.click();
-      await page.waitForTimeout(200);
+      await waitForRenderComplete(page, 'settle');
       const octreeOpt = page.locator('[role="option"]').filter({ hasText: /octree/i });
       if (await octreeOpt.count() > 0) {
         await octreeOpt.click();
@@ -1146,7 +1128,7 @@ test.describe('Output GIF Settings Combinations', () => {
     const ditherTrigger = page.locator('[data-testid="output-gif-dither-trigger"]');
     if (await ditherTrigger.isVisible().catch(() => false)) {
       await ditherTrigger.click();
-      await page.waitForTimeout(200);
+      await waitForRenderComplete(page, 'settle');
       const offOpt = page.locator('[role="option"]').filter({ hasText: /off/i });
       if (await offOpt.count() > 0) {
         await offOpt.click();
@@ -1173,7 +1155,7 @@ test.describe('Output SVG Settings', () => {
     await setupPage(page);
     await expandOutputSection(page);
     await selectDropdownOption(page, 'output-format-trigger', 'SVG');
-    await page.waitForTimeout(300);
+    await waitForRenderComplete(page, 'settle');
   });
 
   test('SVG true vector switch default state', async ({ page }) => {
@@ -1190,7 +1172,7 @@ test.describe('Output SVG Settings', () => {
       // Enable true vector if not already
       if ((await switchEl.getAttribute('data-state')) !== 'checked') {
         await toggleSwitchByTestId(page, 'output-svg-true-vector-switch');
-        await page.waitForTimeout(200);
+        await waitForRenderComplete(page, 'settle');
       }
       
       // Precision trigger should be visible
@@ -1205,13 +1187,13 @@ test.describe('Output SVG Settings', () => {
     if (await switchEl.isVisible().catch(() => false)) {
       if ((await switchEl.getAttribute('data-state')) !== 'checked') {
         await toggleSwitchByTestId(page, 'output-svg-true-vector-switch');
-        await page.waitForTimeout(200);
+        await waitForRenderComplete(page, 'settle');
       }
       
       const precisionTrigger = page.locator('[data-testid="output-svg-precision-trigger"]');
       if (await precisionTrigger.isVisible().catch(() => false)) {
         await precisionTrigger.click();
-        await page.waitForTimeout(200);
+        await waitForRenderComplete(page, 'settle');
         const pixelOpt = page.locator('[role="option"]').filter({ hasText: /pixel/i });
         if (await pixelOpt.count() > 0) {
           await pixelOpt.click();
@@ -1229,13 +1211,13 @@ test.describe('Output SVG Settings', () => {
     if (await switchEl.isVisible().catch(() => false)) {
       if ((await switchEl.getAttribute('data-state')) !== 'checked') {
         await toggleSwitchByTestId(page, 'output-svg-true-vector-switch');
-        await page.waitForTimeout(200);
+        await waitForRenderComplete(page, 'settle');
       }
       
       const precisionTrigger = page.locator('[data-testid="output-svg-precision-trigger"]');
       if (await precisionTrigger.isVisible().catch(() => false)) {
         await precisionTrigger.click();
-        await page.waitForTimeout(200);
+        await waitForRenderComplete(page, 'settle');
         const preciseOpt = page.locator('[role="option"]').filter({ hasText: /precise/i });
         if (await preciseOpt.count() > 0) {
           await preciseOpt.click();
@@ -1290,7 +1272,7 @@ test.describe('Output DPI Settings', () => {
     if (await slider.isVisible().catch(() => false)) {
       await slider.focus();
       await page.keyboard.press('Home');
-      await page.waitForTimeout(100);
+      await waitForRenderComplete(page, 'settle');
       const value = await slider.getAttribute('aria-valuenow');
       expect(Number(value)).toBe(72);
     }
@@ -1301,7 +1283,7 @@ test.describe('Output DPI Settings', () => {
     if (await slider.isVisible().catch(() => false)) {
       await slider.focus();
       await page.keyboard.press('End');
-      await page.waitForTimeout(100);
+      await waitForRenderComplete(page, 'settle');
       const value = await slider.getAttribute('aria-valuenow');
       expect(Number(value)).toBe(600);
     }
@@ -1316,7 +1298,7 @@ test.describe('Output DPI Settings', () => {
         const x = box.x + box.width * 0.15;
         const y = box.y + box.height / 2;
         await page.mouse.click(x, y);
-        await page.waitForTimeout(100);
+        await waitForRenderComplete(page, 'settle');
         const sliderThumb = slider.locator('[role="slider"]');
         const value = await sliderThumb.getAttribute('aria-valuenow');
         expect(Number(value)).toBeGreaterThan(72);
@@ -1334,7 +1316,7 @@ test.describe('Output DPI Settings', () => {
         const x = box.x + box.width * 0.43;
         const y = box.y + box.height / 2;
         await page.mouse.click(x, y);
-        await page.waitForTimeout(100);
+        await waitForRenderComplete(page, 'settle');
         const sliderThumb = slider.locator('[role="slider"]');
         const value = await sliderThumb.getAttribute('aria-valuenow');
         expect(Number(value)).toBeGreaterThan(200);
@@ -1349,7 +1331,7 @@ test.describe('Output DPI Settings', () => {
       await slider.focus();
       const initialValue = await slider.getAttribute('aria-valuenow');
       await page.keyboard.press('ArrowRight');
-      await page.waitForTimeout(50);
+      await waitForRenderComplete(page, 'settle');
       const newValue = await slider.getAttribute('aria-valuenow');
       expect(Number(newValue)).toBeGreaterThanOrEqual(Number(initialValue));
     }
@@ -1408,7 +1390,7 @@ test.describe('Output Extra Formats', () => {
     const trigger = page.locator('[data-testid="output-format-extra-trigger"]');
     if (await trigger.isVisible().catch(() => false)) {
       await trigger.click();
-      await page.waitForTimeout(200);
+      await waitForRenderComplete(page, 'settle');
       const noneOpt = page.locator('[role="option"]').filter({ hasText: /none/i });
       const hasNone = await noneOpt.count() > 0;
       await page.keyboard.press('Escape');
@@ -1420,7 +1402,7 @@ test.describe('Output Extra Formats', () => {
     const trigger = page.locator('[data-testid="output-format-extra-trigger"]');
     if (await trigger.isVisible().catch(() => false)) {
       await trigger.click();
-      await page.waitForTimeout(200);
+      await waitForRenderComplete(page, 'settle');
       const epsOpt = page.locator('[role="option"]').filter({ hasText: /eps/i });
       const hasEps = await epsOpt.count() > 0;
       await page.keyboard.press('Escape');
@@ -1432,7 +1414,7 @@ test.describe('Output Extra Formats', () => {
     const trigger = page.locator('[data-testid="output-format-extra-trigger"]');
     if (await trigger.isVisible().catch(() => false)) {
       await trigger.click();
-      await page.waitForTimeout(200);
+      await waitForRenderComplete(page, 'settle');
       const webpOpt = page.locator('[role="option"]').filter({ hasText: /animated.*webp|webp.*animated/i });
       const hasWebp = await webpOpt.count() > 0;
       await page.keyboard.press('Escape');
@@ -1445,7 +1427,7 @@ test.describe('Output Extra Formats', () => {
     const trigger = page.locator('[data-testid="output-format-extra-trigger"]');
     if (await trigger.isVisible().catch(() => false)) {
       await trigger.click();
-      await page.waitForTimeout(200);
+      await waitForRenderComplete(page, 'settle');
       const epsOpt = page.locator('[role="option"]').filter({ hasText: /eps/i });
       if (await epsOpt.count() > 0) {
         await epsOpt.click();
@@ -1487,8 +1469,7 @@ test.describe('Output Keyboard Navigation', () => {
     const trigger = page.locator('[data-testid="output-format-trigger"]');
     await trigger.focus();
     await page.keyboard.press('Enter');
-    await page.waitForTimeout(200);
-    
+    await waitForRenderComplete(page, 'settle');
     const dropdown = page.locator('[data-radix-popper-content-wrapper]');
     const isVisible = await dropdown.isVisible().catch(() => false);
     
@@ -1502,8 +1483,7 @@ test.describe('Output Keyboard Navigation', () => {
     const trigger = page.locator('[data-testid="output-format-trigger"]');
     await trigger.focus();
     await page.keyboard.press('Space');
-    await page.waitForTimeout(200);
-    
+    await waitForRenderComplete(page, 'settle');
     const dropdown = page.locator('[data-radix-popper-content-wrapper]');
     const isVisible = await dropdown.isVisible().catch(() => false);
     
@@ -1516,11 +1496,9 @@ test.describe('Output Keyboard Navigation', () => {
   test('format select closes with Escape', async ({ page }) => {
     const trigger = page.locator('[data-testid="output-format-trigger"]');
     await trigger.click();
-    await page.waitForTimeout(200);
-    
+    await waitForRenderComplete(page, 'settle');
     await page.keyboard.press('Escape');
-    await page.waitForTimeout(100);
-    
+    await waitForRenderComplete(page, 'settle');
     const dropdown = page.locator('[data-radix-popper-content-wrapper]');
     const isVisible = await dropdown.isVisible().catch(() => false);
     expect(isVisible).toBe(false);
@@ -1531,7 +1509,7 @@ test.describe('Output Keyboard Navigation', () => {
     await widthInput.focus();
     await widthInput.selectText();
     await page.keyboard.type('750');
-    await page.waitForTimeout(100);
+    await waitForRenderComplete(page, 'settle');
     const value = await widthInput.inputValue();
     expect(value).toContain('750');
   });
@@ -1541,8 +1519,7 @@ test.describe('Output Keyboard Navigation', () => {
     await heightInput.focus();
     
     await page.keyboard.press('Shift+Tab');
-    await page.waitForTimeout(50);
-    
+    await waitForRenderComplete(page, 'settle');
     const focusedElement = await page.evaluate(() => document.activeElement?.tagName);
     expect(focusedElement).toBeTruthy();
   });
@@ -1582,7 +1559,7 @@ test.describe('Output Include Quiet Zone', () => {
       await switchEl.focus();
       const initialState = await switchEl.getAttribute('data-state');
       await page.keyboard.press('Space');
-      await page.waitForTimeout(100);
+      await waitForRenderComplete(page, 'settle');
       const newState = await switchEl.getAttribute('data-state');
       expect(newState).not.toBe(initialState);
     }

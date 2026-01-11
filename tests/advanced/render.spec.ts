@@ -1,6 +1,7 @@
 import { test, expect } from '../fixtures/test-fixtures';
 import { getCanvasSnapshot, snapshotsAreDifferent, waitForSelectOpen, waitForSelectClosed } from '../helpers/qr-detector';
 import { setColorInput } from '../helpers/input-helpers';
+import { waitForRenderComplete } from '../helpers/test-utils';
 
 /**
  * Render Section - Advanced Tier (Comprehensive)
@@ -25,7 +26,7 @@ test.describe('Render Section - Advanced Tier', () => {
     await setTier('advanced');
     // Wait for initial render
     await page.waitForSelector('canvas', { state: 'visible', timeout: 10000 });
-    await page.waitForTimeout(500);
+    await waitForRenderComplete(page, 'settle');
   });
 
   /**
@@ -44,8 +45,8 @@ test.describe('Render Section - Advanced Tier', () => {
     await page.waitForSelector('[role="region"][data-state="open"]', { 
       state: 'visible', 
       timeout: 5000 
-    }).catch(() => {});
-    await page.waitForTimeout(300);
+    });
+    await waitForRenderComplete(page, 'settle');
   }
 
   /**
@@ -75,7 +76,7 @@ test.describe('Render Section - Advanced Tier', () => {
       // Use keyboard navigation fallback
       await page.keyboard.press('Escape');
     }
-    await waitForSelectClosed(page).catch(() => {});
+    await waitForSelectClosed(page);
   }
 
   /**
@@ -97,11 +98,11 @@ test.describe('Render Section - Advanced Tier', () => {
       const option = page.locator('[role="option"]').filter({ hasText: new RegExp(`^${optionText}$|^${optionText}\\s|\\s${optionText}$`, 'i') }).first();
       if (await option.count() > 0) {
         await option.click();
-        await waitForSelectClosed(page).catch(() => {});
+        await waitForSelectClosed(page);
         return true;
       }
       await page.keyboard.press('Escape');
-      await page.waitForTimeout(100);
+      await waitForRenderComplete(page, 'settle');
     }
     return false;
   }
@@ -530,8 +531,7 @@ test.describe('Render Section - Advanced Tier', () => {
       // Scroll down to find gradient controls (advanced tier feature)
       const scroller = page.locator('[role="region"][data-state="open"]').first();
       await scroller.evaluate(el => el.scrollTop = el.scrollHeight);
-      await page.waitForTimeout(200);
-      
+      await waitForRenderComplete(page, 'settle');
       // Look for gradient options
       const comboboxes = page.locator('[role="combobox"]');
       const count = await comboboxes.count();
@@ -613,8 +613,7 @@ test.describe('Render Section - Advanced Tier', () => {
       // Scroll to find corner radius
       const scroller = page.locator('[role="region"][data-state="open"]').first();
       await scroller.evaluate(el => el.scrollTop = el.scrollHeight / 2);
-      await page.waitForTimeout(200);
-      
+      await waitForRenderComplete(page, 'settle');
       const before = await getCanvasSnapshot(page);
       
       await setSlider(page, 'render-corner-radius-slider', 100);
@@ -656,8 +655,7 @@ test.describe('Render Section - Advanced Tier', () => {
       // Frame is an advanced feature, scroll to find it
       const scroller = page.locator('[role="region"][data-state="open"]').first();
       await scroller.evaluate(el => el.scrollTop = el.scrollHeight);
-      await page.waitForTimeout(200);
-      
+      await waitForRenderComplete(page, 'settle');
       const comboboxes = page.locator('[role="combobox"]');
       const count = await comboboxes.count();
       
@@ -698,8 +696,7 @@ test.describe('Render Section - Advanced Tier', () => {
       // Enable a frame style
       await selectFromComboboxWithOption(page, 'Sticker');
       await waitForQRRender();
-      await page.waitForTimeout(300);
-      
+      await waitForRenderComplete(page, 'settle');
       // Frame text input should appear
       const frameTextInput = page.locator('[data-testid="render-frame-text-input"]');
       const fallback = page.locator('input[placeholder*="Scan"], input[placeholder*="scan"]').first();
@@ -723,8 +720,7 @@ test.describe('Render Section - Advanced Tier', () => {
       // Scroll to eye style controls
       const scroller = page.locator('[role="region"][data-state="open"]').first();
       await scroller.evaluate(el => el.scrollTop = el.scrollHeight * 0.6);
-      await page.waitForTimeout(200);
-      
+      await waitForRenderComplete(page, 'settle');
       const select = page.locator('[data-testid="render-eye-outer-style-select"]');
       const isPresent = await select.count() > 0;
       
@@ -738,8 +734,7 @@ test.describe('Render Section - Advanced Tier', () => {
       // Scroll to eye scale
       const scroller = page.locator('[role="region"][data-state="open"]').first();
       await scroller.evaluate(el => el.scrollTop = el.scrollHeight);
-      await page.waitForTimeout(200);
-      
+      await waitForRenderComplete(page, 'settle');
       const before = await getCanvasSnapshot(page);
       
       await setSlider(page, 'render-eye-scale-slider', 100);
@@ -815,7 +810,7 @@ test.describe('Render Section - Advanced Tier', () => {
       // Rapidly change settings
       for (let i = 0; i < 5; i++) {
         await setSlider(page, 'render-module-size-slider', (i * 20) % 100);
-        await page.waitForTimeout(50);
+        await waitForRenderComplete(page, 'settle');
       }
       
       await waitForQRRender();
@@ -899,7 +894,7 @@ test.describe('Render Section - Advanced Tier', () => {
       
       // Close with Escape
       await page.keyboard.press('Escape');
-      await waitForSelectClosed(page).catch(() => {});
+      await waitForSelectClosed(page);
     });
 
     test('all controls have visible labels', async ({ page }) => {
@@ -924,12 +919,10 @@ test.describe('Render Section - Advanced Tier', () => {
       // Collapse
       const trigger = page.locator('button:has-text("Render")').first();
       await trigger.click();
-      await page.waitForTimeout(300);
-      
+      await waitForRenderComplete(page, 'settle');
       // Reopen
       await trigger.click();
-      await page.waitForTimeout(300);
-      
+      await waitForRenderComplete(page, 'settle');
       // Controls should still be visible
       const sliders = page.locator('[role="region"][data-state="open"]').first().locator('[role="slider"]');
       expect(await sliders.count()).toBeGreaterThan(0);
@@ -946,10 +939,9 @@ test.describe('Render Section - Advanced Tier', () => {
       // Collapse and reopen
       const trigger = page.locator('button:has-text("Render")').first();
       await trigger.click();
-      await page.waitForTimeout(200);
+      await waitForRenderComplete(page, 'settle');
       await trigger.click();
-      await page.waitForTimeout(300);
-      
+      await waitForRenderComplete(page, 'settle');
       const afterReopen = await getCanvasSnapshot(page);
       
       // QR should be the same (settings persisted)
@@ -963,12 +955,10 @@ test.describe('Render Section - Advanced Tier', () => {
       
       // Scroll to bottom
       await section.evaluate(el => el.scrollTop = el.scrollHeight);
-      await page.waitForTimeout(200);
-      
+      await waitForRenderComplete(page, 'settle');
       // Scroll back to top
       await section.evaluate(el => el.scrollTop = 0);
-      await page.waitForTimeout(200);
-      
+      await waitForRenderComplete(page, 'settle');
       // First slider should still be accessible
       const slider = page.locator('[role="slider"]').first();
       const isVisible = await slider.isVisible().catch(() => false);

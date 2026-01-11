@@ -16,6 +16,8 @@
 
 import type { Page, Locator } from '@playwright/test';
 import { expect } from '@playwright/test';
+import { waitForRenderComplete } from '../helpers/test-utils';
+import { waitForRenderComplete } from './test-utils';
 
 // =============================================================================
 // CONSTANTS
@@ -768,7 +770,7 @@ export async function dismissWelcomeModal(page: Page): Promise<void> {
     const getStartedBtn = page.locator('button').filter({ hasText: /get started/i }).first();
     if (await getStartedBtn.isVisible({ timeout: 500 }).catch(() => false)) {
       await getStartedBtn.click();
-      await page.waitForSelector('dialog[open]', { state: 'hidden', timeout: 2000 }).catch(() => {});
+      await page.waitForSelector('dialog[open]', { state: 'hidden', timeout: 2000 });
       return;
     }
     
@@ -776,7 +778,7 @@ export async function dismissWelcomeModal(page: Page): Promise<void> {
     const closeBtn = page.locator('button[aria-label*="close" i], button[aria-label="Close modal"]').first();
     if (await closeBtn.isVisible({ timeout: 500 }).catch(() => false)) {
       await closeBtn.click();
-      await page.waitForSelector('dialog[open]', { state: 'hidden', timeout: 2000 }).catch(() => {});
+      await page.waitForSelector('dialog[open]', { state: 'hidden', timeout: 2000 });
       return;
     }
     
@@ -784,13 +786,13 @@ export async function dismissWelcomeModal(page: Page): Promise<void> {
     const backdrop = page.locator('button.absolute.inset-0').first();
     if (await backdrop.isVisible({ timeout: 500 }).catch(() => false)) {
       await backdrop.click({ force: true });
-      await page.waitForSelector('dialog[open]', { state: 'hidden', timeout: 2000 }).catch(() => {});
+      await page.waitForSelector('dialog[open]', { state: 'hidden', timeout: 2000 });
       return;
     }
     
     // Strategy 4: Press Escape key
     await page.keyboard.press('Escape');
-    await page.waitForSelector('dialog[open]', { state: 'hidden', timeout: 2000 }).catch(() => {});
+    await page.waitForSelector('dialog[open]', { state: 'hidden', timeout: 2000 });
   } catch {
     // Modal might not exist, that's OK
   }
@@ -814,7 +816,7 @@ export async function selectTier(page: Page, tier: Tier): Promise<void> {
   if (await tierButton.isVisible({ timeout: 2000 })) {
     await tierButton.click();
     // Wait for tier change to take effect
-    await page.waitForTimeout(100); // Small delay for UI update
+    await waitForRenderComplete(page, 'settle'); // Small delay for UI update
   }
 }
 

@@ -36,16 +36,11 @@
  *   PERM_SECTION=Overlay npx playwright test --project=permutations
  */
 
+
 import { test, expect } from '../fixtures/test-fixtures';
 import { getCanvasSnapshot, snapshotsAreDifferent, waitForQRStable } from '../helpers/qr-detector';
-import {
-  SETTINGS_REGISTRY,
-  getSettingsForTier,
-  getSections,
-  getRegistryStats,
-  type SettingDefinition,
-  type Tier,
-} from '../helpers/settings-registry';
+import { SETTINGS_REGISTRY, getSettingsForTier, getSections, getRegistryStats, type SettingDefinition, type Tier } from '../helpers/settings-registry';
+import { waitForRenderComplete } from '../helpers/test-utils';
 import type { Page } from '@playwright/test';
 
 // =============================================================================
@@ -220,7 +215,7 @@ async function openSection(page: Page, section: string): Promise<void> {
       const state = await fallbackTrigger.getAttribute('data-state');
       if (state !== 'open') {
         await fallbackTrigger.click();
-        await page.waitForTimeout(200);
+        await waitForRenderComplete(page, 'settle');
       }
     }
     return;
@@ -230,7 +225,7 @@ async function openSection(page: Page, section: string): Promise<void> {
   if (state !== 'open') {
     await trigger.scrollIntoViewIfNeeded();
     await trigger.click();
-    await page.waitForTimeout(200);
+    await waitForRenderComplete(page, 'settle');
   }
 }
 
@@ -325,8 +320,7 @@ async function setControlValue(
           if (await select.isVisible()) {
             await select.scrollIntoViewIfNeeded();
             await select.click();
-            await page.waitForTimeout(100);
-            
+            await waitForRenderComplete(page, 'settle');
             const dropdown = page.locator('[data-radix-popper-content-wrapper]').first();
             if (await dropdown.isVisible({ timeout: 1000 })) {
               // Find option matching value
@@ -504,8 +498,7 @@ for (const [section, sectionSettings] of settingsBySection) {
           const tierToSet = setting.tier === 'professional' ? 'professional' : 
                            setting.tier === 'advanced' ? 'advanced' : 'basic';
           await setTier(tierToSet as Tier);
-          await page.waitForTimeout(500);
-          
+          await waitForRenderComplete(page, 'settle');
           const before = await getCanvasSnapshot(page);
           
           const testValue = setting.testValues?.[0] ?? true;
@@ -538,8 +531,7 @@ for (const [section, sectionSettings] of settingsBySection) {
           const tierToSet = setting.tier === 'professional' ? 'professional' : 
                            setting.tier === 'advanced' ? 'advanced' : 'basic';
           await setTier(tierToSet as Tier);
-          await page.waitForTimeout(500);
-          
+          await waitForRenderComplete(page, 'settle');
           const before = await getCanvasSnapshot(page);
           
           const testValue = setting.testValues?.[0] ?? true;
@@ -550,7 +542,7 @@ for (const [section, sectionSettings] of settingsBySection) {
             return;
           }
           
-          await page.waitForTimeout(300);
+          await waitForRenderComplete(page, 'settle');
           const after = await getCanvasSnapshot(page);
           
           // Just verify we didn't crash - some "non-QR" settings may actually affect preview
@@ -578,8 +570,7 @@ test.describe('Value Iteration Tests', () => {
             const tierToSet = setting.tier === 'professional' ? 'professional' : 
                              setting.tier === 'advanced' ? 'advanced' : 'basic';
             await setTier(tierToSet as Tier);
-            await page.waitForTimeout(500);
-            
+            await waitForRenderComplete(page, 'settle');
             const before = await getCanvasSnapshot(page);
             
             const interacted = await setControlValue(page, setting, value);
@@ -638,8 +629,7 @@ test.describe('Value-Level Pairwise Combination Tests', () => {
             const tierToSet = (tierA === 'professional' || tierB === 'professional') ? 'professional' :
                              (tierA === 'advanced' || tierB === 'advanced') ? 'advanced' : 'basic';
             await setTier(tierToSet as Tier);
-            await page.waitForTimeout(500);
-            
+            await waitForRenderComplete(page, 'settle');
             const before = await getCanvasSnapshot(page);
             
             // Set first setting with specific value
@@ -695,8 +685,7 @@ test.describe('Value-Level Pairwise Combination Tests', () => {
             const tierToSet = (tierA === 'professional' || tierB === 'professional') ? 'professional' :
                              (tierA === 'advanced' || tierB === 'advanced') ? 'advanced' : 'basic';
             await setTier(tierToSet as Tier);
-            await page.waitForTimeout(500);
-            
+            await waitForRenderComplete(page, 'settle');
             const before = await getCanvasSnapshot(page);
             
             const interactedA = await setControlValue(page, pair.settingA, pair.valueA);

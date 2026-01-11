@@ -13,6 +13,7 @@ import {
   setSliderValue,
   toggleSwitch
 } from '../helpers/qr-detector';
+import { waitForRenderComplete } from '../helpers/test-utils';
 import type { Page } from '@playwright/test';
 
 /**
@@ -59,8 +60,7 @@ async function ensureOverlayEnabled(page: Page) {
   const enabledSwitch = page.locator('[data-testid="overlay-enabled-switch"]');
   
   // Wait for the switch to be attached (appears after file upload)
-  await enabledSwitch.waitFor({ state: 'attached', timeout: 5000 }).catch(() => {});
-  
+  await enabledSwitch.waitFor({ state: 'attached', timeout: 5000 });
   if (await enabledSwitch.count() > 0) {
     const state = await enabledSwitch.getAttribute('data-state');
     if (state === 'unchecked') {
@@ -71,7 +71,7 @@ async function ensureOverlayEnabled(page: Page) {
       await page.waitForSelector('[data-testid="overlay-mode-select"]', {
         state: 'attached',
         timeout: 3000
-      }).catch(() => {});
+      });
     }
   }
 }
@@ -93,11 +93,9 @@ async function uploadOverlayImage(page: Page, filePath: string) {
   await fileInput.setInputFiles(filePath);
   
   // Wait for rendering to complete using application signaling
-  await page.waitForSelector('[data-rendering-state="idle"]', { state: 'attached', timeout: 10000 }).catch(() => {});
-  
+  await page.waitForSelector('[data-rendering-state="idle"]', { state: 'attached', timeout: 10000 });
   // Also verify canvas actually changed
-  await waitForCanvasChange(page, beforeSnapshot, 10000).catch(() => {});
-  
+  await waitForCanvasChange(page, beforeSnapshot, 10000);
   // Re-expand the section in case it closed after file selection
   await expandOverlaySection(page);
   
@@ -285,14 +283,13 @@ async function setPayloadText(page: Page, text: string) {
   const payloadTrigger = page.locator('button').filter({ hasText: /^Payload$/i }).first();
   if (await payloadTrigger.isVisible().catch(() => false)) {
     await payloadTrigger.click();
-    await waitForAccordionOpen(page, 'payload').catch(() => {});
+    await waitForAccordionOpen(page, 'payload');
   }
   
   // Switch to plain text type
   const combobox = page.getByRole('combobox').first();
   await combobox.click();
-  await waitForSelectOpen(page).catch(() => {});
-  
+  await waitForSelectOpen(page);
   const plainTextOption = page.getByRole('option', { name: /Plain Text/i }).first();
   if (await plainTextOption.isVisible().catch(() => false)) {
     await plainTextOption.click();
@@ -302,8 +299,7 @@ async function setPayloadText(page: Page, text: string) {
   
   // Set text - wait for textarea to be visible
   const textarea = page.locator('textarea').first();
-  await textarea.waitFor({ state: 'visible', timeout: 5000 }).catch(() => {});
-  
+  await textarea.waitFor({ state: 'visible', timeout: 5000 });
   if (await textarea.isVisible().catch(() => false)) {
     await textarea.clear();
     await textarea.fill(text);
@@ -587,13 +583,13 @@ test.describe('Overlay Section - Basic Tier', () => {
       await setOverlayIntensity(page, 25);
       await waitForQRRender();
       // Add extra wait for render to complete
-      await page.waitForTimeout(500);
+      await waitForRenderComplete(page, 'settle');
       const at25 = await getCanvasSnapshot(page);
       
       await setOverlayIntensity(page, 100);
       await waitForQRRender();
       // Add extra wait for render to complete
-      await page.waitForTimeout(500);
+      await waitForRenderComplete(page, 'settle');
       const at100 = await getCanvasSnapshot(page);
       
       // Note: If this fails, it indicates intensity is not being applied correctly
@@ -656,12 +652,12 @@ test.describe('Overlay Section - Basic Tier', () => {
       
       await setOverlayColorMode(page, 'Grayscale');
       await waitForQRRender();
-      await page.waitForTimeout(500);
+      await waitForRenderComplete(page, 'settle');
       const grayscaleSnapshot = await getCanvasSnapshot(page);
       
       await setOverlayColorMode(page, 'B&W');
       await waitForQRRender();
-      await page.waitForTimeout(500);
+      await waitForRenderComplete(page, 'settle');
       const bwSnapshot = await getCanvasSnapshot(page);
       
       // Note: If this still fails, it's a genuine product issue - colorMode is not
@@ -779,8 +775,7 @@ test.describe('Overlay Section - Basic Tier', () => {
         },
         slidersBefore,
         { timeout: 5000 }
-      ).catch(() => {});
-      
+      );
       // Count sliders after
       const slidersAfter = await overlaySection.locator('[role="slider"]').count();
       
@@ -1003,13 +998,13 @@ test.describe('Overlay Section - Basic Tier', () => {
       // Change overlay mode to Halftone (significant visual change)
       await setOverlayMode(page, 'Halftone');
       await waitForQRRender();
-      await page.waitForTimeout(500);
+      await waitForRenderComplete(page, 'settle');
       const step2 = await getCanvasSnapshot(page);
       
       // Change to Blend mode (another significant visual change)
       await setOverlayMode(page, 'Blend');
       await waitForQRRender();
-      await page.waitForTimeout(500);
+      await waitForRenderComplete(page, 'settle');
       const step3 = await getCanvasSnapshot(page);
       
       // Mode changes should produce different QR codes
@@ -1081,8 +1076,7 @@ test.describe('Overlay Section - Basic Tier', () => {
       await loadButton.click({ force: true });
       
       // Event-driven: wait for network to settle after failed request
-      await page.waitForLoadState('networkidle', { timeout: 5000 }).catch(() => {});
-      
+      await page.waitForLoadState('networkidle', { timeout: 5000 });
       // Page should not crash - canvas should still be visible
       const canvas = page.locator('canvas').first();
       await expect(canvas).toBeVisible();
