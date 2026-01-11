@@ -104,6 +104,7 @@ export function QREncodingSection() {
           </span>
         </div>
         <Slider
+          data-testid="qr-version-slider"
           value={[localVersion]}
           onValueChange={([v]) => handleVersionChange(v)}
           min={0}
@@ -133,7 +134,7 @@ export function QREncodingSection() {
           <HelpLink anchor="section-6" />
         </div>
         <Select value={qr.ecc} onValueChange={(v) => setQrEcc(v as ECCLevel)}>
-          <SelectTrigger title={t('hints.errorCorrection')}>
+          <SelectTrigger data-testid="qr-ecc-select" title={t('hints.errorCorrection')}>
             <SelectValue />
           </SelectTrigger>
           <SelectContent>
@@ -160,6 +161,7 @@ export function QREncodingSection() {
           </span>
         </div>
         <Slider
+          data-testid="qr-quiet-zone-slider"
           value={[qr.quietZoneModules]}
           onValueChange={([v]) => setQrQuietZone(v)}
           min={0}
@@ -184,7 +186,7 @@ export function QREncodingSection() {
               value={qr.encodingMode}
               onValueChange={(v) => setQrEncodingMode(v as EncodingMode)}
             >
-              <SelectTrigger title={t('hints.encodingMode')}>
+              <SelectTrigger data-testid="qr-encoding-mode-select" title={t('hints.encodingMode')}>
                 <SelectValue />
               </SelectTrigger>
               <SelectContent>
@@ -206,6 +208,7 @@ export function QREncodingSection() {
               <p className="text-xs text-muted-foreground">{t('qr.enforceMinQuietZoneDesc')}</p>
             </div>
             <Switch
+              data-testid="qr-quiet-zone-enforce-switch"
               checked={qr.quietZoneMinEnforce}
               onCheckedChange={setQrQuietZoneMinEnforce}
               title={t('hints.enforceMinQuietZone')}
