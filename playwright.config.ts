@@ -54,9 +54,10 @@ export default defineConfig({
   use: {
     baseURL: 'http://localhost:5173',
     
-    /* Use large viewport to reduce scrolling complexity */
+    /* Use large viewport to reduce scrolling complexity and ensure all header elements visible */
     /* Note: Each project also sets viewport AFTER spreading devices to override Chrome defaults */
-    viewport: { width: 1600, height: 1000 },
+    /* 1920x1080 ensures Export button and all nav items are visible without overflow */
+    viewport: { width: 1920, height: 1080 },
     
     /* Debugging: Gold standard trace capture */
     trace: 'on-first-retry', // Captures DOM snapshots, network waterfall, exact wait reasons
@@ -96,7 +97,7 @@ export default defineConfig({
       testMatch: /tests\/basic\/.*\.spec\.ts/,
       use: { 
         ...devices['Desktop Chrome'],
-        viewport: { width: 1600, height: 1000 }, // Override Chrome default - large viewport to avoid scroll issues
+        viewport: { width: 1920, height: 1080 }, // Override Chrome default - 1080p to ensure all header elements visible
       },
     },
     {
@@ -104,7 +105,7 @@ export default defineConfig({
       testMatch: /tests\/advanced\/.*\.spec\.ts/,
       use: { 
         ...devices['Desktop Chrome'],
-        viewport: { width: 1600, height: 1000 }, // Override Chrome default - large viewport to avoid scroll issues
+        viewport: { width: 1920, height: 1080 }, // Override Chrome default - 1080p to ensure all header elements visible
       },
     },
     {
@@ -112,7 +113,7 @@ export default defineConfig({
       testMatch: /tests\/professional\/.*\.spec\.ts/,
       use: { 
         ...devices['Desktop Chrome'],
-        viewport: { width: 1600, height: 1000 }, // Override Chrome default - large viewport to avoid scroll issues
+        viewport: { width: 1920, height: 1080 }, // Override Chrome default - 1080p to ensure all header elements visible
       },
     },
     {
@@ -120,7 +121,7 @@ export default defineConfig({
       testMatch: /tests\/permutations\/.*\.spec\.ts/,
       use: { 
         ...devices['Desktop Chrome'],
-        viewport: { width: 1600, height: 1000 }, // Override Chrome default - large viewport to avoid scroll issues
+        viewport: { width: 1920, height: 1080 }, // Override Chrome default - 1080p to ensure all header elements visible
       },
       timeout: 4 * 60 * 60 * 1000, // 4 hours for exhaustive permutation tests
     },
@@ -129,7 +130,7 @@ export default defineConfig({
       testMatch: /tests\/reports\/.*\.spec\.ts/,
       use: { 
         ...devices['Desktop Chrome'],
-        viewport: { width: 1600, height: 1000 }, // Override Chrome default - large viewport to avoid scroll issues
+        viewport: { width: 1920, height: 1080 }, // Override Chrome default - 1080p to ensure all header elements visible
       },
       timeout: 10 * 60 * 1000, // 10 minutes for report generation
     },
