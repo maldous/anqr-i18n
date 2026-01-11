@@ -593,18 +593,23 @@ export class QRGenerator {
     }
 
     // UNIFIED: Draw styled finder patterns on top of pixel rendering
-    // This ensures finder patterns have proper styling regardless of overlay mode
+    // Only draw finders separately if preserveFinders is true OR there's no overlay
+    // When preserveFinders=false with overlay, finder modules were already rendered with overlay effects
+    const shouldDrawFindersFirst = config.preserveFinders !== false || !overlayCanvas;
+    
     const finderPositions = [
       { row: 0, col: 0 }, // Top-left
       { row: 0, col: moduleCount - 7 }, // Top-right
       { row: moduleCount - 7, col: 0 }, // Bottom-left
     ];
 
-    for (const pos of finderPositions) {
-      // Position is in module coordinates, convert to pixels
-      const x = marginPx + pos.col * effectiveModuleSize;
-      const y = marginPx + pos.row * effectiveModuleSize;
-      this.drawFinderPatternComplete(ctx, x, y, effectiveModuleSize, config);
+    if (shouldDrawFindersFirst) {
+      for (const pos of finderPositions) {
+        // Position is in module coordinates, convert to pixels
+        const x = marginPx + pos.col * effectiveModuleSize;
+        const y = marginPx + pos.row * effectiveModuleSize;
+        this.drawFinderPatternComplete(ctx, x, y, effectiveModuleSize, config);
+      }
     }
 
     // UNIFIED: Draw styled alignment patterns (for version 2+)
@@ -913,27 +918,37 @@ export class QRGenerator {
     const drawnAlignmentPatterns = new Set();
 
     // Draw complete finder patterns first (eyes)
+    // Only draw finder patterns separately if preserveFinders is true OR there's no overlay
+    // When preserveFinders=false with overlay, finder modules go through the normal render loop
+    // so overlay effects can be applied to them
+    const shouldDrawFindersFirst = config.preserveFinders !== false || !overlayData;
+    
     const finderPositions = [
       { row: 0, col: 0 }, // Top-left
       { row: 0, col: moduleCount - 7 }, // Top-right
       { row: moduleCount - 7, col: 0 }, // Bottom-left
     ];
 
-    for (const pos of finderPositions) {
-      const x = (pos.col + margin) * moduleSize;
-      const y = (pos.row + margin) * moduleSize;
-      this.drawFinderPatternComplete(ctx, x, y, moduleSize, config);
+    if (shouldDrawFindersFirst) {
+      for (const pos of finderPositions) {
+        const x = (pos.col + margin) * moduleSize;
+        const y = (pos.row + margin) * moduleSize;
+        this.drawFinderPatternComplete(ctx, x, y, moduleSize, config);
 
-      // Mark all modules in this finder pattern as drawn
-      for (let r = pos.row; r < pos.row + 7; r++) {
-        for (let c = pos.col; c < pos.col + 7; c++) {
-          drawnFinderPatterns.add(`${r},${c}`);
+        // Mark all modules in this finder pattern as drawn
+        for (let r = pos.row; r < pos.row + 7; r++) {
+          for (let c = pos.col; c < pos.col + 7; c++) {
+            drawnFinderPatterns.add(`${r},${c}`);
+          }
         }
       }
     }
 
     // Draw alignment patterns (for version 2+)
-    if (version >= 2) {
+    // Only draw alignment patterns separately if preserveAlignment is true OR there's no overlay
+    const shouldDrawAlignmentFirst = config.preserveAlignment !== false || !overlayData;
+    
+    if (version >= 2 && shouldDrawAlignmentFirst) {
       const alignPositions = this.getAlignmentPositions(version, moduleCount);
       for (const pos of alignPositions) {
         const centerX = (pos.col + margin) * moduleSize + moduleSize / 2;

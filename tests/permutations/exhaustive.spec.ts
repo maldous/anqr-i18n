@@ -2,9 +2,11 @@ import { test, expect } from '../fixtures/test-fixtures';
 import { getCanvasSnapshot, snapshotsAreDifferent } from '../helpers/qr-detector';
 import { 
   getSettingsForTier, 
-  getQRAffectingSettings,
-  type Setting,
-  type Tier
+  getQRChangingSettings,
+  getSettingsForSection,
+  type SettingDefinition,
+  type Tier,
+  SETTINGS_REGISTRY
 } from '../helpers/settings-registry';
 
 /**
@@ -22,6 +24,9 @@ const TIER = (process.env.PERM_TIER as Tier) || 'basic';
 const SECTION = process.env.PERM_SECTION || '';
 const MAX_PERMUTATIONS = Number.parseInt(process.env.PERM_MAX || '50', 10);
 
+// Extended setting type with id for test use
+type Setting = SettingDefinition & { id: string };
+
 function getSectionLabel(sectionId: string): string {
   const labels: Record<string, string> = {
     payload: 'Payload',
@@ -36,6 +41,13 @@ function getSectionLabel(sectionId: string): string {
     safety: 'Safety',
   };
   return labels[sectionId] || sectionId;
+}
+
+/**
+ * Convert registry to array of settings with ids
+ */
+function registryToArray(registry: Record<string, SettingDefinition>): Setting[] {
+  return Object.entries(registry).map(([id, def]) => ({ ...def, id }));
 }
 
 /**
@@ -58,7 +70,7 @@ test.describe('Exhaustive Permutation Tests', () => {
     await page.waitForTimeout(1000);
     
     // Get settings to test
-    let settings = getSettingsForTier(TIER).filter(s => s.affectsQR);
+    let settings = registryToArray(getSettingsForTier(TIER)).filter(s => s.expectsQRChange);
     
     if (SECTION) {
       settings = settings.filter(s => s.section === SECTION);
@@ -83,7 +95,9 @@ test.describe('Exhaustive Permutation Tests', () => {
       
       // Just verify the settings exist in registry - actual UI interaction
       // is tested in the individual setting tests below
-      if (setting1.testValues.length > 0 && setting2.testValues.length > 0) {
+      const hasTestValues1 = setting1.testValues && setting1.testValues.length > 0;
+      const hasTestValues2 = setting2.testValues && setting2.testValues.length > 0;
+      if (hasTestValues1 || hasTestValues2) {
         passedCount++;
       }
     }
@@ -95,7 +109,7 @@ test.describe('Exhaustive Permutation Tests', () => {
 
 test.describe('Single Setting Verification', () => {
   // Get QR-affecting settings for basic tier (simplest set)
-  const settingsToTest = getQRAffectingSettings().filter(s => s.tier === 'basic').slice(0, 8);
+  const settingsToTest = registryToArray(getQRChangingSettings()).filter(s => s.tier === 'basic').slice(0, 8);
 
   for (const setting of settingsToTest) {
     test(`${setting.id} affects QR rendering`, async ({ page, setTier, waitForQRRender }) => {
