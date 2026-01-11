@@ -10,12 +10,15 @@ import {
   waitForQRRender,
   waitForAccordionOpen,
 } from '../helpers/qr-detector';
+import { setTier } from '../helpers/test-utils';
 
 // Helper: Navigate to the app and wait for initial load
 async function setupPage(page: Page) {
   await page.goto('/');
   await page.waitForLoadState('networkidle');
   await waitForQRRender(page);
+  // Select professional tier for Safety section tests
+  await setTier(page, 'professional');
 }
 
 // Helper: Expand the Safety section

@@ -103,6 +103,7 @@ async function setInputByTestId(page: Page, testId: string, value: string) {
 test.describe('Animation Speed', () => {
   test.beforeEach(async ({ page }) => {
     await setupPage(page);
+    await selectTier(page, 'advanced');
     await expandAnimationSection(page);
   });
 
@@ -160,6 +161,7 @@ test.describe('Animation Speed', () => {
 test.describe('Animation Loop', () => {
   test.beforeEach(async ({ page }) => {
     await setupPage(page);
+    await selectTier(page, 'advanced');
     await expandAnimationSection(page);
   });
 
@@ -201,6 +203,7 @@ test.describe('Animation Loop', () => {
 test.describe('Animation Bounce', () => {
   test.beforeEach(async ({ page }) => {
     await setupPage(page);
+    await selectTier(page, 'advanced');
     await expandAnimationSection(page);
   });
 
@@ -247,7 +250,7 @@ test.describe('Animation Bounce', () => {
 test.describe('Animation Start Frame (Advanced Tier)', () => {
   test.beforeEach(async ({ page }) => {
     await setupPage(page);
-    // Advanced tier switch is handled in expandAnimationSection
+    await selectTier(page, 'advanced');
     await expandAnimationSection(page);
   });
 
@@ -277,6 +280,7 @@ test.describe('Animation Start Frame (Advanced Tier)', () => {
 test.describe('Animation Max Frames (Advanced Tier)', () => {
   test.beforeEach(async ({ page }) => {
     await setupPage(page);
+    await selectTier(page, 'advanced');
     await expandAnimationSection(page);
   });
 
@@ -310,6 +314,7 @@ test.describe('Animation Max Frames (Advanced Tier)', () => {
 test.describe('Animation Frame Step (Advanced Tier)', () => {
   test.beforeEach(async ({ page }) => {
     await setupPage(page);
+    await selectTier(page, 'advanced');
     await expandAnimationSection(page);
   });
 
@@ -331,6 +336,7 @@ test.describe('Animation Frame Step (Advanced Tier)', () => {
 test.describe('Animation Interpolation (Advanced Tier)', () => {
   test.beforeEach(async ({ page }) => {
     await setupPage(page);
+    await selectTier(page, 'advanced');
     await expandAnimationSection(page);
   });
 
@@ -384,6 +390,7 @@ test.describe('Animation Interpolation (Advanced Tier)', () => {
 test.describe('Animation Temporal Dither (Professional Tier)', () => {
   test.beforeEach(async ({ page }) => {
     await setupPage(page);
+    await selectTier(page, 'advanced');
     await expandAnimationSection(page);
   });
 
@@ -413,6 +420,7 @@ test.describe('Animation Temporal Dither (Professional Tier)', () => {
 test.describe('Animation Pattern (Professional Tier)', () => {
   test.beforeEach(async ({ page }) => {
     await setupPage(page);
+    await selectTier(page, 'advanced');
     await expandAnimationSection(page);
   });
 
@@ -461,6 +469,7 @@ test.describe('Animation Pattern (Professional Tier)', () => {
 test.describe('Animation Module Jitter (Professional Tier)', () => {
   test.beforeEach(async ({ page }) => {
     await setupPage(page);
+    await selectTier(page, 'advanced');
     await expandAnimationSection(page);
   });
 
@@ -482,6 +491,7 @@ test.describe('Animation Module Jitter (Professional Tier)', () => {
 test.describe('Animation Color Cycle (Professional Tier)', () => {
   test.beforeEach(async ({ page }) => {
     await setupPage(page);
+    await selectTier(page, 'advanced');
     await expandAnimationSection(page);
   });
 
@@ -503,6 +513,7 @@ test.describe('Animation Color Cycle (Professional Tier)', () => {
 test.describe('Animation Random Seed (Professional Tier)', () => {
   test.beforeEach(async ({ page }) => {
     await setupPage(page);
+    await selectTier(page, 'advanced');
     await expandAnimationSection(page);
   });
 
@@ -531,6 +542,7 @@ test.describe('Animation Random Seed (Professional Tier)', () => {
 test.describe('Animation Section Accessibility', () => {
   test.beforeEach(async ({ page }) => {
     await setupPage(page);
+    await selectTier(page, 'advanced');
     await expandAnimationSection(page);
   });
 
@@ -595,6 +607,7 @@ test.describe('Animation Section Accessibility', () => {
 test.describe('Animation Combined Settings', () => {
   test.beforeEach(async ({ page }) => {
     await setupPage(page);
+    await selectTier(page, 'advanced');
     await expandAnimationSection(page);
   });
 
@@ -646,6 +659,7 @@ test.describe('Animation Combined Settings', () => {
 test.describe('Animation Edge Cases', () => {
   test.beforeEach(async ({ page }) => {
     await setupPage(page);
+    await selectTier(page, 'advanced');
     await expandAnimationSection(page);
   });
 
