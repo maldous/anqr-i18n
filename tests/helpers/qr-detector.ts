@@ -3,93 +3,153 @@ import type { Page, Locator } from '@playwright/test';
 /**
  * QR Canvas Change Detection Utilities
  * Uses event-driven patterns instead of arbitrary timeouts
+ * 
+ * IMPORTANT: Uses data-testid attributes for stable selectors:
+ * - data-testid="sidebar" - the sidebar aside element
+ * - data-testid="sidebar-scroll" - the scrollable container within sidebar
+ * - data-testid="accordion-overlay" - the overlay accordion item
+ * - data-testid="overlay-enabled-switch" - overlay enabled toggle
+ * - data-testid="overlay-mode-select" - overlay mode dropdown
+ * - data-testid="overlay-intensity-slider" - intensity slider
+ * - data-testid="overlay-color-mode-select" - color mode dropdown
+ * - data-testid="overlay-preserve-finders-switch" - preserve finders toggle
+ * - data-testid="overlay-upload" - upload button
+ * - data-testid="overlay-from-url" - from URL button
+ * - data-testid="qr-preview" - the QR canvas container
  */
 
 /** Default timeout for waiting operations */
 const DEFAULT_TIMEOUT = 10000;
 
 /**
+ * Get the sidebar's scrollable container using data-testid
+ */
+export function getSidebarScroller(page: Page): Locator {
+  return page.locator('[data-testid="sidebar-scroll"]');
+}
+
+/**
+ * Open an accordion section by name and wait for it to be visible
+ * Uses aria-expanded for state detection
+ */
+export async function openAccordion(page: Page, sectionId: string): Promise<void> {
+  const accordionItem = page.locator(`[data-testid="accordion-${sectionId}"]`);
+  const trigger = accordionItem.locator('[data-radix-collection-item]').first();
+  
+  // Check if already open
+  const isExpanded = await trigger.getAttribute('data-state') === 'open';
+  if (isExpanded) return;
+  
+  // Scroll trigger into view within sidebar
+  await trigger.scrollIntoViewIfNeeded();
+  await trigger.click();
+  
+  // Wait for region to be visible
+  await page.waitForSelector(`[data-testid="accordion-${sectionId}"] [role="region"][data-state="open"]`, {
+    state: 'visible',
+    timeout: 5000
+  }).catch(() => {});
+}
+
+/**
+ * Scroll an element into view within the sidebar scroller
+ * This is the key function that actually scrolls the sidebar container
+ */
+export async function ensureVisibleInSidebar(page: Page, locator: Locator): Promise<void> {
+  // First ensure the element exists
+  await locator.waitFor({ state: 'attached', timeout: 5000 });
+  
+  // Scroll sidebar to bring element into view
+  await page.evaluate(async (testId) => {
+    const scroller = document.querySelector('[data-testid="sidebar-scroll"]') as HTMLElement;
+    if (!scroller) return;
+    
+    // Find the element - we pass selector info via evaluate
+    const element = document.querySelector(`[data-testid="${testId}"]`) as HTMLElement;
+    if (!element) return;
+    
+    // Get positions relative to scroller
+    const scrollerRect = scroller.getBoundingClientRect();
+    const elementRect = element.getBoundingClientRect();
+    
+    // Check if element is below visible area
+    if (elementRect.bottom > scrollerRect.bottom) {
+      const scrollNeeded = elementRect.bottom - scrollerRect.bottom + 50;
+      scroller.scrollTop += scrollNeeded;
+    }
+    // Check if element is above visible area  
+    else if (elementRect.top < scrollerRect.top) {
+      const scrollNeeded = scrollerRect.top - elementRect.top + 50;
+      scroller.scrollTop -= scrollNeeded;
+    }
+  }, await locator.getAttribute('data-testid'));
+  
+  // Fallback: use scrollIntoView on the element itself
+  await locator.evaluate(el => {
+    el.scrollIntoView({ behavior: 'instant', block: 'center' });
+  });
+}
+
+/**
  * Scroll the overlay section content to reveal controls below the file preview.
  * After uploading an overlay image, the controls (Mode, Intensity, etc.) are
  * below the fold and need scrolling within the sidebar to be visible.
  * 
- * This function:
- * 1. Enables the overlay if needed (Mode combobox only exists when overlay.enabled is true)
- * 2. Scrolls the sidebar's scrollable container to bring controls into view
+ * Uses data-testid selectors for reliability:
+ * - data-testid="sidebar-scroll" for the scrollable container
+ * - data-testid="overlay-enabled-switch" for the enable toggle
+ * - data-testid="overlay-mode-select" for the mode dropdown
  */
 export async function scrollOverlaySectionToControls(page: Page): Promise<void> {
   // Step 1: Enable the overlay if it's not enabled
   // The Mode/Intensity/ColorMode controls only render when overlay.enabled is true
-  await page.evaluate(() => {
-    const openSection = document.querySelector('[role="region"][data-state="open"]');
-    if (!openSection) return;
-    
-    // Find all switches and look for the "Enabled" one
-    const switches = openSection.querySelectorAll('[role="switch"]');
-    for (const sw of switches) {
-      const row = sw.closest('.flex');
-      if (row && row.textContent?.toLowerCase().includes('enabled')) {
-        if (sw.getAttribute('data-state') === 'unchecked') {
-          (sw as HTMLElement).click();
-        }
-        break;
-      }
-    }
-  });
+  const enabledSwitch = page.locator('[data-testid="overlay-enabled-switch"]');
   
-  // Wait briefly for React to render the controls
-  await page.waitForSelector('[role="region"][data-state="open"] [role="combobox"]', {
-    state: 'attached',
-    timeout: 5000
-  }).catch(() => {});
+  // Wait for the switch to be attached (it appears after file upload)
+  await enabledSwitch.waitFor({ state: 'attached', timeout: 5000 }).catch(() => {});
+  
+  // Check if it exists and is unchecked
+  if (await enabledSwitch.count() > 0) {
+    const state = await enabledSwitch.getAttribute('data-state');
+    if (state === 'unchecked') {
+      await enabledSwitch.scrollIntoViewIfNeeded();
+      await enabledSwitch.click({ force: true });
+      // Wait for controls to render
+      await page.waitForSelector('[data-testid="overlay-mode-select"]', {
+        state: 'attached',
+        timeout: 3000
+      }).catch(() => {});
+    }
+  }
   
   // Step 2: Scroll the sidebar container to show the Mode combobox
-  // The sidebar structure is: <aside> -> <div class="overflow-y-auto"> -> content
   await page.evaluate(() => {
-    // Find the sidebar's scrollable container
-    const sidebar = document.querySelector('aside');
-    if (!sidebar) return;
+    const scroller = document.querySelector('[data-testid="sidebar-scroll"]') as HTMLElement;
+    if (!scroller) return;
     
-    const scrollContainer = sidebar.querySelector('.overflow-y-auto') as HTMLElement;
-    if (!scrollContainer) return;
-    
-    // Find the Mode combobox in the open section
-    const openSection = document.querySelector('[role="region"][data-state="open"]');
-    if (!openSection) return;
-    
-    const modeCombobox = openSection.querySelector('[role="combobox"]') as HTMLElement;
-    if (!modeCombobox) return;
+    // Find the Mode select by data-testid
+    const modeSelect = document.querySelector('[data-testid="overlay-mode-select"]') as HTMLElement;
+    if (!modeSelect) return;
     
     // Get positions
-    const containerRect = scrollContainer.getBoundingClientRect();
-    const comboboxRect = modeCombobox.getBoundingClientRect();
+    const scrollerRect = scroller.getBoundingClientRect();
+    const selectRect = modeSelect.getBoundingClientRect();
     
-    // Check if the combobox is below the visible area of the scroll container
-    if (comboboxRect.top > containerRect.bottom - 50) {
-      // Calculate scroll amount: current scroll + how far below the combobox is
-      // We want the combobox about 150px from the top of the visible area
-      const scrollAmount = comboboxRect.top - containerRect.top - 150;
-      scrollContainer.scrollTop += scrollAmount;
+    // If the select is below the visible area, scroll down
+    if (selectRect.top > scrollerRect.bottom - 100) {
+      const scrollAmount = selectRect.top - scrollerRect.top - 150;
+      scroller.scrollTop += scrollAmount;
     }
-    // Check if the combobox is above the visible area
-    else if (comboboxRect.top < containerRect.top + 50) {
-      const scrollAmount = comboboxRect.top - containerRect.top - 150;
-      scrollContainer.scrollTop += scrollAmount;
+    // If the select is above the visible area, scroll up
+    else if (selectRect.top < scrollerRect.top + 100) {
+      const scrollAmount = scrollerRect.top - selectRect.top + 150;
+      scroller.scrollTop -= scrollAmount;
     }
   });
   
-  // Wait for scroll to settle
-  await page.waitForFunction(() => {
-    const openSection = document.querySelector('[role="region"][data-state="open"]');
-    if (!openSection) return true;
-    
-    const combobox = openSection.querySelector('[role="combobox"]');
-    if (!combobox) return false;
-    
-    const rect = combobox.getBoundingClientRect();
-    // Combobox should be visible (between 50 and 800 pixels from top of viewport)
-    return rect.top > 50 && rect.top < 800;
-  }, {}, { timeout: 3000, polling: 50 }).catch(() => {});
+  // Wait for the Mode select to be visible in viewport
+  const modeSelect = page.locator('[data-testid="overlay-mode-select"]');
+  await modeSelect.waitFor({ state: 'visible', timeout: 3000 }).catch(() => {});
 }
 
 /**
@@ -337,7 +397,7 @@ export async function waitForSelectClosed(page: Page, timeout = DEFAULT_TIMEOUT)
 
 /**
  * Click an option in an open Radix select
- * Uses scrollIntoViewIfNeeded and force click for reliability
+ * Uses keyboard navigation for reliable scrolling within dropdowns
  */
 export async function clickSelectOption(
   page: Page,
@@ -347,31 +407,97 @@ export async function clickSelectOption(
   const dropdown = page.locator('[data-radix-popper-content-wrapper]').first();
   await dropdown.waitFor({ state: 'visible', timeout });
   
-  // Find the option by text (case-insensitive partial match)
-  const option = dropdown.locator('[role="option"]').filter({ 
-    hasText: new RegExp(optionText, 'i') 
-  }).first();
-  
-  if (await option.count() > 0) {
-    // Scroll the option into view within the dropdown
-    await option.scrollIntoViewIfNeeded();
-    await option.click({ force: true });
-    return true;
-  }
-  
-  // Fallback: iterate through all options if filter didn't work
+  // Get all options and find target index
   const allOptions = dropdown.locator('[role="option"]');
   const count = await allOptions.count();
   
+  let targetIndex = -1;
   for (let i = 0; i < count; i++) {
-    const opt = allOptions.nth(i);
-    const text = await opt.textContent();
+    const text = await allOptions.nth(i).textContent();
     if (text && new RegExp(optionText, 'i').test(text.trim())) {
-      await opt.scrollIntoViewIfNeeded();
-      await opt.click({ force: true });
-      return true;
+      targetIndex = i;
+      break;
     }
   }
   
-  return false;
+  if (targetIndex === -1) return false;
+  
+  // Use keyboard navigation - more reliable than click for scrolling
+  // Press Home to go to first option, then arrow down to target
+  await page.keyboard.press('Home');
+  for (let i = 0; i < targetIndex; i++) {
+    await page.keyboard.press('ArrowDown');
+  }
+  
+  // Small wait for dropdown to scroll
+  await page.waitForTimeout(50);
+  
+  // Press Enter to select
+  await page.keyboard.press('Enter');
+  return true;
+}
+
+/**
+ * Select an option from a dropdown using data-testid
+ * Opens the dropdown, selects option, and waits for close
+ */
+export async function selectDropdownOption(
+  page: Page,
+  selectTestId: string,
+  optionText: string
+): Promise<boolean> {
+  const select = page.locator(`[data-testid="${selectTestId}"]`);
+  
+  // Scroll into view within sidebar
+  await select.scrollIntoViewIfNeeded();
+  
+  // Click to open
+  await select.click({ force: true });
+  
+  // Wait for dropdown
+  await waitForSelectOpen(page);
+  
+  // Select option
+  const clicked = await clickSelectOption(page, optionText);
+  
+  if (!clicked) {
+    await page.keyboard.press('Escape');
+  }
+  
+  return clicked;
+}
+
+/**
+ * Set a slider value by clicking at a percentage position
+ * Uses data-testid for stable selection
+ */
+export async function setSliderValue(
+  page: Page,
+  sliderTestId: string,
+  percent: number
+): Promise<void> {
+  const slider = page.locator(`[data-testid="${sliderTestId}"]`);
+  
+  // Scroll into view
+  await slider.scrollIntoViewIfNeeded();
+  await slider.waitFor({ state: 'visible', timeout: 5000 });
+  
+  const box = await slider.boundingBox();
+  if (box) {
+    const x = box.x + (box.width * percent) / 100;
+    const y = box.y + box.height / 2;
+    await page.mouse.click(x, y);
+  }
+}
+
+/**
+ * Toggle a switch using data-testid
+ */
+export async function toggleSwitch(
+  page: Page,
+  switchTestId: string
+): Promise<void> {
+  const switchEl = page.locator(`[data-testid="${switchTestId}"]`);
+  await switchEl.scrollIntoViewIfNeeded();
+  await switchEl.click({ force: true });
 }
