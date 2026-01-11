@@ -1,5 +1,9 @@
 import { AlertTriangle, Eye, Sparkles, Thermometer } from 'lucide-react';
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+
+// Type for render state
+type RenderState = 'pending' | 'rendering' | 'idle';
+
 import { useTranslation } from 'react-i18next';
 import { AdUnit } from '@/components/AdUnit';
 import { BusyOverlay } from '@/components/BusyOverlay';
@@ -33,11 +37,43 @@ export function Preview({ sidebarOpen = true }: Readonly<PreviewProps>) {
 
   // Compute rendering state for test automation (data-rendering-state attribute)
   // 'idle' = ready for interaction, 'pending' = debounce waiting, 'rendering' = actively generating
-  const renderingState = isPending
+  const renderingState: RenderState = isPending
     ? 'pending'
     : isRendering || isLoading || isPreparingAnimation
       ? 'rendering'
       : 'idle';
+
+  // Track previous rendering state to dispatch lifecycle events
+  const prevRenderingStateRef = useRef<RenderState | null>(null);
+
+  // Dispatch CustomEvents for render lifecycle (enables event-driven test detection)
+  useEffect(() => {
+    const prevState = prevRenderingStateRef.current;
+
+    // Skip initial mount (prevState is null)
+    if (prevState !== null) {
+      // Dispatch render-start when transitioning FROM idle to non-idle
+      if (prevState === 'idle' && renderingState !== 'idle') {
+        document.dispatchEvent(
+          new CustomEvent('anqr:render-start', {
+            detail: { previousState: prevState, newState: renderingState },
+          })
+        );
+      }
+
+      // Dispatch render-complete when transitioning TO idle from non-idle
+      if (prevState !== 'idle' && renderingState === 'idle') {
+        document.dispatchEvent(
+          new CustomEvent('anqr:render-complete', {
+            detail: { success: true, previousState: prevState },
+          })
+        );
+      }
+    }
+
+    // Update ref for next render
+    prevRenderingStateRef.current = renderingState;
+  }, [renderingState]);
   const [showWarnings, setShowWarnings] = useState(true);
   const [heatmapActive, setHeatmapActive] = useState(false);
   const heatmapCanvasRef = useRef<HTMLCanvasElement>(null);

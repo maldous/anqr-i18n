@@ -933,10 +933,25 @@ export function useQRGenerator(): UseQRGeneratorResult {
       }
     } catch (err) {
       console.error('QR generation error:', err);
-      setError(err instanceof Error ? err.message : 'Failed to generate QR code');
+      const errorMessage = err instanceof Error ? err.message : 'Failed to generate QR code';
+      setError(errorMessage);
+      // Dispatch render-complete event with error
+      document.dispatchEvent(
+        new CustomEvent('anqr:render-complete', {
+          detail: { success: false, error: errorMessage },
+        })
+      );
     } finally {
       setIsRendering(false);
       setIsLoading(false);
+      // Dispatch render-complete event on success (no error was thrown)
+      if (!error) {
+        document.dispatchEvent(
+          new CustomEvent('anqr:render-complete', {
+            detail: { success: true, error: null },
+          })
+        );
+      }
     }
   }, [
     debouncedConfig,
@@ -951,6 +966,7 @@ export function useQRGenerator(): UseQRGeneratorResult {
     watermark.blend,
     animation.playing,
     animationFrames.length,
+    error,
   ]);
 
   // Regenerate when config changes

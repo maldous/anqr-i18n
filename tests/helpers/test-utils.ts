@@ -86,7 +86,11 @@ export const TIER_LABELS: Record<Tier, string[]> = {
 
 /**
  * Wait for render to complete using application signaling.
- * Waits for the data-rendering-state="idle" attribute on the preview container.
+ * 
+ * Strategy (in order of preference):
+ * 1. Listen for 'anqr:render-complete' CustomEvent (best: fully event-driven, no polling)
+ * 2. Wait for data-rendering-state="idle" attribute (good: event-driven via DOM)
+ * 3. Fall back to canvas stability polling (last resort)
  * 
  * @param page - Playwright page instance
  * @param reason - Description of why we're waiting (for debugging)
@@ -100,13 +104,46 @@ export async function waitForRenderComplete(
   // Ensure the canvas exists and is visible. If the app cannot render, fail fast.
   await page.waitForSelector('canvas', { state: 'visible', timeout: Math.min(timeout, 5000) });
 
-  // Prefer the app's explicit render-state marker when available.
-  try {
-    await page.waitForSelector('[data-rendering-state="idle"]', { state: 'attached', timeout });
-  } catch (err) {
-    // Fallback: if the marker is missing or never flips, rely on canvas stability.
-    await waitForCanvasStable(page, 200, timeout);
+  // Strategy 1: Listen for CustomEvent 'anqr:render-complete' (fully event-driven)
+  // This is the most reliable method - the app explicitly signals when render is done
+  const eventReceived = await page.evaluate((timeoutMs: number) => {
+    return new Promise<boolean>((resolve) => {
+      // Check if already idle before setting up listener
+      const idleMarker = document.querySelector('[data-rendering-state="idle"]');
+      if (idleMarker) {
+        resolve(true);
+        return;
+      }
+      
+      const handler = () => {
+        document.removeEventListener('anqr:render-complete', handler);
+        resolve(true);
+      };
+      
+      document.addEventListener('anqr:render-complete', handler);
+      
+      // Timeout fallback
+      setTimeout(() => {
+        document.removeEventListener('anqr:render-complete', handler);
+        resolve(false);
+      }, timeoutMs);
+    });
+  }, timeout);
+
+  if (eventReceived) {
+    return;
   }
+
+  // Strategy 2: Wait for data-rendering-state="idle" attribute
+  try {
+    await page.waitForSelector('[data-rendering-state="idle"]', { state: 'attached', timeout: 2000 });
+    return;
+  } catch {
+    // Continue to fallback
+  }
+
+  // Strategy 3: Fall back to canvas stability polling (last resort)
+  await waitForCanvasStable(page, 200, timeout);
 }
 
 /**
