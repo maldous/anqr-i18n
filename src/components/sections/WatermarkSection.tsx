@@ -46,7 +46,7 @@ export function WatermarkSection() {
           </Label>
           <HelpLink href="/guide#section-23" requiredTier="advanced" />
         </div>
-        <Switch checked={watermark.enabled} onCheckedChange={setWatermarkEnabled} />
+        <Switch data-testid="watermark-enabled-switch" checked={watermark.enabled} onCheckedChange={setWatermarkEnabled} />
       </div>
 
       {watermark.enabled && (
@@ -60,10 +60,10 @@ export function WatermarkSection() {
               value={watermark.kind}
               onValueChange={(v) => setWatermarkKind(v as typeof watermark.kind)}
             >
-              <SelectTrigger>
+              <SelectTrigger data-testid="watermark-kind-trigger">
                 <SelectValue />
               </SelectTrigger>
-              <SelectContent>
+              <SelectContent data-testid="watermark-kind-content">
                 <SelectItem value="text">{t('watermark.text')}</SelectItem>
                 <SelectItem value="image">{t('watermark.image')}</SelectItem>
                 <SelectItem value="pattern">{t('watermark.pattern')}</SelectItem>
@@ -78,6 +78,7 @@ export function WatermarkSection() {
                 <HighlightedLabel>{t('watermark.text')}</HighlightedLabel>
               </Label>
               <Input
+                data-testid="watermark-text-input"
                 value={watermark.text}
                 onChange={(e) => setWatermarkText(e.target.value)}
                 placeholder={t('watermark.textPlaceholder')}
@@ -102,6 +103,7 @@ export function WatermarkSection() {
                 <div className="flex items-center gap-2 p-2 border rounded-md bg-muted/50">
                   <span className="flex-1 text-sm truncate">{watermark.image.name}</span>
                   <Button
+                    data-testid="watermark-clear-image-button"
                     variant="ghost"
                     size="icon"
                     className="h-6 w-6"
@@ -114,6 +116,7 @@ export function WatermarkSection() {
                 </div>
               ) : (
                 <Button
+                  data-testid="watermark-upload-button"
                   variant="outline"
                   className="w-full"
                   onClick={() => fileInputRef.current?.click()}
@@ -134,10 +137,10 @@ export function WatermarkSection() {
               value={watermark.position}
               onValueChange={(v) => setWatermarkPosition(v as typeof watermark.position)}
             >
-              <SelectTrigger>
+              <SelectTrigger data-testid="watermark-position-trigger">
                 <SelectValue />
               </SelectTrigger>
-              <SelectContent>
+              <SelectContent data-testid="watermark-position-content">
                 <SelectItem value="center">{t('watermark.center')}</SelectItem>
                 <SelectItem value="corners">{t('watermark.corners')}</SelectItem>
                 <SelectItem value="edges">{t('watermark.edges')}</SelectItem>
@@ -158,6 +161,7 @@ export function WatermarkSection() {
               </span>
             </div>
             <Slider
+              data-testid="watermark-opacity-slider"
               value={[watermark.opacity]}
               onValueChange={([v]) => setWatermarkOpacity(v)}
               min={0}
@@ -179,10 +183,10 @@ export function WatermarkSection() {
                 }))
               }
             >
-              <SelectTrigger>
+              <SelectTrigger data-testid="watermark-blend-trigger">
                 <SelectValue />
               </SelectTrigger>
-              <SelectContent>
+              <SelectContent data-testid="watermark-blend-content">
                 <SelectItem value="normal">{t('watermark.normal')}</SelectItem>
                 <SelectItem value="multiply">{t('watermark.multiply')}</SelectItem>
                 <SelectItem value="screen">{t('watermark.screen')}</SelectItem>

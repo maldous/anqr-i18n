@@ -45,6 +45,7 @@ export function AnimationSection() {
           </span>
         </div>
         <Slider
+          data-testid="animation-speed-slider"
           value={[animation.speedMs]}
           onValueChange={([v]) => setAnimationSpeedMs(v)}
           min={20}
@@ -62,6 +63,7 @@ export function AnimationSection() {
           <HelpLink anchor="section-31" />
         </div>
         <Switch
+          data-testid="animation-loop-switch"
           checked={animation.loop}
           onCheckedChange={setAnimationLoop}
           title={t('hints.loopAnimation')}
@@ -74,6 +76,7 @@ export function AnimationSection() {
           <HighlightedLabel>{t('animation.bounce')}</HighlightedLabel>
         </Label>
         <Switch
+          data-testid="animation-bounce-switch"
           checked={animation.bounce}
           onCheckedChange={setAnimationBounce}
           title={t('hints.bounceAnimation')}
@@ -92,6 +95,7 @@ export function AnimationSection() {
               <span className="text-sm text-muted-foreground">{animation.startFrame}</span>
             </div>
             <Slider
+              data-testid="animation-start-frame-slider"
               value={[animation.startFrame]}
               onValueChange={([v]) => setAnimationStartFrame(v)}
               min={0}
@@ -113,6 +117,7 @@ export function AnimationSection() {
               </span>
             </div>
             <Slider
+              data-testid="animation-max-frames-slider"
               value={[animation.maxFrames]}
               onValueChange={([v]) => setAnimationMaxFrames(v)}
               min={0}
@@ -137,6 +142,7 @@ export function AnimationSection() {
               </span>
             </div>
             <Slider
+              data-testid="animation-frame-step-slider"
               value={[animation.frameStep]}
               onValueChange={([v]) => setAnimationFrameStep(v)}
               min={1}
@@ -158,10 +164,10 @@ export function AnimationSection() {
                 }))
               }
             >
-              <SelectTrigger>
+              <SelectTrigger data-testid="animation-interpolation-trigger">
                 <SelectValue />
               </SelectTrigger>
-              <SelectContent>
+              <SelectContent data-testid="animation-interpolation-content">
                 <SelectItem value="none">{t('animation.none')}</SelectItem>
                 <SelectItem value="crossfade">{t('animation.crossfade')}</SelectItem>
                 <SelectItem value="morph">{t('animation.morph')}</SelectItem>
@@ -193,10 +199,10 @@ export function AnimationSection() {
                 }))
               }
             >
-              <SelectTrigger>
+              <SelectTrigger data-testid="animation-temporal-dither-trigger">
                 <SelectValue />
               </SelectTrigger>
-              <SelectContent>
+              <SelectContent data-testid="animation-temporal-dither-content">
                 <SelectItem value="off">{t('animation.off')}</SelectItem>
                 <SelectItem value="blue_noise">{t('animation.blueNoise')}</SelectItem>
                 <SelectItem value="flicker_safe">{t('animation.flickerSafe')}</SelectItem>
@@ -222,10 +228,10 @@ export function AnimationSection() {
                 }))
               }
             >
-              <SelectTrigger>
+              <SelectTrigger data-testid="animation-pattern-trigger">
                 <SelectValue />
               </SelectTrigger>
-              <SelectContent>
+              <SelectContent data-testid="animation-pattern-content">
                 <SelectItem value="none">{t('animation.none')}</SelectItem>
                 <SelectItem value="pulse">{t('animation.pulse')}</SelectItem>
                 <SelectItem value="wave">{t('animation.wave')}</SelectItem>
@@ -247,6 +253,7 @@ export function AnimationSection() {
               </span>
             </div>
             <Slider
+              data-testid="animation-module-jitter-slider"
               value={[animation.moduleJitterPx]}
               onValueChange={([v]) =>
                 useQRStore.setState((s) => ({ animation: { ...s.animation, moduleJitterPx: v } }))
@@ -264,6 +271,7 @@ export function AnimationSection() {
               <HighlightedLabel>{t('animation.colorCycle')}</HighlightedLabel>
             </Label>
             <Switch
+              data-testid="animation-color-cycle-switch"
               checked={animation.colorCycle}
               onCheckedChange={(checked) =>
                 useQRStore.setState((s) => ({ animation: { ...s.animation, colorCycle: checked } }))
@@ -277,6 +285,7 @@ export function AnimationSection() {
               <HighlightedLabel>{t('animation.randomSeed')}</HighlightedLabel>
             </Label>
             <Input
+              data-testid="animation-seed-input"
               type="number"
               value={animation.seed}
               onChange={(e) =>

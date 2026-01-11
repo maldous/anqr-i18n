@@ -65,6 +65,7 @@ export function RenderSection() {
           </span>
         </div>
         <Slider
+          data-testid="render-module-size-slider"
           value={[render.modulePx]}
           onValueChange={([v]) => setRenderModulePx(v)}
           min={2}
@@ -88,6 +89,7 @@ export function RenderSection() {
           </span>
         </div>
         <Slider
+          data-testid="render-module-gap-slider"
           value={[render.moduleGapPercent]}
           onValueChange={([v]) => setRenderModuleGap(v)}
           min={0}
@@ -109,7 +111,7 @@ export function RenderSection() {
           value={render.moduleStyle}
           onValueChange={(v) => setRenderModuleStyle(v as ModuleStyle)}
         >
-          <SelectTrigger title={t('hints.moduleStyle')}>
+          <SelectTrigger data-testid="render-module-style-select" title={t('hints.moduleStyle')}>
             <SelectValue />
           </SelectTrigger>
           <SelectContent>
@@ -134,7 +136,7 @@ export function RenderSection() {
           value={render.finderStyle}
           onValueChange={(v) => setRenderFinderStyle(v as FinderStyle)}
         >
-          <SelectTrigger title={t('hints.finderStyle')}>
+          <SelectTrigger data-testid="render-finder-style-select" title={t('hints.finderStyle')}>
             <SelectValue />
           </SelectTrigger>
           <SelectContent>
@@ -154,7 +156,7 @@ export function RenderSection() {
           value={render.alignmentStyle}
           onValueChange={(v) => setRenderAlignmentStyle(v as AlignmentStyle)}
         >
-          <SelectTrigger title={t('hints.alignmentStyle')}>
+          <SelectTrigger data-testid="render-alignment-style-select" title={t('hints.alignmentStyle')}>
             <SelectValue />
           </SelectTrigger>
           <SelectContent>
@@ -175,7 +177,7 @@ export function RenderSection() {
           value={render.timingStyle}
           onValueChange={(v) => setRenderTimingStyle(v as TimingStyle)}
         >
-          <SelectTrigger title={t('hints.timingStyle')}>
+          <SelectTrigger data-testid="render-timing-style-select" title={t('hints.timingStyle')}>
             <SelectValue />
           </SelectTrigger>
           <SelectContent>
@@ -201,6 +203,7 @@ export function RenderSection() {
             </Label>
             <div className="flex gap-2">
               <Input
+                data-testid="render-fg-color-picker"
                 type="color"
                 value={render.fgColor}
                 onChange={(e) => setRenderFgColor(e.target.value)}
@@ -208,6 +211,7 @@ export function RenderSection() {
                 title={t('hints.pickFgColor')}
               />
               <Input
+                data-testid="render-fg-color-text"
                 type="text"
                 value={render.fgColor}
                 onChange={(e) => setRenderFgColor(e.target.value)}
@@ -222,6 +226,7 @@ export function RenderSection() {
             </Label>
             <div className="flex gap-2">
               <Input
+                data-testid="render-bg-color-picker"
                 type="color"
                 value={render.bgColor}
                 onChange={(e) => setRenderBgColor(e.target.value)}
@@ -229,6 +234,7 @@ export function RenderSection() {
                 title={t('hints.pickBgColor')}
               />
               <Input
+                data-testid="render-bg-color-text"
                 type="text"
                 value={render.bgColor}
                 onChange={(e) => setRenderBgColor(e.target.value)}
@@ -246,6 +252,7 @@ export function RenderSection() {
           <HighlightedLabel>{t('render.transparentBg')}</HighlightedLabel>
         </Label>
         <Switch
+          data-testid="render-transparent-bg-switch"
           checked={render.bgTransparent}
           onCheckedChange={setRenderBgTransparent}
           title={t('hints.transparentBg')}
@@ -260,10 +267,10 @@ export function RenderSection() {
             <Label>
               <HighlightedLabel>{t('render.gapMode')}</HighlightedLabel>
             </Label>
-            <Select value={render.gapMode} onValueChange={(v) => setRenderGapMode(v as GapMode)}>
-              <SelectTrigger title={t('hints.gapMode')}>
-                <SelectValue />
-              </SelectTrigger>
+          <Select value={render.gapMode} onValueChange={(v) => setRenderGapMode(v as GapMode)}>
+            <SelectTrigger data-testid="render-gap-mode-select" title={t('hints.gapMode')}>
+              <SelectValue />
+            </SelectTrigger>
               <SelectContent>
                 <SelectItem value="none">{t('render.none')}</SelectItem>
                 <SelectItem value="inset">{t('render.inset')}</SelectItem>
@@ -284,6 +291,7 @@ export function RenderSection() {
               </span>
             </div>
             <Slider
+              data-testid="render-corner-radius-slider"
               value={[render.cornerRadius]}
               onValueChange={([v]) => setRenderCornerRadius(v)}
               min={0}
@@ -305,7 +313,7 @@ export function RenderSection() {
               value={render.gradient.type}
               onValueChange={(v) => setRenderGradient({ type: v as GradientType })}
             >
-              <SelectTrigger title={t('hints.gradient')}>
+              <SelectTrigger data-testid="render-gradient-type-select" title={t('hints.gradient')}>
                 <SelectValue />
               </SelectTrigger>
               <SelectContent>
@@ -330,7 +338,7 @@ export function RenderSection() {
                 }))
               }
             >
-              <SelectTrigger title={t('hints.eyeOuterStyle')}>
+              <SelectTrigger data-testid="render-eye-outer-style-select" title={t('hints.eyeOuterStyle')}>
                 <SelectValue />
               </SelectTrigger>
               <SelectContent>
@@ -353,7 +361,7 @@ export function RenderSection() {
                 }))
               }
             >
-              <SelectTrigger title={t('hints.eyeInnerStyle')}>
+              <SelectTrigger data-testid="render-eye-inner-style-select" title={t('hints.eyeInnerStyle')}>
                 <SelectValue />
               </SelectTrigger>
               <SelectContent>
@@ -376,7 +384,7 @@ export function RenderSection() {
               value={render.frameStyle}
               onValueChange={(v) => setRenderFrameStyle(v as FrameStyle)}
             >
-              <SelectTrigger title={t('hints.frameStyle')}>
+              <SelectTrigger data-testid="render-frame-style-select" title={t('hints.frameStyle')}>
                 <SelectValue />
               </SelectTrigger>
               <SelectContent>
@@ -394,6 +402,7 @@ export function RenderSection() {
                 <HighlightedLabel>{t('render.frameText')}</HighlightedLabel>
               </Label>
               <Input
+                data-testid="render-frame-text-input"
                 value={render.frameText}
                 onChange={(e) => setRenderFrameText(e.target.value)}
                 placeholder={t('accessibility.scanMePlaceholder')}
@@ -413,6 +422,7 @@ export function RenderSection() {
               </span>
             </div>
             <Slider
+              data-testid="render-dot-rotation-slider"
               value={[render.dotRotationDeg]}
               onValueChange={([v]) =>
                 useQRStore.setState((s) => ({ render: { ...s.render, dotRotationDeg: v } }))
@@ -435,6 +445,7 @@ export function RenderSection() {
               </span>
             </div>
             <Slider
+              data-testid="render-eye-scale-slider"
               value={[render.eyeScale]}
               onValueChange={([v]) =>
                 useQRStore.setState((s) => ({ render: { ...s.render, eyeScale: v } }))

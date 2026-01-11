@@ -1,170 +1,776 @@
-import { test, expect } from '../fixtures/test-fixtures';
-import { getCanvasSnapshot, snapshotsAreDifferent } from '../helpers/qr-detector';
-import { setSliderByPercent, setTextInput } from '../helpers/input-helpers';
+/**
+ * Watermark Section Tests - Comprehensive Coverage
+ * Tests all watermark controls: enable, kind, text, image, position, opacity, blend
+ * Focuses on accessibility: ARIA roles, keyboard navigation, proper labeling
+ */
 
-test.describe('Watermark Section - Professional Tier', () => {
-  test.beforeEach(async ({ page, setTier }) => {
-    await page.goto('/');
-    await setTier('professional');
-    await page.waitForTimeout(1000);
+import { expect, test, type Page } from '@playwright/test';
+import {
+  waitForQRRender,
+  waitForAccordionOpen,
+} from '../helpers/qr-detector';
+
+// Helper: Navigate to the app and wait for initial load
+async function setupPage(page: Page) {
+  await page.goto('/');
+  await page.waitForLoadState('networkidle');
+  await waitForQRRender(page);
+}
+
+// Helper: Expand the Watermark section
+async function expandWatermarkSection(page: Page) {
+  // First close any open sections for clean state
+  const openTriggers = page.locator('[data-state="open"] > [role="button"]');
+  const openCount = await openTriggers.count();
+  for (let i = 0; i < openCount; i++) {
+    await openTriggers.nth(i).click();
+    await page.waitForTimeout(100);
+  }
+  
+  // Find and click Watermark accordion trigger
+  const watermarkTrigger = page.locator('button').filter({ hasText: /^Watermark$/i }).first();
+  if (await watermarkTrigger.count() > 0) {
+    await watermarkTrigger.scrollIntoViewIfNeeded();
+    await watermarkTrigger.click();
+    await waitForAccordionOpen(page);
+    await page.waitForTimeout(200);
+  }
+}
+
+// Helper: Toggle switch using data-testid
+async function toggleSwitchByTestId(page: Page, testId: string) {
+  const switchEl = page.locator(`[data-testid="${testId}"]`);
+  await switchEl.waitFor({ state: 'visible', timeout: 5000 });
+  await switchEl.scrollIntoViewIfNeeded();
+  await switchEl.click();
+  await page.waitForTimeout(100);
+}
+
+// Helper: Select dropdown option
+async function selectDropdownOption(page: Page, triggerTestId: string, optionText: string) {
+  const trigger = page.locator(`[data-testid="${triggerTestId}"]`);
+  await trigger.waitFor({ state: 'visible', timeout: 5000 });
+  await trigger.scrollIntoViewIfNeeded();
+  await trigger.click();
+  
+  await page.waitForSelector('[data-radix-popper-content-wrapper]', { timeout: 3000 });
+  await page.waitForTimeout(100);
+  
+  const option = page.locator('[role="option"]').filter({ hasText: new RegExp(optionText, 'i') }).first();
+  if (await option.count() > 0) {
+    await option.scrollIntoViewIfNeeded();
+    await option.click();
+  } else {
+    await page.keyboard.press('Escape');
+  }
+  await page.waitForTimeout(100);
+}
+
+// Helper: Set input value
+async function setInputByTestId(page: Page, testId: string, value: string) {
+  const input = page.locator(`[data-testid="${testId}"]`);
+  await input.waitFor({ state: 'visible', timeout: 5000 });
+  await input.scrollIntoViewIfNeeded();
+  await input.fill('');
+  await input.fill(value);
+  await input.blur();
+  await page.waitForTimeout(100);
+}
+
+// Helper: Set slider value
+async function setSliderByTestId(page: Page, testId: string, percent: number) {
+  const slider = page.locator(`[data-testid="${testId}"] [role="slider"]`);
+  await slider.waitFor({ state: 'visible', timeout: 5000 });
+  await slider.scrollIntoViewIfNeeded();
+  
+  const box = await slider.boundingBox();
+  if (box) {
+    const x = box.x + (box.width * percent) / 100;
+    const y = box.y + box.height / 2;
+    await page.mouse.click(x, y);
+    await page.waitForTimeout(100);
+  }
+}
+
+// Helper: Enable watermark if not already enabled
+async function enableWatermark(page: Page) {
+  const switchEl = page.locator('[data-testid="watermark-enabled-switch"]');
+  if ((await switchEl.getAttribute('data-state')) !== 'checked') {
+    await toggleSwitchByTestId(page, 'watermark-enabled-switch');
+    await page.waitForTimeout(200);
+  }
+}
+
+// ============================================================================
+// ENABLE TOGGLE TESTS
+// ============================================================================
+
+test.describe('Watermark Enable Toggle', () => {
+  test.beforeEach(async ({ page }) => {
+    await setupPage(page);
+    await expandWatermarkSection(page);
   });
 
-  test('watermark enabled switch toggles watermark', async ({ page, waitForQRRender }) => {
-    await page.click('button:has-text("Watermark")');
-    await page.waitForTimeout(300);
+  test('enable switch is visible and interactive', async ({ page }) => {
+    const switchEl = page.locator('[data-testid="watermark-enabled-switch"]');
+    await expect(switchEl).toBeVisible();
+  });
 
-    const before = await getCanvasSnapshot(page);
+  test('enable switch has role="switch"', async ({ page }) => {
+    const switchEl = page.locator('[data-testid="watermark-enabled-switch"]');
+    const role = await switchEl.getAttribute('role');
+    expect(role).toBe('switch');
+  });
 
-    const switches = page.locator('[role="switch"]');
-    if (await switches.first().isVisible()) {
-      await switches.first().click();
-      await waitForQRRender();
-      
-      const after = await getCanvasSnapshot(page);
-      // Watermark toggle may change QR appearance
-      expect(switches.first()).toBeTruthy();
+  test('enable switch toggles between checked and unchecked', async ({ page }) => {
+    const switchEl = page.locator('[data-testid="watermark-enabled-switch"]');
+    
+    const initialState = await switchEl.getAttribute('data-state');
+    await toggleSwitchByTestId(page, 'watermark-enabled-switch');
+    
+    const newState = await switchEl.getAttribute('data-state');
+    expect(newState).not.toBe(initialState);
+  });
+
+  test('enable switch shows watermark settings when enabled', async ({ page }) => {
+    // Make sure watermark is enabled
+    await enableWatermark(page);
+    
+    // Watermark settings should now be visible
+    const kindTrigger = page.locator('[data-testid="watermark-kind-trigger"]');
+    await expect(kindTrigger).toBeVisible();
+  });
+
+  test('enable switch hides watermark settings when disabled', async ({ page }) => {
+    // Disable watermark
+    const switchEl = page.locator('[data-testid="watermark-enabled-switch"]');
+    if ((await switchEl.getAttribute('data-state')) === 'checked') {
+      await toggleSwitchByTestId(page, 'watermark-enabled-switch');
+      await page.waitForTimeout(200);
     }
+    
+    // Watermark settings should be hidden
+    const kindTrigger = page.locator('[data-testid="watermark-kind-trigger"]');
+    const isVisible = await kindTrigger.isVisible().catch(() => false);
+    expect(isVisible).toBe(false);
   });
 
-  test('watermark type select changes watermark style', async ({ page, waitForQRRender }) => {
-    await page.click('button:has-text("Watermark")');
-    await page.waitForTimeout(300);
+  test('enable switch responds to keyboard (Space)', async ({ page }) => {
+    const switchEl = page.locator('[data-testid="watermark-enabled-switch"]');
+    await switchEl.focus();
+    
+    const initialState = await switchEl.getAttribute('data-state');
+    await page.keyboard.press('Space');
+    await page.waitForTimeout(100);
+    
+    const newState = await switchEl.getAttribute('data-state');
+    expect(newState).not.toBe(initialState);
+  });
+});
 
+// ============================================================================
+// KIND SELECTION TESTS
+// ============================================================================
+
+test.describe('Watermark Kind Selection', () => {
+  test.beforeEach(async ({ page }) => {
+    await setupPage(page);
+    await expandWatermarkSection(page);
+    await enableWatermark(page);
+  });
+
+  test('kind select is visible when watermark enabled', async ({ page }) => {
+    const trigger = page.locator('[data-testid="watermark-kind-trigger"]');
+    await expect(trigger).toBeVisible();
+  });
+
+  test('kind select has role="combobox"', async ({ page }) => {
+    const trigger = page.locator('[data-testid="watermark-kind-trigger"]');
+    const role = await trigger.getAttribute('role');
+    expect(role).toBe('combobox');
+  });
+
+  test('kind select has all type options', async ({ page }) => {
+    const trigger = page.locator('[data-testid="watermark-kind-trigger"]');
+    await trigger.click();
+    await page.waitForTimeout(200);
+    
+    const kinds = ['text', 'image', 'pattern'];
+    let foundCount = 0;
+    
+    for (const kind of kinds) {
+      const option = page.locator('[role="option"]').filter({ hasText: new RegExp(kind, 'i') });
+      if (await option.count() > 0) {
+        foundCount++;
+      }
+    }
+    
+    await page.keyboard.press('Escape');
+    expect(foundCount).toBe(3);
+  });
+
+  test('selecting text kind shows text input', async ({ page }) => {
+    await selectDropdownOption(page, 'watermark-kind-trigger', 'text');
+    await page.waitForTimeout(200);
+    
+    const textInput = page.locator('[data-testid="watermark-text-input"]');
+    await expect(textInput).toBeVisible();
+  });
+
+  test('selecting image kind shows upload button', async ({ page }) => {
+    await selectDropdownOption(page, 'watermark-kind-trigger', 'image');
+    await page.waitForTimeout(200);
+    
+    const uploadButton = page.locator('[data-testid="watermark-upload-button"]');
+    await expect(uploadButton).toBeVisible();
+  });
+
+  test('selecting pattern kind shows upload button', async ({ page }) => {
+    await selectDropdownOption(page, 'watermark-kind-trigger', 'pattern');
+    await page.waitForTimeout(200);
+    
+    const uploadButton = page.locator('[data-testid="watermark-upload-button"]');
+    await expect(uploadButton).toBeVisible();
+  });
+
+  test('kind select uses keyboard navigation', async ({ page }) => {
+    const trigger = page.locator('[data-testid="watermark-kind-trigger"]');
+    await trigger.focus();
+    await page.keyboard.press('Enter');
+    await page.waitForTimeout(200);
+    
+    // Navigate with arrow keys
+    await page.keyboard.press('ArrowDown');
+    await page.keyboard.press('Enter');
+    
+    // Dropdown should close
+    await page.waitForTimeout(200);
+    const dropdown = page.locator('[data-radix-popper-content-wrapper]');
+    const isOpen = await dropdown.isVisible().catch(() => false);
+    expect(isOpen).toBe(false);
+  });
+});
+
+// ============================================================================
+// TEXT INPUT TESTS
+// ============================================================================
+
+test.describe('Watermark Text Input', () => {
+  test.beforeEach(async ({ page }) => {
+    await setupPage(page);
+    await expandWatermarkSection(page);
+    await enableWatermark(page);
+    // Select text kind
+    await selectDropdownOption(page, 'watermark-kind-trigger', 'text');
+    await page.waitForTimeout(200);
+  });
+
+  test('text input is visible for text kind', async ({ page }) => {
+    const textInput = page.locator('[data-testid="watermark-text-input"]');
+    await expect(textInput).toBeVisible();
+  });
+
+  test('text input accepts user input', async ({ page }) => {
+    await setInputByTestId(page, 'watermark-text-input', 'My Watermark');
+    
+    const textInput = page.locator('[data-testid="watermark-text-input"]');
+    const value = await textInput.inputValue();
+    expect(value).toBe('My Watermark');
+  });
+
+  test('text input has placeholder', async ({ page }) => {
+    const textInput = page.locator('[data-testid="watermark-text-input"]');
+    const placeholder = await textInput.getAttribute('placeholder');
+    expect(placeholder).toBeTruthy();
+  });
+
+  test('text input hidden for image kind', async ({ page }) => {
+    await selectDropdownOption(page, 'watermark-kind-trigger', 'image');
+    await page.waitForTimeout(200);
+    
+    const textInput = page.locator('[data-testid="watermark-text-input"]');
+    const isVisible = await textInput.isVisible().catch(() => false);
+    expect(isVisible).toBe(false);
+  });
+
+  test('text input is keyboard accessible', async ({ page }) => {
+    const textInput = page.locator('[data-testid="watermark-text-input"]');
+    await textInput.focus();
+    
+    await page.keyboard.type('Test Text');
+    
+    const value = await textInput.inputValue();
+    expect(value).toBe('Test Text');
+  });
+});
+
+// ============================================================================
+// IMAGE UPLOAD TESTS
+// ============================================================================
+
+test.describe('Watermark Image Upload', () => {
+  test.beforeEach(async ({ page }) => {
+    await setupPage(page);
+    await expandWatermarkSection(page);
+    await enableWatermark(page);
+    // Select image kind
+    await selectDropdownOption(page, 'watermark-kind-trigger', 'image');
+    await page.waitForTimeout(200);
+  });
+
+  test('upload button is visible for image kind', async ({ page }) => {
+    const uploadButton = page.locator('[data-testid="watermark-upload-button"]');
+    await expect(uploadButton).toBeVisible();
+  });
+
+  test('upload button has role="button"', async ({ page }) => {
+    const uploadButton = page.locator('[data-testid="watermark-upload-button"]');
+    const role = await uploadButton.getAttribute('role');
+    // Button elements have implicit button role
+    expect(role === 'button' || role === null).toBe(true);
+  });
+
+  test('upload button is keyboard accessible', async ({ page }) => {
+    const uploadButton = page.locator('[data-testid="watermark-upload-button"]');
+    await uploadButton.focus();
+    
+    // Should be focusable
+    const isFocused = await page.evaluate(() => {
+      const el = document.querySelector('[data-testid="watermark-upload-button"]');
+      return document.activeElement === el;
+    });
+    expect(isFocused).toBe(true);
+  });
+});
+
+// ============================================================================
+// POSITION SELECTION TESTS
+// ============================================================================
+
+test.describe('Watermark Position Selection', () => {
+  test.beforeEach(async ({ page }) => {
+    await setupPage(page);
+    await expandWatermarkSection(page);
+    await enableWatermark(page);
+  });
+
+  test('position select is visible', async ({ page }) => {
+    const trigger = page.locator('[data-testid="watermark-position-trigger"]');
+    await expect(trigger).toBeVisible();
+  });
+
+  test('position select has role="combobox"', async ({ page }) => {
+    const trigger = page.locator('[data-testid="watermark-position-trigger"]');
+    const role = await trigger.getAttribute('role');
+    expect(role).toBe('combobox');
+  });
+
+  test('position select has all position options', async ({ page }) => {
+    const trigger = page.locator('[data-testid="watermark-position-trigger"]');
+    await trigger.click();
+    await page.waitForTimeout(200);
+    
+    const positions = ['center', 'corners', 'edges', 'behind', 'quiet'];
+    let foundCount = 0;
+    
+    for (const pos of positions) {
+      const option = page.locator('[role="option"]').filter({ hasText: new RegExp(pos, 'i') });
+      if (await option.count() > 0) {
+        foundCount++;
+      }
+    }
+    
+    await page.keyboard.press('Escape');
+    expect(foundCount).toBeGreaterThanOrEqual(4);
+  });
+
+  test('selecting center position works', async ({ page }) => {
+    await selectDropdownOption(page, 'watermark-position-trigger', 'center');
+    
+    const trigger = page.locator('[data-testid="watermark-position-trigger"]');
+    const text = await trigger.textContent();
+    expect(text?.toLowerCase()).toContain('center');
+  });
+
+  test('selecting corners position works', async ({ page }) => {
+    await selectDropdownOption(page, 'watermark-position-trigger', 'corners');
+    
+    const trigger = page.locator('[data-testid="watermark-position-trigger"]');
+    const text = await trigger.textContent();
+    expect(text?.toLowerCase()).toContain('corner');
+  });
+
+  test('position select uses keyboard navigation', async ({ page }) => {
+    const trigger = page.locator('[data-testid="watermark-position-trigger"]');
+    await trigger.focus();
+    await page.keyboard.press('Enter');
+    await page.waitForTimeout(200);
+    
+    await page.keyboard.press('ArrowDown');
+    await page.keyboard.press('ArrowDown');
+    await page.keyboard.press('Enter');
+    
+    await page.waitForTimeout(200);
+    const dropdown = page.locator('[data-radix-popper-content-wrapper]');
+    const isOpen = await dropdown.isVisible().catch(() => false);
+    expect(isOpen).toBe(false);
+  });
+});
+
+// ============================================================================
+// OPACITY SLIDER TESTS
+// ============================================================================
+
+test.describe('Watermark Opacity Slider', () => {
+  test.beforeEach(async ({ page }) => {
+    await setupPage(page);
+    await expandWatermarkSection(page);
+    await enableWatermark(page);
+  });
+
+  test('opacity slider is visible', async ({ page }) => {
+    const slider = page.locator('[data-testid="watermark-opacity-slider"]');
+    await expect(slider).toBeVisible();
+  });
+
+  test('opacity slider has role="slider"', async ({ page }) => {
+    const slider = page.locator('[data-testid="watermark-opacity-slider"] [role="slider"]');
+    await expect(slider).toBeVisible();
+  });
+
+  test('opacity slider has correct range (0-100)', async ({ page }) => {
+    const slider = page.locator('[data-testid="watermark-opacity-slider"] [role="slider"]');
+    const ariaMin = await slider.getAttribute('aria-valuemin');
+    const ariaMax = await slider.getAttribute('aria-valuemax');
+    
+    expect(ariaMin).toBe('0');
+    expect(ariaMax).toBe('100');
+  });
+
+  test('opacity slider has aria-valuenow', async ({ page }) => {
+    const slider = page.locator('[data-testid="watermark-opacity-slider"] [role="slider"]');
+    const valueNow = await slider.getAttribute('aria-valuenow');
+    expect(valueNow).toBeTruthy();
+  });
+
+  test('opacity slider responds to keyboard (ArrowRight)', async ({ page }) => {
+    const slider = page.locator('[data-testid="watermark-opacity-slider"] [role="slider"]');
+    await slider.focus();
+    
+    const initialValue = await slider.getAttribute('aria-valuenow');
+    await page.keyboard.press('ArrowRight');
+    await page.waitForTimeout(100);
+    
+    const newValue = await slider.getAttribute('aria-valuenow');
+    expect(Number(newValue)).toBeGreaterThanOrEqual(Number(initialValue));
+  });
+
+  test('opacity slider responds to keyboard (ArrowLeft)', async ({ page }) => {
+    const slider = page.locator('[data-testid="watermark-opacity-slider"] [role="slider"]');
+    await slider.focus();
+    
+    // First increase, then decrease
+    await page.keyboard.press('ArrowRight');
+    await page.waitForTimeout(50);
+    
+    const initialValue = await slider.getAttribute('aria-valuenow');
+    await page.keyboard.press('ArrowLeft');
+    await page.waitForTimeout(100);
+    
+    const newValue = await slider.getAttribute('aria-valuenow');
+    expect(Number(newValue)).toBeLessThanOrEqual(Number(initialValue));
+  });
+
+  test('opacity slider can be set via mouse click', async ({ page }) => {
+    await setSliderByTestId(page, 'watermark-opacity-slider', 75);
+    
+    const slider = page.locator('[data-testid="watermark-opacity-slider"] [role="slider"]');
+    const value = await slider.getAttribute('aria-valuenow');
+    // Should be somewhere in the higher range
+    expect(Number(value)).toBeGreaterThan(50);
+  });
+});
+
+// ============================================================================
+// BLEND MODE SELECTION TESTS
+// ============================================================================
+
+test.describe('Watermark Blend Mode Selection', () => {
+  test.beforeEach(async ({ page }) => {
+    await setupPage(page);
+    await expandWatermarkSection(page);
+    await enableWatermark(page);
+  });
+
+  test('blend mode select is visible', async ({ page }) => {
+    const trigger = page.locator('[data-testid="watermark-blend-trigger"]');
+    await expect(trigger).toBeVisible();
+  });
+
+  test('blend mode select has role="combobox"', async ({ page }) => {
+    const trigger = page.locator('[data-testid="watermark-blend-trigger"]');
+    const role = await trigger.getAttribute('role');
+    expect(role).toBe('combobox');
+  });
+
+  test('blend mode select has all blend options', async ({ page }) => {
+    const trigger = page.locator('[data-testid="watermark-blend-trigger"]');
+    await trigger.click();
+    await page.waitForTimeout(200);
+    
+    const modes = ['normal', 'multiply', 'screen', 'overlay'];
+    let foundCount = 0;
+    
+    for (const mode of modes) {
+      const option = page.locator('[role="option"]').filter({ hasText: new RegExp(mode, 'i') });
+      if (await option.count() > 0) {
+        foundCount++;
+      }
+    }
+    
+    await page.keyboard.press('Escape');
+    expect(foundCount).toBe(4);
+  });
+
+  test('selecting normal blend mode works', async ({ page }) => {
+    await selectDropdownOption(page, 'watermark-blend-trigger', 'normal');
+    
+    const trigger = page.locator('[data-testid="watermark-blend-trigger"]');
+    const text = await trigger.textContent();
+    expect(text?.toLowerCase()).toContain('normal');
+  });
+
+  test('selecting multiply blend mode works', async ({ page }) => {
+    await selectDropdownOption(page, 'watermark-blend-trigger', 'multiply');
+    
+    const trigger = page.locator('[data-testid="watermark-blend-trigger"]');
+    const text = await trigger.textContent();
+    expect(text?.toLowerCase()).toContain('multiply');
+  });
+
+  test('blend mode select uses keyboard navigation', async ({ page }) => {
+    const trigger = page.locator('[data-testid="watermark-blend-trigger"]');
+    await trigger.focus();
+    await page.keyboard.press('Enter');
+    await page.waitForTimeout(200);
+    
+    await page.keyboard.press('ArrowDown');
+    await page.keyboard.press('Enter');
+    
+    await page.waitForTimeout(200);
+    const dropdown = page.locator('[data-radix-popper-content-wrapper]');
+    const isOpen = await dropdown.isVisible().catch(() => false);
+    expect(isOpen).toBe(false);
+  });
+});
+
+// ============================================================================
+// ACCESSIBILITY TESTS
+// ============================================================================
+
+test.describe('Watermark Section Accessibility', () => {
+  test.beforeEach(async ({ page }) => {
+    await setupPage(page);
+    await expandWatermarkSection(page);
+    await enableWatermark(page);
+  });
+
+  test('all controls are keyboard navigable', async ({ page }) => {
+    // Start from enable switch
+    const enableSwitch = page.locator('[data-testid="watermark-enabled-switch"]');
+    await enableSwitch.focus();
+    
+    // Tab through controls
+    await page.keyboard.press('Tab');
+    await page.keyboard.press('Tab');
+    await page.keyboard.press('Tab');
+    
+    // Should have moved through controls
+    const focusedElement = await page.evaluate(() => document.activeElement?.tagName);
+    expect(focusedElement).toBeTruthy();
+  });
+
+  test('switches have proper data-state attribute', async ({ page }) => {
+    const enableSwitch = page.locator('[data-testid="watermark-enabled-switch"]');
+    const state = await enableSwitch.getAttribute('data-state');
+    expect(state === 'checked' || state === 'unchecked').toBe(true);
+  });
+
+  test('select triggers are expandable', async ({ page }) => {
+    const kindTrigger = page.locator('[data-testid="watermark-kind-trigger"]');
+    const expandedBefore = await kindTrigger.getAttribute('aria-expanded');
+    
+    await kindTrigger.click();
+    await page.waitForTimeout(200);
+    
+    const expandedAfter = await kindTrigger.getAttribute('aria-expanded');
+    expect(expandedAfter).toBe('true');
+    
+    await page.keyboard.press('Escape');
+  });
+
+  test('slider has required ARIA attributes', async ({ page }) => {
+    const slider = page.locator('[data-testid="watermark-opacity-slider"] [role="slider"]');
+    
+    const valueNow = await slider.getAttribute('aria-valuenow');
+    const valueMin = await slider.getAttribute('aria-valuemin');
+    const valueMax = await slider.getAttribute('aria-valuemax');
+    
+    expect(valueNow).toBeTruthy();
+    expect(valueMin).toBeTruthy();
+    expect(valueMax).toBeTruthy();
+  });
+
+  test('options in selects have role="option"', async ({ page }) => {
+    const trigger = page.locator('[data-testid="watermark-kind-trigger"]');
+    await trigger.click();
+    await page.waitForTimeout(200);
+    
+    const options = page.locator('[role="option"]');
+    const count = await options.count();
+    expect(count).toBeGreaterThan(0);
+    
+    await page.keyboard.press('Escape');
+  });
+});
+
+// ============================================================================
+// COMBINED SETTINGS TESTS
+// ============================================================================
+
+test.describe('Watermark Combined Settings', () => {
+  test.beforeEach(async ({ page }) => {
+    await setupPage(page);
+    await expandWatermarkSection(page);
+  });
+
+  test('multiple watermark settings can be configured together', async ({ page }) => {
+    // Enable watermark
+    await enableWatermark(page);
+    
+    // Select text kind
+    await selectDropdownOption(page, 'watermark-kind-trigger', 'text');
+    await page.waitForTimeout(100);
+    
+    // Set text
+    await setInputByTestId(page, 'watermark-text-input', 'Custom Watermark');
+    
+    // Set position
+    await selectDropdownOption(page, 'watermark-position-trigger', 'corners');
+    
+    // Set opacity
+    await setSliderByTestId(page, 'watermark-opacity-slider', 70);
+    
+    // Set blend mode
+    await selectDropdownOption(page, 'watermark-blend-trigger', 'multiply');
+    
+    // Verify text persisted
+    const textInput = page.locator('[data-testid="watermark-text-input"]');
+    const text = await textInput.inputValue();
+    expect(text).toBe('Custom Watermark');
+  });
+
+  test('watermark settings persist after section collapse/expand', async ({ page }) => {
+    // Enable and set some values
+    await enableWatermark(page);
+    await selectDropdownOption(page, 'watermark-kind-trigger', 'text');
+    await setInputByTestId(page, 'watermark-text-input', 'Persistent Text');
+    
+    // Collapse and expand
+    const watermarkTrigger = page.locator('button').filter({ hasText: /^Watermark$/i }).first();
+    await watermarkTrigger.click();
+    await page.waitForTimeout(200);
+    await watermarkTrigger.click();
+    await waitForAccordionOpen(page);
+    
+    // Verify text persisted
+    const textInput = page.locator('[data-testid="watermark-text-input"]');
+    const text = await textInput.inputValue();
+    expect(text).toBe('Persistent Text');
+  });
+
+  test('disabling watermark hides all settings', async ({ page }) => {
     // Enable watermark first
-    const switches = page.locator('[role="switch"]');
-    if (await switches.first().isVisible()) {
-      const state = await switches.first().getAttribute('data-state');
-      if (state !== 'checked') {
-        await switches.first().click();
-        await page.waitForTimeout(300);
-      }
-    }
-
-    const before = await getCanvasSnapshot(page);
-
-    const selects = page.locator('button[role="combobox"]');
-    const count = await selects.count();
+    await enableWatermark(page);
     
-    for (let i = 0; i < count; i++) {
-      const select = selects.nth(i);
-      await select.click();
-      await page.waitForTimeout(200);
-      
-      const textOption = page.locator('[role="option"]:has-text("Text")').first();
-      const patternOption = page.locator('[role="option"]:has-text("Pattern")').first();
-      
-      if (await textOption.isVisible()) {
-        await textOption.click();
-        await waitForQRRender();
-        expect(true).toBe(true);
-        break;
-      } else if (await patternOption.isVisible()) {
-        await patternOption.click();
-        await waitForQRRender();
-        expect(true).toBe(true);
-        break;
-      }
-      
-      await page.keyboard.press('Escape');
-    }
+    // Verify settings visible
+    const kindTrigger = page.locator('[data-testid="watermark-kind-trigger"]');
+    await expect(kindTrigger).toBeVisible();
+    
+    // Disable watermark
+    await toggleSwitchByTestId(page, 'watermark-enabled-switch');
+    await page.waitForTimeout(200);
+    
+    // Settings should be hidden
+    const isVisible = await kindTrigger.isVisible().catch(() => false);
+    expect(isVisible).toBe(false);
+  });
+});
+
+// ============================================================================
+// EDGE CASES
+// ============================================================================
+
+test.describe('Watermark Edge Cases', () => {
+  test.beforeEach(async ({ page }) => {
+    await setupPage(page);
+    await expandWatermarkSection(page);
+    await enableWatermark(page);
   });
 
-  test('watermark text input changes watermark content', async ({ page, waitForQRRender }) => {
-    await page.click('button:has-text("Watermark")');
-    await page.waitForTimeout(300);
-
-    // Enable watermark
-    const switches = page.locator('[role="switch"]');
-    if (await switches.first().isVisible()) {
-      const state = await switches.first().getAttribute('data-state');
-      if (state !== 'checked') {
-        await switches.first().click();
-        await page.waitForTimeout(300);
-      }
-    }
-
-    const before = await getCanvasSnapshot(page);
-
-    const textInputs = page.locator('input[type="text"]');
-    const count = await textInputs.count();
-    
-    if (count > 0) {
-      await textInputs.first().clear();
-      await textInputs.first().fill('TEST WATERMARK');
-      await textInputs.first().blur();
-      await waitForQRRender();
-      
-      const after = await getCanvasSnapshot(page);
-      expect(true).toBe(true);
-    }
+  test('opacity slider handles minimum value', async ({ page }) => {
+    await setSliderByTestId(page, 'watermark-opacity-slider', 0);
+    const slider = page.locator('[data-testid="watermark-opacity-slider"] [role="slider"]');
+    const value = await slider.getAttribute('aria-valuenow');
+    expect(Number(value)).toBe(0);
   });
 
-  test('watermark position select changes placement', async ({ page, waitForQRRender }) => {
-    await page.click('button:has-text("Watermark")');
-    await page.waitForTimeout(300);
-
-    // Enable watermark
-    const switches = page.locator('[role="switch"]');
-    if (await switches.first().isVisible()) {
-      const state = await switches.first().getAttribute('data-state');
-      if (state !== 'checked') {
-        await switches.first().click();
-        await page.waitForTimeout(300);
-      }
-    }
-
-    const selects = page.locator('button[role="combobox"]');
-    const count = await selects.count();
-    
-    for (let i = 0; i < count; i++) {
-      const select = selects.nth(i);
-      await select.click();
-      await page.waitForTimeout(200);
-      
-      const cornersOption = page.locator('[role="option"]:has-text("Corners")').first();
-      const centerOption = page.locator('[role="option"]:has-text("Center")').first();
-      
-      if (await cornersOption.isVisible()) {
-        const before = await getCanvasSnapshot(page);
-        await cornersOption.click();
-        await waitForQRRender();
-        const after = await getCanvasSnapshot(page);
-        expect(true).toBe(true);
-        break;
-      } else if (await centerOption.isVisible()) {
-        await centerOption.click();
-        await waitForQRRender();
-        expect(true).toBe(true);
-        break;
-      }
-      
-      await page.keyboard.press('Escape');
-    }
+  test('opacity slider handles maximum value', async ({ page }) => {
+    await setSliderByTestId(page, 'watermark-opacity-slider', 100);
+    const slider = page.locator('[data-testid="watermark-opacity-slider"] [role="slider"]');
+    const value = await slider.getAttribute('aria-valuenow');
+    expect(Number(value)).toBe(100);
   });
 
-  test('watermark opacity slider changes transparency', async ({ page, waitForQRRender }) => {
-    await page.click('button:has-text("Watermark")');
-    await page.waitForTimeout(300);
+  test('empty text input is allowed', async ({ page }) => {
+    await selectDropdownOption(page, 'watermark-kind-trigger', 'text');
+    await page.waitForTimeout(100);
+    
+    const textInput = page.locator('[data-testid="watermark-text-input"]');
+    await textInput.fill('');
+    await textInput.blur();
+    
+    const value = await textInput.inputValue();
+    expect(value).toBe('');
+  });
 
-    // Enable watermark
-    const switches = page.locator('[role="switch"]');
-    if (await switches.first().isVisible()) {
-      const state = await switches.first().getAttribute('data-state');
-      if (state !== 'checked') {
-        await switches.first().click();
-        await page.waitForTimeout(300);
-      }
+  test('rapid toggle works correctly', async ({ page }) => {
+    const switchEl = page.locator('[data-testid="watermark-enabled-switch"]');
+    
+    // Toggle rapidly
+    for (let i = 0; i < 5; i++) {
+      await toggleSwitchByTestId(page, 'watermark-enabled-switch');
+      await page.waitForTimeout(50);
     }
+    
+    // Switch should still be functional
+    const state = await switchEl.getAttribute('data-state');
+    expect(state === 'checked' || state === 'unchecked').toBe(true);
+  });
 
-    const before = await getCanvasSnapshot(page);
-
-    const sliders = page.locator('[role="slider"]');
-    if (await sliders.first().isVisible()) {
-      await setSliderByPercent(page, '[role="slider"]', 50);
-      await waitForQRRender();
-      
-      const after = await getCanvasSnapshot(page);
-      expect(true).toBe(true);
-    }
+  test('kind switching preserves opacity setting', async ({ page }) => {
+    // Set opacity
+    await setSliderByTestId(page, 'watermark-opacity-slider', 80);
+    
+    // Switch kind
+    await selectDropdownOption(page, 'watermark-kind-trigger', 'image');
+    await page.waitForTimeout(100);
+    await selectDropdownOption(page, 'watermark-kind-trigger', 'text');
+    await page.waitForTimeout(100);
+    
+    // Opacity should be preserved
+    const slider = page.locator('[data-testid="watermark-opacity-slider"] [role="slider"]');
+    const value = await slider.getAttribute('aria-valuenow');
+    expect(Number(value)).toBeGreaterThanOrEqual(75); // Allow some tolerance
   });
 });

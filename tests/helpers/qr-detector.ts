@@ -498,3 +498,14 @@ export async function toggleSwitch(
   await switchEl.scrollIntoViewIfNeeded();
   await switchEl.click({ force: true });
 }
+
+/**
+ * Wait for QR to render (alias for waitForQRStable)
+ * This is the primary function tests should use to wait for rendering
+ */
+export async function waitForQRRender(
+  page: Page,
+  timeout = DEFAULT_TIMEOUT
+): Promise<void> {
+  await waitForQRStable(page, 200, timeout);
+}
