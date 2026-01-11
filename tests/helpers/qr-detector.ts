@@ -383,6 +383,7 @@ export async function waitForSelectClosed(page: Page, timeout = DEFAULT_TIMEOUT)
 /**
  * Click an option in an open Radix select
  * Uses keyboard navigation for reliable scrolling within dropdowns
+ * Event-driven: No arbitrary timeouts
  */
 export async function clickSelectOption(
   page: Page,
@@ -414,8 +415,17 @@ export async function clickSelectOption(
     await page.keyboard.press('ArrowDown');
   }
   
-  // Small wait for dropdown to scroll
-  await page.waitForTimeout(50);
+  // Wait for the option to be highlighted (data-highlighted attribute)
+  // This is event-driven - we wait for the actual state change
+  await page.waitForFunction(
+    (idx: number) => {
+      const options = document.querySelectorAll('[data-radix-popper-content-wrapper] [role="option"]');
+      const target = options[idx];
+      return target && (target.getAttribute('data-highlighted') === '' || target.getAttribute('data-state') === 'checked');
+    },
+    targetIndex,
+    { timeout: 2000, polling: 16 }
+  ).catch(() => {});
   
   // Press Enter to select
   await page.keyboard.press('Enter');
@@ -502,6 +512,7 @@ export async function toggleSwitch(
 /**
  * Wait for QR to render (alias for waitForQRStable)
  * This is the primary function tests should use to wait for rendering
+ * @deprecated Use waitForRenderComplete from test-utils instead
  */
 export async function waitForQRRender(
   page: Page,
