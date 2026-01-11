@@ -1,14 +1,11 @@
 import { test as base, type Page } from '@playwright/test';
 import {
   waitForRenderComplete,
-  waitForAccordionState,
   dismissWelcomeModal,
   selectTier as selectTierHelper,
   openAccordion as openAccordionHelper,
   getCanvas,
   SECTION_LABELS,
-  WELCOME_MODAL_STORAGE_KEY,
-  WELCOME_MODAL_VERSION,
   type Tier,
   type AccordionSection,
 } from '../helpers/test-utils';
@@ -34,16 +31,13 @@ const dismissWelcomeModalHelper = dismissWelcomeModal;
 
 
 export const test = base.extend<TestFixtures>({
-  // Auto-setup: Set localStorage to skip welcome modal and enable debugging
+  // Auto-setup: Enable debugging (welcome modal is handled by global-setup.ts via storageState)
   page: async ({ page }, use) => {
-    // Set localStorage via init script to prevent welcome modal
-    // IMPORTANT: This MUST happen before any navigation to prevent the modal from appearing
-    await page.addInitScript((args: { key: string; value: string }) => {
-      localStorage.setItem(args.key, args.value);
-    }, { key: WELCOME_MODAL_STORAGE_KEY, value: WELCOME_MODAL_VERSION });
+    // Note: Welcome modal localStorage is pre-set by tests/global-setup.ts
+    // which creates a storageState that all tests inherit automatically.
     
-    // Enable browser-side debugging (errors only by default to reduce noise)
-    enableBrowserDebug(page, { console: true, errors: true, network: false });
+    // Enable browser-side debugging (errors only, no console noise)
+    enableBrowserDebug(page, { console: false, errors: true, network: false });
     
     await use(page);
   },

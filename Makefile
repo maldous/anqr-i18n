@@ -503,13 +503,14 @@ test\:all:
 test\:ui:
 	npx playwright test --ui
 
-# Run exhaustive permutation tests (WARNING: very long running!)
-# Control with environment variables:
+# Run ALL tests including exhaustive permutation tests (WARNING: very long running!)
+# This runs: basic, advanced, professional, AND permutations projects
+# Control permutations with environment variables:
 #   PERM_TIER=basic|advanced|professional
 #   PERM_SECTION=payload|overlay|render|etc
 #   PERM_MAX=50 (max permutations to test)
 test\:permutations:
-	npx playwright test --project=permutations
+	npx playwright test --project=basic --project=advanced --project=professional --project=permutations
 
 # Generate settings QR change report for manual review
 test\:report\:settings:
