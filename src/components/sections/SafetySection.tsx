@@ -173,14 +173,22 @@ export function SafetySection() {
           <Label className="text-sm">
             <HighlightedLabel>{t('safety.contrastCheck')}</HighlightedLabel>
           </Label>
-          <Switch data-testid="safety-contrast-check-switch" checked={qa.contrastCheck} onCheckedChange={setQaContrastCheck} />
+          <Switch
+            data-testid="safety-contrast-check-switch"
+            checked={qa.contrastCheck}
+            onCheckedChange={setQaContrastCheck}
+          />
         </div>
 
         <div className="flex items-center justify-between">
           <Label className="text-sm">
             <HighlightedLabel>{t('safety.showHeatmap')}</HighlightedLabel>
           </Label>
-          <Switch data-testid="safety-show-heatmap-switch" checked={qa.showHeatmap} onCheckedChange={setQaShowHeatmap} />
+          <Switch
+            data-testid="safety-show-heatmap-switch"
+            checked={qa.showHeatmap}
+            onCheckedChange={setQaShowHeatmap}
+          />
         </div>
 
         <div className="space-y-2">
@@ -256,14 +264,22 @@ export function SafetySection() {
           <Label className="text-sm">
             <HighlightedLabel>{t('safety.autoPickVersion')}</HighlightedLabel>
           </Label>
-          <Switch data-testid="safety-auto-pick-version-switch" checked={auto.pickVersion} onCheckedChange={setAutoPickVersion} />
+          <Switch
+            data-testid="safety-auto-pick-version-switch"
+            checked={auto.pickVersion}
+            onCheckedChange={setAutoPickVersion}
+          />
         </div>
 
         <div className="flex items-center justify-between">
           <Label className="text-sm">
             <HighlightedLabel>{t('safety.autoPickEcc')}</HighlightedLabel>
           </Label>
-          <Switch data-testid="safety-auto-pick-ecc-switch" checked={auto.pickEcc} onCheckedChange={setAutoPickEcc} />
+          <Switch
+            data-testid="safety-auto-pick-ecc-switch"
+            checked={auto.pickEcc}
+            onCheckedChange={setAutoPickEcc}
+          />
         </div>
 
         <div className="flex items-center justify-between">

@@ -652,7 +652,11 @@ export function Header({
             {isEditor && (
               <>
                 <div className="hidden sm:block">
-                  <Tabs value={tier} onValueChange={(v) => handleTierChange(v as Tier)} data-testid="tier-tabs">
+                  <Tabs
+                    value={tier}
+                    onValueChange={(v) => handleTierChange(v as Tier)}
+                    data-testid="tier-tabs"
+                  >
                     <TabsList className="shadow-sm">
                       <TabsTrigger
                         value="basic"

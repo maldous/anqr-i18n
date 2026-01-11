@@ -1166,7 +1166,10 @@ export function Sidebar({ isOpen, onClose, mobileHeightPercent = 45 }: SidebarPr
         }
       >
         {/* Sections - scrolls within container */}
-        <div className="flex-1 overflow-y-auto px-4 pt-1 scrollbar-hide" data-testid="sidebar-scroll">
+        <div
+          className="flex-1 overflow-y-auto px-4 pt-1 scrollbar-hide"
+          data-testid="sidebar-scroll"
+        >
           {/* Search bar styled like accordion items */}
           <div className="flex items-center gap-2 px-3 py-3 bg-muted/50 rounded-md shadow-sm mb-[6px]">
             <Search className="h-4 w-4 text-muted-foreground flex-shrink-0" />
@@ -1208,7 +1211,12 @@ export function Sidebar({ isOpen, onClose, mobileHeightPercent = 45 }: SidebarPr
             {visibleSections.map((section) => {
               const Icon = section.icon;
               return (
-                <AccordionItem key={section.id} value={section.id} className="border-none mb-[6px]" data-testid={`accordion-${section.id}`}>
+                <AccordionItem
+                  key={section.id}
+                  value={section.id}
+                  className="border-none mb-[6px]"
+                  data-testid={`accordion-${section.id}`}
+                >
                   <AccordionTrigger
                     className="hover:no-underline py-3 px-3 bg-muted/50 rounded-md shadow-sm [&>svg]:ml-auto"
                     title={`${t(section.labelKey)} settings - Click to expand`}

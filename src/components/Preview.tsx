@@ -30,10 +30,14 @@ export function Preview({ sidebarOpen = true }: Readonly<PreviewProps>) {
   // isRendering is true when actively generating QR (after debounce, during expensive computation)
   // isPending is true when config has changed but debounce hasn't settled (gives immediate feedback)
   const showBusy = isLoading || isRendering || isPending || isPreparingAnimation;
-  
+
   // Compute rendering state for test automation (data-rendering-state attribute)
   // 'idle' = ready for interaction, 'pending' = debounce waiting, 'rendering' = actively generating
-  const renderingState = isPending ? 'pending' : (isRendering || isLoading || isPreparingAnimation) ? 'rendering' : 'idle';
+  const renderingState = isPending
+    ? 'pending'
+    : isRendering || isLoading || isPreparingAnimation
+      ? 'rendering'
+      : 'idle';
   const [showWarnings, setShowWarnings] = useState(true);
   const [heatmapActive, setHeatmapActive] = useState(false);
   const heatmapCanvasRef = useRef<HTMLCanvasElement>(null);
@@ -302,7 +306,11 @@ export function Preview({ sidebarOpen = true }: Readonly<PreviewProps>) {
                   </div>
                 </div>
               )}
-              <div className="relative inline-block" data-rendering-state={renderingState} data-testid="qr-preview">
+              <div
+                className="relative inline-block"
+                data-rendering-state={renderingState}
+                data-testid="qr-preview"
+              >
                 {/* Simulation indicator badge */}
                 {hasActiveSimulation && (
                   <div

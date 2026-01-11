@@ -156,7 +156,10 @@ export function RenderSection() {
           value={render.alignmentStyle}
           onValueChange={(v) => setRenderAlignmentStyle(v as AlignmentStyle)}
         >
-          <SelectTrigger data-testid="render-alignment-style-select" title={t('hints.alignmentStyle')}>
+          <SelectTrigger
+            data-testid="render-alignment-style-select"
+            title={t('hints.alignmentStyle')}
+          >
             <SelectValue />
           </SelectTrigger>
           <SelectContent>
@@ -267,10 +270,10 @@ export function RenderSection() {
             <Label>
               <HighlightedLabel>{t('render.gapMode')}</HighlightedLabel>
             </Label>
-          <Select value={render.gapMode} onValueChange={(v) => setRenderGapMode(v as GapMode)}>
-            <SelectTrigger data-testid="render-gap-mode-select" title={t('hints.gapMode')}>
-              <SelectValue />
-            </SelectTrigger>
+            <Select value={render.gapMode} onValueChange={(v) => setRenderGapMode(v as GapMode)}>
+              <SelectTrigger data-testid="render-gap-mode-select" title={t('hints.gapMode')}>
+                <SelectValue />
+              </SelectTrigger>
               <SelectContent>
                 <SelectItem value="none">{t('render.none')}</SelectItem>
                 <SelectItem value="inset">{t('render.inset')}</SelectItem>
@@ -338,7 +341,10 @@ export function RenderSection() {
                 }))
               }
             >
-              <SelectTrigger data-testid="render-eye-outer-style-select" title={t('hints.eyeOuterStyle')}>
+              <SelectTrigger
+                data-testid="render-eye-outer-style-select"
+                title={t('hints.eyeOuterStyle')}
+              >
                 <SelectValue />
               </SelectTrigger>
               <SelectContent>
@@ -361,7 +367,10 @@ export function RenderSection() {
                 }))
               }
             >
-              <SelectTrigger data-testid="render-eye-inner-style-select" title={t('hints.eyeInnerStyle')}>
+              <SelectTrigger
+                data-testid="render-eye-inner-style-select"
+                title={t('hints.eyeInnerStyle')}
+              >
                 <SelectValue />
               </SelectTrigger>
               <SelectContent>

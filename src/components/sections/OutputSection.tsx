@@ -212,7 +212,11 @@ export function OutputSection() {
                   </Label>
                   <p className="text-xs text-muted-foreground">{t('output.trueVectorDesc')}</p>
                 </div>
-                <Switch data-testid="output-svg-true-vector-switch" checked={output.svgTrueVector} onCheckedChange={setOutputSvgTrueVector} />
+                <Switch
+                  data-testid="output-svg-true-vector-switch"
+                  checked={output.svgTrueVector}
+                  onCheckedChange={setOutputSvgTrueVector}
+                />
               </div>
 
               {output.svgTrueVector && (

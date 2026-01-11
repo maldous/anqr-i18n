@@ -46,7 +46,11 @@ export function WatermarkSection() {
           </Label>
           <HelpLink href="/guide#section-23" requiredTier="advanced" />
         </div>
-        <Switch data-testid="watermark-enabled-switch" checked={watermark.enabled} onCheckedChange={setWatermarkEnabled} />
+        <Switch
+          data-testid="watermark-enabled-switch"
+          checked={watermark.enabled}
+          onCheckedChange={setWatermarkEnabled}
+        />
       </div>
 
       {watermark.enabled && (
