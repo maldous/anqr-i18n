@@ -43,7 +43,8 @@ export default defineConfig({
     baseURL: 'http://localhost:5173',
     
     /* Use large viewport to reduce scrolling complexity */
-    viewport: { width: 1400, height: 900 },
+    /* Note: Each project also sets viewport AFTER spreading devices to override Chrome defaults */
+    viewport: { width: 1600, height: 1000 },
     
     /* Debugging: Gold standard trace capture */
     trace: 'on-first-retry', // Captures DOM snapshots, network waterfall, exact wait reasons
@@ -71,32 +72,48 @@ export default defineConfig({
   },
 
   /* Configure projects for different tiers */
+  /* IMPORTANT: viewport is set AFTER spreading devices to override Chrome's default (1280x720) */
   projects: [
     {
       name: 'basic',
       testMatch: /tests\/basic\/.*\.spec\.ts/,
-      use: { ...devices['Desktop Chrome'] },
+      use: { 
+        ...devices['Desktop Chrome'],
+        viewport: { width: 1600, height: 1000 }, // Override Chrome default - large viewport to avoid scroll issues
+      },
     },
     {
       name: 'advanced',
       testMatch: /tests\/advanced\/.*\.spec\.ts/,
-      use: { ...devices['Desktop Chrome'] },
+      use: { 
+        ...devices['Desktop Chrome'],
+        viewport: { width: 1600, height: 1000 }, // Override Chrome default - large viewport to avoid scroll issues
+      },
     },
     {
       name: 'professional',
       testMatch: /tests\/professional\/.*\.spec\.ts/,
-      use: { ...devices['Desktop Chrome'] },
+      use: { 
+        ...devices['Desktop Chrome'],
+        viewport: { width: 1600, height: 1000 }, // Override Chrome default - large viewport to avoid scroll issues
+      },
     },
     {
       name: 'permutations',
       testMatch: /tests\/permutations\/.*\.spec\.ts/,
-      use: { ...devices['Desktop Chrome'] },
+      use: { 
+        ...devices['Desktop Chrome'],
+        viewport: { width: 1600, height: 1000 }, // Override Chrome default - large viewport to avoid scroll issues
+      },
       timeout: 4 * 60 * 60 * 1000, // 4 hours for exhaustive permutation tests
     },
     {
       name: 'reports',
       testMatch: /tests\/reports\/.*\.spec\.ts/,
-      use: { ...devices['Desktop Chrome'] },
+      use: { 
+        ...devices['Desktop Chrome'],
+        viewport: { width: 1600, height: 1000 }, // Override Chrome default - large viewport to avoid scroll issues
+      },
       timeout: 10 * 60 * 1000, // 10 minutes for report generation
     },
   ],

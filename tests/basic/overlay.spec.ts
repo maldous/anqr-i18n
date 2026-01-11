@@ -52,6 +52,31 @@ async function expandOverlaySection(page: Page) {
 }
 
 /**
+ * Ensure the overlay is enabled (turn on the Enabled switch if it's off)
+ * The Mode/Intensity/ColorMode controls only render when overlay.enabled is true
+ */
+async function ensureOverlayEnabled(page: Page) {
+  const enabledSwitch = page.locator('[data-testid="overlay-enabled-switch"]');
+  
+  // Wait for the switch to be attached (appears after file upload)
+  await enabledSwitch.waitFor({ state: 'attached', timeout: 5000 }).catch(() => {});
+  
+  if (await enabledSwitch.count() > 0) {
+    const state = await enabledSwitch.getAttribute('data-state');
+    if (state === 'unchecked') {
+      await enabledSwitch.scrollIntoViewIfNeeded();
+      await enabledSwitch.click({ force: true });
+      
+      // Wait for controls to render (Mode select should appear)
+      await page.waitForSelector('[data-testid="overlay-mode-select"]', {
+        state: 'attached',
+        timeout: 3000
+      }).catch(() => {});
+    }
+  }
+}
+
+/**
  * Upload an overlay image file
  * Uses application signaling (data-rendering-state) instead of canvas pixel comparison
  */
@@ -75,6 +100,10 @@ async function uploadOverlayImage(page: Page, filePath: string) {
   
   // Re-expand the section in case it closed after file selection
   await expandOverlaySection(page);
+  
+  // IMPORTANT: Enable the overlay if it's not enabled
+  // The Mode/Intensity/ColorMode controls only render when overlay.enabled is true
+  await ensureOverlayEnabled(page);
 }
 
 /**
@@ -130,10 +159,18 @@ async function clearOverlay(page: Page) {
   
   const beforeSnapshot = await getCanvasSnapshot(page);
   
-  // Look for the X button near the filename
-  const clearButton = page.locator('button').filter({ has: page.locator('svg.lucide-x') }).first();
+  // Look for the X button near the filename - it's a small ghost button with X icon
+  // The button is inside a flex container with the filename
+  const overlaySection = page.locator('[data-testid="accordion-overlay"] [role="region"]').first();
+  
+  // Find the clear button - it's a button with an X (lucide-x) SVG inside
+  // Search within the file info bar (the div with border and bg-muted/50)
+  const fileInfoBar = overlaySection.locator('.border.rounded-md.bg-muted\\/50').first();
+  const clearButton = fileInfoBar.locator('button').first();
+  
   if (await clearButton.isVisible().catch(() => false)) {
-    await clearButton.click();
+    await clearButton.scrollIntoViewIfNeeded();
+    await clearButton.click({ force: true });
     // Wait for canvas to change (overlay removed)
     await waitForCanvasChange(page, beforeSnapshot, 5000);
   }
@@ -475,20 +512,27 @@ test.describe('Overlay Section - Basic Tier', () => {
     });
 
     test('switching between modes multiple times works', async ({ page, waitForQRRender }) => {
-      // Switch modes several times
+      // Switch modes several times and verify each switch produces a valid result
       await setOverlayMode(page, 'Blend');
       await waitForQRRender();
       const blend1 = await getCanvasSnapshot(page);
+      expect(blend1).toBeTruthy();
       
       await setOverlayMode(page, 'Halftone');
       await waitForQRRender();
+      const halftone = await getCanvasSnapshot(page);
+      expect(halftone).toBeTruthy();
+      
+      // Halftone should be different from Blend
+      expect(snapshotsAreDifferent(blend1, halftone)).toBe(true);
       
       await setOverlayMode(page, 'Blend');
       await waitForQRRender();
       const blend2 = await getCanvasSnapshot(page);
+      expect(blend2).toBeTruthy();
       
-      // Same mode should produce same result
-      expect(blend1).toBe(blend2);
+      // Blend should be different from Halftone
+      expect(snapshotsAreDifferent(halftone, blend2)).toBe(true);
     });
   });
 

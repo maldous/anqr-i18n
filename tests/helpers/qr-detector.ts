@@ -101,8 +101,7 @@ export async function ensureVisibleInSidebar(page: Page, locator: Locator): Prom
  * - data-testid="overlay-mode-select" for the mode dropdown
  */
 export async function scrollOverlaySectionToControls(page: Page): Promise<void> {
-  // Step 1: Enable the overlay if it's not enabled
-  // The Mode/Intensity/ColorMode controls only render when overlay.enabled is true
+  // Step 1: Check if overlay is enabled (controls only render when enabled)
   const enabledSwitch = page.locator('[data-testid="overlay-enabled-switch"]');
   
   // Wait for the switch to be attached (it appears after file upload)
@@ -123,32 +122,18 @@ export async function scrollOverlaySectionToControls(page: Page): Promise<void> 
   }
   
   // Step 2: Scroll the sidebar container to show the Mode combobox
-  await page.evaluate(() => {
-    const scroller = document.querySelector('[data-testid="sidebar-scroll"]') as HTMLElement;
-    if (!scroller) return;
-    
-    // Find the Mode select by data-testid
-    const modeSelect = document.querySelector('[data-testid="overlay-mode-select"]') as HTMLElement;
-    if (!modeSelect) return;
-    
-    // Get positions
-    const scrollerRect = scroller.getBoundingClientRect();
-    const selectRect = modeSelect.getBoundingClientRect();
-    
-    // If the select is below the visible area, scroll down
-    if (selectRect.top > scrollerRect.bottom - 100) {
-      const scrollAmount = selectRect.top - scrollerRect.top - 150;
-      scroller.scrollTop += scrollAmount;
-    }
-    // If the select is above the visible area, scroll up
-    else if (selectRect.top < scrollerRect.top + 100) {
-      const scrollAmount = scrollerRect.top - selectRect.top + 150;
-      scroller.scrollTop -= scrollAmount;
-    }
-  });
-  
-  // Wait for the Mode select to be visible in viewport
+  // Use scrollIntoView directly on the element - this automatically scrolls the nearest scrollable ancestor
   const modeSelect = page.locator('[data-testid="overlay-mode-select"]');
+  
+  // Wait for element to exist
+  await modeSelect.waitFor({ state: 'attached', timeout: 3000 }).catch(() => {});
+  
+  // Use JavaScript scrollIntoView which handles nested scroll containers correctly
+  await modeSelect.evaluate(el => {
+    el.scrollIntoView({ behavior: 'instant', block: 'center' });
+  }).catch(() => {});
+  
+  // Verify it's now visible
   await modeSelect.waitFor({ state: 'visible', timeout: 3000 }).catch(() => {});
 }
 
@@ -448,16 +433,28 @@ export async function selectDropdownOption(
 ): Promise<boolean> {
   const select = page.locator(`[data-testid="${selectTestId}"]`);
   
-  // Scroll into view within sidebar
+  // Wait for element to exist and scroll into view
+  await select.waitFor({ state: 'visible', timeout: 5000 }).catch(() => {});
   await select.scrollIntoViewIfNeeded();
   
-  // Click to open
+  // Click to open dropdown
   await select.click({ force: true });
   
-  // Wait for dropdown
+  // Wait for dropdown to appear
   await waitForSelectOpen(page);
   
-  // Select option
+  // Find the option by text and click it directly
+  const dropdown = page.locator('[data-radix-popper-content-wrapper]').first();
+  const option = dropdown.locator('[role="option"]').filter({ hasText: new RegExp(`^${optionText}$|^${optionText}\\s|\\s${optionText}$`, 'i') }).first();
+  
+  if (await option.count() > 0) {
+    await option.click({ force: true });
+    // Wait for dropdown to close
+    await waitForSelectClosed(page).catch(() => {});
+    return true;
+  }
+  
+  // Fallback: try keyboard navigation
   const clicked = await clickSelectOption(page, optionText);
   
   if (!clicked) {
