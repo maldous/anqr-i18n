@@ -16,7 +16,6 @@
 
 import type { Page, Locator } from '@playwright/test';
 import { expect } from '@playwright/test';
-import { waitForRenderComplete } from '../helpers/test-utils';
 import { waitForRenderComplete } from './test-utils';
 
 // =============================================================================

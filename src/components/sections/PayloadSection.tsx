@@ -932,7 +932,11 @@ export function PayloadSection() {
           <HelpLink href="/guide#section-0" />
         </div>
         <Select value={payload.kind} onValueChange={(v) => setPayloadKind(v as PayloadKind)}>
-          <SelectTrigger className="w-full" title={t('hints.selectContentType')} data-testid="payload-content-type-select">
+          <SelectTrigger
+            className="w-full"
+            title={t('hints.selectContentType')}
+            data-testid="payload-content-type-select"
+          >
             <SelectValue />
           </SelectTrigger>
           <SelectContent className="max-h-[400px]">
